@@ -1,14 +1,14 @@
 ---
 title: 通过门户进行新策略分配
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure Policy 分配以识别不合规的资源。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: b8b45e0cd2aea1417118f7c485fef2b54d757217
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8407005f54f940885e47671d97425395bcc3ba70
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772470"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323227"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>创建策略分配以识别不合规资源。
 

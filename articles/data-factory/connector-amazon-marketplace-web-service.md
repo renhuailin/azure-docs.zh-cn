@@ -1,18 +1,20 @@
 ---
 title: 从 AWS Marketplace 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Amazon Marketplace Web 服务复制到支持的接收器数据存储。
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.author: jianleishen
 author: jianleishen
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 08/01/2018
-ms.openlocfilehash: 6dae2f6e4f17149fcd543ad4c34ff6acf3d6f775
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 18eed32960a0b1ab7ab18a4ba561a4daa2870260
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482392"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637816"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Marketplace Web 服务复制数据
 
@@ -119,7 +121,7 @@ Amazon Marketplace Web 服务链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：AmazonMWSSource  | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

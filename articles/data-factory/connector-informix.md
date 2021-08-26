@@ -1,17 +1,20 @@
 ---
 title: 使用 Azure 数据工厂从/向 IBM Informix 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动从/向 IBM Informix 复制数据。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.author: jingwang
-ms.openlocfilehash: af907704862e80a2747ac064b98242a1d9d7edb3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: jianleishen
+ms.openlocfilehash: 3ed6aa2a3c99e3de116a43197afb087bc5850190
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588862"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637770"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 IBM Informix 复制数据
 
@@ -38,7 +41,7 @@ ms.locfileid: "104588862"
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Informix 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 

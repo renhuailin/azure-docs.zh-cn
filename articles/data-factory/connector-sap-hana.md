@@ -1,18 +1,20 @@
 ---
 title: 从 SAP HANA 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SAP HANA 复制到支持的接收器数据存储。
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 04/22/2020
-ms.openlocfilehash: 366165b0087755532a1d0584d43d82d7c85af798
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: c06f9e375508af0ae3a8ae6bf819b6ec53a98636
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787142"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638173"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]

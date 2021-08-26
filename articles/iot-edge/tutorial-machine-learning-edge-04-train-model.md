@@ -2,18 +2,17 @@
 title: 教程：训练和部署模型 - Azure IoT Edge 上的机器学习
 description: 在本教程中，你将使用 Azure 机器学习训练一个机器学习模型，然后将该模型打包为可作为 Azure IoT Edge 模块部署的容器映像。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a0b9c96fcd54ab89d5d454b206ece6fce8f0e34e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 7dcc92244e858a475e6ef06ba08b14f0e433dc62
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969243"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726388"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教程：训练和部署 Azure 机器学习模型
 

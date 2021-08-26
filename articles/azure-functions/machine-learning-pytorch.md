@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: gopalv
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 8891c29e5d8d06df6292d06ec06e5e57fb9880e7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4677ec09994b9dcafbf3600c3c3cae48d71f1477
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93422835"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750183"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>教程：使用 PyTorch 将预先训练的图像分类模型部署到 Azure Functions
 
@@ -104,7 +104,7 @@ py -m venv .venv
     func init --worker-runtime python
     ```
 
-    初始化后，*start* 文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
+    初始化后，*start* 文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-develop-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
 
     > [!TIP]
     > 由于函数项目绑定到特定的运行时，因此必须使用相同的语言编写项目中的所有函数。

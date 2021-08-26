@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: d986d3ee30641e2a350d3f3838263670e4ce46da
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.custom: has-adal-ref
+ms.openlocfilehash: 22278efa99e1777267b6ffdf00011ef843a6dfa6
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112515815"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429230"
 ---
 # <a name="manage-python-3-packages-preview-in-azure-automation"></a>在 Azure 自动化中管理 Python 3 程序包（预览版）
 

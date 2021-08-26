@@ -7,17 +7,18 @@ metadata:
   author: MashaMSFT
   tags: azure-service-management
   ms.service: virtual-machines-sql
+  ms.subservice: service-overview
   ms.topic: troubleshooting
   ms.workload: iaas-sql-server
   ms.date: 12/13/2017
   ms.author: mathoma
   ms.reviewer: jroth
-  ms.openlocfilehash: e8a84772b97988dbd54d23d65bf100d3f258ee9b
-  ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+  ms.openlocfilehash: b854cdabf025b67976678595ba03fd07ed209973
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112082613"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121731986"
 title: 有关 Linux 虚拟机上的 SQL Server 的常见问题解答
 summary: >
   [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,60 +39,60 @@ sections:
 - name: 映像
   questions:
   - question: >
-      有哪些 SQL Server 虚拟机库映像可用？
+      What SQL Server virtual machine gallery images are available?
     answer: >
-      Azure 为所有 Linux 和 Windows 版本中所有受支持的 SQL Server 主要发行版维护虚拟机 (VM) 映像。 有关更多详细信息，请参阅 [Linux VM 映像](sql-server-on-linux-vm-what-is-iaas-overview.md#create)和 [Windows VM 映像](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)的完整列表。
+      Azure maintains virtual machine (VM) images for all supported major releases of SQL Server on all editions for both Linux and Windows. For more details, see the complete list of [Linux VM images](sql-server-on-linux-vm-what-is-iaas-overview.md#create) and [Windows VM images](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo).
   - question: >
-      现有的 SQL Server 虚拟机库映像是否会更新？
-    answer: 每隔两个月，都会使用最新的 Linux 和 Windows 更新对虚拟机库中的 SQL Server 映像进行更新。 对于 Linux 映像，这包括最新的系统更新。 对于 Windows 映像，这包括 Windows 更新中标记为重要的任何更新，以及重要的 SQL Server 安全更新和服务包。 Linux 和 Windows 的 SQL Server 累积更新以不同的方式进行处理。 对于 Linux，SQL Server 累积更新也包含在刷新中。 但目前，Windows VM 不会连同 SQL Server 或 Windows Server 累积更新一起更新。
+      Are existing SQL Server virtual machine gallery images updated?
+    answer: Every two months, SQL Server images in the virtual machine gallery are updated with the latest Linux and Windows updates. For Linux images, this includes the latest system updates. For Windows images, this includes any updates that are marked as important in Windows Update, including important SQL Server security updates and service packs. SQL Server cumulative updates are handled differently for Linux and Windows. For Linux, SQL Server cumulative updates are also included in the refresh. But at this time, Windows VMs are not updated with SQL Server or Windows Server cumulative updates.
   - question: >
-      还会安装哪些相关的 SQL Server 包？
+      What related SQL Server packages are also installed?
     answer: >
-      若要查看默认情况下在 Linux VM 上的 SQL Server 中安装的 SQL Server 包，请参阅[已安装的包](sql-server-on-linux-vm-what-is-iaas-overview.md#packages)。
+      To see the SQL Server packages that are installed by default on SQL Server on Linux VMs, see [Installed packages](sql-server-on-linux-vm-what-is-iaas-overview.md#packages).
   - question: >
-      是否可以从库中删除 SQL Server 虚拟机映像？
-    answer: 是的。 Azure 只为每个主要版本维护一个映像。 例如，发布新的 SQL Server Service Pack 时，Azure 会将新映像添加到该 Service Pack 的库。 先前 Service Pack 的 SQL Server 映像将立即从 Azure 门户中删除。 但是，在接下来的三个月，仍可以通过 PowerShell 预配该映像。 三个月之后，先前的 Service Pack 映像不再可用。 如果 SQL Server 版本由于生命周期结束而不受支持，则也会应用此删除策略。
+      Can SQL Server virtual machine images get removed from the gallery?
+    answer: Yes. Azure only maintains one image per major version and edition. For example, when a new SQL Server service pack is released, Azure adds a new image to the gallery for that service pack. The SQL Server image for the previous service pack is immediately removed from the Azure portal. However, it is still available for provisioning from PowerShell for the next three months. After three months, the previous service pack image is no longer available. This removal policy would also apply if a SQL Server version becomes unsupported when it reaches the end of its lifecycle.
 - name: 创建
   questions:
   - question: >
-      如何创建装有 SQL Server 的 Linux 虚拟机？
+      How do I create a Linux virtual machine with SQL Server?
     answer: >
-      最简单的解决方法是创建包含 SQL Server 的 Linux 虚拟机。 有关注册 Azure 并从门户创建 SQL Server VM 的教程，请参阅[在 Azure 门户中预配运行 SQL Server 的 Linux 虚拟机](sql-vm-create-portal-quickstart.md)。 此外，你也可以选用免费许可版（开发人员版或速成版），或通过重新使用本地许可证在 VM 上手动安装 SQL Server。 如果自带许可，必须[在 Azure 上通过软件保障实现许可证移动性](https://azure.microsoft.com/pricing/license-mobility)。
+      The easiest solution is to create a Linux virtual machine that includes SQL Server. For a tutorial on signing up for Azure and creating a SQL Server VM from the portal, see [Provision a Linux virtual machine running SQL Server in the Azure portal](sql-vm-create-portal-quickstart.md). You also have the option of manually installing SQL Server on a VM with either a freely licensed edition (Developer or Express) or by reusing an on-premises license. If you bring your own license, you must have [License Mobility through Software Assurance on Azure](https://azure.microsoft.com/pricing/license-mobility).
   - question: >
-      为什么无法使用有支出限制的 Azure 订阅来设置 RHEL 或 SLES SQL Server VM？
+      Why can’t I provision an RHEL or SLES SQL Server VM with an Azure subscription that has a spending limit?
     answer: >
-      RHEL 和 SLES 虚拟机需要无支出限制的订阅和与订阅相关联的经验证付款方式（通常为信用卡）。 如果你在设置 RHEL 或 SLES VM 时没有删除支出限制，订阅将被禁用，并且所有 VM/服务都将停止。 如果你确实进入了此状态，请重新启用订阅[删除支出限制](https://account.windowsazure.com/subscriptions)。 如果你选择重新启动并继续运行，则剩余信用额度将在当前账单周期恢复，但 RHEL 或 SLES VM 映像附加费将会从你的信用卡中扣除。
+      RHEL and SLES virtual machines require a subscription with no spending limit and a verified payment method (usually a credit card) associated with the subscription. If you provision an RHEL or SLES VM without removing the spending limit, your subscription will get disabled and all VMs/services stopped. If you do run into this state, to re-enable the subscription [remove the spending limit](https://account.windowsazure.com/subscriptions). Your remaining credits will be restored for the current billing cycle but an RHEL or SLES VM image surcharge will go against your credit card if you choose to re-start and continue running it.
 - name: 授权
   questions:
   - question: >
-      如何在 Azure VM 上安装 SQL Server 的许可版本？
+      How can I install my licensed copy of SQL Server on an Azure VM?
     answer: >
-      首先，创建仅限 Linux OS 的虚拟机。 然后，运行适用于 Linux 分发版的 [SQL Server 安装步骤](/sql/linux/sql-server-linux-setup#platforms)。 除非你要安装 SQL Server 的一个免费许可版，否则还必须拥有 SQL Server 许可证和[通过 Azure 上的软件保障的许可移动性](https://azure.microsoft.com/pricing/license-mobility/)。
+      First, create a Linux OS-only virtual machine. Then run the [SQL Server installation steps](/sql/linux/sql-server-linux-setup#platforms) for your Linux distribution. Unless you are installing one of the freely licensed editions of SQL Server, you must also have a SQL Server license and [License Mobility through Software Assurance on Azure](https://azure.microsoft.com/pricing/license-mobility/).
   - question: >
-      是否有适用于 SQL Server 的自带许可 (BYOL) Linux 虚拟机映像？
-    answer: 目前，没有适用于 SQL Server 的任何 BYOL Linux 虚拟机映像。 但是，可以在仅限 Linux 的 VM 上手动安装 SQL Server ，如前面问题中所述。
+      Are there Bring-Your-Own-License (BYOL) Linux virtual machine images for SQL Server?
+    answer: At this time, there are no BYOL Linux virtual machine images for SQL Server. However, you can manually install SQL Server on a Linux-only VM as discussed in the previous questions.
   - question: >
-      如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？
-    answer: 不是。 无法将按秒付费许可切换为使用自己的许可证。 你必须创建新的 Linux VM、安装 SQL Server，并迁移数据。 请参阅前面的问题，了解有关使用自己许可证的详细信息。
+      Can I change a VM to use my own SQL Server license if it was created from one of the pay-as-you-go gallery images?
+    answer: No. You cannot switch from pay-per-second licensing to using your own license. You must create a new Linux VM, install SQL Server, and migrate your data. See the previous question for more details about bringing your own license.
 - name: 管理
   questions:
   - question: >
-      是否可以使用 SQL Server Management Studio (SSMS) 管理运行 SQL Server 的 Linux 虚拟机？
+      Can I manage a Linux virtual machine running SQL Server with SQL Server Management Studio (SSMS)?
     answer: >
-      是的，但 SSMS 目前是仅限 Windows 的工具。 必须从 Windows 计算机建立远程连接才能对运行 SQL Server 的 Linux VM 使用 SSMS。 在 Linux 本地，新的 [mssql-conf](/sql/linux/sql-server-linux-configure-mssql-conf) 工具可以执行许多管理任务。 有关跨平台数据库管理工具，请参阅 [Azure Data Studio](/sql/azure-data-studio/what-is)。
+      Yes, but SSMS is currently a Windows-only tool. You must connect remotely from a Windows machine to use SSMS with Linux VMs running SQL Server. Locally on Linux, the new [mssql-conf](/sql/linux/sql-server-linux-configure-mssql-conf) tool can perform many administrative tasks. For a cross-platform database management tool, see [Azure Data Studio](/sql/azure-data-studio/what-is).
   - question: >
-      是否可从 SQL Server VM 中完全删除 SQL Server？
+      Can I remove SQL Server completely from a SQL Server VM?
     answer: >
-      是的，但仍将按照 [SQL Server Azure VM 的定价指南](../windows/pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)收取 SQL Server VM 费用。 如果不再需要 SQL Server，可以部署新的虚拟机并将数据和应用程序迁移到新的虚拟机。 然后可以删除 SQL Server 虚拟机。
+      Yes, but you will continue to be charged for your SQL Server VM as described in [Pricing guidance for SQL Server Azure VMs](../windows/pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). If you no longer need SQL Server, you can deploy a new virtual machine and migrate the data and applications to the new virtual machine. Then you can remove the SQL Server virtual machine.
 - name: 更新和修补
   questions:
   - question: >
-      如何将 Azure VM 中的 SQL Server 升级到新版本？
+      How do I upgrade to a new version/edition of the SQL Server in an Azure VM?
     answer: >
-      目前，对于在 Azure VM 中运行的 SQL Server，不提供就地升级。 因此，请使用所需的 SQL Server 版本创建新的 Azure 虚拟机，然后使用[标准数据迁移技术](/sql/linux/sql-server-linux-migrate-overview)，将数据库迁移到新的服务器。
+      Currently, there is no in-place upgrade for SQL Server running in an Azure VM. Create a new Azure virtual machine with the desired SQL Server version/edition, and then migrate your databases to the new server using [standard data migration techniques](/sql/linux/sql-server-linux-migrate-overview).
 - name: 常规
   questions:
   - question: >
-      Azure VM 是否支持 SQL Server 的高可用性解决方案？
-    answer: 目前没有。 Always On 可用性组和故障转移群集都需要 Linux 中的聚类分析解决方案，例如 Pacemaker。 SQL Server 支持的 Linux 发行版在云中不支持其高可用性加载项。
-additionalContent: "\n## <a name=\"resources\"></a>资源\n\n**Linux VM**：\n\n* [Linux VM 上的 SQL Server 概述](sql-server-on-linux-vm-what-is-iaas-overview.md)\n* [在 Linux VM 上预配 SQL Server](sql-vm-create-portal-quickstart.md)\n* [“Linux 上的 SQL Server”文档](/sql/linux/sql-server-linux-overview)\n\n**Windows VM**：\n\n* [Windows VM 上的 SQL Server 概述](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)\n* [在 Windows VM 上预配 SQL Server](../windows/sql-vm-create-portal-quickstart.md)\n* [常见问题 (Windows)](../windows/frequently-asked-questions-faq.yml)"
+      Are SQL Server high-availability solutions supported on Azure VMs?
+    answer: Not at this time. Always On availability groups and Failover Clustering both require a clustering solution in Linux, such as Pacemaker. The supported Linux distributions for SQL Server do not support their high availability add-ons in the cloud.
+additionalContent: "\n## Resources\n\n**Linux VMs**:\n\n* [Overview of SQL Server on a Linux VM](sql-server-on-linux-vm-what-is-iaas-overview.md)\n* [Provision SQL Server on a Linux VM](sql-vm-create-portal-quickstart.md)\n* [SQL Server on Linux documentation](/sql/linux/sql-server-linux-overview)\n\n**Windows VMs**:\n\n* [Overview of SQL Server on a Windows VM](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)\n* [Provision SQL Server on a Windows VM](../windows/sql-vm-create-portal-quickstart.md)\n* [FAQ (Windows)](../windows/frequently-asked-questions-faq.yml)"

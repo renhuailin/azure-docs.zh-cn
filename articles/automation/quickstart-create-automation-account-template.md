@@ -1,26 +1,26 @@
 ---
-title: 快速入门：创建自动化帐户 - Azure 模板
+title: 创建自动化帐户 - Azure 模板
 titleSuffix: Azure Automation
-description: 本快速入门介绍如何使用 Azure 资源管理器模板创建自动化帐户。
+description: 本文介绍如何使用 Azure 资源管理器模板创建自动化帐户。
 services: automation
 ms.author: magoedte
-ms.date: 01/07/2021
-ms.topic: quickstart
+ms.date: 07/20/2021
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.custom:
 - mvc
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: effdb8ec511a6060fffb571864273a1f84901ab6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b17bb61230fa06acc988129bd593ab5c25332e84
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081291"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727380"
 ---
-# <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>快速入门：使用 ARM 模板创建自动化帐户
+# <a name="create-an-automation-account-by-using-arm-template"></a>使用 ARM 模板创建自动化帐户
 
-Azure 自动化提供基于云的自动化和配置服务，用于支持 Azure 环境和非 Azure 环境之间的一致管理。 本快速入门介绍如何部署用于创建自动化帐户的 Azure 资源管理器模板（ARM 模板）。 与其他部署方法相比，使用 ARM 模板需要的步骤更少。
+Azure 自动化提供基于云的自动化和配置服务，用于支持 Azure 环境和非 Azure 环境之间的一致管理。 本文介绍如何部署用于创建自动化帐户的 Azure 资源管理器模板（ARM 模板）。 与其他部署方法相比，使用 ARM 模板需要的步骤更少。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -46,7 +46,7 @@ Azure 自动化提供基于云的自动化和配置服务，用于支持 Azure �
 
 完成这些步骤后，你需要为自动化帐户[配置诊断设置](automation-manage-send-joblogs-log-analytics.md)，以将 runbook 作业状态和作业流发送到链接的 Log Analytics 工作区。
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-automation/)。
+本文中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-automation/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.automation/101-automation/azuredeploy.json":::
 
@@ -96,6 +96,18 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
 
 2. 输入相应的值。
 
+    尝试从门户中的 PowerShell、CLI 或模板功能运行 ARM 模板时，如果未正确设置 `_artifactsLocation` 参数，将会收到类似以下的错误消息：
+
+    `"message": "Deployment template validation failed: 'The template resource '_artifactsLocation' at line '96' and column '31' is not valid: The language expression property 'templateLink' doesn't exist, available properties are 'template, templateHash, parameters, mode, debugSetting, provisioningState'.. Please see https://aka.ms/arm-template-expressions for usage details.'."`
+
+    若要防止发生这种情况，从门户中的模板功能运行时，为 `_artifactsLocation` 参数指定以下内容 - `https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.automation/101-automation/azuredeploy.json`
+
+    从 PowerShell 运行时，请包含参数且其值为 `-TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.automation/101-automation/azuredeploy.json`。
+
+    从 Azure CLI 运行时，请包含参数且其值为 `--template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.automation/101-automation/azuredeploy.json`。
+
+    有关 PowerShell/CLI 的参考，请参阅“使用模板”部分下的[创建 Azure 自动化帐户 (microsoft.com)](https://azure.microsoft.com/resources/templates/101-automation/)。
+
 3. 部署可能需要几分钟才能完成。 完成后，输出类似于以下内容：
 
     ![部署完成后的示例结果](media/quickstart-create-automation-account-template/template-output.png)
@@ -120,7 +132,7 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你创建了一个自动化帐户和一个 Log Analytics 工作区，并将它们关联在一起。
+在本文中，你创建了一个自动化帐户和一个 Log Analytics 工作区，并将它们关联在一起。
 
 若要了解详细信息，请继续学习 Azure 自动化教程。
 

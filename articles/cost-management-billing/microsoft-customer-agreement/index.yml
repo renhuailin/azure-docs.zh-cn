@@ -5,18 +5,18 @@ metadata:
   title: Microsoft 客户协议文档
   description: 了解如何开始使用 Microsoft 客户协议 (MCA)。
   ms.service: cost-management-billing
-  ms.subservice: billing
+  ms.subservice: microsoft-customer-agreement
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
   ms.date: 06/16/2021
-  ms.openlocfilehash: b59028a13d3d7dfcbfdebfef803db36a660b5364
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.openlocfilehash: 19bbf27e330c204beeb14e536cbaaccafee9c178
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112291522"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121731923"
 landingContent:
 - title: 入门
   linkLists:
@@ -44,6 +44,8 @@ landingContent:
       url: /power-bi/connect-data/desktop-connect-azure-cost-management?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - text: 导出成本管理数据
       url: ../costs/tutorial-export-acm-data.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: Microsoft 客户协议常见问题解答
+      url: microsoft-customer-agreement-faq.yml?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
 - title: 管理账单
   linkLists:
   - linkListType: concept
