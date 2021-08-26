@@ -5,15 +5,16 @@ author: kromerm
 ms.author: makromer
 ms.reviewer: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/16/2021
-ms.openlocfilehash: 2e732cf11627c9bf9be2610d32dc324f548b82ed
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 06/04/2021
+ms.openlocfilehash: b5d28b5e625bc7822469511ae83d5dabd5824fa0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986401"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638817"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>使用映射数据流转换数据
 
@@ -73,9 +74,9 @@ ms.locfileid: "111986401"
 
 在此步骤中，你将创建一个包含数据流活动的管道。
 
-1. 在“开始使用”页中，选择“创建管道”。 
+1. 在 Azure 数据工厂的主页上，选择“协调”。
 
-   ![创建管道](./media/doc-common-process/get-started-page.png)
+   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
 
 1. 在管道的“常规”选项卡中，输入 TransformMovies 作为管道的名称  。
 1. 在“活动”窗格中，展开“移动和转换”可折叠部分 。 将“数据流”活动从该窗格拖放到管道画布上。

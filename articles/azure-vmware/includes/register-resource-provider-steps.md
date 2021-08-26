@@ -3,12 +3,15 @@ title: 注册 Azure VMware 解决方案资源提供程序
 description: 注册 Azure VMware 解决方案资源提供程序的步骤。
 ms.topic: include
 ms.date: 02/17/2021
-ms.openlocfilehash: d2363ca2672f7f668d8f9b3816447f316d8b7347
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: 8f1074a0fa703afb6878b708861a67b4bc6d4454
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103555952"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729067"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 

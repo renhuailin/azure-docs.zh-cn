@@ -9,20 +9,20 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: a133f9b8d1ae22114a78be8e4d22d6293c94c7cd
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 5af1923ea0747b3e75614ce2b4d6c7915390ac3d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582971"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695035"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>选择参数优化机器学习工作室（经典）中的算法
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
 本主题介绍如何为机器学习工作室（经典）中的算法选择合适的超参数集。 大多数机器学习算法使用参数来设置。 训练模型时，需要为这些参数提供值。 经过训练的模型效力取决于选择的模型参数。 查找最佳参数集的过程称为 *模型选择*。
-
-
 
 有多种方法可选择模型。 在机器学习中，交叉验证是模型选择中最广泛使用的方法之一，并且是机器学习工作室（经典）中的默认模型选择机制。 由于机器学习工作室（经典）支持 R 和 Python，因此你始终可以使用 R 或 Python 执行其自己的模型选择机制。
 

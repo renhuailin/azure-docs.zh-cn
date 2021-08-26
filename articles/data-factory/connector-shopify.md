@@ -1,18 +1,20 @@
 ---
 title: 从 Shopify 复制数据（预览版）
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Shopify 复制到支持的接收器数据存储。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 08/01/2019
-ms.openlocfilehash: 4af23500eb5ca6f8d4d30baca4932996d11d1010
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: cca45419fff17eec2672911c09cb37a7da6b17f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482842"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637956"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>使用 Azure 数据工厂从 Shopify 复制数据（预览）
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -109,7 +111,7 @@ Shopify 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：“ShopifySource”  | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM "Products" WHERE Product_Id = '123'"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM "Products" WHERE Product_Id = '123'"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

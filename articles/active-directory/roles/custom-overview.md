@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d7c0c7c5a0fe5ff3100e754c99b476676cab222
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: f376a8e5d61b9bb3fda39184f4ff0873c48c8b43
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733369"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732332"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory 中基于角色的访问控制概述
 
@@ -45,7 +45,7 @@ Azure AD 支持两种类型的角色定义：
 1. 用户（或服务主体）获取 Microsoft Graph 或 Azure AD Graph 终结点的令牌。
 1. 用户使用颁发的令牌通过 Microsoft Graph 或 Azure AD Graph 对 Azure Active Directory (Azure AD) 进行 API 调用。
 1. 根据具体情况，Azure AD 会执行以下操作之一：
-   - 基于用户访问令牌中的 [wids 声明](../../active-directory-b2c/access-tokens.md)评估用户的角色成员身份。
+   - 基于用户访问令牌中的 [wids 声明](../develop/access-tokens.md)评估用户的角色成员身份。
    - 检索为用户应用于（直接或通过组成员身份）执行操作的资源的所有角色分配。
 1. Azure AD 确定 API 调用中的操作是否包含在用户针对此资源拥有的角色中。
 1. 如果用户在请求的范围内没有包含该操作的角色，则不授予访问权限。 否则授予访问权限。
@@ -75,7 +75,7 @@ Azure AD 支持两种类型的角色定义：
 - Microsoft 创建的内置角色（无法更改）。
 - 由组织创建和管理的自定义角色。
 
-### <a name="scope"></a>范围
+### <a name="scope"></a>作用域
 
 范围是指允许对角色分配中的特定 Azure AD 资源执行的操作的限制。 分配角色时，可以指定一个范围来限制管理员对特定资源的访问。 例如，如果要为开发人员授予某个自定义角色，但仅允许该开发人员管理特定的应用程序注册，则你可以在角色分配中包含特定的应用程序注册作为范围。
 

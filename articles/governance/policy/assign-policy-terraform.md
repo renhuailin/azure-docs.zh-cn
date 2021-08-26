@@ -1,14 +1,14 @@
 ---
 title: 快速入门：通过 Terraform 进行新策略分配
 description: 本快速入门介绍如何使用 Terraform 和 HCL 语法创建策略分配以识别不合规的资源。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: c9e33fc8070adc2685e26272565d95716c0df8db
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 09e36e8b73fd224d7ab9c94dceaa7e02b34c9b8b
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094755"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323445"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>快速入门：使用 Terraform 创建策略分配以识别不合规的资源
 

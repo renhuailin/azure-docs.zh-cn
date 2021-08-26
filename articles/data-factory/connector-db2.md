@@ -1,17 +1,20 @@
 ---
 title: 使用 Azure 数据工厂从 DB2 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 DB2 复制到支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jianleishen
-ms.openlocfilehash: 00b3516dca141dd325222910525ae677d7088130
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: be7aefd231daad2cdefccbcc4648b20bf6159455
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487270"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638101"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 DB2 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -162,7 +165,7 @@ DB2 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**Db2Table** | 是 |
-| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
@@ -197,7 +200,7 @@ DB2 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**Db2Source** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 
@@ -242,28 +245,28 @@ DB2 链接服务支持以下属性：
 | BigInt |Int64 |
 | 二进制 |Byte[] |
 | Blob |Byte[] |
-| Char |字符串 |
-| Clob |字符串 |
-| Date |Datetime |
-| DB2DynArray |字符串 |
-| DbClob |字符串 |
+| Char |String |
+| Clob |String |
+| Date |datetime |
+| DB2DynArray |String |
+| DbClob |String |
 | 小数 |小数 |
 | DecimalFloat |小数 |
 | Double |Double |
 | Float |Double |
-| Graphic |字符串 |
+| Graphic |String |
 | Integer |Int32 |
 | LongVarBinary |Byte[] |
-| LongVarChar |字符串 |
-| LongVarGraphic |字符串 |
+| LongVarChar |String |
+| LongVarGraphic |String |
 | Numeric |小数 |
 | Real |Single |
 | SmallInt |Int16 |
 | 时间 |TimeSpan |
 | 时间戳 |DateTime |
 | VarBinary |Byte[] |
-| VarChar |字符串 |
-| VarGraphic |字符串 |
+| VarChar |String |
+| VarGraphic |String |
 | Xml |Byte[] |
 
 ## <a name="lookup-activity-properties"></a>Lookup 活动属性

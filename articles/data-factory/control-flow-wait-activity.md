@@ -1,17 +1,20 @@
 ---
 title: Azure 数据工厂中的等待活动
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 等待活动在一段指定的时间内暂停管道的执行。
 author: chez-charlie
 ms.author: chez
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: bb9227546b135365fb3ac8d47156da95e75470bb
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: b5f4835be17a28fabe9b8d553226baebef76a6d8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906184"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638369"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行等待活动
 在管道中使用等待活动时，管道将等待一段指定的时间，然后继续执行后续活动。 
