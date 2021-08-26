@@ -4,14 +4,14 @@ description: 每天引入超过 1 TB 监视数据的客户可以使用专用群�
 ms.topic: conceptual
 author: rboucher
 ms.author: robb
-ms.date: 09/16/2020
+ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3b4a98e37c16feeb2ad8203caaeb5bc231761379
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: a0b33fb243c69dc86d2c14c34f45499bef47a730
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004216"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735771"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
@@ -20,8 +20,9 @@ Azure Monitor 日志专用群集是一个部署选项，可为 Azure Monitor 日
 需要专用群集的功能包括：
 
 - **[客户管理的密钥](../logs/customer-managed-keys.md)** - 使用由客户提供和控制的密钥对群集数据进行加密。
-- **[密码箱](../logs/customer-managed-keys.md#customer-lockbox-preview)** - 客户可以控制 Microsoft 支持工程师的数据访问请求。
+- [密码箱](../logs/customer-managed-keys.md#customer-lockbox-preview) - 控制 Microsoft 支持工程师对数据的访问请求。
 - **[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** 可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。
+- [可用性区域](../../availability-zones/az-overview.md) - 在专用群集上通过可用性区域保护数据免受数据中心故障的影响 - 最初仅限于美国东部 2 和美国西部 2 区域。 使用可用性区域创建的群集通过 `isAvailabilityZonesEnabled`: `true` 指示，且数据以 ZRS 存储类型安全存储。 可用性区域是在创建时在群集中定义的，无法修改此设置。 若要在可用性区域中创建群集，需要在受支持的区域中创建新群集。
 - **[多工作区](../logs/cross-workspace-query.md)** - - 如果客户使用多个工作区进行生产，则使用专用群集可能是合理的。 如果所有工作区都在同一群集上，则“跨工作区”查询会运行更快。 使用专用群集还可能更具成本效益，因为分配的承诺层级考虑了所有群集引入并应用于其所有工作区，即使其中一些工作区很小并且没有资格享受承诺层级折扣。
 
 专用群集要求客户使用每天至少 1 TB 的数据引入产能进行提交。 迁移到专用群集很简单。 无数据丢失或服务中断。 
@@ -39,32 +40,32 @@ Azure Monitor 日志专用群集是一个部署选项，可为 Azure Monitor 日
 
 ## <a name="cluster-pricing-model"></a>群集定价模型
 
-Log Analytics 专用群集使用承诺层级定价模型，该模型至少为 1000 GB/天。 高于该层级别的任何使用量都将按该承诺层的每 GB 有效费率计费。  [Azure Monitor 定价页]( https://azure.microsoft.com/pricing/details/monitor/)提供了承诺层级定价信息。  
+Log Analytics 专用群集使用承诺层级定价模型，该模型至少为 500 GB/天。 高于该层级别的任何使用量都将按该承诺层的每 GB 有效费率计费。  [Azure Monitor 定价页]( https://azure.microsoft.com/pricing/details/monitor/)提供了承诺层级定价信息。  
 
-使用 `Sku` 下的 `Capacity` 参数，通过 Azure 资源管理器以编程方式配置群集承诺层级别。 `Capacity` 以 GB 为单位指定，其值可以是 1000、2000 或 5000 GB/天。
+使用 `Sku` 下的 `Capacity` 参数，并通过 Azure 资源管理器以编程方式配置群集承诺层级别。 以 GB 为单位指定 `Capacity`，值可为 500、1000、2000 或 5000 GB/天。
 
 对于群集上的使用情况，有两种计费模式。 配置群集时，可通过 `billingType` 参数指定这些计费模式。 
 
 1. **群集**：在此情况下（其为默认情况），引入数据的计费在群集级别完成。 每个与群集关联的工作区中的引入数据数量将进行聚合，以计算该群集的每日帐单。 
 
-2. **工作区**：群集的承诺层级成本按比例归属于群集中的工作区，按每个工作区的数据引入量计算（在计算了 [Azure 安全中心](../../security-center/index.yml)的每个工作区的每个节点的分配之后）。此定价模型的完整详细信息在[此处]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)说明。 
+2. **工作区**：群集的承诺层级成本按比例归属于群集中的工作区，按每个工作区的数据引入量计算（在计算了 [Azure 安全中心](../../security-center/index.yml)的每个工作区的每个节点的分配之后）。此定价模型的完整详细信息在 [此处](./manage-cost-storage.md#log-analytics-dedicated-clusters)说明。 
 
 如果工作区使用旧的每节点定价层，则当其链接到群集时，它将根据群集的承诺层级引入到的数据来计费，而不再是按节点计费。 将继续应用来自 Azure 安全中心的按节点数据分配。
 
-[此处]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)提供了 Log Analytics 专用群集计费的完整详细信息。
+[此处](./manage-cost-storage.md#log-analytics-dedicated-clusters)提供了 Log Analytics 专用群集计费的完整详细信息。
 
 ## <a name="asynchronous-operations-and-status-check"></a>异步操作和状态检查
 
 某些配置步骤是异步运行的，因为它们无法快速完成。 响应中的状态可能包含以下项之一：“InProgress”、“Updating”、“Deleting”、“Succeeded”或“Failed”，包括错误代码。 使用 REST 时，响应最初返回 HTTP 状态代码 202（已接受）和包含 Azure-AsyncOperation 属性的标头：
 
 ```JSON
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2021-06-01"
 ```
 
 若要查看异步操作的状态，请向 Azure-AsyncOperation 标头值发送 GET 请求：
 
 ```rst
-GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2021-06-01
 Authorization: Bearer <token>
 ```
 
@@ -77,7 +78,7 @@ Authorization: Bearer <token>
 - **ClusterName**：用于管理目的。 不会向用户公开此名称。
 - **ResourceGroupName**：对于任何 Azure 资源，群集都属于一个资源组。 建议使用中心 IT 资源组，因为群集通常由组织中的许多团队共享。 有关更多设计注意事项，请查看[设计 Azure Monitor 日志部署](../logs/design-logs-deployment.md)
 - **位置**：群集位于特定的 Azure 区域中。 只有位于此区域中的工作区才能链接到此群集。
-- **SkuCapacity**：创建群集资源时必须指定承诺层级 (sku)。 承诺层级可以设置为 1000、2000 或 5000 GB/天。 有关群集成本的更多信息，请参阅[管理 Log Analytics 群集的成本](./manage-cost-storage.md#log-analytics-dedicated-clusters)。 请注意，承诺层级以前称为产能预留。 
+- **SkuCapacity**：创建群集资源时必须指定承诺层级 (sku)。 承诺层级可以设置为 500、1000、2000 或 5000 GB/天。 有关群集成本的更多信息，请参阅[管理 Log Analytics 群集的成本](./manage-cost-storage.md#log-analytics-dedicated-clusters)。 请注意，承诺层级以前称为产能预留。 
 
 创建群集资源后，可以编辑其他属性，如 sku、keyVaultProperties 或 billingType  。 参阅下面的更多详细信息。
 
@@ -103,7 +104,7 @@ Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 
 *调用* 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2021-06-01
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -113,12 +114,12 @@ Content-type: application/json
     },
   "sku": {
     "name": "capacityReservation",
-    "Capacity": 1000
+    "Capacity": 500
     },
   "properties": {
-    "billingType": "cluster",
+    "billingType": "Cluster",
     },
-  "location": "<region-name>",
+  "location": "<region>",
 }
 ```
 
@@ -139,44 +140,51 @@ Log Analytics 群集的预配需要一段时间才能完成。 可以通过多�
 
 - 在群集资源上发送 GET 请求，然后查看 provisioningState 值 。 预配进行时此值是 ProvisioningAccount，预配完成后是 Succeeded 。
 
-   ```rst
-   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-   Authorization: Bearer <token>
-   ```
+  ```rst
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2021-06-01
+  Authorization: Bearer <token>
+  ```
 
-   **响应**
+  **响应**
 
-   ```json
-   {
-     "identity": {
-       "type": "SystemAssigned",
-       "tenantId": "tenant-id",
-       "principalId": "principal-id"
-       },
-     "sku": {
-       "name": "capacityReservation",
-       "capacity": 1000,
-       "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
-       },
-     "properties": {
-       "provisioningState": "ProvisioningAccount",
-       "billingType": "cluster",
-       "clusterId": "cluster-id"
-       },
-     "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-     "name": "cluster-name",
-     "type": "Microsoft.OperationalInsights/clusters",
-     "location": "region-name"
-   }
-   ```
+  ```json
+  {
+    "identity": {
+      "type": "SystemAssigned",
+      "tenantId": "tenant-id",
+      "principalId": "principal-id"
+    },
+    "sku": {
+      "name": "capacityreservation",
+      "capacity": 500
+    },
+    "properties": {
+      "provisioningState": "ProvisioningAccount",
+      "clusterId": "cluster-id",
+      "billingType": "Cluster",
+      "lastModifiedDate": "last-modified-date",
+      "createdDate": "created-date",
+      "isDoubleEncryptionEnabled": false,
+      "isAvailabilityZonesEnabled": false,
+      "capacityReservationProperties": {
+        "lastSkuUpdate": "last-sku-modified-date",
+        "minCapacity": 500
+      }
+    },
+    "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
+    "name": "cluster-name",
+    "type": "Microsoft.OperationalInsights/clusters",
+    "location": "cluster-region"
+  }
+  ```
 
-“principalId”GUID 是托管标识服务为群集资源生成的 。
+principalId GUID 是托管标识服务在创建群集时生成的。
 
 ## <a name="link-a-workspace-to-cluster"></a>将工作区链接到群集
 
 当工作区链接到专用群集时，引入到工作区的新数据将路由到新群集，而现有数据仍保留在现有群集上。 如果使用客户管理的密钥 (CMK) 加密专用群集，则只有新数据使用该密钥进行加密。 当系统在后端执行跨群集查询时，系统从用户中抽象出这种差异，用户像往常一样只查询工作区。
 
-一个群集最多可以链接到 100 个工作区。 链接的工作区与群集位于同一区域。 若要保护系统后端并避免数据碎片化，一个工作区每月链接到群集的次数不能超过两次。
+一个群集最多可以链接到 1000 个工作区。 链接的工作区与群集位于同一区域。 若要保护系统后端并避免数据碎片化，一个工作区每月链接到群集的次数不能超过两次。
 
 若要执行链接操作，需要同时具有对工作区和群集资源的“写入”权限：
 
@@ -215,7 +223,7 @@ Get-Job -Command "Set-AzOperationalInsightsLinkedService" | Format-List -Propert
 发送
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2021-06-01 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -232,9 +240,7 @@ Content-type: application/json
 
 ### <a name="check-workspace-link-status"></a>检查工作区链接状态
   
-如果使用客户管理的密钥，完成关联操作后，引入的数据会使用托管密钥进行加密存储，这可能需要长达 90 分钟才能完成。 
-
-可以通过两种方式检查工作区关联状态：
+使用客户管理的密钥配置群集时，链接操作完成后引入到工作区的数据将使用托管密钥进行加密存储。 工作区链接操作可能需要 90 分钟才能完成，可以通过两种方式检查状态：
 
 - 从响应中复制 Azure-AsyncOperation URL 值，并进行异步操作状态检查。
 
@@ -243,7 +249,7 @@ Content-type: application/json
 **CLI**
 
 ```azurecli
-az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
+az monitor log-analytics workspace show --resource-group "resource-group-name" --workspace-name "workspace-name"
 ```
 
 **PowerShell**
@@ -257,7 +263,7 @@ Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Nam
 *调用*
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2021-06-01
 Authorization: Bearer <token>
 ```
 
@@ -289,7 +295,7 @@ Authorization: Bearer <token>
   "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
   "name": "workspace-name",
   "type": "Microsoft.OperationalInsights/workspaces",
-  "location": "region-name"
+  "location": "region"
 }
 ```
 
@@ -301,10 +307,10 @@ Authorization: Bearer <token>
 - **billingType** - billingType 属性可确定群集资源及其数据的计费归属 ：
   - **群集**（默认）- 群集的成本归属于群集资源。
   - **工作区** - 群集的成本按比例归属于群集中的工作区，如果一天中的引入数据总量低于承诺层级，则会向群集资源的部分使用量进行计费。 请参阅 [Log Analytics 专用群集](./manage-cost-storage.md#log-analytics-dedicated-clusters)以了解有关群集定价模型的更多信息。
-  - **标识** - 用于对 Key Vault 进行身份验证的标识。 这可以是系统分配的或用户分配的。
+  - 标识 - 用于向 Key Vault 进行身份验证的标识。 这可以是系统分配的或用户分配的。
 
 >[!IMPORTANT]
->群集更新不应在同一操作中同时包含标识和密钥标识符详细信息。 如果两者都需要更新，则应该在两个连续操作中进行更新。
+>集群更新不应该在同一个操作中同时包含标识和密钥标识符详细信息。 如果需要对两者进行更新，则更新应为两个连续操作。
 
 > [!NOTE]
 > PowerShell 不支持 billingType 属性。
@@ -327,45 +333,47 @@ Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
 
 *调用*
 
-  ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2021-06-01
+Authorization: Bearer <token>
+```
 
 *响应*
   
-  ```json
-  {
-    "value": [
-      {
-        "identity": {
-          "type": "SystemAssigned",
-          "tenantId": "tenant-id",
-          "principalId": "principal-Id"
-        },
-        "sku": {
-          "name": "capacityReservation",
-          "capacity": 1000,
-          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
-          },
-        "properties": {
-           "keyVaultProperties": {
-              "keyVaultUri": "https://key-vault-name.vault.azure.net",
-              "keyName": "key-name",
-              "keyVersion": "current-version"
-              },
-          "provisioningState": "Succeeded",
-          "billingType": "cluster",
-          "clusterId": "cluster-id"
-        },
-        "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
-        "name": "cluster-name",
-        "type": "Microsoft.OperationalInsights/clusters",
-        "location": "region-name"
-      }
-    ]
-  }
-  ```
+```json
+{
+  "value": [
+    {
+      "identity": {
+        "type": "SystemAssigned",
+        "tenantId": "tenant-id",
+        "principalId": "principal-id"
+      },
+      "sku": {
+        "name": "capacityreservation",
+        "capacity": 500
+      },
+      "properties": {
+        "provisioningState": "Succeeded",
+        "clusterId": "cluster-id",
+        "billingType": "Cluster",
+        "lastModifiedDate": "last-modified-date",
+        "createdDate": "created-date",
+        "isDoubleEncryptionEnabled": false,
+        "isAvailabilityZonesEnabled": false,
+        "capacityReservationProperties": {
+          "lastSkuUpdate": "last-sku-modified-date",
+          "minCapacity": 500
+        }
+      },
+      "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
+      "name": "cluster-name",
+      "type": "Microsoft.OperationalInsights/clusters",
+      "location": "cluster-region"
+    }
+  ]
+}
+```
 
 ### <a name="get-all-clusters-in-subscription"></a>获取订阅中的所有群集
 
@@ -386,7 +394,7 @@ Get-AzOperationalInsightsCluster
 *调用*
 
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
+GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2021-06-01
 Authorization: Bearer <token>
 ```
     
@@ -394,62 +402,60 @@ Authorization: Bearer <token>
     
 与“资源组的群集”相同，但在订阅范围内。
 
-
-
 ### <a name="update-commitment-tier-in-cluster"></a>更新群集中的承诺层级
 
-链接工作区的数据量随时间变化时，建议适当地更新承诺层级别。 该层级以 GB 为单位指定，其值可以是 1000、2000 或 5000 GB/天。 请注意，无需提供完整的 REST 请求正文，但应包含 sku。
+链接工作区的数据量随时间变化时，建议适当地更新承诺层级别。 该层级以 GB 为单位指定，其值可以是 500、1000、2000 或 5000 GB/天。 请注意，无需提供完整的 REST 请求正文，但应包含 sku。
 
 **CLI**
 
 ```azurecli
-az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity 1000
+az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity 500
 ```
 
 **PowerShell**
 
 ```powershell
-Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity 1000
+Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity 500
 ```
 
 **REST**
 
 *调用*
 
-  ```rst
-  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  Content-type: application/json
+```rst
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2021-06-01
+Authorization: Bearer <token>
+Content-type: application/json
 
-  {
-    "sku": {
-      "name": "capacityReservation",
-      "Capacity": 2000
-    }
+{
+  "sku": {
+    "name": "capacityReservation",
+    "Capacity": 2000
   }
-  ```
+}
+```
 
 ### <a name="update-billingtype-in-cluster"></a>更新群集中的 billingType
 
 billingType 属性可确定群集及其数据的计费归属：
-- 群集（默认）-- 计费归属于承载群集资源的订阅
-- 工作区 -- 计费按比例归属于承载工作区的订阅
+- 群集（默认）-- 计费归属于群集资源
+- 工作区 -- 计费按比例归属于链接工作区。 当来自所有工作区的数据量低于承诺层级别时，剩余的卷将归属于群集
 
 **REST**
 
 *调用*
 
-  ```rst
-  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  Content-type: application/json
+```rst
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2021-06-01
+Authorization: Bearer <token>
+Content-type: application/json
 
-  {
-    "properties": {
-      "billingType": "cluster",
-      }  
-  }
-  ```
+{
+  "properties": {
+    "billingType": "Workspaces",
+    }  
+}
+```
 
 ### <a name="unlink-a-workspace-from-cluster"></a>从群集中取消与工作区的链接
 
@@ -461,7 +467,7 @@ billingType 属性可确定群集及其数据的计费归属：
 **CLI**
 
 ```azurecli
-az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --workspace-name "MyWorkspace" --name cluster
+az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --workspace-name "workspace-name" --name cluster
 ```
 
 **PowerShell**
@@ -490,18 +496,18 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 使用以下 PowerShell 命令来删除群集：
 
-  ```powershell
-  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
-  ```
+```powershell
+Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
+```
 
 **REST**
 
 使用以下 REST 调用来删除群集：
 
-  ```rst
-  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
+```rst
+DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2021-06-01
+Authorization: Bearer <token>
+```
 
   **响应**
 
@@ -519,12 +525,12 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 
 - 目前不支持将群集移动到另一个资源组或订阅。
 
-- 群集更新不应在同一操作中同时包含标识和密钥标识符详细信息。 如果两者都需要更新，则应该在两个连续操作中进行更新。
+- 集群更新不应该在同一个操作中同时包含标识和密钥标识符详细信息。 如果两者都需要更新，则应在两次连续操作中进行更新。
 
 - 当前不能在中国使用密码箱。 
 
 - 对于受支持区域中自 2020 年 10 月开始创建的群集，系统会自动为其配置[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以通过在群集上发送 GET 请求并观察启用了双重加密的群集的 `isDoubleEncryptionEnabled` 值是否为 `true` 来验证是否为你的群集配置了双重加密。 
-  - 如果你创建群集并收到错误“<区域名称> 不支持对群集进行双重加密。”，则你仍可通过在 REST 请求正文中添加 `"properties": {"isDoubleEncryptionEnabled": false}` 以在不使用双重加密的情况下创建群集。
+  - 如果你创建群集并收到错误“区域名称不支持对群集进行双重加密。”，则你仍可通过在 REST 请求正文中添加 `"properties": {"isDoubleEncryptionEnabled": false}` 来创建无双重加密的群集。
   - 创建群集后，无法更改双重加密设置。
 
 ## <a name="troubleshooting"></a>疑难解答
@@ -546,10 +552,9 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
   -  400 -- 请求的正文为 Null 或格式错误。
   -  400 -- SKU 名称无效。 将 SKU 名称设置为 CapacityReservation。
   -  400 -- 提供了容量，但 SKU 不是 capacityReservation。 将 SKU 名称设置为 CapacityReservation。
-  -  400 -- SKU 容量不足。 将“容量”值设置为 1000 或更高（以 100 (GB) 为度）。
-  -  400 -- SKU 中的容量不在范围内。 应介于 1000 到最大允许容量之间，最大允许容量可在工作区中的“用量和预估成本”下找到。
+  -  400 -- SKU 容量不足。 将容量值设置为 500、1000、2000 或 5000 GB/天。
   -  400 -- 容量锁定 30 天。 更新后 30 天内允许减少容量。
-  -  400 -- 未设置 SKU。 将 SKU 名称设置为 CapacityReservation，将“容量”值设置为 1000 或更高（以 100 (GB) 为增加幅度）。
+  -  400 -- 未设置 SKU。 将 SKU 名称设置为 capacityReservation 并将容量值设置为 500、1000、2000 或 5000 GB/天。
   -  400 -- 标识为 Null 或为空。 设置具有 systemAssigned 类型的标识。
   -  400 -- KeyVaultProperty 是创建时设置的。 创建群集后更新 KeyVaultProperties。
   -  400 -- 现在无法执行操作。 异步操作处于非成功状态。 群集必须完成其操作，才能执行任意更新操作。

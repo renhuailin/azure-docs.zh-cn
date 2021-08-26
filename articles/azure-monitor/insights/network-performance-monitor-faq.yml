@@ -2,16 +2,17 @@
 metadata:
   title: 常见问题解答 - Azure 中的网络性能监视器解决方案 | Microsoft Docs
   description: 本文收集了有关 Azure 中网络性能监视器的常见问题解答。 网络性能监视器 (NPM) 可帮助你近乎实时地监视网络性能，以检测并找到网络性能瓶颈。
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: azure-monitor
   author: vinynigam
   ms.author: vinigam
   ms.date: 10/12/2018
-  ms.openlocfilehash: e899e68d631dfd41ffac3fd111c3ceca86f4cb93
-  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+  ms.openlocfilehash: dcf032b47396f8e952d38ab9e2c82c8552952da6
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112034842"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253833"
 title: 网络性能监视器解决方案常见问题解答
 summary: "\n![网络性能监视器符号](media/network-performance-monitor-faq/npm-symbol.png)\n\n> [!IMPORTANT]\n> 自 2021 年 7 月 1 日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 可以继续使用在 2021 年 7 月 1 日之前创建的测试。 为了最大程度地减少当前工作负载的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[将测试从网络性能监视器迁移到新连接监视器](../../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)。\n\n本文收集了有关 Azure 中网络性能监视器 (NPM) 的常见问题 (FAQ)\n\n[网络性能监视器](../../networking/network-monitoring-overview.md)是一项基于云的[混合网络监视](./network-performance-monitor-performance-monitor.md)解决方案，可帮助你监视网络基础结构中不同点之间的网络性能。 它还可以监视到[服务和应用程序终结点](./network-performance-monitor-service-connectivity.md)的网络连接，以及[监视 Azure ExpressRoute 的性能](./network-performance-monitor-expressroute.md)。 \n\n网络性能监视器可检测诸如流量黑洞、路由错误之类的网络问题，以及传统网络监视方法无法检测到的问题。 只要突破网络链接的阈值，解决方案就会生成警报并进行通知。 它还可以确保及时检测到网络性能问题，然后确定问题根源所在的特定网络段或设备。 \n\n可在线查看相关信息，深入了解[网络性能监视器](../../networking/network-monitoring-overview.md)支持的各种功能。\n"
 sections:
@@ -90,7 +91,7 @@ sections:
       NPM 根据每个网络路径、网段和构成网络跃点所属的不正常路径数，使用概率机制向它们分配故障概率。 随着网段和跃点属于越来越多的不正常路径，与之关联的故障概率将会增大。 如果有许多包含 NPM 代理的节点相互连接，因此增加了用于计算故障概率的数据点，则此算法的效果最佳。
   - question: >
       哪个是针对警报的默认 Log Analytics 查询？
-    answer: "性能监视器查询\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"SubNetwork&quot; or SubType == &quot;NetworkPath\") \n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\") and RuleName == \"<<your rule name>>\"\n```\n\n服务连接监视器查询\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"EndpointHealth\" or SubType == \"EndpointPath\")\n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or ServiceResponseHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\") and TestName == \"<<your test name>>\"\n```\n\nExpressRoute 监视器查询：线路查询\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"ERCircuitTotalUtilization\") and (UtilizationHealthState == \"Unhealthy\") and CircuitResourceId == \"<<your circuit resource ID>>\"\n```\n\n专用对等互连\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"ExpressRoutePeering\" or SubType == \"ERVNetConnectionUtilization\" or SubType == \"ExpressRoutePath\")   \n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or UtilizationHealthState == \"Unhealthy\") and CircuitName == \"<<your circuit name>>\" and VirtualNetwork == \"<<vnet name>>\"\n```\n\nMicrosoft 对等互连\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"ExpressRoutePeering\" or SubType == \"ERMSPeeringUtilization\" or SubType == \"ExpressRoutePath\")\n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or UtilizationHealthState == \"Unhealthy\") and CircuitName == \"\"<<your circuit name>>\" and PeeringType == \"MicrosoftPeering\"\n```\n\n常见查询\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"ExpressRoutePeering\" or SubType == \"ERVNetConnectionUtilization\" or SubType == \"ERMSPeeringUtilization\" or SubType == \"ExpressRoutePath\")\n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or UtilizationHealthState == \"Unhealthy\")\n```\n"
+    answer: "性能监视器查询\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"SubNetwork\" or SubType == \"NetworkPath\") \n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\") and RuleName == \"<<your rule name>>\"\n```\n\n服务连接监视器查询\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"EndpointHealth\" or SubType == \"EndpointPath\")\n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or ServiceResponseHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\") and TestName == \"<<your test name>>\"\n```\n\nExpressRoute 监视器查询：线路查询\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"ERCircuitTotalUtilization\") and (UtilizationHealthState == \"Unhealthy\") and CircuitResourceId == \"<<your circuit resource ID>>\"\n```\n\n专用对等互连\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"ExpressRoutePeering\" or SubType == \"ERVNetConnectionUtilization\" or SubType == \"ExpressRoutePath\")   \n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or UtilizationHealthState == \"Unhealthy\") and CircuitName == \"<<your circuit name>>\" and VirtualNetwork == \"<<vnet name>>\"\n```\n\nMicrosoft 对等互连\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"ExpressRoutePeering\" or SubType == \"ERMSPeeringUtilization\" or SubType == \"ExpressRoutePath\")\n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or UtilizationHealthState == \"Unhealthy\") and CircuitName == \"\"<<your circuit name>>\" and PeeringType == \"MicrosoftPeering\"\n```\n\n常见查询\n\n```kusto\nNetworkMonitoring\n | where (SubType == \"ExpressRoutePeering\" or SubType == \"ERVNetConnectionUtilization\" or SubType == \"ERMSPeeringUtilization\" or SubType == \"ExpressRoutePath\")\n | where (LossHealthState == \"Unhealthy\" or LatencyHealthState == \"Unhealthy\" or UtilizationHealthState == \"Unhealthy\")\n```\n"
   - question: >
       NPM 是否可以将路由器和服务器作为单个设备进行监视？
     answer: >

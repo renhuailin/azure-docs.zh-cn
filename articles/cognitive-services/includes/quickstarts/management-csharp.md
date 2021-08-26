@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/04/2021
 ms.author: pafarley
-ms.openlocfilehash: ce14ff28c69b514e0d10ef5eabff83828026bb19
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 42571364deb7eac1a9bb552e158f5e4680125568
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593321"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442321"
 ---
 [参考文档](/dotnet/api/overview/azure/cognitiveservices/management) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
@@ -21,6 +21,7 @@ ms.locfileid: "111593321"
 
 * 一个有效的 Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
+* [!INCLUDE [contributor-requirement](./contributor-requirement.md)]
 * [!INCLUDE [terms-azure-portal](./terms-azure-portal.md)]
 
 [!INCLUDE [Create a service principal](./create-service-principal.md)]

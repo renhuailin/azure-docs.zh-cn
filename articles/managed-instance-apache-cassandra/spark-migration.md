@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: overview
 ms.date: 06/02/2021
-ms.openlocfilehash: b49e1c42b3b81a548a1860a4e4e4ee1ea97a7f4c
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e85d95dcd455ea2c9f4d9a14d9b68bebf06d3df6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955981"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731231"
 ---
 # <a name="migrate-to-azure-managed-instance-for-apache-cassandra-using-apache-spark"></a>使用 Apache Spark 迁移到 Azure Managed Instance for Apache Cassandra
 
@@ -37,13 +37,13 @@ ms.locfileid: "111955981"
 
 建议选择支持 Spark 3.0 的 Databricks 运行时版本 7.5。
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="屏幕截图显示了如何查找 Databricks 运行时版本。":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="屏幕截图显示了如何查找 Databricks 运行时版本。":::
 
 ## <a name="add-dependencies"></a>添加依赖项
 
 将 Apache Spark Cassandra 连接器库添加到群集，以便连接到本机终结点和 Azure Cosmos DB Cassandra 终结点。 在群集中，选择“库” > “安装新库” > “Maven”，然后在 Maven 坐标中添加 `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0`  。
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="屏幕截图显示在 Databricks 中搜索 Maven 包。":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-search-packages.png" alt-text="屏幕截图显示在 Databricks 中搜索 Maven 包。":::
 
 选择“安装”，然后在安装完成后重启群集。
 

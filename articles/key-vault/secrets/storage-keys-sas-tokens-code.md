@@ -8,19 +8,19 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c8a7b357efc2e30d1ca93d0b45fd2563c980045
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 5520dbcc82dc45af987ec329a3be711fec04ee27
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752743"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735141"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>创建 SAS 定义，并通过编写代码提取共享访问签名令牌
 
 你可以使用存储在密钥保险库中的共享访问签名 (SAS) 令牌来管理存储帐户。 有关详细信息，请参阅[使用 SAS 授予对 Azure 存储资源的有限访问权限](../../storage/common/storage-sas-overview.md)。
 
 > [!NOTE]
-> 建议使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../storage/common/storage-auth-aad.md) 保护存储帐户，以便获得卓越的安全性，并通过共享密钥授权轻松使用。
+> 建议使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../storage/blobs/authorize-access-azure-active-directory.md) 保护存储帐户，以便获得卓越的安全性，并通过共享密钥授权轻松使用。
 
 本文展示了用于创建 SAS 定义和获取 SAS 令牌的 .NET 代码的示例。 请参阅我们的 [ShareLink](/samples/azure/azure-sdk-for-net/share-link/) 示例，获取完整详细信息，包括为密钥保管库托管的存储帐户生成的客户端的信息。 有关如何创建和存储 SAS 令牌的信息，请参阅[使用密钥保管库和 Azure CLI 管理存储帐户密钥](overview-storage-keys.md)或[使用密钥保管库和 Azure PowerShell 管理存储帐户密钥](overview-storage-keys-powershell.md)。
 

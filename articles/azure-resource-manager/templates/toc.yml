@@ -92,7 +92,7 @@
           href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 机器学习
           href: ../../machine-learning/how-to-create-workspace-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-    - name: 分析
+    - name: Analytics
       items:
         - name: Analysis Services
           href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -181,7 +181,7 @@
     - name: 集成
       items:
         - name: API for FHIR
-          href: ../../healthcare-apis/fhir/fhir-paas-arm-template-quickstart.md?toc=/azure/azure-resource-manager/templates/toc.json
+          href: ../../healthcare-apis/fhir/fhir-service-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 事件网格
           href: ../../event-grid/blob-event-quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 逻辑应用

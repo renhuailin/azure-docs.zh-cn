@@ -3,16 +3,17 @@ title: 使用在基于 Linux 的 Azure 虚拟机上运行的 DH2i DxEnterprise �
 description: 将 DH2i DxEnterprise 用作群集管理器，以在 Linux Azure 虚拟机上的 SQL Server 上通过可用性组实现高可用性
 ms.date: 03/04/2021
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: tutorial
 author: amvin87
 ms.author: amitkh
 ms.reviewer: vanto
-ms.openlocfilehash: 56002aaa977b94b0fabee4f17343f483706eb77d
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 8791d845b822f365e47482b0215f1ecac9fa0da9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449420"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732016"
 ---
 # <a name="tutorial---setup-a-three-node-always-on-availability-group-with-dh2i-dxenterprise-running-on-linux-based-azure-virtual-machines"></a>教程 - 使用在基于 Linux 的 Azure 虚拟机上运行的 DH2i DxEnterprise 设置三节点 Always On 可用性组
 

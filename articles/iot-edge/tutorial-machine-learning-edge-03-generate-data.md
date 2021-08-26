@@ -2,18 +2,17 @@
 title: 教程：生成模拟设备数据 - Azure IoT Edge 上的机器学习
 description: 教程 - 创建生成模拟遥测数据的虚拟设备，这些数据稍后可用于训练机器学习模型。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d5fdd762834d351119116c5e4854dd4233671c29
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e6383ff947832fa94d0e65b3a021d99ede6247bc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463123"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726422"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>教程：生成模拟设备数据
 

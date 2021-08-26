@@ -9,83 +9,87 @@ metadata:
   ms.date: 08/17/2020
   ms.author: helohr
   manager: femila
-  ms.openlocfilehash: 5d78c3f85067e0a8e3a2da7ff1388d229116dade
-  ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+  ms.openlocfilehash: a22d763f9554c8ea734458474dbb9c7e6027bf7f
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/27/2021
-  ms.locfileid: "114713081"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121729681"
 title: MSIX 应用附加常见问题解答
 summary: 本文解答有关 Azure 虚拟桌面 MSIX 应用附加的常见问题。
 sections:
 - name: 忽略
   questions:
   - question: >
-      MSIX 与 MSIX 应用附加有何区别？
+      What's the difference between MSIX and MSIX app attach?
     answer: >
-      MSIX 是应用的打包格式，而 MSIX 应用附加是将 MSIX 包提供给部署的功能。
+      MSIX is a packaging format for apps, while MSIX app attach is the feature that delivers MSIX packages to your deployment.
   - question: >
-      MSIX 应用附加是否使用 FSLogix？
+      Does MSIX app attach use FSLogix?
     answer: >
-      MSIX 应用附加不使用 FSLogix。 但是，MSIX 应用附加和 FSLogix 旨在协同工作以提供无缝的用户体验。
+      MSIX app attach doesn't use FSLogix. However, MSIX app attach and FSLogix are designed to work together to provide a seamless user experience.
   - question: >
-      能否在 Azure 虚拟桌面外部使用 MSIX 应用附加功能？
+      Can I use the MSIX app attach outside of Azure Virtual Desktop?
     answer: >
-      支持 MSIX 应用附加的 API 适用于 Windows 10 企业版。 这些 API 可在 Azure 虚拟桌面外部使用。 但是，在 Azure 虚拟桌面外部没有用于 MSIX 应用附加的管理平面。
+      The APIs that power MSIX app attach are available for Windows 10 Enterprise. These APIs can be used outside of Azure Virtual Desktop. However, there's no management plane for MSIX app attach outside of Azure Virtual Desktop.
   - question: >
-      如何获取 MSIX 包？
+      How do I get an MSIX package?
     answer: >
-      MSIX 包由软件供应商提供。 还可以将非 MSIX 包转换为 MSIX 包。 在[如何将现有安装程序移动到 MSIX](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix) 了解详细信息。
+      Your software vendor will give you an MSIX package. You can also convert non-MSIX packages to MSIX. Learn more at [How to move your existing installers to MSIX](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix).
   - question: >
-      哪些操作系统支持 MSIX 应用附加？
+      Which operating systems support MSIX app attach?
     answer: >
-      Windows 10 企业版和 Windows 10 企业版多会话版本 2004 或更高版本。
+      Windows 10 Enterprise and Windows 10 Enterprise Multi-session, version 2004 or later.
   - question: >
-      MSIX 应用附加当前是否已正式发布？
-    answer: "MSIX 应用附加是 Windows 10 企业版和 Windows 10 企业版多会话版本 2004 或更高版本的一部分。 这两种操作系统当前均已正式发布。 \n"
+      Is MSIX app attach currently generally available?
+    answer: "MSIX app attach is part of Windows 10 Enterprise and Windows 10 Enterprise Multi-session, version 2004 or later. Both operating systems are currently generally available. \n"
   - question: >
-      能否在 Azure 虚拟桌面外部使用 MSIX 应用附加功能？
+      Can I use MSIX app attach outside of Azure Virtual Desktop?
     answer: >
-      MSIX 和 MSIX 应用附加 API 是 Windows 10 企业版和 Windows 10 企业版多会话版本 2004 及更高版本的一部分。 目前，我们未在 Azure 虚拟桌面外部提供用于 MSIX 应用附加的管理软件。
+      MSIX and MSIX app attach APIs are part of Windows 10 Enterprise and Windows 10 Enterprise Multi-session, version 2004 and later. We currently don't provide management software for MSIX app attach outside of Azure Virtual Desktop.
   - question: >
-      能否同时运行同一应用程序的两个版本？
+      Can I run two versions of the same application at the same time?
     answer: >
-      若要同时运行同一 MSIX 应用程序的两个版本，必须为每个应用程序在 appxmanifest.xml 文件中定义不同的 MSIX 包系列。
+      For two version of the same MSIX applications to run simultaneously, the MSIX package family defined in the appxmanifest.xml file must be different for each app.
   - question: >
-      使用 MSIX 应用附加时，我是否应禁用自动更新？
+      Should I disable auto-update when using MSIX app attach?
     answer: >
-      是。 MSIX 应用附加不支持 MSIX 应用程序自动更新。
+      Yes. MSIX app attach doesn't support auto-update for MSIX applications.
   - question: >
-      如何配合使用权限和 MSIX 应用附加？
+      How do permissions work with MSIX app attach?
     answer: >
-      主机池中使用 MSIX 应用附加的所有虚拟机 (VM) 都必须具有对存储 MSIX 映像的文件共享的读取权限。 如果它还使用 Azure 文件存储，则这些虚拟机还需要被授予基于角色的访问控制 (RBAC) 和新技术文件系统 (NTFS) 权限。
+      All virtual machines (VMs) in a host pool that uses MSIX app attach must have read permissions on the file share where the MSIX images are stored. If it also uses Azure Files, they'll need to be granted both role-based access control (RBAC) and New Technology File System (NTFS) permissions.
   - question: >
-      有多少用户可以使用 MSIX 映像句柄？
-    answer: "MSIX 应用附加基于每台计算机（而不是基于每个用户）装载 MSIX 映像。 可以使用 MSIX 映像句柄的用户数量取决于计算机文件系统的大小和网络吞吐量。 此外，Azure 文件存储的每个文件最多只能有 2,000 个打开句柄。 \n"
+      How many users can use an MSIX image handle?
+    answer: "MSIX app attach mounts MSIX images on a per-machine basis, not a per-user basis. The amount of users who can use an MSIX image handle is based on the size of the machine's file system and throughput of the network. Also, Azure Files has a limit of 2,000 open handles per file. \n"
   - question: >
-      能否将 Azure Active Directory 域服务 (Azure AD DS) 与 MSIX 应用附加一起使用？
+      Can I use Azure Active Directory Domain Services (Azure AD DS) with MSIX app attach?
     answer: >
-      MSIX 应用附加目前不支持 Azure AD DS。 由于 Azure AD DS 计算机对象不会同步到 Azure Active Directory (Azure AD)，因此管理员无法为 Azure 文件存储提供所需的基于角色的访问控制 (RBAC) 权限。
+      MSIX app attach doesn't currently support Azure AD DS. Because Azure AD DS computer objects aren't synchronized to Azure Active Directory (Azure AD), the administrator can't provide the required role-based access control (RBAC) permissions for Azure Files.
   - question: >
-      能否将 MSIX 应用附加用于 HTTP 或 HTTPS？
+      Can I use MSIX app attach for HTTP or HTTPs?
     answer: >
-      目前不支持将 MSIX 应用附加用于 HTTP 或 HTTPS。
+      Using MSIX app attach over HTTP or HTTPs is currently not supported.
   - question: >
-      能否重新暂存同一 MSIX 应用程序？
+      Can I restage the same MSIX application?
     answer: >
-      是。 可以重新暂存已重新暂存的应用程序，这不会导致任何错误。
+      Yes. You can restage applications you've already restaged, and this shouldn't cause any errors.
   - question: >
-      MSIX 应用附加是否支持自签名证书？
+      Does MSIX app attach support self-signed certificates?
     answer: >
-      是。 需要在使用 MSIX 应用附加来托管自签名应用程序的所有会话主机 VM 上安装自签名证书。 若要了解如何创建自签名证书，请阅读[为包签名创建证书](/windows/msix/package/create-certificate-package-signing)。
+      Yes. You need to install the self-signed certificate on all the session host VMs where MSIX app attach is used to host the self-signed application. Learn how to create a self-signed certificate at [Create a certificate for package signing](/windows/msix/package/create-certificate-package-signing).
   - question: >
-      哪些应用程序可以重新打包到 MSIX？
-    answer: "每个应用程序使用不同的 OS 功能、编程语言和框架。 若要重新打包应用程序，请按照[如何将现有安装程序移动到 MSIX](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix) 中的说明进行操作。 在[准备打包桌面应用程序](/windows/msix/desktop/desktop-to-uwp-prepare)中可以找到重新打包应用程序所需的内容列表。 \n\n某些应用程序无法进行分层，这意味着它们无法重新打包到 MSIX 文件中。 下面是无法重新打包的应用程序的列表：\n\n- 驱动程序 \n- Active-X 或 Silverlight\n- VPN 客户端\n- 防病毒程序\n"
+      What applications can I repackage to MSIX?
+    answer: "Each application uses different features of the OS, programming languages, and frameworks. To repackage your application, follow the directions in [How to move your existing installers to MSIX](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix). You can find a list of the things you need in order to repackage an application at [Prepare to package a desktop application](/windows/msix/desktop/desktop-to-uwp-prepare). \n\nCertain applications can't be application layered, which means they can't be repackaged into an MSIX file. Here's a list of the applications that can't be repackaged:\n\n- Drivers \n- Active-X or Silverlight\n- VPN clients\n- Antivirus programs\n"
   - question: >
-      可以向每个会话主机添加多少个 MISX 应用程序？
+      How many MISX applications can I add to each session host?
     answer: >
-      每个会话主机的 CPU、内存和 OS 都有不同的限制。 超过这些限制可能会影响应用程序性能和总体用户体验。 但是 MSIX 应用附加本身对它可以使用的应用程序数量没有限制。
+      Each session host has different limits based on their CPU, memory, and OS. Going over these limits can affect application performance and overall user experience. However, MSIX app attach itself has no limit on how many applications it can use.
   - question: >
-      可以在一个主机池上装载多少个 .VHD 或 .VHDX 文件？
-    answer: "MSIX 应用附加本身对能装载的文件数量没有限制。 但是，主机池本身可能会受到以下因素的限制：\n\n- OS 处理已装载卷的能力。\n- 存储解决方案或文件系统可保存的最大打开文件数。\n- 主机池的会话主机内存和 CPU 使用率。\n\n换句话说，主机池的限制与在本地安装和运行应用时的限制相同。          \n"
-additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n如果想了解有关 MSIX 应用程序附加的详细信息，请查看我们的[概述](what-is-app-attach.md)和[术语表](app-attach-glossary.md)。 或者直接开始[安装应用附加](app-attach.md)。"
+      How many .VHD or .VHDX files can I mount on a host pool?
+    answer: "MSIX app attach itself doesn't have a limit to the number of files you can mount. However, the host pool itself can be limited by the following factors:\n\n- The ability of the OS to handle mounted volumes.\n- The maximum number of open files your storage solution or file system can hold.\n- The host pool's session host memory and CPU utilization.\n\nIn other words, the host pool's limits would be the same as if you're installing and running the apps locally.          \n"
+  - question: >
+      Should I timestamp my MSIX packages?
+    answer: >
+      Check the [MSIX packaging overview](/windows/msix/package/signing-package-overview#timestamping) to see Microsoft's recommendations for using timestamps.
+additionalContent: "\n## Next steps\n\nIf you want to learn more about MSIX app attach, check out our [overview](what-is-app-attach.md) and [glossary](app-attach-glossary.md). Otherwise, get started with [Set up app attach](app-attach.md)."

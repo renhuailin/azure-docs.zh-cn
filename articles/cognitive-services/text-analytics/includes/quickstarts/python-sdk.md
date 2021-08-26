@@ -5,12 +5,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 07/15/2021
 ms.author: aahi
-ms.openlocfilehash: c66a17c1591f9a0070af1f6fc6b0ec6127292f6b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6ece1121244341acb8f81d11491acf27f4c9fec8
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114594581"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442388"
 ---
 <a name="HOLTop"></a>
 
@@ -28,6 +28,7 @@ ms.locfileid: "114594581"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 </a>，以获取你的密钥和终结点。 部署后，单击“转到资源”。
     * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
@@ -91,6 +92,8 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 响应对象是一个列表，其中包含每个文档的已分析信息。 
 
 ---
+
+[!INCLUDE [text-analytics-character-limits](../character-limits.md)]
 
 ## <a name="code-examples"></a>代码示例
 

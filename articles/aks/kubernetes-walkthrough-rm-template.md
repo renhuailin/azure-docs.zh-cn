@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 03/15/2021
 ms.custom: mvc,subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 5cb11117483ae7a70496700c94069704a9ea1a9c
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: b6c5371baba93470f76a99e0e37cd61870ee108f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114230648"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733585"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>快速入门：使用 ARM 模板部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -147,7 +147,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
             app: azure-vote-back
         spec:
           nodeSelector:
-            "beta.kubernetes.io/os": linux
+            "kubernetes.io/os": linux
           containers:
           - name: azure-vote-back
             image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
@@ -190,7 +190,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
             app: azure-vote-front
         spec:
           nodeSelector:
-            "beta.kubernetes.io/os": linux
+            "kubernetes.io/os": linux
           containers:
           - name: azure-vote-front
             image: mcr.microsoft.com/azuredocs/azure-vote-front:v1

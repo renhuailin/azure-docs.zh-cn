@@ -1,17 +1,17 @@
 ---
 title: 快速入门：使用 JavaScript 创建管理组
 description: 在本快速入门中，你将使用 JavaScript 创建管理组，将资源整理到资源层次结构中。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: 537f78b31790251c322f8073ed2c887a430d161b
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 6e4f0c0c3dff16e3493e9c2171039f7305c97bb7
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323242"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322761"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>快速入门：使用 JavaScript 创建管理组
 

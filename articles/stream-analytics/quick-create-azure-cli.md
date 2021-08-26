@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 09b7cf5fcab057dd5f5a98590ed11787df202a00
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: e9f1818f85351213d5a7594161d52729d595ce82
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114286014"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749306"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 流分析作业
 
 在本快速入门中，将使用 Azure CLI 定义一个流分析作业，以便筛选温度读数高于 27 的实时传感器消息。 流分析作业会从 IoT 中心读取数据，对数据进行转换，然后将数据写回到 Blob 存储中的容器。 在本快速入门中使用的输入数据由 Raspberry Pi 联机模拟器生成。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,7 +41,7 @@ ms.locfileid: "114286014"
 
 以下 Azure CLI 代码块是准备作业所需的输入数据的命令。 查看介绍代码的部分。
 
-1. 使用 [az iot hub create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) 命令创建 IoT 中心。 此示例创建名为 **MyASAIoTHub** 的 IoT 中心。 由于 IoT 中心名称是唯一的，因此需使用你自己的 IoT 中心名称。 将 SKU 设置为 F1 即可使用免费层，前提是它在订阅中可用。 否则，请选择下一个最低的层。
+1. 使用 [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) 命令创建 IoT 中心。 此示例创建名为 **MyASAIoTHub** 的 IoT 中心。 由于 IoT 中心名称是唯一的，因此需使用你自己的 IoT 中心名称。 将 SKU 设置为 F1 即可使用免费层，前提是它在订阅中可用。 否则，请选择下一个最低的层。
 
     ```azurecli
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
@@ -53,7 +53,7 @@ ms.locfileid: "114286014"
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-2. 使用 [az iothub device-identity create](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c#create-a-simulated-device) 命令将设备添加到 IoT 中心。 此示例创建名为 **MyASAIoTDevice** 的设备。
+2. 使用 [az iothub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) 命令将设备添加到 IoT 中心。 此示例创建名为 **MyASAIoTDevice** 的设备。
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
