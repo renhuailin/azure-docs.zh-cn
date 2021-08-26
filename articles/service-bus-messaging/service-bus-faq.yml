@@ -3,13 +3,14 @@ metadata:
   title: Azure 服务总线常见问题解答 (FAQ) | Microsoft Docs
   description: 本文提供了一些有关 Azure 服务总线的常见问题解答 (FAQ)。
   ms.topic: article
+  ms.service: service-bus
   ms.date: 01/20/2021
-  ms.openlocfilehash: 759e9307ff25a8449dd245a2ddaa64dc86b67942
-  ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+  ms.openlocfilehash: 8502e0b908133432ebffbb27108e45a8a605cc17
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/21/2021
-  ms.locfileid: "112415672"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122254228"
 title: Azure 服务总线 - 常见问题解答 (FAQ)
 summary: >
   本文讨论了一些关于 Microsoft Azure 服务总线的常见问题解答。 还可以访问 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)了解常规的 Azure 定价和支持信息。

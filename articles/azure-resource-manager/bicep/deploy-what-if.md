@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/01/2021
 ms.author: tomfitz
-ms.openlocfilehash: 157db0aa85fe086e656cfc98c7b94527416350d0
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 42e4198f2597ca3708e58bbc7a25545eab96b8c6
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027742"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634584"
 ---
 # <a name="bicep-deployment-what-if-operation"></a>Bicep 部署 what-if 操作
 
@@ -196,7 +196,7 @@ what-if 操作列出六种不同的更改类型：
 
 ### <a name="set-up-environment"></a>设置环境
 
-为了了解 what-if 的工作原理，让我们运行一些测试。 首先，部署一个[用于创建虚拟网络的 Bicep 文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.bicep)。 将使用此虚拟网络来测试 what-if 如何报告更改。 下载 Bicep 文件的副本。
+为了了解 what-if 的工作原理，让我们运行一些测试。 首先，部署一个[用于创建虚拟网络的 Bicep 文件](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/what-if/what-if-before.bicep)。 将使用此虚拟网络来测试 what-if 如何报告更改。 下载 Bicep 文件的副本。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -224,7 +224,7 @@ az deployment group create \
 
 ### <a name="test-modification"></a>测试修改
 
-部署完成后，即可测试 what-if 操作。 这一次，将部署一个[用于更改虚拟网络的 Bicep 文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.bicep)。 该模板中缺少一个原始标记，已删除了一个子网，并且已更改了地址前缀。 下载 Bicep 文件的副本。
+部署完成后，即可测试 what-if 操作。 这一次，将部署一个[用于更改虚拟网络的 Bicep 文件](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/what-if/what-if-after.bicep)。 该模板中缺少一个原始标记，已删除了一个子网，并且已更改了地址前缀。 下载 Bicep 文件的副本。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

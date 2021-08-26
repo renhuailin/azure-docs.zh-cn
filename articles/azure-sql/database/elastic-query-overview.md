@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: overview
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/05/2019
-ms.openlocfilehash: cac17bbac96d44d8d9bfce2e168de4ea6d4c5c08
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21e6fec69b1ac02d1ffb37b0aa0f20f54d3c1a05
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100364947"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727104"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL 数据库弹性查询概述（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

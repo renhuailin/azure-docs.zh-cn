@@ -3,14 +3,15 @@ metadata:
   title: Azure 开发测试实验室常见问题解答 | Microsoft Docs
   description: 本文提供有关 Azure 开发测试实验室的部分常见问题解答 (FAQ)。
   ms.topic: article
+  ms.service: azure
   ms.date: 07/17/2020
   ms.custom: devx-track-azurepowershell, references_regions
-  ms.openlocfilehash: ac4e230e3869903d77177eecd31b00d14d5f7d18
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.openlocfilehash: c1ad54ee9c95590cf25aacadf0fd549d460e2d8c
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112305832"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253130"
 title: Azure 开发测试实验室常见问题
 summary: "\n获取关于 Azure 开发测试实验室的某些最常见问题的解答。\n\n## <a name=\"blog-post\"></a>博客文章\n我们的开发测试实验室团队博客已于 2019 年 3 月 20 日停用。 \n\n### <a name=\"where-can-i-track-feature-updates-from-now-on\"></a>从现在起，在哪里可以跟踪功能更新？\n从现在起，我们将在 Azure 博客和 Azure 更新上发布功能更新和信息性博客文章。 这些博客文章还将在需要时链接到我们的文档。\n        \n订阅[开发测试实验室 Azure 博客](https://azure.microsoft.com/blog/tag/azure-devtest-labs/)和[开发测试实验室 Azure 更新](https://azure.microsoft.com/updates/?product=devtest-lab)随时了解开发测试实验室中的新功能。\n        \n### <a name=\"what-happens-to-the-existing-blog-posts\"></a>现有的博客文章会发生什么情况？\n我们目前正在努力将现有博客文章（不包括中断更新）迁移到[开发测试实验室文档](devtest-lab-overview.md)。 弃用 MSDN 博客时，它将重定向到开发测试实验室的文档概述。 重定向后，你可以在“筛选条件”标题中搜索要查找的文章。 我们尚未迁移所有帖子，但应在本月底完成。 \n        \n### <a name=\"where-do-i-see-outage-updates\"></a>我在哪里可以看到中断更新？\n从现在开始，我们将使用 Twitter 句柄发布中断更新。 在 Twitter 上关注我们，获取有关中断和已知 Bug 的最新更新。\n\n### <a name=\"twitter\"></a>Twitter\n我们的 Twitter 句柄：[@azlabservices](https://twitter.com/azlabservices)\n"
 sections:

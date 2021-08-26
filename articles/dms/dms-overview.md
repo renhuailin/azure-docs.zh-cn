@@ -10,12 +10,12 @@ ms.service: dms
 ms.workload: data-services
 ms.topic: overview
 ms.date: 02/20/2020
-ms.openlocfilehash: 328c29afee3752ecb11b83f22d67f20aa3a2c93e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d0f4bf0f0617fa2fc00a62d65b94dbf29f36688
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94963005"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725386"
 ---
 # <a name="what-is-azure-database-migration-service"></a>什么是 Azure 数据库迁移服务？
 
@@ -42,5 +42,5 @@ Azure 数据库迁移服务集成了一些现有工具和服务的功能。 它�
 * [使用 Azure 门户创建 Azure 数据库迁移服务实例](quickstart-create-data-migration-service-portal.md)。
 * [将 SQL Server 迁移到 Azure SQL 数据库](tutorial-sql-server-to-azure-sql.md)。
 * [使用 Azure 数据库迁移服务的先决条件概述](pre-reqs.md)。
-* [有关使用 Azure 数据库迁移服务的常见问题解答](faq.md)。
+* [有关使用 Azure 数据库迁移服务的常见问题解答](faq.yml)。
 * [可用于数据迁移方案的服务和工具](dms-tools-matrix.md)。
