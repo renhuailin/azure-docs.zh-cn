@@ -1,18 +1,20 @@
 ---
 title: 使用旧版从 MongoDB 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在旧版 Azure 数据工厂管道中使用复制活动，将数据从 Mongo DB 复制到支持的接收器数据存储。
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019; seo-dt-2019
+ms.custom: synapse
 ms.date: 08/12/2019
-ms.openlocfilehash: 4882949abd21e782d98dff8de2ba7be1b66ecdfb
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 82a6f4dc55d94b3d2574e841051d69034d34f620
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482176"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638723"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>使用 Azure 数据工厂（旧版）从 MongoDB 复制数据
 
@@ -182,7 +184,7 @@ Azure 数据工厂服务通过使用 MongoDB 集合中 **最新的 100 个文档
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
-| 字符串 |String |
+| String |String |
 | UUID |Guid |
 | Object |重新标准化为平展列，以“_”作为嵌套分隔符 |
 

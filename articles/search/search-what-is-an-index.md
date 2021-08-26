@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 96594d573c308727217f537e5421dcb79f02c2ff
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: cdfadc895de3af0f79c30a067f3e5376bfa8873b
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433788"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769100"
 ---
 # <a name="creating-search-indexes-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建搜索索引
 
@@ -103,7 +103,7 @@ Postman 和 Visual Studio Code（带有 Azure 认知搜索的扩展）都可以�
 |-----------|--------|----------|
 | .NET | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [azure-search-dotnet-samples/quickstart/v11/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11) |
 | Java | [SearchIndexClient](/java/api/com.azure.search.documents.indexes.searchindexclient) | [CreateIndexExample.java](https://github.com/Azure/azure-sdk-for-java/blob/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) |
-| Javascript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [索引](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/indexes) |
+| Javascript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [索引](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) |
 | Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations.py](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
 
 ## <a name="define-fields"></a>定义字段

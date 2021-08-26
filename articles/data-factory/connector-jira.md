@@ -1,17 +1,20 @@
 ---
 title: 使用 Azure 数据工厂从 Jira 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Jira 复制到支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jianleishen
-ms.openlocfilehash: 0d7fccd134fc876ebee4c0e770068abb246caae4
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 95b0a0c0d57f49f4209ae0c7e74ca1cd9a58024d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481780"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637766"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory"></a>使用 Azure 数据工厂从 Jira 复制数据
 
@@ -110,7 +113,7 @@ Jira 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**JiraSource** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

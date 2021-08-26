@@ -1,17 +1,20 @@
 ---
 title: Azure 数据工厂（旧版）中支持的文件格式
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 本主题说明 Azure 数据工厂中基于文件的连接器支持的文件格式和压缩代码。
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 960c2a995a6e68b2f15e553121bc860f9ac29890
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 12b3b1dddfa7ff37d8d8fa80562699cf9242148e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488512"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638873"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure 数据工厂（旧版）中支持的文件格式和压缩编解码器
 
@@ -507,7 +510,7 @@ ms.locfileid: "109488512"
 | Single | Float |
 | Double | Double |
 | 小数 | 小数 |
-| String | 字符串 |
+| String | String |
 | DateTime | Timestamp |
 | DateTimeOffset | Timestamp |
 | TimeSpan | Timestamp |

@@ -1,17 +1,20 @@
 ---
 title: Azure 数据工厂中的 XML 格式
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 本主题介绍了如何处理 Azure 数据工厂中的 XML 格式。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: jianleishen
-ms.openlocfilehash: c054c789dd7c26e57a4f393863711d34665854ee
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 593947e0bd7562172413d254d78eaa31b61b182f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097617"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638706"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure 数据工厂中的 XML 格式
 
@@ -25,7 +28,7 @@ ms.locfileid: "110097617"
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 XML 数据集支持的属性列表。
 
-| 属性         | 描述                                                  | 必须 |
+| 属性         | 说明                                                  | 必需 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为 Xml。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
@@ -70,7 +73,7 @@ ms.locfileid: "110097617"
 
 复制活动的 ***\*source\**** 节支持以下属性。 详细了解 [XML 连接器行为](#xml-connector-behavior)。
 
-| 属性      | 描述                                                  | 必须 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动的 type 属性必须设置为 XmlSource。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“XML 读取设置”表。 | 否       |
@@ -78,7 +81,7 @@ ms.locfileid: "110097617"
 
 `formatSettings` 下支持的“XML 读取设置”：
 
-| 属性      | 描述                                                  | 必须 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings 的 type 必须设置为 XmlReadSettings。 | 是      |
 | validationMode | 指定是否要验证 XML 架构。<br>允许的值为 none（默认值、无验证）、xsd（使用 XSD 验证）以及 dtd （使用 DTD 验证）  。 | 否 |
@@ -97,7 +100,7 @@ ms.locfileid: "110097617"
 
 下表列出了 XML 源支持的属性。 可以在“源选项”选项卡中编辑这些属性。详细了解 [XML 连接器行为](#xml-connector-behavior)。 在使用内联数据集时，你将看到其他文件设置，这些设置与[数据集属性](#dataset-properties)部分中描述的属性相同。 
 
-| 名称 | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 通配符路径 | 将处理与通配符路径匹配的所有文件。 重写数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
 | 分区根路径 | 对于已分区的文件数据，可以输入分区根路径，以便将已分区的文件夹读取为列 | 否 | 字符串 | partitionRootPath |
