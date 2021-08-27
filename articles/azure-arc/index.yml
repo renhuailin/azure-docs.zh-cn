@@ -25,10 +25,10 @@ highlightedContent:
     - title: 已启用 Azure Arc 的 Kubernetes
       itemType: overview
       url: ./kubernetes/overview.md
-    - title: 已启用 Azure Arc 的数据服务（预览版）
+    - title: 已启用 Azure Arc 的数据服务
       itemType: overview
       url: ./data/overview.md
-    - title: 已启用 Azure Arc 的服务器上的 SQL Server（预览版）
+    - title: 启用了 Azure Arc 的服务器上的 SQL Server
       itemType: overview
       url: /sql/sql-server/azure-arc/overview
 conceptualContent:
@@ -43,10 +43,10 @@ conceptualContent:
           text: 安全概述
         - url: ./servers/policy-reference.md
           itemType: learn
-          text: 使用 Azure Policy 的许可控制策略
+          text: 使用 Azure Policy 的许可控制策略定义
         - url: /sql/sql-server/azure-arc/overview
           itemType: overview
-          text: 启用已启用 Arc 的 SQL Server（预览版）
+          text: 连接 SQL Server
       footerLink:
         url: ./servers/index.yml
         text: 查看详细信息
@@ -67,7 +67,7 @@ conceptualContent:
       footerLink:
         url: ./kubernetes/index.yml
         text: 查看详细信息
-    - title: 已启用 Azure Arc 的数据服务（预览版）
+    - title: 已启用 Azure Arc 的数据服务
       links:
         - url: ./data/install-client-tools.md
           itemType: deploy
@@ -100,11 +100,11 @@ conceptualContent:
         - url: ../automation/automation-intro.md
           itemType: overview
           text: Azure 自动化概述
-    - title: 已启用 Azure Arc 的服务器上的 SQL Server（预览版）
+    - title: 启用了 Azure Arc 的服务器上的 SQL Server
       links:
         - url: /sql/sql-server/azure-arc/assess
           itemType: how-to-guide
-          text: 评估已启用 Arc 的实例
+          text: 访问实例
         - url: /sql/sql-server/azure-arc/configure-advanced-data-security
           itemType: how-to-guide
           text: 配置高级数据安全

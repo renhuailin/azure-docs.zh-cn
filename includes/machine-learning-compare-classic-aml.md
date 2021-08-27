@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 03/08/2021
 ms.author: peterlu
-ms.openlocfilehash: ff64a0948402ff152e45bd4702d986f51b9547aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6d73754a22a3a0870a6ea141e4a21e7f2ccff09
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563177"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688766"
 ---
 下表总结了机器学习工作室（经典）和 Azure 机器学习之间的一些重要差异。
 

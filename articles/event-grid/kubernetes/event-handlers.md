@@ -6,17 +6,17 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: b0306002ea8a77e82e0247353489761a24654e0e
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: b1052b996fd9da8452d0f23d60fc7ea53676f713
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112417354"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769820"
 ---
 # <a name="event-handlers-destinations-in-event-grid-on-kubernetes"></a>Kubernetes 上的事件网格中的事件处理程序和目标
 事件处理程序是用于公开终结点的系统，并且是事件网格发送事件的目标。 事件处理程序在接收到事件后会对其进行操作，并使用事件有效负载执行某些逻辑，这可能会导致新事件发生。
 
-创建事件订阅是配置事件网格以将事件发送到目标的方法。 若要做到这一点，可使用 [Azure CLI](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create)、[管理 SDK](../sdk-overview.md#management-sdks) 或使用 [2020-10-15-preview API](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate) 版本的直接 HTTP 调用。
+创建事件订阅是配置事件网格以将事件发送到目标的方法。 若要做到这一点，可使用 [Azure CLI](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create)、[管理 SDK](../sdk-overview.md#management-sdks) 或使用 [2020-10-15-preview API](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update) 版本的直接 HTTP 调用。
 
 通常，Kubernetes 上的事件网格可通过 Webhook 将事件发送到任何目标。 Webhook 是事件网格可以访问的服务或工作负载公开的 HTTP 终结点。 Webhook 可以是托管在同一群集、同一网络空间、云中、本地或事件网格可以覆盖的任何位置的工作负载。 
 
@@ -39,15 +39,15 @@ ms.locfileid: "112417354"
 
 
 ## <a name="feature-parity"></a>功能奇偶一致性
-借助 Azure 事件网格对事件订阅的支持，Kubernetes 上的事件网格可提供良好的功能奇偶一致性。 以下列表枚举了事件订阅功能的主要差异。 除了这些差异外，在管理 Kubernetes 上的事件网格的事件订阅时，可以使用 Azure 事件网格的 [REST API 版本 2020-10-15-preview](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions) 作为参考。
+借助 Azure 事件网格对事件订阅的支持，Kubernetes 上的事件网格可提供良好的功能奇偶一致性。 以下列表枚举了事件订阅功能的主要差异。 除了这些差异外，在管理 Kubernetes 上的事件网格的事件订阅时，可以使用 Azure 事件网格的 [REST API 版本 2020-10-15-preview](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions) 作为参考。
 
-1. 使用 [REST API 版本 2020-10-15-preview](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions)。
+1. 使用 [REST API 版本 2020-10-15-preview](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions)。
 2. 不支持 [Azure Functions 的 Azure 事件网格触发器](../../azure-functions/functions-bindings-event-grid-trigger.md?tabs=csharp%2Cconsole)。 可以使用 Webhook 目标类型向 Azure Functions 传送事件。
 3. 不提供[死信位置](../manage-event-delivery.md#set-dead-letter-location)支持。 这意味着无法在事件订阅有效负载中使用 ``properties.deadLetterDestination``。
 4. 尚不支持将 Azure 中继的混合连接作为目标。
-5. 仅支持 CloudEvents 架构。 支持的架构值为“[CloudEventSchemaV1_0](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate#eventdeliveryschema)”。 CloudEvents 架构是可扩展的，并且基于开放标准。  
-6. 标签 ([properties.labels](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate#request-body)) 不适用于 Kubernetes 上的事件网格。 因此，它们不可用。
-7. 不支持[与资源标识一起传送](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate#deliverywithresourceidentity)。 因此，不支持[事件订阅标识](/rest/api/eventgrid/version2020-10-15-preview/eventsubscriptions/createorupdate#eventsubscriptionidentity)的所有属性。
+5. 仅支持 CloudEvents 架构。 支持的架构值为“[CloudEventSchemaV1_0](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update#eventdeliveryschema)”。 CloudEvents 架构是可扩展的，并且基于开放标准。  
+6. 标签 ([properties.labels](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update#request-body)) 不适用于 Kubernetes 上的事件网格。 因此，它们不可用。
+7. 不支持[与资源标识一起传送](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update#deliverywithresourceidentity)。 因此，不支持[事件订阅标识](/rest/api/eventgrid/version2021-06-01-preview/event-subscriptions/create-or-update#eventsubscriptionidentity)的所有属性。
 8. 尚不支持[目标终结点验证](../webhook-event-delivery.md#endpoint-validation-with-event-grid-events)。
 
 ## <a name="event-filtering-in-event-subscriptions"></a>事件订阅中的事件筛选

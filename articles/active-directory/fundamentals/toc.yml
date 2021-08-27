@@ -273,3 +273,5 @@
   items:
     - name: 获取对 Azure Active Directory 的支持
       href: active-directory-troubleshooting-support-howto.md
+    - name: Azure AD 的支持和帮助选项
+      href: support-help-options.md

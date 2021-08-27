@@ -19,6 +19,10 @@
   items:
     - name: 资源管理器模板
       href: resource-manager-template-samples.md
+- name: 教程
+  items:
+    - name: 用 Quagga 配置路由服务器
+      href: tutorial-configure-route-server-with-quagga.md
 - name: 概念
   items:
     - name: 路由服务器常见问题解答

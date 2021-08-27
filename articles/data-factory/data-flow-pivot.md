@@ -1,18 +1,20 @@
 ---
 title: 映射数据流中的透视转换
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 使用 Azure 数据工厂映射数据流透视转换将数据从行透视到列
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 07/17/2020
-ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb46b41e72d98be0a3b474f109adfa7303bd8f2b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87086653"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638613"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>映射数据流中的透视转换
 

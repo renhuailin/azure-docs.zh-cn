@@ -9,12 +9,12 @@ metadata:
   ms.date: 09/22/2020
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 612ef6ffa35988a69e6755a38e88a083d533827c
-  ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+  ms.openlocfilehash: 4ab2a940f0fdb18b60d626cb96813b708860f8ae
+  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/28/2021
-  ms.locfileid: "114726643"
+  ms.lasthandoff: 08/24/2021
+  ms.locfileid: "122779680"
 landingContent:
 - title: 关于灵活服务器（预览版）
   linkLists:
@@ -22,6 +22,8 @@ landingContent:
     links:
     - text: 什么是灵活服务器？
       url: overview.md
+    - text: 免费试用灵活服务器
+      url: how-to-deploy-on-azure-free-account.md
   - linkListType: quickstart
     links:
     - text: 创建灵活服务器
@@ -48,12 +50,14 @@ landingContent:
       url: concepts-supported-versions.md
     - text: 扩展
       url: concepts-extensions.md
-    - text: 安全性
+    - text: 安全
       url: concepts-security.md
     - text: 监视
       url: concepts-monitoring.md
     - text: 逻辑复制
       url: concepts-logical.md
+    - text: 智能优化
+      url: concepts-intelligent-tuning.md
   - linkListType: how-to-guide
     links:
     - text: 管理服务器
@@ -64,6 +68,10 @@ landingContent:
       url: how-to-scale-compute-storage-portal.md
     - text: 重启服务器
       url: how-to-restart-server-portal.md
+    - text: 设置专用网络
+      url: how-to-manage-virtual-network-portal.md
+    - text: 使用 TLS 进行安全连接
+      url: how-to-connect-tls-ssl.md
     - text: 配置和访问日志
       url: howto-configure-and-access-logs.md
     - text: 计划维护

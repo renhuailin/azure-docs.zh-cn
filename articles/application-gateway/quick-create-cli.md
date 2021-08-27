@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 06/14/2021
 ms.author: victorh
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 15eb4025ecb6cc4a65d2cf4d72d0f50e8c0bd019
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 9c0b3f488ac71473e9fbec1a2482deda25bed555
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072300"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779545"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure CLI
 
@@ -154,7 +154,6 @@ az network application-gateway create \
   --resource-group myResourceGroupAG \
   --capacity 2 \
   --sku Standard_v2 \
-  --http-settings-cookie-based-affinity Enabled \
   --public-ip-address myAGPublicIPAddress \
   --vnet-name myVNet \
   --subnet myAGSubnet \
