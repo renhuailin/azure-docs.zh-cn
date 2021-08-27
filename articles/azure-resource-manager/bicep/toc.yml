@@ -74,10 +74,10 @@
               displayName: 'deployment commands,multiple resource groups'
             - name: 订阅
               href: deploy-to-subscription.md
-              displayName: 'Azure policy,policy,access control'
+              displayName: 'Azure Policy,policy,access control'
             - name: 管理组
               href: deploy-to-management-group.md
-              displayName: 'policy,Azure policy'
+              displayName: 'policy,Azure Policy'
             - name: 租户
               href: deploy-to-tenant.md
               displayName: assign role
@@ -85,6 +85,12 @@
           href: linter.md
         - name: 最佳实践
           href: best-practices.md
+        - name: 模式
+          items:
+            - name: 配置集
+              href: patterns-configuration-set.md
+            - name: 共享变量文件
+              href: patterns-shared-variable-file.md
     - name: 部署
       items:
         - name: 预部署检查
@@ -123,6 +129,8 @@
     - name: Bicep 文件结构
       displayName: 'parameters,variables,resources,outputs,condition'
       href: file.md
+    - name: Bicep 资源参考
+      href: /azure/templates/
     - name: 数据类型
       href: data-types.md
       displayName: 'supported types,arrays,booleans,integers,objects,strings,secure,'
@@ -154,19 +162,17 @@
       items:
         - name: 所有运算符
           href: operators.md
+        - name: 访问器运算符
+          href: operators-access.md
         - name: 比较运算符
           href: operators-comparison.md
         - name: 逻辑运算符
           href: operators-logical.md
         - name: 数字运算符
           href: operators-numeric.md
-        - name: 访问运算符
-          href: operators-access.md
     - name: Bicep CLI
       href: bicep-cli.md
       displayName: 'build,decompile,install,list-versions,list versions,upgrade,version'
-    - name: 模板参考
-      href: /azure/templates/
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI

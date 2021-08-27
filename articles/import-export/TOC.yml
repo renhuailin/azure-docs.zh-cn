@@ -26,7 +26,7 @@
       href: storage-import-export-encryption-key-portal.md
     - name: 监视
       items:
-        - name: 查看驱动器状态
+        - name: 查看作业，驱动器状态
           href: storage-import-export-view-drive-status.md
         - name: 查看作业状态
           href: storage-import-export-tool-reviewing-job-status-v1.md

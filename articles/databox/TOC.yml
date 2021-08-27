@@ -116,6 +116,8 @@
                   href: ../backup/offline-backup-azure-data-box.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
             - name: 疑难解答
               items:
+                - name: Data Box 共享访问权限
+                  href: data-box-troubleshoot-share-access.md
                 - name: Data Box 复制问题
                   href: data-box-troubleshoot.md
                 - name: Data Box 上传问题
