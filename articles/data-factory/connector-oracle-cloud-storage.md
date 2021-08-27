@@ -1,17 +1,19 @@
 ---
 title: 使用 Azure 数据工厂从 Oracle 云存储复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何使用 Azure 数据工厂将数据从 Oracle 云存储复制到受支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 05/11/2021
 ms.author: jianleishen
-ms.openlocfilehash: 47f6897f6cd7a62da9edc9984f71f1c23e411194
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 817b1a8c1b98f5eae3277f906cbd970e7ccebb9f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103636"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638744"
 ---
 # <a name="copy-data-from-oracle-cloud-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Oracle 云存储复制数据
 
@@ -45,7 +47,7 @@ ms.locfileid: "110103636"
 
 Oracle 云存储链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | “type”属性必须设置为“OracleCloudStorage”。  | 是 |
 | accessKeyId | 机密访问键 ID。 若要查找访问密钥和机密，请参阅[先决条件](#prerequisites)。 |是 |
@@ -82,7 +84,7 @@ Oracle 云存储链接服务支持以下属性：
 
 在基于格式的数据集中的 `location` 设置下，Oracle 云存储支持以下属性：
 
-| 属性   | 说明                                                  | 必须 |
+| 属性   | 说明                                                  | 必需 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的“type”属性必须设置为“OracleCloudStorageLocation”。  | 是      |
 | bucketName | Oracle 云存储桶名称。                                          | 是      |
@@ -126,7 +128,7 @@ Oracle 云存储链接服务支持以下属性：
 
 在基于格式的复制源中的 `storeSettings` 设置下，Oracle 云存储支持以下属性：
 
-| 属性                 | 说明                                                  | 必须                                                    |
+| 属性                 | 说明                                                  | 必需                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | `storeSettings` 下的“type”属性必须设置为“OracleCloudStorageReadSettings”。  | 是                                                         |
 | 找到要复制的文件： |  |  |

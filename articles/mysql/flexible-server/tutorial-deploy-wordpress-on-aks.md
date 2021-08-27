@@ -7,19 +7,22 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: vc, devx-track-azurecli
-ms.openlocfilehash: 0c6211f4cd647addd6f1d18a153695d16a9d9952
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5f5b3da3c42ff4a6e7e5f66c0c93cf04d9446bb9
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770140"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643096"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>教程：使用 Azure Database for MySQL 灵活服务器在 AKS 上部署 WordPress 应用
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 本快速入门介绍如何使用 Azure CLI 通过 Azure Database for MySQL 灵活服务器（预览版）在 Azure Kubernetes 服务 (AKS) 群集上部署 WordPress 应用程序。 
 [AKS](../../aks/intro-kubernetes.md) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 [Azure Database for MySQL 灵活服务器（预览版）](overview.md)是一种完全托管的数据库服务，旨在针对数据库管理功能和配置设置提供更精细的控制和更大的灵活性。 当前，灵活服务器处于预览阶段。
 
 > [!NOTE]
+>
 > - Azure Database for MySQL 灵活服务器当前以公共预览版提供
 > - 本快速入门假设读者基本了解 Kubernetes 的概念以及 WordPress 和 MySQL。
 
@@ -102,6 +105,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="create-an-azure-database-for-mysql---flexible-server"></a>创建 Azure Database for MySQL 灵活服务器
+
 使用 [az mysql flexible-server create](/cli/azure/mysql/flexible-server) 命令创建灵活服务器。 以下命令使用服务默认值和 Azure CLI 本地上下文中的值创建服务器：
 
 ```azurecli-interactive
@@ -109,18 +113,18 @@ az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
 ```
 
 创建的服务器具有以下属性：
+
 - 首次预配服务器时，将创建一个新的空数据库 ```flexibleserverdb```。 在本快速入门中，我们将使用此数据库。
 - 自动生成的服务器名称、管理员用户名、管理员密码、资源组名称（如果尚未在本地上下文中指定），并且与资源组位于同一位置
 - 其余服务器配置的服务默认值：计算层（可突增）、计算大小/SKU (B1MS)、备份保持期（7 天）和 MySQL 版本 (5.7)
 - 使用公共访问参数，你可以创建具有受防火墙规则保护的公共访问权限的服务器。 通过提供 IP 地址来添加防火墙规则，以允许从客户端计算机进行访问。
 - 由于该命令使用本地上下文，因此它会在资源组```wordpress-project``` 和区域 ```eastus``` 中创建服务器。
 
-
 ### <a name="build-your-wordpress-docker-image"></a>生成 WordPress docker 映像
 
 下载[最新 WordPress](https://wordpress.org/download/) 版本。 为项目创建新的目录 ```my-wordpress-app```，并使用这个简单的文件夹结构
 
-```
+```wordpress
 └───my-wordpress-app
     └───public
         ├───wp-admin
@@ -137,7 +141,6 @@ az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
     └─── Dockerfile
 
 ```
-
 
 将 ```wp-config-sample.php``` 重命名为 ```wp-config.php```，并用此代码片段替换第 21 到 32 行。 以下代码片段从 Kubernetes 清单文件读取数据库主机、用户名和密码。
 
@@ -175,6 +178,7 @@ define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 ```
 
 ### <a name="create-a-dockerfile"></a>创建 Dockerfile
+
 创建新的 Dockerfile 并复制此代码片段。 此 Dockerfile 使用 PHP 设置 Apache Web 服务器并启用 mysqli 扩展。
 
 ```docker
@@ -185,6 +189,7 @@ RUN docker-php-ext-enable mysqli
 ```
 
 ### <a name="build-your-docker-image"></a>生成 Docker 映像
+
 使用 ```cd``` 命令确保你位于终端的目录 ```my-wordpress-app``` 中。 运行以下命令生成映像：
 
 ``` bash
@@ -196,18 +201,18 @@ docker build --tag myblog:latest .
 将映像部署到 [Docker Hub](https://docs.docker.com/get-started/part3/#create-a-docker-hub-repository-and-push-your-image) 或 [Azure 容器注册表](../../container-registry/container-registry-get-started-azure-cli.md)。
 
 > [!IMPORTANT]
->如果你使用 Azure 容器注册表 (ACR)，那么运行 ```az aks update``` 命令，将 ACR 帐户附加到 AKS 群集。
+> 如果你使用 Azure 容器注册表 (ACR)，那么运行 ```az aks update``` 命令，将 ACR 帐户附加到 AKS 群集。
 >
->```azurecli-interactive
->az aks update -n myAKSCluster -g wordpress-project --attach-acr <your-acr-name>
+> ```azurecli-interactive
+> az aks update -n myAKSCluster -g wordpress-project --attach-acr <your-acr-name>
 > ```
->
 
 ## <a name="create-kubernetes-manifest-file"></a>创建 Kubernetes 清单文件
 
 Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 我们来创建名为 `mywordpress.yaml` 的清单文件，并将其复制到以下 YAML 定义中。
 
->[!IMPORTANT]
+> [!IMPORTANT]
+>
 > - 将 ```[DOCKER-HUB-USER/ACR ACCOUNT]/[YOUR-IMAGE-NAME]:[TAG]``` 替换为实际的 WordPress docker 映像名称和标记，例如 ```docker-hub-user/myblog:latest```。
 > - 使用 MySQL 灵活服务器的 ```SERVERNAME```、```YOUR-DATABASE-USERNAME``` 和 ```YOUR-DATABASE-PASSWORD```更新下面的 ```env``` 部分。
 
@@ -264,6 +269,7 @@ spec:
 ```
 
 ## <a name="deploy-wordpress-to-aks-cluster"></a>将 WordPress 部署到 AKS 群集
+
 使用 [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) 命令部署应用程序，并指定 YAML 清单的名称：
 
 ```console
@@ -306,7 +312,8 @@ wordpress-blog  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
    :::image type="content" source="./media/tutorial-deploy-wordpress-on-aks/wordpress-aks-installed-success.png" alt-text="Wordpress 在 AKS 和 MySQL 灵活服务器上安装成功":::
 
->[!NOTE]
+> [!NOTE]
+>
 > - 当前，WordPress 站点未使用 HTTPS。 建议[使用你自己的证书启用 TLS](../../aks/ingress-own-tls.md)。
 > - 可以为群集启用 [HTTP 路由](../../aks/http-application-routing.md)。
 

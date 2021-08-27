@@ -3,15 +3,16 @@ title: 在 Azure 数据工厂中使用映射数据流处理定长文本文件
 description: 了解如何使用映射数据流在 Azure 数据工厂中处理定长文本文件。
 author: kromerm
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 0f8c1cf8535d35d5141a589670a8281ddba75385
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 689a9d34dc796516aa281964552e11d70c74c1de
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906109"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637882"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>通过使用数据工厂映射数据流来处理定长文本文件
 

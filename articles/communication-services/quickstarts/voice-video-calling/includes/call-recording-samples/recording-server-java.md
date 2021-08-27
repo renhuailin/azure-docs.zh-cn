@@ -1,5 +1,5 @@
 ---
-title: 包含文件
+title: include 文件
 description: 包含文件
 services: azure-communication-services
 author: ravithanneeru
@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: joseys
-ms.openlocfilehash: 7208519302ea9c12a9a0db7c3cee7032eab85d64
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: e29973b55d3f74942f6d85fa28209b73773ad717
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339604"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121803552"
 ---
 ## <a name="sample-code"></a>代码示例
 在 [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/ServerRecording) 上查找此快速入门的最终代码。
@@ -27,9 +27,9 @@ ms.locfileid: "114339604"
 - [Java 开发工具包 (JDK)](/azure/developer/java/fundamentals/java-jdk-install) 11 或更高版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - [Spring Boot Framework v2.5.0](https://spring.io/projects/spring-boot)
-- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource)。 需要为此快速入门记录资源连接字符串。
-- 一个 Azure 存储帐户和容器，有关详细信息，请参阅[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)。 需要记录你的连接字符串和容器名称，以便在本快速入门中使用 。
-- 一个 [Azure 事件网格](https://docs.microsoft.com/azure/event-grid/overview) Webhook。
+- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](../../../create-communication-resource.md)。 需要为此快速入门记录资源连接字符串。
+- 一个 Azure 存储帐户和容器，有关详细信息，请参阅[创建存储帐户](../../../../../storage/common/storage-account-create.md?tabs=azure-portal)。 需要记录你的连接字符串和容器名称，以便在本快速入门中使用 。
+- 一个 [Azure 事件网格](../../../../../event-grid/overview.md) Webhook。
 
 ## <a name="object-model"></a>对象模型
 

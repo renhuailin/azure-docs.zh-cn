@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
 ms.date: 05/19/2021
-ms.openlocfilehash: b8ffe57b2244ff3f9e7df94665d7801d3231d9aa
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d469f44277b31209c012f7d28649692cfa7e89cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467631"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638530"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>教程：使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 [!INCLUDE[appliesto-mongodb-api](../cosmos-db/includes/appliesto-mongodb-api.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "110467631"
 
 本 MongoDB 迁移指南是 MongoDB 迁移系列的一部分。 关键的 MongoDB 迁移步骤包括[迁移前步骤](../cosmos-db/mongodb-pre-migration.md)、迁移步骤和[迁移后步骤](../cosmos-db/mongodb-post-migration.md)，如下所示。
 
-![迁移步骤示意图。](../cosmos-db/media/mongodb-pre-migration/overall-migration-steps.png)
+![迁移步骤示意图。](../cosmos-db/mongodb/media/pre-migration-steps/overall-migration-steps.png)
 
 ## <a name="overview-of-online-data-migration-from-mongodb-to-azure-cosmos-db-using-dms"></a>使用 DMS 以联机方式将数据从 MongoDB 迁移到 Azure Cosmos DB 概述
 
@@ -64,7 +64,7 @@ ms.locfileid: "110467631"
 要完成本教程，需要：
 
 * [完成迁移前](../cosmos-db/mongodb-pre-migration.md)步骤，例如估计吞吐量、选择分区键和索引策略。
-* [为 MongoDB 帐户创建 Azure Cosmos DB 的 API](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)，并确保启用 [SSR（服务器端重试）](../cosmos-db/prevent-rate-limiting-errors.md)。
+* [为 MongoDB 帐户创建 Azure Cosmos DB 的 API](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)，并确保启用 [SSR（服务器端重试）](../cosmos-db/mongodb/prevent-rate-limiting-errors.md)。
 * 使用 Azure 资源管理器部署模型创建适合 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，它将使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供站点到站点连接。
 
     > [!NOTE]
@@ -92,19 +92,7 @@ ms.locfileid: "110467631"
 
 ![MongoDB 服务器端重试启用的屏幕截图。](media/tutorial-mongodb-to-cosmosdb-online/mongo-server-side-retry-enable.png)
 
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
-
-1. 登录到 Azure 门户，选择“所有服务”，然后选择“订阅”。
-
-   ![显示门户订阅](media/tutorial-mongodb-to-cosmosdb-online/portal-select-subscription1.png)
-
-2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”。
-
-    ![显示资源提供程序](media/tutorial-mongodb-to-cosmosdb-online/portal-select-resource-provider.png)
-
-3. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册” 。
-
-    ![注册资源提供程序](media/tutorial-mongodb-to-cosmosdb-online/portal-register-resource-provider.png)    
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)] 
 
 ## <a name="create-an-instance"></a>创建实例
 

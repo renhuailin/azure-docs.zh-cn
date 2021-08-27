@@ -2,10 +2,8 @@
 title: 查找帮助和打开支持工单 - Azure Active Directory | Microsoft Docs
 description: 有关如何获取帮助和打开 Azure Active directory 支持工单的说明。
 services: active-directory
-documentationcenter: na
 author: ajburnle
 manager: daveba
-editor: ''
 ms.service: active-directory
 ms.topic: troubleshooting
 ms.subservice: fundamentals
@@ -15,15 +13,16 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e339e88bb62e81b1f873e8cf7e855f4dff8daade
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 057265ca91bdfe0e3b73eea012736e65920e62c2
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99257400"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768929"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>查找帮助并打开 Azure Active Directory 的支持票证
-Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、售前、计费和订阅支持。 对于 Microsoft Azure 付费版和试用版订阅，将通过在线服务和电话提供支持。 电话支持和联机帐单支持可使用其他语言。 
+
+Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、售前、计费和订阅支持。 对于 Microsoft Azure 付费版和试用版订阅，将通过在线服务和电话提供支持。 电话支持和联机帐单支持可使用其他语言。
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>无需开具支持票证即可获得帮助
 
@@ -32,7 +31,6 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 * 有关面向 IT 专业人员和开发人员的操作指南信息或代码示例等内容，请参阅 [docs.microsoft.com 上的技术文档](../index.yml)。
 
 * [Microsoft Technical Community](https://techcommunity.microsoft.com/) 是 IT 专业合作伙伴与客户协作以及分享和学习知识的场所。 [Microsoft Technical Community Info Center](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) 用于发布通告和博客文章、任意提问  (AMA)、与专家互动以及展开其他活动。 你也可以[加入该社区以提交看法](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)。
-
 
 ## <a name="open-a-support-ticket"></a>开具支持票证
 
