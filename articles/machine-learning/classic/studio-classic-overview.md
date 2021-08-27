@@ -10,18 +10,18 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: overview
 ms.date: 08/19/2020
-ms.openlocfilehash: 8b9c03395f77bc33fd03cf2b14b2fb1d27bfc0f0
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: ae20a9b0a62212b558d0613ac821ae8a6baa626b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579479"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696642"
 ---
 # <a name="what-can-i-do-with-machine-learning-studio-classic"></a>机器学习工作室（经典）可以用于执行哪些操作？
 
 适用范围：![这是复选标记，意味着本文适用于机器学习工作室（经典）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![这是 X，意味着本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 机器学习工作室（经典）是一个拖放式工具，可用于生成、测试和部署机器学习模型。 工作室（经典）将模型发布为 Web 服务，可轻松由自定义应用或 BI 工具（如 Excel）使用。
 

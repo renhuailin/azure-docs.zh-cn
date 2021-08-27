@@ -96,6 +96,8 @@
       href: howto-conditional-access-session-lifetime.md
     - name: 疑难解答
       items:
+        - name: 策略更改疑难解答
+          href: troubleshoot-policy-changes-audit-log.md
         - name: 排查登录问题
           href: troubleshoot-conditional-access.md
         - name: 使用 What If 工具排查问题

@@ -129,22 +129,24 @@
           href: ./security-controls-policy.md
         - name: 安全概述
           href: overview-security.md
-    - name: 网络功能
+    - name: 网络
       items:
         - name: 概述
           href: networking-features.md
-        - name: 包含服务终结点的应用程序网关
-          href: networking/app-gateway-with-service-endpoints.md
+        - name: 入站和出站 IP
+          href: overview-inbound-outbound-ips.md
         - name: 专用终结点
           href: networking/private-endpoint.md
-    - name: 入站和出站 IP
-      href: overview-inbound-outbound-ips.md
-    - name: 虚拟网络集成
-      href: web-sites-integrate-with-vnet.md
-    - name: 混合连接
-      href: app-service-hybrid-connections.md
-    - name: 流量管理器集成
-      href: web-sites-traffic-manager.md
+        - name: 混合连接
+          href: app-service-hybrid-connections.md
+        - name: 虚拟网络集成
+          href: web-sites-integrate-with-vnet.md
+        - name: 应用程序网关集成
+          href: networking/app-gateway-with-service-endpoints.md
+        - name: NAT 网关集成
+          href: networking/nat-gateway-integration.md
+        - name: 流量管理器集成
+          href: web-sites-traffic-manager.md
     - name: 本地缓存
       href: overview-local-cache.md
     - name: 诊断

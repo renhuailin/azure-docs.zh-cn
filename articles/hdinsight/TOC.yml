@@ -367,7 +367,7 @@
           href: ./spark/spark-best-practices.md
         - name: 配置 Apache Spark 设置
           href: ./spark/apache-spark-settings.md
-        - name: Optimization
+        - name: 优化
           items:
             - name: 优化 Apache Spark 作业
               href: ./spark/apache-spark-perf.md
@@ -750,7 +750,7 @@
               href: ./hbase/apache-hbase-phoenix-performance.md
             - name: 在 Azure VNet 中创建 Apache HBase 群集
               href: ./hbase/apache-hbase-provision-vnet.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 排查 Apache HBase 性能问题
               href: ./hbase/troubleshoot-hbase-performance-issues.md
@@ -817,6 +817,8 @@
               href: ./interactive-query/apache-hive-warehouse-connector-operations.md
             - name: 将 HWC 与 Apache Zeppelin 集成
               href: ./interactive-query/apache-hive-warehouse-connector-zeppelin.md
+            - name: HWC 支持的 API
+              href: ./interactive-query/hive-warehouse-connector-apis.md
             - name: 将 Apache Hive 与 Hadoop 配合使用
               href: ./hadoop/hdinsight-use-hive.md
             - name: 使用 Apache Hive 视图

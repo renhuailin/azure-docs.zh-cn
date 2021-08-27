@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 07/16/2021
-  ms.openlocfilehash: e1fa94312fa1c798a581f1792027f2a624c54a30
-  ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+  ms.date: 08/02/2021
+  ms.openlocfilehash: 0c9e3b78cac6bce3fb4a928faa76d7613d22a2dc
+  ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/27/2021
-  ms.locfileid: "114709390"
+  ms.lasthandoff: 08/16/2021
+  ms.locfileid: "122228603"
 landingContent:
 - title: 关于 Azure VMware 解决方案
   linkLists:
@@ -26,26 +26,24 @@ landingContent:
       url: azure-vmware-solution-platform-updates.md
   - linkListType: concept
     links:
-    - text: 私有云和群集
-      url: concepts-private-clouds-clusters.md
-    - text: 网络和互连
-      url: concepts-networking.md
-    - text: 存储
-      url: concepts-storage.md
     - text: 访问和标识
       url: concepts-identity.md
-    - text: 监视和保护
-      url: concepts-monitor-protection.md
     - text: API 管理
       url: concepts-api-management.md
     - text: 中心和分支
       url: concepts-hub-and-spoke.md
+    - text: 网络和互连
+      url: concepts-networking.md
+    - text: 私有云和群集
+      url: concepts-private-clouds-clusters.md
+    - text: 存储
+      url: concepts-storage.md
 - title: 常见问题解答
   linkLists:
   - linkListType: reference
     links:
     - text: 常规
-      url: /azure/azure-vmware/faq
+      url: ./faq.yml
     - text: 客户通信
       url: /azure/azure-vmware/faq#customer-communication
     - text: 配置和设置
@@ -69,30 +67,32 @@ landingContent:
   - linkListType: deploy
     links:
     - text: 1 - 规划部署
-      url: production-ready-deployment-steps.md
+      url: plan-private-cloud-deployment.md
     - text: 2 - 部署 Azure VMware 解决方案
       url: deploy-azure-vmware-solution.md
-    - text: 3 - 连接到本地
+    - text: 3 - 连接到本地环境
       url: tutorial-expressroute-global-reach-private-cloud.md
-    - text: 4 - 部署和配置 HCX
-      url: tutorial-deploy-vmware-hcx.md
+    - text: 4 - 安装 VMware HCX 连接器
+      url: install-vmware-hcx.md
+    - text: 5 - 配置本地 VMware HCX 连接器
+      url: configure-vmware-hcx.md
   - linkListType: tutorial
     links:
-    - text: 网络规划清单
+    - text: 1 - 网络规划清单
       url: tutorial-network-checklist.md
-    - text: 创建私有云
+    - text: 2 - 创建私有云
       url: tutorial-create-private-cloud.md
-    - text: 访问私有云
+    - text: 3 - 访问私有云
       url: tutorial-access-private-cloud.md
-    - text: 配置网络
+    - text: 4 - 配置网络
       url: tutorial-configure-networking.md
-    - text: 创建网段
+    - text: 5 - 创建 NSX-T 网络段
       url: tutorial-nsx-t-network-segment.md
-    - text: 从本地对等连接到私有云
+    - text: 6 - 从本地对等连接到私有云
       url: tutorial-expressroute-global-reach-private-cloud.md
-    - text: 在私有云中扩展或收缩群集
+    - text: 7 - 在私有云中缩放
       url: tutorial-scale-private-cloud.md
-    - text: 删除私有云
+    - text: 8 - 删除私有云
       url: tutorial-delete-private-cloud.md
 - title: 身份管理
   linkLists:
@@ -123,7 +123,7 @@ landingContent:
     - text: 配置端口镜像
       url: configure-port-mirroring-azure-vmware-solution.md
     - text: 配置 GitHub Enterprise 服务器
-      url: ./configure-github-enterprise-server.md
+      url: configure-github-enterprise-server.md
     - text: 启用公共 Internet 访问
       url: enable-public-internet-access.md
     - text: 在 vWAN 中配置站点到站点 VPN

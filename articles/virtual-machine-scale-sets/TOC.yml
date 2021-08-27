@@ -165,13 +165,19 @@
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
     - name: 业务流程模式（预览版）
-      href: virtual-machine-scale-sets-orchestration-modes.md
+      items:
+        - name: 概述
+          href: virtual-machine-scale-sets-orchestration-modes.md
+        - name: API 比较
+          href: orchestration-modes-api-comparison.md
+        - name: 灵活业务流程
+          href: ../virtual-machines/flexible-virtual-machine-scale-sets.md
     - name: 维护和更新
       items:
         - name: 概述
           href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
           maintainContext: true
-        - name: 自动升级扩展（预览）
+        - name: 自动扩展升级
           href: ../virtual-machines/automatic-extension-upgrade.md
           maintainContext: true
     - name: 磁盘存储

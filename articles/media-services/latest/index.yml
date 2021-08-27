@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure 媒体服务 v3 基于云的平台文档
-summary: 了解如何使用媒体服务 v3 来编码和打包内容、进行视频点播流式处理、实时广播和视频分析。 教程、API 参考和其他文档介绍了如何安全地向数百万用户传送可缩放的点播和直播视频或音频流。
+title: Azure 媒体服务 (v3) 文档
+summary: 了解如何使用媒体服务广播直播活动、编码、打包和流式传输点播视频。 教程、API 参考和其他文档介绍了如何安全地向数百万用户传送可缩放的点播和直播视频或音频流。
 metadata:
-  title: Azure 媒体服务 v3 基于云的平台文档
-  description: 了解如何使用媒体服务 v3 来编码和打包内容、进行视频点播流式处理、实时广播和视频分析。
+  title: Azure 媒体服务 (v3) 文档
+  description: 了解如何使用媒体服务广播直播活动、编码、打包和流式传输点播视频。
   services: media-services
   ms.service: media-services
   ms.subservice: 
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: IngridAtMicrosoft
   ms.author: inhenkel
-  ms.date: 03/25/2021
-  ms.openlocfilehash: fb85f973a8a20340768249a6dc2d04a360c9e587
-  ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+  ms.date: 08/18/2021
+  ms.openlocfilehash: 7e249a36b629c2c91acf67a26294fef50f1f0197
+  ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/03/2021
-  ms.locfileid: "106277481"
+  ms.lasthandoff: 08/21/2021
+  ms.locfileid: "122635036"
 landingContent:
 - title: 关于媒体服务
   linkLists:
@@ -27,6 +27,8 @@ landingContent:
       url: media-services-overview.md
     - text: 媒体服务中有哪些新增功能？
       url: release-notes.md
+    - text: 常见问题解答
+      url: frequently-asked-questions.yml
   - linkListType: concept
     links:
     - text: 媒体服务帐户
@@ -41,6 +43,8 @@ landingContent:
       url: player-use-azure-media-player-how-to.md
     - text: 使用 v3 API 指南进行开发
       url: media-services-apis-overview.md
+    - text: 从 v2 迁移
+      url: migrate-v-2-v-3-migration-introduction.md
 - title: 入门
   linkLists:
   - linkListType: how-to-guide
@@ -51,6 +55,8 @@ landingContent:
       url: ./access-api-howto.md
   - linkListType: download
     links:
+    - text: 所有 GitHub 代码示例
+      url: samples-overview.md
     - text: .NET SDK 示例
       url: https://github.com/Azure-Samples/media-services-v3-dotnet
     - text: Java SDK 示例
@@ -111,6 +117,8 @@ landingContent:
       url: analyze-video-audio-files-concept.md
     - text: 符合性、隐私和安全性
       url: analyze-video-audio-files-concept.md#compliance-privacy-and-security
+    - text: Azure 视频分析器（预览版）文档
+      url: ../../azure-video-analyzer/video-analyzer-docs/overview.md
   - linkListType: tutorial
     links:
     - text: 分析视频

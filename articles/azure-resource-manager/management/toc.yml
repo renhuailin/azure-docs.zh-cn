@@ -79,8 +79,10 @@
                   href: microsoft-resources-move-regions.md
                 - name: Azure 存储
                   href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/management/toc.json
-                - name: Azure SQL
+                - name: Azure SQL DB 与 MI
                   href: ../../azure-sql/database/move-resources-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure VM 上的 SQL Server
+                  href: ../../azure-sql/virtual-machines/windows/move-sql-vm-different-region.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Azure VM
                   href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: 逻辑应用
@@ -141,6 +143,8 @@
           href: manage-resources-powershell.md
     - name: 资源提供程序和类型
       href: resource-providers-and-types.md
+    - name: 预览功能
+      href: preview-features.md
     - name: 删除资源组和资源
       href: delete-resource-group.md
     - name: 锁定资源
@@ -165,7 +169,7 @@
       href: /dotnet/api/microsoft.azure.management.resourcemanager
     - name: Java
       href: /java/api/com.microsoft.azure.management.resources
-    - name: JavaScript
+    - name: Javascript
       href: /javascript/api/overview/azure/resources
     - name: Python
       href: /python/api/overview/azure/resources

@@ -111,6 +111,8 @@
       href: troubleshoot-how-to.md
     - name: 正在升级
       href: upgrading-lva-module.md
+    - name: 迁移到 Azure 视频分析器
+      href: migrate-to-azure-video-analyzer.md
     - name: 开发和部署 gRPC 推理服务器
       href: develop-deploy-grpc-inference-srv-how-to.md
 - name: 参考

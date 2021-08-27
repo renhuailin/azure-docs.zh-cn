@@ -8,6 +8,10 @@
   items:
     - name: 许可要求
       href: subscription-requirements.md
+    - name: 特权访问组
+      href: groups-features.md
+    - name: 可分配角色与特权访问组
+      href: concept-privileged-access-versus-role-assignable.md
     - name: 不能使用 PIM 进行管理的角色
       href: pim-roles.md
     - name: 保护 Azure AD 中的特权访问
@@ -41,6 +45,8 @@
           href: pim-how-to-activate-role.md
         - name: Azure 角色
           href: pim-resource-roles-activate-your-roles.md
+        - name: 特权访问组
+          href: groups-activate-roles.md
     - name: 批准
       items:
         - name: Azure AD 角色
@@ -57,11 +63,13 @@
           href: groups-discover-groups.md
     - name: 扩展或续订
       items:
+        - name: Azure AD 角色
+          href: pim-how-to-renew-extend.md
         - name: Azure 角色
           href: pim-resource-roles-renew-extend.md
         - name: 特权访问组
           href: groups-renew-extend.md
-    - name: 设置
+    - name: 设置角色默认值
       items:
         - name: Azure AD 角色
           href: pim-how-to-change-default-settings.md
@@ -69,13 +77,13 @@
           href: pim-resource-roles-configure-role-settings.md
         - name: 特权访问组
           href: groups-role-settings.md
-    - name: 警报
+    - name: 设置警报
       items:
         - name: Azure AD 角色
           href: pim-how-to-configure-security-alerts.md
         - name: Azure 角色
           href: pim-resource-roles-configure-alerts.md
-    - name: 审核日志
+    - name: 审核
       items:
         - name: Azure AD 角色
           href: pim-how-to-use-audit-log.md
@@ -83,7 +91,7 @@
           href: azure-pim-resource-rbac.md
         - name: 特权访问组
           href: groups-audit.md
-    - name: 访问评审
+    - name: 评审访问权限
       items:
         - name: Azure AD 角色
           items:

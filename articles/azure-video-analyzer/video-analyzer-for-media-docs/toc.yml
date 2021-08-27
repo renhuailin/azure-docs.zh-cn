@@ -4,6 +4,8 @@
   items:
     - name: 什么是视频分析器媒体版？
       href: video-indexer-overview.md
+    - name: 关于视频分析器
+      href: ../video-analyzer-docs/overview.md
 - name: 快速入门
   expanded: true
   items:

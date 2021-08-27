@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: 什么是翻译器？
-      href: translator-info-overview.md
+      href: translator-overview.md
     - name: 语言支持
       href: language-support.md
     - name: 定价
@@ -16,6 +16,8 @@
 - name: 文本翻译
   expanded: true
   items:
+    - name: 什么是文本翻译？
+      href: text-translation-overview.md
     - name: 快速入门
       href: quickstart-translator.md
     - name: 示例
@@ -68,12 +70,12 @@
           href: tutorial-build-flask-app-translation-synthesis.md
     - name: 参考
       items:
+        - name: 文本翻译器 REST API
+          href: reference/rest-api-guide.md
         - name: v3 翻译器参考
           href: reference/v3-0-reference.md
         - name: Languages
           href: reference/v3-0-languages.md
-        - name: 请求限制
-          href: request-limits.md
         - name: Translate
           href: reference/v3-0-translate.md
         - name: Transliterate
@@ -86,11 +88,13 @@
           href: reference/v3-0-dictionary-lookup.md
         - name: 字典示例
           href: reference/v3-0-dictionary-examples.md
+        - name: 请求限制
+          href: request-limits.md
 - name: 文档翻译
   items:
     - name: 什么是文档翻译？
       href: document-translation/overview.md
-    - name: 客户端库和 SDK
+    - name: 客户端-库 SDK
       href: document-translation/client-sdks.md
     - name: 快速入门
       href: document-translation/get-started-with-document-translation.md
@@ -102,7 +106,7 @@
           href: document-translation/managed-identity.md
     - name: 参考
       items:
-        - name: REST API 参考指南
+        - name: 文档翻译 REST API
           href: document-translation/reference/rest-api-guide.md
         - name: 获取支持的文档格式
           href: document-translation/reference/get-supported-document-formats.md

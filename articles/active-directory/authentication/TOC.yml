@@ -263,6 +263,8 @@
       href: ../enterprise-users/directory-service-limits-restrictions.md
     - name: FIDO2 兼容性
       href: fido2-compatibility.md
+    - name: 成为 FIDO2 提供者
+      href: concept-fido2-hardware-vendor.md
 - name: 资源
   items:
     - name: Azure 反馈论坛

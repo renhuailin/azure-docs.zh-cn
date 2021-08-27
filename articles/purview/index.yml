@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Purview 文档
-summary: 了解如何使用 Azure Purview 来让组织能够查找、了解和使用数据源。
+summary: 了解如何使用 Azure Purview 来让组织能够查找、了解、治理、使用数据源。
 metadata:
   title: Azure Purview 文档
   description: 了解如何使用 Azure Purview - 组织可通过它来查找、了解和使用数据源。 教程、REST API 参考和其他文档介绍了如何规划和配置数据存储库 - 数据使用者可在此存储库中发现可用数据源，学习主题专家分享的知识。
@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: whhender
   ms.author: whhender
-  ms.date: 06/09/2021
-  ms.openlocfilehash: 8db36ffb5f1d081e0e4dbb2cd6dbca02c7ddf726
-  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+  ms.date: 08/19/2021
+  ms.openlocfilehash: e2949948c7635c241ce52aac42860af92175cdd3
+  ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111904006"
+  ms.lasthandoff: 08/20/2021
+  ms.locfileid: "122515570"
 landingContent:
 - title: 关于 Azure Purview
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
       url: use-purview-studio.md
     - text: 部署最佳做法
       url: deployment-best-practices.md
-    - text: 数据目录权限
+    - text: Purview 访问控制
       url: catalog-permissions.md
     - text: 支持的数据源和文件类型
       url: sources-and-scans.md
@@ -42,6 +42,8 @@ landingContent:
       url: create-catalog-portal.md
     - text: 创建 Purview 帐户 - PowerShell/CLI
       url: create-catalog-powershell.md
+    - text: 创建集合
+      url: quickstart-create-collection.md
   - linkListType: tutorial
     links:
     - text: 运行初学者工具包并扫描数据
@@ -112,6 +114,8 @@ landingContent:
     links:
     - text: 扫描 本地 SQL Server
       url: register-scan-on-premises-sql-server.md
+    - text: 扫描 Google BigQuery
+      url: register-scan-google-bigquery-source.md
     - text: 扫描 Amazon S3
       url: register-scan-amazon-s3.md
     - text: 扫描 Oracle

@@ -11,20 +11,28 @@ metadata:
   ms.collection: collection
   ms.author: peterlu
   author: peterclu
-  ms.date: 03/05/2020
-  ms.openlocfilehash: 34cebaa3b352d64ba5ebeadbc1fc84c5e53bfefe
-  ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+  ms.date: 08/23/2021
+  ms.openlocfilehash: f0933fe7ba67abd07192e9619a4d38450dc75f7f
+  ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/24/2021
-  ms.locfileid: "112581243"
+  ms.lasthandoff: 08/23/2021
+  ms.locfileid: "122687692"
 landingContent:
-- title: 工作室（经典）入门
+- title: 从 ML 工作室（经典）迁移
   linkLists:
   - linkListType: get-started
     links:
-    - text: 什么是工作室（经典）？
-      url: studio-classic-overview.md
+    - text: 什么是 Azure 机器学习？
+      url: ../overview-what-is-azure-machine-learning.md
+    - text: Azure 机器学习与 ML 工作室（经典）
+      url: ../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio
+    - text: 迁移到 Azure 机器学习
+      url: ../migrate-overview.md
+- title: 教程
+  linkLists:
+  - linkListType: tutorial
+    links:
     - text: 创建第一个 ML 试验
       url: create-experiment.md
     - text: 创建预测解决方案

@@ -12,7 +12,15 @@
   href: ./servers/overview.md
 - name: 已启用 Arc 的 Kubernetes >
   href: ./kubernetes/overview.md
-- name: 已启用 Arc 的数据服务（预览）>
+- name: 已启用 Arc 的数据服务 >
   href: ./data/overview.md
-- name: 已启用 Azure Arc 的服务器上的 SQL Server（预览版）>
-  href: 'https://docs.microsoft.com/sql/sql-server/azure-arc/overview'
+- name: 已启用 Azure Arc 的服务器上的 SQL Server >
+  href: /sql/sql-server/azure-arc/overview
+- name: Arc 验证计划
+  items:
+    - name: 计划概述
+      href: validation-program/overview.md
+    - name: 经过验证的 Kubernetes 合作伙伴
+      href: kubernetes/validation-program.md?toc=/azure/azure-arc/toc.json&bc=/azure/azure-arc/breadcrumb/toc.json
+    - name: 经过验证的数据服务合作伙伴
+      href: data/validation-program.md?toc=/azure/azure-arc/toc.json&bc=/azure/azure-arc/breadcrumb/toc.json

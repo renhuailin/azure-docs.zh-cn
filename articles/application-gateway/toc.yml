@@ -258,7 +258,7 @@
           href: application-gateway-create-probe-classic-ps.md
         - name: 资源管理器 PowerShell
           href: application-gateway-create-probe-ps.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 将 ILB 与应用服务环境配合使用
           href: create-gateway-internal-load-balancer-app-service-environment.md
@@ -278,14 +278,14 @@
           href: log-analytics.md
         - name: 后端运行状况问题
           href: application-gateway-backend-health-troubleshooting.md
+        - name: Key Vault 错误
+          href: application-gateway-key-vault-common-errors.md
     - name: 自定义错误页
       href: custom-error.md
     - name: 从 v1 迁移到 v2
       href: migrate-v1-v2.md
 - name: 参考
   items:
-    - name: 常见的 Key Vault 错误
-      href: application-gateway-key-vault-common-errors.md
     - name: 监视数据
       href: monitor-application-gateway-reference.md
     - name: 用于 AKS 批注的入口

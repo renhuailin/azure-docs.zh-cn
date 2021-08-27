@@ -13,6 +13,9 @@
     - name: 使用策略部署防火墙 - ARM 模板
       displayName: Resource Manager
       href: quick-firewall-policy.md
+    - name: 创建和更新策略
+      displayname: PowerShell
+      href: create-policy-powershell.md
 - name: 教程
   items:
     - name: 保护虚拟中心 - 门户

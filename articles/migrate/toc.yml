@@ -24,9 +24,9 @@
   items:
     - name: 发现
       items:
-        - name: 发现 VMware VM
+        - name: 发现 VMware 环境中的服务器
           href: tutorial-discover-vmware.md
-        - name: 发现 Hyper-V VM
+        - name: 发现 Hyper-V 环境中的服务器
           href: tutorial-discover-hyper-v.md
         - name: 发现物理服务器
           href: tutorial-discover-physical.md
@@ -36,15 +36,17 @@
           href: tutorial-discover-gcp.md
     - name: 评估
       items:
-        - name: 访问 VMware VM
+        - name: 访问 VMware 环境中的服务器
           items:
-            - name: 评估 VMware VM 以便迁移到 Azure VM
+            - name: 评估服务器以迁移到 Azure VM
               href: tutorial-assess-vmware-azure-vm.md
             - name: 访问 SQL 实例以便迁移到 Azure SQL
               href: tutorial-assess-sql.md
-            - name: 评估 VMware VM 以便迁移到 AVS
+            - name: 评估 ASP.NET Web 应用以迁移到应用服务
+              href: tutorial-assess-webapps.md
+            - name: 评估服务器以迁移到 AVS
               href: tutorial-assess-vmware-azure-vmware-solution.md
-        - name: 评估 HYPER-V VM 以便迁移到 Azure
+        - name: 评估 Hyper-V 环境上的服务器以迁移到 Azure VM
           href: tutorial-assess-hyper-v.md
         - name: 评估物理服务器以便迁移到 Azure
           href: tutorial-assess-physical.md
@@ -56,9 +58,9 @@
           href: tutorial-discover-import.md
     - name: Migrate
       items:
-        - name: 迁移 VMware VM
+        - name: 迁移 VMware 环境中的服务器
           items:
-            - name: VMware VM 的迁移选项
+            - name: VMware 环境中的服务器的迁移选项
               href: server-migrate-overview.md
             - name: 使用无代理迁移进行迁移（门户）
               href: tutorial-migrate-vmware.md
@@ -66,7 +68,7 @@
               href: tutorial-migrate-vmware-agent.md
             - name: 使用无代理迁移进行迁移 (PowerShell)
               href: tutorial-migrate-vmware-powershell.md
-        - name: 迁移 Hyper-V VM
+        - name: 迁移 Hyper-V 环境中的服务器
           href: tutorial-migrate-hyper-v.md
         - name: 迁移物理服务器
           href: tutorial-migrate-physical-virtual-machines.md
@@ -114,6 +116,8 @@
           href: concepts-assessment-calculation.md
         - name: 评估概述（迁移到 Azure SQL）
           href: concepts-azure-sql-assessment-calculation.md
+        - name: 评估概述（迁移到应用服务）
+          href: concepts-azure-webapps-assessment-calculation.md
         - name: 评估概述（迁移到 AVS）
           href: concepts-azure-vmware-solution-assessment-calculation.md
         - name: 评估最佳做法
@@ -164,13 +168,13 @@
               href: how-to-set-up-appliance-physical.md
             - name: 在 Azure 政府版中部署设备
               href: deploy-appliance-script-government.md
-        - name: 限制 VMware VM 的发现范围
+        - name: 为 VMware 环境中的服务器限制发现范围
           href: set-discovery-scope.md
         - name: 如何添加服务器凭据
           href: add-server-credentials.md
         - name: 发现应用程序/角色/功能
           href: how-to-discover-applications.md
-        - name: 发现现有项目中的 SQL 实例
+        - name: 发现现有项目中的 SQL 实例和 ASP.NET Web 应用
           href: how-to-discover-sql-existing-project.md
         - name: 分析计算机依赖项（基于代理）
           href: how-to-create-group-machine-dependencies.md
@@ -186,6 +190,8 @@
           href: how-to-create-assessment.md
         - name: 创建 Azure SQL 评估
           href: how-to-create-azure-sql-assessment.md
+        - name: 创建 Azure 应用服务评估
+          href: how-to-create-azure-app-service-assessment.md
         - name: 创建 AVS 评估
           href: how-to-create-azure-vmware-solution-assessment.md
         - name: 评估 SQL Server 数据库
@@ -194,9 +200,9 @@
           href: how-to-modify-assessment.md
         - name: 缩放评估
           items:
-            - name: 评估大量 VMware VM
+            - name: 评估 VMware 环境中的大量服务器
               href: scale-vmware-assessment.md
-            - name: 评估大量 Hyper-V VM
+            - name: 评估 Hyper-V 环境中的大量服务器
               href: scale-hyper-v-assessment.md
             - name: 评估大量物理服务器
               href: scale-physical-assessment.md
@@ -244,6 +250,8 @@
       items:
         - name: 排查 Azure Migrate 设备问题
           href: troubleshoot-appliance.md
+        - name: 设备诊断故障排除
+          href: troubleshoot-appliance-diagnostic.md
         - name: 排查发现问题
           href: troubleshoot-discovery.md
         - name: 排查依赖项可视化问题

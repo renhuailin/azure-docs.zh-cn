@@ -79,3 +79,21 @@
               href: ./elastic/manage.md
             - name: 疑难解答
               href: ./elastic/troubleshoot.md
+    - name: Logz.io
+      items:
+        - name: 概述
+          items:
+            - name: 什么是 Logz.io？
+              href: ./logzio/overview.md
+        - name: 快速入门
+          items:
+            - name: 创建 Logz.io 资源
+              href: ./logzio/create.md
+        - name: 如何
+          items:
+            - name: 管理
+              href: ./logzio/manage.md
+            - name: 设置单一登录
+              href: ./logzio/setup-sso.md
+            - name: 故障排除
+              href: ./logzio/troubleshoot.md

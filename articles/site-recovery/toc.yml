@@ -42,12 +42,20 @@
           href: tutorial-prepare-azure.md
         - name: 准备本地 VMware
           href: vmware-azure-tutorial-prepare-on-premises.md
-        - name: 设置复制
+    - name: 设置复制
+      items:
+        - name: 经典
           href: vmware-azure-tutorial.md
+        - name: 预览
+          href: vmware-azure-set-up-replication-tutorial-preview.md
         - name: 运行灾难恢复演练
           href: tutorial-dr-drill-azure.md
-        - name: 故障转移到 Azure
+    - name: 运行到 Azure 的 VMware VM 故障转移
+      items:
+        - name: 经典
           href: vmware-azure-tutorial-failover-failback.md
+        - name: 预览
+          href: vmware-azure-tutorial-failover-failback-preview.md
     - name: Azure VMware 解决方案 - 灾难恢复到 Azure
       items:
         - name: 准备 Azure
@@ -122,14 +130,22 @@
           href: vmware-physical-azure-config-process-server-overview.md
         - name: 配置和进程服务器的支持要求
           href: vmware-azure-configuration-server-requirements.md
-        - name: VMware 到 Azure 体系结构
+        - name: 部署 Azure Site Recovery 复制设备（预览版）
+          href: deploy-vmware-azure-replication-appliance-preview.md
+        - name: 切换复制设备（预览版）
+          href: switch-replication-appliance-preview.md
+    - name: VMware 到 Azure 体系结构
+      items:
+        - name: 经典
           href: vmware-azure-architecture.md
-        - name: 关于如何从复制中排除磁盘
-          href: exclude-disks-replication.md
-        - name: 从 Azure 到 VMware 的故障回复位置选项
-          href: concepts-types-of-failback.md
-        - name: VMware 灾难恢复的多租户支持
-          href: vmware-azure-multi-tenant-overview.md
+        - name: 预览
+          href: vmware-azure-architecture-preview.md
+    - name: 关于如何从复制中排除磁盘
+      href: exclude-disks-replication.md
+    - name: 从 Azure 到 VMware 的故障回复位置选项
+      href: concepts-types-of-failback.md
+    - name: VMware 灾难恢复的多租户支持
+      href: vmware-azure-multi-tenant-overview.md
     - name: 关于 Hyper-V VM 灾难恢复
       items:
         - name: 常见问题
@@ -159,7 +175,11 @@
         - name: 将公共 IP 地址与 Site Recovery 配合使用
           href: concepts-public-ip-address-with-site-recovery.md
     - name: 关于故障转移和故障回复
-      href: failover-failback-overview.md
+      items:
+        - name: 经典
+          href: failover-failback-overview.md
+        - name: 预览
+          href: failover-failback-overview-preview.md
     - name: 关于恢复计划
       href: recovery-plan-overview.md
     - name: 关于迁移到 Azure
@@ -200,6 +220,8 @@
           items:
             - name: 启用 Azure 到 Azure 复制
               href: azure-to-azure-how-to-enable-replication.md
+            - name: 启用全球灾难恢复
+              href: azure-to-azure-enable-global-disaster-recovery.md
             - name: 使用 Policy 启用 Azure 到 Azure 的复制
               href: azure-to-azure-how-to-enable-policy.md
             - name: 为加密的 VM 启用 Azure 到 Azure 复制
@@ -286,7 +308,7 @@
               href: vmware-azure-enable-replication.md
             - name: 从复制中排除磁盘
               href: vmware-azure-exclude-disk.md
-            - name: 演练 - 设置通过多租户和 CSP 进行 VMWare VM 复制
+            - name: 演练 - 设置通过多租户和 CSP 进行 VMware VM 复制
               href: vmware-azure-multi-tenant-csp-disaster-recovery.md
         - name: 运行故障转移和故障回复
           items:
@@ -310,6 +332,8 @@
           items:
             - name: 管理移动代理
               href: vmware-physical-manage-mobility-service.md
+            - name: 升级移动代理（预览版）
+              href: upgrade-mobility-service-preview.md
             - name: 为 VMware 管理配置服务器
               href: vmware-azure-manage-configuration-server.md
             - name: 管理进程服务器
@@ -500,7 +524,7 @@
       href: monitoring-high-churn.md
     - name: 监视进程服务器
       href: vmware-physical-azure-monitor-process-server.md
-- name: 疑难解答
+- name: 故障排除
   items:
     - name: 排查 Azure VM 问题
       items:

@@ -27,8 +27,6 @@
   expanded: true
 - name: 教程
   items:
-    - name: 跨可用性区域对 VM 进行负载均衡
-      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 在特定的可用性区域中对 VM 进行负载均衡
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: 对具有多个可用性集的 VM 进行负载均衡
@@ -59,6 +57,8 @@
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Python
+      href: python-samples.md
 - name: 概念
   items:
     - name: 门户设置
@@ -164,11 +164,11 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部负载均衡器 - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: 仅出站的负载均衡器配置
-      href: egress-only.md
     - name: 使用 Azure IMDS 检索元数据
       href: howto-load-balancer-imds.md
-    - name: 疑难解答
+    - name: 仅出站的负载均衡器配置
+      href: egress-only.md
+    - name: 故障排除
       items:
         - name: 对 Azure 负载均衡器进行故障排除
           href: load-balancer-troubleshoot.md
@@ -193,7 +193,7 @@
     - name: Java
       href: /java/api/com.microsoft.azure.management.network
     - name: Node.js
-      href: /javascript/api/@azure/arm-network/loadbalancers
+      href: /javascript/api/overview/azure/arm-network-readme
     - name: Ruby
       href: 'https://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2020_03_01/LoadBalancers'
     - name: Python

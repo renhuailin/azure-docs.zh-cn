@@ -88,8 +88,12 @@
               href: container-registry-import-images.md
             - name: 传输项目（预览版）
               href: container-registry-transfer-images.md
-            - name: 锁定容器映像
-              href: container-registry-image-lock.md
+            - name: 保护注册表数据
+              items:
+                - name: 锁定容器映像
+                  href: container-registry-image-lock.md
+                - name: 禁用导出
+                  href: data-loss-prevention.md
             - name: 删除容器映像
               items:
                 - name: 删除映像数据 - CLI

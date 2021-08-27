@@ -1,10 +1,10 @@
 ### YamlMime:Hub
 title: Azure 媒体服务文档
-summary: Azure 媒体服务是云和边缘媒体工作流服务的集合，可用于构建需要实时和批处理视频分析、转码、多设备交付服务、内容保护和大规模实时事件广播的解决方案。
+summary: Azure 媒体服务使你能够使用低延迟实时传送视频流、批量编码、内容保护/DRM 来构建媒体应用程序，并交付流式传输内容供数百万人在任何设备上观看。
 brand: azure
 metadata:
   title: Azure 媒体服务文档
-  description: Azure 媒体服务是云和边缘媒体工作流服务的集合，可用于构建需要实时和批处理视频分析、转码、多设备交付服务、内容保护和大规模实时事件广播的解决方案。
+  description: Azure 媒体服务使你能够使用低延迟实时传送视频流、批量编码、内容保护/DRM 来构建媒体应用程序，并交付流式传输内容供数百万人在任何设备上观看。
   services: media-services
   ms.service: media-services
   ms.subservice: null
@@ -12,51 +12,68 @@ metadata:
   ms.collection: collection
   author: Juliako
   ms.author: juliako
-  ms.date: 07//2020
+  ms.date: 08/18/2021
 highlightedContent:
   items:
-    - title: 关于 Azure 媒体服务 v3
+    - title: 关于 Azure 媒体服务 (v3)
       itemType: overview
       url: ./latest/media-services-overview.md
-    - title: Azure 媒体服务 v3 概念
+    - title: Azure 媒体服务 (v3) 概念
       itemType: concept
       url: ./latest/concepts-overview.md
-    - title: IoT Edge 上的实时视频分析（预览版）
-      itemType: overview
-      url: ./live-video-analytics-edge/overview.md
+    - title: GitHub 示例
+      itemType: download
+      url: ./latest/samples-overview.md
     - title: Azure Media Player
       itemType: overview
       url: ./azure-media-player/azure-media-player-overview.md
-    - title: 关于 Azure 媒体服务 v2（旧版）
+    - title: 实时传送视频流
       itemType: overview
-      url: ./previous/media-services-overview.md
-    - title: 将媒体服务 v2 迁移到 v3
-      itemType: concept
-      url: ./latest/migrate-v-2-v-3-migration-introduction.md
+      url: ./latest/stream-live-streaming-concept.md
+    - title: 编码
+      itemType: overview
+      url: ./latest/encode-concept.md
 conceptualContent:
   items:
-    - title: 使用媒体服务 v3 API 进行开发
+    - title: 使用媒体服务 SDK 进行开发
       links:
         - url: ./latest/media-services-apis-overview.md
           itemType: concept
-          text: 使用媒体服务 v3 进行开发
+          text: 使用媒体服务进行开发
+        - url: ./latest/samples-overview.md
+          itemType: get-started
+          text: GitHub 示例
         - url: /samples/browse/?products=azure-media-services
           itemType: sample
-          text: 代码示例
+          text: 浏览更多示例
         - url: ./latest/release-notes.md
-          itemType: concept
-          text: 了解媒体服务 v3 中的新增功能
-    - title: 实时流式处理
+          itemType: whats-new
+          text: 发行说明和公告
+    - title: 实时传送视频流
       links:
         - url: ./latest/stream-live-streaming-concept.md
-          itemType: concept
+          itemType: overview
           text: 实时传送视频流
         - url: ./latest/encode-recommended-on-premises-live-encoders.md
-          itemType: concept
+          itemType: learn
           text: 建议的实时传送视频流编码器
         - url: ./latest/stream-live-tutorial-with-api.md
           itemType: tutorial
           text: 实时流式处理
+    - title: 大规模编码
+      links:
+        - url: ./latest/encode-concept.md
+          itemType: overview
+          text: 了解媒体服务的云编码
+        - url: ./latest/encode-content-aware-concept.md
+          itemType: learn
+          text: 用内容感知编码进行编码
+        - url: ./latest/encode-media-encoder-standard-formats-reference.md
+          itemType: concept
+          text: 支持的文件格式和编解码器
+        - url: ./latest/encode-autogen-bitrate-ladder.md
+          itemType: concept
+          text: 自动生成自适应比特率编码
     - title: 按需流式传输
       links:
         - url: ./latest/assets-concept.md
@@ -93,7 +110,7 @@ conceptualContent:
         - url: ./latest/analyze-face-redaction-concept.md
           itemType: concept
           text: 面部检测和人脸编辑
-    - title: 了解媒体服务规范
+    - title: 协议和规格
       links:
         - url: media-services-specifications-live-timed-metadata.md
           itemType: concept
@@ -104,14 +121,19 @@ conceptualContent:
         - url: media-services-fmp4-live-ingest-overview.md
           itemType: concept
           text: 平滑流式处理引入协议
-    - title: IoT Edge 上的实时视频分析（预览版）
+    - title: 从 v2 API 迁移
       links:
-        - url: ./live-video-analytics-edge/overview.md
+        - url: ./latest/migrate-v-2-v-3-migration-introduction.md
           itemType: overview
-          text: 概述
-        - url: ./live-video-analytics-edge/use-your-model-quickstart.md
-          itemType: quickstart
-          text: 使用自己的模型运行实时视频分析
+          text: 从 v2 迁移到 v3 概述
+    - title: 了解更多适用于媒体的 Azure 服务
+      links:
+        - url: ../azure-video-analyzer/video-analyzer-docs/overview.md
+          itemType: overview
+          text: 通过 Azure 视频分析器在实时监视视频上捕获和运行自定义 AI 模型
+        - url: ../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md
+          itemType: overview
+          text: 利用适用于媒体的视频分析器（以前的视频索引器）从视频文件中提取见解
 additionalContent:
   sections:
     - items:
@@ -124,3 +146,9 @@ additionalContent:
         - title: 事件网格
           summary: 了解如何使用 Azure 事件网格响应相关事件
           url: ../event-grid/index.yml
+        - title: Azure Monitor
+          summary: 了解如何聚合和分析指标、日志和跟踪。 发出警报并发送通知或调用自动化解决方案。
+          url: ../azure-monitor/index.yml
+        - title: Azure 事件中心
+          summary: 了解如何使用事件中心从已连接的设备和应用程序每秒引入数百万个事件。
+          url: ../event-hubs/index.yml

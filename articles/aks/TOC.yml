@@ -205,11 +205,11 @@
           href: use-ultra-disks.md
         - name: CSI 存储驱动程序
           items:
-            - name: 启用 CSI 存储驱动程序（预览版）
+            - name: 启用 CSI 存储驱动程序
               href: csi-storage-drivers.md
-            - name: Azure 磁盘 CSI 驱动程序（预览版）
+            - name: Azure 磁盘 CSI 驱动程序
               href: azure-disk-csi.md
-            - name: Azure 文件存储 CSI 驱动程序（预览版）
+            - name: Azure 文件 CSI 驱动程序
               href: azure-files-csi.md
     - name: 配置网络
       items:
@@ -223,7 +223,7 @@
           href: internal-lb.md
         - name: 使用标准负载均衡器
           href: load-balancer-standard.md
-        - name: 使用静态 IP 地址
+        - name: 使用静态 IP 地址和 DNS 标签
           href: static-ip.md
         - name: 流入量
           items:
@@ -299,13 +299,10 @@
           href: csi-secrets-store-driver.md
     - name: 监视和日志记录
       items:
-        - name: 查看群集指标
-          href: view-metrics.md
-        - name: 容器见解
-          href: ../azure-monitor/containers/container-insights-overview.md
-          maintainContext: true
-        - name: 查看控制平面组件日志
-          href: view-control-plane-logs.md
+        - name: 监视 AKS
+          href: monitor-aks.md
+        - name: 监视参考
+          href: monitor-aks-reference.md
         - name: 查看 kubelet 日志
           href: kubelet-logs.md
         - name: 实时查看容器数据
@@ -351,32 +348,12 @@
         - name: 使用 Azure API 管理
           href: ../api-management/api-management-kubernetes.md
           maintainContext: true
-    - name: 选择并部署服务网格
+    - name: 部署服务网格
       items:
         - name: 关于服务网格
           href: servicemesh-about.md
         - name: Open Service Mesh AKS 附加产品（预览版）
           href: servicemesh-osm-about.md
-        - name: 使用 Istio
-          items:
-            - name: 关于 Istio
-              href: servicemesh-istio-about.md
-            - name: 安装和配置
-              href: servicemesh-istio-install.md
-            - name: 方案 - 智能路由和 Canary 发布
-              href: servicemesh-istio-scenario-routing.md
-        - name: 使用 Linkerd
-          items:
-            - name: 关于 Linkerd
-              href: servicemesh-linkerd-about.md
-            - name: 安装和配置
-              href: servicemesh-linkerd-install.md
-        - name: 使用 Consul
-          items:
-            - name: 关于 Consul
-              href: servicemesh-consul-about.md
-            - name: 安装和配置
-              href: servicemesh-consul-install.md
     - name: DevOps
       items:
         - name: 使用 Ansible 创建 AKS 群集
@@ -391,7 +368,7 @@
           href: deployment-center-launcher.md
         - name: 适用于 Kubernetes 的 GitHub 操作
           href: ../aks/kubernetes-action.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 常见问题
           href: troubleshooting.md

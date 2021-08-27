@@ -45,7 +45,7 @@ items:
         href: connected-cache-configure.md
       - name: 设备更新导入
         href: import-concepts.md
-      - name: 与导入相关的架构
+      - name: 与导入相关的架构和 API 详细信息
         href: import-schema.md
       - name: 设备更新限制
         href: device-update-limits.md

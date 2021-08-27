@@ -44,7 +44,7 @@ items:
                     href: storage-quickstart-blobs-python.md
                   - name: Python (v2.1 SDK)
                     href: storage-quickstart-blobs-python-legacy.md
-              - name: JavaScript
+              - name: Javascript
                 items:
                   - name: JavaScript（适用于 Node.js 的 v12 SDK）
                     href: storage-quickstart-blobs-nodejs.md
@@ -114,7 +114,7 @@ items:
             href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Python
             href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: JavaScript
+          - name: Javascript
             href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: C++
             href: ../common/storage-samples-c-plus-plus.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -188,26 +188,32 @@ items:
                 href: snapshots-overview.md
               - name: 更改源
                 href: storage-blob-change-feed.md
-              - name: 不可变 blob
-                href: storage-blob-immutable-storage.md
+              - name: Blob 的不可变存储
+                items:
+                  - name: 概述
+                    href: immutable-storage-overview.md
+                  - name: 基于时间的保留策略
+                    href: immutable-time-based-retention-policy-overview.md
+                  - name: 法定保留
+                    href: immutable-legal-hold-overview.md
           - name: 冗余和灾难恢复
             items:
               - name: 数据冗余
                 href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: 用于灾难恢复的客户管理的故障转移
                 href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: 对象复制
-            href: object-replication-overview.md
           - name: 访问层和性能层
             items:
               - name: 访问层级
                 href: storage-blob-storage-tiers.md
               - name: 将存档层中的数据解除冻结
-                href: storage-blob-rehydration.md
+                href: archive-rehydrate-overview.md
               - name: 性能层
                 href: storage-blob-performance-tiers.md
-              - name: 自动执行访问层生命周期
-                href: storage-lifecycle-management-concepts.md
+              - name: 生命周期管理策略
+                href: lifecycle-management-overview.md
+          - name: 对象复制
+            href: object-replication-overview.md
           - name: 性能、缩放和成本优化
             items:
               - name: 性能和可伸缩性清单
@@ -442,8 +448,12 @@ items:
                 href: snapshots-manage-dotnet.md
               - name: 处理更改源日志
                 href: storage-blob-change-feed-how-to.md
-              - name: 设置和管理不可变性策略
-                href: storage-blob-immutability-policies-manage.md
+              - name: 配置不可变策略
+                items:
+                  - name: 配置版本级不可变策略
+                    href: immutable-policy-configure-version-scope.md
+                  - name: 配置容器级不可变策略
+                    href: immutable-policy-configure-container-scope.md
           - name: 管理冗余和故障转移
             items:
               - name: 更改冗余配置
@@ -454,6 +464,16 @@ items:
                 href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: 启动帐户故障转移
                 href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          - name: 管理 blob 分层和生命周期
+            items:
+              - name: 配置生命周期管理策略
+                href: lifecycle-management-policy-configure.md
+              - name: 管理存档层中的数据
+                items:
+                  - name: 解除冻结存档的 blob
+                    href: archive-rehydrate-to-online-tier.md
+                  - name: 处理 blob 解除冻结事件
+                    href: archive-rehydrate-handle-event.md
           - name: 配置对象复制
             href: object-replication-configure.md
           - name: 管理并发
@@ -512,8 +532,6 @@ items:
                 href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: 使用 Blob 进行开发
             items:
-              - name: C++
-                href: storage-c-plus-plus-how-to-use-blobs.md
               - name: iOS
                 href: storage-ios-how-to-use-blob-storage.md
               - name: Java
@@ -524,6 +542,8 @@ items:
             href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: 监视
             items:
+              - name: 方案和最佳做法
+                href: blob-storage-monitoring-scenarios.md
               - name: 使用存储见解
                 href: ../common/storage-insights-overview.md
               - name: 监视（经典）
@@ -538,7 +558,7 @@ items:
                 href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: 参考
         items:
-          - name: Azure Blob 存储参考
+          - name: Blob 存储 API 参考
             href: ../blobs/reference.md
           - name: AzCopy v10
             items:
@@ -866,7 +886,7 @@ items:
             href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
           - name: Python
             href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
-          - name: JavaScript
+          - name: Javascript
             href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
           - name: C++
             href: 'https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-files-datalake'

@@ -6,36 +6,36 @@
       href: introduction.md
     - name: 平台更新
       href: azure-vmware-solution-platform-updates.md
-- name: 快速入门
+- name: 入门
   items:
     - name: 1 - 规划部署
-      href: production-ready-deployment-steps.md
+      href: plan-private-cloud-deployment.md
     - name: 2 - 部署 Azure VMware 解决方案
       href: deploy-azure-vmware-solution.md
-    - name: 3 - 连接到本地
+    - name: 3 - 连接到本地环境
       href: tutorial-expressroute-global-reach-private-cloud.md
-    - name: 4 - 部署和配置 VMware HCX
-      href: tutorial-deploy-vmware-hcx.md
+    - name: 4 - 安装 VMware HCX 连接器
+      href: install-vmware-hcx.md
+    - name: 5 - 配置本地 VMware HCX 连接器
+      href: configure-vmware-hcx.md
 - name: 教程
   items:
-    - name: 访问私有云
-      href: tutorial-access-private-cloud.md
-    - name: 配置网络
-      href: tutorial-configure-networking.md
-    - name: 创建私有云
-      href: tutorial-create-private-cloud.md
-    - name: 创建网段
-      href: tutorial-nsx-t-network-segment.md
-    - name: 删除私有云
-      href: tutorial-delete-private-cloud.md
-    - name: 部署和配置 VMware HCX
-      href: tutorial-deploy-vmware-hcx.md
-    - name: 在私有云中扩展或收缩群集
-      href: tutorial-scale-private-cloud.md
-    - name: 网络规划清单
+    - name: 1 - 网络规划清单
       href: tutorial-network-checklist.md
-    - name: 从本地对等连接到私有云
+    - name: 2 - 创建私有云
+      href: tutorial-create-private-cloud.md
+    - name: 3 - 访问私有云
+      href: tutorial-access-private-cloud.md
+    - name: 4 - 配置网络
+      href: tutorial-configure-networking.md
+    - name: 5 - 创建 NSX-T 网络段
+      href: tutorial-nsx-t-network-segment.md
+    - name: 6 - 从本地对等连接到私有云
       href: tutorial-expressroute-global-reach-private-cloud.md
+    - name: 7 - 在私有云中缩放
+      href: tutorial-scale-private-cloud.md
+    - name: 8 - 删除私有云
+      href: tutorial-delete-private-cloud.md
 - name: 概念
   items:
     - name: 访问和标识
@@ -44,8 +44,6 @@
       href: concepts-api-management.md
     - name: 中心和分支
       href: concepts-hub-and-spoke.md
-    - name: 监视和保护
-      href: concepts-monitor-protection.md
     - name: 网络和互连
       href: concepts-networking.md
     - name: 私有云和群集
@@ -60,6 +58,8 @@
       href: request-host-quota-azure-vmware-solution.md
     - name: 通过预留实例节约成本
       href: reserved-instance.md
+    - name: 创建放置策略
+      href: create-placement-policy.md
     - name: 配置网络
       items:
         - name: 配置 DHCP 服务器或中继
@@ -70,18 +70,18 @@
           href: configure-dns-azure-vmware-solution.md
         - name: 配置端口镜像
           href: configure-port-mirroring-azure-vmware-solution.md
-        - name: 配置 GitHub Enterprise 服务器
-          href: ./configure-github-enterprise-server.md
         - name: 启用公共 Internet 访问
           href: enable-public-internet-access.md
         - name: 在 vWAN 中配置站点到站点 VPN
           href: configure-site-to-site-vpn-gateway.md
+    - name: 连接同一区域内的多个私有云
+      href: connect-multiple-private-clouds-same-region.md
+    - name: 配置 GitHub Enterprise 服务器
+      href: configure-github-enterprise-server.md
     - name: 配置 Windows Server 故障转移群集
       href: configure-windows-server-failover-cluster.md
     - name: 轮换 cloudadmin 凭据
       href: rotate-cloudadmin-credentials.md
-    - name: 连接同一区域内的多个私有云
-      href: connect-multiple-private-clouds-same-region.md
     - name: 移动资源
       items:
         - name: 移动 Azure VMware 解决方案订阅
@@ -163,7 +163,7 @@
     - name: 常见问题解答
       items:
         - name: 常规
-          href: /azure/azure-vmware/faq
+          href: ./faq.yml
         - name: 客户通信
           href: /azure/azure-vmware/faq#customer-communication
         - name: 配置和设置

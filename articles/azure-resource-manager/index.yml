@@ -55,24 +55,24 @@ conceptualContent:
         - url: bicep/overview.md
           itemType: overview
           text: 概述
-        - url: /learn/modules/deploy-azure-resources-by-using-bicep-templates
+        - url: /learn/paths/bicep-deploy
           itemType: learn
-          text: 部署 Azure 资源
+          text: 学习路径
         - url: bicep/file.md
           itemType: reference
           text: Bicep 文件结构
-        - url: bicep/data-types.md
-          itemType: reference
-          text: Bicep 数据类型
         - url: bicep/bicep-functions.md
           itemType: reference
           text: Bicep 函数
-        - url: bicep/operators.md
+        - url: /azure/templates/
           itemType: reference
-          text: Bicep 运算符
+          text: 资源参考
         - url: bicep/deploy-powershell.md
           itemType: how-to-guide
           text: 部署
+        - url: ./bicep/best-practices.md
+          itemType: concept
+          text: 最佳做法
       footerLink:
         url: bicep/index.yml
         text: 查看详细信息

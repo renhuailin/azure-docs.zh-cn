@@ -115,6 +115,8 @@
       href: premium-deploy-certificates-enterprise-ca.md
     - name: 迁移到 Azure 防火墙高级版
       href: premium-migrate.md
+    - name: 使用 Terraform 迁移到高级版
+      href: /azure/developer/terraform/firewall-upgrade-premium?toc=/azure/firewall/toc.json&bc=/azure/firewall/breadcrumb/toc.json
     - name: 缩放出站 SNAT 端口
       href: integrate-with-nat-gateway.md
 - name: 参考

@@ -2,17 +2,17 @@
 title: 概述 - Azure Database for MySQL 灵活服务器
 description: 了解 Azure Database for MySQL 灵活服务器，这是 Microsoft 云中基于 MySQL 社区版的关系数据库服务。
 author: savjani
-ms.service: mysql
 ms.author: pariks
+ms.service: mysql
 ms.custom: mvc, references_regions
 ms.topic: overview
-ms.date: 6/19/2021
-ms.openlocfilehash: b13dd8cb1965399d0d8ab19891a986fe2b585d4b
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.date: 08/10/2021
+ms.openlocfilehash: a215100ebc858d2f6f7e154ea81ed5e006d3d9a4
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403034"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252230"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）
 
@@ -95,7 +95,7 @@ Azure Database for MySQL 灵活服务器是一种完全托管的数据库服务�
 
 MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web 和移动应用程序。 许多客户将其用于在线教育服务、视频流式处理服务、数字支付解决方案、电子商务平台、游戏服务、新闻门户、政府和医疗保健网站。 这些服务需要随着 Web 或移动应用程序流量的增加而服务和扩展。
 
-在应用程序端，应用程序通常是用 Java 或 php 开发的，并迁移到  [Azure 虚拟机规模集](../../virtual-machine-scale-sets/overview.md) 或  [Azure 应用服务](../../app-service/overview.md) 上运行，或容器化以在  [Azure Kubernetes 服务 (AKS)](../../aks/intro-kubernetes.md) 上运行。 使用虚拟机规模集、应用服务或 AKS 作为底层基础结构，可以通过即时预配新的 VM 并复制应用程序的无状态组件来满足请求，以简化应用程序的缩放，但是数据库通常会成为集中式有状态组件的瓶颈。
+在应用程序端，应用程序通常是用 Java 或 PHP 开发的，并迁移到  [Azure 虚拟机规模集](../../virtual-machine-scale-sets/overview.md) 或  [Azure 应用服务](../../app-service/overview.md) 上运行，或容器化以在  [Azure Kubernetes 服务 (AKS)](../../aks/intro-kubernetes.md) 上运行。 使用虚拟机规模集、应用服务或 AKS 作为底层基础结构，可以通过即时预配新的 VM 并复制应用程序的无状态组件来满足请求，以简化应用程序的缩放，但是数据库通常会成为集中式有状态组件的瓶颈。
 
 使用只读副本功能可将数据从 Azure Database for MySQL 灵活服务器复制到只读服务器。 可将源服务器中的数据复制到最多 10 个副本。 使用 MySQL 引擎的[基于二进制日志 (binlog) 文件位置的原生复制技术](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)以异步方式更新副本。 可以使用负载均衡器代理解决方案（例如 [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)）将应用程序工作负载无缝横向扩展到只读副本，而不会产生任何应用程序重构成本。 
 
@@ -160,7 +160,7 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 | 美国中部 | :heavy_check_mark: | :x: |
 | 美国东部 | :heavy_check_mark: | :heavy_check_mark: |
 | 美国东部 2 | :heavy_check_mark: | :heavy_check_mark: |
-| 法国中部 | :heavy_check_mark: | :x:|
+| 法国中部 | :heavy_check_mark: | :heavy_check_mark:|
 | 德国中西部 | :heavy_check_mark: | :x: |
 | Japan East | :heavy_check_mark: | :heavy_check_mark: |
 | 韩国中部 | :heavy_check_mark: | :x: |
@@ -171,6 +171,11 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 | 美国西部 | :heavy_check_mark: | :x: |
 | 美国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
 | 西欧 | :heavy_check_mark: | :heavy_check_mark: |
+| 澳大利亚东南部 | :heavy_check_mark: | :x: |
+| 南非北部 | :heavy_check_mark: | :x: |
+| 东亚（香港） | :heavy_check_mark: | :x: |
+| 印度中部 | :heavy_check_mark: | :x: |
+
 ## <a name="contacts"></a>联系人
 
 如果有任何关于使用 Azure Database for MySQL 灵活服务器的问题或建议，请发送电子邮件至 Azure Database for MySQL 团队 ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com))。 此电子邮件地址并不是技术支持别名。
@@ -192,4 +197,4 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 
 - 使用首选语言生成首个应用：
   - [Python](connect-python.md)
-  - [Php](connect-php.md)
+  - [PHP](connect-php.md)

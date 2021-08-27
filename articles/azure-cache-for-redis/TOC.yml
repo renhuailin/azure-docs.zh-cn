@@ -69,7 +69,7 @@
       href: cache-high-availability.md
     - name: 故障转移和修补
       href: cache-failover.md
-    - name: 最佳实践
+    - name: 最佳做法
       href: cache-best-practices.md
     - name: 安全性
       items:
@@ -110,6 +110,8 @@
           href: cache-reserved-pricing.md
         - name: 迁移到 Azure Cache for Redis
           href: cache-migration-guide.md
+        - name: 从 VNet 注入迁移到专用链接
+          href: cache-vnet-migration.md
         - name: 有关规划的常见问题
           href: cache-planning-faq.yml
     - name: 生成

@@ -5,20 +5,20 @@ author: Vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: d2b71b227500644a63eb116493abeba7576eb7eb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 324e30df7f63f5ca0abf7abd50ab890495e4e7cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464927"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721968"
 ---
-# <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>教程：通过“Azure Migrate：发现和评估”发现 VMware 环境中运行的服务器
+# <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>教程：使用 Azure Migrate 发现 VMware 环境中运行的服务器
 
 在迁移到 Azure 的过程中，你将发现本地库存和工作负载。
 
-本教程介绍如何使用一个轻型 Azure Migrate 设备通过“Azure Migrate：发现和评估”工具发现 VMware 环境中运行的服务器。 你要将该设备部署为 vCenter Server 实例中运行的服务器，以持续发现服务器及其性能元数据、服务器上运行的应用程序、服务器依赖项，以及 SQL Server 实例和数据库。
+本教程介绍如何使用一个轻型 Azure Migrate 设备通过“Azure Migrate：发现和评估”工具发现 VMware 环境中运行的服务器。 你要将该设备部署为 vCenter Server 实例中运行的服务器，以持续发现服务器及其性能元数据、服务器上运行的应用程序、服务器依赖项、ASP.NET Web 应用，以及 SQL Server 实例和数据库。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -42,7 +42,7 @@ ms.locfileid: "114464927"
 --- | ---
 **vCenter Server/ESXi 主机** | 需要一台运行 vCenter Server 6.7、6.5、6.0 或 5.5 版本的服务器。<br /><br /> 服务器必须托管在运行 5.5 或更高版本的 ESXi 主机上。<br /><br /> 在 vCenter Server 上，允许 TCP 端口 443 上的入站连接，以便设备可以收集配置和性能元数据。<br /><br /> 默认情况下，设备通过端口 443 连接到 vCenter Server。 如果运行 vCenter Server 的服务器侦听其他端口，则可以在设备配置管理器上提供 vCenter Server 详细信息时修改端口。<br /><br /> 在 ESXi 主机上，请确保允许通过 TCP 端口 443 进行入站访问，以便能够在服务器上发现已安装应用程序和无代理依赖项分析。
 **Azure Migrate 设备** | vCenter Server 必须具有以下要分配给托管 Azure Migrate 设备的服务器的资源：<br /><br /> - 32 GB RAM、8 个 vCPU 以及约 80 GB 的磁盘存储。<br /><br /> - 一台外部虚拟交换机，可在设备服务器上直接或通过代理进行 Internet 访问。
-**服务器** | 所有 Windows 和 Linux OS 版本均受支持，可用于发现配置和性能元数据。 <br /><br /> 对于服务器上的应用程序发现，所有 Windows 和 Linux OS 版本均受支持。 查看[支持无代理依赖项分析的 OS 版本](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)。<br /><br /> 为了发现已安装的应用程序和进行无代理依赖性分析，必须在服务器上安装并运行 VMware 工具（版本 10.2.1 或更高版本）。 在 Windows 服务器上必须安装 PowerShell 2.0 或更高版本。<br /><br /> 若要发现 SQL Server 实例和数据库，请查看[支持的 SQL Server 和 Windows OS 版本](migrate-support-matrix-vmware.md#sql-server-instance-and-database-discovery-requirements)身份验证机制。
+**服务器** | 所有 Windows 和 Linux OS 版本均受支持，可用于发现配置和性能元数据。 <br /><br /> 对于服务器上的应用程序发现，所有 Windows 和 Linux OS 版本均受支持。 查看[支持无代理依赖项分析的 OS 版本](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)。<br /><br /> 为了发现已安装的应用程序和进行无代理依赖性分析，必须在服务器上安装并运行 VMware 工具（版本 10.2.1 或更高版本）。 在 Windows 服务器上必须安装 PowerShell 2.0 或更高版本。<br /><br /> 若要发现 SQL Server 实例和数据库，请查看[支持的 SQL Server 和 Windows OS 版本](migrate-support-matrix-vmware.md#sql-server-instance-and-database-discovery-requirements)身份验证机制。<br /><br /> 若要发现在 IIS Web 服务器上运行的 ASP.NET Web 应用，请查看[支持的 Windows OS 和 IIS 版本](migrate-support-matrix-vmware.md#aspnet-web-apps-discovery-requirements)。
 
 ## <a name="prepare-an-azure-user-account"></a>准备 Azure 用户帐户
 
@@ -105,13 +105,13 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 
 ### <a name="create-an-account-to-access-servers"></a>创建用于访问服务器的帐户
 
-服务器上用户帐户必须具有所需的权限，才能启动对安装的应用程序的发现、无代理依赖项分析，以及对 SQL Server 实例和数据库的发现。 你可以在设备配置管理器上提供用户帐户信息。 设备不会在服务器上安装代理。
+服务器上用户帐户必须具有所需的权限，才能启动对安装的应用程序的发现、无代理依赖项分析，以及对 Web 应用及 SQL Server 实例和数据库的发现。 你可以在设备配置管理器上提供用户帐户信息。 设备不会在服务器上安装代理。
 
-* 对于 Windows 服务器，请在服务器上创建拥有管理员权限的帐户（本地或域）。 若要发现 SQL Server 实例和数据库，该 Windows 或 SQL Server 帐户必须是 sysadmin 服务器角色的成员。 了解如何[向用户帐户分配所需的角色](/sql/relational-databases/security/authentication-access/server-level-roles)。
+* 对于 Windows 服务器和 Web 应用发现，请在服务器上创建拥有管理员权限的帐户（本地或域）。 若要发现 SQL Server 实例和数据库，该 Windows 或 SQL Server 帐户必须是 sysadmin 服务器角色的成员。 了解如何[向用户帐户分配所需的角色](/sql/relational-databases/security/authentication-access/server-level-roles)。
 * 对于 Linux 服务器，请创建拥有 Root 特权的帐户。 或者，可以创建对 /bin/netstat 和 /bin/ls 文件具有 CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE 权限的帐户。
 
 > [!NOTE]
-> 可以在 Azure Migrate 设备配置管理器上添加多个服务器凭据，以启动对安装的应用程序的发现、无代理依赖项分析，以及对 SQL Server 实例和数据库的发现。 可以添加多个域，Windows（非域）、Linux（非域）或 SQL Server 身份验证凭据。 了解如何[添加服务器凭据](add-server-credentials.md)。
+> 可以在 Azure Migrate 设备配置管理器上添加多个服务器凭据，以启动对安装的应用程序的发现、无代理依赖项分析，以及对 Web 应用及 SQL Server 实例和数据库的发现。 可以添加多个域，Windows（非域）、Linux（非域）或 SQL Server 身份验证凭据。 了解如何[添加服务器凭据](add-server-credentials.md)。
 
 ## <a name="set-up-a-project"></a>设置项目
 
@@ -119,7 +119,7 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 
 1. 在“Azure 门户”中选择“所有服务”，然后搜索“Azure Migrate” 。
 1. 在“服务”下选择“Azure Migrate”。 
-1. 在“概述”中，根据迁移目标选择以下一种选项：“Windows、Linux 和 SQL Server”、“SQL Server (仅)”或“浏览更多方案”   。 
+1. 在“概述”中，根据迁移目标选择以下一种选项：“服务器、数据库和 Web 应用”、“SQL Server (仅)”或“浏览更多方案”   。
 1. 选择“创建项目”。 
 1. 在“创建项目”中，选择 Azure 订阅和资源组。 如果没有资源组，请创建一个资源组。
 1. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。 查看[公有云支持的地理位置](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云支持的地理位置](migrate-support-matrix.md#supported-geographies-azure-government)。
@@ -151,7 +151,7 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 
 #### <a name="generate-the-project-key"></a>生成项目密钥
 
-1. 在“迁移目标”中，选择“Windows、Linux 和 SQL 服务器” > “Azure Migrate: 发现和评估” > “发现”   。
+1. 在“迁移目标”中，选择“服务器、数据库和 Web 应用” > “Azure Migrate: 发现和评估” > “发现”   。
 1. 在“发现服务器”中，选择“服务器是否虚已拟化？”  > “是，使用 VMware vSphere 虚拟机监控程序”。
 1. 在“1: 生成项目密钥”中，为在 VMware 环境中发现服务器而设置的 Azure Migrate 设备提供名称。 该名称应是字母数字，且长度不得超过 14 个字符。
 1. 若要开始创建所需的 Azure 资源，请选择“生成密钥”。 创建资源时，请勿关闭“发现”窗格。
@@ -269,7 +269,7 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 
 ### <a name="provide-server-credentials"></a>提供服务器凭据
 
-在“步骤 3: 提供服务器凭据以执行软件盘存、无代理依赖项分析以及对 SQL Server 实例和数据库的发现”中，可以提供多个服务器凭据。 如果不想使用上述任何设备功能，可以跳过此步骤，开始执行 vCenter Server 发现。 随时可以更改此选项。
+在“步骤 3: 提供服务器凭据以在 VMware 环境中执行软件清单、无代理依赖项分析、SQL Server 实例与数据库的发现和 ASP.NET Web 应用的发现”中，可提供多个服务器凭据。 如果不想使用上述任何设备功能，可以跳过此步骤，开始执行 vCenter Server 发现。 随时可以更改此选项。
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="此屏幕截图显示为软件盘存、依赖项分析和 SQL Server 发现提供凭据。":::
 
@@ -288,7 +288,7 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
     选择“保存”。
 
     如果选择使用域凭据，还需要输入域的 FQDN。 必须使用 FQDN 才能在该域的 Active Directory 实例中验证凭据的真实性。
-1. 检查用于发现已安装的应用程序、执行无代理依赖项分析，以及发现 SQL Server 实例和数据库的帐户的[所需权限](add-server-credentials.md#required-permissions)。
+1. 检查用于发现已安装的应用程序、执行无代理依赖项分析，以及发现 Web 应用及 SQL Server 实例和数据库的帐户的[所需权限](add-server-credentials.md#required-permissions)。
 1. 若要一次添加多个凭据，请选择“添加更多”，以保存和添加更多凭据。
     选择“保存”或“添加更多”时，设备将使用域的 Active Directory 实例验证域凭据以进行身份验证。 每次添加后都会进行验证，以避免在设备循环访问以将凭据映射到相应服务器时帐户锁定。
 
@@ -311,14 +311,24 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 * [软件盘存](how-to-discover-applications.md)会标识在服务器上运行的 SQL Server 实例。 设备利用该功能收集的信息，尝试通过 Windows 身份验证凭据或设备上提供的 SQL Server 身份验证凭据连接到 SQL Server 实例。 然后，它会收集有关 SQL Server 数据库及其属性的数据。 SQL Server 发现每 24 小时执行一次。
 * 设备只能连接到与其建立了网络连接的 SQL Server 实例，而软件盘存本身无需网络连接。
 * 对安装的应用程序的发现过程可能需要超过 15 分钟。 具体时间取决于发现的服务器数量。 如果有 500 个服务器，门户中的 Azure Migrate 项目大约需要一小时才会显示发现的库存。
+* [软件清单](how-to-discover-applications.md)识别发现的服务器上存在的 Web 服务器角色。 如果发现服务器已启用 Web 服务器角色，Azure Migrate 将在服务器上执行 Web 应用发现。 Web 应用配置数据每 24 小时更新一次。
 * 在软件盘存过程中，针对服务器循环访问已添加的服务器凭据，并对这些凭据进行验证，以便进行无代理依赖项分析。 完成服务器发现后，可以在门户中对服务器启用无代理依赖项分析。 只能选择验证成功的服务器来启用[无代理依赖项分析](how-to-create-group-machine-dependencies-agentless.md)。
-* 在开始发现后的 24 小时内，SQL Server 实例和数据库数据将开始在门户中显示。
+* 在启动发现后的 24 小时内，ASP.NET Web 应用及 SQL Server 实例和数据库数据将开始在门户中显示。
 * 默认情况下，Azure Migrate 使用最安全的方法连接到 SQL 实例，即 Azure Migrate 通过将 TrustServerCertificate 属性设置为 `true`，对 Azure Migrate 设备和源 SQL Server 实例之间的通信进行加密。 此外，传输层使用 SSL 加密通道并绕过证书链来验证信任。 因此，必须将设备服务器设置为信任证书的根颁发机构。 但是，可以通过在设备上选择“编辑 SQL Server 连接属性”来修改连接设置。[了解详细信息](https://go.microsoft.com/fwlink/?linkid=2158046)以了解要选择的内容。
 
     :::image type="content" source="./media/tutorial-discover-vmware/sql-connection-properties.png" alt-text="显示如何编辑 SQL Server 连接属性的屏幕截图。":::
+
+若要启动 vCenter Server 发现，请选择“开始发现”。 成功启动发现后，可以通过查看源表中的 vCenter Server IP 地址或 FQDN 检查发现状态。
+
+### <a name="view-discovered-data"></a>查看发现的数据
+
+1. 返回到 Azure Migrate 门户。
+1. 单击下面屏幕截图中标记的“刷新”，查看发现的数据。
+    :::image type="content" source="./media/tutorial-discover-vmware/discovery-assessment-tile.png" alt-text="屏幕截图显示了如何刷新发现和评估磁贴中的数据。":::
 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[评估要迁移到 Azure VM 的服务器](./tutorial-assess-vmware-azure-vm.md)。
 - 了解如何[评估要迁移到 Azure SQL 的运行 SQL Server 的服务器](./tutorial-assess-sql.md)。
+- 了解如何[评估 Web 应用以迁移到 Azure 应用服务](./tutorial-assess-webapps.md)。
 - 查看[Azure Migrate 设备在发现期间收集的数据](migrate-appliance.md#collected-data---vmware)。

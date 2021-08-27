@@ -99,7 +99,7 @@ items:
                   - name: 数据流
                     href: concepts-data-flow-overview.md
           - name: 维护计划
-            href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/maintenance-scheduling.md?context=/azure/synapse-analytics/context/context
           - name: 源代码管理
             href: ./cicd/source-control.md
           - name: 持续集成和交付
@@ -212,14 +212,14 @@ items:
             href: sql/on-demand-workspace-overview.md
             displayname: overview
           - name: 专用 SQL 池
-            href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?context=/azure/synapse-analytics/context/context
             displayname: overview
           - name: 功能概述
             href: sql/overview-features.md
           - name: 资源消耗模型
             href: sql/resource-consumption-models.md
           - name: 容量限制
-            href: ./sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?context=/azure/synapse-analytics/context/context
           - name: 无服务器 SQL 池的成本管理
             href: sql/data-processed.md
           - name: 无服务器 SQL 池最佳做法
@@ -235,14 +235,14 @@ items:
           - name: 使用 Azure 门户创建专用 SQL 池
             href: quickstart-create-sql-pool-portal.md
           - name: 使用 Azure 门户进行暂停和恢复
-            href: ./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/pause-and-resume-compute-portal.md?context=/azure/synapse-analytics/context/context
           - name: 使用专用 SQL 池加载数据
             items:
               - name: COPY 语句
-                href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?context=/azure/synapse-analytics/context/context
                 displayname: 'bulk, load'
               - name: COPY 语句示例
-                href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples.md?context=/azure/synapse-analytics/context/context
                 displayname: 'bulk, load'
               - name: Synapse Studio
                 href: quickstart-load-studio-sql-pool.md
@@ -252,15 +252,15 @@ items:
               - name: 创建工作负荷分类器
                 items:
                   - name: 门户
-                    href: ./sql-data-warehouse/quickstart-create-a-workload-classifier-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/quickstart-create-a-workload-classifier-portal.md?context=/azure/synapse-analytics/context/context
                   - name: T-SQL
-                    href: ./sql-data-warehouse/quickstart-create-a-workload-classifier-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/quickstart-create-a-workload-classifier-tsql.md?context=/azure/synapse-analytics/context/context
               - name: 创建工作负荷隔离
                 items:
                   - name: 门户
-                    href: ./sql-data-warehouse/quickstart-configure-workload-isolation-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/quickstart-configure-workload-isolation-portal.md?context=/azure/synapse-analytics/context/context
                   - name: T-SQL
-                    href: ./sql-data-warehouse/quickstart-configure-workload-isolation-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/quickstart-configure-workload-isolation-tsql.md?context=/azure/synapse-analytics/context/context
       - name: 教程
         items:
           - name: 使用无服务器 SQL 池分析数据
@@ -272,12 +272,12 @@ items:
       - name: 概念
         items:
           - name: 备份和还原
-            href: ./sql-data-warehouse/backup-and-restore.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/backup-and-restore.md?context=/azure/synapse-analytics/context/context
           - name: 数据引入和准备
             items:
               - name: 概述
-                href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-              - name: 最佳实践
+                href: ./sql-data-warehouse/design-elt-data-loading.md?context=/azure/synapse-analytics/context/context
+              - name: 最佳做法
                 href: sql/data-loading-best-practices.md
               - name: 列存储压缩
                 href: sql/data-load-columnstore-compression.md
@@ -295,10 +295,10 @@ items:
                     displayname: 'materialized, view,'
                     href: sql/develop-materialized-view-performance-tuning.md
                   - name: 创建
-                    href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql?context=/azure/synapse-analytics/context/context
                     displayname: 'materialized, view'
                   - name: 更改
-                    href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: /sql/t-sql/statements/alter-materialized-view-transact-sql?context=/azure/synapse-analytics/context/context
                     displayname: 'materialized, view'
               - name: 有序聚集列存储索引
                 items:
@@ -310,15 +310,15 @@ items:
                   - name: 性能优化指南
                     href: ./sql-data-warehouse/performance-tuning-result-set-caching.md
                   - name: 为数据库设置
-                    href: /sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest
+                    href: /sql/t-sql/statements/alter-database-transact-sql-set-options?context=/azure/synapse-analytics/context/context&view=azure-sqldw-latest
                   - name: 为会话设置
-                    href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest
+                    href: /sql/t-sql/statements/set-result-set-caching-transact-sql?context=/azure/synapse-analytics/context/context&view=azure-sqldw-latest
                   - name: 检查缓存大小
-                    href: /sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest
+                    href: /sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?context=/azure/synapse-analytics/context/context&view=azure-sqldw-latest
                   - name: 清理缓存
-                    href: /sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest
+                    href: /sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?context=/azure/synapse-analytics/context/context&view=azure-sqldw-latest
               - name: 机器学习预测
-                href: ./sql-data-warehouse/sql-data-warehouse-predict.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-predict.md?context=/azure/synapse-analytics/context/context
               - name: 表
                 items:
                   - name: 概述
@@ -326,25 +326,25 @@ items:
                   - name: CETAS
                     href: sql/develop-tables-cetas.md
                   - name: CTAS
-                    href: ./sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context
                   - name: 数据类型
                     href: sql/develop-tables-data-types.md
                   - name: 分布式表
-                    href: ./sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context
                   - name: 表约束
-                    href: ./sql-data-warehouse/sql-data-warehouse-table-constraints.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/sql-data-warehouse-table-constraints.md?context=/azure/synapse-analytics/context/context
                   - name: 外部表
                     href: sql/develop-tables-external-tables.md
                   - name: 索引
-                    href: ./sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context
                   - name: 标识
-                    href: ./sql-data-warehouse/sql-data-warehouse-tables-identity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/sql-data-warehouse-tables-identity.md?context=/azure/synapse-analytics/context/context
                   - name: OPENROWSET
                     href: sql/develop-openrowset.md
                   - name: 分区
-                    href: ./sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context
                   - name: 复制表
-                    href: ./sql-data-warehouse/design-guidance-for-replicated-tables.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/design-guidance-for-replicated-tables.md?context=/azure/synapse-analytics/context/context
                   - name: 统计信息
                     href: sql/develop-tables-statistics.md
                   - name: 临时
@@ -387,11 +387,11 @@ items:
           - name: 监视
             items:
               - name: 概述
-                href: ./sql-data-warehouse/sql-data-warehouse-overview-manageability-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-overview-manageability-monitoring.md?context=/azure/synapse-analytics/context/context
               - name: 资源利用率和查询活动
-                href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?context=/azure/synapse-analytics/context/context
               - name: 建议
-                href: ./sql-data-warehouse/sql-data-warehouse-concept-recommendations.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-concept-recommendations.md?context=/azure/synapse-analytics/context/context
           - name: 安全性
             items:
               - name: 数据库访问控制
@@ -399,9 +399,9 @@ items:
               - name: 数据安全
                 items:
                   - name: 行级别安全性
-                    href: ./sql-data-warehouse/column-level-security.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/column-level-security.md?context=/azure/synapse-analytics/context/context
                   - name: 行级安全性
-                    href: /sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: /sql/relational-databases/security/row-level-security?context=/azure/synapse-analytics/context/context
               - name: 数据加密
                 items:
                   - name: 透明数据加密概述
@@ -412,21 +412,21 @@ items:
           - name: 工作负荷管理
             items:
               - name: 概述
-                href: ./sql-data-warehouse/sql-data-warehouse-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-workload-management.md?context=/azure/synapse-analytics/context/context
                 displayname: 'workload, management'
               - name: 工作负荷分类
-                href: ./sql-data-warehouse/sql-data-warehouse-workload-classification.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-workload-classification.md?context=/azure/synapse-analytics/context/context
               - name: 工作负荷重要性
-                href: ./sql-data-warehouse/sql-data-warehouse-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-workload-importance.md?context=/azure/synapse-analytics/context/context
               - name: 工作负荷隔离
-                href: ./sql-data-warehouse/sql-data-warehouse-workload-isolation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-workload-isolation.md?context=/azure/synapse-analytics/context/context
               - name: 工作负荷管理监视
-                href: ./sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor.md?context=/azure/synapse-analytics/context/context
               - name: 内存和并发限制
-                href: ./sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/memory-concurrency-limits.md?context=/azure/synapse-analytics/context/context
                 displayname: 'workload, management'
               - name: 资源类
-                href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/resource-classes-for-workload-management.md?context=/azure/synapse-analytics/context/context
                 displayname: 'workload, management'
       - name: 操作指南
         items:
@@ -445,42 +445,42 @@ items:
               - name: SQL 池 - Synapse Studio
                 href: monitoring/how-to-monitor-sql-pools.md
               - name: 监视 Gen2 缓存
-                href: ./sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache.md?context=/azure/synapse-analytics/context/context
               - name: 监视工作负荷 - DMV
-                href: ./sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-manage-monitor.md?context=/azure/synapse-analytics/context/context
               - name: 监视工作负荷 - 门户
-                href: ./sql-data-warehouse/sql-data-warehouse-monitor-workload-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-monitor-workload-portal.md?context=/azure/synapse-analytics/context/context
               - name: 管理工作负荷
                 items:
                   - name: 分析工作负荷
-                    href: ./sql-data-warehouse/analyze-your-workload.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/analyze-your-workload.md?context=/azure/synapse-analytics/context/context
                   - name: 配置工作负荷重要性
-                    href: ./sql-data-warehouse/sql-data-warehouse-how-to-configure-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/sql-data-warehouse-how-to-configure-workload-importance.md?context=/azure/synapse-analytics/context/context
                   - name: 管理和监视工作负荷重要性
-                    href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?context=/azure/synapse-analytics/context/context
                   - name: 将资源类转换为工作负荷组
-                    href: ./sql-data-warehouse/sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md?context=/azure/synapse-analytics/context/context
           - name: 引入和准备数据
             items:
               - name: 到数据仓库中
                 items:
                   - name: Azure Data Lake Storage
-                    href: ./sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md?context=/azure/synapse-analytics/context/context
                   - name: 数据工厂
-                    href: ../data-factory/load-azure-sql-data-warehouse.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json
+                    href: ../data-factory/load-azure-sql-data-warehouse.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json&tabs=synapse-analytics
                   - name: Azure Databricks
                     href: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json
                   - name: SSIS
                     href: /sql/integration-services/load-data-to-sql-data-warehouse
                     displayname: 'integration, services'
                   - name: 纽约出租车数据
-                    href: ./sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?context=/azure/synapse-analytics/context/context
                     displayname: 'load, blob'
                   - name: Contoso 公共数据
-                    href: ./sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md?context=/azure/synapse-analytics/context/context
                     displayname: 'load, blob'
                   - name: 加载 WideWorldImporters
-                    href: ./sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/load-data-wideworldimportersdw.md?context=/azure/synapse-analytics/context/context
                   - name: 使用复制活动
                     href: data-integration/data-integration-sql-pool.md
               - name: 到 Data Lake 中
@@ -490,9 +490,9 @@ items:
           - name: 更改管理和部署
             items:
               - name: 安装 Visual Studio SSDT
-                href: ./sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?context=/azure/synapse-analytics/context/context
               - name: 持续集成和持续部署
-                href: ./sql-data-warehouse/sql-data-warehouse-continuous-integration-and-deployment.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ./sql-data-warehouse/sql-data-warehouse-continuous-integration-and-deployment.md?context=/azure/synapse-analytics/context/context
           - name: 查询外部数据
             items:
               - name: 概述
@@ -524,7 +524,7 @@ items:
               - name: 构建数据管道
                 items:
                   - name: 添加 Azure 流分析作业
-                    href: ./sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ./sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics.md?context=/azure/synapse-analytics/context/context
           - name: 与工具和应用程序连接
             items:
               - name: 概述
@@ -540,11 +540,11 @@ items:
               - name: 使用 Visual Studio SSDT 进行查询
                 href: sql/get-started-visual-studio.md
               - name: 使用 .NET Core 进行查询
-                href: ../azure-sql/database/connect-query-dotnet-core.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../azure-sql/database/connect-query-dotnet-core.md?context=/azure/synapse-analytics/context/context
               - name: 使用 Visual Studio .NET 进行查询
-                href: ../azure-sql/database/connect-query-dotnet-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../azure-sql/database/connect-query-dotnet-visual-studio.md?context=/azure/synapse-analytics/context/context
               - name: 使用 Python 进行查询
-                href: ../azure-sql/database/connect-query-python.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../azure-sql/database/connect-query-python.md?context=/azure/synapse-analytics/context/context
               - name: 使用 sqlcmd 进行查询
                 href: sql/get-started-connect-sqlcmd.md
   - name: Apache Spark
@@ -587,7 +587,7 @@ items:
                 href: ./spark/apache-spark-version-support.md
               - name: Azure Synapse Apache Spark 2.4 运行时
                 href: ./spark/apache-spark-24-runtime.md
-              - name: Azure Synapse Apache Spark 3.0 运行时
+              - name: Azure Synapse Apache Spark 3.1 运行时
                 href: ./spark/apache-spark-3-runtime.md
           - name: 机器学习
             href: ./spark/apache-spark-machine-learning-concept.md
@@ -666,9 +666,9 @@ items:
       - name: 概述
         items:
           - name: Synapse Link for Azure Cosmos DB
-            href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ../cosmos-db/synapse-link.md?context=/azure/synapse-analytics/context/context
           - name: Synapse Link for Dataverse
-            href: /powerapps/maker/data-platform/export-to-data-lake?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: /powerapps/maker/data-platform/export-to-data-lake?context=/azure/synapse-analytics/context/context
       - name: 快速入门
         items:
           - name: 连接到 Synapse Link for Cosmos DB
@@ -678,43 +678,43 @@ items:
           - name: Cosmos DB
             items:
               - name: 分析存储 - 概述
-                href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../cosmos-db/analytical-store-introduction.md?context=/azure/synapse-analytics/context/context
               - name: Synapse Link 支持的功能
                 href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
               - name: Cosmos DB 常见问题解答
-                href: ../cosmos-db/synapse-link-frequently-asked-questions.yml?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../cosmos-db/synapse-link-frequently-asked-questions.yml?context=/azure/synapse-analytics/context/context
               - name: Synapse Link 用例
-                href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../cosmos-db/synapse-link-use-cases.md?context=/azure/synapse-analytics/context/context
           - name: Dataverse
             items:
               - name: 什么是 Dataverse
-                href: /powerapps/maker/data-platform/data-platform-intro?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: /powerapps/maker/data-platform/data-platform-intro?context=/azure/synapse-analytics/context/context
               - name: Synapse Link 中的配置设置
-                href: /powerapps/maker/data-platform/azure-synapse-link-advanced-configuration?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: /powerapps/maker/data-platform/azure-synapse-link-advanced-configuration?context=/azure/synapse-analytics/context/context
               - name: Dataverse 常见问题解答
-                href: /powerapps/maker/data-platform/export-data-lake-faq?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: /powerapps/maker/data-platform/export-data-lake-faq?context=/azure/synapse-analytics/context/context
       - name: 操作指南
         items:
           - name: Cosmos DB
             items:
               - name: 配置 Synapse Link
-                href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../cosmos-db/configure-synapse-link.md?context=/azure/synapse-analytics/context/context
               - name: 连接到 Azure Synapse Link for Cosmos DB
                 href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
               - name: 使用 Power BI 和无服务器 SQL 池来分析 Azure Cosmos DB
-                href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../cosmos-db/synapse-link-power-bi.md?context=/azure/synapse-analytics/context/context
               - name: 使用 Apache Spark 查询 Azure Cosmos DB 分析存储
                 href: ./synapse-link/how-to-query-analytical-store-spark.md
               - name: 使用 Apache Spark 将数据从 Synapse Link 复制到专用 SQL 池
                 href: ./synapse-link/how-to-copy-to-sql-pool.md
               - name: 使用无服务器 SQL 池查询 Azure Cosmos DB 分析存储
-                href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: sql/query-cosmos-db-analytical-store.md?context=/azure/synapse-analytics/context/context
           - name: Dataverse
             items:
               - name: 配置 Synapse Link for Dataverse
-                href: /powerapps/maker/data-platform/azure-synapse-link-synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: /powerapps/maker/data-platform/azure-synapse-link-synapse?context=/azure/synapse-analytics/context/context
               - name: 将数据导出到 Azure Synapse
-                href: /dynamics365/customer-insights/audience-insights/export-azure-synapse-analytics?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: /dynamics365/customer-insights/audience-insights/export-azure-synapse-analytics?context=/azure/synapse-analytics/context/context
   - name: 管道和数据流
     items:
       - name: 快速入门
@@ -728,15 +728,15 @@ items:
       - name: 概念
         items:
           - name: 管道和活动
-            href: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ../data-factory/concepts-pipelines-activities.md?context=/azure/synapse-analytics/context/context
           - name: 链接服务
-            href: ../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ../data-factory/concepts-linked-services.md?context=/azure/synapse-analytics/context/context
           - name: 数据集
-            href: ../data-factory/concepts-datasets-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ../data-factory/concepts-datasets-linked-services.md?context=/azure/synapse-analytics/context/context
           - name: 执行和触发器
-            href: ../data-factory/concepts-pipeline-execution-triggers.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ../data-factory/concepts-pipeline-execution-triggers.md?context=/azure/synapse-analytics/context/context
           - name: 集成运行时
-            href: ../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ../data-factory/concepts-integration-runtime.md?context=/azure/synapse-analytics/context/context
           - name: 与 Azure 数据工厂的区别
             href: ./data-integration/concepts-data-factory-differences.md
           - name: 数据流
@@ -744,390 +744,390 @@ items:
               - name: 数据流概述
                 href: concepts-data-flow-overview.md
               - name: 调试模式
-                href: ../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/concepts-data-flow-debug-mode.md?context=/azure/synapse-analytics/context/context
               - name: 架构偏差
-                href: ../data-factory/concepts-data-flow-schema-drift.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/concepts-data-flow-schema-drift.md?context=/azure/synapse-analytics/context/context
               - name: 列模式
-                href: ../data-factory/concepts-data-flow-column-pattern.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/concepts-data-flow-column-pattern.md?context=/azure/synapse-analytics/context/context
               - name: 数据流监视
-                href: ../data-factory/concepts-data-flow-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/concepts-data-flow-monitoring.md?context=/azure/synapse-analytics/context/context
               - name: 数据流性能
-                href: ../data-factory/concepts-data-flow-performance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/concepts-data-flow-performance.md?context=/azure/synapse-analytics/context/context
               - name: 管理图
-                href: ../data-factory/concepts-data-flow-manage-graph.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/concepts-data-flow-manage-graph.md?context=/azure/synapse-analytics/context/context
               - name: 表达式生成器
-                href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/concepts-data-flow-expression-builder.md?context=/azure/synapse-analytics/context/context
               - name: 表达式语言
-                href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-expression-functions.md?context=/azure/synapse-analytics/context/context
       - name: 操作指南
         items:
           - name: 作者
             items:
               - name: 直观创作数据工厂
-                href: ../data-factory/author-visually.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/author-visually.md?context=/azure/synapse-analytics/context/context
               - name: 迭代开发和调试
-                href: ../data-factory/iterative-development-debugging.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/iterative-development-debugging.md?context=/azure/synapse-analytics/context/context
           - name: 连接器
             items:
               - name: 连接器概述
-                href: ../data-factory/connector-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-overview.md?context=/azure/synapse-analytics/context/context
               - name: Amazon Marketplace Web Service
-                href: ../data-factory/connector-amazon-marketplace-web-service.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-amazon-marketplace-web-service.md?context=/azure/synapse-analytics/context/context
               - name: Amazon Redshift
-                href: ../data-factory/connector-amazon-redshift.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-amazon-redshift.md?context=/azure/synapse-analytics/context/context
               - name: Amazon S3
-                href: ../data-factory/connector-amazon-simple-storage-service.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-amazon-simple-storage-service.md?context=/azure/synapse-analytics/context/context
               - name: Amazon S3 兼容存储
-                href: ../data-factory/connector-amazon-s3-compatible-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-amazon-s3-compatible-storage.md?context=/azure/synapse-analytics/context/context
               - name: Avro 格式
-                href: ../data-factory/format-avro.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/format-avro.md?context=/azure/synapse-analytics/context/context
               - name: Azure Blob 存储
-                href: ../data-factory/connector-azure-blob-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-blob-storage.md?context=/azure/synapse-analytics/context/context
               - name: Azure 认知搜索
-                href: ../data-factory/connector-azure-search.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-search.md?context=/azure/synapse-analytics/context/context
               - name: Azure Cosmos DB SQL API
-                href: ../data-factory/connector-azure-cosmos-db.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-cosmos-db.md?context=/azure/synapse-analytics/context/context
               - name: Azure Cosmos DB 的用于 MongoDB 的 API
-                href: ../data-factory/connector-azure-cosmos-db-mongodb-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-cosmos-db-mongodb-api.md?context=/azure/synapse-analytics/context/context
               - name: Azure 数据资源管理器
-                href: ../data-factory/connector-azure-data-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-data-explorer.md?context=/azure/synapse-analytics/context/context
               - name: Azure Data Lake Storage Gen1
-                href: ../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-data-lake-store.md?context=/azure/synapse-analytics/context/context
               - name: Azure Data Lake Storage Gen2
-                href: ../data-factory/connector-azure-data-lake-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-data-lake-storage.md?context=/azure/synapse-analytics/context/context
               - name: Azure Database for MariaDB
-                href: ../data-factory/connector-azure-database-for-mariadb.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-database-for-mariadb.md?context=/azure/synapse-analytics/context/context
               - name: Azure Database for MySQL
-                href: ../data-factory/connector-azure-database-for-mysql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-database-for-mysql.md?context=/azure/synapse-analytics/context/context
               - name: Azure Database for PostgreSQL
-                href: ../data-factory/connector-azure-database-for-postgresql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-database-for-postgresql.md?context=/azure/synapse-analytics/context/context
               - name: Azure Databricks Delta Lake
-                href: ../data-factory/connector-azure-databricks-delta-lake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-databricks-delta-lake.md?context=/azure/synapse-analytics/context/context
               - name: Azure 文件存储
-                href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-file-storage.md?context=/azure/synapse-analytics/context/context
               - name: Azure SQL Database
-                href: ../data-factory/connector-azure-sql-database.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-sql-database.md?context=/azure/synapse-analytics/context/context
               - name: Azure SQL 托管实例
                 href: ../data-factory/connector-azure-sql-managed-instance.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json
               - name: Azure Synapse Analytics
-                href: ../data-factory/connector-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-sql-data-warehouse.md?context=/azure/synapse-analytics/context/context
               - name: Azure 表存储
-                href: ../data-factory/connector-azure-table-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-azure-table-storage.md?context=/azure/synapse-analytics/context/context
               - name: 二进制格式
-                href: ../data-factory/format-binary.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/format-binary.md?context=/azure/synapse-analytics/context/context
               - name: Cassandra
-                href: ../data-factory/connector-cassandra.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-cassandra.md?context=/azure/synapse-analytics/context/context
               - name: Common Data Model 格式
-                href: ../data-factory/format-common-data-model.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/format-common-data-model.md?context=/azure/synapse-analytics/context/context
               - name: Concur
-                href: ../data-factory/connector-concur.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-concur.md?context=/azure/synapse-analytics/context/context
               - name: Couchbase
-                href: ../data-factory/connector-couchbase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-couchbase.md?context=/azure/synapse-analytics/context/context
               - name: Dataverse
-                href: ../data-factory/connector-dynamics-crm-office-365.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-dynamics-crm-office-365.md?context=/azure/synapse-analytics/context/context
               - name: DB2
-                href: ../data-factory/connector-db2.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-db2.md?context=/azure/synapse-analytics/context/context
               - name: 带分隔符的文本格式
-                href: ../data-factory/format-delimited-text.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/format-delimited-text.md?context=/azure/synapse-analytics/context/context
               - name: 钻取
-                href: ../data-factory/connector-drill.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-drill.md?context=/azure/synapse-analytics/context/context
               - name: Dynamics 365
-                href: ../data-factory/connector-dynamics-crm-office-365.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-dynamics-crm-office-365.md?context=/azure/synapse-analytics/context/context
               - name: Dynamics AX
-                href: ../data-factory/connector-dynamics-ax.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-dynamics-ax.md?context=/azure/synapse-analytics/context/context
               - name: Dynamics CRM
-                href: ../data-factory/connector-dynamics-crm-office-365.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-dynamics-crm-office-365.md?context=/azure/synapse-analytics/context/context
               - name: Excel 格式
-                href: ../data-factory/format-excel.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/format-excel.md?context=/azure/synapse-analytics/context/context
               - name: 文件系统
-                href: ../data-factory/connector-file-system.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-file-system.md?context=/azure/synapse-analytics/context/context
               - name: FTP
-                href: ../data-factory/connector-ftp.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-ftp.md?context=/azure/synapse-analytics/context/context
               - name: GitHub
-                href: ../data-factory/connector-github.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-github.md?context=/azure/synapse-analytics/context/context
               - name: Google AdWords
-                href: ../data-factory/connector-google-adwords.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-google-adwords.md?context=/azure/synapse-analytics/context/context
               - name: Google BigQuery
-                href: ../data-factory/connector-google-bigquery.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-google-bigquery.md?context=/azure/synapse-analytics/context/context
               - name: Google Cloud Storage
-                href: ../data-factory/connector-google-cloud-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-google-cloud-storage.md?context=/azure/synapse-analytics/context/context
               - name: Greenplum
-                href: ../data-factory/connector-greenplum.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-greenplum.md?context=/azure/synapse-analytics/context/context
               - name: HBase
-                href: ../data-factory/connector-hbase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-hbase.md?context=/azure/synapse-analytics/context/context
               - name: HDFS
-                href: ../data-factory/connector-hdfs.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-hdfs.md?context=/azure/synapse-analytics/context/context
               - name: Hive
-                href: ../data-factory/connector-hive.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-hive.md?context=/azure/synapse-analytics/context/context
               - name: HTTP
-                href: ../data-factory/connector-http.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-http.md?context=/azure/synapse-analytics/context/context
               - name: HubSpot
-                href: ../data-factory/connector-hubspot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-hubspot.md?context=/azure/synapse-analytics/context/context
               - name: Impala
-                href: ../data-factory/connector-impala.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-impala.md?context=/azure/synapse-analytics/context/context
               - name: Informix
-                href: ../data-factory/connector-informix.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-informix.md?context=/azure/synapse-analytics/context/context
               - name: Jira
-                href: ../data-factory/connector-jira.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-jira.md?context=/azure/synapse-analytics/context/context
               - name: JSON 格式
-                href: ../data-factory/format-json.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/format-json.md?context=/azure/synapse-analytics/context/context
               - name: Magento
-                href: ../data-factory/connector-magento.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-magento.md?context=/azure/synapse-analytics/context/context
               - name: MariaDB
-                href: ../data-factory/connector-mariadb.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-mariadb.md?context=/azure/synapse-analytics/context/context
               - name: Marketo
-                href: ../data-factory/connector-marketo.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-marketo.md?context=/azure/synapse-analytics/context/context
               - name: Microsoft Access
-                href: ../data-factory/connector-microsoft-access.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-microsoft-access.md?context=/azure/synapse-analytics/context/context
               - name: MongoDB
-                href: ../data-factory/connector-mongodb.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-mongodb.md?context=/azure/synapse-analytics/context/context
                 items:
                   - name: MongoDB（旧版）
-                    href: ../data-factory/connector-mongodb-legacy.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ../data-factory/connector-mongodb-legacy.md?context=/azure/synapse-analytics/context/context
               - name: MongoDB Atlas
-                href: ../data-factory/connector-mongodb-atlas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-mongodb-atlas.md?context=/azure/synapse-analytics/context/context
               - name: MySQL
-                href: ../data-factory/connector-mysql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-mysql.md?context=/azure/synapse-analytics/context/context
               - name: Netezza
-                href: ../data-factory/connector-netezza.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-netezza.md?context=/azure/synapse-analytics/context/context
               - name: OData
-                href: ../data-factory/connector-odata.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-odata.md?context=/azure/synapse-analytics/context/context
               - name: ODBC
-                href: ../data-factory/connector-odbc.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-odbc.md?context=/azure/synapse-analytics/context/context
               - name: Office 365
-                href: ../data-factory/connector-office-365.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-office-365.md?context=/azure/synapse-analytics/context/context
               - name: Oracle
-                href: ../data-factory/connector-oracle.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-oracle.md?context=/azure/synapse-analytics/context/context
               - name: Oracle 云存储
-                href: ../data-factory/connector-oracle-cloud-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-oracle-cloud-storage.md?context=/azure/synapse-analytics/context/context
               - name: Oracle Eloqua
-                href: ../data-factory/connector-oracle-eloqua.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-oracle-eloqua.md?context=/azure/synapse-analytics/context/context
               - name: Oracle Responsys
-                href: ../data-factory/connector-oracle-responsys.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-oracle-responsys.md?context=/azure/synapse-analytics/context/context
               - name: Oracle 服务云
-                href: ../data-factory/connector-oracle-service-cloud.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-oracle-service-cloud.md?context=/azure/synapse-analytics/context/context
               - name: ORC 格式
-                href: ../data-factory/format-orc.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/format-orc.md?context=/azure/synapse-analytics/context/context
               - name: Parquet 格式
-                href: ../data-factory/format-parquet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/format-parquet.md?context=/azure/synapse-analytics/context/context
               - name: PayPal
-                href: ../data-factory/connector-paypal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-paypal.md?context=/azure/synapse-analytics/context/context
               - name: Phoenix
-                href: ../data-factory/connector-phoenix.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-phoenix.md?context=/azure/synapse-analytics/context/context
               - name: PostgreSQL
-                href: ../data-factory/connector-postgresql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-postgresql.md?context=/azure/synapse-analytics/context/context
               - name: Presto
-                href: ../data-factory/connector-presto.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-presto.md?context=/azure/synapse-analytics/context/context
               - name: QuickBooks Online
-                href: ../data-factory/connector-quickbooks.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-quickbooks.md?context=/azure/synapse-analytics/context/context
               - name: REST
-                href: ../data-factory/connector-rest.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-rest.md?context=/azure/synapse-analytics/context/context
               - name: Salesforce
-                href: ../data-factory/connector-salesforce.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-salesforce.md?context=/azure/synapse-analytics/context/context
               - name: Salesforce 服务云
-                href: ../data-factory/connector-salesforce-service-cloud.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-salesforce-service-cloud.md?context=/azure/synapse-analytics/context/context
               - name: Salesforce Marketing Cloud
-                href: ../data-factory/connector-salesforce-marketing-cloud.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-salesforce-marketing-cloud.md?context=/azure/synapse-analytics/context/context
               - name: SAP Business Warehouse Open Hub
-                href: ../data-factory/connector-sap-business-warehouse-open-hub.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-sap-business-warehouse-open-hub.md?context=/azure/synapse-analytics/context/context
                 items:
                   - name: 加载 SAP BW 数据
-                    href: ../data-factory/load-sap-bw-data.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ../data-factory/load-sap-bw-data.md?context=/azure/synapse-analytics/context/context
               - name: SAP Business Warehouse MDX
-                href: ../data-factory/connector-sap-business-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-sap-business-warehouse.md?context=/azure/synapse-analytics/context/context
               - name: SAP Cloud for Customer
-                href: ../data-factory/connector-sap-cloud-for-customer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-sap-cloud-for-customer.md?context=/azure/synapse-analytics/context/context
               - name: SAP ECC
-                href: ../data-factory/connector-sap-ecc.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-sap-ecc.md?context=/azure/synapse-analytics/context/context
               - name: SAP HANA
-                href: ../data-factory/connector-sap-hana.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-sap-hana.md?context=/azure/synapse-analytics/context/context
               - name: SAP 表
-                href: ../data-factory/connector-sap-table.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-sap-table.md?context=/azure/synapse-analytics/context/context
               - name: ServiceNow
-                href: ../data-factory/connector-servicenow.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-servicenow.md?context=/azure/synapse-analytics/context/context
               - name: SFTP
-                href: ../data-factory/connector-sftp.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-sftp.md?context=/azure/synapse-analytics/context/context
               - name: SharePoint Online 列表
-                href: ../data-factory/connector-sharepoint-online-list.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-sharepoint-online-list.md?context=/azure/synapse-analytics/context/context
               - name: Shopify
-                href: ../data-factory/connector-shopify.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-shopify.md?context=/azure/synapse-analytics/context/context
               - name: Snowflake
-                href: ../data-factory/connector-snowflake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-snowflake.md?context=/azure/synapse-analytics/context/context
               - name: Spark
-                href: ../data-factory/connector-spark.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-spark.md?context=/azure/synapse-analytics/context/context
               - name: SQL Server
-                href: ../data-factory/connector-sql-server.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-sql-server.md?context=/azure/synapse-analytics/context/context
               - name: Square
-                href: ../data-factory/connector-square.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-square.md?context=/azure/synapse-analytics/context/context
               - name: Sybase
-                href: ../data-factory/connector-sybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-sybase.md?context=/azure/synapse-analytics/context/context
               - name: Teradata
-                href: ../data-factory/connector-teradata.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-teradata.md?context=/azure/synapse-analytics/context/context
               - name: Vertica
-                href: ../data-factory/connector-vertica.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-vertica.md?context=/azure/synapse-analytics/context/context
               - name: Web Table
-                href: ../data-factory/connector-web-table.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-web-table.md?context=/azure/synapse-analytics/context/context
               - name: Xero
-                href: ../data-factory/connector-xero.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-xero.md?context=/azure/synapse-analytics/context/context
               - name: XML 格式
-                href: ../data-factory/format-xml.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/format-xml.md?context=/azure/synapse-analytics/context/context
               - name: Zoho
-                href: ../data-factory/connector-zoho.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-zoho.md?context=/azure/synapse-analytics/context/context
           - name: 移动数据
             items:
               - name: 使用“复制”活动复制数据
-                href: ../data-factory/copy-activity-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/copy-activity-overview.md?context=/azure/synapse-analytics/context/context
               - name: 监视复制活动
-                href: ../data-factory/copy-activity-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/copy-activity-monitoring.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: 使用 Delete 活动删除文件
-                href: ../data-factory/delete-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/delete-activity.md?context=/azure/synapse-analytics/context/context
               - name: 复制数据工具
-                href: ../data-factory/copy-data-tool.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/copy-data-tool.md?context=/azure/synapse-analytics/context/context
               - name: 格式和压缩支持
-                href: ../data-factory/supported-file-formats-and-compression-codecs.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/supported-file-formats-and-compression-codecs.md?context=/azure/synapse-analytics/context/context
               - name: 复制活动性能
                 items:
                   - name: 性能和可伸缩性指南
-                    href: ../data-factory/copy-activity-performance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ../data-factory/copy-activity-performance.md?context=/azure/synapse-analytics/context/context
                   - name: 排查性能问题
-                    href: ../data-factory/copy-activity-performance-troubleshooting.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ../data-factory/copy-activity-performance-troubleshooting.md?context=/azure/synapse-analytics/context/context
                   - name: 性能功能
-                    href: ../data-factory/copy-activity-performance-features.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                    href: ../data-factory/copy-activity-performance-features.md?context=/azure/synapse-analytics/context/context
               - name: 保留元数据和 ACL
-                href: ../data-factory/copy-activity-preserve-metadata.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/copy-activity-preserve-metadata.md?context=/azure/synapse-analytics/context/context
               - name: 架构和类型映射
-                href: ../data-factory/copy-activity-schema-and-type-mapping.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/copy-activity-schema-and-type-mapping.md?context=/azure/synapse-analytics/context/context
               - name: 容错
-                href: ../data-factory/copy-activity-fault-tolerance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/copy-activity-fault-tolerance.md?context=/azure/synapse-analytics/context/context
               - name: 数据一致性验证
-                href: ../data-factory/copy-activity-data-consistency.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/copy-activity-data-consistency.md?context=/azure/synapse-analytics/context/context
               - name: 格式和压缩支持（旧版）
-                href: ../data-factory/supported-file-formats-and-compression-codecs-legacy.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/supported-file-formats-and-compression-codecs-legacy.md?context=/azure/synapse-analytics/context/context
           - name: 转换数据
-            href: ../data-factory/transform-data.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ../data-factory/transform-data.md?context=/azure/synapse-analytics/context/context
             items:
               - name: 执行数据流活动
-                href: ../data-factory/control-flow-execute-data-flow-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-execute-data-flow-activity.md?context=/azure/synapse-analytics/context/context
               - name: Synapse Notebook 活动
                 href: synapse-notebook-activity.md
               - name: Synapse SQL 池存储过程活动
                 href: ./data-integration/sql-pool-stored-procedure-activity.md
               - name: Azure 函数活动
-                href: ../data-factory/control-flow-azure-function-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-azure-function-activity.md?context=/azure/synapse-analytics/context/context
               - name: 自定义活动
-                href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-using-dotnet-custom-activity.md?context=/azure/synapse-analytics/context/context
               - name: Databricks Jar 活动
-                href: ../data-factory/transform-data-databricks-jar.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-databricks-jar.md?context=/azure/synapse-analytics/context/context
               - name: Databricks Notebook 活动
-                href: ../data-factory/transform-data-databricks-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-databricks-notebook.md?context=/azure/synapse-analytics/context/context
               - name: Databricks Python 活动
-                href: ../data-factory/transform-data-databricks-python.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-databricks-python.md?context=/azure/synapse-analytics/context/context
               - name: 数据资源管理器命令活动
-                href: /azure/data-explorer/data-factory-command-activity?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: /azure/data-explorer/data-factory-command-activity?context=/azure/synapse-analytics/context/context
               - name: Data Lake U-SQL 活动
-                href: ../data-factory/transform-data-using-data-lake-analytics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-using-data-lake-analytics.md?context=/azure/synapse-analytics/context/context
               - name: HDInsight Hive 活动
-                href: ../data-factory/transform-data-using-hadoop-hive.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-using-hadoop-hive.md?context=/azure/synapse-analytics/context/context
               - name: HDInsight MapReduce 活动
-                href: ../data-factory/transform-data-using-hadoop-map-reduce.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-using-hadoop-map-reduce.md?context=/azure/synapse-analytics/context/context
               - name: HDInsight Pig 活动
-                href: ../data-factory/transform-data-using-hadoop-pig.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-using-hadoop-pig.md?context=/azure/synapse-analytics/context/context
               - name: HDInsight Spark 活动
-                href: ../data-factory/transform-data-using-spark.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-using-spark.md?context=/azure/synapse-analytics/context/context
               - name: HDInsight Streaming 活动
-                href: ../data-factory/transform-data-using-hadoop-streaming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-using-hadoop-streaming.md?context=/azure/synapse-analytics/context/context
               - name: 机器学习 Execute Pipeline 活动
-                href: ../data-factory/transform-data-machine-learning-service.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-machine-learning-service.md?context=/azure/synapse-analytics/context/context
               - name: 机器学习工作室（经典版）Batch Execution 活动
-                href: ../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-using-machine-learning.md?context=/azure/synapse-analytics/context/context
               - name: 机器学习工作室（经典版）Update Resource 活动
-                href: ../data-factory/update-machine-learning-models.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/update-machine-learning-models.md?context=/azure/synapse-analytics/context/context
               - name: 存储过程活动
-                href: ../data-factory/transform-data-using-stored-procedure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/transform-data-using-stored-procedure.md?context=/azure/synapse-analytics/context/context
               - name: 计算链接服务
-                href: ../data-factory/compute-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/compute-linked-services.md?context=/azure/synapse-analytics/context/context
           - name: 控制流
             items:
               - name: Append Variable 活动
-                href: ../data-factory/control-flow-append-variable-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-append-variable-activity.md?context=/azure/synapse-analytics/context/context
               - name: Execute Pipeline 活动
-                href: ../data-factory/control-flow-execute-pipeline-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-execute-pipeline-activity.md?context=/azure/synapse-analytics/context/context
               - name: 筛选活动
-                href: ../data-factory/control-flow-filter-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-filter-activity.md?context=/azure/synapse-analytics/context/context
               - name: For Each 活动
-                href: ../data-factory/control-flow-for-each-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-for-each-activity.md?context=/azure/synapse-analytics/context/context
               - name: Get Metadata 据活动
-                href: ../data-factory/control-flow-get-metadata-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-get-metadata-activity.md?context=/azure/synapse-analytics/context/context
               - name: If Condition 活动
-                href: ../data-factory/control-flow-if-condition-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-if-condition-activity.md?context=/azure/synapse-analytics/context/context
               - name: 查找活动
-                href: ../data-factory/control-flow-lookup-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-lookup-activity.md?context=/azure/synapse-analytics/context/context
               - name: Set Variable 活动
-                href: ../data-factory/control-flow-set-variable-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-set-variable-activity.md?context=/azure/synapse-analytics/context/context
               - name: Until 活动
-                href: ../data-factory/control-flow-until-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-until-activity.md?context=/azure/synapse-analytics/context/context
               - name: 验证活动
-                href: ../data-factory/control-flow-validation-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-validation-activity.md?context=/azure/synapse-analytics/context/context
               - name: Wait 活动
-                href: ../data-factory/control-flow-wait-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-wait-activity.md?context=/azure/synapse-analytics/context/context
               - name: Web 活动
-                href: ../data-factory/control-flow-web-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-web-activity.md?context=/azure/synapse-analytics/context/context
               - name: Webhook 活动
-                href: ../data-factory/control-flow-webhook-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-webhook-activity.md?context=/azure/synapse-analytics/context/context
           - name: 数据流转换
             items:
               - name: 转换概述
-                href: ../data-factory/data-flow-transformation-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-transformation-overview.md?context=/azure/synapse-analytics/context/context
               - name: 聚合
-                href: ../data-factory/data-flow-aggregate.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-aggregate.md?context=/azure/synapse-analytics/context/context
               - name: 更改行
-                href: ../data-factory/data-flow-alter-row.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-alter-row.md?context=/azure/synapse-analytics/context/context
               - name: 有条件拆分
-                href: ../data-factory/data-flow-conditional-split.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-conditional-split.md?context=/azure/synapse-analytics/context/context
               - name: 派生列
-                href: ../data-factory/data-flow-derived-column.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-derived-column.md?context=/azure/synapse-analytics/context/context
               - name: Exists
-                href: ../data-factory/data-flow-exists.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-exists.md?context=/azure/synapse-analytics/context/context
               - name: 筛选器
-                href: ../data-factory/data-flow-filter.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-filter.md?context=/azure/synapse-analytics/context/context
               - name: 平展
-                href: ../data-factory/data-flow-flatten.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-flatten.md?context=/azure/synapse-analytics/context/context
               - name: 联接
-                href: ../data-factory/data-flow-join.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-join.md?context=/azure/synapse-analytics/context/context
               - name: 查找
-                href: ../data-factory/data-flow-lookup.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-lookup.md?context=/azure/synapse-analytics/context/context
               - name: 新建分支
-                href: ../data-factory/data-flow-new-branch.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-new-branch.md?context=/azure/synapse-analytics/context/context
               - name: 透视
-                href: ../data-factory/data-flow-pivot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-pivot.md?context=/azure/synapse-analytics/context/context
               - name: 级别
-                href: ../data-factory/data-flow-rank.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-rank.md?context=/azure/synapse-analytics/context/context
               - name: Select
-                href: ../data-factory/data-flow-select.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-select.md?context=/azure/synapse-analytics/context/context
               - name: 接收器
-                href: ../data-factory/data-flow-sink.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-sink.md?context=/azure/synapse-analytics/context/context
               - name: 排序
-                href: ../data-factory/data-flow-sort.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-sort.md?context=/azure/synapse-analytics/context/context
               - name: 源
-                href: ../data-factory/data-flow-source.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-source.md?context=/azure/synapse-analytics/context/context
               - name: 代理键
-                href: ../data-factory/data-flow-surrogate-key.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-surrogate-key.md?context=/azure/synapse-analytics/context/context
               - name: Union
-                href: ../data-factory/data-flow-union.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-union.md?context=/azure/synapse-analytics/context/context
               - name: 逆透视
-                href: ../data-factory/data-flow-unpivot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-unpivot.md?context=/azure/synapse-analytics/context/context
               - name: 窗口
-                href: ../data-factory/data-flow-window.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-flow-window.md?context=/azure/synapse-analytics/context/context
           - name: 参数化
             items:
               - name: 将链接的服务参数化
-                href: ../data-factory/parameterize-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/parameterize-linked-services.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: 表达式语言
-                href: ../data-factory/control-flow-expression-language-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-expression-language-functions.md?context=/azure/synapse-analytics/context/context
               - name: 系统变量
-                href: ../data-factory/control-flow-system-variables.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/control-flow-system-variables.md?context=/azure/synapse-analytics/context/context
               - name: 数据流参数
-                href: ../data-factory/parameters-data-flow.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/parameters-data-flow.md?context=/azure/synapse-analytics/context/context
           - name: 管理和监视
             items:
               - name: 管道运行
@@ -1135,77 +1135,95 @@ items:
           - name: 创建集成运行时
             items:
               - name: Azure 集成运行时
-                href: ../data-factory/create-azure-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/create-azure-integration-runtime.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: 自承载集成运行时
-                href: ../data-factory/create-self-hosted-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/create-self-hosted-integration-runtime.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
           - name: 创建触发器
             items:
               - name: 创建基于事件的触发器
-                href: ../data-factory/how-to-create-event-trigger.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/how-to-create-event-trigger.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: 创建计划触发器
-                href: ../data-factory/how-to-create-schedule-trigger.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/how-to-create-schedule-trigger.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: 创建翻转窗口触发器
-                href: ../data-factory/how-to-create-tumbling-window-trigger.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/how-to-create-tumbling-window-trigger.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: 创建翻转窗口触发器依赖项
-                href: ../data-factory/tumbling-window-trigger-dependency.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/tumbling-window-trigger-dependency.md?context=/azure/synapse-analytics/context/context
           - name: 故障排除指南
             items:
               - name: 活动故障排除
-                href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/data-factory-troubleshoot-guide.md?context=/azure/synapse-analytics/context/context
               - name: 连接器故障排除
-                href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/connector-troubleshoot-guide.md?context=/azure/synapse-analytics/context/context
               - name: 持续集成和部署
-                href: ../data-factory/ci-cd-github-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/ci-cd-github-troubleshoot-guide.md?context=/azure/synapse-analytics/context/context
               - name: 安全性和访问控制
-                href: ../data-factory/security-and-access-control-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/security-and-access-control-troubleshoot-guide.md?context=/azure/synapse-analytics/context/context
               - name: 自承载集成运行时故障排除
-                href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
   - name: 机器学习
     items:
       - name: 概述
         items:
           - name: Azure Synapse 中的机器学习是指什么？
             href: machine-learning/what-is-machine-learning.md
-          - name: Azure Synapse Analytics 中的认知服务
-            href: machine-learning/overview-cognitive-services.md
       - name: 快速入门
         items:
           - name: 使用库中的示例笔记本
             href: machine-learning/quickstart-gallery-sample-notebook.md
-          - name: 创建新的 Azure 机器学习链接服务
-            href: machine-learning/quickstart-integrate-azure-machine-learning.md
+          - name: 创建链接服务
+            items:
+              - name: Azure 机器学习
+                displayName: linked service
+                href: machine-learning/quickstart-integrate-azure-machine-learning.md
+              - name: 认知服务
+                displayName: 'linked service, configure'
+                href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
       - name: 概念
         items:
-          - name: 训练模型
+          - name: 训练机器学习模型
             href: ./spark/apache-spark-machine-learning-training.md
       - name: 教程
         items:
-          - name: 使用 Apache Spark 实现数据可视化
-            displayname: machine learning
-            href: ./spark/apache-spark-data-visualization-tutorial.md
-          - name: 对专用 SQL 池使用评分向导
-            displayname: machine learning
-            href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
-          - name: 通过自动化 ML 免代码地训练模型
-            displayname: machine learning
-            href: ./machine-learning/tutorial-automl.md
-          - name: 通过自动化 ML 以 Python 训练模型
-            displayname: machine learning
-            href: ./spark/apache-spark-azure-machine-learning-tutorial.md
-          - name: 使用 Apache Spark MLlib 创建模型
-            displayname: machine learning
-            href: ./spark/apache-spark-machine-learning-mllib-notebook.md
-          - name: 为 Azure Synapse 配置认知服务
-            href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
-          - name: 使用认知服务进行情绪分析
-            href: ./machine-learning/tutorial-cognitive-services-sentiment.md
-          - name: 使用认知服务进行异常情况检测
-            href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-          - name: 使用适用于 Apache Spark（预览版）的 Microsoft 机器学习生成机器学习应用程序
-            href: ./machine-learning/tutorial-build-applications-use-mmlspark.md
-          - name: 使用文件系统规范和链接服务的 ADLS 读/写
-            displayname: machine learning
-            href: ./machine-learning/tutorial-spark-pool-filesystem-spec.md
+          - name: 数据访问和准备
+            items:
+              - name: 具有文件系统规范的读/写 ADLS
+                displayName: 'data prep, data preparation'
+                href: ./machine-learning/tutorial-spark-pool-filesystem-spec.md
+              - name: 使用 Apache Spark 实现数据可视化
+                displayName: 'data prep, data preparation, visualization'
+                href: ./spark/apache-spark-data-visualization-tutorial.md
+          - name: 训练模型
+            items:
+              - name: 使用 Apache Spark MLlib
+                displayName: train model
+                href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+              - name: 使用自动化机器学习
+                items:
+                  - name: 无代码
+                    displayName: 'train model, automated machine learning, automated ml, automl'
+                    href: ./machine-learning/tutorial-automl.md
+                  - name: 使用 Python
+                    displayName: 'train model, automated machine learning, automated ml, automl'
+                    href: ./spark/apache-spark-azure-machine-learning-tutorial.md
+          - name: 对模型进行评分
+            items:
+              - name: 对专用 SQL 池使用评分向导
+                displayName: score model
+                href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
+              - name: 使用认知服务
+                items:
+                  - name: 概述
+                    displayName: 'cognitive services, score model'
+                    href: machine-learning/overview-cognitive-services.md
+                  - name: 情绪分析向导
+                    displayName: 'cognitive services, score model'
+                    href: ./machine-learning/tutorial-cognitive-services-sentiment.md
+                  - name: 异常情况检测向导
+                    displayName: 'cognitive services, score model'
+                    href: ./machine-learning/tutorial-cognitive-services-anomaly.md
+                  - name: 使用 Apache Spark (MMLSpark)
+                    displayName: 'cognitive services, score model, applications'
+                    href: ./machine-learning/tutorial-build-applications-use-mmlspark.md
   - name: 数据目录与治理
     items:
       - name: 快速入门
@@ -1225,13 +1243,13 @@ items:
       - name: Azure CLI
         href: /cli/azure/
       - name: 数据库排序规则类型
-        href: sql/reference-collation-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        href: sql/reference-collation-types.md?context=/azure/synapse-analytics/context/context
       - name: Go
         href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/synapse@v43.3.0+incompatible'
       - name: .NET
         href: /dotnet/api/microsoft.azure.management.synapse?preserve-view=true&view=azure-dotnet-preview
       - name: Azure PowerShell
-        href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        href: /powershell/module/az.synapse?context=/azure/synapse-analytics/context/context
       - name: REST API
         href: /rest/api/synapse/
       - name: Microsoft Spark 实用程序
@@ -1239,7 +1257,7 @@ items:
       - name: 示例
         href: 'https://github.com/Azure-Samples/Synapse'
       - name: 系统视图
-        href: sql/reference-tsql-system-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        href: sql/reference-tsql-system-views.md?context=/azure/synapse-analytics/context/context
       - name: Azure Policy 内置策略定义
         displayName: 'samples, policies, definitions'
         href: ./policy-reference.md
@@ -1248,9 +1266,9 @@ items:
           - name: 完整的参考信息
             href: /sql/t-sql/language-reference/
           - name: Synapse SQL T-SQL 语言元素
-            href: ./sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements.md?context=/azure/synapse-analytics/context/context
           - name: Synapse SQL T-SQL 语句
-            href: ./sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md?context=/azure/synapse-analytics/context/context
   - name: 资源
     items:
       - name: Azure 路线图
@@ -1270,7 +1288,7 @@ items:
       - name: Stack Overflow
         href: 'https://stackoverflow.com/questions/tagged/azure-synapse/'
       - name: 支持
-        href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?context=/azure/synapse-analytics/context/context
       - name: 客户自助
         items:
           - name: 无服务器 SQL 池
@@ -1278,14 +1296,14 @@ items:
       - name: 合作伙伴
         items:
           - name: 商业智能
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-business-intelligence.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/sql-data-warehouse-partner-business-intelligence.md?context=/azure/synapse-analytics/context/context
           - name: 数据集成
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-data-integration.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/sql-data-warehouse-partner-data-integration.md?context=/azure/synapse-analytics/context/context
           - name: 数据管理
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-data-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/sql-data-warehouse-partner-data-management.md?context=/azure/synapse-analytics/context/context
           - name: 机器学习和 AI
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-machine-learning-ai.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/sql-data-warehouse-partner-machine-learning-ai.md?context=/azure/synapse-analytics/context/context
           - name: 系统集成
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-system-integration.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/sql-data-warehouse-partner-system-integration.md?context=/azure/synapse-analytics/context/context
           - name: 第三方应用程序的兼容性问题
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-compatibility-issues.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            href: ./sql-data-warehouse/sql-data-warehouse-partner-compatibility-issues.md?context=/azure/synapse-analytics/context/context
