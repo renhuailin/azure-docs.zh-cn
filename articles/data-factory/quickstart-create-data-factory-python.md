@@ -5,16 +5,17 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: tutorials
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/27/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: dbc82773128aec58202821827be16bdf5d80260a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 0344ac6e358b35f2f5d420932b188c229bd94fe8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665169"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749841"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
 

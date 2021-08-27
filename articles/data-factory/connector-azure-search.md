@@ -1,18 +1,20 @@
 ---
 title: 将数据复制到搜索索引
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何使用 Azure 数据工厂管道中的复制活动将数据推送或复制到 Azure 搜索索引。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 03/17/2021
-ms.openlocfilehash: 7820232bc5f91d85ce24c9df8ebaa0a0bbc52342
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 9ff0cdf1e54bb1ae943408eacfd92ed9f49f2be2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480198"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638753"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 认知搜索索引
 
@@ -117,7 +119,7 @@ Azure 认知搜索链接的服务支持以下属性：
 
 ### <a name="writebehavior-property"></a>WriteBehavior 属性
 
-AzureSearchSink 在写入数据时执行 upsert 操作。 换言之，编写文档时，如果搜索索引中已存在文档键，则 Azure 认知搜索会更新现有文档，而不引发冲突异常。
+AzureSearchSink 在写入数据时执行 upsert 操作。 换言之，在写入文档时，如果搜索索引中已存在该文档键，则 Azure 认知搜索会更新现有文档，而不引发冲突异常。
 
 AzureSearchSink（通过使用 AzureSearch SDK）提供以下两种 upsert 行为：
 
@@ -128,7 +130,7 @@ AzureSearchSink（通过使用 AzureSearch SDK）提供以下两种 upsert 行�
 
 ### <a name="writebatchsize-property"></a>WriteBatchSize 属性
 
-Azure 认知搜索服务支持成批编写文档。 每批次可包含 1 到 1,000 个操作。 每个操作处理一个文档以执行上传/合并操作。
+Azure 认知搜索服务支持批量写入文档。 每批次可包含 1 到 1,000 个操作。 每个操作处理一个文档以执行上传/合并操作。
 
 **示例：**
 
@@ -164,11 +166,11 @@ Azure 认知搜索服务支持成批编写文档。 每批次可包含 1 到 1,0
 
 ## <a name="data-type-support"></a>数据类型支持
 
-下表指定是否支持某个 Azure 认知搜索数据类型。
+下表指定了是否支持某个 Azure 认知搜索数据类型。
 
-| Azure 认知搜索数据类型 | 在 Azure 认知搜索接收器中受到支持 |
+| Azure 认知搜索数据类型 | 在 Azure 认知搜索接收器中受支持 |
 | ---------------------- | ------------------------------ |
-| 字符串 | Y |
+| String | Y |
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |

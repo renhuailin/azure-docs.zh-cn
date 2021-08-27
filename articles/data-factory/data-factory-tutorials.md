@@ -4,14 +4,15 @@ description: 演示 Azure 数据工厂概念的教程列表
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 03/16/2021
-ms.openlocfilehash: 8ad3cabbc97d869fa5e8a9e8ad7f5b0b5888949e
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 51eec8654a098bab8bb7c7ccfde627d62a4c2175
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112542267"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638652"
 ---
 # <a name="azure-data-factory-tutorials"></a>Azure 数据工厂教程
 

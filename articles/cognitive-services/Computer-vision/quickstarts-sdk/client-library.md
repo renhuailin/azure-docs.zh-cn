@@ -1,14 +1,14 @@
 ---
 title: 快速入门：读取客户端库或 REST API
 titleSuffix: Azure Cognitive Services
-description: 了解如何在应用程序中通过所选语言的本机客户端库使用 光学字符识别 (OCR)。
+description: 了解如何在应用程序中通过所选语言的本机客户端库使用光学字符识别 (OCR)。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/29/2021
+ms.date: 07/30/2021
 ms.author: pafarley
 ms.custom:
 - devx-track-python
@@ -17,12 +17,12 @@ ms.custom:
 - cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-computer-vision
 keywords: computer vision, computer vision service
-ms.openlocfilehash: bd6fcec1544e20c119018df2595cc27c8c368824
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: b11bf5e56ecafc3a5af546dbb71d0c8a89903ae4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728243"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750057"
 ---
 # <a name="quickstart-use-the-read-client-library-or-rest-api"></a>快速入门：使用读取客户端库或 REST API
 

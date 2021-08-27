@@ -1,18 +1,20 @@
 ---
 title: 从/向 Salesforce Service Cloud 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在数据工厂管道中使用复制活动，将数据从 Salesforce Service Cloud 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 Salesforce Service Cloud。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 03/17/2021
-ms.openlocfilehash: f61b5ab4a77372071658f18e81fce8ed2c3a7c51
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: d4b619476908ad6799b5060cfedf7f55a566afea
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486982"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638372"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce Service Cloud 复制数据
 

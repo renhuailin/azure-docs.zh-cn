@@ -1,17 +1,20 @@
 ---
 title: Azure 数据工厂中的“复制数据”工具
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 提供有关 Azure 数据工厂 UI 中“复制数据”工具的信息
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 06/04/2021
 ms.author: yexu
-ms.openlocfilehash: 68bfa62817d971ce8c8127f44f43576431a499fc
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 165d799e6bc2cc6a5f7e064b909ca7e80f819c42
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371787"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637803"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure 数据工厂中的“复制数据”工具
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,10 +33,11 @@ Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data
 | 需要轻松构建数据加载任务，而无需了解 Azure 数据工厂实体（链接的服务、数据集和管道等） | 需要实现复杂而灵活的逻辑，将数据加载到 Lake 中。 |
 | 需要将大量数据项目快速加载到 Data Lake 中。 | 需要将复制活动与后续活动链接在一起，以清理或处理数据。 |
 
-要启动“复制数据”工具，请单击数据工厂主页上的“复制数据”磁贴。
+若要启动“复制数据”工具，请单击数据工厂主页上的“引入”磁贴。
 
-![“开始使用”页 -“复制数据”工具的链接](./media/doc-common-process/get-started-page.png)
+![屏幕截图，显示主页 - 指向“复制数据”工具的链接。](./media/doc-common-process/get-started-page.png)
 
+在启动“复制数据”工具后，将出现两种类型的任务：一种是内置复制任务，另一种是元数据驱动的复制任务 。 内置复制任务会引导你在 5 分钟内创建管道来复制数据，无需了解 Azure 数据工厂实体。  元数据驱动的复制任务会简化创建参数化管道和外部控制表的历程，以便设法大规模复制大量对象（例如成千上万个表）。 在[元数据驱动的复制数据](copy-data-tool-metadata-driven.md)中可以看到更多详细信息。
 
 ## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>将数据加载到 Data Lake 中的直观流程
 使用此工具，可通过一个直观的流程在数分钟内轻松地将数据从各种源移动到目标：  

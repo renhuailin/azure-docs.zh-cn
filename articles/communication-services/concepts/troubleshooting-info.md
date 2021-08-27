@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 66f2091087ed3602e929b584f7a311f4ebb05f88
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: d8e3dbc012e49b69e766d0551c0a91dcbb92660b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114292520"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739589"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure 通信服务中的故障排除
 
@@ -181,7 +181,7 @@ Azure 通信服务呼叫 SDK 使用以下错误代码，你可以通过这些错
 
 | 错误代码 | 说明 | 采取的操作 |
 | -------- | ---------------| ---------------|
-| 403 | 被禁止/身份验证失败。 | 确保通信服务令牌有效且未过期。 如果使用 Teams 互操作性，请确保已将 Teams 租户添加到预览访问允许列表。 若要启用/禁用 [Teams 租户互操作性](./teams-interop.md)，请填写[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)。|
+| 403 | 被禁止/身份验证失败。 | 确保通信服务令牌有效且未过期。 |
 | 404 | 找不到呼叫。 | 确保要呼叫的电话（或要加入的电话）存在。 |
 | 408 | 呼叫控制器超时。 | 等待来自用户终结点的协议消息的呼叫控制器超时。 确保客户端已连接且可用。 |
 | 410 | 本地媒体堆栈或媒体基础结构错误。 | 确保在受支持的环境中使用最新的 SDK。 |
