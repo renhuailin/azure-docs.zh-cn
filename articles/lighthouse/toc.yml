@@ -73,6 +73,9 @@
         - name: 监视委托更改
           displayName: activity log
           href: ./how-to/monitor-delegation-changes.md
+        - name: 在管理组中加入订阅
+          displayName: 'mg, policy, logic app'
+          href: ./how-to/onboard-management-group.md
     - name: 查看和管理客户
       displayName: my customers
       href: ./how-to/view-manage-customers.md

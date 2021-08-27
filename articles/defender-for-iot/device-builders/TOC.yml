@@ -1,4 +1,5 @@
 - name: 适用于设备生成器的 Azure Defender for IoT
+  href: index.yml
   items: null
 - name: 概述
   displayName: 'IoT, OT, getting started'
@@ -10,7 +11,7 @@
     - name: 什么是基于代理的解决方案体系结构
       href: architecture-agent-based.md
 - name: 快速入门
-  expanded: false
+  expanded: true
   items:
     - name: 载入 Defender for IoT 基于代理的解决方案
       displayName: 'IoT Hub, existing, enable'
@@ -20,9 +21,6 @@
       href: quickstart-standalone-agent-binary-installation.md
     - name: 创建 Defender IoT 微代理模块孪生（预览）
       href: quickstart-create-micro-agent-module-twin.md
-    - name: 从源代码生成 Defender for IoT 微代理（预览）
-      displayName: 'baseline, configuration, customize, distribution'
-      href: quickstart-building-the-defender-micro-agent-from-source.md
     - name: 配置适用于 Azure RTOS 的 Defender-IoT-micro-agent
       href: quickstart-azure-rtos-security-module.md
     - name: 将 Azure 资源添加到 IoT 解决方案
@@ -53,6 +51,9 @@
       href: concept-security-agent-authentication.md
     - name: 安全状况 - CIS 基准
       href: concept-security-posture.md
+    - name: 微代理配置（预览版）
+      displayNAme: 'collectors, configuration, configurations, event-based, trigger, general'
+      href: concept-micro-agent-configuration.md
     - name: 微代理事件集合（预览版）
       displayName: 'process events, network connection'
       href: concept-event-aggregation.md

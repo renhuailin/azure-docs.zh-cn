@@ -10,6 +10,8 @@
       href: overview-azure-percept-dk.md
     - name: Azure Percept 音频
       href: overview-azure-percept-audio.md
+    - name: Azure Percept Vision 模块和工作负载
+      href: azureeyemodule-overview.md
 - name: 快速入门
   items:
     - name: 安装 Azure Percept 设备
@@ -34,8 +36,6 @@
       items:
         - name: 80/20 集成
           href: overview-8020-integration.md
-        - name: 通过手机网络连接
-          href: connect-over-cellular.md
         - name: 设备更新
           href: overview-update-experience.md
     - name: Azure Percept 音频
@@ -74,6 +74,10 @@
           href: how-to-configure-voice-assistant.md
         - name: 在 Azure Percept Studio 中配置语音助理
           href: how-to-manage-voice-assistant.md
+        - name: 返回语音助理应用程序
+          href: return-to-voice-assistant-application-window.md
+        - name: 删除语音助理应用程序
+          href: delete-voice-assistant-application.md
     - name: 更新 Azure Percept 设备
       items:
         - name: 设置无线更新
@@ -90,6 +94,8 @@
           href: how-to-connect-over-ethernet.md
         - name: 设置高级网络设置
           href: how-to-set-up-advanced-network-settings.md
+        - name: 通过 5G 或 LTE 网络连接
+          href: connect-over-cellular.md
         - name: 通过 SSH 连接
           href: how-to-ssh-into-percept-dk.md
         - name: 通过串口连接

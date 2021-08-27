@@ -8,15 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/09/2021
+ms.date: 08/19/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
-ms.openlocfilehash: 22f6e1c8049acd5dbe548bc49955881e05f0ef0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: has-adal-ref
+ms.openlocfilehash: 931d7385b9c7afe48d7c163aad3570c8485ae8d1
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579036"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767885"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
@@ -71,24 +72,10 @@ ms.locfileid: "104579036"
 | 适用于 iOS 和 MacOS 的 MSAL| https://github.com/AzureAD/microsoft-authentication-library-for-objc/issues |
 | MSAL Java | https://github.com/AzureAD/microsoft-authentication-library-for-java/issues |
 | MSAL.js | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
-|MSAL.NET| https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues |
+| MSAL.NET| https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues |
 | MSAL Node | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
 | MSAL Python | https://github.com/AzureAD/microsoft-authentication-library-for-python/issues |
 | MSAL React  | https://github.com/AzureAD/microsoft-authentication-library-for-js/issues |
-
-## <a name="submit-feedback-on-azure-feedback"></a>在 Azure 反馈中提交反馈
-
-<div class='icon is-large'>
-    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
-</div>
-
-若要请求新功能，请在 Azure 反馈中发布请求。 分享看法，使 Microsoft 标识平台能够为你开发的应用程序发挥更大的作用。
-
-| 服务                       | Azure 反馈 URL |
-|-------------------------------|---------------|
-| Azure Active Directory | https://feedback.azure.com/forums/169401-azure-active-directory |
-| Azure Active Directory - 开发人员体验             | https://feedback.azure.com/forums/169401-azure-active-directory?category_id=164757 |
-| Azure Active Directory - 身份验证             | https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167256 |
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>随时了解更新和新的版本
 

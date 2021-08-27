@@ -11,16 +11,19 @@ ms.topic: how-to
 ms.date: 04/24/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 3eea91d1cbbb8fe34dcdc8668840503e6dc9d014
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: f2b4f2e54c046ca7abc2172b8df33f14def902fd
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517345"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767894"
 ---
 # <a name="tutorial-configure-cloudflare-with-azure-active-directory-b2c"></a>教程：为 Azure Active Directory B2C 配置 Cloudflare
 
 在此示例教程中，可了解如何为使用自定义域的 Azure Active Directory (AD) B2C 租户启用[Cloudflare Web 应用程序防火墙 (WAF)](https://www.cloudflare.com/waf/)解决方案。 Cloudflare WAF 可帮助组织防范旨在利用安全漏洞进行的恶意攻击，如注 SQLi 和 XSS。
+
+>[!NOTE]
+>此功能目前以公共预览版提供。
 
 ## <a name="prerequisites"></a>先决条件
 

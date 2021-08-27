@@ -1,0 +1,148 @@
+- name: Azure 表单识别器文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是 Azure 表单识别器？
+      href: overview.md
+    - name: 语言支持
+      href: language-support.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
+    - name: 新增功能
+      href: whats-new.md
+- name: 快速入门
+  items:
+    - name: Azure 表单识别器入门
+      href: quickstarts/get-started-with-form-recognizer.md
+    - name: 客户端库和 REST API
+      href: quickstarts/client-library.md
+- name: 示例
+  items:
+    - name: C#/.NET
+      href: /samples/azure/azure-sdk-for-net/azure-form-recognizer-client-sdk-samples
+    - name: Java
+      href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
+    - name: Python
+      href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
+    - name: JavaScript
+      href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
+- name: 负责使用 AI
+  items:
+    - name: 透明度说明
+      items:
+        - name: Azure 表单识别器场景
+          href: /legal/cognitive-services/form-recognizer/fr-transparency-note?context=/azure/applied-ai-services/form-recognizer/context/context
+        - name: 特征和限制
+          href: /legal/cognitive-services/form-recognizer/fr-characteristics-and-limitations?context=/azure/applied-ai-services/form-recognizer/context/context
+    - name: 集成和负责使用
+      href: /legal/cognitive-services/form-recognizer/fr-guidance-integration-responsible-use?context=/azure/applied-ai-services/form-recognizer/context/context
+    - name: 数据、隐私和安全性
+      href: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/applied-ai-services/form-recognizer/context/context
+- name: 操作指南
+  items:
+    - name: 使用示例标记工具训练自定义模型
+      href: label-tool.md
+    - name: 生成训练数据集
+      href: build-training-data-set.md
+    - name: 使用表标记训练自定义模型
+      href: supervised-table-tags.md
+    - name: 部署示例标记工具
+      href: deploy-label-tool.md
+    - name: 使用容器
+      items:
+        - name: 安装和运行容器
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+          href: containers/form-recognizer-container-install-run.md
+        - name: 配置容器
+          href: containers/form-recognizer-container-configuration.md
+          displayName: 'docker, container, run, billing, apikey, logging'
+        - name: 使用容器实例
+          maintainContext: true
+          href: ../../cognitive-services/containers/azure-container-instance-recipe.md
+        - name: 所有认知服务容器文档
+          href: ../../cognitive-services/containers/index.yml
+          maintainContext: true
+    - name: 备份和恢复模型
+      href: disaster-recovery.md
+    - name: 企业就绪情况
+      items:
+        - name: 设置虚拟网络
+          href: ../../cognitive-services/cognitive-services-virtual-networks.md?context=/azure/applied-ai-services/form-recognizer/context/context
+        - name: 创建并使用托管标识
+          href: managed-identity-byos.md
+        - name: 使用客户管理的密钥
+          href: encrypt-data-at-rest.md
+        - name: 使用 Azure AD 身份验证
+          href: ../../cognitive-services/authentication.md?context=/azure/applied-ai-services/form-recognizer/context/context
+- name: 概念
+  items:
+    - name: Layout
+      href: concept-layout.md
+    - name: Receipts
+      href: concept-receipts.md
+    - name: 名片
+      href: concept-business-cards.md
+    - name: 发票
+      href: concept-invoices.md
+    - name: 标识文档
+      href: concept-identification-cards.md
+    - name: 自定义
+      href: concept-custom.md
+- name: 教程
+  items:
+    - name: 使用 Azure 表单识别器和 AI Builder
+      expanded: true
+      items:
+        - name: 自定义表单处理工作流
+          href: /ai-builder/create-form-processing-model?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
+        - name: 名片处理工作流
+          href: /ai-builder/flow-business-card-reader?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
+        - name: 标识文档处理工作流
+          href: /ai-builder/id-reader?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/cognitive-services/applied-ai-services/breadcrumb/toc.json
+        - name: 发票处理工作流
+          href: /ai-builder/flow-invoice-processing?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
+        - name: 收据处理工作流
+          href: /ai-builder/flow-receipt-processing?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
+    - name: 将 Azure 表单识别器与认知搜索搭配使用
+      href: ../../search/cognitive-search-custom-skill-form.md
+    - name: 将 Azure 表单识别器与 Azure Functions 搭配使用
+      href: tutorial-azure-function.md
+- name: 参考
+  items:
+    - name: Azure 表单识别器 REST API v2.1
+      items:
+        - name: REST API v2.1 参考
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm'
+        - name: 客户端库和 SDK
+          items:
+            - name: .NET
+              href: /dotnet/api/overview/azure/ai.formrecognizer-readme
+            - name: Python
+              href: /python/api/azure-ai-formrecognizer/
+            - name: Java
+              href: /java/api/overview/azure/ai-formrecognizer-readme
+            - name: JavaScript
+              href: /javascript/api/overview/azure/ai-form-recognizer-readme
+    - name: Azure 表单识别器 REST API v2.0
+      items:
+        - name: REST API v2.0 参考
+          href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
+        - name: SDK v3.0.0 指南
+          href: api-v2-0/reference-sdk-api-v2-0.md
+- name: 资源
+  items:
+    - name: 客户聚焦
+      href: resource-customer-stories.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 支持和帮助选项
+      href: ../../cognitive-services/cognitive-services-support-options.md?context=/azure/applied-ai-services/form-recognizer/context/context
+    - name: 隐私和 Cookie
+      href: 'https://privacy.microsoft.com/en-US/privacystatement'

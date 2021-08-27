@@ -92,7 +92,9 @@
 - name: 操作指南
   expanded: false
   items:
-    - name: 分配用户和管理对应用的访问权限
+    - name: 分配所有者
+      href: assign-app-owners.md
+    - name: 管理访问权限
       items:
         - name: 许可和权限
           items:
@@ -112,25 +114,25 @@
               href: grant-admin-consent.md
             - name: 查看向应用授予的权限
               href: manage-application-permissions.md
-        - name: 管理应用的用户分配
+        - name: 管理用户分配
           href: assign-user-or-group-access-portal.md
         - name: 在“我的应用”上创建集合
           href: access-panel-collections.md
         - name: 使用自助服务应用访问权限
           href: access-panel-manage-self-service-access.md
-        - name: 用于删除用户对应用的访问权限的方法
+        - name: 删除用户访问权限
           href: methods-for-removing-user-access.md
-        - name: 对用户隐藏应用
+        - name: 隐藏应用
           href: hide-application-from-user-portal.md
         - name: 禁用用户登录
           href: disable-user-sign-in-portal.md
-        - name: 配置自助服务应用分配
+        - name: 配置自助分配
           href: manage-self-service-access.md
-        - name: 通过“主领域发现”策略强制自动加速
+        - name: 强制自动加速
           href: configure-authentication-for-federated-users-portal.md
-        - name: 使用“主领域发现”策略禁止登录自动加速
+        - name: 阻止登录自动加速
           href: prevent-domain-hints-with-home-realm-discovery.md
-    - name: 将标识管理迁移到 Azure AD
+    - name: 迁移应用程序
       items:
         - name: 迁移资源
           href: migration-resources.md

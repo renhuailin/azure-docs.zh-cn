@@ -9,12 +9,12 @@ metadata:
   author: laurenhughes
   ms.author: lahugh
   ms.date: 07/21/2020
-  ms.openlocfilehash: b1eea38b95fda9f2291782e020df1719c82835ba
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 0e38303b435a478b2c6338cd976d7659a3a70c6d
+  ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110452423"
+  ms.lasthandoff: 08/18/2021
+  ms.locfileid: "122418433"
 landingContent:
 - title: 关于 Azure Kubernetes 服务 (AKS)
   linkLists:
@@ -78,14 +78,20 @@ landingContent:
   linkLists:
   - linkListType: architecture
     links:
-    - text: AKS 群集的基线体系结构
+    - text: 基线体系结构
       url: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks?WT.mc_id=AKSDOCSPAGE
-    - text: AKS 解决方案
-      url: /azure/architecture/reference-architectures/containers/aks-start-here?WT.mc_id=AKSDOCSPAGE
+    - text: 微服务的基线
+      url: /azure/architecture/reference-architectures/containers/aks-microservices/aks-microservices-advanced?WT.mc_id=AKSDOCSPAGE
+    - text: PCI-DSS 3.2.1 的基线
+      url: /azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro?WT.mc_id=AKSDOCSPAGE
+    - text: 多域的基线
+      url: /azure/architecture/reference-architectures/containers/aks-multi-region/aks-multi-cluster?WT.mc_id=AKSDOCSPAGE
     - text: Day-2 操作指南
-      url: /azure/architecture/operator-guides/aks/aks-triage-practices?WT.mc_id=AKSDOCSPAGE
+      url: /azure/architecture/operator-guides/aks/day-2-operations-guide?WT.mc_id=AKSDOCSPAGE
     - text: 面向群集操作员和开发人员的最佳做法
       url: best-practices.md
+    - text: 其他 AKS 解决方案
+      url: /azure/architecture/reference-architectures/containers/aks-start-here?WT.mc_id=AKSDOCSPAGE
 - title: 利用 Microsoft Learn 掌握技能
   linkLists:
   - linkListType: learn

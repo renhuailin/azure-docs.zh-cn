@@ -1,15 +1,15 @@
 ---
 title: Azure 备份的内置策略定义
 description: 列出 Azure 备份的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 08/13/2021
+ms.date: 08/20/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 6ace6a67bb1420af645c68eb00f6890b8c100c7c
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2abe31984446f1e4fd1b2febdc65c8b6de840b45
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180282"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607492"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-backup"></a>Azure 备份的 Azure Policy 内置定义
 

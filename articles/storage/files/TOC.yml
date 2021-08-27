@@ -165,8 +165,10 @@
               href: ../../backup/manage-afs-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
             - name: REST API
               href: ../../backup/manage-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 监视 Azure 文件存储
-      href: storage-files-monitoring.md
+    - name: 监视
+      items:
+        - name: 监视 Azure 文件存储
+          href: storage-files-monitoring.md
     - name: 迁移
       items:
         - name: 迁移到 Azure 文件共享
@@ -191,10 +193,6 @@
               href: storage-files-migration-storsimple-8000.md
             - name: StorSimple 1200 迁移指南
               href: storage-files-migration-storsimple-1200.md
-    - name: 性能
-      items:
-        - name: 启用 SMB 多通道
-          href: storage-files-enable-smb-multichannel.md
     - name: 开发
       items:
         - name: 配置连接字符串
@@ -259,7 +257,7 @@
           href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
 - name: 参考
   items:
-    - name: Azure 文件存储参考
+    - name: Azure 文件存储 API 参考
       href: ../files/reference.md
     - name: 监视 Azure 文件存储参考
       href: storage-files-monitoring-reference.md

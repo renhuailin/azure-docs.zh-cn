@@ -120,9 +120,11 @@
 - name: 概念
   expanded: true
   items:
-    - name: 身份验证基础知识
-      displayName: Auth basics
+    - name: 身份验证和授权基础
+      displayName: AuthN and AuthZ basics
       items:
+        - name: 授权基础知识
+          href: authorization-basics.md
         - name: 身份验证和授权
           href: authentication-vs-authorization.md
         - name: 安全令牌
@@ -137,9 +139,16 @@
         - name: Microsoft 标识 Web 库
           href: microsoft-identity-web.md
           displayName: 'auth, library, .NET Core, msal'
-    - name: 授权基础知识
-      displayName: AuthZ basics
+    - name: 权限和访问控制
+      displayName: Access control
       items:
+        - name: 权限和许可
+          displayName: Scopes
+          href: v2-permissions-and-consent.md
+        - name: 条件性访问
+          href: v2-conditional-access-dev-guide.md
+        - name: 转到条件访问身份验证上下文
+          href: developer-guide-conditional-access-authentication-context.md
         - name: 面向应用开发人员的 RBAC
           href: custom-rbac-for-developers.md
     - name: 应用方案和身份验证流
@@ -156,13 +165,6 @@
           href: secure-least-privileged-access.md
         - name: Azure AD 应用程序注册的安全最佳做法
           href: security-best-practices-for-app-registration.md
-        - name: 条件性访问
-          href: v2-conditional-access-dev-guide.md
-        - name: 认证上下文
-          href: developer-guide-conditional-access-authentication-context.md
-    - name: 权限和许可
-      displayName: Scopes
-      href: v2-permissions-and-consent.md
     - name: 自动用户预配 (SCIM)
       href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
 - name: 操作说明
@@ -515,6 +517,8 @@
           href: support-fido2-authentication.md
     - name: 对应用和服务进行身份验证
       items:
+        - name: 创建自签名证书来对应用进行身份验证
+          href: howto-create-self-signed-certificate.md
         - name: 使用 Azure PowerShell 创建服务主体
           href: howto-authenticate-service-principal-powershell.md
         - name: 使用 Azure 门户创建服务主体
@@ -654,6 +658,8 @@
               href: reference-saml-tokens.md
     - name: Azure CLI
       href: /cli/azure/identity
+    - name: Azure PowerShell
+      href: /powershell/module/az.managedserviceidentity
     - name: 应用程序类型和 OAuth 2.0
       displayName: 'App types, OAuth'
       href: v2-app-types.md

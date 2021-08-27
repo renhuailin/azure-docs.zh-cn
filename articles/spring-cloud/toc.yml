@@ -34,6 +34,8 @@
           href: quickstart-deploy-infrastructure-vnet-azure-cli.md
         - name: 使用 Terraform 进行预配
           href: quickstart-deploy-infrastructure-vnet-terraform.md
+        - name: 使用 Bicep 进行预配
+          href: quickstart-deploy-infrastructure-vnet-bicep.md
 - name: 教程
   items:
     - name: 警报和操作组
@@ -132,6 +134,8 @@
           href: structured-app-log.md
         - name: New Relic Java 进程内代理
           href: how-to-new-relic-monitor.md
+        - name: Azure 活动日志和 Azure 服务运行状况
+          href: monitor-app-lifecycle-events.md
     - name: 网络
       items:
         - name: 在虚拟网络中部署 Azure Spring Cloud

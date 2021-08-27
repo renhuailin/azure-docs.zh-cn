@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/22/2021
 ms.custom: references_regions
-ms.openlocfilehash: b037f82b0d56f09000c5fb9e2814ff80aa6f1a82
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: ccd194df39f0fff4bdabe4ae91e911dd030673e6
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272084"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662169"
 ---
 # <a name="azure-monitor-agent-overview"></a>Azure Monitor 代理概述
 Azure Monitor 代理 (AMA) 从 Azure 虚拟机的来宾操作系统中收集监视数据，并将数据交付给 Azure Monitor。 本文概述了 Azure Monitor 代理，提供了有关如何安装它以及如何配置数据收集的信息。
@@ -35,9 +35,10 @@ Azure Monitor 代理替代了 Azure Monitor 当前使用的以下旧版代理来
 - 与 Log Analytics 代理 (MMA/OMS) 对比：
     - 目前并非所有 Log Analytics 解决方案都受支持。 请参阅[支持的内容](#supported-services-and-features)。
     - 不支持 Azure 专用链接。
-    - 不支持收集自定义日志或 IIS 日志。
+    - 不支持收集基于文件的日志或 IIS 日志。
 - 与 Azure 诊断扩展 (WAD/LAD) 对比：
     - 不支持将事件中心和存储帐户作为目标。
+    - 不支持收集基于文件的日志、IIS 日志、ETW 事件、.NET 事件和故障转储。
 
 ### <a name="changes-in-data-collection"></a>数据收集方面的变化
 用于定义现有代理的数据收集的方法各有不同， 每种方法都存在需要通过 Azure Monitor 代理解决的难题。
@@ -66,7 +67,11 @@ Azure Monitor 代理替代了 [Azure Monitor 的旧版代理](agents-overview.md
 目前支持 Azure 虚拟机、虚拟机规模集和启用了 Azure Arc 的服务器。 目前不支持 Azure Kubernetes 服务和其他计算资源类型。
 
 ## <a name="supported-regions"></a>支持的区域
-Azure Monitor 代理在支持 Log Analytics 的所有公共区域中可用。 目前不支持政府区域和云。
+Azure Monitor 代理在所有支持 Log Analytics 的公共区域及 Azure 政府云和中国云中可用。 目前尚不支持气隙云。
+
+## <a name="supported-operating-systems"></a>支持的操作系统
+有关 Azure Monitor 代理目前支持的 Windows 和 Linux 操作系统版本的列表，请参阅[支持的操作系统](agents-overview.md#supported-operating-systems)。
+
 ## <a name="supported-services-and-features"></a>支持的服务和功能
 下表显示了其他 Azure 服务对 Azure Monitor 代理的当前支持。
 
@@ -113,9 +118,6 @@ Azure Monitor 代理会将数据发送到 Azure Monitor 指标或发送到支持
 
 <sup>1</sup> 目前，适用于 Linux 的 Azure Monitor 代理存在限制。 不支持将 Azure Monitor 指标用作唯一目标。 将其与 Azure Monitor 日志一起使用是可行的。 此限制将在下一扩展更新中解决。
 
-## <a name="supported-operating-systems"></a>支持的操作系统
-有关 Azure Monitor 代理目前支持的 Windows 和 Linux 操作系统版本的列表，请参阅[支持的操作系统](agents-overview.md#supported-operating-systems)。
-
 ## <a name="security"></a>安全性
 Azure Monitor 代理无需任何密钥，而是需要[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。 部署代理之前，必须在每个虚拟机上启用系统分配的托管标识。
 
@@ -131,7 +133,7 @@ Windows 和 Linux 的 Azure Monitor 代理扩展可以使用 HTTPS 协议通过�
    ![启用扩展时用于确定 setting 和 protectedSetting 参数的值的流程图。](media/azure-monitor-agent-overview/proxy-flowchart.png)
 
 
-1. 确定 setting 和 protectedSetting 参数的值后，请在使用 PowerShell 命令部署 Azure Monitor 代理时，提供这些附加参数。  以下示例适用于 Azure 虚拟机。
+2. 确定 setting 和 protectedSetting 参数的值后，请在使用 PowerShell 命令部署 Azure Monitor 代理时，提供这些附加参数。  以下示例适用于 Azure 虚拟机。
 
     | 参数 | 值 |
     |:---|:---|

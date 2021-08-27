@@ -828,6 +828,10 @@
           href: how-to-managed-identity-service-fabric-app-code.md
         - name: 授予对其他 Azure 资源的访问权限
           href: how-to-grant-access-other-resources.md
+    - name: 将群集迁移到新区域
+      items:
+        - name: 如何将 Azure Service Fabric 群集移到新的区域
+          href: service-fabric-cluster-region-move.md
     - name: 从云服务迁移
       items:
         - name: 云服务与 Service Fabric 的比较

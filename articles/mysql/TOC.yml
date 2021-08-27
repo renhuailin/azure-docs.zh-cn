@@ -11,6 +11,8 @@
       href: single-server-whats-new.md
     - name: 灵活服务器中有哪些新增功能？
       href: flexible-server/whats-new.md
+    - name: 免费试用灵活服务器
+      href: flexible-server/how-to-deploy-on-azure-free-account.md
     - name: 版本支持策略
       href: concepts-version-policy.md
       displayName: version policy
@@ -253,10 +255,6 @@
             - name: 通过重定向进行连接
               href: howto-redirection.md
               displayName: 'development, redirection , php'
-        - name: 数据库部署
-          items:
-            - name: GitHub 操作
-              href: quickstart-mysql-github-actions.md
         - name: 网络
           items:
             - name: 使用 Azure 门户配置 VNet 服务终结点
@@ -456,6 +454,12 @@
             - name: 网络概念
               href: flexible-server/concepts-networking.md
               displayName: 'virtual network, IP address, public access'
+            - name: 专用访问
+              href: flexible-server/concepts-networking-vnet.md
+              displayName: virtual network
+            - name: 公共访问
+              href: flexible-server/concepts-networking-public.md
+              displayName: 'Public access,'
         - name: 服务维护
           items:
             - name: 计划性维护
@@ -495,6 +499,12 @@
               href: flexible-server/tutorial-php-database-app.md
             - name: 与专用 Web 应用连接
               href: flexible-server/tutorial-webapp-server-vnet.md
+            - name: 数据库部署
+              items:
+                - name: GitHub 操作
+                  href: quickstart-mysql-github-actions.md
+                - name: Azure Pipelines
+                  href: flexible-server/azure-pipelines-deploy-database-task.md
         - name: 服务器管理
           items:
             - name: 管理服务器

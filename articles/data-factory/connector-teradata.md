@@ -1,17 +1,20 @@
 ---
 title: 使用 Azure 数据工厂从 Teradata Vantage 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 使用数据工厂服务的 Teradata 连接器可将数据从 Teradata Vantage 复制到数据工厂支持作为接收器的数据存储中。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: jianleishen
-ms.openlocfilehash: 9ebf320dc92ef8a39bc8b7569272ce2d0e2b2a68
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 2c8665217aa1f6bcf73caa59e6b7e35ffe193699
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486748"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638969"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata Vantage 复制数据
 
@@ -220,7 +223,7 @@ Teradata 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为 `TeradataSource`。 | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何相应的内置分区参数。 有关示例，请参阅[从 Teradata 进行并行复制](#parallel-copy-from-teradata)部分。 | 否（如果指定了数据集中的表） |
+| query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。<br>启用分区加载时，需要在查询中挂接任何相应的内置分区参数。 有关示例，请参阅[从 Teradata 进行并行复制](#parallel-copy-from-teradata)部分。 | 否（如果指定了数据集中的表） |
 | partitionOptions | 指定用于从 Teradata 加载数据的数据分区选项。 <br>允许的值为：**None**（默认值）、**Hash** 和 **DynamicRange**。<br>启用分区选项（即，该选项不为 `None`）时，用于从 Teradata 并行加载数据的并行度由复制活动上的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制。 | 否 |
 | partitionSettings | 指定数据分区的设置组。 <br>当分区选项不是 `None` 时适用。 | 否 |
 | partitionColumnName | 指定用于并行复制的，由范围分区或哈希分区使用的源列的名称。 如果未指定，系统会自动检测表的主索引并将其用作分区列。 <br>当分区选项是 `Hash` 或 `DynamicRange` 时适用。 如果使用查询来检索源数据，请在 WHERE 子句中挂接 `?AdfHashPartitionCondition` 或 `?AdfRangePartitionColumnName`。 请参阅[从 Teradata 进行并行复制](#parallel-copy-from-teradata)部分中的示例。 | 否 |
@@ -317,8 +320,8 @@ Teradata 链接服务支持以下属性：
 | Blob |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| Char |字符串 |
-| Clob |字符串 |
+| Char |String |
+| Clob |String |
 | Date |DateTime |
 | Decimal |小数 |
 | Double |Double |
@@ -349,7 +352,7 @@ Teradata 链接服务支持以下属性：
 | 时间戳 |DateTime |
 | Timestamp With Time Zone |DateTime |
 | VarByte |Byte[] |
-| VarChar |字符串 |
+| VarChar |String |
 | VarGraphic |不支持。 在源查询中应用显式强制转换。 |
 | Xml |不支持。 在源查询中应用显式强制转换。 |
 
