@@ -26,6 +26,8 @@
       href: concept-azure-ad-join.md
     - name: 混合 Azure AD 加入设备
       href: concept-azure-ad-join-hybrid.md
+    - name: 设备注册流
+      href: device-registration-how-it-works.md
     - name: SSO 到本地资源
       href: azuread-join-sso.md
     - name: 主刷新令牌

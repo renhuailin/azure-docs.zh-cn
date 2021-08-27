@@ -1,25 +1,52 @@
 - name: Azure Web PubSub 服务文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
     - name: 关于 Azure Web PubSub 服务
       href: overview.md
+    - name: 关于中心、组和连接
+      href: key-concepts.md
 - name: 快速入门
   expanded: true
   items:
-    - name: 尝试使用聊天室实时演示
-      href: quickstart-live-demo.md
-    - name: 从简单的聊天室无服务器应用程序开始
-      href: quickstart-serverless.md
+    - name: 创建实例
+      expanded: true
+      items:
+        - name: 门户
+          href: howto-develop-create-instance.md
+        - name: CLI
+          href: quickstart-cli-create.md
+    - name: 连接到实例
+      expanded: true
+      items:
+        - name: 从浏览器发布/订阅
+          href: quickstart-live-demo.md
+        - name: 从 CLI 发布/订阅
+          href: quickstart-cli-try.md
+        - name: 使用服务 SDK 发布/订阅
+          href: quickstart-use-sdk.md
+- name: 教程
+  expanded: true
+  items:
+    - name: 无服务器开发
+      expanded: true
+      items:
+        - name: 使用 Azure 函数构建无服务器聊天
+          href: quickstart-serverless.md
+    - name: 发布和订阅消息
+      href: tutorial-pub-sub-messages.md
+    - name: 构建聊天应用
+      href: tutorial-build-chat.md
+    - name: 使用服务支持的子协议进行客户端流式传输
+      href: tutorial-subprotocol.md
+    - name: 身份验证和权限
+      href: 'https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions'
 - name: 操作指南
   expanded: true
   items:
     - name: 开发
       items:
-        - name: 创建实例
-          href: howto-develop-create-instance.md
-        - name: 发布和订阅消息
-          href: 'https://azure.github.io/azure-webpubsub/getting-started/publish-messages/js-publish-message'
         - name: 使用子协议
           href: 'https://azure.github.io/azure-webpubsub/getting-started/using-pubsub-subprotocol/js-work-with-subprotocols'
         - name: 身份验证和权限
@@ -41,23 +68,35 @@
         - name: 捕获诊断日志
           href: howto-troubleshoot-diagnostic-logs.md
 - name: 概念
+  expanded: true
   items:
-    - name: Azure Web PubSub 服务内部情况
-      href: 'https://azure.github.io/azure-webpubsub/concepts/service-internals'
+    - name: 服务内部结构
+      href: concept-service-internals.md
+    - name: 客户端协议概述
+      href: concept-client-protocols.md
+    - name: 性能注意事项
+      href: concept-performance.md
     - name: 计费模式
       href: concept-billing-model.md
 - name: 参考
   items:
-    - name: REST API
-      href: /rest/api/webpubsub
-    - name: PubSub WebSocket 子协议
-      href: 'https://azure.github.io/azure-webpubsub/references/pubsub-websocket-subprotocol'
-    - name: Web PubSub CloudEvent
-      href: 'https://azure.github.io/azure-webpubsub/references/protocol-cloudevents'
+    - name: WebSocket 子协议
+      expanded: true
+      items:
+        - name: JSON WebSocket 子协议
+          href: reference-json-webpubsub-subprotocol.md
+    - name: 适用于 Azure Web PubSub 的 CloudEvents 扩展
+      href: reference-cloud-events.md
+    - name: 函数触发器和绑定
+      href: reference-functions-bindings.md
     - name: 服务器 SDK
       href: choose-server-sdks.md
+    - name: REST API
+      href: /rest/api/webpubsub
 - name: 资源
   items:
+    - name: 示例
+      href: 'https://aka.ms/awps/samples'
     - name: 解决方案
       href: /azure/architecture/
     - name: 上市区域

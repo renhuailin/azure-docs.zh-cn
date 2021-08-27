@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: 最新更新
       items:
+        - name: 2021 年 7 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-july-2021/'
         - name: 2021 年 6 月新增功能和更新的功能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-june-2021/'
         - name: 2021 年 5 月新增功能和更新的功能
@@ -145,48 +147,6 @@
       href: core/overview-iot-central-operator.md
     - name: 什么是应用程序模板？
       href: core/concepts-app-templates.md
-    - name: 行业特定应用程序模板
-      items:
-        - name: 零售
-          items:
-            - name: 概述
-              href: retail/overview-iot-central-retail.md
-            - name: 店内分析结帐体系结构
-              href: retail/store-analytics-architecture.md
-            - name: 智能库存管理体系结构
-              href: retail/architecture-smart-inventory-management.md
-            - name: 互联物流体系结构
-              href: retail/architecture-connected-logistics.md
-            - name: 数字分发中心
-              href: retail/architecture-digital-distribution-center.md
-            - name: 微履行中心体系结构
-              href: retail/architecture-micro-fulfillment-center.md
-            - name: 视频分析 - 对象和运动检测
-              href: retail/architecture-video-analytics.md
-        - name: 能源
-          items:
-            - name: 概述
-              href: energy/overview-iot-central-energy.md
-            - name: 智能计量应用体系结构
-              href: energy/concept-iot-central-smart-meter-app.md
-            - name: 太阳能板应用体系结构
-              href: energy/concept-iot-central-solar-panel-app.md
-        - name: 政府机关
-          items:
-            - name: 概述
-              href: government/overview-iot-central-government.md
-            - name: 联网废弃物监视体系结构
-              href: government/concepts-connectedwastemanagement-architecture.md
-            - name: 用水量监测体系结构
-              href: government/concepts-waterconsumptionmonitoring-architecture.md
-            - name: 水质监测体系结构
-              href: government/concepts-waterqualitymonitoring-architecture.md
-        - name: 医疗保健
-          items:
-            - name: 概述
-              href: healthcare/overview-iot-central-healthcare.md
-            - name: 持续患者监视体系结构
-              href: healthcare/concept-continuous-patient-monitoring-architecture.md
     - name: 什么是设备模板？
       href: core/concepts-device-templates.md
     - name: 设备连接
@@ -245,8 +205,6 @@
           href: core/howto-create-custom-rules.md
         - name: 使用 Databricks 创建自定义分析
           href: core/howto-create-custom-analytics.md
-        - name: 在 Power BI 中直观显示数据
-          href: core/howto-connect-powerbi.md
         - name: 连接其他 IoT 云
           href: core/howto-build-iotc-device-bridge.md
     - name: 使用 REST API

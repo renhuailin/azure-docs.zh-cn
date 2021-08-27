@@ -22,9 +22,9 @@
       href: groups-concept.md
     - name: 管理单元
       href: administrative-units.md
-    - name: 最佳实践
+    - name: 最佳做法
       href: best-practices.md
-    - name: 安全性
+    - name: 安全
       items:
         - name: 角色安全规划
           href: security-planning.md
@@ -40,12 +40,16 @@
       items:
         - name: 列出角色分配
           href: view-assignments.md
+        - name: 列出用户的角色分配
+          href: list-role-assignments-users.md
         - name: 列出组的角色分配
           href: groups-view-assignments.md
     - name: 分配角色
       items:
         - name: 向用户分配角色
           href: manage-roles-portal.md
+        - name: 将角色分配给不同范围内的用户
+          href: assign-roles-different-scopes.md
         - name: 创建可分配角色的组
           href: groups-create-eligible.md
         - name: 向组分配角色
@@ -80,7 +84,7 @@
           href: admin-units-assign-roles.md
     - name: 委托
       items:
-        - name: 委托应用管理角色
+        - name: 委派管理员角色
           href: delegate-app-roles.md
         - name: “我的员工”委托
           href: my-staff-configure.md

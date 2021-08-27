@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/29/2021
 ms.custom: tracking-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 4d4c7fcb824d57b46df1353f30d3136e129af293
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 80841c800172c4f0f551b6437d18d437aed0536d
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765792"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634107"
 ---
 # <a name="tutorial-upload-data-and-train-a-model-part-3-of-3"></a>教程：上传数据和训练模型（第 3 部分，共 3 部分）
 
@@ -270,6 +270,8 @@ if __name__ == "__main__":
 选择“保存并在终端中运行脚本”来运行 run-pytorch-data.py 脚本。  此运行将使用你上传的数据在计算群集上训练模型。
 
 此代码将会在 Azure 机器学习工作室中输出一个指向试验的 URL。 如果访问该链接，就可以看到代码在运行。
+
+[!INCLUDE [amlinclude-info](../../includes/machine-learning-py38-ignore.md)]
 
 
 ### <a name="inspect-the-log-file"></a><a name="inspect-log"></a> 检查日志文件

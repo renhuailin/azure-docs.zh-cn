@@ -64,8 +64,6 @@
           href: azure-stack-edge-pro-r-system-requirements.md
         - name: 了解限制
           href: azure-stack-edge-pro-r-limits.md
-        - name: 安全概述
-          href: azure-stack-edge-pro-r-security.md
         - name: 查看规范
           href: azure-stack-edge-pro-r-technical-specifications-compliance.md
     - name: 教程
@@ -111,8 +109,6 @@
           href: azure-stack-edge-mini-r-system-requirements.md
         - name: 了解限制
           href: azure-stack-edge-mini-r-limits.md
-        - name: 安全概述
-          href: azure-stack-edge-pro-r-security.md
         - name: 查看规范
           href: azure-stack-edge-mini-r-technical-specifications-compliance.md
     - name: 教程
@@ -148,42 +144,126 @@
           href: azure-stack-edge-mini-r-manage-wifi.md
         - name: 使用 Wi-Fi 配置文件
           href: azure-stack-edge-mini-r-use-wifi-profiles.md
-- name: 共享 Pro GPU、Pro R、Mini R
+- name: 共享功能 - Pro GPU、Pro R、Mini R
   items:
-    - name: 共享概念
+    - name: 本地 Azure 资源管理器（预览版）
       items:
-        - name: 了解 Kubernetes
-          items:
-            - name: 什么是 Kubernetes？
-              href: azure-stack-edge-gpu-kubernetes-overview.md
-            - name: Kubernetes 存储
-              href: azure-stack-edge-gpu-kubernetes-storage.md
-            - name: Kubernetes 网络
-              href: azure-stack-edge-gpu-kubernetes-networking.md
-            - name: Kubernetes RBAC
-              href: azure-stack-edge-gpu-kubernetes-rbac.md
-            - name: Kubernetes 工作负载
-              href: azure-stack-edge-gpu-kubernetes-workload-management.md
-        - name: 什么是 GPU 共享？
-          href: azure-stack-edge-gpu-sharing.md
-        - name: 查看 Key Vault 集成
-          href: azure-stack-edge-gpu-activation-key-vault.md
-        - name: 启用主动日志记录
-          href: azure-stack-edge-gpu-proactive-log-collection.md
-    - name: 共享操作说明
+        - name: 什么是本地 Azure 资源管理器？
+          href: azure-stack-edge-gpu-local-resource-manager-overview.md
+        - name: 通过 Azure PowerShell 连接
+          href: azure-stack-edge-gpu-connect-resource-manager.md
+        - name: 设置 Azure 资源管理器密码
+          href: azure-stack-edge-gpu-set-azure-resource-manager-password.md
+        - name: 配置客户端 TLS 设置
+          href: azure-stack-edge-gpu-configure-tls-settings.md
+        - name: 排查 Azure 资源管理器问题
+          href: azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md
+    - name: 证书
       items:
-        - name: 部署 IoT Edge 示例
+        - name: 什么是证书？
+          href: azure-stack-edge-gpu-certificates-overview.md
+        - name: 查看要求
+          href: azure-stack-edge-gpu-certificate-requirements.md
+        - name: 创建证书
           items:
-            - name: Nvidia 库中的模块
-              href: azure-stack-edge-gpu-configure-gpu-modules.md
-            - name: Git 存储库中的 GPU 模块
-              href: azure-stack-edge-gpu-deploy-sample-module.md
-            - name: 通过市场的 GPU 模块
-              href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
-            - name: FPGA 设备中的模块
-              href: azure-stack-edge-gpu-modify-fpga-modules-gpu.md
-            - name: 通过 Azure 门户的模块
-              href: azure-stack-edge-gpu-deploy-compute-module-simple.md
+            - name: 通过 Azure PowerShell
+              href: azure-stack-edge-gpu-create-certificates-powershell.md
+            - name: 通过 Azure Stack 就绪情况检查器工具
+              href: azure-stack-edge-gpu-create-certificates-tool.md
+        - name: 准备要在设备上上传的证书
+          href: azure-stack-edge-gpu-prepare-certificates-device-upload.md
+        - name: 上传、导入、查看到期时间
+          href: azure-stack-edge-gpu-manage-certificates.md
+        - name: 排查证书错误
+          href: azure-stack-edge-gpu-certificate-troubleshooting.md
+    - name: 虚拟机
+      items:
+        - name: 什么是 VM？
+          href: azure-stack-edge-gpu-virtual-machine-overview.md
+        - name: 查看受支持的 VM
+          href: azure-stack-edge-gpu-virtual-machine-sizes.md
+        - name: 查看支持的 API 配置文件
+          href: azure-stack-edge-profiles-azure-resource-manager-versions.md
+        - name: 什么是 GPU VM？
+          href: azure-stack-edge-gpu-overview-gpu-virtual-machines.md
+        - name: 创建 VM 映像
+          items:
+            - name: 来自 Azure VM 的自定义映像
+              href: azure-stack-edge-gpu-create-virtual-machine-image.md
+            - name: 来自 VHD 的 Windows 通用映像
+              href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
+            - name: 来自 ISO 的通用映像
+              href: azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md
+            - name: 使用专用映像
+              href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
+            - name: 使用 Azure 市场映像
+              href: azure-stack-edge-gpu-create-virtual-machine-marketplace-image.md
+        - name: 部署
+          items:
+            - name: VM - Azure 门户
+              href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
+            - name: VM - 模板
+              href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+            - name: VM - GPU
+              href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
+            - name: VM - Azure PowerShell cmdlet
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
+            - name: VM - Azure PowerShell 脚本
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
+            - name: VM - Azure CLI/Python
+              href: azure-stack-edge-gpu-deploy-virtual-machine-cli-python.md
+        - name: 安装扩展
+          items:
+            - name: 自定义脚本扩展
+              href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
+            - name: GPU 扩展
+              href: azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md
+        - name: 管理
+          items:
+            - name: 网络接口
+              href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
+            - name: 磁盘
+              href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
+            - name: Edge 资源组
+              href: azure-stack-edge-gpu-manage-edge-resource-groups-portal.md
+            - name: VM 大小
+              href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
+            - name: 虚拟交换机
+              href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
+            - name: VM 标记
+              href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
+        - name: 备份 VM 磁盘
+          href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
+        - name: 监视
+          items:
+            - name: VM 指标
+              href: azure-stack-edge-gpu-monitor-virtual-machine-metrics.md
+            - name: VM 活动
+              href: azure-stack-edge-gpu-monitor-virtual-machine-activity.md
+        - name: 疑难解答
+          items:
+            - name: 连接到 VM 控制台
+              href: azure-stack-edge-gpu-connect-virtual-machine-console.md
+            - name: 收集 VM 来宾日志
+              href: azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md
+            - name: VM 映像上传
+              href: azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md
+            - name: VM 部署
+              href: azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md
+            - name: GPU 扩展问题
+              href: azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md
+    - name: Kubernetes
+      items:
+        - name: 什么是 Kubernetes？
+          href: azure-stack-edge-gpu-kubernetes-overview.md
+        - name: Kubernetes 存储
+          href: azure-stack-edge-gpu-kubernetes-storage.md
+        - name: Kubernetes 网络
+          href: azure-stack-edge-gpu-kubernetes-networking.md
+        - name: Kubernetes RBAC
+          href: azure-stack-edge-gpu-kubernetes-rbac.md
+        - name: Kubernetes 工作负载
+          href: azure-stack-edge-gpu-kubernetes-workload-management.md
         - name: 部署 Kubernetes 工作负载
           items:
             - name: 通过 kubectl
@@ -216,116 +296,64 @@
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
                 - name: 部署 Azure Arc 数据控制器
                   href: azure-stack-edge-gpu-deploy-arc-data-controller.md
-        - name: 配置 Azure 资源管理器（预览版）
+    - name: IoT Edge
+      items:
+        - name: 部署 IoT Edge 示例
           items:
-            - name: 什么是本地 Azure 资源管理器？
-              href: azure-stack-edge-gpu-local-resource-manager-overview.md
-            - name: 通过 Azure PowerShell 连接
-              href: azure-stack-edge-gpu-connect-resource-manager.md
-            - name: 设置 Azure 资源管理器密码
-              href: azure-stack-edge-gpu-set-azure-resource-manager-password.md
-            - name: 配置客户端 TLS 设置
-              href: azure-stack-edge-gpu-configure-tls-settings.md
-        - name: 关于 VM（预览版）
-          items:
-            - name: 什么是 VM？
-              href: azure-stack-edge-gpu-virtual-machine-overview.md
-            - name: 查看受支持的 VM
-              href: azure-stack-edge-gpu-virtual-machine-sizes.md
-            - name: 查看支持的 API 配置文件
-              href: azure-stack-edge-profiles-azure-resource-manager-versions.md
-            - name: 创建 VM 映像
-              items:
-                - name: 来自 Azure VM 的自定义映像
-                  href: azure-stack-edge-gpu-create-virtual-machine-image.md
-                - name: 来自 VHD 的 Windows 通用映像
-                  href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
-                - name: 来自 ISO 的通用映像
-                  href: azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md
-                - name: 使用专用映像
-                  href: azure-stack-edge-gpu-deploy-vm-specialized-image-powershell.md
-                - name: 使用 Azure 市场映像
-                  href: azure-stack-edge-gpu-create-virtual-machine-marketplace-image.md
-            - name: 部署 VM
-              items:
-                - name: 通过 Azure 门户
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
-                - name: 通过模板
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
-                - name: 使用 GPU
-                  href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
-                - name: 通过 Azure PowerShell cmdlet
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
-                - name: 通过 Azure PowerShell 脚本
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
-                - name: 通过 Azure CLI/Python
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-cli-python.md
-            - name: 操作指南
-              items:
-                - name: 管理网络接口
-                  href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
-                - name: 管理磁盘
-                  href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
-                - name: 管理 VM 大小
-                  href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
-                - name: 管理 VM 标记
-                  href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
-                - name: 管理虚拟交换机
-                  href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
-                - name: 安装自定义脚本扩展
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
-                - name: 安装 GPU 扩展
-                  href: azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md
-                - name: 备份 VM 磁盘
-                  href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
-                - name: 疑难解答
-                  items:
-                    - name: 连接到 VM 控制台
-                      href: azure-stack-edge-gpu-connect-virtual-machine-console.md
-                    - name: 收集 VM 来宾日志
-                      href: azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md
-                    - name: VM 映像上传
-                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md
-                    - name: VM 部署
-                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md
-                    - name: GPU 扩展问题
-                      href: azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md
-        - name: 关于证书
-          items:
-            - name: 什么是证书？
-              href: azure-stack-edge-gpu-certificates-overview.md
-            - name: 查看要求
-              href: azure-stack-edge-gpu-certificate-requirements.md
-            - name: 创建证书
-              items:
-                - name: 通过 Azure PowerShell
-                  href: azure-stack-edge-gpu-create-certificates-powershell.md
-                - name: 通过 Azure Stack 就绪情况检查器工具
-                  href: azure-stack-edge-gpu-create-certificates-tool.md
-            - name: 准备要在设备上上传的证书
-              href: azure-stack-edge-gpu-prepare-certificates-device-upload.md
-            - name: 上传、导入、查看到期时间
-              href: azure-stack-edge-gpu-manage-certificates.md
-            - name: 排查证书错误
-              href: azure-stack-edge-gpu-certificate-troubleshooting.md
+            - name: Nvidia 库中的模块
+              href: azure-stack-edge-gpu-configure-gpu-modules.md
+            - name: Git 存储库中的 GPU 模块
+              href: azure-stack-edge-gpu-deploy-sample-module.md
+            - name: 通过市场的 GPU 模块
+              href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+            - name: FPGA 设备中的模块
+              href: azure-stack-edge-gpu-modify-fpga-modules-gpu.md
+            - name: 通过 Azure 门户的模块
+              href: azure-stack-edge-gpu-deploy-compute-module-simple.md
+        - name: 排查 IoT Edge 问题
+          href: azure-stack-edge-gpu-troubleshoot-iot-edge.md
+    - name: 云存储网关
+      items:
+        - name: 添加、连接到共享
+          href: azure-stack-edge-gpu-deploy-add-shares.md
+        - name: 添加、连接到存储帐户
+          href: azure-stack-edge-gpu-deploy-add-storage-accounts.md
+        - name: 共享
+          href: azure-stack-edge-gpu-manage-shares.md
+        - name: 用户
+          href: azure-stack-edge-gpu-manage-users.md
+        - name: 存储帐户
+          href: azure-stack-edge-gpu-manage-storage-accounts.md
+        - name: 带宽计划
+          href: azure-stack-edge-gpu-manage-bandwidth-schedules.md
+        - name: 排查 Blob 存储问题
+          href: azure-stack-edge-gpu-troubleshoot-blob-storage.md
+- name: 共享设备 - Pro GPU、Pro R、Mini R
+  items:
+    - name: 共享概念
+      items:
+        - name: 了解区域选择
+          href: azure-stack-edge-gpu-regions.md
+        - name: 什么是 GPU 共享？
+          href: azure-stack-edge-gpu-sharing.md
+        - name: 了解数据驻留
+          href: azure-stack-edge-gpu-data-residency.md
+        - name: 查看密钥保管库集成
+          href: azure-stack-edge-gpu-activation-key-vault.md
+        - name: 启用主动日志记录
+          href: azure-stack-edge-gpu-proactive-log-collection.md
+    - name: 共享安全性
+      items:
+        - name: 安全概述
+          href: azure-stack-edge-pro-r-security.md
+        - name: 安全基线
+          href: /security/benchmark/azure/baselines/stack-edge-security-baseline?toc=/azure/databox-online/TOC.json
+    - name: 共享操作说明
+      items:
         - name: 管理 Edge 计算
           href: azure-stack-edge-gpu-manage-compute.md
         - name: 管理 Edge 容器注册表
           href: azure-stack-edge-gpu-edge-container-registry.md
-        - name: 管理存储网关
-          items:
-            - name: 添加、连接到共享
-              href: azure-stack-edge-gpu-deploy-add-shares.md
-            - name: 添加、连接到存储帐户
-              href: azure-stack-edge-gpu-deploy-add-storage-accounts.md
-            - name: 共享
-              href: azure-stack-edge-gpu-manage-shares.md
-            - name: 用户
-              href: azure-stack-edge-gpu-manage-users.md
-            - name: 存储帐户
-              href: azure-stack-edge-gpu-manage-storage-accounts.md
-            - name: 带宽计划
-              href: azure-stack-edge-gpu-manage-bandwidth-schedules.md
         - name: 管理设备
           items:
             - name: 电源、访问权限和连接
@@ -362,12 +390,6 @@
               href: azure-stack-edge-gpu-troubleshoot-activation.md
             - name: 设备日志和诊断
               href: azure-stack-edge-gpu-troubleshoot.md
-            - name: Azure 资源管理器问题
-              href: azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md
-            - name: Blob 问题
-              href: azure-stack-edge-gpu-troubleshoot-blob-storage.md
-            - name: IoT Edge 问题
-              href: azure-stack-edge-gpu-troubleshoot-iot-edge.md
             - name: 请联系 Microsoft 支持部门
               href: azure-stack-edge-contact-microsoft-support.md
     - name: 共享发行说明
@@ -392,6 +414,8 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway
+        - name: Azure CLI
+          href: /cli/azure/databoxedge
         - name: Azure Policy 内置策略定义
           displayName: 'samples, policies, definitions'
           href: ./policy-reference.md
@@ -482,19 +506,11 @@
           href: ../databox-gateway/data-box-gateway-1905-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
         - name: 正式发布版 (GA)
           href: ../databox-gateway/data-box-gateway-release-notes.md?toc=/azure/databox-online/toc.json&bc=/azure/databox-online/breadcrumb/toc.json
-- name: 安全性
-  items:
-    - name: 安全基线
-      href: /security/benchmark/azure/baselines/stack-edge-security-baseline?toc=/azure/databox-online/TOC.json
-- name: 参考
-  items:
-    - name: Azure CLI
-      href: /cli/azure/databoxedge
 - name: 资源
   items:
     - name: Azure Stack Edge Pro C# 模块示例 (.NET)
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
-    - name: Azure Stack Edge Pro/Data Box Gateway 产品
+    - name: Azure Stack Edge 产品
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

@@ -34,14 +34,6 @@
               href: service-bus-python-how-to-use-queues.md
             - name: JavaScript (@azure/service-bus)
               href: service-bus-nodejs-how-to-use-queues.md
-        - name: 发送和接收消息（旧版本/包）
-          items:
-            - name: .NET (Microsoft.Azure.ServiceBus)
-              href: service-bus-dotnet-get-started-with-queues-legacy.md
-            - name: Java (azure-servicebus)
-              href: service-bus-java-how-to-use-queues-legacy.md
-            - name: PHP
-              href: service-bus-php-how-to-use-queues.md
     - name: 服务总线主题和订阅
       items:
         - name: 创建主题和订阅
@@ -62,14 +54,6 @@
               href: service-bus-python-how-to-use-topics-subscriptions.md
             - name: JavaScript (@azure/service-bus)
               href: service-bus-nodejs-how-to-use-topics-subscriptions.md
-        - name: 发布和订阅消息（旧版本/包）
-          items:
-            - name: .NET (Microsoft.Azure.ServiceBus)
-              href: service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md
-            - name: Java (azure-servicebus)
-              href: service-bus-java-how-to-use-topics-subscriptions-legacy.md
-            - name: PHP
-              href: service-bus-php-how-to-use-topics-subscriptions.md
 - name: 教程
   items:
     - name: 更新清单
@@ -80,6 +64,8 @@
           href: service-bus-to-event-grid-integration-example.md
         - name: Azure Functions
           href: service-bus-to-event-grid-integration-function.md
+    - name: 使用 NServiceBus 生成消息驱动的商业应用程序
+      href: build-message-driven-apps-nservicebus.md
 - name: 示例
   items:
     - name: 服务总线示例
@@ -172,6 +158,22 @@
       items:
         - name: 创建命名空间
           href: service-bus-create-namespace-portal.md
+        - name: 发送和接收消息（旧版本/包）
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-get-started-with-queues-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-queues-legacy.md
+            - name: PHP
+              href: service-bus-php-how-to-use-queues.md
+        - name: 发布和订阅消息（旧版本/包）
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-topics-subscriptions-legacy.md
+            - name: PHP
+              href: service-bus-php-how-to-use-topics-subscriptions.md
         - name: 设置订阅筛选器和操作
           href: service-bus-filter-examples.md
         - name: 消息处理
@@ -216,8 +218,6 @@
       items:
         - name: 端到端跟踪和诊断
           href: service-bus-end-to-end-tracing.md
-        - name: 诊断日志
-          href: service-bus-diagnostic-logs.md
         - name: 监视 Azure 服务总线
           href: monitor-service-bus.md
     - name: 集成
@@ -267,9 +267,9 @@
           href: service-bus-service-endpoints.md
         - name: 允许通过专用终结点访问
           href: private-link-service.md
-        - name: 配置客户管理的密钥
+        - name: 使用客户管理的密钥加密数据
           href: configure-customer-managed-key.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 故障排除指南
           href: service-bus-troubleshooting-guide.md

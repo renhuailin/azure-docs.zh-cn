@@ -4,6 +4,8 @@
   items:
     - name: 什么是事件中心？
       href: event-hubs-about.md
+    - name: 术语
+      href: event-hubs-features.md
 - name: 快速入门
   expanded: true
   items:
@@ -73,26 +75,26 @@
       href: event-hubs-samples.md
 - name: 概念
   items:
-    - name: 事件中心术语
-      href: event-hubs-features.md
-    - name: 事件中心高级层
-      href: event-hubs-premium-overview.md
+    - name: 层
+      items:
+        - name: 高级层
+          href: event-hubs-premium-overview.md
+        - name: 专用层
+          href: event-hubs-dedicated-overview.md
+        - name: 比较各个层级
+          href: compare-tiers.md
     - name: 用于 Apache Kafka 的事件中心
       href: event-hubs-for-kafka-ecosystem-overview.md
     - name: 事件中心捕获
       href: event-hubs-capture-overview.md
-    - name: 事件中心专用层
-      href: event-hubs-dedicated-overview.md
-    - name: 事件中心中的 Azure 架构注册表（预览版）
+    - name: 事件中心中的 Azure 架构注册表
       href: schema-registry-overview.md
-    - name: 事件处理器主机（旧版 SDK）
-      href: event-hubs-event-processor-host.md
-    - name: 事件处理器（最新 SDK）
-      href: event-processor-balance-partition-load.md
-    - name: 可用性和一致性
-      href: event-hubs-availability-and-consistency.md
-    - name: 可伸缩性
-      href: event-hubs-scalability.md
+    - name: 使用 SDK 的事件处理
+      items:
+        - name: 事件处理器主机（旧版 SDK）
+          href: event-hubs-event-processor-host.md
+        - name: 事件处理器（最新 SDK）
+          href: event-processor-balance-partition-load.md
     - name: 联合
       items:
         - name: 多站点和多区域联合
@@ -140,6 +142,10 @@
           href: ./security-controls-policy.md
         - name: 安全基线
           href: /security/benchmark/azure/baselines/event-hubs-security-baseline?toc=/azure/event-hubs/TOC.json
+    - name: 可用性和一致性
+      href: event-hubs-availability-and-consistency.md
+    - name: 可伸缩性
+      href: event-hubs-scalability.md
     - name: AMQP
       items:
         - name: AMQP 1.0 协议指南
@@ -217,8 +223,6 @@
       items:
         - name: 监视 Azure 事件中心
           href: monitor-event-hubs.md
-        - name: 设置诊断日志
-          href: event-hubs-diagnostic-logs.md
         - name: 使用事件中心流式传输 Azure 诊断数据
           href: ../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md
         - name: 自动缩放吞吐量单位
@@ -233,9 +237,9 @@
           href: event-hubs-service-endpoints.md
         - name: 允许通过专用终结点访问
           href: private-link-service.md
-        - name: 配置客户管理的密钥
+        - name: 使用客户管理的密钥加密数据
           href: configure-customer-managed-key.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 解决连接问题
           href: troubleshooting-guide.md

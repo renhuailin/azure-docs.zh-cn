@@ -139,9 +139,9 @@
           href: data-factory-hadoop-streaming-activity.md
         - name: HDInsight Spark 活动
           href: data-factory-spark.md
-        - name: Azure 机器学习工作室（经典）批处理执行活动
+        - name: ML 工作室（经典）批处理执行活动
           href: data-factory-azure-ml-batch-execution-activity.md
-        - name: Azure 机器学习工作室（经典）更新资源活动
+        - name: ML 工作室（经典版）更新资源活动
           href: data-factory-azure-ml-update-resource-activity.md
         - name: 存储过程活动
           href: data-factory-stored-proc-activity.md
@@ -208,7 +208,7 @@
     - name: 数据管理网关的发行说明
       href: data-factory-gateway-release-notes.md
     - name: 请求功能
-      href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
+      href: /answers/topics/azure-data-factory.html
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
     - name: Stack Overflow

@@ -36,6 +36,8 @@
           href: howto-identity-protection-investigate-risk.md
         - name: 修正风险检测和取消阻止
           href: howto-identity-protection-remediate-unblock.md
+        - name: 导出风险数据
+          href: howto-export-risk-data.md
         - name: 使用 Microsoft Graph API
           href: howto-identity-protection-graph-api.md
     - name: 提供有关风险检测的反馈

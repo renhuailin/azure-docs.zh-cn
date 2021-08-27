@@ -18,16 +18,16 @@ items:
     items:
       - name: 检测和分析人脸
         href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-      - name: 指定人脸识别模型版本
-        href: Face-API-How-to-Topics/specify-recognition-model.md
       - name: 指定人脸检测模型版本
         href: Face-API-How-to-Topics/specify-detection-model.md
+      - name: 指定人脸识别模型版本
+        href: Face-API-How-to-Topics/specify-recognition-model.md
       - name: 向组中添加人脸
         href: Face-API-How-to-Topics/how-to-add-faces.md
-      - name: 使用 PersonDirectory 结构
-        href: Face-API-How-to-Topics/use-persondirectory.md
       - name: 使用大规模使用的功能
         href: Face-API-How-to-Topics/how-to-use-large-scale.md
+      - name: 使用 PersonDirectory 结构
+        href: Face-API-How-to-Topics/use-persondirectory.md
       - name: 使用 HeadPose 属性
         href: Face-API-How-to-Topics/how-to-use-headpose.md
       - name: 使用人脸服务时减少延迟
@@ -59,7 +59,7 @@ items:
             href: ../authentication.md?context=/azure/cognitive-services/face/context/context
   - name: 概念
     items:
-      - name: 人脸检测
+      - name: 人脸检测和分析
         href: concepts/face-detection.md
       - name: 人脸识别
         href: concepts/face-recognition.md
@@ -67,9 +67,9 @@ items:
     items:
       - name: 向人脸服务添加用户
         items:
-          - name: 有关添加用户的最佳做法
+          - name: 注册用户的最佳做法
             href: enrollment-overview.md
-          - name: 构建 React 应用来添加用户
+          - name: 构建 React 应用来注册用户
             href: build-enrollment-app.md
   - name: 参考
     items:

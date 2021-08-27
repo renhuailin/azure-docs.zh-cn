@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: a95e1658c3633f4ae8d09b71e9d3b0c82446754a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b2ddc56614187d1f2dc6a4a1864d68276eaf54fd
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727580"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609091"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>快速入门：使用 Azure CLI 生成你的第一个静态站点
 
@@ -61,6 +61,7 @@ cd my-first-static-web-app
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
         -b main \
+        --app-artifact-location "src" \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
 
