@@ -4,13 +4,27 @@
   items:
     - name: 什么是 Azure 机器学习？
       displayName: 'AML, services, overview, introduction'
-      href: overview-what-is-azure-ml.md
+      href: overview-what-is-azure-machine-learning.md
     - name: 什么是 Azure 机器学习工作室？
       displayName: 'AML, studio, designer'
       href: overview-what-is-machine-learning-studio.md
     - name: 体系结构和术语
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
+    - name: 从 ML 工作室（经典）迁移
+      items:
+        - name: 迁移概述
+          href: migrate-overview.md
+        - name: 迁移数据集
+          href: migrate-register-dataset.md
+        - name: 重新生成试验
+          href: migrate-rebuild-experiment.md
+        - name: 重新生成 Web 服务
+          href: migrate-rebuild-web-service.md
+        - name: 迁移客户端应用程序
+          href: migrate-rebuild-integrate-with-client-app.md
+        - name: 重新生成“执行 R 脚本”组件
+          href: migrate-execute-r-script.md
 - name: 快速入门
   expanded: true
   items:
@@ -28,9 +42,9 @@
           href: tutorial-1st-experiment-sdk-train.md
         - name: 3. 使用自己的数据
           href: tutorial-1st-experiment-bring-data.md
-    - name: 2.0 CLI
+    - name: CLI (v2)
       items:
-        - name: 使用 2.0 CLI 训练模型
+        - name: 使用 CLI (v2) 训练模型
           href: how-to-train-cli.md
         - name: 使用托管终结点访问资源
           href: tutorial-deploy-managed-endpoints-using-system-managed-identity.md
@@ -270,11 +284,11 @@
               href: how-to-manage-workspace.md
             - name: 使用 Azure CLI
               href: how-to-manage-workspace-cli.md
-            - name: 使用 REST
-              href: how-to-manage-rest.md
             - name: 使用 Resource Manager 模板
               displayName: arm
               href: how-to-create-workspace-template.md
+            - name: 使用 REST
+              href: how-to-manage-rest.md
             - name: Azure Synapse Analytics 工作区的链接
               href: how-to-link-synapse-ml-workspaces.md
         - name: 创建并管理计算资源
@@ -302,7 +316,7 @@
               href: how-to-create-attach-compute-studio.md
     - name: 设置环境
       items:
-        - name: 安装和设置 2.0 CLI
+        - name: 安装和设置 CLI (v2)
           displayName: 'azurecli, mlops'
           href: how-to-configure-cli.md
         - name: 设置开发环境
@@ -404,7 +418,7 @@
               href: how-to-export-delete-data.md
     - name: 训练模型
       items:
-        - name: 使用 2.0 CLI 进行训练
+        - name: 使用 CLI (v2) 进行训练
           href: how-to-train-cli.md
         - name: 使用 REST API 进行训练
           href: how-to-train-with-rest.md
@@ -418,6 +432,9 @@
             - name: 优化超参数
               displayName: 'parameter, hyperparameter, hyperdrive'
               href: how-to-tune-hyperparameters.md
+            - name: 分布式 GPU 指南
+              displayName: 'MPI, Horovod, DeepSpeed, PyTorch, Hugging Face Transformers, TensorFlow, InfiniBand'
+              href: how-to-train-distributed-gpu.md
             - name: Scikit-learn
               href: how-to-train-scikit-learn.md
             - name: TensorFlow
@@ -504,7 +521,7 @@
           href: how-to-deploy-and-where.md
         - name: 使用终结点进行部署
           items:
-            - name: 联机
+            - name: 实时
               items:
                 - name: 使用托管联机终结点部署 ML 模型
                   href: how-to-deploy-managed-online-endpoints.md
@@ -528,6 +545,8 @@
               items:
                 - name: 使用批处理终结点进行批量评分
                   href: how-to-use-batch-endpoint.md
+                - name: 工作室中的批处理终结点
+                  href: how-to-use-batch-endpoints-studio.md
                 - name: 排查批处理终结点问题
                   href: how-to-troubleshoot-batch-endpoints.md
         - name: 部署目标
@@ -678,16 +697,60 @@
   items:
     - name: REST API
       href: /rest/api/azureml/
+    - name: Python SDK
+      displayName: 'api, core, package, python, class'
+      href: /python/api/overview/azure/ml/intro
     - name: CLI (v2)
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: /cli/azure/ml/
     - name: CLI (v2) YAML 架构
       items:
-        - name: 联机终结点
-          href: reference-online-endpoint-yaml.md
-    - name: Python SDK
-      displayName: 'api, core, package, python, class'
-      href: /python/api/overview/azure/ml/intro
+        - name: 概述
+          href: reference-yaml-overview.md
+        - name: 资产
+          items:
+            - name: 工作区
+              href: reference-yaml-workspace.md
+            - name: 计算
+              href: reference-yaml-compute.md
+            - name: 环境
+              href: reference-yaml-environment.md
+            - name: 数据集
+              href: reference-yaml-dataset.md
+            - name: 型号
+              href: reference-yaml-model.md
+        - name: 数据存储
+          items:
+            - name: Azure Blob
+              href: reference-yaml-datastore-blob.md
+            - name: Azure 文件
+              href: reference-yaml-datastore-files.md
+            - name: Azure Data Lake Gen1
+              href: reference-yaml-datastore-data-lake-gen1.md
+            - name: Azure Data Lake Gen2
+              href: reference-yaml-datastore-data-lake-gen2.md
+        - name: 作业
+          items:
+            - name: 命令
+              href: reference-yaml-job-command.md
+            - name: Sweep
+              href: reference-yaml-job-sweep.md
+        - name: 终结点
+          items:
+            - name: 联机托管（实时）
+              href: reference-yaml-endpoint-managed-online.md
+            - name: 托管批次
+              href: reference-yaml-endpoint-managed-batch.md
+            - name: 在线 Kubernetes (k8s)
+              href: reference-yaml-endpoint-k8s-online.md
+        - name: 部署
+          items:
+            - name: 联机托管（实时）
+              href: reference-yaml-deployment-managed-online.md
+            - name: 托管批次
+              href: reference-yaml-deployment-managed-batch.md
+            - name: 在线 Kubernetes (k8s)
+              href: reference-yaml-deployment-k8s-online.md
     - name: CLI (v1)
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
@@ -696,9 +759,7 @@
       href: algorithm-module-reference/module-reference.md
     - name: 监视数据参考
       href: monitor-resource-reference.md
-    - name: 托管联机终结点 YAML 参考
-      href: reference-online-endpoint-yaml.md
-    - name: 机器学习管道 YAML 参考
+    - name: 机器学习 CLI (v1) 管道 YAML 参考
       href: reference-pipeline-yaml.md
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'

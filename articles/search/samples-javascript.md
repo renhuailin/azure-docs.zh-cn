@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2021
-ms.openlocfilehash: 073095d590e61d9e7e561339c17501f0ccee844d
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 6bc5a504f1716ff10b56fd30b8991f6d9e4009c7
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018650"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770210"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure 认知搜索的 JavaScript 代码示例
 
@@ -34,21 +34,21 @@ Azure SDK 开发团队中的代码示例演示 API 用法。 可以在 GitHub �
 
 | 示例 | 说明 |
 |---------|-------------|
-| [索引](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexes) | 演示如何创建、更新、获取、列出和删除[搜索索引](search-what-is-an-index.md)。 此样本类别还包括一个服务统计信息示例。 |
-| [dataSourceConnections（用于索引器）](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/dataSourceConnections) | 演示如何创建、更新、获取、列出和删除索引器数据源，对于基于索引器为[支持的 Azure 数据源](search-indexer-overview.md#supported-data-sources)编制索引而言，这些数据源是必需的。 |
-| [索引器](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  演示如何创建、更新、获取、列出、重置和删除[索引器](search-indexer-overview.md)。|
-| [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   演示如何创建、更新、获取、列出和删除[技能组](cognitive-search-working-with-skillsets.md)，这些技能组是附加的索引器，并且在编制索引期间执行基于 AI 的扩充。 |
-| [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | 演示如何创建、更新、获取、列出和删除[同义词映射](search-synonyms.md)。  |
+| [索引](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) | 演示如何创建、更新、获取、列出和删除[搜索索引](search-what-is-an-index.md)。 此样本类别还包括一个服务统计信息示例。 |
+| [dataSourceConnections（用于索引器）](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/search/search-documents/samples/v11/javascript/dataSourceConnectionOperations.js) | 演示如何创建、更新、获取、列出和删除索引器数据源，对于基于索引器为[支持的 Azure 数据源](search-indexer-overview.md#supported-data-sources)编制索引而言，这些数据源是必需的。 |
+| [索引器](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) |  演示如何创建、更新、获取、列出、重置和删除[索引器](search-indexer-overview.md)。|
+| [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) |   演示如何创建、更新、获取、列出和删除[技能组](cognitive-search-working-with-skillsets.md)，这些技能组是附加的索引器，并且在编制索引期间执行基于 AI 的扩充。 |
+| [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) | 演示如何创建、更新、获取、列出和删除[同义词映射](search-synonyms.md)。  |
 
 ### <a name="typescript-samples"></a>TypeScript 示例
 
 | 示例 | 说明 |
 |---------|-------------|
-| [索引](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexes) | 演示如何创建、更新、获取、列出和删除[搜索索引](search-what-is-an-index.md)。 此样本类别还包括一个服务统计信息示例。 |
-| [dataSourceConnections（用于索引器）](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/dataSourceConnections) | 演示如何创建、更新、获取、列出和删除索引器数据源，对于基于索引器为[支持的 Azure 数据源](search-indexer-overview.md#supported-data-sources)编制索引而言，这些数据源是必需的。 |
-| [索引器](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  演示如何创建、更新、获取、列出、重置和删除[索引器](search-indexer-overview.md)。|
-| [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   演示如何创建、更新、获取、列出和删除[技能组](cognitive-search-working-with-skillsets.md)，这些技能组是附加的索引器，并且在编制索引期间执行基于 AI 的扩充。 |
-| [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | 演示如何创建、更新、获取、列出和删除[同义词映射](search-synonyms.md)。  |
+| [索引](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/typescript/src) | 演示如何创建、更新、获取、列出和删除[搜索索引](search-what-is-an-index.md)。 此样本类别还包括一个服务统计信息示例。 |
+| [dataSourceConnections（用于索引器）](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/search/search-documents/samples/v11/typescript/src/dataSourceConnectionOperations.ts) | 演示如何创建、更新、获取、列出和删除索引器数据源，对于基于索引器为[支持的 Azure 数据源](search-indexer-overview.md#supported-data-sources)编制索引而言，这些数据源是必需的。 |
+| [索引器](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/typescript/src) |  演示如何创建、更新、获取、列出、重置和删除[索引器](search-indexer-overview.md)。|
+| [skillSet](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/search/search-documents/samples/v11/typescript/src/skillSetOperations.ts) |   演示如何创建、更新、获取、列出和删除[技能组](cognitive-search-working-with-skillsets.md)，这些技能组是附加的索引器，并且在编制索引期间执行基于 AI 的扩充。 |
+| [synonymMaps](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/search/search-documents/samples/v11/typescript/src/synonymMapOperations.ts) | 演示如何创建、更新、获取、列出和删除[同义词映射](search-synonyms.md)。  |
 
 ## <a name="doc-samples"></a>文档示例
 

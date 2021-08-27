@@ -4,7 +4,7 @@
   items:
     - name: 关于已启用 Azure Arc 的 Kubernetes
       href: overview.md
-    - name: Azure Arc 验证计划
+    - name: Azure Arc 认证合作伙伴
       href: validation-program.md
 - name: 快速入门
   items:
@@ -58,7 +58,7 @@
           href: ../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: 使用 Azure Defender 强制实施威胁防护
           href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
-        - name: 使用 Azure Policy 的许可控制策略
+        - name: 使用 Azure Policy 的许可控制策略定义
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: 部署启用了 Arc 的开放式服务网格
           href: tutorial-arc-enabled-open-service-mesh.md
@@ -83,6 +83,8 @@
       href: /powershell/module/Az.ConnectedKubernetes/
 - name: 资源
   items:
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc'
     - name: 部署规划
       href: plan-at-scale-deployment.md
     - name: Azure Arc 快速入门
