@@ -12,12 +12,12 @@ metadata:
   author: yelevin
   ms.author: yelevin
   ms.date: 06/25/2020
-  ms.openlocfilehash: 53ebfd52d2e55aa8f30f7638cd9998e83c257439
-  ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+  ms.openlocfilehash: 32935f55897e54836ce60ddae69c4f708053c9e0
+  ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/16/2021
-  ms.locfileid: "112199423"
+  ms.lasthandoff: 08/23/2021
+  ms.locfileid: "122662438"
 landingContent:
 - title: 关于 Azure Sentinel
   linkLists:
@@ -31,20 +31,30 @@ landingContent:
     links:
     - text: Azure Sentinel 中有哪些新增功能？
       url: whats-new.md
+  - linkListType: concept
+    links:
+    - text: 最佳做法
+      url: best-practices.md
 - title: 入门
   linkLists:
   - linkListType: quickstart
     links:
     - text: 载入 Azure Sentinel
       url: quickstart-onboard.md
+  - linkListType: concept
+    links:
+    - text: 必备条件
+      url: prerequisites.md
   - linkListType: how-to-guide
     links:
     - text: 将数据连接到 Azure Sentinel
       url: connect-data-sources.md
-  - linkListType: tutorial
-    links:
+    - text: 可视化收集的数据
+      url: get-visibility.md
     - text: 调查事件
-      url: tutorial-investigate-cases.md
+      url: investigate-cases.md
+    - text: Microsoft 365 Defender 与 Azure Sentinel 集成
+      url: microsoft-365-defender-sentinel-integration.md
   - linkListType: learn
     links:
     - text: 创建 Azure Sentinel 的 KQL 查询
@@ -53,6 +63,8 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
+    - text: 数据收集最佳做法
+      url: best-practices-data.md
     - text: 规范化和分析数据
       url: normalization.md
   - linkListType: how-to-guide
@@ -61,8 +73,6 @@ landingContent:
       url: connect-microsoft-365-defender.md
     - text: 创建自定义连接器
       url: create-custom-connector.md
-    - text: 连接威胁智能
-      url: connect-threat-intelligence.md
     - text: 监视连接器运行状况
       url: monitor-data-connector-health.md
     - text: 集成 Azure 数据资源管理器
@@ -79,24 +89,18 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: 将威胁情报导入 Azure Sentinel
-      url: import-threat-intelligence.md
+    - text: 理解 Azure Sentinel 中的威胁情报
+      url: understand-threat-intelligence.md
     - text: 威胁情报集成
       url: threat-intelligence-integration.md
-  - linkListType: tutorial
-    links:
-    - text: 使用内置分析来检测威胁
-      url: tutorial-detect-threats-built-in.md
-    - text: 创建自定义检测规则
-      url: tutorial-detect-threats-custom.md
   - linkListType: how-to-guide
     links:
-    - text: 连接威胁智能
-      url: connect-threat-intelligence.md
-  - linkListType: reference
-    links:
-    - text: 实体参考
-      url: entities-reference.md
+    - text: 将威胁情报平台连接到 Azure Sentinel
+      url: connect-threat-intelligence-tip.md
+    - text: 将 Azure Sentinel 连接到 STIX/TAXII 源
+      url: connect-threat-intelligence-taxii.md
+    - text: 使用威胁指示器
+      url: work-with-threat-indicators.md
 - title: 威胁检测
   linkLists:
   - linkListType: concept
@@ -105,8 +109,16 @@ landingContent:
       url: identify-threats-with-entity-behavior-analytics.md
     - text: SOC-ML 异常
       url: soc-ml-anomalies.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用内置分析来检测威胁
+      url: detect-threats-built-in.md
+    - text: 创建自定义检测规则
+      url: detect-threats-custom.md
   - linkListType: reference
     links:
+    - text: 实体参考
+      url: entities-reference.md
     - text: UEBA 扩充
       url: ueba-enrichments.md
 - title: 威胁搜寻
@@ -127,12 +139,14 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 监视数据
-      url: tutorial-monitor-your-data.md
-  - linkListType: how-to-guide
-    links:
     - text: 使用 UEBA 进行调查
       url: investigate-with-ueba.md
+  - linkListType: how-to-guide
+    links:
+    - text: 调查事件
+      url: investigate-cases.md
+    - text: 监视数据
+      url: monitor-your-data.md
   - linkListType: reference
     links:
     - text: 常用的 Azure Sentinel 工作簿
@@ -151,10 +165,16 @@ landingContent:
       url: automate-incident-handling-with-automation-rules.md
     - text: 攻略
       url: automate-responses-with-playbooks.md
-- title: 与多个租户一起工作
+- title: 管理 Azure Sentinel
   linkLists:
+  - linkListType: concept
+    links:
+    - text: 工作区体系结构最佳做法
+      url: best-practices-workspace-architecture.md
   - linkListType: how-to-guide
     links:
+    - text: 设计工作区体系结构
+      url: design-your-workspace-architecture.md
     - text: 管理多个租户
       url: multiple-tenants-service-providers.md
     - text: 处理多个工作区中的事件

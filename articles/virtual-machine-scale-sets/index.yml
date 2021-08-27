@@ -10,12 +10,12 @@ metadata:
   ms.author: jushiman
   ms.reviewer: mimckitt
   ms.date: 03/16/2020
-  ms.openlocfilehash: e30d136e1ebd7f0af68ae15741fe220a399d28b5
-  ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+  ms.openlocfilehash: 3b50b0bc3c25a157c3af62004d2fb34f3bb2fcef
+  ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/13/2021
-  ms.locfileid: "107312478"
+  ms.lasthandoff: 08/23/2021
+  ms.locfileid: "122691307"
 landingContent:
 - title: 关于虚拟机规模集
   linkLists:
@@ -79,3 +79,15 @@ landingContent:
       url: /learn/modules/build-app-with-scale-sets/
     - text: " 在 Azure 中创建 Windows 虚拟机"
       url: /learn/modules/create-windows-virtual-machine-in-azure/
+- title: 适用于规模集的灵活业务流程
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 灵活业务流程模式
+      url: ../virtual-machines/flexible-virtual-machine-scale-sets.md
+    - text: CLI 入门
+      url: ../virtual-machines/flexible-virtual-machine-scale-sets-cli.md
+    - text: 门户入门
+      url: ../virtual-machines/flexible-virtual-machine-scale-sets-portal.md
+    - text: 虚拟机规模集编排模式
+      url: virtual-machine-scale-sets-orchestration-modes.md

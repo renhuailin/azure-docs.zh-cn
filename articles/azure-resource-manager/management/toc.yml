@@ -71,6 +71,12 @@
                   href: ../../search/search-howto-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Azure Cosmos DB
                   href: ../../cosmos-db/how-to-move-regions.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure Database for MariaDB 服务器
+                  href: ../../mariadb/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure Database for MySQL 服务器
+                  href: ../../mysql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure Database for PostgreSQL 服务器
+                  href: ../../postgresql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Azure 事件中心
                   href: ../../event-hubs/move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Azure IoT 中心
@@ -81,8 +87,6 @@
                   href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Azure SQL DB 与 MI
                   href: ../../azure-sql/database/move-resources-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-                - name: Azure VM 上的 SQL Server
-                  href: ../../azure-sql/virtual-machines/windows/move-sql-vm-different-region.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Azure VM
                   href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: 逻辑应用
@@ -99,14 +103,12 @@
                       href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
                     - name: 公共 IP 地址
                       href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Power BI
+                  href: /power-bi/admin/service-admin-region-move
                 - name: Site Recovery（恢复服务保管库）
                   href: ../../site-recovery/move-vaults-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-                - name: Azure Database for PostgreSQL 服务器
-                  href: ../../postgresql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
-                - name: Azure Database for MariaDB 服务器
-                  href: ../../mariadb/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
-                - name: Azure Database for MySQL 服务器
-                  href: ../../mysql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
+                - name: Azure VM 上的 SQL Server
+                  href: ../../azure-sql/virtual-machines/windows/move-sql-vm-different-region.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: Tags
       items:
         - name: 决策指南
