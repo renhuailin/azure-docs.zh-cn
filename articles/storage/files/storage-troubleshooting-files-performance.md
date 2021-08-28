@@ -1,22 +1,29 @@
 ---
 title: Azure 文件共享性能故障排除指南
 description: 排查 Azure 文件共享的已知性能问题。 遇到这些问题时，找出潜在的原因和相关解决方法。
-author: roygara
+author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 11/16/2020
-ms.author: rogarana
+ms.date: 07/06/2021
+ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b303dbc20cf0caf4bb0d75f28a2983bc0f27064d
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 65b703a4f193e6b1197c3c8f2cb03ffbc349471b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065018"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741857"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>排查 Azure 文件共享性能问题
 
 本文列出了与 Azure 文件共享相关的一些常见问题。 其中提供了这些问题的潜在原因和解决方法。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>高延迟、低吞吐量和一般性能问题
 
@@ -58,9 +65,9 @@ ms.locfileid: "108065018"
     > [!NOTE]
     > 若要接收警报，请参阅本文后面的[“如何创建文件共享受到限制时的警报”](#how-to-create-an-alert-if-a-file-share-is-throttled)部分。
 
-### <a name="solution"></a>解决方案
+#### <a name="solution"></a>解决方案
 
-- 如果使用的是标准文件共享，请在存储帐户上启用[大型文件共享](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal)。 大型文件共享支持每个共享最多 10,000 IOPS。
+- 如果使用的是标准文件共享，请在存储帐户上[启用大型文件共享](storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account)，并[增大文件共享配额的大小以利用大型文件共享支持](storage-how-to-create-file-share.md#expand-existing-file-shares)。 大型文件共享支持很大的 IOPS 和带宽限制；有关详细信息，请参阅 [Azure 文件存储的可伸缩性和性能目标](storage-files-scale-targets.md)。
 - 如果使用的是高级文件共享，请增加预配的文件共享大小，以便提高 IOPS 限制。 若要了解详细信息，请参阅[了解高级文件共享的预配](./understanding-billing.md#provisioned-model)。
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>原因 2：元数据或命名空间工作负载繁重
@@ -71,7 +78,7 @@ ms.locfileid: "108065018"
 
 ![高级文件共享的指标选项的屏幕截图，其中显示了“API 名称”属性筛选器。](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
 
-### <a name="workaround"></a>解决方法
+#### <a name="workaround"></a>解决方法
 
 - 检查是否可以修改应用程序以减少元数据操作的数量。
 - 在文件共享上添加虚拟硬盘 (VHD)，并从客户端通过 SMB 装载 VHD，以便对数据执行文件操作。 此方法适用于单个编写器/读取器方案或包含多个读取器且无编写器的方案。 由于文件系统由客户端而不是 Azure 文件存储拥有，因此元数据操作可在本地执行。 安装程序提供的性能与本地直连的存储的性能类似。
@@ -80,10 +87,18 @@ ms.locfileid: "108065018"
 
 如果使用的应用程序是单线程的，则此安装程序可能会导致 IOPS 吞吐量明显低于最大可能的吞吐量，具体取决于预配的共享大小。
 
-### <a name="solution"></a>解决方案
+#### <a name="solution"></a>解决方案
 
 - 通过增加线程数来提高应用程序的并行度。
 - 切换到支持并行度的应用程序。 例如，对于复制操作，可以在 Windows 客户端中使用 AzCopy 或 RoboCopy，或者在 Linux 客户端中使用 parallel 命令。
+
+### <a name="cause-4-number-of-smb-channels-exceeds-four"></a>原因 4：SMB 通道数超过 4 个
+
+如果使用的是 SMB 多通道并且通道数超过 4 个，则会导致性能不佳。 若要确定连接计数是否超过 4 个，请使用 PowerShell cmdlet `get-SmbClientConfiguration` 查看当前的连接计数设置。
+
+#### <a name="solution"></a>解决方案
+
+为 SMB 设置单个 NIC 的 Windows 设置，使总通道数不超过 4 个。 例如，如果你有 2 个 NIC，则可以使用以下 PowerShell cmdlet 将单个 NIC 的最大值设置为 2：`Set-SmbClientConfiguration -ConnectionCountPerRssNetworkInterface 2`。
 
 ## <a name="very-high-latency-for-requests"></a>请求的延迟很高
 
@@ -275,7 +290,7 @@ CentOS Linux 或 RHEL 不支持大于 1 的 I/O 深度。
 12. 填写 **警报详细信息**，例如 **警报规则名称**、**说明** 和 **严重性**。
 13. 单击“创建警报规则”以创建警报。
 
-若要详细了解如何在 Azure Monitor 中配置警报，请参阅 [Microsoft Azure 中的警报概述]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
+若要详细了解如何在 Azure Monitor 中配置警报，请参阅 [Microsoft Azure 中的警报概述](../../azure-monitor/alerts/alerts-overview.md)。
 
 ## <a name="how-to-create-alerts-if-a-premium-file-share-is-trending-toward-being-throttled"></a>如果高级文件共享正在趋向于受限制，如何创建警报
 
@@ -313,7 +328,7 @@ CentOS Linux 或 RHEL 不支持大于 1 的 I/O 深度。
     >    - 在步骤 5 中，选择“事务”指标，而不是“流出量” 。
     >    - 在步骤 10 中，“聚合类型”的唯一选项是“总计”。 因此，阈值将取决于所选的聚合粒度。 例如，如果希望阈值为预配基线 IOPS 的&nbsp;80%，并且为“聚合粒度”选择了“1 小时”，则“阈值”将为基线 IOPS（以字节为单位）&times;&nbsp;0.8 &times;&nbsp;3600 。 
 
-若要详细了解如何在 Azure Monitor 中配置警报，请参阅 [Microsoft Azure 中的警报概述]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
+若要详细了解如何在 Azure Monitor 中配置警报，请参阅 [Microsoft Azure 中的警报概述](../../azure-monitor/alerts/alerts-overview.md)。
 
 ## <a name="see-also"></a>另请参阅
 - [在 Windows 中排查 Azure 文件问题](storage-troubleshoot-windows-file-connection-problems.md)  

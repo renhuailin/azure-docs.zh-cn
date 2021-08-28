@@ -2,23 +2,24 @@
 title: 将自承载集成运行时配置为 SSIS 的代理
 description: 了解如何将自承载集成运行时配置为 Azure-SSIS Integration Runtime 的代理。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 05/19/2021
-ms.openlocfilehash: dde4c234a6a0459441a601813f4f4a42dfbbff1c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 07/19/2021
+ms.openlocfilehash: ff0dc37b70861dae8cddb77ef984c27109eefc15
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665461"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747417"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>自承载 IR 配置为 Azure 数据工厂中 Azure-SSIS IR 的代理
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本文介绍如何在将某个自承载集成运行时（自承载 IR）配置为代理的情况下，在 Azure 数据工厂中的 Azure-SSIS Integration Runtime (Azure-SSIS IR) 上运行 SQL Server Integration Services (SSIS) 包。 
+本文介绍如何在 Azure 数据工厂 (ADF) 中的 Azure-SSIS 集成运行时 (Azure-SSIS IR) 上运行 SQL Server Integration Services (SSIS) 包，并将自承载集成运行时（自承载 IR）配置为代理。 
 
 使用此功能可在本地访问数据并运行任务，而无需[将 Azure-SSIS IR 加入虚拟网络](./join-azure-ssis-integration-runtime-virtual-network.md)。 当企业网络的配置过于复杂，或者采用过于严格的策略，以致你很难在此网络中注入 Azure-SSIS IR 时，此功能将很有用。
 
@@ -50,7 +51,7 @@ ms.locfileid: "110665461"
   
   如果使用用于其他数据库系统（例如 PostgreSQL、MySQL、Oracle 等）的 OLEDB/ODBC/ADO.NET 驱动程序，可以从其网站下载 64 位版本。
 - 如果在包中使用 Azure 功能包中的数据流组件，请在安装了自承载 IR 的同一台计算机上[下载并安装适用于 SQL Server 2017 的 Azure 功能包](https://www.microsoft.com/download/details.aspx?id=54798)（如果尚未这样做）。
-- 如果尚未这样做，请在安装了自承载 IR 的同一台计算机上[下载并安装 64 位版本的 Visual C++ (VC) 运行时](https://www.microsoft.com/download/details.aspx?id=40784)。
+- 如果尚未这样做，请在安装了自承载 IR 的同一台计算机上[下载并安装 64 位版本的 Visual C++ (VC) 运行时](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0)。
 
 ### <a name="enable-windows-authentication-for-on-premises-tasks"></a>为本地任务启用 Windows 身份验证
 
@@ -67,10 +68,10 @@ ms.locfileid: "110665461"
 如果尚未在设置了 Azure-SSIS IR 的数据工厂中创建 Azure Blob 存储链接服务，请执行此操作。 为此，请参阅[创建 Azure 数据工厂链接服务](./quickstart-create-data-factory-portal.md#create-a-linked-service)。 确保执行以下操作：
 - 对于“数据存储”，请选择“Azure Blob 存储”。    
 - 对于“通过集成运行时连接”，请选择“AutoResolveIntegrationRuntime”（而非自承载 IR），这样我们可以将其忽略并改为使用 Azure-SSIS IR 来提取 Azure Blob 存储的访问凭据 。
-- 对于“身份验证方法”，请选择“帐户密钥”、“SAS URI”、“服务主体”或“托管标识”。      
+- 对于“身份验证方法”，请选择“帐户密钥”、“SAS URI”、“服务主体”、“托管标识”或“用户分配的托管标识”。  
 
 >[!TIP]
->如果选择“服务主体”方法，请至少为你的服务主体授予“存储 Blob 数据参与者”角色。 有关详细信息，请参阅 [Azure Blob 存储 连接器](connector-azure-blob-storage.md#linked-service-properties)。 如果选择“托管标识”方法，请向 ADF 托管标识授予访问 Azure Blob 存储所需的适当角色。 有关详细信息，请参阅[通过 ADF 托管标识使用 Azure Active Directory 身份验证以访问 Azure Blob 存储](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)。
+>如果选择“服务主体”方法，请至少为你的服务主体授予“存储 Blob 数据参与者”角色。 有关详细信息，请参阅 [Azure Blob 存储 连接器](connector-azure-blob-storage.md#linked-service-properties)。 如果选择“托管标识”/“用户分配的托管标识”方法，请向为 ADF 指定的系统/用户分配的托管标识授予可访问 Azure Blob 存储的适当角色。 有关详细信息，请参阅[使用为 ADF 指定的系统/用户分配的托管标识通过 Azure Active Directory (Azure AD) 身份验证访问 Azure Blob 存储](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)。
 
 ![准备用于暂存的 Azure Blob 存储链接服务](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -105,7 +106,7 @@ $DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-pre
 $DataProxyStagingLinkedServiceName = "" # OPTIONAL to configure a proxy for on-premises data access 
 $DataProxyStagingPath = "" # OPTIONAL to configure a proxy for on-premises data access 
 
-# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data accesss
+# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data access
 if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::IsNullOrEmpty($DataProxyStagingLinkedServiceName))
 {
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
