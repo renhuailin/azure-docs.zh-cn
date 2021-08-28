@@ -4,8 +4,6 @@
   items:
     - name: 关于开发测试实验室
       href: devtest-lab-overview.md
-    - name: Azure 开发测试实验室和实验室服务
-      href: lab-services-overview.md
 - name: 快速入门
   items:
     - name: 创建实验室 - 资源管理器模板
