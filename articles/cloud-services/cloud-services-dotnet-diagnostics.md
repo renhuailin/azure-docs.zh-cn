@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 9cea635ac24f8600d246c7c292b2d7285ecde22f
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: aa9596f61a575cf3d09bb04c66ca7a4b3fe407ae
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113086296"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823010"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services-classic"></a>在 Azure 云服务（经典）中启用 Azure 诊断
 
-> [!IMPORTANT]
-> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-monitor/agents/diagnostics-extension-overview.md)。
 

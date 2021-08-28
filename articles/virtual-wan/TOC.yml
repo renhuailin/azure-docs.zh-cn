@@ -71,6 +71,8 @@
           href: scenario-route-through-nva.md
         - name: 通过 NVA 路由 - 自定义
           href: scenario-route-through-nvas-custom.md
+        - name: 与虚拟中心的 BGP 对等互连
+          href: scenario-bgp-peering-hub.md
         - name: Azure 防火墙 - 自定义
           href: scenario-route-between-vnets-firewall.md
         - name: 应用程序网关和后端池
@@ -85,7 +87,9 @@
       items:
         - name: 关于 P2S IPsec 策略
           href: point-to-site-ipsec.md
-    - name: 安全性
+        - name: 关于 P2S 客户端地址池
+          href: about-client-address-pools.md
+    - name: 安全
       items:
         - name: 安全基线
           href: /security/benchmark/azure/baselines/virtual-wan-security-baseline?toc=/azure/virtual-wan/TOC.json
@@ -101,6 +105,8 @@
       href: upgrade-virtual-wan.md
     - name: 在虚拟中心创建 NVA
       href: How-to-nva-hub.md
+    - name: 将 VNet 连接到虚拟中心
+      href: howto-connect-vnet-hub.md
     - name: 创建跨租户 VNet 连接
       href: cross-tenant-vnet.md
     - name: ExpressRoute
@@ -123,8 +129,10 @@
           href: nat-rules-vpn-gateway.md
     - name: 用户 VPN（点到站点）
       items:
-        - name: 创建用户 VPN 连接
+        - name: 创建用户 VPN
           href: virtual-wan-point-to-site-portal.md
+        - name: 创建用户 VPN - Azure AD 身份验证
+          href: virtual-wan-point-to-site-azure-ad.md
         - name: 生成证书
           href: certificates-point-to-site.md
         - name: 配置 Azure AD 租户
@@ -145,7 +153,7 @@
               items:
                 - name: Windows 10
                   href: openvpn-azure-ad-client.md
-                - name: macOS - 预览
+                - name: macOS
                   href: openvpn-azure-ad-client-mac.md
         - name: 配置 Always-On 隧道
           items:
@@ -163,20 +171,26 @@
               href: openvpn-azure-ad-tenant-multi-app.md
     - name: 路由
       items:
-        - name: 如何配置虚拟中心路由
+        - name: 配置虚拟中心路由
           href: how-to-virtual-hub-routing.md
-        - name: 如何查看虚拟中心有效路由
+        - name: 查看虚拟中心有效路由
           href: effective-routes-virtual-hub.md
+        - name: 如何配置路由意向和策略
+          href: how-to-routing-policies.md
         - name: 将流量从虚拟中心路由到 NVA（旧版）
           items:
             - name: Azure 门户
               href: virtual-wan-route-table-nva-portal.md
             - name: Azure PowerShell
               href: virtual-wan-route-table-nva.md
+        - name: 与虚拟中心建立 BGP 对等互连
+          href: create-bgp-peering-hub-portal.md
     - name: 安全性
       items:
         - name: 在中心安装 Azure 防火墙
           href: howto-firewall.md
+        - name: 通过 Azure 防火墙实现中心间和分支到分支
+          href: how-to-routing-policies.md
         - name: 配置专用链接连接
           href: howto-private-link.md
         - name: 管理对资源的访问 - Spoke VNet P2S

@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 8/10/2021
+ms.date: 8/24/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: d159f8ad1840f3351fa31ec78ceead9cdfd7d9b8
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 89d6597bd37ee61b5c42199b660fd2be80fc793a
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183968"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824657"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -121,7 +121,6 @@ ms.locfileid: "122183968"
 - 故障转移群集仅适用于群集磁盘，而不适用于群集共享卷 (CSV)。
 - 服务器终结点不能嵌套， 但可以与另一终结点并行共存于同一卷上。
 - 请勿在服务器终结点位置中存储 OS 或应用程序分页文件。
-- 如果重命名服务器，则不会更新门户中的服务器名称。
 
 ### <a name="cloud-endpoint"></a>云终结点
 - Azure 文件同步支持直接对 Azure 文件共享进行更改。 但是，首先需要通过 Azure 文件同步更改检测作业来发现对 Azure 文件共享进行的更改。 每 24 小时针对云终结点启动一次更改检测作业。 若要立即同步 Azure 文件共享中已更改的文件，可使用 [Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell cmdlet 手动启动 Azure 文件共享中的更改检测。 此外，通过 REST 协议对 Azure 文件共享所做的更改将不会更新 SMB 上次修改时间，亦不会被视为同步更改。

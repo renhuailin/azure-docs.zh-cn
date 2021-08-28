@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 6148183962249b3dc1d446e62ff6fe8e48e608ac
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 3c0ac84551905f365f7b5e728fecb40eb4a963d9
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093726"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823694"
 ---
 # <a name="introduction-to-cloud-service-classic-monitoring"></a>云服务（经典）监视简介
 
-> [!IMPORTANT]
-> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 可以监视任何云服务的关键性能指标。 每个云服务角色收集极少量的数据：CPU 使用率、网络使用率和磁盘利用率。 如果云服务已将 `Microsoft.Azure.Diagnostics` 扩展应用到某个角色，则该角色可以收集其他数据点。 本文介绍适用于云服务的 Azure 诊断。
 

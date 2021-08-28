@@ -9,17 +9,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: dd4945d38516ba36140ca098a84a37c92f98bdee
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 3730740357127929ac9bd9a63fabf5a8e0737ba5
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113088433"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824252"
 ---
 # <a name="azure-cloud-services-classic-config-schema-cscfg-file"></a>Azure 云服务（经典）配置架构（.cscfg 文件）
 
-> [!IMPORTANT]
-> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 服务配置文件指定要为服务中每个角色部署的角色实例数、任何配置设置的值，以及与角色关联的任何证书的缩略图。 如果服务属于虚拟网络，必须在服务配置文件以及虚拟网络配置文件中提供网络的配置信息。 服务配置文件的默认扩展名为 .csdef。
 

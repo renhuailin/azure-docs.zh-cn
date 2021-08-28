@@ -9,17 +9,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 0c8e7d547a2fa20adea8a19094c7b2a51141a074
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 5deabc1aaffb738c6141f138e637c396be030e7c
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113088199"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824738"
 ---
 # <a name="azure-cloud-services-classic-definition-schema-csdef-file"></a>Azure 云服务（经典）定义架构（.csdef 文件）
 
-> [!IMPORTANT]
-> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 服务定义文件定义应用程序的服务模型。 该文件包含可供云服务使用的角色的定义，指定服务终结点，并建立服务的配置设置。 配置设置值是在服务配置文件中设置的，如[云服务（经典）配置架构](/previous-versions/azure/reference/ee758710(v=azure.100))所述。
 

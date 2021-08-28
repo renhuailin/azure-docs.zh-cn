@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: d2fa47b0a4e75a0f776eaef2c0f7b0893ea1fa47
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: fb1194a9d0dd58046391ac20138d44d161c2c788
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113086453"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824144"
 ---
 # <a name="overview-of-azure-cloud-services-classic"></a>Azure 云服务（经典）概述
 
-> [!IMPORTANT]
-> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 Azure 云服务是[平台即服务](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 的一个示例。 与 [Azure 应用服务](../app-service/overview.md)一样，此技术设计用于支持可缩放、可靠且运营成本低廉的应用程序。 同样，应用服务托管在虚拟机 (VM) 上，Azure 云服务也是如此。 但是，你对 VM 有更多的控制。 可以在使用 Azure 云服务的 VM 上安装自己的软件，并且可以远程访问它们。
 
