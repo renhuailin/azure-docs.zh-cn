@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 07/22/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8e2197d5eb84c3ae25dc0b4ebe61ca085badca9
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102040186"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603309"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>安装并运行 LUIS 的 Docker 容器
 
@@ -37,13 +37,28 @@ ms.locfileid: "102040186"
 
 若要运行 LUIS 容器，请注意以下先决条件：
 
-|必须|目的|
-|--|--|
-|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
-|熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。|
-|Azure `Cognitive Services` 资源和 LUIS [打包应用](luis-how-to-start-new-app.md)文件 |若要使用容器，必须具有：<br><br>* 一项 _认知服务_ Azure 资源，以及关联的计费密钥和计费终结点 URI。 这两个值都可以在资源的“概述”和“密钥”页上找到，并且是启动容器所必需的。 <br>* 已训练或已发布的应用，作为已安装的输入打包到具有其关联的应用 ID 的容器。 可以通过 LUIS 门户或创作 API 获取打包文件。 若要通过 [创作 API](#authoring-apis-for-package-file) 获得 LUIS 打包应用，还将需要 _创作密钥_。<br><br>这些要求用于将命令行参数传递到以下变量：<br><br>**{AUTHORING_KEY}** ：此密钥用于从云中的 LUIS 服务获取打包的应用并将查询日志上传回云。 格式为 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APP_ID}** ：此 ID 用于选择应用。 格式为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{API_KEY}** ：此密钥用于启动容器。 可以在两个位置找到终结点密钥。 第一个是 Azure 门户的“认知服务”资源的密钥列表。 也可以在 LUIS 门户的“密钥和终结点”设置页上找到终结点密钥。 请勿使用初学者密钥。<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点。<br><br>[创作密钥和终结点密钥](luis-limits.md#key-limits)具有不同的用途。 请勿互换使用。 |
+* 在主计算机上安装的 [Docker](https://docs.docker.com/)。 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 
+    * 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。
+    * 你应该对 [Docker 概念](https://docs.docker.com/get-started/overview/)有基本的了解。 
+* 使用免费 (F0) 或标准 (S) [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)的 <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne"  title="创建 LUIS 资源"  target="_blank">LUIS 资源 </a>。
+* 已训练或已发布的应用，作为具有关联应用 ID 的容器的已装载输入打包。 可以通过 LUIS 门户或创作 API 获取打包文件。 若要通过 [创作 API](#authoring-apis-for-package-file) 获得 LUIS 打包应用，还将需要 _创作密钥_。
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
+
+### <a name="app-id-app_id"></a>应用 ID `{APP_ID}`
+
+此 ID 用于选择应用。 可以在 [LUIS 门户](https://www.luis.ai/)中找到应用 ID，方法是：单击应用屏幕顶部的“管理”，然后单击“设置”。
+
+:::image type="content" source="./media/luis-container-how-to/app-identification.png" alt-text="用于查找应用 ID 的屏幕。" lightbox="./media/luis-container-how-to/app-identification.png":::
+
+### <a name="authoring-key-authoring_key"></a>创作密钥 `{AUTHORING_KEY}`
+
+此密钥用于从云中的 LUIS 服务获取打包的应用并将查询日志上传回云。 如果[使用 REST API 来导出应用](#export-published-apps-package-from-api)，你需要创作密钥（在本文的后面部分介绍）。 
+
+可以通过单击应用屏幕顶部的“管理”，然后单击“Azure 资源”，从 [LUIS 门户](https://www.luis.ai/)获取创作密钥。
+
+:::image type="content" source="./media/luis-container-how-to/authoring-resource.png" alt-text="用于查找创作资源密钥的屏幕。" lightbox="./media/luis-container-how-to/authoring-resource.png":::
+
 
 ### <a name="authoring-apis-for-package-file"></a>用于包文件的创作 API
 
@@ -391,7 +406,7 @@ LUIS 容器使用 Azure 帐户中的认知服务资源向 Azure 发送账单信�
 
 * 查看[配置容器](luis-container-configuration.md)，了解配置设置。
 * 请参阅 [LUIS 容器限制](luis-container-limitations.md)了解已知功能限制。
-* 若要解决与 LUIS 功能相关的问题，请参阅[故障排除](troubleshooting.md)。
+* 若要解决与 LUIS 功能相关的问题，请参阅[故障排除](troubleshooting.yml)。
 * 使用更多[认知服务容器](../cognitive-services-container-support.md)
 
 <!-- Links - external -->

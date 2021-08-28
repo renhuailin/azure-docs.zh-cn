@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 795bed84103170a695e9105c978b110ceb6475cb
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 56feecac6edae1c25c8706891ed7c2697a2508e1
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673254"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221189"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Key Vault 虚拟机扩展
 
-通过 Key Vault 虚拟机 (VM) 扩展，可自动刷新 Azure Key Vault 上存储的证书。 具体而言，该扩展会监视在密钥保管库中存储的观察到的证书列表。  检测到更改后，该扩展会检索并安装相应的证书。 Key Vault VM 扩展由 Microsoft 发布并提供支持，目前在 Linux VM 上提供。 本文档详细介绍适用于 Linux 的 Key Vault VM 扩展支持的平台、配置和部署选项。 
+密钥保管库 VM 扩展可自动刷新 Azure 密钥保管库中存储的证书。 具体而言，该扩展会监视在密钥保管库中存储的观察到的证书列表。  检测到更改后，该扩展会检索并安装相应的证书。 Key Vault VM 扩展由 Microsoft 发布并提供支持，目前在 Linux VM 上提供。 本文档详细介绍适用于 Linux 的 Key Vault VM 扩展支持的平台、配置和部署选项。 
 
 ### <a name="operating-system"></a>操作系统
 
@@ -123,10 +123,10 @@ Key Vault VM 扩展支持以下 Linux 发行版：
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | 字符串 |
-| type | KeyVaultForLinux | 字符串 |
+| publisher | Microsoft.Azure.KeyVault | string |
+| type | KeyVaultForLinux | string |
 | typeHandlerVersion | 2.0 | int |
-| pollingIntervalInS | 3600 | 字符串 |
+| pollingIntervalInS | 3600 | string |
 | certificateStoreName | 它在 Linux 上被忽略 | string |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | string |
@@ -264,13 +264,8 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
   - 必须在部署时存在 
   - 必须使用托管标识为 VM/VMSS 标识设置 Key Vault 访问策略。 请参阅[如何向 Key Vault 进行身份验证](../../key-vault/general/authentication.md)和[分配 Key Vault 访问策略](../../key-vault/general/assign-access-policy-cli.md)。
 
-### <a name="frequently-asked-questions"></a>常见问题
 
-* 可设置的 observedCertificates 数是否有限制？
-  没有，Key Vault VM 扩展对 observedCertificates 数没有限制。
-
-
-### <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot-and-support"></a>故障排除和支持
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 运行以下命令。
 
@@ -283,13 +278,17 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
-#### <a name="logs-and-configuration"></a>日志和配置
+### <a name="logs-and-configuration"></a>日志和配置
 
-```
-/var/log/waagent.log
-/var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
-/var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
-```
+Key Vault VM 扩展日志仅存在于本地 VM 上，在进行故障排除时能提供最多信息。
+
+|位置|说明|
+|--|--|
+| /var/log/waagent.log  | 显示进行扩展更新的时间。 |
+| /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*    | 检查 Key Vault VM 扩展服务日志，以确定 akvvm_service 服务和证书下载的状态。 PEM 文件的下载位置也可以在包含一个名为“证书文件名”的条目的这些文件中找到。 如果未指定 certificateStoreLocation，它会默认设置为“/var/lib/waagent/Microsoft.Azure.KeyVault.Store/” |
+| /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/* | Key Vault VM 扩展服务的配置和二进制文件。 |
+|||
+  
 ### <a name="using-symlink"></a>使用符号链接
 
 符号链接是基本的高级快捷方式。 若要避免监视文件夹和自动获取最新证书，可以使用此符号链接 `([VaultName].[CertificateName])` 获取 Linux 上最新版本的证书。
@@ -298,6 +297,7 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 * 可设置的 observedCertificates 数是否有限制？
   没有，Key Vault VM 扩展对 observedCertificates 数没有限制。
+  
 
 ### <a name="support"></a>支持
 

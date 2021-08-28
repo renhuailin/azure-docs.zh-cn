@@ -3,21 +3,25 @@ title: 在混合 Runbook 辅助角色上运行 Azure 自动化 Runbook
 description: 本文介绍如何使用混合 Runbook 辅助角色在本地数据中心或其他云提供商的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 05/24/2021
+ms.date: 07/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b3f7afde2d681c2516d6915e4edd5c291795224d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ef4c688fbe41db046b77d45090d77200d1c782cf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481528"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725682"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色中运行 Runbook
 
 在[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)上运行的 Runbook 通常用于管理本地计算机上的资源，或部署了辅助角色的本地环境中的资源。 Azure 自动化中的 runbook 通常管理 Azure 云中的资源。 即使使用方式不同，在 Azure 自动化中运行的 Runbook 和在混合 Runbook 辅助角色上运行的 Runbook 结构上是相同的。
 
 创建 Runbook 以在混合 Runbook 辅助角色上运行时，应当在承载辅助角色的计算机内编辑并测试 Runbook。 主机具有管理本地资源时所需的所有 PowerShell 模块和网络访问权限。 在混合 Runbook 辅助角色计算机上测试 Runbook 后，可以将它上传到 Azure 自动化环境，用于在混合辅助角色中运行。
+
+## <a name="plan-for-azure-services-protected-by-firewall"></a>规划受防火墙保护的 Azure 服务
+
+在 [Azure 存储](../storage/common/storage-network-security.md)、[Azure Key Vault](../key-vault/general/network-security.md) 或 [Azure SQL](../azure-sql/database/firewall-configure.md) 上启用 Azure 防火墙时，会阻止从 Azure 自动化 runbook 进行的针对这些服务的访问。 即使启用了允许受信任的 Microsoft 服务的防火墙例外，访问也会被阻止，因为自动化不是受信任服务列表的一部分。 启用防火墙后，只能使用混合 Runbook 辅助角色和[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)进行访问。
 
 ## <a name="plan-runbook-job-behavior"></a>计划 Runbook 作业行为
 

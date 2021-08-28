@@ -2,19 +2,17 @@
 title: 使用托管标识设置到数据源的连接
 titleSuffix: Azure Cognitive Search
 description: 了解如何使用托管标识设置到数据源的索引器连接
-manager: luisca
 author: markheff
 ms.author: maheff
-ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: efb7d0a239d31d82b55b5cd5066e6003391ace45
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 07/02/2021
+ms.openlocfilehash: bd4d10c32f1c850adf6dc886672b16937b553222
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558782"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179396"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>使用托管标识设置到数据源的索引器连接
 
@@ -31,9 +29,22 @@ Azure 认知搜索中的[索引器](search-indexer-overview.md)是一种爬网�
 
 ## <a name="using-managed-identities"></a>使用托管标识
 
-[标识](../active-directory/managed-identities-azure-resources/overview.md)在 Azure Active Directory (Azure AD) 中为 Azure 服务提供了一个自动托管标识。 可以在 Azure 认知搜索中使用此功能来创建一个具有不包含任何凭据的连接字符串的数据源对象。 这样，将通过基于 Azure 角色的访问控制 (Azure RBAC) 向搜索服务授予对数据源的访问权限。
+[托管标识](../active-directory/managed-identities-azure-resources/overview.md)功能可在 Azure Active Directory (Azure AD) 中为应用程序提供一个自动托管标识。 可以在 Azure 认知搜索中使用此功能来创建一个具有不包含任何凭据的连接字符串的数据源对象。 这样，将通过基于 Azure 角色的访问控制 (Azure RBAC) 向搜索服务授予对数据源的访问权限。
 
 使用托管标识设置数据源时，可以更改数据源凭据，而索引器仍可以连接到数据源。 还可以在代码中创建数据源对象，而无需包括帐户密钥，也无需使用 Key Vault 来检索帐户密钥。
+
+有两种类型的托管标识。 Azure 认知搜索支持系统分配的托管标识和用户分配的托管标识。
+
+### <a name="system-assigned-managed-identity"></a>系统分配的托管标识
+
+[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)可以分配给单个 Azure 服务。 可以将系统分配的托管标识分配给单个 Azure 认知搜索服务，此标识与该搜索服务的生命周期相关联。
+
+### <a name="user-assigned-managed-identity-preview"></a>用户分配的托管标识（预览版）
+
+> [!IMPORTANT]
+>根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，此功能为公共预览版。 REST API 版本 2021-04-30-Preview 和[管理 REST API 2021-04-01-Preview](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) 提供此功能。
+
+[用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)是一种独立的 Azure 资源，可以分配给一个或多个 Azure 服务。 单个 Azure 认知搜索服务可以分配有一个或多个用户分配的托管标识。 单个用户分配的托管标识可以分配给多个搜索服务。
 
 ## <a name="limitations"></a>限制
 

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 740b228855a11623600d8724eeff7ad865538e74
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 6b8ce0014524a407d6d35b85fed3bf5f41b556cf
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004180"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067939"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion 疑难解答
 
@@ -68,6 +68,13 @@ The key's randomart image is:
 **问：** 我无法连接到已加入域的 Windows 虚拟机。
 
 答：Azure Bastion 仅支持将已加入域的 VM 登录用于基于用户名密码的域登录。 在 Azure 门户中指定域凭据时，请使用 UPN (username@domain) 格式进行登录，而不是使用 domain\username 格式。 这可用于已加入域或已加入混合（已加入域且已加入 Azure AD）的虚拟机， 不可用于仅加入了 Azure AD 的虚拟机。
+
+## <a name="unable-to-connect-to-virtual-machine"></a><a name="connectivity"></a> 无法连接到虚拟机
+
+问：我无法连接到我的虚拟机（但我没有遇到上述问题）。
+
+答：你可以通过导航到 Azure 门户中 Azure Bastion 资源的“连接故障排除”选项卡（在“监视”部分）来排查连接问题。 “网络观察程序连接故障排除”提供了检查虚拟机 (VM) 之间的直接 TCP 连接、完全限定的域名 (FQDN)、URI 或 IPv4 地址的功能。 若要开始故障排除，请选择要从中开始连接的源和要连接到的目标，然后选择“检查”。 [了解详细信息](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview)。
+
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>文件传输问题
 

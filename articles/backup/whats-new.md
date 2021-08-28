@@ -2,13 +2,13 @@
 title: Azure 备份中的新增功能
 description: 了解 Azure 备份中的新功能。
 ms.topic: conceptual
-ms.date: 05/05/2021
-ms.openlocfilehash: 7be5b96a8575c0bed9208ef5d700aca747411aa2
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/05/2021
+ms.openlocfilehash: f2c4e3fa492a4dfe3c42ffb615442d3c6c449404
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959328"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122184084"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure 备份中的新增功能
 
@@ -18,6 +18,8 @@ Azure 备份会持续改进并发布用于增强 Azure 中的数据保护的新�
 
 ## <a name="updates-summary"></a>更新摘要
 
+- 2021 年 7 月
+  - [Azure 备份针对 Azure VM 中的 SQL Server 的存档层支持现已正式发布](#archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available)
 - 2021 年 5 月
   - [Azure Blob 的备份现已推出正式版](#backup-for-azure-blobs-is-now-generally-available)
 - 2021 年 4 月
@@ -44,6 +46,18 @@ Azure 备份会持续改进并发布用于增强 Azure 中的数据保护的新�
   - [备份 RHEL Azure 虚拟机中的 SAP HANA（预览版）](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [备份数据的区域冗余存储 (ZRS)（预览版）](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure VM 中 SQL Server 和 SAP HANA 工作负载的软删除](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available"></a>Azure 备份针对 Azure VM 中的 SQL Server 的存档层支持现已正式发布
+
+Azure 备份允许你将针对 Azure 虚拟机和 Azure 虚拟机中的 SQL Server 的长期保留点移到低成本存档层。 你还可以从保管库存档层中的恢复点进行还原。
+
+除了移动恢复点的功能：
+
+- Azure 备份还提供为 Azure 虚拟机备份移动一组特定恢复点的建议，以确保节省成本。
+- 你还可以使用示例脚本一次性移动特定备份项的所有恢复点。
+- 你还可以在保管库仪表板上查看存档存储使用情况。
+
+有关详细信息，请参阅[存档层支持](./archive-tier-support.md)。
 
 ## <a name="backup-for-azure-blobs-is-now-generally-available"></a>Azure Blob 的备份现已推出正式版
 
@@ -103,7 +117,7 @@ Azure 备份现在支持使用 Azure 资源管理器 (ARM) 模板为现有的 Az
 
 Azure 备份现在支持对 Azure VM 上托管的 SAP HANA 数据库进行增量备份。 这样，就可以更快、更经济高效地备份 SAP HANA 数据。
 
-有关详细信息，请参阅[在创建备份策略期间可以使用的各种选项](/azure/backup/sap-hana-faq-backup-azure-vm.yml#policy)以及[如何为 SAP HANA 数据库创建备份策略](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)。
+有关详细信息，请参阅[在创建备份策略期间可以使用的各种选项](/azure/backup/sap-hana-faq-backup-azure-vm#policy)以及[如何为 SAP HANA 数据库创建备份策略](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)。
 
 ## <a name="backup-center-in-preview"></a>备份中心（预览版）
 

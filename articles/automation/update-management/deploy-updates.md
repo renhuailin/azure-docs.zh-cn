@@ -3,14 +3,14 @@ title: 如何为 Azure 自动化更新管理创建更新部署
 description: 本文介绍如何计划更新部署并查看其状态。
 services: automation
 ms.subservice: update-management
-ms.date: 04/19/2021
+ms.date: 06/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: c190af2532f28bd183a92b37b814210cb794501d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2e9b10206a28072d37668207993007dc29320f04
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748486"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679015"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和查看结果
 
@@ -78,6 +78,11 @@ ms.locfileid: "108748486"
 
    >[!NOTE]
    > 在 CentOS 的 RTM 版本上无法按更新分类部署更新。 要为 CentOS 正确部署更新，请选择所有分类以确保应用更新。 当前没有受支持的方法可用来在 CentOS 上提供原生分类数据。 有关[更新分类](overview.md#update-classifications)的详细信息，请参阅下面的内容。
+
+   >[!NOTE]
+   > 对于更新管理支持的 Linux 发行版，按更新分类部署更新可能无法正常工作。 这是由 OVAL 文件的命名架构确定的问题导致的，会阻止更新管理根据筛选规则正确匹配分类。 由于在安全更新评估中使用的逻辑不同，结果可能与部署期间应用的安全更新不同。 如果将分类设置为“严重”和“安全性”，则更新部署会按预期工作。 在评估期间，只有“更新的分类”会受影响。
+   >
+   > Windows Server 计算机的更新管理不受影响；更新分类和部署将不变。
 
 8. 使用“包含/排除更新”区域可从部署中添加或排除选定的更新。 对于 Windows 更新，可以在“包括/排除”页上输入知识库文章 ID 号来进行包括或排除操作。 对于支持的 Linux 发行版，请指定包名称。
 

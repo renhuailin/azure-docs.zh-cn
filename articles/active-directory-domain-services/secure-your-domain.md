@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 07/21/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6f344496bab8f2864c8ccbdff4f98b57e1d6f432
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: fe8f41c2ecf92034f81f2332aabee5a55df66a92
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613242"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439247"
 ---
 # <a name="harden-an-azure-active-directory-domain-services-managed-domain"></a>强化 Azure Active Directory 域服务托管域
 
@@ -50,6 +50,7 @@ ms.locfileid: "110613242"
 1. 对以下设置单击“启用”或“禁用” ：
    - **仅限 TLS 1.2 模式**
    - **NTLM 身份验证**
+   - 从本地进行密码同步
    - **从本地进行 NTLM 密码同步**
    - RC4 加密
    - **Kerberos 保护**
@@ -64,6 +65,10 @@ ms.locfileid: "110613242"
 - 如果分配为“拒绝”，则合规性会阻止在不需要 TLS 1.2 的情况下创建 Azure AD DS 实例，并阻止在需要 TLS 1.2 之前对 Azure AD DS 实例进行任何更新。
 
 ![合规性设置的屏幕截图](media/secure-your-domain/policy-tls.png)
+
+## <a name="audit-ntlm-failures"></a>审核 NTLM 失败
+
+虽然禁用 NTLM 密码同步会提高安全性，但是许多应用程序和服务并未设计为在没有它的情况下正常工作。 例如，通过其 IP 地址连接到任何资源（如 DNS 服务器管理或 RDP）会失败并显示“拒绝访问”。 如果禁用 NTLM 密码同步后应用程序或服务未按预期工作，则可通过对“登录/注销” > “审核登录”事件类别启用安全审核来检查是否存在 NTLM 身份验证失败的情况，其中 NTLM 在事件详细信息中指定为“身份验证包”。 有关详细信息，请参阅[为 Azure Active Directory 域服务启用安全审核](security-audit-events.md)。
 
 ## <a name="use-powershell-to-harden-your-domain"></a>使用 PowerShell 强化你的域
 

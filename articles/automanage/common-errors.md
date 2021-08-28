@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 1625c4a73252f202a45dbdefba1576776ea843a0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 7acca746acf17a6ef6dd837907a159cddb20be10
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209529"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004189"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>排查常见的 Automanage 加入错误
 Automanage 可能无法将计算机加入服务中。 本文档介绍如何排查部署失败的问题，分享部署失败的一些常见原因，并描述可能的后续缓解步骤。
@@ -23,14 +23,14 @@ Automanage 可能无法将计算机加入服务中。 本文档介绍如何排�
 
 :::image type="content" source="media\common-errors\failure-flyout.png" alt-text="Automanage 失败详细信息的浮出控件。":::
 
-### <a name="check-the-deployments-for-the-resource-group-containing-the-failed-vm"></a>检查包含失败 VM 的资源组的部署
+### <a name="check-the-deployments-for-the-resource-group-containing-the-failed-machine"></a>检查包含失败计算机的资源组的部署
 失败浮出控件将包含一个链接，该链接指向包含无法加入的计算机的资源组中的部署。 该浮出控件还包含一个可用于筛选部署的前缀名称。 单击部署链接将转到“部署”边栏选项卡，你可在其中筛选部署以查看计算机的 Automanage 部署。 如果要跨多个区域进行部署，请确保单击正确区域中的部署。
 
-### <a name="check-the-deployments-for-the-subscription-containing-the-failed-vm"></a>检查包含失败 VM 的订阅的部署
-如果在资源组部署中未看到任何失败，则下一步是查看包含加入失败 VM 的订阅中的部署。 单击失败浮出控件中的“订阅部署”链接，然后使用 Automanage-DefaultResourceGroup 筛选器筛选部署 。 使用“失败”边栏选项卡中的资源组名称筛选部署。 部署名称的后缀将为区域名称。 如果要跨多个区域进行部署，请确保单击正确区域中的部署。
+### <a name="check-the-deployments-for-the-subscription-containing-the-failed-machine"></a>检查包含失败计算机的订阅的部署
+如果在资源组部署中未看到任何失败，则下一步是查看包含加入失败计算机的订阅中的部署。 单击失败浮出控件中的“订阅部署”链接，然后使用 Automanage-DefaultResourceGroup 筛选器筛选部署 。 使用“失败”边栏选项卡中的资源组名称筛选部署。 部署名称的后缀将为区域名称。 如果要跨多个区域进行部署，请确保单击正确区域中的部署。
 
 ### <a name="check-deployments-in-a-subscription-linked-to-a-log-analytics-workspace"></a>检查链接到 Log Analytics 工作区的订阅中的部署
-如果包含失败 VM 的资源组或订阅中未出现任何失败的部署，并且失败的 VM 已连接到其他订阅中的 Log Analytics 工作区，请访问链接到 Log Analytics 工作区的订阅并检查失败的部署。
+如果包含失败计算机的资源组或订阅中未出现任何失败的部署，但失败计算机已连接到其他订阅中的 Log Analytics 工作区，请访问链接到 Log Analytics 工作区的订阅并检查是否存在失败的部署。
 
 ## <a name="common-deployment-errors"></a>常见部署错误
 
@@ -51,4 +51,4 @@ ASC 工作区: Automanage 目前不支持 <位置> 中的 Log Analytics 服务�
 * [详细了解 Azure Automanage](./automanage-virtual-machines.md)
 
 > [!div class="nextstepaction"]
-> [在 Azure 门户中启用适用于虚拟机的 Automanage](quick-create-virtual-machines-portal.md)
+> [在 Azure 门户中为计算机启用 Automanage](quick-create-virtual-machines-portal.md)

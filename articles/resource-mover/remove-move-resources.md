@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/22/2020
 ms.author: raynew
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71397e4635e447701863122e58576dfb6507bcaf
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a655e8f0a4e4a6d44ce8960b45991cf6e394e2db
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698384"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454257"
 ---
 # <a name="manage-move-collections-and-resource-groups"></a>管理移动集合和资源组
 
@@ -60,93 +60,93 @@ Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS
 
 1. 验证依赖项：
 
-    ````azurepowershell-interactive
+    ```azurepowershell-interactive
     $resp = Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemorm-vnet') -ValidateOnly
     ```
 
-    **Output after running cmdlet**
+    **运行 cmdlet 后的输出**
 
-    ![Output text after removing multiple resources from a move collection](./media/remove-move-resources/remove-multiple-validate-dependencies.png)
+    ![从移动集合中删除多个资源后的输出文本](./media/remove-move-resources/remove-multiple-validate-dependencies.png)
 
-2. Retrieve the dependent resources that need to be removed (along with our example virtual network psdemorm-vnet):
+2. 检索需要删除的依赖资源（以及我们的示例虚拟网络 psdemorm-vnet）：
 
-    ````azurepowershell-interactive
+    ```azurepowershell-interactive
     $resp.AdditionalInfo[0].InfoMoveResource
     ```
 
-    **Output after running cmdlet**
+    **运行 cmdlet 后的输出**
 
-    ![Output text after removing multiple resources from a move collection](./media/remove-move-resources/remove-multiple-get-dependencies.png)
+    ![检索需要删除的依赖资源后的输出文本](./media/remove-move-resources/remove-multiple-get-dependencies.png)
 
 
-3. Remove all resources, along with the virtual network:
+3. 删除所有资源以及虚拟网络：
 
     
-    ````azurepowershell-interactive
+    ```azurepowershell-interactive
     Invoke-AzResourceMoverBulkRemove -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('PSDemoVM','psdemovm111', 'PSDemoRM-vnet','PSDemoVM-nsg')
     ```
 
-    **Output after running cmdlet**
+    **运行 cmdlet 后的输出**
 
-    ![Output text after removing all resources from a move collection](./media/remove-move-resources/remove-multiple-all.png)
+    ![从移动集合中删除所有资源后的输出文本](./media/remove-move-resources/remove-multiple-all.png)
 
 
-## Remove a collection (PowerShell)
+## <a name="remove-a-collection-powershell"></a>删除集合 (PowerShell)
 
-Remove an entire move collection from the subscription, as follows:
+从订阅中删除整个移动集合，如下所示：
 
-1. Follow the instructions above to remove resources in the collection using PowerShell.
-2. Run:
+1. 按照上述说明，使用 PowerShell 从集合中删除资源。
+2. 删除一个集合，如下所示：
 
     ```azurepowershell-interactive
     Remove-AzResourceMoverMoveCollection -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"
     ```
 
-    **Output after running cmdlet**
+    **运行 cmdlet 后的输出**
     
-    ![Output text after removing a move collection](./media/remove-move-resources/remove-collection.png)
+    ![删除移动集合后的输出文本](./media/remove-move-resources/remove-collection.png)
 
-## VM resource state after removing
+## <a name="vm-resource-state-after-removing"></a>删除之后的 VM 资源状态
 
-What happens when you remove a VM resource from a move collection depends on the resource state, as summarized in the table.
+从移动集合中删除 VM 资源时发生的情况取决于资源状态，如表中所述。
 
-###  Remove VM state
-**Resource state** | **VM** | **Networking**
+###  <a name="remove-vm-state"></a>删除 VM 状态
+**资源状态** | **VM** | **联网**
 --- | --- | --- 
-**Added to move collection** | Delete from move collection. | Delete from move collection. 
-**Dependencies resolved/prepare pending** | Delete from move collection  | Delete from move collection. 
-**Prepare in progress**<br/> (or any other state in progress) | Delete operation fails with error.  | Delete operation fails with error.
-**Prepare failed** | Delete from the move collection.<br/>Delete anything created in the target region, including replica disks. <br/><br/> Infrastructure resources created during the move need to be deleted manually. | Delete from the move collection.  
-**Initiate move pending** | Delete from move collection.<br/><br/> Delete anything created in the target region, including VM, replica disks etc.  <br/><br/> Infrastructure resources created during the move need to be deleted manually. | Delete from move collection.
-**Initiate move failed** | Delete from move collection.<br/><br/> Delete anything created in the target region, including VM, replica disks etc.  <br/><br/> Infrastructure resources created during the move need to be deleted manually. | Delete from move collection.
-**Commit pending** | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. 
-**Commit failed** | We recommend that you discard the  so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there.
-**Discard completed** | The resource goes back to the **Initiate move pending** state.<br/><br/> It's deleted from the move collection, along with anything created at target - VM, replica disks, vault etc.  <br/><br/> Infrastructure resources created during the move need to be deleted manually. <br/><br/> Infrastructure resources created during the move need to be deleted manually. |  The resource goes back to the **Initiate move pending** state.<br/><br/> It's deleted from the move collection.
-**Discard failed** | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there.
-**Delete source pending** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.  | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.
-**Delete source failed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.
-**Move completed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target or source region. |  Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target or source region.
+**已添加到移动集合** | 从移动集合中删除。 | 从移动集合中删除。 
+**依赖关系已解决/准备挂起** | 从移动集合中删除  | 从移动集合中删除。 
+**正在进行准备**<br/> （或正在进行的任何其他状态） | 删除操作失败，出现错误。  | 删除操作失败，出现错误。
+**准备失败** | 从移动集合中删除。<br/>删除在目标区域中创建的任何内容，包括副本磁盘。 <br/><br/> 在移动过程中创建的基础结构资源需要手动删除。 | 从移动集合中删除。  
+**启动移动挂起** | 从移动集合中删除。<br/><br/> 删除在目标区域中创建的任何内容，包括 VM、副本磁盘等。  <br/><br/> 在移动过程中创建的基础结构资源需要手动删除。 | 从移动集合中删除。
+**启动移动失败** | 从移动集合中删除。<br/><br/> 删除在目标区域中创建的任何内容，包括 VM、副本磁盘等。  <br/><br/> 在移动过程中创建的基础结构资源需要手动删除。 | 从移动集合中删除。
+**提交挂起** | 建议放弃移动以便先删除目标资源。<br/><br/> 资源会恢复到“启动移动挂起”状态，你可以从此处继续。 | 建议放弃移动以便先删除目标资源。<br/><br/> 资源会恢复到“启动移动挂起”状态，你可以从此处继续。 
+**提交失败** | 建议放弃，以便先删除目标资源。<br/><br/> 资源会恢复到“启动移动挂起”状态，你可以从此处继续。 | 建议放弃移动以便先删除目标资源。<br/><br/> 资源会恢复到“启动移动挂起”状态，你可以从此处继续。
+**放弃完成** | 资源会恢复到“启动移动挂起”状态。<br/><br/> 资源已从移动集合中删除，另外被删除的还包括在 VM、副本磁盘、保管库等目标中创建的任何内容。  <br/><br/> 在移动过程中创建的基础结构资源需要手动删除。 <br/><br/> 在移动过程中创建的基础结构资源需要手动删除。 |  资源会恢复到“启动移动挂起”状态。<br/><br/> 资源已从移动集合中删除。
+**放弃失败** | 建议放弃移动以便先删除目标资源。<br/><br/> 之后，资源会恢复到“启动移动挂起”状态，你可以从此处继续。 | 建议放弃移动以便先删除目标资源。<br/><br/> 之后，资源会恢复到“启动移动挂起”状态，你可以从此处继续。
+**删除源挂起** | 已从移动集合中删除。<br/><br/> 未删除在目标区域中创建的任何内容。  | 已从移动集合中删除。<br/><br/> 未删除在目标区域中创建的任何内容。
+**删除源失败** | 已从移动集合中删除。<br/><br/> 未删除在目标区域中创建的任何内容。 | 已从移动集合中删除。<br/><br/> 未删除在目标区域中创建的任何内容。
+移动已完成 | 已从移动集合中删除。<br/><br/> 它不会删除在目标或源区域中创建的任何内容。 |  已从移动集合中删除。<br/><br/> 它不会删除在目标或源区域中创建的任何内容。
 
-## SQL resource state after removing
+## <a name="sql-resource-state-after-removing"></a>删除之后的 SQL 资源状态
 
-What happens when you remove an Azure SQL resource from a move collection depends on the resource state, as summarized in the table.
+从移动集合中删除 Azure SQL 资源时发生的情况取决于资源状态，如表中所述。
 
-**Resource state** | **SQL** 
+**资源状态** | **SQL** 
 --- | --- 
-**Added to move collection** | Delete from move collection. 
-**Dependencies resolved/prepare pending** | Delete from move collection 
-**Prepare in progress**<br/> (or any other state in progress)  | Delete operation fails with error. 
-**Prepare failed** | Delete from move collection<br/><br/>Delete anything created in the target region. 
-**Initiate move pending** |  Delete from move collection<br/><br/>Delete anything created in the target region. The SQL database exists at this point and will be deleted. 
-**Initiate move failed** | Delete from move collection<br/><br/>Delete anything created in the target region. The SQL database exists at this point and must be deleted. 
-**Commit pending** | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there.
-**Commit failed** | We recommend that you discard the move so that the target resources are deleted first.<br/><br/> The resource goes back to the **Initiate move pending** state, and you can continue from there. 
-**Discard completed** |  The resource goes back to the **Initiate move pending** state.<br/><br/> It's deleted from the move collection, along with anything created at target, including SQL databases. 
-**Discard failed** | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there. 
-**Delete source pending** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. 
-**Delete source failed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. 
-**Move completed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target or source region.
+**已添加到移动集合** | 从移动集合中删除。 
+**依赖关系已解决/准备挂起** | 从移动集合中删除 
+**正在进行准备**<br/> （或正在进行的任何其他状态）  | 删除操作失败，出现错误。 
+**准备失败** | 从移动集合中删除<br/><br/>删除在目标区域中创建的任何内容。 
+**启动移动挂起** |  从移动集合中删除<br/><br/>删除在目标区域中创建的任何内容。 此时，SQL 数据库存在，并且将被删除。 
+**启动移动失败** | 从移动集合中删除<br/><br/>删除在目标区域中创建的任何内容。 此时，SQL 数据库存在，并且必须被删除。 
+**提交挂起** | 建议放弃移动以便先删除目标资源。<br/><br/> 资源会恢复到“启动移动挂起”状态，你可以从此处继续。
+**提交失败** | 建议放弃移动以便先删除目标资源。<br/><br/> 资源会恢复到“启动移动挂起”状态，你可以从此处继续。 
+**放弃完成** |  资源会恢复到“启动移动挂起”状态。<br/><br/> 资源已从移动集合中删除，另外被删除的还有在目标中创建的任何内容，包括 SQL 数据库。 
+**放弃失败** | 建议放弃移动以便先删除目标资源。<br/><br/> 之后，资源会恢复到“启动移动挂起”状态，你可以从此处继续。 
+**删除源挂起** | 已从移动集合中删除。<br/><br/> 未删除在目标区域中创建的任何内容。 
+**删除源失败** | 已从移动集合中删除。<br/><br/> 未删除在目标区域中创建的任何内容。 
+移动已完成 | 已从移动集合中删除。<br/><br/> 它不会删除在目标或源区域中创建的任何内容。
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
-Try [moving a VM](tutorial-move-region-virtual-machines.md) to another region with Resource Mover.
+尝试使用资源转移器[将 VM 移动到](tutorial-move-region-virtual-machines.md)另一个区域。

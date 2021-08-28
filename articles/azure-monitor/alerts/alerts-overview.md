@@ -3,12 +3,12 @@ title: Azure 中的警报和通知监视概述
 description: Azure Monitor 中的警报概述
 ms.topic: conceptual
 ms.date: 02/14/2021
-ms.openlocfilehash: 6785cfdf673e4c2da03ff26649c9336d57b699c8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee0d6cd4c895bbcd78767776a86bd63cfa4f5242
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038044"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747716"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure 中的警报概述 
 
@@ -99,7 +99,7 @@ ms.locfileid: "102038044"
 
 可以通过选择页面顶部的下拉菜单中的值，来对此视图进行筛选。
 
-| 列 | 描述 |
+| 列 | 说明 |
 |:---|:---|
 | 订阅 | 选择要查看其警报的 Azure 订阅。 （可选）可以选择你的所有订阅。 视图中仅包含你在所选订阅中有权访问的警报。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
@@ -145,7 +145,7 @@ ms.locfileid: "102038044"
 
 可以选择页面顶部下拉菜单中的以下值，对该视图进行筛选：
 
-| 列 | 描述 |
+| 列 | 说明 |
 |:---|:---|
 | 订阅 | 选择要查看其警报的 Azure 订阅。 （可选）可以选择你的所有订阅。 视图中仅包含你在所选订阅中有权访问的警报。 |
 | 资源组 | 选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
@@ -180,26 +180,22 @@ ms.locfileid: "102038044"
 
 你可能希望以编程方式查询针对订阅生成的警报。 查询可以是在 Azure 门户之外创建自定义视图，也可以是分析警报以确定模式和趋势。
 
-可以使用[警报管理 REST API](/rest/api/monitor/alertsmanagement/alerts) 或 [Azure Resource Graph](../../governance/resource-graph/overview.md) 和[用于资源的 REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 查询针对订阅生成的警报。
+建议你通过 `AlertsManagementResources` 架构使用 [Azure Resource Graph](../../governance/resource-graph/overview.md) 来查询触发的警报。 如果必须跨多个订阅管理生成的警报，建议使用 Resource Graph。
 
-用于资源的 Resource Graph REST API 可用于大规模查询警报实例。 如果必须管理跨多个订阅生成的警报，建议使用 Resource Graph。 
-
-以下对 Resource Graph REST API 的示例请求返回一个订阅中的警报计数：
+以下对 Resource Graph REST API 的示例请求返回一个订阅中最后一天的警报：
 
 ```json
 {
   "subscriptions": [
     <subscriptionId>
   ],
-  "query": "AlertsManagementResources | where type =~ 'Microsoft.AlertsManagement/alerts' | summarize count()"
+  "query": "alertsmanagementresources | where properties.essentials.lastModifiedDateTime > ago(1d) | project alertInstanceId = id, parentRuleId = tolower(tostring(properties['essentials']['alertRule'])), sourceId = properties['essentials']['sourceCreatedId'], alertName = name, severity = properties.essentials.severity, status = properties.essentials.monitorCondition, state = properties.essentials.alertState, affectedResource = properties.essentials.targetResourceName, monitorService = properties.essentials.monitorService, signalType = properties.essentials.signalType, firedTime = properties['essentials']['startDateTime'], lastModifiedDate = properties.essentials.lastModifiedDateTime, lastModifiedBy = properties.essentials.lastModifiedUserName"
 }
 ```
 
-还可以使用 Azure Resource Graph 资源管理器在门户中查看此 Resource Graph 查询的结果：[portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AlertsManagementResources%20%7C%20where%20type%20%3D~%20%27Microsoft.AlertsManagement%2Falerts%27%20%7C%20summarize%20count())
+也可以使用 Azure Resource Graph 浏览器在门户中查看此 Resource Graph 查询的结果：[portal.azure.com](https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/alertsmanagementresources%0A%7C%20where%20properties.essentials.lastModifiedDateTime%20%3E%20ago(1d)%0A%7C%20project%20alertInstanceId%20%3D%20id%2C%20parentRuleId%20%3D%20tolower(tostring(properties%5B 'essentials'%5D%5B'alertRule'%5D))%2C%20sourceId%20%3D%20properties%5B'essentials'%5D%5B'sourceCreatedId'%5D%2C%20alertName%20%3D%20name%2C%20severity%20%3D%20properties.essentials.severity%2C%20status%20%3D%20properties.essentials.monitorCondition%2C%20state%20%3D%20properties.essentials.alertState%2C%20affectedResource%20%3D%20properties.essentials.targetResourceName%2C%20monitorService%20%3D%20properties.essentials.monitorService%2C%20signalType%20%3D%20properties.essentials.signalType%2C%20firedTime%20%3D%20properties%5B'essentials'%5D%5B'startDateTime'%5D%2C%20lastModifiedDate%20%3D%20properties.essentials.lastModifiedDateTime%2C%20lastModifiedBy%20%3D%20properties.essentials.lastModifiedUserName)
 
-可以查询警报的[基本](../alerts/alerts-common-schema-definitions.md#essentials)字段。
-
-可以使用[警报管理 REST API](/rest/api/monitor/alertsmanagement/alerts) 获取有关特定警报的详细信息，包括其[警报上下文](../alerts/alerts-common-schema-definitions.md#alert-context)字段。
+如果查询场景的规模较小，或者要更新触发的警报，也可以使用[警报管理 REST API](/rest/api/monitor/alertsmanagement/alerts)。
 
 ## <a name="smart-groups"></a>智能组
 

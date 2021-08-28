@@ -1,18 +1,18 @@
 ---
 title: 将已启用 Azure Arc 的服务器迁移到 Azure
 description: 了解如何将本地运行的已启用 Azure Arc 的服务器或其他云环境迁移到 Azure。
-ms.date: 05/06/2021
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4c8a5ea1974e251ba147fb7ee09b9ac49c364876
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 9dd7baa2466f4acd3e4106c3cec5a0d7e7afe05c
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109629478"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114390229"
 ---
 # <a name="migrate-your-on-premises-or-other-cloud-arc-enabled-server-to-azure"></a>将本地或其他已启用 Arc 的云服务器迁移到 Azure
 
-本文旨在帮助你计划并成功将本地服务器或由已启用 Azure Arc 的服务器托管的虚拟机迁移到 Azure。 通过执行这些步骤，将可从已启用 Arc 的服务器（基于已安装的受支持 VM 扩展）和 Azure 服务（基于其 Arc 服务器资源标识）转换管理。
+本文旨在帮助你进行计划，以便成功地将本地服务器或由已启用 Azure Arc 的服务器托管的虚拟机迁移到 Azure。 通过执行这些步骤，将可从已启用 Arc 的服务器（基于已安装的受支持 VM 扩展）和 Azure 服务（基于其 Arc 服务器资源标识）转换管理。
 
 在执行这些步骤前，请查看 Azure Migrate [准备本地计算机以迁移到 Azure](../../migrate/prepare-for-migration.md) 一文，了解使用 Azure Migrate 的准备要求。
 
@@ -20,8 +20,8 @@ ms.locfileid: "109629478"
 
 * 清点已启用 Azure Arc 的服务器支持的已安装 VM 扩展。
 * 从已启用 Arc 的服务器中卸载所有 VM 扩展。
-* 标识配置为使用已启用 Arc 的服务器托管标识进行身份验证的 Azure 服务，并准备在迁移后更新这些服务以使用 Azure VM 标识。
-* 查看授予已启用 Arc 的服务器资源的 Azure 基于角色的访问控制 (Azure RBAC) 访问权限，以在将资源迁移到 Azure VM 后维护有权访问该资源的人员。 
+* 标识已配置为使用已启用 Arc 的服务器托管标识进行身份验证的 Azure 服务，并准备在迁移后更新这些服务以使用 Azure VM 标识。
+* 查看授予已启用 Arc 的服务器资源的 Azure 基于角色的访问控制 (Azure RBAC) 访问权限，以便维护在将资源迁移到 Azure VM 后有权访问该资源的人员。 
 * 从 Azure 中删除已启用 Arc 的服务器资源标识，并删除已启用 Arc 的服务器代理。
 * 安装 Azure 来宾代理。
 * 将服务器或 VM 迁移到 Azure。
@@ -52,11 +52,11 @@ ms.locfileid: "109629478"
 
    * 在计算机或者服务器上运行 `azcmagent disconnect` 命令。
 
-   * 在 Azure 门户中已启用 Arc 的已注册的所选服务器上，选择顶部栏中的“删除”。
+   * 在 Azure 门户中已启用 Arc 的所选已注册服务器上，选择顶部栏中的“删除”。
 
    * 使用 [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) 或 [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource)。 对于 `ResourceType` 参数，请使用 `Microsoft.HybridCompute/machines`。
 
-然后，按照[删除代理](manage-agent.md#remove-the-agent)步骤来删除已启用 Azure Arc 的服务器 Windows 或 Linux 代理。
+然后，按照[删除代理](manage-agent.md#remove-the-agent)步骤来删除已启用 Azure Arc 的服务器的 Windows 或 Linux 代理。
 
 ## <a name="step-4-install-the-azure-guest-agent"></a>步骤 4：安装 Azure 来宾代理
 
@@ -68,7 +68,7 @@ ms.locfileid: "109629478"
 
 ## <a name="step-6-deploy-azure-vm-extensions"></a>步骤 6：部署 Azure VM 扩展
 
-迁移并完成所有迁移后配置步骤后，现在可以基于最初安装在已启用 Arc 的服务器上的 VM 扩展来部署 Azure VM 扩展。 查看 [Azure 虚拟机扩展和功能](../../virtual-machines/extensions/overview.md)，以帮助规划扩展部署。 
+迁移并完成所有迁移后配置步骤后，就可以基于最初安装在已启用 Arc 的服务器上的 VM 扩展来部署 Azure VM 扩展了。 查看 [Azure 虚拟机扩展和功能](../../virtual-machines/extensions/overview.md)，以帮助规划扩展部署。 
 
 若要在具有 Azure Policy 来宾配置策略定义的计算机中继续使用审核设置，请参阅[启用来宾配置](../../governance/policy/concepts/guest-configuration.md#enable-guest-configuration)。
 

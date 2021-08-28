@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure IoT Central 中的设备模板 |Microsoft Docs
-description: Azure IoT Central 设备模板使你能够指定连接到应用程序的设备的行为。 设备模板用于指定设备必须实现的遥测、属性和命令。 设备模板还定义 IoT Central 中设备的 UI（例如，操作员使用的窗体和仪表板）。
+description: Azure IoT Central 设备模板使你能够指定连接到应用程序的设备的行为。 设备模板用于指定设备必须实现的遥测、属性和命令。 设备模板还定义 IoT Central 中设备的 UI（例如，操作员使用的窗体和视图）。
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/19/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: ab209cd3fb598c0c9ad4df359578d956aca7077b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b2122dc50b265c31c1c21c2758e343ec88384a8b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088725"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114474049"
 ---
 # <a name="what-are-device-templates"></a>什么是设备模板？
 
@@ -24,9 +24,9 @@ Azure IoT Central 中的设备模板是一个蓝图，用于定义可连接到�
 设备模板包含以下各部分：
 
 - _设备模型_。 设备模板的此部分定义设备与应用程序交互的方式。 设备开发者实现模型中定义的行为。
-    - _默认组件_。 每个设备模型都具有默认组件。 默认组件的接口描述了特定于设备模型的功能。
-    - _组件_。 除了描述设备功能的默认组件之外，设备模型还可以包含其他组件。 每个组件都有一个用于描述组件功能的接口。 组件接口可以在其他设备模型中重复使用。 例如，多个电话设备模型可能使用同一照相机接口。
-    - _继承接口_。 设备模型包含一个或多个接口以扩展默认组件功能。
+    - 根组件。 每个设备模型都有根组件。 根组件的接口描述了特定于设备模型的功能。
+    - _组件_。 除了描述设备功能的根组件之外，设备模型还可能包含其他组件。 每个组件都有一个用于描述组件功能的接口。 组件接口可以在其他设备模型中重复使用。 例如，多个电话设备模型可能使用同一照相机接口。
+    - _继承接口_。 设备模型包含一个或多个可扩展根组件功能的接口。
 - _云属性_。 设备模板的此部分使解决方案开发者可以指定任何要存储的设备元数据。 云属性永远不会与设备同步，而只存在于应用程序中。 云属性不影响设备开发者为实现设备模型而编写的代码。
 - _自定义_。 设备模板的此部分使解决方案开发者可以替代设备模型中的部分定义。 如果解决方案开发者想要优化应用程序处理值的方式（例如更改属性的显示名称或用于显示遥测值的颜色），则自定义功能很有用。 自定义不会影响设备开发者为实现设备模型而编写的代码。
 - _视图_。 设备模板的此部分使解决方案开发者可以定义可视化，以查看设备中的数据，以及用于管理和控制设备的窗体。 视图使用设备模型、云属性和自定义。 视图不影响设备开发者为实现设备模型而编写的代码。
@@ -39,7 +39,7 @@ Azure IoT Central 中的设备模板是一个蓝图，用于定义可连接到�
 
 解决方案开发者还可以导出包含设备模型的 JSON 文件。 设备开发者可以使用此 JSON 文档来了解设备应该如何与 IoT Central 的应用程序进行通信。
 
-定义设备模型的 JSON 文件使用[数字孪生体定义语言 (DTDL) V2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 IoT Central 要求 JSON 文件包含带有以内联方式（而不是在单独的文件中）定义接口的设备模型。 若要了解详细信息，请参阅 [IoT 即插即用建模指南](../../iot-pnp/concepts-modeling-guide.md)。
+定义设备模型的 JSON 文件使用[数字孪生体定义语言 (DTDL) V2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 IoT Central 要求 JSON 文件包含带有以内联方式（而不是在单独的文件中）定义接口的设备模型。 若要了解详细信息，请参阅 [IoT 即插即用建模指南](../../iot-develop/concepts-modeling-guide.md)。
 
 典型的 IoT 设备由以下内容组成：
 
@@ -48,7 +48,7 @@ Azure IoT Central 中的设备模板是一个蓝图，用于定义可连接到�
 
 这些部件在设备模型中称为“接口”。 接口定义设备实现的每个部件的详细信息。 接口可跨设备模型重复使用。 在 DTDL 中，组件引用另一个接口，该接口可能是在单独的 DTDL 文件中或该文件的一个单独的部分中定义的。
 
-以下示例概述了[温度控制器设备](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/temperaturecontroller-2.json)的设备模型。 默认组件包含对 `workingSet`、`serialNumber` 和 `reboot` 的定义。 设备模型还包括两个 `thermostat` 组件和一个 `deviceInformation` 组件。 为了简洁起见，已删除了这三个组件的内容：
+以下示例概述了[温度控制器设备](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/temperaturecontroller-2.json)的设备模型。 根组件包含对 `workingSet`、`serialNumber` 和 `reboot` 的定义。 设备模型还包括两个 `thermostat` 组件和一个 `deviceInformation` 组件。 为了简洁起见，已删除了这三个组件的内容：
 
 ```json
 [
@@ -295,7 +295,7 @@ DTDL 用于描述设备的功能。 相关功能分组为接口。 接口描述�
 
 ## <a name="telemetry"></a>遥测
 
-IoT Central 允许你通过仪表板和图表上查看遥测数据，并使用规则在达到阈值时触发操作。 IoT Central 使用设备模型中的信息（如数据类型、单位和显示名称）来确定如何显示遥测值。
+使用 IoT Central，可以在设备视图和图表中查看遥测数据，并通过规则在达到阈值时触发操作。 IoT Central 使用设备模型中的信息（如数据类型、单位和显示名称）来确定如何显示遥测值。 还可以在应用程序和个人仪表板上显示遥测值。
 
 你可以使用 IoT Central 数据导出功能将遥测数据流式传输到其他目标（例如存储或事件中心）。
 
@@ -318,7 +318,7 @@ IoT Central 允许你通过仪表板和图表上查看遥测数据，并使用�
 
 云属性是设备模板的一部分，但不是设备模型的一部分。 云属性使解决方案开发者可以指定要存储在 IoT Central 应用程序中的任何设备元数据。 云属性不影响设备开发者为实现设备模型而编写的代码。
 
-解决方案开发者可以将云属性与设备属性一起添加到仪表盘和视图中，使操作员能够管理连接到应用程序的设备。 解决方案开发者还可以使用云属性作为规则定义的一部分，使操作员可以编辑阈值。
+解决方案开发者可以将云属性与设备属性一起添加到设备视图和窗体中，使操作员能够管理连接到应用程序的设备。 解决方案开发者还可以使用云属性作为规则定义的一部分，使操作员可以编辑阈值。
 
 ## <a name="customizations"></a>自定义
 

@@ -11,28 +11,28 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/19/2021
+ms.date: 07/21/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 547e48e9cecb672c5274bc001178b2ea2aaf47af
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: fee1aab009bdbf84acf1a73244d6686db50e4e3f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577644"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450699"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Azure 上的 SAP HANA（大型实例）体系结构
 
 本文将介绍用于部署 Azure SAP HANA 大型实例的体系结构（也称为 BareMetal 基础结构）。 
 
-概括而言，Azure SAP HANA（大型实例）解决方案在虚拟机 (VM) 上具有 SAP 应用层。 数据库层位于 SAP 认证的 HANA 大型实例上，该实例与 Azure IaaS VM 位于同一 Azure 区域。
+概括而言，Azure SAP HANA（大型实例）解决方案在虚拟机 (VM) 上具有 SAP 应用层。 数据库层位于 SAP 认证的 HANA 大型实例 (HLI) 上， 该 HLI 与 Azure IaaS VM 位于同一 Azure 区域。
 
 > [!NOTE]
 > 在 SAP 数据库管理系统 (DBMS) 层所在的 Azure 区域部署 SAP 应用层。 有关 Azure 上的 SAP 工作负荷的已发布信息对此规则做了详细的阐述。 
 
 ## <a name="architectural-overview"></a>体系结构概述
 
-Azure SAP HANA（大型实例）的整体架构提供了 SAP TDI 认证的硬件配置。 该硬件是用于 SAP HANA 数据库的非虚拟化、裸机高性能服务器。 它还能够借助 Azure 灵活地缩放 SAP 应用层的资源来满足需求。
+Azure SAP HANA（大型实例）的整体架构提供了 SAP TDI 认证的硬件配置。 该硬件是用于 SAP HANA 数据库的非虚拟化、裸机高性能服务器。 它使你可以灵活地缩放 SAP 应用程序层的资源以满足你的需求。
 
 ![Azure 上的 SAP HANA（大型实例）的体系结构概述](./media/hana-overview-architecture/image1-architecture.png)
 
@@ -49,7 +49,7 @@ Azure SAP HANA（大型实例）的整体架构提供了 SAP TDI 认证的硬件
   -  [在 Windows 虚拟机上使用 SAP](./get-started.md?toc=/azure/virtual-machines/linux/toc.json)
   -  [在 Azure 虚拟机上使用 SAP 解决方案](get-started.md)
 
-- **左侧：** 显示 Azure 大型实例模具中通过 SAP HANA TDI 认证的硬件。 HANA 大型实例单元通过与本地连接到 Azure 的相同技术连接到 Azure 订阅的虚拟网络。 2019 年 5 月，我们引入了一项优化，允许在没有 ExpressRoute 网关的情况下，在 HANA 大型实例单元和 Azure VM 之间进行通信。 此优化称为 ExpressRoute FastPath，如上图中的红线所示。
+- **左侧：** 显示 Azure 大型实例模具中通过 SAP HANA TDI 认证的硬件。 HANA 大型实例单元使用本地服务器连接到 Azure 时所用的技术连接到 Azure 订阅的虚拟网络。 2019 年 5 月，我们引入了一项优化，允许在没有 ExpressRoute 网关的情况下，在 HANA 大型实例单元和 Azure VM 之间进行通信。 此优化称为 ExpressRoute FastPath，如上图中的红线所示。
 
 ## <a name="components-of-the-azure-large-instance-stamp"></a>Azure 大型实例标记的组件
 
@@ -61,7 +61,9 @@ Azure 大型实例模具本身包含以下组件：
 
 ## <a name="tenants"></a>租户
 
-在大型实例模具的多租户基础结构中，客户被部署为隔离的租户。 在部署租户时，需在 Azure 合约中命名一个 Azure 订阅。 该订阅将会是对 HANA 大型实例收费所依据的 Azure 订阅。 这些租户与 Azure 订阅之间存在 1:1 的对应关系。 在网络级别，可以从属于不同 Azure 订阅的不同虚拟网络访问部署在一个 Azure 区域的一个租户中的 HANA 大型实例单位。 但是，这些 Azure 订阅必须属于同一 Azure 合约。
+在大型实例模具的多租户基础结构中，客户被部署为隔离的租户。 在部署租户时，需在 Azure 合约中命名一个 Azure 订阅。 此 Azure 订阅是对 HANA 大型实例计费时依据的 Azure 订阅。 这些租户与 Azure 订阅之间存在 1:1 的对应关系。 
+
+在网络级别，可以从属于不同 Azure 订阅的不同虚拟网络访问部署在一个 Azure 区域的一个租户中的 HANA 大型实例。 但是，这些 Azure 订阅必须属于同一 Azure 合约。
 
 ## <a name="availability-across-regions"></a>跨区域的可用性
 

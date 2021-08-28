@@ -5,14 +5,14 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 1355f6e6120f77ead063bb9246bf1c2864341373
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: c60b2301e6f0ea2767128224c4e76a677df69e0d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007564"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746005"
 ---
-# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Azure 文件存储容器存储接口 (CSI) 驱动程序（预览版）
+# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Azure 文件存储容器存储接口 (CSI) 驱动程序
 
 Azure 文件存储容器存储接口 (CSI) 驱动程序是符合 [CSI 规范](https://github.com/container-storage-interface/spec/blob/master/spec.md)的驱动程序，供 Azure Kubernetes 服务 (AKS) 用来管理 Azure 文件共享的生命周期。
 
@@ -28,8 +28,6 @@ CSI 是有关对 Kubernetes 上的容器化工作负载公开任意块和文件�
 [永久性卷 (PV)](concepts-storage.md#persistent-volumes) 表示已经过预配的可用于 Kubernetes Pod 的存储块。 一个 PV 可供一个或多个 Pod 使用，并可动态或静态预配。 如果多个 Pod 需要同时访问同一存储卷，你可以使用 Azure 文件存储通过[服务器消息块 (SMB) 协议][smb-overview]进行连接。 本文将介绍如何动态创建 Azure 文件共享以供 AKS 群集中的多个 Pod 使用。 有关静态预配，请参阅[通过 Azure 文件共享手动创建并使用卷](azure-files-volume.md)。
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>使用内置存储类动态创建 Azure 文件存储 PV
 
@@ -192,13 +190,75 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  200G  128K  200G   1% /mnt/azurefile
 ```
 
+## <a name="use-a-persistent-volume-with-private-azure-files-storage-private-endpoint"></a>通过 Azure 文件存储专用存储（专用终结点）使用永久性卷
+
+如果 Azure 文件存储资源受专用终结点保护，则必须使用以下参数创建自己的自定义存储类：
+
+* `resourceGroup`：部署存储帐户的资源组。
+* `storageAccount`：存储帐户名称。
+* `server`：存储帐户的专用终结点的 FQDN（例如，`<storage account name>.privatelink.file.core.windows.net`）。
+
+创建一个名为“private-azure-file-sc.yaml”的文件，然后将以下示例清单粘贴到该文件中。 替换 `<resourceGroup>` 和 `<storageAccountName>` 的值。
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: private-azurefile-csi
+provisioner: file.csi.azure.com
+allowVolumeExpansion: true
+parameters:
+  resourceGroup: <resourceGroup>
+  storageAccount: <storageAccountName>
+  server: <storageAccountName>.privatelink.file.core.windows.net 
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=0
+  - gid=0
+  - mfsymlinks
+  - cache=strict  # https://linux.die.net/man/8/mount.cifs
+  - nosharesock  # reduce probability of reconnect race
+  - actimeo=30  # reduce latency for metadata-heavy workload
+```
+
+使用 [kubectl apply][kubectl-apply] 命令创建存储类：
+
+```console
+kubectl apply -f private-azure-file-sc.yaml
+
+storageclass.storage.k8s.io/private-azurefile-csi created
+```
+  
+创建一个名为“private-pvc.yaml”的文件，然后将以下示例清单粘贴到该文件中。
+  
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: private-azurefile-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: private-azurefile-csi
+  resources:
+    requests:
+      storage: 100Gi
+```
+  
+使用 [kubectl apply][kubectl-apply] 命令创建 PVC：
+  
+```console
+kubectl apply -f private-pvc.yaml
+```
+
 ## <a name="nfs-file-shares"></a>NFS 文件共享
 
-[Azure 文件存储现在支持 NFS v4.1 协议。](../storage/files/storage-files-how-to-create-nfs-shares.md) Azure 文件存储的 NFS 4.1 支持以服务形式提供了一个完全托管的 NFS 文件系统，该系统建立在高度可用且高度持久的分布式弹性存储平台基础之上。
+[Azure 文件存储支持 NFS v4.1 协议](../storage/files/storage-files-how-to-create-nfs-shares.md)。 Azure 文件存储的 NFS 4.1 支持以服务形式提供了一个完全托管的 NFS 文件系统，该系统建立在高度可用且高度持久的分布式弹性存储平台基础之上。
 
  此选项已针对包含就地数据更新的随机访问工作负载进行优化，提供全面的 POSIX 文件系统支持。 本部分将介绍如何在 AKS 群集上通过 Azure 文件存储 CSI 驱动程序使用 NFS 共享。
-
-请务必查看[限制](../storage/files/storage-files-compare-protocols.md#limitations)和[区域可用性](../storage/files/storage-files-compare-protocols.md#regional-availability)。
 
 ### <a name="create-nfs-file-share-storage-class"></a>创建 NFS 文件共享存储类
 

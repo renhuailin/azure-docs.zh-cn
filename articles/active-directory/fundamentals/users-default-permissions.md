@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/17/2020
+ms.date: 08/04/2021
 ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 348f1b4e6182739b3afbc96597853a5b887877c1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: db47b66a08ebe1c8a053995d0d8d8d810ae6b564
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748765"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746083"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限是什么？
 在 Azure Active Directory (Azure AD) 中，所有用户都被授予一组默认权限。 用户的访问权限由用户的类型、其[角色分配](active-directory-users-assign-role-azure-portal.md)及其对单个对象的所有权构成。 本文将会介绍这些默认权限，并将成员和来宾用户的默认权限进行比较。 只能在 Azure AD 的用户设置中更改默认用户权限。
@@ -43,7 +43,9 @@ Directory | <ul><li>读取所有公司信息<li>读取所有域<li>读取所有�
 
 ## <a name="restrict-member-users-default-permissions"></a>限制成员用户的默认权限 
 
-可通过以下方式限制成员用户的默认权限：
+可以对用户的默认权限添加限制。 某些组织可能需要限制用户对门户的访问。 如果不希望目录中的所有用户都有权访问 Azure AD 管理门户/目录，则可使用此功能。 
+
+例如，一所大学的目录中会有许多用户，如果管理员不希望目录中的所有学生都能看到完整目录并侵犯其他学生的隐私，则可使用此功能。 此功能的使用不是强制性的，由 Azure AD 管理员自行决定。 可通过以下方式限制成员用户的默认权限：
 
 权限 | 设置说明
 ---------- | ------------
@@ -51,8 +53,10 @@ Directory | <ul><li>读取所有公司信息<li>读取所有域<li>读取所有�
 允许用户使用 LinkedIn 连接工作或学校帐户 | 将此选项设置为“否”可阻止用户使用其 LinkedIn 帐户连接其工作或学校帐户。 有关详细信息，请参阅 [LinkedIn 帐户连接数据共享和同意](../enterprise-users/linkedin-user-consent.md)。
 能够创建安全组 | 将此选项设置为“否”可阻止用户创建安全组。 全局管理员和用户管理员仍可创建安全组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../enterprise-users/groups-settings-cmdlets.md)。
 能够创建 Microsoft 365 组 | 将此选项设置为“否”可阻止用户创建 Microsoft 365 组。 将此选项设置为“某些”可让选定的一组用户创建 Microsoft 365 组。 全局管理员和用户管理员仍可创建 Microsoft 365 组。 有关操作方法，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../enterprise-users/groups-settings-cmdlets.md)。
-限制访问 Azure AD 管理门户 | 如果将此选项设为“否”，则允许非管理员使用 Azure AD 管理门户读取和管理 Azure AD 资源。 如果设为“是”，则限制所有非管理员在管理门户中访问任何 Azure AD 数据。<p>注意：此设置不限制通过 PowerShell 或其他客户端（例如 Visual Studio）对 Azure AD 数据的访问。设为“是”时，若要向特定的非管理员用户授予使用 Azure AD 管理门户的权限，请分配任何管理角色（如“目录读取者者”角色）。<p>此角色允许读取基本目录信息，默认情况下成员用户有这些信息（来宾和服务主体没有）。
+限制访问 Azure AD 管理门户 | <p>如果将此选项设为“否”，则允许非管理员使用 Azure AD 管理门户读取和管理 Azure AD 资源。 如果设为“是”，则限制所有非管理员在管理门户中访问任何 Azure AD 数据。</p><p>注意：此设置不限制通过 PowerShell 或其他客户端（例如 Visual Studio）对 Azure AD 数据的访问。设为“是”时，若要向特定的非管理员用户授予使用 Azure AD 管理门户的权限，请分配任何管理角色（如“目录读取者者”角色）。</p><p>注意：此设置将阻止作为组或应用程序所有者的非管理员用户使用 Azure 门户管理其拥有的资源。</p><p>此角色允许读取基本目录信息，默认情况下成员用户有这些信息（来宾和服务主体没有）。</p>
 能够读取其他用户 | 此设置仅可在 PowerShell 中使用。 将此标记设置为 $false 可阻止所有非管理员用户从目录读取用户信息。 此标记不会阻止读取其他 Microsoft 服务（如 Exchange Online）中的用户信息。 此设置适用于特殊情况，因此不建议将此标记设置为 $false。
+
+>![NOTE] 假设普通用户只使用门户访问 Azure AD，而不使用 PowerShell 或 CLI 访问其资源。 目前，仅当用户尝试访问 Azure 门户中的目录时，才会限制对其默认权限的访问。
 
 ## <a name="restrict-guest-users-default-permissions"></a>限制来宾用户的默认权限
 

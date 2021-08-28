@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/11/2021
 ms.author: yelevin
-ms.openlocfilehash: b64adbb63efaa4ce4781474f732bc9509d51029e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 97c35aa059f4419ee951875e769b252016578963
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310319"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723501"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的权限
 
@@ -103,6 +103,23 @@ Azure Sentinel 使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-b
     - [表级 RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043)
 
     资源上下文和表级 RBAC 是两种方法，可提供对 Azure Sentinel 工作区中特定数据的访问权限，无需允许访问整个 Azure Sentinel 体验。
+
+## <a name="role-recommendations"></a>角色建议
+
+了解 Azure Sentinel 中角色和权限的工作原理后，可以根据以下最佳做法指南向用户应用角色：
+
+|用户类型  |职位 |资源组  |说明  |
+|---------|---------|---------|---------|
+|安全分析师     | [Azure Sentinel 响应方](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)        | Azure Sentinel 的资源组        | 查看数据、事件、工作簿和其他 Azure Sentinel 资源。 <br><br>管理事件（例如分配或关闭事件）。        |
+|     | [逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)        | Azure Sentinel 的资源组或存储 playbook 的资源组        | 将 playbook 附加到分析和自动化规则并运行 playbook。 <br><br>注意：此角色还允许用户修改 playbook。         |
+|安全工程师     | [Azure Sentinel 参与者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)       |Azure Sentinel 的资源组         |   查看数据、事件、工作簿和其他 Azure Sentinel 资源。 <br><br>管理事件（例如分配或关闭事件）。 <br><br>创建和编辑工作簿、分析规则和其他 Azure Sentinel 资源。      |
+|     | [逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)        | Azure Sentinel 的资源组或存储 playbook 的资源组        | 将 playbook 附加到分析和自动化规则并运行 playbook。 <br><br>注意：此角色还允许用户修改 playbook。         |
+|  **Service Principal**   | [Azure Sentinel 参与者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)      |  Azure Sentinel 的资源组       | 管理任务的自动配置 |
+|     |         |        | |
+
+> [!TIP]
+> 可能需要其他角色，具体取决于所引入或监视的数据。 例如，可能需要 Azure AD 角色（如“全局管理员”或“安全管理员”角色）才能为其他 Microsoft 门户中的服务设置数据连接器。
+>
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,27 +1,34 @@
 ---
-title: 使用 Azure 认知搜索索引器连接到 Azure MySQL 内容并为其编制索引（预览）
+title: 为 Azure MySQL（预览版）中的数据编制索引
 titleSuffix: Azure Cognitive Search
-description: 将 Azure MySQL 中的数据导入 Azure 认知搜索中的可搜索索引。 索引器可自动为所选数据源（如 MySQL）引入数据。
+description: 设置搜索索引器，以对 Azure MySQL 中存储的数据编制索引，从而在 Azure 认知搜索中进行全文搜索。
 author: markheff
-manager: luisca
 ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/17/2021
-ms.openlocfilehash: 4dee2250d49d437d47148b873cfe8c7ce1e8f5ea
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: c4ac7266f61596490805c00af079dfe7bdee76aa
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754432"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181910"
 ---
-# <a name="connect-to-and-index-azure-mysql-content-using-an-azure-cognitive-search-indexer-preview"></a>使用 Azure 认知搜索索引器连接到 Azure MySQL 内容并为其编制索引（预览）
+# <a name="index-data-from-azure-mysql"></a>为 Azure MySQL 中的数据编制索引
 
 > [!IMPORTANT] 
-> MySQL 支持目前以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 可以填写[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)来请求访问预览版。 [REST API 版本 2020-06-30-Preview](search-api-preview.md) 提供此功能。 目前尚无 SDK 支持，且不支持门户。
+> 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，MySQL 支持目前为公共预览版。 [请求访问](https://aka.ms/azure-cognitive-search/indexer-preview)此功能，并在启用访问权限后，使用[预览版 REST API（2020-06-30-preview 或更高版本）](search-api-preview.md)为内容编制索引。 目前尚无 SDK 支持，且不支持门户。
 
-用于 MySQL 的 Azure 认知搜索索引器将在 Azure 中抓取 MySQL 数据库，提取可搜索的数据并在 Azure 认知搜索中编制索引。 此索引器将获取 MySQL 数据库的所有更改、上传和删除，并在 Azure 认知搜索中反映这些更改。
+用于 MySQL 的 Azure 认知搜索索引器将在 Azure 中抓取 MySQL 数据库，提取可搜索的数据并在 Azure 认知搜索中编制索引。 此索引器会获取 MySQL 数据库的所有更改、上传内容和删除内容，并在搜索索引中反映这些更改。
+
+可以使用以下任意客户端设置 Azure MySQL 索引器：
+
+* [Azure 门户](https://ms.portal.azure.com)
+* Azure 认知搜索 [REST API](/rest/api/searchservice/Indexer-operations)
+* Azure 认知搜索 [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
+
+本文使用 REST API。 
 
 ## <a name="create-an-azure-mysql-indexer"></a>创建 Azure MySQL 索引器
 

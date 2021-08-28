@@ -1,19 +1,21 @@
 ---
 title: 映射数据流中的接收器转换
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何在映射数据流中配置接收器转换。
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/06/2021
-ms.openlocfilehash: 8996e7a30756877b5329ef959b86529bdfcbd943
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/27/2021
+ms.openlocfilehash: ce189e0a24bb666e040268fc310b7e475c05a9c5
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789655"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014995"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流中的接收器转换
 
@@ -21,7 +23,7 @@ ms.locfileid: "110789655"
 
 转换数据后，使用接收器转换将其写入目标存储。 每个数据流至少需要一个接收器转换，但你可根据需要写入任意多个接收器来完成转换流。 若要写入更多接收器，请通过新的分支和有条件拆分创建新数据流。
 
-每个接收器转换只与一个 Azure 数据工厂数据集对象或链接服务相关联。 接收器转换决定要写入的数据的形状和位置。
+每个接收器转换只与一个数据集对象或链接服务相关联。 接收器转换决定要写入的数据的形状和位置。
 
 ## <a name="inline-datasets"></a>内联数据集
 
@@ -34,6 +36,15 @@ ms.locfileid: "110789655"
 若要使用内联数据集，请在“接收器类型”选择器中选择所需的格式。 选择要与其连接的链接服务，而不是选择接收器数据集。
 
 ![显示已选择“内联”的屏幕截图。](media/data-flow/inline-selector.png "显示已选择“内联”的屏幕截图。")
+
+## <a name="workspace-db-synapse-workspaces-only"></a>工作区 DB（仅 Synapse 工作区）
+
+在 Azure Synapse 工作区中使用数据流时，有一个附加选项可以将数据直接接收到 Synapse 工作区的数据库类型中。 这将缓解为这些数据库添加链接服务或数据集的需求。
+
+> [!NOTE]
+> Azure Synapse 工作区 DB 连接器目前为公共预览版，只能与 Spark Lake 数据库配合使用
+
+![显示选定工作区 DB 的屏幕截图。](media/data-flow/syms-sink.png "显示已选择“内联”的屏幕截图。")
 
 ##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> 支持的接收器类型
 
@@ -55,7 +66,7 @@ ms.locfileid: "110789655"
 
 特定于这些连接器的设置位于“设置”选项卡上。有关这些设置的信息和数据流脚本示例位于连接器文档中。
 
-Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)。 若要将数据从数据流写入其他源，请使用复制活动从受支持的接收器加载该数据。
+服务可以访问超过 [90 个原生连接器](connector-overview.md)。 若要将数据从数据流写入其他源，请使用复制活动从受支持的接收器加载该数据。
 
 ## <a name="sink-settings"></a>接收器设置
 
@@ -67,7 +78,7 @@ Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)
 
 ![显示“接收器”设置的屏幕截图。](media/data-flow/sink-settings.png "显示“接收器”设置的屏幕截图。")
 
-**架构偏差**：[架构偏差](concepts-data-flow-schema-drift.md)是数据工厂的功能，可原生处理数据流中的灵活架构，而无需显式定义列更改。 启用“允许架构偏差”在接收器数据架构中定义的内容之上写入额外的列。
+架构偏差：[架构偏差](concepts-data-flow-schema-drift.md)是指在无需显式定义列更改的情况下，服务在数据流中以原生方式处理灵活架构的能力。 启用“允许架构偏差”在接收器数据架构中定义的内容之上写入额外的列。
 
 **验证架构**：如果选择了“验证架构”，但在源投影中未找到传入源架构的任何列，或者数据类型不匹配，则数据流将失败。 使用此设置可强制要求源数据满足定义的投影的协定。 非常适用于在数据库源方案中指示列名称或类型已发生更改。
 
@@ -111,11 +122,11 @@ Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)
 
 ### <a name="sink-groups"></a>接收器组
 
-可以对一系列接收器使用同一顺序编号来将接收器组合在一起。 ADF 会将这些接收器视为可并行执行的组。 管道数据流活动中将显示并行执行的选项。
+可以对一系列接收器使用同一顺序编号来将接收器组合在一起。 服务会将这些接收器视为可并行执行的组。 管道数据流活动中将显示并行执行的选项。
 
 ## <a name="error-row-handling"></a>行处理时出错
 
-写入数据库时，某些数据行可能会由于目标设置的约束而失败。 默认情况下，遇到第一个错误时，数据流运行将失败。 在某些连接器中，可以选择“出错时继续运行”，确保即使单个行存在错误，也可以完成数据流。 目前，此功能仅在 Azure SQL 数据库中可用。 有关详细信息，请参阅 [Azure SQL DB 中的错误行处理](connector-azure-sql-database.md#error-row-handling)。
+写入数据库时，某些数据行可能会由于目标设置的约束而失败。 默认情况下，遇到第一个错误时，数据流运行将失败。 在某些连接器中，可以选择“出错时继续运行”，确保即使单个行存在错误，也可以完成数据流。 目前，此功能仅在 Azure SQL 数据库和 Azure Synapse 中可用。 有关详细信息，请参阅 [Azure SQL DB 中的错误行处理](connector-azure-sql-database.md#error-row-handling)。
 
 下面是有关如何在接收器转换中自动使用数据库错误行处理的视频教程。
 

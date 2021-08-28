@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: a8d8d83441e77e1d3bb7153fb5af9071310e82ec
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a5eeb8fbadda24a811893a02f42b428a8365c5aa
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110086097"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110252"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure 专用链接服务？
 
@@ -28,12 +28,6 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 
 
 *图：Azure 专用链接服务工作流。*
-
-### <a name="rbac-permissions"></a>RBAC 权限
-
-下面是用户创建专用链接服务所需的特定 RBAC 权限。 若要查找有关自定义角色的详细信息，请查看[创建自定义角色的步骤](/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role)。
-
-Microsoft.Resources/subscriptions/resourcegroups/resources/read Microsoft.Network/virtualNetworks/read Microsoft.Network/virtualNetworks/subnets/read Microsoft.Network/virtualNetworks/subnets/write Microsoft.Network/virtualNetworks/subnets/join/action Microsoft.Network/privateEndpoints/read Microsoft.Network/privateEndpoints/write Microsoft.Network/locations/availablePrivateEndpointTypes/read Microsoft.Network/privateLinkServices/read Microsoft.Network/privateLinkServices/write Microsoft.Network/privateLinkServices/privateEndpointConnections/read Microsoft.Network/privateLinkServices/privateEndpointConnections/write Microsoft.Network/networkSecurityGroups/join/action Microsoft.Network/loadBalancers/read Microsoft.Network/loadBalancers/write
 
 ### <a name="create-your-private-link-service"></a>创建专用链接服务
 
@@ -101,7 +95,11 @@ Microsoft.Resources/subscriptions/resourcegroups/resources/read Microsoft.Networ
 
 ## <a name="control-service-exposure"></a>控制服务的公开
 
-专用链接服务提供相应的选项用于通过“可见性”设置控制服务的公开。 可将服务设置为专用，以便只能从用户拥有的不同 VNet 使用（仅限 Azure RBAC 权限），此时曝光范围限制为用户信任的一组受限订阅，或者将服务设置为公开，使所有 Azure 订阅都能在专用链接服务中请求连接。 可见性设置决定了使用者是否可以连接到你的服务。 
+专用链接服务在“可见性”设置中提供了三个选项来控制服务的公开程度。 可见性设置决定使用者是否可以连接到你的服务。 下面是可见性设置选项（从限制最多到限制最少）：
+ 
+- 仅限基于角色的访问控制：如果你的服务是专用的（从你拥有的不同 VNet 进行使用），你可以在与同一 Active Directory 租户关联的订阅中使用 RBAC 作为访问控制机制。 
+- 受订阅限制：如果服务会在不同租户之间使用，则只能将其公开给你信任的有限订阅集。 可以预先批准授权。
+- 使用你的别名的任何人：如果你想让服务公开，并允许任何使用你的专用链接服务别名的人请求连接，请选择此选项。 
 
 ## <a name="control-service-access"></a>控制服务的访问
 

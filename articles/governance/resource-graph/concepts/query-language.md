@@ -1,18 +1,18 @@
 ---
 title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
-ms.date: 06/11/2021
+ms.date: 08/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: f9a9d6b937256787d0457f150d5f3dfaca81d9cd
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 7d23a8958ebfa90658ec5769b077f07091eff89d
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020234"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861047"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
-Azure Resource Graph 查询语言支持多个运算符和函数。 每个运算符和函数的工作原理和操作方式基于 [Kusto 查询语言 (KQL)](/azure/kusto/query/index)。 若要了解 Resource Graph 使用的查询语言，请从 [KQL 教程](/azure/kusto/query/tutorial)开始。
+Azure Resource Graph 查询语言支持多个运算符和函数。 每个运算符和函数的工作原理和操作方式基于 [Kusto 查询语言 (KQL)](/azure/data-explorer/kusto/query/index)。 若要了解 Resource Graph 使用的查询语言，请从 [KQL 教程](/azure/data-explorer/kusto/query/tutorial)开始。
 
 本文介绍 Resource Graph 支持的语言组件：
 
@@ -29,19 +29,20 @@ Resource Graph 为其存储的有关 Azure 资源管理器资源类型及其属�
 |Resource Graph 表 |与其他表之间可否执行 `join`？ |说明 |
 |---|---|---|
 |资源 |是 |如果未在查询中定义，则为默认表。 此处显示了大多数资源管理器资源类型和属性。 |
-|ResourceContainers |是 |包括订阅（预览版 -- `Microsoft.Resources/subscriptions`）和资源组 (`Microsoft.Resources/subscriptions/resourcegroups`) 资源类型和数据。 |
+|ResourceContainers |是 |包括管理组 (`Microsoft.Management/managementGroups`)、订阅 (`Microsoft.Resources/subscriptions`) 和资源组 (`Microsoft.Resources/subscriptions/resourcegroups`) 资源类型和数据。 |
 |AdvisorResources |是（预览版） |包括与 `Microsoft.Advisor` 相关的资源。 |
 |AlertsManagementResources |是（预览版） |包括与 `Microsoft.AlertsManagement` 相关的资源。 |
 |ExtendedLocationResources |否 |包括与 `Microsoft.ExtendedLocation` 相关的资源。 |
 |GuestConfigurationResources |否 |包括与 `Microsoft.GuestConfiguration` 相关的资源。 |
+|HealthResources|是 |包括与 `Microsoft.ResourceHealth/availabilitystatuses` 相关的资源。 |
 |KubernetesConfigurationResources |否 |包括与 `Microsoft.KubernetesConfiguration` 相关的资源。 |
 |MaintenanceResources |部分可以，仅限联接到。 （预览版） |包括与 `Microsoft.Maintenance` 相关的资源。 |
 |PatchAssessmentResources|否 |包括与 Azure 虚拟机补丁评估相关的资源。 |
 |PatchInstallationResources|否 |包括与 Azure 虚拟机补丁安装相关的资源。 |
-|PolicyResources |否 |包括与 `Microsoft.PolicyInsights` 相关的资源。 （**预览版**） |
+|PolicyResources |是 |包括与 `Microsoft.PolicyInsights` 相关的资源。 |
 |RecoveryServicesResources |部分可以，仅限联接到。 （预览版） |包括与 `Microsoft.DataProtection` 和 `Microsoft.RecoveryServices` 相关的资源。 |
 |SecurityResources |是（预览版） |包括与 `Microsoft.Security` 相关的资源。 |
-|ServiceHealthResources |否（预览版） |包括与 `Microsoft.ResourceHealth` 相关的资源。 |
+|ServiceHealthResources |否（预览版） |包括与 `Microsoft.ResourceHealth/events` 相关的资源。 |
 |WorkloadMonitorResources |否 |包括与 `Microsoft.WorkloadMonitor` 相关的资源。 |
 
 有关包含资源类型的完整列表，请参阅[参考：支持的表和资源类型](../reference/supported-tables-resources.md)。
@@ -121,7 +122,7 @@ Resources
 
 ## <a name="supported-kql-language-elements"></a>支持的 KQL 语言元素
 
-Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-types/)、[标量函数](/azure/kusto/query/scalarfunctions)、[标量运算符](/azure/kusto/query/binoperators)和[聚合函数](/azure/kusto/query/any-aggfunction)。 Resource Graph 支持特定[表格运算符](/azure/kusto/query/queries)，其中一些运算符具有不同的行为。
+Resource Graph 支持部分 KQL [数据类型](/azure/data-explorer/kusto/query/scalar-data-types/)、[标量函数](/azure/data-explorer/kusto/query/scalarfunctions)、[标量运算符](/azure/data-explorer/kusto/query/binoperators)和[聚合函数](/azure/data-explorer/kusto/query/any-aggfunction)。 Resource Graph 支持特定[表格运算符](/azure/data-explorer/kusto/query/queries)，其中一些运算符具有不同的行为。
 
 ### <a name="supported-tabulartop-level-operators"></a>支持的表格/顶级运算符
 
@@ -129,22 +130,23 @@ Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-ty
 
 |KQL |Resource Graph 示例查询 |说明 |
 |---|---|---|
-|[计数](/azure/kusto/query/countoperator) |[对密钥保管库进行计数](../samples/starter.md#count-keyvaults) | |
-|[distinct](/azure/kusto/query/distinctoperator) |[显示包含存储的资源](../samples/starter.md#show-storage) | |
-|[extend](/azure/kusto/query/extendoperator) |[按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os) | |
-|[join](/azure/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接类型：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 单个查询中最多只能有 3 个 `join`（其中 1 个可以是跨表 `join`）。 如果所有跨表 `join` 都在 Resource 与 ResourceContainers 之间使用，则会允许 3 个跨表 `join`。 不允许使用自定义联接策略，如广播联接。 有关哪些表可以使用 `join`，请参阅 [Resource Graph 表](#resource-graph-tables)。 |
-|[limit](/azure/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |Synonym of `take`. 无法与 [Skip](./work-with-data.md#skipping-records)配合使用。 |
-|[mvexpand](/azure/kusto/query/mvexpandoperator) | | 旧运算符，请改用 `mv-expand`。 RowLimit 最大值为 400。 默认值为 128。 |
-|[mv-expand](/azure/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |RowLimit 最大值为 400。 默认值为 128。 单个查询中的 `mv-expand` 数量限制为 2 个。|
-|[order](/azure/kusto/query/orderoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`sort` 的同义词 |
-|[project](/azure/kusto/query/projectoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) | |
-|[project-away](/azure/kusto/query/projectawayoperator) |[删除结果中的列](../samples/advanced.md#remove-column) | |
-|[sort](/azure/kusto/query/sortoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`order` 的同义词 |
-|[summarize](/azure/kusto/query/summarizeoperator) |[对 Azure 资源进行计数](../samples/starter.md#count-resources) |仅已简化首页 |
-|[take](/azure/kusto/query/takeoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |Synonym of `limit`. 无法与 [Skip](./work-with-data.md#skipping-records)配合使用。 |
-|[返回页首](/azure/kusto/query/topoperator) |[按名称及其 OS 类型显示前五个虚拟机](../samples/starter.md#show-sorted) | |
-|[union](/azure/kusto/query/unionoperator) |[将两个查询的结果合并为单个结果](../samples/advanced.md#unionresults) |允许使用单个表：_T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`ColumnName\] Table。 单个查询中的 `union` 分支限制为 3。 不允许对 `union` 分支表进行模糊解析。 可以在单个表中使用，也可以在 Resources 和 ResourceContainers 表中使用。 |
-|[where](/azure/kusto/query/whereoperator) |[显示包含存储的资源](../samples/starter.md#show-storage) | |
+|[计数](/azure/data-explorer/kusto/query/countoperator) |[对密钥保管库进行计数](../samples/starter.md#count-keyvaults) | |
+|[distinct](/azure/data-explorer/kusto/query/distinctoperator) |[显示包含存储的资源](../samples/starter.md#show-storage) | |
+|[extend](/azure/data-explorer/kusto/query/extendoperator) |[按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os) | |
+|[join](/azure/data-explorer/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接类型：[innerunique](/azure/data-explorer/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/data-explorer/kusto/query/joinoperator#inner-join)、[leftouter](/azure/data-explorer/kusto/query/joinoperator#left-outer-join)。 单个查询中最多只能有 3 个 `join`（其中 1 个可以是跨表 `join`）。 如果所有跨表 `join` 都在 Resource 与 ResourceContainers 之间使用，则会允许 3 个跨表 `join`。 不允许使用自定义联接策略，如广播联接。 有关哪些表可以使用 `join`，请参阅 [Resource Graph 表](#resource-graph-tables)。 |
+|[limit](/azure/data-explorer/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |Synonym of `take`. 无法与 [Skip](./work-with-data.md#skipping-records)配合使用。 |
+|[mvexpand](/azure/data-explorer/kusto/query/mvexpandoperator) | | 旧运算符，请改用 `mv-expand`。 RowLimit 最大值为 400。 默认值为 128。 |
+|[mv-expand](/azure/data-explorer/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |RowLimit 最大值为 400。 默认值为 128。 单个查询中的 `mv-expand` 数量限制为 2 个。|
+|[order](/azure/data-explorer/kusto/query/orderoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`sort` 的同义词 |
+|[parse](/azure/data-explorer/kusto/query/parseoperator) |[获取网络接口的虚拟网络和子网](../samples/advanced.md#parse-subnets) |如果属性存在，最好直接访问它们，而不是使用 `parse` 来访问。 |
+|[project](/azure/data-explorer/kusto/query/projectoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) | |
+|[project-away](/azure/data-explorer/kusto/query/projectawayoperator) |[删除结果中的列](../samples/advanced.md#remove-column) | |
+|[sort](/azure/data-explorer/kusto/query/sortoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`order` 的同义词 |
+|[summarize](/azure/data-explorer/kusto/query/summarizeoperator) |[对 Azure 资源进行计数](../samples/starter.md#count-resources) |仅已简化首页 |
+|[take](/azure/data-explorer/kusto/query/takeoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |Synonym of `limit`. 无法与 [Skip](./work-with-data.md#skipping-records)配合使用。 |
+|[返回页首](/azure/data-explorer/kusto/query/topoperator) |[按名称及其 OS 类型显示前五个虚拟机](../samples/starter.md#show-sorted) | |
+|[union](/azure/data-explorer/kusto/query/unionoperator) |[将两个查询的结果合并为单个结果](../samples/advanced.md#unionresults) |允许使用单个表：_T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`ColumnName\] Table。 单个查询中的 `union` 分支限制为 3。 不允许对 `union` 分支表进行模糊解析。 可以在单个表中使用，也可以在 Resources 和 ResourceContainers 表中使用。 |
+|[where](/azure/data-explorer/kusto/query/whereoperator) |[显示包含存储的资源](../samples/starter.md#show-storage) | |
 
 单个 Resource Graph SDK 查询中默认最多只能有 3 个 `join` 和 3 个 `mv-expand` 运算符。 可以通过“帮助 + 支持”来请求为租户提高这些限制。
 
@@ -152,17 +154,16 @@ Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-ty
 
 ## <a name="query-scope"></a>查询范围
 
-查询返回的资源的订阅范围取决于访问 Resource Graph 的方法。 Azure CLI 和 Azure PowerShell 会根据授权用户的上下文填充要在请求中加入的订阅列表。 可以分别使用 subscriptions 和 Subscription 参数为每个订阅手动定义订阅列表 。
-在 REST API 和所有其他 SDK 中，包括资源的订阅列表必须显式定义为请求的一部分。
+查询从中返回资源的订阅或[管理组](../../management-groups/overview.md)的范围默认为基于授权用户上下文的订阅列表。 如果未定义管理组或订阅列表，则查询范围为所有资源（包括 [Azure Lighthouse](../../../lighthouse/overview.md) 委托资源）。
 
-作为预览版，REST API 版本 `2020-04-01-preview` 会添加一个属性，将查询范围限定到[管理组](../../management-groups/overview.md)。 此预览 API 也使订阅属性成为可选属性。 如果未定义管理组或订阅列表，则查询范围为经过身份验证的用户可以访问的所有资源（包括 [Azure Lighthouse](../../../lighthouse/overview.md) 委托的资源）。 新的 `managementGroupId` 属性采用管理组 ID，该 ID 不同于管理组的名称。 指定 `managementGroupId` 时，将包含在指定管理组层次结构中或其下的前 5,000 个订阅的资源。 `managementGroupId` 与 `subscriptions` 不能同时使用。
+可以手动定义要查询的订阅或管理组的列表，以更改结果的范围。 例如，REST API `managementGroups` 属性采用管理组 ID，该 ID 不同于管理组的名称。 指定 `managementGroups` 时，将包含在指定管理组层次结构中或其下的前 5,000 个订阅的资源。 `managementGroups` 与 `subscriptions` 不能同时使用。
 
 示例：使用 ID“myMG”查询管理组层次结构中名为“我的管理组”的所有资源。
 
 - REST API URI
 
   ```http
-  POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2020-04-01-preview
+  POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01
   ```
 
 - 请求正文
@@ -170,7 +171,7 @@ Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-ty
   ```json
   {
       "query": "Resources | summarize count()",
-      "managementGroupId": "myMG"
+      "managementGroups": ["myMG"]
   }
   ```
 

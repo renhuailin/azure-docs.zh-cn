@@ -2,21 +2,27 @@
 title: 排查 Azure 负载均衡器中的出站连接问题
 description: 通过 Azure 负载均衡器排查出站连接常见问题的解决方法。
 services: load-balancer
-author: erichrt
+author: anavinahar
 ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
-ms.author: errobin
-ms.openlocfilehash: 1f52900086afef09d69b80bf44474d5514e25235
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.author: anavin
+ms.openlocfilehash: 71472a89b2aa3138c83dac1f5c2dfc5649c9b9ce
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748873"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583160"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> 排查出站连接故障
 
-本文旨在为 Azure 负载均衡器的出站连接可能出现的常见问题提供解决方法。 客户遇到的大多数出站连接问题是由于 SNAT 端口耗尽和连接超时导致数据包丢失。 本文提供了用于缓解上述每个问题的步骤。
+本文旨在为 Azure 负载均衡器的出站连接可能出现的常见问题提供解决方法。 客户遇到的大多数出站连接问题都是由于源网络地址转换 (SNAT) 端口耗尽和连接超时（导致数据包丢失）。 本文提供了用于缓解上述每个问题的步骤。
+
+## <a name="avoid-snat"></a>避免 SNAT
+
+避免 SNAT 端口耗尽的最好方法是尽可能先消除对 SNAT 的需求。 在某些情况下，可能无法执行此操作。 例如，在连接到公共终结点时。 但在某些情况下，这是可能的，可以通过私下连接到资源来实现。 如果连接到 Azure 服务（如存储、SQL、Cosmos DB 或任何其他[此处列出的 Azure 服务](../private-link/availability.md)），则利用 Azure 专用链接无需 SNAT。 因此，你不会因 SNAT 端口耗尽而面临潜在连接问题的风险。
+
+Snowflake、MongoDB、Confluent、Elastic 等服务也支持专用链接服务。
 
 ## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>应对 SNAT (PAT) 端口耗尽问题
 用于 [PAT](load-balancer-outbound-connections.md) 的[临时端口](load-balancer-outbound-connections.md)是可用尽的资源，如[无公共 IP 地址的独立 VM](load-balancer-outbound-connections.md) 和[无公共 IP 地址的负载均衡 VM](load-balancer-outbound-connections.md) 中所述。 可以根据[此](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation)指南来监视临时端口的使用情况，并将其与当前分配进行比较，以确定 SNAT 耗尽的风险或确认 SNAT 是否耗尽。

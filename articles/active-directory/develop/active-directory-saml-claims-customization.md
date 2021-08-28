@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/09/2020
+ms.date: 07/20/2021
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 25e737afb524cb8c6f45ac8e99f46a8064ae7855
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: f0f943475fc397acf61c51fc3dc34cc9efdb1cfb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598833"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450560"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -50,7 +50,7 @@ ms.locfileid: "107598833"
 
 如果 SAML 请求中包含具有特定格式的元素 NameIDPolicy，则 Microsoft 标识平台会接受请求中的格式。
 
-如果 SAML 请求中不包含用于 NameIDPolicy 的元素，则 Microsoft 标识平台会使用你指定的格式来颁发 NameID。 如果未指定格式，Microsoft 标识平台会使用与所选声明源关联的默认源格式。
+如果 SAML 请求中不包含用于 NameIDPolicy 的元素，则 Microsoft 标识平台会使用你指定的格式来颁发 NameID。 如果未指定格式，Microsoft 标识平台会使用与所选声明源关联的默认源格式。 如果转换导致 NULL 值或非法值，Azure AD 会在 nameIdentifier 中发送一个持久的成对标识符。 
 
 从 **选择名称标识符格式** 下拉列表中，可以选择以下一个选项。
 
@@ -98,7 +98,6 @@ ms.locfileid: "107598833"
 | 函数 | 说明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 删除电子邮件地址或用户主体名称中的域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
-| **Join()** | 将属性与已验证的域联接。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
 | **ToLower()** | 将所选属性的字符转换为小写字符。 |
 | **ToUpper()** | 将所选属性的字符转换为大写字符。 |
 
@@ -125,7 +124,7 @@ ms.locfileid: "107598833"
 | 函数 | 说明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 删除电子邮件地址或用户主体名称中的域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
-| **Join()** | 通过联接两个属性来创建新的值。 或者，可以在两个属性之间使用分隔符。 对于 NameID 声明转换，联接仅限已验证的域。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
+| **Join()** | 通过联接两个属性来创建新的值。 或者，可以在两个属性之间使用分隔符。 |
 | ToLowercase() | 将所选属性的字符转换为小写字符。 |
 | ToUppercase() | 将所选属性的字符转换为大写字符。 |
 | **Contains()** | 如果输入与指定的值匹配，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果想要发出一个声明，其中的值为用户的电子邮件地址（如果包含域 @contoso.com），否则就需要输出用户主体名称。 为此，需要配置以下值：<br/>*参数 1(输入)* ：user.email<br/>*值*: "@contoso.com"<br/>参数 2(输出)：user.email<br/>参数 3（如果没有匹配项，则为输出）：user.userprincipalname |
@@ -142,6 +141,13 @@ ms.locfileid: "107598833"
 | **IfNotEmpty()** | 如果输入为 null 或为空，则输出一个属性或常量。<br/>例如，如果希望在给定用户的员工 ID 为空时输出存储在 extensionattribute 中的属性。 为此，需要配置以下值：<br/>参数 1(输入)：user.employeeid<br/>参数 2(输出)：user.extensionattribute1 |
 
 如果需要其他转换，请在“SaaS 应用程序”类别下的 [Azure AD 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599)中发布你的想法。
+
+## <a name="add-the-upn-claim-to-saml-tokens"></a>将 UPN 声明添加到 SAML 令牌
+
+`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn` 声明是 [SAML 受限声明集](reference-claims-mapping-policy-type.md#table-2-saml-restricted-claim-set)的一部分，因此你无法在“用户属性和声明”部分添加该声明。  一种解决方法是通过 Azure 门户中的“应用注册”将其添加为[可选声明](active-directory-optional-claims.md)。 
+
+在“应用注册”中打开应用，依次选择“令牌配置”、“添加可选声明”。 选择“SAML”令牌类型，从列表中选择“upn”，然后单击“添加”以获取令牌中的声明。
+
 
 ## <a name="emitting-claims-based-on-conditions"></a>发出基于条件的声明
 
