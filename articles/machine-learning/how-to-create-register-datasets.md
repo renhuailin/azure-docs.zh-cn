@@ -10,13 +10,13 @@ ms.custom: contperf-fy21q1, data4ml
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 07/31/2020
-ms.openlocfilehash: 9bfe0ad6e94ea40ad5edc97e8b3259bb817df03f
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.date: 07/06/2021
+ms.openlocfilehash: 5443386a8e62d6576d73161519546e368f41ad82
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788330"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860890"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -38,7 +38,7 @@ ms.locfileid: "109788330"
 
 若要创建和使用数据集，需要做好以下准备：
 
-* Azure 订阅。 如果没有订阅，请在开始之前创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有订阅，请在开始之前创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
 * 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -48,10 +48,13 @@ ms.locfileid: "109788330"
 
     **或者**
 
-    * 使用自己的 Jupyter 笔记本，按照[这些说明](/python/api/overview/azure/ml/install)自行安装 SDK。
+    * 在自己的 Jupyter 笔记本上工作，并[自行安装 SDK](/python/api/overview/azure/ml/install)。
 
 > [!NOTE]
-> 某些数据集类依赖于 [azureml-dataprep](https://pypi.org/project/azureml-dataprep/) 包，此包仅兼容64位 Python。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux（7、8）、Ubuntu（14.04、16.04、18.04）、Fedora（27、28）、Debian（8、9）和 CentOS (7)。 如果使用的是不受支持的发行版，请按照[此指南](/dotnet/core/install/linux)安装 .NET Core 2.1 以继续操作。 
+> 某些数据集类依赖于 [azureml-dataprep](https://pypi.org/project/azureml-dataprep/) 包，此包仅兼容64位 Python。 如果是在 Linux 上进行开发，则这些类依赖于 .NET Core 2.1，并且仅在特定发行版上受支持。 有关支持的发行版的详细信息，请参阅[在 Linux 上安装 .NET](/dotnet/core/install/linux) 一文中的“.NET Core 2.1”列。
+
+> [!IMPORTANT]
+> 虽然该包可以在较旧的 Linux 发行版上正常工作，但我们不建议使用不在主要支持范围内的发行版。 不在主要支持范围内的的发行版可能存在安全漏洞，因为它们不会收到最新更新。 我们建议使用受支持且兼容的最新发行版。
 
 ## <a name="compute-size-guidance"></a>计算大小指南
 
@@ -85,7 +88,7 @@ ms.locfileid: "109788330"
 
 ## <a name="access-datasets-in-a-virtual-network"></a>访问虚拟网络中的数据集
 
-如果工作区位于虚拟网络中，则必须将数据集配置为跳过验证。 有关如何在虚拟网络中使用数据存储和数据集的详细信息，请参阅[保护工作区和相关资源](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)。
+如果工作区位于虚拟网络中，则必须将数据集配置为跳过验证。 有关如何在虚拟网络中使用数据存储和数据集的详细信息，请参阅[保护工作区和相关资源](how-to-secure-workspace-vnet.md#datastores-and-datasets)。
 
 <a name="datasets-sdk"></a>
 
@@ -111,7 +114,7 @@ ms.locfileid: "109788330"
 
 使用 `FileDatasetFactory` 类中的 [`from_files()`](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true-) 方法可以加载任意格式的文件并创建未注册的 FileDataset。 
 
-如果存储位于虚拟网络或防火墙后面，请在 `from_files()` 方法中设置参数 `validate=False`。 这会绕过初始验证步骤，确保可以从这些安全文件创建数据集。 详细了解如何[使用虚拟网络中的数据存储和数据集](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)。
+如果存储位于虚拟网络或防火墙后面，请在 `from_files()` 方法中设置参数 `validate=False`。 这会绕过初始验证步骤，确保可以从这些安全文件创建数据集。 详细了解如何[使用虚拟网络中的数据存储和数据集](how-to-secure-workspace-vnet.md#datastores-and-datasets)。
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
@@ -132,11 +135,11 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 
 ### <a name="create-a-tabulardataset"></a>创建 TabularDataset
 
-使用 `TabularDatasetFactory` 类中的 [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) 方法可以读取 .csv 或 .tsv 格式的文件，以及创建未注册的 TabularDataset。 若要读取 .parquet 格式的文件，请使用 [`from_parquet_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) 方法。 如果从多个文件进行读取，结果将聚合为一种表格表示形式。 
+使用 `TabularDatasetFactory` 类中的 [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--) 方法可以读取 .csv 或 .tsv 格式的文件，以及创建未注册的 TabularDataset。 若要读取 .parquet 格式的文件，请使用 [`from_parquet_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) 方法。 如果从多个文件进行读取，结果将聚合为一种表格表示形式。 
 
-有关支持的文件格式以及语法和设计模式的信息，请参阅 [TabularDatasetFactory 参考文档](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)。 
+有关支持的文件格式以及语法和设计模式（例如[多行支持](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--)）的信息，请参阅 [TabularDatasetFactory 参考文档](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory)。 
 
-如果存储位于虚拟网络或防火墙后面，请在 `from_delimited_files()` 方法中设置参数 `validate=False`。 这会绕过初始验证步骤，确保可以从这些安全文件创建数据集。 详细了解如何使用[虚拟网络中的数据存储和数据集](how-to-secure-workspace-vnet.md#secure-datastores-and-datasets)。
+如果存储位于虚拟网络或防火墙后面，请在 `from_delimited_files()` 方法中设置参数 `validate=False`。 这会绕过初始验证步骤，确保可以从这些安全文件创建数据集。 详细了解如何使用[虚拟网络中的数据存储和数据集](how-to-secure-workspace-vnet.md#datastores-and-datasets)。
 
 以下代码按名称获取现有工作区和所需的数据存储。 然后将数据存储和文件位置传递给 `path` 参数以创建新的 TabularDataset `weather_ds`。
 
@@ -280,9 +283,6 @@ new_dataset = ds.partition_by(name="repartitioned_ds", partition_keys=['country'
 partition_keys = new_dataset.partition_keys # ['country']
 ```
 
->[!IMPORTANT]
-> TabularDataset 分区也可以应用到 Azure 机器学习管道中，作为许多模型应用程序中 ParallelRunStep 的输入。 请参阅[多个模型加速器文档](https://github.com/microsoft/solution-accelerator-many-models/blob/master/01_Data_Preparation.ipynb)中的示例。
-
 ## <a name="explore-data"></a>浏览数据
 
 处理完数据后，可以[注册](#register-datasets)数据集，然后在模型训练之前将其加载到笔记本中以进行数据浏览。
@@ -362,7 +362,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-using-azure-resource-manager"></a>使用 Azure 资源管理器创建数据集
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-dataset-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) 上有许多模板可用于创建数据集。
+[https://github.com/Azure/azure-quickstart-templates/tree/master//quickstarts/microsoft.machinelearningservices](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices) 上有许多模板可用于创建数据集。
 
 若要了解如何使用这些模板，请参阅[使用 Azure 资源管理器模板创建 Azure 机器学习的工作区](how-to-create-workspace-template.md)。
 

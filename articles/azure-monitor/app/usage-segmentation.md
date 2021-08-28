@@ -1,23 +1,22 @@
 ---
-title: 在 Azure Application Insights 中进行用户、会话和事件分析
+title: 在 Application Insights 中进行用户、会话和事件分析
 description: 对 Web 应用的用户进行人口统计学分析。
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 01/24/2018
-ms.reviewer: mbullwin
-ms.openlocfilehash: 6eb91734afac81e103cebea48865793fa687ad71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: lgayhardt
+ms.author: lagayhar
+ms.date: 07/30/2021
+ms.openlocfilehash: 09dc9ba915b0ecf99219aadd9214192b9f4b1e19
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024823"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747683"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
-查明人们何时使用 Web 应用，他们对哪些页面最感兴趣，用户在哪里以及他们使用什么浏览器和操作系统。 使用 [Azure Application Insights](./app-insights-overview.md) 分析业务和使用情况遥测
+查明人们何时使用 Web 应用，他们对哪些页面最感兴趣，用户在哪里以及他们使用什么浏览器和操作系统。 使用 [Application Insights](./app-insights-overview.md) 分析业务和使用情况遥测。
 
-![Application Insights 用户的屏幕截图](./media/usage-segmentation/0001-users.png)
+:::image type="content" source="./media/usage-segmentation/users.png" alt-text="屏幕截图以面积图的形式显示了“用户”选项卡。" lightbox="./media/usage-overview/users.png":::
 
 ## <a name="get-started"></a>入门
 
@@ -29,31 +28,25 @@ ms.locfileid: "105024823"
 
 * **“用户”工具**：多少人使用了应用及其功能。  将使用浏览器 cookie 中存储的匿名 ID 对用户进行计数。 使用不同浏览器或计算机的单个用户会被计为多个用户。
 * **“会话”工具**：用户活动的多少会话包括了应用的特定页面和功能。 会话是在用户处于不活动状态半小时后或者在连续使用 24 小时后进行计数的。
-* **“事件”工具**：应用的特定页面和功能是以何频率使用的。 当浏览器加载了应用中的页面时会计入一次页面查看，前提是已[检测到此操作](./javascript.md)。 
+* **“事件”工具**：应用的特定页面和功能是以何频率使用的。 当浏览器加载了应用中的一个页面时，会将其计为一次页面查看，前提是已[对它进行了检测设置](./javascript.md)。 
 
-    自定义事件表示应用中发生的某个事件的一次出现，通常是一项用户交互，例如单击按钮或某项任务完成。 可以在应用中插入代码来[生成自定义事件](./api-custom-events-metrics.md#trackevent)。
+    自定义事件表示应用中发生的某个事件，通常是用户交互，例如选择按钮或完成某项任务。 可以在应用中插入代码来[生成自定义事件](./api-custom-events-metrics.md#trackevent)。
 
 ## <a name="querying-for-certain-users"></a>查询特定用户
 
 通过在“用户”工具的顶部调整查询选项来探究不同的用户组：
 
-* 显示：选择要分析的一组用户。
-* 使用者：选择自定义事件和页面视图。
-* 期间：选择一个时间范围。
-* 依据：选择如何划分数据的存储段，可以按时间段或按其他属性（例如浏览器或城市）。
-* 拆分依据：选择对数据进行拆分或分段时要依据的属性。 
-* 添加筛选器：将查询限制到特定的用户、会话或事件（根据其属性，例如浏览器或城市）。 
+- 期间：选择一个时间范围。
+- 显示：选择要分析的一组用户。
+- 使用者：选择具体的自定义事件、请求和页面视图。
+- 事件：选择多个事件、请求和页面视图，这些视图会显示至少完成了一个项（不一定完成了所有已选择的事件、请求和页面视图）的用户。
+- 依据 x 轴值：选择如何划分数据的存储段，可以按时间范围或按其他属性（例如浏览器或城市）来这样做。
+- 拆分依据：选择对数据进行拆分或分段时要依据的属性。 
+- 添加筛选器：将查询限制到特定的用户、会话或事件（根据其属性，例如浏览器或城市）。 
  
-## <a name="saving-and-sharing-reports"></a>保存和共享报表 
-可以将用户报表保存为在“我的报表”部分中专供你使用的报表，或者将其保存为在“共享报表”部分中可供对此 Application Insights 资源具有访问权限的其他所有人访问的共享报表。
-
-若要共享“用户”、“会话”或“事件”报表的链接，请单击工具栏中的“共享”，然后复制该链接。
-
-若要共享“用户”、“会话”或“事件”报表中的数据副本，请单击工具栏中的“共享”，然后单击“Word 图标”使用该数据创建一个 Word 文档。 或者，单击主图表上方的“Word 图标”。
-
 ## <a name="meet-your-users"></a>了解用户
 
-“了解用户”部分显示与当前查询匹配的五个示例用户的相关信息。 除了聚合之外，考虑并探究个体的行为可以洞察人们使用应用的实际方式。
+“了解用户”部分显示与当前查询匹配的五个示例用户的相关信息。 探索个人和群体的行为可以了解人们实际上是如何使用你的应用的。
 
 ## <a name="next-steps"></a>后续步骤
 

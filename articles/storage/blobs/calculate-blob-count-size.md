@@ -4,16 +4,17 @@ description: 了解如何计算每个容器的 blob 计数和总大小。
 services: storage
 author: normesta
 ms.author: normesta
-ms.date: 03/10/2021
+ms.date: 08/16/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 8365c4873165b5a8040bc3def5743eca435cb7e9
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: ffdb6dd0d998cfe12b50dab85f49f06e30903d6f
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653930"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122270951"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>使用 Azure 存储空间库存计算每个容器的 blob 计数和总大小
 
@@ -21,25 +22,11 @@ ms.locfileid: "110653930"
 
 Blob 元数据未包含在此方法中。 Azure Blob 存储库存功能将[列表 Blob](/rest/api/storageservices/list-blobs) REST API 与默认参数一起使用。 因此，该示例不支持快照和“$”容器等。
 
-> [!IMPORTANT]
-> Blob 库存目前处于预览阶段。 有关 beta 版本、预览版或尚未正式发布的版本的 Azure 功能所适用的法律条款，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 ## <a name="enable-inventory-reports"></a>启用库存报表
 
-此方法中的第一步是在存储帐户上[启用库存报表](blob-inventory.md#enable-inventory-reports)。 为生成的第一个报表启用库存报表后，可能需要等待 24 个小时。
+此方法中的第一步是在存储帐户上[启用库存报表](blob-inventory.md#enabling-inventory-reports)。 为生成的第一个报表启用库存报表后，可能需要等待 24 个小时。
 
-如果有要分析的库存报表，请授予自己对报表 CSV 文件所在容器的 blob 读取访问权限。
-
-1. 导航到具有库存 CSV 报表文件的容器。
-1. 依次选择“访问控制(IAM)”和“添加角色分配”
-
-    :::image type="content" source="media/calculate-blob-count-size/access.png" alt-text="选择“添加角色分配”":::
-
-1. 从“角色”下拉列表中，选择“存储 Blob 数据读取器”。
-
-    :::image type="content" source="media/calculate-blob-count-size/add-role-assignment.png" alt-text="添加来自下拉列表的存储 Blob 数据读取器角色":::
-
-1. 在“选择”字段中输入将用于运行报表的帐户的电子邮件地址。
+如果有要分析的库存报表，请通过为自己分配“存储 Blob 数据读取者”角色，授予自己对报表 CSV 文件所在容器的读取访问权限。 请务必使用你用于运行报表的帐户的电子邮件地址。 若要了解如何使用 Azure 基于角色的访问控制 (Azure RBAC) 将 Azure 角色分配给用户，请按照[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)中提供的说明进行操作。
 
 ## <a name="create-an-azure-synapse-workspace"></a>创建 Azure Synapse 工作区
 

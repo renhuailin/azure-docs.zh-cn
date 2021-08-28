@@ -8,43 +8,55 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/24/2021
+ms.date: 07/01/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 81bdc8550f57a7c1c4992825cd231a9bb3cad4ce
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1c7d4eeaf7df1764b021cd5914d6f4f4a88a9a1c
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457469"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213464"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置密码重置流
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-## <a name="password-reset-flow"></a>密码重置流
+## <a name="overview"></a>概述
 
-通过[注册和登录历程](add-sign-up-and-sign-in-policy.md)，用户可以使用“忘记密码?”链接重置自己的密码。 密码重置流涉及以下步骤：
+在[注册和登录历程](add-sign-up-and-sign-in-policy.md)中，用户可以使用“忘记密码?”链接重置其自己的密码。 此自助式密码重置流适用于 Azure AD B2C 中使用[电子邮件地址](sign-in-options.md#email-sign-in)或[用户名](sign-in-options.md#username-sign-in)与密码进行登录的本地帐户。
 
-1. 在注册和登录页上，用户单击“忘记密码?”链接。 Azure AD B2C 启动密码重置流。
-2. 用户提供其电子邮件地址并选择“发送验证码”。 然后 Azure AD B2C 会向用户发送一个验证码。
-
-* 用户需要打开邮箱并复制验证码。 然后，用户在 Azure AD B2C 密码重置页中输入验证码，并选择“验证代码”。
-
-> [!NOTE]
-> 验证电子邮件后，用户仍然可以选择“更改电子邮件”，键入其他电子邮件，然后从头开始重复电子邮件验证过程。
-3. 然后，用户可以输入新密码。
+密码重置流涉及以下步骤：
 
 ![密码重置流](./media/add-password-reset-policy/password-reset-flow.png)
 
-密码重置流适用于 Azure AD B2C 中使用[电子邮件地址](identity-provider-local.md#email-sign-in)或[用户名](identity-provider-local.md#username-sign-in)与密码进行登录的本地帐户。
+1\. 在注册和登录页中，用户单击“忘记密码?”链接 。 Azure AD B2C 启动密码重置流。
+
+2\. 用户提供其电子邮件地址并选择“发送验证码” 。 Azure AD B2C 将验证码发送到用户的收件箱。 用户复制电子邮件中的验证码，将其输入到 Azure AD B2C 密码重置页，然后选择“验证代码”。
+
+3\. 然后，用户可以输入新密码。 （验证电子邮件后，用户仍可选择“更改电子邮件”按钮；请参阅下面的[隐藏“更改电子邮件”按钮](#hiding-the-change-email-button)。）
 
 > [!TIP]
-> 自助式密码重置流允许用户在忘记密码并希望重置密码时更改其密码。 考虑配置[密码更改流](add-password-change-policy.md)，以支持用户知道其密码并想要更改密码的情况。
+> 自助式密码重置流允许用户在忘记密码并希望重置密码时更改其密码。 
+> - 如果用户知道自己的密码并想要更改密码，可使用[密码更改流](add-password-change-policy.md)。 
+> - 对于想要强制用户重置密码的情况（例如，当用户首次登录时，当用户的密码被管理员重置时，或者在用户使用随机密码迁移到 Azure AD B2C 之后），请使用[强制密码重置](force-password-reset.md)流。
 
-使用随机密码将用户迁移到 Azure AD B2C 后，一个常见的做法是让用户在首次登录时，验证他们的电子邮件地址并重置密码。 另一个常见的做法是，在管理员更改密码后，强制用户重置其密码；若要启用此功能，请参阅[强制密码重置](force-password-reset.md)。
+### <a name="hiding-the-change-email-button"></a>隐藏“更改电子邮件”按钮
+
+验证电子邮件后，用户仍可以选择“更改电子邮件”，键入另一个电子邮件地址，然后从头开始重复电子邮件验证过程。 如果你想要隐藏“更改电子邮件”按钮，可以修改 CSS 以在页面上隐藏关联的 HTML 元素。 例如，可将下面的 CSS 条目添加到 selfAsserted.HTML，然后[使用 HTML 模板自定义用户界面](customize-ui-with-html.md)。
+
+```html
+<style type="text/css">
+   .changeClaims
+   {
+     visibility: hidden;
+   }
+</style>
+```
+
+请注意，selfasserted.htm 页面中“更改电子邮件”按钮的默认名称为 `changeclaims`。 可以使用浏览器工具（例如 Inspect）通过检查注册页面的源代码找到该按钮名称。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -303,8 +315,10 @@ ms.locfileid: "110457469"
 1. 在“创建用户流”页面上，选择“密码重置”用户流 。 
 1. 在“选择版本”下，选择“建议”，然后选择“创建”  。
 1. 输入该用户流的 **名称**。 例如 *passwordreset1*。
-1. 对于“标识提供者”，请启用“使用电子邮件地址重置密码”。
-1. 在“应用程序声明”下，选择“显示更多”，然后选择你希望在发送回应用程序的授权令牌中返回的声明 。 例如，选择“用户的对象 ID”。
+1. 对于“标识提供者”，请启用“使用用户名重置密码”或“使用电子邮件地址重置密码”  。
+1. 在“多重身份验证”下，如果你希望要求用户使用另一种身份验证方法来验证其身份，请选择方法类型，以及何时要强制执行多重身份验证 (MFA)。 [了解详细信息](multi-factor-authentication.md)。
+1. 在“条件访问”下，如果已为 Azure AD B2C 租户配置条件访问策略，并且想要为此用户流启用这些策略，请选择“强制实施条件访问策略”复选框 。 无需指定策略名称。 [了解详细信息](conditional-access-user-flow.md?pivots=b2c-user-flow)。
+1. 1. 在“应用程序声明”下，选择“显示更多”，然后选择你希望在发送回应用程序的授权令牌中返回的声明 。 例如，选择“用户的对象 ID”。
 1. 选择“确定”。
 1. 选择“创建”以添加用户流。 名称中会自动追加前缀 *B2C_1*。
 

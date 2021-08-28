@@ -3,15 +3,15 @@ title: 在 Azure 的更新管理部署中管理操作前脚本和操作后脚本
 description: 本文介绍如何配置和管理更新部署的操作前脚本和操作后脚本。
 services: automation
 ms.subservice: update-management
-ms.date: 03/08/2021
+ms.date: 07/20/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51067095b7ebb33da61908b1424752b481668f5f
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 57a8158dca53f4f60bc4405e1b95aa0ad9d2cf9b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830797"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472087"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>管理前脚本和后脚本
 
@@ -45,21 +45,57 @@ ms.locfileid: "107830797"
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext 属性
 
-|属性  |说明  |
-|---------|---------|
-|SoftwareUpdateConfigurationName     | 软件更新配置的名称。        |
-|SoftwareUpdateConfigurationRunId     | 运行的唯一 ID。        |
-|SoftwareUpdateConfigurationSettings     | 与软件更新配置相关的属性的集合。         |
-|SoftwareUpdateConfigurationSettings.operatingSystem     | 面向更新部署的操作系统。         |
-|SoftwareUpdateConfigurationSettings.duration     | 符合 ISO8601 的更新部署运行的最长持续时间，格式为 `PT[n]H[n]M[n]S`；也称为“维护时段”。          |
-|SoftwareUpdateConfigurationSettings.Windows     | 与 Windows 计算机相关的属性的集合。         |
-|SoftwareUpdateConfigurationSettings.Windows.excludedKbNumbers     | 从更新部署中排除的 KB 的列表。        |
-|SoftwareUpdateConfigurationSettings.Windows.includedUpdateClassifications     | 为更新部署选择的更新分类。        |
-|SoftwareUpdateConfigurationSettings.Windows.rebootSetting     | 更新部署的重新启动设置。        |
-|azureVirtualMachines     | 更新部署中 Azure VM 的 resourceId 的列表。        |
-|nonAzureComputerNames|更新部署中的非 Azure 计算机 FQDN 的列表。|
+|属性  |类型 |说明  |
+|---------|---------|---------|
+|SoftwareUpdateConfigurationName     |字符串 | 软件更新配置的名称。        |
+|SoftwareUpdateConfigurationRunId     |GUID | 运行的唯一 ID。        |
+|SoftwareUpdateConfigurationSettings     || 与软件更新配置相关的属性的集合。         |
+|SoftwareUpdateConfigurationSettings.OperatingSystem     |int | 面向更新部署的操作系统。 `1` = Windows，`2` = Linux        |
+|SoftwareUpdateConfigurationSettings.Duration     |时间范围 (HH:MM:SS) | 符合 ISO8601 的更新部署运行的最长持续时间，格式为 `PT[n]H[n]M[n]S`；也称为“维护时段”。<br> 示例：02:00:00         |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration     || 与 Windows 计算机相关的属性的集合。         |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.excludedKbNumbers     |字符串 | 从更新部署中排除的 KB 的空格分隔列表。        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.includedKbNumbers     |字符串 | 更新部署中包含的以空格分隔的 KB 列表。        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.UpdateCategories     |整数 | 1 = "Critical";<br> 2 = "Security"<br> 4 = "UpdateRollUp"<br> 8 = "FeaturePack"<br> 16 = "ServicePack"<br> 32 = "Definition"<br> 64 = "Tools"<br> 128 = "Updates"        |
+|SoftwareUpdateConfigurationSettings.WindowsConfiguration.rebootSetting     |字符串 | 更新部署的重新启动设置。 值为 `IfRequired`、`Never`、`Always`      |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration     || 与 Linux 计算机相关的属性的集合。         |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.IncludedPackageClassifications |整数 |0 = "Unclassified"<br> 1 = "Critical"<br> 2 = "Security"<br> 4 = "Other"|
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.IncludedPackageNameMasks |字符串 | 更新部署中包含的以空格分隔的包名列表。 |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.ExcludedPackageNameMasks |字符串 |从更新部署中排除的包名的空格分隔列表。 |
+|SoftwareUpdateConfigurationSettings.LinuxConfiguration.RebootSetting |字符串 |更新部署的重新启动设置。 值为 `IfRequired`、`Never`、`Always`      |
+|SoftwareUpdateConfiguationSettings.AzureVirtualMachines     |字符串数组 | 更新部署中 Azure VM 的 resourceId 的列表。        |
+|SoftwareUpdateConfigurationSettings.NonAzureComputerNames|字符串数组 |更新部署中的非 Azure 计算机 FQDN 的列表。|
 
-下面是传入 **SoftwareUpdateConfigurationRunContext** 参数的 JSON 字符串示例：
+以下示例是传递给 Linux 计算机的 SoftwareUpdateConfigurationSettings 属性的 JSON 字符串：
+
+```json
+"SoftwareUpdateConfigurationSettings": {
+     "OperatingSystem": 2,
+     "WindowsConfiguration": null,
+     "LinuxConfiguration": {
+         "IncludedPackageClassifications": 7,
+         "ExcludedPackageNameMasks": "fgh xyz",
+         "IncludedPackageNameMasks": "abc bin*",
+         "RebootSetting": "IfRequired"
+     },
+     "Targets": {
+         "azureQueries": null,
+         "nonAzureQueries": ""
+     },
+     "NonAzureComputerNames": [
+        "box1.contoso.com",
+        "box2.contoso.com"
+     ],
+     "AzureVirtualMachines": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Compute/virtualMachines/vm-01"
+     ],
+     "Duration": "02:00:00",
+     "PSComputerName": "localhost",
+     "PSShowComputerName": true,
+     "PSSourceJobInstanceId": "2477a37b-5262-4f4f-b636-3a70152901e9"
+ }
+```
+
+以下示例是传递给 Windows 计算机的 SoftwareUpdateConfigurationSettings 属性的 JSON 字符串：
 
 ```json
 "SoftwareUpdateConfigurationRunContext": {
@@ -67,7 +103,7 @@ ms.locfileid: "107830797"
     "SoftwareUpdateConfigurationRunId": "00000000-0000-0000-0000-000000000000",
     "SoftwareUpdateConfigurationSettings": {
       "operatingSystem": "Windows",
-      "duration": "PT2H0M",
+      "duration": "02:00:00",
       "windows": {
         "excludedKbNumbers": [
           "168934",
@@ -77,9 +113,9 @@ ms.locfileid: "107830797"
         "rebootSetting": "IfRequired"
       },
       "azureVirtualMachines": [
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-01",
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-02",
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-03"
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/vm-01",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/vm-02",
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/vm-03"
       ],
       "nonAzureComputerNames": [
         "box1.contoso.com",
