@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: d2479fb687bf899057fccc2441841eed5a116914
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0d26adebc3576d6ba7aa639e0b20610dc15ea7f1
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091566"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823892"
 ---
 # <a name="enable-communication-for-role-instances-in-azure-cloud-services-classic"></a>为 Azure 云服务（经典）中的角色实例启用通信
 
-> [!IMPORTANT]
-> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 云服务角色通过内部和外部连接进行通信。 外部连接称为“输入终结点”  ，而内部连接称为“内部终结点”  。 本主题介绍如何修改[服务定义](cloud-services-model-and-package.md#csdef)来创建终结点。
 

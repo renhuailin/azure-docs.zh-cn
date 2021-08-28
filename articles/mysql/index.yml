@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 320ff38fecdab0cfd0a689e483a76a8422888085
-  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.openlocfilehash: 20839bff8c6ab4e9c25431941955e289ff1bf6d2
+  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/22/2021
-  ms.locfileid: "112457473"
+  ms.lasthandoff: 08/24/2021
+  ms.locfileid: "122779509"
 landingContent:
 - title: 关于 Azure Database for MySQL
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
       url: select-right-deployment-type.md
     - text: 了解支持的 MySQL 版本
       url: concepts-supported-versions.md
+    - text: 通过 Azure 免费帐户免费开始使用
+      url: flexible-server/how-to-deploy-on-azure-free-account.md
   - linkListType: whats-new
     links:
     - text: 查看我们的博客

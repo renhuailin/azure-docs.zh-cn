@@ -215,6 +215,12 @@
               href: developer-portal-use-community-widgets.md
             - name: 测试自承载门户
               href: developer-portal-testing.md
+        - name: API 变现
+          items:
+            - name: 使用 Azure API Management 变现
+              href: monetization-overview.md
+            - name: API Management 如何支持变现
+              href: monetization-support.md
         - name: 弃用的门户
           items:
             - name: 弃用的门户 - 自定义门户
@@ -308,7 +314,7 @@
           href: api-management-configuration-repository-git.md
         - name: 使用基于角色的访问控制
           href: api-management-role-based-access-control.md
-        - name: 迁移 API 管理实例
+        - name: 在区域之间移动实例
           href: api-management-howto-migrate.md
         - name: 将托管标识用于 Azure 资源
           href: api-management-howto-use-managed-service-identity.md

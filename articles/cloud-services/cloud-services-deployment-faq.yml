@@ -9,17 +9,16 @@ metadata:
   ms.author: hirshah
   ms.reviewer: mimckitt
   ms.custom: 
-  ms.openlocfilehash: d49e9e6f5c34ed43be05c4f16614b0eaa22f465d
-  ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+  ms.openlocfilehash: bf9d6d6616ce4a84a9457eef92b6dfe7b1e0ca39
+  ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/01/2021
-  ms.locfileid: "113129180"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122824495"
 title: Azure 云服务（经典）的部署问题：常见问题 (FAQ)
 summary: >
-  > [!IMPORTANT]
+  [!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
-  > [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
   本文包含 [Microsoft Azure 云服务](https://azure.microsoft.com/services/cloud-services)的常见部署问题。 还可以参阅[云服务 VM 大小页面](cloud-services-sizes-specs.md)，了解大小信息。
 
