@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 520f3ba65a7e4bddfd52e303179ed925417537e3
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 16942b91ea999c3da84ecbc784a96575045049d1
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090126"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824054"
 ---
 # <a name="how-to-update-an-azure-cloud-service-classic"></a>如何更新 Azure 云服务（经典）
 
-> [!IMPORTANT]
-> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 三步操作进行云服务更新（包括其角色和来宾 OS）。 首先，必须上传新云服务或 OS 版本的二进制文件和配置文件。 其次，Azure 会根据新云服务版本的要求，保留云服务的计算资源和网络资源。 最后，Azure 执行滚动升级，以增量方式将租户更新到新版本或来宾 OS，同时保留可用性。 本文介绍最后一个步骤 - 滚动升级的详细信息。
 

@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 084c876dce9e82997473d63a02702ef5bbd727c0
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 723dc4468e2b5ff49b82eaf91ac46f62aa961236
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093690"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823667"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service-classic"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务（经典）
 
-> [!IMPORTANT]
-> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 本教程演示如何创建在 Azure 云服务中运行的简单 Node.js 应用程序。 云服务是 Azure 中可缩放的云应用程序构建基块。 它们允许进行单独且独立的管理，并允许横向扩展应用程序的前端和后端组件。  云服务为可靠托管每个角色提供强大的专用虚拟机。
 
