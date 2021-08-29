@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/16/2020
+ms.date: 07/29/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c903cf06981e1336ae30942775de11d09bb1299b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fca86017b69d20ae71af94b4cabe76c5236815f
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675362"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418551"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例
 
@@ -190,6 +190,38 @@ Azure 中使用 SIOS DataKeeper 的 Windows 故障转移群集配置
 > [!NOTE]
 > 对于某些 DBMS 产品（如 SQL Server），无需共享磁盘来实现高可用性。 SQL Server AlwaysOn 将 DBMS 数据和日志从一个群集节点的本地磁盘复制到另一个群集节点的本地磁盘。 在此情况下，Windows 群集配置不需要共享磁盘。
 >
+## <a name="optional-configurations"></a>可选配置
+
+下图显示了 Azure VM 上运行 Microsoft Windows 故障转移群集以减少 VM 总数的多个 SAP 实例。
+
+这可以是 SAP ASCS/SCS 群集上的本地 SAP 应用程序服务器，也可以是 Microsoft SQL Server Always On 节点上的 SAP ASCS/SCS 群集角色。
+
+> [!IMPORTANT]
+> 不支持在 SQL Server Always On 节点上安装本地 SAP 应用程序服务器。
+>
+
+SAP ASCS/SCS 和 Microsoft SQL Server 数据库都是单一故障点 (SPOF)。 为了在 Windows 环境中保护这些 SPOF，使用了 WSFC。
+
+虽然 SAP ASCS/SCS 的资源消耗相当小，但建议将 SQL Server 或 SAP 应用程序服务器的内存配置减少 2 GB。
+
+### <a name="sap-application-servers-on-wsfc-nodes-using-sios-datakeeper"></a>使用 SIOS DataKeeper 的 WSFC 节点上的 SAP 应用程序服务器
+
+![图 6：Azure 中的 Windows Server 故障转移群集配置，其中包含 SIOS DataKeeper 和本地安装的 SAP 应用程序服务器][sap-ha-guide-figure-1003]
+
+> [!NOTE]
+> 由于 SAP 应用程序服务器安装在本地，因此无需按图中所示来设置任何同步。
+>
+### <a name="sap-ascsscs-on-sql-server-always-on-nodes-using-sios-datakeeper"></a>使用 SIOS DataKeeper 的 SQL Server Always On 节点上的 SAP ASCS/SCS
+
+![图 7：使用 SIOS DataKeeper 的 SQL Server Always On 节点上的 SAP ASCS/SCS][sap-ha-guide-figure-1005]
+
+[使用 Windows SOFS 的 WSFC 节点上的 SAP 应用程序服务器的可选配置][optional-fileshare]
+
+[使用 NetApp Files SMB 的 WSFC 节点上的 SAP 应用程序服务器的可选配置][optional-smb]
+
+[使用 Windows SOFS 的 SQL Server Always On 节点上的 SAP ASCS/SCS 的可选配置][optional-fileshare-sql]
+
+[使用 NetApp Files SMB 的 SQL Server Always On 节点上的 SAP ASCS/SCS 的可选配置][optional-smb-sql]
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -253,7 +285,9 @@ Azure 中使用 SIOS DataKeeper 的 Windows 故障转移群集配置
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
 [sap-ha-guide-figure-1001]:./media/virtual-machines-shared-sap-high-availability-guide/1001-wsfc-on-azure-ilb.png
-[sap-ha-guide-figure-1002]:./media/virtual-machines-shared-sap-high-availability-guide/1002-wsfc-sios-on-azure-ilb.png
+[sap-ha-guide-figure-1003]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sios-as.png
+[sap-ha-guide-figure-1005]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sql-ascs-sios.png
+[sap-ha-guide-figure-1002]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sios.png
 [sap-ha-guide-figure-2000]:./media/virtual-machines-shared-sap-high-availability-guide/2000-wsfc-sap-as-ha-on-azure.png
 [sap-ha-guide-figure-2001]:./media/virtual-machines-shared-sap-high-availability-guide/2001-wsfc-sap-ascs-ha-on-azure.png
 [sap-ha-guide-figure-2003]:./media/virtual-machines-shared-sap-high-availability-guide/2003-wsfc-sap-dbms-ha-on-azure.png
@@ -347,12 +381,16 @@ Azure 中使用 SIOS DataKeeper 的 Windows 故障转移群集配置
 
 
 [sap-templates-3-tier-multisid-xscs-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-db-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
+[optional-smb]:high-availability-guide-windows-netapp-files-smb.md#5121771a-7618-4f36-ae14-ccf9ee5f2031 (使用 NetApp Files SMB 的 WSFC 节点上的 SAP 应用程序服务器的可选配置)
+[optional-fileshare]:sap-high-availability-guide-wsfc-file-share.md#86cb3ee0-2091-4b74-be77-64c2e6424f50 (使用 Windows SOFS 的 WSFC 节点上的 SAP 应用程序服务器的可选配置)
+[optional-smb-sql]:high-availability-guide-windows-netapp-files-smb.md#01541cf2-0a03-48e3-971e-e03575fa7b4f (使用 NetApp Files SMB 的 SQL Server Always On 节点上的 SAP ASCS/SCS 的可选配置)
+[optional-fileshare-sql]:sap-high-availability-guide-wsfc-file-share.md#db335e0d-09b4-416b-b240-afa18505f503 (使用 Windows SOFS 的 SQL Server Always On 节点上的 SAP ASCS/SCS 的可选配置)

@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 025ab1ddd9a7b14ac75df762c54fe48e4f665e29
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 790d363a3bd0e961b184cc2511c39833f0eac3d7
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970143"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253977"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>向 Device Update for IoT Hub 新增更新
 了解如何将新的更新添加到 Device Update for IoT Hub。
@@ -62,7 +62,7 @@ ms.locfileid: "111970143"
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    为了快速参考，下面是上述参数的一些示例值。 还可查看完整的[导入清单架构](import-schema.md)以了解更多详细信息。
+    下表是有关如何填充以上参数的快速参考。 如需更多信息，还可查看完整的[导入清单架构](import-schema.md)。
 
     | 参数 | 说明 |
     | --------- | ----------- |
@@ -72,13 +72,13 @@ ms.locfileid: "111970143"
     | updateName | 更新类的标识符。 类可以是你选择的任何内容。 它通常是一个设备或模型名称。
     | updateVersion | 将此更新与具有相同“提供程序”和“名称”的其他更新区分开来的版本号。 不会与设备上单个软件组件的版本相匹配 （但你可以选择匹配）。
     | updateType | <ul><li>指定 `microsoft/swupdate:1` 用于映像更新</li><li>指定 `microsoft/apt:1`用于包更新</li></ul>
-    | installedCriteria | <ul><li>指定 SWVersion 值用于 `microsoft/swupdate:1` 更新类型</li><li>指定 name-version，其中“name”是 APT 清单的名称，“version”是 APT 清单的版本 。 例如 contoso-iot-edge-1.0.0.0。
-    | updateFilePath(s) | 计算机上更新文件的路径
+    | installedCriteria | 在部署过程中用于将设备上已有的版本与更新的版本进行比较。 如果 installedCriteria 值与设备上的版本不匹配，则在将更新部署到该设备时，会返回“失败”的结果。<ul><li>对于 `microsoft/swupdate:1` 更新类型，请指定 SWVersion 的值 </li><li>对于 `microsoft/apt:1` 更新类型，请指定 name-version，其中的 name 是 APT 清单的名称，version 是 APT 清单的版本 。 例如 contoso-iot-edge-1.0.0.0。
+    | updateFilePath(s) | 计算机上更新文件的路径。
 
 
 ## <a name="review-the-generated-import-manifest"></a>查看生成的导入清单
 
-示例：
+示例清单输出如下。 如果对其中任何项有疑问，请查看完整的[导入清单架构](import-schema.md)。 
 ```json
 {
   "updateId": {
@@ -122,7 +122,7 @@ ms.locfileid: "111970143"
 ## <a name="import-an-update"></a>导入更新
 
 > [!NOTE]
-> 以下说明演示了如何通过 Azure 门户 UI 导入更新。 用户还可以使用 [IoT Hub API 的设备更新](/rest/api/deviceupdate/updates) 来导入更新。 
+> 以下说明演示了如何通过 Azure 门户 UI 导入更新。 还可以改用 [Device Update for IoT Hub API](#if-youre-importing-via-apis-instead) 来导入更新。
 
 1. 登录 [Azure 门户](https://portal.azure.com)并导航到具有设备更新的 IoT 中心。
 
@@ -138,7 +138,7 @@ ms.locfileid: "111970143"
 
    :::image type="content" source="media/import-update/import-new-update-2.png" alt-text="导入新的更新" lightbox="media/import-update/import-new-update-2.png":::
 
-5. 在“选择导入清单文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择以前使用 PowerShell cmdlet 创建的导入清单。 接下来，在“选择一个或多个更新文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择更新文件。
+5. 在“选择导入清单文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择以前使用 PowerShell cmdlet 创建的导入清单。 接下来，在“选择一个或多个更新文件”下选择文件夹图标或文本框。 你将看到文件选取器对话框。 选择在创建导入清单时已包含的更新文件。
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="选择更新文件" lightbox="media/import-update/select-update-files.png":::
 
@@ -161,6 +161,16 @@ ms.locfileid: "111970143"
 10. 当“状态”列指示导入已成功时，请选择“部署准备就绪”标头。 现在应会在列表中看到导入的更新。
 
    :::image type="content" source="media/import-update/update-ready.png" alt-text="作业状态" lightbox="media/import-update/update-ready.png":::
+
+## <a name="if-youre-importing-via-apis-instead"></a>如果是改为通过 API 进行导入
+
+如果刚完成了使用以上步骤通过 Azure 门户进行导入的操作，请跳转到下面的“后续步骤”。
+
+如果要使用 [Device Update for IoT Hub Update API](/rest/api/deviceupdate/updates) 来导入更新，而不是通过 Azure 门户进行导入，请注意以下事项：
+  - 在调用更新 API 之前，需要将更新文件上传到 Azure Blob 存储位置。
+  - 可以参考此[示例 API 调用](import-schema.md#example-import-request-body)，该调用使用上面创建的导入清单。
+  - 如果在测试时重复使用相同的 SAS URL，那么，在令牌过期时，就可能会遇到错误。 这是在提交导入清单以及更新内容本身时的情况。
+
 
 ## <a name="next-steps"></a>后续步骤
 
