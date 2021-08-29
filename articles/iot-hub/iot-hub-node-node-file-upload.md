@@ -2,20 +2,19 @@
 title: 使用 Node 将文件从设备上传到 Azure IoT 中心 | Microsoft Docs
 description: 如何使用用于 Node.js 的 Azure IoT 设备 SDK 从设备将文件上传到云中。 上传的文件存储在 Azure 存储 Blob 容器中。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 06/28/2017
+ms.date: 07/27/2021
 ms.custom: mqtt, devx-track-js
-ms.openlocfilehash: b94cd4cc5c76495cb08f743b1a6849b6eb6c77b2
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 505366205793bbbb95798088f5bc47c205b01468
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005926"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743307"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>通过 IoT 中心将设备中的文件上传到云 (Node.js)
 
@@ -27,7 +26,7 @@ ms.locfileid: "112005926"
 
 * 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
-[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-node.md)快速入门演示了 IoT 中心基本的设备到云的消息传送功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+[从设备将遥测数据发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)快速入门演示了 IoT 中心基本的设备到云的消息传送功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 * 视频
@@ -36,20 +35,20 @@ ms.locfileid: "112005926"
 
 通常使用 [Azure 数据工厂](../data-factory/introduction.md)或 [Hadoop](../hdinsight/index.yml) 堆栈等工具在云中批处理这些文件。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
 
-在本教程结束时，会运行两个 Node.js 控制台应用：
+在本文结束时，请运行两个 Node.js 控制台应用：
 
-* FileUpload.js，此应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
+* **FileUpload.js**，它使用 IoT 中心提供的 SAS URI 将文件上传到存储。
 
-* **ReadFileUploadNotification.js**，它可以接收来自 IoT 中心的文件上传通知。
+* FileUploadNotification.js，它接收来自 IoT 中心的文件上传通知。
 
 > [!NOTE]
-> IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、.NET、Javascript、Python 和 Java）。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心]。
+> IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、Java、Python 和 JavaScript）。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot)。
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
-* Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
+* Node.js 版本 10.0.x 或更高版本。 建议使用 LTS 版本。 可以从 [nodejs.org](https://nodejs.org) 下载 Node.js。
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
@@ -59,61 +58,127 @@ ms.locfileid: "112005926"
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-[!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
+## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中心内注册新设备
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
+
+[!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-include-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>从设备应用上传文件
 
-在本部分，你将复制 GitHub 中的设备应用，以将文件上传到 IoT 中心。
+在本部分，我们创建将文件上传到 IoT 中心的设备应用。 该代码基于 [Azure IoT node.js SDK](https://github.com/Azure/azure-iot-sdk-node) 设备示例中的 [upload_to_blob_advanced.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/upload_to_blob_advanced.js) 示例中提供的代码。
 
-1. GitHub 上为 Node.js 提供了两个文件上传示例，一个是基本示例，一个是更高级的示例。 在[此处](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/upload_to_blob.js)存储库中复制基本示例。 高级示例位于[此处](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/upload_to_blob_advanced.js)。   
-
-2. 创建名为 ```fileupload``` 的空文件夹。  在 ```fileupload``` 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
+1. 创建名为 `fileupload` 的空文件夹。  在 `fileupload` 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
     ```cmd/sh
     npm init
     ```
 
-3. 在 ```fileupload``` 文件夹的命令提示符处，运行下述命令以安装 azure-iot-device 设备 SDK 包和 azure-iot-device-mqtt 包：
+1. 在 `fileupload` 文件夹的命令提示符处运行以下命令，以安装 azure-iot-device 设备 SDK、azure-iot-device-mqtt 和 @azure/storage-blob 包  ：
 
     ```cmd/sh
-    npm install azure-iot-device azure-iot-device-mqtt --save
+    npm install azure-iot-device azure-iot-device-mqtt @azure/storage-blob --save
     ```
 
-4. 使用文本编辑器，在 ```fileupload``` 文件夹中创建 FileUpload.js 文件，并将此基本示例复制到其中。
+1. 使用文本编辑器，在 `fileupload` 文件夹中创建 FileUpload.js 文件，并将以下代码复制到其中。
 
     ```javascript
-    // Copyright (c) Microsoft. All rights reserved.
-    // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-
     'use strict';
 
-    var Protocol = require('azure-iot-device-mqtt').Mqtt;
-    var Client = require('azure-iot-device').Client;
-    var fs = require('fs');
+    const Client = require('azure-iot-device').Client;
+    const Protocol = require('azure-iot-device-mqtt').Mqtt;
+    const errors = require('azure-iot-common').errors;
+    const path = require('path');
 
-    var deviceConnectionString = process.env.ConnectionString;
-    var filePath = process.env.FilePath;
+    const {
+      AnonymousCredential,
+      BlockBlobClient,
+      newPipeline
+    } = require('@azure/storage-blob');
 
-    var client = Client.fromConnectionString(deviceConnectionString, Protocol);
-    fs.stat(filePath, function (err, fileStats) {
-      var fileStream = fs.createReadStream(filePath);
+    // make sure you set these environment variables prior to running the sample.
+    const deviceConnectionString = process.env.DEVICE_CONNECTION_STRING;
+    const localFilePath = process.env.PATH_TO_FILE;
+    const storageBlobName = path.basename(localFilePath);
 
-      client.uploadToBlob('testblob.txt', fileStream, fileStats.size, function (err, result) {
-        if (err) {
-          console.error('error uploading file: ' + err.constructor.name + ': ' + err.message);
-        } else {
-          console.log('Upload successful - ' + result);
-        }
-        fileStream.destroy();
+    async function uploadToBlob(localFilePath, client) {
+      const blobInfo = await client.getBlobSharedAccessSignature(storageBlobName);
+      if (!blobInfo) {
+        throw new errors.ArgumentError('Invalid upload parameters');
+      }
+
+      const pipeline = newPipeline(new AnonymousCredential(), {
+        retryOptions: { maxTries: 4 },
+        telemetry: { value: 'HighLevelSample V1.0.0' }, // Customized telemetry string
+        keepAliveOptions: { enable: false }
       });
-    });
+
+      // Construct the blob URL to construct the blob client for file uploads
+      const { hostName, containerName, blobName, sasToken } = blobInfo;
+      const blobUrl = `https://${hostName}/${containerName}/${blobName}${sasToken}`;
+
+      // Create the BlockBlobClient for file upload to the Blob Storage Blob
+      const blobClient = new BlockBlobClient(blobUrl, pipeline);
+
+      // Setup blank status notification arguments to be filled in on success/failure
+      let isSuccess;
+      let statusCode;
+      let statusDescription;
+
+      try {
+        const uploadStatus = await blobClient.uploadFile(localFilePath);
+        console.log('uploadStreamToBlockBlob success');
+
+        // Save successful status notification arguments
+        isSuccess = true;
+        statusCode = uploadStatus._response.status;
+        statusDescription = uploadStatus._response.bodyAsText;
+
+        // Notify IoT Hub of upload to blob status (success)
+        console.log('notifyBlobUploadStatus success');
+      }
+      catch (err) {
+        isSuccess = false;
+        statusCode = err.code;
+        statusDescription = err.message;
+
+        console.log('notifyBlobUploadStatus failed');
+        console.log(err);
+      }
+
+      await client.notifyBlobUploadStatus(blobInfo.correlationId, isSuccess, statusCode, statusDescription);
+    }
+
+    // Create a client device from the connection string and upload the local file to blob storage.
+    const deviceClient = Client.fromConnectionString(deviceConnectionString, Protocol);
+    uploadToBlob(localFilePath, deviceClient)
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        process.exit();
+      });
     ```
 
-5. 为设备连接字符串和要上传文件的路径添加环境变量。
+1. 保存并关闭 FileUpload.js 文件。
 
-6. 保存并关闭 FileUpload.js 文件。
+1. 将图像文件复制到 `fileupload` 文件夹，并为其指定名称，例如 `myimage.png`。
 
-7. 将映像文件复制到 `fileupload` 文件夹，并指定一个名称，比如 `myimage.png`。 将文件路径放在 `FilePath` 环境变量中。
+1. 为设备连接字符串添加环境变量并添加要上传的文件的路径。 在[向 IoT 中心注册设备](#register-a-new-device-in-the-iot-hub)时，你收到了设备连接字符串。
+    
+    - 对于 Windows：
+
+        ```cmd
+        set DEVICE_CONNECTION_STRING={your device connection string}
+        set PATH_TO_FILE={your image filepath}
+        ```
+
+    - 对于 Linux/Bash：
+
+        ```bash
+        export DEVICE_CONNECTION_STRING="{your device connection string}"
+        export PATH_TO_FILE="{your image filepath}"
+        ```
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
@@ -125,46 +190,41 @@ ms.locfileid: "112005926"
 
 本部分中的操作将会创建一个 Node.js 控制台应用，用于接收来自 IoT 中心的文件上传通知消息。
 
-可以使用 IoT 中心的 **iothubowner** 的连接字符串完成本部分的操作。 可以在 [Azure 门户](https://portal.azure.com/)上的“共享访问策略”边栏选项卡中找到该连接字符串。
-
-1. 创建名为 ```fileuploadnotification``` 的空文件夹。  在 ```fileuploadnotification``` 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
+1. 创建名为 `fileuploadnotification` 的空文件夹。  在 `fileuploadnotification` 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
     ```cmd/sh
     npm init
     ```
 
-2. 在 ```fileuploadnotification``` 文件夹中的命令提示符下，运行以下命令安装 **azure-iothub** SDK 包：
+1. 在 `fileuploadnotification` 文件夹中的命令提示符下，运行以下命令安装 **azure-iothub** SDK 包：
 
     ```cmd/sh
     npm install azure-iothub --save
     ```
 
-3. 使用文本编辑器在 `fileuploadnotification` 文件夹中创建 **FileUploadNotification.js** 文件。
+1. 使用文本编辑器在 `fileuploadnotification` 文件夹中创建 **FileUploadNotification.js** 文件。
 
-4. 在 **FileUploadNotification.js** 文件的开头添加以下 `require` 语句：
+1. 在 **FileUploadNotification.js** 文件的开头添加以下 `require` 语句：
 
     ```javascript
     'use strict';
 
-    var Client = require('azure-iothub').Client;
+    const Client = require('azure-iothub').Client;
     ```
 
-5. 添加 `iothubconnectionstring` 变量，并使用它创建一个客户端实例。  将 `{iothubconnectionstring}` 占位符值替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串：
+1. 从环境中读取 IoT 中心的连接字符串：
 
     ```javascript
-    var connectionString = '{iothubconnectionstring}';
+    const connectionString = process.env.IOT_HUB_CONNECTION_STRING;
     ```
 
-    > [!NOTE]
-    > 为方便起见，代码中包含了连接字符串：这并不是建议的做法，你可能需要根据用例和体系结构，考虑使用更安全的方式来存储此机密。
-
-6. 添加以下代码用于连接客户端：
+1. 添加以下代码，以从连接字符串创建服务客户端：
 
     ```javascript
-    var serviceClient = Client.fromConnectionString(connectionString);
+    const serviceClient = Client.fromConnectionString(connectionString);
     ```
 
-7. 打开客户端，并使用 **getFileNotificationReceiver** 函数接收状态更新。
+1. 打开客户端，并使用 **getFileNotificationReceiver** 函数接收状态更新。
 
     ```javascript
     serviceClient.open(function (err) {
@@ -186,11 +246,25 @@ ms.locfileid: "112005926"
     });
     ```
 
-8. 保存并关闭 **FileUploadNotification.js** 文件。
+1. 保存并关闭 **FileUploadNotification.js** 文件。
+
+1. 为 IoT 中心连接字符串添加环境变量。 以前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制了此字符串。
+    
+    - 对于 Windows：
+
+        ```cmd
+        set IOT_HUB_CONNECTION_STRING={your iot hub connection string}
+        ```
+
+    - 对于 Linux/Bash：
+
+        ```bash
+        export IOT_HUB_CONNECTION_STRING="{your iot hub connection string}"
+        ```
 
 ## <a name="run-the-applications"></a>运行应用程序
 
-现在，已准备就绪，可以运行应用程序了。
+现在已准备就绪，可以运行应用程序了。
 
 在 `fileuploadnotification` 文件夹中的命令提示符下运行以下命令：
 
@@ -204,17 +278,34 @@ node FileUploadNotification.js
 node FileUpload.js
 ```
 
-以下屏幕截图显示来自 FileUpload 应用的输出  ：
+在上传完成后，FileUpload 应用会有以下输出：
 
-![simulated-device 应用的输出](./media/iot-hub-node-node-file-upload/simulated-device.png)
+```output
+uploadStreamToBlockBlob success
+notifyBlobUploadStatus success
+```
 
-以下屏幕截图显示 **FileUploadNotification** 应用的输出：
+在上传完成后，FileUploadNotification 应用会有以下示例输出：
 
-![read-file-upload-notification 应用的输出](./media/iot-hub-node-node-file-upload/read-file-upload-notification.png)
+```output
+Service client connected
+File upload from device:
+{"deviceId":"myDeviceId","blobUri":"https://{your storage account name}.blob.core.windows.net/device-upload-container/myDeviceId/image.png","blobName":"myDeviceId/image.png","lastUpdatedTime":"2021-07-23T23:27:06+00:00","blobSizeInBytes":26214,"enqueuedTimeUtc":"2021-07-23T23:27:07.2580791Z"}
+```
+
+## <a name="verify-the-file-upload"></a>验证文件上传
 
 可以使用门户查看所配置的存储容器中上传的文件：
 
-![上传的文件](./media/iot-hub-node-node-file-upload/uploaded-file.png)
+1. 在 Azure 门户中导航到存储帐户。
+1. 在存储帐户的左侧窗格中，选择“容器”。
+1. 选择已将文件上传到其中的容器。
+1. 选择与设备同名的文件夹。
+1. 选择已将文件上传到其中的 Blob。 在本文中，它是与你的文件同名的 Blob。  
+
+    :::image type="content" source="./media/iot-hub-node-node-file-upload/view-uploaded-file.png" alt-text="屏幕截图，显示如何在 Azure 门户中查看上传的文件。":::
+
+1. 在打开的页面上查看 Blob 属性。 可以选择“下载”，以将该文件下载到本地并查看其内容。
 
 ## <a name="next-steps"></a>后续步骤
 
