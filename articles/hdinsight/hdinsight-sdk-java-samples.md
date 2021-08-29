@@ -5,12 +5,12 @@ ms.custom: devx-track-java
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/29/2019
-ms.openlocfilehash: 178767847757660163515ec286eba48e1050f506
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 80b30f295254e9d83ad97542381ec7b47e0f094a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931890"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122643079"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight：Java 示例
 
@@ -40,6 +40,6 @@ ms.locfileid: "98931890"
 
 通过克隆 [hdinsight-java-sdk-samples](https://github.com/Azure-Samples/hdinsight-java-sdk-samples) GitHub 存储库，可获取 Java 的这些示例。
 
-[!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
+[!INCLUDE [hdinsight-sdk-additional-functionality](includes/hdinsight-sdk-additional-functionality.md)]
 
 在[用于 Java 的 HDInsight SDK 参考文档](/java/api/overview/azure/hdinsight)中，可找到这一附加 SDK 功能的代码片段。
