@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.topic: troubleshooting
 ms.workload: infrastructure
-ms.date: 10/27/2020
+ms.date: 7/1/2021
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 9652e940674ec7580b006cd38df2a7d17014f939
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e8cfba3c7dc13f6e32d0dd4141832bab475cc5b8
+ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309979"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113138812"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>排查 Azure 中共享映像库的问题
 
@@ -185,7 +185,7 @@ ms.locfileid: "107309979"
 **原因**：使用磁盘和/或磁盘快照列表创建映像版本时，有两个或更多磁盘或磁盘快照具有相同的资源 ID。  
 **解决方法**：删除或更改任何重复的磁盘源 ID。
 
-**消息**：“properties.storageProfile.<diskImages\>.source.id”路径上的资源 ID <resourceID\> 无效。需要以“/subscriptions/<subscriptionID>”或“/providers/<resourceProviderNamespace>/”开头的完全限定的资源 ID。  
+**消息**：“properties.storageProfile.<diskImages\>.source.id”路径上的属性 ID <resourceID\> 无效。需要以“/subscriptions/<subscriptionID>”或“/providers/<resourceProviderNamespace>/”开头的完全限定的资源 ID。  
 **原因**：<resourceID\> 值的格式不正确。  
 **解决方法**：检查资源 ID 是否正确。
 
@@ -297,6 +297,14 @@ ms.locfileid: "107309979"
 **原因**：源中的某个数据磁盘大于 1TB。  
 **解决方法**：将数据磁盘的大小调整为 1 TB。
 
+消息：不允许对 <versionNumber> 进行“更新库映像版本”操作，因为它是已标记的需删除的对象。你只能重试“删除”操作（或等待正在进行的操作完成）。  
+原因：你尝试更新正要被删除的库映像版本。  
+解决方法：等待删除事件完成再重新创建映像版本。
+
+消息：源资源“<sourceID>”不支持加密。请使用其他支持加密的源资源类型或删除加密属性。  
+原因：目前，共享映像库仅支持针对 VM、磁盘、快照和托管映像的加密。 为映像版本提供的源之一不在以前的支持加密的源的列表中。  
+解决方法：从映像版本中删除磁盘加密集，并与支持团队联系。
+
 ## <a name="creating-or-updating-a-vm-or-scale-sets-from-an-image-version"></a>从某个映像版本创建或更新 VM 或规模集 ##
 
 **消息**：不存在“<imageDefinitionResourceID\>”的最新映像版本  
@@ -338,7 +346,7 @@ ms.locfileid: "107309979"
 **消息**：创建 VM 或虚拟机规模集需要很长时间。  
 **解决方法**：验证你要尝试从中创建 VM 或虚拟机规模集的映像版本的 **OSType** 与用于创建映像版本的源的 **OSType** 是否相同。 
 
-**消息**：ID 为 <vmID\> 的资源的计划 ['{\"name\":\"<name>\",\"publisher\":\"<publisher>\",\"product\":\"<product>\",\"promotionCode\":\"<promotionCode>\"}'] 与库映像计划 ['null'] 不同。  
+**消息**：ID 为 <vmID\> 的资源的计划 ['{\"name\":\"<name>\",\"publisher\":\"<publisher>\",\"product\":\"<product>\",\"promotionCode\":\"<promotionCode>\"}'] 与父级库映像计划 ['null'] 不同。  
 **原因**：正在部署的映像版本的父映像定义没有购买计划信息。  
 **解决方法**：根据错误消息创建具有相同购买计划详细信息的映像定义，并在该映像定义内创建映像版本。
 

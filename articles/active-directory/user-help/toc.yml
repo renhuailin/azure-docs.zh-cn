@@ -20,6 +20,8 @@
       href: multi-factor-authentication-end-user-signin.md
     - name: 获取帮助
       href: multi-factor-authentication-end-user-troubleshoot.md
+    - name: 在错误中收到代码
+      href: multi-factor-authentication-change-sms-phone.md
 - name: 密码重置帮助
   items:
     - name: 注册密码重置

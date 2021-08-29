@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/13/2021
+ms.date: 08/18/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 186219af41630cf66f6addc65edfe31aef1dbb03
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: ff085c32c7aeb63fea04f04558c1bccd5814b29b
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122270957"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418545"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -133,14 +133,11 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 - （亚太）东亚
 - （亚太）东南亚
 - （亚太）澳大利亚东部
-- （亚太）印度中部
 - （亚太）日本东部
-- （亚太）韩国中部
 - （加拿大）加拿大中部
 - （欧洲）欧洲北部
 - （欧洲）西欧
 - （欧洲）法国中部
-- （欧洲）德国中西部
 - （欧洲）挪威东部
 - （欧洲）英国南部
 - （南美洲）巴西南部

@@ -10,7 +10,7 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 05/24/2021
+  ms.date: 08/09/2021
   featureFlags:
     - clicktale
 highlightedContent:
@@ -42,6 +42,12 @@ productDirectory:
       azureCategories:
         - ai-machine-learning
       url: cognitive-services/anomaly-detector/index.yml
+    - title: Azure 应用 AI 服务
+      summary: 让组织能够加快实现应用 AI 处理常见场景的价值的专业化服务
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
+      azureCategories:
+        - ai-machine-learning
+      url: ./applied-ai-services/index.yml
     - title: Azure 机器人服务
       summary: 可按需缩放的智能无服务器 bot 服务
       imageSrc: 'https://static.docs.com/ui/media/product/azure/bot-service.svg'
@@ -96,60 +102,6 @@ productDirectory:
       azureCategories:
         - iot
       url: /azure/rtos/
-    - title: 必应自动建议
-      summary: 为应用提供用于搜索的智能自动建议选项
-      imageSrc: ./media/index/API_Bing_AutoSuggest.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-autosuggest/get-suggested-search-terms.md
-    - title: 必应自定义搜索
-      summary: 一款易于使用、无广告的商业级搜索工具，可为你提供所需的结果
-      imageSrc: ./media/index/API_Bing_Custom_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-custom-search/overview.md
-    - title: 必应实体搜索
-      summary: 通过从 Web 发现并增强实体信息来丰富你的体验
-      imageSrc: ./media/index/API_Bing_Entity_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-entities-search/overview.md
-    - title: 必应图像搜索
-      summary: 搜索图像并获得全面的结果
-      imageSrc: ./media/index/API_Bing_Image_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-image-search/overview.md
-    - title: 必应新闻搜索
-      summary: 搜索新闻并获得全面的结果
-      imageSrc: ./media/index/API_Bing_News_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-news-search/search-the-web.md
-    - title: 必应拼写检查
-      summary: 检测并更正应用中的拼写错误
-      imageSrc: ./media/index/API_Bing_Spell_Check.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-spell-check/overview.md
-    - title: 必应视频搜索
-      summary: 搜索视频并获得全面的结果
-      imageSrc: ./media/index/API_Bing_Video_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-video-search/overview.md
-    - title: 必应视觉搜索
-      summary: 获取丰富的见解，以便帮助在所选设备上构建引人注目的图像应用程序
-      imageSrc: ./media/index/API_Bing_Visual_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-visual-search/overview.md
-    - title: 必应 Web 搜索
-      summary: 从数十亿 Web 文档中获取增强的搜索详细信息
-      imageSrc: ./media/index/API_Bing_Web_Search.svg
-      azureCategories:
-        - ai-machine-learning
-      url: cognitive-services/bing-web-search/overview.md
     - title: Azure 通信服务
       summary: 通过 Microsoft Teams 所使用的同一安全平台，生成丰富的通信体验
       imageSrc: ./media/index/communication-services.svg
@@ -198,13 +150,7 @@ productDirectory:
       imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
       azureCategories:
         - ai-machine-learning
-      url: cognitive-services/immersive-reader/index.yml
-    - title: 墨迹识别器（预览版）
-      summary: 一项 AI 服务，用于识别数字墨迹内容（如手写、形状和文档布局）
-      imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
-      azureCategories:
-        - ai-machine-learning
-      url: /previous-versions/azure/cognitive-services/Ink-Recognizer/
+      url: ./applied-ai-services/immersive-reader/index.yml
     - title: Kinect DK
       summary: 使用带有高级 AI 传感器的开发人员工具包构建计算机视觉和语音模型
       imageSrc: ./media/index/kinect-viewer.svg
@@ -225,7 +171,7 @@ productDirectory:
       azureCategories:
         - ai-machine-learning
       url: genomics/index.yml
-    - title: 指标顾问（预览版）
+    - title: 指标顾问
       summary: 用于监视指标和诊断问题的 AI 服务
       imageSrc: ./media/index/metrics-advisor.svg
       azureCategories:
@@ -983,7 +929,7 @@ productDirectory:
       azureCategories:
         - management-and-governance
       url: azure-resource-manager/index.yml
-    - title: Azure 资源转移器（预览版）
+    - title: Azure 资源移动器
       summary: 简化在 Azure 区域之间移动多个资源的方式
       imageSrc: 'https://static.docs.com/ui/media/product/azure/resource-mover.svg'
       azureCategories:

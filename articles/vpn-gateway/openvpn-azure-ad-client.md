@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 04/28/2021
-ms.author: alzam
-ms.openlocfilehash: ba3733f16353ad1e921430ca7699212a60d5ff2f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 08/20/2021
+ms.author: cherylmc
+ms.openlocfilehash: a004e8d7fd87cc7abdf881b355b40b59ac874ba1
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754948"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779734"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory 身份验证：配置用于 P2S OpenVPN 协议连接的 VPN 客户端
 
@@ -27,13 +27,7 @@ ms.locfileid: "108754948"
 
 ### <a name="to-download-the-azure-vpn-client"></a>下载 Azure VPN 客户端
 
-1. 将 [Azure VPN 客户端](https://go.microsoft.com/fwlink/?linkid=2117554)下载到计算机。
-1. 验证 Azure VPN 客户端是否有权在后台运行。 若要检查并启用权限，请导航到“开始”->“设置”->“隐私”->“后台应用”。
-
-   * 在“后台应用”下，确保“允许应用在后台运行”处于开启状态  。
-   * 在“选择可在后台运行的应用”下，开启针对 Azure VPN 客户端的设置  。
-
-     ![权限的屏幕截图。](./media/openvpn-azure-ad-client/backgroundpermission.png)
+[!INCLUDE [Download Azure VPN client](../../includes/vpn-gateway-download-vpn-client.md)]
 
 ### <a name="to-create-a-certificate-based-client-profile"></a><a name="cert"></a>创建基于证书的客户端配置文件
 

@@ -47,7 +47,7 @@
             - name: Socket.io (Node.js)
               href: cloud-services-nodejs-chat-app-socketio.md
             - name: 使用 Twilio 拨打电话 (.NET)
-              href: ../partner-twilio-cloud-services-dotnet-phone-call-web-role.md
+              href: 'https://www.twilio.com/docs/usage/tutorials/serverless-webhooks-azure-functions-and-csharp'
         - name: 配置启动任务
           items:
             - name: 创建启动任务

@@ -1,19 +1,19 @@
 ---
 title: 托管专用终结点
 description: 本文介绍 Azure Synapse Analytics 中的托管专用终结点
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
 ms.date: 01/12/2020
-ms.author: ronytho
+ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 65794c695fa4b36586b23a308845b1f12a20b7cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0be33ec2e9815585bfbd810be00cb12a001bd26f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98569940"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729712"
 ---
 # <a name="synapse-managed-private-endpoints"></a>Synapse 托管专用终结点
 
