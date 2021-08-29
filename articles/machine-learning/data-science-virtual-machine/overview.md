@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: bd2333d89e4d1789b3464606b49f624609ef67d5
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 489ddfb7a4c7344215950370d2e87f37fd24c14a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518753"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745318"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>什么是适用于 Linux 和 Windows 的 Azure Data Science Virtual Machine？
 
@@ -27,7 +27,7 @@ DSVM 在以下环境中可用：
 
 ## <a name="comparison-with-azure-machine-learning"></a>与 Azure 机器学习进行比较
 
-DSVM 是一种用于数据科学的自定义 VM 映像，而 [Azure 机器学习](../overview-what-is-azure-ml.md) (AzureML) 是一个端到端平台，其中包含：
+DSVM 是一种用于数据科学的自定义 VM 映像，而 [Azure 机器学习](../overview-what-is-azure-machine-learning.md) (AzureML) 是一个端到端平台，其中包含：
 
 + 完全托管计算
   + 计算实例
@@ -95,7 +95,7 @@ DSVM 创建可缓解支持和不兼容性挑战的一致设置的按需环境。
 
 通过以下文章，了解详细信息：
 
-+ Windows：
++ Windows:
   + [设置 Windows DSVM](provision-vm.md)
   + [Windows DSVM 上的数据科学](vm-do-ten-things.md)
 

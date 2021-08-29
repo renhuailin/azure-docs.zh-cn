@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2021
 ms.author: moagra
-ms.openlocfilehash: d55a3090e9f7c8af73f854074a5823b7fe6eba1e
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: 3be6d5b30d270c9687b7100c07ee675268cee5c0
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113688536"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609146"
 ---
 # <a name="deploy-and-manage-traffic-analytics-using-azure-policy"></a>使用 Azure Policy 部署和管理流量分析 
 
 Azure Policy 可帮助实施组织标准并大规模评估合规性。 Azure Policy 的常见用例包括实施监管来满足资源一致性、法规遵从性、安全性、成本和管理方面的要求。 本文介绍三个适用于[流量分析](./traffic-analytics.md)的用于管理设置的内置策略。
 
-如果是首次创建 Azure Policy，可仔细阅读： 
+如果你是首次创建 Azure Policy 定义，可仔细阅读： 
 - [Azure Policy 概述](../governance/policy/overview.md) 
-- [策略创建教程](../governance/policy/assign-policy-portal.md#create-a-policy-assignment)。
+- [有关创建 Azure Policy 分配的教程](../governance/policy/assign-policy-portal.md#create-a-policy-assignment)。
 
 
 ## <a name="locate-the-policies"></a>查找策略

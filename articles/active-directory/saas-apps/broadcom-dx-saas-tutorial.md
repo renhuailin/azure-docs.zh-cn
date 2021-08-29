@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/19/2021
+ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 35ab4d335560689a7e55bf1a8dff9fcb0bcc7d7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efa197f7cd538bc82741863717044e7cd4321a37
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601510"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744986"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-broadcom-dx-saas"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Broadcom DX SaaS 的集成
 
@@ -32,6 +32,9 @@ ms.locfileid: "104601510"
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 Broadcom DX SaaS 单一登录 (SSO) 的订阅。
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -75,13 +78,13 @@ ms.locfileid: "104601510"
 
 1. 在 Azure 门户中的“Broadcom DX SaaS”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
+1. 在“设置 SAML 单一登录”页上，执行以下步骤  ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`DXI_<TENANT_NAME>`
+    a. 在“标识符”文本框中，使用以下模式键入值：`DXI_<TENANT_NAME>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://axa.dxi-na1.saas.broadcom.com/ess/authn/<TENANT_NAME>`
 

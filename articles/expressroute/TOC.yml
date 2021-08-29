@@ -144,16 +144,16 @@
           href: expressroute-howto-add-ipv6-powershell.md
     - name: 监视
       items:
-        - name: 网络见解
-          href: expressroute-network-insights.md
-        - name: ExpressRoute 监视、指标和警报
-          href: expressroute-monitoring-metrics-alerts.md
         - name: 监视 ExpressRoute
           href: monitor-expressroute.md
+        - name: 网络见解
+          href: expressroute-network-insights.md
+        - name: 为 ExpressRoute 配置连接监视
+          href: how-to-configure-connection-monitor.md
+        - name: ExpressRoute 监视、指标和警报
+          href: expressroute-monitoring-metrics-alerts.md
         - name: 查看并配置维护警报
           href: maintenance-alerts.md
-        - name: 为 ExpressRoute 配置网络性能监视器
-          href: how-to-npm.md
         - name: 配置自定义警报来监视播发路由
           href: how-to-custom-route-alert.md
     - name: 管理对等互连
@@ -296,3 +296,5 @@
           href: expressroute-howto-add-gateway-classic.md
         - name: 创建和修改公共对等互连
           href: about-public-peering.md
+        - name: 为 ExpressRoute 配置网络性能监视器（已弃用）
+          href: how-to-npm.md

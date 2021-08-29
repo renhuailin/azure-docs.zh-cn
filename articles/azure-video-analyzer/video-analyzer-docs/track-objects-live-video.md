@@ -3,12 +3,12 @@ title: 使用 Azure 视频分析器跟踪实时视频中的对象
 description: 本快速入门介绍如何使用 Azure 视频分析器 Edge 模块跟踪来自（模拟）IP 相机的实时视频源中的对象。 你将了解如何应用计算机视觉模型来检测实时视频源中部分帧的对象。 然后，你可以使用对象跟踪器节点来跟踪其他帧中的对象。
 ms.topic: quickstart
 ms.date: 06/01/2021
-ms.openlocfilehash: 211b51660be74d2b2b3b024ead72c93b3a0d8449
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 7ea51dbb59cba95825afb059e6a1845b4bbdcb95
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603915"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745693"
 ---
 # <a name="quickstart-track-objects-in-a-live-video"></a>快速入门：跟踪实时视频中的对象
 
@@ -105,7 +105,7 @@ HTTP 扩展节点扮演代理的角色。 它将每第 15 个视频帧转换为�
    }
 ```
 
-这里，`skipSamplesWithoutAnnotation` 设置为 `false`，因为扩展节点需要将所有帧（无论它们是否具有推理结果）传递到下游对象跟踪器节点。 对象跟踪器能够跟踪大约超过 15 帧的对象。 如果实时视频的帧速率为 30 帧/秒，这意味着每秒至少应向 HTTP 服务器发送两帧进行推理。 AI 模型具有用于处理的最大 FPS，这是 `maximumSamplesPerSecond` 应设置为的最大值。
+这里，`skipSamplesWithoutAnnotation` 设置为 `false`，因为扩展节点需要将所有帧（无论它们是否具有推理结果）传递到下游对象跟踪器节点。 对象跟踪器能够跟踪大约超过 15 帧的对象。 AI 模型具有用于处理的最大 FPS，这是 `maximumSamplesPerSecond` 应设置为的最大值。
     
 ## <a name="run-the-sample-program"></a>运行示例程序
 

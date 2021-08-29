@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 31b051c37d4fbf1c73c8711e3e9a330cacc1c26d
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 23abc9cd391548a4a97622e6cb7110de828498f2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904327"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180261"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB 模拟器 - 发行说明和下载信息
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,18 @@ ms.locfileid: "107904327"
 |**入门**|[使用 Azure Cosmos DB 模拟器在本地开发](local-emulator.md)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="2142-12-august-2021"></a>2.14.2（2021 年 8 月 12 日）
+
+ - 此版本将本地数据资源管理器内容更新到最新的 Azure 门户版本，并重置 Linux Cosmos 模拟器 Docker 映像的基础映像。
+
+### <a name="2141-18-june-2021"></a>2.14.1（2021 年 6 月 18 日）
+
+ - 此版本改进了模拟器的启动时间，同时减少了其数据在磁盘上的占用量。 此新优化由“/EnablePreview”参数激活。
+
+### <a name="2140-15-june-2021"></a>2.14.0（2021 年 6 月 15 日）
+
+ - 此版本将本地数据资源管理器内容更新为最新的 Azure 门户版本；在此版本中，我们解决了使用 JSON 文件上传功能导入多个文档项时的已知问题。
 
 ### <a name="21113-21-april-2021"></a>2.11.13（2021 年 4 月 21 日）
 

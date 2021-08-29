@@ -360,6 +360,8 @@
               href: backup-mabs-system-state-and-bmr.md
             - name: 使用备份前和备份后脚本
               href: pre-backup-post-backup-scripts.md
+            - name: 使用 MABS 备份文件数据
+              href: back-up-file-data.md
         - name: 从 Azure 备份服务器恢复数据
           href: backup-azure-alternate-dpm-server.md
         - name: 使用 Azure 备份服务器还原 VMware VM
@@ -491,7 +493,11 @@
         - name: 混合备份的安全性
           href: backup-azure-security-feature.md
         - name: 专用终结点
-          href: private-endpoints.md
+          items:
+            - name: 概述
+              href: private-endpoints-overview.md
+            - name: 创建和使用
+              href: private-endpoints.md
         - name: Azure 备份中的加密
           href: backup-encryption.md
         - name: 使用客户管理的密钥进行加密
@@ -539,10 +545,16 @@
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
     - name: Azure CLI
       href: /cli/azure/backup
+    - name: Azure Dataprotection - CLI
+      href: /cli/azure/dataprotection?view=azure-cli-latest&preserve-view=true
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
+    - name: Azure Dataprotection - PowerShell
+      href: /powershell/module/az.dataprotection/?view=azps-6.1.0&preserve-view=true
     - name: PowerShell – Azure 备份代理
       href: /powershell/module/msonlinebackup/?view=msonlinebackup-ps
+    - name: REST - Azure Dataprotection
+      href: /rest/api/dataprotection/
     - name: REST - 备份
       href: /rest/api/backup/
     - name: REST - 恢复服务保管库

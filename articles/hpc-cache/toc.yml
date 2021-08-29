@@ -67,21 +67,31 @@ items:
         href: /powershell/module/Az.HPCCache
   - name: 资源
     items:
-      - name: 开具支持票证
+      - name: 联系支持人员
         href: hpc-cache-support-ticket.md
+      - name: 疑难解答
+        items:
+          - name: 排查 NFS 存储目标创建问题
+            href: troubleshoot-nas.md
+          - name: 解决 Blob 存储帐户防火墙设置问题
+            href: hpc-cache-blob-firewall-fix.md
+          - name: 区域性服务中断后进行恢复
+            href: hpc-region-recovery.md
+      - name: 存储选项
+        items:
+          - name: 将装载了 NFS 的 blob 存储与 Azure HPC 缓存配合使用
+            href: nfs-blob-considerations.md
+          - name: 将 Azure NetApp 文件和 Azure HPC 缓存搭配使用
+            href: hpc-cache-netapp.md
       - name: 设置适用于 Azure HPC Cache 的 Azure CLI
         href: az-cli-prerequisites.md
-      - name: 解决 Blob 存储帐户防火墙设置问题
-        href: hpc-cache-blob-firewall-fix.md
-      - name: 排查 NFS 存储目标创建问题
-        href: troubleshoot-nas.md
-      - name: 将装载了 NFS 的 blob 存储与 Azure HPC 缓存配合使用
-        href: nfs-blob-considerations.md
-      - name: 区域性服务中断后进行恢复
-        href: hpc-region-recovery.md
       - name: 使用客户管理的加密密钥
         href: customer-keys.md
-      - name: 将 Azure NetApp 文件和 Azure HPC 缓存搭配使用
-        href: hpc-cache-netapp.md
+      - name: 产品概述
+        href: 'https://azure.microsoft.com/services/hpc-cache/'
+      - name: 定价和购买选项
+        href: 'https://azure.microsoft.com/pricing/details/hpc-cache/'
+      - name: 产品常见问题解答
+        href: 'https://azure.microsoft.com/services/hpc-cache/#faq'
       - name: 视频
         href: 'https://azure.microsoft.com/resources/videos/index/?service=hpc-cache'

@@ -13,12 +13,12 @@ metadata:
   ms.author: vanto
   ms.reviewer: 
   ms.date: 07/14/2021
-  ms.openlocfilehash: ec0dab1b434358be02dfa7ac7f2cf133128a3d48
-  ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+  ms.openlocfilehash: 602bee5145e4ddfb8bc8a1a25aa4c4d58aeddc11
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/14/2021
-  ms.locfileid: "113727114"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121727127"
 landingContent:
 - title: 概述
   linkLists:
@@ -50,8 +50,12 @@ landingContent:
       url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-host-guardian-service-register
     - text: 在 SQL Server 中配置安全 enclave
       url: /sql/relational-databases/security/encryption/always-encrypted-enclaves-configure-enclave-type
-- title: 教程
+- title: 示例和教程
   linkLists:
+  - linkListType: sample
+    links:
+    - text: Contoso HR Web 应用示例
+      url: https://github.com/microsoft/sql-server-samples/tree/master/samples/features/security/always-encrypted-with-secure-enclaves
   - linkListType: tutorial
     links:
     - text: 在 SQL Server 中开始使用具有安全 enclave 的 Always Encrypted

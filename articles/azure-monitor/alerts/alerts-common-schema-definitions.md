@@ -3,13 +3,13 @@ title: Azure Monitor 中的警报架构定义
 description: 了解 Azure Monitor 的常见警报架构定义
 author: ofirmanor
 ms.topic: conceptual
-ms.date: 04/12/2021
-ms.openlocfilehash: a026fa846901d4db7cb56196de50508f077e4fc6
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.date: 07/20/2021
+ms.openlocfilehash: 165753b293d73d89865710074ad11869c6e1aa6b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018252"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440698"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
@@ -33,6 +33,9 @@ ms.locfileid: "108018252"
       "monitoringService": "Platform",
       "alertTargetIDs": [
         "/subscriptions/<subscription ID>/resourcegroups/pipelinealertrg/providers/microsoft.compute/virtualmachines/wcus-r2-gen2"
+      ],
+      "configurationItems": [
+        "wcus-r2-gen2"
       ],
       "originAlertId": "3f2d4487-b0fc-4125-8bd5-7ad17384221e_PipeLineAlertRG_microsoft.insights_metricAlerts_WCUS-R2-Gen2_-117781227",
       "firedDateTime": "2019-03-22T13:58:24.3713213Z",
@@ -79,6 +82,7 @@ ms.locfileid: "108018252"
 | monitorCondition | 当警报触发时，警报的监视条件设置为“已触发”。 当导致警报触发的基础条件清除时，监视条件设置为“已解决”。   |
 | monitoringService | 生成了警报的监视服务或解决方案。 警报上下文的字段取决于监视服务。 |
 | alertTargetIds | 作为警报的受影响目标的 Azure 资源管理器 ID 的列表。 对于在 Log Analytics 工作区或 Application Insights 实例上定义的日志警报，则为各自的工作区或应用程序。 |
+| configurationItems | 警报的受影响资源的列表。 在某些情况下，配置项可能与警报目标不同，例如，在 Log Analytics 工作区上定义的日志指标或日志警报中，配置项是发送遥测的实际资源，而不是工作区。 ITSM 系统使用此字段将警报关联到 CMDB 中的资源。 |
 | originAlertId | 警报实例的 ID，由生成警报实例的监视服务生成。 |
 | firedDateTime | 警报实例的触发日期和时间，采用协调世界时 (UTC)。 |
 | resolvedDateTime | 当警报实例的监视条件设置为“已解决”时的日期和时间 (UTC)。 目前只适用于指标警报。|
@@ -110,7 +114,7 @@ ms.locfileid: "108018252"
 
 ## <a name="alert-context"></a>警报上下文
 
-### <a name="metric-alerts-excluding-availability-tests"></a>指标警报（排除可用性测试）
+### <a name="metric-alerts---static-threshold"></a>指标警报 - 静态阈值
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
@@ -145,7 +149,43 @@ ms.locfileid: "108018252"
 }
 ```
 
-### <a name="metric-alerts-availability-tests"></a>指标警报（可用性测试）
+### <a name="metric-alerts---dynamic-threshold"></a>指标警报 - 动态阈值
+
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
+
+**示例值**
+```json
+{
+  "alertContext": {
+      "properties": null,
+      "conditionType": "DynamicThresholdCriteria",
+      "condition": {
+        "windowSize": "PT5M",
+        "allOf": [
+          {
+            "alertSensitivity": "High",
+            "failingPeriods": {
+              "numberOfEvaluationPeriods": 1,
+              "minFailingPeriodsToAlert": 1
+            },
+            "ignoreDataBefore": null,
+            "metricName": "Egress",
+            "metricNamespace": "microsoft.storage/storageaccounts",
+            "operator": "GreaterThan",
+            "threshold": "47658",
+            "timeAggregation": "Total",
+            "dimensions": [],
+            "metricValue": 50101
+          }
+        ],
+        "windowStartTime": "2021-07-20T05:07:26.363Z",
+        "windowEndTime": "2021-07-20T05:12:26.363Z"
+      }
+    }
+}
+```
+
+### <a name="metric-alerts---availability-tests"></a>指标警报 - 可用性测试
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
@@ -179,7 +219,7 @@ ms.locfileid: "108018252"
 ### <a name="log-alerts"></a>日志警报
 
 > [!NOTE]
-> 对于定义了自定义电子邮件主题和/或 JSON 有效负载的日志警报，启用常见架构会将电子邮件主题和/或有效负载架构恢复为如下所述的架构。 这意味着，如果要定义自定义 JSON 有效负载，则 Webhook 不能使用常见的警报架构。 对于启用了常见架构的警报，大小上限为 256KB/警报。 如果搜索结果导致警报大小超出此阈值，就不会被嵌入日志警报有效负载。 可以通过检查标志 `IncludeSearchResults` 来确定这一点。 在不包括搜索结果时，应使用 `LinkToFilteredSearchResultsAPI` 或 `LinkToSearchResultsAPI` 通过 [Log Analytics API](/rest/api/loganalytics/dataaccess/query/get) 访问查询结果。
+> 对于定义了自定义电子邮件主题和/或 JSON 有效负载的日志警报，启用常见架构会将电子邮件主题和/或有效负载架构恢复为如下所述的架构。 这意味着，如果要定义自定义 JSON 有效负载，则 Webhook 不能使用常见的警报架构。 对于启用了常见架构的警报，大小上限为 256KB/警报。 如果搜索结果导致警报大小超出此阈值，就不会被嵌入日志警报有效负载。 可以通过检查标志 `IncludedSearchResults` 来确定这一点。 在不包括搜索结果时，应使用 `LinkToFilteredSearchResultsAPI` 或 `LinkToSearchResultsAPI` 通过 [Log Analytics API](/rest/api/loganalytics/dataaccess/query/get) 访问查询结果。
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -251,7 +291,7 @@ ms.locfileid: "108018252"
         ]
       }
     ],
-  "IncludeSearchResults": "True",
+  "IncludedSearchResults": "True",
   "AlertType": "Metric measurement"
   }
 }
@@ -323,13 +363,16 @@ ms.locfileid: "108018252"
         }
       ]
     },
-    "IncludeSearchResults": "True",
+    "IncludedSearchResults": "True",
     "AlertType": "Metric measurement"
   }
 }
 ```
 
 #### <a name="monitoringservice--log-alerts-v2"></a>`monitoringService` = `Log Alerts V2`
+
+> [!NOTE]
+> API 版本 2020-05-01 中的日志警报规则使用此有效负载类型，该类型仅支持通用架构。 使用此版本时，搜索结果不会嵌入到日志警报有效负载中。 应使用[维度](./alerts-unified-log.md#split-by-alert-dimensions)来提供已触发警报的上下文。 还可以使用 `LinkToFilteredSearchResultsAPI` 或 `LinkToSearchResultsAPI` 通过 [Log Analytics API](/rest/api/loganalytics/dataaccess/query/get) 访问查询结果。 如果必须嵌入结果，请使用包含所提供链接的逻辑应用，以生成自定义有效负载。
 
 **示例值**
 ```json

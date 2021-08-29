@@ -4,14 +4,14 @@ description: 了解如何为 Azure 与 Logz.io 的集成设置单一登录。
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 08/17/2021
+ms.date: 07/28/2021
 ms.author: tomfitz
-ms.openlocfilehash: 04a2616e46f526e9601e102c8ecb4104b6595164
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 6ca8cfa3b41ef3cdc6a4030980bc73679b9635aa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428567"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778332"
 ---
 # <a name="set-up-logzio-single-sign-on"></a>设置 Logz.io 单一登录
 
@@ -21,7 +21,7 @@ ms.locfileid: "122428567"
 
 若要在 Logz.io 资源中使用安全断言标记语言 (SAML) SSO 功能，必须设置企业应用程序。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 从门户菜单中，选择“Azure Active Directory”，或搜索“Azure Active Directory”。
 1. 转到“管理” > “企业应用程序”，然后选择“新建应用程序”按钮  。
 1. 搜索“Logz.io”并选择名为“Logz.io - Azure AD 集成”的 SAML 应用程序，然后选择“创建” 。

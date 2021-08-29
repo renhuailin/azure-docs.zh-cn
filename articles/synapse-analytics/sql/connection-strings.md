@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fb68a15bb64640fd8aa18d2ee01fd4a03d809125
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: dfc82cfec8e2c356b0d2fcc3806e21a3bd01a299
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565264"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862506"
 ---
 # <a name="connection-strings-for-synapse-sql"></a>Synapse SQL 的连接字符串
 
@@ -55,4 +55,4 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用 Visual Studio 和其他应用程序来查询分析，请参阅[使用 Visual Studio 进行查询](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+若要开始使用 Visual Studio 和其他应用程序来查询分析，请参阅[使用 Visual Studio 进行查询](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?context=/azure/synapse-analytics/context/context)。

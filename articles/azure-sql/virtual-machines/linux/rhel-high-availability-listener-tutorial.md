@@ -2,17 +2,18 @@
 title: 为 Azure 中 RHEL 虚拟机上的 SQL Server 配置可用性组侦听器 - Linux 虚拟机 | Microsoft Docs
 description: 了解如何在 Azure 中 RHEL 虚拟机上的 SQL Server 中设置可用性组侦听器
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: 5f0b300be2f1cec4ee456065455832a2dc3598be
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 935b3ea84a1e8927a80e1cf3e0ce287fa90620ba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449497"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745766"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：为 Azure 中 RHEL 虚拟机上的 SQL Server 配置可用性组侦听器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

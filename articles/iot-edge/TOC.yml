@@ -15,6 +15,8 @@
       href: quickstart.md
 - name: 教程
   items:
+    - name: 监视设备和模块
+      href: tutorial-monitor-with-workbooks.md
     - name: 设置开发环境
       items:
         - name: 使用 Linux 容器进行开发
@@ -131,6 +133,8 @@
           href: how-to-manage-device-certificates.md
         - name: 为 Windows VM 配置嵌套虚拟化
           href: nested-virtualization.md
+        - name: 在 Windows 上创建适用于 Linux 的虚拟交换机
+          href: how-to-create-virtual-switch.md
         - name: 在 Windows 上配置 Linux 的 GPU 加速
           href: gpu-acceleration.md
     - name: 备用设备方案

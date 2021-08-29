@@ -4,20 +4,20 @@ summary: 了解如何使用个性化体验创建服务来让应用程序选择�
 metadata:
   ms.topic: landing-page
   ms.date: 06/11/2020
-  ms.author: nitinme
-  author: nitinme
+  ms.author: jeffme
+  author: jeffmend
   ms.service: cognitive-services
   ms.subservice: personalizer
   services: cognitive-services
   title: 个性化体验创建服务文档
   titleSuffix: Azure Cognitive Services
   description: Azure 个性化体验创建服务是基于云的 API 服务，可让你选择要显示给用户的最佳体验，并从其实时行为中学习信息。
-  ms.openlocfilehash: 51d86faac37ad4131adad395d0fb52a23870e2ea
-  ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+  ms.openlocfilehash: 14e66639606356517d8ec1400c681337a4023c69
+  ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/07/2021
-  ms.locfileid: "102433703"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122831573"
 landingContent:
 - title: 关于个性化体验创建服务
   linkLists:
