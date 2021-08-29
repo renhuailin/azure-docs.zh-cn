@@ -21,14 +21,6 @@
         - name: ARM 模板
           displayName: Resource Manager
           href: essentials/quick-collect-activity-log-arm.md
-    - name: 监视虚拟机
-      items:
-        - name: Azure VM
-          href: vm/quick-monitor-azure-vm.md
-        - name: Linux 计算机
-          href: vm/quick-collect-linux-computer.md
-        - name: Windows 计算机
-          href: vm/quick-collect-windows-computer.md
     - name: 监视应用程序
       items:
         - name: ASP.NET Core 应用程序
@@ -123,10 +115,18 @@
       items:
         - name: 日志数据
           href: logs/data-security.md
+        - name: 适用于日志的 Azure AD 身份验证
+          href: logs/azure-ad-authentication-logs.md
         - name: 客户管理的密钥
           href: logs/customer-managed-keys.md
         - name: 专用链接网络
-          href: logs/private-link-security.md
+          items:
+            - name: 专用链接概览
+              href: logs/private-link-security.md
+            - name: 专用链接设计
+              href: logs/private-link-design.md
+            - name: 专用链接配置
+              href: logs/private-link-configure.md
         - name: 专用存储
           href: logs/private-storage.md
         - name: 个人日志数据处理
@@ -175,6 +175,8 @@
             - name: 监视工作负载
               href: vm/monitor-virtual-machine-workloads.md
           displayname: VM
+        - name: 监视 Kubernetes
+          href: ../aks/monitor-aks.md?toc=/azure/azure-monitor/toc.json
     - name: 部署
       items:
         - name: 部署 Azure Monitor
@@ -193,7 +195,7 @@
           items:
             - name: 使用情况和预估成本
               href: usage-estimated-costs.md
-            - name: 应用程序使用情况和成本
+            - name: Application Insights 使用情况和成本
               href: app/pricing.md
             - name: 日志数据使用情况和成本
               href: logs/manage-cost-storage.md
@@ -242,10 +244,14 @@
               href: logs/manage-access.md
             - name: 移动工作区
               href: logs/move-workspace.md
+            - name: 跨区域移动工作区
+              href: logs/move-workspace-region.md
             - name: 适用于服务提供商的设计
               href: logs/service-providers.md
             - name: 专用群集
               href: logs/logs-dedicated-clusters.md
+            - name: 可用性区域
+              href: logs/availability-zones.md
         - name: Log Analytics
           items:
             - name: 概述
@@ -494,7 +500,7 @@
           href: autoscale/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 和电子邮件通知
           href: autoscale/autoscale-webhook-email.md
-        - name: 疑难解答
+        - name: 故障排除
           href: autoscale/autoscale-troubleshoot.md
         - name: 资源日志架构
           href: autoscale/autoscale-resource-log-schema.md
@@ -778,7 +784,7 @@
                       href: app/status-monitor-v2-get-started.md
                     - name: 详细说明
                       href: app/status-monitor-v2-detailed-instructions.md
-                    - name: 疑难解答
+                    - name: 故障排除
                       href: app/status-monitor-v2-troubleshoot.md
                     - name: API 参考
                       href: app/status-monitor-v2-api-reference.md
@@ -965,7 +971,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 例外
+            - name: 异常
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md
@@ -1106,18 +1112,30 @@
               href: containers/container-insights-enable-aks-policy.md
             - name: 区域映射
               href: containers/container-insights-region-mapping.md
-        - name: 监视性能
-          href: containers/container-insights-analyze.md
-        - name: 监视 GPU 性能
-          href: containers/container-insights-gpu-monitoring.md
-        - name: 监视网络配置
-          href: ../virtual-network/kubernetes-network-policies.md?toc=/azure/azure-monitor/toc.json#monitor-and-visualize-network-configurations-with-azure-npm
-        - name: 监视部署和 HPA
-          href: containers/container-insights-deployment-hpa-metrics.md
-        - name: 监视永久性卷 (PV)
-          href: containers/container-insights-persistent-volumes.md
-        - name: “报表”选项卡
-          href: insights/container-insights-reports.md
+            - name: 代理管理
+              href: containers/container-insights-manage-agent.md
+            - name: 配置 Prometheus 指标抓取
+              href: containers/container-insights-prometheus-integration.md
+            - name: 配置代理收集设置
+              href: containers/container-insights-agent-config.md
+            - name: 更新以启用指标
+              href: containers/container-insights-update-metrics.md
+        - name: 监视
+          items:
+            - name: 监视性能
+              href: containers/container-insights-analyze.md
+            - name: 监视 GPU 性能
+              href: containers/container-insights-gpu-monitoring.md
+            - name: 监视网络配置
+              href: ../virtual-network/kubernetes-network-policies.md?toc=/azure/azure-monitor/toc.json#monitor-and-visualize-network-configurations-with-azure-npm
+            - name: 监视部署和 HPA
+              href: containers/container-insights-deployment-hpa-metrics.md
+            - name: 监视永久性卷 (PV)
+              href: containers/container-insights-persistent-volumes.md
+            - name: “报表”选项卡
+              href: containers/container-insights-reports.md
+        - name: 日志查询
+          href: containers/container-insights-log-query.md
         - name: 查看实时数据
           items:
             - name: 实时数据概述
@@ -1128,22 +1146,12 @@
               href: containers/container-insights-livedata-metrics.md
             - name: 查看部署
               href: containers/container-insights-livedata-deployments.md
-        - name: 使用日志查询分析数据
-          href: containers/container-insights-log-search.md
         - name: 警报
           items:
             - name: 创建日志警报规则
               href: containers/container-insights-log-alerts.md
             - name: 创建指标警报规则
               href: containers/container-insights-metric-alerts.md
-        - name: 代理管理
-          href: containers/container-insights-manage-agent.md
-        - name: 配置 Prometheus 指标抓取
-          href: containers/container-insights-prometheus-integration.md
-        - name: 配置代理收集设置
-          href: containers/container-insights-agent-config.md
-        - name: 更新以启用指标
-          href: containers/container-insights-update-metrics.md
         - name: 管理成本和使用情况
           href: containers/container-insights-cost.md
         - name: 禁用监视

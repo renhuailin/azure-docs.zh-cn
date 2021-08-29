@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 7afa48d5632a194daa7463a544fb28310ea89379
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 62d3f26ab53148d02320443db61318315e870cc7
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093708"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823631"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>使用 Express 在 Azure 云服务（经典）中构建并部署 Node.js Web 应用程序
 
-> [!IMPORTANT]
-> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 Node.js 包含核心运行时中最小的一个功能集。
 开发人员在开发 Node.js 应用程序时经常会使用第三方模块来提供额外功能。 本教程使用 [Express](https://github.com/expressjs/express) 模块新建一个应用程序，该模块提供了用于创建 Node.js Web 应用程序的 MVC 框架。

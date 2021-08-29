@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 06/08/2021
 ms.author: aahi
-ms.openlocfilehash: f932630fe4f31026ffd7efce04b32b876ad8ab94
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 5f02799cbaf99a8f73d06d6749637d8b1b603255
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113550621"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442403"
 ---
 # <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
@@ -30,6 +30,7 @@ ms.locfileid: "113550621"
 ## <a name="prerequisites"></a>先决条件
 
 * 最新版本的 [cURL](https://curl.haxx.se/)。
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 </a>，以获取你的密钥和终结点。 部署后，单击“转到资源”。
     * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。

@@ -8,12 +8,13 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: spark
 ms.date: 05/19/2020
-ms.openlocfilehash: 82518e6c8f4901ffe6c5503d902359a79c12e0b0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.custom: has-adal-ref
+ms.openlocfilehash: da64e27b5ae4675b313007c9b185db9194607f2c
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081669"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428825"
 ---
 # <a name="azure-sql-database-and-sql-server-connector-for-apache-spark"></a>适用于 Apache Spark 的 Azure SQL 数据库和 SQL Server 连接器
 借助适用于 Azure SQL 数据库和 SQL Server 的 Apache Spark 连接器，这些数据库可以充当 Apache Spark 作业的输入数据源和输出数据接收器。 由此，可在大数据分析中使用实时事务数据，并保留临时查询或报告的结果。

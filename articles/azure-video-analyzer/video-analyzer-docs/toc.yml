@@ -77,6 +77,8 @@
       href: pipeline-extension.md
     - name: 视频录制
       href: video-recording.md
+    - name: AI 组合概述
+      href: ai-composition-overview.md
     - name: 方案
       items:
         - name: 基于事件的视频录制
@@ -121,6 +123,8 @@
       items:
         - name: 开发和部署 gRPC 推理服务器
           href: develop-deploy-grpc-inference-srv.md
+        - name: 使用 AI 组合进行分析
+          href: analyze-ai-composition.md
     - name: 门户
       items:
         - name: 通过门户调用直接方法
@@ -129,12 +133,14 @@
       items:
         - name: 监视和日志记录
           href: monitor-log-edge.md
+    - name: 可视化
+      items:
+        - name: 在 Power BI 中嵌入播放器小组件
+          href: embed-player-in-power-bi.md
     - name: 疑难解答
       href: troubleshoot.md
 - name: 参考
   items:
-    - name: 访问策略
-      href: access-policies.md
     - name: Developer SDK
       href: sdk.md
     - name: 直接方法

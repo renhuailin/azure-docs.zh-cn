@@ -11,13 +11,13 @@ ms.workload: identity
 ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 226e94510709b37a7e6b1aae90a7e0ec5b4222b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: 8853206d7a9b2b953fbbafa98a40e3bb6e65d4f7
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199575"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419178"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 应用程序中使用 Microsoft Authenticator 或 Intune 公司门户
 
@@ -326,7 +326,7 @@ URI 的最后一部分 `hgbUYHVBYUTvuvT&Y6tr554365466=` 是签署 APK 时使用�
                     android:path="/hgbUYHVBYUTvuvT&Y6tr554365466="/>
 ```
 
-有关配置应用程序以实现系统浏览器和 Android 11 支持的详细信息，请参阅[更新 Android 系统浏览器支持清单](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support)。
+若要详细了解如何配置应用程序以实现系统浏览器和 Android 11 支持，请参阅[更新 Android 系统浏览器支持清单](msal-net-xamarin-android-considerations.md#update-the-android-manifest-for-system-webview-support)。
 
 替代方法是将 MSAL 配置为回退到嵌入的浏览器（不依赖于重定向 URI）：
 
