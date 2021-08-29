@@ -2,14 +2,15 @@
 metadata:
   title: 有关 Azure Site Recovery 服务的一般问题
   description: 本文讨论有关 Azure Site Recovery 的常见问题。
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: azure
   ms.date: 05/27/2021
-  ms.openlocfilehash: f2a5f42b4e65f9f801ae6a56af13ed5e8a6d8080
-  ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+  ms.openlocfilehash: 82d4003e13cf68d9777e2bcdfd57551d9ef478f4
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/01/2021
-  ms.locfileid: "113136816"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122254116"
 title: 有关 Azure Site Recovery 的一般问题
 summary: >
   本文总结有关 Azure Site Recovery 的常见问题。 有关具体方案，请查看以下文章

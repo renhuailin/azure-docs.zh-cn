@@ -4,15 +4,16 @@ description: 创建一个 Azure 数据工厂，然后使用“复制数据”工
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/08/2021
-ms.openlocfilehash: 55ddb188abfd43dbb782beef5f99d4058004922f
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: 4a03eb37d5ec956dfeb5eb3d637722c506f58bf1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113515486"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637727"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
 

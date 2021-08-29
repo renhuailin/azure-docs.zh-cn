@@ -9,12 +9,12 @@ ms.date: 06/09/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: edf57ec72d056f58eaca624b4c91b27a82ad9daf
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 5ef00531c4f13ecd43cb7bd1d691f67d996c5f73
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902044"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769649"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-legacy-apis"></a>通过旧 API 以编程方式创建 Azure 订阅
 
@@ -165,7 +165,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| 元素名称  | 必选 | 类型   | 说明                                                                                               |
+| 元素名称  | 必选 | 类型   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 否      | 字符串 | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `offerType`   | 是      | 字符串 | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
@@ -183,7 +183,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| 元素名称  | 必选 | 类型   | 说明 |
+| 元素名称  | 必选 | 类型   | 描述 |
 |---------------|----------|--------|----|
 | `Name` | 否      | 字符串 | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如 Microsoft Azure Enterprise。 |
 | `OfferType`   | 是      | String | 订阅套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
@@ -192,7 +192,6 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `OwnerSignInName`    | 否       | String | 要在创建订阅时作为 Azure RBAC 所有者添加到订阅的任意用户的电子邮件地址。 可以使用此参数，而不使用 `OwnerObjectId`。|
 | `OwnerApplicationId` | 否       | String | 要在创建订阅时作为 Azure RBAC 所有者添加到订阅的任意服务主体的应用程序 ID。 可以使用此参数，而不使用 `OwnerObjectId`。 使用此参数时，服务主体必须具有[对该目录的读取访问权限](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。|
 
-要查看所有参数的完整列表，请参阅 [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription)。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

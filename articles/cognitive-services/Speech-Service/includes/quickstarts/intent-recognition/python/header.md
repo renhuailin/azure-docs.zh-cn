@@ -1,15 +1,15 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
-ms.author: trbye
-ms.openlocfilehash: 77ceef8be9a93f2eb20fce6734a83da10b3f01dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: lajanuar
+ms.openlocfilehash: 46ff694c8f49e09316da0be63fe0060424b425b5
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86544640"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071736"
 ---
 可以在 GitHub 上查看或下载所有<a href="https://aka.ms/speech/github-python">语音 SDK Python 示例</a>。 

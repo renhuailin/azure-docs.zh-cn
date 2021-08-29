@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/14/2021
 ms.author: cshoe
-ms.openlocfilehash: 2fcb9805b752273cb5320114342108ed1f844a5b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 489f714c9900c0b759a5ecf7bc9a5ffc12cae884
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103724"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746222"
 ---
 # <a name="azure-static-web-apps-hosting-plans"></a>Azure Static Web Apps 托管计划
 
@@ -32,6 +32,7 @@ Azure Static Web Apps 可通过两种不同的计划（免费和标准）获得�
 | 自定义域 | 每个应用 2 个 | 每个应用 5 个 |
 | 通过 Azure Functions 的 API | 托管 | 托管或<br>[创建自己的 Functions 应用](functions-bring-your-own.md) |
 | 身份验证提供程序集成 | [已预配置](authentication-authorization.md)<br>（服务定义） | [自定义注册](authentication-custom.md) |
+| 专用终结点 | - | ✔ |
 | [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/app-service-static/v1_0/) | 无  | ✔ |
 
 ## <a name="selecting-a-plan"></a>选择计划

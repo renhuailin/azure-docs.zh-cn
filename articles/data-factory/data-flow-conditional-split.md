@@ -1,19 +1,21 @@
 ---
 title: 映射数据流中的有条件拆分转换
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 使用 Azure 数据工厂映射数据流中的有条件拆分转换功能将数据拆分为不同的流
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 05/21/2020
-ms.openlocfilehash: eece6f97e82f3800d4f59ac1849b34c2a1e4635b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 557ef01f206346a7d9596160fc4ab9f8dc0ceea2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83800086"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638661"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>映射数据流中的有条件拆分转换
 

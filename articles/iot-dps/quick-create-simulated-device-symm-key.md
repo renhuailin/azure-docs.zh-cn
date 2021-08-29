@@ -7,14 +7,13 @@ ms.date: 01/14/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 7df7c9ab6bfbc8a39050b78a76114ae2a0a9d9b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1de50e1e069305c13a521a27462ea786c6a3e49
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746499"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748391"
 ---
 # <a name="quickstart-provision-a-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配设备
 
@@ -56,7 +55,7 @@ SDK 包含设备的预配示例代码。 此代码将尝试在设备启动顺序
 
 2. 单击“标记”  ，然后在 [Azure IoT C SDK 的版本页](https://github.com/Azure/azure-iot-sdk-c/releases/latest)上查找最新版本的标记名称。
 
-3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
+3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步找到的标记作为 `-b` 参数的值：
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -143,7 +142,7 @@ SDK 包含设备的预配示例代码。 此代码将尝试在设备启动顺序
 
 3. 在 Visual Studio 的“解决方案资源管理器”窗口中，导航到 **Provision\_Samples** 文件夹。  展开名为 **prov\_dev\_client\_sample** 的示例项目。 展开“源文件”，打开 **prov\_dev\_client\_sample.c**。 
 
-4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。  
+4. 找到 `id_scope` 常量，将值替换为前面复制的“ID 范围”值。 
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -174,7 +173,7 @@ SDK 包含设备的预配示例代码。 此代码将尝试在设备启动顺序
    
     保存文件。
 
-7. 右键单击“prov\_dev\_client\_sample”项目，  然后选择“设为启动项目”。  
+7. 右键单击“prov\_dev\_client\_sample”项目，然后选择“设为启动项目”。 
 
 8. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以运行该解决方案。   在重新生成项目提示中，选择“是”，以便在运行项目之前重新生成项目。
 

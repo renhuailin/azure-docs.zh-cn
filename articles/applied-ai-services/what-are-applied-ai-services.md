@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 05/04/2021
 ms.author: jeffme
-ms.openlocfilehash: b4ec1ea076994622e4e687c3f6f4a4f3826ad385
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: fadfffadd0d7c2e642825fa8134906e6c3697014
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220444"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745932"
 ---
 # <a name="what-are-azure-applied-ai-services"></a>什么是 Azure 应用 AI 服务？
 
@@ -45,7 +45,7 @@ Azure 应用 AI 服务是一项高级服务，旨在让开发人员能够将 AI 
 
 使用 AI 提高阅读理解和阅读成就。 Azure 沉浸式阅读器是一款经过广泛设计的工具，它实现了成熟的技术，旨在提高新的读者、语言学习者和有学习差异（如阅读障碍）的用户的阅读理解能力。 通过沉浸式阅读器客户端库，你可利用 Microsoft Word 和 Microsoft OneNote 中所用的同种技术来改进 Web 应用程序。 Azure 沉浸式阅读器使用 Azure 认知服务中的翻译和文本转语音构建而成。
 
-[详细了解 Azure 沉浸式阅读器](../cognitive-services/immersive-reader/index.yml)
+[详细了解 Azure 沉浸式阅读器](./immersive-reader/index.yml)
 
 ## <a name="azure-bot-service"></a>Azure 机器人服务
 

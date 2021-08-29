@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 100da2e8b259c31daa6b0e72c8d2c4c2b0cb1d51
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 73f1eaebb60d02e27be5585a0287a702abf6df2a
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569703"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860959"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL 中支持的 Transact-SQL 功能
 
@@ -31,18 +31,18 @@ Transact-SQL 语言在无服务器 SQL 池中使用，专用模型可以引用�
 | **表** | [是](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | 否，无服务器模型只能查询 [Azure 存储](#storage-options)中的外部数据 |
 | **视图** | [是](/sql/t-sql/statements/create-view-transact-sql?view=azure-sqldw-latest&preserve-view=true) 视图可以使用在专用模型中可用的[查询语言元素](#query-language)。 | [是](/sql/t-sql/statements/create-view-transact-sql?view=azure-sqldw-latest&preserve-view=true) 视图可以使用在无服务器模型中可用的[查询语言元素](#query-language)。 |
 | **架构** | [是](/sql/t-sql/statements/create-schema-transact-sql?view=azure-sqldw-latest&preserve-view=true) | [是](/sql/t-sql/statements/create-schema-transact-sql?view=azure-sqldw-latest&preserve-view=true) |
-| **临时表** | [是](../sql-data-warehouse/sql-data-warehouse-tables-temporary.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 否 |
+| **临时表** | [是](../sql-data-warehouse/sql-data-warehouse-tables-temporary.md?context=/azure/synapse-analytics/context/context) | 否 |
 | **过程** | [是](/sql/t-sql/statements/create-procedure-transact-sql?view=azure-sqldw-latest&preserve-view=true) | 是 |
 | **函数** | [是](/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | 是，仅限内联表值函数。 |
 | **触发器** | 否 | 否 |
 | **外部表** | [是](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) 请参阅受支持的[数据格式](#data-formats)。 | [是](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) 请参阅受支持的[数据格式](#data-formats)。 |
 | **缓存查询** | 是，支持多个形式（基于 SSD 的缓存、内存中缓存和结果集缓存）。 此外，还支持具体化视图 | 否 |
 | **表变量** | [否](/sql/t-sql/data-types/table-transact-sql?view=azure-sqldw-latest&preserve-view=true)，使用临时表 | 否 |
-| **[表分发](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**               | 是 | 否 |
-| **[表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | 是 | 否 |
-| **[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | 是 | 否 |
+| **[表分发](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context)**               | 是 | 否 |
+| **[表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context)**                           | 是 | 否 |
+| **[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context)**                     | 是 | 否 |
 | **[统计信息](develop-tables-statistics.md)**            | 是 | 是 |
-| [工作负载管理、资源类和并发控制](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 是    | 否 |
+| [工作负载管理、资源类和并发控制](../sql-data-warehouse/resource-classes-for-workload-management.md?context=/azure/synapse-analytics/context/context) | 是    | 否 |
 | **成本控制** | 是，使用纵向扩展和纵向缩减操作。 | 是，使用 [Azure 门户或 T-SQL 过程](./data-processed.md#cost-control)。 |
 
 ## <a name="query-language"></a>查询语言

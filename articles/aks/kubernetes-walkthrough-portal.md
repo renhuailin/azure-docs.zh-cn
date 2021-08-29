@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 07/01/2021
 ms.custom: mvc, seo-javascript-october2019, contperf-fy21q3
-ms.openlocfilehash: 4c695b3214cebb601e53810ea8d6f3402bcf2e94
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 165afe5da4177ab95a77e30fe031a78c4674ce94
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114463115"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724719"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -147,7 +147,7 @@ Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容
             app: azure-vote-back
         spec:
           nodeSelector:
-            "beta.kubernetes.io/os": linux
+            "kubernetes.io/os": linux
           containers:
           - name: azure-vote-back
             image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
@@ -190,7 +190,7 @@ Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容
             app: azure-vote-front
         spec:
           nodeSelector:
-            "beta.kubernetes.io/os": linux
+            "kubernetes.io/os": linux
           containers:
           - name: azure-vote-front
             image: mcr.microsoft.com/azuredocs/azure-vote-front:v1

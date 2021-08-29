@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0cba5fc8bb499ef52f6a2b1d89f23ddd6d450442
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 70bbf20570c39fa59da9af7f7883aeef2e107df4
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603164"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633784"
 ---
 # <a name="use-the-persondirectory-structure"></a>使用 PersonDirectory 结构
 
@@ -353,7 +353,7 @@ HttpResponseMessage response;
 // Request body
 var body = new Dictionary<string, object>();
 body.Add("faceIds", new List<string>{"{guid1}", "{guid2}", …});
-body.Add("personIds", new List<string>{"{guid1}", "{guid2}", …});
+body.Add("personIds", new List<string>{"*"});
 byte[] byteData = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(body));
 
 using (var content = new ByteArrayContent(byteData))

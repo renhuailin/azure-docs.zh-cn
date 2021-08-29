@@ -1,15 +1,15 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/30/2020
-ms.author: trbye
-ms.openlocfilehash: b84db9eee473b14f2ba078ed1be77f6165a5f3b9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: lajanuar
+ms.openlocfilehash: 6ebcfa4adbffaab794e0ec5f8a261ef6ec04b730
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187547"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122263330"
 ---
 ## <a name="additional-language-and-platform-support"></a>其他语言和平台支持
 
@@ -20,7 +20,7 @@ ms.locfileid: "96187547"
 | C#          | [.NET Framework][dotnet]、[.NET Core][netcore]、[UWP][uwp]、[Unity][unity] 和 [Xamarin][xamarin] |
 | C++         | [Windows][cpp-windows]、[Linux][cpp-linux]、[macOS][cpp-mac]                                   |
 | Java        | [Android][java-android]、[JRE][java-jre]                                                       |
-| JavaScript  | [Browser、Node.js][js-code]                                                                    |
+| Javascript  | [Browser、Node.js][js-code]                                                                    |
 | Objective-C | [iOS][obj-iOS]、[macOS][obj-macOS]                                                             |
 | Python      | [Windows、Linux 和 macOS][python]                                                                |
 | Swift       | [iOS][swift-iOS]、[macOS][swift-macOS]                                                         |
