@@ -6,19 +6,21 @@
     - name: 机器学习工作室（经典版）
       displayName: overview
       href: studio-classic-overview.md
-- name: 快速入门
+    - name: 迁移到 Azure 机器学习
+      href: ../migrate-overview.md
+- name: 教程
   items:
     - name: 创建第一个试验
       displayName: quickstart
       href: create-experiment.md
-- name: 教程
-  items:
-    - name: 1：创建预测性实验
-      href: tutorial-part1-credit-risk.md
-    - name: '2:训练并评估解决方案'
-      href: tutorial-part2-credit-risk-train.md
-    - name: 3：部署 Web 服务
-      href: tutorial-part3-credit-risk-deploy.md
+    - name: 训练和部署预测模型
+      items:
+        - name: 1：创建预测性实验
+          href: tutorial-part1-credit-risk.md
+        - name: '2:训练并评估解决方案'
+          href: tutorial-part2-credit-risk-train.md
+        - name: 3：部署 Web 服务
+          href: tutorial-part3-credit-risk-deploy.md
 - name: 示例
   items:
     - name: 可用数据集
@@ -138,20 +140,6 @@
         - name: 库数据
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
-    - name: 迁移到 Azure 机器学习
-      items:
-        - name: 迁移概述
-          href: migrate-overview.md
-        - name: 迁移数据集
-          href: migrate-register-dataset.md
-        - name: 重新生成试验
-          href: migrate-rebuild-experiment.md
-        - name: 重新生成 Web 服务
-          href: migrate-rebuild-web-service.md
-        - name: 迁移客户端应用程序
-          href: migrate-rebuild-integrate-with-client-app.md
-        - name: 重新生成“执行 R 脚本”模块
-          href: migrate-execute-r-script.md
 - name: 参考
   items:
     - name: 算法和模块参考
@@ -164,12 +152,8 @@
       href: /rest/api/machinelearning
 - name: 资源
   items:
-    - name: 服务更新
-      href: 'https://azure.microsoft.com/updates/?product=machine-learning-studio'
     - name: 获取支持
       href: support-aml-studio.md
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 定价

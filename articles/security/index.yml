@@ -27,7 +27,7 @@ highlightedContent:
       url: ./benchmarks/introduction.md
 conceptualContent:
   items:
-    - title: 基础
+    - title: 基础知识
       links:
         - url: ./fundamentals/overview.md
           itemType: overview
@@ -147,7 +147,7 @@ conceptualContent:
         - url: ../sentinel/quickstart-onboard.md
           itemType: quickstart
           text: 载入 Azure Sentinel
-        - url: ../sentinel/quickstart-get-visibility.md
+        - url: /azure/sentinel/get-visibility
           itemType: quickstart
           text: Azure Sentinel 入门
       footerLink:
@@ -218,7 +218,7 @@ conceptualContent:
       links:
         - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
           itemType: overview
-          text: 数据安全
+          text: 数据安全性
         - url: ./fundamentals/paas-applications-using-sql.md
           itemType: concept
           text: 适用于 PaaS 数据库的最佳做法

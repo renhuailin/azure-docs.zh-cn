@@ -4,12 +4,12 @@ description: 了解如何从应用服务应用调用业务流程。 发送电子
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 04bdab82c9d1efed6da3f533617f19b82cf0781e
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 567bf62d2f78074cef331aeedcfd29bc382e79c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290697"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752432"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>教程：从应用服务发送电子邮件及调用其他业务流程
 
@@ -319,3 +319,4 @@ connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 [教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API](app-service-web-tutorial-rest-api.md)  
 [逻辑应用的 HTTP 请求/响应参考](../connectors/connectors-native-reqres.md)  
 [快速入门：使用 Azure 逻辑应用创建第一个工作流 - Azure 门户](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+- [环境变量和应用设置参考](reference-app-settings.md)

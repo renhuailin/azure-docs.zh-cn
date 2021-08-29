@@ -4,16 +4,20 @@ description: Azure 区块链服务概述
 ms.date: 03/15/2021
 ms.topic: overview
 ms.reviewer: patricka
-ms.openlocfilehash: 035e2c1df5912f291ad241ade25361f9cc098b22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cef30858b23f4c5e87f756e830defa3b2522add
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573619"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122643069"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什么是 Azure 区块链服务？
 
-Azure 区块链服务是一项完全托管的账本服务，使用户能够在 Azure 中大规模扩展和运营区块链网络。 通过为基础结构管理和区块链网络治理提供统一控制，Azure 区块链服务提供：
+Azure 区块链服务是一项完全托管的账本服务，使用户能够在 Azure 中大规模扩展和运营区块链网络。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
+
+通过为基础结构管理和区块链网络治理提供统一控制，Azure 区块链服务提供：
 
 * 简单的网络部署和操作
 * 内置联盟管理
@@ -29,7 +33,7 @@ Azure 区块链服务旨在支持多种账本协议。 当前，该服务使用[
 
 ### <a name="performance-and-service-tiers"></a>性能和服服务层级
 
-Azure 区块链服务提供两种服务层：“基本”和“标准” 。 每层都提供不同的性能和功能，以支持轻量级开发和测试工作负载，直至大规模的生产区块链部署。 使用“基本”层进行开发、测试和概念证明。 使用“标准”层进行生产级部署。 这两层均包括至少一个事务节点、一个验证器节点（基本）或两个验证器节点（标准）。 
+Azure 区块链服务提供两种服务层：“基本”和“标准” 。 每层都提供不同的性能和功能，以支持轻量级开发和测试工作负载，直至大规模的生产区块链部署。 使用“基本”层进行开发、测试和概念证明。 使用“标准”层进行生产级部署。 这两层均包括至少一个事务节点、一个验证器节点（基本）或两个验证器节点（标准）。
 
 ![定价层](./media/overview/pricing-tiers.png)
 

@@ -8,16 +8,18 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: e99beb024690bf888d0acbb747e98252eced7e06
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 57bfd9564f1f5ee3ea66e80a969760ea578a0e74
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110128"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643100"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>快速入门：使用 Python 连接到 Azure Database for MySQL 灵活服务器并查询其中的数据
 
-> [!IMPORTANT] 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
 在本快速入门中，你将使用 Python 连接到 Azure Database for MySQL 灵活服务器。 然后使用 SQL 语句在 Mac、Ubuntu Linux 和 Windows 平台的数据库中查询、插入、更新和删除数据。 
@@ -42,13 +44,13 @@ ms.locfileid: "105110128"
 
 1. 下载并安装适合自己 OS 的 [Python 3.7 或更高版本](https://www.python.org/downloads/)。 请确保将 Python 添加到 `PATH`，因为 MySQL 连接器需要它。
    
-1. 打开命令提示符或 `bash` shell，使用大写 V 开关运行 `python -V`，以便检查 Python 版本。
+2. 打开命令提示符或 `bash` shell，使用大写 V 开关运行 `python -V`，以便检查 Python 版本。
    
-1. 最新版本的 Python 中包含 `pip` 包安装程序。 通过运行 `pip install -U pip` 将 `pip` 更新为最新版本。 
+3. 最新版本的 Python 中包含 `pip` 包安装程序。 通过运行 `pip install -U pip` 将 `pip` 更新为最新版本。 
    
    如果未安装 `pip`，则可使用 `get-pip.py` 下载并安装它。 有关详细信息，请参阅[安装](https://pip.pypa.io/en/stable/installing/)。 
    
-1. 使用 `pip`，安装用于 Python 的 MySQL 连接器及其依赖项：
+4. 使用 `pip`，安装用于 Python 的 MySQL 连接器及其依赖项：
    
    ```bash
    pip install mysql-connector-python
@@ -62,23 +64,24 @@ ms.locfileid: "105110128"
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
    
-1. 在门户搜索栏中，搜索并选择创建的 Azure Database for MySQL 灵活服务器，如 mydemoserver。
+2. 在门户搜索栏中，搜索并选择创建的 Azure Database for MySQL 灵活服务器，如 mydemoserver。
    
    <!---:::image type="content" source="./media/connect-python/1_server-overview-name-login.png" alt-text="Azure Database for MySQL Flexible Server name":::-->
    
-1. 从服务器的“概览”页中记下“服务器名称”和“服务器管理员登录名”。   如果忘记了密码，也可通过此页重置密码。
+3. 从服务器的“概览”页中记下“服务器名称”和“服务器管理员登录名”。   如果忘记了密码，也可通过此页重置密码。
    
    <!---:::image type="content" source="./media/connect-python/azure-database-for-mysql-server-overview-name-login.png" alt-text="Azure Database for MySQL Flexible Server name":::-->
 
 ## <a name="code-samples"></a>代码示例
 
 ### <a name="run-below-mentioned-python-code-samples"></a>运行以下所述的 Python 代码示例
+
 对于本文中的每个代码示例：
 
 1. 在文本编辑器中创建新的文件。
-1. 将代码示例添加到文件。 在代码中，将 `<mydemoserver>`、`<myadmin>`、`<mypassword>` 和 `<mydatabase>` 占位符替换为 MySQL 服务器和数据库的值。
-1. 将文件保存在项目文件夹中，扩展名为 *.py*，例如 *C:\pythonmysql\createtable.py* 或 */home/username/pythonmysql/createtable.py*。
-1. 若要运行代码，请打开命令提示符或 `bash` shell，将目录更改为项目文件夹，例如 `cd pythonmysql`。 键入 `python` 命令，后跟文件名，例如 `python createtable.py`，然后按 Enter。 
+2. 将代码示例添加到文件。 在代码中，将 `<mydemoserver>`、`<myadmin>`、`<mypassword>` 和 `<mydatabase>` 占位符替换为 MySQL 服务器和数据库的值。
+3. 将文件保存在项目文件夹中，扩展名为 *.py*，例如 *C:\pythonmysql\createtable.py* 或 */home/username/pythonmysql/createtable.py*。
+4. 若要运行代码，请打开命令提示符或 `bash` shell，将目录更改为项目文件夹，例如 `cd pythonmysql`。 键入 `python` 命令，后跟文件名，例如 `python createtable.py`，然后按 Enter。 
    
    > [!NOTE]
    > 在 Windows 上，如果找不到 *python.exe*，则可能需要将 Python 路径添加到 PATH 环境变量中，或提供 *python.exe* 的完整路径，例如 `C:\python27\python.exe createtable.py`。
@@ -87,13 +90,14 @@ ms.locfileid: "105110128"
 
 通过以下代码连接到服务器和数据库，创建一个表，然后使用 INSERT SQL 语句加载数据。 
 
-该代码将导入 mysql.connector 库，并使用 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函数连接到灵活服务器，使用配置集合中的[参数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)。 该代码对连接使用游标，并通过 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法对 MySQL 数据库执行 SQL 查询。 
+该代码将导入 mysql.connector 库，并使用 [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 函数连接到灵活服务器，使用配置集合中的[参数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)。 该代码对连接使用游标，并通过 [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) 方法对 MySQL 数据库执行 SQL 查询。
 
 ```python
 import mysql.connector
 from mysql.connector import errorcode
 
 # Obtain connection string information from the portal
+
 config = {
   'host':'<mydemoserver>.mysql.database.azure.com',
   'user':'<myadmin>',
@@ -102,6 +106,7 @@ config = {
 }
 
 # Construct connection string
+
 try:
    conn = mysql.connector.connect(**config)
    print("Connection established")
@@ -115,27 +120,27 @@ except mysql.connector.Error as err:
 else:
   cursor = conn.cursor()
 
-  # Drop previous table of same name if one exists
-  cursor.execute("DROP TABLE IF EXISTS inventory;")
-  print("Finished dropping table (if existed).")
+# Drop previous table of same name if one exists
+cursor.execute("DROP TABLE IF EXISTS inventory;")
+print("Finished dropping table (if existed).")
 
-  # Create table
-  cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
-  print("Finished creating table.")
+# Create table
+cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);")
+print("Finished creating table.")
 
-  # Insert some data into table
-  cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("banana", 150))
-  print("Inserted",cursor.rowcount,"row(s) of data.")
-  cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("orange", 154))
-  print("Inserted",cursor.rowcount,"row(s) of data.")
-  cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("apple", 100))
-  print("Inserted",cursor.rowcount,"row(s) of data.")
+# Insert some data into table
+cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("banana", 150))
+print("Inserted",cursor.rowcount,"row(s) of data.")
+cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("orange", 154))
+print("Inserted",cursor.rowcount,"row(s) of data.")
+cursor.execute("INSERT INTO inventory (name, quantity) VALUES (%s, %s);", ("apple", 100))
+print("Inserted",cursor.rowcount,"row(s) of data.")
 
-  # Cleanup
-  conn.commit()
-  cursor.close()
-  conn.close()
-  print("Done.")
+# Cleanup
+conn.commit()
+cursor.close()
+conn.close()
+print("Done.")
 ```
 
 ### <a name="read-data"></a>读取数据
@@ -151,6 +156,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 # Obtain connection string information from the portal
+
 config = {
   'host':'<mydemoserver>.mysql.database.azure.com',
   'user':'<myadmin>',
@@ -159,6 +165,7 @@ config = {
 }
 
 # Construct connection string
+
 try:
    conn = mysql.connector.connect(**config)
    print("Connection established")
@@ -199,6 +206,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 # Obtain connection string information from the portal
+
 config = {
   'host':'<mydemoserver>.mysql.database.azure.com',
   'user':'<myadmin>',
@@ -207,6 +215,7 @@ config = {
 }
 
 # Construct connection string
+
 try:
    conn = mysql.connector.connect(**config)
    print("Connection established")
@@ -242,6 +251,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 # Obtain connection string information from the portal
+
 config = {
   'host':'<mydemoserver>.mysql.database.azure.com',
   'user':'<myadmin>',
@@ -250,6 +260,7 @@ config = {
 }
 
 # Construct connection string
+
 try:
    conn = mysql.connector.connect(**config)
    print("Connection established.")

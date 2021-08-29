@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2021
+ms.date: 08/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 45efa0e955040931516924a1a8a8576a1a8bf12f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 340c9f549d1d60a19867ea4de58834d921871854
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744496"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015345"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>配置 Azure AD 多重身份验证设置
 
@@ -98,7 +98,11 @@ Azure 门户中提供了以下 Azure AD 多重身份验证设置：
 
 ### <a name="view-fraud-reports"></a>查看欺诈报告
 
-选择“Azure Active Directory” > “登录” > “身份验证详细信息”。 欺诈报告现在是标准 Azure AD 登录报告的一部分，它将在“结果详细信息”中显示为“已拒绝 MFA，已输入欺诈代码”。
+当用户报告欺诈时，该事件会显示在登录报告（作为被用户拒绝的登录）和审核日志中。
+
+- 若要在登录报告中查看欺诈报告，请单击“Azure Active Directory” > “登录” > “身份验证详细信息”。 欺诈报告是标准 Azure AD 登录报告的一部分，在“结果详细信息”中显示为“已拒绝 MFA，输入了欺诈代码”。
+
+- 若要查看审核日志中的欺诈报告，请单击“Azure Active Directory” > “审核日志”。 根据欺诈报告的租户级设置，欺诈报告将显示在“已报告欺诈 - 用户因 MFA 而被阻止”或“已报告欺诈 - 未采取任何措施”活动类型下。
  
 ## <a name="notifications"></a>通知
 

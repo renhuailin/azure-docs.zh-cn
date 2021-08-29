@@ -11,17 +11,18 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: c5a457a673500c542dd6130d5cfadd73ab677f7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b02e47bea875c538875c9616607e030b650183e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518345"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691425"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure 机器学习工作室（经典）REST API 错误代码
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 在 Azure 机器学习工作室（经典）Web 服务中执行操作时，可能会返回以下错误代码。
  

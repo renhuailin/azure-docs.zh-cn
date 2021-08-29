@@ -1,17 +1,20 @@
 ---
 title: 使用 Azure 数据工厂从 Web 表复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解 Azure 数据工厂的 Web 表连接器，可通过它将数据从 Web 表复制到数据工厂支持作为接收器的数据存储中。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jianleishen
-ms.openlocfilehash: d3035220f719bb4afde4dec8ff8417114b6569ee
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 0ad8b60bab9448e4571bb499730bd0451629560b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484750"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638168"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]

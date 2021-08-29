@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9cde810bb9f612b0dc84fb4dd7593761b057e722
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: efcbaab63bf6372761e7cd164428a30f68243e2e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142848"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751653"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>使用 Azure 中的文件共享在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例
 
@@ -47,7 +47,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 * SAP 说明 [2287140](https://launchpad.support.sap.com/#/notes/2287140) 列出了 SAP 支持的 SMB 3.x 协议 CA 功能的先决条件。
 * SAP 说明 [2802770](https://launchpad.support.sap.com/#/notes/2802770) 提供了针对 Windows 2012 和 2016 上 SAP transaction AL11 运行缓慢问题的故障排除信息。
 * SAP 说明 [1911507](https://launchpad.support.sap.com/#/notes/1911507) 提供了针对 Windows Server 上文件共享（使用 SMB 3.0 协议）的透明故障转移功能的相关信息。
-* SAP 说明 [662452](https://launchpad.support.sap.com/#/notes/662452) 提供了相关建议（停用 8.3 名称生成）来解决数据访问过程中出现的问题/处理文件系统性能不佳的情况。
+* SAP 说明 [662452](https://launchpad.support.sap.com/#/notes/662452) 提供了相关建议（停用 8.3 名称生成）来解决数据访问过程中出现的错误/处理文件系统性能不佳的情况。
 * [在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享](./sap-high-availability-installation-wsfc-file-share.md) 
 * [在故障转移群集上安装 (A)SCS 实例](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 
@@ -153,11 +153,10 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 * 建议在存储池中保留一些未分配的容量。 在存储池中留一些未分配的容量可以使卷空间能够在驱动器故障时进行“就地”修复。 这样可提高数据安全性和性能。  有关详细信息，请参阅[选择卷大小][choosing-the-size-of-volumes-s2d]。
 * 不需要针对横向扩展文件共享网络名称（例如 \<SAP global host\>）来配置 Azure 内部负载均衡器。 此操作针对 SAP ASCS/SCS 实例的 \<ASCS/SCS virtual host name\>，或者针对 DBMS。 横向扩展文件共享将负载横向扩展到所有群集节点。 \<SAP global host\> 将本地 IP 地址用于所有群集节点。
 
-
 > [!IMPORTANT]
 > 不能重命名指向 \<SAP global host\> 的 SAPMNT 文件共享。 SAP 仅支持共享名“sapmnt”。
 >
-> 有关详细信息，请参阅 [SAP 说明 2492395 - 是否可以更改共享名 sapmnt？][2492395]
+有关详细信息，请参阅 [SAP 说明 2492395 - 是否可以更改共享名 sapmnt？][2492395]
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>在两个群集中配置 SAP ASCS/SCS 实例和横向扩展文件共享
 
@@ -174,6 +173,35 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 ![图 5：在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文件共享][sap-ha-guide-figure-8007]
 
 **图 5：** 在两个群集中部署的 SAP ASCS/SCS 实例和横向扩展文件共享
+
+## <a name="optional-configurations"></a>可选配置
+
+下图显示了 Azure VM 上运行 Microsoft Windows 故障转移群集以减少 VM 总数的多个 SAP 实例。
+
+这可以是 SAP ASCS/SCS 群集上的本地 SAP 应用程序服务器，也可以是 Microsoft SQL Server Always On 节点上的 SAP ASCS/SCS 群集角色。
+
+> [!IMPORTANT]
+> 不支持在 SQL Server Always On 节点上安装本地 SAP 应用程序服务器。
+>
+
+SAP ASCS/SCS 和 Microsoft SQL Server 数据库都是单一故障点 (SPOF)。 为了在 Windows 环境中保护这些 SPOF，使用了 WSFC。
+
+虽然 SAP ASCS/SCS 的资源消耗相当小，但建议将 SQL Server 或 SAP 应用程序服务器的内存配置减少 2 GB。
+
+### <a name="sap-application-servers-on-wsfc-nodes-using-windows-sofs"></a><a name="86cb3ee0-2091-4b74-be77-64c2e6424f50"></a>使用 Windows SOFS 的 WSFC 节点上的 SAP 应用程序服务器
+
+![图 6：Azure 中的 Windows Server 故障转移群集配置，其中包含 Windows SOFS 和本地安装的 SAP 应用程序服务器][sap-ha-guide-figure-8007A]
+
+> [!NOTE]
+> 此图显示了其他本地磁盘的使用情况。 对于不会在 OS 驱动器 (C:\) 上安装应用程序软件的客户，这是可选项
+>
+### <a name="sap-ascsscs-on-sql-server-always-on-nodes-using-windows-sofs"></a><a name="db335e0d-09b4-416b-b240-afa18505f503"></a> 使用 Windows SOFS 的 SQL Server Always On 节点上的 SAP ASCS/SCS
+
+![图 7：使用 Windows SOFS 的 SQL Server Always On 节点上的 SAP ASCS/SCS][sap-ha-guide-figure-8007B]
+
+> [!NOTE]
+> 此图显示了其他本地磁盘的使用情况。 对于不会在 OS 驱动器 (C:\) 上安装应用程序软件的客户，这是可选项
+>
 
 > [!IMPORTANT]
 > 在 Azure 云中，每个用于 SAP 和横向扩展文件共享的群集都必须部署在自己的 Azure 可用性集或 Azure 可用性区域中。 这样可确保将群集 VM 分散放置在其下的 Azure 基础结构中。 该技术支持可用性区域部署。
@@ -204,7 +232,7 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 [kb4025334]:https://support.microsoft.com/help/4025334/windows-10-update-kb4025334
 
 [dv2-series]:../../dv2-dsv2-series.md
-[ds-series]:https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general
+[ds-series]:/azure/virtual-machines/windows/sizes-general
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -230,10 +258,10 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 [sap-hana-ha]:sap-hana-high-availability.md
 [sap-suse-ascs-ha]:high-availability-guide-suse.md
 
-[planning-volumes-s2d-choosing-filesystem]:https://docs.microsoft.com/windows-server/storage/storage-spaces/plan-volumes#choosing-the-filesystem
-[choosing-the-size-of-volumes-s2d]:https://docs.microsoft.com/windows-server/storage/storage-spaces/plan-volumes#choosing-the-size-of-volumes
-[deploy-sofs-s2d-in-azure]:https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment
-[s2d-in-win-2016]:https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview
+[planning-volumes-s2d-choosing-filesystem]:/windows-server/storage/storage-spaces/plan-volumes#choosing-the-filesystem
+[choosing-the-size-of-volumes-s2d]:/windows-server/storage/storage-spaces/plan-volumes#choosing-the-size-of-volumes
+[deploy-sofs-s2d-in-azure]:/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment
+[s2d-in-win-2016]:/windows-server/storage/storage-spaces/storage-spaces-direct-overview
 [deep-dive-volumes-in-s2d]:https://blogs.technet.microsoft.com/filecab/2016/08/29/deep-dive-volumes-in-spaces-direct/
 
 [planning-guide]:planning-guide.md
@@ -340,7 +368,9 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 [sap-ha-guide-figure-8004]:./media/virtual-machines-shared-sap-high-availability-guide/8004.png
 [sap-ha-guide-figure-8005]:./media/virtual-machines-shared-sap-high-availability-guide/8005.png
 [sap-ha-guide-figure-8006]:./media/virtual-machines-shared-sap-high-availability-guide/8006.png
-[sap-ha-guide-figure-8007]:./media/virtual-machines-shared-sap-high-availability-guide/8007.png
+[sap-ha-guide-figure-8007]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sofs.png
+[sap-ha-guide-figure-8007A]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sofs-as.png
+[sap-ha-guide-figure-8007B]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sql-ascs-sofs.png
 [sap-ha-guide-figure-8008]:./media/virtual-machines-shared-sap-high-availability-guide/8008.png
 [sap-ha-guide-figure-8009]:./media/virtual-machines-shared-sap-high-availability-guide/8009.png
 [sap-ha-guide-figure-8010]:./media/virtual-machines-shared-sap-high-availability-guide/8010.png
@@ -362,11 +392,11 @@ SAP \<SID\> 群集角色不包含群集共享磁盘或通用文件共享群集�
 
 
 [sap-templates-3-tier-multisid-xscs-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-xscs-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-db-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-db-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
-[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
+[sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 

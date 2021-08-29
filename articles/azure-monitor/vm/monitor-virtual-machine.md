@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/02/2021
-ms.openlocfilehash: 44efb85ae2101ee1f35bd82b739e87103ad228bd
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 1324c26491e8c6f6368700d41f7f0aa8b12de8c6
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681348"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271363"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor"></a>使用 Azure Monitor 监视虚拟机
 本部分介绍了如何使用 Azure Monitor 监视虚拟机及其工作负荷的运行状况和性能。 这包括如何收集关键的遥测数据来监视、分析和可视化所收集的数据以确定趋势，以及如何配置警报以在出现严重问题时获得通知。
@@ -39,7 +39,7 @@ ms.locfileid: "122681348"
 ## <a name="layers-of-monitoring"></a>监视层
 虚拟机基本上有四个层需要监视。 每个层都有一组不同的遥测和监视要求。 
 
-| 层 | 描述 |
+| 层 | 说明 |
 |:---|:---|
 | 虚拟主机 | Azure 中的主机虚拟机。 Azure Monitor 无法访问其他云中的主机，但必须依赖于从来宾操作系统收集的信息。 主机可用于跟踪配置更改之类的活动，但通常不用于重大警报。 |
 | 来宾操作系统 | 虚拟机上运行的操作系统，即某个版本的 Windows 或 Linux。 有大量来自来宾操作系统的监视数据，例如性能数据和事件。 Azure Monitor 中的 VM 见解提供了大量逻辑，用于监视来宾操作系统的运行状况和性能。 |
@@ -61,7 +61,7 @@ ms.locfileid: "122681348"
 > [!NOTE]
 > 在具备必需的功能后，Azure Monitor 代理将完全取代 Log Analytics 代理、诊断扩展和 Telegraf 代理。 VM 见解、Azure 安全中心和 Azure Sentinel 等功能仍然需要这些其他的代理。
 
-- [Azure Monitor 代理](../agents/agents-overview.md#azure-monitor-agent)：支持 Azure 中的、其他云环境中的和本地的虚拟机。 将数据发送到 Azure Monitor 指标和日志。 当它完全支持 VM 见解、Azure 安全中心和 Azure Sentinel 时，它将完全替代 Log Analytics 代理和诊断扩展。
+- [Azure Monitor 代理](../agents/agents-overview.md#log-analytics-agent)：支持 Azure 中的、其他云环境中的和本地的虚拟机。 将数据发送到 Azure Monitor 指标和日志。 当它完全支持 VM 见解、Azure 安全中心和 Azure Sentinel 时，它将完全替代 Log Analytics 代理和诊断扩展。
 - [Log Analytics 代理](../agents/agents-overview.md#log-analytics-agent)：支持 Azure 中的、其他云环境中的和本地的虚拟机。 将数据发送到 Azure Monitor 日志。 支持 VM 见解和监视解决方案。 此代理是用于 System Center Operations Manager 的代理。
 - [Dependency Agent](../agents/agents-overview.md#dependency-agent)：收集有关虚拟机上运行的进程及其依赖项的数据。 依靠 Log Analytics 代理将数据传输到 Azure 中，并支持 VM 见解、服务映射和 Wire Data 2.0 解决方案。
 - [Azure 诊断扩展](../agents/agents-overview.md#azure-diagnostics-extension)：仅适用于 Azure Monitor 虚拟机。 可以将数据发送到 Azure 事件中心和 Azure 存储。

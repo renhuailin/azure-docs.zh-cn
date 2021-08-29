@@ -84,7 +84,7 @@ conceptualContent:
         - url: /azure/architecture/best-practices/
           itemType: reference
           text: 云最佳做法
-        - url: /azure/architecture/framework/resiliency/overview
+        - url: /azure/architecture/framework/resiliency/app-design
           itemType: reference
           text: 设计可靠的 Azure 应用程序
         - url: /azure/architecture/patterns/

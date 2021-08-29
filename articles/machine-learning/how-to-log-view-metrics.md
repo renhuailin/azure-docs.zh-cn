@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: ce8fe90a88795c7c08708d6a77246d36f3079e4c
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 4cb94dab1576e6fdb422fc640ae6edfdcdaad119
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889135"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446214"
 ---
 # <a name="log--view-metrics-and-log-files"></a>记录并查看指标和日志数据
 
@@ -38,7 +38,7 @@ ms.locfileid: "107889135"
 
 可以记录多个数据类型，包括标量值、列表、表、图像、目录等。 有关不同数据类型的详细信息和 Python 代码示例，请查看 [Run 类参考页](/python/api/azureml-core/azureml.core.run%28class%29)。
 
-### <a name="logging-run-metrics"></a>运行指标日志记录 
+## <a name="logging-run-metrics"></a>运行指标日志记录 
 
 使用日志记录 API 中的以下方法可影响指标可视化效果。 请注意这些记录的指标的[服务限制](./resource-limits-quotas-capacity.md#metrics)。 
 
@@ -50,29 +50,43 @@ ms.locfileid: "107889135"
 |记录包含 2 个数字列的表|`run.log_table(name='Sine Wave', value=sines)`|双变量折线图|
 |日志图像|`run.log_image(name='food', path='./breadpudding.jpg', plot=None, description='desert')`|使用此方法在运行中记录图像文件或 matplotlib 图。 运行记录中可显示和比较这些图像|
 
-### <a name="logging-with-mlflow"></a>用 MLflow 进行日志记录
-使用 MLFlowLogger 记录指标。
+## <a name="logging-with-mlflow"></a>用 MLflow 进行日志记录
 
-```python
-from azureml.core import Run
-# connect to the workspace from within your running code
-run = Run.get_context()
-ws = run.experiment.workspace
+建议使用 MLflow 来记录模型、指标和项目，因为它是开源的，并且它支持云可移植性的本地模式。 下表和代码示例演示了如何使用 MLflow 来记录训练运行中的指标和项目。 
+[详细了解 MLflow 的日志记录方法和设计模式](https://mlflow.org/docs/latest/python_api/mlflow.html#mlflow.log_artifact)。
 
-# workspace has associated ml-flow-tracking-uri
-mlflow_url = ws.get_mlflow_tracking_uri()
+请确保将 `mlflow` 和 `azureml-mlflow` pip 包安装到工作区。 
 
-#Example: PyTorch Lightning
-from pytorch_lightning.loggers import MLFlowLogger
-
-mlf_logger = MLFlowLogger(experiment_name=run.experiment.name, tracking_uri=mlflow_url)
-mlf_logger._run_id = run.id
+```conda
+pip install mlflow
+pip install azureml-mlflow
 ```
 
-## <a name="view-run-metrics"></a>查看运行指标
+将 MLflow 跟踪 URI 设置为指向 Azure 机器学习后端，以确保将指标和项目记录到工作区。 
 
-## <a name="via-the-sdk"></a>通过 SDK
-可以使用 ```run.get_metrics()``` 查看训练的模型的指标。 请参阅以下示例。 
+```python
+from azureml.core import Workspace
+import mlflow
+from mlflow.tracking import MlflowClient
+
+ws = Workspace.from_config()
+mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
+
+mlflow.create_experiment("mlflow-experiment")
+mlflow.set_experiment("mlflow-experiment")
+mlflow_run = mlflow.start_run()
+```
+
+|记录的值|示例代码| 说明|
+|----|----|----|
+|记录数值（int 或 float） | `mlfow.log_metric('my_metric', 1)`| |
+|记录布尔值 | `mlfow.log_metric('my_metric', 0)`| 0 = True，1 = False|
+|记录字符串 | `mlfow.log_text('foo', 'my_string')`| 记录为项目|
+|记录 numpy 指标或 PIL 图像对象|`mlflow.log_image(img, 'figure.png')`||
+|记录 matlotlib 绘图或图像文件|` mlflow.log_figure(fig, "figure.png")`||
+
+## <a name="view-run-metrics-via-the-sdk"></a>通过 SDK 查看运行指标
+可以使用 `run.get_metrics()` 查看训练的模型的指标。 
 
 ```python
 from azureml.core import Run
@@ -80,16 +94,41 @@ run = Run.get_context()
 run.log('metric-name', metric_value)
 
 metrics = run.get_metrics()
-# metrics is of type Dict[str, List[float]] mapping mertic names
+# metrics is of type Dict[str, List[float]] mapping metric names
 # to a list of the values for that metric in the given run.
 
 metrics.get('metric-name')
 # list of metrics in the order they were recorded
 ```
 
+还可以通过运行对象的数据和信息属性，使用 MLflow 来访问运行信息。 有关详细信息，请参阅 [MLflow.entities.Run 对象](https://mlflow.org/docs/latest/python_api/mlflow.entities.html#mlflow.entities.Run)文档。 
+
+在该运行完成后，可以使用 MlFlowClient () 来检索它。
+
+```python
+from mlflow.tracking import MlflowClient
+
+# Use MlFlow to retrieve the run that was just completed
+client = MlflowClient()
+finished_mlflow_run = MlflowClient().get_run(mlflow_run.info.run_id)
+```
+
+可以在运行对象的数据字段中查看该运行的指标、参数和标记。
+
+```python
+metrics = finished_mlflow_run.data.metrics
+tags = finished_mlflow_run.data.tags
+params = finished_mlflow_run.data.params
+```
+
+>[!NOTE]
+> `mlflow.entities.Run.data.metrics` 下的指标字典只返回某个给定指标名称的最近记录的值。 例如，如果按顺序依次将 1、2、3、4 记录到名为 `sample_metric` 的指标，则在 `sample_metric` 的指标字典中只会存在 4。
+> 
+> 若要获取为某个特定指标名称记录的所有指标，可以使用 [`MlFlowClient.get_metric_history()`](https://www.mlflow.org/docs/latest/python_api/mlflow.tracking.html#mlflow.tracking.MlflowClient.get_metric_history)。
+
 <a name="view-the-experiment-in-the-web-portal"></a>
 
-## <a name="view-run-metrics-in-aml-studio-ui"></a>在 AML 工作室用户界面查看运行指标
+## <a name="view-run-metrics-in-the-studio-ui"></a>在工作室 UI 中查看运行指标
 
 可以在 [Azure 机器学习工作室](https://ml.azure.com)中浏览已完成的运行记录，包括记录的指标。
 

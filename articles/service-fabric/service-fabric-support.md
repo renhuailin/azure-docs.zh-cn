@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 5/17/2021
 ms.author: edoyle
 ms.custom: support-help-page
-ms.openlocfilehash: a4f83d6ddf09ca449da74f163a82baf2b12adc91
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3b84f85a01ebaff9c3901672d31a135586280e13
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950075"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633539"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
 
@@ -81,20 +81,6 @@ ms.locfileid: "111950075"
 </div>
 
 [StackOverflow][stackoverflow] 上的 `azure-service-fabric` 标记用于询问有关平台如何工作以及如何使用它来完成某些任务的一般问题。
-
-## <a name="submit-feedback-on-azure-feedback"></a>在 Azure 反馈中提交反馈
-<div class='icon is-large'>
-    <img alt='UserVoice' src='./media/logos/azure-feedback-logo.png'>
-</div>
-
-[有关 Service Fabric 的 Azure 反馈论坛][uservoice-forum]是提交重要的产品功能想法的最佳场所。 我们会评审最热门的请求，并将其作为我们的中长期规划的考虑因素。 我们鼓励你在社区内争取大家对建议的支持。
-
-
-> [!Note]
-> Service Fabric 预览版不支持用于生产。 有时我们会推出特殊的预览版本，其中包含我们希望通过调查获得早期反馈的重要功能更改。 应该只在不提供生产工作负载的隔离测试环境中使用预览版。 生产群集应始终运行支持的稳定 Service Fabric 版本。 我们不提供这些预览版本的付费支持选项。
->
-> 预览版本始终以主版本号和次版本号 255 开头。 例如，如果你看到 Service Fabric 版本255.255.5703.949，则此版本处于预览阶段，并且仅用于测试群集。 这些预览版本也在 [Service Fabric 团队博客](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)上公布，并将提供有关包含的功能的详细信息。 请使用上面列出的选项之一提供反馈。
-
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>随时了解更新和新的版本
 
