@@ -1,15 +1,15 @@
 ---
 title: Azure 事件网格的 Azure Policy 法规合规性控制措施
 description: 列出可用于 Azure 事件网格的 Azure Policy 法规合规性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 07/16/2021
+ms.date: 08/20/2021
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: d1739f9518ffd9513db7174ef314cc7c56c6428f
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 1c458756a76bce719265c178bbf9913e278e3d35
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114405600"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609303"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-grid"></a>Azure 事件网格的 Azure Policy 法规合规性控制措施
 
