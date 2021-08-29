@@ -1,15 +1,15 @@
 ---
 title: 将客户加入 Azure Lighthouse
 description: 了解如何将客户加入到 Azure Lighthouse，以便你的租户中的用户能够访问和管理客户资源。
-ms.date: 05/25/2021
+ms.date: 08/16/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: de0520f7ed8be24ac19b4738828890877456f734
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 533841e958d7873c4961814f7398ec539fd6a6fd
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078952"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253225"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
@@ -31,8 +31,8 @@ ms.locfileid: "112078952"
 
 要载入客户的租户，必须具备有效的 Azure 订阅。 需了解以下信息：
 
-- 服务提供商租户的租户 ID（要在其中管理客户的资源）
-- 客户租户的租户 ID（具有由服务提供商管理的资源）
+- 服务提供商的租户（你将在其中管理客户的资源）的租户 ID。 如果你[在 Azure 门户中创建模板](#create-your-template-in-the-azure-portal)，系统会自动提供此值。
+- 客户的租户（其中会有服务提供商管理的资源）的租户 ID。
 - 客户租户中由服务提供商管理的每个特定订阅的订阅 ID（或包含将由服务提供商管理的资源组的订阅 ID）。
 
 如果尚未准备好这些 ID 值，可通过以下方式之一进行检索。 确保在部署中使用这些确切的值。
@@ -121,21 +121,48 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 
-若要加入客户，需要使用以下信息为你的产品/服务创建 [Azure 资源管理器](../../azure-resource-manager/index.yml)模板。 客户可以在 Azure 门户的[服务提供商页](view-manage-service-providers.md)中看到“mspOfferName”和“mspOfferDescription”值 。
+若要加入客户，需要使用以下信息为你的产品/服务创建 [Azure 资源管理器](../../azure-resource-manager/index.yml)模板。 在客户的租户中部署模板后，客户可以在 Azure 门户的[“服务提供商”页](view-manage-service-providers.md)中看到“mspOfferName”和“mspOfferDescription”值 。
 
 |字段  |定义  |
 |---------|---------|
 |**mspOfferName**     |描述此定义的名称。 此值将作为产品/服务的标题显示给客户，并且必须是唯一值。        |
-|**mspOfferDescription**     |产品/服务的简短说明（例如“Contoso VM 管理产品/服务”）。      |
+|**mspOfferDescription**     |产品/服务的简短说明（例如“Contoso VM 管理产品/服务”）。 此字段是可选的，但建议填写，以便客户可以清楚地了解你的产品/服务。   |
 |**managedByTenantId**     |租户 ID。          |
 |**authorizations**     |租户中用户/组/SPN 的 **principalId** 值，每个值都带有一个 **principalIdDisplayName**（帮助客户了解授权的目的）并且已映射到内置 **roleDefinitionId** 值以指定访问级别。      |
 
-加入过程需要 Azure 资源管理器模板（在[示例存储库](https://github.com/Azure/Azure-Lighthouse-samples/)中提供）以及相应的参数文件（可修改此文件，使其与你的配置匹配并定义你的授权）。
+你可以通过 Azure 门户创建此模板，也可以通过手动修改我们的[示例存储库](https://github.com/Azure/Azure-Lighthouse-samples/)中提供的模板来创建此模板。 
 
 > [!IMPORTANT]
 > 此处所述的过程要求为每个正在加入的订阅都单独进行部署，即使是在同一客户租户中加入订阅也是如此。 如果要在同一客户租户中加入不同订阅中的多个资源组，也需要单独部署。 但是，可在一个部署中载入单个订阅中的多个资源组。
 >
 > 对于应用于同一订阅（或订阅内的资源组）的多个产品/服务，还需要单独部署。 所应用的每个产品/服务必须使用不同的 **mspOfferName**。
+
+### <a name="create-your-template-in-the-azure-portal"></a>在 Azure 门户中创建模板
+
+若要在 Azure 门户中创建模板，请转到“我的客户”，然后从概述页选择“创建 ARM 模板”。
+
+在“创建 ARM 模板产品/服务”页面上，提供“名称”和可选的“说明”。 这些值将用于你的模板中的 mspOfferName 和 mspOfferDescription。 系统会根据你登录到的 Azure AD 租户自动提供 managedByTenantId 值。
+
+接下来，根据你要加入的客户范围选择“订阅”或“资源组”。 如果你选择“资源组”，则需要提供要加入的资源组的名称。 你可以选择 + 图标，根据需要添加额外的资源组。 （所有资源组必须在同一客户订阅中。）
+
+最后，通过选择“+ 添加授权”来创建授权。 对于每个授权，请提供以下详细信息：
+
+1. 根据你要在授权中包括的帐户的类型选择“主体类型”。 它可以是“用户”、“组”或“服务主体”  。 在此示例中，我们将选择“用户”。
+1. 选择“+ 选择用户”链接以打开选择窗格。 可以使用搜索字段查找要添加的用户。 完成此操作后，单击“选择”。 用户的“主体 ID”将会自动填充。
+1. 查看“显示名称”字段（根据你选择的用户进行填充），根据需要进行更改。
+1. 选择要分配给此用户的“角色”。
+1. 对于“访问权限”类型，请选择“永久”或“符合条件”。 如果你选择“符合条件”，则需要指定最长持续时间、多重身份验证以及是否需要审批等选项。 有关这些选项的详细信息，请参阅[创建符合条件的授权](create-eligible-authorizations.md)。 “符合条件的授权”功能目前为公共预览版，不能与服务主体一起使用。
+1. 选择“添加”来创建授权。
+
+:::image type="content" source="../media/add-authorization.png" alt-text="屏幕截图显示了 Azure 门户中的“添加授权”部分。":::
+
+在选择“添加”后，将会返回到“创建 ARM 模板产品/服务”屏幕。 你可以再次选择“+ 添加授权”以根据需要添加任意多的授权。
+
+添加所有授权后，请选择“查看模板”。 在此屏幕上，你会看到与输入的值对应的一个 .json 文件。 选择“下载”以保存此 .json 文件的副本。 然后，可以将此模板[部署到客户的租户中](#deploy-the-azure-resource-manager-template)。 如果需要进行任何更改，也可以手动编辑它。 请注意，该文件不存储在 Azure 门户中。
+
+### <a name="create-your-template-manually"></a>手动创建模板
+
+可以使用 Azure 资源管理器模板（在[示例存储库](https://github.com/Azure/Azure-Lighthouse-samples/)中提供）和相应的参数文件（可修改此文件，使其与你的配置匹配并定义你的授权）来创建模板。 如果你愿意，可以直接在模板中包含所有信息，而不使用单独的参数文件。
 
 所选的模板取决于你是要加入整个订阅，还是要加入订阅中的一个资源组或多个资源组。 我们还提供了一个模板，可供购买了你发布 Azure 市场的托管服务产品/服务的客户使用；如果你偏向于按此方式载入其资源，则可使用它。
 
@@ -146,8 +173,10 @@ az role definition list --name "<roleName>" | grep name
 |订阅内的多个资源组   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |订阅（使用发布到 Azure 市场的产品/服务时）   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
+如果要包括[符合条件的授权](create-eligible-authorizations.md#create-eligible-authorizations-using-azure-resource-manager-templates)（当前为公共预览版），请从[我们的示例存储库的 delegated-resource-management-eligible-authorizations 部分](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-eligible-authorizations)选择相应的模板。
+
 > [!TIP]
-> 虽然无法在一个部署中加入整个管理组，但可以[在管理组级别部署策略](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups)。 该策略使用 [deployIfNotExists 效果](../../governance/policy/concepts/effects.md#deployifnotexists)检查管理组中的每个订阅是否已委托给指定的管理租户，如果没有，则会基于提供的值来创建分配。 然后，你有权访问该管理组中的所有订阅，尽管必须将其作为单独的订阅进行处理（而不是将该管理组作为一个整体对其执行操作）。
+> 虽然无法在一个部署中加入整个管理组，但你可以部署策略以[在管理组中加入每个订阅](onboard-management-group.md)。 然后，你将有权访问该管理组中的所有订阅，尽管你必须将其作为单独的订阅进行处理（不必直接对管理组资源执行操作）。
 
 以下示例显示了一个修改后的 **delegatedResourceManagement.parameters.json** 文件，该文件可用于加入订阅。 资源组参数文件（位于 [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) 文件夹）很类似，但还带有一个 rgName 参数，它用于标识要载入的特定资源组。
 
@@ -204,26 +233,38 @@ az role definition list --name "<roleName>" | grep name
 
 上面示例中的最后一个授权添加了具有用户访问管理员角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 principalId。 在分配此角色时，必须包含“delegatedRoleDefinitionIds”属性以及一个或多个受支持的 Azure 内置角色。 在此授权中创建的用户将能够在客户租户中将这些角色分配给[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，这是[部署可修正的策略](deploy-policy-remediation.md)需要执行的操作。  用户还可以创建支持事件。 通常与用户访问管理员角色关联的其他权限均不适用于此“principalId”。
 
-## <a name="deploy-the-azure-resource-manager-templates"></a>部署 Azure 资源管理器模板
+## <a name="deploy-the-azure-resource-manager-template"></a>部署 Azure 资源管理器模板
 
-在更新了参数文件后，客户租户中的用户必须在其租户中部署 Azure 资源管理器模板。 每个要加入的订阅（或者，每个包含要加入的资源组的订阅）都需要单独进行部署。
+在你创建模板后，客户的租户中的某个用户必须将该模板部署在其租户中。 每个要加入的订阅（或者，每个包含要加入的资源组的订阅）都需要单独进行部署。
 
 > [!IMPORTANT]
 > 此部署必须由客户租户中的非来宾帐户完成，该帐户对于正在加入的订阅（或包含正在加入的资源组的订阅）拥有具备 `Microsoft.Authorization/roleAssignments/write` 权限的角色，如 [所有者](../../role-based-access-control/built-in-roles.md#owner)。 如果要查找所有可以委托订阅的用户，客户租户中的用户可在 Azure 门户中选择订阅，打开“访问控制 (IAM)”，然后[查看具有所有者角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
 >
 > 如果订阅是通过[云解决方案提供商 (CSP) 计划](../concepts/cloud-solution-provider.md)创建的，则在服务提供商租户中具有[管理员代理](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles)角色的任何用户都可以执行部署。
 
-该部署可以在 Azure 门户中使用 PowerShell 或使用 Azure CLI 来完成，如下所示。
-
-### <a name="azure-portal"></a>Azure 门户
-
-1. 在我们的 [GitHub 存储库](https://github.com/Azure/Azure-Lighthouse-samples/)中，选择要使用的模板旁边显示的“部署到 Azure”按钮。 Azure 门户中会打开模板。
-1. 输入“Msp 产品/服务名称”、“Msp 产品/服务描述”、“按租户 Id 管理”和“授权”的值   。 如果需要，可选择“编辑参数”，以在参数文件中直接输入 `mspOfferName`、`mspOfferDescription`、`managedbyTenantId` 和 `authorizations` 的值。 请确保更新这些值，而不是使用模板中的默认值。
-1. 依次选择“查看并创建”、“创建” 。
-
-几分钟后，应该会看到已完成部署的通知。
+可以通过 PowerShell、Azure CLI 或 Azure 门户完成该部署，如下所示。
 
 ### <a name="powershell"></a>PowerShell
+
+部署单个模板：
+
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if you're not using Cloud Shell
+
+# Deploy Azure Resource Manager template using template and parameter file locally
+New-AzSubscriptionDeployment -Name <deploymentName> `
+                 -Location <AzureRegion> `
+                 -TemplateFile <pathToTemplateFile> `
+                 -Verbose
+
+# Deploy Azure Resource Manager template that is located externally
+New-AzSubscriptionDeployment -Name <deploymentName> `
+                 -Location <AzureRegion> `
+                 -TemplateUri <templateUri> `
+                 -Verbose
+```
+
+使用单独的参数文件来部署模板：
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -245,6 +286,26 @@ New-AzSubscriptionDeployment -Name <deploymentName> `
 
 ### <a name="azure-cli"></a>Azure CLI
 
+部署单个模板：
+
+```azurecli-interactive
+# Log in first with az login if you're not using Cloud Shell
+
+# Deploy Azure Resource Manager template using template and parameter file locally
+az deployment sub create --name <deploymentName> \
+                         --location <AzureRegion> \
+                         --template-file <pathToTemplateFile> \
+                         --verbose
+
+# Deploy external Azure Resource Manager template, with local parameter file
+az deployment sub create --name <deploymentName> \
+                         --location <AzureRegion> \
+                         --template-uri <templateUri> \
+                         --verbose
+```
+
+使用单独的参数文件来部署模板：
+
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
 
@@ -262,6 +323,16 @@ az deployment sub create --name <deploymentName> \
                          --parameters <parameterFile> \
                          --verbose
 ```
+
+### <a name="azure-portal"></a>Azure 门户
+
+使用此选项，你可以直接在 Azure 门户中修改模板，然后部署模板。 这必须由客户租户中的用户执行。
+
+1. 在我们的 [GitHub 存储库](https://github.com/Azure/Azure-Lighthouse-samples/)中，选择要使用的模板旁边显示的“部署到 Azure”按钮。 Azure 门户中会打开模板。
+1. 输入“Msp 产品/服务名称”、“Msp 产品/服务描述”、“按租户 Id 管理”和“授权”的值   。 如果需要，可选择“编辑参数”，以在参数文件中直接输入 `mspOfferName`、`mspOfferDescription`、`managedbyTenantId` 和 `authorizations` 的值。 请确保更新这些值，而不是使用模板中的默认值。
+1. 依次选择“查看并创建”、“创建” 。
+
+几分钟后，应该会看到已完成部署的通知。
 
 ## <a name="confirm-successful-onboarding"></a>确认成功载入
 
