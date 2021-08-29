@@ -1,19 +1,21 @@
 ---
 title: Azure 数据工厂中的 If Condition 活动
+titleSuffix: Azure Data Factory & Azure Synapse
 description: If Condition 活动允许你控制基于条件的处理流。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3a1df46f3f54cdbab62d50aca71c850e776aa9ff
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.custom: devx-track-azurepowershell, synapse
+ms.openlocfilehash: cc897e9657120b3a290c151a4c6582f29e905b4e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675032"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638831"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure 数据工厂中的 If Condition 活动
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -62,7 +64,7 @@ If Condition 活动可提供 if 语句在编程语言中提供相同的功能。
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必需
 -------- | ----------- | -------------- | --------
 name | if-condition 活动名称。 | String | 是
 type | 必须设置为“IfCondition” | String | 是

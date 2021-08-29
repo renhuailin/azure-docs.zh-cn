@@ -75,7 +75,7 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: 使用 Azure NetApp 文件实现电子设计自动化的好处
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
-            - name: 将 Azure NetApp 文件与 Windows 虚拟桌面配合使用的好处
+            - name: 将 Azure NetApp 文件与 Azure 虚拟桌面配合使用的好处
               href: solutions-windows-virtual-desktop.md
             - name: 使用 Azure NetApp 文件进行 SQL Server 部署的好处
               href: solutions-benefits-azure-netapp-files-sql-server.md
@@ -119,8 +119,8 @@
       items:
         - name: 创建 SMB 卷
           href: azure-netapp-files-create-volumes-smb.md
-        - name: 转换现有 SMB 卷以使用持续可用性
-          href: convert-smb-continuous-availability.md
+        - name: 在现有 SMB 卷上启用连续可用性
+          href: enable-continuous-availability-existing-SMB.md
     - name: 创建双协议卷
       href: create-volumes-dual-protocol.md
     - name: 通过 TLS 配置 ADDS LDAP
@@ -129,6 +129,8 @@
       href: azure-netapp-files-configure-export-policy.md
     - name: 装载或卸载卷
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
+    - name: 配置 Unix 权限并更改所有权模式
+      href: configure-unix-permissions-change-ownership-mode.md
     - name: 管理快照
       href: azure-netapp-files-manage-snapshots.md
     - name: 重设容量池或卷的大小

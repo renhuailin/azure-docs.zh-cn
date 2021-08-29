@@ -13,25 +13,25 @@
       href: quickstart-onboard.md
 - name: 教程
   items:
-    - name: 调查事件
-      href: tutorial-investigate-cases.md
+    - name: 使用 UEBA 进行调查
+      href: investigate-with-ueba.md
     - name: 使用自动化来响应威胁
       href: tutorial-respond-threats-playbook.md
-    - name: 与 Microsoft 365 Defender 集成
-      href: microsoft-365-defender-sentinel-integration.md
     - name: 创建 Azure Sentinel 的 KQL 查询（Learn 模块）
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
     - name: 从 Azure Sentinel 创建 Power BI 报表
       href: powerbi.md
 - name: 概念
   items:
+    - name: Azure Sentinel 先决条件
+      href: prerequisites.md
     - name: 最佳做法
       items:
-        - name: 预部署最佳做法
-          href: prerequisites.md
-        - name: 一般最佳实践
+        - name: 概述
           href: best-practices.md
-        - name: 数据收集最佳做法
+        - name: 工作区体系结构
+          href: best-practices-workspace-architecture.md
+        - name: 数据收集
           href: best-practices-data.md
     - name: 体系结构
       items:
@@ -39,12 +39,22 @@
           href: roles.md
         - name: 成本和计费
           href: azure-sentinel-billing.md
+        - name: 跨工作区和租户扩展 Azure Sentinel
+          href: extend-sentinel-across-workspaces-tenants.md
         - name: 安全基线
           href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=%2fazure%2fsentinel%2fTOC.json
     - name: 数据收集和分析
       items:
         - name: 规范化和 Azure Sentinel 信息模型 (ASIM)
-          href: normalization.md
+          items:
+            - name: ASIM 概述
+              href: normalization.md
+            - name: ASIM 架构
+              href: normalization-about-schemas.md
+            - name: ASIM 分析程序
+              href: normalization-about-parsers.md
+            - name: ASIM 内容
+              href: normalization-content.md
         - name: 使用实体对数据进行分类
           href: entities-in-azure-sentinel.md
     - name: Azure Sentinel 解决方案
@@ -79,8 +89,20 @@
           href: automate-responses-with-playbooks.md
         - name: 自带机器学习
           href: bring-your-own-ml.md
+    - name: Microsoft 365 Defender 集成
+      href: microsoft-365-defender-sentinel-integration.md
 - name: 操作指南
   items:
+    - name: 设计工作区体系结构
+      items:
+        - name: 概述
+          href: design-your-workspace-architecture.md
+        - name: 示例工作区设计
+          href: sample-workspace-designs.md
+        - name: 计划和管理成本
+          href: azure-sentinel-billing.md
+        - name: 管理工作区访问权限
+          href: resource-context-rbac.md
     - name: 迁移到 Azure Sentinel
       href: migration.md
     - name: 收集数据
@@ -273,8 +295,8 @@
                       href: connect-wirex-systems.md
                     - name: Zscaler
                       href: connect-zscaler.md
-                - name: 步骤 3 验证连接性
-                  href: connect-cef-verify.md
+            - name: CEF 和 Syslog 故障排除
+              href: troubleshooting-cef-syslog.md
         - name: 创建自定义连接器
           href: create-custom-connector.md
         - name: 连接 Azure Stack VM
@@ -285,28 +307,28 @@
           href: store-logs-in-azure-data-explorer.md
     - name: 发现和部署解决方案
       href: sentinel-solutions-deploy.md
-    - name: 连接威胁智能
+    - name: 使用威胁情报
       items:
         - name: 连接威胁情报平台
           href: connect-threat-intelligence-tip.md
         - name: 连接到 STIX/TAXII 源
           href: connect-threat-intelligence-taxii.md
-    - name: 使用威胁指示器
-      href: work-with-threat-indicators.md
+        - name: 使用威胁指示器
+          href: work-with-threat-indicators.md
     - name: 监视和可视化数据
       items:
         - name: 可视化收集的数据
-          href: quickstart-get-visibility.md
+          href: get-visibility.md
         - name: 使用 Azure Monitor 工作簿
-          href: tutorial-monitor-your-data.md
+          href: /azure/sentinel/monitor-your-data
     - name: 检测威胁并分析数据
       items:
         - name: 使用内置角色
-          href: tutorial-detect-threats-built-in.md
+          href: detect-threats-built-in.md
         - name: 创建自定义规则
           items:
             - name: 创建规则
-              href: tutorial-detect-threats-custom.md
+              href: detect-threats-custom.md
             - name: 将数据字段映射到实体
               href: map-data-fields-to-entities.md
             - name: 警报中的 Surface 自定义详细信息
@@ -337,10 +359,10 @@
           href: livestream.md
     - name: 调查和响应
       items:
+        - name: 调查事件
+          href: investigate-cases.md
         - name: 创建自定义实体活动
           href: customize-entity-activities.md
-        - name: 常见的 UEBA 调查方法
-          href: investigate-with-ueba.md
         - name: 在 Microsoft Teams 中开展协作
           href: collaborate-in-microsoft-teams.md
         - name: 向 Azure Sentinel 验证 playbook
@@ -349,10 +371,6 @@
           href: playbook-triggers-actions.md
     - name: 管理 Azure Sentinel
       items:
-        - name: 管理工作区访问权限
-          href: resource-context-rbac.md
-        - name: 跨工作区和租户扩展 Azure Sentinel
-          href: extend-sentinel-across-workspaces-tenants.md
         - name: 适用于 MSSP 的 Azure Sentinel
           items:
             - name: 管理多个租户 (MSSP)
@@ -379,8 +397,12 @@
       href: sap-solution-log-reference.md
     - name: SAP 工作簿、规则和播放列表
       href: sap-solution-security-content.md
-    - name: 在本地部署 SAP 数据连接器
+    - name: 使用 SNC 连接部署 SAP 数据连接器
+      href: sap-solution-deploy-snc.md
+    - name: 专家配置选项
       href: sap-solution-deploy-alternate.md
+    - name: SAP 解决方案部署故障排除
+      href: sap-deploy-troubleshoot.md
 - name: 参考
   items:
     - name: Azure Sentinel REST API
@@ -411,6 +433,8 @@
               href: authentication-normalization-schema.md
             - name: DNS 规范化架构
               href: dns-normalization-schema.md
+            - name: 文件事件规范化架构
+              href: file-event-normalization-schema.md
             - name: 网络规范化架构
               href: normalization-schema.md
             - name: 处理事件规范化架构
@@ -425,6 +449,8 @@
           href: entities-reference.md
         - name: UEBA 扩充
           href: ueba-enrichments.md
+        - name: 播放列表模板架构
+          href: watchlist-schemas.md
         - name: Kusto 查询语言
           items:
             - name: Kusto 查询概述
@@ -447,6 +473,8 @@
   items:
     - name: 有用的资源
       href: resources.md
+    - name: 示例工作区体系结构
+      href: sample-workspace-designs.md
     - name: Azure Sentinel 博客
       href: 'https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog'
     - name: 区域可用性

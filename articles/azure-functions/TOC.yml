@@ -25,7 +25,7 @@
               href: create-first-function-vs-code-csharp.md
             - name: Java
               href: create-first-function-vs-code-java.md
-            - name: JavaScript
+            - name: Javascript
               href: create-first-function-vs-code-node.md
             - name: PowerShell
               href: create-first-function-vs-code-powershell.md
@@ -44,7 +44,7 @@
               href: create-first-function-cli-csharp.md
             - name: Java
               href: create-first-function-cli-java.md
-            - name: JavaScript
+            - name: Javascript
               href: create-first-function-cli-node.md
             - name: PowerShell
               href: create-first-function-cli-powershell.md
@@ -118,7 +118,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: JavaScript
+        - name: Javascript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -222,7 +222,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: JavaScript
+        - name: Javascript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -290,8 +290,6 @@
                   href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
                   href: ./create-first-function-vs-code-csharp.md
-                - name: C# 隔离 (.NET 5)
-                  href: dotnet-isolated-process-developer-howtos.md
                 - name: 使用 Gradle 的 Java
                   href: functions-create-first-java-gradle.md
                 - name: 使用 Eclipse 的 Java
@@ -517,6 +515,8 @@
           href: /python/api/azure-functions/azure.functions
     - name: 应用设置参考
       href: functions-app-settings.md
+    - name: Azure Functions Core Tools
+      href: functions-core-tools-reference.md
     - name: 触发器和绑定
       items:
         - name: Blob 存储
