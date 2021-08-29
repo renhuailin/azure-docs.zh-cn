@@ -1,18 +1,20 @@
 ---
 title: 从/向 SAP Cloud for Customer 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何使用数据工厂将数据从 SAP Cloud for Customer 复制到支持的接收器数据存储，（或）从支持的源数据存储复制到 SAP Cloud for Customer。
-ms.author: jingwang
 author: linda33wj
+ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 03/17/2021
-ms.openlocfilehash: b86559422b6efeed666a3ae35022563a66d9c7e6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 73cfb11f914edf2034f18bb581473a23774818c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597311"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638845"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Cloud for Customer (C4C) 复制数据
 
@@ -36,7 +38,7 @@ ms.locfileid: "104597311"
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 SAP Cloud for Customer 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -44,7 +46,7 @@ ms.locfileid: "104597311"
 
 SAP Cloud for Customer 链接服务支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomer**。 | 是 |
 | url | SAP C4C OData 服务的 URL。 | 是 |
@@ -81,7 +83,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要从 SAP Cloud for Customer 复制数据，请将数据集的 type 属性设置为 **SapCloudForCustomerResource**。 支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**SapCloudForCustomerResource** |是 |
 | path | 指定 SAP C4C OData 实体的路径。 |是 |
@@ -113,7 +115,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要从 SAP Cloud for Customer 复制数据，请将复制活动中的源类型设置为 **SapCloudForCustomerSource**。 复制活动 **source** 部分支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomerSource**  | 是 |
 | query | 指定用于读取数据的自定义 OData 查询。 | 否 |
@@ -157,11 +159,11 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要将数据复制到 SAP Cloud for Customer，请将复制活动中的接收器类型设置为 **SapCloudForCustomerSink**。 复制活动接收器部分中支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomerSink**  | 是 |
-| writeBehavior | 操作的写入行为。 可以是“Insert”、“Update”。 | 不是。 默认值为“Insert”。 |
-| writeBatchSize | 写入操作的批大小。 可获得最佳性能的批大小可能会因不同表或服务器而异。 | 不是。 默认值为 10。 |
+| writeBehavior | 操作的写入行为。 可以是“Insert”、“Update”。 | 否。 默认值为“Insert”。 |
+| writeBatchSize | 写入操作的批大小。 可获得最佳性能的批大小可能会因不同表或服务器而异。 | 否。 默认值为 10。 |
 | maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接时指定一个值。| 否 |
 
 **示例：**

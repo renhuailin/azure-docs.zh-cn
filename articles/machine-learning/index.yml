@@ -1,4 +1,4 @@
-### YamlMime:Landing
+### YamlMime:Hub
 title: Azure 机器学习文档
 summary: 了解如何使用 Azure 机器学习训练和部署模型以及管理 ML 生命周期 (MLOps)。 教程、代码示例、API 参考和其他资源。
 metadata:
@@ -7,108 +7,103 @@ metadata:
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
-  ms.topic: landing-page
+  ms.topic: hub-page
   ms.collection: collection
   ms.author: sgilley
   author: sdgilley
-  ms.date: 07/09/21
+  ms.date: 08/23/2021
   ms.custom: jordan-changes
-  ms.openlocfilehash: a6c9062be083260dd7a492363cb0dd79b2f37cdf
-  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
-  ms.translationtype: HT
-  ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/10/2021
-  ms.locfileid: "113595896"
-landingContent:
-- title: 入门
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 什么是 Azure 机器学习？
-      url: overview-what-is-azure-ml.md
-  - linkListType: quickstart
-    links:
-    - text: 设置资源
+highlightedContent:
+  items:
+    - title: 什么是 Azure 机器学习？
+      itemType: overview
+      url: overview-what-is-azure-machine-learning.md
+    - title: 设置资源
+      itemType: get-started
       url: quickstart-create-resources.md
-  - linkListType: tutorial
-    links:
-    - text: 使用 Python SDK 进行训练
+    - title: 预览：使用 v2 CLI 训练模型
+      itemType: tutorial
+      url: how-to-train-cli.md
+    - title: 体系结构和术语
+      itemType: overview
+      url: concept-azure-machine-learning-architecture.md
+    - title: 第 1 天：Python 入门
+      itemType: get-started
       url: tutorial-1st-experiment-hello-world.md
-    - text: 使用 v2 CLI（预览版）进行训练
-      url: how-to-train-cli.md
-- title: 训练模型
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 优化超参数以进行模型训练
-      url: how-to-tune-hyperparameters.md
-    - text: 从可重用组件生成管道
-      url: how-to-create-machine-learning-pipelines.md
-  - linkListType: tutorial
-    links:
-    - text: 使用 AutoML 进行训练
-      url: tutorial-first-experiment-automated-ml.md
-    - text: 在云中运行训练代码（v2 CLI 预览版）
-      url: how-to-train-cli.md
-- title: 部署模型
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: 如何部署模型
-      url: how-to-deploy-and-where.md
-    - text: 使用托管终结点进行实时评分（预览版）
-      url: how-to-deploy-managed-online-endpoints.md
-    - text: 使用托管终结点进行批量评分（预览版）
-      url: how-to-use-batch-endpoint.md
-- title: 管理 ML 生命周期 (MLOps)
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 模型管理、世系和监视
-      url: concept-model-management-and-deployment.md
-  - linkListType: how-to-guide
-    links:
-    - text: 跟踪、监视、分析训练运行
-      url: how-to-track-monitor-analyze-runs.md
-    - text: 数据引入管道的 DevOps
-      url: how-to-cicd-data-ingestion.md
-- title: ML 项目的安全性
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 企业安全和治理
-      url: concept-enterprise-security.md
-  - linkListType: tutorial
-    links:
-    - text: 创建安全的工作区
-      url: tutorial-create-secure-workspace.md
-  - linkListType: how-to-guide
-    links:
-    - text: 连接到数据源
-      url: how-to-access-data.md
-- title: 参考文档
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Python SDK
-      url: /python/api/overview/azure/ml/
-    - text: REST API
-      url: /rest/api/azureml/
-    - text: 机器学习 v2 CLI
-      url: /cli/azure/ml
-- title: 资源
-  linkLists:
-  - linkListType: sample
-    links:
-    - text: Python SDK 代码示例
-      url: https://github.com/Azure/azureml-examples/blob/main/python-sdk/README.md
-    - text: v2 CLI 代码示例（预览版）
-      url: https://github.com/Azure/azureml-examples/blob/main/cli/README.md
-- title: 查找 ML 工作室（经典版）？
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: ML 工作室（经典版）文档
-      url: classic/index.yml
-    - text: Azure 机器学习与工作室（经典）
-      url: overview-what-is-machine-learning-studio.md
+    - title: 从 ML 工作室（经典）迁移
+      itemType: how-to-guide
+      url: migrate-overview.md
+conceptualContent:
+  items:
+    - title: 训练模型
+      links:
+        - url: how-to-train-cli.md
+          itemType: how-to-guide
+          text: 在云中运行训练代码（v2 CLI 预览版）
+        - url: how-to-tune-hyperparameters.md
+          itemType: how-to-guide
+          text: 优化超参数以进行模型训练
+        - url: how-to-create-machine-learning-pipelines.md
+          itemType: how-to-guide
+          text: 从可重用组件生成管道
+        - url: tutorial-first-experiment-automated-ml.md
+          itemType: tutorial
+          text: AutoML：训练分类模型
+    - title: 部署模型
+      links:
+        - url: how-to-deploy-and-where.md
+          itemType: how-to-guide
+          text: 如何部署模型
+        - url: how-to-deploy-managed-online-endpoints.md
+          itemType: how-to-guide
+          text: 使用托管终结点进行实时评分（预览版）
+        - url: how-to-use-batch-endpoint.md
+          itemType: how-to-guide
+          text: 使用托管终结点进行批量评分（预览版）
+    - title: 管理 ML 生命周期 (MLOps)
+      links:
+        - url: how-to-track-monitor-analyze-runs.md
+          itemType: how-to-guide
+          text: 跟踪、监视、分析训练运行
+        - url: concept-model-management-and-deployment.md
+          itemType: concept
+          text: 模型管理、部署、世系和监视
+        - url: how-to-cicd-data-ingestion.md
+          itemType: how-to-guide
+          text: 数据引入管道的 DevOps
+    - title: ML 项目的安全性
+      links:
+        - url: tutorial-create-secure-workspace.md
+          itemType: tutorial
+          text: 创建安全的工作区
+        - url: how-to-access-data.md
+          itemType: how-to-guide
+          text: 连接到数据源
+        - url: concept-enterprise-security.md
+          itemType: concept
+          text: 企业安全和治理
+    - title: 参考
+      links:
+        - url: /python/api/overview/azure/ml/
+          itemType: reference
+          text: Python SDK
+        - url: /rest/api/azureml/
+          itemType: reference
+          text: REST API
+        - url: /cli/azure/ml/
+          itemType: reference
+          text: V2 CLI（预览版）
+        - url: ./algorithm-module-reference/module-reference.md
+          itemType: reference
+          text: 算法和模块参考
+    - title: 资源
+      links:
+        - url: 'https://github.com/Azure/azureml-examples/blob/main/python-sdk/README.md'
+          itemType: sample
+          text: Python SDK 代码示例
+        - url: 'https://github.com/Azure/azureml-examples/blob/main/cli/README.md'
+          itemType: sample
+          text: v2 CLI 代码示例（预览版）
+        - url: ./classic/index.yml
+          itemType: overview
+          text: ML 工作室（经典版）文档

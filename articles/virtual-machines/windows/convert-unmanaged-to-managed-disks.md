@@ -7,16 +7,17 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 3f586c8907ded618b4cc4aaaadf3c87471cda0b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b1c270f83565e2968e6677f07b81968dcf61ac7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550716"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734583"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Windows 虚拟机从非托管磁盘转换为托管磁盘
 
-如果有使用非托管磁盘的现有 Windows 虚拟机 (VM)，可通过 [Azure 托管磁盘](../managed-disks-overview.md)服务将 VM 转换为使用托管磁盘。 此过程会同时转换 OS 磁盘和任何附加的数据磁盘。
+如果有使用非托管磁盘的现有 Windows 虚拟机 (VM)，可通过 [Azure 托管磁盘](../managed-disks-overview.md)服务将 VM 转换为使用托管磁盘。 此过程同时转换操作系统 (OS) 磁盘和任何附加的数据磁盘。
+
 
  
 
@@ -25,7 +26,7 @@ ms.locfileid: "102550716"
 
 * 请查看[计划迁移到托管磁盘](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)。
 
-* 请查看[有关迁移到托管磁盘的常见问题](../faq-for-disks.md#migrate-to-managed-disks)。
+* 请查看[有关迁移到托管磁盘的常见问题](/azure/virtual-machines/faq-for-disks#migrate-to-managed-disks)。
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
@@ -88,8 +89,11 @@ ms.locfileid: "102550716"
 
 ## <a name="troubleshooting"></a>故障排除
 
-如果转换过程中出现错误，或先前转换中的问题导致 VM 处于“失败”状态，请再次运行 `ConvertTo-AzVMManagedDisk` cmdlet。 简单的重试通常可以解决这种情况。
-在转换之前，确保所有 VM 扩展都处于“配置成功”状态，否则转换将失败，并出现错误代码 409。
+- 在转换之前，确保所有 VM 扩展都处于“配置成功”状态，否则转换将失败，并出现错误代码 409。
+- 如果转换过程中出现错误，或先前转换中的问题导致 VM 处于“失败”状态，请再次运行 `ConvertTo-AzVMManagedDisk` cmdlet。 简单的重试通常可以解决这种情况。
+- 如果要将 Linux VM 转换为托管磁盘，请使用最新版本的 Azure Linux 代理。 使用 Azure Linux 代理 2.2.0 及更低版本的操作可能会失败。 也不支持在通用 VM 或属于经典可用性集的 VM 上运行转换。
+- 如果转换失败并出现“SnapshotCountExceeded”错误，请删除一些快照并重试该操作。
+
 
 ## <a name="convert-using-the-azure-portal"></a>使用 Azure 门户进行转换
 

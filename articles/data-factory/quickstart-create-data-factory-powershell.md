@@ -3,17 +3,18 @@ title: 使用 Azure 数据工厂复制 Blob 存储中的数据
 description: 使用 PowerShell 创建一个 Azure 数据工厂，以便将数据从 Azure Blob 存储中的一个位置复制到另一位置。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: data-movement
 ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9535e7e864d955747f62632ea0882689519c7f85
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 1a7ebf7be5cad441ea6a37fec108cdb01c0428aa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665255"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731539"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure 数据工厂
 
@@ -105,7 +106,7 @@ ms.locfileid: "110665255"
 
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于 **参与者** 或 **所有者** 角色，或者是 Azure 订阅的 **管理员**。
 
-* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-a-linked-service"></a>创建链接服务

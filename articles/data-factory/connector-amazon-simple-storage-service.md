@@ -1,18 +1,20 @@
 ---
 title: 从 Amazon 简单存储服务 (S3) 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何使用 Azure 数据工厂将数据从 Amazon 简单存储服务 (S3) 复制到受支持的接收器数据存储。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 03/17/2021
-ms.openlocfilehash: f0b7aa98ce9adc49db7739dff00f7784b71c9384
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3f6ad09e7d52ca56dcb1eb06827513f03c8581e7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066729"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637819"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -59,7 +61,7 @@ ms.locfileid: "110066729"
 
 Amazon S3 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **AmazonS3**。 | 是 |
 | authenticationType | 指定用于连接到 Amazon S3 的身份验证类型。 可以选择使用 AWS 标识和访问管理 (IAM) 帐户的访问密钥或[临时安全凭据](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)。<br>允许的值为 `AccessKey`（默认值）和 `TemporarySecurityCredentials`。 |否 |
@@ -127,7 +129,7 @@ Amazon S3 链接服务支持以下属性：
 
 Amazon S3 支持基于格式的数据集中 `location` 设置下的以下属性：
 
-| 属性   | 说明                                                  | 必须 |
+| 属性   | 说明                                                  | 必需 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 **type** 属性必须设置为 **AmazonS3Location**。 | 是      |
 | bucketName | S3 存储桶的名称。                                          | 是      |
@@ -172,7 +174,7 @@ Amazon S3 支持基于格式的数据集中 `location` 设置下的以下属性�
 
 Amazon S3 支持基于格式的复制源中 `storeSettings` 设置下的以下属性：
 
-| 属性                 | 说明                                                  | 必须                                                    |
+| 属性                 | 说明                                                  | 必需                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | `storeSettings` 下的 **type** 属性必须设置为 **AmazonS3ReadSettings**。 | 是                                                         |
 | 找到要复制的文件： |  |  |
@@ -275,7 +277,7 @@ Amazon S3 支持基于格式的复制源中 `storeSettings` 设置下的以下�
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **AmazonS3Object**。 |是 |
 | bucketName | S3 存储桶的名称。 通配符筛选器不受支持。 |对于复制或查找活动为“是”，对于 GetMetadata 活动为“否” |
@@ -355,7 +357,7 @@ Amazon S3 支持基于格式的复制源中 `storeSettings` 设置下的以下�
 
 ### <a name="legacy-source-model-for-the-copy-activity"></a>复制活动的旧源模型
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **FileSystemSource**。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 **true**（默认值）和 **false**。 | 否 |

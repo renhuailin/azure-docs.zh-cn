@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 02/18/2021
 ms.author: davidmu
-ms.reviewer: mifarca
-ms.openlocfilehash: c0e6969b0d6814e74e99a6ad893284bc407b269d
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.reviewer: sureshja
+ms.openlocfilehash: 4d1ec8858099fed1a826d9413e40bcb7f2979010
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568417"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723133"
 ---
 # <a name="azure-active-directory-powershell-examples-for-application-management"></a>应用程序管理的 Azure Active Directory PowerShell 示例
 
