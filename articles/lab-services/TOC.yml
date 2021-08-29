@@ -70,6 +70,8 @@
                   href: class-type-react-linux.md
                 - name: React (Windows)
                   href: class-type-react-windows.md
+            - name: RStudio
+              href: class-type-rstudio-linux.md
             - name: Linux 上的 Shell 脚本
               href: class-type-shell-scripting-linux.md
             - name: SolidWorks 计算机辅助设计 (CAD)
@@ -106,12 +108,24 @@
           href: how-to-connect-peer-virtual-network.md
         - name: 如何创建包含共享资源的实验室
           href: how-to-create-a-lab-with-shared-resource.md
-        - name: 使用共享映像库
+        - name: 使用共享映像库存储自定义映像
           items:
             - name: 附加或分离共享映像库
               href: how-to-attach-detach-shared-image-gallery.md
-            - name: 将 Windows 自定义映像上传到共享映像库
-              href: upload-custom-image-shared-image-gallery.md
+            - name: 为实验室创建自定义映像
+              href: approaches-for-custom-image-creation.md
+            - name: Windows
+              items:
+                - name: 从 Azure VM 引入自定义映像
+                  href: how-to-bring-custom-windows-image-azure-vm.md
+                - name: 从物理室环境引入自定义映像
+                  href: upload-custom-image-shared-image-gallery.md
+            - name: Linux
+              items:
+                - name: 从 Azure VM 引入自定义映像
+                  href: how-to-bring-custom-linux-image-azure-vm.md
+                - name: 从物理室环境引入自定义映像
+                  href: how-to-bring-custom-linux-image-vhd.md
         - name: 向教室实验室添加其他所有者
           href: how-to-add-user-lab-owner.md
         - name: 配置防火墙设置
