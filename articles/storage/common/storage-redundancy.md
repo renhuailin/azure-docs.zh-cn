@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/10/2021
+ms.date: 08/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3f185f24c824008a6488ab2e9401dd05439daafb
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 186219af41630cf66f6addc65edfe31aef1dbb03
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984961"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122270957"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -25,6 +25,9 @@ Azure 存储始终会存储数据的多个副本，以防范各种计划内和�
 - 如何在主要区域中复制数据
 - 是否要将你的数据复制到地理上距主要区域较远的另一个区域，以防范区域性灾难
 - 应用程序是否要求在主要区域出于任何原因而不可用时，能够对次要区域中复制的数据进行读取访问
+
+> [!NOTE]
+> 本文所述的功能和区域可用性现在也可用于具有分层命名空间的帐户。
 
 ## <a name="redundancy-in-the-primary-region"></a>主要区域中的冗余
 
@@ -84,7 +87,7 @@ Azure 存储帐户中的数据在主要区域中始终复制三次。 Azure 存�
 
 ## <a name="redundancy-in-a-secondary-region"></a>次要区域中的冗余
 
-对于需要高持续性的应用程序，你可以选择将存储帐户中的数据另外复制到距离主区域数百英里的次要区域。 如果存储帐户已复制到次要区域，则即使遇到区域性服务完全中断或导致主要区域不可恢复的灾难，数据也能持久保存。
+对于需要高持续性的应用程序，可以选择将存储帐户中的数据另外复制到距离主要区域数百英里以外的次要区域。 如果存储帐户已复制到次要区域，则即使遇到区域性服务完全中断或导致主要区域不可恢复的灾难，数据也能持久保存。
 
 创建存储帐户时，可以为帐户选择主要区域。 配对的次要区域是根据主要区域确定的且无法更改。 有关 Azure 支持的区域的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
 
@@ -127,7 +130,7 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 
 以下区域支持 GZRS 和 RA-GZRS：
 
-- （非洲）南非北部
+- （亚太）东亚
 - （亚太）东南亚
 - （亚太）澳大利亚东部
 - （亚太）印度中部
@@ -138,13 +141,16 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 - （欧洲）西欧
 - （欧洲）法国中部
 - （欧洲）德国中西部
+- （欧洲）挪威东部
 - （欧洲）英国南部
 - （南美洲）巴西南部
 - （美国）美国中部
 - （美国）美国东部
 - （美国）美国东部 2
+- （美国）美国政府东部
 - （美国）美国中南部
 - （美国）美国西部 2
+- （美国）美国西部 3
 
 若要详细了解定价，请参阅 [Blob](https://azure.microsoft.com/pricing/details/storage/blobs)、[文件](https://azure.microsoft.com/pricing/details/storage/files/)、[列队](https://azure.microsoft.com/pricing/details/storage/queues/)和[表](https://azure.microsoft.com/pricing/details/storage/tables/)的定价详细信息。
 
@@ -203,9 +209,12 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 
 下表显示了每个 Azure 存储服务都支持哪些冗余选项。
 
-| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
-|:-|:-|:-|:-|
-| Blob 存储<br />队列存储<br />表存储<br />Azure 文件<br />Azure 托管磁盘 | Blob 存储<br />队列存储<br />表存储<br />Azure 文件 | Blob 存储<br />队列存储<br />表存储<br />Azure 文件<br /> | Blob 存储<br />队列存储<br />表存储<br />Azure 文件<br /> |
+| LRS | ZRS | GRS | RA-GRS | GZRS | RA-GZRS |
+|---|---|---|---|---|---|
+| Blob 存储 <br />队列存储 <br />表存储 <br />Azure 文件存储<sup>1,</sup><sup>2</sup> <br />Azure 托管磁盘 | Blob 存储 <br />队列存储 <br />表存储 <br />Azure 文件存储<sup>1,</sup><sup>2</sup> | Blob 存储 <br />队列存储 <br />表存储 <br />Azure 文件存储<sup>1</sup> | Blob 存储 <br />队列存储 <br />表存储 <br /> | Blob 存储 <br />队列存储 <br />表存储 <br />Azure 文件存储<sup>1</sup> | Blob 存储 <br />队列存储 <br />表存储 <br /> |
+
+<sup>1</sup> LRS 和 ZRS 支持标准文件共享。 GRS 和 GZRS 支持标准文件共享，前提是其大小小于或等于 5 TiB。<br />
+<sup>2</sup> LRS 和 ZRS 支持高级文件共享。<br />
 
 ### <a name="supported-storage-account-types"></a>支持的存储帐户类型
 
@@ -213,7 +222,7 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 
 | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|
-| 常规用途 v2<br /> 常规用途 v1<br /> 高级块 blob<br /> 旧 Blob<br /> 高级文件共享 | 常规用途 v2<br /> 高级块 blob<br /> 高级文件共享 | 常规用途 v2<br /> 常规用途 v1<br /> 旧 Blob | 常规用途 v2 |
+| 常规用途 v2<br /> 常规用途 v1<br /> 高级块 blob<br /> 旧版 Blob<br /> 高级文件共享 | 常规用途 v2<br /> 高级块 blob<br /> 高级文件共享 | 常规用途 v2<br /> 常规用途 v1<br /> 旧 Blob | 常规用途 v2 |
 
 所有存储帐户的所有数据的复制均基于存储帐户的冗余选项。 复制的对象包括块 Blob、追加 Blob、页 Blob、队列、表和文件。 将复制所有层（包括存档层）中的数据。 有关 blob 层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)。
 

@@ -213,7 +213,13 @@
         - name: 对事件处理程序的事件传递进行身份验证
           href: security-authentication.md
         - name: 对发布客户端进行身份验证
-          href: security-authenticate-publishing-clients.md
+          items:
+            - name: 概述
+              href: authentication-overview.md
+            - name: 使用 Azure Active Directory 进行身份验证
+              href: authenticate-with-active-directory.md
+            - name: 使用访问密钥或共享访问签名进行身份验证
+              href: authenticate-with-access-keys-shared-access-signatures.md
         - name: 授予对事件网格资源的访问权限
           href: security-authorization.md
         - name: 网络安全
@@ -246,7 +252,7 @@
           href: auth0-how-to.md
     - name: 获取主题或域的访问密钥
       href: get-access-keys.md
-    - name: 发布到自定义主题
+    - name: 使用访问密钥发布到自定义主题
       href: post-to-custom-topic.md
     - name: 在 HTTP 终结点接收事件
       href: receive-events.md

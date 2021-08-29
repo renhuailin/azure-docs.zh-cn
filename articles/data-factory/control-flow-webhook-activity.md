@@ -1,18 +1,21 @@
 ---
 title: Azure 数据工厂中的 Webhook 活动
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Webhook 活动在使用用户指定的某些条件验证附加的数据集之前，不会继续执行管道。
 author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 0c35a8b25e09029d2f561b107613b13cc40b19de
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 3c2194aff9296230333c433b65f3be303768f9fb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903877"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637909"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Webhook 活动
 

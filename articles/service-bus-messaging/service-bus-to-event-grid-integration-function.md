@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: afc0a5bf9b83363d1f4baab955b55148fe3a8498
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb18eb5df675690a6bb5b796349c140a61949df1
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95818424"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "122206979"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions"></a>教程：使用 Azure Functions 响应通过 Azure 事件网格收到的 Azure 服务总线事件
 本教程介绍如何使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应。 
@@ -27,7 +27,7 @@ ms.locfileid: "95818424"
 > * 通过事件网格连接函数和命名空间
 > * 使用 Azure Functions 接收消息
 
-[!INCLUDE [service-bus-event-grid-prerequisites](../../includes/service-bus-event-grid-prerequisites.md)]
+[!INCLUDE [service-bus-event-grid-prerequisites](./includes/service-bus-event-grid-prerequisites.md)]
 
 ## <a name="additional-prerequisites"></a>其他先决条件
 安装 [Visual Studio 2019](https://www.visualstudio.com/vs)，并包含 Azure 开发工作负载。 此工作负载中有在 Visual Studio 中创建、生成和部署 Azure Functions 项目所需的 Azure Functions 工具。 

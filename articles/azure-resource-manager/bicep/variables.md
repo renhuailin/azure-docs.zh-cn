@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 99c7d945f251319bf1b655ecd02730b62e3ed2e4
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b2f696adbad88cd424f2292b333069a7b80a13b2
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025921"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634953"
 ---
 # <a name="variables-in-bicep"></a>Bicep 中的变量
 
@@ -73,13 +73,13 @@ output stgOutput string = storageName
 
 以下模板不部署任何资源。 它显示了声明各种类型的变量的一些方法。
 
-:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/variables.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/variables.bicep":::
 
 ## <a name="configuration-variables"></a>配置变量
 
 可以定义变量来保存配置环境所需的相关值。 可以将变量定义为一个包含值的对象。 以下示例演示的对象包含的值适用于两个环境 - **test** 和 **prod**。在部署过程中传入这些值之一。
 
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/variablesconfigurations.bicep":::
 
 ## <a name="next-steps"></a>后续步骤
 

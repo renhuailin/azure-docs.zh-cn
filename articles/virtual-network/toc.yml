@@ -85,6 +85,8 @@
           href: manage-public-ip-address-prefix.md
         - name: 适用于 Azure VNet 的 IPv6
           href: ipv6-overview.md
+        - name: 默认出站访问
+          href: default-outbound-access.md
         - name: 路由首选项
           href: routing-preference-overview.md
         - name: 不按流量计费的路由首选项
@@ -126,6 +128,8 @@
           href: subnet-extension.md
         - name: 子网委派
           href: subnet-delegation-overview.md
+    - name: 虚拟机网络
+      href: network-overview.md
     - name: 经典部署
       href: /previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic
 - name: 操作指南
