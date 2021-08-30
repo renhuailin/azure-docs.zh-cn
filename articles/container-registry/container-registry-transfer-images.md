@@ -4,12 +4,12 @@ description: 使用 Azure 存储帐户创建传输管道，将映像集合或其
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: c966600b0ca9d65cf533c3c2f0aca211c84917bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a82bee4c0750004db11753c56f06b2ef19badf1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780768"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722483"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>将项目传输到另一个注册表
 
@@ -434,11 +434,12 @@ az resource delete \
   * 管道运行可能未完成。 导出或导入运行可能需要一些时间。 
   * 对于其他管道问题，请向 Azure 容器注册表团队提供导出运行或导入运行的部署[相关 ID](../azure-resource-manager/templates/deployment-history.md)。
 * **在物理隔离环境中拉取映像时出现的问题**
-  * 如果在物理隔离环境中尝试拉取映像时发现与外部层或尝试解析 mcr.microsoft.com 有关的错误，则映像清单可能具有不可分发的层。 由于物理隔离环境的性质，这些映像通常无法拉取。 可以通过检查映像清单中是否存在对外部注册表的任何引用，来确认是这种情况。 如果是这种情况，则需要将不可分发的层推送到公有云 ACR，然后再为该映像部署导出管道运行。 有关如何执行此操作的指导，请参阅[如何将不可分发层推送到注册表？](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
+  * 如果在物理隔离环境中尝试拉取映像时发现与外部层或尝试解析 mcr.microsoft.com 有关的错误，则映像清单可能具有不可分发的层。 由于物理隔离环境的性质，这些映像通常无法拉取。 可以通过检查映像清单中是否存在对外部注册表的任何引用，来确认是这种情况。 如果是这种情况，则需要将不可分发的层推送到公有云 ACR，然后再为该映像部署导出管道运行。 有关如何执行此操作的指导，请参阅[如何将不可分发层推送到注册表？](./container-registry-faq.yml#how-do-i-push-non-distributable-layers-to-a-registry-)
 
 ## <a name="next-steps"></a>后续步骤
 
-要从公共注册表或其他专用注册表将单个容器映像导入到 Azure 容器注册表，请参阅 [az acr import][az-acr-import] 命令参考。
+* 要从公共注册表或其他专用注册表将单个容器映像导入到 Azure 容器注册表，请参阅 [az acr import][az-acr-import] 命令参考。
+* 了解如何从受网络限制的容器注册表中[阻止创建导出管道](data-loss-prevention.md)。
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

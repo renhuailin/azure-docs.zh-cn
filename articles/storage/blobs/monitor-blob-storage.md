@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bd9e8c2e71f69045078111bd5a4ae7c0edf567aa
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: f38149e2259dbb6724a81e8139f46bd65a0edff0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527363"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749319"
 ---
 # <a name="monitoring-azure-blob-storage"></a>监视 Azure Blob 存储
 
@@ -67,7 +67,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 ## <a name="creating-a-diagnostic-setting"></a>创建诊断设置
 
-可以使用 Azure 门户、PowerShell、Azure CLI 或 Azure 资源管理器模板创建诊断设置。 
+可使用 Azure 门户、PowerShell、Azure CLI、Azure 资源管理器模板或 Azure Policy 创建诊断设置。 
 
 有关一般指南，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)。
 
@@ -159,7 +159,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log>
 ```
 
-将此代码段中的 `<storage-service-resource--id>` 占位符替换为 blob 服务的资源 ID。 通过打开存储帐户的“属性”页，可在 Azure 门户中找到资源 ID。
+将此代码段中的 `<storage-service-resource--id>` 占位符替换为 blob 服务的资源 ID。 通过打开存储帐户的“终结点”页，可在 Azure 门户中找到资源 ID。
 
 Category 参数的值可以为 `StorageRead`、`StorageWrite` 和 `StorageDelete`。
 
@@ -223,7 +223,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true }]'
 ```
 
-将此代码片段中的 `<storage-service-resource--id>` 占位符替换为 Blob 存储服务的资源 ID。 通过打开存储帐户的“属性”页，可在 Azure 门户中找到资源 ID。
+将此代码片段中的 `<storage-service-resource--id>` 占位符替换为 Blob 存储服务的资源 ID。 通过打开存储帐户的“终结点”页，可在 Azure 门户中找到资源 ID。
 
 category 参数的值可以为 `StorageRead`、`StorageWrite` 和 `StorageDelete`。
 
@@ -269,6 +269,10 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 若要查看创建诊断设置的 Azure 资源管理器模板，请参阅 [Azure 存储的诊断设置](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)。
 
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
+
+可使用策略定义来创建诊断设置。 这样，就可确保为创建或更新的每个帐户创建一个诊断设置。 请参阅 [Azure 存储的 Azure Policy 内置定义](../common/policy-reference.md)。
+
 ---
 
 ## <a name="analyzing-metrics"></a>分析指标
@@ -302,7 +306,7 @@ Azure Blob 存储的指标位于以下命名空间：
 
 Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)，用于读取指标定义和值。 [示例代码](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)演示如何通过不同的参数来使用 SDK。 对于存储指标，需使用 `0.18.0-preview` 或更高版本。
  
-在这些示例中，将 `<resource-ID>` 占位符替换为整个存储帐户或 Blob 存储的资源 ID。 你可以在 Azure 门户中存储帐户的“属性”页上找到这些资源 ID。
+在这些示例中，将 `<resource-ID>` 占位符替换为整个存储帐户或 Blob 存储的资源 ID。 你可以在 Azure 门户中存储帐户的“终结点”页上找到这些资源 ID。
 
 将 `<subscription-ID>` 占位符值替换为你的订阅 ID。 要查看有关如何获取 `<tenant-ID>`、`<application-ID>` 和 `<AccessKey>` 值的指南，请参阅[使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 
 
@@ -444,7 +448,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 你可以列出存储帐户或 Blob 存储服务的指标定义。 请使用 [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) cmdlet。
 
-在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 ID 或 Blob 存储服务的资源 ID。  你可以在 Azure 门户中存储帐户的“属性”页上找到这些资源 ID。
+在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 ID 或 Blob 存储服务的资源 ID。  你可以在 Azure 门户中存储帐户的“终结点”页上找到这些资源 ID。
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -466,7 +470,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 你可以列出存储帐户或 Blob 存储服务的指标定义。 使用 [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az_monitor_metrics_list_definitions) 命令。
  
-在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 ID 或 Blob 存储服务的资源 ID。 你可以在 Azure 门户中存储帐户的“属性”页上找到这些资源 ID。
+在此示例中，将 `<resource-ID>` 占位符替换为整个存储帐户的资源 ID 或 Blob 存储服务的资源 ID。 你可以在 Azure 门户中存储帐户的“终结点”页上找到这些资源 ID。
 
 ```azurecli-interactive
    az monitor metrics list-definitions --resource <resource-ID>
@@ -480,6 +484,10 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
 ### <a name="template"></a>[模板](#tab/template)
+
+不适用。
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
 
 不适用。
 
@@ -610,3 +618,4 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 - 如需查看 Azure Blob 存储创建的日志和指标的参考，请参阅 [Azure Blob 存储监视数据参考](monitor-blob-storage-reference.md)。
 - 要了解如何监视 Azure 资源，请参阅[使用 Azure Monitor 监视 Azure 资源](../../azure-monitor/essentials/monitor-azure-resource.md)。
 - 要详细了解指标迁移，请参阅 [Azure 存储指标迁移](../common/storage-metrics-migration.md)。
+- 有关通用方案和最佳做法，请参阅[监视 Azure Blob 存储的最佳做法](blob-storage-monitoring-scenarios.md)。

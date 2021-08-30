@@ -3,12 +3,12 @@ title: 备份 Azure 托管磁盘
 description: 了解如何从 Azure 门户备份 Azure 托管磁盘。
 ms.topic: conceptual
 ms.date: 05/27/2021
-ms.openlocfilehash: c47499c371a9eccfd97224344a48c166d0e1f811
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 9bbb29aa4741f71448876a0af947964f728b0fb0
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653624"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113300729"
 ---
 # <a name="back-up-azure-managed-disks"></a>备份 Azure 托管磁盘
 
@@ -121,7 +121,7 @@ ms.locfileid: "110653624"
 
    - 在配置磁盘备份时，不能更改分配给备份实例的快照资源组。
 
-   - 在备份操作过程中，Azure 备份服务会在存储快照的快照资源组中创建存储帐户。 每个快照资源组只创建一个存储帐户。 该帐户在使用与快照资源组相同资源组的多个磁盘备份实例中重复使用。
+   - 在备份操作过程中，Azure 备份会在快照资源组中创建存储帐户。 每个快照资源组只创建一个存储帐户。 该帐户在使用与快照资源组相同资源组的多个磁盘备份实例中重复使用。
      
      - 快照不会存储在存储帐户中。 托管磁盘的增量快照是在资源组而不是存储帐户中创建的 ARM 资源。 
      
@@ -182,7 +182,7 @@ ms.locfileid: "110653624"
    ![选择要备份的磁盘](./media/backup-managed-disks/select-disks-to-backup.png)
 
    >[!NOTE]
-   >尽管门户允许选择多个磁盘和配置备份，但每个磁盘都是一个单独的备份实例。 目前，Azure 磁盘备份仅支持备份单个磁盘。 不支持连接到虚拟磁盘的多个磁盘的时间点备份。
+   >尽管门户允许选择多个磁盘和配置备份，但每个磁盘都是一个单独的备份实例。 目前，Azure 磁盘备份仅支持备份单个磁盘。 不支持连接到虚拟机的多个磁盘的时间点备份。
    >
    >使用门户时，只能选择同一订阅中的磁盘。 如果要备份多个磁盘，或这些磁盘分布在不同的订阅中，则可以使用脚本进行自动执行。
    >

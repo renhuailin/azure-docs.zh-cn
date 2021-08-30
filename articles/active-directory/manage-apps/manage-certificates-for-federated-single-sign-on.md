@@ -2,22 +2,22 @@
 title: 在 Azure AD 中管理联合身份验证证书 | Microsoft Docs
 description: 了解如何自定义联合证书的过期日期，以及如何续订即将过期的证书。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: mtillman
-ms.reviewer: jeedes
+ms.author: davidmu
+ms.reviewer: saumadan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 538307a4ffe9970960a4f8cea32ed8052bb87bf9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 5217f358e7977d8414204c48d82dd6b4f1554b1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080608"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749161"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中管理用于联合单一登录的证书
 
@@ -60,7 +60,7 @@ Azure AD 默认将证书配置为三年后过期，自在 SAML 单一登录配�
 1. 选择“新建证书”。 证书列表下面会显示一个新行，其中的到期日期默认为当前日期起三年之后。 （由于尚未保存更改，所以仍可以修改到期日期。）
 1. 在新证书行中，将鼠标悬停在到期日期列上，然后选择“选择日期”图标（日历）。 此时将显示一个日历控件，其中显示新行当前到期日期的月份日期。
 1. 使用日历控件设置新日期。 可以设置当前日期到当前日期之后三年之间的任何日期。
-1. 选择“保存”。 现在，将显示新证书的状态“非活动”、所选的到期日期和缩略图。
+1. 选择“保存”。 现在，将显示新证书的状态“非活动”、所选的到期日期和缩略图。 备注 - 如果现有证书已过期，并且生成新证书，即使新证书尚未激活，也会将其视为签名令牌。
 1. 选择 X 返回到“使用 SAML 设置单一登录 - 预览版”页。
 
 ### <a name="upload-and-activate-a-certificate"></a>上传并激活证书
@@ -77,6 +77,8 @@ Azure AD 默认将证书配置为三年后过期，自在 SAML 单一登录配�
 1. 如果要滚动到新证书，请返回“SAML 签名证书”页，在新保存的证书行中，选择省略号 (...)，然后选择“激活证书”。 新证书的状态将变为“活动”，以前处于活动状态的证书将变为“非活动”。
 1. 继续按照前面显示的应用程序的 SAML 登录配置说明执行操作，以便以正确的编码格式上传 SAML 签名证书。
 
+如果你的应用程序未验证证书是否过期，并且证书在 Azure Active Directory 和应用程序中均匹配，则即使证书过期，仍可访问应用。 请确保应用程序可以验证证书的到期日期。
+
 ## <a name="add-email-notification-addresses-for-certificate-expiration"></a>添加证书过期的电子邮件通知地址
 
 Azure AD 将分别在 SAML 证书到期前 60 天、30 天和 7 天发送电子邮件通知。 可以添加多个电子邮件地址来接收通知。 要指定将通知发送到的电子邮件地址：
@@ -89,7 +91,7 @@ Azure AD 将分别在 SAML 证书到期前 60 天、30 天和 7 天发送电子�
 
 最多可以在通知列表中添加 5 个电子邮件地址（包括添加应用程序的管理员的电子邮件地址）。 如果需要更多人员收到通知，请使用通讯组电子邮件。
 
-你将接收来自 aadnotification@microsoft.com 的通知电子邮件。 为避免电子邮件进入垃圾邮件位置，请将此电子邮件添加为联系人。
+你将接收来自 azure-noreply@microsoft.com 的通知电子邮件。 为避免电子邮件进入垃圾邮件位置，请将此电子邮件添加为联系人。
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>续订即将过期的证书
 
@@ -102,8 +104,10 @@ Azure AD 将分别在 SAML 证书到期前 60 天、30 天和 7 天发送电子�
    1. 跳过接下来的两个步骤。
 
 1. 如果应用一次只能处理一个证书，请选择执行下一步的停机时间间隔。 （或者，如果应用程序不会自动选取新证书，但可以处理多个签名证书，则可以随时执行下一步。）
-1. 在旧证书过期之前，请按照前面“[上传和激活证书](#upload-and-activate-a-certificate)”部分的说明进行操作。
+1. 在旧证书过期之前，请按照前面“[上传和激活证书](#upload-and-activate-a-certificate)”部分的说明进行操作。 如果在 Azure Active Directory 中更新新证书后，应用程序证书未更新，则应用上的身份验证可能会失败。
 1. 登录到应用程序，确保证书正常工作。
+
+如果你的应用程序未验证 Azure Active Directory 中配置的证书是否过期，且证书在 Azure Active Directory 和应用程序中均匹配，则即使证书过期，应用仍可访问。 请确保应用程序可以验证证书是否过期。
 
 ## <a name="related-articles"></a>相关文章
 

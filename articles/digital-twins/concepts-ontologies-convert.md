@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ebe6a96c88d061138eb629f50aa37ea90fe40eb4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d432ff03290c3ce26346b99c428cd89c853ed6b7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475872"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472138"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>将行业标准本体转换为适用于 Azure 数字孪生的 DTDL
 
@@ -61,6 +61,6 @@ OWL2DTDL 转换器是一个可将 OWL 本体转换为一组 DTDL 接口声明以
 
 ## <a name="next-steps"></a>后续步骤 
 
-* 了解有关扩展行业标准本体以满足要求的详细信息：概念：扩展行业本体。
+* 了解有关扩展行业标准本体以满足要求的详细信息：[扩展行业本体](concepts-ontologies-extend.md)。
 
 * 或者，继续开发基于本体的模型：在模型开发路径中使用本体策略。

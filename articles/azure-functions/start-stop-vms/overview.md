@@ -4,19 +4,22 @@ description: 本文介绍启动/停止 VM v2（预览版）功能，该功能可
 ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: start-stop-vms
-ms.date: 03/29/2021
-ms.openlocfilehash: 8df0f31b57d7cd82ed89c4f5f0df37535ad9678a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 06/25/2021
+ms.openlocfilehash: 3e2946bf493da2570106fdb554704ef7f286b7cb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067269"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738543"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>启动/停止 VM v2（预览版）概述
 
 启动/停止 VM v2（预览版）功能可跨多个订阅启动或停止 Azure 虚拟机 (VM)。 该功能按照用户定义的计划启动或停止 Azure VM，通过 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 提供见解，并使用[操作组](../../azure-monitor/alerts/action-groups.md)发送可选通知。 在大多数情况下，该功能可以同时管理 Azure 资源管理器 VM 和经典 VM。
 
 此新版本启动/停止 VM v2（预览版）为想要降低 VM 成本的客户提供了一个分散的低成本自动化选项。 此版本提供与 Azure 自动化的[原始版本](../../automation/automation-solution-vm-management.md)相同的所有功能，但它旨在利用 Azure 中的新技术。
+
+> [!NOTE]
+> 如果你在部署过程中遇到问题、在使用“启动/停止 VM v2 (预览版)”时遇到问题，或者有相关的问题，则可在 [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) 上提交问题。 从 [Azure 支持站点](https://azure.microsoft.com/support/options/)提交 Azure 支持事件的功能不适用于此预览版本。 
 
 ## <a name="overview"></a>概述
 
@@ -28,15 +31,16 @@ ms.locfileid: "110067269"
 
 |名称 |触发器 |说明 |
 |-----|--------|------------|
-|AlertAvailabilityTest |Timer |此函数将执行可用性测试，以确保主函数 AutoStopVM 始终可用。|
-|AutoStop |HTTP |此函数支持 AutoStop 方案，这是从逻辑应用调用的入口点函数。|
-|AutoStopAvailabilityTest |Timer |此函数将执行可用性测试，以确保主函数 AutoStop 始终可用。|
-|AutoStopVM |HTTP |当满足警报条件时，VM 警报会自动触发此函数。|
-|CreateAutoStopAlertExecutor |队列 |此函数将从 AutoStop 函数获取有效负载信息，以创建关于 VM 的警报。|
 |计划 |HTTP |此函数适用于计划方案和序列方案（根据有效负载架构区分）。 它是从逻辑应用调用的入口点函数，并采用有效负载来处理 VM 启动操作或停止操作。 |
-|ScheduledAvailabilityTest |Timer |此函数将执行可用性测试，以确保主函数 Scheduled 始终可用。|
-|VirtualMachineRequestExecutor |队列 |此函数将对 VM 执行实际的启动操作和停止操作。|
+|AutoStop |HTTP |此函数支持 AutoStop 方案，这是从逻辑应用调用的入口点函数。|
+|AutoStopVM |HTTP |当满足警报条件时，VM 警报会自动触发此函数。|
 |VirtualMachineRequestOrchestrator |队列 |此函数将从 Scheduled 函数获取有效负载信息，并协调 VM 启动请求和停止请求。|
+|VirtualMachineRequestExecutor |队列 |此函数将对 VM 执行实际的启动操作和停止操作。|
+|CreateAutoStopAlertExecutor |队列 |此函数将从 AutoStop 函数获取有效负载信息，以创建关于 VM 的警报。|
+|HeartBeatAvailabilityTest |计时器 |此函数监视主 HTTP 功能的可用性。|
+|CostAnalyticsFunction |计时器 |此函数每月计算一次运行启动/停止 V2 解决方案所需的成本。|
+|SavingsAnalyticsFunction |计时器 |此函数每月计算一次启动/停止 V2 解决方案实现的总节省成本。|
+|VirtualMachineSavingsFunction |队列 |此函数对通过启动/停止 V2 解决方案实现的 VM 执行实际成本节省计算。|
 
 例如，Scheduled HTTP 触发器函数用于处理计划方案和序列方案。 同样，AutoStop HTTP 触发器函数用于处理自动停止方案。
 

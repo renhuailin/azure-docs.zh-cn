@@ -3,12 +3,12 @@ title: 大规模配置保管库诊断设置
 description: 使用 Azure Policy 为给定范围内的所有保管库配置 Log Analytics 诊断设置
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 55461937381f7551c42714c835d4755ab65f175b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34b0cac710833e1d1b29060aa37425d2e57ae828
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92171520"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303704"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大规模配置保管库诊断设置
 
@@ -26,17 +26,15 @@ Azure 备份提供的报告解决方案利用了 Log Analytics (LA)。 为了将
 
 * 当前不支持管理组范围。
 
-* 内置策略当前在国家/地区云中不可用。
-
 [!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
 ## <a name="assigning-the-built-in-policy-to-a-scope"></a>将内置策略分配到范围
 
 若要为所需范围内的保管库分配策略，请遵循以下步骤进行操作：
 
-1. 登录到 Azure 门户并导航到“策略”仪表板。
-2. 在左边的菜单中选择“定义”以获取跨 Azure 资源的所有内置策略的列表。
-3. 在列表中筛选“类别=备份”的项。 找到名为“[预览]：将恢复服务保管库的诊断设置部署到资源专有类别的 Log Analytics 工作区”的策略。
+1. 登录 Azure 门户并导航到“备份中心”仪表板。
+2. 在左侧菜单中选择“用于备份的 Azure 策略”，以获取 Azure 资源中所有内置策略的列表。
+3. 找到名为“将恢复服务保管库的诊断设置部署到资源专有类别的 Log Analytics 工作区”的策略。
 
     ![策略定义窗格](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 

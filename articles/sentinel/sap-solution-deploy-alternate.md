@@ -1,6 +1,6 @@
 ---
-title: 在本地部署 Azure Sentinel SAP 数据连接器 | Microsoft Docs
-description: 了解如何使用本地计算机为 SAP 环境部署 Azure Sentinel 数据连接器。
+title: Azure Sentinel SAP 数据连接器专业配置选项、本地部署和 SAPControl 日志源 | Microsoft Docs
+description: 了解如何使用专业配置选项和本地计算机为 SAP 环境部署 Azure Sentinel 数据连接器， 并详细了解 SAPControl 日志源。
 author: batamig
 ms.author: bagol
 ms.service: azure-sentinel
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 05/19/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: fc045d4b6c185b9e27573a1dd97c1194239f7463
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ba0457bef8ad4e732cffe229e850272f68a6d30f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466452"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723439"
 ---
-# <a name="deploy-the-azure-sentinel-sap-data-connector-on-premises"></a>在本地部署 Azure Sentinel SAP 数据连接器
+# <a name="expert-configuration-options-on-premises-deployment-and-sapcontrol-log-sources"></a>专业配置选项、本地部署和 SAPControl 日志源
 
 本文介绍如何在专业或自定义进程中部署 Azure Sentinel SAP 数据连接器（例如使用本地计算机和 Azure 密钥保管库存储凭据）。
 
@@ -38,20 +38,31 @@ ms.locfileid: "110466452"
 
 创建专用于 Azure Sentinel SAP 数据连接器的 Azure 密钥保管库。
 
-运行以下命令以创建 Azure 密钥保管库：
+运行以下命令，以创建 Azure 密钥保管库，并授予对 Azure 服务主体的访问权限： 
 
 ``` azurecli
 kvgp=<KVResourceGroup>
 
 kvname=<keyvaultname>
 
+spname=<sp-name>
+
+kvname=<keyvaultname>
+# Optional when Azure MI not enabled - Create sp user for AZ cli connection, save details for env.list file
+az ad sp create-for-rbac –name $spname 
+
+SpID=$(az ad sp list –display-name $spname –query “[].appId” --output tsv
+
 #Create key vault
 az keyvault create \
   --name $kvname \
   --resource-group $kvgp
+  
+# Add access to SP
+az keyvault set-policy --name $kvname --resource-group $kvgp --object-id $spID --secret-permissions get list set
 ```
 
-有关详细信息，请参阅[快速入门：使用 Azure CLI 创建密钥保管库](/azure/key-vault/general/quick-create-cli)。
+有关详细信息，请参阅[快速入门：使用 Azure CLI 创建密钥保管库](../key-vault/general/quick-create-cli.md)。
 
 ## <a name="add-azure-key-vault-secrets"></a>添加 Azure Key Vault 机密
 
@@ -132,8 +143,9 @@ az keyvault secret set \
 
     ```bash
     mkdir /home/$(pwd)/sapcon/<sap-sid>/
-    Cd /home/$(pwd)/sapcon/<sap-sid>/
-    Wget  https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/template/systemconfig.inicp <**nwrfc750X_X-xxxxxxx.zip**> /home/$(pwd)/sapcon/<sap-sid>/
+    cd /home/$(pwd)/sapcon/<sap-sid>/
+    wget  https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/template/systemconfig.ini 
+    cp <**nwrfc750X_X-xxxxxxx.zip**> /home/$(pwd)/sapcon/<sap-sid>/
     ```
 
 1. 根据需要编辑 systemconfig.ini 文件，使用嵌入的注释作为指南。 有关详细信息，请参阅[手动配置 SAP 数据连接器](#manually-configure-the-sap-data-connector)。
@@ -164,7 +176,7 @@ az keyvault secret set \
     ```bash
     ##############################################################
     ##############################################################
-    # env.list template
+    # env.list template for Credentials
     SAPADMUSER=<SET_SAPCONTROL_USER>
     SAPADMPASSWORD=<SET_SAPCONTROL_PASS>
     ABAPUSER=SET_ABAP_USER>
@@ -172,13 +184,18 @@ az keyvault secret set \
     JAVAUSER=<SET_JAVA_OS_USER>
     JAVAPASS=<SET_JAVA_OS_USER>
     ##############################################################
+    ##############################################################
+    # env.list template for AZ Cli when MI is not enabled
+    AZURE_TENANT_ID=<your tenant id>
+    AZURE_CLIENT_ID=<your client/app id>
+    ##############################################################
     ```
 
 1. 在安装了 SAP 数据连接器的情况下，下载并运行预定义的 Docker 映像。  运行：
 
     ```bash
-    docker pull mcr.microsoft.com/azure-sentinel/solution/sapcon:latest-preview
-    docker run --env-file=<env.list_location> -d -v /home/$(pwd)/sapcon/<sap-sid>/:/sapcon-app/sapcon/config/system --name sapcon-<sid> sapcon
+    docker pull docker pull mcr.microsoft.com/azure-sentinel/solutions/sapcon:latest-preview
+    docker run --env-file=<env.list_location> -d --restart unless-stopped -v /home/$(pwd)/sapcon/<sap-sid>/:/sapcon-app/sapcon/config/system --name sapcon-<sid> sapcon
     rm -f <env.list_location>
     ```
 
@@ -237,10 +254,10 @@ osuser = <SET_YOUR_SAPADM_LIKE_USER>
 ospasswd = <SET_YOUR_SAPADM_PASS>
 x509pkicert = <SET_YOUR_X509_PKI_CERTIFICATE>
 ##############################################################
-appserver = <SET_YOUR_SAPCTRL_SERVER>
-instance = <SET_YOUR_SAP_INSTANCE>
-abapseverity = <SET_ABAP_SEVERITY>
-abaptz = <SET_ABAP_TZ>
+appserver = <SET_YOUR_SAPCTRL_SERVER IP OR FQDN>
+instance = <SET_YOUR_SAP_INSTANCE NUMBER, example 10>
+abapseverity = <SET_ABAP_SEVERITY 0 = All logs ; 1 = Warning ; 2 = Error>
+abaptz = <SET_ABAP_TZ --Use ONLY GMT FORMAT-- example - For OS Timezone = NZST use abaptz = GMT+12>
 
 [File Extraction JAVA]
 javaosuser = <SET_YOUR_JAVAADM_LIKE_USER>
@@ -249,10 +266,10 @@ javaosuser = <SET_YOUR_JAVAADM_LIKE_USER>
 javaospasswd = <SET_YOUR_JAVAADM_PASS>
 javax509pkicert = <SET_YOUR_X509_PKI_CERTIFICATE>
 ##############################################################
-javaappserver = <SET_YOUR_JAVA_SAPCTRL_SERVER>
-javainstance = <SET_YOUR_JAVA_SAP_INSTANCE>
-javaseverity = <SET_JAVA_SEVERITY>
-javatz = <SET_JAVA_TZ>
+javaappserver = <SET_YOUR_JAVA_SAPCTRL_SERVER IP ADDRESS OR FQDN>
+javainstance = <SET_YOUR_JAVA_SAP_INSTANCE for example 10>
+javaseverity = <SET_JAVA_SEVERITY  0 = All logs ; 1 = Warning ; 2 = Error>
+javatz = <SET_JAVA_TZ --Use ONLY GMT FORMAT-- example - For OS Timezone = NZST use javatz = GMT+12>
 ```
 
 ### <a name="define-the-sap-logs-that-are-sent-to-azure-sentinel"></a>定义发送到 Azure Sentinel 的 SAP 日志
@@ -314,6 +331,28 @@ timechunk = 60
 |**timechunk**     |   确定系统在两次数据提取之间等待特定的分钟数。 如果预期有大量数据，请使用此参数。 <br><br>例如，在第一个 24 小时内的初始数据加载期间，你可能希望数据提取每 30 分钟运行一次，以便每次有足够的时间提取数据。 在这种情况下，请将此值设置为 30。  |
 |     |         |
 
+### <a name="configuring-an-abap-sap-control-instance"></a>配置 ABAP SAP Control 实例
+
+要将所有 ABAP 日志（包括基于 NW RFC 和 SAP Control Web 服务的日志）引入 Azure Sentinel，请配置以下 ABAP SAP Control 详细信息：
+
+|设置  |说明  |
+|---------|---------|
+|**javaappserver**     |输入 SAP Control ABAP 服务器主机。 <br>例如：`contoso-erp.appserver.com`         |
+|**javainstance**     |输入 SAP Control ABAP 实例编号。 <br>例如：`00`         |
+|**abaptz**     |输入在 SAP Control ABAP 服务器上配置的时区（GMT 格式）。 <br>例如：`GMT+3`         |
+|**abapseverity**     |输入要将 ABAP 日志引入 Azure Sentinel 的最低（含）严重性级别。  值包括： <br><br>- **0** = 所有日志 <br>- **1** = 警告 <br>- **2** = 错误     |
+
+
+### <a name="configuring-a-java-sap-control-instance"></a>配置 Java SAP Control 实例
+
+要将 SAP Control Web 服务日志引入 Azure Sentinel，请配置以下 JAVA SAP Control 实例详细信息：
+
+|参数  |说明  |
+|---------|---------|
+|**javaappserver**     |输入 SAP Control Java 服务器主机。 <br>例如：`contoso-java.server.com`         |
+|**javainstance**     |输入 SAP Control ABAP 实例编号。 <br>例如：`10`         |
+|**javatz**     |输入在 SAP Control Java 服务器上配置的时区（GMT 格式）。 <br>例如：`GMT+3`         |
+|**javaseverity**     |输入要将 Web 服务日志引入 Azure Sentinel 的最低（含）严重性级别。  值包括： <br><br>- **0** = 所有日志 <br>- **1** = 警告 <br>- **2** = 错误     |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -326,3 +365,4 @@ timechunk = 60
 - [Azure Sentinel SAP 解决方案详细的 SAP 要求](sap-solution-detailed-requirements.md)
 - [Azure Sentinel SAP 解决方案日志参考](sap-solution-log-reference.md)
 - [Azure Sentinel SAP 解决方案：安全内容参考](sap-solution-security-content.md)
+- [Azure Sentinel SAP 解决方案部署故障排除](sap-deploy-troubleshoot.md)

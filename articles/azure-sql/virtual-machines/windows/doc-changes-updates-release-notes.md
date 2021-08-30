@@ -11,18 +11,31 @@ ms.subservice: service-overview
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/25/2021
-ms.openlocfilehash: 512d502dc5877c15086d69f96643d4251dfc167b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/21/2021
+ms.openlocfilehash: c8f8699d58d26c745be8cb1207a88cdad6857f1a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078683"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752182"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上 SQL Server 的文档更改
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Azure 允许你使用内置的 SQL Server 映像部署虚拟机 (VM)。 本文汇总了 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 的最新版本中与新功能和改进相关的文档更改。 
+
+## <a name="july-2021"></a>2021 年 7 月
+
+| 更改 | 详细信息 |
+| --- | --- |
+| **在门户中修复 SQL Server IaaS 扩展** | 现在可以直接从 Azure 门户验证 SQL Server IaaS 代理扩展的状态，并在必要时进行[修复](sql-agent-extension-manually-register-single-vm.md#repair-extension)。 | 
+
+
+## <a name="june-2021"></a>2021 年 6 月
+
+| 更改 | 详细信息 |
+| --- | --- |
+| Azure 门户中的安全性增强功能 | 如果已启用 [Azure Defender for SQL](../../../security-center/defender-for-sql-usage.md)，则可在 [Azure 门户的 SQL 虚拟机资源](manage-sql-vm-portal.md#security-center)中查看安全中心建议。 | 
 
 ## <a name="may-2021"></a>2021 年 5 月
 

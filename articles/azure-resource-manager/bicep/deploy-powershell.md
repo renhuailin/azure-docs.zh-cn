@@ -5,27 +5,27 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: de7b112540d332216e361d5694f22d21c724ca36
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 27d00d137c2fb178b2bd96732664c08965ce3073
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960406"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634492"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-powershell"></a>使用 Bicep 和 Azure PowerShell 部署资源
 
-本文介绍如何配合使用 Azure PowerShell 与 Bicep 文件，以将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅 [Bicep 概述](overview.md)。
+本文介绍如何将 Azure PowerShell 与 Bicep 文件搭配来将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅 [Bicep 概述](overview.md)。
 
 若要部署 Bicep 文件，你需要 [Azure PowerShell 版本 5.6.0 或更高版本](/powershell/azure/install-az-ps)。
 
 ## <a name="prerequisites"></a>先决条件
 
-你需要一个要部署的 Bicep 文件。 本文中使用的本地文件名为 C:\MyTemplates\azuredeploy.bicep。
+需要一个 Bicep 文件进行部署。 本文使用的本地文件名为 C:\MyTemplates\azuredeploy.bicep。
 
 需安装 Azure PowerShell 并连接到 Azure：
 
 - **在本地计算机上安装 Azure PowerShell cmdlet。** 有关详细信息，请参阅 [Azure PowerShell 入门](/powershell/azure/get-started-azureps)。
-- **使用 [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount) 连接到 Azure**。 如果有多个 Azure 订阅，则可能还需要运行 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。 有关详细信息，请参阅[使用多个 Azure 订阅](/powershell/azure/manage-subscriptions-azureps)。
+- 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 连接到 Azure。 如果有多个 Azure 订阅，则可能还需要运行 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。 有关详细信息，请参阅[使用多个 Azure 订阅](/powershell/azure/manage-subscriptions-azureps)。
 
 如果没有安装 PowerShell，则可使用 Azure Cloud Shell。 有关详细信息，请参阅[从 Azure Cloud Shell 部署 Bicep 文件](./deploy-cloud-shell.md)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "111960406"
 - 若要部署到管理组，请使用 [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)。
 
   ```azurepowershell
-  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-bicep>
+  New-AzManagementGroupDeployment -ManagementGroupId <management-group-id> -Location <location> -TemplateFile <path-to-bicep>
   ```
 
   有关管理组级部署的详细信息，请参阅[在管理组级别创建资源](deploy-to-management-group.md)。
@@ -67,7 +67,7 @@ ms.locfileid: "111960406"
 
 ## <a name="deploy-local-bicep-file"></a>部署本地 Bicep 文件
 
-可以部署本地计算机中的 Bicep 文件，也可以部署存储在外部的文件。 本节介绍如何部署本地 Bicep 文件。
+可以部署本地计算机中的 Bicep 文件，也可以部署存储在外部的模板。 本节介绍如何部署本地 Bicep 文件。
 
 如果要部署到不存在的资源组，请创建该资源组。 资源组名称只能包含字母数字字符、句点、下划线、连字符和括号。 它最多可以包含 90 个字符。 名称不能以句点结尾。
 
@@ -75,7 +75,7 @@ ms.locfileid: "111960406"
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 ```
 
-若要部署本地 Bicep 文件，请在部署命令中使用 `-TemplateFile` 参数。 下面的示例还显示了如何设置来自 Bicep 文件的参数值。
+若要部署本地 Bicep 文件，请在部署命令中使用 `-TemplateFile` 参数。
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -84,7 +84,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile <path-to-bicep>
 ```
 
-部署可能需要几分钟才能完成。
+部署可能需要几分钟时间才能完成。
 
 ## <a name="deploy-remote-bicep-file"></a>部署远程 Bicep 文件
 
@@ -131,7 +131,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 
 ### <a name="parameter-files"></a>参数文件
 
-你可能会发现，与在脚本中以内联值的形式传递参数相比，使用包含参数值的 JSON 文件更为容易。 参数文件可以是本地文件，也可以是具有可访问 URI 的外部文件。Bicep 文件使用 JSON 参数文件。
+你可能会发现，与在脚本中以内联值的形式传递参数相比，使用包含参数值的 JSON 文件更为容易。 参数文件可以是本地文件，也可以是具有可访问 URI 的外部文件。 Bicep 文件使用 JSON 参数文件。
 
 有关参数文件的详细信息，请参阅[创建资源管理器参数文件](./parameter-files.md)。
 
@@ -153,11 +153,11 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 ## <a name="preview-changes"></a>预览更改
 
-在部署 Bicep 文件之前，可以预览 Bicep 文件将对环境做出的更改。 使用 [What-if 操作](./deploy-what-if.md)验证 Bicep 文件是否进行预期更改。 What-if 操作还会验证 Bicep 文件是否有错误。
+在部署 Bicep 文件之前，可以预览 Bicep 文件将对环境做出的更改。 使用[假设操作](./deploy-what-if.md)验证 Bicep 文件是否进行预期更改。 假设操作还验证 Bicep 文件是否有错误。
 
 ## <a name="deploy-template-specs"></a>部署模板规格
 
-目前，Azure PowerShell 不支持通过提供 Bicep 文件来创建模板规格。 但是，可以使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。下面是一个[示例](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep)。 还可使用 Bicep CLI 将 Bicep 文件生成到 ARM 模板 JSON 中，然后使用 JSON 模板创建模板规格。
+目前，Azure PowerShell 不支持通过提供 Bicep 文件来创建模板规格。 但是，可以使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。下面是一个[示例](https://github.com/Azure/azure-docs-bicep-samples/blob/main/create-template-spec-using-bicep/azuredeploy.bicep)。 还可使用 Bicep CLI 将 Bicep 文件生成到 ARM 模板 JSON 中，然后使用 JSON 模板创建模板规格。
 
 ## <a name="deployment-name"></a>部署名称
 
@@ -190,5 +190,5 @@ $deploymentName="ExampleDeployment"+"$today"
 ## <a name="next-steps"></a>后续步骤
 
 - 若要在出错时回退到成功的部署，请参阅[出错时回退到成功的部署](../templates/rollback-on-error.md)。
-- 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](../templates/syntax.md)。
+- 若要了解如何在文件中定义参数，请参阅[了解 Bicep 文件的结构和语法](file.md)。
 - 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用 ARM 模板](../templates/secure-template-with-sas-token.md)。

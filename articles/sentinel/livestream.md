@@ -13,16 +13,21 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/14/2020
+ms.date: 07/14/2021
 ms.author: yelevin
-ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a711cca01431346896ac5d0aee5dce8524ed721f
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84783157"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202489"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>使用 Azure Sentinel 中的搜寻实时流检测威胁
+
+> [!IMPORTANT]
+>
+> - 跨资源查询体验（请参阅下面的标记项）当前为预览版。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+>
 
 使用搜寻实时流创建交互式会话，以便在事件发生时测试新创建的查询、在找到匹配项时从会话中获取通知，并在必要时启动调查。 可使用任何 Log Analytics 查询快速创建实时流会话。
 
@@ -61,7 +66,10 @@ ms.locfileid: "84783157"
 1. 在“实时流”窗格中：
     
     - 如果从查询中启动实时流，请查看该查询并进行所需的更改。
-    - 如果从头开始启动实时流，请创建查询。 
+    - 如果从头开始启动实时流，请创建查询。
+
+    > [!NOTE]
+    > 实时流支持在 Azure 数据资源管理器中跨资源查询（预览版）数据。 [详细了解跨资源查询](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md#cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer)。
 
 1. 从命令栏中选择“播放”。
     

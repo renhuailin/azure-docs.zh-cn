@@ -1,27 +1,26 @@
 ---
-title: 配置用于 P2S OpenVPN 协议连接的 VPN 客户端：Azure AD 身份验证：macOS：预览版
-description: 预览版：了解如何配置 macOS VPN 客户端，以使用 VPN 网关点到站点连接和 Azure Active Directory 身份验证连接到虚拟网络。
+title: 配置用于 P2S OpenVPN 协议连接的 VPN 客户端：Azure AD 身份验证：macOS
+description: 了解如何配置 macOS VPN 客户端，以使用 VPN 网关点到站点连接和 Azure Active Directory 身份验证连接到虚拟网络。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 05/13/2021
+ms.date: 08/04/2021
 ms.author: cherylmc
-ms.openlocfilehash: defcc3c35cab51e9606151f11c37397dc8f4a06e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 25049323d8dc9259c2f6edc439ecb5b624490009
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103698"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729651"
 ---
-# <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections---macos---preview"></a>Azure Active Directory 身份验证：配置用于 P2S OpenVPN 协议连接的 VPN 客户端 - macOS - 预览版
+# <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections---macos"></a>Azure Active Directory 身份验证：配置用于 P2S OpenVPN 协议连接的 VPN 客户端 - macOS
 
 本文介绍如何为运行 macOS 10.15 及更高版本的计算机配置 VPN 客户端，以使用点到站点 VPN 和 Azure Active Directory 身份验证连接到虚拟网络。 在使用 Azure AD 进行连接和身份验证之前，必须先配置 Azure AD 租户。 有关详细信息，请参阅[配置 Azure AD 租户](openvpn-azure-ad-tenant.md)。 有关点到站点连接的详细信息，请参阅[关于点到站点连接](point-to-site-about.md)。
 
 > [!NOTE]
-> * 由于本地法规要求，此预览版目前在大多数（但并非所有）国家/地区都可用。
-> * Azure AD 身份验证仅支持 OpenVPN® 协议连接，并且需要 Azure VPN 客户端。
+> Azure AD 身份验证仅支持 OpenVPN® 协议连接，并且需要 Azure VPN 客户端。
 >
 
 对于你想要使用点到站点 VPN 连接将其连接到 VNet 的每台计算机，需要执行以下操作：

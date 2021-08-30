@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: ce78b36a07a0648e869a2a382554fdc41b408f96
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: ee5151b31e691b43d1d0df1694c636c3c35f9bc2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656319"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743190"
 ---
 # <a name="register-and-scan-multiple-sources-in-azure-purview"></a>在 Azure Purview 中注册和扫描多个源
 
@@ -59,7 +59,7 @@ ms.locfileid: "109656319"
 要在数据目录中注册新的多个源，请执行以下操作：
 
 1. 转到 Azure Purview 帐户。
-1. 在左侧菜单中选择“源”。
+1. 在左侧菜单中选择“数据映射”。
 1. 选择“注册”。
 1. 在“注册源”上，选择“Azure (多源)” 。
 
@@ -80,7 +80,7 @@ ms.locfileid: "109656319"
 
 若要创建并运行新扫描，请执行以下操作：
 
-1. 转到“源”部分。
+1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
 1. 选择所注册的数据源。
 1. 选择“查看详细信息” > “+ 新建扫描”，或使用源磁贴上的扫描快速操作图标  。
 1. 对于“名称”，请填写名称。
@@ -112,7 +112,7 @@ ms.locfileid: "109656319"
 
 ## <a name="view-your-scans-and-scan-runs"></a>查看扫描和扫描运行情况
 
-1. 通过选择“源”部分的磁贴上的“查看详细信息”，查看源详细信息 。 
+1. 通过选择“数据映射”部分的磁贴上的“查看详细信息”，查看源详细信息 。 
 
     :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-source-detail.png" alt-text="屏幕截图显示源详细信息。"::: 
 

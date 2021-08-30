@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 05/03/2021
 ms.author: memildin
-ms.openlocfilehash: 6fbfb138f8c4605b12c5c4ff6cd0ac8c9b0c43dd
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: ecedf0854d7d670cf88a8dcb729a01adaa88b646
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537709"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750672"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>自动执行对安全中心触发器的响应
 
@@ -28,7 +28,7 @@ ms.locfileid: "110537709"
 |发布状态：|正式发布版 (GA)|
 |定价：|免费|
 |所需角色和权限：|资源组上的安全管理员角色或所有者角色 <br>还必须具有对目标资源的写入权限<br><br>若要使用 Azure 逻辑应用工作流，还必须具有以下逻辑应用角色/权限：<br> 逻辑应用读取/触发访问需要- [逻辑应用操作员](../role-based-access-control/built-in-roles.md#logic-app-operator)权限（此角色无法创建或编辑逻辑应用，仅可运行现有应用）<br> 创建和修改逻辑应用需要- [逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)权限<br>如果要使用逻辑应用连接器，可能需要使用额外的凭据登录到各自的服务（例如 Outlook/Teams/Slack 实例）|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国家/地区/主权（Azure 政府、Azure 中国世纪互联）|
 |||
 
 
@@ -37,7 +37,7 @@ ms.locfileid: "110537709"
 
 1. 从安全中心的边栏选择“工作流自动化”。
 
-    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="工作流自动化列表":::
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="工作流自动化列表。":::
 
     在此页上，你可创建新的自动化规则，还可启用、禁用或删除现有规则。
 
@@ -52,13 +52,13 @@ ms.locfileid: "110537709"
 
     1. 满足触发条件时将运行的逻辑应用。 
 
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="添加工作流自动化窗格":::
+        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="添加工作流自动化窗格。":::
 
 1. 在“操作”部分中，单击“新建”以开始逻辑应用创建过程。
 
     你将转到 Azure 逻辑应用。
 
-    [![创建新的逻辑应用](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
+    [![创建新的逻辑应用。](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
 
 1. 输入名称、资源组和位置，然后单击“创建”。
 
@@ -78,11 +78,11 @@ ms.locfileid: "110537709"
     > [!NOTE]
     > 如果使用名为“触发 Azure 安全中心警报的响应时”的旧触发器，逻辑应用不会通过工作流自动化功能启动。 请改用上述的任一触发器。 
 
-    [![示例逻辑应用](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
+    [![示例逻辑应用。](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
 
 1. 定义逻辑应用后，回到工作流自动化定义窗格（“添加工作流自动化”）。 单击“刷新”，确保新的逻辑应用可供选择。
 
-    ![刷新](media/workflow-automation/refresh-the-list-of-logic-apps.png)
+    ![刷新。](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
 1. 选择逻辑应用并保存自动化。 请注意，“逻辑应用”下拉列表仅显示支持上述安全中心连接器的逻辑应用。
 
@@ -93,7 +93,7 @@ ms.locfileid: "110537709"
 
 若要手动运行逻辑应用，请打开警报或建议，然后单击“触发逻辑应用”：
 
-[![手动触发逻辑应用](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
+[![手动触发逻辑应用。](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
 
 ## <a name="configure-workflow-automation-at-scale-using-the-supplied-policies"></a>使用提供的策略大规模配置工作流自动化
@@ -118,11 +118,11 @@ ms.locfileid: "110537709"
     > [!TIP]
     > 还可通过搜索 Azure Policy 来找到这些策略：
     > 1. 打开 Azure Policy。
-    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="访问 Azure Policy":::
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="访问 Azure Policy。":::
     > 2. 在 Azure Policy 菜单中，选择“定义”并按名称进行搜索。 
 
 1. 在相关的 Azure Policy 页中，选择“分配”。
-    :::image type="content" source="./media/workflow-automation/export-policy-assign.png" alt-text="分配 Azure Policy":::
+    :::image type="content" source="./media/workflow-automation/export-policy-assign.png" alt-text="分配 Azure Policy。":::
 
 1. 打开每个选项卡，并根据需要设置参数：
     1. 在“基础信息”选项卡中，设置策略的范围。 若要使用集中式管理，请将策略分配给包含将使用工作流自动化配置的订阅的管理组。 
@@ -131,7 +131,7 @@ ms.locfileid: "110537709"
         > 每个参数都有一个说明可用选项的工具提示。
         >
         > 使用 Azure Policy 的“参数”选项卡 (1)，可以访问与安全中心的工作流自动化页面 (2) 类似的配置选项。
-        > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="比较工作流自动化和 Azure Policy 中的参数" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
+        > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="比较工作流自动化和 Azure Policy 中的参数。" lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
 
     1. （可选）若要将此分配应用于现有订阅，请打开“修正”选项卡，然后选择用于创建修正任务的选项。
 

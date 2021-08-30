@@ -2,19 +2,18 @@
 title: 安装 Azure IoT Edge | Microsoft Docs
 description: 有关在 Windows 或 Linux 设备上安装 Azure IoT Edge 的说明
 author: kgremban
-manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/26/2021
+ms.date: 06/28/2021
 ms.author: kgremban
-ms.openlocfilehash: 39e165d862d6e174f763cd58529727fd26b8bd46
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0f0cf8f4ce8f82964a69635debacea772c4310da
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311067"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750762"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>安装或卸载 Azure IoT Edge for Linux
 
@@ -113,25 +112,14 @@ IoT Edge 安全守护程序提供和维护 IoT Edge 设备上的安全标准。 
    sudo apt-get update
    ```
 
-查看可用的 IoT Edge 版本。
-
-   ```bash
-   apt list -a iotedge
-   ```
-
-如果要安装最新版本的安全守护程序，请使用以下命令，该命令还会安装最新版本的 libiothsm-std 包：
+安装 IoT Edge 版本 1.1.* 以及 libiothsm-std 包：
 
    ```bash
    sudo apt-get install iotedge
    ```
 
-或者，如果要安装特定版本的安全守护程序，请从 apt 列表输出中指定该版本。 还要为 libiothsm-std 包指定同一版本，否则将安装其最新版本。 例如，以下命令将安装最新的 1.1 发行版：
-
-   ```bash
-   sudo apt-get install iotedge=1.1* libiothsm-std=1.1*
-   ```
-
-如果你要安装的版本未列出，请按照本文后面的[脱机或特定版本安装](#offline-or-specific-version-installation-optional)步骤进行操作。 此部分说明了如何将 IoT Edge 安全守护程序的任何之前版本或候选发布版本作为目标。
+>[!NOTE]
+>IoT Edge 1.1 版本是 IoT Edge 的长期支持分支。 如果运行的是旧版本，建议安装或更新到最新补丁，因为旧版本不再受支持。
 
 <!-- end 1.1 -->
 ::: moniker-end
@@ -156,23 +144,19 @@ IoT 标识服务在 IoT Edge 1.2 版中引入。 此服务处理 IoT Edge 以及
    sudo apt-get update
    ```
 
-查看可用的 IoT Edge 版本。
+查看可用的 IoT Edge 和 IoT 标识服务版本。
 
    ```bash
-   apt list -a aziot-edge
+   apt list -a aziot-edge aziot-identity-service
    ```
 
-如果要安装最新版本的 IoT Edge，请使用以下命令（该命令还会安装最新版本的标识服务包）：
+要安装最新版本的 IoT Edge 和 IoT 标识服务包，请使用以下命令：
 
    ```bash
    sudo apt-get install aziot-edge
    ```
 
-或者，如果要安装特定版本的 IoT Edge 和标识服务，请从 apt 列表输出中指定版本。 为两个服务指定相同的版本。 例如，以下命令将安装最新的 1.2 发行版：
-
-   ```bash
-   sudo apt-get install aziot-edge=1.2* aziot-identity-service=1.2*
-   ```
+如果选择安装与最新版本不同的 IoT Edge 版本，请确保为 `aziot-edge` 和 `aziot-identity-service` 服务安装相同版本。
 
 <!-- end 1.2 -->
 ::: moniker-end
@@ -332,7 +316,7 @@ IoT 标识服务在 IoT Edge 1.2 版中引入。 此服务处理 IoT Edge 以及
    sudo nano /etc/aziot/config.toml
    ```
 
-找到文件的预配部分，并取消注释“使用 X.509 标识证书进行手动预配”行。 请确保注释掉任何其他预配部分。
+找到文件的预配部分，并取消注释“使用 X.509 标识证书进行手动预配”行。 确保所有其他预配部分都已被注释掉。
 
    ```toml
    # Manual provisioning with x.509 certificates
@@ -353,8 +337,8 @@ IoT 标识服务在 IoT Edge 1.2 版中引入。 此服务处理 IoT Edge 以及
 
 * **iothub_hostname**：设备将连接到的 IoT 中心的主机名。 例如 `{IoT hub name}.azure-devices.net`。
 * **device_id**：注册设备时提供的 ID。
-* identity_cert：设备上标识证书的 URI，例如 `file:///path/identity_certificate.pem`。 或者，使用 EST 或本地证书颁发机构动态颁发证书。
-* identity_pk：所提供标识证书的私钥文件 URI，例如 `file:///path/identity_key.pem`。 或者，提供 PKCS#11 URI，然后在配置文件的 PKCS#11 部分提供你的配置信息。
+* **identity_cert**：设备上标识证书的 URI，例如 `file:///path/identity_certificate.pem`。 或者，使用 EST 或本地证书颁发机构动态颁发证书。
+* **identity_pk**：所提供标识证书的私钥文件 URI，例如 `file:///path/identity_key.pem`。 或者，提供 PKCS#11 URI，然后在配置文件的 PKCS#11 部分提供你的配置信息。
 
 保存并关闭该文件。
 

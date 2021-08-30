@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 08/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 601eec9c65ee7e9bc3c163da78a81a372f26507d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 42feac542760bbebc703cabc4ecc114b0ab4259d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061689"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725755"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用多重身份验证
 
@@ -29,6 +29,14 @@ Azure Active Directory B2C (Azure AD B2C) 直接集成了 [Azure AD 多重身份
 
 - 不需要多重身份验证即可访问一个应用程序，但需要多重身份验证才能访问另一个应用程序。 例如，客户可以使用社交或本地帐户登录汽车保险应用程序，但是必须在访问在同一目录中注册的家庭保险应用程序之前验证电话号码。
 - 通常不需要多重身份验证即可访问一个应用程序，但需要它才能访问其中的敏感部分。 例如，客户可以使用社交或本地帐户登录银行应用程序并查询帐户余额，但必须在尝试进行电子转账前验证电话号码。
+
+### <a name="verification-methods"></a>验证方法
+
+使用[条件访问](conditional-access-identity-protection-overview.md)，根据你作为管理员可做出的配置决策，用户可能会受到 MFA 的质询，也可能不会。 多重身份验证的方法包括：
+
+- 电子邮件
+- SMS
+- 电话呼叫
 
 ## <a name="set-multi-factor-authentication"></a>设置多重身份验证
 
@@ -46,8 +54,8 @@ Azure Active Directory B2C (Azure AD B2C) 直接集成了 [Azure AD 多重身份
    - “始终启用” - 无论条件访问设置如何，始终需要 MFA。 在注册期间，系统会提示用户注册 MFA。 在登录期间，如果用户尚未注册 MFA，系统会提示他们注册。
    - “条件性” - 在注册和登录期间，系统会提示用户注册 MFA（包括新用户和未注册 MFA 的现有用户）。 在登录期间，仅在活动的条件访问策略评估需要 MFA 时强制执行 MFA：
 
-      - 如果结果是没有风险的 MFA 质询，则强制实施 MFA。 如果用户尚未注册 MFA，系统会提示他们注册。
-      - 如果结果是因风险导致的 MFA 质询，而且用户未注册 MFA，则会阻止登录。
+    - 如果结果是没有风险的 MFA 质询，则强制实施 MFA。 如果用户尚未注册 MFA，系统会提示他们注册。
+    - 如果结果是因风险导致的 MFA 质询，而且用户未注册 MFA，则会阻止登录。
 
    > [!NOTE]
    >

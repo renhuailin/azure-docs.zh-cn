@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e2b6b3e9a6bdead4e4da7f1a829698d86cfbf52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9eeed96b87aa5c115994ee73d1985526b26af11
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92366167"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733750"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>条件访问：要求将 MFA 用于 Azure 管理
 
@@ -26,7 +26,7 @@ ms.locfileid: "92366167"
 * Azure PowerShell
 * Azure CLI
 
-这些工具可以用来对资源进行特权要求很高的访问，可能会更改订阅范围的配置，服务设置和订阅计费。 为了保护这些特权资源，Microsoft 建议对任何访问这些资源的用户要求多重身份验证。
+这些工具可以用来对资源进行特权要求很高的访问，可能会更改订阅范围的配置，服务设置和订阅计费。 为了保护这些特权资源，Microsoft 建议对任何访问这些资源的用户要求多重身份验证。 在 Azure AD 中，这些工具组合到一个名为 [Microsoft Azure 管理](concept-conditional-access-cloud-apps.md#microsoft-azure-management)的套件中。 对于 Azure 政府，这应为 Azure 政府云管理 API 应用。 
 
 ## <a name="user-exclusions"></a>排除用户
 
@@ -39,10 +39,10 @@ ms.locfileid: "92366167"
 
 ## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
 
-以下步骤可帮助创建条件访问策略，以要求有权访问 [Microsoft Azure 管理](concept-conditional-access-cloud-apps.md#microsoft-azure-management)应用的用户执行多重身份验证。
+以下步骤可帮助创建条件访问策略，以要求访问 [Microsoft Azure 管理](concept-conditional-access-cloud-apps.md#microsoft-azure-management)套件的用户执行多重身份验证。
 
-1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 Azure 门户。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
+1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
 1. 选择“新策略”  。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
@@ -50,7 +50,6 @@ ms.locfileid: "92366167"
    1. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
    1. 选择“完成”。
 1. 在“云应用或操作” > “包括”下，依次选择“选择应用”、“Microsoft Azure 管理”、“选择”、“完成”。   
-1. 在“条件” > “客户端应用(预览版)”下，在“选择适用于该策略的客户端应用”下保留选择的所有默认值，然后选择“完成”   。
 1. 在“访问控制” > “授予”下，依次选择“授予访问权限”、“需要多重身份验证”、“选择”。  
 1. 确认设置，然后将“启用策略”设置为“打开”。  
 1. 选择“创建”  ，以便创建启用策略所需的项目。

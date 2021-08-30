@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: fe259c3858e798f9bcb72600b680f12c19055884
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 41c39a87375b66e9aaf916f927d09a3b6abb3b0e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470336"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748201"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>使用连接监视器进行网络连接监视
 
@@ -76,7 +76,7 @@ ms.locfileid: "110470336"
 
 若要使连接监视器将本地计算机识别为要监视的源，请在计算机上安装 Log Analytics 代理。  然后启用网络性能监视器解决方案。 这些代理是链接到 Log Analytics 工作区的，因此，需要先设置工作区 ID 和主密钥，然后代理才能开始进行监视。
 
-若要为 Windows 计算机安装 Log Analytics 代理，请参阅[适用于 Windows 的 Azure Monitor 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)。
+要为 Windows 计算机安装日志分析代理，请参阅[在 Windows 上安装日志分析代理](../azure-monitor/agents/agent-windows.md)。
 
 如果路径包括防火墙或网络虚拟设备 (NVA)，请确保可访问目标。
 
@@ -279,9 +279,18 @@ ms.locfileid: "110470336"
 
 使用 Log Analytics 创建监视数据的自定义视图。 UI 显示的所有数据都来自 Log Analytics。 可以以交互方式分析存储库中的数据。 关联代理运行状况中的数据或基于 Log Analytics 的其他解决方案。 将数据导出到 Excel 或 Power BI，或创建可共享的链接。
 
+#### <a name="network-topology-in-connection-monitor"></a>连接监视器中的网络拓扑 
+
+连接监视器拓扑通常是使用由某个代理执行的跟踪路由命令的结果构建的，且该代理基本上获得了从源到目标的所有跃点。
+但如果源或目标在 Azure 边界内时，拓扑是通过合并两个不同操作的结果来构建的。
+第一个明显是“跟踪路由”命令的结果。 第二个是一个内部命令（非常类似于 NW 的“下一个跃点诊断”工具）的结果，该命令根据 Azure 边界内的（客户）网络配置来标识逻辑路由。 由于后一个是合乎逻辑的，而前一个通常无法标识 Azure 边界中的任何跃点，因此合并的结果（几乎是 Azure 边界中的所有跃点）中几乎不会有跃点具有延迟值。
+
 #### <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 
 在连接监视器体验推出之前创建的连接监视器中，以下所有四个指标都可用：探测失败百分比、AverageRoundtripMs、ChecksFailedPercent 和 RoundTripTimeMs。 在连接监视器体验中创建的连接监视器中，数据只可用于 ChecksFailedPercent、RoundTripTimeMs 和“测试结果”指标。
+
+指标按监视频率发出，并描述某个连接监视器在特定时间的信息。 连接监视器指标还具有多个维度，例如 SourceName、DestinationName、TestConfiguration 和 TestGroup 等。这些维度可用于可视化特定的数据集，还可以在定义警报时以该数据集为目标。
+目前，Azure 指标支持的最小粒度为 1 分钟，如果频率小于 1 分钟，将显示聚合结果。
 
   :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="屏幕截图显示了连接监视器中的指标" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
@@ -365,6 +374,37 @@ ms.locfileid: "110470336"
 * 网关连接上未启用 BGP。
 * 已关闭负载均衡器上的 DIP 探测。
 
+## <a name="comparision-between-azures-connectivity-monitoring-support"></a>Azure 连接监视比较支持 
+
+只需单击一下，无需停机，即可将测试从网络性能监视器和连接监视器（经典）迁移到经过改进的新连接监视器。
+ 
+迁移将有助于生成以下结果：
+
+* 代理和防火墙设置按原样工作。 不需要进行任何更改。 
+* 现有的连接监视器已映射到“连接监视器”>“测试组”>“测试格式”。 通过选择“编辑”，可以查看和修改新连接监视器的属性，下载模板以对连接监视器进行更改，然后通过 Azure 资源管理器提交。 
+* 具有网络观察程序扩展的 Azure 虚拟机将数据发送到工作区和指标。 连接监视器通过新指标（ChecksFailedPercent 和 RoundTripTimeMs）而不是旧指标（ProbesFailedPercent 和 AverageRoundtripMs）提供数据。 旧指标将迁移到新指标，如 > ProbesFailedPercent -> ChecksFailedPercent 和 AverageRoundtripMs -> RoundTripTimeMs。
+* 数据监视：
+   * **警报**：自动迁移到新指标。
+   * **仪表板和集成**：需要手动编辑指标集。 
+   
+从网络性能监视器和连接监视器（经典）迁移到连接监视器可出于多种原因。 下面是一些用例，展示了 Azure 的连接监视器与网络性能监视器和连接监视器（经典）之间的性能比较。 
+
+ | 特征  | 网络性能监视器 | 连接监视器（经典） | 连接监视器 |
+ | -------  | --------------------------- | -------------------------- | ------------------ | 
+ | Azure 和混合监视的统一体验 | 不可用 | 不可用 | 可用 |
+ | 跨订阅、跨区域、跨工作区监视 | 支持跨订阅和跨区域监视但不支持跨工作区监视 | 不可用 | 支持跨订阅和跨工作区监视；Azure 代理具有区域边界  |
+ | 集中式工作区支持 |  不可用 | 不可用   | 可用 |
+ | 多个源可以 ping 多个目标 | 性能监视支持多个源对多个目标进行 ping 操作，服务连接监视支持多个源对单个服务/URL 进行 ping 操作，而快速路由支持多个源对多个目标进行 ping 操作 | 不可用 | 可用 |
+ | 跨本地、Internet 跃点和 Azure 的统一拓扑 | 不可用 | 不可用 | 可用 |
+ | HTTP 状态代码检查 | 不可用  | 不可用 | 可用 |
+ | 连接诊断 | 不可用 | 可用 | 可用 |
+ | 复合资源 - VNET、子网和本地自定义网络 | 性能监视支持子网、本地网络和逻辑网络组，而服务连接监视和快速路由仅支持本地和 Azure 代理 | 不可用 | 可用 |
+ | 连接指标和维度度量 |   不可用 | 丢失、延迟、RTT | 可用 |
+ | 自动化 - PS/CLI/Terraform | 不可用 | 可用 | 可用 |
+ | Linux 支持 | 性能监视支持 Linux，而服务连接监视器和快速路由不支持 Linux | 可用 | 可用 |
+ | 公共、政府、Mooncake 和气隙云支持 | 可用 | 可用 | 可用|
+
+
 ## <a name="faq"></a>常见问题解答
 
 ### <a name="are-classic-vms-supported"></a>是否支持经典 VM？
@@ -379,6 +419,9 @@ ms.locfileid: "110470336"
 ### <a name="the-test-failure-reason-is-nothing-to-display"></a>测试失败的原因是“没有要显示的内容”？
 在拓扑发现或跃点探索过程中，发现了连接监视器仪表板上显示的问题。 可能会有这样的情况：突破了为丢失百分比或 RTT 设置的阈值，但未在跃点上发现问题。
 
+### <a name="while-migrating-existing-connection-monitor-classic-to-connection-monitor-the-external-endpoint-tests-are-being-migrated-with-tcp-protocol-only"></a>在将现有连接监视器（经典）迁移到连接监视器时，是否仅使用 TCP 协议迁移外部端点测试？ 
+连接监视器（经典）中没有协议选项。 因此，客户无法在连接监视器（经典）中使用 HTTP 协议指定与外部端点的连接。
+所有测试仅在连接监视器（经典）中时有 TCP 协议，因此在迁移时，我们会在连接监视器中的测试中创建 TCP 配置。 
 
 ## <a name="next-steps"></a>后续步骤
     

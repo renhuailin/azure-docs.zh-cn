@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: how-to
-ms.date: 04/28/2021
+ms.topic: conceptual
+ms.date: 07/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 775cb6f7cfc19b0009fc92cc5afbd3ac383b3ea3
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 73cb44dd3564f56f8edd5304a344a50f1e4b5c9d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663852"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740760"
 ---
 # <a name="virtual-machines-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备上的虚拟机
 
@@ -53,8 +53,9 @@ Azure Stack Edge 解决方案提供了由 Microsoft 提供的专用硬件即服�
 |主 VM|4 核，4 GB RAM|
 |辅助 VM|12 核，32 GB RAM|
 
-
 有关设备的可用计算和内存，请参阅所用设备型号的[计算和内存规格](azure-stack-edge-gpu-technical-specifications-compliance.md#compute-and-memory-specifications)。 
+
+对于 GPU 虚拟机，必须使用 [NCasT4-v3 系列中的 VM 大小](azure-stack-edge-gpu-virtual-machine-sizes.md#ncast4_v3-series-preview)。
 
 
 ### <a name="vm-limits"></a>VM 限制

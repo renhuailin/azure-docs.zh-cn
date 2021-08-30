@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: b61e1e0b185355c06d10648f267895e819162318
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 522cf0ad115e1149d7746ecadef96ae9494a1d8c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969710"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744943"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis"></a>启用适用于 Azure Cache for Redis 的区域冗余
 本文将介绍如何使用 Azure 门户配置区域冗余 Azure 缓存实例。
@@ -51,18 +51,18 @@ Azure Cache for Redis 标准层、高级层和企业层通过将每个缓存托�
    
     :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="可用性区域":::
 
-1. 将其他选项保留默认设置。 
+1. 配置群集和/或 RDB 持久性的设置。  
 
     > [!NOTE]
     > 目前，区域冗余不支持 AOF 暂留，也不兼容异地复制。
     >
 
-1. 单击“创建”。 
+1. 选择“创建”。 
    
     创建缓存需要花费片刻时间。 可以在 Azure Cache for Redis 的“概述”页上监视进度。  如果“状态”显示为“正在运行”，则表示该缓存可供使用。 
    
     > [!NOTE]
-    > 创建缓存后，可用性区域无法更改。
+    > 创建缓存后，无法更改或启用可用性区域。 
     >
 
 ## <a name="zone-redundancy-faq"></a>区域冗余常见问题解答

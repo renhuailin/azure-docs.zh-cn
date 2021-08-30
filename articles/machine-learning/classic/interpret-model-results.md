@@ -8,20 +8,22 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: f824cf6e30ed795ef0fe4468542ae16c801bd61b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 882939a08a3a90cffd0b4eb25711d71159a91eb9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100516118"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689680"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中解释模型结果
+# <a name="interpret-model-results-in-machine-learning-studio-classic"></a>在机器学习工作室（经典）中解释模型结果
 
-**适用对象：** ![这是复选标记，意味着本文适用于机器学习工作室（经典版）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）   ![这是 X，意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+适用范围：![这是复选标记，意味着本文适用于](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）![机器学习工作室（经典版）   这是 X，意味着本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-本主题说明如何在 Azure 机器学习工作室（经典版）中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
-Azure 机器学习工作室（经典版）中有四种主要的机器学习模型：
+本主题说明如何在机器学习工作室（经典版）中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
+
+机器学习工作室（经典版）中有四种主要的机器学习模型：
 
 * 分类
 * 群集功能
@@ -46,12 +48,12 @@ Azure 机器学习工作室（经典版）中有四种主要的机器学习模�
 * 仅两个类的问题（双类或二元分类）
 * 多于两个类的问题（多类分类）
 
-Azure 机器学习工作室（经典版）具有不同的模块用于处理其中每一种分类，但用于解释其预测结果的方法都相似。
+机器学习工作室（经典）使用不同的模块来处理其中的每一种分类，但用于解释其预测结果的方法都相似。
 
 ### <a name="two-class-classification"></a>双类分类
 **示例实验**
 
-双类分类问题的一个示例是鸢尾花的分类。 任务是根据特征为鸢尾花分类。 Azure 机器学习工作室（经典版）中提供的鸢尾花数据集是流行的[鸢尾花数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)的子集，仅包含两种花卉种类（类 0 和类 1）的实例。 每个花卉有四个特征（花萼长度、花萼宽度、花瓣长度和花瓣宽度）。
+双类分类问题的一个示例是鸢尾花的分类。 任务是根据特征为鸢尾花分类。 机器学习工作室（经典）中提供的鸢尾花数据集是流行的[鸢尾花数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set)的子集，仅包含两种花卉种类（类 0 和类 1）的实例。 每个花卉有四个特征（花萼长度、花萼宽度、花瓣长度和花瓣宽度）。
 
 ![鸢尾花实验的屏幕截图](./media/interpret-model-results/1.png)
 
@@ -225,7 +227,7 @@ Azure 机器学习工作室（经典版）具有不同的模块用于处理其�
 * 客户特征数据
 * 餐馆特色数据
 
-使用 Azure 机器学习工作室（经典版）中的 [Matchbox 推荐器定型][train-matchbox-recommender]模块，可以执行多个操作：
+使用机器学习工作室（经典）中的 [Matchbox 推荐器定型][train-matchbox-recommender]模块，可以执行多个操作：
 
 * 预测给定用户和项目的评级
 * 向给定用户推荐项目
@@ -236,7 +238,7 @@ Azure 机器学习工作室（经典版）具有不同的模块用于处理其�
 
 ![Matchbox 推荐器](./media/interpret-model-results/19_1.png)
 
-推荐器系统的典型 Azure 机器学习工作室（经典版）实验类似于图 20。 有关如何使用这些推荐器系统模块的信息，请参阅[训练 Matchbox 推荐器][train-matchbox-recommender]和 [Matchbox 推荐器评分][score-matchbox-recommender]。
+推荐器系统的典型机器学习工作室（经典）试验类似于图 20。 有关如何使用这些推荐器系统模块的信息，请参阅[训练 Matchbox 推荐器][train-matchbox-recommender]和 [Matchbox 推荐器评分][score-matchbox-recommender]。
 
 ![推荐器系统实验](./media/interpret-model-results/20.png)
 

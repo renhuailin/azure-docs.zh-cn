@@ -10,13 +10,13 @@ ms.custom: contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 09/01/2020
-ms.openlocfilehash: 7b25aaf6d151b840571a562819fb804f4af5c8dd
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 07/28/2021
+ms.openlocfilehash: 9f4147cd349bd1865f29791432c3b0f0cf796292
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371078"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662279"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 
@@ -36,6 +36,8 @@ ms.locfileid: "110371078"
 > 建议在部署到 Web 服务之前先进行本地调试。 有关详细信息，请参阅[本地调试](./how-to-troubleshoot-deployment-local.md)
 >
 > 还可参阅 Azure 机器学习 - [部署到本地笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -70,7 +72,7 @@ ms.locfileid: "110371078"
 1. 构建 dockerfile 或将其下载到计算节点（与 Kubernetes 相关）
     1. 系统计算以下各项的哈希： 
         - 基础映像 
-        - 自定义 Docker 步骤（请参阅[使用自定义 Docker 基础映像部署模型](./how-to-deploy-custom-docker-image.md)）
+        - 自定义 Docker 步骤（请参阅[使用自定义 Docker 基础映像部署模型](./how-to-deploy-custom-container.md)）
         - Conda 定义 YAML（请参阅[在 Azure 机器学习中创建和使用软件环境](./how-to-use-environments.md)）
     1. 在工作区 Azure 容器注册表 (ACR) 中查找时，系统使用此哈希作为键
     1. 如果找不到，它会在全局 ACR 中寻找匹配项
@@ -92,26 +94,35 @@ Azureml-fe 会纵向（垂直）扩展以使用更多的核心，并会横向（
 
 在纵向和横向缩减时，将使用 CPU 使用率。 如果满足 CPU 使用率阈值，则前端会首先纵向缩减。 如果 CPU 使用率下降到了横向缩减阈值，则会进行横向缩减操作。 仅当有足够的群集资源可用时，才会进行纵向扩展和横向扩展。
 
+<a id="connectivity"></a>
+
 ## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>了解 AKS 推理集群的连接要求
 
 当 Azure 机器学习创建或附加 AKS 群集时，将使用以下两种网络模型之一部署 AKS 群集：
 * Kubenet 网络 - 通常在部署 AKS 群集时创建和配置网络资源。
 * Azure 容器网络接口 (CNI) 网络 - AKS 群集连接到现有的虚拟网络资源和配置。
 
-对于第一种网络模式，已为 Azure 机器学习服务正确创建和配置了网络。 对于第二种网络模式，由于群集已连接到现有虚拟网络（尤其是在将自定义 DNS 用于现有虚拟网络时），因此客户需要特别注意 AKS 推理群集的连接要求，并确保 DNS 解析和 AKS 推理的出站连接。
+对于 Kubenet 网络，已为 Azure 机器学习服务适当创建和配置了网络。 对于 CNI 网络，需要了解连接要求，并确保用于 AKS 推理的 DNS 解析和出站连接。 例如，可能正在使用防火墙来阻止网络流量。
 
-下图捕获了 AKS 推理的所有连接要求。 黑色箭头代表实际的通信，蓝色箭头代表客户控制的 DNS 应该解析的域名。
+下图显示了 AKS 推理的连接要求。 黑色箭头代表实际的通信，蓝色箭头代表域名。 可能需要将这些主机的条目添加到防火墙或自定义 DNS 服务器。
 
  ![AKS 推理的连接要求](./media/how-to-deploy-aks/aks-network.png)
 
+要查看常规的 AKS 连接要求，请参阅[控制 Azure Kubernetes 服务中群集节点的出口流量](../aks/limit-egress-traffic.md)。
+
 ### <a name="overall-dns-resolution-requirements"></a>总体 DNS 解析要求
-现有 VNET 中的 DNS 解析由客户控制。 以下 DNS 条目应该是可解析的：
-* AKS API 服务器，格式为 \<cluster\>.hcp.\<region\>.azmk8s.io
-* Microsoft Container Registry (MCR)：mcr.microsoft.com
-* 客户的 Azure 容器注册表 (ARC)，格式为 \<ACR name\>.azurecr.io
-* Azure 存储帐户，格式为 \<account\>.table.core.windows.net 和 \<account\>.blob.core.windows.net
-* （可选）对于 AAD 身份验证：api.azureml.ms
-* 评分终结点域名，由 Azure ML 自动生成或自定义域名。 自动生成的域名如下所示：\<leaf-domain-label \+ auto-generated suffix\>.\<region\>.cloudapp.azure.com
+
+现有 VNet 中的 DNS 解析由用户控制。 例如，防火墙或自定义 DNS 服务器。 以下主机必须是可访问的：
+
+| 主机名 | 使用者 |
+| ----- | ----- |
+| `<cluster>.hcp.<region>.azmk8s.io` | AKS API 服务器 |
+| `mcr.microsoft.com` | Microsoft Container Registry (MCR) |
+| `<ACR name>.azurecr.io` | Azure 容器注册表 (ACR) |
+| `<account>.table.core.windows.net` | Azure 存储帐户（表存储） |
+| `<account>.blob.core.windows.net` | Azure 存储帐户（Blob 存储） |
+| `api.azureml.ms` | Azure Active Directory (AAD) 身份验证 |
+| `<leaf-domain-label + auto-generated suffix>.<region>.cloudapp.azure.com` | 终结点域名（如果由 Azure 机器学习自动生成）。 如果使用自定义域名，则不需要此项。 |
 
 ### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>按时间顺序排列的连接性要求：从群集创建到模型部署
 
@@ -125,7 +136,7 @@ Azureml-fe 会纵向（垂直）扩展以使用更多的核心，并会横向（
 * 查询 AKS API 服务器以发现自身的其他实例（这是一个多 Pod 服务）
 * 连接到其自身的其他实例
 
-启动 azureml 后，需要更多的连接才能正常工作：
+启动 azureml-fe 后，需要使用以下连接才能正常工作：
 * 连接到 Azure 存储以下载动态配置
 * 为 AAD 身份验证服务器 api.azureml.ms 解析 DNS，并在部署的服务使用 AAD 身份验证时与其通信。
 * 查询 AKS API 服务器以发现已部署的模型
@@ -155,6 +166,7 @@ Azureml-fe 会纵向（垂直）扩展以使用更多的核心，并会横向（
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
 from azureml.core.model import Model
+from azureml.core.compute import AksCompute
 
 aks_target = AksCompute(ws,"myaks")
 # If deploying to a cluster configured for dev/test, ensure that it was created with enough
@@ -372,7 +384,7 @@ print(token)
 >
 > Microsoft 强烈建议在 Azure Kubernetes 服务群集所在的相同区域中创建 Azure 机器学习工作区。 要使用令牌进行身份验证，Web 服务将调用创建 Azure 机器学习工作区的区域。 如果工作区区域不可用，即使群集和工作区不在同一区域，也将无法获取 Web 服务的令牌。 这实际上会导致在工作区的区域再次可用之前，基于令牌的身份验证不可用。 此外，群集区域和工作区区域的距离越远，获取令牌所需的时间就越长。
 >
-> 若要检索令牌，必须使用 Azure 机器学习 SDK 或 [az ml service get-access-token](/cli/azure/ml/service#az_ml_service_get_access_token) 命令。
+> 若要检索令牌，必须使用 Azure 机器学习 SDK 或 [az ml service get-access-token](/cli/azure/ml(v1)/computetarget/create#az_ml_service_get_access_token) 命令。
 
 
 ### <a name="vulnerability-scanning"></a>漏洞扫描
@@ -383,7 +395,7 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和高级�
 
 * [使用 Azure RBAC 进行 Kubernetes 授权](../aks/manage-azure-rbac.md)
 * [使用 Azure 虚拟网络保护推理环境](how-to-secure-inferencing-vnet.md)
-* [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
+* [如何使用自定义 Docker 映像部署模型](./how-to-deploy-custom-container.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
 * [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)

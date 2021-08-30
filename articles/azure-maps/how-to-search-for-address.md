@@ -7,13 +7,12 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: dddf56edf2037d87a28589a59834db32f8d04a4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de8acfbf4d4930f5c029aaa71300af770a274194
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98598365"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751456"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>使用 Azure Maps 搜索服务来搜索位置
 
@@ -22,7 +21,7 @@ ms.locfileid: "98598365"
 
 本文将指导如何进行以下操作：
 
-* 使用[搜索地址 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) 请求地址（地理编码地址位置）的纬度和经度坐标。
+* 使用[搜索地址 API](/rest/api/maps/search/getsearchaddress) 请求地址（地理编码地址位置）的纬度和经度坐标。
 * 使用[模糊搜索 API](/rest/api/maps/search/getsearchfuzzy) 搜索地址或兴趣点 (POI)。
 * 执行[反向地址搜索](/rest/api/maps/search/getsearchaddressreverse)，将坐标位置转换为街道地址。
 * 使用[搜索地址反向十字街 API](/rest/api/maps/search/getsearchaddressreversecrossstreet) 将坐标位置转换为人类可理解的十字街。  大多数情况下，从设备或资产接收 GPS 源并且要了解坐标所在位置的跟踪应用程序需要此 API。
@@ -41,25 +40,23 @@ ms.locfileid: "98598365"
 >[!TIP]
 >如果你有一组需执行地理编码的地址，则可以使用[发布搜索地址批处理 API](/rest/api/maps/search/postsearchaddressbatch)，以通过单个 API 调用发送一批查询。
 
-1. 打开 Postman 应用。 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“集合”。  命名集合，然后选择“创建”按钮。 本文档的其余示例中将使用此集合。
+1. 在 Postman 应用中，选择“新建”以创建请求。 在“新建”窗口中，选择“HTTP 请求” 。 在“请求名称”中，输入请求名称。
 
-2. 若要创建请求，请再次选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 选择在上一步中创建的集合，然后选择“保存”。
-
-3. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 在此请求中，我们要搜索特定地址：`400 Braod St, Seattle, WA 98109`。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
+2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 在此请求中，我们要搜索特定地址：`400 Braod St, Seattle, WA 98109`。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
 
     ```http
     https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
     ```
 
-4. 单击蓝色“发送”按钮。 响应正文将包含单个位置的数据。
+3. 单击蓝色“发送”按钮。 响应正文将包含单个位置的数据。
 
-5. 现在，我们将搜索具有多个可能位置的地址。 在“参数”部分中，将 `query` 键更改为 `400 Broad, Seattle`。 单击蓝色“发送”按钮。
+4. 现在，我们将搜索具有多个可能位置的地址。 在“参数”部分中，将 `query` 键更改为 `400 Broad, Seattle`。 单击蓝色“发送”按钮。
 
     :::image type="content" source="./media/how-to-search-for-address/search-address.png" alt-text="搜索地址":::
 
-6. 接下来，尝试将 `query` 键设置为 `400 Broa`。
+5. 接下来，尝试将 `query` 键设置为 `400 Broa`。
 
-7. 单击“发送”按钮  。 现在可以看到响应包含来自多个国家/地区的响应。 若要让结果在地理上偏近用户的相关区域，始终要在请求中添加尽可能多的位置详细信息。
+6. 单击“发送”按钮  。 现在可以看到响应包含来自多个国家/地区的响应。 若要让结果在地理上偏近用户的相关区域，始终要在请求中添加尽可能多的位置详细信息。
 
 ## <a name="using-fuzzy-search-api"></a>使用模糊搜索 API
 
@@ -75,7 +72,7 @@ Azure Maps [模糊搜索 API](/rest/api/maps/search/getsearchfuzzy) 支持标准
 >[!IMPORTANT]
 >若要让结果在地理上偏近用户的相关区域，始终要添加尽可能多的位置详细信息。 若要了解详细信息，请参阅[搜索最佳实践](how-to-use-best-practices-for-search.md#geobiased-search-results)。
 
-1. 打开 Postman 应用，单击“新建”，然后选择“请求”。  在“请求名称”中，输入请求名称。 选择在上一部分中创建的集合，或创建一个新集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”以创建请求。 在“新建”窗口中，选择“HTTP 请求” 。 在“请求名称”中，输入请求名称。
 
 2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
 
@@ -113,7 +110,7 @@ Azure Maps [模糊搜索 API](/rest/api/maps/search/getsearchfuzzy) 支持标准
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>使用反向地址搜索搜索街道地址
 
-Azure Maps [获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 将坐标转换为人类可理解的街道地址。 此 API 通常用于使用 GPS 源并且要发现位于特定坐标点的地址的应用程序。
+Azure Maps [获取搜索地址反向 API](/rest/api/maps/search/getsearchaddressreverse) 将坐标转换为人类可理解的街道地址。 此 API 通常用于使用 GPS 源并且要发现位于特定坐标点的地址的应用程序。
 
 >[!IMPORTANT]
 >若要让结果在地理上偏近用户的相关区域，始终要添加尽可能多的位置详细信息。 若要了解详细信息，请参阅[搜索最佳实践](how-to-use-best-practices-for-search.md#geobiased-search-results)。
@@ -123,7 +120,7 @@ Azure Maps [获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/m
 
 在此示例中，我们将使用几个可用的可选参数执行反向搜索。 有关可选参数的完整列表，请参阅[反向搜索参数](/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。
 
-1. 在 Postman 应用中，单击“新建”，然后选择“请求”。  在“请求名称”中，输入请求名称。 选择在第一部分中创建的集合，或创建一个新集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”以创建请求。 在“新建”窗口中，选择“HTTP 请求” 。 在“请求名称”中，输入请求名称。
 
 2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。 请求应如下面的 URL 所示：
 
@@ -138,9 +135,9 @@ Azure Maps [获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/m
     | 密钥 | 值 | 返回
     |-----|------------|------|
     | 数字 | 1 |响应可能包含街道的边侧（左/右）以及该数字的偏移位置。|
-    | returnSpeedLimit | true | 返回该地址的速度限制。|
-    | returnRoadUse | true | 返回该地址的道路使用类型。 有关所有可能的道路使用类型，请参阅[道路使用类型](/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。|
-    | returnMatchType | true| 返回匹配类型。 若要查看所有可能的值，请参阅[反向地址搜索结果](/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
+    | returnSpeedLimit | 是 | 返回该地址的速度限制。|
+    | returnRoadUse | 是 | 返回该地址的道路使用类型。 有关所有可能的道路使用类型，请参阅[道路使用类型](/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。|
+    | returnMatchType | 是| 返回匹配类型。 若要查看所有可能的值，请参阅[反向地址搜索结果](/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
 
    :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="执行反向搜索。":::
 
@@ -159,7 +156,7 @@ Azure Maps [获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/m
 
 在此示例中，我们将根据地址的坐标搜索十字街。
 
-1. 在 Postman 应用中，单击“新建”，然后选择“请求”。  在“请求名称”中，输入请求名称。 选择在第一部分中创建的集合，或创建一个新集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”以创建请求。 在“新建”窗口中，选择“HTTP 请求” 。 在“请求名称”中，输入请求名称。
 
 2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。 请求应如下面的 URL 所示：
   

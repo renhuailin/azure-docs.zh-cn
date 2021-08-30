@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: bdbc6956f9a32cbba369135652fb4ac03c581108
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 7ac3cbc5c8be5ef417e54b29f1bc85f5546071f2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559369"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181445"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -28,6 +28,7 @@ ms.locfileid: "111559369"
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 * 分配给 AKS 节点池的子网不能是[委托子网](../virtual-network/subnet-delegation-overview.md)。
+* 如果提供自己的子网，则必须管理与该子网关联的网络安全组 (NSG)。 AKS 不会修改与该子网关联的任何 NSG。 还必须确保 NSG 中的安全规则允许节点和 Pod CIDR 范围之间的流量。
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>规划群集的 IP 地址
 
@@ -83,7 +84,7 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大
 
 * **Azure CLI**：使用 [az aks create][az-aks-create] 命令部署群集时，请指定 `--max-pods` 参数。 最大值为 250。
 * **资源管理器模板**：使用资源管理器模板部署群集时，在 [ManagedClusterAgentPoolProfile] 对象中指定 `maxPods` 属性。 最大值为 250。
-* **Azure 门户**：使用 Azure 门户部署群集时，不能更改每个节点的最大 Pod 数。 使用 Azure 门户部署时，Azure CNI 网络群集中每个节点的 Pod 数限制为 30 个。
+* **Azure 门户**：使用 Azure 门户部署群集时，不能更改每个节点的最大 Pod 数。 使用 Azure 门户部署时，Azure CNI 网络群集中每个节点的 Pod 数限制为 110 个。
 
 ### <a name="configure-maximum---existing-clusters"></a>配置最大值 - 现有群集
 
@@ -151,23 +152,7 @@ az aks create \
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-> [!NOTE] 
-> 此预览版功能当前在以下地区可用：
->
-> * 美国东部
-> * 美国东部 2
-> * 美国中北部
-> * 美国中西部
-> * 美国西部
-> * 美国西部 2
-> * 加拿大中部
-> * 澳大利亚东部
-> * 英国南部
-> * 北欧
-> * 西欧
-> * 东南亚
-
-传统 CNI 的一个缺点是，随着 AKS 群集的增长，Pod IP 地址将耗尽，导致需要在更大的子网中重建整个群集。 Azure CNI 中的新增 IP 动态分配功能可从与托管 AKS 群集的子网分隔的子网分配 Pod IP，以此来解决这个问题。  这能带来以下好处：
+传统 CNI 的一个缺点是，随着 AKS 群集的增长，Pod IP 地址将耗尽，导致需要在更大的子网中重建整个群集。 Azure CNI 中的新增 IP 动态分配功能可从与托管 AKS 群集的子网分隔的子网分配 Pod IP，以此来解决这个问题。 这能带来以下好处：
 
 * **更高的 IP 利用率**：IP 从 Pod 子网动态分配给群集 Pod。 与传统的 CNI 解决方案（为每个节点静态分配 IP）相比，此功能可以优化群集中的 IP 利用率。  
 
@@ -178,6 +163,13 @@ az aks create \
 * **用于 Pod 的单独 VNet 策略**：由于 Pod 具有单独的子网，因此你可以单独为它们配置不同于节点策略的 VNet 策略。 这样可以实现许多有用的场景，例如只允许 Pod 而不允许节点连接 Internet，使用 VNet 网络 NAT 修复节点池中 Pod 的源 IP 以及使用 NSG 筛选节点池之间的流量。  
 
 * **Kubernetes 网络策略**：Azure 网络策略和 Calico 都适用于此新解决方案。  
+
+### <a name="additional-prerequisites"></a>其他先决条件
+
+已列出的适用于 Azure CNI 的[先决条件][prerequisites]仍适用，但还有一些额外的限制：
+
+* 仅支持 Linux 节点群集和节点池。
+* 不支持 AKS 引擎和 DIY 群集。
 
 ### <a name="install-the-aks-preview-azure-cli"></a>安装 `aks-preview` Azure CLI
 
@@ -213,13 +205,6 @@ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/P
 az provider register --namespace Microsoft.ContainerService
 ```
 
-### <a name="additional-prerequisites"></a>其他先决条件
-
-已列出的适用于 Azure CNI 的先决条件仍适用，但还有一些额外的限制：
-
-* 仅支持 Linux 节点群集和节点池。
-* 不支持 AKS 引擎和 DIY 群集。
-
 ### <a name="planning-ip-addressing"></a>计划 IP 寻址
 
 使用此功能时，计划会简单得多。 由于节点和 Pod 是独立缩放的，因此也可以单独计划其地址空间。 由于可以将 Pod 子网配置为节点池的粒度，因此客户在添加节点池时始终可以添加新的子网。 群集/节点池中的系统 Pod 也会从 Pod 子网中接收 IP，因此需要考虑此行为。
@@ -251,23 +236,31 @@ K8S 服务和 Docker 桥的 IP 计划保持不变。
 首先创建包含两个子网的虚拟网络：
 
 ```azurecli-interactive
-$resourceGroup="myResourceGroup"
-$vnet="myVirtualNetwork"
+resourceGroup="myResourceGroup"
+vnet="myVirtualNetwork"
+location="westcentralus"
+
+# Create the resource group
+az group create --name $resourceGroup --location $location
 
 # Create our two subnet network 
-az network vnet create -g $rg --name $vnet --address-prefixes 10.0.0.0/8 -o none 
-az network vnet subnet create -g $rg --vnet-name $vnet --name nodesubnet --address-prefixes 10.240.0.0/16 -o none 
-az network vnet subnet create -g $rg --vnet-name $vnet --name podsubnet --address-prefixes 10.241.0.0/16 -o none 
+az network vnet create -g $resourceGroup --location $location --name $vnet --address-prefixes 10.0.0.0/8 -o none 
+az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name nodesubnet --address-prefixes 10.240.0.0/16 -o none 
+az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name podsubnet --address-prefixes 10.241.0.0/16 -o none 
 ```
 
 然后，创建群集，使用 `--vnet-subnet-id` 引用节点子网，并使用 `--pod-subnet-id` 引用 Pod 子网：
 
 ```azurecli-interactive
-$clusterName="myAKSCluster"
-$location="eastus"
-$subscription="aaaaaaa-aaaaa-aaaaaa-aaaa"
+clusterName="myAKSCluster"
+subscription="aaaaaaa-aaaaa-aaaaaa-aaaa"
 
-az aks create -n $clusterName -g $resourceGroup -l $location --max-pods 250 --node-count 2 --network-plugin azure --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/nodesubnet --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/podsubnet  
+az aks create -n $clusterName -g $resourceGroup -l $location \
+  --max-pods 250 \
+  --node-count 2 \
+  --network-plugin azure \
+  --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/nodesubnet \
+  --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/podsubnet  
 ```
 
 #### <a name="adding-node-pool"></a>添加节点池
@@ -278,7 +271,12 @@ az aks create -n $clusterName -g $resourceGroup -l $location --max-pods 250 --no
 az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name node2subnet --address-prefixes 10.242.0.0/16 -o none 
 az network vnet subnet create -g $resourceGroup --vnet-name $vnet --name pod2subnet --address-prefixes 10.243.0.0/16 -o none 
 
-az aks nodepool add --cluster-name $clusterName -g $resourceGroup  -n newNodepool --max-pods 250 --node-count 2 --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/node2subnet  --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/pod2subnet --no-wait 
+az aks nodepool add --cluster-name $clusterName -g $resourceGroup  -n newnodepool \
+  --max-pods 250 \
+  --node-count 2 \
+  --vnet-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/node2subnet \
+  --pod-subnet-id /subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnet/subnets/pod2subnet \
+  --no-wait 
 ```
 
 ## <a name="frequently-asked-questions"></a>常见问题
@@ -374,3 +372,4 @@ az aks nodepool add --cluster-name $clusterName -g $resourceGroup  -n newNodepoo
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
 [system-node-pools]: use-system-pools.md
+[prerequisites]: configure-azure-cni.md#prerequisites

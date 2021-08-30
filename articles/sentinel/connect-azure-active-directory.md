@@ -15,14 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: cc499e54ebc700f87edbc904165000155211ca1b
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: 5faf675d4e5d188840b3e9ab457ec28829f52dc0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108007117"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121777944"
 ---
 # <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>将 Azure Active Directory (Azure AD) 数据连接到 Azure Sentinel
+
+> [!IMPORTANT]
+> 如下所述，某些可用的日志类型目前为预览版。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 可以使用 Azure Sentinel 的内置连接器从 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 收集数据，并将其流式传输到 Azure Sentinel。 通过使用连接器，可以流式传输以下日志类型：
 
@@ -40,8 +45,7 @@ ms.locfileid: "108007117"
 
 - [**预配日志**](../active-directory/reports-monitoring/concept-provisioning-logs.md)(也是预览版)，包含了有关 Azure AD 预配服务预配的用户、组和角色的系统活动信息。 
 
-> [!IMPORTANT]
-> 如上所述，某些可用的日志类型当前为预览版。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+
 ## <a name="prerequisites"></a>先决条件
 
 - 将登录日志引入 Azure Sentinel 需要 Azure Active Directory P1 或 P2 许可证。 任何 Azure AD 许可证（免费/O365/P1/P2）均足以引入其他日志类型。 对于 Azure Monitor (Log Analytics) 和 Azure Sentinel，可能会收取额外的每 GB 费用。
@@ -75,5 +79,5 @@ ms.locfileid: "108007117"
 
 ## <a name="next-steps"></a>后续步骤
 在本文档中，你已了解了如何将 Azure Active Directory 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。

@@ -25,7 +25,7 @@
               href: create-first-function-vs-code-csharp.md
             - name: Java
               href: create-first-function-vs-code-java.md
-            - name: Javascript
+            - name: JavaScript
               href: create-first-function-vs-code-node.md
             - name: PowerShell
               href: create-first-function-vs-code-powershell.md
@@ -44,7 +44,7 @@
               href: create-first-function-cli-csharp.md
             - name: Java
               href: create-first-function-cli-java.md
-            - name: Javascript
+            - name: JavaScript
               href: create-first-function-cli-node.md
             - name: PowerShell
               href: create-first-function-cli-powershell.md
@@ -118,7 +118,7 @@
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
-        - name: Javascript
+        - name: JavaScript
           href: /samples/browse/?products=azure-functions&languages=javascript
         - name: PowerShell
           href: /samples/browse/?products=azure-functions&languages=azurepowershell
@@ -222,7 +222,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: Javascript
+        - name: JavaScript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -489,8 +489,12 @@
           href: functions-hybrid-powershell.md
     - name: 疑难解答
       items:
-        - name: 排查存储问题
+        - name: 存储连接
           href: functions-recover-storage-account.md
+          displayName: troubleshoot
+        - name: Azure Cosmos DB 绑定
+          href: ../cosmos-db/troubleshoot-changefeed-functions.md?toc=%2fazure%2fazure-functions%2ftoc.json
+          displayName: troubleshoot
         - name: Python 函数
           items:
             - name: 常规故障排除

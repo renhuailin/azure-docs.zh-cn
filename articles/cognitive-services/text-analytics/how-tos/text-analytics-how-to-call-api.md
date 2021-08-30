@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: aahi
-ms.openlocfilehash: b7ad200bba527d0b4b841483175b2672d94f162e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b9e18bb9bf313ce2bbf1441b319b841a3153f38b
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962850"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396966"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
@@ -40,7 +40,7 @@ ms.locfileid: "111962850"
     2. 单击左侧导航菜单中的“监视”下的“指标” 。 
     3. 在“指标”下拉框中选择“已处理的文本记录”。
     
-文本记录是字符数不超过 1000 的输入文本单元。  例如，作为输入文本提交的 1500 个字符将计为 2 条文本记录。
+文本记录是最多包含 1000 个字符的输入文本单位。  例如，作为输入文本提交的 1500 个字符将计为 2 个文本记录。
 
 ## <a name="change-your-pricing-tier"></a>更改定价层 
 
@@ -58,7 +58,7 @@ ms.locfileid: "111962850"
 
 ## <a name="using-the-api-asynchronously"></a>以异步方式使用 API
 
-文本分析 v3.1-preview.5 API 提供了两个异步终结点： 
+文本分析 v3.1 API 提供了两个异步终结点： 
 
 * 用于文本分析的 `/analyze` 终结点，它让你能够在一个 API 调用中使用多个文本分析功能分析同一组文本文档。 以前，若要使用多个功能，需要为每个操作执行单独的 API 调用。 需要使用多个文本分析功能分析大型文档集时，请考虑使用此功能。
 
@@ -76,11 +76,14 @@ ms.locfileid: "111962850"
 | 实体链接 | ✔ | ✔* |
 | 健康状况文本分析（容器） | ✔ |  |
 | 健康状况文本分析 (API) |  | ✔  |
+| 文本摘要 |  | ✔  |
 
 `*` - 通过 `/analyze` 终结点以异步方式调用。
 
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
+
+[!INCLUDE [text-analytics-character-limits](../includes/character-limits.md)]
 
 <a name="json-schema"></a>
 
@@ -131,6 +134,7 @@ ms.locfileid: "111962850"
 * 实体链接
 * 情绪分析
 * 观点挖掘
+* 文本摘要
 
 | 元素 | 有效值 | 必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
@@ -139,10 +143,10 @@ ms.locfileid: "111962850"
 |`documents` | 包括下面的 `id` 和 `text` 字段 | 必需 | 包含发送的每个文档的信息以及文档的原始文本。 |
 |`id` | String | 必须 | 提供的 ID 用于构建输出。 |
 |`text` | 非结构化原始文本，最多包含 125,000 个字符。 | 必需 | 必须为英语，这是目前支持的唯一语言。 |
-|`tasks` | 包括以下文本分析功能：`entityRecognitionTasks`、`entityLinkingTasks`、`keyPhraseExtractionTasks``entityRecognitionPiiTasks` 或 `sentimentAnalysisTasks`。 | 必需 | 要使用的一个或多个文本分析功能。 请注意，`entityRecognitionPiiTasks` 有一个可选的 `domain` 参数，该参数可设置为 `pii` 或 `phi`，并且 `pii-categories` 用于检测所选的实体类型。 如果未指定 `domain` 参数，则系统默认使用 `pii`。 类似地，`sentimentAnalysisTasks` 具有 `opinionMining` 布尔参数，用于在情绪分析的输出中包含观点挖掘结果。 |
+|`tasks` | 包括以下文本分析功能：`entityRecognitionTasks`、`entityLinkingTasks`、`keyPhraseExtractionTasks`、`entityRecognitionPiiTasks`、`extractiveSummarizationTasks` 或 `sentimentAnalysisTasks`。 | 必需 | 要使用的一个或多个文本分析功能。 请注意，`entityRecognitionPiiTasks` 有一个可选的 `domain` 参数，该参数可设置为 `pii` 或 `phi`，并且 `piiCategories` 用于检测所选的实体类型。 如果未指定 `domain` 参数，则系统默认使用 `pii`。 类似地，`sentimentAnalysisTasks` 具有 `opinionMining` 布尔参数，用于在情绪分析的输出中包含观点挖掘结果。 |
 |`parameters` | 包括下面的 `model-version` 和 `stringIndexType` 字段 | 必需 | 此字段包含在所选的上述功能任务中。 它们包含有关要使用的模型版本和索引类型的信息。 |
 |`model-version` | String | 必须 | 指定要使用调用的哪个模型版本。  |
-|`stringIndexType` | String | 必须 | 指定与编程环境匹配的文本解码器。  支持的类型有 `textElement_v8`（默认）、`unicodeCodePoint` 和 `utf16CodeUnit`。 有关详细信息，请参阅[文本偏移文章](../concepts/text-offsets.md#offsets-in-api-version-31-preview)。  |
+|`stringIndexType` | String | 必须 | 指定与编程环境匹配的文本解码器。  支持的类型有 `textElement_v8`（默认）、`unicodeCodePoint` 和 `utf16CodeUnit`。 有关详细信息，请参阅[文本偏移文章](../concepts/text-offsets.md#offsets-in-api-version-31)。  |
 |`domain` | 字符串 | 可选 | 仅作为参数应用于 `entityRecognitionPiiTasks` 任务，并可设置为 `pii` 或 `phi`。 如果未指定，则默认使用 `pii`。  |
 
 ```json
@@ -165,8 +169,7 @@ ms.locfileid: "111962850"
             {
                 "parameters": {
                     "model-version": "latest",
-                    "stringIndexType": "TextElement_v8",
-                    "loggingOptOut": "false"
+                    "loggingOptOut": false
                 }
             }
         ],
@@ -174,8 +177,7 @@ ms.locfileid: "111962850"
             {
                 "parameters": {
                     "model-version": "latest",
-                    "stringIndexType": "TextElement_v8",
-                    "loggingOptOut": "true",
+                    "loggingOptOut": true,
                     "domain": "phi",
                     "piiCategories":["default"]
                 }
@@ -185,8 +187,7 @@ ms.locfileid: "111962850"
             {
                 "parameters": {
                     "model-version": "latest",
-                    "stringIndexType": "TextElement_v8",
-                    "loggingOptOut": "false"
+                    "loggingOptOut": false
                 }
             }
         ],
@@ -194,7 +195,7 @@ ms.locfileid: "111962850"
             {
                 "parameters": {
                     "model-version": "latest",
-                    "loggingOptOut": "false"
+                    "loggingOptOut": false
                 }
             }
         ],
@@ -202,9 +203,8 @@ ms.locfileid: "111962850"
             {
                 "parameters": {
                     "model-version": "latest",
-                    "stringIndexType": "TextElement_v8",
-                    "loggingOptOut": "false",
-                    "opinionMining": "true"
+                    "loggingOptOut": false,
+                    "opinionMining": true
                 }
             }
         ]
@@ -215,7 +215,7 @@ ms.locfileid: "111962850"
 
 ### <a name="asynchronous-requests-to-the-health-endpoint"></a>对 `/health` 终结点的异步请求
 
-针对健康状况文本分析托管 API 的 API 请求的格式与它的容器的格式相同。 文档作为原始非结构化文本提交到 JSON 对象。 不支持 XML。 JSON 架构由下面描述的元素组成。  请填写并提交[认知服务请求表单](https://aka.ms/csgate)，请求访问健康状况文本分析公共预览版。 不会对健康状况文本分析的使用而收费。 
+针对健康状况文本分析托管 API 的 API 请求的格式与它的容器的格式相同。 文档作为原始非结构化文本提交到 JSON 对象。 不支持 XML。 JSON 架构由下面描述的元素组成。  请填写并提交[认知服务请求表单](https://aka.ms/csgate)，请求访问健康状况文本分析。
 
 | 元素 | 有效值 | 必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
@@ -249,7 +249,10 @@ example.json
 
 在 Postman（或其他 Web API 测试工具）中，为要使用的功能添加终结点。 使用下表查找适当的终结点格式，并将 `<your-text-analytics-resource>` 替换为资源终结点。 例如：
 
-`https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
+> [!TIP]
+> 可以通过将 `/v3.1` 替换为 `/v3.0/` 来调用 v3.0 的以下同步终结点。
+
+`https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1/languages`
 
 #### <a name="synchronous"></a>[同步](#tab/synchronous)
 
@@ -257,14 +260,14 @@ example.json
 
 | 功能 | 请求类型 | 资源终结点 |
 |--|--|--|
-| 语言检测 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
-| 情绪分析 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
-| 观点挖掘 | POST | `<your-text-analytics-resource>/text/analytics/v3.1-preview.5/sentiment?opinionMining=true` |
-| 关键短语提取 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/keyPhrases` |
-| 命名实体识别 - 常规 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/general` |
-| 命名实体识别 - PII | POST | `<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/recognition/pii` |
-| 命名实体识别 - PHI | POST |  `<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/recognition/pii?domain=phi` |
-| 实体链接 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/linking` |
+| 语言检测 | POST | `<your-text-analytics-resource>/text/analytics/v3.1/languages` |
+| 情绪分析 | POST | `<your-text-analytics-resource>/text/analytics/v3.1/sentiment` |
+| 观点挖掘 | POST | `<your-text-analytics-resource>/text/analytics/v3.1/sentiment?opinionMining=true` |
+| 关键短语提取 | POST | `<your-text-analytics-resource>/text/analytics/v3.1/keyPhrases` |
+| 命名实体识别 - 常规 | POST | `<your-text-analytics-resource>/text/analytics/v3.1/entities/recognition/general` |
+| 命名实体识别 - PII | POST | `<your-text-analytics-resource>/text/analytics/v3.1/entities/recognition/pii` |
+| 命名实体识别 - PHI | POST |  `<your-text-analytics-resource>/text/analytics/v3.1/entities/recognition/pii?domain=phi` |
+| 实体链接 | POST | `<your-text-analytics-resource>/text/analytics/v3.1/entities/linking` |
 
 #### <a name="asynchronous"></a>[异步](#tab/asynchronous)
 
@@ -272,16 +275,16 @@ example.json
 
 | 功能 | 请求类型 | 资源终结点 |
 |--|--|--|
-| 提交分析作业 | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/analyze` |
-| 获取分析状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/analyze/jobs/<Operation-Location>` |
+| 提交分析作业 | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1/analyze` |
+| 获取分析状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1/analyze/jobs/<Operation-Location>` |
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>用于将异步请求发送到 `/health` 终结点的终结点
 
 | 功能 | 请求类型 | 资源终结点 |
 |--|--|--|
-| 提交健康状况文本分析作业  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/health/jobs` |
-| 获取作业状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/health/jobs/<Operation-Location>` |
-| 取消作业 | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.5/entities/health/jobs/<Operation-Location>` |
+| 提交健康状况文本分析作业  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1/entities/health/jobs` |
+| 获取作业状态和结果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1/entities/health/jobs/<Operation-Location>` |
+| 取消作业 | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1/entities/health/jobs/<Operation-Location>` |
 
 --- 
 
@@ -317,9 +320,9 @@ example.json
 如果调用了异步 `/analyze` 或 `/health` 终结点，请检查是否收到 202 响应代码。 需要获取响应才能查看结果：
 
 1. 在 API 响应中，从标头中找到 `Operation-Location`，它用于标识发送到 API 的作业。 
-2. 为所使用的终结点创建 GET 请求。 请参阅[上文中的表格](#set-up-a-request)，了解终结点格式，并查看 [API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/AnalyzeStatus)。 例如：
+2. 为所使用的终结点创建 GET 请求。 请参阅[上文中的表格](#set-up-a-request)，了解终结点格式，并查看 [API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/AnalyzeStatus)。 例如：
 
-    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/analyze/jobs/<Operation-Location>`
+    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1/analyze/jobs/<Operation-Location>`
 
 3. 将 `Operation-Location` 添加到请求。
 
@@ -357,7 +360,7 @@ example.json
 
 * [文本分析概述](../overview.md)
 * [模型版本](../concepts/model-versioning.md)
-* [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
+* [常见问题解答 (FAQ)](../text-analytics-resource-faq.yml)</br>
 * [文本分析产品页](//go.microsoft.com/fwlink/?LinkID=759712)
 * [使用文本分析客户端库](../quickstarts/client-libraries-rest-api.md)
 * [新增功能](../whats-new.md)

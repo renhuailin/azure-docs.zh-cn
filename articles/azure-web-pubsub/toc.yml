@@ -32,7 +32,9 @@
     - name: 无服务器开发
       expanded: true
       items:
-        - name: 使用 Azure 函数构建无服务器聊天
+        - name: 使用 Azure 函数构建通知应用
+          href: tutorial-serverless-notification.md
+        - name: 使用 Azure 函数构建聊天应用
           href: quickstart-serverless.md
     - name: 发布和订阅消息
       href: tutorial-pub-sub-messages.md

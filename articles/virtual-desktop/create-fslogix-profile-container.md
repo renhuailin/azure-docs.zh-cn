@@ -1,29 +1,29 @@
 ---
-title: FSLogix 配置文件容器 NetApp Windows 虚拟桌面 - Azure
-description: 如何在 Windows 虚拟桌面中使用 Azure NetApp 文件创建 FSLogix 配置文件容器。
+title: FSLogix 配置文件容器 NetApp Azure 虚拟桌面 - Azure
+description: 如何在 Azure 虚拟桌面中使用 Azure NetApp 文件创建 FSLogix 配置文件容器。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: ed2267ebb4467331a4859f2b3f6507edd39dc03b
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96016822"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750328"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>使用 Azure NetApp 文件和 AD DS 创建配置文件容器
 
-我们建议将 FSLogix 配置文件容器用作 [Windows 虚拟桌面服务](overview.md)的用户配置文件解决方案。 FSLogix 配置文件容器将完整的用户配置文件存储在单个容器中，并设计为在非持久性远程计算环境（如 Windows 虚拟桌面）中漫游配置文件。 登录后，容器将动态附加到使用本地支持的虚拟硬盘 (VHD) 和 Hyper-V 虚拟硬盘 (VHDX) 的计算环境。 这些高级筛选器驱动程序技术使用户配置文件可以立即使用，并完全像本地用户配置文件一样出现在系统中。 要了解有关 FSLogix 配置文件容器的详细信息，请参阅 [FSLogix 配置文件容器和 Azure 文件](fslogix-containers-azure-files.md)。
+我们建议将 FSLogix 配置文件容器用作 [Azure 虚拟桌面服务](overview.md)的用户配置文件解决方案。 FSLogix 配置文件容器将完整的用户配置文件存储在单个容器中，并设计为在非持久性远程计算环境（如 Azure 虚拟桌面）中漫游配置文件。 登录后，容器将动态附加到使用本地支持的虚拟硬盘 (VHD) 和 Hyper-V 虚拟硬盘 (VHDX) 的计算环境。 这些高级筛选器驱动程序技术使用户配置文件可以立即使用，并完全像本地用户配置文件一样出现在系统中。 要了解有关 FSLogix 配置文件容器的详细信息，请参阅 [FSLogix 配置文件容器和 Azure 文件](fslogix-containers-azure-files.md)。
 
-可以使用 [Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)创建 FSLogix 配置文件容器，这是一种易于使用的 Azure 本机平台服务，可帮助客户快速、可靠地为其 Windows 虚拟桌面环境预配企业级 SMB 卷。 要了解有关 Azure NetApp 文件存储的详细信息，请参阅[什么是 Azure NetApp 文件存储？](../azure-netapp-files/azure-netapp-files-introduction.md)
+可以使用 [Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)创建 FSLogix 配置文件容器，这是一种易于使用的 Azure 原生平台服务，可帮助客户快速、可靠地为其 Azure 虚拟桌面环境预配企业级 SMB 卷。 要了解有关 Azure NetApp 文件存储的详细信息，请参阅[什么是 Azure NetApp 文件存储？](../azure-netapp-files/azure-netapp-files-introduction.md)
 
-本指南将演示如何在 Windows 虚拟桌面中设置 Azure NetApp 文件帐户和创建 FSLogix 配置文件容器。
+本指南将演示如何在 Azure 虚拟桌面中设置 Azure NetApp 文件帐户和创建 FSLogix 配置文件容器。
 
-本文假定您已经在 Windows 虚拟桌面环境中设置了[主机池](create-host-pools-azure-marketplace.md)并将其分组为一个或多个租户。 要了解如何设置租户，请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)和[我们的技术社区博客文章](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054)。
+本文假定你已经在 Azure 虚拟桌面环境中设置了[主机池](create-host-pools-azure-marketplace.md)并将其分组为一个或多个租户。 要了解如何设置租户，请参阅[在 Azure 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)和[我们的技术社区博客文章](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054)。
 
-本指南中的说明专门针对 Windows 虚拟桌面用户。 如果要了解有关如何在 Windows 虚拟桌面之外设置 Azure NetApp 文件和创建 FSLogix 配置文件容器的更多常规指导，请参阅[设置 Azure Netapp 文件和创建 NFS 卷快速入门](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)。
+本指南中的说明专门针对 Azure 虚拟桌面用户。 如果要了解有关如何在 Azure 虚拟桌面之外设置 Azure NetApp 文件和创建 FSLogix 配置文件容器的更常规指导，请参阅[设置 Azure Netapp 文件和创建 NFS 卷快速入门](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)。
 
 >[!NOTE]
 >本文不介绍用于保护对 Azure NetApp 文件共享的访问的最佳做法。
@@ -35,8 +35,8 @@ ms.locfileid: "96016822"
 
 在为主机池创建 FSLogix 配置文件容器之前，必须先执行以下操作：
 
-- 设置和配置 Windows 虚拟桌面
-- 预配 Windows 虚拟桌面主机池
+- 设置和配置 Azure 虚拟桌面
+- 预配 Azure 虚拟桌面主机池
 - [启用 Azure NetApp 文件订阅](../azure-netapp-files/azure-netapp-files-register.md)
 
 ## <a name="set-up-your-azure-netapp-files-account"></a>设置 Azure NetApp 文件帐户
@@ -49,7 +49,7 @@ ms.locfileid: "96016822"
 
 3. Azure Cloud Shell 打开后，请选择 PowerShell。
 
-4. 如果这是你第一次使用 Azure Cloud Shell，请在你用于保留 Azure NetApp 文件和 Windows 虚拟桌面的订阅中创建存储帐户。
+4. 如果这是你第一次使用 Azure Cloud Shell，请在你用于保留 Azure NetApp 文件和 Azure 虚拟桌面的同一订阅中创建存储帐户。
 
    > [!div class="mx-imgBorder"]
    > ![存储帐户窗口，底部的创建存储按钮以红色突出显示。](media/create-storage-button.png)
@@ -166,7 +166,7 @@ ms.locfileid: "96016822"
 
 5. 选中“我同意许可证的条款和条件”旁边的复选框。
 
-6. 选择“安装”。
+6. 选择“安装”  。
 
 7. 导航到 **C:\\Program Files\\FSLogix\\Apps** 以确认代理已安装。
 
@@ -187,7 +187,7 @@ ms.locfileid: "96016822"
 
 ## <a name="assign-users-to-session-host"></a>将用户分配到会话主机
 
-1. 以管理员身份打开 **POWERSHELL ISE** 并登录到 Windows 虚拟桌面。
+1. 以管理员身份打开 POWERSHELL ISE 并登录到 Azure 虚拟桌面。
 
 2. 运行以下 cmdlet：
 
@@ -198,7 +198,7 @@ ms.locfileid: "96016822"
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-3. 当系统提示输入凭据时，请在 Windows 虚拟桌面租户上输入具有租户创建者或 RDS 所有者/RDS 参与者角色的用户的凭据。
+3. 当系统提示输入凭据时，请在 Azure 虚拟桌面租户上输入具有租户创建者或 RDS 所有者/RDS 参与者角色的用户的凭据。
 
 4. 运行以下 cmdlet 以将用户分配到远程桌面组：
 

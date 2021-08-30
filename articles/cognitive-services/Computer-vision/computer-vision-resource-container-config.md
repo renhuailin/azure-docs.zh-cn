@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 3e6c4b73e8aeb26c6ac4025ef3c07fb4f8d48eaf
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d5e405447a93f23f4845a018a74229aacbbad09c
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308636"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302115"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>配置读取 OCR Docker 容器
 
@@ -41,6 +41,9 @@ ms.locfileid: "107308636"
 |否|Storage:ObjectStore:AzureBlob:ConnectionString| 仅限 v3.x 容器。 Azure Blob 存储连接字符串。 |
 |否|Storage:TimeToLiveInDays| 仅限 v3.x 容器。 结果过期时间（以天为单位）。 该设置指定系统应清除识别结果的时间。 默认值为 2 天（48 小时），这意味着，不能保证成功检索超过该时间段的任何结果。 |
 |否|Task:MaxRunningTimeSpanInMinutes| 仅限 v3.x 容器。 单个请求的最长运行时间。 默认值为 60 分钟。 |
+|否|EnableSyncNTPServer| 仅限 v3.x 容器。 启用 NTP 服务器同步机制，这可确保系统时间与预期任务运行时之间保持同步。 请注意，这需要外部网络流量。 默认为 `true`。 |
+|否|NTPServerAddress| 仅限 v3.x 容器。 用于时间同步的 NTP 服务器。 默认为 `time.windows.com`。 |
+|否|Mounts::Shared| 仅限 v3.x 容器。 用于存储识别结果的本地文件夹。 默认为 `/share`。 为了在不使用 Azure Blob 存储的情况下运行容器，建议将卷装入此文件夹，以确保有足够的空间用于识别结果。 |
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 

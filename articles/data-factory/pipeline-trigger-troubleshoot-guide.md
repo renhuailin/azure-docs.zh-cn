@@ -3,16 +3,17 @@ title: 对 Azure 数据工厂中的管道业务流程和触发器进行故障排
 description: 使用不同方法排查 Azure 数据工厂中的管道触发器问题。
 author: ssabat
 ms.service: data-factory
-ms.date: 04/01/2021
+ms.date: 08/17/2021
+ms.subservice: troubleshooting
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: aaaa9f2e82bb8db0ce4851359d7fb97d475f4e98
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: a80e6fd1c220d626d4e18923bb95aa465f568a1e
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111812728"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396949"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>对 Azure 数据工厂中的管道业务流程和触发器进行故障排除
 
@@ -95,7 +96,7 @@ Operation on target Cancel failed: {“error”:{“code”:”AuthorizationFail
 
 **原因**
 
-当且仅当 Azure 数据工厂成员被分配到“参与者”角色时，管道才能使用 Web 活动调用 ADF REST API 方法。 必须首先配置将 Azure 数据工厂托管标识添加到“参与者”安全角色。 
+当且仅当 Azure 数据工厂成员被分配到“参与者”角色时，管道才能使用 Web 活动调用 ADF REST API 方法。 必须首先配置 Azure 数据工厂托管标识并将它添加到“参与者”安全角色。 
 
 **分辨率**
 
@@ -124,6 +125,8 @@ Azure 数据工厂会评估所有叶级活动的结果。 仅当所有叶都成�
 
 **分辨率**
 * 可以根据[按照工厂进行查询](/rest/api/datafactory/pipelineruns/querybyfactory)中所述，将 Azure 逻辑应用设置为每隔 5 分钟查询所有失败的管道。 然后，可将事件报告给票证系统。
+* 你可以重新运行管道和活动，如[此文](https://docs.microsoft.com/azure/data-factory/monitor-visually#rerun-pipelines-and-activities)所述。
+* 如果已取消活动，或者出现故障，可按照[在活动出现故障后重新运行](https://docs.microsoft.com/azure/data-factory/monitor-visually#rerun-from-failed-activity)来重新运行活动。
 * [以可视方式监视管道](./monitor-visually.md)
 
 ### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>提高并行度不会提高吞吐量
@@ -154,9 +157,11 @@ Azure 数据工厂会评估所有叶级活动的结果。 仅当所有叶都成�
  
  **分辨率**
  
-* 并发限制：如果管道具有并发策略，请验证是否没有旧管道运行正在进行。 Azure 数据工厂中允许的最大管道并发数为 10 个管道。 
-* 监视限制：转到 ADF 创作画布，选择你的管道，并确定是否已为其分配了并发属性。 如果已分配，请转到“监视”视图，确保过去 45 天内没有任何正在进行的事项。 如果有某个事项正在进行，可以取消它，然后新的管道运行应当会启动。
-* 暂时性问题：运行可能受到了暂时性问题、凭据失败、服务中断等问题的影响。如果发生这种情况，Azure 数据工厂有一个内部恢复过程可以监视所有运行并在发现出错时启动这些运行。 此过程每隔 1 小时发生一次，因此，如果运行停滞超过 1 小时，请创建支持案例。
+* 并发限制：如果管道具有并发策略，请确认当前没有旧管道运行。 
+* 监视限制：请转到 ADF 创作画布，选择你的管道，并确定是否已为其分配了并发属性。 如果已分配，请转到“监视”视图，确保过去 45 天内没有任何正在进行的事项。 如果有某个事项正在进行，可以取消它，然后新的管道运行应当会启动。
+* 暂时性问题：有可能是暂时性网络问题、凭据故障、服务中断等影响了你的运行。如果发生这种情况，Azure 数据工厂会通过一个内部恢复过程来应对，它会监视所有运行，并在发现问题时启动这些运行。 你可以重新运行管道和活动，如[此文](https://docs.microsoft.com/azure/data-factory/monitor-visually#rerun-pipelines-and-activities)所述。 如果已取消活动，或者出现故障，可按照[在活动出现故障后重新运行](https://docs.microsoft.com/azure/data-factory/monitor-visually#rerun-from-failed-activity)来重新运行活动。
+* 
+* 此过程每隔 1 小时发生一次，因此，如果运行停滞超过 1 小时，请创建支持案例。
  
 ### <a name="longer-start-up-times-for-activities-in-adf-copy-and-data-flow"></a>ADF 复制和数据流中活动的启动时间很长
 
@@ -167,9 +172,9 @@ Azure 数据工厂会评估所有叶级活动的结果。 仅当所有叶都成�
 **分辨率**
 
 * 如果每个复制活动最多需要 2 分钟才能开始，而问题主要出在 VNet 联接（相较于Azure IR），这可能是复制性能问题。 若要查看故障排除步骤，请参阅[复制性能改进](./copy-activity-performance-troubleshooting.md)。
-* 可以使用生存时间功能来减少数据流活动的群集启动时间。 请查看[数据流集成运行时](./control-flow-execute-data-flow-activity.md#data-flow-integration-runtime)。
+* 可以使用“生存时间”功能来减少数据流活动的群集启动时间。 请查看[数据流集成运行时](./control-flow-execute-data-flow-activity.md#data-flow-integration-runtime)。
 
- ### <a name="hitting-capacity-issues-in-shirself-hosted-integration-runtime"></a>SHIR（自承载集成运行时）中发生达到容量限制的问题
+ ### <a name="hitting-capacity-issues-in-shirself-hosted-integration-runtime"></a>遇到 SHIR（自承载 Integration Runtime）的容量问题
  
  **原因**
  
@@ -183,24 +188,79 @@ Azure 数据工厂会评估所有叶级活动的结果。 仅当所有叶都成�
 
 **原因**
 
-可能会出于各种原因而出现有关长队列的错误消息。 
+由于各种原因，可能会出现与长队列相关的错误消息。 
 
 **分辨率**
 * 如果通过连接器收到了来自任何源或目标的错误消息（可能会生成长队列），请参阅[连接器故障排除指南](./connector-troubleshoot-guide.md)
 * 如果收到有关映射数据流的错误消息（可能会生成长队列），请参阅[数据流故障排除指南](./data-flow-troubleshoot-guide.md)。
 * 如果收到有关 Databricks、自定义活动或 HDI 等其他活动的错误消息（可能会生成长队列），请参阅[活动故障排除指南](./data-factory-troubleshoot-guide.md)
-* 如果收到有关运行 SSIS 包（可能会生成长队列）的错误消息，请转到 [Azure-SSIS 包执行故障排除指南](./ssis-integration-runtime-ssis-activity-faq.md)和 [Integration Runtime 管理故障排除指南](./ssis-integration-runtime-management-troubleshoot.md)。
+* 如果收到有关运行 SSIS 包（可能会生成长队列）的错误消息，请转到 [Azure-SSIS 包执行故障排除指南](./ssis-integration-runtime-ssis-activity-faq.yml)和 [Integration Runtime 管理故障排除指南](./ssis-integration-runtime-management-troubleshoot.md)。
 
 ### <a name="error-message---codebadrequest-messagenull"></a>错误消息 - "code":"BadRequest", "message":"null"
 
 **原因**
 
-这是用户错误，因为触及 management.azure.com 的 JSON 有效负载已损坏。 不会存储任何日志，因为用户调用未到达 ADF 服务层。
+这是一个用户错误，因为触及 management.azure.com 的 JSON 有效负载已损坏。 由于用户调用未到达 ADF 服务层，因此不会存储任何日志。
 
 **分辨率**
 
-使用 Edge/Chrome 浏览器开发人员工具，从 ADF 门户对 API 调用执行网络追踪。 你将看到有问题的 JSON 有效负载，这可能是由于存在特殊字符（例如 $）、空格和其他类型的用户输入。 修复字符串表达式后，将继续在浏览器中执行剩余的 ADF 使用情况调用。
+使用 Edge/Chrome 浏览器开发人员工具从 ADF 门户执行对 API 调用的网络跟踪。 你会看到有问题的 JSON 有效负载，这可能是由特殊字符（例如“$”）、空格和其他类型的用户输入导致的。 修复字符串表达式后，你将在浏览器中继续执行其余的 ADF 用法调用。
 
+### <a name="foreach-activities-do-not-run-in-parallel-mode"></a>ForEach 活动不以并行模式运行
+
+**原因**
+
+正在以调试模式运行 ADF。
+
+**分辨率**
+
+在触发器模式下执行管道。
+
+### <a name="cannot-publish-because-account-is-locked"></a>无法发布，因为帐户被锁定
+
+**原因**
+
+你更改了协作分支以删除存储事件触发器。 你在尝试发布时收到“`Trigger deactivation error`”消息。
+
+**分辨率**
+
+这是由于锁定了用于事件触发器的存储帐户。 解锁帐户。
+
+### <a name="expression-builder-fails-to-load"></a>无法加载表达式生成器
+
+**原因**
+
+可能是由于 Web 浏览器出现网络或缓存问题而导致表达式生成器无法加载。  
+
+**分辨率**
+
+
+请将 Web 浏览器升级到受支持的浏览器的最新版本，清除站点的 Cookie，然后刷新页面。
+
+### <a name="codebadrequestmessageerrorcodeflowrunsizelimitexceeded"></a>"Code":"BadRequest","message":"ErrorCode=FlowRunSizeLimitExceeded
+
+**原因**
+
+你链接了许多活动。
+
+**分辨率**
+
+可以将管道拆分为子管道，并通过 ExecutePipeline 活动将它们衔接在一起。 
+
+###  <a name="how-to-optimize-pipeline-with-mapping-data-flows-to-avoid-internal-server-errors-concurrency-errors-etc-during-execution"></a>如何使用映射数据流来优化管道，以避免在执行期间发生内部服务器错误、并发错误等
+
+**原因**
+
+你尚未优化映射数据流。
+
+**分辨率**
+
+* 处理大量的数据和转换时，请使用内存优化计算。
+* 减小批大小，以防每项活动都出现问题。
+* 纵向扩展你的数据库和仓库，使之与 ADF 的性能匹配。 
+* 为并行运行的活动使用单独的 IR（集成运行时）。
+* 相应地调整源和接收器的分区。 
+* 查看[数据流优化](concepts-data-flow-performance.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,26 +1,23 @@
 ---
-title: 部署和配置 Azure 防火墙高级预览版
+title: 部署和配置 Azure 防火墙高级版
 description: 了解如何部署和配置 Azure 防火墙高级版。
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 07/15/2021
 ms.author: victorh
-ms.openlocfilehash: 7984cff6b6cf0f70fc50493fd680d7203e09a81b
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 9358852dd8b16f495d5123b59ea3ae0f4c29b00f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110585847"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441141"
 ---
-# <a name="deploy-and-configure-azure-firewall-premium-preview"></a>部署和配置 Azure 防火墙高级预览版
+# <a name="deploy-and-configure-azure-firewall-premium"></a>部署和配置 Azure 防火墙高级版
 
-> [!IMPORTANT]
-> Azure 防火墙高级版目前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
- Azure 防火墙高级预览版是新一代防火墙，其中包含高度敏感环境和受管制环境所需的功能。 它包括以下功能：
+ Azure 防火墙高级版是新一代防火墙，具备了高度敏感环境和受管制环境所需的功能。 它包括以下功能：
 
 - TLS 检查 - 解密出站流量、处理数据，然后加密数据并将数据发送到目的地。
 - IDPS - 网络入侵检测和防护系统 (IDPS) 使你可以监视网络活动是否出现恶意活动，记录有关此活动的信息，予以报告，选择性地尝试阻止。
@@ -75,7 +72,7 @@ ms.locfileid: "110585847"
 
 ### <a name="idps-tests"></a>IDPS 测试
 
-要测试 IDPS，需要为自己的内部 Web 服务器部署适当的服务器证书。 有关 Azure 防火墙高级预览版证书要求的详细信息，请参阅 [Azure 防火墙高级预览版证书](premium-certificates.md)。
+要测试 IDPS，需要为自己的内部 Web 服务器部署适当的服务器证书。 有关 Azure 防火墙高级版证书要求的详细信息，请参阅 [Azure 防火墙高级版证书](premium-certificates.md)。
 
 可以使用 `curl` 来控制各种 HTTP 头并模拟恶意流量。
 
@@ -94,7 +91,7 @@ ms.locfileid: "110585847"
    > 可能需要一段时间日志中才会开始显示数据。 至少等待 20 分钟，以便日志开始显示数据。
 5. 为签名 2008983 添加签名规则：
 
-   1. 选择“DemoFirewallPolicy”，然后在“设置”下选择“IDPS（预览）”。
+   1. 选择“DemoFirewallPolicy”，然后在“设置”下选择“IDPS”。
    1. 选择“签名规则”选项卡。
    1. 在“签名 ID”下，在打开的文本框中键入“2008983”。
    1. 在“模式”下，选择“拒绝”。
@@ -131,7 +128,7 @@ ms.locfileid: "110585847"
 
 请按照以下步骤测试 TLS 检查和 URL 筛选。
 
-1. 编辑防火墙策略的应用规则，并向 `AllowWeb` 规则集合中添加一项名为 `AllowURL` 的新规则。 配置目标 URL `www.nytimes.com/section/world`、源 IP 地址 **\* *、目标类型“URL（预览）”***，选择“TLS 检查（预览）”和协议“http、https”。
+1. 编辑防火墙策略的应用规则，并向 `AllowWeb` 规则集合中添加一项名为 `AllowURL` 的新规则。 配置目标 URL `www.nytimes.com/section/world`、源 IP 地址 **\* *、目标类型“URL”***，选择“TLS 检查”和协议“http、https”。
 
 3. 部署完成后，在 WorkerVM 上打开浏览器，转到 `https://www.nytimes.com/section/world`，然后在浏览器中验证 HTML 响应是否按预期方式显示。
 4. 在 Azure 门户中，可以在应用规则监视日志中查看完整 URL：
@@ -153,7 +150,7 @@ ms.locfileid: "110585847"
 1. 在门户中打开资源组，并选择“DemoFirewallPolicy”。
 2. 选择“应用规则”，然后选择“添加规则集合”。
 3. 对于“名称”键入“GeneralWeb”，“优先级”设为 103，对于“规则集合组”选择“DefaultApplicationRuleCollectionGroup”。
-4. 在“规则”下，对于“名称”键入 AllowSports，对于“源”选择 *\** ，对于“协议”选择“http、https”，选择“TLS 检查”，对于“目标类型”选择“Web 类别（预览）” ，对于“目标” 选择“体育” 。
+4. 在“规则”下，对于“名称”键入 AllowSports，对于“源”选择 *\** ，对于“协议”选择“http、https”，选择“TLS 检查”，对于“目标类型”选择“Web 类别” ，对于“目标” 选择“体育” 。
 5. 选择 **添加** 。
 
       :::image type="content" source="media/premium-deploy/web-categories.png" alt-text="体育 Web 类别":::
@@ -163,4 +160,4 @@ ms.locfileid: "110585847"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 门户中的 Azure 防火墙高级预览版](premium-portal.md)
+- [Azure 门户中的 Azure 防火墙高级版](premium-portal.md)

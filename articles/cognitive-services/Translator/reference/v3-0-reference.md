@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 8/11/2020
+ms.date: 07/06/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2b391c5a435c2dd2f19a3f170bf7c84edd7143f2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 18a9d2efa3093dd342e05f1c9038fa7f460d97bd
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063026"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358914"
 ---
 # <a name="translator-v30"></a>Translator 3.0 版
 
@@ -37,18 +37,18 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 * 亚太：韩国南部、日本东部、东南亚和澳大利亚东部
 * 欧洲：北欧、西欧
 
-在大多数情况下，对 Microsoft Translator 的请求由距离请求来源最近的数据中心处理。 如果数据中心出现故障，请求可能会路由到 Azure 地理区域之外。
+在大多数情况下，对 Microsoft Translator 的请求由距离请求来源最近的数据中心处理。 如果数据中心出现故障，请求可能会被路由到地理区域之外。
 
-若要强制特定 Azure 地理区域处理该请求，请将 API 请求中的全球终结点更改为所需的地理终结点：
+若要强制特定地理区域处理该请求，请将 API 请求中的全球终结点更改为所需的地理终结点：
 
-|说明|Azure 地理区域|基 URL（地理终结点）|
-|:--|:--|:--|
-|Azure|全局（非区域性）|   api.cognitive.microsofttranslator.com|
-|Azure|美国|   api-nam.cognitive.microsofttranslator.com|
-|Azure|欧洲|  api-eur.cognitive.microsofttranslator.com|
-|Azure|亚太区|    api-apc.cognitive.microsofttranslator.com|
+|地理位置|基 URL（地理终结点）|
+|:--|:--|
+|全局（非区域性）|    api.cognitive.microsofttranslator.com|
+|美国|    api-nam.cognitive.microsofttranslator.com|
+|欧洲|    api-eur.cognitive.microsofttranslator.com|
+|亚太区|    api-apc.cognitive.microsofttranslator.com|
 
-<sup>1</sup> 资源位于瑞士北部或瑞士西部的客户可以确保其文本 API 请求在瑞士境内得到处理。 若要确保在瑞士处理请求，请在“资源区域”的“瑞士北部”或“瑞士西部”中创建翻译器资源，然后在 API 请求中使用该资源的自定义终结点。 例如：如果在 Azure 门户中创建翻译器资源，“资源区域”为“瑞士北部”，并且资源名称为“my-ch-n”，则自定义终结点为“https://my-ch-n.cognitiveservices.azure.com”。 要转换的示例请求如下：
+<sup>1</sup> 资源位于瑞士北部或瑞士西部的客户可以确保其文本 API 请求在瑞士境内得到处理。 若要确保在瑞士处理请求，请在“资源区域”的“瑞士北部”或“瑞士西部”中创建翻译器资源，然后在 API 请求中使用该资源的自定义终结点。 例如：如果在 Azure 门户中以“资源区域”为“瑞士北部”创建翻译器资源，并且资源名称为“my-ch-n”，则自定义终结点为“https://my-ch-n.cognitiveservices.azure.com”。 要转换的示例请求如下：
 ```curl
 // Pass secret key and region using headers to a custom endpoint
 curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \
@@ -95,7 +95,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 #### <a name="authenticating-with-a-regional-resource"></a>使用区域资源进行身份验证
 
 当使用[区域翻译器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)时。
-调用 Translator 时所需的标头有 2 个。
+调用 Translator 需要 2 个标头。
 
 |标头|说明|
 |:-----|:----|
@@ -117,7 +117,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 在使用认知服务的多服务资源时。 这样便可以使用一个密钥对多个服务的请求进行身份验证。 
 
-在使用多服务密钥时，请求中必须包含两个身份验证标头。 调用 Translator 时所需的标头有 2 个。
+在使用多服务密钥时，请求中必须包含两个身份验证标头。 调用 Translator 需要 2 个标头。
 
 |标头|说明|
 |:-----|:----|
@@ -197,6 +197,7 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
     }
 }
 ```
+
 错误代码是一个 6 位数字，包括 3 位数的 HTTP 状态代码，后接用于进一步将错误分类的 3 位数。 常见错误代码包括：
 
 | 代码 | 说明 |
@@ -233,12 +234,12 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
 | 403000| 不允许该操作。|
 | 403001| 由于订阅已超过其免费配额，因此不允许该操作。|
 | 405000| 请求的资源不支持该请求方法。|
-| 408001| 正在准备所请求的翻译系统。 请在几分钟内重试。|
+| 408001| 正在准备所请求的翻译系统。 请在几分钟后重试。|
 | 408002| 等待传入流时请求超时。 客户端没有在服务器准备等待的时间内生成请求。 客户端可以在以后的任何时间重复该请求，而不做任何修改。|
 | 415000| Content-Type 标头缺失或无效。|
 | 429000、429001、429002| 由于客户端已超出请求限制，服务器拒绝了请求。|
 | 500000| 发生了意外错误。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
-| 503000| 服务暂时不可用。 请重试。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
+| 503000| 服务暂时不可用。 Retry。 如果该错误持续出现，请报告发生错误的日期/时间、响应标头 X-RequestId 中的请求标识符，以及请求标头 X-ClientTraceId 中的客户端标识符。|
 
 ## <a name="metrics"></a>指标 
 利用指标，可以在 Azure 门户中的指标部分下查看翻译器的使用情况和可用性信息，如以下屏幕截图所示。 有关详细信息，请参阅[数据和平台指标](../../../azure-monitor/essentials/data-platform-metrics.md)。
@@ -255,6 +256,6 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
 | TotalErrors| 产生了错误响应的调用数。|
 | BlockedCalls| 超过速率或配额限制的调用数。|
 | ServerErrors| 产生了服务器内部错误 (5XX) 的调用数。|
-| ClientErrors| 产生了客户端错误 (4xx) 的调用数。|
+| ClientErrors| 引发客户端错误 (4XX) 的调用数。|
 | 延迟| 完成请求的持续时间（毫秒）。|
 | CharactersTranslated| 传入的文本请求中的字符总数。|

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2df019888d293cd8a25a34e6f0f4e7dd215c6a41
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 1f7a3f31ed67817252f7ba33b9f4a83ef8ccd5c6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030610"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455615"
 ---
 # <a name="use-existing-runbooks-and-modules"></a>使用现有的 runbook 和模块
 
@@ -57,6 +57,9 @@ ms.locfileid: "107030610"
 PowerShell 模块包含可在 Runbook 中使用的 cmdlet。 [PowerShell 库](https://www.powershellgallery.com)中提供了可在 Azure 自动化中安装的现有模块。 可以从 Azure 门户启动此库，并将这些模块直接安装到 Azure 自动化中，也可以下载并手动安装这些模块。
 
 你还可以在 Azure 门户中找到要导入的模块。 在“共享资源”下的“模块库”中为自动化帐户列出了这些模块 。
+
+> [!IMPORTANT] 
+> 不要在任何专门使用 Az 模块执行的脚本中包含关键字“AzureRm”。 即使在注释中包含关键字，也可能导致加载 AzureRm，然后与 Az 模块冲突。
 
 ## <a name="common-scenarios-available-in-the-powershell-gallery"></a>PowerShell 库中提供的常见场景
 

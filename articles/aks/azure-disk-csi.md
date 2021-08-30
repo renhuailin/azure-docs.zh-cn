@@ -5,15 +5,14 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 29bac1ea9de7fb81797733bbccce24688b4acc10
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 19606a1b529fcd7e6140d81361c5434324836198
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164338"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724737"
 ---
-# <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁盘容器存储接口 (CSI) 驱动程序（预览版）
-
+# <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁盘容器存储接口 (CSI) 驱动程序
 Azure 磁盘容器存储接口 (CSI) 驱动程序是符合 [CSI 规范](https://github.com/container-storage-interface/spec/blob/master/spec.md)的驱动程序，供 Azure Kubernetes 服务 (AKS) 用来管理 Azure 磁盘的生命周期。
 
 CSI 是有关在 Kubernetes 上的容器化工作负载中公开任意块和文件存储系统的一套标准。 AKS 可以采用 CSI 来编写、部署和迭代插件，以在 Kubernetes 中公开新的或改进现有的存储系统，而无需改动核心 Kubernetes 代码并等待经历代码发布周期。
@@ -26,8 +25,6 @@ CSI 是有关在 Kubernetes 上的容器化工作负载中公开任意块和文�
 ## <a name="use-csi-persistent-volumes-with-azure-disks"></a>使用含 Azure 磁盘的 CSI 永久性卷
 
 [永久性卷 (PV)](concepts-storage.md#persistent-volumes) 表示已经过预配的可用于 Kubernetes Pod 的存储块。 PV 可供一个或多个 Pod 使用，并可动态或静态预配。 本文介绍了如何动态创建含 Azure 磁盘的 PV，以供 AKS 群集中的单个 Pod 使用。 有关静态预配，请参阅[手动创建并使用含 Azure 磁盘的卷](azure-disk-volume.md)。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 

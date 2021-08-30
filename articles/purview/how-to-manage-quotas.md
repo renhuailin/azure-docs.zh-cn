@@ -8,12 +8,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 57cb1c405e00acb346421d64190a71e9211d21ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 422c096533e8b470446a29b6d45f9127d963f913
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96938828"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396529"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-purview"></a>管理和增加 Azure Purview 资源的配额
  
@@ -27,8 +27,10 @@ Azure Purview 是供数据用户使用的云服务。 使用 Azure Purview 集�
 |每个帐户可用于扫描的 vCore 的数目*|160|160|
 |每个帐户在给定时间点的并发扫描数。 此限制基于所扫描的数据源类型*|5 | 10 |
 |扫描可运行的最长时间|7 天|7 天|
-|每个帐户的 API 调用数|对于“4 个容量单位”这一平台大小，每月 1,000 万个 API。 <br>对于“16 个容量单位”这一平台大小，每月 4,000 万个 API。 |对于“4 个容量单位”这一平台大小，每月 1,000 万个 API。 <br>对于“16 个容量单位”这一平台大小，每月 4,000 万个 API。|
-|每个帐户的存储大小|10 GB，适用于“4 个容量单位”平台大小。 <br>40 GB，适用于“16 个容量单位”平台大小。 |10 GB，适用于“4 个容量单位”平台大小。 <br> 40 GB，适用于“16 个容量单位”平台大小。 |
+|[数据映射容量单位 (CU)](concept-elastic-data-map.md) |1 个 CU（25 个操作/秒的吞吐量和 2 GB 元数据存储） | 100 个 CU（若要获得更高的 CU，请联系支持人员）。|
+|数据映射操作吞吐量 |每个容量单位 25 个操作/秒 | 如果是 100 个 CU，则为 2,500 个操作/秒（若要获得更高的吞吐量，请联系支持人员）| 
+|数据映射存储 |每个容量单位 2 GB | 如果是 100 个 CU，则为 200 GB（若要获得更多存储，请联系支持人员） |
+|数据映射弹性时段 | 1 - 8 个 CU（数据映射在弹性时段内可以根据吞吐量自动纵向扩展/缩减） | 若要获得更长的弹性时段，请联系支持人员 |
 |每个帐户的资产大小|1 亿个实物资产 |联系支持人员|
 |目录中一个资产的最大大小|2 MB|2 MB|
 |资产名称和分类名称的最大长度|4 KB|4 KB|
@@ -40,6 +42,9 @@ Azure Purview 是供数据用户使用的云服务。 使用 Azure Purview 集�
  
 ## <a name="next-steps"></a>后续步骤
  
+> [!div class="nextstepaction"]
+>[概念：Azure Purview 中的弹性数据映射](concept-elastic-data-map.md)
+
 > [!div class="nextstepaction"]
 >[教程：使用 Azure Purview 扫描数据](tutorial-scan-data.md)
 

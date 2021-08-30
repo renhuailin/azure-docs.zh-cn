@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: 5d81b8321fe574be39a23a99521521516b86cfbb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: de9f88d7505f91c9075167a5adf81e3e5463cf0b
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971253"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178131"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>计划 Microsoft Dynamics 365 产品/服务
 
@@ -31,7 +31,7 @@ ms.locfileid: "111971253"
 | 与我联系 | 通过连接客户关系管理 (CRM) 系统来收集客户联系信息。 系统将要求客户允许共享其信息。 这些客户详细信息以及产品/服务名称、ID 和他们在其中找到产品/服务的市场来源将发送到你配置的 CRM 系统。 有关配置 CRM 的详细信息，请参阅产品/服务类型的“产品/服务设置”页面的“客户引导”部分。 |
 | 免费试用版（列出） | 为客户提供为期一个月、三个月或六个月的免费试用版。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。 |
 | 立即获取（免费） | 免费向客户列出产品/服务。 |
-| 立即获取 | 使你能够在合作伙伴中心管理第三方许可证。<br>目前仅可用于以下产品/服务类型：<ul><li>适用于客户参与和 Power Apps 的 Dynamics 365</li></ul><br>有关此选项的详细信息，请参阅[通过 Microsoft 管理第三方应用许可证](third-party-license.md)。 |
+| 立即获取 | 使你能够在合作伙伴中心管理 ISV 应用许可证。<br>目前仅可用于以下产品/服务类型：<ul><li>适用于客户参与和 Power Apps 的 Dynamics 365</li></ul><br>有关此选项的详细信息，请参阅 [ISV 应用许可证管理](isv-app-license.md)。 |
 |||
 
 ## <a name="test-drive"></a>体验版
@@ -85,8 +85,7 @@ ms.locfileid: "111971253"
 
 | 发布指南    | 说明  |
 | :------------------- | :-------------------|
-| [Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) | 为 Enterprise Edition 构建时，请先查看这些附加的[发布流程和指导原则](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)。 |
-| [Dynamics 365 for Business Central](dynamics-365-business-central-offer-setup.md) |   |
-| [适用于客户参与和 Power Apps 的 Dynamics 365](dynamics-365-customer-engage-offer-setup.md) | 先查看这些附加的[发布流程和指导原则](/dynamics365/customer-engagement/developer/publish-app-appsource)。 |
-| [Power BI](./power-bi-app-offer-setup.md) | 先查看这些附加的[发布流程和指导原则](/power-bi/developer/office-store)。 |
-|||
+| [Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) | 为 Enterprise Edition 构建时，请先查看这些附加的[发布流程和指导原则](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)。 产品类型包括“商务”、“财务”、“人力资源”、“项目运营”和“供应链管理”。 |
+| [Dynamics 365 for Business Central](dynamics-365-business-central-offer-setup.md) | 不适用 |
+| [适用于客户参与和 Power Apps 的 Dynamics 365](dynamics-365-customer-engage-offer-setup.md) | 先查看这些附加的[发布流程和指导原则](/dynamics365/customer-engagement/developer/publish-app-appsource)。 产品类型包括“客户服务”、“客户语音”、“项目运营”、“现场服务”、“营销”、“混合现实”、“Power Apps”、“Power Automate”、“Power Virtual Agent”、“项目服务自动化”和“销售”。 |
+|

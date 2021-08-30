@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 07/26/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99d0dd081e3e1a681ba55e3457b79a548d6b2bb7
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c5d5e34ee5013a6f4ad28779e92536ff2d8ef868
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530379"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730761"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Azure Active Directory 中的身份验证方法 - OATH 令牌 
 
@@ -31,7 +31,7 @@ Authenticator 应用在设置为发送推送通知后会自动生成代码，以
 
 ## <a name="oath-hardware-tokens-preview"></a>OATH 硬件令牌（预览版）
 
-Azure AD 支持使用每 30 或 60 秒刷新一次代码的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。
+Azure AD 支持使用每 30 或 60 秒刷新一次代码的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。 
 
 OATH TOTP 硬件令牌通常附带一个在令牌中经过预编程的密钥或种子。 必须将这些密钥输入 Azure AD 中，如以下步骤所述。 密钥限制为 128 个字符，可能不会与所有令牌兼容。 密钥只能包含字符 a-z 或 A-Z，以及数字 2-7，并且必须采用 Base32 编码   。
 
@@ -62,3 +62,4 @@ Helga@contoso.com,1234567,2234567abcdef2234567abcdef,60,Contoso,HardwareKey
 ## <a name="next-steps"></a>后续步骤
 
 详细了解如何使用 [Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview) 配置身份验证方法。
+了解与无密码身份验证兼容的 [FIDO2 安全密钥提供程序](concept-authentication-passwordless.md#fido2-security-key-providers)。

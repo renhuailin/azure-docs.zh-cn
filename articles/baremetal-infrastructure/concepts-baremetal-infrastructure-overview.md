@@ -3,20 +3,21 @@ title: 什么是 Azure 中的 BareMetal 基础结构？
 description: 概要介绍 Azure 中的 BareMetal 基础结构。
 ms.custom: references_regions
 ms.topic: conceptual
-ms.subservice: workloads
-ms.date: 04/14/2021
-ms.openlocfilehash: c0fd250a63ce93d3f8b62dfe76fe753c928801ce
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.date: 07/13/2021
+ms.openlocfilehash: 135de43f26b969d3df79f6ec7348d295493e5134
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536899"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765815"
 ---
 #  <a name="what-is-baremetal-infrastructure-on-azure"></a>什么是 Azure 中的 BareMetal 基础结构？
 
-Microsoft Azure 提供了一种具有广泛的集成云服务的云基础结构，可满足你的业务需求。 但在某些情况下，你可能需要在没有虚拟化层的裸机服务器上运行服务。 你可能需要 root 访问权限，以及对操作系统 (OS) 的控制权限。 为了满足这样的需求，Azure 为一些高价值和任务关键型应用程序提供了 BareMetal 基础结构。
+Microsoft Azure 提供了一种具有广泛的集成云服务的云基础结构，可满足你的业务需求。 但在某些情况下，你可能需要在没有虚拟化层的裸机服务器上运行服务。 你可能需要 root 访问权限，以及对操作系统 (OS) 的控制权限。 为了满足此需求，Azure 为一些高价值的任务关键型应用程序提供了 BareMetal 基础结构。
 
-BareMetal 基础结构包含专用 BareMetal 实例（计算实例）、高性能和适用于应用程序的存储（NFS、ISCSI 和光纤通道）以及隔离的环境中的一组特定功能的虚拟 LAN (VLAN)。 你可以在各 BareMetal 实例间共享存储，以启用横向扩展群集等功能，或使用 STONITH 创建高可用性对。
+BareMetal 基础结构由专用 BareMetal 实例（计算示例）组成。 主要功能包括：
+- 高性能存储适用于应用程序（NFS、ISCSI 和光纤通道）。 你还可以在各 BareMetal 实例间共享存储，以实现横向扩展群集或 STONITH 高可用性对等功能。 
+- 隔离环境中的一组特定于函数的虚拟 LAN (VLAN)。 
  
 如果你在 Azure 订阅中的一个或多个 Azure 虚拟网络 (VNet) 上运行虚拟机 (VM)，则此环境还具有可访问的特殊 VLAN。 整个环境在 Azure 订阅中被表示为一个资源组。
 
@@ -24,17 +25,20 @@ BareMetal 基础结构提供 30 多个 SKU，其服务器从双插槽到 24 个�
 
 ## <a name="why-baremetal-infrastructure"></a>为什么要使用 BareMetal 基础结构？  
 
-企业中的一些中心工作负载是由一些技术组成的，这些技术在设计上并不适合在典型的虚拟化云设置中运行。 它们需要特殊的架构、经过认证的硬件或格外大的尺寸。 尽管这些技术具有最成熟的数据保护和业务连续性功能，但这些功能并不是为虚拟化云而构建的。 它们对延迟、干扰性邻居更敏感，需要对更改管理和维护活动进行更多的控制。
+企业中的一些工作负载是由一些技术组成的，这些技术在设计上并不适合在典型的虚拟化云设置中运行。 它们需要特殊的架构、经过认证的硬件或格外大的尺寸。 尽管这些技术具有最成熟的数据保护和业务连续性功能，但这些功能并不是为虚拟化云而构建的。 它们对延迟和干扰性邻居更敏感，需要对变更管理和维护活动进行更多的控制。
 
 BareMetal 基础结构是针对一组选定的此类应用程序进行构建、认证和测试的。 Azure 率先提供此类解决方案，此后一直以最大的项目组合和最成熟的系统而领先。
 
-BareMetal 基础结构具有以下优势： 
+### <a name="baremetal-benefits"></a>BareMetal 优势  
 
-- 专用实例
+BareMetal 基础结构适用于需要证书才能运行企业应用程序的关键工作负载。 BareMetal 实例专为你准备，你将拥有对操作系统 (OS) 的完全访问权限（root 访问权限）。 你可以根据需要管理操作系统和应用程序安装。 为安全起见，可在 Azure 虚拟网络 (VNet) 中预配实例，而无需 Internet 连接。 只有在虚拟机 (VM) 上运行的服务，以及在同一第 2 层网络中的其他 Azure 服务才能与 BareMetal 实例通信。  
+
+BareMetal 基础结构具有以下优势：
+
 - 适用于专用工作负载的认证硬件
     - SAP（请参阅 [SAP 说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)）
     - Oracle（请参阅 [Oracle 文档 ID #948372.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=52088246571495&id=948372.1&_adf.ctrl-state=kwnkj1hzm_52)）
-- 裸机（无计算虚拟化）
+- 非虚拟化监控 BareMetal 实例，单租户所有权
 - Azure 托管应用程序 VM 与 BareMetal 实例之间的延迟非常低（0.35 毫秒）
 - 所有闪存 SSD 和 NVMe
     - 最高 1 PB/租户 
@@ -46,29 +50,12 @@ BareMetal 基础结构具有以下优势：
 - 客户协调的维护时段
 - 应用程序感知的快照、存档、镜像和克隆
 
-
-## <a name="baremetal-benefits"></a>BareMetal 优势  
-
-BareMetal 基础结构适用于需要证书才能运行企业应用程序的任务关键型工作负载。 BareMetal 实例专为你准备，你将拥有对操作系统 (OS) 的完全访问权限（root 访问权限）。 你可以根据需要管理操作系统和应用程序安装。 为安全起见，可在 Azure 虚拟网络 (VNet) 中预配实例，而无需 Internet 连接。 只有在虚拟机 (VM) 上运行的服务，以及在同一第 2 层网络中的其他 Azure 服务才能与 BareMetal 实例通信。  
-
-BareMetal 基础结构具有以下优势： 
-
-- 适用于专用工作负载的认证硬件
-- SAP（请参阅 [SAP 说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)）
-- Oracle（请参阅 [Oracle 文档 ID #948372.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=52088246571495&id=948372.1&_adf.ctrl-state=kwnkj1hzm_52)）
-- 非虚拟化监控 BareMetal 实例，单租户所有权
-- Azure 托管应用程序 VM 与 BareMetal 实例之间的延迟非常低（0.35 毫秒）
-- 所有闪存 SSD 和 NVMe 支持
-- 数据库最高为 1 PB/租户 
-- IOPS 高达 120 万/租户 
-- 50-GB 的网络带宽 
-
 ## <a name="sku-availability-in-azure-regions"></a>Azure 区域中的 SKU 可用性
 
 BareMetal 基础结构提供已针对专用工作负载认证的多个 SKU。 使用特定于工作负载的 SKU 满足你的需求。
 
 - 大型实例 - 从双插槽到四插槽的系统。  
-- 非常大的实例 - 从四插槽到 20 个插槽的系统。 
+- 特大型实例 - 从四插槽到 20 插槽的系统。 
 
 适用于专用工作负载的 BareMetal 基础结构可在以下 Azure 区域提供：
 - 西欧
@@ -85,13 +72,14 @@ BareMetal 基础结构提供已针对专用工作负载认证的多个 SKU。 �
 
 ## <a name="managing-baremetal-instances-in-azure"></a>在 Azure 中管理 BareMetal 实例 
 
-根据不同的需求，BareMetal 基础结构的应用程序拓扑可能会很复杂。 你可以在一个或多个位置部署多个实例，其中包含共享或专用存储以及专用的 LAN 和 WAN 连接。 因此，对于 BareMetal 基础结构，Azure 在预配门户中提供了 CSA/GBB 现场咨询。 
+根据不同的需求，BareMetal 基础结构的应用程序拓扑可能会很复杂。 你可以在一个或多个位置部署多个实例。 实例可以具有共享或专用存储，以及专用的 LAN 和 WAN 连接。 因此，对于 BareMetal 基础结构，Azure 提供咨询服务，由 CSA/GBB 在现场与你合作。 
 
 当你预配完 BareMetal 基础结构后，操作系统、网络、存储卷、地区和区域中的位置以及位置之间的 WAN 连接均已预先配置完成。 你已经准备好注册你的操作系统许可证 (BYOL)、配置操作系统并安装应用程序层。
 
-你将能够在 Azure 门户中看到所有 BareMetal 资源及其状态和属性。 你还可以运行实例，并从那里提交服务请求和支持票证。 
+你将在 Azure 门户中看到所有 BareMetal 资源及其状态和属性。 你还可以运行实例，并从那里提交服务请求和支持票证。 
 
 ## <a name="operational-model"></a>操作模式
+
 BareMetal 基础结构符合 ISO 27001、ISO 27017、SOC 1 和 SOC 2 标准。 它还使用自带许可 (BYOL) 模型：操作系统、专用工作负载和第三方应用程序。  
 
 一旦收到根目录访问和完全控制，就要承担以下责任：
@@ -120,6 +108,7 @@ BareMetal 实例标记本身合并以下组件：
 >部署 BareMetal 实例的客户会被隔离到租户中。 租户在网络、存储和计算层中相互隔离。 分配给不同租户的存储和计算单位在 BareMetal 实例上无法相互看到或进行通信。
 
 ## <a name="operating-system"></a>操作系统
+
 在 BareMetal 实例的预配过程中，可以选择要安装在计算机上的操作系统。 
 
 >[!NOTE]
@@ -130,6 +119,7 @@ BareMetal 实例标记本身合并以下组件：
 - SUSE Linux Enterprise Server (SLES)
 
 ## <a name="storage"></a>存储
+
 BareMetal 基础结构提供了高度冗余的 NFS 存储和光纤通道存储。 基础结构为 SAP、SQL 等企业工作负载提供深度整合。 它还提供了与应用程序一致的数据保护和数据管理功能。 自助服务管理工具提供节省空间的快照、克隆和精细复制功能，同时提供集中式监视。 基础结构可实现零 RPO 和 RTO 功能，以满足数据可用性和业务连续性需求。 
 
 存储基础结构提供以下优势：
@@ -147,6 +137,7 @@ BareMetal 基础结构提供了高度冗余的 NFS 存储和光纤通道存储�
 - NVMe over FC  
 
 ## <a name="networking"></a>网络
+
 Azure 网络服务的体系结构是在 BareMetal 实例中成功部署专用工作负载的关键组件。 可能并非所有 IT 系统都已在 Azure 中。 Azure 提供网络技术，可让 Azure 充当本地软件部署的虚拟数据中心。 BareMetal 实例所需的 Azure 网络功能如下：
 
 - Azure 虚拟网络连接到与本地网络资产连接的 Azure ExpressRoute 线路。
@@ -169,7 +160,7 @@ BareMetal 实例是在 Azure VNet 服务器 IP 地址范围内预配的。
 
 ## <a name="next-steps"></a>后续步骤
 
-下一步是了解如何通过 Azure 门户确定 BareMetal 实例并与之交互。
+了解如何通过 Azure 门户确定 BareMetal 实例并与之交互。
 
 > [!div class="nextstepaction"]
 > [通过 Azure 门户管理 BareMetal 实例](connect-baremetal-infrastructure.md)

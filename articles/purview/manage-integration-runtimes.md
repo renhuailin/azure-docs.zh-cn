@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 73144611e835ac1bea20ab92212e52941af84eef
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2c1f967e596b4ba19d121f3c0332259b92f78d06
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463734"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730604"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -52,6 +52,38 @@ ms.locfileid: "110463734"
 6. 成功注册自承载集成运行时后，会看到以下窗口：
 
    :::image type="content" source="media/manage-integration-runtimes/successfully-registered.png" alt-text="已成功注册。":::
+
+## <a name="networking-requirements"></a>网络要求
+
+自承载集成运行时计算机需要连接到多个资源才能正常工作：
+
+* 希望使用自承载集成运行时扫描的源。
+* 用于存储 Purview 资源的凭据的任何 Azure Key Vault。
+* Purview 创建的托管存储和事件中心资源。
+
+托管存储和事件中心资源可以在包含 Purview 资源名称的资源组下的订阅中找到。 Azure Purview 使用这些资源来引入扫描结果，包括许多其他内容，因此自承载集成运行时需要能够直接连接这些资源。
+
+下面是需要通过企业防火墙和计算机防火墙允许的域和端口。
+
+> [!NOTE]
+> 对于使用“\<managed Purview storage account>”列出的域，你将添加与 Purview 资源关联的托管存储帐户的名称。 可以在门户中查找此资源。 在资源组中搜索名为 managed-rg-\<your Purview Resource name> 的组。 例如：managed-rg-contosoPurview。 你将使用此资源组中存储帐户的名称。
+> 
+> 对于使用“\<managed Event Hub resource>”列出的域，你将添加与 Purview 资源关联的托管事件中心的名称。 可以在托管存储帐户所在的资源组中找到此名称。
+
+| 域名                  | 出站端口 | 说明                              |
+| ----------------------------- | -------------- | ---------------------------------------- |
+| `*.servicebus.windows.net` | 443            | 全局基础结构 Purview 使用此域来运行其扫描。 由于没有专用资源，因此需要通配符。 |
+| `<managed Event Hub resource>.servicebus.windows.net` | 443            | Purview 使用此域连接到关联的服务总线。 如果允许上面的域，该域将被涵盖，但如果使用的是专用终结点，则需要测试对这一个域的访问权限。|
+| `*.frontend.clouddatahub.net` | 443            | 全局基础结构 Purview 使用此域来运行其扫描。 由于没有专用资源，因此需要通配符。 |
+| `<managed Purview storage account>.core.windows.net`          | 443            | 自承载集成运行时使用此域连接到托管 Azure 存储帐户。|
+| `<managed Purview storage account>.queue.core.windows.net` | 443            | Purview 用于运行扫描过程的队列。 |
+| `<your Key Vault Name>.vault.azure.net` | 443           | 如果所有凭据都存储在 Azure Key Vault 中，则需要此域。 |
+| `download.microsoft.com` | 443           | 对于 SHIR 更新是可选的。 |
+| 各种域 | 从属          | SHIR 将连接到的任何其他源的域。 |
+  
+  
+> [!IMPORTANT]
+> 在大多数环境中，还需要确认 DNS 的配置是否正确。 若要确认，可以使用 SHIR 计算机中的 nslookup 检查与上述每个域的连接。 每个 nslookup 应返回资源的 IP。 如果使用的是[专用终结点](catalog-private-link.md)，应返回专用 IP，而不是公共 IP。 如果未返回 IP，或者在使用专用终结点时返回了公共 IP，则需要解决 DNS/VNET 关联或专用终结点/VNET 对等互连。
 
 ## <a name="manage-a-self-hosted-integration-runtime"></a>管理自承载的集成运行时
 

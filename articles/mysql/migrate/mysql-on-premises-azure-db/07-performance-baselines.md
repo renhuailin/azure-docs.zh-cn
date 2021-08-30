@@ -1,5 +1,5 @@
 ---
-title: 从本地 MySQL 到 Azure Database for MySQL 的迁移指南：性能基线
+title: 将本地 MySQL 迁移到 Azure Database for MySQL：性能基线
 description: 了解现有 MySQL 工作负荷是确保迁移成功的最佳投资之一。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 9948eef759ff44468c8a9b70e790c8376b40ff16
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 2077ef62ddabf7910d5a634c07262c9d29905cf4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082683"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113084959"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-performance-baselines"></a>从本地 MySQL 到 Azure Database for MySQL 的迁移指南：性能基线
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-performance-baselines"></a>将本地 MySQL 迁移到 Azure Database for MySQL：性能基线
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -96,6 +98,8 @@ MySQL 服务器的默认配置可能无法充分支持工作负荷。 MySQL 中�
 WWI 查看了其会议数据库工作负荷，并确定其负载较小。 尽管基本层服务器即可运行这些工具，但他们不希望以后再迁移到另一层。 正在部署的服务器最终将托管其他 MySQL 数据工作负荷，因此他们选取了 `General Performance` 层。
 
 在评审 MySQL 数据库时，MySQL 5.5 服务器以初始安装过程中设置的默认服务器参数运行。
+
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [数据迁移](./08-data-migration.md)

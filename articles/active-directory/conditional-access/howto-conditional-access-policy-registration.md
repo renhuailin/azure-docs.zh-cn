@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 04/20/2021
+ms.date: 07/28/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05aca853e2eba98d224131c98751b4e2f4200024
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aa38195c836c77e9f0fd621776e997d4b7fff7bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765640"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744152"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>条件访问：保护安全信息注册
 
-通过使用条件访问策略中的用户操作，可以保护用户何时以及如何注册 Azure AD 多重身份验证和自助式密码重置。 此功能适用于启用了[合并注册](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 此功能可让组织将注册过程视为条件访问策略中的任何应用程序，并使用条件访问的全部功能来保护体验。 
+通过使用条件访问策略中的用户操作，可以保护用户何时以及如何注册 Azure AD 多重身份验证和自助式密码重置。 此功能适用于启用了[合并注册](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 此功能可让组织将注册过程视为条件访问策略中的任何应用程序，并使用条件访问的全部功能来保护体验。 登录 Microsoft Authenticator 应用或启用无密码电话登录的用户受此策略的约束。
 
 过去，某些组织可能已使用受信任的网络位置或设备合规性来保护注册体验。 随着 Azure AD 中添加了[临时访问密码](../authentication/howto-authentication-temporary-access-pass.md)，管理员可以为其用户预配限定了时间的凭据，以允许用户从任何设备或位置进行注册。 临时访问密码凭据满足多重身份验证的条件访问要求。
 

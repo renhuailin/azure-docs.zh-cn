@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: bc4af87ca560c19af47a877d05a34a33c74a67bb
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 1ae8d59934bdcd0dc2dcf2178f61f7bcaa3e5fc8
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111437921"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114205279"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>使用 Azure CLI 复制另一个库中的映像
 
@@ -75,7 +75,7 @@ az sig image-version show \
 
 ## <a name="create-the-image-definition"></a>创建映像定义 
 
-需要创建一个与源映像版本的映像定义相匹配的映像定义。 可以使用 [az sig image-definition show](/cli/azure/sig/image-definition#az_sig_image_definition_show) 查看在新库中重新创建映像定义所需的全部信息。
+需要创建与操作系统、操作系统状态以及包含源映像版本的映像定义的 Hyper-V 代系相匹配的映像定义。 可以使用 [az sig image-definition show](/cli/azure/sig/image-definition#az_sig_image_definition_show) 查看在新库中重新创建映像定义所需的全部信息。
 
 ```azurecli-interactive
 az sig image-definition show \
@@ -129,6 +129,10 @@ az sig image-definition create \
    --hyper-v-generation V1 \
    --os-state specialized 
 ```
+
+> [!NOTE]
+> 对于将要包含从第三方映像继承的映像的映像定义，计划信息必须与第三方映像中的计划信息完全匹配。 创建映像定义时，通过添加 `--plan-name`、`--plan-product` 和 `--plan-publisher` 在映像定义中包含计划信息。
+>
 
 
 ## <a name="create-the-image-version"></a>创建映像版本

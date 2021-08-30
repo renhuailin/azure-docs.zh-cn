@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: 8bcd45ab1270d478b05b3929d7b8914976612294
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b81356c0a17315bbb614b4def5db90e4dbae9af3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645310"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450853"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure 上的 Oracle VM 映像及其部署
 
@@ -106,7 +106,7 @@ Azure NetApp 文件旨在满足在云中运行高性能工作负荷（如数据�
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>在 Azure 上授权 Oracle Database 与软件
 
-Microsoft Azure 是一种用于运行 Oracle Database 的已授权云环境。 在云中授权 Oracle 数据库时，Oracle 内核系数表不适用。 相反，当使用为 Enterprise Edition 数据库启用的超线程技术的 VM 时，如果启用了超线程（如策略文档中所述），则应将两个 vCPU 视为等效于一个 Oracle 处理器许可证。 [此处](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)提供了策略详细信息。
+Microsoft Azure 是一种用于运行 Oracle Database 的已授权云环境。 在云中授权 Oracle 数据库时，Oracle 内核系数表不适用。 相反，当使用为 Enterprise Edition 数据库启用的超线程技术的 VM 时，如果启用了超线程（如策略文档中所述），则应将两个 vCPU 视为等效于一个 Oracle 处理器许可证。 可在[在云计算环境中授权 Oracle 软件](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)中找到策略详细信息。
 Oracle 数据库通常需要更高端存储器和 IO。 出于此原因，建议对这些工作负荷使用[内存优化 VM](../../sizes-memory.md)。 若要进一步优化工作负荷，建议将[受约束的核心 vCPU](../../constrained-vcpu.md) 用于需要高端存储器、存储和 I/O 带宽，但不需要高核心计数的 Oracle Database 工作负荷。
 
 将 Oracle 软件和工作负荷从本地迁移到 Microsoft Azure 时，Oracle 提供了许可移动性，如 [Azure 上的 Oracle 常见问题解答](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)中所述

@@ -14,18 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 67bc104434dc0db30f5973bec0979afb7480fe4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 367e0cbd6d771baad1234f99080200a60a20a196
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98621373"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252585"
 ---
-# <a name="connect-your-data-from-azure-defender-formerly-azure-security-center-for-iot-to-azure-sentinel"></a>将数据从 Azure Defender（以前的 Azure 安全中心）for IoT 连接到 Azure Sentinel 
+# <a name="connect-your-data-from-azure-defender-formerly-azure-security-center-for-iot-to-azure-sentinel-public-preview"></a>将数据从 Azure Defender（以前的 Azure 安全中心）for IoT 连接到 Azure Sentinel（公共预览版）
 
 使用 Defender for IoT 连接器将所有的 Defender for IoT 事件都流式传输到 Azure Sentinel。 
 
-这种集成使组织可以快速检测到通常跨 IT 和 OT 边界的多阶段攻击。 此外，通过将 Defender for IoT 与 Azure Sentinel 安全业务流程、自动化和响应 (SOAR) 功能集成，可以使用内置的已优化 OT 的 playbook 来实现自动响应和预防。 
+这种集成使组织可以快速检测到通常跨 IT 和 OT 边界的多阶段攻击。 此外，通过将 Defender for IoT 与 Azure Sentinel 安全业务流程、自动化和响应 (SOAR) 功能集成，可以使用内置的已优化 OT 的 playbook 来实现自动响应和预防。
+
+> [!IMPORTANT]
+> Azure Defender for IoT 连接器目前以预览版提供。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 ## <a name="prerequisites"></a>先决条件
 
 - 在部署了 Azure Sentinel 的工作区上有读取和写入权限 
@@ -67,6 +73,6 @@ SecurityAlert | where ProductName == "Azure Security Center for IoT"
 
 本文档介绍了如何将 Defender for IoT 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

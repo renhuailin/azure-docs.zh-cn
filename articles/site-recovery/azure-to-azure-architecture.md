@@ -2,18 +2,15 @@
 title: 使用 Azure Site Recovery 执行 Azure 到 Azure 的灾难恢复体系结构
 description: 概述了使用 Azure Site Recovery 服务为 Azure VM 设置 Azure 区域之间的灾难恢复时使用的体系结构。
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
-ms.author: raynew
-ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a59760378eef7412a963f661e80debc6a7af56d5
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97652239"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486546"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -54,9 +51,8 @@ ms.locfileid: "97652239"
 
 可按如下所述管理目标资源：
 
-- 启用复制时可以修改目标设置。
-- 已开始复制后可以修改目标设置。 请注意，目标区域 VM 的默认 SKU 与源 VM 的 SKU（或仅次于源 VM SKU 的最佳可用 SKU）相同。 与目标资源组、目标名称和其他资源类似，目标区域 VM SKU 也可以在复制期间进行更新。 可用性类型（单一实例、集或区域）是无法更新的资源。 若要更改此设置，需要禁用复制、修改设置，然后重新启用复制。 
-
+- 启用复制时可以修改目标设置。 请注意，目标区域 VM 的默认 SKU 与源 VM 的 SKU（或仅次于源 VM SKU 的最佳可用 SKU）相同。 下拉列表仅显示与源 VM（第 1 代或第 2 代）属于同一系列的相关 SKU。
+- 已开始复制后可以修改目标设置。 与目标资源组、目标名称和其他资源类似，目标区域 VM SKU 也可以在复制期间进行更新。 可用性类型（单一实例、集或区域）是无法更新的资源。 若要更改此设置，需要禁用复制、修改设置，然后重新启用复制。 
 
 ## <a name="replication-policy"></a>复制策略 
 

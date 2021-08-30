@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 08/05/2021
 ms.author: memildin
-ms.openlocfilehash: f1fe1f15d2a2a2a3da7a7978b2d7645db65beae1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 523375ff69d6139a1e910b9253a6816235bfecc4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146682"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741969"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>在监管合规仪表板中自定义标准集
 
@@ -65,7 +65,7 @@ Microsoft 会自行跟踪法规标准，一段时间后，自动提高这些标�
     > [!TIP]
     > 建议选择标准所适用的最高范围，以便为所有嵌套资源聚合和跟踪合规数据。 
 
-1. 若要添加与组织相关的标准，请单击“添加更多标准”。 
+1. 若要添加与组织相关的标准，请扩展“行业和监管标准”部分，并选择“添加更多标准”。
 
 1. 在“添加监管合规标准”页中，可以搜索任何可用标准，包括：
 
@@ -79,7 +79,7 @@ Microsoft 会自行跟踪法规标准，一段时间后，自动提高这些标�
     - **CMMC 级别 3**
     - **受限于新西兰 ISM**
     
-    ![将监管标准添加到 Azure 安全中心的监管合规仪表板](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+    ![将监管标准添加到 Azure 安全中心的监管合规仪表板。](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
 1. 选择“添加”，然后输入特定计划的所有必要详细信息，如范围、参数和修正。
 
@@ -90,7 +90,7 @@ Microsoft 会自行跟踪法规标准，一段时间后，自动提高这些标�
     > [!NOTE]
     > 新添加的标准可能需要几个小时才能出现在合规仪表板中。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法规符合性仪表板" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法规合规性仪表板。" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 ## <a name="remove-a-standard-from-your-dashboard"></a>从仪表板中删除标准
 
@@ -107,11 +107,11 @@ Microsoft 会自行跟踪法规标准，一段时间后，自动提高这些标�
 
     此时将打开“安全策略”页。 对于所选订阅，会显示默认策略、行业和监管标准以及用户创建的任何自定义措施。
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="从 Azure 安全中心的监管合规仪表板中删除监管标准":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="从 Azure 安全中心的监管合规仪表板中删除监管标准。":::
 
 1. 对于要删除的标准，选择“禁用”。 确认窗口随即打开。
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="确认删除所选的监管标准":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard-confirm.png" alt-text="确认确实要删除所选的监管标准。":::
 
 1. 请选择“是”。 将删除此标准。 
 

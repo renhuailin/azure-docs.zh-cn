@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 1c3bcfea0e703de28c79048380f8389fa93014b3
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 5f7bd55cfbdd0e38e2c53784dd24760fb051c0f1
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110585333"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112233576"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>为 Azure Cache for Redis 企业实例配置活动异地复制（预览）
 
@@ -33,13 +33,13 @@ ms.locfileid: "110585333"
 
     ![配置活动异地复制](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-not-configured.png)
 
-1. 单击“配置”以设置“活动异地复制” 。
+1. 选择“配置”以设置“活动异地复制” 。
 
 1. 为第一个缓存实例新建复制组，或从列表中选择一个现有复制组。
 
     ![链接缓存](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-new-group.png)
 
-1. 单击“配置”来完成操作。
+1. 选择“配置”以完成。
 
     ![已配置活动异地复制](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
 

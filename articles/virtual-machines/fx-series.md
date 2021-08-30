@@ -7,16 +7,16 @@ ms.subservice: vm-sizes-compute
 ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: jushiman
-ms.openlocfilehash: 87a97f974ba687001c9e7648c9738e4af5cf2314
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: eb8e094b4a78e718efc86314ca74c0df92426248
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072955"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122229012"
 ---
 # <a name="fx-series"></a>FX 系列
 
-FX 系列在 Intel® Xeon® Gold 6246R (Cascade Lake) 处理器上运行。 该系列具有 4.0GHz 的全核 Turbo 频率、RAM 容量为 21GB 的 vCPU、高达 1TB 的总 RAM，并支持本地临时存储。 FX 系列将会让需要高 CPU 时钟速度和高内存与 CPU 比的工作负荷、每个核心许可成本高的工作负荷、以及需要高核性能的应用程序受益。 FX 系列的一个典型用法是电子设计自动化 (EDA) 工作负荷。
+FX 系列在 Intel® Xeon® Gold 6246R (Cascade Lake) 处理器上运行。 该系列具有 4.0GHz 的全核 Turbo 频率、RAM 容量为 21GB 的 vCPU、高达 1TB 的总 RAM，并支持本地临时存储。 FX 系列将使需要高 CPU 时钟速度和高内存与 CPU 比的工作负荷、每个核心许可成本高的工作负荷以及需要较高单核性能的应用程序受益。 FX 系列的一个典型用法是电子设计自动化 (EDA) 工作负荷。
 
 FX 系列 VM 具备 [Intel® 睿频加速技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel® 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)，并支持 [Intel® 高级矢量扩展 512 (intel® AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。
 

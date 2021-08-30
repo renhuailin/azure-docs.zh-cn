@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 1118e44e822068566579fdc516479afeda294cf6
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: eeba36b200028d4e90e22cd32c9bab6dbe3799e0
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789490"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492858"
 ---
 # <a name="azure-digital-twins-query-language-reference-select-clause"></a>Azure 数字孪生查询语言参考：SELECT 子句
 
@@ -268,7 +268,7 @@ SELECT 子句是查询的第一个部分。 它指定查询将返回的列的列
 
 ## <a name="select-top"></a>SELECT TOP
 
-使用此方法仅返回满足查询要求的一定数量的前面几项。
+使用此方法仅返回满足查询要求的前面几项。
 
 ### <a name="syntax"></a>语法
 

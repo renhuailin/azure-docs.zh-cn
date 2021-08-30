@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2021
 ms.author: amverma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 305b37d4b4ae67be79c095ee42810876770bb239
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 220b2da56791fde38301bd1f69f5e134be77982c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673305"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445999"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>适用于 Windows 的 NVIDIA GPU 驱动程序扩展
 
@@ -26,7 +26,7 @@ ms.locfileid: "110673305"
 
 此扩展在 Windows N 系列 VM 上安装 NVIDIA GPU 驱动程序。 根据 VM 系列，此扩展安装 CUDA 或 GRID 驱动程序。 使用此扩展安装 NVIDIA 驱动程序时，即表示你接受并同意 [NVIDIA 最终用户许可协议](https://go.microsoft.com/fwlink/?linkid=874330)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
 
-[此处](../windows/n-series-driver-setup.md)提供了有关手动安装驱动程序和当前支持的版本的说明。
+我们提供了有关手动安装驱动程序和当前支持的版本的说明。 有关详细信息，请参阅[适用于 Windows 的 Azure N 系列 NVIDIA GPU 驱动程序安装](../windows/n-series-driver-setup.md)。
 此扩展也可用于在 [Linux N 系列 VM](hpccompute-gpu-linux.md) 上安装 NVIDIA GPU 驱动程序。
 
 ## <a name="prerequisites"></a>先决条件
@@ -75,7 +75,7 @@ ms.locfileid: "110673305"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | 字符串 |
+| publisher | Microsoft.HpcCompute | string |
 | type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.3 | int |
 
@@ -140,7 +140,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户以及使用 Azure PowerShell 和 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请运行以下命令。
 

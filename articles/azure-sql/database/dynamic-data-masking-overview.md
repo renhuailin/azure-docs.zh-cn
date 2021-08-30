@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 01/25/2021
+ms.date: 06/24/2021
 tags: azure-synpase
-ms.openlocfilehash: b44248732891163bc2630cdfe5b297a06f3cf730
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 869498111df151f78cb0a1d9ad7ede1dd84aaf42
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001009"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582598"
 ---
 # <a name="dynamic-data-masking"></a>动态数据屏蔽 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -84,6 +84,7 @@ DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段�
 
 动态数据掩码可由 Azure SQL 数据库管理员、服务器管理员或基于角色的访问控制 (RBAC) [SQL 安全管理器](../../role-based-access-control/built-in-roles.md#sql-security-manager)角色配置。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>另请参阅
 
-[动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)
+- 适用于 SQL Server 的[动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)。
+- 第 9 频道上有关 [Azure SQL 动态数据掩码粒度权限](https://channel9.msdn.com/Shows/Data-Exposed/Granular-Permissions-for-Azure-SQL-Dynamic-Data-Masking)的“已公开数据”剧集。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a122c5dc10600b612c20d3a742f3500944562357
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: e4eac73f756268af21cbb97c8c5c2bf53c2322bc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407986"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733688"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>设备标识和桌面虚拟化
 
@@ -35,10 +35,10 @@ ms.locfileid: "111407986"
 
 非永久性版本使用桌面集合，用户可以根据需要对其进行访问。 这些非永久性的桌面会还原到其原始状态，在 Windows 当前设备<sup>1</sup> 中，当虚拟机经历关闭/重启/OS 重置过程时，会发生这种情况，而在 Windows 下层设备<sup>2</sup> 中，当用户注销时，会发生这种情况。
 
-随着远程办公成为新常态，非永久性 VDI 部署也会随之增加。 当客户部署非永久性 VDI 时，请务必确保管理陈旧设备（由于频繁注册设备而没有适当的设备生命周期管理策略，所以出现陈旧设备）。
+随着远程办公成为新常态，非永久性 VDI 部署也会随之增加。 当客户部署非永久性 VDI 时，重要的是要确保管理陈旧设备，这些设备是由于频繁注册设备而创建的，没有适当的设备生命周期管理策略。
 
 > [!IMPORTANT]
-> 如果未能管理陈旧设备，则会导致租户配额用量方面的压力增加，如果用尽租户配额，还存在服务中断的潜在风险。 部署非永久性 VDI 环境时应按照下面所述的指南进行操作，以避免出现这种情况。
+> 如果无法管理陈旧设备，则会导致租户配额用量方面的压力增加，如果用尽租户配额，还存在服务中断的潜在风险。 部署非永久性 VDI 环境时应按照下面所述的指南进行操作，以避免出现这种情况。
 
 本文将介绍 Microsoft 有关设备标识和 VDI 的支持指南（面向管理员）。 如需详细了解设备标识，请参阅[什么是设备标识](overview.md)一文。
 
@@ -54,9 +54,9 @@ ms.locfileid: "111407986"
 |   | 托管<sup>4</sup> | Windows 当前设备和 Windows 下层设备 | 永久 | 是 |
 |   |   | Windows 当前设备 | 非永久 | 否 |
 |   |   | Windows 下层设备 | 非永久 | 是<sup>6</sup> |
-| 已加入 Azure AD | 联合 | Windows 当前设备 | 永久 | 否 |
+| 已加入 Azure AD | 联合 | Windows 当前设备 | 永久 | 受限<sup>7</sup> |
 |   |   |   | 非永久 | 否 |
-|   | 托管 | Windows 当前设备 | 永久 | 否 |
+|   | 托管 | Windows 当前设备 | 永久 | 受限<sup>7</sup> |
 |   |   |   | 非永久 | 否 |
 | 已注册 Azure AD | 联合/托管 | Windows 当前设备/Windows 下层设备 | 永久/非永久 | 不适用 |
 
@@ -71,6 +71,7 @@ ms.locfileid: "111407986"
 
 <sup>6</sup> 对 Windows 下层设备的非永久性支持需要考虑其他注意事项，如下面的指南部分中所述。
 
+<sup>7</sup> Azure AD 联接支持仅适用于 Azure 虚拟桌面和 Windows 365
 
 ## <a name="microsofts-guidance"></a>Microsoft 指南
 
@@ -96,7 +97,7 @@ ms.locfileid: "111407986"
    - 对 Windows 当前设备和下层设备进行非永久性 VDI 部署时，应删除 ApproximateLastLogonTimestamp 为 15 天之前的设备。
 
 > [!NOTE]
-> 使用非持久性 VDI 时，如果要阻止出现设备加入状态，请确保设置以下注册表项：  
+> 使用非持久性 VDI 时，如果要阻止添加工作或学校帐户，请确保设置以下注册表项：  
 > `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin: "BlockAADWorkplaceJoin"=dword:00000001`    
 >
 > 确保运行的是 Windows 10 版本 1803 或更高版本。  
@@ -109,7 +110,9 @@ ms.locfileid: "111407986"
 > * `%localappdata%\Microsoft\TokenBroker`
 > * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL`
 > * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AAD`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\WorkplaceJoin`
 >
+> 不支持对工作帐户的设备证书进行漫游。 由“MS-Organization-Access”颁发的证书存储在当前用户的“个人（我的）”证书存储中，并存储在本地计算机上。
 
 
 ### <a name="persistent-vdi"></a>持久性 VDI

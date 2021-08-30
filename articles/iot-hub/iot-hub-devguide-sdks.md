@@ -2,7 +2,6 @@
 title: Azure IoT 中心 SDK | Microsoft Docs
 description: 指向可用于生成设备应用和后端应用的 Azure IoT 中心 SDK 的链接。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -12,12 +11,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 67c9bd6c4f8779340a847815da8692e12e3ee1ac
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 823cb1ae9afb6af8b8ed0446e58930fa62ee7f07
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537040"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740485"
 ---
 # <a name="azure-iot-hub-sdks"></a>Azure IoT 中心 SDK
 
@@ -25,7 +24,7 @@ ms.locfileid: "111537040"
 
 * [IoT 中心服务 SDK](#azure-iot-hub-service-sdks) 可用于生成后端应用程序来管理 IoT 中心，并视需要发送消息、计划作业、调用直接方法或向 IoT 设备或模块发送相应属性更新。
 
-* [IoT 中心设备 SDK](../iot-develop/about-iot-sdks.md) 可用于使用设备客户端或模块客户端生成在 IoT 设备上运行的应用。 这些应用将遥测发送到 IoT 中心，并可以选择从 IoT 中心接收消息、作业、方法或孪生更新。 可以使用这些 SDK 构建使用 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)约定和型号的设备应用，以便将其功能播发到启用了 IoT 即插即用的应用程序。 还可以使用模块客户端为 [Azure IoT Edge 运行时](../iot-edge/about-iot-edge.md)创建[模块](../iot-edge/iot-edge-modules.md)。
+* [IoT 中心设备 SDK](../iot-develop/about-iot-sdks.md) 可用于使用设备客户端或模块客户端生成在 IoT 设备上运行的应用。 这些应用将遥测发送到 IoT 中心，并可以选择从 IoT 中心接收消息、作业、方法或孪生更新。 可以使用这些 SDK 构建使用 [Azure IoT 即插即用](../iot-develop/overview-iot-plug-and-play.md)约定和型号的设备应用，以便将其功能播发到启用了 IoT 即插即用的应用程序。 还可以使用模块客户端为 [Azure IoT Edge 运行时](../iot-edge/about-iot-edge.md)创建[模块](../iot-edge/iot-edge-modules.md)。
 
 此外，我们还提供了一组 SDK 来处理[设备预配服务](../iot-dps/about-iot-dps.md)。
 
@@ -70,9 +69,9 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 有关 IoT 中心设备 SDK 的详细信息，请参阅 [IoT 设备开发文档](../iot-develop/about-iot-sdks.md)。
 
-## <a name="os-platform-and-hardware-compatibility"></a>操作系统平台和硬件兼容性
+## <a name="sdk-and-hardware-compatibility"></a>SDK 和硬件兼容性
 
-可以在 [Azure IoT SDK 平台支持](iot-hub-device-sdk-platform-support.md)中找到支持的 SDK 平台。
+有关选择设备 SDK 的详细信息，请参阅 [Azure IoT 设备 SDK 概述](../iot-develop/about-iot-sdks.md)。
 
 有关与特定硬件设备的 SDK 兼容性的详细信息，请参阅 [Azure IoT 认证设备目录](https://devicecatalog.azure.com/)或个体存储库。
 
@@ -84,7 +83,7 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 
 * 了解如何使用 IoT 中心 SDK [管理连接和可靠的消息传送](iot-hub-reliability-features-in-sdks.md)。
 * 了解如何[针对移动平台进行开发](iot-hub-how-to-develop-for-mobile-devices.md)，例如 iOS 和 Android。
-* [Azure IoT SDK 平台支持](iot-hub-device-sdk-platform-support.md)
+* [IoT 设备开发文档](../iot-develop/about-iot-sdks.md)
 
 此 IoT 中心开发人员指南中的其他参考主题包括：
 

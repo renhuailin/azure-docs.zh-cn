@@ -1,14 +1,14 @@
 ---
 title: 为资源上的数组属性创作策略
 description: 了解如何使用数组参数和数组语言表达式，如何计算 [*] 别名，以及如何使用 Azure Policy 定义规则追加元素。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 26fdc6c5b5dd09e77413285a8632d91e580e7162
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: aefa5439e7176457494d6c21ffb9aa79acc4fd3c
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752626"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323867"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>为 Azure 资源上的数组属性创作策略
 
@@ -236,7 +236,7 @@ Azure Policy 可以使用[别名](../concepts/definition-structure.md#aliases)�
 
 ### <a name="referencing-array-fields"></a>引用数组字段
 
-数组资源属性通常由两种不同类型的别名表示。 一种是一个“普通”别名，另一种是附加了 `[*]` 的[数组别名](../concepts/definition-structure.md#understanding-the--alias)：
+数组资源属性由两种不同类型的别名表示。 一种是一个“普通”别名，另一种是附加了 `[*]` 的[数组别名](../concepts/definition-structure.md#understanding-the--alias)：
 
 - `Microsoft.Test/resourceType/stringArray`
 - `Microsoft.Test/resourceType/stringArray[*]`

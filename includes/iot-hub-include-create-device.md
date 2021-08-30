@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 7b022f71e197c5695876f2049ee376c3616afc6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78ad23713d1fc58d55696502dc9ff780847a8357
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "70049021"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414859"
 ---
 <!-- put the ## header in the file that includes this file -->
 
@@ -23,13 +23,15 @@ ms.locfileid: "70049021"
 
     ![在门户中创建设备标识](./media/iot-hub-include-create-device/create-identity-portal-vs2019.png)
 
-1. 在“创建设备”中，提供新设备的名称（例如 myDeviceId），然后选择“保存”。 此操作会为 IoT 中心创建设备标识。
+1. 在“创建设备”中，提供新设备的名称（例如 myDeviceId），然后选择“保存”。 此操作会为 IoT 中心创建设备标识。 让“自动生成密钥”保持选中状态，这样将自动生成主密钥和辅助密钥。
 
    ![添加新设备](./media/iot-hub-include-create-device/create-a-device-vs2019.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-1. 创建设备后，在“IoT 设备”窗格的列表中打开该设备。 复制“主连接字符串”以供稍后使用。
+1. 创建设备后，在“IoT 设备”窗格的列表中打开该设备。 复制“主连接字符串”。 设备代码使用此连接字符串与中心通信。 
+
+    默认情况下，密钥和连接字符串进行了掩码处理，因为它们是敏感信息。 如果单击眼睛图标，它们将按下图所示显示。 使用“复制”按钮进行复制时，无需显示它们。
 
     ![设备连接字符串](./media/iot-hub-include-create-device/device-details-vs2019.png)
 

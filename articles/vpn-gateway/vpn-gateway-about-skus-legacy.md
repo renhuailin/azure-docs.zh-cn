@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f1325141ecd9220e3564c402c5fa75fa690fe29
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: bb48d72c892723e7b6c3ca2009ea874f788bb5ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110661960"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729595"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>使用虚拟网络网关 SKU（旧式 SKU）
 
@@ -39,7 +39,7 @@ ms.locfileid: "110661960"
 
 ### <a name="resource-manager"></a>Resource Manager
 
-若要使用 PowerShell 重设资源管理器部署模型的网关大小，请使用以下命令：
+若要使用 PowerShell 重设[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)的网关大小，请使用以下命令：
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg

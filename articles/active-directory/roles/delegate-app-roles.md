@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dd14da92eedc14a3da8e9eb0a29b08d96acd204
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 26373d9bfb0c946f412358c16b97f882e2cfba53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790776"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439117"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用注册权限
 
@@ -61,9 +61,12 @@ ms.locfileid: "110790776"
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>向企业应用程序分配所有者
 
 1. 使用符合组织中应用程序管理员或云应用程序管理员条件的帐户登录到 [Azure AD 组织](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
-1. 在组织的[应用注册页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)上，选择某个应用以打开该应用的“概述”页。
+1. 在组织的[“企业应用程序”页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)上，选择一个应用以打开该应用的概述页面。
 1. 选择“所有者”，以查看应用所有者列表。
 1. 选择“添加”，以选择一个或多个要添加到应用的所有者。
+
+> [!NOTE]
+> 如果用户将“[限制对 Azure AD 管理门户的访问](../fundamentals/users-default-permissions.md)”设置为“是”，则非管理员用户将无法使用 Azure 门户管理其拥有的应用程序。
 
 > [!IMPORTANT]
 > 用户和服务主体可以是应用程序注册的所有者。 只有用户才能是企业应用程序的所有者。 无法将组分配为任何应用程序的所有者。
@@ -96,7 +99,7 @@ Azure AD 提供一组内置的管理员角色，用于授予 Azure AD 中所有�
 
 创建和使用用于委托应用程序管理权的自定义角色时的提示：
 - 自定义角色只会在 Azure 门户的“最近的应用注册”边栏选项卡授予访问权限。 他们不会在“旧应用注册”边栏选项卡中授予访问权限。
-- 当“限制访问 Azure AD 管理门户”用户设置指定为“是”时，自定义角色不会授予对 Azure 门户的访问权限。
+- 当“[限制访问 Azure AD 管理门户](../fundamentals/users-default-permissions.md)”用户设置指定为“是”时，自定义角色不会授予对 Azure 门户的访问权限。
 - 用户有权使用角色分配访问的应用注册只会显示在“应用注册”页上的“所有应用程序”选项卡中。 它们不会显示在“拥有的应用程序”选项卡中。
 
 若要详细了解自定义角色的基础知识，请参阅[自定义角色概述](custom-overview.md)，以及[创建自定义角色](custom-create.md)和[分配角色](custom-assign-powershell.md)。

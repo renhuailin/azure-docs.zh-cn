@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42326cd4080fe6737fd14f8dc2c5a2028c20077f
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 890bf61eb98218df53a6aa66c9e8562881b8d2df
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854533"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895591"
 ---
 # <a name="ad-fs-sign-ins-in-azure-ad-with-connect-health---preview"></a>使用 Connect Health 在 Azure AD 中进行 AD FS 登录 - 预览
 
@@ -102,6 +102,9 @@ Azure AD Connect Health for AD FS 代理会关联 AD FS 中的事件 ID（具体
 
 ***某些 AD FS 登录操作的应用程序 ID/名称中为何显示 NotSet 或 NotApplicable？***
 对于 OAuth 登录操作，AD FS 登录报表中的“应用程序 ID”字段会显示 OAuth ID。在 WS-Fed、WS-Trust 登录方案中，“应用程序 ID”将是 NotSet 或 NotApplicable，“资源 ID”字段中将显示“资源 ID”和“信赖方”标识符。
+
+为什么我看到“资源 ID”和“资源名称”字段为“未设置”？
+在某些错误情况下，例如“用户名和密码错误”和基于 WSTrust 的失败登录中，“ResourceId/名称”字段将设置为“未设置”。
 
 ***报告功能预览版是否存在任何其他已知问题？***
 报告功能存在这样一个已知问题：不管登录方法是什么，“基本信息”选项卡中的“身份验证要求”字段中都会填充用于 AD FS 登录的单重身份验证值。 此外，“身份验证详细信息”选项卡将在“要求”字段下显示“主要或次要”，我们正在开发修复程序来区分“主要”或“次要”身份验证类型。

@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud 故障排除指南 | Microsoft Docs
 description: Azure Spring Cloud 的故障排除指南
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 09/08/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 13f61378b16f41d80b5622a41a55c103247b381b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 98f9a87825a2eb0bbae36255111ba4b019fb4750
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968987"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015388"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>排查常见的 Azure Spring Cloud 问题
 
@@ -28,7 +28,8 @@ ms.locfileid: "111968987"
 
 > “org.springframework.context.ApplicationContextException：无法启动 Web 服务器”
 
-该消息表示可能存在以下两个问题之一： 
+该消息表示可能存在以下两个问题之一：
+
 * 某个 bean 或其依赖项之一缺失。
 * 某个 bean 属性缺失或无效。 在这种情况下，可能会显示“java.lang.IllegalArgumentException”。
 
@@ -38,7 +39,6 @@ ms.locfileid: "111968987"
 
 若要修复此错误，请转到 MySql 实例的 `server parameters`，并将 `time_zone` 值从 SYSTEM 更改为 +0:00 。
 
-
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>我的应用程序崩溃或引发意外错误
 
 调试应用程序崩溃时，请先检查应用程序的运行状态和发现状态。 为此，请在 Azure 门户中转到“应用管理”，确保所有应用程序的状态为“正在运行”和“已启动”  。
@@ -47,30 +47,36 @@ ms.locfileid: "111968987"
 
 * 如果发现状态为“已启动”，请转到“指标”检查应用程序的运行状况。 检查以下指标：
 
+   - `TomcatErrorCount` (_tomcat.global.error_)：
 
-  - `TomcatErrorCount` (_tomcat.global.error_)：所有 Spring 应用程序异常在这里进行计数。 如果此数字很大，请转到“Azure Log Analytics”检查应用程序日志。
+      所有 Spring 应用程序异常都会在这里计数。 如果此数字很大，请转到“Azure Log Analytics”检查应用程序日志。
 
-  - `AppMemoryMax` (_jvm.memory.max_)：应用程序可用的最大内存量。 数值可能未定义，或者即使已定义，也可能会随时间而变化。 如果已定义，则已使用和已提交的内存量始终小于或等于最大值。但如果分配时尝试增加已用内存，以使已使用内存量大于已提交内存量，则即使仍满足已使用内存量小于最大值，内存分配也可能会失败，并显示 `OutOfMemoryError` 消息 。 在这种情况下，请尝试通过使用 `-Xmx` 参数提高最大堆栈大小。
+   - `AppMemoryMax` (_jvm.memory.max_)：
 
-  - `AppMemoryUsed` (_jvm.memory.used_)：应用程序目前使用的内存量（以字节为单位）。 对于正常负载的 Java 应用程序，此指标系列将形成一个“锯齿”模式，即内存使用量先是小幅度地平稳增减，然后突然大幅度下降。此模式会重复。 发生此指标系列是因为在 Java 虚拟机中进行的垃圾回收，其中的收集操作体现在“锯齿”模式的下降部分。
-    
+      应用程序可用的最大内存量。 数值可能未定义，或者即使已定义，也可能会随时间而变化。 如果已定义，则已使用和已提交的内存量始终小于或等于最大值。但如果分配时尝试增加已用内存，以使已使用内存量大于已提交内存量，则即使仍满足已使用内存量小于最大值，内存分配也可能会失败，并显示 `OutOfMemoryError` 消息 。 在这种情况下，请尝试通过使用 `-Xmx` 参数提高最大堆栈大小。
+
+   - `AppMemoryUsed` (_jvm.memory.used_)：
+
+      应用程序目前使用的内存量（以字节为单位）。 对于正常负载的 Java 应用程序，此指标系列将形成一个“锯齿”模式，即内存使用量先是小幅度地平稳增减，然后突然大幅度下降。此模式会重复。 发生此指标系列是因为在 Java 虚拟机中进行的垃圾回收，其中的收集操作体现在“锯齿”模式的下降部分。
+
     此指标对于帮助识别内存问题至关重要，例如：
+
     * 最开始时的内存爆炸。
     * 特定逻辑路径的浪涌内存分配。
     * 渐进式的内存泄漏。
-  有关详细信息，请参阅[指标](./concept-metrics.md)。
-  
+
+   有关详细信息，请参阅[指标](./concept-metrics.md)。
+
 * 如果应用程序无法启动，请验证应用程序是否具有有效的 jvm 参数。 如果 JVM 内存设置过高，日志中可能会显示以下错误消息：
 
-  >“所需的内存 2728741K 大于可供分配的 2000M”
-
-
+   > “所需的内存 2728741K 大于可供分配的 2000M”
 
 若要了解有关 Azure Log Analytics 的更多信息，请参阅 [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/logs/log-analytics-tutorial.md)。
 
 ### <a name="my-application-experiences-high-cpu-usage-or-high-memory-usage"></a>我的应用程序的 CPU 使用率或内存使用率过高
 
 如果应用程序的 CPU/内存使用率较高，则表示出现了以下两个问题之一：
+
 * 所有应用实例的 CPU/内存使用率较高。
 * 部分应用实例的 CPU/内存使用率较高。
 
@@ -167,12 +173,13 @@ Azure Spring Cloud 服务实例的名称将用于请求 `azureapps.io` 下的子
 
 ### <a name="i-want-to-inspect-my-applications-environment-variables"></a>我想要检查应用程序的环境变量
 
-环境变量会通知 Azure Spring Cloud 框架，确保 Azure 了解在何处以何种方式配置构成应用程序的服务。 在排查潜在问题的过程中，必须执行的第一步是确保环境变量正确。  可以使用 Spring Boot Actuator 终结点来查看环境变量。  
+环境变量会通知 Azure Spring Cloud 框架，确保 Azure 了解在何处以何种方式配置构成应用程序的服务。 在排查潜在问题的过程中，必须执行的第一步是确保环境变量正确。  可以使用 Spring Boot Actuator 终结点来查看环境变量。
 
 > [!WARNING]
 > 此过程使用测试终结点公开环境变量。  如果测试终结点可以公开访问，或者你已将域名分配给应用程序，请勿继续操作。
 
-1. 转到  `https://<your application test endpoint>/actuator/health` 。  
+1. 转到  `https://<your application test endpoint>/actuator/health` 。
+
     - 类似于 `{"status":"UP"}` 的响应表明终结点已启用。
     - 如果响应为负面，请在 POM.xml 文件中包括以下依赖项：
 
@@ -183,7 +190,7 @@ Azure Spring Cloud 服务实例的名称将用于请求 `azureapps.io` 下的子
             </dependency>
         ```
 
-1. 在启用 Spring Boot Actuator 终结点的情况下，请转到 Azure 门户并找到应用程序的配置页。  添加名为 `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` 和值为 `*` 的环境变量。 
+1. 在启用 Spring Boot Actuator 终结点的情况下，请转到 Azure 门户并找到应用程序的配置页。  添加名为 `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` 且值为 `*` 的环境变量。
 
 1. 重启应用程序。
 
@@ -212,7 +219,7 @@ Azure Spring Cloud 服务实例的名称将用于请求 `azureapps.io` 下的子
 
 转到“应用管理”，确保应用程序的状态为“正在运行”和“已启动” 。
 
-检查应用程序包中是否启用了 JMX。 可以使用配置属性 `spring.jmx.enabled=true` 启用此功能。  
+检查应用程序包中是否启用了 JMX。 可以使用配置属性 `spring.jmx.enabled=true` 启用此功能。
 
 检查应用程序包中是否启用了 `spring-boot-actuator` 依赖项，以及该项是否成功启动。
 

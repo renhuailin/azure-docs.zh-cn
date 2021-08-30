@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 09/29/2020
-ms.openlocfilehash: 389460e79dbcc9c6ba9480540d7f361382ef5987
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 07/27/2021
+ms.openlocfilehash: a3c52783cf88e9890ffa1a96feb3a332e43c5e1c
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112021080"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860824"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标?
 
@@ -24,7 +24,7 @@ ms.locfileid: "112021080"
 
 1. 首先，基于少量数据进行开发和试验。 在此阶段，请使用本地环境（如本地计算机或基于云的虚拟机 (VM)）作为计算目标。
 1. 通过使用其中一种[训练计算目标](#train)，纵向扩展到更多的数据或进行分布式训练。
-1. 在模型准备就绪后，请使用其中一种[部署计算目标](#deploy)将该模型部署到 Web 托管环境或 IoT 设备。
+1. 模型准备就绪后，将其部署到具有这些[部署计算目标](#deploy)之一的 Web 托管环境。
 
 你用于计算目标的计算资源附加到[工作区](concept-workspace.md)。 本地计算机以外的计算资源由工作区的用户共享。
 
@@ -52,10 +52,9 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 可以通过以下方法创建 Azure 机器学习计算实例或计算群集：
 
 * [Azure 机器学习工作室](how-to-create-attach-compute-studio.md)。
-* Python SDK 和 CLI：
+* Python SDK 和 Azure CLI：
     * [计算实例](how-to-create-manage-compute-instance.md)。
     * [计算群集](how-to-create-attach-compute-cluster.md)。
-* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)（预览版）。
 * Azure 资源管理器模板。 有关示例模板，请参阅[创建 Azure 机器学习计算群集](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-amlcompute)。
 * [Azure CLI 的机器学习扩展](reference-azure-machine-learning-cli.md#resource-management)。
 
@@ -64,7 +63,7 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 
 |功能  |计算群集  |计算实例  |
 |---------|---------|---------|
-|单节点或多节点群集     |    **&check;**       |         |
+|单节点或多节点群集     |    **&check;**       |    单节点群集     |
 |每次提交运行时自动缩放     |     **&check;**      |         |
 |自动化群集管理和作业计划     |   **&check;**        |     **&check;**      |
 |为 CPU 和 GPU 资源提供支持     |  **&check;**         |    **&check;**       |
@@ -107,8 +106,8 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 | [NDv2](../virtual-machines/ndv2-series.md) | 需要审批。 | GPU | 计算群集和实例 |
 | [NV](../virtual-machines/nv-series.md) | 无。 | GPU | 计算群集和实例 |
 | [NVv3](../virtual-machines/nvv3-series.md) | 需要审批。 | GPU | 计算群集和实例 |
-| [NCT4_v3](../virtual-machines/nct4-v3-series.md) | 需要审批。 | GPU | 计算群集和实例 |
-| [NDA100_v4](../virtual-machines/nda100-v4-series.md) | 需要审批。 | GPU | 计算群集和实例 |
+| [NCasT4_v3](../virtual-machines/nct4-v3-series.md) | 需要审批。 | GPU | 计算群集和实例 |
+| [NDasrA100_v4](../virtual-machines/nda100-v4-series.md) | 需要审批。 | GPU | 计算群集和实例 |
 
 
 虽然 Azure 机器学习支持这些 VM 系列，但它们可能并非在所有 Azure 区域中均可用。 若要检查 VM 系列是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
@@ -152,7 +151,20 @@ Azure 机器学习计算提供已隔离到特定硬件类型并专用于单个�
 
 ## <a name="unmanaged-compute"></a>非托管计算
 
-非托管计算目标不是由 Azure 机器学习托管的。 请在 Azure 机器学习外部创建此类型的计算目标，然后将其附加到工作区。 对于非托管计算资源，可能需要执行额外的步骤才能保持或提高机器学习工作负荷的性能。
+非托管计算目标不是由 Azure 机器学习托管的。 请在 Azure 机器学习外部创建此类型的计算目标，然后将其附加到工作区。 对于非托管计算资源，可能需要执行额外的步骤才能保持或提高机器学习工作负荷的性能。 
+
+Azure 机器学习支持以下非托管计算类型：
+
+* 本地计算机
+* 远程虚拟机
+* Azure HDInsight
+* Azure Batch
+* Azure Databricks
+* Azure Data Lake Analytics
+* Azure 容器实例
+* Azure Kubernetes 服务和启用了 Azure Arc 的 Kubernetes（预览版）
+
+有关详细信息，请参阅[为模型训练和部署设置计算目标](how-to-attach-compute-targets.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 63f5b8be29d3b1e9468016afba618261684e1bca
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: ef855102f4877d26c1b6d16d73e99719e3e97ed1
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495855"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861610"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例的特性和功能
 
@@ -26,19 +26,14 @@ ms.locfileid: "110495855"
 - 多模型功能 - [图形处理](/sql/relational-databases/graphs/sql-graph-overview)、[JSON 数据](/sql/relational-databases/json/json-data-sql-server)、[OPENXML](/sql/t-sql/functions/openxml-transact-sql)、[空间](/sql/relational-databases/spatial/spatial-data-sql-server)、[OPENJSON](/sql/t-sql/functions/openjson-transact-sql) 和 [XML 索引](/sql/t-sql/statements/create-xml-index-transact-sql)。
 
 
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
-
-## <a name="features-of-azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例的特性
-
-###  <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS High Availability  
+## <a name="rdbms-high-availability"></a><a name="RDBMSHA"></a> RDBMS High Availability  
   
 |Feature|已启用 Azure Arc 的 SQL 托管实例|
 |-------------|----------------|
-|Always On 故障转移群集实例<sup>1</sup>| 不适用。 可用的类似功能 |
-|Always On 可用性组<sup>2</sup>|已计划 HA 功能。|
-|基本可用性组 <sup>2</sup>|已计划 HA 功能。|
-|最小副本提交可用性组 <sup>2</sup>|已计划 HA 功能。|
+|Always On 故障转移群集实例<sup>1</sup>| 不适用。 可用的类似功能。|
+|Always On 可用性组<sup>2</sup>|“业务关键”服务层级。 处于预览状态。|
+|基本可用性组 <sup>2</sup>|不适用。 可用的类似功能。|
+|最小副本提交可用性组 <sup>2</sup>|“业务关键”服务层级。 处于预览状态。|
 |无群集的可用性组|是|
 |备份数据库 | 是 - `COPY_ONLY` 请参阅 [BACKUP - (Transact-SQL)](/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current&preserve-view=true)|
 |备份压缩|是|
@@ -48,18 +43,15 @@ ms.locfileid: "110495855"
 |数据库快照|是|
 |快速恢复|是|
 |热插拔内存和 CPU|是|
-|日志传送|是| 
+|日志传送|目前不可用。|
 |联机页面和文件还原|是|
 |联机索引|是|
 |联机架构更改|是|
 |可恢复的联机索引重新生成|是|
 
-<sup>1</sup> 在 pod 失败的情况下，新的 SQL 托管实例将启动并附加到包含相应数据的永久性卷。 [在此处了解有关 Kubernetes 永久性卷的详细信息](https://kubernetes.io/docs/concepts/storage/persistent-volumes)。
+<sup>1</sup> 在出现 pod 失败的情况下，新的 SQL 托管实例将启动并附加到包含相应数据的永久性卷。 [在此处了解有关 Kubernetes 永久性卷的详细信息](https://kubernetes.io/docs/concepts/storage/persistent-volumes)。
 
-<sup>2</sup> 未来的版本将提供 AG 功能。 
-
-
-###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS Scalability and Performance  
+## <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS Scalability and Performance  
 
 | Feature | 已启用 Azure Arc 的 SQL 托管实例 |
 |--|--|
@@ -81,7 +73,7 @@ ms.locfileid: "110495855"
 | 多语句表值函数的交错执行 | 是 |
 | 大容量插入改进 | 是 |
 
-###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS Security
+## <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS Security
 
 | Feature | 已启用 Azure Arc 的 SQL 托管实例 |
 |--|--|
@@ -95,8 +87,11 @@ ms.locfileid: "110495855"
 | 用户定义的角色 | 是 |
 | 包含的数据库 | 是 |
 | 备份加密 | 是 |
+| SQL Server 身份验证 | 是 |
+| Azure Active Directory 身份验证 | 否 |
+| Windows 身份验证 | 否 |
 
-###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS Manageability  
+## <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS Manageability  
 
 | Feature | 已启用 Azure Arc 的 SQL 托管实例 |
 |--|--|
@@ -142,9 +137,9 @@ ms.locfileid: "110495855"
 | **工具** | 已启用 Azure Arc 的 SQL 托管实例|
 | --- | --- | --- |
 | Azure 门户 <sup>1</sup> | 否 |
-| Azure CLI | 否 |
+| Azure CLI | 是 |
 | [Azure Data Studio](/sql/azure-data-studio/what-is) | 是 |
-| Azure PowerShell | 是 |
+| Azure PowerShell | 否 |
 | [BACPAC 文件（导出）](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | 是 |
 | [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | 是 |
 | [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | 是 |
@@ -152,8 +147,9 @@ ms.locfileid: "110495855"
 | [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | 是 |
 | [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | 是 |
 
-<sup>1</sup> Azure 门户仅用于在预览期间查看只读模式下的已启用 Azure Arc 的 SQL 托管实例。
+<sup>1</sup> Azure 门户可用于创建、查看和删除已启用 Azure Arc 的 SQL 托管实例。  目前，无法通过 Azure 门户进行更新。
 
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
 
 ### <a name="unsupported-features--services"></a><a name="Unsupported"></a> 不受支持的功能和服务
 

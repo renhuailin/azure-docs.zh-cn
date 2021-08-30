@@ -3,23 +3,19 @@ title: 连接时启动虚拟机 - Azure
 description: 如何配置连接时启动虚拟机功能。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 05/21/2021
+ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7e4ca9a6cfc87844bf74131b145c19aecd964554
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 301a2b0626b6dd40f90a8b693e3284c12d948fa1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752128"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728459"
 ---
-# <a name="start-virtual-machine-on-connect-preview"></a>连接时启动虚拟机（预览版）
+# <a name="start-virtual-machine-on-connect"></a>连接时启动虚拟机
 
-> [!IMPORTANT]
-> 连接时启动 VM 功能目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-通过“连接时启动虚拟机 (VM)”功能（预览版），你可以让最终用户只在需要 VM 时才将其打开，从而节省成本。 然后，你可以在不需要 VM 时将其关闭。
+通过“连接时启动虚拟机 (VM)”功能，你可以让最终用户只在需要 VM 时才将其打开，从而节省成本。 然后，你可以在不需要 VM 时将其关闭。
 
 >[!NOTE]
 >Azure 虚拟桌面（经典）不支持此功能。
@@ -30,12 +26,13 @@ ms.locfileid: "111752128"
 
 以下远程桌面客户端支持“连接时启动 VM”功能：
 
-- [Web 客户端](connect-web.md)
-- [Windows 客户端（1.2748 或更高版本）](connect-windows-7-10.md)
-- [Android 客户端（版本 10.0.10 或更高版本）](connect-android.md)
-- [macOS 客户端（版本 10.6.4 或更高版本）](connect-macos.md)
-
-可以在[技术社区论坛](https://aka.ms/wvdtc)中查看有关更新和客户端支持的公告。
+- [Web 客户端](./user-documentation/connect-web.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Windows 客户端（1.2.2061 或更高版本）](./user-documentation/connect-windows-7-10.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Android 客户端（版本 10.0.10 或更高版本）](./user-documentation/connect-android.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [macOS 客户端（版本 10.6.4 或更高版本）](./user-documentation/connect-macos.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [iOS 客户端（10.2.5 或更高版本）](./user-documentation/connect-ios.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [Microsoft Store 客户端（10.2.2005.0 或更高版本）](./user-documentation/connect-microsoft-store.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)
+- [瘦客户端支持](./user-documentation/linux-overview.md?toc=/azure/virtual-desktop/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json)中列出的瘦客户端
 
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>为连接时启动 VM 创建自定义角色
 
@@ -69,7 +66,7 @@ ms.locfileid: "111752128"
 
 2. 选择刚刚创建的角色。
 
-3. 在搜索栏中，输入并选择“Azure 虚拟桌面”。
+3. 在搜索栏中，输入并选择“Windows 虚拟桌面”（这将很快更新为“Azure 虚拟桌面”）。
 
       >[!NOTE]
       >如果已部署 Azure 虚拟桌面（经典），则你可能会看到两个应用。 将角色分配到这两个应用。
@@ -79,30 +76,33 @@ ms.locfileid: "111752128"
 
 ### <a name="create-a-custom-role-with-a-json-file-template"></a>使用 JSON 文件模板创建自定义角色
 
-如果你正在使用 JSON 文件创建自定义角色，以下示例显示了可以使用的基本模板。 请确保将订阅 ID 值替换为要将角色分配到的订阅 ID。
+如果你正在使用 JSON 文件创建自定义角色，以下示例显示了可以使用的基本模板。 请确保将 AssignableScopes 中的订阅 ID 值替换为要将角色分配到的订阅 ID。
 
 ```json
 {
-    "properties": {
-        "roleName": "start VM on connect",
-        "description": "Friendly description.",
-        "assignableScopes": [
-            "/subscriptions/<SubscriptionID>"
-        ],
-        "permissions": [
-            {
-                "actions": [
-                    "Microsoft.Compute/virtualMachines/start/action",
-                    "Microsoft.Compute/virtualMachines/read"
-                ],
-                "notActions": [],
-                "dataActions": [],
-                "notDataActions": []
-            }
-        ]
-    }
+  "Name": "Start VM on connect (Custom)",
+  "IsCustom": true,
+  "Description": "Start VM on connect with AVD (Custom)",
+  "Actions": [
+    "Microsoft.Compute/virtualMachines/start/action",
+    "Microsoft.Compute/virtualMachines/read"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/subscriptions/00000000-0000-0000-0000-000000000000"
+  ]
 }
 ```
+
+要使用 JSON 模板，请保存 JSON 文件，将相关订阅信息添加到“可分配范围”，然后在 PowerShell 中运行以下 cmdlet：
+
+```powershell
+New-AzRoleDefinition -InputFile "C:\temp\filename"
+```
+
+要详细了解创建自定义角色，请参阅[使用 Azure PowerShell 创建或更新 Azure 自定义角色](../role-based-access-control/custom-roles-powershell.md#create-a-custom-role-with-json-template)。
 
 ## <a name="configure-the-start-vm-on-connect-feature"></a>配置连接时启动 VM 功能
 

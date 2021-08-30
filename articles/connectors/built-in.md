@@ -3,22 +3,26 @@ title: Azure 逻辑应用的内置触发器和操作
 description: 使用内置触发器和操作创建集成应用、数据、服务和系统的自动工作流，以控制工作流并使用 Azure 逻辑应用管理数据。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: a718e7c7b771f66ed8337e53fec49e5939ab0442
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 06/16/2021
+ms.openlocfilehash: c98263500651447ddc4a9962f2e1ac10d9927502
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315752"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113664928"
 ---
 # <a name="built-in-triggers-and-actions-for-logic-apps"></a>逻辑应用的内置触发器和操作
 
+通过[内置触发器和操作](apis-list.md)，你可以执行以下操作：[控制工作流的计划和结构](#control-workflow)、[运行自己代码](#run-code-from-workflows)、[管理或操作数据](#manage-or-manipulate-data)以及完成工作流中的其他任务。 不同于[托管连接器](managed.md)，许多内置操作没有与特定服务、系统或协议相关联。 例如，你可以使用“定期”触发器启动计划上的几乎任何工作流。 或者可以使用“请求”触发器，使工作流在被调用以前都保持等待状态。 所有内置操作都在逻辑应用服务中以本机方式运行，并且大多数都不要求你在使用以前创建连接。
 
-通过[内置触发器和操作](apis-list.md)，你可以执行以下操作：[控制工作流的计划和结构](#control-workflow)、[运行自己代码](#run-code-from-workflows)、[管理或操作数据](#manage-or-manipulate-data)以及完成工作流中的其他任务。 不同于[托管连接器](managed.md)，许多内置操作没有与特定服务、系统或协议相关联。 例如，你可以使用“定期”触发器启动计划上的几乎任何工作流。 或者可以使用“请求”触发器，使工作流在被调用以前都保持等待状态。 所有内置操作都在逻辑应用服务中以本机方式运行，并且大多数都不要求你在使用以前创建连接。 
+对于少数服务、系统和协议，例如 Azure 服务总线、Azure Functions、Azure Blob、Azure 应用服务、Azure API 管理、SQL、AS2，逻辑应用也提供内置操作。 数量和范围因创建的是多租户逻辑应用还是单租户逻辑应用而有所不同。 在少数情况下，内置版本和托管连接器版本都可用。 在大多数情况下，内置版本提供更好的性能、更全面的功能以及更实惠的价格。 例如，若要[使用 AS2 协议交换 B2B 消息](../logic-apps/logic-apps-enterprise-integration-as2.md)，请选择内置版本，除非你需要仅在托管连接器版本（已弃用）中提供的跟踪功能。
 
-逻辑应用还为 Azure Functions、Azure 应用服务、Azure API 管理、AS2 等少数服务、系统和协议提供内置操作。 这一选择范围因创建的是多租户逻辑应用还是单租户逻辑应用而异。 例如，如果创建单租户逻辑应用，则内置操作可用于 Azure 服务总线、Azure 事件中心、SQL Server 和 MQ。 在少数情况下，内置版本和托管连接器版本都可用。 在大多数情况下，内置版本提供更好的性能、更全面的功能以及更实惠的价格。 例如，若要[使用 AS2 协议交换 B2B 消息](../logic-apps/logic-apps-enterprise-integration-as2.md)，请选择内置版本，除非你需要仅在托管连接器版本（已弃用）中提供的跟踪功能。
+数量和范围因创建的是多租户逻辑应用还是单租户逻辑应用而有所不同。 在少数情况下，内置版本和托管连接器版本都可用。 在大多数情况下，内置版本提供更好的性能、更全面的功能以及更实惠的价格。 例如，若要[使用 AS2 协议交换 B2B 消息](../logic-apps/logic-apps-enterprise-integration-as2.md)，请选择内置版本，除非你需要仅在托管连接器版本（已弃用）中提供的跟踪功能。
+
+
+例如，如果创建单租户逻辑应用，则内置操作可用于 Azure 服务总线、Azure 事件中心、SQL Server 和 MQ。 在少数情况下，内置版本和托管连接器版本都可用。 在大多数情况下，内置版本提供更好的性能、更全面的功能以及更实惠的价格。 例如，若要[使用 AS2 协议交换 B2B 消息](../logic-apps/logic-apps-enterprise-integration-as2.md)，请选择内置版本，除非你需要仅在托管连接器版本（已弃用）中提供的跟踪功能。
 
 以下列表仅介绍了部分可通过[内置触发器和操作](#understand-triggers-and-actions)完成的任务：
 
@@ -53,18 +57,6 @@ ms.locfileid: "108315752"
         [**延迟截止时间**][schedule-delay-until-doc]：在指定的日期和时间之前暂停工作流。
     :::column-end:::
     :::column:::
-        [![逻辑应用中的“批处理”图标][batch-icon]][batch-doc]
-        \
-        \
-        [**批处理**][batch-doc]
-        \
-        \
-        [**批处理消息**][batch-doc]：触发批量处理消息的工作流。
-        \
-        \
-        [**发送要批量处理的消息**][batch-doc]：调用当前以“批处理消息”触发器开头的现有工作流。
-    :::column-end:::
-    :::column:::
         [![逻辑应用中的“HTTP”图标][http-icon]][http-doc]
         \
         \
@@ -89,6 +81,18 @@ ms.locfileid: "108315752"
         \
         \
         [**响应**][http-request-doc]：响应由同一工作流中的“收到 HTTP 请求时”触发器接收的请求。
+    :::column-end:::
+    :::column:::
+        [![逻辑应用中的“批处理”图标][batch-icon]][batch-doc]
+        \
+        \
+        [**批处理**][batch-doc]
+        \
+        \
+        [**批处理消息**][batch-doc]：触发批量处理消息的工作流。
+        \
+        \
+        [**发送要批量处理的消息**][batch-doc]：调用当前以“批处理消息”触发器开头的现有工作流。
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -123,6 +127,12 @@ ms.locfileid: "108315752"
         调用其他以名为“收到 HTTP 请求时”的“请求”触发器开头的工作流。
     :::column-end:::
     :::column:::
+        [![逻辑应用中的“SQL Server”图标][sql-server-icon]][sql-server-doc]
+        \
+        \
+        [**SQL Server**][sql-server-doc] <br>（仅限单租户）    \
+        \
+        连接到本地 SQL Server 或云中的 Azure SQL 数据库，以便可以管理记录、运行存储过程或执行查询。 <p>**注意**：单租户 Azure 逻辑应用提供 SQL 内置和托管连接器操作，而多租户 Azure 逻辑应用仅提供托管连接器操作。 <p>有关详细信息，请参阅[适用于 Azure 逻辑应用的单租户与多租户和集成服务环境](../logic-apps/single-tenant-overview-compare.md)。
     :::column-end:::
 :::row-end:::
 
@@ -320,9 +330,10 @@ ms.locfileid: "108315752"
 > [!div class="nextstepaction"]
 > [创建可从逻辑应用调用的自定义 API](../logic-apps/logic-apps-create-api-app.md)
 
-<!-- Built-ins icons -->
+<!-- Built-in icons -->
 [azure-api-management-icon]: ./media/apis-list/azure-api-management.png
 [azure-app-services-icon]: ./media/apis-list/azure-app-services.png
+[azure-blob-storage-icon]: ./media/apis-list/azure-blob-storage.png
 [azure-functions-icon]: ./media/apis-list/azure-functions.png
 [azure-logic-apps-icon]: ./media/apis-list/azure-logic-apps.png
 [batch-icon]: ./media/apis-list/batch.png
@@ -338,18 +349,20 @@ ms.locfileid: "108315752"
 [inline-code-icon]: ./media/apis-list/inline-code.png
 [schedule-icon]: ./media/apis-list/recurrence.png
 [scope-icon]: ./media/apis-list/scope.png
+[sql-server-icon]: ./media/apis-list/sql.png
 [switch-icon]: ./media/apis-list/switch.png
 [terminate-icon]: ./media/apis-list/terminate.png
 [until-icon]: ./media/apis-list/until.png
 [variables-icon]: ./media/apis-list/variables.png
 
-
 <!--Built-in doc links-->
 [azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "创建 Azure API 管理服务实例用于管理和发布 API"
 [azure-app-services-doc]: ../logic-apps/logic-apps-custom-api-host-deploy-call.md "将逻辑应用与应用服务 API 应用集成"
+[azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "使用 Azure Blob 存储连接器管理 Blob 容器中的文件"
 [azure-functions-doc]: ../logic-apps/logic-apps-azure-functions.md "将逻辑应用与 Azure Functions 集成"
 [batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "以组或批的形式处理消息"
 [condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "评估条件并根据条件是 true 还是 false 运行不同的操作"
+[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "执行数据操作，如筛选数组或创建 CSV 和 HTML 表"
 [for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "对数组中的每个项执行相同的操作"
 [http-doc]: ./connectors-native-http.md "从逻辑应用调用 HTTP 或 HTTPS 终结点"
 [http-request-doc]: ./connectors-native-reqres.md "在逻辑应用中接收 HTTP 请求"
@@ -365,8 +378,8 @@ ms.locfileid: "108315752"
 [schedule-recurrence-doc]:  ./connectors-native-recurrence.md "按重复计划运行逻辑应用"
 [schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "运行需要处理连续区块中的数据的逻辑应用"
 [scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "将操作组织成组，以便在该组中的操作完成运行后获取这些操作的自身状态"
+[sql-server-doc]: ./connectors-create-api-sqlazure.md "连接到 Azure SQL 数据库或 SQL Server。在 SQL 数据库表中创建、更新、获取和删除条目"
 [switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "将操作组织成分配有唯一值的案例。仅运行其值与表达式、对象或令牌的结果相匹配的案例。如果不存在任何匹配项，则运行默认案例"
 [terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "停止或取消逻辑应用的正在运行的工作流"
 [until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "重复操作，直到指定的条件为 true 或某个状态发生更改"
-[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "执行数据操作，如筛选数组或创建 CSV 和 HTML 表"
 [variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "使用变量执行操作，例如初始化、设置、递增、递减和追加到字符串或数组变量"

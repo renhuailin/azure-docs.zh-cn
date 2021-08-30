@@ -2,14 +2,14 @@
 title: 设置 Bicep 开发和部署环境
 description: 如何配置 Bicep 开发和部署环境
 ms.topic: conceptual
-ms.date: 06/04/2021
+ms.date: 07/19/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 89212841ca4f17802f6b7288b441a5f22ea2c9d6
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 297cafd074beb6c1535747be98dd664041d7b497
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537070"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453353"
 ---
 # <a name="install-bicep-tools"></a>安装 Bicep 工具
 
@@ -24,7 +24,7 @@ ms.locfileid: "111537070"
 
   要安装该扩展，请在“扩展”选项卡或 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) 中搜索“bicep”。
 
-  选择“安装”。
+  选择“安装”  。
 
   :::image type="content" source="./media/install/install-extension.png" alt-text="安装 Bicep 扩展":::
 
@@ -62,6 +62,12 @@ az bicep install
 
 ```azurecli
 az bicep upgrade
+```
+
+若要验证安装，请使用：
+
+```azurecli
+az bicep version
 ```
 
 有关更多命令，请参阅 [Bicep CLI](bicep-cli.md)。

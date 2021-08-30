@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: afcd4eb8327ff806e76b635d8be3715d93b15ed6
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 3e71dc89ccf94462f83ce07e69bc57df86ae0a72
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407698"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752376"
 ---
 # <a name="create-azure-arc-enabled-postgresql-hyperscale-using-azure-data-studio"></a>使用 Azure Data Studio 创建已启用 Azure Arc 的超大规模 PostgreSQL
 
@@ -23,25 +23,6 @@ ms.locfileid: "111407698"
 [!INCLUDE [azure-arc-common-prerequisites](../../../includes/azure-arc-common-prerequisites.md)]
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
-
-## <a name="connect-to-the-azure-arc-data-controller"></a>连接到 Azure Arc 数据控制器
-
-在创建实例之前，如果你尚未登录到 Azure Arc 数据控制器，请先登录。
-
-```console
-azdata login
-```
-
-然后，系统将提示输入要在其中创建数据控制器的命名空间，以及用于登录到控制器的用户名和密码。
-
-> 如果需要验证命名空间，可以运行 ```kubectl get pods -A``` 来获取群集上所有命名空间的列表。
-
-```console
-Username: arcadmin
-Password:
-Namespace: arc
-Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting active context to `arc`
-```
 
 ## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>仅适用于 OpenShift 用户的预备步骤和临时步骤
 
@@ -56,7 +37,7 @@ Server-group-name 是要在下一步骤中部署的服务器组的名称。
 有关 OpenShift 中 SCC 的更多详细信息，请参阅 [OpenShift 文档](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html)。
 现在可以执行下一步骤。
 
-## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
+## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 
 1. 启动 Azure Data Studio
 1. 在“连接”选项卡上，单击左上方的省略号图标并选择“新建部署”
@@ -98,7 +79,7 @@ Server-group-name 是要在下一步骤中部署的服务器组的名称。
     - 要设置日志的存储类，请指示参数 `--storage-class-logs` 或 `-scl`，后跟存储类的名称。
     - 要设置备份的存储类：在此已启用 Azure Arc 的超大规模 PostgreSQL 预览版中，可以通过两种方法设置存储类，具体取决于要执行的备份/还原操作的类型。 我们正在努力简化此体验。 你将指示存储类或卷声明装载。 卷声明装载是一对现有永久性卷声明（相同命名空间中）和卷类型（和可选元数据，具体取决于卷类型），用冒号分隔。 将在 PostgreSQL 服务器组的每个 pod 中装载永久性卷。
         - 如果要计划仅执行完整的数据库还原，请设置参数 `--storage-class-backups` 或 `-scb`，后跟存储类的名称。
-        - 如果计划同时执行完整的数据库还原和时间点还原，请设置参数 `--volume-claim-mounts` 或 `-vcm`，后跟卷声明和卷类型的名称。
+        - 如果计划同时执行完整的数据库还原和时间点还原，请设置参数 `--volume-claim-mounts` 或 `--volume-claim-mounts`，后跟卷声明和卷类型的名称。
 
 
 ## <a name="next-steps"></a>后续步骤

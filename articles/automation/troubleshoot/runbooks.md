@@ -2,15 +2,15 @@
 title: 排查 Azure 自动化 Runbook 问题
 description: 本文介绍如何排查和解决 Azure 自动化 Runbook 的问题。
 services: automation
-ms.date: 02/11/2021
+ms.date: 07/27/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref, devx-track-azurepowershell
-ms.openlocfilehash: 7964bc62aefc912a0f61744841784600575c98de
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: a7711d30a71cc5b637a1fc755609d3f5c48683d8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831215"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738619"
 ---
 # <a name="troubleshoot-runbook-issues"></a>排查 Runbook 问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "107831215"
 1. 如果 Runbook 暂停或意外失败：
 
     * 如果运行方式帐户已过期，请[续订证书](../manage-runas-account.md#cert-renewal)。
-    * 如果尝试用来启动 Runbook 的 Webhook 已过期，请[续订 Webhook](../automation-webhooks.md#renew-a-webhook)。
+    * 如果尝试用来启动 Runbook 的 Webhook 已过期，请[续订 Webhook](../automation-webhooks.md#update-a-webhook)。
     * [检查作业状态](../automation-runbook-execution.md#job-statuses)，确定当前 Runbook 状态以及导致问题的一些可能原因。
     * [将更多输出添加到](../automation-runbook-output-and-messages.md#working-with-message-streams) Runbook，以确定 Runbook 在暂停之前发生了什么情况。
     * [处理由作业引发的任何异常](../automation-runbook-execution.md#exceptions)。
@@ -47,6 +47,22 @@ ms.locfileid: "107831215"
 1. 如果混合 Runbook 辅助角色中的 Runbook 作业或环境无响应，请执行此步骤。
 
     如果在混合 Runbook 辅助角色而不是 Azure 自动化中运行 Runbook 作业，可能需要[排查混合辅助角色本身的问题](hybrid-runbook-worker.md)。
+
+## <a name="scenario-access-blocked-to-azure-storage-or-azure-key-vault-or-azure-sql"></a>场景：阻止访问 Azure 存储、Azure Key Vault 或 Azure SQL
+
+此方案使用 [Azure 存储](../../storage/common/storage-network-security.md)作为示例；但是，此信息同样适用于 [Azure Key Vault](../../key-vault/general/network-security.md) 和 [Azure SQL](../../azure-sql/database/firewall-configure.md)。
+
+### <a name="issue"></a>问题
+
+尝试从 runbook 访问 Azure 存储会导致类似于以下消息的错误：`The remote server returned an error: (403) Forbidden. HTTP Status Code: 403 - HTTP Error Message: This request is not authorized to perform this operation.`
+
+### <a name="cause"></a>原因
+
+启用了 Azure 存储上的 Azure 防火墙。
+
+### <a name="resolution"></a>解决方案
+
+在 [Azure 存储](../../storage/common/storage-network-security.md)、[Azure Key Vault](../../key-vault/general/network-security.md) 或 [Azure SQL](../../azure-sql/database/firewall-configure.md) 上启用 Azure 防火墙会阻止从 Azure 自动化 runbook 访问这些服务。 即使启用了允许受信任 Microsoft 服务的防火墙例外，访问也将被阻止，因为自动化不是受信任服务列表的一部分。 启用防火墙后，只能使用混合 Runbook 辅助角色和[虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)进行访问。
 
 ## <a name="scenario-runbook-fails-with-a-no-permission-or-forbidden-403-error"></a><a name="runbook-fails-no-permission"></a>场景：Runbook 失败并出现“无权限”或“禁止 403”错误
 
@@ -470,7 +486,7 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 
 ### <a name="resolution"></a>解决方法
 
-如果 Webhook 处于禁用状态，可以通过 Azure 门户重新启用它。 如果 Webhook 已过期，必须将其删除，然后重新创建。 如果尚未过期，只能[续订 Webhook](../automation-webhooks.md#renew-a-webhook)。 
+如果 Webhook 处于禁用状态，可以通过 Azure 门户重新启用它。 如果 Webhook 已过期，必须将其删除，然后重新创建。 如果尚未过期，只能[续订 Webhook](../automation-webhooks.md#update-a-webhook)。 
 
 ## <a name="scenario-429-the-request-rate-is-currently-too-large"></a><a name="429"></a>场景：429：当前的请求速率过大
 

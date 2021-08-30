@@ -4,17 +4,21 @@ description: 了解如何使用应用服务环境来托管独立的应用程序�
 author: ccompy
 ms.assetid: 377fce0b-7dea-474a-b64b-7fbe78380554
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 07/06/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d4cd673b5029d8379a699becd7339a265c787390
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d51fff9739ecb928ff2f11f53b58b190122d69d
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586405"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432817"
 ---
 # <a name="using-an-app-service-environment"></a>使用应用服务环境
+
+> [!NOTE]
+> 本文介绍与独立 v2 应用服务计划一起使用的应用服务环境 v3
+> 
 
 应用服务环境 (ASE) 是直接注入到你所选的 Azure 虚拟网络 (VNet) 中的 Azure 应用服务的单一租户部署。 它是一种仅由一位客户使用的系统。 部署到 ASE 中的应用受应用于 ASE 子网的网络功能的影响。 在这些网络功能的影响下，无需在应用中启用任何额外的功能。 
 
@@ -26,51 +30,43 @@ ms.locfileid: "100586405"
 - 在 ASE 中创建的所有应用服务计划只能位于独立 v2 定价层中。
 
 如果没有 ASE，可以根据[创建应用服务环境][MakeASE]中的说明创建一个。
-
 在 ASE 中创建应用：
 
 1. 选择“创建资源” > “Web + 移动” > “Web 应用”。
-
 1. 选择一个订阅。
-
 1. 输入新资源组的名称，或选择“使用现有”并从下拉列表中选择一个资源组。
-
-1. 输入应用程序的名称。 如果已在 ASE 中选择了应用服务计划，则应用的域名会反映 ASE 的域名：
-
-    ![在 ASE 中创建应用][1]
-
+1. 输入应用程序的名称。 如果已在 ASE 中选择了应用服务计划，则应用的域名会反映 ASE 的域名：![在 ASE 中创建应用][1]
 1. 选择发布类型、堆栈和操作系统。
-
-1.  选择区域。 此处，需要选择预先存在的应用服务环境 v3。  在应用创建过程中无法创建 ASEv3 
-
-1. 在你的 ASE 中选择一个现有的应用服务计划，或创建新的计划。 如果要创建新应用，请选择应用服务计划所需的大小。 可为应用选择的唯一 SKU 是一个独立 v2 定价 SKU。
-
-    ![独立 v2 定价层][2]
-
-    > [!NOTE]
-    > Linux 应用和 Windows 应用不能位于同一应用服务计划中，但可以位于同一应用服务环境中。
-    >
-
+1. 选择区域。 此处，需要选择预先存在的应用服务环境 v3。  在应用创建过程中无法创建 ASEv3 
+1. 在你的 ASE 中选择一个现有的应用服务计划，或创建新的计划。 如果要创建新应用，请选择应用服务计划所需的大小。 可为应用选择的唯一 SKU 是一个独立 v2 定价 SKU。 制定新的应用服务计划通常耗时不到 20 分钟。 
+![独立 v2 定价层][2]
 1. 选择“下一步: 监视”。如果想要对应用启用 App Insights，可在创建流期间在此处执行此操作。 
-
 1.  选择“下一步: 标记”。向应用添加所需的任何标记  
-
 1. 选择“查看 + 创建”，确保信息正确，然后选择“创建”。 
+
+Windows 和 Linux 应用可以存在于同一 ASE 中，但不能存在于同一应用服务计划中。
 
 ## <a name="how-scale-works"></a>缩放的工作原理
 
 每个应用服务应用在应用服务计划中运行。 应用服务环境保存应用服务计划，应用服务计划保存应用。 缩放某个应用时，也会缩放应用服务计划，以及同一计划中的所有应用。
 
-缩放应用服务计划时，会自动添加所需的基础结构。 添加基础结构时，缩放操作存在一定的时间延迟。 缩放应用服务计划时，请求的任何相同 OS 和大小的其他缩放操作都将等待，直到第一个操作完成。 阻塞的缩放操作完成后，将同时处理所有排队的请求。 针对某个大小和 OS 的缩放操作不会阻止阻止其他大小和 OS 组合的缩放。 例如，如果你缩放 Windows I2v2 应用服务计划，则在该 ASE 中缩放 Windows I2v2 的任何其他请求将排队，直到该操作完成。   
+缩放应用服务计划时，会自动添加所需的基础结构。 添加基础结构时，缩放操作存在一定的时间延迟。 缩放应用服务计划时，请求的任何相同 OS 和大小的其他缩放操作都将等待，直到第一个操作完成。 阻塞的缩放操作完成后，将同时处理所有排队的请求。 针对某个大小和 OS 的缩放操作不会阻止阻止其他大小和 OS 组合的缩放。 例如，如果你缩放 Windows I2v2 应用服务计划，则在该 ASE 中缩放 Windows I2v2 的任何其他请求将排队，直到该操作完成。 缩放通常耗时不到 20 分钟。 
 
 在多租户应用服务中，缩放是即时发生的，因为有现成可用的资源池用于支持。 ASE 中没有此类缓冲区，而会根据需要分配资源。
 
 ## <a name="app-access"></a>应用访问
 
-在 ASE 中，用于创建应用的域后缀是 .&lt;asename&gt;.appserviceenvironment.net。 如果 ASE 名为 my-ase 并且其中托管了名为 contoso 的应用，可通过以下 URL 访问该应用 ：
+在使用内部 VIP 的 ASE 中，用于创建应用的域后缀是 .&lt;asename&gt;.appserviceenvironment.net。 如果 ASE 名为 my-ase 并且其中托管了名为 contoso 的应用，可通过以下 URL 访问该应用 ：
 
 - contoso.my-ase.appserviceenvironment.net
 - contoso.scm.my-ase.appserviceenvironment.net
+
+只有在与 ASE 位于同一虚拟网络中或以某种方式连接到该虚拟网络时，才能访问使用内部 VIP 的 ASE 上托管的应用。 也只有在位于同一虚拟网络中或以某种方式连接到该虚拟网络时，才可能进行发布。 
+
+在具有外部VIP 的 ASE 中，用于创建应用的域后缀是 .&lt;asename&gt;.p.azurewebsites.net。 如果 ASE 名为 my-ase 并且其中托管了名为 contoso 的应用，可通过以下 URL 访问该应用 ：
+
+- contoso.my-ase.p.azurewebsites.net
+- contoso.scm.my-ase.p.azurewebsites.net
 
 有关如何创建 ASE 的信息，请参阅[创建应用服务环境][MakeASE]。
 
@@ -78,20 +74,24 @@ SCM URL 用于访问 Kudu 控制台，也可用于通过 Web 部署发布应用�
 
 ### <a name="dns-configuration"></a>DNS 配置 
 
-ASE 对入站流量使用专用终结点。 对于 Azure DNS 专用区域，这不会自动进行配置。 如果要使用自己的 DNS 服务器，则需要添加以下记录：
+如果 ASE 是使用外部 VIP 创建的，则应用将自动置于公共 DNS 中。 如果 ASE 是使用内部 VIP 创建的，则你可能需要为它配置 DNS。 如果你已选择在创建 ASE 期间自动配置 Azure DNS 专用区域，则会在 ASE VNet 中配置 DNS。 如果你已选择“手动配置 DNS”，则需要使用自己的 DNS 服务器或配置Azure DNS专用区域。 若要查找 ASE 的入站地址，请转到“ASE 门户”>“IP 地址”UI。 
+
+![IP 地址 UI][6]
+
+如果要使用自己的 DNS 服务器，则需要添加以下记录：
 
 1. 为 &lt;ASE 名称&gt;.appserviceenvironment.net 创建一个区域
-1. 在该区域中创建 A 记录，该记录将 * 指向 ASE 专用终结点使用的入站 IP 地址
-1. 在该区域中创建 A 记录，该记录将 @ 指向 ASE 专用终结点使用的入站 IP 地址
+1. 在该区域中，创建一条将 * 指向 ASE 所用入站 IP 地址的 A 记录
+1. 在该区域中，创建一条将 @ 指向 ASE 所用入站 IP 地址的 A 记录
 1. 在 &lt;ASE 名称&gt;.appserviceenvironment.net 中创建名为 scm 的区域
-1. 在 scm 区域中创建 A 记录，该记录将 * 指向 ASE 专用终结点使用的 IP 地址
+1. 在 scm 区域中创建 A 记录，该记录将 * 指向 ASE 使用的 IP 地址
 
 在 Azure DNS 专用区域中配置 DNS：
 
-1. 创建名为 <ASE name>.appserviceenvironment.net 的 Azure DNS 专用区域
-1. 在该区域中创建一条指向* ILB IP 地址的 A 记录
-1. 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
-1. 在该区域中创建一条将 *.scm 指向 ILB IP 地址的 A 记录
+1. 创建名为“&lt;ASE 名称&gt;.appserviceenvironment.net”的 Azure DNS 专用区域
+1. 在该区域中，创建一条将 * 指向入站 IP 地址的 A 记录
+1. 在该区域中，创建一条将 @ 指向入站 IP 地址的 A 记录
+1. 在该区域中，创建一条将 *.scm 指向入站 IP 地址的 A 记录
 
 ASE 默认域后缀的 DNS 设置不会将你的应用限制为只能由这些名称访问。 可在 ASE 中设置自定义域名而无需对应用进行任何验证。 如果随后想要创建名为 contoso.net 的区域，可执行此操作并将其指向入站 IP 地址。 自定义域名适用于应用请求，但不适用于 scm 站点。 scm 站点仅在 &lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net 中可用。 
 
@@ -104,9 +104,9 @@ ASE 默认域后缀的 DNS 设置不会将你的应用限制为只能由这些�
 - 在 Kudu 控制台中拖放
 - Visual Studio、Eclipse 或 IntelliJ IDEA 等 IDE
 
-使用 ASE，只能通过专用终结点使用的入站地址访问发布终结点。 如果无法通过网络访问专用终结点地址，则无法在该 ASE 上发布任何应用。  IDE 还必须能够通过网络访问 ILB 才能直接向其发布。
+使用内部 VIP ASE 时，发布终结点只有通过入站地址才可用。 如果没有对入站地址的网络访问权限，则无法在该 ASE 上发布任何应用。  IDE 还必须拥有对 ASE 上入站地址的网络访问权限，然后才能直接向其进行发布。
 
-在不进行额外更改的情况下，基于 Internet 的 CI 系统（例如 GitHub 和 Azure DevOps）不支持 ILB ASE，因为发布终结点不可通过 Internet 进行访问。 可以通过在包含 ILB ASE 的虚拟网络中安装自承载发布代理，来实现从 Azure DevOps 发布到 ILB ASE。 
+在不进行额外更改的情况下，基于 Internet 的 CI 系统（例如 GitHub 和 Azure DevOps）不支持内部 VIP ASE，因为发布终结点不可通过 Internet 进行访问。 可以通过在包含 ASE 的虚拟网络中安装自承载发布代理，来实现从 Azure DevOps 发布到内部 VIP ASE。 
 
 ## <a name="storage"></a>存储
 
@@ -116,18 +116,20 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 
 可将 ASE 与 Azure Monitor 相集成，以将有关 ASE 的日志发送到 Azure 存储、Azure 事件中心或 Log Analytics。 当前会记录以下项：
 
-| 场景 | Message |
-|---------|----------|
-| ASE 运行不正常 | 由于虚拟网络配置无效，指定的 ASE 运行不正常。 如果持续出现不正常状态，ASE 将会挂起。 确保遵守此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
-| ASE 子网空间几乎已耗尽 | 指定的 ASE 位于一个几乎耗尽了空间的子网中。 还剩下 {0} 个地址。 一旦这些地址耗尽，ASE 就无法缩放。  |
-| ASE 即将达到实例总数限制 | 指定的 ASE 即将达到 ASE 的实例总数限制。 它目前包含 {0} 个应用服务计划实例，最多可以包含 201 个实例。 |
-| ASE 无法访问某个依赖项 | 指定的 ASE 无法访问 {0}。  确保遵守此处定义的准则： https://docs.microsoft.com/azure/app-service/environment/network-info 。 |
-| ASE 已挂起 | 指定的 ASE 已挂起。 ASE 挂起的可能原因是帐户不足，或虚拟网络配置无效。 解决根本原因并恢复 ASE，以继续为流量提供服务。 |
-| ASE 升级已启动 | 已开始对指定的 ASE 进行平台升级。 预期缩放操作会出现延迟。 |
-| ASE 升级已完成 | 对指定的 ASE 进行平台升级已完成。 |
-| 缩放操作已启动 | 应用服务计划 ({0}) 已开始缩放。 所需状态：{1} I{2} 辅助角色。
-| 缩放操作已完成 | 应用服务计划 ({0}) 已完成缩放。 当前状态：{1} I{2} 辅助角色。 |
-| 缩放操作失败 | 应用服务计划 ({0}) 无法缩放。 当前状态：{1} I{2} 辅助角色。 |
+|场景 |Message |
+|----------|--------|
+|ASE 子网空间几乎已耗尽 | 指定的 ASE 位于一个几乎耗尽了空间的子网中。 还剩下 {0} 个地址。 一旦这些地址耗尽，ASE 就无法缩放。  |
+|ASE 即将达到实例总数限制 | 指定的 ASE 即将达到 ASE 的实例总数限制。 它当前包含 {0} 个应用服务计划实例，最多有 200个实例。 |
+|ASE 已挂起 | 指定的 ASE 已挂起。 ASE 挂起的可能原因是帐户不足，或虚拟网络配置无效。 解决根本原因并恢复 ASE，以继续为流量提供服务。 |
+|ASE 升级已启动 | 已开始对指定的 ASE 进行平台升级。 预期缩放操作会出现延迟。 |
+|ASE 升级已完成 | 对指定的 ASE 进行平台升级已完成。 |
+|应用服务计划创建已开始 | 应用服务计划 ({0}) 创建已开始。 期望状态：{1} I{2}v2 辅助角色。
+|缩放操作已完成 | 应用服务计划 ({0}) 创建已结束。 当前状态：{1} I{2}v2 辅助角色。 |
+|缩放操作失败 | 应用服务计划 ({0}) 创建已失败。 这可能是由于 ASE 在实例数最高时运行，或者子网地址不足。 |
+|缩放操作已启动 | 应用服务计划 ({0}) 已开始缩放。 当前状态：{1} I(2)v2。 期望状态：{3} I{4}v2 辅助角色。|
+|缩放操作已完成 | 应用服务计划 ({0}) 已完成缩放。 当前状态：{1} I{2}v2 辅助角色。 |
+|缩放操作已中断 | 缩放时应用服务计划 ({0}) 中断。 先前期望状态：{1} I{2}v2 辅助角色。 新的期望状态：{3} I{4}v2 辅助角色。 |
+|缩放操作失败 | 应用服务计划 ({0}) 无法缩放。 当前状态：{1} I{2}v2 辅助角色。 |
 
 若要在 ASE 中启用日志记录：
 
@@ -136,12 +138,11 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 1. 提供日志集成的名称。
 1. 选择并配置所需的日志目标。
 1. 选择“AppServiceEnvironmentPlatformLogs”。
-
 ![ASE 诊断日志设置][4]
 
-如果与 Log Analytics 集成，可通过以下方式查看日志：在 ASE 门户中选择“日志”，并针对“AppServiceEnvironmentPlatformLogs”创建查询。  仅当 ASE 具有将触发日志的事件时，才发出日志。 如果 ASE 没有此类事件，则不会有任何日志。 若要快速查看 Log Analytics 工作区中的日志示例，请使用 ASE 中的某个应用服务计划执行缩放操作。 然后，你可以针对 AppServiceEnvironmentPlatformLogs 运行查询来查看这些日志。 
+如果与 Log Analytics 集成，可通过以下方式查看日志：在 ASE 门户中选择“日志”，并针对“AppServiceEnvironmentPlatformLogs”创建查询。  仅当 ASE 具有将触发日志的事件时，才发出日志。 如果 ASE 没有此类事件，则不会有任何日志。 若要快速查看 Log Analytics 工作区中的日志示例，请使用 ASE 中的应用服务计划执行缩放操作。 然后，你可以针对 AppServiceEnvironmentPlatformLogs 运行查询来查看这些日志。 
 
-**创建警报**
+### <a name="creating-an-alert"></a>创建警报
 
 若要针对日志创建警报，请按[使用 Azure Monitor 创建、查看和管理日志警报](../../azure-monitor/alerts/alerts-log.md)中的说明操作。 简单地说：
 
@@ -154,7 +155,7 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 
 ## <a name="internal-encryption"></a>内部加密
 
-应用服务环境作为一个黑框系统运行，你将看不到系统中的内部组件或通信。 为了实现更高的吞吐量，默认情况下，在内部组件之间不启用加密。 系统很安全，因为流量完全无法访问，不管你是要监视流量还是要访问流量。 如果你的符合性要求必须从端到端对数据路径进行完全加密，则可在 ASE 的配置 UI中启用此功能。
+应用服务环境作为一个黑框系统运行，你将看不到系统中的内部组件或通信。 为了实现更高的吞吐量，默认情况下，在内部组件之间不启用加密。 系统很安全，因为流量无法访问，不管你是要监视流量还是要访问流量。 如果你的符合性要求必须从端到端对数据路径进行完全加密，则可在 ASE 的配置 UI中启用此功能。
 
 ![启用内部加密][5]
 
@@ -168,31 +169,29 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 “独立”定价 SKU �
 - **Early**：ASE 将在应用服务升级过程的上半阶段升级。
 - **Late**：ASE 将在应用服务升级过程的下半阶段升级。
 
-若要配置升级首选项，请转到 ASE 的配置 UI。 
-
-当你有多个 ASE 时，upgradePreferences 功能最为有效，因为“早期”ASE 将在“晚期”ASE 之前升级。 当你有多个 ASE 时，应将开发和测试 ASE 设置为“早期”，而将生产 ASE 设置为“晚期”。
+若要配置升级首选项，请转到 ASE 的配置 UI。 当你有多个 ASE 时，upgradePreferences 功能最为有效，因为“早期”ASE 将在“晚期”ASE 之前升级。 当你有多个 ASE 时，应将开发和测试 ASE 设置为“早期”，而将生产 ASE 设置为“晚期”。
 
 ## <a name="delete-an-ase"></a>删除 ASE
 
 若要删除 ASE，请执行以下操作：
 
 1. 选择“应用服务环境”窗格顶部的“删除”。 
-
 1. 输入 ASE 的名称，确认想要将它删除。 删除 ASE 时，会同时删除它包含的所有内容。
-
-    ![ASE 删除][3]
-
-1. 选择“确定” 。
+![ASE 删除][3]
+1. 选择“确定”。
 
 <!--Image references-->
+
 [1]: ./media/using/using-appcreate.png
 [2]: ./media/using/using-appcreate-skus.png
 [3]: ./media/using/using-delete.png
 [4]: ./media/using/using-logsetup.png
 [4]: ./media/using/using-logs.png
 [5]: ./media/using/using-configuration.png
+[6]: ./media/using/using-ip-addresses.png
 
 <!--Links-->
+
 [Intro]: ./overview.md
 [MakeASE]: ./creation.md
 [ASENetwork]: ./networking.md

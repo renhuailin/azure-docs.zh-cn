@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 12b1d083ae1481f7c8b5fe60cac9156a56aeaa0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 292c23398950a367f77c4200925007f660702a34
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87875466"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737729"
 ---
 # <a name="get-started-with-device-twins-python"></a>设备孪生入门 (Python)
 
@@ -239,8 +239,8 @@ ms.locfileid: "87875466"
 
 使用下列资源了解如何执行以下操作：
 
-* 通过 [IoT 中心入门](quickstart-send-telemetry-python.md)教程学习如何从设备发送遥测数据。
+* 通过 [IoT 中心入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-python)教程学习如何从设备发送遥测数据。
 
 * 按照[使用所需属性配置设备](tutorial-device-twins.md)教程使用设备孪生的所需属性配置设备。
 
-* 按照[使用直接方法](quickstart-control-device-python.md)教程以交互方式控制设备（例如从用户控制的应用打开风扇）。
+* 按照[使用直接方法](./quickstart-control-device.md?pivots=programming-language-python)快速入门中所述的步骤以交互方式控制设备（例如从用户控制的应用打开风扇）。

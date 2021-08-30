@@ -17,18 +17,18 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d55c8541bc0ef3fc73b9848c2fd51feb1ea99e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89279646"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725744"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：设计概念
-本文档旨在说明 Azure AD Connect 实现设计期间必须考虑到的各个方面。 本文档是特定领域的深入探讨，其他文档中也简要描述了这些概念。
+本文档旨在描述在配置 Azure AD Connect 时必须考虑的各个方面。 本文档是特定领域的深入探讨，其他文档中也简要描述了这些概念。
 
 ## <a name="sourceanchor"></a>sourceAnchor
-sourceAnchor 属性定义为 *在对象生存期内不会变化的属性*。 它可将对象唯一标识为本地和 Azure AD 中的相同对象。 该属性也称为 **immutableId**，这两个名称可以换用。
+sourceAnchor 属性定义为 *在对象生存期内不会变化的属性*。 它可将对象唯一标识为本地和 Azure AD 中的相同对象。 该属性也称为“immutableId”，这两个名称可以交换使用。
 
 在本文档中，“不可变”（即无法更改）一词非常重要。 由于此属性的值在设置之后就无法更改，因此请务必挑选可支持方案的设计。
 

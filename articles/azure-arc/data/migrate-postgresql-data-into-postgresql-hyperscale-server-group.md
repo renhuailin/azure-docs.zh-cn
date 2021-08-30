@@ -1,6 +1,6 @@
 ---
 title: 将数据从 PostgreSQL 数据库迁移到已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
-titleSuffix: Azure Arc enabled database services
+titleSuffix: Azure Arc-enabled database services
 description: 将数据从 PostgreSQL 数据库迁移到已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 services: azure-arc
 ms.service: azure-arc
@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 06860f9d09db7a9e9497431620e15cc5e3168206
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 25e19ac7512c26e9e6985d033ec46d76b4c5233a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411622"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729381"
 ---
 # <a name="migrate-postgresql-database-to-azure-arc-enabled-postgresql-hyperscale-server-group"></a>从 PostgreSQL 数据库迁移到已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 
@@ -45,6 +45,8 @@ ms.locfileid: "111411622"
 - `psql`
 - ...
 
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
 ## <a name="example"></a>示例
 让我们使用 `pgAdmin` 工具来说明这些步骤。
 请考虑以下设置：
@@ -73,8 +75,8 @@ ms.locfileid: "111411622"
 > [!NOTE]
 > 若要在 `pgAdmin` 工具中注册 Postgres 实例，需要使用 Kubernetes 群集中实例的公共 IP，并相应地设置端口和安全性上下文。 运行以下命令后，你将在 `psql` 终结点行上找到这些详细信息：
 
-```console
-azdata arc postgres endpoint list -n postgres01
+```azurecli
+az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> --use-k8s
 ```
 该命令返回如下输出：
 ```console
@@ -112,7 +114,7 @@ azdata arc postgres endpoint list -n postgres01
    还原成功。  
    :::image type="content" source="media/postgres-hyperscale/migrate-pg-destination-dbrestore3.jpg" alt-text="Migrate-db-restore-completed":::
 
-### <a name="verify-that-the-database-was-successfully-restored-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>验证是否已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中成功还原了该数据库
+### <a name="verify-that-the-database-was-successfully-restored-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>验证该数据库是否在已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中成功还原
 
 使用以下方法之一：
 
@@ -128,8 +130,8 @@ azdata arc postgres endpoint list -n postgres01
 
 1. 列出 `psql` 连接字符串中的终结点，以提供帮助：
 
-   ```console
-   azdata arc postgres endpoint list -n postgres01
+   ```azurecli
+   az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> --use-k8s
    [
      {
        "Description": "PostgreSQL Instance",
@@ -179,7 +181,7 @@ azdata arc postgres endpoint list -n postgres01
    ```
 
 > [!NOTE]
-> - 在已启用 Azure Arc 的超大规模 PostgreSQL 上运行时，在进行横向扩展并在超大规模 PostgreSQL 服务器组的工作器节点上分片/分布数据之前，你将不会看到如此多的性能优势。 请参阅[后续步骤](#next-steps)。
+> - 在已启用 Azure Arc 的超大规模 PostgreSQL 上运行时，在进行横向扩展并在超大规模 PostgreSQL 服务器组的工作器节点上分片/分布数据之前，你将看不到如此多的性能优势。 请参阅[后续步骤](#next-steps)。
 >
 > - 目前，无法将现有的会在本地或任何其他云中运行的 Postgres 实例“加入到 Azure Arc”。 换句话说，无法在现有 Postgres 实例上安装某种“Azure Arc 代理”来使其成为 Azure Arc 启用的 Postgres 设置。转而，你需要创建新的 Postgres 实例，并将数据传输到该实例。 你可以使用以上所示的方法来实现此目的，也可以使用所选的任何 ETL 工具。
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/13/2021
+ms.date: 06/18/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 55e63e232a804519baeeeeee3ebef84777ee1d38
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 902d9251c7393d3f6e693ba37c587398136493e6
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060771"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112368941"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义条件访问技术配置文件
 
@@ -49,7 +49,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 ### <a name="metadata"></a>元数据
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | OperationType | 是 | 必须是 **Evaluation**。  |
 
@@ -73,8 +73,8 @@ InputClaimsTransformations 元素可能包含一系列 InputClaimsTransformation
 
 | ClaimReferenceId | 必须 | 数据类型 | 说明 |
 | --------- | -------- | ----------- |----------- |
-| 挑战 | 是 |stringCollection | 用于修正查明的威胁的操作列表。 可能的值：`block` |
-| MultiConditionalAccessStatus | 是 | stringCollection |  |
+| 挑战 | 是 |stringCollection | 用于修正查明的威胁的操作列表。 可能的值：`block`、`mfa` 和 `chg_pwd`。 |
+| MultiConditionalAccessStatus | 是 | stringCollection | 条件访问评估的状态。  |
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
@@ -111,7 +111,7 @@ InputClaimsTransformations 元素可能包含一系列 InputClaimsTransformation
 
 ### <a name="metadata"></a>元数据
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | OperationType | 是 | 必须是 **Remediation**。  |
 

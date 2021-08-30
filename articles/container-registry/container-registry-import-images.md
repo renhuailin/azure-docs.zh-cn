@@ -2,13 +2,13 @@
 title: 导入容器映像
 description: 使用 Azure API 将容器映像导入到 Azure 容器注册表中，无需运行 Docker 命令。
 ms.topic: article
-ms.date: 01/15/2021
-ms.openlocfilehash: e7becadab7f23acd7b85d6d82fd8abbfa7608add
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/28/2021
+ms.openlocfilehash: 04e9ead09061fad5630b883c6f5749bafc7a4a7a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781516"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778575"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>向容器注册表导入容器映像
 
@@ -32,9 +32,7 @@ Azure 容器注册表可灵活应对许多常见方案，以便从现有注册�
 
 若要导入容器映像，本文要求在 Azure Cloud Shell 中或本地（建议使用 2.0.55 或更高版本）运行 Azure CLI。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
-> [!NOTE]
-> 如果需要在多个 Azure 区域中分布相同的容器映像，则 Azure 容器注册表还支持[异地复制](container-registry-geo-replication.md)。 通过对注册表（需要高级服务层）进行异地复制，可以使用单个注册表的相同映像和标记名称为多个区域提供服务。
->
+[!INCLUDE [container-registry-geo-replication-include](../../includes/container-registry-geo-replication-include.md)]
 
 > [!IMPORTANT]
 > 自 2021 年 1 月起，已引入对两个 Azure 容器注册表的映像导入的更改：
@@ -158,7 +156,10 @@ az acr import \
 
 ## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>从不同 AD 租户中的 Azure 容器注册表导入
 
-若要从不同 Azure Active Directory 租户中的 Azure 容器注册表导入，请按登录服务器名称指定源注册表，并提供启用了对注册表进行拉取访问的用户名和密码凭据。 例如，使用[存储库范围内的令牌](container-registry-repository-scoped-permissions.md)和密码，或对源注册表具有 ACRPull 访问权限的 Active Directory [服务主体](container-registry-auth-service-principal.md)的 appID 和密码。 
+若要从不同 Azure Active Directory 租户中的 Azure 容器注册表导入，请通过登录服务器名称指定源注册表，并提供允许以拉取方式访问注册表的凭据。 
+
+### <a name="cross-tenant-import-with-username-and-password"></a>使用用户名和密码进行跨租户导入
+例如，使用[存储库范围内的令牌](container-registry-repository-scoped-permissions.md)和密码，或对源注册表具有 ACRPull 访问权限的 Active Directory [服务主体](container-registry-auth-service-principal.md)的 appID 和密码。 
 
 ```azurecli
 az acr import \
@@ -167,6 +168,28 @@ az acr import \
   --image targetimage:tag \
   --username <SP_App_ID> \
   --password <SP_Passwd>
+```
+
+### <a name="cross-tenant-import-with-access-token"></a>使用访问令牌进行跨租户导入
+
+若要使用源租户中具有注册表权限的标识访问源注册表，可以获取访问令牌：
+
+```azurecli
+# Login to Azure CLI with the identity, for example a user-assigned managed identity
+az login --identity --username <identity_ID>
+
+# Get access token returned by `az account get-access-token`
+az account get-access-token 
+```
+
+在目标租户中，将访问令牌作为密码传递给 `az acr import` 命令。 源注册表通过登录服务器名称进行指定。 请注意，此命令中不需要用户名：
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --password <access-token>
 ```
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>从非 Azure 专用容器注册表导入
@@ -184,7 +207,13 @@ az acr import \
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你了解了如何从公共注册表或其他专用注册表将容器映像导入 Azure 容器注册表。 关于其他映像导入选项，请参阅 [az acr import][az-acr-import] 命令参考。 
+在本文中，你了解了如何从公共注册表或其他专用注册表将容器映像导入 Azure 容器注册表。 
+
+* 关于其他映像导入选项，请参阅 [az acr import][az-acr-import] 命令参考。 
+
+* 映像导入可帮助你将内容移动到其他 Azure 区域、订阅或 Azure AD 租户中的容器注册表。 有关详细信息，请参阅[手动将容器注册表移到另一区域](manual-regional-move.md)。
+
+* 了解如何从受网络限制的容器注册表[禁用项目导出](data-loss-prevention.md)。
 
 
 <!-- LINKS - Internal -->

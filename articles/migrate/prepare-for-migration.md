@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 58e6d0cb0aebc7c8f72b0991447e0b35fceb00c1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d88c02f261052f0cf3e29ef210d8a8af15733d7f
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110464140"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720273"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>准备好要迁移到 Azure 的本地计算机
 
@@ -82,20 +82,21 @@ ms.locfileid: "110464140"
 
 下表汇总了需要进行的更改。
 
-**Action** | **VMware（无代理迁移）** | **VMware （基于代理）/物理计算机** | **Hyper-V 上的 Windows** 
+**Action** | **VMware（无代理迁移）** | **VMware （基于代理）/物理计算机** | **Hyper-V 上的 Windows**
 --- | --- | --- | ---
 **将 SAN 策略配置为“全部联机”**<br/><br/> | 运行 Windows Server 2008 R2 或更高版本的虚拟机会自动设置。<br/><br/> 早期版本的操作系统需要手动配置。 | 大多数情况下会自动设置。 | 手动配置。
 **安装 Hyper-V 来宾集成** | 运行 Windows Server 2003 的计算机需要[手动安装](prepare-windows-server-2003-migration.md#install-on-vmware-vms)。 | 运行 Windows Server 2003 的计算机需要[手动安装](prepare-windows-server-2003-migration.md#install-on-vmware-vms)。 | 运行 Windows Server 2003 的计算机需要[手动安装](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms)。
 **启用 Azure 串行控制台**。<br/><br/>在 Azure VM 上[启用控制台](/troubleshoot/azure/virtual-machines/serial-console-windows)，来帮助进行故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动。 启动磁盘映像相当于重新启动新 VM。 | 需要手动启用 | 需要手动启用 | 需要手动启用
 **在迁移后进行连接**<br/><br/> 若要在迁移后进行连接，请在迁移之前执行一些步骤。 | 需要[手动设置](#prepare-to-connect-to-azure-windows-vms)。 | 需要[手动设置](#prepare-to-connect-to-azure-windows-vms)。 | 需要[手动设置](#prepare-to-connect-to-azure-windows-vms)。
 
+ [详细了解](./prepare-for-agentless-migration.md#changes-performed-on-windows-servers)在 Windows Server 上执行的更改。
 
 #### <a name="configure-san-policy"></a>配置 SAN 策略
 
 默认情况下，将为 Azure VM 分配驱动器 D 用作临时存储。
 
 - 这种驱动器分配会导致所有其他附加存储驱动器分配递增一个字母。
-- 例如，如果本地安装使用分配了驱动器 D 的数据磁盘（用于应用程序安装），将 VM 迁移到 Azure 后，为此驱动器分配的驱动器号将递增为 E。 
+- 例如，如果本地安装使用分配了驱动器 D 的数据磁盘（用于应用程序安装），将 VM 迁移到 Azure 后，为此驱动器分配的驱动器号将递增为 E。
 - 若要避免这种自动分配，并确保 Azure 将下一个可用驱动器号分配给其临时卷，请将存储区域网络 (SAN) 策略设置为 **OnlineAll**：
 
 手动配置此设置，如下所示：
@@ -111,13 +112,12 @@ ms.locfileid: "110464140"
 
 对于以下版本，Azure Migrate 会自动完成这些操作
 
-- Red Hat Enterprise Linux 8、7.8、7.7、7.6、7.5、7.4、7.0、6.x（Azure Linux VM 代理也会在迁移过程中自动安装）
+- Red Hat Enterprise Linux 8、7.9、7.8、7.7、7.6、7.5、7.4、7.0、6.x（迁移过程中还会自动安装 Azure Linux VM 代理）
 - Cent OS 8、7.7、7.6、7.5、7.4、6.x（Azure Linux VM 代理也会在迁移过程中自动安装）
 - SUSE Linux Enterprise Server 15 SP0、15 SP1、12、11
-- Ubuntu 19.04、19.10、18.04LTS、16.04LTS、14.04LTS（Azure Linux VM 代理也会在迁移过程中自动安装）
-- Ubuntu 18.04LTS、16.04LTS
+- Ubuntu 20.04、19.04、19.10、18.04LTS、16.04LTS、14.04LTS（迁移过程中还会自动安装 Azure Linux VM 代理）
 - Debian 9、8、7
-- Oracle Linux 6、7.7、7.7-CI 
+- Oracle Linux 6、7.7、7.7-CI
 
 对于其他版本，请按表中汇总所示准备计算机。  
 
@@ -131,6 +131,8 @@ ms.locfileid: "110464140"
 **删除 udev 规则** | 删除基于 MAC 地址等属性保留接口名称的所有 udev 规则。 | 除以上所示版本之外的所有版本，都需要手动删除。
 **更新网络接口** | 更新网络接口以基于 DHCP.nst 接收 IP 地址 | 除以上所示版本之外的所有版本，都需要手动更新。
 **启用 SSH** | 确保启用 SSH，并将 sshd 服务设置为在重新启动时自动启动。<br/><br/> 确保传入的 SSH 连接请求未被 OS 防火墙或脚本化规则阻止。| 除以上所示版本之外的所有版本，都需要手动启用。
+
+[详细了解](./prepare-for-agentless-migration.md#changes-performed-on-linux-servers)在 Linux 服务器上执行的更改
 
 下表总结了针对上面列出的操作系统自动执行的步骤。
 
@@ -147,7 +149,7 @@ ms.locfileid: "110464140"
 
 详细了解[在 Azure 上运行 Linux VM](../virtual-machines/linux/create-upload-generic.md) 所要执行的步骤，并获取适用于某些热门 Linux 发行版的说明。
 
-查看[必需包](../virtual-machines/extensions/agent-linux.md#requirements)的列表以安装 Linux VM 代理。 使用 VMware 迁移的无代理方法时，Azure Migrate 会自动为 RHEL6、RHEL7、CentOS7（与 RHEL 类似，应支持 6）、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04 安装 Linux VM 代理。
+查看[必需包](../virtual-machines/extensions/agent-linux.md#requirements)的列表以安装 Linux VM 代理。 使用 VMware 迁移的无代理方法时，Azure Migrate 会自动为 RHEL6、RHEL7、CentOS7（与 RHEL 类似，应支持版本 6）、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04、Ubuntu 19.04、Ubuntu 19.10 和 Ubuntu 20.04 安装 Linux VM 代理。
 
 ## <a name="check-azure-vm-requirements"></a>检查 Azure VM 要求
 
@@ -169,7 +171,7 @@ Azure VM 是在迁移到 Azure 的过程中创建的。 迁移后，必须能够
 2. 确保[所需的服务](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services)正在运行。
 3. 启用远程桌面 (RDP)，以便能够远程连接到本地计算机。 了解如何[使用 PowerShell 启用 RDP](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings)。
 4. 若要在迁移后通过 Internet 访问 Azure VM，请在本地计算机上的 Windows 防火墙中，在“公共”配置文件中允许 TCP 和 UDP，并将 RDP 设置为所有配置文件允许的应用。
-5. 若要在迁移后通过站点到站点 VPN 访问 Azure VM，请在本地计算机上的 Windows 防火墙中，允许对“域”和“专用”配置文件使用 RDP。 了解如何[允许 RDP 流量](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)。 
+5. 若要在迁移后通过站点到站点 VPN 访问 Azure VM，请在本地计算机上的 Windows 防火墙中，允许对“域”和“专用”配置文件使用 RDP。 了解如何[允许 RDP 流量](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)。
 6. 确保在迁移时本地 VM 上没有任何挂起的 Windows 更新。 如果有，在迁移后，这些更新可能会在 Azure VM 上开始安装，而在更新完成之前，你将无法登录到 VM。
 
 
@@ -193,6 +195,7 @@ Azure VM 是在迁移到 Azure 的过程中创建的。 迁移后，必须能够
 
 确定要使用哪种方法[将 VMware VM 迁移](server-migrate-overview.md)到 Azure，或者开始迁移 [Hyper-V VM](tutorial-migrate-hyper-v.md)、[物理服务器、虚拟化 VM 或云 VM](tutorial-migrate-physical-virtual-machines.md)。
 
+
 ## <a name="see-whats-supported"></a>支持的操作
 
 对于 VMware VM，服务器迁移支持[无代理或基于代理的迁移](server-migrate-overview.md)。
@@ -200,3 +203,7 @@ Azure VM 是在迁移到 Azure 的过程中创建的。 迁移后，必须能够
 - **VMware VM**：验证 VMware VM 的 [迁移要求和支持](migrate-support-matrix-vmware-migration.md)。
 - **Hyper-V VM**：验证 Hyper-V VM 的 [迁移要求和支持](migrate-support-matrix-hyper-v-migration.md)。
 - **物理机**：验证本地物理机和其他虚拟化服务器的 [迁移要求和支持](migrate-support-matrix-physical-migration.md)。
+
+## <a name="learn-more"></a>了解更多信息
+
+- [使用 Azure Migrate 准备好进行 VMware 无代理迁移。](./prepare-for-agentless-migration.md)

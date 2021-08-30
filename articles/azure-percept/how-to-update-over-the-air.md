@@ -1,5 +1,5 @@
 ---
-title: 以无线方式 (OTA) 更新 Azure Percept DK
+title: 使用无线方式 (OTA) 更新 Azure Percept DK
 description: 了解如何以无线方式 (OTA) 接收 Azure Percept DK 更新
 author: mimcco
 ms.author: mimcco
@@ -7,14 +7,14 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: fc8e3e42e75eacd1c5bc3312b7adf6c8a8150f3c
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: c5045aed59be4c8903672691241b68f69e353e13
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684336"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733351"
 ---
-# <a name="update-your-azure-percept-dk-over-the-air-ota"></a>以无线方式 (OTA) 更新 Azure Percept DK
+# <a name="update-your-azure-percept-dk-using-over-the-air-ota-updates"></a>使用无线方式 (OTA) 更新 Azure Percept DK
 
 按照本指南学习如何使用 Device Update for IoT Hub 以无线方式 (OTA) 更新 Azure Percept DK 的载板的 OS 和固件。
 

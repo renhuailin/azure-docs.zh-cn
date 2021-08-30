@@ -4,15 +4,15 @@ description: 如何定义存储目标，使 Azure HPC 缓存能够使用本地 N
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 07/12/2021
 ms.custom: subject-rbac-steps
 ms.author: v-erkel
-ms.openlocfilehash: aae7d29abbb9ef18846e85e9a54ff0fb97f09181
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 3ea51d88d65b8016e68673703ee823df19bcf608
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738511"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294949"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -20,7 +20,7 @@ ms.locfileid: "109738511"
 
 可以为任何缓存定义 10 个不同的存储目标，较大的缓存可以[支持最多 20 个存储目标](#size-your-cache-correctly-to-support-your-storage-targets)。
 
-缓存在一个聚合命名空间中提供所有存储目标。 命名空间路径是在添加存储目标后单独配置的。
+缓存在一个[聚合命名空间](hpc-cache-namespace.md)中呈现所有存储目标。 命名空间路径是在添加存储目标后单独配置的。
 
 请记住，存储导出必须可供从缓存的虚拟网络访问。 对于本地硬件存储，可能需要设置一个 DNS 服务器，该服务器可以解析用于访问 NFS 存储的主机名。 请阅读 [DNS 访问](hpc-cache-prerequisites.md#dns-access)了解详细信息。
 
@@ -38,12 +38,37 @@ ms.locfileid: "109738511"
 
 ## <a name="size-your-cache-correctly-to-support-your-storage-targets"></a>正确调整缓存大小以支持存储目标
 
-支持的存储目标数取决于创建缓存时设置的缓存大小。 该大小是吞吐量容量 (GB/s) 和存储容量 (TB) 的组合。
+支持的存储目标数取决于创建缓存时设置的缓存大小。 缓存容量是吞吐量容量 (GB/秒) 和存储容量 (TB) 的组合。
 
-* 最多 10 个存储目标 - 如果为所选吞吐量值选择最小或中等缓存存储大小，则缓存最多可以有 10 个存储目标。
-* 最多 20 个存储目标 - 如果要使用 10 个以上存储目标，请选择所选吞吐量值的最高可用缓存大小。 （如果使用 Azure CLI，则为缓存 SKU 选择最高有效缓存大小。）
+* 最多 10 个存储目标 - 如果所选吞吐量具有最小或中等缓存存储值，标准缓存最多可以有 10 个存储目标。
+
+  例如，如果选择了 2GB/秒的吞吐量且未选择最高缓存存储大小，则缓存最多支持 10 个存储目标。
+
+* 最多 20 个存储目标：
+
+  * 所有高吞吐量缓存（具有预配置的缓存存储大小）最多可支持 20 个存储目标。
+  * 如果为所选吞吐量值选择最高可用缓存大小，则标准缓存最多可支持 20 个存储目标。 （如果使用 Azure CLI，则为缓存 SKU 选择最高有效缓存大小。）
 
 请阅读[设置缓存容量](hpc-cache-create.md#set-cache-capacity) ，详细了解吞吐量和缓存大小设置。
+
+## <a name="choose-the-correct-storage-target-type"></a>选择适当的存储目标类型
+
+可以从三种存储目标类型中进行选择：NFS、Blob 和 ADLS-NFS  。 选择与将在此 HPC 缓存项目中用于存储文件的存储系统类型相匹配的类型。
+
+* NFS - 创建 NFS 存储目标以访问网络连接存储 (NAS) 系统上的数据。 这可以是本地存储系统或可通过 NFS 访问的其他存储类型。
+
+  * 要求：[NFS 存储要求](hpc-cache-prerequisites.md#nfs-storage-requirements)
+  * 说明：[添加新的 NFS 存储目标](#add-a-new-nfs-storage-target)
+
+* Blob - 使用 Blob 存储目标将工作文件存储在新的 Azure Blob 容器中。 只能从 Azure HPC 缓存读取或写入此容器。
+
+  * 先决条件：[Blob 存储要求](hpc-cache-prerequisites.md#blob-storage-requirements)
+  * 说明：[添加新的 Azure Blob 存储目标](#add-a-new-azure-blob-storage-target)
+
+* ADLS-NFS - ADLS-NFS 存储目标访问来自[支持 NFS 的 Blob](../storage/blobs/network-file-system-protocol-support.md) 容器的数据。 可以使用标准 NFS 命令预加载容器，然后可以使用 NFS 读取文件。
+
+  * 先决条件：[ADLS-NFS 存储要求](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements)
+  * 说明：[添加新的 ADLS-NFS 存储目标](#add-a-new-adls-nfs-storage-target)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>添加新的 Azure Blob 存储目标
 
@@ -52,7 +77,9 @@ ms.locfileid: "109738511"
 Azure 门户中的“添加存储目标”页提供了用于创建新的 Blob 容器，然后紧接着添加该容器的选项。
 
 > [!NOTE]
-> 对于已装载 NFS 的 Blob 存储，请使用 [ADLS-NFS 存储目标](#)类型。
+>
+> * 对于已装载 NFS 的 Blob 存储，请使用 [ADLS-NFS 存储目标](#add-a-new-adls-nfs-storage-target)类型。
+> * [高吞吐量缓存配置](hpc-cache-create.md#choose-the-cache-type-for-your-needs)不支持标准 Azure Blob 存储目标。 请改为使用支持 NFS 的 Blob 存储 (ADLS-NFS)。
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -91,7 +118,7 @@ Azure HPC 缓存使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-
 
 存储帐户所有者必须为用户“HPC 缓存资源提供者”显式添加角色“[存储帐户参与者](../role-based-access-control/built-in-roles.md#storage-account-contributor)”和“[存储 Blob 数据参与者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)”。
 
-可以提前执行此操作，也可以通过单击添加 Blob 存储目标时所在页面上的链接来执行此操作。 请记住，在整个 Azure 环境中传播角色设置最长可能需要五分钟，因此，在添加角色之后，请先等待几分钟再创建存储目标。
+可以提前执行此操作，也可以通过单击添加 Blob 存储目标时所在门户页面上的链接来执行此操作。 请记住，在整个 Azure 环境中传播角色设置最长可能需要五分钟，因此，在添加角色之后，请先等待几分钟再创建存储目标。
 
 1. 为存储帐户打开“访问控制(IAM)”。
 
@@ -107,7 +134,7 @@ Azure HPC 缓存使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-
     ![“添加角色分配”页](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
    > [!NOTE]
-   > 如果找不到 HPC 缓存资源提供程序，请改为尝试搜索字符串“storagecache”。 用过 HPC 缓存预览版（正式版发布之前）的用户可能需要使用服务主体的旧名称。
+   > 如果找不到 HPC 缓存资源提供程序，请改为尝试搜索字符串“storagecache”。 这是服务主体的预发行版名称。
 
 <!-- 
 Steps to add the Azure roles:
@@ -116,9 +143,9 @@ Steps to add the Azure roles:
 
 1. Click the **+** at the top of the page and choose **Add a role assignment**.
 
-1. Select the role "Storage Account Contributor&quot; from the list.
+1. Select the role "Storage Account Contributor" from the list.
 
-1. In the **Assign access to** field, leave the default value selected (&quot;Azure AD user, group, or service principal").  
+1. In the **Assign access to** field, leave the default value selected ("Azure AD user, group, or service principal").  
 
 1. In the **Select** field, search for "hpc".  This string should match one service principal, named "HPC Cache Resource Provider". Click that principal to select it.
 
@@ -183,7 +210,7 @@ az hpc-cache blob-storage-target add --resource-group "hpc-cache-group" \
 
 ## <a name="add-a-new-nfs-storage-target"></a>添加新的 NFS 存储目标
 
-NFS 存储目标的设置不同于 Blob 存储目标。 使用情况模型设置可帮助缓存有效地在此存储系统中缓存数据。
+NFS 存储目标的设置与 Blob 存储目标不同，包括指示缓存如何存储来自该存储系统的数据的使用情况模型设置。
 
 ![定义 NFS 目标后的“添加存储目标”页的屏幕截图](media/add-nfs-target.png)
 
@@ -191,13 +218,15 @@ NFS 存储目标的设置不同于 Blob 存储目标。 使用情况模型设置
 > 在创建 NFS 存储目标之前，请确保存储系统可供从 Azure HPC 缓存访问，并满足权限要求。 如果缓存无法访问存储系统，则创建存储目标将会失败。 有关详细信息，请阅读 [NFS 存储要求](hpc-cache-prerequisites.md#nfs-storage-requirements)及[排查 NAS 配置和 NFS 存储目标问题](troubleshoot-nas.md)。
 
 ### <a name="choose-a-usage-model"></a>选择使用情况模型
-<!-- referenced from GUI by aka.ms link -->
 
 创建使用 NFS 来访问其存储系统的存储目标时，需要为该目标选择使用情况模型。 此模型确定数据的缓存方式。
 
 有关所有这些设置的更多详细信息，请阅读[了解使用情况模型](cache-usage-models.md)。
 
-内置使用情况模型可让你选择如何在快速响应与所获数据过时的风险之间实现平衡。 如果你想要优化文件读取速度，那么你可能不会在意是否根据后端文件检查缓存中的文件。 另一方面，若要确保你的文件始终与远程存储中的文件一样保持最新状态，请选择一个频繁执行检查的模型。
+HPC 缓存的内置使用情况模型可让你选择如何在快速响应与所获数据过时的风险之间实现平衡。 如果你想要优化文件读取速度，那么你可能不会在意是否根据后端文件检查缓存中的文件。 另一方面，若要确保你的文件始终与远程存储中的文件一样保持最新状态，请选择一个频繁执行检查的模型。
+
+> [!NOTE]
+> [高吞吐量样式缓存](hpc-cache-create.md#choose-the-cache-type-for-your-needs)仅支持读取缓存。
 
 以下三个选项涵盖了大多数情形：
 
@@ -246,7 +275,7 @@ NFS 存储目标的设置不同于 Blob 存储目标。 使用情况模型设置
 
 * **目标类型** - 选择“NFS”。
 
-* **主机名** - 输入 NFS 存储系统的 IP 地址或完全限定的域名。 （仅当缓存能够访问可解析名称的 DNS 服务器时，才使用域名。）
+* **主机名** - 输入 NFS 存储系统的 IP 地址或完全限定的域名。 （仅当缓存可以访问可解析名称的 DNS 服务器时才使用域名。）如果存储系统由多个 IP 引用，则可以输入多个 IP 地址。
 
 * **使用情况模型** - 按照前面的 [选择使用情况模型](#choose-a-usage-model)中所述，根据你的工作流选择一个数据缓存配置文件。
 
@@ -324,22 +353,23 @@ az hpc-cache nfs-storage-target add --resource-group "hpc-cache-group" --cache-n
 
 ---
 
-## <a name="add-a-new-adls-nfs-storage-target-preview"></a>添加新的 ADLS-NFS 存储目标（预览版）
+## <a name="add-a-new-adls-nfs-storage-target"></a>添加新的 ADLS-NFS 存储目标
 
 ADLS-NFS 存储目标使用支持网络文件系统 (NFS) 3.0 协议的 Azure Blob 容器。
 
-> [!NOTE]
-> Azure Blob 存储的 NFS 3.0 协议支持目前以公共预览版提供。 其可用性受限，目前的功能可能与正式版的功能有所不同。 请不要在生产系统中使用预览版技术。
->
-> 有关最新信息，请阅读 [NFS 3.0 协议支持](../storage/blobs/network-file-system-protocol-support.md)。
+若要详细了解此功能，请阅读 [NFS 3.0 协议支持](../storage/blobs/network-file-system-protocol-support.md)。
 
 ADLS-NFS 存储目标与 Blob 存储目标和 NFS 存储目标之间具有一些相似之处。 例如：
 
 * 与 Blob 存储目标一样，需要向 Azure HPC 缓存授予[访问你的存储帐户](#add-the-access-control-roles-to-your-account)的权限。
 * 与 NFS 存储目标一样，需要设置缓存[使用情况模型](#choose-a-usage-model)。
-* 由于支持 NFS 的 Blob 容器采用 NFS 兼容的层次结构，因此你无需使用缓存来引入数据，并且这些容器可供其他 NFS 系统读取。 可以在 ADLS-NFS 容器中预加载数据，再将数据添加到用作存储目标的 HPC 缓存，然后从 HPC 缓存外部访问这些数据。 将标准 Blob 容器用作 HPC 缓存存储目标时，将以专用格式写入数据，只能从 Azure HPC 缓存兼容的其他产品访问这些数据。
+* 由于支持 NFS 的 Blob 容器采用 NFS 兼容的层次结构，因此你无需使用缓存来引入数据，并且这些容器可供其他 NFS 系统读取。
 
-必须先创建一个支持 NFS 的存储帐户才能创建 ADLS-NFS 存储目标。 请按照 [Azure HPC 缓存的先决条件](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview)中的提示以及[使用已装载 NFS 的 Blob 存储](../storage/blobs/network-file-system-protocol-support-how-to.md)中的说明进行操作。 设置存储帐户后，可以在创建存储目标时创建新容器。
+  可以在 ADLS-NFS 容器中预加载数据，再将数据添加到用作存储目标的 HPC 缓存，然后从 HPC 缓存外部访问这些数据。 将标准 Blob 容器用作 HPC 缓存存储目标时，将以专用格式写入数据，只能从 Azure HPC 缓存兼容的其他产品访问这些数据。
+
+必须先创建一个支持 NFS 的存储帐户才能创建 ADLS-NFS 存储目标。 请按照 [Azure HPC 缓存的先决条件](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements)中的步骤以及[使用 NFS 装载 Blob 存储](../storage/blobs/network-file-system-protocol-support-how-to.md)中的说明进行操作。 如果缓存和存储帐户没有使用相同的虚拟网络，请确保缓存的 VNet 可以访问存储帐户的 VNet。
+
+设置存储帐户后，可以在创建存储目标时创建新容器。
 
 若要详细了解此配置，请参阅[在 Azure HPC 缓存中使用已装载 NFS 的 blob 存储](nfs-blob-considerations.md)。
 

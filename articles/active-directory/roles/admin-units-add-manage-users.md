@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba7c3459d5df540304b0595ac6aacf039c558d6c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6f40b395bffabd089831a7a827a4ab81e216727c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094647"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734508"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理单元中添加和管理用户
 
@@ -43,9 +43,9 @@ ms.locfileid: "110094647"
 
 - 从用户配置文件分配单个用户：
 
-   1. 登录到 [Azure AD 管理中心](https://portal.azure.com)。
+   1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
-   1. 选择“用户”，然后打开用户配置文件，选择要分配给管理单元的用户。
+   1. 选择“Azure Active Directory” > “用户”，然后打开用户配置文件，选择要分配给管理单元的用户。
    
    1. 选择“管理单元”。 
    
@@ -55,17 +55,19 @@ ms.locfileid: "110094647"
 
 - 从管理单元分配单个用户：
 
-   1. 登录到 [Azure AD 管理中心](https://portal.azure.com)。
-   1. 选择“管理单元”，然后选择要为其分配用户的管理单元。
+   1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
+
+   1. 选择“Azure Active Directory” > “管理单元”，然后选择要为其分配用户的管理单元。
+
    1. 选择“所有用户”，然后选择“添加成员”，然后在“添加成员”窗格上，选择要分配给管理单元的一个或多个用户  。
 
         ![管理单元“用户”窗格的屏幕截图，用于将用户分配给管理单元。](./media/admin-units-add-manage-users/assign-to-admin-unit.png)
 
 - 批量分配用户：
 
-   1. 登录到 [Azure AD 管理中心](https://portal.azure.com)。
+   1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
-   1. 选择“管理单元”。
+   1. 选择“Azure Active Directory” > “管理单元” 。
 
    1. 选择要向其中添加用户的管理单元。
 

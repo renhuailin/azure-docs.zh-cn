@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 27bb3f163dc8f1a2f50e39ca5bbb5708419cb171
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: afadabb0503cde997858fce1ff9d1e82ac6d2f89
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073893"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679513"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>设置 Azure 应用服务访问限制
 
@@ -95,7 +95,7 @@ ms.locfileid: "110073893"
 借助服务终结点，可以使用应用程序网关或其他 Web 应用程序防火墙 (WAF) 设备来配置应用。 你还可以配置具有安全后端的多层应用程序。 有关详细信息，请参阅[网络功能和应用服务](networking-features.md)和[应用程序网关与服务终结点的集成](networking/app-gateway-with-service-endpoints.md)。
 
 > [!NOTE]
-> - 使用 IP 安全套接字层 (SSL) 虚拟 IP (VIP) 的 Web 应用当前不支持服务终结点。
+> - 对于通过虚拟 IP (VIP) 使用基于 IP 的 TLS/SSL 绑定的 Web 应用，当前不支持服务终结点。
 >
 #### <a name="set-a-service-tag-based-rule"></a>设置基于服务标记的规则
 

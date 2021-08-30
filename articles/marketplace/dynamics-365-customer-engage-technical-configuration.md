@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.custom: references_regions
 author: vamahtan
 ms.author: vamahtan
-ms.date: 04/29/2021
-ms.openlocfilehash: 51ef78575a6987c3ac1537f1bb9d35e98e294ab6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 06/29/2021
+ms.openlocfilehash: 6d58fbdd2f6b4b89d2584b9f82e0f0fd0417ad35
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971415"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085103"
 ---
 # <a name="set-up-dynamics-365-for-customer-engagement--power-apps-offer-technical-configuration"></a>设置 Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务技术配置
 
@@ -43,9 +43,9 @@ ms.locfileid: "111971415"
 
 ## <a name="crm-package-availability"></a>CRM 包的可用性
 
-选择“+ 添加区域”以指定客户可以使用 CRM 包的地理区域。 部署到以下主权区域需要特殊的权限，并在认证过程中进行验证：[德国](../germany/index.yml)、[美国政府云](../azure-government/documentation-government-welcome.md)和 TIP。
+选择“+ 添加区域”以指定客户可以使用 CRM 包的地理区域。 请勿选择以下任何主权区域：US Gov 云主权、中国云主权、德国主权、US Gov 高云主权、生产测试主权或 US DoD 云主权。
 
-默认情况下，你在上面输入的“应用程序配置 URL”将用于每个区域。 如果需要，可以为一个或多个特定区域输入单独的应用程序配置 URL。
+默认情况下，你在上面输入的“应用程序配置 URL”将用于每个区域。 将“应用程序配置 URL”字段留空。
 
 选择“保存草稿”，然后转到左侧导航菜单中的下一个选项卡“与 Microsoft 联合销售” 。 有关设置与 Microsoft 共同销售（可选）的信息，请参阅[与 Microsoft 销售团队和合作伙伴共同销售的概述](./co-sell-overview.md)。 如果未设置联合销售或已完成设置，请继续执行下面的后续步骤。
 

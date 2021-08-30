@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 23825bd3ab41891f775f26e2ee2b052e3a041401
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 5cbf179cd28a36705379049a66010d02d2e7cf24
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560078"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739088"
 ---
 # <a name="register-and-scan-azure-cosmos-database-sql-api"></a>注册并扫描 Azure Cosmos 数据库 (SQL API)
 
@@ -52,7 +52,7 @@ Azure Cosmos 数据库 (SQL API) 支持通过完全扫描和增量扫描来捕�
 要在数据目录中注册新的 Azure Cosmos 数据库 (SQL API) 帐户，请执行以下操作：
 
 1. 导航到你的 Purview 帐户
-1. 在左侧导航区域中选择“源”
+1. 在左侧导航中选择“数据映射”。
 1. 选择“注册”
 1. 在“注册资源”上选择“Azure Cosmos DB (SQL API)” 
 1. 选择“继续”

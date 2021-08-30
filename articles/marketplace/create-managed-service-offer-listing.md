@@ -1,21 +1,21 @@
 ---
-title: 如何在 Microsoft 合作伙伴中心配置你的托管服务产品/服务的列表详细信息
-description: 了解如何通过合作伙伴中心配置你在 Azure 市场的托管服务产品/服务列表详细信息。
+title: 在 Microsoft 合作伙伴中心配置托管服务产品/服务列表详细信息
+description: 在 Azure 市场配置托管服务产品/服务列表详细信息。
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 12/23/2020
-ms.openlocfilehash: 5ab831ae6ab761804fc7a4665000a13ab61acadc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/12/2021
+ms.openlocfilehash: 1b2171c300fd52403da29d23f9f34d3f94961b3d
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97918111"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204492"
 ---
-# <a name="how-to-configure-your-managed-service-offer-listing-details"></a>如何配置你的托管服务产品/服务列表详细信息
+# <a name="configure-managed-service-offer-listing-details"></a>配置托管服务产品/服务列表详细信息
 
 你在合作伙伴中心的“产品/服务列表”页面上提供的信息将显示在 Azure 市场中。 这包括你的产品/服务名称、说明、媒体和其他营销资产。
 
@@ -32,7 +32,7 @@ ms.locfileid: "97918111"
 4. 在“说明”字段中，描述你的托管服务产品/服务。 此框中最多可以输入 2,000 个字符的文本（包括 HTML 标记和空格）。 有关 HTML 格式设置的信息，请参阅[产品/服务说明中支持的 HTML 标记](./supported-html-tags.md)。
 5. 在“隐私策略链接”框中，输入组织的隐私策略的链接（以 https 开头）。 你负责确保你的产品/服务符合隐私法律和法规，并负责提供有效的隐私策略。
 
-## <a name="useful-links"></a>有用的链接
+## <a name="product-information-links"></a>产品信息链接
 
 你可以选择提供有关你的解决方案的补充联机文档：
 
@@ -43,7 +43,7 @@ ms.locfileid: "97918111"
 
 输入公司中的两个人的姓名、电子邮件地址和电话号码（你可以是其中一个人）：支持联系人和工程联系人。 我们将使用此信息与你沟通有关产品/服务的事项。 此信息不会向客户显示，但可能会提供给云解决方案提供商 (CSP) 合作伙伴。
 
-## <a name="support-urls"></a>支持 URL
+## <a name="support-link"></a>支持链接
 
 如果你有面向 Azure 全球客户和/或 Azure 政府客户的支持网站，请输入其 URL（以 https 开头）。
 
@@ -56,9 +56,9 @@ ms.locfileid: "97918111"
 
 在“徽标”下，上传像素在 216 x 216 到 350 x 350 之间且格式为 .PNG 的大徽标。 合作伙伴中心会自动创建中徽标和小徽标，你以后可以替换它们。
 
-* 大徽标（216 x 216 至 350 x 350 像素）显示在 Azure 市场上的产品/服务列表中。
-* 中徽标（90 x 90 像素）在创建新资源时显示。
-* 小徽标（48 x 48 像素）用在 Azure 市场搜索结果中。
+- 大徽标（216 x 216 至 350 x 350 像素）显示在 Azure 市场上的产品/服务列表中。
+- 中徽标（90 x 90 像素）在创建新资源时显示。
+- 小徽标（48 x 48 像素）用在 Azure 市场搜索结果中。
 
 ### <a name="add-screenshots-optional"></a>添加屏幕截图（可选）
 
@@ -82,4 +82,4 @@ ms.locfileid: "97918111"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [添加预览受众](create-managed-service-offer-preview.md)
+- [添加预览受众](create-managed-service-offer-preview.md)

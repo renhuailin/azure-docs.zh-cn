@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 外部标识的新增功能
 description: 面向 Azure Active Directory 外部标识的新文档和更新的文档。
-ms.date: 06/02/2021
+ms.date: 08/03/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,60 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: fb492dd8bcc9f1c9ea3866e48ebd13277f8910ea
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 81a25af5dfa73cbeefdf5fc677da80515f20a2f1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411190"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746121"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory 外部标识：新增功能
 
 欢迎了解 Azure Active Directory 外部标识文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解外部标识服务的新增功能，请参阅 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="new-articles"></a>新文章
+
+- [在 Azure AD 外部标识自助注册用户流中使用 API 连接器保护 API](self-service-sign-up-secure-api-connector.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [外部标识的标识提供者](identity-providers.md)
+- [Microsoft 帐户 (MSA) 标识提供者（用于外部标识）](microsoft-account.md)
+- [电子邮件一次性密码身份验证](one-time-passcode.md)
+- [向应用添加自助注册用户流](self-service-sign-up-user-flow.md)
+- [Azure Active Directory B2B 协作用户的属性](user-properties.md)
+- [将 Google 添加为 B2B 来宾用户的标识提供者](google-federation.md)
+- [Azure Active Directory B2B 协作邀请兑换](redemption-experience.md)
+- [Azure Active Directory B2B 协作疑难解答](troubleshoot.md)
+- [向用户流添加 API 连接器](self-service-sign-up-add-api-connector.md)
+- [将自定义审批工作流添加到自助注册](self-service-sign-up-add-approvals.md)
+- [Azure Active Directory 中的外部标识是什么？](compare-with-b2c.md)
+- [Azure AD External Identities 的计费模型](external-identities-pricing.md)
+- [动态组和 Azure Active Directory B2B 协作](use-dynamic-groups.md)
+- [什么是 Azure Active Directory B2B 中的来宾用户访问权限？](what-is-b2b.md)
+- [使用 API 连接器自定义并扩展自助注册](api-connectors-overview.md)
+- [与适用于来宾用户的 SAML/WS-Fed 标识提供者联合（预览版）](direct-federation.md)
+- [B2B 协作邀请电子邮件的元素 - Azure Active Directory](invitation-email-elements.md)
+- [B2B 协作用户的条件访问](conditional-access.md)
+
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="new-articles"></a>新文章
+
+- [外部标识的 Azure Active Directory (Azure AD) 标识提供者](azure-ad-account.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [教程：对 B2B 用户强制执行多重身份验证](b2b-tutorial-require-mfa.md)
+- [向应用添加自助注册用户流](self-service-sign-up-user-flow.md)
+- [快速入门：在 Azure 门户中将来宾用户添加到目录](b2b-quickstart-add-guest-users-portal.md)
+- [与适用于来宾用户的 SAML/WS-Fed 标识提供者联合（预览版）](direct-federation.md)
+- [将 Google 添加为 B2B 来宾用户的标识提供者](google-federation.md)
+- [以来宾用户身份离开组织](leave-the-organization.md)
+- [Azure Active Directory B2B 协作邀请兑换](redemption-experience.md)
 
 ## <a name="may-2021"></a>2021 年 5 月
 

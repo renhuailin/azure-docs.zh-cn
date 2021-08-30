@@ -2,19 +2,18 @@
 title: 使用 Azure Data Box 进行 DPM 和 MABS 的脱机备份
 description: 可以使用 Azure Data Box 以脱机方式将初始备份数据从 DPM 和 MABS 植入。
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/29/2021
+ms.openlocfilehash: 568baf7351555511b58dba59bec404688a646126
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96752543"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730296"
 ---
-# <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 Azure Data Box 进行 DPM 和 MABS 的脱机植入（预览版）
+# <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs"></a>使用 Azure Data Box 进行 DPM 和 MABS 的脱机植入
 
 > [!NOTE]
-> 此功能适用于 Data Protection Manager (DPM) 2019 UR2 及更高版本。<br><br>
-> 对于 Microsoft Azure 备份服务器 (MABS)，此功能目前为预览版。 如果你对使用 Azure Data Box 进行 MABS 脱机植入感兴趣，请通过 [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com) 联系我们。
+> 此功能适用于 Data Protection Manager (DPM) 2019 UR2（及更高版本）和 MABS v3 UR2（及更高版本）。
 
 本文介绍如何使用 Azure Data Box 以脱机方式将初始备份数据从 DPM 和 MABS 植入 Azure 恢复服务保管库。
 
@@ -201,7 +200,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向在其中连接 A
 
 - 在 DPM/MABS 服务器成功创建对应于初始备份的恢复点之后，你可以删除与 Azure Data Box 作业关联的存储帐户（或特定内容）。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 DPM 服务器上的 Microsoft Azure 备份 (MAB) 代理会在你的租户中为你创建 Azure AD 应用程序。 此应用程序需要使用在配置脱机植入策略时创建和上传的证书来进行身份验证。
 
@@ -217,9 +216,15 @@ DPM 服务器上的 Microsoft Azure 备份 (MAB) 代理会在你的租户中为�
 
 #### <a name="step-1"></a>步骤 1
 
-检查在配置脱机备份时以下错误消息是否显示在 DPM/MABS 控制台中：
+检查在配置脱机备份时以下错误消息之一是否显示在 DPM/MABS 控制台中：
 
-![Azure 恢复服务代理](./media/offline-backup-azure-data-box-dpm-mabs/azure-recovery-services-agent.png)
+无法为当前 Azure 帐户创建脱机备份策略，因为无法将该服务器的身份验证信息上传到 Azure。（ID：100242）
+
+:::image type="content" source="./media/offline-backup-azure-data-box-dpm-mabs/azure-recovery-services-agent.png" alt-text="Azure 恢复服务代理。":::
+
+无法对 Azure 进行服务调用，查询“导入作业”状态以及将备份数据移动到恢复服务保管库时都需要该 Azure。（ID：100230）
+
+:::image type="content" source="./media/offline-backup-azure-data-box-dpm-mabs/azure-recovery-services-agent-error-screen.png" alt-text="Azure 恢复服务代理错误屏幕的屏幕截图。":::
 
 #### <a name="step-2"></a>步骤 2
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
-ms.openlocfilehash: ff1f80641dc3db1f6b69fc0223c60022f8cf8435
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7c4b0f75dd94a5aa61b75b99bbb553c98090aac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95811632"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726062"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>设置 VNet 的网络映射和 IP 寻址
 
@@ -20,9 +20,11 @@ ms.locfileid: "95811632"
 
 ## <a name="prerequisites"></a>必备条件
 
-在映射网络之前，应在源和目标 Azure 区域中创建 [Azure VNet](../virtual-network/virtual-networks-overview.md)。 
+在映射网络之前，应在源和目标 Azure 区域中创建 [Azure VNet](../virtual-network/virtual-networks-overview.md)。
 
 ## <a name="set-up-network-mapping-manually-optional"></a>手动设置网络映射（可选）
+
+>[!注意 现在可以在世界上的任何两个 Azure 区域之间执行复制。 客户不再局限于在其所在洲内进行复制。
 
 按如下所述映射网络：
 
@@ -44,12 +46,12 @@ ms.locfileid: "95811632"
 
 - Site Recovery 根据选择的目标，自动创建从源到目标区域以及从目标到源区域的网络映射。
 - 默认情况下，Site Recovery 会在目标区域中创建与源网络相同的网络。 Site Recovery 将 **-asr** 作为后缀添加到源网络名称。 可以自定义目标网络。
-- 如果已经对源网络进行了网络映射，则在为更多 VM 启用复制时，映射的目标网络将始终是默认值。 可以通过从下拉列表中选择其他可用选项来选择更改目标虚拟网络。 
+- 如果已经对源网络进行了网络映射，则在为更多 VM 启用复制时，映射的目标网络将始终是默认值。 可以通过从下拉列表中选择其他可用选项来选择更改目标虚拟网络。
 - 若要更改用于新复制的默认目标虚拟网络，需要修改现有网络映射。
 - 若要修改从区域 A 到区域 B 的网络映射，请确保首先删除从区域 B 到区域 A 的网络映射。在删除反向映射后，修改从区域 A 到区域 B 的网络映射，然后创建相关的反向映射。
 
 >[!NOTE]
->* 修改网络映射仅会更改新 VM 复制的默认值， 它不会影响现有复制的目标虚拟网络选择。 
+>* 修改网络映射仅会更改新 VM 复制的默认值， 它不会影响现有复制的目标虚拟网络选择。
 >* 如果要修改现有复制的目标网络，请转到复制项的“计算和网络设置”。
 
 ## <a name="specify-a-subnet"></a>指定子网

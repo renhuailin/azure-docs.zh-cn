@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 7dc6827f7ebd7b034ffc00906629bafe04036fbd
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 6e018985b231e67e519968c0057754c7f3383ee4
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789562"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731935"
 ---
 # <a name="azure-digital-twins-query-language-reference-join-clause"></a>Azure 数字孪生查询语言参考：JOIN 子句
 
@@ -23,9 +23,9 @@ ms.locfileid: "109789562"
 在查询时，此子句为可选项。
 
 ## <a name="core-syntax-join--related"></a>核心语法：与 JOIN...相关 
-由于 Azure 数字孪生中的关系是数字孪生体的一部分，而不是独立实体，因此，可在 `JOIN` 查询中使用 `RELATED` 关键字，以从孪生体集合引用特定类型的关系集。 可以为此关系集分配集合名称。
+由于 Azure 数字孪生中的关系属于数字孪生体，而不是独立实体，因此，可在 `JOIN` 查询中使用 `RELATED` 关键字，以从孪生体集合引用特定类型的关系集（类型是使用关系的“名称”字段从其 [DTDL 定义](concepts-models.md#basic-relationship-example) 指定的）。 在查询中可以为此关系集分配集合名称。
 
-然后，该查询必须使用 `WHERE` 子句来指定可用于支持关系查询的特定孪生体。 这可通过在源或目标孪生体的 `$dtId` 值上进行筛选来完成。
+然后，该查询必须使用 `WHERE` 子句来指定哪些特定的孪生体（一个或多个）用于支持关系查询，这可通过筛选源或目标孪生体的 `$dtId` 值来完成。
 
 ### <a name="syntax"></a>语法
 
@@ -66,7 +66,7 @@ ms.locfileid: "109789562"
 
 #### <a name="example"></a>示例
 
-以下查询说明了 Azure 数字孪生查询中可以使用的最大 `JOINs` 数。 该查询可获取 Buliding1 中的所有 LightBulb。
+以下查询说明了 Azure 数字孪生查询中可以使用的最大 `JOIN` 子句数。 该查询可获取 Buliding1 中的所有 LightBulb。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="MaxJoinExample":::
 
@@ -84,6 +84,6 @@ ms.locfileid: "109789562"
 
 ### <a name="twins-required"></a>需要孪生体
 
-无法将 Azure 数字孪生中的关系作为独立实体进行查询；还需要提供有关关系来源的源孪生体的信息。 这些信息会通过 `RELATED` 关键字，纳入 Azure 数字孪生默认 `JOIN` 的用法中。 
+无法将 Azure 数字孪生中的关系作为独立实体进行查询；还需要提供有关关系来源的源孪生体的信息。 在 Azure 数字孪生中，此功能是通过 `RELATED` 关键字纳入到 默认 `JOIN` 用法中。 
 
 具有 `JOIN` 子句的查询还必须按 `WHERE` 子句中任何孪生体的 `$dtId` 属性进行筛选，以明确可用于支持关系查询的孪生体。

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
-ms.date: 09/02/2020
-ms.openlocfilehash: 21f8109fa1db49af8f2e84833466ed204d2f59fa
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 07/05/2021
+ms.openlocfilehash: 4ab56d50bbe6eed3763540e7b993ecc4f403b09c
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536519"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113598263"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>商业市场产品/服务计划和定价
 
@@ -68,7 +68,7 @@ ms.locfileid: "111536519"
 创建计划后，“计划概述”页将显示计划的名称、ID、其他详细信息、当前发布状态和任何可用操作的列表。 可用操作将取决于计划的状态，可能包括：
 
 - 如果计划状态为“草稿”– 删除草稿。
-- 如果计划状态为“上线”- 停止销售计划或同步专用受众。
+- 如果计划状态为“上线”- 停止分发计划或同步专用受众。
 
 以下屏幕截图显示了两个产品/服务草稿。
 

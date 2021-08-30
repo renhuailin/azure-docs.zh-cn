@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa9a7b08f792c36ecf0f65e37f2f9e9c551bca8c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c824ee3a8365261fa6409bf79904cde1b409fc26
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088131"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734506"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理单元中添加和管理组
 
@@ -45,21 +45,29 @@ ms.locfileid: "110088131"
 
 * 从“组”窗格：
 
-  1. 在 Azure 门户中，转到“Azure AD”。
-  1. 选择“组”，然后选择要分配给管理单元的组。 
+  1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
+
+  1. 选择“Azure Active Directory” > “组”。
+
+  1. 选择要分配给管理单元的组。
+
   1. 在左侧窗格中，选择“管理单元”以显示该组分配到的管理单元的列表。 
 
      ![“管理单元”窗格上“分配给管理单元”链接的屏幕截图。](./media/admin-units-add-manage-groups/assign-to-group-1.png)
 
   1. 选择“分配给管理单元”。
+
   1. 在右侧窗格中，选择管理单元。
 
-* 从“管理单元” > “所有组”窗格中 ：
+* 在“管理单元” > “组”窗格中 ：
 
-  1. 在 Azure 门户中，转到“Azure AD”。
+  1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
+
+  1. 选择“Azure Active Directory” > “管理单元” 。
   
-  1. 在左侧窗格中，选择“管理单元”，然后选择“所有组” 。 
-     已分配给管理单元的所有组显示在右侧窗格中。 
+  1. 选择要向其添加组的管理单元。
+  
+  1. 选择“组”。 已分配给管理单元的所有组显示在右侧窗格中。 
 
   1. 在“组”窗格中，选择“添加” 。
     右侧窗格列出了 Azure AD 组织中的所有可用组。 

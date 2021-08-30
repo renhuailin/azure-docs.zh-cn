@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein
-ms.date: 4/16/2021
-ms.openlocfilehash: 514e7e229ba1b72f2c357f6cefdd272889ed46b9
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.reviewer: mathoma, wiassaf
+ms.date: 7/29/2021
+ms.openlocfilehash: ac1241b28ae85f19aa4bfdbc1a92310b64d88462
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591001"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745756"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 在无服务器数据库和预配的计算数据库中，如果使用了所有可用内存，则可能会逐出缓存条目。
 
-请注意，当 CPU 使用率较低时，主动缓存利用率可能会保持较高水平（具体取决于使用模式），并会阻止内存回收。  此外，用户活动停止后，在内存回收之前，可能会有额外的延迟，因为后台进程会定期响应先前的用户活动。  例如，删除操作和 QDS 清除任务会生成标记为“需删除”的虚影记录，但在虚影清除进程运行（这可能涉及到将数据页读入缓存）之前不会进行物理删除。
+当 CPU 使用率较低时，主动缓存利用率可能会保持较高水平（具体取决于使用模式），并会阻止内存回收。  此外，用户活动停止后，在内存回收之前，可能会有其他延迟，因为后台进程会定期响应先前的用户活动。  例如，删除操作和查询存储清除任务会生成标记为“删除”的虚影记录，但该记录不会被物理删除，直到虚影清除进程运行为止。 虚影清除可能涉及将其他数据页读入缓存。
 
 #### <a name="cache-hydration"></a>缓存合成
 
@@ -109,20 +109,59 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 如果在自动暂停延迟的时间段内，下面的所有条件均成立，则会触发自动暂停：
 
-- 会话数目 = 0
-- CPU = 0（对于在用户池中运行的用户工作负荷）
+- 会话数 = 0
+- CPU = 0（对于在用户资源池中运行的用户工作负载）
 
 如有需要，系统也提供了禁用自动暂停的选项。
 
-以下功能不支持自动暂停，但支持自动缩放。  如果使用了以下任意功能，那么无论数据库处于不活动状态的时间有多长，都必须禁用自动暂停，让数据库保持联机状态：
+以下功能不支持自动暂停，但支持自动缩放。 如果使用了以下任意功能，那么无论数据库处于不活动状态的时间有多长，都必须禁用自动暂停，让数据库保持联机状态：
 
-- 异地复制（活动异地复制和自动故障转移组）。
-- 长期备份保留 (LTR)。
-- SQL 数据同步中使用的同步数据库。与同步数据库不同，中心数据库和成员数据库支持自动暂停。
-- DNS 别名
-- 弹性作业（预览版）中使用的作业数据库。
+- 异地复制（[活动异地复制](active-geo-replication-overview.md)和[自动故障转移组](auto-failover-group-overview.md)）。
+- [长期备份保留](long-term-retention-overview.md) (LTR)。
+- [SQL 数据同步](sql-data-sync-data-sql-server-sql-database.md)中使用的同步数据库。与同步数据库不同，中心数据库和成员数据库支持自动暂停。
+- 为包含无服务器数据库的逻辑服务器创建的 [DNS 别名](dns-alias-overview.md)。
+- [弹性作业（预览版）](elastic-jobs-overview.md)，当作业数据库是无服务器数据库时。 弹性作业面向的数据库支持自动暂停，并将通过作业连接恢复。
 
 在部署某些需要数据库联机的服务更新期间，会暂时阻止自动暂停。  在这种情况下，一旦服务更新完成，就会再次允许自动暂停。
+
+#### <a name="auto-pause-troubleshooting"></a>自动暂停故障排除
+
+如果启用了自动暂停，但数据库在延迟期后未自动暂停，并且未使用上面列出的功能，可能是应用程序或用户在阻止自动暂停。 要查看当前是否有任何应用程序或用户会话连接到数据库，请使用任何客户端工具连接到数据库，然后执行以下查询：
+
+```sql
+SELECT session_id,
+       host_name,
+       program_name,
+       client_interface_name,
+       login_name,
+       status,
+       login_time,
+       last_request_start_time,
+       last_request_end_time
+FROM sys.dm_exec_sessions AS s
+INNER JOIN sys.dm_resource_governor_workload_groups AS wg
+ON s.group_id = wg.group_id
+WHERE s.session_id <> @@SPID
+      AND
+      (
+      (
+      wg.name like 'UserPrimaryGroup.DB%'
+      AND
+      TRY_CAST(RIGHT(wg.name, LEN(wg.name) - LEN('UserPrimaryGroup.DB') - 2) AS int) = DB_ID()
+      )
+      OR
+      wg.name = 'DACGroup'
+      );
+```
+
+> [!TIP]
+> 运行查询后，确保断开与数据库的连接。 否则，查询所使用的打开会话将阻止自动暂停。
+
+如果结果集不为空，则表示当前有会话阻止自动暂停。 
+
+如果结果集为空，则会话仍有可能在自动暂停延迟期间更早的某个时间点暂时打开。 要查看此类活动是否在延迟期间发生，可以使用 [Azure SQL 审核](auditing-overview.md)并检查相关时间段内的审核数据。
+
+无服务器数据库无法按预期自动暂停的最常见原因是，无论有无并发 CPU 利用率，用户资源池中都存在打开的会话。 请注意，某些[功能](#auto-pausing)不支持自动暂停，但支持自动缩放。
 
 ### <a name="auto-resuming"></a>自动恢复
 
@@ -155,11 +194,11 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 ### <a name="latency"></a>延迟
 
-自动恢复或自动暂停无服务器数据库的延迟时间通常为 1 分钟自动恢复，1-10 分钟自动暂停。
+自动恢复和自动暂停无服务器数据库的延迟通常为 1 分钟自动恢复，延迟期到期后 1-10 分钟自动暂停。
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>客户托管透明数据加密 (BYOK)
 
-如果使用[客户托管的透明数据加密](transparent-data-encryption-byok-overview.md) (BYOK)，并且在发生密钥删除或吊销时自动暂停了无服务器数据库，则该数据库将保持自动暂停状态。  在这种情况下，在下次恢复数据库后，大约 10 分钟内数据库将无法访问。  该数据库变为不可访问后，恢复过程将与预配的计算数据库相同。  如果在发生密钥删除或吊销时无服务器数据库处于联机状态，则该数据库也将在大约 10 分钟内变得不可访问，其方式与预配的计算数据库相同。
+如果使用[客户托管的透明数据加密](transparent-data-encryption-byok-overview.md) (BYOK)，并且在发生密钥删除或吊销时自动暂停了无服务器数据库，则该数据库将保持自动暂停状态。  在这种情况下，在下次恢复数据库后，大约 10 分钟内数据库将无法访问。 该数据库变为不可访问后，恢复过程将与预配的计算数据库相同。 如果在发生密钥删除或吊销时无服务器数据库处于联机状态，则该数据库也将在大约 10 分钟内变得不可访问，其方式与预配的计算数据库相同。
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>载入无服务器计算层
 
@@ -180,7 +219,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 以下示例在无服务器计算层中创建新数据库。
 
-#### <a name="use-the-azure-portal"></a>使用 Azure 门户
+#### <a name="use-azure-portal"></a>使用 Azure 门户
 
 请参阅[快速入门：使用 Azure 门户在 Azure SQL 数据库中创建单一数据库](single-database-create-quickstart.md)。
 
@@ -192,7 +231,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
-#### <a name="use-the-azure-cli"></a>使用 Azure CLI
+#### <a name="use-azure-cli"></a>使用 Azure CLI
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
@@ -202,7 +241,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
 
-使用 T-SQL 时，最小 vCore 数和自动暂停延迟将应用默认值。
+使用 T-SQL 时，最小 vCore 数和自动暂停延迟将应用默认值。 稍后可以从门户或通过其他管理 API（PowerShell、Azure CLI、REST API）对其进行更改。
 
 ```sql
 CREATE DATABASE testdb
@@ -217,24 +256,22 @@ CREATE DATABASE testdb
 
 #### <a name="use-powershell"></a>使用 PowerShell
 
-
 ```powershell
 Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
   -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 `
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-#### <a name="use-the-azure-cli"></a>使用 Azure CLI
+#### <a name="use-azure-cli"></a>使用 Azure CLI
 
 ```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
   --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
 ```
 
-
 #### <a name="use-transact-sql-t-sql"></a>使用 Transact-SQL (T-SQL)
 
-使用 T-SQL 时，最小 vCore 数和自动暂停延迟将应用默认值。
+使用 T-SQL 时，最小 vCore 数和自动暂停延迟将应用默认值。 稍后可以从门户或通过其他管理 API（PowerShell、Azure CLI、REST API）对其进行更改。
 
 ```sql
 ALTER DATABASE testdb 
@@ -253,10 +290,9 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 在 PowerShell 中结合 `MaxVcore`、`MinVcore` 和 `AutoPauseDelayInMinutes` 参数使用 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) 命令修改最大或最小 vCore 数和自动暂停延迟。
 
-### <a name="use-the-azure-cli"></a>使用 Azure CLI
+### <a name="use-azure-cli"></a>使用 Azure CLI
 
 在 Azure CLI 中结合 `capacity`、`min-capacity` 和 `auto-pause-delay` 参数使用 [az sql db update](/cli/azure/sql/db#az_sql_db_update) 命令修改最大或最小 vCore 数和自动暂停延迟。
-
 
 ## <a name="monitoring"></a>监视
 
@@ -266,26 +302,26 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 #### <a name="app-package"></a>应用包
 
-应用包是数据库最外层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 应用包包含 SQL 实例和外部服务（例如全文搜索），这一组合共同限定了所有用户和 SQL 数据库中数据库使用的系统资源的范围。 SQL 实例通常决定整个应用包的整体资源利用率。
+应用包是数据库最外层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 应用包包含 SQL 实例和全文搜索等外部服务，这一组合共同限定了所有用户和 SQL 数据库中数据库使用的系统资源的范围。 SQL 实例通常决定整个应用包的整体资源利用率。
 
 #### <a name="user-resource-pool"></a>用户资源池
 
-用户资源池是数据库最内层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 用户资源池限定由 DDL 查询（例如 CREATE 和 ALTER）和 DML 查询（例如 SELECT、INSERT、UPDATE 和 DELETE）生成的用户工作负荷的 CPU 和 IO 范围。 这些查询通常表示应用包中最重要的使用率比例。
+用户资源池是数据库内层的资源管理边界，无论数据库位于无服务器计算层还是预配计算层中。 用户资源池限定由 DDL 查询（如 CREATE 和 ALTER）、DML 查询（如 INSERT、UPDATE、DELETE 和 MERGE）和 SELECT 查询生成的用户工作负载的 CPU 和 IO 的范围。 这些查询通常表示应用包中最重要的使用率比例。
 
 ### <a name="metrics"></a>指标
 
-下表列出了用于监视无服务器数据库应用包和用户池的资源使用情况的指标：
+下表列出了用于监视无服务器数据库的应用包和用户资源池的资源使用情况的指标：
 
 |实体|指标|说明|Units|
 |---|---|---|---|
 |应用包|app_cpu_percent|应用使用的 vCore 数相对于应用允许的最大 vCore 数的百分比。|百分比|
 |应用包|app_cpu_billed|报告期内收取的应用计算费用。 在此期间支付的金额是此指标和 vCore 单位价格的乘积。 <br><br>此指标的值是通过将每秒使用的最大 CPU 和内存使用量按时间进行汇总来得到的。 如果使用的量小于按照最小 vCore 数和最小内存量预配的最小量，则按照预配的最小量进行计费。 为了比较 CPU 与内存以进行计费，可通过将内存量 (GB) 按照每个 vCore 3 GB 进行重新缩放，将内存归一化为以 vCore 数为单位。|vCore 秒|
 |应用包|app_memory_percent|应用使用的内存相对于应用允许的最大内存的百分比。|百分比|
-|用户池|cpu_percent|用户工作负载使用的 vCore 数相对于用户工作负载允许的最大 vCore 数的百分比。|百分比|
-|用户池|data_IO_percent|用户工作负载使用的数据 IOPS 相对于用户工作负载允许的最大数据 IOPS 的百分比。|百分比|
-|用户池|log_IO_percent|用户工作负载使用的日志 MB/s 相对于用户工作负载允许的最大日志 MB/s 的百分比。|百分比|
-|用户池|workers_percent|用户工作负载使用的工作进程数相对于用户工作负载允许的最大工作进程数的百分比。|百分比|
-|用户池|sessions_percent|用户工作负载使用的会话数相对于用户工作负载允许的最大会话数的百分比。|百分比|
+|用户资源池|cpu_percent|用户工作负载使用的 vCore 数相对于用户工作负载允许的最大 vCore 数的百分比。|百分比|
+|用户资源池|data_IO_percent|用户工作负载使用的数据 IOPS 相对于用户工作负载允许的最大数据 IOPS 的百分比。|百分比|
+|用户资源池|log_IO_percent|用户工作负载使用的日志 MB/s 相对于用户工作负载允许的最大日志 MB/s 的百分比。|百分比|
+|用户资源池|workers_percent|用户工作负载使用的工作进程数相对于用户工作负载允许的最大工作进程数的百分比。|百分比|
+|用户资源池|sessions_percent|用户工作负载使用的会话数相对于用户工作负载允许的最大会话数的百分比。|百分比|
 
 ### <a name="pause-and-resume-status"></a>暂停和恢复状态
 
@@ -300,12 +336,11 @@ Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername 
   | Select -ExpandProperty "Status"
 ```
 
-#### <a name="use-the-azure-cli"></a>使用 Azure CLI
+#### <a name="use-azure-cli"></a>使用 Azure CLI
 
 ```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
 ```
-
 
 ## <a name="resource-limits"></a>资源限制
 
@@ -356,7 +391,7 @@ vCore 单位价格是每个 vCore 每秒的费用。 请参考 [Azure SQL 数据
 |8:00-24:00|0|0|暂停时不计收计算费用|0 vCore 秒|
 |24 小时内计费的总 vCore 秒||||50400 vCore 秒|
 
-假设计算单位的价格为 0.000145 美元/vCore/秒。  那么，此 24 小时时段内的计算费用是计算单位价格和计费 vCore 秒数的积：0.000145 美元/vCore/秒 * 50400 vCore 秒 = 7.31 美元
+假设计算单位的价格为 0.000145 美元/vCore/秒。  那么，此 24 小时时段内的计算费用是计算单位价格和计费 vCore 秒数的积：0.000145 美元/vCore/秒 * 50400 vCore 秒 = 7.31 美元。
 
 ### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure 混合权益和预留容量
 

@@ -7,33 +7,36 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 07/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: c55ca73d63fb380dece0350de482dcc9087bd315
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 1b50fbbdd38d1bb24c1732c465784c3ddb757e3f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744802"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114454775"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure 认知搜索中的语义搜索
 
 > [!IMPORTANT]
-> 语义搜索目前处于公共预览阶段，在预览版 REST API 和门户可用。 根据[使用条款补充](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览版功能按原样提供，不保证与正式版实现的功能相同。 这些功能将计费。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
+> 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，语义搜索以公共预览版的形式提供。 它可通过 Azure 门户、预览版 REST API 和 beta 版本的 SDK 获得。 这些功能将计费。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
 
-语义搜索是与查询相关的功能的集合，将语义相关性和语言理解添加到搜索结果。 本文简要综合地介绍了语义搜索，其中描述了每个功能以及它们是如何协同工作的。 嵌入的视频介绍了此项技术，结尾部分介绍了可用性和定价。
+语义搜索是与查询相关的功能的集合，可为搜索结果提供语义相关性和语言理解。 本文简要综合地介绍了语义搜索，其中描述了每个功能以及它们是如何协同工作的。 嵌入的视频介绍了此项技术，结尾部分介绍了可用性和定价。
 
 语义搜索是一项高级功能。 建议阅读本文以了解背景信息，但如果希望立即开始使用，请执行以下步骤：
 
-1. [检查区域性和服务层要求](#availability-and-pricing)。
-1. [注册预览版计划](https://aka.ms/SemanticSearchPreviewSignup)。 最多可能需要两个工作日来处理请求。
-1. 在接受后，创建或修改查询，以返回[语义字幕和亮点](semantic-how-to-query-request.md)。
-1. 添加更多查询属性，以便也返回[语义答案](semantic-answers.md)。
-1. 还可以选择包含[拼写检查](speller-how-to-add.md)属性，以最大程度地提高精准率和召回率。
+> [!div class="checklist"]
+> * [检查区域性和服务层要求](#availability-and-pricing)。
+> * [注册预览版计划](https://aka.ms/SemanticSearchPreviewSignup)。 最多可能需要两个工作日来处理请求。
+> * 在接受后，创建或修改查询以[返回语义描述和重点内容](semantic-how-to-query-request.md)。
+> * 添加更多查询属性，以便也返回[语义答案](semantic-answers.md)。
+> * （可选）调用[拼写检查](speller-how-to-add.md)，最大限度地提高精准率和召回率。
 
 ## <a name="what-is-semantic-search"></a>什么是语义搜索？
 
-语义搜索是与查询相关的 AI 的可选层。 在搜索服务中启用时，它通过两种方式来扩展传统的查询执行管道。 首先，它会添加了一个可选的语义排名模型；其次，它会在响应中返回字幕和答案。
+语义搜索是用于提高搜索结果质量的功能的集合。 针对搜索服务启用时，它通过两种方式来扩展查询执行管道。 首先，它在初始结果集的基础上添加二次排名，将与语义最接近的结果提升到列表顶部。 其次，它会提取并返回响应中的描述和答案，你可以在搜索页面上呈现它们以改进用户的搜索体验。
+
+## <a name="how-semantic-ranking-works"></a>语义排名的工作原理
 
 语义排名查找词语之间的上下文和相关性，从而提高使查询更有意义的匹配度。 语言理解在你的内容中找到摘要或字幕以及答案，并将它们包括在响应中，然后，这些内容可以呈现在搜索结果页面上，以获得更高效的搜索体验 。
 
@@ -45,11 +48,11 @@ ms.locfileid: "111744802"
 
 > [!VIDEO https://www.youtube.com/embed/yOf0WfVd_V0]
 
-## <a name="feature-description-and-workflow"></a>功能说明和工作流
+## <a name="features-in-semantic-search"></a>语义搜索中的功能
 
-语义搜索通过添加以下功能提高精准率和召回率：
+语义搜索通过以下新功能提高精准率和召回率：
 
-| 功能 | 说明 |
+| Feature | 说明 |
 |---------|-------------|
 | [拼写检查](speller-how-to-add.md) | 在查询词语到达搜索引擎之前纠正拼写错误。 |
 | [语义排名](semantic-ranking.md) | 使用上下文或语义含义计算相关性分数。 |
@@ -74,31 +77,31 @@ ms.locfileid: "111744802"
 
 ## <a name="semantic-capabilities-and-limitations"></a>语义功能和限制
 
-语义搜索是一项较新的技术，因此，对于它能够和无法实现的效果，必须设定预期。
+语义搜索是一项较新的技术，因此，对于它能够和无法实现的效果，必须设定预期。 它通过两种方式来提高搜索结果的质量：
 
-它通过两种方式来改善搜索结果的质量。 首先，在语义上更接近原始查询意图的文档升级是一个显著优点。 其次，在字幕和潜在的答案都出现在页面上时，可以更加直接地使用结果。 在任何时候，该引擎都会处理现有的内容。 语义搜索中使用的语言模型旨在提取看似答案的完整字符串，而不会尝试编写新字符串来作为某个查询的答案，或作为某个匹配文档的字幕。
+* 首先，它会提升语义更接近原始查询意图的匹配项。
 
-语义搜索不是逻辑引擎，并且不会从文档或文档语料库内的不同内容片段中推断信息。 例如，如果“沙漠中的度假酒店”查询缺少地理输入，则引擎将不会生成亚利桑那或内华达的酒店的匹配项，虽然这两个州都有沙漠。 同样，如果查询包含子句“过去 5 年中”，则引擎不会根据要返回的当前日期计算时间间隔。
+* 其次，通过它可以实现在页面上呈现描述和可能的答案，使结果更易于使用。
 
-在认知搜索中，对上述情形可能有帮助的机制包括[同义词映射](search-synonyms.md)或[日期筛选器](search-query-odata-filter.md)，前者可用于在表面上不同的术语间生成关联，后者可指定为 OData 表达式。
+语义搜索并不适用于每种场景，在继续之前，请确保拥有可以利用语义搜索功能的内容。 语义搜索中的语言模型最适用于信息丰富并且为散文结构的可搜索内容。 例如，在评估内容以获取答案时，模型会扫描并提取看起来像答案的逐字字符串，但不会将新字符串作为查询的答案或作为匹配文档的描述。 若要回答“什么汽车的油耗最低”这个问题，索引应该包含“混合动力汽车是市场上油耗最低的汽车”等短语。
+
+语义搜索无法关联或推断来自文档或文档语料库中不同内容片段的信息。 例如，如果“沙漠中的度假酒店”查询缺少地理输入，则引擎将不会生成亚利桑那或内华达的酒店的匹配项，虽然这两个州都有沙漠。 同样，如果查询包含子句“过去 5 年中”，则引擎不会根据要返回的当前日期计算时间间隔。 在认知搜索中，对上述情形可能有帮助的机制包括[同义词映射](search-synonyms.md)或[日期筛选器](search-query-odata-filter.md)，前者可用于在表面上不同的术语间生成关联，后者可指定为 OData 表达式。
 
 ## <a name="availability-and-pricing"></a>可用性和定价
 
-语义搜索可通过[注册登记](https://aka.ms/SemanticSearchPreviewSignup)获得。 在 3 月 2 日推出预览版到 7 月初之间，语义功能免费提供。
+语义搜索可通过[注册登记](https://aka.ms/SemanticSearchPreviewSignup)获得。 通过一个注册即可获得语义搜索和拼写检查。
 
-| 功能 | 层 | 区域 | 注册 | 预计定价 |
+| 功能 | 层 | 区域 | 注册 | 定价 |
 |---------|------|--------|---------------------|-------------------|
-| 语义搜索（字幕、亮点、答案） | 标准层 (S1、S2、S3) | 美国中北部、美国西部、美国西部 2、美国东部 2、北欧、西欧 | 必须 | 从 7 月初开始，预期定价为每月 500 美元，适用于前 250,000 个查询，每增加 1,000 个查询收费 2 美元。  |
+| 语义搜索（字幕、亮点、答案） | 标准层 (S1、S2、S3) | 美国中北部、美国西部、美国西部 2、美国东部 2、北欧、西欧 | 必须 | [认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)  |
 | 拼写检查 | 任意 | 美国中北部、美国西部、美国西部 2、美国东部 2、北欧、西欧 | 必须 | 无（免费） |
 
-语义功能和拼写检查都有一个[注册登记](https://aka.ms/SemanticSearchPreviewSignup)。 
+没有语义搜索也可免费使用拼写检查。 如果查询请求包括 `queryType=semantic` 并且搜索字符串不为空（例如 `search=pet friendly hotels in new york`），则会对语义搜索收费。 空搜索（`search=*` 的查询）不收费，即使 queryType 设置为 `semantic` 也是如此。
 
-没有语义搜索也可免费使用拼写检查。 如果查询请求包括 `queryType=semantic` 并且搜索字符串不为空（例如 `search=pet friendly hotels in new york`），则会对语义搜索收费。 空搜索（`search=*` 的查询）不收费。
-
-[认知搜索定价页面](https://azure.microsoft.com/pricing/details/search/)和[估算和管理成本](search-sku-manage-costs.md)中将会介绍最终的定价信息。
+如果不希望在搜索服务中使用语义搜索功能，可以[禁用语义搜索](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#searchsemanticsearch)来防止意外使用和费用。
 
 ## <a name="next-steps"></a>后续步骤
 
 在符合上一部分所述层级和区域要求的搜索服务上[注册](https://aka.ms/SemanticSearchPreviewSignup)预览版。
 
-最多可能需要两个工作日来处理请求。 在服务准备就绪后，请[创建语义查询](semantic-how-to-query-request.md)来查看语义排名的运行状况。
+最多可能需要两个工作日来处理请求。 服务准备就绪后，[创建语义查询](semantic-how-to-query-request.md)以评估它针对内容的表现。

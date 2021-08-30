@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 07/29/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e2eafae185551c79d651ec6dcf39ad11eb8534
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a945afeedbd57f33163489a149c8d7da9c3925
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96742113"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744183"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>将 RADIUS 身份验证与 Azure 多重身份验证服务器集成
 
@@ -83,7 +83,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 
 * 将设备/服务器配置为通过 RADIUS 向 Azure 多重身份验证服务器的 IP 地址进行身份验证，后者充当 RADIUS 服务器。
 * 使用之前配置的共享机密。
-* 将 RADIUS 超时配置为 30-60 秒，以便有时间验证用户的凭据、执行双重验证、接收其响应，然后对 RADIUS 访问请求做出响应。
+* 将 RADIUS 超时配置为 60 秒，以便有时间验证用户的凭据、执行双重验证、接收其响应，然后对 RADIUS 访问请求做出响应。
 
 ## <a name="next-steps"></a>后续步骤
 

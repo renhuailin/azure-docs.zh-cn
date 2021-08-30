@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: 1799aff8bff96d404ddcbefbf58a5f5014cdba6a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b876cd702a2398e8dcb0e1a0be5fffce0615e58d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871582"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750820"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight 中的 Hive Warehouse Connector 支持的 Apache Spark 操作
 
@@ -66,7 +66,7 @@ df.filter("state = 'Colorado'").show()
 
 ## <a name="writing-out-spark-dataframes-to-hive-tables"></a>将 Spark 数据帧写入 Hive 表
 
-Spark 本身不支持写入 Hive 的托管 ACID 表。 但是，使用 HWC 可以将任何数据帧写入 Hive 表。 可以在以下示例中看到此功能的工作方式：
+Spark 本身不支持写入 Hive 的托管 ACID 表。 但是，使用 HWC 可以将任何数据帧写入 Hive 表。 以下示例演示了此功能的用法：
 
 1. 创建名为 `sampletable_colorado` 的表，并使用以下命令指定其列：
 
@@ -74,13 +74,13 @@ Spark 本身不支持写入 Hive 的托管 ACID 表。 但是，使用 HWC 可�
     hive.createTable("sampletable_colorado").column("clientid","string").column("querytime","string").column("market","string").column("deviceplatform","string").column("devicemake","string").column("devicemodel","string").column("state","string").column("country","string").column("querydwelltime","double").column("sessionid","bigint").column("sessionpagevieworder","bigint").create()
     ```
 
-1. 筛选列 `state` 等于 `Colorado` 的表 `hivesampletable`。 此 hive 查询使用 `write` 函数返回存储在 Hive 表 `sampletable_colorado` 中的 Spark 数据帧 ans sis。
+1. 筛选列 `state` 等于 `Colorado` 的表 `hivesampletable`。 此 hive 查询使用 `write` 函数返回存储在 Hive 表 `sampletable_colorado` 中的 Spark 数据帧和结果。
 
     ```scala
     hive.table("hivesampletable").filter("state = 'Colorado'").write.format("com.hortonworks.spark.sql.hive.llap.HiveWarehouseConnector").mode("append").option("table","sampletable_colorado").save()
     ```
 
-1. 通过以下命令查看结果：
+1. 使用以下命令查看结果：
 
     ```scala
     hive.table("sampletable_colorado").show()
@@ -106,7 +106,7 @@ Spark 本身不支持写入 Hive 的托管 ACID 表。 但是，使用 HWC 可�
 
 1. 通过执行以下步骤，为创建的 Spark 流生成数据：
     1. 在同一个 Spark 群集上打开另一个 SSH 会话。
-    1. 在命令提示符下键入 `nc -lk 9999`。 此命令使用 netcat 实用工具通过命令行将数据发送到指定的端口。
+    1. 在命令提示符下键入 `nc -lk 9999`。 此命令使用 `netcat` 实用工具将数据从命令行发送到指定端口。
 
 1. 返回到第一个 SSH 会话，并创建新的 Hive 表来保存流数据。 在 spark-shell 中输入以下命令：
 
@@ -137,10 +137,11 @@ Spark 本身不支持写入 Hive 的托管 ACID 表。 但是，使用 HWC 可�
     hive.table("stream_table").show()
     ```
 
-使用 **Ctrl + C** 停止第二个 SSH 会话上的 netcat。 使用 `:q` 在第一个 SSH 会话中退出 spark shell。
+使用 Ctrl + C 在第二个 SSH 会话上停止 `netcat`。 使用 `:q` 在第一个 SSH 会话中退出 spark shell。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [将 HWC 与 Apache Spark 和 Apache Hive 集成](./apache-hive-warehouse-connector.md)
 * [将交互式查询与 HDInsight 配合使用](./apache-interactive-query-get-started.md)
 * [将 HWC 与 Apache Zeppelin 集成](./apache-hive-warehouse-connector-zeppelin.md)
+* [HWC 支持的 API](./hive-warehouse-connector-apis.md)

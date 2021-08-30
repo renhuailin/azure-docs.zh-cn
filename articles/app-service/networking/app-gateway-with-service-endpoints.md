@@ -1,6 +1,6 @@
 ---
-title: 应用程序网关与服务终结点的集成 - Azure 应用服务 | Microsoft Docs
-description: 介绍应用程序网关如何与使用服务终结点保护的 Azure 应用服务集成。
+title: 应用程序网关集成 - Azure 应用服务 | Microsoft Docs
+description: 介绍应用程序网关如何与 Azure 应用服务集成。
 services: app-service
 documentationcenter: ''
 author: madsd
@@ -11,18 +11,18 @@ ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 08/04/2021
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: b383c28ca5097a6a30dc43f48213b0793ccdee11
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 50de997203357f86cae4a684eb55b5e30e97b712
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110096375"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736106"
 ---
-# <a name="application-gateway-integration-with-service-endpoints"></a>应用程序网关与服务终结点的集成
-应用服务有三种变体，需要对它们采用略微不同的配置，才能使其与 Azure 应用程序网关集成。 这些变体包括普通应用服务（也称为多租户）、内部负载均衡器 (ILB) 应用服务环境 (ASE) 和外部 ASE。 本文逐步介绍如何使用应用服务（多租户）对其进行配置，并讨论有关 ILB 和外部 ASE 的注意事项。
+# <a name="application-gateway-integration"></a>应用程序网关集成
+应用服务有三种变体，需要对它们采用略微不同的配置，才能使其与 Azure 应用程序网关集成。 这些变体包括普通应用服务（也称为多租户）、内部负载均衡器 (ILB) 应用服务环境 (ASE) 和外部 ASE。 本文将演练如何通过应用服务（多租户）来配置网关，使用服务终结点来保护流量。 本文还将讨论有关使用专用终结点和与 ILB 以及外部 ASE 集成的注意事项。 最后，本文提出了有关 scm/kudu 网站的注意事项。
 
 ## <a name="integration-with-app-service-multi-tenant"></a>与应用服务（多租户）集成
 应用服务（多租户）具有面向 Internet 的公共终结点。 使用[服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)可以只允许来自 Azure 虚拟网络中特定子网的流量，并阻止其他所有流量。 在以下方案中，我们将使用此功能来确保应用服务实例只能接收来自特定应用程序网关实例的流量。
@@ -40,7 +40,7 @@ ms.locfileid: "110096375"
 
 现在，可以通过应用程序网关访问应用服务，但如果尝试直接访问应用服务，将会收到 403 HTTP 错误，表示网站已停止。
 
-![屏幕截图显示“错误 403 - 禁止访问”文本。](./media/app-gateway-with-service-endpoints/website-403-forbidden.png)
+:::image type="content" source="./media/app-gateway-with-service-endpoints/website-403-forbidden.png" alt-text="屏幕截图显示“错误 403 - 禁止访问”文本。":::
 
 ## <a name="using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 [资源管理器部署模板][template-app-gateway-app-service-complete]将预配完整方案。 此方案包括使用服务终结点和访问限制锁定的应用服务实例，以便仅从应用程序网关接收流量。 该模板包含许多智能默认值，以及添加到资源名称的唯一后缀（以简化模板）。 若要替代这些内容，必须克隆存储库，或下载模板并对其进行编辑。
@@ -55,6 +55,12 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 ```
 
 在默认配置中，该命令将确保在子网中设置服务终结点配置，并在应用服务中设置访问限制。
+
+## <a name="considerations-when-using-private-endpoint"></a>使用专用终结点的注意事项
+
+你可以使用专用终结点替代服务终结点，来保护应用程序网关和应用服务（多租户）之间的流量。 你需要确保应用程序网关可以 DNS 解析应用服务应用的专用 IP，或者使用后端池中的专用 IP，并替代 http 设置中的主机名。
+
+:::image type="content" source="./media/app-gateway-with-service-endpoints/private-endpoint-appgw.png" alt-text="关系图显示流量流向 Azure 虚拟网络中的应用程序网关，然后从那里通过专用终结点流向应用服务中的应用实例。":::
 
 ## <a name="considerations-for-ilb-ase"></a>ILB ASE 的注意事项
 ILB ASE 不会向 Internet 公开，因此，实例与应用程序网关之间的流量已隔离到虚拟网络。 以下[操作指南](../environment/integrate-with-application-gateway.md)使用 Azure 门户配置 ILB ASE 并将其与应用程序网关集成。

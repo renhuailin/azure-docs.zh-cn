@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: 385bf6382fd25406fc9927df806f35dbf973d8fa
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9a5d14c3363f5d4b4d25e0592b184b6e706fef6b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142524"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734287"
 ---
 # <a name="enable-sql-insights-preview"></a>启用 SQL 见解（预览版）
 本文介绍如何启用 [SQL 见解](sql-insights-overview.md)来监视 SQL 部署。 通过连接到 SQL 部署的 Azure 虚拟机来进行监视，并且该虚拟机使用动态管理视图 (DMV) 来收集监视数据。 可以使用监视配置文件控制要收集的数据集和收集频率。
@@ -18,8 +18,11 @@ ms.locfileid: "108142524"
 > [!NOTE]
 > 若要通过使用资源管理器模板创建监视配置文件和虚拟机来启用 SQL 见解，请参阅 [SQL 见解的资源管理器模板示例](resource-manager-sql-insights.md)。
 
+若要了解如何启用 SQL 见解，还可以观看此“公开的数据”剧集。
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/How-to-Set-up-Azure-Monitor-for-SQL-Insights/player?format=ny]
+
 ## <a name="create-log-analytics-workspace"></a>创建 Log Analytics 工作区
-SQL 见解将其数据存储在一个或多个 [Log Analytics 工作区](../logs/data-platform-logs.md#log-analytics-workspaces)中。  在启用 SQL 见解前，需要[创建一个工作区](../logs/quick-create-workspace.md)或选择一个现有工作区。 单个工作区可使用多个监视配置文件，但工作区和配置文件必须位于同一 Azure 区域。 若要启用并访问 SQL 见解中的功能，必须在工作区中拥有 [Log Analytics 参与者](../logs/manage-access.md)角色。 
+SQL 见解将其数据存储在一个或多个 [Log Analytics 工作区](../logs/data-platform-logs.md#log-analytics-and-workspaces)中。  在启用 SQL 见解前，需要[创建一个工作区](../logs/quick-create-workspace.md)或选择一个现有工作区。 单个工作区可使用多个监视配置文件，但工作区和配置文件必须位于同一 Azure 区域。 若要启用并访问 SQL 见解中的功能，必须在工作区中拥有 [Log Analytics 参与者](../logs/manage-access.md)角色。 
 
 ## <a name="create-monitoring-user"></a>创建监视用户 
 需要在要监视的 SQL 部署中设置一个用户。 针对不同类型的 SQL 部署，请按照以下过程进行操作。
@@ -28,6 +31,15 @@ SQL 见解将其数据存储在一个或多个 [Log Analytics 工作区](../logs
 
 
 ### <a name="azure-sql-database"></a>Azure SQL 数据库
+
+> [!NOTE]
+> SQL 见解不支持以下 Azure SQL 数据库方案：
+> - **弹性池**：无法收集弹性池的指标。 无法收集弹性池中数据库的指标。
+> - **低服务层级**：无法收集基本、S0、S1 和 S2 [服务层级](../../azure-sql/database/resource-limits-dtu-single-databases.md)上的数据库的指标
+> 
+> SQL 见解对以下 Azure SQL 数据库方案的支持有限：
+> - **无服务器层级**：可以收集使用[无服务器计算层级](../../azure-sql/database/serverless-tier-overview.md)的数据库的指标。 但是，指标收集过程会重置自动暂停延迟计时器，导致数据库无法进入“已自动暂停”状态
+
 在 Azure 门户中使用 [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) 或[查询编辑器（预览版）](../../azure-sql/database/connect-query-portal.md)打开 Azure SQL 数据库。
 
 运行以下脚本创建具有所需权限的用户。 请将 user 替换为用户名，将 mystrongpassword 替换为密码 。
@@ -121,7 +133,7 @@ Azure 虚拟机的要求如下。
 ## <a name="configure-network-settings"></a>配置网络设置
 每种类型的 SQL 都会提供监视虚拟机安全访问 SQL 的方法。  以下各部分介绍基于 SQL 类型的各选项。
 
-### <a name="azure-sql-databases"></a>Azure SQL 数据库  
+### <a name="azure-sql-database"></a>Azure SQL 数据库
 
 SQL 见解支持通过公共终结点以及虚拟网络访问 Azure SQL 数据库。
 
@@ -132,12 +144,12 @@ SQL 见解支持通过公共终结点以及虚拟网络访问 Azure SQL 数据�
 :::image type="content" source="media/sql-insights-enable/firewall-settings.png" alt-text="防火墙设置。" lightbox="media/sql-insights-enable/firewall-settings.png":::
 
 
-### <a name="azure-sql-managed-instances"></a>Azure SQL 托管实例 
+### <a name="azure-sql-managed-instance"></a>Azure SQL 托管实例
 
 如果监视虚拟机将与 SQL MI 资源位于同一 VNet 中，请参阅[在同一 VNet 内连接](../../azure-sql/managed-instance/connect-application-instance.md#connect-inside-the-same-vnet)。 如果监视虚拟机将与 SQL MI 资源位于不同 VNet 中，请参阅[在不同 VNet 内连接](../../azure-sql/managed-instance/connect-application-instance.md#connect-inside-a-different-vnet)。
 
 
-### <a name="azure-virtual-machine-and-azure-sql-virtual-machine"></a>Azure 虚拟机和 Azure SQL 虚拟机  
+### <a name="sql-server"></a>SQL Server 
 如果监视虚拟机与 SQL 虚拟机资源位于同一 VNet 中，请参阅[在虚拟网络中连接到 SQL Server](../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md#connect-to-sql-server-within-a-virtual-network)。 如果监视虚拟机与 SQL 虚拟机资源位于不同 VNet 中，请参阅[通过 Internet 连接到 SQL Server](../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md#connect-to-sql-server-over-the-internet)。
 
 ## <a name="store-monitoring-password-in-key-vault"></a>在密钥保管库中存储监视密码
@@ -159,7 +171,7 @@ SQL 见解支持通过公共终结点以及虚拟网络访问 Azure SQL 数据�
 该配置文件将存储要从 SQL 系统收集的信息。  它对以下各项有特定设置： 
 
 - Azure SQL 数据库 
-- Azure SQL 托管实例 
+- Azure SQL 托管实例
 - 虚拟机上运行的 SQL Server  
 
 例如，可以创建两个配置文件，一个名为“SQL 生产”，一个名为“SQL 暂存”，对于数据收集频率、要收集的数据以及数据发送到哪个工作区，它们有不同的设置 。 
@@ -193,7 +205,7 @@ SQL 见解支持通过公共终结点以及虚拟网络访问 Azure SQL 数据�
 
 连接字符串根据 SQL 资源类型而异：
 
-#### <a name="azure-sql-databases"></a>Azure SQL 数据库 
+#### <a name="azure-sql-database"></a>Azure SQL 数据库
 在窗体中输入连接字符串：
 
 ```
@@ -208,22 +220,7 @@ sqlAzureConnections": [
 
 若要监视可读辅助数据库，请在连接字符串中包含键值 `ApplicationIntent=ReadOnly`。 SQL 见解支持监视单个辅助数据库。 收集的数据将被标记，以反映主数据库或辅助数据库。 
 
-
-#### <a name="azure-virtual-machines-running-sql-server"></a>运行 SQL Server 的 Azure 虚拟机 
-在窗体中输入连接字符串：
-
-```
-"sqlVmConnections": [ 
-   "Server=MyServerIPAddress;Port=1433;User Id=$username;Password=$password;" 
-] 
-```
-
-如果监视虚拟机位于同一 VNET 中，请使用服务器的专用 IP 地址。  否则，请使用公共 IP 地址。 如果使用的是 Azure SQL 虚拟机，可以在资源的“安全”页中查看此处使用的端口。
-
-:::image type="content" source="media/sql-insights-enable/sql-vm-security.png" alt-text="SQL 虚拟机安全" lightbox="media/sql-insights-enable/sql-vm-security.png":::
-
-
-### <a name="azure-sql-managed-instances"></a>Azure SQL 托管实例 
+#### <a name="azure-sql-managed-instance"></a>Azure SQL 托管实例
 在窗体中输入连接字符串：
 
 ```
@@ -238,6 +235,18 @@ sqlAzureConnections": [
 
 若要监视可读辅助数据库，请在连接字符串中包含键值 `ApplicationIntent=ReadOnly`。 SQL 见解支持监视单个辅助数据库，收集的数据将被标记为反映主数据库或辅助数据库。 
 
+#### <a name="sql-server"></a>SQL Server 
+在窗体中输入连接字符串：
+
+```
+"sqlVmConnections": [ 
+   "Server=MyServerIPAddress;Port=1433;User Id=$username;Password=$password;" 
+] 
+```
+
+如果监视虚拟机位于同一 VNET 中，请使用服务器的专用 IP 地址。  否则，请使用公共 IP 地址。 如果使用的是 Azure SQL 虚拟机，可以在资源的“安全”页中查看此处使用的端口。
+
+:::image type="content" source="media/sql-insights-enable/sql-vm-security.png" alt-text="SQL 虚拟机安全" lightbox="media/sql-insights-enable/sql-vm-security.png":::
 
 ## <a name="monitoring-profile-created"></a>已创建监视配置文件 
 

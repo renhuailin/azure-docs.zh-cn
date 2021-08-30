@@ -197,6 +197,8 @@ items:
                 href: troubleshoot/workspaces-created-by-sdk.md
               - name: 排查读取 UTF-8 文本时的问题
                 href: troubleshoot/reading-utf8-text.md
+          - name: 将工作区移动到新区域
+            href: how-to-move-workspace-from-one-region-to-another.md
   - name: 迁移指南
     items:
       - name: 迁移到专用 SQL 池
@@ -805,7 +807,7 @@ items:
                 href: ../data-factory/connector-azure-databricks-delta-lake.md?context=/azure/synapse-analytics/context/context
               - name: Azure 文件存储
                 href: ../data-factory/connector-azure-file-storage.md?context=/azure/synapse-analytics/context/context
-              - name: Azure SQL Database
+              - name: Azure SQL 数据库
                 href: ../data-factory/connector-azure-sql-database.md?context=/azure/synapse-analytics/context/context
               - name: Azure SQL 托管实例
                 href: ../data-factory/connector-azure-sql-managed-instance.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json

@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: a5ccaa95c8f29395770395076f75f36019a4355c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3ccd5cf9ebc1c5183571dcdfbe3beeabe1b28a63
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737675"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448110"
 ---
 # <a name="storage-analytics"></a>存储分析
 
@@ -37,7 +37,7 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 �
 * 为日志记录创建 Blob 的请求。
 * 为度量创建表实体的请求。
 
-如果配置了数据保留策略，在存储分析删除以前的日志记录和度量数据时，不会对删除事务进行收费。 不过，从客户端中删除事务是计费的。 有关保留策略的详细信息，请参阅[设置存储分析数据保留策略](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy)。
+如果已配置数据保留策略，则可以通过删除旧的日志记录和指标数据来减少开销。 有关保留策略的详细信息，请参阅[设置存储分析数据保留策略](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy)。
 
 ### <a name="understanding-billable-requests"></a>了解计费请求
 

@@ -2,25 +2,25 @@
 title: 在 Azure Active Directory 中管理应用程序的同意和评估同意请求
 description: 了解在 Azure Active Directory 中如何在禁用或限制用户同意时管理同意请求，以及如何评估对应用程序的租户范围管理员同意请求。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: 4b533c7e12cf62ac633b4988774d7cff71b3e677
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 7893a73650e90411aa45f35d014b394eab0ad67d
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079258"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113568507"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>管理应用程序的同意和评估同意请求
 
-Microsoft [建议](../../security/fundamentals/steps-secure-identity.md#restrict-user-consent-operations)禁用对应用程序的最终用户同意。 这会将决策过程与组织的安全和身份管理员团队集中起来。
+Microsoft 建议[限制用户同意](../../active-directory/manage-apps/configure-user-consent.md)，以允许用户仅同意来自经验证的出版商的应用程序，并且只同意所选择的权限。 对于不满足此策略的应用，决策过程将集中于你的组织的安全和标识管理员团队。
 
 禁用或限制最终用户同意后，有几个重要注意事项可确保组织保持安全，同时仍允许使用业务关键型应用程序。 这些步骤对于尽量减少对组织支持团队和 IT 管理员的影响至关重要，同时可防止第三方应用程序中使用非托管帐户。
 
@@ -94,28 +94,34 @@ Microsoft [建议](../../security/fundamentals/steps-secure-identity.md#restrict
 ## <a name="granting-consent-as-an-administrator"></a>以管理员身份授予同意
 
 ### <a name="granting-tenant-wide-admin-consent"></a>授予租户范围管理员同意
+
 请参阅[向应用程序授予租户范围管理员同意](grant-admin-consent.md)，以获取有关从 Azure 门户、使用 Azure AD PowerShell 或是从同意提示本身授予租户范围管理员同意的分步说明。
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>代表特定用户授予同意
+
 管理员还可以使用 [Microsoft Graph API](/graph/use-the-api) 代表单个用户向委托的权限授予同意，而不是为整个组织授予同意。 有关详细信息，请参阅[代表用户获取访问权限](/graph/auth-v2-user)。
 
 ## <a name="limiting-user-access-to-applications"></a>限制用户对应用程序的访问权限
+
 即使授予了租户范围管理员同意，用户对应用程序的访问权限仍可受到限制。 有关如何要求向应用程序分配用户的详细信息，请参阅[分配用户和组的方法](./assign-user-or-group-access-portal.md)。
 
 有关更广泛的概述（包括如何处理其他复杂方案），请参阅[使用 Azure AD 进行应用程序访问管理](what-is-access-management.md)。
 
 ## <a name="disable-all-future-user-consent-operations-to-any-application"></a>禁用针对任何应用程序的所有未来的用户同意操作
+
 针对整个目录禁用用户同意操作，可防止最终用户同意任何应用程序。 管理员仍可代表用户执行同意操作。 若要深入了解应用程序同意，以及为何要或不这样操作，请参阅[了解用户和管理员同意](../develop/howto-convert-app-to-be-multi-tenant.md)。
 
 若要禁用用户未来在整个目录中执行的所有同意操作，请执行以下步骤：
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-4.  在导航菜单中，选择“用户和组”。
-5.  选择“用户设置”。
-6.  通过将“用户可以允许应用访问其数据”切换为“否”来禁用用户未来的所有同意操作，并单击“保存”按钮。
+
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+4. 在导航菜单中，选择“用户和组”。
+5. 选择“用户设置”。
+6. 通过将“用户可以允许应用访问其数据”切换为“否”来禁用用户未来的所有同意操作，并单击“保存”按钮。
 
 ## <a name="next-steps"></a>后续步骤
+
 * [保护标识基础结构的五个步骤](../../security/fundamentals/steps-secure-identity.md#before-you-begin-protect-privileged-accounts-with-mfa)
 * [配置管理员同意工作流](configure-admin-consent-workflow.md)
 * [配置最终用户如何对应用程序表示同意](configure-user-consent.md)

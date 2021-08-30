@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 80e25690e133b348ad5ee180bb5a3e01d4176c90
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: 79a9147fde164a672d310a7dea6fb6166ed3a1f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136232"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751372"
 ---
 # <a name="vision-solution-troubleshooting"></a>视觉解决方案故障排除
 
@@ -113,6 +113,8 @@ ms.locfileid: "113136232"
 在 [Azure Percept Studio](./how-to-view-video-stream.md) 或 [VLC 媒体播放器](https://www.videolan.org/vlc/index.html)中查看设备的 RTSP 视频流。
 
 若要在 VLC 媒体播放器中打开 RTSP 流，请转到“媒体” > “打开网络流” > “rtsp://[设备 IP 地址]:8554/result”。
+
+如果 RTSP 的部分流被灰盒阻止，则你可能正在尝试通过较差的网络连接查看。 检查该连接是否有足够的带宽用于传输视频流。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 06/03/2021
+ms.date: 07/26/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: generated, it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54aa35ce49dc75a337d2eabd4c062aa7e5d40ff8
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: bfed2797d0f331becf273b7ed3828aabd8378ebf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111439253"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749032"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD 内置角色
 
@@ -106,6 +106,7 @@ ms.locfileid: "111439253"
 > | [Teams 设备管理员](#teams-devices-administrator) | 可在 Teams 认证的设备上执行管理相关任务。 | 3d762c5a-1b6c-493f-843e-55a3b42923d4 |
 > | [使用情况摘要报表读取者](#usage-summary-reports-reader) | 只能查看 Microsoft 365 使用情况分析和生产力分数中的租户级聚合。 | 75934031-6c7e-415a-99d7-48dbd49e875e |
 > | [用户管理员](#user-administrator) | 可以管理用户和组的所有方面，包括重置有限管理员的密码。 | fe930be7-5e62-47db-91af-98c3a49a38b1 |
+> | [Windows 更新部署管理员](#windows-update-deployment-administrator) | 通过适用于企业的 Windows 更新部署服务来创建和管理 Windows 更新部署的所有方面。 | 32696413-001a-46ae-978c-ce0f6b3620d2 |
 
 ## <a name="application-administrator"></a>应用程序管理员
 
@@ -147,7 +148,7 @@ ms.locfileid: "111439253"
 > | microsoft.directory/connectorGroups/delete | 删除应用程序代理连接器组 |
 > | microsoft.directory/connectorGroups/allProperties/read | 读取应用程序代理连接器组的所有属性 |
 > | microsoft.directory/connectorGroups/allProperties/update | 更新应用程序代理连接器组的所有属性 |
-> | microsoft.directory/deletedItems.applications/delete | 永久删除无法再还原的应用程序 |
+> | microsoft.directory/deletedItems.applications/delete | 永久删除不再可以还原的应用程序 |
 > | microsoft.directory/deletedItems.applications/restore | 将软删除的应用程序还原到原始状态 |
 > | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | 创建和删除 OAuth 2.0 权限授予，读取和更新所有属性 |
 > | microsoft.directory/applicationPolicies/create | 创建应用程序策略 |
@@ -187,13 +188,12 @@ ms.locfileid: "111439253"
 
 ## <a name="application-developer"></a>应用程序开发人员
 
-在将设置“用户可以注册应用程序”设置为“否”时，充当此角色的用户可以创建应用程序注册。 当“用户可以同意应用代表他们访问公司数据”设置设为“否”时，此角色还能够代表自己授权同意。 在创建新应用程序注册或企业应用程序时，会将分配到此角色的用户添加为所有者。
+在将设置“用户可以注册应用程序”设置为“否”时，充当此角色的用户可以创建应用程序注册。 当“用户可以同意应用代表他们访问公司数据”设置设为“否”时，此角色还能够代表自己授权同意。 在创建新应用程序注册时，会将分配到此角色的用户添加为所有者。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
 > | microsoft.directory/applications/createAsOwner | 创建所有类型的应用程序，将创建者添加为第一个所有者 |
-> | microsoft.directory/appRoleAssignments/createAsOwner | 创建应用程序角色分配，并将创建者作为第一个所有者 |
 > | microsoft.directory/oAuth2PermissionGrants/createAsOwner | 创建 OAuth 2.0 权限授予，并将创建者作为第一个所有者 |
 > | microsoft.directory/servicePrincipals/createAsOwner | 创建服务主体，并将创建者作为第一个所有者 |
 
@@ -220,7 +220,7 @@ ms.locfileid: "111439253"
 
 ## <a name="authentication-administrator"></a>身份验证管理员
 
-具有此角色的用户可以设置或重置非管理员和某些角色的身份验证方法（包括密码）。 身份验证管理员可以要求非管理员用户或者已分配到某些角色的用户针对现有的非密码凭据（例如 MFA 或 FIDO）重新注册，并可以撤销“在设备上记住 MFA”（在下一次登录时提示他们执行 MFA）。 有关身份验证管理员可以读取或更新身份验证方法的角色的列表，请参阅[密码重置权限](#password-reset-permissions)。
+具有此角色的用户可以设置或重置非管理员和某些角色的身份验证方法（包括密码）。 身份验证管理员可以要求非管理员用户或分配给某些角色的用户使用现有的非密码凭据（例如，MFA 或 FIDO）重新注册，还可以撤销“在设备上记住 MFA”，这样系统就会在用户下次登录时提示其进行 MFA。 有关身份验证管理员可以读取或更新身份验证方法的角色的列表，请参阅[密码重置权限](#password-reset-permissions)。
 
 [特权身份验证管理员](#privileged-authentication-administrator)角色有权强制针对所有用户进行的重新注册和多重身份验证操作。
 
@@ -273,8 +273,7 @@ ms.locfileid: "111439253"
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | microsoft.directory/organization/strongAuthentication/read | 读取组织的强身份验证属性 |
-> | microsoft.directory/organization/strongAuthentication/update | 更新组织的强身份验证属性 |
+> | microsoft.directory/organization/strongAuthentication/allTasks | 管理组织的强身份验证属性的所有方面 |
 > | microsoft.directory/userCredentialPolicies/create | 创建用户的凭据策略 |
 > | microsoft.directory/userCredentialPolicies/delete | 删除用户的凭据策略 |
 > | microsoft.directory/userCredentialPolicies/standard/read | 读取用户凭据策略的标准属性 |
@@ -322,6 +321,7 @@ ms.locfileid: "111439253"
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.azure.informationProtection/allEntities/allTasks | 管理 Azure 信息保护的各个方面 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证 |
@@ -407,7 +407,7 @@ ms.locfileid: "111439253"
 > | microsoft.directory/applications/synchronization/standard/read | 读取与应用程序对象关联的预配设置 |
 > | microsoft.directory/applicationTemplates/instantiate | 从应用程序模板实例化库应用程序 |
 > | microsoft.directory/auditLogs/allProperties/read | 读取审核日志中的所有属性，包括特权属性 |
-> | microsoft.directory/deletedItems.applications/delete | 永久删除无法再还原的应用程序 |
+> | microsoft.directory/deletedItems.applications/delete | 永久删除不再可以还原的应用程序 |
 > | microsoft.directory/deletedItems.applications/restore | 将软删除的应用程序还原到原始状态 |
 > | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | 创建和删除 OAuth 2.0 权限授予，读取和更新所有属性 |
 > | microsoft.directory/applicationPolicies/create | 创建应用程序策略 |
@@ -453,6 +453,7 @@ ms.locfileid: "111439253"
 > | 操作 | 说明 |
 > | --- | --- |
 > | microsoft.directory/auditLogs/allProperties/read | 读取审核日志中的所有属性，包括特权属性 |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.directory/bitlockerKeys/key/read | 读取设备上的 BitLocker 元数据和密钥 |
 > | microsoft.directory/devices/delete | 从 Azure AD 删除设备 |
 > | microsoft.directory/devices/disable | 在 Azure AD 中禁用设备 |
@@ -503,6 +504,7 @@ In | 有权执行的操作
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.directory/cloudAppSecurity/allProperties/allTasks | 在 Microsoft Cloud App Security 中创建和删除所有资源，读取和更新标准属性 |
 > | microsoft.azure.informationProtection/allEntities/allTasks | 管理 Azure 信息保护的各个方面 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
@@ -553,6 +555,7 @@ In | 有权执行的操作
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证 |
 > | microsoft.office365.desktopAnalytics/allEntities/allTasks | 管理桌面分析的所有方面 |
@@ -609,13 +612,17 @@ In | 有权执行的操作
 > | microsoft.directory/subscribedSkus/standard/read | 读取订阅的基本属性 |
 > | microsoft.directory/users/standard/read | 读取用户的基本属性 |
 > | microsoft.directory/users/appRoleAssignments/read | 读取用户的应用程序角色分配 |
+> | microsoft.directory/users/deviceForResourceAccount/read | 读取用户的资源帐户设备 |
 > | microsoft.directory/users/directReports/read | 读取用户的直接下属 |
+> | microsoft.directory/users/licenseDetails/read | 读取用户的许可证详细信息 |
 > | microsoft.directory/users/manager/read | 读取用户的管理员 |
 > | microsoft.directory/users/memberOf/read | 读取用户的组成员身份 |
 > | microsoft.directory/users/oAuth2PermissionGrants/read | 读取用户的委托权限授予 |
 > | microsoft.directory/users/ownedDevices/read | 读取用户拥有的设备 |
 > | microsoft.directory/users/ownedObjects/read | 读取用户拥有的对象 |
+> | microsoft.directory/users/photo/read | 读取用户的照片 |
 > | microsoft.directory/users/registeredDevices/read | 读取用户已注册的设备 |
+> | microsoft.directory/users/scopedRoleMemberOf/read | 读取用户的 Azure AD 角色成员身份，其范围限定为管理单元 |
 
 ## <a name="directory-synchronization-accounts"></a>目录同步帐户
 
@@ -634,6 +641,7 @@ In | 有权执行的操作
 > | microsoft.directory/applications/owners/update | 更新应用程序的所有者 |
 > | microsoft.directory/applications/permissions/update | 更新所有类型的应用程序的公开权限和必需权限 |
 > | microsoft.directory/applications/policies/update | 更新应用程序策略 |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.directory/organization/dirSync/update | 更新组织目录同步属性 |
 > | microsoft.directory/policies/create | 在 Azure AD 中创建策略 |
 > | microsoft.directory/policies/delete | 在 Azure AD 中删除策略 |
@@ -676,17 +684,17 @@ In | 有权执行的操作
 > | --- | --- |
 > | microsoft.directory/applications/extensionProperties/update | 更新应用程序的扩展属性 |
 > | microsoft.directory/groups/assignLicense | 将产品许可证分配给组以执行基于组的许可 |
-> | microsoft.directory/groups/create | 创建安全组和 Microsoft 365 组，不包括可分配角色的组 |
+> | microsoft.directory/groups/create | 创建安全组和 Microsoft 365 组（不包括可分配角色的组） |
 > | microsoft.directory/groups/reprocessLicenseAssignment | 重新处理基于组的许可的许可证分配 |
-> | microsoft.directory/groups/basic/update | 更新安全组和 Microsoft 365 组的基本属性，不包括可分配角色的组 |
-> | microsoft.directory/groups/classification/update | 更新安全组和 Microsoft 365 组的分类属性，不包括可分配角色的组 |
-> | microsoft.directory/groups/dynamicMembershipRule/update | 更新安全组和 Microsoft 365 组的动态成员身份规则，不包括可分配角色的组 |
-> | microsoft.directory/groups/groupType/update | 更新那些会影响安全组和 Microsoft 365 组的组类型的属性，不包括可分配角色的组 |
-> | microsoft.directory/groups/members/update | 更新安全组和 Microsoft 365 组的成员，不包括可分配角色的组 |
+> | microsoft.directory/groups/basic/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的基本属性 |
+> | microsoft.directory/groups/classification/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的分类属性 |
+> | microsoft.directory/groups/dynamicMembershipRule/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的动态成员身份规则 |
+> | microsoft.directory/groups/groupType/update | 更新那些会影响安全组和 Microsoft 365 组（不包括可分配角色的组）的组类型的属性 |
+> | microsoft.directory/groups/members/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的成员 |
 > | microsoft.directory/groups/onPremWriteBack/update | 更新要使用 Azure AD Connect 写回本地环境的 Azure Active Directory 组 |
-> | microsoft.directory/groups/owners/update | 更新安全组和 Microsoft 365 组的所有者，不包括可分配角色的组 |
+> | microsoft.directory/groups/owners/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的所有者 |
 > | microsoft.directory/groups/settings/update | 更新组的设置 |
-> | microsoft.directory/groups/visibility/update | 更新安全组和 Microsoft 365 组的可见性属性，不包括可分配角色的组 |
+> | microsoft.directory/groups/visibility/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的可见性属性 |
 > | microsoft.directory/groupSettings/create | 创建组设置 |
 > | microsoft.directory/groupSettings/delete | 删除组设置 |
 > | microsoft.directory/groupSettings/basic/update | 更新组设置的基本属性 |
@@ -702,9 +710,11 @@ In | 有权执行的操作
 > | microsoft.directory/users/disable | 禁用用户 |
 > | microsoft.directory/users/enable | 启用用户 |
 > | microsoft.directory/users/invalidateAllRefreshTokens | 通过让用户刷新令牌失效来强制执行注销 |
+> | microsoft.directory/users/inviteGuest | 邀请来宾用户 |
 > | microsoft.directory/users/reprocessLicenseAssignment | 重新处理用户的许可证分配 |
 > | microsoft.directory/users/basic/update | 更新用户的基本属性 |
 > | microsoft.directory/users/manager/update | 更新用户的管理员 |
+> | microsoft.directory/users/photo/update | 更新用户照片 |
 > | microsoft.directory/users/userPrincipalName/update | 更新用户的用户主体名称 |
 
 ## <a name="domain-name-administrator"></a>域名管理员
@@ -746,12 +756,12 @@ In | 有权执行的操作
 > | 操作 | 说明 |
 > | --- | --- |
 > | microsoft.directory/groups/hiddenMembers/read | 读取安全组和 Microsoft 365 组（包括可分配角色的组）的隐藏成员 |
-> | microsoft.directory/groups.unified/create | 创建 Microsoft 365 组，不包括可分配角色的组 |
-> | microsoft.directory/groups.unified/delete | 删除 Microsoft 365 组，不包括可分配角色的组 |
+> | microsoft.directory/groups.unified/create | 创建 Microsoft 365 组（不包括可分配角色的组） |
+> | microsoft.directory/groups.unified/delete | 删除 Microsoft 365 组（不包括可分配角色的组） |
 > | microsoft.directory/groups.unified/restore | 还原 Microsoft 365 组 |
-> | microsoft.directory/groups.unified/basic/update | 更新 Microsoft 365 组的基本属性，不包括可分配角色的组 |
-> | microsoft.directory/groups.unified/members/update | 更新 Microsoft 365 组的成员，不包括可分配角色的组 |
-> | microsoft.directory/groups.unified/owners/update | 更新 Microsoft 365 组的所有者，不包括可分配角色的组 |
+> | microsoft.directory/groups.unified/basic/update | 更新 Microsoft 365 组（不包括可分配角色的组）的基本属性 |
+> | microsoft.directory/groups.unified/members/update | 更新 Microsoft 365 组（不包括可分配角色的组）的成员 |
+> | microsoft.directory/groups.unified/owners/update | 更新 Microsoft 365 组（不包括可分配角色的组）的所有者 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证 |
 > | microsoft.office365.exchange/allEntities/basic/allTasks | 管理 Exchange Online 的所有方面 |
@@ -802,7 +812,7 @@ In | 有权执行的操作
 > | --- | --- |
 > | microsoft.directory/identityProviders/allProperties/allTasks | 读取和配置 Azure Active Directory B2C 中的标识提供者 |
 
-## <a name="global-administrator"></a>全局管理员角色
+## <a name="global-administrator"></a>全局管理员
 
 具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 此外，全局管理员还可以[提升访问权限](../../role-based-access-control/elevate-access-global-admin.md)，以管理所有 Azure 订阅和管理组。 这允许全局管理员使用各自的 Azure AD 租户获得对所有 Azure 资源的完全访问权限。 注册 Azure AD 组织的人员将成为全局管理员。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
 
@@ -817,7 +827,6 @@ In | 有权执行的操作
 > | microsoft.directory/applications/allProperties/allTasks | 创建和删除应用程序，读取和更新所有属性 |
 > | microsoft.directory/applications/synchronization/standard/read | 读取与应用程序对象关联的预配设置 |
 > | microsoft.directory/applicationTemplates/instantiate | 从应用程序模板实例化库应用程序 |
-> | microsoft.directory/appRoleAssignments/allProperties/allTasks | 创建和删除 appRoleAssignments，读取和更新所有属性 |
 > | microsoft.directory/auditLogs/allProperties/read | 读取审核日志中的所有属性，包括特权属性 |
 > | microsoft.directory/authorizationPolicy/allProperties/allTasks | 管理授权策略的各个方面 |
 > | microsoft.directory/bitlockerKeys/key/read | 读取设备上的 BitLocker 元数据和密钥 |
@@ -830,7 +839,7 @@ In | 有权执行的操作
 > | microsoft.directory/connectorGroups/allProperties/update | 更新应用程序代理连接器组的所有属性 |
 > | microsoft.directory/contacts/allProperties/allTasks | 创建和删除联系人，读取和更新所有属性 |
 > | microsoft.directory/contracts/allProperties/allTasks | 创建和删除合作伙伴合同，读取和更新所有属性 |
-> | microsoft.directory/deletedItems/delete | 永久删除无法再还原的对象 |
+> | microsoft.directory/deletedItems/delete | 永久删除不再可以还原的对象 |
 > | microsoft.directory/deletedItems/restore | 将软删除的对象还原到原始状态 |
 > | microsoft.directory/devices/allProperties/allTasks | 创建和删除设备，读取和更新所有属性 |
 > | microsoft.directory/deviceManagementPolicies/standard/read | 读取设备管理应用程序策略上的标准属性 |
@@ -921,21 +930,22 @@ In | 有权执行的操作
 > | microsoft.powerApps/allEntities/allTasks | 管理 Power Apps 的各个方面 |
 > | microsoft.powerApps.powerBI/allEntities/allTasks | 管理 Power BI 的各个方面 |
 > | microsoft.windows.defenderAdvancedThreatProtection/allEntities/allTasks | 管理 Microsoft Defender for Endpoint 的各个方面 |
-> | microsoft.windows.updatesDeployments/allEntities/allProperties/allTasks | 读取和配置 Windows 更新服务的所有方面 |
+> | microsoft.windows.updatesDeployments/allEntities/allProperties/allTasks | 读取和配置 Windows 更新服务的各个方面 |
 
 ## <a name="global-reader"></a>全局读取者
 
-充当此角色的用户可以跨 Microsoft 365 服务读取设置和管理信息，但无法执行管理操作。 全局读取者是对应于全局管理员的只读角色。 要实现规划、审核或调查目的时，请分配全局读取者，而不要分配全局管理员。 将全局读取者与其他受限管理员角色（例如 Exchange 管理员）结合使用可以更轻松地完成工作，且无需分配全局管理员角色。 全局读取者可使用 Microsoft 365 管理中心、Exchange 管理中心、SharePoint 管理中心、Teams 管理中心、安全中心、合规中心、Azure AD 管理中心和设备管理管理中心。
+充当此角色的用户可以跨 Microsoft 365 服务读取设置和管理信息，但无法执行管理操作。 全局读取者是对应于全局管理员的只读角色。 满足规划、审核或调查目的时，请分配全局读取者，而不要分配全局管理员。 将全局读取者与其他受限管理员角色（例如 Exchange 管理员）结合使用可以更轻松地完成工作，且无需分配全局管理员角色。 全局读取者可使用 Microsoft 365 管理中心、Exchange 管理中心、SharePoint 管理中心、Teams 管理中心、安全中心、合规中心、Azure AD 管理中心和设备管理管理中心。
 
 > [!NOTE]
-> 全局读取者角色目前存在以下限制：
+> 全局读取者角色目前存在一些限制 -
 >
 >- [OneDrive 管理中心](https://admin.onedrive.com/) - OneDrive 管理中心不支持全局读取者角色
 >- [Microsoft 365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage) - 全局读取者无法读取集成应用。 在 Microsoft 365 管理中心左侧窗格中的“设置”下找不到“集成应用”选项卡 。
->- [Office 安全与合规中心](https://sip.protection.office.com/homepage) - 全局读取者无法读取 SCC 审核日志、执行内容搜索或查看安全评分。
+>- [Office 安全与合规中心](https://sip.protection.office.com/homepage) - 全局读取者不能读取 SCC 审核日志、进行内容搜索或查看“安全分数”。
 >- [Teams 管理中心](https://admin.teams.microsoft.com) - 全局读取者无法读取“Teams 生命周期”、“分析和报告”、“IP 电话设备管理”和“应用目录”。   
 >- [Privileged Access Management (PAM)](/office365/securitycompliance/privileged-access-management-overview) 不支持全局读取者角色。
 >- [Azure 信息保护](/azure/information-protection/what-is-information-protection) - 仅当 Azure AD 组织不在[统一标记平台](/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)上时，才支持全局读取者[在中心位置进行报告](/azure/information-protection/reports-aip)。
+> - [SharePoint](https://admin.microsoft.com/sharepoint) - 全局读取者目前无法使用 PowerShell 来访问 SharePoint。
 >
 > 这些功能目前正在开发中。
 >
@@ -943,28 +953,47 @@ In | 有权执行的操作
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | microsoft.directory/applications/applicationProxy/read | 读取所有应用程序代理属性 |
+> | microsoft.directory/accessReviews/allProperties/read |  |
+> | microsoft.directory/administrativeUnits/allProperties/read |  |
+> | microsoft.directory/applications/allProperties/read | 读取所有应用程序类型上的所有属性（包括特权属性） |
 > | microsoft.directory/applications/synchronization/standard/read | 读取与应用程序对象关联的预配设置 |
 > | microsoft.directory/auditLogs/allProperties/read | 读取审核日志中的所有属性，包括特权属性 |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.directory/bitlockerKeys/key/read | 读取设备上的 BitLocker 元数据和密钥 |
+> | microsoft.directory/cloudAppSecurity/allProperties/read |  |
 > | microsoft.directory/connectors/allProperties/read | 读取应用程序代理连接器的所有属性 |
 > | microsoft.directory/connectorGroups/allProperties/read | 读取应用程序代理连接器组的所有属性 |
+> | microsoft.directory/contacts/allProperties/read |  |
+> | microsoft.directory/devices/allProperties/read | 读取设备上的所有属性 |
+> | microsoft.directory/directoryRoles/allProperties/read |  |
+> | microsoft.directory/directoryRoleTemplates/allProperties/read |  |
+> | microsoft.directory/domains/allProperties/read | 读取域的所有属性 |
 > | microsoft.directory/entitlementManagement/allProperties/read | 读取 Azure AD 权利管理中的所有属性 |
+> | microsoft.directory/groups/allProperties/read | 读取安全组和 Microsoft 365 组（包括可分配角色的组）的所有属性（包括特权属性） |
+> | microsoft.directory/groupSettings/allProperties/read |  |
+> | microsoft.directory/groupSettingTemplates/allProperties/read |  |
+> | microsoft.directory/identityProtection/allProperties/read | 读取 Azure AD 标识保护中的所有资源 |
+> | microsoft.directory/loginOrganizationBranding/allProperties/read |  |
+> | microsoft.directory/oAuth2PermissionGrants/allProperties/read |  |
+> | microsoft.directory/organization/allProperties/read |  |
+> | microsoft.directory/permissionGrantPolicies/standard/read | 读取权限授予策略的标准属性 |
+> | microsoft.directory/policies/allProperties/read |  |
+> | microsoft.directory/conditionalAccessPolicies/allProperties/read |  |
+> | microsoft.directory/crossTenantAccessPolicies/allProperties/read |  |
 > | microsoft.directory/deviceManagementPolicies/standard/read | 读取设备管理应用程序策略上的标准属性 |
 > | microsoft.directory/deviceRegistrationPolicy/standard/read | 读取设备注册策略上的标准属性 |
-> | microsoft.directory/groups/hiddenMembers/read | 读取安全组和 Microsoft 365 组（包括可分配角色的组）的隐藏成员 |
-> | microsoft.directory/organization/strongAuthentication/read | 读取组织的强身份验证属性 |
-> | microsoft.directory/policies/standard/read | 读取策略的基本属性 |
-> | microsoft.directory/policies/owners/read | 读取策略的所有者 |
-> | microsoft.directory/policies/policyAppliedTo/read | 读取 policies.policyAppliedTo 属性 |
-> | microsoft.directory/conditionalAccessPolicies/standard/read | 读取条件访问策略 |
-> | microsoft.directory/conditionalAccessPolicies/owners/read | 读取条件访问策略的所有者 |
-> | microsoft.directory/conditionalAccessPolicies/policyAppliedTo/read | 读取条件访问策略的“适用对象”属性 |
+> | microsoft.directory/privilegedIdentityManagement/allProperties/read | 读取 Privileged Identity Management 中的所有资源 |
 > | microsoft.directory/provisioningLogs/allProperties/read | 读取预配日志的所有属性 |
-> | microsoft.directory/servicePrincipals/authentication/read | 读取服务主体的身份验证属性 |
+> | microsoft.directory/roleAssignments/allProperties/read |  |
+> | microsoft.directory/roleDefinitions/allProperties/read |  |
+> | microsoft.directory/scopedRoleMemberships/allProperties/read |  |
+> | microsoft.directory/serviceAction/getAvailableExtentionProperties | 可以执行 getAvailableExtentionProperties 服务操作 |
+> | microsoft.directory/servicePrincipals/allProperties/read | 读取服务主体上的所有属性（包括特权属性） |
+> | microsoft.directory/servicePrincipalCreationPolicies/standard/read | 读取服务主体创建策略的标准属性 |
 > | microsoft.directory/servicePrincipals/synchronization/standard/read | 读取与服务主体关联的预配设置 |
 > | microsoft.directory/signInReports/allProperties/read | 读取登录报告上的所有属性，包括特权属性 |
-> | microsoft.directory/users/strongAuthentication/read | 读取用户的强身份验证属性 |
+> | microsoft.directory/subscribedSkus/allProperties/read |  |
+> | microsoft.directory/users/allProperties/read | 读取用户的所有属性 |
 > | microsoft.directory/verifiableCredentials/configuration/contracts/cards/allProperties/read | 读取可验证凭据卡 |
 > | microsoft.directory/verifiableCredentials/configuration/contracts/allProperties/read | 读取可验证凭据协定 |
 > | microsoft.directory/verifiableCredentials/configuration/allProperties/read | 读取创建和管理可验证凭据所需的配置 |
@@ -977,30 +1006,30 @@ In | 有权执行的操作
 > | microsoft.office365.securityComplianceCenter/allEntities/read | 读取 Microsoft 365 安全与合规中心中的标准属性 |
 > | microsoft.office365.usageReports/allEntities/allProperties/read | 阅读 Office 365 使用情况报告 |
 > | microsoft.office365.webPortal/allEntities/standard/read | 在 Microsoft 365 管理中心读取所有资源的基本属性 |
-> | microsoft.windows.updatesDeployments/allEntities/allProperties/read | 读取 Windows 更新服务的所有方面 |
+> | microsoft.windows.updatesDeployments/allEntities/allProperties/read | 读取 Windows 更新服务的各个方面 |
 
 ## <a name="groups-administrator"></a>组管理员
 
-此角色中的用户可以创建/管理组及其设置，如命名和过期策略。 重要的是要了解，将用户分配到此角色后，他们还可以跨各种工作负荷（如 Teams、SharePoint、Yammer 和 Outlook）管理组织中的所有组。 此外，该用户还能够管理各种管理门户（例如 Microsoft 管理中心、Azure 门户，以及 Teams 和 SharePoint 管理中心等工作负载特定的门户）中的各种组设置。
+此角色中的用户可以创建/管理组及其设置，如命名和过期策略。 重要的是要了解，将用户分配到此角色后，他们还可以跨各种工作负荷（如 Teams、SharePoint、Yammer 和 Outlook）管理组织中的所有组。 此外，用户还能够跨各种管理门户（如 Microsoft 管理中心、Azure 门户）以及特定于工作负载的门户（如 Teams 和 SharePoint 管理中心）管理各种组设置。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
 > | microsoft.directory/groups/assignLicense | 将产品许可证分配给组以执行基于组的许可 |
-> | microsoft.directory/groups/create | 创建安全组和 Microsoft 365 组，不包括可分配角色的组 |
-> | microsoft.directory/groups/delete | 删除安全组和 Microsoft 365 组，不包括可分配角色的组 |
+> | microsoft.directory/groups/create | 创建安全组和 Microsoft 365 组（不包括可分配角色的组） |
+> | microsoft.directory/groups/delete | 删除安全组和 Microsoft 365 组（不包括可分配角色的组） |
 > | microsoft.directory/groups/hiddenMembers/read | 读取安全组和 Microsoft 365 组（包括可分配角色的组）的隐藏成员 |
 > | microsoft.directory/groups/reprocessLicenseAssignment | 重新处理基于组的许可的许可证分配 |
 > | microsoft.directory/groups/restore | 还原已删除的组 |
-> | microsoft.directory/groups/basic/update | 更新安全组和 Microsoft 365 组的基本属性，不包括可分配角色的组 |
-> | microsoft.directory/groups/classification/update | 更新安全组和 Microsoft 365 组的分类属性，不包括可分配角色的组 |
-> | microsoft.directory/groups/dynamicMembershipRule/update | 更新安全组和 Microsoft 365 组的动态成员身份规则，不包括可分配角色的组 |
-> | microsoft.directory/groups/groupType/update | 更新那些会影响安全组和 Microsoft 365 组的组类型的属性，不包括可分配角色的组 |
-> | microsoft.directory/groups/members/update | 更新安全组和 Microsoft 365 组的成员，不包括可分配角色的组 |
+> | microsoft.directory/groups/basic/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的基本属性 |
+> | microsoft.directory/groups/classification/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的分类属性 |
+> | microsoft.directory/groups/dynamicMembershipRule/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的动态成员身份规则 |
+> | microsoft.directory/groups/groupType/update | 更新那些会影响安全组和 Microsoft 365 组（不包括可分配角色的组）的组类型的属性 |
+> | microsoft.directory/groups/members/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的成员 |
 > | microsoft.directory/groups/onPremWriteBack/update | 更新要使用 Azure AD Connect 写回本地环境的 Azure Active Directory 组 |
-> | microsoft.directory/groups/owners/update | 更新安全组和 Microsoft 365 组的所有者，不包括可分配角色的组 |
+> | microsoft.directory/groups/owners/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的所有者 |
 > | microsoft.directory/groups/settings/update | 更新组的设置 |
-> | microsoft.directory/groups/visibility/update | 更新安全组和 Microsoft 365 组的可见性属性，不包括可分配角色的组 |
+> | microsoft.directory/groups/visibility/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的可见性属性 |
 > | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | 向服务主体授予直接访问组数据的权限 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证 |
@@ -1018,13 +1047,17 @@ In | 有权执行的操作
 > | microsoft.directory/users/inviteGuest | 邀请来宾用户 |
 > | microsoft.directory/users/standard/read | 读取用户的基本属性 |
 > | microsoft.directory/users/appRoleAssignments/read | 读取用户的应用程序角色分配 |
+> | microsoft.directory/users/deviceForResourceAccount/read | 读取用户的资源帐户设备 |
 > | microsoft.directory/users/directReports/read | 读取用户的直接下属 |
+> | microsoft.directory/users/licenseDetails/read | 读取用户的许可证详细信息 |
 > | microsoft.directory/users/manager/read | 读取用户的管理员 |
 > | microsoft.directory/users/memberOf/read | 读取用户的组成员身份 |
 > | microsoft.directory/users/oAuth2PermissionGrants/read | 读取用户的委托权限授予 |
 > | microsoft.directory/users/ownedDevices/read | 读取用户拥有的设备 |
 > | microsoft.directory/users/ownedObjects/read | 读取用户拥有的对象 |
+> | microsoft.directory/users/photo/read | 读取用户的照片 |
 > | microsoft.directory/users/registeredDevices/read | 读取用户已注册的设备 |
+> | microsoft.directory/users/scopedRoleMemberOf/read | 读取用户的 Azure AD 角色成员身份，其范围限定为管理单元 |
 
 ## <a name="helpdesk-administrator"></a>支持管理员
 
@@ -1076,7 +1109,7 @@ In | 有权执行的操作
 > | microsoft.directory/applicationTemplates/instantiate | 从应用程序模板实例化库应用程序 |
 > | microsoft.directory/auditLogs/allProperties/read | 读取审核日志中的所有属性，包括特权属性 |
 > | microsoft.directory/cloudProvisioning/allProperties/allTasks | 读取和配置 Azure AD 云配置服务的所有属性。 |
-> | microsoft.directory/deletedItems.applications/delete | 永久删除无法再还原的应用程序 |
+> | microsoft.directory/deletedItems.applications/delete | 永久删除不再可以还原的应用程序 |
 > | microsoft.directory/deletedItems.applications/restore | 将软删除的应用程序还原到原始状态 |
 > | microsoft.directory/domains/allProperties/read | 读取域的所有属性 |
 > | microsoft.directory/domains/federation/update | 更新域的联合属性 |
@@ -1108,19 +1141,20 @@ In | 有权执行的操作
 
 ## <a name="identity-governance-administrator"></a>Identity Governance 管理员
 
-具有此角色的用户可以管理 Azure AD Identity Governance 配置（包括访问包、访问评审、目录和策略），从而确保访问获得批准和评审，以及删除不再需要访问权限的来宾用户。
+具有此角色的用户可以管理 Azure AD Identity Governance 配置（包括访问包、访问评审、目录和策略），从而确保访问经过批准和评审，以及删除不再需要访问权限的来宾用户。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | microsoft.directory/accessReviews/allProperties/allTasks | 在 Azure AD 中创建和删除访问评审，以及读取和更新访问评审的所有属性 |
+> | microsoft.directory/accessReviews/allProperties/allTasks | 在 Azure AD 中创建和删除访问评审、读取和更新访问评审的所有属性以及管理组的访问评审 |
+> | microsoft.directory/accessReviews/definitions.applications/allTasks  | 管理 Azure AD 中的应用程序角色分配的访问评审 | 
 > | microsoft.directory/entitlementManagement/allProperties/allTasks | 在 Azure AD 权利管理中创建和删除资源，读取和更新所有属性 |
-> | microsoft.directory/groups/members/update | 更新安全组和 Microsoft 365 组的成员，不包括可分配角色的组 |
+> | microsoft.directory/groups/members/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的成员 |
 > | microsoft.directory/servicePrincipals/appRoleAssignedTo/update | 更新服务主体角色分配 |
 
 ## <a name="insights-administrator"></a>Insights 管理员
 
-此角色中的用户可以访问 [M365 Insights 应用程序](https://go.microsoft.com/fwlink/?linkid=2129521)中的全套管理员功能。 此角色能够读取目录信息，监视服务运行状况，提交支持工单，并访问 Insights 各方面的管理设置。
+此角色中的用户可以访问 [M365 Insights 应用程序](https://go.microsoft.com/fwlink/?linkid=2129521)中的全套管理员功能。 此角色能够读取目录信息，监视服务运行状况，提交支持票证，并访问 Insights 各方面的管理员设置。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
@@ -1134,7 +1168,7 @@ In | 有权执行的操作
 
 ## <a name="insights-business-leader"></a>Insights 业务主管
 
-此角色中的用户可以通过 [M365 Insights 应用程序](https://go.microsoft.com/fwlink/?linkid=2129521)访问一组仪表板和见解。 其中包括对所有仪表板以及提供的见解和数据探索功能的完全访问权限。 此角色的用户无权访问由“Insights 管理员”角色负责的产品配置设置。
+此角色中的用户可以通过 [M365 Insights 应用程序](https://go.microsoft.com/fwlink/?linkid=2129521)访问一组仪表板和见解。 其中包括对所有仪表板以及提供的见解和数据探索功能的完全访问权限。 具有此角色的用户无权访问由 Insights 管理员角色负责的产品配置设置。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
@@ -1163,24 +1197,25 @@ In | 有权执行的操作
 > | microsoft.directory/devices/disable | 在 Azure AD 中禁用设备 |
 > | microsoft.directory/devices/enable | 在 Azure AD 中启用设备 |
 > | microsoft.directory/devices/basic/update | 更新设备上的基本属性 |
-> | microsoft.directory/devices/extensionAttributeSet1/update | 在设备上将 extensionAttribute1 更新为 extensionAttribute5 属性 |
-> | microsoft.directory/devices/extensionAttributeSet2/update | 在设备上将 extensionAttribute6 更新为 extensionAttribute10 属性 |
-> | microsoft.directory/devices/extensionAttributeSet3/update | 在设备上将 extensionAttribute11 更新为 extensionAttribute15 属性 |
+> | microsoft.directory/devices/extensionAttributeSet1/update | 在设备上更新 extensionAttribute1 到 extensionAttribute5 属性 |
+> | microsoft.directory/devices/extensionAttributeSet2/update | 在设备上更新 extensionAttribute6 到 extensionAttribute10 属性 |
+> | microsoft.directory/devices/extensionAttributeSet3/update | 在设备上更新 extensionAttribute11 到 extensionAttribute15 属性 |
 > | microsoft.directory/devices/registeredOwners/update | 更新设备的已注册所有者 |
 > | microsoft.directory/devices/registeredUsers/update | 更新设备的已注册用户 |
 > | microsoft.directory/deviceManagementPolicies/standard/read | 读取设备管理应用程序策略上的标准属性 |
 > | microsoft.directory/deviceRegistrationPolicy/standard/read | 读取设备注册策略上的标准属性 |
 > | microsoft.directory/groups/hiddenMembers/read | 读取安全组和 Microsoft 365 组（包括可分配角色的组）的隐藏成员 |
-> | microsoft.directory/groups.security/create | 创建安全组，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/delete | 删除安全组，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/basic/update | 更新安全组的基本属性，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/classification/update | 更新安全组的分类属性，不包括可分配角色的组 |
+> | microsoft.directory/groups.security/create | 创建安全组（不包括可分配角色的组） |
+> | microsoft.directory/groups.security/delete | 删除安全组（不包括可分配角色的组） |
+> | microsoft.directory/groups.security/basic/update | 更新安全组（不包括可分配角色的组）的基本属性 |
+> | microsoft.directory/groups.security/classification/update | 更新安全组（不包括可分配角色的组）的分类属性 |
 > | microsoft.directory/groups.security/dynamicMembershipRule/update | 更新安全组的动态成员身份规则，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/members/update | 更新安全组的成员，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/owners/update | 更新安全组的所有者，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/visibility/update | 更新安全组的可见性属性，不包括可分配角色的组 |
+> | microsoft.directory/groups.security/members/update | 更新安全组（不包括可分配角色的组）的成员 |
+> | microsoft.directory/groups.security/owners/update | 更新安全组（不包括可分配角色的组）的所有者 |
+> | microsoft.directory/groups.security/visibility/update | 更新安全组（不包括可分配角色的组）的可见性属性 |
 > | microsoft.directory/users/basic/update | 更新用户的基本属性 |
 > | microsoft.directory/users/manager/update | 更新用户的管理员 |
+> | microsoft.directory/users/photo/update | 更新用户照片 |
 > | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证 |
 > | microsoft.intune/allEntities/allTasks | 管理 Microsoft Intune 的各个方面 |
 > | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Microsoft 365 服务请求 |
@@ -1193,6 +1228,7 @@ In | 有权执行的操作
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | 在 Microsoft 365 管理中心读取和配置服务运行状况 |
 > | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Microsoft 365 服务请求 |
 > | microsoft.office365.webPortal/allEntities/standard/read | 在 Microsoft 365 管理中心中读取所有资源的基本属性 |
@@ -1204,12 +1240,12 @@ In | 有权执行的操作
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | microsoft.directory/groups.security/create | 创建安全组，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/createAsOwner | 创建安全组，不包括可分配角色的组。 添加“创建者”作为第一个所有者。 |
-> | microsoft.directory/groups.security/delete | 删除安全组，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/basic/update | 更新安全组的基本属性，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/members/update | 更新安全组的成员，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/owners/update | 更新安全组的所有者，不包括可分配角色的组 |
+> | microsoft.directory/groups.security/create | 创建安全组（不包括可分配角色的组） |
+> | microsoft.directory/groups.security/createAsOwner | 创建安全组（不包括可分配角色的组）。 添加“创建者”作为第一个所有者。 |
+> | microsoft.directory/groups.security/delete | 删除安全组（不包括可分配角色的组） |
+> | microsoft.directory/groups.security/basic/update | 更新安全组（不包括可分配角色的组）的基本属性 |
+> | microsoft.directory/groups.security/members/update | 更新安全组（不包括可分配角色的组）的成员 |
+> | microsoft.directory/groups.security/owners/update | 更新安全组（不包括可分配角色的组）的所有者 |
 > | microsoft.office365.knowledge/contentUnderstanding/allProperties/allTasks | 在 Microsoft 365 管理中心读取和更新内容理解的所有属性 |
 > | microsoft.office365.knowledge/knowledgeNetwork/allProperties/allTasks | 在 Microsoft 365 管理中心读取和更新知识网络的所有属性 |
 > | microsoft.office365.knowledge/learningSources/allProperties/allTasks | 在学习应用中管理学习资源及其所有属性。 |
@@ -1225,12 +1261,12 @@ In | 有权执行的操作
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | microsoft.directory/groups.security/create | 创建安全组，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/createAsOwner | 创建安全组，不包括可分配角色的组。 添加“创建者”作为第一个所有者。 |
-> | microsoft.directory/groups.security/delete | 删除安全组，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/basic/update | 更新安全组的基本属性，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/members/update | 更新安全组的成员，不包括可分配角色的组 |
-> | microsoft.directory/groups.security/owners/update | 更新安全组的所有者，不包括可分配角色的组 |
+> | microsoft.directory/groups.security/create | 创建安全组（不包括可分配角色的组） |
+> | microsoft.directory/groups.security/createAsOwner | 创建安全组（不包括可分配角色的组）。 添加“创建者”作为第一个所有者。 |
+> | microsoft.directory/groups.security/delete | 删除安全组（不包括可分配角色的组） |
+> | microsoft.directory/groups.security/basic/update | 更新安全组（不包括可分配角色的组）的基本属性 |
+> | microsoft.directory/groups.security/members/update | 更新安全组（不包括可分配角色的组）的成员 |
+> | microsoft.directory/groups.security/owners/update | 更新安全组（不包括可分配角色的组）的所有者 |
 > | microsoft.office365.knowledge/contentUnderstanding/analytics/allProperties/read | 在 Microsoft 365 管理中心阅读有关内容理解的分析报告 |
 > | microsoft.office365.knowledge/knowledgeNetwork/topicVisibility/allProperties/allTasks | 在 Microsoft 365 管理中心管理知识网络的主题可见性 |
 > | microsoft.office365.sharePoint/allEntities/allTasks | 在 SharePoint 中创建和删除所有资源，读取和更新标准属性 |
@@ -1244,6 +1280,7 @@ In | 有权执行的操作
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.directory/groups/assignLicense | 将产品许可证分配给组以执行基于组的许可 |
 > | microsoft.directory/groups/reprocessLicenseAssignment | 重新处理基于组的许可的许可证分配 |
 > | microsoft.directory/users/assignLicense | 管理用户许可证 |
@@ -1280,12 +1317,12 @@ In | 有权执行的操作
 
 “现代商务用户”角色向特定的用户授予访问 Microsoft 365 管理中心，以及查看左侧导航栏中“主页”、“计费”和“支持”条目的权限。   这些区域中提供的内容由分配给用户的[商务特定角色](../../cost-management-billing/manage/understand-mca-roles.md)控制，这些角色可让用户管理他们为自己或者为组织购买的产品。 这可能包括各种任务，例如支付账单，或访问计费帐户和计费配置文件。
 
-具有现代商业用户角色的用户通常在其他 Microsoft 购买系统中拥有管理权限，但没有可用于访问管理中心的全局管理员或计费管理员角色。
+具有“现代商务用户”角色的用户通常在其他 Microsoft 购买系统中拥有管理权限，但没有可用于访问管理中心的“全局管理员”或“计费管理员”角色。
 
 **什么情况下会分配现代商务用户角色？**
 
 * **Microsoft 365 管理中心自助购买** – 自助购买使用户有机会通过自行购买或注册新产品来试用这些产品。 这些产品在管理中心进行管理。 进行自助购买的用户将分配到商务系统中的某个角色和现代商务用户角色，因此他们可以在管理中心管理其购买内容。 管理员可以通过 [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell) 阻止自助购买（适用于 Power BI、Power Apps、Power Automate）。 有关详细信息，请参阅[自助购买常见问题解答](/microsoft-365/commerce/subscriptions/self-service-purchase-faq)。
-* **从 Microsoft 商业市场购买** - 类似于自助购买，当用户从 Microsoft AppSource 或 Azure 市场购买产品或服务时，如果他们没有全局管理员角色或计费管理员角色，则会为其分配现代商业用户角色。 在某些情况下，可能会阻止用户进行此类购买。 有关详细信息，请参阅 [Microsoft 商业市场](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase)。
+* **从 Microsoft 商业市场购买** - 类似于自助购买，当用户从 Microsoft AppSource 或 Azure 市场购买产品或服务时，如果他们没有全局管理员角色或计费管理员角色，则会为其分配现代商业用户角色。 在某些情况下，可能会阻止用户进行此类购买。 有关详细信息，请参阅 [Microsoft 商业市场](../../marketplace/marketplace-faq-publisher-guide.yml#what-could-block-a-customer-from-completing-a-purchase-)。
 * Microsoft 的推荐 - 推荐是 Microsoft 提出的正式建议，让你的组织可以优惠价格购买 Microsoft 产品和服务。 如果接受此推荐的人员在 Azure AD 中不具备全局管理员或计费管理员角色，则会为他们分配商业特定角色来购买推荐商品，同时分配现代商业用户角色以访问管理中心。 当他们访问管理中心时，只能使用其商务特定角色授权的功能。
 * **商务特定角色** – 会将某些用户分配到商务特定角色。 如果用户不是全局管理员或计费管理员，将为其分配现代商业用户角色以访问管理中心。
 
@@ -1346,7 +1383,7 @@ In | 有权执行的操作
 > | microsoft.directory/contacts/create | 创建联系人 |
 > | microsoft.directory/contacts/delete | 删除联系人 |
 > | microsoft.directory/contacts/basic/update | 更新联系人的基本属性 |
-> | microsoft.directory/groups/create | 创建安全组和 Microsoft 365 组，不包括可分配角色的组 |
+> | microsoft.directory/groups/create | 创建安全组和 Microsoft 365 组（不包括可分配角色的组） |
 > | microsoft.directory/groups/delete | 删除安全组和 Microsoft 365 组，不包括可分配角色的组 |
 > | microsoft.directory/groups/restore | 还原已删除的组 |
 > | microsoft.directory/groups/members/update | 更新安全组和 Microsoft 365 组的成员，不包括可分配角色的组 |
@@ -1363,6 +1400,7 @@ In | 有权执行的操作
 > | microsoft.directory/users/basic/update | 更新用户的基本属性 |
 > | microsoft.directory/users/manager/update | 更新用户的管理员 |
 > | microsoft.directory/users/password/update | 重置所有用户的密码 |
+> | microsoft.directory/users/photo/update | 更新用户照片 |
 > | microsoft.directory/users/userPrincipalName/update | 更新用户的用户主体名称 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证 |
@@ -1392,7 +1430,7 @@ In | 有权执行的操作
 > | microsoft.directory/contacts/delete | 删除联系人 |
 > | microsoft.directory/contacts/basic/update | 更新联系人的基本属性 |
 > | microsoft.directory/domains/allProperties/allTasks | 创建和删除域，读取和更新所有属性 |
-> | microsoft.directory/groups/create | 创建安全组和 Microsoft 365 组，不包括可分配角色的组 |
+> | microsoft.directory/groups/create | 创建安全组和 Microsoft 365 组（不包括可分配角色的组） |
 > | microsoft.directory/groups/delete | 删除安全组和 Microsoft 365 组，不包括可分配角色的组 |
 > | microsoft.directory/groups/restore | 还原已删除的组 |
 > | microsoft.directory/groups/members/update | 更新安全组和 Microsoft 365 组的成员，不包括可分配角色的组 |
@@ -1414,6 +1452,7 @@ In | 有权执行的操作
 > | microsoft.directory/users/basic/update | 更新用户的基本属性 |
 > | microsoft.directory/users/manager/update | 更新用户的管理员 |
 > | microsoft.directory/users/password/update | 重置所有用户的密码 |
+> | microsoft.directory/users/photo/update | 更新用户照片 |
 > | microsoft.directory/users/userPrincipalName/update | 更新用户的用户主体名称 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证 |
@@ -1535,7 +1574,6 @@ In | 有权执行的操作
 > | 操作 | 说明 |
 > | --- | --- |
 > | microsoft.directory/administrativeUnits/allProperties/allTasks | 创建和管理管理单元（包括成员） |
-> | microsoft.directory/appRoleAssignments/allProperties/allTasks | 创建和删除 appRoleAssignments，读取和更新所有属性 |
 > | microsoft.directory/authorizationPolicy/allProperties/allTasks | 管理授权策略的各个方面 |
 > | microsoft.directory/directoryRoles/allProperties/allTasks | 创建和删除目录角色，以及读取和更新所有属性 |
 > | microsoft.directory/groupsAssignableToRoles/create | 创建可分配角色的组 |
@@ -1564,7 +1602,6 @@ In | 有权执行的操作
 > | microsoft.directory/signInReports/allProperties/read | 读取登录报告上的所有属性，包括特权属性 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.office365.network/performance/allProperties/read | 在 Microsoft 365 管理中心中读取所有网络性能属性 |
-> | microsoft.office365.serviceHealth/allEntities/allTasks | 在 Microsoft 365 管理中心读取和配置服务运行状况 |
 > | microsoft.office365.usageReports/allEntities/allProperties/read | 阅读 Office 365 使用情况报告 |
 > | microsoft.office365.webPortal/allEntities/standard/read | 在 Microsoft 365 管理中心读取所有资源的基本属性 |
 
@@ -1606,7 +1643,6 @@ Azure 高级威胁防护 | 监视和响应可疑安全活动
 Windows Defender ATP 和 EDR | 分配角色<br>管理计算机组<br>配置终结点威胁检测和自动修正<br>查看、调查并响应警报
 [Intune](/intune/role-based-access-control) | 视图用户、设备、注册、配置和应用程序信息<br>无法对 Intune 进行更改
 [Cloud App Security](/cloud-app-security/manage-admins) | 添加管理员、添加策略和设置、上传日志以及执行管理操作
-[Azure 安全中心](../../key-vault/managed-hsm/built-in-roles.md) | 可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议
 [Microsoft 365 服务运行状况](/office365/enterprise/view-service-health) | 查看 Microsoft 365 服务的运行状况
 [智能锁定](../authentication/howto-password-smart-lockout.md) | 定义在发生登录失败事件时实施锁定的阈值和持续时间。
 [密码保护](../authentication/concept-password-ban-bad.md) | 配置自定义受禁密码列表或本地密码保护。
@@ -1616,6 +1652,7 @@ Windows Defender ATP 和 EDR | 分配角色<br>管理计算机组<br>配置终�
 > | --- | --- |
 > | microsoft.directory/applications/policies/update | 更新应用程序策略 |
 > | microsoft.directory/auditLogs/allProperties/read | 读取审核日志中的所有属性，包括特权属性 |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.directory/bitlockerKeys/key/read | 读取设备上的 BitLocker 元数据和密钥 |
 > | microsoft.directory/entitlementManagement/allProperties/read | 读取 Azure AD 权利管理中的所有属性 |
 > | microsoft.directory/identityProtection/allProperties/read | 读取 Azure AD 标识保护中的所有资源 |
@@ -1675,6 +1712,7 @@ Windows Defender ATP 和 EDR | 分配角色<br>管理计算机组<br>配置终�
 > | 操作 | 说明 |
 > | --- | --- |
 > | microsoft.directory/auditLogs/allProperties/read | 读取审核日志中的所有属性，包括特权属性 |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.directory/cloudAppSecurity/allProperties/allTasks | 在 Microsoft Cloud App Security 中创建和删除所有资源，读取和更新标准属性 |
 > | microsoft.directory/identityProtection/allProperties/allTasks | 在 Azure AD 标识保护中创建和删除所有资源，读取和更新标准属性 |
 > | microsoft.directory/privilegedIdentityManagement/allProperties/read | 读取 Privileged Identity Management 中的所有资源 |
@@ -1694,19 +1732,19 @@ Windows Defender ATP 和 EDR | 分配角色<br>管理计算机组<br>配置终�
 In | 有权执行的操作
 --- | ---
 [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务查看与安全相关的策略<br>查看安全威胁和警报<br>查看报表
-标识保护中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>Encryption<li>数据丢失防护<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
+标识保护中心 | 读取安全功能的所有安全报告和设置信息<br><ul><li>反垃圾邮件<li>加密<li>数据丢失防护<li>反恶意软件<li>高级威胁防护<li>防网络钓鱼<li>邮件流规则
 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) | 以只读方式访问 Azure AD Privileged Identity Management 中显示的所有信息：Azure AD 角色分配的策略和报告以及安全评审。<br>**无法** 注册 Azure AD Privileged Identity Management 或对其进行任何更改。 充当此角色的人员可以在 Privileged Identity Management 门户中或通过 PowerShell 为符合条件的用户激活其他角色（例如全局管理员或特权角色管理员）。
 [Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 查看安全策略<br>查看并调查安全威胁<br>查看报表
-Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP 中启用基于角色的访问控制后，具有只读权限的用户（例如 Azure AD 安全读取者角色）在被分配到 Windows Defender ATP 角色之前会失去访问权限。
+Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP 中启用基于角色的访问控制后，拥有只读权限的用户（例如 Azure AD 安全读取者角色）在被分配到 Windows Defender ATP 角色之前会失去访问权限。
 [Intune](/intune/role-based-access-control) | 视图用户、设备、注册、配置和应用程序信息。 无法对 Intune 进行更改。
-[Cloud App Security](/cloud-app-security/manage-admins) | 拥有只读权限，可以管理警报
-[Azure 安全中心](../../key-vault/managed-hsm/built-in-roles.md) | 可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改
+[Cloud App Security](/cloud-app-security/manage-admins) | 拥有读取权限，并可管理警报
 [Microsoft 365 服务运行状况](/office365/enterprise/view-service-health) | 查看 Microsoft 365 服务的运行状况
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
 > | microsoft.directory/auditLogs/allProperties/read | 读取审核日志中的所有属性，包括特权属性 |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.directory/bitlockerKeys/key/read | 读取设备上的 BitLocker 元数据和密钥 |
 > | microsoft.directory/entitlementManagement/allProperties/read | 读取 Azure AD 权利管理中的所有属性 |
 > | microsoft.directory/identityProtection/allProperties/read | 读取 Azure AD 标识保护中的所有资源 |
@@ -1757,12 +1795,12 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | microsoft.directory/groups.unified/create | 创建 Microsoft 365 组，不包括可分配角色的组 |
-> | microsoft.directory/groups.unified/delete | 删除 Microsoft 365 组，不包括可分配角色的组 |
+> | microsoft.directory/groups.unified/create | 创建 Microsoft 365 组（不包括可分配角色的组） |
+> | microsoft.directory/groups.unified/delete | 删除 Microsoft 365 组（不包括可分配角色的组） |
 > | microsoft.directory/groups.unified/restore | 还原 Microsoft 365 组 |
-> | microsoft.directory/groups.unified/basic/update | 更新 Microsoft 365 组的基本属性，不包括可分配角色的组 |
-> | microsoft.directory/groups.unified/members/update | 更新 Microsoft 365 组的成员，不包括可分配角色的组 |
-> | microsoft.directory/groups.unified/owners/update | 更新 Microsoft 365 组的所有者，不包括可分配角色的组 |
+> | microsoft.directory/groups.unified/basic/update | 更新 Microsoft 365 组（不包括可分配角色的组）的基本属性 |
+> | microsoft.directory/groups.unified/members/update | 更新 Microsoft 365 组（不包括可分配角色的组）的成员 |
+> | microsoft.directory/groups.unified/owners/update | 更新 Microsoft 365 组（不包括可分配角色的组）的所有者 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证 |
 > | microsoft.office365.network/performance/allProperties/read | 在 Microsoft 365 管理中心中读取所有网络性能属性 |
@@ -1774,7 +1812,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 ## <a name="skype-for-business-administrator"></a>Skype for Business 管理员
 
-具有此角色的用户具有 Microsoft Skype for Business 中的全局权限，以及管理 Azure Active Directory 中的特定于 Skype 的用户属性。 此外，此角色可授予管理支持工单、监视服务运行状况以及访问 Teams 和 Skype for Business 管理中心的能力。 帐户必须获取 Teams 许可证，否则无法运行 Teams PowerShell cmdlet。 有关详细信息，请参阅[关于 Skype for Business 管理员角色](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)；有关 Teams 许可信息，请参阅 [Skype for Business 和 Microsoft Teams 附加许可](/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
+具有此角色的用户具有 Microsoft Skype for Business 中的全局权限，以及管理 Azure Active Directory 中的特定于 Skype 的用户属性。 此外，此角色可授予管理支持票证、监视服务运行状况以及访问 Teams 和 Skype for Business 管理中心的能力。 帐户必须获取 Teams 许可证，否则无法运行 Teams PowerShell cmdlet。 有关详细信息，请参阅[关于 Skype for Business 管理员角色](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)；有关 Teams 许可信息，请参阅 [Skype for Business 和 Microsoft Teams 附加许可](/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
 > [!NOTE]
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“Lync 服务管理员”。 它是 [Azure 门户](https://portal.azure.com/)中的“Skype for Business 管理员”。
@@ -1797,13 +1835,14 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.directory/groups/hiddenMembers/read | 读取安全组和 Microsoft 365 组（包括可分配角色的组）的隐藏成员 |
-> | microsoft.directory/groups.unified/create | 创建 Microsoft 365 组，不包括可分配角色的组 |
-> | microsoft.directory/groups.unified/delete | 删除 Microsoft 365 组，不包括可分配角色的组 |
+> | microsoft.directory/groups.unified/create | 创建 Microsoft 365 组（不包括可分配角色的组） |
+> | microsoft.directory/groups.unified/delete | 删除 Microsoft 365 组（不包括可分配角色的组） |
 > | microsoft.directory/groups.unified/restore | 还原 Microsoft 365 组 |
-> | microsoft.directory/groups.unified/basic/update | 更新 Microsoft 365 组的基本属性，不包括可分配角色的组 |
-> | microsoft.directory/groups.unified/members/update | 更新 Microsoft 365 组的成员，不包括可分配角色的组 |
-> | microsoft.directory/groups.unified/owners/update | 更新 Microsoft 365 组的所有者，不包括可分配角色的组 |
+> | microsoft.directory/groups.unified/basic/update | 更新 Microsoft 365 组（不包括可分配角色的组）的基本属性 |
+> | microsoft.directory/groups.unified/members/update | 更新 Microsoft 365 组（不包括可分配角色的组）的成员 |
+> | microsoft.directory/groups.unified/owners/update | 更新 Microsoft 365 组（不包括可分配角色的组）的所有者 |
 > | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | 向服务主体授予直接访问组数据的权限 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证 |
@@ -1822,6 +1861,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证 |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | 在 Microsoft 365 管理中心读取和配置服务运行状况 |
@@ -1840,6 +1880,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | 在 Microsoft 365 管理中心读取和配置服务运行状况 |
 > | microsoft.office365.skypeForBusiness/allEntities/allTasks | 管理 Skype for Business Online 的各个方面 |
@@ -1853,6 +1894,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
+> | microsoft.directory/authorizationPolicy/standard/read | 读取授权策略的标准属性 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | 在 Microsoft 365 管理中心读取和配置服务运行状况 |
 > | microsoft.office365.skypeForBusiness/allEntities/allTasks | 管理 Skype for Business Online 的各个方面 |
@@ -1903,28 +1945,25 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
 > | --- | --- |
-> | microsoft.directory/appRoleAssignments/create | 创建应用程序角色分配 |
-> | microsoft.directory/appRoleAssignments/delete | 删除应用程序角色分配 |
-> | microsoft.directory/appRoleAssignments/basic/update | 更新应用程序角色分配的基本属性 |
 > | microsoft.directory/contacts/create | 创建联系人 |
 > | microsoft.directory/contacts/delete | 删除联系人 |
 > | microsoft.directory/contacts/basic/update | 更新联系人的基本属性 |
 > | microsoft.directory/entitlementManagement/allProperties/allTasks | 在 Azure AD 权利管理中创建和删除资源，读取和更新所有属性 |
 > | microsoft.directory/groups/assignLicense | 将产品许可证分配给组以执行基于组的许可 |
-> | microsoft.directory/groups/create | 创建安全组和 Microsoft 365 组，不包括可分配角色的组 |
-> | microsoft.directory/groups/delete | 删除安全组和 Microsoft 365 组，不包括可分配角色的组 |
+> | microsoft.directory/groups/create | 创建安全组和 Microsoft 365 组（不包括可分配角色的组） |
+> | microsoft.directory/groups/delete | 删除安全组和 Microsoft 365 组（不包括可分配角色的组） |
 > | microsoft.directory/groups/hiddenMembers/read | 读取安全组和 Microsoft 365 组（包括可分配角色的组）的隐藏成员 |
 > | microsoft.directory/groups/reprocessLicenseAssignment | 重新处理基于组的许可的许可证分配 |
 > | microsoft.directory/groups/restore | 还原已删除的组 |
-> | microsoft.directory/groups/basic/update | 更新安全组和 Microsoft 365 组的基本属性，不包括可分配角色的组 |
-> | microsoft.directory/groups/classification/update | 更新安全组和 Microsoft 365 组的分类属性，不包括可分配角色的组 |
-> | microsoft.directory/groups/dynamicMembershipRule/update | 更新安全组和 Microsoft 365 组的动态成员身份规则，不包括可分配角色的组 |
-> | microsoft.directory/groups/groupType/update | 更新那些会影响安全组和 Microsoft 365 组的组类型的属性，不包括可分配角色的组 |
-> | microsoft.directory/groups/members/update | 更新安全组和 Microsoft 365 组的成员，不包括可分配角色的组 |
+> | microsoft.directory/groups/basic/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的基本属性 |
+> | microsoft.directory/groups/classification/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的分类属性 |
+> | microsoft.directory/groups/dynamicMembershipRule/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的动态成员身份规则 |
+> | microsoft.directory/groups/groupType/update | 更新那些会影响安全组和 Microsoft 365 组（不包括可分配角色的组）的组类型的属性 |
+> | microsoft.directory/groups/members/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的成员 |
 > | microsoft.directory/groups/onPremWriteBack/update | 更新要使用 Azure AD Connect 写回本地环境的 Azure Active Directory 组 |
-> | microsoft.directory/groups/owners/update | 更新安全组和 Microsoft 365 组的所有者，不包括可分配角色的组 |
+> | microsoft.directory/groups/owners/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的所有者 |
 > | microsoft.directory/groups/settings/update | 更新组的设置 |
-> | microsoft.directory/groups/visibility/update | 更新安全组和 Microsoft 365 组的可见性属性，不包括可分配角色的组 |
+> | microsoft.directory/groups/visibility/update | 更新安全组和 Microsoft 365 组（不包括可分配角色的组）的可见性属性 |
 > | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | 创建和删除 OAuth 2.0 权限授予，读取和更新所有属性 |
 > | microsoft.directory/servicePrincipals/appRoleAssignedTo/update | 更新服务主体角色分配 |
 > | microsoft.directory/users/assignLicense | 管理用户许可证 |
@@ -1939,12 +1978,22 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 > | microsoft.directory/users/basic/update | 更新用户的基本属性 |
 > | microsoft.directory/users/manager/update | 更新用户的管理员 |
 > | microsoft.directory/users/password/update | 重置所有用户的密码 |
+> | microsoft.directory/users/photo/update | 更新用户照片 |
 > | microsoft.directory/users/userPrincipalName/update | 更新用户的用户主体名称 |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | 读取和配置 Azure 服务运行状况 |
 > | microsoft.azure.supportTickets/allEntities/allTasks | 创建和管理 Azure 支持票证 |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | 在 Microsoft 365 管理中心读取和配置服务运行状况 |
 > | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Microsoft 365 服务请求 |
 > | microsoft.office365.webPortal/allEntities/standard/read | 在 Microsoft 365 管理中心读取所有资源的基本属性 |
+
+## <a name="windows-update-deployment-administrator"></a>Windows 更新部署管理员
+
+此角色中的用户可以通过适用于企业的 Windows 更新部署服务来创建和管理 Windows 更新部署的所有方面。 利用该部署服务，用户可以定义部署更新的时间和方式的相关设置，并指定向其租户中的设备组提供哪些更新。 该服务还允许用户监视更新进度。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | microsoft.windows.updatesDeployments/allEntities/allProperties/allTasks | 读取和配置 Windows 更新服务的各个方面 |
 
 ## <a name="how-to-understand-role-permissions"></a>如何了解角色权限
 
@@ -1989,7 +2038,7 @@ API 名称 | Azure 门户中的名称 | 说明
 合作伙伴层 1 支持 | 未显示，因为不应使用它 | [合作伙伴一线支持人员文档](#partner-tier1-support)
 合作伙伴层 2 支持 | 未显示，因为不应使用它 | [合作伙伴二线支持人员文档](#partner-tier2-support)
 受限来宾用户 | 未显示，因为无法使用它 | NA
-User | 未显示，因为无法使用它 | NA
+用户 | 未显示，因为无法使用它 | NA
 工作区设备联接 | 已放弃 | [已弃用角色的文档](#deprecated-roles)
 
 ## <a name="password-reset-permissions"></a>密码重置权限
@@ -2009,8 +2058,8 @@ User | 未显示，因为无法使用它 | NA
 特权身份验证管理员 | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
 特权角色管理员 | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
 报告读者 | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-用户<br/>（没有管理员角色） | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
-用户<br/>（没有管理员角色，但是可分配角色的组的成员） | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+用户<br/>（无管理员角色） | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+用户<br/>（无管理员角色，但为可分配角色的组的成员） | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
 用户管理员 | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 使用情况摘要报表读取者 | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
 

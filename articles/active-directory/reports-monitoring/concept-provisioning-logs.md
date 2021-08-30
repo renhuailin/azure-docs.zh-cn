@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中预配日志（预览版）| Microsoft Docs
+title: 在 Azure Active Directory 中预配日志 | Microsoft Docs
 description: 在 Azure Active Directory 中预配日志的概述。
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 4/25/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42a1ea52c9de3332c2b73b5c03e203f6d6694c49
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: d110abaf9621b638d698bef08d579a5ab2c4285f
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017384"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113362064"
 ---
-# <a name="provisioning-logs-in-azure-active-directory-preview"></a>在 Azure Active Directory 中预配日志（预览版）
+# <a name="provisioning-logs-in-azure-active-directory"></a>在 Azure Active Directory 中预配日志
 
 作为 IT 管理员，你想知道你的 IT 环境的运行状况。 你可通过有关系统运行状况的信息来评估是否需要响应潜在问题以及响应方式。 
 

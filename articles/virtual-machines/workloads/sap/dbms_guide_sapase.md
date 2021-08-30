@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 430af1dfcbd9c7faabfca2f3f5b80b3b3106a889
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74d5bee95ae91eb11f249518f49b711d9649db01
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675800"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467649"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
 
@@ -188,7 +188,7 @@ HADR 用户指南详细介绍了双节点 SAP ASE“Always-on”解决方案的�
 > Azure 上唯一支持的配置是使用不带浮动 IP 的 Fault Manager。  浮动 IP 地址方法在 Azure 上不起作用。 
 
 ### <a name="third-node-for-disaster-recovery"></a>用于灾难恢复的第三个节点
-除了使用 SAP ASE Always-On 实现本地高可用性之外，你可能还想将配置扩展到另一个 Azure 区域中异步复制的节点。 可在[此处](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)找到有关此类方案的文档。
+除了使用 SAP ASE Always-On 实现本地高可用性之外，你可能还想将配置扩展到另一个 Azure 区域中异步复制的节点。 有关详细信息，请参阅 [Sybase 16.3 修补程序级别 3 Always-on + DR on Suse 12.3 的安装过程](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)。
 
 ## <a name="sap-ase-database-encryption--ssl"></a>SAP ASE 数据库加密和 SSL 
 SAP Software Provisioning Manager (SWPM) 提供一个用于在安装期间加密数据库的选项。  如果你要使用加密，建议使用 SAP 完全数据库加密。  请参阅以下文章中的详细信息：
@@ -245,7 +245,6 @@ SAP Software Provisioning Manager (SWPM) 提供一个用于在安装期间加密
 > 
 > 
 
-可以在 [此处][virtual-machines-azurerm-versus-azuresm] 找到有关 DNS 名称的更多详细信息。
 
 将 SAP 配置文件参数 icm/host_name_full 设置为 Azure VM 的 DNS 名称，其链接可能如下所示：
 

@@ -1,5 +1,5 @@
 ---
-title: 连接到 Azure 上存储服务中的数据
+title: 使用工作室 UI 连接到数据存储
 titleSuffix: Azure Machine Learning
 description: 使用 Azure 机器学习工作室创建数据存储和数据集，以安全地连接到 Azure 中存储服务中的数据。
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 09/22/2020
+ms.date: 07/06/2021
 ms.custom: data4ml
-ms.openlocfilehash: b85be179fa12e29ef17fe9fa488b22c3d8a3c69b
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 8764f237d3e5304df95357cb770738e32d8395dd
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785108"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441875"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室连接到数据
 
@@ -37,7 +37,7 @@ ms.locfileid: "109785108"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)。
+- Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用 [Azure 机器学习的免费版或付费版](https://azure.microsoft.com/free/)。
 
 - 访问 [Azure 机器学习工作室](https://ml.azure.com/)。
 
@@ -85,8 +85,11 @@ ms.locfileid: "109785108"
 1. 为“数据集类型”选择“表格”或“文件”。 
 1. 选择“下一步”，打开“数据存储和文件选择”窗体。 在此窗体上，可以选择在创建数据集后保留数据集的位置，还可以选择要用于数据集的具体数据文件。
     1. 如果数据位于虚拟网络中，请启用“跳过验证”。 详细了解[虚拟网络隔离和隐私](how-to-enable-studio-virtual-network.md)。
-    1. 对于表格数据集，可以指定“timeseries”特征，以便在数据集上启用与时间相关的操作。 了解如何[将 timeseries 特征添加到数据集](how-to-monitor-datasets.md#studio-dataset)。
+
 1. 选择“下一步”以填充“设置和预览”以及“架构”窗体；它们是根据文件类型智能填充的。在这些窗体上进行创建之前，可以进一步配置数据集。   
+    1.  在“设置和预览”窗体上，可以指示你的数据是否包含多行数据。 
+    1. 在“架构”窗体上，可以通过为日期或时间列选择类型“时间戳”来指定 TabularDataset 具有时间组件。 
+        1. 如果你的数据已格式化为个多个子集（例如时间范围），并且你想要使用这些子集进行训练，请选择类型“分区时间戳”。 这样做可以对数据集进行时序操作。 详细了解如何[利用数据集中的分区进行训练](how-to-monitor-datasets.md?tabs=azure-studio#create-target-dataset)。
 1. 选择“下一步”，查看“确认详细信息”窗体。 检查所做的选择，为数据集创建可选的数据配置文件。 详细了解[数据分析](#profile)。
 1. 选择“创建”以完成数据集的创建。
 
@@ -113,13 +116,13 @@ ms.locfileid: "109785108"
 
 |统计信息|说明
 |------|------
-|功能| 正在汇总的列的名称。
+|Feature| 正在汇总的列的名称。
 |配置文件| 基于推理的类型显示的内联可视化效果。 例如，字符串、布尔值和日期包含值计数，而小数（数字）则包含近似的直方图。 这样，就可以快速了解数据的分布。
 |类型分布| 列中类型的内联值计数。 Null 是其自身的类型，因此，此可视化效果可用于检测反常值或缺失值。
 |类型|列的推理类型。 可能的值包括：字符串、布尔值、日期和小数。
 |Min| 列的最小值。 对于没有固有顺序（例如布尔值）的特征类型，将显示空白条目。
 |Max| 列的最大值。 
-|Count| 列中缺失和未缺失条目的总数。
+|计数| 列中缺失和未缺失条目的总数。
 |非缺失计数| 列中未缺失的条目数。 空字符串和误差被视为值，因此它们不会计入“未缺少计数”。
 |分位数| 每个分位数中的近似值，用于提供数据分布的概观。
 |平均值| 列的算术中间值或平均值。

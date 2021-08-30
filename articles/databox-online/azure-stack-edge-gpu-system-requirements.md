@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/26/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: e9bf7d7d61ad05726ca8dcaad06d63902273f6f8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d30ce268c7e117e5673af51ee32bea3b8923576b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085053"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740767"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>带有 GPU 的 Azure Stack Edge Pro 的系统要求 
 
@@ -115,9 +115,9 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 | URL 模式 | 端口 | 组件或功能 |
 |-------------|-------------|----------------------------|
-| http://\*ods.opinsights.azure.com | 443 | 数据引入 |
-| http://\*.oms.opinsights.azure.com | 443 | Operations Management Suite (OMS) 加入 |
-| http://\*.dc.services.visualstudio.com | 443 | 使用 Azure 公有云 Application Insights 的代理遥测 |
+| https://\*ods.opinsights.azure.com | 443 | 数据引入 |
+| https://\*.oms.opinsights.azure.com | 443 | Operations Management Suite (OMS) 加入 |
+| https://\*.dc.services.visualstudio.com | 443 | 使用 Azure 公有云 Application Insights 的代理遥测 |
 
 有关详细信息，请参阅[监视容器见解的网络防火墙要求](../azure-monitor/containers/container-insights-onboard.md#network-firewall-requirements)。
 
@@ -139,9 +139,9 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 | URL 模式 | 端口 | 组件或功能 |
 |-------------|-------------|----------------------------|
-| http://\*ods.opinsights.azure.us | 443 | 数据引入 |
-| http://\*.oms.opinsights.azure.us | 443 | Operations Management Suite (OMS) 加入 |
-| http://\*.dc.services.visualstudio.com | 443 | 使用 Azure 公有云 Application Insights 的代理遥测 |
+| https://\*ods.opinsights.azure.us | 443 | 数据引入 |
+| https://\*.oms.opinsights.azure.us | 443 | Operations Management Suite (OMS) 加入 |
+| https://\*.dc.services.visualstudio.com | 443 | 使用 Azure 公有云 Application Insights 的代理遥测 |
 
 
 ## <a name="internet-bandwidth"></a>Internet 带宽

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/18/2021
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: 348805670187f2362eb17dae40aa94e70f1daa24
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 89091f8914acea62370290e25a2f98f5bcb220a7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084675"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745543"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>文本分析 API 输出中的文本偏移量
 
@@ -24,9 +24,9 @@ ms.locfileid: "110084675"
 
 由于可能的多语言和表情符号编码的长度不同，文本分析 API 可能会在响应中返回偏移量。
 
-## <a name="offsets-in-the-api-response"></a>API 响应中的偏移量。 
+## <a name="offsets-in-the-api-response"></a>API 响应中的偏移量 
 
-每当在 API 响应（如[命名实体识别](../how-tos/text-analytics-how-to-entity-linking.md)或[情绪分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)）中返回偏移量时，请记住：
+每当 API 响应（例如[命名实体识别](../how-tos/text-analytics-how-to-entity-linking.md)或[情绪分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)）中返回偏移量时，请记住：
 
 * 响应中的元素可能会特定于所调用的终结点。 
 * HTTP POST/GET 有效负载以 [UTF-8](https://www.w3schools.com/charsets/ref_html_utf8.asp) 格式进行编码，该编码不一定是客户端编译器或操作系统上的默认字符编码。
@@ -40,13 +40,13 @@ ms.locfileid: "110084675"
 
 为方便起见，文本分析 API 也会返回这些文本元素。
 
-## <a name="offsets-in-api-version-31-preview"></a>API 版本 3.1-preview 中的偏移
+## <a name="offsets-in-api-version-31"></a>API 版本 3.1 中的偏移
 
-在 API 版本 3.1 中，返回偏移量的所有文本分析 API 终结点都会支持 `stringIndexType` 参数。 此参数在 API 输出中调整 `offset` 和 `length` 属性，以匹配请求的字符串迭代方案。 目前，我们支持三种类型：
+在 API 版本 3.1 中，返回偏移量的所有文本分析 API 终结点都支持 `stringIndexType` 参数。 此参数在 API 输出中调整 `offset` 和 `length` 属性，以匹配请求的字符串迭代方案。 目前，我们支持三种类型：
 
 1. `textElement_v8`（默认值）：根据 [Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0) 标准的定义循环访问字形
 2. `unicodeCodePoint`：循环访问 [Unicode 码位](http://www.unicode.org/versions/Unicode13.0.0/ch02.pdf#G25564)（Python 3 的默认方案）
-3. `utf16CodeUnit`：循环访问 [UTF-16 代码单位](https://unicode.org/faq/utf_bom.html#UTF16)（JavaScript、Java 和 .NET 的默认方案）
+3. `utf16CodeUnit`：循环访问 [UTF-16 代码单元](https://unicode.org/faq/utf_bom.html#UTF16)（JavaScript、Java 和 .NET 的默认方案）
 
 如果请求的 `stringIndexType` 与所选的编程环境相匹配，则可以使用标准子字符串或切片方法提取子字符串。 
 

@@ -5,17 +5,17 @@ description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, automl, responsible-ml
+ms.topic: how-to
+ms.custom: automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 3258a1d53c4aa5010758bcd93ef32c53611f4684
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 343d6dd27167001ecf98435596837eaab5f50da5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576459"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739188"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>可解释性：自动化机器学习（预览版）中的模型说明
 
@@ -41,15 +41,7 @@ ms.locfileid: "107576459"
 从 `best_run` 中检索解释，其中包括原始特征和工程特征的解释。
 
 > [!NOTE]
-> 可解释性（最佳模型解释）不适用于将以下算法推荐为最佳模型的自动化 ML 预测试验： 
-> * TCNForecaster
-> * AutoArima
-> * ExponentialSmoothing
-> * Prophet
-> * 平均值 
-> * Naive
-> * Seasonal Average 
-> * Seasonal Naive
+> 自动 ML 预测试验推荐的 TCNForecaster 模型不具备可解释性，即模型解释。
 
 ### <a name="download-the-engineered-feature-importances-from-the-best-run"></a>从 best run 下载工程特征重要性
 
@@ -134,7 +126,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
 ```
-对于使用自动化 ML 训练的模型，可以使用 `get_output()` 方法获得最佳模型，并在本地计算解释。  可以使用 `interpret-community` 包中的 `ExplanationDashboard` 将解释结果可视化。
+对于使用自动化 ML 训练的模型，可以使用 `get_output()` 方法获得最佳模型，并在本地计算解释。  可以使用 `raiwidgets` 包中的 `ExplanationDashboard` 将解释结果可视化。
 
 ```python
 best_run, fitted_model = remote_run.get_output()
@@ -157,7 +149,7 @@ pip install interpret-community[visualization]
 
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict()),
-from interpret_community.widget import ExplanationDashboard
+from raiwidgets import ExplanationDashboard
 ExplanationDashboard(engineered_explanations, automl_explainer_setup_obj.automl_estimator, datasetX=automl_explainer_setup_obj.X_test_transform)
 
  
@@ -166,7 +158,7 @@ raw_explanations = explainer.explain(['local', 'global'], get_raw=True,
                                      raw_feature_names=automl_explainer_setup_obj.raw_feature_names,
                                      eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(raw_explanations.get_feature_importance_dict()),
-from interpret_community.widget import ExplanationDashboard
+from raiwidgets import ExplanationDashboard
 ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, datasetX=automl_explainer_setup_obj.X_test_raw)
 ```
 

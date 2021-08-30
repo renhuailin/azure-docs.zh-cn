@@ -1,22 +1,22 @@
 ---
-title: 通过 Blob 索引标记（预览版）管理和查找 Azure Blob 数据
+title: 通过 Blob 索引标记管理和查找 Azure Blob 数据
 description: 了解如何使用 Blob 索引标记对 Blob 对象进行分类、管理和查询。
 author: normesta
 ms.author: normesta
-ms.date: 05/17/2021
+ms.date: 06/14/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: bd1738c0a5d63ad9eacaa1500a6ce10268a93b04
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c4ff918be67d74d536159ebbd3e707c1d7e68e8b
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664872"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730741"
 ---
-# <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>通过 Blob 索引标记（预览版）管理和查找 Azure Blob 数据
+# <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>通过 Blob 索引标记管理和查找 Azure Blob 数据
 
 随着数据集的变大，在大量数据中找到特定对象可能会很困难。 Blob 索引标记使用键值索引标记属性来提供数据管理和发现功能。 可在单个容器内或在存储帐户中的所有容器之间分类和查找对象。 随着数据需求的变化，可更新对象索引标记来对其进行动态分类。 对象可利用其当前的容器组织就地保留。
 
@@ -28,9 +28,6 @@ ms.locfileid: "110664872"
 - 将索引标记用于功能上的高级控件（例如 [Blob 生命周期管理](storage-lifecycle-management-concepts.md)）
 
 思考这样一种场景：你的存储帐户中有数百万个 Blob，许多不同的应用程序对其进行访问。 你想要从单个项目中查找所有相关数据。 由于数据可分散在具有不同命名约定的多个容器中，因此你不确定哪些在查找范围内。 不过，你的应用程序会基于其项目上传包含标记的所有数据。 你可将 `Project = Contoso` 用作发现条件，而不是搜索数百万个 Blob，再对名称和属性进行比较。 Blob 索引会筛选你的整个存储帐户中的所有容器来快速查找，并且只从 `Project = Contoso` 范围一个包含 50 个 Blob 的集。
-
-> [!IMPORTANT]
-> Blob 索引标记目前为“预览版”，并在所有公共区域提供。 有关 beta 版本、预览版或尚未正式发布的版本的 Azure 功能所适用的法律条款，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 若要首先查看有关如何使用 Blob 索引的示例，请参阅[使用 Blob 索引标记来管理和查找数据](storage-blob-index-how-to.md)。
 
@@ -222,7 +219,7 @@ Blob 索引标记不仅有助于对 Blob 数据进行分类、管理和搜索，
 
 可使用下列方法之一来授予对 Blob 索引标记的访问权限：
 
-- 使用 Azure 基于角色的访问控制 (Azure RBAC) 授予对 Azure Active Directory (Azure AD) 安全主体的权限。 使用 Azure AD 实现更高级别的安全性和易用性。 有关使用 Azure AD 进行 blob 操作的详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](../common/storage-auth-aad.md)。
+- 使用 Azure 基于角色的访问控制 (Azure RBAC) 授予对 Azure Active Directory (Azure AD) 安全主体的权限。 使用 Azure AD 实现更高级别的安全性和易用性。 有关通过 Blob 操作使用 Azure AD 的详细信息，请参阅[授权访问 Azure 存储中的数据](../common/authorize-data-access.md)。
 - 使用共享访问签名 (SAS) 委托对 Blob 索引的访问权限。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。
 - 使用帐户访问密钥来通过共享密钥授权操作。 有关详细信息，请参阅[通过共享密钥进行授权](/rest/api/storageservices/authorize-with-shared-key)。
 
@@ -230,7 +227,7 @@ Blob 索引标记是 Blob 数据的子资源。 具有读取或写入 Blob 的�
 
 ### <a name="role-based-access-control"></a>基于角色的访问控制
 
-可向使用 [Azure AD 标识](../common/storage-auth-aad.md)的调用方授予以下权限来对 Blob 索引标记执行操作。
+可向使用 [Azure AD 标识](../common/authorize-data-access.md)的调用方授予以下权限来对 Blob 索引标记执行操作。
 
 | Blob 索引标记操作                                          | Azure RBAC 操作                                                             |
 |--------------------------------------------------------------------|-------------------------------------------------------------------------------|
@@ -282,7 +279,7 @@ Blob 索引标记是 Blob 数据的子资源。 具有读取或写入 Blob 的�
 
 ## <a name="pricing"></a>定价
 
-Blob 索引定价以公共预览版形式提供，正式发布版价格可能会变化。 按存储帐户中每月索引标记平均数收取费用。 索引引擎不会产生任何费用。 设置 Blob 标记、获取 Blob 标记和查找 Blob 标记的请求是按当前各自的事务速率收费的。 请注意，在执行按标记查找 Blob 事务时，使用的列表事务数等于请求中的子句数。 例如，查询 (StoreID = 100) 是一个列表事务。  查询 (StoreID = 100 AND SKU = 10010) 是两个列表事务。 请查看[块 blob 定价了解详细信息](https://azure.microsoft.com/pricing/details/storage/blobs/)。
+按存储帐户中每月索引标记平均数收取费用。 索引引擎不会产生任何费用。 设置 Blob 标记、获取 Blob 标记和查找 Blob 标记的请求是按当前各自的事务速率收费的。 请注意，在执行按标记查找 Blob 事务时，使用的列表事务数等于请求中的子句数。 例如，查询 (StoreID = 100) 是一个列表事务。  查询 (StoreID = 100 AND SKU = 10010) 是两个列表事务。 请查看[块 blob 定价了解详细信息](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 ## <a name="regional-availability-and-storage-account-support"></a>区域可用性和存储帐户支持
 
@@ -295,42 +292,20 @@ Blob 索引标记目前在所有公共区域提供。
 若要开始，请参阅[使用 Blob 索引标记管理和查找数据](storage-blob-index-how-to.md)。
 
 > [!IMPORTANT]
-> 必须先注册订阅，然后才能在存储帐户上使用 Blob 索引预览版。 请查看本文的[条件和已知问题](#conditions-and-known-issues)部分。
-
-### <a name="register-your-subscription-preview"></a>注册订阅（预览版）
-
-Blob 索引标记仅提供公共预览版，因此需要先注册订阅，然后才能使用该功能。 若要提交请求，请运行以下 PowerShell 或 CLI 命令。
-
-#### <a name="register-by-using-powershell"></a>使用 PowerShell 注册
-
-```powershell
-Register-AzProviderFeature -FeatureName BlobIndex -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-
-#### <a name="register-by-using-azure-cli"></a>使用 Azure CLI 注册
-
-```azurecli
-az feature register --namespace Microsoft.Storage --name BlobIndex
-az provider register --namespace 'Microsoft.Storage'
-```
+> 必须先注册订阅，然后才能在存储帐户上使用 Blob 索引。 请查看本文的[条件和已知问题](#conditions-and-known-issues)部分。
 
 ## <a name="conditions-and-known-issues"></a>条件和已知问题
 
-本部分介绍 Blob 索引标记公共预览版中的已知问题和条件。 由于行为可能有变化，因此在正式发布 (GA) 之前，此功能不得生产工作负载。
+本部分介绍已知问题和条件。
 
-- 对于预览版，必须先注册订阅，然后才能在预览版中对存储帐户使用 Blob 索引。
-- 预览版仅支持常规用途 v2 帐户。 不支持高级块 blob、旧的 blob 和启用了分层命名空间的帐户。 不支持常规用途 v1 帐户。
+- 仅支持常规用途 v2 帐户。 不支持高级块 blob、旧的 blob 和启用了分层命名空间的帐户。 不支持常规用途 v1 帐户。
 - 上传带有索引标记的页 blob 不会保留标记。 请在上传页 blob 后设置标记。
 - 当筛选范围限定为单个容器时，只有在筛选表达式中的所有索引标记都是相等性检查 (key=value) 时，才能传递 `@container`。
 - 将范围运算符与 `AND` 条件一起使用时，只能指定同一索引标记键名称 (`"Age" > '013' AND "Age" < '100'`)。
-- 不支持版本控制和 Blob 索引。 会为版本保留 Blob 索引标记，但不会传递到 Blob 索引引擎。
+- 如果启用了版本控制，仍可在当前版本上使用索引标记。 对于以前的版本，会为版本保留索引标记，但不会传递到 Blob 索引引擎。 不能通过查询索引标记来检索以前的版本。
 - 没有 API 用于确定索引标记是否已索引。
-- 不支持帐户故障转移。 Blob 索引在故障转移后可能无法正常更新。
 - 生命周期管理仅支持带有 Blob 索引匹配的相等性检查。
 - `Copy Blob` 不会将 Blob 索引标记从源 Blob 复制到新的目标 Blob。 可指定要在复制操作中应用到目标 Blob 的标记。
-- 如果从另一个目标 Blob 上已应用标记的存储帐户`Copy Blob`（异步复制），会导致 Blob 索引引擎不返回筛选器集中的 Blob 及其标记。 请使用`Copy Blob` 从 URL 复制（同步复制）。
-- 创建快照时会保留标记。 但是，不支持升级快照，这可能导致出现空标记集。
 
 ## <a name="faq"></a>常见问题解答
 

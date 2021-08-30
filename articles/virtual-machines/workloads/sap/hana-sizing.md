@@ -11,15 +11,15 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/14/2021
+ms.date: 07/16/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b93e7febc478452d713d115162280f0fd2657a3
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 4050a986c98b492f71383bd5c677d68288882611
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579456"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114404652"
 ---
 # <a name="sizing"></a>调整大小
 
@@ -39,7 +39,7 @@ ms.locfileid: "110579456"
 
 ## <a name="sizing-greenfield-implementations"></a>调整全新实现的大小
 
-如果从头开始你的实现，SAP Quick Sizer 会计算在 HANA 基础上实现 SAP 软件时的内存要求。
+从头开始实现时，SAP Quick Sizer 会计算在 HANA 基础上实现 SAP 软件时的内存要求。
 
 ## <a name="memory-requirements"></a>内存需求
 

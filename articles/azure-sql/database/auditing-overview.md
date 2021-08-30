@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 06/14/2021
+ms.date: 08/01/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: f7bdadaf8570fe06d7573ff622ed921137229ae1
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 5a911b7855e74b241b2281c1e466f7f9236730af
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061553"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597255"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -77,13 +77,14 @@ ms.locfileid: "112061553"
 
 - 审核日志将写入到 Azure 订阅的 Azure Blob 存储中的追加 Blob
 - 审核日志的格式为 .xel，可以使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 打开。
-- 若要为服务器或数据库级审核事件配置不可变的日志存储，请遵循 [Azure 存储提供的说明](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)。 确保在配置不可变的 blob 存储时，选择了“允许额外追加”。
+- 若要为服务器或数据库级审核事件配置不可变的日志存储，请遵循 [Azure 存储提供的说明](../../storage/blobs/immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)。 确保在配置不可变的 blob 存储时，选择了“允许额外追加”。
 - 可以将审核日志写入到 VNet 或防火墙后面的 Azure 存储帐户。 有关具体说明，请参阅[将审核写入 VNet 和防火墙后面的存储帐户](audit-write-storage-account-behind-vnet-firewall.md)。
 - 有关日志格式、存储文件夹的层次结构和命名约定的详细信息，请参阅 [Blob 审核日志格式参考](./audit-log-format.md)。
 - 对[只读副本](read-scale-out.md)的审核会自动启用。 有关存储文件夹的层次结构、命名约定和日志格式的详细信息，请参阅 [SQL 数据库审核日志格式](audit-log-format.md)。
 - 使用 Azure AD 身份验证时，失败的登录记录将不会出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户](../../active-directory/reports-monitoring/concept-sign-ins.md)，该门户记录这些事件的详细信息。
 - 通过网关将登录信息路由到数据库所在的特定实例。  对于 AAD 登录，在尝试使用该用户名登录到请求的数据库之前，将验证凭据。  如果失败，则绝不会访问请求的数据库，因此不会进行审核。  对于 SQL 登录，将根据请求的数据对凭据进行验证，因此在这种情况下可以对其进行审核。  在这两种情况下，都将审核已明显到达数据库的成功登录。
 - 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](threat-detection-overview.md)。
+- 将启用了审核的数据库复制到另一个 Azure SQL 逻辑服务器后，你可能会收到一封通知你审核失败的电子邮件。 这是已知问题，在新复制的数据库上审核应该会正常工作。
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>为服务器设置审核
 
@@ -118,10 +119,7 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 
 通过 Azure SQL Server 的 Microsoft 支持操作审核，你可以在 Microsoft 支持工程师需要在支持请求期间访问你的服务器时审核他们的操作。 将此功能与审核结合使用，可以提高工作人员的透明度，并可以进行异常情况检测、趋势可视化和数据丢失防护。
 
-若要启用 Microsoft 支持操作审核，请导航到“Azure SQL 服务器”窗格中“安全”标题下的“审核”，并将“Microsoft 支持操作审核”切换到“启用”。
-
-  > [!IMPORTANT]
-  > Microsoft 支持操作审核不支持存储帐户目标。 若要启用此功能，必须配置 Log Analytics 工作区或事件中心目标。
+要启用 Microsoft 支持操作审核，请导航到 Azure SQL Server 窗格中“安全”标题下的“审核”，并将“启用 Microsoft 支持操作审核”切换到“启用”   。
 
 ![Microsoft 支持操作的屏幕截图](./media/auditing-overview/support-operations.png)
 
@@ -131,6 +129,10 @@ Azure SQL 数据库和 Azure Synapse 审核在审核记录中存储字符字段�
 AzureDiagnostics
 | where Category == "DevOpsOperationsAudit"
 ```
+
+可以选择为该审核日志选择不同的存储目标，也可为服务器使用相同的审核配置。
+
+:::image type="content" source="media/auditing-overview/auditing-support-operation-log-destination.png" alt-text="用于审核支持操作的审核配置的屏幕截图":::
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>对存储目标的审核
 
@@ -269,10 +271,10 @@ AzureDiagnostics
 
 **REST API**：
 
-- [创建或更新数据库审核策略](/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [创建或更新数据库审核策略](/rest/api/sql/2017-03-01-preview/server-auditing-settings/create-or-update)
 - [创建或更新服务器审核策略](/rest/api/sql/server%20auditing%20settings/createorupdate)
 - [获取数据库审核策略](/rest/api/sql/database%20auditing%20settings/get)
-- [获取服务器审核策略](/rest/api/sql/server%20auditing%20settings/get)
+- [获取服务器审核策略](/rest/api/sql/2017-03-01-preview/server-auditing-settings/get) 
 
 支持使用 WHERE 子句执行附加筛选的扩展策略：
 
@@ -296,3 +298,9 @@ AzureDiagnostics
 
 > [!NOTE]
 > 链接的示例位于外部公共存储库中，按“原样”提供，不含任何担保，在任何 Microsoft 支持计划/服务下均不受支持。
+
+## <a name="see-also"></a>请参阅
+
+- 第 9 频道上的 Data Exposed 剧集 [Azure SQL 审核中的新增功能](https://channel9.msdn.com/Shows/Data-Exposed/Whats-New-in-Azure-SQL-Auditing)。
+- [SQL 托管实例的审核](../managed-instance/auditing-configure.md)
+- [SQL Server 的审核](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)

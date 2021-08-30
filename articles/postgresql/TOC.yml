@@ -12,10 +12,6 @@
           href: concepts-certificate-rotation.md
 - name: 分享的文档
   items:
-    - name: 数据库部署
-      items:
-        - name: GitHub 操作
-          href: how-to-deploy-github-action.md
     - name: 迁移
       items:
         - name: 通过 pg_dump 和 pg_restore 迁移数据
@@ -405,6 +401,14 @@
           items:
             - name: Azure 门户
               href: howto-move-regions-portal.md
+        - name: 升级和迁移
+          items:
+            - name: 主版本升级方法
+              href: how-to-upgrade-using-dump-and-restore.md
+            - name: 通过 pg_dump 和 pg_restore 升级/迁移数据
+              href: howto-migrate-using-dump-and-restore.md
+            - name: 通过 pg_dump 和 psql 升级/迁移数据
+              href: howto-migrate-using-export-and-import.md
 - name: 灵活服务器（预览版）
   expanded: true
   items:
@@ -414,6 +418,10 @@
       href: flexible-server/overview.md
     - name: 发行说明
       href: flexible-server/release-notes.md
+    - name: 比较单一服务器和灵活服务器
+      href: flexible-server/concepts-compare-single-server-flexible-server.md
+    - name: 免费试用灵活服务器
+      href: flexible-server/how-to-deploy-on-azure-free-account.md
     - name: 快速入门
       expanded: true
       items:
@@ -428,6 +436,8 @@
               href: flexible-server/quickstart-create-server-arm-template.md
         - name: 连接和查询
           items:
+            - name: 在 VNET 中连接到服务器
+              href: flexible-server/quickstart-create-connect-server-vnet.md
             - name: Azure CLI
               href: flexible-server/connect-azure-cli.md
             - name: Python
@@ -501,6 +511,8 @@
                   displayName: 'query store, performance, optimize'
                 - name: 查询存储最佳做法
                   href: flexible-server/concepts-query-store-best-practices.md
+                - name: 智能优化
+                  href: flexible-server/concepts-intelligent-tuning.md
         - name: 复制
           href: flexible-server/concepts-logical.md
           displayName: logical decoding
@@ -514,6 +526,12 @@
               href: flexible-server/how-to-manage-server-cli.md
             - name: 连接和查询指南
               href: flexible-server/how-to-connect-query-guide.md
+        - name: 数据库部署
+          items:
+            - name: GitHub 操作
+              href: how-to-deploy-github-action.md
+            - name: Azure Pipelines
+              href: flexible-server/azure-pipelines-deploy-database-task.md
         - name: 计划性维护
           items:
             - name: Azure 门户
@@ -594,7 +612,7 @@
       items:
         - name: 创建服务器组
           items:
-            - name: 基本层（预览版）
+            - name: 基本层
               href: quickstart-create-hyperscale-basic-tier.md
             - name: 标准层
               href: quickstart-create-hyperscale-portal.md

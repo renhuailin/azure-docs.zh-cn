@@ -6,18 +6,18 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 07/17/2019
-ms.openlocfilehash: 0570ed73b86223025b250e269d7e2f358473f004
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ffa031a9058eb6864298c5c9387402955a84968
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780848"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747251"
 ---
 # <a name="create-a-group-for-assessment"></a>创建组以进行评估
 
 本文介绍如何创建服务器组，以使用“Azure Migrate: 发现和评估”进行评估。
 
-[Azure Migrate](migrate-services-overview.md) 可帮助你迁移到 Azure。 Azure Migrate 提供了一个中心，用于跟踪 Azure 的本地基础结构、应用程序和数据的发现、评估以及迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。 
+[Azure Migrate](migrate-services-overview.md) 可帮助你迁移到 Azure。 Azure Migrate 提供了一个中心，用于跟踪 Azure 的本地基础结构、应用程序和数据的发现、评估以及迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
 
 ## <a name="grouping-servers"></a>分组服务器
 
@@ -47,12 +47,13 @@ ms.locfileid: "104780848"
 
     ![创建组](./media/how-to-create-a-group/create-group.png)
 
-现在可以在[创建 Azure VM 评估](how-to-create-assessment.md)、[Azure VMware 解决方案 (AVS) 评估](how-to-create-azure-vmware-solution-assessment.md)或 [Azure SQL 评估](how-to-create-azure-sql-assessment.md)时使用此组。
+现在可以在[创建 Azure VM 评估](how-to-create-assessment.md)、[Azure VMware 解决方案 (AVS) 评估](how-to-create-azure-vmware-solution-assessment.md)[Azure SQL 评估](how-to-create-azure-sql-assessment.md)或 [Azure 应用服务评估](how-to-create-azure-app-service-assessment.md)时使用此组。
 
 ## <a name="refine-a-group-with-dependency-mapping"></a>通过依赖项映射优化组
 
 依赖项映射有助于直观呈现服务器之间的依赖关系。 在评估可信度较高的服务器组时，通常会使用依赖项映射。
-- 它有助于在运行评估之前交叉检查服务器依赖项。 
+
+- 它有助于在运行评估之前交叉检查服务器依赖项。
 - 它还有助于有效地计划向 Azure 的迁移，确保不会遗漏任何内容，从而避免迁移过程中出现意外中断。
 - 可以发现需要一起迁移的互相依赖的系统，并识别运行中的系统是仍然为用户提供服务还是在等待解除授权而非迁移。
 
@@ -84,7 +85,6 @@ ms.locfileid: "104780848"
     - 你只能添加已发现的服务器。
     - 添加和删除服务器会使过去对组的评估失效。
     - 修改组时，你可以视情况创建新的评估。
-
 
 ## <a name="next-steps"></a>后续步骤
 

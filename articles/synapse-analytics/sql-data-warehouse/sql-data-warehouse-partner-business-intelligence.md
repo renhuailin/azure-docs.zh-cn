@@ -2,21 +2,21 @@
 title: 商业智能合作伙伴
 description: 其解决方案支持 Azure Synapse Analytics 的第三方商业智能合作伙伴列表。
 services: synapse-analytics
-author: mabasile-MSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/27/2019
+ms.date: 07/09/2021
+author: mabasile-MSFT
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 96d1a3ed6bfe3fa90cdfa11f1b1081f12e4af990
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e77146667488482b6970f60c2d4f76ec76a4b45f
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95904336"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113643588"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics 商业智能合作伙伴
 
@@ -25,13 +25,14 @@ ms.locfileid: "95904336"
 ## <a name="our-business-intelligence-partners"></a>我们的商业智能合作伙伴
 | Partner | 说明 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
-| ![AtScale](./media/sql-data-warehouse-partner-business-intelligence/atscale-logo.png) |**AtScale**<br>AtScale 为分布式数据提供单一、安全且受治理的工作区。 AtScale 的 Cloud OLAP、Autonomous Data Engineering™ 和 Universal Semantic Layer™ 为商业智能结果提供支持，以实现更快、更准确的业务决策。 |[产品页面](https://www.atscale.com/partners/microsoft/)<br> |
+| ![AtScale](./media/sql-data-warehouse-partner-business-intelligence/atscale-logo.png) |**AtScale**<br>AtScale 为分布式数据提供单一、安全且受治理的工作区。 AtScale 的 Cloud OLAP、Autonomous Data Engineering&trade; 和 Universal Semantic Layer&trade; 为商业智能结果提供支持，以实现更快、更准确的业务决策。 |[产品页面](https://www.atscale.com/partners/microsoft/)<br> |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>除了使用共享的通用分析结构之外，Birst 还通过交织虚拟化 BI 实例网络连接整个组织|[产品页](https://www.birst.com/)<br> |
+| ![计数](./media/sql-data-warehouse-partner-business-intelligence/count-logo.png) |**计数**<br> Count 是下一代 SQL 编辑器，可用于与团队快速探索和共享数据。 Count 的核心是一个为 SQL 构建的数据笔记本，可让你构建代码、快速迭代并保持性能流畅。 只需单击几下，即可立即可视化结果或自定义这些结果，从而构建美观详细的图表。 即时共享任何内容，包括一次性查询以及基于任何 Azure Synapse 数据源构建的完整交互式数据情景等。 |[产品页](https://count.co/)<br>|
 | ![Dremio](./media/sql-data-warehouse-partner-business-intelligence/dremio-logo.png) |**Dremio**<br> 分析人员和数据科学家可以使用 Dremio 的直观 UI 发现、探索和整理数据，同时 IT 维护治理和安全性。 通过 Dremio 可以轻松地将 ADLS 与 Blob 存储、Azure SQL 数据库、Azure Synapse SQL、HDInsight 等服务联接到一起。 借助 Dremio，Power BI 分析师可以搜索存储在 ADLS 上的新数据集、无需 IT 准备即可立即访问 Power BI 中的数据、创建可视化效果并以迭代方式实时优化报表。 并且分析师可以创建新报表，将 ADLS 与其他数据库之间的数据合并。 |[产品页面](https://www.dremio.com/azure/)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br> |
 | ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas BI**<br>Dundas Data Visualization 是商业智能与数据可视化软件的全球领先提供商。  Dundas 仪表板、报告和可视化数据分析可以完美集成到业务应用程序，能够制定更好的决策，更快地发现见解。|[产品页](https://www.dundas.com/dundas-bi)<br>[Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/dundas.dundas-bi)<br> |
 | ![IBM Cognos](./media/sql-data-warehouse-partner-business-intelligence/cognos_analytics_logo.png) |**IBM Cognos Analytics**<br>Cognos Analytic 包括自助式功能，无论你是需要检查庞大供应链的经验丰富的业务分析员，还是需要优化营销活动的营销人员，都可以简单、清晰并轻松地使用这项分析。 Cognos Analytics 使用 AI 和其他功能来指导数据探索。 它使用户能够更轻松地获得所需的答案|[产品页](https://www.ibm.com/products/cognos-analytics)<br>|
 | ![Information Builders](./media/sql-data-warehouse-partner-business-intelligence/informationbuilders_logo.png) |**Information Builders (WebFOCUS)**<br>WebFOCUS 商业智能可帮助公司在企业内外更有战略性地使用数据。 它能够让用户和管理员快速创建将来自多个数据源和不同格式的内容相结合的仪表板。 它还提供强大的安全功能和全面治理，能够实现无缝安全地共享任何 BI 和分析内容|[产品页](https://www.informationbuilders.com/products/bi-and-analytics-platform)<br> |
-| ![Jinfonet](./media/sql-data-warehouse-partner-business-intelligence/jinfonet_logo.png) |**Jinfonet JReport**<br>JReport 是为企业打造的可内嵌 BI 解决方案。 此解决方案提供了多种功能，例如报表创建、仪表板以及针对云端、大数据和事务数据源的数据分析。 通过数据可视化，用户可以自行执行报告和数据探索，实时制定灵活的决策。 |[产品页](https://www.jinfonet.com/product/jreport-designer)<br> |
+| ![Jinfonet](./media/sql-data-warehouse-partner-business-intelligence/jinfonet_logo.png) |**Jinfonet JReport**<br>JReport 是为企业打造的可内嵌 BI 解决方案。 此解决方案提供了多种功能，例如报表创建、仪表板以及针对云端、大数据和事务数据源的数据分析。 通过数据可视化，用户可以自行执行报告和数据探索，实时制定灵活的决策。 |[产品页](https://www.logianalytics.com/jreport/)<br> |
 | ![LogiAnalytics](./media/sql-data-warehouse-partner-business-intelligence/logianalytics_logo.png) |**Logi Analytics**<br>Logi Analytics 可以让组织收集、分析和立即处理全世界最大和最多样化的数据集。 |[产品页](https://www.logianalytics.com/)<br>|
 | ![Looker](./media/sql-data-warehouse-partner-business-intelligence/looker_logo.png) |**Looker BI**<br>Looker 可以让贵公司的所有人能够浏览和了解那些推动业务发展的数据。 Looker 还为数据分析师提供了一个既灵活又可重复使用的建模图层，用于控制和组织这些数据。  各公司基本上都在使用 Looker 作为催化剂来转换企业文化。|[产品页](https://looker.com/partners/microsoft-azure/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20)<br> |
 | ![Microstrategy](./media/sql-data-warehouse-partner-business-intelligence/microstrategy_logo.png) |**MicroStrategy**<br>MicroStrategy 平台提供一整套商业智能和分析功能，使组织能够从其业务数据中获取价值。 MicroStrategy 强大的分析引擎、全面的工具集、多种多样的数据连接器和开放式架构，可确保你拥有将分析访问权限扩展到每个团队所需的一切。|[产品页面](https://www.microstrategy.com/us/product/analytics)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/microstrategy.microstrategy_enterprise_platform_vm)<br> |
@@ -49,4 +50,5 @@ ms.locfileid: "95904336"
 ## <a name="next-steps"></a>后续步骤
 若要详细了解我们的其他一些合作伙伴，请参阅[数据集成合作伙伴](sql-data-warehouse-partner-data-integration.md)、[数据管理合作伙伴](sql-data-warehouse-partner-data-management.md)和[机器学习和 AI 合作伙伴](sql-data-warehouse-partner-machine-learning-ai.md)。
 
+了解如何[通过 Synapse Studio 发现合作伙伴解决方案](sql-data-warehouse-partner-browse-partners.md)。
  

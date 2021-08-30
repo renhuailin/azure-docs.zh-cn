@@ -4,14 +4,14 @@ description: 了解 Azure 指标资源管理器的高级用法。
 author: vgorbenko
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 06/30/2020
 ms.author: vitalyg
-ms.openlocfilehash: 8564f96ad311a07ccf4582f274e44e6ebd1e0c85
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: bd0fef05913c66f767cb81e3c999fda4edaa8c21
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108758496"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456517"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
 
@@ -113,7 +113,9 @@ ms.locfileid: "108758496"
 - 如果时间粒度设置为 30 分钟，则会基于 48 个聚合数据点绘制图表。 即，折线图连接图表绘图区域中的 48 个点（24 小时 x 每小时 2 个数据点）。 每个数据点表示在每个相关的 30 分钟时间段内发生的服务器请求的所有捕获响应时间的平均值。
 - 如果将时间粒度切换成 15 分钟，你将获得 96 个聚合数据点。  也就是说，你将获得 24 小时 x 每小时 4 个数据点。
 
-指标资源管理器有五个基本的统计聚合类型：总和、计数、最小值、最大值和平均值。 “总和”聚合有时称为“总计”聚合 。 对于许多指标，指标资源管理器会隐藏不相关且无法使用的聚合。
+指标资源管理器有五个基本的统计聚合类型：总和、计数、最小值、最大值和平均值。 “总和”聚合有时称为“总计”聚合 。 对于许多指标，指标资源管理器会隐藏不相关且无法使用的聚合。 
+
+有关指标聚合工作原理的深入讨论，请参阅 [Azure Monitor 指标聚合和显示说明](metrics-aggregation-explained.md)。
 
 * **总和**：在聚合间隔期间捕获的所有值的总和。
 

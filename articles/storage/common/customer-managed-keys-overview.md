@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: cd2a265c5d4c339fa6e50338949cbf643314a3ee
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: cc0e6dc0e11809fb1e8cf046821231cc98f769f6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371315"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439851"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>客户管理的密钥（用于 Azure 存储加密）
 
@@ -24,14 +24,11 @@ ms.locfileid: "111371315"
 必须使用下列其中一个 Azure 密钥存储来存储客户管理的密钥：
 
 - [Azure Key Vault](../../key-vault/general/overview.md)
-- [Azure Key Vault 托管硬件安全模块 (HSM)（预览版）](../../key-vault/managed-hsm/overview.md)
+- [Azure Key Vault 托管硬件安全模块 (HSM)](../../key-vault/managed-hsm/overview.md)
 
 可以创建自己的密钥并将其存储在密钥保管库或托管 HSM 中，也可以使用 Azure 密钥保管库 API 来生成密钥。 存储帐户和密钥保管库或托管 HSM 必须在同一个区域和同一个 Azure Active Directory (Azure AD) 租户中，但可以在不同的订阅中。
 
-> [!IMPORTANT]
->
-> 使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥进行加密目前是一项 **预览版** 功能。 有关 beta 版本、预览版或尚未正式发布的版本的 Azure 功能所适用的法律条款，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
+> [!NOTE]
 > Azure 密钥保管库和 Azure 密钥保管库托管 HSM 支持使用相同的 API 和管理界面进行配置。
 
 ## <a name="about-customer-managed-keys"></a>关于客户管理的密钥
@@ -76,7 +73,7 @@ Azure Policy 提供了内置策略，要求存储帐户对 Blob 存储和 Azure 
 
 可随时在客户管理的密钥与 Microsoft 管理的密钥之间进行切换。 有关 Microsoft 管理的密钥的详细信息，请参阅[关于加密密钥管理](storage-service-encryption.md#about-encryption-key-management)。
 
-若要了解如何使用密钥保管库中的客户管理的密钥来配置 Azure 存储加密，请参阅[使用 Azure Key Vault 中存储的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault.md)。 若要在托管 HSM 中配置客户管理的密钥，请参阅[使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥配置加密（预览版）](customer-managed-keys-configure-key-vault-hsm.md)。
+若要了解如何使用密钥保管库中的客户管理的密钥来配置 Azure 存储加密，请参阅[使用 Azure Key Vault 中存储的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault.md)。 若要在托管 HSM 中配置客户管理的密钥，请参阅[使用 Azure Key Vault 托管 HSM 中存储的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault-hsm.md)。
 
 > [!IMPORTANT]
 > 客户托管密钥依赖于 Azure 资源的托管标识，后者是Azure AD 的一项功能。 托管标识当前不支持跨目录方案。 在 Azure 门户中配置客户管理的密钥时，系统会在幕后自动将一个托管标识分配到你的存储帐户。 如果随后将订阅、资源组或存储帐户从一个 Azure AD 目录移到另一个目录，与存储帐户关联的托管标识不会传输到新租户，因此客户管理的密钥可能不再起作用。 有关详细信息，请参阅 [Azure 资源的常见问题解答和已知问题](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中的“在 Azure AD 目录之间转移订阅”。  
@@ -92,7 +89,7 @@ Azure 存储加密支持大小为 2048、3072 和 4096 的 RSA 和 RSA-HSM 密�
 - 手动更新密钥版本：若要在有新版本可用时自动更新客户管理的密钥的密钥版本，请在为存储帐户启用“使用客户管理的密钥进行加密”时省略密钥版本。 如果省略密钥版本，Azure 存储每天都会在密钥保管库或托管 HSM 中检查是否有客户管理的密钥的新版本。 Azure 存储将自动使用最新版本的密钥。
 - 手动更新密钥版本：若要对 Azure 存储加密使用特定版本的密钥，请在为存储帐户启用“使用客户管理的密钥进行加密”时指定该密钥版本。 如果指定密钥版本，则 Azure 存储将使用该版本进行加密，直到手动更新密钥版本。
 
-    显式指定密钥版本后，必须手动更新存储帐户，以便在创建新版本时使用新密钥版本 URI。 若要了解如何将存储帐户更新为使用新密钥版本，请参阅[使用 Azure 密钥保管库中存储的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault.md)或[使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥配置加密（预览版）](customer-managed-keys-configure-key-vault-hsm.md)。
+    显式指定密钥版本后，必须手动更新存储帐户，以便在创建新版本时使用新密钥版本 URI。 若要了解如何将存储帐户更新为使用新密钥版本，请参阅[使用 Azure Key Vault 中存储的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault.md)或[使用 Azure Key Vault 托管 HSM 中存储的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault-hsm.md)。
 
 更新密钥版本时，根加密密钥的保护会更改，但是 Azure 存储帐户中的数据不会重新加密。 用户无需执行任何其他操作。
 
@@ -135,4 +132,4 @@ Azure 存储加密支持大小为 2048、3072 和 4096 的 RSA 和 RSA-HSM 密�
 
 - [静态数据的 Azure 存储加密](storage-service-encryption.md)
 - [使用存储在 Azure Key Vault 中的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault.md)
-- [使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥配置加密（预览版）](customer-managed-keys-configure-key-vault-hsm.md)
+- [使用 Azure Key Vault 托管 HSM 中存储的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault-hsm.md)

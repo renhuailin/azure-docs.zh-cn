@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 874ecfc8c1c50816916fb0b04975477a1cbe0a71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc474bf8a6df613a8dc1e95169b4730251ff22b7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94698081"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472843"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure 负载均衡器 SKU
 
@@ -39,7 +39,7 @@ Azure 负载均衡器有两种 SKU。
 | [运行状况探测](./load-balancer-custom-probe-overview.md#types) | TCP、HTTP、HTTPS | TCP、HTTP |
 | [运行状况探测停止行为](./load-balancer-custom-probe-overview.md#probedown) | TCP 连接在实例探测停止时以及在所有探测停止时保持活动状态。 | TCP 连接在实例探测停止时保持活动状态。 所有探测都关闭时，所有 TCP 连接都会结束。 |
 | **可用性区域** | 用于入站和出站流量的区域冗余和区域前端。 | 不可用 |
-| **诊断** | [Azure Monitor 多维指标](./load-balancer-standard-diagnostics.md) | [Azure Monitor 日志](./load-balancer-monitor-log.md) |
+| **诊断** | [Azure Monitor 多维指标](./load-balancer-standard-diagnostics.md) | 不支持 |
 | HA 端口 | [可用于内部负载均衡器](./load-balancer-ha-ports-overview.md) | 不可用 |
 | 默认保护 | 除非网络安全组允许，否则对入站流关闭。 允许从虚拟网络到内部负载均衡器的内部流量。 | 默认处于打开状态。 可选的网络安全组。 |
 | **出站规则** | [声明性出站 NAT 配置](./load-balancer-outbound-connections.md#outboundrules) | 不可用 |
@@ -47,6 +47,7 @@ Azure 负载均衡器有两种 SKU。
 | [多个前端](./load-balancer-multivip-overview.md) | 入站和[出站](./load-balancer-outbound-connections.md) | 仅限入站 |
 | 管理操作 | 大多数操作都小于 30 秒 | 通常为 60 - 90 多秒 |
 | **SLA** | [99.99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | 不可用 | 
+| **全局 VNet 对等互连支持** | 通过全局 VNet 对等互连支持标准 ILB | 不支持 | 
 
 有关详细信息，请参阅[负载均衡器限制](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)。 对于标准负载均衡器，请参阅[概述](./load-balancer-overview.md)、[定价](https://aka.ms/lbpricing)和 [SLA](https://aka.ms/lbsla)。
 

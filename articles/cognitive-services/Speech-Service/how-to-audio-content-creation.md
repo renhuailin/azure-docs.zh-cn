@@ -3,19 +3,19 @@ title: 音频内容创建 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 音频内容创建是一个在线工具，可用于为应用和产品自定义和微调 Microsoft 的文本到语音输出。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.author: trbye
-ms.openlocfilehash: 94e060176b921529a42e28e8c735b0f1cdda5293
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.openlocfilehash: 087459b5831aa69c6e30e1dbe824d1902facbc2d
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075071"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419196"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>使用音频内容创建工具改进合成
 
@@ -49,10 +49,10 @@ ms.locfileid: "110075071"
 ### <a name="step-3---log-into-the-audio-content-creation-with-your-azure-account-and-speech-resource"></a>步骤 3 - 通过 Azure 帐户和语音资源登录音频内容创建
 
 1. 获取 Azure 帐户和语音资源后，可以通过单击“开始”，登录到[音频内容创建](https://aka.ms/audiocontentcreation)。
-2. 主页列出了 Speech Studio 下的所有产品。 单击“音频内容创建”开始。
-3. 将显示“欢迎使用 Speech Studio”页，可在其中设置语音服务。 选择需要处理的 Azure 订阅和语音资源。 单击“使用资源”完成设置。 下次登录到音频内容创建工具时，我们会将你直接链接到当前语音资源下的音频工作文件。 可以在 [Azure 门户](https://portal.azure.com/)中检查 Azure 订阅的详细信息和状态。 如果没有可用的语音资源，并且你是 Azure 订阅的所有者或管理员，则还可以单击“创建新资源”，在 Speech Studio 中创建新的语音资源。 如果你是特定 Azure 订阅的用户角色，则可能无权创建新的语音资源。 请联系管理员以获取语音资源访问权限。 
+2. 主页列出了 Speech Studio 下的所有产品。 单击“音频内容创建”即可开始。
+3. 此时会显示“欢迎使用 Speech Studio”页面，你可以在其中设置语音服务。 选择你要使用的 Azure 订阅和语音资源。 单击“使用资源”以完成设置。 下次登录到音频内容创建工具时，我们会将你直接链接到当前语音资源下的音频工作文件。 可以在 [Azure 门户](https://portal.azure.com/)中检查 Azure 订阅的详细信息和状态。 如果你没有可用的语音资源，但你是 Azure 订阅的所有者或管理员，则还可以通过单击“创建新资源”在 Speech Studio 中创建新的语音资源。 如果你是特定 Azure 订阅的用户角色，则可能无权创建新的语音资源。 请联系管理员来获取语音资源访问权限。 
 4. 可以随时使用位于顶部导航栏中的“设置”选项来修改语音资源。
-5. 如果要切换目录，请转到“设置”或个人资料进行操作。 
+5. 如果要切换目录，请转到“设置”或要操作的配置文件。 
 
 ## <a name="how-to-use-the-tool"></a>如何使用工具？
 
@@ -66,7 +66,7 @@ ms.locfileid: "110075071"
    > [!NOTE]
    > 管控访问可用于自定义神经语音，这允许创建类似于自然语音的高清语音。 有关详细信息，请参阅[管控过程](./text-to-speech.md)。
 
-4. 选择要预览的内容，然后单击“播放”图标（三角形）以预览默认合成输出。 请注意，如果对文本进行任何更改，则需要单击“停止”图标，然后再次单击“播放”图标，以使用已更改的脚本重新生成音频。  
+4. 选择要预览的内容，然后单击播放图标（一个三角形）来预览默认的合成输出。 请注意，如果你对文本做出任何更改，则需要单击“停止”图标，然后再次单击播放图标，以使用已更改的脚本重新生成音频。  
 5. 通过调整发音、停顿、音调、速率、语调、语音风格等来改进输出。 有关选项的完整列表，请参阅[语音合成标记语言](speech-synthesis-markup.md)。 有关如何使用音频内容创建来微调语音输出，请观看此处的[视频](https://youtu.be/ygApYuOOG6w)。
 6. 保存并[导出优化音频](#export-tuned-audio)。 在系统中保存优化音轨后，可继续工作并迭代输出。 如果对输出满意，可使用导出功能创建音频创建任务。 可查看导出任务的状态，并下载用于应用和产品的输出。
 
@@ -76,7 +76,7 @@ ms.locfileid: "110075071"
 
 选项 1：
 
-1. 单击“新建” > “文件”以创建新的音频优化文件。
+1. 单击“新建” > “文件”以创建新的音频优化文件 。
 2. 在编辑窗口键入或粘贴内容。 每个文件的字符数最多为 20,000 个。 如果脚本的长度超过 20,000 个字符，则可以使用选项 2 将内容自动拆分为多个文件。
 3. 切勿忘记保存。
 
@@ -103,7 +103,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 ```xml
 <speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" version="1.0" xml:lang="en-US">
-    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)">
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, ChristopherNeural)">
     Welcome to use Audio Content Creation <break time="10ms" />to customize audio output for your products.
     </voice>
 </speak>
@@ -130,7 +130,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 如果有多个用户要使用音频内容创建，则可以授予用户对 Azure 订阅和语音资源的访问权限。 如果将用户添加到 Azure 订阅，则该用户可以访问 Azure 订阅下的所有资源。 但如果仅将用户添加到语音资源，则该用户将只能访问语音资源，并且不能访问此 Azure 订阅下的其他资源。 有权访问语音资源的用户可以使用音频内容创建。
 
-用户需要准备一个 [Microsoft 帐户](https://account.microsoft.com/account)。 如果用户没有 Microsoft 帐户，请花几分钟创建一个。 用户可以使用现有电子邮件和链接作为 Microsoft 帐户，也可创建新的 Outlook 电子邮件作为 Microsoft 帐户。
+用户需要准备一个 [Microsoft 帐户](https://account.microsoft.com/account)。 如果用户没有 Microsoft 帐户，则请创建一个，只需几分钟。 用户可以使用现有电子邮件并将其作为 Microsoft 帐户进行关联，也可以创建新的 Outlook 电子邮件作为 Microsoft 帐户。
 
 
 ### <a name="add-users-to-a-speech-resource"></a>将用户添加到语音资源
@@ -141,9 +141,10 @@ Welcome to use Audio Content Creation to customize audio output for your product
 2. 单击“访问控制(IAM)”。 单击“角色分配”选项卡以查看此订阅的所有角色分配。
     :::image type="content" source="media/audio-content-creation/access-control-roles.png" alt-text="角色分配选项卡":::
 3. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。  在“角色”下拉列表中，选择“认知服务用户”角色。 如果要授予用户此语音资源的所有权，可以选择“所有者”角色。
-4. 从列表中选择一个用户。 如果没有在列表中看到用户，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称和电子邮件地址。 如果此目录中没有该用户，可输入该用户的 [Microsoft 帐户](https://account.microsoft.com/account)（受 Azure Active Directory 信任）。
-5. 单击“保存”以分配该角色。 用户将收到电子邮件邀请。 通过单击电子邮件中的“接受邀请” > “接受以加入 Azure”来接受邀请。 然后，用户将被重定向到 Azure 门户。 用户无需在 Azure 门户中执行进一步操作。
-6. 稍后，将向用户分配语音资源范围内的认知服务用户角色。 用户可以访问或刷新[音频内容创建](https://aka.ms/audiocontentcreation)页面，并选择语音资源以开始使用。 
+4. 键入用户的电子邮件地址，然后在目录中选择用户。 电子邮件地址必须是 Azure 活动目录信任的 Microsoft 帐户。 用户可以使用个人电子邮件地址轻松注册 [Microsoft 帐户](https://account.microsoft.com/account)。 
+5. 单击“保存”以分配该角色。 
+6. 用户会收到电子邮件邀请。 通过单击电子邮件中的“接受邀请” > “接受加入 Azure”来接受邀请。  然后，用户会被重定向到 Azure 门户。 用户无需在 Azure 门户中执行进一步操作。 片刻之后，会在语音资源范围内为用户分配角色，用户将有权访问此语音资源。 如果用户未收到邀请电子邮件，你可以在“角色分配”下搜索用户帐户，然后进入用户配置文件。 找到“标识”->“已接受邀请”，然后单击“(管理)”以重新发送电子邮件邀请。 还可以将邀请链接复制给用户。 
+7. 用户现在访问或刷新[音频内容创建](https://aka.ms/audiocontentcreation)产品页面，并使用用户的 Microsoft 帐户进行登录。 在所有语音产品中选择“音频内容创建”块。 在弹出窗口或页面右上角的设置中选择语音资源。 如果用户找不到可用的语音资源，请检查你是否在正确的目录中。 若要检查正确的目录，请单击右上角的帐户配置文件，然后单击“当前目录”旁边的“切换”。 如果有多个目录可用，则意味着你有权访问多个目录。 切换到不同的目录并转到设置，查看正确的语音资源是否可用。 
 
     :::image type="content" source="media/audio-content-creation/add-role-first.png" alt-text="添加角色对话框":::
 
@@ -162,9 +163,9 @@ Welcome to use Audio Content Creation to customize audio output for your product
 如果你希望某个用户向其他用户提供访问权限，则需要为用户提供语音资源的所有者角色，并将用户设置为 Azure 目录读者。
 1. 将用户添加为语音资源的所有者。 请参阅[如何将用户添加到语音资源](#add-users-to-a-speech-resource)。
     :::image type="content" source="media/audio-content-creation/add-role.png" alt-text="角色所有者字段":::
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择左上角的折叠菜单。 单击“Azure Active Directory”，然后单击“用户”。
-1. 搜索用户的 Microsoft 帐户，然后转到用户的详细信息页。 单击“分配的角色”。
-1. 单击“添加分配” -> “目录读者”。
+2. 在 [Azure 门户](https://portal.azure.com/)中，选择左上角的已折叠菜单。 单击“Azure Active Directory”，然后单击“用户”。
+3. 搜索用户的 Microsoft 帐户，然后转到用户的详细信息页。 单击“分配的角色”。
+4. 单击“添加分配” -> “目录读者”。 如果按钮“添加分配”灰显，则意味着你没有访问权限。 只有此目录的全局管理员可以向用户添加分配。
 
 ## <a name="see-also"></a>另请参阅
 

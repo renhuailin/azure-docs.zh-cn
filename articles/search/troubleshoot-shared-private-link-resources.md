@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/30/2021
-ms.openlocfilehash: 82a5135f23293d0fe9bbaaf0eeb0543b4fdb598f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 81bae18cdc4a977ef03ddf807f9277037d939bd0
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744766"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195855"
 ---
 # <a name="troubleshooting-common-issues-with-shared-private-link-resources"></a>排查共享专用链接资源的常见问题
 
@@ -23,7 +23,7 @@ ms.locfileid: "111744766"
 
 创建共享专用链接资源涉及四个不同的步骤：
 
-1. 客户在搜索资源提供程序 (RP) 上调用管理平面 [CreateOrUpdate API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) 并提供有关要创建的共享专用链接资源的详细信息。
+1. 客户在搜索资源提供程序 (RP) 上调用管理平面 [CreateOrUpdate API](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/create-or-update) 并提供有关要创建的共享专用链接资源的详细信息。
 
 2. 搜索 RP 验证请求，验证是否开始异步 Azure 资源管理器操作（客户可以查询其进度）
 
@@ -70,15 +70,15 @@ ms.locfileid: "111744766"
 | Azure Key Vault | `Microsoft.KeyVault/vaults` | `2020-08-01` |
 | Azure Functions（预览版） | `Microsoft.Web/sites` | `2020-08-01-Preview` |
 
-此外，指定的 `groupId` 需要对指定的资源类型有效。 例如，`groupId`“blob”对类型“Microsoft.Storage/storageAccounts”有效，不能用于任何其他资源类型。 对于给定的搜索管理 API 版本，客户可以使用[列出受支持的 API](/rest/api/searchmanagement/privatelinkresources/listsupported)来找出受支持的 `groupId` 和资源类型的详细信息。
+此外，指定的 `groupId` 需要对指定的资源类型有效。 例如，`groupId`“blob”对类型“Microsoft.Storage/storageAccounts”有效，不能用于任何其他资源类型。 对于给定的搜索管理 API 版本，客户可以使用[列出受支持的 API](/rest/api/searchmanagement/2021-04-01-preview/private-link-resources/list-supported)来找出受支持的 `groupId` 和资源类型的详细信息。
 
 + 强制执行配额限制：搜索服务对可创建的共享专用链接资源的不同数量和正在使用的各种目标资源类型的数量施加配额（基于 `groupId`）。 这些已记录在 Azure 认知搜索服务限制页面的[共享专用链接资源限制部分](search-limits-quotas-capacity.md#shared-private-link-resource-limits)中。
 
 ### <a name="azure-resource-manager-deployment-failures"></a>Azure 资源管理器部署失败
 
-在搜索接受创建共享专用链接资源的请求后，它所启动的 Azure 资源管理器部署也会因多种原因而失败。 在所有情况下，当客户查询异步操作的状态时（[此处](search-indexer-howto-access-private.md#step-1-create-a-shared-private-link-resource-to-the-storage-account)所述），会显示相应的错误消息和任何可用的详细信息。
+搜索服务发起创建共享专用链接的请求，但由 Azure 资源管理器执行实际工作。 可在门户中或通过查询[检查部署状态](search-indexer-howto-access-private.md#step-3-check-the-status-of-the-private-endpoint-creation)，并解决可能发生的所有错误。
 
-Azure 资源管理器部署失败的共享专用链接资源将显示在 [List](/rest/api/searchmanagement/sharedprivatelinkresources/listbyservice) 和 [Get](/rest/api/searchmanagement/sharedprivatelinkresources/get) API 调用中，但“预配状态”为 `Failed`。 确定 Azure 资源管理器部署失败的原因后，请删除 `Failed` 资源，并在应用下表中的相应解决方法后重新创建它。
+Azure 资源管理器部署失败的共享专用链接资源将显示在 [List](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/list-by-service) 和 [Get](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/get) API 调用中，但“预配状态”为 `Failed`。 确定 Azure 资源管理器部署失败的原因后，请删除 `Failed` 资源，并在应用下表中的相应解决方法后重新创建它。
 
 | 部署失败原因 | 说明 | 解决方法 |
 | --- | --- | --- |
@@ -97,7 +97,7 @@ Azure 资源管理器部署失败的共享专用链接资源将显示在 [List](
 
 ## <a name="updating-a-shared-private-link-resource"></a>更新共享专用链接资源
 
-可以使用[创建或更新 API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate)更新现有的共享专用链接资源。 搜索 RP 只允许对共享专用链接资源进行小范围更新 - 通过此 API 只能修改请求消息。
+可以使用[创建或更新 API](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/create-or-update)更新现有的共享专用链接资源。 搜索 RP 只允许对共享专用链接资源进行小范围更新 - 通过此 API 只能修改请求消息。
 
 + 无法更新现有共享专用链接资源（例如 `privateLinkResourceId` 和 `groupId`）的任何核心属性，并且将始终不支持此操作。 如果需要更改除请求消息以外的任何其他属性，我们建议客户删除并重新创建共享专用链接资源。
 
@@ -105,7 +105,7 @@ Azure 资源管理器部署失败的共享专用链接资源将显示在 [List](
 
 ## <a name="deleting-a-shared-private-link-resource"></a>删除共享专用链接资源
 
-客户可以通过[删除 API](/rest/api/searchmanagement/sharedprivatelinkresources/delete) 删除现有的共享专用链接资源。 与创建（或更新）过程相似，这也是一个异步操作，分为四个步骤：
+客户可以通过[删除 API](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/delete) 删除现有的共享专用链接资源。 与创建（或更新）过程相似，这也是一个异步操作，分为四个步骤：
 
 1. 客户请求搜索 RP 删除共享专用链接资源。
 
@@ -113,7 +113,7 @@ Azure 资源管理器部署失败的共享专用链接资源将显示在 [List](
 
 3. 搜索完成操作的查询（通常需要几分钟）。 此时，共享专用链接资源的预配状态为“正在删除”。
 
-4. 操作成功完成后，将删除备份专用终结点和任何关联的 DNS 映射。 该资源将不会显示为 [List](/rest/api/searchmanagement/sharedprivatelinkresources/listbyservice) 操作的一部分，并且对该资源尝试执行 [Get](/rest/api/searchmanagement/sharedprivatelinkresources/get) 操作将导致出现“404 Not Found”错误。
+4. 操作成功完成后，将删除备份专用终结点和任何关联的 DNS 映射。 该资源将不会显示为 [List](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/list-by-service) 操作的一部分，并且对该资源尝试执行 [Get](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources/get) 操作将导致出现“404 Not Found”错误。
 
 ![删除共享专用链接资源时所涉及的步骤 ](media\troubleshoot-shared-private-link-resources\shared-private-link-delete-states.png)
 
@@ -131,4 +131,4 @@ Azure 资源管理器部署失败的共享专用链接资源将显示在 [List](
 了解有关共享专用链接资源的详细信息，以及如何使用它来安全访问受保护的内容。
 
 + [通过索引器访问受保护的内容](search-indexer-howto-access-private.md)
-+ [REST API 参考](/rest/api/searchmanagement/sharedprivatelinkresources)
++ [REST API 参考](/rest/api/searchmanagement/2021-04-01-preview/shared-private-link-resources)

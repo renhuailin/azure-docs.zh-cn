@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）：重新训练 Web 服务 - Azure
-description: 了解如何更新 Web 服务以在 Azure 机器学习工作室（经典版）中使用新训练的机器学习模型。
+description: 了解如何更新 Web 服务以在机器学习工作室（经典）中使用新训练的机器学习模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp, devx-track-azurepowershell
 ms.date: 02/14/2019
-ms.openlocfilehash: a1bf9582c73eb168c0f32e713f8308096edcf603
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 5234611c99a58cefcb98d02c87d257055f603b4c
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110704800"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579605"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新训练和部署机器学习模型
 
@@ -51,7 +51,7 @@ ms.locfileid: "110704800"
     现在，将训练实验部署为重新训练 Web 服务，用于输出经过训练的模型和模型评估结果。
 
 1. 在实验画布的底部，单击“设置 Web 服务”。
-1. 选择“部署 Web 服务[新建]”。 Azure 机器学习 Web 服务门户可打开“部署 Web 服务”页。
+1. 选择“部署 Web 服务[新建]”。 机器学习 Web 服务门户会打开“部署 Web 服务”页面。
 1. 为 Web 服务键入名称，选择一个付款计划。
 1. 选择“部署”。
 
@@ -70,7 +70,7 @@ ms.locfileid: "110704800"
 
 按照注释中指定的方式添加 NuGet 包 Microsoft.AspNet.WebApi.Client。 要添加对 Microsoft.WindowsAzure.Storage.dll 的引用，可能需要安装 [Azure 存储服务的客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)。
 
-以下屏幕截图显示 Azure 机器学习 Web 服务门户中的“使用”页。
+以下屏幕截图显示机器学习 Web 服务门户中的“使用”页面。
 
 ![使用页](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
@@ -161,7 +161,7 @@ Type : Microsoft.MachineLearning/webServices
 Tags : {}
 ```
 
-或者，若要确定现有 Web 服务的资源组名称，请登录 Azure Microsoft Azure 机器学习 Web 服务门户。 选择 Web 服务。 资源组名称是 Web 服务的 URL 的第五个元素，紧随 *resourceGroups* 元素之后。 在下面的示例中，资源组名称为 Default-MachineLearning-SouthCentralUS。
+或者，若要确定现有 Web 服务的资源组名称，请登录机器学习 Web 服务门户。 选择 Web 服务。 资源组名称是 Web 服务的 URL 的第五个元素，紧随 *resourceGroups* 元素之后。 在下面的示例中，资源组名称为 Default-MachineLearning-SouthCentralUS。
 
 `https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237`
 

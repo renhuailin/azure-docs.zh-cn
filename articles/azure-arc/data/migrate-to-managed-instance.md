@@ -7,20 +7,19 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: f2d2c2ecff92dde411c6ec2a8d00ad997f4c5c02
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: d93fa1d16366ee131d98aebe2ab8e3e040949d72
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495820"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752348"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>迁移：从 SQL Server 到已启用 Azure Arc 的 SQL 托管实例
 
 本方案将逐步引导你通过两种不同的备份和还原方法，将数据库从 SQL Server 实例迁移到 Azure Arc 中的 Azure SQL 托管实例。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="use-azure-blob-storage"></a>使用 Azure Blob 存储
 
@@ -31,8 +30,13 @@ ms.locfileid: "110495820"
 ### <a name="prerequisites"></a>先决条件
 
 - [安装 Azure Data Studio](install-client-tools.md)
+
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
 - [安装 Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
 - Azure 订阅
+
+
 
 ### <a name="step-1-provision-azure-blob-storage"></a>步骤 1：预配 Azure Blob 存储
 

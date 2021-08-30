@@ -7,14 +7,17 @@ ms.topic: article
 ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a7fa9ece3728214fad31f0bae769e1e50206df7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f49bcba81594fa2992c07cad1efb2d6235b0270
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594048"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432925"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境
+> [!NOTE]
+> 本文介绍用于独立应用服务计划的应用服务环境 v2
+> 
 
 应用服务环境 (ASE) 是客户 Azure 虚拟网络实例的子网中的 Azure 应用服务部署。 ASE 包括：
 
@@ -88,9 +91,9 @@ ms.locfileid: "100594048"
 
 ## <a name="ip-addresses"></a>IP 地址
 
-应用服务可向应用分配专用 IP 地址。 根据[将现有的自定义 SSL 证书绑定到 Azure 应用服务][ConfigureSSL]中所述，可以在配置基于 IP 的 TLS/SSL 后使用此功能。 在 ILB ASE 中，无法添加更多的 IP 地址用于基于 IP 的 SSL。
+应用服务可向应用分配专用 IP 地址。 根据[将现有的自定义 TLS/SSL 证书绑定到 Azure 应用服务][ConfigureSSL]中所述，可以在配置基于 IP 的 TLS/SSL 绑定后使用此功能。 在 ILB ASE 中，无法添加更多用于基于 IP 的 TLS/SSL 绑定的 IP 地址。
 
-在外部 ASE 中，可以像在多租户应用服务中那样，为应用配置基于 IP 的 SSL。 ASE 中始终有一个备用地址（最多 30 个 IP 地址）。 每次使用一个地址时，会添加另一个地址，因此，始终有一个随时可用的地址。 分配另一个 IP 地址需要留出一段时间延迟。 这种延迟可以防止快速连续添加 IP 地址。
+使用外部 ASE 时，可以像在多租户应用服务中那样，为应用配置基于 IP 的 TLS/SSL 绑定。 ASE 中始终有一个备用地址（最多 30 个 IP 地址）。 每次使用一个地址时，会添加另一个地址，因此，始终有一个随时可用的地址。 分配另一个 IP 地址需要留出一段时间延迟。 这种延迟可以防止快速连续添加 IP 地址。
 
 ## <a name="front-end-scaling"></a>前端缩放
 
@@ -141,7 +144,7 @@ SCM URL 用于访问 Kudu 控制台，也可用于通过 Web 部署发布应用�
 
 ASE 默认域后缀的 DNS 设置不会将你的应用限制为只能由这些名称访问。 可以在 ILB ASE 中设置自定义域名而无需对应用进行任何验证。 如果随后想要创建名为 contoso.net 的区域，可以执行此操作并将其指向 ILB IP 地址。 自定义域名适用于应用请求，但不适用于 scm 站点。 scm 站点仅在 &lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net 中可用。 
 
-名为 .&lt;asename&gt;.appserviceenvironment.net 的区域是全局唯一的。 在 2019 年 5 月之前，客户可以指定 ILB ASE 的域后缀。 如果要将 .contoso.com 用于域后缀，则可以执行此操作，这将包括 scm 站点。 该模型面临一些挑战，其中包括：管理默认的 SSL 证书，缺少对 scm 站点的单一登录，以及要求使用通配符证书。 ILB ASE 默认证书升级过程也会中断，并导致应用程序重启。 为了解决这些问题，ILB ASE 行为已更改为使用基于 ASE 名称域的后缀和 Microsoft 拥有的后缀。 对 ILB ASE 行为的更改仅影响在 2019 日 5 月后发布的 ILB Ase。 预先存在的 ILB ASE 仍必须管理 ASE 及其 DNS 配置的默认证书。
+名为 .&lt;asename&gt;.appserviceenvironment.net 的区域是全局唯一的。 在 2019 年 5 月之前，客户可以指定 ILB ASE 的域后缀。 如果要将 .contoso.com 用于域后缀，则可以执行此操作，这将包括 scm 站点。 该模型面临一些挑战，其中包括：管理默认的 TLS/SSL 证书、缺少对 scm 站点的单一登录，以及要求使用通配符证书。 ILB ASE 默认证书升级过程也会中断，并导致应用程序重启。 为了解决这些问题，ILB ASE 行为已更改为使用基于 ASE 名称域的后缀和 Microsoft 拥有的后缀。 对 ILB ASE 行为的更改仅影响在 2019 日 5 月后发布的 ILB Ase。 预先存在的 ILB ASE 仍必须管理 ASE 及其 DNS 配置的默认证书。
 
 ## <a name="publishing"></a>发布
 

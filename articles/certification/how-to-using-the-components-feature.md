@@ -7,12 +7,12 @@ ms.service: certification
 ms.topic: how-to
 ms.date: 05/04/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 0041299031934bd76e4ef0700d2e75e2d61516cd
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 494ff350866d8de1386a5fd98539f0e3e5ff2c3f
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745448"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126295"
 ---
 # <a name="add-components-on-the-portal"></a>在门户中添加组件
 
@@ -65,7 +65,7 @@ ms.locfileid: "108745448"
 | 成品                                   | 1          | 客户可用产品，独立 | 空值                                              |
 | 具有可拆卸外设的成品 | 2 或更大  | 客户可用产品，独立 | 外设/独立或集成              |
 | 具有集成组件的成品  | 2 或更大  | 客户可用产品，独立 | 选择适当的类型/独立或集成 |
-| 解决方案就绪开发工具包                             | 2 或更大  | 客户可用产品，独立 | 选择适当的类型/独立或集成 |
+| 解决方案就绪开发工具包                             | 大于等于 1  | 客户可用产品或开发板，离散或集成| 选择适当的类型/独立或集成 |
 
 ## <a name="example-component-usage"></a>示例组件用法
 

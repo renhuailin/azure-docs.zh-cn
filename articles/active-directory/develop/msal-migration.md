@@ -9,74 +9,80 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/07/2020
+ms.date: 07/22/2021
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 6517cdd7aafa7ae2fe351b349e62a66104469dcd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: 145302d3569c2fc9c5d5bd58a5f9b7ccefac0b8e
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653773"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418521"
 ---
 # <a name="migrate-applications-to-the-microsoft-authentication-library-msal"></a>将应用程序迁移到 Microsoft 身份验证库 (MSAL)
 
-许多开发人员都使用 Azure Active Directory 身份验证库 (ADAL) 来构建和部署应用程序。 我们现在建议使用 Microsoft 身份验证库 (MSAL) 对 Azure AD 实体进行身份验证和授权。
+如果有任何应用程序使用 Azure Active Directory 身份验证库 (ADAL) 进行身份验证和授权功能，则现在需要将它们迁移到 [Microsoft 身份验证库 (MSAL)](msal-overview.md#languages-and-frameworks)。
 
-通过使用 MSAL 而不是 ADAL：
+- Microsoft 对 ADAL 的所有支持和开发（包括安全修补程序）将于 2022 年 6 月 30 日结束。
+- 自 2020 年 6 月 30 以来，未向 ADAL 添加任何新功能。
 
-- 你可以对一组更广泛的标识进行身份验证：
-  - Azure AD 标识
-  - Microsoft 帐户
-  - 使用 Azure AD B2C 的社交和本地帐户
-- 用户将获得最佳单一登录体验。
-- 应用程序可以启用增量许可。
-- 可以更轻松地支持条件访问。
-- 你将从创新中受益。 因为 Microsoft 所有的开发工作现在都集中在 MSAL 上，所以不会在 ADAL 中实现新功能。
+> [!WARNING]
+> 如果不在 2022 年 6 月 30 日 ADAL 支持结束前选择迁移到 MSAL，应用的安全性会面临风险。 使用 ADAL 的现有应用在支持结束日期后将继续工作，但 Microsoft 将不再发布 ADAL 的安全修补程序。
 
-**MSAL 现在是建议用于 Microsoft 标识平台的身份验证库**。
+## <a name="why-switch-to-msal"></a>为什么要切换到 MSAL？
 
-## <a name="migration-guidance"></a>迁移指南
+与 ADAL 相比，MSAL 具有多种优势，包括以下功能： 
 
-可参考以下文章迁移到 MSAL：
+|功能|MSAL|ADAL|
+|---------|---------|---------|
+|**安全性**|||
+|2022 年 6 月 30 日之后的安全修补程序|![2022 年 6 月 30 日之后的安全修补程序 - MSAL 提供该功能][y]|![2022 年 6 月 30 日之后的安全修补程序 - ADAL 不提供该功能][n]|
+| 根据 Microsoft Graph 和其他支持[连续访问评估 (CAE)](app-resilience-continuous-access-evaluation.md) 的 API 的策略或关键事件主动刷新和撤销令牌。|![根据 Microsoft Graph 和其他支持连续访问评估 (CAE) 的 API 的策略或关键事件主动刷新和撤销令牌 - MSAL 提供该功能][y]|![根据 Microsoft Graph 和其他支持连续访问评估 (CAE) 的 API 的策略或关键事件主动刷新和撤销令牌 - ADAL 不提供该功能][n]|
+| 符合 OAuth v2.0 和 OpenID Connect (OIDC) 的标准 |![符合 OAuth v2.0 和 OpenID Connect (OIDC) 的标准 - MSAL 提供该功能][y]|![符合 OAuth v2.0 和 OpenID Connect (OIDC) 的标准 - ADAL 不提供该功能][n]|
+|**用户帐户和体验**|||
+|Azure Active Directory (Azure AD) 帐户|![Azure Active Directory (Azure AD) 帐户 - MSAL 提供该功能][y]|![Azure Active Directory (Azure AD) 帐户 - ADAL 提供该功能][y]|
+| Microsoft 帐户 (MSA) |![Microsoft 帐户 (MSA) - MSAL 提供该功能][y]|![Microsoft 帐户 (MSA) - ADAL 不提供该功能][n]|
+| Azure AD B2C 帐户 |![Azure AD B2C 帐户 - MSAL 提供该功能][y]|![Azure AD B2C 帐户 - ADAL 不提供该功能][n]|
+| 最佳单一登录体验 |![最佳单一登录体验 - MSAL 提供该功能][y]|![最佳单一登录体验 - ADAL 不提供该功能][n]|
+|**复原能力**|||
+| 主动令牌续订 |![主动令牌续订 - MSAL 提供该功能][y]|![主动令牌续订 - ADAL 不提供该功能][n]|
+| 限制 |![限制 - MSAL 提供该功能][y]|![限制 - ADAL 不提供该功能][n]|
 
-- [迁移到 MSAL.Android](migrate-android-adal-msal.md)
-- [迁移到 MSAL.iOS/macOS](migrate-objc-adal-msal.md)
-- [迁移到 MSAL Java](migrate-adal-msal-java.md)
-- [迁移到 MSAL.js](msal-compare-msal-js-and-adal-js.md)
-- [迁移到 MSAL.NET](msal-net-migration.md)
-- [迁移到 MSAL Python](migrate-python-adal-msal.md)
-- [使用代理将 Xamarin 应用迁移到 MSAL.NET](msal-net-migration-ios-broker.md)
+## <a name="ad-fs-support-in-msalnet"></a>MSAL.NET 中的 AD FS 支持
 
-## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
+可使用 MSAL.NET、MSAL Java 和 MSAL Python 从 Active Directory 联合身份验证服务 (AD FS) 2019 或更高版本获取令牌。 MSAL 不支持早期版本的 AD FS，包括 AD FS 2016。
 
-__问：是否要弃用 ADAL？__  
-答：是的。 从 2020 年 6 月 30 日开始，我们将不再为 ADAL 添加新功能。 在 2022 年 6 月 30 日之前，我们将继续为 ADAL 添加关键的安全修复程序。 在此日期之后，使用 ADAL 的应用将继续工作，但我们建议升级到 MSAL，以利用最新功能并保持安全。
+如果需要继续使用 AD FS，应升级到 AD FS 2019 或更高版本，然后再将应用程序从 ADAL 更新为 MSAL。
 
-__问：我的现有 ADAL 应用是否会停止工作？__  
-答：不是。 你的现有应用将继续正常运行，不会进行修改。 如果计划在 2022 年 6 月 30 日之后继续使用它们，则应考虑将应用更新到 MSAL 以确保其安全性，但如果要维持现有功能，则无需迁移到 MSAL。
+## <a name="how-to-migrate-to-msal"></a>如何迁移到 MSAL
 
-__问：如何知道哪些应用正在使用 ADAL？__  
-答：如果你有应用程序的源代码，可以参考上述迁移指南来确定应用使用的库和了解如何将其迁移到 MSAL。 如果你与 ISV 合作，则建议你直接与他们联系，以了解其迁移到 MSAL 的历程。
+在开始迁移之前，需要确定哪些应用正在使用 ADAL 进行身份验证。 按照以下文章中的步骤使用 Azure 门户获取列表：
+- [如何：在租户中通过 ADAL 获取应用的完整列表](howto-get-list-of-all-active-directory-auth-library-apps.md)
 
-__问：为什么应设法迁移到 MSAL？__  
-答：MSAL 包含 ADAL 中没有的新功能，包括增量许可、单一登录和令牌缓存管理。 此外，与 ADAL 不同，MSAL 在 2022 年 6 月 30 日之后会继续接收安全补丁。 [了解详细信息](msal-overview.md)。
+确定使用 ADAL 的应用后，根据应用程序类型将它们迁移到 MSAL，如下所示。
 
-__问：Microsoft 是否会将其自己的应用更新到 MSAL？__  
-是。 在支持结束截止时间之前，Microsoft 正在将其应用程序迁移到 MSAL，从而确保它们可从 MSAL 的持续安全和功能改进中受益。
+[!INCLUDE [application type](includes/adal-msal-migration.md)]
 
-__问：是否会发布一种工具，来帮助我将应用从 ADAL 迁移到 MSAL？__  
-答：否。 由于库之间存在差异，需要专门投入资源来开发和维护这个工具，而这些资源本可用于改进 MSAL。 但是，我们在前面提供了一组迁移指南，可帮助你对应用程序进行所需的更改。
+## <a name="migration-help"></a>迁移帮助
 
-__问：MSAL 如何与 AD FS 配合工作？__  
-答：MSAL.NET 支持针对 AD FS 2019 进行身份验证的特定方案。 如果你的应用需要直接从 AD FS 的早期版本获取令牌，应继续使用 ADAL。 [了解详细信息](msal-net-adfs-support.md)。
+如果对将应用从 ADAL 迁移到 MSAL 有疑问，以下是一些选项：
 
-__问：如何获取有关迁移应用程序的帮助？__  
-答：请参阅本文的[迁移指南](#migration-guidance)部分。 如果在阅读了应用平台的指南后，你还有其他问题，可以使用标记 `[azure-ad-adal-deprecation]` 在 [Microsoft Q&A](/answers/topics/azure-ad-adal-deprecation.html) 上发布问题，或者在库的 GitHub 存储库中创建问题。 请参阅 MSAL 概述文章的[语言和框架](msal-overview.md#languages-and-frameworks)部分，获取指向每个库的存储库的链接。
+- 将问题发布在 [Microsoft Q&A](/answers/topics/azure-ad-adal-deprecation.html) 上并用 `[azure-ad-adal-deprecation]` 标记。
+- 在库的 GitHub 存储库中创建问题。 请参阅 MSAL 概述文章的[语言和框架](msal-overview.md#languages-and-frameworks)部分，获取指向每个库的存储库的链接。
+
+如果你与独立软件供应商 (ISV) 合作开发应用程序，则建议你直接联系他们，了解他们向 MSAL 的迁移过程。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [更新应用程序以使用 Microsoft 身份验证库和 Microsoft Graph API](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
-- [Microsoft 标识平台概述](v2-overview.md)
-- [查看我们的 MSAL 代码示例](sample-v2-code.md)
+若要详细了解 MSAL（包括使用情况信息以及可用于不同编程语言和应用程序类型的库），请参阅：
+
+- [使用 MSAL 获取和缓存令牌](msal-acquire-cache-tokens.md)
+- [应用程序配置选项](msal-client-application-configuration.md)
+- [MSAL 身份验证库](reference-v2-libraries.md)
+
+<!--
+ ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+-->
+[y]: media/common/yes.png
+[n]: media/common/no.png

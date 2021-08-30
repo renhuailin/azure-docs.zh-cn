@@ -4,12 +4,12 @@ description: 监视 Azure 事件中心时需要的重要参考资料。
 ms.topic: reference
 ms.custom: subject-monitoring
 ms.date: 06/11/2021
-ms.openlocfilehash: 3d68f84c3c58cd29951c2d51cc8d89e3573b7f7a
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 4dc40cef074a223a2cc34e3a87c9acae840f8dbf
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063591"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112992038"
 ---
 # <a name="monitoring-azure-event-hubs-data-reference"></a>监视 Azure 事件中心数据参考
 有关收集和分析 Azure 事件中心监视数据的详细信息，请参阅[监视 Azure 事件中心](monitor-event-hubs.md)。
@@ -68,6 +68,8 @@ ms.locfileid: "112063591"
 |用户错误数 | 否 | 计数 | 总计 | 由于存在用户错误，在指定期间内未处理的请求数。 | 实体名称<br/><br/>操作结果|
 |超过配额错误 | 否 |计数 | 总计 | 在指定时间段内超出配额所导致错误的数量。 | 实体名称<br/><br/>操作结果|
 
+> [!NOTE]
+> 逻辑应用创建 epoch 接收器，接收器可以从一个节点移到另一个节点，具体取决于服务负载。 在这些移动过程中，可能会发生 `ReceiverDisconnection` 异常。 它们被计为事件中心服务端的用户错误。 逻辑应用可从事件中心客户端收集故障，以便你在用户日志中查看它们。
 
 ## <a name="metric-dimensions"></a>指标维度
 
@@ -78,12 +80,12 @@ Azure 事件中心支持对 Azure Monitor 中的指标使用以下维度。 为�
 |实体名称| 事件中心的名称。|
 
 ## <a name="resource-logs"></a>资源日志
-[!INCLUDE [event-hubs-diagnostic-log-schema](../../includes/event-hubs-diagnostic-log-schema.md)]
+[!INCLUDE [event-hubs-diagnostic-log-schema](./includes/event-hubs-diagnostic-log-schema.md)]
 
 
 
 ## <a name="azure-monitor-logs-tables"></a>Azure Monitor 日志表
-Azure 事件中心使用 Azure Monitor 日志中的 Kusto 表。 你可以通过 Log Analytics 查询这些表。 有关服务使用的 Kusto 表的列表，请参阅 [Azure Monitor 日志表参考](/azure/azure-monitor/reference/tables/tables-resourcetype#event-hubs)。
+Azure 事件中心使用 Azure Monitor 日志中的 Kusto 表。 你可以通过 Log Analytics 查询这些表。 有关服务使用的 Kusto 表的列表，请参阅[ Azure Monitor 日志表参考](/azure/azure-monitor/reference/tables/tables-resourcetype#event-hubs)。
 
 
 ## <a name="next-steps"></a>后续步骤

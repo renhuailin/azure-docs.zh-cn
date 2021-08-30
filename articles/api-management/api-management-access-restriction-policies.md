@@ -6,14 +6,14 @@ documentationcenter: ''
 author: vladvino
 ms.service: api-management
 ms.topic: article
-ms.date: 06/02/2021
+ms.date: 06/22/2021
 ms.author: apimpm
-ms.openlocfilehash: 55e87d6f0e2708e94beb1e2f9391bfa7aff44ceb
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: be920fa3cd35d2b1e92891d5595dfbe27a258447
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111814073"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741605"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 
@@ -136,8 +136,8 @@ ms.locfileid: "111814073"
 
 | 名称           | 说明                                                                                           | 必须 | 默认 |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | 要对其应用速率限制的 API 的名称。                                                | 是      | 空值     |
-| calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 空值     |
+| name           | 要对其应用速率限制的 API 的名称。                                                | 是      | 不适用     |
+| calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 不适用     |
 | renewal-period | 滑动窗口的长度（以秒为单位），在此期间，允许的请求数不应超过 `calls` 中指定的值。                                              | 是      | 空值     |
 | retry-after-header-name    | 响应头的名称，其值为在超过指定的调用速率后建议的重试间隔（以秒为单位）。 |  否 | 空值  |
 | retry-after-variable-name    | 策略表达式变量的名称，该变量用于存储在超过指定的调用速率后建议的重试间隔（以秒为单位）。 |  否 | 空值  |
@@ -211,9 +211,9 @@ ms.locfileid: "111814073"
 
 | 名称                | 说明                                                                                           | 必须 | 默认 |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 空值     |
+| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 不适用     |
 | counter-key         | 用于速率限制策略的密钥。                                                             | 是      | 空值     |
-| increment-condition | 一个布尔表达式，指定是否应将请求计入速率 (`true`)。        | 否       | 空值     |
+| increment-condition | 一个布尔表达式，指定是否应将请求计入速率 (`true`)。        | 否       | 不适用     |
 | renewal-period      | 滑动窗口的长度（以秒为单位），在此期间，允许的请求数不应超过 `calls` 中指定的值。                                           | 是      | 空值     |
 | retry-after-header-name    | 响应头的名称，其值为在超过指定的调用速率后建议的重试间隔（以秒为单位）。 |  否 | 空值  |
 | retry-after-variable-name    | 策略表达式变量的名称，该变量用于存储在超过指定的调用速率后建议的重试间隔（以秒为单位）。 |  否 | 空值  |
@@ -389,7 +389,7 @@ ms.locfileid: "111814073"
 | bandwidth           | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
 | calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
 | counter-key         | 用于配额策略的密钥。                                                                      | 是                                                              | 空值     |
-| increment-condition | 一个布尔表达式，指定是否应将请求计入配额 (`true`)             | 否                                                               | 空值     |
+| increment-condition | 一个布尔表达式，指定是否应将请求计入配额 (`true`)             | 否                                                               | 不适用     |
 | renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。 设置为 `0` 时，时间段设置为无限。                                                   | 是                                                              | 空值     |
 
 ### <a name="usage"></a>使用情况
@@ -567,11 +567,11 @@ ms.locfileid: "111814073"
 | failed-validation-httpcode      | JWT 未通过验证时会返回的 HTTP 状态代码。                                                                                                                                                                                                                                                                                                                                                                                         | 否                                                                               | 401                                                                               |
 | header-name                     | 包含令牌的 HTTP 标头的名称。                                                                                                                                                                                                                                                                                                                                                                                                         | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不适用                                                                               |
 | query-parameter-name            | 包含令牌的查询参数的名称。                                                                                                                                                                                                                                                                                                                                                                                                     | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 空值                                                                               |
-| token-value                     | 一个表达式，返回的字符串包含 JWT 令牌                                                                                                                                                                                                                                                                                                                                                                                                     | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不适用                                                                               |
+| token-value                     | 一个表达式，返回的字符串包含 JWT 令牌。 令牌值中不得返回 `Bearer `。                                                                                                                                                                                                                                                                                                                                           | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不适用                                                                               |
 | id                              | 使用 `key` 元素的 `id` 属性可以指定一个字符串，该字符串将与令牌中的 `kid` 声明（如果存在）进行比较，以便找出进行签名验证时需要使用的适当密钥。                                                                                                                                                                                                                                           | 否                                                                               | 空值                                                                               |
 | match                           | `claim` 元素的 `match` 属性用于指定：是否策略中的每个声明值都必须存在于令牌中验证才会成功。 可能的值为：<br /><br /> - `all` - 策略中的每个声明值都必须存在于令牌中验证才会成功。<br /><br /> - `any` - 至少一个声明值必须存在于令牌中验证才会成功。                                                       | 否                                                                               | all                                                                               |
 | require-expiration-time         | 布尔值。 指定令牌中是否需要到期声明。                                                                                                                                                                                                                                                                                                                                                                               | 否                                                                               | 是                                                                              |
-| require-scheme                  | 令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。                                                                                                                                                                                                                                                                                    | 否                                                                               | 空值                                                                               |
+| require-scheme                  | 令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。                                                                                                                                                                                                                                                                                    | 否                                                                               | 不适用                                                                               |
 | require-signed-tokens           | 布尔值。 指定令牌是否需要签名。                                                                                                                                                                                                                                                                                                                                                                                           | 否                                                                               | 是                                                                              |
 | separator                       | 字符串。 指定要用于从多值声明中提取一组值的分隔符（例如 ","）。                                                                                                                                                                                                                                                                                                                                          | 否                                                                               | 空值                                                                               |
 | url                             | Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以目录租户名称，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | 空值                                                                               |
@@ -601,42 +601,42 @@ ms.locfileid: "111814073"
 ### <a name="policy-statement"></a>策略语句
 
 ```xml
-<validate-client-certificate> 
-    validate-revocation="true|false" 
-    validate-trust="true|false" 
-    validate-not-before="true|false" 
-    validate-not-after="true|false" 
-    ignore-error="true|false"> 
-    <identities> 
-        <identity  
-            thumbprint="certificate thumbprint"  
-            serial-number="certificate serial number" 
-            common-name="certificate common name"  
-            subject="certificate subject string"  
-            dns-name="certificate DNS name" 
-            issuer="certificate issuer" 
-            issuer-thumbprint="certificate issuer thumbprint"  
-            issuer-certificate-id="certificate identifier" /> 
-    </identities> 
+<validate-client-certificate 
+    validate-revocation="true|false"
+    validate-trust="true|false" 
+    validate-not-before="true|false" 
+    validate-not-after="true|false" 
+    ignore-error="true|false">
+    <identities>
+        <identity 
+            thumbprint="certificate thumbprint"
+            serial-number="certificate serial number"
+            common-name="certificate common name"
+            subject="certificate subject string"
+            dns-name="certificate DNS name"
+            issuer-subject="certificate issuer"
+            issuer-thumbprint="certificate issuer thumbprint"
+            issuer-certificate-id="certificate identifier" />
+    </identities>
 </validate-client-certificate> 
 ```
 
 ### <a name="example"></a>示例
 
-以下示例验证客户端证书以匹配策略的默认验证规则，并检查使用者和颁发者是否匹配指定值。
+以下示例验证客户端证书以匹配策略的默认验证规则，并检查使用者和颁发者名称是否匹配指定值。
 
 ```xml
-<validate-client-certificate> 
-    validate-revocation="true" 
-    validate-trust="true" 
-    validate-not-before="true" 
-    validate-not-after="true" 
-    ignore-error="false"
-    <identities> 
-        <identity 
+<validate-client-certificate 
+    validate-revocation="true" 
+    validate-trust="true" 
+    validate-not-before="true" 
+    validate-not-after="true" 
+    ignore-error="false">
+    <identities>
+        <identity
             subject="C=US, ST=Illinois, L=Chicago, O=Contoso Corp., CN=*.contoso.com"
-            issuer="C=BE, O=FabrikamSign nv-sa, OU=Root CA, CN=FabrikamSign Root CA" />
-    </identities> 
+            issuer-subject="C=BE, O=FabrikamSign nv-sa, OU=Root CA, CN=FabrikamSign Root CA" />
+    </identities>
 </validate-client-certificate> 
 ```
 
@@ -662,9 +662,9 @@ ms.locfileid: "111814073"
 | 公用名 | 证书公用名（Subject 字符串的一部分）。 | 否 | 空值 |
 | subject | Subject 字符串。 必须遵循可分辨名称的格式。 | 否 | 空值 |
 | dns-name | 使用者可选名称声明中 dnsName 条目的值。 | 否 | 空值 | 
-| 颁发者 | 颁发者的 subject。 必须遵循可分辨名称的格式。 | 否 | 空值 | 
+| issuer-subject | 颁发者的 subject。 必须遵循可分辨名称的格式。 | 否 | 空值 | 
 | issuer-thumbprint | 颁发者指纹。 | 否 | 空值 | 
-| issuer-certificate-id | 表示颁发者公钥的现有证书实体的标识符。 | 否 | 空值 | 
+| issuer-certificate-id | 表示颁发者公钥的现有证书实体的标识符。 与其他颁发者属性互相排斥。  | 否 | 空值 | 
 
 ### <a name="usage"></a>使用情况
 

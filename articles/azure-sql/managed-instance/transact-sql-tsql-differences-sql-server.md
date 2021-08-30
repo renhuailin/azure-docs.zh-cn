@@ -9,14 +9,14 @@ ms.topic: reference
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma, bonova, danil
-ms.date: 3/16/2021
+ms.date: 8/18/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 8c3ab997aeb179754e4c365dc41b795cf5c3bdc7
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 005984260532ddf0a349380f290a65313e371336
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528551"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397100"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -470,13 +470,13 @@ Azure SQL 托管实例上的链接服务器仅支持 SQL 身份验证。 尚不�
 
 仅在 Azure SQL 托管实例之间支持跨实例 Service Broker 消息交换：
 
-- `CREATE ROUTE`：不能将 `CREATE ROUTE` 与 `LOCAL` 以外的 `ADDRESS` 或其他 SQL 托管实例的 DNS 名称一起使用。
-- `ALTER ROUTE`：不能将 `ALTER ROUTE` 与 `LOCAL` 以外的 `ADDRESS` 或其他 SQL 托管实例的 DNS 名称一起使用。
+- `CREATE ROUTE`：不能将 `CREATE ROUTE` 与 `LOCAL` 以外的 `ADDRESS` 或其他 SQL 托管实例的 DNS 名称一起使用。 端口始终为 4022。
+- `ALTER ROUTE`：不能将 `ALTER ROUTE` 与 `LOCAL` 以外的 `ADDRESS` 或其他 SQL 托管实例的 DNS 名称一起使用。 端口始终为 4022。
 
 支持传输安全性，不支持对话安全性：
 - 不支持 `CREATE REMOTE SERVICE BINDING`。
 
-Service Broker 默认处于启用状态，无法禁用。 不支持以下 ALTER DATABASE 选项：
+Service Broker 默认处于启用状态，并且无法禁用。 不支持以下 ALTER DATABASE 选项：
 - `ENABLE_BROKER`
 - `DISABLE_BROKER`
 
@@ -491,6 +491,8 @@ Service Broker 默认处于启用状态，无法禁用。 不支持以下 ALTER 
   - `remote data archive`
   - `remote proc trans`
   - `scan for startup procs`
+- 以下 [sp_configure](/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) 选项会被忽略，因此不起作用： 
+  - `Ole Automation Procedures`
 - 不支持 `sp_execute_external_scripts`。 请参阅 [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples)。
 - 不支持 `xp_cmdshell`。 请参阅 [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql)。
 - 不支持 `Extended stored procedures`，其中包括 `sp_addextendedproc` 和 `sp_dropextendedproc`。 此功能不受支持，因为它位于 SQL Server 的弃用路径中。 请参阅[扩展存储过程](/sql/relational-databases/extended-stored-procedures-programming/database-engine-extended-stored-procedures-programming)了解详细信息。

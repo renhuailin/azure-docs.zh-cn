@@ -7,17 +7,19 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: synapse-cosmos-db
-ms.openlocfilehash: d84508a7629481a7138f1080c86f4a203d35894d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ae03907ce75d6df999949ebf418fb8135520008d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626242"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958912"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>使用 Power BI 和无服务器 Synapse SQL 池来分析具有 Synapse Link 的 Azure Cosmos DB 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 本文介绍如何在 Azure Cosmos DB 的 Synapse Link 上生成无服务器 SQL 池数据库和视图。 你将查询 Azure Cosmos DB 容器，然后在那些视图中使用 Power BI 生成模型，以反映该查询。
+
+借助 Azure Synapse Link，可以在 Power BI 中生成近乎实时的仪表板，以便分析 Azure Cosmos DB 数据。 对事务工作负载没有任何性能或成本影响，也不存在管理 ETL 管道的复杂性。 可以使用 [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) 或 [import](/power-bi/connect-data/service-dataset-modes-understand#import-mode) 模式。 
 
 在此方案中，你将使用合作伙伴零售商店中有关 Surface 产品销售的虚拟数据。 你将根据靠近大型家庭的程度和特定某一周中广告的影响来分析每家店的收入。 在本文中，你会创建名为“RetailSales”和“StoreDemographics”的两个视图，并创建它们之间的查询 。 可以从此 [GitHub](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) 存储库获取示例产品数据。
 

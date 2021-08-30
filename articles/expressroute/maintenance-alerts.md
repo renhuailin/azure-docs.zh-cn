@@ -7,16 +7,21 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/10/2021
 ms.author: mialdrid
-ms.openlocfilehash: 43e30ddd601640b61c42c5ba5d6bb2aaf41eb73d
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 93335c6f163e016c619fd4803a595ffcc3418a9d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738948"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735266"
 ---
 # <a name="how-to-view-and-configure-alerts-for-azure-expressroute-circuit-maintenance"></a>如何查看和配置针对 Azure ExpressRoute 线路维护的警报
 
 ExpressRoute 使用 Azure 服务运行状况来通知你计划内和即将进行的 ExpressRoute 线路维护。 通过服务运行状况，你可以在 Azure 门户中查看计划内维护和过去的维护，同时配置最适合你需求的警报和通知。 若要详细了解 Azure 服务运行状况，请参阅[什么是 Azure 服务运行状况？](../service-health/overview.md)
+
+> [!NOTE]
+> * 在维护活动期间，或在出现影响某个连接的计划外事件的情况下，Microsoft 将更愿意使用 AS 路径预置，将流量排出到正常的连接。 从 Microsoft 配置路径预置，并正确配置所需的路由播发以避免任何服务中断时，需要确保流量能够路由到正常的路径。 
+> * 在有状态设备上终止 ExpressRoute BGP 连接可能会导致 Microsoft 或 ExpressRoute 提供商计划内或计划外维护期间的故障转移问题。 应对设置进行测试，确保流量能够正确地进行故障转移，并在可能的情况下终止无状态设备上的 BGP 会话。
+>
 
 ## <a name="view-planned-maintenance"></a>查看计划内维护
 
@@ -32,7 +37,7 @@ ExpressRoute 使用 Azure 服务运行状况来通知你计划内和即将进行
 
 1. 从“服务”下拉列表中选择“ExpressRoute”，可以仅查看与 ExpressRoute 相关的维护。 然后从列表中选择问题以查看事件摘要。 选择“问题更新”选项卡，可以详细了解正在进行的维护。
 
-    :::image type="content" source="./media/maintenance-alerts/summary.png" alt-text="ExpressRoute 维护摘要的屏幕截图。" lightbox="./media/maintenance-alerts/summary-expanded.png"::: 
+    :::image type="content" source="./media/maintenance-alerts/summary.png" alt-text="ExpressRoute 维护摘要的屏幕截图。" lightbox="./media/maintenance-alerts/summary-expanded.png":::
 
 ## <a name="view-past-maintenance"></a>查看过去的维护
 

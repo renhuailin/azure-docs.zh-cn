@@ -2,18 +2,19 @@
 title: Azure 数据工厂中的持续集成和交付
 description: 了解如何使用持续集成和交付将数据工厂管道从一个环境（开发、测试、生产）移到另一个环境。
 ms.service: data-factory
+ms.subservice: ci-cd
 author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 05/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b8502363d7868b32bf2576742ca443b673c5123
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d85659730ae78277056ec88c8a35c545646b38ab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971973"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738270"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -97,9 +98,9 @@ ms.locfileid: "111971973"
 
     d.  在“操作”列表中，选择“创建或更新资源组”。 
 
-    e.  选择“模板”框旁边的省略号按钮 ( **...** )。 浏览在配置的 git 存储库的发布分支中生成的 Azure 资源管理器模板。 在 adf_publish 分支的 <FactoryName> 文件夹中查找文件 `ARMTemplateForFactory.json`。
+    e.  选择“模板”框旁边的省略号按钮 ( **...** )。 浏览在配置的 git 存储库的发布分支中生成的 Azure 资源管理器模板。 在 adf_publish 分支的 &lt;FactoryName&gt; 文件夹中查找文件 `ARMTemplateForFactory.json`。
 
-    f.  选择“模板参数”框旁边 的“…”，以便选择参数文件。 在 adf_publish 分支的 <FactoryName> 文件夹中查找文件 `ARMTemplateParametersForFactory.json`。
+    f.  选择“模板参数”框旁边 的“…”，以便选择参数文件。 在 adf_publish 分支的 &gt;FactoryName&lt; 文件夹中查找文件 `ARMTemplateParametersForFactory.json`。
 
     g.  在“替代模板参数”框旁边 选择“...”，并输入目标数据工厂的所需参数值。 对于来自 Azure Key Vault 的凭据，请输入机密名称并以双引号将其括住。 例如，如果机密名称为 cred1，请为此值输入 **"$(cred1)"** 。
 

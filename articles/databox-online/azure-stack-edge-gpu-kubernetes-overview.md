@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 72ba07090e6ce67501761d97876aa136f146d61c
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 22a66ca16d8d2cb7ade82cb665f50cc9aae4b27b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102437921"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747360"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备上的 Kubernetes
 
@@ -45,7 +45,12 @@ Kubernetes 主节点负责维护群集的所需状态。 主节点还控制工�
 
 有关 Kubernetes 群集体系结构的详细信息，请参阅 [Kubernetes 核心概念](https://kubernetes.io/docs/concepts/architecture/)。
 
+主节点和辅助节点是消耗 CPU 和内存的虚拟机。 部署 Kubernetes 工作负载时，必须了解主 VM 和辅助 VM 的计算要求。
 
+|Kubernetes VM 类型|CPU 和内存要求|
+|---------|---------|
+|主 VM|4 核，4 GB RAM|
+|辅助 VM|12 核，32 GB RAM|
 <!--The Kubernetes cluster control plane components make global decisions about the cluster. The control plane has:
 
 - *kubeapiserver* that is the front end of the Kubernetes API and exposes the API.
@@ -110,7 +115,7 @@ Kubernetes 还可以与 Azure Stack Edge Pro 设备上的 IoT Edge 工作负荷�
 
 Azure Arc 是一种混合管理工具，用于在 Kubernetes 群集上部署应用程序。 Azure Arc 还允许你使用适用于容器的 Azure Monitor 来查看和监视群集。 有关详细信息，请参阅[什么是已启用 Azure Arc 的 Kubernetes？](../azure-arc/kubernetes/overview.md)。 有关 Azure Arc 定价的信息，请参阅 [Azure Arc 定价](https://azure.microsoft.com/services/azure-arc/#pricing)。
 
-已启用 Azure Arc 的 Kubernetes 将于 2021 年 3 月面向用户正式发布，并且将收取标准使用费用。 作为重要的预览版客户，你可以在 Azure Stack Edge 设备上免费使用已启用 Azure Arc 的 Kubernetes。 若要获得预览版产品/服务，请创建[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)：
+已启用 Azure Arc 的 Kubernetes 将于 2021 年 3 月面向用户正式发布，并且将收取标准使用费用。 作为重要的预览版客户，你可以在 Azure Stack Edge 设备上免费使用启用了 Azure Arc 的 Kubernetes。 若要获得预览版产品/服务，请创建[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)：
 
 1. 在“问题类型”下，选择“计费”。  
 2. 在“订阅”下，选择自己的订阅。

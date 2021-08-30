@@ -5,16 +5,16 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 1/28/2020
+ms.date: 6/16/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 140a836882ad3abe048047120e4fe1ebc0a3067c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d66879a4f3aac37bb08cfcf916c0cb44027c3729
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018150"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295446"
 ---
-# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自定义反序列化程序读取任何格式的输入
+# <a name="read-input-in-any-format-using-net-custom-deserializers-preview"></a>使用 .NET 自定义反序列化程序读取任何格式的输入（预览版）
 
 Azure 流分析作业可以通过 .NET 自定义反序列化程序来读取三种[内置数据格式](stream-analytics-parsing-json.md)之外的格式的数据。 本文介绍序列化格式，以及用来为 Azure 流分析云和边缘作业定义 .NET 自定义反序列化程序的接口。 此外，还提供了协议缓冲区和 CSV 格式的示例反序列化程序。
 
@@ -223,7 +223,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="region-support"></a>区域支持
 
-此功能已在以下区域推出：
+使用标准 SKU 时，此功能在以下区域可用：
 
 * 美国中西部
 * 北欧
@@ -232,7 +232,7 @@ namespace ExampleCustomCode.Serialization
 * 美国东部 2
 * 西欧
 
-其他区域的用户可以[请求支持](https://aka.ms/ccodereqregion)。
+其他区域的用户可以[请求支持](https://aka.ms/ccodereqregion)。 但是，使用[流分析群集](./cluster-overview.md)时没有此类区域限制。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

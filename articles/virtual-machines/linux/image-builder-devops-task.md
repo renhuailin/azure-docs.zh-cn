@@ -1,20 +1,20 @@
 ---
 title: 预览：Azure 映像生成器服务 DevOps 任务
 description: Azure DevOps 任务将生成工件注入到 VM 映像中，使你能够安装并配置应用程序和 OS。
-author: danielsollondon
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7055aa967058e1592f757c2dabf7890b1da76632
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 2c3785f20c47656304f7d40b67c9d90c54cb3072
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441791"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447073"
 ---
 # <a name="azure-image-builder-service-devops-task-preview"></a>Azure 映像生成器服务 DevOps 任务（预览）
 
@@ -79,7 +79,7 @@ ms.locfileid: "111441791"
 此位置是运行映像生成器的区域。 仅支持特定数量的[区域](../image-builder-overview.md#regions)。 源映像必须位于此位置。 例如，如果你使用共享映像库，则该区域中必须存在一个副本。
 
 ### <a name="managed-identity-required"></a>托管标识（必需）
-映像生成器需要一个托管标识，该标识用于读取源自定义映像，连接到 Azure 存储，以及创建自定义映像。 请参阅[此处](../image-builder-overview.md#permissions)了解详细信息。
+映像生成器需要一个托管标识，该标识用于读取源自定义映像，连接到 Azure 存储，以及创建自定义映像。 有关更多详细信息，请参阅[了解 Azure 映像生成器](../image-builder-overview.md#permissions)。
 
 ### <a name="vnet-support"></a>VNET 支持
 
@@ -347,3 +347,4 @@ template name:  t_1556938436xxx
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅 [Azure 映像生成器概述](../image-builder-overview.md)。
+

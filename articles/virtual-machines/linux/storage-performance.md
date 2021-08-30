@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 99349654bb01f368a2a3a84c4ecc01f248b25175
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffe772677e8de28c3ea0de31092f1aca693feccf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552756"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734576"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>优化 Lsv2 系列 Linux 虚拟机上的性能
 
@@ -32,7 +32,7 @@ Lsv2 系列虚拟机 (VM) 的设计最充分地利用了 AMD EPYC™ 7551 处理
 
 本文提供了一些技巧和建议来确保你的工作负荷和应用程序达到 VM 中设计的最高性能。 随着越来越多的 Lsv2 优化映像添加到 Azure 市场，本页上的信息会不断更新。
 
-## <a name="amd-eypc-chipset-architecture"></a>AMD EYPC™ 芯片组体系结构
+## <a name="amd-epyc-chipset-architecture"></a>AMD EPYC™ 芯片集体系结构
 
 Lsv2 系列 VM 使用基于 Zen 微体系结构的 AMD EYPC™ 服务器处理器。 AMD 开发了 Infinity Fabric (IF) for EYPC™ 作为其 NUMA 模型的可缩放互连结构，可用于晶片上通信、封装上通信和多封装通信。 与 Intel 新式单晶片处理器上使用的 QPI（快速路径互连）和 UPI（超路径互连）相比，AMD 的多 NUMA 小晶片体系结构既可以带来性能优势，同时也会带来挑战。 内存带宽和延迟约束的实际影响因运行的工作负荷类型而异。
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/29/2021
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b0866905d0228d2304ebf5c8ef930a629979d2da
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: fbdfec42038f48eefb707c85e54c1788841dd42d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012070"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730742"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>AKS 代理节点主机 OS 的安全强化
 
@@ -21,7 +21,7 @@ Azure Kubernetes 服务 (AKS) 是符合 SOC、ISO、PCI DSS 和 HIPAA 标准的�
 > [!Note]
 > 本文档仅适用于 AKS 中的 Linux 代理。
 
-AKS 群集部署在运行经过安全优化的 OS 的虚拟主机上，该 OS 用于在 AKS 上运行的容器。 此主机 OS 基于“Ubuntu 16.04.LTS”映像，应用了其他[安全强化](#security-hardening-features)和优化。
+AKS 群集部署在运行经过安全优化的 OS 的虚拟主机上，该 OS 用于在 AKS 上运行的容器。 此主机 OS 基于 Ubuntu 18.04.5 LTS 映像，应用了更多的[安全强化](#security-hardening-features)和优化。
 
 经过安全强化的主机 OS 的目标是减少受攻击面，并以安全的方式优化容器部署。
 

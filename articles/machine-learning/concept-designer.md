@@ -1,26 +1,28 @@
 ---
-title: 使用设计器生成 ML 模型
+title: 什么是 Azure 机器学习设计器？
 titleSuffix: Azure Machine Learning
-description: 了解组成 Azure 机器学习设计器的术语、概念和工作流。
+description: 了解 Azure 机器学习设计器是什么以及可以将其用于哪些任务。 拖放式 UI 支持模型训练和部署。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
-ms.date: 06/28/2020
-ms.custom: designer
-ms.openlocfilehash: e6738bf944c5a80d0cb54432ade7555ebdcfbd51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/03/2021
+ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: c6bb9eefd7545a014faf10ad20afa655f7f4cd48
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503534"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195867"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>什么是 Azure 机器学习设计器？ 
 
+Azure 机器学习设计器是一个拖放界面，用于在 Azure 机器学习中训练和部署模型。 本文介绍可在设计器中执行的任务。
 
-使用 Azure 机器学习设计器，能够在交互式画布上直观地连接[数据集](#datasets)和[模块](#module)，以创建机器学习模型。 若要了解如何开始使用设计器，请参阅[教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
+ - 要开始使用设计器，请参阅[教程：训练无代码回归模型](tutorial-designer-automobile-price-train-score.md)。 
+ - 要了解设计器中可用的组件，请参阅[算法和组件参考](/azure/machine-learning/algorithm-module-reference/module-reference)。
 
 ![Azure 机器学习设计器示例](./media/concept-designer/designer-drag-and-drop.gif)
 
@@ -35,22 +37,22 @@ ms.locfileid: "102503534"
 
 ## <a name="model-training-and-deployment"></a>模型训练和部署
 
-设计器提供用于生成、测试和部署机器学习模型的可视化画布。 使用设计器，可以：
+使用可视画布构建端到端机器学习工作流。 在设计器中训练、测试和部署模型：
 
-+ 将[数据集](#datasets)和[模块](#module)拖放至画布上。
-+ 连接模块以创建[管道草稿](#pipeline-draft)。
-+ 使用 Azure 机器学习工作区中的计算资源提交[管道运行](#pipeline-run)。
-+ 将训练管道转换为推理管道 。
-+ 将管道[发布](#publish)到 REST 管道终结点，以提交具有不同参数和数据集的新管道运行。
+1. 将[数据集](#datasets)和[模块](#module)拖放至画布上。
+1. 连接模块以创建[管道草稿](#pipeline-draft)。
+1. 使用 Azure 机器学习工作区中的计算资源提交[管道运行](#pipeline-run)。
+1. 将训练管道转换为推理管道 。
+1. 将管道[发布](#publish)到 REST 管道终结点，以提交具有不同参数和数据集的新管道运行。
     + 发布训练管道，在更改参数和数据集时重用单个管道训练多个模型。
     + 发布批量推理管道，通过使用以前训练的模型针对新数据进行预测。
-+ 将实时推理管道[部署](#deploy)到实时终结点，以便对新数据进行实时预测。
+1. 将实时推理管道[部署](#deploy)到实时终结点，以便针对新数据进行实时预测。
 
 ![设计器中的训练、批量推理和实时推理的工作流示意图](./media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>管道
 
-[管道](concept-azure-machine-learning-architecture.md#ml-pipelines)包含连接的数据集和分析模块。 管道有许多用途，可以创建管道来训练单个模型或多个模型。 可以创建管道来进行实时预测或批量预测，或者仅用于清理数据。 借助管道，可以重复使用工作成果和整理项目。
+[管道](concept-azure-machine-learning-architecture.md#ml-pipelines)由连接的数据集和算法模块组成。 管道有许多用途：可以创建训练单个模型的管道，或训练多个模型的管道。 可以创建实时或批量进行预测的管道，或者创建仅清理数据的管道。 借助管道，可以重复使用你的工作并组织你的项目。
 
 ### <a name="pipeline-draft"></a>管道草稿
 
@@ -73,13 +75,13 @@ ms.locfileid: "102503534"
 
 ## <a name="datasets"></a>数据集
 
-使用机器学习数据集可以轻松地访问和处理数据。 此设计器中包含多个示例数据集供你进行试验。 你可以根据需要[注册](how-to-create-register-datasets.md)更多数据集。
+使用机器学习数据集可以轻松地访问和处理数据。 此设计器中包含多个[示例数据集](samples-designer.md#datasets)供你进行试验。 你可以根据需要[注册](how-to-create-register-datasets.md)更多数据集。
 
 ## <a name="module"></a>模块
 
 模块是可对数据执行的算法。 设计器有多个模块，包括数据引入函数、训练、评分和验证过程。
 
-模块可能提供一组参数用于配置模块的内部算法。 在画布上选择模块时，模块的参数会显示在画布右侧的“属性”窗格中。 可以在该窗格中修改参数来调整模型。 可以在设计器中设置各个模块的计算资源。 
+模块可能提供一组参数用于配置模块的内部算法。 在画布上选择模块时，模块的参数会显示在画布右侧的“属性”窗格中。 可以在该窗格中修改参数来优化管道。 可以在设计器中设置各个模块的计算资源。 
 
 :::image type="content" source="./media/concept-designer/properties.png" alt-text="模块属性":::
 
@@ -93,22 +95,23 @@ ms.locfileid: "102503534"
 | 计算目标 | 培训 | 部署 |
 | ---- |:----:|:----:|
 | Azure 机器学习计算 | ✓ | |
-| Azure 机器学习计算实例 | ✓ | |
 | Azure Kubernetes 服务 | | ✓ |
 
 计算目标会附加到 [Azure 机器学习工作区](concept-workspace.md)。 可在 [Azure 机器学习工作室](https://ml.azure.com)的工作区中管理计算目标。
 
 ## <a name="deploy"></a>部署
 
-若要执行实时推理，必须将管道部署为 **实时终结点**。 实时终结点在外部应用程序和评分模型之间创建接口。 对实时终结点的调用会将预测结果实时返回给应用程序。 若要调用实时终结点，请传递部署终结点时创建的 API 密钥。 该终结点基于 REST，这是一种流行的 Web 编程项目的体系结构。
+若要执行实时推理，必须将管道部署为 **实时终结点**。 实时终结点在外部应用程序和评分模型之间创建接口。 对实时端点的调用会将预测结果实时返回至应用程序。 若要调用实时终结点，请传递部署终结点时创建的 API 密钥。 该终结点基于 REST，这是一种流行的 Web 编程项目的体系结构。
 
 必须将实时终结点部署到 Azure Kubernetes 服务群集。
 
 若要了解如何部署模型，请参阅[教程：使用设计器部署机器学习模型](tutorial-designer-automobile-price-deploy.md)。
 
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
+
 ## <a name="publish"></a>发布
 
-还可以将管道发布到管道终结点。 与实时终结点类似，借助管道终结点，可以使用 REST 调用从外部应用程序提交新的管道运行。 但是不能使用管道终结点实时发送或接收数据。
+还可以将管道发布到管道终结点。 与实时终结点类似，借助管道终结点，可以使用 REST 调用从外部应用程序提交新的管道运行。 但是，无法使用管道终结点实时发送或接收数据。
 
 已发布的管道是灵活的，它们可用于训练或重新训练模型、[执行批量推断](how-to-run-batch-predictions-designer.md)、处理新数据等。 可以将多个管道发布到单个管道终结点，并指定要运行的管道版本。
 

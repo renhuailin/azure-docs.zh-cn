@@ -7,16 +7,16 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: 68b6ea79425bcd3e0d016c67eb9a0de839f3d8d6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6f2a70e932c1b810e9fef2bca75f1ff9b6e92048
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744256"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113353964"
 ---
 # <a name="nvv4-series"></a>NVv4 系列 
 
-NVv4 系列虚拟机由 [AMD Radeon Instinct MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU 和 AMD EPYC 7V12(Rome) CPU 提供支持。 Azure 通过 NVv4 系列引入使用部分 GPU 的虚拟机。 选取适当大小虚拟机来运行 GPU 加速图形应用程序和虚拟桌面，可选范围为具有 2 GiB 帧缓冲区的 1/8 个 GPU 到具有 16 GiB 帧缓冲区的完整 GPU。 NVv4 虚拟机目前只支持 Windows 来宾操作系统。
+NVv4 系列虚拟机由 [Amd Radeon INSTINCT MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU 和 AMD EPYC 7V12(Rome) CPU 提供支持，基本频率为 2.45GHz，所有核心峰值频率为 3.1GHz，单核峰值频率为 3.3GHz。 Azure 通过 NVv4 系列引入使用部分 GPU 的虚拟机。 选取适当大小虚拟机来运行 GPU 加速图形应用程序和虚拟桌面，可选范围为具有 2 GiB 帧缓冲区的 1/8 个 GPU 到具有 16 GiB 帧缓冲区的完整 GPU。 NVv4 虚拟机目前只支持 Windows 来宾操作系统。
 
 <br>
 

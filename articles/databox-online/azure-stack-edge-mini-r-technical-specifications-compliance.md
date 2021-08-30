@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 06/29/2021
 ms.author: alkohli
-ms.openlocfilehash: 1f57e7f25a9e34a88c9ae279083a2cf1d9be2ff1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8b2da6b75ec495fe96b0c65e312a91d0dd30a2d2
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099417"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091494"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack Edge Mini R 技术规格
 
@@ -121,7 +121,7 @@ Azure Stack Edge Mini R 设备还包含一个可充电的板载电池。
 |-------------------|---------------------|----------------|
 |    高度         |    68               |    2.68        |
 |    宽度          |    208              |    8.19        |
-|    长度         |    259              |    10.20       |
+|    Length         |    259              |    10.20       |
 
 
 ### <a name="enclosure-weight"></a>机箱重量
@@ -138,10 +138,10 @@ Azure Stack Edge Mini R 设备还包含一个可充电的板载电池。
 
 |     规范             |     说明                                                          |
 |--------------------------------|--------------------------------------------------------------------------|
-|     温度范围          |     0 – 43° C（可操作）                                              |
+|     温度范围          |     0 – 40° C（可操作）                                              |
 |     振动                  |     MIL-STD-810 方法 514.7*<br> 过程 I CAT 4，20                  |
 |     撞击                      |     MIL-STD-810 方法 516.7*<br> 过程 IV，逻辑                 |
-|     海拔高度                   |     可操作：10000 英尺<br> 不可操作：40000 英尺          |
+|     海拔高度                   |     可操作：15,000 英尺<br> 不可操作：40000 英尺          |
 
 **所有数据引自 MIL-STD-810G 第一次变更版 (2014)*
 

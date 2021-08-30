@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 07/29/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c3d80a97b7be3127caaa4ce86dac8435dec1666
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 04f7b5a7757d402035e36aaf085de9033d046ba2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438443"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723166"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory 的合并安全信息注册概述
 
@@ -34,7 +34,7 @@ ms.locfileid: "111438443"
 
 在启用新体验之前，请查看以管理员为中心的文档和以用户为中心的文档，以确保你了解此功能的作用和效果。 根据[用户文档](../user-help/security-info-setup-signin.md)方面的培训，让用户准备好适应新的体验，并帮助确保成功推出。
 
-Azure AD 合并安全信息注册当前不适用于区域云（如 Azure 德国或 Azure 中国世纪互联）。 适用于 Azure 美国政府云。
+Azure AD 组合安全信息注册适用于 Azure 美国政府，但不适用于 Azure 德国或 Azure 中国世纪互联。
 
 > [!IMPORTANT]
 > 同时启用了原始预览和增强合并注册体验的用户将看到新的行为。 同时启用了这两种体验的用户只会看到“我的帐户”体验。 “我的帐户”与合并注册的外观一致，并为用户提供无缝体验。 用户可以通过转到 [https://myaccount.microsoft.com](https://myaccount.microsoft.com) 来查看“我的帐户”。
@@ -69,12 +69,12 @@ Azure AD 合并安全信息注册当前不适用于区域云（如 Azure 德国�
 
 用户可以将以下选项之一设置为默认多重身份验证方法：
 
-- Microsoft Authenticator - 通知。
-- Authenticator 应用或硬件令牌 - 验证码。
-- 电话呼叫。
-- 短信。
+- Microsoft Authenticator - 推送通知
+- Authenticator 应用或硬件令牌 - 验证码
+- 电话呼叫
+- 短信
 
-随着我们不断向 Azure AD 添加更多身份验证方法，这些方法可用于合并注册。
+第三方验证器应用不提供推送通知。 随着我们不断向 Azure AD 添加更多身份验证方法，这些方法可用于合并注册。
 
 ## <a name="combined-registration-modes"></a>合并注册模式
 
@@ -85,9 +85,11 @@ Azure AD 合并安全信息注册当前不适用于区域云（如 Azure 德国�
 
 对于这两种模式，以前注册了可用于多重身份验证的方法的用户需要先执行多重身份验证，然后才能访问其安全信息。 用户必须确认其信息，然后才能继续使用以前注册的方法。 
 
+
+
 ### <a name="interrupt-mode"></a>中断模式
 
-如果同时为你的租户启用了多重身份验证和 SSPR 策略，则合并注册会同时遵守这两个策略。 这些策略控制在登录期间用户是否被中断以便注册，以及哪些方法可用于注册。
+如果同时为你的租户启用了多重身份验证和 SSPR 策略，则合并注册会同时遵守这两个策略。 这些策略控制在登录期间用户是否被中断以便注册，以及哪些方法可用于注册。 如果仅启用了 SSPR 策略，则用户将能够跳过注册中断并在稍后完成注册。
 
 下面是可能提示用户注册或刷新其安全信息的示例应用场景：
 
@@ -101,8 +103,8 @@ Azure AD 合并安全信息注册当前不适用于区域云（如 Azure 德国�
 
 请考虑以下示例场景：
 
-- 已为用户启用 SSPR。 SSPR 策略需要两个方法来重置并已启用移动应用代码、电子邮件和电话。
-- 此用户需要注册两个方法。
+- 已为用户启用 SSPR。 SSPR 策略需要两种方法来重置并已启用 Authenticator 应用、电子邮件和电话。
+- 当用户选择注册时，需要两种方法：
    - 默认情况下会为用户显示 Authenticator 应用和电话。
    - 用户可以选择注册电子邮件，而不是 Authenticator 应用或电话。
 
@@ -139,6 +141,16 @@ Azure AD 合并安全信息注册当前不适用于区域云（如 Azure 德国�
 ### <a name="change-the-default-method-from-my-account"></a>从“我的帐户”中更改默认方法
 
 之前至少设置了一个可用于多重身份验证的方法的用户导航到 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)。 用户将当前默认方法更改为其他默认方法。 完成后，用户会在“安全信息”页面上看到新的默认方法。
+
+### <a name="switch-directory"></a>切换目录
+
+外部标识（例如 B2B 用户）可能需要切换目录，以更改第三方租户的安全注册信息。 此外，当访问资源租户的用户更改其主租户的设置，但未在资源租户中看到相应更改时，他们可能会感到困惑。 
+
+例如，某用户将 Microsoft Authenticator 应用推送通知设置为登录主租户时的主要身份验证，同时将短信/文本设置为另一种验证选择。 此用户还在资源租户上配置了短信/文本选项。 如果此用户取消将短信/文本作为其主租户的身份验证选项之一，则在访问资源租户并被要求回复短信/文本消息时，他们会感到困惑。 
+
+若要在 Azure 门户中切换目录，请单击右上角的用户帐户名称，然后单击“切换目录”。
+
+![外部用户可以切换目录。](media/concept-registration-mfa-sspr-combined/switch-directory.png)
 
 ## <a name="next-steps"></a>后续步骤
 

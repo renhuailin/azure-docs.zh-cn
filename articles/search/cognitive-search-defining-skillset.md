@@ -2,285 +2,235 @@
 title: 创建技能集
 titleSuffix: Azure Cognitive Search
 description: 定义数据提取、自然语言处理或图像分析步骤，从 Azure 认知搜索使用的数据扩充和提取结构化信息。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ec7f9a874bff6eaa0e23f5fb926bf031f2b059d
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 08/15/2021
+ms.openlocfilehash: 5f47eef6d3aeecd64cb3777b1d0858b4904d137d
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555964"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228858"
 ---
-# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中的 AI 扩充管道中创建技能组 
+# <a name="create-a-skillset-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建技能组
 
 ![索引器阶段](media/cognitive-search-defining-skillset/indexer-stages-skillset.png "索引器阶段")
 
-技能组定义提取和扩充数据以使其可搜索的操作。 从源文档提取文本和图像内容后，以及在将源文档中的任何字段（可选）映射到索引或知识存储中的目标字段后，技能组都会执行。
+技能组定义提取和扩充数据以使其可搜索的操作。 在文档破解之后、从源文档中提取文本和图像内容时，以及在将源文档中的任何字段选择性地映射到索引或知识存储中的目标字段中之后，技能组都会执行。
 
-技能组包含一个或多个表示特定扩充操作的认知技能，如翻译文本、提取关键短语或从图像文件执行光学字符识别。 若要创建技能组，可以使用 Microsoft 提供的[内置技能](cognitive-search-predefined-skills.md)，或包含你提供的模型或处理逻辑的自定义技能（请参阅[示例：在 AI 扩充管道中创建自定义技能](cognitive-search-create-custom-skill-example.md)来了解详细信息）。
+在本文中，你将了解创建技能组的步骤。 作为参考，本文使用了[创建技能组 (REST API)](/rest/api/searchservice/create-skillset)。 
 
-本文介绍如何对想要使用的技能创建扩充管道。 技能组将附加到 Azure 认知搜索[索引器](search-indexer-overview.md)。 本文介绍的管道设计的一个部分是构造技能集本身。 
+技能组的一些使用规则包括：
+
++ 技能组是顶级资源，这意味着它可以创建一次，并由多个索引器引用。
++ 技能组必须包含至少一种技能。
++ 技能组可以重复相同类型的技能（例如，多个整形程序技能）。
+
+请记住，索引器驱动技能组的执行，这意味着你还需要创建[索引器](search-howto-create-indexers.md)、[数据源](search-data-sources-gallery.md)和[搜索索引](search-what-is-an-index.md)，然后才能测试技能组。
+
+> [!TIP]
+> 启用[扩充缓存](cognitive-search-incremental-indexing-conceptual.md)来重复使用已处理的内容并降低开发成本。
+
+## <a name="skillset-definition"></a>技能集定义
+
+从基本结构开始。 在 [REST API](/rest/api/searchservice/create-skillset) 中，技能组采用 JSON 创作而成，包含以下各部分：
+
+```json
+{
+   "name":"skillset-template",
+   "description":"A description makes the skillset self-documenting (comments aren't allowed in JSON itself)",
+   "skills":[
+      
+   ],
+   "cognitiveServices":{
+      "@odata.type":"#Microsoft.Azure.Search.CognitiveServicesByKey",
+      "description":"A Cognitive Services resource in the same region as Azure Cognitive Search",
+      "key":"<Your-Cognitive-Services-Multiservice-Key>"
+   },
+   "knowledgeStore":{
+      "storageConnectionString":"<Your-Azure-Storage-Connection-String>",
+      "projections":[
+         {
+            "tables":[ ],
+            "objects":[ ],
+            "files":[ ]
+         }
+      ]
+    },
+    "encryptionKey":{ }
+}
+```
+
+在 name 和 description 之后，技能组具有四个主要属性：
+
++ `skills` 数组，一个无序的[技能集合](cognitive-search-predefined-skills.md)，搜索服务根据每项技能所需的输入来确定这些技能的执行顺序。 如果技能各自独立，它们将并行执行。 技能可以是实用技能（比如拆分文本）、转换技能（基于认知服务的 AI）或者你提供的自定义技能。 下一节中提供了技能数组的示例。
+
++ `cognitiveServices`，用于调用认知服务 API 的[计费技能](cognitive-search-predefined-skills.md)。 如果未使用计费技能或自定义实体查找，请删除此部分。 否则，请[附加资源](cognitive-search-attach-cognitive-services.md)。
+
++ `knowledgeStore`（可选），指定 Azure 存储帐户以及用于将技能组输出投影到 Azure 存储中的表、Blob 和文件的设置。 如果不需要，请删除此部分；如果需要，[指定一个知识存储](knowledge-store-create-rest.md)。
+
++ `encryptionKey`（可选），指定一个 Azure 密钥保管库和用于对技能组定义中的敏感内容进行加密的[客户管理的密钥](search-security-manage-encryption-keys.md)。 如果不使用客户管理的加密，请删除此属性。
+
+## <a name="add-a-skills-array"></a>添加技能数组
+
+在技能组定义中，技能数组指定要执行的技能。 下面的示例通过展示两个不相关的[内置技能](cognitive-search-predefined-skills.md)向你介绍它的构成。 请注意，每项技能都有一个 type、context、inputs 和 outputs。 
+
+```json
+"skills":[
+  {
+    "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
+    "context": "/document",
+    "categories": [ "Organization" ],
+    "defaultLanguageCode": "en",
+    "inputs": [
+      {
+        "name": "text",
+        "source": "/document/content"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "organizations",
+        "targetName": "orgs"
+      }
+    ]
+  },
+  {
+    "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
+    "context": "/document",
+    "inputs": [
+      {
+        "name": "text",
+        "source": "/document/content"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "score",
+        "targetName": "mySentiment"
+      }
+    ]
+  }
+]
+```
 
 > [!NOTE]
-> 管道设计的另一个部分是指定[下一步骤](#next-step)所述的索引器。 索引器定义包括对技能的引用，以及用于将目标索引中的输入连接到输出的字段映射。
+> 你可以构建带循环和分支的复杂技能组，并使用[条件技能](cognitive-search-skill-conditional.md)来创建表达式。 语法基于 [JSON 指针](https://tools.ietf.org/html/rfc6901)路径表示法，做了少量的修改来标识扩充树中的节点。 `"/"` 遍历树中的较低级别，`"*"` 充当上下文中的 for-each 运算符。 本文中的许多示例阐释了此语法。 
 
-请记住以下要点：
+### <a name="how-built-in-skills-are-structured"></a>内置技能的构造方式
 
-+ 只能为每个索引器创建一个技能集。
-+ 技能组合必须具有至少一种技能。
-+ 可以创建相同类型的多个技能（例如，图像分析技能的变体）。
-
-## <a name="begin-with-the-end-in-mind"></a>一开始就想到最终结果
-
-建议的初始步骤是确定要从原始数据提取哪些数据，以及如何在搜索解决方案中使用该数据。 创建整个扩充管道的演示有助于确定所需的步骤。
-
-假设我们要处理一系列金融分析师评论。 对于每个文件，我们需要提取公司名称和一般性的评论情绪。 此外，可能还需要编写自定义的扩充器，以便使用必应实体搜索服务来查找有关公司的其他信息，例如，该公司经营哪种业务。 实质上，我们需要提取针对每个文档编制索引的如下所述的信息：
-
-| 记录文本 | 公司 | 情绪 | 公司说明 |
-|--------|-----|-----|-----|
-|sample-record| ["Microsoft", "LinkedIn"] | 0.99 | ["Microsoft Corporation is an American multinational technology company ..." , "LinkedIn is a business- and employment-oriented social networking..."]
-
-下图演示了一个虚构的扩充管道：
-
-![假设的扩充管道](media/cognitive-search-defining-skillset/sample-skillset.png "假设的扩充管道")
-
-
-对管道包含的内容进行适当的构思后，可以表达用于提供这些步骤的技能集。 在功能上，在将索引器定义上传到 Azure 认知搜索时，即会表达该技能组。 若要详细了解如何上传索引器，请参阅[索引器文档](/rest/api/searchservice/create-indexer)。
-
-
-在图中，文档破解步骤会自动发生。 实质上，Azure 认知搜索知道如何打开已知的文件，并创建一个内容字段，其中包含从每个文档中提取的文本。 白框是内置的扩充器，“必应实体搜索”虚线框表示要创建的自定义扩充器。 如图所示，该技能集包含三个技能。
-
-## <a name="skillset-definition-in-rest"></a>REST 中的技能集定义
-
-技能定义为技能数组。 每个技能定义其输入的源，以及生成的输出的名称。 使用[创建技能 REST API](/rest/api/searchservice/create-skillset) 可以定义对应于上图的技能集： 
-
-```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
-api-key: [admin key]
-Content-Type: application/json
-```
+每项技能在其输入值和所采用的参数方面都是唯一的。 [有关每项技能的文档](cognitive-search-predefined-skills.md)描述了给定技能的所有参数和属性。 尽管存在差异，但大多数技能共享一个通用集，且具有相似的模式。 [实体识别技能](cognitive-search-skill-entity-recognition-v3.md)提供了一个示例，可以说明几个要点：
 
 ```json
 {
-  "description": 
-  "Extract sentiment from financial records, extract company names, and then find additional information about each company mentioned.",
-  "skills":
-  [
+  "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
+  "context": "/document",
+  "categories": [ "Organization" ],
+  "defaultLanguageCode": "en",
+  "inputs": [
     {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
-      "context": "/document",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "organizations",
-          "targetName": "orgs"
-        }
-      ]
-    },
+      "name": "text",
+      "source": "/document/content"
+    }
+  ],
+  "outputs": [
     {
-      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "score",
-          "targetName": "mySentiment"
-        }
-      ]
-    },
-    {
-      "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-     "description": "Calls an Azure function, which in turn calls Bing Entity Search",
-      "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
-      "httpHeaders": {
-          "Ocp-Apim-Subscription-Key": "foobar"
-      },
-      "context": "/document/orgs/*",
-      "inputs": [
-        {
-          "name": "query",
-          "source": "/document/orgs/*"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "description",
-          "targetName": "companyDescription"
-        }
-      ]
+      "name": "organizations",
+      "targetName": "orgs"
     }
   ]
 }
 ```
 
-## <a name="create-a-skillset"></a>创建技能集
+常见参数包括“odata.type”、“inputs”和“outputs”。 其他参数（即“categories”和“defaultLanguageCode”）是特定于实体识别的参数示例。 
 
-创建技能集时，可以提供说明，使技能集具有自述性。 说明是可选的，但可用于跟踪技能集的用途。 由于技能集是不允许注释的 JSON 文档，因此必须为其使用 `description` 元素。
++ “odata.type”唯一地标识每项技能。 可以在[技能引用文档](cognitive-search-predefined-skills.md)中找到该类型。
+
++ “context”是扩充树的一个节点，它代表了操作发生的级别。 所有技能都具有此属性。 如果未显式设置“context”字段，则默认上下文为 `"/document"`。 在示例中，上下文是整个文档，这意味着，每个文档调用实体识别技能一次。
+
+  上下文还决定了在扩充树中生成输出的位置。 在此示例中，该技能返回一个名为 `"organizations"` 的属性，捕获为 `orgs`，该属性作为 `"/document"` 的子节点添加。 在下游技能中，此新创建的扩充节点的路径为 `"/document/orgs"`。 对于特定的文档，`"/document/orgs"` 的值是从文本提取的组织数组（例如 `["Microsoft", "LinkedIn"]`）。 有关路径语法的详细信息，请参阅[在技能组中引用注释](cognitive-search-concept-annotations-syntax.md)。
+
++ “inputs”指定传入数据的源及其使用方式。 对于实体识别，其中一个输入是 `"text"`，它是要为实体分析的内容。 此内容源于扩充树中的 `"/document/content"` 节点。 在扩充树中，`"/document"` 是根节点。 对于使用 Azure Blob 索引器检索的文档，每个文档的 `content` 字段是索引器创建的标准字段。 
+
++ “outputs”表示技能的输出。 每项技能旨在发出特定类型的输出，在技能组中按名称引用这些输出。 对于实体识别，`"organizations"` 是其支持的输出之一。 有关每项技能的文档描述了它可以生成的输出。
+
+输出只会在处理期间存在。 若要将此输出链接到下游技能的输入，请以 `"/document/orgs"` 的形式引用输出。 若要将输出发送到搜索索引中的字段，请在索引器中[创建一个输出字段映射](cognitive-search-output-field-mapping.md)。 若要将输出发送到知识库，请[创建投影](knowledge-store-projection-overview.md)。
+
+一种技能的输出可能与另一种技能的输出发生冲突。 如果有多项技能返回相同的输出，请使用 `"targetName"` 在扩充节点路径中进行名称消歧。
+
+在某些情况下，需要单独引用数组的每个元素。 例如，假设你想要将 `"/document/orgs"` 的每个元素单独传递到另一个技能。 为此，请向此路径添加星号：`"/document/orgs/*"` 
+
+第二个情绪分析技能遵循与第一个扩充器相同的模式。 它采用 `"/document/content"` 作为输入，并返回每个内容实例的情绪评分。 由于未显式设置“context”字段，所以输出 (mySentiment) 现在是 `"/document"` 的子级。
 
 ```json
 {
-  "description": 
-  "This is our first skill set, it extracts sentiment from financial records, extract company names, and then finds additional information about each company mentioned.",
-  ...
-}
-```
-
-技能集的下一个片段是技能数组。 可将每个技能视为扩充的基元。 每个技能在此扩充管道中执行小型任务。 每个技能接受一个输入（或一组输入），并返回一些输出。 以下几个部分重点介绍如何指定内置技能和自定义技能，并通过输入和输出引用将技能链接在一起。 输入可以来自源数据或来自另一个技能。 输出可映射到搜索索引中的字段，或用作下游技能的输入。
-
-## <a name="add-built-in-skills"></a>添加内置技能
-
-让我们看看第一个技能，它是内置的[实体识别技能](cognitive-search-skill-entity-recognition-v3.md)：
-
-```json
+  "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
+  "inputs": [
     {
-      "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
-      "context": "/document",
-      "categories": [ "Organization" ],
-      "defaultLanguageCode": "en",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "organizations",
-          "targetName": "orgs"
-        }
-      ]
+      "name": "text",
+      "source": "/document/content"
     }
-```
-
-* 每个内置技能具有 `odata.type`、`input` 和 `output` 属性。 技能特定的属性提供适用于该技能的附加信息。 对于实体识别，`categories` 是一组固定的实体类型中，可由预先训练的模型识别的一个实体。
-
-* 每个技能应包含 ```"context"```。 上下文表示发生操作的级别。 在上面的技能中，上下文是整个文档，这意味着，针对每个文档调用实体识别技能一次。 输出也会在该级别生成。 该技能返回一个名为 ```organizations``` 的属性，该属性被捕获为 ```orgs```。 更具体地说，现将 ```"orgs"``` 添加为 ```"/document"``` 的成员。 在下游技能中，可使用 ```"/document/orgs"``` 的形式引用此新建的扩充。  如果未显式设置 ```"context"``` 字段，则默认上下文是文档。
-
-* 一种技能的输出可能与另一种技能的输出发生冲突。 如果有多个返回 ```result``` 属性的技能，可使用技能输出的 ```targetName``` 属性将一个技能的命名 JSON 输出捕获到不同的属性中。
-
-* 技能包含一个名为“text”的输入，其源输入设置为 ```"/document/content"```。 该技能（实体识别）对每个文档的内容字段进行操作，内容字段是 Azure Blob 索引器创建的标准字段。 
-
-* 该技能有一个名为 ```"organizations"``` 的输出，该输出在属性 ```orgs``` 中进行捕获。 输出只会在处理期间存在。 若要将此输出链接到下游技能的输入，请以 ```"/document/orgs"``` 的形式引用输出。
-
-* 对于特定的文档，```"/document/orgs"``` 的值是从文本提取的组织数组。 例如：
-
-  ```json
-  ["Microsoft", "LinkedIn"]
-  ```
-
-在某些情况下，需要单独引用数组的每个元素。 例如，假设我们要将 ```"/document/orgs"``` 的每个元素单独传递给另一个技能（例如自定义的必应实体搜索扩充器）。 可以通过在路径中添加星号，来引用该数组的每个元素：```"/document/orgs/*"``` 
-
-第二个情绪提取技能遵循与第一个扩充器相同的模式。 它采用 ```"/document/content"``` 作为输入，并返回每个内容实例的情绪评分。 由于未显式设置 ```"context"``` 字段，输出 (mySentiment) 现在是 ```"/document"``` 的子级。
-
-```json
+  ],
+  "outputs": [
     {
-      "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
-      "inputs": [
-        {
-          "name": "text",
-          "source": "/document/content"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "score",
-          "targetName": "mySentiment"
-        }
-      ]
-    },
-```
-
-## <a name="add-a-custom-skill"></a>添加自定义技能
-
-回顾自定义必应实体搜索扩充器的结构：
-
-```json
-    {
-      "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-     "description": "This skill calls an Azure function, which in turn calls Bing Entity Search",
-      "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
-      "httpHeaders": {
-          "Ocp-Apim-Subscription-Key": "foobar"
-      },
-      "context": "/document/orgs/*",
-      "inputs": [
-        {
-          "name": "query",
-          "source": "/document/orgs/*"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "description",
-          "targetName": "companyDescription"
-        }
-      ]
-    }
-```
-
-此定义是在扩充过程中调用某个 Web API 的[自定义技能](cognitive-search-custom-skill-web-api.md)。 对于实体识别技能所识别到的每个组织，此技能调用 Web API 来查找该组织的说明。 扩充引擎会在内部协调处理何时调用 Web API，以及如何流式传输收到的信息。 但是，必须在 JSON 中提供调用此自定义 API 所需的初始化（例如所需的 uri、httpHeaders 和 inputs）。 有关为扩充管道创建自定义 Web API 的指导，请参阅[如何定义自定义接口](cognitive-search-custom-skill-interface.md)。
-
-请注意，“上下文”字段设置为包含星号的 ```"/document/orgs/*"```，这意味着，将对 ```"/document/orgs"``` 下的每个组织调用扩充步骤。 
-
-将为识别到的每个组织生成输出（在本例中为公司说明）。 引用下游步骤中的说明时（例如，在关键短语提取中），应该使用路径 ```"/document/orgs/*/description"``` 执行此操作。 
-
-## <a name="add-structure"></a>添加结构
-
-技能集基于非结构化数据生成结构化信息。 请考虑以下示例：
-
-*"In its fourth quarter, Microsoft logged $1.1 billion in revenue from LinkedIn, the social networking company it bought last year.The acquisition enables Microsoft to combine LinkedIn capabilities with its CRM and Office capabilities.Stockholders are excited with the progress so far."*
-
-可能的结果是下图所示的生成结构：
-
-![示例输出结构](media/cognitive-search-defining-skillset/enriched-doc.png "示例输出结构")
-
-到目前为止，此结构仅限内部使用、仅限内存中使用，并仅限在 Azure 认知搜索索引中使用。 添加知识存储可以保存整形的扩充，以便在搜索外部使用。
-
-## <a name="add-a-knowledge-store"></a>添加知识存储
-
-[知识存储](knowledge-store-concept-intro.md)是 Azure 认知搜索中的一项功能，用于保存扩充的文档。 创建的由 Azure 存储帐户支持的知识存储是扩充的数据要载入到的存储库。 
-
-知识存储定义将添加到技能集。 有关整个过程的演练，请参阅[在 REST 中创建知识存储](knowledge-store-create-rest.md)。
-
-```json
-"knowledgeStore": {
-  "storageConnectionString": "<an Azure storage connection string>",
-  "projections" : [
-    {
-      "tables": [ ]
-    },
-    {
-      "objects": [
-        {
-          "storageContainer": "containername",
-          "source": "/document/EnrichedShape/",
-          "key": "/document/Id"
-        }
-      ]
+      "name": "score",
+      "targetName": "mySentiment"
     }
   ]
 }
 ```
 
-可以选择将扩充的文档另存为保留分层关系的表，或另存为 Blob 存储中的 JSON 文档。 技能集中任何技能的输出可寻源为投影的输入。 若要将数据投影为特定的形状，更新的[整形程序技能](cognitive-search-skill-shaper.md)现在可为要使用的复杂类型建模。 
+## <a name="adding-a-custom-skill"></a>添加自定义技能
 
-<a name="next-step"></a>
+下面是[自定义技能](cognitive-search-custom-skill-web-api.md)的一个示例。 URI 指向一个 Azure 函数，该函数反过来调用你提供的模型或转换。 有关详细信息，请参阅[定义自定义接口](cognitive-search-custom-skill-interface.md)。
+
+尽管自定义技能正在执行管道外部的代码，但在技能数组中，这只是另一种技能。 与内置技能类似，它具有一个 type、context、inputs 和 outputs。 像内置技能一样，它也在扩充树中进行读取和写入。 请注意，“上下文”字段设置为包含星号的 `"/document/orgs/*"`，这意味着，将对 `"/document/orgs"` 下的每个组织调用扩充步骤。
+
+将为识别到的每个组织生成输出（在本例中为公司说明）。 引用下游步骤中的说明时（例如，在关键短语提取中），应该使用路径 `"/document/orgs/*/companyDescription"` 执行此操作。 
+
+```json
+{
+  "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+  "description": "This skill calls an Azure function, which in turn calls custom code",
+  "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeCode?code=foo",
+  "httpHeaders": {
+      "Ocp-Apim-Subscription-Key": "foobar"
+  },
+  "context": "/document/orgs/*",
+  "inputs": [
+    {
+      "name": "query",
+      "source": "/document/orgs/*"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "description",
+      "targetName": "companyDescription"
+    }
+  ]
+}
+```
+
+## <a name="send-output-to-an-index"></a>将输出发送到索引
+
+每项技能执行时，将其输出作为节点添加到文档的扩充树中。 扩充的文档在管道中作为临时数据结构存在。 若要创建永久的数据结构，并全面了解技能的实际生成内容，需要将输出发送到搜索索引或[知识存储](knowledge-store-concept-intro.md)。
+
+在技能组评估的早期阶段，需要以最少的工作量来检查初步结果。 建议使用搜索索引，因为其设置更为简单。 对于每个技能输出，在索引器中[定义一个输出字段映射](cognitive-search-output-field-mapping.md)，并在索引中定义一个字段。
+
+:::image type="content" source="media/cognitive-search-defining-skillset/skillset-indexer-index-combo.png" alt-text="显示在技能输出、索引器字段映射和索引字段中定义人员实体的方式的对象图。":::
+
+运行索引器后，可以使用[搜索资源管理器](search-explorer.md)从索引返回文档，并检查每个字段的内容，以确定技能组检测到或创建的内容。
+
+以下示例显示了实体识别技能的结果，该技能在文本块中检测到人员、位置、组织和其他实体。 在搜索资源管理器中查看结果可以帮助你确定技能是否可为你的解决方案增加价值。
+
+:::image type="content" source="media/cognitive-search-defining-skillset/doc-in-search-explorer.png" alt-text="搜索资源管理器中文档的屏幕截图。":::
 
 ## <a name="next-steps"></a>后续步骤
 
-熟悉扩充管道和技能集后，请继续阅读[如何在技能集中引用注释](cognitive-search-concept-annotations-syntax.md)或[如何将输出映射到索引中的字段](cognitive-search-output-field-mapping.md)。
+上下文和输入源字段是扩充树中节点的路径。 下一步，请详细了解用于设置扩充树中节点的路径的语法。
+
+> [!div class="nextstepaction"]
+> [在技能组中引用注释](cognitive-search-concept-annotations-syntax.md)

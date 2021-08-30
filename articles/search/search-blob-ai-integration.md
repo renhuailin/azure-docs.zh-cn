@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: bdf5f2708daee0a3dc05ec8bc3d861633a3b7b7f
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 083a568f6fad664c59073e2f6858900302e9d971
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590569"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729758"
 ---
 # <a name="use-ai-to-process-and-analyze-blob-content-in-azure-cognitive-search"></a>在 Azure 认知搜索中使用 AI 处理和分析 blob 内容
 
@@ -62,7 +62,7 @@ AI 扩充是索引管道的一个加载项，在 Azure 认知搜索中，这些�
 
 Azure 存储中的 Blob 使用 [Blob 索引器](search-howto-indexing-azure-blob-storage.md)编制索引。 可以使用“导入数据”向导、REST API 或 SDK 调用此索引器。 当索引器使用的数据源是 Azure Blob 容器时，将调用 Blob 索引器。 可以通过创建虚拟目录（随后可将其作为参数传递），或者筛选文件类型扩展名，来对 Blob 的子集编制索引。
 
-索引器执行“文档破解”，会打开一个 Blob 来检查内容。 这是连接到数据源后，在管道中发生的第一个步骤。 对于 Blob 数据，此步骤会检测 PDF、Office 文档、图像和其他内容类型。 文档破解和文本提取是免费的。 使用图像提取进行文档破解将按照[定价页](https://azure.microsoft.com/pricing/details/search/)中的费率收费。
+索引器[“破解文档”](search-indexer-overview.md#document-cracking)，并打开 Blob 来检查内容。 这是连接到数据源后，在管道中发生的第一个步骤。 对于 Blob 数据，此步骤会检测 PDF、Office 文档、图像和其他内容类型。 文档破解和文本提取是免费的。 使用图像提取进行文档破解将按照[定价页](https://azure.microsoft.com/pricing/details/search/)中的费率收费。
 
 尽管会破解所有文档，但仅当显式提供了用于扩充的技能时，才会发生扩充。 例如，如果管道只包含图像分析，则会忽略容器或文档中的文本。
 
@@ -82,7 +82,7 @@ AI 扩充是指查找模式或特征，然后相应地执行操作的模块。 �
 
 自定义技能听起来很复杂，但它的实现可能非常简单直接。 如果你通过现有的包提供模式匹配或分类模型，可将从 Blob 提取的内容传递给这些模型进行处理。 由于 AI 扩充基于 Azure，因此模型也应该在 Azure 上。 一些常用的托管方法包括使用 [Azure Functions](cognitive-search-create-custom-skill-example.md) 或[容器](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)。
 
-认知服务支持的内置技能需要一个[附加的认知服务](cognitive-search-attach-cognitive-services.md)一体式订阅密钥，使你能够访问资源。 使用一体式密钥可以完成图像分析、语言检测、文本翻译和文本分析。 其他内置技能属于 Azure 认知搜索的功能，不需要额外的服务或密钥。 文本整形器、拆分器和合并器是设计管道时有时需要用到的帮助器技能的示例。
+认知服务支持的内置技能需要一个[附加的认知服务](cognitive-search-attach-cognitive-services.md)一体式订阅密钥，使你能够访问资源。 使用一体式密钥可以完成图像分析、语言检测、文本翻译和文本分析。 其他内置技能属于 Azure 认知搜索的功能，不需要额外的服务或密钥。 整形器、拆分器和合并器是设计管道时有时需要用到的帮助器技能的示例。
 
 如果仅使用自定义技能和内置实用工具技能，则不存在依赖关系，也不会产生认知服务相关的成本。
 

@@ -3,14 +3,14 @@ title: Azure 自动化 - 更改跟踪和库存概述
 description: 本文介绍了“更改跟踪和清单”功能，该功能可帮助你确定环境中的软件和 Microsoft 服务更改。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 05/06/2021
+ms.date: 06/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 062e4cdeae9560bc5be58d8245390d4a538f5722
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 27328ae64eabf9a5894d9bfc4ebbb2d0217d7a18
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783902"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465878"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>更改跟踪和库存概述
 
@@ -20,7 +20,7 @@ ms.locfileid: "109783902"
 - Linux 软件（包）
 - Windows 和 Linux 文件
 - Windows 注册表项
-- Microsoft 服务
+- Windows 服务
 - Linux 守护程序
 
 > [!NOTE]
@@ -29,14 +29,14 @@ ms.locfileid: "109783902"
 更改跟踪和清单使用 [Azure 安全中心文件完整性监视 (FIM)](../../security-center/security-center-file-integrity-monitoring.md) 来检查操作系统和应用程序文件以及 Windows 注册表。 FIM 会监视这些实体，而更改跟踪和清单将以本机方式跟踪：
 
 - 软件更改
-- Microsoft 服务
+- Windows 服务
 - Linux 守护程序
 
 启用更改跟踪和清单中包含的所有功能可能会产生额外费用。 在继续之前，请查看[自动化定价](https://azure.microsoft.com/pricing/details/automation/)和 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
 更改跟踪和清单将数据转发到 Azure Monitor 日志，并且收集的数据存储在 Log Analytics 工作区中。 仅当启用了 **适用于服务器的 Azure Defender** 时，才能使用文件完整性监视 (FIM) 功能。 请参阅 Azure 安全中心[定价](../../security-center/security-center-pricing.md)，了解详细信息。 FIM 将数据上传到 Log Analytics 工作区，也就是为了存储来自更改跟踪和清单的数据而创建的 Log Analytics 工作区。 我们建议您监视链接的 Log Analytics 工作区以跟踪确切使用情况。 有关分析 Azure Monitor 日志数据使用情况的详细信息，请参阅[管理使用情况和成本](../../azure-monitor/logs/manage-cost-storage.md)。
 
-连接到 Log Analytics 工作区的虚拟机使用 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)收集有关已安装软件、Microsoft 服务、Windows 注册表和文件以及受监视服务器上的 Linux 守护程序的更改数据。 数据可用时，代理会将其发送到 Azure Monitor Logs 进行处理。 Azure Monitor Logs 将逻辑应用于接收的数据，记录这些数据并使其可用于分析。
+连接到 Log Analytics 工作区的虚拟机使用 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)收集有关对受监视服务器上的已安装软件、Windows 服务、Windows 注册表和文件以及 Linux 守护程序进行的更改的数据。 数据可用时，代理会将其发送到 Azure Monitor Logs 进行处理。 Azure Monitor Logs 将逻辑应用于接收的数据，记录这些数据并使其可用于分析。
 
 > [!NOTE]
 > “更改跟踪和清单”要求将 Log Analytics 工作区链接到自动化帐户。 有关受支持区域的明确列表，请参阅 [Azure 工作区映射](../how-to/region-mappings.md)。 区域映射不会影响在单独的区域中管理自动化帐户内 VM 的功能。
@@ -67,7 +67,7 @@ ms.locfileid: "109783902"
 
 满足 Log Analytics 代理要求的所有操作系统都支持更改跟踪和库存。 有关 Log Analytics 代理目前支持的 Windows 和 Linux 操作系统版本的列表，请参阅[支持的操作系统](../../azure-monitor/agents/agents-overview.md#supported-operating-systems)。
 
-若要了解 TLS 1.2 的客户端要求，请参阅[强制 Azure 自动化执行 TLS 1.2](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
+若要了解 TLS 1.2 的客户端要求，请参阅[为 Azure 自动化使用 TLS 1.2](../automation-managing-data.md#tls-12-for-azure-automation)。
 
 ### <a name="python-requirement"></a>Python 要求
 
@@ -150,7 +150,7 @@ Python2 可执行文件必须将别名设置为“python”。
 | Windows 注册表 | 50 分钟 |
 | Windows 文件 | 30 分钟 |
 | Linux 文件 | 15 分钟 |
-| Microsoft 服务 | 10 秒到 30 分钟</br> 默认值：30 分钟 |
+| Windows 服务 | 10 秒到 30 分钟</br> 默认值：30 分钟 |
 | Linux 守护程序 | 5 分钟 |
 | Windows 软件 | 30 分钟 |
 | Linux 软件 | 5 分钟 |
@@ -168,11 +168,11 @@ Python2 可执行文件必须将别名设置为“python”。
 
 使用更改跟踪和库存的计算机的平均 Log Analytics 数据用量为每月大约 40 MB，具体取决于环境。 使用 Log Analytics 工作区的“使用情况和预估成本”功能，可以在使用情况图表中查看更改跟踪和库存功能所引入的数据。 使用该数据视图来评估自己的数据使用情况，并确定它对于账单的影响。 请参阅[了解自己的使用情况和预估成本](../../azure-monitor/logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs)
 
-### <a name="microsoft-service-data"></a>Microsoft 服务数据
+### <a name="windows-services-data"></a>Windows 服务数据
 
-Windows 服务的默认收集频率为 30 分钟。 可以使用“编辑设置”下“Microsoft 服务”选项卡上的滑块配置频率。
+Windows 服务的默认收集频率为 30 分钟。 可以使用“编辑设置”下“Windows 服务”选项卡上的滑块配置频率。
 
-![Microsoft 服务滑块](./media/overview/windowservices.png)
+![Windows 服务滑块](./media/overview/windowservices.png)
 
 为了优化性能，Log Analytics 代理只跟踪更改。 如果服务恢复为原始状态，则设置高的阈值可能错过更改。 将频率设置为较小的值可以捕获可能会错过的更改。
 

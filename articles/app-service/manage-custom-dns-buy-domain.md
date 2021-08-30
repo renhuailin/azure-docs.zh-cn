@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: cdcf22a42375949cc4d6be0b4f3062cee26219d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c15c4e2f269791dfce80d89edf22d5041be636b9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101704848"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734472"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
 
@@ -20,7 +20,7 @@ ms.locfileid: "101704848"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 * [创建应用服务应用](./index.yml)，或使用为另一教程创建的应用。 应用应位于 Azure 公共区域中。 目前，不支持 Azure 国家云。
 * [移除订阅中的支出限制](../cost-management-billing/manage/spending-limit.md#remove)。 无法购买具有免费订阅信用额度的应用服务域。
@@ -244,13 +244,11 @@ Azure 会处理即将过期或已过期的应用服务域，如下所示：
 
 1. 在“应用服务域”部分，选择要配置的域。
 
-1. 在域的左侧导航栏中，选择“主机名绑定”。 此处列出了所有 Azure 服务的主机名绑定。
+1. 在域的左侧导航栏中，选择“锁”。 
 
-    ![显示“主机名绑定”页面的屏幕截图。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
+    已为你的域创建了删除锁。 只要删除锁存在，就不能删除应用服务域。
 
-1. 通过选择“...” > “删除”来删除每个主机名绑定。  删除所有绑定后，选择“保存”。
-
-    <!-- ![Screenshot that shows where to delete the hostname bindings.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png) -->
+1. 单击“删除”以删除该锁。
 
 1. 在域的左侧导航栏中，选择“概述”。 
 

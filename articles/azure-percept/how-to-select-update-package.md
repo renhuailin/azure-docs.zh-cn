@@ -1,18 +1,18 @@
 ---
-title: 为 Azure Percept DK 选择最佳更新包
+title: 选择 Azure Percept DK 更新包
 description: 如何标识 Azure Percept DK 版本并选择最适合的更新包
 author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 05/04/2021
+ms.date: 07/23/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7528e11e24485fecc3e83773d98e119d98ca63cf
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e2256ba6ad1f2f125b21e7cb59ab74b44864bce6
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968765"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122070776"
 ---
 # <a name="how-to-determine-and-download-the-best-update-package-for-ota-and-usb-updates"></a>如何确定和下载适用于 OTA 和 USB 更新的最佳更新包
 
@@ -50,9 +50,9 @@ ms.locfileid: "111968765"
 
 |模型  |swVersion  |Update 方法  |下载链接  |注意  |
 |---------|---------|---------|---------|---------|
-|PE-101     |2020.108.101.105, <br>2020.108.114.120, <br>2020.109.101.122, <br>2020.109.116.120, <br>2021.101.106.118        |仅 USB         |[2021.105.111.112 USB 更新包](https://go.microsoft.com/fwlink/?linkid=2155734)         |5 月版本 (2105)         |
-|PE-101     |2021.102.108.112, <br>         |OTA 或 USB        |[2021.105.111.112 OTA 清单 (PE-101)](https://go.microsoft.com/fwlink/?linkid=2155625)<br>[2021.105.111.112 OTA 更新包](https://go.microsoft.com/fwlink/?linkid=2161538)<br>[2021.105.111.112 USB 更新包](https://go.microsoft.com/fwlink/?linkid=2155734)          |5 月版本 (2105)         |
-|APDK-101     |所有的 swVersion        |OTA 或 USB       | [2021.105.111.112 OTA 清单 (APDK-101)](https://go.microsoft.com/fwlink/?linkid=2163554)<br>[2021.105.111.112 OTA 更新包](https://go.microsoft.com/fwlink/?linkid=2163456)<br>[2021.105.111.112 USB 更新包](https://go.microsoft.com/fwlink/?linkid=2163555)        |5 月版本 (2105)         |
+|PE-101     |所有的 swVersion       |仅 USB         |[2021.107.129.116 USB 更新包](https://go.microsoft.com/fwlink/?linkid=2169086)         |7 月版本 (2107)         |
+|APDK-101     |任何早于 2021.106.111.115 的 swVersion |仅 USB         |[2021.107.129.116 USB 更新包](https://go.microsoft.com/fwlink/?linkid=2169086)         |7 月版本 (2107)         |
+|APDK-101     |2021.106.111.115        |OTA 或 USB       |[2021.107.129.116 OTA 更新包](https://go.microsoft.com/fwlink/?linkid=2169245)<br>[2021.107.129.116 USB 更新包](https://go.microsoft.com/fwlink/?linkid=2169086)        |7 月版本 (2107)         |
 
 
 ## <a name="next-steps"></a>后续步骤

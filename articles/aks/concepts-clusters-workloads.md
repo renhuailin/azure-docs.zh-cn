@@ -4,12 +4,12 @@ description: 了解 Kubernetes 的基本群集和工作负荷组件以及它们�
 services: container-service
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: b8a342730a6f37a5498e59e883b0f77b8bfabbb2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 4db6ee6d117f7743147dad43dcfff98dd99fd76d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372423"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733648"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -153,7 +153,7 @@ kubectl describe node [NODE_NAME]
 
 可通过节点选择器定义各种参数（例如节点 OS），来控制应在哪里计划 Pod。
 
-以下基本示例使用节点选择器 *"beta.kubernetes.io/os": linux* 来计划 Linux 节点上的 NGINX 实例：
+以下基本示例使用节点选择器 "kubernetes.io/os": linux 在 Linux 节点上调度 NGINX 实例：
 
 ```yaml
 kind: Pod
@@ -165,7 +165,7 @@ spec:
     - name: myfrontend
       image: mcr.microsoft.com/oss/nginx/nginx:1.15.12-alpine
   nodeSelector:
-    "beta.kubernetes.io/os": linux
+    "kubernetes.io/os": linux
 ```
 
 若要详细了解如何控制对 Pod 进行计划的位置，请参阅[有关 AKS 中的高级计划程序功能的最佳做法][operator-best-practices-advanced-scheduler]。
@@ -176,7 +176,7 @@ Kubernetes 使用 Pod 来运行应用程序的实例。 Pod 表示应用程序�
 
 Pod 通常与容器是一对一映射关系。 在高级方案中，一个 Pod 可能包含多个容器。 多容器 Pod 是在同一节点上共同计划的，容器可通过它们共享相关资源。
 
-创建 Pod 时，可定义资源请求以请求一定数量的 CPU 或内存资源。 Kubernetes 计划程序尝试计划在具有可用资源的节点上运行 Pod 来满足请求。 你还可指定最大资源限制，防止某 Pod 从基础节点消耗过多计算资源。 最佳做法是包括所有 Pod 的资源限制，以帮助 Kubernetes 计划程序确定必需的允许资源。
+创建 Pod 时，可定义资源请求以请求一定数量的 CPU 或内存资源。 Kubernetes 计划程序尝试通过计划将要在具有可用资源的节点上运行的 Pod 来满足请求。 你还可指定最大资源限制，防止某 Pod 从基础节点消耗过多计算资源。 最佳做法是包括所有 Pod 的资源限制，以帮助 Kubernetes 计划程序确定必需的允许资源。
 
 有关详细信息，请参阅 [Kubernetes Pod][kubernetes-pods] 和 [Kubernetes Pod 生命周期][kubernetes-pod-lifecycle]。
 
@@ -261,7 +261,7 @@ spec:
 
 ### <a name="daemonsets"></a>DaemonSet
 
-对于特定的日志集合或监视，可能需要在所有或选定的节点上运行 Pod。 可使用 DaemonSet 部署一个或多个相同的 Pod，但 DaemonSet 控制器会确保指定的每个节点都运行 Pod 实例。
+对于特定的日志集合或监视，可能需要在所有或选定的节点上运行 Pod。 可以在一个或多个相同的 Pod 上使用 DaemonSet 部署，但 DaemonSet 控制器可确保指定的每个节点都运行该 Pod 的一个实例。
 
 在默认的 Kubernetes 计划程序启动之前，DaemonSet 控制器可以在群集启动进程的早期计划节点上的 Pod。 此功能可确保在计划 Deployment 或 StatefulSet 中的传统 Pod 之前启动 DaemonSet 中的 Pod。
 

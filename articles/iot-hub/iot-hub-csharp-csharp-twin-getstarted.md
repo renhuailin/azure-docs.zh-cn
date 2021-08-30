@@ -2,7 +2,6 @@
 title: Azure IoT 中心设备孪生入门 (.NET/.NET) | Microsoft Docs
 description: 如何使用 Azure IoT 中心设备孪生添加标记，并使用 IoT 中心查询。 使用适用于 .NET 的 Azure IoT 设备 SDK 实现模拟设备应用，并使用适用于 .NET 的 Azure IoT 服务 SDK 实现可添加标记并运行 IoT 中心查询的服务应用。
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: 267a69486dc91ef95c0de704346eeb1d1780ef48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53a2d4ef83f20633c227c5d1a0e23de5bb45c81d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89013752"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737730"
 ---
 # <a name="get-started-with-device-twins-net"></a>设备孪生入门 (.NET)
 
@@ -250,8 +249,8 @@ ms.locfileid: "89013752"
 
 可以通过以下资源了解详细信息：
 
-* 若要了解如何从设备发送遥测数据，请参阅[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)教程。
+* 若要了解如何从设备发送遥测数据，请参阅[将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)教程。
 
 * 若要了解如何使用设备孪生的所需属性配置设备，请参阅[使用所需属性配置设备](tutorial-device-twins.md)教程。
 
-* 若要了解如何以交互方式控制设备（例如从用户控制的应用打开风扇），请参阅[使用直接方法](quickstart-control-device-dotnet.md)教程。
+* 若要了解如何以交互方式控制设备（例如从用户控制的应用打开风扇），请参阅[使用直接方法](./quickstart-control-device.md?pivots=programming-language-csharp)快速入门。

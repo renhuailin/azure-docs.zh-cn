@@ -2,19 +2,20 @@
 title: 在 Azure 数据工厂中创建自定义事件触发器
 description: 了解如何在 Azure 数据工厂中创建运行管道的触发器，以便响应发布到事件网格的自定义事件。
 ms.service: data-factory
+ms.subservice: orchestration
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: d91e1f52f0844317b049086489bda25c079ee9be
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 2a454f2f81e048511725e7a9f3269bdd9b5bcd49
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634286"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396634"
 ---
-# <a name="create-a-custom-event-trigger-to-run-a-pipeline-in-azure-data-factory-preview"></a>创建自定义事件触发器以在 Azure 数据工厂中运行管道（预览）
+# <a name="create-a-custom-event-trigger-to-run-a-pipeline-in-azure-data-factory"></a>创建自定义事件触发器以在 Azure 数据工厂中运行管道
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -93,20 +94,54 @@ ms.locfileid: "109634286"
 
 1. 输入参数后，选择“确定”。
 
+## <a name="advanced-filtering"></a>高级筛选
+
+自定义事件触发器支持高级筛选功能，类似于[事件网格高级筛选](../event-grid/event-filtering.md#advanced-filtering)。 这些条件筛选器允许管道基于事件有效负载的值进行触发。 例如，事件有效负载中可能有一个名为 _Department 的字段，管道仅应在 Department 等于 Finance 时触发。  你还可以指定复杂的逻辑，例如，date 字段在列表 [1, 2, 3, 4, 5] 中，month 字段不在列表 [11, 12] 中，tag 字段包含 ['Fiscal Year 2021', 'FiscalYear2021', 'FY2021'] 中的任意一项。
+
+ :::image type="content" source="media/how-to-create-custom-event-trigger/custom-event-5-advanced-filters.png" alt-text="屏幕截图显示了如何为客户事件触发器设置高级筛选器":::
+
+截至目前，自定义事件触发器仅支持事件网格中的一部分[高级筛选运算符](../event-grid/event-filtering.md#advanced-filtering)。 支持以下筛选条件：
+
+* NumberIn
+* NumberNotIn
+* NumberLessThan
+* NumberGreaterThan
+* NumberLessThanOrEquals
+* NumberGreaterThanOrEquals
+* BoolEquals
+* StringContains
+* StringBeginsWith
+* StringEndsWith
+* StringIn
+* StringNotIn
+
+单击“+新建”以添加新的筛选条件。 
+
+此外，自定义事件触发器遵循[与事件网格相同的限制](../event-grid/event-filtering.md#limitations)，包括：
+
+* 每个自定义事件触发器有 5 个高级筛选器，所有筛选器有 25 个筛选器值
+* 每个字符串值有 512 个字符
+* “in”和“not in”运算符有 5 个值
+* 键中不能含有 `.`（点）字符，例如 `john.doe@contoso.com`。 目前不支持键中使用转义字符。
+* 可以在多个筛选器中使用相同的键。
+
+数据工厂依赖于[事件网格 API](../event-grid/whats-new.md) 的最新正式发布版本。 随着新的 API 版本不断正式发布，数据工厂将扩展其对更多高级筛选运算符的支持。
+
 ## <a name="json-schema"></a>JSON 架构
 
 下表概述了与自定义事件触发器相关的架构元素：
 
 | JSON 元素 | 说明 | 类型 | 允许的值 | 必需 |
 |---|----------------------------|---|---|---|
-| `scope` | 事件网格主题的 Azure 资源管理器资源 ID。 | 字符串 | Azure 资源管理器 ID | 是 |
+| `scope` | 事件网格主题的 Azure 资源管理器资源 ID。 | String | Azure 资源管理器 ID | 是 |
 | `events` | 导致此触发器触发的事件的类型。 | 字符串数组    |  | 是，至少需要一个值。 |
-| `subjectBeginsWith` | `subject` 字段必须以所提供的模式开头，触发器才会触发。 例如，factories 只为以 factories 开头的事件主题触发触发器。  | 字符串   | | 否 |
+| `subjectBeginsWith` | `subject` 字段必须以所提供的模式开头，触发器才会触发。 例如， *factories 仅会针对以 factories 开头的事件主题引发触发器。 | String   | | 否 |
 | `subjectEndsWith` | `subject` 字段必须以所提供的模式结尾，触发器才会触发。 | 字符串   | | 否 |
+| `advancedFilters` | JSON blob 的列表，每个指定一个筛选条件。 每个 blob 都指定 `key`、`operatorType` 和 `values`。 | JSON blob 的列表 | | 否 |
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-Azure 数据工厂使用 Azure RBAC 来禁止未经授权的访问。 若要正常工作，数据工厂需要访问权限以执行以下操作：
+Azure 数据工厂使用 Azure 基于角色的访问控制 (RBAC) 来禁止未经授权的访问。 若要正常工作，数据工厂需要访问权限以执行以下操作：
 - 侦听事件。
 - 订阅事件更新。
 - 触发链接到自定义事件的管道。

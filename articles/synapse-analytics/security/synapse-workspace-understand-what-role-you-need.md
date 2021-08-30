@@ -1,19 +1,19 @@
 ---
 title: 了解在 Synapse 中执行常见任务所需的角色
 description: 本文介绍完成特定任务所需的内置 Synapse RBAC 角色
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 87156914769c2cb76b7509b74ebfeb13b15af95e
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 56337e349cf2cfad792cecbec11503a4fd866095
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784188"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253623"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>了解在 Synapse 中执行常见任务所需的角色
 
@@ -92,7 +92,7 @@ APACHE SPARK 池|
 将对笔记本或作业定义的更改提交到 Git 存储库|Git 权限|无
 管道、集成运行时、数据流、数据集和触发器|
 创建、更新或删除集成运行时|工作区的 Azure 所有者或参与者|
-监视集成运行时状态|Synapse 用户|读取、管道/viewOutputs
+监视集成运行时状态|Synapse 计算操作员|read, integrationRuntimes/viewLogs
 查看管道运行|Synapse 项目发布者/Synapse 参与者|读取、管道/viewOutputs 
 创建管道 |Synapse 用户</br>调试、添加触发器、发布或提交更改时需要其他 Synapse 权限|读取
 创建数据流或数据集 |Synapse 用户</br>发布或提交更改时需要其他 Synapse 权限|读取

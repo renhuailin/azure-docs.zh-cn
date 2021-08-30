@@ -1,5 +1,5 @@
 ---
-title: 从本地 MySQL 到 Azure Database for MySQL 迁移指南数据迁移
+title: 将本地 MySQL 迁移到 Azure Database for MySQL：数据迁移
 description: 作为升级或迁移数据之前的谨慎步骤，请在升级前使用 MySQL Workbench 或通过 mysqldump 命令手动导出数据库。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 44b2c8aa22944cdf31c9f111a32856e5095d369d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 9e53243424f4cb0b289c0ebba9c82cb9fb4853cc
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082682"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113084925"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-data-migration"></a>从本地 MySQL 到 Azure Database for MySQL 迁移指南数据迁移
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-data-migration"></a>将本地 MySQL 迁移到 Azure Database for MySQL：数据迁移
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -53,7 +55,7 @@ ms.locfileid: "112082682"
 
   - 使用可以在多线程模式中运行的导出工具（如 mydumper）
 
-  - 使用 MySQL 8.0 时，请酌情使用[分区表](https://dev.mysql.com/doc/refman/8.0/en/partitioning-overview.html)以提高导出速度。
+  - 使用 MySQL 8.0 时，请在适当的时候使用[已分区表](https://dev.mysql.com/doc/refman/8.0/en/partitioning-overview.html)以提高导出速度。
 
 ### <a name="importing"></a>导入
 
@@ -95,7 +97,7 @@ ms.locfileid: "112082682"
 
   - 升级到受支持的 Azure MySQL 版本
 
-  - 盘存数据库对象
+  - 库存数据库对象
 
   - 导出用户和权限
 
@@ -113,13 +115,13 @@ ms.locfileid: "112082682"
 
   - 与 MySQL 8.0 中的保留字冲突的数据库对象名称
 
-  - utf8mb3 字符集的使用情况
+  - utf8mb3 字符集的使用
 
-  - ZEROFILL/显示长度类型属性的使用情况
+  - ZEROFILL/显示长度类型属性的使用
 
   - 与 8.0 中的表冲突的表名
 
-  - 时态类型使用情况
+  - 时态类型的使用
 
   - 外键约束名称长度超过 64 个字符
 
@@ -251,13 +253,13 @@ DELIMITER ;
 CALL Migration_PerformInventory('reg_app');
 ```
 
-  - 在源数据库上调用此过程将显示以下内容（截断输出）：
+  - 在源 DB 上调用此过程将显示以下内容（截断输出）：
 
 ![截断输出](./media/image4.jpg)
 
-  - 完成迁移后，目标数据库过程结果应类似于下图。 请注意，数据库中没有函数。在迁移之前已消除函数。
+  - 完成迁移后，目标数据库过程结果应类似于下图。 请注意，DB 中没有函数。在迁移之前已消除函数。
 
-![数据库函数](./media/image5.jpg)
+![DB 函数](./media/image5.jpg)
 
 ## <a name="users-and-permissions"></a>用户和权限
 
@@ -315,12 +317,14 @@ tRoot.crt.cer --skip-column-names -A -e"$line"
 
   - 配置目标参数以快速导入。
 
-  - 测试源版本和目标不同的任何迁移。
+  - 测试任何具有不同源版本与目标版本的迁移。
 
   - 迁移任何不基于数据的对象，例如用户名和特权。
 
   - 确保在执行迁移时记录并检查所有任务。  
 
+
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [通过 MySQL Workbench 进行数据迁移](./09-data-migration-with-mySQL-workbench.md)

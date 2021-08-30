@@ -12,40 +12,50 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 7ef3e07eb1585aaa87986fd682b4db00c53e66f3
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 3601cd6f7580a4d87dda7488826e25ca85b233c9
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810671"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110654171"
 ---
 # <a name="get-facial-pose-events"></a>获取人脸姿态事件
 
 > [!NOTE]
-> Viseme 事件现仅可用于 `en-US` 英语（美国）[神经语音](language-support.md#text-to-speech)。
+> 视素事件目前仅适用于 `en-US` 英语（美国）和[神经语音](language-support.md#text-to-speech)。
 
 _视素_ 是口语中音素的视觉描述。
 它定义了在说一个字词时人脸和嘴部的位置。
 每个视素都描绘与一组特定音素对应的关键人脸姿态。
-在视素和音素之间没有一对一的对应关系。
-通常，多个音素对应一个视素，因为多个音素（如 `s` 和 `z`）在生成时在人脸上看起来是相同的。
-请参阅[视素和音素之间的映射表](#map-phonemes-to-visemes)。
+视素可以用来控制 2D 和 3D 头像模型的运动，使口部运动与合成的语音完美匹配。
 
-使用视素，可以创建更多自然且智能的新闻广播助手、更具交互性的游戏和卡通人物，以及更直观的语言教学视频。 听障人士还可以直观地拾取声音，通过“唇读”来理解在动态人脸上显示视素的语音内容。
+视素使头像更易于使用和控制。 使用视素，你可以：
 
-## <a name="get-viseme-events-with-the-speech-sdk"></a>使用语音 SDK 获取视素事件
+ * 为智能展台创建动画虚拟语音助手，为客户构建多模式集成服务。
+ * 构建沉浸式新闻广播并通过自然面部和口部运动改善观众体验。
+ * 生成更多交互式游戏头像和可与动态内容交谈的卡通角色。
+ * 制作更有效的语言教学视频，帮助语言学员了解每个单词和音素的口部行为。
+ * 听障人士还可以从视觉上理解声音，通过“唇读”来理解在动态人脸上显示视素的语音内容。
 
-为了创建视素事件，TTS 服务将输入文本转换为一组音素序列以及与它们相对应的视素序列。
-然后预估语音音频中每个视素的开始时间。
-视素事件包含一系列视素 ID，每个 ID 都带有在该视素出现的音频中的偏移量。
-这些事件可以驱动对朗读输入文本的人员进行模拟的嘴部动态。
+请查看 viseme 的[简介视频](https://youtu.be/ui9XT47uwxs)。
+> [!VIDEO https://www.youtube.com/embed/ui9XT47uwxs]
+
+## <a name="azure-neural-tts-can-produce-visemes-with-speech"></a>Azure 神经 TTS 可以通过语音生成视素
+
+神经语音将输入文本或 SSML（语音合成标记语言）转换为合成语音。 语音音频输出可以附带视素 ID 及其偏移时间戳。 每个视素 ID 均指定观察到的语音中的特定姿势，如产生特定音素时的嘴唇、下巴和舌头的位置。 使用 2D 或 3D 绘制引擎，你可以使用这些视素事件对头像进行动画处理。
+
+以下流程图描述了视素的整体工作流。
+
+![视素的整体工作流](media/text-to-speech/viseme-structure.png)
 
 | 参数 | 说明 |
 |-----------|-------------|
-| 视素 ID | 整数，用于指定视素。 在英语（美国）中，我们提供 22 个不同的视素来描述一组特定音素的嘴部形状。 请参阅[视素 ID 和音素之间的映射表](#map-phonemes-to-visemes)。  |
+| 视素 ID | 整数，用于指定视素。 在英语（美国）中，我们提供 22 个不同的视素来描述一组特定音素的嘴部形状。 在视素和音素之间没有一对一的对应关系。 通常，多个音素对应一个视素，因为多个音素（如 `s` 和 `z`）在生成时在人脸上看起来是相同的。 请参阅[视素 ID 和音素之间的映射表](#map-phonemes-to-visemes)。  |
 | 音频偏移 | 每个视素的开始时间，以时钟周期（100 纳秒）为单位。 |
 
-若要获取视素事件，请在语音 SDK 中订阅 `VisemeReceived` 事件。
+## <a name="get-viseme-events-with-the-speech-sdk"></a>使用语音 SDK 获取视素事件
+
+若要获取视素的合成语音，请在语音 SDK 中订阅 `VisemeReceived` 事件。
 以下代码片段演示了如何订阅视素事件。
 
 ::: zone pivot="programming-language-csharp"
@@ -148,6 +158,26 @@ SPXSpeechSynthesizer *synthesizer =
 ```
 
 ::: zone-end
+
+以下是视素输出的示例。
+
+```text
+(Viseme), Viseme ID: 1, Audio offset: 200ms.
+
+(Viseme), Viseme ID: 5, Audio offset: 850ms.
+
+……
+
+(Viseme), Viseme ID: 13, Audio offset: 2350ms.
+```
+
+获取视素输出后，可以使用这些事件来驱动角色动画。 可以生成自己的角色并自动对其进行动画处理。
+
+对于 2D 人物，可以设计一个适合你方案的角色，并为每个视素 ID 使用可缩放的矢量图形 (SVG)，以获取基于时间的面部位置。 在视素事件中提供临时标记后，这些设计良好的 SVG 将通过平滑修改进行处理，并提供可靠的动画给用户。 例如，下面的插图显示了为语言学习设计的红唇角色。
+
+![2D 呈现示例](media/text-to-speech/viseme-demo-2D.png)
+
+对于 3D 人物，请将其视为提线木偶。 人偶师把线从一种状态拉到另一种状态，物理定律会让木偶流畅移动。 视素输出充当人偶师，提供操作时间线。 动画引擎定义操作的物理定律。 通过使用缓动算法将帧插值，引擎可以进一步生成高质量的动画。
 
 ## <a name="map-phonemes-to-visemes"></a>将音素映射到视素
 

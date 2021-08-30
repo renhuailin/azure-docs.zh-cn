@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）：导出和删除数据 - Azure
-description: 通过 Azure 门户或经过身份验证的 REST API，可导出和删除 Azure 机器学习工作室（经典版）存储的产品内数据。 可通过 Azure 隐私门户访问遥测数据。 本文介绍如何进行此操作。
+description: 通过 Azure 门户以及经身份验证的 REST API，可导出和删除机器学习工作室（经典）存储的产品内数据。 可通过 Azure 隐私门户访问遥测数据。 本文介绍如何进行此操作。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,21 +9,20 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: b2d797cc6cb45a76a61a235e7c4c66ac6f243580
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f590f52224eed6fd32dbb2af0297669b99a3fe8
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519858"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688851"
 ---
-# <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>从 Azure 机器学习工作室（经典版）中导出和删除产品内用户数据
+# <a name="export-and-delete-in-product-user-data-from-machine-learning-studio-classic"></a>从机器学习工作室（经典）中导出和删除产品内用户数据
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
-
-
-可以使用 Azure 门户、工作室（经典版）界面、PowerShell 和经过验证的 REST API 删除或导出 Azure 机器学习工作室（经典版）存储的产品内数据。 本文介绍了相关实现方法。 
+可以使用 Azure 门户、工作室（经典）界面、PowerShell 和经身份验证的 REST API 删除或导出机器学习工作室（经典）存储的产品内数据。 本文介绍了相关实现方法。 
 
 可通过 Azure 隐私门户访问遥测数据。 
 
@@ -74,8 +73,8 @@ ms.locfileid: "100519858"
 ![删除机器学习工作室（经典版）中的免费工作区](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
 ## <a name="export-studio-classic-data-with-powershell"></a>使用 PowerShell 导出工作室（经典版）数据
-可通过 PowerShell 使用命令将 Azure 机器学习工作室（经典版）中的所有信息导出为可移植格式。 有关信息，请参阅 [Azure 机器学习工作室（经典版）PowerShell 模块](powershell-module.md)一文。
+可通过 PowerShell 使用命令将机器学习工作室（经典版）中的所有信息导出为可移植格式。 有关信息，请参阅[机器学习工作室（经典版）PowerShell 模块](powershell-module.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关介绍 Web 服务和提交计划计费的文档，请参阅 [Azure 机器学习工作室（经典版）REST API 参考](/rest/api/machinelearning/)。
+有关介绍 Web 服务和提交计划计费的文档，请参阅[机器学习工作室（经典版）REST API 参考](/rest/api/machinelearning/)。

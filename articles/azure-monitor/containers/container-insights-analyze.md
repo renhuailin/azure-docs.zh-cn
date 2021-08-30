@@ -3,12 +3,12 @@ title: 使用容器见解进行 Kubernetes 监视 | Microsoft Docs
 description: 本文介绍如何使用容器见解查看和分析 Kubernetes 群集的性能。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 865a21e8c54d2cf569e04534fab6ec14f5519f34
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2751d96a0527328a78030cba618d2026059f04fe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102124306"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741368"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-container-insights"></a>使用容器见解监视 Kubernetes 群集性能
 
@@ -141,7 +141,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 切换到“节点”、“控制器”和“容器”选项卡时，页面右侧会自动显示属性窗格    。 它显示所选项的属性，包括定义用于组织 Kubernetes 对象的标签。 选择一个 Linux 节点时，“本地磁盘容量”部分还会显示可用磁盘空间以及用于每个提供给节点的磁盘的百分比。 单击窗格中的 **>>** 链接可查看或隐藏窗格。
 
-在层次结构中展开对象时，属性窗格将根据所选对象进行更新。 在窗格中，还可通过选择窗格顶部的“查看实时数据(预览)”链接，查看 Kubernetes 容器日志 (stdout/stderror)、事件和 Pod 指标  。 要详细了解授予和控制查看此数据的访问权限所需的配置，请参阅[设置实时数据（预览版）](container-insights-livedata-setup.md)。 查看群集资源时，可以实时查看容器中的该数据。 有关此功能的详细信息，请参阅[如何实时查看 Kubernetes 日志、事件和 Pod 指标](container-insights-livedata-overview.md)。 要根据预定义的日志搜索查看工作区中存储的 Kubernetes 日志数据，请从“在 Analytics 中查看”下拉列表中选择“查看容器日志”。  有关此主题的其他信息，请参阅[搜索日志以分析数据](container-insights-log-search.md#search-logs-to-analyze-data)。
+在层次结构中展开对象时，属性窗格将根据所选对象进行更新。 在窗格中，还可通过选择窗格顶部的“查看实时数据(预览)”链接，查看 Kubernetes 容器日志 (stdout/stderror)、事件和 Pod 指标  。 要详细了解授予和控制查看此数据的访问权限所需的配置，请参阅[设置实时数据（预览版）](container-insights-livedata-setup.md)。 查看群集资源时，可以实时查看容器中的该数据。 有关此功能的详细信息，请参阅[如何实时查看 Kubernetes 日志、事件和 Pod 指标](container-insights-livedata-overview.md)。 要根据预定义的日志搜索查看工作区中存储的 Kubernetes 日志数据，请从“在 Analytics 中查看”下拉列表中选择“查看容器日志”。  有关本主题的其他信息，请参阅[如何从容器见解查询日志](container-insights-log-query.md)。
 
 使用页面顶部的“+ 添加筛选器”选项可按“服务”、“节点”、“命名空间”或“节点池”筛选视图的结果。     选择筛选范围后，选择“选择值”字段中显示的某个值。 筛选器在配置后会在用户查看任何视角的 AKS 群集时进行全局应用。 公式只支持等号。 可以在第一个筛选器的基础上添加更多的筛选器，进一步缩小结果范围。 例如，如果指定了一个按“节点”筛选的筛选器，则只能为第二个筛选器选择“服务”或“命名空间”。  
 
@@ -189,7 +189,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 下表描述了查看“节点”选项卡时显示的信息。
 
-| 列 | 描述 |
+| 列 | 说明 |
 |--------|-------------|
 | 名称 | 主机的名称。 |
 | 状态 | 节点状态的 Kubernetes 视图。 |
@@ -232,7 +232,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 下表描述了查看控制器时显示的信息：
 
-| 列 | 描述 |
+| 列 | 说明 |
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 容器完成运行并处于“正常”、“已终止”、“已失败”、“已停止”或“已暂停”等状态时的汇总状态    。 如果容器仍在运行，但是状态未正确显示或者未被代理选择并且超出 30 分钟后仍未响应，则状态为“未知”。 下表提供了状态图标的更多详细信息。|
@@ -269,7 +269,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 下表描述了查看容器时显示的信息。
 
-| 列 | 描述 |
+| 列 | 说明 |
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 容器状态（如果有）。 接下来的表格提供状态图标的更多详细信息。|
@@ -297,13 +297,13 @@ Azure 网络策略管理器包含信息丰富的 Prometheus 指标，可用于�
 
 ## <a name="workbooks"></a>工作簿
 
-工作簿可将文本、日志查询、指标和参数合并到丰富的交互式报表中，使你能够分析群集性能。 有关可用于容器见解的工作簿的说明，请参阅[容器见解中的工作簿](../insights/container-insights-reports.md)。
+工作簿可将文本、日志查询、指标和参数合并到丰富的交互式报表中，使你能够分析群集性能。 有关可用于容器见解的工作簿的说明，请参阅[容器见解中的工作簿](container-insights-reports.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - 请查看[使用容器见解创建性能警报](./container-insights-log-alerts.md)，了解如何针对 CPU 和内存使用率过高的情况创建警报，为 DevOps 或操作流程和过程提供支持。
 
-- 通过查看[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，可查看预定义的查询和示例，从而对其进行评估或自定义，以便对群集执行警报、可视化或分析操作。
+- 通过查看[日志查询示例](container-insights-log-query.md)，可查看预定义的查询和示例，从而对其进行评估或自定义，以便对群集执行警报、可视化或分析操作。
 
 - 查看[监视器群集运行状况](./container-insights-overview.md)，了解如何查看 Kubernetes 群集的运行状况状态。

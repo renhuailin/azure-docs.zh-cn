@@ -5,16 +5,18 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 8/24/2020
+ms.date: 06/17/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fe33730fc11bfc18b7d67471e1077fb9490385d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4980692be64c2a8b3918d2dbaab5ef9c983f453
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94541923"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121777805"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-powershell"></a>如何使用 PowerShell 在 Azure Database for MySQL 中创建和管理只读副本
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 本文介绍如何使用 PowerShell 在 Azure Database for MySQL 服务中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
@@ -39,6 +41,8 @@ ms.locfileid: "94541923"
 
 > [!IMPORTANT]
 > 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MySQL 服务器。 请确保源服务器位于其中一个定价层中。
+>
+>如果在主服务器上启用了 GTID (`gtid_mode` = ON)，则新创建的副本也会启用 GTID 并使用基于 GTID 的复制。 若要了解详细信息，请参阅[全局事务标识符 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
 
 ### <a name="create-a-read-replica"></a>创建只读副本
 
@@ -66,7 +70,8 @@ Get-AzMySqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
   New-AzMySqlReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
 ```
 
-若要详细了解可以在哪些区域中创建副本，请访问[只读副本概念文章](concepts-read-replicas.md)。
+> [!NOTE]
+> 若要详细了解可以在哪些区域中创建副本，请访问[只读副本概念文章](concepts-read-replicas.md)。 
 
 默认情况下，除非指定了 Sku 参数，否则将使用与源服务器相同的服务器配置来创建只读副本。
 
@@ -106,6 +111,16 @@ Remove-AzMySqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegrou
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
+
+### <a name="known-issue"></a>已知问题
+
+常规用途和内存优化层中的服务器使用两代存储，常规用途存储 v1（支持最高 4 TB）和常规用途存储 v2（支持最高 16 TB 存储）。
+源服务器和副本服务器应该具有相同的存储类型。 由于[常规用途存储 v2](./concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) 在所有区域中均不可用，因此请确保在将位置与 PowerShell 配合使用来创建只读副本时选择正确的副本区域。 有关如何确定源服务器的存储类型，请参阅链接[如何确定服务器上运行的存储类型](./concepts-pricing-tiers.md#how-can-i-determine-which-storage-type-my-server-is-running-on)。 
+
+如果选择无法为源服务器创建只读副本的区域，则会遇到这样的问题：部署将持续运行（如下图所示），然后超时并收到错误“资源预配操作未在允许的超时时间内完成。”
+
+[:::image type="content" source="media/howto-read-replicas-powershell/replcia-ps-known-issue.png" alt-text="只读副本 cli 错误":::](media/howto-read-replicas-powershell/replcia-ps-known-issue.png#lightbox)
+
 
 ## <a name="next-steps"></a>后续步骤
 

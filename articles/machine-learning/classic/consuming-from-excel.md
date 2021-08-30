@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）：在 Excel 中使用 Web 服务 - Azure
-description: 使用 Azure 机器学习工作室（经典）可以轻松地直接从 Excel 调用 Web 服务，而无需编写任何代码。
+description: 机器学习工作室（经典）可以轻松地直接从 Excel 调用 Web 服务，而无需编写任何代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,18 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: e8e7404a2b643cf90866253e5a7453381b66f73e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52fe23315bc6f455460e8e3727d263e14799b186
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517852"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582827"
 ---
-# <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>从 Excel 使用 Azure 机器学习工作室（经典）Web 服务
+# <a name="consuming-an-machine-learning-studio-classic-web-service-from-excel"></a>从 Excel 使用机器学习工作室（经典）Web 服务
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-使用 Azure 机器学习工作室（经典）可以轻松地直接从 Excel 调用 Web 服务，而无需编写任何代码。
+机器学习工作室（经典）可以轻松地直接从 Excel 调用 Web 服务，而无需编写任何代码。
 
 如果使用的 Excel 2013 （或更高版本）或 Excel Online，则建议使用 Excel 的 [Excel 加载项](excel-add-in-for-web-services.md)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "100517852"
 
 **新的 Web 服务**
 
-1. 在 Azure 机器学习 Web 服务门户中，选择“使用”。
+1. 在机器学习 Web 服务门户中，选择“使用”。
 2. 在使用页上的“Web 服务使用选项”部分中，单击 Excel 图标。
 
 **使用工作簿**

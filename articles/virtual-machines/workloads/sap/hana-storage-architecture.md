@@ -11,15 +11,15 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/10/2020
+ms.date: 07/22/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f862299dfb677a4b459611050832f602ff5598eb
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: f53eb460d6b131dce607c0dd99f97babd758de35
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412486"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603405"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA（大型实例）存储体系结构
 
@@ -27,7 +27,7 @@ ms.locfileid: "111412486"
 
 SAP HANA 根据 SAP 建议的指导原则在经典部署模型中配置 Azure 上的 SAP HANA（大型实例）的存储布局。 有关准则的详细信息，请参阅 [SAP HANA 存储要求](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)。
 
-I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 II 类 HANA 大型实例的情况并非如此，其附带用于存储 HANA 事务日志备份的卷。 有关详细信息，请参阅[安装和配置 Azure 上的 SAP HANA（大型实例）](hana-installation.md)。
+I 类 HANA 大型实例附带有四倍内存卷作为存储卷， 而 II 类 HANA 大型实例却附带用于存储 HANA 事务日志备份的卷。 有关详细信息，请参阅[安装和配置 Azure 上的 SAP HANA（大型实例）](hana-installation.md)。
 
 有关存储分配，请参阅下表。 此表大致列出了各卷的容量，这些卷是随不同的 HANA 大型实例单元一起提供的。
 
@@ -121,9 +121,9 @@ HANA 大型实例的最新 SKU 随以下存储配置一起提供。
 还有其他组合变化。 
 
 ## <a name="encryption-of-data-at-rest"></a>静态数据加密
-用于 HANA 大型实例的存储使用透明数据加密，因为数据存储在磁盘上。 在 2018 年底之前的部署中，可以选择加密卷。 如果决定不使用该选项，则可以请求联机对卷进行加密。 将从非加密移动到加密卷是透明的并且不需要停机时间。 
+用于 HANA 大型实例的存储使用透明数据加密，因为数据存储在磁盘上。 在 2018 年底之前的部署中，可以对卷进行加密。 如果决定不使用该选项，可以联机对卷进行加密。 将从非加密移动到加密卷是透明的并且不需要停机时间。 
 
-使用 I 类 SKU 时，会加密存储启动 LUN 的卷。 在修订版 3 HANA 大型实例标记中，使用 HANA 大型实例的 II 类 SKU 时，需要使用 OS 方法对启动 LUN 进行加密。 在修订版 4 HANA 大型实例标记中，使用 II 类单位时，默认情况下会对存储启动 LUN 的卷进行静态加密。 
+使用 I 类 HANA 大型实例的 SKU 时，会加密存储启动 LUN 的卷。 在使用 II 类 SKU 的修订版 3 HANA 大型实例缩放单元中，需要使用 OS 方法对启动 LUN 进行加密。 在使用 II 类 SKU 的修订版 4 HANA 大型实例缩放单元中，默认情况下会对存储启动 LUN 的卷进行静态加密。 
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>HANA 大型实例上较大的 HANA 实例的必需设置
 

@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）：用于 Web 服务的 Excel 外接程序 - Azure
-description: 如何在 Excel 中直接使用 Azure 机器学习 Web 服务，而无需编写任何代码。
+description: 如何在 Excel 中直接使用机器学习 Web 服务，而无需编写任何代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 45d9e494b9f885cfa0680bec595aefcd4074d41e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e915f6a713df68dba539d3e5aeb31501eea6ed8e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519994"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688869"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>适用于 Azure 机器学习工作室（经典）Web 服务的 Excel 加载项
+# <a name="excel-add-in-for-machine-learning-studio-classic-web-services"></a>适用于机器学习工作室（经典）Web 服务的 Excel 加载项
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 
@@ -29,7 +30,7 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
  
     > [!NOTE]
     > - 你将看到与该文件相关的 Web 服务列表，并在底部显示“自动预测”复选框。 如果启用自动预测，则每次输入发生更改时，**所有** 服务的预测都将更新。 如果未选中该复选框，则必须单击“全部预测”才能刷新。 若要在服务级别启用自动预测，请转到步骤 6。
-    > - Azure 机器学习 Excel 加载项将调用 Office 加载项应用商店来加载。 如果你的组织禁止访问 Office 加载项应用商店，则加载加载项时将会出现错误。 对于这种情况，请从 Microsoft 365 管理中心部署 Azure 机器学习 Excel 加载项。 然后调用加载项，通过粘贴 URL 和 API 密钥手动添加 Web 服务。
+    > - 机器学习 Excel 加载项将调用 Office 加载项应用商店来加载。 如果你的组织禁止访问 Office 加载项应用商店，则加载加载项时将会出现错误。 对于这种情况，请从 Microsoft 365 管理中心部署机器学习 Excel 加载项。 然后调用加载项，通过粘贴 URL 和 API 密钥手动添加 Web 服务。
 
  
 
@@ -59,13 +60,13 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 4. 查找 **请求 URI** 部分。  复制并保存 URL。
 
 > [!NOTE]
-> 现在可以登录到 [Azure 机器学习 Web 服务](https://services.azureml.net)门户，以获取经典机器学习 Web 服务的 API 密钥。
+> 现在可以登录到[机器学习 Web 服务](https://services.azureml.net)门户，以获取经典机器学习 Web 服务的 API 密钥。
 > 
 > 
 
 **使用新的 Web 服务**
 
-1. 在 [Azure 机器学习 Web 服务](https://services.azureml.net)门户中，单击“Web 服务”，并选择 Web 服务。 
+1. 在[机器学习 Web 服务](https://services.azureml.net)门户中，单击“Web 服务”，然后选择 Web 服务。 
 2. 单击“**使用**”。
 3. 查找 **基本使用信息** 部分。 复制并保存 **主密钥** 和 **请求-响应** URL。
 

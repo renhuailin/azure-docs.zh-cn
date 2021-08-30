@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2021
-ms.openlocfilehash: baa3508917180ebbaccb9ef8863fd4c5bf68ed74
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 07/05/2021
+ms.openlocfilehash: 39f7af59a808fbe0c4141e17cb709c014c91dd4d
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129362"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594888"
 ---
 # <a name="create-and-edit-plans-for-an-azure-container-offer"></a>创建和编辑 Azure 容器产品/服务的计划
 
@@ -31,7 +31,7 @@ ms.locfileid: "108129362"
 计划中的可用操作因计划的当前状态而异。 它们包括：
 
 - “删除草稿”- 如果计划状态为“草稿”。
-- “停止销售计划”- 如果计划状态为“已发布上线”。
+- 如果计划状态为“已发布上线”，则“停止分发”。
 
 ## <a name="edit-a-plan"></a>编辑计划
 

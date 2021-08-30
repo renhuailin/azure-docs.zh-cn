@@ -2,24 +2,22 @@
 title: 增量扩充概念（预览版）
 titleSuffix: Azure Cognitive Search
 description: 在 Azure 存储中缓存 AI 扩充管道的中间内容和增量更改，以保护对现有已处理文档的投资。 此功能目前处于公开预览状态。
-manager: nitinme
-author: Vkurpad
-ms.author: vikurpad
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: f3d9d9481821902246721c5c27ed99451f323ba3
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 7b3d0fc85afbff58641edea332576f921c96b672
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539827"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727778"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 认知搜索中的增量扩充和缓存
 
 > [!IMPORTANT] 
-> 增量扩充目前以公共预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
-> [REST API 预览版](search-api-preview.md)提供此功能。 目前不支持门户或 .NET SDK。
+> 此功能根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公开预览状态。 [预览版 REST API](/rest/api/searchservice/index-preview) 支持此功能。
 
 “增量扩充”是一项针对[技能组](cognitive-search-working-with-skillsets.md)的功能。 它利用 Azure 存储保存扩充管道发出的处理输出，方便在将来的索引器运行中重复使用。 索引器会尽可能重复使用任何仍有效的缓存输出。 
 
@@ -37,12 +35,12 @@ ms.locfileid: "111539827"
 
 ## <a name="indexer-cache"></a>索引器缓存
 
-增量扩充将缓存添加到扩充管道。 索引器将缓存文档破解结果，以及针对每个文档运行每个技能后的输出。 更新技能集后，只会重新运行已更改的技能或下游技能。 更新的结果将写入缓存，文档将在搜索索引或知识存储中更新。
+增量扩充将缓存添加到扩充管道。 索引器将缓存[文档破解](search-indexer-overview.md#document-cracking)结果，以及针对每个文档使用每个技能后的输出。 更新技能集后，只会重新运行已更改的技能或下游技能。 更新的结果将写入缓存，文档将在搜索索引或知识存储中更新。
 
 在物理上，缓存存储在 Azure 存储帐户中的 Blob 容器内。 缓存还使用表存储来保存处理更新的内部记录。 搜索服务中的所有索引可以共享索引器缓存的同一存储帐户。 为每个索引器分配了它所用的容器的唯一不可变缓存标识符。
 
 > [!NOTE]
-> 索引器缓存需要常规用途存储帐户。 有关详细信息，请参阅[不同类型的存储帐户](/storage/common/storage-account-overview#types-of-storage-accounts)。
+> 索引器缓存需要常规用途存储帐户。 有关详细信息，请参阅[不同类型的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。
 
 ## <a name="cache-configuration"></a>缓存配置
 

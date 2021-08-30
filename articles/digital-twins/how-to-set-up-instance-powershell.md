@@ -8,12 +8,12 @@ ms.date: 12/16/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c52cd013d1a5d2cbde0ab88eac24d2fd3ef77d46
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 1e2751c7df1cd3b43ce6c700bc51b51faf95963f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613520"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468684"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-powershell"></a>设置 Azure 数字孪生实例和身份验证 (PowerShell)。
 
@@ -23,8 +23,8 @@ ms.locfileid: "110613520"
 
 本文此版本借助 [Azure PowerShell](/powershell/azure/new-azureps-module-az) 逐个手动完成这些步骤。
 
-* 若要使用 Azure 门户手动完成这些步骤，请参阅本文的门户版本：操作说明：设置实例和身份验证（门户）。
-* 若要使用部署脚本示例完成自动安装，请参阅本文的脚本编写版本：操作说明：设置实例和身份验证（已编写脚本）。
+* 若要使用 Azure 门户手动完成这些步骤，请参阅本文的门户版本：[设置实例和身份验证（门户）](how-to-set-up-instance-portal.md)。
+* 若要使用部署脚本示例完成自动设置，请参阅本文的脚本编写版本：[设置实例和身份验证（已编写脚本）](how-to-set-up-instance-scripted.md)。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 
@@ -145,4 +145,4 @@ New-AzRoleAssignment @Params
 ## <a name="next-steps"></a>后续步骤
 
 请参阅如何使用验证码将客户端应用程序连接到实例：
-* [如何：编写应用验证码](how-to-authenticate-client.md)
+* [编写应用身份验证码](how-to-authenticate-client.md)

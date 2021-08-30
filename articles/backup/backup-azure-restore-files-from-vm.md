@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 76d81aa92643002bc5cd2b8859941af8e7440c87
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: dd1a5ff9fbf85fbce4c4ae7a79b745589b3596e1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421861"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728934"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -111,7 +111,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 | Debian | 7 及更高版本 |
 | Oracle Linux | 6.4 及更高版本 |
 | SLES | 12 及更高版本 |
-| OpenSUSE | 42.2 及更高版本 |
+| openSUSE | 42.2 及更高版本 |
 
 > [!NOTE]
 > 我们发现，在使用 SLES 12 SP4 OS 的计算机上运行文件恢复脚本时会出现一些问题，我们正在与 SLES 团队一起调查这些问题。
@@ -133,13 +133,13 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 如果在访问受限的计算机上运行该脚本，请确保能够访问：
 
-- NSG 中的 `download.microsoft.com` 或 `AzureFrontDoor.FirstParty` 服务标记
-- 恢复服务 URL（地区名称指恢复服务保管库所在的区域）
+- 端口 443（出站）上 NSG 中的 `download.microsoft.com` 或 `AzureFrontDoor.FirstParty` 服务标记
+- 端口 3260（出站）上的恢复服务 URL（地区名称指恢复服务保管库所在的区域）
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com`（适用于 Azure 公共区域）或 NSG 中的 `AzureBackup` 服务标记
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn`（适用于 Azure 中国世纪互联）或 NSG 中的 `AzureBackup` 服务标记
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us`（适用于 Azure 美国政府）或 NSG 中的 `AzureBackup` 服务标记
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de`（适用于 Azure 德国）或 NSG 中的 `AzureBackup` 服务标记
-- 出站端口 53 (DNS)、443、3260
+- 端口 53（出站）上的公共 DNS 解析
 
 > [!NOTE]
 >
@@ -159,6 +159,12 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 另外，请确保你有[用于执行 ILR 脚本的合适计算机](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)，并且它满足 [OS 要求](#step-3-os-requirements-to-successfully-run-the-script)。
 
 ## <a name="step-5-running-the-script-and-identifying-volumes"></a>步骤 5：运行脚本并标识卷
+
+> [!NOTE]
+>
+> 此脚本仅以英语生成，未进行本地化。 因此，它可能需要系统区域设置为英语才能使脚本正确执行
+> 
+
 
 ### <a name="for-windows"></a>对于 Windows
 

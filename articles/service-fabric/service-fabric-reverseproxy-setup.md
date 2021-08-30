@@ -4,12 +4,12 @@ description: 了解如何为 Azure Service Fabric 应用程序设置和配置反
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 1d8f290bf1cad13597376d1d7c27cfaa695f9511
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 78ea7b0ec33fe56ca7a3032f98ad272ce622dc2c
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956629"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113094032"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>在 Azure Service Fabric 中设置和配置反向代理
 反向代理是一种可选的 Azure Service Fabric 服务，有助于在 Service Fabric 群集中运行的微服务发现包含 http 终结点的其他服务，并与之通信。 有关详细信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)。 本文介绍如何在群集中设置和配置反向代理。 
@@ -74,7 +74,7 @@ ms.locfileid: "111956629"
         ...
     }
     ```
-3. 要在反向代理的端口上配置 TLS/SSL 证书，请将证书添加到 Microsoft.ServiceFabric/clusters [资源类型部分](../azure-resource-manager/templates/syntax.md)中的 reverseProxyCertificate 属性。*__* 
+3. 要在反向代理的端口上配置 TLS/SSL 证书，请将证书添加到 Microsoft.ServiceFabric/clusters [资源](/azure/templates/microsoft.servicefabric/clusters?tabs=json#clusterproperties-object)模板中的 reverseProxyCertificate 对象。* 
 
     ```json
     {
@@ -96,6 +96,8 @@ ms.locfileid: "111956629"
         }
     }
     ```
+
+    还可使用群集资源模板中的 reverseProxyCertificateCommonNames 对象指定[反向代理证书的公用名](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample)。
 
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>支持不同于群集证书的反向代理证书
  如果反向代理证书不同于用于保护群集的证书，应将前面指定的证书安装在虚拟机上，并将其添加到访问控制列表 (ACL)，使 Service Fabric 能够访问它。 可在 [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) [资源类型部分](../azure-resource-manager/templates/syntax.md)中执行此操作。 要安装，请将该证书添加到 osProfile。 模板的扩展节可以更新 ACL 中的证书。

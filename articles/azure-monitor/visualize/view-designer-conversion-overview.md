@@ -5,12 +5,12 @@ author: shijatsu
 ms.author: shijain
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 44c838fcb0728797aa3781da0ad98b37cc2c25a5
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: b86e90298bc753cdea5c0fb5f255e88fcc26dc5c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317966"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440749"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Monitor 视图设计器到工作簿的转换指南
 [视图设计器](view-designer.md)是 Azure Monitor 的一项功能，它让你能够创建自定义视图，帮助你通过图表、列表和时间线将 Log Analytics 工作区中的数据可视化。 它们被转换到工作簿以提供一块灵活的画布，用于分析数据以及在 Azure 门户中创建丰富的可视报表。 本文可帮助你将视图设计器转换为工作簿。 
@@ -60,9 +60,7 @@ ms.locfileid: "108317966"
 若要启动新工作簿，可以在“快速启动”下选择“空”模板，或选择顶部导航栏中的“新建”图标。   若要查看模板或返回保存的工作簿，请从库中选择该项，或在搜索栏中搜索名称。
 
 若要保存工作簿，需要使用特定的标题、订阅、资源组和位置保存报表。
-工作簿将自动填充到与 LA 工作区相同的设置并使用相同的订阅和资源组，但用户可以更改这些报表设置。 默认情况下，工作簿将保存到“我的报表”，只能由单个用户访问。 还可以将其直接保存到共享报表，或者在以后共享。
-
-![工作簿保存](media/view-designer-conversion-overview/workbooks-save.png)
+工作簿将自动填充到与 LA 工作区相同的设置并使用相同的订阅和资源组，但用户可以更改这些报表设置。 工作簿是共享资源，需要对父资源组具有写入访问权限才能保存。
 
 ## <a name="next-steps"></a>后续步骤
 

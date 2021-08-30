@@ -3,16 +3,16 @@ title: 使用 HTTPS 接收和响应调用
 description: 使用 Azure 逻辑应用处理来自外部服务的入站 HTTPS 请求
 services: logic-apps
 ms.suite: integration
-ms.reviewers: jonfan, logicappspm
+ms.reviewers: estfan, azla
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 08/04/2021
 tags: connectors
-ms.openlocfilehash: 83ffccb7bae4fabc10796c36e782e72c661bd346
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8efcbac4b2cdd93c2646ad75a024df79cf5f2623
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99063006"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722590"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure 逻辑应用中接收和响应入站 HTTPS 请求
 
@@ -54,7 +54,7 @@ ms.locfileid: "99063006"
 
    ![请求触发器](./media/connectors-native-reqres/request-trigger.png)
 
-   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL** | {无} | 是 | 保存逻辑应用后生成的终结点 URL，用于调用逻辑应用 |
    | **请求正文 JSON 架构** | `schema` | 否 | 描述传入请求正文中的属性和值的 JSON 架构 |
@@ -153,6 +153,23 @@ ms.locfileid: "99063006"
 
 1. 若要检查入站调用是否具有与指定架构匹配的请求正文，请执行以下步骤：
 
+   1. 要强制入站消息具有与架构描述的完全相同的字段，请在架构中添加 `required` 属性并指定必填字段。 添加 `addtionalProperties` 并将值设置为 `false`。 
+   
+      例如，以下架构指定入站消息必须具有 `msg` 字段（而不是任何其他字段）：
+
+      ```json
+      {
+         "properties": {
+           "msg": {
+              "type": "string"
+           }
+         },
+         "type": "object",
+         "required": ["msg"],
+         "additionalProperties": false
+      }
+      ```
+
    1. 在请求触发器的标题栏中，选择省略号按钮 ( **...** )。
 
    1. 在触发器的设置中，开启“架构验证”，然后选择“完成”。
@@ -161,7 +178,7 @@ ms.locfileid: "99063006"
 
 1. 若要添加其他属性，请打开“添加新参数”列表，并选择要添加的参数。
 
-   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **方法** | `method` | 否 | 传入的请求在调用逻辑应用时必须使用的方法 |
    | **相对路径** | `relativePath` | 否 | 逻辑应用终结点 URL 可接受的参数的相对路径 |
@@ -253,7 +270,7 @@ ms.locfileid: "99063006"
 
    下面是有关可在“响应”操作中设置的属性的详细信息。
 
-   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **状态代码** | `statusCode` | 是 | 要在响应中返回的状态代码 |
    | **标头** | `headers` | 否 | 一个 JSON 对象，描述要包含在响应中的一个或多个标头 |

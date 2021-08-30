@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 07/06/2021
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 4197b1a5f047190872d055dc2ba8ccaa11efbe6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 155f3817b913e38e503d0a8fcaa6083922067ebd
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376337"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113487608"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>检索 Azure CDN 的当前 POP IP 列表
 
@@ -36,11 +36,7 @@ REST API 可用于检索 Verizon 入网点 (POP) 服务器的 IP 集。 这些 P
 
 将后端的 IP ACL 配置为仅接受来自 Microsoft 后端 IP 地址空间和 Azure 基础结构服务的 Azure CDN 流量。 
 
-* 来自 Microsoft IPv4 后端 IP 空间的 Azure CDN：147.243.0.0/16
-* 来自 Microsoft IPv6 后端 IP 空间的 Azure CDN：2a01:111:2050::/44
-
-要对 Microsoft Azure CDN 使用服务标记，请使用 Azure Front Door 标记。 Microsoft 服务的 IP 范围和服务标记位于[此处](https://www.microsoft.com/download/details.aspx?id=56519)
-
+将 Azure Front Door [服务标记](../virtual-network/service-tags-overview.md)与 Microsoft Azure CDN 结合使用来配置 Microsoft 的后端 IP 范围。 有关完整列表，请参阅 Microsoft 服务的 [IP 范围和服务标记](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。
 
 ## <a name="typical-use-case"></a>典型用例
 

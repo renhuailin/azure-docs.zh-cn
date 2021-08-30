@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a3c76cb931a5683cf6fd52a806979c430f3f72
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98745628"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580919"
 ---
 # <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>示例：使用 Azure 机器学习构建和部署自定义技能 
 
@@ -31,7 +31,7 @@ ms.locfileid: "98745628"
 > * 从已部署的模型引入输出作为自定义技能
 
 > [!IMPORTANT] 
-> 此技能以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前不支持 .NET SDK。
+> 此技能根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公开预览状态。 [预览版 REST API](/rest/api/searchservice/index-preview) 支持此技能。
 
 ## <a name="prerequisites"></a>先决条件
 

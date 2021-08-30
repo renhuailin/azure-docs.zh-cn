@@ -7,17 +7,17 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: d612b796f85c9eaab1600c55cde7e79acb49f352
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec036878cf9412bcc612917fa7a104db3a2e8dd0
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87292933"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112240322"
 ---
-# <a name="go-live"></a>上线
+# <a name="go-live-api"></a>上线 API
 
 > [!NOTE]
-> 云合作伙伴门户 API 已与合作伙伴中心集成并在其中继续工作。 本次转换带来了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保转换到合作伙伴中心后代码继续正常工作。 CPP API 应当仅用于转换到合作伙伴中心之前已经集成的现有产品；新产品应使用合作伙伴中心提交 API。
+> 云合作伙伴门户 API 已与合作伙伴中心集成，并将继续在其中运行。 本次转换带来了少量更改。 查看[云合作伙伴门户 API 参考](./cloud-partner-portal-api-overview.md)中列出的更改，确保转换到合作伙伴中心后代码继续正常工作。 CPP API 应当仅用于转换到合作伙伴中心之前已经集成的现有产品；新产品应使用合作伙伴中心提交 API。
 
 此 API 启动将应用投入生产的过程。 这通常是一项长期操作。 此调用使用[发布](./cloud-partner-portal-api-publish-offer.md) API 操作返回的通知电子邮件列表。
 
@@ -26,7 +26,7 @@ ms.locfileid: "87292933"
 ## <a name="uri-parameters"></a>URI 参数
 --------------
 
-|  **名称**      |   **说明**                                                           | **Data type** |
+|  **名称**      |   **说明**                                                           | **数据类型** |
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | 要检索的产品/服务的发布者标识符，例如 `contoso`       |  字符串       |
 | offerId        | 要检索的产品/服务的产品/服务标识符                                   |  字符串       |

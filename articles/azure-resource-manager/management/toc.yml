@@ -65,6 +65,8 @@
                   href: ../../app-service/manage-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Azure 自动化
                   href: ../../automation/automation-managing-data.md?toc=/azure/azure-resource-manager/management/toc.json#geo-replication-in-azure-automation
+                - name: Azure 备份（恢复服务保管库）
+                  href: ../../backup/azure-backup-move-vaults-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Azure 批处理
                   href: ../../batch/account-move.md?toc=/azure/azure-resource-manager/management/toc.json
                 - name: Azure 认知搜索
@@ -171,7 +173,7 @@
       href: /dotnet/api/microsoft.azure.management.resourcemanager
     - name: Java
       href: /java/api/com.microsoft.azure.management.resources
-    - name: Javascript
+    - name: JavaScript
       href: /javascript/api/overview/azure/resources
     - name: Python
       href: /python/api/overview/azure/resources

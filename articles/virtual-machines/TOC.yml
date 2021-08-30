@@ -1242,7 +1242,7 @@
               href: ../backup/backup-managed-disks.md?context=/azure/virtual-machines/context/context
             - name: 用 Azure 磁盘备份还原磁盘
               href: ../backup/restore-managed-disks.md?context=/azure/virtual-machines/context/context
-        - name: 磁盘的备份和灾难恢复
+        - name: 托管磁盘的备份和灾难恢复
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 拍摄磁盘快照 - CLI
           href: ./linux/snapshot-copy-managed-disk.md
@@ -1250,6 +1250,8 @@
           href: ./windows/snapshot-copy-managed-disk.md
         - name: 备份非托管磁盘
           href: ./linux/incremental-snapshots.md
+        - name: 非托管磁盘的备份和灾难恢复
+          href: page-blobs-backup-and-disaster-recovery.md
     - name: 临时 OS 磁盘
       href: ephemeral-os-disks.md
     - name: 迁移和转换

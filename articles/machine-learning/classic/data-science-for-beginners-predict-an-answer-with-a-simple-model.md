@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: c6d78b10b98abe33744673459b3d31d8941aac89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d0617412fcfef3846670d5ff5e957dad8e98ee8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520402"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742113"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>使用简单的模型预测答案
 
@@ -125,8 +125,8 @@ ms.locfileid: "100520402"
 
 我们今天讨论了如何执行线性回归并使用数据进行了预测。
 
-务必观看 Microsoft Azure 机器学习工作室（经典）“适合初学者的数据科学”中的其他视频。
+请务必观看机器学习工作室（经典）的“适合初学者的数据科学”中的其他视频。
 
 ## <a name="next-steps"></a>后续步骤
 * [使用机器学习工作室（经典）尝试第一个数据科学试验](create-experiment.md)
-* [在 Microsoft Azure 上获取机器学习简介](../overview-what-is-azure-ml.md)
+* [获取 Azure 机器学习简介](../overview-what-is-azure-machine-learning.md)

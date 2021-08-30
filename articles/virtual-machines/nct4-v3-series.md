@@ -7,23 +7,23 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: e023eacd173ce23e3f88fa97f8c0127132c953ea
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c53d875e35e77d782ac2897bbe2a1a356f8ac5a2
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744526"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359580"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 系列 
 
-NCasT4_v3 系列虚拟机采用 [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 和 AMD EPYC 7V12(Rome) CPU。 VM 配置最多 4 个 NVIDIA T4 GPU（每个具有 16 GB 的内存）、多达 64 个非多线程 AMD EPYC 7V12 (Rome) 处理器核心，以及 440 GiB 的系统内存。 这些虚拟机非常适合用于部署 AI 服务（例如对用户生成的请求的实时推断）或使用 NVIDIA 的 GRID 驱动程序和虚拟 GPU 技术的交互式图形和可视化工作负载。 基于 CUDA、TensorRT、Caffe、ONNX 和其他框架的标准 GPU 计算工作负载，或基于 OpenGL 和 DirectX 的 GPU 加速图形应用程序，可以在 NCasT4_v3 系列上以经济实惠的方式部署，并与用户非常接近。
+NCasT4_v3 系列虚拟机采用 [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 和 AMD EPYC 7V12(Rome) CPU。 VM 最多具有 4 个 NVIDIA T4 GPU，其中每个 GPU 具有 16 GB 内存，多达 64 个非多线程 AMD EPYC 7V12 (Rome) 处理器内核（基础频率为 2.45 GHz，全核峰值频率为 3.1 GHz，单核峰值频率为 3.3 GHz）和 440 GiB 系统内存。 这些虚拟机非常适合用于部署 AI 服务（例如对用户生成的请求的实时推断）或使用 NVIDIA 的 GRID 驱动程序和虚拟 GPU 技术的交互式图形和可视化工作负载。 基于 CUDA、TensorRT、Caffe、ONNX 和其他框架的标准 GPU 计算工作负载，或基于 OpenGL 和 DirectX 的 GPU 加速图形应用程序，可以在 NCasT4_v3 系列上以经济实惠的方式部署，并与用户非常接近。
 
 <br>
 
 [ACU](acu.md)：230-260<br>
 [高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
-[超级磁盘](disks-types.md#ultra-disk)：支持（[详细了解](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)可用性、使用情况和性能） <br>
+[超级磁盘](disks-types.md#ultra-disk)：受支持（[详细了解](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)可用性、使用情况和性能） <br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>

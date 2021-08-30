@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: feb6462fef89a73a8e7a1d0df6808f0c58817b35
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: a959a7b424a855f47a2e128b5c77727d21a9e0aa
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982153"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449770"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps"></a>为 Azure 静态 Web 应用设置本地开发
 
-发布到云时，Azure Static Web Apps 站点具有许多协同工作的服务，就像它们是同一个应用程序一样。 这些服务包括：
+发布到云时，Azure Static Web Apps 站点会将许多协同工作的服务链接在一起，就像它们是同一个应用程序一样。 这些服务包括：
 
 - 静态 Web 应用
 - Azure Functions API
@@ -63,6 +63,9 @@ ms.locfileid: "111982153"
 - 现有 Azure Static Web Apps 站点：如果你没有此站点，请从 [vanilla-api](https://github.com/staticwebdev/vanilla-api/generate?return_to=/staticwebdev/vanilla-api/generate) 入门应用开始。
 - 使用 npm 的 [Node.js](https://nodejs.org)：运行 [Node.js LTS](https://nodejs.org) 版本，其中包括对 [npm](https://www.npmjs.com/) 的访问权限。
 - [Visual Studio Code](https://code.visualstudio.com/)：用于调试 API 应用程序，但 CLI 不需要使用。
+
+> [!NOTE]
+> 若要[在本地使用 API](add-api.md#run-the-frontend-and-api-locally) 运行 `swa`，需要 Azure Functions Core Tools。
 
 ## <a name="get-started"></a>入门
 

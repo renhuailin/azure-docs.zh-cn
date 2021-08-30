@@ -3,12 +3,12 @@ title: 充当事件网格源的 Azure 媒体服务
 description: 介绍为 Azure 事件网格中的媒体服务事件提供的属性
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b5772a2332e1864d0b8df0d4e102006b29b6a61e
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: c3b40f1a40cd0a5ee611a00f2f0361a8a522d3ad
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120106"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014571"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>充当事件网格源的 Azure 媒体服务
 
@@ -28,8 +28,9 @@ ms.locfileid: "106120106"
 | Microsoft.Media.JobScheduled| 获取当作业转换为已计划状态时的事件。 |
 | Microsoft.Media.JobProcessing| 获取当作业转换为正在处理状态时的事件。 |
 | Microsoft.Media.JobCanceling| 获取当作业转换为正在取消状态时的事件。 |
+| Microsoft.Media.JobFinished| 获取当作业转换为已完成状态时的事件。 这是包含作业输出的最终状态。|
 | Microsoft.Media.JobCanceled| 获取当作业转换为已取消状态时的事件。 这是包含作业输出的最终状态。|
-| Microsoft.Media.JobErrored | 获取当作业转换为错误状态时的事件。 这是包含作业输出的最终状态。|
+| Microsoft.Media.JobErrored| 获取当作业转换为错误状态时的事件。 这是包含作业输出的最终状态。|
 
 请参阅后面的[架构示例](#event-schema-examples)。
 
@@ -285,8 +286,6 @@ ms.locfileid: "106120106"
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
-# <a name="event-grid-event-schema"></a>[事件网格事件架构](#tab/event-grid-event-schema)
-
 以下示例展示了 **JobOutputStateChange** 事件的架构：
 
 ```json
@@ -394,115 +393,6 @@ ms.locfileid: "106120106"
   }
 ]
 ```
-
-# <a name="cloud-event-schema"></a>[云事件架构](#tab/cloud-event-schema)
-
-以下示例展示了 **JobOutputStateChange** 事件的架构：
-
-```json
-[{
-  "source": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
-  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
-  "type": "Microsoft.Media.JobOutputStateChange",
-  "time": "2018-10-12T16:25:56.0242854",
-  "id": "dde85f46-b459-4775-b5c7-befe8e32cf90",
-  "data": {
-    "previousState": "Processing",
-    "output": {
-      "@odata.type": "#Microsoft.Media.JobOutputAsset",
-      "assetName": "output-7640689F",
-      "error": null,
-      "label": "VideoAnalyzerPreset_0",
-      "progress": 100,
-      "state": "Finished"
-    },
-    "jobCorrelationData": {
-      "testKey1": "testValue1",
-      "testKey2": "testValue2"
-    }
-  },
-  "specversion": "1.0"
-}]
-```
-
-### <a name="joboutputscheduled-joboutputprocessing-joboutputfinished-joboutputcanceling-joboutputcanceled-joboutputerrored"></a>JobOutputScheduled、JobOutputProcessing、JobOutputFinished、JobOutputCanceling、JobOutputCanceled、JobOutputErrored
-
-对于每个 JobOutput 状态更改，示例架构类似于以下内容：
-
-```json
-[{
-  "source": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
-  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
-  "type": "Microsoft.Media.JobOutputProcessing",
-  "time": "2018-10-12T16:12:18.0061141",
-  "id": "f1fd5338-1b6c-4e31-83c9-cd7c88d2aedb",
-  "data": {
-    "previousState": "Scheduled",
-    "output": {
-      "@odata.type": "#Microsoft.Media.JobOutputAsset",
-      "assetName": "output-7640689F",
-      "error": null,
-      "label": "VideoAnalyzerPreset_0",
-      "progress": 0,
-      "state": "Processing"
-    },
-    "jobCorrelationData": {
-      "testKey1": "testValue1",
-      "testKey2": "testValue2"
-    }
-  },
-  "specversion": "1.0"
-}]
-```
-### <a name="joboutputprogress"></a>JobOutputProgress
-
-示例架构类似如下：
-
- ```json
-[{
-  "source": "/subscriptions/<subscription-id>/resourceGroups/belohGroup/providers/Microsoft.Media/mediaservices/<account-name>",
-  "subject": "transforms/VideoAnalyzerTransform/jobs/job-5AB6DE32",
-  "type": "Microsoft.Media.JobOutputProgress",
-  "time": "2018-12-10T18:20:12.1514867",
-  "id": "00000000-0000-0000-0000-000000000000",
-  "data": {
-    "jobCorrelationData": {
-      "TestKey1": "TestValue1",
-      "testKey2": "testValue2"
-    },
-    "label": "VideoAnalyzerPreset_0",
-    "progress": 86
-  },
-  "specversion": "1.0"
-}]
-```
-
-### <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
-
-以下示例显示 **LiveEventConnectionRejected** 事件的架构： 
-
-```json
-[
-  {
-    "source": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaServices/<account-name>",
-    "subject": "/LiveEvents/MyLiveEvent1",
-    "type": "Microsoft.Media.LiveEventConnectionRejected",
-    "time": "2018-01-16T01:57:26.005121Z",
-    "id": "b303db59-d5c1-47eb-927a-3650875fded1",
-    "data": { 
-      "streamId":"Mystream1",
-      "ingestUrl": "http://abc.ingest.isml",
-      "encoderIp": "118.238.251.xxx",
-      "encoderPort": 52859,
-      "resultCode": "MPE_INGEST_CODEC_NOT_SUPPORTED"
-    },
-    "specversion": "1.0"
-  }
-]
-```
-
----
-
 
 数据对象具有以下属性：
 
@@ -934,21 +824,25 @@ ms.locfileid: "106120106"
     "topic": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
     "subject": "liveEvent/mle1",
     "eventType": "Microsoft.Media.LiveEventIngestHeartbeat",
-    "eventTime": "2018-08-07T23:17:57.4610506",
+    "eventTime": "2021-05-14T23:50:00.324",
     "id": "7f450938-491f-41e1-b06f-c6cd3965d786",
     "data": {
-      "trackType": "audio",
-      "trackName": "audio",
-      "bitrate": 160000,
-      "incomingBitrate": 155903,
-      "lastTimestamp": "15336837535253637",
-      "timescale": "10000000",
-      "overlapCount": 0,
-      "discontinuityCount": 0,
-      "nonincreasingCount": 0,
-      "unexpectedBitrate": false,
-      "state": "Running",
-      "healthy": true
+      "trackType":"video",
+      "trackName":"video",
+      "bitrate":2500000,
+      "incomingBitrate":2462597,
+      "lastTimestamp":"106999",
+      "timescale":"1000",
+      "overlapCount":0,
+      "discontinuityCount":0,
+      "nonincreasingCount":0,
+      "unexpectedBitrate":false,
+      "state":"Running",
+      "healthy":true,
+      "lastFragmentArrivalTime":"2021-05-14T23:50:00.324",
+      "ingestDriftValue":"0",
+      "transcriptionState":"",
+      "transcriptionLanguage":""
     },
     "dataVersion": "1.0",
     "metadataVersion": "1"
@@ -1006,6 +900,11 @@ ms.locfileid: "106120106"
 | `unexpectedBitrate` | bool | 在过去 20 秒，预期和实际比特率之差是否超过了允许的限制。 当且仅当 incomingBitrate >= 2* 比特率，或者 incomingBitrate <= 比特率/2，或者 IncomingBitrate = 0 时，此属性的值才为 true。 |
 | `state` | string | 直播活动的状态。 |
 | `healthy` | bool | 指示引入是否正常（基于计数和标志判断）。 如果 overlapCount = 0 并且 discontinuityCount = 0 并且 nonIncreasingCount = 0 并且 unexpectedBitrate = false，则 Healthy 为 true。 |
+| `lastFragmentArrivalTime` | string |片段到达引入终结点的最后一个时间戳 (UTC)。 示例日期格式为“2020-11-11 12:12:12:888999” |
+| `ingestDriftValue` | string | 指示最后一分钟内传入音频或视频数据的延迟速度，单位为秒/分钟。 如果在最后一分钟内数据到达实时事件的速度比预期的慢，则该值大于零；如果数据没有延迟到达，则为零；如果没有收到音频或视频数据，则为“n/a”。 例如，如果有一个贡献编码器发送实时内容，并且由于处理问题或网络延迟而速度变慢，则它可能在一分钟内只能提供总共 58 秒的音频或视频。 这将报告为偏移 2 秒/分钟。 如果编码器能够跟上并且每分钟发送全部 60 秒或更多数据，则此值将报告为 0。 如果与编码器断开连接或不连续，该值可能仍显示为 0，因为它不考虑数据（仅限在时间戳中延迟的数据）中断。|
+| `transcriptionState` | string | 如果启用了实时听录，则音轨信号的值为“开”，否则将出现一个空字符串。 此状态仅适用于实时听录的“音频”轨道类型。 所有其他轨道的值都为空。|
+| `transcriptionLanguage` | string  | 听录语言的语言代码（采用 BCP-47 格式）。 例如“de-de”表示德语（德国）。 对于视频轨道信号，或在关闭了实时听录时，该值为空。 |
+
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -1088,7 +987,7 @@ ms.locfileid: "106120106"
 | `subject` | string | 媒体服务帐户下媒体服务通道的资源路径。 连接主题和使用者可以获得作业的资源 ID。 |
 | `eventType` | string | 此事件源的一个注册事件类型。 例如，“Microsoft.Media.JobStateChange”。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
+| `id` | string | 事件的唯一标识符。 |
 | `data` | object | 媒体服务事件数据。 |
 | `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
@@ -1103,7 +1002,7 @@ ms.locfileid: "106120106"
 | `subject` | string | 媒体服务帐户下媒体服务通道的资源路径。 连接主题和使用者可以获得作业的资源 ID。 |
 | `type` | string | 此事件源的一个注册事件类型。 例如，“Microsoft.Media.JobStateChange”。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
+| `id` | string | 事件的唯一标识符。 |
 | `data` | object | 媒体服务事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 

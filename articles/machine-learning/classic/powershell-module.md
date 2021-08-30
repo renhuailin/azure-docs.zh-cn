@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）：PowerShell 模块 - Azure
-description: 使用 PowerShell 创建和管理 Azure 机器学习工作室（经典）工作区、实验和 Web 服务等。
+description: 使用 PowerShell 创建和管理机器学习工作室（经典）工作区、实验和 Web 服务等。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -8,17 +8,18 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 684299d61ba6e9e27e16a162c9f226a7ea3b5f58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 662a550145ece8821a8cdbed0533696b265f7952
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518005"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690008"
 ---
-# <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典）PowerShell 模块
+# <a name="powershell-modules-for-machine-learning-studio-classic"></a>适用于机器学习工作室（经典）的 PowerShell 模块
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 使用 PowerShell 模块，可采用编程方式管理工作室（经典）资源和资产，例如工作区、数据集和 Web 服务。
 
@@ -26,7 +27,7 @@ ms.locfileid: "100518005"
 
 * 于 2018 年发布的 [Azure PowerShell Az](#az-rm)，包含 AzureRM 的所有功能，尽管使用不同的 cmdlet 名称
 * 2016 年发布的 [AzureRM](#az-rm) 已替换为 PowerShell Az
-* 于 2016 年发布的 [Azure 机器学习 PowerShell（经典）](#classic)
+* 于 2016 年发布的[机器学习 PowerShell（经典）](#classic)
 
 虽然这些 PowerShell 模块有一些相似之处，但每个模块都是针对特定场景设计的。 本文介绍了 PowerShell 模块之间的差异，帮助你决定选择哪些模块。  
 

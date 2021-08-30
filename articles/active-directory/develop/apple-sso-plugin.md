@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/15/2020
+ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
-ms.custom: aaddev
-ms.openlocfilehash: eb9a6e1f3044492b09dac3fb3168a9bd26aeff0f
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: 5b490ff71253739779089da92c87532f7abbdbcc
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110494605"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418527"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>适用于 Apple 设备的 Microsoft 企业 SSO 插件（预览版）
 
@@ -118,23 +118,91 @@ macOS 设置：
 
 采用以下参数为不使用 Microsoft 标识平台库的应用配置 Microsoft 企业 SSO 插件。
 
-若要提供特定应用列表，请使用以下参数：
+#### <a name="enable-sso-for-all-managed-apps"></a>为所有托管应用启用 SSO
+
+- 键：`Enable_SSO_On_All_ManagedApps`
+- 类型：`Integer`
+- 值：1 或 0。
+
+如果启用此标志（将其值设置为 `1`），则不在 `AppBlockList` 中的所有 MDM 托管应用都可以参与 SSO。
+
+#### <a name="enable-sso-for-specific-apps"></a>为特定应用启用 SSO
 
 - 键：`AppAllowList`
 - 类型：`String`
 - 值：允许加入 SSO 的应用程序的应用程序捆绑包 ID 的逗号分隔列表。
 - **示例**：`com.contoso.workapp, com.contoso.travelapp`
 
-若要提供前缀列表，请使用以下参数：
+>[!NOTE]
+> 默认允许 Safari 和 Safari 视图服务参与 SSO。 可以通过在 AppBlockList 中添加 Safari 和 Safari 视图服务的捆绑 ID 将其配置为不参与 SSO。 iOS 捆绑 ID：[com.apple.mobilesafari, com.apple.SafariViewService]；macOS 捆绑 ID：com.apple.Safari
+
+#### <a name="enable-sso-for-all-apps-with-a-specific-bundle-id-prefix"></a>为具有特定捆绑 ID 前缀的所有应用启用 SSO
 - 键：`AppPrefixAllowList`
 - 类型：`String`
 - 值：允许加入 SSO 的应用程序的应用程序包 ID 前缀的逗号分隔列表。 此参数会使所有以特定前缀开头的应用都可加入 SSO。
 - **示例**：`com.contoso., com.fabrikam.`
 
-MDM 管理员允许[同意的应用](./application-consent-experience.md)加入 SSO，从而可以通过无提示的方式为最终用户获取令牌。 因此，仅将受信任的应用程序添加到允许列表。 
+#### <a name="disable-sso-for-specific-apps"></a>为特定应用禁用 SSO
 
->[!NOTE]
-> 无需将使用 MSAL 或 ASWebAuthenticationSession 的应用程序添加到可加入 SSO 的应用列表。 这些应用程序默认处于启用状态。 
+- 键：`AppBlockList`
+- 类型：`String`
+- 值：不允许其参与 SSO 的应用程序的逗号分隔应用程序捆绑 ID 列表。
+- **示例**：`com.contoso.studyapp, com.contoso.travelapp`
+
+若要为 Safari 或 Safari 视图服务禁用 SSO，必须通过将其捆绑 ID 添加到 `AppBlockList` 来显式禁用： 
+
+- iOS：`com.apple.mobilesafari`、`com.apple.SafariViewService`
+- macOS：`com.apple.Safari`
+
+#### <a name="enable-sso-through-cookies-for-a-specific-application"></a>对特定应用程序启用通过 Cookie 进行 SSO
+
+为具有高级网络设置的某些应用启用 SSO 时，这些应用可能会遇到意外的问题。 例如，可能有错误消息指出网络请求已取消或中断。
+
+如果即使在你通过其他设置启用 SSO 之后，用户在登录到某个应用程序时也会遇到问题，请尝试将该应用程序添加到 `AppCookieSSOAllowList` 以解决问题。
+
+- 键：`AppCookieSSOAllowList`
+- 类型：`String`
+- 值：可加入 SSO 的应用程序的应用程序包 ID 前缀的逗号分隔列表。 以列出的前缀开头的所有应用都允许加入 SSO。
+- **示例**：`com.contoso.myapp1, com.fabrikam.myapp2`
+
+其他要求：若要使用 `AppCookieSSOAllowList` 为应用程序启用 SSO，还必须添加其捆绑 ID 前缀 `AppPrefixAllowList`。
+
+请仅对发生意外登录失败的应用程序尝试此配置。 
+
+#### <a name="summary-of-keys"></a>键的摘要
+
+| 键 | 类型 | 值 |
+|--|--|--|
+| `Enable_SSO_On_All_ManagedApps` | Integer | `1` 表示为所有托管应用启用 SSO，`0` 表示为所有托管应用禁用 SSO。 |
+| `AppAllowList` | 字符串<br/>（逗号分隔的列表） | 允许其参与 SSO 的应用程序的捆绑 ID。 |
+| `AppBlockList` | 字符串<br/>（逗号分隔的列表） | 不允许其参与 SSO 的应用程序的捆绑 ID。 |
+| `AppPrefixAllowList` | 字符串<br/>（逗号分隔的列表） | 允许其参与 SSO 的应用程序的捆绑 ID 前缀。 |
+| `AppCookieSSOAllowList` | 字符串<br/>（逗号分隔的列表） | 允许其加入 SSO 的、但使用特殊网络设置并且在使用其他设置时会出现 SSO 问题的应用程序的捆绑 ID 前缀。 添加到 `AppCookieSSOAllowList` 的应用也必须添加到 `AppPrefixAllowList`。 |
+
+#### <a name="settings-for-common-scenarios"></a>常用方案的设置
+
+- 方案：我想要为大部分而不是所有托管应用程序启用 SSO。
+
+    | 键 | 值 |
+    | -------- | ----------------- |
+    | `Enable_SSO_On_All_ManagedApps` | `1` |
+    | `AppBlockList` | 要阻止其参与 SSO 的应用的捆绑 ID（逗号分隔的列表）。 |
+
+- 方案：我想要为 Safari 禁用 SSO（默认已启用），但要为所有托管应用启用 SSO。
+
+    | 键 | 值 |
+    | -------- | ----------------- |
+    | `Enable_SSO_On_All_ManagedApps` | `1` |
+    | `AppBlockList` | 要阻止其参与 SSO 的 Safari 应用的捆绑 ID（逗号分隔的列表）。<br/><li>对于 iOS：`com.apple.mobilesafari`、`com.apple.SafariViewService`<br/><li>对于 macOS：`com.apple.Safari` |
+
+- 方案：我想要对所有托管应用以及少量的非托管应用启用 SSO，但要为其他几个应用禁用 SSO。
+
+    | 键 | 值 |
+    | -------- | ----------------- |
+    | `Enable_SSO_On_All_ManagedApps` | `1` |
+    | `AppAllowList` | 要允许其参与 SSO 的应用的捆绑 ID（逗号分隔的列表）。 |
+    | `AppBlockList` | 要阻止其参与 SSO 的应用的捆绑 ID（逗号分隔的列表）。 |
+
 
 ##### <a name="find-app-bundle-identifiers-on-ios-devices"></a>在 iOS 设备上查找应用程序包标识符
 
@@ -192,21 +260,6 @@ Microsoft 企业 SSO 插件通过将共享凭据附加到来自允许的应用�
 - **值**：1 或 0
 
 建议启用此标志，跨所有应用获得一致的体验。 此项默认禁用。 
-
-#### <a name="enable-sso-through-cookies-for-a-specific-application"></a>对特定应用程序启用通过 Cookie 进行 SSO
-
-一些应用可能与 SSO 扩展不兼容。 具体而言，具有高级网络设置的应用在启用进行 SSO 时可能会遇到意外问题。 例如，你可能会看到指示网络请求被取消或中断的错误。 
-
-如果在使用[不使用 MSAL 的应用程序](#applications-that-dont-use-msal)部分中所述的方法登录时遇到问题，请尝试替代配置。 使用以下这些参数配置插件：
-
-- 键：`AppCookieSSOAllowList`
-- 类型：`String`
-- 值：可加入 SSO 的应用程序的应用程序包 ID 前缀的逗号分隔列表。 以列出的前缀开头的所有应用都允许加入 SSO。
-- **示例**：`com.contoso.myapp1, com.fabrikam.myapp2`
-
-使用此设置启用了 SSO 的应用程序需要同时添加到 `AppCookieSSOAllowList` 和 `AppPrefixAllowList`。
-
-请仅对发生意外登录失败的应用程序尝试此配置。 
 
 #### <a name="use-intune-for-simplified-configuration"></a>使用 Intune 简化配置
 

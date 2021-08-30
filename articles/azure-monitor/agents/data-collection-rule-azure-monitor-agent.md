@@ -4,22 +4,22 @@ description: 介绍如何使用 Azure Monitor 代理创建数据收集规则以�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/16/2021
-ms.openlocfilehash: c1c0c7c2bf312b636c5ed16223a6bf8865d44fd1
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.date: 07/16/2021
+ms.openlocfilehash: 749caf37ee09f9dc794dee60c6d4a5b93da43c6e
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112070919"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114386310"
 ---
-# <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>为 Azure Monitor 代理（预览版）配置数据收集
+# <a name="configure-data-collection-for-the-azure-monitor-agent"></a>为 Azure Monitor 代理配置数据收集
 
 数据收集规则 (DCR) 定义传入 Azure Monitor 的数据，并指定应发送数据的位置。 本文介绍如何使用 Azure Monitor 代理创建数据收集规则以从虚拟机收集数据。
 
-有关数据收集规则的完整说明，请参阅 [Azure Monitor 中的数据收集规则（预览版）](data-collection-rule-overview.md)。
+有关数据收集规则的完整说明，请参阅 [Azure Monitor 中的数据收集规则](data-collection-rule-overview.md)。
 
 > [!NOTE]
-> 本文介绍如何使用 Azure Monitor 代理（当前为预览版）为虚拟机配置数据。 请参阅 [Azure Monitor 代理概述](agents-overview.md)，了解已正式发布的代理的说明以及如何使用它们收集数据。
+> 本文介绍如何仅使用 Azure Monitor 代理为虚拟机配置数据。
 
 ## <a name="data-collection-rule-associations"></a>数据收集规则关联
 
@@ -36,7 +36,9 @@ ms.locfileid: "112070919"
 可以使用 Azure 门户创建数据收集规则并将订阅中的虚拟机关联到该规则。 系统会自动安装 Azure Monitor 代理，并为尚未安装它的任何虚拟机创建托管标识。
 
 > [!IMPORTANT]
-> 目前存在一个已知问题，即如果数据收集规则在已具有用户分配的托管标识的虚拟机上创建托管标识，则会禁用用户分配的标识。
+> 除了现有的用户分配的标识（如果有）外，使用门户创建数据收集规则也会在目标资源上启用系统分配的托管标识。 对于现有应用程序，除非它们在请求中指定用户分配的标识，否则计算机将默认使用系统分配的标识。 [了解详细信息](../../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)
+
+                    
 
 > [!NOTE]
 > 如果要将数据发送到 Log Analytics，则必须在 Log Analytics 工作区所在的同一区域中创建数据收集规则。 该规则可关联到其他受支持的区域中的计算机。
@@ -115,12 +117,12 @@ ms.locfileid: "112070919"
 3. 使用 [REST API](/rest/api/monitor/datacollectionruleassociations/create#examples) 创建每个虚拟机到数据收集规则的关联。
 
 
-## <a name="create-association-using-resource-manager-template"></a>使用资源管理器模板创建关联
+## <a name="create-rule-and-association-using-resource-manager-template"></a>使用资源管理器模板创建规则和关联
 
 > [!NOTE]
 > 如果要将数据发送到 Log Analytics，则必须在 Log Analytics 工作区所在的同一区域中创建数据收集规则。 该规则可关联到其他受支持的区域中的计算机。
 
-可以使用资源管理器模板在 Azure 虚拟机或启用了 Azure Arc 的服务器之间创建关联。 请参阅[用于 Azure Monitor 中的数据收集规则的资源管理器模板示例](./resource-manager-data-collection-rules.md)以了解示例模板。
+可以使用资源管理器模板为 Azure 虚拟机或已启用 Azure Arc 的服务器创建规则和关联。 请参阅[用于 Azure Monitor 中的数据收集规则的资源管理器模板示例](./resource-manager-data-collection-rules.md)以了解示例模板）。
 
 
 ## <a name="manage-rules-and-association-using-powershell"></a>使用 PowerShell 管理规则和关联

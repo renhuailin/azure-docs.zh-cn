@@ -7,16 +7,19 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 4ad0fbacdfe8b6205dd32ecd75e5291b504adcac
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: de908a8f29d85aea1954415ba5c9793349837c5f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407770"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733568"
 ---
 # <a name="back-up-and-restore-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>备份并还原已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
+
+> [!IMPORTANT]
+> 当前预览版中不支持备份和还原已启用 Azure Arc 的超大规模 PostgreSQL 服务器。
 
 [!INCLUDE [azure-arc-common-prerequisites](../../../includes/azure-arc-common-prerequisites.md)]
 

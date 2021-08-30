@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 90e1b951cd3990df3615cdcf33a4d659f693b5ee
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e7ec54a85c2b5f964327d7d60c9f856e70320225
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064875"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467855"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central 设备开发指南
 
@@ -27,7 +27,7 @@ IoT Central 应用程序使你可以在设备整个生命周期内监视和管�
 - “属性”是设备报告给 IoT Central 的状态值。 例如，设备的当前固件版本。 你还可以拥有 IoT Central 可以在设备上更新的可写属性，例如目标温度。
 - “命令”由 IoT Central 进行调用以控制设备的行为。 例如，IoT Central 应用程序可能会调用命令来重启设备。
 
-解决方案生成器负责在 IoT Central Web UI 中配置仪表板和视图，以直观呈现遥测、管理属性和调用命令。
+解决方案生成器负责在 IoT Central Web UI 中配置仪表板和设备视图，以直观呈现遥测、管理属性和调用命令。
 
 ## <a name="types-of-device"></a>设备类型
 
@@ -85,7 +85,7 @@ IoT Central 设备模板包括一个模型，用于指定该类型的设备应�
 
 每个模型都具有唯一的设备孪生模型标识符 (DTMI)，如 `dtmi:com:example:Thermostat;1`。 当设备连接到 IoT Central 时，它会发送其实现的模型的 DTMI。 然后 IoT Central 可以将正确的设备模板与设备相关联。
 
-[IoT 即插即用](../../iot-pnp/overview-iot-plug-and-play.md)定义设备在实现 DTDL 模型时应遵循的一组约定。
+[IoT 即插即用](../../iot-develop/overview-iot-plug-and-play.md)定义设备在实现 DTDL 模型时应遵循的一组约定。
 
 [Azure IoT 设备 SDK](#languages-and-sdks) 包括对 IoT 即插即用约定的支持。
 
@@ -100,10 +100,10 @@ IoT Central 设备模板包括一个模型，用于指定该类型的设备应�
 
 DTDL 模型可以是非组件或多组件模型 ：
 
-- 非组件模型：简单的模型不使用嵌入或级联的组件。 所有遥测、属性和命令都定义为单个默认组件。 有关示例，请参阅[恒温器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)模型。
-- 多组件模型。 包含两个或以上组件的更为复杂的模型。 这些组件包括单个默认组件以及一个或多个附加嵌套组件。 有关示例，请参阅[温度控制器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)模型。
+- 非组件模型：简单的模型不使用嵌入或级联的组件。 所有遥测、属性和命令都定义为单个根组件。 有关示例，请参阅[恒温器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)模型。
+- 多组件模型。 包含两个或以上组件的更为复杂的模型。 这些组件包括单个根组件以及一个或多个附加嵌套组件。 有关示例，请参阅[温度控制器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)模型。
 
-若要了解详细信息，请参阅 [IoT 即插即用建模指南](../../iot-pnp/concepts-modeling-guide.md)
+若要了解详细信息，请参阅 [IoT 即插即用建模指南](../../iot-develop/concepts-modeling-guide.md)
 
 ### <a name="conventions"></a>约定
 
@@ -119,7 +119,7 @@ DTDL 模型可以是非组件或多组件模型 ：
 
 若要了解有关设备与 IoT Central 交换的 JSON 消息格式的详细信息，请参阅[遥测、属性和命令有效负载](concepts-telemetry-properties-commands.md)。
 
-若要了解有关 IoT 即插即用约定的详细信息，请参阅 [IoT 即插即用约定](../../iot-pnp/concepts-convention.md)。
+若要了解有关 IoT 即插即用约定的详细信息，请参阅 [IoT 即插即用约定](../../iot-develop/concepts-convention.md)。
 
 ### <a name="device-sdks"></a>设备 SDK
 

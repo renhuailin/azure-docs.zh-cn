@@ -8,12 +8,12 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.subservice: cloud-init
-ms.openlocfilehash: 63bc821648348c2936d437fef7fdd89314fad3c5
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 4ca42c259e10742e61fbd7f36b73f332cba5a8db
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783218"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445823"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>深入了解 cloud-init
 若要详细了解 [cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) 或在更深级别对其进行故障排除，你需要了解其工作原理。 本文档重点介绍了重要的部分，并介绍了 Azure 具体内容。
@@ -22,7 +22,7 @@ ms.locfileid: "109783218"
 
 
 ## <a name="understand-cloud-init-configuration"></a>了解 Cloud-Init 配置
-将 VM 配置为在平台上运行意味着 cloud-init 需要应用多个配置。作为映像使用者，你将与之交互的主要配置是 `User data` (customData)，它支持多种格式，这些内容记录在[此处](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-formats)。 你还可以添加并运行脚本 (/var/lib/cloud/scripts) 来进行其他配置。下面更详细地讨论了这一点。
+将 VM 配置为在平台上运行意味着 cloud-init 需要应用多个配置。作为映像使用者，你将与之交互的主要配置是 `User data` (customData)，它支持多种格式。 有关详细信息，请参阅 [User-Data 格式和 cloud-init 21.2 文档](https://cloudinit.readthedocs.io/en/latest/topics/format.html#user-data-formats)。 你还可以添加并运行脚本 (/var/lib/cloud/scripts) 来进行其他配置。下面更详细地讨论了这一点。
 
 某些配置已经内置到附带了 cloud-init 的 Azure 市场映像中，例如：
 

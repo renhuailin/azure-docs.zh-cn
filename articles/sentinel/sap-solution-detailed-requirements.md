@@ -8,12 +8,12 @@ ms.topic: reference
 ms.custom: mvc
 ms.date: 06/09/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: e616b21b1b94d141bf54a589ac134878d829ba8e
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: a03031640bd116e2901ff123b5fec13d36151fd4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900550"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723430"
 ---
 # <a name="azure-sentinel-sap-solution-detailed-sap-requirements-public-preview"></a>Azure Sentinel SAP 解决方案的详细 SAP 要求（公共预览版）
 
@@ -43,9 +43,9 @@ ms.locfileid: "111900550"
 
 根据 SAP Basis 版本的不同，SAP 解决方案需要以下 SAP 日志更改请求：
 
-- SAP Basis 版本 7.50 及更高版本，请安装 NPLK900131
-- SAP Basis 版本 7.40，请安装 NPLK900132
-- 若要创建具有所需授权的 sap 角色，则对于任何受支持的 SAP Basis 版本，都请安装 NPLK900114。 有关详细信息，请参阅[配置 SAP 系统](sap-deploy-solution.md#configure-your-sap-system)和[所需 ABAP 授权](#required-abap-authorizations)。
+- SAP Basis 版本 7.50 及更高版本，请安装 NPLK900144
+- 如需较低版本，请安装 NPLK900146
+- 若要创建具有所需授权的 SAP 角色，则对于任何受支持的 SAP Basis 版本，都请安装 NPLK900140。 有关详细信息，请参阅[配置 SAP 系统](sap-deploy-solution.md#configure-your-sap-system)和[所需 ABAP 授权](#required-abap-authorizations)。
 
 > [!NOTE]
 > 所需 SAP 日志更改请求会公开连接器所需的自定义 RFC FM，并且不会更改任何标准的或自定义的对象。
@@ -138,7 +138,8 @@ ms.locfileid: "111900550"
 
 有关详细信息，请参阅：
 
-- [教程：为 SAP 部署 Azure Sentinel 解决方案](sap-deploy-solution.md)
-- [在本地部署 Azure Sentinel SAP 数据连接器](sap-solution-deploy-alternate.md)
+- [为 SAP 部署 Azure Sentinel 解决方案](sap-deploy-solution.md)
+- [专家配置选项、本地部署和 SAPControl 日志源](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP 解决方案日志参考](sap-solution-log-reference.md)
 - [Azure Sentinel SAP 解决方案：可用的安全内容](sap-solution-security-content.md)
+- [Azure Sentinel SAP 解决方案部署疑难解答](sap-deploy-troubleshoot.md)

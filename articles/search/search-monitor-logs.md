@@ -7,21 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: f0d85f056cfaaa58fcc72eb9c2182b3e1a78affb
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 01/27/2021
+ms.openlocfilehash: 5643f9a8bb1caec8d264ba5dfba9913d5d13b2ec
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581618"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414838"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>收集和分析 Azure 认知搜索的日志数据
 
 诊断或操作日志提供有关 Azure 认知搜索详细操作的见解，有助于监视服务运行状况和进程。 在内部，Microsoft 会在后端短暂地保留系统信息（大约 30 天），如果你提交了支持票证，这个时间足以进行调查和分析。 但是，如果想要自行掌握操作数据，则应配置诊断设置以指定要从何处收集日志记录信息。
 
-诊断日志记录功能是通过与 [Azure Monitor](../azure-monitor/index.yml) 集成实现的。 
-
-设置诊断日志记录时，系统将要求你指定存储机制。 下表列举了用于收集和保留数据的选项。
+诊断日志记录功能是通过与 [Azure Monitor](../azure-monitor/index.yml) 后端集成实现的。 设置诊断日志记录时，系统将要求你指定存储选项以保留日志。 下表枚举了一些选项。
 
 | 资源 | 用途 |
 |----------|----------|
@@ -55,9 +53,9 @@ ms.locfileid: "106581618"
 
 1. 保存设置。
 
-1. 启用日志记录后，使用搜索服务开始生成日志和指标。 记录的事件和指标需在一段时间后才可供使用。
+1. 启用日志记录后，搜索服务将开始生成日志和指标。 记录的事件和指标需在一段时间后才可供使用。
 
-对于 Log Analytics，数据将在几分钟后可供使用，然后可以运行 Kusto 查询来返回数据。 有关详细信息，请参阅[监视查询请求](search-monitor-logs.md)。
+对于 Log Analytics，预计需要等待几分钟才能使用数据，之后可运行 Kusto 查询来返回数据。 有关详细信息，请参阅[监视查询请求](search-monitor-logs.md)。
 
 对于 Blob 存储，容器将在一小时后出现在 Blob 存储中。 每个容器每小时会有一个 blob。 仅当存在要记录或度量的活动时，才会创建容器。 将数据复制到存储帐户时，数据会被格式化为 JSON 并置于两个容器中：
 
@@ -70,7 +68,9 @@ ms.locfileid: "106581618"
 
 1. 在“监视”下选择“日志”。 
 
-1. 在查询窗口中输入 **AzureMetrics**。 请运行此简单查询来熟悉此表中收集的数据。 滚动浏览整个表以查看指标和值。 请注意顶部的记录计数。如果服务已收集了一段时间的指标，你可以调整时间间隔以获取可管理的数据集。
+1. 在查询窗口中，键入“AzureMetrics”，检查范围（搜索服务）和时间范围，然后单击“运行”，熟悉此表中收集的数据 。
+
+   滚动浏览整个表以查看指标和值。 请注意顶部的记录计数。 如果服务已收集了一段时间的指标，你可以调整时间间隔以获取可管理的数据集。
 
    ![AzureMetrics 表](./media/search-monitor-usage/azuremetrics-table.png "AzureMetrics 表")
 
@@ -112,7 +112,7 @@ AzureDiagnostics
 AzureDiagnostics
 | summarize OperationName, Count=count()
 | where OperationName in ('Query.Search', 'Indexing.Index')
-| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
+| summarize Count=count(), AvgLatency=avg(durationMs) by bin(TimeGenerated, 1h), OperationName
 | render timechart
 ```
 

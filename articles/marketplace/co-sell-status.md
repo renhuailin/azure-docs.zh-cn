@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 03/17/2021
-ms.openlocfilehash: 586d2f8a887f6da39111d2e3f01744952cd9a1c3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 07/13/2021
+ms.openlocfilehash: 3d2048f643da5f9cdd77b95f2a992efef74a77e9
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133306"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114388072"
 ---
 # <a name="verify-co-sell-status-of-a-commercial-marketplace-offer"></a>验证商业市场产品/服务的联合销售状态
 
@@ -33,11 +33,11 @@ ms.locfileid: "108133306"
 | ------------ | ------------- |
 | 尚未做好联合销售准备 | 尚未满足最低[联合销售就绪状态要求](co-sell-requirements.md#requirements-for-co-sell-ready-status)。 |
 | 已做好联合销售准备 | 已满足所有[联合销售就绪状态要求](co-sell-requirements.md#requirements-for-co-sell-ready-status)。 |
-| 已进行 Azure IP 联合销售激励 | 除了[这些附加要求](co-sell-requirements.md#requirements-for-azure-ip-co-sell-incentivized-status)之外，还满足了联合销售就绪要求。 |
-| 已进行 Business Applications 联合销售激励 | 此状态适用于 [ISV Connect 计划](business-applications-isv-program.md)中的 Dynamics 365 和 Power Apps 产品/服务，指示已满足[此状态的所有要求](co-sell-requirements.md#requirements-for-business-applications-co-sell-incentivized-status)。 |
+| Azure IP 联合销售激励措施 | 除了[这些附加要求](co-sell-requirements.md#requirements-for-azure-ip-co-sell-incentive-status)之外，还满足了联合销售就绪要求。 |
+| 业务应用程序联合销售激励措施 | 此状态适用于 [ISV Connect 计划](business-applications-isv-program.md)中的 Dynamics 365 和 Power Apps 产品/服务，指示已满足[此状态的所有要求](co-sell-requirements.md#requirements-for-business-applications-co-sell-incentive-status)。 |
 |||
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解联合销售要求，请参阅[联合销售就绪要求](co-sell-requirements.md)。
-- 若要帮助配置联合销售的产品/服务，请参阅[为商业市场产品/服务配置联合销售](./co-sell-configure.md)。
+- 若要帮助配置联合销售的产品/服务，请参阅[为商业市场产品/服务配置联合销售](co-sell-configure.md)。

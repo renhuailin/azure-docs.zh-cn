@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: eb5b4ab8a23a374aec54d65dd5390ab3fec3e905
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4aedc6e92b02cf81003ecf4b40a5096bf80c7448
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91445478"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441039"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL 重写（自定义转发路径）
 Azure Front Door 支持 URL 重写，方法是配置可选的自定义转发路径，以便在构造要转发到后端的请求时使用。 默认情况下，如果未提供自定义转发路径，则 Front Door 会将传入的 URL 路径复制到转发请求中使用的 URL。 转发请求中使用的主机标头与为选定后端配置的主机标头一样。 阅读[后端主机标头](front-door-backend-pool.md#hostheader)，了解它的作用以及配置方式。
@@ -48,6 +48,10 @@ Azure Front Door 支持 URL 重写，方法是配置可选的自定义转发路�
 | www\.contoso.com/foo         | /foo                     | /          | /fwd/          | /foo/          | /foo/bar/          |
 | www\.contoso.com/foo/        | /foo/\*                  | /          | /fwd/          | /foo/          | /foo/bar/          |
 | www\.contoso.com/foo/**bar** | /foo/\*                  | /**bar**   | /fwd/**bar**   | /foo/**bar**   | /foo/bar/**bar**   |
+
+> [!NOTE]
+> Azure Front Door 仅支持将 URL 从静态路径重写到另一个静态路径。 Azure Front Door 标准/高级 SKU 支持保留不匹配路径。 有关详细信息，请参阅[保留不匹配路径](standard-premium/concept-rule-set-url-redirect-and-rewrite.md#preserve-unmatched-path)。
+> 
 
 ## <a name="optional-settings"></a>可选设置
 还可以为任何给定的路由规则设置指定其他可选设置：

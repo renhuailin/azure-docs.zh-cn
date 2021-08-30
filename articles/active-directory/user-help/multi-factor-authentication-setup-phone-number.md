@@ -1,6 +1,6 @@
 ---
-title: 将移动设备设置为双因素验证方法 - Azure Active Directory | Microsoft Docs
-description: 了解如何将移动设备设置为双因素验证方法。
+title: 将移动设备设置为双重验证方法 - Azure Active Directory | Microsoft Docs
+description: 了解如何将移动设备设置为双重验证方法。
 services: active-directory
 author: curtand
 manager: daveba
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6cf133c08d7f554ffe991941740326a2e1e4292
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91530249"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728179"
 ---
-# <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>将移动设备设置为双因素验证方法
+# <a name="set-up-a-mobile-device-as-your-two-step-verification-method"></a>将移动设备设置为双重验证方法
 
-可以设置移动设备，使其充当双因素验证方法。 你的移动电话可以接收带有验证码的短信，或接收电话呼叫。
+可以设置移动设备，使其使用双重验证方法。 你的移动电话可以接收带有验证码的短信，或接收电话呼叫。
 
 >[!Note]
 > 如果“身份验证电话”选项灰显，则可能是你的组织不允许你使用电话号码或短信进行验证。 在这种情况下，需选择另一种方法，或与管理员联系以获取进一步帮助。

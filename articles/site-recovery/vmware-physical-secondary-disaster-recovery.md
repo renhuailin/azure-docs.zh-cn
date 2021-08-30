@@ -1,19 +1,16 @@
 ---
 title: 使用 Azure Site Recovery 将 VMware VM/物理服务器灾难恢复到辅助站点
 description: 了解如何使用 Azure Site Recovery 将 VMware VM 或 Windows 和 Linux 物理服务器的灾难恢复设置到辅助站点。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.author: raynew
-ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 250396771733d13732d1ac02ef1e57a15d6ca3b8
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "84711895"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228834"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>将本地 VMware 虚拟机或物理服务器的灾难恢复设置到辅助站点
 
@@ -260,7 +257,7 @@ Scout Update 4 是累积更新。 其中包含从 Update 1 到 Update 3 的所�
     * Red Hat Enterprise Linux (RHEL) 6.x
     * Oracle Linux (OL) 6.x
 * 对于 Linux，统一代理安装目录中的所有文件夹访问权限现在仅限为本地用户。
-* 在 Windows 上，修复了在重负载分布式应用程序（例如 SQL Server 和 Share Point 群集）上发出通用分布式一致性书签时出现的超时问题。
+* 在 Windows 上，修复了在重负载分布式应用程序（例如 SQL Server 和 SharePoint 群集）上发出通用分布式一致性书签时出现的超时问题。
 * 配置服务器基本安装程序中日志相关的修复。
 * 将 VMware vCLI 6.0 的下载链接添加到了 Windows 主目标基本安装程序中。
 * 在故障转移和灾难恢复演练期间，针对网络配置更改添加了其他检查和日志。

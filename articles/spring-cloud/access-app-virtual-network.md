@@ -1,18 +1,18 @@
 ---
 title: 虚拟网络中的 Azure Spring Cloud 访问应用
 description: 访问虚拟网络中 Azure Spring Cloud 中的应用。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/11/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 593065b200ab0dc98e5fa97299c137aedfd1be63
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 68cac51ba9d54abc6514cf493077740339ac56c5
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129308"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015572"
 ---
 # <a name="access-your-application-in-a-private-network"></a>在专用网络中访问应用程序
 
@@ -26,9 +26,12 @@ ms.locfileid: "108129308"
 
 1. 打开 Azure 门户。 在顶部搜索框中，搜索“专用 DNS 区域”，然后从结果中选择“专用 DNS 区域”。
 
-2. 在“专用 DNS 区域”页上，选择“+ 添加”。
+2. 在“专用 DNS 区域”页面上，选择“添加” 。
 
 3. 填写“创建专用 DNS 区域”页上的表单。 输入“private.azuremicroservices.io”作为区域的“名称” **<span></span>** 。
+
+    >[!NOTE]
+    > 如果你使用的是 Azure 中国，请将整个文档中的 `private.azuremicroservices.io` 替换为 `private.microservices.azure.cn`，[了解详细信息](/azure/china/resources-developer-guide#check-endpoints-in-azure)。
 
 4. 选择“查看 + 创建”  。
 
@@ -40,7 +43,7 @@ ms.locfileid: "108129308"
 
 若要将专用 DNS 区域链接到虚拟网络，需要创建虚拟网络链接。
 
-1. 选择上面创建的专用 DNS 区域资源：<span>private.azuremicroservices.io</span> 
+1. 选择上面创建的专用 DNS 区域资源：<span>private.azuremicroservices.io</span>
 
 2. 在左窗格中，选择“虚拟网络链接”。
 
@@ -52,7 +55,7 @@ ms.locfileid: "108129308"
 
     ![添加虚拟网络链接](media/spring-cloud-access-app-vnet/add-virtual-network-link.png)
 
-6. 单击“确定”。 
+6. 选择“确定”。
 
 ## <a name="create-dns-record"></a>创建 DNS 记录
 
@@ -81,7 +84,7 @@ $SERVICE_RUNTIME_RG --query "[0].privateIpAddress" -o tsv`
 
 4. 选择上面创建的专用 DNS 区域资源：private.azuremicroservices.io **<span></span>** 。
 
-5. 选择“+记录集”。
+5. 选择“记录集”。 
 
 6. 在“添加记录集”中，输入或选择以下信息：
 

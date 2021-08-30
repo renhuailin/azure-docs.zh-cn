@@ -2,13 +2,13 @@
 title: Azure 事件网格中的自定义主题
 description: 介绍 Azure 事件网格中的自定义主题。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: c211e529e5382fd655fca6d78ab32409cbff4453
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.date: 07/27/2021
+ms.openlocfilehash: 54d331d2080d8adf96bf39c9250e7d6888723c1d
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736639"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727745"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Azure 事件网格中的自定义主题
 事件网格主题提供一个可供源在其中发送事件的终结点。 发布服务器创建事件网格主题，并决定事件源需要一个主题还是多个主题。 主题用于收集相关事件。 为了对某些类型的事件作出响应，订阅服务器将决定要订阅的主题。
@@ -67,6 +67,9 @@ ms.locfileid: "109736639"
 |---------|---------|
 | [资源管理器模板：自定义主题和 WebHook 终结点](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid) | 用于创建自定义主题及其订阅的资源管理器模板。 它将事件发送到 WebHook。 |
 | [资源管理器模板：自定义主题和事件中心终结点](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid-event-hubs-handler)| 用于创建自定义主题的订阅的资源管理器模板。 它将事件发送到 Azure 事件中心。 |
+
+> [!NOTE]
+> Azure 数字孪生可以将事件通知路由到你使用事件网格创建的自定义主题。 有关详细信息，请参阅[在 Azure 数字孪生中管理终结点和路由](../digital-twins/how-to-manage-routes.md)。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 

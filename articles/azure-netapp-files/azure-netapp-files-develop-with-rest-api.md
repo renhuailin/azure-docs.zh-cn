@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/02/2020
+ms.date: 06/29/2021
 ms.author: b-juche
-ms.openlocfilehash: c5993dc1dc645319e272ab310a97bc3ff8ac495d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8d10304ecf43654c0713961f62621505af73fbd1
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174234"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113112142"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>使用 REST API 进行 Azure NetApp 文件开发 
 
@@ -31,6 +31,13 @@ Azure NetApp 文件的 REST API 规范通过 [GitHub](https://github.com/Azure/a
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 
+## <a name="considerations"></a>注意事项
+
+* 超过 API 限制时，HTTP 响应代码为 429。  例如：
+
+   `"Microsoft.Azure.ResourceProvider.Common.Exceptions.ResourceProviderException: Error getting Pool. Rate limit exceeded for this endpoint - try again later ---> CloudVolumes.Service.Client.Client.ApiException: Error calling V2DescribePool: {\"code\":429,\"message\":\"Rate limit exceeded for this endpoint - try again later\"}`
+   
+   此响应代码可能源于限制或临时情况。 有关详细信息，请参阅 [Azure 资源管理器 HTTP 429 响应代码](../azure-resource-manager/management/request-limits-and-throttling.md#error-code)。
 
 ## <a name="access-the-azure-netapp-files-rest-api"></a>访问 Azure NetApp 文件 REST API  
 

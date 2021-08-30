@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake
-ms.date: 06/02/2021
+ms.date: 07/14/2021
 ms.custom: references_regions
-ms.openlocfilehash: a78622aaccfaeb372d67ef4575e2bd923ab6cb58
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 3e80c1153737514575017685310b6e5306a47167
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414937"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730815"
 ---
 # <a name="vcore-purchase-model-overview---azure-sql-database"></a>vCore 购买模型概述 - Azure SQL 数据库 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -104,9 +104,6 @@ To enable M-series hardware for a subscription and region, a support request mus
 -->
 
 ### <a name="dc-series"></a>DC 系列
-
-> [!NOTE]
-> DC 系列目前以公共预览版提供。
 
 - DC 系列硬件使用具有软件防护扩展 (Intel SGX) 技术的 Intel 处理器。
 - [具有安全 enclave 的 Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) 需要 DC 系列，其他硬件配置不支持此系列。
@@ -205,12 +202,16 @@ Approved support requests are typically fulfilled within 5 business days.
 
 #### <a name="dc-series"></a>DC 系列
 
-> [!NOTE]
-> DC 系列目前以公共预览版提供。
-
 DC 系列在以下区域中可用：加拿大中部、加拿大东部、美国东部、北欧、英国南部、西欧、美国西部。
 
-如果需在当前不支持的区域中使用 DC 系列，请按照[请求增加 Azure SQL 数据库和 SQL 托管实例配额](quota-increase-request.md)中的说明[提交支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如果在当前不受支持的区域需要 DC 系列，请[提交支持工单](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。 在“基本信息”页上，提供以下信息：
+
+1. 对于“问题类型”，选择“技术” 。
+1. 对于“服务类型”，选择“SQL 数据库” 。
+1. 对于“问题类型”，选择“安全性、隐私和合规性” 。
+1. 对于“问题子类型”，选择“Always Encrypted” 。
+
+:::image type="content" source="./media/service-tiers-vcore/request-dc-series.png" alt-text="请求新区域中的 DC 系列" loc-scope="azure-portal":::
 
 ## <a name="next-steps"></a>后续步骤
 

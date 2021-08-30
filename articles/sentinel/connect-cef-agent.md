@@ -3,7 +3,7 @@ title: 部署日志转发器以将 CEF 数据连接到 Azure Sentinel | Microsof
 description: 了解如何部署代理以将 CEF 数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: yelevin
+author: batamig
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
-ms.author: yelevin
-ms.openlocfilehash: ee28837d3e687d78b645a1ab18a9add1f8e57fcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: bagol
+ms.openlocfilehash: 2acbc6c48826f9455e264690789dc823da5a762c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771254"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748096"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>步骤 1：部署日志转发器
 
@@ -38,7 +38,7 @@ ms.locfileid: "104771254"
 
 - 必须在指定的 Linux 计算机上拥有提升的权限 (sudo)。
 
-- 必须在 Linux 计算机上安装 Python 2.7 或 3 。<br>使用 `python -version` 命令进行检查。
+- 必须在 Linux 计算机上安装 Python 2.7 或 3 。<br>使用 `python --version` 或 `python3 --version` 命令进行检查。
 
 - 安装 Log Analytics 代理之前，Linux 计算机不得连接到任何 Azure 工作区。
 
@@ -155,7 +155,7 @@ ms.locfileid: "104771254"
     - <a name="mapping-command"></a>如果映射存在问题，脚本将生成一条错误消息，指示你手动运行以下命令（将工作区 ID 替换为占位符）。 此命令将确保正确映射并重启代理。
     
         ```bash
-        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        sudo sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
 # <a name="syslog-ng-daemon"></a>[syslog-ng 守护程序](#tab/syslogng)
@@ -231,5 +231,5 @@ ms.locfileid: "104771254"
 本文档介绍了如何部署 Log Analytics 代理以将 CEF 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
 - 了解 [CEF 和 CommonSecurityLog 字段映射](cef-name-mapping.md)。
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](./tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](./detect-threats-built-in.md)。

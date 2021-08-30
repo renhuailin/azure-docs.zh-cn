@@ -2,17 +2,18 @@
 title: 自动发布持续集成和交付
 description: 了解如何自动发布持续集成和交付。
 ms.service: data-factory
+ms.subservice: ci-cd
 author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 9056dd0be8e84fdff6934b2aecbd4a553f540811
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.date: 08/23/2021
+ms.openlocfilehash: 38e1d89a6934c603fa15c4b50e2309c57dc28622
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331568"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771806"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>自动发布持续集成和交付
 
@@ -78,25 +79,25 @@ ms.locfileid: "108331568"
 
 ### <a name="export-arm-template"></a>导出 ARM 模板
 
-运行 `npm run start export <rootFolder> <factoryId> [outputFolder]` 以使用给定文件夹的资源导出 ARM 模板。 此命令还在生成 ARM 模板之前运行验证检查。 下面是一个示例：
+运行 `npm run build export <rootFolder> <factoryId> [outputFolder]` 以使用给定文件夹的资源导出 ARM 模板。 此命令还在生成 ARM 模板之前运行验证检查。 下面是一个示例：
 
-```
-npm run start export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory ArmTemplateOutput
+```dos
+npm run build export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory ArmTemplateOutput
 ```
 
 - `RootFolder` 是表示数据工厂资源所在位置的必填字段。
 - `FactoryId` 是表示采用 `/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.DataFactory/factories/<dfName>` 格式的数据工厂资源 ID 的必填字段。
 - `OutputFolder` 是一个可选参数，它指定用于保存所生成 ARM 模板的相对路径。
- 
+
 > [!NOTE]
 > 生成的 ARM 模板未发布到工厂的实时版本。 应使用 CI/CD 管道进行部署。
- 
+
 ### <a name="validate"></a>验证
 
-运行 `npm run start validate <rootFolder> <factoryId>` 以验证给定文件夹的所有资源。 下面是一个示例：
+运行 `npm run build validate <rootFolder> <factoryId>` 以验证给定文件夹的所有资源。 下面是一个示例：
 
-```
-npm run start validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory
+```dos
+npm run build validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory
 ```
 
 - `RootFolder` 是表示数据工厂资源所在位置的必填字段。
@@ -104,91 +105,90 @@ npm run start validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-x
 
 ## <a name="create-an-azure-pipeline"></a>创建 Azure 管道
 
-尽管可以通过多种方式使用 npm 包，但其中一个主要优势是通过 [Azure 管道](https://nam06.safelinks.protection.outlook.com/?url=https:%2F%2Fdocs.microsoft.com%2F%2Fazure%2Fdevops%2Fpipelines%2Fget-started%2Fwhat-is-azure-pipelines%3Fview%3Dazure-devops%23:~:text%3DAzure%2520Pipelines%2520is%2520a%2520cloud%2Cit%2520available%2520to%2520other%2520users.%26text%3DAzure%2520Pipelines%2520combines%2520continuous%2520integration%2Cship%2520it%2520to%2520any%2520target.&data=04%7C01%7Cabnarain%40microsoft.com%7C5f064c3d5b7049db540708d89564b0bc%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C1%7C637423607000268277%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=jo%2BkIvSBiz6f%2B7kmgqDN27TUWc6YoDanOxL9oraAbmA%3D&reserved=0)使用的。 每次合并到协作分支中时，都可以触发一个管道，该管道首先验证所有代码，然后将 ARM 模板导出到可由发布管道使用的[生成项目](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2F%2Fazure%2Fdevops%2Fpipelines%2Fartifacts%2Fbuild-artifacts%3Fview%3Dazure-devops%26tabs%3Dyaml%23how-do-i-consume-artifacts&data=04%7C01%7Cabnarain%40microsoft.com%7C5f064c3d5b7049db540708d89564b0bc%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C1%7C637423607000278113%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=dN3t%2BF%2Fzbec4F28hJqigGANvvedQoQ6npzegTAwTp1A%3D&reserved=0)。 它与当前 CI/CD 过程的不同之处在于，你将在此项目（而不是现有 `adf_publish` 分支）中指出发布管道。
+尽管可以通过多种方式使用 npm 包，但其中一个主要优势是通过 [Azure 管道](/azure/devops/pipelines/get-started/)使用的。 每次合并到协作分支中时，都可以触发一个管道，该管道首先验证所有代码，然后将 ARM 模板导出到可由发布管道使用的[生成项目](/azure/devops/pipelines/artifacts/build-artifacts)。 它与当前 CI/CD 过程的不同之处在于，你将在此项目（而不是现有 `adf_publish` 分支）中指出发布管道。
 
 执行以下步骤以便开始：
 
-1.  打开 Azure DevOps 项目，然后转到“管道”。 选择“新建管道”。
+1. 打开 Azure DevOps 项目，然后转到“管道”。 选择“新建管道”。
 
-    ![显示“新管道”按钮的屏幕截图。](media/continuous-integration-deployment-improvements/new-pipeline.png)
-    
-1.  选择要在其中保存管道 YAML 脚本的存储库。 建议将其保存在数据工厂资源的同一存储库中的生成文件夹中。 确保存储库中有包含包名称的 package.json 文件，如以下示例中所示：
+   ![显示“新管道”按钮的屏幕截图。](media/continuous-integration-deployment-improvements/new-pipeline.png)
 
-    ```json
-    {
-        "scripts":{
-            "build":"node node_modules/@microsoft/azure-data-factory-utilities/lib/index"
-        },
-        "dependencies":{
-            "@microsoft/azure-data-factory-utilities":"^0.1.5"
-        }
-    } 
-    ```
-    
-1.  选择“初学者管道”。 如果已上传或合并 YAML 文件（如以下示例中所示），也可以直接指向该文件并对其进行编辑。
+2. 选择要在其中保存管道 YAML 脚本的存储库。 建议将其保存在数据工厂资源的同一存储库中的生成文件夹中。 确保存储库中有包含包名称的 package.json 文件，如以下示例中所示：
 
-    ![显示“初学者管道”的屏幕截图。](media/continuous-integration-deployment-improvements/starter-pipeline.png)
+   ```json
+   {
+       "scripts":{
+           "build":"node node_modules/@microsoft/azure-data-factory-utilities/lib/index"
+       },
+       "dependencies":{
+           "@microsoft/azure-data-factory-utilities":"^0.1.5"
+       }
+   } 
+   ```
 
-    ```yaml
-    # Sample YAML file to validate and export an ARM template into a build artifact
-    # Requires a package.json file located in the target repository
-    
-    trigger:
-    - main #collaboration branch
-    
-    pool:
-      vmImage: 'ubuntu-latest'
-    
-    steps:
-    
-    # Installs Node and the npm packages saved in your package.json file in the build
-    
-    - task: NodeTool@0
-      inputs:
-        versionSpec: '10.x'
-      displayName: 'Install Node.js'
-    
-    - task: Npm@1
-      inputs:
-        command: 'install'
-        workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
-        verbose: true
-      displayName: 'Install npm package'
-    
-    # Validates all of the Data Factory resources in the repository. You'll get the same validation errors as when "Validate All" is selected.
-    # Enter the appropriate subscription and name for the source factory.
-    
-    - task: Npm@1
-      inputs:
-        command: 'custom'
-        workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
-        customCommand: 'run build validate $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName'
-      displayName: 'Validate'
-    
-    # Validate and then generate the ARM template into the destination folder, which is the same as selecting "Publish" from the UX.
-    # The ARM template generated isn't published to the live version of the factory. Deployment should be done by using a CI/CD pipeline. 
-    
-    - task: Npm@1
-      inputs:
-        command: 'custom'
-        workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
-        customCommand: 'run build export $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName "ArmTemplate"'
-      displayName: 'Validate and Generate ARM template'
-    
-    # Publish the artifact to be used as a source for a release pipeline.
-    
-    - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>/ArmTemplate' #replace with the package.json folder
-        artifact: 'ArmTemplates'
-        publishLocation: 'pipeline'
-    ```
+3. 选择“初学者管道”。 如果已上传或合并 YAML 文件（如以下示例中所示），也可以直接指向该文件并对其进行编辑。
 
-1.  输入你的 YAML 代码。 建议使用 YAML 文件作为起点。
-1.  保存并运行。 如果使用了 YAML，则在每次更新主分支时都会触发该文件。
+   ![显示“初学者管道”的屏幕截图。](media/continuous-integration-deployment-improvements/starter-pipeline.png)
+
+   ```yaml
+   # Sample YAML file to validate and export an ARM template into a build artifact
+   # Requires a package.json file located in the target repository
+   
+   trigger:
+   - main #collaboration branch
+   
+   pool:
+     vmImage: 'ubuntu-latest'
+   
+   steps:
+   
+   # Installs Node and the npm packages saved in your package.json file in the build
+   
+   - task: NodeTool@0
+     inputs:
+       versionSpec: '10.x'
+     displayName: 'Install Node.js'
+   
+   - task: Npm@1
+     inputs:
+       command: 'install'
+       workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
+       verbose: true
+     displayName: 'Install npm package'
+   
+   # Validates all of the Data Factory resources in the repository. You'll get the same validation errors as when "Validate All" is selected.
+   # Enter the appropriate subscription and name for the source factory.
+   
+   - task: Npm@1
+     inputs:
+       command: 'custom'
+       workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
+       customCommand: 'run build validate $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName'
+     displayName: 'Validate'
+   
+   # Validate and then generate the ARM template into the destination folder, which is the same as selecting "Publish" from the UX.
+   # The ARM template generated isn't published to the live version of the factory. Deployment should be done by using a CI/CD pipeline. 
+   
+   - task: Npm@1
+     inputs:
+       command: 'custom'
+       workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
+       customCommand: 'run build export $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName "ArmTemplate"'
+     displayName: 'Validate and Generate ARM template'
+   
+   # Publish the artifact to be used as a source for a release pipeline.
+   
+   - task: PublishPipelineArtifact@1
+     inputs:
+       targetPath: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>/ArmTemplate' #replace with the package.json folder
+       artifact: 'ArmTemplates'
+       publishLocation: 'pipeline'
+   ```
+
+4. 输入你的 YAML 代码。 建议使用 YAML 文件作为起点。
+
+5. 保存并运行。 如果使用了 YAML，则在每次更新主分支时都会触发该文件。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关数据工厂中的持续集成和交付的详细信息：
-
-- [Azure 数据工厂中的持续集成和交付](continuous-integration-deployment.md)。
+详细了解数据工厂中的持续集成和交付：[Azure 数据工厂中的持续集成和交付](continuous-integration-deployment.md)。

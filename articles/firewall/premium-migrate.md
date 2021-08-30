@@ -1,27 +1,37 @@
 ---
-title: 迁移到 Azure 防火墙高级预览版
-description: 了解如何从 Azure 防火墙标准版迁移到 Azure 防火墙高级预览版。
+title: 迁移到 Azure 防火墙高级版
+description: 了解如何从 Azure 防火墙标准版迁移到 Azure 防火墙高级版。
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 08/16/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 27125e7f635c6d8f0690ebd39fb84eb3e0fb2989
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 53587cbc54b9e59268e6ee348bb8956a0b9ca993
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110700558"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228920"
 ---
-# <a name="migrate-to-azure-firewall-premium-preview"></a>迁移到 Azure 防火墙高级预览版
+# <a name="migrate-to-azure-firewall-premium"></a>迁移到 Azure 防火墙高级版
 
-可以将 Azure 防火墙标准版迁移到 Azure 防火墙高级预览版，以利用新的高级功能。 要详细了解 Azure 防火墙高级预览版功能，请参阅 [Azure 防火墙高级预览版功能](premium-features.md)。
+可以将 Azure 防火墙标准版迁移到 Azure 防火墙高级版，以利用新的高级功能。 要详细了解 Azure 防火墙高级版功能，请参阅 [Azure 防火墙高级版功能](premium-features.md)。
 
 下面两个示例演示如何：
 - 使用 Azure PowerShell 迁移现有标准策略
 - 使用高级策略将现有标准防火墙（与经典规则）迁移到 Azure 防火墙高级版。
+
+## <a name="performance-considerations"></a>性能注意事项
+
+从标准 SKU 进行迁移时，需要考虑性能。 IDPS 和 TLS 检查是计算密集型操作。 高级 SKU 使用更强大的 VM SKU，其相较于标准 SKU，可缩放到最大吞吐量 30 Gbps。 在警报模式下配置了 IDPS 时，支持 30 Gbps 吞吐量。 在拒绝模式和 TLS 检查中使用 IDPS 会增加 CPU 消耗。 最大吞吐量可能会下降。 
+
+有一个或多个签名设置为“警报和拒绝”或者应用程序规则启用了“TLS 检查”时，防火墙吞吐量可能低于 30 Gbps 。 Microsoft 建议客户在其 Azure 部署中执行全面缩放测试，以确保防火墙服务性能满足预期。
+
+## <a name="downtime"></a>故障时间
+
+请在计划内维护期间迁移防火墙，因为迁移期间会发生短暂停机。
 
 ## <a name="migrate-an-existing-policy-using-azure-powershell"></a>使用 Azure PowerShell 迁移现有策略
 
@@ -52,7 +62,7 @@ param (
     [string]
     $PolicyId,
 
-    # #new filewallpolicy name, if not specified will be the previous name with the '_premium' suffix
+     #new firewallpolicy name, if not specified will be the previous name with the '_premium' suffix
     [Parameter(Mandatory=$false)]
     [string]
     $NewPolicyName = ""
@@ -192,9 +202,9 @@ TransformPolicyToPremium -Policy $policy
       `"/subscriptions/<subscription id>/resourceGroups/<your resource group>/providers/Microsoft.Network/firewallPolicies/FirewallPolicy_<your policy name>_premium"`
 1. 选择“保存”。
 1. 选择“查看 + 创建”  。
-1. 选择“创建”  。
+1. 选择“创建”。
 
-部署完成后，现在可以配置所有新的 Azure 防火墙高级预览版功能。
+部署完成后，即可配置所有新的 Azure 防火墙高级版功能。
 
 ## <a name="next-steps"></a>后续步骤
 

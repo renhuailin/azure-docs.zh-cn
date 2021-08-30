@@ -7,32 +7,34 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/25/2021
+ms.date: 08/12/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 3335e035a2d36cc7830d8bc93db82a7d318d26b3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 126bdd850d29d716433b7854c71d02269b95ec2e
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110481951"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067966"
 ---
-# <a name="configure-authentication-in-a-sample-web-application-using-azure-active-directory-b2c-options"></a>使用 Azure Active Directory B2C 选项在示例 Web 应用程序中配置身份验证
+# <a name="configure-authentication-options-in-a-web-application-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 在 Web 应用程序中配置身份验证选项 
 
-本文介绍如何自定义和增强 Web 应用程序的 Azure Active Directory B2C (Azure AD B2C) 身份验证体验。 在开始之前，请先熟悉以下文章：[在示例 Web 应用程序中配置身份验证](configure-authentication-sample-web-app.md)或[在你自己的 Web 应用程序中启用身份验证](enable-authentication-web-application.md)。
+本文介绍如何自定义和增强 Web 应用程序的 Azure Active Directory B2C (Azure AD B2C) 身份验证体验。 在开始之前，务必先熟悉以下文章：[在示例 Web 应用程序中配置身份验证](configure-authentication-sample-web-app.md)或[在你自己的 Web 应用程序中启用身份验证](enable-authentication-web-application.md)。
 
-## <a name="use-a-custom-domain"></a>使用自定义域
+[!INCLUDE [active-directory-b2c-app-integration-custom-domain](../../includes/active-directory-b2c-app-integration-custom-domain.md)]
 
-在应用程序的重定向 URL 中使用[自定义域](custom-domain.md)可提供更加优质的无缝用户体验。 从用户角度来看，用户会在登录过程中保留在域中，而不是重定向到 Azure AD B2C 默认域 .b2clogin.com。
+若要在身份验证 URL 中使用自定义域和租户 ID，请按照[启用自定义域](custom-domain.md)中的指南进行操作。 在项目根文件夹下，打开 `appsettings.json` 文件。 此文件包含有关 Azure AD B2C 标识提供者的信息。 
 
-若要使用自定义域，请遵循[启用自定义域](custom-domain.md)中的指导。 在项目根文件夹下，打开 `appsettings.json` 文件。 此文件包含有关 Azure AD B2C 标识提供者的信息。 将 `Instance` 条目更新为你的自定义域。
+- 将 `Instance` 条目更新为你的自定义域。
+- 将 `Domain` 条目更新为你的[租户 ID](tenant-management.md#get-your-tenant-id)。 有关详细信息，请参阅[使用租户 ID](custom-domain.md#optional-use-tenant-id)。
 
 以下 JSON 显示了更改前的应用设置： 
 
 ```JSon
 "AzureAdB2C": {
   "Instance": "https://contoso.b2clogin.com",
+  "Domain": "tenant-name.onmicrosoft.com",
   ...
 }
 ```  
@@ -42,29 +44,6 @@ ms.locfileid: "110481951"
 ```JSon
 "AzureAdB2C": {
   "Instance": "https://login.contoso.com",
-  ...
-}
-``` 
-
-## <a name="use-your-tenant-id"></a>使用你的租户 ID
-
-可以将 URL 中的 B2C 租户名称替换为你的租户 ID GUID，以便删除对 URL 中“b2c”的所有引用。  例如，可以将 `https://account.contosobank.co.uk/contosobank.onmicrosoft.com/` 更改为 `https://account.contosobank.co.uk/<tenant ID GUID>/`
-
-若要使用租户 ID，请遵循[启用自定义域](custom-domain.md#optional-use-tenant-id)中的指导。 在项目根文件夹下，打开 `appsettings.json` 文件。 此文件包含有关 Azure AD B2C 标识提供者的信息。 将 `Domain` 条目更新为你的自定义域。
-
-以下 JSON 演示了更改前的应用设置： 
-
-```JSon
-"AzureAdB2C": {
-  "Domain": "tenant-name.onmicrosoft.com",
-  ...
-}
-```  
-
-以下 JSON 演示了更改后的应用设置：
-
-```JSon
-"AzureAdB2C": {
   "Domain": "00000000-0000-0000-0000-000000000000",
   ...
 }
@@ -105,14 +84,10 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 可以使用上下文参数在控制器和 OnRedirectToIdentityProvider 函数之间传递参数。 
 
 
-## <a name="prepopulate-the-sign-in-name"></a>预填充登录名
+[!INCLUDE [active-directory-b2c-app-integration-login-hint](../../includes/active-directory-b2c-app-integration-login-hint.md)]
 
-在登录用户旅程中，你的应用可以针对特定用户。 当针对用户时，应用程序可以在授权请求中使用用户登录名指定 `login_hint` 查询参数。 Azure AD B2C 自动填充登录名，用户只需提供密码。 
-
-若要预填充登录名，请执行以下步骤：
-
-1. 完成[支持高级方案](#support-advanced-scenarios)过程。
 1. 如果使用的是自定义策略，请按照[设置直接登录](direct-signin.md#prepopulate-the-sign-in-name)中的说明添加所需的输入声明。 
+1. 完成[支持高级方案](#support-advanced-scenarios)过程。
 1. 将以下代码行添加到 OnRedirectToIdentityProvider 函数：
     
     ```csharp
@@ -125,14 +100,10 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
     }
     ```
 
-## <a name="redirect-sign-in-to-an-external-identity-provider"></a>将登录重定向到外部标识提供者
+[!INCLUDE [active-directory-b2c-app-integration-domain-hint](../../includes/active-directory-b2c-app-integration-domain-hint.md)]
 
-如果已将应用程序的登录旅程配置为包括社交帐户（如 Facebook、LinkedIn 或 Google），则可以指定 `domain_hint` 参数。 此查询参数向 Azure AD B2C 提供有关应该用于登录的社交标识提供者的提示。 例如，如果应用程序指定 `domain_hint=facebook.com`，登录流会直接转到 Facebook 登录页。 
-
-若要将登录重定向到外部标识提供者，请执行以下步骤：
-
-1. 完成[支持高级方案](#support-advanced-scenarios)过程。
 1. 检查外部标识提供者的域名。 有关详细信息，请参阅[将登录重定向到社交服务提供商](direct-signin.md#redirect-sign-in-to-a-social-provider)。 
+1. 完成[支持高级方案](#support-advanced-scenarios)过程。
 1. 在 OnRedirectToIdentityProviderFunc 函数中，将以下代码行添加到 OnRedirectToIdentityProvider 函数：
     
     ```csharp
@@ -145,12 +116,10 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
     }
     ```
 
-## <a name="specify-the-ui-language"></a>指定 UI 语言
 
-用户流可以使用 Azure AD B2C 中的语言自定义来适应不同的语言，从而满足客户需求。 有关详细信息，请参阅[语言自定义](language-customization.md)。
+[!INCLUDE [active-directory-b2c-app-integration-ui-locales](../../includes/active-directory-b2c-app-integration-ui-locales.md)]
 
-若要设置首选语言，请执行以下步骤：
-
+1. [配置语言自定义](language-customization.md)。
 1. 完成[支持高级方案](#support-advanced-scenarios)过程。
 1. 将以下代码行添加到 OnRedirectToIdentityProvider 函数：
 
@@ -164,13 +133,9 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
     }
     ```
 
-## <a name="pass-a-custom-query-string-parameter"></a>传递自定义查询字符串参数
+[!INCLUDE [active-directory-b2c-app-integration-custom-parameters](../../includes/active-directory-b2c-app-integration-custom-parameters.md)]
 
-你使用可以自定义策略来传递自定义查询字符串参数，例如，当你想要[动态更改页面内容](customize-ui-with-html.md?pivots=b2c-custom-policy#configure-dynamic-custom-page-content-uri)时。
-
-
-若要传递自定义查询字符串参数，请执行以下步骤：
-
+1. 配置 [ContentDefinitionParameters](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri) 元素。
 1. 完成[支持高级方案](#support-advanced-scenarios)过程。
 1. 将以下代码行添加到 OnRedirectToIdentityProvider 函数：
     
@@ -184,11 +149,8 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
     }
     ```
 
-## <a name="pass-id-token-hint"></a>传递 ID 令牌提示
 
-通过 Azure AD B2C，信赖方应用可将入站 JWT 作为 OAuth2 授权请求的一部分发送。 JWT 令牌可以由信赖方应用或标识提供者颁发，并且可以传递有关用户或授权请求的提示。 Azure AD B2C 验证签名、颁发者名称和令牌受众，并从入站令牌中提取声明。
-
-若要在身份验证请求中包含 ID 令牌提示，请执行以下步骤： 
+[!INCLUDE [active-directory-b2c-app-integration-id-token-hint](../../includes/active-directory-b2c-app-integration-id-token-hint.md)]
 
 1. 完成[支持高级方案](#support-advanced-scenarios)过程。
 1. 在自定义策略中，定义 [ID 令牌提示技术配置文件](id-token-hint.md)。
@@ -209,7 +171,11 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 
 如果你想自定义 **登录**、**注册** 或 **注销** 操作，建议你创建自己的控制器。 拥有自己的控制器后，就可以在控制器和身份验证库之间传递参数。 `AccountController` 是 `Microsoft.Identity.Web.UI` NuGet 包的一部分，用于处理登录和注销操作。 你可以在 [Microsoft 标识 Web 库](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs)中找到它的实现。 
 
-以下代码片段使用 SignIn 操作演示了自定义 `MyAccountController`。 该操作将名为 `campaign_id` 的参数传递到身份验证库。
+### <a name="add-the-account-controller"></a>添加帐户控制器
+
+在 Visual Studio 项目中，右键单击“Controllers”文件夹，然后添加一个新的控制器 。 选择“MVC - 空控制器”，然后提供名称“MyAccountController.cs” 。
+
+以下代码片段使用 SignIn 操作演示了自定义 `MyAccountController`。
 
 ```csharp
 using System;
@@ -237,34 +203,145 @@ namespace mywebapp.Controllers
             scheme ??= OpenIdConnectDefaults.AuthenticationScheme;
             var redirectUrl = Url.Content("~/");
             var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
-            properties.Items["campaign_id"] = "1234";
             return Challenge(properties, scheme);
         }
 
     }
 }
-
 ```
 
 在 `_LoginPartial.cshtml` 视图中，将登录链接更改为你的控制器
 
-```
+```html
 <form method="get" asp-area="MicrosoftIdentity" asp-controller="MyAccount" asp-action="SignIn">
 ```
 
-在 `Startup.cs` 调用的 `OnRedirectToIdentityProvider` 中，可以读取自定义参数：
+### <a name="pass-the-azure-ad-b2c-policy-id"></a>传递 Azure AD B2C 策略 ID
+
+以下代码片段使用 SignIn 和 SignUp 操作演示了自定义 `MyAccountController` 。 该操作将名为 `policy` 的参数传递到身份验证库。 这使你能够为特定操作提供正确的 Azure AD B2C 策略 ID。
+
+```csharp
+public IActionResult SignIn([FromRoute] string scheme)
+{
+    scheme ??= OpenIdConnectDefaults.AuthenticationScheme;
+    var redirectUrl = Url.Content("~/");
+    var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+    properties.Items["policy"] = "B2C_1_SignIn";
+    return Challenge(properties, scheme);
+}
+
+public IActionResult SignUp([FromRoute] string scheme)
+{
+    scheme ??= OpenIdConnectDefaults.AuthenticationScheme;
+    var redirectUrl = Url.Content("~/");
+    var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+    properties.Items["policy"] = "B2C_1_SignUp";
+    return Challenge(properties, scheme);
+}
+```
+
+在 `_LoginPartial.cshtml` 视图中，将任何其他身份验证链接（例如注册或编辑个人资料）的 `asp-controller` 值更改为 `MyAccountController`。
+
+### <a name="pass-custom-parameters"></a>传递自定义参数
+
+以下代码片段使用 SignIn 操作演示了自定义 `MyAccountController`。 该操作将名为 `campaign_id` 的参数传递到身份验证库。
+
+```csharp
+public IActionResult SignIn([FromRoute] string scheme)
+{
+    scheme ??= OpenIdConnectDefaults.AuthenticationScheme;
+    var redirectUrl = Url.Content("~/");
+    var properties = new AuthenticationProperties { RedirectUri = redirectUrl };
+    properties.Items["policy"] = "B2C_1_SignIn";
+    properties.Items["campaign_id"] = "1234";
+    return Challenge(properties, scheme);
+}
+```
+
+完成[支持高级方案](#support-advanced-scenarios)过程。 然后，在 `OnRedirectToIdentityProvider` 方法中读取自定义参数：
 
 ```csharp
 private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 {
     // Read the custom parameter
-    var campaign_id = (context.Properties.Items.ContainsKey("campaign_id"))
-    
+    var campaign_id = context.Properties.Items.FirstOrDefault(x => x.Key == "campaign_id").Value;
+
     // Add your custom code here
+    if (campaign_id != null)
+    {
+        // Send parameter to authentication request
+        context.ProtocolMessage.SetParameter("campaign_id", campaign_id);
+    }
     
     await Task.CompletedTask.ConfigureAwait(false);
 }
 ```
+
+## <a name="secure-your-logout-redirect"></a>保护注销重定向
+
+注销后，用户将重定向到 `post_logout_redirect_uri` 参数中指定的 URI，而不管为应用程序指定的回复 URL 为何。 但是，如果传递了有效的 `id_token_hint` 并启用了“注销请求中需要 ID 令牌”，则在执行重定向之前，Azure AD B2C 将验证 `post_logout_redirect_uri` 的值是否与应用程序的某个已配置重定向 URI 相匹配。 如果没有为应用程序配置匹配的回复 URL，则会显示一条错误消息，而用户不会重定向。
+
+若要在应用程序中支持安全的注销重定向，请首先按照[帐户控制器](enable-authentication-web-application-options.md#add-the-account-controller)和[支持高级方案](#support-advanced-scenarios)部分中的步骤进行操作。 然后按照以下步骤进行操作：
+
+1. 在 `MyAccountController.cs` 控制器中，使用以下代码段添加 SignOut 操作：
+
+    ```csharp
+    [HttpGet("{scheme?}")]
+    public async Task<IActionResult> SignOutAsync([FromRoute] string scheme)
+    {
+        scheme ??= OpenIdConnectDefaults.AuthenticationScheme;
+
+        //obtain the id_token
+        var idToken = await HttpContext.GetTokenAsync("id_token");
+        //send the id_token value to the authentication middleware
+        properties.Items["id_token_hint"] = idToken;            
+
+        return SignOut(properties,CookieAuthenticationDefaults.AuthenticationScheme,scheme);
+    }
+    ```
+
+1. 在 Startup.cs 类中，解析 `id_token_hint` 值并将该值附加到身份验证请求。 以下代码片段演示如何将 `id_token_hint` 值传递给身份验证请求：
+
+    ```csharp
+    private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
+    {
+        var id_token_hint = context.Properties.Items.FirstOrDefault(x => x.Key == "id_token_hint").Value;
+        if (id_token_hint != null)
+        {
+            // Send parameter to authentication request
+            context.ProtocolMessage.SetParameter("id_token_hint", id_token_hint);
+        }
+
+        await Task.CompletedTask.ConfigureAwait(false);
+    }
+    ```
+
+1. 在 `ConfigureServices` 函数中，为控制器添加 `SaveTokens` 选项可以访问 `id_token` 值： 
+
+    ```csharp
+    services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+        .AddMicrosoftIdentityWebApp(options =>
+        {
+            Configuration.Bind("AzureAdB2C", options);
+            options.Events ??= new OpenIdConnectEvents();        
+            options.Events.OnRedirectToIdentityProvider += OnRedirectToIdentityProviderFunc;
+            options.SaveTokens = true;
+        });
+    ```
+
+1. 在 appsettings.json 配置文件中，将注销重定向 URI 路径添加到 `SignedOutCallbackPath` 密钥。
+
+    ```json
+    "AzureAdB2C": {
+      "Instance": "https://<your-tenant-name>.b2clogin.com",
+      "ClientId": "<web-app-application-id>",
+      "Domain": "<your-b2c-domain>",
+      "SignedOutCallbackPath": "/signout/<your-sign-up-in-policy>",
+      "SignUpSignInPolicyId": "<your-sign-up-in-policy>"
+    }
+    ```
+
+在以上示例中，传递给注销请求的 post_logout_redirect_uri 的格式为：`https://your-app.com/signout/<your-sign-up-in-policy>`。 必须将此 URL 添加到应用程序注册的答复 URL。
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 

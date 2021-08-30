@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/22/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 924f7248733ee573cc68b137fccb829b2a79af31
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 06945efc6be8700955b1a475d00d21951102c214
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296355"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492786"
 ---
 # <a name="azure-digital-twins-query-language-reference-operators"></a>Azure 数字孪生查询语言参考：运算符
 
@@ -28,15 +28,15 @@ ms.locfileid: "108296355"
 
 ### <a name="example"></a>示例
 
-下面是使用 `=` 的示例。 下面的查询返回温度值等于 80 的孪生体。
+下面是一个使用 `=` 的示例。 下面的查询返回温度值等于 80 的孪生体。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="EqualityExample":::
 
-下面是使用 `<` 的示例。 下面的查询返回温度值小于 80 的孪生体。
+下面是一个使用 `<` 的示例。 下面的查询返回温度值小于 80 的孪生体。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="ComparisonExample":::
 
-下面是使用 `<=` 的示例。 下面的查询返回温度值小于或等于 80 的孪生体。
+下面是一个使用 `<=` 的示例。 下面的查询返回温度值小于或等于 80 的孪生体。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="OrderedComparisonExample":::
 
@@ -45,11 +45,11 @@ ms.locfileid: "108296355"
 支持包含系列中的以下运算符。
 
 * `IN`：如果给定的值在一组值中，则计算结果为 true。
-* `NIN`：如果给定的值不在一组值中，则计算结果为 true。
+* `NIN`：如果给定值不在一组值中，则计算结果为 true。
 
 ### <a name="example"></a>示例
 
-下面是使用 `IN` 的示例。 下面的查询返回其 `owner` 属性是列表中几个选项之一的孪生体。
+下面是一个使用 `IN` 的示例。 下面的查询返回其 `owner` 属性是列表中几个选项之一的孪生体。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="InExample":::
 
@@ -62,15 +62,15 @@ ms.locfileid: "108296355"
 
 ### <a name="example"></a>示例
 
-下面是使用 `AND` 的示例。 下面的查询返回满足温度低于 80 且湿度低于 50 这两个条件的孪生体。
+下面是一个使用 `AND` 的示例。 下面的查询返回满足温度低于 80 且湿度低于 50 这两个条件的孪生体。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="AndExample":::
 
-下面是使用 `OR` 的示例。 下面的查询返回至少满足温度低于 80 和湿度低于 50 这两个条件之一的孪生体。
+下面是一个使用 `OR` 的示例。 下面的查询返回至少满足温度低于 80 和湿度低于 50 这两个条件之一的孪生体。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="OrExample":::
 
-下面是使用 `NOT` 的示例。 下面的查询返回不满足温低于 80 这一条件的孪生体。
+下面是一个使用 `NOT` 的示例。 下面的查询返回不满足温度低于 80 这一条件的孪生体。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="NotExample":::
 

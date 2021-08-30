@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: 060d24a331a7f15c4ee687c919fe8c2b7cdf2ca6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ea640bc4f5b191c3b01ed2a00ecb1d247f1a602d
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971467"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112240281"
 ---
 # <a name="how-to-create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>如何创建 Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "111971467"
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
-1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 2. 在左侧导航菜单中，依次选择“商业市场” > “概述”。
 3. 在“概述”页上，依次选择“+ 新建产品/服务” > “Dynamics 365 for Customer Engagement 和 Power Apps”。
 
@@ -61,7 +61,7 @@ ms.locfileid: "111971467"
 - 通过 Microsoft 启用应用许可证管理 - 通过 Microsoft 管理你的应用许可证。 若要让客户在没有许可证的情况下运行该应用的基本功能，并在其购买许可证后运行高级功能，请选中“允许客户安装应用（即使未分配许可证）”框。 如果选择第二个框，则需要将解决方案包配置为不需要许可证。
 
     > [!NOTE]
-    > 发布产品/服务后无法更改此设置。 若要了解有关此设置的详细信息，请参阅[通过 Microsoft 进行第三方应用许可证管理](third-party-license.md)。
+    > 发布产品/服务后无法更改此设置。 若要了解有关此设置的详细信息，请参阅 [ISV 应用许可证管理](isv-app-license.md)。
 
 - **立即获取（免费）** - 列出向客户免费提供的产品/服务。
 - **免费试用（列表）** - 向客户列出包含免费试用版链接的产品/服务。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。

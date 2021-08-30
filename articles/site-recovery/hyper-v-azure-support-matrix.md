@@ -4,12 +4,12 @@ description: 汇总了使用 Azure Site Recovery 执行 Hyper-V VM 到 Azure 的
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
-ms.openlocfilehash: b36711e9249764df5d170fa955b8d72d1a2656f1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 338bbf8fdaffb284aa4a34aea0ad20108d4e54fb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960860"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440851"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -24,6 +24,9 @@ ms.locfileid: "111960860"
 --- | ---
 使用 Virtual Machine Manager 的 Hyper-V <br> <br>| 对于托管在 System Center Virtual Machine Manager 结构中的 Hyper-V 主机，可针对在其上运行的 VM 执行到 Azure 的灾难恢复。<br/><br/> 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。<br/><br/> 由 Virtual Machine Manager 托管 Hyper-V 主机时，也可以执行到辅助本地站点的灾难恢复。 若要了解有关此方案的详细信息，请阅读[此教程](hyper-v-vmm-disaster-recovery.md)。
 不使用 Virtual Machine Manager 的 Hyper-V | 对于并非由 Virtual Machine Manager 托管的 Hyper-V 主机，可针对在其上运行的 VM 执行到 Azure 的灾难恢复。<br/><br/> 可以在 Azure 门户中部署此方案，也可使用 PowerShell 进行部署。
+
+> [!NOTE]
+> 在同一 Hyper-V 主机上同时配置 Azure 备份和 Azure Site Recovery 会导致复制出现问题，因此不支持这样做。
 
 ## <a name="on-premises-servers"></a>本地服务器
 

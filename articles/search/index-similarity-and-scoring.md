@@ -2,24 +2,24 @@
 title: 相似性和评分概述
 titleSuffix: Azure Cognitive Search
 description: 说明相似性和评分的概念，以及开发人员可以执行哪些操作来自定义评分结果。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: puneet-hariharan-MSFT
+ms.author: puhariharan
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 72243f896b2cf7dbab61a42514bee634da28d4c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cacf6097234a5a2c7ec5261623fe653e509b8d9f
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676317"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981423"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 认知搜索中的相似性和评分
 
-本文介绍 Azure 认知搜索中的两个相似性排名算法。 它还引入了两个相关特性：计分概要文件（调整搜索分数的条件）和 featuresMode 参数（打开搜索分数以显示更多详细信息）。 
+本文介绍 Azure 认知搜索用于确定哪些匹配文档与查询最相关的两种相似度排名算法。 本文还引入了两种相关功能：计分概要文件（调整搜索分数的条件）和 featuresMode 参数（打开搜索分数以显示更多详细信息） 。
 
-第三种语义重新排名算法目前为公共预览版。 若要了解详细信息，请从[语义搜索概述](semantic-search-overview.md)开始。
+> [!NOTE]
+> 第三种[语义重新排名算法](semantic-ranking.md)目前为公共预览版。 若要了解详细信息，请从[语义搜索概述](semantic-search-overview.md)开始。
 
 ## <a name="similarity-ranking-algorithms"></a>相似性排名算法
 

@@ -7,18 +7,18 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 07/19/2021
 ms.author: erhopf
-ms.openlocfilehash: 4a78e233a41bf3b6682f52bac912528d6bcab76c
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: deb5db6f205c02812330539c403fbe7b80d4784c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816325"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747525"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>为 Azure 认知服务启用诊断日志记录
 
-本指南逐步说明如何为 Azure 认知服务启用诊断日志记录。 这些日志提供频繁生成的有关资源操作的丰富数据用于识别问题和调试。 在继续之前，你必须拥有至少订阅了一个认知服务（例如[必应 Web 搜索](./bing-web-search/overview.md)、[语音服务](./speech-service/overview.md)或 [LUIS](./luis/what-is-luis.md)）的 Azure 帐户。
+本指南逐步说明如何为 Azure 认知服务启用诊断日志记录。 这些日志提供频繁生成的有关资源操作的丰富数据用于识别问题和调试。 在继续之前，你必须拥有至少订阅了一个认知服务（例如[语音服务](./speech-service/overview.md)或 [LUIS](./luis/what-is-luis.md)）的 Azure 帐户。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -28,7 +28,8 @@ ms.locfileid: "107816325"
 * [Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) - 灵活的日志搜索和分析工具，可用于分析 Azure 资源生成的原始日志。
 
 > [!NOTE]
-> 还有其他配置选项可供使用。 有关详细信息，请参阅[从 Azure 资源收集和使用日志数据](../azure-monitor/essentials/platform-logs-overview.md)。
+> * 还有其他配置选项可供使用。 有关详细信息，请参阅[从 Azure 资源收集和使用日志数据](../azure-monitor/essentials/platform-logs-overview.md)。
+> * 诊断日志记录中的“跟踪”仅可用于[自定义问答](./qnamaker/how-to/get-analytics-knowledge-base.md?tabs=v2)。
 
 ## <a name="enable-diagnostic-log-collection"></a>启用诊断日志收集  
 
@@ -37,7 +38,7 @@ ms.locfileid: "107816325"
 > [!NOTE]
 > 若要使用 PowerShell 或 Azure CLI 启用此功能，请参考[从 Azure 资源收集和使用日志数据](../azure-monitor/essentials/platform-logs-overview.md)中提供的说明。
 
-1. 导航到 Azure 门户。 然后找到并选择某个认知服务资源。 例如，订阅了必应 Web 搜索。   
+1. 导航到 Azure 门户。 然后找到并选择某个认知服务资源。 例如，语音服务订阅。   
 2. 接下来，在左侧导航菜单中找到“监视”，然后选择“诊断设置”。   此屏幕包含以前为此资源创建的所有诊断设置。
 3. 如果你想要使用以前创建的某个资源，现在可以选择它。 否则，请选择“+ 添加诊断设置”。 
 4. 输入设置名称。 依次选择“存档到存储帐户”、“发送到 Log Analytics”。  

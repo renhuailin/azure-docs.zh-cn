@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78468c9528c4502ce691dec183c261b9636325f8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 34a6a353593d733cf50325049cd88034fb16c9ca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094323"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723118"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中管理管理单元
 
@@ -42,7 +42,9 @@ ms.locfileid: "110094323"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 在 Azure 门户中，转到 Azure AD。 然后，在左侧窗格中，选择“管理单元”。
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
+
+1. 选择“Azure Active Directory” > “管理单元” 。
 
     ![Azure AD 中“管理单元”链接的屏幕截图。](./media/admin-units-manage/nav-to-admin-units.png)
 
@@ -84,11 +86,15 @@ POST /administrativeUnits
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 在 Azure 门户中，转到“Azure AD”，然后选择“管理单元” 。 
-1. 键入要删除的管理单元，然后选择“删除”。 
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
+
+1. 选择“Azure Active Directory” > “管理单元” 。
+ 
+1. 键入要删除的管理单元，然后选择“删除”。
+
 1. 若要确认是否要删除管理单元，请选择“是”。 此时会删除管理单元。
 
-![管理单元的“删除”按钮和确认窗口的屏幕截图。](./media/admin-units-manage/select-admin-unit-to-delete.png)
+    ![管理单元的“删除”按钮和确认窗口的屏幕截图。](./media/admin-units-manage/select-admin-unit-to-delete.png)
 
 ### <a name="powershell"></a>PowerShell
 

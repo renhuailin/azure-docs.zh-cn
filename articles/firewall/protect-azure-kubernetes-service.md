@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 08/03/2021
 ms.author: victorh
-ms.openlocfilehash: 51af9ff4972f5edef02426a6e81e8582123c9a7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b331180e40d1baf92a3c1408f3e003a257fa114a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98107848"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738027"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>使用 Azure 防火墙保护 Azure Kubernetes 服务 (AKS) 部署
 
@@ -21,6 +21,10 @@ Azure Kubernetes 服务 (AKS) 提供 Azure 上的托管 Kubernetes 群集。 它
 Kubernetes 根据虚拟机的可用计算资源和每个容器的资源要求，协调虚拟机群集并安排容器在这些虚拟机上运行。 容器将分组到 Pod（Kubernetes 的基本操作单位）中，这些 Pod 可以缩放到你所需的状态。
 
 为了便于管理和操作，AKS 群集中的节点需要访问特定的端口和完全限定的域名 (FQDN)。 这些操作可以是与 API 服务器通信，或者下载并安装核心 Kubernetes 群集组件和节点安全更新。 Azure 防火墙可以帮助你锁定环境并筛选出站流量。
+
+有关概述，请参阅 Jorge Cortes 的以下视频：
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RWIcAo]
 
 请参阅本文中的指南，使用 Azure 防火墙为 Azure Kubernetes 群集提供额外保护。
 

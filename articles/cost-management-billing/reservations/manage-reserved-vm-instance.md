@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 06/27/2021
 ms.author: banders
-ms.openlocfilehash: e8a5e6d40b745efb7fcd50919cd27664b3406b7d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cee0acf851d82ba09867b8d66c09a17b21e7af45
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862842"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112989050"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -62,15 +62,8 @@ ms.locfileid: "107862842"
 
 若要允许其他人管理预留，可通过两种方式实现：
 
-- 委托单个预留订单的访问管理：
-    1. 登录 [Azure 门户](https://portal.azure.com)。
-    1. 选择“所有服务” > “预订”以列出自己有权访问的预订。
-    1. 选择要将访问权限委托给其他用户的预订。
-    1. 从预留详细信息中，选择预留订单。
-    1. 选择“访问控制 (IAM)”。
-    1. 选择“添加角色分配” > “角色” > “所有者”。 如果希望提供有限的访问权限，请选择其他角色。
-    1. 键入要添加为“所有者”的用户的电子邮件地址。
-    1. 选择用户，再选择“保存”。
+- 通过向单个预留订单的资源范围内的用户分配“所有者”角色，委托该预留订单的访问权限管理。 如果希望提供有限的访问权限，请选择其他角色。  
+     有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 - 将用户作为计费管理员添加到企业协议或 Microsoft 客户协议：
     - 对于企业协议，请添加具有“企业管理员”角色的用户，以便查看和管理适用于企业协议的所有预留订单。 具有“企业管理员（只读）”角色的用户可以查看预留。 除非使用访问控制 (IAM) 将部门管理员和帐户所有者显式添加到预留中，否则他们无法查看相关预留。 有关详细信息，请参阅[管理 Azure 企业角色](../manage/understand-ea-roles.md)。
@@ -81,8 +74,18 @@ ms.locfileid: "107862842"
 
 ### <a name="how-billing-administrators-view-or-manage-reservations"></a>计费管理员如何查看或管理预留
 
-1. 请转到“成本管理 + 计费”，然后在页面左侧选择“预留事务” 。
-2. 如果具有所需的计费权限，便可以查看和管理预留。 如果看不到任何预留，请确保使用创建预留的 Azure AD 租户登录。
+如果你是计费管理员，请使用以下步骤来查看和管理所有预留项与预留交易。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)，导航到“成本管理 + 计费”。
+    - 如果你是 EA 管理员，请在左侧菜单中选择“计费范围”，然后在计费范围列表中选择一个范围。
+    - 如果你是 Microsoft 客户协议计费配置文件所有者，请在左侧菜单中选择“计费配置文件”。 在计费配置文件列表中选择一个计费配置文件。
+2. 在左侧菜单中，选择“产品 + 服务” > “预留项” 。
+3. 此时将显示 EA 注册或计费配置文件的完整预留项列表。
+4. 计费管理员可以通过选择预留项，然后在出现的窗口中选择“授予访问权限”，来取得预留项的所有权。
+
+## <a name="change-billing-subscription-for-an-azure-reservation"></a>更改 Azure 预留的计费订阅
+
+我们不允许在购买预留后更改计费订阅。 如果要更改订阅，请使用交换过程为预留设置合适的计费订阅。
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>将一个预订拆分为两个预订
 
@@ -182,4 +185,3 @@ ms.locfileid: "107862842"
  - [续订预留](reservation-renew.md)
  - [租户之间的传输](troubleshoot-reservation-transfers-between-tenants.md)
  - [从 Azure 日志中查找预留项购买者](find-reservation-purchaser-from-logs.md)
- - [续订预留项](reservation-renew.md)

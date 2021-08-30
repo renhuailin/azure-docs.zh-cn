@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 534efc4723c0a526bd8d607299bbf3ec4effaa86
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: c1d6d7fbac720a6a0f8793e75d08733ce01e0707
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111895003"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112322343"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>为高级 Azure Cache for Redis 实例配置异地复制
 
@@ -38,6 +38,7 @@ ms.locfileid: "111895003"
 
 异地复制不支持某些功能：
 
+- 异地复制不支持区域冗余。
 - 异地复制不支持持久性。
 - 如果这两个缓存都启用了群集功能并且具有相同数目的分片，则支持群集。
 - 支持同一 VNET 中的缓存。
@@ -45,7 +46,7 @@ ms.locfileid: "111895003"
 
 完成异地复制配置后，链接缓存对会有以下限制：
 
-- 辅助链接缓存为只读状态；这意味着只能从中读取，但不能向其写入任何数据。 如果选择从 Geo-Secondary 实例读取，务必要注意在 Geo-Primary 和 Geo-Secondary 之间发生完整的数据同步（当 Geo-Primary 或 Geo-Secondary 更新时发生，也会在一些重启情况中发生）时，则 Geo-Secondary 实例将在任何针对它的 Redis 操作中引发错误（表明完整的数据同步正在进行中），直到 Geo-Primary 和 Geo-Secondary 之间完成完整的数据同步。 应生成从异地辅助数据库读取的应用程序，以便在异地辅助数据库引发此类错误时回退到异地主数据库。 
+- 辅助链接缓存为只读状态；这意味着只能从中读取，但不能向其写入任何数据。 如果选择从 Geo-Secondary 实例读取，务必要注意在 Geo-Primary 和 Geo-Secondary 之间发生完整的数据同步（当 Geo-Primary 或 Geo-Secondary 更新时发生，也会在一些重启情况中发生）时，则 Geo-Secondary 实例将在任何针对它的 Redis 操作中引发错误（表明完整的数据同步正在进行中），直到 Geo-Primary 和 Geo-Secondary 之间完成完整的数据同步。 应生成从异地辅助数据库读取的应用程序，以便在异地辅助数据库引发此类错误时回退到异地主数据库。
 - 添加链接前辅助链接缓存中的任何数据都会被删除。 但如果以后删除了异地复制，复制的数据则会保留在辅助链接缓存中。
 - 链接缓存时无法[缩放](cache-how-to-scale.md)任一缓存。
 - 如果缓存已启用群集功能，则无法[更改分片数目](cache-how-to-premium-clustering.md)。
@@ -58,27 +59,27 @@ ms.locfileid: "111895003"
 
 ## <a name="add-a-geo-replication-link"></a>添加异地复制链接
 
-1. 若要将两个缓存链接到一起以进行异地复制，请先在要用作主链接缓存的缓存的“资源”菜单中单击“异地复制”。 接下来，在“异地复制”边栏选项卡中单击“添加缓存复制链接”。
+1. 若要将两个缓存链接到一起以进行异地复制，请先在要用作主链接缓存的缓存的“资源”菜单中单击“异地复制”。 接下来，在左侧的“异地复制”中单击“添加缓存复制链接”。 
 
     ![添加链接](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
-2. 在“兼容的缓存”列表中，单击所需辅助缓存的名称。 如果列表中未显示辅助缓存，请确认是否符合辅助缓存的[异地复制先决条件](#geo-replication-prerequisites)。 若要按区域筛选缓存，请在地图中单击相应的区域，以便仅显示“兼容的缓存”列表中的缓存。
+1. 在“兼容的缓存”列表中，选择所需辅助缓存的名称。 如果列表中未显示辅助缓存，请确认是否符合辅助缓存的[异地复制先决条件](#geo-replication-prerequisites)。 若要按区域筛选缓存，请在地图中选择相应的区域，以便仅显示“兼容的缓存”列表中的缓存。
 
     ![异地复制兼容缓存](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
-    
+
     还可以使用上下文菜单启动链接过程或查看辅助缓存的详细信息。
 
     ![异地复制上下文菜单](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
 
-3. 单击“链接”将两个缓存链接在一起并开始复制过程。
+1. 选择“链接”将两个缓存链接在一起并开始复制过程。
 
     ![链接缓存](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
 
-4. 可以在“异地复制”边栏选项卡上查看复制过程的进度。
+1. 可以使用左侧的“异地复制”查看复制过程的进度。
 
     ![链接状态](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
 
-    还可以在主缓存和辅助缓存的“概述”边栏选项卡上查看链接状态。
+    还可以使用“概述”查看左侧的主缓存和辅助缓存的链接状态。
 
     ![此屏幕截图重点演示了如何查看主缓存和辅助缓存的链接状态。](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
@@ -90,8 +91,8 @@ ms.locfileid: "111895003"
 
 ## <a name="remove-a-geo-replication-link"></a>删除异地复制链接
 
-1. 若要删除两个缓存之间的链接并停止异地复制，请在“异地复制”边栏选项卡中，单击“取消链接缓存”。 
-    
+1. 若要删除两个缓存之间的链接并停止异地复制，请从左侧的“异地复制”中单击“取消链接缓存”。
+
     ![取消链接缓存](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
 
     取消链接过程完成后，辅助缓存可用于读取和写入。
@@ -201,5 +202,5 @@ ms.locfileid: "111895003"
 
 了解有关 Azure Cache for Redis 功能的详细信息。
 
-* [Azure Cache for Redis 服务层](cache-overview.md#service-tiers)
-* [Azure Cache for Redis 的高可用性](cache-high-availability.md)
+- [Azure Cache for Redis 服务层](cache-overview.md#service-tiers)
+- [Azure Cache for Redis 的高可用性](cache-high-availability.md)

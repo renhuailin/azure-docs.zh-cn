@@ -5,35 +5,17 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 12/04/2020
+ms.date: 06/30/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6e819e1078ac90ef16070702e7961122b06c1d6f
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 112daf900c3a7447dc5279ea9704ea94eb8ec9ea
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107880442"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113225240"
 ---
-在预览版阶段，NFS 具有以下限制：
+尽管为预览版，NFS Azure 文件共享仍具有以下限制：
 
-- NFS 4.1 目前只支持[协议规范](https://tools.ietf.org/html/rfc5661)中的大部分功能。 有些功能（如所有类型的委托和回叫、锁定升级和降级、Kerberos 身份验证和加密）不受支持。
-- 如果大多数请求是以元数据为中心的，那么，与读取/写入/更新操作相比，延迟将会更加严重。
-- 只能在新存储帐户（而不是现有存储帐户）中启用/创建 NFS 共享
-- 只支持管理平面 REST API。 数据平面 REST API 不可用，这意味着存储资源管理器之类的工具将无法用于 NFS 共享，你也无法在 Azure 门户中浏览 NFS 共享数据。
-- 目前不支持 AzCopy。
 - 只适用于高级层。
-- NFS 共享只接受数字 UID/GID。 为了避免客户端发送字母数字 UID/GID，应禁用 ID 映射。
-- 在使用专用链接时，只能从单个 VM 上的一个存储帐户装载共享。 尝试从其他存储帐户装载共享将会失败。
-- 最好依赖于分配到主要组的权限。 由于一个已知的 bug，分配到非主要组用户的权限有时可能会导致访问被拒绝。
-
-### <a name="azure-storage-features-not-yet-supported"></a>尚不支持 Azure 存储功能
-
-另外，以下 Azure 文件存储功能也不可与 NFS 共享配合使用：
-
-- 基于标识的身份验证
-- Azure 备份支持
-- 快照
-- 软删除
-- 完全支持传输中加密（有关详细信息，请参阅 [NFS 安全性](../articles/storage/files/storage-files-compare-protocols.md#security)）
-- Azure 文件同步（只适用于 NFS 4.1 不支持的 Windows 客户端）
+- 如果在注册 NFS 功能之前创建了一个存储帐户，则无法在该存储帐户中创建 NFS 文件共享。 只能在注册 NFS 功能后创建的存储帐户中创建 NFS 文件共享。

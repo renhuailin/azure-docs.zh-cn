@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 9eca2fe92109bcd91fe5943e53d1e18734401984
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: bebae71179153479d66891924ba2f7679838d8bc
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111814352"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112297038"
 ---
 # <a name="sap-lama-connector-for-azure"></a>适用于 Azure 的 SAP LaMa 连接器
 
@@ -132,7 +132,7 @@ Azure 连接器可使用服务主体对 Microsoft Azure 授权。 遵循以下�
 
 ## <a name="provision-a-new-adaptive-sap-system"></a>预配新的自适应 SAP 系统
 
-可以手动部署新虚拟机，或使用[快速入门存储库](https://github.com/Azure/azure-quickstart-templates)中的 Azure 模板之一。 该存储库包含 [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs)、[SAP NetWeaver 应用程序服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)和[数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-database)的模板。 还可以使用这些模板来预配新主机作为系统副本/复本等的一部分。
+可以手动部署新虚拟机，或使用[快速入门存储库](https://github.com/Azure/azure-quickstart-templates)中的 Azure 模板之一。 该存储库包含 [SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-lama-ascs)、[SAP NetWeaver 应用程序服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-lama-apps)和[数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-lama-database)的模板。 还可以使用这些模板来预配新主机作为系统副本/复本等的一部分。
 
 我们建议对你想要通过 SAP LaMa 管理的所有虚拟机使用单独的子网，而不要使用动态 IP 地址，以防止在部署新虚拟机并且未准备好 SAP 实例时发生 IP 地址“窃用”。
 
@@ -448,7 +448,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 
 在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *as1-di-0*。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="errors-and-warnings-during-discover"></a>发现期间的错误和警告
 

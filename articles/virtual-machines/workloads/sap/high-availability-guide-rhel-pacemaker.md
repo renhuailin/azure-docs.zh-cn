@@ -12,14 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2021
+ms.custom: subject-rbac-steps
+ms.date: 07/26/2021
 ms.author: radeltch
-ms.openlocfilehash: af8523486b42af8c0722a56bdd813d6449692c14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf9aa35951ef770cda56a68e2d6200b3ea64611d
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676882"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721081"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -54,7 +55,7 @@ ms.locfileid: "101676882"
 * SAP 说明 [2243692] 包含 Azure 中的 Linux 上的 SAP 许可的相关信息。
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
-* [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机部署（本文）][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [SAP HANA system replication in pacemaker cluster](https://access.redhat.com/articles/3004101)（Pacemaker 群集中的 SAP HANA 系统复制）
@@ -90,7 +91,7 @@ ms.locfileid: "101676882"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   通过将池附加到 Azure 市场 PAYG RHEL 映像，可以有效地对 RHEL 使用情况进行双重计费：一次是对 PAYG 映像进行计费，另一次是对附加池中的 RHEL 权利进行计费。 为了缓解这种情况，Azure 现在提供了 BYOS RHEL 映像。 有关详细信息，请参阅[此处](../redhat/byos.md)。  
+   通过将池附加到 Azure 市场 PAYG RHEL 映像，可以有效地对 RHEL 使用情况进行双重计费：一次是对 PAYG 映像进行计费，另一次是对附加池中的 RHEL 权利进行计费。 为了缓解这种情况，Azure 现在提供了 BYOS RHEL 映像。 有关详细信息，请参阅 [Red Hat Enterprise Linux 自带订阅 Azure 映像](../redhat/byos.md)。
 
 1. [A] 启用 RHEL for SAP 存储库。 如果使用已启用 RHEL SAP HA 的映像，则不需要执行此步骤。  
 
@@ -271,19 +272,9 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** 向服务主体分配自定义角色
 
-将在最后一章中创建的自定义角色“Linux 隔离代理角色”分配给服务主体。 不要再使用“所有者”角色！
-
-1. 转到 https://portal.azure.com
-1. 打开“所有资源”边栏选项卡
-1. 选择第一个群集节点的虚拟机
-1. 选择“访问控制(IAM)”
-1. 单击“添加角色分配”
-1. 选择角色“Linux 隔离代理角色”
-1. 输入前面创建的应用程序名称
-1. 点击“保存”
-
-为第二个群集节点重复上述步骤。
-
+将在最后一章中创建的自定义角色“Linux 隔离代理角色”分配给服务主体。 不要再使用“所有者”角色！ 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../../role-based-access-control/role-assignments-portal.md)。   
+请确保为两个群集节点分配角色。    
+      
 ### <a name="1-create-the-stonith-devices"></a>**[1]** 创建 STONITH 设备
 
 编辑虚拟机的权限后，可以在群集中配置 STONITH 设备。
@@ -298,15 +289,19 @@ sudo pcs property set stonith-timeout=900
 
 对于 RHEL 7.X，请使用以下命令配置隔离设备：    
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
-power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 pcmk_delay_max=15 \
 op monitor interval=3600
 </code></pre>
 
 对于 RHEL 8.X，请使用以下命令配置隔离设备：  
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
-power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 pcmk_delay_max=15 \
 op monitor interval=3600
 </code></pre>
+
+> [!TIP]
+> 仅在双节点 Pacemaker 群集中配置 `pcmk_delay_max` 属性。 若要详细了解如何在双节点 Pacemaker 群集中防止隔离争用，请参阅[在双节点群集中延迟隔离以防止“隔离死亡”方案的隔离争用](https://access.redhat.com/solutions/54829)。 
+ 
 
 > [!IMPORTANT]
 > 对监视和隔离操作进行反序列化。 因此，如果存在运行时间较长的监视操作和同时发生的隔离事件，则群集故障转移不会延迟，因为监视操作已经在运行。  
@@ -319,6 +314,101 @@ op monitor interval=3600
 > [!TIP]
 >Azure 隔离代理要求与[使用标准 ILB 的 VM 的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)中所述的公共终结点建立出站连接并提供可能的解决方案。  
 
+
+## <a name="optional-stonith-configuration"></a>可选的 STONITH 配置  
+
+> [!TIP]
+> 本部分仅适用于需要配置特殊隔离设备 `fence_kdump` 的情况。  
+
+如果需要在 VM 内收集诊断信息，则根据隔离代理 `fence_kdump` 配置额外的 STONITH 设备可能会很有用。 在调用其他隔离方法之前，`fence_kdump` 代理可检测进入 kdump 故障恢复的节点，并允许故障恢复服务完成。 请注意，在使用 Azure VM 时，`fence_kdump` 无法替代传统的隔离机制，例如 Azure 隔离代理。   
+
+> [!IMPORTANT]
+> 请注意，当 `fence_kdump` 被配置为第一级 stonith 时，它将分别引入隔离操作延迟和应用程序资源故障转移延迟。  
+> 
+> 如果成功检测到故障转储，隔离将延迟到故障恢复服务完成。 如果故障节点无法访问或未响应，则将按配置的迭代次数和 `fence_kdump` 超时确定的时间延迟隔离。 有关更多详细信息，请参阅[如何在 Red Hat Pacemaker 群集中配置 fence_kdump](https://access.redhat.com/solutions/2876971)。  
+> 建议的 fence_kdump 超时时间可能需要根据具体环境进行调整。
+>     
+> 建议仅在需要收集 VM 内的诊断信息时才配置 `fence_kdump` stonith，并且始终与 Azure 隔离代理等传统隔离方法结合使用。   
+
+以下 Red Hat KB 包含有关配置 `fence_kdump` stonith 的重要信息：
+
+* [如何在 Red Hat Pacemaker 群集中配置 fence_kdump](https://access.redhat.com/solutions/2876971)
+* [如何使用 Pacemaker 在 RHEL 群集中配置/管理 STONITH 级别](https://access.redhat.com/solutions/891323)
+* [在 kexec-tools 版本低于 2.0.14 的 RHEL 6 或 7 HA 群集中，fence_kdump 失败并显示“X 秒后超时”](https://access.redhat.com/solutions/2388711)
+* 若要了解如何更改默认超时，请参阅[如何配置 kdump 以与 RHEL 6、7、8 HA 加载项一起使用](https://access.redhat.com/articles/67570)
+* 若要了解如何在使用 `fence_kdump` 时减少故障转移延迟，请参阅[添加 fence_kdump 配置时是否可减少故障转移的预期延迟](https://access.redhat.com/solutions/5512331)
+   
+除了 Azure 隔离代理配置，还可执行以下可选步骤来添加 `fence_kdump` 作为第一级 STONITH 配置。 
+
+
+1. **[A]** 验证 kdump 是否处于活动状态并已配置。  
+    ```
+    systemctl is-active kdump
+    # Expected result
+    # active
+    ```
+2. **[A]** 安装 `fence_kdump` 隔离代理。  
+    ```
+    yum install fence-agents-kdump
+    ```
+3. **[1]** 在群集中创建 `fence_kdump` stonith 设备。   
+    <pre><code>
+    pcs stonith create rsc_st_kdump fence_kdump pcmk_reboot_action="off" <b>pcmk_host_list="prod-cl1-0 prod-cl1-1</b>" timeout=30
+    </code></pre>
+
+4. **[1]** 配置 stonith 级别，以便首先启用 `fence_kdump` 隔离机制。  
+    <pre><code>
+    pcs stonith create rsc_st_kdump fence_kdump pcmk_reboot_action="off" <b>pcmk_host_list="prod-cl1-0 prod-cl1-1</b>"
+    pcs stonith level add 1 <b>prod-cl1-0</b> rsc_st_kdump
+    pcs stonith level add 1 <b>prod-cl1-1</b> rsc_st_kdump
+    pcs stonith level add 2 <b>prod-cl1-0</b> rsc_st_azure
+    pcs stonith level add 2 <b>prod-cl1-1</b> rsc_st_azure
+    # Check the stonith level configuration 
+    pcs stonith level
+    # Example output
+    # Target: <b>prod-cl1-0</b>
+    # Level 1 - rsc_st_kdump
+    # Level 2 - rsc_st_azure
+    # Target: <b>prod-cl1-1</b>
+    # Level 1 - rsc_st_kdump
+    # Level 2 - rsc_st_azure
+    </code></pre>
+
+5. **[A]** 允许 `fence_kdump` 所需的端口通过防火墙
+    ```
+    firewall-cmd --add-port=7410/udp
+    firewall-cmd --add-port=7410/udp --permanent
+    ```
+
+6. **[A]** 确保 `initramfs` 映像文件包含 `fence_kdump` 和 `hosts` 文件。 有关详细信息，请参阅[如何在 Red Hat Pacemaker 群集中配置 fence_kdump](https://access.redhat.com/solutions/2876971)。   
+    ```
+    lsinitrd /boot/initramfs-$(uname -r)kdump.img | egrep "fence|hosts"
+    # Example output 
+    # -rw-r--r--   1 root     root          208 Jun  7 21:42 etc/hosts
+    # -rwxr-xr-x   1 root     root        15560 Jun 17 14:59 usr/libexec/fence_kdump_send
+    ```
+
+7. **[A]** 在 `/etc/kdump.conf` 中执行 `fence_kdump_nodes` 配置，避免在某些 `kexec-tools` 版本中 `fence_kdump` 失败并显示超时。 有关详细信息，请参阅 [kexec-tools 2.0.15 或更高版本没有指定 fence_kdump_nodes 时，fence_kdump 超时](https://access.redhat.com/solutions/4498151)和[在 kexec-tools 版本低于 2.0.14 的 RHEL 6 或 7 高可用性群集中，fence_kdump 失败并显示“X 秒后超时”](https://access.redhat.com/solutions/2388711)。 双节点群集的示例配置如下所示。 在 `/etc/kdump.conf` 中进行更改后，必须重新生成 kdump 映像。 这可通过重启 `kdump` 服务来实现。  
+
+    <pre><code>
+    vi /etc/kdump.conf
+    # On node <b>prod-cl1-0</b> make sure the following line is added
+    fence_kdump_nodes  <b>prod-cl1-1</b>
+    # On node <b>prod-cl1-1</b> make sure the following line is added
+    fence_kdump_nodes  <b>prod-cl1-0</b>
+
+    # Restart the service on each node
+    systemctl restart kdump
+    </code></pre>
+
+8. 通过使节点故障来测试配置。 有关详细信息，请参阅[如何在 Red Hat Pacemaker 群集中配置 fence_kdump](https://access.redhat.com/solutions/2876971)。  
+
+    > [!IMPORTANT]
+    > 如果群集已在高效使用中，请相应地计划测试，因为节点故障会影响应用程序。   
+
+    ```
+    echo c > /proc/sysrq-trigger
+    ```
 ## <a name="next-steps"></a>后续步骤
 
 * [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]

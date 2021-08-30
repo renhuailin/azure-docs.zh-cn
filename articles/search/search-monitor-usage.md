@@ -7,26 +7,27 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 5cd9438eecc973524d8e5f7218ad0c92ab627f87
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 01/27/2021
+ms.openlocfilehash: 5e9e09508591e2b6e58b6bae17df281c23a5129d
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559871"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414784"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>监视 Azure 认知搜索的操作和活动
 
-本文概述了针对 Azure 认知搜索的监视概念和工具。 若要进行全面的监视，可以将内置功能和 Azure Monitor 等附加服务结合使用。
+本文概述了针对 Azure 认知搜索的监视概念和工具。 若要进行全面的监视，应将内置功能和 Azure Monitor 等附加服务结合使用。
 
 总的来说，你可以跟踪以下内容：
 
-* 服务：运行状况/可用性和对服务配置的更改。
-* 存储：已用和可用空间，包含每种内容类型相对于服务层允许的配额的计数。
+* 搜索服务：运行状况和对服务配置的更改。
+* 存储消耗：已使用和可用。
+* 针对索引、索引器和其他对象的对象限制，以及每个类型的相对于服务层[允许的最大值](search-limits-quotas-capacity.md)的计数。
 * 查询活动：查询量、延迟和受限或已删除的查询。 记录的查询请求需要使用 [Azure Monitor](#add-azure-monitor)。
 * 索引活动：需要使用 Azure Monitor 进行[诊断日志记录](#add-azure-monitor)。
 
-搜索服务不支持按用户进行身份验证，因此在日志中找不到标识信息。
+搜索服务不支持按用户进行身份验证，因此在日志中找不到用户标识信息。
 
 ## <a name="built-in-monitoring"></a>内置监视
 
@@ -48,9 +49,9 @@ Azure 认知搜索按照连续 30 天的计划维护内部数据，以便报告�
 
 <a name="monitoring-apis"> </a>
 
-### <a name="apis-useful-for-monitoring"></a>有助于进行监视的 API
+### <a name="rest-apis-useful-for-monitoring"></a>有助于进行监视的 REST API
 
-可以使用以下 API 检索门户中的“监视”和“使用情况”选项卡中找到的相同信息。
+可以使用 [Postman](search-get-started-rest.md) 和以下 API 来检索在门户的“监视和使用情况”选项卡中找到的相同信息。 需要提供[管理 API 密钥](search-security-api-keys.md)才能获取系统信息。
 
 * [获取服务统计信息](/rest/api/searchservice/get-service-statistics)
 * [获取索引统计信息](/rest/api/searchservice/get-index-statistics)

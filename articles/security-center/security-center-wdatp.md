@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 06/10/2021
+ms.date: 08/16/2021
 ms.author: memildin
-ms.openlocfilehash: df7d3d880161895b6cc883a15f7adf2def839a53
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 529a88c2af5c47cb329006b58f2439ab95f40ba2
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062255"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228746"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>通过安全中心的集成式 EDR 解决方案 Microsoft Defender for Endpoint 来保护终结点
 
@@ -33,40 +33,38 @@ Microsoft Defender for Endpoint 是一种整体的、云交付的终结点安全
 
 ## <a name="availability"></a>可用性
 
-| 方面                          | 详细信息                                                                                                                                                                                                                                                                                                       |
-|---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 发布状态：                  | 正式发布版 (GA)                                                                                                                                                                                                                                                                                      |
-| 定价：                        | 需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)                                                                                                                                                                                                                                             |
-| 支持的平台：            |  • 运行 Windows 的 Azure 计算机<br> • 运行 Windows 的 Azure Arc 计算机|
-| 用于检测的受支持 Windows 版本：  |  • Windows Server 2019、2016、2012 R2 和 2008 R2 SP1<br> • [Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md)<br> • [Windows 10 企业版多会话](../virtual-desktop/windows-10-multisession-faq.yml)（前身为企业版虚拟桌面 (EVD)）|
-| 不支持的操作系统：  |  • Windows 10（EVD 或 WVD 除外）<br> • Linux|
-| 所需角色和权限： | 启用/禁用集成：“安全管理员”或“所有者” <br>查看安全中心内的 MDATP 警报：“安全读取者”、“读取者”、“资源组参与者”、“资源组所有者”、“安全管理员”、“订阅所有者”或“订阅参与者”      |
-| 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov                                                        |
-|                                 |                                                                                                                                                                                                                                                                                                               |
+| 方面                                       | 详细信息                                                                                                                                                                                                                                                                               |
+|----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 发布状态：                               | • 与适用于 Windows 的 Defender for Endpoint 集成 - 正式发布 (GA)<br> • 与适用于 Linux 的 Defender for Endpoint 集成 - 预览版                                                                                                                                     |
+| 定价：                                     | 需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)                                                                                                                                                                                                           |
+| 支持的环境：                      | :::image type="icon" source="./media/icons/yes-icon.png"::: 运行 Windows/Linux 的 Azure Arc 计算机<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 运行 Linux 的 Azure VM（[支持的版本](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint-linux)）<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 运行 Windows Server 2019, 2016, 2012 R2, 2008 R2 SP1、[Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md)、[Windows 10 企业版多会话](../virtual-desktop/windows-10-multisession-faq.yml)（前身为“企业版虚拟桌面”(EVD)）的 Azure VM<br>:::image type="icon" source="./media/icons/no-icon.png"::: 运行 Windows 10（除 EVD 或 WVD 以外）的 Azure VM           |
+| 所需角色和权限：              | • 启用/禁用集成：“安全管理员”或“所有者” <br>• 查看安全中心内的 Defender for Endpoint 警报：“安全读取者”、“读取者”、“资源组参与者”、“资源组所有者”、“安全管理员”、“订阅所有者”或“订阅参与者”       |
+| 云：                                      | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 政府<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure 中国世纪互联                                                         |
+|                                              |                                                                                                                                                                                                                                                                                       |
 
-## <a name="microsoft-defender-for-endpoint-features-in-security-center"></a>安全中心内的 Microsoft Defender for Endpoint 功能
+## <a name="benefits-of-integrating-microsoft-defender-for-endpoint-with-security-center"></a>将 Microsoft Defender for Endpoint 与安全中心集成的优势
 
 Microsoft Defender for Endpoint 提供：
 
-- 高级入侵后检测传感器。 适用于 Windows 计算机的 Defender for Endpoint 传感器可收集大量行为信号。
+- 高级入侵后检测传感器。 Defender for Endpoint 传感器可收集计算机中的大量行为信号。
 
 - 基于分析的、由云提供支持的入侵后检测。 Defender for Endpoint 可快速应对不断变化的威胁。 它使用高级分析和大数据。 Defender for Endpoint 借助 Intelligent Security Graph 的强大功能得以增强，并结合 Windows、Azure 和 Office 中的信号来检测未知威胁。 它提供可以采取措施的警报，并可让你快速做出响应。
 
 - **威胁智能**。 Defender for Endpoint 在识别攻击者工具、方法和过程时生成警报。 它使用 Microsoft 威胁猎人和安全团队生成的，并由合作伙伴提供的情报补充的数据。
 
-通过将 Defender for Endpoint 与安全中心集成，可受益于以下附加功能：
+通过将 Defender for Endpoint 与安全中心集成，可受益于以下额外功能：
 
-- 自动加入。 安全中心会自动为安全中心监视的所有 Windows 服务器启用 Microsoft Defender for Endpoint 传感器。
+- 自动加入。 安全中心会在连接安全中心的所有支持的计算机上自动启用 Defender for Endpoint 传感器。
 
-- 单一虚拟管理平台。 安全中心控制台显示 Microsoft Defender for Endpoint 警报。 若要进一步调查，请使用 Microsoft Defender for Endpoint 本身的门户页面，其中提供其他信息，如警报流程树和事件图。 此外，还可以看到详细的机器时间线，其中显示了最长六个月的历史时段的每种行为。
+- 单一虚拟管理平台。 安全中心门户页面会显示 Defender for Endpoint 警报。 若要进一步调查，请使用 Microsoft Defender for Endpoint 本身的门户页面，其中提供其他信息，如警报流程树和事件图。 此外，还可以看到详细的机器时间线，其中显示了最长六个月的历史时段的每种行为。
 
     :::image type="content" source="./media/security-center-wdatp/microsoft-defender-security-center.png" alt-text="Microsoft Defender for Endpoint 自带安全中心" lightbox="./media/security-center-wdatp/microsoft-defender-security-center.png":::
 
 ## <a name="what-are-the-requirements-for-the-microsoft-defender-for-endpoint-tenant"></a>对 Microsoft Defender for Endpoint 租户有哪些要求？
 
-使用 Azure 安全中心监视服务器时，系统会自动创建 Microsoft Defender for Endpoint 租户。 
+使用安全中心监视计算机时，系统会自动创建 Defender for Endpoint 租户。
 
-- **位置：** Defender for Endpoint 收集的数据存储在租户所在的地理位置（在预配期间确定）。 客户数据（采用假名）也可能存储在美国的中央存储和处理系统中。 配置位置后，无法对其进行更改。 如果自己有 Microsoft Defender for Endpoint 许可，并且需要将数据移动到其他位置，请联系 Microsoft 支持部门重置租户。
+- **位置：** Defender for Endpoint 收集的数据存储在租户所在的地理位置（在预配期间确定）。 客户数据（采用假名）也可能存储在美国的中央存储和处理系统中。 配置位置后，无法对其进行更改。 如果自己有 Microsoft Defender for Endpoint 许可，并且需要将数据移动到其他位置，请[联系 Microsoft 支持部门](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)重置租户。
 - **移动订阅：** 如果在 Azure 租户之间移动了 Azure 订阅，还需要执行一些手动预备步骤，然后安全中心才会部署 Defender for Endpoint。 有关完整的详细信息，请[联系 Microsoft 支持人员](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
 
@@ -76,26 +74,120 @@ Microsoft Defender for Endpoint 提供：
 
 确认计算机满足 Defender for Endpoint 的必需要求：
 
-1. 确保已根据需要将计算机连接到 Azure：
+1. 确保已根据需要将计算机连接到 Azure 和 Internet：
 
-    - 对于 Windows 服务器，请按照[配置设备代理和 Internet 连接设置](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)中所述配置网络设置
-    - 对于本地计算机，请将其连接到 Azure Arc，如[将混合计算机连接到已启用 Azure Arc 的服务器](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中所述
-    - 对于 Windows Server 2019 和 [Windows 虚拟桌面 (WVD)](../virtual-desktop/overview.md) 计算机，请确认计算机具有 MicrosoftMonitoringAgent 扩展。
-    
+    - **Azure 虚拟机（Windows 或 Linux）** ：请按照配置设备代理和 Internet 连接设置：[Windows](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet) 或 [Linux](/microsoft-365/security/defender-endpoint/linux-static-proxy-configuration) 中所述配置网络设置。
+
+    - **本地计算机**：请将目标计算机连接到 Azure Arc，如[将混合计算机连接到已启用 Azure Arc 的服务器](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)中所述。
+
 1. 启用适用于服务器的 Azure Defender。 请参阅[快速入门：启用 Azure Defender](enable-azure-defender.md)。
-1. 如果已在服务器上许可并部署了 Microsoft Defender for Endpoint，请使用[脱离 Windows 服务器](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)中所述的过程将其删除。
+
 1. 如果已在 Azure 租户之间移动订阅，还需要执行一些手动预备步骤。 有关完整的详细信息，请[联系 Microsoft 支持人员](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
 
+
+
 ### <a name="enable-the-integration"></a>启用集成
-1. 从安全中心的菜单中选择“定价和设置”，然后选择要更改的订阅。
+
+### <a name="windows"></a>[**Windows**](#tab/windows)
+
+1. 在安全中心的菜单中，选择“定价与设置”，然后选择包含要接收 Defender for Endpoint 的 Windows 计算机的订阅。
+
 1. 选择“集成”。
+
 1. 选择“允许 Microsoft Defender for Endpoint 访问我的数据”，然后选择“保存” 。
 
     :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="启用 Azure 安全中心与 Microsoft 的 EDR 解决方案 Microsoft Defender for Endpoint 的集成":::
 
-    Azure 安全中心会自动将服务器加入 Microsoft Defender for Endpoint。 加入过程可能最多需要 24 小时。
+    Azure 安全中心会自动将你的计算机加入 Microsoft Defender for Endpoint。 加入过程可能最多需要 24 小时。
 
+### <a name="linux-preview"></a>[**Linux**（预览版）](#tab/linux)
+
+在预览期间，你将通过以下两种方式之一将 Defender for Endpoint 部署到 Linux 计算机 - 具体取决于是否已将其部署到你的 Windows 计算机：
+
+- [适用于 Windows 的 Azure Defender 和 Microsoft Defender for Endpoint 现有用户](#existing-users-of-azure-defender-and-microsoft-defender-for-endpoint-for-windows)
+- [从未启用过与适用于 Windows 的 Microsoft Defender for Endpoint 的集成的新用户](#new-users-whove-never-enabled-the-integration-with-microsoft-defender-for-endpoint-for-windows)
+
+
+### <a name="existing-users-of-azure-defender-and-microsoft-defender-for-endpoint-for-windows"></a>适用于 Windows 的 Azure Defender 和 Microsoft Defender for Endpoint 现有用户
+
+如果已启用与适用于 Windows 的 Defender for Endpoint 的集成，可以完全控制何时以及是否将 Defender for Endpoint 部署到 Linux 计算机 。
+
+1. 在安全中心的菜单中，选择“定价与设置”，然后选择包含要接收 Defender for Endpoint 的 Linux 计算机的订阅。
+
+1. 选择“集成”。 如果按下图所示已选择“允许 Microsoft Defender for Endpoint 访问我的数据”复选框，则可知集成已启用：
+
+    :::image type="content" source="./media/security-center-wdatp/integration-enabled.png" alt-text="已启用 Azure 安全中心与 Microsoft Defender for Endpoint 的 Microsoft 的 EDR 解决方案的集成":::
+
+    > [!NOTE]
+    > 如果未选择，请按[从未启用过与适用于 Windows 的 Microsoft Defender for Endpoint 的集成的新用户](#new-users-whove-never-enabled-the-integration-with-microsoft-defender-for-endpoint-for-windows)中的说明操作。
+
+    在此预览版中，以下复选框下面新增了一个按钮“为 Linux 计算机启用”：
+
+    :::image type="content" source="./media/security-center-wdatp/deploy-to-linux.png" alt-text="预览版引入了一个按钮，用于手动控制部署适用于 Linux 的 Defender for Endpoint 的时间":::
+
+1. 将 Linux 计算机添加到集成
+
+    1. 选择“为 Linux 计算机启用”。
+    1. 选择“保存”。
+    1. 在确认提示中，验证信息，如果想继续操作，可选择“启用”。 
+
+    :::image type="content" source="./media/security-center-wdatp/enable-for-linux-result.png" alt-text="确认 Azure 安全中心与适用于 Linux 的 Microsoft Defender for Endpoint 的 Microsoft 的 EDR 解决方案的集成":::
+
+    Azure 安全中心将执行以下操作：
+
+    - 自动将 Linux 计算机载入 Defender for Endpoint
+    - 忽略运行其他基于 fanotify 的解决方案的任何计算机（详见 [Linux 系统要求中](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint-linux#system-requirements)规定的 `fanotify` 内核选项）
+    - 检测任何以前安装的 Defender for Endpoint，并将其重新配置为与安全中心集成
+
+    加入过程可能最多需要 24 小时。
+
+    > [!NOTE]
+    > 下次返回到 Azure 门户的此页面时，不会显示“为 Linux 计算机启用”按钮。 若要对 Linux 禁用集成，需要同时对 Windows 禁用集成，方法是清除“允许 Microsoft Defender for Endpoint 访问我的数据”复选框并选择“保存” 。
+
+
+1. 若要验证 Linux 计算机上的 Defender for Endpoint 安装情况，请在计算机上运行以下 shell 命令：
+
+    `mdatp health`
+
+    如果安装了 Microsoft Defender for Endpoint，会显示其运行状况：
+
+    `healthy : true`
+
+    `licensed: true`
+
+    此外，在 Azure 门户中，名为 `MDE.Linux` 的计算机上会显示新的 Azure 扩展。
+
+### <a name="new-users-whove-never-enabled-the-integration-with-microsoft-defender-for-endpoint-for-windows"></a>从未启用过与适用于 Windows 的 Microsoft Defender for Endpoint 的集成的新用户
+
+如果从未为 Windows 启用过集成，则“允许 Microsoft Defender for Endpoint 访问我的数据”选项将启用安全中心，将 Defender for Endpoint 同时部署到 Windows 和 Linux 计算机。
+
+1. 在安全中心的菜单中，选择“定价与设置”，然后选择包含要接收 Defender for Endpoint 的 Linux 计算机的订阅。
+
+1. 选择“集成”。
+
+1. 选择“允许 Microsoft Defender for Endpoint 访问我的数据”，然后选择“保存” 。
+
+    Azure 安全中心将执行以下操作：
+
+    - 自动将 Windows 和 Linux 计算机载入 Defender for Endpoint
+    - 忽略运行其他基于 fanotify 的解决方案的任何 Linux 计算机（详见 [Linux 系统要求中](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint-linux#system-requirements)规定的 `fanotify` 内核选项）
+    - 检测任何以前安装的 Defender for Endpoint，并将其重新配置为与安全中心集成
+
+    加入过程可能最多需要 24 小时。
+
+1. 若要验证 Linux 计算机上的 Defender for Endpoint 安装情况，请在计算机上运行以下 shell 命令：
+
+    `mdatp health`
+
+    如果安装了 Microsoft Defender for Endpoint，会显示其运行状况：
+
+    `healthy : true`
+
+    `licensed: true`
+
+    此外，在 Azure 门户中，名为 `MDE.Linux` 的计算机上会显示新的 Azure 扩展。
+--- 
 
 ## <a name="access-the-microsoft-defender-for-endpoint-portal"></a>访问 Microsoft Defender for Endpoint 门户
 
@@ -105,9 +197,18 @@ Microsoft Defender for Endpoint 提供：
 
 1. 打开 [Microsoft Defender 安全中心门户](https://securitycenter.windows.com/)。 有关该门户的功能和图标的详细信息，请参阅 [Microsoft Defender 安全中心门户概述](/windows/security/threat-protection/microsoft-defender-atp/portal-overview)。 
 
+
+
+
+
+
 ## <a name="send-a-test-alert"></a>发送测试警报
 
-若要生成良性的 Microsoft Defender for Endpoint 测试警报，请执行以下操作：
+若要从 Defender for Endpoint 中生成良性测试警报，请选择相关的终结点操作系统的选项卡：
+
+### <a name="windows"></a>[**Windows**](#tab/windows)
+
+对于运行 Windows 的终结点，请执行以下操作：
 
 1. 创建文件夹“C:\test-MDATP-test”。
 1. 使用远程桌面访问计算机。
@@ -119,49 +220,71 @@ Microsoft Defender for Endpoint 提供：
     ```
     :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="命令提示符窗口，其中显示用于生成测试警报的命令。":::
 
-1. 如果该命令成功，Azure 安全中心仪表板和 Microsoft Defender for Endpoint 门户中会显示一条新警报。 此警报可能要在几分钟之后才显示。
+    如果该命令成功，Azure 安全中心仪表板和 Microsoft Defender for Endpoint 门户中会显示一条新警报。 此警报可能要在几分钟之后才显示。
 1. 若要在安全中心查看该警报，请转到“安全警报” > “可疑的 PowerShell 命令行” 。
 1. 在调查窗口中，选择相应的链接转到 Microsoft Defender for Endpoint 门户。
 
     > [!TIP]
     > 此警报由“信息”严重性触发。
 
+
+### <a name="linux"></a>[**Linux**](#tab/linux)
+
+对于运行 Windows 的终结点，请执行以下操作：
+
+1. 从 https://aka.ms/LinuxDIY 下载测试警报工具
+1. 提取 zip 文件的内容并执行以下 shell 脚本：
+
+    `./mde_linux_edr_diy`
+
+    如果该命令成功，Azure 安全中心仪表板和 Microsoft Defender for Endpoint 门户中会显示一条新警报。 此警报可能要在几分钟之后才显示。
+
+1. 若要在安全中心查看警报，请转到“安全警报” > “枚举包含敏感数据的文件” 。
+1. 在调查窗口中，选择相应的链接转到 Microsoft Defender for Endpoint 门户。
+
+    > [!TIP]
+    > 此警报触发时显示为“低”严重性。
+
+--- 
+
+
+
 ## <a name="faq---security-centers-integration-with-microsoft-defender-for-endpoint"></a>常见问题解答 - 安全中心与 Microsoft Defender for Endpoint 的集成
 
-- [我的计算机上运行的“MDE.Windows”扩展是什么？](#whats-this-mdewindows-extension-running-on-my-machine)
+- [计算机上运行的这个 “MDE.Windows”/“MDE.Linux”扩展是什么？](#whats-this-mdewindows--mdelinux-extension-running-on-my-machine)
 - [Microsoft Defender for Endpoint 有哪些许可要求？](#what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint)
-- [如果我已有 Microsoft Defender for Endpoint 许可证，能否获得 Azure Defender 的折扣？](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
+- [如果已有 Microsoft Defender for Endpoint 许可证，能否获得 Azure Defender 的折扣？](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
 - [如何从第三方 EDR 工具进行切换？](#how-do-i-switch-from-a-third-party-edr-tool)
 
-### <a name="whats-this-mdewindows-extension-running-on-my-machine"></a>我的计算机上运行的“MDE.Windows”扩展是什么？
+### <a name="whats-this-mdewindows--mdelinux-extension-running-on-my-machine"></a>计算机上运行的这个“MDE.Windows”/“MDE.Linux”扩展是什么？
 
-过去，Microsoft Defender for Endpoint 由 Log Analytics 代理预配。 [扩展支持以包括 Windows Server 2019](release-notes.md#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga) 时，我们还添加了一个扩展来执行自动载入。 
+过去，Microsoft Defender for Endpoint 由 Log Analytics 代理预配。 [扩展支持以包括 Windows Server 2019](release-notes.md#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga) 和 Linux 时，我们还添加了一个扩展来执行自动载入。 
 
-安全中心会自动将 MDE.Windows 扩展部署到运行以下内容的计算机：
+安全中心会自动将扩展部署到运行以下内容的计算机：
 
-- Windows Server 2019 
-- Windows 10 虚拟桌面 (WVD)
+- Windows Server 2019。
+- Windows 10 虚拟桌面 (WVD)。
 - 其他版本的 Windows Server，前提是安全中心无法识别操作系统版本（例如，使用自定义 VM 映像时）。 在这种情况下，Microsoft Defender for Endpoint 仍由 Log Analytics 代理预配。
+- Linux
 
-> [!TIP]
-> 如果你删除 MDE。Windows 扩展，系统不会删除 Microsoft Defender for Endpoint。 有关登出，请参阅[登出 Windows 服务器](/microsoft-365/security/defender-endpoint/configure-server-endpoints?view=o365-worldwide)。
+> [!IMPORTANT]
+> 如果你删除 MDE。Windows 扩展，系统不会删除 Microsoft Defender for Endpoint。 有关登出，请参阅[登出 Windows 服务器](/microsoft-365/security/defender-endpoint/configure-server-endpoints)。
 
 ### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint 有哪些许可要求？
 适用于服务器的 Azure Defender 附带的 Defender for Endpoint 无需额外付费。 或者，可以为 50 台及以上数量的计算机单独购买许可。
 
-### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>如果我已有 Microsoft Defender for Endpoint 许可证，能否获得 Azure Defender 的折扣？
+### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>如果已有 Microsoft Defender for Endpoint 许可证，能否获得 Azure Defender 的折扣？
 如果你已获得 Microsoft Defender for Endpoint 的许可证，则无需为 Azure Defender 许可证的相应部分付费。
 
-若要请求折扣，请与安全中心的支持团队联系，并提供相关的工作区 ID、区域以及为给定工作区中的计算机应用的 Microsoft Defender for Endpoint 许可证数。
+若要请求折扣，请[联系安全中心的支持团队](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 需要提供相关的工作区 ID、区域以及为给定工作区中的计算机应用的 Microsoft Defender for Endpoint 许可证数。
 
-该折扣将从批准之日起生效，不具追溯效力。
+该折扣将从批准之日起生效，且不具追溯效力。
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>如何从第三方 EDR 工具进行切换？
 有关从非 Microsoft 终结点解决方案进行切换的完整说明，请参阅 Microsoft Defender for Endpoint 文档：[迁移概述](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration)。
-  
 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [Platforms and features supported by Azure Security Center](security-center-os-coverage.md)（Azure 安全中心支持的平台和功能）
-- [管理 Azure 安全中心的安全建议](security-center-recommendations.md)：了解建议如何帮助你保护 Azure 资源。
+- [了解建议是如何帮助你保护 Azure 资源的](security-center-recommendations.md)

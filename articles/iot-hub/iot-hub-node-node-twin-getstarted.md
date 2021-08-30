@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
 ms.custom: mqtt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 1084951d63d8d7766dcf275336340e7ec93a7e9d
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: bdc1822422f3e8ff7a9ca63b7bcf4627cd0e8470
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890611"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729845"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>设备孪生入门 (Node.js)
 
@@ -233,8 +233,8 @@ ms.locfileid: "107890611"
 
 使用下列资源了解如何执行以下操作：
 
-* 通过 [IoT 中心入门](quickstart-send-telemetry-node.md)教程学习如何从设备发送遥测数据，
+* 通过 [IoT 中心入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)教程学习如何从设备发送遥测数据，
 
 * 按照[使用所需属性配置设备](tutorial-device-twins.md)教程使用设备孪生的所需属性配置设备，
 
-* 按照[使用直接方法](quickstart-control-device-node.md)教程以交互方式控制设备（例如从用户控制的应用打开风扇）。
+* 按照[使用直接方法](./quickstart-control-device.md?pivots=programming-language-nodejs)快速入门以交互方式控制设备（例如从用户控制的应用打开风扇）。

@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cef84415deb9b108dce4016fc76265f077695898
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 18e7132d6c767ecd1a7cd085d5b563a89d6af300
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110662807"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446078"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>适用于 Linux 的 InfiniBand 驱动程序扩展
 
 此扩展在运行 Linux 的启用了 InfiniBand 和 SR-IOV（“r”大小）的 [H 系列](../sizes-hpc.md)和 [N 系列](../sizes-gpu.md) VM 上安装 InfiniBand OFED 驱动程序。 扩展为 Connect-X NIC 安装适当的驱动程序，具体取决于 VM 系列。
 
-[此处](../workloads/hpc/enable-infiniband.md#manual-installation)提供有关 OFED 驱动程序的手动安装的说明。
+[在 HPC VM 上启用 InfiniBand](../workloads/hpc/enable-infiniband.md#manual-installation) 中提供了有关 OFED 驱动程序的手动安装的说明。
 
 扩展也适用于为 [Windows VM](hpc-compute-infiniband-windows.md) 安装 InfiniBand 驱动程序。
 
@@ -75,7 +75,7 @@ ms.locfileid: "110662807"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | 字符串 |
+| publisher | Microsoft.HpcCompute | string |
 | type | InfiniBandDriverLinux | string |
 | typeHandlerVersion | 1.1 | int |
 

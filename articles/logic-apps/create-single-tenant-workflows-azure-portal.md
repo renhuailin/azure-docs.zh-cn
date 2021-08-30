@@ -1,28 +1,28 @@
 ---
-title: 使用 Azure 门户在单租户 Azure 逻辑应用中创建工作流
-description: 使用单租户 Azure 逻辑应用和 Azure 门户创建集成应用、数据、服务和系统的自动化工作流。
+title: 在 Azure 门户中使用单租户 Azure 逻辑应用（标准版）创建工作流
+description: 在 Azure 门户中使用单租户 Azure 逻辑应用（标准版）创建集成应用、数据、服务和系统的自动化工作流。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: 63b3de255269d921f38374adc246fb923fdda100
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 2178b3d4ea9c1cc650685b90fa5dc2cdf6551191
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110497081"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112116606"
 ---
-# <a name="create-an-integration-workflow-using-single-tenant-azure-logic-apps-and-the-azure-portal"></a>使用单租户 Azure 逻辑应用和 Azure 门户创建集成工作流
+# <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-the-azure-portal"></a>在 Azure 门户中使用单租户 Azure 逻辑应用（标准版）创建集成工作流
 
-本文演示如何使用逻辑应用（标准版）资源类型创建在单租户 Azure 逻辑应用环境中运行的自动化集成工作流示例。 如果刚开始使用新的单租户模型和逻辑应用资源类型，请查看[单租户与多租户和集成服务环境](single-tenant-overview-compare.md)。
+本文介绍如何使用逻辑应用（标准版）资源类型和 Azure 门户创建在单租户 Azure 逻辑应用环境中运行的自动化集成工作流示例。 该资源类型可以托管多个[有状态和无状态工作流](single-tenant-overview-compare.md#stateful-stateless)。 同样，同一逻辑应用和租户中的工作流的运行过程与重新设计的 Azure 逻辑应用运行时相同，因此它们共享相同的资源并提供更好的性能。 有关单租户 Azure 逻辑应用产品/服务的详细信息，请查看[单租户与多租户以及集成服务环境](single-tenant-overview-compare.md)。
 
 虽然此示例工作流是基于云的工作流，并且只有两个步骤，但可以从数百个操作创建工作流，这些操作可以跨云、本地和混合环境连接各种应用、数据、服务和系统。 示例工作流从内置的“请求”触发器开始，然后执行 Office 365 Outlook 操作。 触发器为工作流创建可调用终结点，并等待来自任何调用方的入站 HTTPS 请求。 当触发器收到请求并触发时，会向指定电子邮件地址发送电子邮件以及触发器中所选的输出来运行下一个操作。
 
 > [!TIP]
 > 如果没有 Office 365 帐户，可以使用任何其他可从电子邮件帐户发送消息的可用操作，例如使用 Outlook.com。
-> 
-> 若要改为使用 Visual Studio Code 创建此示例工作流，请按照[使用单租户 Azure 逻辑应用和 Visual Studio Code 创建集成工作流](create-single-tenant-workflows-visual-studio-code.md)中的步骤进行操作。 
+>
+> 要改为在 Visual Studio Code 中创建此工作流示例，请按照[使用单租户 Azure 逻辑应用和 Visual Studio Code 创建集成工作流](create-single-tenant-workflows-visual-studio-code.md)中的步骤进行操作。 
 > 可使用这两个选项在相同类型的环境中开发、运行和部署逻辑应用工作流。 
 > 但是借助 Visual Studio Code，你可以在开发环境中本地开发、测试和运行工作流。
 
@@ -71,12 +71,12 @@ ms.locfileid: "110497081"
 
 1. 在“创建逻辑应用”页面中的“基本信息”选项卡上，提供有关你的逻辑应用资源的以下信息： 
 
-   | 属性 | 必须 | Value | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 要用于你的逻辑应用的 Azure 订阅。 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 你在其中创建逻辑应用和相关资源的 Azure 资源组。 此资源名称在各个区域中必须唯一，并且只能包含字母、数字、连字符 ( **-** )、下划线 ( **_** )、括号 ( **()** ) 和句点 ( **.** )。 <p><p>此示例创建一个名为 `Fabrikam-Workflows-RG` 的资源组。 |
    | **逻辑应用名称** | 是 | <*logic-app-name*> | 用于逻辑应用的名称。 此资源名称在各个区域中必须唯一，并且只能包含字母、数字、连字符 ( **-** )、下划线 ( **_** )、括号 ( **()** ) 和句点 ( **.** )。 <p><p>此示例创建一个名为 `Fabrikam-Workflows` 的逻辑应用。 <p><p>注意：你的逻辑应用名称会自动添加后缀 `.azurewebsites.net`，因为“逻辑应用(标准版)”资源由 Azure Functions 提供支持，后者使用相同的应用命名约定 。 |
-   | **发布** | 是 | <*deployment-environment*> | 逻辑应用的部署目标。 默认选择“工作流”，目的是部署到单租户 Azure 逻辑应用。 Azure 会创建一个空的逻辑应用资源，你必须在其中添加第一个工作流。 <p><p>注意：目前，**Docker 容器** 选项要求[自定义位置](../azure-arc/kubernetes/conceptual-custom-locations.md)位于已启用 Azure Arc 的 Kubernetes 群集上，以便将它与[已启用 Azure Arc 的逻辑应用（预览版）](azure-arc-enabled-logic-apps-overview.md)配合使用。 逻辑应用资源位置、自定义位置和群集必须相同。 |
+   | **发布** | 是 | <*deployment-environment*> | 逻辑应用的部署目标。 默认选择“工作流”，目的是部署到单租户 Azure 逻辑应用。 Azure 会创建一个空的逻辑应用资源，你必须在其中添加第一个工作流。 <p><p>注意：目前，**Docker 容器** 选项要求 [自定义位置](../azure-arc/kubernetes/conceptual-custom-locations.md)位于已启用 Azure Arc 的 Kubernetes 群集上，以便将它与 [已启用 Azure Arc 的逻辑应用（预览版）](azure-arc-enabled-logic-apps-overview.md)配合使用。 逻辑应用资源位置、自定义位置和群集必须相同。 |
    | **区域** | 是 | <*Azure-region*> | 用于创建资源组和资源的位置。 如果选择了“Docker 容器”，请选择自定义位置。 <p><p>此示例将示例逻辑应用部署到 Azure 并使用“美国西部”。 |
    |||||
 
@@ -86,7 +86,7 @@ ms.locfileid: "110497081"
 
 1. 在“托管”选项卡上，提供有关要用于逻辑应用的存储解决方案和托管计划的以下信息。
 
-   | 属性 | 必须 | Value | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **存储帐户** | 是 | <*Azure-storage-account-name*> | 要用于存储事务的 [Azure 存储帐户](../storage/common/storage-account-overview.md)。 <p><p>此资源名称在各个区域中必须唯一，长度为 3-24 个字符，并且仅包含数字和小写字母。 选择一个现有的帐户，或者创建一个新帐户。 <p><p>此示例创建一个名为 `fabrikamstorageacct` 的存储帐户。 |
    | **计划类型** | 是 | <托管计划> | 要用于部署逻辑应用的托管计划。 <p><p>有关详细信息，请查看[托管计划和定价层](logic-apps-pricing.md#standard-pricing)。 |
@@ -209,9 +209,9 @@ ms.locfileid: "110497081"
 
    ![屏幕截图显示了设计器和“发送电子邮件”详细信息窗格，该窗格中的“参数”选项卡处于选中状态。](./media/create-single-tenant-workflows-azure-portal/send-email-action-details.png)
 
-   | 属性 | 必须 | Value | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
-   | **收件人** | 是 | <*your-email-address*> | 电子邮件收件人，这可以是你自己的电子邮件地址（用于测试）。 此示例使用虚构的电子邮件 `sophiaowen@fabrikam.com`。 |
+   | **To** | 是 | <*your-email-address*> | 电子邮件收件人，这可以是你自己的电子邮件地址（用于测试）。 此示例使用虚构的电子邮件 `sophiaowen@fabrikam.com`。 |
    | **主题** | 是 | `An email from your example workflow` | 电子邮件主题 |
    | **正文** | 是 | `Hello from your example workflow!` | 电子邮件正文内容 |
    ||||
@@ -247,7 +247,7 @@ ms.locfileid: "110497081"
 
    ![屏幕截图显示了 Azure 门户和“API 连接”窗格，其中的“JSON 视图”处于选中状态。](./media/create-single-tenant-workflows-azure-portal/logic-app-connection-view-json.png)
 
-1. 查找、复制 `connectionRuntimeUrl` 属性值并将其保存到一个安全的位置，以便可以使用此信息设置防火墙。
+1. 复制 `connectionRuntimeUrl` 属性值并将其保存到一个安全的位置，以便可以使用此信息设置防火墙。
 
    ![屏幕截图显示了处于选定状态的“connectionRuntimeUrl”属性值。](./media/create-single-tenant-workflows-azure-portal/logic-app-connection-runtime-url.png)
 
@@ -294,7 +294,7 @@ ms.locfileid: "110497081"
 
    1. 在“所有集合”下，为要创建的用于组织你的请求的集合提供一个名称，按 Enter，然后选择“保存到 <*collection-name*>”。 此示例使用 `Logic Apps requests` 作为集合名称。
 
-      此时将打开 Postman 的请求窗格，以便你可以将请求发送到请求触发器的终结点 URL。
+      在 Postman 应用中，会打开请求窗格，以便将请求发送到请求触发器的终结点 URL。
 
       ![屏幕截图显示了 Postman，其中包含打开的请求窗格](./media/create-single-tenant-workflows-azure-portal/postman-request-pane.png)
 
@@ -412,7 +412,7 @@ ms.locfileid: "110497081"
 
 若要更轻松地调试某个无状态工作流，可以为该工作流启用运行历史记录，并在完成后禁用运行历史记录。 对于 Azure 门户，请按照下面的步骤操作；如果使用的是 Visual Studio Code，请参阅[在 Visual Studio Code 中创建有状态和无状态工作流](create-single-tenant-workflows-visual-studio-code.md#enable-run-history-stateless)。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，查找并打开你的“逻辑应用(标准版)”资源。
+1. 在 [Azure 门户](https://portal.azure.com)中，打开你的“逻辑应用(标准版)”资源。
 
 1. 在逻辑应用菜单上的“设置”下，选择“配置” 。
 
@@ -472,7 +472,7 @@ ms.locfileid: "110497081"
 
   若要阻止每个工作流触发自上次运行以来的未处理项，请在重启逻辑应用之前按照以下步骤清除触发状态：
 
-  1. 在 Azure 门户中，查找并打开逻辑应用。
+  1. 在 Azure 门户中打开逻辑应用。
   1. 在逻辑应用菜单的“工作流”下，选择“工作流”。
   1. 打开工作流，然后编辑该工作流触发器的任何部分。
   1. 保存所做更改。 此步骤会重置触发器的当前状态。
@@ -483,7 +483,7 @@ ms.locfileid: "110497081"
 
 ### <a name="restart-stop-or-start-a-single-logic-app"></a>重启、停止或启动单个逻辑应用
 
-1. 在 Azure 门户中，查找并打开逻辑应用。
+1. 在 Azure 门户中打开逻辑应用。
 
 1. 在逻辑应用菜单中，选择“概述”  。
 
@@ -585,9 +585,9 @@ ms.locfileid: "110497081"
 
 * Azure 逻辑应用不会创建或运行新的工作流实例。
 
-* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用删除工作流的工作流。 这样，调用方就可获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将失败并显示 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
+* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 要刷新元数据，必须重新保存调用已删除工作流的所有工作流。 这样，调用方就可获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将失败并显示 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
 
-1. 在 Azure 门户中，查找并打开逻辑应用。
+1. 在 Azure 门户中打开逻辑应用。
 
 1. 在逻辑应用菜单的“工作流”下，选择“工作流”。 在复选框列中，选择要删除的一个或多个工作流。
 

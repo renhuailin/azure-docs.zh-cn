@@ -70,7 +70,21 @@
     - name: 故障转移和修补
       href: cache-failover.md
     - name: 最佳做法
-      href: cache-best-practices.md
+      items:
+        - name: 连接复原能力
+          href: cache-best-practices-connection.md
+        - name: 服务器负载管理
+          href: cache-best-practices-server-load.md
+        - name: 内存管理
+          href: cache-best-practices-memory-management.md
+        - name: 开发
+          href: cache-best-practices-development.md
+        - name: 扩展
+          href: cache-best-practices-scale.md
+        - name: Kubernetes 托管的客户端应用程序
+          href: cache-best-practices-kubernetes.md
+        - name: 性能测试
+          href: cache-best-practices-performance.md
     - name: 安全性
       items:
         - name: 网络隔离选项

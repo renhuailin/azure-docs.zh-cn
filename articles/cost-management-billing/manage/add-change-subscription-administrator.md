@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 06/27/2021
 ms.author: banders
-ms.openlocfilehash: 10956953f9ab3a9e32b9da4ab8a3501d38b0e2c3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b4bd2615dd99145bd75fd7c1095056961d3b2d80
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369652"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988348"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>添加或更改 Azure 订阅管理员
 
@@ -44,29 +44,12 @@ Microsoft 建议你使用 Azure RBAC 来管理对资源的访问权限。 但是
 
 ### <a name="to-assign-a-user-as-an-administrator"></a>以管理员身份分配用户
 
-1. 以订阅所有者身份登录到 Azure 门户，然后打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
+- 将“所有者”角色分配给订阅范围内的用户。  
+     有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
-1. 单击要授予访问权限的订阅。
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
-1. 单击“访问控制(IAM)”。
-
-1. 单击“角色分配”选项卡以查看此订阅的所有角色分配。
-
-    ![其中显示了角色分配的屏幕截图](./media/add-change-subscription-administrator/role-assignments.png)
-
-1. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。  
-
-    如果你无权分配角色，则此选项会被禁用。
-
-1. 在“角色”下拉列表中，选择“所有者”角色。
-
-1. 在“选择”列表中，选择用户。 如果没有在列表中看到用户，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称和电子邮件地址。
-
-    ![显示所选所有者角色的屏幕截图](./media/add-change-subscription-administrator/add-role.png)
-
-1. 单击“保存”以分配该角色。
-
-    片刻之后，会在订阅范围内为该用户分配“所有者”角色。
+如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -74,7 +57,3 @@ Microsoft 建议你使用 Azure RBAC 来管理对资源的访问权限。 但是
 * [了解 Azure 中的不同角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [将 Azure 订阅关联或添加到 Azure Active Directory 租户](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Azure Active Directory 中的管理员角色权限](../../active-directory/roles/permissions-reference.md)
-
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
-
-如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

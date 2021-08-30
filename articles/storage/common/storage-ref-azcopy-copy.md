@@ -8,12 +8,12 @@ ms.date: 03/08/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 7c1e265f473c1c6fb70fd97416722e7b863c429b
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 4f31567068b3b0cf1d11764ce8f609a5889c2e51
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503552"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462584"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -288,6 +288,8 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 **--content-type** 字符串 - 指定文件的内容类型。 暗指 no-guess-mime-type。 下载时返回。
 
 **--decompress** - 下载时自动解压缩文件（如果 content-encoding 指示文件已压缩）。 支持的 content-encoding 值为 `gzip` 和 `deflate`。 不需要提供 `.gz`/`.gzip`或 `.zz` 文件扩展名，但如果存在，则将其删除。
+
+--disable-auto-decoding 默认情况下为 False 以在 Windows 上启用非法字符的自动解码。 可以设置为 `true` 以禁用自动解码。
 
 **--exclude-attributes** 字符串 -（仅限 Windows）排除其属性与属性列表相匹配的文件。 例如：A;S;R
 

@@ -8,16 +8,16 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 03/07/2021
 ms.custom: ''
-ms.openlocfilehash: a4f206d68df3cd8dd4dd5b1b411d316e7aacde92
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 6654d1e167eefea1544262dab279b15b87b6b2ba
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077087"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460288"
 ---
 # <a name="generate-arm-template-for-cloud-services-extended-support-using-the-azure-portal"></a>使用 Azure 门户为云服务生成 ARM 模板（扩展支持）
 
-本文介绍如何从云服务的 [Azure 门户](https://portal.azure.com)下载 ARM 模板和参数文件。 可以通过 Powershell 在部署中使用 ARM 模板和参数文件来创建或更新云服务。
+本文介绍如何从云服务的 [Azure 门户](https://portal.azure.com)下载 ARM 模板和参数文件。 可以通过 PowerShell 在部署中使用 ARM 模板和参数文件来创建或更新云服务
 
 ## <a name="get-arm-template-via-portal"></a>通过门户获取 ARM 模板
 
@@ -34,6 +34,6 @@ ms.locfileid: "106077087"
     :::image type="content" source="media/download-template-portal-2.png" alt-text="此图显示了 Azure 门户上的“包 SAS URI”和“配置 SAS URI”参数。":::
   
 ## <a name="next-steps"></a>后续步骤 
-- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.yml)。
 - 使用 [Azure 门户](deploy-portal.md)部署云服务（外延支持）
   

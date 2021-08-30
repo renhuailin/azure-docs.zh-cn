@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 4c37aab00f838de24e96e6f509ae8484df2c6715
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: abcb233665d6c6074ff50d1bb53e553ed9eb99ef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904957"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741963"
 ---
 # <a name="replicate-virtual-machines-running-in-a-proximity-placement-group-to-another-region"></a>将邻近放置组中运行的虚拟机复制到另一个区域
 
@@ -28,7 +28,7 @@ Site Recovery 将数据从一个 Azure 区域复制到另一个区域。 在故�
 
 ## <a name="considerations"></a>注意事项
 
-- 最佳做法是将虚拟机故障转移和故障恢复到邻近放置组。 如果无法在邻近放置组内启动 VM，则故障转移和故障恢复仍将发生，但系统会在邻近放置组之外创建 VM。
+- 最佳做法是将虚拟机故障转移和故障恢复到邻近放置组。 如果存在容量分配限制，导致我们无法在邻近放置组内启动 VM，则故障转移和故障回复仍将执行，但将在邻近放置组外创建 VM。
 - 如果将某个可用性集固定到邻近放置组，且可用性集中的 VM 在故障恢复或故障转移时具有分配约束，则系统将在可用性集和邻近放置组之外创建 VM。
 - 非托管磁盘不支持适用于邻近放置组的 Site Recovery。
 

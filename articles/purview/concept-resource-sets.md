@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 330a6e54ee88781f71c4a861051aab94f8eef81f
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.date: 07/23/2021
+ms.openlocfilehash: 6c51a118b0581759f456b243b6dde25890b36f39
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587895"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668469"
 ---
 # <a name="understanding-resource-sets"></a>了解资源集
 
@@ -27,7 +27,7 @@ ms.locfileid: "107587895"
 
 ## <a name="how-azure-purview-detects-resource-sets"></a>Azure Purview 如何检测资源集
 
-Azure Purview 支持检测 Azure Blob 存储、ADLS Gen1 和 ADLS Gen2 中的资源集。
+Azure Purview 支持检测 Azure Blob 存储、ADLS Gen1、ADLS Gen2、Azure 文件存储和 Amazon S3 中的资源集。
 
 扫描时，Azure Purview 会自动检测资源集。 此功能通过扫描查看引入的所有数据，并将其与一组定义的模式进行比较。
 

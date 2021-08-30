@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 00e44185c938c94903e9b85a4748906721dac27f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0f3e3b927f5f3aed0a29473af4046fb5c09cf4f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571700"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465066"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用以前版本的 Azure Migrate
 
@@ -225,7 +225,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
 4. 复制工作区 ID 和密钥。 在本地计算机上安装 MMA 时将需要这些信息。
 
 > [!NOTE]
-> 若要自动安装代理，可以使用部署工具（例如 Configuration Manager）或合作伙伴工具（如 [Intigua](https://www.intigua.com/intigua-for-azure-migration)，该工具为 Azure Migrate 提供了代理部署解决方案）。
+> 若要自动安装代理，可以使用部署工具（例如 Configuration Manager）或合作伙伴工具（例如 Intigua，该工具为 Azure Migrate 提供了代理部署解决方案）。
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>在 Windows 计算机上安装 MMA 代理

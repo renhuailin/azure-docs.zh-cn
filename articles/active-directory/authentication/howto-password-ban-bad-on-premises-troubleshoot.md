@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b34194c0b9afa622d6ae751752092ed3f750f0b
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 3603bd100fe5d9b471d67896c98de4c0547c8ebb
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285747"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551247"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>故障排除：本地 Azure AD 密码保护
 
@@ -326,7 +326,7 @@ Test-AzureADPasswordProtectionDCAgentHealth cmdlet 支持多个可以单独运�
 
 ### <a name="basic-dc-agent-health-tests"></a>基本 DC 代理运行状况测试
 
-以下测试都可以单独运行，并且不接受参数输入。 简短说明
+以下测试都可以单独运行，并且不接受参数。 下表列出了每个测试的简要说明。
 
 |DC 代理运行状况测试|说明|
 | --- | :---: |

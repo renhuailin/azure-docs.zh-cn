@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 了解如何将事件路由到 Azure 数字孪生中或路由到其他 Azure 服务。
 author: baanders
 ms.author: baanders
-ms.date: 10/12/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a63390073f92625788dfbf43fc1183cc1812024a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b9038840142be64918b22f1aefc32d505252d71d
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460320"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254238"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>将事件路由到 Azure 数字孪生内部和外部
 
@@ -46,7 +46,7 @@ Azure 数字孪生使用事件路由向服务外的使用者发送数据。
 
 计算资源还需要单独建立安全和访问权限。
 
-若要演练如何设置用于处理数字孪生事件的 Azure 函数，请参阅操作指南：设置用于处理数据的 Azure 函数。
+若要演练如何设置用于处理数字孪生体事件的 Azure 函数，请参阅[设置孪生体到孪生体的事件处理](how-to-send-twin-to-twin-events.md)。
 
 ## <a name="create-an-endpoint"></a>创建终结点
 
@@ -55,7 +55,7 @@ Azure 数字孪生使用事件路由向服务外的使用者发送数据。
 * 事件中心
 * 服务总线
 
-若要创建终结点，可使用 Azure 数字孪生 [REST API、CLI 命令](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)或 [Azure 门户](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins)。
+若要[创建终结点](how-to-manage-routes.md#create-an-endpoint-for-azure-digital-twins)，可使用 Azure 数字孪生 REST API、CLI 命令或 Azure 门户。
 
 定义终结点时，需要提供：
 * 终结点名称
@@ -71,7 +71,7 @@ Azure 数字孪生使用事件路由向服务外的使用者发送数据。
 
 ## <a name="create-an-event-route"></a>创建事件路由
  
-若要创建事件路由，可使用 Azure 数字孪生 [REST API、CLI 命令](how-to-manage-routes-apis-cli.md#create-an-event-route)或 [Azure 门户](how-to-manage-routes-portal.md#create-an-event-route)。
+若要[创建事件路由](how-to-manage-routes.md#create-an-event-route)，可使用 Azure 数字孪生 REST API、CLI 命令或 Azure 门户。
 
 下面是使用 `CreateOrReplaceEventRouteAsync` [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 调用在客户端应用程序中创建事件路由的示例： 
 
@@ -99,7 +99,7 @@ Azure 数字孪生使用事件路由向服务外的使用者发送数据。
 
 若要详细了解 SAS 令牌，请参阅使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限。
 
-若要了解如何设置具有死信功能的终结点，请参阅操作指南：管理 Azure 数字孪生中的终结点和路由（API 和 CLI）。
+若要了解如何设置具有死信功能的终结点，请参阅[管理 Azure 数字孪生中的终结点和路由](how-to-manage-routes.md#create-an-endpoint-with-dead-lettering)。
 
 ### <a name="types-of-event-messages"></a>事件消息的类型
 
@@ -110,7 +110,7 @@ IoT 中心和 Azure 数字孪生中的不同类型的事件会生成不同类型
 ## <a name="next-steps"></a>后续步骤
 
 请参阅如何设置和管理事件路由：
-* [操作指南：管理终结点和路由](how-to-manage-routes-apis-cli.md)
+* [管理终结点和路由](how-to-manage-routes.md)
 
 或者，请参阅如何使用 Azure Functions 在 Azure 数字孪生中路由事件：
-* [操作指南：设置用于处理数据的 Azure 函数](how-to-create-azure-function.md)
+* [设置孪生体到孪生体的事件处理](how-to-send-twin-to-twin-events.md)。

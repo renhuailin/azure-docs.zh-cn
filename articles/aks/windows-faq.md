@@ -5,12 +5,12 @@ description: 查看在 Azure Kubernetes 服务 (AKS) 中运行 Windows Server �
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 5d3d78eb20a9ca8b663fa0cf381fcce1bd528345
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b278be45af62d50c8df85ed833ebbeb99dd5c35d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463297"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747799"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS 中 Windows Server 节点池的常见问题
 
@@ -103,7 +103,7 @@ az aks update \
 
 ## <a name="how-many-node-pools-can-i-create"></a>我可以创建多少个节点池？
 
-AKS 群集最多可以包含 10 个节点池。 这些节点池中最多可以有 1000 个节点。 [节点池限制][nodepool-limitations]。
+AKS 群集最多可以包含 100 个节点池。 这些节点池中最多可以有 1000 个节点。 [节点池限制][nodepool-limitations]。
 
 ## <a name="what-can-i-name-my-windows-node-pools"></a>我可以如何为 Windows 节点池命名？
 

@@ -12,14 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/13/2021
+ms.custom: subject-rbac-steps
+ms.date: 07/26/2021
 ms.author: radeltch
-ms.openlocfilehash: c762f0e04a7079fff72962cafe44b06acfcf0eaf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: be174bf6d71ed243e0e7997250df55edffc27739
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100029"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722480"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -619,18 +620,8 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** 向服务主体分配自定义角色
 
-将在最后一章中创建的自定义角色“Linux 隔离代理角色”分配给服务主体。 不要再使用“所有者”角色！
-
-1. 转到 [https://portal.azure.com](https://portal.azure.com)
-1. 打开“所有资源”边栏选项卡
-1. 选择第一个群集节点的虚拟机
-1. 选择“访问控制(IAM)”
-1. 单击“添加角色分配”
-1. 选择角色“Linux 隔离代理角色”
-1. 输入前面创建的应用程序名称
-1. 点击“保存”
-
-为第二个群集节点重复上述步骤。
+将在最后一章中创建的自定义角色“Linux 隔离代理角色”分配给服务主体。 不要再使用“所有者”角色！ 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../../role-based-access-control/role-assignments-portal.md)。   
+请确保为两个群集节点分配角色。    
 
 ### <a name="1-create-the-stonith-devices"></a>**[1]** 创建 STONITH 设备
 

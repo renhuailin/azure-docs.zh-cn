@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: saachigopal
 ms.author: sagopal
-ms.date: 12/3/2020
+ms.date: 07/27/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: ec0c7d64f2145cdaf594cb903c072984f4d376a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8f5a286a835da7fb74f969295090b0ecc0731a74
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519123"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114728460"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>对环境映像生成进行故障排除
 
@@ -23,7 +23,7 @@ ms.locfileid: "102519123"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 * [Azure 机器学习 SDK](/python/api/overview/azure/ml/install)。
 * [Azure CLI](/cli/azure/install-azure-cli)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
@@ -144,6 +144,25 @@ Pip 子进程错误：
    ```
 
 如果依赖项中存在无法解决的冲突，pip 安装可能会陷入无限循环。 如果在本地使用，请将 pip 版本降级到 20.3 以下。 在通过 YAML 文件创建的 conda 环境中，只有在 conda-forge 是最高优先级通道的情况下才出现此问题。 若要缓解此问题，请在 conda 规范文件中显式指定 pip < 20.3（!=20.3 或 =20.2.4 会固定到其他版本）作为 conda 依赖项。
+
+### <a name="modulenotfounderror-no-module-named-distutilsdir_util"></a>ModuleNotFoundError: No module named 'distutils.dir_util'
+
+设置环境时，有时会遇到“ModuleNotFoundError: 没有名为 "distutils.dir_util" 的模块”问题。 要解决此问题，请运行以下命令：
+
+```bash
+apt-get install -y --no-install-recommends python3 python3-distutils && \
+ln -sf /usr/bin/python3 /usr/bin/python
+```
+
+使用 Dockerfile 时，请将其作为 RUN 命令的一部分运行。
+
+```dockerfile
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends python3 python3-distutils && \
+  ln -sf /usr/bin/python3 /usr/bin/python
+```
+
+运行此命令将安装正确的模块依赖项来配置环境。 
 
 ## <a name="service-side-failures"></a>服务端失败
 

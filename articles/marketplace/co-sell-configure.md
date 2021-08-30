@@ -7,13 +7,13 @@ ms.topic: how-to
 author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
-ms.date: 3/17/2021
-ms.openlocfilehash: d38123aef6ac51423b90fa06d720574bb595bb14
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 07/13/2021
+ms.openlocfilehash: d010d079aaeded441fa7b846435cdaef0dfedd74
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133450"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389111"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>配置商业市场产品/服务的联合销售
 
@@ -93,7 +93,7 @@ ms.locfileid: "108133450"
 支持的文件类型为 .pdf、.ppt、.pptx、.doc、.docx、.xls、.xlsx、.jpg、.png 和 .mp4。 下面的表 2 提供了一些文档的模板。
 
 > [!NOTE]
-> 必须提供“解决方案/产品/服务单页材料”和“解决方案/产品/服务融资演示文稿”才能获得联合销售就绪状态 。 这些也是某些产品/服务获得 Azure IP 联合销售激励状态的先决条件。 要获得 Azure IP 联合销售激励状态，还需要提供参考体系结构关系图。 此表中介绍的其他文档是可选的，但建议使用它们。
+> 必须提供“解决方案/产品/服务单页材料”和“解决方案/产品/服务融资演示文稿”才能获得联合销售就绪状态 。 这些也是某些产品/服务获得 Azure IP 联合销售激励的先决条件。 要获得 Azure IP 联合销售激励状态，还需要提供参考体系结构图。 此表中介绍的其他文档是可选的，但建议使用它们。
 
 ***表 2：支持联合销售的文档***
 
@@ -104,7 +104,7 @@ ms.locfileid: "108133450"
 | 客户案例研究（可选）| 使用[案例研究模板](https://aka.ms/GTM_Case_Study_Template)创建客户案例研究。 此信息向潜在客户展示你和 Microsoft 以前是如何成功部署产品/服务的。 |
 | 可验证的客户成功（可选） | 提供部署产品/服务后客户获得的成功的特定示例。 |
 | 渠道融资演示文稿（可选） | 幻灯片组，其中包含的信息有助于渠道经销商详细了解产品/服务，并有助于其销售团队为销售产品/服务做好准备。 此幻灯片组通常包括电梯推介、目标客户的相关信息、要向客户提出的问题、谈话要点以及视频、文档和支持信息的链接。 |
-| 参考体系结构关系图（获得 Azure IP 联合销售激励状态的必需项） | 展示产品/服务及其与 Microsoft 云服务的关系的关系图。 它还可以演示产品/服务如何符合 Azure IP 联合销售激励状态的技术要求。 [详细了解参考体系结构关系图。](reference-architecture-diagram.md) |
+| 参考体系结构图（获得 Azure IP 联合销售激励状态的必需项） | 展示产品/服务及其与 Microsoft 云服务的关系的关系图。 它还可演示产品/服务如何符合 Azure IP 联合销售激励状态的技术要求。 [详细了解参考体系结构关系图。](reference-architecture-diagram.md) |
 | 其他文档（可选） | 最多可以上传五个其他的文档或视频，以便帮助 Microsoft 销售团队和渠道经销商详细了解你的产品/服务、组织以及它与其他产品/服务的不同之处。 |
 |||
 

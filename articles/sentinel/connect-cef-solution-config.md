@@ -1,5 +1,5 @@
 ---
-title: 配置安全解决方案以将 CEF 数据连接到 Azure Sentinel 预览版 | Microsoft Docs
+title: 配置安全解决方案以将 CEF 数据连接到 Azure Sentinel | Microsoft Docs
 description: 了解如何配置安全解决方案以将 CEF 数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 60ce503d4a89f245f28d5034924cb8c89c926b3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe60a36d93a77ee75df578e0f6fc6665da26681e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771288"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743010"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>步骤 2：配置安全解决方案以发送 CEF 消息
 
@@ -82,5 +82,5 @@ ms.locfileid: "104771288"
 本文档介绍了如何将 CEF 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
 - 了解 [CEF 和 CommonSecurityLog 字段映射](cef-name-mapping.md)。
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](./tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](./detect-threats-built-in.md)。

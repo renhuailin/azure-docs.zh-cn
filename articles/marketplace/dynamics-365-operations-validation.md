@@ -7,16 +7,16 @@ ms.topic: article
 author: vamahtan
 ms.author: vamahtan
 ms.date: 05/19/2021
-ms.openlocfilehash: 45bdf3e0006aeaf24b8c3ede0f7090aabfe85808
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 05b7c223823522b7c511df7cfa66c7dffa2a8b4b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482272"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281280"
 ---
 # <a name="dynamics-365-for-operations-functional-validation"></a>Dynamics 365 for Operations 功能验证
 
-在[合作伙伴中心](https://partner.microsoft.com/dashboard/home)中发布 Dynamics 365 for Operations 产品/服务需要两项功能验证：
+在[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2166002)中发布 Dynamics 365 for Operations 产品/服务需要两项功能验证：
 
 - 上传 Dynamics 365 环境的演示视频，其中展示了基本功能。
 - 当前的屏幕截图显示了解决方案的[生命周期服务](https://lcs.dynamics.com/) (LCS) 环境。
@@ -29,7 +29,7 @@ ms.locfileid: "110482272"
 功能验证有两种选项：
 
 - 在办公时间（太平洋标准时间 (PST)）与我们举行 30 分钟的电话会议，以演示和记录 [LCS](https://lcs.dynamics.com/) 环境和解决方案，或者
-- 在合作伙伴中心，转到[商业市场](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) > “概述”，然后在产品/服务的“补充内容”选项卡中上传演示视频 URL 和 LCS 屏幕截图。
+- 在合作伙伴中心，转到[商业市场](https://go.microsoft.com/fwlink/?linkid=2165290)，然后在产品/服务的“补充内容”选项卡中上传演示视频 URL 和 LCS 屏幕截图。
 
 Microsoft 认证团队会审查视频和文件，然后批准解决方案或通过电子邮件向你发送有关后续步骤的信息。
 
@@ -70,7 +70,7 @@ Microsoft 认证团队会审查视频和文件，然后批准解决方案或通�
 3. 上传到合作伙伴中心。
 
     1. 创建包含演示视频地址和屏幕截图的文本文档，或将屏幕截图另存为单独的 JPG 文件。
-    2. 在[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)的产品/服务“补充内容”选项卡上，将文本和图像添加到 .zip 文件。
+    2. 在[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)的产品/服务“补充内容”选项卡上，将文本和图像添加到 .zip 文件。
 
     [![显示项目库窗口](media/dynamics-365-operations/supplemental-content.png)](media/dynamics-365-operations/supplemental-content.png#lightbox)
 

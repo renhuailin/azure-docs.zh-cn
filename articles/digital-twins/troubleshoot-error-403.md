@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 63b02b66b68e40ae9ae209979d6464d97c30caf3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9a5191533b336d9d0cbefcf9b58f56d6648a60df
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967914"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456147"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>服务请求失败。 状态: 403 (已禁用)
 
@@ -86,7 +86,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 #### <a name="fix-issues"></a>解决问题
 
-如果出现任何不同于以上所述的情况，请按照操作说明：创建应用注册中如何设置应用注册的说明进行操作。
+如果出现任何不同于以上所述的情况，请按照[创建应用注册](./how-to-create-app-registration-portal.md)中如何设置应用注册的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -94,4 +94,4 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 * [设置实例和身份验证 (CLI)](how-to-set-up-instance-cli.md)
 
 阅读有关 Azure 数字孪生的安全性和权限的详细信息：
-* [概念：Azure 数字孪生解决方案的安全性](concepts-security.md)
+* [Azure 数字孪生解决方案的安全性](concepts-security.md)

@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）：部署和使用 - Azure
-description: 可以使用 Azure 机器学习工作室（经典）将机器学习工作流和模型作为 Web 服务部署。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。
+description: 可以使用机器学习工作室（经典）将机器学习工作流和模型作为 Web 服务部署。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,31 +9,33 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 57c5462cd6eccab1d9c42e674e10ea34db3612b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6d2875261028814a925169d84a3de6307433dcb
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520351"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688029"
 ---
-# <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure 机器学习工作室（经典）Web 服务：部署和使用
+# <a name="machine-learning-studio-classic-web-services-deployment-and-consumption"></a>机器学习工作室（经典）Web 服务：部署和使用
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-可以使用 Azure 机器学习工作室（经典）将机器学习工作流和模型作为 Web 服务部署。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。 由于 Web 服务是 RESTful，可以从各种编程语言和平台（如 .NET 和 Java）以及应用程序（如 Excel）调用它们。
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
+可以使用机器学习工作室（经典）将机器学习工作流和模型作为 Web 服务部署。 然后，可以使用这些 Web 服务，通过 Internet 从应用程序调用机器学习模型，从而实时或者在批处理模式下进行预测。 由于 Web 服务是 RESTful，可以从各种编程语言和平台（如 .NET 和 Java）以及应用程序（如 Excel）调用它们。
 
 接下来的部分提供指向演练、代码和文档的链接，可帮助你开始操作。
 
 ## <a name="deploy-a-web-service"></a>部署 Web 服务
 
-### <a name="with-azure-machine-learning-studio-classic"></a>使用 Azure 机器学习工作室（经典）
+### <a name="with-machine-learning-studio-classic"></a>机器学习工作室（经典）
 
-工作室（经典）门户和 Microsoft Azure 机器学习 Web 服务门户可帮助部署和管理 Web 服务，而无需编写代码。
+工作室（经典）门户和机器学习 Web 服务门户可帮助部署和管理 Web 服务，而无需编写代码。
 
 以下链接提供有关如何部署新 Web 服务的常规信息：
 
 * 有关如何部署基于 Azure 资源管理器的新 Web 服务的概述，请参阅[部署新 Web 服务](deploy-a-machine-learning-web-service.md)。
-* 有关如何部署 Web 服务的演练，请参阅[部署 Azure 机器学习 Web 服务](deploy-a-machine-learning-web-service.md)。
+* 有关如何部署 Web 服务的演练，请参阅[部署机器学习 Web 服务](deploy-a-machine-learning-web-service.md)。
 * 有关如何创建和部署 Web 服务的完整演练，请从[教程 1：预测信贷风险](tutorial-part1-credit-risk.md)。
 * 有关部署 Web 服务的特定示例，请参阅：
 
@@ -48,7 +50,7 @@ ms.locfileid: "100520351"
 
 ### <a name="with-powershell-cmdlets"></a>使用 PowerShell cmdlet
 
-用于 Web 服务的 Azure 机器学习工作室（经典）资源提供程序支持使用 PowerShell cmdlet 来部署和管理 Web 服务。
+用于 Web 服务的机器学习工作室（经典）资源提供程序支持使用 PowerShell cmdlet 来部署和管理 Web 服务。
 
 要使用 cmdlet，必须先使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 从 PowerShell 环境中登录到 Azure 帐户。 如果对调用基于资源管理器的 PowerShell 命令不熟悉，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../../azure-resource-manager/management/manage-resources-powershell.md)。
 
@@ -65,7 +67,7 @@ C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
     可以从 [Azure 门户](https://portal.azure.com/)获取存储帐户名和密钥。
 * 承诺计划 ID
 
-    通过登录并单击计划名称，可以从 [Azure 机器学习 Web 服务](https://services.azureml.net)获取计划 ID。
+    通过登录并单击计划名称，可以从[机器学习 Web 服务](https://services.azureml.net)获取计划 ID。
 
 在与 *MachineLearningWorkspace* 节点相同的级别上，将它们添加到 JSON 模板作为 *Properties* 节点的子节点。
 
@@ -83,25 +85,25 @@ C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
 
 有关更多详细信息，请参阅以下文章和示例代码：
 
-* MSDN 上的 [Azure 机器学习工作室（经典）Cmdlet](/powershell/module/az.machinelearning) 参考
+* MSDN 上的[机器学习工作室（经典）Cmdlet](/powershell/module/az.machinelearning) 参考
 
 ## <a name="consume-the-web-services"></a>使用 Web 服务
 
-### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>从 Azure 机器学习 Web 服务 UI（测试）
+### <a name="from-the-machine-learning-web-services-ui-testing"></a>从机器学习 Web 服务 UI（测试）
 
-可以从 Azure 机器学习 Web 服务门户测试 Web 服务。 这包括测试请求-响应服务 (RRS) 和批处理执行服务 (BES) 接口。
+可以从机器学习 Web 服务门户测试 Web 服务。 这包括测试请求-响应服务 (RRS) 和批处理执行服务 (BES) 接口。
 
 * [部署新 Web 服务](deploy-a-machine-learning-web-service.md)
-* [部署 Azure 机器学习 Web 服务](deploy-a-machine-learning-web-service.md)
+* [部署机器学习 Web 服务](deploy-a-machine-learning-web-service.md)
 * [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>从 Excel
 
 可以下载使用 Web 服务的 Excel 模板：
 
-* [从 Excel 使用 Azure 机器学习 Web 服务](consuming-from-excel.md)
-* [适用于 Azure 机器学习 Web 服务的 Excel 加载项](excel-add-in-for-web-services.md)
+* [从 Excel 使用机器学习 Web 服务](consuming-from-excel.md)
+* [适用于机器学习 Web 服务的 Excel 加载项](excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>从基于 REST 的客户端
 
-Azure 机器学习 Web 服务是 RESTful API。 可以从各种平台使用这些 API，例如 .NET、Python、R、Java 等。[Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net)上的 Web 服务“使用”页提供示例代码，从而有助于开始操作。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
+机器学习 Web 服务是 RESTful API。 可以从多种平台使用这些 API，例如 .NET、Python、R、Java 等。[机器学习 Web 服务门户](https://services.azureml.net)上的 Web 服务“使用”页提供示例代码，从而有助于开始操作。 有关详细信息，请参阅[如何使用机器学习 Web 服务](consume-web-services.md)。

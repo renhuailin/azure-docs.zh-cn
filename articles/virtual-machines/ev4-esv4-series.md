@@ -9,19 +9,19 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 677158c69ef15508ff9fc00e83ff87678cf9f983
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: d49adc0be837197126aed617900a4a7c25fb84c5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443963"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725989"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 和 Esv4 系列
 
 Ev4 和 Esv4 系列在采用超线程配置的 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行，非常适合各种内存密集型企业应用程序，并且配备高达 504 GiB 的 RAM。 它的全核睿频时钟速度达到 3.4 GHz。
 
 > [!NOTE]
-> 有关常见问题解答，请参阅[无本地临时磁盘的 Azure VM 规格](azure-vms-no-temp-disk.md)。
+> 有关常见问题解答，请参阅[无本地临时磁盘的 Azure VM 规格](azure-vms-no-temp-disk.yml)。
 
 ## <a name="ev4-series"></a>Ev4 系列
 
@@ -35,20 +35,22 @@ Ev4 系列规格在 Intel Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上�
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持 <br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大 NIC 数|预期的网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|
-| Standard_E2_v4  | 2 | 16   | 仅限远程存储 | 4 | 2|1000  |
-| Standard_E4_v4  | 4 | 32  | 仅限远程存储 | 8 | 2|2000  |
-| Standard_E8_v4  | 8 | 64 | 仅限远程存储 | 16 | 4|4000 |
-| Standard_E16_v4 | 16 | 128 | 仅限远程存储 | 32 | 8|8000 |
+| Standard_E2_v4<sup>1</sup>  | 2 | 16   | 仅限远程存储 | 4 | 2|5000  |
+| Standard_E4_v4  | 4 | 32  | 仅限远程存储 | 8 | 2|10000  |
+| Standard_E8_v4  | 8 | 64 | 仅限远程存储 | 16 | 4|12500 |
+| Standard_E16_v4 | 16 | 128 | 仅限远程存储 | 32 | 8|12500 |
 | Standard_E20_v4 | 20 | 160 | 仅限远程存储 | 32 | 8|10000 |
 | Standard_E32_v4 | 32 | 256 | 仅限远程存储 | 32 | 8|16000 |
 | Standard_E48_v4 | 48 | 384 | 仅限远程存储 | 32 | 8|24000 |
 | Standard_E64_v4 | 64 | 504 | 仅限远程存储 | 32| 8|30000 |
+
+<sup>1</sup> 加速网络只能应用于单个 NIC。 
 
 
 ## <a name="esv4-series"></a>Esv4 系列
@@ -61,25 +63,28 @@ Esv4 系列规格在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理�
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持 <br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期的网络带宽 (Mbps) |
-|---|---|---|---|---|---|---|---|
-| Standard_E2s_v4  | 2 | 16  | 仅限远程存储 | 4 | 3200/48 | 2|1000  |
-| Standard_E4s_v4  | 4 | 32  | 仅限远程存储 | 8 | 6400/96 | 2|2000  |
-| Standard_E8s_v4  | 8 | 64  | 仅限远程存储 | 16 | 12800/192 | 4|4000 |
-| Standard_E16s_v4 | 16 | 128 | 仅限远程存储 | 32 | 25600/384 | 8|8000 |
-| Standard_E20s_v4 | 20 | 160 | 仅限远程存储 | 32 | 32000/480  | 8|10000 |
-| Standard_E32s_v4 | 32 | 256 | 仅限远程存储 | 32 | 51200/768  | 8|16000 |
-| Standard_E48s_v4 | 48 | 384 | 仅限远程存储 | 32 | 76800/1152 | 8|24000 |
-| Standard_E64s_v4 <sup>1</sup> | 64 | 504| 仅限远程存储 | 32 | 80000/1200 | 8|30000 |
-| Standard_E80is_v4 <sup>2</sup> | 80 | 504 | 仅限远程存储 | 32 | 80000/1500 | 8|30000 |
 
-<sup>1</sup> [受约束的可用核心大小）](./constrained-vcpu.md)。
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大突发非缓存磁盘吞吐量：IOPS/MBps<sup>1</sup> |最大 NIC 数|预期的网络带宽 (Mbps) |
+|---|---|---|---|---|---|---|---|---|
+| Standard_E2s_v4<sup>4</sup>  | 2 | 16  | 仅限远程存储 | 4 | 3200/48 | 4000/200 | 2|5000  |
+| Standard_E4s_v4  | 4 | 32  | 仅限远程存储 | 8 | 6400/96 | 8000/200 | 2|10000  |
+| Standard_E8s_v4  | 8 | 64  | 仅限远程存储 | 16 | 12800/192 | 16000/400 | 4|12500 |
+| Standard_E16s_v4 | 16 | 128 | 仅限远程存储 | 32 | 25600/384 | 32000/800 | 8|12500 |
+| Standard_E20s_v4 | 20 | 160 | 仅限远程存储 | 32 | 32000/480  | 40000/1000 | 8|10000 |
+| Standard_E32s_v4 | 32 | 256 | 仅限远程存储 | 32 | 51200/768  | 64000/1600 | 8|16000 |
+| Standard_E48s_v4 | 48 | 384 | 仅限远程存储 | 32 | 76800/1152 | 80000/2000 | 8|24000 |
+| Standard_E64s_v4 <sup>2</sup> | 64 | 504| 仅限远程存储 | 32 | 80000/1200 | 80000/2000 | 8|30000 |
+| Standard_E80is_v4 <sup>3</sup> | 80 | 504 | 仅限远程存储 | 32 | 80000/1200 | 80000/2000 | 8|30000 |
 
-<sup>2</sup> 实例对于专用于单个客户的硬件独立。
+<sup>1</sup>  Esv4 系列 VM 可通过[突发方式](./disk-bursting.md)提高其磁盘性能，且最大突发的持续时间一次长达 30 分钟。<br>
+<sup>2</sup> [受约束的可用核心大小](./constrained-vcpu.md)。<br>
+<sup>3</sup> 实例与专用于单个客户的硬件隔离。<br>
+<sup>4</sup> 加速网络只能应用于单个 NIC。 
+
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

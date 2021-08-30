@@ -7,25 +7,24 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: e9496b1782cb78cacb378b167386cd9fe950b15c
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 19f5befde22ed7b16302b7da5df313c476b47194
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495872"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733561"
 ---
 # <a name="delete-azure-arc-enabled-sql-managed-instance"></a>删除已启用 Azure Arc 的 SQL 托管实例
 本文介绍如何删除已启用 Azure Arc 的 SQL 托管实例。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="view-existing-azure-arc-enabled-sql-managed-instances"></a>查看已启用 Azure Arc 的现有 SQL 托管实例
 若要查看 SQL 托管实例，请运行以下命令：
 
-```console
-azdata arc sql mi list
+```azurecli
+az sql mi-arc list --k8s-namespace <namespace> --use-k8s
 ```
 
 输出应类似于以下内容：
@@ -39,14 +38,14 @@ demo-mi 1/1         10.240.0.4:32023  Ready
 ## <a name="delete-a-azure-arc-enabled-sql-managed-instance"></a>删除已启用 Azure Arc 的 SQL 托管实例
 若要删除 SQL 托管实例，请运行以下命令：
 
-```console
-azdata arc sql mi delete -n <NAME_OF_INSTANCE>
+```azurecli
+az sql mi-arc delete -n <NAME_OF_INSTANCE> --k8s-namespace <namespace> --use-k8s
 ```
 
 输出应类似于以下内容：
 
-```console
-# azdata arc sql mi delete -n demo-mi
+```azurecli
+# az sql mi-arc delete -n demo-mi --k8s-namespace <namespace> --use-k8s
 Deleted demo-mi from namespace arc
 ```
 
@@ -90,7 +89,7 @@ persistentvolumeclaim "logs-demo-mi-0" deleted
   
 
 > [!NOTE]
-> 如前所述，不删除这些 PVC 可能最终导致 Kubernetes 群集引发错误。 其中的一些错误可能包括无法通过 azdata 登录 Kubernetes 群集，因为由于此存储问题，Pod 可能会被逐出集群（正常的 Kubernetes 行为）。
+> 如前所述，不删除这些 PVC 可能最终导致 Kubernetes 群集引发错误。 其中一些错误可能包括无法从 Kubernetes API 创建、读取、更新、删除资源，或者无法运行 `az arcdata dc export` 等命令，因为控制器 Pod 可能会因为此存储问题而从 Kubernetes 节点中逐出（正常 Kubernetes 行为）。
 >
 > 例如，你可能会在日志中看到类似于以下内容的消息：  
 > - 注释：microsoft.com/ignore-pod-health: true  
@@ -100,7 +99,7 @@ persistentvolumeclaim "logs-demo-mi-0" deleted
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[已启用 Azure Arc 的 SQL 托管实例的特性和功能](managed-instance-features.md)的详细信息
+详细了解[已启用 Azure Arc 的 SQL 托管实例的特性和功能](managed-instance-features.md)
 
 [首先创建数据控制器](create-data-controller.md)
 

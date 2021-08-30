@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 50ae89aefda00f21d07a19051c9aaa6e85726f8a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 108c7c30ad84c83e895cade79bc8a6ad30029199
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741376"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272257"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -60,7 +60,9 @@ ExpressRoute 网关会播发 Azure VNet 的地址空间，无法在子网级别�
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>在 ExpressRoute 专用对等互连上，可以将多少个前缀从 VNet 播发到本地？
 
-在单个 ExpressRoute 连接上进行播发时，或使用网关传输通过 VNet 对等互连进行播发时，最多可播发 1000 个前缀。 例如，如果在连接到 ExpressRoute 线路的单个 VNet 上有 999 个地址空间，则所有这些 999 个前缀都会播发到本地。 或者，如果启用了 VNet 以允许通过 1 个地址空间进行网关传输，并使用“允许远程网关”选项启用了 500 个分支 Vnet，则使用网关部署的 VNet 会将 501 个前缀播放到本地。
+在单个 ExpressRoute 连接上进行播发时，或使用网关传输通过 VNet 对等互连进行播发时，最多可播发 1000 个 IPv4 前缀。 例如，如果在连接到 ExpressRoute 线路的单个 VNet 上有 999 个地址空间，则所有这些 999 个前缀都会播发到本地。 或者，如果启用了 VNet 以允许通过 1 个地址空间进行网关传输，并使用“允许远程网关”选项启用了 500 个分支 Vnet，则使用网关部署的 VNet 会将 501 个前缀播放到本地。
+
+如果使用的是双堆栈线路，则在单个 ExpressRoute 连接上（或使用网关传输通过 VNet 对等互连时），最多可播发 100 个 IPv6 前缀。 这是对上述限制的补充。
 
 ### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>如果超过 ExpressRoute 连接上的前缀限制，会发生什么情况？
 
@@ -240,7 +242,7 @@ Dynamics 365 和 Common Data Service (CDS) 环境托管在 Azure 上，因此客
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>能否将一个虚拟网络连接到多条 ExpressRoute 线路？
 
-是的。 可将一个虚拟网络最多链接到处于相同或不同对等互连位置的四个 ExpressRoute 线路。 
+是的。 可将一个虚拟网络最多链接到处于相同位置的 4 个 ExpressRoute 线路，或处于不同对等互连位置的 16 个 ExpressRoute 线路。 
 
 ### <a name="can-i-access-the-internet-from-my-virtual-networks-connected-to-expressroute-circuits"></a>能否从连接到 ExpressRoute 线路的虚拟网络访问 Internet？
 
@@ -297,7 +299,7 @@ BGP 会话会被删除。 当前缀计数低于限制后，将重置这些会话
 
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>如何更改 ExpressRoute 线路的带宽？
 
-可以使用 REST API 或 PowerShell cmdlet 更新 ExpressRoute 线路的带宽。
+可使用 Azure 门户、REST API、PowerShell 或 Azure CLI 更新 ExpressRoute 线路的带宽。
 
 ### <a name="i-received-a-notification-about-maintenance-on-my-expressroute-circuit-what-is-the-technical-impact-of-this-maintenance"></a>我收到有关 ExpressRoute 线路维护的通知。 此次维护对技术有何影响？
 

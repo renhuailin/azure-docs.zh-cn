@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 7b60913753580027d050770bc9d4909b5686bb46
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 7eede4af994bab1ca2dfa06bea20d9c79c6e96a7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888439"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740130"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>适用于 Blob 存储的安全建议
 
@@ -32,9 +32,9 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 | 使用 Azure 资源管理器部署模型 | 使用 Azure 资源管理器部署模型创建新的存储帐户，以用于重要的安全增强功能，包括高级的 Azure 基于角色的访问控制 (Azure RBAC) 和审核、基于资源管理器的部署和治理、托管标识访问权限、用于存储机密的 Azure Key Vault 访问权限、用于访问 Azure 存储数据和资源的基于 Azure AD 的身份验证和授权。 如果可能，请迁移使用经典部署模型的现有存储帐户以使用 Azure 资源管理器。 有关 Azure 资源管理器的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。 | - |
 | 为所有存储帐户启用 Azure Defender | 适用于 Azure 存储的 Azure Defender 提供额外的安全智能层，可检测是否存在访问或攻击存储帐户的异常和潜在有害尝试行为。 当活动发生异常时 Azure 安全中心中将触发这些安全警报，还会通过电子邮件发送给订阅管理员，内容包括可疑活动的详细信息以及如何调查和修正威胁的建议。 有关详细信息，请参阅[配置适用于 Azure 存储的 Azure Defender](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-remediate-recommendations.md) |
 | 为 Blob 启用软删除 | Blob 的软删除允许在删除 Blob 数据后将其恢复。 若要详细了解 Blob 的软删除，请参阅 [Azure 存储 Blob 的软删除](./soft-delete-blob-overview.md)。 | - |
-| 为容器启用软删除 | 容器软删除允许在删除容器后将其恢复。 有关容器软删除的详细信息，请参阅[容器软删除（预览版）](./soft-delete-container-overview.md)。 | - |
+| 为容器启用软删除 | 容器软删除允许在删除容器后将其恢复。 有关容器软删除的详细信息，请参阅[容器软删除](./soft-delete-container-overview.md)。 | - |
 | 锁定存储帐户以防止意外或恶意删除或配置更改 | 将 Azure 资源管理器锁定应用于你的存储帐户，以防止帐户发生意外或恶意删除或配置更改。 锁定存储帐户并不会阻止删除该帐户中的数据。 此操作只阻止删除帐户本身。 有关详细信息，请参阅[将 Azure 资源管理器锁定应用于存储帐户](../common/lock-account-resource.md)。
-| 在不可变 Blob 中存储业务关键数据 | 配置法定保留和基于时间的保留策略，以 WORM（一次写入，多次读取）状态存储 Blob 数据。 在保留时间间隔期间内，可以读取即时存储的 Blob，但不能对其进行修改或删除。 有关详细信息，请参阅[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)。 | - |
+| 在不可变 Blob 中存储业务关键数据 | 配置法定保留和基于时间的保留策略，以 WORM（一次写入，多次读取）状态存储 Blob 数据。 在保留时间间隔期间内，可以读取即时存储的 Blob，但不能对其进行修改或删除。 有关详细信息，请参阅[使用不可变的存储来存储业务关键型 Blob 数据](immutable-storage-overview.md)。 | - |
 | 需要安全传输 (HTTPS) 到存储帐户 | 在需要针对存储帐户进行安全传输时，必须通过 HTTPS 向存储帐户发出所有请求。 任何通过 HTTP 发出的请求都会被拒绝。 Microsoft 建议始终对所有存储帐户都要求采用安全传输。 有关详细信息，请参阅[要求采用安全传输以确保安全连接](../common/storage-require-secure-transfer.md)。 | - |
 | 将共享访问签名 (SAS) 令牌限制为仅用于 HTTPS 连接 | 当客户端使用 SAS 令牌访问 Blob 数据时要求使用 HTTPS 有助于最大程度地降低被窃听的风险。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。 | - |
 
@@ -42,7 +42,7 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
-| 使用 Azure Active Directory (Azure AD) 授权对 Blob 数据的访问 | 与用于授权对 Blob 存储的请求的共享密钥相比，Azure AD 提供了卓越的安全性和易用性。 有关详细信息，请参阅[使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限](../common/storage-auth-aad.md)。 | - |
+| 使用 Azure Active Directory (Azure AD) 授权对 Blob 数据的访问 | 与用于授权对 Blob 存储的请求的共享密钥相比，Azure AD 提供了卓越的安全性和易用性。 有关详细信息，请参阅[授权访问 Azure 存储中的数据](../common/authorize-data-access.md)。 | - |
 | 通过 Azure RBAC 向 Azure AD 安全主体分配权限时，请记住“最低权限”原则 | 将角色分配给用户、组或应用程序时，只向该安全主体授予执行任务所需的权限。 限制对资源的访问有助于防止意外和恶意滥用数据。 | - |
 | 使用用户委托 SAS 授予客户端对 Blob 数据的有限访问权限 | 用户委托 SAS 使用 Azure Active Directory (Azure AD) 凭据以及为 SAS 指定的权限进行保护。 用户委托 SAS 在其作用域和功能方面类似于服务 SAS，但相对于服务 SAS 具有安全优势。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 | - |
 | 使用 Azure Key Vault 保护帐户访问密钥 | Microsoft 建议使用 Azure AD 对 Azure 存储的请求进行授权。 但是，如果必须使用共享密钥授权，请使用 Azure Key Vault 保护帐户密钥。 可以在运行时从密钥保管库检索密钥，而不是将其与应用程序一起保存。 有关 Azure Key Vault 的详细信息，请参阅 [Azure Key Vault 概述](../../key-vault/general/overview.md)。 | - |

@@ -2,22 +2,22 @@
 title: 将应用程序身份验证迁移到 Azure Active Directory
 description: 本白皮书详细介绍了将应用程序身份验证迁移到 Azure AD 的规划和优点。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 02/05/2021
-ms.author: mtillman
-ms.reviewer: baselden
+ms.author: davidmu
+ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a70392c6236591d803b4c3823677ba6788072ff
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 365283ebc45c0f85a56d27d4cc90807de9a88fb4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076989"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742879"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>将应用程序身份验证迁移到 Azure Active Directory
 
@@ -555,11 +555,9 @@ Azure AD 支持的应用和资源主要有两类用户：
 
 将用户指向 [MyApps](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) 门户体验。 在此处，他们可以访问所有基于云的应用，使用 [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md)提供的应用，以及使用[应用程序代理](../app-proxy/application-proxy.md)的应用（前提是他们有权访问这些应用）。
 
-
 可指导用户了解如何发现其应用：
 
 - 使用[现有的单一登录](./view-applications-portal.md)功能，将用户链接到任何应用
-
 
 - 启用对应用的[自助式应用程序访问](./manage-self-service-access.md)，让用户添加你策展的应用
 
@@ -573,7 +571,7 @@ Azure AD 支持的应用和资源主要有两类用户：
 
 - 对于 Android 设备，可通过 [Google Play 商店](https://play.google.com/store/apps/details?id=com.microsoft.intune)下载
 
-- 对于 Apple 设备，可通过[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) 下载（或用户可下载[适用于 iOS 的 Apps 移动应用](https://apps.apple.com/us/app/my-apps-azure-active-directory/id824048653)）
+- 对于 Apple 设备，可通过[Apple App Store](https://apps.apple.com/us/app/intune-company-portal/id719171358) 下载（或用户可下载[适用于 iOS 的 Apps 移动应用](https://appadvice.com/app/my-apps-azure-active-directory/824048653)）
 
 允许用户通过浏览器扩展打开其应用。
 
@@ -603,7 +601,7 @@ Azure AD 提供了一个集中的访问位置来管理已迁移的应用。 转�
 
 你还可使用 [Azure 门户](https://portal.azure.com/)在一个集中的位置审核所有应用：
 
-- 使用 **企业应用程序 Audit 审核应用，或从 [Azure AD 报告 API](../reports-monitoring/concept-reporting-api.md) 访问相同的信息以集成到你最喜爱的工具中。
+- 使用“企业应用程序 Audit”审核应用，或从 [Azure AD 报告 API](../reports-monitoring/concept-reporting-api.md) 访问相同的信息以集成到你最喜爱的工具中 。
 
 - 对于使用 OAuth/OpenID Connect 的应用，使用企业应用程序 Permissions 查看应用的权限 。
 

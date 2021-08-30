@@ -12,12 +12,12 @@ ms.date: 04/29/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 8aaa087d1de85b77c9407f8d39e029e3bf2696f2
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 38af8d1ffd422b151bebc2fea42c575f181cc72e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614840"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741099"
 ---
 # <a name="lower-speech-synthesis-latency-using-speech-sdk"></a>使用语音 SDK 降低语音合成延迟
 
@@ -343,7 +343,8 @@ SPXConnection* connection = [[SPXConnection alloc]initFromSpeechSynthesizer:synt
 可以使用负载测试来测试语音合成服务的容量和延迟。
 下面是一些准则。
 
- - 语音合成服务具有自动缩放功能，但进行扩展需要一定时间。如果短时间内并发增加，则客户端可能会出现长时间的延迟或 `429` 错误代码（请求过多）。 因此，建议在负载测试中逐步提高并发数。 [请参阅本文](speech-services-quotas-and-limits.md#general-best-practices-to-mitigate-throttling-during-autoscaling)了解更多详细信息。
+ - 语音合成服务具有自动缩放功能，但进行扩展需要一定时间。如果短时间内并发增加，则客户端可能会出现长时间的延迟或 `429` 错误代码（请求过多）。 因此，建议在负载测试中逐步提高并发数。 [参阅本文](speech-services-quotas-and-limits.md#general-best-practices-to-mitigate-throttling-during-autoscaling)了解更多详细信息，尤其是[此工作负载模式示例](speech-services-quotas-and-limits.md#example-of-a-workload-pattern-best-practice)。
+ - 可利用示例来使用对象池（[C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs) 和 [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechSynthesisScenarioSamples.java)）进行负载测试并获取延迟数。 可修改示例中的测试回合和并发以满足目标并发。
  - 此服务存在基于实际流量的配额限制，因此，如果要在并发数远远高于实际流量的情况下执行负载测试，请在测试之前进行连接。
 
 ## <a name="next-steps"></a>后续步骤

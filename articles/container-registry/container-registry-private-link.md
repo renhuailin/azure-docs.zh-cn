@@ -2,69 +2,144 @@
 title: 设置具有专用链接的专用终结点
 description: 在容器注册表上设置专用终结点，并实现在本地虚拟网络中通过专用链接进行访问的功能。 专用链接访问是高级服务层级的一项功能。
 ms.topic: article
-ms.date: 03/31/2021
-ms.openlocfilehash: d3c7c573b0ffc08a85f5cbe5cc62d3f7c052f0af
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/14/2021
+ms.openlocfilehash: 25a45f0e1f4115fce623deef919368ecdf479ead
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781426"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471456"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>使用 Azure 专用链接以私密方式连接到 Azure 容器注册表
-
 
 将虚拟网络专用 IP 地址分配给注册表终结点并使用[ Azure 专用链接](../private-link/private-link-overview.md)，从而限制对注册表的访问。 虚拟网络上的客户端与注册表专用终结点之间的网络流量将穿过虚拟网络以及 Azure 主干网络上的专用链接，因此不会从公共 internet 公开。 专用链接还允许通过 [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) 专用对等互连或 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)，从本地访问专用注册表。
 
 可以为注册表专用终结点[配置 DNS 设置](../private-link/private-endpoint-overview.md#dns-configuration)，以便将这些设置解析为注册表的已分配的专用 IP 地址。 使用 DNS 配置时，网络中的客户端和服务可以继续按注册表的完全限定的域名（如 myregistry.azurecr.io）来访问注册表。 
 
-此功能在“高级”容器注册表服务层级中可用。 目前，最多可以为注册表设置 10 个专用终结点。 有关注册表服务层级和限制的信息，请参阅 [Azure 容器注册表层级](container-registry-skus.md)。
+本文介绍如何使用 Azure 门户（推荐）或 Azure CLI 为注册表配置专用终结点。 此功能在“高级”容器注册表服务层级中可用。 有关注册表服务层级和限制的信息，请参阅 [Azure 容器注册表层级](container-registry-skus.md)。
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
+> [!NOTE]
+> 目前，最多可以为注册表设置 10 个专用终结点。 
+
 ## <a name="prerequisites"></a>先决条件
 
+* 要在其中设置专用终结点的虚拟网络和子网。 如果需要，可[创建新虚拟网络和子网](../virtual-network/quick-create-portal.md)。
+* 为了进行测试，建议在虚拟网络中设置 VM。 有关创建测试虚拟机以访问注册表的步骤，请参阅[创建启用了 Docker 的虚拟机](container-registry-vnet.md#create-a-docker-enabled-virtual-machine)。 
 * 若要使用本文中所述的 Azure CLI 步骤，建议安装 Azure CLI 版本 2.6.0 或更高版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。 或是在 [Azure Cloud Shell](../cloud-shell/quickstart.md) 中运行。
 * 如果还没有容器注册表，请创建一个（需要的高级层级），并[导入](container-registry-import-images.md)示例公共映像，如来自 Microsoft 容器注册表的 `mcr.microsoft.com/hello-world`。 例如，使用 [Azure 门户][quickstart-portal]或 [Azure CLI][quickstart-cli] 创建注册表。
-* 若要使用其他 Azure 订阅中的专用链接配置注册表访问，需要在该订阅中注册 Azure 容器注册表的资源提供程序。 例如：
 
-  ```azurecli
-  az account set --subscription <Name or ID of subscription of private link>
+### <a name="register-container-registry-resource-provider"></a>注册容器注册表资源提供程序
 
-  az provider register --namespace Microsoft.ContainerRegistry
-  ``` 
+若要使用其他 Azure 订阅或租户中的专用链接配置注册表访问，需要在该订阅中为 Azure 容器注册表注册[资源提供程序](../azure-resource-manager/management/resource-providers-and-types.md)。 使用 Azure 门户、Azure CLI 或其他工具。
 
-本文中的 Azure CLI 示例使用以下环境变量。 替换为适合于环境的值。 所有示例都针对 Bash shell 进行格式设置：
+示例：
+
+```azurecli
+az account set --subscription <Name or ID of subscription of private link>
+
+az provider register --namespace Microsoft.ContainerRegistry
+``` 
+
+## <a name="set-up-private-endpoint---portal-recommended"></a>设置专用终结点 - 门户（推荐）
+
+在创建注册表时设置专用终结点，或向现有注册表添加专用终结点。 
+
+### <a name="create-a-private-endpoint---new-registry"></a>创建专用终结点 - 新注册表
+
+1. 在门户中创建注册表时，请在“基本信息”选项卡上的“SKU”中，选择“高级”。
+1. 选择“网络”选项卡。
+1. 在“网络连接”中，选择“专用终结点” > “+ 添加”。
+1. 输入或选择以下信息：
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 输入现有组名称或创建一个新组。|
+    | 名称 | 输入唯一名称。 |
+    | 注册表子资源 |选择“注册表”|
+    | **网络** | |
+    | 虚拟网络| 选择专用终结点的虚拟网络。 例如：myDockerVMVNET。 |
+    | 子网 | 选择专用终结点的子网。 例如：myDockerVMSubnet。 |
+    |**专用 DNS 集成**||
+    |与专用 DNS 区域集成 |请选择“是”。 |
+    |专用 DNS 区域 |选择“(新) privatelink.azurecr.io” |
+    |||
+1. 配置其余注册表设置，然后选择“查看 + 创建”。
+  
+:::image type="content" source="media/container-registry-private-link/private-link-create-portal.png" alt-text="通过专用终结点创建注册表":::
+
+
+
+专用链接现已配置，可供使用。
+
+### <a name="create-a-private-endpoint---existing-registry"></a>创建专用终结点 - 现有注册表
+
+1. 在门户中，导航到容器注册表。
+1. 在“设置”下选择“网络” 。
+1. 在“专用终结点”选项卡上，选择“+ 专用终结点”。
+    :::image type="content" source="media/container-registry-private-link/private-endpoint-existing-registry.png" alt-text="向注册表添加专用终结点":::
+
+1. 在“基本信息”中，输入或选择以下信息：
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    | **项目详细信息** | |
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 输入现有组名称或创建一个新组。|
+    | **实例详细信息** |  |
+    | 名称 | 输入名称。 |
+    |区域|选择区域。|
+    |||
+1. 在完成时选择“下一步:资源”。
+1. 输入或选择以下信息：
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    |连接方法  | 对于本例，选择“连接到我的目录中的 Azure 资源”。|
+    | 订阅| 选择订阅。 |
+    | 资源类型 | 选择“Microsoft.ContainerRegistry/registries”。 |
+    | 资源 |选择注册表的名称|
+    |目标子资源 |选择“注册表”|
+    |||
+1. 在完成时选择“下一步:配置”。
+1. 输入或选择信息：
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    |**联网**| |
+    | 虚拟网络| 选择专用终结点的虚拟网络 |
+    | 子网 | 选择专用终结点的子网 |
+    |**专用 DNS 集成**||
+    |与专用 DNS 区域集成 |请选择“是”。 |
+    |专用 DNS 区域 |选择“(新) privatelink.azurecr.io” |
+    |||
+
+1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
+1. 看到“验证通过”消息时，选择“创建” 。
+
+### <a name="confirm-endpoint-configuration"></a>确认终结点配置
+
+创建好专用终结点之后，专用区域中的 DNS 设置会随门户中的“专用终结点”设置一起显示：
+
+1. 在门户中，导航到容器注册表，选择“设置”>“网络”。
+1. 在“专用终结点”选项卡上，选择创建的专用这节点。 
+1. 选择“DNS 配置”。
+1. 查看链接设置和自定义 DNS 设置。
+
+:::image type="content" source="media/container-registry-private-link/private-endpoint-overview.png" alt-text="门户中的终结点 DNS 设置":::
+## <a name="set-up-private-endpoint---cli"></a>设置专用终结点连接 - CLI
+
+本文中的 Azure CLI 示例使用以下环境变量。 需要现有容器注册表、虚拟网络和子网的名称才能设置专用终结点。 替换为适合于环境的值。 所有示例都针对 Bash shell 进行格式设置：
 
 ```bash
 REGISTRY_NAME=<container-registry-name>
 REGISTRY_LOCATION=<container-registry-location> # Azure region such as westeurope where registry created
-RESOURCE_GROUP=<resource-group-name>
-VM_NAME=<virtual-machine-name>
+RESOURCE_GROUP=<resource-group-name> # Resource group for your existing virtual network and subnet
+NETWORK_NAME=<virtual-network-name>
+SUBNET_NAME=<subnet-name>
 ```
-
-[!INCLUDE [Set up Docker-enabled VM](../../includes/container-registry-docker-vm-setup.md)]
-
-## <a name="set-up-private-link---cli"></a>设置专用链接 - CLI
-
-### <a name="get-network-and-subnet-names"></a>获取网络和子网名称
-
-如果尚未获取，则需要虚拟网络和子网的名称才能设置专用链接。 在此示例中，将对 VM 和注册表的专用终结点使用相同子网。 但是，在许多情况下，会在单独子网中设置终结点。 
-
-创建 VM 时，Azure 默认情况下会在同一个资源组中创建虚拟网络。 虚拟网络的名称基于虚拟机的名称。 例如，如果将虚拟机命名为 myDockerVM，则默认虚拟网络名称为 myDockerVMVNET，其中包含名为 myDockerVMSubnet 的子网。 通过运行 [az network vnet list][az-network-vnet-list] 命令在环境变量中设置这些值：
-
-```azurecli
-NETWORK_NAME=$(az network vnet list \
-  --resource-group $RESOURCE_GROUP \
-  --query '[].{Name: name}' --output tsv)
-
-SUBNET_NAME=$(az network vnet list \
-  --resource-group $RESOURCE_GROUP \
-  --query '[].{Subnet: subnets[0].name}' --output tsv)
-
-echo NETWORK_NAME=$NETWORK_NAME
-echo SUBNET_NAME=$SUBNET_NAME
-```
-
 ### <a name="disable-network-policies-in-subnet"></a>在子网中禁用网络策略
 
 [禁用网络策略](../private-link/disable-private-endpoint-network-policy.md)，如用于专用终结点的子网中的网络安全组。 使用 [az network vnet subnet update][az-network-vnet-subnet-update] 更新子网配置：
@@ -128,7 +203,7 @@ az network private-endpoint create \
 
 ### <a name="get-endpoint-ip-configuration"></a>获取终结点 IP 配置
 
-若要配置 DNS 记录，请获取专用终结点的 IP 配置。 在此示例中，与专用终结点的网络接口关联的是容器注册表的两个专用 IP 地址：一个用于注册表本身，另一个用于注册表的数据终结点。 
+若要配置 DNS 记录，请获取专用终结点的 IP 配置。 在此示例中，与专用终结点的网络接口关联的是容器注册表的两个专用 IP 地址：一个用于注册表本身，另一个用于注册表的数据终结点。 如果注册表是异地复制的，每个副本将关联一个额外的 IP 地址。
 
 首先，运行 [az network private-endpoint show][az-network-private-endpoint-show] 以查询网络接口 ID 的专用终结点：
 
@@ -140,7 +215,7 @@ NETWORK_INTERFACE_ID=$(az network private-endpoint show \
   --output tsv)
 ```
 
-以下 [az network nic show][az-network-nic-show] 命令获取容器注册表和注册表数据终结点的专用 IP 地址：
+以下 [az network nic show][az-network-nic-show] 命令获取容器注册表和注册表数据终结点的专用 IP 地址和 FQDN：
 
 ```azurecli
 REGISTRY_PRIVATE_IP=$(az network nic show \
@@ -166,17 +241,27 @@ DATA_ENDPOINT_FQDN=$(az network nic show \
   --output tsv)
 ```
 
-> [!NOTE]
-> 如果注册表是[异地复制](container-registry-geo-replication.md)，请查询每个注册表副本的附加数据终结点。
+#### <a name="additional-endpoints-for-geo-replicas"></a>异地副本的其他终结点
 
+如果注册表是[异地复制](container-registry-geo-replication.md)，请查询每个注册表副本的附加数据终结点。 例如，在 eastus 区域： 
+
+```azurecli
+REPLICA_LOCATION=eastus
+GEO_REPLICA_DATA_ENDPOINT_PRIVATE_IP=$(az network nic show \
+  --ids $NETWORK_INTERFACE_ID \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry_data_$REPLICA_LOCATION'].privateIpAddress" \
+  --output tsv) 
+
+GEO_REPLICA_DATA_ENDPOINT_FQDN=$(az network nic show \
+  --ids $NETWORK_INTERFACE_ID \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry_data_$REPLICA_LOCATION'].privateLinkConnectionProperties.fqdns" \
+  --output tsv)
+```
 ### <a name="create-dns-records-in-the-private-zone"></a>在专用区域中创建 DNS 记录
 
 以下命令在专用区域中为注册表终结点及其数据终结点创建 DNS 记录。 例如，如果在 westeurope 区域中有一个名为 myregistry 的注册表，则终结点名称是 `myregistry.azurecr.io` 和 `myregistry.westeurope.data.azurecr.io`。 
 
-> [!NOTE]
-> 如果注册表是[异地复制](container-registry-geo-replication.md)，请为每个副本的数据终结点 IP 创建附加 DNS 记录。
-
-首先运行 [az network private-dns record-set a create][az-network-private-dns-record-set-a-create] 以便为注册表终结点和数据终结点创建空的 A 记录集：
+首先运行 [az network private-dns record-set a create][az-network-private-dns-record-set-a-create]，为注册表终结点和数据终结点创建空的 A 记录集：
 
 ```azurecli
 az network private-dns record-set a create \
@@ -191,7 +276,7 @@ az network private-dns record-set a create \
   --resource-group $RESOURCE_GROUP
 ```
 
-运行 [az network private-dns record-set a add-record][az-network-private-dns-record-set-a-add-record] 命令以便为注册表终结点和数据终结点创建 A 记录：
+运行 [az network private-dns record-set a add-record][az-network-private-dns-record-set-a-add-record] 命令，为注册表终结点和数据终结点创建 A 记录：
 
 ```azurecli
 az network private-dns record-set a add-record \
@@ -208,86 +293,22 @@ az network private-dns record-set a add-record \
   --ipv4-address $DATA_ENDPOINT_PRIVATE_IP
 ```
 
-专用链接现已配置，可供使用。
+#### <a name="additional-records-for-geo-replicas"></a>异地副本的附加记录
 
-## <a name="set-up-private-link---portal"></a>设置专用链接 - 门户
+如果注册表是异地复制的，请为每个副本创建附加 DNS 设置。 继续以 eastus 区域为例：
 
-可在创建注册表时设置专用链接，或向现有注册表添加专用链接。 以下步骤假设已使用 VM 设置虚拟网络和子网以进行测试。 也可以[创建新虚拟网络和子网](../virtual-network/quick-create-portal.md)。
+```azurecli
+az network private-dns record-set a create \
+  --name ${REGISTRY_NAME}.${REPLICA_LOCATION}.data \
+  --zone-name privatelink.azurecr.io \
+  --resource-group $RESOURCE_GROUP
 
-### <a name="create-a-private-endpoint---new-registry"></a>创建专用终结点 - 新注册表
-
-1. 在门户中创建注册表时，请在“基本信息”选项卡上的“SKU”中，选择“高级”。
-1. 选择“网络”选项卡。
-1. 在“网络连接”中，选择“专用终结点” > “+ 添加”。
-1. 输入或选择以下信息：
-
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 订阅 | 选择订阅。 |
-    | 资源组 | 输入现有组名称或创建一个新组。|
-    | 名称 | 输入唯一名称。 |
-    | 子资源 |选择“注册表”|
-    | **网络** | |
-    | 虚拟网络| 选择要在其中部署虚拟机的虚拟网络，例如 myDockerVMVNET。 |
-    | 子网 | 选择要在其中部署虚拟机的子网，例如 myDockerVMSubnet。 |
-    |专用 DNS 集成||
-    |与专用 DNS 区域集成 |请选择“是”。 |
-    |专用 DNS 区域 |选择“(新) privatelink.azurecr.io” |
-    |||
-1. 配置其余注册表设置，然后选择“审阅 + 创建”。
-
-  ![通过专用终结点创建注册表](./media/container-registry-private-link/private-link-create-portal.png)
-
-### <a name="create-a-private-endpoint---existing-registry"></a>创建专用终结点 - 现有注册表
-
-1. 在门户中，导航到容器注册表。
-1. 在“设置”下选择“网络” 。
-1. 在“专用终结点”选项卡上，选择“+ 专用终结点”。
-1. 在“基本信息”中，输入或选择以下信息：
-
-    | 设置 | 值 |
-    | ------- | ----- |
-    | **项目详细信息** | |
-    | 订阅 | 选择订阅。 |
-    | 资源组 | 输入现有组名称或创建一个新组。|
-    | **实例详细信息** |  |
-    | 名称 | 输入名称。 |
-    |区域|选择区域。|
-    |||
-5. 在完成时选择“下一步:资源”。
-6. 输入或选择以下信息：
-
-    | 设置 | 值 |
-    | ------- | ----- |
-    |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
-    | 订阅| 选择订阅。 |
-    | 资源类型 | 选择“Microsoft.ContainerRegistry/registries”。 |
-    | 资源 |选择注册表的名称|
-    |目标子资源 |选择“注册表”|
-    |||
-7. 在完成时选择“下一步:配置”。
-8. 输入或选择信息：
-
-    | 设置 | 值 |
-    | ------- | ----- |
-    |**联网**| |
-    | 虚拟网络| 选择要在其中部署虚拟机的虚拟网络，例如 myDockerVMVNET。 |
-    | 子网 | 选择要在其中部署虚拟机的子网，例如 myDockerVMSubnet。 |
-    |专用 DNS 集成||
-    |与专用 DNS 区域集成 |请选择“是”。 |
-    |专用 DNS 区域 |选择“(新) privatelink.azurecr.io” |
-    |||
-
-1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
-2. 看到“验证通过”消息时，选择“创建” 。
-
-创建专用终结点之后，专用区域中的 DNS 设置会显示在门户中的“专用终结点”页上：
-
-1. 在门户中，导航到容器注册表，选择“设置”>“网络”。
-1. 在“专用终结点”选项卡上，选择创建的专用这节点。
-1. 在“概述”页上，审阅链接设置和自定义 DNS 设置。
-
-  ![站项目 DNS 设置](./media/container-registry-private-link/private-endpoint-overview.png)
+az network private-dns record-set a add-record \
+  --record-set-name ${REGISTRY_NAME}.${REPLICA_LOCATION}.data \
+  --zone-name privatelink.azurecr.io \
+  --resource-group $RESOURCE_GROUP \
+  --ipv4-address $GEO_REPLICA_DATA_ENDPOINT_PRIVATE_IP
+```
 
 专用链接现已配置，可供使用。
 
@@ -295,28 +316,24 @@ az network private-dns record-set a add-record \
 
 在许多情况下，禁用从公用网络进行的注册表访问。 此配置会阻止虚拟网络外部的客户端访问注册表终结点。 
 
-### <a name="disable-public-access---cli"></a>禁用公共访问 - CLI
-
-若要使用 Azure CLI 禁用公共访问，请运行 [az acr update][az-acr-update]，并将 `--public-network-enabled` 设置为 `false`。 
-
-> [!NOTE]
-> `public-network-enabled` 参数需要 Azure CLI 2.6.0 或更高版本。 
-
-```azurecli
-az acr update --name $REGISTRY_NAME --public-network-enabled false
-```
-
-
 ### <a name="disable-public-access---portal"></a>禁用公共访问 - 门户
 
 1. 在门户中，导航到容器注册表，选择“设置”>“网络”。
 1. 在“公共访问”选项卡上的“允许公用网络访问”中，选择“禁用”  。 再选择“保存”。
 
+### <a name="disable-public-access---cli"></a>禁用公共访问 - CLI
+
+若要使用 Azure CLI 禁用公共访问，请运行 [az acr update][az-acr-update]，并将 `--public-network-enabled` 设置为 `false`。 
+
+```azurecli
+az acr update --name $REGISTRY_NAME --public-network-enabled false
+```
+
 ## <a name="validate-private-link-connection"></a>验证专用链接连接
 
 应该验证专用终结点的子网中的资源是否可以通过专用 IP 地址连接到注册表，以及它们是否具有正确的专用 DNS 区域集成。
 
-若要验证专用链接连接，请通过 SSH 连接到虚拟网络中设置的虚拟机。
+若要验证专用链接连接，请连接到虚拟网络中设置的虚拟机。
 
 运行 `nslookup` 或 `dig` 等实用工具，以便通过专用链接查找注册表的 IP 地址。 例如：
 
@@ -362,7 +379,7 @@ xxxx.westeurope.cloudapp.azure.com. 10  IN A 20.45.122.144
 
 ### <a name="registry-operations-over-private-link"></a>针对专用链接的注册表操作
 
-此外，验证是否可以从子网中的虚拟机执行注册表操作。 建立与虚拟机的 SSH 连接，并运行 [az acr login][az-acr-login] 以登录注册表。 根据 VM 配置，可能需要将 `sudo` 作为以下命令的前缀。
+还应验证是否可从网络中的虚拟机执行注册表操作。 建立与虚拟机的 SSH 连接，并运行 [az acr login][az-acr-login] 以登录注册表。 根据 VM 配置，可能需要将 `sudo` 作为以下命令的前缀。
 
 ```bash
 az acr login --name $REGISTRY_NAME
@@ -410,15 +427,16 @@ az acr private-endpoint-connection list \
 > [!IMPORTANT]
 > 如果以后添加新副本，则需要为该区域中的数据终结点手动添加新的 DNS 记录。 例如，如果在 northeurope 位置创建 myregistry 的副本，请为 `myregistry.northeurope.data.azurecr.io` 添加记录。
 
-创建 DNS 记录所需的 FQDN 和专用 IP 地址与该专用终结点的网络接口相关联。 你可使用 Azure CLI 或门户获取这些信息：
+创建 DNS 记录所需的 FQDN 和专用 IP 地址与该专用终结点的网络接口相关联。 你可使用 Azure 门户或 Azure CLI 获取这些信息。
 
+* 在门户中，导航到专用终结点，然后选择“DNS 配置”。 
 * 使用 Azure CLI，运行 [az network nic show][az-network-nic-show] 命令。 有关示例命令，请参阅本文前面的[获取终结点 IP 配置](#get-endpoint-ip-configuration)。
-
-* 在门户中，导航到专用终结点，然后选择“DNS 配置”。
 
 创建 DNS 记录后，请确保注册表 FQDN 正确解析为各自的专用 IP 地址。
 
 ## <a name="clean-up-resources"></a>清理资源
+
+若要在门户中清理资源，请导航到资源组。 加载资源组后，单击“删除资源组”以删除该资源组和其中存储的资源。
 
 如果在同一资源组中创建了所有 Azure 资源，并且不再需要这些资源，则可以选择使用单个 [az group delete](/cli/azure/group) 命令删除资源：
 
@@ -426,11 +444,11 @@ az acr private-endpoint-connection list \
 az group delete --name $RESOURCE_GROUP
 ```
 
-若要在门户中清理资源，请导航到资源组。 加载资源组后，单击“删除资源组”以删除该资源组和其中存储的资源。
-
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解有关专用链接的更多信息，请参阅 [Azure 专用链接](../private-link/private-link-overview.md)文档。
+
+* 若要验证路由到专用终结点的虚拟网络中的 DNS 设置，请使用 `--vnet` 参数运行 [az acr check-health](/cli/azure/acr#az_acr_check_health) 命令。 有关详细信息，请参阅[检查 Azure 容器注册表的运行状况](container-registry-check-health.md) 
 
 * 如需设置从客户端防火墙后访问注册表的规则，请参阅[配置从防火墙后访问 Azure 容器注册表的规则](container-registry-firewall-access-rules.md)。
 

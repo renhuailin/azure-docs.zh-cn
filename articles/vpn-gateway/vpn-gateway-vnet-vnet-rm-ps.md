@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6baf0342f5fea5ee4ec062c5eed07d9761e72c1d
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 87a2a658b37f199c8e5b6c92543cc9c70a8ae42c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289455"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729464"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
 本文介绍如何使用 VNet 到 VNet 连接类型来连接虚拟网络。 虚拟网络可位于相同或不同的区域，来自相同或不同的订阅。 从不同的订阅连接 VNet 时，订阅不需要与相同的 Active Directory 租户相关联。
 
-本文中的步骤适用于 Resource Manager 部署模型并使用 PowerShell。 也可使用不同的部署工具或部署模型创建此配置，方法是从以下列表中选择另一选项：
+本文中的步骤适用于[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)并使用 PowerShell。 也可使用不同的部署工具或部署模型创建此配置，方法是从以下列表中选择另一选项：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -80,7 +80,7 @@ ms.locfileid: "108289455"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* 因为创建网关需要多达 45 分钟，所以 Azure Cloud Shell 会在此演练中出现周期性超时。 可以单击终端的左上角，重启 Cloud Shell。 重启终端时，务必重新声明所有变量。
+* 因为创建网关需要 45 分钟或更长时间，所以 Azure Cloud Shell 会在此演练中出现周期性超时。 可以单击终端的左上角，重启 Cloud Shell。 重启终端时，务必重新声明所有变量。
 
 * 如果更想本地安装最新版本的 Azure PowerShell 模块，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/)。
 
@@ -204,7 +204,7 @@ ms.locfileid: "108289455"
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-完成命令后，创建此网关将需要多达 45 分钟的时间。 如果使用的是 Azure Cloud Shell，可以单击 Cloud Shell 终端的右上角重启 Cloud Shell 会话，然后配置 TestVNet4。 无需等到 TestVNet1 网关创建完成。
+完成命令后，创建此网关将需要 45 分钟或更长时间。 如果使用的是 Azure Cloud Shell，可以单击 Cloud Shell 终端的右上角重启 Cloud Shell 会话，然后配置 TestVNet4。 无需等到 TestVNet1 网关创建完成。
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>步骤 3 - 创建并配置 TestVNet4
 

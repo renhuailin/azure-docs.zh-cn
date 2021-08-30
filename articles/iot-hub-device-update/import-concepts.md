@@ -6,15 +6,26 @@ ms.author: andbrown
 ms.date: 2/10/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 4cd5e0c016b98a3dc9336237a5c1b14e6b0f5789
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 39a1acb596f4d56915aabfa0a64fc69d6e55aec2
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040577"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769108"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub"></a>将更新导入 Device Update for IoT Hub
 若要将更新从 Device Update for IoT Hub 部署到设备，首先必须将该更新导入 Device Update 服务。 下面概述了一些在导入更新时要了解的重要概念。
+
+## <a name="limits-on-importing-updates"></a>有关导入更新的限制
+对于 Device Update for IoT Hub 实例，强制实施以下限制：
+
+* 每个 ADU 实例 5 个提供程序
+* 每个提供程序 5 个名称
+* 每个名称 25 个版本
+
+还限制了更新版本总共 100 个（跨所有提供程序和名称）。
+
+对于更新提交中的任何单个文件，文件大小不得超过 800 MB。 一次更新提交中所有文件的总大小也不得超过 800 MB。
 
 ## <a name="import-manifest"></a>导入清单
 

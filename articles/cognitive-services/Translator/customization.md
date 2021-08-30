@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: lajanuar
-ms.openlocfilehash: 0930024a791fe8b76c90e8ab4249a070b22a1c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68ae3735fc1f58ebbf8d7afd6a098e7520880058
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98898030"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228749"
 ---
 # <a name="customize-your-text-translations"></a>自定义文本翻译
 
-自定义翻译器是翻译器服务的一项功能，它允许用户在使用翻译器（仅限版本 3）翻译文本时自定义Microsoft 翻译工具的高级神经机器翻译。
+自定义翻译器是 Translator 服务的一项功能，它允许用户在使用翻译器（仅限版本 3）翻译文本时自定义 Microsoft 翻译工具的高级神经网络机器翻译。
 
 与[认知服务语音](../speech-service/index.yml)一起使用时，该功能还可用于自定义语音翻译。
 

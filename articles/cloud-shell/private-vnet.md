@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 86ffc0b0b8369fb82177912cccfdf582cfe1e536
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 2ce108b7f36b7f7d4caf5133aafe99eb837df1ce
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696077"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742597"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>将 Cloud Shell 部署到 Azure 虚拟网络中
 
@@ -63,7 +63,7 @@ ms.locfileid: "110696077"
 ## <a name="virtual-network-deployment-limitations"></a>虚拟网络部署限制
 * 由于涉及到额外的网络资源，在虚拟网络中启动 Cloud Shell 通常比标准 Cloud Shell 会话要慢。
 
-* 当前支持除印度中部之外的所有 Cloud Shell 区域。 
+* 当前支持除印度中部之外的所有 Cloud Shell 主要区域。 
 
 * [Azure 中继](../azure-relay/relay-what-is-it.md)不是免费服务，请查看其[定价](https://azure.microsoft.com/pricing/details/service-bus/)。 在 Cloud Shell 方案中，每个管理员在使用 Cloud Shell 时都将使用一个混合连接。 Cloud Shell 会话完成后，该连接会自动关闭。
 
@@ -90,7 +90,7 @@ ResourceTypes                             RegistrationState
 通过 Azure 门户、Azure CLI、Azure PowerShell 等方式创建一个资源组，并在新资源组中创建一个虚拟网络，资源组和虚拟网络必须位于同一区域。
 
 ### <a name="arm-templates"></a>ARM 模板
-使用 [Azure 快速入门模板](https://aka.ms/cloudshell/docs/vnet/template)在虚拟网络中创建 Cloud Shell 资源，并使用 [Azure 快速入门模板](https://aka.ms/cloudshell/docs/vnet/template/storage)创建必要的存储。 记下你的资源名称，主要是文件共享名称。
+使用 [Azure 快速入门模板](https://aka.ms/cloudshell/docs/vnet/template)在虚拟网络中创建 Cloud Shell 资源，并使用 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/cloud-shell-vnet-storage/)创建必要的存储。 记下你的资源名称，主要是文件共享名称。
 
 ### <a name="open-relay-firewall"></a>打开中继防火墙
 导航到使用上述模板创建的中继，在“设置”中选择“网络”，允许从浏览器网络访问中继。 默认情况下，只能从已在其中创建中继的虚拟网络访问中继。 

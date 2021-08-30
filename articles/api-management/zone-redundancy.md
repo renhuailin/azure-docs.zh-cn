@@ -4,15 +4,15 @@ description: 了解如何通过启用区域冗余来改善区域中 Azure API �
 author: dlepow
 ms.service: api-management
 ms.topic: how-to
-ms.date: 05/07/2021
+ms.date: 08/11/2021
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 6e8352a93575ec6222be463daea14aee28f08a7c
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 2415a07a215c99a1775593aae403af6f84b308fa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634808"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752474"
 ---
 # <a name="availability-zone-support-for-azure-api-management"></a>适用于 Azure API 管理的可用性区域支持 
 
@@ -29,13 +29,17 @@ API 管理还支持[多区域部署](api-management-howto-deploy-multi-region.md
 * 澳大利亚东部
 * 巴西南部
 * 加拿大中部
-* 印度中部
+* 印度中部 (*)
 * 美国中部
 * 美国东部
 * 美国东部 2
 * 法国中部
-* 日本东部
-* 北欧
+* 德国中西部
+* Japan East
+* 韩国中部 (*)
+* 欧洲北部
+* 挪威东部 (*)
+* 南非北部 (*)
 * 美国中南部
 * 东南亚
 * 英国南部
@@ -43,7 +47,10 @@ API 管理还支持[多区域部署](api-management-howto-deploy-multi-region.md
 * 美国西部 2
 * 美国西部 3
 
-## <a name="prerequisites"></a>必备知识
+> [!IMPORTANT]
+> 带有 * 的区域在 Azure 订阅中具有限制性访问权限，以启用可用性区域支持。 请与你的 Microsoft 销售或客户代表合作
+
+## <a name="prerequisites"></a>必备条件
 
 * 如果尚未创建 API 管理服务实例，请参阅[创建 API 管理服务实例](get-started-create-service-instance.md)。 选择高级服务层级。
 * 如果 API 管理实例部署在[虚拟网络](api-management-using-with-vnet.md)中，请确保在计划启用区域冗余的任何新位置设置虚拟网络、子网和公共 IP 地址。
@@ -70,6 +77,6 @@ API 管理还支持[多区域部署](api-management-howto-deploy-multi-region.md
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解[将 Azure API 管理服务实例部署到多个 Azure 区域](api-management-howto-deploy-multi-region.md)。
-* 还可以使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-api-management-simple-zones)启用区域冗余。
+* 还可以使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.apimanagement/api-management-simple-zones)启用区域冗余。
 * 详细了解[支持可用性区域的 Azure 服务](../availability-zones/az-region.md)。
-* 详细了解在 Azure 中生成以提高[可靠性](/azure/architecture/framework/resiliency/overview)。
+* 详细了解在 Azure 中生成以提高[可靠性](/azure/architecture/framework/resiliency/app-design)。

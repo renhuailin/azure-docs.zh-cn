@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: d1bb111bbaa909c52261a0dbafe6d6e0a24390ac
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: e9e233aa5a4d32a1f298889b0a98c3a85d9cf4e5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007255"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456310"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 专用主机
 
@@ -127,7 +127,7 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 
 若要请求提高配额，请在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)中创建支持请求。
 
-预配专用主机时将同时使用专用主机 vCPU 和 VM 系列 vCPU 配额，但不会使用区域 vCPU。
+预配专用主机时将同时使用专用主机 vCPU 和 VM 系列 vCPU 配额，但不会使用区域 vCPU。 放置在专用主机上的 VM 不会计入 VM 系列 vCPU 配额。 如果 VM 从专用主机移到多租户环境中，则 VM 将占用 VM 系列 vCPU 配额。
 
 
 ![门户中的用量和配额页的屏幕截图](./media/virtual-machines-common-dedicated-hosts/quotas.png)

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce0916d4107fdcf97875d1c6a428bbfa75164a65
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 0947f9924e97532b087940ecde08e8a0f8d7e005
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068499"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449099"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>利用 Azure Active Directory 智能锁定保护用户帐户免受攻击
 
@@ -90,7 +90,7 @@ ms.locfileid: "110068499"
 
 *帐户暂时锁定以防止未经授权的使用。请稍后再试！如果仍有问题，请与管理员联系。*
 
-测试智能锁定时，由于 Azure AD 身份验证服务的地理分布和负载均衡特性，登录请求可能由不同的数据中心处理。 在这种情况下，由于每个 Azure AD 数据中心独立地跟踪锁定，因此可能需要比所定义的锁定阈值更多的尝试次数才会导致锁定。 如果用户在锁定发生之前访问了每个数据中心，则该用户具有 (threshold_limit * datacenter_count) 次错误尝试。
+测试智能锁定时，由于 Azure AD 身份验证服务的地理分布和负载均衡特性，登录请求可能由不同的数据中心处理。 在这种情况下，由于每个 Azure AD 数据中心独立地跟踪锁定，因此可能需要比所定义的锁定阈值更多的尝试次数才会导致锁定。 在完全锁定之前，用户最多有 (threshold_limit * datacenter_count) 次错误尝试机会。
 
 ## <a name="next-steps"></a>后续步骤
 

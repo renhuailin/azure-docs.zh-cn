@@ -8,19 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/12/2021
+ms.date: 08/09/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: f79c9cb7381f2325de2efca5e20b37c60ab72013
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 79d527f0a966388758969837aaab95f7f9327e07
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113652469"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739606"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
 文本分析 API 会持续更新。 为了让大家随时了解最新的开发成果，本文介绍了新版本和新功能。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+* 版本 `3.2-preview.1`，其中包括[抽取式摘要](how-tos/extractive-summarization.md)的公共预览版。
+* [异步操作](how-tos/text-analytics-how-to-call-api.md?tabs=asynchronous)现在可在 Azure 政府和 Azure 中国区域使用。
+* 新预览版本的客户端库，支持抽取式摘要。 请参阅以下示例：
+    * [.NET](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample8_ExtractSummary.md)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeExtractiveSummarization.java)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/textanalytics/azure-ai-textanalytics/samples/sample_extract_summary.py)
 
 ## <a name="july-2021"></a>2021 年 7 月
 

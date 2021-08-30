@@ -2,13 +2,13 @@
 title: 管理和监视 Azure VM 备份
 description: 了解如何使用 Azure 备份服务管理和监视 Azure VM 备份。
 ms.topic: conceptual
-ms.date: 08/02/2020
-ms.openlocfilehash: 70ce8ababcb596c3eb804e429156000ff7d64ecc
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 07/27/2021
+ms.openlocfilehash: 015ce2a16359f3a99fcd71c8ea7f97142c2d54e6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372565"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728987"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
@@ -140,6 +140,10 @@ ms.locfileid: "111372565"
 ### <a name="stop-protection-and-delete-backup-data"></a>停止保护并删除备份数据
 
 若要停止保护并删除 VM 的数据，请执行以下操作：
+
+>[!Note]
+>对于保留在存档层中未满 180 天的恢复点，删除这些恢复点将导致产生早期删除费用。 [了解详细信息](../storage/blobs/storage-blob-storage-tiers.md#cool-and-archive-early-deletion)。
+
 
 1. 在[保管库项的仪表板](#view-vms-on-the-dashboard)上，选择“停止备份”。
 2. 选择“删除备份数据”，并根据需要确认你的选择。 输入备份项的名称，并根据需要添加注释。

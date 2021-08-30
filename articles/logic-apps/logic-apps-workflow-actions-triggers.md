@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 04/05/2021
+ms.date: 07/19/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 95f2e47d3cf0b967f42b988b565da3643796534d
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: d45d17d8978134024cd41f49675fbe37b1a0dfe6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490754"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440134"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>有关 Azure 逻辑应用中触发器和操作类型的架构参考指南
 
@@ -337,7 +337,7 @@ ms.locfileid: "106490754"
 
 为很好地配合逻辑应用进行工作，终结点必须符合特定触发器模式或协定，并识别以下响应属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 |----------|----------|-------------|
 | 状态代码 | 是 | “200 OK”状态代码启动运行。 其他任何状态代码均不会启动运行。 |
 | 重试间隔标头 | 否 | 逻辑应用再次轮询终结点之前所要经过的秒数 |
@@ -2403,6 +2403,8 @@ ID,Product_Name
 | `IncludeAuthorizationHeadersInOutputs` | String | 对于[启用 Azure Active Directory 开放式身份验证 (Azure AD OAuth)](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) 的逻辑应用，若要授予对基于请求的触发器终结点的入站调用的访问权限，请在触发器输出中包含来自 OAuth 访问令牌的 `Authorization` 标头。 有关详细信息，请参阅[在 Request 触发器输出中包含“Authorization”标头](../logic-apps/logic-apps-securing-a-logic-app.md#include-auth-header)。 | 触发器： <p>[Request](#request-trigger)、 <br>[HTTP Webhook](#http-webhook-trigger) | 
 | `Sequential` | String | 每次运行一个“for each”循环迭代，而不是同时并行运行所有迭代。 <p>此选项与将 `runtimeConfiguration.concurrency.repetitions` 属性设置为 `1` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p><p>若要设置此选项，请参阅[按顺序运行“for each”循环](#sequential-for-each)。| 操作： <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | String | 按顺序对每个逻辑应用实例运行此触发器，并在等待上一个活动运行完成后，再触发下一个逻辑应用实例。 <p><p>此选项与将 `runtimeConfiguration.concurrency.runs` 属性设置为 `1` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p>若要设置此选项，请参阅[按顺序触发实例](#sequential-trigger)。 | 所有触发器 | 
+| `SuppressWorkflowHeaders` | 字符串 | 请勿在出站请求中发送 `x-ms-*` 元数据标头。 默认情况下，Azure 逻辑应用服务在标头名称中包含带 `x-ms-` 前缀的额外元数据标头，作为出站请求的一部分。 但是，某些旧服务不会接受具有额外未知标头的请求，从而导致请求失败。 | 操作： <p>[HTTP](#http-action)、 <br>[函数](#function-action)、 <br>APIManagement | 
+| `SuppressWorkflowHeadersOnResponse` | 字符串 | 请勿在响应入站触发器请求时发送 `x-ms-*` 元数据标头。 默认情况下，Azure 逻辑应用服务向入站请求发送响应，响应的标头名称中包含带有 `x-ms-` 前缀的额外元数据标头。 但是，某些旧服务不会接受具有额外未知标头的请求或响应，从而导致请求失败。 | 触发器： <p>[Request](#request-trigger)、 <br>[HTTP Webhook](#http-webhook-trigger) | 
 ||||
 
 <a name="change-trigger-concurrency"></a>

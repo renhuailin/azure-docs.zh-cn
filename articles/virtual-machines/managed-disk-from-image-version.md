@@ -1,6 +1,6 @@
 ---
-title: 从映像版本创建托管磁盘
-description: 从共享映像库中的映像版本创建托管磁盘。
+title: 将映像版本导出到托管磁盘
+description: 将映像版本从共享映像库导出到托管磁盘。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -10,16 +10,16 @@ ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bb09c3332f41f5b4fe8f02e2e38940f4085b08fd
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: d4a3d1e8b1eb1c3a959e9f48e0c46379d6162644
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672812"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653037"
 ---
-# <a name="create-a-managed-disk-from-an-image-version"></a>从映像版本创建托管磁盘
+# <a name="export-an-image-version-to-a-managed-disk"></a>将映像版本导出到托管磁盘
 
-如果需要，可以将操作系统或映像版本的单个数据磁盘导出为共享映像库中存储的映像版本的托管磁盘。
+你可以将操作系统或映像版本的单个数据磁盘导出为共享映像库中存储的映像版本的托管磁盘。
 
 
 ## <a name="cli"></a>CLI

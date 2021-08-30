@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: d265b6698a87c1c651dff1413cf48dd4984cd606
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 050b4011dbc46b6b6567965ed94847dbaf3560c6
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94616886"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982305"
 ---
 # <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 
@@ -29,13 +29,12 @@ ms.locfileid: "94616886"
    > [!NOTE]
    > 你还可以为整个资源组、订阅或管理组设置 Azure RBAC。 为此，请选择所需的作用域级别，然后导航到所需的项目（例如，选择“资源组”，然后单击到所需的资源组）。
 1. 在左侧导航窗格上，选择“访问控制(IAM)”。
-1. 选择“角色分配”选项卡以查看此范围内的角色分配。
 1. 选择“添加” -> “添加角色分配”。
-1. 在“角色”下拉列表中，选择需要添加的角色。
-1. 在“选择”列表中，选择用户、组、服务主体或托管标识。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
-1. 选择“保存”以分配该角色。
+1. 在下一屏幕上的“角色”选项卡上，选择要添加的角色。
+1. 在“成员”选项卡上，选择用户、组、服务主体或托管标识。
+1. 在“查看 + 分配”选项卡上，选择“查看 + 分配”，以分配角色 。
 
-几分钟后，将向目标分配所选作用域中的选定角色。
+几分钟后，将向目标分配所选作用域中的选定角色。 有关这些步骤的帮助，请参阅[使用 Azure 门户分配 Azure 角色](https://review.docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
 
 ## <a name="custom-vision-role-types"></a>自定义视觉角色类型
 

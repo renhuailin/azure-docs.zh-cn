@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 排查已启用 Arc 的 Kubernetes 群集的常见问题。
 keywords: Kubernetes, Arc, Azure, 容器
-ms.openlocfilehash: c05e82b084e49958a8c99bc755bdf954b708d69e
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: e1a04e95924f4a217cdceca383637bcee7ea368a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110795075"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743824"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>已启用 Azure Arc 的 Kubernetes 故障排除
 
@@ -90,6 +90,19 @@ Error: list: failed to list: secrets is forbidden: User "myuser" cannot list res
 ```
 
 将群集连接到 Azure Arc 的用户应该在群集上分配有 `cluster-admin` 角色。
+
+
+### <a name="unable-to-connect-openshift-cluster-to-azure-arc"></a>无法将 OpenShift 群集连接到 Azure Arc
+
+如果在将 OpenShift 群集连接到 Azure Arc 时 `az connectedk8s connect` 超时并失败，请检查以下各项：
+
+1. OpenShift 群集需要满足版本先决条件：4.5.41+、4.6.35+ 或 4.7.18+。
+
+1. 在运行 `az connectedk8s connnect` 之前，需要在群集上运行以下命令：
+
+    ```console
+    oc adm policy add-scc-to-user privileged system:serviceaccount:azure-arc:azure-arc-kube-aad-proxy-sa
+    ```
 
 ### <a name="installation-timeouts"></a>安装超时
 

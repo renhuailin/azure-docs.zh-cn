@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/09/2020
+ms.date: 08/11/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ec237af8cd0c79d5a7b62aad0bc6521e5cf3d7e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7a3cf21ef2493ef6a93397e6d6601e326d0ef0d3
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059235"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252819"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自动升级
-Azure AD Connect 自动升级是一项定期检查 Azure AD Connect 的更新版本的功能。 如果服务器可进行自动升级，并且发现了服务器有资格使用的更新版本，服务器会自动升级到更新版本。
+Azure AD Connect 自动升级功能定期检查 Azure AD Connect 的更新版本。 如果服务器可进行自动升级，并且发现了服务器有资格使用的更新版本，服务器就会自动升级到更新版本。
 请注意，出于安全原因，执行自动升级的代理会根据所下载的版本的数字签名来验证 Azure AD Connect 的新版本。
 
 ## <a name="overview"></a>概述
@@ -51,7 +51,23 @@ Azure AD Connect 自动升级是一项定期检查 Azure AD Connect 的更新版
 
 如果服务器上正在运行 **同步服务管理器** UI，则会暂停升级，直到 UI 关闭为止。
 
-## <a name="troubleshooting"></a>疑难解答
+>[!NOTE]
+> 并非所有版本的 Azure AD Connect 都可用于自动升级。 版本状态指示版本是可用于自动升级还是仅供下载。 如果在 Azure AD Connect 服务器上启用了自动升级，那么该服务器将自动升级到针对自动升级发布的最新版 Azure AD Connect，前提是你的配置[符合](#auto-upgrade-eligibility)自动升级的条件。 有关详细信息，请参阅 [Azure AD Connect：版本发布历史记录](reference-connect-version-history.md)。
+
+## <a name="auto-upgrade-eligibility"></a>自动升级资格
+为了符合自动升级的条件，你不得满足以下任一条件：
+
+| 结果消息 | 说明 |
+| --- | --- |
+|UpgradeNotSupportedCustomizedSyncRules|已将自己的自定义规则添加到配置中。|
+|UpgradeNotSupportedInvalidPersistedState|安装不是快速设置或 DirSync 升级。|
+|UpgradeNotSupportedNonLocalDbInstall|使用的不是 SQL Server Express LocalDB 数据库。|
+|UpgradeNotSupportedLocalDbSizeExceeded|本地 DB 大小大于或等于 8 GB|
+|UpgradeNotSupportedAADHealthUploadDisabled|已从门户中禁用运行状况数据上传|
+
+
+
+## <a name="troubleshooting"></a>故障排除
 如果 Connect 安装未按预期自动升级，请遵循以下步骤来找出可能的错误。
 
 首先，不建议在新版本发行的第一天就自动升级。 由于升级前有刻意设计的随机性，因此，不用担心安装没有立即升级。

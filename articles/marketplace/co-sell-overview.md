@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 4/15/2021
-ms.openlocfilehash: bb4a0cd58c316a9e40a3346d4f5417fe911c2c0e
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.date: 07/13/2021
+ms.openlocfilehash: 8e705c95f875428c5089416ed3f49d90a474def9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111420961"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731204"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>与 Microsoft 销售团队和合作伙伴联合销售概述
 
@@ -44,7 +44,7 @@ Azure 的联合销售状态：
 
 - 尚未做好联合销售准备
 - 已做好联合销售准备
-- 已进行 Azure IP 联合销售激励
+- Azure IP 联合销售激励
 
 业务应用程序的联合销售状态
 - 业务应用程序联合销售激励（标准）
@@ -58,7 +58,7 @@ Azure 的联合销售状态：
 
 若要了解如何达到联合销售就绪和 Azure IP 联合销售状态，请参阅[联合销售就绪和联合销售激励要求](co-sell-requirements.md)。
 
-## <a name="benefits-of-co-sell-incentivized-status"></a>联合销售激励状态的优点
+## <a name="benefits-of-co-sell-incentive-status"></a>联合销售激励状态的优点
 
 联合销售激励状态包括“Azure IP 联合销售激励”和“业务应用程序联合销售激励（标准和高级）”  。 这些状态激励 Microsoft 销售团队出售你的产品/服务。 若要达到此状态，还必须达到联合销售就绪状态。 联合销售激励状态获得了联合销售就绪状态的所有权益，并可为 Microsoft 销售团队赢得额外的激励，有资格获得更多商业市场权益。
 
@@ -77,7 +77,6 @@ Azure 的联合销售状态：
 
 达到“Azure IP 联合销售激励”状态的产品/服务可获得以下商业市场优势：
 
-- 市场服务费用从 20% 减少到 10%。 此折扣适用于你的通过商业市场销售的基础结构即服务 (IaaS) 解决方案或软件即服务 (SaaS) 解决方案。 有关详细信息，请参阅[商业市场服务费用](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees)。
 - 云解决方案提供商 (CSP) 合作伙伴获得 10% 的激励，可销售你的 IaaS 解决方案或 SaaS 产品/服务。 若要详细了解 CSP 计划，请参阅[云解决方案提供商计划](cloud-solution-providers.md)。
 - 通过 Azure 市场销售的产品/服务会计入客户的 Azure 消耗承诺。 符合条件的客户会在 Azure 门户中看到标记为“有资格获得 Azure 权益”的产品/服务。 若要详细了解客户在 MACC 计划中获得的权益以及如何查找支持 MACC 的解决方案，请参见 [Azure 使用量承诺权益](/marketplace/azure-consumption-commitment-benefit)。 有关发布者如何在 MACC 中注册其可交易产品/服务的信息，请参阅 [Azure 消耗承诺注册](azure-consumption-commitment-enrollment.md)。
 - 达到“Azure IP 联合销售激励”状态或以联合销售就绪状态注册了 [Microsoft 业务应用程序 ISV Connect 计划](business-applications-isv-program.md)的产品/服务将在在线商店（[Azure 市场](https://azuremarketplace.microsoft.com/)和 [AppSource](https://appsource.microsoft.com/)）的产品/服务列表页上获得“Microsoft 首选解决方案”徽章。  产品/服务达到相应的状态后，首选解决方案徽章可能需要多达 30 天的时间才能显示在在线商店。 徽章可在特定的行业垂直领域或解决方案领域提升产品/服务的质量、性能和满足客户需求的能力。
@@ -87,6 +86,6 @@ Azure 的联合销售状态：
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解要求，请参阅[联合销售就绪和联合销售激励要求](co-sell-requirements.md)
-- 若要配置用于联合销售的产品/服务，请参阅[配置商业市场产品/服务的联合销售](./co-sell-configure.md)
+- 若要配置用于联合销售的产品/服务，请参阅[配置商业市场产品/服务的联合销售](co-sell-configure.md)
 - 若要验证联合销售状态，请参阅[验证产品/服务的联合销售状态](co-sell-status.md)。
 - 详细了解[通过 Microsoft 进行的联合销售](https://partner.microsoft.com/membership/sell-with-microsoft)。

@@ -8,16 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: c5e683e1f5af42a69fac45c20f52169834967649
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c618ae7f63c1191bf440b5629057660531dd3d7c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788126"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721767"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步骤：创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥-私钥对
 
 使用安全外壳 (SSH) 密钥对，可以创建使用 SSH 密钥进行身份验证的 Azure 虚拟机 (VM)。 本文介绍如何快速生成和使用适用于 Linux VM 的 SSH 公钥-私钥文件对。 可以使用 Azure Cloud Shell、macOS 或 Linux 主机完成这些步骤。 
+
+有关排查 SSH 问题的帮助，请参阅[排查与 Azure Linux VM 的 SSH 连接失败、出错或被拒绝的问题](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)。
 
 > [!NOTE]
 > 使用 SSH 密钥创建的 VM 默认配置为禁用密码，这极大地增加了暴力破解猜测攻击的难度。 
@@ -89,7 +91,13 @@ az vm create \
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-如果创建密钥对时指定了通行短语，则在登录过程中遇到提示时，请输入该通行短语。 VM 将添加到 ~/.ssh/known_hosts 文件。系统不会要求再次进行连接，除非更改了 Azure VM 上的公钥，或者从 ~/.ssh/known_hosts 中删除了服务器名称。
+如果是首次连接到此 VM，则要求验证主机的指纹。 只接受呈现的指纹很容易，但这种方法会将你暴露，使你遭受可能的中间人攻击。 应始终验证主机的指纹。 只需在首次从客户端连接时执行此操作。 若要通过门户获取主机指纹，请使用“运行命令”功能来执行命令 `ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub | awk '{print $2}'`。
+
+:::image type="content" source="media/ssh-from-windows/run-command-validate-host-fingerprint.png" alt-text="显示使用“运行命令”功能验证主机指纹的屏幕截图。":::
+
+若要使用 CLI 运行命令，请使用 [`az vm run-command invoke`](/cli/azure/vm/run-command)。
+
+如果创建密钥对时指定了密码，则在登录过程中遇到提示时，请输入该密码。 VM 将添加到 ~/.ssh/known_hosts 文件。系统不会要求再次进行连接，除非更改了 Azure VM 上的公钥，或者从 ~/.ssh/known_hosts 中删除了服务器名称。
 
 如果 VM 使用的是实时访问策略，则需要先请求访问权限，然后才能连接到 VM。 有关实时策略的详细信息，请参阅[使用实时策略管理虚拟机访问](../../security-center/security-center-just-in-time.md)。
 

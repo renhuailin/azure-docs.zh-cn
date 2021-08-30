@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 06/07/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2310bd39c39036b6d6ac919517fa5539d7b70779
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1bfe50bc80e3aa2a8c924002efdba2a020dbe9ef
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581858"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112198757"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录流
 
@@ -52,8 +52,15 @@ ms.locfileid: "104581858"
 1. 在“创建用户流”页上，选择“登录”用户流 。
 1. 在“选择版本”下，选择“建议”，然后选择“创建”  。 （[详细了解](user-flow-versions.md)用户流版本。）
 1. 输入该用户流的 **名称**。 例如 *signupsignin1*。
-1. 对于“标识提供者”，请选择“电子邮件登录”。
-1. 对于“应用程序声明”，请选择要发送到应用程序的声明和属性。 例如，选择“显示更多”，然后选择“显示名称”、“给定名称”、“姓氏”和“用户的对象 ID”的属性和声明。 单击 **“确定”** 。
+1. 在“标识提供者”下，至少选择一个标识提供者：
+
+   * 在“本地帐户”下，选择下列选项之一：“电子邮件登录”、“用户 ID 登录”、“手机登录”、“手机/电子邮件登录”、“用户 ID/电子邮件登录”或“无”。 [了解详细信息](sign-in-options.md)。
+   * 在“社交标识提供者”下，选择已设置的任一外部社交标识提供者或企业标识提供者。 [了解详细信息](add-identity-provider.md)。
+1. 在“多重身份验证”下，如果你希望要求用户使用另一种身份验证方法来验证其身份，请选择方法类型，以及何时要强制执行多重身份验证 (MFA)。 [了解详细信息](multi-factor-authentication.md)。
+1. 在“条件访问”下，如果已为 Azure AD B2C 租户配置条件访问策略，并且想要为此用户流启用这些策略，请选择“强制实施条件访问策略”复选框 。 无需指定策略名称。 [了解详细信息](conditional-access-user-flow.md?pivots=b2c-user-flow)。
+1. 在“应用程序声明”下，选择要在令牌中返回给应用程序的声明。 若要显示完整的值列表，请选择“显示更多”，选择值，然后选择“确定” 。
+   > [!NOTE]
+   > 还可以[创建自定义属性](user-flow-custom-attributes.md?pivots=b2c-user-flow)以便在 Azure AD B2C 租户中使用。
 1. 单击“创建”以添加用户流。 名称中会自动附加前缀 B2C_1。
 
 ### <a name="test-the-user-flow"></a>测试用户流
@@ -69,7 +76,7 @@ ms.locfileid: "104581858"
 
 ## <a name="remove-the-sign-up-link"></a>删除注册链接
 
-**SelfAsserted-LocalAccountSignin-Email** 属于[自断言](self-asserted-technical-profile.md)的技术配置文件，在注册或登录流中调用。 若要删除注册链接，请将 `setting.showSignupLink` 元数据设置为 `false`。 覆盖扩展文件中的 SelfAsserted-LocalAccountSignin-Email 技术配置文件。 
+**SelfAsserted-LocalAccountSignin-Email** 属于 [自断言](self-asserted-technical-profile.md)的技术配置文件，在注册或登录流中调用。 若要删除注册链接，请将 `setting.showSignupLink` 元数据设置为 `false`。 覆盖扩展文件中的 SelfAsserted-LocalAccountSignin-Email 技术配置文件。 
 
 1. 打开策略的扩展文件， 例如，_`SocialAndLocalAccounts/``TrustFrameworkExtensions.xml`_。
 1. 查找 `ClaimsProviders` 元素。 如果该元素不存在，请添加该元素。
@@ -121,4 +128,4 @@ ms.locfileid: "104581858"
 ## <a name="next-steps"></a>后续步骤
 
 * 添加[使用社交标识提供者登录](add-identity-provider.md)。
-* 设置[密码重置流](add-password-reset-policy.md)。
+* 创建[密码重置流](add-password-reset-policy.md)。

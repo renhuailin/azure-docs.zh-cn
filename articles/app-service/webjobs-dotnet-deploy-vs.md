@@ -5,15 +5,15 @@ author: ggailey777
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
 ms.topic: conceptual
 ms.custom: devx-track-csharp, vs-azure
-ms.date: 07/30/2020
+ms.date: 06/24/2021
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b65475b6f1558930ca8c91c7d1283745bc1b80b8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89226023"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778711"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>使用 Visual Studio 开发和部署 WebJobs
 
@@ -28,7 +28,7 @@ ms.locfileid: "89226023"
 使用 Azure WebJobs SDK 版本 3.x，你可以创建 WebJobs 并将其发布为 .NET Core 控制台应用。 有关创建 .NET Core 控制台应用并将其作为 Web 作业发布到 Azure 的分步说明，请参阅[用于事件驱动式后台处理的 Azure WebJobs SDK 入门](webjobs-sdk-get-started.md)。
 
 > [!NOTE]
-> .NET Core WebJobs 无法与 Web 项目链接。 如果需要将 Web 作业与 Web 应用一起部署，应该[创建用作 .NET Framework 控制台应用的 WebJobs](#webjobs-as-net-framework-console-apps)。  
+> .NET Core Web 应用和/或 .NET Core WebJobs 不能与 Web 项目链接。 如果需要将 Web 作业与 Web 应用一起部署，应该[创建用作 .NET Framework 控制台应用的 WebJobs](#webjobs-as-net-framework-console-apps)。  
 
 ### <a name="deploy-to-azure-app-service"></a>部署到 Azure 应用服务
 

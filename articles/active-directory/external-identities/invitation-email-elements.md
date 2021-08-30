@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc80c208b5a48a45b8c47d640dc381f5559c3d4d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 324b37931fff91779b8d25c744ae63671bae315c
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304760"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224303"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 协作邀请电子邮件的元素 - Azure Active Directory
 
@@ -40,7 +40,8 @@ ms.locfileid: "107304760"
 对“发件人地址”使用类似于 LinkedIn 的模式。 此模式应该明确指出，尽管电子邮件来自 invites@microsoft.com，但邀请却是另一组织发出的。 格式为：Microsoft Invitations <invites@microsoft.com>，或 Microsoft 代表 &lt;租户名称&gt; <invites@microsoft.com> 发出的邀请。 
 
 > [!NOTE]
-> 对于中国世纪互联运营的 Azure 服务，发送方地址是 Invites@oe.21vianet.com。
+> 对于中国世纪互联运营的 Azure 服务，发送方地址是 Invites@oe.21vianet.com。  
+> 对于 Azure AD 政府，发件人地址是 invites@azuread.us。
 
 ### <a name="reply-to"></a>回复
 

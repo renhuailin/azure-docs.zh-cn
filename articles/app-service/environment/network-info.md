@@ -7,14 +7,18 @@ ms.topic: article
 ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 91b6134e7c809a8af75aa1cf23523e352e0a1a0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0931d5668835229be858a8725fd1a2d90c81081d
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95997335"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432943"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
+
+> [!NOTE]
+> 本文介绍用于独立应用服务计划的应用服务环境 v2
+> 
 
 ## <a name="overview"></a>概述 ##
 
@@ -127,7 +131,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 - **公共入站 IP 地址**：用于外部 ASE 中的应用流量，以及外部 ASE 和 ILB ASE 中的管理流量。
 - **出站公共 IP**：用作 ASE 发出、离开 VNet 且不经过 VPN 的出站连接的“来源”IP。
 - **ILB IP 地址**：ILB IP 地址仅在 ILB ASE 中存在。
-- **应用分配的基于 IP 的 SSL 地址**：仅当配置了基于 IP 的 SSL 时在外部 ASE 上使用。
+- 应用分配的基于 IP 的 TLS/SSL 地址：只能在外部 ASE 上使用，并且仅当配置了基于 IP 的 TLS/SSL 绑定时才可使用。
 
 所有这些 IP 地址会显示在 Azure 门户上的 ASE UI 中。 若使用 ILB ASE，将列出 ILB 的 IP。
 

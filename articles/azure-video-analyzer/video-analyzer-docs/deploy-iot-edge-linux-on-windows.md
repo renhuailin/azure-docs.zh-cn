@@ -2,13 +2,13 @@
 title: 部署到 IoT Edge for Linux on Windows - Azure
 description: 本文提供了有关如何部署到 IoT Edge for Linux on Windows 设备的指导。
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: 2907318f7d1c49c4aea247880a9880e724b46ca6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: e80721375cf4b0c912fe47ec76c2cebe92359f90
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385114"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743648"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>部署到 IoT Edge for Linux on Windows (EFLOW) 设备
 
@@ -25,19 +25,17 @@ ms.locfileid: "110385114"
 
 下方内容描述了文档的总体流程，只需 5 个简单的步骤即可在具有 EFLOW 的 Windows 设备上运行 Azure 视频分析器：
 
-![IoT Edge for Linux on Windows (EFLOW) 示意图](./media/deploy-iot-edge-linux-on-windows/eflow.png)
+![IoT Edge for Linux on Windows (EFLOW) 的示例图。](./media/deploy-iot-edge-linux-on-windows/eflow.png)
 
-1. 在 Windows 设备上[安装 EFLOW](../../iot-edge/how-to-install-iot-edge-on-windows.md)。 
+1. 使用 PowerShell 在 Windows 设备上[安装 EFLOW](../../iot-edge/how-to-install-iot-edge-on-windows.md)。
 
-    1. 如果使用的是 Windows 电脑，则在 [Windows Admin Center](/windows-server/manage/windows-admin-center/overview) 起始页的连接列表下，你会看到一个本地主机连接，该连接表示运行 Windows Admin Center 的电脑。 
-    1. 你管理的任何其他服务器、电脑或群集也会显示在此处。
-    1. 你可以使用 Windows Admin Center 在本地设备或远程托管设备上安装和管理 Azure EFLOW。 在本指南中，本地主机连接充当用于部署 Azure IoT Edge for Linux on Windows 的目标设备。 因此，你会看到 localhost 也被列为 IoT Edge 设备。
 
-    ![部署步骤 - Windows Admin Center](./media/deploy-iot-edge-linux-on-windows/windows-admin-center.png) 
-1. 单击 IoT Edge 设备与之连接，应会显示“概述”和“命令 Shell”选项卡。在“命令 shell”选项卡中，可以向边缘设备发出命令。
+1. 设置 EFLOW 后，在 PowerShell（具有管理权限）中键入命令 `Connect-EflowVm` 以进行连接。 这将在 PowerShell 中打开一个用于控制 EFLOW VM 的 bash 终端，你可以在该终端中运行 Linux 命令，包括 Top 和 Nano 等实用程序。 
 
-    ![部署步骤 - Azure IoT Edge 管理器](./media/deploy-iot-edge-linux-on-windows/azure-iot-edge-manager.png)
-1. 转到命令外壳，然后键入以下命令：
+    > [!TIP] 
+    > 要退出 EFLOW VM，请在终端中键入 `exit`。
+
+1. 在 PowerShell 中输入以下命令可登录到 EFLOW VM：
 
     `bash -c "$(curl -sL https://aka.ms/ava-edge/prep_device)"`
 
@@ -51,18 +49,22 @@ ms.locfileid: "110385114"
     * `/var/media`
 
     请注意，/home/localedgeuser/samples/input 文件夹中的视频文件 (*.mkv) 会用作要分析的输入文件。 
-1. 现在，你已设置边缘设备，将其注册到中心，并通过创建正确的文件夹结构成功运行，下一步是设置以下额外的 Azure 资源并部署 AVA 模块。 
-
-    * 存储帐户
-    * Azure 媒体服务帐户
+1. 现在，你已设置边缘设备，将其注册到中心，并通过创建正确的文件夹结构成功运行，下一步是设置以下额外的 Azure 资源并部署 AVA 模块。 以下部署模板将负责创建资源：
 
     [![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://aka.ms/ava-click-to-deploy)
+    
+    部署过程大约需要 20 分钟。 完成部署后，Azure 订阅中会部署某些 Azure 资源，包括：
+
+    * 视频分析器帐户 - 此云服务用于注册视频分析器边缘模块，并用于播放录制的视频和视频分析。
+    * 存储帐户 - 用于存储录制的视频和视频分析。
+    * 托管标识 - 这是用户分配的托管标识，用于管理对上述存储帐户的访问。
+    * IoT 中心 - 这充当消息中心，用于在 IoT 应用程序、IoT Edge 模块以及它管理的设备之间进行双向通信。
 
     在模板中，当系统询问你是否需要边缘设备时，请选择“使用现有边缘设备”选项，因为你之前已创建设备和 IoT 中心。 在后续步骤中，系统还会提示你输入 IoT 中心名称和 IoT Edge 设备 ID。  
     
     ![使用现有设备](./media/deploy-iot-edge-linux-on-windows/use-existing-device.png) 
 
-    完成后，可以重新登录到 IoT Edge 设备命令外壳并运行以下命令。
+    完成后，可以重新登录到 EFLOW VM 并运行以下命令。
 
     **`sudo iotedge list`**
 

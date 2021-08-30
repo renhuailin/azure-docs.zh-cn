@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: b21ce75bfb33b5a8869c63b7d3f71fb9f0c93768
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4683708f8fdd4eda2f483cc4112fe9fe9939ce6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98621289"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778747"
 ---
 # <a name="connect-data-from-azure-firewall"></a>连接 Azure 防火墙数据
 
@@ -23,6 +23,8 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 可以将 Azure 防火墙日志连接到 Azure Sentinel，以便查看工作簿中的日志数据，使用这些数据创建自定义警报，并通过整合这些数据来改进调查。
 
 详细了解[监视 Azure 防火墙日志](../firewall/firewall-diagnostics.md)。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +48,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
     
     1. 选中“发送到 Log Analytics”复选框。 其下将显示两个新字段。 选择相关“订阅”和“Log Analytics 工作区”（Azure Sentinel 驻留的位置）。
 
-    1. 选中要引入其日志的规则类型的复选框。 建议选中“AzureFirewallApplicationRule”和“AzureFirewallNetworkRule”。
+    1. 选中要引入其日志的规则类型的复选框。 建议选中“AzureFirewallApplicationRule”、“AzureFirewallNetworkRule”和“AzureFirewallDNSProxy”  。
 
     1. 选择屏幕顶部的“保存”。
 
@@ -58,5 +60,5 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 
 ## <a name="next-steps"></a>后续步骤
 在本文档中，你已了解如何将 Azure 防火墙日志连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。

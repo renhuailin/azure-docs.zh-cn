@@ -9,19 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 0dc49265c0ea799e194e4ac7004b558d8a9d4dd8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11f142c545bad707ec8595f13f80a95cc626674f
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519263"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582917"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>如何使用机器学习工作室（经典版）Web 服务
 
 **适用对象：** ![这是一个复选标记，表示本文适用于机器学习工作室（经典）。](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习工作室（经典）   ![这是一个 X，表示本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
-将 Azure 机器学习工作室（经典版）预测模型部署为 Web 服务后，可以使用 REST API 向其发送数据并获取预测。 可以实时或者以批处理模式发送数据。
+将机器学习工作室（经典）预测模型部署为 Web 服务后，可以使用 REST API 向其发送数据并获取预测。 可以实时或者以批处理模式发送数据。
 
 可以在以下位置查找有关如何使用机器学习工作室（经典版）创建和部署机器学习 Web 服务的详细信息：
 
@@ -32,9 +32,9 @@ ms.locfileid: "100519263"
 
 
 ## <a name="overview"></a>概述
-外部应用程序可使用 Azure 机器学习 Web 服务实时与机器学习服务工作流评分模型通信。 机器学习 Web 服务调用将预测结果返回到外部应用程序。 若要执行机器学习 Web 服务调用，可以传递部署 Web 服务时创建的 API 密钥。 机器学习 Web 服务基于 REST（流行的 Web 编程项目体系结构）。
+外部应用程序可使用机器学习 Web 服务实时与机器学习服务工作流评分模型通信。 机器学习 Web 服务调用将预测结果返回到外部应用程序。 若要执行机器学习 Web 服务调用，可以传递部署 Web 服务时创建的 API 密钥。 机器学习 Web 服务基于 REST（流行的 Web 编程项目体系结构）。
 
-Azure 机器学习工作室（经典版）有两种类型的服务：
+机器学习工作室（经典）有两种类型的服务：
 
 * 请求响应服务 (RRS) - 低延迟、高度可缩放的服务，针对从机器学习工作室（经典版）创建和部署的无状态模型提供接口。
 * 批处理执行服务 (BES) - 为一批数据记录进行评分的异步服务。
@@ -44,12 +44,12 @@ Azure 机器学习工作室（经典版）有两种类型的服务：
 ## <a name="get-an-authorization-key"></a>获取授权密钥
 部署实验时，会为 Web 服务生成 API 密钥。 可从多个位置检索密钥。
 
-### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>从 Microsoft Azure 机器学习 Web 服务门户检索
-登录到 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net)门户。
+### <a name="from-the-machine-learning-web-services-portal"></a>在机器学习 Web 服务门户中
+登录[机器学习 Web 服务](https://services.azureml.net)门户。
 
 为新的机器学习 Web 服务检索 API 密钥：
 
-1. 在 Azure 机器学习 Web 服务门户中，单击“Web 服务”顶部菜单。
+1. 在机器学习 Web 服务门户中，单击“Web 服务”顶部菜单。
 2. 单击想要为其检索密钥的 Web 服务。
 3. 单击顶部菜单上的“使用”。
 4. 复制并保存“主密钥”。
@@ -82,7 +82,7 @@ Azure 机器学习工作室（经典版）有两种类型的服务：
 
 **查看新 Web 服务的机器学习 API 帮助**
 
-在 [Azure 机器学习 Web 服务门户](https://services.azureml.net/)：
+在[机器学习 Web 服务门户](https://services.azureml.net/)中：
 
 1. 在顶部菜单单击“WEB 服务”。
 2. 单击想要为其检索密钥的 Web 服务。

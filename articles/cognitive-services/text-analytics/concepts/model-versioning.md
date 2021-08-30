@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 06/03/2021
+ms.date: 06/17/2021
 ms.author: aahi
-ms.openlocfilehash: 60b9b7ace0f788c7ae5b248c4011ccde52811d2b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d1804505a73be2db8d7088caf74063381fa0ba33
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757132"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735542"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>文本分析 API 中的模型版本控制
 
@@ -39,13 +39,20 @@ ms.locfileid: "111757132"
 
 可以在[新增功能](../whats-new.md)中找到有关这些模型的更新的详细信息。
 
+## <a name="extractive-summarization"></a>抽取式摘要
+
+从 `version 3.1-preview.1` 开始，可以使用异步 `analyze` 终结点提供抽取式摘要。 
+
+当前模型版本为 `2021-08-01`
+
 ## <a name="text-analytics-for-health"></a>运行状况文本分析
 
 [运行状况文本分析](../how-tos/text-analytics-for-health.md)容器使用与上述 API 终结点不同的模型版本控制。  请注意，每个容器映像仅有一个可用的模型版本。
 
 | 终结点                        | 容器映像标记                     | 模型版本 |
 |---------------------------------|-----------------------------------------|---------------|
-| `/entities/health`              | `3.0.015370001-onprem-amd64` 或更高版本          | `2021-03-01`  |
+| `/entities/health`              | `3.0.016230002-onprem-amd64` 或更高版本            | `2021-05-15`  |
+| `/entities/health`              | `3.0.015370001-onprem-amd64`            | `2021-03-01`  |
 | `/entities/health`              | `1.1.013530001-amd64-preview`           | `2020-09-03`  |
 | `/entities/health`              | `1.1.013150001-amd64-preview`           | `2020-07-24`  |
 | `/domains/health`               | `1.1.012640001-amd64-preview`           | `2020-05-08`  |

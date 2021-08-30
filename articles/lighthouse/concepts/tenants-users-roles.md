@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse 方案中的租户、用户和角色
 description: 了解如何在 Azure Lighthouse 场景中使用 Azure Active Directory 租户、用户和角色。
-ms.date: 05/11/2021
+ms.date: 06/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: bcb3c250d0973174e7356bd489b84938238af6e7
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: cdf8c10d52e0add4513d42a99d2054e1af0ed796
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074820"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112542249"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 方案中的租户、用户和角色
 
@@ -47,6 +47,12 @@ Azure Lighthouse 目前支持所有[内置角色](../../role-based-access-contro
 
 > [!NOTE]
 > 向 Azure 添加新的适用内置角色后，可以在[使用 Azure 资源管理器模板加入客户](../how-to/onboard-customer.md)时分配该角色。 [发布托管服务产品/服务](../how-to/publish-managed-services-offers.md)时，新添加的角色在合作伙伴中心内变得可用之前可能会出现延迟。
+
+## <a name="transferring-delegated-subscriptions-between-azure-ad-tenants"></a>在 Azure AD 租户之间传输委派订阅
+
+如果订阅[转移到另一个 Azure AD 租户帐户](../../cost-management-billing/manage/billing-subscription-transfer.md#transfer-a-subscription-to-another-azure-ad-tenant-account)，则将保留通过 [Azure Lighthouse 载入流程](../how-to/onboard-customer.md)创建的[注册定义和注册分配资源](architecture.md#delegation-resources-created-in-the-customer-tenant)。 这意味着，通过 Azure Lighthouse 授予管理租户的访问权限对该订阅（或该订阅中的委派资源组）仍然有效。
+
+唯一的例外情况是订阅转移到之前已委派给的 Azure AD 租户。 在这种情况下，将删除该租户的委派资源，且通过 Azure Lighthouse 授予的访问权限将不再适用，因为订阅现在直属于该租户（而非通过 Azure Lighthouse 委派给该租户）。 但是，如果该订阅也委派给了其他管理租户，则其他管理租户将保留对订阅的相同访问权限。
 
 ## <a name="next-steps"></a>后续步骤
 

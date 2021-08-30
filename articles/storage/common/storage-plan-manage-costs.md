@@ -1,20 +1,20 @@
 ---
 title: 计划和管理 Azure Blob 存储的成本
-description: 了解如何使用 Azure 门户中的成本分析来计划和管理 Azure Blob 存储的成本。
+description: 了解如何在 Azure 门户中使用成本分析来计划和管理 Azure Blob 存储的成本。
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 06/21/2021
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0497f35b1b0d1df05c1e64f092ff45ebb9678390
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98601310"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594564"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>计划和管理 Azure Blob 存储的成本
 
@@ -40,8 +40,61 @@ ms.locfileid: "98601310"
 
 4. 修改剩余的选项，查看其对估算的影响。
 
-   > [!NOTE]
-   > 可以使用 Azure 预付款（之前称为货币承诺）额度支付 Azure Blob 存储费用。 但是，不能使用 Azure 预付款额度来支付第三方产品和服务（包括 Azure 市场中的）的费用。
+## <a name="understand-the-full-billing-model-for-azure-blob-storage"></a>了解 Azure Blob 存储的完整计费模型
+
+Azure Blob 存储在 Azure 基础结构上运行。当你部署新资源时，该基础结构会产生成本。 用户务必了解，是否可能产生其他基础结构成本。
+
+### <a name="how-youre-charged-for-azure-blob-storage"></a>Azure Blob 存储的计费方式
+
+创建或使用 Blob 存储资源时，将按以下计量计费： 
+
+| 计量 | 单位 | 
+|---|---|
+| 数据存储 | 每 GB/每月|
+| Operations | 每事务 |
+| 数据传输 | 每 GB |
+| 元数据 | 每 GB/每月<sup>1 |
+| Blob 索引标记 | 每标记<sup>2  |
+| 更改源 | 每个记录的更改<sup>2 |
+| 加密范围 | 每月<sup>2 |
+| 查询加速 | 扫描的每 GB 和返回的每 GB |
+
+<sup>1</sup> 仅适用于具有分层命名空间的帐户。<br />
+<sup>2</sup> 仅当启用了该功能时才适用。<br />
+
+数据流量还可能会产生网络成本。 请参阅[带宽定价](https://azure.microsoft.com/pricing/details/data-transfers/)。
+
+在计费周期结束时，将对每个计量标准的费用求和。 账单或发票会将所有 Azure Blob 存储成本显示在一个部分中。 每个计量标准都有单独的一行项目。
+
+数据存储和元数据按每月每 GB 计费。 对于存储时间不到一个月的数据和元数据，你可以通过计算每 GB 每天的成本来估算对每月账单的影响。 你可以使用类似的方法来估算使用时间不到一个月的加密范围的成本。 任意给定月份中的天数有所不同。 因此，若要获得给定月份的成本的最佳近似值，请确保将每月成本除以该月的天数。 
+
+### <a name="finding-the-unit-price-for-each-meter"></a>查找每个计量的单价
+
+若要查找单价，请打开正确的定价页。 如果已在帐户上启用了分层命名空间功能，请参阅 [Azure Data Lake Storage Gen2 定价](https://azure.microsoft.com/pricing/details/storage/data-lake/)页。 如果尚未启用此功能，请参阅[块 blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)页。
+
+在定价页中，请应用合适的冗余、区域和货币筛选器。 每个计量的价格会显示在一个表中。 价格因帐户中的其他设置（例如数据冗余选项、访问层和性能层）而异。 
+
+### <a name="flat-namespace-accounts-and-transaction-pricing"></a>平面命名空间帐户和事务定价
+
+客户端可以使用你的帐户的 Blob 存储终结点或 Data Lake Storage 终结点来发出请求。 若要详细了解存储帐户终结点，请参阅[存储帐户终结点](storage-account-overview.md#storage-account-endpoints)。
+
+显示在[块 blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)页中的事务价格仅适用于使用 Blob 存储终结点（例如 `https://<storage-account>.blob.core.windows.net`）的请求。 列出的价格不适用于使用 Data Lake Storage Gen2 终结点（例如 `https://<storage-account>.dfs.core.windows.net`）的请求。 若要了解这些请求的事务价格，请打开 [Azure Data Lake Storage Gen2 定价](https://azure.microsoft.com/pricing/details/storage/data-lake/)页并选择“平面命名空间”选项。 
+
+> [!div class="mx-imgBorder"]
+> ![平面命名空间选项](media/storage-plan-manage-costs/select-flat-namespace.png)
+
+对 Data Lake Storage Gen2 终结点的请求可能来自以下任何源：
+
+- 使用 Azure Blob 文件系统驱动程序或 [ABFS 驱动程序](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html)的工作负荷。
+
+- 使用 [Azure Data Lake Store REST API](/rest/api/storageservices/data-lake-storage-gen2) 的 REST 调用
+
+- 使用 Azure 存储客户端库中的 Data Lake Storage Gen2 API 的应用程序。  
+
+
+### <a name="using-azure-prepayment-with-azure-blob-storage"></a>对 Azure Blob 存储使用 Azure 预付款
+
+可以使用 Azure 预付款（之前称为货币承诺）额度支付 Azure Blob 存储费用。 但是，不能使用 Azure 预付款额度来支付第三方产品和服务（包括 Azure 市场中的）的费用。
 
 ## <a name="optimize-costs"></a>优化成本
 
@@ -59,19 +112,19 @@ ms.locfileid: "98601310"
 
 可以借助 Azure 存储预留容量来节约 blob 数据的存储成本。 如果你承诺预留一年或三年，Azure 存储预留容量可为标准存储帐户中的块 blob 和 Azure Data Lake Storage Gen2 数据提供容量折扣。 预留在预留期内提供固定数量的存储容量。 Azure 存储预留容量可大幅降低用于块 blob 和 Azure Data Lake Storage Gen2 数据的容量成本。 
 
-有关详细信息，请参阅[借助预留容量优化 Blob 存储的成本](../blobs/storage-blob-reserved-capacity.md)。
+若要了解详细信息，请参阅[借助预留容量优化 Blob 存储的成本](../blobs/storage-blob-reserved-capacity.md)。
 
 #### <a name="organize-data-into-access-tiers"></a>将数据组织到访问层
 
 可通过将 blob 数据放入最经济高效的访问层来降低成本。 在三个专为优化数据使用成本设计的层中选择。 例如，热层的存储成本较高，但访问成本较低。 因此，如果计划频繁访问数据，则热层可能是最经济高效的选择。 如果计划不经常访问数据，冷层或存档层可能最适用，因为它们会提高访问数据的成本，同时降低存储数据的成本 。    
 
-有关详细信息，请参阅 [Azure Blob 存储：热、冷和存档层](../blobs/storage-blob-storage-tiers.md?tabs=azure-portal)。
+若要了解详细信息，请参阅 [Azure Blob 存储：热、冷和存档层](../blobs/storage-blob-storage-tiers.md?tabs=azure-portal)。
 
 #### <a name="automatically-move-data-between-access-tiers"></a>在访问层之间自动移动数据
 
 使用生命周期管理策略定期在层之间移动数据，以最大化地节省成本。 这些策略可以使用指定的规则移动数据。 例如，可以创建一个规则，如果 blob 在 90 天内未修改，就将其移动到存档层。 通过创建调整数据访问层的策略，可根据需求设计出成本最低的存储方案。
 
-有关详细信息，请参阅[管理 Azure Blob 存储生命周期](../blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
+若要了解详细信息，请参阅[管理 Azure Blob 存储生命周期](../blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
 ## <a name="create-budgets"></a>创建预算
 
@@ -100,11 +153,18 @@ ms.locfileid: "98601310"
 
    ![显示按存储筛选的屏幕截图](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
 
-在前面的示例中，你将看到该服务的当前成本。 还显示了按 Azure 区域（位置）和按资源组筛选的成本。 也可以添加其他筛选器（例如：用于查看特定存储帐户的成本的筛选器）。
+在前面的示例中，可查看服务的当前成本。 还显示了按 Azure 区域（位置）和按资源组筛选的成本。 也可以添加其他筛选器（例如：用于查看特定存储帐户的成本的筛选器）。
 
 ## <a name="export-cost-data"></a>导出成本数据
 
 还可以将[成本数据导出](../../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)到存储帐户。 当你或其他人需要进行有关成本的额外数据分析时，这非常有用。 例如，财务团队可以使用 Excel 或 Power BI 来分析数据。 可以按每天、每周或每月计划导出成本，并设置自定义的日期范围。 建议导出成本数据来检索成本数据集。
+
+## <a name="faq"></a>常见问题解答
+
+如果我每个月只使用几天 Azure 存储，是否按比例计费？
+
+存储容量按一个月内每天的平均数据存储量 (GB) 计费。 例如，如果前半个月稳定地使用了 10 GB 的存储，而后半个月未使用任何存储，则按 5 GB 平均存储使用量计费。
+
 
 ## <a name="next-steps"></a>后续步骤
 

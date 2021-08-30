@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 3da80de79490ce21ae99a4dd7dd36c08054cd666
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d55308876db0928bef4fdf3b89ace10305f7c47d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751570"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726016"
 ---
 # <a name="what-is-msix-app-attach"></a>什么是 MSIX 应用附加？
 
@@ -27,7 +27,7 @@ MSIX 应用附加是将 MSIX 应用程序交付到物理计算机和虚拟机的
 
 - 将应用放入主映像
 - 使用 SCCM 或 Intune 等工具进行集中管理
-- 动态应用预配（AppV、VMWare AppVolumes 或 Citrix AppLayering）
+- 动态应用预配（AppV、VMware AppVolumes 或 Citrix AppLayering）
 - 使用 Microsoft 和第三方工具创建自定义工具或脚本
 
 ## <a name="what-does-msix-app-attach-do"></a>MSIX 应用附加有什么作用？
@@ -56,4 +56,4 @@ MSIX 应用附加必须能够适用于 VDI 或 SBC 外部。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果需要详细了解 MSIX 应用附加，请查看我们的[术语表](app-attach-glossary.md)和[常见问题解答](app-attach-faq.md)。 否则，请开始[设置应用附加](app-attach.md)。
+如果需要详细了解 MSIX 应用附加，请查看我们的[术语表](app-attach-glossary.md)和[常见问题解答](app-attach-faq.yml)。 否则，请开始[设置应用附加](app-attach.md)。

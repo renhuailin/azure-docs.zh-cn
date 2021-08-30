@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 07/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 5fd8dad44aa085530426168961280c4a84162ecb
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 9f78e3021df56ea750f2c902555aca796691476a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110617666"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448943"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>更新 Azure Stack Edge Pro GPU 
 
@@ -24,8 +24,8 @@ ms.locfileid: "110617666"
 本文中所述的过程是使用不同版本的软件执行的，但对于当前软件版本，该过程保持不变。
 
 > [!IMPORTANT]
-> - 更新 2105 是当前更新且对应于：
->   - 设备软件版本 - 2.2.1606.3320
+> - 更新 2106 是当前更新且对应于：
+>   - 设备软件版本 - 2.2.1636.3457
 >   - Kubernetes 服务器版本 - v1.20.2
 >   - IoT Edge 版本：0.1.0-beta14
 >   - GPU 驱动程序版本：460.32.03

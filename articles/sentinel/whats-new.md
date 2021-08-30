@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 6289a142e98b347f3295b8961ee1518ce8499eb4
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 08/09/2021
+ms.openlocfilehash: 7c4a2958f8629b224cecf1e92fd0efcff6b1fdd6
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539459"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182180"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 中的新增功能
 
@@ -32,6 +32,218 @@ ms.locfileid: "110539459"
 >
 > 你也可贡献内容！ 加入我们的 [Azure Sentinel 威胁猎人 GitHub 社区](https://github.com/Azure/Azure-Sentinel/wiki)吧。
 >
+
+## <a name="august-2021"></a>2021 年 8 月
+
+- [高级事件搜索（公共预览版）](#advanced-incident-search-public-preview)
+- [对勒索软件的融合检测（公共预览版）](#fusion-detection-for-ransomware-public-preview)
+- [UEBA 数据的监视列表模板](#watchlist-templates-for-ueba-data-public-preview)
+- [文件事件规范化架构（公共预览版）](#file-event-normalization-schema-public-preview)
+- [文档新增内容：最佳做法指南](#new-in-docs-best-practice-guidance)
+
+### <a name="advanced-incident-search-public-preview"></a>高级事件搜索（公共预览版）
+
+默认情况下，事件搜索仅跨“事件 ID”、“标题”、“标记”、“所有者”和“产品名称”值运行。 Azure Sentinel 现在提供[高级搜索选项](investigate-cases.md#search-for-incidents)，可搜索更多数据，包括警报详细信息、说明、实体、策略等。
+
+例如：
+
+:::image type="content" source="media/tutorial-investigate-cases/advanced-search.png" alt-text="“事件”页面高级搜索选项的屏幕截图。":::
+
+有关详细信息，请参阅[搜索事件](investigate-cases.md#search-for-incidents)。
+
+### <a name="fusion-detection-for-ransomware-public-preview"></a>对勒索软件的融合检测（公共预览版）
+
+Azure Sentinel 现在为可能的勒索软件活动提供新的融合检测，并生成标题为“可能与检测到的勒索软件活动相关的多个警报”的事件。
+
+对于可能与勒索软件活动关联的警报，如果它们发生在特定的时间范围内，并与攻击的执行和防御规避阶段相关联，则会生成事件。 你可以使用事件中列出的警报，来分析攻击者可能会利用哪些技术来破坏主机/设备并规避检测。
+
+支持的数据连接器包括：
+
+- [Azure Defender（Azure 安全中心）](connect-azure-security-center.md)
+- [用于终结点的 Microsoft Defender](connect-microsoft-defender-advanced-threat-protection.md)
+- [Microsoft Defender for Identity](connect-azure-atp.md)
+- [Microsoft Cloud App Security](connect-cloud-app-security.md)
+- [Azure Sentinel 计划分析规则](detect-threats-built-in.md#scheduled)
+
+有关详细信息，请参阅[可能与检测到的勒索软件活动相关的多个警报](fusion.md#multiple-alerts-possibly-related-to-ransomware-activity-detected-public-preview)。
+
+### <a name="watchlist-templates-for-ueba-data-public-preview"></a>UEBA 数据的监视列表模板（公共预览版）
+
+Azure Sentinel 现在为 UEBA 数据提供内置监视列表模板，你可以根据自己的环境自定义这些模板并在调查期间使用。
+
+在 UEBA 监视列表中填充数据后，可以将该数据与分析规则相关联，在实体页面和调查图表中将其作为见解查看，创建自定义用途（例如跟踪 VIP 或敏感用户），等等。
+
+监视列表模板目前包含：
+
+- **VIP 用户**。 对组织影响最大的员工的用户帐户列表。
+- **离职员工**。 已经或即将离职的员工的用户帐户列表。
+- **服务帐户**。 服务帐户及其所有者的列表。
+- **标识相关**。 属于同一个人的相关用户帐户的列表。
+- **高价值资产**。 组织中具有关键价值的设备、资源或其他资产的列表。
+- **网络映射**。 IP 子网及其各自组织上下文的列表。
+
+有关详细信息，请参阅[使用模板新建监视列表](watchlists.md#create-a-new-watchlist-using-a-template-public-preview)和[内置监视列表架构](watchlist-schemas.md)。
+
+
+
+### <a name="file-event-normalization-schema-public-preview"></a>文件事件规范化架构（公共预览版）
+
+Azure Sentinel 信息模型 (ASIM) 现在支持文件事件规范化架构，该架构用于描述文件活动，例如创建、修改或删除文件或文档。 文件事件由操作系统、文件存储系统（如 Azure 文件存储）和文档管理系统（如 Microsoft SharePoint）报告。
+
+有关详细信息，请参阅：
+
+- [Azure Sentinel 文件事件规范化架构参考（公共预览版）](file-event-normalization-schema.md)
+- [规范化和 Azure Sentinel 信息模型 (ASIM)](normalization.md)
+
+
+### <a name="new-in-docs-best-practice-guidance"></a>文档新增内容：最佳做法指南
+
+应客户和支持团队的多次要求，我们在文档中添加了一系列最佳做法指南。
+
+有关详细信息，请参阅：
+
+- [部署 Azure Sentinel 的先决条件](prerequisites.md)
+- [Azure Sentinel 最佳做法](best-practices.md)
+- [Azure Sentinel 工作区体系结构最佳做法](best-practices-workspace-architecture.md)
+- [设计 Azure Sentinel 工作区体系结构](design-your-workspace-architecture.md)
+- [Azure Sentinel 示例工作区设计](sample-workspace-designs.md)
+- [数据收集最佳做法](best-practices-data.md)
+
+> [!TIP]
+> 你可以在相关的概念和操作方法文章中找到我们在文档中添加的更多指南。 有关详细信息，请参阅[其他最佳做法参考](best-practices.md#additional-best-practice-references)。
+>
+
+## <a name="july-2021"></a>2021 年 7 月
+
+- [Microsoft 威胁情报匹配分析（公共预览版）](#microsoft-threat-intelligence-matching-analytics-public-preview)
+- [将 Azure AD 数据与 Azure Sentinel 的 IdentityInfo 表结合使用（公共预览版）](#use-azure-ad-data-with-azure-sentinels-identityinfo-table-public-preview)
+- [通过 API 使用地理位置数据来扩充实体（公共预览版）](#enrich-entities-with-geolocation-data-via-api-public-preview)
+- [支持 ADX 跨资源查询（公共预览版）](#support-for-adx-cross-resource-queries-public-preview)
+- [监视列表正式发布](#watchlists-are-in-general-availability)
+- [支持更多地区的数据驻留](#support-for-data-residency-in-more-geos)
+- [Azure Defender 连接器中的双向同步（公共预览版）](#bidirectional-sync-in-azure-defender-connector-public-preview)
+
+
+### <a name="microsoft-threat-intelligence-matching-analytics-public-preview"></a>Microsoft 威胁情报匹配分析（公共预览版）
+
+Azure Sentinel 现在提供内置的“Microsoft 威胁情报匹配分析”规则，可将 Microsoft 生成的威胁情报数据与你的日志进行匹配。 此规则生成高保真警报和事件，并根据检测到的日志上下文设置适当的严重性。 检测到匹配项后，该指标还会发布到 Azure Sentinel 威胁情报存储库。
+
+“Microsoft 威胁情报匹配分析”规则目前将域指标与以下日志源进行匹配：
+
+- [CEF](connect-common-event-format.md)
+- [DNS](connect-dns.md)
+- [Syslog](connect-syslog.md)
+
+有关详细信息，请参阅[使用匹配分析检测威胁（公共预览版）](work-with-threat-indicators.md#detect-threats-using-matching-analytics-public-preview)。
+
+### <a name="use-azure-ad-data-with-azure-sentinels-identityinfo-table-public-preview"></a>将 Azure AD 数据与 Azure Sentinel 的 IdentityInfo 表结合使用（公共预览版）
+
+由于攻击者经常使用组织自己的用户和服务帐户，因此，在调查过程中，有关这些用户帐户的数据（包括用户标识和权限）对分析师而言至关重要。
+
+现在，在 Azure Sentinel 工作区中[启用 UEBA](enable-entity-behavior-analytics.md) 还会将 Azure AD 数据同步到 Log Analytics 的新 IdentityInfo 表中。 Azure AD 与 IdentifyInfo 表之间的同步会创建用户配置文件数据的快照，其中包括用户元数据、组信息和分配给每个用户的 Azure AD 角色。
+
+在调查期间以及在为组织微调分析规则以减少误报时使用 IdentityInfo 表。
+
+有关详细信息，请参阅 UEBA 扩充参考中的 [IdentityInfo 表](ueba-enrichments.md#identityinfo-table-public-preview)和[使用 UEBA 数据分析误报](investigate-with-ueba.md#use-ueba-data-to-analyze-false-positives)。
+
+### <a name="enrich-entities-with-geolocation-data-via-api-public-preview"></a>通过 API 使用地理位置数据来扩充实体（公共预览版）
+
+Azure Sentinel 现在提供了一个 API，可以使用地理位置信息来扩充数据。 然后可以使用地理位置数据来分析和调查安全事件。
+
+有关详细信息，请参阅[通过 REST API 用地理位置数据扩充 Azure Sentinel 中的实体（公共预览版）](geolocation-data-api.md)和[在 Azure Sentinel 中使用实体对数据进行分类和分析](entities-in-azure-sentinel.md)。
+
+
+### <a name="support-for-adx-cross-resource-queries-public-preview"></a>支持 ADX 跨资源查询（公共预览版）
+
+Azure Sentinel 中的搜寻体验现在支持 [ADX 跨资源查询](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md#cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer)。
+ 
+尽管 Log Analytics 仍然是使用 Azure Sentinel 执行分析的主要数据存储位置，但在某些情况下，由于成本、保留期或其他因素，需要使用 ADX 来存储数据。 此功能使客户能够搜寻更广泛的数据集并在 [Azure Sentinel 搜寻体验](hunting.md)中查看结果，包括搜寻查询、[Livestream](livestream.md) 和 Log Analytics 搜索页面。
+
+若要查询存储在 ADX 群集中的数据，请使用 adx() 函数指定 ADX 群集、数据库名称和所需的表。 然后，可以像查询任何其他表一样查询输出。 有关详细信息，请参阅上面链接的页面。
+
+
+
+
+### <a name="watchlists-are-in-general-availability"></a>监视列表正式发布
+
+[监视列表](watchlists.md)功能现已正式发布。 借助监视列表，可使用业务数据扩充警报，创建允许列表或阻止列表以检查访问事件，并帮助调查威胁和缓解警报疲劳。
+
+### <a name="support-for-data-residency-in-more-geos"></a>支持更多地区的数据驻留
+
+Azure Sentinel 现在支持以下附加地区的完整数据驻留：
+
+巴西、挪威、南非、韩国、德国、阿拉伯联合酋长国 (UAE) 和瑞士。
+
+有关数据驻留，请参阅[受支持地区的完整列表](quickstart-onboard.md#geographical-availability-and-data-residency)。
+
+### <a name="bidirectional-sync-in-azure-defender-connector-public-preview"></a>Azure Defender 连接器中的双向同步（公共预览版）
+
+Azure Defender 连接器现在支持 Defender 和 Azure Sentinel 之间警报状态的双向同步。 当你关闭包含 Defender 警报的 Sentinel 事件时，该警报也将在 Defender 门户中自动关闭。
+
+请参阅[更新的 Azure Defender 连接器的完整说明](connect-azure-security-center.md)。
+
+## <a name="june-2021"></a>2021 年 6 月
+
+- [规范化和 Azure Sentinel 信息模型的升级](#upgrades-for-normalization-and-the-azure-sentinel-information-model)
+- [更新的服务到服务连接器](#updated-service-to-service-connectors)
+- [导出和导入分析规则（公共预览版）](#export-and-import-analytics-rules-public-preview)
+- [警报扩充：警报详细信息（公共预览版）](#alert-enrichment-alert-details-public-preview)
+- [更多有关 playbook 的帮助！](#more-help-for-playbooks)
+- [新的文档改编](#new-documentation-reorganization)
+
+### <a name="upgrades-for-normalization-and-the-azure-sentinel-information-model"></a>规范化和 Azure Sentinel 信息模型的升级
+
+借助 Azure Sentinel 信息模型，你可以使用和创建与源无关的内容，简化对 Azure Sentinel 工作区中数据的分析。
+
+在本月的更新中，我们增强了规范化文档，即，提供更高级别的详细信息以及完整的 DNS、进程事件和身份验证规范化架构。
+
+有关详细信息，请参阅：
+
+- [规范化和 Azure Sentinel 信息模型 (ASIM)](normalization.md)（已更新）
+- [Azure Sentinel 身份验证规范化架构参考（公共预览版）](authentication-normalization-schema.md)（新增！）
+- [Azure Sentinel 数据规范化架构参考](normalization-schema.md)
+- [Azure Sentinel DNS 规范化架构参考（公共预览版）](dns-normalization-schema.md)（新增！）
+- [Azure Sentinel 进程事件规范化架构参考（公共预览版）](process-events-normalization-schema.md)（新增！）
+- [Azure Sentinel 注册表事件规范化架构参考（公共预览版）](registry-event-normalization-schema.md)（新增！）
+
+
+### <a name="updated-service-to-service-connectors"></a>更新的服务到服务连接器
+
+我们最常用的两个连接器已经成为重大升级的受益者。
+
+- [Windows 安全事件连接器（公共预览版）](connect-windows-security-events.md)现在基于新的 Azure Monitor 代理 (AMA)，让你可以更加灵活地选择要引入的数据，并以最低的成本为你提供最大的可见性。
+
+- [Azure 活动日志连接器](connect-azure-activity.md)现在基于诊断设置管道，可提供更完整的数据，大大减少引入延迟，提高性能和可靠性。
+
+升级不是自动的。 建议这些连接器的用户启用新版本。
+
+### <a name="export-and-import-analytics-rules-public-preview"></a>导出和导入分析规则（公共预览版）
+
+你现在可以将分析规则导出到 JSON 格式的 Azure 资源管理器 (ARM) 模板文件，并从这些文件导入规则，作为以代码形式管理和控制 Azure Sentinel 部署的一部分。 任何类型的[分析规则](detect-threats-built-in.md)（不只是计划的规则）都可以导出到 ARM 模板。 模板文件包含规则的所有信息，从查询到分配的 MITRE ATT&CK 策略。
+
+有关详细信息，请参阅[在 ARM 模板中导出和导入分析规则](import-export-analytics-rules.md)。
+
+### <a name="alert-enrichment-alert-details-public-preview"></a>警报扩充：警报详细信息（公共预览版）
+
+除了使用实体映射和自定义详细信息扩充警报内容外，现在还可以根据警报乃至事件的特定内容，定制其呈现和显示方式。 与其他警报扩充功能一样，此功能可在[分析规则向导](detect-threats-custom.md)中配置。
+
+有关详细信息，请参阅[在 Azure Sentinel 自定义警报的详细信息](customize-alert-details.md)。
+
+
+### <a name="more-help-for-playbooks"></a>更多有关 playbook 的帮助！
+
+有两个新文档可帮助你开始或更轻松地创建和使用 playbook。
+- [向 Azure Sentinel 验证 playbook](authenticate-playbooks-to-sentinel.md) 可帮助你了解基于逻辑应用的 playbook 可以通过哪些不同的身份验证方法连接和访问 Azure Sentinel 中的信息，以及每种方法的适用场景。
+- [在 playbook 中使用触发器和操作](playbook-triggers-actions.md)解释了事件触发器和警报触发器之间的区别及其适用场景，并介绍了你在 playbook 中响应事件时可以采取的一些不同的操作，包括如何访问[自定义详细信息](playbook-triggers-actions.md#work-with-custom-details)中的信息。
+
+Playbook 文档还明确阐述了多租户 MSSP 方案。
+
+### <a name="new-documentation-reorganization"></a>新的文档改编
+
+本月，我们改编了 [Azure Sentinel 文档](index.yml)，将其重构为遵循常见客户旅程的直观类别。 使用筛选后的文档搜索和更新的登陆页面来浏览 Azure Sentinel 文档。
+
+:::image type="content" source="media/whats-new/new-docs.png" alt-text="新的 Azure Sentinel 文档改编。" lightbox="media/whats-new/new-docs.png":::
+
 
 ## <a name="may-2021"></a>2021 年 5 月
 
@@ -67,7 +279,7 @@ ms.locfileid: "110539459"
 
 :::image type="content" source="media/whats-new/alert-grouping-details.png" alt-text="按匹配实体的详细信息对警报进行分组。":::
 
-有关详细信息，请参阅[警报分组](tutorial-detect-threats-custom.md#alert-grouping)。
+有关详细信息，请参阅[警报分组](detect-threats-custom.md#alert-grouping)。
 
 ### <a name="azure-sentinel-solutions-public-preview"></a>Azure Sentinel 解决方案（公共预览版）
 
@@ -87,7 +299,7 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
 
 ### <a name="threat-intelligence-integrations-public-preview"></a>威胁情报集成（公共预览版）
 
-Azure Sentinel 可提供一些[使用威胁情报](import-threat-intelligence.md)源的不同方法，以增强安全分析师检测及确定已知威胁优先级的能力。
+Azure Sentinel 可提供一些[使用威胁情报](./understand-threat-intelligence.md)源的不同方法，以增强安全分析师检测及确定已知威胁优先级的能力。
 
 你现在可以从众多新发布的集成威胁情报平台 (TIP) 产品中选择使用其一连接到 TAXII 服务器，以利用可与 STIX 兼容的任何威胁情报源，以及使用可直接与 [Microsoft Graph Security tiIndicators API](/graph/api/resources/tiindicator) 通信的任何自定义解决方案。
 
@@ -97,7 +309,7 @@ Azure Sentinel 可提供一些[使用威胁情报](import-threat-intelligence.md
 
 ### <a name="fusion-over-scheduled-alerts-public-preview"></a>定时警报融合（公共预览版）
 
-除了从其他数据源导入的警报外，Fusion 机器学习关联引擎现还可使用一组由其关联中的[定时分析规则](tutorial-detect-threats-custom.md)生成的警报来检测多阶段攻击。
+除了从其他数据源导入的警报外，Fusion 机器学习关联引擎现还可使用一组由其关联中的[定时分析规则](detect-threats-custom.md)生成的警报来检测多阶段攻击。
 
 有关详细信息，请参阅 [Azure Sentinel 中的高级多阶段攻击检测](fusion.md)。
 
@@ -159,7 +371,7 @@ Azure Sentinel 现支持与 Microsoft Teams 直接集成，以使你能够跨组
 - 配有超过 75 张控制卡，与 TIC 3.0 安全功能匹配，提供用于导航的可选 GUI 按钮。
 - 经专门设计，可通过自动化、人工智能、机器学习、查询/警报生成、可视化效果、定制建议和相应的文档参考来增强人员配备。
 
-有关详细信息，请参阅[教程：可视化和监视数据](tutorial-monitor-your-data.md)。
+有关详细信息，请参阅[可视化和监视数据](monitor-your-data.md)。
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -186,7 +398,7 @@ Azure Sentinel 现支持与 Microsoft Teams 直接集成，以使你能够跨组
 
 :::image type="content" source="media/tutorial-investigate-cases/incident-timeline.png" alt-text="事件时间线选项卡":::
 
-有关详细信息，请参阅[教程：通过 Azure Sentinel 调查事件](tutorial-investigate-cases.md)。
+有关详细信息，请参阅[教程：通过 Azure Sentinel 调查事件](investigate-cases.md)。
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -211,11 +423,11 @@ Azure Sentinel 用户现在可以使用新的 [Azure Monitor 功能](https://tec
 
     如果选择 :::image type="icon" source="media/whats-new/manual-refresh-button.png" border="false":::“刷新”按钮手动刷新工作簿，则间隔也将重新开始。
 
-有关详细信息，请参阅[教程：可视化和监视数据](tutorial-monitor-your-data.md)和 [Azure Monitor 文档](../azure-monitor/visualize/workbooks-overview.md)。
+有关详细信息，请参阅[可视化和监视数据](monitor-your-data.md)和 [Azure Monitor 文档](../azure-monitor/visualize/workbooks-overview.md)。
 
 ### <a name="new-detections-for-azure-firewall"></a>Azure 防火墙的新检测
 
-已将 Azure 防火墙的几个现成检测添加到 Azure Sentinel 中的[分析](import-threat-intelligence.md#analytics-puts-your-threat-indicators-to-work-detecting-potential-threats)区域。 如果内部网络中的计算机尝试查询或连接到与已知 IOC 关联的 Internet 域名或 IP 地址（如检测规则查询中所定义），则这些新的检测将允许安全团队获取警报。
+已将 Azure 防火墙的几个现成检测添加到 Azure Sentinel 中的[分析](./understand-threat-intelligence.md)区域。 如果内部网络中的计算机尝试查询或连接到与已知 IOC 关联的 Internet 域名或 IP 地址（如检测规则查询中所定义），则这些新的检测将允许安全团队获取警报。
 
 新检测包括：
 
@@ -265,12 +477,12 @@ Azure 防火墙的检测会持续添加到内置模板库。 若要获取最新�
 
 :::image type="content" source="media/whats-new/print-workbook.png" alt-text="打印工作簿或另存为 PDF。":::
 
-有关详细信息，请参阅[教程：可视化和监视数据](tutorial-monitor-your-data.md)。
+有关详细信息，请参阅[可视化和监视数据](monitor-your-data.md)。
 
 ### <a name="incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview"></a>事件筛选器和排序首选项现已保存在会话中（公共预览版）
 
 现在，事件筛选器和排序在整个 Azure Sentinel 会话中得以保存，即使在导航到产品的其他区域时亦是如此。
-只要仍处于相同的会话中，导航回 Azure Sentinel 中的[事件](tutorial-investigate-cases.md)区域即可显示筛选器和排序与离开时一样。
+只要仍处于相同的会话中，导航回 Azure Sentinel 中的[事件](investigate-cases.md)区域即可显示筛选器和排序与离开时一样。
 
 > [!NOTE]
 > 离开 Azure Sentinel 或刷新浏览器后，不会保存事件筛选器和排序。
@@ -296,222 +508,6 @@ Azure 防火墙的检测会持续添加到内置模板库。 若要获取最新�
 
 客户仍然可为特定实例手动发送日志，不过无需使用策略引擎。
 
-## <a name="february-2021"></a>2021 年 2 月
-
-- [网络安全成熟度模型认证 (CMMC) 工作簿](#cybersecurity-maturity-model-certification-cmmc-workbook)
-- [第三方数据连接器](#third-party-data-connectors)
-- [实体页中的 UEBA 见解（公共预览版）](#ueba-insights-in-the-entity-page-public-preview)
-- [改进的事件搜索（公共预览版）](#improved-incident-search-public-preview)
-
-### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>网络安全成熟度模型认证 (CMMC) 工作簿
-
-Azure Sentinel CMMC 工作簿提供了一种机制，用于查看与整个 Microsoft 产品组合（包括 Microsoft 安全产品/服务、Office 365、Teams、Intune、Windows 虚拟桌面等）中的 CMMC 控件一致的日志查询。
-
-CMMC 工作簿使安全架构师、工程师、安全操作分析员、管理者和 IT 专业人员能够在态势感知的情况下了解到云工作负载安全状况。 此外，还提供了有关选择、设计、部署和配置 Microsoft 产品/服务的建议，以便与相应的 CMMC 要求和实践保持一致。
-
-即使不需要遵守 CMMC，CMMC 工作簿也有助于构建安全运营中心、开发警报、直观呈现威胁和提供对工作负载的态势感知。
-
-访问 Azure Sentinel 的“工作簿”区域中的 CMMC 工作簿。 选择“模板”，然后搜索“CMMC” 。
-
-:::image type="content" source="media/whats-new/cmmc-guide-toggle.gif" alt-text="打开和关闭 CMMC 工作簿指南" lightbox="media/whats-new/cmmc-guide-toggle.gif":::
-
-
-有关详细信息，请参阅：
-
-- [Azure Sentinel 网络安全成熟度模型认证 (CMMC) 工作簿](https://techcommunity.microsoft.com/t5/public-sector-blog/azure-sentinel-cybersecurity-maturity-model-certification-cmmc/ba-p/2110524)
-- [教程：可视化和监视数据](tutorial-monitor-your-data.md)
-
-
-### <a name="third-party-data-connectors"></a>第三方数据连接器
-
-我们的第三方集成集合不断扩大，最近 2 个月添加了 30 款连接器。 列表如下：
-
-- [Agari Phishing Defense 和 Agari Brand Protection](connect-agari-phishing-defense.md)
-- [Akamai 安全事件](connect-akamai-security-events.md)
-- [Alsid for Active Directory](connect-alsid-active-directory.md)
-- [Apache HTTP Server](connect-apache-http-server.md)
-- [Aruba ClearPass](connect-aruba-clearpass.md)
-- [Blackberry CylancePROTECT](connect-data-sources.md)
-- [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
-- [Cisco Firepower eStreamer](connect-data-sources.md)
-- [Cisco Meraki](connect-cisco-meraki.md)
-- [Cisco Umbrella](connect-cisco-umbrella.md)
-- [Cisco Unified Computing System (UCS)](connect-cisco-ucs.md)
-- [ESET Enterprise Inspector](connect-data-sources.md)
-- [ESET Security Management Center](connect-data-sources.md)
-- [Google Workspace（之前称为 G Suite）](connect-google-workspace.md)
-- [Imperva WAF 网关](connect-imperva-waf-gateway.md)
-- [Juniper SRX](connect-juniper-srx.md)
-- [Netskope](connect-data-sources.md)
-- [NXLog DNS 日志](connect-nxlog-dns.md)
-- [NXLog Linux 审核](connect-nxlog-linuxaudit.md)
-- [Onapsis 平台](connect-data-sources.md)
-- [Proofpoint On Demand Email Security (POD)](connect-proofpoint-pod.md)
-- [Qualys 漏洞管理知识库](connect-data-sources.md)
-- [Salesforce 服务云](connect-salesforce-service-cloud.md)
-- [SonicWall 防火墙](connect-data-sources.md)
-- [Sophos Cloud Optix](connect-sophos-cloud-optix.md)
-- [Squid Proxy](connect-squid-proxy.md)
-- [Symantec Endpoint Protection](connect-data-sources.md)
-- [Thycotic Secret Server](connect-thycotic-secret-server.md)
-- [Trend Micro XDR](connect-data-sources.md)
-- [VMware ESXi](connect-vmware-esxi.md)
-
-### <a name="ueba-insights-in-the-entity-page-public-preview"></a>实体页中的 UEBA 见解（公共预览版）
-
-Azure Sentinel 实体详细信息页提供了一个[见解窗格](identify-threats-with-entity-behavior-analytics.md#entity-insights)，其中显示了有关实体的行为见解，有助于快速识别异常和安全威胁。
-
-如果[已启用 UEBA](ueba-enrichments.md)，并且时间范围设为至少 4 天，那么此见解窗格现在还将包括有关 UEBA 见解的以下新部分：
-
-|部分  |说明  |
-|---------|---------|
-|**UEBA 见解**     | 汇总异常用户活动： <br>- 跨地理位置、设备和环境<br>- 跨时间和频率（与用户自己的历史记录相比） <br>- 与对等方的行为进行比较 <br>- 与组织的行为进行比较     |
-|**基于安全组成员身份的用户对等方**     |   列出基于 Azure AD 安全组成员身份的用户对等方，为安全操作团队提供共享类似权限的其他用户的列表。  |
-|**Azure 订阅的用户访问权限**     |     显示用户对 Azure 订阅的访问权限 - 可直接访问或通过 Azure AD 组/服务主体访问。   |
-|**与用户相关的威胁指示器**     |  列出与用户活动中表示的 IP 地址相关的已知威胁的集合。 威胁按威胁类型和系列列出，并由 Microsoft 威胁情报服务进行扩充。       |
-|     |         |
-
-### <a name="improved-incident-search-public-preview"></a>改进的事件搜索（公共预览版）
-
-我们改进了 Azure Sentinel 事件搜索体验，让你能够在调查特定威胁时通过事件更快地导航。
-
-现在，在 Azure Sentinel 中搜索事件时，可按以下事件详细信息进行搜索：
-
-- ID
-- 标题
-- 产品
-- 所有者
-- 标记
-
-## <a name="january-2021"></a>2021 年 1 月
-
-- [分析规则向导：改进的查询编辑体验（公共预览版）](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
-- [Az.SecurityInsights PowerShell 模块（公共预览版）](#azsecurityinsights-powershell-module-public-preview)
-- [SQL 数据库连接器](#sql-database-connector)
-- [Dynamics 365 连接器（公共预览版）](#dynamics-365-connector-public-preview)
-- [改进的事件注释](#improved-incident-comments)
-- [专用 Log Analytics 群集](#dedicated-log-analytics-clusters)
-- [逻辑应用托管标识](#logic-apps-managed-identities)
-- [通过分析规则预览关系图改进的规则优化](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
-
-
-### <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>分析规则向导：改进的查询编辑体验（公共预览版）
-
-现在，Azure Sentinel 的计划分析规则向导对编写和编辑查询提供了以下增强功能：
-
--   可扩展的编辑窗口，提供更多屏幕空间来查看查询。
--   查询代码中突出显示关键字。
--   扩展了自动补全支持。
--   实时查询验证。 现在，查询中的错误在滚动条中显示为红色块，在“设置规则逻辑”选项卡名称中显示为一个红点。 此外，不能保存带有错误的查询。
-
-有关详细信息，请参阅[教程：创建自定义分析规则以检测威胁](tutorial-detect-threats-custom.md)。
-### <a name="azsecurityinsights-powershell-module-public-preview"></a>Az.SecurityInsights PowerShell 模块（公共预览版）
-
-Azure Sentinel 现支持新的 PowerShell 模块 [Az SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/)。
-
-Az.SecurityInsights 模块支持常见的 Azure Sentinel 用例，例如与事件交互来更改状态、严重性和所有者等内容，为事件添加注释和标签，以及创建书签。
-
-虽然建议为 CI/CD 管道使用 [Azure 资源管理器 (ARM)](../azure-resource-manager/templates/index.yml) 模板，但 Az.SecurityInsights 模块对于部署后的任务非常有用，而且面向 SOC 自动化。  例如，SOC 自动化可能包含配置数据连接器、创建分析规则或向分析规则添加自动化操作的步骤。
-
-有关详细信息（包括可用 cmdlet 、参数说明和示例的完整列表和描述），请参阅 [Az.SecurityInsights PowerShell 文档](/powershell/module/az.securityinsights/)。
-
-### <a name="sql-database-connector"></a>SQL 数据库连接器
-
-Azure Sentinel 现提供 Azure SQL 数据库连接器，可将数据库的审核和诊断日志流式传输到 Azure Sentinel，并持续监视所有实例中的活动。
-
-Azure SQL 是一个完全托管的平台即服务 (PaaS) 数据库引擎，可在没有用户参与的情况下处理大部分的数据库管理功能，例如升级、修补、备份和监视。
-
-有关详细信息，请参阅[连接 Azure SQL 数据库诊断和审核日志](connect-azure-sql-logs.md)。
-
-### <a name="dynamics-365-connector-public-preview"></a>Dynamics 365 连接器（公共预览版）
-
-Azure Sentinel 现提供 Microsoft Dynamics 365 连接器，可将 Dynamics 365 应用程序的用户、管理员和支持活动日志收集到 Azure Sentinel 中。 你可使用此数据来帮助审核正在执行的所有数据处理操作，并分析其是否存在安全漏洞。
-
-有关详细信息，请参阅[将 Dynamics 365 活动日志连接到 Azure Sentinel](connect-dynamics-365.md)。
-
-### <a name="improved-incident-comments"></a>改进的事件注释
-
-分析员使用事件注释来协作处理事件，从而手动记录过程和步骤，或将其作为 playbook 的一部分进行记录。 
-
-我们改进了事件注释体验，让你能够设置注释的格式，还可编辑或删除现有注释。
-
-有关详细信息，请参阅[从 Microsoft 安全警报自动创建事件](create-incidents-from-alerts.md)。
-### <a name="dedicated-log-analytics-clusters"></a>专用 Log Analytics 群集
-
-Azure Sentinel 现支持将专用 Log Analytics 群集作为部署选项。 建议在以下情况中考虑使用专用群集：
-
-- 每天向 Azure Sentinel 工作区引入超过 1 TB 的数据
-- Azure 注册中有多个 Azure Sentinel 工作区
-
-当同一群集上有多个工作区时，可通过专用群集使用客户管理的密钥、密码箱、双重加密和更快跨工作区查询等功能。
-
-有关详细信息，请参阅 [Azure Monitor 日志专用群集](../azure-monitor/logs/logs-dedicated-clusters.md)。
-
-### <a name="logic-apps-managed-identities"></a>逻辑应用托管标识
-
-Azure Sentinel 现支持对 Azure Sentinel 逻辑应用连接器使用托管标识，这样你就可直接向特定 playbook 授予权限以在 Azure Sentinel 上操作，而无需创建额外的标识。
-
-- 如果没有托管标识，逻辑应用连接器需要具有 Azure Sentinel RBAC 角色的单独标识，才能在 Azure Sentinel 上运行。 单独的标识可以是 Azure AD 用户或服务主体，例如 Azure AD 注册的应用程序。
-
-- 如果在逻辑应用中打开托管标识支持，会将逻辑应用注册到 Azure AD 并提供对象 ID。 请使用 Azure Sentinel 中的对象 ID 在 Azure Sentinel 工作区中为逻辑应用分配 Azure RBAC 角色。 
-
-有关详细信息，请参阅：
-
-- [在 Azure 逻辑应用中用托管标识进行身份验证](../logic-apps/create-managed-service-identity.md)
-- [Azure Sentinel 逻辑应用连接器文档](/connectors/azuresentinel) 
-
-### <a name="improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview"></a>通过分析规则预览关系图改进的规则优化（公共预览版）
-
-Azure Sentinel 现可帮助你更好地优化分析规则，从而帮助提高其准确性并减少干扰。
-
-在“设置规则逻辑”选项卡上编辑分析规则后，请在右侧找到“结果模拟”区域 。 
-
-选择“使用当前数据进行测试”，让 Azure Sentinel 对分析规则的最后 50 次运行进行模拟。 这会生成一个图，显示该规则根据所评估的原始事件数据本会生成的警报的平均数量。 
-
-有关详细信息，请参阅[定义规则查询逻辑和配置设置](tutorial-detect-threats-custom.md#define-the-rule-query-logic-and-configure-settings)。
-
-## <a name="december-2020"></a>2020 年 12 月
-
-- [80 个新的内置搜寻查询](#80-new-built-in-hunting-queries)
-- [Log Analytics 代理改进](#log-analytics-agent-improvements)
-
-### <a name="80-new-built-in-hunting-queries"></a>80 个新的内置搜寻查询
- 
-Azure Sentinel 的内置搜寻查询可让 SOC 分析员缩小当前检测覆盖范围的差距，并激发新的搜寻线索。
-
-Azure Sentinel 的本次更新包括新的搜寻查询，它们可覆盖整个 MITRE ATT&CK 框架矩阵：
-
-- **集合**
-- **命令和控制**
-- **凭据访问**
-- **发现**
-- **执行**
-- **外泄**
-- **影响**
-- **初始访问**
-- **持久性**
-- **特权提升**
-
-添加的搜寻查询旨在帮助查找环境中的可疑活动。 尽管它们可能既会返回合法活动，又会返回潜在的恶意活动，但它们在指导搜寻方面很有用。 
-
-如果在运行这些查询后，你对结果很有信心，那么你可能会想将这些结果转换为分析规则，或者将搜寻结果添加到现有或新的事件中。
-
-所有添加的查询均可通过 Azure Sentinel 搜寻页面获得。 有关详细信息，请参阅[通过 Azure Sentinel 搜寻威胁](hunting.md)。
-
-### <a name="log-analytics-agent-improvements"></a>Log Analytics 代理改进
-
-Azure Sentinel 用户会从以下 Log Analytics 代理改进中受益：
-
-- 支持更多操作系统，包括 CentOS 8、RedHat 8 和 SUSE Linux 15。
-- 除了 Python 2 外，还支持 Python 3
-
-Azure Sentinel 使用 Log Analytics 代理向工作区发送事件，包括 Windows 安全事件、Syslog 事件和 CEF 日志等。
-
-> [!NOTE]
-> Log Analytics 代理有时被称为 OMS 代理或 Microsoft Monitoring Agent (MMA)。 
-> 
-
-有关详细信息，请参阅 [Log Analytics 文档](../azure-monitor/agents/log-analytics-agent.md)和 [Log Analytics 代理发行说明](https://github.com/microsoft/OMS-Agent-for-Linux/releases)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -519,4 +515,4 @@ Azure Sentinel 使用 Log Analytics 代理向工作区发送事件，包括 Wind
 >[加入 Azure Sentinel](quickstart-onboard.md)
 
 > [!div class="nextstepaction"]
->[了解警报](quickstart-get-visibility.md)
+>[了解警报](get-visibility.md)

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa2d910c017d3cc626f737bdab50315aef8d1e77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc3defd1bf3e3052f45f00eeeec0078ce0f6bbde
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491379"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723140"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>在 Windows 登录屏幕上启用 Azure Active Directory 自助式密码重置
 
@@ -45,6 +45,7 @@ ms.locfileid: "99491379"
     - HideFastUserSwitching 设置为“已启用”或 1
     - DontDisplayLastUserName 设置为“已启用”或 1
     - NoLockScreen 设置为“已启用”或 1
+    - BlockNonAdminUserInstall 设置为“已启用”或 1
     - 在设备上设置了 EnableLostMode
     - 将 Explorer.exe 替换为自定义 shell
 - 组合使用下面三个特定的设置可能会导致此功能失效。

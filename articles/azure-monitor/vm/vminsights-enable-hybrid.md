@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: b6a93ec97a5abaa55bb8aa6a9db963d98bc3b615
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f96e1b1f2bd95e5d7b8c876676b7c9eabd8a9f94
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032098"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729296"
 ---
 # <a name="enable-vm-insights-for-a-hybrid-virtual-machine"></a>为混合虚拟机启用 VM 见解
 本文介绍了如何为 Azure 外部的虚拟机（包括本地和其他云环境）启用 VM insights。
@@ -42,8 +42,8 @@ Azure 之外的虚拟机必须使用与 Azure VM 相同的 Log Analytics 代理�
 
 | 文件 | (OS) | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.9.15340 | 3F34A36CF569724A5C83B1C8DFEC54263B7ABCFEAC9EB9BB40AF822A31265AF7  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.9.15340 | 0B0566A11A9B218FA6E44B057E7BA93986B8D6539B928C6D36D97D13A2F8B8A6 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.10.16690 | 8E4EAFFF74F64B71AD3A6EB94EA6A57A719D77487153AEC1BEC05FFF849DA7BE  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.10.16690 | F2C648762620C00545F02904D3C58971338B28FBA129069B0CDEBC994591762E |
 
 
 ## <a name="install-the-dependency-agent-on-windows"></a>在 Windows 上安装依赖项代理

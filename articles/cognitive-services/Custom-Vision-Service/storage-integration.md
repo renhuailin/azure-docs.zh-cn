@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: how-to
-ms.date: 09/11/2020
+ms.date: 06/25/2021
 ms.author: pafarley
-ms.openlocfilehash: 92a9b79e4de60e7308224b435953ac7b3eefc8a1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f21313a357c5c86087d3505cfdf654d9958d3893
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951084"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982359"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>集成用于通知和备份的 Azure 存储
 
@@ -35,12 +35,11 @@ ms.locfileid: "111951084"
 
 在 Azure 门户中转到你的自定义视觉训练资源，选择“标识”页，然后启用系统分配的托管标识。
 
-接下来，在 Azure 门户中转到你的存储资源。 转到“访问控制(IAM)”页，为每个集成功能添加一个角色分配：
-* 选择你的自定义视觉训练资源，分配“存储 Blob 数据参与者”角色（如果你打算使用模型备份功能）。 
-* 然后选择你的自定义视觉训练资源，分配“存储队列数据参与者”角色（如果你打算使用通知队列功能）。
+接下来，在 Azure 门户中转到你的存储资源。 转到“访问控制(IAM)”页面并选择“添加角色分配(预览)” 。 然后为集成功能或这两个功能添加角色分配：
+* 如果你打算使用模型备份功能，请选择“存储 Blob 数据参与者”角色，然后以成员身份添加你的自定义视觉训练资源。 选择“查看 + 分配”以完成。
+* 如果你打算使用通知队列功能，请选择“存储队列数据参与者”角色，然后以成员身份添加你的自定义视觉训练资源。 选择“查看 + 分配”以完成。
 
-> [!div class="mx-imgBorder"]
-> ![存储帐户的“添加角色分配”页](./media/storage-integration/storage-access.png)
+有关角色分配的帮助，请参阅[使用 Azure 门户分配 Azure 角色](https://review.docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
 
 ### <a name="get-integration-urls"></a>获取集成 URL
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 638b78f0304a9bbba8521ed523dffa1deda03c7c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 314c52384910728c0250101e72501de0ae0b89a1
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480790"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554995"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure Synapse Analytics 与 Azure 数据工厂中的数据集成比较
 
@@ -33,7 +33,7 @@ ms.locfileid: "109480790"
 |                          | 生存时间 | ✓ | ✗ |
 | **管道和活动** | SSIS 包活动 | ✓ | ✗ |
 |                          | 支持 Power Query 活动 | ✓ | ✗ |
-| **模板库和知识中心** | 解决方案模板 | ✓<br><small>Azure 数据工厂模板库 | ✓<br><small>Synapse 工作区知识中心 |
+| 模板库和知识中心 | 解决方案模板 | ✓<br><small>Azure 数据工厂模板库 | ✓<br><small>Synapse 工作区知识中心 |
 | **GIT 存储库集成** | GIT 集成 | ✓ | ✓ |
 | **Monitoring**           | 监视 Spark 作业的数据流 | ✗ | ✓<br><small>利用 Synapse Spark 池 |
 |                          | 与 Azure Monitor 集成 | ✓ | ✗ |

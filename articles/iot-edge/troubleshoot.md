@@ -2,18 +2,17 @@
 title: 故障排除 - Azure IoT Edge | Microsoft Docs
 description: 通过本文了解 Azure IoT Edge 的标准诊断技能，例如检索组件状态和日志
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 05/04/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0ab6ddcf3566164746dce8e0b9ff4b4a2aa32b84
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 3bca470114b5fb22409d86c333e92f93155759f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537985"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735150"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>排除 IoT Edge 设备故障
 
@@ -125,6 +124,12 @@ iotedge support-bundle --help
 
 > [!WARNING]
 > `support-bundle` 命令的输出可能包含主机、设备和模块名称、模块记录的信息，等等。如果在公共论坛中共享输出，请注意这一点。
+
+## <a name="review-metrics-collected-from-the-runtime"></a>查看从运行时收集的指标
+
+IoT Edge 运行时模块会生成各种指标，帮助你监视和了解 IoT Edge 设备的运行状况。 将指标收集器模块添加到部署中，来收集这些指标并将其发送到云，从而简化监视。
+
+有关详细信息，请参阅[收集和传输指标](how-to-collect-and-transport-metrics.md)。
 
 ## <a name="check-your-iot-edge-version"></a>检查 IoT Edge 版本
 

@@ -7,21 +7,21 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
-ms.date: 10/20/2020
+ms.date: 08/11/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 31b1ac989e90b525f754f49ccf2f6d5fd254ff58
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 12da538cfbf258aa8e447d5b5832cbc1865600ab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110098589"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745227"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>使用自定义 Docker 映像训练模型
 
 在本文中，你将了解在通过 Azure 机器学习训练模型时如何使用自定义 Docker 映像。 你将使用本文中的示例脚本通过创建卷积神经网络来对宠物图像进行分类。 
 
-Azure 机器学习提供了一个默认的 Docker 基础映像。 你还可以使用 Azure 机器学习环境来指定一个不同的基础映像，例如系统维护的 [Azure 机器学习基础映像](https://github.com/Azure/AzureML-Containers)之一或你自己的[自定义映像](how-to-deploy-custom-docker-image.md#create-a-custom-base-image)。 借助自定义基础映像，你可以在运行训练作业时密切管理依赖项，以及更加严格地控制组件版本。
+Azure 机器学习提供了一个默认的 Docker 基础映像。 你还可以使用 Azure 机器学习环境来指定一个不同的基础映像，例如系统维护的 [Azure 机器学习基础映像](https://github.com/Azure/AzureML-Containers)之一或你自己的[自定义映像](./how-to-deploy-custom-container.md)。 借助自定义基础映像，你可以在运行训练作业时密切管理依赖项，以及更加严格地控制组件版本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -88,7 +88,7 @@ fastai_env.docker.base_image_registry.password = "password"
 ```python 
 # Specify Docker steps as a string. 
 dockerfile = r"""
-FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210615.v1
 RUN echo "Hello from custom container!"
 """
 
@@ -103,10 +103,10 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 
 >[!IMPORTANT]
 > Azure 机器学习仅支持提供以下软件的 Docker 映像：
-> * Ubuntu 16.04 或更高版本。
-> * Conda 4.5.# 或更高版本。
+> * Ubuntu 18.04 或更高版本。
+> * Conda 4.7.# 或更高版本。
 > * Python 3.6+。
-> * 在用于训练的任何容器映像中都需要一个与 POSIX 兼容的 shell（位于 /bin/sh）。 
+> * 在用于训练的任何容器映像中，都需要在 /bin/sh 处有符合 POSIX 标准的 shell。 
 
 若要详细了解如何创建和管理 Azure 机器学习环境，请参阅[创建和使用软件环境](how-to-use-environments.md)。 
 
@@ -142,6 +142,11 @@ except ComputeTargetException:
 print(compute_target.get_status().serialize())
 ```
 
+
+>[!IMPORTANT]
+>为计算上的任何映像生成使用 CPU SKU。 
+
+
 ## <a name="configure-your-training-job"></a>配置训练作业
 
 对于本教程，请使用 [GitHub](https://github.com/Azure/azureml-examples/blob/main/python-sdk/workflows/train/fastai/pets/src/train.py) 上的训练脚本 train.py。 实际上，你可以原样接受任何自定义的训练脚本并使用 Azure 机器学习运行它。
@@ -174,4 +179,4 @@ run.wait_for_completion(show_output=True)
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已使用自定义 Docker 映像训练了一个模型。 有关 Azure 机器学习的详细信息，请参阅下述其他文章：
 * 在训练期间[跟踪运行指标](how-to-log-view-metrics.md)。
-* 使用自定义 Docker 映像来[部署模型](how-to-deploy-custom-docker-image.md)。
+* 使用自定义 Docker 映像来[部署模型](./how-to-deploy-custom-container.md)。

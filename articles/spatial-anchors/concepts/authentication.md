@@ -8,13 +8,13 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 01065f9ac26599d26d6e2a6979eae1e559a82854
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, subject-rbac-steps
+ms.openlocfilehash: ef49c6ebd356c97466b9b5a744cc58584c42bcb7
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97722957"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126025"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空间定位点身份验证和授权
 
@@ -97,20 +97,14 @@ configuration.AccountKey(LR"(MyAccountKey)");
 **在 Azure 门户中**
 1.    在 Azure AD 中将应用程序注册为本机应用程序。 在注册过程中，需要确定应用程序是否应为多租户应用程序。 此外，还需要提供应用程序允许的重定向 URL。
 1.  转到“API 权限”选项卡。
-2.  选择“添加权限”。
+1.  选择“添加权限”。
     1.  在“我的组织使用的 API”选项卡上选择“混合现实资源提供程序”。 
     2.  选择“委托的权限”。
     3.  在“mixedreality”下选择“mixedreality.signin”。 
     4.  选择“添加权限”。
-3.  选择“授予管理员同意”。
+1.  选择“授予管理员同意”。
 
-2. 向应用程序或用户授予对你的资源的访问权限：
-   1.    在 Azure 门户中转到你的空间定位点资源。
-   2.    转到“访问控制(IAM)”选项卡。
-   3.    选择“添加角色分配”。
-   1.    [选择一个角色](#azure-role-based-access-control)。
-   2.    在“选择”框中，输入要为其分配访问权限的用户、组和/或应用程序的名称。
-   3.    选择“保存”。
+1. 将 [ASA RBAC 角色](#azure-role-based-access-control)分配给你要授予其资源访问权限的应用程序或用户。 如果希望应用程序的用户对 ASA 帐户具有不同的角色，请在 Azure AD 中注册多个应用程序并为每个应用程序分配一个单独的角色。 然后实现授权逻辑，以便为用户使用适当的角色。 有关详细的角色分配步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 **在代码中**
 1.    对于 MSAL 中的“client ID”和“RedirectUri”参数，请确保使用你自己的 Azure AD 应用程序的应用程序 ID 和重定向 URI。 
@@ -176,19 +170,9 @@ configuration.AuthenticationToken(LR"(MyAuthenticationToken)");
 1.    在 Azure AD 中注册应用程序：
         1.    在 Azure 门户中，依次选择“Azure Active Directory”、“应用注册” 。
         2.    选择“新注册”。
-        3.    输入应用程序的名称，选择“Web 应用/API”作为应用程序类型，然后输入服务的身份验证 URL。 选择“创建”。
-2.    在应用程序上选择“设置”，然后选择“证书和机密”选项卡。创建新的客户端密码，选择持续时间，然后选择“添加”。   请务必保存机密值。 稍后需要将其包含在 Web 服务的代码中。
-3.    向应用程序和/或用户授予对你的资源的访问权限：
-        1.    在 Azure 门户中转到你的空间定位点资源。
-        2.    转到“访问控制(IAM)”选项卡。
-        3.    选择“添加角色分配”。
-        4.    [选择一个角色](#azure-role-based-access-control)。
-        5.    在“选择”框中，输入要为其分配访问权限的一个或多个应用程序的名称。 如果你希望应用的用户对空间定位点帐户拥有不同的角色，请在 Azure AD 中注册多个应用程序，并为每个应用程序单独分配角色。 然后实现授权逻辑，以便为用户使用适当的角色。
-
-              > [!NOTE]
-              > 在“添加角色分配”窗格中的“将访问权限分配给”内，选择“Azure AD 用户、组或服务主体”。  
-
-        6.    选择“保存”。
+        3.    输入应用程序的名称，选择“Web 应用/API”作为应用程序类型，然后输入服务的身份验证 URL。 选择“创建”  。
+1.    在应用程序上选择“设置”，然后选择“证书和机密”选项卡。创建新的客户端密码，选择持续时间，然后选择“添加”。   请务必保存机密值。 稍后需要将其包含在 Web 服务的代码中。
+1. 将 [ASA RBAC 角色](#azure-role-based-access-control)分配给你要授予其资源访问权限的应用程序或用户。 如果希望应用程序的用户对 ASA 帐户具有不同的角色，请在 Azure AD 中注册多个应用程序并为每个应用程序分配一个单独的角色。 然后实现授权逻辑，以便为用户使用适当的角色。 有关详细的角色分配步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 **在代码中**
 

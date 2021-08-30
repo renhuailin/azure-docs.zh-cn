@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 8120bcb030f5a1ff6948757d8f65e3a21d31898f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: bd0e89e1967842e8167c3da1fc3d2a716a5f7bd6
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955391"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633775"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>为商业市场计划 Azure 应用程序产品/服务
 
@@ -35,7 +35,7 @@ ms.locfileid: "111955391"
 
 - [了解 Azure 资源管理器模板](../azure-resource-manager/templates/syntax.md)
 - 快速入门：
-    - [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates/)
+    - [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)
     - [Azure 模板最佳做法指南](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
     - [发布应用程序定义](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
     - [部署服务目录应用](../azure-resource-manager/managed-applications/deploy-service-catalog-quickstart.md)
@@ -95,7 +95,7 @@ ms.locfileid: "111955391"
 
 ## <a name="categories-and-subcategories"></a>类别和子类别
 
-你可以选择至少一个且最多两个类别，用于将产品/服务分组到适当的商业市场搜索区域中。 每个主类别和辅助类别最多选择两个子类别。 有关类别和子类别的完整列表，请参阅[产品/服务列表最佳做法](gtm-offer-listing-best-practices.md#categories)。
+你可以选择至少一个且最多两个类别，用于将产品/服务分组到适当的商业市场搜索区域中。 每个主类别和辅助类别最多选择两个子类别。 有关类别和子类别的完整列表，请参阅[产品/服务列表最佳做法](marketplace-categories-industries.md#categories)。
 
 ## <a name="legal-contracts"></a>法律协定
 
@@ -120,7 +120,7 @@ ms.locfileid: "111955391"
 4. 使用条款
 5. 隐私策略地址（链接）
 6. 产品名称
-7. 摘要
+7. 总结
 8. 说明
 9. 屏幕截图/视频
 
@@ -132,7 +132,7 @@ ms.locfileid: "111955391"
 
 1. 标题
 2. 说明
-3. 有用链接
+3. 有用的链接
 4. 屏幕截图
 
 > [!NOTE]
@@ -148,11 +148,11 @@ ms.locfileid: "111955391"
     此文本框包含 RTF 文本编辑器控件，可以使用这些控件来使说明更具吸引力。 还可以使用 HTML 标记来设置说明的格式。 最多可在此框中输入 3000 个字符，其中包括 HTML 标记和空格。 有关其他提示，请参阅[编写出色的应用说明](/windows/uwp/publish/write-a-great-app-description)和[商业市场产品/服务说明中支持的 HTML 标记](supported-html-tags.md)。
 
 - **搜索关键字**（可选）：最多可输入三个搜索关键字，客户可以使用它们在在线商店中查找你的产品/服务。 为了获得最佳结果，请在说明中也使用这些关键字。 不需要包含产品/服务的“名称”和“说明”。 该文本将自动包含在搜索中。
-- **隐私策略链接**：你公司的隐私策略的 URL。 你必须提供有效的隐私策略并负责确保你的应用符合隐私法律和法规。
+- 隐私策略链接：公司隐私策略的 URL。 你必须提供有效的隐私策略并负责确保你的应用符合隐私法律和法规。
 - **有用的链接**（可选）：你可以为产品/服务的用户提供各种资源的链接。 例如，论坛、常见问题解答和发行说明。
 - **联系信息**：必须指定组织中的以下联系人：
   - **支持联系人**：提供客户打开票证时要使用的 Microsoft 合作伙伴的姓名、电话和电子邮件。 还必须包含支持网站的 URL。
-  - **工程联系人**：提供姓名、电话和电子邮件，以便 Microsoft 在产品/服务出现问题时直接联系。 此联系信息未列在商业市场中。
+  - **工程联系人**：提供姓名、电话和电子邮件，以便 Microsoft 在产品/服务出现问题时直接联系。 此联系信息不会列在商业市场中。
   - **CSP 计划联系人**（可选）：如果你选择加入云解决方案提供商 (CSP) 计划，请提供姓名、电话号码和电子邮件，以便这些合作伙伴可以在有任何疑问时与你联系。 你还可以在营销材料中包含 URL。
 - **媒体 – 徽标**：为“大”徽标提供 PNG 文件。 合作伙伴中心将用其来创建“小”徽标和“中”徽标。  稍后可以选择将这些徽标替换为其他图像。
   - 大（216 x 216 到 350 x 350 像素，必选）
@@ -210,7 +210,7 @@ ms.locfileid: "111955391"
 你可以选择加入 Microsoft 支持的营销和销售渠道。 在合作伙伴中心创建产品/服务时，你将在此过程结束时看到两个选项卡：
 
 - **通过 CSP 转售**：使用此选项可允许 Microsoft 云解决方案提供商 (CSP) 合作伙伴将你的解决方案作为捆绑产品/服务的一部分转售。 有关详细信息，请参阅[云解决方案提供商](./cloud-solution-providers.md)。
-- **与 Microsoft 联合销售**：此选项可让 Microsoft 销售团队在评估其客户需求时考虑符合你的 IP 联合销售资格的解决方案。 有关如何准备产品/服务进行评估的详细信息，请参阅[商业市场中的联合销售选项](./co-sell-configure.md)。 有关 IP 联合销售要求的详细信息，请参阅[联合销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 若要详细了解如何通过 Microsoft CSP 合作伙伴渠道来推广产品/服务，请参阅[云解决方案提供商](cloud-solution-providers.md)。
+- 与 Microsoft 联合销售：此选项将允许 Microsoft 销售团队在评估其客户需求时，考虑你的符合 IP 联合销售资格的解决方案。 有关如何准备产品/服务进行评估的详细信息，请参阅[商业市场中的联合销售选项](./co-sell-configure.md)。 有关 IP 联合销售要求的详细信息，请参阅[联合销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 若要详细了解如何通过 Microsoft CSP 合作伙伴渠道来推广产品/服务，请参阅[云解决方案提供商](cloud-solution-providers.md)。
 
 要了解详细信息，请参阅[通过 Azure 市场拓展云业务](https://azuremarketplace.microsoft.com/sell)。
 

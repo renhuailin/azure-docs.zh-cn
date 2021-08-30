@@ -1,14 +1,22 @@
 ---
-ms.openlocfilehash: 5208f497fc5423cd0e9c2343af2a5757088399b1
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: d7780da3ad23c0c157284839c5063c6c015a42a6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111450004"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121801607"
 ---
 本文列出了已发布的 Azure Active Directory Connect 预配代理的版本和功能。 Azure AD 团队会定期更新预配代理的新特性和功能。 
 
 Microsoft 为最新代理版本和之前的一个版本提供直接支持。
+
+## <a name="115820"></a>1.1.582.0
+
+2021 年 8 月 8 日 - 已发布供下载
+
+>[!NOTE] 
+>这是 Azure AD Connect 的安全更新版本。 此版本解决了[此 CVE](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) 中所述的漏洞。 有关此漏洞的详细信息，请参阅 CVE。
+>可以使用[此链接](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/provisioningAgentInstaller)下载该版本。
 
 ## <a name="113590"></a>1.1.359.0
 

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 203abe2b6def478dc1747dd4ce638b5b62707612
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70c33d12e905e585f5bb6c852fc87e867db8af52
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101659216"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751365"
 ---
 # <a name="create-external-stream-transact-sql"></a>CREATE EXTERNAL STREAM (Transact-SQL)
 
@@ -34,9 +34,9 @@ Azure SQL Edge 目前仅支持以下数据源作为流输入和输出。
 
 ## <a name="syntax"></a>语法
 
-```sql
-CREATE EXTERNAL STREAM {external_stream_name}  
-( <column_definition> [, <column_definition> ] * ) -- Used for Inputs - optional 
+```syntaxsql
+CREATE EXTERNAL STREAM {external_stream_name}
+( <column_definition> [, <column_definition> ] * ) -- Used for Inputs - optional
 WITH  ( <with_options> )
 
 <column_definition> ::=
@@ -47,54 +47,54 @@ WITH  ( <with_options> )
     [ ( precision [ , scale ] | max ) ]
 
 <with_options> ::=
-  DATA_SOURCE = data_source_name, 
-  LOCATION = location_name, 
-  [FILE_FORMAT = external_file_format_name], --Used for Inputs - optional 
+  DATA_SOURCE = data_source_name,
+  LOCATION = location_name,
+  [FILE_FORMAT = external_file_format_name], --Used for Inputs - optional
   [<optional_input_options>],
-  [<optional_output_options>], 
+  [<optional_output_options>],
   TAGS = <tag_column_value>
 
-<optional_input_options> ::= 
+<optional_input_options> ::=
   INPUT_OPTIONS = '[<Input_options_data>]'
 
-<Input_option_data> ::= 
+<Input_option_data> ::=
       <input_option_values> [ , <input_option_values> ]
 
 <input_option_values> ::=
   PARTITIONS: [number_of_partitions]
-  | CONSUMER_GROUP: [ consumer_group_name ] 
-  | TIME_POLICY: [ time_policy ] 
-  | LATE_EVENT_TOLERANCE: [ late_event_tolerance_value ] 
+  | CONSUMER_GROUP: [ consumer_group_name ]
+  | TIME_POLICY: [ time_policy ]
+  | LATE_EVENT_TOLERANCE: [ late_event_tolerance_value ]
   | OUT_OF_ORDER_EVENT_TOLERANCE: [ out_of_order_tolerance_value ]
-  
-<optional_output_options> ::= 
+
+<optional_output_options> ::=
   OUTPUT_OPTIONS = '[<output_option_data>]'
 
-<output_option_data> ::= 
+<output_option_data> ::=
       <output_option_values> [ , <output_option_values> ]
 
 <output_option_values> ::=
-   REJECT_POLICY: [ reject_policy ] 
-   | MINIMUM_ROWS: [ row_value ] 
-   | MAXIMUM_TIME: [ time_value_minutes] 
-   | PARTITION_KEY_COLUMN: [ partition_key_column_name ] 
-   | PROPERTY_COLUMNS: [ ( [ output_col_name ] ) ] 
-   | SYSTEM_PROPERTY_COLUMNS: [ ( [ output_col_name ] ) ] 
-   | PARTITION_KEY: [ partition_key_name ] 
-   | ROW_KEY: [ row_key_name ] 
-   | BATCH_SIZE: [ batch_size_value ] 
-   | MAXIMUM_BATCH_COUNT: [ batch_value ] 
+   REJECT_POLICY: [ reject_policy ]
+   | MINIMUM_ROWS: [ row_value ]
+   | MAXIMUM_TIME: [ time_value_minutes]
+   | PARTITION_KEY_COLUMN: [ partition_key_column_name ]
+   | PROPERTY_COLUMNS: [ ( [ output_col_name ] ) ]
+   | SYSTEM_PROPERTY_COLUMNS: [ ( [ output_col_name ] ) ]
+   | PARTITION_KEY: [ partition_key_name ]
+   | ROW_KEY: [ row_key_name ]
+   | BATCH_SIZE: [ batch_size_value ]
+   | MAXIMUM_BATCH_COUNT: [ batch_value ]
    | STAGING_AREA: [ blob_data_source ]
- 
+
 <tag_column_value> ::= -- Reserved for Future Usage
-); 
+);
 ```
 
 ## <a name="arguments"></a>参数
 
 - [DATA_SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql/)
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
-- LOCATION：指定数据源中的实际数据或位置的名称。 
+- LOCATION：指定数据源中的实际数据或位置的名称。
    - 对于 Edge 中心或 Kafka 流对象，location 指定要从中读取或向其写入的 Edge 中心或 Kafka 主题的名称。
    - 对于 SQL 流对象（SQL Server、Azure SQL 数据库或 Azure SQL Edge），location 指定表的名称。 如果在与目标表相同的数据库和架构中创建流，则仅提供表名就够了。 否则，需要完全限定 (<database_name.schema_name.table_name) 表名。
    - 对于 Azure Blob 存储流对象，location 指的是要在 blob 容器内使用的路径模式。 有关此功能的详细信息，请参阅 (/articles/stream-analytics/stream-analytics-define-outputs.md#blob-storage-and-azure-data-lake-gen2)
@@ -103,45 +103,36 @@ WITH  ( <with_options> )
     - PARTITIONS：为主题定义的分区数。 可以使用的最大分区数限制为 32 个。
       - 适用于 Kafka 输入流
     - CONSUMER_GROUP：事件中心和 IoT 中心限制一个使用者组中的读者数量（最多 5 个）。 将此字段留空将使用“$Default”使用者组。
-      - 保留以供将来使用。 不适用于 Azure SQL Edge。  
+      - 保留以供将来使用。 不适用于 Azure SQL Edge。
     - TIME_POLICY：描述当延迟事件或无序事件超过其容错值时，是删除事件还是调整事件时间。
       - 保留以供将来使用。 不适用于 Azure SQL Edge。
     - LATE_EVENT_TOLERANCE：最大可接受的时间延迟。 延迟表示事件时间戳与系统时钟之间的差异。
       - 保留以供将来使用。 不适用于 Azure SQL Edge。
     - OUT_OF_ORDER_EVENT_TOLERANCE：事件在经历从输入到流式处理查询的行程后，可能会乱序。 可以按原样接受这些事件，也可以选择在设定的时间段内暂停以对它们重新排序。
       - 保留以供将来使用。 不适用于 Azure SQL Edge。
-        
-- OUTPUT_OPTIONS：将选项指定为支持服务（此服务作为流式处理查询输出）的键值对 
-  - REJECT_POLICY：DROP | RETRY 会在出现数据转换错误时，指定数据错误处理策略。 
-    - 适用于所有支持的输出 
-  - MINIMUM_ROWS：  
-    写入输出时每批所需的最小行数。 对于 Parquet，每批都将创建一个新文件。 
-    - 适用于所有支持的输出 
-  - MAXIMUM_TIME：  
-    每批的最长等待时间（分钟）。 在此时间后，即使不满足最小行数要求，也会将该批写入输出。 
-    - 适用于所有支持的输出 
-  - PARTITION_KEY_COLUMN：  
-    该列用于分区键。 
+
+- OUTPUT_OPTIONS：将选项指定为支持服务（此服务作为流式处理查询输出）的键值对
+  - REJECT_POLICY：DROP | RETRY 会在出现数据转换错误时，指定数据错误处理策略。
+    - 适用于所有支持的输出
+  - MINIMUM_ROWS：写入输出时每批所需的最小行数。 对于 Parquet，每批都将创建一个新文件。
+    - 适用于所有支持的输出
+  - MAXIMUM_TIME：每批的最长等待时间（分钟）。 在此时间后，即使不满足最小行数要求，也会将该批写入输出。
+    - 适用于所有支持的输出
+  - PARTITION_KEY_COLUMN：用于分区键的列。
     - 保留以供将来使用。 不适用于 Azure SQL Edge。
-  - PROPERTY_COLUMNS：  
-    要作为自定义属性（如果提供）附加到消息的输出列的列名称逗号分隔列表。  
-    - 保留以供将来使用。 不适用于 Azure SQL Edge。 
-  - SYSTEM_PROPERTY_COLUMNS：  
-    要在服务总线消息上填充的系统属性名称和输出列的名称/值对的 JSON 格式集合。 例如，{ "MessageId":   "column1", "PartitionKey": "column2"} 
-    - 保留以供将来使用。 不适用于 Azure SQL Edge。 
-  - PARTITION_KEY：  
-    包含分区键的输出列的名称。 分区键是某个给定表中分区的唯一标识，分区键构成了实体主键的第一部分。 分区键是一个最大为 1 KB 的字符串值。 
+  - PROPERTY_COLUMNS：要作为自定义属性（如果提供）附加到消息的输出列的名称列表（用逗号分隔）。
     - 保留以供将来使用。 不适用于 Azure SQL Edge。
-  - ROW_KEY：  
-    包含行键的输出列的名称。 行键是某个给定分区中实体的唯一标识符。 行键构成了实体主键的第二部分。 行键是一个最大为 1 KB 的字符串值。 
+  - SYSTEM_PROPERTY_COLUMNS：要在服务总线消息上填充的系统属性名称和输出列的名称/值对的 JSON 格式集合。 例如，{ "MessageId":   "column1", "PartitionKey": "column2"}
     - 保留以供将来使用。 不适用于 Azure SQL Edge。
-  - BATCH_SIZE：  
-    这表示最大可达 100 条记录的表存储的事务数。 对于 Azure Functions，这表示每次调用时发送到函数的批大小（以字节为单位）- 默认值为 256 kB。 
-    - 保留以供将来使用。 不适用于 Azure SQL Edge。 
-  - MAXIMUM_BATCH_COUNT：  
-    每次调用 Azure 函数发送给该函数的最大事件数 - 默认值为 100。 对于 SQL 数据库，这表示随每个批量插入事务一起发送的记录数上限 - 默认值为 10,000。 
-    - 适用于所有基于 SQL 的输出 
-  - STAGING_AREA：Blob 存储的 EXTERNAL DATA SOURCE 对象 - 用于将高吞吐量数据引入到 Azure Synapse Analytics 的临时区域 
+  - PARTITION_KEY：包含分区键的输出列的名称。 分区键是某个给定表中分区的唯一标识，分区键构成了实体主键的第一部分。 分区键是一个最大为 1 KB 的字符串值。
+    - 保留以供将来使用。 不适用于 Azure SQL Edge。
+  - ROW_KEY：包含行键的输出列的名称。 行键是某个给定分区中实体的唯一标识符。 行键构成了实体主键的第二部分。 行键是一个最大为 1 KB 的字符串值。
+    - 保留以供将来使用。 不适用于 Azure SQL Edge。
+  - BATCH_SIZE：这表示最大可达 100 条记录的表存储的事务数。 对于 Azure Functions，这表示每次调用时发送到函数的批大小（以字节为单位）- 默认值为 256 kB。
+    - 保留以供将来使用。 不适用于 Azure SQL Edge。
+  - MAXIMUM_BATCH_COUNT：每次调用 Azure 函数发送给该函数的最大事件数（默认值为 100）。 对于 SQL 数据库，这表示随每个批量插入事务一起发送的记录数上限 - 默认值为 10,000。
+    - 适用于所有基于 SQL 的输出
+  - STAGING_AREA：Blob 存储的 EXTERNAL DATA SOURCE 对象 - 用于将高吞吐量数据引入到 Azure Synapse Analytics 的临时区域
     - 保留以供将来使用。 不适用于 Azure SQL Edge。
 
 
@@ -154,24 +145,24 @@ WITH  ( <with_options> )
 语法：
 
 ```sql
-CREATE EXTERNAL DATA SOURCE MyEdgeHub 
-WITH  
-(      
-  LOCATION = 'edgehub://'       
-); 
- 
-CREATE EXTERNAL FILE FORMAT myFileFormat  
-WITH (  
-   FORMAT_TYPE = JSON, 
-); 
- 
-CREATE EXTERNAL STREAM Stream_A  
-WITH    
-(   
-   DATA_SOURCE = MyEdgeHub, 
-   FILE_FORMAT = myFileFormat, 
-   LOCATION = '<mytopicname>', 
-   OUTPUT_OPTIONS =   
+CREATE EXTERNAL DATA SOURCE MyEdgeHub
+WITH
+(
+  LOCATION = 'edgehub://'
+);
+
+CREATE EXTERNAL FILE FORMAT myFileFormat
+WITH (
+   FORMAT_TYPE = JSON
+);
+
+CREATE EXTERNAL STREAM Stream_A
+WITH
+(
+   DATA_SOURCE = MyEdgeHub,
+   FILE_FORMAT = myFileFormat,
+   LOCATION = '<mytopicname>',
+   OUTPUT_OPTIONS =
      'REJECT_TYPE: Drop'
 );
 ```
@@ -183,35 +174,35 @@ WITH
 语法：
 
 ```sql
-CREATE DATABASE SCOPED CREDENTIAL SQLCredName 
-WITH IDENTITY = '<user>', 
-SECRET = '<password>'; 
- 
--- Azure SQL Database 
-CREATE EXTERNAL DATA SOURCE MyTargetSQLTabl 
-WITH 
-(     
-  LOCATION = '<my_server_name>.database.windows.net', 
-  CREDENTIAL = SQLCredName 
-); 
- 
---SQL Server or Azure SQL Edge
-CREATE EXTERNAL DATA SOURCE MyTargetSQLTabl 
-WITH 
-(     
-  LOCATION = ' <sqlserver://<ipaddress>,<port>', 
-  CREDENTIAL = SQLCredName 
-); 
+CREATE DATABASE SCOPED CREDENTIAL SQLCredName
+WITH IDENTITY = '<user>',
+SECRET = '<password>';
 
-CREATE EXTERNAL STREAM Stream_A 
-WITH   
-(  
-    DATA_SOURCE = MyTargetSQLTable, 
+-- Azure SQL Database
+CREATE EXTERNAL DATA SOURCE MyTargetSQLTabl
+WITH
+(
+  LOCATION = '<my_server_name>.database.windows.net',
+  CREDENTIAL = SQLCredName
+);
+
+--SQL Server or Azure SQL Edge
+CREATE EXTERNAL DATA SOURCE MyTargetSQLTabl
+WITH
+(
+  LOCATION = ' <sqlserver://<ipaddress>,<port>',
+  CREDENTIAL = SQLCredName
+);
+
+CREATE EXTERNAL STREAM Stream_A
+WITH
+(
+    DATA_SOURCE = MyTargetSQLTable,
     LOCATION = '<DatabaseName>.<SchemaName>.<TableName>' ,
-   --Note: If table is contained in the database, <TableName> should be sufficient 
-    OUTPUT_OPTIONS =  
+   --Note: If table is contained in the database, <TableName> should be sufficient
+    OUTPUT_OPTIONS =
       'REJECT_TYPE: Drop'
-); 
+);
 ```
 
 ### <a name="example-3---kafka"></a>示例 3 - Kafka
@@ -220,29 +211,29 @@ WITH
 
 语法：
 ```sql
-CREATE EXTERNAL DATA SOURCE MyKafka_tweets 
-WITH 
-( 
-  --The location maps to KafkaBootstrapServer 
-  LOCATION = 'kafka://<kafkaserver>:<ipaddress>', 
-  CREDENTIAL = kafkaCredName 
-); 
- 
-CREATE EXTERNAL FILE FORMAT myFileFormat 
-WITH ( 
-    FORMAT_TYPE = JSON, 
-    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
-); 
+CREATE EXTERNAL DATA SOURCE MyKafka_tweets
+WITH
+(
+  --The location maps to KafkaBootstrapServer
+  LOCATION = 'kafka://<kafkaserver>:<ipaddress>',
+  CREDENTIAL = kafkaCredName
+);
 
-CREATE EXTERNAL STREAM Stream_A (user_id VARCHAR, tweet VARCHAR) 
-WITH   
-(  
-    DATA_SOURCE = MyKafka_tweets, 
-    LOCATION = '<KafkaTopicName>', 
-    FILE_FORMAT = myFileFormat,  
-    INPUT_OPTIONS =  
+CREATE EXTERNAL FILE FORMAT myFileFormat
+WITH (
+    FORMAT_TYPE = JSON,
+    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
+);
+
+CREATE EXTERNAL STREAM Stream_A (user_id VARCHAR, tweet VARCHAR)
+WITH
+(
+    DATA_SOURCE = MyKafka_tweets,
+    LOCATION = '<KafkaTopicName>',
+    FILE_FORMAT = myFileFormat,
+    INPUT_OPTIONS =
       'PARTITIONS: 5'
-); 
+);
 ```
 
 ## <a name="see-also"></a>另请参阅

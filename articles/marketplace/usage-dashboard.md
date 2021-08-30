@@ -4,28 +4,27 @@ description: 了解如何访问发布到 Azure 市场的产品/服务的所有�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 04/28/2021
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: fca763f307c8ae1437009b282e460fc249c40b60
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 07/15/2021
+ms.openlocfilehash: c68216675a41a71b21216ce558b03171781dbc43
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540976"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749468"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“使用情况”仪表板
 
 本文提供有关合作伙伴中心中的“使用情况”仪表板的信息。 此仪表板在以下三个不同的选项卡中显示所有虚拟机 (VM) 产品/服务的规范化使用情况、原始使用情况和按流量计费指标：VM 规范化使用情况、VM 原始使用情况和按流量计费的使用情况。
 
-若要访问合作伙伴中心的“使用情况”仪表板，请在“商业市场”下选择[“分析”](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) > “使用情况”。
-
 >[!NOTE]
-> 有关分析术语的详细定义，请参阅[商业市场分析术语和常见问题](./analytics-faq.md)。
+> 有关分析术语的详细定义，请参阅[商业市场分析术语和常见问题](./analytics-faq.yml)。
 
 ## <a name="usage-dashboard"></a>使用情况仪表板
 
-“分析”菜单中的“使用情况”仪表板显示所有软件即服务 (SaaS) 产品/服务的当前订单。 你可以查看以下各项的图形表示形式：
+[“使用情况”仪表板](https://go.microsoft.com/fwlink/?linkid=2166106)显示所有软件即服务 (SaaS) 产品/服务的当前订单。 你可以查看以下各项的图形表示形式：
 
 - 使用趋势
 - 按产品/服务划分的规范化使用情况
@@ -40,6 +39,8 @@ ms.locfileid: "111540976"
 ## <a name="elements-of-the-usage-dashboard"></a>“使用情况”仪表板的元素
 
 下面各部分介绍了如何使用“使用情况”仪表板以及如何读取数据。
+
+若要访问合作伙伴中心的“使用情况”仪表板，请在“商业市场”下选择[“分析”](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) > “使用情况”。
 
 ### <a name="month-range"></a>月份范围
 
@@ -122,7 +123,7 @@ ms.locfileid: "111540976"
 | 市场订阅 ID | 市场订阅 ID | 与客户用来购买商业市场产品/服务的 Azure 订阅关联的唯一标识符。 该 ID 以前称为“Azure 订阅 GUID”。 | MarketplaceSubscriptionId |
 | MonthStartDate | MonthStartDate | 月开始日期表示采购月份。 | MonthStartDate |
 | 产品/服务类型 | 产品/服务类型 | 商业市场产品/服务的类型。 | OfferType |
-| Azure 许可证类型 | Azure 许可证类型 | 购买 Azure 的客户使用的许可协议类型。 也称为“渠道”。 可能的值包括：<ui><li>云解决方案提供商</li><li>Enterprise</li><li>通过经销商购买产品/服务的企业</li><li>即用即付</li></ul> | AzureLicenseType |
+| Azure 许可证类型 | Azure 许可证类型 | 购买 Azure 的客户使用的许可协议类型。 也称为“渠道”。 可能的值包括：<ul><li>云解决方案提供商</li><li>Enterprise</li><li>通过经销商购买产品/服务的企业</li><li>即用即付</li></ul> | AzureLicenseType |
 | 市场许可证类型 | 市场许可证类型 | 商业市场产品/服务的计费方式。 可能的值包括：<ul><li>通过 Azure 计费</li><li>自带许可</li><li>免费</li><li>Microsoft 充当经销商</li></ul> | MarketplaceLicenseType |
 | SKU | SKU | 与产品/服务关联的计划。 | SKU |
 | 客户所在国家/地区 | 客户所在国家/地区 | 客户提供的国家/地区名称。 此处的国家/地区可能不同于客户的 Azure 订阅中的国家/地区。 | CustomerCountry |
@@ -162,6 +163,7 @@ ms.locfileid: "111540976"
 | 执行的操作 | 执行的操作 | **适用于具有自定义计量维度的产品/服务**。<br>指定发布者确认以下事项的时间：客户对产品/服务的自定义计量维度的超额使用情况是真实的或虚假的。<br>如果发布者没有含自定义计量维度的产品/服务，并且通过编程访问导出此列，则值将为 null。 | ActionTakenAt |
 | 采取的操作 | 采取的操作 | **适用于具有自定义计量维度的产品/服务**。<br>指定确认以下事项的人员：客户对产品/服务的自定义计量维度的超额使用情况是真实的或虚假的。<br>如果发布者没有含自定义计量维度的产品/服务，并且通过编程访问导出此列，则值将为 null。 | ActionTakenBy |
 | 估计的财务影响 (USD) | 估计的财务影响，以美元计 | **适用于具有自定义计量维度的产品/服务**。<br>当合作伙伴中心将客户对产品/服务的自定义计量维度的超额使用情况标记为异常时，该字段会指定异常超额使用情况的估计财务影响（以美元为单位）。<br>如果发布者没有含自定义计量维度的产品/服务，并且通过编程方式导出此列，则值将为 null。 | EstimatedFinancialImpactUSD |
+| 不适用 | 资源 ID | 资源的完全限定 ID，包括资源名称和资源类型。 注意，此数据字段仅在下载报告中提供。<br>使用以下格式：<br> /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name} | 空值 |
 |||||
 
 ### <a name="usage-page-filters"></a>使用情况页面筛选器
@@ -200,4 +202,4 @@ VM 原始使用情况的小组件和导出报告与 VM 规范化使用情况类�
 - 有关虚拟机 (VM) 产品/服务使用情况和按流量计费指标的信息，请参阅[商业市场分析中的使用情况仪表板](usage-dashboard.md)。
 - 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](downloads-dashboard.md)。
 - 若要查看客户对 Azure 市场和 Microsoft AppSource 中产品/服务的反馈的综合视图，请参阅[合作伙伴中心的评分和评价分析仪表板](ratings-reviews.md)。
-- 有关商业市场分析的常见问题解答以及数据术语的综合词典，请参阅[商业市场分析术语和常见问题](./analytics-faq.md)。
+- 有关商业市场分析的常见问题解答以及数据术语的综合词典，请参阅[商业市场分析术语和常见问题](./analytics-faq.yml)。

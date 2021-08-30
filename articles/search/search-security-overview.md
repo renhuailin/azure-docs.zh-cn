@@ -7,40 +7,48 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/04/2021
+ms.date: 07/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 48aa91d4ba68b1a69e46019ced7c5bbb69d9029f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: c3e6112c1bee8e42f411eaa8d12d873db2657142
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786784"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114726453"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Azure 认知搜索的安全性概述
 
-本文介绍 Azure 认知搜索中保护内容和操作的安全功能。
+本文介绍 Azure 认知搜索中保护数据和操作的安全功能。
 
-对于向搜索服务发出的入站请求，在保护搜索服务终结点的安全措施方面有了进展：从用于请求的 API 密钥，到防火墙中的入站规则，再到完全保护服务免受公共 Internet 影响的专用终结点。
+## <a name="network-traffic-patterns"></a>网络流量模式
 
-对于向其他服务发出的出站请求，主要请求由从外部源读取内容的索引器发出。 可以在连接字符串上提供凭据。 或者，可以设置托管标识，以使搜索在访问 Azure 存储、Azure SQL、Cosmos DB 或其他 Azure 数据源中的数据时成为受信任的服务。 托管标识用于替代连接上的凭据或访问密钥。 有关此功能的详细信息，请参阅[使用托管标识连接到数据源](search-howto-managed-identities-data-sources.md)。
+搜索服务托管在 Azure 上，通常通过公共网络连接进行访问。 了解服务的访问模式可帮助设计安全策略，有效阻止对可搜索内容的未经授权的访问。
 
-向外部服务写入的操作很少：搜索服务会写入日志文件，并且它在创建知识存储、保留缓存的扩充和保留调试会话时将会写入 Azure 存储。 其他服务到服务的调用（例如认知服务）会在内部网络上发出。
+认知搜索具有三种基本的网络流量模式：
 
-请观看这段快节奏的视频，以便大致了解安全体系结构和每个功能类别。
++ 客户端向搜索服务发出的入站请求（主要模式）
++ 搜索服务向 Azure 和其他平台上的其他服务发出的出站请求
++ 通过安全的 Microsoft 主干网络的内部服务到服务请求
 
-> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
+入站请求包括创建对象、加载数据和查询等。 对于针对数据和操作的入站访问，可以实现一系列安全措施，并从请求中的 API 密钥开始。 然后，可以补充 IP 防火墙中的入站规则，也可以创建全面保护服务免受公共 Internet 服务影响的专用终结点。
+
+出站请求可以包括读取和写入操作。 出站调用的主要代理是索引器和组成技能集。 对于索引器，读取操作包括[文档破解](search-indexer-overview.md#document-cracking)和数据引入。 在创建知识存储、持久缓存扩充和持久调试会话时，索引器也可写入 Azure 存储。 最后，技能集也可以包括运行外部代码的自定义技能，例如在 Azure Functions 或 Web 应用中。
+
+内部请求包括通过 Azure Active Directory 执行的诊断日志记录、加密、身份验证和授权等任务的服务到服务调用、专用终结点连接，以及向认知服务发出的内置技能请求。
 
 ## <a name="network-security"></a>网络安全
 
 <a name="service-access-and-authentication"></a>
 
-入站安全性功能通过不断提升的安全性和复杂性级别来保护搜索服务终结点。 首先，所有请求都需要 API 密钥才能进行经过身份验证的访问。 其次，你可以选择设置防火墙规则，以限制对特定 IP 地址的访问。 为了提供高级保护，第三个选项是启用 Azure 专用链接来保护服务终结点不受所有 Internet 流量的影响。
+入站安全性功能通过不断提升的安全性和复杂性级别来保护搜索服务终结点。 认知搜索使用[基于密钥的身份验证](search-security-api-keys.md)，其中所有请求都需要 API 密钥才能进行经过身份验证的访问。
 
-### <a name="public-access-using-api-keys"></a>使用 API 密钥进行公共访问
+也可以选择通过设置仅限特定 IP 地址可进行访问的防火墙规则来实现更多控制层。 如需高级保护，可以启用 Azure 专用链接来保护服务终结点，使其免受所有 Internet 流量的影响。
 
-默认情况下，将使用基于密钥的身份验证（用于对搜索服务终结点进行管理员或查询访问）通过公有云来访问搜索服务。 提交有效密钥被视为请求源自受信任实体的证明。 下一部分介绍基于密钥的身份验证。
+### <a name="connect-over-the-public-internet"></a>通过公共 Internet 进行连接
 
-### <a name="configure-ip-firewalls"></a>配置 IP 防火墙
+默认情况下，将使用基于密钥的身份验证（用于对搜索服务终结点进行管理员或查询访问）通过公有云来访问搜索服务终结点。 需要密钥。 提交有效密钥被视为请求源自受信任实体的证明。 下一部分介绍基于密钥的身份验证。 如果没有 API 密钥，请求将返回 401 和 404 响应。
+
+### <a name="connect-through-ip-firewalls"></a>通过 IP 防火墙进行连接
 
 为了进一步控制对搜索服务的访问，可以创建入站防火墙规则，以允许访问特定 IP 地址或某个范围的 IP 地址。 所有客户端连接必须通过允许的 IP 地址建立，否则连接将被拒绝。
 
@@ -48,9 +56,9 @@ ms.locfileid: "110786784"
 
 可以使用门户[配置入站访问](service-configure-firewall.md)。
 
-或者，可以使用管理 REST API。 从 API 版本 2020-03-13 开始，利用 [IpRule](/rest/api/searchmanagement/services/createorupdate#iprule) 参数，可以通过标识希望向其授予搜索服务访问权限的 IP 地址（单个或在某个范围内）来限制对服务的访问。
+或者，可以使用管理 REST API。 从 API 版本 2020-03-13 开始，利用 [IpRule](/rest/api/searchmanagement/2020-08-01/services/create-or-update#iprule) 参数，可以通过标识希望向其授予搜索服务访问权限的 IP 地址（单个或在某个范围内）来限制对服务的访问。
 
-### <a name="network-isolation-through-a-private-endpoint-no-internet-traffic"></a>通过专用终结点进行网络隔离（无 Internet 流量）
+### <a name="connect-to-a-private-endpoint-network-isolation-no-internet-traffic"></a>连接到专用终结点（网络隔离，无 Internet 流量）
 
 可以为 Azure 认知搜索建立[专用终结点](../private-link/private-endpoint-overview.md)，允许[虚拟网络](../virtual-network/virtual-networks-overview.md)上的客户端通过[专用链接](../private-link/private-link-overview.md)安全地访问搜索索引中的数据。
 
@@ -60,9 +68,19 @@ ms.locfileid: "110786784"
 
 虽然这种解决方案是最安全的，但使用其他服务会增加成本，因此，在开始之前请先确保清楚地了解其中的益处。 有关费用的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/private-link/)。 若要详细了解这些组件如何协同工作，请观看本文顶部的视频。 涉及专用终结点方案的内容从该视频中 5:48 开始。 有关如何设置终结点的说明，请参阅[为 Azure 认知搜索创建专用终结点](service-create-private-endpoint.md)。
 
+### <a name="outbound-connections-to-external-services"></a>与外部服务的出站连接
+
+索引器和技能集均为可建立外部连接的对象。 你将使用这些机制之一提供连接信息作为对象定义的一部分。
+
++ 连接字符串中的凭据
+
++ 连接字符串中的托管标识
+
+  可以设置托管标识，以使搜索在访问 Azure 存储、Azure SQL、Cosmos DB 或其他 Azure 数据源中的数据时成为受信任的服务。 托管标识用于替代连接上的凭据或访问密钥。 有关此功能的详细信息，请参阅[使用托管标识连接到数据源](search-howto-managed-identities-data-sources.md)。
+
 ## <a name="authentication"></a>身份验证
 
-对于向搜索服务发出的入站请求，通过证明该请求来自可靠来源的[必需的 API 密钥](search-security-api-keys.md)（由随机生成的数字和字母组成的字符串）进行身份验证。 认知搜索目前不支持对入站请求进行 Azure Active Directory 身份验证。
+对于向搜索服务发出的入站请求，通过证明该请求来自可靠来源的 [API 密钥](search-security-api-keys.md)（由随机生成的数字和字母组成的字符串）进行身份验证。 另外，还提供了对 Azure Active Directory 身份验证和基于角色的授权的新支持，[目前以预览版提供](search-security-rbac.md)。
 
 由索引器发出的出站请求受外部服务提供的身份验证方式影响。 认知搜索中的索引器子服务可以成为 Azure 上的可信服务，使用托管标识连接到其他服务。 有关详细信息，请参阅[使用托管标识设置到数据源的索引器连接](search-howto-managed-identities-data-sources.md)。
 
@@ -80,13 +98,16 @@ ms.locfileid: "110786784"
 
 在应用程序代码中，请指定终结点和 API 密钥，以允许访问内容和选项。 终结点可能是服务本身、索引集合、特定索引、文档集合或特定文档。 在链接到一起时，终结点、操作（例如，创建或更新请求）和权限级别（基于密钥的全部或只读权限）构成保护内容和操作的安全方案。
 
+> [!NOTE]
+> 使用 Azure 基于角色的访问控制 (RBAC) 提供的数据平面操作授权目前以预览版提供。 如果想要[使用角色分配而不是 API 密钥](search-security-rbac.md)，则可以使用此预览版功能。
+
 ### <a name="controlling-access-to-indexes"></a>控制对索引的访问
 
 在 Azure 认知搜索中，单个索引不是安全对象。 对索引的访问权限是在服务层连同操作上下文一起确定的（根据提供哪个 API 密钥来确定读取还是写入访问）。
 
-对于只读访问，可以构建要使用[查询密钥](search-security-rbac.md)连接的查询请求，并包括由应用使用的特定索引。 在查询请求中，没有联接索引或同时访问多个索引的概念，所有请求都会根据定义以单个索引为目标。 因此，查询请求本身的结构（密钥加上单个目标索引）定义了安全边界。
+对于只读访问，可以构建要使用[查询密钥](search-security-api-keys.md)连接的查询请求，并包括由应用使用的特定索引。 在查询请求中，没有联接索引或同时访问多个索引的概念，所有请求都会根据定义以单个索引为目标。 因此，查询请求本身的结构（密钥加上单个目标索引）定义了安全边界。
 
-管理员和开发人员对索引的访问权限没有区别：两者都需要写访问权限才能创建、删除和更新服务管理的对象。 拥有服务的[管理员密钥](search-security-rbac.md)的任何人都可以读取、修改或删除同一服务中的任何索引。 为了防止意外删除或恶意删除索引，代码资产的内部源代码管理作为一种补救机制，可以还原意外的索引删除或修改。 Azure 认知搜索在群集中提供故障转移功能来确保可用性，但它不会存储或执行用于创建或加载索引的专属代码。
+管理员和开发人员对索引的访问权限没有区别：两者都需要写访问权限才能创建、删除和更新服务管理的对象。 拥有服务的[管理员密钥](search-security-api-keys.md)的任何人都可以读取、修改或删除同一服务中的任何索引。 为了防止意外删除或恶意删除索引，代码资产的内部源代码管理作为一种补救机制，可以还原意外的索引删除或修改。 Azure 认知搜索在群集中提供故障转移功能来确保可用性，但它不会存储或执行用于创建或加载索引的专属代码。
 
 需要索引级安全边界的多租户解决方案通常包含一个中间层，客户可以使用它来处理索引隔离。 有关多租户用例的详细信息，请参阅[多租户 SaaS 应用程序与 Azure 认知搜索的设计模式](search-modeling-multitenant-saas-applications.md)。
 
@@ -107,7 +128,7 @@ ms.locfileid: "110786784"
 
 服务管理操作通过 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 获得授权。 Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/management/overview.md)构建的授权系统，用于预配 Azure 资源。 
 
-在 Azure 认知搜索中，资源管理器用于创建或删除服务，管理 API 密钥，以及缩放服务。 因此，Azure 角色分配将确定哪些用户可以执行那些任务，而不考虑他们是使用[门户](search-manage.md)、[PowerShell](search-manage-powershell.md) 还是[管理 REST API](/rest/api/searchmanagement/search-howto-management-rest-api)。
+在 Azure 认知搜索中，资源管理器用于创建或删除服务，管理 API 密钥，以及缩放服务。 因此，Azure 角色分配将确定哪些用户可以执行那些任务，而不考虑他们是使用[门户](search-manage.md)、[PowerShell](search-manage-powershell.md) 还是[管理 REST API](/rest/api/searchmanagement)。
 
 为搜索服务管理定义了[三个基本角色](search-security-rbac.md)。 可以使用任何受支持的方法（门户、PowerShell，等等）来完成角色分配，并且角色分配是在服务范围内执行的。 所有者和参与者角色可执行许多管理功能。 你可以将读取者角色分配给只查看基本信息的用户。
 
@@ -169,6 +190,12 @@ Azure 认知搜索参与定期审核，并且已经在公有云和 Azure 政府�
 Azure Policy 是 Azure 中内置的一项功能，可帮助你管理对多个标准（包括 Azure 安全基准的标准）的符合性。 对于众所周知的基准，Azure Policy 提供了内置定义，这些定义既提供了标准，又提供了解决非符合性的可操作响应。
 
 对于 Azure 认知搜索，当前有一个内置定义。 它用于诊断日志记录。 使用此内置功能，你可以分配一个策略来标识缺少诊断日志记录的任何搜索服务，然后将其启用。 有关详细信息，请参阅 [Azure 认知搜索的 Azure Policy 法规符合性控制](security-controls-policy.md)。
+
+## <a name="watch-this-video"></a>观看此视频
+
+请观看这段快节奏的视频，以便大致了解安全体系结构和每个功能类别。
+
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
 
 ## <a name="see-also"></a>另请参阅
 

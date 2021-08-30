@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: cfd57c60c4bfd60976eb28822c696412cabda212
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 08/03/2021
+ms.openlocfilehash: 5bf02173d105ab81807bdc4ee68e3b8f9bc8e0a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023794"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746320"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-limits-and-limitations"></a>Azure Database for PostgreSQL - 超大规模 (Citus) 的限制
 
@@ -23,45 +23,23 @@ ms.locfileid: "107023794"
 每个 PostgreSQL 连接（即使是空闲连接）都至少使用 10 MB 的内存，因此，必须限制同步连接的数量。 我们选择使用以下限制来保证节点正常运行：
 
 * 协调器节点
-   * 最大连接数：300
-   * 最大用户连接数：297
+   * 最大连接数
+       * 0-3 个 vCore：300
+       * 4-15 个 vCore：500
+       * 16 个以上的 vCore：1000
+   * 最大用户连接数
+       * 0-3 个 vCore：297
+       * 4-15 个 vCore：497
+       * 16 个以上的 vCore：997
 * 工作器节点
-   * 最大连接数：600
-   * 最大用户连接数：597
-
-> [!NOTE]
-> 在启用了[预览功能](hyperscale-preview-features.md)的服务器组中，对协调器的连接限制略有不同：
->
-> * 协调器节点最大连接数
->    * 0-3 个 vCore：300
->    * 4-15 个 vCore：500
->    * 16 个以上的 vCore：1000
+   * 最大连接数
+       * 600
 
 超出这些限制后，连接尝试将失败并提示错误。 系统会保留三个连接以用于监视节点，这就是用户查询可用的连接数比总连接数少三个的原因。
 
 ### <a name="connection-pooling"></a>连接池
 
-建立新连接需要时间。 这会对多数应用程序产生不利影响，因为这些应用程序会请求建立很多短时的连接。 建议使用连接池程序，既可以减少空闲事务，又可以重用现有连接。 要了解详细信息，请访问[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)。
-
-你可以运行自己的连接池程序，也可以使用 Azure 托管的 PgBouncer。
-
-#### <a name="managed-pgbouncer-preview"></a>托管的 PgBouncer（预览版）
-
-> [!IMPORTANT]
-> 超大规模 (Citus) 中的托管 PgBouncer 连接池程序当前处于预览阶段。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
->
-> 请参阅[超大规模 (Citus) 的预览功能](hyperscale-preview-features.md)，以查看其他新功能的完整列表。
-
-使用 PgBouncer 之类的连接池程序时，可以一次性将更多客户端连接到协调器节点。 应用程序连接到池程序，池程序将命令中继到目标数据库。
-
-当客户端通过 PgBouncer 连接时，可在数据库中主动运行的连接数不变。 相反，PgBouncer 会将超出的连接排入队列，并在数据库准备就绪时运行这些连接。
-
-超大规模 (Citus) 现在为服务器组提供 PgBouncer 托管实例（预览版）。 它支持多达 2,000 个客户端同时连接。
-若要通过 PgBouncer 连接，请按照以下步骤操作：
-
-1. 在 Azure 门户中转到相应服务器组的“连接字符串”页。
-2. 启用“PgBouncer 连接字符串”复选框。 （列出的连接字符串将发生更改。）
-3. 将客户端应用程序更新为使用新的字符串进行连接。
+可以使用[连接池](concepts-hyperscale-connection-pool.md)进一步缩放连接。 超大规模 (Citus) 提供一种托管 pgBouncer 连接池程序，配置为可同时具有最多 2000 个客户端连接。
 
 ## <a name="storage-scaling"></a>存储缩放
 
@@ -99,4 +77,5 @@ ms.locfileid: "107023794"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[在门户中创建超大规模 (Citus) 服务器组](quickstart-create-hyperscale-portal.md)。
+* 了解如何[在门户中创建超大规模 (Citus) 服务器组](quickstart-create-hyperscale-portal.md)。
+* 了解如何启用[连接池](concepts-hyperscale-connection-pool.md)。

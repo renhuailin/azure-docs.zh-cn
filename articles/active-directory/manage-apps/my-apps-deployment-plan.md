@@ -2,25 +2,26 @@
 title: 计划 Azure Active Directory 我的应用配置
 description: 在组织中有效使用“我的应用”的计划指南。
 services: active-directory
-author: barbaraselden
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/29/2020
-ms.author: baselden
-ms.openlocfilehash: 8cf1a671eeb4861919a389b02f45fee998d880e3
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 07/25/2021
+ms.author: davidmu
+ms.reviewer: lenalepa
+ms.openlocfilehash: 36da44521169c516888489bd0ac60015adcc432f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317210"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733670"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>计划 Azure Active Directory 我的应用配置
 
 > [!NOTE]
-> 本文面向需要计划其组织的“我的应用”门户配置的 IT 专业人员。 
+> 本文面向需要计划其组织的“我的应用”门户配置的 IT 专业人员。
 >
 > 有关最终用户文档，请参阅[从“我的应用”门户登录和启动应用](../user-help/my-apps-portal-end-user-access.md)。
 
@@ -30,17 +31,16 @@ Azure Active Directory (Azure AD) 我的应用是一个基于 Web 的门户，�
 
 ## <a name="why-configure-my-apps"></a>为何需配置“我的应用”
 
-“我的应用”门户在默认情况下可供用户使用，无法关闭。 需要对它进行配置，以便用户尽可能获得最佳体验，并且门户始终有用，这十分重要。 
+“我的应用”门户在默认情况下可供用户使用，无法关闭。 需要对它进行配置，以便用户尽可能获得最佳体验，并且门户始终有用，这十分重要。
 
 当同时满足以下两个条件时，Azure Active Directory 企业应用程序列表中的任何应用程序都会出现：
 
-* 应用的可见性属性设置为 true。 
+* 应用的可见性属性设置为 true。
 
 * 应用被分配给任何用户或组。 它会向分配的用户进行显示。
 
 配置该门户可确保正确的人员可以轻松找到正确的应用。
 
- 
 ### <a name="how-is-the-my-apps-portal-used"></a>如何使用“我的应用”门户？
 
 用户可访问“我的应用”门户，以便：
@@ -69,11 +69,9 @@ Azure Active Directory (Azure AD) 我的应用是一个基于 Web 的门户，�
 
 * “我的应用”上显示的公司品牌打造
 
- 
-
 ## <a name="plan-consent-configuration"></a>计划同意配置
 
-### <a name="user-consent-for-applications"></a>用户同意应用程序 
+### <a name="user-consent-for-applications"></a>用户同意应用程序
 
 用户或管理员必须授予应用程序权限，然后用户才能够登录应用程序，应用程序才能够访问组织的数据。 你可以配置是否允许用户同意，以及在哪些条件下允许。 **Microsoft 建议你只允许用户同意已验证的发布者提供的应用程序。**
 
@@ -81,7 +79,7 @@ Azure Active Directory (Azure AD) 我的应用是一个基于 Web 的门户，�
 
 ### <a name="group-owner-consent-for-apps-accessing-data"></a>组所有者同意应用访问数据
 
-组和团队所有者可授权应用程序（如第三方供应商发布的应用程序）访问你的组织中与组关联的数据。 若要了解详细信息，请参阅 [Microsoft Teams 中的资源特定同意](/microsoftteams/resource-specific-consent)。 
+组和团队所有者可授权应用程序（如第三方供应商发布的应用程序）访问你的组织中与组关联的数据。 若要了解详细信息，请参阅 [Microsoft Teams 中的资源特定同意](/microsoftteams/resource-specific-consent)。
 
 你可以配置是要允许还是禁用此功能。
 
@@ -97,13 +95,11 @@ Azure Active Directory (Azure AD) 我的应用是一个基于 Web 的门户，�
 
 Microsoft 为“我的应用”提供了[用于电子邮件和其他通信的可自定义模板](https://aka.ms/APTemplates)。 你可以根据企业文化调整这些资产，以便在其他通信渠道中使用。
 
- 
-
 ## <a name="plan-your-sso-configuration"></a>计划 SSO 配置
 
 最好在“我的应用”门户中为所有应用启用 SSO，以便用户可获得无缝体验，无需输入其凭据。
 
-Azure AD 支持多种 SSO 选项。 
+Azure AD 支持多种 SSO 选项。
 
 * 若要了解详细信息，请参阅 [Azure AD 中的单一登录选项](sso-options.md)。
 
@@ -111,16 +107,16 @@ Azure AD 支持多种 SSO 选项。
 
 ### <a name="use-federated-sso-if-possible"></a>在可能的情况下使用联合 SSO
 
-若要获得“我的应用”页所提供的最佳用户体验，请首先集成可用于联合 SSO（OpenID Connect 或 SAML）的云应用程序。 联合 SSO 使用户可以在应用启动图面上获得一致的一键式体验，并且在配置控制方面更可靠。
+若要获得“我的应用”页所提供的最佳用户体验，请首先集成可用于联合身份验证单一登录 (SSO)（如 OpenID Connect 或 SAML）的云应用程序。 通过联合身份验证 SSO，用户可在登录应用程序时获得一致的一键式体验，并在配置控制方面更可靠。
 
-有关如何针对 SSO 配置服务型软件 (SaaS) 应用程序的详细信息，请参阅 [SaaS SSO 部署计划]../Desktop/plan-sso-deployment.md)。
+若要详细了解如何为应用程序配置单一登录，请参阅[计划单一登录部署](plan-sso-deployment.md)。
 
 ### <a name="considerations-for-special-sso-circumstances"></a>特殊 SSO 情况的注意事项
 
 > [!TIP]
 > 若要获得更好的用户体验，请在应用程序支持时将联合 SSO 与 Azure AD (OpenID Connect/SAML) 结合使用，而不是使用基于密码的 SSO 和 ADFS。
 
-若要登录基于密码的 SSO 应用程序，或是 Azure AD 应用程序代理访问的应用程序，用户需要安装并使用“我的应用”安全登录扩展。 当用户首次启动基于密码的 SSO 或应用程序代理应用程序时，系统会提示用户安装该扩展。 
+若要登录基于密码的 SSO 应用程序，或是 Azure AD 应用程序代理访问的应用程序，用户需要安装并使用“我的应用”安全登录扩展。 当用户首次启动基于密码的 SSO 或应用程序代理应用程序时，系统会提示用户安装该扩展。
 
 ![屏幕截图](./media/my-apps-deployment-plan/ap-dp-install-myapps.png)
 
@@ -138,7 +134,7 @@ Azure AD 支持多种 SSO 选项。
 
 #### <a name="plan-for-mobile-access"></a>计划移动访问
 
-对于使用基于密码的 SSO 的应用程序，或是使用 [Microsoft Azure AD 应用程序代理](../app-proxy/application-proxy.md)进行访问的应用程序，必须使用 Microsoft Edge 移动版。 对于其他应用程序，可以使用任何移动浏览器。 
+对于使用基于密码的 SSO 的应用程序，或是使用 [Microsoft Azure AD 应用程序代理](../app-proxy/application-proxy.md)进行访问的应用程序，必须使用 Microsoft Edge 移动版。 对于其他应用程序，可以使用任何移动浏览器。
 
 ### <a name="linked-sso"></a>链接 SSO
 
@@ -150,7 +146,7 @@ Azure AD 支持多种 SSO 选项。
 
 ### <a name="plan-my-apps-collections"></a>计划“我的应用”集合
 
-用户有权访问的每个 Azure AD 应用程序都会出现在“我的应用”上的“所有应用”集合中。 可使用集合将相关应用程序组合在一起，将它们显示在单独的选项卡上，使其更易于找到。 例如，可以使用集合为特定作业角色、任务、项目等创建应用程序的逻辑分组。 
+用户有权访问的每个 Azure AD 应用程序都会出现在“我的应用”上的“应用”集合中。 可使用集合将相关应用程序组合在一起，将它们显示在单独的选项卡上，使其更易于找到。 例如，可以使用集合为特定作业角色、任务、项目等创建应用程序的逻辑分组。
 
 最终用户还可以通过以下方式自定义其体验
 
@@ -163,19 +159,19 @@ Azure AD 支持多种 SSO 选项。
 有一个选项可用于在“我的应用”门户中隐藏应用，同时仍允许从其他位置（如 Microsoft 365 门户）进行访问。 了解详细信息：[使应用程序不出现在用户在 Azure Active Directory 中的体验中](hide-application-from-user-portal.md)。
 
 > [!IMPORTANT]
-> 通过“我的应用”只能访问 950 个用户有权访问的应用。 这包括用户或管理员隐藏的应用。 
+> 通过“我的应用”只能访问 950 个用户有权访问的应用。 这包括用户或管理员隐藏的应用。
 
 ### <a name="plan-self-service-group-management-membership"></a>计划自助服务组管理成员身份
 
 可以在 Azure AD 中允许用户创建和管理他们自己的安全组或 Microsoft 365 组。 组的所有者可以批准或拒绝成员身份请求，并委托对组成员身份的控制。 自助服务组管理功能不可用于启用了邮件的安全组或通讯组列表。
 
-若要计划自助服务组成员身份，请确定是允许组织中的所有用户创建和管理组，还是只允许部分用户。 如果允许部分用户，则需要设置在其中添加这些人员的组。 
+若要计划自助服务组成员身份，请确定是允许组织中的所有用户创建和管理组，还是只允许部分用户。 如果允许部分用户，则需要设置在其中添加这些人员的组。
 
 有关启用这些方案的详细信息，请参阅[在 Azure Active Directory 中设置自助服务组管理](../enterprise-users/groups-self-service-management.md)。
 
 ### <a name="plan-self-service-application-access"></a>计划自助服务应用程序访问
 
-可以允许用户通过“我的应用”面板发现应用程序并请求访问应用程序。 为此，必须首先 
+可以允许用户通过“我的应用”面板发现应用程序并请求访问应用程序。 为此，必须首先
 
 * 启用自助服务组管理
 
@@ -196,7 +192,6 @@ Azure AD 提供[可提供技术和业务见解的报告]../reports-monitoring/ov
 | 报表类型| 应用程序权限和使用情况| 帐户设置活动| 查看访问应用程序的人员 |
 | 可能的操作| 审核访问权限；撤销权限| 修正任何预配错误| “撤销访问权限” |
 
-
 Azure AD 将大部分审核数据保留 30 天。 数据通过 Azure 管理门户或 API 提供，可供你下载到分析系统中。
 
 #### <a name="auditing"></a>审核
@@ -213,7 +208,6 @@ Azure AD 将大部分审核数据保留 30 天。 数据通过 Azure 管理门�
 
 #### <a name="application-sso-access-test-case-examples"></a>应用程序 SSO 访问测试用例示例：
 
-
 | 业务案例| 预期结果 |
 | - | - |
 | 用户登录“我的应用”门户| 用户可以登录并看到其应用程序 |
@@ -223,15 +217,12 @@ Azure AD 将大部分审核数据保留 30 天。 数据通过 Azure 管理门�
 | 用户从 Microsoft 365 门户启动应用| 用户自动登录应用程序 |
 | 用户从 Managed Browser 启动应用| 用户自动登录应用程序 |
 
-
 #### <a name="application-self-service-capabilities-test-case-examples"></a>应用程序自助服务功能测试用例示例
-
 
 | 业务案例| 预期结果 |
 | - | - |
 | 用户可以管理应用程序的成员身份| 用户可以添加/删除有权访问应用的成员 |
 | 用户可以编辑应用程序| 用户可以为密码 SSO 应用程序编辑应用程序描述和凭据 |
-
 
 ### <a name="rollback-steps"></a>回滚步骤
 
@@ -248,7 +239,6 @@ Azure AD 将大部分审核数据保留 30 天。 数据通过 Azure 管理门�
 | 应用程序管理员| 在应用程序中进行用户证明，为用户配置权限| 无 |
 | 基础结构管理员| 证书滚动更新所有者| 全局管理员 |
 | 企业主/利益干系人| 在应用程序中进行用户证明，为用户配置权限| 无 |
-
 
 可用使用 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 管理角色，以便为具有目录权限的用户提供其他的审核、控制和访问评审。
 

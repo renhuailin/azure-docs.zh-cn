@@ -9,14 +9,14 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 0f3f9e7f4566800bdea6871cae1c5bafb3b37b95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a00475eacdeb741eca20d4a6c43282df9cfd17d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90934349"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741454"
 ---
-# <a name="supported-versions-of-postgres-with-azure-arc-enabled-postgresql-hyperscale"></a>将支持的 Postgres 版本与已启用 Azure Arc 的 PostgreSQL 超大规模配合使用
+# <a name="supported-versions-of-postgres-with-azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc 的超大规模 PostgreSQL 支持的 Postgres 版本
 
 本文介绍可在已启用 Azure Arc 的超大规模 PostgreSQL 中使用的 Postgres 版本。
 受支持版本的列表会不断变化。 目前，支持的主版本如下：
@@ -33,7 +33,7 @@ ms.locfileid: "90934349"
 ## <a name="how-to-create-a-particular-version-in-azure-arc-enabled-postgresql-hyperscale"></a>如何在已启用 Azure Arc 的超大规模 PostgreSQL 中创建特定的版本？
 创建时，可以通过传递 --engine-version 参数来指示要创建的版本。 如果不指示版本信息，则默认会创建 Postgres 版本 12 的服务器组。
 
-## <a name="how-do-be-notified-when-other-versions-are-available"></a>如何在其他版本可用时收到通知？
+## <a name="how-can-i-be-notified-when-other-versions-are-available"></a>如何在其他版本可用时收到通知？
 请回头阅读本文。 本文的内容会相应地更新。 也可以在 Kubernetes 群集上的 Arc 数据控制器中列出自定义资源定义 (CRD) 的类型。
 运行以下命令：
 ```console

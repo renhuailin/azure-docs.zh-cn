@@ -3,12 +3,12 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置客户端审核虚拟机内部的设置。
 ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 80de6651d59b26b596633b8ba775c774dcfea62e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6ecfd3fd9f426676fe0b5c9a69af26b1245b7824
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970338"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742287"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -72,8 +72,10 @@ Azure Policy 可以审核计算机内部的设置，包括在 Azure 中运行的
 |Microsoft|Windows Server|2012 - 2019|
 |Microsoft|Windows 客户端|Windows 10|
 |OpenLogic|CentOS|7.3 -8.x|
-|Red Hat|Red Hat Enterprise Linux|7.4 - 8.x|
+|Red Hat|Red Hat Enterprise Linux\*|7.4 - 8.x|
 |SUSE|SLES|12 SP3-SP5、15.x|
+
+\* 不支持 Red Hat CoreOS。
 
 来宾配置策略定义支持自定义虚拟机映像，只要它们是上表中的操作系统之一。
 
@@ -85,7 +87,7 @@ Azure Arc 计算机使用本地网络基础结构连接到 Azure 服务并报告
 
 ### <a name="communicate-over-virtual-networks-in-azure"></a>通过 Azure 中的虚拟网络进行通信
 
-要与 Azure 中的来宾配置资源提供程序通信，计算机需要对端口 **443** 上的 Azure 数据中心进行出站访问。 如果 Azure 中的网络不允许出站流量，请使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置异常。 [服务标记](../../../virtual-network/service-tags-overview.md)“AzureArcInfrastructure”可用于引用访客配置服务，而不必手动维护 Azure 数据中心的 [IP 范围列表](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。
+要与 Azure 中的来宾配置资源提供程序通信，计算机需要对端口 **443** 上的 Azure 数据中心进行出站访问。 如果 Azure 中的网络不允许出站流量，请使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置异常。 通过[服务标记](../../../virtual-network/service-tags-overview.md)“AzureArcInfrastructure”和“Storage”，可引用来宾配置和存储服务，而不必手动维护 Azure 数据中心的 [IP 范围列表](https://www.microsoft.com/download/details.aspx?id=56519)。 这两个标记都是必需的，因为来宾配置内容包由 Azure 存储托管。
 
 ### <a name="communicate-over-private-link-in-azure"></a>通过 Azure 中的专用链接通信
 
@@ -167,6 +169,11 @@ Azure Policy 中的某个计划会按照“基线”审核操作系统设置。 
 考虑高可用性应用程序的体系结构时，尤其是在负载均衡器解决方案后面的[可用性集](../../../virtual-machines/availability.md#availability-sets)中预配虚拟机以提供高可用性时，最佳做法是将具有相同参数的相同策略定义分配到解决方案中的所有计算机。 如果可能，跨所有计算机的单个策略分配将提供最少的管理开销。
 
 对于受 [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) 保护的计算机，请确保辅助站点中的计算机与主站点中的计算处于使用相同参数值的相同定义的 Azure Policy 分配范围内。
+
+## <a name="data-residency"></a>数据驻留
+
+来宾配置会存储/处理客户数据。 客户数据默认复制到[配对区域。](../../../best-practices-availability-paired-regions.md)
+对于单个驻留区域，所有客户数据都将在该区域中进行存储和处理。
 
 ## <a name="troubleshooting-guest-configuration"></a>来宾配置故障排除
 

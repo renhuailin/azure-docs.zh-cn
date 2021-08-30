@@ -13,32 +13,34 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 06/11/2021
+ms.date: 07/09/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c29b631d3002f0c79fb2dd1b1f26dfa65051368c
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 482008cf163d7b85e049b6494e048a8a2f04d6e2
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018940"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287604"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>将 Azure AD 日志与 Azure Monitor 日志集成
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+按照本文中的步骤将 Azure Active Directory (Azure AD) 日志与 Azure Monitor 集成。
 
-使用 Azure Monitor 日志可以跨各种数据源查询数据以查找特定事件、分析趋势和执行关联。 通过将 Azure AD 活动日志与 Azure Monitor 日志集成，你现在可以执行以下任务：
+通过在 Azure Monitor 日志中使用 Azure AD 活动日志集成来执行如下任务：
 
- * 比较 Azure AD 登录日志与 Azure 安全中心发布的安全日志
+ * 比较 Azure AD 登录日志与 Azure 安全中心发布的安全日志。
+  
+ * 通过从 Azure Application Insights 关联应用程序性能数据，可以解决应用程序登录页上的性能瓶颈。
 
- * 通过从 Azure Application Insights 关联应用程序性能数据，可以解决应用程序登录页上的性能瓶颈。  
+ * 分析标识保护风险用户和风险检测日志，以检测环境中的威胁（公共预览版）
+ 
+ * 识别来自那些使用 Active Directory 身份验证库 (ADAL) 进行身份验证的应用程序的登录。 [ADAL 即将结束支持](../develop/msal-migration.md)。
 
-Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monitor 日志用于 Azure AD 日志的优点。
+此 Microsoft Ignite 会话视频介绍在实际场景中将 Azure Monitor 日志用于 Azure AD 日志的优点：
 
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
-
-本文介绍如何将 Azure Active Directory (Azure AD) 日志与 Azure Monitor 集成。
 
 ## <a name="supported-reports"></a>支持的报表
 
@@ -47,12 +49,11 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 * **审核日志**：可以通过 [审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
 * **登录日志**：可以通过 [登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
 * 预配日志：借助[预配日志](../app-provisioning/application-provisioning-log-analytics.md)，可以监视已在所有第三方应用程序中创建、更新和删除的用户。 
+* **风险用户日志（公共预览版）** ：使用[风险用户日志](../identity-protection/howto-identity-protection-investigate-risk.md#risky-users)，可以监视用户风险级别和修正活动的变化。 
+* **风险检测日志（公共预览版）** ：使用[风险检测日志](../identity-protection/howto-identity-protection-investigate-risk.md#risk-detections)，可以监视用户的风险检测情况，并分析在组织中检测到的风险活动趋势。 
 
-> [!NOTE]
-> 目前不支持 B2C 相关的审核和登录活动日志。
->
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 
 若要使用此功能，需满足以下条件:
 
@@ -79,9 +80,16 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 
 4. 选择要将日志发送到的 Log Analytics 工作区，或在提供的对话框中创建新的工作区。  
 
-5. 执行下列两项操作或之一：
+5. 执行以下任何或所有操作：
     * 若要将审核日志发送到 Log Analytics 工作区，请选中“AuditLogs”复选框。 
     * 若要将登录日志发送到 Log Analytics 工作区，请选中“SignInLogs”复选框。
+    * 要将非交互式用户登录日志发送到 Log Analytics 工作区，请选中 NonInteractiveUserSignInLogs 复选框。
+    * 要将服务主体登录日志发送到 Log Analytics 工作区，请选中 ServicePrincipleSignInLogs 复选框。
+    * 要将托管标识登录日志发送到 Log Analytics 工作区，请选中 ManagedIdentitySignInLogs 复选框。
+    * 要将预配日志发送到 Log Analytics 工作区，请选中 ProvisioningLogs 复选框。
+    * 要将 Active Directory 联合身份验证服务 (ADFS) 登录日志发送到 Log Analytics 工作区，请选择 ADFSSignInLogs。
+    * 要将风险用户日志发送到 Log Analytics 工作区，请选中 RiskyUsers 复选框。 （公共预览版）
+    * 要将风险检测日志发送到 Log Analytics 工作区，请选中 UserRiskEvents 复选框。 （公共预览版）
 
 6. 选择“保存”，保存设置。
 

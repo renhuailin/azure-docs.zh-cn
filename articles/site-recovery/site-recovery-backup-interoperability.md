@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: sideeksh
-ms.openlocfilehash: c334eee34eb878135d3d81ab15d03618c6604846
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f96ba97537763bb4aec0ce558a12d675369ad57
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86135171"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113567751"
 ---
 # <a name="support-for-using-site-recovery-with-azure-backup"></a>支持将 Site Recovery 与 Azure 备份配合使用
 
@@ -25,4 +25,4 @@ ms.locfileid: "86135171"
 磁盘还原 | 目前不支持 | 如果还原已备份的磁盘，则需要再次禁用并重新启用 VM 的复制。
 **VM 还原** | 目前不支持 | 如果还原一个 VM 或一组 VM，则需要禁用并重新启用 VM 的复制。  
 
-
+请注意，上表适用于所有受支持的 Azure Site Recovery 方案。

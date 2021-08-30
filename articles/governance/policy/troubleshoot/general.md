@@ -1,14 +1,14 @@
 ---
 title: 排查常见错误
 description: 了解如何排查为 Kubernetes 创建策略定义、各种 SDK 和加载项时遇到的问题。
-ms.date: 04/19/2021
+ms.date: 06/29/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6f369b16755c09468dbdae2076cc7828a53c8a17
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 45c5b420ddd4eab70e381f31e7c46eeeb380b2b5
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752158"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113087083"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>排查使用 Azure Policy 时出现的错误
 
@@ -142,6 +142,20 @@ The policy definition '{0}' targets multiple resource types, but the policy rule
 #### <a name="resolution"></a>解决方法
 
 如果使用了别名，请确保该别名只针对其所属的资源类型进行评估，方法是在它前面添加一个类型条件。 一种替代方法是将策略定义拆分为多个定义，以避免针对多个资源类型。
+
+### <a name="scenario-subscription-limit-exceeded"></a>场景：超出订阅限制
+
+#### <a name="issue"></a>问题
+
+当检索策略分配的合规性时，Azure 门户中的“合规性”页面上会显示一条错误消息。
+
+#### <a name="cause"></a>原因
+
+请求中选定范围内的订阅数超出了 5000 个订阅这一限制。 可能仅会显示部分合规性结果。
+
+#### <a name="resolution"></a>解决方案
+
+若要查看完整结果，选择具有更少子订阅的更精细的范围。
 
 ## <a name="template-errors"></a>模板错误
 

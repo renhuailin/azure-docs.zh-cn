@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/12/2020
 ms.author: jgardner
-ms.openlocfilehash: d58d9ab48fa16fb5258f097ed4567e539e21c72c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cbdc2a43cc4fa3ce18a2ede52a115fd6de580c5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100607636"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471572"
 ---
 # <a name="move-an-azure-workbook-to-another-region"></a>将 Azure 工作簿移动到另一个区域
 
@@ -25,7 +25,7 @@ ms.locfileid: "100607636"
 
 * 确保目标区域支持工作簿。
 
-* 这些说明适用于在 Azure Monitor 和大多数资源类型上保存的共享工作簿 (`microsoft.insights/workbooks`) 和专用工作簿 (`microsoft.insights/myworkbooks`)。
+* 这些说明适用于保存在 Azure Monitor 中的工作簿 (`microsoft.insights/workbooks`) 和大多数资源类型。
 
   但是，对于专门链接到 Application Insights 资源类型的工作簿，这些工作簿存储在保存 Application Insights 资源的 Azure 区域中。
 

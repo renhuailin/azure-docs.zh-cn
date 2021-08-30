@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/24/2019
+ms.date: 08/12/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 51194dbcdfd967a40da96842cf58d373fd28f96f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 04dde4560a9b03208d4c0f234d475ddce7265343
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468281"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860870"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理配置自定义域
 
@@ -40,11 +40,13 @@ ms.locfileid: "110468281"
 
 有几种方法来设置 DNS 配置，具体取决于你的需求：
 
+
 ### <a name="same-internal-and-external-url-different-internal-and-external-behavior"></a>内部和外部 URL 相同，但内部和外部行为不同 
 
 如果不希望通过应用程序代理来定向内部用户，可设置“拆分式 DNS”。 拆分式 DNS 基础结构会将内部主机定向到内部域名称服务器，将外部主机定向到外部域名称服务器以进行名称解析。 
 
 ![拆分式 DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
+
 
 ### <a name="different-internal-and-external-urls"></a>内部和外部 URL 不同 
 
@@ -107,6 +109,9 @@ ms.locfileid: "110468281"
    ![添加 CNAME DNS 条目](./media/application-proxy-configure-custom-domain/dns-info.png)
    
 10. 按照[使用 Azure 门户管理 DNS 记录和记录集](../../dns/dns-operations-recordsets-portal.md)中的说明，添加将新的外部 DNS 重定向到 msappproxy.net 域的 DNS 记录。
+
+   > [!IMPORTANT] 
+   > 确保正确使用指向 msappproxy.net 域的 CNAME 记录。 不要将记录指向 IP 地址或服务器 DNS 名称，因为这些项不是静态的，可能会影响服务的复原能力。
    
 11. 要检查 DNS 记录是否配置正确，请使用 [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) 命令来确认你的外部 URL 可供访问并且 msapproxy.net 域显示为别名。
 

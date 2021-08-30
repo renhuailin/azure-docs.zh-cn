@@ -1,14 +1,14 @@
 ---
 title: 获取策略符合性数据
 description: Azure Policy 的评估和效果确定了符合性。 了解如何获取 Azure 资源的符合性详细信息。
-ms.date: 04/19/2021
+ms.date: 06/29/2021
 ms.topic: how-to
-ms.openlocfilehash: fcc82e2f86746f68000e9cfcafedf2d7b8b3105d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 547128d56eb2577a416ad2dae419d58ffe8b645b
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733560"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113038365"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -196,7 +196,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 - **未启动**：尚未针对策略或资源启动评估周期。
 - **未注册**：尚未注册 Azure Policy 资源提供程序，或者登录的帐户无权读取符合性数据。
 
-Azure Policy 使用定义中的“类型”、“名称”或“种类”字段来确定资源是否是匹配项  。 如果资源匹配，则会被视为适用，并且其状态为“符合”、“不符合”或“豁免”  。 如果“类型”、“名称”或“种类”是定义中的唯一属性，则所有已包含的未豁免资源都会被视为适用并会接受评估  。
+Azure Policy 使用定义中的“类型”、“名称”或“种类”字段来确定资源是否是匹配项  。 如果资源匹配，则会被视为适用，并且其状态为“符合”、“不符合”或“豁免”  。 如果“名称”或“种类”是定义中的唯一属性，则所有已包含的未豁免资源都会被视为适用并会接受评估 。
 
 符合性百分比由“符合”资源与“豁免”资源之和与总资源之比来确定 。 根据定义，总资源是指“符合”、“不符合”、“豁免”以及“冲突”资源的总和   。 总体符合性数值是“符合”的或“豁免”的非重复资源之和与所有非重复资源之和的比值 。 在下图中，有 20 种不同的资源适用，只有一种资源“不合规”。
 因此，资源的整体符合性为 95%（19/20）。

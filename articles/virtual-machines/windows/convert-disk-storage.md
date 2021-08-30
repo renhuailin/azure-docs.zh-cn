@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/13/2021
 ms.author: albecker
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2b0ac2750515c8a61674b695e0faf3fd54ff7c6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 994b24110399057741b9f62f7ecf30a8a505fd6d
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670247"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181765"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>更新托管磁盘的存储类型
 
@@ -117,7 +117,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 3. 如果该 VM 未停止，请在 VM“概述”窗格的顶部选择“停止”，然后等待该 VM 停止。 
 4. 在 VM 对应的窗格中，从菜单中选择“磁盘”。
 5. 选择要转换的磁盘。
-6. 在菜单中选择“配置”。
+6. 从菜单选择“大小 + 性能”。
 7. 将“帐户类型”从原始磁盘类型更改为所需的磁盘类型。
 8. 选择“保存”并关闭磁盘窗格。
 

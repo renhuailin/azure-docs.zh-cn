@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 04/28/2020
+ms.date: 06/30/2021
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18aa1e49ad3f87ab3e222f250354c2bc5e2aca16
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93394724"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749082"
 ---
 # <a name="email-notifications-in-pim"></a>PIM 中的电子邮件通知
 
@@ -54,7 +54,7 @@ ms.locfileid: "93394724"
 | 安全管理员</br>（激活/符合条件） | 否 | 是* | 是 |
 | 全局管理员角色</br>（激活/符合条件） | 否 | 是* | 是 |
 
-\* 如果[“通知”设置](pim-how-to-change-default-settings.md#notifications)设置为“启用”。
+\* 如果[“通知”设置](pim-how-to-change-default-settings.md)设置为“启用”。
 
 下面显示了当用户激活虚构 Contoso 组织的 Azure AD 角色时发送的示例电子邮件。
 
@@ -66,16 +66,16 @@ Azure AD 角色的每周 Privileged Identity Management 摘要电子邮件将发
 
 ![Azure AD 角色的每周 Privileged Identity Management 摘要电子邮件](./media/pim-email-notifications/email-directory-weekly.png)
 
-电子邮件包括四个磁贴：
+电子邮件包括：
 
 | 磁贴 | 说明 |
 | --- | --- |
 | **已激活的用户** | 用户在组织内激活其符合条件角色的次数。 |
 | **永久用户** | 用户符合资格的分配被设定为永久分配的次数。 |
 | **Privileged Identity Management 中的角色分配** | 在 Privileged Identity Management 中为用户分配符合条件的角色的次数。 |
-| **PIM 之外的角色分配** | 在 Privileged Identity Management 外部（在 Azure AD 内部）为用户分配永久角色的次数。 |
+| **PIM 之外的角色分配** | 在 Privileged Identity Management 外部（在 Azure AD 内部）为用户分配永久角色的次数。 可以通过打开警报设置来启用或禁用此警报和随附的电子邮件。 |
 
-“热门角色概述”部分根据每个角色的永久和符合条件管理员的总数列出了组织中最热门的五个角色。 采取措施链接打开 [PIM 向导](pim-security-wizard.md)，可以将永久管理员批量转换为符合条件的管理员。
+“热门角色概述”部分根据每个角色的永久和符合条件管理员的总数列出了组织中最热门的五个角色。 “采取措施”链接会打开[发现与见解](pim-security-wizard.md)，你可以在其中将永久管理员成批转换为合格管理员。
 
 ## <a name="email-timing-for-activation-approvals"></a>激活审批的电子邮件发送时机
 
@@ -84,7 +84,7 @@ Azure AD 角色的每周 Privileged Identity Management 摘要电子邮件将发
 - 请求批准或拒绝用户的激活请求（由请求批准引擎发送）
 - 已批准用户请求（由请求批准引擎发送）
 
-此外，全局管理员和特权角色管理员每次审批会收到一封电子邮件：
+此外，全局管理员和特权角色管理员每次审批都会收到一封电子邮件：
 
 - 已激活用户角色（由 Privileged Identity Management 发送）
 

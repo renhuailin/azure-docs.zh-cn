@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 5/4/2021
-ms.openlocfilehash: c5413918923ebb4e613ecb48e86dbccfcc60889b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 8/12/2021
+ms.openlocfilehash: 56ed469843c78b299d0cec426eb490cedce1defe
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693284"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015471"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-基于 DTU 的购买模型中的服务层级根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 基于 DTU 的购买模型中的所有服务层级都提供了以最短[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)更改计算大小的灵活性；但是，在切换期间，与数据库的连接会短时间丢失，可以使用重试逻辑来缓解这种情况。 单一数据库和弹性池根据服务层级和计算大小按小时计费。
+基于 DTU 的购买模型中的服务层级根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 基于 DTU 的购买模型中的所有服务层级都提供了以最短[停机时间](https://azure.microsoft.com/support/legal/sla/azure-sql-database)更改计算大小的灵活性；但是，在切换期间，与数据库的连接会短时间丢失，可以使用重试逻辑来缓解这种情况。 单一数据库和弹性池根据服务层级和计算大小按小时计费。
 
 > [!IMPORTANT]
 > [Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)不支持基于 DTU 的购买模型。 
@@ -34,7 +34,7 @@ ms.locfileid: "110693284"
 
 选择服务层级首要考虑的是业务连续性、存储和性能需求。
 
-||基本|标准|高级|
+||基本|Standard|高级|
 | :-- | --: |--:| --:|
 |**目标工作负荷**|开发和生产|开发和生产|开发和生产|
 |**运行时间 SLA**|99.99%|99.99%|99.99%|
@@ -63,7 +63,7 @@ ms.locfileid: "110693284"
 
 单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的更多信息，请参阅[基于 DTU 的购买模型](purchasing-models.md#dtu-based-purchasing-model)。
 
-||基本|标准|高级|
+||基本|Standard|高级|
 | :-- | --: | --: | --: |
 | **最大存储大小** | 2 GB | 1 TB | 4 TB  |
 | **最大 DTU** | 5 | 3000 | 4000 |
@@ -178,6 +178,9 @@ ms.locfileid: "110693284"
 | 高级 |每秒事务数 |0\.5 秒时达到 95% |
 | 标准 |每分钟事务数 |1\.0 秒时达到 90% |
 | 基本 |每小时事务数 |2\.0 秒时达到 80% |
+
+> [!NOTE]
+> 响应时间指标特定于 [DTU 基准](#dtu-benchmark)。 其他工作负荷的响应时间取决于工作负荷并且会有所不同。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,14 +3,14 @@ title: Azure 自动化更新管理概述
 description: 本文概述了为 Windows 和 Linux 计算机实现更新的更新管理功能。
 services: automation
 ms.subservice: update-management
-ms.date: 06/07/2021
+ms.date: 06/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: 576bc21791d088a736044a0111c25dc97c57b059
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 0190d5501b95c0c70606978586edf30ff3d39b79
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854803"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112676601"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -149,6 +149,11 @@ sudo yum -q --security check-update
 当安排要在 Linux 计算机上运行的更新时（例如，配置为仅安装与“安全性”分类匹配的更新），安装的更新可能不同于与该分类匹配的更新，或者是与该分类匹配的更新的子集。 在评估待处理的 Linux 计算机 OS 更新时，“更新管理”使用 Linux 发行版供应商提供的[开放漏洞和评估语言](https://oval.mitre.org/) (OVAL) 文件进行分类。
 
 基于 OVAL 文件将 Linux 更新分类为“安全性”或“其他”，其中包括用于解决安全问题或漏洞的更新 。 但是，当运行更新计划时，会在 Linux 计算机上使用适当的包管理器（例如 YUM、APT 或 ZYPPER）安装更新。 Linux 发行版的包管理器可能具有不同的机制来对更新进行分类，其结果可能与更新管理从 OVAL 文件获得的结果有所不同。 若要通过包管理器手动检查计算机并了解哪些更新与安全性有关，请参阅 [Linux 更新部署故障排除](../troubleshoot/update-management.md#updates-linux-installed-different)。
+
+>[!NOTE]
+> 对于“更新管理”支持的 Linux 发行版，可能无法正常执行按更新分类来部署更新的操作。 这是由一个已确定的 OVAL 文件命名架构问题所导致的，这会导致“更新管理”无法正确根据筛选规则来匹配分类。 由于在安全更新评估中使用的逻辑不同，结果可能与部署期间应用的安全更新不同。 如果将分类设置为“严重”和“安全性”，更新部署会按预期工作 。 在评估期间，只有“更新的分类”会受到影响。
+>
+> Windows Server 计算机的更新管理不受影响；更新分类和部署保持不变。
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>将更新管理与 Configuration Manager 集成
 

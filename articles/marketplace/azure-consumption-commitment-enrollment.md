@@ -1,19 +1,19 @@
 ---
 title: Azure 使用量承诺注册 - Azure 市场
 description: 本文概述了 Microsoft Azure 使用量承诺 (MACC) 计划，如何查看产品/服务是否已注册 MACC 计划以及 MACC 的要求。
-author: mingshen-ms
-ms.author: mingshen
+author: posurnis
+ms.author: posurnis
 ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 06/03/2021
-ms.openlocfilehash: 55d3899630fe60b1b033bd21eeb65ab2050e57c0
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 07/27/2021
+ms.openlocfilehash: a3fe8707df1270f8571ad86fe07406376f71ab93
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756268"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743230"
 ---
 # <a name="azure-consumption-commitment-enrollment"></a>Azure 使用量承诺注册
 
@@ -21,13 +21,11 @@ ms.locfileid: "111756268"
 
 ## <a name="macc-program"></a>MACC 计划
 
-_Microsoft Azure 使用量承诺 (MACC)_ 计划适用于发布到 Azure 市场的[可交易产品/服务](marketplace-commercial-transaction-capabilities-and-considerations.md#transact-overview)。 凡是注册了此计划的可交易产品/服务，Azure 客户在其中的开销都将计入该组织的 Microsoft Azure 使用量承诺。
+_Microsoft Azure 使用量承诺 (MACC)_ 计划适用于发布到 Azure 市场的 [可交易产品/服务](marketplace-commercial-transaction-capabilities-and-considerations.md#transact-overview)。 此计划中登记的在 Azure 市场购买的可交易产品/服务都将计入组织的 Microsoft Azure 承诺使用量。
 
 ### <a name="requirements-for-an-offer-to-be-enrolled-in-macc"></a>产品/服务注册 MACC 需满足的要求
 
-产品/服务必须满足以下要求才能注册 MACC 计划。 对这些要求的例外请求将不予受理。
-
-若要注册 MACC，产品/服务必须满足以下要求：
+产品/服务必须满足以下要求才能注册 MACC 计划：
 
 - 可交易，并且价格计划大于 $0  
     > [!NOTE]
@@ -47,7 +45,7 @@ _Microsoft Azure 使用量承诺 (MACC)_ 计划适用于发布到 Azure 市场�
     ***图1：MACC 计划中注册的产品/服务***
 
 > [!NOTE]
-> 发布到 Azure 市场的产品/服务的 MACC 计划状态每周更新一次，在周一更新。 这意味着，如果发布满足 MACC 计划的资格要求的产品/服务，则在下个周一之前，“合作伙伴中心”中的状态将不会显示“已启用”状态。
+> 发布到 Azure 市场的产品/服务的 MACC 计划状态每周更新一次，在周一更新。 这意味着，如果发布了一个满足 MACC 计划资格要求的产品/服务，其在“合作伙伴中心”中的状态直到下一个周一时才会显示“已注册”状态。
 
 ## <a name="next-steps"></a>后续步骤
 

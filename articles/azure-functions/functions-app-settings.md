@@ -2,21 +2,21 @@
 title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
-ms.date: 09/22/2018
-ms.openlocfilehash: eb595d666641003c813573a70ab7365732e0a386
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 07/27/2021
+ms.openlocfilehash: 7275d81401444dffbe0917bdb72ba79100880749
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111983143"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862685"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
-函数应用中的应用设置包含对该函数应用的所有函数产生影响的全局配置选项。 在本地运行时，这些设置将作为本地[环境变量](functions-run-local.md#local-settings-file)进行访问。 本文列出可在函数应用中使用的应用设置。
+函数应用中的应用设置包含对该函数应用的所有函数产生影响的全局配置选项。 在本地运行时，这些设置将作为本地[环境变量](functions-develop-local.md#local-settings-file)进行访问。 本文列出可在函数应用中使用的应用设置。
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-[host.json](functions-host-json.md) 文件和 [local.settings.json](functions-run-local.md#local-settings-file) 文件中提供了其他全局配置选项。
+[host.json](functions-host-json.md) 文件和 [local.settings.json](functions-develop-local.md#local-settings-file) 文件中提供了其他全局配置选项。
 
 > [!NOTE]
 > 可以使用应用程序设置替代 host.json 设置值，而不必更改 host.json 文件本身。 这对于需要针对特定环境配置或修改特定 host.json 设置的方案很有用。 这也让你可以更改 host.json 设置，而不必重新发布项目。 若要了解详细信息，请参阅 [host.json 参考文章](functions-host-json.md#override-hostjson-values)。 如果更改函数应用设置，则需要重启函数应用。
@@ -46,7 +46,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 默认情况下，[Functions 代理](functions-proxies.md)使用快捷方式从代理直接将 API 调用发送到同一函数应用中的函数。 使用此快捷方式取代创建新的 HTTP 请求。 此设置让你能够禁用该快捷方式行为。
 
-|键|Value|说明|
+|键|值|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|是|具有指向本地函数应用中函数的后端 URL 的调用不会直接发送到函数， 相反，请求会定向回函数应用的 HTTP 前端。|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|具有指向本地函数应用中函数的后端 URL 的调用会直接转发到函数。 这是默认值。 |
@@ -55,7 +55,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 此设置控制字符 `%2F` 在路由参数插入后端 URL 时是否在路由参数中解码为斜杠。
 
-|键|Value|说明|
+|键|值|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|是|包含编码斜杠的路由参数已解码。 |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|所有路由参数均原样传递，这是默认行为。 |
@@ -159,7 +159,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 ## <a name="functions_extension_version"></a>FUNCTIONS\_EXTENSION\_VERSION
 
-托管函数应用的 Functions 运行时版本。 波浪符（`~`）加主要版本号表示使用该主要版本的最新版本（例如“~3”）。 当同一主要版本的新版本可用时，会自动在函数应用中安装新版本。 若要让应用固定使用特定的版本，请使用完整版本号（例如“3.0.12345”）。 默认值为“~3”。 值 `~1` 让应用固定使用运行时版本 1.x。 有关详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。 使用值 `~4`，可以运行预览版 Azure Functions 以使用 .NET 6.0 预览版。 若要了解详细信息，请参阅 [Azure Functions v4 早期预览版](https://aka.ms/functions-dotnet6earlypreview-wiki)页面。
+托管函数应用的 Functions 运行时版本。 波浪符（`~`）加主要版本号表示使用该主要版本的最新版本（例如“~3”）。 当同一主要版本的新版本可用时，会自动在函数应用中安装新版本。 若要让应用固定使用特定的版本，请使用完整版本号（例如“3.0.12345”）。 默认值为“~3”。 值 `~1` 让应用固定使用运行时版本 1.x。 有关详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。 若为值 `~4`，可运行预览版 Azure Functions 以使用 .NET 6.0 预览版。 若要了解详细信息，请参阅 [Azure Functions v4 早期预览版](https://aka.ms/functions-dotnet6earlypreview-wiki)页面。
 
 |键|示例值|
 |---|------------|
@@ -256,21 +256,21 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 ## <a name="python_isolate_worker_dependencies"></a>PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES
 
-此配置特定于 Python 函数应用。 此配置定义模块加载顺序的优先级。 当 Python 函数应用面临与模块冲突相关的问题（例如，在项目中使用 protobuf、tensorflow 或 grpcio）时，将此应用设置配置为 `1` 应该可以解决问题。 默认情况下，此值设置为 `0`。
+配置特定于 Python 函数应用。 它定义模块加载顺序的优先级。 当 Python 函数应用面临与模块冲突相关的问题时（例如，在项目中使用 protobuf、tensorflow 或 grpcio 时），将此应用设置配置为 `1` 应该能够解决问题。 默认情况下，此值设置为 `0`。
 
-|键|Value|说明|
+|键|值|说明|
 |---|-----|-----------|
-|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|0| 设置从内部 Python 辅助角色依赖项加载 Python 库的优先级。 可能会隐藏 requirements.txt 中定义的第三方库。 |
-|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|1| 设置从 requirements.txt 中定义的应用程序包加载 Python 库的优先级。 此设置可防止库与内部 Python 辅助角色库发生冲突。 |
+|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|0| 优先从内部 Python 辅助角色的依赖项加载 Python 库。 requirements.txt 中定义的第三方库可能会被隐藏。 |
+|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|1| 优先从 requirements.txt 中定义的应用程序包加载 Python 库。 这可以防止你的库与内部 Python 辅助角色的库发生冲突。 |
 
 ## <a name="python_enable_worker_extensions"></a>PYTHON\_ENABLE\_WORKER\_EXTENSIONS
 
-此配置特定于 Python 函数应用。 如果将此配置设置为 `1`，则辅助角色可载入 requirements.txt 中所定义的 [Python 辅助角色扩展](functions-reference-python.md#python-worker-extensions)中。 使用此配置，函数应用可访问第三方包提供的新功能。 此外，此配置还可以更改应用中函数加载和调用的行为。 请确保选择的扩展可信，因为你需要承担其使用风险。 Azure Functions 不对任何扩展提供任何明示保证。 有关如何使用扩展的信息，请访问扩展的手册页或自述文件文档。默认情况下，此值设置为 `0`。
+配置特定于 Python 函数应用。 将其设置为 `1` 后，工作线程能够加载 requirements.txt 中定义的 [Python工作线程扩展](functions-reference-python.md#python-worker-extensions)。 通过该扩展，函数应用能够访问第三方包提供的新功能。 它也可能改变函数在应用中加载和调用的行为。 请确保所选扩展可靠，因为你需要承担使用它所带来的风险。 Azure Functions 不提供针对任何扩展的明示保证。 有关如何使用扩展的详细说明，请访问相关扩展的手册页或自述文件。此值默认设置为 `0`。
 
-|键|Value|说明|
+|键|值|说明|
 |---|-----|-----------|
-|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|0| 禁用任何 Python 辅助角色扩展。 |
-|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|1| 允许 Python 辅助角色从 requirements.txt 加载扩展。 |
+|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|0| 禁用任何 Python 工作线程扩展。 |
+|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|1| 允许 Python 工作线程从 requirements.txt 加载扩展。 |
 
 ## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
 
@@ -294,6 +294,16 @@ _此设置当前处于预览状态。_
 
 [!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
 
+## <a name="scm_logstream_timeout"></a>SCM\_LOGSTREAM\_TIMEOUT
+
+控制连接到流式处理日志时的超时（秒）。 默认值为 7200（2 小时）。 
+
+|键|示例值|
+|-|-|
+|SCM_LOGSTREAM_TIMEOUT|1800|
+
+上述示例值 `1800` 设置超时 30 分钟。 有关详细信息，请参阅[启用流式处理日志](functions-run-local.md#enable-streaming-logs)。
+
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE\_CONTENTAZUREFILECONNECTIONSTRING
 
 存储帐户的连接字符串，该帐户的函数应用代码和配置存储在 Windows 上运行的事件驱动缩放计划中。 有关详细信息，请参阅[创建函数应用](functions-infrastructure-as-code.md#windows)。
@@ -306,11 +316,13 @@ _此设置当前处于预览状态。_
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
-仅用于高级计划。 将存储帐户限制在虚拟网络中时，值 `1` 允许函数应用进行缩放。 将存储帐户限制于一个虚拟网络时，应启用此设置。 若要了解详细信息，请参阅[将存储帐户限制在虚拟网络中](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)。
+将存储帐户限制在虚拟网络中时，值 `1` 允许函数应用进行缩放。 将存储帐户限制于一个虚拟网络时，应启用此设置。 若要了解详细信息，请参阅[将存储帐户限制在虚拟网络中](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)。
 
 |键|示例值|
 |---|------------|
 |WEBSITE_CONTENTOVERVNET|1|
+
+在运行 Windows 的[高级计划](functions-premium-plan.md)和[专用（应用服务）计划](dedicated-plan.md)（标准版及更高版本）上受支持。 当前不支持运行 Linux 的消耗计划和高级计划。 
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 

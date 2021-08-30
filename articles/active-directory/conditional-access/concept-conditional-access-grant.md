@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 06/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70cc20b51587a70e8a124b6f3b5d047ff827db83
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 6df1b170d350d483a52311d8a7d2bcd24282eaa6
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034582"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667006"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -58,7 +58,7 @@ ms.locfileid: "112034582"
 
 部署了 Microsoft Intune 的组织可以根据从其设备返回的信息来识别符合具体合规要求的设备。 此策略合规性信息将从 Intune 转发到 Azure AD，其中的条件访问可以决定是要授予还是阻止对资源的访问。 有关合规性策略的详细信息，请参阅[使用 Intune 在设备上设置规则以允许访问组织中的资源](/intune/protect/device-compliance-get-started)一文。
 
-可以通过 Intune（适用于任何设备 OS）或通过适用于 Windows 10 设备的第三方 MDM 系统将设备标记为合规。 Jamf pro 是唯一受支持的第三方 MDM 系统。 有关集成的详细信息可在[将 Jamf Pro 与 Intune 集成以实现符合性](/intune/protect/conditional-access-integrate-jamf)一文中找到。
+可以通过 Intune（适用于任何设备 OS）或通过适用于 Windows 10 设备的第三方 MDM 系统将设备标记为合规。 可在[支持 Intune 中的第三方设备合规性合作伙伴](/mem/intune/protect/device-compliance-partners)一文中找到受支持的第三方 MDM 系统列表。
 
 设备必须在 Azure AD 中进行注册，然后才能标记为合规。 如需详细了解设备注册，请参阅[什么是设备标识](../devices/overview.md)一文。
 
@@ -72,7 +72,7 @@ ms.locfileid: "112034582"
 
 组织可以要求只能尝试从已批准的客户端应用访问选定的云应用。 这些已批准的客户端应用支持 [Intune 应用保护策略](/intune/app-protection-policy)，而不受任何移动设备管理 (MDM) 解决方案影响。
 
-为了利用此授权控制，条件访问要求在 Azure Active Directory 中注册设备，这需要使用代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是 Microsoft Authenticator 或适用于 Android 设备的 Microsoft 公司门户。 如果用户尝试进行身份验证时设备上未安装代理应用，则会将用户重定向到相应的应用商店来安装所需的代理应用。
+为了应用此授权控制，条件访问要求在 Azure Active Directory 中注册设备，这需要使用代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是 Microsoft Authenticator 或适用于 Android 设备的 Microsoft 公司门户。 如果用户尝试进行身份验证时设备上未安装代理应用，则会将用户重定向到相应的应用商店来安装所需的代理应用。
 
 已确认以下客户端应用支持此设置：
 
@@ -122,7 +122,7 @@ ms.locfileid: "112034582"
 
 在条件访问策略中，你可以要求客户端应用上先存在 [Intune 应用保护策略](/intune/app-protection-policy)，然后才能访问所选云应用。 
 
-为了利用此授权控制，条件访问要求在 Azure Active Directory 中注册设备，这需要使用代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是适用于 Android 设备的 Microsoft 公司门户。 如果用户尝试进行身份验证时设备上未安装代理应用，则会将用户重定向到应用商店来安装代理应用。
+为了应用此授权控制，条件访问要求在 Azure Active Directory 中注册设备，这需要使用代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是适用于 Android 设备的 Microsoft 公司门户。 如果用户尝试进行身份验证时设备上未安装代理应用，则会将用户重定向到应用商店来安装代理应用。
 
 应用程序需要具有已实现策略保障的 Intune SDK，并且需要满足其他一些要求才能支持此设置 。 通过 Intune SDK 实施应用程序的开发人员可在 SDK 文档中找到这些要求的详细信息。
 
@@ -145,7 +145,7 @@ ms.locfileid: "112034582"
 - Nine Mail - 电子邮件和日历
 
 > [!NOTE]
-> Microsoft Teams、Microsoft Kaizala、Microsoft Skype for Business 和 Microsoft Visio 不支持“需要应用保护策略”授权。 如果需要这些应用正常工作，请仅使用“需要已批准的应用”授权。 对于这三款应用程序，在两个授权之间使用 or 子句将不起作用。
+> Microsoft Kaizala、Microsoft Skype for Business 和 Microsoft Visio 不支持“需要应用保护策略”授权。 如果需要这些应用正常工作，请仅使用“需要已批准的应用”授权。 对于这三款应用程序，在两个授权之间使用 or 子句将不起作用。
 
 **备注**
 
@@ -158,16 +158,16 @@ ms.locfileid: "112034582"
 
 ### <a name="require-password-change"></a>要求更改密码 
 
-如果检测到用户风险，则使用用户风险策略条件，管理员可以选择让用户通过 Azure AD 自助式密码重置来安全地更改密码。 如果检测到用户风险，用户可以执行自助式密码重置进行自我修正，这将关闭用户风险事件，以避免为管理员带来不必要的干扰。 
+如果检测到用户风险，则使用用户风险策略条件，管理员可以选择让用户通过 Azure AD 自助式密码重置来安全地更改密码。 如果检测到用户风险，用户可以执行自助式密码重置进行自我修正，此过程将关闭用户风险事件，以避免为管理员带来不必要的干扰。 
 
 当系统提示用户更改其密码时，他们首先需要完成多重身份验证。 你需要确保所有用户都已注册多重身份验证，为其帐户检测到风险做准备。  
 
 > [!WARNING]
 > 用户必须预先注册了自助式密码重置，然后才能触发用户风险策略。 
 
-使用密码更改控件来配置策略时，存在几个限制。  
+使用密码变更控制配置策略时的限制。  
 
-1. 必须将策略分配到“所有云应用”。 这可以防止攻击者使用不同的应用更改用户的密码并重置帐户的风险，只需登录到不同的应用即可。 
+1. 必须将策略分配到“所有云应用”。 此要求可防止攻击者通过登录不同的应用使用不同的应用来更改用户的密码并重置帐户的风险。 
 1. 要求密码更改不能与其他控件一起使用，例如，要求设备符合规范。  
 1. 密码更改控件只能与用户和组分配条件、云应用分配条件（必须设置为“全部”）和用户风险条件一起使用。 
 

@@ -3,12 +3,12 @@ title: 资源类型支持的移动操作
 description: 列出了可移动到新资源组、订阅或区域的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 04/23/2021
-ms.openlocfilehash: 3a43ea09dd4986d1f2d0e2679e81f5b25b590f7e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f00acadf42c3767814850db59c64ab76b30de2ea
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968333"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296996"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -911,7 +911,7 @@ ms.locfileid: "111968333"
 > | 资源类型 | 资源组 | 订阅 | 区域移动 |
 > | ------------- | ----------- | ---------- | ----------- |
 > | 控制器 | 是 | 是 | 否 |
-> | AKS 群集 | 待批准 | 待批准 | 否<br/><br/> [了解更多](../../dev-spaces/index.yml)如何移动到其他区域。
+> | AKS 群集 | 待批准 | 待批准 | 否<br/><br/> [了解更多](/previous-versions/azure/dev-spaces/)如何移动到其他区域。
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -1104,7 +1104,7 @@ ms.locfileid: "111968333"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 | 区域移动 |
 > | ------------- | ----------- | ---------- | ----------- |
-> | accounts | 是 | 是 | 否。 [了解详细信息](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。 |
+> | accounts | 是 | 是 | 否。 [了解详细信息](../../azure-monitor/faq.yml#how-do-i-move-an-application-insights-resource-to-a-new-region-)。 |
 > | actiongroups | 是 | 是 | 否 |
 > | activitylogalerts | 否 | 否 | 否 |
 > | alertrules | 是 | 是 | 否 |
@@ -2082,4 +2082,4 @@ ms.locfileid: "111968333"
 
 - 有关移动资源的命令，请参阅[将资源移动至新资源组或订阅](move-resource-group-and-subscription.md)。
 - [了解更多](../../resource-mover/overview.md)资源移动器服务。
-- 若要以逗号分隔值文件的形式获取同一数据，请下载 [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv)。
+- 若要以逗号分隔值文件的形式获取相同数据，请下载 [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv) 以获取资源组和订阅移动支持。 如果需要这些属性和区域移动支持，请下载 [move-support-resources-with-regions.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources-with-regions.csv)。

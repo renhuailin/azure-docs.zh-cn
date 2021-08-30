@@ -7,24 +7,20 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: d7c611f1cdb5e3294e38f87c0534003813e50388
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56eed522dc28b29f24e97a94a03e848d5cf58898
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575687"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725667"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>将指标上传到 Azure Monitor
 
 用户可以定期导出监视指标，然后将这些指标上传到 Azure。 数据的导出和上传也会在 Azure 中创建并更新数据控制器、SQL 托管实例和超大规模 PostgreSQL 服务器组资源。
 
-> [!NOTE] 
-> 在预览版期间，使用已启用 Azure Arc 的数据服务不会产生费用。
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -113,14 +109,17 @@ echo %SPN_AUTHORITY%
  
 1. 将所有指标导出到指定文件：
 
-   ```console
-   azdata arc dc export --type metrics --path metrics.json
+> [!NOTE]
+> 使用命令 `az arcdata dc export` 导出使用情况/计费信息、指标和日志时要求暂时绕过 SSL 验证。  系统将提示你绕过 SSL 验证，你也可设置 `AZDATA_VERIFY_SSL=no` 环境变量来避免出现提示。  目前无法为数据控制器导出 API 配置 SSL 证书。
+
+   ```azurecli
+   az arcdata dc export --type metrics --path metrics.json
    ```
 
 2. 将指标上传到 Azure Monitor：
 
-   ```console
-   azdata arc dc upload --path metrics.json
+   ```azurecli
+   az arcdata dc upload --path metrics.json
    ```
 
    >[!NOTE]
@@ -131,8 +130,8 @@ echo %SPN_AUTHORITY%
 
 如果在导出过程中看到任何指示“无法获取指标”的错误，请通过运行以下命令来检查数据收集是否设置为 `true`：
 
-```console
-azdata arc dc config show
+```azurecli
+az arcdata dc config show
 ```
 
 在“安全部分”下查找
@@ -174,9 +173,9 @@ azdata arc dc config show
 
 在常用的文本/代码编辑器中，将以下脚本添加到文件，并将该文件另存为脚本可执行文件，如 .sh (Linux/Mac) 或 .cmd、.bat、.ps1。
 
-```console
-azdata arc dc export --type metrics --path metrics.json --force
-azdata arc dc upload --path metrics.json
+```azurecli
+az arcdata dc export --type metrics --path metrics.json --force
+az arcdata dc upload --path metrics.json
 ```
 
 使脚本文件成为可执行文件
@@ -197,7 +196,7 @@ watch -n 1200 ./myuploadscript.sh
 
 针对已启用 Azure Arc 的数据服务的创建、读取、更新和删除 (CRUD) 操作会被记录到日志，以用于计费和监视。 有后台服务会监视这些 CRUD 操作并相应计算消耗。 实际的使用情况或消耗的计算会按计划进行，并且在后台完成。 
 
-在预览版期间，此过程在夜间发生。 一般原则是每天只上传一次使用情况。 如果在同一个 24 小时内多次导出并上传使用情况信息，则只会更新 Azure 门户中的资源清单，而不会更新资源使用情况。
+每日仅上传一次使用情况数据。 如果在同一个 24 小时内多次导出并上传使用情况信息，则只会更新 Azure 门户中的资源清单，而不会更新资源使用情况。
 
 对于上传指标，Azure Monitor 只接受最近 30 分钟的数据（[了解详细信息](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)）。 上传指标的原则是要在创建导出文件后立即上传指标，这样就可以在 Azure 门户中看到整个数据集。 例如，如果在下午 2:00 导出指标，然后在下午 2:50 运行上传命令。 由于 Azure Monitor 只接受最近 30 分钟的数据，因此在门户中可能看不到任何数据。 
 

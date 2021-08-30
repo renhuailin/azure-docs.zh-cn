@@ -1,30 +1,25 @@
 ---
-title: 将使用情况数据、指标和日志上传到 Azure Monitor
-description: 将资源清单、使用情况数据、指标和日志上传到 Azure Monitor
+title: 将使用情况数据、指标和日志上传到 Azure
+description: 将资源清单、使用情况数据、指标和日志上传到 Azure
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: a522a650413be056ff64d26e90b6c15cf88d9a7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f314b8918b415c0449722d1229c6de47af1cac5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643484"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741442"
 ---
-# <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>将使用情况数据、指标和日志上传到 Azure Monitor
+# <a name="upload-usage-data-metrics-and-logs-to-azure"></a>将使用情况数据、指标和日志上传到 Azure
 
 用户可以定期导出使用情况信息进行计费，监视指标和日志，然后将其上传到 Azure。 导出并上传这三种类型的数据还将在 Azure 中创建并更新数据控制器、SQL 托管实例和超大规模 PostgreSQL 服务器组资源。
-
-> [!NOTE] 
-> 在预览版期间，使用已启用 Azure Arc 的数据服务不会产生费用。
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 在上传使用情况数据、指标或日志之前，需要执行以下操作：
 
@@ -36,7 +31,7 @@ ms.locfileid: "101643484"
 
 必需的工具包括： 
 * Azure CLI (az) 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 
+* `arcdata` 扩展 
 
 请参阅[安装工具](./install-client-tools.md)。
 
@@ -68,7 +63,7 @@ az provider register -n Microsoft.AzureArcData --wait
 如果要创建服务主体，请更新以下示例。 请将 `<ServicePrincipalName>`、`SubscriptionId` 和 `resourcegroup` 替换为你的值，并运行以下命令：
 
 ```azurecli
-az ad sp create-for-rbac --name <ServicePrincipalName> --role Contributor --scopes /subscriptions/{SubscriptionId}/resourceGroups/{resourcegroup}
+az ad sp create-for-rbac --name <ServicePrincipalName> --role Contributor --scopes /subscriptions/<SubscriptionId>/resourceGroups/<resourcegroup>
 ```
 
 如果你在前面创建了服务主体，并且只是需要获取当前凭据，那么，请运行以下命令来重置该凭据。
@@ -137,7 +132,7 @@ $Env:SPN_TENANT_ID="<tenant>"
 > 在从 Windows 环境中运行时，角色名称需要使用双引号。
 
 ```azurecli
-az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+az role assignment create --assignee <appId> --role "Monitoring Metrics Publisher" --scope subscriptions/<SubscriptionID>/resourceGroups/<resourcegroup>
 
 ```
 ::: zone-end
@@ -145,7 +140,7 @@ az role assignment create --assignee <appId> --role "Monitoring Metrics Publishe
 ::: zone pivot="client-operating-system-macos-and-linux"
 
 ```azurecli
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<SubscriptionID>/resourceGroups/<resourcegroup>
 ```
 
 ::: zone-end
@@ -153,7 +148,7 @@ az role assignment create --assignee <appId> --role 'Monitoring Metrics Publishe
 ::: zone pivot="client-operating-system-powershell"
 
 ```powershell
-az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/{SubscriptionID}/resourceGroups/{resourcegroup}
+az role assignment create --assignee <appId> --role 'Monitoring Metrics Publisher' --scope subscriptions/<SubscriptionID>/resourceGroups/<resourcegroup>
 ```
 
 ::: zone-end
@@ -173,23 +168,31 @@ az role assignment create --assignee <appId> --role 'Monitoring Metrics Publishe
 }
 ```
 
+## <a name="verify-service-principal-role"></a>验证服务主体角色
+
+```azurecli
+az role assignment list -o table
+```
+
 在将服务主体分配到相应的角色后，可以继续上传指标或用户数据。 
 
-## <a name="upload-logs-metrics-or-user-data"></a>上传日志、指标或用户数据
 
-用于上传日志、指标或用户数据的具体步骤因要上传的信息类型而异。 
+
+## <a name="upload-logs-metrics-or-usage-data"></a>上传日志、指标或使用情况数据
+
+用于上传日志、指标或使用情况数据的具体步骤因要上传的信息类型而异。 
 
 [将日志上传到 Azure Monitor](upload-logs.md)
 
 [将指标上传到 Azure Monitor](upload-metrics.md)
 
-[将使用情况数据上传到 Azure Monitor](upload-usage-data.md)
+[将使用情况数据上传到 Azure](upload-usage-data.md)
 
-## <a name="general-guidance-on-exporting-and-uploading-usage-metrics"></a>有关导出和上传使用情况和指标的一般原则
+## <a name="general-guidance-on-exporting-and-uploading-usage-and-metrics"></a>有关导出和上传使用情况和指标的一般原则
 
 针对已启用 Azure Arc 的数据服务的创建、读取、更新和删除 (CRUD) 操作会被记录到日志，以用于计费和监视。 有后台服务会监视这些 CRUD 操作并相应计算消耗。 实际的使用情况或消耗的计算会按计划进行，并且在后台完成。 
 
-在预览版期间，此过程在夜间发生。 一般原则是每天只上传一次使用情况。 如果在同一个 24 小时内多次导出并上传使用情况信息，则只会更新 Azure 门户中的资源清单，而不会更新资源使用情况。
+每日仅上传一次使用情况数据。 如果在同一个 24 小时内多次导出并上传使用情况信息，则只会更新 Azure 门户中的资源清单，而不会更新资源使用情况。
 
 对于上传指标，Azure Monitor 只接受最近 30 分钟的数据（[了解详细信息](../../azure-monitor/essentials/metrics-store-custom-rest-api.md#troubleshooting)）。 上传指标的原则是要在创建导出文件后立即上传指标，这样就可以在 Azure 门户中看到整个数据集。 例如，如果在下午 2:00 导出指标，然后在下午 2:50 运行上传命令。 由于 Azure Monitor 只接受最近 30 分钟的数据，因此在门户中可能看不到任何数据。 
 

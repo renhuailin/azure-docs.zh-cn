@@ -1,25 +1,20 @@
 ---
-title: 列式表存储预览版 - 超大规模 (Citus) - Azure Database for PostgreSQL
-description: 使用列式存储压缩数据（预览版）
+title: 列式表存储 - 超大规模 (Citus) - Azure Database for PostgreSQL
+description: 使用列式存储压缩数据
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 05/04/2021
-ms.openlocfilehash: c42cfcc35edf33cf30c4d69b4a1fb15d39dd4009
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 08/03/2021
+ms.openlocfilehash: 557fe7d2242b67f8fa53541aef25cfc44090e48b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773676"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745161"
 ---
-# <a name="columnar-table-storage-preview"></a>列式表存储（预览版）
-
-> [!IMPORTANT]
-> 超大规模 (Citus) 中的列式表存储目前为预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
->
-> 请参阅[超大规模 (Citus) 的预览功能](hyperscale-preview-features.md)，以查看其他新功能的完整列表。
+# <a name="columnar-table-storage"></a>列式表存储
 
 对于分析和数据仓库工作负载，Azure Database for PostgreSQL - 超大规模 (Citus) 支持仅限追加的列式表存储。 当列（而不是行）在磁盘上连续存储时，数据的可压缩性会提高，并且查询可以更快地请求列的子集。
 

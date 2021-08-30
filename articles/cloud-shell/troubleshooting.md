@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60743cdbc48d695c0c98c6e34273a0c407fef546
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87543446"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744853"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -158,7 +158,7 @@ Azure Cloud Shell 非常重视你的个人数据，Azure Cloud Shell 服务捕�
 Bash：
 
   ```
-  token="Bearer $(curl http://localhost:50342/oauth2/token --data &quot;resource=https://management.azure.com/&quot; -H Metadata:true -s | jq -r &quot;.access_token")"
+  token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
   curl https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token" -s | jq
   ```
 
@@ -175,22 +175,22 @@ PowerShell：
 >[!Note]
 > 如果删除用户设置，不会删除实际的 Azure 文件共享。 请转到“Azure 文件”完成该操作。
 
-1. [![显示标记为“启动 Azure Cloud Shell”的按钮的图像。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+1. 启动 Cloud Shell 或安装了 Azure PowerShell 或 Azure CLI 的本地 Shell。
 
 2. 在 Bash 或 PowerShell 中运行以下命令：
 
 Bash：
 
   ```
-  token="Bearer $(curl http://localhost:50342/oauth2/token --data &quot;resource=https://management.azure.com/&quot; -H Metadata:true -s | jq -r &quot;.access_token")"
+  token=(az account get-access-token --resource "https://management.azure.com/" | jq -r ".access_token")
   curl -X DELETE https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token"
   ```
 
 PowerShell：
 
   ```powershell
-  $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token
-  Invoke-WebRequest -Method Delete -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
+  $token= (Get-AzAccessToken -Resource  https://management.azure.com/).Token
+  Invoke-WebRequest -Method Delete -Uri https://management.azure.com?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
   ```
 ## <a name="azure-government-limitations"></a>Azure 政府限制
 仅可通过 Azure 门户访问 Azure 政府中的 Azure Cloud Shell。

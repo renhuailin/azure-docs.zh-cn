@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 05/26/2021
 ms.author: tisande
-ms.openlocfilehash: f0a0556ce2a46f922e387d96d20b6425ab362580
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2642f1e85e12ce0251e9b7bfff84b5d468a342d2
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384861"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361389"
 ---
 # <a name="azure-cosmos-db-integrated-cache---overview-preview"></a>Azure Cosmos DB 集成缓存 - 概述（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,6 +25,9 @@ Azure Cosmos DB 集成缓存是一种内存中缓存，可帮助你在请求量�
 * 用于查询的查询缓存
 
 集成缓存是一种读写缓存，使用最近最少使用的 (LRU) 逐出策略。 项缓存和查询缓存在集成缓存中共享相同的容量，并且 LRU 逐出策略两者都适用。 换句话说，严格按照最近最少使用数据的时间将数据从缓存中逐出，而不考虑是点读取还是查询。
+
+> [!NOTE]
+> 你对集成缓存有何反馈？ 我们想听一听！ 欢迎直接与 Azure Cosmos DB 工程团队分享反馈：cosmoscachefeedback@microsoft.com
 
 ## <a name="workloads-that-benefit-from-the-integrated-cache"></a>受益于集成缓存的工作负载
 
@@ -89,26 +92,57 @@ Azure Cosmos DB 集成缓存是一种内存中缓存，可帮助你在请求量�
 
 要为所有读取操作配置最终一致性，最简单的方法是[在帐户级别设置](consistency-levels.md#configure-the-default-consistency-level)最终一致性。 但是，如果只希望某些读取具有最终一致性，也可在[请求级别](how-to-manage-consistency.md#override-the-default-consistency-level)配置一致性。
 
-## <a name="integrated-cache-retention-time"></a>集成缓存保留时间
+## <a name="maxintegratedcachestaleness"></a>MaxIntegratedCacheStaleness
 
-缓存保留时间是缓存数据的最长保留期。 在预览版期间，`MaxIntegratedCacheStaleness` 始终设置为 5 分钟，无法自定义。
+`MaxIntegratedCacheStaleness` 是缓存点读取和查询的最大可接受过期时间。 `MaxIntegratedCacheStaleness` 可在请求级别进行配置。 例如，如果将 `MaxIntegratedCacheStaleness` 设置为 2 小时，则仅当数据的有效期小于 2 小时的时候，请求才会返回缓存数据。 若要增加利用集成缓存进行重复读取的可能性，应将 `MaxIntegratedCacheStaleness` 设置为业务要求允许的最高值。
+
+请注意，在最终填充缓存的请求上配置时，`MaxIntegratedCacheStaleness` 不会影响该请求的缓存时间。 `MaxIntegratedCacheStaleness` 在尝试使用缓存数据时强制执行一致性。 没有全局 TTL 或缓存保留设置，因此，只有在集成缓存已满或新读取运行时间的 `MaxIntegratedCacheStaleness` 低于当前缓存条目的保留期时，才会从缓存中逐出数据。
+
+这是对大多数缓存工作方式的改进，并允许以下附加自定义：
+
+- 可以针对每个点读取或查询设置不同的过期时间要求
+- 即使运行相同的点读取或查询，不同的客户端也可以配置不同的 `MaxIntegratedCacheStaleness` 值。
+- 如果要在使用缓存数据时修改读取一致性，则更改 `MaxIntegratedCacheStaleness` 将立即影响读取一致性。
+
+> [!NOTE]
+> 未显式配置时，MaxIntegratedCacheStaleness 默认为 5 分钟。
+
+为了更好地了解 `MaxIntegratedCacheStaleness` 参数，请考虑以下示例：
+
+| 时间       | 请求                                         | 响应                                                     |
+| ---------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| t = 0 秒  | 运行 MaxIntegratedCacheStaleness = 30 秒的查询 A | 从后端数据库返回结果（正常 RU 费用）并填充缓存     |
+| t = 0 秒  | 运行 MaxIntegratedCacheStaleness = 60 秒的查询 B | 从后端数据库返回结果（正常 RU 费用）并填充缓存     |
+| t = 20 秒 | 运行 MaxIntegratedCacheStaleness = 30 秒的查询 A | 从集成缓存返回结果（0 RU 费用）           |
+| t = 20 秒 | 运行 MaxIntegratedCacheStaleness = 60 秒的查询 B | 从集成缓存返回结果（0 RU 费用）           |
+| t = 40 秒 | 运行 MaxIntegratedCacheStaleness = 30 秒的查询 A | 从后端数据库返回结果（正常 RU 费用）并刷新缓存 |
+| t = 40 秒 | 运行 MaxIntegratedCacheStaleness = 60 秒的查询 B | 从集成缓存返回结果（0 RU 费用）           |
+| t = 50 秒 | 运行 MaxIntegratedCacheStaleness = 20 秒的查询 B | 从后端数据库返回结果（正常 RU 费用）并刷新缓存 |
+
+> [!NOTE]
+> 只有最新的 .NET 和 Java 预览版 SDK 支持自定义 `MaxIntegratedCacheStaleness`。
+
+[了解如何配置 `MaxIntegratedCacheStaleness`。](how-to-configure-integrated-cache.md#adjust-maxintegratedcachestaleness)
 
 ## <a name="metrics"></a>指标
 
 使用集成缓存时，最好监视一些关键指标。 集成缓存的指标包括：
 
-- `DedicatedGatewayCpuUsage` - 每个专用网关节点的 CPU 使用情况
-- `DedicatedGatewayMemoryUsage` - 每个专用网关节点用于路由请求和缓存的内存使用情况
-- `DedicatedGatewayRequests` - 通过每个专用网关节点路由的请求数
-- `IntegratedCacheEvictedEntriesSize` - 从集成缓存中逐出的数据量
-- `IntegratedCacheTTLExpirationCount` - 专为缓存数据超过 `MaxIntegratedCacheStaleness` 时间而从集成缓存中逐出的条目数。
-- `IntegratedCacheHitRate` - （在所有尝试使用集成缓存的专用网关请求中）使用集成缓存的点读取和查询的比例。
+- `DedicatedGatewayAverageCpuUsage` - 专用网关节点的平均 CPU 使用率。
+- `DedicatedGatewayMaxCpuUsage` - 专用网关节点的最大 CPU 使用率。
+- `DedicatedGatewayAverageMemoryUsage` - 专用网关节点的平均内存使用量，用于路由请求和缓存数据。
+- `DedicatedGatewayRequests` - 所有专用网关实例的专用网关请求总数。
+- `IntegratedCacheEvictedEntriesSize` - 由于 LRU 从专用网关节点的集成缓存中逐出的平均数据量。 此值不包括因超过 `MaxIntegratedCacheStaleness` 时间而过期的数据。
+- `IntegratedCacheItemExpirationCount` - 由于缓存点读取超过 `MaxIntegratedCacheStaleness` 时间而从集成缓存中逐出的项数。 此值是所有专用网关节点的集成缓存实例的平均值。
+- `IntegratedCacheQueryExpirationCount` - 由于缓存查询超过 `MaxIntegratedCacheStaleness` 时间而从集成缓存中逐出的查询数。 此值是所有专用网关节点的集成缓存实例的平均值。
+- `IntegratedCacheItemHitRate` - 使用集成缓存的点读取比例（在通过具有最终一致性的专用网关路由的所有点读取中的占比）。 此值是所有专用网关节点的集成缓存实例的平均值。
+- `IntegratedCacheQueryHitRate` - 使用集成缓存的查询比例（在通过具有最终一致性的专用网关路由的所有查询中的占比）。 此值是所有专用网关节点的集成缓存实例的平均值。
 
 默认情况下，所有现有指标在“指标”边栏选项卡（不是“经典指标”）中提供：
 
    :::image type="content" source="./media/integrated-cache/integrated-cache-metrics.png" alt-text="显示集成缓存指标位置的图像" border="false":::
 
-所有指标作为所有专用网关节点的平均值公开。 例如，如果预配包含五个节点的专用网关群集，则指标反映所有五个节点的平均值。
+指标是所有专用网关节点的平均值、最大值或总和。 例如，如果预配包含五个节点的专用网关群集，则指标反映所有五个节点的聚合值。 无法确定每个单独节点的指标值。
 
 ## <a name="troubleshooting-common-issues"></a>排查常见问题
 
@@ -120,21 +154,23 @@ Azure Cosmos DB 集成缓存是一种内存中缓存，可帮助你在请求量�
 
 ### <a name="i-cant-tell-if-my-requests-are-hitting-the-integrated-cache"></a>我无法判断请求是否命中集成缓存
 
-检查 `IntegratedCacheHitRate`。 如果此值为 0，表示请求没有命中集成缓存。 检查是否正在使用专用网关连接字符串，通过网关模式连接，并设置了最终一致性。
+检查 `IntegratedCacheItemHitRate` 和 `IntegratedCacheQueryHitRate`。 如果这两个值都为零，则请求不会命中集成缓存。 检查是否正在使用专用网关连接字符串，[通过网关模式连接](sql-sdk-connection-modes.md)，并[设置了最终一致性](consistency-levels.md#configure-the-default-consistency-level)。
 
 ### <a name="i-want-to-understand-if-my-dedicated-gateway-is-too-small"></a>我想要了解专用网关是否过小
 
-检查 `IntegratedCacheHitRate`。 如果此值较高（例如，高于 0.5-0.6），则表示专用网关足够大。
+检查 `IntegratedCacheItemHitRate` 和 `IntegratedCacheQueryHitRate`。 如果这些值较高（例如高于 0.7-0.8），则表示专用网关足够大。
 
-如果 `IntegratedCacheHitRate` 较低，请查看 `IntegratedCacheEvictedEntriesSize`。 如果 `IntegratedCacheEvictedEntriesSize` 较高，可能表示更大的专用网关大小会更有用。
+如果 `IntegratedCacheItemHitRate` 或 `IntegratedCacheQueryHitRate` 较低，请查看 `IntegratedCacheEvictedEntriesSize`。 如果 `IntegratedCacheEvictedEntriesSize` 较高，可能表示更大的专用网关大小会更有用。 可通过增加专用网关大小并比较新的 `IntegratedCacheItemHitRate` 和 `IntegratedCacheQueryHitRate` 进行试验。 如果较大的专用网关无法提高 `IntegratedCacheItemHitRate` 或 `IntegratedCacheQueryHitRate`，那么读取操作可能不足以通过重复自身来使集成缓存具有影响力。
 
 ### <a name="i-want-to-understand-if-my-dedicated-gateway-is-too-large"></a>我想要了解专用网关是否过大
 
-这比较难度量。 通常应从较少的量开始，然后慢慢增加专用网关大小，直到 `IntegratedCacheHitRate` 停止增加。
+与测量专用网关是否过小相比，更难测量专用网关是否过大。 通常应从较少的量开始，然后慢慢增加专用网关大小，直到 `IntegratedCacheItemHitRate` 和 `IntegratedCacheQueryHitRate` 停止增加。 在某些情况下，两个缓存命中指标中只有一个很重要，而不是两个都重要。 例如，如果工作负载主要是查询，而不是点读取，则 `IntegratedCacheQueryHitRate` 比 `IntegratedCacheItemHitRate` 重要得多。
 
-如果大多数数据是因为超过 `MaxIntegratedCacheStaleness`（而不是 LRU）而从缓存中逐出，则缓存可能大于所需大小。 检查 `IntegratedCacheTTLExpirationCount` 是否几乎与 `IntegratedCacheEvictedEntriesSize` 一样大。 如果是，可尝试使用较小的专用网关大小并比较性能。
+如果大多数数据是因为超过 `MaxIntegratedCacheStaleness`（而不是 LRU）而从缓存中逐出，则缓存可能大于所需大小。 如果 `IntegratedCacheItemExpirationCount` 和 `IntegratedCacheQueryExpirationCount` 的组合几乎与 `IntegratedCacheEvictedEntriesSize` 一样大，可尝试使用较小的专用网关大小并比较性能。
 
-检查 `DedicatedGatewayMemoryUsage` 并比较专用网关大小。 如果 `DedicatedGatewayMemoryUsage` 小于专用网关大小，则应尝试使用较小的专用网关大小。
+### <a name="i-want-to-understand-if-i-need-to-add-more-dedicated-gateway-nodes"></a>我想要了解是否需要添加更多专用网关节点
+
+在某些情况下，如果延迟异常高，可能需要更多专用网关节点，而不是更大的节点。 检查 `DedicatedGatewayMaxCpuUsage` 和 `DedicatedGatewayAverageMemoryUsage`，以确定添加更多专用网关节点是否可以减少延迟。 请记住，由于集成缓存的所有实例彼此独立，因此添加更多专用网关节点不会减少 `IntegratedCacheEvictedEntriesSize`。 不过，添加更多节点可以提高专用网关群集可以处理的请求量。
 
 ## <a name="next-steps"></a>后续步骤
 

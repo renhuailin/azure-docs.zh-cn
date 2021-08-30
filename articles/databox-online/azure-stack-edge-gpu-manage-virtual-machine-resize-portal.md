@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 07/08/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to resize VMs running on an Azure Stack Edge Pro device so that I can use it to run applications using Edge compute before sending it to Azure.
-ms.openlocfilehash: bf2125a6e1d0b443202a036c52fdf845f79d11fa
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 5e41edf0cf080d06a0829e31e7105a13a0035f93
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079767"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736744"
 ---
 # <a name="use-the-azure-portal-to-resize-the-vms-on-your-azure-stack-edge-pro-gpu"></a>使用 Azure 门户来调整 Azure Stack Edge Pro GPU 上 VM 的大小
 
@@ -40,24 +40,24 @@ VM 大小决定 VM 可用计算资源（如 CPU、GPU 和内存）的数量。 �
 
 1. VM 应处于“已停止”状态。 要停止 VM，请转到“虚拟机”>“概述”中，选择要停止的 VM。 在“概述”页上，选择“停止”，然后在提示确认时选择“是” 。 重设 VM 大小之前，必须停止 VM。
 
-    ![从“概述”页停止 VM](./media/azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal/stop-vm-2.png)
+    ![从虚拟机概述页停止 VM 的屏幕的屏幕截图。 突出显示了“是”按钮。](./media/azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal/stop-vm-2.png)
 
 
 ## <a name="resize-a-vm"></a>调整 VM 的大小
 
 按照以下步骤重设设备上部署的虚拟机。 
 
-1. 转到已停止的虚拟机，然后转到“概述”页。 选择“VM 大小(更改)”。
+1. 转到已停止的虚拟机，然后选择虚拟机“详细信息”中的“VM 大小(更改)” 。
     
-    ![在“概述”页上选择“VM 大小更改”](./media/azure-stack-edge-gpu-manage-virtual-machine-resize-portal/change-vm-size-1.png)
+    ![虚拟机的“详细信息”选项卡的屏幕截图。 突出显示了“详细信息”选项卡和“VM 大小”选项。](./media/azure-stack-edge-gpu-manage-virtual-machine-resize-portal/change-vm-size-1.png)
 
 2. 在“更改 VM 大小”边栏选项卡的命令栏中选择“VM 大小”，然后选择“更改”  。
 
-    ![选择新的 VM 大小](./media/azure-stack-edge-gpu-manage-virtual-machine-resize-portal/change-vm-size-2.png)
+    ![“更改 VM 大小”屏幕的屏幕截图。 突出显示了 VM 大小和“更改”按钮。](./media/azure-stack-edge-gpu-manage-virtual-machine-resize-portal/change-vm-size-2.png)
 
 3. 随即会显示一条通知，指示正在更新虚拟机。 成功更新虚拟机后，“概述”页将刷新并显示重设大小后的 VM。
 
-    ![重设大小后的 VM ](./media/azure-stack-edge-gpu-manage-virtual-machine-resize-portal/change-vm-size-3.png)
+    ![VM“概述”页的屏幕截图。 突出显示了已调整大小的 VM 的“VM 大小”值。](./media/azure-stack-edge-gpu-manage-virtual-machine-resize-portal/change-vm-size-3.png)
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: dff314f3c9fb72c565a7c2d522694d533c487895
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d67acd025e453cee41a2461276d2f5df3066a141
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572637"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112518449"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>管理更改跟踪和清单
 
@@ -161,7 +161,7 @@ ms.locfileid: "100572637"
 
 |查询  |说明  |
 |---------|---------|
-|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | 显示已设置为“自动”但报告为“已停止”的 Microsoft 服务的最新库存记录。 结果仅限于指定软件名称和计算机的最新记录。    |
+|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | 显示已设置为“自动”但报告为“已停止”的 Windows 服务的最新库存记录。 结果仅限于指定软件名称和计算机的最新记录。    |
 |`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|显示已删除的软件的更改记录。|
 
 ## <a name="next-steps"></a>后续步骤

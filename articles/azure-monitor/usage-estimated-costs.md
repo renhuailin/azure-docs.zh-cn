@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lagayhar
 ms.reviewer: Dale.Koetke
-ms.openlocfilehash: c4aded73334e38539e1c671831fe812a9525698c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 540bed61d26b2387399230324db4373172a233a1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048669"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734254"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>在 Azure Monitor 中监视使用情况和预估成本
 
@@ -25,7 +25,7 @@ ms.locfileid: "102048669"
 
 基本 Azure Monitor 计费模型是云友好的基于消耗量的定价模型（“即用即付”）。 仅为所用的部分付费。 我们已提供适用于[警报、指标和通知](https://azure.microsoft.com/pricing/details/monitor/)、[Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) 及 [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) 的定价详细信息。 
 
-除了适用于日志数据的即用即付模型以外，Log Analytics 还提供容量预留，与即用即付价格相比，该模型最多可将成本节省 25%。 产能预留定价使你可以购买起价为 100 GB/天的保留。 超过预留级别的任何用量将按即用即付费率计费。 [详细了解](https://azure.microsoft.com/pricing/details/monitor/)容量预留定价。
+除了适用于日志数据的即用即付模型以外，Azure Monitor Log Analytics 还有承诺层级。 使用承诺层级可以节省 30% 的成本（与即用即付定价相比）。 承诺层级最低只有 100 GB/天。 超出承诺层级的任何使用量将按与承诺层级相同的每 GB 价格计费。 [详细了解](https://azure.microsoft.com/pricing/details/monitor/)承诺层级定价。
 
 某些客户有权访问[传统 Log Analytics 定价层](logs/manage-cost-storage.md#legacy-pricing-tiers)和[传统 Enterprise Application Insights 定价层](app/pricing.md#legacy-enterprise-per-node-pricing-tier)。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "102048669"
 
 在上述每种情况下，定价计算器都可帮助你根据预期用量估算可能的成本。
 
-例如，对于 Log Analytics，可以输入 VM 数目，以及要从每个 VM 收集的数据量 (GB)。 通常每月会从一个典型的 Azure VM 引入 1 GB 到 3 GB 数据。 如果已经评估了 Azure Monitor 日志，则可以使用自己环境中的数据统计信息。 请参阅下文来了解如何确定[受监视 VM 数](logs/manage-cost-storage.md#understanding-nodes-sending-data)和[工作区引入的数据量](logs/manage-cost-storage.md#understanding-ingested-data-volume)。
+例如，对于 Log Analytics，可以输入 VM 数目，以及要从每个 VM 收集的数据量 (GB)。 通常，每月会从一台典型的 Azure VM 引入 1 GB 到 3 GB 的数据。 如果已经评估了 Azure Monitor 日志，则可以使用自己环境中的数据统计信息。 请参阅下文来了解如何确定[受监视 VM 数](logs/manage-cost-storage.md#understanding-nodes-sending-data)和[工作区引入的数据量](logs/manage-cost-storage.md#understanding-ingested-data-volume)。
 
 类似于 Application Insights，如果启用“基于应用程序活动估算数据量”功能，则可以提供有关应用程序的输入（如果收集客户端遥测数据，请提供每月请求数和页面视图数），然后，计算器会告知类似应用程序收集的中间值和第 90 百分位的数据量。 这些应用程序超过了 Application Insights 的配置范围（例如，有些应用程序采用默认采样，而有些应用程序根本不使用采样，等等），因此，你仍可以通过采样控制，将引入的数据量降到远远低于中位水平。 但这只是了解其他类似客户看到的情况的一个起点。 [详细了解](app/pricing.md#estimating-the-costs-to-manage-your-application)如何估算 Application Insights 的成本。
 
@@ -66,7 +66,7 @@ Azure 在 [Azure 成本管理和计费](../cost-management-billing/costs/quick-a
 
 在这里，你可以深入了解累计成本摘要，在“按资源划分的成本”视图中获取更详细的信息。 在当前定价层中，无论 Azure 日志数据是源自 Log Analytics 还是 Application Insights，都会按同一套计量收费。 若要单独查看 Log Analytics 或 Application Insights 的使用成本，可在“资源类型”上添加筛选器。 若要查看所有 Application Insights 成本，请将资源类型筛选为“microsoft.insights/components”，若要查看 Log Analytics 成本，请将资源类型筛选为“microsoft.operationalinsights/workspaces”。 
 
-你可[在 Azure 门户中下载使用情况信息](../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)，更好地了解使用情况。 在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可通过以下方式查找 Application Insights 资源的使用情况：先按“计量类别”列进行筛选，以显示“Application Insights”和“Log Analytics”，然后按“实例 ID”列添加一个“包含 microsoft.insights/components”筛选器。  由于所有 Azure Monitor 组件只有一个日志后端，因此，大多数 Application Insights 使用情况都是根据“计量类别”为 Log Analytics 的计量报告的。  只有旧式定价层和多步骤 Web 测试中的 Application Insights 资源才使用计量类别 Application Insights 进行报告。  使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  另外还提供更多详细信息，可帮助你[了解 Microsoft Azure 帐单](../cost-management-billing/understand/review-individual-bill.md)。 
+你可[在 Azure 门户中下载使用情况信息](../cost-management-billing/understand/download-azure-daily-usage.md)，更好地了解使用情况。 在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可通过以下方式查找 Application Insights 资源的使用情况：先按“计量类别”列进行筛选，以显示“Application Insights”和“Log Analytics”，然后按“实例 ID”列添加一个“包含 microsoft.insights/components”筛选器。  由于所有 Azure Monitor 组件只有一个日志后端，因此，大多数 Application Insights 使用情况都是根据“计量类别”为 Log Analytics 的计量报告的。  只有旧式定价层和多步骤 Web 测试中的 Application Insights 资源才使用计量类别 Application Insights 进行报告。  使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  另外还提供更多详细信息，可帮助你[了解 Microsoft Azure 帐单](../cost-management-billing/understand/review-individual-bill.md)。 
 
 > [!NOTE]
 > 使用“Azure 成本管理 + 计费”中心的“成本管理”是大致了解监视成本的首选方法 。  适用于 [Log Analytics](logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs) 和 [Application Insights](app/pricing.md#understand-your-usage-and-estimate-costs) 的“使用情况和估算成本”为 Azure Monitor 的上述每个组成部分提供了更深入的见解。

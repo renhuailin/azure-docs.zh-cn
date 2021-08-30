@@ -1,20 +1,20 @@
 ---
-title: 通过已启用 Azure Arc 的服务器管理虚拟机扩展
+title: 通过已启用 Azure Arc 的服务器进行虚拟机扩展管理
 description: 已启用 Azure Arc 的服务器可以管理虚拟机扩展的部署，这些扩展向非 Azure VM 提供部署后配置和自动化任务。
-ms.date: 04/13/2021
+ms.date: 08/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: e28cd7753fc85f2e40385c65392fea73502aa05b
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 20ae8b6cbb29a9a0b43592c3b242707bb2d3add6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832835"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727325"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>通过已启用 Azure Arc 的服务器进行虚拟机扩展管理
 
 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部署后配置和自动化任务。 例如，如果虚拟机需要安装软件、进行防病毒保护或运行脚本，便可以使用 VM 扩展。
 
-使用已启用 Azure Arc 的服务器，可以将 Azure VM 扩展部署到非 Azure Windows 和 Linux VM，从而简化在混合计算机生命周期内对其进行的管理。 在由已启用 Arc 的服务器所管理的混合计算机或服务器上，可以使用以下方法来管理 VM 扩展：
+使用已启用 Azure Arc 的服务器，可以更新 Azure VM 扩展、将其部署到非 Azure Windows 和 Linux VM，也可从中删除，从而简化在混合计算机生命周期内对其进行的管理。 在由已启用 Arc 的服务器管理的混合计算机或服务器上，可以使用以下方法来管理 VM 扩展：
 
 - [Azure 门户](manage-vm-extensions-portal.md)
 - [Azure CLI](manage-vm-extensions-cli.md)
@@ -24,11 +24,14 @@ ms.locfileid: "107832835"
 > [!NOTE]
 > 已启用 Azure Arc 的服务器不支持管理 VM 扩展，也不支持将 VM 扩展部署到 Azure 虚拟机。 对于 Azure VM，请查看下面的 [VM 扩展概述](../../virtual-machines/extensions/overview.md)一文。
 
+> [!NOTE]
+> 目前只能通过 Azure 门户更新扩展。 目前不支持从 Azure CLI、Azure PowerShell 或使用 Azure 资源管理器模板执行此操作。
+
 ## <a name="key-benefits"></a>主要优点
 
 已启用 Azure Arc 的服务器 VM 扩展支持提供了以下主要优势：
 
-- 通过启用 Log Analytics 代理 VM 扩展，使用 [Azure Monitor Logs](../../azure-monitor/logs/data-platform-logs.md) 来收集日志数据进行分析。 当在不同类型的源的数据中进行复杂分析时，这非常有用。
+- 通过启用 Log Analytics 代理 VM 扩展，使用 [Azure Monitor Logs](../../azure-monitor/logs/data-platform-logs.md) 来收集日志数据进行分析。 Log Analytics 使其有助于在不同类型源的日志数据中进行复杂分析。
 
 - [VM 见解](../../azure-monitor/vm/vminsights-overview.md)分析 Windows 和 Linux VM 的性能状况，并监视这些 VM 在其他资源和外部进程中的进程和依赖关系。 这是通过同时启用 Log Analytics 代理和 Dependency 代理 VM 扩展来实现的。
 
@@ -47,11 +50,13 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 若要了解有关 Azure Connected Machine 代理包以及 Extension 代理组件的详细信息，请参阅[代理概述](agent-overview.md#agent-component-details)。
 
 > [!NOTE]
-> 对于已启用 Arc 的服务器删除了针对 DSC VM 扩展的最近支持。 另外，我们建议使用自定义脚本扩展来管理服务器或计算机的部署后配置。
+> 对于已启用 Arc 的服务器，删除了针对 DSC VM 扩展的最近支持。 另外，我们建议使用自定义脚本扩展来管理服务器或计算机的部署后配置。
+
+已启用 Arc 的服务器支持在资源组或其他 Azure 订阅之间移动安装了一个或多个 VM 扩展的计算机，而不会影响其配置。 源订阅与目标订阅必须在同一个 [Azure Active Directory 租户](../../active-directory/develop/quickstart-create-new-tenant.md)中。 有关在处理之前移动资源和注意事项的详细信息，请参阅[将资源移到新的资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 ### <a name="windows-extensions"></a>Windows 扩展
 
-|分机 |Publisher |类型 |其他信息 |
+|扩展名 |Publisher |类型 |其他信息 |
 |----------|----------|-----|-----------------------|
 |Azure Defender 集成漏洞扫描程序 |Qualys |WindowsAgent.AzureSecurityCenter |[适用于 Azure 和混合计算机的 Azure Defender 集成式漏洞评估解决方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |自定义脚本扩展 |Microsoft.Compute | CustomScriptExtension |[Windows 自定义脚本扩展](../../virtual-machines/extensions/custom-script-windows.md)|
@@ -62,7 +67,7 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 
 ### <a name="linux-extensions"></a>Linux 扩展
 
-|分机 |Publisher |类型 |其他信息 |
+|扩展名 |Publisher |类型 |其他信息 |
 |----------|----------|-----|-----------------------|
 |Azure Defender 集成漏洞扫描程序 |Qualys |LinuxAgent.AzureSecurityCenter |[适用于 Azure 和混合计算机的 Azure Defender 集成式漏洞评估解决方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
 |自定义脚本扩展 |Microsoft.Azure.Extensions |CustomScript |[Linux 自定义脚本扩展版本 2](../../virtual-machines/extensions/custom-script-linux.md) |
@@ -86,19 +91,19 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)列表所�
 
 适用于 Linux 的 Log Analytics 代理 VM 扩展需要在目标计算机上安装 Python 2.x。
 
-### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM 扩展（预览版）
+### <a name="azure-key-vault-vm-extension"></a>Azure Key Vault VM 扩展 
 
-Key Vault VM 扩展（预览版）不支持以下 Linux 操作系统：
+Key Vault VM 扩展不支持以下 Linux 操作系统：
 
 - CentOS Linux 7 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
 
-仅支持使用以下内容来部署 Key Vault VM 扩展（预览版）：
+仅支持使用以下内容来部署 Key Vault VM 扩展：
 
 - Azure CLI
 - Azure PowerShell
-- Azure Resource Manager 模板
+- Azure 资源管理器模板
 
 在部署扩展之前，需要完成以下操作：
 

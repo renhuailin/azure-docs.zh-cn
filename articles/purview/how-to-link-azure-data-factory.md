@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 05/31/2021
-ms.openlocfilehash: 0f92a5313622ffafe5ea5cbe2fdedc77d685b0ab
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 08/10/2021
+ms.openlocfilehash: 0a5ab1b8e79c3cfacb2944369b5f9234355ba4c8
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792214"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122229009"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure Purview
 
@@ -22,8 +22,8 @@ ms.locfileid: "110792214"
 
 多个 Azure 数据工厂可以连接到单个 Azure Purview 数据目录以推送世系信息。 当前限制允许从 Purview 管理中心一次最多连接十个数据工厂帐户。 若要显示已连接到 Purview 数据目录的数据工厂帐户列表，请执行以下操作：
 
-1. 在左侧导航窗格中选择“管理中心”。
-2. 在“外部连接”下，选择“数据工厂连接” 。
+1. 在左侧导航窗格中选择“管理”。
+2. 在“世系连接”下，选择“数据工厂” 。
 3. 随即会显示数据工厂连接列表。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/data-factory-connection.png" alt-text="屏幕截图显示数据工厂连接列表。" lightbox="./media/how-to-link-azure-data-factory/data-factory-connection.png":::
@@ -49,10 +49,10 @@ ms.locfileid: "110792214"
 >
 > 此外，用户还需要是数据工厂的“所有者”或“参与者”。 
 
-按照以下步骤将现有的数据工厂帐户连接到 Purview 数据目录。
+按照以下步骤将现有的数据工厂连接到 Purview 数据目录。
 
-1. 在左侧导航窗格中选择“管理中心”。
-2. 在“外部连接”下，选择“数据工厂连接” 。
+1. 在左侧导航窗格中选择“管理”。
+2. 在“世系连接”下，选择“数据工厂” 。
 3. 在“数据工厂连接”页上，选择“新建” 。
 
 4. 从列表中选择数据工厂帐户，然后选择“确定”。 此外，还可以按订阅名称进行筛选，以限制列表。
@@ -62,7 +62,6 @@ ms.locfileid: "110792214"
     如果数据工厂已连接到当前的 Purview 帐户，或者数据工厂没有托管标识，则可能会禁用某些数据工厂实例。
 
     如果任何选定的数据工厂已连接到其他 Purview 帐户，则将显示一条警告消息。 选择“确定”，将断开与其他 Purview 帐户的数据工厂连接。 无需额外确认。
-
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="屏幕截图显示断开 Azure 数据工厂连接时的警告。" lightbox="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png":::
 
@@ -88,10 +87,6 @@ ms.locfileid: "110792214"
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="屏幕截图显示如何选择数据工厂以删除连接。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
-## <a name="configure-a-self-hosted-integration-runtime-to-collect-lineage"></a>配置自承载集成运行时以收集世系
-
-数据工厂复制活动的世系可用于本地数据存储，例如 SQL 数据库。 如果运行的是自承载集成运行时以使用 Azure 数据工厂进行数据移动，并且想要捕获 Azure Purview 中的世系，请确保版本为 5.0 或更高版本。 有关自承载集成运行时的详细信息，请参阅[创建和配置自承载集成运行时](../data-factory/create-self-hosted-integration-runtime.md)。
-
 ## <a name="supported-azure-data-factory-activities"></a>支持的 Azure 数据工厂活动
 
 Azure Purview 从以下 Azure 数据工厂活动捕获运行时世系：
@@ -105,55 +100,9 @@ Azure Purview 从以下 Azure 数据工厂活动捕获运行时世系：
 
 如以下各节部分所述，数据工厂与 Purview 之间的集成仅支持数据工厂支持的部分数据系统。
 
-### <a name="data-factory-copy-activity-support"></a>数据工厂复制活动支持
+[!INCLUDE[data-factory-supported-lineage-capabilities](includes/data-factory-common-supported-capabilities.md)]
 
-| 数据存储 | 支持 | 
-| ------------------- | ------------------- | 
-| Azure Blob 存储 | 是 |
-| Azure 认知搜索 | 是 | 
-| Azure Cosmos DB (SQL API) \* | 是 | 
-| Azure Cosmos DB 的用于 MongoDB 的 API \* | 是 |
-| Azure 数据资源管理器 \* | 是 | 
-| Azure Data Lake Storage Gen1 | 是 | 
-| Azure Data Lake Storage Gen2 | 是 | 
-| Azure Database for Maria DB \* | 是 | 
-| Azure Database for MySQL \* | 是 | 
-| Azure Database for PostgreSQL \* | 是 |
-| Azure 文件存储 | 是 | 
-| Azure SQL 数据库 \* | 是 | 
-| Azure SQL 托管实例 \* | 是 | 
-| Azure Synapse Analytics \* | 是 | 
-| Azure 表存储 | 是 |
-| Amazon S3 | 是 | 
-| Hive \* | 是 | 
-| SAP ECC \* | 是 |
-| SAP 表 | 是 |
-| SQL Server \* | 是 | 
-| Teradata \* | 是 |
-
-\* Azure Purview 当前不支持针对世系或扫描的查询或存储过程。世系仅限于表和视图源。
-
-> [!Note]
-> 世系功能在数据工厂复制活动中有一定的性能开销。 对于在 Purview 中设置数据工厂连接的用户，你可能会发现某些复制作业需要花费更长的时间才能完成。 大多数情况下，该影响是不可忽略的。 如果完成复制作业所需的时间比平时长得多，请联系支持人员并提供时间对比信息。
-
-#### <a name="known-limitations-on-copy-activity-lineage"></a>复制活动世系的已知限制
-
-当前，如果使用以下复制活动功能，则尚不支持世系：
-
-- 采用二进制格式将数据复制到 Azure Data Lake Storage Gen1 中。
-- 使用 PolyBase 或 COPY 语句将数据复制到 Azure Synapse Analytics 中。
-- 二进制、带分隔符的文本、Excel、JSON 和 XML 文件的压缩设置。
-- 针对 Azure SQL 数据库、Azure SQL 托管实例、Azure Synapse Analytics、SQL Server 和 SAP 表的源分区选项。
-- 针对基于文件的存储的源分区发现选项。
-- 将数据复制到基于文件的接收器，该接收器具有每个文件的最大行数设置。
-- 复制期间添加其他列。
-
-除世系外，还会报告以下连接器的数据资产架构（“资产”->“架构”选项卡中会显示）：
-
-- Azure Blob、Azure 文件存储、ADLS Gen1、ADLS Gen2 和 Amazon S3 上的 CSV 和 Parquet 文件
-- Azure 数据资源管理器、Azure SQL 数据库、Azure SQL 托管实例、Azure Synapse Analytics、SQL Server、Teradata
-
-### <a name="data-factory-data-flow-support"></a>数据工厂数据流支持
+### <a name="data-flow-support"></a>数据流支持
 
 | 数据存储 | 支持 |
 | ------------------- | ------------------- | 
@@ -169,23 +118,13 @@ Azure Purview 从以下 Azure 数据工厂活动捕获运行时世系：
 
 \* Azure Purview 当前不支持针对世系或扫描的查询或存储过程。世系仅限于表和视图源。
 
-### <a name="data-factory-execute-ssis-package-support"></a>数据工厂执行 SSIS 包支持
+### <a name="execute-ssis-package-support"></a>执行 SSIS 包支持
 
-| 数据存储 | 支持 |
-| ------------------- | ------------------- |
-| Azure Blob 存储 | 是 |
-| Azure Data Lake Storage Gen1 | 是 |
-| Azure Data Lake Storage Gen2 | 是 |
-| Azure 文件存储 | 是 |
-| Azure SQL 数据库 \* | 是 |
-| Azure SQL 托管实例 \*| 是 |
-| Azure Synapse Analytics \* | 是 |
-| SQL Server \* | 是 |
+请参阅[支持的数据存储](how-to-lineage-sql-server-integration-services.md#supported-data-stores)。
 
-\* Azure Purview 当前不支持针对世系或扫描的查询或存储过程。世系仅限于表和视图源。
+## <a name="bring-data-factory-lineage-into-purview"></a>将数据工厂世系引入 Purview
 
-> [!Note]
-> Azure Data Lake Storage Gen2 现已正式发布。 我们建议你立即开始使用它。 有关详细信息，请参阅[产品页](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/)。
+有关端到端演练，请按照[教程：将数据工厂世系数据推送到 Azure Purview](../data-factory/turorial-push-lineage-to-purview.md) 进行操作。
 
 ## <a name="supported-lineage-patterns"></a>支持的世系模式
 
@@ -249,5 +188,8 @@ Azure Purview 支持多种世系模式。 生成的世系数据基于数据工�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [目录世系用户指南](catalog-lineage-user-guide.md)
-- [链接到 Azure Data Share 以获取世系](how-to-link-azure-data-share.md)
+[教程：将数据工厂世系数据推送到 Azure Purview](../data-factory/turorial-push-lineage-to-purview.md)
+
+[目录世系用户指南](catalog-lineage-user-guide.md)
+
+[链接到 Azure Data Share 以获取世系](how-to-link-azure-data-share.md)

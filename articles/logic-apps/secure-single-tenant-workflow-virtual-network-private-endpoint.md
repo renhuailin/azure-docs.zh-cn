@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: 28d602f5edebaa122ec873338d99e31a4f755d14
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 07/25/2021
+ms.openlocfilehash: 4726df91efb18b2d9beec77606db449bd4aee3fa
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372457"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652641"
 ---
 # <a name="secure-traffic-between-virtual-networks-and-single-tenant-workflows-in-azure-logic-apps-using-private-endpoints"></a>使用专用终结点保护 Azure 逻辑应用中虚拟网络和单租户工作流之间的流量
 
@@ -153,7 +153,7 @@ ms.locfileid: "110372457"
 
 ### <a name="considerations-for-private-endpoints-on-storage-accounts"></a>存储帐户上专用终结点的注意事项
 
-- 为每个表、队列和 Blob 存储服务创建不同的专用终结点。
+- 为每个表、队列、Blob 和文件存储服务创建不同的专用终结点。
 
 - 使用此设置，将所有出站流量路由通过虚拟网络：
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 99368da8b4018e93ad537e4722ffefd476e61291
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2efd5fdc49f5ae6724b9d1dc3b45d54329f17a61
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99573681"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113223943"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>将 Trusona 与 Azure Active Directory B2C 集成
 
@@ -91,7 +91,7 @@ Trusona 是一个独立软件供应商 (ISV) 提供程序，可通过启用无�
 
 3. 选择“标识提供者”。
 
-4. 选择“添加”。
+4. 选择 **添加** 。
 
 ### <a name="configure-an-identity-provider"></a>配置标识提供者  
 
@@ -99,11 +99,11 @@ Trusona 是一个独立软件供应商 (ISV) 提供程序，可通过启用无�
 
 2. 填写用于设置标识提供者的表单：  
 
-   | Property | 值  |
+   | 属性 | 值  |
    | :--- | :--- |
    | 元数据 URL | `https://gateway.trusona.net/oidc/.well-known/openid-configuration`|
    | 客户端 ID | 将从 Trusona 以电子邮件的形式发送给你 |
-   | 作用域 | OpenID 配置文件电子邮件 |
+   | 范围 | OpenID 配置文件电子邮件 |
    | 响应类型 | Id_token |
    | 响应模式  | Form_post |
 
@@ -113,7 +113,7 @@ Trusona 是一个独立软件供应商 (ISV) 提供程序，可通过启用无�
 
 5. 填写用于映射标识提供者的表单：
 
-   | Property | 值  |
+   | 属性 | 值  |
    | :--- | :--- |
    | UserID | Sub  |
    | 显示名称 | nickname |
@@ -148,15 +148,17 @@ Trusona 是一个独立软件供应商 (ISV) 提供程序，可通过启用无�
 
 ### <a name="test-the-policy"></a>测试策略
 
-1. 选择新创建的策略。
+1. 选择你创建的策略。
 
-2. 选择“运行用户流”。
+1. 选择“运行用户流”，然后选择设置：
 
-3. 在表单中，输入回复 URL。
+   1. 应用程序：选择已注册的应用。
+ 
+   1. 回复 URL：选择重定向 URL。
+   
+1. 选择“运行用户流”。 系统会将你重定向到 Trusona OIDC 网关。 在 Trusona 网关上，使用 Trusona 移动 SDK 通过 Trusona 应用或自定义应用扫描显示的安全 QR 码。
 
-4. 选择“运行用户流”。 系统会将你重定向到 Trusona OIDC 网关。 在 Trusona 网关上，使用 Trusona 移动 SDK 通过 Trusona 应用或自定义应用扫描显示的安全 QR 码。
-
-5. 在扫描安全 QR 码后，系统会将你重定向到在步骤 3 定义的回复 URL。
+1. 扫描安全 QR 码后，将重定向到你定义的回复 URL。
 
 ## <a name="next-steps"></a>后续步骤  
 
@@ -164,4 +166,4 @@ Trusona 是一个独立软件供应商 (ISV) 提供程序，可通过启用无�
 
 - [Azure AD B2C 中的自定义策略](custom-policy-overview.md)
 
-- [AAD B2C 中的自定义策略入门](custom-policy-get-started.md?tabs=applications)
+- [AAD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

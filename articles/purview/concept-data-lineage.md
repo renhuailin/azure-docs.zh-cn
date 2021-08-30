@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 476355f41de5e0e6aaffdedea8947cab5221767a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da2f34014f3c789762cc2743b971aa76ad1049a9
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200730"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112574427"
 ---
 # <a name="data-lineage-in-azure-purview-data-catalog-client"></a>Azure Purview 数据目录客户端中的数据世系
 
@@ -43,7 +43,7 @@ Purview 数据目录将与其他数据处理、存储和分析系统连接，以
 
 ## <a name="lineage-granularity"></a>世系粒度
 
-本部分介绍有关数据目录收集世系信息的粒度的详细信息。 此粒度可能因数据系统而异。
+以下部分介绍有关 Purview 收集世系信息的粒度的详细信息。 此粒度可能因 Purview 中支持的数据系统而异。
 
 ### <a name="entity-level-lineage-sources--process--targets"></a>实体级别世系：源 > 进程 > 目标 
 

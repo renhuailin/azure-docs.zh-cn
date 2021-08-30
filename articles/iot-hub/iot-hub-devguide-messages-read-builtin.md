@@ -2,21 +2,20 @@
 title: 了解 Azure IoT 中心内置终结点 | Microsoft Docs
 description: 开发人员指南：介绍如何使用与事件中心兼容的内置终结点来读取设备到云的消息。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/16/2021
 ms.custom:
 - amqp
 - 'Role: Cloud Development'
-ms.openlocfilehash: f98bf2cc4fb4946f6e4609db7a1428dd153cbc84
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: eb90f48c78e98284268806aa6f1698a94f57fb4c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787322"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728776"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
 
@@ -63,27 +62,38 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 可以用来连接到内置的、与事件中心兼容的且由 IoT 中心公开的终结点的 SDK 包括：
 
-| 语言 | SDK | 示例 |
+| 语言 | SDK 中 IsInRole 中的声明 | 示例 |
 | -------- | --- | ------ |
-| .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [快速入门](quickstart-send-telemetry-dotnet.md) |
-| Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [快速入门](quickstart-send-telemetry-java.md) |
-| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [快速入门](quickstart-send-telemetry-node.md) |
-| Python | https://pypi.org/project/azure-eventhub/ | [快速入门](quickstart-send-telemetry-python.md) |
+| .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [快速入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp) |
+| Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [快速入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-java) |
+| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [快速入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs) |
+| Python | https://pypi.org/project/azure-eventhub/ | [快速入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-python) |
 
 可以与内置的、与事件中心兼容的且由 IoT 中心公开的终结点配合使用的产品集成包括：
 
-* [Azure Functions](../azure-functions/index.yml)。 请参阅[使用 Azure Functions 从 IoT 中心处理数据](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/)。
+* [Azure Functions](../azure-functions/index.yml)。 请参阅[适用于 Azure Functions 的 Azure IoT 中心绑定](../azure-functions/functions-bindings-event-iot.md)。
 * [Azure 流分析](../stream-analytics/index.yml)。 请参阅[将数据作为流分析的输入进行流式传输](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub)。
 * [时序见解](../time-series-insights/index.yml)。 请参阅[向时序见解环境添加 IoT 中心事件源](../time-series-insights/how-to-ingest-data-iot-hub.md)。
 * [Apache Storm Spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md)。 可以在 GitHub 上查看 [Spout 源代码](https://github.com/apache/storm/tree/master/external/storm-eventhubs) 。
 * [Apache Spark 集成](../hdinsight/spark/apache-spark-ipython-notebook-machine-learning.md)。
 * [Azure Databricks](/azure/azure-databricks/)。
 
+## <a name="use-amqp-ws-or-a-proxy-with-event-hubs-sdks"></a>将 AMQP-WS 或代理与事件中心 SDK 一起使用
+
+在需要基于 WebSockets 的 AMQP 或通过代理进行读取的环境中，可以使用事件中心 SDK 从内置端点进行读取。 有关详细信息，请参阅以下示例。
+
+| 语言 | 示例 |
+| -------- | ------ |
+| .NET | [ReadD2cMessages .NET](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Quickstarts/ReadD2cMessages) |
+| Java | [read-d2c-messages Java](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Quickstarts/read-d2c-messages) |
+| Node.js | [read-d2c-messages Node.js](https://github.com/Azure-Samples/azure-iot-samples-node/tree/master/iot-hub/Quickstarts/read-d2c-messages) |
+| Python | [read-dec-messages Python](https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages) |
+
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 IoT 中心终结点的详细信息，请参阅 [IoT 中心终结点](iot-hub-devguide-endpoints.md)。
 
-* [快速入门](quickstart-send-telemetry-node.md)介绍如何从模拟设备发送设备到云的消息，以及如何从内置终结点读取消息。 
+* [快速入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)介绍如何从模拟设备发送设备到云的消息，以及如何从内置终结点读取消息。 
 
 有关更多详细信息，请参阅[使用路由处理 IoT 中心设备到云的消息](tutorial-routing.md)教程。
 

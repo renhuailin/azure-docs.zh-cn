@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/05/2020
 ms.author: banders
-ms.openlocfilehash: bf7945c56fc05c33ae3cfed1c67085b3b28f847f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b038ab5a937105d3fb625f6b17dd71b0073b7080
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690504"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726983"
 ---
 # <a name="automatically-renew-reservations"></a>自动续订预留
 
@@ -27,11 +27,11 @@ ms.locfileid: "88690504"
 
 ## <a name="set-up-renewal"></a>设置续订
 
-转到 Azure 门户 >“预留”。 
+转到 Azure 门户 >“预留”。
 
 1. 选择该预订。
-2. 单击“续订”。 
-3. 选择“在过期后自动购买新预留”  。  
+2. 单击“续订”。
+3. 选择“在过期后自动购买新预留”。  
   ![显示预留续订的示例](./media/reservation-renew/reservation-renewal.png)
 
 ## <a name="if-you-dont-renew"></a>如果不续订
@@ -84,6 +84,8 @@ Azure 将权限从要过期的预留复制到新预留。 另外，预留购买�
 如果出现上述任意条件，续订停用，你会收到电子邮件通知。
 
 ## <a name="renewal-notification"></a>续订通知
+
+续订通知电子邮件在到期前 30 天发送，并在到期日期再次发送。 发送电子邮件地址为 `azure-noreply@microsoft.com`。 你可能希望将电子邮件地址添加到安全发送方或允许列表。
 
 电子邮件会发送给不同的人员，具体取决于购买方式：
 

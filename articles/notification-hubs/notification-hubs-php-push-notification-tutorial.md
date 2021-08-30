@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: daebf7c6a5fc9056e16b77a40ee9f90db598749f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46e0a74a97f46c317684f590f7d4462aec08fad2
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87076633"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586841"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>如何通过 PHP 使用通知中心
 
@@ -280,7 +280,7 @@ $hub->sendNotification($notification, null);
 
 ## <a name="next-steps"></a>后续步骤
 
-在本主题中，我们介绍了如何为通知中心创建简单的 Java REST 客户端。 可以从此页执行下列操作：
+在本主题中，我们介绍了如何为通知中心创建简单的 PHP REST 客户端。 可以从此页执行下列操作：
 
 * 下载完整的 [PHP REST 包装器示例]，其中包含上述所有代码。
 * 在 [突发新闻教程] 中继续学习通知中心标记功能

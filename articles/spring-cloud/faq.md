@@ -1,19 +1,19 @@
 ---
 title: 有关 Azure Spring Cloud 的常见问题解答 | Microsoft Docs
 description: 本文解答有关 Azure Spring Cloud 的常见问题。
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a60634175ff06780372331bef6b28de2edbfea33
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5cc02d09efda462a2feaaa77ff74dff9dedd2041
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144630"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860806"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud 常见问题解答
 
@@ -29,7 +29,7 @@ Azure Spring Cloud 通过集成 Azure Monitor、Application Insights 和 Log Ana
 
 ### <a name="how-secure-is-azure-spring-cloud"></a>Azure Spring Cloud 的安全性如何？
 
-安全性和隐私性是 Azure 及 Azure Spring Cloud 客户最关注的问题之一。 Azure 将会安全加密所有应用程序数据、日志或配置，有助于确保只有各自的客户才能访问这些数据。 
+安全性和隐私性是 Azure 及 Azure Spring Cloud 客户最关注的问题之一。 Azure 将会安全加密所有应用程序数据、日志或配置，有助于确保只有各自的客户才能访问这些数据。
 
 * Azure Spring Cloud 中的服务实例彼此隔离。
 * Azure Spring Cloud 提供完整的 TLS/SSL 和证书管理。
@@ -46,13 +46,15 @@ Azure Spring Cloud 是一种区域服务。 Azure Spring Cloud 中的所有客�
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud 有哪些已知限制？
 
 Azure Spring Cloud 有以下已知限制：
-    
+
 * 用于创建每个应用程序的应用程序名称将会覆盖 `spring.application.name`。
 * `server.port` 默认设置为端口 1025。 如果应用其他任何值，则该值将被替代。 请遵从此设置，不要在代码中指定服务器端口。
 * Azure 门户和 Azure 资源管理器模板不支持上传应用程序包。 如需上传应用程序包，仅可通过 Azure CLI 部署应用程序。
 
-### <a name="what-pricing-tiers-are-available"></a>有哪些定价层可用？ 
+### <a name="what-pricing-tiers-are-available"></a>有哪些定价层可用？
+
 我应使用哪一种？每个层中的限制是什么？
+
 * Azure Spring Cloud 提供两个定价层：“基本”和“标准”。 基本层面向开发/测试和试用 Azure Spring Cloud。 标准层经过优化，可运行常规用途生产流量。 有关限制和功能级别的比较，请参阅 [Azure Spring Cloud 定价详细信息](https://azure.microsoft.com/pricing/details/spring-cloud/)。
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>如何提供反馈和报告问题？
@@ -74,7 +76,7 @@ Azure Spring Cloud 支持 Java 8 和 11。 请参阅 [Java 运行时和操作系
 我们已确认 Spring Boot 2.4 出现问题，目前正与 Spring 社区合作解决该问题。 请提供在应用和 Eureka 之间启用 TLS 身份验证所需的这两个依赖项。
 
 ```xml
-<dependency> 
+<dependency>
     <groupId>com.sun.jersey</groupId>
     <artifactId>jersey-client</artifactId>
     <version>1.19.4</version>
@@ -102,6 +104,7 @@ Azure Spring Cloud 支持将 Spring Cloud 应用程序日志和指标导出到 A
 ### <a name="what-resource-types-does-service-binding-support"></a>服务绑定支持哪些资源类型？
 
 目前支持三个服务：
+
 * Azure Cosmos DB
 * Azure Database for MySQL
 * Azure Redis 缓存。
@@ -113,14 +116,13 @@ Azure Spring Cloud 支持将 Spring Cloud 应用程序日志和指标导出到 A
 
 ### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Azure Spring Cloud 实例有多少出站公共 IP 地址？
 
-出站公共 IP 地址数可能因层级和其他因素而异。 
+出站公共 IP 地址数可能因层级和其他因素而异。
 
 | Azure Spring Cloud 实例类型 | 默认的出站公共 IP 地址数 |
 | -------------------------------- | ---------------------------------------------- |
 | 基本层实例             | 1                                              |
 | 标准层实例          | 2                                              |
 | VNet 注入实例         | 1                                              |
-
 
 ### <a name="can-i-increase-the-number-of-outbound-public-ip-addresses"></a>是否可以增加出站公共 IP 地址的数量？
 
@@ -153,7 +155,7 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 
 ### <a name="how-long-will-java-8-and-java-11-lts-versions-be-supported"></a>Java 8 和 Java 11 LTS 版本将受到多长时间的支持？
 
-请参阅[针对 Azure 和 Azure Stack 的 Java 长期支持](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+请参阅[针对 Azure 和 Azure Stack 的 Java 长期支持](/azure/developer/java/fundamentals/java-support-on-azure)。
 
 * 对 Java 8 LTS 的支持将持续至 2030 年 12 月。
 * 对 Java 11 LTS 的支持将持续至 2027 年 9 月。
@@ -186,6 +188,7 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 ## <a name="deployment"></a>部署
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure Spring Cloud 是否支持蓝绿部署？
+
 是的。 有关详细信息，请参阅[设置过渡环境](./how-to-staging-environment.md)。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>是否可以访问 Kubernetes 来操作应用程序容器？
@@ -204,6 +207,7 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>将现有 Spring Cloud 微服务迁移到 Azure Spring Cloud 的最佳做法是什么？
 
 在将现有 Spring Cloud 微服务迁移到 Azure Spring Cloud 时，最好遵循以下最佳做法：
+
 * 需要解析所有应用程序依赖项。
 * 准备好配置项、环境变量和 JVM 参数，以便可将其与 Azure Spring Cloud 中的部署进行比较。
 * 若要使用服务绑定，请分析你的 Azure 服务，并确保设置适当的访问权限。
@@ -225,21 +229,21 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 直到 2022 年 12 月 3 日。 请参阅 [.NET Core 支持策略](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
 ::: zone-end
 
-
 ## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>极少发生的服务注册表不可用情况会产生什么影响？
 
-在一些极少发生的情况下，你可能会看到一些错误，例如 
-```
+在一些很少发生的场景中，你可能会从应用程序日志中看到如下错误：
+
+```output
 RetryableEurekaHttpClient: Request execution failure with status code 401; retrying on another server if available
 ```
-在应用程序的日志中。 这种极少出现的由 Spring 框架引入的问题是由网络不稳定或其他网络问题导致的。 
+
+由于网络不稳定或其他网络问题，Spring 框架因速率极低引入了此问题。
 
 这应该不会对用户体验产生影响，eureka 客户端具有检测信号和重试策略来解决此问题。 可以将它视为一个暂时性错误，放心地忽略它。
 
 我们将在不久的将来增强这方面，避免用户的应用程序中出现此错误。
-
 
 ## <a name="next-steps"></a>后续步骤
 

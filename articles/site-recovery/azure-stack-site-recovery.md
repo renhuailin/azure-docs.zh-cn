@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 将 Azure Stack VM 复制到 Azure | Microsoft
 description: 了解如何使用 Azure Site Recovery 服务为 Azure Stack VM 设置到 Azure 的灾难恢复。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 300b239de74c7d21e03eb0c3b059663b5074964c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 386eae05ea06b59aac290d5f1f51d643d7952b6a
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728379"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580415"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 
@@ -82,7 +82,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 **操作系统** | **详细信息**
 --- | ---
-**64 位 Windows** | Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2（自 SP1 起）
+**64 位 Windows** | Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2（来自 SP1）
 **CentOS** | 5.2 到 5.11、6.1 到 6.9、7.0 到 7.3
 **Ubuntu** | 14.04 LTS 服务器、16.04 LTS 服务器。 查看[支持的内核](vmware-physical-azure-support-matrix.md#ubuntu-kernel-versions)
 

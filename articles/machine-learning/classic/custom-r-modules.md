@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: d44f2cfa72bd53b01da073fca31ca698eb42720d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4eb1ecb84acdf6ccf65852f4da83c238ac136ceb
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520470"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582323"
 ---
 # <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>定义机器学习工作室（经典）的自定义 R 模块
 
@@ -22,9 +22,9 @@ ms.locfileid: "100520470"
 
 本主题介绍如何创作和部署自定义 R 工作室（经典版）。 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块， 并举例说明如何构建定义模块的文件以及如何在机器学习工作区中进行模块部署注册。 随后本主题会详细说明用于定义自定义模块的元素和属性。 本主题还会讨论如何使用辅助功能和文件以及多个输出。 
 
-自定义模块是用户定义的模块，可上传至工作区并在 Azure 机器学习工作室（经典版）实验中运行。 **自定义 R 模块** 是一种可执行用户定义的 R 函数的自定义模块。 **R** 是一种用于统计计算和图形的编程语言，统计和科学工作者将其广泛用于运行算法。 目前，R 是自定义模块支持的唯一语言；但根据计划，未来发布的版本会支持其他语言。
+自定义模块是用户定义的模块，可上传至工作区并在机器学习工作室（经典）实验中运行。 **自定义 R 模块** 是一种可执行用户定义的 R 函数的自定义模块。 **R** 是一种用于统计计算和图形的编程语言，统计和科学工作者将其广泛用于运行算法。 目前，R 是自定义模块支持的唯一语言；但根据计划，未来发布的版本会支持其他语言。
 
-自定义模型在 Azure 机器学习工作室（经典版）中具有优先地位，因为你可以像使用任何其他模块一样使用自定义模块。 它们可与其他模块一起运行，可包含在已发布实验或可视化中。 可控制模块实施的算法、使用的输入和输出端口、建模参数以及各种其他运行时行为。 包含自定义模块的实验也可发布到 Azure AI 库，以实现轻松共享。
+自定义模型在机器学习工作室（经典）中具有优先地位，因为你可以像使用任何其他模块一样使用自定义模块。 它们可与其他模块一起运行，可包含在已发布实验或可视化中。 可控制模块实施的算法、使用的输入和输出端口、建模参数以及各种其他运行时行为。 包含自定义模块的实验也可发布到 Azure AI 库，以实现轻松共享。
 
 ## <a name="files-in-a-custom-r-module"></a>自定义 R 模块中的文件
 自定义 R 模块由 .zip 文件定义，该文件至少包含两个文件：
@@ -55,7 +55,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE)
 ```
 
 ### <a name="the-xml-definition-file"></a>XML 定义文件
-要将此 `CustomAddRows` 函数作为 Azure 机器学习工作室（经典版）模块公开，必须创建 XML 定义文件来指定“自定义添加行”模块的外观和行为。 
+要将此 `CustomAddRows` 函数作为机器学习工作室（经典）模块公开，必须创建 XML 定义文件来指定 Custom Add Rows 模块的外观和行为。 
 
 ```xml
 <!-- Defined a module using an R Script -->
@@ -98,7 +98,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE)
 ### <a name="package-and-register-the-module"></a>包和注册模块
 将两个文件另存为 CustomAddRows.R 和 CustomAddRows.xml，然后将两个文件一起压缩为 CustomAddRows.zip 文件。
 
-要在机器学习工作区中进行注册，请转到 Azure 机器学习工作室（经典版）中的工作区，单击底部的“+新建”按钮，并选择“模块”->“从 ZIP 包”，上传新的 **自定义添加行** 模块。
+要在机器学习工作区中进行注册，请转到机器学习工作室（经典）中的工作区，单击底部的“+新建”按钮，并选择“模块”->“从 ZIP 包”，上传新的“自定义添加行”模块  。
 
 ![上传 Zip](./media/custom-r-modules/upload-from-zip-package.png)
 
@@ -106,7 +106,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE)
 
 ## <a name="elements-in-the-xml-definition-file"></a>XML 定义文件中的元素
 ### <a name="module-elements"></a>Module 元素
-**Module** 元素用于在 XML 文件中定义自定义模块。 可使用多个 **Module**  元素在一个 XML 文件中定义多个模块。 工作区中的每个模块必须具有唯一的名称。 如果使用与现有自定义模块相同的名称注册自定义模块，新的模块会替代现有模块。 但自定义模块可使用与现有 Azure 机器学习工作室（经典版）模块相同的名称进行注册。 此时模块会出现在模块面板的“自定义”类别中。
+**Module** 元素用于在 XML 文件中定义自定义模块。 可使用多个 **Module**  元素在一个 XML 文件中定义多个模块。 工作区中的每个模块必须具有唯一的名称。 如果使用与现有自定义模块相同的名称注册自定义模块，新的模块会替代现有模块。 但自定义模块可使用与现有机器学习工作室（经典）模块相同的名称进行注册。 此时模块会出现在模块面板的“自定义”类别中。
 
 ```xml
 <Module name="Custom Add Rows" isDeterministic="false"> 
@@ -125,7 +125,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE)
 * **Description** 元素的内容长度不能超过 128 个字符。
 * **Owner** 元素的内容长度不能超过 32 个字符。
 
-模块结果可以是确定或不确定的。**默认情况下，所有模块都被视为是确定的。 也就是说，给定一组不变的输入参数和数据，模块应返回相同的结果 eacRAND 或返回其运行的函数时间。 考虑到此种情况，只有在参数或输入数据发生改变时，Azure 机器学习工作室（经典版）才会重新运行标记为确定的模块。 通过返回已缓存的结果，实验执行速度也可以得到大幅提高。
+模块结果可以是确定或不确定的。**默认情况下，所有模块都被视为是确定的。 也就是说，给定一组不变的输入参数和数据，模块应返回相同的结果 eacRAND 或返回其运行的函数时间。 考虑到此种情况，只有在参数或输入数据发生改变时，机器学习工作室（经典）才会重新运行标记为确定的模块。 通过返回已缓存的结果，实验执行速度也可以得到大幅提高。
 
 有一些函数是不确定的，例如 RAND 或返回当前日期或时间的函数。 如果模块使用不确定的函数，则可将可选 **isDeterministic** 属性设置为 **FALSE**，将模块指定为不确定。 这可确保无论何时运行实验，模块都会重新运行，即使模块输入和参数没有发生改变。 
 
@@ -351,7 +351,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
   * **default** - default 属性的值必须与一个 **Item** 元素中的 ID 值相对应。
 
 ### <a name="auxiliary-files"></a>辅助文件
-放置在自定义模块 ZIP 文件中的所有文件都可以在执行期间使用。 所有存在的目录结构都将保留。 这意味着本地和 Azure 机器学习工作室（经典版）执行中的文件寻源方式相同。 
+放置在自定义模块 ZIP 文件中的所有文件都可以在执行期间使用。 所有存在的目录结构都将保留。 这意味着本地和机器学习工作室（经典）执行中的文件寻源方式相同。 
 
 > [!NOTE]
 > 请注意所有文件均将提取到了“src”目录，因此所有路径应有“src/”前缀。

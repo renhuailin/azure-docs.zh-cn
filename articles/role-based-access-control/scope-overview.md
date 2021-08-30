@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/08/2020
+ms.date: 08/09/2021
 ms.author: rolyon
-ms.openlocfilehash: deee42c46c9b08bb265c972695b9319413d4fcb1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3fc3d614ef26235325e0b9a9e8fee68d2bf919a5
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100555919"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862581"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>了解 Azure RBAC 的范围
 
@@ -119,6 +119,18 @@ ms.locfileid: "100555919"
         "type": "Microsoft.Authorization/roleAssignments"
       }
     ```
+
+## <a name="scope-and-arm-templates"></a>范围和 ARM 模板
+
+角色分配是 Azure 资源管理器中的一种特殊类型，称为扩展资源。 扩展资源是扩展另一资源的功能的资源。 它们始终作为另一资源的扩展（如子资源）存在。 例如，订阅范围的角色分配是订阅的扩展资源。 角色分配的名称始终是要扩展的资源的名称加上 `/Microsoft.Authorization/roleAssignments/{roleAssignmentId}`。 使用 Azure 资源管理器模板（ARM 模板）分配角色时，通常不需要提供范围。 原因在于范围字段最后始终为要扩展的资源的 ID。 范围可以从角色分配本身的 ID 确定。 下表显示了角色分配 ID 和相应范围的示例：
+
+> [!div class="mx-tableFixed"]
+> | 角色分配 ID | 范围 |
+> | --- | --- |
+> | `/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}` | `/subscriptions/{subscriptionId}` |
+> | `/subscriptions/{subscriptionId}/resourceGroups/Example-Storage-rg/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}` | `/subscriptions/{subscriptionId}/resourceGroups/Example-Storage-rg` |
+
+有关范围和 ARM 模板详细信息，请参阅[使用 Azure 资源管理器模板分配角色](role-assignments-template.md)。 有关扩展资源类型的完整列表，请参阅[用于扩展其他资源的功能的资源类型](../azure-resource-manager/management/extension-resource-types.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

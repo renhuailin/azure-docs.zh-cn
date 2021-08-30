@@ -1,17 +1,17 @@
 ---
 ms.date: 02/16/2021
 ms.topic: reference-architecture
-author: kriation
+author: karlerickson
 title: Azure Spring Cloud 参考体系结构
 ms.author: akaleshian
 ms.service: spring-cloud
 description: 此参考体系结构是使用典型企业中心和分支设计的基础，以便使用 Azure Spring Cloud。
-ms.openlocfilehash: d45d70227be2d88ca69e8a88bbc116a7f8045e74
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f0cc7a1345ff15a63c7cb9b0ebca51863fdf2791
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132676"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271213"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure Spring Cloud 参考体系结构
 
@@ -19,7 +19,7 @@ ms.locfileid: "108132676"
 
 有关此体系结构的实现，请参阅 GitHub 上的 [Azure Spring Cloud 参考体系结构][10]存储库。
 
-此体系结构的部署选项包括 Azure 资源管理器 (ARM)、Terraform 和 Azure CLI。 此存储库中的项目提供了可以对环境进行自定义的基础。 可以将 Azure 防火墙或应用程序网关等资源分组到不同的资源组或订阅中。 这种分组有助于区分不同的功能，如 IT 基础结构、安全性、业务应用程序团队等。
+此体系结构的部署选项包括 Azure 资源管理器 (ARM)、Terraform、Azure CLI 和 Bicep。 此存储库中的项目提供了可以对环境进行自定义的基础。 可以将 Azure 防火墙或应用程序网关等资源分组到不同的资源组或订阅中。 这种分组有助于区分不同的功能，如 IT 基础结构、安全性、业务应用程序团队等。
 
 ## <a name="planning-the-address-space"></a>规划地址空间
 

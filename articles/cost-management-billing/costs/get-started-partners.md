@@ -3,18 +3,18 @@ title: 面向合作伙伴的 Azure 成本管理入门
 description: 本文介绍合作伙伴如何使用 Azure 成本管理功能，以及如何为客户启用成本管理访问。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2021
+ms.date: 07/01/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 7278211ee47ec4a291a7934fee4b56fae0d8dfc4
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 78a2ef8491eea5fa3df5355236f23be730062108
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790359"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752005"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
 
@@ -22,7 +22,7 @@ Azure 成本管理原生可用于已将其客户加入 Microsoft 客户协议并
 
 就直接合作伙伴和间接提供商而言，全局管理员和管理员代理可以访问合作伙伴租户中的成本管理并以已开票的价格管理成本。
 
-经销商和客户可在客户租户中使用成本管理服务，还可查看订阅的使用成本，其中成本按零售价计算和显示。 但是，他们必须对客户租户中的订阅具有 Azure RBAC 访问权限才能查看成本。 提供商必须为客户租户启用成本可见性策略。
+经销商和客户可在客户租户中访问成本管理服务，还可查看每个个人订阅的使用成本，其中成本按零售价计算和显示。 但是，他们必须对客户租户中的订阅具有 Azure RBAC 访问权限才能查看成本。 提供商必须为客户租户启用成本可见性策略。
 
 在 CSP 合作伙伴为其客户启用成本管理功能后，客户即可使用该功能。
 
@@ -167,7 +167,7 @@ Azure RBAC 范围内的预留实例的摊销视图和实际成本将显示零费
 
 ## <a name="analyze-costs-in-cost-analysis"></a>在成本分析中分析成本
 
-有权访问合作伙伴租户中的计费范围的合作伙伴可以在不同客户的成本分析中，浏览和分析特定客户或发票的开票成本。 在[成本分析](quick-acm-cost-analysis.md)视图中，还可以[保存视图](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)，以及将数据导出到 [CSV 和 PNG 文件](quick-acm-cost-analysis.md#download-usage-data)。
+有权访问合作伙伴租户中的计费范围的合作伙伴可以在不同客户的成本分析中，浏览和分析特定客户或发票的开票成本。 在[成本分析](quick-acm-cost-analysis.md)视图中，还可以[保存视图](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)。
 
 有权访问客户租户中的订阅的 Azure RBAC 用户还可分析该客户租户中的订阅的零售成本、保存视图，并可将数据导出到 CSV 和 PNG 文件。
 

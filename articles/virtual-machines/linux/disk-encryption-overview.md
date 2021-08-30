@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5b84526f6f3193fc47bc211fcdec71bb5e27390f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bc800d12dd26f8edc3fa2f8719104f5f0d793b6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077673"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737403"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
-Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 它使用 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能为 Azure 虚拟机 (VM) 的 OS 和数据磁盘提供卷加密，并与 [Azure Key Vault](../../key-vault/index.yml) 集成，帮助你控制和管理磁盘加密密钥和机密。
+Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与符合性方面作出的承诺。 它使用 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能为 Azure 虚拟机 (VM) 的 OS 和数据磁盘提供卷加密，并与 [Azure Key Vault](../../key-vault/index.yml) 集成，帮助你控制和管理磁盘加密密钥和机密。
 
 Azure 磁盘加密可在区域内复原，与虚拟机的方式相同。 有关详细信息，请参阅[支持可用性区域的 Azure 服务](../../availability-zones/az-region.md)。
 
@@ -38,7 +38,7 @@ Azure 磁盘加密可在区域内复原，与虚拟机的方式相同。 有关�
 
 Linux VM 具有[各种大小](../sizes.md)。 Azure 磁盘加密在第 1 代和第 2 代 VM 上受支持。 Azure 磁盘加密还可用于使用高级存储的 VM。
 
-请参阅[无本地临时磁盘的 Azure VM 规格](../azure-vms-no-temp-disk.md)。
+请参阅[无本地临时磁盘的 Azure VM 规格](../azure-vms-no-temp-disk.yml)。
 
 Azure 磁盘加密在[基本、A 系列 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) 或不满足以下最低内存要求的虚拟机上也不可用：
 
@@ -63,6 +63,10 @@ Azure 磁盘加密在[基本、A 系列 VM](https://azure.microsoft.com/pricing/
 
 | 发布者 | 产品/服务 | SKU | URN | 支持加密的卷类型 |
 | --- | --- |--- | --- |
+| Canonical | Ubuntu | 20.04-LTS | Canonical:0001-com-ubuntu-server-focal:20_04-lts:latest | OS 和数据磁盘 |
+| Canonical | Ubuntu | 20.04-DAILY-LTS | Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts:latest | OS 和数据磁盘 |
+| Canonical | Ubuntu | 20.04-LTS Gen2 | Canonical:0001-com-ubuntu-server-focal:20_04-lts-gen2:latest | OS 和数据磁盘 |
+| Canonical | Ubuntu | 20.04-DAILY-LTS Gen2 |Canonical:0001-com-ubuntu-server-focal-daily:20_04-daily-lts-gen2:latest | OS 和数据磁盘 |
 | Canonical | Ubuntu | 18.04-LTS | Canonical:UbuntuServer:18.04-LTS:latest | OS 和数据磁盘 |
 | Canonical | Ubuntu 18.04 | 18.04-DAILY-LTS | Canonical:UbuntuServer:18.04-DAILY-LTS:latest | OS 和数据磁盘 |
 | Canonical | Ubuntu 16.04 | 16.04-DAILY-LTS | Canonical:UbuntuServer:16.04-DAILY-LTS:latest | OS 和数据磁盘 |

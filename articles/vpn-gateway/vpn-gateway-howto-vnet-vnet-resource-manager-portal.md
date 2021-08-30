@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 07/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2bf603d29b5e949ef83c872017bae49e71b2fcb0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 3e8c2846b58499e5aabdec80f8fcd75cab3e6eb5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204866"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729496"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet VPN 网关连接
 
@@ -21,7 +21,7 @@ ms.locfileid: "108204866"
 
 :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet-vnet-diagram.png" alt-text="VNet 到 VNet 关系图":::
 
-本文中的步骤适用于 Azure 资源管理器部署模型，并使用 Azure 门户。 可使用以下文章中所述的选项，通过不同的部署工具或模型创建此配置：
+本文中的步骤适用于 Azure [资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)，并使用 Azure 门户。 可使用以下文章中所述的选项，通过不同的部署工具或模型创建此配置：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -87,10 +87,10 @@ ms.locfileid: "108204866"
 * **虚拟网络网关设置**
   * **名称**：VNet1GW
   * **资源组**：美国东部
-  * **代系**：第 1 代
+  * 代系：第 2 代
   * **网关类型**：选择“VPN”。 
   * **VPN 类型**：选择“基于路由”。
-  * **SKU**：VpnGw1
+  * SKU：VpnGw2
   * **虚拟网络**：VNet1
   * **网关子网地址范围**：10.1.255.0/27
   * **公共 IP 地址**：新建
@@ -115,10 +115,10 @@ ms.locfileid: "108204866"
 * **虚拟网络网关设置**
   * **名称**：VNet4GW
   * **资源组**：美国西部
-  * **代系**：第 1 代
+  * 代系：第 2 代
   * **网关类型**：选择“VPN”。 
   * **VPN 类型**：选择“基于路由”。
-  * **SKU**：VpnGw1
+  * SKU：VpnGw2
   * **虚拟网络**：VNet4
   * **网关子网地址范围**：10.41.255.0/27
   * **公共 IP 地址**：新建
@@ -146,7 +146,10 @@ ms.locfileid: "108204866"
 
 ### <a name="to-create-a-virtual-network-gateway"></a>创建虚拟网络网关
 
-[!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+可以在网关的“概述”页上查看部署状态。 网关可能需要 45 分钟或更长时间才能完全创建和部署。 创建网关后，可以通过在门户中查看虚拟网络，来查看已分配给网关的 IP 地址。 网关显示为连接的设备。
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
@@ -161,10 +164,10 @@ VNet1 和 VNet4 的虚拟网关都已完成后，便可以创建虚拟网关连�
 1. 在 Azure 门户中选择“所有资源”，在搜索框中输入“虚拟网络网关”，然后导航到 VNet 的虚拟网络网关。 例如，**VNet1GW**。 选择网关，打开“虚拟网关”页。
 1. 在网关页上，转到“设置”->“连接”。 然后选择“+添加”。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="“连接”页":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png" alt-text="显示“连接”页的屏幕截图。" border="false":::
 1. 此时会打开“添加连接”页。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="添加连接":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4.png" alt-text="显示“添加连接”页的屏幕截图。":::
 
    在“添加连接”页上，填写用于建立连接的值：
 
@@ -176,7 +179,7 @@ VNet1 和 VNet4 的虚拟网关都已完成后，便可以创建虚拟网关连�
 
    * **第二个虚拟网络网关**：此字段是要连接到的 VNet 的虚拟网络网关。 选择“选择另一个虚拟网络网关”打开“选择虚拟网络网关”页。
 
-      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="选择网关":::
+      :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/choose.png" alt-text="显示“选择具有其他网关的虚拟网络网关”页的屏幕截图。":::
 
      * 查看此页上列出的虚拟网关。 请注意，仅会列出订阅中的虚拟网络网关。 若要连接到订阅外部的虚拟网络网关，请使用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)。
 
@@ -194,10 +197,10 @@ VNet1 和 VNet4 的虚拟网关都已完成后，便可以创建虚拟网关连�
 1. 在 Azure 门户中找到虚拟网络网关。 
 1. 在“虚拟网络网关”页上选择“连接”，查看虚拟网络网关的“连接”页。 建立连接后，会看到“状态”值更改为“已连接”。 
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="验证连接":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/view-connections.png" alt-text="显示用于验证连接的“连接”页的屏幕截图。" border="false":::
 1. 在“名称”列下选择一个连接，查看其详细信息。 数据开始流动后，会看到“输入数据”和“输出数据”的值。
 
-   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="屏幕截图显示了一个资源组，其中包含“数据输入”和“数据输出”的值":::
+   :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/status.png" alt-text="屏幕截图显示了一个资源组，其中包含“数据输入”和“数据输出”的值" border="false":::
 
 ## <a name="add-additional-connections"></a>添加其他连接
 

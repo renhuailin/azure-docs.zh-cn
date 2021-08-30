@@ -12,12 +12,12 @@ author: rothja
 ms.author: jroth
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 0d811953b191a661682767262c899b98119cdbc8
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 75f30fe7263d14538ad14588a56aafecde96a126
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786198"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739639"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>将资源移到新区域 - Azure SQL 数据库和 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,6 +40,9 @@ ms.locfileid: "110786198"
 > [!NOTE]
 > 本文适用于在 Azure 公有云或同一主权云内进行的迁移。
 
+> [!NOTE]
+> 还可使用 Azure 资源转移器（预览版）将 Azure SQL 数据库和弹性池移动到不同的 Azure 区域。 有关详细步骤，请参阅[此教程](../../resource-mover/tutorial-move-region-sql.md)。
+
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="move-a-database"></a>移动数据库
@@ -49,7 +52,13 @@ ms.locfileid: "110786198"
 1. 为每个源服务器创建目标服务器。
 1. 使用 [PowerShell](scripts/create-and-configure-database-powershell.md) 配置包含适当例外项的防火墙。  
 1. 使用适当的登录名配置服务器。 如果你不是订阅管理员或 SQL 服务器管理员，请让管理员为你分配所需的权限。 有关详细信息，请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](active-geo-replication-security-configure.md)。
-1. 如果数据库已通过透明数据加密进行加密并使用 Azure Key Vault 中你自己的加密密钥，请确保在目标区域中预配正确的加密材料。 有关详细信息，请参阅[使用 Azure Key Vault 中由客户管理的密钥进行 Azure SQL 透明数据加密](transparent-data-encryption-byok-overview.md)。
+1. 如果你的数据库已通过透明数据加密 (TDE) 进行加密并使用 Azure 密钥保管库中你自己的加密密钥（BYOK 或客户管理的密钥），请确保在目标区域中预配正确的加密材料。 
+    - 为此，最简单的方法是将现有密钥保管库中的加密密钥（在源服务器上用作 TDE 保护器）添加到目标服务器，然后将该密钥设置为目标服务器上的 TDE 保护器
+      > [!NOTE]
+      > 现在，可将一个区域中的服务器或托管实例连接到任何其他区域中的密钥保管库。
+    - 为了确保目标服务器能够访问旧加密密钥（还原数据库备份时需要用到），最佳做法在源服务器上运行 [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 或在源托管实例上运行 [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) cmdlet 以返回可用密钥列表，然后将这些密钥添加到目标服务器。
+    - 有关在目标服务器上配置客户管理的 TDE 的详细信息和最佳做法，请参阅[使用 Azure 密钥保管库中客户管理的密钥进行 Azure SQL 透明数据加密](transparent-data-encryption-byok-overview.md)。
+    - 若要将密钥保管库移到新区域，请参阅[跨区域移动 Azure 密钥保管库](../../key-vault/general/move-region.md) 
 1. 如果启用了数据库级审核，请将其禁用，并改为启用服务器级审核。 故障转移后，数据库级审核需要跨区域的流量，而在移动后，这种情况是不适当的或者无法实现的。
 1. 对于服务器级审核，请确保：
    - 已将包含现有审核日志的存储容器、Log Analytics 或事件中心移到目标区域。

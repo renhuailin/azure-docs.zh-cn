@@ -2,18 +2,18 @@
 title: Azure PowerShell - 在 VM 主机上启用端到端加密
 description: 如何使用主机加密为 Azure VM 启用端到端加密。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 51b8b202b95e5246b31bf97c3cc7f2e9ba8e36e7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 9fc618480b4c00ab65f4300a66747acdc2a11f74
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669079"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359004"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure PowerShell 模块通过主机加密来启用端到端加密
 
@@ -171,6 +171,21 @@ $VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
 $VM.SecurityProfile.EncryptionAtHost
 ```
 
+### <a name="disable-encryption-at-host"></a>禁用基于主机的加密
+
+必须先将 VM 解除分配，然后才能基于主机的加密。
+
+```powershell
+$ResourceGroupName = "yourResourceGroupName"
+$VMName = "yourVMName"
+
+$VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName
+
+Stop-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Force
+
+Update-AzVM -VM $VM -ResourceGroupName $ResourceGroupName -EncryptionAtHost $false
+```
+
 ### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客户管理的密钥创建虚拟机规模集，并启用主机加密。 
 
 使用之前创建的 DiskEncryptionSet 的资源 URI 创建包含托管磁盘的虚拟机规模集，以便使用客户管理的密钥加密 OS 和数据磁盘的缓存。 临时磁盘通过平台管理的密钥加密。 
@@ -276,6 +291,19 @@ $VMScaleSetName = "yourVMSSName"
 $VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -Name $VMScaleSetName
 
 $VMSS.VirtualMachineProfile.SecurityProfile.EncryptionAtHost
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-disable-encryption-at-host"></a>更新虚拟机规模集以禁用基于主机的加密。 
+
+可以在虚拟机规模集上禁用基于主机的加密，但这只会影响禁用基于主机的加密之后创建的 VM。 对于现有 VM，必须先将 VM 解除分配，[在该 VM 上单独禁用基于主机的加密](#disable-encryption-at-host)，然后才能重新分配 VM。
+
+```powershell
+$ResourceGroupName = "yourResourceGroupName"
+$VMScaleSetName = "yourVMSSName"
+
+$VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -Name $VMScaleSetName
+
+Update-AzVmss -VirtualMachineScaleSet $VMSS -Name $VMScaleSetName -ResourceGroupName $ResourceGroupName -EncryptionAtHost $false
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>找到支持的 VM 大小

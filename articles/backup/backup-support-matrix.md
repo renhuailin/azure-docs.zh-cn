@@ -2,14 +2,14 @@
 title: Azure 备份支持矩阵
 description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
-ms.date: 06/11/2021
+ms.date: 07/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: 2b5700498bd09e24adeb6d1a386e8bb8da6b92c7
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 8f953cf2bdacaa983061a04168345d1add1842f2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006718"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728912"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -39,7 +39,7 @@ Azure 备份使用恢复服务保管库来协调和管理以下工作负荷类�
 **移动保管库** | 可以跨订阅或同一订阅中的资源组之间[移动保管库](./backup-azure-move-recovery-services-vault.md)。 但是，不支持跨区域移动保管库。
 **在保管库之间移动数据** | 不支持在保管库之间移动备份的数据。
 **修改保管库存储类型** | 可以在存储备份之前修改保管库的存储复制类型（异地冗余存储或本地冗余存储）。 在保管库中开始备份以后，就不能修改复制类型。
-**区域冗余存储 (ZRS)** | 在“英国南部(UKS)”和“东南亚(SEA)”区域提供。
+**区域冗余存储 (ZRS)** | 在英国南部、东南亚、澳大利亚东部、北欧、美国中部和日本东部支持预览版。
 **终结点** | 请参阅[此部分](./private-endpoints.md#before-you-start)，了解为恢复服务保管库创建专用终结点的要求。  
 
 ## <a name="on-premises-backup-support"></a>本地备份支持
@@ -154,7 +154,18 @@ Azure 备份添加了“跨区域还原”功能以增强数据可用性和复�
 | Azure VM               | 同时具有托管磁盘和非托管磁盘的 Azure VM（包括加密 Azure VM）支持。 经典 VM 不支持。 | 除了 UG 爱荷华州和 UG 弗吉尼亚州之外，所有 Azure 公共区域和主权区域都可以使用。 |
 | SQL/SAP HANA | 可用      | 除了法国中部、UG 爱荷华州和 UG 弗吉尼亚州之外，所有 Azure 公共区域和主权区域都可以使用。 |
 | MARS 代理/本地  | 否                                                           | 空值               |
-| AFS（Azure 文件共享）                 | 否                                                           | 空值               |
+| AFS（Azure 文件共享）                 | 否                                                           | 不适用               |
+
+## <a name="resource-health"></a>资源运行状况
+
+资源运行状况检查适用于以下情况：
+
+|     |     |
+| --- | --- |
+| **支持的资源** | 恢复服务保管库 |
+| **支持的区域** | 美国东部 2、东亚和法国中部。 |
+| **对于不支持的区域** | 资源运行状况显示为“未知”。 |
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: a60ee8faf8d19afba59e46c52aaba9395c3a5292
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 237888e1ee635a68a4603bfa63f5bfe4618c018a
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604441"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093492"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK 入门
 
@@ -28,7 +28,7 @@ Azure Maps Android SDK 是适用于 Android 的矢量地图库。 本文将引�
 
 Azure Maps Android SDK 提供三种不同的方式来设置地图的语言和区域视图。 以下代码演示如何将语言设置为法语（“fr-FR”），以及如何将区域视图设置为“Auto”。
 
-第一种做法是全局使用静态的 `setLanguage` 和 `setView` 方法，将语言和视图区域信息传入 `AzureMaps` 类。 这会在载入到应用的所有 Azure Maps 控件中设置默认的语言和区域视图。
+第一种做法是全局使用静态的 `setLanguage` 和 `setView` 方法，将语言和视图区域信息传入 `AzureMaps` 类。 此代码会在载入到应用的所有 Azure Maps 控件中设置默认语言和区域视图。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -75,16 +75,16 @@ companion object {
 第二种做法是将语言和视图信息传入地图控件 XML 中。
 
 ```XML
-<com.microsoft.azure.maps.mapcontrol.MapControl
+<com.azure.android.maps.control.MapControl
     android:id="@+id/myMap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:mapcontrol_language="fr-FR"
-    app:mapcontrol_view="Auto"
+    app:azure_maps_language="fr-FR"
+    app:azure_maps_view="Auto"
     />
 ```
 
-第三种做法是使用地图 `setStyle` 方法以编程方式设置地图的语言和区域视图。 随时可以采取这种做法来更改地图的语言和区域视图。
+第三种做法是使用地图 `setStyle` 方法以编程方式设置地图的语言和区域视图。 随时都可以使用此方法更改地图的语言和区域视图。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -118,7 +118,7 @@ mapControl.onReady(OnReady { map: AzureMap ->
 
 [此文档](supported-languages.md)提供了支持的语言和区域视图的完整列表。
 
-## <a name="navigating-the-map&quot;></a>在地图中导航
+## <a name="navigating-the-map"></a>在地图中导航
 
 可通过多种不同的方式缩放、平移、旋转地图及调整其俯仰角。 下面详细说明了在地图中导航的所有不同方式。
 
@@ -141,7 +141,7 @@ mapControl.onReady(OnReady { map: AzureMap ->
 
 * 用双指触摸地图，并同时向上或向下拖动双指。
 
-## <a name=&quot;azure-government-cloud-support&quot;></a>Azure 政府版云支持
+## <a name="azure-government-cloud-support"></a>Azure 政府版云支持
 
 Azure Maps Android SDK 支持 Azure 政府版云。 Azure Maps Android SDK 可从同一 Maven 存储库访问。 需要完成以下任务才能连接到 Azure Maps 平台的 Azure 政府版云版本。
 
@@ -150,7 +150,7 @@ Azure Maps Android SDK 支持 Azure 政府版云。 Azure Maps Android SDK 可�
 ::: zone pivot="programming-language-java-android"
 
 ```java
-AzureMaps.setDomain(&quot;atlas.azure.us");
+AzureMaps.setDomain("atlas.azure.us");
 ```
 
 ::: zone-end
@@ -164,6 +164,44 @@ AzureMaps.setDomain("atlas.azure.us")
 ::: zone-end
 
 对地图和服务进行身份验证时，请确保使用 Azure 政府版云平台中的 Azure Maps 身份验证详细信息。
+
+## <a name="migrating-from-a-preview-version"></a>从预览版迁移
+
+随着从预览版转变为正式发布版，Azure Maps Android SDK 中引入了一些中断性变更。 以下是关键详细信息：
+
+* Maven 标识符已从 `"com.microsoft.azure.maps:mapcontrol:0.7"` 更改为 `"com.azure.android:azure-maps-control:1.0.0"`。 命名空间和主版本号已更改。
+* 导入命名空间已从 `com.microsoft.azure.maps.mapcontrol` 更改为 `com.azure.android.maps.control`
+* XML 选项、颜色资源和图像资源的资源名称的 `mapcontrol_` 文本已替换为 `azure_maps_`。
+
+    **之前：**
+
+    ```xml
+    <com.microsoft.azure.maps.mapcontrol.MapControl
+        android:id="@+id/myMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:mapcontrol_language="fr-FR"
+        app:mapcontrol_view="Auto"
+        app:mapcontrol_centerLat="47.602806"
+        app:mapcontrol_centerLng="-122.329330"
+        app:mapcontrol_zoom="12"
+    />
+    ```
+
+    **之后：**
+
+    ```xml
+    <com.azure.android.maps.control.MapControl
+        android:id="@+id/myMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:azure_maps_language="fr-FR"
+        app:azure_maps_view="Auto"
+        app:azure_maps_centerLat="47.602806"
+        app:azure_maps_centerLng="-122.329330"
+        app:azure_maps_zoom="12"
+    />
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

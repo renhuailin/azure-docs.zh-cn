@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: b375ad72d3ef459635c4a786391ef7b9836d8a99
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b1dc3b61c73894d7792835000f0e13e0bc8b412b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411577"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728640"
 ---
 # <a name="enable-azure-defender-for-sql-servers-on-machines"></a>启用计算机上的 Azure Defender for SQL 服务器 
 
@@ -33,7 +33,7 @@ ms.locfileid: "111411577"
 |发布状态：|正式发布版 (GA)|
 |定价：|计算机上的 Azure Defender for SQL 服务器按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中显示的定价计费|
 |受保护的 SQL 版本：|Azure SQL Server（Microsoft 支持涵盖的所有版本）|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png":::Azure 政府<br>:::image type="icon" source="./media/icons/no-icon.png":::Azure 中国世纪互联|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>设置计算机上的 Azure Defender for SQL 服务器
@@ -49,7 +49,7 @@ ms.locfileid: "111411577"
 
 ### <a name="step-1-install-the-agent-extension"></a>步骤 1。 安装代理扩展
 
-- **Azure VM 上的 SQL Server** - 向 SQL IaaS 代理扩展注册你的 SQL Server VM，如[向 SQL IaaS 代理扩展注册 SQL Server VM](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) 中所述。
+- **Azure VM 上的 SQL Server** - 向 SQL IaaS 代理扩展注册你的 SQL Server VM，如 [向 SQL IaaS 代理扩展注册 SQL Server VM](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) 中所述。
 
 - **Azure Arc 上的 SQL Server** - 按照 [Azure Arc 文档](../azure-arc/servers/manage-vm-extensions.md)中描述的安装方法安装 Azure Arc 代理。
 
@@ -73,11 +73,11 @@ ms.locfileid: "111411577"
 
     - 如果使用的是非默认工作区，请选择相关工作区（如有必要，在筛选器中输入工作区的名称） ：
 
-        ![按标题查找非默认工作区](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
+        ![按标题查找非默认工作区。](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
 1. 将“计算机上的 Azure Defender for SQL 服务器”计划的选项设置为“开” 。 
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png" alt-text="具有可选计划的安全中心定价页":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png" alt-text="具有可选计划的安全中心定价页。":::
 
     将在连接到所选工作区的所有 SQL 服务器上启用该计划。 首次重启 SQL Server 实例后，保护将处于完全激活状态。
 

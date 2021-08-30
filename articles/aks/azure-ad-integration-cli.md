@@ -4,25 +4,27 @@ description: 了解如何使用 Azure CLI 创建支持 Azure Active Directory �
 services: container-service
 author: TomGeske
 ms.topic: article
-ms.date: 07/20/2020
-ms.author: thomasge
-ms.openlocfilehash: 055afe24cb72b331e64e1a2b3d786503ef31a105
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 07/29/2021
+ms.author: miwithro
+ms.openlocfilehash: 2075c4ce9bf01d4843de2037259fec2670d5dc06
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176393"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741654"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成（旧版）
+
+> [!WARNING]
+> **将于 2024 年 2 月 29 日弃用本文档中所述的功能 - Azure AD 集成（旧版）。
+>
+> AKS 提供全新的改进 [AKS 管理 Azure AD][managed-aad] 体验，让你无需管理服务器或客户端应用程序。 请遵照[此处][managed-aad-migrate]的说明进行迁移。
 
 可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，可以使用 Azure AD 身份验证令牌登录到 AKS 群集。 群集操作员还可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)。
 
 本文介绍如何创建所需的 Azure AD 组件，然后部署支持 Azure AD 的群集，并在 AKS 群集中创建一个基本的 Kubernetes 角色。
 
 有关本文中使用的完整示例脚本，请参阅 [Azure CLI 示例 - AKS 与 Azure AD 集成][complete-script]。
-
-> [!Important]
-> AKS 提供全新的改进 [AKS 管理 Azure AD][managed-aad] 体验，让你无需管理服务器或客户端应用程序。 请遵照[此处][managed-aad-migrate]的说明进行迁移。
 
 ## <a name="the-following-limitations-apply"></a>以下限制适用：
 
@@ -246,6 +248,7 @@ error: You must be logged in to the server (Unauthorized)
 * 你定义了适当的对象 ID 或 UPN，具体取决于用户帐户是否在同一 Azure AD 租户中。
 * 用户不是 200 多个组的成员。
 * 服务器应用程序注册中定义的机密与使用 `--aad-server-app-secret` 配置的值相匹配
+* 请确保在计算机上一次仅安装一个版本的 kubectl。 版本冲突可能导致授权过程中出现问题。 若要安装最新版本，请使用[az aks install-cli][az-aks-install-cli]。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -264,24 +267,25 @@ error: You must be logged in to the server (Unauthorized)
 [complete-script]: https://github.com/Azure-Samples/azure-cli-samples/tree/master/aks/azure-ad-integration/azure-ad-integration.sh
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-group-create]: /cli/azure/group#az-group-create
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-aks-install-cli]: /cli/azure/aks#az_aks_install_cli
+[az-group-create]: /cli/azure/group#az_group_create
 [open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
-[az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
-[az-ad-app-create]: /cli/azure/ad/app#az-ad-app-create
-[az-ad-app-update]: /cli/azure/ad/app#az-ad-app-update
-[az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create
-[az-ad-app-permission-add]: /cli/azure/ad/app/permission#az-ad-app-permission-add
-[az-ad-app-permission-grant]: /cli/azure/ad/app/permission#az-ad-app-permission-grant
-[az-ad-app-permission-admin-consent]: /cli/azure/ad/app/permission#az-ad-app-permission-admin-consent
-[az-ad-app-show]: /cli/azure/ad/app#az-ad-app-show
-[az-group-create]: /cli/azure/group#az-group-create
-[az-account-show]: /cli/azure/account#az-account-show
-[az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
+[az-ad-user-show]: /cli/azure/ad/user#az_ad_user_show
+[az-ad-app-create]: /cli/azure/ad/app#az_ad_app_create
+[az-ad-app-update]: /cli/azure/ad/app#az_ad_app_update
+[az-ad-sp-create]: /cli/azure/ad/sp#az_ad_sp_create
+[az-ad-app-permission-add]: /cli/azure/ad/app/permission#az_ad_app_permission_add
+[az-ad-app-permission-grant]: /cli/azure/ad/app/permission#az_ad_app_permission_grant
+[az-ad-app-permission-admin-consent]: /cli/azure/ad/app/permission#az_ad_app_permission_admin_consent
+[az-ad-app-show]: /cli/azure/ad/app#az_ad_app_show
+[az-group-create]: /cli/azure/group#az_group_create
+[az-account-show]: /cli/azure/account#az_account_show
+[az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az_ad_signed_in_user_show
 [install-azure-cli]: /cli/azure/install-azure-cli
-[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
+[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az_ad_sp_credential_reset
+[rbac-authorization]: concepts-identity.md#kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [managed-aad]: managed-aad.md

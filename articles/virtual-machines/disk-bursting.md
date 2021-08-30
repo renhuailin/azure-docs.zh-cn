@@ -1,23 +1,23 @@
 ---
 title: 托管磁盘突发
 description: 了解 Azure 磁盘和 Azure 虚拟机的磁盘突发。
-author: albecker1
-ms.author: albecker
-ms.date: 06/03/2021
+author: roygara
+ms.author: rogarana
+ms.date: 06/29/2021
 ms.topic: conceptual
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f9fd7d892eea43edf71da212fdba8cc1ac11c798
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 6af3d66afe107bae470f4081407f2293fe04f0fb
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528305"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356936"
 ---
 # <a name="managed-disk-bursting"></a>托管磁盘突发
 
-Azure 提供了提升磁盘存储 IOPS 和 MB/s 性能的功能，这称为虚拟机 (VM) 和磁盘突发。 可以有效地利用 VM 和磁盘突发，以在 VM 和磁盘上实现更好的突发性能。
+Azure 提供了提升磁盘存储 IOPS 和 MB/s 性能的功能，这称为虚拟机 (VM) 和磁盘突发。 可以有效地使用 VM 和磁盘突发，以在 VM 和磁盘上实现更好的突发性能。
 
 Azure Vm 和磁盘资源的突发不会相互依赖。 你不需要使用具有突发功能的 VM 来为与该 VM 相连接且同样具有突发功能的磁盘进行突发。 同样，不需要使用与具有突发功能的 VM 相连接且同样具有突发功能的磁盘为该 VM 进行突发。
 
@@ -29,10 +29,10 @@ Azure Vm 和磁盘资源的突发不会相互依赖。 你不需要使用具有�
 
 ## <a name="disk-level-bursting"></a>磁盘级突发
 
-目前，有两种可突发的托管磁盘类型：[高级 SSD](disks-types.md#premium-ssd) 和[标准 SSD](disks-types.md#standard-ssd)。 其他磁盘类型当前无法突发。 磁盘有两种突发模式：
+目前，有两种会突发的托管磁盘类型，即[高级 SSD](disks-types.md#premium-ssd) 和[标准 SSD](disks-types.md#standard-ssd)。 其他磁盘类型当前无法突发。 磁盘有两种突发模式：
 
-- 按需突发模式（预览版），在该模式下，磁盘在其需求超出其当前容量时突发。 只要磁盘出现突发时，此模型就会产生额外的费用。 不扣除额度的突发仅适用于大于 512 GiB 的磁盘。
-- 基于额度的模型，在该模型下，仅当磁盘在其额度桶中累积了突发额度时，磁盘才会突发。 当磁盘出现突发时，此模型不会产生额外的费用。 基于额度的突发仅适用于磁盘 512 GiB 和更小的磁盘。
+- 按需突发模式（预览版），在该模式下，磁盘在其需求超出其当前容量时突发。 只要磁盘出现突发时，此模型就会产生额外的费用。 按需突发仅适用于大于 512 GiB 的高级 SSD。
+- 基于额度的模型，在该模型下，仅当磁盘在其额度桶中累积了突发额度时，磁盘才会突发。 当磁盘出现突发时，此模型不会产生额外的费用。 基于额度的突发仅适用于 512 GiB 和更小的高级和标准 SSD。
 
 Azure [高级 SSD](disks-types.md#premium-ssd) 可以使用任一突发模式，但[标准 SSD](disks-types.md#standard-ssd) 目前仅提供基于额度的突发。
 
@@ -42,12 +42,13 @@ Azure [高级 SSD](disks-types.md#premium-ssd) 可以使用任一突发模式，
 |---------|---------|---------|---------|
 | **方案**|适用于短期缩放（30 分钟或更少）。|适用于短期缩放（不受时间限制）。|如果你的工作负载将继续突发运行，则这是理想之选。|
 |**成本**     |免费         |成本是可变的，有关详细信息，请参阅[计费](#billing)部分。        |每个性能层的成本是固定的，有关详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。         |
-|**可用性**     |仅适用于高级 SSD 512 GiB 和更小。         |仅适用于大于 512 GiB 的高级 SSD。         |适用于所有高级 SSD 大小。         |
+|**可用性**     |仅适用于高级和标准 SSD 512 GiB 和更小的磁盘。         |仅适用于大于 512 GiB 的高级 SSD。         |适用于所有高级 SSD 大小。         |
 |**启用**     |默认情况下，在合格磁盘上启用。         |必须由用户启用。         |用户必须手动更改其层级。         |
 
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting-2.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-若要启用按需突发，请参阅[启用按需突发](disks-enable-bursting.md)。
-如需了解如何深入了解突发资源，请参阅“[磁盘突发指标](disks-metrics.md)”。
+- 若要启用按需突发，请参阅[启用按需突发](disks-enable-bursting.md)。
+- 如需了解如何深入了解突发资源，请参阅“[磁盘突发指标](disks-metrics.md)”。
+- 若要准确了解每个适用磁盘大小可突发的数量，请参阅 [VM 磁盘的可伸缩性和性能目标](disks-scalability-targets.md)。

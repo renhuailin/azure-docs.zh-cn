@@ -7,15 +7,15 @@ ms.subservice: service-overview
 ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 05/02/2021
-ms.openlocfilehash: 765c6c79bf28ad01ab0253e85affd5d4cd95ed78
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.date: 07/22/2021
+ms.openlocfilehash: 9f058cfc97821dc9ddcbedeeed1acf9ebb9919d3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031900"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751311"
 ---
 # <a name="maintenance-window-preview"></a>维护时段（预览版）
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "112031900"
 
 ## <a name="overview"></a>概述
 
-Azure 会定期执行 SQL 数据库和 SQL 托管实例资源的[计划内维护](planned-maintenance.md)。 在 Azure SQL 维护事件期间，数据库完全可用，但可能在 [SQL 数据库](https://azure.microsoft.com/support/legal/sla/sql-database)和 [SQL 托管实例](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance)的各自可用性 SLA 中发生短暂的重新配置。
+Azure 会定期执行 SQL 数据库和 SQL 托管实例资源的[计划内维护](planned-maintenance.md)。 在 Azure SQL 维护事件期间，数据库完全可用，但可能在 [SQL 数据库](https://azure.microsoft.com/support/legal/sla/azure-sql-database)和 [SQL 托管实例](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance)的各自可用性 SLA 中发生短暂的重新配置。
 
 维护时段专用于不能复原到数据库或实例重新配置的生产工作负载，并且无法缓解由计划内维护事件引起的短暂连接中断。 选择你喜欢的维护时段，可最大程度地减少计划内维护的影响，因为它将在你的高峰营业时间之外发生。 复原工作负载和非生产工作负载可能依赖于 Azure SQL 的默认维护策略。
 
@@ -80,21 +80,28 @@ Azure 会定期执行 SQL 数据库和 SQL 托管实例资源的[计划内维护
 - 澳大利亚东南部
 - 巴西南部
 - 加拿大中部
+- 加拿大东部
+- 印度中部
 - 美国中部
 - 美国东部
 - 美国东部 2
 - 东亚
+- 法国南部
 - 德国中西部
-- 日本东部
+- Japan East
+- 韩国中部*
 - 美国中北部
 - 北欧
 - 美国中南部
 - 东南亚
 - 英国南部
 - 英国西部
+- 美国中西部
 - 西欧
 - 美国西部
 - 美国西部 2
+
+*仅适用于 Azure SQL 托管实例
 
 ## <a name="gateway-maintenance-for-azure-sql-database"></a>Azure SQL 数据库的网关维护
 
@@ -120,7 +127,7 @@ Azure SQL 托管实例由一组服务组件构成，这些组件托管在一组�
 > 在维护操作结束时，会发生短暂的重新配置，即使在长期运行的事务中断的情况下，通常最多也仅持续 8 秒。 若要将重新配置的影响降至最低，应将操作安排在高峰时段之外。
 
 ### <a name="ip-address-space-requirements"></a>IP 地址空间要求
-子网中的每个新虚拟群集都根据[虚拟群集 IP 地址分配](../managed-instance/vnet-subnet-determine-size.md#determine-subnet-size)来要求额外的 IP 地址。 更改现有托管实例的维护时段还需要[临时额外的 IP 容量](../managed-instance/vnet-subnet-determine-size.md#address-requirements-for-update-scenarios)，就像为相应的服务层级缩放 vCore 方案一样。
+子网中的每个新虚拟群集都根据[虚拟群集 IP 地址分配](../managed-instance/vnet-subnet-determine-size.md#determine-subnet-size)来要求额外的 IP 地址。 更改现有托管实例的维护时段还需要[临时额外的 IP 容量](../managed-instance/vnet-subnet-determine-size.md#update-scenarios)，就像为相应的服务层级缩放 vCore 方案一样。
 
 ### <a name="ip-address-change"></a>IP 地址更改
 配置和更改维护时段会导致更改实例的 IP 地址（在子网的 IP 地址范围内）。

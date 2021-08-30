@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2021
-ms.openlocfilehash: 35aa53def1a72f98309e7616ce64194dd77c5a4d
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 53940c21a96da9b763a0b2f25400fb13cbba7098
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331279"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119688"
 ---
 # <a name="troubleshooting-sql-insights-preview"></a>排查 SQL 见解（预览版）问题
 若要排查 SQL 见解中的数据收集问题，请在“管理配置文件”选项卡中检查监视虚拟机的状态。状态为下列其中之一：
@@ -85,7 +85,7 @@ InsightsMetrics
 
 ### <a name="mdsd-service-logs"></a>mdsd 服务日志 
 
-检查 Azure Monitor 代理的[当前限制](../agents/azure-monitor-agent-overview.md#current-limitations)。 
+查看适用于 Azure Monitor 代理的[先决条件](../agents/azure-monitor-agent-install.md#prerequisites)。 
 
 
 服务日志：  

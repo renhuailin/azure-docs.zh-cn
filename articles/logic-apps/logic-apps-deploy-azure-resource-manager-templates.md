@@ -3,16 +3,16 @@ title: 部署逻辑应用模板
 description: 了解如何为 Azure 逻辑应用部署已创建的 Azure 资源管理器模板
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
-ms.topic: article
-ms.date: 08/25/2020
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 08/04/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f8a71aa4545316313f4ef2d9f349646ca8769d7
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 8be8361b58e4b1b1fad3f41b29958a360e206890
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278427"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733778"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>为 Azure 逻辑应用部署 Azure 资源管理器模板
 
@@ -93,11 +93,11 @@ az deployment group create -g <Azure-resource-group-name> --template-uri https:/
 
 * [将资源管理器模板与 Azure Pipelines 集成](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
 * [教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](../azure-resource-manager/templates/deployment-tutorial-pipeline.md)
-* [示例：从 Azure 逻辑应用连接到 Azure 服务总线队列并在 Azure DevOps 中使用 Azure Pipelines 进行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：从 Azure 逻辑应用连接到 Azure 存储帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：为 Azure 逻辑应用设置函数应用操作并在 Azure DevOps 中使用 Azure Pipelines 进行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：从 Azure 逻辑应用连接到集成帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
-* [示例：使用 Azure 逻辑应用协调 Azure Pipelines](/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
+* [示例：使用 Azure 逻辑应用协调 Azure Pipelines](https://github.com/Azure-Samples/azure-logic-apps-pipeline-orchestration)
+* [示例：从 Azure 逻辑应用连接到 Azure 存储帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/storage-account-connections)
+* [示例：从 Azure 逻辑应用连接到 Azure 服务总线队列并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/service-bus-connections)
+* [示例：为 Azure 逻辑应用设置 Azure Functions 操作并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/function-app-actions)
+* [示例：从 Azure 逻辑应用连接到集成帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/integration-account-connections)
 
 下面是有关使用 Azure Pipelines 的一般性概要步骤：
 
@@ -123,14 +123,14 @@ az deployment group create -g <Azure-resource-group-name> --template-uri https:/
 
 以下是关于如何处理授权连接的一些建议：
 
+* 若要对 OAuth 连接进行手动授权，请在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 授权连接时，可能会显示一个确认页，供你授权访问。
+
 * 在同一区域的逻辑应用中对 API 连接资源进行预授权和共享。 API 连接作为 Azure 资源独立于逻辑应用而存在。 虽然逻辑应用依赖于 API 连接资源，但 API 连接资源不依赖于逻辑应用，在删除依赖的逻辑应用后仍然存在。 此外，逻辑应用可以使用其他资源组中存在的 API 连接。 但是，逻辑应用设计器支持仅在逻辑应用所在的资源组中创建 API 连接。
 
   > [!NOTE]
   > 如果考虑共享 API 连接，请确保你的解决方案可以[处理潜在的限制问题](../logic-apps/handle-throttling-problems-429-errors.md#connector-throttling)。 限制发生在连接级别，因此在多个逻辑应用中重用同一连接可能会提高出现限制问题的可能性。
 
 * 除非你的方案涉及需要多重身份验证的服务和系统，否则你可以使用 PowerShell 脚本为每个 OAuth 连接提供同意，方法是：在具有活动浏览器会话且已提供授权和同意的虚拟机上以普通用户帐户身份运行持续集成辅助角色。 例如，可以重新调整[逻辑应用 GitHub 存储库中的 LogicAppConnectionAuth 项目](https://github.com/logicappsio/LogicAppConnectionAuth)提供的示例脚本的用途。
-
-* 若要对 OAuth 连接进行手动授权，请在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
 * 如果改用 Azure Active Directory (Azure AD) [服务主体](../active-directory/develop/app-objects-and-service-principals.md)来授权连接，请了解如何[在逻辑应用模板中指定服务主体参数](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)。
 

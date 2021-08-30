@@ -1,21 +1,21 @@
 ---
-title: Azure 顾问 Windows Virtual Desktop 演练 - Azure
-description: 如何解决 Azure 顾问对 Windows Virtual Desktop 的建议。
+title: Azure 顾问 Azure 虚拟桌面演练 - Azure
+description: 如何解决 Azure 顾问对 Azure 虚拟桌面的建议。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 666f882dec6c00b9fe5421485afded1fbd57d961
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b8bc514f495a46e76ad882720c918824aab0aaac
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448298"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745474"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>如何解决 Azure 顾问建议
 
-本文介绍了如何解决 Azure 顾问中对 Windows Virtual Desktop 的建议。
+本文介绍了如何解决 Azure 顾问中对 Azure 虚拟桌面的建议。
 
 ## <a name="no-validation-environment-enabled"></a>“未启用验证环境”
 
@@ -24,7 +24,7 @@ ms.locfileid: "106448298"
 
 此建议显示在“卓越运营”下。 此建议还应显示如下警告消息：
 
-“你没有在此订阅中启用验证环境。 创建主机池时，在“属性”选项卡中为“验证环境”选择“否”。若要通过 Windows 虚拟桌面服务部署确保业务连续性，请确保至少有一个主机池带有可用于测试潜在问题的验证环境。”
+“你没有在此订阅中启用验证环境。 创建主机池时，在“属性”选项卡中为“验证环境”选择“否”。若要通过 Azure 虚拟桌面服务部署确保业务连续性，请确保至少有一个主机池带有可用于测试潜在问题的验证环境。”
 
 可以通过在你的主机池之一中启用验证环境来消除此警告消息。
 
@@ -75,4 +75,4 @@ ms.locfileid: "106448298"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果在查找有关如何解决常见问题的更深入指南，请查看 [Windows Virtual Desktop 故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
+如果在查找有关如何解决常见问题的更深入指南，请查看 [Azure 虚拟桌面问题排查概述、反馈和支持](troubleshoot-set-up-overview.md)。

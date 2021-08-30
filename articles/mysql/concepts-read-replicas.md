@@ -5,16 +5,18 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 06/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: c380a3edb556adb72d067cb2910c8afbf66b99a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89cb9122da21887165b2330f75dd316c184de823
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98250258"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779685"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 使用只读副本功能可将数据从 Azure Database for MySQL 服务器复制到只读服务器。 可将源服务器中的数据复制到最多 5 个副本。 使用 MySQL 引擎的基于本机二进制日志 (binlog) 文件位置的复制技术以异步方式更新副本。 若要了解有关 binlog 复制的详细信息，请参阅 [MySQL binlog 复制概述](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。
 
@@ -48,7 +50,38 @@ ms.locfileid: "98250258"
 
 无论源服务器位于何处，你都可以在以下任何区域中创建只读副本。 支持的通用副本区域包括：
 
-澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国中部、东亚、美国东部、美国东部 2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部、美国西部 2、美国中西部。
+| 区域 | 副本可用性 | 
+| --- | --- | 
+| 澳大利亚东部 | :heavy_check_mark: | 
+| 澳大利亚东南部 | :heavy_check_mark: | 
+| 巴西南部 | :heavy_check_mark: | 
+| 加拿大中部 | :heavy_check_mark: |
+| 加拿大东部 | :heavy_check_mark: |
+| 美国中部 | :heavy_check_mark: | 
+| 美国东部 | :heavy_check_mark: | 
+| 美国东部 2 | :heavy_check_mark: |
+| 东亚 | :heavy_check_mark: | 
+| Japan East | :heavy_check_mark: | 
+| 日本西部 | :heavy_check_mark: | 
+| 韩国中部 | :heavy_check_mark: |
+| 韩国南部 | :heavy_check_mark: |
+| 北欧 | :heavy_check_mark: | 
+| 美国中北部 | :heavy_check_mark: | 
+| 美国中南部 | :heavy_check_mark: | 
+| Southeast Asia | :heavy_check_mark: | 
+| 英国南部 | :heavy_check_mark: | 
+| 英国西部 | :heavy_check_mark: | 
+| 美国中西部 | :heavy_check_mark: | 
+| 美国西部 | :heavy_check_mark: | 
+| 美国西部 2 | :heavy_check_mark: | 
+| 西欧 | :heavy_check_mark: | 
+| 印度中部* | :heavy_check_mark: | 
+| 法国中部* | :heavy_check_mark: | 
+| 阿拉伯联合酋长国北部* | :heavy_check_mark: | 
+| 南非北部* | :heavy_check_mark: |
+
+> [!Note] 
+> *在这些区域中，Azure Database for MySQL 具有公共预览版的常规用途存储 v2  <br /> *对于这些 Azure 区域，可选择在常规用途存储 v1 和 v2 中创建服务器。 对于使用公共预览版的常规用途存储 v2 创建的服务器，只能在支持常规用途存储 v2 的 Azure 区域中创建副本服务器。
 
 ### <a name="paired-regions"></a>配对区域
 
@@ -141,11 +174,18 @@ MySQL 支持两种类型的事务：GTID 事务（使用 GTID 标识）和匿名
 |`enforce_gtid_consistency`|通过仅允许执行能够以事务性安全方式记录的语句来强制实施 GTID 一致性。 在启用 GTID 复制之前，必须将此值设置为 `ON`。 |`OFF`|`OFF`：允许所有事务违反 GTID 一致性。  <br> `ON`：不允许任何事务违反 GTID 一致性。 <br> `WARN`：允许所有事务违反 GTID 一致性，但系统会生成警告。 | 
 
 > [!NOTE]
-> 在启用 GTID 后，无法再将其关闭。 如果需要关闭 GTID，请与支持人员联系。 
+> * 在启用 GTID 后，无法再将其关闭。 如果需要关闭 GTID，请与支持人员联系。 
+>
+> * 若要更改 GTID 的值，只能按模式的升序一次完成一个步骤。 例如，如果 gtid_mode 设置为 OFF_PERMISSIVE，则可以更改为 ON_PERMISSIVE，但不能更改为 ON。
+>
+> * 为了保持复制一致性，无法更新主服务器/副本服务器的此设置。
+>
+> * 建议先将 enforce_gtid_consistency 设置为 ON，然后再设置 gtid_mode=ON
+
 
 若要启用 GTID 并配置一致性行为，请使用 [Azure 门户](howto-server-parameters.md)、[Azure CLI](howto-configure-server-parameters-using-cli.md) 或 [PowerShell](howto-configure-server-parameters-using-powershell.md)更新 `gtid_mode` 和 `enforce_gtid_consistency` 服务器参数。
 
-如果在源服务器上启用了 GTID（`gtid_mode` = 开），则新创建的副本也将启用 GTID 并使用 GTID 复制。 无法在源或副本服务器上更新 `gtid_mode`，这是为了保持复制一致性。
+如果在源服务器上启用了 GTID（`gtid_mode` = 开），则新创建的副本也将启用 GTID 并使用 GTID 复制。 为了确保复制一致性，在启用 GTID 的情况下创建主服务器或副本服务器后，无法更改 `gtid_mode`。 
 
 ## <a name="considerations-and-limitations"></a>注意事项和限制
 

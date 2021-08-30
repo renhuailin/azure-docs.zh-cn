@@ -1,18 +1,19 @@
 ---
 title: Eav4 系列和 Easv4 系列
 description: Eav4 和 Easv4 系列 VM 的规格。
-author: migerdes
+author: ayshakeen
 ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.author: jushiman
-ms.openlocfilehash: ec320d7eeebbe5eab14061cd5c194f15acf5638a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/13/2021
+ms.author: ayshak
+ms.reviewer: jushiman
+ms.openlocfilehash: e91239e1438deae10fcbd20fe3efb1d9fbd0264a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557924"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751706"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 和 Easv4 系列
 
@@ -26,7 +27,7 @@ ms.locfileid: "102557924"
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持 <br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 <br>
 
@@ -34,7 +35,7 @@ Eav4 系列大小基于 2.35Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大 NIC 数 | 预期的网络带宽 (Mbps) |
 | -----|-----|-----|-----|-----|-----|-----|-----|
-| Standard\_E2a\_v4|2|16|50|4|3000/46/23|2 | 800 |
+| Standard\_E2a\_v4<sup>1</sup>|2|16|50|4|3000/46/23|2 | 800 |
 | Standard\_E4a\_v4|4|32|100|8|6000/93/46|2 | 1600 |
 | Standard\_E8a\_v4|8|64|200|16|12000/187/93|4 | 3200 |
 | Standard\_E16a\_v4|16|128|400|32|24000/375/187|8 | 6400 |
@@ -44,6 +45,9 @@ Eav4 系列大小基于 2.35Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现
 | Standard\_E64a\_v4|64|512|1600|32|96000/1000 (500)|8 | 25600 |
 | Standard\_E96a\_v4|96|672|2400|32|96000/1000 (500)|8 | 32000 |
 
+<sup>1</sup> 加速网络只能应用于单个 NIC。 
+
+
 ## <a name="easv4-series"></a>Easv4 系列
 
 [ACU](acu.md)：230 - 260<br>
@@ -52,25 +56,28 @@ Eav4 系列大小基于 2.35Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持 <br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 <br>
 
 Easv4 系列大小基于 2.35Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35GHz 的最大提升频率，并使用高级 SSD。 Easv4 系列大小适用于内存密集型企业应用程序。
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 | 预期的网络带宽 (Mbps) |
-|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| Standard_E2as_v4|2|16|32|4|4000 / 32 (50)|3200 / 48|2 | 800 |
-| Standard_E4as_v4|4|32|64|8|8000 / 64 (100)|6400 / 96|2 | 1600 |
-| Standard_E8as_v4|8|64|128|16|16000 / 128 (200)|12800 / 192|4 | 3200 |
-| Standard_E16as_v4|16|128|256|32|32000 / 255 (400)|25600 / 384|8 | 6400 |
-| Standard_E20as_v4|20|160|320|32|40000/320 (500)|32000 / 480|8 | 8000 |
-| Standard_E32as_v4|32|256|512|32|64000 / 510 (800)|51200 / 768|8 | 12800 |
-| Standard_E48as_v4|48|384|768|32|96000 / 1020 (1200)|76800 / 1148|8 | 19200 |
-| Standard_E64as_v4|64|512|1024|32|128000 / 1020 (1600)|80000 / 1200|8 | 25600 |
-| Standard_E96as_v4 <sup>1</sup>|96|672|1344|32|192000 / 1020 (2400)|80000 / 1200|8 | 32000 |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大突发非缓存磁盘吞吐量：IOPS/MBps<sup>1</sup> | 最大 NIC 数 | 预期的网络带宽 (Mbps) |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| Standard_E2as_v4<sup>3</sup>|2|16|32|4|4000 / 32 (50)|3200 / 48| 4000/200 |2 | 800 |
+| Standard_E4as_v4 <sup>2</sup>|4|32|64|8|8000 / 64 (100)|6400 / 96| 8000/200 |2 | 1600 |
+| Standard_E8as_v4 <sup>2</sup>|8|64|128|16|16000 / 128 (200)|12800 / 192| 16000/400 |4 | 3200 |
+| Standard_E16as_v4 <sup>2</sup>|16|128|256|32|32000 / 255 (400)|25600 / 384| 32000/800 |8 | 6400 |
+| Standard_E20as_v4|20|160|320|32|40000/320 (500)|32000 / 480| 40000/1000 |8 | 8000 |
+| Standard_E32as_v4<sup>2</sup>|32|256|512|32|64000 / 510 (800)|51200 / 768| 64000/1600 |8 | 12800 |
+| Standard_E48as_v4|48|384|768|32|96000 / 1020 (1200)|76800 / 1148| 80000/2000 |8 | 19200 |
+| Standard_E64as_v4<sup>2</sup>|64|512|1024|32|128000 / 1020 (1600)|80000 / 1200| 80000/2000 |8 | 25600 |
+| Standard_E96as_v4 <sup>2</sup>|96|672|1344|32|192000 / 1020 (2400)|80000 / 1200| 80000/2000 |8 | 32000 |
 
-<sup>1</sup> [受约束的可用核心规格](./constrained-vcpu.md)。
+<sup>1</sup> Easv4 系列 VM 可通过[突发方式](./disk-bursting.md)提高其磁盘性能，最大突发的持续时间一次长达 30 分钟。 <br>
+<sup>2</sup> [受约束的可用核心大小](./constrained-vcpu.md)。 <br>
+<sup>3</sup> 加速网络只能应用于单个 NIC。 
+
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

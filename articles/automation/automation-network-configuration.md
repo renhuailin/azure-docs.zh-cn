@@ -4,12 +4,12 @@ description: 本文详细说明了 Azure Automation State Configuration、Azure 
 ms.author: magoedte
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 36331e9c07926d4d3ffff136aefa2f9a77d47cb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c3b00a3d60db16c3b768494f8630587a16033d8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708877"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465792"
 ---
 # <a name="azure-automation-network-configuration-details"></a>Azure 自动化网络配置详细信息
 
@@ -36,7 +36,7 @@ ms.locfileid: "101708877"
 
 如果使用在节点之间传递的 DSC 资源（如 [WaitFor* 资源](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)），还需要允许节点之间产生流量。 请参阅每个 DSC 资源的文档以了解这些网络要求。
 
-若要了解 TLS 1.2 的客户端要求，请参阅[强制 Azure 自动化执行 TLS 1.2](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
+若要了解 TLS 1.2 的客户端要求，请参阅[为 Azure 自动化使用 TLS 1.2](automation-managing-data.md#tls-12-for-azure-automation)。
 
 ## <a name="update-management-and-change-tracking-and-inventory"></a>更新管理与更改跟踪和清单
 

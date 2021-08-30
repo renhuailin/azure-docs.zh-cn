@@ -158,6 +158,8 @@
       href: howto-integrate-azure-managed-service-identity.md
     - name: 更新到新的 Spring Boot 库
       href: howto-convert-to-the-new-spring-boot.md
+    - name: 在 Azure 区域之间移动资源
+      href: howto-move-resource-between-regions.md
 - name: 参考
   items:
     - name: 客户端库

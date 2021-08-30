@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 832cc1d4f9ec3cec4ada6e964e3ab2f6f023dd41
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 95f69f04ec1aa0fb0c5588647709d8d938ad2a53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554916"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441323"
 ---
 ### <a name="neural-and-standard-voices"></a>神经和标准语音
 
@@ -77,8 +77,8 @@ ms.locfileid: "106554916"
 |---|---|
 | 语音模型托管 | 美国东部、美国西部 2、美国中南部、东南亚、英国南部、西欧、澳大利亚东部 |
 | 实时字符数 | 美国东部、美国西部 2、美国中南部、东南亚、英国南部、西欧、澳大利亚东部 |
-| 长音频字符数 | 美国东部、西欧、英国南部、东南亚、印度中部 |
-| 自定义神经训练 | 美国东部、英国南部 |
+| 长音频字符数 | 美国东部、西欧、东南亚、英国南部、印度中部 |
+| 自定义神经训练 | 美国东部、东南亚、英国南部 |
 
 ### <a name="long-audio-api"></a>长音频 API
 

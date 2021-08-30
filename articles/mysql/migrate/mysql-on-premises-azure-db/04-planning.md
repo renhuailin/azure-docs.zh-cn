@@ -1,5 +1,5 @@
 ---
-title: 从本地 MySQL 到 Azure Database for MySQL 的迁移指南计划
+title: 将数据从本地 MySQL 迁移到 Azure Database for MySQL：计划
 description: Azure 登陆区域是定义为云迁移项目最终放置位置的目标环境。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: af4b64a9621f2327287a88fc9f3d00e485c424d5
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 86dca0c57b473ca759c7dd2a685707c09dd11f05
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082688"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748193"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-planning"></a>从本地 MySQL 到 Azure Database for MySQL 的迁移指南计划
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-planning"></a>将数据从本地 MySQL 迁移到 Azure Database for MySQL：计划
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -55,16 +57,16 @@ ms.locfileid: "112082688"
 
 | 迁移工具 | 类型 | 位置 | 入站网络要求 | 出站网络要求 |
 |----------------|------|----------|------------------------------|-------------------------------|
-| **数据库迁移服务 (DMS)** | 脱机 | Azure | 允许来自外部 IP 的 3306 | 连接到 Azure MySQL 数据库实例的路径 |
-| **导入/导出（MySQL Workbench、mysqldump）** | 脱机 | 本地 | 允许来自内部 IP 的 3306 | 连接到 Azure MySQL 数据库实例的路径 |
-| **导入/导出（MySQL Workbench、mysqldump）** | 脱机 | Azure VM | 允许来自外部 IP 的 3306 | 连接到 Azure MySQL 数据库实例的路径 |
+| **数据库迁移服务 (DMS)** | 脱机 | Azure| 允许来自外部 IP 的 3306 | 连接到 Azure MySQL 数据库实例的路径 |
+| **导入/导出（MySQL Workbench、mysqldump）** | 脱机| 本地 | 允许来自内部 IP 的 3306 | 连接到 Azure MySQL 数据库实例的路径 |
+| **导入/导出（MySQL Workbench、mysqldump）** | 脱机| Azure VM | 允许来自外部 IP 的 3306 | 连接到 Azure MySQL 数据库实例的路径 |
 | **mydumper/myloader** | 脱机 | 本地 | 允许来自内部 IP 的 3306 | 连接到 Azure MySQL 数据库实例的路径 |
 | **mydumper/myloader** | 脱机 | Azure VM | 允许来自外部 IP 的 3306 | 连接到 Azure MySQL 数据库实例的路径 |
-| **binlog** | 脱机 | 本地 | 通过专用终结点允许来自外部 IP 或专用 IP 的 3306 | 每台复制服务器到主服务器的路径 |
+| **binlog**  | 脱机 | 本地 | 通过专用终结点允许来自外部 IP 或专用 IP 的 3306 | 每台复制服务器到主服务器的路径 |
 
 其他网络注意事项包括：
 
-- 位于 VNET 中的 DMS 为服务分配了一个[动态公共 IP](../../../dms/faq.md#setup)。 在创建过程中，可以将服务放置在通过 [ExpressRoute](../../../expressroute/expressroute-introduction.md) 或通过[站点到站点 VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) 进行连接的虚拟网络中。
+- 位于 VNET 中的 DMS 为服务分配了一个[动态公共 IP](/azure/dms/faq#setup)。 在创建过程中，可以将服务放置在通过 [ExpressRoute](../../../expressroute/expressroute-introduction.md) 或通过[站点到站点 VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) 进行连接的虚拟网络中。
 
 - 使用 Azure 虚拟机运行迁移工具时，向它分配一个公共 IP 地址，然后仅允许它连接到本地 MySQL 实例。
 
@@ -93,8 +95,10 @@ WWI 最初想测试联机迁移，但 DMS 连接到其本地环境所需的网�
 
 - 确定要使用联机还是脱机数据迁移策略。
 
-- 确定 SSL 证书策略。  
+- 确定 SSL 证书策略。
 
+
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [迁移方法](./05-migration-methods.md)

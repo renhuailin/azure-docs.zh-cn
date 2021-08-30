@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/27/2021
+ms.date: 08/16/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: 2d4ecf925eadd00c40685fbee413df6fca0368d9
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 92297e63739bca85a640120152ee864b85f0f640
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070850"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252321"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C：区域可用性和数据驻留
 
@@ -25,7 +25,7 @@ Azure AD B2C 标识数据存储在基于创建租户时提供的国家/地区的
 
 区域可用性和数据驻留是适用于 Azure AD B2C 的两个截然不同的概念。 本文介绍这两个概念之间的区别，并对它们应用到 Azure 和 Azure AD B2C 的方式进行比较。
 
-Azure AD B2C 已在全球正式发布，并在美国、欧洲或亚太区域提供数据驻留选项  。 Azure AD B2C 在澳大利亚处于公共预览版阶段。
+Azure AD B2C 已在全球正式发布，并在美国、欧洲、亚太区域或澳大利亚提供数据驻留选项  。
 
 [区域可用性](#region-availability)是指服务适用的地区。
 
@@ -37,7 +37,7 @@ Azure AD B2C 可通过 Azure 公有云在全球通用。 可在 Azure 的[可用
 
 ## <a name="data-residency"></a>数据驻留
 
-Azure AD B2C 将用户数据存储在美国、欧洲或亚太区域中。
+Azure AD B2C 将用户数据存储在美国、欧洲、亚太区域或澳大利亚。
 
 数据驻留取决于[创建 Azure AD B2C 租户](tutorial-create-tenant.md)时选择的国家/地区：
 

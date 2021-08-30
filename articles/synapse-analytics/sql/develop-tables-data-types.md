@@ -11,20 +11,20 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: ae919a12dc1c50fcb30d08128e4ebf2faa2b2ccb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32a85b4409f36846a14e21d2f3894b7dbae1ec30
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674162"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723347"
 ---
 # <a name="table-data-types-in-synapse-sql"></a>Synapse SQL 中的表数据类型
 
-本文包含关于在 Synapse SQL 中定义表数据类型的建议。 
+本文包含关于在 Synapse SQL 专用池中定义表数据类型的建议。 
 
 ## <a name="data-types"></a>数据类型
 
-Synapse SQL 支持最常用的数据类型。 有关受支持数据类型的列表，请参阅 CREATE TABLE 语句中的[数据类型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes&preserve-view=true)。 
+Synapse SQL 专用池支持最常用的数据类型。 有关受支持数据类型的列表，请参阅 CREATE TABLE 语句中的[数据类型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes&preserve-view=true)。 对于 Synapse SQL 无服务器，请参阅[在 Azure Synapse Analytics 中使用无服务器 SQL 池查询存储文件](./query-data-storage.md)和[如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET](./develop-openrowset.md) 这两篇文章
 
 ## <a name="minimize-row-length"></a>最大限度地减小行长度
 
@@ -33,6 +33,7 @@ Synapse SQL 支持最常用的数据类型。 有关受支持数据类型的列�
 - 避免使用较大默认长度定义字符列。 例如，如果最长的值是 25 个字符，则将列定义为 VARCHAR(25)。
 - 当仅需要 VARCHAR 时请避免使用 [NVARCHAR][NVARCHAR]
 - 尽可能使用 NVARCHAR(4000) 或 VARCHAR(8000)，而非 NVARCHAR(MAX) 或 VARCHAR(MAX)。
+- 避免使用带有 0（零）位数的浮点数和小数。  这些应为 TINYINT、SMALLINT、INT 或 BIGINT。
 
 > [!NOTE]
 > 如果使用 PolyBase 外部表来加载 Synapse SQL 表，则定义的表行长度不能超过 1 MB。 当数据长度可变的行超过 1 MB 时，可使用 BCP 而不是 PolyBase 加载行。

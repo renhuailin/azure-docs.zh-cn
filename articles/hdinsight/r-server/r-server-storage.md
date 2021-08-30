@@ -2,17 +2,19 @@
 title: 适用于 ML Services on HDInsight 的 Azure 存储解决方案 - Azure
 description: 了解 ML Services on HDInsight 所提供的不同存储选项
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/02/2020
-ms.openlocfilehash: ddc48025de164ff68fb539a293e06bae09171742
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2ed4e27fb680c14ed5bbae0585d89152c1999b97
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943910"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295860"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>适用于 ML Services on HDInsight 的 Azure 存储解决方案
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 ML Services on HDInsight 可使用不同的存储解决方案来保存数据、代码或包含分析结果的对象。 这些解决方案包括以下选项：
 
@@ -95,7 +97,7 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 ```
 
-所有目录和文件引用现在都指向存储帐户 `wasbs://container2@storage2.blob.core.windows.net`。 这是已指定的 **名称节点**。
+所有目录和文件引用现在都指向存储帐户 `wasbs://container2@storage2.blob.core.windows.net`。 这是已指定的“名称节点”。
 
 在 storage2 上配置 `/user/RevoShare/<SSH username>` 目录，如下所示：
 

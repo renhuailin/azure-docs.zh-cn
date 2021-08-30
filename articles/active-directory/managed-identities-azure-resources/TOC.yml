@@ -54,6 +54,8 @@
       href: ../../event-hubs/authenticate-managed-identity.md?context=%2fazure%2factive-directory%2fmanaged-identities-azure-resources%2fcontext%2fmsi-context
     - name: Azure 容器实例
       href: ../../container-instances/container-instances-managed-identity.md?context=%2fazure%2factive-directory%2fmanaged-identities-azure-resources%2fcontext%2fmsi-context
+    - name: 查看托管标识活动
+      href: how-to-view-managed-identity-activity.md
 - name: 概念
   items:
     - name: 托管标识和 Azure VM
@@ -124,7 +126,7 @@
       href: /dotnet/api/overview/azure/identity-readme
     - name: Java
       href: /java/api/overview/azure/identity-readme
-    - name: JavaScript
+    - name: Javascript
       href: /javascript/api/overview/azure/identity-readme
     - name: Python
       href: /python/api/overview/azure/identity-readme

@@ -11,13 +11,13 @@ ms.topic: how-to
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 02/24/2020
-ms.openlocfilehash: f98dcdd9c1a479703c82c01b4fd240507ea355de
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/23/2021
+ms.openlocfilehash: 6d3027afae6b1d4121582014bb2b525ba2fd2c44
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784454"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090252"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 删除透明数据加密 (TDE) 保护器
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -32,10 +32,10 @@ ms.locfileid: "107784454"
 
 请记住，在 Key Vault 中删除了 TDE 保护器后，在长达 10 分钟的时间内，所有加密数据库将开始拒绝所有带有相应错误消息的连接，并将其状态更改为[无法访问](./transparent-data-encryption-byok-overview.md#inaccessible-tde-protector)。
 
-本操作指南根据事件响应泄露后的预期结果介绍了两种方法：
+本操作指南介绍了在对入侵事件进行响应后使数据库不可访问的方法。
 
-- 使 Azure SQL 数据库/Azure Synapse Analytics 中的数据库无法访问。
-- 使 Azure SQL 数据库/Azure Synapse Analytics 中的数据库无法访问。
+> [!NOTE]
+> 本文适用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics（专用 SQL 池（以前称为 SQL DW））。 有关 Synapse 工作区内专用 SQL 池的透明数据加密的文档，请参阅 [Azure Synapse Analytics 加密](../../synapse-analytics/security/workspaces-encryption.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

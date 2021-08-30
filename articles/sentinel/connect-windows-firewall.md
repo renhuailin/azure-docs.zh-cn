@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: cf7e389fc4a8a8dfa88691dc034611cae3471731
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3af0977880adf900171dad6c518f0267a1d9d2a1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655334"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778199"
 ---
 # <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>将具有高级安全性的 Windows Defender 防火墙连接到 Azure Sentinel
 
@@ -31,7 +31,10 @@ ms.locfileid: "94655334"
 > [!NOTE]
 > - 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
 >
-> - 如果已将 Azure 安全中心的 Azure Defender 警报收集到 Azure Sentinel 工作区，则无需通过此连接器启用 Windows 防火墙解决方案。 但是，如果启用了此操作，则不会导致重复的数据。 
+> - 如果已将 Azure 安全中心的 Azure Defender 警报收集到 Azure Sentinel 工作区，则无需通过此连接器启用 Windows 防火墙解决方案。 但是，如果启用了此操作，则不会导致重复的数据。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -81,9 +84,15 @@ ms.locfileid: "94655334"
 
 ## <a name="validate-connectivity"></a>验证连接
  
-由于 Windows 防火墙日志仅在本地日志文件达到容量时才会发送到 Azure Sentinel，因此，将日志的默认大小保留为 4096 KB 最有可能导致收集延迟较高。 可以通过降低日志文件的大小来降低延迟时间。 请参阅[配置 Windows 防火墙日志](/windows/security/threat-protection/windows-firewall/configure-the-windows-firewall-log)的说明。 请注意，在定义可能的最小日志大小 (1 KB) 会完全消除回收延迟，这可能会对本地计算机的性能产生负面影响。 
+由于 Windows 防火墙日志仅在本地日志文件达到容量时才会发送到 Azure Sentinel，因此，将日志的默认大小保留为 4096 KB 最有可能导致收集延迟较高。 可以通过降低日志文件的大小来降低延迟时间。 有关详细信息，请参阅[配置 Windows 防火墙日志](/windows/security/threat-protection/windows-firewall/configure-the-windows-firewall-log)。
+
+> [!NOTE]
+>
+> - 虽然较小的日志大小会缩短收集延迟，但也可能会对本地计算机的性能产生负面影响。
+> 
+> - 收集数据之前，数据收集配置要求日志文件中至少有 1000 行新行。 因此，日志文件大小应设置为不低于 100（一百）KB，因为这将确保累积 1000 行。
 
 ## <a name="next-steps"></a>后续步骤
 在本文档中，你已了解如何将 Windows 防火墙连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。

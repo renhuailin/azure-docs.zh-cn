@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394565c857320c8fd94d72a0ca15358c83b0d09d
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 32b848f6a34fbd25322c53cd35dc0db600743c88
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714379"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730202"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中创建和管理资源目录
 
@@ -30,6 +30,9 @@ ms.locfileid: "109714379"
 目录是资源和访问包的容器。 需要将相关的资源和访问包分组时，可以创建目录。 创建目录的任何人将成为第一个目录所有者。 目录所有者可以添加其他目录所有者。
 
 **必备角色**：全局管理员、标识治理管理员、用户管理员或目录创建者
+
+> [!NOTE]
+> 用户如果已分配有“用户管理员”角色，则将无法再在其未拥有的目录中创建目录或管理访问包。 如果组织中的用户已分配有“用户管理员”角色，以配置目录、访问包或权利管理中的策略，则应为这些用户分配“Identity Governance 管理员”角色。
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -51,13 +54,28 @@ ms.locfileid: "109714379"
 
 1. 单击“创建”以创建该目录。
 
-### <a name="creating-a-catalog-programmatically"></a>以编程方式创建目录
+## <a name="create-a-catalog-programmatically"></a>以编程方式创建目录
+### <a name="create-a-catalog-with-microsoft-graph"></a>使用 Microsoft Graph 创建目录
 
-还可以使用 Microsoft Graph 创建目录。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来[创建 accessPackageCatalog](/graph/api/accesspackagecatalog-post?view=graph-rest-beta&preserve-view=true)。
+还可以使用 Microsoft Graph 创建目录。  对于具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，或具有该应用程序权限的应用程序，如果用户在其中具有相应角色，则可调用 API 来[创建 accessPackageCatalog](/graph/api/accesspackagecatalog-post?view=graph-rest-beta&preserve-view=true)。
+
+### <a name="create-a-catalog--with-powershell"></a>使用 PowerShell 创建目录
+
+可使用[适用于 Identity Governance 的 Microsoft Graph PowerShell cmdlet](https://www.powershellgallery.com/packages/Microsoft.Graph.Identity.Governance/) 模块 1.6.0 或更高版本中的 `New-MgEntitlementManagementAccessPackageCatalog` cmdlet 在 PowerShell 中创建目录。
+
+```powershell
+Connect-MgGraph -Scopes "EntitlementManagement.ReadWrite.All"
+Select-MgProfile -Name "beta"
+$catalog = New-MgEntitlementManagementAccessPackageCatalog -DisplayName "Marketing"
+```
 
 ## <a name="add-resources-to-a-catalog"></a>将资源添加到目录
 
-若要在访问包中包含资源，这些资源必须存在于目录中。 可添加的资源类型包括组、应用程序和 SharePoint Online 站点。 组可以是云创建的 Microsoft 365 组，或者云创建的 Azure AD 安全组。 应用程序可以是 Azure AD 企业应用程序，包括 SaaS 应用程序，以及你自己的已联合到 Azure AD 的应用程序。 站点可以是 SharePoint Online 站点或 SharePoint Online 站点集合。
+若要在访问包中包含资源，这些资源必须存在于目录中。 可添加的资源类型包括组、应用程序和 SharePoint Online 站点。
+
+* 组可以是云创建的 Microsoft 365 组，或者云创建的 Azure AD 安全组。  源自本地 Active Directory 的组无法分配为资源，因为无法在 Azure AD 中更改其所有者或成员属性。   也无法在 Azure AD 中修改作为通讯组在 Exchange Online 中创建的组。
+* 应用程序可以是 Azure AD 企业应用程序，包括 SaaS 应用程序和与 Azure AD 集成的你自己的应用程序。 有关为具有多个角色的应用程序选择适当资源的详细信息，请参阅[添加资源角色](entitlement-management-access-package-resources.md#add-resource-roles)。
+* 站点可以是 SharePoint Online 站点或 SharePoint Online 站点集合。
 
 **必备角色：** 请参阅 [将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
@@ -81,17 +99,17 @@ ms.locfileid: "109714379"
 
     现在，可将这些资源包含在目录中的访问包内。
 
-### <a name="add-a-multi-geo-sharepoint-site-preview"></a>添加多地理位置 SharePoint 站点（预览版）
+### <a name="add-a-multi-geo-sharepoint-site"></a>添加多地域 SharePoint 站点
 
 1. 若已为 SharePoint 启用[多地域](/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365)，请选择想从中选择站点的环境。
     
-    :::image type="content" source="media/entitlement-management-catalog-create/sharepoint-multigeo-select.png" alt-text="访问包 - 添加资源角色 - 选择 SharePoint 多地域站点":::
+    :::image type="content" source="media/entitlement-management-catalog-create/sharepoint-multi-geo-select.png" alt-text="访问包 - 添加资源角色 - 选择 SharePoint 多地域站点":::
 
 1. 然后选择要添加到目录中的站点。 
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>以编程方式将资源添加到目录
 
-还可以使用 Microsoft Graph 将资源添加到目录。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户或目录和资源所有者可以调用 API 来[创建 accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&preserve-view=true)。
+还可以使用 Microsoft Graph 将资源添加到目录。  通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户或目录和资源所有者可以调用 API 来[创建 accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&preserve-view=true)。  但是，具有应用程序权限的应用程序尚无法在请求时没有用户上下文的情况下以编程方式添加资源。
 
 ## <a name="remove-resources-from-a-catalog"></a>从目录中删除资源
 

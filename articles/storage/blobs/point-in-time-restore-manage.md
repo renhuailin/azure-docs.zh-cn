@@ -10,12 +10,12 @@ ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd58ae6aa0083b0f2a02ef1c008e76f92f39b766
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 904def8328fbd7e23812b7ca325beda7722c5189
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676294"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113504686"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>对块 blob 数据执行时间点还原
 
@@ -24,7 +24,7 @@ ms.locfileid: "110676294"
 有关时间点还原的详细信息，请参阅[块 blob 的时间点还原](point-in-time-restore-overview.md)。
 
 > [!CAUTION]
-> 时间点还原仅支持对块 blob 执行还原操作。 无法还原对容器的操作。 如果通过调用[删除容器](/rest/api/storageservices/delete-container)操作从存储帐户中删除了某个容器，将无法使用还原操作来还原该容器。 如果要在以后还原它们，请删除单个 blob，而不是删除整个容器。 此外，Microsoft 建议为容器和 blob 启用软删除，以防止意外删除。 有关详细信息，请参阅[容器软删除（预览版）](soft-delete-container-overview.md)和 [blob 软删除](soft-delete-blob-overview.md)。
+> 时间点还原仅支持对块 blob 执行还原操作。 无法还原对容器的操作。 如果通过调用[删除容器](/rest/api/storageservices/delete-container)操作从存储帐户中删除了某个容器，将无法使用还原操作来还原该容器。 如果要在以后还原它们，请删除单个 blob，而不是删除整个容器。 此外，Microsoft 建议为容器和 blob 启用软删除，以防止意外删除。 有关详细信息，请参阅[容器软删除](soft-delete-container-overview.md)和 [blob 软删除](soft-delete-blob-overview.md)。
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>启用和配置时间点还原
 

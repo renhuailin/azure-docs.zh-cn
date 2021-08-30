@@ -1,6 +1,6 @@
 ---
 title: 部署计划 - Azure Active Directory | Microsoft Docs
-description: 有关如何部署多个 Azure Active Directory 功能的端到端指南。
+description: 有关如何部署多个 Azure Active Directory 功能的指南。
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -12,15 +12,15 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c521752558e58f19b408b5e85e84863cb4cad2f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8d2a64ec05fb3f6d353374684c14733dda9b302d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966176"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443043"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署计划
-是否在查找有关如何部署 Azure Active Directory (Azure AD) 功能的端到端指南？ Azure AD 部署计划详述了成功部署常用 Azure AD 功能所需的业务价值、规划注意事项和操作过程。
+是否在查找有关如何部署 Azure Active Directory (Azure AD) 功能的指南？ Azure AD 部署计划详述了成功部署常用 Azure AD 功能所需的业务价值、规划注意事项和操作过程。
 
 在计划的任意页面，使用浏览器的“打印为 PDF”功能创建最新脱机版文档。
 
@@ -29,7 +29,7 @@ ms.locfileid: "111966176"
 
 | 功能 | 说明|
 | -| -|
-| [多重身份验证](../authentication/howto-mfa-getstarted.md)| Azure AD 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azure AD MFA 可使用管理员批准的身份验证方法帮助保护对数据和应用程序的访问，同时满足对简单登录过程的需求。 观看此视频，了解[如何在租户中配置和强制实施多重身份验证](https://www.youtube.com/watch?v=qNndxl7gqVM)|
+| [Azure AD 多重身份验证](../authentication/howto-mfa-getstarted.md)| Azure AD 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azure AD MFA 可使用管理员批准的身份验证方法帮助保护对数据和应用程序的访问，同时满足对简单登录过程的需求。 观看此视频，了解[如何在租户中配置和强制实施多重身份验证](https://www.youtube.com/watch?v=qNndxl7gqVM)|
 | [条件访问](../conditional-access/plan-conditional-access.md)| 使用条件访问时，可以根据条件实施自动化的访问控制决策，决定谁能够访问云应用。 |
 | [自助式密码重置](../authentication/howto-sspr-deployment.md)| 自助密码重置允许用户根据需要重置其密码，不需要管理员干预。 |
 | [无密码](../authentication/howto-authentication-passwordless-deployment.md) | 在组织中使用 Microsoft Authenticator 应用或 FIDO2 安全密钥实施无密码身份验证 |
@@ -43,12 +43,11 @@ ms.locfileid: "111966176"
 | [设备](../devices/plan-device-deployment.md) | 本文可帮助你评估以下操作方法：将设备与 Azure AD 集成，选择实施计划，以及提供指向受支持的设备管理工具的关键链接。 |
 
 
-## <a name="deploy-hybrid-scenarios"></a>部署混合方案
+## <a name="deploy-hybrid-scenarios"></a>部署混合方案  
 
 | 功能 | 说明|
 | -| -|
-| [使用 ADFS 进行密码哈希同步](../hybrid/plan-migrate-adfs-password-hash-sync.md)| 有了密码哈希同步，就可以将用户密码的哈希从本地 Active Directory 同步到 Azure AD，让 Azure AD 对用户进行身份验证，而不与本地 Active Directory 交互 |
-| [使用 ADFS 进行直通身份验证](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| 借助 Azure AD 直通身份验证证，你的用户可使用相同的密码登录到本地应用程序和基于云的应用程序。 此功能为用户提供更好的体验 - 少记一个密码，并且能减少 IT 支持人员成本，因为用户不太可能忘记如何登录。 当人们使用 Azure AD 登录时，此功能可直接通过本地 Active Directory 验证用户的密码。 |
+| [AD FS 到云用户身份验证](../hybrid/migrate-from-federation-to-cloud-authentication.md)| 了解如何通过身份验证或密码哈希同步将用户身份验证从联合身份验证迁移到云身份验证。
 | [Azure AD 应用程序代理](../app-proxy/application-proxy-deployment-plan.md) |现今的员工想要随时随地都能在任何设备上高效工作。 他们需要访问云中的 SaaS 应用和本地的公司应用。 Azure AD 应用程序代理支持这种强大的访问，而无需昂贵和复杂的虚拟专用网络 (VPN) 或外围子网 (DMZ)。 |
 | [无缝 SSO](../hybrid/how-to-connect-sso-quick-start.md)| Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接到企业网络的企业设备上的用户自动登录。 启用此功能后，用户无需键入其密码即可登录到 Azure AD；通常情况下，无需键入其用户名。 此功能可让授权用户轻松访问基于云的应用程序，而无需使用其他任何本地组件。 |
 
@@ -79,7 +78,7 @@ ms.locfileid: "111966176"
 |IT 支持经理|IT 支持组织的代表，可以从服务支持的角度提供有关更改的可支持性的信息。  
 |标识架构师或 Azure 全局管理员|标识管理团队代表，负责定义如何根据组织中的核心标识管理基础结构实施此更改。|
 |应用程序业务所有者 |受影响的应用程序的总体业务所有者，可能负责管理访问权限。还可能提供有关用户体验的信息，以及从最终用户的角度来考虑的此更改的有效性。
-|安全所有者|安全团队的代表，可签字确保该计划符合组织的安全要求。|
+|安全所有者|安全团队的代表，可注销确保该计划符合组织的安全要求。|
 |合规性管理器|组织中负责确保符合公司、行业或政府要求的人员。|
 
 **职责级别包括：**
@@ -92,10 +91,9 @@ ms.locfileid: "111966176"
 
 - **获知** 项目计划和结果
 
-
 ## <a name="best-practices-for-a-pilot"></a>关于试点的最佳做法
-通过试点，你可以在面向所有人启动一项功能之前，先在一个小组中进行测试。 确保在测试过程中，组织内的每个用例都经过全面测试。 最好先针对一组特定的试点用户测试，然后再将功能整体推广到你的组织。
+通过试点，你可以在面向所有人启动一项功能之前，先在一个小组中进行测试。 确保在测试过程中，组织内的每个用例都经过全面测试。 最好先针对一组特定的试点用户测试，然后再将部署整体推广到你的组织。
 
-在最初阶段，以 IT、可用性和其他可以测试和提供反馈的合适用户为目标试点。 此反馈应用来进一步改进你发送给用户的信息和指示，并深入了解你的支持人员可能发现的问题类型。 
+在最初阶段，以 IT、可用性和其他可以测试和提供反馈的合适用户为目标试点。 使用此反馈进一步改进你发送给用户的信息和指示，并深入了解你的支持人员可能发现的问题类型。 
 
 应通过扩大目标群体的范围，将功能推广扩大到更广的用户群体。 通过[动态组成员资格](../enterprise-users/groups-dynamic-membership.md)或手动将用户添加到目标用户群这两种方式均可实现上述目标。

@@ -4,14 +4,14 @@ description: 了解如何在 Azure Cosmos DB 中审核控制平面操作，例�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 08/13/2021
 ms.author: sngun
-ms.openlocfilehash: 6f3e408343fc75d6587d1a67a0179edf13d56e36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ce2d934c335099d07bbe5621a8aa363bf97583c
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101658242"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182444"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>如何审核 Azure Cosmos DB 控制平面操作
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -68,17 +68,17 @@ Azure Cosmos DB 中的控制平面是一项 RESTful 服务，可用于对 Azure 
    | where TimeGenerated >= ago(1h)
    ```
 
-以下屏幕截图捕获了更改 Azure Cosmos 帐户的一致性级别时的日志：
+   以下屏幕截图捕获了更改 Azure Cosmos 帐户的一致性级别时的日志。 结果的 `activityId_g` 值与操作的活动 ID 不同：
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="添加 VNet 时的控制平面日志":::
+   :::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="添加 VNet 时的控制平面日志":::
 
-以下屏幕截图捕获创建密钥空间或 Cassandra 帐户的表时以及更新吞吐量时的日志。 分别记录用于数据库和容器上的创建及更新操作的控制平面日志，如以下屏幕截图所示：
+   以下屏幕截图捕获创建密钥空间或 Cassandra 帐户的表时以及更新吞吐量时的日志。 分别记录用于数据库和容器上的创建及更新操作的控制平面日志，如以下屏幕截图所示：
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="更新吞吐量时的控制平面日志":::
+   :::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="更新吞吐量时的控制平面日志":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>识别与特定操作关联的标识
 
-若要进一步进行调试，可以使用活动 ID 或者按照操作的时间戳，来识别“活动日志”中的特定操作。 时间戳用于某些未显式传递活动 ID 的资源管理器客户端。 “活动日志”提供有关用于启动操作的标识的详细信息。 以下屏幕截图显示如何使用活动 ID，以及如何在“活动日志”中查找与该 ID 关联的操作：
+若要进一步调试，可使用 `activityId_g` 或者按照操作的时间戳，识别活动日志中的特定操作。 时间戳用于某些未显式传递活动 ID 的资源管理器客户端。 “活动日志”提供有关用于启动操作的标识的详细信息。 以下屏幕截图显示如何使用 `activityId_g` 在活动日志中查找与该 ID 关联的操作：
 
 :::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="使用活动 ID 和查找操作":::
 

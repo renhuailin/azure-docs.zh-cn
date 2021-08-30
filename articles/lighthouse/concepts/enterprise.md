@@ -3,12 +3,12 @@ title: 企业应用场景中的 Azure Lighthouse
 description: Azure Lighthouse 的功能可以简化使用多个 Azure AD 租户的企业中的跨租户管理。
 ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 139c7be2c1736841e81e70aa562ab9841fd76337
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 12a6c2f03c06fbd69e77e32b236258bc6a6c8fbe
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788708"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768301"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>企业应用场景中的 Azure Lighthouse
 
@@ -38,7 +38,7 @@ ms.locfileid: "109788708"
 
 无论采用哪种方式，都需要确保[在定义哪些用户拥有委托的资源访问权限时遵循最低特权的原则](recommended-security-practices.md#assign-permissions-to-groups-using-the-principle-of-least-privilege)。 这有助于确保用户只拥有执行所需任务而需要的权限，并可以减少意外出错的可能性。
 
-Azure Lighthouse 只在管理租户和被管理租户之间提供逻辑链接，而不会以物理方式移动数据或资源。 此外，访问始终只朝一个方向进行，即，从管理租户访问被管理租户。  在对被管理租户的资源执行管理操作时，管理租户中的用户和组应继续使用多重身份验证。
+Azure Lighthouse 只在管理租户和被管理租户之间提供逻辑链接，而不会以物理方式移动数据或资源。 此外，访问始终只朝一个方向进行，即，从管理租户访问被管理租户。 在对被管理租户资源执行管理操作时，管理租户中的用户和组应继续使用多重身份验证。
 
 实施内部或外部监管与合规性准则的企业可以使用 [Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)来满足其透明性要求。 如果企业租户已在管理租户与被管理租户之间建立了关系，每个租户中的用户可通过查看记录的活动来了解管理租户中用户所执行的操作。
 

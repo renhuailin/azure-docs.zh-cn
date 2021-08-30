@@ -9,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 2410e5fed48b7ab206360debc3bbeb174b3943cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b36d7bbde524bf3ddcaed2e096f9403caf16ea3c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517053"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742134"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
 ## <a name="video-5-data-science-for-beginners-series"></a>视频 5：适合初学者的数据科学系列
@@ -49,9 +49,9 @@ ms.locfileid: "100517053"
 
 ## <a name="find-examples-in-the-azure-ai-gallery"></a>在 Azure AI 库中查找示例
 
-Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习工作室（经典）](https://azure.microsoft.com/services/machine-learning-studio/)。 它提供了一个工作区，可在其中使用不同的机器学习算法进行试验，并且在已制定出解决方案时，可以 Web 服务启动它。
+Microsoft 有一项基于云的服务，称为[机器学习工作室(经典)](https://azure.microsoft.com/services/machine-learning-studio/)。 它提供了一个工作区，可在其中使用不同的机器学习算法进行试验，并且在已制定出解决方案时，可以 Web 服务启动它。
 
-此服务的一部分被称为 **[Azure AI 库](https://gallery.azure.ai/)**。 它包含资源，包括 Azure 机器学习工作室（经典）试验或模型（由用户生成并贡献给他人使用）的集合。 这些试验是利用他人的想法和工作成果，开始自己的解决方案的绝佳方式。 欢迎每个人前往浏览。
+此服务的一部分被称为 **[Azure AI 库](https://gallery.azure.ai/)**。 它包含资源，包括机器学习工作室（经典）试验或模型（由用户生成并贡献给他人使用）的集合。 这些试验是利用他人的想法和工作成果，开始自己的解决方案的绝佳方式。 欢迎每个人前往浏览。
 
 ![Azure AI 库](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -74,7 +74,7 @@ Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习工作室�
 
 ![“在工作室（经典）中打开”按钮](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-单击此按钮可转到 Azure 机器学习工作室（经典）。 它将复制一份试验，并将其放入自己的工作区中。 这包括参与者的数据集、他们所做的所有处理、所用的所有算法以及保存结果的方法。
+单击此按钮可直接转到“机器学习工作室(经典)”。 它将复制一份试验，并将其放入自己的工作区中。 这包括参与者的数据集、他们所做的所有处理、所用的所有算法以及保存结果的方法。
 
 ![在机器学习工作室（经典）中打开库试验 - 聚类分析算法示例](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 
@@ -87,8 +87,8 @@ Microsoft 拥有一项基于云的服务，名为 [Azure 机器学习工作室�
 
 可在 [Azure AI 库](https://gallery.azure.ai)中查找工作试验，并将这些工作试验用作自己解决方案的起始点。
 
-务必观看 Microsoft Azure 机器学习工作室（经典）“适合初学者的数据科学”中的其他视频。
+请务必观看机器学习工作室（经典）的“适合初学者的数据科学”中的其他视频。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Azure 机器学习工作室（经典）尝试第一个数据科学试验](create-experiment.md)
-* [在 Microsoft Azure 上获取机器学习简介](../overview-what-is-azure-ml.md)
+* [使用机器学习工作室（经典）尝试第一个数据科学试验](create-experiment.md)
+* [获取 Azure 机器学习简介](../overview-what-is-azure-machine-learning.md)

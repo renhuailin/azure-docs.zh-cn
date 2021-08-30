@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5b17df9e074375b8cdbe769c840aaf030eaff8af
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d1654a195f694b9ef8ab8150380939c0e647bcd1
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317426"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580667"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>排查无代理 VMware VM 迁移中的复制问题
 
@@ -297,6 +297,18 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName "keyvaultname" -ObjectId $userPrincip
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>错误消息: 出现内部错误。 [内存分配失败。 内存不足。]
 
 当 NFC 主机缓冲区的内存不足时，会发生这种情况。 若要解决此问题，需要将 VM（计算 vMotion）转移到具有可用资源的另一台主机。
+
+### <a name="error-message-an-internal-error-occurred-file-is-larger-than-maximum-file-size-supported-1012384"></a>错误消息: 出现内部错误。 [文件大于受支持的最大文件大小 (1012384)]
+如果文件大小大于创建快照时支持的最大文件大小，则会发生此情况。 请遵循 [VMware 知识库](https://kb.vmware.com/s/article/1012384)中提供的解决方法
+
+### <a name="error-message-an-internal-error-occurred-cannot-connect-to-the-host-1004109"></a>错误消息: 出现内部错误。 [无法连接到主机 (1004109)]
+当 ESXi 主机无法连接到网络时，会发生此情况。 请遵循 [VMware 知识库文章](https://kb.vmware.com/s/article/1004109)中提供的解决方法。
+
+### <a name="error-message-an-error-occurred-while-saving-the-snapshot-invalid-change-tracker-error-code"></a>错误消息：保存快照时出错: 更改跟踪器错误代码无效
+当存储快照的储基础数据存出现问题时，会出现此错误。 请遵循 [VMware 知识库文章](https://kb.vmware.com/s/article/2042742)中提供的解决方法。
+
+### <a name="error-message-an-error-occurred-while-taking-a-snapshot-unable-to-open-the-snapshot-file"></a>错误消息：拍摄快照时出错: 无法打开快照文件。
+如果创建的快照文件的大小大于 VM 所在数据存储中的可用空间，则会出现此错误。 请遵循[文档](https://go.microsoft.com/fwlink/?linkid=2166464)中提供的解决方法。
 
 ## <a name="replication-cycle-failed"></a>复制周期失败
 

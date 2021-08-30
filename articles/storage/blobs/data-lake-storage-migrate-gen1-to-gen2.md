@@ -4,20 +4,22 @@ description: 将 Azure Data Lake Storage 从 Gen1 迁移到 Gen2（在 Azure Blo
 author: normesta
 ms.topic: how-to
 ms.author: normesta
-ms.date: 03/11/2020
+ms.date: 07/13/2021
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 485f0a19c5cb87b358f1723664425619b5d2c6aa
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: d6d173188c147e04a688ff7c373a1a253393ee87
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903304"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204509"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>将 Azure Data Lake Storage 从 Gen1 迁移到 Gen2
 
 可以将数据、工作负载和应用程序从 Data Lake Storage Gen1 迁移到 Data Lake Storage Gen2 中。
+
+Azure Data Lake Storage Gen1 将于 2024 年 2 月 29 日停用。 有关详细信息，请查看[官方公告](https://azure.microsoft.com/updates/action-required-switch-to-azure-data-lake-storage-gen2-by-29-february-2024/)。 如果使用 Azure Data Lake Storage Gen1，请确保在该日期之前迁移到 Azure Data Lake Storage Gen2。 本文介绍如何执行该操作。
 
 ‎Azure Data Lake Storage Gen2 以 [Azure Blob 存储](storage-blobs-introduction.md)为基础而构建，能够提供一组专用于大数据分析的功能。 [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) 将 [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) 中的功能（例如文件系统语义、目录、文件级安全性和规模）与 [Azure Blob 存储](storage-blobs-introduction.md)中的低成本分层存储、高可用性/灾难恢复功能进行了组合。
 
@@ -69,13 +71,22 @@ ms.locfileid: "111903304"
 
 使用你喜欢的模式迁移数据、工作负载和应用程序。 建议以增量方式验证方案。
 
-1. [创建存储帐户](../common/storage-account-create.md)启用分层命名空间功能。 
+1. [创建存储帐户](create-data-lake-storage-account.md)启用分层命名空间功能。 
 
 2. 迁移数据。 
 
 3. 将[工作负载中的服务](./data-lake-storage-supported-azure-services.md)配置为指向 Gen2 终结点。 
    
-4. 更新应用程序以使用 Gen2 API。 请参阅适用于 [.NET](data-lake-storage-directory-file-acl-dotnet.md)、[Java](data-lake-storage-directory-file-acl-java.md)、[Python](data-lake-storage-directory-file-acl-python.md)、[JavaScript](data-lake-storage-directory-file-acl-javascript.md) 和 [REST](/rest/api/storageservices/data-lake-storage-gen2) 的指南。 
+4. 更新应用程序以使用 Gen2 API。 请参阅以下指南：
+
+| 环境 | 项目 |
+|--------|-----------|
+|Azure 存储资源管理器 |[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件](data-lake-storage-explorer.md)|
+|.NET |[使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录和文件](data-lake-storage-directory-file-acl-dotnet.md)|
+|Java|[使用 Java 管理 Azure Data Lake Storage Gen2 中的目录和文件](data-lake-storage-directory-file-acl-java.md)|
+|Python|[使用 Python 管理 Azure Data Lake Storage Gen2 中的目录和文件](data-lake-storage-directory-file-acl-python.md)|
+|JavaScript (Node.js)|[使用 Node.js 中的 JavaScript SDK 管理 Azure Data Lake Storage Gen2 中的目录和文件](data-lake-storage-directory-file-acl-javascript.md)|
+|REST API |[Azure Data Lake Store REST API](/rest/api/storageservices/data-lake-storage-gen2)|
    
 5. 更新脚本以使用 Data Lake Storage Gen2 [PowerShell cmdlet](data-lake-storage-directory-file-acl-powershell.md) [Azure CLI 命令](data-lake-storage-directory-file-acl-cli.md)。
    
@@ -126,7 +137,7 @@ ms.locfileid: "111903304"
 
 1. 停止对 Gen1 的所有写入操作。
 
-2. 将数据从 Gen1 移动到 Gen2。 建议使用 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-storage.md)。 ACL 随数据一起复制。
+2. 将数据从 Gen1 移动到 Gen2。 建议使用 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-storage.md)，或使用 [Azure 门户](data-lake-storage-migrate-gen1-to-gen2-azure-portal.md)。 ACL 随数据一起复制。
 
 3. 将引入操作和工作负载指向 Gen2。
 
@@ -144,6 +155,9 @@ ms.locfileid: "111903304"
 :heavy_check_mark: 在迁移和转换期间预计会停机。
 
 :heavy_check_mark: 非常适合能够承受停机时间并且可以一次升级所有应用的管道。
+
+> [!TIP]
+> 请考虑使用[Azure 门户](data-lake-storage-migrate-gen1-to-gen2-azure-portal.md)缩短停机时间，并减少完成迁移所需的步骤数。
 
 ### <a name="incremental-copy-pattern"></a>增量复制模式
 

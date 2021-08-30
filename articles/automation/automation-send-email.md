@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 01/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a2650e3a9ce58b611c1aff1a569cc1e8f0980fd4
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 622bff79d48ae707e2b32556e05dad658a0322bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833483"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730546"
 ---
 # <a name="send-an-email-from-a-runbook"></a>从 Runbook 发送电子邮件
 
@@ -20,16 +20,17 @@ ms.locfileid: "107833483"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果还没有 Azure 订阅，可以[激活 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [一个 SendGrid 帐户](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)。
+* [一个 SendGrid 帐户](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-sendgrid-account)。
+* 已在发送网格中配置了发送方验证。 [域或单个发送方](https://sendgrid.com/docs/for-developers/sending-email/sender-identity/) 
 * 具有 Az 模块的[自动化帐户](./index.yml)。
 * 用于存储和执行 runbook 的[运行方式帐户](./automation-security-overview.md#run-as-accounts)。
 
 ## <a name="create-an-azure-key-vault"></a>创建 Azure Key Vault
 
-可以使用以下 PowerShell 脚本创建 Azure Key Vault。 将变量值替换为特定于环境的值。 单击代码块右上角的 **试运行** 按钮，使用嵌入的 Azure Cloud Shell。 也可复制代码并在本地运行它，前提是已在本地计算机上安装 [Az 模块](/powershell/azure/install-az-ps)。
+可以使用以下 PowerShell 脚本创建 Azure Key Vault。 将变量值替换为特定于环境的值。 单击代码块右上角的“试运行”按钮，使用嵌入的 Azure Cloud Shell。 也可复制代码并在本地运行它，前提是已在本地计算机上安装 [Az 模块](/powershell/azure/install-az-ps)。 此脚本还会创建一个 [Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)，该策略允许运行方式帐户获取和设置指定密钥保管库中的密钥保管库机密。
 
 > [!NOTE]
-> 若要检索 API 密钥，请使用[查找 SendGrid API 密钥](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)中的步骤。
+> 若要检索 API 密钥，请使用[查找 SendGrid API 密钥](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#to-find-your-sendgrid-api-key)中的步骤。
 
 ```azurepowershell-interactive
 $SubscriptionId  =  "<subscription ID>"
@@ -100,8 +101,8 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection
     Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Out-Null
-    $VaultName = "<Enter your vault name>&quot;
-    $SENDGRID_API_KEY = (Get-AzKeyVaultSecret -VaultName $VaultName -Name &quot;SendGridAPIKey").SecretValue
+    $VaultName = "<Enter your vault name>"
+    $SENDGRID_API_KEY = Get-AzKeyVaultSecret -VaultName $VaultName -Name "SendGridAPIKey" -AsPlainText
     $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
     $headers.Add("Authorization", "Bearer " + $SENDGRID_API_KEY)
     $headers.Add("Content-Type", "application/json")

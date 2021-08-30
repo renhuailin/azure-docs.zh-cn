@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/15/2021
+ms.date: 07/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 183abae52d8b8dc4b78f48118866d6d667aaeaed
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8e17f6933695755a86c5d1e2fbcb7a14c183d0c4
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061617"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602837"
 ---
 # <a name="mitigate-credential-attacks-in-azure-ad-b2c"></a>缓解 Azure AD B2C 中的凭据攻击
 
@@ -59,6 +59,9 @@ Azure AD B2C 使用复杂策略来锁定帐户。 将根据请求的 IP 和输�
 测试智能锁定功能时，对输入的每个密码使用一种独特的模式。 考虑使用密码生成 web 应用，例如 [https://passwordsgenerator.net/](https://passwordsgenerator.net/)。
 
 当帐户处于锁定状态时达到智能锁定阈值，将收到以下消息：“帐户暂时锁定以防止未经授权的使用。请稍后重试。” 可以将错误消息[本地化](localization-string-ids.md#sign-up-or-sign-in-error-messages)。
+
+> [!NOTE]
+> 测试智能锁定时，由于 Azure AD 身份验证服务的地理分布和负载均衡特性，登录请求可能由不同的数据中心处理。 在这种情况下，由于每个 Azure AD 数据中心独立地跟踪锁定，因此可能需要比所定义的锁定阈值更多的尝试次数才会导致锁定。 在完全锁定之前，用户最多有 (threshold_limit * datacenter_count) 次错误尝试机会。
 
 ## <a name="viewing-locked-out-accounts"></a>查看锁定的帐户
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: c206cba3b23a0bf41ce32481980aa466e869bcde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d710038c00dff56d4840f7252dcb992dcb1b8c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596291"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749268"
 ---
 # <a name="states-and-billing-of-azure-virtual-machines"></a>Azure 虚拟机的状态和计费
 
@@ -43,10 +43,10 @@ Azure 资源浏览器提供一个简单的 UI，用于查看 VM 运行状态：[
 
 | 电源状态 | 说明 | 计费 |  
 |---|---|---|
-| 正在启动| 虚拟机正在启动。 |不计费* | 
+| 正在启动| 虚拟机正在启动。 | 计费 | 
 | 运行 | 虚拟机已启动。 这是标准工作状态。 | 计费 | 
 | 正在停止 | 这是运行和停止之间的过渡状态。 | 计费| 
-|已停止 | 虚拟机已在来宾 OS 中关闭或已使用 PowerOff API 关闭。 在这种状态下，虚拟机仍在租用基础硬件。 这种状态也称为“已停止（已分配）”。 | 计费 | 
+|已停止 | 虚拟机已在主机上分配，但未运行。 也称为 PoweredOff 状态或“已停止(已分配)”。 这可能是调用 PowerOff API 操作或从来宾 OS 中调用关闭而导致的。 在 VM 创建期间或从“解除分配”状态启动 VM 时，也可能会暂时看到“已停止”状态。  | 计费 | 
 | 正在解除分配 | 这是运行和已解除分配之间的过渡状态。 | 不计费* | 
 | 已解除分配 | 虚拟机已解除对基础硬件的租用，并且已完全关闭电源。 这种状态也称为“已停止（已解除分配）”。 | 不计费* | 
 

@@ -1,35 +1,31 @@
 ---
-title: 配置 SharePoint Online 索引器（预览版）
+title: 为 SharePoint Online 中的数据编制索引（预览版）
 titleSuffix: Azure Cognitive Search
 description: 设置 SharePoint Online 索引器，以自动索引 Azure 认知搜索中的文档库内容。
-manager: luisca
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: ea65011a27b7dab65ea75b5365bdcdf2be67d8b2
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 61e9787c0a85ad412d3e70cfb2452d288a48d36a
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747124"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983043"
 ---
-# <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>如何在认知搜索中配置 SharePoint Online 索引（预览版）
+# <a name="index-data-from-sharepoint-online"></a>为 SharePoint Online 中的数据编制索引
 
 > [!IMPORTANT] 
-> SharePoint Online 支持目前处于“封闭公共预览版”阶段。 可填写[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)来请求访问该封闭预览版。
->
-> 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-> 
-> [REST API 版本 2020-06-30-Preview](search-api-preview.md) 提供此功能。 目前不提供门户或 SDK 支持。
+> 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，SharePoint Online 支持目前为公共预览版。 [请求访问](https://aka.ms/azure-cognitive-search/indexer-preview)此功能，并在启用访问后，使用[预览版 REST API（2020-06-30-preview 或更高版本）](search-api-preview.md)为内容编制索引。 目前提供有限的门户支持，不提供 .NET SDK 支持。
+
+本文介绍了如何使用 Azure 认知搜索将 SharePoint Online 文档库中存储的文档（如 PDF、Microsoft Office 文档和其他几种常见格式）索引到 Azure 认知搜索索引中。 首先，本文介绍了设置和配置索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
 
 > [!NOTE]
 > SharePoint Online 支持一种精细授权模型，它可确定每位用户在文档级别的访问权限。 SharePoint Online 索引器不会将这些权限拉取到搜索索引中，并且认知搜索不支持文档级授权。 将 SharePoint Online 中的某文档索引到搜索服务后，任何对该索引具有读取访问权限的人都可使用该内容。 如果需要文档级权限，应调查安全筛选器来剪裁未经授权的内容结果。 有关详细信息，请参阅[使用 Active Directory 标识进行安全剪裁](search-security-trimming-for-azure-search-with-aad.md)。
 
-本文介绍了如何使用 Azure 认知搜索将 SharePoint Online 文档库中存储的文档（如 PDF、Microsoft Office 文档和其他几种常见格式）索引到 Azure 认知搜索索引中。 首先，本文介绍了设置和配置索引器的基础知识。 其次，本文更加深入地探讨了你可能会遇到的行为和场景。
-
 ## <a name="functionality"></a>功能
+
 Azure 认知搜索中的索引器是一种爬网程序，可从数据源中提取可搜索的数据和元数据。 SharePoint Online 索引器将连接到你的 SharePoint Online 站点，并从一个或多个文档库索引文档。 该索引器提供以下功能：
 + 从一个或多个 SharePoint Online 文档库中索引内容。
 + 从你的 Azure 认知搜索服务所在的租户中的 SharePoint Online 文档库中索引内容。 索引器将不适用于与你的 Azure 认知搜索服务分处不同租户的 SharePoint 站点。 

@@ -1,5 +1,5 @@
 ---
-title: 为 Azure SQL 逻辑服务器配置 Azure 证明
+title: 使用 Azure 证明为 Always Encrypted 配置证明
 description: 在 Azure SQL 数据库中为具有安全 enclave 的 Always Encrypted 配置 Azure 证明。
 keywords: 加密数据, sql 加密, 数据库加密, 敏感数据, 始终加密, 安全 enclave, SGX, 证明
 services: sql-database
@@ -10,21 +10,18 @@ ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
-ms.date: 05/01/2021
+ms.date: 07/14/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0e2e6bc57a830b5257d246a4229e174cf8612d3c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6a27acf96b42a4a963b88e281fd692a91616b7e4
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110662513"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727194"
 ---
-# <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>为 Azure SQL 逻辑服务器配置 Azure 证明
+# <a name="configure-attestation-for-always-encrypted-using-azure-attestation"></a>使用 Azure 证明为 Always Encrypted 配置证明
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
-
-> [!NOTE]
-> Azure SQL 数据库的具有安全 Enclave 的 Always Encrypted 目前提供公共预览版。
 
 [Microsoft Azure 证明](../../attestation/overview.md)是证明受信任执行环境 (TEE) 的解决方案，包括 Intel Software Guard Extensions (Intel SGX) enclave。 
 
@@ -42,6 +39,9 @@ ms.locfileid: "110662513"
 [证明提供程序](../../attestation/basic-concepts.md#attestation-provider)是 Azure 证明中的一种资源，可按照[证明策略](../../attestation/basic-concepts.md#attestation-request)评估[证明请求](../../attestation/basic-concepts.md#attestation-request)并颁发[证明令牌](../../attestation/basic-concepts.md#attestation-token)。 
 
 证明策略使用[声明规则语法](../../attestation/claim-rule-grammar.md)进行指定。
+
+> [!IMPORTANT]
+> 证明提供程序使用 Intel SGX enclave 的默认策略进行创建，该策略不会验证在 enclave 内运行的代码。 Microsoft 强烈建议为具有安全 enclave 的 Always Encrypted 设置以下建议策略，而不是使用默认策略。
 
 对于在 Azure SQL 数据库中证明用于 Always Encrypted 的 Intel SGX enclave，Microsoft 建议使用以下策略：
 
@@ -69,7 +69,7 @@ authorizationrules
   > 证明的主要目标之一是说服客户端，使之相信 enclave 中运行的二进制文件便是应该运行的二进制文件。 证明策略提供了两种机制来实现此目标。 一种是 mrenclave 声明，它是应在 enclave 中运行的二进制文件的哈希。 mrenclave 的问题在于，即使对代码进行了微小更改，二进制文件哈希也会更改，这使得难以修订在 enclave 中运行的代码。 因此，建议使用 mrsigner，它是用于对 enclave 二进制文件进行签名的密钥的哈希。 当 Microsoft 修订 enclave 时，只要签名密钥不变，mrsigner 便会保持不变。 这样，便可以在不中断客户应用程序的情况下部署更新的二进制文件。 
 
 > [!IMPORTANT]
-> 证明提供程序使用 Intel SGX enclave 的默认策略进行创建，该策略不会验证在 enclave 内运行的代码。 Microsoft 强烈建议为具有安全 enclave 的 Always Encrypted 设置以上建议策略，而不是使用默认策略。
+> Microsoft 可能需要轮换用于对 Always Encrypted enclave 二进制文件签名的密钥，这种情况应该极少发生。 在使用新密钥签名的新版 enclave 二进制文件部署到 Azure SQL 数据库之前，本文将更新以提供新的建议证明策略，并说明应如何更新证明提供程序中的策略以确保应用程序继续不间断地工作。
 
 有关如何创建证明提供程序并使用证明策略进行配置的说明，请参阅：
 
@@ -82,6 +82,7 @@ authorizationrules
 - [快速入门：使用 Azure CLI 设置 Azure 证明](../../attestation/quickstart-azure-cli.md)
     > [!IMPORTANT]
     > 使用 Azure CLI 配置证明策略时，请将 `attestation-type` 参数设置为 `SGX-IntelSDK`。
+
 
 ## <a name="determine-the-attestation-url-for-your-attestation-policy"></a>确定证明策略的证明 URL
 

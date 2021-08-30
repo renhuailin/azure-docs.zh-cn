@@ -5,14 +5,15 @@ author: shirleywangmsft
 ms.author: shwang
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: pricing
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 48c0f47b3b8ca5eddef76c66ad220a18018dc321
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: a5032ce26fcce2dbee2a95385292c5b455904586
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904882"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749900"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
 
@@ -184,22 +185,22 @@ ms.locfileid: "107904882"
 | 创建管道 | 6 个读/写实体（2 个用于创建管道，4 个用于数据集引用） |
 | 获取管道 | 2 个读/写实体 |
 | 运行管道 | 6 个活动运行（2 个用于触发器运行，4 个用于活动运行） |
-| 执行删除活动：每次执行时间 = 5 分钟。第一个管道中的删除活动执行时间为 10:00 AM UTC 到 10:05 AM UTC。 第二个管道中的删除活动执行时间为 10:02 AM UTC 到 10:07 AM UTC。|托管 VNET 中的管道活动执行时间总共为 7 分钟。 在托管 VNET 中，管道活动最多支持 50 个并发活动。 |
-| 复制数据假设：每次执行时间 = 10 分钟。第一个管道中的复制活动执行时间为 10:06 AM UTC 到 10:15 AM UTC。 第二个管道中的删除活动执行时间为 10:08 AM UTC 到 10:17 AM UTC。 | 10 * 4 Azure Integration Runtime（默认 DIU 设置 = 4）有关数据集成单元和复制性能优化的详细信息，请参阅[此文](copy-activity-performance.md) |
+| 执行删除活动：每次执行时间 = 5 分钟。第一个管道中的删除活动执行时间为 10:00 AM UTC 到 10:05 AM UTC。 第二个管道中的删除活动执行时间为 10:02 AM UTC 到 10:07 AM UTC。|托管 VNET 中的管道活动执行时间总共为 7 分钟。 在托管 VNET 中，管道活动最多支持 50 个并发活动。 管道活动有 60 分钟的生存时间 (TTL)|
+| 复制数据假设：每次执行时间 = 10 分钟。第一个管道中的复制活动执行时间为 10:06 AM UTC 到 10:15 AM UTC。 第二个管道中的复制活动执行时间为 10:08 AM UTC 到 10:17 AM UTC。 | 10 * 4 Azure Integration Runtime（默认 DIU 设置 = 4）有关数据集成单元和复制性能优化的详细信息，请参阅[此文](copy-activity-performance.md) |
 | 监视管道假设：仅进行了 2 次运行 | 检索到 6 个监视运行记录（2 个用于管道运行，4 个用于活动运行） |
 
 
-方案定价总计：$0.45523
+**方案定价总计：$1.45523**
 
 - 数据工厂操作 = $0.00023
   - 读/写 = 20*00001 = $0.0002 [1 读/写 = $0.50/50000 = 0.00001]
   - 监视 = 6*000005 = $0.00003 [1 监视 = $0.25/50000 = 0.000005]
-- 管道业务流程和执行 = $0.455
+- 管道业务流程与执行 = $1.455
   - 活动运行 = 0.001*6 = 0.006 [1 运行 = $1/1000 = 0.001]
   - 数据移动活动 = $0.333（以 10 分钟的执行时间按比例计算。 Azure Integration Runtime 上的定价为 $0.25/小时）
-  - 管道活动 = $0.116（以 7 分钟的执行时间按比例计算。 Azure Integration Runtime 上的定价为 $1/小时）
+  - 管道活动 = $1.116（以 7 分钟的执行时间加上 60 分钟的 TTL，按比例计算。 Azure Integration Runtime 上的定价为 $1/小时）
 
-> [!NOTE]
+> [!NOTE] 
 > 这些价格仅用作示例。
 
 **常见问题解答**

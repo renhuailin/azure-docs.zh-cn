@@ -4,12 +4,12 @@ description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 257f3473da4284080d7977021cb97c6dbce0fbde
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 6b115971104699775e9a58a7b25addefe4d12d1d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535160"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730734"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -62,7 +62,7 @@ ms.locfileid: "110535160"
 * 使用 `kubectl describe pod <pod-name>` 查看 Pod 本身。
 * 使用 `kubectl logs <pod-name>` 查看日志。
 
-有关如何对 Pod 的问题进行故障排除的详细信息，请参阅[调试应用程序](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
+有关如何对 Pod 问题进行故障排除的详细信息，请参阅 Kubernetes 文档中的[调试 Pod](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
 
 ## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>当我使用连接到 API 服务器的 `kubectl` 或其他第三方工具时，会收到 `TCP timeouts`
 AKS 具有 HA 控制平面，可以根据内核数进行垂直缩放，以确保维持其服务级别目标 (SLO) 和服务级别协议 (SLA)。 如果遇到连接超时，请检查以下内容：
@@ -456,5 +456,5 @@ AKS 正在研究对节点池上的活动标签进行改变的功能以改进这�
 
 
 <!-- LINKS - internal -->
-[view-master-logs]: ./view-control-plane-logs.md
+[view-master-logs]: monitor-aks-reference.md#resource-logs
 [cluster-autoscaler]: cluster-autoscaler.md

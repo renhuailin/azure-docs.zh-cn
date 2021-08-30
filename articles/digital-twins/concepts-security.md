@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 了解 Azure 数字孪生的最佳安全做法。
 author: baanders
 ms.author: baanders
-ms.date: 3/18/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: db58b523f1280847815587a5037c2348335482b6
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: a2d81d9ffbb79d0f05c8e0bf44fbe9d8967cf02f
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616165"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253770"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure 数字孪生安全性
 
@@ -58,7 +58,7 @@ Azure 提供了两个 Azure 内置角色，用于授权对 Azure 数字孪生[�
 * 通过 Azure 门户 Azure 数字孪生的访问控制 (IAM) 窗格（请参阅使用 Azure 门户分配 Azure 角色）
 * 通过 CLI 命令添加或删除角色
 
-有关如何执行此操作的更多详细步骤，请在 Azure 数字孪生教程：连接端到端解决方案中进行试用。
+有关如何执行此操作的更多详细步骤，请参阅 Azure 数字孪生[连接端到端解决方案](tutorial-end-to-end.md)进行试用。
 
 有关如何定义内置角色的详细信息，请参阅 Azure RBAC 文档中的了解角色定义。 若要了解如何创建 Azure 自定义角色，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
@@ -92,7 +92,7 @@ Azure 支持两种类型的托管标识：系统分配和用户分配的托管�
 
 可以将系统分配的托管标识用于 Azure 数字实例，以便对[自定义终结点](concepts-route-events.md#create-an-endpoint)进行身份验证。 针对[事件中心](../event-hubs/event-hubs-about.md)和 [服务总线](../service-bus-messaging/service-bus-messaging-overview.md) 目标的终结点和[死信事件](concepts-route-events.md#dead-letter-events)的 [Azure 存储容器](../storage/blobs/storage-blobs-introduction.md) 终结点，Azure 数字孪生支持基于系统分配标识的身份验证。 托管标识目前不支持用于[事件网格](../event-grid/overview.md) 终结点。
 
-有关如何为 Azure 数字孪生启用系统托管的标识并将其用于路由事件的说明，请参阅操作说明：为路由事件启用托管标识（预览）。
+有关如何为 Azure 数字孪生启用系统托管的标识并将其用于路由事件的说明，请参阅[通过托管标识路由事件](how-to-route-with-managed-identity.md)。
 
 ## <a name="private-network-access-with-azure-private-link-preview"></a>使用 Azure 专用链接进行专用网络访问（预览）
 
@@ -106,7 +106,7 @@ Azure 支持两种类型的托管标识：系统分配和用户分配的托管�
 
 通过为 Azure 数字孪生实例配置专用终结点，可以保护 Azure 数字孪生实例，消除曝光危险，以及避免 VNet 数据外泄。
 
-有关如何为 Azure 数字孪生设置专用链接的说明，请参阅操作说明：使用专用链接启用专用访问（预览）。
+有关如何为 Azure 数字孪生设置专用链接的说明，请参阅[使用专用链接启用专用访问](./how-to-enable-private-link.md)。
 
 ### <a name="design-considerations"></a>设计注意事项 
 
@@ -157,8 +157,8 @@ Azure 数字孪生目前不支持跨域资源共享 (CORS)。 因此，如果从
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅操作说明：设置实例和身份验证，了解这些概念的实际操作。
+* 请参阅[设置实例和身份验证](how-to-set-up-instance-portal.md)，了解这些概念的实际应用。
 
-* 请参阅操作说明：编写应用验证码，了解如何从客户端应用程序代码着手与这些概念交互。
+* 请参阅[编写应用验证码](how-to-authenticate-client.md)，了解如何从客户端应用程序代码着手与这些概念交互。
 
 * 详细了解 [Azure RBAC](../role-based-access-control/overview.md)。

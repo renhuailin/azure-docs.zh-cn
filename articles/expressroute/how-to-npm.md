@@ -5,18 +5,21 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 01/25/2019
+ms.date: 07/28/2019
 ms.author: duau
-ms.openlocfilehash: 907c03bd15463368def316e72f55ce214cb3e617
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 135c949afaeaa50a743869138a05acd2321332ec
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571040"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739309"
 ---
-# <a name="configure-network-performance-monitor-for-expressroute"></a>为 ExpressRoute 配置网络性能监视器
+# <a name="configure-network-performance-monitor-for-expressroute-deprecated"></a>为 ExpressRoute 配置网络性能监视器（已弃用）
 
 本文可帮助配置网络性能监视器扩展以监视 ExpressRoute。 网络性能监视器 (NPM) 是基于云的网络监视解决方案，用于监视 Azure 云部署和本地位置（分支机构等）之间的连接。 NPM 属于 Azure Monitor 日志。 NPM 可为 ExpressRoute 提供扩展，使你能通过配置为使用专用对等互连或 Microsoft 对等互连的 ExpressRoute 线路监视网络性能。 为 ExpressRoute 配置 NPM 后，可以检测到需要识别和消除的网络问题。 此服务也是适用于 Azure 政府云。
+
+> [!IMPORTANT]
+> 自 2021 年 7 月 1 日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在连接监视器（经典版）中添加新的连接监视器。 可以继续使用在 2021 年 7 月 1 日之前创建的测试和连接监视器。 为了最大程度地减少当前工作负载的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[将测试从网络性能监视器迁移](../network-watcher/migrate-to-connection-monitor-from-network-performance-monitor.md)到新连接监视器，或[从连接监视器（经典）迁移](../network-watcher/migrate-to-connection-monitor-from-connection-monitor-classic.md)到新连接监视器。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -83,7 +86,7 @@ ms.locfileid: "100571040"
 
 1. 转到资源的“网络性能监视器配置”页面的“通用设置”选项卡。 从“安装 Log Analytics 代理”部分中选择与你的服务器的处理器对应的代理，并下载安装文件。
 2. 接下来，将“工作区 ID”和“主密钥”复制到记事本。
-3. 从“将 Log Analytics 代理配置为使用 TCP 协议进行监视”部分中，下载 Powershell 脚本。 PowerShell 脚本可帮助你打开与 TCP 事务相关的防火墙端口。
+3. 从“将 Log Analytics 代理配置为使用 TCP 协议进行监视”部分中，下载 PowerShell 脚本。 PowerShell 脚本可帮助你打开与 TCP 事务相关的防火墙端口。
 
    ![PowerShell 脚本](./media/how-to-npm/7.png)
 

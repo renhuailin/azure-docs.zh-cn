@@ -2,19 +2,21 @@
 title: 在使用 Azure PowerShell 的存储帐户中备份 Azure Blob
 description: 了解如何在使用 Azure PowerShell 的存储帐户中备份 Azure Blob。
 ms.topic: conceptual
-ms.date: 05/05/2021
-ms.openlocfilehash: 55d33283360adae4894032bec648cfc973391f38
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/06/2021
+ms.openlocfilehash: 0f3e7d03abbf4a5bfbb5d5cb533df04a17c71edf
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968681"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179781"
 ---
 # <a name="back-up-all-azure-blobs-in-a-storage-account-using-azure-powershell"></a>在使用 Azure PowerShell 的存储帐户中备份所有 Azure Blob
 
 本文介绍如何在使用 Azure PowerShell 的存储帐户中备份所有 [Azure Blob](./blob-backup-overview.md)。
 
 本文将指导如何进行以下操作：
+
+- 开始之前
 
 - 创建备份保管库
 
@@ -26,6 +28,10 @@ ms.locfileid: "111968681"
 
 > [!IMPORTANT]
 > Az 5.9.0 版本中提供了对 Azure Blob 的支持。
+
+## <a name="before-you-start"></a>开始之前
+
+在开始之前，请参阅[先决条件](./blob-backup-configure-manage.md#before-you-start)和[支持矩阵](./blob-backup-support-matrix.md)。
 
 ## <a name="create-a-backup-vault"></a>创建备份保管库
 
@@ -57,7 +63,7 @@ Type                : Microsoft.DataProtection/backupVaults
 创建保管库后，让我们创建备份策略来保护 Azure Blob。
 
 > [!IMPORTANT]
-> 虽然会看到保管库的备份存储冗余，但冗余并不实际应用于 blob 的操作备份，因为该备份在本质上是本地的，不会有任何数据存储在备份保管库中。 备份保管库。 此处的备份保管库是管理实体，可帮助你管理存储帐户中块 blob 的保护。
+> 虽然会看到保管库的备份存储冗余，但冗余并不实际应用于 blob 的操作备份，因为该备份在本质上是本地的，不会有任何数据存储在备份保管库中。 此处的备份保管库是管理实体，可帮助你管理存储帐户中块 blob 的保护。
 
 ## <a name="create-a-backup-policy"></a>创建备份策略
 

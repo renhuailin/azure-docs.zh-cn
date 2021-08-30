@@ -8,29 +8,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/07/2021
+ms.date: 08/12/2021
 ms.custom: project-no-code, devx-track-js
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 652551635b84c18020bf928194923d0e6ca86149
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: 9db30170103f76eb4bc611107faeeedd45da9acc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565261"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724895"
 ---
-# <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 JavaScript 和页面布局版本
+# <a name="enable-javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用 JavaScript 和页面布局版本
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-::: zone pivot="b2c-custom-policy"
+借助 Azure Active Directory B2C (Azure AD B2C) [HTML 模板](customize-ui-with-html.md)，可以创建用户的身份体验。 HTML 模板只能包含某些 HTML 标记和特性。 允许的基本 HTML 标记，例如 &lt;b&gt;、&lt;i&gt;、&lt;u&gt;、&lt;h1&gt; 和 &lt;hr&gt;。 出于安全原因，删除了更高级的标记，如 &lt;script&gt; 和 &lt;iframe&gt;。
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-::: zone-end
-
-Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaScript 适用于用户流中的用户界面元素和自定义策略。 若要为应用程序启用 JavaScript，请执行以下操作：
+启用 JavaScript 并推进 HTML 标记和属性：
 
 ::: zone pivot="b2c-user-flow"
 
@@ -53,7 +49,7 @@ Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaSc
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 
-## <a name="select-a-page-layout-version"></a>选择页面布局版本
+## <a name="begin-setting-up-a-page-layout-version"></a>开始设置页面布局版本
 
 如果打算启用 JavaScript 客户端代码，则 JavaScript 所基于的元素必须是不可变的。 如果它们不是不可变的，则任何更改都可能会导致用户页上出现意外行为。 为了防止这些问题，请强制使用页面布局，并指定页面布局版本，确保 JavaScript 所基于的内容定义是不可变的。 即使不打算启用 JavaScript，也可为页面指定页面布局版本。
 
@@ -73,9 +69,10 @@ Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaSc
 
 ::: zone pivot="b2c-custom-policy"
 
-为应用程序的用户界面元素选择[页面布局](contentdefinitions.md#select-a-page-layout)。
+为自定义策略页面指定页面布局版本：
 
-为自定义策略中的所有内容定义定义[页面布局版本](contentdefinitions.md#migrating-to-page-layout)和页面`contract`版本。 值的格式必须包含单词 `contract`：_urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 了解如何使用页面版本[迁移到页面布局](contentdefinitions.md#migrating-to-page-layout)。
+1. 为应用程序的用户界面元素选择[页面布局](contentdefinitions.md#select-a-page-layout)。
+1. 为自定义策略中的所有内容定义定义[页面布局版本](contentdefinitions.md#migrating-to-page-layout)和页面`contract`版本。 值的格式必须包含单词 `contract`：_urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 
 
 以下示例显示了内容定义标识符以及对应的包含页面协定的 DataUri： 
 
@@ -146,16 +143,17 @@ Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaSc
 
 按照以下准则，使用 JavaScript 自定义应用程序的界面：
 
-- 不对 `<a>` HTML 元素绑定单击事件。
-- 不依赖 Azure AD B2C 代码或注释。
-- 不更改 Azure AD B2C HTML 元素的顺序或层次结构。 使用 Azure AD B2C 策略控制 UI 元素的顺序。
+- 禁止事项 
+    - 对 `<a>` HTML 元素绑定单击事件。
+    - 依赖 Azure AD B2C 代码或注释。
+    - 更改 Azure AD B2C HTML 元素的顺序或层次结构。 使用 Azure AD B2C 策略控制 UI 元素的顺序。
 - 在调用 RESTful 服务时考虑到以下事项：
     - 可能需要设置 RESTful 服务 CORS 才能实现客户端 HTTP 调用。
     - 确保 RESTful 服务安全，且它仅使用 HTTPS 协议。
     - 不直接使用 JavaScript 来调用Azure AD B2C 终结点。
 - 可以嵌入 JavaScript，也可以链接到外部 JavaScript 文件。 如果是使用外部 JavaScript 文件，请确保使用 绝对 URL，而不是相对 URL。
 - JavaScript 框架：
-    - Azure AD B2C 使用 [jQuery 的特定版本](page-layout.md#jquery-version)。 不包括 jQuery 的其他版本。 在同一页面上使用多个版本会造成问题。
+    - Azure AD B2C 使用 [jQuery 的特定版本](page-layout.md#jquery-and-handlebars-versions)。 不包括 jQuery 的其他版本。 在同一页面上使用多个版本会造成问题。
     - 不支持使用 RequireJS。
     - Azure AD B2C 不支持大多数 JavaScript 框架。
 - 可通过调用 `window.SETTINGS`、`window.CONTENT` 对象读取 Azure AD B2C 设置，例如当前的 UI 语言。 勿更改这些对象的值。
@@ -241,4 +239,4 @@ function addTermsOfUseLink() {
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何自定义应用程序用户界面的详细信息，请参阅[在 Azure Active Directory B2C 中自定义应用程序的用户界面](customize-ui-with-html.md)。
+查找有关如何[在 Azure Active Directory B2C 中自定义应用程序的用户界面](customize-ui-with-html.md)的详细信息。

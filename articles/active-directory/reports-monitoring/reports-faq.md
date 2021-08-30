@@ -3,8 +3,7 @@ title: Azure Active Directory 报告常见问题解答 | Microsoft Docs
 description: 有关 Azure Active Directory 报告的常见问题解答。
 services: active-directory
 documentationcenter: ''
-author: cawrites
-manager: MarkusVi
+author: MarkusVi
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
@@ -12,22 +11,34 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
-ms.date: 05/12/2020
+ms.date: 07/28/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4da0083a236900037b388798d825515e94613c20
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: b64c33619eae16cb08b9ccdc1b4fd5265813d9ed
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533695"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739947"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>有关 Azure Active Directory 报告的常见问题解答
 
 本文包括了对 Azure Active Directory (Azure AD) 报告常见问题的解答。 有关详细信息，请参阅 [Azure Active Directory 报告](overview-reports.md)。 
 
 ## <a name="getting-started"></a>入门 
+
+**问：报告的许可是如何工作的？**
+
+**答：** 所有 Azure AD 许可证都允许在 Azure 门户中查看活动日志。 
+
+如果你的租户：
+
+- 拥有 Azure AD 免费许可证，则可在门户中查看最多 7 天的活动日志数据。 
+- 拥有 Azure AD Premium 许可证，则可在 Azure 门户中查看最多 30 天的数据。 
+
+你还可将这些日志数据导出到 Azure Monitor、Azure 事件中心和 Azure 存储，或通过 Microsoft Graph API 查询活动数据。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 如果在升级之前没有数据活动，则在升级到高级许可证后，数据需要经过几天才会显示在日志中。
+
 
 问：我现在使用 `https://graph.windows.net/<tenant-name>/reports/` 终结点 API 以编程方式将 Azure AD 审核和集成的应用程序使用情况报告拉取到报告系统中。我应该切换到什么？
 

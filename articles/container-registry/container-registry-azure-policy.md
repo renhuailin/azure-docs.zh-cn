@@ -1,22 +1,22 @@
 ---
 title: 使用 Azure Policy 实现合规性
-description: 分配 Azure Policy 中的内置策略来审核 Azure 容器注册表的合规性
+description: 分配 Azure Policy 中的内置策略定义来审核 Azure 容器注册表的合规性
 ms.topic: article
-ms.date: 03/01/2021
-ms.openlocfilehash: 62a1fd8d3c996fd3a0bac3cadf77fc7e7ace0ce3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 08/10/2021
+ms.openlocfilehash: d8f986a3a857f622248daa75d0402f1abfbf8a7b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784166"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722486"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>使用 Azure Policy 审核 Azure 容器注册表的合规性
 
-[Azure Policy](../governance/policy/overview.md) 是 Azure 中的一项服务，用于创建、分配和管理策略。 这些策略将在整个资源中强制实施不同的规则和效果，使这些资源符合公司标准和服务级别协议。
+[Azure Policy](../governance/policy/overview.md) 是 Azure 中的一项服务，可用于创建、分配和管理策略定义。 这些策略定义将在整个资源中强制实施不同的规则和效果，以便这些资源符合公司标准和服务级别协议。
 
-本文介绍适用于 Azure 容器注册表的内置策略。 可以使用这些策略来审核新的和现有的注册表的合规性。
+本文介绍适用于 Azure 容器注册表的内置策略定义。 可以使用这些定义来审核新的和现有的注册表的合规性。
 
-可以免费使用 Azure Policy。
+使用 Azure Policy 免费。
 
 ## <a name="built-in-policy-definitions"></a>内置策略定义
 
@@ -24,14 +24,14 @@ ms.locfileid: "107784166"
 
 [!INCLUDE [azure-policy-reference-rp-containerreg](../../includes/policy/reference/byrp/microsoft.containerregistry.md)]
 
-## <a name="assign-policies"></a>分配策略
+## <a name="create-policy-assignments"></a>创建策略分配
 
-* 使用 [Azure 门户](../governance/policy/assign-policy-portal.md)、[Azure CLI](../governance/policy/assign-policy-azurecli.md)、[资源管理器模板](../governance/policy/assign-policy-template.md)或 Azure Policy SDK 来分配策略。
+* 使用 [Azure 门户](../governance/policy/assign-policy-portal.md)、[Azure CLI](../governance/policy/assign-policy-azurecli.md)、[资源管理器模板](../governance/policy/assign-policy-template.md) 或 Azure Policy SDK 创建策略分配。
 * 将策略分配的作用域限定为资源组、订阅或 [Azure 管理组](../governance/management-groups/overview.md)。 容器注册表策略分配适用于该作用域内现有的和新的容器注册表。
 * 可以随时启用或禁用[策略实施](../governance/policy/concepts/assignment-structure.md#enforcement-mode)功能。
 
 > [!NOTE]
-> 在分配或更新某个策略后，需要花费一些时间才会将分配应用到所定义作用域中的资源。 请查看有关[策略评估触发器](../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)的信息。
+> 在创建或更新某个策略分配后，需要花费一些时间，该分配才会评估定义范围中的资源。 请查看有关[策略评估触发器](../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)的信息。
 
 ## <a name="review-policy-compliance"></a>查看策略合规性
 

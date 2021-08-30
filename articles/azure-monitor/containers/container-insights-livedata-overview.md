@@ -4,12 +4,12 @@ description: 本文介绍在容器见解中如何在不使用 kubectl 的情况�
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5277f5051e291e9058255d8920ac0be950389704
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c1cbaf09d8f0b0cfe23f7014c1b5046efc5aab9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203192"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739777"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>如何实时查看 Kubernetes 日志、事件和 Pod 指标
 
@@ -47,7 +47,7 @@ ms.locfileid: "102203192"
 4. 从性能网格中选择一个对象，然后在右侧的属性窗格中选择“查看实时数据”选项。 如果使用 Azure AD 为 AKS 群集配置了单一登录，系统会在该浏览器会话期间向你提示进行首次使用所需的身份验证。 选择帐户，然后使用 Azure 完成身份验证。
 
     >[!NOTE]
-    >通过从属性窗格中选择“在分析中查看”选项从 Log Analytics 工作区中查看数据时，日志搜索结果可能会显示可能不再存在的节点、守护程序集、副本集、作业、Cron 作业、Pod 和容器       。 尝试搜索在 `kubectl` 中不可用的容器的日志也会失败。 查看[在分析中查看](container-insights-log-search.md#search-logs-to-analyze-data)功能，了解有关查看历史日志、事件和指标的详细信息。
+    >通过从属性窗格中选择“在分析中查看”选项从 Log Analytics 工作区中查看数据时，日志搜索结果可能会显示可能不再存在的节点、守护程序集、副本集、作业、Cron 作业、Pod 和容器       。 尝试搜索在 `kubectl` 中不可用的容器的日志也会失败。 若要详细了解如何查看历史日志、事件和指标，请查看[如何从容器见解中查询日志](container-insights-log-query.md)功能。
 
 成功进行身份验证后，实时数据控制台窗格将显示在性能数据网格下，你可以在其中查看连续流中的日志数据。 如果提取状态指示器显示绿色复选标记（位于窗格最右侧），则表示可以检索数据并开始将其流式传输到控制台。
 
@@ -68,7 +68,7 @@ ms.locfileid: "102203192"
 4. 从性能网格中选择一个对象，然后在右侧的属性窗格中选择“查看实时数据”选项。 如果使用 Azure AD 为 AKS 群集配置了单一登录，系统会在该浏览器会话期间向你提示进行首次使用所需的身份验证。 选择帐户，然后使用 Azure 完成身份验证。
 
     >[!NOTE]
-    >通过从属性窗格中选择“在分析中查看”选项从 Log Analytics 工作区中查看数据时，日志搜索结果可能会显示可能不再存在的节点、守护程序集、副本集、作业、Cron 作业、Pod 和容器       。 尝试搜索在 `kubectl` 中不可用的容器的日志也会失败。 查看[在分析中查看](container-insights-log-search.md#search-logs-to-analyze-data)功能，了解有关查看历史日志、事件和指标的详细信息。
+    >通过从属性窗格中选择“在分析中查看”选项从 Log Analytics 工作区中查看数据时，日志搜索结果可能会显示可能不再存在的节点、守护程序集、副本集、作业、Cron 作业、Pod 和容器       。 尝试搜索在 `kubectl` 中不可用的容器的日志也会失败。 若要详细了解如何查看历史日志、事件和指标，请查看[如何从容器见解中查询日志](container-insights-log-query.md)功能。
 
 成功进行身份验证后，实时数据控制台窗格将显示在性能数据网格下。 如果提取状态指示器显示绿色复选标记（位于窗格最右侧），则表示可以检索数据并开始将其流式传输到控制台。
 
@@ -95,7 +95,7 @@ ms.locfileid: "102203192"
 4. 从性能网格中选择“Pod”，然后在右侧的属性窗格中选择“查看实时数据”选项。  如果使用 Azure AD 为 AKS 群集配置了单一登录，系统会在该浏览器会话期间向你提示进行首次使用所需的身份验证。 选择帐户，然后使用 Azure 完成身份验证。
 
     >[!NOTE]
-    >通过从属性窗格中选择“在分析中查看”选项从 Log Analytics 工作区中查看数据时，日志搜索结果可能会显示可能不再存在的节点、守护程序集、副本集、作业、Cron 作业、Pod 和容器       。 尝试搜索在 `kubectl` 中不可用的容器的日志也会失败。 查看[在分析中查看](container-insights-log-search.md#search-logs-to-analyze-data)功能，了解有关查看历史日志、事件和指标的详细信息。
+    >通过从属性窗格中选择“在分析中查看”选项从 Log Analytics 工作区中查看数据时，日志搜索结果可能会显示可能不再存在的节点、守护程序集、副本集、作业、Cron 作业、Pod 和容器       。 尝试搜索在 `kubectl` 中不可用的容器的日志也会失败。 若要详细了解如何查看历史日志、事件和指标，请查看[如何从容器见解中查询日志](container-insights-log-query.md)。
 
 成功进行身份验证后，实时数据控制台窗格将显示在性能数据网格下。 检索指标数据并开始流式传输到控制台，以便在两个图表中显示。 窗格标题会显示进行容器分组时所使用的 Pod 的名称。
 
@@ -131,4 +131,4 @@ ms.locfileid: "102203192"
 
 - 若要继续学习如何使用 Azure Monitor 以及如何监视 AKS 群集的其他方面，请参阅[查看 Azure Kubernetes 服务运行状况](container-insights-analyze.md)。
 
-- 查看[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，了解预定义的查询和示例，以创建警报、呈现可视化效果或对群集执行进一步分析。
+- 若要查看预定义的查询和示例来创建警报、可视化效果或对群集执行进一步分析，请查看[如何从容器见解中查询日志](container-insights-log-query.md)。

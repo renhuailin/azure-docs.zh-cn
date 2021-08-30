@@ -1,5 +1,5 @@
 ---
-title: 用于搜索索引的 Azure SQL VM 连接
+title: Azure VM 上到 SQL Server 的索引器连接
 titleSuffix: Azure Cognitive Search
 description: 启用加密连接并配置防火墙，支持从 Azure 认知搜索上的索引器连接到 Azure 虚拟机 (VM) 上的 SQL Server。
 author: markheff
@@ -7,14 +7,14 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 23c5d138463a52f4ff4c52b4a919b71a87b7fd6d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4aa60a5433f13ca6b942204bbdb8eb4425d0ddf7
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802873"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983205"
 ---
-# <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>配置从 Azure 认知搜索索引器到 Azure VM 上 SQL Server 的连接
+# <a name="indexer-connections-to-sql-server-on-an-azure-virtual-machine"></a>Azure 虚拟机上到 SQL Server 的索引器连接
 
 在配置 [Azure SQL 索引器](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)以从 Azure 虚拟机上的数据库中提取内容时，需要执行其他步骤来进行安全连接。 
 

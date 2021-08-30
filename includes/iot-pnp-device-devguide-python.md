@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: 39779c93ed8de7a919fab838b7f46277d0829cd4
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 0fdee151d746e19323921dddbb409e0816cb014b
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114405091"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397917"
 ---
 ## <a name="model-id-announcement"></a>模型 ID 公告
 
@@ -40,11 +40,11 @@ device_client = IoTHubDeviceClient.create_from_symmetric_key(
 }
 ```
 
-## <a name="implement-telemetry-properties-and-commands"></a>实现遥测、属性和命令
+## <a name="use-components"></a>使用组件
 
-如[了解 IoT 即插即用模型中的组件](../articles/iot-develop/concepts-modeling-guide.md)一文中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本部分中所述的规则。
+如[了解 IoT 即插即用模型中的组件](../articles/iot-develop/concepts-modeling-guide.md)一文中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循以下各部分所述的规则。
 
-### <a name="telemetry"></a>遥测
+## <a name="telemetry"></a>遥测
 
 默认组件不需要任何特殊属性。
 
@@ -61,7 +61,7 @@ async def send_telemetry_from_temp_controller(device_client, telemetry_msg, comp
 }
 ```
 
-### <a name="read-only-properties"></a>只读属性
+## <a name="read-only-properties"></a>只读属性
 
 从默认组件报告属性不需要任何特殊构造：
 
@@ -104,11 +104,11 @@ await device_client.patch_twin_reported_properties(prop_dict)
 }
 ```
 
-### <a name="writable-properties"></a>可写属性
+## <a name="writable-properties"></a>可写属性
 
 这些属性可以由设备设置或通过解决方案更新。 如果解决方案更新属性，客户端会接收到通知，即在 `IoTHubDeviceClient` 或 `IoTHubModuleClient` 中的回调。 若要遵循 IoT 即插即用约定，设备必须通知服务属性已成功接收。
 
-#### <a name="report-a-writable-property"></a>报告可写属性
+### <a name="report-a-writable-property"></a>报告可写属性
 
 设备报告可写属性时，必须包含约定中定义的 `ack` 值。
 
@@ -176,7 +176,7 @@ await device_client.patch_twin_reported_properties(prop_dict)
 }
 ```
 
-#### <a name="subscribe-to-desired-property-updates"></a>订阅所需的属性更新
+### <a name="subscribe-to-desired-property-updates"></a>订阅所需的属性更新
 
 服务可以更新所需的属性，从而在连接的设备上触发通知。 此通知包括更新后的所需属性，其中包括用于标识更新的版本号。 设备必须使用与报告的属性相同的 `ack` 消息进行响应。
 
@@ -286,7 +286,7 @@ async def execute_property_listener(device_client):
 }
 ```
 
-### <a name="commands"></a>命令
+## <a name="commands"></a>命令
 
 默认组件接收服务调用的命令名称。
 
@@ -296,7 +296,7 @@ async def execute_property_listener(device_client):
 command_request = await device_client.receive_method_request("thermostat1*reboot")
 ```
 
-#### <a name="request-and-response-payloads"></a>请求和响应有效负载
+### <a name="request-and-response-payloads"></a>请求和响应有效负载
 
 命令使用类型定义其请求和响应有效负载。 设备必须反序列化传入的输入参数并串行化响应。 下面的示例演示如何实现具有在有效负载中定义的复杂类型的命令：
 

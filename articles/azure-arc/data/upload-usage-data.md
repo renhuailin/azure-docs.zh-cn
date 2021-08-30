@@ -1,30 +1,29 @@
 ---
-title: 将使用情况数据上传到 Azure Monitor
-description: 将已启用 Azure Arc 的数据服务的使用情况数据上传到 Azure Monitor
+title: 将使用情况数据上传到 Azure
+description: 将已启用 Azure Arc 的数据服务的使用情况数据上传到 Azure
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 0c72eda59f375c70274b17796ca53614ef95505b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74df592db61e4c9c50f9b199d7803fb8e1481878
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104669502"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732157"
 ---
-# <a name="upload-usage-data-to-azure-monitor"></a>将使用情况数据上传到 Azure Monitor
+# <a name="upload-usage-data-to-azure"></a>将使用情况数据上传到 Azure
 
 用户可以定期导出使用情况信息。 此信息的导出和上传会在 Azure 中创建并更新数据控制器、SQL 托管实例和 PostgreSQL 超大规模服务器组资源。
 
 > [!NOTE] 
-> 在预览期间，使用已启用 Azure Arc 的数据服务不会产生费用。
+> 在预览版期间，使用已启用 Azure Arc 的数据服务不会产生费用。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 
 > [!NOTE]
@@ -40,24 +39,21 @@ ms.locfileid: "104669502"
 
 可采用以下两步骤方式将使用情况信息（如库存和资源使用情况）上传到 Azure：
 
-1. 登录到数据控制器。 在提示符下输入值。 
+1. 使用 `az arcdata dc export` 命令导出使用情况数据，如下所示：
 
-   ```console
-   azdata login
-   ```
+> [!NOTE]
+> 使用命令 `az arcdata dc export` 导出使用情况/计费信息、指标和日志要求暂时绕过 SSL 验证。  系统将提示你绕过 SSL 验证，或者你可以设置 `AZDATA_VERIFY_SSL=no` 环境变量以避免出现提示。  目前无法为数据控制器导出 API 配置 SSL 证书。
 
-1. 使用 `azdata arc dc export` 命令导出使用情况数据，如下所示：
-
-   ```console
-   azdata arc dc export --type usage --path usage.json
+   ```azurecli
+   az arcdata dc export --type usage --path usage.json --k8s-namespace <namespace> --use-k8s
    ```
  
-   此命令创建一个 `usage.json` 文件，其中包含在数据控制器上创建的所有已启用 Azure Arc 的数据资源，如 SQL 托管实例和 PostgreSQL 超大规模实例等。
+   此命令创建一个 `usage.json` 文件，其中包含在数据控制器上创建的所有已启用 Azure Arc 的数据资源，例如 SQL 托管实例和超大规模 PostgreSQL 实例等。
 
-2. 使用 ```azdata upload``` 命令上传使用情况数据
+2. 使用 `upload` 命令上传使用情况数据。
 
-   ```console
-   azdata arc dc upload --path usage.json
+   ```azurecli
+   az arcdata dc upload --path usage.json
    ```
 
 ## <a name="automating-uploads-optional"></a>自动上传（可选）
@@ -66,9 +62,9 @@ ms.locfileid: "104669502"
 
 在常用文本/代码编辑器中，将以下脚本添加到该文件中，并将其另存为脚本可执行文件，如 `.sh` (Linux/Mac) 或 `.cmd`、`.bat` 或 `.ps1`。
 
-```console
-azdata arc dc export --type metrics --path metrics.json --force
-azdata arc dc upload --path metrics.json
+```azurecli
+az arcdata dc export --type usage --path usage.json --force --k8s-namespace <namespace> --use-k8s
+az arcdata dc upload --path usage.json
 ```
 
 使脚本文件可执行。
@@ -77,7 +73,7 @@ azdata arc dc upload --path metrics.json
 chmod +x myuploadscript.sh
 ```
 
-每隔 20 分钟运行该脚本：
+每天运行脚本以获取使用情况：
 
 ```console
 watch -n 1200 ./myuploadscript.sh

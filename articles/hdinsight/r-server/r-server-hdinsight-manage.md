@@ -2,17 +2,19 @@
 title: 管理 HDInsight 上的 ML Services 群集 - Azure
 description: 了解如何管理 Azure HDInsight 中 ML Services 群集上的各种任务。
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: a5e623b0429194db6d03beb674679bd10e337844
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ROBOTS: NOINDEX
+ms.openlocfilehash: 476d108b7edcec30d38587ba128080c99ae04fd9
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869461"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299314"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上的 ML Services 群集
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 本文介绍如何管理 Azure HDInsight 上的现有 ML Services 群集，以执行如下任务：添加多个并发用户、远程连接到 ML Services 群集、更改计算上下文等。
 
@@ -202,7 +204,7 @@ rxSparkDisconnect(myHadoopCluster)
 
    * 仅选中“辅助角色”所对应的复选框。
 
-   * **参数**：要安装的 R 包。 例如： `bitops stringr arules`
+   * **参数**：要安装的 R 包。 例如，`bitops stringr arules`
 
    * 选中“持久保存此脚本操作”复选框。  
 

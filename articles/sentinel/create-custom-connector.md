@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: d964dc25fd450f244e34140080e77cdc0e319941
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b2e2e1dad8d8fca6ce809e7e76a7ba8021420561
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749422"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182521"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>用于创建 Azure Sentinel 自定义连接器的资源
 
@@ -211,9 +211,11 @@ Azure Sentinel 支持在查询时进行分析。 通过在查询时进行分析�
 
 利用下列任何过程，使用已引入到 Azure Sentinel 的数据来保护环境：
 
-- [了解警报](quickstart-get-visibility.md)
-- [可视化和监视数据](tutorial-monitor-your-data.md)
-- [调查事件](tutorial-investigate-cases.md)
-- [检测威胁](tutorial-detect-threats-built-in.md)
+- [了解警报](get-visibility.md)
+- [可视化和监视数据](monitor-your-data.md)
+- [调查事件](investigate-cases.md)
+- [检测威胁](detect-threats-built-in.md)
 - [自动防御威胁](tutorial-respond-threats-playbook.md)
 - [寻找威胁](hunting.md)
+
+此外，了解一个创建自定义连接器以监视 Zoom 的示例：[使用 Azure Sentinel 监视 Zoom](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516)。

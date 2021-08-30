@@ -1,6 +1,6 @@
 ---
 title: ML 工作室（经典）：评估和交叉验证模型 - Azure
-description: 了解可用于监视 Azure 机器学习工作室（经典）中的模型性能的指标。
+description: 了解可用于监视机器学习工作室（经典）中的模型性能的指标。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,19 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: b2ca78d30659fce6e4246c81216cae94b404955e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 346cfa898b5745b5ba8e31635337456ea9adb02d
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520011"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581711"
 ---
-# <a name="evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中评估模型性能
+# <a name="evaluate-model-performance-in-machine-learning-studio-classic"></a>在机器学习工作室（经典）中评估模型性能
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
-本文介绍可用于监视 Azure 机器学习工作室（经典）中的模型性能的指标。  评估模型性能是数据科学过程的核心阶段之一。 它指示训练的模型为某个数据集评分的成功程度。 Azure 机器学习工作室（经典）通过它的两个主要机器学习模块支持模型评估： 
+本文介绍可用于监视机器学习工作室（经典）中的模型性能的指标。  评估模型性能是数据科学过程的核心阶段之一。 它指示训练的模型为某个数据集评分的成功程度。 机器学习工作室（经典）通过它的两个主要机器学习模块支持模型评估： 
 + [评估模型][evaluate-model] 
 + [交叉验证模型][cross-validate-model]
 
@@ -50,7 +50,7 @@ ms.locfileid: "100520011"
 假设我们要使用某些特征（如尺寸、马力、引擎规格等）预测一辆汽车的价格。 这是典型的回归问题，其中目标变量（*价格*）是一个连续数值。 我们可以采用一个线性回归模型，该模型可在给定特定汽车的特征值的情况下预测该汽车的价格。 此回归模型可用于为我们训练所用的相同数据集评分。 得到预测的汽车价格后，我们可以通过查看预测与实际价格的平均偏离程度来评估模型性能。 为了演示此操作，我们使用机器学习工作室（经典）的“已保存数据集”部分中提供的 *汽车价格数据（原始）数据集*。
 
 ### <a name="creating-the-experiment"></a>创建实验
-在 Azure 机器学习工作室（经典）中将以下模块添加到工作区：
+在机器学习工作室（经典）中将以下模块添加到工作区：
 
 * 汽车价格数据（原始）
 * [线性回归][linear-regression]
@@ -89,10 +89,10 @@ ms.locfileid: "100520011"
 图 4。 回归模型的交叉验证结果。
 
 ## <a name="evaluating-a-binary-classification-model"></a>评估二元分类模型
-在二元分类方案中，目标变量只有两个可能的结果，例如： {0, 1} 或 {false, true}、{negative, positive}。 假设为你提供了一个具有人口统计和雇用变量的成年员工数据集，要求你预测收入水平，此处的收入水平是一个值范围为 {"<=50 K", ">50 K"} 的二进制变量。 换而言之，负类表示年收入小于或等于 50K 的员工，正类表示所有其他员工。 和在回归方案中一样，我们可以训练一个模型、评分一些数据，并评估结果。 此处的主要区别是所选的 Azure 机器学习工作室（经典）计算并输出的指标。 为了演示收入级别预测方案，我们将使用[成年人](https://archive.ics.uci.edu/ml/datasets/Adult)数据集创建工作室（经典）试验并评估双类逻辑回归模型（一种常用的二元分类器）。
+在二元分类方案中，目标变量只有两个可能的结果，例如： {0, 1} 或 {false, true}、{negative, positive}。 假设为你提供了一个具有人口统计和雇用变量的成年员工数据集，要求你预测收入水平，此处的收入水平是一个值范围为 {"<=50 K", ">50 K"} 的二进制变量。 换而言之，负类表示年收入小于或等于 50K 的员工，正类表示所有其他员工。 和在回归方案中一样，我们可以训练一个模型、评分一些数据，并评估结果。 此处的主要区别是所选的机器学习工作室（经典）计算并输出的指标。 为了演示收入级别预测方案，我们将使用[成年人](https://archive.ics.uci.edu/ml/datasets/Adult)数据集创建工作室（经典）试验并评估双类逻辑回归模型（一种常用的二元分类器）。
 
 ### <a name="creating-the-experiment"></a>创建实验
-在 Azure 机器学习工作室（经典）中将以下模块添加到工作区：
+在机器学习工作室（经典）中将以下模块添加到工作区：
 
 * 成年人口收入二元分类数据集
 * [双类逻辑回归][two-class-logistic-regression]
@@ -111,7 +111,7 @@ ms.locfileid: "100520011"
 
 准确性就是正确分类的实例的比例。 它通常是评估分类器时所查看的第一个指标。 但是，当测试数据不平衡（即大部分实例属于其中一个类）时，或者你对其中任一类上的性能更感兴趣时，准确性无法真正捕获分类器的有效性。 在收入级别分类器方案中，假设在测试的数据中，99% 的实例代表每年收入小于或等于 50K 的人。 通过对所有实例预测类“<=50K”，可能实现 0.99 的准确性。 此情况下的分类器看起来总体上表现不错，但实际上，它未能正确分类任何高收入个体（那 1% 的人）。
 
-因此，计算捕获评估的更具体方面的其他指标很有帮助。 在详细讨论此类指标之前，了解二元分类评估的混淆矩阵很重要。 训练集中的类标签只能采用两个可能的值，我们通常称其为正或负。 分类器正确预测的正和负实例分别称为真正 (TP) 和真负 (TN)。 同样，错误分类的实例称为假正和 (FP) 和假负 (FN)。 混淆矩阵就是一个显示归入这四个类别中的每一个的实例数量的表。 Azure 机器学习工作室（经典）自动确定数据集中哪两个类为正类。 如果类标签是布尔值或整数，则向标记为“true”或“1”的实例分配正类。 如果标签是字符串（例如使用收入数据集时），则标签按字母顺序排序，并且第一个级别选择为负类，而第二个级别为正类。
+因此，计算捕获评估的更具体方面的其他指标很有帮助。 在详细讨论此类指标之前，了解二元分类评估的混淆矩阵很重要。 训练集中的类标签只能采用两个可能的值，我们通常称其为正或负。 分类器正确预测的正和负实例分别称为真正 (TP) 和真负 (TN)。 同样，错误分类的实例称为假正和 (FP) 和假负 (FN)。 混淆矩阵就是一个显示归入这四个类别中的每一个的实例数量的表。 机器学习工作室（经典）自动确定数据集中哪两个类为正类。 如果类标签是布尔值或整数，则向标记为“true”或“1”的实例分配正类。 如果标签是字符串（例如使用收入数据集时），则标签按字母顺序排序，并且第一个级别选择为负类，而第二个级别为正类。
 
 ![二元分类混淆矩阵](./media/evaluate-model-performance/6a.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "100520011"
 在此试验中，我们将使用流行的 [Iris](https://archive.ics.uci.edu/ml/datasets/Iris &quot;Iris") 数据集，其中包含三种不同类型（类）的鸢尾属植物的实例。 每个实例有四个特征值（花萼长度/宽度和花瓣长度/宽度）。 在之前的试验中，我们使用相同的数据集训练并测试了模型。 此处，我们将使用[拆分数据][split]模块创建数据的两个子集、对第一个子集训练，然后对第二个子集评分和评估。 鸢尾花数据集在 [UCI 机器学习存储库](https://archive.ics.uci.edu/ml/index.html)中公开提供，并且可使用[导入数据][import-data]模块下载。
 
 ### <a name="creating-the-experiment"></a>创建实验
-在 Azure 机器学习工作室（经典）中将以下模块添加到工作区：
+在机器学习工作室（经典）中将以下模块添加到工作区：
 
 * [导入数据][import-data]
 * [多类决策林][multiclass-decision-forest]

@@ -7,26 +7,32 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.author: peterlu
-author: peterclu
-ms.date: 05/14/2021
+ms.author: jhirono
+author: jhirono
+ms.date: 08/04/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 8233edd12d4bde5c71d69cfbeab49ebdc8137dbc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 913fb8f782872a2a8651d19de8c918595cdecfeb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071953"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739146"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习训练环境
 
 本文介绍如何在 Azure 机器学习中使用虚拟网络保护训练环境。
 
-本文是由五部分组成的系列文章的第三部分，指导你如何保护 Azure 机器学习工作流。 强烈建议先通读[第 1 部分：VNet 概述](how-to-network-security-overview.md)，了解总体体系结构。 
-
-请参阅本系列中的其他文章：
-
-[1.VNet 概述](how-to-network-security-overview.md) > [2.保护工作区](how-to-secure-workspace-vnet.md) > **3.保护训练环境** > [4.保护推理环境](how-to-secure-inferencing-vnet.md)  > [5.启用工作室功能](how-to-enable-studio-virtual-network.md)
+> [!TIP]
+> 本文是介绍如何保护 Azure 机器学习工作流的系列文章的一部分。 请参阅本系列中的其他文章：
+>
+> * [虚拟网络概述](how-to-network-security-overview.md)
+> * [保护工作区资源](how-to-secure-workspace-vnet.md)
+> * [保护推理环境](how-to-secure-inferencing-vnet.md)
+> * [启用工作室功能](how-to-enable-studio-virtual-network.md)
+> * [使用自定义 DNS](how-to-custom-dns.md)
+> * [使用防火墙](how-to-access-azureml-behind-firewall.md)
+>
+> 有关创建安全工作区、计算群集和计算实例的教程，请参阅[教程：创建安全工作区](tutorial-create-secure-workspace.md)。
 
 本文介绍如何在虚拟网络中保护以下训练计算资源：
 > [!div class="checklist"]
@@ -44,164 +50,102 @@ ms.locfileid: "110071953"
 
 + 若要将资源部署到虚拟网络或子网中，你的用户帐户必须在 Azure 基于角色的访问控制 (Azure RBAC) 中具有以下操作的权限：
 
-    - “Microsoft.Network/virtualNetworks/*/read”（在虚拟网络资源上）。
+    - “Microsoft.Network/virtualNetworks/*/read”（在虚拟网络资源上）。 这对于 ARM 模板部署来说是不需要的
     - “Microsoft.Network/virtualNetworks/subnet/join/action”（在子网资源上）。
 
     若要详细了解如何将 Azure RBAC 与网络配合使用，请参阅[网络内置角色](../role-based-access-control/built-in-roles.md#networking)
 
+### <a name="azure-machine-learning-compute-clusterinstance"></a>Azure 机器学习计算群集/实例
+
+* 该虚拟网络必须与 Azure 机器学习工作区位于同一订阅。
+* 用于计算实例或群集的子网必须有足够的未分配 IP 地址。
+
+    * 计算群集可动态缩放。 如果没有足够的未分配 IP 地址，则只会为群集分配一部分资源。
+    * 计算实例只需要一个 IP 地址。
+
+* 确保没有任何安全策略或锁定限制管理虚拟网络所需的权限。 检查策略或锁定时，请查看虚拟网络的订阅和资源组。
+* 检查对虚拟网络的订阅或资源组实施的安全策略或锁定是否限制了管理虚拟网络所需的权限。 
+* 如果你打算通过限制流量来保护虚拟网络，请参阅[所需的公共 Internet 访问权限](#required-public-internet-access)部分。
+* 用于部署计算群集/实例的子网不应委托给任何其他服务。 例如，不应将它委托给 ACI。
+
+### <a name="azure-databricks"></a>Azure Databricks
+
+* 该虚拟网络必须与 Azure 机器学习工作区位于同一订阅和区域。
+* 如果工作区的 Azure 存储帐户也在虚拟网络中受保护，则它们必须与 Azure Databricks 群集位于同一虚拟网络中。
+
+## <a name="limitations"></a>限制
+
+### <a name="azure-machine-learning-compute-clusterinstance"></a>Azure 机器学习计算群集/实例
+
+* 如果将多个计算实例或群集置于一个虚拟网络中，可能需要请求为一个或多个资源增加配额。 机器学习计算实例或群集自动在包含虚拟网络的资源组中分配更多网络资源。 对于每个计算实例或群集，此服务分配以下资源：
+
+    * 一个网络安全组 (NSG)。 此 NSG 包含以下特定于计算群集和计算实例的规则：
+
+        * 允许 `BatchNodeManagement` 服务标记中端口 29876-29877 上的入站 TCP 流量。
+        * 允许 `AzureMachineLearning` 服务标记中端口 44224 上的入站 TCP 流量。
+
+        下面的屏幕截图展示了这些规则的示例：
+
+        :::image type="content" source="./media/how-to-secure-training-vnet/compute-instance-cluster-network-security-group.png" alt-text="NSG 的屏幕截图":::
+
+    * 一个公共 IP 地址。 如果你的 Azure 策略禁止创建公共 IP，则群集/实例的部署将失败
+    * 一个负载均衡器
+
+    对于计算群集，每当群集纵向缩减到 0 个节点时，将删除这些资源，而当群集横向扩展时，将创建这些资源。
+
+    对于计算实例，这些资源将一直保留，直到该实例被删除。 停止实例不会删除资源。 
+
+    > [!IMPORTANT]
+    > 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 如果虚拟网络资源组被锁定，则删除计算群集/实例将失败。 在删除计算群集/实例之前，无法删除负载均衡器。 另外，请确保不存在禁止创建网络安全组的 Azure 策略。
+
+* 如果工作区的 Azure 存储帐户也在虚拟网络中，请遵循以下有关子网限制的指导：
+
+    * 如果你打算使用 Azure 机器学习工作室来可视化数据或使用设计器，则存储帐户必须与计算实例或群集位于同一子网中 。
+    * 如果你打算使用 SDK，则存储帐户可以位于不同的子网中。
+
+    > [!NOTE]
+    > 选中“允许信任的 Microsoft 服务访问此帐户”复选框不足以允许来自计算的通信。
+
+* 当工作区使用专用终结点时，只能从虚拟网络内部访问计算实例。 如果使用自定义 DNS 或 hosts 文件，请为 `<instance-name>.<region>.instances.azureml.ms` 添加一个条目。 将此条目映射到工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅 [自定义 DNS](./how-to-custom-dns.md) 一文。
+* 虚拟网络服务终结点策略不适用于计算群集/实例系统存储帐户。
+* 如果存储和计算实例位于不同的区域，则可能会出现间歇性超时。
+* 如果要在计算实例上使用 Jupyter Notebook：
+
+    * 不要禁用 websocket 通信。 确保网络允许与 `*.instances.azureml.net` 和 `*.instances.azureml.ms` 进行 websocket 通信。
+    * 确保笔记本在与数据相同的虚拟网络和子网后的计算资源上运行。 创建计算实例时，请使用“高级设置” > “配置虚拟网络”选择网络和子网 。
+
+* 可以在不包含你的工作区的其他区域中创建计算群集。 此功能处于预览版阶段，只可用于计算群集，不可用于计算实例 。 为群集使用不同的区域时，有以下限制：
+
+    * 如果工作区关联的资源（例如存储）与群集位于不同的虚拟网络中，请在网络之间设置全局虚拟网络对等互连。 有关详细信息，请参阅[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
+    * 如果使用已启用专用终结点的工作区，则不支持在不同的区域中创建群集。
+    * 你可能会看到网络延迟和数据传输成本增加。 在创建群集和在该群集上运行作业时，可能会产生延迟和成本。
+
+    当使用不同于工作区的区域时，诸如使用 NSG 规则、用户定义的路由和输入/输出要求等指南可以正常应用。
+
+### <a name="azure-databricks"></a>Azure Databricks
+
+* 除了 Azure Databricks 使用的 __databricks-private__ 和 __databricks-public__ 子网以外，还需要为虚拟网络创建 __default__ 子网。
+* Azure Databricks 不使用专用终结点来与虚拟网络通信。
+
+有关在虚拟网络中使用 Azure Databricks 的详细信息，请参阅[在 Azure 虚拟网络中部署 Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。
+
+### <a name="azure-hdinsight-or-virtual-machine"></a>Azure HDInsight 或虚拟机
+
+* Azure 机器学习只支持运行 Ubuntu 的虚拟机。
+
+## <a name="required-public-internet-access"></a>所需的公共 Internet 访问权限
+
+[!INCLUDE [machine-learning-required-public-internet-access](../../includes/machine-learning-public-internet-access.md)]
+
+有关使用防火墙解决方案的信息，请参阅[将防火墙和 Azure 机器学习结合使用](how-to-access-azureml-behind-firewall.md)。
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>计算群集和实例 
 
-若要在虚拟网络中使用[托管 Azure 机器学习计算目标](concept-compute-target.md#azure-machine-learning-compute-managed)或 [Azure 机器学习计算实例](concept-compute-instance.md)，必须满足以下网络要求：
+使用以下选项卡选择计算群集的创建方式：
 
-> [!div class="checklist"]
-> * 虚拟网络必须与 Azure 机器学习工作区位于同一订阅和区域中。
-> * 为计算实例或群集指定的子网必须具有足够的未分配 IP 地址，以容纳目标 VM 数目。 如果该子网没有足够的未分配 IP 地址，则只会为计算群集分配一部分资源。
-> * 检查对虚拟网络的订阅或资源组实施的安全策略或锁定是否限制了管理虚拟网络所需的权限。 如果你打算通过限制流量来保护虚拟网络，请为计算服务保持打开某些端口。 有关详细信息，请参阅[所需的端口](#mlcports)部分。
-> * 若要将多个计算实例或群集放入一个虚拟网络，可能需要请求提高一个或多个资源的配额。
-> * 如果工作区的一个或多个 Azure 存储帐户也在虚拟网络中受保护，它们必须与 Azure 机器学习计算实例或群集位于同一虚拟网络和子网中。 请配置存储防火墙设置，以允许与虚拟网络和计算所在的子网通信。 请注意，选择“允许信任的 Microsoft 服务访问此帐户”复选框不足以允许来自计算的通信。
-> * 为了让计算实例 Jupyter 功能可以正常运行，请确保没有禁用 Web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
-> * 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果使用自定义 DNS 或主机文件，请为 `<instance-name>.<region>.instances.azureml.ms` 添加一个条目，该条目具有工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅 [自定义 DNS](./how-to-custom-dns.md) 一文。
-> * 用于部署计算群集/实例的子网不应委托给 ACI 等任何其他服务
-> * 虚拟网络服务终结点策略不适用于计算群集/实例系统存储帐户
-> * 如果存储和计算实例位于不同的区域，则可能会看到间歇性超时
+# <a name="studio"></a>[工作室](#tab/azure-studio)
 
-    
-> [!TIP]
-> 机器学习计算实例或群集自动在包含虚拟网络的资源组中分配更多网络资源。 对于每个计算实例或群集，此服务分配以下资源：
-> 
-> * 一个网络安全组
-> * 一个公共 IP 地址。 如果你的 Azure 策略禁止创建公共 IP，则群集/实例的部署将失败
-> * 一个负载均衡器
-> 
-> 对于群集，每当群集纵向缩减为 0 个节点时，这些资源都会被删除（并重新创建）；但对于实例，这些资源会一直保留到实例完全删除（停止并不会删除资源）。 
-> 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 如果虚拟网络资源组被锁定，则删除计算群集/实例将失败。 在删除计算群集/实例之前，无法删除负载均衡器。 另外，请确保不存在禁止创建网络安全组的 Azure 策略。
-
-
-### <a name="required-ports"></a><a id="mlcports"></a> 所需端口
-
-如果你计划通过限制进出公共 Internet 的网络流量来保护虚拟网络，则必须允许来自 Azure Batch 服务的入站通信。
-
-Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (NSG)。 这些 NSG 自动配置允许以下流量的入站和出站规则：
-
-- 端口 29876 和 29877 上的来自 __BatchNodeManagement__ 服务标记的入站 TCP 流量。 这些端口上的流量已加密，由 Azure Batch 用于计划程序/节点通信。
-
-    ![使用 BatchNodeManagement 服务标记的入站规则](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
-
-- （可选）端口 22 上允许远程访问的入站 TCP 流量。 仅当要在公共 IP 上使用 SSH 进行连接时，才使用此端口。
-
-- 任何端口上通往虚拟网络的出站流量。
-
-- 任何端口上通往 Internet 的出站流量。
-
-- 对于端口 44224 上的来自 __AzureMachineLearning__ 服务标记的计算实例入站 TCP 流量。 通过此端口的流量经过加密，由 Azure 机器学习用于与计算实例上运行的应用程序通信。
-
-> [!IMPORTANT]
-> 在 Batch 配置的 NSG 中修改或添加入站或出站规则时，请务必小心。 如果 NSG 阻止与计算节点通信，则计算服务会将计算节点的状态设置为不可用。
->
-> 不需要在子网级别指定 NSG，因为 Azure Batch 会配置自身的 NSG。 但是，如果包含 Azure 机器学习计算的子网具有关联的 NSG 或防火墙，则还必须允许前面列出的流量。
-
-下图显示了 Azure 门户中的 NSG 规则配置：
-
-:::image type="content" source="./media/how-to-enable-virtual-network/amlcompute-virtual-network-inbound.png" alt-text="用于机器学习计算的入站 NSG 规则" border="true":::
-
-
-
-![机器学习计算的入站 NSG 规则](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
-
-### <a name="limit-outbound-connectivity-from-the-virtual-network"></a><a id="limiting-outbound-from-vnet"></a> 限制来自虚拟网络的出站连接
-
-如果你不想要使用默认的出站规则，同时想要限制虚拟网络的出站访问，请执行以下步骤：
-
-- 使用 NSG 规则来拒绝出站 Internet 连接。
-
-- 对于 __计算实例__ 或 __计算群集__，请将出站流量限制为以下各项：
-   - Azure 存储 - 使用 __服务标记__ __Storage.RegionName__。 其中 `{RegionName}` 是 Azure 区域的名称。
-   - Azure 容器注册表 - 使用 __服务标记__ __AzureContainerRegistry.RegionName__。 其中 `{RegionName}` 是 Azure 区域的名称。
-   - Azure 机器学习，通过使用服务标记 AzureMachineLearning
-   - Azure 资源管理器 - 使用 __服务标记__ __Azure Resource Manager__
-   - Azure Active Directory - 使用 __服务标记__ __AzureActiveDirectory__
-
-下图展示了 Azure 门户中的 NSG 规则配置：
-
-[![机器学习计算的出站 NSG 规则](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
-
-> [!NOTE]
-> 如果你计划使用 Microsoft 提供的默认 Docker 映像并启用用户管理的依赖项，则还必须使用以下服务标记：
->
-> * __MicrosoftContainerRegistry__
-> * __AzureFrontDoor.FirstParty__
->
-> 当你的训练脚本中有类似于以下代码片段的代码时，需要此配置：
->
-> __RunConfig 训练__
-> ```python
-> # create a new runconfig object
-> run_config = RunConfiguration()
-> 
-> # configure Docker 
-> run_config.environment.docker.enabled = True
-> # For GPU, use DEFAULT_GPU_IMAGE
-> run_config.environment.docker.base_image = DEFAULT_CPU_IMAGE 
-> run_config.environment.python.user_managed_dependencies = True
-> ```
->
-> __Estimator 训练__
-> ```python
-> est = Estimator(source_directory='.',
->                 script_params=script_params,
->                 compute_target='local',
->                 entry_script='dummy_train.py',
->                 user_managed=True)
-> run = exp.submit(est)
-> ```
-
-### <a name="forced-tunneling"></a>强制隧道
-
-若要将[强制隧道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)与机器学习计算配合使用，必须允许从包含计算资源的子网与公共 Internet 进行通信。 此通信用于计划和访问 Azure 存储的任务。
-
-可以通过两种方式来允许此通信：
-
-* 使用[虚拟网络 NAT](../virtual-network/nat-overview.md)。 NAT 网关为虚拟网络中的一个或多个子网提供出站 Internet 连接。 有关信息，请参阅[设计使用 NAT 网关资源的虚拟网络](../virtual-network/nat-gateway-resource.md)。
-
-* 将[用户定义的路由 (UDR)](../virtual-network/virtual-networks-udr-overview.md) 添加到包含计算资源的子网。 为资源所在区域中的 Azure Batch 服务使用的每个 IP 地址建立一个 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加 Azure 机器学习服务 IP 地址，因为 IP 是访问计算实例所必需的。 添加 Azure 机器学习服务的 IP 时，必须同时添加主要和次要 Azure 区域的 IP。 主要区域是工作区所在的区域。
-
-    若要查找次要区域，请参阅[使用 Azure 配对区域确保业务连续性和灾难恢复](../best-practices-availability-paired-regions.md#azure-regional-pairs)。 例如，如果 Azure 机器学习服务位于“美国东部 2”，则次要区域是“美国中部”。 
-
-    若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
-
-    * 下载 [Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)，并在文件中搜索 `BatchNodeManagement.<region>` 和 `AzureMachineLearning.<region>`（其中 `<region>` 是你的 Azure 区域）。
-
-    * 使用 [Azure CLI](/cli/azure/install-azure-cli) 下载信息。 下面的示例下载 IP 地址信息，并筛选出“美国东部 2”区域（主要）和“美国中部”区域（次要）的信息：
-
-        ```azurecli-interactive
-        az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
-        # Get primary region IPs
-        az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
-        # Get secondary region IPs
-        az network list-service-tags -l "Central US" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='centralus']"
-        ```
-
-        > [!TIP]
-        > 如果你使用的是美国-弗吉尼亚、美国-亚利桑那区域或中国东部 2 区域，则这些命令不会返回任何 IP 地址。 而如果使用以下链接之一下载 IP 地址列表：
-        >
-        > * [适用于 Azure 政府的 Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=57063)
-        > * [适用于 Azure 中国的 Azure IP 范围和服务标记](https://www.microsoft.com//download/details.aspx?id=57062)
-    
-    添加 UDR 时，请为每个相关的 Batch IP 地址前缀定义路由，并将“下一跃点类型”设置为“Internet”。  下图显示了 Azure 门户中此 UDR 的示例：
-
-    ![地址前缀的 UDR 示例](./media/how-to-enable-virtual-network/user-defined-route.png)
-
-    > [!IMPORTANT]
-    > IP 地址可能会随时间推移而改变。
-
-    除了定义的任何 UDR，还必须通过本地网络设备允许流向 Azure 存储的出站流量。 具体而言，此流量的 URL 采用以下格式：`<account>.table.core.windows.net`、`<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net`。 
-
-    有关详细信息，请参阅[在虚拟网络中创建 Azure Batch 池](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling)。
-
-### <a name="create-a-compute-cluster-in-a-virtual-network"></a>在虚拟网络中创建计算群集
-
-若要创建机器学习计算群集，请按照以下步骤操作：
+使用以下步骤在 Azure 机器学习工作室中创建计算群集：
 
 1. 登录 [Azure 机器学习工作室](https://ml.azure.com/)，然后选择你的订阅和工作区。
 1. 在左侧选择“计算”，从中心选择“计算群集”，然后选择“+ 新建”。  
@@ -221,7 +165,9 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 
 1. 选择“创建”以创建计算群集。
 
-也可以使用 Azure 机器学习 SDK 创建机器学习计算群集。 以下代码在名为 `mynetwork` 的虚拟网络的 `default` 子网中创建新的机器学习计算群集：
+# <a name="python"></a>[Python](#tab/python)
+
+以下代码在名为 `mynetwork` 的虚拟网络的 `default` 子网中创建新的机器学习计算群集：
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -246,6 +192,7 @@ except ComputeTargetException:
     compute_config = AmlCompute.provisioning_configuration(vm_size="STANDARD_D2_V2",
                                                            min_nodes=0,
                                                            max_nodes=4,
+                                                           location="westus2",
                                                            vnet_resourcegroup_name=vnet_resourcegroup_name,
                                                            vnet_name=vnet_name,
                                                            subnet_name=subnet_name)
@@ -257,33 +204,25 @@ except ComputeTargetException:
     cpu_cluster.wait_for_completion(show_output=True)
 ```
 
+---
+
 创建过程完成后，请在试验中使用该群集训练模型。 有关详细信息，请参阅[选择并使用用于训练的计算目标](how-to-set-up-training-targets.md)。
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
-### <a name="access-data-in-a-compute-instance-notebook"></a>访问计算实例笔记本中的数据
+### <a name="inbound-traffic"></a>入站流量
 
-如果要在 Azure 机器学习计算实例上使用笔记本，则必须确保笔记本在与数据相同的虚拟网络和子网后的计算资源上运行。 
+[!INCLUDE [udr info for computes](../../includes/machine-learning-compute-user-defined-routes.md)]
 
-在创建过程中，你必须在“高级设置” > “配置虚拟网络”下将你的计算实例配置为位于同一虚拟网络中。 。 无法将现有计算实例添加到虚拟网络中。
+有关 Azure 机器学习输入和输出流量要求的详细信息，请参阅[在防火墙后面使用工作区](how-to-access-azureml-behind-firewall.md)。
 
 ## <a name="azure-databricks"></a>Azure Databricks
-
-若要将虚拟网络中的 Azure Databricks 用于工作区，必须满足以下要求：
-
-> [!div class="checklist"]
-> * 该虚拟网络必须与 Azure 机器学习工作区位于同一订阅和区域。
-> * 如果工作区的 Azure 存储帐户也在虚拟网络中受保护，则它们必须与 Azure Databricks 群集位于同一虚拟网络中。
-> * 除了 Azure Databricks 使用的 __databricks-private__ 和 __databricks-public__ 子网以外，还需要为虚拟网络创建 __default__ 子网。
 
 若要详细了解如何结合使用 Azure Databricks 和虚拟网络，请参阅[在 Azure 虚拟网络中部署 Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。
 
 <a id="vmorhdi"></a>
 
 ## <a name="virtual-machine-or-hdinsight-cluster"></a>虚拟机或 HDInsight 群集
-
-> [!IMPORTANT]
-> Azure 机器学习只支持运行 Ubuntu 的虚拟机。
 
 本部分介绍如何将虚拟网络中的虚拟机或 Azure HDInsight 群集用于工作区。
 
@@ -316,7 +255,7 @@ except ComputeTargetException:
 
 保留网络安全组的默认出站规则。 有关详细信息，请参阅[安全组](../virtual-network/network-security-groups-overview.md#default-security-rules)中的“默认安全规则”。
 
-如果你不想要使用默认出站规则，同时想要限制虚拟网络的出站访问，请参阅[限制来自虚拟网络的出站连接](#limiting-outbound-from-vnet)部分。
+如果你不想要使用默认的出站规则，同时想要限制虚拟网络的出站访问，请参阅[所需公共 Internet 访问](#required-public-internet-access)部分。
 
 ### <a name="attach-the-vm-or-hdinsight-cluster"></a>附加 VM 或 HDInsight 群集
 
@@ -324,11 +263,11 @@ except ComputeTargetException:
 
 ## <a name="next-steps"></a>后续步骤
 
-虚拟网络系列文章由五部分构成，本文是第三部分。 若要了解如何保护虚拟网络，请参阅其余文章：
+本文是介绍如何保护 Azure 机器学习工作流的系列文章的一部分。 请参阅本系列中的其他文章：
 
-* [第 1 部分：虚拟网络概述](how-to-network-security-overview.md)
-* [第 2 部分：保护工作区资源](how-to-secure-workspace-vnet.md)
-* [第 4 部分：保护推理环境](how-to-secure-inferencing-vnet.md)
-* [第 5 部分：启用工作室功能](how-to-enable-studio-virtual-network.md)
-
-另请参阅有关使用[自定义 DNS](how-to-custom-dns.md) 进行名称解析的文章。
+* [虚拟网络概述](how-to-network-security-overview.md)
+* [保护工作区资源](how-to-secure-workspace-vnet.md)
+* [保护推理环境](how-to-secure-inferencing-vnet.md)
+* [启用工作室功能](how-to-enable-studio-virtual-network.md)
+* [使用自定义 DNS](how-to-custom-dns.md)
+* [使用防火墙](how-to-access-azureml-behind-firewall.md)

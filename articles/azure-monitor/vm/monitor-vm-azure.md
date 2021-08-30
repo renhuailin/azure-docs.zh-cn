@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 2c93471436030f9260f4fa0d95d656c27d382346
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5a3ed2de24127f09a901fb5bcb06c84124751d74
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047037"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183890"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 虚拟机
 本文介绍如何使用 Azure Monitor 从 Azure 虚拟机收集和分析监视数据以维护其运行状况。 可以使用 Azure Monitor 监视虚拟机的可用性和性能，就像监视任何[其他 Azure 资源](../essentials/monitor-azure-resource.md)一样，但是它们与其他资源不同，因为你还需要监视客户操作和系统以及在其中运行的工作负载。 
 
 > [!NOTE]
-> 本文全面概述了用于监视 Azure Monitor 虚拟机的概念和选项。 若要快速开始监视虚拟机而不关注基础概念，请参阅[快速入门：使用 Azure Monitor 监视 Azure 虚拟机](./quick-monitor-azure-vm.md)。
+> 本文全面概述了用于监视 Azure Monitor 虚拟机的概念和选项。 若要快速开始监视虚拟机而不关注基础概念，请参阅[快速入门：使用 Azure Monitor 监视 Azure 虚拟机](./monitor-virtual-machine.md)。
 
 
 ## <a name="differences-from-other-azure-resources"></a>与其他 Azure 资源的差异
@@ -85,7 +85,7 @@ VM 见解使用的 Log Analytics 代理会将数据发送到 [Log Analytics 工�
 
 ![工作区配置](media/monitor-vm-azure/workspace-configuration.png)
 
-从工作区菜单中依次选择“高级设置”、“数据”来配置数据源。 对于 Windows 代理，选择“Windows 事件日志”并添加常见事件日志，如“系统”和“应用程序”。 对于 Linux 代理，请选择“Syslog”并添加常见功能，如“字距调整”和“守护程序”。 有关可用数据源的列表和配置这些数据源的详细信息，请参阅 [Azure Monitor 中的代理数据源](../agents/agent-data-sources.md)。 
+从工作区菜单中选择“代理配置”以配置数据源。 对于 Windows 代理，选择“Windows 事件日志”并添加常见事件日志，如“系统”和“应用程序”。 对于 Linux 代理，请选择“Syslog”并添加常见功能，如“字距调整”和“守护程序”。 有关可用数据源的列表和配置这些数据源的详细信息，请参阅 [Azure Monitor 中的代理数据源](../agents/agent-data-sources.md)。 
 
 ![配置事件](media/monitor-vm-azure/configure-events.png)
 

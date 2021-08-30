@@ -1,6 +1,6 @@
 ---
 title: 有关使用已启用 Arc 的超大规模 PostgreSQL 服务器组分发数据和横向扩展的概念
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 description: 有关使用已启用 Arc 的超大规模 PostgreSQL 服务器组分发数据的概念
 services: azure-arc
 ms.service: azure-arc
@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 4698826a78afe816029288f2d5eda14834124904
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 69405ac6386587e6621c67532a8bd7f41450370e
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407800"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729931"
 ---
 # <a name="concepts-for-distributing-data-with-arc-enabled-postgresql-hyperscale-server-group"></a>有关使用已启用 Arc 的超大规模 PostgreSQL 服务器组分发数据的概念
 
@@ -27,7 +27,7 @@ ms.locfileid: "111407800"
 
 这是在 Azure 中以数据库即服务 (PaaS) 形式提供的超大规模外形规格的 Postgres 数据库引擎。 它由实现超大规模体验的 Citus 扩展提供支持。 在此外形规格中，服务在 Microsoft 数据中心运行，由 Microsoft 操作。
 
-- _已启用 Azure Arc 的超大规模 PostgreSQL_
+- 已启用 Azure Arc 的超大规模 PostgreSQL
 
 这是通过已启用 Azure Arc 的数据服务提供的超大规模外形规格的 Postgres 数据库引擎。 在此外形规格中，我们的客户将提供用于托管系统和运行系统的基础结构。
 
@@ -44,7 +44,7 @@ ms.locfileid: "111407800"
 参阅 [Azure Database for PostgreSQL - 超大规模 (Citus) 中的节点和表](../../postgresql/concepts-hyperscale-nodes.md)中的详细信息。 
 
 ## <a name="determine-the-application-type"></a>确定应用程序类型
-明确你要生成的应用程序类型非常重要。 为什么？ 因为对已启用 Azure Arc 的超大规模 PostgreSQL 服务器组运行高效查询需要在服务器之间正确分布表。 建议的分布方式根据应用程序的类型及其查询模式而异。 概括而言，有两种类型的应用程序可在已启用 Azure Arc 的超大规模 Postgres 上正常运行：
+明确你要生成的应用程序类型非常重要。 为什么？ 因为对已启用 Azure Arc 的超大规模 PostgreSQL 服务器组运行高效查询需要在服务器之间正确分布表。 建议的分布方式因应用程序的类型及其查询模式而异。 概括而言，有两种类型的应用程序可在已启用 Azure Arc 的超大规模 Postgres 上正常运行：
 - 多租户应用程序
 - 实时应用程序
 
@@ -70,7 +70,7 @@ ms.locfileid: "111407800"
 
 ## <a name="next-steps"></a>后续步骤
 - [了解如何创建已启用 Azure Arc 的超大规模 PostgreSQL](create-postgresql-hyperscale-server-group.md)
-- [了解如何横向扩展在 Arc 数据控制器中创建的已启用 Azure Arc 的超大规模 PostgreSQL服务器组](scale-out-in-postgresql-hyperscale-server-group.md)
+- [了解如何横向扩展在 Arc 数据控制器中创建的已启用 Azure Arc 的超大规模 PostgreSQL 服务器组](scale-out-in-postgresql-hyperscale-server-group.md)
 - [了解已启用 Azure Arc 的数据服务](https://azure.microsoft.com/services/azure-arc/hybrid-data-services)
 - [了解 Azure Arc](https://aka.ms/azurearc)
 

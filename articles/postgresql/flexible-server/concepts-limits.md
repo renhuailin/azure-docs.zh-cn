@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 351c959a4d3b6cc53064b9d1b65c1282647f308e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 08/17/2021
+ms.openlocfilehash: e4e6af7e0fd475d60c38a021d2cefec4cbc39de3
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605393"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397295"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的限制
 
@@ -30,16 +30,16 @@ ms.locfileid: "105605393"
 | B1ms                 | 1      | 2 GiB       | 50              | 47                   |
 | B2s                  | 2      | 4 GiB       | 100             | 97                   |
 | **常规用途**  |        |             |                 |                      |
-| D2s_v3               | 2      | 8 GiB       | 214             | 211                  |
-| D4s_v3               | 4      | 16 GiB      | 429             | 426                  |
-| D8s_v3               | 8      | 32 GiB      | 859             | 856                  |
-| D16s_v3              | 16     | 64 GiB      | 1718            | 1715                 |
-| D32s_v3              | 32     | 128 GiB     | 3437            | 3434                 |
+| D2s_v3               | 2      | 8 GiB       | 859             | 856                  |
+| D4s_v3               | 4      | 16 GiB      | 1719            | 1716                 |
+| D8s_v3               | 8      | 32 GiB      | 3438            | 3435                 |
+| D16s_v3              | 16     | 64 GiB      | 5000            | 4997                 |
+| D32s_v3              | 32     | 128 GiB     | 5000            | 4997                 |
 | D48s_v3              | 48     | 192 GiB     | 5000            | 4997                 |
 | D64s_v3              | 64     | 256 GiB     | 5000            | 4997                 |
 | **内存优化** |        |             |                 |                      |
-| E2s_v3               | 2      | 16 GiB      | 1718            | 1715                 |
-| E4s_v3               | 4      | 32 GiB      | 3437            | 3434                 |
+| E2s_v3               | 2      | 16 GiB      | 1719            | 1716                 |
+| E4s_v3               | 4      | 32 GiB      | 3438            | 3433                 |
 | E8s_v3               | 8      | 64 GiB      | 5000            | 4997                 |
 | E16s_v3              | 16     | 128 GiB     | 5000            | 4997                 |
 | E32s_v3              | 32     | 256 GiB     | 5000            | 4997                 |
@@ -47,7 +47,7 @@ ms.locfileid: "105605393"
 | E64s_v3              | 64     | 432 GiB     | 5000            | 4997                 |
 
 当连接数超出限制时，可能会收到以下错误：
-> 严重：很抱歉，客户端数过多
+> 严重错误: 很抱歉，已有太多客户端。
 
 > [!IMPORTANT]
 > 为了获得最佳体验，我们建议你使用 PgBouncer 之类的连接池来有效地管理连接。
@@ -96,7 +96,7 @@ PostgreSQL 连接，即使空闲，也可以占用大约 10MB 的内存。 而�
 
 - 不支持 Postgres 10 及更早版本。 如果需要较旧的 Postgres 版本，建议使用[单一服务器](../overview-single-server.md)选项。
 - 扩展支持目前仅限于 Postgres `contrib` 扩展。
-- 内置的 PgBouncer 连接池程序当前不适用于 VNET 中的数据库服务器，也不适用于可突发服务器。
+- 内置的 PgBouncer 连接池程序当前不适用于可突发服务器。
 
 ### <a name="stopstart-operation"></a>停止/启动操作
 

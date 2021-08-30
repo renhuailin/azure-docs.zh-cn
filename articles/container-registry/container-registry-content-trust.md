@@ -1,14 +1,15 @@
 ---
 title: 管理已签名的映像
 description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取已签名的映像。 内容信任会实现 Docker 内容信任，是高级服务层的一项功能。
-ms.topic: article
-ms.date: 09/18/2020
-ms.openlocfilehash: 238908c0075ffa5d2193eda642175a0cfe75b839
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.topic: how-to
+ms.date: 06/25/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: ddaded0ff733ea717a48bfe2bcaac4a84e102ad8
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784112"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983610"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 
@@ -80,11 +81,19 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 
 ### <a name="azure-portal"></a>Azure 门户
 
-导航到 Azure 门户中的注册表，然后选择“访问控制(IAM)” > “添加角色分配”。 在“添加角色分配”下的“角色”下选择“`AcrImageSigner`”， 然后 **选择** 一个或多个用户或服务主体，然后单击“保存”。
+1. 选择“访问控制 (IAM)”。
 
-在此示例中，为以下两个实体分配了 `AcrImageSigner` 角色：名为“service-principal”的服务主体，以及名为“Azure 用户”的用户。
+1. 选择“添加” > “添加角色分配”，打开“添加角色分配”页面 。
 
-![在 Azure 门户中授予 ACR 映像签名权限][content-trust-02-portal]
+1. 分配以下角色。 在此示例中，角色分配给单个用户。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
+    
+    | 设置 | 值 |
+    | --- | --- |
+    | 角色 | AcrImageSigner |
+    | 将访问权限分配到 | 用户 |
+    | 成员 | Alain |
+
+    ![Azure 门户中的“添加角色分配”页。](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 

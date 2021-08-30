@@ -2,17 +2,15 @@
 title: 诊断和解决工具
 description: 了解如何使用 Azure 门户中的“诊断和解决”工具来排查应用程序在 Azure 应用服务方面的问题。
 keywords: 应用服务, azure 应用服务, 诊断, 支持, web 应用, 故障排除, 自助服务
-author: jen7714
 ms.topic: article
 ms.date: 10/18/2019
-ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: d58341979b0bbe0699a5ca293b20394c43cde1d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf044baf233c159ff271221522f0f9faf15cc1ed
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88962802"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114451581"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure 应用服务诊断概述
 
@@ -28,7 +26,7 @@ ms.locfileid: "88962802"
 
 对于 Azure Functions，请导航到函数应用，在顶部的导航栏中，单击“**平台功能**”并从“**资源管理**”部分中选择“**诊断并解决问题**”。
 
-在应用服务诊断主页中，可以通过使用每个主页磁贴中的关键字，选择最能描述应用问题的类别。 此外，还可以在此页中找到 Windows 应用的 **诊断工具**。 请参阅“[诊断工具（仅适用于 Windows 应用）](#diagnostic-tools-only-for-windows-app)”。
+在应用服务诊断主页中，可以通过使用每个主页磁贴中的关键字，选择最能描述应用问题的类别。 此外，还可以在此页中找到“诊断工具”。 请参阅[诊断工具](#diagnostic-tools)。
 
 ![主页](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
 
@@ -83,21 +81,23 @@ ms.locfileid: "88962802"
 
 ![Application Insights 和故障排除及后续步骤](./media/app-service-diagnostics/troubleshooting-and-next-steps-8.png)
 
-## <a name="diagnostic-tools-only-for-windows-app"></a>诊断工具（仅适用于 Windows 应用）
+## <a name="diagnostic-tools"></a>诊断工具 
 
 诊断工具包括更高级的类型，这些类型可帮助用户调查应用程序代码问题、运行缓慢、连接字符串等。 和前瞻性工具，该工具可帮助用户缓解 CPU 使用率、请求数和内存方面的问题。
 
-### <a name="proactive-cpu-monitoring"></a>主动 CPU 监视
+### <a name="proactive-cpu-monitoring-only-for-windows-app"></a>主动 CPU 监视（仅适用于 Windows 应用）
 
 当应用程序或子进程消耗 CPU 资源较高时，主动 CPU 监视可以提供一种简单且主动的操作方式。 用户可以设置自己的 CPU 阈值规则，以暂时缓解 CPU 使用率过高的问题，直到找出意外问题的真正原因。 有关详细信息，请参阅“[在 CPU 问题发生前采取缓解措施](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html)”。
 
 ![主动 CPU 监视](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
-### <a name="auto-healing-and-proactive-auto-healing"></a>自动修复和主动自动修复
+### <a name="auto-healing"></a>自动修复 
 
-自动修复是应用遇到意外行为时可以采取的缓解措施。 用户可以根据请求计数、请求缓慢、内存限制和 HTTP 状态代码设置自己的规则，以触发缓解措施。 使用此工具可暂时缓解意外行为，直到找出根本原因。 有关详细信息，请参阅“[在应用服务诊断中发布新的自动修复体验](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html)”。
+自动修复是应用遇到意外行为时可以采取的缓解措施。 用户可以根据请求计数、请求缓慢、内存限制和 HTTP 状态代码设置自己的规则，以触发缓解措施。 使用此工具可暂时缓解意外行为，直到找出根本原因。 该工具目前可用于 Windows Web 应用、Linux Web 应用和 Linux 自定义容器。 支持的条件和缓解措施因 Web 应用的类型而异。 有关详细信息，请参阅[在应用服务诊断中发布新的自动修复体验](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html)和[发布适用于 Linux 的自动修复](https://azure.github.io/AppService/2021/04/21/Announcing-Autoheal-for-Azure-App-Service-Linux.html)。
 
 ![自动修复](./media/app-service-diagnostics/auto-healing-10.png)
+
+### <a name="proactive-auto-healing-only-for-windows-app"></a>主动自动修复（仅适用于 Windows 应用）
 
 与主动 CPU 监视一样，主动自动修复是一种用于缓解应用程序意外行为的现成解决方案。 当应用服务确定应用处于不可恢复的状态时，主动自动修复会重启应用。 有关详细信息，请参阅“[引入前瞻性自动修复](https://azure.github.io/AppService/2017/08/17/Introducing-Proactive-Auto-Heal.html)”。
 

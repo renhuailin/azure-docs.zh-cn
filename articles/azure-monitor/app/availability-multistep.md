@@ -2,23 +2,29 @@
 title: 通过多步骤 Web 测试进行监视 - Azure Application Insights
 description: 使用 Azure Application Insights 设置多步骤 Web 测试，以便监视 Web 应用程序
 ms.topic: conceptual
-ms.date: 02/14/2021
-ms.openlocfilehash: 1d3597eaf54c40fb1f986d822af0dd6b8c8a7b2e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/21/2021
+ms.openlocfilehash: d248340aa272a6a1fef386ca755ed46536668ad9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719842"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447991"
 ---
 # <a name="multi-step-web-tests"></a>多步骤 Web 测试
 
 可通过多步骤 Web 测试来监视录制的 URL 序列和与网站的交互。 本文将逐步讲解使用 Visual Studio Enterprise 创建多步骤 Web 测试的过程。
 
 > [!NOTE]
-> 多步骤 Web 测试依赖于 Visual Studio WebTest 文件。 我们已[宣布](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)，Visual Studio 2019 将是支持 WebTest 功能的最后一个版本。 尽管我们不会添加任何新功能，但目前仍支持 Visual Studio 2019 中的 WebTest 功能，并且在该产品的支持生命周期内仍将继续提供支持，了解这一点至关重要。 有关多步骤可用性测试的未来情况问题，Azure Monitor 产品团队已提供解决方案，请参阅[此处](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)。  
-> </br>
 > [Azure 政府](../../azure-government/index.yml)云中不支持多步骤 Web 测试。
 
+> [!NOTE]
+> 多步骤 Web 测试归为经典测试，可以在“可用性”窗格中的“添加经典测试”下找到。
+
+## <a name="multi-step-webtest-alternative"></a>多步骤 Web 测试替代方案
+
+多步骤 Web 测试依赖于 Visual Studio WebTest 文件。 我们已[宣布](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)，Visual Studio 2019 将是支持 WebTest 功能的最后一个版本。 尽管我们不会添加任何新功能，但目前仍支持 Visual Studio 2019 中的 Web 测试功能，并且在该产品的支持生命周期内仍将继续提供支持，了解这一点至关重要。 
+
+建议使用 [TrackAvailability](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) 来提交[自定义可用性测试](./availability-azure-functions.md)，而不是多步骤 Web 测试。 这是针对多请求或身份验证测试场景的长期支持解决方案。 使用 TrackAvailability() 和自定义可用性测试，可以在所需的任何计算上运行测试，并使用 C# 轻松编写新测试。
 
 ## <a name="pre-requisites"></a>先决条件
 
@@ -41,9 +47,10 @@ ms.locfileid: "101719842"
 
 ## <a name="upload-the-web-test"></a>上传 Web 测试
 
-1. 在 Application Insights 门户上的“可用性”窗格中，选择“创建测试” > “测试类型” > “多步骤 Web 测试”  。
-
-2. 设置测试位置、频率和警报参数。
+1. 在 Application Insights 门户的“可用性”窗格上，选择“添加经典测试”，然后选择“多步骤”作为“SKU” 。
+2. 上传多步骤 Web 测试。
+3. 设置测试位置、频率和警报参数。
+4. 选择“创建”。
 
 ### <a name="frequency--location"></a>频率和位置
 

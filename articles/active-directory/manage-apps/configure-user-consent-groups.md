@@ -2,22 +2,22 @@
 title: 使用 Azure AD 配置组所有者对应用访问组数据的同意
 description: 了解如何管理组和团队所有者是否同意应用程序访问组或团队的数据。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 46b6d91846b2498ce046da7a80bc3c9bc6110929
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 1ce7254f92c4cc3d2a7dcf77885be88eda37099b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076053"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113567952"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>配置组所有者对应用访问组数据的同意
 
@@ -113,6 +113,9 @@ ms.locfileid: "112076053"
 
 ---
 
+> [!NOTE]
+> “用户可以自行许可访问公司数据的应用”设置关闭后不会禁用“用户可以同意应用访问其拥有的组的公司数据”选项
+
 ## <a name="next-steps"></a>后续步骤
 
 若要了解详细信息，请访问以下链接：
@@ -124,4 +127,5 @@ ms.locfileid: "112076053"
 * [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
 获取帮助或查找问题的答案：
+
 * [Microsoft Q&A 上的 Azure AD](/answers/topics/azure-active-directory.html)

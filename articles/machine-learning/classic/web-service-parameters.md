@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）：Web 服务参数 - Azure
-description: 在 Web 服务受访问时，如何使用 Azure 机器学习 Web 服务参数修改模型行为。
+description: 在 Web 服务受访问时，如何使用机器学习 Web 服务参数来修改模型行为。
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -10,19 +10,19 @@ ms.subservice: studio-classic
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: 49814d01209b58666c011a6bbd7fe6c328d460f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c58e893d81754f69a2b01d9983a9138845098808
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518328"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583349"
 ---
-# <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure 机器学习工作室（经典）Web 服务参数
+# <a name="use-machine-learning-studio-classic-web-service-parameters"></a>使用机器学习工作室（经典）Web 服务参数
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
-发布包含可配置参数的模块的实验，创建 Azure 机器学习 Web 服务。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数* 允许执行此任务。 
+创建机器学习 Web 服务，方法是：发布一个包含模块的试验，这些模块具有可配置的参数。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数* 允许执行此任务。 
 
 常见示例为设置[导入数据][reader]模块，以便 Web 服务受访问时，已发布的 Web 服务的用户能够指定不同的数据源。 或配置[导出数据][writer]模块以指定其他目标。 其他一些示例包括为[特征哈希][feature-hashing]模块更改位数或为[基于筛选器的功能选择][filter-based-feature-selection]模块更改所需功能数。 
 
@@ -40,7 +40,7 @@ ms.locfileid: "100518328"
 Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服务时如何以编程方式指定 Web 服务参数的信息。
 
 > [!NOTE]
-> 经典 Web 服务的 API 文档通过机器学习工作室（经典）的 Web 服务“仪表板”中的“API 帮助页”链接提供。 新 Web 服务的 API 文档通过 Web 服务“使用”和“Swagger API”页上的 [Azure 机器学习 Web 服务](https://services.azureml.net/Quickstart)门户提供。
+> 经典 Web 服务的 API 文档通过机器学习工作室（经典）的 Web 服务“仪表板”中的“API 帮助页”链接提供。 新 Web 服务的 API 文档通过 Web 服务的“使用”和“Swagger API”页上的[机器学习 Web 服务](https://services.azureml.net/Quickstart)门户提供。
 > 
 > 
 
@@ -69,14 +69,14 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
 7. 单击“部署 Web 服务”时，并选择“部署 Web 服务[经典]”或“部署 Web 服务[新]”，部署 Web 服务。
 
 > [!NOTE] 
-> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 
+> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 
 
 访问 Web 服务时，Web 服务的用户现在可为[导出数据][writer]模块指定新目标。
 
 ## <a name="more-information"></a>详细信息
 有关更详细的示例，请参阅 [机器学习博客](/archive/blogs/machinelearning/azureml-web-service-parameters) 中的 [Web 服务参数](/archive/blogs/machinelearning/azureml-web-service-parameters) 条目。
 
-有关访问机器学习 Web 服务的详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
+有关访问机器学习 Web 服务的详细信息，请参阅[如何使用机器学习 Web 服务](consume-web-services.md)。
 
 <!-- Module References -->
 [feature-hashing]: /azure/machine-learning/studio-module-reference/feature-hashing

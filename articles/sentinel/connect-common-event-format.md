@@ -1,5 +1,5 @@
 ---
-title: 将 CEF 数据连接到 Azure Sentinel 预览版 | Microsoft Docs
+title: 将 CEF 数据连接到 Azure Sentinel | Microsoft Docs
 description: 使用 Linux 计算机作为日志转发器，将发送通用事件格式 (CEF) 消息的外部解决方案连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
@@ -12,20 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 07/26/2021
 ms.author: yelevin
-ms.openlocfilehash: 54fd6c0c085c0055f3114fde606f8f7d2f2e055e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7cf50ee7b165fec445f65d3e57e229f04db5320b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772053"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695143"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>连接使用通用事件格式的外部解决方案
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 连接发送 CEF 消息的外部解决方案时，会执行三个步骤来连接 Azure Sentinel：
 
-步骤 1：[通过部署 Syslog/CEF 转发器连接 CEF](connect-cef-agent.md)；步骤 2：[执行特定于解决方案的步骤](connect-cef-solution-config.md)；步骤 3：[验证连接](connect-cef-verify.md)
+步骤 1：[通过部署 Syslog/CEF 转发器连接 CEF](connect-cef-agent.md)；步骤 2：[执行特定于解决方案的步骤](connect-cef-solution-config.md)；步骤 3：[验证连接](troubleshooting-cef-syslog.md#validate-cef-connectivity)
 
 本文将介绍连接工作原理，列出先决条件，并介绍为安全解决方案部署一个机制以基于 Syslog 发送通用事件格式 (CEF) 消息的步骤。 
 
@@ -49,6 +51,8 @@ ms.locfileid: "104772053"
 若要在 Syslog 源与 Syslog 转发器之间使用 TLS 通信，需将 Syslog 守护程序（rsyslog 或 syslog-ng）配置为以 TLS 通信：[使用 TLS 加密 Syslog 流量 - rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)、[使用 TLS 加密日志消息 – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
  
 ## <a name="prerequisites"></a>先决条件
+
+需要 Azure Sentinel 工作区才能将 CEF 数据引入 Log Analytics。
 
 确保用作日志转发器的 Linux 计算机运行的是以下操作系统之一：
 
@@ -96,10 +100,10 @@ ms.locfileid: "104772053"
 
 - 步骤 1：[通过部署 Syslog/CEF 转发器连接 CEF](connect-cef-agent.md)
 - 步骤 2：[执行特定于解决方案的步骤](connect-cef-solution-config.md)
-- 步骤 3：[验证连接](connect-cef-verify.md)
+- 步骤 3：[验证连接](troubleshooting-cef-syslog.md#validate-cef-connectivity)
 
 若要详细了解如何处理 Azure Sentinel 中收集的数据，请参阅以下文章：
 
 - 了解 [CEF 和 CommonSecurityLog 字段映射](cef-name-mapping.md)。
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](./tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](./detect-threats-built-in.md)。

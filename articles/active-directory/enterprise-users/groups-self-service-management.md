@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2021
+ms.date: 07/27/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47e3ea0a8ea5dc8dbb01d532a52436ed581311e7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 724f63792c71e59b071e1851a013cbf94933008b
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089879"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721524"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>在 Azure Active Directory 中设置自助服务组管理 
 
@@ -47,18 +47,19 @@ ms.locfileid: "110089879"
 
 1. 依次选择“组”、“常规”设置。 
 
-    ![Azure Active Directory 群组常规设置](./media/groups-self-service-management/groups-settings-general.png)
+    ![Azure Active Directory 组常规设置。](./media/groups-self-service-management/groups-settings-general.png)
 
 1. 将“所有者可以在访问面板中管理组成员资格请求”设置为“是”。 
 
 1. 将“限制用户能够访问‘访问窗格’中的组功能”设为“否”。 
 
-1. 如果将“用户可以在 Azure 门户、API 或 PowerShell 中创建安全组”或“用户可以在 Azure 门户、API 或 PowerShell 中创建 Microsoft 365 组”设置为 
+1. 将“用户可以在 Azure 门户、API 或 PowerShell 中创建安全组”设置为“是”或“否”  。
 
-    - **是**：Azure AD 组织中的所有用户均可以创建新的安全组，并可以在 Azure 门户、API 或 PowerShell 中将成员添加到这些组。 这些新组也会显示在其他所有用户的“访问面板”中。 如果组的策略设置允许，其他用户可以创建加入这些组的请求。
-    - **否**：用户无法创建组，也无法更改其拥有的现有组。 不过，他们仍然可以管理这些组的成员身份，并审批其他用户加入其组的请求。
+    有关此设置的详细信息，请参阅下一部分[组设置](#group-settings)。
 
-    这些设置最近进行了更改，增加了对 API 和 PowerShell 的支持。 有关此更改详细信息，请参阅下一节[组设置更改](#groups-setting-change)。
+1. 将“用户可以在 Azure 门户、API 或 PowerShell 中创建 Microsoft 365 组”设置为“是”或“否”  。
+
+    有关此设置的详细信息，请参阅下一部分[组设置](#group-settings)。
 
 你还可以使用“可以将成员分配为 Azure 门户中组所有者的所有者”，以实现对用户的自助服务组管理的更精细的访问控制。
 
@@ -67,36 +68,35 @@ ms.locfileid: "110089879"
 > [!NOTE]
 > 必须具备 Azure Active Directory Premium（P1 或 P2）许可证，用户才能请求加入安全组或 Microsoft 365 组，所有者才能批准或拒绝成员身份请求。 如果没有 Azure Active Directory Premium 许可证，用户仍可在访问面板中管理他们的组，但不能在访问面板中创建需要所有者批准的组，也不能请求加入组。
 
-## <a name="groups-setting-change"></a>组设置更改
+## <a name="group-settings"></a>组设置
 
-当前安全组和 Microsoft 365 组设置将被弃用和替换。 当前设置将被替换，因为它们仅控制 Azure 门户中的组创建，不适用于 API 或 PowerShell。 新设置控制在 Azure 门户以及 API 和 PowerShell 中创建组。
+组设置可用于控制谁可以创建安全组和 Microsoft 365 组。
 
-| 已弃用的设置 | 新设置 |
-| --- | --- |
-| 用户可以在 Azure 门户中创建安全组 | 用户可以在 Azure 门户、API 或 PowerShell 中创建安全组 |
-| 用户可以在 Azure 门户中创建 Microsoft 365 组 | 用户可以在 Azure 门户、API 或 PowerShell 中创建 Microsoft 365 组 |
+![Azure Active Directory 安全组设置更改。](./media/groups-self-service-management/security-groups-setting.png)
 
-在当前设置完全被弃用之前，这两个设置将显示在 Azure 门户中。 应在 **2021 年 5 月** 底之前配置这个新设置。 若要配置安全组设置，必须分配有“全局管理员”或“特权角色管理员”角色。 
+> [!NOTE]
+> 这些设置的行为最近发生了更改。 请确保为组织配置这些设置。 有关详细信息，请参阅[为什么要更改组设置？](#why-were-the-group-settings-changed)。
 
-![Azure Active Directory 安全组设置更改](./media/groups-self-service-management/security-groups-setting.png)
+ 下表可帮助你决定要选择的值。
 
-下表可帮助你决定要选择的值。
+| 设置 | 值 | 对租户的影响 |
+| --- | :---: | --- |
+| 用户可以在 Azure 门户、API 或 PowerShell 中创建安全组 | 是 | Azure AD 组织中的所有用户均可在 Azure 门户、API 或 PowerShell 中创建新的安全组，并可将成员添加到这些组。 这些新组也会显示在其他所有用户的“访问面板”中。 如果组的策略设置允许，其他用户可以创建加入这些组的请求。 |
+|  | 否 | 用户无法创建安全组，也无法更改其拥有的现有组。 不过，他们仍然可以管理这些组的成员身份，并审批其他用户加入其组的请求。 |
+| 用户可以在 Azure 门户、API 或 PowerShell 中创建 Microsoft 365 组 | 是 | Azure AD 组织中的所有用户均可在 Azure 门户、API 或 PowerShell 中创建新的 Microsoft 365 组，并可将成员添加到这些组。 这些新组也会显示在其他所有用户的“访问面板”中。 如果组的策略设置允许，其他用户可以创建加入这些组的请求。 |
+|  | 否 | 用户无法创建 Microsoft 365 组，也无法更改其拥有的现有组。 不过，他们仍然可以管理这些组的成员身份，并审批其他用户加入其组的请求。 |
 
-| 如果希望... | 选择这些值 |
-| --- | --- |
-| 用户可以使用 Azure 门户、API 或 PowerShell 创建组 | 将两个设置都设置为“是”。 这些更改可能需要长达 15 分钟才能生效。 |
-| 用户不能使用 Azure 门户、API 或 PowerShell 创建组 | 将两个设置都设置为“否”。 这些更改可能需要长达 15 分钟才能生效。 |
-| 用户可以使用 Azure 门户创建组，但不能使用 API 或 PowerShell 创建组 | 不支持 |
-| 用户可以使用 API 或 PowerShell 创建组，但不能使用 Azure 门户创建组 | 不支持 |
+下面是有关这些组设置的其他一些详细信息。
 
-下表列出了这些设置的不同值会发生的情况。 建议不要将已弃用的设置和新设置设置为不同的值。
+- 这些设置可能需要长达 15 分钟才能生效。
+- 如果你想要允许某些（但并非所有）用户创建组，可为这些用户分配一个可以创建组的角色，例如[组管理员](../roles/permissions-reference.md#groups-administrator)。
+- 这些设置适用于用户，但不影响服务主体。 例如，如果你的某个服务主体有权创建组，那么，即使将这些设置指定为“否”，该服务主体也仍可创建组。 
 
-| 用户可以使用 Azure 门户创建组 | 用户可以使用 Azure 门户、API 或 PowerShell 创建组 | 对租户的影响 |
-| :---: | :---: | --- |
-| 是 | 是 | 用户可以使用 Azure 门户、API 或 PowerShell 创建组。 这些更改可能需要长达 15 分钟才能生效。|
-| 否 | 否 | 用户不能使用 Azure 门户、API 或 PowerShell 创建组。 这些更改可能需要长达 15 分钟才能生效。 |
-| 是 | 否 | 用户不能使用 Azure 门户、API 或 PowerShell 创建组。 建议不要将这些设置设置为不同的值。 这些更改可能需要长达 15 分钟才能生效。 |
-| 否 | 是 | 在“用户可以使用 Azure 门户创建组”设置于 2021 年 6 月被完全弃用之前，用户仍可以使用 API 或 PowerShell 来创建组，但不能使用 Azure 门户创建组。  从 2021 年 6 月开始，“用户可以使用 Azure 门户、API 或 PowerShell 创建组”设置将生效，并且用户可以使用 Azure 门户、API 或 PowerShell 创建组。  |
+### <a name="why-were-the-group-settings-changed"></a>为什么要更改组设置？
+
+之前的组设置实现名为“用户可以在 Azure 门户中创建安全组”和“用户可以在 Azure 门户中创建 Microsoft 365 组” 。 之前的设置仅控制 Azure 门户中的组创建，并不适用于 API 或 PowerShell。 新设置控在 Azure 门户以及 API 和 PowerShell 中的组创建。 新设置更安全。
+
+新设置的默认值已设置为以前的 API 或 PowerShell 值。 新设置的默认值可能不同于以前仅控制 Azure 门户行为的值。 从 2021 年 5 月开始，有几个星期的过渡期，在新设置生效之前，你可以选择自己需要的默认值。 新设置生效后，需要验证是否为组织配置了新设置。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 92cb780a80f1010fd1c2f5d19fe616e0285de73b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 29fccb3051fda96d47a54e8efb831980df262059
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564520"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725967"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>处理计划内维护通知
 
@@ -81,7 +81,7 @@ Azure 定期执行更新，以提高虚拟机的主机基础结构的可靠性�
 
 **问：如何收到有关计划内维护的通知？**
 
-**答:** 一次计划内维护是通过将计划设置到一个或多个 Azure 区域启动的。 不久之后，系统会将一个电子邮件通知发送到订阅管理员、共同管理员、所有者和参与者（每个订阅一封电子邮件）。 可以使用活动日志警报配置此通知的其他通道和收件人。 如果将虚拟机部署到已安排计划内维护的区域，将不会收到通知，而是需要检查 VM 的维护状态。
+**答:** 一次计划内维护是通过将计划设置到一个或多个 Azure 区域启动的。 不久之后，系统会将一个电子邮件通知发送到订阅管理员、共同管理员、所有者和参与者（每个订阅一封添加了所有收件人的电子邮件）。 可以使用活动日志警报配置此通知的其他通道和收件人。 如果将虚拟机部署到已安排计划内维护的区域，将不会收到通知，而是需要检查 VM 的维护状态。
 
 **问：我在门户、PowerShell 或 CLI 中看不到计划内维护的任何指示。出了什么问题？**
 

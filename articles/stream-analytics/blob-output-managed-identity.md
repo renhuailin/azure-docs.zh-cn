@@ -1,21 +1,21 @@
 ---
 title: 使用托管标识 Azure 流分析验证 blob 输出
 description: 本文介绍如何使用托管标识在 Azure Blob 存储输出中对 Azure 流分析作业进行身份验证。
-author: kim-ale
-ms.author: kimal
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/15/2020
-ms.openlocfilehash: 98a78d9d769300fc4963869fbc4fa2607b800fad
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 07/07/2021
+ms.openlocfilehash: 708871f620614f893a641f20098f6ed58af464f5
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591109"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486096"
 ---
-# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>使用托管标识（预览版）在 Azure Blob 存储中对 Azure 流分析作业进行身份验证
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>使用托管标识对 Azure Blob 存储的 Azure 流分析作业进行身份验证
 
-用于输出到 Azure Blob 存储的[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md)（预览版）使流分析作业能够直接访问存储帐户，而不用使用连接字符串。 除了提高安全性以外，此功能还可让你将数据写入到 Azure 上的虚拟网络 (VNET) 中的存储帐户。
+用于输出到 Azure Blob 存储的[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md)使流分析作业能够直接访问存储帐户，而不用使用连接字符串。 除了提高安全性以外，此功能还可让你将数据写入到 Azure 上的虚拟网络 (VNET) 中的存储帐户。
 
 本文介绍如何通过 Azure 门户以及通过 Azure 资源管理器部署，为流分析作业的 Blob 输出启用托管标识。
 

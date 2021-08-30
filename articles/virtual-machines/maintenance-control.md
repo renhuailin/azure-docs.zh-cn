@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 290a1e8da4e9b3e8eff171ab2d5837bfc9c381b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b85614bce6ddaee98a271e3bf7f34fd3e0301580
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552416"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369422"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>使用维护控制管理平台更新 
 
@@ -24,13 +24,13 @@ ms.locfileid: "102552416"
 使用维护控制，你可以：
 - 将许多更新作为一个更新包进行批处理。
 - 等待长达 35 天才应用更新。 
-- 通过配置维护计划或使用 [Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)，可以自动执行平台更新。
+- 通过配置维护计划，可以自动执行平台更新。
 - 维护配置跨订阅和资源组生效。 
 
 ## <a name="limitations"></a>限制
 
 - VM 必须位于[专用主机](./dedicated-hosts.md)上，或者必须使用[独立 VM 大小](isolation.md)进行创建。
-- 如果已声明维护计划，则必须至少维持 2 个小时。
+- 维护时段持续时间必须为 2 小时或更长时间。 维护时段持续时间是从客户启动更新到更新完成的时间。 
 - 35 天后，更新将自动应用。
 - 用户必须具有“资源参与者”  访问权限。
 

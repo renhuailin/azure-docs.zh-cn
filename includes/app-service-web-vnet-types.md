@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: 0b93111357cf0d6e57eeb5495d50bd18a15dca77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c3542332fbdad13d56a141d677e91b68f7e99d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97812799"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728103"
 ---
 * 支持除独立定价计划以外的全部定价计划的多租户系统。
 * 部署到 VNet 中且支持独立定价计划应用的应用服务环境。
@@ -30,7 +30,7 @@ VNet 集成功能：
 VNet 集成不支持某些功能，例如：
 
 * 装载驱动器。
-* Active Directory 集成。
+* Windows Server Active Directory 集成。
 * NetBIOS。
 
 需要网关的 VNet 集成只允许访问目标 VNet 中的资源，或者访问通过对等互连或 VPN 连接到目标 VNet 的网络中的资源。 需要网关的 VNet 集成不支持访问可通过 Azure ExpressRoute 连接使用的资源，也不适用于服务终结点。

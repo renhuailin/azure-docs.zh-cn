@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: f3c175f30c5c0e6206f4fee274e0f3f000e55a74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3f4dc33347a7e4397a2cd53ecc56d87ed155378
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100162"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093510"
 ---
 # <a name="add-a-bubble-layer-to-a-map-android-sdk"></a>向地图添加气泡层 (Android SDK)
 
@@ -179,6 +179,9 @@ map.layers.add(
 
 > [!div class="nextstepaction"]
 > [创建数据源](create-data-source-android-sdk.md)
+
+> [!div class="nextstepaction"]
+> [聚类点数据](clustering-point-data-android-sdk.md)
 
 > [!div class="nextstepaction"]
 > [添加符号层](how-to-add-symbol-to-android-map.md)

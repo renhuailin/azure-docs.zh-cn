@@ -4,14 +4,14 @@ description: 了解如何使用 Azure Site Recovery 启用策略支持来保护 
 author: rishjai-msft
 ms.author: rishjai
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 07/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7707fb0688a10c1791556f0605b40cacc54b5a85
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 1c936df9ffb467d732e0c07651e7c6fb31f28b5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961018"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739044"
 ---
 # <a name="using-policy-with-azure-site-recovery-public-preview"></a>将 Policy 和 Azure Site Recovery（公共预览版）结合使用
 
@@ -48,7 +48,7 @@ Azure 资源管理器部署模型 | 支持
 与 Azure 默认应用的其他策略（如果有）的互操作性 | 支持
 
 >[!NOTE]
->在以下情况下，不会为其启用 Site Recovery。 但是，它们将在资源合规性中表现为不合规： 
+>在以下情况下，不会为其启用 Site Recovery。 但是，它们将在资源合规性中表现为不合规：
 >1. 如果在策略范围内创建了不受支持的 VM。
 >1. 如果 VM 是可用性集和 PPG 的一部分。
 
@@ -77,11 +77,11 @@ Azure 资源管理器部署模型 | 支持
     - **源区域**：将应用策略的虚拟机的源区域。
     >[!NOTE]
     >此策略将应用于策略范围中属于源区域的所有虚拟机。 源区域中不存在的虚拟机将不会包含在资源合规性中。
-    - **目标区域**：要在其中复制源虚拟机数据的位置。 Site Recovery 根据所选计算机的位置提供合适的目标区域列表。 我们建议使用与恢复服务保管库位置相同的位置。
+    - **目标区域**：要在其中复制源虚拟机数据的位置。 Site Recovery 提供客户可复制到的目标区域列表。 我们建议使用与恢复服务保管库位置相同的位置。
     - **目标资源组**：所有可复制的虚拟机所属的资源组。 默认情况下，Site Recovery 会在目标区域中创建一个新的资源组，
     - **保管库资源组**：恢复服务保管库所在的资源组。
-    - **恢复服务保管库**：可保护范围内所有 VM 的保管库。
-    - **恢复虚拟网络**：选择目标区域中要用于恢复虚拟机的现有虚拟网络。
+    - **恢复服务保管库**：可保护范围内所有 VM 的保管库。 如果需要，策略可代表你创建新的保管库。
+    - **恢复虚拟网络**：选择目标区域中要用于恢复虚拟机的现有虚拟网络。 如果需要，策略也可为你创建新的虚拟网络。
     - **目标可用性区域**：输入虚拟机将进行故障转移的目标区域的可用性区域。
     >[!NOTE]
     >对于区域到区域场景，你需要选择与源区域相同的目标区域，并选择目标可用性区域中的其他可用性区域。     

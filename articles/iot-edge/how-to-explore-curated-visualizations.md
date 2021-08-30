@@ -2,25 +2,27 @@
 title: 浏览特选的可视化效果 - Azure IoT Edge
 description: 使用 Azure 工作簿可视化和浏览 IoT Edge 内置指标
 author: veyalla
-manager: philmea
 ms.author: veyalla
-ms.date: 06/08/2021
+ms.date: 08/11/2021
 ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0ca0d1fb7890f1a1a94419f58587f3a98957f41c
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 7be7260e993f9cc95b542406767d6794f18836f8
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904370"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015655"
 ---
 # <a name="explore-curated-visualizations-preview"></a>浏览特选的可视化效果（预览版）
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-可以直接在 Azure 门户中使用 Azure Monitor 工作簿来可视化和浏览从 IoT Edge 设备收集的指标。 适用于 IoT Edge 设备的特选监视工作簿以公共模板的形式提供，可以通过“工作簿”页中的“IoT 中心”边栏选项卡访问这些模板（在“监视”部分下） 。
+可以直接在 Azure 门户中使用 Azure Monitor 工作簿来可视化和浏览从 IoT Edge 设备收集的指标。 适用于 IoT Edge 设备的特选监视工作簿以公共模板的形式提供：
+
+* 对于连接到 IoT 中心的设备，请从 Azure 门户中的“IoT 中心”边栏选项卡导航到“监视”部分中的“工作簿”页  。
+* 对于连接到 IoT Central 的设备，请从 Azure 门户中的“IoT Central”边栏选项卡导航到“监视”部分中的“工作簿”页  。
 
 特选工作簿使用来自 IoT Edge 运行时的[内置指标](how-to-access-built-in-metrics.md)。 这些视图不需要工作负载模块提供的任何指标检测结果。
 
@@ -30,15 +32,15 @@ ms.locfileid: "111904370"
 
 要访问特选工作簿，请使用以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。
+1. 登录 [Azure 门户](https://portal.azure.com)并导航到 IoT 中心或 IoT Central 应用程序。
 
 1. 在菜单的“监视”部分选择“工作簿” 。
 
 1. 在公共模板列表中选择要浏览的工作簿：
 
-   * IoT Edge 群视图：监视设备群，并深入查看特定设备以获取运行状况快照。
-   * IoT Edge 设备详细信息：可视化有关 IoT Edge 设备上的消息传送、模块和主机组件的设备详细信息。
-   * IoT Edge 运行状况快照：基于六个常用性能指标查看设备的运行状况。 若要访问运行状况快照工作簿，请从群视图工作簿开始，选择要查看的特定设备。 群视图工作簿会将某些必需的参数传递到运行状况快照视图。
+  * IoT Edge 群视图：监视设备群，并深入查看特定设备以获取运行状况快照。
+  * IoT Edge 设备详细信息：可视化有关 IoT Edge 设备上的消息传送、模块和主机组件的设备详细信息。
+  * IoT Edge 运行状况快照：基于六个常用性能指标查看设备的运行状况。 若要访问运行状况快照工作簿，请从群视图工作簿开始，选择要查看的特定设备。 群视图工作簿会将某些必需的参数传递到运行状况快照视图。
 
 你可以自行浏览工作簿，或使用以下部分来预览每个工作簿提供的数据和可视化效果类型。
 
@@ -55,7 +57,7 @@ ms.locfileid: "111904370"
 
 :::image type="content" source="./media/how-to-explore-curated-visualizations/how-to-explore-fleet-view.gif" alt-text="群视图工作簿的“设备”部分。" lightbox="./media/how-to-explore-curated-visualizations/how-to-explore-fleet-view.gif":::
 
-在“设备”视图中查看发送指标的活动设备的概述。 此视图显示与当前 IoT 中心关联的设备。
+在“设备”视图中查看发送指标的活动设备的概述。 此视图显示与当前 IoT 中心或 IoT Central 应用程序相关联的设备。
 
 右侧有一个设备列表，其中显示了发送的本地消息和上游消息的组合条。 可以按设备名称筛选该列表，然后单击设备名称链接以查看其详细指标。
 
@@ -65,7 +67,7 @@ ms.locfileid: "111904370"
 
 :::image type="content" source="./media/how-to-explore-curated-visualizations/how-to-explore-alerts.gif" alt-text="群视图工作簿的“警报”部分。" lightbox="./media/how-to-explore-curated-visualizations/how-to-explore-alerts.gif":::
 
-在“警报”视图中查看通过[预先创建的警报规则](how-to-create-alerts.md)生成的警报。 在此视图中可以查看来自多个 IoT 中心的警报。
+在“警报”视图中查看通过[预先创建的警报规则](how-to-create-alerts.md)生成的警报。 通过此视图可以查看来自多个 IoT 中心或 IoT Central 应用程序的警报。
 
 左侧提供了一个列表，其中包含警报严重性及其计数。 右侧的地图显示了每个区域的警报总数。
 
@@ -147,7 +149,7 @@ ms.locfileid: "111904370"
 
 ## <a name="customize-workbooks"></a>自定义工作簿
 
-[Azure Monitor 工作簿](../azure-monitor/visualize/workbooks-overview.md)的可自定义程度很高。 可以根据你的需求编辑公共模板。 所有可视化效果由针对 [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) 表的以资源为中心的 [KQL](https://aka.ms/kql) 查询驱动。 请参阅以下有关编辑运行状况阈值的示例。
+[Azure Monitor 工作簿](../azure-monitor/visualize/workbooks-overview.md)的可自定义程度很高。 可以根据你的需求编辑公共模板。 所有可视化效果由针对 [InsightsMetrics](/azure/azure-monitor/reference/tables/insightsmetrics) 表的以资源为中心的 [KQL](/azure/data-explorer/kusto/query/) 查询驱动。 请参阅以下有关编辑运行状况阈值的示例。
 
 若要开始自定义工作簿，请先进入编辑模式。 在工作簿菜单栏中选择“编辑”按钮。
 

@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: mlearned
-ms.openlocfilehash: 7f754aa8d454949c74ccd31e3f52423f755b2fa4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bf589591ae1c4f9fa3dca2b16cc5382def0740e7
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372387"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861205"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 
@@ -58,11 +58,9 @@ AKS 节点是由你管理和维护的 Azure 虚拟机 (VM)。
 ### <a name="node-security-patches"></a>节点安全修补程序
 
 #### <a name="linux-nodes"></a>Linux 节点
-Azure 平台会在夜间自动将 OS 安全修补程序应用于 Linux 节点。 如果 Linux OS 安全更新需要重启主机，则其不会自动执行重启。 可以：
-* 手动重启 Linux 节点。
-* 使用 [Kured][kured]，这是一种适用于 Kubernetes 的开放源代码重启守护程序。 Kured 作为 [DaemonSet][aks-daemonsets] 运行并监视每个节点，用于文件指示需要进行重启。 
+每天晚上，AKS 中的 Linux 节点都会通过其发行版安全更新通道获得安全修补程序。 当在 AKS 群集中部署节点时，会​​自动配置此行为。 为了尽量减少对正在运行的工作负荷的中断和潜在影响，AKS 不会在安全修补程序或内核更新需要进行重启时自动重启节点。 有关如何处理节点重启的详细信息，请参阅[将安全更新和内核更新应用于 AKS 中的节点][aks-kured]。
 
-通过使用相同的 [cordon 和 drain 进程](#cordon-and-drain)作为群集升级，来跨群集管理重启。
+每晚更新将安全更新应用于节点上的 OS，但用于为群集创建节点的节点映像保持不变。 如果将新的 Linux 节点添加到你的群集，则原始映像将用于创建节点。 这个新节点将在每晚自动检查期间接收所有可用的安全更新和内核更新，但在所有检查和重启完成之前将保持未修补状态。 可以使用节点映像升级来检查和更新群集使用的节点映像。 有关节点映像升级的更多详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 节点映像升级][node-image-upgrade]。
 
 #### <a name="windows-server-nodes"></a>Windows Server 节点
 
@@ -113,7 +111,7 @@ Azure 提供升级业务流程工具以升级 AKS 群集和组件、维护安全
 
 为筛选虚拟网络流量流，Azure 使用网络安全组规则。 这些规则定义要允许或拒绝哪些源和目标 IP 范围、端口和协议访问资源。 会创建默认规则以允许 TLS 流量流向 Kubernetes API 服务器。 创建具有负载平衡器、端口映射或入口路由的服务。 AKS 会自动修改流量流的网络安全组。
 
-如果为 AKS 群集提供了自己的子网，请不要修改 AKS 管理的子网级网络安全组。 请改为创建更多子网级网络安全组来修改流量流。 确保其不会干扰管理群集所需的流量，例如负载平衡器访问、与控制平面的通信以及[流出量][aks-limit-egress-traffic]。
+如果为 AKS 群集提供自己的子网（无论是使用 Azure CNI 还是 Kubenet），请不要修改 AKS 管理的 NIC 级网络安全组。 请改为创建更多子网级网络安全组来修改流量流。 确保其不会干扰管理群集所需的流量，例如负载平衡器访问、与控制平面的通信以及[流出量][aks-limit-egress-traffic]。
 
 ### <a name="kubernetes-network-policy"></a>Kubernetes 网络策略
 
@@ -166,6 +164,7 @@ Kubernetes 机密存储在分布式密钥-值存储 etcd 中。 Etcd 存储由 A
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-kured]: node-updates-kured.md
 [aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
@@ -174,3 +173,4 @@ Kubernetes 机密存储在分布式密钥-值存储 etcd 中。 Etcd 存储由 A
 [authorized-ip-ranges]: api-server-authorized-ip-ranges.md
 [private-clusters]: private-clusters.md
 [network-policy]: use-network-policies.md
+[node-image-upgrade]: node-image-upgrade.md

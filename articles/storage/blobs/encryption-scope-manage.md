@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1419dcba2dbf1732760848738c6f50c4168ac545
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a44666d8378b13f7ac8498ae4256507705ffc42b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664976"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723409"
 ---
 # <a name="create-and-manage-encryption-scopes"></a>创建和管理加密范围
 
@@ -27,7 +27,7 @@ ms.locfileid: "110664976"
 
 ## <a name="create-an-encryption-scope"></a>创建加密范围
 
-可以创建受 Microsoft 管理的密钥或客户管理的密钥保护的加密范围，这些密钥存储在 Azure Key Vault 或 Azure Key Vault 托管硬件安全模型 (HSM)（预览版）中。 若要使用客户管理的密钥创建加密范围，必须先创建密钥保管库或托管 HSM，并添加要用于此范围的密钥。 密钥保管库或托管 HSM 必须已启用清除保护，并且必须与存储帐户位于同一区域中。
+可以创建受 Microsoft 管理的密钥或客户管理的密钥保护的加密范围，这些密钥存储在 Azure 密钥保管库或 Azure 密钥保管库托管硬件安全模型 (HSM) 中。 若要使用客户管理的密钥创建加密范围，必须先创建密钥保管库或托管 HSM，并添加要用于此范围的密钥。 密钥保管库或托管 HSM 必须已启用清除保护，并且必须与存储帐户位于同一区域中。
 
 创建加密范围时会自动启用它。 创建加密范围后，可以在创建 blob 时指定它。 还可以在创建容器时指定默认的加密范围，它将自动应用于容器中的所有 blob。
 
@@ -65,7 +65,7 @@ $accountName = "<storage-account>"
 $scopeName1 = "customer1scope"
 
 New-AzStorageEncryptionScope -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -StorageAccountName $accountName `
     -EncryptionScopeName $scopeName1 `
     -StorageEncryption
 ```
@@ -105,7 +105,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ```powershell
 New-AzStorageEncryptionScope -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -StorageAccountName $accountName `
     -EncryptionScopeName $scopeName2 `
     -KeyUri $keyUri `
     -KeyvaultEncryption
@@ -181,7 +181,7 @@ az storage account encryption-scope create \
 要了解如何在密钥保管库或托管 HSM 中使用客户管理的密钥配置 Azure 存储加密，请参阅以下文章：
 
 - [使用存储在 Azure Key Vault 中的客户管理的密钥配置加密](../common/customer-managed-keys-configure-key-vault.md)
-- [使用 Azure 密钥保管库托管 HSM（预览版）中存储的客户管理的密钥配置加密](../common/customer-managed-keys-configure-key-vault-hsm.md)。
+- [使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥配置加密](../common/customer-managed-keys-configure-key-vault-hsm.md)。
 
 要了解有关基础结构加密的详细信息，请参阅[启用基础结构加密，对数据进行双重加密](../common/infrastructure-encryption-enable.md)。
 

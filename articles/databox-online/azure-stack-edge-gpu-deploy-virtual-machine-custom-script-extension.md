@@ -6,22 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 08/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 2d2e7d403ab3e9cc7e8e17de53b6e821ec24caa1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6ed084e26b12851985e2b3b906be1367b7b4a437
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438006"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736773"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>在 Azure Stack Edge Pro 设备的正在运行的 VM 上部署自定义脚本扩展
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-自定义脚本扩展会将脚本或命令下载到 Azure Stack Edge Pro 设备的正在运行的虚拟机上并运行它们。 本文详细介绍如何使用 Azure 资源管理器模板来安装并运行自定义脚本扩展。 
-
-本文适用于 Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 设备。
+自定义脚本扩展会将脚本或命令下载到 Azure Stack Edge Pro 设备的正在运行的虚拟机上并运行它们。 本文详细介绍如何使用 Azure 资源管理器模板来安装并运行自定义脚本扩展。
 
 ## <a name="about-custom-script-extension"></a>关于自定义脚本扩展
 
@@ -72,44 +70,44 @@ If your script is on a local server, then you may still need additional firewall
 
     在以下示例中，端口 2 已连接到 Internet 并用于启用计算网络。 如果你已在前面的步骤中确定不需要 Kubernetes，则可以跳过 Kubernetes 节点 IP 和外部服务 IP 的分配。
 
-    ![在连接到 Internet 的端口上启用计算设置](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
+    ![Azure Stack Edge 设备的“计算”窗格屏幕截图。 突出显示了端口 2 的计算设置。](media/azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension/enable-compute-network-1.png)
 
-## <a name="install-custom-script-extension"></a>安装自定义脚本扩展
+## <a name="install-custom-script-extension&quot;></a>安装自定义脚本扩展
 
 可以根据 VM 的操作系统安装适用于 Windows 或 Linux 的自定义脚本扩展。
  
 
-### <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
+### <a name=&quot;custom-script-extension-for-windows&quot;></a>适用于 Windows 的自定义脚本扩展
 
 若要为设备上运行的 VM 部署适用于 Windows 的自定义脚本扩展，请编辑 `addCSExtWindowsVM.parameters.json` 参数文件，然后部署模板 `addCSextensiontoVM.json`。
 
-#### <a name="edit-parameters-file"></a>编辑参数文件
+#### <a name=&quot;edit-parameters-file&quot;></a>编辑参数文件
 
 文件 `addCSExtWindowsVM.parameters.json` 采用以下参数：
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "vmName": {
-            "value": "<Name of VM>" 
+    &quot;$schema&quot;: &quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#&quot;,
+    &quot;contentVersion&quot;: &quot;1.0.0.0&quot;,
+    &quot;parameters&quot;: {
+        &quot;vmName&quot;: {
+            &quot;value&quot;: &quot;<Name of VM>&quot; 
         },
-        "extensionName": {
-            "value": "<Name of extension>" 
+        &quot;extensionName&quot;: {
+            &quot;value&quot;: &quot;<Name of extension>&quot; 
         },
-        "publisher": {
-            "value": "Microsoft.Compute" 
+        &quot;publisher&quot;: {
+            &quot;value&quot;: &quot;Microsoft.Compute&quot; 
         },
-        "type": {
-            "value": "CustomScriptExtension" 
+        &quot;type&quot;: {
+            &quot;value&quot;: &quot;CustomScriptExtension&quot; 
         },
-        "typeHandlerVersion": {
-            "value": "1.10" 
+        &quot;typeHandlerVersion&quot;: {
+            &quot;value&quot;: &quot;1.10&quot; 
         },
-        "settings": {
-            "value": {
-                "commandToExecute" : "<Command to execute>"
+        &quot;settings&quot;: {
+            &quot;value&quot;: {
+                &quot;commandToExecute&quot; : &quot;<Command to execute>&quot;
             }
         }
     }
@@ -121,41 +119,41 @@ If your script is on a local server, then you may still need additional firewall
 
 ```powershell
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "vmName": {
-            "value": "VM5" 
+    &quot;$schema&quot;: &quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#&quot;,
+    &quot;contentVersion&quot;: &quot;1.0.0.0&quot;,
+    &quot;parameters&quot;: {
+        &quot;vmName&quot;: {
+            &quot;value&quot;: &quot;VM5&quot; 
         },
-        "extensionName": {
-            "value": "CustomScriptExtension" 
+        &quot;extensionName&quot;: {
+            &quot;value&quot;: &quot;CustomScriptExtension&quot; 
         },
-        "publisher": {
-            "value": "Microsoft.Compute" 
+        &quot;publisher&quot;: {
+            &quot;value&quot;: &quot;Microsoft.Compute&quot; 
         },
-        "type": {
-            "value": "CustomScriptExtension" 
+        &quot;type&quot;: {
+            &quot;value&quot;: &quot;CustomScriptExtension&quot; 
         },
-        "typeHandlerVersion": {
-            "value": "1.10" 
+        &quot;typeHandlerVersion&quot;: {
+            &quot;value&quot;: &quot;1.10&quot; 
         },
-        "settings": {
-            "value": {
-                "commandToExecute" : "md C:\\Users\\Public\\Documents\\test"
+        &quot;settings&quot;: {
+            &quot;value&quot;: {
+                &quot;commandToExecute&quot; : &quot;md C:\\Users\\Public\\Documents\\test&quot;
             }
         }
     }
 }
 ```
-#### <a name="deploy-template"></a>部署模板
+#### <a name=&quot;deploy-template&quot;></a>部署模板
 
 部署模板 `addCSextensiontoVM.json`。 此模板将扩展部署到现有 VM。 运行下面的命令：
 
 ```powershell
-$templateFile = "<Path to addCSExtensiontoVM.json file>"
-$templateParameterFile = "<Path to addCSExtWindowsVM.parameters.json file>"
-$RGName = "<Resource group name>"
-New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name "<Deployment name>"
+$templateFile = &quot;<Path to addCSExtensiontoVM.json file>&quot;
+$templateParameterFile = &quot;<Path to addCSExtWindowsVM.parameters.json file>&quot;
+$RGName = &quot;<Resource group name>&quot;
+New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name &quot;<Deployment name>&quot;
 ```
 > [!NOTE]
 > 扩展部署是一个长时间运行的作业，大约需要 10 分钟才能完成。
@@ -163,10 +161,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $tem
 下面是示例输出：
 
 ```powershell
-PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\ExtensionTemplates\addCSExtensiontoVM.json"
-PS C:\WINDOWS\system32> $templateParameterFile = "C:\12-09-2020\ExtensionTemplates\addCSExtWindowsVM.parameters.json"
-PS C:\WINDOWS\system32> $RGName = "myasegpuvm1"
-PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name "deployment7"
+PS C:\WINDOWS\system32> $templateFile = &quot;C:\12-09-2020\ExtensionTemplates\addCSExtensiontoVM.json&quot;
+PS C:\WINDOWS\system32> $templateParameterFile = &quot;C:\12-09-2020\ExtensionTemplates\addCSExtWindowsVM.parameters.json&quot;
+PS C:\WINDOWS\system32> $RGName = &quot;myasegpuvm1&quot;
+PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name &quot;deployment7&quot;
 
 DeploymentName          : deployment7
 ResourceGroupName       : myasegpuvm1
@@ -183,7 +181,7 @@ Parameters              :
                           type             String                     CustomScriptExtension
                           typeHandlerVersion  String                     1.10
                           settings         Object                     {
-                            "commandToExecute": "md C:\\Users\\Public\\Documents\\test"
+                            &quot;commandToExecute&quot;: &quot;md C:\\Users\\Public\\Documents\\test&quot;
                           }
 
 Outputs                 :
@@ -191,7 +189,7 @@ DeploymentDebugLogLevel :
 
 PS C:\WINDOWS\system32>
 ```
-#### <a name="track-deployment"></a>跟踪部署
+#### <a name=&quot;track-deployment&quot;></a>跟踪部署
 
 要查看给定 VM 扩展的部署状态，请运行以下命令： 
 
@@ -213,7 +211,7 @@ ExtensionType           : CustomScriptExtension
 TypeHandlerVersion      : 1.10
 Id                      : /subscriptions/947b3cfd-7a1b-4a90-7cc5-e52caf221332/resourceGroups/myasegpuvm1/providers/Microsoft.Compute/virtualMachines/VM5/extensions/CustomScriptExtension
 PublicSettings          : {
-                            "commandToExecute": "md C:\\Users\\Public\\Documents\\test"
+                            &quot;commandToExecute&quot;: &quot;md C:\\Users\\Public\\Documents\\test&quot;
                           }
 ProtectedSettings       :
 ProvisioningState       : Creating
@@ -239,43 +237,43 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension
 ```cmd
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
-其中，<n> 是一个十进制整数，可以在不同的扩展执行之间更改。 1\.* 值与扩展的 `typeHandlerVersion` 的当前实际值匹配。 例如，此实例中的实际目录为 `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.9\Downloads\0`。 
+其中，n 是一个十进制整数，可以在不同的扩展执行之间更改。 1\.* 值与扩展的 `typeHandlerVersion` 的当前实际值匹配。 例如，此实例中的实际目录为 `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.9\Downloads\0`。 
 
 
 在此实例中，为自定义扩展执行的命令为 `md C:\\Users\\Public\\Documents\\test`。 成功安装扩展后，可以在命令中的指定路径验证是否已在 VM 中创建了目录。 
 
 
-### <a name="custom-script-extension-for-linux"></a>适用于 Linux 的自定义脚本扩展
+### <a name=&quot;custom-script-extension-for-linux&quot;></a>适用于 Linux 的自定义脚本扩展
 
 若要为设备上运行的 VM 部署适用于 Windows 的自定义脚本扩展，请编辑 `addCSExtLinuxVM.parameters.json` 参数文件，然后部署模板 `addCSExtensiontoVM.json`。
 
-#### <a name="edit-parameters-file"></a>编辑参数文件
+#### <a name=&quot;edit-parameters-file&quot;></a>编辑参数文件
 
 文件 `addCSExtLinuxVM.parameters.json` 采用以下参数：
 
 ```powershell
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "vmName": {
-            "value": "<Name of your VM>" 
+    &quot;$schema&quot;: &quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#&quot;,
+    &quot;contentVersion&quot;: &quot;1.0.0.0&quot;,
+    &quot;parameters&quot;: {
+        &quot;vmName&quot;: {
+            &quot;value&quot;: &quot;<Name of your VM>&quot; 
         },
-        "extensionName": {
-            "value": "<Name of your extension>" 
+        &quot;extensionName&quot;: {
+            &quot;value&quot;: &quot;<Name of your extension>&quot; 
         },
-        "publisher": {
-            "value": "Microsoft.Azure.Extensions" 
+        &quot;publisher&quot;: {
+            &quot;value&quot;: &quot;Microsoft.Azure.Extensions&quot; 
         },
-        "type": {
-            "value": "CustomScript" 
+        &quot;type&quot;: {
+            &quot;value&quot;: &quot;CustomScript&quot; 
         },
-        "typeHandlerVersion": {
-            "value": "2.0" 
+        &quot;typeHandlerVersion&quot;: {
+            &quot;value&quot;: &quot;2.0&quot; 
         },
-        "settings": {
-            "value": {
-                "commandToExecute" : "<Command to execute>"
+        &quot;settings&quot;: {
+            &quot;value&quot;: {
+                &quot;commandToExecute&quot; : &quot;<Command to execute>&quot;
             }
         }
     }
@@ -286,10 +284,10 @@ C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 下面是本文中使用过的一个参数文件示例：
 
 ```powershell
-$templateFile = "<Path to addCSExtensionToVM.json file>"
-$templateParameterFile = "<Path to addCSExtLinuxVM.parameters.json file>"
-$RGName = "<Resource group name>"
-New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name "<Deployment name>"
+$templateFile = &quot;<Path to addCSExtensionToVM.json file>&quot;
+$templateParameterFile = &quot;<Path to addCSExtLinuxVM.parameters.json file>&quot;
+$RGName = &quot;<Resource group name>&quot;
+New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name &quot;<Deployment name>&quot;
 ``` 
 
 > [!NOTE]
@@ -298,10 +296,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $tem
 下面是示例输出：
 
 ```powershell
-PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\ExtensionTemplates\addCSExtensionToVM.json"
-PS C:\WINDOWS\system32> $templateParameterFile = "C:\12-09-2020\ExtensionTemplates\addCSExtLinuxVM.parameters.json"
-PS C:\WINDOWS\system32> $RGName = "myasegpuvm1"
-PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name "deployment99"
+PS C:\WINDOWS\system32> $templateFile = &quot;C:\12-09-2020\ExtensionTemplates\addCSExtensionToVM.json&quot;
+PS C:\WINDOWS\system32> $templateParameterFile = &quot;C:\12-09-2020\ExtensionTemplates\addCSExtLinuxVM.parameters.json&quot;
+PS C:\WINDOWS\system32> $RGName = &quot;myasegpuvm1&quot;
+PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name &quot;deployment99&quot;
 
 DeploymentName          : deployment99
 ResourceGroupName       : myasegpuvm1
@@ -318,7 +316,7 @@ Parameters              :
                           type             String                     CustomScript
                           typeHandlerVersion  String                     2.0
                           settings         Object                     {
-                            "commandToExecute": "sudo echo 'some text' >> /home/Administrator/file2.txt"
+                            &quot;commandToExecute&quot;: &quot;sudo echo 'some text' >> /home/Administrator/file2.txt&quot;
                           }
 
 Outputs                 :
@@ -337,7 +335,7 @@ some text
 Administrator@VM6:
 ```
 
-#### <a name="track-deployment-status"></a>跟踪部署状态    
+#### <a name=&quot;track-deployment-status&quot;></a>跟踪部署状态    
     
 模板部署是一个长时间运行的作业。 要检查给定 VM 扩展的部署状态，请打开另一个 PowerShell 会话（以管理员身份运行）。 运行下面的命令： 
 
@@ -359,7 +357,7 @@ ExtensionType           : CustomScriptExtension
 TypeHandlerVersion      : 1.10
 Id                      : /subscriptions/947b3cfd-7a1b-4a90-7cc5-e52caf221332/resourceGroups/myasegpuvm1/providers/Microsoft.Compute/virtualMachines/VM5/extensions/CustomScriptExtension
 PublicSettings          : {
-                            "commandToExecute": "md C:\\Users\\Public\\Documents\\test"
+                            &quot;commandToExecute&quot;: &quot;md C:\\Users\\Public\\Documents\\test&quot;
                           }
 ProtectedSettings       :
 ProvisioningState       : Creating
@@ -377,7 +375,7 @@ PS C:\WINDOWS\system32>
 扩展执行输出将记录到以下文件：`/var/lib/waagent/custom-script/download/0/`。
 
 
-## <a name="remove-custom-script-extension"></a>删除自定义脚本扩展
+## <a name=&quot;remove-custom-script-extension&quot;></a>删除自定义脚本扩展
 
 若要删除自定义脚本扩展，请使用以下命令：
 
@@ -389,7 +387,7 @@ PS C:\WINDOWS\system32>
 PS C:\WINDOWS\system32> Remove-AzureRmVMExtension -ResourceGroupName myasegpuvm1 -VMName VM6 -Name LinuxCustomScriptExtension
 Virtual machine extension removal operation
 This cmdlet will remove the specified virtual machine extension. Do you want to continue?
-[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Yes
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is &quot;Y"): Yes
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 --------- ------------------- ---------- ------------
                          True         OK OK

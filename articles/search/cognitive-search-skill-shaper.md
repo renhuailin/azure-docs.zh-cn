@@ -2,18 +2,17 @@
 title: 整形程序认知技能
 titleSuffix: Azure Cognitive Search
 description: 在 Azure 认知搜索中的 AI 扩充管道中，从非结构化数据中提取元数据和结构化信息，并将其整形为复杂类型。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 81eb0e60befc544a6c3bee8f04e901b6a5e472bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: 8713cd25f30ed4a09a92dffacc5ec3e8d1cb424a
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85560813"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862020"
 ---
 # <a name="shaper-cognitive-skill"></a>整形程序认知技能
 
@@ -24,7 +23,7 @@ ms.locfileid: "85560813"
 输出名称始终为“output”。 管道可在内部映射不同的名称，例如下图所示的“analyzedText”，但“整形程序”技能本身会在响应中返回“output”。 如果正在调试大量文档并发现存在命名差异，或者要生成自定义技能并自行构建响应，这一点非常重要。
 
 > [!NOTE]
-> “整形程序”技能未绑定到认知服务 API，使用它无需付费。 但是，你仍然应该 [附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖 **免费** 资源选项，该选项限制你每天进行少量的每日扩充。
+> 此技能不限于认知服务。 它不可计费，并且没有认知服务密钥要求。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill

@@ -7,12 +7,12 @@ ms.date: 03/29/2021
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: f6bec32fa928e840569ed95c35a056db91ea9737
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 46ccfd04722cb9333a8f6e546505ed1e10f657af
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077986"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752445"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>将应用服务或 Azure Functions 应用配置为使用 Google 登录
 
@@ -44,8 +44,9 @@ ms.locfileid: "106077986"
     
     这些选项可确定应用程序如何响应未经身份验证的请求，默认选择会将所有请求重定向到用此新提供程序登录。 你现在可以更改自定义此行为，也可以稍后通过选择“身份验证”设置旁边的“编辑”，在主要“身份验证”屏幕上调整这些设置。   若要详细了解这些选项，请参阅[身份验证流](overview-authentication-authorization.md#authentication-flow)。
 
-1. （可选）单击“”下一步：作用域并添加应用程序所需的任何作用域。 登录时，系统将为基于浏览器的流发出这些请求。
 1. 单击“添加”。
+
+> [注意] 若要添加范围：可以在提供程序的注册门户中定义应用程序拥有哪些权限。 应用可以在登录时请求利用这些权限的范围。
 
 现在，可以在应用中使用 Google 进行身份验证了。 该提供程序将在“身份验证”屏幕上列出。 在该屏幕上，你可以编辑或删除此提供程序配置。
 

@@ -10,12 +10,12 @@ ms.date: 05/08/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 85d42ee9eca2848766e97cd1513762caad714c73
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 4635848032d60c056b525d4ece0d50ad2eaf6039
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486420"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396761"
 ---
 # <a name="create-develop-and-maintain-synapse-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse 笔记本
 
@@ -461,6 +461,83 @@ df = spark.read.option("header", "true") \
 你可以直接访问主存储帐户中的数据。 无需提供密钥。 在数据资源管理器中，右键单击某个文件，然后选择“新建笔记本”以查看自动生成了数据提取器的新笔记本。
 
 ![data-to-cell](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
+
+## <a name="ipython-widgets"></a>IPython 小组件
+
+
+# <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
+
+不支持。
+
+# <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
+
+小组件是事件化的 python 对象，在浏览器中具有表示形式，通常作为控件（例如滑块、文本框等）提供。IPython 小组件仅适用于 Python 环境，在其他语言（例如 Scala、SQL、C#）中尚不受支持。 
+
+### <a name="to-use-ipython-widget"></a>使用 IPython 小组件
+1. 需要首先导入 `ipywidgets` 模块才能使用 Jupyter 小组件框架。
+   ```python
+   import ipywidgets as widgets
+   ```
+2. 你可以使用顶级 `display` 函数来呈现小部件，或者在代码单元格的最后一行保留 widget 类型的表达式。
+   ```python
+   slider = widgets.IntSlider()
+   display(slider)
+   ```
+
+   ```python
+   slider = widgets.IntSlider()
+   slider
+   ```
+   
+3. 运行单元格，小组件将显示在输出区域。
+
+   ![ipython 小组件滑块](./media/apache-spark-development-using-notebooks/ipython-widgets-slider.png)
+
+4. 你可以使用多个 `display()` 调用来多次呈现同一小组件实例，但它们会相互保持同步。
+
+   ```python
+   slider = widgets.IntSlider()
+   display(slider)
+   display(slider)
+   ```
+
+   ![ipython 小组件滑块](./media/apache-spark-development-using-notebooks/ipython-widgets-multiple-sliders.png)
+
+5. 若要呈现两个彼此独立的小组件，请创建两个小组件实例：
+
+   ```python
+   slider1 = widgets.IntSlider()
+   slider2 = widgets.IntSlider()
+   display(slider1)
+   display(slider2)
+   ```
+
+
+### <a name="supported-widgets"></a>支持的小组件
+
+|小组件类型|小组件|
+|--|--|
+|数字小组件|IntSlider、FloatSlider、FloatLogSlider、IntRangeSlider、FloatRangeSlider、IntProgress、FloatProgress、BoundedIntText、BoundedFloatText、IntText、FloatText|
+|布尔小组件|ToggleButton、Checkbox、Valid|
+|选择小组件|Dropdown、RadioButtons、Select、SelectionSlider、SelectionRangeSlider、ToggleButtons、SelectMultiple|
+|字符串小组件|Text、TextArea、Combobox、Password、Label、HTML、HTML Math、Image、Button|
+|播放（动画）小组件|DatePicker、ColorPicker、Controller|
+|容器/布局小组件|Box、HBox、VBox、GridBox、Accordion、Tabs、Stacked|
+
+
+### <a name="know-issue"></a>已知问题
+
+尚不支持以下小组件，可以遵循以下解决方法：
+
+|功能|解决方法|
+|--|--|
+|`Output` 小组件|可以改用 `print()` 函数将文本写入 stdout。|
+|`widgets.jslink()`|可以使用 `widgets.link()` 函数链接两个相似的小组件。|
+|`FileUpload` 小组件| 尚不支持。|
+
+
+---
+
 
 ## <a name="save-notebooks"></a>保存笔记本
 

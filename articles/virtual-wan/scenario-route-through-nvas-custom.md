@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4eba226fbbe3ef6d9791f2f098a24fdf217debaa
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 84cb22956b682a9acb23f4f391faf046eccc47a7
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110575367"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378135"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>方案：使用自定义设置通过 NVA 路由流量
 
@@ -177,6 +177,7 @@ ms.locfileid: "110575367"
    > * 门户用户必须对连接 (VPN/ER/P2S/VNet) 启用“传播到默认路由”才能使 0.0.0.0/0 路由生效。
    > * PS/CLI/REST 用户必须将“enableinternetsecurity”标志设置为 true 才能使 0.0.0.0/0 路由生效。
    > * 如果某个包含下一个跃点 IP 的路由指定为公共 IP 地址或 0.0.0.0/0 (Internet)，则虚拟网络连接不支持“多重/唯一”下一个跃点 IP 指向支路 VNet 中的同一个网络虚拟设备
+   > * 如果将 0.0.0.0/0 配置为虚拟网络连接上的静态路由，该路由将应用于所有流量，包括辐射网络内的资源。 这意味着所有流量都将转发到静态路由的下一个跃点 IP 地址（NVA 专用 IP）。 因此，在具有 0.0.0.0/0 路由的部署中，在辐射虚拟网络连接上配置了下一个跃点 NVA IP 地址，若要直接访问与 NVA 相同的虚拟网络中的工作负载（即流量不经过 NVA），请在辐射虚拟网络连接上指定 /32 路由。 例如，如果要直接访问 10.1.3.1，请在辐射虚拟网络连接上指定 10.1.3.1/32 下一个跃点 10.1.3.1。
 
 ## <a name="next-steps"></a>后续步骤
 

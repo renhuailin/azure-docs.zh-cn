@@ -1,32 +1,32 @@
 ---
-title: 使用 Azure 存储模拟器进行开发和测试
-description: Azure 存储模拟器为开发和测试 Azure 存储应用程序提供了免费的本地开发环境。
+title: 使用 Azure 存储模拟器进行开发和测试（已弃用）
+description: Azure 存储模拟器（已弃用）为开发和测试 Azure 存储应用程序提供了免费的本地开发环境。
 author: twooley
 ms.author: twooley
-ms.date: 07/16/2020
+ms.date: 07/14/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 812694ef96e60a9cc52dd9ab94408e3f90fd6d93
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2ff639cd19a97d2e3a5ef730c774f8c967cfa6c3
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677225"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203794"
 ---
-# <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
+# <a name="use-the-azure-storage-emulator-for-development-and-testing-deprecated"></a>使用 Azure 存储模拟器进行开发和测试（已弃用）
 
 Microsoft Azure 存储模拟器工具可以针对本地开发目的模拟 Azure Blob、队列和表服务。 可以在本地针对存储服务测试应用程序，而无需创建 Azure 订阅且不会产生任何费用。 如果对应用程序在模拟器中的工作情况感到满意，则可以切换到在云中使用 Azure 存储帐户。
 
 > [!IMPORTANT]
-> 不再积极开发 Azure 存储模拟器。 [**Azurite**](storage-use-azurite.md) 是未来的存储模拟器平台。 Azurite 取代了 Azure 存储仿真器。 Azurite 将持续更新，以支持最新版本的 Azure 存储 API。 有关详细信息，请参阅[“使用 Azurite 模拟器进行本地 Azure 存储开发”](storage-use-azurite.md)。
+> 现已弃用 Azure 存储模拟器。 Microsoft 建议使用 [Azurite](storage-use-azurite.md) 模拟器进行 Azure 存储的本地开发。 Azurite 取代了 Azure 存储仿真器。 Azurite 将持续更新，以支持最新版本的 Azure 存储 API。 有关详细信息，请参阅[“使用 Azurite 模拟器进行本地 Azure 存储开发”](storage-use-azurite.md)。
 
 ## <a name="get-the-storage-emulator"></a>获取存储模拟器
 
 存储模拟器作为 [Microsoft Azure SDK](https://azure.microsoft.com/downloads/) 的一部分提供。 此外，还可使用[独立安装程序](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)（直接下载）来安装存储模拟器。 若要安装存储模拟器，必须在计算机上拥有管理权限。
 
-存储模拟器目前仅在 Windows 上运行。 如果需要使用 Linux 的存储模拟器，一个选择是使用由社区维护的开源存储模拟器 [Azurite](https://github.com/azure/azurite)。
+存储模拟器目前仅在 Windows 上运行。 对于 Linux 上的模拟，请使用 [Azurite](https://github.com/azure/azurite) 模拟器。
 
 > [!NOTE]
 > 在一个版本的存储模拟器中创建的数据不保证在使用不同版本时可以访问。 如果需要长期保存数据，建议将该数据存储在 Azure 存储帐户中，而不是在存储模拟器中。

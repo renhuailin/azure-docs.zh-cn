@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 810a62dee277453d4cc2f41c72d0868549d711cf
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: b11fff95543abb4fc74b2087deffe56786998e28
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653213"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179654"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob 存储的访问层 - 热、冷和存档
 
@@ -75,7 +75,7 @@ GPv1 和 GPv2 帐户的定价结构不同，客户在决定使用 GPv2 帐户之
 
 ## <a name="archive-access-tier"></a>存档访问层
 
-与热层和冷层相比，存档访问层的存储成本最低，但数据检索成本较高。 存档层中的数据必须至少保留 180 天，否则需要支付提前删除费。 存档层中数据的检索可能需要几个小时，具体取决于指定的解除冻结优先级。 对于小型对象，优先级高的解除冻结可能会在 1 小时内从存档中检索到对象。 若要了解详细信息，请参阅[从存档层解冻 Blob 数据](storage-blob-rehydration.md)。
+与热层和冷层相比，存档访问层的存储成本最低，但数据检索成本较高。 存档层中的数据必须至少保留 180 天，否则需要支付提前删除费。 存档层中数据的检索可能需要几个小时，具体取决于指定的解除冻结优先级。 对于小型对象，优先级高的解除冻结可能会在 1 小时内从存档中检索到对象。 请参阅[存档层中的 Blob 解除冻结概述](archive-rehydrate-overview.md)以了解更多信息。
 
 如果 blob 位于存档存储中，则 blob 数据处于脱机状态，不能读取或修改。 若要在存档中读取或下载 Blob，必须首先将其解除冻结到联机层。 不能创建存档存储中 Blob 的快照。 但是，Blob 元数据会保持联机和可用状态，因而可列出 Blob 及其属性、元数据和 blob 索引标记。 不允许设置或修改存档中的 blob 元数据。 但是，可以设置和修改 Blob 索引标记。 对于存档中的 Blob，仅以下操作有效：[获取 Blob 属性](/rest/api/storageservices/get-blob-properties)、[获取 Blob 元数据](/rest/api/storageservices/get-blob-metadata)、[设置 Blob 标记](/rest/api/storageservices/set-blob-tags)、[获取 Blob 标记](/rest/api/storageservices/get-blob-tags)、[按标记查找 Blob](/rest/api/storageservices/find-blobs-by-tags)、[列出 Blob](/rest/api/storageservices/list-blobs)、[设置 Blob 层](/rest/api/storageservices/set-blob-tier)、[复制 Blob](/rest/api/storageservices/copy-blob) 和[删除 Blob](/rest/api/storageservices/delete-blob)。
 
@@ -122,7 +122,7 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，这些策略
 
 将 blob 移到更冷的层（热->冷、热->存档或冷->存档）时，操作按目标层写入操作计费，具体说来就是按目标层的写入操作次数（以 10,000 次为单位）和数据写入量（以 GB 为单位）收费。
 
-将 Blob 移到更暖的层（存档->冷、存档->热或冷->热）时，操作按从源层读取计费，具体说来就是按源层的读取操作次数（以 10,000 次为单位）和数据检索量（以 GB 为单位）收费。 也可能还会收取从冷层或存档层移出的任何 Blob 的[提前删除](#cool-and-archive-early-deletion)费用。 [将数据从存档层中解除冻结](storage-blob-rehydration.md)需要一段时间，而数据会按存档价格计费，直到将数据以联机方式还原并将 blob 层更改为热层或冷层为止。
+将 Blob 移到更暖的层（存档->冷、存档->热或冷->热）时，操作按从源层读取计费，具体说来就是按源层的读取操作次数（以 10,000 次为单位）和数据检索量（以 GB 为单位）收费。 也可能还会收取从冷层或存档层移出的任何 Blob 的[提前删除](#cool-and-archive-early-deletion)费用。 [将数据从存档层中解除冻结](archive-rehydrate-overview.md)需要一段时间，而数据会按存档价格计费，直到将数据以联机方式还原并将 blob 层更改为热层或冷层为止。
 
 下表总结了如何对层更改进行计费。
 
@@ -155,7 +155,7 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，这些策略
 
 <sup>1</sup> GPv2 帐户冷层中的对象的最短保留期为 30 天。 Blob 存储帐户的冷层没有最短保留期。
 
-<sup>2</sup> 存档存储目前支持两种解除冻结优先级：“高”和“标准”，它们带来不同的检索延迟和成本。 有关详细信息，请参阅[从存档层解冻 Blob 数据](storage-blob-rehydration.md)。
+<sup>2</sup> 存档存储目前支持两种解除冻结优先级：“高”和“标准”，它们带来不同的检索延迟和成本。 有关详细信息，请参阅[存档层中的 Blob 解除冻结概述](archive-rehydrate-overview.md)。
 
 > [!NOTE]
 > Blob 存储帐户支持与常规用途 v2 存储帐户相同的性能和可伸缩性目标。 有关详细信息，请参阅 [Blob 存储可伸缩性和性能目标](scalability-targets.md)。

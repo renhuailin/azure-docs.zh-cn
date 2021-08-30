@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/23/2021
 ms.author: duau
-ms.openlocfilehash: 62f51922399a300b9ed803c3ee2d380dcab615b8
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 672fac2b33ef1d8fd9be1948d0c7da332f8ce43b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987517"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733860"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>关于 ExpressRoute 虚拟网络网关
 
@@ -31,23 +31,50 @@ ms.locfileid: "107987517"
 ## <a name="gateway-skus"></a><a name="gwsku"></a>网关 SKU
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-如果想要将网关升级为功能更强大的网关 SKU，在大多数情况下，可以使用“Resize-AzVirtualNetworkGateway”PowerShell cmdlet。 此方法适用于升级到 Standard 和 HighPerformance SKU。 但是，若要升级到 UltraPerformance SKU，需要重新创建网关。 重新创建网关会导致停机。
+如果想要将网关升级为功能更强大的网关 SKU，在大多数情况下，可以使用“Resize-AzVirtualNetworkGateway”PowerShell cmdlet。 此方法适用于升级到 Standard 和 HighPerformance SKU。 但是，若要将非可用性区域 (AZ) 网关升级到 UltraPerformance SKU，需要重新创建网关。 重新创建网关会导致停机。 无需删除并重新创建网关来升级已启用 AZ 的 SKU。
+### <a name="feature-support-by-gateway-sku"></a><a name="gatewayfeaturesupport"></a>网关 SKU 的功能支持
+下表显示了每种网关类型支持的功能。
+
+|**网关 SKU**|**VPN 网关和 ExpressRoute 共存**|**FastPath**|**最大线路连接数**|
+| --- | --- | --- | --- |
+|**标准 SKU/ErGw1AZ**|是|否|4|
+|**高 Perf SKU/ERGw2Az**|是|否|8
+|**超高性能 SKU/ErGw3AZ**|是|是|16
 
 ### <a name="estimated-performances-by-gateway-sku"></a><a name="aggthroughput"></a>预估性能（按网关 SKU）
-下表显示网关类型和估计性能。 此表适用于 Resource Manager 与经典部署模型。
+下表显示网关类型和估计性能规模数。 这些数字派生自以下测试条件，且表示最大支持限制。 实际性能可能会有所不同，具体取决于流量复制测试条件的紧密程度。
+
+### <a name="testing-conditions"></a>测试条件
+##### <a name="standardergw1az"></a>**标准/ERGw1Az** #####
+
+- 线路带宽：1Gbps
+- 网关播发的路由数：500
+- 已学习的路由数：4,000
+##### <a name="high-performanceergw2az"></a>**高性能/ERGw2Az** #####
+
+- 线路带宽：1Gbps
+- 网关播发的路由数：500
+- 已学习的路由数：9,500
+##### <a name="ultra-performanceergw3az"></a>**超高性能/ErGw3Az** #####
+
+- 线路带宽：1Gbps
+- 网关播发的路由数：500
+- 已学习的路由数：9,500
+
+ 此表适用于 Resource Manager 与经典部署模型。
+ 
+|**网关 SKU**|**每秒连接数**|**每秒兆位**|**每秒的数据包数**|**虚拟网络中受支持的 VM 数量**|
+| --- | --- | --- | --- | --- |
+|**标准/ERGw1Az**|7,000|1,000|100,000|2,000|
+|**高性能/ERGw2Az**|14,000|2,000|250,000|4,500|
+|**超高性能/ErGw3Az**|16,000|10,000|1,000,000|11,000|
 
 > [!IMPORTANT]
 > 应用程序性能取决于多种因素，例如端到端延迟和应用程序打开的流量数。 表中的数字表示应用程序在理想环境下理论上可达到的上限。
->
->
 
-> [!NOTE]
+>[!NOTE]
 > 所有网关可从同一对等互连位置连接到同一虚拟网络的 ExpressRoute 线路的最大数目为 4。
 >
->
-
-[!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
-
 
 ## <a name="gateway-subnet"></a><a name="gwsub"></a>网关子网
 

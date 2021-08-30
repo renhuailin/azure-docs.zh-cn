@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 08/20/2020
+ms.date: 07/27/2021
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f1eb7a5b4697801775d23091c610ab594b0b27ec
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 065a06955adc9c157134e138a25aaee9f54f5bea
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813373"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862113"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 
-了解 [Azure 机器学习](overview-what-is-azure-ml.md)的体系结构和概念。  本文使你对组件以及它们如何协同工作以帮助你构建、部署和维护机器学习模型的过程有一个概要了解。
+了解 [Azure 机器学习](overview-what-is-azure-machine-learning.md)的体系结构和概念。  本文使你对组件以及它们如何协同工作以帮助你构建、部署和维护机器学习模型的过程有一个概要了解。
 
 ## <a name="workspace"></a><a name="workspace"></a> 工作区
 
@@ -197,7 +197,7 @@ Azure 机器学习与框架无关。 创建模型时，可以使用任何流行�
 
 [工作区](#workspace) > **终结点**
 
-终结点是模型在 Web 服务（可托管于云中）中的实例化，或用于集成设备部署的 IoT 模块。
+终结点是模型到可在云中托管的 Web 服务的实例化。
 
 #### <a name="web-service-endpoint"></a>Web 服务终结点
 
@@ -232,13 +232,7 @@ Azure 机器学习与框架无关。 创建模型时，可以使用任何流行�
 管道终结点是已发布管道的集合。 通过这种逻辑组织，你可以使用同一终结点管理和调用多个管道。 管道终结点中的每个已发布管道都经过版本控制。 你可以为终结点选择默认管道，也可以在 REST 调用中指定版本。
  
 
-#### <a name="iot-module-endpoints"></a>IoT 模块终结点
 
-已部署 IoT 模块终结点是一个 Docker 容器，其中包含模型和关联脚本或应用程序，以及任何其他依赖项。 在边缘设备上使用 Azure IoT Edge 部署这些模块。
-
-如果已启用监视，Azure 会从 Azure IoT Edge 模块内的模型中收集遥测数据。 遥测数据仅供你访问，并且存储在存储帐户实例中。
-
-Azure IoT Edge 将确保模块正在运行并且监视托管它的设备。 
 ## <a name="automation"></a>自动化
 
 ### <a name="azure-machine-learning-cli"></a>Azure 机器学习 CLI 
@@ -261,7 +255,7 @@ Azure 机器学习提供以下监视和日志记录功能：
    * [使用 MLflow 跟踪试验](how-to-use-mlflow.md)
    * [使用 TensorBoard 将运行可视化](how-to-monitor-tensorboard.md)
 * 对于管理员，可使用 Azure Monitor 监视工作区、相关 Azure 资源及事件（例如资源创建和删除）的相关信息。 有关详细信息，请参阅[如何监视 Azure 机器学习](monitor-azure-machine-learning.md)。
-* 对于 DevOps 或 MLOps，可监视部署为 Web 服务的模型或 IoT Edge 模块生成的信息，以确定部署问题并收集提交给该服务的数据 。 有关详细信息，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。
+* 对于 DevOps 或 MLOps，可监视作为 Web 服务部署的模型生成的信息，以识别部署问题并收集提交给服务的数据 。 有关详细信息，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。
 
 ## <a name="interacting-with-your-workspace"></a>与工作区交互
 
@@ -283,15 +277,13 @@ Azure 机器学习提供以下监视和日志记录功能：
 > 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 +  使用[适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 来与任何 Python 环境中的服务交互。
-+ 使用[适用于 R 的 Azure 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)（预览版）与任何 R 环境中的服务交互。
 + 使用 [Azure 机器学习设计器](concept-designer.md)执行工作流步骤，无需编写代码。 
 + 使用 [Azure 机器学习 CLI](./reference-azure-machine-learning-cli.md) 实现自动化。
-+ [多模型解决方案加速器](https://aka.ms/many-models)（预览版）在 Azure 机器学习的基础上构建，使你能够训练、操作和管理数百甚至数千个机器学习模型。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要开始使用 Azure 机器学习，请参阅：
 
-* [什么是 Azure 机器学习？](overview-what-is-azure-ml.md)
+* [什么是 Azure 机器学习？](overview-what-is-azure-machine-learning.md)
 * [创建 Azure 机器学习工作区](how-to-manage-workspace.md)
 * [教程（第 1 部分）：训练模型](tutorial-train-models-with-aml.md)

@@ -5,16 +5,16 @@ description: 如何使用 Azure 门户、PowerShell 或 Azure CLI 创建 Azure �
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 0100bd0e0eb0ee6dbd802ad1cf5df002a706c12c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 442eef44f727ce7ef6059fa0bdfbf440c0345a09
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676156"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727145"
 ---
 # <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 若要创建 Azure 文件共享，需要回答有关你将如何使用它的三个问题：
@@ -31,6 +31,13 @@ ms.locfileid: "110676156"
     在本地和区域冗余存储帐户中，Azure 文件共享最多可以实现 100 TiB 的跨越，但在异地冗余和异地区域冗余存储帐户上，Azure 文件共享最多只能实现 5 TiB 的跨越。 
 
 有关这三个选项的详细信息，请参阅[规划 Azure 文件存储部署](storage-files-planning.md)。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="prerequisites"></a>先决条件
 - 本文假设已创建一个 Azure 订阅。 如果还没有订阅，则请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -163,6 +170,37 @@ az storage account create \
 
 ---
 
+### <a name="enable-large-files-shares-on-an-existing-account"></a>在现有帐户中启用大型文件共享
+在现有帐户上创建 Azure 文件共享之前，如果尚未启用大型文件共享，则可能需要将其启用。 可以升级具有 LRS 和 ZRS 或 ZRS 的标准存储帐户以支持大型文件共享。 如果具有 GRS、GZRS、RA-GRS 或 RA-GZRS 帐户，则需要将其转换为 LRS 帐户，然后再继续。
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+1. 打开 [Azure 门户](https://portal.azure.com)，并导航到要在其中启用大型文件共享的存储帐户。
+1. 打开存储帐户，然后选择“文件共享”。
+1. 选择“大型文件共享”对应的“已启用”，然后选择“保存”。  
+1. 依次选择“概述”、“刷新”。 
+1.   选择“共享容量”，然后选择“100 TiB”和“保存”。
+
+    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="Azure 存储帐户和突出显示了 100 TiB 共享的“文件共享”边栏选项卡的屏幕截图。":::
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+若要在现有帐户中启用大型文件共享，请使用以下命令。 请将 `<yourStorageAccountName>` 和 `<yourResourceGroup>` 替换为自己的信息。
+
+```powershell
+Set-AzStorageAccount `
+    -ResourceGroupName <yourResourceGroup> `
+    -Name <yourStorageAccountName> `
+    -EnableLargeFileShare
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+若要在现有帐户中启用大型文件共享，请使用以下命令。 请将 `<yourStorageAccountName>` 和 `<yourResourceGroup>` 替换为自己的信息。
+
+```azurecli-interactive
+az storage account update --name <yourStorageAccountName> -g <yourResourceGroup> --enable-large-file-share
+```
+
+---
+
 ## <a name="create-a-file-share"></a>创建文件共享
 创建存储帐户后，剩下的操作就是创建文件共享。 无论使用的是高级文件共享还是标准文件共享，此过程大部分都是相同的。 应考虑以下差异。
 
@@ -173,7 +211,7 @@ az storage account create \
 
 “quota”属性表示高级和标准文件共享之间略有不同：
 
-- 标准文件共享是 Azure 文件共享的上限，最终用户不能超越此上限。 如果未指定配额，则标准文件共享最多可以涵盖 100 TiB 的空间（如果未为存储帐户设置大型文件共享属性，则最多可以涵盖 5 TiB）。
+- 标准文件共享是 Azure 文件共享的上限，最终用户不能超越此上限。 如果未指定配额，则标准文件共享最多可以涵盖 100 TiB 的空间；如果未为存储帐户设置大型文件共享属性，则最多可以涵盖 5 TiB。 如果未创建启用了大型文件共享的存储帐户，请参阅[在现有帐户中启用大型文件共享](#enable-large-files-shares-on-an-existing-account)以了解如何启用 100 TiB 文件共享。 收到的性能 (IOPs/Mbps) 取决于你设置的配额。
 
 - 对于高级文件共享，配额表示预配的大小。 预配的大小是将要对你计费的数量，与实际使用情况无关。 有关如何规划高级文件共享的详细信息，请参阅[预配高级文件共享](understanding-billing.md#provisioned-model)。
 
@@ -185,7 +223,7 @@ az storage account create \
 此时屏幕上应会显示“新建文件共享”边栏选项卡。 填写“新建文件共享”边栏选项卡中的字段以创建文件共享：
 
 - **名称**：要创建的文件共享的名称。
-- **配额**：标准文件共享的文件共享配额；高级文件共享的文件共享预配大小。
+- **配额**：标准文件共享的文件共享配额；高级文件共享的文件共享预配大小。 对于标准文件共享，配额还决定了获取的性能。
 - **层**：为文件共享选择的层。 此字段仅适用于常规用途 (GPv2) 存储帐户。 可以选择事务优化层、热层或冷层。 可以随时更改共享层。 建议在迁移过程中选择可选的最热层，以最大程度减少事务费用，然后在迁移完成后切换到较低的层（如果需要）。
 
 选择“创建”以完成新共享的创建。
@@ -272,6 +310,45 @@ az storage share-rm update \
     --storage-account $storageAccountName \
     --name $shareName \
     --access-tier "Cool"
+```
+
+---
+
+### <a name="expand-existing-file-shares"></a>扩展现有的文件共享
+如果在现有存储帐户上启用大型文件共享，必须扩展该存储帐户中的现有文件共享，才能利用增加的容量和规模。 
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+1. 在存储帐户中选择“文件共享”。
+1. 右键单击文件共享并选择“配额”。
+1. 输入所需的新大小，然后选择“确定”。
+
+![显示了现有文件共享配额的 Azure 门户 UI](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+若要将配额设置为最大大小，请使用以下命令。 请将 `<YourResourceGroupName>`、`<YourStorageAccountName>` 和 `<YourStorageAccountFileShareName>` 替换为自己的信息。
+
+```powershell
+$resourceGroupName = "<YourResourceGroupName>"
+$storageAccountName = "<YourStorageAccountName>"
+$shareName="<YourStorageAccountFileShareName>"
+
+# update quota
+Set-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -QuotaGiB 102400
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+若要将配额设置为最大大小，请使用以下命令。 请将 `<yourResourceGroupName>`、`<yourStorageAccountName>` 和 `<yourFileShareName>` 替换为自己的信息。
+
+```azurecli-interactive
+az storage share-rm update \
+    --resource-group <yourResourceGroupName> \
+    --storage-account <yourStorageAccountName> \
+    --name <yourFileShareName> \
+    --quota 102400
 ```
 
 ---

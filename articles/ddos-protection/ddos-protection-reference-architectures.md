@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: ddb42dde242bb9c3f33a6dc3f8f52a147367f295
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e3710613b0a2622b20329ed383d5f818b01f6fee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139104"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744641"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS 防护参考体系结构
 
@@ -66,7 +66,7 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 
 ![保护本地资源](./media/reference-architectures/ddos-on-prem.png)
 
-如果你的 Web 应用程序从 Internet 接收流量，则可以将 Web 应用程序托管在应用程序网关之后，然后使用 WAF 为其防范第 7 层 Web 攻击（例如 SQL 注入和 Slowloris）。 应用程序的后端源将位于本地环境中，该环境通过 VPN 进行连接。 
+如果你的 Web 应用程序从 Internet 接收流量，则可以将 Web 应用程序托管在应用程序网关之后，然后使用 WAF 为其防范第 7 层 Web 攻击（例如 SQL 注入）。 应用程序的后端源将位于本地环境中，该环境通过 VPN 进行连接。 
 
 本地环境中的后端资源不会公开到公共 Internet。 只有 AppGW/WAF 公共 IP 会向 Internet 公开，而应用程序的 DNS 名称会映射到该公共 IP 地址。 
 

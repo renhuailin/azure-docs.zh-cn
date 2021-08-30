@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 02/01/2021
-ms.openlocfilehash: b3403558cbc07d152bbae7e901464a8aa4a8e4d2
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 06/23/2021
+ms.openlocfilehash: c3f6046617458606d13aab243c96ef24246714fd
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812761"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090306"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>使用客户管理的密钥进行 Azure SQL 透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -28,11 +28,15 @@ Azure SQL [透明数据加密 (TDE)](/sql/relational-databases/security/encrypti
 
 对于 Azure SQL 数据库和 Azure Synapse Analytics，TDE 保护器在服务器级别设置，并由该服务器关联的所有已加密数据库继承。 对于 Azure SQL 托管实例，TDE 保护器是在实例级别设置的，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”在整个文档中指的是 SQL 数据库和 Azure Synapse 中的服务器和 SQL 托管实例中的托管实例。
 
+> [!NOTE]
+> 本文适用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics（专用 SQL 池 [以前称为 SQL DW]）。 有关 Synapse 工作区内专用 SQL 池的透明数据加密的文档，请参阅 [Azure Synapse Analytics 加密](../../synapse-analytics/security/workspaces-encryption.md)。
+
 > [!IMPORTANT]
 > 对于当前正在使用服务托管的 TDE 并想要开始使用客户管理的 TDE 的用户，在切换过程中数据将保持加密状态，且不会造成停机，也不需要重新加密数据库文件。 从服务托管的密钥切换到客户管理的密钥只需重新加密 DEK，此操作非常快捷且可在线完成。
 
 > [!NOTE]
 > <a id="doubleencryption"></a> 为了向 Azure SQL 客户提供两层静态数据的加密，将推出使用平台托管密钥的基础结构加密（使用 AES-256 加密算法）。它使用客户托管的密钥额外添加一层与 TDE 配合使用的静态数据加密，该加密方式现已可用。 对于 Azure SQL 数据库和托管实例，当启动基础结构加密时，将对所有数据库（包括主数据库和其他系统数据库）进行加密。 目前，客户必须请求访问权限才能使用此功能。 如果你对此功能感兴趣，请联系 AzureSQLDoubleEncryptionAtRest@service.microsoft.com。
+
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>客户管理的 TDE 的优势
 

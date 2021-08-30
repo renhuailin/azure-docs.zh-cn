@@ -6,20 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 76e1f80e1c6e1d977521724959db6ad36694f238
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 80337c4953182e903655eddb360fc8b49a88ca59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110684114"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732928"
 ---
 # <a name="install-gpu-extension-on-vms-for-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备的 VM 上安装 GPU 扩展
 
 [!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
-本文介绍如何安装 GPU 驱动程序扩展，以在 Azure Stack Edge 设备上运行的 GPU VM 上安装适当的 Nvidia 驱动程序。 本文介绍了在 Windows 和 Linux VM 上安装 GPU 扩展的步骤。
+本文介绍如何安装 GPU 驱动程序扩展，以在 Azure Stack Edge 设备上运行的 GPU VM 上安装适当的 Nvidia 驱动程序。 本文介绍在 Windows 和 Linux VM 上使用 Azure 资源管理器模板安装 GPU 扩展的安装步骤。
+
+> [!NOTE]
+> 在 Azure 门户中，可以在 VM 创建期间或部署 VM 之后安装 GPU 扩展。 有关步骤和要求，请参阅[部署 GPU 虚拟机](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -32,11 +35,9 @@ ms.locfileid: "110684114"
 
         在下面的示例中，端口 2 已连接到 Internet 并用于启用计算网络。 如果未在环境中部署 Kubernetes，可以跳过 Kubernetes 节点 IP 和外部服务 IP 分配。
 
-        ![在连接到 Internet 的端口上启用计算设置](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
+        ![Azure Stack Edge 设备的“计算”窗格屏幕截图。 突出显示了端口 2 的计算设置。](media/azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension/enable-compute-network-1.png)
 1. [将 GPU 扩展模板和参数文件下载](https://aka.ms/ase-vm-templates)到客户端计算机。 将它解压缩到将用作工作目录的那个目录中。
 1. 验证用于访问设备的客户端是否仍通过 Azure PowerShell 连接到 Azure 资源管理器。 与 Azure 资源管理器的连接每 1.5 小时或每当 Azure Stack Edge 设备重启时过期一次。 如果发生这种情况，所执行的任何 cmdlet 都将返回错误消息，表示不再连接到 Azure。 需重新登录。 有关详细说明，请参阅[连接到 Azure Stack Edge 设备上的 Azure 资源管理器](azure-stack-edge-gpu-connect-resource-manager.md)。
-
-
 
 ## <a name="edit-parameters-file"></a>编辑参数文件
 
@@ -391,6 +392,9 @@ PS C:\Program Files\NVIDIA Corporation\NVSMI>
 
 有关详细信息，请参阅[适用于 Windows 的 Nvidia GPU 驱动程序扩展](../virtual-machines/extensions/hpccompute-gpu-windows.md)。
 
+> [!NOTE]
+> 安装完 GPU 驱动程序和 GPU 扩展后，不再需要使用具有 Internet 访问权限的端口进行计算。
+
 ### <a name="linux"></a>[Linux](#tab/linux)
 
 请按照以下步骤操作，验证驱动程序是否安装成功：
@@ -468,6 +472,10 @@ PS C:\Program Files\NVIDIA Corporation\NVSMI>
 
 有关详细信息，请参阅[适用于 Linux 的 Nvidia GPU 驱动程序扩展](../virtual-machines/extensions/hpccompute-gpu-linux.md)。
 
+> [!NOTE]
+> 安装完 GPU 驱动程序和 GPU 扩展后，不再需要使用具有 Internet 访问权限的端口进行计算。
+
+
 ---
 
 
@@ -493,6 +501,8 @@ Requestld IsSuccessStatusCode StatusCode ReasonPhrase
 
 了解如何：
 
+- [排查 GPU 扩展问题](azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md)。
+- [监视设备上的 VM 活动](azure-stack-edge-gpu-monitor-virtual-machine-activity.md)。
 - [管理 VM 磁盘](azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md)。
 - [管理 VM 网络接口](azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md)。
 - [管理 VM 大小](azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md)。

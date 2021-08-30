@@ -6,16 +6,16 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/23/2021
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 97db865f2c590a9d7700ee53a0380604885a8155
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: da7d617ab92ed0e9c7564813006e3a0c044a48b6
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076646"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195759"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>为 Azure 应用服务配置 Node.js 应用
 
-Node.js 应用必须与所有必需的 NPM 依赖项一起部署。 当你在启用了生成自动化的情况下部署 [Git 存储库](deploy-local-git.md)或 [Zip 包](deploy-zip.md)时，应用服务部署引擎会自动为你运行 `npm install --production`。 但是，如果使用 [FTP/S](deploy-ftp.md) 部署你的文件，则需手动上传所需的包。
+Node.js 应用必须与所有必需的 NPM 依赖项一起部署。 当你在[启用了生成自动化](deploy-zip.md#enable-build-automation)的情况下部署 [Git 存储库](deploy-local-git.md)或 [Zip 包](deploy-zip.md)时，应用服务部署引擎会自动为你运行 `npm install --production`。 但是，如果使用 [FTP/S](deploy-ftp.md) 部署你的文件，则需手动上传所需的包。
 
 本指南为在应用服务中进行部署的 Node.js 开发人员提供了重要概念和说明。 若从未使用过 Azure 应用服务，则首先应按照 [Node.js 快速入门](quickstart-nodejs.md)以及[将 Node.js 与 MongoDB 配合使用的教程](tutorial-nodejs-mongodb-app.md)进行操作。
 
@@ -29,7 +29,7 @@ Node.js 应用必须与所有必需的 NPM 依赖项一起部署。 当你在启
 az webapp config appsettings list --name <app-name> --resource-group <resource-group-name> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION'].value"
 ```
 
-要显示所有受支持的 Node.js 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
+要显示所有受支持的 Node.js 版本，请导航到 `https://<sitename>.scm.azurewebsites.net/api/diagnostics/runtime` 或在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp list-runtimes | grep node
@@ -63,7 +63,7 @@ az webapp list-runtimes --linux | grep NODE
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_NODE_DEFAULT_VERSION="10.15"
 ```
 
-此设置指定在运行时以及在自动生成应用服务期间自动还原程序包时要使用的 Node.js 版本。
+此设置指定在运行时以及在自动生成应用服务期间自动还原程序包时要使用的 Node.js 版本。 此设置仅识别主要的次要版本，不支持 LTS 名字对象。
 
 > [!NOTE]
 > 应在项目的 `package.json` 中设置 Node.js 版本。 部署引擎在一个单独的进程中运行，该进程包含所有受支持的 Node.js 版本。
@@ -119,7 +119,7 @@ app.listen(port, () => {
 
 ## <a name="customize-build-automation"></a>自定义生成自动化
 
-如果在启用生成自动化的情况下使用 Git 或 zip 包部署应用，应用服务生成自动化将按以下顺序完成各个步骤：
+如果在[启用了生成自动化](deploy-zip.md#enable-build-automation)的情况下使用 Git 或 zip 包部署应用，应用服务生成自动化将按以下顺序完成各个步骤：
 
 1. 运行 `PRE_BUILD_SCRIPT_PATH` 指定的自定义脚本。
 1. 在没有任何标志的情况下运行 `npm install`，这将包括 npm `preinstall` 和 `postinstall` 脚本并将安装 `devDependencies`。
@@ -241,7 +241,7 @@ process.env.NODE_ENV
 
 ## <a name="run-gruntbowergulp"></a>运行 Grunt/Bower/Gulp
 
-默认情况下，当识别出 Node.js 应用是在启用了生成自动化的情况下通过 Git 或 Zip 部署进行部署时，应用服务生成自动化会运行 `npm install --production`。 如果你的应用需要任何常用的自动化工具（例如 Grunt、Bower 或 Gulp），你需要提供[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)才能运行该应用。
+默认情况下，当识别出 Node.js 应用是在[启用了生成自动化](deploy-zip.md#enable-build-automation)的情况下通过 Git 或 Zip 部署进行部署时，应用服务生成自动化会运行 `npm install --production`。 如果你的应用需要任何常用的自动化工具（例如 Grunt、Bower 或 Gulp），你需要提供[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)才能运行该应用。
 
 若要使你的存储库能够运行这些工具，需要将它们添加到 package.json 中的依赖项。 例如：
 
@@ -320,7 +320,7 @@ fi
 
 ## <a name="detect-https-session"></a>检测 HTTPS 会话
 
-在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
+在应用服务中，[TLS/SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
 
 使用常用 Web 框架可以访问采用标准应用模式的 `X-Forwarded-*` 信息。 在 [Express](https://expressjs.com/) 中，你可以使用[信任代理](https://expressjs.com/guide/behind-proxies.html)。 例如：
 
@@ -384,6 +384,6 @@ if (req.secure) {
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [应用服务 Linux 常见问题解答](faq-app-service-linux.md)
+> [应用服务 Linux 常见问题解答](faq-app-service-linux.yml)
 
 ::: zone-end

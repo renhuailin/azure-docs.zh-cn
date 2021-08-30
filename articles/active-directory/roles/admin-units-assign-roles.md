@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 932fc71617846f2839767546a8fac00a3d16008c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2b34eafac248bc0fd06076550e784a061573a712
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792248"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734499"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>向管理单元分配限定范围的角色
 
@@ -27,8 +27,8 @@ ms.locfileid: "110792248"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 每个管理单元管理员具有 Azure AD Premium P1 或 P2 许可证
-- 管理单元成员具有 Azure AD Free 许可证
+- 每个管理单元管理员都有 Azure AD Premium P1 或 P2 许可证
+- 管理单元成员有 Azure AD 免费许可证
 - 特权角色管理员或全局管理员
 - 使用 PowerShell 时需要 AzureAD 模块
 - 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
@@ -52,7 +52,7 @@ ms.locfileid: "110792248"
 可以将以下安全主体分配给具有管理单元范围的角色：
 
 * 用户
-* 可分配角色的云组（预览版）
+* 可分配角色的 Azure AD 组
 * 服务主体名称 (SPN)
 
 ## <a name="assign-a-scoped-role"></a>分配限定范围的角色
@@ -61,9 +61,9 @@ ms.locfileid: "110792248"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 在 Azure 门户中，转到“Azure AD”。
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
-1. 选择“管理单元”，然后选择要向其分配用户角色范围的管理单元。 
+1. 选择“Azure Active Directory” > “管理单元”，然后选择要向其分配用户角色范围的管理单元 。 
 
 1. 在左侧窗格中，选择“角色和管理员”以列出所有可用的角色。
 
@@ -118,9 +118,9 @@ POST /directory/administrativeUnits/{admin-unit-id}/scopedRoleMembers
 
 可在 [Azure AD 的“管理单元”部分](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)中查看使用管理单元范围创建的所有角色分配。 
 
-1. 在 Azure 门户中，转到“Azure AD”。
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
-1. 在左侧窗格中，选择“管理单元”，然后选择要查看其角色分配列表的管理单元。 
+1. 选择“Azure Active Directory” > “管理单元”，然后选择要查看的角色分配列表的管理单元 。 
 
 1. 选择“角色和管理员”，然后打开一个角色查看该管理单元中的分配。
 
@@ -149,5 +149,5 @@ GET /directory/administrativeUnits/{admin-unit-id}/scopedRoleMembers
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用云组来管理角色分配](groups-concept.md)
-- [分配给云组的角色疑难解答](groups-faq-troubleshooting.md)
+- [使用 Azure AD 组来管理角色分配](groups-concept.md)
+- [排查分配给组的 Azure AD 角色的问题](groups-faq-troubleshooting.yml)

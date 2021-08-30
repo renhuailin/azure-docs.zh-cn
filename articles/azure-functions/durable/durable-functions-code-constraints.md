@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 63db8375379144b2ede78d9e7010a350b3f69b12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fade080e631385acec46fc59c41e6624280ae9e7
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726404"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122070150"
 ---
 # <a name="orchestrator-function-code-constraints"></a>业务流程协调程序函数代码约束
 
@@ -30,7 +30,7 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 
 | API 类别 | Reason | 解决方法 |
 | ------------ | ------ | ---------- |
-| 日期和时间  | 返回当前日期或时间的 API 是非确定性的，因为每次重播时它们返回的值都不相同。 | 在 .NET 中使用 [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) 属性、在 JavaScript 中使用 `currentUtcDateTime` API 或者在 Python 中使用 `current_utc_datetime` API，它们都是可以安全地用于重播的。 |
+| 日期和时间  | 返回当前日期或时间的 API 是非确定性的，因为每次重播时它们返回的值都不相同。 | 在 .NET 中使用 [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) 属性、在 JavaScript 中使用 `currentUtcDateTime` API 或者在 Python 中使用 `current_utc_datetime` API，它们都是可以安全地用于重播的。 类似地，避免使用“stopwatch”类型的对象（如 [.NET 中的 Stopwatch 类](/dotnet/api/system.diagnostics.stopwatch)）。 如果需要测量经过的时间，请在执行开始时存储 `CurrentUtcDateTime` 的值，并在执行结束时从 `CurrentUtcDateTime` 中减去该值。 |
 | GUID 和 UUID  | 返回随机 GUID 或 UUID 的 API 是非确定性的，因为每次重播时它们生成的值都不相同。 | 在 .NET 中使用 [NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid)、在 JavaScript 中使用 `newGuid` 或者在 Python 中使用 `new_guid` 安全地生成随机 GUID。 |
 | 随机数 | 返回随机数的 API 是非确定性的，因为每次重播时它们生成的值都不相同。 | 使用活动函数将随机数返回给业务流程。 就重播来说，活动函数的返回值始终是安全的。 |
 | 绑定 | 输入和输出绑定通常会执行 I/O 操作，是非确定性的。 即使是[业务流程客户端](durable-functions-bindings.md#orchestration-client)和[实体客户端](durable-functions-bindings.md#entity-client)绑定，也不得由业务流程协调程序函数直接使用。 | 在客户端或活动函数中使用输入和输出绑定。 |

@@ -11,28 +11,32 @@ ms.topic: conceptual
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 10/12/2020
-ms.openlocfilehash: f93d65b4d10c1a8454a8e24b5cb081dae4d6943e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 06/23/2021
+ms.openlocfilehash: 16886e185d27a67cdea64c4214ca6132e714e9d9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812779"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741207"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 的透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-[透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) 通过加密静态数据，帮助保护 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 免受恶意脱机活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 对于所有新部署的 SQL 数据库，默认已启用 TDE；对于 Azure SQL 数据库、Azure SQL 托管实例的旧版数据库，需要手动启用 TDE。 对于 Azure Synapse Analytics，需要手动启用 TDE。
+[透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) 通过加密静态数据，帮助保护 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 免受恶意脱机活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。 对于所有新部署的 Azure SQL 数据库，默认已启用 TDE；对于 Azure SQL 数据库的旧版数据库，必须手动启用 TDE。 对于 Azure SQL 托管实例，在实例级别和新创建的数据库中启用 TDE。 对于 Azure Synapse Analytics，需要手动启用 TDE。 
+
+> [!NOTE]
+> 本文适用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics（专用 SQL 池 [以前称为 SQL DW]）。 有关 Synapse 工作区内专用 SQL 池的透明数据加密的文档，请参阅 [Azure Synapse Analytics 加密](../../synapse-analytics/security/workspaces-encryption.md)。
 
 TDE 对页面级数据执行实时 I/O 加密和解密。 将每个页面读入内存时会将其解密，在写入磁盘之前会将其加密。 TDE 使用称为数据库加密密钥 (DEK) 的对称密钥加密整个数据库的存储。 在数据库启动时，已加密的 DEK 被解密，然后用于解密和重新加密 SQL Server 数据库引擎进程中的数据库文件。 DEK 由 TDE 保护器保护。 TDE 保护器是服务托管的证书（服务托管的透明数据加密）或存储在 [Azure Key Vault](../../key-vault/general/security-features.md) 中的非对称密钥（客户管理的透明数据加密）。
 
 对于 Azure SQL 数据库和 Azure Synapse，TDE 保护器在[服务器](logical-servers.md)级别设置，并由该服务器关联的所有数据库继承。 对于 Azure SQL 托管实例，TDE 保护器在实例级别设置，并由该实例上所有加密的数据库继承。 除非另有说明，否则术语“服务器”在整个文档中指的是服务器和实例。
 
 > [!IMPORTANT]
-> 默认情况下，将使用服务托管的透明数据加密对 SQL 数据库中所有新建的数据库进行加密。 默认情况下，2017 年 5 月之前创建的现有 SQL 数据库以及通过还原、异地复制和数据库副本创建的 SQL 数据库均不加密。 默认情况下，2019 年 2 月之前创建的现有 SQL 托管实例数据库不加密。 通过源提供的还原继承加密状态创建的 SQL 托管实例数据库。
+> 默认情况下，将使用服务托管的透明数据加密对 SQL 数据库中所有新建的数据库进行加密。 默认情况下，2017 年 5 月之前创建的现有 SQL 数据库以及通过还原、异地复制和数据库副本创建的 SQL 数据库均不加密。 默认情况下，2019 年 2 月之前创建的现有 SQL 托管实例数据库不加密。 通过源提供的还原继承加密状态创建的 SQL 托管实例数据库。 若要恢复现有的 TDE 加密数据库，必须先将所需的 TDE 证书[导入](../managed-instance/tde-certificate-migrate.md)到 SQL 托管实例中。 
 
 > [!NOTE]
 > TDE 不能用于对 Azure SQL 数据库和 Azure SQL 托管实例中的系统数据库（如 master 数据库）进行加密。 **master** 数据库包含对用户数据库执行 TDE 操作时所需的对象。 建议不要将任何敏感数据存储在系统数据库中。 目前正在推出[基础结构加密](transparent-data-encryption-byok-overview.md#doubleencryption)，它可以对包括 master 数据库在内的系统数据库进行加密。 
+
 
 ## <a name="service-managed-transparent-data-encryption"></a>服务托管的透明数据加密
 

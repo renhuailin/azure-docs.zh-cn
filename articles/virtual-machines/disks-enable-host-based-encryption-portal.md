@@ -2,26 +2,24 @@
 title: 通过主机加密启用端到端加密 - Azure 门户 - 托管磁盘
 description: 通过主机加密在 Azure 托管磁盘 - Azure 门户上启用端到端加密。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 07/22/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ad053a0e97a8efa50fbb01798e639fb33e769bef
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: bd1c2d9a9d428a765a9b621652aa23fdec94f212
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078757"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456368"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure 门户通过主机加密来启用端到端加密
 
-启用主机加密时，存储在 VM 主机上的数据将静态加密，且已加密的数据将流向存储服务。 有关主机加密以及其他托管磁盘加密类型的概念信息，请参阅：
+启用主机加密时，存储在 VM 主机上的数据将静态加密，且已加密的数据将流向存储服务。 有关主机加密以及其他托管磁盘加密类型的概念信息，请参阅[主机加密 - VM 数据的端到端加密](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)。
 
-* Linux：[主机加密 - VM 数据的端到端加密](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)。
-
-* Windows：[主机加密 - VM 数据的端到端加密](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)。
+启用端对端加密后，会使用平台管理的密钥对临时磁盘和临时 OS 磁盘进行静态加密。 OS 和数据磁盘缓存使用客户管理的密钥或平台管理的密钥进行静态加密，具体取决于所选磁盘加密类型。 例如，如果使用客户管理的密钥对磁盘进行加密，则使用客户管理的密钥对磁盘的缓存进行加密，如果使用平台管理的密钥对磁盘进行加密，则使用平台管理的密钥对磁盘的缓存进行加密。
 
 ## <a name="restrictions"></a>限制
 
@@ -58,6 +56,28 @@ ms.locfileid: "112078757"
 > [!IMPORTANT]
 > 必须使用[提供的链接](https://aka.ms/diskencryptionupdates)访问 Azure 门户。 如果不使用该链接，“主机加密”目前不会显示在公共 Azure 门户中。
 
+## <a name="deploy-a-vm-with-platform-managed-keys"></a>使用平台管理的密钥部署 VM
+
+1. 登录 [Azure 门户](https://aka.ms/diskencryptionupdates)。
+1. 搜索“虚拟机”，然后选择“+ 添加”以创建 VM 。
+1. 创建新的虚拟机，选择适当的区域和支持的 VM 大小。
+1. 根据需要填写“基本”窗格上的其他值，然后继续填写“磁盘”窗格 。
+
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="虚拟机创建“基本”窗格的屏幕截图，其中突出显示了“区域”和“VM 大小”。":::
+
+1. 在“磁盘”窗格上，选择“主机加密” 。
+1. 根据需要进行剩余选择。
+
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/host-based-encryption-platform-keys.png" alt-text="“磁盘”窗格中虚拟机创建的屏幕截图，其中突出显示了“主机加密”。":::
+
+1. 完成 VM 部署过程，选择适合环境的选项。
+
+现已部署启用了主机加密的 VM，并且使用平台管理的密钥对磁盘的缓存进行了加密。
+
+## <a name="deploy-a-vm-with-customer-managed-keys"></a>使用客户管理的密钥部署 VM
+
+或者，可使用客户管理的密钥对磁盘缓存进行加密。
+
 ### <a name="create-an-azure-key-vault-and-disk-encryption-set"></a>创建 Azure Key Vault 和磁盘加密集
 
 启用该功能后，需要设置 Azure Key Vault 和磁盘加密集（如果尚未设置）。
@@ -68,20 +88,32 @@ ms.locfileid: "112078757"
 
 设置了 Azure Key Vault 和磁盘加密集之后，现在可以部署 VM，它将在主机上使用加密。
 
+1. 登录 [Azure 门户](https://aka.ms/diskencryptionupdates)。
 1. 搜索“虚拟机”，然后选择“+ 添加”以创建 VM 。
 1. 创建新的虚拟机，选择适当的区域和支持的 VM 大小。
-1. 根据需要填写“基本”边栏选项卡上的其他值，然后继续填写“磁盘”边栏选项卡 。
+1. 根据需要填写“基本”窗格上的其他值，然后继续填写“磁盘”窗格 。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="虚拟机创建“基本”边栏选项卡的屏幕截图，其中突出显示了“区域”和“VM 大小”。":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="虚拟机创建“基本”窗格的屏幕截图，其中突出显示了“区域”和“VM 大小”。":::
 
-1. 在“磁盘”边栏选项卡上，为“主机加密”选择“是”  。
+1. 在“磁盘”窗格上，选择“使用客户管理的密钥进行静态加密”作为“SSE 加密类型”，然后选择磁盘加密集  。
+1. 选择“主机加密”。
 1. 根据需要进行剩余选择。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="虚拟机创建“磁盘”边栏选项卡的屏幕截图，其中突出显示了“主机加密”。":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-host-based-encryption-customer-managed-keys.png" alt-text="“磁盘”窗格中虚拟机创建的屏幕截图，其中突出显示了“主机加密”，选中了“客户管理的密钥”。":::
 
 1. 完成 VM 部署过程，选择适合环境的选项。
 
-现在，你已经部署了一个启用了主机加密的 VM，与它相关的所有磁盘都将使用主机加密进行加密。
+现已部署启用了主机加密的 VM。
+
+## <a name="disable-host-based-encryption"></a>禁用基于主机的加密
+
+请确保先将 VM 解除分配，只有先解除分配 VM，才能禁用主机加密。
+
+1. 在 VM 上，选择“磁盘”，然后选择“其他设置” 。
+
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-host-based-encryption-additional-settings.png" alt-text="VM 上“磁盘”窗格的屏幕截图，其中突出显示了“其他设置”。":::
+
+1. 为“主机加密”选择“否”，然后选择“保存”  。
 
 ## <a name="next-steps"></a>后续步骤
 

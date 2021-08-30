@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: f401c143f1f5a9352b56b80f9e473bd7fa819245
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: a4b433ed7a2eb0a2a9367f921e63091a823df37d
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968248"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862313"
 ---
 # <a name="azure-monitor-network-insights"></a>Azure Monitor 网络见解
 
@@ -108,9 +108,19 @@ Azure Monitor 网络见解是围绕以下关键监视组件构建的：
 
 ![显示“诊断工具包”选项卡的屏幕截图。](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
-## <a name="onboarded-resources"></a>载入资源 
+## <a name="availability-of-resources"></a>资源的可用性 
 
-载入资源具有内置工作簿和依赖项视图。 当前载入资源为虚拟 WAN、应用程序网关、负载均衡器和 ExpressRoute。
+默认情况下，所有网络资源都显示在网络见解中。 客户可以单击资源类型以查看资源运行状况和指标（如果可用）、订阅详细信息、位置等。网络资源的子集已载入。 对于载入的资源，客户有权访问特定于资源的拓扑视图以及内置指标工作簿。 通过这些全新安装体验，可以更轻松地浏览资源指标并排查问题。  
+
+已载入的资源包括： 
+* 虚拟 WAN
+* 应用程序网关
+* 负载均衡器
+* ExpressRoute
+* 专用链接
+* NAT 网关
+* 公共 IP
+* NIC
 
 ## <a name="troubleshooting"></a>疑难解答 
 如需常规故障排除指南，请参阅专用的基于工作簿的见解[故障排除文章](troubleshoot-workbooks.md)。

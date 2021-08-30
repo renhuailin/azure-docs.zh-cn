@@ -2,17 +2,20 @@
 title: 使用 Azure 备份服务器备份 VMware VM
 description: 本文介绍如何使用 Azure 备份服务器备份 VMware vCenter/ESXi 服务器上运行的 VMware VM。
 ms.topic: conceptual
-ms.date: 05/24/2020
-ms.openlocfilehash: 12374393d0f94c567a68f1e28b6479e0747f3d40
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/27/2021
+ms.openlocfilehash: d734b9852da54c13d498cfd4a60caf007735d2f6
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084585"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722578"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
 本文介绍如何使用 Azure 备份服务器 (MABS) 将 VMware ESXi 主机/vCenter 服务器上运行的 VMware VM 备份到 Azure。
+
+>[!Note]
+>使用 MABS v3 更新汇总 2 版本，你现在还可以备份 VMware 7.0 VM。
 
 本文介绍如何执行以下操作：
 
@@ -33,6 +36,13 @@ MABS 提供了备份 VMware 虚拟机时的以下功能：
 - MABS 保护本地磁盘、网络文件系统 (NFS) 或群集存储中存储的 VM。
 - MABS 保护为实现负载均衡而迁移的 VM：由于迁移 VM 是为了实现负载均衡，因此 MABS 会自动检测并持续进行 VM 保护。
 - MABS 可以在不恢复整个 VM 的情况下恢复 Windows VM 中的文件/文件夹，这有助于更快地恢复必需的文件。
+
+## <a name="support-matrix"></a>支持矩阵
+
+| MABS 版本 | 用于备份的受支持 VMware VM 版本 |
+| --- | --- |
+| MABS v3 UR2 | VMware 服务器 7.0、6.7、6.5 或 6.0（经许可版本） |
+| MABS v3 UR1 | VMware 服务器 6.7、6.5、6.0 或 5.5（经许可版本） |
 
 ## <a name="prerequisites-and-limitations"></a>先决条件和限制
 
@@ -160,7 +170,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 下表说明了需要向你创建的用户帐户分配的特权：
 
-| 适用于 vCenter 6.5 用户帐户的特权                          | 适用于 vCenter 6.7 用户帐户的特权                            |
+| 适用于 vCenter 6.5 用户帐户的特权                          | 适用于 vCenter 6.7（及更高版本）用户帐户的特权                            |
 |----------------------------------------------------------------------------|----------------------------------------------------------------------------|
 | Datastore cluster.Configure a datastore cluster                           | Datastore cluster.Configure a datastore cluster                           |
 | Datastore.AllocateSpace                                                    | Datastore.AllocateSpace                                                    |
@@ -401,9 +411,9 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 ## <a name="vmware-parallel-backups"></a>VMware 并行备份
 
 >[!NOTE]
-> 此功能适用于 MABS V3 UR1。
+> 此功能适用于 MABS V3 UR1（及更高版本）。
 
-早期版本的 MABS 仅跨保护组执行并行备份。 借助 MABS V3 UR1，单个保护组中的所有 VMware VM 备份将并行进行，从而提高 VM 备份速度。 所有 VMware 增量复制作业将并行运行。 默认情况下，并行运行的作业数设置为 8。
+早期版本的 MABS 仅跨保护组执行并行备份。 借助 MABS V3 UR1（及更高版本），单个保护组中的所有 VMware VM 备份将并行进行，从而提高 VM 备份速度。 所有 VMware 增量复制作业将并行运行。 默认情况下，并行运行的作业数设置为 8。
 
 你可以如下所示使用注册表项来修改作业数（默认情况下不存在此注册表项，你需要添加它）：
 
@@ -413,9 +423,9 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 > [!NOTE]
 > 你可以将作业数修改为较高的值。 如果将作业数设置为 1，则复制作业将按顺序运行。 若要将此数量增加到更大的值，则必须考虑 VMware 性能。 考虑 VMWare vSphere Server 上正在使用的资源数量和所需的额外使用量，并确定要并行运行的增量复制作业的数量。 此外，此更改将仅影响新创建的保护组。 对于现有保护组，你必须临时向保护组中添加另一个 VM。 这会相应地更新保护组配置。 完成此过程后，可以从保护组中删除此 VM。
 
-## <a name="vmware-vsphere-67"></a>VMware vSphere 6.7
+## <a name="vmware-vsphere-67-and-70"></a>VMware vSphere 6.7 和 7.0
 
-若要备份 vSphere 6.7，请执行以下操作：
+若要备份 vSphere 6.7 和 7.0，请执行以下操作：
 
 - 在 MABS 服务器上启用 TLS 1.2
 
@@ -447,9 +457,9 @@ Windows Registry Editor Version 5.00
 ## <a name="exclude-disk-from-vmware-vm-backup"></a>从 VMware VM 备份中排除磁盘
 
 > [!NOTE]
-> 此功能适用于 MABS V3 UR1。
+> 此功能适用于 MABS V3 UR1（及更高版本）。
 
-使用 MABS V3 UR1，你可以从 VMware VM 备份中排除特定的磁盘。 配置脚本 **ExcludeDisk.ps1** 位于 `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` 中。
+使用 MABS V3 UR1（及更高版本），你可以从 VMware VM 备份中排除特定的磁盘。 配置脚本 **ExcludeDisk.ps1** 位于 `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` 中。
 
 若要配置磁盘排除，请执行以下步骤：
 

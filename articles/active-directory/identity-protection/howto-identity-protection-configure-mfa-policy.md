@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 072db1d47abd95844075aeedfeddc4f8cf6bf936
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d2bfaef8f00f6246dfef17145666c817ed26d9d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94835860"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747853"
 ---
 # <a name="how-to-configure-the-azure-ad-multi-factor-authentication-registration-policy"></a>如何：配置 Azure AD 多重身份验证注册策略
 
@@ -40,14 +40,12 @@ Azure AD 多重身份验证是要求使用多种方式（而不仅仅是用户�
    1. 在“分配”下
       1. 用户 - 选择“所有用户”或“选择个人和组”（如果你限制推出的话）。
          1. （可选）可以选择从策略中排除用户。
-   1. 在“控件”下
-      1. 请确保选中“需要 Azure AD MFA 注册”复选框，然后选择“选择”。
    1. “强制执行策略” - “开”
    1. **保存**
 
 ## <a name="user-experience"></a>用户体验
 
-Azure Active Directory 标识保护将在用户下次以交互方式登录时提示他们进行注册，并且他们将有 14 天的时间完成注册。 在此 14 天内，他们可以绕过注册，但在此期间结束时，他们将需要注册，然后才能完成登录过程。
+Azure Active Directory 标识保护将在用户下次以交互方式登录时提示他们进行注册，并且他们将有 14 天的时间完成注册。 在此 14 天内，如果 MFA 不是必要条件，他们可以绕过注册，但在此期间结束时，他们将需要注册，然后才能完成登录过程。
 
 如需相关用户体验的概述，请参阅：
 

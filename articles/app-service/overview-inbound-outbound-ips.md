@@ -4,12 +4,12 @@ description: 了解如何在 Azure 应用服务中使用入站和出站 IP 地�
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 1dda487d23c9f955aea8e35d16e5a560a890a173
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: ea667fcfe70e109038d74e7c1fa0281bbc2b20bb
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834473"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397794"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure 应用服务中的入站和出站 IP 地址
 
@@ -51,7 +51,7 @@ nslookup <app-name>.azurewebsites.net
 
 - 删除应用，然后在其他资源组中重新创建它（部署单元可能会更改）。
 - 删除资源组和区域组合中的最后一个应用，然后重新创建它（部署单元可能会更改）。
-- 在较低层（“基本”、“标准”和“高级”）与“高级 V2”层之间缩放应用（可从该集添加或减去 IP 地址）   。
+- 在较低层级（“基本”、“标准”和“高级”）与“高级 V2”和“高级 V3”层级之间缩放应用（可以在该集内增减 IP 地址）。    
 
 无论是哪个定价层，你都可以通过查找 `possibleOutboundIpAddresses` 属性或者在 Azure 门户的“属性”边栏选项卡中的“其他出站 IP 地址”字段中查找你的应用可以使用的所有可能的出站 IP 地址。 请参阅[查找出站 IP](#find-outbound-ips)。
 
@@ -80,6 +80,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```azurepowershell
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).PossibleOutboundIpAddresses
 ```
+
+## <a name="get-a-static-outbound-ip"></a>获取静态出站 IP
+你可以通过将区域性 VNet 集成与虚拟网络 NAT 网关一起使用来将流量定向通过静态公共 IP 地址，以此来控制来自应用的出站流量的 IP 地址。 [区域性 VNet 集成](/azure/app-service/web-sites-integrate-with-vnet)在“标准”、“高级”、“高级 V2”和“高级 V3”应用服务计划中提供。    若要详细了解此设置，请参阅 [NAT 网关集成](./networking/nat-gateway-integration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

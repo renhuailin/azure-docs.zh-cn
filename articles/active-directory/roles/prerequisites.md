@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 05/13/2021
+ms.date: 08/06/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2b67f3514246bcac1185370393ac469f8c96cf3
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ef457948a28d9d07464b96bfaea4df6a6f2a8723
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890611"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747854"
 ---
 # <a name="prerequisites-to-use-powershell-or-graph-explorer-for-azure-ad-roles"></a>使用 PowerShell 或 Graph 浏览器管理 Azure AD 角色的先决条件
 
@@ -35,7 +35,7 @@ ms.locfileid: "111890611"
 
 必须安装以下模块：
 
-- [AzureAD](https://www.powershellgallery.com/packages/AzureAD) 2.0.2.130 或更高版本
+- [AzureAD](https://www.powershellgallery.com/packages/AzureAD) 2.0.2.137 或更高版本
 
 
 #### <a name="check-azuread-version"></a>检查 AzureAD 版本
@@ -46,12 +46,12 @@ ms.locfileid: "111890611"
 Get-InstalledModule -Name AzureAD
 ```
 
-应该会看到与下面类似的输出：
+应会看到如下所示的输出：
 
 ```powershell
 Version    Name                                Repository           Description
 -------    ----                                ----------           -----------
-2.0.2.130  AzureAD                             PSGallery            Azure Active Directory V2 General Availability M...
+2.0.2.137  AzureAD                             PSGallery            Azure Active Directory V2 General Availability M...
 ```
 
 #### <a name="install-azuread"></a>安装 AzureAD
@@ -92,12 +92,12 @@ Install-Module -Name AzureAD
     Get-Module -Name AzureAD
     ```
 
-    应该会看到与下面类似的输出：
+    应会看到如下所示的输出：
     
     ```powershell
     ModuleType Version    Name                                ExportedCommands
     ---------- -------    ----                                ----------------
-    Binary     2.0.2.130  AzureAD                             {Add-AzureADApplicationOwner, Add-AzureADDeviceRegisteredO...
+    Binary     2.0.2.137  AzureAD                             {Add-AzureADApplicationOwner, Add-AzureADDeviceRegisteredO...
     ```
 
 ## <a name="azureadpreview-module"></a>AzureADPreview 模块
@@ -111,7 +111,7 @@ Install-Module -Name AzureAD
 
 必须安装以下模块：
 
-- [AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview) 2.0.2.129 或更高版本
+- [AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview) 2.0.2.138 或更高版本
 
 
 #### <a name="check-azureadpreview-version"></a>检查 AzureADPreview 版本
@@ -122,12 +122,12 @@ Install-Module -Name AzureAD
 Get-InstalledModule -Name AzureADPreview
 ```
 
-应该会看到与下面类似的输出：
+应会看到如下所示的输出：
 
 ```powershell
 Version    Name                                Repository           Description
 -------    ----                                ----------           -----------
-2.0.2.129  AzureADPreview                      PSGallery            Azure Active Directory V2 Preview Module. ...
+2.0.2.138  AzureADPreview                      PSGallery            Azure Active Directory V2 Preview Module. ...
 ```
 
 #### <a name="install-azureadpreview"></a>安装 AzureADPreview
@@ -156,7 +156,7 @@ Install-Module -Name AzureADPreview
     Get-Module -Name AzureADPreview
     ```
 
-1. 如果在上一步中看不到任何输出，请使用 [Import-Module](/powershell/module/powershellget/import-module) 导入 AzureADPreview。 `-Force` 参数会删除已加载的模块，然后再次进行导入。
+1. 如果在上一步中看不到任何输出，请使用 [Import-Module](/powershell/module/microsoft.powershell.core/import-module) 导入 AzureADPreview。 `-Force` 参数会删除已加载的模块，然后再次进行导入。
 
     ```powershell
     Import-Module -Name AzureADPreview -Force
@@ -173,22 +173,22 @@ Install-Module -Name AzureADPreview
     ```powershell
     ModuleType Version    Name                                ExportedCommands
     ---------- -------    ----                                ----------------
-    Binary     2.0.2.129  AzureADPreview                      {Add-AzureADAdministrativeUnitMember, Add-AzureADApplicati...
+    Binary     2.0.2.138  AzureADPreview                      {Add-AzureADAdministrativeUnitMember, Add-AzureADApplicati...
     ```
 
 ## <a name="graph-explorer"></a>Graph 浏览器
 
 若要使用 [Microsoft Graph API](/graph/overview) 和 [Graph 浏览器](/graph/graph-explorer/graph-explorer-overview)管理 Azure AD 角色，必须执行以下操作：
 
-1. 在 Azure 门户中，打开 Azure Active Directory。
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
-1. 单击“企业应用程序”。
+1. 选择“Azure Active Directory” > “企业应用程序”。 
 
-1. 在应用程序列表中，找到并单击“Graph 浏览器”。
+1. 在应用程序列表中，找到并选择“Graph 浏览器”。
 
-1. 单击“权限”。
+1. 选择“权限”。
 
-1. 单击“为 Graph 浏览器授予管理员许可”。
+1. 选择“为 Graph 浏览器授予管理员同意”。
 
     ![显示“为 Graph 浏览器授予管理员同意”链接的屏幕截图。](./media/prerequisites/select-graph-explorer.png)
 

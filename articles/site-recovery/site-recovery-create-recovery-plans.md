@@ -3,12 +3,12 @@ title: 在 Azure Site Recovery 中创建/自定义恢复计划
 description: 了解如何使用 Azure Site Recovery 服务创建和自定义灾难恢复的恢复计划。
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee7386b07c93182bb8703702e2ce63e10626457d
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009715"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666152"
 ---
 # <a name="create-and-customize-recovery-plans"></a>创建和自定义恢复计划
 
@@ -34,6 +34,7 @@ ms.locfileid: "96009715"
     - 恢复计划可以包含具有相同源和目标的计算机。
     - 可以在同一计划中包括由 VMM 托管的 VMware VM 和 Hyper-V VM。
     - VMware VM 和物理服务器可以在同一计划中。
+    - 恢复计划中的所有 VM 都必须复制到单个订阅中。 如果要将不同的 VM 复制到不同的订阅，请使用多个恢复计划（每个目标订阅使用一个或多个恢复计划）。
 
 4. 在“选择项目虚拟机”中，选择要添加到计划中的计算机（或复制组）。 。
     - 计算机将添加到计划中的默认组（组 1）。 在故障转移后，此组中的所有计算机将同时启动。

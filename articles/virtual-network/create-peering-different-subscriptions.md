@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 5f03ad4019a448d36ac43dee215a1d1b1bd06d23
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ee044e84992b606eab8194d782d755c0d4a9cc74
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791358"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033742"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>创建虚拟网络对等互连 - 资源管理器、不同订阅和 Azure Active Directory 租户
 
@@ -57,10 +57,7 @@ ms.locfileid: "110791358"
     - **位置**：*美国东部*
 4. 在门户顶部的“搜索资源”框中键入 myVnetA。 选择出现在搜索结果中的“myVnetA”。
 5. 从左侧的垂直选项列表中选择“访问控制(IAM)”。
-6. 在“myVnetA - 访问控制(IAM)”下，选择“+ 添加角色分配”。
-7. 在“角色”框中选择“网络参与者”。 
-8. 在“选择”框中，选择 *UserB*，或者键入 UserB 的电子邮件地址来搜索该用户。
-9. 选择“保存”。
+6. 使用[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)中所述的过程将“网络参与者”角色分配给 UserB。
 10. 在“myVnetA - 访问控制 (IAM)”下，选择左侧垂直选项列表中的“属性” 。 复制“资源 ID”，在稍后的步骤中使用。 资源 ID 类似于以下示例：`/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA`。
 11. 以 UserA 的身份注销门户，然后以 UserB 的身份登录。
 12. 完成步骤 2-3，在步骤 3 中输入或选择以下值：
@@ -75,7 +72,7 @@ ms.locfileid: "110791358"
 
 13. 在门户顶部的“搜索资源”框中键入 myVnetB。 选择出现在搜索结果中的“myVnetB”。
 14. 在“myVnetB”下，选择左侧垂直选项列表中的“属性” 。 复制“资源 ID”，在稍后的步骤中使用。 资源 ID 类似于以下示例：`/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`。
-15. 在“myVnetB”下选择“访问控制(IAM)”，然后为 myVnetB 完成步骤 5-10，在步骤 8 中输入 **UserA**。 
+15. 选择 myVnetB 下的“访问控制(IAM)”，然后使用[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)中所述的过程将“网络参与者”角色分配给 UserA  。
 16. 以 UserB 的身份注销门户，然后以 UserA 的身份登录。
 17. 在门户顶部的“搜索资源”框中键入 myVnetA。 选择出现在搜索结果中的“myVnetA”。
 18. 选择“myVnetA”。
@@ -320,7 +317,7 @@ ms.locfileid: "110791358"
    ```
 
 2. 注销用户 A 的 Azure 登录，然后以用户 B 的身份登录。
-3. 运行以下命令：
+3. 执行以下命令：
 
    ```powershell
    Remove-AzResourceGroup -Name myResourceGroupB -force

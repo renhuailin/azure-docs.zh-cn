@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: dd0ceb00b80a045d60de562fbf9ac01b91e41e68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e0b0a3023147fc12c0133f7fb0c78b943c09ced
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720179"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067056"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure 认知服务的支持和帮助选项
 
@@ -106,13 +106,9 @@ ms.locfileid: "104720179"
 * [指标顾问（预览版）](https://stackoverflow.com/search?q=azure+metrics+advisor)
 * [个性化体验创建服务](https://stackoverflow.com/search?q=azure+personalizer)
 
-## <a name="submit-feedback-on-user-voice"></a>在 User Voice 上提交反馈
+## <a name="submit-feedback"></a>提交反馈
 
-<div class='icon is-large'>
-    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
-</div>
-
-若要请求新功能，请将其发布到 UserVoice。 针对如何让认知服务及其 API 更好地服务于你开发的应用程序，分享你的想法。 
+若要请求新功能，请在 https://feedback.azure.com 中发布请求。 针对如何让认知服务及其 API 更好地服务于你开发的应用程序，分享你的想法。 
 
 * [认知服务](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395737)
 

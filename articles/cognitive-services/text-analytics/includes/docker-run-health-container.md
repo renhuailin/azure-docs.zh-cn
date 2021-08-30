@@ -7,42 +7,35 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/12/2020
+ms.date: 06/18/2021
 ms.author: aahi
-ms.openlocfilehash: 2deb67f5a569ed6283bfe4a99bef795ffbf13bac
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 47a7059e21f1c9b9d6d72644bc08c62b66afc772
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110164995"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339671"
 ---
 ## <a name="install-the-container"></a>安装容器
 
 可以通过多种方式来安装和运行运行状况文本分析容器。 
 
 - 使用 [Azure 门户](../how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare)创建文本分析资源，并使用 Docker 获取容器。
+- 使用带有 Docker 的 Azure VM 运行容器。 请参阅 [Azure 上的 Docker](../../../docker/index.yml)。
 - 使用以下 PowerShell 和 Azure CLI 脚本自动执行资源部署和容器配置。
 
 ### <a name="run-the-container-locally"></a>在本地运行容器
 
-若要在下载容器映像后在自己的环境中运行容器，请查找其映像 ID：
- 
-```bash
-docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
-```
-
-执行以下 `docker run` 命令。 将下面的占位符替换为你自己的值：
+若要在下载容器映像后在自己的环境中运行容器，请执行以下 `docker run` 命令。 将下面的占位符替换为你自己的值：
 
 | 占位符 | Value | 格式或示例 |
 |-------------|-------|---|
 | **{API_KEY}** | 文本分析资源的密钥。 可以在 Azure 门户中资源的“密钥和终结点”页上找到此项。 |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
 | **{ENDPOINT_URI}** | 用于访问文本分析 API 的终结点。 可以在 Azure 门户中资源的“密钥和终结点”页上找到此项。 | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
-| **{IMAGE_ID}** | 容器的映像 ID。 | `1.1.011300001-amd64-preview` |
-| **{INPUT_DIR}** | 容器的输入目录。 | Windows： `C:\healthcareMount` <br> Linux/MacOS：`/home/username/input` |
 
 ```bash
 docker run --rm -it -p 5000:5000 --cpus 6 --memory 12g \
---mount type=bind,src={INPUT_DIR},target=/output {IMAGE_ID} \
+mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare:latest \
 Eula=accept \
 rai_terms=accept \
 Billing={ENDPOINT_URI} \
@@ -52,8 +45,7 @@ Logging:Disk:Format=json
 
 此命令：
 
-- 假定主机上存在输入目录
-- 从容器映像运行运行状况容器的文本分析
+- 从容器映像运行“针对运行状况的文本分析”容器
 - 分配 6 个 CPU 核心和 12 千兆字节 (GB) 内存
 - 公开 TCP 端口 5000，并为容器分配伪 TTY
 - 接受最终用户许可协议 (Eula) 和负责任 AI (RAI) 条款
@@ -73,7 +65,7 @@ http://<serverURL>:5000/demo
 使用下面的示例 cURL 请求将查询提交到已部署的容器，并使用适当的值替换 `serverURL` 变量。
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1-preview.5/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 

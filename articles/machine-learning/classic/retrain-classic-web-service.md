@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）：重新训练经典 Web 服务 - Azure
-description: 了解如何重新训练模型和更新经典 Web 服务以在 Azure 机器学习工作室（经典）中使用最新经过训练的模型。
+description: 了解如何重新训练模型和更新经典 Web 服务以在机器学习工作室（经典）中使用新训练的模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,16 +9,16 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: 90c968ee953e80238775639964cb09a25741b33d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9b249dff4bbb6f5c3aa688986bf470e3d449372
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517563"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579533"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新训练和部署经典工作室（经典）Web 服务
 
-**适用对象：** ![绿色的选中标记。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）![X 指示否。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+适用对象：![适用于](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![X 表示否定。](../../../includes/media/aml-applies-to-skus/no.png)[不适用于。](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 重新训练机器学习模型是确保它们保持准确并基于最相关的数据的一种方法。 本文介绍如何重新训练经典工作室（经典）Web 服务。 有关如何重新训练新的工作室（经典）Web 服务的指南，请[查看此操作指南文章](retrain-machine-learning-model.md)。

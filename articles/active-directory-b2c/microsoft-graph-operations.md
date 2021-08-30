@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/22/2021
+ms.date: 06/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 834afe8d0f0c5c53c2cb300d666dbcccbee46ec0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9157b6212adac3c9bfa5f5c00a9c580a615bf8cf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962420"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724894"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
@@ -40,7 +40,7 @@ ms.locfileid: "111962420"
 
 ## <a name="user-phone-number-management-beta"></a>用户电话号码管理（beta 版本）
 
-一种电话号码，用户可以使用它来通过[短信或语音呼叫](identity-provider-local.md#phone-sign-in)或[多重身份验证](multi-factor-authentication.md)进行登录。 有关详细信息，请参阅 [Azure AD 身份验证方法 API](/graph/api/resources/phoneauthenticationmethod)。
+一种电话号码，用户可以使用它来通过[短信或语音呼叫](sign-in-options.md#phone-sign-in)或[多重身份验证](multi-factor-authentication.md)进行登录。 有关详细信息，请参阅 [Azure AD 身份验证方法 API](/graph/api/resources/phoneauthenticationmethod)。
 
 - [添加](/graph/api/authentication-post-phonemethods)
 - [列表](/graph/api/authentication-list-phonemethods)
@@ -57,7 +57,7 @@ ms.locfileid: "111962420"
 
 ## <a name="self-service-password-reset-email-address-beta"></a>自助服务密码重置电子邮件地址（beta 版本）
 
-一种电子邮件地址，[用户名登录帐户](identity-provider-local.md#username-sign-in)可以使用它来重置密码。 有关详细信息，请参阅 [Azure AD 身份验证方法 API](/graph/api/resources/emailauthenticationmethod)。
+一种电子邮件地址，[用户名登录帐户](sign-in-options.md#username-sign-in)可以使用它来重置密码。 有关详细信息，请参阅 [Azure AD 身份验证方法 API](/graph/api/resources/emailauthenticationmethod)。
 
 - [添加](/graph/api/emailauthenticationmethod-post)
 - [列表](/graph/api/emailauthenticationmethod-list)
@@ -152,6 +152,12 @@ Azure AD B2C 提供一个目录，其中可以保存每个用户的 100 个自�
 - [更新条件访问策略](/graph/api/conditionalaccesspolicy-update)
 - [删除条件访问策略](/graph/api/conditionalaccesspolicy-delete)
 
+## <a name="how-to-programmatically-manage-microsoft-graph"></a>如何以编程方式管理 Microsoft Graph
+
+需要管理 Microsoft Graph 时，可以使用应用程序权限将其作为应用程序进行管理，也可以使用委托的权限。 对于委托的权限，需要用户或管理员同意应用请求的权限。 当应用调用目标资源时，它被委托了充当已登录用户的权限。 应用程序权限由不需要登录用户在场的应用使用，由于这些应用不需要登录用户在场，因此需要应用程序权限。 因此，只有管理员才能同意应用程序权限。
+
+> [!NOTE]
+> 通过用户流或自定义策略登录的用户的委托权限不能针对 Microsoft Graph 的委托权限使用。
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>代码示例：如何以编程方式管理用户帐户
 
 此代码示例是一个 .NET Core 控制台应用程序，它使用 [Microsoft Graph SDK](/graph/sdks/sdks-overview) 来与 Microsoft Graph API 交互。 其中的代码演示了如何调用 API 来以编程方式管理 Azure AD B2C 租户中的用户。
@@ -181,6 +187,9 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 
 应用程序将显示可执行的命令列表。 例如，获取所有用户、获取单个用户、删除用户、更新用户的密码和批量导入。
 
+> [!NOTE]
+> 要使应用程序更新用户帐户密码，需要向应用程[授予用户管理员角色](microsoft-graph-get-started.md#optional-grant-user-administrator-role)。
+ 
 ### <a name="code-discussion"></a>代码探讨
 
 示例代码使用 [Microsoft Graph SDK](/graph/sdks/sdks-overview)，旨在简化可访问 Microsoft Graph 的优质、高效且可复原的应用程序的生成。

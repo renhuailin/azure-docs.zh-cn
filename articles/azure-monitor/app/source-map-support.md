@@ -2,16 +2,14 @@
 title: JavaScript 应用程序的源映射支持 - Azure Monitor Application Insights
 description: 了解如何使用 Application Insights 将源映射上传到自己的存储帐户 Blob 容器。
 ms.topic: conceptual
-author: DavidCBerry13
-ms.author: daberry
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 79462dcb503e5835254b89f7ebaa7a9ee34946d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81ca8de41c4d68ddc5ff3fc0355def975e6df30d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933947"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732022"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript 应用程序的源映射支持
 
@@ -50,7 +48,7 @@ Application Insights 支持将源映射上传到你自己的存储帐户 Blob �
 可以在“端到端事务详细信息”选项卡中单击“取消缩小”，在资源未配置的情况下，它会显示配置提示。
 
 1. 在门户中，查看已缩小异常的详细信息。
-2. 单击“取消缩小”
+2. 选择“取消缩小”。
 3. 如果资源尚未配置，则会显示一条消息，提示你进行配置。
 
 ### <a name="from-the-properties-page"></a>从“属性”页
@@ -58,9 +56,9 @@ Application Insights 支持将源映射上传到你自己的存储帐户 Blob �
 如果要配置或更改已链接到 Application Insights 资源的存储帐户或 Blob 容器，可以通过查看 Application Insights 资源的“属性”选项卡来完成此操作。
 
 1. 导航到 Application Insights 资源的“属性”选项卡。
-2. 单击“更改源映射 blob 容器”。
+2. 选择“更改源映射 blob 容器”。
 3. 选择与源映射容器不同的 Blob 容器。
-4. 单击 `Apply`。
+4. 选择 `Apply`。
 
 > [!div class="mx-imgBorder"]
 > ![通过导航到“属性”边栏选项卡，重新配置所选的 Azure Blob 容器](./media/source-map-support/reconfigure.png)

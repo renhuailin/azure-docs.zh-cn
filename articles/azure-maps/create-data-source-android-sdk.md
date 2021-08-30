@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 7ba00e1f3bd28b3fa24b14bc31080655a8d4c98b
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 9ea96613425ec3802080277da9ac674af4e87c52
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792076"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669082"
 ---
 # <a name="create-a-data-source-android-sdk"></a>创建数据源 (Android SDK)
 
@@ -86,6 +86,9 @@ feature.addStringProperty("custom-property", "value")
 //Add the feature to the data source.
 source.add(feature)
 ```
+
+> [!TIP]
+> 可以使用以下三种方法之一将 GeoJSON 数据添加到 `DataSource` 实例：`add`、`importDataFromUrl` 和 `setShapes`。 `setShapes` 方法提供了一种有效的方法来覆盖数据源中的所有数据。 如果依次调用 `clear` 和 `add` 方法来替换数据源中的所有数据，则会对该地图进行两次呈现调用。 `setShape` 方法只需对地图进行一次呈现调用，即可在数据源中清除并添加数据。
 
 ::: zone-end
 
@@ -264,7 +267,49 @@ val featureString = feature.toJson()
 
 大多数 GeoJSON 文件都包含一个 FeatureCollection。 将 GeoJSON 文件作为字符串读取，并使用 `FeatureCollection.fromJson` 方法对其进行反序列化。
 
-下面的代码是一个可重用的类，用于将 Web 或本地资产文件夹中的数据作为字符串导入，并通过回调函数将其返回到 UI 线程。
+`DataSource` 类具有一个名为 `importDataFromUrl` 的内置方法，该方法可使用指向 Web 上或资产文件夹中的文件的 URL 加载到 GeoJSON 文件中。 在将数据源添加到地图之前，必须调用此方法。
+
+zone_pivot_groups：azure-maps-android
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("URL_or_FilePath_to_GeoJSON_data");
+
+//Examples:
+//source.importDataFromUrl("asset://sample_file.json");
+//source.importDataFromUrl("https://example.com/sample_file.json");
+
+//Add data source to the map.
+map.sources.add(source);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a data source and add it to the map.
+var source = new DataSource()
+
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("URL_or_FilePath_to_GeoJSON_data")
+
+//Examples:
+//source.importDataFromUrl("asset://sample_file.json")
+//source.importDataFromUrl("https://example.com/sample_file.json")
+
+//Add data source to the map.
+map.sources.add(source)
+```
+
+::: zone-end
+
+`importDataFromUrl` 方法提供了一种简单的方法来将 GeoJSON 源加载到数据源，但对加载数据的方式以及加载后发生的情况提供有限的控制。 下面的代码是一个可重用的类，用于将 Web 或资产文件夹中的数据导入，并通过回调函数将其返回到 UI 线程。 在回调中，你可添加额外的加载后逻辑来处理数据，将其添加到地图，计算其边界框和更新地图照相机。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -516,8 +561,8 @@ class Utils {
 
 ```java
 //Create a data source and add it to the map.
-DataSource dataSource = new DataSource();
-map.sources.add(dataSource);
+DataSource source = new DataSource();
+map.sources.add(source);
 
 //Import the geojson data and add it to the data source.
 Utils.importData("URL_or_FilePath_to_GeoJSON_data",
@@ -527,7 +572,7 @@ Utils.importData("URL_or_FilePath_to_GeoJSON_data",
         FeatureCollection fc = FeatureCollection.fromJson(result);
 
         //Add the feature collection to the data source.
-        dataSource.add(fc);
+        source.add(fc);
 
         //Optionally, update the maps camera to focus in on the data.
 
@@ -576,6 +621,149 @@ Utils.importData("SamplePoiDataSet.json", this) {
 
 ::: zone-end
 
+### <a name="update-a-feature"></a>更新特征
+
+`DataSource` 类可以轻松添加和删除特征。 更新特征的几何图形或属性需要在数据源中替换该特征。 可使用两种方法来更新特征：
+
+1. 使用所需的更新创建新特征，并使用 `setShapes` 方法替换数据源中的所有特征。 当你希望更新数据源中的所有特征时，此方法非常有效。
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+DataSource source;
+
+private void onReady(AzureMap map) {
+    //Create a data source and add it to the map.
+    source = new DataSource();
+    map.sources.add(source);
+
+    //Create a feature and add it to the data source.
+    Feature myFeature = Feature.fromGeometry(Point.fromLngLat(0,0));
+    myFeature.addStringProperty("Name", "Original value");
+
+    source.add(myFeature);
+}
+
+private void updateFeature(){
+    //Create a new replacement feature with an updated geometry and property value.
+    Feature myNewFeature = Feature.fromGeometry(Point.fromLngLat(-10, 10));
+    myNewFeature.addStringProperty("Name", "New value");
+
+    //Replace all features to the data source with the new one.
+    source.setShapes(myNewFeature);
+}
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+var source: DataSource? = null
+
+private fun onReady(map: AzureMap) {
+    //Create a data source and add it to the map.
+    source = DataSource()
+    map.sources.add(source)
+
+    //Create a feature and add it to the data source.
+    val myFeature = Feature.fromGeometry(Point.fromLngLat(0.0, 0.0))
+    myFeature.addStringProperty("Name", "Original value")
+    source!!.add(myFeature)
+}
+
+private fun updateFeature() {
+    //Create a new replacement feature with an updated geometry and property value.
+    val myNewFeature = Feature.fromGeometry(Point.fromLngLat(-10.0, 10.0))
+    myNewFeature.addStringProperty("Name", "New value")
+
+    //Replace all features to the data source with the new one.
+    source!!.setShapes(myNewFeature)
+}
+```
+
+::: zone-end
+
+2. 跟踪变量中的功能实例，并将其传递到数据源 `remove` 方法中以删除它。 使用所需更新创建新特征，更新变量引用并使用 `add` 方法将其添加到数据源。
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+DataSource source;
+Feature myFeature;
+
+private void onReady(AzureMap map) {
+    //Create a data source and add it to the map.
+    source = new DataSource();
+    map.sources.add(source);
+
+    //Create a feature and add it to the data source.
+    myFeature = Feature.fromGeometry(Point.fromLngLat(0,0));
+    myFeature.addStringProperty("Name", "Original value");
+
+    source.add(myFeature);
+}
+
+private void updateFeature(){
+    //Remove the feature instance from the data source.
+    source.remove(myFeature);
+
+    //Get properties from original feature.
+    JsonObject props = myFeature.properties();
+
+    //Update a property.
+    props.addProperty("Name", "New value");
+
+    //Create a new replacement feature with an updated geometry.
+    myFeature = Feature.fromGeometry(Point.fromLngLat(-10, 10), props);
+
+    //Re-add the feature to the data source.
+    source.add(myFeature);
+}
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+var source: DataSource? = null
+var myFeature: Feature? = null
+
+private fun onReady(map: AzureMap) {
+    //Create a data source and add it to the map.
+    source = DataSource()
+    map.sources.add(source)
+
+    //Create a feature and add it to the data source.
+    myFeature = Feature.fromGeometry(Point.fromLngLat(0.0, 0.0))
+    myFeature.addStringProperty("Name", "Original value")
+    source!!.add(myFeature)
+}
+
+private fun updateFeature() {
+    //Remove the feature instance from the data source.
+    source!!.remove(myFeature)
+
+    //Get properties from original feature.
+    val props = myFeature!!.properties()
+
+    //Update a property.
+    props!!.addProperty("Name", "New value")
+
+    //Create a new replacement feature with an updated geometry.
+    myFeature = Feature.fromGeometry(Point.fromLngLat(-10.0, 10.0), props)
+
+    //Re-add the feature to the data source.
+    source!!.add(myFeature)
+}
+```
+
+::: zone-end
+
+> [!TIP]
+> 如果有一些数据需要定期更新，而其他数据很少更改，最好将这些数据拆分到单独的数据源实例中。 当数据源中发生更新时，该更新会强制地图重画数据源中的所有特征。 拆分此数据后，当一个数据源中发生更新时，只有定期更新的特征才会重画，另一个数据源中的特征不需要重画。 这有助于提高性能。
+
 ## <a name="vector-tile-source"></a>矢量图块源
 
 矢量图块源介绍如何访问矢量图块层。 使用 `VectorTileSource` 类实例化矢量图块源。 矢量图块层与图块层类似，但不同。 图块层是光栅图像。 矢量图块层是压缩文件，为 PBF 格式。 此压缩文件包含矢量地图数据以及一个或多个层。 根据每层的样式，可以在客户端渲染文件并设计文件样式。 矢量图块中的数据包含点、线和多边形形式的地理功能。 相比光栅图块层，使用矢量图块层有多种优势：
@@ -587,10 +775,10 @@ Utils.importData("SamplePoiDataSet.json", this) {
 
 Azure Maps 遵循开放式标准 - [Mapbox 矢量图块规范](https://github.com/mapbox/vector-tile-spec)。 Azure Maps 在平台中提供以下矢量图块服务：
 
-- 道路图块[文档](/rest/api/maps/renderv2/getmaptilepreview) | [数据格式详细信息](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- 道路图块[文档](/rest/api/maps/render-v2/get-map-tile) | [数据格式详细信息](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
 - 交通事故[文档](/rest/api/maps/traffic/gettrafficincidenttile) | [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
 - 交通流[文档](/rest/api/maps/traffic/gettrafficflowtile) | [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- 使用 Azure Maps Creator，还可以通过[渲染器 V2 - 获取地图图块 API](/rest/api/maps/renderv2/getmaptilepreview) 创建和访问自定义矢量图块
+- 使用 Azure Maps Creator，还可以通过[渲染器 V2 - 获取地图图块 API](/rest/api/maps/render-v2/get-map-tile) 创建和访问自定义矢量图块
 
 > [!TIP]
 > 通过 Web SDK 使用 Azure Maps 渲染服务中的矢量或光栅图块时，可以使用占位符 `azmapsdomain.invalid` 替代 `atlas.microsoft.com`。 此占位符将替换为地图使用的相同域，还会自动附加相同的身份验证详细信息。 这样可大大简化使用 Azure Active Directory 身份验证时对渲染服务的身份验证。
@@ -704,32 +892,16 @@ map.layers.add(layer, "labels")
 ```java
 //Create a data source and add it to the map.
 DataSource source = new DataSource();
+
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("URL_or_FilePath_to_GeoJSON_data");
+
+//Add data source to the map.
 map.sources.add(source);
 
 //Create a layer that defines how to render points in the data source and add it to the map.
 BubbleLayer layer = new BubbleLayer(source);
 map.layers.add(layer);
-
-//Import the geojson data and add it to the data source.
-Utils.importData("URL_or_FilePath_to_GeoJSON_data",
-    this,
-    (String result) -> {
-        //Parse the data as a GeoJSON Feature Collection.
-        FeatureCollection fc = FeatureCollection.fromJson(result);
-
-        //Add the feature collection to the data source.
-        dataSource.add(fc);
-
-        //Optionally, update the maps camera to focus in on the data.
-
-        //Calculate the bounding box of all the data in the Feature Collection.
-        BoundingBox bbox = MapMath.fromData(fc);
-
-        //Update the maps camera so it is focused on the data.
-        map.setCamera(
-            bounds(bbox),
-            padding(20));
-    });
 ```
 
 ::: zone-end
@@ -739,31 +911,12 @@ Utils.importData("URL_or_FilePath_to_GeoJSON_data",
 ```kotlin
 //Create a data source and add it to the map.
 val source = DataSource()
-map.sources.add(source)
-
-//Create a layer that defines how to render points in the data source and add it to the map.
-val layer = BubbleLayer(source)
-map.layers.add(layer)
 
 //Import the geojson data and add it to the data source.
-Utils.importData("URL_or_FilePath_to_GeoJSON_data", this) { 
-    result: String? ->
-        //Parse the data as a GeoJSON Feature Collection.
-        val fc = FeatureCollection.fromJson(result!!)
-    
-        //Add the feature collection to the data source.
-        dataSource.add(fc)
-    
-        //Optionally, update the maps camera to focus in on the data.
-        //Calculate the bounding box of all the data in the Feature Collection.
-        val bbox = MapMath.fromData(fc)
-    
-        //Update the maps camera so it is focused on the data.
-        map.setCamera(
-            bounds(bbox),
-            padding(20)
-        )
-    }
+source.importDataFromUrl("URL_or_FilePath_to_GeoJSON_data")
+
+//Add data source to the map.
+map.sources.add(source)
 ```
 
 ::: zone-end
@@ -867,6 +1020,9 @@ map.layers.add(arrayOf<Layer>(polygonLayer, lineLayer, bubbleLayer))
 
 > [!div class="nextstepaction"]
 > [使用数据驱动样式表达式](create-data-source-android-sdk.md)
+
+> [!div class="nextstepaction"]
+> [聚类点数据](clustering-point-data-android-sdk.md)
 
 > [!div class="nextstepaction"]
 > [添加符号层](how-to-add-symbol-to-android-map.md)

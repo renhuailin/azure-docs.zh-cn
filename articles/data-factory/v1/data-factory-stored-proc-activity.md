@@ -7,12 +7,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 05717352936bed888e108277d0163e43bc5a37af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88a4281d564b7061e831a66b35e768e6377a0115
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368755"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397307"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
 > [!div class="op_single_selector" title1="转换活动"]
@@ -21,8 +21,8 @@ ms.locfileid: "100368755"
 > * [MapReduce 活动](data-factory-map-reduce.md)
 > * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
-> * [Azure 机器学习工作室（经典）批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure 机器学习工作室（经典）更新资源活动](data-factory-azure-ml-update-resource-activity.md)
+> * [机器学习工作室（经典）批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
+> * [机器学习工作室（经典）更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 > * [存储过程活动](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
@@ -48,6 +48,7 @@ ms.locfileid: "100368755"
 
 ## <a name="walkthrough"></a>演练
 ### <a name="sample-table-and-stored-procedure"></a>示例表和存储过程
+
 1. 在 Azure SQL 数据库中，使用 SQL Server Management Studio 或其他熟悉的工具，创建以下 **表**。 Datetimestamp 列是生成相应 ID 的日期和时间。
 
     ```SQL
@@ -61,11 +62,12 @@ ms.locfileid: "100368755"
     CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable(Id);
     GO
     ```
-    ID 是唯一标识，而 datetimestamp 列是生成相应 ID 的日期和时间。
+    `Id` 是唯一标识符，而 `datetimestamp` 列是生成相应 ID 的日期和时间。
     
     ![示例数据](./media/data-factory-stored-proc-activity/sample-data.png)
 
     在此示例中，存储过程在 Azure SQL 数据库中。 如果存储过程在 Azure Synapse Analytics 和 SQL Server 数据库中，则方法非常相似。 对于 SQL Server 数据库，必须安装[数据管理网关](data-factory-data-management-gateway.md)。
+    
 2. 创建以下 **存储过程**，将数据插入 **sampletable**。
 
     ```SQL
@@ -298,7 +300,7 @@ ms.locfileid: "100368755"
 
 下表描述了其中的 JSON 属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 描述 | 必需 |
 | --- | --- | --- |
 | name | 活动名称 |是 |
 | description |描述活动用途的文本 |否 |

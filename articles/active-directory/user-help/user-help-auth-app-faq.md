@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/30/2021
+ms.date: 06/21/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 6cc64c9b3ad3f177d50f3e659e8ea628ba485159
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f593141d425573888458b4b00858b17888c28e52
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764164"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752487"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>有关 Microsoft Authenticator 应用的常见问题解答 (FAQ)
 
@@ -50,6 +50,12 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 问：如何使用和存储我的位置信息？
 
 答：Authenticator 应用程序将收集你的 GPS 信息以确定你所在的国家/地区。 国家/地区名称和位置坐标会发送回系统，以确定是否允许你访问受保护的资源。 系统会存储并将国家/地区名称报告给你的 IT 管理员，但 Microsoft 服务器从不保存或存储你的实际坐标。
+
+### <a name="notification-blocks-sign-in"></a>通知阻止登录
+
+**问**：我尝试登录，我需要选择应用的登录屏幕上显示的数字。 但是，来自 Authenticator 的通知提示阻止了登录屏幕。 我该怎么办？  
+
+**答**：选择通知中的“隐藏”选项，这样可以看到登录屏幕和需要选择的数字。 5 秒后会再次出现提示，此时你可以选择正确的数字。
 
 ### <a name="registering-a-device"></a>注册设备
 
@@ -93,7 +99,7 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 
 **答**：Authenticator 应用收集三类信息：
 
-- 你在添加帐户时提供的帐户信息。 可以通过删除帐户删除此数据。
+- 你在添加帐户时提供的帐户信息。 添加帐户后，根据为帐户启用的功能，帐户数据可能会同步到应用。 可以通过删除帐户删除此数据。
 - 诊断日志数据（在你通过应用顶部菜单中的“发送反馈”将日志发送到 Microsoft 之前，这些数据只保留在应用中）。 这些日志可以包含电子邮件地址、服务器地址或 IP 地址等个人数据。 也可以包含设备名和操作系统版本等设备数据。 收集的任何个人数据仅限有助于排查应用问题所需的信息。 随时都可以在应用中浏览这些日志文件，以查看收集的信息。 如果你发送日志文件，身份验证应用工程师只会将它们用于解决客户报告的问题。
 - 非个人识别使用情况数据，例如“已启动添加帐户流/已成功添加了帐户”或者“通知已批准”。 这种数据是工程决策不可或缺的一部分。 你的使用情况有助于我们确定可以在哪些方面做出对你而言很重要的应用改进。 首次使用该应用时，你会看到这类数据收集的通知。 它告诉你可以在应用的“设置”页上关闭该功能 ****  。 你可以随时打开或关闭此设置。
 

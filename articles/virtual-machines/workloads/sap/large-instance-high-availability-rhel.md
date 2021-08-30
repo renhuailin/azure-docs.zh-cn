@@ -6,19 +6,22 @@ ms.author: jaawasth
 ms.service: virtual-machines-sap
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: f7b6e6efbbd17655b4f68d79ac26ee34ae754a3b
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 3da8c2a0147136ad5da90489e4f8db511cad7378
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728439"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217442"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>SAP on RHEL 的 Azure 大型实例高可用性
 
 > [!NOTE]
 > 本文包含对术语“黑名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
-本文介绍如何在 RHEL 7.6 中配置 Pacemaker 群集，以自动执行 SAP HANA 数据库故障转移。 若要完成本指南中的步骤，需要充分了解 Linux、SAP HANA 和 Pacemaker。
+> [!NOTE]
+> 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+
+在本文中，你将学习如何在 RHEL 7 中配置 Pacemaker 群集，来自动执行 SAP HANA 数据库故障转移。 若要完成本指南中的步骤，需要充分了解 Linux、SAP HANA 和 Pacemaker。
 
 下表包含本文中使用的主机名。 本文中的代码块显示了需要运行的命令以及这些命令的输出。 请特别注意每个命令中引用的节点。
 
@@ -136,6 +139,7 @@ ms.locfileid: "107728439"
 
 6. 更新系统
     1. 在开始安装 SBD 设备之前，请先在系统上安装最新的更新。
+    1. 客户必须确保至少安装了 4.1.1-12.el7_6.26 版本的 resource-agents-sap-hana 包，如 [RHEL 高可用性群集的支持策略 - 管理群集中的 SAP HANA](https://access.redhat.com/articles/3397471) 中所述
     1. 如果你不想要对系统进行全面更新（即使建议这样做），请至少更新以下包。
         1. `resource-agents-sap-hana`
         1. `selinux-policy`
@@ -308,7 +312,7 @@ ms.locfileid: "107728439"
 ## <a name="sbd-configuration"></a>SBD 配置
 本部分介绍如何配置 SBD。 本部分使用本文开头所提到的两个主机：`sollabdsm35` 和 `sollabdsm36`。
 
-1.  请确保 iSCSI 或 FC 磁盘在两个节点上均可见。 此示例使用基于 FC 的 SBD 设备。 有关 SBD 隔离的详细信息，请参阅 [RHEL 高可用性群集的设计指南 - SBD 注意事项](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Faccess.redhat.com%2Farticles%2F2941601&data=04%7C01%7Cralf.klahr%40microsoft.com%7Cd49d7a3e3871449cdecc08d8c77341f1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637478645171139432%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=c%2BUAC5gmgpFNWZCQFfiqcik8CH%2BmhH2ly5DsOV1%2FE5M%3D&reserved=0)。
+1.  请确保 iSCSI 或 FC 磁盘在两个节点上均可见。 此示例使用基于 FC 的 SBD 设备。 有关 SBD 隔离的详细信息，请参阅 [RHEL 高可用性群集的设计指南 - SBD 注意事项](https://access.redhat.com/articles/2941601)和 [RHEL 高可用性群集的支持策略 - sbd 和 fence_sbd](https://access.redhat.com/articles/2800691)
 2.  LUN-ID 在所有节点上必须相同。
   
 3.  检查 sbd 设备的多路径状态。
@@ -641,7 +645,7 @@ ms.locfileid: "107728439"
 
 在本部分，你要将 HANA 集成到群集中。 本部分使用本文开头所提到的两个主机：`sollabdsm35` 和 `sollabdsm36`。
 
-有两个选项可用于集成 HANA。 第一个选项是成本优化的解决方案，在其中可以使用辅助系统运行 QAS 系统。 我们不建议采用此方法，因为这样就没有任何系统可用于测试群集软件、操作系统或 HANA 的更新，并且配置更新可能导致 PRD 系统出现计划外的停机。 此外，如果需要在辅助系统上激活 PRD 系统，则必须在辅助节点上关闭 QAS。 第二个选项是在一个群集上安装 QAS 系统，并将另一个群集用于 PRD。 使用此选项还可以在将所有组件投放生产之前对其进行测试。 本文将介绍如何配置第二个选项。
+默认支持的是创建性能优化方案，可在其中直接切换数据库。 在此，本文档仅介绍此方案。 在这种情况下，我们建议为 QAS 系统安装一个群集，为 PRD 系统安装一个单独的群集。 只有在这种情况下，才能在所有组件投入生产之前对其进行测试。
 
 
 * 此过程是根据以下页面上的 RHEL 说明建立的：
@@ -649,6 +653,12 @@ ms.locfileid: "107728439"
   * https://access.redhat.com/articles/3004101
 
  ### <a name="steps-to-follow-to-configure-hsr"></a>配置 HSR 所要遵循的步骤
+
+ | **日志复制模式**            | **说明**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **内存中同步（默认）** | 内存中同步 (mode=syncmem) 表示当日志条目已写入主实例的日志卷，且辅助实例在复制到内存之后已确认发送了日志时，日志写入被视为成功。 当与辅助系统的连接断开时，主系统将继续处理事务，并仅将更改写入本地磁盘。只要辅助系统已连接，或执行接管时断开了辅助系统连接，当主系统和辅助系统同时发生故障时，就会发生数据丢失。 此选项提供更好的性能，因为无需等待辅助实例中的磁盘 I/O，但这更容易导致数据丢失。                                                                                                                                                                                                                                                                                                                     |
+| **同步**                     | 同步 (mode=sync) 表示当日志条目已写入主实例和辅助实例的日志卷时，日志写入被视为成功。 当与辅助系统的连接断开时，主系统会继续处理事务，并仅将更改写入本地磁盘。 在这种情况下，只要辅助系统保持连接，就不会丢失数据。 在辅助系统断开连接的情况下执行接管时，可能会发生数据丢失。此外，此复制模式可使用完全同步选项运行。 这意味着当日志缓冲区已写入主实例和辅助实例的日志文件时，日志写入成功。 此外，当辅助系统断开连接时（例如由于网络故障），主系统会暂停处理事务，直到重新建立与辅助系统的连接。在这种情况下，不会发生数据丢失。 只能使用参数 \[system\_replication\]/enable\_full\_sync) 设置系统复制的完全同步选项。 若要详细了解如何启用完全同步选项，请参阅“为系统复制启用完全同步选项”。                                                                                                                                                                                                                                                                                                              |
+| **异步**                    | 异步 (mode=async) 表示主系统以异步方式将重做日志缓冲区发送到辅助系统。 当事务已写入主系统的日志文件，并通过网络发送到辅助系统时，主系统会提交该事务。 它不会等待辅助系统进行确认。 此选项提供更好的性能，因为无需等待辅助系统中的日志 I/O。 辅助系统上所有服务的数据库一致性得到保障。 但是，这样更容易丢失数据。 接管时可能会丢失数据更改。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 1.  下面是需要在节点 1（主要节点）上执行的操作。
     1. 确保数据库日志模式设置为“常规”。
@@ -1052,7 +1062,11 @@ global.ini
 3.  创建克隆的 SAPHanaTopology 资源。
     SAPHanaTopology 资源正在收集每个节点上 SAP HANA 系统复制的状态和配置。 SAPHanaTopology 要求配置以下属性。
        ```
-       pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 InstanceNumber=00 --clone clone-max=2 clone-node-max=1    interleave=true
+       pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 op start timeout=600 \
+       op stop timeout=300 \
+       op monitor interval=10 timeout=600 \
+       clone clone-max=2 clone-node-max=1 interleave=true
+
        ```
 
     | 属性名称 | 说明  |
@@ -1064,26 +1078,15 @@ global.ini
        ```
        pcs resource show SAPHanaTopology_HR2_00
    
-       InstanceNumber 2-digit SAP Instance identifier.
-       pcs resource show SAPHanaTopology_HR2_00-clone
-   
        Clone: SAPHanaTopology_HR2_00-clone
-   
         Meta Attrs: clone-max=2 clone-node-max=1 interleave=true
-   
-        Resource: SAPHanaTopology_HR2_00 (class=ocf provider=heartbeat
-       type=SAPHanaTopology)
-   
-        Attributes: InstanceNumber=00 SID=HR2
-   
-        Operations: monitor interval=60 timeout=60
-       (SAPHanaTopology_HR2_00-monitor-interval-60)
-   
-        start interval=0s timeout=180
-       (SAPHanaTopology_HR2_00-start-interval-0s)
-   
-        stop interval=0s timeout=60 (SAPHanaTopology_HR2_00-stop-interval-0s)
-   
+        Resource: SAPHanaTopology_HR2_00 (class=ocf provider=heartbeat type=SAPHanaTopology)
+         Attributes: InstanceNumber=00 SID=HR2
+         Operations: monitor interval=60 timeout=60 (SAPHanaTopology_HR2_00-monitor-interval-60)
+                     start interval=0s timeout=180 (SAPHanaTopology_HR2_00-start-interval-0s)
+                     stop interval=0s timeout=60 (SAPHanaTopology_HR2_00-stop-interval-0s)
+       
+         
        ```
 
 4.  创建主要/辅助 SAPHana 资源。
@@ -1100,39 +1103,32 @@ global.ini
 
 5.  创建 HANA 资源。
     ```
-    pcs resource create SAPHana_HR2_00 SAPHana SID=HR2 InstanceNumber=00 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200   AUTOMATED_REGISTER=true primary notify=true clone-max=2 clone-node-max=1 interleave=true
+    pcs resource create SAPHana_HR2_00 SAPHana SID=HR2 InstanceNumber=00 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=true op start timeout=3600 \
+    op stop timeout=3600 \
+    op monitor interval=61 role="Slave" timeout=700 \
+    op monitor interval=59 role="Master" timeout=700 \
+    op promote timeout=3600 \
+    op demote timeout=3600 \
+    master meta notify=true clone-max=2 clone-node-max=1 interleave=true
+
 
     pcs resource show SAPHana_HR2_00-primary
 
 
     Primary: SAPHana_HR2_00-primary
-
-        Meta Attrs: clone-max=2 clone-node-max=1 interleave=true notify=true
-
-        Resource: SAPHana_HR2_00 (class=ocf provider=heartbeat type=SAPHana)
-
-        Attributes: AUTOMATED_REGISTER=false DUPLICATE_PRIMARY_TIMEOUT=7200
-    InstanceNumber=00 PREFER_SITE_TAKEOVER=true SID=HR2
-
-        Operations: demote interval=0s timeout=320
-    (SAPHana_HR2_00-demote-interval-0s)
-
-        monitor interval=120 timeout=60 (SAPHana_HR2_00-monitor-interval-120)
-
-        monitor interval=121 role=Secondary timeout=60
-    (SAPHana_HR2_00-monitor-
-
-        interval-121)
-
-        monitor interval=119 role=Primary timeout=60 (SAPHana_HR2_00-monitor-
-
-        interval-119)
-
-        promote interval=0s timeout=320 (SAPHana_HR2_00-promote-interval-0s)
-
-        start interval=0s timeout=180 (SAPHana_HR2_00-start-interval-0s)
-
-        stop interval=0s timeout=240 (SAPHana_HR2_00-stop-interval-0s)
+     Meta Attrs: clone-max=2 clone-node-max=1 interleave=true notify=true
+     Resource: SAPHana_HR2_00 (class=ocf provider=heartbeat type=SAPHana)
+      Attributes: AUTOMATED_REGISTER=false DUPLICATE_PRIMARY_TIMEOUT=7200 InstanceNumber=00 PREFER_SITE_TAKEOVER=true SID=HR2
+      Operations: demote interval=0s timeout=320 (SAPHana_HR2_00-demote-interval-0s)
+                  monitor interval=120 timeout=60 (SAPHana_HR2_00-monitor-interval-120)
+                  monitor interval=121 role=Secondary timeout=60 (SAPHana_HR2_00-monitor-
+                  interval-121)
+                  monitor interval=119 role=Primary timeout=60 (SAPHana_HR2_00-monitor-
+                  interval-119)
+                  promote interval=0s timeout=320 (SAPHana_HR2_00-promote-interval-0s)
+                  start interval=0s timeout=180 (SAPHana_HR2_00-start-interval-0s)
+                  stop interval=0s timeout=240 (SAPHana_HR2_00-stop-interval-0s)
+   
 
     
     
@@ -1318,3 +1314,10 @@ pcs cluster node clear node1
 ```
 
 是否优先使用自动注册取决于客户场景。 在接管后自动重新注册节点对于操作团队而言会更方便。 但是，你可能希望手动注册节点，以便能够先运行额外的测试来确保一切符合预期。
+
+##  <a name="references"></a>参考
+
+1. [pacemaker 群集中纵向扩展的自动 SAP HANA 系统复制](https://access.redhat.com/articles/3397471)
+2. [RHEL 高可用性群集的支持策略 - 管理群集中的 SAP HANA](https://access.redhat.com/articles/3397471)
+3. [在 Azure 中的 RHEL 上设置 Pacemaker - Azure 虚拟机](high-availability-guide-rhel-pacemaker.md)
+4. [通过 Azure 门户控制 Azure HANA 大型实例 - Azure 虚拟机](hana-li-portal.md)

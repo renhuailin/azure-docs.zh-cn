@@ -5,14 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: c953668d6b2e364e6e703b1769317f1c520317ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions
+ms.openlocfilehash: b6483ef0e034f695da1e03475ca2a4b716773684
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104654367"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749639"
 ---
 # <a name="about-expressroute-fastpath"></a>关于 ExpressRoute FastPath
 
@@ -44,11 +45,19 @@ FastPath 仍要求创建一个虚拟网络网关，以在虚拟网络和本地�
 
 * 网关子网中的 UDR：此 UDR 不会影响 FastPath 从本地网络直接发送到 Azure 虚拟网络中的虚拟机的网络流量。 
 
-* VNet 对等互连：如果有其他虚拟网络与连接到 ExpressRoute 的虚拟网络对等互连，则来自本地网络的网络流量与其他虚拟网络之间的网络流量（例如，所谓的“轮辐”VNet）将继续发送到虚拟网络网关。 解决方法是将所有虚拟网络直接连接到 ExpressRoute 线路。
-
 * 基本负载均衡器：如果在虚拟网络中部署基本的内部负载均衡器，或者在虚拟网络中部署的 Azure PaaS 服务使用基本的内部负载均衡器，则从本地网络到托管在基本负载均衡器上的虚拟 IP 的网络流量将发送到虚拟网络网关。 解决方案是将基本负载均衡器升级到[标准负载均衡器](../load-balancer/load-balancer-overview.md)。
 
 * 专用链接：如果是从本地网络连接到虚拟网络中的[专用终结点](../private-link/private-link-overview.md)，则连接将通过虚拟网络网关。
+
+## <a name="public-preview"></a>公共预览版
+
+以下 FastPath 功能以公共预览版形式提供：
+
+**VNet 对等互连** - FastPath 会绕过 ExpressRoute 虚拟网络网关，将流量直接发送到与连接到 ExpressRoute 的虚拟网络对等互连的虚拟网络中部署的任何 VM。
+
+请参阅[如何注册 ExpressRoute FastPath 功能](expressroute-howto-linkvnet-arm.md#enroll-in-expressroute-fastpath-features-preview)。
+
+在所有区域中可用。
  
 ## <a name="next-steps"></a>后续步骤
 

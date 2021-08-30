@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1fe78687b8cd200bce6eb0ce75f54fb603aa13ae
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: d4eef7e7470e9dbdd37613165f0ea5cb3b295762
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671850"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729474"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>针对虚拟网络对等互连配置 VPN 网关传输
 
@@ -22,7 +22,7 @@ ms.locfileid: "110671850"
 
 ![网关传输示意图](./media/vpn-gateway-peering-gateway-transit/gatewaytransit.png)
 
-在图中，对等互连的虚拟网络通过网关传输来使用 Hub-RM 中的 Azure VPN 网关。 在 VPN 网关上提供的连接（包括 S2S 连接、P2S 连接和 VNet 到 VNet 连接）适用于所有三种虚拟网络。 此传输选项适用于在相同的或不同的部署模型之间进行对等互连。 如果要配置不同部署模型之间的传输，则中心虚拟网络和虚拟网络网关必须采用资源管理器部署模型，而不是经典部署模型。
+在图中，对等互连的虚拟网络通过网关传输来使用 Hub-RM 中的 Azure VPN 网关。 在 VPN 网关上提供的连接（包括 S2S 连接、P2S 连接和 VNet 到 VNet 连接）适用于所有三种虚拟网络。 此传输选项适用于在相同的或不同的部署模型之间进行对等互连。 如果要配置不同部署模型之间的传输，则中心虚拟网络和虚拟网络网关必须采用[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)，而不是经典部署模型。
 >
 
 在中心辐射型网络体系结构中，辐射虚拟网络可以通过网关传输共享中心的 VPN 网关，不必在每个辐射虚拟网络中部署 VPN 网关。 通往网关连接的虚拟网络或本地网络的路由会通过网关传输传播到对等互连的虚拟网络的路由表。 可以禁用源自 VPN 网关的自动路由传播。 使用“禁用 BGP 路由传播”选项创建一个路由表，将路由表关联到子网，防止将路由分发到这些子网。 有关详细信息，请参阅[虚拟网络路由表](../virtual-network/manage-route-table.md)。

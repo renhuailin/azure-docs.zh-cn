@@ -7,18 +7,18 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 5b03806b234e0f52453211bce0e468610c14a299
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b99df2f95838fe1913876a3e6a138935806df836
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411208"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724659"
 ---
-# <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>已启用 Azure Arc 的超大规模 PostgreSQL 服务器组放置
+# <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>已启用 Azure Arc 的 PostgreSQL 超大规模服务器组放置
 
-本文将举例介绍如何将已启用 Azure Arc 的超大规模 PostgreSQL 服务器组的 PostgreSQL 实例放置在托管它们的 Kubernetes 群集的物理节点上。 
+本文将举例说明如何将已启用 Azure Arc 的 PostgreSQL 超大规模服务器组的 PostgreSQL 实例放置在托管它们的 Kubernetes 群集的物理节点上。 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -48,7 +48,7 @@ aks-agentpool-42715708-vmss000003   Ready    agent   11h   v1.17.9
 
 :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="Kubernetes 群集中分组的 4 个节点的逻辑表示":::
 
-Kubernetes 群集托管一个 Azure Arc 数据控制器和一个已启用 Azure Arc 的超大规模 PostgreSQL 服务器组。 此服务器组由三个 PostgreSQL 实例构成：一个协调器和两个工作器。
+Kubernetes 群集托管一个 Azure Arc 数据控制器和一个已启用 Azure Arc 的 PostgreSQL 超大规模服务器组。 此服务器组由三个 PostgreSQL 实例构成：一个协调器和两个工作器。
 
 用命令列出 Pod：
 
@@ -64,7 +64,7 @@ postgres01c-0         3/3     Running   0          9h
 postgres01w-0         3/3     Running   0          9h
 postgres01w-1         3/3     Running   0          9h
 ```
-其中每个 Pod 都托管一个 PostgreSQL 实例。 这些 Pod 共同构成了已启用 Azure Arc 的超大规模 PostgreSQL 服务器组：
+其中每个 Pod 都托管一个 PostgreSQL 实例。 这些 Pod 共同构成了已启用 Azure Arc 的 PostgreSQL 超大规模服务器组：
 
 ```output
 Pod name        Role in the server group
@@ -119,27 +119,27 @@ Containers:
 …
 ```
 
-已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中的每个 Pod 托管以下三个容器：
+已启用 Azure Arc 的 PostgreSQL 超大规模服务器组中的每个 Pod 托管以下三个容器：
 
 |容器|说明
 |----|----|
 |`Fluentbit` |数据 * 日志收集器： https://fluentbit.io/
-|`Postgres`|已启用 Azure Arc 的超大规模 PosgreSQL 服务器组的 PostgreSQL 实例部分
+|`Postgres`|已启用 Azure Arc 的 PosgreSQL 超大规模服务器组的 PostgreSQL 实例部分
 |`Telegraf` |指标收集器： https://www.influxdata.com/time-series-platform/telegraf/
 
 体系结构如下：
 
 :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="3 个 Pod，每个 Pod 放置在单独的节点上":::
 
-这意味着，此时，构成已启用 Azure Arc 的超大规模 PostgreSQL 服务器组的每个 PostgreSQL 实例托管在 Kubernetes 容器中的特定物理主机上。 此配置可让已启用 Azure Arc 的超大规模 PostgreSQL 服务器组实现最佳性能，因为每个角色（协调器和工作器）均使用了每个物理节点的资源。 这些资源不会在多个 PostgreSQL 角色之间共享。
+这意味着，此时，构成已启用 Azure Arc 的 PostgreSQL 超大规模服务器组的每个 PostgreSQL 实例托管在 Kubernetes 容器中的特定物理主机上。 此配置可让已启用 Azure Arc 的 PostgreSQL 超大规模服务器组实现最佳性能，因为每个角色（协调器和工作器）均使用了每个物理节点的资源。 这些资源不会在多个 PostgreSQL 角色之间共享。
 
-## <a name="scale-out-azure-arc-enabled-postgresql-hyperscale"></a>横向扩展已启用 Azure Arc 的超大规模 PostgreSQL
+## <a name="scale-out-azure-arc-enabled-postgresql-hyperscale"></a>横向扩展已启用 Azure Arc 的 PostgreSQL 超大规模服务器组
 
 现在，进行横向扩展，向服务器组添加第三个工作器节点并观察发生的情况。 此操作将创建一个托管在第四个 Pod 中的第四个 PostgreSQL 实例。
 运行以下命令进行横向扩展：
 
-```console
-azdata arc postgres server edit --name postgres01 --workers 3
+```azurecli
+az postgres arc-server edit --name postgres01 --workers 3 --k8s-namespace <namespace> --use-k8s
 ```
 
 这将生成以下输出：
@@ -151,8 +151,8 @@ postgres01 is Ready
 
 列出 Azure Arc 数据控制器中部署的服务器组，并验证该服务器组现在是否运行了三个工作器。 运行以下命令：
 
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 观察是否从两个工作器扩展到三个工作器：
@@ -211,7 +211,7 @@ Node:         aks-agentpool-42715708-vmss000000
 
 为什么不将新的工作器/Pod 放置在 Kubernetes 群集的剩余物理节点 aks-agentpool-42715708-vmss000003 上？
 
-原因在于，Kubernetes 群集的最后一个物理节点实际上托管了多个 Pod，这些 Pod 托管了运行启用 Azure Arc 的数据服务所需的其他组件。 Kubernetes 评估认为，在计划时最适合托管额外工作器的物理节点是 aks-agentpool-42715708-vmss000000。 
+原因在于，Kubernetes 群集的最后一个物理节点实际上托管了多个 Pod，这些 Pod 托管运行已启用 Azure Arc 的数据服务所需的其他组件。 Kubernetes 评估认为，在计划时最适合托管额外工作器的物理节点是 aks-agentpool-42715708-vmss000000。 
 
 使用与上面相同的命令;我们可以看到每个物理节点所托管的内容：
 
@@ -237,16 +237,16 @@ Node:         aks-agentpool-42715708-vmss000000
 
 :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="各个节点上命名空间中的所有 Pod":::
 
-如上所述，已启用 Azure Arc 的超大规模 Postgres 服务器组的协调器节点 (Pod 1) 与服务器组的第三个工作器节点 (Pod 4) 共享相同的物理资源。 这是可接受的，因为相较于工作器节点而言，协调器节点使用的资源通常非常少。 因此，请谨慎选择：
+如上所述，已启用 Azure Arc 的 PosgreSQL 超大规模服务器组的协调器节点 (Pod 1) 与服务器组的第三个工作器节点 (Pod 4) 共享相同的物理资源。 这是可接受的，因为相较于工作器节点而言，协调器节点使用的资源通常非常少。 因此，请谨慎选择：
 - Kubernetes 群集的大小以及群集每个物理节点（内存、vCore）的特征
 - Kubernetes 群集中的物理节点数量：
 - 在 Kubernetes 群集上托管的应用程序或工作负载。
 
-在 Kubernetes 群集上托管过多工作负载的影响在于：可能会使已启用 Azure Arc 的超大规模 PostgreSQL 服务器组受到限制。 如果发生这种情况，那么横向扩展对于用户的意义可能没有那么大。 用户从系统中获得的性能不仅仅是物理节点的放置或物理特性，也不仅仅是存储系统。 用户获得的性能还在于如何配置 Kubernetes 群集内部运行的每一个资源（包括已启用 Azure Arc 的超大规模 PostgreSQL），例如为内存和 vCore 设置的请求和限制。 在指定的 Kubernetes 群集上可以托管的工作负载量是相对于 Kubernetes 群集的特性、工作负载的性质、用户数量、Kubernetes 群集的工作方式而言……
+在 Kubernetes 群集上托管过多工作负载的影响在于：可能会使已启用 Azure Arc 的 PosgreSQL 超大规模服务器组受到限制。 如果发生这种情况，那么横向扩展对于用户的意义可能没有那么大。 用户从系统中获得的性能不仅仅是物理节点的放置或物理特性，也不仅仅是存储系统。 用户获得的性能还取决于在 Kubernetes 群集内部运行的每一个资源的配置方式（包括已启用 Azure Arc 的 PostgreSQL 超大规模服务器组），例如为内存和 vCore 设置的请求和限制。 在指定的 Kubernetes 群集上可以托管的工作负载量是相对于 Kubernetes 群集的特性、工作负载的性质、用户数量、Kubernetes 群集的工作方式而言……
 
 ## <a name="scale-out-aks"></a>横向扩展 AKS
 
-说明一下，横向扩展 AKS 群集和已启用 Azure Arc 的超大规模 PostgreSQL 服务器能够最大程度地从已启用 Azure Arc 的超大规模 PostgreSQL 高性能中获益。
+说明一下，横向扩展 AKS 群集和已启用 Azure Arc 的 PosgreSQL 超大规模服务器组能够最大程度地从已启用 Azure Arc 的 PostgreSQL 超大规模服务器组的高性能中获益。
 向 AKS 群集添加第五个节点：
 
 :::row:::
@@ -282,12 +282,12 @@ kubectl describe node aks-agentpool-42715708-vmss000004
 
 我们观察看到，Kubernetes 群集的新物理节点仅托管 Azure Arc 数据服务所需的指标 Pod。 请注意，在此示例中，我们仅重点展示了 Arc 数据控制器的命名空间，而没有展示其他 Pod。
 
-## <a name="scale-out-azure-arc-enabled-postgresql-hyperscale-again"></a>再次横向扩展已启用 Azure Arc 的超大规模 PostgreSQL
+## <a name="scale-out-azure-arc-enabled-postgresql-hyperscale-again"></a>再次横向扩展已启用 Azure Arc 的 PostgreSQL 超大规模服务器组
 
-第五个物理节点尚未托管任何工作负载。 当我们横向扩展已启用 Azure Arc 的超大规模 PostgreSQL 时，Kubernetes 将优化新 PostgreSQL Pod 的放置，而不应并置在已托管更多工作负载的物理节点上。 运行以下命令，将已启用 Azure Arc 的超大规模 PostgreSQL 从 3 个工作器扩展到 4 个工作器。 在操作结束时，服务器组将组成，并分布在五个 PostgreSQL 实例中，一个协调器和四个工作器中。
+第五个物理节点尚未托管任何工作负载。 当我们横向扩展已启用 Azure Arc 的 PostgreSQL 超大规模服务器组时，Kubernetes 会优化新 PostgreSQL Pod 的放置，不会将其并置在已托管更多工作负载的物理节点上。 运行以下命令，将已启用 Azure Arc 的 PostgreSQL 超大规模服务器组从 3 个工作器扩展到 4 个工作器。 在操作结束时，服务器组将组成，并分布在五个 PostgreSQL 实例中，一个协调器和四个工作器中。
 
-```console
-azdata arc postgres server edit --name postgres01 --workers 4
+```azurecli
+az postgres arc-server edit --name postgres01 --workers 4 --k8s-namespace <namespace> --use-k8s
 ```
 
 这将生成以下输出：
@@ -299,8 +299,8 @@ postgres01 is Ready
 
 列出数据控制器中部署的服务器组，并验证该服务器组现在是否运行了四个工作器：
 
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 观察服务器组是否从三个工作器扩展到了四个工作器。 
@@ -359,15 +359,15 @@ Kubernetes 已将新的 PostgreSQL Pod 安排在 Kubernetes 群集中负载量�
 
 ## <a name="summary"></a>摘要
 
-横向扩展已启用 Azure Arc 的服务器组实现了良好的可扩展性和性能，为了更充分地利用这些优势，应避免在 Kubernetes 群集内发生资源争用：
-- 在已启用 Azure Arc 的超大规模 PostgreSQL 服务器组和同一 Kubernetes 群集上托管的其他工作负载之间
-- 在用于构成已启用 Azure Arc 的超大规模 PostgreSQL 服务器组的所有 PostgreSQL 实例之间
+横向扩展已启用 Azure Arc 的服务器组实现了良好的可伸缩性和性能，为了更充分地利用这些优势，应避免 Kubernetes 群集内的以下各方发生资源争用：
+- 已启用 Azure Arc 的 PosgreSQL 超大规模服务器组与同一 Kubernetes 群集上托管的其他工作负载之间
+- 构成已启用 Azure Arc 的 PosgreSQL 超大规模服务器组的所有 PostgreSQL 实例之间
 
 有以下多种方法可以避免上述问题：
-- 同时横向扩展 Kubernetes 和启用 Azure Arc 的超大规模 Postgres：考虑采用相同的方式对 Kubernetes 群集和已启用 Azure Arc 的超大规模 PostgreSQL 服务器组进行横向扩展。 对于添加到服务器组的每个工作器，添加一个物理节点到群集。
-- 横向扩展已启用超大规模 Azure Arc 的 Postgres，而不扩展 Kubernetes：对托管在 Kubernetes(包括已启用 Azure Arc 的超大规模 PostgreSQL）中的工作负载设置正确的资源约束（对内存和 vCore 的请求和限制)，用户将能够并置 Kubernetes 上的工作负载并降低资源争用的风险。 需要确保 Kubernetes 群集物理节点的物理特性遵循定义的资源约束。 在工作负载随着时间不断变化或 Kubernetes 群集中工作负载增多的情况下，应确保始终保持一个均衡点。
+- 同时横向扩展 Kubernetes 和启用 Azure Arc 的 PostgreSQL 超大规模服务器组：考虑采用相同的方式对 Kubernetes 群集和已启用 Azure Arc 的 PosgreSQL 超大规模服务器组进行横向扩展。 对于添加到服务器组的每个工作器，添加一个物理节点到群集。
+- 横向扩展已启用 Azure Arc 的 PostgreSQL 超大规模服务器组，而不扩展 Kubernetes：通过对托管在 Kubernetes（包括已启用 Azure Arc 的 PostgreSQL 超大规模服务器组）中的工作负载设置正确的资源约束（对内存和 vCore 的请求和限制），用户能够将工作负载并置到 Kubernetes 上并降低资源争用的风险。 需要确保 Kubernetes 群集物理节点的物理特性遵循定义的资源约束。 在工作负载随着时间不断变化或 Kubernetes 群集中工作负载增多的情况下，应确保始终保持一个均衡点。
 - 使用 Kubernetes 机制（Pod 选择器、相关性、反相关性）来影响 Pod 的放置。
 
 ## <a name="next-steps"></a>后续步骤
 
-[通过增加更多的工作器节点横向扩展已启用 Azure Arc 的超大规模 PostgreSQL 服务器组](scale-out-in-postgresql-hyperscale-server-group.md)
+[通过增加更多的工作器节点横向扩展已启用 Azure Arc 的 PosgreSQL 超大规模服务器组](scale-out-in-postgresql-hyperscale-server-group.md)

@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 04/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 48888f9ca840888310aebcc82d38d2af351a8611
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 9fc7a8d5b27da251f13f2c9dfeffa03f7cdbd149
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277887"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114452552"
 ---
 # <a name="manage-modules-in-azure-automation"></a>管理 Azure 自动化中的模块
 
@@ -38,6 +38,9 @@ Azure 自动化使用许多 PowerShell 模块在 runbook DSC 配置中启用 run
 由于包含的模块和 cmdlet 数量众多，因此很难事先知道哪个 cmdlet 会进行不受支持的调用。 通常，对于需要提升的访问权限以及需要凭据作为参数的 cmdlet，或者对于与网络相关的 cmdlet，我们都知道其问题所在。 沙盒不支持执行完全堆栈网络操作的任何 cmdlet，包括 AIPService PowerShell 模块中的 [Connect-AipService](/powershell/module/aipservice/connect-aipservice) 和 DNSClient 模块中的 [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname)。
 
 这些是沙盒的已知限制。 建议的解决方法是部署[混合 Runbook 辅助角色](../automation-hybrid-runbook-worker.md)或使用 [Azure Functions](../../azure-functions/functions-overview.md)。
+
+> [!IMPORTANT] 
+> 不要在任何专门使用 Az 模块执行的脚本中包含关键字“AzureRm”。 即使在注释中包含关键字，也可能导致加载 AzureRm，然后与 Az 模块冲突。
 
 ## <a name="default-modules"></a>默认模块
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 07/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 680563e0688d11e02f79f3c184b38d5a80bafeb0
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 01d8f23331525443a9f83245b8eec2b402e92d6e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480350"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443015"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>为 NFS 卷访问配置具有扩展组的 ADDS LDAP
 
@@ -29,11 +29,11 @@ ms.locfileid: "110480350"
 
 ## <a name="considerations"></a>注意事项
 
+* 只能在创建卷期间启用具有扩展组功能的 LDAP。 无法在现有卷上追溯启用此功能。  
+
 * 具有扩展组的 LDAP 仅支持用于 Active Directory 域服务 (ADDS) 或 Azure Active Directory 域服务 (AADDS)。 不支持 OpenLDAP 或其他第三方 LDAP 目录服务。 
 
 * 如果使用 Azure Active Directory 域服务 (AADDS)，则不能启用 LDAP over TLS。  
-
-* 如果启用具有扩展组的 LDAP 功能，则启用 LDAP 的 [Kerberos 卷](configure-kerberos-encryption.md)将无法正确显示 LDAP 用户的文件所有权。 LDAP 用户创建的文件或目录的所有者将默认为 `root` 用户而非实际 LDAP 用户。 但是，`root` 帐户可以使用 `chown <username> <filename>` 命令来手动更改文件所有权。 
 
 * 创建卷后，无法修改 LDAP 选项设置（启用或禁用）。  
 

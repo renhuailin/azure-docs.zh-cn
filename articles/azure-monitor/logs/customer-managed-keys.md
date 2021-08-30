@@ -4,14 +4,14 @@ description: 使用 Azure Key Vault 密钥配置客户管理的密钥以加密 L
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 04/21/2021
+ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: fc66f79e09021a10c2dde3cc973cd608baeedc32
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: ef47a97381c0c01afb13b66495167795c49b03c3
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061607"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444716"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -27,9 +27,9 @@ Azure Monitor 确保使用 Microsoft 管理的密钥 (MMK) 静态加密所有数
 
 客户管理的密钥在[专用的群集](./logs-dedicated-clusters.md)上提供，可提供更高的保护级别和控制。 引入到专用群集的数据进行两次加密 - 一次在服务级别使用 Microsoft 管理的密钥或客户管理的密钥，一次在基础结构级别使用两种不同的加密算法和两个不同的密钥。 [双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。 专用群集还允许通过[密码箱](#customer-lockbox-preview)控制来保护数据。
 
-过去 14 天内引入的数据也保存在热缓存（受 SSD 支持）中，以实现高效的查询引擎操作。 此数据保持使用 Microsoft 密钥进行加密，而不管客户管理的密钥的配置如何，但你对 SSD 数据的控制将遵循[密钥吊销](#key-revocation)规定。 我们正致力于在 2021 年的上半年使用客户管理的密钥加密 SSD 数据。
+过去 14 天内引入的数据也保存在热缓存（受 SSD 支持）中，以实现高效的查询引擎操作。 此数据保持使用 Microsoft 密钥进行加密，而不管客户管理的密钥的配置如何，但你对 SSD 数据的控制将遵循[密钥吊销](#key-revocation)规定。 我们正致力于在 2021 年下半年使用客户管理的密钥对 SSD 数据进行加密。
 
-Log Analytics 专用群集使用产能预留[定价模型](./logs-dedicated-clusters.md#cluster-pricing-model)，起始价格为 1000 GB/天。
+Log Analytics 专用群集[定价模型](./logs-dedicated-clusters.md#cluster-pricing-model)要求承诺层始于 500 GB/天，其值可以为 500、1000、2000 或 5000 GB/天。
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>客户管理的密钥在 Azure Monitor 中的操作方式
 
@@ -83,7 +83,7 @@ Azure 门户中当前不支持客户管理的密钥的配置，可以通过 [Pow
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-空值
+不可用
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -93,12 +93,12 @@ Azure 门户中当前不支持客户管理的密钥的配置，可以通过 [Pow
 
 使用 REST 时，响应最初返回 HTTP 状态代码 202（接受）和包含 Azure-AsyncOperation 属性的标头：
 ```json
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2021-06-01"
 ```
 
 若要查看异步操作的状态，请向 Azure-AsyncOperation 标头中的终结点发送 GET 请求：
 ```rst
-GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2021-06-01
 Authorization: Bearer <token>
 ```
 
@@ -106,7 +106,7 @@ Authorization: Bearer <token>
 
 ## <a name="storing-encryption-key-kek"></a>存储加密密钥 (KEK)
 
-在计划群集的区域中创建 Azure 密钥保管库，或使用现有 Azure 密钥保管库，然后生成或导入用于日志加密的密钥。 必须将 Azure Key Vault 配置为可恢复，以保护密钥以及对 Azure Monitor 中的数据的访问权限。 可以验证是否应启用 Key Vault 中“软删除”和“清除保护”属性下的此配置 。
+在规划群集的区域中创建或使用现有的 Azure Key Vault，然后生成或导入用于日志加密的密钥。 必须将 Azure Key Vault 配置为可恢复，以保护密钥以及对 Azure Monitor 中的数据的访问权限。 可以验证是否应启用 Key Vault 中“软删除”和“清除保护”属性下的此配置 。
 
 ![软删除和清除保护设置](media/customer-managed-keys/soft-purge-protection.png)
 
@@ -117,8 +117,7 @@ Authorization: Bearer <token>
 
 ## <a name="create-cluster"></a>创建群集
 
-群集支持两种[托管标识类型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)：系统分配的标识和用户分配的标识，而单一标识可根据自己的场景在群集中进行自定义。 
-- 当标识 `type` 设置为“SystemAssigned”时，系统分配的托管标识会更加简单，并在群集创建过程中自动生成。 此标识稍后可用于授予对 Key Vault 的存储访问权限，以便进行包装和展开操作。 
+群集支持系统分配的托管标识，标识的 `type` 属性应设置为 `SystemAssigned`。 标识是在创建群集时自动生成的，以后在执行包装和解包操作时，可以使用该标识向存储授予对密钥保管库的访问权限。 
   
   群集中系统分配的托管标识的标识设置
   ```json
@@ -129,23 +128,7 @@ Authorization: Bearer <token>
   }
   ```
 
-- 如果要在创建群集时配置客户管理的密钥，则应事先在 Key Vault 中授予密钥和用户分配的标识，然后使用以下设置创建群集：标识 `type` 为“UserAssigned”，`UserAssignedIdentities` 具有标识的资源 ID。
-
-  群集中用户分配的托管标识的标识设置
-  ```json
-  {
-  "identity": {
-  "type": "UserAssigned",
-    "userAssignedIdentities": {
-      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
-      }
-  }
-  ```
-
-> [!IMPORTANT]
-> 如果 Key Vault 位于专用链接 (vNet) 中，则不能使用用户分配的托管标识。 在这种情况下，可以使用系统分配的托管标识。
-
-请遵循[“专用群集”一文](./logs-dedicated-clusters.md#creating-a-cluster)中说明的过程。 
+请遵循[“专用群集”一文](./logs-dedicated-clusters.md#create-a-dedicated-cluster)中说明的过程。 
 
 ## <a name="grant-key-vault-permissions"></a>授予 Key Vault 权限
 
@@ -165,8 +148,8 @@ Authorization: Bearer <token>
 此步骤使用要用于数据加密的密钥和版本更新 Azure Monitor 存储。 更新后，新密钥将用于包装和解包到存储密钥 (AEK)。
 
 >[!IMPORTANT]
->- 密钥轮换可以是自动操作，也可以要求显式密钥更新，请参阅[密钥轮换](#key-rotation)，确定适合自己的方法后再更新群集中的密钥标识符详细信息。
->- 群集更新不应在同一操作中同时包含标识和密钥标识符详细信息。 如果两者都需要更新，则应在两次连续操作中进行更新。
+>- 密钥轮换可以是自动的，也可以要求显式密钥更新，请参阅[密钥轮换](#key-rotation)以确定适合的方法，然后再更新群集中的密钥标识符详细信息。
+>- 群集更新不应在同一个操作中同时包含标识和密钥标识符详细信息。 如果需要对两者进行更新，则更新应为两个连续操作。
 
 ![授予 Key Vault 权限](media/customer-managed-keys/key-identifier-8bit.png)
 
@@ -192,7 +175,7 @@ Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -Cl
 # <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name?api-version=2020-08-01
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name?api-version=2021-06-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -205,14 +188,14 @@ Content-type: application/json
   },
   "sku": {
     "name": "CapacityReservation",
-    "capacity": 1000
+    "capacity": 500
   }
 }
 ```
 
 **响应**
 
-完成密钥的传播需要几分钟。 可以通过两种方式检查更新状态：
+密钥的传播需要一段时间才能完成。 可以通过两种方式检查更新状态：
 1. 从响应中复制 Azure-AsyncOperation URL 值，并进行[异步操作状态检查](#asynchronous-operations-and-status-check)。
 2. 在群集上发送 GET 请求，然后查看 KeyVaultProperties 属性。 你最近更新的密钥应返回到响应中。
 
@@ -222,13 +205,12 @@ Content-type: application/json
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principle-id"
-    },
+    "principalId": "principal-id"
+  },
   "sku": {
-    "name": "capacityReservation",
-    "capacity": 1000,
-    "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
-    },
+    "name": "capacityreservation",
+    "capacity": 500
+  },
   "properties": {
     "keyVaultProperties": {
       "keyVaultUri": "https://key-vault-name.vault.azure.net",
@@ -236,13 +218,21 @@ Content-type: application/json
       "keyVersion": "current-version"
       },
     "provisioningState": "Succeeded",
-    "billingType": "cluster",
-    "clusterId": "cluster-id"
+    "clusterId": "cluster-id",
+    "billingType": "Cluster",
+    "lastModifiedDate": "last-modified-date",
+    "createdDate": "created-date",
+    "isDoubleEncryptionEnabled": false,
+    "isAvailabilityZonesEnabled": false,
+    "capacityReservationProperties": {
+      "lastSkuUpdate": "last-sku-modified-date",
+      "minCapacity": 500
+    }
   },
   "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
   "name": "cluster-name",
   "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name"
+  "location": "cluster-region"
 }
 ```
 
@@ -255,13 +245,13 @@ Content-type: application/json
 
 需要具有对工作区和群集的“写入”权限才能执行此操作，其中包括 `Microsoft.OperationalInsights/workspaces/write` 和 `Microsoft.OperationalInsights/clusters/write`。
 
-请遵循[“专用群集”一文](./logs-dedicated-clusters.md#link-a-workspace-to-cluster)中说明的过程。
+请遵循[“专用群集”一文](./logs-dedicated-clusters.md#link-a-workspace-to-a-cluster)中说明的过程。
 
 ## <a name="key-revocation"></a>密钥吊销
 
 > [!IMPORTANT]
 > - 若要撤销对数据的访问，建议禁用密钥，或删除 Key Vault 中的访问策略。
-> - 如果将群集的 `identity` `type` 设置为 `None`，还可撤销数据访问权，但不建议使用此方法，因为如果不联系支持人员就无法将其还原。
+> - 将群集的 `identity` `type` 设置为 `None` 也会撤销对你的数据的访问权限，但不建议使用此方法，因为在不联系支持人员的情况下无法还原这种访问权限。
 
 群集存储在一小时或更短时间内将始终遵循关键权限的更改，并且存储将变得不可用。 与群集链接的工作区中引入的任何新数据都将被删除，并且无法恢复，数据将变得不可访问，针对这些工作区的查询将会失败。 只要不删除群集和工作区，之前引入的数据就会保留在存储中。 不可访问的数据由数据保留策略管理，并在保留期截止时被清除。 过去 14 天内引入的数据也保存在热缓存（SSD 提供支持）中，以实现高效的查询引擎操作。 它将在进行密钥吊销操作后被删除，并且变得不可访问。
 
@@ -270,19 +260,19 @@ Content-type: application/json
 ## <a name="key-rotation"></a>密钥轮换
 
 密钥轮换具有两种模式： 
-- 自动轮换 - 当你使用 ```"keyVaultProperties"``` 更新群集但省略 ```"keyVersion"``` 属性或将其设置为 ```""``` 时，存储将自动使用最新版本。
+- 自动轮换 - 使用 ```"keyVaultProperties"``` 更新群集，但省略了 ```"keyVersion"``` 属性或将其设置为 ```""``` 时，存储将自动使用最新版本。
 - 显式密钥版本更新 - 更新群集并在 ```"keyVersion"``` 属性中提供密钥版本时，任何新的密钥版本都需要在群集中显式更新 ```"keyVaultProperties"```，请参阅[为群集更新密钥标识符详细信息](#update-cluster-with-key-identifier-details)。 如果在 Key Vault 中生成了新的密钥版本但未在群集中更新它，Log Analytics 群集存储将继续使用之前的密钥。 如果在更新群集中的新密钥之前禁用或删除旧密钥，则你将进入[密钥吊销](#key-revocation)状态。
 
 进行密钥轮换操作后，所有数据都将保持可访问，因为数据始终使用帐户加密密钥 (AEK) 进行加密，而 AEK 目前使用 Key Vault 中的新密钥加密密钥 (KEK) 版本进行加密。
 
-## <a name="customer-managed-key-for-saved-queries-and-log-alerts"></a>用于已存查询和日志警报的客户管理的密钥
+## <a name="customer-managed-key-for-saved-queries-and-log-alerts"></a>用于已保存的查询和日志警报的客户托管的密钥
 
-Log Analytics 中使用的查询语言可以实现丰富的表达，并且可以在添加到查询的注释中或查询语法中包含敏感信息。 某些组织要求将此类信息按照客户管理的密钥的策略进行保护，因此你需要保存使用密钥加密的查询。 使用 Azure Monitor 可以在连接到工作区时将采用密钥加密的已存搜索查询和日志警报查询存储到你自己的存储帐户。 
+Log Analytics 中使用的查询语言可以实现丰富的表达，并且可以在添加到查询的注释中或查询语法中包含敏感信息。 某些组织要求将此类信息按照客户管理的密钥的策略进行保护，因此你需要保存使用密钥加密的查询。 使用 Azure Monitor 可以在连接到工作区时将采用密钥加密的已保存的搜索查询和日志警报查询存储到你自己的存储帐户 。 
 
 > [!NOTE]
 > 根据所使用的方案，可将 Log Analytics 查询保存到各种存储。 在以下方案中，仍使用 Microsoft 密钥 (MMK) 对查询加密，而不考虑客户管理的密钥的配置：Azure Monitor 中的工作簿、Azure 仪表板、Azure 逻辑应用、Azure Notebooks 和自动化 runbook。
 
-自带存储 (BYOS) 并将其链接到工作区时，该服务会将已存搜索查询和日志警报查询上传到存储帐户。 这意味着，可以使用加密 Log Analytics 群集中数据的密钥或其他密钥来控制存储帐户和[静态加密策略](../../storage/common/customer-managed-keys-overview.md)。 但需支付与该存储帐户相关的费用。 
+自带存储 (BYOS) 并将其链接到工作区时，该服务会将已保存的搜索查询和日志警报查询上传到存储帐户 。 这意味着，可以使用加密 Log Analytics 群集中数据的密钥或其他密钥来控制存储帐户和[静态加密策略](../../storage/common/customer-managed-keys-overview.md)。 但需支付与该存储帐户相关的费用。 
 
 **设置用于查询的客户管理的密钥之前需要注意的事项**
 * 需拥有对工作区和存储帐户的“写入”权限
@@ -290,9 +280,9 @@ Log Analytics 中使用的查询语言可以实现丰富的表达，并且可以
 * 存储中的保存搜索视为服务项目，并且其格式可能会发生变化
 * 从工作区删除现有的保存搜索。 复制配置之前需要的所有保存搜索。 可以使用 [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch) 查看 *已存搜索*
 * 不支持查询历史记录，因此无法查看已运行的查询
-* 可以出于保存查询的目的将单个存储帐户链接到工作区，且该帐户可同时用于已存搜索查询和日志警报查询
+* 可以出于保存查询的目的将单个存储帐户链接到工作区，且该帐户可同时用于已保存的搜索查询和日志警报查询 
 * 不支持“固定到仪表板”
-* 触发的日志警报不包含搜索结果或警报查询。 你可以使用[警报维度](../alerts/alerts-unified-log.md#split-by-alert-dimensions)获取已触发警报中的上下文。
+* 触发的日志警报将不包含搜索结果或警报查询。 可以使用[警报维度](../alerts/alerts-unified-log.md#split-by-alert-dimensions)获取触发警报中的上下文。
 
 **为已存搜索查询配置 BYOS**
 
@@ -319,7 +309,7 @@ New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group
 # <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-08-01
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2021-06-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -340,7 +330,7 @@ Content-type: application/json
 
 **为日志警报查询配置 BYOS**
 
-将警报的存储帐户链接到工作区 - 日志警报查询保存在存储帐户中。 
+将“警报”的存储帐户链接到工作区 - 日志警报查询保存在存储帐户中 。 
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
@@ -363,7 +353,7 @@ New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group
 # <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-08-01
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2021-06-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -419,15 +409,15 @@ Content-type: application/json
 
 - Azure Key Vault、群集和工作区必须位于同一区域和同一 Azure Active Directory (Azure AD) 租户，但可以位于不同订阅。
 
-- 群集更新不应在同一操作中同时包含标识和密钥标识符详细信息。 如果两者都需要更新，则应在两次连续操作中进行更新。
+- 群集更新不应在同一个操作中同时包含标识和密钥标识符详细信息。 如果两者都需要更新，则应在两次连续操作中进行更新。
 
 - 当前不能在中国使用密码箱。 
 
 - 对于受支持区域中自 2020 年 10 月开始创建的群集，系统会自动为其配置[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以通过在群集上发送 GET 请求并观察启用了双重加密的群集的 `isDoubleEncryptionEnabled` 值是否为 `true` 来验证是否为你的群集配置了双重加密。 
-  - 如果你创建群集并收到错误“<区域名称> 不支持对群集进行双重加密。”，则你仍可通过在 REST 请求正文中添加 `"properties": {"isDoubleEncryptionEnabled": false}` 以在不使用双重加密的情况下创建群集。
+  - 如果你创建群集并收到错误“区域名称不支持对群集进行双重加密。”，则你仍可通过在 REST 请求正文中添加 `"properties": {"isDoubleEncryptionEnabled": false}` 来创建无双重加密的群集。
   - 创建群集后，无法更改双重加密设置。
 
-  - 如果将群集的 `identity` `type` 设置为 `None`，还可撤销数据访问权，但不建议使用此方法，因为如果不联系支持人员就无法将其还原。 撤销数据访问权的推荐方法是[吊销密钥](#key-revocation)。
+  - 将群集的 `identity` `type` 设置为 `None` 也会撤销对你的数据的访问权限，但不建议使用此方法，因为在不联系支持人员的情况下无法还原这种访问权限。 建议通过[密钥吊销](#key-revocation)来撤销对你的数据的访问权限。
 
   - 如果密钥保管库位于专用链接 (vNet) 中，则不能将客户管理的密钥与用户分配的托管标识一起使用。 在这种情况下，可以使用系统分配的托管标识。
 
@@ -436,11 +426,9 @@ Content-type: application/json
 - Key Vault 可用性的行为
   - 在正常操作中，存储会缓存 AEK 一小段时间，并返回 Key Vault 定期进行解包。
     
-  - 暂时性连接错误 -- 存储通过允许密钥在缓存中保留一小段时间来处理暂时性错误（超时、连接失败、DNS 问题），这可以克服可用性方面的任何小问题。 查询和引入功能将继续运行而不会中断。
+  - Key Vault 连接错误 -- 存储通过允许密钥在缓存中保留一段时间（保留时间与可用性问题的持续时间相同）来处理暂时性错误（超时、连接失败、DNS 问题），这可以克服暂时性的问题和可用性问题。 查询和引入功能将继续运行而不会中断。
     
-  - 实时网站 -- 如果在约 30 分钟内未进行访问，则会导致无法使用存储帐户。 查询功能不可用，引入的数据会使用 Microsoft 密钥缓存几个小时，以避免数据丢失。 恢复对 Key Vault 的访问后，查询将变为可用，临时缓存的数据会引入到数据存储并使用客户管理的密钥进行加密。
-
-  - Key Vault 访问速率 -- Azure Monitor 存储为实现包装和解包操作而访问 Key Vault 的频率介于 6 到 60 秒之间。
+- Key Vault 访问速率 -- Azure Monitor 存储为实现包装和解包操作而访问 Key Vault 的频率介于 6 到 60 秒之间。
 
 - 如果在群集处于预配或更新状态时对其进行更新，则更新将失败。
 
@@ -467,10 +455,9 @@ Content-type: application/json
   -  400 -- 请求的正文为 Null 或格式错误。
   -  400 -- SKU 名称无效。 将 SKU 名称设置为 CapacityReservation。
   -  400 -- 提供了容量，但 SKU 不是 capacityReservation。 将 SKU 名称设置为 CapacityReservation。
-  -  400 -- SKU 容量不足。 将“容量”值设置为 1000 或更高（以 100 (GB) 为度）。
-  -  400 -- SKU 中的容量不在范围内。 应介于 1000 到最大允许容量之间，最大允许容量可在工作区中的“用量和预估成本”下找到。
+  -  400 -- SKU 容量不足。 将容量值设置为 500、1000、2000 或 5000 GB/天。
   -  400 -- 容量锁定 30 天。 更新后 30 天内允许减少容量。
-  -  400 -- 未设置 SKU。 将 SKU 名称设置为 CapacityReservation，将“容量”值设置为 1000 或更高（以 100 (GB) 为增加幅度）。
+  -  400 -- 未设置 SKU。 将 SKU 名称设置为 capacityReservation 并将容量值设置为 500、1000、2000 或 5000 GB/天。
   -  400 -- 标识为 Null 或为空。 设置具有 systemAssigned 类型的标识。
   -  400 -- KeyVaultProperty 是创建时设置的。 创建群集后更新 KeyVaultProperties。
   -  400 -- 现在无法执行操作。 异步操作处于非成功状态。 群集必须完成其操作，才能执行任意更新操作。

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: krsh
 ms.author: krsh
-ms.date: 06/02/2021
-ms.openlocfilehash: 44a31ee5fc8118ad163b5edb582b2a182b75dd3e
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.date: 07/22/2021
+ms.openlocfilehash: 2ff120fbc95fc96bf39f1648f14a5bdf75ee0db2
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525005"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601162"
 ---
 # <a name="create-a-virtual-machine-using-your-own-image"></a>使用自己的映像创建虚拟机
 
@@ -60,7 +60,7 @@ ms.locfileid: "111525005"
 az login
 az provider register --namespace Microsoft.PartnerCenterIngestion --subscription {subscriptionId}
 ```
- 
+
 ```powershell
 Connect-AzAccount
 Select-AzSubscription -SubscriptionId {subscriptionId}
@@ -68,10 +68,10 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.PartnerCenterIngestion
 ```
 
 > [!NOTE]
-> 不需要生成 SAS URI，因为现在可以在合作伙伴中心发布 SIG 映像。 但是，如果仍需要参考 SAS URI 生成步骤，请参阅[如何为 VM 映像生成 SAS URI](azure-vm-get-sas-uri.md)。
+> 无需生成 SAS URI，因为现在即使不使用 API 也可在合作伙伴中心发布共享映像库 (SIG) 映像。 <br/> <br/>如果要使用 API 进行发布，则需要生成 SAS URI 而不是使用 SIG，请参阅[如何为 VM 映像生成 SAS URI](azure-vm-get-sas-uri.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [测试 VM 映像](azure-vm-image-test.md)，以确保它满足 Azure 市场发布要求（可选）。
-- 如果不想测试 VM 映像，请登录到[合作伙伴中心](https://partner.microsoft.com/)并发布 SIG 映像。
-- 如果在创建基于 Azure 的新 VHD 时遇到问题，请参阅 [Azure 市场 VM 常见问题解答](azure-vm-create-faq.md)。
+- 如果不想测试 VM 映像，请登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165935)并发布 SIG 映像。
+- 如果在创建基于 Azure 的新 VHD 时遇到问题，请参阅 [Azure 市场 VM 常见问题解答](azure-vm-create-faq.yml)。

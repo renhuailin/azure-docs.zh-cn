@@ -1,5 +1,5 @@
 ---
-title: 从本地 MySQL 到 Azure Database for MySQL 的迁移指南评估
+title: 将本地 MySQL 迁移到 Azure Database for MySQL：评估
 description: 在开始迁移 MySQL 工作负荷之前，必须先执行大量尽职调查。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 9d7dc8626e86e7ab93c7a6e76cc426c3904147c2
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 4510cbe04181da7badb10c61bd510bed084580e8
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082693"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284249"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-assessment"></a>从本地 MySQL 到 Azure Database for MySQL 的迁移指南评估
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-assessment"></a>将本地 MySQL 迁移到 Azure Database for MySQL：评估
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +51,7 @@ Azure Database for MySQL 是以平台即服务运行的 MySQL 社区版，而且
 MySQL 创建于 1995 年，拥有丰富的版本修改历史。 而且自那时起，其便已发展为广泛使用的数据库管理系统。 Azure Database for MySQL 最初支持 MySQL 5.6 版，现已扩展到 5.7 版及最新的 8.0 版。 有关 Azure Database for MySQL 最新支持的版本信息，请参阅 [Azure Database for MySQL 支持的服务器版本。](../../concepts-supported-versions.md) 在“迁移后管理”部分，我们将查看如何在 Azure 中升级 MySQL 实例（例如从 5.7.20 升级到 5.7.21）。
 
 > [!NOTE]
-> 从 5.x 版跃升至 8.0 版很大程度上是因为 Oracle 收购了 MySQL。 若要阅读有关 MySQL 的更多发展信息，请导航到 [MySQL Wiki 介绍页](https://en.wikipedia.org/wiki/MySQL)。
+> 从 5.x 版跃升至 8.0 版很大程度上是因为 Oracle 收购了 MySQL。 若要详细了解 MySQL 的发展历史，请导航到 [MySQL Wiki 页面](https://en.wikipedia.org/wiki/MySQL)。
 
 必须要了解 MySQL 源版本。 使用系统的应用程序可能正在使用特定于该版本的数据库对象和功能。 因此，将数据库迁移到较低版本可能会引致兼容性问题并丢失功能。 此外，我们建议在迁移到较新版本之前，全面测试数据和应用程序实例，因为引入的功能可能会破坏应用程序。
 
@@ -82,19 +84,19 @@ Azure Database for MySQL 仅支持 [InnoDB](https://dev.mysql.com/doc/refman/8.0
 
 ```dotnetcli
     SELECT 
-        tab.table_schema,   
-        tab.table_name,   
-        tab.engine as engine_type,   
-        tab.auto_increment,   
-        tab.table_rows,   
-        tab.create_time,   
-        tab.update_time,   
-        tco.constraint_type 
-    FROM information_schema.tables tab   
-    LEFT JOIN information_schema.table_constraints tco   
-        ON (tab.table_schema = tco.table_schema   
-            AND tab.table_name = tco.table_name   
-            )   
+        tab.table_schema,
+        tab.table_name,
+        tab.engine as engine_type,
+        tab.auto_increment,
+        tab.table_rows,
+        tab.create_time,
+        tab.update_time,
+        tco.constraint_type
+    FROM information_schema.tables tab
+    LEFT JOIN information_schema.table_constraints tco
+        ON (tab.table_schema = tco.table_schema
+            AND tab.table_name = tco.table_name
+            )
     WHERE  
         tab.table_schema NOT IN ('mysql', 'information_schema', 'performance_
 schema', 'sys')  
@@ -176,7 +178,7 @@ SELECT * FROM mysql.func;
 
 ### <a name="azure-migrate"></a>Azure Migrate
 
-尽管 [Azure Migrate](/azure/migrate/migrate-services-overview) 不支持直接迁移 MySQL 数据库工作负荷，但若管理员并不确定正在使用数据（无论是托管在虚拟机还是基于硬件的计算机上）的用户和应用程序，便可使用此方法。 若要完成[依赖关系分析](/azure/migrate/concepts-dependency-visualization)，则可以通过在托管 MySQL 工作负荷的计算机上安装并运行监视代理来实现。 代理将会收集一段时间内（例如每月一次）的信息。 可以分析依赖关系数据，以查找建立用来连接数据库的未知连接。 而连接数据可帮助标识需要接收待迁移通知的应用程序所有者。
+尽管 [Azure Migrate](../../../migrate/migrate-services-overview.md) 不支持直接迁移 MySQL 数据库工作负荷，但若管理员并不确定正在使用数据（无论是托管在虚拟机还是基于硬件的计算机上）的用户和应用程序，便可使用此方法。 若要完成[依赖关系分析](../../../migrate/concepts-dependency-visualization.md)，则可以通过在托管 MySQL 工作负荷的计算机上安装并运行监视代理来实现。 代理将会收集一段时间内（例如每月一次）的信息。 可以分析依赖关系数据，以查找建立用来连接数据库的未知连接。 而连接数据可帮助标识需要接收待迁移通知的应用程序所有者。
 
 除了对应用程序和用户连接数据进行依赖关系分析以外，你还可以使用 Azure Migrate 来分析 [Hyper-V、VMware 或物理服务器](../../../migrate/migrate-appliance-architecture.md)以提供数据库工作负荷的使用模式，从而帮助推荐适当的目标环境。
 
@@ -190,11 +192,11 @@ Linux 工作负荷可以利用 [Microsoft Monitoring Agent (MMA) ](../../../azur
 
 目前有三个定价层：
 
-  - 基本：适用于需要少量计算及 I/O 性能的工作负荷。
+  - **基本**：适用于需要少量计算及 I/O 性能的工作负载。
 
-  - 常规用途：适用于大多数需要均衡计算以及内存可缩放 I/O 吞吐量的业务工作负荷。
+  - **常规用途**：适用于大多数需要均衡计算以及内存可缩放 I/O 吞吐量的业务工作负载。
 
-  - 内存优化：：适用于需要内存中性能来提高事务处理速度及提升并发性的高性能数据库工作负荷。
+  - **内存优化**：适用于需要内存中性能来提高事务处理速度及提升并发性的高性能数据库工作负载。
 
 有关层的使用决定可能会受到数据工作负荷的 RTO 和 RPO 要求的影响。 如果数据工作负荷需要超过 4 TB 的存储空间，则需要执行额外步骤。 查看并选择[支持](../../concepts-pricing-tiers.md#storage)高达 16 TB 存储空间的区域。
 
@@ -207,38 +209,38 @@ Linux 工作负荷可以利用 [Microsoft Monitoring Agent (MMA) ](../../../azur
 |---------|------|
 | **基本** | 开发计算机，无需高性能，存储空间不超过 1 TB。 |
 | **常规用途** | IOPS 的存储需求超过了基本层的提供上限，但存储空间需求量少于 16 TB，内存需求量少于 4 GB。 |
-| **内存优化** | 使用高内存或高速缓存及与缓冲区相关的服务器配置（例如高并发性 buffer_pool_instances、大型 BLOB、包含多个复制用从属项的系统）的数据工作负荷。 |
+| **内存优化** | 使用高内存或高速缓存及与缓冲区相关的服务器配置（例如高并发性 buffer_pool_instances、大型 BLOB、包含多个复制副本的系统）的数据工作负载。 |
 
 ### <a name="costs"></a>成本
 
 在评估所有 WWI MySQL 数据工作负荷后，WWI 确定这些工作负荷需要至少 4 个 vCore、20 GB 内存以及至少 100 GB 存储空间（IOP 容量为 450 IOPS）。 由于使用 [Azure Database for MySQL IOPS 分配法](../../concepts-pricing-tiers.md#storage)，因此需要分配至少 150 GB 存储空间才可满足 450 IOPS 要求。 此外，这些工作负荷至少还需要高达 100% 的预配服务器存储空间用作备份存储空间，以及一份只读副本。 出站流出量预计不会超过 5 GB。
 
-由于使用 [Azure Database for MySQL 定价计算器](https://azure.microsoft.com/pricing/details/mysql/)，WWI 已经能够确定 Azure Database for MySQL 实例的使用成本。 截至 2020 年 9 月，WWI 会议数据库的总拥有成本 (TCO) 如下表所示：
+由于使用 [Azure Database for MySQL 定价计算器](https://azure.microsoft.com/pricing/details/mysql/)，WWI 已经能够确定 Azure Database for MySQL 实例的使用成本。 截至 2020 年 9 月，WWI 会议数据库的总拥有成本 (TCO) 如下表所示。
 
 | 资源 | 说明 | 数量 | 开销 |
 |----------|-------------|----------|------|
-| 计算（常规用途） | 4 个 vCore，20 GB                   | 1 @ $0.351/小时                                               | $3074.76/年 |
-| **存储**                   | 5 GB                              | 12 x 150 @ $0.115                                           | $207/年     |
-| **备份**                    | 高达 100% 的预配存储空间 | 高达 100% 的预配服务器存储空间，不会产生额外成本      | $0.00/年    |
-| 只读副本              | 1 份辅助区域副本           | 计算 + 存储                                           | $3281.76/年 |
-| **Network**                   | < 5GB/月流出量                | 免费                                                        |               |
-| **总计**                     |                                   |                                                             | $6563.52/年 |
+| 计算（常规用途） | 4 个 vCore，20 GB                  | 1 @ $0.351/小时                                              | $3074.76/年 |
+| **存储**                   | 5 GB                             | 12 x 150 @ $0.115                                          | $207/年     |
+| **备份**                    | 高达 100% 的预配存储空间| 高达 100% 的预配服务器存储空间，不会产生额外成本     | $0.00/年    |
+| 只读副本              | 1 份辅助区域副本          | 计算 + 存储                                          | $3281.76/年 |
+| **Network**                   | < 5GB/月流出量               | 免费                                                       |               |
+| **总计**                     |                                  |                                                            | $6563.52/年 |
 
-查看初始成本后，WWI 的 CIO 确认其使用 Azure 的时间将超过 3 年。 因此，他们决定使用 3 年期[保留实例](../../concept-reserved-pricing.md)来节省每年约需额外支出的 4,000 美元：
+查看初始成本后，WWI 的 CIO 确认其使用 Azure 的时间将超过 3 年。 因此，他们决定使用 3 年期[保留实例](../../concept-reserved-pricing.md)来节省每年约需额外支出的 4,000 美元。
 
 | 资源 | 说明 | 数量 | 开销 |
 |----------|-------------|----------|------|
-| 计算（常规用途） | 4 个 vCore                          | 1 @ $0.1375/小时                                               | $1204.5/年 |
-| **存储**                   | 5 GB                              | 12 x 150 @ $0.115                                            | $207/年    |
-| **备份**                    | 高达 100% 的预配存储空间 | 高达 100% 的预配服务器存储空间，不会产生额外成本       | $0.00/年   |
-| **Network**                   | < 5GB/月流出量                | 免费                                                         |              |
-| 只读副本              | 1 份辅助区域副本           | 计算 + 存储                                            | $1411.5/年 |
-| **总计**                     |                                   |                                                              | $2823/年   |
+| 计算（常规用途） | 4 个 vCore                          | 1 @ $0.1375/小时                                              | $1204.5/年 |
+| **存储**                   | 5 GB                              | 12 x 150 @ $0.115                                           | $207/年    |
+| **备份**                    | 高达 100% 的预配存储空间 | 高达 100% 的预配服务器存储空间，不会产生额外成本      | $0.00/年   |
+| **Network**                   | < 5GB/月流出量                | 免费                                                        |              |
+| 只读副本              | 1 份辅助区域副本           | 计算 + 存储                                           | $1411.5/年 |
+| **总计**                     |                                   |                                                             | $2823/年   |
 
 如上表所示，备份、网络流出量和任何只读副本都必须纳入总拥有成本 (TCO) 的考虑范畴。 随着添加更多数据库，存储空间和生成的网络流出量将成为唯一需要额外考虑的基于成本的因素。
 
 > [!NOTE]
-> 上述估算不包括任何适用于应用程序层的 [ExpressRoute](/azure/expressroute/expressroute-introduction)、[Azure 应用程序网关](/azure/application-gateway/overview)、[Azure 负载均衡器](/azure/load-balancer/load-balancer-overview)或[应用服务](/azure/app-service/overview)成本。
+> 上述估算不包括任何适用于应用程序层的 [ExpressRoute](../../../expressroute/expressroute-introduction.md)、[Azure 应用程序网关](../../../application-gateway/overview.md)、[Azure 负载均衡器](../../../load-balancer/load-balancer-overview.md)或[应用服务](../../../app-service/overview.md)成本。
 >
 > 上述定价因地区而异，并且随时都可以更改。
 
@@ -255,7 +257,7 @@ Linux 工作负荷可以利用 [Microsoft Monitoring Agent (MMA) ](../../../azur
 
 ## <a name="wwi-scenario"></a>WWI 方案
 
-WWI 通过收集有关其 MySQL 数据的信息来开始评估。 其可编译以下内容：
+WWI 通过收集有关其 MySQL 数据资产的信息来开始评估，如下表所示。
 
 | 名称 | 源 | 数据库引擎 | 大小 | IOPS | 版本 | 所有者 | 故障时间 |
 |------|--------|-----------|------|------|---------|-------|----------|
@@ -282,6 +284,8 @@ WWI 通过收集有关其 MySQL 数据的信息来开始评估。 其可编译�
   - 了解停机时间要求。
 
   - 做好更改应用程序的准备。
+
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [规划](./04-planning.md)

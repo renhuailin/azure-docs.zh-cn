@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 06/03/2021
-ms.openlocfilehash: 856a72be8e1bb69f86c2a96b8e7b57e964d26dfa
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 12c3641597168ee7e76acf4a16984f4419d40555
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410236"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298828"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
 
-本文提供了有关创建具有吸引力的 Microsoft 商业市场产品/服务的建议。 下表概述了有关在合作伙伴中心填写产品/服务信息的最佳做法。 若要分析你的产品/服务的业绩，请在合作伙伴中心转到[市场见解仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)。 
+本文提供了有关创建具有吸引力的 Microsoft 商业市场产品/服务的建议。 下表概述了有关在合作伙伴中心填写产品/服务信息的最佳做法。 若要分析你的产品/服务的业绩，请在合作伙伴中心转到[市场见解仪表板](https://go.microsoft.com/fwlink/?linkid=2165936)。
 
 ## <a name="online-store-offer-details"></a>在线商店产品/服务详细信息
 
@@ -139,10 +139,10 @@ Microsoft AppSource 和 Azure 市场是提供不同解决方案类型的在线�
 
 以下示例 URL 包含前面所述的两个查询参数：`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-通过在 AppSource URL 中添加参数，可以在[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/)的分析仪表板中查看营销活动的效果。
+通过在 AppSource URL 中添加参数，可以在合作伙伴中心的[分析仪表板](https://go.microsoft.com/fwlink/?linkid=2165765)中查看营销活动的效果。
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解[商业市场权益](./gtm-your-marketplace-benefits.md)。
 
-登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建并配置产品/服务。
+登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)以创建并配置产品/服务。 在合作伙伴中心[创建一个帐户](create-account.md)（如果尚未创建）。

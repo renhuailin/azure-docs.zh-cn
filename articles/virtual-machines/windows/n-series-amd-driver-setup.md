@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 62723a0fee6a3f696c517bc642fdac8cfa80a6b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec4f09249bda14eb29d7dc9704a6096848a78557
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557414"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122194985"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 AMD GPU 驱动程序
 
@@ -33,7 +33,9 @@ NVv4 VM 仅支持 Microsoft 发布的 GPU 驱动程序。 请勿从任何其他�
 
 | OS | 驱动程序 |
 | -------- |------------- |
-| Windows 10 Enterprise 多会话 - 版本 1909 <br/><br/>Windows 10 - 版本 1909<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exe) (.exe) |
+| Windows 10 - 版本 2009、2004、1909 <br/><br/>Windows 10 企业版多会话 - 版本 2009、2004、1909 <br/><br/>Windows Server 2016（版本 1607）<br/><br/>Windows Server 2019（版本 1909） | [21.Q2](https://download.microsoft.com/download/3/4/8/3481cf8d-1706-49b0-aa09-08c9468305ab/AMD-Azure-NVv4-Windows-Driver-21Q2.exe) (.exe) |
+
+Windows 版本（1909 以前的版本）以前支持的驱动程序版本为 [20.Q4](https://download.microsoft.com/download/f/1/6/f16e6275-a718-40cd-a366-9382739ebd39/AMD-Azure-NVv4-Driver-20Q4.exe) (.exe)
 
  > [!NOTE]
    >  如果使用版本 1903/1909，可能需要更新以下组策略才能获得最佳性能。 任何其他的 Windows 版本都不需要这些更改。
@@ -41,12 +43,12 @@ NVv4 VM 仅支持 Microsoft 发布的 GPU 驱动程序。 请勿从任何其他�
    >  [计算机配置->策略->Windows 设置->管理模板->Windows 组件->远程桌面服务->远程桌面会话主机->远程会话环境]，将策略 [使用 WDDM 图形显示驱动程序进行远程桌面连接] 设置为“禁用”。
    >  
 
-
+ 
 ## <a name="driver-installation"></a>驱动程序安装
 
 1. 通过远程桌面连接到每个 NVv4 系列 VM。
 
-2. 如果需要卸载以前的驱动程序版本，则在[此处](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)下载 AMD 清理实用工具。请不要使用旧版驱动程序随附的实用工具。
+2. 如果需要卸载以前的驱动程序版本，请下载 [AMD 清理实用工具](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)。请不要使用旧版驱动程序随附的实用工具。
 
 3. 下载并安装最新版驱动程序。
 

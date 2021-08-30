@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 0ed20af6b27822f1f437f584e9b73eb416941d6f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1ba278b80d75e64b4394bfeb1b98cd0ec2d805a8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065991"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469951"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps"></a>Azure 静态 Web 应用的身份验证和授权
 
@@ -122,6 +122,8 @@ https://identity.azurestaticapps.net/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 ```url
 https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 ```
+
+备注，如果你使用的是 Azure Active Directory，请使用 `aad` 作为 `<AUTHENTICATION_PROVIDER_NAME>` 占位符的值。
 
 ## <a name="system-folder"></a>系统文件夹
 

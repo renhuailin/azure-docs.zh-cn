@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Monitor 见解监视虚拟 WAN
-description: 本文介绍如何使用 Azure Monitor 见解监视 Azure 虚拟 WAN。
+description: 了解如何使用 Azure Monitor 见解监视 Azure 虚拟 WAN。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
-ms.date: 09/22/2020
+ms.topic: how-to
+ms.date: 06/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: 6ead00a0979d81ef11ac81fb13a1abe31317691d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73209f93e2b7fd96dc6ebb540d62624249db5be8
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571322"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539225"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan"></a>虚拟 WAN 的 Azure Monitor 见解
 
@@ -88,4 +88,4 @@ ms.locfileid: "100571322"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解详细信息，请参阅 [Azure Monitor 中的指标](../azure-monitor/essentials/data-platform-metrics.md)。
-* 有关所有虚拟 WAN 指标的完整说明，请参阅[虚拟 WAN 日志和指标](logs-metrics.md)。
+* 有关所有虚拟 WAN 指标的完整说明，请参阅[监视虚拟 WAN](monitor-virtual-wan.md)。

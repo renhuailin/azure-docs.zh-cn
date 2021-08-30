@@ -1,18 +1,18 @@
 ---
 title: '数据转换：处理和转换数据 '
-description: 了解如何在 Azure 数据工厂中利用 Hadoop、Azure 机器学习工作室（经典版）或 Azure Data Lake Analytics 转换或处理数据。
+description: 了解如何在 Azure 数据工厂中利用 Hadoop、机器学习工作室（经典）或 Azure Data Lake Analytics 来转换或处理数据。
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 422acbaab097182b800e3bad35b0121284db9cd8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e9cc86e83de6e9cd673b0ee67159bbe23dde4351
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782922"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396830"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>在 Azure 数据工厂版本 1 中转换数据
 > [!div class="op_single_selector"]
@@ -20,7 +20,7 @@ ms.locfileid: "104782922"
 > * [Pig](data-factory-pig-activity.md)  
 > * [MapReduce](data-factory-map-reduce.md)  
 > * [Hadoop 流式处理](data-factory-hadoop-streaming-activity.md)
-> * [Azure 机器学习工作室（经典）](data-factory-azure-ml-batch-execution-activity.md) 
+> * [机器学习工作室（经典版）](data-factory-azure-ml-batch-execution-activity.md) 
 > * [存储过程](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
 > * [.NET 自定义](data-factory-use-custom-activities.md)
@@ -53,12 +53,12 @@ ms.locfileid: "104782922"
 ## <a name="hdinsight-spark-activity"></a>HDInsight Spark 活动
 数据工厂管道中的 HDInsight Spark 活动在自己的 HDInsight 群集上执行 Spark 程序。 有关详细信息，请参阅[从 Azure 数据工厂调用 Spark 程序](data-factory-spark.md)。 
 
-## <a name="azure-machine-learning-studio-classic-activities"></a>Azure 机器学习工作室（经典版）活动
-借助 Azure 数据工厂，可轻松创建管道，以便利用已发布的 Azure 机器学习工作室（经典版）Web 服务进行预测分析。 使用 Azure 数据工厂管道中的[批处理执行活动](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity)，可调用工作室（经典版）Web 服务针对批量数据进行预测。
+## <a name="ml-studio-classic-activities"></a>机器学习工作室（经典）活动
+借助 Azure 数据工厂，你可以轻松创建管道，这些管道使用已发布的机器学习工作室（经典）Web 服务进行预测分析。 使用 Azure 数据工厂管道中的[批处理执行活动](data-factory-azure-ml-batch-execution-activity.md#invoking-a-web-service-using-batch-execution-activity)，可调用工作室（经典版）Web 服务针对批量数据进行预测。
 
 随着时间推移，需要使用新的输入数据集重新训练工作室（经典版）评分实验中的预测模型。 完成重新训练后，需使用重新训练的机器学习模型更新评分 Web 服务。 通过[更新资源活动](data-factory-azure-ml-batch-execution-activity.md#updating-models-using-update-resource-activity)，可利用新的定型模型更新 Web 服务。  
 
-有关这些工作室（经典版）活动的详细信息，请参阅[使用 Azure 机器学习工作室（经典版）活动](data-factory-azure-ml-batch-execution-activity.md)。 
+有关这些工作室（经典）活动的详细信息，请参阅[使用机器学习工作室（经典）活动](data-factory-azure-ml-batch-execution-activity.md)。 
 
 ## <a name="stored-procedure-activity"></a>存储过程活动
 可使用数据工厂管道中的 SQL Server 存储过程活动调用以下数据存储之一中的存储过程：你的企业或 Azure VM 中的 Azure SQL 数据库、Azure Synapse Analytics、SQL Server 数据库。 有关详细信息，请参阅[存储过程活动](data-factory-stored-proc-activity.md)文章。  
@@ -88,7 +88,7 @@ Azure 数据工厂支持以下数据转换活动和活动的计算环境。 这�
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop 流式处理](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
-| [Azure 机器学习工作室（经典版）活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
+| [机器学习工作室（经典）活动：批处理执行和更新资源](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
 | [存储过程](data-factory-stored-proc-activity.md) |Azure SQL、Azure Synapse Analytics 或 SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] 或 Azure Batch |

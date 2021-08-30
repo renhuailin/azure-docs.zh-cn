@@ -6,16 +6,16 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: how-to
 ms.date: 05/11/2021
-ms.openlocfilehash: 88886f46f028da19f5e5b75f42e5d96a09f2213a
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 1b13d49707402143c59078aa3e73cd93db1b10de
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109795410"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748078"
 ---
 # <a name="handle-false-positives-in-azure-sentinel"></a>处理 Azure Sentinel 中的误报
 
-[Azure Sentinel 分析规则](tutorial-detect-threats-built-in.md)会在你的网络中出现可疑情况时通知你。 没有分析规则是完美的，总归会有一些误报需要你来处理。 本文介绍如何通过使用自动化或修改计划的分析规则来处理误报。
+[Azure Sentinel 分析规则](detect-threats-built-in.md)会在你的网络中出现可疑情况时通知你。 没有分析规则是完美的，总归会有一些误报需要你来处理。 本文介绍如何通过使用自动化或修改计划的分析规则来处理误报。
 
 ## <a name="false-positive-causes-and-prevention"></a>误报原因及预防
 
@@ -31,10 +31,10 @@ ms.locfileid: "109795410"
 
 - 自动化规则，无需修改分析规则即可创建例外。
 - 计划的分析规则修改，允许更详细和永久的例外。
-  
+
 下表介绍了每种方法的特征：
 
-  
+
 |方法|特征|
 |-|-|
 |自动化规则|<ul><li>可应用于多个分析规则。</li><li>保留审核线索。 例外会阻止事件创建，但仍会记录警报以供审核。</li><li>通常由分析人员生成。</li><li>允许在有限的时间内应用例外。 例如，维护工作可能会触发误报，认为超出了维护时间范围就是真实事件。</li></ul>|
@@ -51,17 +51,17 @@ ms.locfileid: "109795410"
 1. 在“创建新的自动化规则”边栏中，可以选择修改新规则名称以标识例外，而不仅仅是警报规则名称。
 1. 在“条件”下，可选择添加更多要应用例外的“分析规则名称” 。
 1. 边栏显示了当前事件中可能导致误报的特定实体。 保留自动建议，或修改它们以微调例外。 例如，可以更改 IP 地址上的一个条件，以便应用于整个子网。
-   
+
    :::image type="content" source="media/false-positives/create-rule.png" alt-text="显示如何在 Azure Sentinel 中为事件创建自动化规则的屏幕截图。":::
-   
+
 1. 定义触发器后，可以继续定义规则可执行的操作：
-   
+
    :::image type="content" source="media/false-positives/apply-rule.png" alt-text="显示如何在 Azure Sentinel 中完成创建和应用自动化规则的屏幕截图。":::
-   
+
    - 该规则已配置为关闭符合例外条件的事件。
    - 可以向解释例外的自动关闭事件添加注释。 例如，可以指定事件源自已知的管理活动。
    - 默认情况下，规则设置为在 24 小时后自动过期。 这可能是你需要的过期时间，并减少了误报错误的可能性。 如果想要时间更长的例外，请将“规则过期时间”设置为更晚的时间。
-   
+
 1. 选择“应用”以激活例外。
 
 > [!TIP]
@@ -75,7 +75,7 @@ ms.locfileid: "109795410"
 
 要编辑现有分析规则，请从 Azure Sentinel 左侧导航菜单中选择“自动化”。 选择要编辑的规则，然后选择右下方的“编辑”以打开“分析规则向导” 。
 
-有关使用“分析规则向导”创建和编辑分析规则的详细说明，请参阅[教程：创建自定义分析规则以检测威胁](tutorial-detect-threats-custom.md)。
+有关使用“分析规则向导”创建和编辑分析规则的详细说明，请参阅[创建自定义分析规则以检测威胁](detect-threats-custom.md)。
 
 要在典型的规则报头中实现例外，可以在规则查询的开头附近添加一个类似 `where IPAddress !in ('<ip addresses>')` 的条件。 此行从规则中排除特定的 IP 地址。
 
@@ -146,6 +146,7 @@ let subnets = _GetWatchlist('subnetallowlist');
 ## <a name="next-steps"></a>后续步骤
 
 有关详细信息，请参阅：
+- [使用 UEBA 数据分析假正](investigate-with-ueba.md#use-ueba-data-to-analyze-false-positives)
 - [在 Azure Sentinel 中使用自动化规则自动处理事件](automate-incident-handling-with-automation-rules.md)
-- [教程：创建自定义分析规则以检测威胁](tutorial-detect-threats-custom.md)
+- [创建自定义分析规则以检测威胁](detect-threats-custom.md)
 - [使用 Azure Sentinel 播放列表](watchlists.md)

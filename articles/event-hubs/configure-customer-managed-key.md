@@ -3,12 +3,12 @@ title: 配置自己的密钥用于加密 Azure 事件中心静态数据
 description: 本文介绍如何配置自己的密钥以用于加密 Azure 事件中心静态数据。
 ms.topic: conceptual
 ms.date: 05/04/2021
-ms.openlocfilehash: 89d12079195406e4b3c6da77105dc359cc1dacae
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cddeb2e11dc631e6eb9b43f6606d7ca4b41a6e35
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377236"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113032860"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 门户配置客户管理的密钥以用于加密 Azure 事件中心静态数据
 Azure 事件中心提供了通过 Azure 存储服务加密 (Azure SSE) 对静态数据进行加密的功能。 事件中心服务使用 Azure 存储来存储数据。 使用 Azure 存储存储的所有数据都使用 Microsoft 托管密钥进行加密。 如果你使用自己的密钥（也称为创建自己的密钥 (BYOK) 或客户管理的密钥），则仍使用 Microsoft 托管密钥对数据进行加密，但另外，将使用客户管理的密钥对 Microsoft 托管密钥进行加密。 使用此功能可以创建、轮换、禁用用于加密 Microsoft 托管密钥的客户管理的密钥，以及撤销对这些密钥的访问权限。 启用 BYOK 功能是在命名空间中执行的一次性设置过程。
@@ -337,7 +337,7 @@ Azure 事件中心提供了通过 Azure 存储服务加密 (Azure SSE) 对静态
                 "maximumThroughputUnits":0,
                 "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
                 "encryption":{
-                   "keySource":"Microsoft.KeyVault",
+                   "keySource":"Microsoft.KeyVault",                   
                    "keyVaultProperties":[
                       {
                          "keyName":"[parameters('keyName')]",
@@ -389,6 +389,31 @@ Azure 事件中心提供了通过 Azure 存储服务加密 (Azure SSE) 对静态
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
     ```
+
+#### <a name="enable-infrastructure-encryption-for-double-encryption-of-data-in-event-hubs-namespace"></a>在事件中心命名空间启用基础结构加密，对数据进行双重加密
+如果需要更高级别的数据安全保证，则可以启用基础结构级别的加密（也称为双重加密）。 
+
+启用基础结构加密后，将对事件中心命名空间中的数据进行两次加密，分别在服务级别和基础架构级别使用两种不同的加密算法和两个不同的密钥。 因此，事件中心数据的基础结构加密可以在其中一种加密算法或密钥可能受到安全威胁的情况下提供保护。
+
+可以通过使用上述 CreateEventHubClusterAndNamespace.json 中的 `requireInfrastructureEncryption` 属性更新 ARM 模板来启用基础架构加密，如下所示。 
+
+```json
+"properties":{
+   "isAutoInflateEnabled":false,
+   "maximumThroughputUnits":0,
+   "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
+   "encryption":{
+      "keySource":"Microsoft.KeyVault",
+      "requireInfrastructureEncryption":true,
+      "keyVaultProperties":[
+         {
+            "keyName":"[parameters('keyName')]",
+            "keyVaultUri":"[parameters('keyVaultUri')]"
+         }
+      ]
+   }
+}
+```
 
 ## <a name="troubleshoot"></a>故障排除
 最佳做法是始终启用日志，如前一部分中所示。 启用 BYOK 加密后，它有助于跟踪活动。 它还有助于限制问题的范围。

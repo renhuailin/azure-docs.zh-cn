@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: edadf3ad7e86572c758a90fd35a941024b0aa60e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4051f8fe4b338f223b36c3a87ebcc3e3d3e51979
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475750"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472966"
 ---
 # <a name="extending-ontologies"></a>扩展 ontology 
 
@@ -30,7 +30,7 @@ ms.locfileid: "110475750"
 
 :::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="流程图展示部分 RealEstateCore 空间层次结构。其中显示了空间、房间、会议室和办公室的元素。"::: 
 
-有关 RealEstateCore 本体的详细信息，请参阅概念：采用行业标准本体。
+有关 RealEstateCore 本体的详细信息，请参阅[采用行业标准本体](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology)。
 
 ## <a name="extending-the-realestatecore-space-hierarchy"></a>扩展 RealEstateCore 空间层次结构 
 

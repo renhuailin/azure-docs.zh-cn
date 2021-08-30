@@ -1,15 +1,15 @@
 ---
 title: 使用 Azure PowerShell 启用 VM 扩展
 description: 本文介绍如何使用 Azure PowerShell 将虚拟机扩展部署到在混合云环境中运行的已启用 Azure Arc 的服务器。
-ms.date: 05/06/2021
+ms.date: 08/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 59e33a8e4e5a2bc0cc8f620bd4b7fb8b65c5d7e9
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 9a626e42b5447cafcf0fe99876eb0146a02c25f3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803199"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734409"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>使用 Azure PowerShell 启用 Azure VM 扩展
 
@@ -44,19 +44,19 @@ PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "
 
 若要在已启用 Arc 的 Windows 服务器上启用 Log Analytics VM 扩展，请在前面的示例中将 `-ExtensionType` 参数的值更改为 `"MicrosoftMonitoringAgent"`。
 
-下面的示例在已启用 Arc 的服务器上启用自定义脚本扩展：
+以下示例将在已启用 Arc 的服务器上启用自定义脚本扩展：
 
 ```powershell
 PS C:\> $Setting = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
 PS C:\> New-AzConnectedMachineExtension -Name custom -ResourceGroupName myResourceGroup -MachineName myMachineName -Location eastus -Publisher "Microsoft.Compute"  -Settings $Setting -ExtensionType CustomScriptExtension
 ```
 
-### <a name="key-vault-vm-extension-preview"></a>Key Vault VM 扩展（预览版）
+### <a name="key-vault-vm-extension"></a>Key Vault VM 扩展 
 
 > [!WARNING]
 > PowerShell 客户端通常会将 `\` 添加到 settings.json 中的 `"`，这会导致 akvvm_service 失败，并出现错误：`[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
-以下示例在已启用 Arc 的服务器上启用 Key Vault VM 扩展（预览版）：
+以下示例将在已启用 Arc 的服务器上启用 Key Vault VM 扩展：
 
 ```powershell
 # Build settings
@@ -100,7 +100,7 @@ custom  westus2   CustomScriptExtension Succeeded
 
 若要删除已启用 Arc 的服务器上安装的 VM 扩展，请将 [Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) 与 `-Name`、`-MachineName` 和 `-ResourceGroupName` 参数一起使用。
 
-例如，若要删除适用于 Linux 的 Log Analytics VM 扩展，请运行以下命令：
+例如，要删除适用于 Linux 的日志分析 VM 扩展，请运行以下命令：
 
 ```powershell
 Remove-AzConnectedMachineExtension -MachineName myMachineName -ResourceGroupName myResourceGroup -Name OmsAgentforLinux

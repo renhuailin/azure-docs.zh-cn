@@ -1,19 +1,19 @@
 ---
-title: 地理覆盖范围信息 | Microsoft Azure Maps
+title: Microsoft Azure Maps 中的地理覆盖范围信息
 description: Microsoft Azure Maps 中提供地理数据位置的详细信息。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 6/11/2020
+ms.date: 6/23/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 2e6392de1eedde122567d9ffa1c8bfdd6d9c5522
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 321888d2b2f3917cde0fdeb91b049578c94f601b
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84739578"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579786"
 ---
 # <a name="geographic-coverage-information"></a>地理覆盖范围信息
 
@@ -23,7 +23,6 @@ ms.locfileid: "84739578"
 * [交通覆盖区域](traffic-coverage.md)
 * [呈现覆盖区域](render-coverage.md)
 * [路由覆盖区域](routing-coverage.md)
-* [出行覆盖区域](mobility-coverage.md)
 * [天气覆盖区域](weather-coverage.md)
 
 ## <a name="next-steps"></a>后续步骤

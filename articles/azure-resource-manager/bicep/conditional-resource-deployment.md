@@ -1,20 +1,20 @@
 ---
 title: 使用 Bicep 进行条件部署
-description: 说明如何在 Bicep 中有条件地部署资源。
+description: 介绍如何在 Bicep 中有条件地部署资源。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 9636444af81b000443dc72cf6e3fc1d8d6da5093
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 07/30/2021
+ms.openlocfilehash: f3c845757d6cd251905e39999c9858224ee67269
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537089"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724575"
 ---
 # <a name="conditional-deployment-in-bicep"></a>Bicep 中的条件部署
 
-有时你需要在 Bicep 中有条件地部署资源。 使用 `if` 关键字来指定是否部署资源。 条件的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
+有时，需要有选择地在 Bicep 中部署资源或模块。 使用 `if` 关键字指定是否部署资源或模块。 条件的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源或模块。
 
 > [!NOTE]
 > 条件部署不会级联到[子资源](child-resource-name-type.md)。 如果要有条件地部署资源及其子资源，需要对每种资源类型应用相同的条件。
@@ -32,7 +32,17 @@ resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = if (deployZone) {
 }
 ```
 
-条件可以与依赖项声明配合使用。 如果在另一个资源的 `dependsOn`（显式依赖项）中指定了条件资源的标识符，则在模板部署时条件计算结果为 false 的情况下，会忽略该依赖项。 如果条件计算结果为 true，则遵从该依赖项。 允许引用条件资源的属性（隐式依赖项），但这样可能会在有些情况下生成运行时错误。
+下一个示例有条件地部署模块。
+
+```bicep
+param deployZone bool
+
+module dnsZone 'dnszones.bicep' = if (deployZone) {
+  name: 'myZoneModule'
+}
+```
+
+条件可以与依赖项声明一起使用。 对于[显式依赖项](resource-declaration.md#set-resource-dependencies)，Azure 资源管理器会在资源不部署时，自动将其从必需依赖项中删除。 对于隐式依赖项，允许引用条件资源的属性，但这样可能会导致部署错误。
 
 ## <a name="new-or-existing-resource"></a>新资源或现有资源
 
@@ -64,13 +74,11 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting =
 
 当参数 `newOrExisting` 设置为 **new** 时，条件的计算结果为 true。 将部署存储帐户。 但是，当 `newOrExisting` 设置为 **existing** 时，条件的计算结果为 false，并且不部署存储帐户。
 
-有关使用 `condition` 元素的完整示例模板，请参阅[具有新的或现有虚拟网络、存储和公共 IP 的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-new-or-existing-conditions)。
-
 ## <a name="runtime-functions"></a>运行时函数
 
 如果对条件性部署的资源使用 [reference](./bicep-functions-resource.md#reference) 或 [list](./bicep-functions-resource.md#list) 函数，则会对该函数进行评估，即使资源尚未部署。 如果该函数引用某个不存在的资源，则会出现错误。
 
-请使用[条件表达式 ?:](./operators-logical.md#conditional-expression--) 运算符来确保只针对部署资源时的条件计算函数。 以下示例模板演示了如何将此函数与仅在特定条件下有效的表达式配合使用。
+使用[条件表达式 ?:](./operators-logical.md#conditional-expression--) 运算符可确保仅在部署资源时才针对条件来计算函数。 以下示例模板演示了如何将此函数与仅在特定条件下有效的表达式配合使用。
 
 ```bicep
 param vmName string
@@ -96,8 +104,6 @@ resource vmName_omsOnboarding 'Microsoft.Compute/virtualMachines/extensions@2017
 
 output mgmtStatus string = ((!empty(logAnalytics)) ? 'Enabled monitoring for VM!' : 'Nothing to enable')
 ```
-
-[将资源设置为依赖于](./resource-declaration.md#set-resource-dependencies)条件资源，这与设置任何其他资源完全一样。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
 ## <a name="next-steps"></a>后续步骤
 

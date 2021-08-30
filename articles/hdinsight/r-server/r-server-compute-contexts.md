@@ -3,16 +3,18 @@ title: 适用于 HDInsight 上的 ML Services 的计算上下文选项 - Azure
 description: 了解可供 HDInsight 上的 ML Services 用户使用的不同计算上下文选项
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 71ce0d87faa33bd7d533242edfcf3b131c8f7e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ROBOTS: NOINDEX
+ms.openlocfilehash: efdf410ac566297668a06b0e7da457fcd49bfb59
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943953"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299332"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>适用于 HDInsight 上的 ML Services 的计算上下文选项
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 Azure HDInsight 上的 ML Services 可设置计算上下文，从而控制执行调用的方式。 本文概述了可用于指定可否以及如何跨边缘节点或 HDInsight 群集的核心并行化执行的相关选项。
 

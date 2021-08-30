@@ -1,0 +1,80 @@
+### YamlMime:FAQ
+metadata:
+  title: 语音助理常见问题
+  titleSuffix: Azure Cognitive Services
+  description: 获取对有关使用自定义命令或 Direct Line Speech 通道的语音助理的最热门问题的解答。
+  services: cognitive-services
+  author: trrwilson
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.subservice: speech-service
+  ms.topic: conceptual
+  ms.date: 11/05/2019
+  ms.author: travisw
+  ms.openlocfilehash: ff618ef0dfc427c81efe97aa3e49f1e1f163c6c3
+  ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/13/2021
+  ms.locfileid: "113652742"
+title: 语音助理常见问题
+summary: >
+  如果在本文档中找不到你的问题的解答，请查看[其他支持选项](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。
+sections:
+- name: 常规
+  questions:
+  - question: >
+      什么是语音助手？
+    answer: >
+      与 Cortana 一样，语音助理是一种侦听用户口头言语的解决方案，该解决方案分析这些言语的内容，以确定其含义，执行一个或多个操作来响应言语的意图，然后为用户提供通常包括口述部分的响应。 这是一种与系统交互的“语音输入、语音输出”体验。 语音助理作者使用 Speech SDK 中的 `DialogServiceConnector` 创建设备上应用程序，以与使用[自定义命令](custom-commands.md)或 Bot Framework 的 [Direct Line Speech](direct-line-speech.md) 通道创建的助理进行通信。 这些助理可以使用自定义关键字、自定义语音和自定义声音，为你的品牌或产品提供定制体验。
+  - question: >
+      我应该使用自定义命令还是 Direct Line Speech？ 区别是什么？
+    answer: >
+      [自定义命令](custom-commands.md)是一组复杂性较低的工具，可以轻松创建和托管非常适合于任务完成方案的助理。 而 [Direct Line Speech](direct-line-speech.md) 提供更丰富且更复杂的功能，可实现强大的对话方案。 有关详细信息，请参阅[助理解决方案的比较](voice-assistants.md#choosing-an-assistant-solution)。
+  - question: >
+      如何入门？
+    answer: >
+      开始创建自定义命令（预览版）应用程序或基本 Bot Framework 机器人的最佳方式。
+
+
+      - [创建自定义命令（预览版）应用程序](./quickstart-custom-commands-application.md)
+
+      - [创建基本 Bot Framework 机器人](/azure/bot-service/bot-builder-tutorial-basic-deploy)
+
+      - [将机器人连接到 Direct Line Speech 通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- name: 调试
+  questions:
+  - question: >
+      我的通道机密在哪里？
+    answer: >
+      如果你使用了 Direct Line Speech 的预览版或正在阅读相关文档，则可能需要在“Direct Line Speech”页面上查找密钥。 Speech SDK 中的 v1.7 `DialogServiceConfig` 工厂方法 `FromBotSecret` 还需要此值。
+
+
+      最新版本的 Direct Line Speech 简化了从设备联系机器人的过程。 在“注册通道”页面上，顶部的下拉箭头会将 Direct Line Speech 通道注册与语音资源相关联。 关联后，v1.8 Speech SDK 会包括 `BotFrameworkConfig::FromSubscription` 工厂方法，该方法将配置 `DialogServiceConnector` 来联系与订阅相关联的机器人。
+
+
+      如果仍要将客户端应用程序从 v1.7 升级到 v1.8，`DialogServiceConfig::FromBotSecret` 可以继续为其信道密钥参数使用非空、非 Null 值，例如以前使用的密钥。 使用与较新的通道注册相关联的语音订阅时，将直接忽略此情况。 请注意，该值必须为非 Null 且非空，因为在服务端关联相关前，会在设备上检查这些值。
+
+
+      有关更详细的指南，请参阅介绍了通道注册的[教程部分](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel)。
+  - question: >
+      我在连接时遇到 401 错误，无法正常操作。 我发现自己的语音订阅密钥无效。 这是怎么回事？
+    answer: >
+      管理 Azure 门户上的订阅时，请确保使用的是“语音”资源（Microsoft.CognitiveServicesSpeechServices，“语音”）而不是“认知服务”资源（Microsoft.CognitiveServicesAllInOne，“所有认知服务”）。 另外，请查看[对语音助理的语音服务区域支持](regions.md#voice-assistants)。
+
+
+      ![正确订阅 Direct Line Speech](media/voice-assistants/faq-supported-subscription.png "兼容的 Speech 订阅的示例")
+  - question: >
+      我从 `DialogServiceConnector` 中取回了识别文本，但遇到“1011”错误，我的机器人没有返回任何内容。 为什么？
+    answer: >
+      此错误指示助理和语音助理服务之间存在通信问题。
+
+
+      - 对于自定义命令，请确保已发布自定义命令应用程序
+
+      - 对于 Direct Line Speech，请确保你[已将机器人连接到 Direct Line Speech 通道](/azure/bot-service/bot-service-channel-connect-directlinespeech)，[已为你的机器人添加了流协议支持](/azure/bot-service/directline-speech-bot)（以及相关的 Web 套接字支持），然后检查你的机器人是否对来自该通道的传入请求做出了响应。
+  - question: >
+      此代码仍不起作用，并且/或者在使用 `DialogServiceConnector` 时出现其他错误。 应采取何种操作？
+    answer: >
+      基于文件的日志记录提供的信息要详细得多，有助于加快支持请求的处理。 若要启用此功能，请参阅[如何使用文件日志记录](how-to-use-logging.md)。
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n- [故障排除](troubleshooting.md)\n- [发行说明](releasenotes.md)"

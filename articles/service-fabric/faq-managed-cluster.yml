@@ -1,0 +1,86 @@
+### YamlMime:FAQ
+metadata:
+  title: Service Fabric 托管群集常见问题解答
+  description: 有关 Service Fabric 托管群集的常见问题解答，包括功能、用例和常见方案。
+  ms.topic: article
+  ms.author: micraft
+  author: craftyhouse
+  ms.service: service-fabric
+  ms.date: 7/14/2021
+  ms.custom: references_regions
+  ms.openlocfilehash: 6b77924cd499eec27175eba1f690c2429420c625
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253384"
+title: Service Fabric 托管群集常见问题
+summary: 下面是一些 Service Fabric 托管群集的常见问题 (FAQ) 和答案。
+sections:
+- name: 常规
+  questions:
+  - question: >
+      什么是 Service Fabric 托管群集？
+    answer: >
+      Service Fabric 托管群集是 Service Fabric 群集资源模型的演变，旨在简化群集的部署和管理。 Service Fabric 托管群集使用 Azure 资源管理器封装模型，因此，用户只需定义和部署单个群集资源，而不是像现在这样必须部署许多独立资源（虚拟机规模集、负载均衡器和 IP 等）。
+  - question: >
+      哪些区域受支持？
+    answer: >
+      所有云区域都支持 Service Fabric 托管群集。
+  - question: >
+      我是否可以将现有 Service Fabric 群集就地迁移到托管群集资源？
+    answer: >
+      不知道。 你将需要创建新的 Service Fabric 群集资源才能使用新的 Service Fabric 托管群集资源类型。
+  - question: >
+      Service Fabric 托管群集是否额外收费？
+    answer: >
+      不知道。 除群集所需的基础计算、存储和网络资源成本以外，Service Fabric 托管群集不会产生额外的费用。
+  - question: >
+      Service Fabric 托管群集资源是否引入了新的 SLA？
+    answer: >
+      SLA 不会从当前 Service Fabric 资源模型发生更改。
+  - question: >
+      基本和标准 SKU 群集之间的有什么区别？
+    answer: >
+      基本 SKU 群集是指 Service Fabric 资源提供程序提供的大多数配置。 基本 SKU 群集用于测试和预生产环境。 标准 SKU 群集允许用户配置群集以满足其特定需求。 有关详细信息，请参阅 [Service Fabric 托管群集 SKU](./overview-managed-cluster.md#service-fabric-managed-cluster-skus)。
+  - question: >
+      我在哪里可以看到计划的功能或建议一个功能？
+    answer: "请查看我们的 github 项目以了解[托管群集](https://github.com/microsoft/service-fabric/projects/17)      \n"
+- name: 群集部署和管理
+  questions:
+  - question: >
+      我在我的虚拟机规模集上运行自定义脚本扩展，是否可以继续使用托管 Service Fabric 资源执行此操作？
+    answer: >
+      可以，你可以在托管群集节点类型上指定 VM 扩展。 有关详细信息，请参阅[将规模集扩展添加到 Service Fabric 托管群集节点类型](./how-to-managed-cluster-vmss-extension.md)。
+  - question: >
+      我想要使用仅限内部的负载均衡器，这可能吗？
+    answer: >
+      目前不能使用仅限内部的负载均衡器。 建议锁定网络安全组 (NSG) 规则以阻止任何不需要的入站/出站流量。
+  - question: >
+      我是否可以自动缩放群集？
+    answer: >
+      目前不支持自动缩放。
+  - question: >
+      是否可以跨可用性区域部署群集？
+    answer: >
+      是，支持可用性区域的 Azure 区域支持跨可用性区域的 Service Fabric 托管群集。 有关详细信息，请参阅[跨可用性区域的 Service Fabric 托管群集](./how-to-managed-cluster-availability-zones.md)。
+  - question: "是否可以在 Service Fabric 托管群集上部署无状态节点类型？ \n"
+    answer: >
+      Service Fabric 托管群集支持任何辅助节点类型的无状态节点类型。 有关详细信息，请参阅 [Service Fabric 托管群集无状态节点类型](./how-to-managed-cluster-stateless-node-type.md)
+  - question: >
+      是否可以在群集运行时的自动和手动升级之间进行选择？
+    answer: >
+      是，可以在自动升级和手动升级之间进行选择。 有关详细信息，请参阅[群集升级](./how-to-managed-cluster-upgrades.md)。
+- name: 应用程序
+  questions:
+  - question: >
+      是否存在 Service Fabric 托管群集本地开发体验？
+    answer: >
+      本地开发体验在现有 Service Fabric 群集中保持不变。 有关详细信息，请参阅[设置开发环境](./service-fabric-get-started.md)以获取有关本地开发体验的更多详细信息。
+  - question: >
+      我可以将应用程序部署为 Azure 资源管理器资源吗？
+    answer: >
+      是的。 已添加支持，可将应用程序作为 Azure 资源管理器资源部署（使用 PowerShell 和 CLI 进行部署除外）。 若要开始，请参阅[使用 ARM 模板部署 Service Fabric 托管群集应用程序](./how-to-managed-cluster-app-deployment-template.md)。
+  - question: >
+      是否可以部署具有托管标识的应用程序？
+    answer: 是，具有托管标识的应用程序可以部署到 Service Fabric 托管群集。 有关详细信息，请参阅[应用程序托管标识](./concepts-managed-identity.md)。

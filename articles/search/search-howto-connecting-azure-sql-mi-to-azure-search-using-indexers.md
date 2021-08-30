@@ -1,5 +1,5 @@
 ---
-title: 用于搜索索引的 Azure SQL 托管实例连接
+title: 索引器与 SQL 托管实例的连接
 titleSuffix: Azure Cognitive Search
 description: 启用公共终结点以允许从 Azure 认知搜索上的索引器连接到 SQL 托管实例。
 manager: nitinme
@@ -7,47 +7,52 @@ author: vl8163264128
 ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 9e8625724f67caac99ae799674f9db9399e11ad8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/26/2021
+ms.openlocfilehash: 12ee369bfd69e82a73ccaa766190cedf7910a7a0
+ms.sourcegitcommit: 3b371af4c30fce82854b3d45fd8b8e674bbe7517
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89294248"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112984887"
 ---
-# <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>配置从 Azure 认知搜索索引器到 SQL 托管实例的连接
+# <a name="indexer-connections-to-azure-sql-managed-instance-through-a-public-endpoint"></a>索引器通过公共终结点连接到 Azure SQL 托管实例
 
-如 [使用索引器将 Azure SQL 数据库连接到 Azure 认知搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)中所述，Azure 认知搜索通过公共终结点支持针对 **SQL 托管实例** 创建索引器。
+如果设置的 Azure 认知搜索索引器连接到 Azure SQL 托管实例，则需要在托管实例上启用公共终结点作为先决条件。 索引器通过公共终结点连接到托管实例。
 
-## <a name="create-azure-sql-managed-instance-with-public-endpoint"></a>通过公共终结点创建 Azure SQL 托管实例
-在选中“启用公共终结点”  选项的情况下创建 SQL 托管实例。
+本文提供了一些基本步骤，其中包括收集数据源配置所需的信息。 有关详细信息和方法，请参阅[在 Azure SQL 托管实例中配置公共终结点](../azure-sql/managed-instance/public-endpoint-configure.md)。
+
+## <a name="enable-a-public-endpoint"></a>启用公共终结点
+
+对于新的 SQL 托管实例，请创建资源并选择“启用公共终结点”选项。
 
    ![启用公共终结点](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "启用公共终结点")
 
-## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>启用 Azure SQL 托管实例公共终结点
-还可以在“安全性”   > “虚拟网络”   > “公共终结点”   > “启用”  下为现有 SQL 托管实例启用公共终结点。
+或者，如果该实例已存在，可以在现有 SQL 托管实例上沿以下路径启用公共终结点：“安全性” > “虚拟网络” > “公共终结点” > “启用”   。
 
    ![使用托管实例 VNET 启用公共终结点](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "启用公共终结点")
 
 ## <a name="verify-nsg-rules"></a>验证 NSG 规则
+
 检查网络安全组是否具有允许来自 Azure 服务的连接的正确的 **入站安全规则**。
 
    ![NSG 入站安全规则](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG 入站安全规则")
 
-> [!NOTE]
-> 索引器仍要求使用公共终结点配置 SQL 托管实例以方便读取数据。
-> 但是，可以选择使用以下 2 个规则来替换当前规则 (`public_endpoint_inbound`)，以便限制对该公共终结点的入站访问：
->
-> * 允许从 `AzureCognitiveSearch` [服务标记](../virtual-network/service-tags-overview.md#available-service-tags) ("SOURCE" = `AzureCognitiveSearch`, "NAME" = `cognitive_search_inbound`) 进行的入站访问
->
-> * 允许来自搜索服务的 IP 地址的入站访问，该 IP 地址可通过 ping 其完全限定的域名（例如 `<your-search-service-name>.search.windows.net`）来获取。 ("SOURCE" = `IP address`, "NAME" = `search_service_inbound`)
->
-> 对于这两个规则中的每一个，请设置 "PORT" = `3342`, "PROTOCOL" = `TCP`, "DESTINATION" = `Any`, "ACTION" = `Allow`
+## <a name="restrict-inbound-access-to-the-endpoint"></a>限制对终结点的入站访问
+
+可以将当前规则 (`public_endpoint_inbound`) 替换为以下两个规则来限制对公共终结点的入站访问：
+
+* 允许从 `AzureCognitiveSearch` [服务标记](../virtual-network/service-tags-overview.md#available-service-tags) ("SOURCE" = `AzureCognitiveSearch`, "NAME" = `cognitive_search_inbound`) 进行的入站访问
+
+* 允许来自搜索服务的 IP 地址的入站访问，该 IP 地址可通过 ping 其完全限定的域名（例如 `<your-search-service-name>.search.windows.net`）来获取。 ("SOURCE" = `IP address`, "NAME" = `search_service_inbound`)
+
+对于每项规则，请将“PORT”设置为 `3342`，“PROTOCOL”设置为 `TCP`，“DESTINATION”设置为 `Any`，“ACTION”设置为 `Allow`。
 
 ## <a name="get-public-endpoint-connection-string"></a>获取公共终结点连接字符串
-请确保使用 **公共终结点**（端口 3342，而不是端口 1433）的连接字符串。
+
+复制要在搜索索引器的数据源连接中使用的连接字符串。 请确保复制公共终结点的连接字符串（端口 3342，而不是端口 1433）。
 
    ![公共终结点连接字符串](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-connection-string.png "公共终结点连接字符串")
 
 ## <a name="next-steps"></a>后续步骤
-无需进行配置，现在可以使用门户或 REST API 将 SQL 托管实例指定为 Azure 认知搜索索引器的数据源。 有关详细信息，请参阅[使用索引器将 Azure SQL 数据库连接到 Azure 认知搜索](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)。
+
+完成配置后，现在可以将 [SQL 托管实例指定为索引器数据源](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)。

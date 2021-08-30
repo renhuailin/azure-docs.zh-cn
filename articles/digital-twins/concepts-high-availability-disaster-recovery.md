@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05713c5a27a8b42ce9b6967212bf1414c841788c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6307c99c0796fb4159da7563c951304ceef6ece2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474570"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750860"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure 数字孪生高可用性和灾难恢复
 
@@ -70,7 +70,7 @@ Azure 数字孪生通过在服务内实现冗余来提供区域内部 HA。 这�
 ## <a name="best-practices"></a>最佳做法
 
 有关 HA/DR 的最佳做法，请参阅以下关于本主题的 Azure 指南： 
-* Azure 业务连续性技术指南一文介绍了一个常规框架来帮助你思考业务连续性和灾难恢复。 
+* [设计可靠的 Azure 应用程序](/azure/architecture/framework/resiliency/app-design)一文介绍有助于考虑业务连续性和灾难恢复的通用框架。 
 * [Azure 应用程序的灾难恢复和高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)一文针对 Azure 应用程序的高可用性 (HA) 和灾难恢复 (DR) 实现策略提供了体系结构指导。
 
 ## <a name="next-steps"></a>后续步骤 
@@ -78,4 +78,4 @@ Azure 数字孪生通过在服务内实现冗余来提供区域内部 HA。 这�
 详细了解 Azure 数字孪生解决方案入门：
  
 * [Azure 数字孪生是什么？](overview.md)
-* [快速入门：Azure Digital Twins Explorer 入门](quickstart-azure-digital-twins-explorer.md)
+* [Azure Digital Twins Explorer 入门](quickstart-azure-digital-twins-explorer.md)

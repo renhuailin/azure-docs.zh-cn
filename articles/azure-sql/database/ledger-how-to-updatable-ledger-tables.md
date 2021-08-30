@@ -1,27 +1,27 @@
 ---
 title: 创建和使用可更新的账本表
 description: 了解如何在 Azure SQL 数据库中创建和使用可更新的账本表。
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: how-to
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 739523f6d98ea2905f4de5071581c8f4d8484893
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e4027bcaba4e89e89bec2ffa45d50c94e9a07b12
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076413"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739700"
 ---
 # <a name="create-and-use-updatable-ledger-tables"></a>创建和使用可更新的账本表
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Azure SQL 数据库账本目前为公共预览版，已在美国中西部发布。
+> Azure SQL 数据库账本目前为公共预览版，在欧洲西部、巴西南部和美国中西部提供。
 
 本文介绍如何在 Azure SQL 数据库中创建[可更新的账本表](ledger-updatable-ledger-tables.md)。 随后，你可在可更新的账本表中插入值，然后对数据进行更新。 最后，可使用账本视图查看结果。 我们将使用示例银行应用程序跟踪银行客户帐户中的余额。 我们的示例将让你实际了解可更新账本表及其相应的历史记录表和账本视图之间的关系。
 
@@ -161,7 +161,7 @@ ms.locfileid: "112076413"
    FROM [Account].[Balance] 
    GO
    
-   SELECT * FROM <Your unique history table name>
+   SELECT * FROM [<Your unique history table name>]
    GO 
    
    SELECT * FROM Account.Balance_Ledger

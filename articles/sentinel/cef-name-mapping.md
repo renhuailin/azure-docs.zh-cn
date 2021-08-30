@@ -7,19 +7,23 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: reference
-ms.date: 04/12/2021
-ms.openlocfilehash: 107d10bec77ea7bb2b67ae86f48d5b88a286869d
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.date: 07/26/2021
+ms.openlocfilehash: f31aa44237e0312d08a43155db867192d83a57ef
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229497"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722018"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF 和 CommonSecurityLog 字段映射
 
 下表将通用事件格式 (CEF) 字段名称映射到它们在 Azure Sentinel 的 CommonSecurityLog 中使用的名称，当你在 Azure Sentinel 中使用 CEF 数据源时，这些信息可能有所帮助。
 
 有关详细信息，请参阅[使用通用事件格式连接外部解决方案](connect-common-event-format.md)。
+
+> [!NOTE]
+> 需要 Azure Sentinel 工作区才能将 [CEF 数据](connect-common-event-format.md#prerequisites)引入 Log Analytics。
+>
 
 ## <a name="a---c"></a>A - C
 
@@ -60,7 +64,7 @@ ms.locfileid: "108229497"
 | dproc | DestinationProcessName | 事件目标进程的名称，例如 `telnetd` 或 `sshd.` |
 | dpt | DestinationPort | 目标端口。 <br>有效值：`*0` - `65535` |
 | dst | DestinationIP | 事件在 IP 网络中引用的目标 IPv4 地址。 |
-| dtz | DeviceTimeZon | 生成事件的设备的时区 |
+| dtz | DeviceTimeZone | 生成事件的设备的时区 |
 | duid |DestinationUserId | 按 ID 标识目标用户。 |
 | duser | DestinationUserName |按名称标识目标用户。|
 | dvc | DeviceAddress | 生成事件的设备的 IPv4 地址。 |

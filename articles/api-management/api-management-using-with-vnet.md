@@ -5,15 +5,15 @@ services: api-management
 author: vladvino
 ms.service: api-management
 ms.topic: how-to
-ms.date: 06/08/2021
+ms.date: 07/23/2021
 ms.author: apimpm
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 9de42ef1aa7471f489a02af6e1931c0df0252b7f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b647291d6e841f27c278f7753244f7b7b8745056
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746332"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743925"
 ---
 # <a name="connect-to-a-virtual-network-using-azure-api-management"></a>使用 Azure API 管理连接到虚拟网络
 借助 Azure 虚拟网络 (VNET)，你可以将任何 Azure 资源放置在你能够控制访问权限的非 Internet 可路由网络中。 然后，你可以使用各种 VPN 技术将 VNET 连接到本地网络。 若要了解有关 Azure VNET 的详细信息，请先阅读 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)中的相关信息。
@@ -100,9 +100,9 @@ Azure API 管理可以部署到 VNET 内部，以便访问该网络中的后端�
 
 ### <a name="api-version-2021-01-01-preview"></a>API 版本 2021-01-01-preview
 
-* Azure 资源管理器[模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-management-create-with-external-vnet-publicip)
+* Azure 资源管理器[模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.apimanagement/api-management-create-with-external-vnet-publicip)
 
-     [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-external-vnet-publicip%2Fazuredeploy.json)
+     [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.apimanagement%2Fapi-management-create-with-external-vnet-publicip%2Fazuredeploy.json)
 
 ### <a name="api-version-2020-12-01"></a>API 版本 2020-12-01
 
@@ -126,7 +126,7 @@ Azure API 管理可以部署到 VNET 内部，以便访问该网络中的后端�
     * 有关引用信息，请参阅[端口表](#required-ports)和网络要求。
 
     > [!IMPORTANT]
-    > 如果计划使用自定义 DNS 服务器配置 VNET，则应先进行设置，再将 API 管理服务部署到 VNET 中。 否则，每次通过运行[应用网络配置操作](/rest/api/apimanagement/2019-12-01/apimanagementservice/applynetworkconfigurationupdates)更改 DNS 服务器时，都需要更新 API 管理服务。
+    > 如果计划使用自定义 DNS 服务器配置 VNET，则应先进行设置，再将 API 管理服务部署到 VNET 中。 否则，每次通过运行[应用网络配置操作](/rest/api/apimanagement/2020-12-01/api-management-service/apply-network-configuration-updates)更改 DNS 服务器时，都需要更新 API 管理服务。
 
 * API 管理所需的端口：  
     你可以使用 [网络安全组][网络安全组] 在子网部署 API 管理，以便控制传入子网的入站和出站流量。 如果以下任一端口不可用，则 API 管理可能无法正常工作且不可访问。 在 VNET 中部署 API 管理时，另一个常见的配置错误问题便是端口遭到阻止。
@@ -195,8 +195,7 @@ Azure API 管理可以部署到 VNET 内部，以便访问该网络中的后端�
   * 在部署以下服务的 API 管理所在的子网上启用[服务终结点][ServiceEndpoints]：
       * Azure SQL
       * Azure 存储
-      * Azure EventHub
-      * Azure ServiceBus 和
+      * Azure EventHub 和
       * Azure KeyVault。 
   
     为这些服务直接启用 API 管理委托子网中的终结点，以便使用 Microsoft Azure 主干网络为服务流量提供最佳路由。 若在使用服务终结点时采用强制隧道 API 管理，则上述 Azure 服务流量不会强制通过隧道传输。 其他 API 管理服务依赖项流量将强制通过隧道传输且不能丢失； 一旦丢失，API 管理服务将无法正常工作。
@@ -234,7 +233,7 @@ Azure API 管理可以部署到 VNET 内部，以便访问该网络中的后端�
   若要解决连接问题，请查看[常见网络配置问题](#network-configuration-issues)并修复所需的网络设置。
 
 * 增量更新：  
-  更改网络时，请参阅 [NetworkStatus API](/rest/api/apimanagement/2019-12-01/networkstatus)，以验证 API 服务是否仍具有关键资源的访问权限。 连接状态应每 15 分钟更新一次。
+  更改网络时，请参阅 [NetworkStatus API](/rest/api/apimanagement/2020-12-01/network-status)，以验证 API 服务是否仍具有关键资源的访问权限。 连接状态应每 15 分钟更新一次。
 
 * 资源导航链接：  
   若使用 API 2020-12-01 及更早版本将 API 管理实例部署到资源管理器 VNET 子网，API 管理会通过创建资源导航链接来保留子网。 如果子网已包含来自其他提供程序的资源，则部署将 **失败**。 同样，当删除 API 管理服务或将其移至其他子网时，资源导航链接也将会删除。
@@ -270,50 +269,52 @@ IP 地址由 **Azure 环境** 划分。 允许入站请求时，必须允许标�
 |-----------------|-------------------------|---------------|
 | Azure Public| 美国中南部（全球）| 104.214.19.224|
 | Azure Public| 美国中北部（全球）| 52.162.110.80|
-| Azure Public| 美国中西部| 52.253.135.58|
-| Azure Public| 韩国中部| 40.82.157.167|
-| Azure Public| 英国西部| 51.137.136.0|
-| Azure Public| 日本西部| 40.81.185.8|
-| Azure Public| 美国中北部| 40.81.47.216|
-| Azure Public| 英国南部| 51.145.56.125|
-| Azure Public| 印度西部| 40.81.89.24|
-| Azure Public| 美国东部| 52.224.186.99|
-| Azure Public| 西欧| 51.145.179.78|
-| Azure Public| 日本东部| 52.140.238.179|
-| Azure Public| 法国中部| 40.66.60.111|
-| Azure Public| 加拿大东部| 52.139.80.117|
-| Azure Public| 阿拉伯联合酋长国北部| 20.46.144.85|
+| Azure Public| 澳大利亚中部| 20.37.52.67|
+| Azure Public| 澳大利亚中部 2| 20.39.99.81|
+| Azure Public| 澳大利亚东部| 20.40.125.155|
+| Azure Public| 澳大利亚东南部| 20.40.160.107|
 | Azure Public| 巴西南部| 191.233.24.179|
 | Azure Public| 巴西东南部| 191.232.18.181|
-| Azure Public| 东南亚| 40.90.185.46|
-| Azure Public| 南非北部| 102.133.130.197|
 | Azure Public| 加拿大中部| 52.139.20.34|
-| Azure Public| 韩国南部| 40.80.232.185|
+| Azure Public| 加拿大东部| 52.139.80.117|
 | Azure Public| 印度中部| 13.71.49.1|
-| Azure Public| 美国西部| 13.64.39.16|
-| Azure Public| 澳大利亚东南部| 20.40.160.107|
-| Azure Public| 澳大利亚中部| 20.37.52.67|
-| Azure Public| 印度南部| 20.44.33.246|
 | Azure Public| 美国中部| 13.86.102.66|
-| Azure Public| 澳大利亚东部| 20.40.125.155|
-| Azure Public| 美国西部 2| 51.143.127.203|
-| Azure Public| 美国西部 3| 20.150.167.160|
-| Azure Public| 美国东部 2 EUAP| 52.253.229.253|
 | Azure Public| 美国中部 EUAP| 52.253.159.160|
-| Azure Public| 美国中南部| 20.188.77.119|
-| Azure Public| 美国东部 2| 20.44.72.3|
-| Azure Public| 北欧| 52.142.95.35|
 | Azure Public| 东亚| 52.139.152.27|
+| Azure Public| 美国东部| 52.224.186.99|
+| Azure Public| 美国东部 2| 20.44.72.3|
+| Azure Public| 美国东部 2 EUAP| 52.253.229.253|
+| Azure Public| 法国中部| 40.66.60.111|
 | Azure Public| 法国南部| 20.39.80.2|
-| Azure Public| 瑞士西部| 51.107.96.8|
-| Azure Public| 澳大利亚中部 2| 20.39.99.81|
-| Azure Public| 阿联酋中部| 20.37.81.41|
-| Azure Public| 瑞士北部| 51.107.0.91|
-| Azure Public| 南非西部| 102.133.0.79|
-| Azure Public| 德国中西部| 51.116.96.0|
 | Azure Public| 德国北部| 51.116.0.0|
+| Azure Public| 德国中西部| 51.116.96.0|
+| Azure Public| 日本东部| 52.140.238.179|
+| Azure Public| 日本西部| 40.81.185.8|
+| Azure Public| Jio 印度中部| 20.192.234.160|
+| Azure Public| Jio 印度西部| 20.193.202.160|
+| Azure Public| 韩国中部| 40.82.157.167|
+| Azure Public| 韩国南部| 40.80.232.185|
+| Azure Public| 美国中北部| 40.81.47.216|
+| Azure Public| 北欧| 52.142.95.35|
 | Azure Public| 挪威东部| 51.120.2.185|
 | Azure Public| 挪威西部| 51.120.130.134|
+| Azure Public| 南非北部| 102.133.130.197|
+| Azure Public| 南非西部| 102.133.0.79|
+| Azure Public| 美国中南部| 20.188.77.119|
+| Azure Public| 印度南部| 20.44.33.246|
+| Azure Public| 东南亚| 40.90.185.46|
+| Azure Public| 瑞士北部| 51.107.0.91|
+| Azure Public| 瑞士西部| 51.107.96.8|
+| Azure Public| 阿联酋中部| 20.37.81.41|
+| Azure Public| 阿拉伯联合酋长国北部| 20.46.144.85|
+| Azure Public| 英国南部| 51.145.56.125|
+| Azure Public| 英国西部| 51.137.136.0|
+| Azure Public| 美国中西部| 52.253.135.58|
+| Azure Public| 西欧| 51.145.179.78|
+| Azure Public| 印度西部| 40.81.89.24|
+| Azure Public| 美国西部| 13.64.39.16|
+| Azure Public| 美国西部 2| 51.143.127.203|
+| Azure Public| 美国西部 3| 20.150.167.160|
 | Azure 中国世纪互联| 中国北部（全球）| 139.217.51.16|
 | Azure 中国世纪互联| 中国东部（全球）| 139.217.171.176|
 | Azure 中国世纪互联| 中国北部| 40.125.137.220|

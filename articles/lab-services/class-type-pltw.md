@@ -3,12 +3,12 @@ title: 使用 Azure 实验室服务设置“项目引路”实验室
 description: 了解如何设置实验室来讲授“项目引路”课程。
 ms.topic: article
 ms.date: 10/28/2020
-ms.openlocfilehash: aaaddcb2c2111ccfbf0edfc79bbefafb711b19dc
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 85e8b8d55ed5a91c21c2554ce15e3ef893e30f15
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768528"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737687"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>为“项目引路”课程设置实验室
 
@@ -100,7 +100,7 @@ Autodesk 生成的许可证文件嵌入了许可证服务器的 MAC 地址。  �
 ### <a name="template-machine"></a>模板计算机
 PLTW 所需的某些安装文件很大。 将文件下载到实验室模板 VM 时，可能需要较长时间才能进行复制。
 
-建议在物理环境中创建 PLTW 映像，而不是将安装文件下载到模板计算机并在其中安装所有内容。  然后，可以将自定义映像导入共享映像库，以便可以使用它们来创建实验室。  有关详细信息，请参阅[将自定义映像上传到共享映像库](./upload-custom-image-shared-image-gallery.md)。
+建议在物理环境中创建 PLTW 映像，而不是将安装文件下载到模板计算机并在其中安装所有内容。  然后，可以将自定义映像导入共享映像库，以便使用它们来创建实验室。  有关详细信息，请参阅[创建自定义映像的建议方法](approaches-for-custom-image-creation.md)。
 
 按照此建议进行操作时，请注意设置实验室的主要任务：
 

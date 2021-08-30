@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2021
+ms.date: 08/16/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: 4273e69e3143c25fb78961c5b6b128b69b69dbd1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 625df6ed5147b77a9829b6e7b3396f4855068d62
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068116"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253854"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp 文件卷的跨区域复制
 
@@ -44,6 +44,8 @@ Azure NetApp 文件复制功能通过跨区域卷复制提供数据保护。 可
 * 日本东部和日本西部
 * 欧洲北部和欧洲西部
 * 英国南部和英国西部
+* 阿拉伯联合酋长国北部和阿拉伯联合酋长国中部
+* 挪威东部和挪威西部
 
 ### <a name="azure-regional-non-standard-pairs"></a>Azure 区域非标准对
 
@@ -56,14 +58,15 @@ Azure NetApp 文件复制功能通过跨区域卷复制提供数据保护。 可
 *   澳大利亚东部和东南亚 
 *   德国中西部和英国南部
 *   德国中西部和欧洲西部
+*   德国中西部和法国中部
 
 ## <a name="service-level-objectives"></a>服务级别目标
 
-恢复点目标 (RPO) 或可容忍的最大数据丢失定义为复制计划的两倍。  观察到的实际 RPO 可能因多种因素而异，例如，数据集总大小以及更改率、数据覆盖百分比以及可用于传输的复制带宽。   
+恢复点目标 (RPO) 指示可以将数据恢复到的时间点。 RPO 目标通常不到复制计划的两倍，但可能会有所不同。 在某些情况下，由于各种因素（如数据集总大小、更改率、数据覆盖百分比和可用于传输的复制带宽），复制计划可能会超出目标 RPO。   
 
-* 对于 10 分钟的复制计划，最大 RPO 为 20 分钟。  
-* 对于每小时复制计划，最大 RPO 为两小时。  
-* 对于每日复制计划，最大 RPO 为两天。  
+* 对于 10 分钟的复制计划，RPO 通常不到 20 分钟。  
+* 对于每小时复制计划，RPO 通常不到 2 小时。  
+* 对于每日复制计划，RPO 通常不到 2 天。  
 
 恢复时间目标 (RTO) 或可容忍的最长业务应用程序停机时间，由引入应用程序并在第二个站点中提供对数据的访问权限的因素确定。 用于中断对等关系以激活目标卷并在第二个站点中提供读取和写入数据访问权限的 RTO 的存储部分应在一分钟内完成。
 

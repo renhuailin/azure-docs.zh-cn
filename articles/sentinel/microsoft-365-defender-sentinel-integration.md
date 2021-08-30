@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 164bb6ca0c84120dbef2ab8307e723ed5723cf2f
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: 86a998e304755085a9ae1e15e011df3b242c4df8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107991992"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725150"
 ---
 # <a name="microsoft-365-defender-integration-with-azure-sentinel"></a>Microsoft 365 Defender 与 Azure Sentinel 集成
 
@@ -74,9 +74,10 @@ ms.locfileid: "107991992"
 
 - 这两种机制可完全一起使用，且可用于促进向新的 Microsoft 365 Defender 事件创建逻辑过渡。 但是，这种做法会为相同的警报创建重复事件。
 
-- 若要避免为同一警报创建重复事件，我们建议客户在连接 Microsoft 365 Defender 时，关闭 Microsoft 365 产品（Defender for Endpoint、Defender for Identity 和 Defender for Office 365，请参阅下文 Cloud App Security）的所有 Microsoft 事件创建规则。 这可以通过在连接器页面中禁用事件创建来完成。 请记住，如果执行此操作，事件创建规则应用的所有筛选器都不会应用于 Microsoft 365 Defender 事件集成。
+- 为了避免对同一警报创建重复事件，建议客户在连接 Microsoft 365 Defender 时，关闭 Microsoft 365 产品（Defender for Endpoint、Defender for Identity、Defender for Office 365 和 Cloud App Security）的所有 Microsoft 事件创建规则。 这可以通过在连接器页面中禁用事件创建来完成。 请记住，如果执行此操作，事件创建规则应用的所有筛选器都不会应用于 Microsoft 365 Defender 事件集成。
 
-- 对于 Microsoft Cloud App Security 警报，当前并非所有警报类型都已加入 Microsoft 365 Defender。 为确保仍能收到所有 Cloud App Security 警报的事件，必须为未加入 [Microsoft 365 Defender](microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md) 的警报类型保留或创建 **Microsoft 事件创建规则**。
+    > [!NOTE]
+    > 所有 Microsoft Cloud App Security 警报类型现都已加入到 Microsoft 365 Defender 中。
 
 ### <a name="working-with-microsoft-365-defender-incidents-in-azure-sentinel-and-bi-directional-sync"></a>在 Azure Sentinel 和双向同步中使用 Microsoft 365 Defender 事件
 
@@ -106,4 +107,4 @@ Microsoft 365 Defender 事件将出现在 Azure Sentinel 事件队列中，其�
 在本文档中，你学习了如何从通过 Microsoft 365 Defender 连接器将 Microsoft 365 Defender 与 Azure Sentinel 一起使用中获益。
 
 - 获取有关如何[启用 Microsoft 365 Defender 连接器](connect-microsoft-365-defender.md)的说明。
-- 创建[自定义警报](tutorial-detect-threats-custom.md)并[调查事件](tutorial-investigate-cases.md)。
+- 创建[自定义警报](detect-threats-custom.md)并[调查事件](investigate-cases.md)。

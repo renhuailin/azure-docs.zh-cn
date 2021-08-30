@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 90a873b7de6ccc1ba21a05bf4c0e288ed668cac0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c1e60ae792921ef4e218918f093001ee9947975d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101694455"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724267"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>在 Azure Purview（预览版）中管理数据源
 
@@ -30,15 +30,15 @@ ms.locfileid: "101694455"
 
    :::image type="content" source="media/manage-data-sources/select-source-type.png" alt-text="在“注册源”页中选择数据源类型":::
 
-1. 在“注册源”页上填写表单。 为源选择一个名称，并输入相关信息。 如果选择“从 Azure 订阅”作为帐户选择方法，随即会以下拉列表的形式显示订阅中的源。 也可以手动输入源信息。
+2. 在“注册源”页上填写表单。 为源选择一个名称，并输入相关信息。 如果选择“从 Azure 订阅”作为帐户选择方法，随即会以下拉列表的形式显示订阅中的源。 
 
    :::image type="content" source="media/manage-data-sources/register-sources-form.png" alt-text="数据源信息表单":::
 
-1. 选择“完成”。
+3. 选择“注册”。
 
 ## <a name="view-sources"></a>查看源
 
-可以在 Azure Purview Studio 的“源”选项卡上查看所有已注册的源。 有两种视图类型：地图视图和列表视图。
+可以在 Azure Purview Studio 的“数据映射”选项卡上查看所有已注册的源。 有两种视图类型：地图视图和列表视图。
 
 ### <a name="map-view"></a>地图视图
 

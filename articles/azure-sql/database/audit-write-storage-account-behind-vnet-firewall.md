@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 6e0bb7949e6f528925eb66c1148662720b144e06
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 2431ba1b59ae1f9891affe510e098d41fe166797
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060347"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711868"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>将审核内容写入到 VNet 和防火墙后面的存储帐户
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "112060347"
 > [!div class="checklist"]
 >
 > * 一个常规用途 v2 存储帐户。 如果你有常规用途 v1 或 Blob 存储帐户，请[升级到常规用途 v2 存储帐户](../../storage/common/storage-account-upgrade.md)。 有关详细信息，请参阅[存储帐户的类型](../../storage/common/storage-account-overview.md#types-of-storage-accounts)。
-> * 存储帐户必须位于[逻辑 SQL Server](logical-servers.md) 所在的同一订阅和位置。
+> * 存储帐户必须与[逻辑 SQL 服务器](logical-servers.md)位于同一租户和同一位置（可以位于不同的订阅上）。
 > * Azure 存储帐户需要 `Allow trusted Microsoft services to access this storage account`。 请在存储帐户的“防火墙和虚拟网络”中启用此设置。
 > * 你必须对所选存储帐户拥有 `Microsoft.Authorization/roleAssignments/write` 权限。 有关详细信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 

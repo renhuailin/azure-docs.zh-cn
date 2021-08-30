@@ -4,12 +4,12 @@ description: 使用 Azure 应用服务连续部署功能来发布函数。
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0018f1c74708035206a8a2bb9a540f00f98f43a4
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83123649"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112321012"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions 的连续部署
 
@@ -62,7 +62,7 @@ Azure 中用于函数部署的单位是函数应用。 将同时部署函数应�
 完成此过程后，指定源中的所有代码都将部署到你的应用中。 此时，部署源中的更改会触发将这些更改部署到 Azure 中的函数应用的操作。
 
 > [!NOTE]
-> 配置持续集成后，就无法再对 Functions 门户中的源文件进行编辑了。
+> 配置持续集成后，就无法再对 Functions 门户中的源文件进行编辑了。 如果最初是从本地计算机发布代码，可能需要将函数应用中的 `WEBSITE_RUN_FROM_PACKAGE` 设置更改为值 `0`。 
 
 ## <a name="next-steps"></a>后续步骤
 

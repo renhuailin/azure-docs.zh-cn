@@ -5,19 +5,19 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 04/16/2020
+ms.date: 07/30/2021
 ms.author: ant
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d6ad68ef3d490d4fb95e8ce1fc658e80d7eb507a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: d11c27e96ad214535008cefad5a926b46c316fa7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668450"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729406"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>使用 Azure PowerShell 迁移 Web 应用程序防火墙策略
 
-通过使用此脚本，可以方便地将 WAF config 或仅包含自定义规则的 WAF 策略转换为完整的 WAF 策略。 门户中可能会出现一则警告，显示“迁移到 WAF 策略”，或者用户可能想要使用新的 WAF 功能，如 Geomatch 自定义规则（预览版）、每个站点的 WAF 策略、每个 URI 的 WAF 策略（预览版）或机器人缓解规则集（预览版）。 如需使用其中任意一种功能，需要有与应用程序网关关联的完整 WAF 策略。 
+通过使用此脚本，可以方便地将 WAF config 或仅包含自定义规则的 WAF 策略转换为完整的 WAF 策略。 门户中可能会出现一则警告，显示“迁移到 WAF 策略”，或者用户可能想要使用新的 WAF 功能，如 Geomatch 自定义规则、每个站点的 WAF 策略、每个 URI 的 WAF 策略（预览版）或机器人缓解规则集。 如需使用其中任意一种功能，需要有与应用程序网关关联的完整 WAF 策略。 
 
 有关创建新的 WAF 策略的详细信息，请参阅[创建应用程序网关的 Web 应用程序防火墙策略](create-waf-policy-ag.md)。 有关迁移的信息，请参阅[迁移到 WAF 策略](create-waf-policy-ag.md#migrate-to-waf-policy)。
 

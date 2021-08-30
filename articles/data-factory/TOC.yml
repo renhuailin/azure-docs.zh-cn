@@ -212,6 +212,8 @@ items:
               - name: 数据流性能
                 href: concepts-data-flow-performance.md
                 displayName: 'merge, timeout'
+              - name: Integration Runtime 性能
+                href: concepts-integration-runtime-performance.md
               - name: 管理数据流画布
                 href: concepts-data-flow-manage-graph.md
               - name: 表达式生成器
@@ -288,7 +290,7 @@ items:
             href: connector-azure-databricks-delta-lake.md
           - name: Azure 文件存储
             href: connector-azure-file-storage.md
-          - name: Azure SQL 数据库
+          - name: Azure SQL Database
             href: connector-azure-sql-database.md
             displayName: upsert
           - name: Azure SQL 托管实例

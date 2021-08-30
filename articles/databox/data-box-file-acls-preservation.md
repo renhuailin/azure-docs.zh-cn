@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 10/06/2020
+ms.date: 07/16/2021
 ms.author: alkohli
-ms.openlocfilehash: e8df77356b6b5b1b40e2abd772e13c2e811413ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96d3957a7626e393728d4a309bc56ecaa19d4e83
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91950306"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400914"
 ---
 # <a name="preserving-file-acls-attributes-and-timestamps-with-azure-data-box"></a>使用 Azure Data Box 保留文件 ACL、属性和时间戳
 
@@ -102,6 +102,45 @@ where
 |`/log+:<LogFile>`  |将输出追加到现有的日志文件。|
 
 有关这些 `robocopy` 参数的详细信息，请参阅[教程：通过 SMB 将数据复制到 Azure Data Box](./data-box-deploy-copy-data.md)
+
+> [!NOTE]
+> 如果使用 `/copyall` 复制数据，则会将目录和文件上的源 ACL 传输到 Azure 文件。 如果你对源数据只有读取访问权限，并且无法修改源数据，则只对 Data Box 中的数据具有读取访问权限。 只有当你打算将目录和文件上的所有 ACL 连同数据一起复制时，才使用 `/copyall`。
+
+#### <a name="use-robocopy-to-list-copy-modify-files-on-data-box"></a>使用 robocopy 在 Data Box 中列出、复制、修改文件
+
+下面是使用 `robocopy` 复制数据时将使用的一些常见方案。
+
+- **只将数据复制到 Data Box，而不会复制目录和文件上的 ACL**
+
+    使用 `/dcopy:DAT` 选项只复制数据、属性和时间戳。 不会复制目录和文件上的 ACL。
+
+- **将目录和文件上的数据和 ACL 复制到 Data Box**
+
+    使用 `/copyall` 复制所有源数据，包括目录和文件上的所有 ACL。
+
+- **使用 robocopy 列出 Data Box 上的 filesystem**
+
+    使用此命令列出目录内容：
+
+    `robocopy <source-dir> NULL /l /s /xx /njh /njs /fp /B`
+
+    请注意，文件资源管理器不允许列出这些文件。
+    
+- **复制或删除 Data Box 上的文件夹和文件**
+
+    使用此命令复制单个文件：
+
+    `robocopy <source-dir> <destination-dir> <file-name> /B`
+
+    使用此命令删除单个文件：
+
+    `robocopy <source-dir> <destination-dir> <file-name> /purge /B`
+
+    在上述命令中，`<source-dir>` 不应包含文件：`<file-name>`。 然后，上述命令将目标与源同步，导致从目标中删除该文件。
+
+    请注意，文件资源管理器可能不允许你执行上述操作。
+
+有关详细信息，请参阅[使用 robocopy 命令](/windows-server/administration/windows-commands/robocopy)。
 
 ### <a name="linux-data-copy-tool"></a>Linux 数据复制工具
 

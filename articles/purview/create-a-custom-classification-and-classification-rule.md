@@ -1,30 +1,33 @@
 ---
 title: 创建自定义分类和分类规则（预览版）
 description: 了解如何创建自定义分类来定义数据资产中 Azure Purview 的组织独有的数据类型。
-author: anmuk601
-ms.author: anmuk
+author: viseshag
+ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 3/24/2021
-ms.openlocfilehash: e54535449ddf9605bc483b9a309a717b22d8398d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: fff9f128e6a533d8a8926093ca58a79ef2e974d3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071490"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748111"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure Purview 中的自定义分类
 
 本文介绍如何创建自定义分类来定义数据资产中组织独有的数据类型。 此外，还介绍如何创建可用于在整个数据资产中查找指定数据的自定义分类规则。
 
-## <a name="default-classifications"></a>默认分类
+## <a name="default-system-classifications"></a>默认系统分类
 
-Azure Purview 数据目录提供了大量默认分类，这些分类表示你在数据资产中可能具有的典型个人数据类型。
+Azure Purview 数据目录提供了大量默认系统分类，这些分类表示你在数据资产中可能具有的典型个人数据类型。 有关可用系统分类的完整列表，请参阅 [Azure Purview 中受支持的分类](supported-classifications.md)。
 
 :::image type="content" source="media/create-a-custom-classification-and-classification-rule/classification.png" alt-text="选择分类" border="true":::
 
 如果任何默认分类都不能满足需求，还可以创建自定义分类。
+
+> [!Note]
+> [数据采样规则](sources-and-scans.md#sampling-within-a-file)同时适用于系统分类和自定义分类。  
 
 ## <a name="steps-to-create-a-custom-classification"></a>创建自定义分类的步骤
 
@@ -118,16 +121,12 @@ Contoso 可以通过创建自定义分类规则将扫描系统配置为查找这
    |数据模式    |可选。 表示存储在数据字段中的数据的正则表达式。 此限制非常大。 在上面的示例中，数据模式测试员工 ID 是否为 `Employee{GUID}` 一词的字面意思。  |
    |列模式    |可选。 表示要匹配的列名称的正则表达式。 此限制非常大。 |
 
-1. 在“数据模式”下，可以设置以下两个阈值：
+1. 在“数据模式”下，可使用“最小匹配阈值”来设置扫描程序应用分类所必须在列中找到的非重复数据值匹配的最小百分比 。 建议的值为 60%。 如果指定多个数据模式，则此设置处于禁用状态，并且值固定为 60%。
 
-   - 非重复匹配阈值：在扫描程序运行数据模式前需要在列中找到的非重复数据值的总数。 建议的值为 8。 可以手动调整此值，范围为 2 到 32。 系统需要此值来确保每列都包含足够的数据，以便扫描程序可以对其进行精确分类。 例如，不会对多行都包含值 1 的列进行分类。 也不会对一行包含值而其余行包含 null 值的列进行分类。 如果指定多种模式，此值会应用于每个模式。
-
-   - 最小匹配阈值：可以使用此设置来设置扫描程序应用分类所必须在列中找到的非重复数据值匹配的最小百分比。 建议的值为 60%。 使用此设置时请务必小心。 如果将级别降低到 60% 以下，则可能会将误报分类引入目录中。 如果指定多个数据模式，则此设置处于禁用状态，并且值固定为 60%。
+   > [!Note]
+   > 最小匹配阈值必须至少为 1%。
 
 1. 你现在可以验证规则并创建它。
-
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="创建前验证规则" border="true":::
-
 1. 在完成创建过程之前测试分类规则，验证是否会对资产应用标记。 规则中的分类将应用于上传的示例数据，就像在扫描中一样。 这意味着所有系统分类和自定义分类都将与文件中的数据一致。
 
    输入文件可能包含带分隔符的文件（CSV、PSV、SSV、TSV）、JSON 或 XML 内容。 将基于输入文件的文件扩展名对内容进行分析。 带分隔符的数据可能具有与上述所有类型一致的文件扩展名。 例如，TSV 数据可存在于名为 MySampleData.csv 的文件中。 带分隔符的内容必须至少有 3 列。
@@ -142,9 +141,7 @@ Contoso 可以通过创建自定义分类规则将扫描系统配置为查找这
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-rule.png" alt-text="创建字典规则" border="true":::
 
-1. 生成字典后，可以调整非重复匹配阈值和最小匹配阈值，并提交规则。
-
-- **非重复匹配阈值**：在扫描程序运行数据模式前需要在列中找到的非重复数据值的总数。 非重复匹配阈值与模式匹配毫无关系，但它是模式匹配的先决条件。 建议的值为 8。 可以手动调整此值，范围为 2 到 32。 系统需要此值来确保每列都包含足够的数据，以便扫描程序可以对其进行精确分类。 例如，不会对多行都包含值 1 的列进行分类。 也不会对一行包含值而其余行包含 null 值的列进行分类。 如果指定多种模式，此值会应用于每个模式。
+1. 生成字典后，可以调整最小匹配阈值并提交规则。
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="创建字典规则，并附带“字典已生成”复选标记。" border="true":::
 

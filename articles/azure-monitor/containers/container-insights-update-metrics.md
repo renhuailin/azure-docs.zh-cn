@@ -4,12 +4,12 @@ description: 本文介绍如何更新容器见解以启用自定义指标功能�
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: edca7e4e8f6a9ea8dd9efdaafab8c906efd671b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1921a0cc0aa15a5e877d64cbe2c7ad094f9e144f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708265"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745847"
 ---
 # <a name="how-to-update-container-insights-to-enable-metrics"></a>如何更新容器见解以启用指标
 
@@ -33,7 +33,7 @@ ms.locfileid: "101708265"
 上述任一过程会将“监视指标发布者”角色分配到群集的服务主体，或者为监视加载项分配用户分配的 MSI，以便可将代理收集的数据发布到群集资源。 监视指标发布者仅有权向资源推送指标，而无法更改任何状态、更新资源或读取任何数据。 有关角色的详细信息，请参阅[“监视指标发布者”角色](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)。 “监视指标发布者”角色要求不适用于已启用 Azure Arc 的 Kubernetes 群集。
 
 > [!IMPORTANT]
-> 已启用 Azure Arc 的 Kubernetes 群集不需要升级，因为这些群集已具有最低要求的代理版本。
+> 已启用 Azure Arc 的 Kubernetes 群集不需要升级，因为这些群集已具有最低要求的代理版本。 使用 Azure 门户、Azure PowerShell 或 Azure CLI 时，会自动将“监视指标发布者”角色分配给群集的服务主体或用户分配的 MSI 以用于监视加载项。
 
 ## <a name="prerequisites"></a>先决条件
 

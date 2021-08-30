@@ -7,20 +7,18 @@ ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: e902f313edf22d75f6b183575c3dc8d0dd94bc1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b2552b9ee4ba37ad6062229958557d81e871fbe5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96904748"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733409"
 ---
 # <a name="azure-maps-mobility-services-preview-coverage"></a>Azure Maps 出行服务（预览版）的覆盖范围
 
 > [!IMPORTANT]
-> Azure Maps 出行服务目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
+> Azure Maps 出行服务（预览版）已停用，在 2021 年 10 月 5 日之后将不再可用，也不再受支持。 所有其他 Azure Maps API 和服务不受此停用公告的影响。
+> 有关详细信息，请参阅 [Azure Maps 出行服务（预览版）停用](https://azure.microsoft.com/updates/azure-maps-mobility-services-preview-retirement/)。
 
 Azure Maps [出行服务](/rest/api/maps/mobility)缩短了具有公共交通功能（例如公交路线规划和搜索附近的公交站点）的应用程序的开发时间。 用户可以检索有关公交站点、线路和时刻表的详细信息。 通过出行服务，用户还可以检索停靠站点和线路的几何形状，接收到站、线路切换和服务区的提醒，以及实时的公交抵达时间和营运告示。 此外，出行服务还提供具有多式联运行程规划选项的路线规划功能。 多式联运行程规划在一个行程中融合了步行、骑行和公共交通选项。 用户还可以访问详细的多式联运分步行程。
 

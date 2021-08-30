@@ -10,13 +10,13 @@ ms.subservice: service-overview
 ms.custom: sqldbrb=2, references_regions
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/03/2021
-ms.openlocfilehash: 3a971b88e2152d79f0c11cc58092d6faf1e3f900
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 06/22/2021
+ms.openlocfilehash: 256f8f6f792f9bf373af4be9b429a9485b17b7a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752668"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730496"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例中的新增功能有哪些？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,27 +50,66 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 
 | 功能 | 详细信息 |
 | ---| --- |
-| 弹性数据库作业（预览版） | 有关信息，请参阅[创建、配置和管理弹性作业](elastic-jobs-overview.md)。 |
+| 弹性数据库作业 | 有关信息，请参阅[创建、配置和管理弹性作业](elastic-jobs-overview.md)。 |
 | 弹性查询 | 有关信息，请参阅[弹性查询概述](elastic-query-overview.md)。 |
-| 弹性事务 | [跨云数据库的分布式事务](elastic-transactions-overview.md)。 |
+| 弹性事务 | 有关信息，请参阅[跨云数据库的分布式事务](elastic-transactions-overview.md)。 |
 | Azure 门户中的查询编辑器 |有关信息，请参阅[使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据](connect-query-portal.md)。|
-|SQL Analytics|若要了解信息，请参阅 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md)。|
-| &nbsp; |
+| SQL Analytics|若要了解信息，请参阅 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md)。|
+| 查询存储提示 | 有关信息，请参阅[查询存储提示](/sql/relational-databases/performance/query-store-hints?view=azuresqldb-current&preserve-view=true)。|
+| ---| --- |
 
 ### <a name="azure-sql-managed-instance"></a>[Azure SQL 托管实例](#tab/managed-instance)
 
 | 功能 | 详细信息 |
 | ---| --- |
+| [SQL 托管实例常规用途版的 16 TB 支持](https://techcommunity.microsoft.com/t5/azure-sql/increased-storage-limit-to-16-tb-for-sql-managed-instance/ba-p/2421443) | 支持 SQL 托管实例常规用途版上分配最多 16 TB 的空间 |
+| [适用于 Azure SQL 的仅限 Azure Active Directory 的身份验证](https://techcommunity.microsoft.com/t5/azure-sql/azure-active-directory-only-authentication-for-azure-sql/ba-p/2417673) | Azure SQL 托管实例上仅限 Azure Active Directory 的身份验证（公共预览版）。 |
+| [通过日志重播服务进行迁移](../managed-instance/log-replay-service-migrate.md) | 使用日志重播服务将数据库从 SQL Server 迁移到 SQL 托管实例。 |
+| [维护时段](./maintenance-window.md)| 维护时段功能可用于配置维护计划。 |
+| [Azure SQL 托管实例的 Service Broker 跨实例消息交换](https://azure.microsoft.com/updates/service-broker-message-exchange-for-azure-sql-managed-instance-in-public-preview/) | 支持 Azure SQL 托管实例的跨实例消息交换。 |
+| [Azure SQL 托管实例的长期备份保留](https://azure.microsoft.com/updates/longterm-backup-retention-ltr-for-azure-sql-managed-instance-in-public-preview/) | Azure SQL 托管实例支持长达 10 年的长期备份保留。 |
+| [适用于 Azure SQL 托管实例的 Azure Monitor SQL 见解](https://azure.microsoft.com/updates/azure-monitor-sql-insights-for-azure-sql-in-public-preview/) | 适用于 Azure SQL 托管实例的 Azure Monitor SQL 见解（公共预览版） |
 | [分布式事务](./elastic-transactions-overview.md) | 跨托管实例的分布式事务。 |
 | [实例池](../managed-instance/instance-pools-overview.md) | 提供一种方便且经济高效的方式，用于将小型 SQL 实例迁移到云。 |
-| [实例级 Azure AD 服务器主体（登录名）](/sql/t-sql/statements/create-login-transact-sql) | 使用 [CREATE LOGIN FROM EXTERNAL PROVIDER](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 语句创建实例级登录名。 |
 | [事务复制](../managed-instance/replication-transactional-overview.md) | 将表中的更改复制到 SQL 托管实例、SQL 数据库或 SQL Server 中的其他数据库。 或当 SQL 托管实例或 SQL Server 的其他实例中某些行发生更改时更新表。 若要了解信息，请参阅[在 Azure SQL 托管实例中配置复制](../managed-instance/replication-between-two-instances-configure-tutorial.md)。 |
 | 威胁检测 |若要了解信息，请参阅[在 Azure SQL 托管实例中配置威胁检测](../managed-instance/threat-detection-configure.md)。|
-| 长期备份保留 | 若要了解信息，请参阅[在 Azure SQL 托管实例中配置长期备份保留](../managed-instance/long-term-backup-retention-configure.md)（当前为功能有限的公共预览版）。 |
+| 查询存储提示 | 有关信息，请参阅[查询存储提示](/sql/relational-databases/performance/query-store-hints?view=azuresqldb-mi-current&preserve-view=true)。|
+| ---| --- |
 
 ---
 
 ## <a name="new-features"></a>新增功能
+
+### <a name="sql-managed-instance-h1-2021-updates"></a>SQL 托管实例 H1 2021 更新
+
+- [SQL 托管实例常规用途版的 16 TB 支持（公共预览版）](https://techcommunity.microsoft.com/t5/azure-sql/increased-storage-limit-to-16-tb-for-sql-managed-instance/ba-p/2421443) - 支持为 SQL 托管实例常规用途版分配最多 16 TB 的空间（公共预览版）。
+- [并行备份为 SQL 托管实例常规用途版提供更优性能](https://techcommunity.microsoft.com/t5/azure-sql/parallel-backup-for-better-performance-in-sql-managed-instance/ba-p/2421762) - 支持 SQL 托管实例常规用途版进行更快备份。
+- [适用于 Azure SQL 的仅限 Azure Active Directory 的身份验证](https://techcommunity.microsoft.com/t5/azure-sql/azure-active-directory-only-authentication-for-azure-sql/ba-p/2417673) - Azure SQL 托管实例上仅限 Azure Active Directory 的身份验证（公共预览版）。
+- [使用资源运行状况来监视 Azure SQL 托管实例](resource-health-to-troubleshoot-connectivity.md) - 支持资源运行状况的在 Azure SQL 托管实例的监视。
+- [Azure SQL 托管实例的服务辅助子网配置现在将服务标记用于用户定义的路由](../managed-instance/connectivity-architecture-overview.md) - 支持用户定义的路由 (UDR) 表。
+- [使用日志重播服务迁移到托管实例](../managed-instance/log-replay-service-migrate.md) - 允许使用日志重播服务将数据库从 SQL Server 迁移到 SQL 托管实例（公共预览版）。
+- [维护时段](./maintenance-window.md) - 维护时段功能可实现配置维护计划，请参阅[维护时段公告](https://techcommunity.microsoft.com/t5/azure-sql/maintenance-window-for-azure-sql-database-and-managed-instance/ba-p/2174835)（公共预览版）。
+- [Azure SQL 托管实例上的机器学习服务现已正式发布](https://azure.microsoft.com/updates/machine-learning-services-on-azure-sql-managed-instance-now-generally-available/) - Azure SQL 托管实例上的机器学习服务正式发布。
+- [Azure SQL 托管实例的 Service Broker 跨实例消息交换](https://azure.microsoft.com/updates/service-broker-message-exchange-for-azure-sql-managed-instance-in-public-preview/) - 支持跨实例消息交换。
+- [Azure SQL 托管实例的长期备份保留](https://azure.microsoft.com/updates/longterm-backup-retention-ltr-for-azure-sql-managed-instance-in-public-preview/) - 支持在 Azure SQL 托管实例上进行长达 10 年的长期备份保留。
+- [Azure SQL 托管实例的动态数据掩码粒度权限](dynamic-data-masking-overview.md) - Azure SQL 托管实例的动态数据掩码粒度权限正式发布。 
+- [Azure SQL 托管实例的 Microsoft 操作审核](https://azure.microsoft.com/updates/azure-sql-auditing-of-microsoft-operations-is-now-generally-available/) - Azure SQL 托管实例的 Microsoft 操作审核正式发布。
+- [Azure SQL 托管实例的 Azure Monitor SQL 见解](https://azure.microsoft.com/updates/azure-monitor-sql-insights-for-azure-sql-in-public-preview/) - Azure SQL 托管实例的 Azure Monitor SQL 见解提供公共预览版。
+
+### <a name="sql-managed-instance-h2-2020-updates"></a>SQL 托管实例 H2 2020 更新
+
+- [公共预览版：Azure SQL DB 和 Azure SQL MI 中对 Microsoft 支持操作的审核](https://azure.microsoft.com/updates/auditing-of-microsoft-support-operations-in-azure-sql-db-and-azure-sql-mi/) - 通过对 Microsoft 支持操作的审核功能，你可以在向审核日志目标发出支持请求期间需要访问服务器和/或数据库时审核 Microsoft 支持操作（公共预览版）。
+- [跨越多个 Azure SQL 托管实例的分布式数据库事务](https://azure.microsoft.com/updates/distributed-database-transactions-spanning-multiple-azure-sql-managed-instances/) - 添加了跨越多个 Azure SQL 托管实例的分布式数据库事务，以实现顺畅迁移现有应用程序和基于垂直或水平分区数据库体系结构开发新式多租户应用程序（公共预览版）。
+- [Azure SQL 托管实例的可配置备份存储冗余选项](https://azure.microsoft.com/updates/configurable-backup-storage-redundancy-option-for-azure-sql-managed-instance-2/) - 本地冗余存储 (LRS) 和区域冗余存储 (ZRS) 选项已添加到备份存储冗余，从而提高灵活性和增加选择。 
+- [Azure SQL 数据库和托管实例的备份存储成本节省](https://azure.microsoft.com/updates/backup-storage-cost-savings-for-azure-sql-database-and-managed-instance/) - 用户可以设置 PITR 备份保留期，对采用透明数据加密 (TDE) 的数据库进行自动压缩备份后，现在备份存储空间的使用最多可提高 30% 的效率。
+- [Azure SQL MI 的 Azure AD 身份验证功能](https://azure.microsoft.com/updates/azure-ad-authentication-features-for-azure-sql-db-azure-synapse-analytics-and-azure-sql-managed-instance/) - 这些功能有助于使用 Azure AD 应用程序自动创建用户，并允许在 SQL 托管实例中创建单独的 Azure AD 来宾用户（公共预览版）。
+- [Azure SQL 托管实例的全局虚拟网络对等互连支持](https://azure.microsoft.com/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)
+- [在 Azure SQL 托管实例中承载所有受支持版本的 SSRS 的目录数据库](https://azure.microsoft.com/updates/hosting-catalog-databases-for-all-supported-versions-of-ssrs-in-azure-sql-managed-instance/) - Azure SQL 托管实例可以承载所有受支持版本的 SQL Server Reporting Services (SSRS) 的目录数据库。
+- [Azure SQL 数据库托管实例的主要性能改进](https://techcommunity.microsoft.com/t5/azure-sql/announcing-major-performance-improvements-for-azure-sql-database/ba-p/1701256) 
+- [Azure SQL 托管实例的增强管理体验](https://azure.microsoft.com/updates/enhanced-management-experience-for-azure-sql-managed-instance/)
+- [Azure SQL 托管实例的机器学习（预览版）](https://techcommunity.microsoft.com/t5/azure-sql/announcing-major-performance-improvements-for-azure-sql-database/ba-p/1701256) - 支持 R 和 Python 语言的机器学习服务现在包括 Azure SQL 托管实例上的预览版支持（公共预览版）。
+- [Azure SQL 托管实例中应用程序故障复原的用户启动故障转移现已正式发布](https://azure.microsoft.com/updates/userinitiated-failover-for-application-fault-resiliency-in-azure-sql-managed-instance-is-now-generally-available/) - 用户启动故障转移现已正式发布，你可以通过它使用 PowerShell、CLI 命令和 API 调用手动启动自动故障转移。
+
 
 ### <a name="sql-managed-instance-h2-2019-updates"></a>SQL 托管实例 H2 2019 更新
 
@@ -99,6 +138,7 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 |[使用 @query 参数时，过程 sp_send_dbmail 可能会暂时失败](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|2021 年 1 月|具有解决方法||
 |[从服务器信任组删除托管实例后，可以执行分布式事务](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|2020 年 10 月|具有解决方法||
 |[执行托管实例缩放操作后无法执行分布式事务](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|2020 年 10 月|具有解决方法||
+|[无法创建与之前删除的逻辑服务器同名的 SQL 托管实例](#cannot-create-sql-managed-instance-with-the-same-name-as-logical-server-previously-deleted)|2020 年 8 月|具有解决方法||
 |Azure SQL 中的 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql)/[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql) 和托管实例中的 `BACKUP`/`RESTORE` 语句无法使用 Azure AD 托管标识对 Azure 存储进行身份验证|2020 年 9 月|具有解决方法||
 |[服务主体无法访问 Azure AD 和 AKV](#service-principal-cannot-access-azure-ad-and-akv)|2020 年 8 月|具有解决方法||
 |[没有使用 CHECKSUM 的手动备份可能无法还原](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|已解决|2020 年 6 月|
@@ -164,6 +204,10 @@ END
 ### <a name="distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation"></a>执行托管实例缩放操作后无法执行分布式事务
 
 包括更改服务层或 vCore 数量在内的托管实例缩放操作会重置后端的服务器信任组设置，并禁止运行[分布式事务](./elastic-transactions-overview.md)。 解决方法是在 Azure 门户上删除并创建新的[服务器信任组](../managed-instance/server-trust-group-overview.md)。
+
+### <a name="cannot-create-sql-managed-instance-with-the-same-name-as-logical-server-previously-deleted"></a>无法创建与之前删除的逻辑服务器同名的 SQL 托管实例
+
+删除[逻辑服务器](./logical-servers.md)之后，还有 7 天的保留期，名称才能从记录中释放。 在该时间段内，无法创建具有相同名称 SQL 托管实例。 一种解决方法是，需要为 SQL 托管实例使用不同的名称，或者创建一个支持票证来释放一个逻辑服务器名称。
 
 ### <a name="bulk-insert-and-backuprestore-statements-should-use-sas-key-to-access-azure-storage"></a>BULK INSERT 和 BACKUP/RESTORE 语句应该使用 SAS 密钥来访问 Azure 存储
 

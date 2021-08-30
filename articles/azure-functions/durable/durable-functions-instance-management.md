@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 4145ae79f1d25b80852c5c54fcc02044391f602f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 04c3e9f1a5c5a1a23a618f3274057a5e03a9f0e1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376858"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752319"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>在 Azure 中管理 Durable Functions 中的实例
 
@@ -148,7 +148,7 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-还可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable start-new` 命令启动实例。 它采用了以下参数：
+也可以使用 Core Tools 中的 [`func durable start-new` 命令](../functions-core-tools-reference.md#func-durable-start-new)直接启动实例，该命令采用以下参数：
 
 * **`function-name`（必需）** ：要启动的函数的名称。
 * **`input`（可选）** ：以内联方式或通过 JSON 文件提供的函数输入。 对于文件，请使用 `@` 将路径前缀添加到文件，例如 `@path/to/file.json`。
@@ -253,7 +253,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable get-runtime-status` 命令获取业务流程实例的状态。
+也可以直接使用 Core Tools 中的 [`func durable get-runtime-status` 命令](../functions-core-tools-reference.md#func-durable-get-runtime-status)直接获取业务流程实例的状态。
 
 > [!NOTE]
 > 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
@@ -352,7 +352,7 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable get-instances` 命令查询实例。
+也可以使用 Core Tools 中的 [`func durable get-instances` 命令](../functions-core-tools-reference.md#func-durable-get-instances)直接查询实例。
 
 > [!NOTE]
 > 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
@@ -543,7 +543,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable terminate` 命令终止业务流程实例。
+也可以使用 Core Tools 中的 [`func durable terminate` 命令](../functions-core-tools-reference.md#func-durable-terminate)直接终止业务流程实例。
 
 > [!NOTE]
 > 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
@@ -624,7 +624,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable raise-event` 命令向业务流程实例引发事件。
+也可以使用 Core Tools 中的 [`func durable raise-event` 命令](../functions-core-tools-reference.md#func-durable-raise-event)直接向业务流程实例引发事件。
 
 > [!NOTE]
 > 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
@@ -885,7 +885,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-也可以直接使用 [Azure Functions Core Tools](../functions-run-local.md) `durable rewind` 命令回退业务流程实例。
+也可以使用 Core Tools 中的 [`func durable rewind` 命令](../functions-core-tools-reference.md#func-durable-rewind)直接后退业务流程实例。
 
 > [!NOTE]
 > 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
@@ -1034,7 +1034,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-可以使用 [Azure Functions Core Tools](../functions-run-local.md) `durable purge-history` 命令清除业务流程实例的历史记录。 类似于前一部分中的第二个 C# 示例，该命令将清除在指定时间间隔内创建的所有业务流程实例的历史记录。 可按运行时状态进一步筛选已清除的实例。
+可以使用 Core Tools 中的 [`func durable purge-history` 命令](../functions-core-tools-reference.md#func-durable-purge-history)清除业务流程实例的历史记录。 类似于前一部分中的第二个 C# 示例，该命令将清除在指定时间间隔内创建的所有业务流程实例的历史记录。 可按运行时状态进一步筛选已清除的实例。
 
 > [!NOTE]
 > 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。
@@ -1055,7 +1055,7 @@ func durable purge-history --created-before 2021-11-14T19:35:00.0000000Z --runti
 
 ## <a name="delete-a-task-hub"></a>删除任务中心
 
-使用 [Azure Functions Core Tools](../functions-run-local.md) `durable delete-task-hub` 命令可以删除与特定任务中心关联的所有存储项目，包括 Azure 存储表、队列和 Blob。 
+可以使用 Core Tools 中的 [`func durable delete-task-hub` 命令](../functions-core-tools-reference.md#func-durable-delete-task-hub)直接删除与特定任务中心关联的所有存储项目，包括 Azure 存储表、队列和 blob。 
 
 > [!NOTE]
 > 当前仅在使用默认的 [Azure 存储提供程序](durable-functions-storage-providers.md)来保持运行时状态时，才支持 Core Tools 命令。

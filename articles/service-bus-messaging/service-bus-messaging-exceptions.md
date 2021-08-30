@@ -2,13 +2,13 @@
 title: Azure 服务总线 - 消息传送异常 | Microsoft Docs
 description: 本文提供了 Azure 服务总线消息传送异常以及发生异常时建议采取的措施的列表。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 6c980b81d18dbbcb5764b3d8c4ed040f930bce4f
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 08/04/2021
+ms.openlocfilehash: 1535ae6e125ee11d30fab1aeaa12afe57a66b0e5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108160972"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736198"
 ---
 # <a name="service-bus-messaging-exceptions"></a>服务总线消息传送异常
 
@@ -48,7 +48,7 @@ ms.locfileid: "108160972"
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.azure.servicebus.messagingentitydisabledexception) |对已禁用的实体请求运行时操作。 |激活实体。 |如果在此期间该实体已激活，则重试可能会有帮助。 |
 | [NoMatchingSubscriptionException](/dotnet/api/microsoft.servicebus.messaging.nomatchingsubscriptionexception) |如果向已启用预筛选的主题发送消息并且所有筛选器都不匹配，则服务总线返回此异常。 |确保至少有一个筛选器匹配。 |重试不起作用。 |
 | [MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |消息有效负载超出 256 KB 限制。 256-KB 限制是指总消息大小，可能包括系统属性和任何 .NET 开销。 |减少消息负载的大小，并重试操作。 |重试不起作用。 |
-| [TransactionException](/dotnet/api/system.transactions.transactionexception) |环境事务 (*Transaction.Current*) 无效。 该事务可能已完成或已中止。 内部异常可能提供了更多信息。 | |重试不起作用。 |
+| [TransactionException](/dotnet/api/system.transactions.transactionexception) |环境事务 (`Transaction.Current`) 无效。 该事务可能已完成或已中止。 内部异常可能提供了更多信息。 | |重试不起作用。 |
 | [TransactionInDoubtException](/dotnet/api/system.transactions.transactionindoubtexception) |已对未决事务尝试进行操作，或尝试提交该事务并且事务进入不确定状态。 |应用程序必须处理此异常（作为特例），因为此事务可能已提交。 |- |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
@@ -189,6 +189,17 @@ MessagingException 是可能出于各种原因引发的一般异常。 下面列
 
    * 对于暂时性问题（其中 isTransient 设置为 true）或限制性问题，重试操作可能会解决该问题 。 可以为此利用 SDK 上的默认重试策略。
    * 对于其他问题，异常中的详细信息表明可以从相同地方推断问题和解决步骤。
+
+## <a name="storagequotaexceededexception"></a>StorageQuotaExceededException
+
+### <a name="cause"></a>原因
+
+当高级命名空间中实体的总大小超过每个[消息传送单元](service-bus-premium-messaging.md) 1 TB 的限制时，将生成 StorageQuotaExceededException。
+
+### <a name="resolution"></a>解决方案
+
+- 增加分配给高级命名空间的消息传送单元数
+- 如果已对命名空间使用允许的最大消息传送单元数，请创建一个单独的命名空间。 
 
 ## <a name="next-steps"></a>后续步骤
 

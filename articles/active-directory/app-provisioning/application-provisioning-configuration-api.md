@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/03/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 12ee5a02b0451fd70df0e7155e9460290943f5b2
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 4bede3a7f5c39f8665d47984fb91cf2503842cae
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962048"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741732"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>使用 Microsoft Graph API 配置预配
 
@@ -42,12 +42,12 @@ Azure 门户是一次为一个应用配置预配的一种便捷方法。 但是�
 1. 成功登录后，你将在左侧窗格中看到用户帐户详细信息。
 
 ### <a name="retrieve-the-gallery-application-template-identifier"></a>检索库应用程序模板标识符
-Azure AD 应用程序库中的每个应用程序都有一个[应用程序模板](/graph/api/applicationtemplate-list?tabs=http&view=graph-rest-beta)，它描述了该应用程序的元数据。 通过此模板，可在租户中创建应用程序和服务主体的实例以进行管理。
+Azure AD 应用程序库中的每个应用程序都有一个[应用程序模板](/graph/api/applicationtemplate-list?tabs=http&view=graph-rest-beta&preserve-view=true)，它描述了该应用程序的元数据。 通过此模板，可在租户中创建应用程序和服务主体的实例以进行管理。 检索 AWS Single-Account Access 的应用程序模板的标识符，然后从响应中记录 id 属性的值，供本教程稍后使用 。
 
 #### <a name="request"></a>请求
 
 ```msgraph-interactive
-GET https://graph.microsoft.com/beta/applicationTemplates
+GET https://graph.microsoft.com/beta/applicationTemplates?$filter=displayName eq 'AWS Single-Account Access'
 ```
 #### <a name="response"></a>响应
 
@@ -61,6 +61,7 @@ GET https://graph.microsoft.com/beta/applicationTemplates
 ```http
 HTTP/1.1 200 OK
 Content-type: application/json
+
 {
   "value": [
   {
@@ -80,14 +81,14 @@ Content-type: application/json
              "developerServices"
          ],
          "publisher": "Amazon",
-         "description": null    
+         "description": "Federate to a single AWS account and use SAML claims to authorize access to AWS IAM roles. If you have many AWS accounts, consider using the AWS Single Sign-On gallery application instead."    
   
 }
 ```
 
 ### <a name="create-the-gallery-application"></a>创建库应用程序
 
-使用在上一步上为应用程序检索得到的模板 ID 在租户中创建应用程序和服务主体的[实例](/graph/api/applicationtemplate-instantiate?tabs=http&view=graph-rest-beta)。
+使用在上一步上为应用程序检索得到的模板 ID 在租户中创建应用程序和服务主体的[实例](/graph/api/applicationtemplate-instantiate?tabs=http&view=graph-rest-beta&preserve-view=true)。
 
 #### <a name="request"></a>请求
 
@@ -95,6 +96,7 @@ Content-type: application/json
 ```msgraph-interactive
 POST https://graph.microsoft.com/beta/applicationTemplates/{id}/instantiate
 Content-type: application/json
+
 {
   "displayName": "AWS Contoso"
 }
@@ -105,6 +107,7 @@ Content-type: application/json
 ```http
 HTTP/1.1 201 OK
 Content-type: application/json
+
 {
     "application": {
         "objectId": "cbc071a6-0fa5-4859-8g55-e983ef63df63",
@@ -142,7 +145,7 @@ Content-type: application/json
 
 ### <a name="retrieve-the-template-for-the-provisioning-connector"></a>检索预配连接器的模板
 
-库中支持预配的应用程序具有简化配置的模板。 使用以下请求[检索预配配置的模板](/graph/api/synchronization-synchronizationtemplate-list?tabs=http&view=graph-rest-beta)。 请注意，你将需要提供 ID。 ID 指的是上述资源，在本例中是 servicePrincipal 资源。 
+库中支持预配的应用程序具有简化配置的模板。 使用以下请求[检索预配配置的模板](/graph/api/synchronization-synchronizationtemplate-list?tabs=http&view=graph-rest-beta&preserve-view=true)。 请注意，你将需要提供 ID。 ID 指的是上述资源，在本例中是 servicePrincipal 资源。 
 
 #### <a name="request"></a>请求
 
@@ -153,6 +156,7 @@ GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/temp
 #### <a name="response"></a>响应
 ```http
 HTTP/1.1 200 OK
+
 {
     "value": [
         {
@@ -168,13 +172,14 @@ HTTP/1.1 200 OK
 ```
 
 ### <a name="create-the-provisioning-job"></a>创建预配作业
-若要启用预配，首先需要[创建作业](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta)。 使用以下请求创建预配作业。 指定要用于作业的模板时，请使用上一步骤中的 templateId。
+若要启用预配，首先需要[创建作业](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta&preserve-view=true)。 使用以下请求创建预配作业。 指定要用于作业的模板时，请使用上一步骤中的 templateId。
 
 #### <a name="request"></a>请求
 
 ```msgraph-interactive
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs
 Content-type: application/json
+
 { 
     "templateId": "aws"
 }
@@ -184,6 +189,7 @@ Content-type: application/json
 ```http
 HTTP/1.1 201 OK
 Content-type: application/json
+
 {
     "id": "{jobId}",
     "templateId": "aws",
@@ -212,15 +218,20 @@ Content-type: application/json
 
 ### <a name="test-the-connection-to-the-application"></a>测试与应用程序的连接
 
-测试与第三方应用程序的连接。 以下示例适用于需要客户端机密和机密令牌的应用程序。 每个应用程序都有自己的要求。 应用程序通常使用基址代替客户端机密。 若要确定应用需要哪些凭据，请转到应用程序的“预配配置”页，在开发人员模式下，单击“测试连接”。 网络流量将显示用于凭据的参数。 有关凭据的完整列表，请参阅 [synchronizationJob: validateCredentials](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta)。 大多数应用程序（例如 Azure Databricks）都依赖 BaseAddress 和 SecretToken。 BaseAddress 在 Azure 门户中称为租户 URL。 
+测试与第三方应用程序的连接。 以下示例适用于需要客户端机密和机密令牌的应用程序。 每个应用程序都有自己的要求。 应用程序通常使用基址代替客户端机密。 若要确定应用需要哪些凭据，请转到应用程序的“预配配置”页，在开发人员模式下，单击“测试连接”。 网络流量将显示用于凭据的参数。 有关凭据的完整列表，请参阅 [synchronizationJob: validateCredentials](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta&preserve-view=true)。 大多数应用程序（例如 Azure Databricks）都依赖 BaseAddress 和 SecretToken。 BaseAddress 在 Azure 门户中称为租户 URL。 
 
 #### <a name="request"></a>请求
 ```msgraph-interactive
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{id}/validateCredentials
+
 { 
     "credentials": [ 
-        { "key": "ClientSecret", "value": "xxxxxxxxxxxxxxxxxxxxx" },
-        { "key": "SecretToken", "value": "xxxxxxxxxxxxxxxxxxxxx" }
+        { 
+            "key": "ClientSecret", "value": "xxxxxxxxxxxxxxxxxxxxx" 
+        },
+        {
+            "key": "SecretToken", "value": "xxxxxxxxxxxxxxxxxxxxx"
+        }
     ]
 }
 ```
@@ -231,7 +242,7 @@ HTTP/1.1 204 No Content
 
 ### <a name="save-your-credentials"></a>保存凭据
 
-配置预配需要在 Azure AD 和应用程序之间建立信任关系。 授予访问第三方应用程序的权限。 以下示例适用于需要客户端机密和机密令牌的应用程序。 每个应用程序都有自己的要求。 查看 [API 文档](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta)以查看可用选项。 
+配置预配需要在 Azure AD 和应用程序之间建立信任关系。 授予访问第三方应用程序的权限。 以下示例适用于需要客户端机密和机密令牌的应用程序。 每个应用程序都有自己的要求。 查看 [API 文档](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta&preserve-view=true)以查看可用选项。 
 
 #### <a name="request"></a>请求
 ```msgraph-interactive
@@ -239,8 +250,12 @@ PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secr
  
 { 
     "value": [ 
-        { "key": "ClientSecret", "value": "xxxxxxxxxxxxxxxxxxxxx" },
-        { "key": "SecretToken", "value": "xxxxxxxxxxxxxxxxxxxxx" }
+        { 
+            "key": "ClientSecret", "value": "xxxxxxxxxxxxxxxxxxxxx"
+        },
+        {
+            "key": "SecretToken", "value": "xxxxxxxxxxxxxxxxxxxxx"
+        }
     ]
 }
 ```
@@ -251,7 +266,7 @@ HTTP/1.1 204 No Content
 ```
 
 ## <a name="step-4-start-the-provisioning-job"></a>步骤 4：启动预配作业
-配置预配作业后，使用以下命令[启动作业](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta)。 
+配置预配作业后，使用以下命令[启动作业](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta&preserve-view=true)。 
 
 
 #### <a name="request"></a>请求
@@ -282,7 +297,7 @@ GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs
 ```http
 HTTP/1.1 200 OK
 Content-type: application/json
-Content-length: 2577
+
 {
     "id": "{jobId}",
     "templateId": "aws",
@@ -316,7 +331,7 @@ Content-length: 2577
 
 
 ### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>使用预配日志监视预配事件
-除了监视预配作业的状态之外，还可以使用[预配日志](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta)查询正在发生的所有事件。 例如，查询特定用户并确定他们是否已成功预配。
+除了监视预配作业的状态之外，还可以使用[预配日志](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta&preserve-view=true)查询正在发生的所有事件。 例如，查询特定用户并确定他们是否已成功预配。
 
 #### <a name="request"></a>请求
 ```msgraph-interactive
@@ -326,6 +341,7 @@ GET https://graph.microsoft.com/beta/auditLogs/provisioning
 ```http
 HTTP/1.1 200 OK
 Content-type: application/json
+
 {
     "@odata.context": "https://graph.microsoft.com/beta/$metadata#auditLogs/provisioning",
     "value": [
@@ -363,5 +379,5 @@ Content-type: application/json
 ```
 ## <a name="see-also"></a>另请参阅
 
-- [查看同步 Microsoft Graph 文档](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [查看同步 Microsoft Graph 文档](/graph/api/resources/synchronization-overview?view=graph-rest-beta&preserve-view=true)
 - [将自定义 SCIM 应用与 Azure AD 集成](./use-scim-to-provision-users-and-groups.md)

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: 469adf1c0e5108f7a8c89a7c3a4bebba5d42b431
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d80ae76ed47366e56a3a1bf318219c6944fa3dbe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183958"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739276"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：群集创建错误
 
@@ -148,7 +148,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ### <a name="error"></a>错误
 
-“托管标识对存储帐户没有权限。 请验证是否已将“存储 Blob 数据所有者”角色分配给存储帐户的托管标识。 存储：/subscriptions/ \<Subscription ID\> /resourceGroups/\< Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\>，托管标识：/subscriptions/ \<Subscription ID\> /resourceGroups/ /\< Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\>”
+“托管标识对存储帐户没有权限。 请验证是否已将“存储 Blob 数据所有者”角色分配给存储帐户的托管标识。 存储：/subscriptions/ \<Subscription ID\> /resourceGroups/\<Resource Group Name\> /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\>，托管标识：/subscriptions/ \<Subscription ID\> /resourceGroups/ /\<Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\>”
 
 ### <a name="cause"></a>原因
 
@@ -169,7 +169,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ### <a name="error"></a>错误
 
-“配置了子网 /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> 的网络安全组 /subscriptions/\<SubscriptionID\>/resourceGroups/<Resource Group name\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\> 中的安全规则不允许建立所需的入站和/或出站连接。 有关详细信息，请访问[规划 Azure HDInsight 的虚拟网络](./hdinsight-plan-virtual-network-deployment.md)，或联系支持人员。”
+“配置了子网 /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name\>/subnets/\<Subnet Name\> 的网络安全组 /subscriptions/\<SubscriptionID\>/resourceGroups/\<Resource Group name\> default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\> 中的安全规则不允许建立所需的入站和/或出站连接。 有关详细信息，请访问[规划 Azure HDInsight 的虚拟网络](./hdinsight-plan-virtual-network-deployment.md)，或联系支持人员。”
 
 ### <a name="cause"></a>原因
 
@@ -217,7 +217,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 
 ---
 
-## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>错误代码：由于违反策略导致部署失败：策略禁止使用资源“<Resource URI>”。 策略标识符：'[{"policyAssignment":{"name":"<Policy Name> ","id":"/providers/Microsoft.Management/managementGroups/<Management Group Name> providers/Microsoft.Authorization/policyAssignments/<Policy Name>"},"policyDefinition": <Policy Definition>
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>错误代码：由于违反策略导致部署失败：策略禁止使用资源“\<Resource URI\>”。 策略标识符：'[{"policyAssignment":{"name":"\<Policy Name\> ","id":"/providers/Microsoft.Management/managementGroups/\<Management Group Name\> providers/Microsoft.Authorization/policyAssignments/\<Policy Name\>"},"policyDefinition": \<Policy Definition\>
 
 ### <a name="cause"></a>原因
 

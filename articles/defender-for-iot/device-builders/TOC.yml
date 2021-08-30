@@ -60,6 +60,8 @@
     - name: 微代理 linux 依赖项
       displayName: 'linux, micro agent, agent'
       href: concept-micro-agent-linux-dependencies.md
+    - name: 基于代理的安全警报
+      href: concept-agent-based-security-alerts.md
     - name: IoT 中心的内置警报
       displayName: 'binary command line, disable firewall, port forwarding detection, possible attempt to disable auditd logging detected, reverse shells, successful bruteforce attempt, successful local login, web shell, Behavior similar, Crypto coin, suspicious, Exposed Docker,'
       href: concept-security-alerts.md
@@ -88,7 +90,7 @@
         - name: Defender-IoT-micro-agent 经典事件聚合
           displayName: 'twin, default, configuration, alerts'
           href: event-aggregation.md
-        - name: 基于代理的安全警报
+        - name: 经典的基于代理的安全警报
           href: agent-based-security-alerts.md
         - name: 基于代理的安全自定义警报
           href: agent-based-security-custom-alerts.md

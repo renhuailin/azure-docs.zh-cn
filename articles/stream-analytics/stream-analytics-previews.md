@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: 55745c022038fa85f5b114f2bc347ed7292665eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f6b46425954d8befaef396c66b023565310ec36
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589644"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741842"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -32,6 +32,14 @@ Azure 流分析通过利用自定义预先训练的机器学习模型（由 Azur
 
 在云中或 IoT Edge 上创建流分析模块的开发人员可以编写或重复使用自定义 C# 函数，并在查询中通过[用户定义的函数](stream-analytics-edge-csharp-udf-methods.md)直接调用这些函数。
 
+## <a name="debug-queries-locally-using-job-diagram-in-visual-studio-code"></a>在 Visual Studio Code 中使用作业关系图在本地调试查询
+
+在本地测试查询时，可以使用作业关系图检查每个步骤的中间结果集和指标。
+
+## <a name="explore-jobs-in-visual-studio-code"></a>在 Visual Studio Code 中探索作业
+
+Visual Studio Code 中的流分析资源管理器扩展为开发人员提供了管理其流分析作业的轻量级体验。 在流分析资源管理器中，可以在作业监视器中轻松管理作业、查看作业关系图和调试。
+
 ## <a name="debug-query-steps-in-visual-studio"></a>在 Visual Studio 中调试查询步骤
 
 在适用于 Visual Studio 的 Azure 流分析工具中执行本地测试时，可以轻松预览数据关系图上的中间行集。 
@@ -41,11 +49,4 @@ Azure 流分析通过利用自定义预先训练的机器学习模型（由 Azur
 
 适用于 Azure 流分析的 Visual Studio 工具增强了本地测试功能，通过该功能可针对来自云源（如事件中心或 IoT 中心）的实时事件流测试查询。 了解如何[使用适用于 Visual Studio 的 Azure 流分析工具在本地测试实时数据](stream-analytics-live-data-local-testing.md)。
 
-## <a name="visual-studio-code-for-azure-stream-analytics"></a>适用于 Azure 流分析的 Visual Studio Code
-
-可以在 Visual Studio Code 中创建 Azure 流分析作业。 请参阅我们的 [VS Code 入门教程](./quick-create-visual-studio-code.md)。
-
-## <a name="local-testing-with-live-data-in-visual-studio-code"></a>在 Visual Studio Code 中使用实时数据进行本地测试
-
-将作业提交到 Azure 之前，可以针对本地计算机上的实时数据测试查询。 每个测试迭代平均花费不到 2 到 3 秒，这会使开发过程非常高效。
 

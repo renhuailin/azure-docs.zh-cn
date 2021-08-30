@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eb74dccb01bb599a40bbf9c606661d4661a37f3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: bdaef1c746ca23f2badf657e6e72e6e3988bcfa4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953637"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724856"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>操作方法：计划 Azure AD 联接实现
 
@@ -164,6 +164,9 @@ Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune）和 MDM CSP
 
 如果设备有权访问域控制器，则用户从 Azure AD 联接设备获取 SSO。 
 
+> [!NOTE]
+> Azure AD 联接设备可以无缝提供到本地和云应用程序的访问权限。 有关详细信息，请参阅[本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理](azuread-join-sso.md)。
+
 **建议：** 部署 [Azure AD 应用代理](../app-proxy/application-proxy.md)，以启用这些应用程序的安全访问。
 
 ### <a name="on-premises-network-shares"></a>本地网络共享
@@ -240,7 +243,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 
 ### <a name="require-multi-factor-authentication-mfa-to-join-devices"></a>需要多重身份验证 (MFA) 才能联接设备
 
-如果将设备联接到 Azure AD 的同时需要用户执行多重身份验证，则选择“是”。 对于使用多重身份验证将设备联接到 Azure AD 的用户，设备本身成为第 2 个因素。
+如果将设备联接到 Azure AD 的同时需要用户执行多重身份验证，则选择“是”。
 
 ![需要进行多重身份验证才能联接设备](./media/azureadjoin-plan/03.png)
 

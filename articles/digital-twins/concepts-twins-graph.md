@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 了解数字孪生体的概念，以及它们的关系如何成图。
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 29430671cd5879f140127c94541dd50d765fa87e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1145525fe3d2e7c42204aa675153d4eb099cccce
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460269"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254241"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>了解数字孪生体及其孪生图
 
@@ -23,7 +23,7 @@ ms.locfileid: "110460269"
 
 ## <a name="digital-twins"></a>数字孪生
 
-你需要将模型上传到此服务，然后才能在 Azure 数字孪生实例中创建数字孪生体。 模型描述特定孪生体可以具有的一组属性、遥测消息和关系，等等。 有关在模型中定义的信息的类型，请参阅概念：自定义模型。
+你需要将模型上传到此服务，然后才能在 Azure 数字孪生实例中创建数字孪生体。 模型描述特定孪生体可以具有的一组属性、遥测消息和关系，等等。 有关在模型中定义的信息的类型，请参阅[自定义模型](concepts-models.md)。
 
 创建并上传模型后，客户端应用可以创建该类型的实例；这是一个数字孪生体。 例如，在创建“Floor”的模型后，你可以创建使用此类型的一个或多个数字孪生体（例如，“Floor”类型的一个孪生体称为“GroundFloor”，另一个称为“Floor2”，等等）。
 
@@ -39,13 +39,15 @@ ms.locfileid: "110460269"
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
+:::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="Azure Digital Twins Explorer 的屏幕截图，其中显示了示例模型和孪生体。" lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
+
 ## <a name="create-with-the-apis"></a>使用 API 进行创建
 
 本部分显示了从客户端应用程序创建数字孪生体和关系时的情况。 它包含利用 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) 的 .NET 代码示例，目的是提供在这些概念的每一个内发生的情况的其他上下文。
 
 ### <a name="create-digital-twins"></a>创建数字孪生
 
-下面是客户端代码的一个片段，它使用 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) 来实例化 Room 类型的孪生体。
+下面是客户端代码的一个片段，它使用 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) 来实例化 Room 类型的孪生体，并在实例化过程中定义 `twinId`。
 
 你可以在创建孪生体时对其属性进行初始化，也可以稍后设置这些属性。 若要创建具有已初始化属性的孪生体，请创建一个提供必要初始化值的 JSON 文档。
 
@@ -162,8 +164,8 @@ ms.locfileid: "110460269"
 ## <a name="next-steps"></a>后续步骤
 
 请参阅如何通过 Azure 数字孪生 API 管理图形元素：
-* [操作指南：管理数字孪生体](how-to-manage-twin.md)
-* [操作指南：使用关系管理孪生图](how-to-manage-graph.md)
+* [管理数字孪生](how-to-manage-twin.md)
+* [管理孪生图和关系](how-to-manage-graph.md)
 
 或者，了解如何查询 Azure 数字孪生的孪生图来获取相关信息：
-* [概念：查询语言](concepts-query-language.md)
+* [查询语言](concepts-query-language.md)

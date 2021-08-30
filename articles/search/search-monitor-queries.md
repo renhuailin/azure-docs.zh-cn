@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: 169a90c12b30e0d083ce5c53ab7c6dd2495c4c23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 01/26/2021
+ms.openlocfilehash: 67ada228d3b4ed95b1247b221f0ad90bbbc74ba0
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592392"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416958"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>监视 Azure 认知搜索中的查询请求
 
 本文介绍如何使用指标与资源日志来度量查询性能和查询量。 此外，介绍如何收集查询中使用的输入字词 - 评估搜索集的实用性和有效性时必须提供这些信息。
 
-馈送到指标中的历史数据将保留 30 天。 若要保留更长时间，或者要报告操作数据和查询字符串，请务必启用一项[诊断设置](search-monitor-logs.md)，该设置指定用于保存所记录的事件和指标的存储选项。
+Azure 门户显示有关查询延迟、查询负载 (QPS) 和限制的基本指标。 馈送到这些指标中的历史数据将保留 30 天。 若要延长保留期或者要基于操作数据和查询字符串报告，必须启用一个[诊断设置](search-monitor-logs.md)，该设置指定用于保留记录的事件和指标的存储选项。
 
 可最大程度地提高数据度量完整性的条件包括：
 
@@ -114,9 +114,9 @@ ms.locfileid: "100592392"
 
 1. 选择“添加指标”并选择不同的聚合来叠加更多聚合。
 
-1. 在折线图上放大感兴趣的区域。 将鼠标指针放在区域的开头位置，单击并按住鼠标左键，拖动到区域的另一侧，然后松开按钮。 图表将放大该时间范围。
+1. 在折线图上放大感兴趣的区域。 将鼠标指针放在区域的开头位置，单击并按住鼠标左键，拖动到区域的另一侧，然后松开按钮。 图表将在该时间范围内放大。
 
-## <a name="identify-strings-used-in-queries"></a>识别查询中使用的字符串
+## <a name="return-query-strings-entered-by-users"></a>返回用户输入的查询字符串
 
 启用资源日志记录时，系统将捕获“AzureDiagnostics”表中的查询请求。 作为先决条件，必须已启用[资源日志记录](search-monitor-logs.md)，并指定 Log Analytics 工作区或其他存储选项。
 
@@ -124,8 +124,8 @@ ms.locfileid: "100592392"
 
 1. 运行以下表达式来搜索 Query.Search 操作，这会返回表格格式的结果集，其中包含操作名称、查询字符串、查询的索引以及找到的文档数。 最后两条语句排除针对样本索引运行的、包含空的或未指定的搜索的查询字符串，这可以减少结果中的干扰信息。
 
-   ```
-   AzureDiagnostics
+   ```kusto
+      AzureDiagnostics
    | project OperationName, Query_s, IndexName_s, Documents_d
    | where OperationName == "Query.Search"
    | where Query_s != "?api-version=2020-06-30&search=*"
@@ -144,9 +144,9 @@ ms.locfileid: "100592392"
 
 1. 在“监视”部分下，选择“日志”以查询日志信息。
 
-1. 运行以下查询以返回按持续时间（以毫秒为单位）排序的查询。 运行时间最长的查询列在最前面。
+1. 运行以下基本查询以返回按持续时间（以毫秒为单位）排序的查询。 运行时间最长的查询列在最前面。
 
-   ```
+   ```Kusto
    AzureDiagnostics
    | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
    | where OperationName == "Query.Search"
@@ -182,10 +182,6 @@ ms.locfileid: "100592392"
    ![警报详细信息](./media/search-monitor-usage/alert-details.png "警报详细信息")
 
 如果指定了电子邮件通知，将会收到来自“Microsoft Azure”的、主题行为“Azure:已激活，严重性:3 `<your rule name>`”的电子邮件。
-
-<!-- ## Report query data
-
-Power BI is an analytical reporting tool useful for visualizing data, including log information. If you are collecting data in Blob storage, a Power BI template makes it easy to spot anomalies or trends. Use this link to download the template. -->
 
 ## <a name="next-steps"></a>后续步骤
 

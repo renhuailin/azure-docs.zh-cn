@@ -1,5 +1,5 @@
 ---
-title: 内存优化的 Dv2 和 DSv2 系列 VM - Azure 虚拟机
+title: 内存优化的 Dv2 和 Dsv2 系列 VM - Azure 虚拟机
 description: Dv2 和 DSv2 系列 VM 的规范。
 author: joelpelley
 ms.service: virtual-machines
@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f07e4542e380e4e8057d9011a6b613e9ad55a058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3a3feb844d9c29aa63c0a85d3b3391c8ab654a6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560321"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740075"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>内存优化的 Dv2 和 Dsv2 系列
 
@@ -28,7 +28,7 @@ Dv2 系列大小在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br> 
 
@@ -40,7 +40,7 @@ Dv2 系列大小在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon
 | Standard_D14_v2 | 16 | 112 | 800 | 48000/750/375 | 64/64x500 | 8|12000 |
 | Standard_D15_v2 <sup>1</sup> | 20 | 140 | 1000 | 60000/937/468 | 64/64x500 | 8|25000 <sup>2</sup> |
 
-<sup>1</sup> 实例对于专用于单个客户的硬件独立。
+<sup>1</sup> 实例对于专用于单个客户的硬件独立。<br>
 <sup>2</sup> 25000 Mbps，具有加速网络。
 
 ## <a name="dsv2-series-11-15"></a>DSv2 系列 11-15
@@ -53,7 +53,7 @@ DSv2 系列大小在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeo
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持 <br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 <br> 
 
@@ -68,7 +68,7 @@ DSv2 系列大小在 Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeo
 <sup>1</sup> DSv2 系列 VM 可能的最大磁盘吞吐量（IOPS 或 Mbps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[为实现高性能而设计](./premium-storage-performance.md)。
 <sup>2</sup> 实例将隔离到基于 Intel Haswell 的硬件，专用于单个客户。  
 <sup>3</sup> 受约束的可用核心大小。  
-<sup>4</sup> 25000 Mbps，具有加速网络。
+<sup>4</sup> 25000 Mbps，具有加速网络。<br>
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

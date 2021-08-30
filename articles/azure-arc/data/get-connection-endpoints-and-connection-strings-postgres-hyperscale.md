@@ -1,6 +1,6 @@
 ---
 title: 为已启用 Arc 的超大规模 PostgreSQL 服务器组获取连接终结点并形成连接字符串
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 description: 为已启用 Arc 的超大规模 PostgreSQL 服务器组获取连接终结点并形成连接字符串
 services: azure-arc
 ms.service: azure-arc
@@ -8,44 +8,31 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 3477c8f1dbffb9f2c42c72c1b0bfc03c662ed24c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 964b7fcca00afb91a457203d2ed53b885a254d5e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412288"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733560"
 ---
-# <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>为已启用 Arc 的超大规模 PostgreSQL 服务器组获取连接终结点并形成连接字符串
+# <a name="get-connection-endpoints-and-form-the-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>为已启用 Arc 的超大规模 PostgreSQL 服务器组获取连接终结点并形成连接字符串
 
-本文介绍如何为服务器组检索连接终结点，以及如何形成将用于应用程序和/或工具的连接字符串。
+本文介绍如何为服务器组检索连接终结点，以及如何形成可用于应用程序和/或工具的连接字符串。
 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="get-connection-end-points"></a>获取连接终结点：
 
-### <a name="from-cli-with-azdata"></a>使用 azdata 从 CLI 获取
-#### <a name="1-connect-to-your-arc-data-controller"></a>1. 连接到 Arc 数据控制器：
-- 如果已在 Arc 数据控制器的主机上打开会话，请运行以下命令：
-```console
-azdata login
-```
-
-- 如果没有在 Arc 数据控制器的主机上打开会话，请运行以下命令： 
-```console
-azdata login --endpoint https://<external IP address of host/data controller>:30080
-```
-
-#### <a name="2-show-the-connection-endpoints"></a>2. 显示连接终结点
 运行以下命令：
-```console
-azdata arc postgres endpoint list -n <server group name>
+```azurecli
+az postgres arc-server endpoint list -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 例如：
-```console
-azdata arc postgres endpoint list -n postgres01
+```azurecli
+az postgres arc-server endpoint list -n postgres01 --k8s-namespace <namespace> --use-k8s
 ```
 
 它会显示终结点列表：用于连接应用程序的 PostgreSQL 终结点，以及用于日志分析和监视的数据库、Kibana 和 Grafana 终结点。 例如： 
@@ -79,9 +66,9 @@ postgres=#
 > [!NOTE]
 >
 > - 名为“PostgreSQL 实例”的终结点中指示的 postgres 用户的密码是在部署服务器组时选择的密码 。
-> - 关于 azdata：与连接关联的租约持续大约 10 个小时。 此期限过后，需要重新进行连接。 如果租约已过期，尝试通过 azdata（azdata login 除外）执行命令时，会看到以下错误消息：错误: (401)
+> 错误: (401)
 > 原因: 未授权
-> HTTP 响应标头: HTTPHeaderDict({'Date': 'Sun, 06 Sep 2020 16:58:38 GMT', 'Content-Length': '0', 'WWW-Authenticate': '
+> HTTP 响应头: HTTPHeaderDict({'Date': 'Sun, 06 Sep 2020 16:58:38 GMT', 'Content-Length': '0', 'WWW-Authenticate': '
 > 基础领域=“需要登录凭据”，持有者错误="invalid_token"，error_description=“令牌已过期”'})_ 发生此情况时，需要使用 azdate 重新进行连接，如上所述   。
 
 ## <a name="from-cli-with-kubectl"></a>使用 kubectl 从 CLI 获取
@@ -94,7 +81,6 @@ kubectl get postgresqls/<server group name> -n <namespace name>
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   3/3          123.456.789.4:31066      5d20h
 ``` 
-
 
 ## <a name="form-connection-strings"></a>形成连接字符串：
 为服务器组使用下面的连接字符串模板表。 然后，可以根据需要进行复制/粘贴和自定义：

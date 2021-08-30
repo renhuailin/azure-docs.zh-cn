@@ -3,12 +3,12 @@ title: 可伸缩性 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍如何使用分区和吞吐量单位来缩放 Azure 事件中心。
 ms.topic: article
 ms.date: 05/26/2021
-ms.openlocfilehash: ef894e0f14c140691b43da121a1983017ab03150
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: ced3d366c87d05fc1d7e8370c6e7db793dfe2535
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616455"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583655"
 ---
 # <a name="scaling-with-event-hubs"></a>通过事件中心进行缩放
 
@@ -25,7 +25,7 @@ ms.locfileid: "110616455"
 
 超出所购吞吐量单位的容量时，入口受限，返回 [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception)。 出口不会出现限制异常，但仍受限于所购买吞吐量单位的容量。 如果收到发布速率异常或者预期看到更高的出口，请务必检查为命名空间购买的吞吐量单位数量。 可以在 [Azure 门户](https://portal.azure.com)的命名空间的“规模”边栏选项卡上管理吞吐量单位。 也可使用[事件中心 API](./event-hubs-samples.md) 以编程方式管理吞吐量单位。
 
-吞吐量单位按小时计费，需提前购买。 购买后，吞吐量单位的最短计费时限为一小时。 最多可以为一个事件中心命名空间购买 20 个吞吐量单位，这些单位跨此命名空间内的所有事件中心进行共享。
+吞吐量单位按小时计费，需提前购买。 购买后，吞吐量单位的最短计费时限为一小时。 最多可以为一个事件中心命名空间购买 40 个吞吐量单位，这些单位跨此命名空间内的所有事件中心进行共享。
 
 事件中心的自动膨胀功能通过增加吞吐量单位数进行自动纵向扩展，以便满足使用量需求  。 增加吞吐量单位数可防止出现限制情况，在这些情况下：
 
@@ -48,7 +48,7 @@ ms.locfileid: "110616455"
 > 若要详细了解配额和限制，请参阅 [Azure 事件中心 - 配额和限制](event-hubs-quotas.md)。
 
 ## <a name="partitions"></a>分区
-[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
+[!INCLUDE [event-hubs-partitions](./includes/event-hubs-partitions.md)]
 
 
 

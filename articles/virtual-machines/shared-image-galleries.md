@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 6/8/2021
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: c6c39a7ef0404a0e78e5b8ed0b41bf54156b488a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f00f98ac9e6350aa09d3fa67c1c87677fef2db6f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032656"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738970"
 ---
 # <a name="shared-image-galleries-overview"></a>共享映像库概述
 
@@ -27,7 +27,7 @@ ms.locfileid: "112032656"
 - 使用 Azure RBAC 在订阅之间，甚至在 Active Directory (AD) 租户之间共享。
 - 使用每个区域中的映像副本缩放部署。
 
-使用共享映像库，可以将映像共享给组织内的不同用户、服务主体或 AD 组。 共享映像可以复制到多个区域，以便更快地扩展部署。
+使用共享映像库，可以将映像共享给组织内外的不同用户、服务主体或 AD 组。 共享映像可以复制到多个区域，以便更快地扩展部署。
 
 映像是完整 VM（包括任何附加的数据磁盘）的副本或者只是 OS 磁盘的副本，具体取决于映像的创建方式。 从映像创建 VM 时，将使用该映像中的 VHD 副本来为新 VM 创建磁盘。 映像保留在存储中，可反复用来创建新的 VM。
 
@@ -133,7 +133,7 @@ ms.locfileid: "112032656"
 
 [Azure 区域冗余存储 (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) 提供了针对区域中可用性区域故障的恢复能力。 随着共享映像库的正式发布，你可以选择使用可用性区域将映像存储在 ZRS 帐户中。 
 
-你还可以为每个目标区域选择帐户类型。 默认存储帐户类型为 Standard_LRS，但你可以使用可用性区域选择各区域的 Standard_ZRS。 在[此处](../storage/common/storage-redundancy.md)查看 ZRS 的区域可用性。
+你还可以为每个目标区域选择帐户类型。 默认存储帐户类型为 Standard_LRS，但你可以使用可用性区域选择各区域的 Standard_ZRS。 有关 ZRS 的区域可用性的详细信息，请参阅[数据冗余](../storage/common/storage-redundancy.md)。
 
 ![显示 ZRS 的图形](./media/shared-image-galleries/zrs.png)
 
@@ -190,7 +190,7 @@ ms.locfileid: "112032656"
 
 - [.NET](/dotnet/api/overview/azure/virtualmachines/management)
 - [Java](/java/azure/)
-- [Node.js](/javascript/api/@azure/arm-compute)
+- [Node.js](/javascript/api/overview/azure/arm-compute-readme)
 - [Python](/python/api/overview/azure/virtualmachines)
 - [Go](/azure/go/)
 
@@ -201,7 +201,6 @@ ms.locfileid: "112032656"
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/sig-create/)
 - [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
-- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>常见问题 
 

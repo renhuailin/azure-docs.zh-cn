@@ -1,6 +1,6 @@
 ---
 title: ML 工作室（经典）：管理 Web 服务 - Azure
-description: 使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
+description: 使用机器学习 Web 服务门户管理机器学习工作室（经典）Web 服务。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,27 +9,28 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: d3aea23c816b9d8b32b0563d3116cdc2b92e080f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6833763ad38bd821067432aa63b166826442ed2f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101094309"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695516"
 ---
-# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>使用 Azure 机器学习工作室（经典）Web 服务门户管理 Web 服务
+# <a name="manage-a-web-service-using-the-machine-learning-studio-classic-web-services-portal"></a>使用机器学习工作室（经典）Web 服务门户管理 Web 服务
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
-可以使用 Microsoft Azure 机器学习 Web 服务门户来管理机器学习 Web 服务（新 Web 服务和经典 Web 服务）。 由于经典 Web 服务和新的 Web 服务基于不同的基础技术，针对它们的管理能力会稍有不同。
+可以使用机器学习 Web 服务门户管理机器学习工作室（经典）Web 服务。 
 
 在机器学习 Web 服务门户中，可以：
 
 * 监视 Web 服务的使用方式。
 * 配置说明、更新 Web 服务的密钥（仅限于新的 Web 服务）、更新存储帐户的密钥（仅限于新的 Web 服务）、启用日志记录以及启用或禁用示例数据。
 * 删除 Web 服务。
-* 创建、 删除或更新计费计划 （仅限于新的Web 服务）。
-* 添加和删除终结点（仅限于经典 Web 服务）
+* 创建、删除或更新计费计划：[仅限 Azure 机器学习](../index.yml)。
+* 添加和删除终结点：仅限 ML 工作室（经典）
 
 >[!NOTE]
 >此外，还可以在“Web 服务”选项卡上的[机器学习工作室（经典）](https://studio.azureml.net)中管理经典 Web 服务。
@@ -38,11 +39,11 @@ ms.locfileid: "101094309"
 
 新 Web 服务以 Azure 资源的形式部署。 因此，必须拥有正确的权限才能部署和管理新 Web 服务。  若要部署或管理新 Web 服务，必须分配有该 Web 服务部署到的订阅上的参与者或管理员角色。 如果邀请其他用户加入机器学习工作区，必须向其分配订阅上的参与者或管理员角色，他们才能部署或管理 Web 服务。 
 
-如果用户没有访问 Azure 机器学习 Web 服务门户中的资源的正确权限，那么在尝试部署 Web 服务时会收到以下错误：
+如果用户没有访问机器学习 Web 服务门户中的资源的正确权限，则会在尝试部署 Web 服务时收到以下错误：
 
 *Web Service deployment failed.This account does not have sufficient access to the Azure subscription that contains the Workspace.In order to deploy a Web Service to Azure, the same account must be invited to the Workspace and be given access to the Azure subscription that contains the Workspace.* （Web 服务部署失败。此帐户没有足够的权限访问工作区所属的 Azure 订阅。若要将 Web 服务部署到 Azure，必须邀请同一帐户加入工作区并为其授予对工作区所属的 Azure 订阅的访问权限。）
 
-有关创建工作区的详细信息，请参阅[创建和共享 Azure 机器学习工作室（经典）工作区](create-workspace.md)。
+有关创建工作区的详细信息，请参阅[创建和共享机器学习工作室（经典）工作区](create-workspace.md)。
 
 有关设置访问权限的详细信息，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
@@ -50,7 +51,7 @@ ms.locfileid: "101094309"
 ## <a name="manage-new-web-services"></a>管理新的 Web 服务
 要管理新的 Web 服务：
 
-1. 使用 Microsoft Azure 帐户登录到 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net/quickstart)门户 - 使用与 Azure 订阅相关联的帐户。
+1. 使用 Microsoft Azure 帐户登录到[机器学习 Web 服务](https://services.azureml.net/quickstart)门户 - 使用与 Azure 订阅相关联的帐户。
 2. 在菜单上，单击“**Web 服务**”。
 
 此时会显示你订阅的已部署 Web 服务列表。 
@@ -111,13 +112,13 @@ ms.locfileid: "101094309"
 
 ## <a name="manage-classic-web-services"></a>管理经典 Web 服务
 > [!NOTE]
-> 此部分中的过程与通过 Azure 机器学习 Web 服务门户管理经典 Web 服务相关。 有关通过机器学习工作室（经典）和 Azure 门户管理经典 Web 服务的信息，请参阅[管理 Azure 机器学习工作室（经典）工作区](manage-workspace.md)。
+> 此部分中的过程与通过机器学习 Web 服务门户管理经典 Web 服务相关。 有关通过机器学习工作室（经典）和 Azure 门户管理经典 Web 服务的信息，请参阅[管理机器学习工作室（经典）工作区](manage-workspace.md)。
 > 
 > 
 
 要管理经典 Web 服务：
 
-1. 使用 Microsoft Azure 帐户登录到 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net/quickstart)门户 - 使用与 Azure 订阅相关联的帐户。
+1. 使用 Microsoft Azure 帐户登录到[机器学习 Web 服务](https://services.azureml.net/quickstart)门户 - 使用与 Azure 订阅相关联的帐户。
 2. 在菜单上，单击“**经典 Web 服务**”。
 
 要管理经典 Web 服务，单击“**经典 Web 服务**”。 可以从“经典 Web 服务”页上：

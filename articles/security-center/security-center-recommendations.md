@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 3453d1a0d06fd9918f3f1ae49a519d676ab26785
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5921ad250934121223c35012d2278165b3dcc262
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468420"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237190"
 ---
 # <a name="review-your-security-recommendations"></a>查看安全建议
 
@@ -24,11 +24,11 @@ ms.locfileid: "110468420"
 
 1. 在安全中心的菜单中，打开“建议”页，查看适用于你的环境的建议。 建议会被分组到各项安全控制中。
 
-    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="建议会按安全控制分组" lightbox="./media/security-center-recommendations/view-recommendations.png":::
+    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="按安全控制分组的建议。" lightbox="./media/security-center-recommendations/view-recommendations.png":::
 
 1. 若要查找特定于资源类型、严重性、环境或其他对你很重要的条件的建议，请使用建议列表上方的可选筛选器。
 
-    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="用于优化 Azure 安全中心建议列表的筛选器":::
+    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="用于优化 Azure 安全中心建议列表的筛选器。":::
 
 1. 展开一项控制并选择特定的建议，以查看建议详细信息页。
 
@@ -79,7 +79,7 @@ ARG 旨在提高资源探索的效率，能够通过强大的筛选、分组和�
 
 预览建议示例如下：
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="带有预览标志的建议":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="带有预览标志的建议。":::
  
 ## <a name="next-steps"></a>后续步骤
 

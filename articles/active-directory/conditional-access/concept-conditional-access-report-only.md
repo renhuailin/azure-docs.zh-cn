@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6f4e4851d406b14ed38665274401b96446ac6a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ac2304ffd8f45d2147822f55f35c965da2db7a9
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579070"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113005215"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>什么是条件访问仅限报告模式？
 
@@ -24,7 +24,7 @@ ms.locfileid: "104579070"
 
 仅限报告模式是一种新的条件访问策略状态，可使管理员能够在其环境中启用条件访问策略之前对其影响进行评估。  随着仅限报告模式的发布：
 
-- 可以在仅限报告模式下启用条件访问策略。
+- 条件访问策略可以在仅限报告模式下启用，这不适用于“用户操作”范围。
 - 在登录过程中，将评估仅限报告模式下的策略，但不强制执行这些策略。
 - 结果记录在登录日志详细信息的“条件访问”和“仅限报告”选项卡中 。
 - 具有 Azure Monitor 订阅的客户可以使用条件访问见解工作簿来监视其条件访问策略的影响。

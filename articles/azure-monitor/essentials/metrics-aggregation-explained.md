@@ -6,12 +6,12 @@ ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 03/10/2021
-ms.openlocfilehash: c89b352954f114ec9da22cad6751bb57ef59899b
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 9c543b1bebfdeb47c1a1e1326f49247d8103191f
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381791"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861256"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Monitor 指标的指标聚合和显示说明
 
@@ -97,7 +97,7 @@ ms.locfileid: "106381791"
 
 ### <a name="granularity"></a>粒度
 
-最小时间间隔为 1 分钟，但基础系统可以根据指标更快地捕获数据。 例如，按固定的间隔每隔 15 秒跟踪一次 CPU 百分比。 由于 HTTP 失败作为事务进行跟踪，因此它们很容易超过一分钟一次以上。 其他指标（如 SQL 存储）每隔 20 分钟捕获一次。 此选择取决于单个资源提供程序和类型。 大多数指标都尝试提供可能的最小间隔。
+最小时间粒度为 1 分钟，但基础系统可能会根据指标更快地捕获数据。 例如，按 15 秒的时间间隔捕获 Azure VM 的 CPU 百分比。 由于 HTTP 失败作为事务进行跟踪，因此它们很容易超过一分钟一次以上。 其他指标（例如 SQL 存储）按 20 分钟的时间间隔进行捕获。 此选择取决于单个资源提供程序和类型。 大多数都尽量提供最小时间间隔。
 
 ### <a name="dimensions-splitting-and-filtering"></a>维度、拆分和筛选
 

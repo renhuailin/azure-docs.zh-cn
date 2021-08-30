@@ -7,27 +7,27 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 08/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 17c73257db371bbec0c72a23b1303847a8d14102
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 836802e65c8eb76f17bbf053e54ed9dbedf54049
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102607911"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740032"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中定义自定义属性
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-在[使用自定义策略添加声明和自定义用户输入](configure-user-input.md)一文中，你将了解如何使用内置[用户配置文件属性](user-profile-attributes.md)。 在本文中，你将在 Azure Active Directory B2C (Azure AD B2C) 目录中启用一个自定义属性。 稍后，你可以将该新属性同时用作多个[用户流](user-flow-overview.md)或[自定义策略](custom-policy-get-started.md)中的自定义声明。
+在[使用自定义策略添加声明和自定义用户输入](configure-user-input.md)一文中，你将了解如何使用内置[用户配置文件属性](user-profile-attributes.md)。 在本文中，你将在 Azure Active Directory B2C (Azure AD B2C) 目录中启用一个自定义属性。 稍后，你可以将该新属性同时用作多个[用户流](user-flow-overview.md)或[自定义策略](user-flow-overview.md)中的自定义声明。
 
 Azure AD B2C 目录附带了[一组内置属性](user-profile-attributes.md)。 但是，你通常需要创建自己的属性来管理你的特定方案，例如，在以下情况下：
 
-* 面向客户的应用程序需要持久保存 **LoyaltyId** 属性。
+* 面向客户的应用程序需要持久保存 loyaltyId 属性。
 * 标识提供者具有必须持久保存的唯一用户标识符 **uniqueUserGUID**。
 * 自定义用户旅程需要持久保存用户的状态 **migrationStatus**，以便其他逻辑基于该状态运行。
 
@@ -68,7 +68,24 @@ Azure AD B2C 允许你扩展存储在每个用户帐户中的属性集。 还可
 
 ## <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C 扩展应用
 
-尽管扩展属性可以包含用户的数据，但它们只能在应用程序对象中注册。 扩展属性会附加到名为 `b2c-extensions-app` 的应用程序。 请不要修改此应用程序，因为 Azure AD B2C 使用它来存储用户数据。 可以在 Azure AD B2C 应用注册下找到此应用程序。 获取应用程序属性：
+尽管扩展属性可以包含用户的数据，但它们只能在应用程序对象中注册。 扩展属性会附加到名为 `b2c-extensions-app` 的应用程序。 请不要修改此应用程序，因为 Azure AD B2C 使用它来存储用户数据。 可以在 Azure AD B2C 应用注册下找到此应用程序。 
+
+::: zone pivot="b2c-user-flow"
+
+获取应用程序 ID：
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
+1. 选择“应用注册”，然后选择“所有应用程序” 。
+1. 选择 `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` 应用程序。
+1. 复制“应用程序 ID”。 示例：`11111111-1111-1111-1111-111111111111`。
+ 
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+获取应用程序属性：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
@@ -78,8 +95,6 @@ Azure AD B2C 允许你扩展存储在每个用户帐户中的属性集。 还可
 1. 将以下标识符复制到剪贴板并保存：
     * **应用程序 ID**。 示例：`11111111-1111-1111-1111-111111111111`。
     * **对象 ID**。 示例：`22222222-2222-2222-2222-222222222222`。
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="modify-your-custom-policy"></a>修改自定义策略
 

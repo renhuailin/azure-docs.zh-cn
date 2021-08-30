@@ -1,15 +1,15 @@
 ---
 title: 使用客户管理的密钥加密注册表
 description: 了解 Azure 容器注册表的静态加密，以及如何使用 Azure Key Vault 中存储的客户管理的密钥来加密高级注册表
-ms.topic: article
-ms.date: 05/27/2021
-ms.custom: ''
-ms.openlocfilehash: 84a949e26bbf5677888185741e06139ed2d35db2
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.topic: how-to
+ms.date: 06/25/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 4258aa4e14802ba500987da419c4314e6610a210
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412738"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735506"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客户管理的密钥加密注册表
 
@@ -117,7 +117,9 @@ keyvaultID=$(az keyvault show --resource-group <resource-group-name> --name <key
 
 ### <a name="enable-key-vault-access"></a>启用密钥保管库访问权限
 
-配置针对密钥保管库的策略，使标识可以访问密钥保管库。 在以下 [az keyvault set-policy][az-keyvault-set-policy] 命令中，请传递前面创建并存储在环境变量中的托管标识的主体 ID。 将密钥权限设置为 **get**、**unwrapKey** 和 **wrapKey**。  
+#### <a name="enable-key-vault-access-policy"></a>启用密钥保管库访问策略
+
+一个选项是为密钥保管库配置策略，以便标识可以访问它。 在以下 [az keyvault set-policy][az-keyvault-set-policy] 命令中，请传递前面创建并存储在环境变量中的托管标识的主体 ID。 将密钥权限设置为 **get**、**unwrapKey** 和 **wrapKey**。  
 
 ```azurecli
 az keyvault set-policy \
@@ -125,7 +127,9 @@ az keyvault set-policy \
   --name <key-vault-name> \
   --object-id $identityPrincipalID \
   --key-permissions get unwrapKey wrapKey
+
 ```
+#### <a name="assign-rbac-role"></a>分配 RBAC 角色
 
 或者，使用[用于密钥保管库的 Azure RBAC](../key-vault/general/rbac-guide.md) 为标识分配访问密钥保管库的权限。 例如，使用 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) 命令将密钥保管库加密服务加密角色分配给标识：
 
@@ -257,7 +261,9 @@ az acr encryption show --name <registry-name>
 
 ### <a name="enable-key-vault-access"></a>启用密钥保管库访问权限
 
-配置针对密钥保管库的策略，使标识可以访问密钥保管库。
+#### <a name="enable-key-vault-access-policy"></a>启用密钥保管库访问策略
+
+一个选项是为密钥保管库配置策略，以便标识可以访问它。
 
 1. 导航到你的密钥保管库。
 1. 选择“设置” > “访问策略”>“+添加访问策略”。
@@ -267,14 +273,11 @@ az acr encryption show --name <registry-name>
 
 :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="创建密钥保管库访问策略":::
 
-或者，使用[用于密钥保管库的 Azure RBAC](../key-vault/general/rbac-guide.md) 为标识分配访问密钥保管库的权限。 例如，将密钥保管库加密服务加密角色分配给标识。
+#### <a name="assign-rbac-role"></a>分配 RBAC 角色
 
-1. 导航到你的密钥保管库。
-1. 选择“访问控制(IAM)” > “+添加” > “添加角色分配”。
-1. 在“添加角色分配”窗口中：
-    1. 选择“密钥保管库加密服务加密用户”角色。 
-    1. 将访问权限分配给“用户分配的托管标识”。
-    1. 选择用户分配的托管标识的资源名称，然后选择“保存”。
+或者，将“Key Vault 加密服务加密用户”角色分配给密钥保管库范围内用户分配的托管标识。
+
+有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="create-key-optional"></a>创建密钥（可选）
 
@@ -588,10 +591,11 @@ Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.C
 
 **用户分配的标识**
 
-如果用户分配的标识出现此问题，请先使用错误消息中显示的 GUID 重新分配标识。 例如：
+如果用户分配的标识出现此问题，请先使用 [az acr identity assign](/cli/azure/acr/identity/#az_acr_identity_assign) 命令重新分配标识。 传递标识的资源 ID，或在标识与注册表位于同一资源组中时使用该标识的名称。 例如：
 
 ```azurecli
-az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
+az acr identity assign -n myRegistry \
+    --identities "/subscriptions/mysubscription/resourcegroups/myresourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myidentity"
 ```
         
 然后，在更改密钥并分配其他标识后，可以删除原始的用户分配的标识。

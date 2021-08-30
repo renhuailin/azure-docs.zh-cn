@@ -9,12 +9,12 @@ ms.date: 04/29/2021
 ms.author: cherylmc
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 259d5776e6f9a2ce431743fe8dd3d9160b9f657d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: fcce91b5914318157ca4263504d46c992294d153
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671884"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729542"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>使用 PowerShell 删除虚拟网络网关
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ VNet 名称：VNet1<br>
 资源组名称：RG1<br>
 虚拟网络网关名称：GW1<br>
 
-以下步骤适用于 Resource Manager 部署模型。
+以下步骤适用于[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)。
 
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1.单击要删除的虚拟网络网关。
 
@@ -148,7 +148,7 @@ VNet 名称：VNet1<br>
 资源组名称：RG1<br>
 虚拟网络网关名称：GW1<br>
 
-以下步骤适用于 Resource Manager 部署模型。
+以下步骤适用于[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)。
 
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1.单击要删除的虚拟网络网关。
 
@@ -236,7 +236,7 @@ VNet 名称：VNet1<br>
 资源组名称：RG1<br>
 虚拟网络网关名称：GW1<br>
 
-以下步骤适用于 Resource Manager 部署模型。
+以下步骤适用于[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)。
 
 
 >[!NOTE]
@@ -289,7 +289,7 @@ Set-AzVirtualNetwork -VirtualNetwork $GWSub
 
 ## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="delete"></a>通过删除资源组来删除 VPN 网关
 
-如果不关心是否要保留资源组中的任何资源，而只是要从头开始配置，则可以删除整个资源组。 这种方法可以快速删除所有信息。 以下步骤仅适用于 Resource Manager 部署模型。
+如果不关心是否要保留资源组中的任何资源，而只是要从头开始配置，则可以删除整个资源组。 这种方法可以快速删除所有信息。 以下步骤仅适用于[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)。
 
 ### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1.获取订阅中所有资源组的列表。
 

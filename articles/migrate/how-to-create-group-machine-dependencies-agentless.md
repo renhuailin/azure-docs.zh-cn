@@ -6,21 +6,19 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 7966750d7c3e0f12bb9404a4d78bbc27e4075c52
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7f4066f466b6dd9e8cb41bf68592aa88c192c44d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786577"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743241"
 ---
 # <a name="analyze-server-dependencies-agentless"></a>分析服务器依赖项（无代理）
 
 本文介绍如何在“Azure Migrate：发现和评估”工具中设置无代理依赖项分析。 [依赖项分析](concepts-dependency-visualization.md)有助于确定和了解要评估并迁移到 Azure 的服务器之间的依赖项。
 
 > [!IMPORTANT]
-> 对于在 VMware 环境中运行的，使用“Azure Migrate：发现和评估”工具发现的服务器，无代理依赖项分析目前以预览版提供。
-> 此预览版属于客户支持范围，可用于生产工作负荷。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>无代理依赖项分析目前仅适用于在 VMware 环境中运行的、使用“Azure Migrate：发现和评估”工具发现的服务器。
 
 ## <a name="current-limitations"></a>当前限制
 
@@ -37,7 +35,7 @@ ms.locfileid: "104786577"
 
 ## <a name="deploy-and-configure-the-azure-migrate-appliance"></a>部署并配置 Azure Migrate 设备
 
-1. [查看](migrate-appliance.md#appliance---vmware)部署 Azure Migrate 设备的要求。
+1. [查看](migrate-appliance.md#appliance---vmware) Azure Migrate 设备的部署要求。
 2. 查看设备在[公有云](migrate-appliance.md#public-cloud-urls)和[政府云](migrate-appliance.md#government-cloud-urls)中需要访问的 Azure URL。
 3. [查看](migrate-appliance.md#collected-data---vmware)设备在发现和评估期间收集的数据。
 4. [注意](migrate-support-matrix-vmware.md#port-access-requirements)设备的端口访问要求。
@@ -57,8 +55,8 @@ ms.locfileid: "104786577"
 1. 打开设备配置管理器，完成设备的先决条件检查和注册。
 2. 导航到“管理凭据和发现源”面板。
 1.  在“步骤 1: 提供 vCenter Server 凭据”中，单击“添加凭据”，为设备要用于发现 vCenter Server 上运行的服务器的 vCenter Server 帐户提供凭据。 
-1. 在“步骤 2：提供 vCenter Server 详细信息”中，单击“添加发现源”，从下拉列表中选择凭据的易记名称，指定 vCenter Server 实例的“IP 地址/FQDN”:::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="设备配置管理器上的面板 3，用于显示 vCenter Server 详细信息":::
-1. 在“步骤 3：提供服务器凭据以执行软件盘存、无代理依赖项分析和 SQL Server 实例与数据库的发现”中，单击“添加凭据”以提供多个服务器凭据来启动软件盘存。
+1. 在“步骤 2: 提供 vCenter Server 详细信息”中，单击“添加发现源”，从下拉列表中选择凭据的易记名称，指定 vCenter Server 实例的“IP 地址/FQDN”  :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="设备配置管理器上的面板 3，用于显示 vCenter Server 详细信息":::
+1. 在“步骤 3: 提供服务器凭据以执行软件清单、无代理依赖项分析和 SQL Server 实例与数据库的发现”中，单击“添加凭据”以提供多个服务器凭据来启动软件清单 。
 1. 单击“开始发现”以启动 vCenter Server 发现。
 
  在完成 VCenter Server 发现后，设备将启动对已安装的应用程序、角色和功能（软件盘存）的发现。在软件盘存过程中，将根据服务器循环访问已添加的服务器凭据，并验证是否进行了无代理依赖项分析。可以从门户中为服务器启用无代理依赖项分析。 只能选择验证成功的服务器来启用无代理依赖项分析。

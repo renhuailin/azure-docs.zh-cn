@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a5563ff1f57f6b3684834a2488fc0665ac5eddd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ead99d955fbd82099b4ad577e99026e8e66aea5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102610036"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114442407"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-self-service-sign-up"></a>使用 API 连接器来自定义并扩展自助注册 
 
@@ -35,15 +35,15 @@ API 连接器通过定义 API 调用的 HTTP 终结点 URL 和身份验证，为
 
 用户流中有两个位置可用于启用 API 连接器：
 
-- 使用标识提供者登录之后
+- 在注册期间与标识提供者进行联合之后
 - 创建用户之前
 
 > [!IMPORTANT]
 > 在这两种情况下，将在用户“注册”而不是登录过程中调用 API 连接器。
 
-### <a name="after-signing-in-with-an-identity-provider"></a>使用标识提供者登录之后
+### <a name="after-federating-with-an-identity-provider-during-sign-up"></a>在注册期间与标识提供者进行联合之后
 
-在用户使用标识提供者（例如 Google、Facebook 和 Azure AD）进行身份验证之后，会立即调用注册过程中的此步骤的 API 连接器。 此步骤优先于属性集合页，后者是向用户显示的用于收集用户属性的表单。 如果用户正在使用本地帐户注册，则不会调用此步骤。 以下是可能在此步骤中启用的 API 连接器方案的示例：
+在注册过程的此步骤中，在用户使用标识提供者（例如 Google、Facebook 和 Azure AD）进行身份验证之后，会立即调用 API 连接器。 此步骤优先于特性收集页，后者是向用户显示的用于收集用户特性的表单。 如果用户正在使用本地帐户注册，则不会调用此步骤。 以下是可能在此步骤中启用的 API 连接器方案的示例：
 
 - 使用用户提供的电子邮件或联合标识在现有系统中查找声明。 从现有系统返回这些声明，预先填充属性集合页，并使它们可在令牌中返回。
 - 根据社交标识实现允许或阻止列表。

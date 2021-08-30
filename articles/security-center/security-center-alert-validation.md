@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: b90ca39d7bf01b84400464240bb581a5e7bc922a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc42882a15b70d7d656decebf8c7b2346c516c6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602377"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734882"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure 安全中心的警报验证
 本文档介绍如何验证系统是否已针对 Azure 安全中心警报进行了适当的配置。
@@ -33,12 +33,12 @@ ms.locfileid: "104602377"
 
 创建示例警报：
 
-1. 以具有角色“安全管理员”或“订阅参与者”的用户身份，从“警报”页上的工具栏中选择“创建示例警报”。
+1. 以具有角色“订阅参与者”的用户身份，从“警报”页上的工具栏中选择“创建示例警报”。
 1. 选择订阅。
 1. 选择要查看其警报的相关 Azure Defender 计划。 
 1. 选择“创建示例警报”。
 
-    :::image type="content" source="media/security-center-alert-validation/create-sample-alerts-procedures.png" alt-text="在 Azure 安全中心创建示例警报的步骤":::
+    :::image type="content" source="media/security-center-alert-validation/create-sample-alerts-procedures.png" alt-text="在 Azure 安全中心创建示例警报的步骤。":::
     
     此时将显示一条通知，告知正在创建示例警报：
 
@@ -46,7 +46,7 @@ ms.locfileid: "104602377"
 
     几分钟后，警报将出现在“安全警报”页中。 它们还将出现在已配置为接收 Azure 安全中心安全警报（连接的 SIEM、电子邮件通知等）的其他任何位置。
 
-    :::image type="content" source="media/security-center-alert-validation/sample-alerts.png" alt-text="安全警报列表中的示例警报":::
+    :::image type="content" source="media/security-center-alert-validation/sample-alerts.png" alt-text="安全警报列表中的示例警报。":::
 
     > [!TIP]
     > 警报用于模拟资源。

@@ -4,12 +4,12 @@ description: 了解如何升级 Azure Kubernetes 服务 (AKS) 群集以获取最
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 772cb9d33c9bf9307ca0dc16536933fc9123de4b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9dcbe21ccddb13037cbd7633127880320da9ff2b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085791"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860867"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
@@ -66,7 +66,7 @@ AKS 可以接受整数值和百分比值作为最大激增值。 整数值，例
 在升级过程中，最大激增值最小可以为 1，最大为节点池中的节点数。 你可以设置较大的值，但用于最大激增的最大节点数不会高于升级时池中的节点数。
 
 > [!Important]
-> 对节点池的最大激增设置是永久性的。  后续的 Kubernetes 升级或节点版本升级都将使用此设置。 你可以随时更改节点池的最大激增值。 对于生产节点池，建议将 max-surge 设置为 33%。
+> 节点池的最大激增设置是永久性的。  后续的 Kubernetes 升级或节点版本升级都将使用此设置。 你可以随时更改节点池的最大激增值。 对于生产节点池，建议将 max-surge 设置为 33%。
 
 请使用以下命令为新的或现有的节点池设置最大激增值。
 
@@ -136,6 +136,12 @@ myAKSCluster  eastus      myResourceGroup  1.18.10              Succeeded       
 AKS 群集的群集自动升级是一项预览功能。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+为 `az cli` 添加以下扩展。
+
+```azurecli-interactive
+az extension add --name aks-preview
+```
 
 使用 [az feature register][az-feature-register] 命令注册 `AutoUpgradePreview` 功能标志，如以下示例所示：
 

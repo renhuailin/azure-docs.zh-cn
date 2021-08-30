@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: 59cb8290809df877e6faf374026db5aa3011e81b
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 07/30/2021
+ms.openlocfilehash: 3ccbe4cfa7b6e4f485d16ffecbda5c3b7042b8e1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984187"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745148"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的 PostgreSQL 扩展
 
@@ -49,6 +49,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[intagg](https://www.postgresql.org/docs/13/intagg.html)                     | 1.1             | 整数聚合器和枚举器。 （已过时）|
 > |[intarray](https://www.postgresql.org/docs/13/intarray.html)                     | 1.3             | 针对 1-D 整数数组的函数、运算符和索引支持|
 > |[isn](https://www.postgresql.org/docs/13/isn.html)                          | 1.2             | 用于国际产品编号标准的数据类型|
+> |[lo](https://www.postgresql.org/docs/13/lo.html)                            | 1.1             | 大型对象维护 |
 > |[ltree](https://www.postgresql.org/docs/13/ltree.html)                        | 1.2             | 用于分层树形结构的数据类型|
 > |[pageinspect](https://www.postgresql.org/docs/13/pageinspect.html)                        | 1.8             | 在较低级别检查数据库页的内容|
 > |[pg_buffercache](https://www.postgresql.org/docs/13/pgbuffercache.html)               | 1.3             | 检查共享缓冲区缓存|
@@ -61,6 +62,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[pg_visibility](https://www.postgresql.org/docs/13/pgvisibility.html)                      | 1.2             | 检查可见性映射 (VM) 和页面级别的可见性信息|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.5             | 提供审核功能|
 > |[pgcrypto](https://www.postgresql.org/docs/13/pgcrypto.html)                     | 1.3             | 加密函数| 
+> |[pglogical](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | 逻辑流式复制 |
 > |[pgrowlocks](https://www.postgresql.org/docs/13/pgrowlocks.html)                   | 1.2             | 显示行级锁定信息|
 > |[pgstattuple](https://www.postgresql.org/docs/13/pgstattuple.html)                  | 1.5             | 显示元组级别统计信息|
 > |[plpgsql](https://www.postgresql.org/docs/13/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|
@@ -100,6 +102,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[intagg](https://www.postgresql.org/docs/12/intagg.html)                     | 1.1             | 整数聚合器和枚举器。 （已过时）|
 > |[intarray](https://www.postgresql.org/docs/12/intarray.html)                     | 1.2             | 针对 1-D 整数数组的函数、运算符和索引支持|
 > |[isn](https://www.postgresql.org/docs/12/isn.html)                          | 1.2             | 用于国际产品编号标准的数据类型|
+> |[lo](https://www.postgresql.org/docs/12/lo.html)                            | 1.1             | 大型对象维护 |
 > |[ltree](https://www.postgresql.org/docs/12/ltree.html)                        | 1.1             | 用于分层树形结构的数据类型|
 > |[pageinspect](https://www.postgresql.org/docs/12/pageinspect.html)                        | 1.7             | 在较低级别检查数据库页的内容|
 > |[pg_buffercache](https://www.postgresql.org/docs/12/pgbuffercache.html)               | 1.3             | 检查共享缓冲区缓存|
@@ -112,6 +115,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[pg_visibility](https://www.postgresql.org/docs/12/pgvisibility.html)                      | 1.2             | 检查可见性映射 (VM) 和页面级别的可见性信息|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.4             | 提供审核功能|
 > |[pgcrypto](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | 加密函数|
+>|[pglogical](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | 逻辑流式复制 |
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | 显示行级锁定信息|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | 显示元组级别统计信息|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|
@@ -151,6 +155,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[intagg](https://www.postgresql.org/docs/11/intagg.html)                     | 1.1             | 整数聚合器和枚举器。 （已过时）|
 > |[intarray](https://www.postgresql.org/docs/11/intarray.html)                     | 1.2             | 针对 1-D 整数数组的函数、运算符和索引支持|
 > |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | 用于国际产品编号标准的数据类型|
+> |[lo](https://www.postgresql.org/docs/11/lo.html)                            | 1.1             | 大型对象维护 |
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | 用于分层树形结构的数据类型|
 > |[pageinspect](https://www.postgresql.org/docs/11/pageinspect.html)                        | 1.7             | 在较低级别检查数据库页的内容|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | 检查共享缓冲区缓存|
@@ -163,6 +168,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[pg_visibility](https://www.postgresql.org/docs/11/pgvisibility.html)                      | 1.2             | 检查可见性映射 (VM) 和页面级别的可见性信息|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | 提供审核功能|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | 加密函数|
+>|[pglogical](https://github.com/2ndQuadrant/pglogical)       | 2.3.2                | 逻辑流式复制 |
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | 显示行级锁定信息|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | 显示元组级别统计信息|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL 过程语言|

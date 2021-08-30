@@ -3,19 +3,18 @@ title: 创建 Azure 映像生成器模板
 description: 了解如何创建与 Azure 映像生成器配合使用的模板。
 author: kof-f
 ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 05/24/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
-ms.reviewer: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 07dfd9eb2dab9ae8c7e7a024bbf09c641e0910e4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d9ac06d7863ae08e380532f0b737dafc57ab666e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967243"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469148"
 ---
 # <a name="create-an-azure-image-builder-template"></a>创建 Azure 映像生成器模板 
 
@@ -98,18 +97,8 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 2. 运行 Windows 版本时，应使用“Standard_D2_v2”或等效的 VM 大小。
 3. 需要 [VM 隔离](../isolation.md)。
 4. 自定义需要特定硬件的映像，例如，对于 GPU VM，需要 GPU VM 大小。 
-5. 要求对生成 VM 的其余部分启用端到端加密，你需要指定不使用本地临时磁盘的支持生成 [VM 大小](../azure-vms-no-temp-disk.md)。
+5. 要求对生成 VM 的其余部分启用端到端加密，你需要指定不使用本地临时磁盘的支持生成 [VM 大小](../azure-vms-no-temp-disk.yml)。
  
-此为可选项。
-
-
-## <a name="proxy-vm-size"></a>代理 VM 大小
-代理 VM 用于在 Azure 映像生成器服务和生成 VM 之间发送命令，仅在指定现有 VNET 时部署此项，有关详细信息，请查看网络选项[文档](image-builder-networking.md#why-deploy-a-proxy-vm)。
-```json
- {
-    "proxyVmSize": "Standard A1_v2"
- },
-```
 此为可选项。
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
@@ -181,7 +170,7 @@ API 需要通过一个“SourceType”来定义用于生成映像的源，目前
 > 使用现有的 Windows 自定义映像时，可在单个 Windows 7 或 Windows Server 2008 R2 映像上运行 Sysprep 命令（最多运行 3 次，或在更高版本的单个 Windows 映像上运行 1001 次）；有关详细信息，请参阅 [sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) 文档。
 
 ### <a name="platformimage-source"></a>PlatformImage 源 
-Azure 映像生成器支持 Windows Server 和客户端以及 Linux Azure 市场映像。有关完整列表，请参阅[此文](../image-builder-overview.md#os-support)。 
+Azure 映像生成器支持 Windows Server 和客户端以及 Linux Azure 市场映像。有关完整列表，请参阅[了解 Azure 映像生成器](../image-builder-overview.md#os-support)。 
 
 ```json
         "source": {
@@ -725,3 +714,4 @@ az resource invoke-action \
 ## <a name="next-steps"></a>后续步骤
 
 [Azure 映像生成器 GitHub](https://github.com/azure/azvmimagebuilder) 中提供了适用于不同方案的示例 .json 文件。
+

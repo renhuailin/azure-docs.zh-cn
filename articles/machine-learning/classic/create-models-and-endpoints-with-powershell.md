@@ -9,26 +9,28 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 35b5fe4556f1d557d3fc0420e9069f2fb510eec4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 979beba00c4006b69c4d9ea2187cf17f3665696d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520504"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693602"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>使用机器学习工作室（经典）和 PowerShell 从一个试验创建多个 Web 服务终结点
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-这是一个常见的机器学习问题：你需要创建具有相同训练工作流并使用相同算法的多个模型， 但是需要它们使用不同的训练数据集作为输入。 本文演示如何仅使用单个试验在 Azure 机器学习工作室（经典）中大规模地执行此操作。
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
+这是一个常见的机器学习问题：你需要创建具有相同训练工作流并使用相同算法的多个模型， 但是需要它们使用不同的训练数据集作为输入。 本文演示如何仅使用单个试验在机器学习工作室（经典）中大规模地执行此操作。
 
 例如，假设用户拥有全球自行车租赁特许经营业务。 想要生成回归模型以预测基于历史数据的租赁需求。 你在全世界有 1,000 个租赁位置，并为每个位置收集了一个数据集。 它们包括特定于每个位置的重要功能，例如日期、时间、天气、交通。
 
 只要使用所有位置间全部数据集的合并版本，就可以训练模型。 但是，每个位置的环境都是唯一的。 因此，更好的方法是使用每个位置的数据集单独训练回归模型。 这样一来，每个训练的模型都可以考虑不同的存储大小、体积、地理位置、人口数量、自行车友好型交通环境等。
 
-这可能是最好的方法，但你不想在 Azure 机器学习工作室（经典）中创建 1,000 个训练实验，每个实验代表一个唯一位置。 除了是项艰巨的任务，它看起来效率也低，因为每个实验都具有全部相同的组件（除了训练数据集）。
+这可能是最好的方法，但你不想在机器学习工作室（经典）中创建 1,000 个训练试验，每个试验代表一个唯一位置。 除了是项艰巨的任务，它看起来效率也低，因为每个实验都具有全部相同的组件（除了训练数据集）。
 
-幸运的是，可以使用 [Azure 机器学习工作室（经典）重新训练 API](./retrain-machine-learning-model.md) 并使用 [Azure 机器学习工作室（经典）PowerShell](powershell-module.md) 自动完成任务以实现此目的。
+幸运的是，可以使用[机器学习工作室（经典）重新训练 API](./retrain-machine-learning-model.md) 并使用[机器学习工作室（经典）PowerShell](powershell-module.md) 自动完成任务以实现此目的。
 
 > [!NOTE]
 > 若要使示例运行更快，请将位置数从 1,000 减少到 10。 但是相同原则和过程可应用于 1,000 个位置。 但是，如果确实需要根据 1,000 个数据集进行训练，则可能需要并行运行以下 PowerShell 脚本。 本文不讨论如何执行此操作，但可在 Internet 上找到 PowerShell 多线程的示例。  
@@ -36,7 +38,7 @@ ms.locfileid: "100520504"
 > 
 
 ## <a name="set-up-the-training-experiment"></a>设置训练实验
-请使用 [Cortana Intelligence 库](https://gallery.azure.ai)中的示例[训练实验](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1)。 在 [Azure 机器学习工作室（经典）](https://studio.azureml.net)工作区中打开此实验。
+请使用 [Cortana Intelligence 库](https://gallery.azure.ai)中的示例[训练实验](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1)。 在[机器学习工作室（经典）](https://studio.azureml.net)工作区中打开此试验。
 
 > [!NOTE]
 > 为了遵循此示例，可能需要使用标准工作区而不是免费工作区。 请为每个客户创建一个终结点（总共 10 个终结点），这需要一个标准工作区，因为免费工作区中最多只能有 3 个终结点。

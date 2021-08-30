@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 099c65143f29f4fdf341b52e5d80731f1bdb0808
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.date: 07/12/2021
+ms.openlocfilehash: b461b424a8b0d52533da824353abc2b24ec465a6
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030978"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666260"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区和水平缩放
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -71,7 +71,7 @@ Azure Cosmos DB 使用基于哈希的分区在物理分区之间分散逻辑分�
 
 通常，较小的容器只需要一个物理分区，但这些容器仍将至少具有 4 个副本。
 
-下图显示了逻辑分区如何映射到全局分配的物理分区：
+下图显示了逻辑分区如何映射到全局分布的物理分区。 映像中的[分区集](global-dist-under-the-hood.md#partition-sets)是指一组物理分区，这些物理分区跨多个区域管理相同的逻辑分区键：
 
 :::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="演示 Azure Cosmos DB 分区的插图" border="false":::
 
@@ -135,3 +135,4 @@ Azure Cosmos DB 使用基于哈希的分区在物理分区之间分散逻辑分�
 * 了解 [Azure Cosmos DB 中的全局分布](distribute-data-globally.md)。
 * 了解[如何对 Azure Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)。
 * 了解[如何对 Azure Cosmos 数据库预配吞吐量](how-to-provision-database-throughput.md)。
+* 请参阅 Learn 模块，了解如何[在 Azure Cosmos DB 中为数据建模和分区](/learn/modules/model-partition-data-azure-cosmos-db/)。

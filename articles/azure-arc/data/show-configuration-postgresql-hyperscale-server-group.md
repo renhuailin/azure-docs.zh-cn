@@ -1,6 +1,6 @@
 ---
 title: 显示已启用 Arc 的超大规模 PostgreSQL 服务器组的配置
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 description: 显示已启用 Arc 的超大规模 PostgreSQL 服务器组的配置
 services: azure-arc
 ms.service: azure-arc
@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 12631adea948c6a59f935ba409dcc925268c6319
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 727c792daa20c392a87f7c57100b72ae79a971f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412252"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733502"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>显示已启用 Arc 的超大规模 PostgreSQL 服务器组的配置
 
@@ -127,7 +127,7 @@ logs-few7hh0k4npx9phsiobdc3hq-postgres01-2      Bound    local-pv-5ccd02e6   193
 ```
 
 
-## <a name="from-an-azure-arc-enabled-data-services-point-of-view"></a>从已启用 Azure Arc 的数据服务角度看：
+## <a name="from-an-azure-arc-enabled-data-services-point-of-view"></a>从已启用 Azure Arc 的数据服务的角度看：
 
 * Arc 数据控制器中创建了多少个服务器组？
 * 服务器组的名称是什么？
@@ -155,12 +155,12 @@ logs-few7hh0k4npx9phsiobdc3hq-postgres01-2      Bound    local-pv-5ccd02e6   193
 
    每个服务器组在 3 个节点/Pod 上运行：1 个协调器和 2 个工作器。
 
-- 使用 azdata：
+- **使用 Azure CLI (az)：**
 
 运行以下命令。 输出显示的信息与运行 kubectl 显示的信息类似：
 
-   ```console
-   azdata arc postgres server list
+   ```azurecli
+   az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 
    `output
    Name        State    Workers
@@ -237,7 +237,7 @@ Events:               <none>
 ```
 
 >[!NOTE]
->2020 年 10 月之前的版本，上述示例中的 `Workers` 是 `Shards`。 有关详细信息，请参阅“[发行说明 - 已启用 Azure Arc 的数据服务（预览版）](release-notes.md)”。
+>2020 年 10 月之前的版本，上述示例中的 `Workers` 是 `Shards`。 有关详细信息，请参阅[发行说明 - 已启用 Azure Arc 的数据服务（预览版）](release-notes.md)。
 
 我们来了解以上所示 `servergroup` 说明中的一些具体兴趣点。 它告诉我们哪些有关此服务器组的内容？
 
@@ -281,18 +281,18 @@ Events:               <none>
    >  State:              Ready
    > ```
 
-使用 azdata：
+**使用 Azure CLI (az)：**
 
 此命令的一般格式为：
 
-```console
-azdata arc postgres server show -n <server group name>
+```azurecli
+az postgres arc-server show -n <server group name>  --k8s-namespace <namespace> --use-k8s
 ```
 
 例如：
 
-```console
-azdata arc postgres server show -n postgres02
+```azurecli
+az postgres arc-server show -n postgres02 --k8s-namespace <namespace> --use-k8s
 ```
 
 返回下列输出，其格式与内容与 kubectl 返回的输出十分相似。
@@ -366,5 +366,5 @@ azdata arc postgres server show -n postgres02
 - [阅读如何纵向扩展/缩减（增加或减少内存和/或 vCore）服务器组](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)
 - [阅读存储配置](storage-configuration.md)
 - [阅读如何监视数据库实例](monitor-grafana-kibana.md)
-- [在启用了 Azure Arc 的超大规模 PostgreSQL 服务器组中使用 PostgreSQL 扩展](using-extensions-in-postgresql-hyperscale-server-group.md)
+- [在已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中使用 PostgreSQL 扩展](using-extensions-in-postgresql-hyperscale-server-group.md)
 - [为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性](configure-security-postgres-hyperscale.md)

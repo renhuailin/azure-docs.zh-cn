@@ -13,12 +13,12 @@ ms.date: 03/11/2021
 ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 1a380c8a3d766c3c11d8cba1148383d924f65a1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3ec7c9786a9b5d3774c05669ae6d51ad443e71d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224990"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744092"
 ---
 # <a name="manage-your-users-with-my-staff"></a>使用“我的员工”管理用户
 
@@ -40,20 +40,22 @@ ms.locfileid: "103224990"
 * 一个与订阅关联的 Azure Active Directory 租户。
 
   * 如果需要，请[创建一个 Azure Active Directory 租户](../fundamentals/sign-up-organization.md)或[将 Azure 订阅关联到你的帐户](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
-* 需要在 Azure AD 租户中拥有“全局管理员”特权才能启用基于短信的身份验证。
+* 需要在 Azure AD 租户中拥有“全局管理员”权限才能启用基于短信的身份验证。
 * 短信身份验证方法策略中启用的每个用户都必须获得许可，即使他们不使用该方法也是如此。 每个启用的用户必须拥有以下 Azure AD 或 Microsoft 365 许可证之一：
 
-  * [Azure AD Premium P1 或 P2](https://azure.microsoft.com/pricing/details/active-directory/)
-  * [Microsoft 365 (M365) F1 或 F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
-  * [企业移动性 + 安全性 (EMS) E3 或 E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) 或 [Microsoft 365 (M365) E3 或 E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
+  * [Azure AD Premium P1 或 P2](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)
+  * [Microsoft 365 F1 或 F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
+  * [企业移动性 + 安全性 (EMS) E3 或 E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) 或 [Microsoft 365 E3 或 E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
 ## <a name="how-to-enable-my-staff"></a>如何启用“我的员工”
 
 配置管理单元后，可将此范围应用到访问“我的员工”的用户。 只有拥有管理角色的用户才可以访问“我的员工”。 若要启用“我的员工”，请完成以下步骤：
 
-1. 以用户管理员的身份登录到 Azure 门户。
-2. 浏览到“Azure Active Directory” > “用户设置” > “用户功能预览” > “管理用户功能预览设置”。   
-3. 在“管理员可以访问‘我的员工’”下，可以选择为所有用户、选定用户启用“我的员工”，或者不允许任何用户访问“我的员工”。
+1. 以用户管理员身份登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
+
+1. 选择“Azure Active Directory” > “用户设置” > “用户功能预览” > “管理用户功能预览设置”。   
+
+1. 在“管理员可以访问‘我的员工’”下，可以选择为所有用户、选定用户启用“我的员工”，或者不允许任何用户访问“我的员工”。
 
 > [!Note]
 > 只有拥有管理员角色的用户才可以访问“我的员工”。 如果为不拥有管理员角色的用户启用“我的员工”，他们将无法访问“我的员工”。

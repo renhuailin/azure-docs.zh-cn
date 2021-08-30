@@ -3,12 +3,12 @@ title: 使用 Grafana 监视 Azure 服务和应用程序
 description: 路由 Azure Monitor 和 Application Insights 数据，以便在 Grafana 中进行查看。
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: decd0353bcb2cf048fd5591ea8c895cf22944809
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1bfb3322dda2b6702eb3e18eb44cc0cb2cd942ec
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048652"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666854"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中监控 Azure 服务
 你现在可以使用 [Azure Monitor 数据源插件](https://grafana.com/plugins/grafana-azure-monitor-datasource)从 [Grafana](https://grafana.com/) 监控 Azure 服务和应用程序。 该插件收集 Azure Monitor 所收集的应用程序性能数据，包括各种日志和指标。 随后，可以在 Grafana 仪表板上显示此数据。
@@ -40,6 +40,9 @@ ms.locfileid: "102048652"
 7. 获取 Grafana 服务器的公共 IP 地址 - 返回到资源列表，然后选择“公共 IP 地址”。
 
 ## <a name="sign-in-to-grafana"></a>登录到 Grafana
+
+> [!IMPORTANT]
+> Internet Explorer 浏览器和旧版 Microsoft Edge 浏览器与 Grafana 不兼容，必须使用基于 chromium 的浏览器，包括 Microsoft Edge。 请参阅 [Grafana 支持的浏览器](https://grafana.com/docs/grafana/latest/installation/requirements/#supported-web-browsers)。
 
 1. 使用服务器的 IP 地址在浏览器中打开登录页 http://\<IP address\>:3000 或 \<DNSName>\:3000。 尽管默认端口为 3000，但请注意可能在设置期间选择了其他端口。 你应看到生成的 Grafana 服务器登录页。
 

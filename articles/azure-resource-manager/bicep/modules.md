@@ -4,13 +4,13 @@ description: 介绍如何定义和使用模块，以及如何使用模块范围�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/03/2021
-ms.openlocfilehash: 85f345cfd7085f34f28e4b219c4f379abff74bff
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.date: 07/15/2021
+ms.openlocfilehash: 5e092a0b7f27379cf9fdc488c7a56a295ce17d25
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421411"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752250"
 ---
 # <a name="use-bicep-modules"></a>使用 Bicep 模块
 
@@ -102,8 +102,21 @@ output storageEndpoint object = stgModule.outputs.storageEndpoint
     ]
     ...
     ```
+- **_params_** 属性包含要传递给模块文件的任何参数。 这些参数与 Bicep 文件中定义的参数匹配。
+
+与资源一样，模块会并行部署，除非它们依赖于其他模块或资源部署。 若要了解有关依赖项的详细信息，请参阅[设置资源依赖项](resource-declaration.md#set-resource-dependencies)。
 
 若要从模块中获取输出值，请使用类似如下的语法检索属性值：`stgModule.outputs.storageEndpoint` 其中 `stgModule` 是模块的标识符。
+
+可以有条件地部署模块。 使用与[有条件部署资源](conditional-resource-deployment.md)时相同的 if 语法。
+
+```bicep
+param deployZone bool
+
+module dnsZone 'dnszones.bicep' = if (deployZone) {
+  name: 'myZoneModule'
+}
+```
 
 ## <a name="configure-module-scopes"></a>配置模块作用域
 
@@ -120,7 +133,7 @@ module stgModule './storageAccount.bicep' = {
 }
 ```
 
-当模块目标作用域和父目标作用域相同时，可以省略 _作用域_ 属性。 如果未提供作用域属性，则模块将部署在父目标作用域。
+当模块目标作用域和父目标作用域相同时，可以省略 _作用域_ 属性。 未提供 scope 属性时，将在父级的目标范围部署模块。
 
 以下 Bicep 文件显示了如何创建资源组，及如何将模块部署到资源组：
 
@@ -153,9 +166,9 @@ module stgModule './storageAccount.bicep' = {
 output storageEndpoint object = stgModule.outputs.storageEndpoint
 ```
 
-必须将作用域属性设置为有效作用域对象。 如果 Bicep 文件部署了资源组、订阅或管理组，你可以将模块的作用域设置为该资源的符号名称。 上一个示例演示了此方法，其中创建了一个资源组并将其用于模块的作用域。
+scope 属性必须设置为有效的范围对象。 如果 Bicep 文件部署资源组、订阅或管理组，可以将模块的范围设置为该资源的符号名称。 上一个示例演示了此方法，其中创建了资源组，并用于模块的范围。
 
-或者，可以使用作用域函数获取有效的作用域。 这些函数包括：
+或者，可使用 scope 函数获取有效的范围。 这些函数包括：
 
 - [resourceGroup](bicep-functions-scope.md#resourcegroup)
 - [subscription](bicep-functions-scope.md#subscription)

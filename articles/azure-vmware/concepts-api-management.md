@@ -3,19 +3,18 @@ title: 概念 - API 管理
 description: 了解 API 管理如何保护在 Azure VMware 解决方案虚拟机 (VM) 上运行的 API
 ms.topic: conceptual
 ms.date: 04/28/2021
-ms.openlocfilehash: aba60f255019701722b38036c87bcb592a0a4410
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 14b2d81d0080ebf389c817d1c718d207aa922b0d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204524"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752110"
 ---
 # <a name="publish-and-protect-apis-running-on-azure-vmware-solution-vms"></a>发布和保护在 Azure VMware 解决方案 VM 上运行的 API
 
-借助 Microsoft Azure [API 管理](https://azure.microsoft.com/services/api-management/)，用户可以安全地向外部或内部使用者进行发布。  只有开发人员（开发）和高级（生产）SKU 允许 Azure 虚拟网络集成发布在 Azure VMware 解决方案工作负载上运行的 API。  这两个 SKU 均可实现 API 管理服务和后端之间的连接。 
+借助 Microsoft Azure [API 管理](https://azure.microsoft.com/services/api-management/)，用户可以安全地向外部或内部使用者进行发布。  只有开发人员（开发）和高级（生产）SKU 允许 Azure 虚拟网络集成发布在 Azure VMware 解决方案工作负载上运行的 API。 此外，这两个 SKU 均可实现 API 管理服务和后端之间的连接。
 
-对于在 Azure VMware 解决方案虚拟机 (VM) 上和本地运行的后端服务，API 管理配置是相同的。 对于这两种部署，如果后端服务器位于 Azure VMware 解决方案的 NSX 负载均衡器后面，则 API 管理会将负载均衡器上的虚拟 IP 配置为后端终结点。 
-
+对于在 Azure VMware 解决方案虚拟机 (VM) 上和本地运行的后端服务，API 管理配置是相同的。 此外，对于这两种部署，如果后端服务器位于 Azure VMware 解决方案的 NSX 负载均衡器后面，则 API 管理会将负载均衡器上的虚拟 IP 配置为后端终结点。
 
 ## <a name="external-deployment"></a>外部部署
 
@@ -31,7 +30,7 @@ ms.locfileid: "108204524"
 
 API 管理具有 Azure 公共 API，建议激活 Azure DDOS 防护服务。 
 
-:::image type="content" source="media/api-management/external-deployment.png" alt-text="外部部署 - Azure VMware 解决方案的 API 管理":::
+:::image type="content" source="media/api-management/api-management-external-deployment.png" alt-text="显示 Azure VMware 解决方案的外部 API 管理部署的示意图" border="false":::
 
 
 ## <a name="internal-deployment"></a>内部部署
@@ -56,4 +55,4 @@ API 管理具有 Azure 公共 API，建议激活 Azure DDOS 防护服务。
 * 外部流量通过应用程序网关进入 Azure，该应用程序网关将外部保护层用于 API 管理。
 
 
-:::image type="content" source="media/api-management/internal-deployment.png" alt-text="内部部署 - Azure VMware 解决方案的 API 管理" lightbox="media/api-management/internal-deployment.png":::
+:::image type="content" source="media/api-management/api-management-internal-deployment.png" alt-text="显示 Azure VMware 解决方案的内部 API 管理部署的示意图" lightbox="media/api-management/api-management-internal-deployment.png" border="false":::

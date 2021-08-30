@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/03/2021
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 98a8a16a4b9cdf40642e5339de63953b4175f78c
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 0d6281f0767938b8ffd00f1790a629adcb8252d6
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558667"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722413"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-azure-certificate-authentication-powershell"></a>使用 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接：PowerShell
 
@@ -114,7 +114,7 @@ $DNS = "10.2.1.4"
 * -GatewayType 必须是 **Vpn**，-VpnType 必须是 **RouteBased**。
 * -VpnClientProtocol 用来指定要启用的隧道的类型。 隧道选项为 OpenVPN、SSTP 和 IKEv2 。 可以选择启用其中之一或任何受支持的组合。 如果要启用多个类型，请以逗号分隔的形式指定名称。 不能同时启用 OpenVPN 和 SSTP。 Android 和 Linux 上的 strongSwan 客户端以及 iOS 和 macOS 上的本机 IKEv2 VPN 客户端仅会使用 IKEv2 隧道进行连接。 Windows 客户端会首先尝试 IKEv2，如果不能连接，则会回退到 SSTP。 可以使用 OpenVPN 客户端连接到 OpenVPN 隧道类型。
 * 虚拟网络网关“基本”SKU 不支持 IKEv2、OpenVPN 或 RADIUS 身份验证。 如果计划让 Mac 客户端连接到虚拟网络，请不要使用基本 SKU。
-* VPN 网关可能需要长达 45 分钟的时间才能完成，具体取决于所选[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md)。 本示例使用 IKEv2。
+* VPN 网关可能需要 45 分钟或更长时间才能完成，具体取决于所选的[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md)。 
 
 1. 为 VNet 配置和创建虚拟网络网关。 创建网关大约需要 45 分钟。
 
@@ -163,7 +163,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
 
 1. 生成客户端证书后，将其[导出](vpn-gateway-certificates-point-to-site.md#clientexport)。 客户端证书将分发到将要连接的客户端计算机。
 
-## <a name="upload-root-certificate-public-key-information"></a><a name="upload"></a>上传根证书公钥信息
+## <a name="upload-root-certificate-public-key-information"></a><a name="upload"></a>上传根证书的公钥信息
 
 验证 VPN 网关是否已创建完毕。 创建完以后，即可为委托给 Azure 的根证书上传 .cer 文件（其中包含公钥信息）。 上传 .cer 文件后，Azure 可以使用该文件对已安装客户端证书（根据可信根证书生成）的客户端进行身份验证。 可在以后根据需要上传更多的可信根证书文件（最多 20 个）。
 
@@ -201,7 +201,7 @@ Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 请
 
 ## <a name="configure-the-vpn-client"></a><a name="clientconfig"></a>配置 VPN 客户端
 
-若要通过 P2S 连接到虚拟网络网关，则每台计算机都使用以本机方式安装为操作系统的一部分的 VPN 客户端。 例如，当你在 Windows 计算机上转到 VPN 设置时，可以添加 VPN 连接而不安装单独的 VPN 客户端。 使用客户端配置包配置每个 VPN 客户端。 客户端配置包包含特定于已创建的 VPN 网关的设置。 
+为了使用 P2S 连接到虚拟网络网关，每台计算机都使用作为操作系统的一部分在本地安装的 VPN 客户端。 例如，在 Windows 计算机上转到 VPN 设置时，可以添加 VPN 连接，而无需安装单独的 VPN 客户端。 使用客户端配置包配置每个 VPN 客户端。 客户端配置包包含特定于创建的 VPN 网关的设置。 
 
 可以使用以下快速示例生成和安装客户端配置包。 有关包内容的详细信息以及有关生成和安装 VPN 客户端配置文件的其他说明，请参阅[创建和安装 VPN 客户端配置文件](point-to-site-vpn-client-configuration-azure-cert.md)。
 

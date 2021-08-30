@@ -9,16 +9,18 @@ ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6a56e0e5f3d344f37b689daa0b9dd9f7d3263523
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: ced9437fbb2a508772b8e22993e0af5bd2b69859
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672846"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595248"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>使用维护控制和 Azure PowerShell 来控制更新
 
 利用维护控制，可以决定何时为隔离的 VM 和 Azure 专用主机的主机基础结构应用平台更新。 本主题介绍维护控制的 Azure PowerShell 选项。 有关使用维护控制的好处、其限制和其他管理选项的详细信息，请参阅[使用维护控制管理平台更新](maintenance-control.md)。
+
+如果正在查找有关规模集维护控制的信息，请参阅[虚拟机规模集的维护控制](virtual-machine-scale-sets-maintenance-control.md)。
  
 ## <a name="enable-the-powershell-module"></a>启用 PowerShell 模块
 
@@ -178,7 +180,7 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>应用更新
 
-使用 [New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) 应用挂起的更新。
+使用 [New-AzApplyUpdate](/powershell/module/az.maintenance/new-azapplyupdate) 应用挂起的更新。 应用更新调用可能需要长达 2 小时才能完成。
 
 ### <a name="isolated-vm"></a>隔离的 VM
 

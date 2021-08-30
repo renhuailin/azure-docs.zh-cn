@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58ef522f5b048db0ef120625d9e894c8e14c070e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d3c159c615d928a8d56d3913c8e1cab846c7580
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724401"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462086"
 ---
 # <a name="resilient-interfaces-with-external-processes"></a>与外部进程建立可复原接口
 
@@ -38,7 +38,7 @@ Identity Experience Framework (IEF) 策略允许你使用 [RESTful API 技术配
 
 - 尽可能从预验证路径中删除 API 调用。 如果不能，则必须在 API 前面设置严格的保护措施，以防拒绝服务 (DoS) 分布式拒绝服务 (DDoS) 攻击。 攻击者可以加载登录页面，试图用 DoS 攻击淹没 API，并使应用程序瘫痪。 例如，通过在登录中使用 CAPTCHA，注册流可以提供帮助。
 
-- 在使用标识提供者登录之后或创建用户之前，尽可能使用[内置注册用户流的 API 连接器](../../active-directory-b2c/api-connectors-overview.md)以与 Web API 集成。 由于用户流已经过广泛测试，因此可能无需执行用户流级别的功能、性能或缩放测试。 你仍需测试应用程序的功能、性能和缩放。
+- 在注册期间与标识提供者进行联合之后或创建用户之前，尽可能使用[内置注册用户流的 API 连接器](../../active-directory-b2c/api-connectors-overview.md)以与 Web API 集成。 由于用户流已经过广泛测试，因此可能无需执行用户流级别的功能、性能或缩放测试。 你仍需测试应用程序的功能、性能和缩放。
 
 - Azure AD RESTFul API [技术配置文件](../../active-directory-b2c/restful-technical-profile.md)不提供任何缓存行为。 相反，RESTFul API 配置文件实现了策略中内置的重试逻辑和超时。
 

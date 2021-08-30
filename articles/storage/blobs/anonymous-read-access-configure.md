@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ba46c98a97b1ef7576cd54ab6227a18bb9cb059f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f8149be4e7e22366cf5d2ce130d3b6ec596ac782
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664924"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272004"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>配置对容器和 blob 的匿名公共读取访问
 
@@ -36,10 +36,10 @@ Azure 存储支持对容器和 blob 进行可选的匿名公共读取访问。 �
 
 下表总结了这两个设置如何共同影响对容器的公共访问。
 
-| 公共访问设置 | 禁用对容器的公共访问（默认设置） | 对容器的公共访问设置为“容器” | 对容器的公共访问设置为“Blob” |
+|   | 容器的公共访问级别设置为“专用”（默认设置） | 容器的公共访问级别设置为“容器” | 容器的公共访问级别设置为“Blob” |
 |--|--|--|--|
-| 禁止对存储帐户进行公共访问 | 不允许对存储帐户中的任何容器进行公共访问。 | 不允许对存储帐户中的任何容器进行公共访问。 存储帐户设置替代容器设置。 | 不允许对存储帐户中的任何容器进行公共访问。 存储帐户设置替代容器设置。 |
-| 允许对存储帐户进行公共访问（默认设置） | 不允许对此容器进行公共访问（默认配置）。 | 允许对此容器及其 blob 进行公共访问。 | 允许对此容器中的 blob 进行公共访问，但不允许对容器本身进行公共访问。 |
+| **禁止对存储帐户进行公共访问** | 不允许对存储帐户中的任何容器进行公共访问。 | 不允许对存储帐户中的任何容器进行公共访问。 存储帐户设置替代容器设置。 | 不允许对存储帐户中的任何容器进行公共访问。 存储帐户设置替代容器设置。 |
+| **允许对存储帐户进行公共访问（默认设置）** | 不允许对此容器进行公共访问（默认配置）。 | 允许对此容器及其 blob 进行公共访问。 | 允许对此容器中的 blob 进行公共访问，但不允许对容器本身进行公共访问。 |
 
 ## <a name="allow-or-disallow-public-read-access-for-a-storage-account"></a>允许或禁止对存储帐户的公共读取访问
 
@@ -79,7 +79,7 @@ $location = "<location>"
 
 # Create a storage account with AllowBlobPublicAccess set to true (or null).
 New-AzStorageAccount -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -Name $accountName `
     -Location $location `
     -SkuName Standard_GRS
     -AllowBlobPublicAccess $false
@@ -89,7 +89,7 @@ New-AzStorageAccount -ResourceGroupName $rgName `
 
 # Set AllowBlobPublicAccess set to false
 Set-AzStorageAccount -ResourceGroupName $rgName `
-    -AccountName $accountName `
+    -Name $accountName `
     -AllowBlobPublicAccess $false
 
 # Read the AllowBlobPublicAccess property.
@@ -209,7 +209,7 @@ az storage account show \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要通过 PowerShell 更新一个或多个容器的公共访问级别，请调用 [Set-AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl) 命令。 通过传入帐户密钥、连接字符串或共享访问签名 (SAS) 来授权此操作。 设置容器的公共访问级别的[设置容器 ACL](/rest/api/storageservices/set-container-acl) 操作不支持使用 Azure AD 进行授权。 有关详细信息，请参阅[调用 blob 和队列数据操作的权限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
+若要通过 PowerShell 更新一个或多个容器的公共访问级别，请调用 [Set-AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl) 命令。 通过传入帐户密钥、连接字符串或共享访问签名 (SAS) 来授权此操作。 设置容器的公共访问级别的[设置容器 ACL](/rest/api/storageservices/set-container-acl) 操作不支持使用 Azure AD 进行授权。 有关详细信息，请参阅[调用 blob 和队列数据操作的权限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-data-operations)。
 
 下面的示例创建一个禁用了公共访问的容器，然后更新该容器的公共访问设置，以允许对容器及其 blob 进行匿名访问。 请记得将括号中的占位符值替换为你自己的值：
 
@@ -240,7 +240,7 @@ Get-AzStorageContainerAcl -Container $containerName -Context $ctx
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要通过 Azure CLI 更新一个或多个容器的公共访问级别，请调用 [az storage container set permission](/cli/azure/storage/container#az_storage_container_set_permission) 命令。 通过传入帐户密钥、连接字符串或共享访问签名 (SAS) 来授权此操作。 设置容器的公共访问级别的[设置容器 ACL](/rest/api/storageservices/set-container-acl) 操作不支持使用 Azure AD 进行授权。 有关详细信息，请参阅[调用 blob 和队列数据操作的权限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
+若要通过 Azure CLI 更新一个或多个容器的公共访问级别，请调用 [az storage container set permission](/cli/azure/storage/container#az_storage_container_set_permission) 命令。 通过传入帐户密钥、连接字符串或共享访问签名 (SAS) 来授权此操作。 设置容器的公共访问级别的[设置容器 ACL](/rest/api/storageservices/set-container-acl) 操作不支持使用 Azure AD 进行授权。 有关详细信息，请参阅[调用 blob 和队列数据操作的权限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-data-operations)。
 
 下面的示例创建一个禁用了公共访问的容器，然后更新该容器的公共访问设置，以允许对容器及其 blob 进行匿名访问。 请记得将括号中的占位符值替换为你自己的值：
 
@@ -301,4 +301,4 @@ Get-AzStorageContainer -Context $ctx | Select Name, PublicAccess
 
 - [阻止对容器和 Blob 的匿名公共读取访问](anonymous-read-access-prevent.md)
 - [通过 .NET 匿名访问公共容器和 Blob](anonymous-read-access-client.md)
-- [授权访问 Azure 存储](../common/storage-auth.md)
+- [授权访问 Azure 存储](../common/authorize-data-access.md)

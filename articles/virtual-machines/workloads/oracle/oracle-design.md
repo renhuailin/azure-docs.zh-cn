@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: kegorman
 ms.reviewer: tigorman
-ms.openlocfilehash: 6e59d0065dfa74979bf3bbc72458bda516e3b641
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28c4e7ce7b6910ec1950350ee301e16fa54d4c02
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669984"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461599"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -49,7 +49,7 @@ ms.locfileid: "101669984"
 | **资源** |专用  |与其他客户端共享|
 | **区域** |数据中心 |[区域对](../../regions.md#region-pairs)|
 | **存储** |SAN/物理磁盘 |[Azure 托管的存储](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-| **缩放** |垂直缩放 |横向缩放|
+| **可伸缩** |垂直缩放 |横向缩放|
 
 
 ### <a name="requirements"></a>要求
@@ -154,7 +154,7 @@ SQL> @$ORACLE_HOME/rdbms/admin/awrrpt.sql;
 - 使用具有[加速网络](../../../virtual-network/create-vm-accelerated-networking-cli.md)的虚拟机实现更好的网络性能。
 - 对于某些 Linux 发行版，请考虑启用 [TRIM/UNMAP 支持](/previous-versions/azure/virtual-machines/linux/configure-lvm#trimunmap-support)。
 - 在单独的虚拟机上安装 [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html)。
-- 默认情况下不会在 Linux 上启用巨页。 请考虑启用巨页并在 Oracle DB 中设置 `use_large_pages = ONLY`。 这可能有助于提高性能。 可在[此处](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到详细信息。
+- 默认情况下不会在 Linux 上启用巨页。 请考虑启用巨页并在 Oracle DB 中设置 `use_large_pages = ONLY`。 这可能有助于提高性能。 有关详细信息，请参阅 [USE_LARGE_PAGES](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)。
 
 ### <a name="disk-types-and-configurations"></a>磁盘类型和配置
 

@@ -9,21 +9,21 @@ author: likebupt
 ms.author: keli19
 ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 374589212b230e6b3ce0abcadbad8aa3eb7271fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01a8ec38ac6a52a2181834c416431c73285ac191
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519977"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581621"
 ---
-# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中执行 Python 机器学习脚本
+# <a name="execute-python-machine-learning-scripts-in-machine-learning-studio-classic"></a>在机器学习工作室（经典）中执行 Python 机器学习脚本
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Python 是许多数据科学家珍藏的一个有用工具。 它可以在典型机器学习工作流的每个阶段（包括数据探索、特征提取、模型训练和验证，以及部署）中使用。
 
-本文介绍如何通过“执行 Python 脚本”模块在 Azure 机器学习工作室（经典版）试验和 Web 服务中使用 Python 代码。
+本文介绍如何通过“执行 Python 脚本”模块在机器学习工作室（经典版）试验和 Web 服务中使用 Python 代码。
 
 ## <a name="using-the-execute-python-script-module"></a>使用“执行 Python 脚本”模块
 
@@ -155,7 +155,7 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 
 ![按评分将特征排名的函数](./media/execute-python-scripts/figure8.png)
 
-以下试验在 Azure 机器学习工作室（经典版）的“Pima Indian Diabetes”数据集中计算并返回特征的重要性评分：
+以下实验则在机器学习工作室（经典版）的“Pima Indian Diabetes”数据集中计算并返回功能的重要性得分：
 
 ![使用 Python 为 Pima Indian Diabetes 数据集中的特征排名的试验](./media/execute-python-scripts/figure9a.png)
 

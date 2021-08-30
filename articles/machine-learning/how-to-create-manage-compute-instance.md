@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 10/02/2020
-ms.openlocfilehash: c678c36ff653d8975f7a0fe1a82395c3093758f6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/06/2021
+ms.openlocfilehash: 0f4ed167fc1fd77e4b16b1f06a5beaa3ba9aef14
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110458545"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122202068"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>创建和管理 Azure 机器学习计算实例
 
@@ -26,11 +26,10 @@ ms.locfileid: "110458545"
 
 在本文中，学习如何：
 
-* 创建计算实例
-* 管理（启动、停止、重启、删除）计算实例
-* 访问终端窗口
-* 安装 R 或 Python 包
-* 创建新环境或 Jupyter 内核
+* [创建](#create)计算实例
+* [管理](#manage)（启动、停止、重启、删除）计算实例
+* [创建计划](#schedule)以自动启动和停止计算实例（预览）
+* [使用安装脚本](#setup-script)自定义和配置计算实例
 
 计算实例可以在[虚拟网络环境](how-to-secure-training-vnet.md)中安全地运行作业，无需企业打开 SSH 端口。 作业在容器化环境中执行，并将模型依赖项打包到 Docker 容器中。
 
@@ -49,11 +48,11 @@ ms.locfileid: "110458545"
 
 **时间估计**：大约 5 分钟。
 
-对于工作区而言，创建计算实例是一次性过程。 可将此计算重复用作开发工作站，或者用作训练的计算目标。 可将多个计算实例附加到工作区。
+对于工作区而言，创建计算实例是一次性过程。 可将此计算重复用作开发工作站，或者用作训练的计算目标。 可将多个计算实例附加到工作区。 
 
-对于每个区域每个虚拟机 (VM) 系列配额和创建计算实例时应用的区域总配额，专用内核数一致，且该数量与 Azure 机器学习训练计算群集配额共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。 请注意，创建计算实例后，不能更改其虚拟机大小。
+对于每个区域每个虚拟机 (VM) 系列配额和创建计算实例时应用的区域总配额，专用内核数一致，且该数量与 Azure 机器学习训练计算群集配额共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。 创建计算实例后，不能更改其虚拟机大小。
 
-以下示例演示如何创建计算实例：
+<a name="create-instance"></a> 以下示例演示如何创建计算实例：
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -98,39 +97,171 @@ except ComputeTargetException:
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ```
 
-有关详细信息，请查看 [az ml computetarget create computeinstance](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_computeinstance) 参考文档。
+有关详细信息，请查看 [az ml computetarget create computeinstance](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_computeinstance) 参考文档。
 
 # <a name="studio"></a>[工作室](#tab/azure-studio)
 
-在 Azure 机器学习工作室的工作区中，当你准备好运行某个笔记本时，请从“计算”部分或“笔记本”部分创建新的计算实例。
+1. 导航到 [Azure 机器学习工作室](https://ml.azure.com)。
+1. 在“管理”下，选择“计算” 。
+1. 在顶部选择“计算实例”。
+1. 如果没有计算实例，请在页面中间选择“创建”。
+  
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="创建计算目标":::
 
-若要了解如何在工作室中创建计算实例，请参阅[在 Azure 机器学习工作室中创建计算目标](how-to-create-attach-compute-studio.md#compute-instance)。
+1. 如果看到计算资源的列表，请选择列表上方的“+ 新建”。
+
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="选择“新建”":::
+1. 填写表单：
+
+    |字段  |说明  |
+    |---------|---------|
+    |计算名称     |  <ul><li>名称是必须提供的，且长度必须介于 3 到 24 个字符之间。</li><li>有效字符为大小写字母、数字和 **-** 字符。</li><li>名称必须以字母开头</li><li>名称必须在 Azure 区域内的全部现有计算中都是唯一的。 如果选择的名称不是唯一的，则会显示警报</li><li>如果在名称中使用了 **-** 字符，在此字符之后必须至少跟有一个字母</li></ul>     |
+    |虚拟机类型 |  选择“CPU”或“GPU”。 此类型在创建后无法更改     |
+    |虚拟机大小     |  在你的区域中，支持的虚拟机大小可能会受到限制。 请查看[可用性列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
+
+1. 除非要为计算实例配置高级设置，否则请选择“创建”。
+1. <a name="advanced-settings"></a> 如果要执行以下操作，请选择“下一步: 高级设置”：
+
+    * 启用 SSH 访问。  按照下面[详细的 SSH 访问说明](#enable-ssh)操作。
+    * 启用虚拟网络。 指定 **资源组**、**虚拟网络** 和 **子网**，以在 Azure 虚拟网络 (vnet) 中创建计算实例。 有关详细信息，请参阅 vnet 的这些[网络要求](./how-to-secure-training-vnet.md)。 
+    * 将计算机分配给其他用户。 有关分配给其他用户的详细信息，请参阅[代表他人创建](#on-behalf)。
+    * 使用安装脚本进行预配（预览）- 若要详细了解如何创建和使用安装脚本，请参阅[使用脚本自定义计算实例](#setup-script)。
+    * 添加计划（预览）。 计划计算实例自动启动和/或关闭的时间。 请参阅下面的[计划详细信息](#schedule)。
 
 ---
 
 还可使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)创建计算实例。
 
+## <a name="enable-ssh-access"></a><a name="enable-ssh"></a> 启用 SSH 访问
 
+默认情况下会禁用 SSH 访问。  创建后不可更改 SSH 访问。 如果计划使用 [VS Code Remote](how-to-set-up-vs-code-remote.md) 以交互式方式进行调试，请确保启用访问权限。  
+
+[!INCLUDE [amlinclude-info](../../includes/machine-learning-enable-ssh.md)]
+
+创建并运行计算实例后，请参阅[使用 SSH 访问进行连接](how-to-create-attach-compute-studio.md#ssh-access)。
 
 ## <a name="create-on-behalf-of-preview"></a><a name="on-behalf"></a> 代表他人创建（预览版）
 
 作为管理员，你可代表数据科学家创建计算实例，并通过以下方式将实例分配给他们：
 
-* [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)。  若要详细了解如何查找此模板中所需的 TenantID 和 ObjectID，请参阅[查找身份验证配置的标识对象 ID](../healthcare-apis/fhir/find-identity-object-ids.md)。  也可在 Azure Active Directory 门户中找到这些值。
+* 工作室，通过使用[高级设置](?tabs=azure-studio#advanced-settings)
+
+* [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)。  若要详细了解如何查找此模板中所需的 TenantID 和 ObjectID，请参阅[查找身份验证配置的标识对象 ID](../healthcare-apis/azure-api-for-fhir/find-identity-object-ids.md)。  也可在 Azure Active Directory 门户中找到这些值。
 
 * REST API
 
 你为其创建计算实例的数据科学家需要拥有针对以下项的 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 权限：
+
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/updateSchedules/action*
 
 数据科学家可启动、停止和重启计算实例。 他们可将计算实例用于：
 * Jupyter
 * JupyterLab
 * RStudio
 * 集成式笔记本
+
+## <a name="schedule-automatic-start-and-stop-preview"></a><a name="schedule"></a> 计划自动启动和停止（预览）
+
+为自动关闭和自动启动定义多个计划。 例如，创建两个计划，一个从周一至周四上午 9 点开始，下午 6 点停止，另一个从周五上午 9 点开始，下午 4 点停止。  每个计算实例总共可以创建四个计划。
+
+还可以为[代表他人创建](#on-behalf)计算实例定义计划。 可以创建计划以创建状态为“已停止”的计算实例。 当用户代表其他用户创建计算实例时，这特别有用。
+
+### <a name="create-a-schedule-in-studio"></a>在工作室中创建计划
+
+1. [填写表单](?tabs=azure-studio#create-instance)。
+1. 在表单的第二页上，打开“显示高级设置”。
+1. 选择“添加计划”以添加新计划。
+
+    :::image type="content" source="media/how-to-create-attach-studio/create-schedule.png" alt-text="屏幕截图：在“高级设置”中添加计划。":::
+
+1. 选择“启动计算实例”或“停止计算实例” 。
+1. 选择“时区”。
+1. 选择“启动时间”或“关闭时间” 。
+1. 选择此计划处于活动状态的天数。
+
+    :::image type="content" source="media/how-to-create-attach-studio/stop-compute-schedule.png" alt-text="屏幕截图：计划要关闭的计算实例。":::
+
+1. 如果要创建其他计划，请再次选择“添加计划”。
+
+创建计算实例后，可以从计算实例详细信息部分查看、编辑或添加新计划。
+
+### <a name="create-a-schedule-with-a-resource-manager-template"></a>使用资源管理器模板创建计划
+
+可以使用资源管理器模板计划计算实例的自动启动和停止。  在资源管理器模板中，使用 cron 或 LogicApps 表达式定义启动或停止实例的计划。  
+
+```json
+"schedules": {
+  "computeStartStop": [
+      {
+      "triggerType": "Cron",
+      "cron": {
+          "startTime": "2021-03-10T21:21:07",
+          "timeZone": "Pacific Standard Time",
+          "expression": "0 18 * * *"
+      },
+      "action": "Stop",
+      "status": "Enabled"
+      },
+      {
+      "triggerType": "Cron",
+      "cron": {
+          "startTime": "2021-03-10T21:21:07",
+          "timeZone": "Pacific Standard Time",
+          "expression": "0 8 * * *"
+      },
+      "action": "Start",
+      "status": "Enabled"
+      },
+      { 
+      "triggerType": "Recurrence", 
+      "recurrence": { 
+          "frequency": "Day", 
+          "interval": 1,
+          "timeZone": "Pacific Standard Time", 
+        "schedule": { 
+          "hours": [18], 
+          "minutes": [0], 
+          "weekDays": [ 
+              "Saturday", 
+              "Sunday"
+          ] 
+          } 
+      }, 
+      "action": "Stop", 
+      "status": "Enabled" 
+      } 
+  ]
+}
+```
+
+* “action”的值可以是“Start”或“Stop”。
+* 对于触发类型 `Recurrence`，使用与逻辑应用相同的语法，及此[定期架构](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger)。
+* 对于触发类型 `cron`，使用标准 cron 语法：  
+
+    ```cron
+    // Crontab expression format: 
+    // 
+    // * * * * * 
+    // - - - - - 
+    // | | | | | 
+    // | | | | +----- day of week (0 - 6) (Sunday=0) 
+    // | | | +------- month (1 - 12) 
+    // | | +--------- day of month (1 - 31) 
+    // | +----------- hour (0 - 23) 
+    // +------------- min (0 - 59) 
+    // 
+    // Star (*) in the value field above means all legal values as in 
+    // braces for that column. The value column can have a * or a list 
+    // of elements separated by commas. An element is either a number in 
+    // the ranges shown above or two numbers in the range separated by a 
+    // hyphen (meaning an inclusive range). 
+    ```
+
+使用 Azure Policy 强制执行订阅中每个计算实例存在的关闭计划，或在不存在任何关闭计划时不执行计划。
 
 ## <a name="customize-the-compute-instance-with-a-script-preview"></a><a name="setup-script"></a> 使用脚本自定义计算实例（预览版）
 
@@ -178,7 +309,7 @@ pip install "$PACKAGE"
 conda deactivate
 EOF
 ```
-请注意，sudo -u azureuser 确实会将当前工作目录更改为 /home/azureuser 。 此外，无法访问此块中的脚本参数。
+命令 sudo -u azureuser 将当前工作目录更改为 /home/azureuser 。 此外，无法访问此块中的脚本参数。
 
 也可以在脚本中使用以下环境变量：
 
@@ -187,6 +318,8 @@ EOF
 3. CI_NAME
 4. CI_LOCAL_UBUNTU_USER. 这会指向 azureuser
 
+可以将安装脚本与 Azure Policy 结合使用，以在每次创建计算实例时强制执行或不执行安装脚本。
+
 ### <a name="use-the-script-in-the-studio"></a>在工作室中使用脚本
 
 存储脚本后，在计算实例的创建过程中指定该脚本：
@@ -194,15 +327,15 @@ EOF
 1. 登录到[工作室](https://ml.azure.com/)并选择你的工作区。
 1. 在左侧选择“计算”。
 1. 选择“+ 新建”以创建新的计算实例。
-1. [填写表单](how-to-create-attach-compute-studio.md#compute-instance)。
-1. 在表单的第二页上，打开“显示高级设置”
-1. 启用“使用安装脚本进行预配”
+1. [填写表单](?tabs=azure-studio#create-instance)。
+1. 在表单的第二页上，打开“显示高级设置”。
+1. 启用“使用安装脚本进行预配”。
 1. 浏览到所保存的 shell 脚本。  或从计算机上传脚本。
 1. 根据需要添加命令参数。
 
 :::image type="content" source="media/how-to-create-manage-compute-instance/setup-script.png" alt-text="在工作室中使用安装脚本预配计算实例。":::
 
-请注意，如果工作区存储已附加到虚拟网络，则除非从虚拟网络内部访问工作室，否则你可能无法访问安装脚本文件。
+如果工作区存储已附加到虚拟网络，则除非从虚拟网络内部访问工作室，否则你可能无法访问安装脚本文件。
 
 ### <a name="use-script-in-a-resource-manager-template"></a>在资源管理器模板中使用脚本
 
@@ -241,12 +374,15 @@ EOF
 
 安装脚本执行的日志显示在计算实例详细信息页的日志文件夹中。 日志将存储回 Logs\<compute instance name> 文件夹下的笔记本文件共享中。 特定计算实例的脚本文件和命令参数显示在详细信息页中。
 
+
 ## <a name="manage"></a>管理
 
-启动、停止、重启和删除计算实例。 计算实例不会自动纵向缩减，因此请确保停止该资源以免产生费用。 停止计算实例会将其解除分配。 然后在需要时重启。 虽然停止计算实例将停止按计算小时数计费，但仍会对磁盘、公共 IP 和标准负载均衡器计费。
+启动、停止、重启和删除计算实例。 计算实例不会自动纵向缩减，因此请确保停止该资源以免产生费用。 停止计算实例会将其解除分配。 然后在需要时重启。 虽然停止计算实例将停止计算时间的计费，但仍会对磁盘、公共 IP 和标准负载均衡器计费。 
+
+你可以为计算实例[创建计划](#schedule)，以基于时间和星期几自动启动和停止。
 
 > [!TIP]
-> 计算实例具有 120GB 的 OS 磁盘。 如果磁盘空间不足，则在停止或重启计算实例之前，[使用终端](how-to-access-terminal.md)可至少清空 1-2 GB 空间。
+> 计算实例具有 120GB 的 OS 磁盘。 如果磁盘空间不足，则在停止或重启计算实例之前，[使用终端](how-to-access-terminal.md)可至少清空 1-2 GB 空间。 请勿通过从终端分发 sudo shutdown 来停止计算实例。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -299,7 +435,7 @@ EOF
     az ml computetarget stop computeinstance -n instance -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget stop computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)。
+    有关详细信息，请参阅 [az ml computetarget stop computeinstance](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)。
 
 * 开始
 
@@ -307,7 +443,7 @@ EOF
     az ml computetarget start computeinstance -n instance -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget start computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)。
+    有关详细信息，请参阅 [az ml computetarget start computeinstance](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)。
 
 * 重启
 
@@ -315,7 +451,7 @@ EOF
     az ml computetarget restart computeinstance -n instance -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget restart computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart)。
+    有关详细信息，请参阅 [az ml computetarget restart computeinstance](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart)。
 
 * Delete
 
@@ -323,9 +459,10 @@ EOF
     az ml computetarget delete -n instance -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget delete computeinstance](/cli/azure/ml/computetarget#az_ml_computetarget_delete)。
+    有关详细信息，请参阅 [az ml computetarget delete computeinstance](/cli/azure/ml(v1)/computetarget#az_ml_computetarget_delete)。
 
 # <a name="studio"></a>[工作室](#tab/azure-studio)
+<a name="schedule"></a>
 
 在 Azure 机器学习工作室中的工作区内选择“计算”，然后在顶部选择“计算实例”。 
 
@@ -335,15 +472,17 @@ EOF
 
 * 新建计算实例
 * 刷新“计算实例”选项卡。
-* 启动、停止和重启计算实例。  只要实例在运行，你就需要为其付费。 不使用计算实例时，请将其停止，以便降低成本。 停止计算实例会将其解除分配。 然后在需要时重启。
+* 启动、停止和重启计算实例。  只要实例在运行，你就需要为其付费。 不使用计算实例时，请将其停止，以便降低成本。 停止计算实例会将其解除分配。 然后在需要时重启。 还可以计划计算实例的启动和停止时间。
 * 删除计算实例。
 * 筛选计算实例列表，以仅显示已创建的实例。
 
 对于你创建的（或为你创建的）工作区中的每个计算实例，你可以：
 
-* 访问计算实例上的 Jupyter、JupyterLab、RStudio
-* 通过 SSH 连接到计算实例。 默认已禁用 SSH 访问，但可以在创建计算实例时启用。 SSH 访问是通过公钥/私钥机制实现的。 选项卡中将提供 IP 地址、用户名和端口号等 SSH 连接详细信息。
-* 获取有关特定计算实例的详细信息，例如 IP 地址和区域。
+* 访问计算实例上的 Jupyter、JupyterLab、RStudio。
+* 通过 SSH 连接到计算实例。 默认已禁用 SSH 访问，但可以在创建计算实例时启用。 SSH 访问是通过公钥/私钥机制实现的。 选项卡中将提供 IP 地址、用户名和端口号等 SSH 连接详细信息。 在虚拟网络部署中，禁用 SSH 会阻止从公共 Internet 进行 SSH 访问，仍可使用计算实例节点的专用 IP 地址和端口 22 从虚拟网络内部进行 SSH 访问。
+* 选择计算名称以：
+    * 查看有关特定计算实例的详细信息，如 IP 地址和区域。
+    * 创建或修改用于启动和停止计算实例的计划（预览）。  向下滚动到页面底部以编辑计划。
 
 ---
 
@@ -356,8 +495,9 @@ EOF
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/updateSchedules/action*
 
-若要创建计算实例，需要具有以下操作的权限：
+若要创建计算实例，需要以下操作的权限：
 * *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
 

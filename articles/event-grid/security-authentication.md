@@ -2,31 +2,41 @@
 title: 对目标为事件处理程序的事件传递进行身份验证（Azure 事件网格）
 description: 本文介绍在 Azure 事件网格中通过不同方式对目标为事件处理程序的传递进行身份验证。
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: 7db258ee152e4b1c46362e74e0246b80513ca9f2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/28/2021
+ms.openlocfilehash: 01383809e6aab895ff4ed42763c57004a6ee02a8
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777250"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003226"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>对目标为事件处理程序的事件传递进行身份验证（Azure 事件网格）
-本文介绍如何对目标为事件处理程序的事件传递进行身份验证。 本文还介绍如何使用 Azure Active Directory (Azure AD) 或共享机密保护用于从事件网格接收事件的 Webhook 终结点。
+本文介绍如何对目标为事件处理程序的事件传递进行身份验证。 
+
+## <a name="overview"></a>概述
+Azure 事件网格使用不同的身份验证方法将事件传递给事件处理程序。 `
+
+| 身份验证方法 | 支持的处理程序 | 说明  |
+|--|--|--|
+访问密钥 | <p>事件中心</p><p>服务总线</p><p>存储队列</p><p>中继混合连接</p><p>Azure Functions</p><p>存储 Blob（死信）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> | 使用事件网格服务主体的凭据提取访问密钥。 在事件网格的 Azure 订阅中注册事件网格资源提供程序时，会向事件网格授予权限。 |  
+托管系统标识 <br/>&<br/> 基于角色的访问控制 | <p>事件中心</p><p>服务总线</p><p>存储队列</p><p>存储 Blob（死信）</p></li></ul> | 为主题启用托管系统标识，并将其添加到目标上的相应角色。 有关详细信息，请参阅[使用系统分配的标识进行事件传递](#use-system-assigned-identities-for-event-delivery)。  |
+|使用 Azure AD 保护的 Webhook 进行持有者令牌身份验证 | Webhook | 有关详细信息，请参阅[对 Webhook 终结点的事件传递进行身份验证](#authenticate-event-delivery-to-webhook-endpoints)部分。 |
+客户端密码作为查询参数 | Webhook | 有关详细信息，请参阅[使用客户端密码作为查询参数](#using-client-secret-as-a-query-parameter)部分。 |
 
 ## <a name="use-system-assigned-identities-for-event-delivery"></a>使用系统分配的标识进行事件传递
 可以为主题或域启用系统分配的托管标识，并使用该标识将事件转发到支持的目标，如服务总线队列和主题、事件中心和存储帐户。
 
 步骤如下： 
 
-1. 使用系统分配的标识创建主题或域，或者更新现有主题或域以启用标识。 
-1. 在目标（例如，服务总线队列）上将标识添加到相应角色（例如，服务总线数据发送方）。
-1. 创建事件订阅时，请允许使用标识将事件传递到目标。 
+1. 使用系统分配的标识创建主题或域，或者更新现有主题或域以启用标识。 有关详细信息，请参阅[针对系统主题启用托管标识](enable-identity-system-topics.md)或[针对自定义主题或域启用托管标识](enable-identity-custom-topics-domains.md)
+1. 在目标（例如，服务总线队列）上将标识添加到相应角色（例如，服务总线数据发送方）。 有关详细步骤，请参阅[授予标识对事件网格目标的访问权限](add-identity-roles.md)
+1. 创建事件订阅时，请允许使用标识将事件传递到目标。 有关详细信息，请参阅[创建使用标识的事件订阅](managed-service-identity.md)。 
 
 有关详细的分步说明，请参阅[使用托管标识传递事件](managed-service-identity.md)。
 
 
 ## <a name="authenticate-event-delivery-to-webhook-endpoints"></a>对 Webhook 终结点的事件传递进行身份验证
-下面各部分介绍了如何对 Webhook 终结点的事件传递进行身份验证。 无论使用何种方法，都需要使用验证握手机制。 有关详细信息，请参阅 [Webhook 事件传递](webhook-event-delivery.md)。 
+下面各部分介绍了如何对 Webhook 终结点的事件传递进行身份验证。 无论使用何种方法，都请使用验证握手机制。 有关详细信息，请参阅 [Webhook 事件传递](webhook-event-delivery.md)。 
 
 
 ### <a name="using-azure-active-directory-azure-ad"></a>使用 Azure Active Directory (Azure AD)

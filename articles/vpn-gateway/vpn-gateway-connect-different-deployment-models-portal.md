@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ddf94f100503a5571e8ab23c28347480872b97bb
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: b50fd13be06e3186e3ce3d3fc90bd60bf6d6e474
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110678693"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729581"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>通过门户从不同部署模型中连接虚拟网络
 
@@ -222,7 +222,7 @@ SKU = VpnGw1 <br>
 
 ### <a name="1-connect-to-your-azure-account"></a>1.连接到 Azure 帐户
 
-使用提升的权限打开 PowerShell 控制台并登录 Azure 帐户。 登录后将下载帐户设置，以便 Azure PowerShell 使用这些设置。 以下 cmdlet 会提示为资源管理器部署模型提供 Azure 帐户的登录凭据：
+使用提升的权限打开 PowerShell 控制台并登录 Azure 帐户。 登录后将下载帐户设置，以便 Azure PowerShell 使用这些设置。 以下 cmdlet 会提示为[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)提供 Azure 帐户的登录凭据：
 
 ```powershell
 Connect-AzAccount

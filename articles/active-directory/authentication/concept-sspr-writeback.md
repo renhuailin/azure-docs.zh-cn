@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 07/28/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b8f1404e95ed2ccceb8400fdabeff2d60b6706
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f27cee969d666d8605c0c87552eed1f305e1e4c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766108"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744187"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>自助式密码重置写回在 Azure Active Directory 中的工作原理。
 
@@ -58,7 +58,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 允许用户在�
    * 如果写回服务已关闭，则告知用户暂不能重置密码。
 1. 接下来，用户通过相应的身份验证入口，到达“重置密码”页。
 1. 用户选择一个新密码并进行确认。
-1. 如果用户选择“提交”，则使用写回设置过程中创建的对称密钥来加密纯文本密码。
+1. 如果用户选择“提交”，则使用写回设置过程中创建的公钥来加密纯文本密码。
 1. 加密的密码将包含在一个有效负载中，该负载通过 HTTPS 通道发送到租户特定的服务总线中继（已在写回设置过程中设置此中继）。 此中继受随机生成的密码保护，只有本地安装知道该密码。
 1. 在消息到达服务总线后，密码重置终结点便自动唤醒，并看到有待处理的重置请求。
 1. 然后，服务使用云定位点属性查找用户。 若要成功完成此查找，必须符合以下条件：

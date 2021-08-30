@@ -3,42 +3,37 @@ title: 使用 Blob 索引标记管理和查找 Azure Blob 存储上的数据
 description: 查看相关示例，了解如何使用 Blob 索引标记对 Blob 对象进行分类、管理和查询。
 author: normesta
 ms.author: normesta
-ms.date: 03/05/2021
+ms.date: 06/14/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 423cc6f1adffc305b5a79ecb84f4e736926ce343
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 0814f2896ec429650668a08590ffe7165fb120a3
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653981"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282018"
 ---
-# <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>使用 Blob 索引标记（预览版）管理和查找 Azure Blob 存储上的数据
+# <a name="use-blob-index-tags-to-manage-and-find-data-on-azure-blob-storage"></a>使用 Blob 索引标记管理和查找 Azure Blob 存储上的数据
 
 Blob 索引标记使用键值标记属性对存储帐户中的数据进行分类。 这些标记会自动索引，并作为可搜索的多维索引公开，便于你轻松查找数据。 本文介绍了如何使用 blob 索引标记来设置、获取和查找数据。
 
-> [!IMPORTANT]
-> Blob 索引标记目前为预览版，并在所有公共区域提供。 有关 beta 版本、预览版或尚未正式发布的版本的 Azure 功能所适用的法律条款，请查看 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-若要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引标记（预览版）管理和查找 Azure Blob 数据](storage-manage-find-blobs.md)。
+要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引标记管理和查找 Azure Blob 数据](storage-manage-find-blobs.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-- 一个已注册且已获准可访问 Blob 索引预览版的 Azure 订阅
+- 已注册且获准可访问的 Azure 订阅
 - 可访问对 [Azure 门户](https://portal.azure.com/)
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
-Blob 索引现为预览版，因此将在预览版 NuGet 源中发布 .NET 存储包。 此库在预览版期间可能会更改。
-
 1. 设置 Visual Studio 项目，开始使用适用于 .NET 的 Azure Blob 存储客户端库 v12。 若要了解详细信息，请参阅 [.NET 快速入门](storage-quickstart-blobs-dotnet.md)
 
-2. 在 NuGet 包管理器中查找 Azure.Storage.Blobs 包，并将 12.7.0-preview.1 版本或更新版本安装到你的项目 。 还可运行 PowerShell 命令：`Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1`
+2. 在 NuGet 包管理器中，查找 Azure.Storage.Blobs 包，并将 12.7.0 版本或更新版本安装到你的项目 。 还可运行 PowerShell 命令：`Install-Package Azure.Storage.Blobs -Version 12.7.0`
 
    若要了解如何操作，请参阅[查找并安装包](/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
 
@@ -62,17 +57,17 @@ Blob 索引现为预览版，因此将在预览版 NuGet 源中发布 .NET 存�
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择你的存储帐户 
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择你的存储帐户。 
 
-2. 导航到“Blob 服务”下的“容器”选项，选择你的容器 
+2. 导航到“数据存储”下的“容器”选项，然后选择你的容器 。
 
 3. 选择“上传”按钮，并浏览本地文件系统，找到要作为块 blob 上传的文件。
 
-4. 展开“高级”下拉列表，并转到“Blob 索引标记”部分
+4. 展开“高级”下拉列表，然后转到“Blob 索引标记”部分 。
 
-5. 输入要应用于数据的键/值 blob 索引标记
+5. 输入要应用于数据的键/值 Blob 索引标记。
 
-6. 选择“上传”按钮以上传 Blob
+6. 选择“上传”按钮以上传 Blob。 
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png" alt-text="Azure 门户的屏幕截图，其中显示如何通过索引标记上传 Blob。":::
 
@@ -122,17 +117,17 @@ static async Task BlobIndexTagsOnCreate()
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择你的存储帐户 
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择你的存储帐户。
 
-2. 导航到“Blob 服务”下的“容器”选项，选择你的容器
+2. 导航到“数据存储”下的“容器”选项，选择你的容器 。
 
-3. 从所选容器的 Blob 列表中选择你的 Blob
+3. 从所选容器的 Blob 列表中选择你的 Blob。
 
-4. Blob 概览选项卡会显示 blob 的属性，包括任何 **Blob 索引标记**
+4. Blob 概览选项卡将显示 Blob 的属性，包括任何“Blob 索引标记”。
 
-5. 可以获取、设置、修改或删除 blob 的任何键/值索引标记
+5. 可以获取、设置、修改或删除 Blob 的任何键/值索引标记。
 
-6. 选择“保存”按钮以确认对 blob 所做的任何更新
+6. 选择“保存”按钮以确认对 Blob 所做的任何更新。
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Azure 门户的屏幕截图，其中显示如何获取、设置、更新和删除 Blob 上的索引标记。":::
 
@@ -203,13 +198,13 @@ static async Task BlobIndexTagsExample()
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择存储帐户。 
 
-2. 导航到“Blob 服务”下的“容器”选项，选择你的容器 
+2. 导航到“数据存储”下的“容器”选项，选择你的容器 。
 
-3. 选择“Blob 索引标记筛选器”按钮，在所选容器内进行筛选
+3. 选择“Blob 索引标记筛选器”按钮，在所选容器内进行筛选。
 
-4. 输入 Blob 索引标记键和标记值
+4. 输入 Blob 索引标记键和标记值。
 
-5. 选择“Blob 索引标记筛选器”按钮，以便添加更多标记筛选器（最多 10 个）
+5. 选择“Blob 索引标记筛选器”按钮，以添加更多标记筛选器（最多 10 个）。
 
 :::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Azure 门户的屏幕截图，其中显示如何使用索引标记筛选和查找带标记的 Blob":::
 
@@ -321,5 +316,5 @@ static async Task FindBlobsByTagsExample()
 
 ## <a name="next-steps"></a>后续步骤
 
- - 有关 Blob 索引标记的详细信息，请参阅[通过 Blob 索引标记（预览版）管理和查找 Azure Blob 数据](storage-manage-find-blobs.md )
+ - 有关 Blob 索引标记的详细信息，请参阅[通过 Blob 索引标记管理和查找 Azure Blob 数据](storage-manage-find-blobs.md )
  - 有关生命周期管理的详细信息，请参阅[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)

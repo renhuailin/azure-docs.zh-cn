@@ -8,22 +8,19 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/14/2020
-ms.openlocfilehash: d764c6b6cff6a0ba23d659d4fda63e21aac9b155
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 07/30/2021
+ms.openlocfilehash: 738338c4f3931e97965e697ca1bf316018a495c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644182"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735591"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Azure SQL 的 Azure Active Directory 中的目录读取者角色
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-> [!NOTE]
-> 本文中的此功能为公共预览版。
-
-Azure Active Directory (Azure AD) 推出了[使用云组来管理 Azure Active Directory 中的角色分配（预览版）](../../active-directory/roles/groups-concept.md)。 这可以实现向组分配 Azure AD 角色。
+Azure Active Directory (Azure AD) 推出了[使用 Azure AD 组来管理角色分配](../../active-directory/roles/groups-concept.md)的功能。 这可以实现向组分配 Azure AD 角色。
 
 为 Azure SQL 数据库、Azure SQL 托管实例或 Azure Synapse Analytics 启用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)时，必须向标识分配 Azure AD [目录读取者](../../active-directory/roles/permissions-reference.md#directory-readers)角色，以实现对 [Azure AD 图形 API](/graph/migrate-azure-ad-graph-planning-checklist) 的读取访问。 SQL 数据库和 Azure Synapse 的托管标识称为服务器标识。 SQL 托管实例的托管标识称为托管实例标识，在创建实例时会自动分配。 有关向 SQL 数据库或 Azure Synapse 分配服务器标识的详细信息，请参阅[启用服务主体以创建 Azure AD 用户](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users)。
 
@@ -45,7 +42,7 @@ Azure Active Directory (Azure AD) 推出了[使用云组来管理 Azure Active D
 
 ## <a name="granting-the-directory-readers-role-to-an-azure-ad-group"></a>向 Azure AD 组授予目录读取者角色
 
-目前在公共预览版中，你可以让[全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)创建一个 Azure AD 组，并为该组分配[目录读取者](../../active-directory/roles/permissions-reference.md#directory-readers)权限 。 这将允许该组的成员访问 Azure AD 图形 API。 此外，作为该组所有者的 Azure AD 用户可以为该组分配新成员，包括 Azure SQL 逻辑服务器的标识。
+可以让[全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator)或[特权角色管理员](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)创建一个 Azure AD 组，并为该组分配[目录读取者](../../active-directory/roles/permissions-reference.md#directory-readers)权限。 这将允许该组的成员访问 Azure AD 图形 API。 此外，作为该组所有者的 Azure AD 用户可以为该组分配新成员，包括 Azure SQL 逻辑服务器的标识。
 
 此解决方案仍要求高特权用户（全局管理员或特权角色管理员）一次性创建组和分配用户，但 Azure AD 组所有者能够在以后分配其他成员。 这样，以后就不必需要高特权用户在其 Azure AD 租户中配置所有 SQL 数据库、SQL 托管实例或 Azure Synapse 服务器。
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/27/2021
+ms.date: 07/01/2021
 ms.author: b-juche
-ms.openlocfilehash: cb53bad331e511ea2daacc2a0fbc9c178a193a2f
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 326a0a43d8571c0acecbbffadf1ab21b267798a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110655129"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743788"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文提供了使用 Azure NetApp 文件的解决方案体系结构最佳做法的参考，帮助你更好地理解这个体系结构。  
@@ -34,7 +34,7 @@ ms.locfileid: "110655129"
 
 ### <a name="oracle"></a>Oracle
 
-* [使用 Azure NetApp 文件的 Azure 上的 Oracle 部署最佳做法指南](https://www.netapp.com/us/media/tr-4780.pdf)
+* [使用 Azure NetApp 文件的 Microsoft Azure 上的 Oracle 数据库](https://www.netapp.com/media/17105-tr4780.pdf)
 * [Microsoft Azure 上的 Oracle VM 映像及其部署：共享存储配置选项](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [Azure NetApp 文件单卷上的 Oracle 数据库性能](performance-oracle-single-volumes.md)
 * [将 Azure NetApp 文件与 Oracle Database 配合使用的好处](solutions-benefits-azure-netapp-files-oracle-database.md)
@@ -116,14 +116,19 @@ ms.locfileid: "110655129"
 
 本部分提供有关虚拟桌面基础结构解决方案的参考。
 
-### <a name="windows-virtual-desktop"></a>Windows 虚拟桌面
+### <a name="azure-virtual-desktop"></a><a name="windows-virtual-desktop"></a>Azure 虚拟桌面
 
-* [将 Azure NetApp 文件与 Windows 虚拟桌面配合使用的好处](solutions-windows-virtual-desktop.md)
-* [Windows 虚拟桌面中 FSLogix 配置文件容器的存储选项](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)
+* [将 Azure NetApp 文件与 Azure 虚拟桌面配合使用的好处](solutions-windows-virtual-desktop.md)
+* [Azure 虚拟桌面中 FSLogix 配置文件容器的存储选项](../virtual-desktop/store-fslogix-profile.md#azure-platform-details)
 * [使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器](../virtual-desktop/create-fslogix-profile-container.md)
-* [企业级 Windows 虚拟桌面](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
+* [企业级 Azure 虚拟桌面](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 * [适用于企业的 Microsoft FSLogix - Azure NetApp 文件最佳做法](/azure/architecture/example-scenario/wvd/windows-virtual-desktop-fslogix#azure-netapp-files-best-practices)
 * [设置用于 MSIX 应用附加的 Azure NetApp 文件](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/setting-up-azure-netapp-files-for-msix-app-attach-step-by-step/m-p/1990021)
+
+### <a name="citrix"></a>Citrix   
+
+* [通过 Azure NetApp 文件进行 Citrix 配置文件管理的最佳做法指南](https://www.netapp.com/pdf.html?item=/media/55973-tr-4901.pdf)
+
 
 ## <a name="hpc-solutions"></a>HPC 解决方案
 
@@ -151,6 +156,7 @@ ms.locfileid: "110655129"
 * [Azure NetApp 文件：在 Microsoft Azure 上将共享文件系统与 SAS 网格配合使用](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
 * [Azure NetApp 文件：在 MS Azure 上将共享文件系统与 SAS 网格配合使用 - RHEL8.3/nconnect 更新](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/722261#M21648)
 * [将 Microsoft Azure 与 SAS® 配合使用的最佳做法](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
+* [Azure 上的 SAS 体系结构指南 - Azure 体系结构中心 | Azure NetApp 文件](/azure/architecture/guide/sas/sas-overview#azure-netapp-files-nfs)
 
 ## <a name="azure-platform-services-solutions"></a>Azure 平台服务解决方案
 
@@ -158,6 +164,7 @@ ms.locfileid: "110655129"
 
 ### <a name="azure-kubernetes-services-and-kubernetes"></a>Azure Kubernetes 服务与 Kubernetes
 
+* [Astra：保护、恢复和管理 Azure NetApp 文件上的 AKS 工作负载](https://cloud.netapp.com/hubfs/Astra%20Azure%20Documentation.pdf) 
 * [将 Azure NetApp 文件与 Azure Kubernetes 服务集成](../aks/azure-netapp-files.md)
 * [使用 Azure NetApp 文件在 Azure 上实现卓越的 Kubernetes 性能](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
 * [Azure NetApp 文件 + Trident = 用于 Kubernetes 的动态和持久存储](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/)

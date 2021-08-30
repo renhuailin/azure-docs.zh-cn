@@ -7,12 +7,12 @@ ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b380e9501ebed8f2830c09ddb00d40467b9b22a1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d667b2429c7911353df98795f7116d47f8f15d8a
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735158"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397429"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上使用 TPM 创建和预配 IoT Edge 设备
 
@@ -270,49 +270,45 @@ IoT Edge 运行时需要访问 TPM 以自动预配设备。
 
 通过覆盖系统设置可以授予 IoT Edge 运行时对 TPM 的访问权限，以便 `iotedge` 服务获得根特权。 如果不想提升服务权限，也可以使用以下步骤手动提供 TPM 访问权限。
 
-1. 在设备上找到 TPM 硬件模块的文件路径，并将其保存为本地变量。
-
-   ```bash
-   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
-   ```
-
-2. 创建一条新规则，用于向 IoT Edge 运行时授予 tpm0 的访问权限。
+1. 创建一个新规则，用于向 IoT Edge 运行时授予对 tpm0 和 tpmrm0 的访问权限。 
 
    ```bash
    sudo touch /etc/udev/rules.d/tpmaccess.rules
    ```
 
-3. 打开 rules 文件。
+2. 打开 rules 文件。
 
    ```bash
    sudo nano /etc/udev/rules.d/tpmaccess.rules
    ```
 
-4. 将以下访问信息复制到 rules 文件。
+3. 将以下访问信息复制到 rules 文件。 在使用的内核低于 4.12 的设备上，`tpmrm0` 可能不存在。 没有 tpmrm0 的设备可以安全地忽略该规则。
 
    ```input
    # allow iotedge access to tpm0
    KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="iotedge", MODE="0600"
+   KERNEL=="tpmrm0", SUBSYSTEM=="tpmrm", OWNER="iotedge", MODE="0600"
    ```
 
-5. 保存并退出该文件。
+4. 保存并退出该文件。
 
-6. 触发 udev 系统来评估新规则。
+5. 触发 udev 系统来评估新规则。
 
    ```bash
-   /bin/udevadm trigger $tpm
+   /bin/udevadm trigger --subsystem-match=tpm --subsystem-match=tpmrm
    ```
 
-7. 验证是否已成功应用该规则。
+6. 验证是否已成功应用该规则。
 
    ```bash
-   ls -l /dev/tpm0
+   ls -l /dev/tpm*
    ```
 
    成功的输出如下所示：
 
    ```output
-   crw-rw---- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
+   crw------- 1 iotedge root 10, 224 Jul 20 16:27 /dev/tpm0
+   crw------- 1 iotedge root 10, 224 Jul 20 16:27 /dev/tpmrm0
    ```
 
    如果未看到应用了正确的权限，请尝试重新启动计算机来刷新 udev。
@@ -325,52 +321,48 @@ IoT Edge 运行时依赖于 TPM 服务，该服务是对设备 TPM 的访问的�
 
 通过覆盖系统设置可以授予对 TPM 的访问权限，以便 `aziottpm` 服务获得根特权。 如果不想提升服务权限，也可以使用以下步骤手动提供 TPM 访问权限。
 
-1. 在设备上找到 TPM 硬件模块的文件路径，并将其保存为本地变量。
-
-   ```bash
-   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
-   ```
-
-2. 创建一条新规则，用于向 IoT Edge 运行时授予 tpm0 的访问权限。
+1. 创建一个新规则，用于向 IoT Edge 运行时授予对 tpm0 和 tpmrm0 的访问权限。 
 
    ```bash
    sudo touch /etc/udev/rules.d/tpmaccess.rules
    ```
 
-3. 打开 rules 文件。
+2. 打开 rules 文件。
 
    ```bash
    sudo nano /etc/udev/rules.d/tpmaccess.rules
    ```
 
-4. 将以下访问信息复制到 rules 文件。
+3. 将以下访问信息复制到 rules 文件。 在使用的内核低于 4.12 的设备上，`tpmrm0` 可能不存在。 没有 tpmrm0 的设备可以安全地忽略该规则。
 
    ```input
-   # allow aziottpm access to tpm0
-   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0600"
+   # allow aziottpm access to tpm0 and tpmrm0
+   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0660"
+   KERNEL=="tpmrm0", SUBSYSTEM=="tpmrm", OWNER="aziottpm", MODE="0660"
    ```
 
-5. 保存并退出该文件。
+4. 保存并退出该文件。
 
-6. 触发 udev 系统来评估新规则。
+5. 触发 udev 系统来评估新规则。
 
    ```bash
-   /bin/udevadm trigger $tpm
+   /bin/udevadm trigger --subsystem-match=tpm --subsystem-match=tpmrm
    ```
 
-7. 验证是否已成功应用该规则。
+6. 验证是否已成功应用该规则。
 
    ```bash
-   ls -l /dev/tpm0
+   ls -l /dev/tpm*
    ```
 
    成功的输出如下所示：
 
    ```output
-   crw-rw---- 1 root aziottpm 10, 224 Jul 20 16:27 /dev/tpm0
+   crw-rw---- 1 aziottpm root 10, 224 Jul 20 16:27 /dev/tpm0
+   crw-rw---- 1 aziottpm root 10, 224 Jul 20 16:27 /dev/tpmrm0
    ```
 
-   如果未看到应用了正确的权限，请尝试重新启动计算机来刷新 udev。
+   如果未看到应用了正确的权限，请尝试重新启动计算机来刷新 udev。 
 :::moniker-end
 <!-- end 1.2 -->
 

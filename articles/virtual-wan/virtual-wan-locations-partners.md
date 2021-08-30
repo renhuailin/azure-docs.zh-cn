@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: references_regions
-ms.openlocfilehash: bdcb675e379b5ab94f8404966477f4d2df56400c
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: d861a5c820c38eb5e0e8ea8f777e9346871ce658
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163924"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579461"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置
 
@@ -60,7 +60,7 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 |合作伙伴|配置/操作方法/部署指南|
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barracuda CloudGen WAN 部署指南](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
-|[Cisco 云服务路由器 (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| 在将 Cisco 云服务 (CSR) WAN 公开预览版发布到 VWAN 中心期间，Cisco 要求最终客户向 vwan_public_preview@external.cisco.com 发送电子邮件并请求“vManage 部署指南”，通过这种方式注册为 Cisco EFT（早期现场试用）客户。 
+|[Cisco 云服务路由器 (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco SD-WAN 解决方案与 Azure 虚拟 WAN 的集成增强了 Cloud OnRamp 以进行多云部署，并支持将 Cisco Catalyst 8000V Edge 软件 (Cisco Catalyst 8000V) 配置为 Azure 虚拟 WAN 中心内的网络虚拟设备 (NVA)。 [查看 Cisco SD-WAN Cloud OnRamp、Cisco IOS XE 版本 17.x 配置指南](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) 
 |[虚拟 WAN 中心内的 VMware SD-WAN](https://sdwan.vmware.com/partners/microsoft) | 在 VMware SD-WAN 到 VWAN 中心的公共预览版期间，VMware 要求客户通过向 vhubsupport@vmware.com 发送电子邮件来进行注册。 [虚拟 WAN 中心内的 VMware SD-WAN 部署指南](https://kb.vmware.com/s/article/82746)|
 
 以下合作伙伴计划会在不久的将来将 NVA 引入虚拟中心产品/服务：Aviatrix、Citrix 和 Versa Networks。

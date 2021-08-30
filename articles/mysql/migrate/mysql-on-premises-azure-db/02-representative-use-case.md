@@ -1,5 +1,5 @@
 ---
-title: 从本地 MySQL 到 Azure Database for MySQL 的迁移指南 - 代表性用例
+title: 将本地 MySQL 迁移到 Azure Database for MySQL：代表性用例
 description: 以下用例基于将 MySQL 工作负载迁移到 Azure Database for MySQL 的企业的真实客户场景。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: 9d1a6b4d5e4fa9f3c05219f40b2852eed44aaa37
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 508e27006c96003bd4c2825c9987761f83358f0d
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082615"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085067"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-representative-use-case"></a>从本地 MySQL 到 Azure Database for MySQL 的迁移指南 - 代表性用例
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-representative-use-case"></a>将本地 MySQL 迁移到 Azure Database for MySQL：代表性用例
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -53,15 +55,17 @@ WWI 使用[云采用框架 (CAF)](/azure/cloud-adoption-framework/) 来指导他
 
 | 阶段 | 名称 | 活动 |
 |-------|------|------------|
-| 1 | 迁移前  | 评估、计划、迁移方法评估、应用程序影响、Test Plans、性能基线 |
-| 2 | 迁移      | 执行迁移、执行 Test Plans                                                                          |
-| 3 | 迁移后 | 业务连续性、灾难恢复、管理、安全性、性能优化、平台现代化 |
+| 1 | 迁移前 | 评估、计划、迁移方法评估、应用程序影响、Test Plans、性能基线 |
+| 2 | 迁移     | 执行迁移、执行 Test Plans                                                                          |
+| 3 | 迁移后| 业务连续性、灾难恢复、管理、安全性、性能优化、平台现代化 |
 
 WWI 有多个 MySQL 实例运行，版本从 5.5 到 5.7 不等。 他们希望尽快将他们的实例转换为最新版本，但希望确保他们的应用程序在转换为新版本后仍能正常工作。 他们可以接受迁移到云中的相同版本并在之后升级，但如果可以一次性完成两项任务，他们更愿意采用这种方式。
 
 他们还希望确保在出现故障时，数据工作负载在多个地理区域是安全且可用的，并查看可用的配置选项。
 
 WWI 希望从一个简单的应用程序开始进行第一次迁移，然后在后续阶段迁移更关键的业务应用程序。 这将为团队提供准备和规划那些未来迁移所需的知识和经验。  
+
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [评估](./03-assessment.md)

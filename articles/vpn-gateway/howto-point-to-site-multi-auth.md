@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 07/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8141d44aa4da394726d8c45a1f8514bdcaac09aa
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: f3a19958770e157ed31dc3104331bcf5f860041d
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229371"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719588"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-multiple-authentication-types-azure-portal"></a>使用多个身份验证类型配置与 VNet 的点到站点 VPN 连接：Azure 门户
 
@@ -41,7 +41,8 @@ ms.locfileid: "108229371"
 * **资源组：** TestRG1
 * **位置：** 美国东部
 * **网关子网：** 10.1.255.0/27<br>
-* 虚拟网关名称：VNet1GW
+* SKU：VpnGw2
+* 代系：第 2 代
 * **网关类型：** VPN
 * **VPN 类型：** 基于路由
 * 公共 IP 地址名称：VNet1GWpip
@@ -66,7 +67,12 @@ ms.locfileid: "108229371"
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
-[!INCLUDE [Create a gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+可以在网关的“概述”页上查看部署状态。 网关通常可能需要 45 分钟或更长时间才能完全创建和部署。 创建网关后，可以通过在门户中查看虚拟网络，来查看已分配给网关的 IP 地址。 网关显示为连接的设备。
+
+[!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="client-address-pool"></a><a name="addresspool"></a>客户端地址池
 
@@ -105,7 +111,7 @@ ms.locfileid: "108229371"
 
 * [Azure 证书](vpn-gateway-howto-point-to-site-resource-manager-portal.md#type)
 * [RADIUS](point-to-site-how-to-radius-ps.md)
-* Azure Active Directory
+* [Azure Active Directory](openvpn-azure-ad-tenant.md)
 
 ## <a name="vpn-client-configuration-package"></a><a name="clientconfig"></a>VPN 客户端配置包
 
