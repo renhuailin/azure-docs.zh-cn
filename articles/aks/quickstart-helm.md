@@ -4,14 +4,14 @@ description: 结合使用 Helm 与 AKS 和 Azure 容器注册表，打包和运�
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 03/15/2021
+ms.date: 07/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: 248b91be60f4da3ce7dd10212a9db69377651ccb
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cc060b0b23cbcef0551ec2660856d453b8a3b0e2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071535"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114454141"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入门：使用 Helm 在 Azure Kubernetes 服务 (AKS) 上进行开发
 
@@ -88,30 +88,11 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelm
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 
-本快速入门使用[一个示例 Node.js 应用程序][example-nodejs]。 从 GitHub 克隆该应用程序，然后导航到 `dev-spaces/samples/nodejs/getting-started/webfrontend` 目录。
+本快速入门使用 [Azure Vote 应用程序][azure-vote-app]。 从 GitHub 克隆该应用程序，然后导航到 `azure-vote` 目录。
 
 ```console
-git clone https://github.com/Azure/dev-spaces
-cd dev-spaces/samples/nodejs/getting-started/webfrontend
-```
-
-## <a name="create-a-dockerfile"></a>创建 Dockerfile
-
-使用以下命令创建新的 Dockerfile 文件：
-
-```dockerfile
-FROM node:latest
-
-WORKDIR /webfrontend
-
-COPY package.json ./
-
-RUN npm install
-
-COPY . .
-
-EXPOSE 80
-CMD ["node","server.js"]
+git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
+cd azure-voting-app-redis/azure-vote/
 ```
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>生成并将示例应用程序推送到 ACR
@@ -119,36 +100,75 @@ CMD ["node","server.js"]
 使用前面的 Dockerfile，运行 [az acr build][az-acr-build] 命令来生成映像并将该映像推送到注册表。 命令末尾处的 `.` 设置 Dockerfile 的位置（在本例中为当前目录）。
 
 ```azurecli
-az acr build --image webfrontend:v1 \
+az acr build --image azure-vote-front:v1 \
   --registry MyHelmACR \
   --file Dockerfile .
 ```
+
+> [!NOTE]
+> 除了将容器映像导入 ACR 之外，还可以将 Helm 图表导入 ACR。 有关详细信息，请参阅[将 Helm 图表推送和提取到 Azure 容器注册表][acr-helm]。
 
 ## <a name="create-your-helm-chart"></a>创建 Helm 图表
 
 使用 `helm create` 命令生成 Helm 图表。
 
 ```console
-helm create webfrontend
+helm create azure-vote-front
 ```
 
-更新 webfrontend/values.yaml：
-* 替换前面步骤中记下的注册表的 loginServer，如 myhelmacr.azurecr.io。
-* 将 `image.repository` 更改为 `<loginServer>/webfrontend`
-* 将 `service.type` 更改为 `LoadBalancer`
+更新 azure-vote-front/Chart.yaml，为 `https://charts.bitnami.com/bitnami` 图表存储库中的 redis 图表添加依赖项，并将 `appVersion` 更新为 `v1` 。 例如：
+
+```yml
+apiVersion: v2
+name: azure-vote-front
+description: A Helm chart for Kubernetes
+
+dependencies:
+  - name: redis
+    version: 14.7.1
+    repository: https://charts.bitnami.com/bitnami
+
+...
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application.
+appVersion: v1
+```
+
+使用 `helm dependency update` 更新 Helm 图表依赖项：
+
+```console
+helm dependency update azure-vote-front
+```
+
+更新 azure-vote-front/values.yaml：
+* 要设置映像详细信息、容器端口和部署名称，请添加 redis 部分。
+* 添加 backendName 以将前端部分连接到 redis 部署 。
+* 将 image.repository 更改为 `<loginServer>/azure-vote-front`。
+* 将 image.tag 更改为 `v1`。
+* 将 service.type 更改为 LoadBalancer 。
 
 例如：
 
 ```yml
-# Default values for webfrontend.
+# Default values for azure-vote-front.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
+backendName: azure-vote-backend-master
+redis:
+  image:
+    registry: mcr.microsoft.com
+    repository: oss/bitnami/redis
+    tag: 6.0.8
+  fullnameOverride: azure-vote-backend
+  auth:
+    enabled: false
 
 image:
-  repository: myhelmacr.azurecr.io/webfrontend
+  repository: myhelmacr.azurecr.io/azure-vote-front
   pullPolicy: IfNotPresent
+  tag: "v1"
 ...
 service:
   type: LoadBalancer
@@ -156,15 +176,20 @@ service:
 ...
 ```
 
-在 webfrontend/Chart.yaml 中将 `appVersion` 更新为 `v1`。 例如
+将 `env` 部分添加到 azure-vote-front/templates/deployment.yaml 以传递 redis 部署的名称 。
 
 ```yml
-apiVersion: v2
-name: webfrontend
 ...
-# This is the version number of the application being deployed. This version number should be
-# incremented each time you make changes to the application.
-appVersion: v1
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: REDIS
+            value: {{ .Values.backendName }}
+...
 ```
 
 ## <a name="run-your-helm-chart"></a>运行 Helm 图表
@@ -172,18 +197,17 @@ appVersion: v1
 通过 `helm install` 命令使用 Helm chart 来安装应用程序。
 
 ```console
-helm install webfrontend webfrontend/
+helm install azure-vote-front azure-vote-front/
 ```
 
 服务可能需要几分钟才能返回公共 IP 地址。 使用带有 `--watch` 参数的 `kubectl get service` 命令来监视进度。
 
 ```console
-$ kubectl get service --watch
-
-NAME                TYPE          CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
+$ kubectl get service azure-vote-front --watch
+NAME               TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)        AGE
+azure-vote-front   LoadBalancer   10.0.18.228   <pending>       80:32021/TCP   6s
 ...
-webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
+azure-vote-front   LoadBalancer   10.0.18.228   52.188.140.81   80:32021/TCP   2m6s
 ```
 
 使用 `<EXTERNAL-IP>` 在浏览器中导航到应用程序的负载均衡器，以查看示例应用程序。
@@ -213,10 +237,11 @@ az group delete --name MyResourceGroup --yes --no-wait
 [az-group-delete]: /cli/azure/group#az_group_delete
 [az aks get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [az aks install-cli]: /cli/azure/aks#az_aks_install_cli
-[example-nodejs]: https://github.com/Azure/dev-spaces/tree/master/samples/nodejs/getting-started/webfrontend
+[azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [helm]: https://helm.sh/
 [helm-documentation]: https://helm.sh/docs/
 [helm-existing]: kubernetes-helm.md
 [helm-install]: https://helm.sh/docs/intro/install/
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
+[acr-helm]: ../container-registry/container-registry-helm-repos.md

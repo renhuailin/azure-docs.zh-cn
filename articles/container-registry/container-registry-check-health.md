@@ -2,13 +2,13 @@
 title: 检查注册表运行状况
 description: 了解如何运行快速诊断命令，以便确定使用 Azure 容器注册表时常见的问题，包括本地 Docker 配置和连接到注册表的问题
 ms.topic: article
-ms.date: 07/02/2019
-ms.openlocfilehash: fec05efe67f5c502f36ee90eec57ba283b15a4a0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/14/2021
+ms.openlocfilehash: b0a95179e01de63185092c965b3290017dc96dfb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761738"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464296"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>检查 Azure 容器注册表的运行状况
 
@@ -44,6 +44,14 @@ az acr check-health
 az acr check-health --name myregistry
 ```
 
+### <a name="check-registry-access-in-a-virtual-network"></a>检查虚拟网络中的注册表访问权限
+
+若要验证要路由到专用终结点的 DNS 设置，请传递虚拟网络的名称或资源 ID。 当虚拟网络所在的订阅或资源组与注册表不同时，需要资源 ID。
+
+```azurecli
+az acr check-health --name myregistry --vnet myvnet
+```
+
 ## <a name="error-reporting"></a>错误报告
 
 此命令将信息记录到标准输出。 如果检测到问题，它会提供错误代码和说明。 若要详细了解代码和可能的解决方案，请查看[错误参考](container-registry-health-error-reference.md)。
@@ -54,8 +62,8 @@ az acr check-health --name myregistry
 # Check environment only
 az acr check-health --ignore-errors
 
-# Check environment and target registry
-az acr check-health --name myregistry --ignore-errors
+# Check environment and target registry; skip confirmation to pull image
+az acr check-health --name myregistry --ignore-errors --yes
 ```      
 
 示例输出：
@@ -75,13 +83,11 @@ Fetch refresh token for registry 'myregistry.azurecr.io' : OK
 Fetch access token for registry 'myregistry.azurecr.io' : OK
 ```  
 
-
-
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解 [az acr check-health][az-acr-check-health] 命令返回的错误代码，请参阅[运行状况检查错误参考](container-registry-health-error-reference.md)。
 
-参阅[常见问题解答](container-registry-faq.md)，其中解答了有关 Azure 容器注册表的常见问题和其他已知问题。
+参阅[常见问题解答](container-registry-faq.yml)，其中解答了有关 Azure 容器注册表的常见问题和其他已知问题。
 
 
 

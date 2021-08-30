@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 94cbe0fa6669546cee8e989a6db2fcbb428cb9d0
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 7d663345a5980d32a59d3185226e48dc75ef96c2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829433"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737244"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>为 Azure 应用服务配置 PHP 应用
 
@@ -119,11 +119,11 @@ if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
 fi
 ```
 
-提交所有更改，并在启用了生成自动化的情况下使用 Git 或 Zip 部署来部署你的代码。 编辑器现在应作为部署自动化的一部分运行。
+提交所有更改，并在[启用了生成自动化](deploy-zip.md#enable-build-automation)的情况下使用 Git 或 Zip 部署来部署你的代码。 编辑器现在应作为部署自动化的一部分运行。
 
 ## <a name="run-gruntbowergulp"></a>运行 Grunt/Bower/Gulp
 
-如果你希望应用服务在部署时运行常用的自动化工具（例如 Grunt、Bower 或 Gulp），则你需要提供[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。 当你在启用了生成自动化的情况下通过 Git 或 [Zip 部署](deploy-zip.md)进行部署时，应用服务会运行此脚本。 
+如果你希望应用服务在部署时运行常用的自动化工具（例如 Grunt、Bower 或 Gulp），则你需要提供[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。 当你在[启用了生成自动化](deploy-zip.md#enable-build-automation)的情况下通过 Git 或 [Zip 部署](deploy-zip.md)进行部署时，应用服务会运行此脚本。 
 
 若要使你的存储库能够运行这些工具，需要将它们添加到 package.json 中的依赖项。 例如：
 
@@ -206,7 +206,7 @@ fi
 
 ## <a name="customize-build-automation"></a>自定义生成自动化
 
-如果在启用生成自动化的情况下使用 Git 或 zip 包部署应用，应用服务生成自动化将按以下顺序完成各个步骤：
+如果在[启用了生成自动化](deploy-zip.md#enable-build-automation)的情况下使用 Git 或 zip 包部署应用，应用服务生成自动化将按以下顺序完成各个步骤：
 
 1. 运行 `PRE_BUILD_SCRIPT_PATH` 指定的自定义脚本。
 1. 运行 `php composer.phar install`。
@@ -279,7 +279,7 @@ az resource update --name web --resource-group <group-name> --namespace Microsof
 
 ## <a name="detect-https-session"></a>检测 HTTPS 会话
 
-在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
+在应用服务中，[TLS/SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
 
 ```php
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
@@ -495,6 +495,10 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [应用服务 Linux 常见问题解答](faq-app-service-linux.md)
+> [应用服务 Linux 常见问题解答](faq-app-service-linux.yml)
 
 ::: zone-end
+
+或者参阅其他某些资源：
+
+[环境变量和应用设置参考](reference-app-settings.md)

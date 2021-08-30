@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 4/05/2021
 ms.author: fauhse
 ms.custom: include file
-ms.openlocfilehash: 60702c23c32f99d19fbe4741ba3ab170a60dcae2
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 52e1accfb5f5bb762cc2833a19e1caa3daa4a03d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109645084"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462174"
 ---
 ```console
-Robocopy /MT:32 /R:5 /W:5 /B /MIR /IT /COPY:DATSO /DCOPY:DAT /NP /NFL /NDL /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 
+robocopy /MT:128 /R:1 /W:1 /MIR /IT /COPY:DATSO /DCOPY:DAT /NP /NFL /NDL /UNILOG:<FilePathAndName> <SourcePath> <Dest.Path> 
 ```
 
 | 开关                | 含义 |
 |-----------------------|---------|
-| `/MT:n`               | 允许 Robocopy 以多线程方式运行。 `n` 的默认值为 8。 最大线程数为 128 个。 在初始运行时，以较高的线程数开始。 较高的线程数有助于使可用带宽饱和。 在通过网络传输处理项时，后续的 `/MIR` 运行会逐渐受到影响。 对于后续运行，请将线程计数值与处理器核心计数和每个核心的线程计数相匹配。 考虑是否需要为生产服务器可能具有的其他任务预留核心。 |
+| `/MT:n`               | 允许 Robocopy 以多线程方式运行。 `n` 的默认值为 8。 最大线程数为 128 个。 在初始运行时，以较高的线程数开始。 较高的线程数有助于使可用带宽饱和。 后续的 `/MIR` 运行将受到可用计算与可用网络带宽的影响。 对于后续运行，请让线程计数值更加接近处理器核心计数和每个核心的线程计数。 考虑是否需要为生产服务器可能具有的其他任务预留核心。 |
 | `/R:n`                | 第一次尝试复制失败的文件的最大重试计数。 可以通过指定在运行中文件复制永久失败之前的最大重试次数 (`n`) 来提高 Robocopy 的运行速度。 在已明确会有更多 RoboCopy 运行的情况下，此开关将起作用。 如果文件在当前运行中复制失败，则下一个 RoboCopy 作业将重试。 由于正在使用或超时问题而失败的文件最终可能会成功复制（如果你使用此方法）。 |
 | `/W:n`                | 指定在尝试复制上一次复制尝试未成功的文件之前 Robocopy 等待的时间。 `n` 是两次重试之间的等待间隔（秒）。 `/W:n` 通常与 `/R:n` 一起使用。 |
 | `/B`                  | 在备份应用程序会使用的同一模式下运行 Robocopy。 此开关允许 Robocopy 移动当前用户无权访问的文件。 |
@@ -33,7 +33,7 @@ Robocopy /MT:32 /R:5 /W:5 /B /MIR /IT /COPY:DATSO /DCOPY:DAT /NP /NFL /NDL /UNIL
 | `/NFL`                | 指定不记录文件名。 提高复制性能。 |
 | `/NDL`                | 指定不记录目录名。 提高复制性能。 |
 | `/UNILOG:<file name>` | 将状态以 Unicode 形式写入日志文件。 （覆盖现有日志。） |
+| `/L`                  | 仅适用于测试运行 </br> 仅列出文件。 不复制这些文件，不将其删除，不为其添加时间戳。 通常与 `/TEE` 控制台输出结合使用。 可能需要删除示例脚本中的标志（如 `/NP`、`/NFL` 和 `/NDL`）才能获得正确记录的测试结果。 |
 | `/LFSM`               | **仅适用于具有分层存储的目标** </br>指定 Robocopy 在“低可用空间模式”下运行。 此开关仅对具有分层存储的目标有用，这些目标可能会在 Robocopy 完成之前耗尽本地容量。 它是专门为启用 Azure 文件同步云分层的目标而添加的。 它可独立于 Azure 文件同步使用。在此模式下，每当文件复制会导致目标卷的可用空间低于“下限”值时，Robocopy 都会暂停。 可通过标志的 `/LFSM:n` 形式指定此值。 参数 `n` 在基数 2 `nKB`、`nMB` 或 `nGB` 中指定。 如果指定的 `/LFSM` 没有明确的下限值，则下限将设置为目标卷大小的 10%。 低可用空间模式与 `/MT`、`/EFSRAW`、`/B` 或 `/ZB` 不兼容。 |
 | `/Z`                  | **谨慎使用** </br>在重启模式下复制文件。 只有在不稳定的网络环境下，才建议使用此开关。 由于额外的日志记录，此开关会明显降低复制性能。 |
 | `/ZB`                 | **谨慎使用** </br>使用重启模式。 如果访问被拒绝，此选项将使用备份模式。 由于检查点，此选项会明显降低复制性能。 |
-   

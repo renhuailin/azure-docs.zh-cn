@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2021
 ms.author: yelevin
-ms.openlocfilehash: 869693765463589c3e94aef9a1cee17867117c5d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 1244959bac7a2c530444e3d4b36691d4f760529a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072661"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731055"
 ---
 # <a name="automate-incident-handling-in-azure-sentinel-with-automation-rules"></a>在 Azure Sentinel 中使用自动化规则自动处理事件
 
@@ -42,7 +42,7 @@ ms.locfileid: "112072661"
 
 自动化规则由于生成事件而触发。 
 
-复习一下，事件由分析规则根据警报生成，其中包括多种类型，如“[使用 Azure Sentinel 中的内置分析规则检测威胁](tutorial-detect-threats-built-in.md)”教程中所述。
+复习一下，事件由分析规则根据警报生成，其中包括多种类型，如“[使用 Azure Sentinel 中的内置分析规则检测威胁](detect-threats-built-in.md)”教程中所述。
 
 ### <a name="conditions"></a>条件
 
@@ -54,7 +54,7 @@ ms.locfileid: "112072661"
 
 - 更改事件的状态，使工作流保持最新。
 
-  - 当更改为“已关闭”时，指定[关闭原因](tutorial-investigate-cases.md#closing-an-incident)并添加注释。 这有助于跟踪性能和有效性，并进行优化以减少[误报](false-positives.md)。
+  - 当更改为“已关闭”时，指定[关闭原因](investigate-cases.md#closing-an-incident)并添加注释。 这有助于跟踪性能和有效性，并进行优化以减少[误报](false-positives.md)。
 
 - 更改事件的严重性 – 可以基于事件中所涉及实体的现状、缺席、值或属性重新评估，以及重新确定优先级。
 
@@ -122,7 +122,14 @@ Microsoft 安全警报包括以下各项：
 
 自动化规则可以按确定的顺序连续运行。 每个自动化规则在前一规则运行完成后执行。 在自动化规则中，所有操作都按其定义的顺序连续运行。
 
-对于 playbook 操作，在开始 playbook 操作与列表中下一个操作之间有两分钟的延迟。
+在某些情况下，可能会根据以下条件以不同方式处理自动化规则中的 playbook 操作：
+
+| Playbook 运行时 | 自动化规则前进到下一个操作... |
+| ----------------- | --------------------------------------------------- |
+| 不到 1 秒 | Playbook 完成后立即 |
+| 不到 2 分钟 | 在 playbook 开始运行后最多 2 分钟，<br>但在 playbook 完成后不超过 10 秒 |
+| 超过 2 分钟 | Playbook 开始运行 2 分钟后，<br>无论其是否已完成 |
+|
 
 ### <a name="permissions-for-automation-rules-to-run-playbooks"></a>自动化规则运行 playbook 的权限
 

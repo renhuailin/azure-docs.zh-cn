@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: f1846c126e81ca5851cfbb1d782e5315ae10a82a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7aa866706a181014e104f7f9e7f8cded520f4ac9
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92152266"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711821"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中持久保存文件
 Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始启动时，Cloud Shell 会提示关联新的或现有的文件共享，以便在会话之间持久保存文件。
@@ -60,6 +60,8 @@ Cloud Shell 利用 Azure 文件存储在会话之间持久保存文件。 初始
 Cloud Shell 在指定订阅内的存储帐户中使用 Azure 文件共享。 由于继承了权限，对订阅具有足够访问权限的用户将能够访问订阅中包含的所有存储帐户和文件共享。
 
 用户应通过在存储帐户或订阅级别设置权限来锁定对其文件的访问权限。
+
+Cloud Shell 存储帐户将包含 Cloud Shell 用户在其主目录中创建的文件，其中可能包含敏感信息（包括访问令牌或凭据）。
 
 ## <a name="supported-storage-regions"></a>支持的存储区域
 要查找当前区域，可以在 Bash 中运行 `env` 并找到变量 `ACC_LOCATION`，或者在 PowerShell 中运行 `$env:ACC_LOCATION`。 文件共享会收到系统创建的 5-GB 映像，用于保存 `$Home` 目录。

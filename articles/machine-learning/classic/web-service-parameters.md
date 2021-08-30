@@ -10,17 +10,18 @@ ms.subservice: studio-classic
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: c58e893d81754f69a2b01d9983a9138845098808
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: f26a6541fc3c5720043d5b00578bea374cfcb959
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112583349"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689503"
 ---
 # <a name="use-machine-learning-studio-classic-web-service-parameters"></a>使用机器学习工作室（经典）Web 服务参数
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 创建机器学习 Web 服务，方法是：发布一个包含模块的试验，这些模块具有可配置的参数。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数* 允许执行此任务。 
 

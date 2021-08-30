@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 03/23/2021
 ms.author: rezar
-ms.openlocfilehash: 59bae8bfea29ee458288751209ffc860b5b9ce9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b84cb11211c3a51bd463ad7081963298f8ec357e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955987"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450819"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>采用哪些解决方案在 Azure 虚拟机上运行 Oracle WebLogic Server？
 
@@ -31,9 +31,9 @@ Azure WLS 解决方案旨在尽可能轻松地将 Java 应用程序迁移到 Azu
 
 这些产品/服务自带许可。 它们假设你已经从 Oracle 获得了适当的许可证，并且得到了在 Azure 中运行这些产品/服务的适当许可。
 
-这些产品/服务通过基础映像（例如 Oracle Linux 7.6上的 WebLogic Server 14 和 JDK 11）支持一系列的操作系统、Java 和 WLS 版本。 这些基础映像还可在 Azure 上自行使用。 这些基础映像适用于需要复杂的自定义 Azure 部署的客户。 [此处](https://azuremarketplace.microsoft.com/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1)提供了当前的基础映像集。
+这些产品/服务通过基础映像（例如 Oracle Linux 7.6上的 WebLogic Server 14 和 JDK 11）支持一系列的操作系统、Java 和 WLS 版本。 这些基础映像还可在 Azure 上自行使用。 这些基础映像适用于需要复杂的自定义 Azure 部署的客户。 [Microsoft Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1)中提供有当前的基础映像集。
 
-_若有兴趣与开发这些产品/服务的工程团队密切合作来实现你的迁移方案，请选择[商城产品/服务概述页面](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)_ 上的“[联系我](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)”按钮。 计划经理、架构师和工程师很快就会回复你并开始密切协作。 在产品/服务处于积极开发阶段时，可以免费采用迁移方案进行协作。
+_若有兴趣与开发这些产品/服务的工程团队密切合作来实现你的迁移方案，请选择 [商城产品/服务概述页面](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)_ 上的“[联系我](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview)”按钮。 计划经理、架构师和工程师很快就会回复你并开始密切协作。 在产品/服务处于积极开发阶段时，可以免费采用迁移方案进行协作。
 
 ## <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic Server 单节点
 

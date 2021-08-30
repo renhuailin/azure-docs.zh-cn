@@ -4,13 +4,13 @@ description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: aa23bfd9d867b9e0d5d2724a2b1f41b9fbc8e5da
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/15/2021
+ms.openlocfilehash: 1feb5f2e858113086b9349c79dacb024570fb5a4
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954770"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635155"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-cli"></a>使用 Bicep 和 Azure CLI 部署资源
 
@@ -147,6 +147,19 @@ az deployment group create --name addstorage  --resource-group myResourceGroup \
 
 在要传递给对象的 JSON 两侧使用双引号。
 
+可以使用变量来包含参数值。 在 Bash 中，将变量设置为所有参数值，并将其添加到部署命令。
+
+```azurecli-interactive
+params="prefix=start suffix=end"
+
+az deployment group create \
+  --resource-group testgroup \
+  --template-file <path-to-bicep> \
+  --parameters $params
+```
+
+但是，如果将 Azure CLI 与 Windows 命令提示符 (CMD) 或 PowerShell 一起使用，请将变量设置为 JSON 字符串。 转义引号：`$params = '{ \"prefix\": {\"value\":\"start\"}, \"suffix\": {\"value\":\"end\"} }'`。
+
 ### <a name="parameter-files"></a>参数文件
 
 你可能会发现，与在脚本中以内联值的形式传递参数相比，使用包含参数值的 JSON 文件更为容易。 参数文件必须是本地文件。 Azure CLI 不支持外部参数文件。 Bicep 文件使用 JSON 参数文件。
@@ -169,7 +182,7 @@ az deployment group create \
 
 ## <a name="deploy-template-specs"></a>部署模板规格
 
-目前，Azure CLI 不支持通过提供 Bicep 文件来创建模板规格。 但是，可以使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。下面是一个[示例](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep)。 还可使用 Bicep CLI 将 Bicep 文件生成到 ARM 模板 JSON 中，然后使用 JSON 模板创建模板规格。
+目前，Azure CLI 不支持通过提供 Bicep 文件来创建模板规格。 但是，可以使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。此处有一个[示例](https://github.com/Azure/azure-docs-bicep-samples/blob/main/create-template-spec-using-bicep/azuredeploy.bicep)。 还可使用 Bicep CLI 将 Bicep 文件生成到 ARM 模板 JSON，然后使用 JSON 模板创建模板规格。
 
 ## <a name="deployment-name"></a>部署名称
 
@@ -200,5 +213,5 @@ deploymentName='ExampleDeployment'$(date +"%d-%b-%Y")
 ## <a name="next-steps"></a>后续步骤
 
 * 若要在出错时回退到成功的部署，请参阅[出错时回退到成功的部署](../templates/rollback-on-error.md)。
-* 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](../templates/syntax.md)。
+- 若要了解如何在文件中定义参数，请参阅[了解 Bicep 文件的结构和语法](file.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](../templates/common-deployment-errors.md)。

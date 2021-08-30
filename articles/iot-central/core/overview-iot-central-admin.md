@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Central 管理员指南
 description: Azure IoT Central 是一种 IoT 应用程序平台，用于简化创建 IoT 解决方案。 本文概述了 IoT Central 中的管理员角色。
-author: philmea
-ms.author: philmea
+author: dominicbetts
+ms.author: dobett
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c355902eae6aed1504b64dd12d056c6059771e57
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4ff2ea374768189881c9e1ff28511bc403dd6306
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108759412"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015558"
 ---
 # <a name="iot-central-administrator-guide"></a>IoT Central 管理员指南
 
@@ -48,7 +48,7 @@ IoT Central 使用基于角色的访问控制系统来管理应用程序内的�
 
 - [更改应用程序名称和 URL](howto-administer.md#change-application-name-and-url)
 - [自定义 UI](howto-customize-ui.md)
-- [将应用程序移至其他定价计划](howto-view-bill.md)
+- [将应用程序移至其他定价计划](howto-faq.yml#how-do-i-move-from-a-free-to-a-standard-pricing-plan-)
 - [配置文件上传](howto-configure-file-uploads.md)
 
 ## <a name="export-an-application"></a>导出应用程序
@@ -58,7 +58,7 @@ IoT Central 使用基于角色的访问控制系统来管理应用程序内的�
 - 创建应用程序的副本，前提是只需应用程序的重复副本。 例如，可能需要重复的副本以进行测试。
 - 如果打算创建多个副本，请从现有应用程序中创建应用程序模板。
 
-若要了解详细信息，请参阅[导出 Azure IoT 应用程序](howto-use-app-templates.md)。
+若要了解详细信息，请参阅[创建并使用自定义应用程序模板](howto-create-iot-central-application.md#create-and-use-a-custom-application-template)。
 
 ## <a name="migrate-to-a-new-version"></a>迁移到新版本
 
@@ -72,14 +72,17 @@ IoT Central 使用基于角色的访问控制系统来管理应用程序内的�
 
 要查看指标，管理员可以使用 Azure 门户中的图表、REST API 或 PowerShell 或 Azure CLI 查询。
 
-要了解详细信息，请参阅[监视 IoT Central 应用程序的总体运行状况](howto-monitor-application-health.md)。
+若要了解详细信息，请参阅[监视应用程序运行状况](howto-manage-iot-central-from-portal.md#monitor-application-health)。
+
+## <a name="monitor-connected-iot-edge-devices"></a>监视已连接的 IoT Edge 设备
+
+若要了解如何使用 Azure Monitor 和内置指标集成远程监视 IoT Edge 队列，请参阅[收集和传输指标](../../iot-edge/how-to-collect-and-transport-metrics.md)。
 
 ## <a name="tools"></a>工具
 
 每个 IoT Central 应用程序的“管理”部分中提供了许多管理员可用的工具。 还可以使用以下工具来完成一些管理任务：
 
-- [Azure CLI](howto-manage-iot-central-from-cli.md)
-- [Azure PowerShell](howto-manage-iot-central-from-powershell.md)
+- [Azure 命令行](howto-manage-iot-central-from-cli.md)
 - [Azure 门户](howto-manage-iot-central-from-portal.md)
 
 ## <a name="next-steps"></a>后续步骤

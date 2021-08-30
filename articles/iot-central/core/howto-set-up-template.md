@@ -3,82 +3,80 @@ title: 在 Azure IoT Central 中定义新的 IoT 设备类型 | Microsoft Docs
 description: 本文介绍如何在 Azure IoT Central 应用程序中创建新的 Azure IoT 设备模板。 其中介绍了如何为类型定义遥测、状态、属性和命令。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/06/2019
+ms.date: 08/13/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: d2754200cb41114aafbe1bea2b511ed743280b88
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 451a880485503684f09108a84c559f222362bae8
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061185"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071588"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 设备类型
 
 设备模板是一个蓝图，用于定义可连接到 [Azure IoT Central 应用程序](concepts-app-templates.md)的某种设备的特征和行为。
 
-例如，构建人员可以为连接的风扇创建设备模板，该模板包括以下特征：
+本文介绍如何在 IoT Central 中创建设备模板。 例如，可为发送遥测数据（如温度）和属性（如位置）的传感器创建一个设备模板。 在此设备模板中，操作员可以创建和连接真实设备。
 
-- 发送温度遥测
-- 发送位置属性
-- 发送风扇电机错误事件
-- 发送风扇运行状态
-- 提供可写风扇速度属性
-- 提供用于重启设备的命令
-- 通过视图显示设备全方位视图
+以下屏幕截图显示了设备模板的示例：
 
-在此设备模板中，操作员可以创建和连接实际的风扇设备。 所有这些风扇都具有测量值、属性以及操作员用来监视和管理它们的命令。 操作员使用[设备视图](#add-views)和窗体与风扇设备进行交互。 设备开发人员使用模板来了解设备如何与应用程序交互。 要了解详细信息，请参阅[遥测、属性和命令有效负载](concepts-telemetry-properties-commands.md)。
+:::image type="content" source="media/howto-set-up-template/device-template.png" alt-text="显示设备模板的屏幕截图。":::
+
+设备模板包含以下部分：
+
+- 模型 - 使用模型可以定义设备与 IoT Central 应用程序的交互方式。 每个模型具有唯一的模型 ID，并且定义了设备的功能。 功能分组为接口。 通过接口可以在不同的模型中重复使用组件，或使用继承来扩展功能集。
+- 云属性 - 使用云属性可以定义 IoT Central 应用程序存储的设备相关信息。 例如，云属性可记录设备最近一次维修的日期。
+- 自定义 - 使用自定义项可以修改功能。 例如，指定某个属性的最小和最大温度值。
+- 视图 - 使用视图可以可视化来自设备的数据，使用窗体可以管理和控制设备。
+
+若要了解详细信息，请参阅[什么是设备模板？](concepts-device-templates.md)。
+
+## <a name="create-a-device-template"></a>创建设备模板
+
+可采用多种做法来创建设备模板：
+
+- 在 IoT Central GUI 中设计设备模板。
+- 从 [Azure IoT 认证设备目录](https://aka.ms/iotdevcat)中导入设备模板。 （可选）根据你的需求在 IoT Central 中自定义设备模板。
+- 当设备连接到 IoT Central 时，让它发送它所实现的模型的模型 ID。 IoT Central 使用模型 ID 来检索模型存储库中的模型，并创建设备模板。 将 IoT Central 应用程序所需的任何云属性、自定义项和视图添加到设备模板中。
+- 当设备连接到 IoT Central 时，让 IoT Central 从设备发送的数据[自动生成设备模板](#autogenerate-a-device-template)定义。
+- 使用[数字孪生定义语言 (DTDL) V2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) 创作设备模型。 将设备模型手动导入到 IoT Central 应用程序中。 然后，添加 IoT Central 应用程序所需的云属性、自定义项和视图。
+- 你还可以使用 [REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) 或 [CLI](howto-manage-iot-central-from-cli.md) 将设备模板添加到 IoT Central 应用程序。
 
 > [!NOTE]
-> 只有构建人员和管理员可以创建、编辑和删除设备模板。 任何用户都可以在“设备”页中基于现有的设备模板创建设备。
+> 在每种情况下，设备代码都必须实现模型中定义的功能。 设备代码实现不受设备模板的云属性、自定义项和视图部分的影响。
 
-在 IoT Central 应用程序中，设备模板使用设备模型来描述设备的功能。 作为构建者，你在创建设备模板时有多种选择：
+本部分介绍如何从目录中导入设备模板，以及如何使用 IoT Central GUI 对其进行自定义。 此示例使用设备目录中的“ESP32-Azure IoT 工具包”设备模板：
 
-- 在 IoT Central 中设计设备模板，然后[在设备代码中实现其设备模型](concepts-telemetry-properties-commands.md)。
-- 从 [Azure IoT 认证设备目录](https://aka.ms/iotdevcat)中导入设备模板。 按照 IoT Central 中的要求自定义设备模板。
-> [!NOTE]
-> IoT Central 需要在同一文件中包含所有引用接口的完整模型，从模型存储库导入模型时，使用关键字“expanded”以获取完整版本。
-例如， https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json
+1. 若要添加新的设备模板，请在“设备模板”页上选择“+ 新建” 。
+1. 在“选择类型”页上，向下滚动直到在“使用预配置的设备模板”部分中找到“ESP32-Azure IoT 套件”磁贴。  
+1. 选择“ESP32-Azure IoT 工具包”磁贴，然后选择“下一页: 查看”。
+1. 在“查看”页上，选择“创建”   。
+创建的模板的名称为“传感器控制器”。 该模型包含“传感器控制器”、“SensorTemp”和“设备信息接口”等组件  。 组件定义 ESP32 设备的功能。 功能包括遥测、属性和命令。
 
-- 使用[数字孪生定义语言 (DTDL) - 版本 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) 创作设备模型。 Visual Studio Code 的扩展支持创作 DTDL 模型。 若要了解详细信息，请参阅[安装并使用 DTDL 创作工具](../../iot-pnp/howto-use-dtdl-authoring-tools.md)。 然后，将模型发布到公共模型存储库。 要了解详细信息，请参阅[设备模型存储库](../../iot-pnp/concepts-model-repository.md)。 基于模型实现设备代码，并将实际设备连接到 IoT Central 应用程序。 IoT Central 从公共存储库中为你查找并导入设备模型，并生成设备模板。 然后，你可以将 IoT Central 应用程序所需的任何云属性、自定义项和视图添加到设备模板中。
-- 使用 DTDL 创作设备型号。 基于模型实现设备代码。 将设备模型手动导入到 IoT Central 应用程序中，然后添加 IoT Central 应用程序所需的任何云属性、自定义项和视图。
+:::image type="content" source="media/howto-set-up-template/device-template.png" alt-text="显示传感器控制器设备模板的屏幕截图。":::
 
-> [!TIP]
-> IoT Central 需要在同一文件中包含所有引用接口的完整模型。 从模型存储库中导入模型时，请使用关键字“expanded”获取完整版本。
-> 例如， [https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json](https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json) 。
+## <a name="autogenerate-a-device-template"></a>自动生成设备模板
 
-你还可以使用 [REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) 或 [CLI](howto-manage-iot-central-from-cli.md) 将设备模板添加到 IoT Central 应用程序。
+还可以从尚未分配到设备模板的已连接设备自动创建设备模板。 IoT Central 使用设备发送的遥测值和属性值来推断设备模型。
 
-某些[应用程序模板](concepts-app-templates.md)已包括在应用程序模板支持的方案中非常有用的设备模板。 例如，请参阅[店内分析体系结构](../retail/store-analytics-architecture.md)。
+以下步骤说明如何使用此功能：
 
-## <a name="create-a-device-template-from-the-device-catalog"></a>从设备目录创建设备模板
+1. 将设备连接到 IoT Central 并开始发送数据。 在“原始数据”视图中看到了数据时，请在“管理模板”下拉菜单中选择“自动创建模板”  ：
 
-作为构建人员，你可以使用认证设备快速开始构建解决方案。 请参阅 [Azure IoT 设备目录](https://devicecatalog.azure.com)中的列表。 IoT Central 与设备目录集成，因此，你可以从这些认证设备中的任何一个导入设备模型。 要在 IoT Central 中通过以下某一设备创建设备模板：
+    :::image type="content" source="media/howto-set-up-template/infer-model-1.png" alt-text="显示来自未分配设备的原始数据的屏幕截图。":::
 
-1. 请转到 IoT Central 应用程序中的“设备模板”页。
-1. 选择“+ 新建”，然后从目录中选择任一认证设备。 IoT Central 基于此设备模型创建设备模板。
-1. 将任何云属性、自定义或视图添加到设备模板中。
-1. 选择“发布”，使操作员可以使用模板来查看和连接设备。
+1. 在“数据预览”页上，对原始数据进行任何所需的更改，然后选择“创建模板” ：
 
-## <a name="create-a-device-template-from-scratch"></a>从头开始创建设备模板
+    :::image type="content" source="media/howto-set-up-template/infer-model-2.png" alt-text="显示在“数据预览”中进行更改的屏幕截图，可通过这种更改编辑由 IoT Central 用来生成设备模板的数据。":::
 
-设备模板包含：
+1. IoT Central 基于“数据预览”页上显示的数据格式生成模板，并将设备分配到该模板。 可以在“设备模板”页上进一步更改设备模板，例如，将其重命名或添加功能：
 
-- 设备模型，用于指定设备实现的遥测、属性和命令。 这些功能被整理到一个或多个组件中。
-- 云属性，用于定义 IoT Central 应用程序存储的设备相关信息。 例如，云属性可记录设备最近一次维修的日期。 此信息从不与设备共享。
-- 自定义，构建人员可利用自定义替代设备模型中的某些定义。 例如，构建人员可替代设备属性的名称。 属性名称显示在 IoT Central 视图和窗体中。
-- 视图和窗体，构建人员可通过视图和窗体创建 UI，操作员可使用该 UI 监视和管理连接到应用程序的设备。
-
-要在 IoT Central 中创建设备模板：
-
-1. 请转到 IoT Central 应用程序中的“设备模板”页。
-1. 选择“+ 新建” > “IoT 设备”。 然后选择“下一步:自定义”。
-1. 输入模板的名称，例如“Thermostat”。 然后依次选择“下一步：查看”、“创建”。
-1. IoT Central 创建一个空的设备模板，使你可以选择从头开始创建自定义模型或导入 DTDL 模型。
+    :::image type="content" source="media/howto-set-up-template/infer-model-3.png" alt-text="显示如何重命名自动生成的设备模板的屏幕截图。":::
 
 ## <a name="manage-a-device-template"></a>管理设备模板
 
@@ -86,9 +84,11 @@ ms.locfileid: "110061185"
 
 定义模板后，即可发布该模板。 在模板发布之前，设备无法连接到该模板，并且该模板不会显示在“设备”页上。
 
-若要详细了解如何修改设备模板，请参阅 [编辑现有设备模板](howto-edit-device-template.md)。
+若要详细了解如何修改设备模板以及控制其版本，请参阅[编辑现有设备模板](howto-edit-device-template.md)。
 
-## <a name="create-a-capability-model"></a>创建功能模型
+## <a name="models"></a>模型
+
+模型定义设备与 IoT Central 应用程序交互的方式。 可以使用更多功能来自定义模型，添加接口来继承功能，或者添加基于其他接口的新组件。
 
 要创建设备模型，可以：
 
@@ -96,34 +96,41 @@ ms.locfileid: "110061185"
 - 从 JSON 文件导入 DTDL 模型。 设备构建人员可能已使用 Visual Studio Code 来创作应用程序的设备模型。
 - 从设备目录中选择一台设备。 此选项将导入制造商已为此设备发布的设备模型。 用该方式导入的设备模型将自动发布。
 
-## <a name="manage-a-capability-model"></a>管理功能模型
+1. 若要查看模型 ID，请在模型中选择根接口，然后选择“编辑标识”：
 
-创建设备模型后，可以：
+    :::image type="content" source="media/howto-set-up-template/view-id.png" alt-text="显示设备模板根接口的模型 ID 的屏幕截图。":::
 
-- 向模型中添加组件。 模型必须至少有一个组件。
-- 编辑模型元数据，例如其 ID、命名空间和名称。
-- 删除模型。
+1. 若要查看组件 ID，请在模型中的任一组件接口上选择“编辑标识”。
 
-## <a name="create-a-component"></a>创建组件
+有关详细信息，请参阅 [IoT 即插即用建模指南](../../iot-pnp/concepts-modeling-guide.md)。
 
-设备模型必须至少有一个默认组件。 组件是功能的可重用集合。
+### <a name="interfaces-and-components"></a>接口和组件
 
-创建组件：
+若要查看和管理设备模型中的接口，请执行以下操作：
 
-1. 转到设备模型，选择“+ 添加组件”。
+1. 转到“设备模板”页，然后选择你创建的设备模板。 接口将列在设备模板的“模型”部分。 以下屏幕截图显示了设备模板中的“传感器控制器”根接口示例：
 
-1. 在“添加组件接口”页上，可以：
+    :::image type="content" source="media/howto-set-up-template/device-template.png" alt-text="显示模型根接口的屏幕截图"::: 
 
-    - 从头开始创建自定义组件。
-    - 从 DTDL 文件导入现有组件。 设备构建人员可能已使用 Visual Studio Code 来创建设备的组件接口。
+1. 选择省略号图标，将继承的接口或组件添加到根接口。 若要详细了解接口和组件，请参阅建模指南中的[多个组件](../../iot-pnp/concepts-modeling-guide.md#multiple-components)。
 
-1. 创建组件后，选择“编辑标识”以更改组件的显示名称。
+    :::image type="content" source="media/howto-set-up-template/add-interface.png" alt-text="如何添加接口或组件":::
 
-1. 如果选择从头开始创建自定义组件，则可添加设备的功能。 设备功能包括遥测、属性和命令。
+1. 若要导出模型或接口，请选择“导出”。
 
-### <a name="telemetry"></a>遥测
+1. 若要查看或者编辑某个接口或功能的 DTDL，请选择“编辑 DTDL”。
 
-遥测是从设备发送的值流，通常来自传感器。 例如，传感器可能会报告环境温度。
+### <a name="capabilities"></a>功能
+
+选择“+ 添加功能”可将功能添加到接口或组件。 例如，可将“目标温度”功能添加到“SensorTemp”组件 。
+
+:::image type="content" source="media/howto-set-up-template/add-capability.png" alt-text="如何添加功能":::
+
+#### <a name="telemetry"></a>遥测
+
+遥测是从设备发送的值流，通常来自传感器。 例如，传感器可能会报告环境温度，如下所示：
+
+:::image type="content" source="media/howto-set-up-template/telemetry.png" alt-text="如何添加遥测":::
 
 下表显示了遥测功能的配置设置：
 
@@ -141,9 +148,12 @@ ms.locfileid: "110061185"
 | 注释 | 有关遥测功能的任何注释。 |
 | 说明 | 遥测功能的说明。 |
 
-### <a name="properties"></a>属性
+#### <a name="properties"></a>属性
 
-属性表示时间点值。 例如，设备可使用属性来报告它尝试达到的目标温度。 可从 IoT Central 设置可写属性。
+属性表示时间点值。 可从 IoT Central 设置可写属性。
+例如，设备可以使用某个可写属性来让操作员设置目标温度，如下所示：
+
+:::image type="content" source="media/howto-set-up-template/property.png" alt-text="如何添加属性":::
 
 下表显示了属性功能的配置设置：
 
@@ -162,9 +172,11 @@ ms.locfileid: "110061185"
 | 评论 | 有关属性功能的任何注释。 |
 | 说明 | 属性功能的说明。 |
 
-### <a name="commands"></a>命令
+#### <a name="commands"></a>命令
 
-可从 IoT Central 调用设备命令。 命令可以选择将参数传递给设备，并接收来自设备的响应。 例如，你可以调用命令，在 10 秒内重启设备。
+可从 IoT Central 调用设备命令。 命令可以选择将参数传递给设备，并接收来自设备的响应。 例如，可以调用某个命令以便在 10 秒内重启设备，如下所示：
+
+:::image type="content" source="media/howto-set-up-template/command.png" alt-text="如何添加命令":::
 
 下表显示了命令功能的配置设置：
 
@@ -185,6 +197,8 @@ ms.locfileid: "110061185"
 
 如果设备当前脱机，则可通过为设备模板中的命令启用“脱机时排队”选项，选择排队命令。
 
+:::image type="content" source="media/howto-set-up-template/offline-commands.png" alt-text="如何添加脱机命令":::
+
 此选项使用 IoT 中心云到设备消息向设备发送通知。 要了解详细信息，请参阅 IoT 中心文章[发送云到设备消息](../../iot-hub/iot-hub-devguide-messages-c2d.md)。
 
 云到设备消息：
@@ -196,17 +210,11 @@ ms.locfileid: "110061185"
 > [!NOTE]
 > 此选项仅在 IoT Central web UI 中可用。 如果从设备模板导出模型或组件，则不包含此设置。
 
-## <a name="manage-a-component"></a>管理组件
-
-使用组件从其他接口组装设备模板。 例如，温度控制器的设备模板可以包括多个恒温器组件。 可以直接在设备模板中编辑组件，也可以作为 JSON 文件导出和导入组件。 设备可以与组件实例进行交互。 例如，具有两个恒温器的设备可以从每个恒温器将遥测发送到 IoT Central 应用程序中的不同组件。
-
-## <a name="inheritance"></a>继承
-
-可以使用继承来扩展接口。 使用继承将功能添加到现有接口。 继承接口对设备是透明的。
-
-## <a name="add-cloud-properties"></a>添加云属性
+## <a name="cloud-properties"></a>云属性
 
 使用云属性在 IoT Central 中存储设备相关信息。 云属性从不发送至设备。 例如，可以使用云属性来存储已安装设备的客户的名称或设备的最近一次维修日期。
+
+:::image type="content" source="media/howto-set-up-template/cloud-properties.png" alt-text="如何添加云属性"::: 
 
 下表显示了云属性的配置设置：
 
@@ -217,13 +225,35 @@ ms.locfileid: "110061185"
 | 语义类型 | 属性的语义类型，如温度、状态或事件。 选择的语义类型将决定以下哪些字段可用。 |
 | 架构 | 云属性数据类型，如 double、string 或 vector。 可用的选项取决于语义类型。 |
 
-## <a name="add-customizations"></a>添加自定义项
+## <a name="customizations"></a>自定义
 
-需要修改导入的组件或将 IoT Central 特定的功能添加到功能时，可以使用自定义项。 可以自定义现有设备模板功能的任何部分。
+需要修改导入的组件或将 IoT Central 特定的功能添加到功能时，可以使用自定义项。 例如，可以更改属性的显示名称和单位，如下所示：
 
-### <a name="generate-default-views"></a>生成默认视图
+:::image type="content" source="media/howto-set-up-template/customize.png" alt-text="如何进行自定义":::
 
-生成默认视图是可视化重要设备信息的快捷方法。 最多为设备模板生成三个默认视图：
+下表显示了自定义项的配置设置：
+
+| 字段 | 说明 |
+| ----- | ----------- |
+|显示名称 | 替代模型中的显示名称。 |
+|语义类型 | 替代模型中的语义类型。 |
+|单位 | 替代模型中的单位。 |
+|显示单位 | 在模型中替代。 |
+|注释 | 在模型中替代。 |
+|说明 | 在模型中替代。 |
+|颜色 | 特定于 IoT Central 的选项。 |
+|最小值 | 设置最小值 - 特定于 IoT Central 的选项。 |
+|最大值 | 设置最大值 - 特定于 IoT Central 的选项。 |
+|小数位数 | 特定于 IoT Central 的选项。 |
+|初始值 | 命令仅允许特定于 IoT Central 的值 - 默认参数值。 |
+
+## <a name="views"></a>视图
+
+使用视图可以定义视图和窗体来让操作员监视设备并与之交互。 视图使用可视化效果（例如图表）来显示遥测值和属性值。
+
+生成默认视图是可视化重要设备信息的快捷方法。 有以下三个默认视图：
+
+### <a name="default-views"></a>默认视图
 
 - **命令**：包含设备命令的视图，使操作员能够将其调度到你的设备。
 - **概述**：包含设备遥测的视图，显示图表和指标。
@@ -231,49 +261,44 @@ ms.locfileid: "110061185"
 
 选择“生成默认视图”后，这些视图会自动添加到设备模板的“视图”部分下 。
 
-## <a name="add-views"></a>添加视图
+### <a name="custom-views"></a>自定义视图
 
-将视图添加到设备模板，使操作员能够使用图表和指标来可视化设备。 设备模板可具有多个视图。
+将视图添加到设备模板，使操作员能够使用图表和指标来可视化设备。 你可以将自己的自定义视图添加到设备模板。
 
 将视图添加到设备模板：
 
 1. 转到设备模板并选择“视图”。
 1. 选择“可视化设备”。
 1. 在“视图名称”中输入视图的名称。
-1. 从静态、属性、云属性、遥测和命令磁贴列表中将磁贴添加到视图。 拖放想要添加到视图的磁贴。
-1. 若要在单个图表磁贴上绘制多个遥测值，请选择各个遥测值，然后选择“合并”。
-1. 配置添加的每个磁贴，以自定义其显示数据的方式。 可以通过选择齿轮图标或在图表磁贴上选择“更改配置”来访问此选项。
-1. 排列视图上的磁贴并调整其大小。
-1. 保存更改。
+1. 在“添加磁贴”下选择“从某个视觉对象开始”，并选择磁贴的视觉对象类型。 然后选择“添加磁贴”或将视觉对象拖放到画布中。 若要配置磁贴，请选择齿轮图标。
 
-### <a name="configure-preview-device-to-view"></a>配置预览设备以查看
+:::image type="content" source="media/howto-set-up-template/start-visual.png" alt-text="如何从视觉对象开始"::: 
 
-要查看和测试视图，请选择“配置预览设备”。 通过此功能，在视图发布后，你可以与操作员同步看到它。 使用此功能验证视图是否显示正确的数据。 可从以下选项中进行选择：
+:::image type="content" source="media/howto-set-up-template/tile.png" alt-text="配置磁贴"::: 
+
+若要测试视图，请选择“配置预览设备”。 使用此功能，可以让你在视图发布后看到与操作员看到的视图一样的视图。 使用此功能验证视图是否显示正确的数据。 选择从以下选项：
 
 - 无预览设备。
 - 为设备模板配置的真实测试设备。
 - 应用程序中的现有设备（通过使用设备 ID）。
 
-## <a name="add-forms"></a>添加窗体
+### <a name="forms"></a>窗体
 
 通过查看和设置属性，将窗体添加到设备模板，使操作员可以管理设备。 操作员只能编辑云属性和可写设备属性。 设备模板可具有多个窗体。
 
-要将窗体添加到设备模板：
+1. 选择“视图”节点，然后选择“编辑设备和云数据”磁贴来添加新视图。
 
-1. 转到设备模板并选择“视图”。
-1. 选择“编辑设备和云数据”。
-1. 在“窗体名称”中输入窗体的名称。
-1. 选择用于对窗体进行布局的列数。
-1. 将属性添加到窗体上的现有节，或选择属性并选择“添加节”。 使用这些节对窗体上的属性进行分组。 可向某一节添加标题。
-1. 配置窗体上的每个属性以自定义其行为。
-1. 排列窗体上的属性。
-1. 保存更改。
+1. 将窗体名称更改为“管理设备”。
+
+1. 依次选择“客户名称”、“上次服务日期”云属性和“目标温度”属性  。 然后选择“添加部分”。
+
+1. 选择“保存”以保存新窗体。
+
+:::image type="content" source="media/howto-set-up-template/form.png" alt-text="配置窗体":::
 
 ## <a name="publish-a-device-template"></a>发布设备模板
 
 在连接用于实现设备模型的设备之前，必须发布设备模板。
-
-若要详细了解如何修改已发布的设备模板，请参阅 [编辑现有设备模板](howto-edit-device-template.md)。
 
 若要发布设备模板，请转到你的设备模板，然后选择“发布”。
 

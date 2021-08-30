@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 06/15/2021
 ms.author: memildin
-ms.openlocfilehash: fefbc605702539cb882aba4c7802d284b4291a9c
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 3dbf8b3e15380b1e267be4f1b4af382aa9097a48
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062291"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745090"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保护 Kubernetes 工作负载
 
@@ -39,7 +39,7 @@ ms.locfileid: "112062291"
 | 定价：                        | 免费                                                                                                                                         |
 | 所需角色和权限： | **所有者** 或 **安全管理员**，用以编辑分配<br>**读者**，用以查看建议                                              |
 | 环境要求：       | 需要 Kubernetes v1.14（或更高版本）<br>群集上没有 PodSecurityPolicy 资源（旧的 PSP 模型）<br>不支持 Windows 节点 |
-| 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov） |
+| 云：                         | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png":::国家/地区/主权（Azure 政府、Azure 中国世纪互联） |
 |                                 |                                                                                                                                              |
 
 
@@ -80,29 +80,36 @@ Azure 安全中心包含一系列建议，安装 **适用于 Kubernetes 的 Azur
 
     | 建议名称                                                         | 安全控制                         | 需要进行配置 |
     |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | 应强制执行容器 CPU 和内存限制                          | 保护应用程序免受 DDoS 攻击 | 否                     |
-    | 应避免特权容器                                     | 管理访问和权限            | 否                     |
-    | 应强制对容器使用不可变（只读）根文件系统     | 管理访问和权限            | 否                     |
-    | 应避免使用特权提升的容器                       | 管理访问和权限            | 否                     |
-    | 应避免以根用户身份运行容器                           | 管理访问和权限            | 否                     |
-    | 应避免使用共享敏感主机命名空间的容器              | 管理访问和权限            | 否                     |
-    | 应强制对容器使用最低权限 Linux 功能       | 管理访问和权限            | **是**                |
-    | Pod HostPath 卷装载的使用应仅限于已知列表    | 管理访问和权限            | **是**                |
     | 容器应只侦听允许的端口                              | 限制未经授权的网络访问     | **是**                |
     | 服务应只侦听允许的端口                                | 限制未经授权的网络访问     | **是**                |
     | 应限制对主机网络和端口的使用                     | 限制未经授权的网络访问     | **是**                |
     | 应限制替代或禁用容器 AppArmor 配置文件 | 修正安全配置        | **是**                |
     | 应只从受信任的注册表部署容器映像            | 修正漏洞                | **是**                |
-    |||
+    | 应强制对容器使用最低权限 Linux 功能       | 管理访问和权限            | **是**                |
+    | Pod HostPath 卷装载的使用应仅限于已知列表    | 管理访问和权限            | **是**                |
+    | 应避免特权容器                                     | 管理访问和权限            | 否                     |
+    | 应避免使用特权提升的容器                       | 管理访问和权限            | 否                     |
+    | Kubernetes 群集应禁用自动装载 API 凭据             | 管理访问和权限            | 否                     |
+    | 应强制对容器使用不可变（只读）根文件系统     | 管理访问和权限            | 否                     |
+    | 应避免使用特权提升的容器                       | 管理访问和权限            | 否                     |
+    | 应避免以根用户身份运行容器                           | 管理访问和权限            | 否                     |
+    | 应避免使用共享敏感主机命名空间的容器              | 管理访问和权限            | 否                     |
+    | 应强制执行容器 CPU 和内存限制                          | 保护应用程序免受 DDoS 攻击 | 否                     |
+    | Kubernetes 群集应只可通过 HTTPS 进行访问                    | 加密传输中的数据                  | 否                     |
+    | Kubernetes 群集不应使用默认命名空间                    | 实现安全最佳实践        | 否                     |
+    ||||
 
 
-1. 对于带有必须自定义参数的建议，请设定参数：
+1. 对于带有需要自定义的参数的建议，请设置参数：
 
     1. 从安全中心的菜单中，选择“安全策略”。
     1. 选择相关订阅。
     1. 从“安全中心的默认策略”部分，选择“查看有效策略”。
-    1. 选择“ASC 默认值”。
+    1. 为要更新的范围选择默认策略。
     1. 打开“参数”选项卡，并根据需要修改这些值。
+
+        :::image type="content" source="media/kubernetes-workload-protections/containers-parameter-requires-configuration.png" alt-text="修改 Kubernetes 工作负载保护捆绑包中某一建议的参数。":::
+
     1. 选择“查看 + 保存”。
     1. 选择“保存”。
 
@@ -111,7 +118,7 @@ Azure 安全中心包含一系列建议，安装 **适用于 Kubernetes 的 Azur
 
     1. 打开建议详细信息页，然后选择“拒绝”：
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure Policy 参数的拒绝选项":::
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure Policy 参数的拒绝选项。":::
 
         这会打开一个窗格，你可以在其中设置作用域。 
 
@@ -125,7 +132,7 @@ Azure 安全中心包含一系列建议，安装 **适用于 Kubernetes 的 Azur
 
 1. 查看工作负载保护集提供的建议时，你会看到受影响的 pod（“Kubernetes 组件”）的数目随群集一起列出。 有关特定 pod 的列表，请选择该群集，然后选择“采取操作”。
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="查看 K8s 建议针对的受影响 pod"::: 
+    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="查看受影响的 pod，以获取 K8s 建议。"::: 
 
 1. 若要测试强制实施，请使用下面的两个 Kubernetes 部署：
 
@@ -158,7 +165,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: healthyClusterRegistry.azurecr.io/redis:latest
+        image: <customer-registry>.azurecr.io/redis:latest
         ports:
         - containerPort: 80
         resources:
@@ -191,25 +198,25 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-unhealthy-deployment
+  name: redis-unhealthy-deployment
   labels:
-    app: nginx
+    app: redis
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: redis
   template:
     metadata:      
       labels:
-        app: nginx
+        app: redis
     spec:
       hostNetwork: true
       hostPID: true 
       hostIPC: true
       containers:
-      - name: nginx
-        image: nginx:1.15.2
+      - name: redis
+        image: redis:latest
         ports:
         - containerPort: 9001
           hostPort: 9001
@@ -234,11 +241,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-unhealthy-service
+  name: redis-unhealthy-service
 spec:
   type: LoadBalancer
   selector:
-    app: nginx
+    app: redis
   ports:
   - port: 6001
     targetPort: 9001

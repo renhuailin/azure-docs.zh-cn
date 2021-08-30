@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/18/2020
-ms.openlocfilehash: 5e608d38ff70d51b569088629a6d80cb08e74ed4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: ea92a5e196c809535801278631cbfdfdc5013199
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251618"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288210"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure 认知搜索中的同义词
 
-使用同义词映射，你可以关联等效字词，从而在无需用户实际提供字词的情况下扩展查询范围。 例如，假设“dog”、“canine”和“puppy”是同义词，则对“canine”的查询会匹配包含“dog”的文档。
+在搜索服务中，同义词映射是一种全球资源，它关联等效术语，扩大查询范围，让用户无需实际提供该术语。 例如，假设“狗”、“狗狗”和“小狗”为映射同义词，则对“狗狗”的查询会匹配包含“狗”的文档。
 
 ## <a name="create-synonyms"></a>创建同义词
 
@@ -38,7 +38,13 @@ POST /synonymmaps?api-version=2020-06-30
 }
 ```
 
-若要创建同义词映射，请使用[创建同义词映射 (REST API)](/rest/api/searchservice/create-synonym-map) 或 Azure SDK。 对于 C# 开发人员，建议从[使用 C# 在 Azure 认知搜索中添加同义词](search-synonyms-tutorial-sdk.md)开始。
+要创建同义词映射，请以编程方式（门户不支持同义词映射定义）进行：
+
++ [创建同义词映射 (REST API)](/rest/api/searchservice/create-synonym-map)。 此参考最具说明性。
++ [SynonymMap 类 (.NET)](/dotnet/api/azure.search.documents.indexes.models.synonymmap) 和[使用 C# 添加同义词](search-synonyms-tutorial-sdk.md)
++ [SynonymMap 类 (Python)](/python/api/azure-search-documents/azure.search.documents.indexes.models.synonymmap)
++ [SynonymMap 接口 (JavaScript)](/javascript/api/@azure/search-documents/synonymmap)
++ [SynonymMap 类 (Java)](/java/api/com.azure.search.documents.indexes.models.synonymmap)
 
 ## <a name="define-rules"></a>定义规则
 
@@ -85,7 +91,14 @@ POST /synonymmaps?api-version=2020-06-30
 
 ### <a name="escaping-special-characters"></a>转义特殊字符
 
-在查询处理过程中分析同义词。 如果需要定义包含逗号或其他特殊字符的同义词，可以使用反斜杠对其进行转义，如以下示例所示：
+全文搜索与任何其他查询术语一样，都会在查询处理过程中分析同义词，这意味着保留字符和特殊字符的规则适用于同义词映射中的术语。 需要转义的字符列表在简单语法和完整语法中有所不同：
+
++ [简单语法](query-simple-syntax.md)  `+ | " ( ) ' \`
++ [完整语法](query-lucene-syntax.md) `+ - & | ! ( ) { } [ ] ^ " ~ * ? : \ /`
+
+回想一下，如果需要保留在索引过程中会被默认分析器丢弃的字符，则应替换为保留字符的分析器。 可供选择的一些项包括 Microsoft 自然[语言分析器](index-add-language-analyzers.md)（它会保留带连字符的单词）和自定义分析器（用于更复杂的模式）。 有关详细信息，请参阅[部分词语、模式和特殊字符](search-query-partial-matching.md)。
+
+以下示例展示了如何通过反斜杠对字符进行转义：
 
 ```json
 {

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 5c7c3d69bb26773171e9e0afc9f79ff25909a12a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acc47d8744b59a175b37eb571646ae5ef3a42454
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99807286"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749336"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>自动根据 Microsoft 安全警报创建事件
 
@@ -29,6 +29,7 @@ ms.locfileid: "99807286"
 可以按照本文中的说明操作，轻松地将 Azure Sentinel 配置为每次在连接的 Microsoft 安全解决方案中触发警报时自动创建事件。
 
 ## <a name="prerequisites"></a>先决条件
+
 必须[连接 Microsoft 安全解决方案](connect-data-sources.md#data-connection-methods)，然后才能根据安全服务警报创建事件。
 
 ## <a name="using-microsoft-security-incident-creation-analytics-rules"></a>使用 Microsoft 安全事件创建分析规则
@@ -55,10 +56,11 @@ ms.locfileid: "99807286"
 
     ![事件创建规则](media/incidents-from-alerts/incident-creation-rule.png)
 
-  可以按“Microsoft 安全服务”类型创建多条 Microsoft 安全分析规则 。 这不会创建重复事件，因为每条规则都用作筛选器。 即使某个警报与多条 Microsoft 安全分析规则匹配，它也只创建一个 Azure Sentinel 事件。
+    可以按“Microsoft 安全服务”类型创建多条 Microsoft 安全分析规则 。 这不会创建重复事件，因为每条规则都用作筛选器。 即使某个警报与多条 Microsoft 安全分析规则匹配，它也只创建一个 Azure Sentinel 事件。
 
 ## <a name="enable-incident-generation-automatically-during-connection"></a>允许在连接期间自动生成事件
- 连接 Microsoft 安全解决方案时，可以选择是否希望安全解决方案中的警报自动在 Azure Sentinel 中生成事件。
+
+连接 Microsoft 安全解决方案时，可以选择是否希望安全解决方案中的警报自动在 Azure Sentinel 中生成事件。
 
 1. 连接 Microsoft 安全解决方案数据源。 
 
@@ -69,4 +71,4 @@ ms.locfileid: "99807286"
 ## <a name="next-steps"></a>后续步骤
 
 - 若要开始使用 Azure Sentinel，需要订阅 Microsoft Azure。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/free/)。
-- 了解如何[将数据载入到 Azure Sentinel](quickstart-onboard.md)，以及[获取数据和潜在威胁的见解](quickstart-get-visibility.md)。
+- 了解如何[将数据载入到 Azure Sentinel](quickstart-onboard.md)，以及[获取数据和潜在威胁的见解](get-visibility.md)。

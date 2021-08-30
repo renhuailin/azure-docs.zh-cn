@@ -404,7 +404,7 @@
           href: how-to-managed-cluster-configuration.md
         - name: 将 VM 规模集扩展添加到托管群集节点类型
           href: how-to-managed-cluster-vmss-extension.md
-        - name: 添加 NSG 规则和其他托管群集网络选项
+        - name: 配置托管群集网络设置
           href: how-to-managed-cluster-networking.md
         - name: 配置托管群集可用性区域范围
           href: how-to-managed-cluster-availability-zones.md
@@ -414,14 +414,16 @@
           href: how-to-managed-cluster-managed-disk.md
         - name: 配置托管群集升级选项
           href: how-to-managed-cluster-upgrades.md
-        - name: 部署托管群集应用程序机密
+        - name: 将应用程序机密部署到托管群集
           href: how-to-managed-cluster-application-secrets.md
-        - name: 使用 ARM 模板部署托管群集应用程序
+        - name: 使用 Azure 资源管理器将应用程序部署到托管群集
           href: how-to-managed-cluster-app-deployment-template.md
-        - name: 使用托管标识部署托管群集应用程序
+        - name: 将具有托管标识的应用程序部署到托管群集
           href: how-to-managed-cluster-application-managed-identity.md
         - name: 将仅无状态节点类型部署到托管群集
           href: how-to-managed-cluster-stateless-node-type.md
+        - name: 配置辅助节点类型用于在托管群集上大规模缩放
+          href: how-to-managed-cluster-large-virtual-machine-scale-sets.md
         - name: 将托管标识用于托管群集节点
           href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: 设置开发环境
@@ -762,7 +764,7 @@
           href: service-fabric-how-to-specify-environment-variables.md
         - name: 部署或删除应用程序
           items:
-            - name: Azure 资源管理器
+            - name: Azure Resource Manager
               href: service-fabric-application-arm-resource.md
             - name: Azure PowerShell
               href: service-fabric-deploy-remove-applications.md

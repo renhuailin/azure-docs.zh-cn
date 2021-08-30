@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 0b29c9ceb5ad8cd7adb38582d087e91c2fe6e8b1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 86a5d327e00ee7c9595cc586aa7e63023a386bba
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743464"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586538"
 ---
 # <a name="iot-central-operator-guide"></a>IoT Central 操作员指南
 
@@ -35,7 +35,7 @@ IoT Central 应用程序使你可以在设备整个生命周期内监视和管�
 
 若要管理单个设备，操作员可以使用设备视图来设置设备和云属性，并调用设备命令。 例如，在前面的屏幕截图中添加“**管理设备**”和“**命令**”视图。
 
-若要批量管理设备，操作员可以创建和计划作业。 作业可以在多个设备上更新属性并运行命令。 若要了解详细信息，请参阅“[在 Azure IoT Central 应用程序中创建并运行作业](howto-run-a-job.md)”。
+若要批量管理设备，操作员可以创建和计划作业。 作业可以在多个设备上更新属性并运行命令。 若要了解详细信息，请参阅“[在 Azure IoT Central 应用程序中创建并运行作业](howto-manage-devices-in-bulk.md)”。
 
 ## <a name="troubleshoot-and-remediate-issues"></a>排查和修正问题
 
@@ -43,11 +43,11 @@ IoT Central 应用程序使你可以在设备整个生命周期内监视和管�
 
 ## <a name="add-and-remove-devices"></a>添加和删除设备
 
-操作员可以单独或批量向 IoT Central 应用程序添加或删除设备。 要了解详细信息，请参阅“[在 Azure IoT Central 应用程序中管理设备](howto-manage-devices.md)”。
+操作员可以单独或批量向 IoT Central 应用程序添加或删除设备。 要了解详细信息，请参阅“[在 Azure IoT Central 应用程序中管理设备](howto-manage-devices-individually.md)”。
 
 ## <a name="personalize"></a>个性化设置
 
-操作员可以在 IoT Central 应用程序中创建个性化的仪表板，其中包含指向常用资源的链接。 若要了解详细信息，请参阅“[管理仪表板](howto-create-personal-dashboards.md#manage-dashboards)”。
+操作员可以在 IoT Central 应用程序中创建个性化的仪表板，其中包含指向他们常用资源的链接。 若要了解详细信息，请参阅“[管理仪表板](howto-manage-dashboards.md)”。
 
 ## <a name="next-steps"></a>后续步骤
 

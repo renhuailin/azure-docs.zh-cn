@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 02/11/2021
-ms.openlocfilehash: 3802d25ebd8f21ab5b8991a66ceb6650f2f276a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: 14b11cca3eca6f3d0b89889a4eb1abf3f04f5715
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461702"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113487644"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure Purview 中用于源身份验证的凭据
 
@@ -25,6 +25,17 @@ ms.locfileid: "103461702"
 ## <a name="introduction"></a>简介
 
 凭据是可供 Azure Purview 用来对已注册的数据源进行身份验证的身份验证信息。 可为各种类型的身份验证方案（例如，需要用户名/密码的基本身份验证）创建凭据对象。 凭据根据所选类型的身份验证方法，捕获进行身份验证所需的特定信息。 在凭据创建过程中，凭据使用现有的 Azure 密钥保管库机密来检索敏感的身份验证信息。
+
+在 Azure Purview 中，有几个选项可用作身份验证方法来扫描数据源，例如以下选项：
+
+- Azure Purview 托管标识
+- 账户密钥（使用 Key Vault）
+- SQL 身份验证（使用 Key Vault）
+- 服务主体（使用 Key Vault）
+
+在创建任何凭据之前，请考虑数据源类型和网络要求，确定方案需要哪种身份验证方法。 查看以下决策树，查找最适合的凭据：
+
+   :::image type="content" source="media/manage-credentials/manage-credentials-decision-tree-small.png" alt-text="管理凭据决策树" lightbox="media/manage-credentials/manage-credentials-decision-tree.png":::
 
 ## <a name="use-purview-managed-identity-to-set-up-scans"></a>使用 Purview 托管标识来设置扫描
 
@@ -57,13 +68,26 @@ ms.locfileid: "103461702"
 
 ## <a name="grant-the-purview-managed-identity-access-to-your-azure-key-vault"></a>授予 Purview 托管标识对 Azure 密钥保管库的访问权限
 
+目前 Azure 密钥保管库支持两种权限模型：
+
+- 选项 1 - 访问策略 
+- 选项 2 - 基于角色的访问控制 
+
+在分配对 Purview 托管标识的访问权限之前，请先从菜单的密钥保管库资源“访问策略”确定你的 Azure 密钥保管库权限模型。 根据相关的权限模型，执行以下步骤。  
+
+:::image type="content" source="media/manage-credentials/akv-permission-model.png" alt-text="Azure 密钥保管库权限模型"::: 
+
+### <a name="option-1---assign-access-using-key-vault-access-policy"></a>选项 1 - 使用密钥保管库访问策略分配访问权限  
+
+只有当 Azure 密钥保管库资源中的权限模型设置为“保管库访问策略”时，才执行以下步骤：
+
 1. 导航到你的 Azure 密钥保管库。
 
 2. 选择“访问策略”页。
 
 3. 选择“添加访问策略”。
 
-   :::image type="content" source="media/manage-credentials/add-msi-to-akv.png" alt-text="将 Purview MSI 添加到 AKV":::
+   :::image type="content" source="media/manage-credentials/add-msi-to-akv-2.png" alt-text="将 Purview MSI 添加到 AKV":::
 
 4. 在“机密权限”下拉列表中，选择“获取”和“列出”权限。  
 
@@ -76,6 +100,21 @@ ms.locfileid: "103461702"
 7. 选择“保存”以保存访问策略。
 
    :::image type="content" source="media/manage-credentials/save-access-policy.png" alt-text="保存访问策略":::
+
+### <a name="option-2---assign-access-using-key-vault-azure-role-based-access-control"></a>选项 2 - 使用密钥保管库 Azure 基于角色的访问控制分配访问权限 
+
+只有当 Azure 密钥保管库资源中的权限模型设置为“Azure 基于角色的访问控制”时，才执行以下步骤：
+
+1. 导航到你的 Azure 密钥保管库。
+
+2. 在左侧导航栏菜单中，选择“访问控制 (IAM)”。
+
+3. 选择“+ 添加”。
+
+4. 将“角色”设置为“密钥保管库机密用户”，然后在“选择”输入框下输入 Azure Purview 帐户名称。 然后，选择“保存”，将此角色分配给 Purview 帐户。
+
+   :::image type="content" source="media/manage-credentials/akv-add-rbac.png" alt-text="Azure 密钥保管库 RBAC":::
+
 
 ## <a name="create-a-new-credential"></a>创建新凭据
 

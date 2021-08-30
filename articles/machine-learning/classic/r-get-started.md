@@ -1,6 +1,6 @@
 ---
 title: 在机器学习工作室（经典版）中使用 R - Azure
-description: 通过本 R 编程教程，在 Azure 机器学习工作室（经典版）中使用 R 创建预测解决方案。
+description: 通过本 R 编程教程，开始在机器学习工作室（经典版）中使用 R 创建预测解决方案。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,19 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: c619b51f9323477bda4f1ec99aeeb1bfa01028fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46cefe1e7f535a066125f368e1c80497a1a28d3f
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517733"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579767"
 ---
-# <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>在 Azure 机器学习工作室（经典版）中使用 R
+# <a name="get-started-with-machine-learning-studio-classic-in-r"></a>开始在机器学习工作室（经典版）中使用 R
 
-**适用对象：** ![这是复选标记，意味着本文适用于机器学习工作室（经典版）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）   ![这是 X，意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+适用范围：![这是复选标记，意味着本文适用于](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）![机器学习工作室（经典版）   这是 X，意味着本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 <!-- Stephen F Elston, Ph.D. -->
-本教程介绍如何使用 Azure 机器学习工作室（经典版）创建、测试和执行 R 代码。 学完本教程后，你将获得一个完整的预测解决方案。
+本教程介绍如何使用机器学习工作室（经典版）创建、测试和执行 R 代码。 学完本教程后，你将获得一个完整的预测解决方案。
 
 > [!div class="checklist"]
 > * 创建用于数据清理和转换的代码。
@@ -187,7 +187,7 @@ cadairydata <- maml.mapInputPort(1)
 str(cadairydata)
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata)
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio (classic)
+## Machine Learning Studio (classic)
 maml.mapOutputPort('cadairydata')
 ```
 
@@ -226,7 +226,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
    str(cadairydata)
    pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata)
    ## The following line should be executed only when running in
-   ## Azure Machine Learning Studio (classic)
+   ## Machine Learning Studio (classic)
    maml.mapOutputPort('cadairydata')
    ```
 
@@ -369,7 +369,7 @@ cadairydata <- maml.mapInputPort(1)
 cadairydata$Month <- as.factor(cadairydata$Month)
 str(cadairydata) # Check the result
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio (classic)
+## Machine Learning Studio (classic)
 maml.mapOutputPort('cadairydata')
 ```
 
@@ -904,7 +904,7 @@ outframe
 
 
 ## WARNING!
-## The following line works only in Azure Machine Learning Studio (classic)
+## The following line works only in Machine Learning Studio (classic)
 ## When running in RStudio, this code will result in an error
 #maml.mapOutputPort('outframe')
 ```
@@ -1159,7 +1159,7 @@ predict2  <- predict(milk.lm2, cadairydata)
 
 ## Compute and plot the residuals
 residuals <- cadairydata$Milk.Prod - predict2
-plot(cadairytrain$Time, residuals[1:216], xlab = "Time&quot;, ylab =&quot;Residuals of Seasonal Model")
+plot(cadairytrain$Time, residuals[1:216], xlab = "Time", ylab ="Residuals of Seasonal Model")
 ```
 
 残差图如此处所示。
@@ -1261,7 +1261,7 @@ rowNames = c("Trend Model", "Seasonal Model"),
 RMS.df
 
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio (classic)
+## Machine Learning Studio (classic)
 maml.mapOutputPort('RMS.df')
 ```
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 0b3996df3c75ff31d0825be1d332dbd055305963
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: dcff46bb93d09d086000dad6e983275d87bc8950
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259755"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587366"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>配置其他 Azure HPC 缓存设置
 
@@ -81,7 +81,7 @@ Azure HPC 缓存已自动配置为使用安全便捷的 Azure DNS 系统。 但�
 
 ### <a name="refresh-storage-target-dns"></a>刷新存储目标 DNS
 
-如果 DNS 服务器更新了 IP 地址，关联的 NFS 存储目标将暂时不可用。 请参阅[编辑存储目标](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only)了解如何更新自定义 DNS 系统 IP 地址。
+如果 DNS 服务器更新了 IP 地址，关联的 NFS 存储目标将暂时不可用。 请参阅[管理存储目标](manage-storage-targets.md#update-ip-address-custom-dns-configurations-only)了解如何更新自定义 DNS 系统 IP 地址。
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>查看 Blob 存储目标的快照
 

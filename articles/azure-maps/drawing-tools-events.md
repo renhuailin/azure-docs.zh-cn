@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 6abe0ed88adbdf8263aa27d340fb2fff156d98e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: edb3b0bdcd5d8e9f80493267cad3ccbfa07a576f
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90089337"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665203"
 ---
 # <a name="drawing-tool-events"></a>绘图工具事件
 
@@ -24,6 +24,7 @@ ms.locfileid: "90089337"
 | `drawingchanged` | 在添加或更改形状中的任何坐标时触发。 | 
 | `drawingchanging` | 在显示形状的任何预览坐标时触发。 例如，此事件将在拖动坐标时多次触发。 | 
 | `drawingcomplete` | 在形状完成绘制或退出编辑模式时触发。 |
+| `drawingerased` | 当在 `erase-geometry` 模式下从绘图管理器中擦除形状时触发。 |
 | `drawingmodechanged` | 在更改绘制模式时触发。 新绘制模式会传入事件处理程序。 |
 | `drawingstarted` | 在用户开始绘制形状或将形状置于编辑模式时触发。  |
 

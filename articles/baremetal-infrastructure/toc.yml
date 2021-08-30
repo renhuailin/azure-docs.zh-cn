@@ -69,14 +69,16 @@
               href: ../virtual-machines/workloads/sap/troubleshooting-monitoring.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: HANA 端的监视和故障排除
               href: ../virtual-machines/workloads/sap/hana-monitor-troubleshoot.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
-            - name: Azure Monitor for SAP Solutions 概述
-              href: ../virtual-machines/workloads/sap/azure-monitor-overview.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+            - name: 监视 Azure 上的 SAP
+              href: ../virtual-machines/workloads/sap/monitor-sap-on-azure.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: Azure Monitor for SAP Solutions 提供程序
               href: ../virtual-machines/workloads/sap/azure-monitor-providers.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: 部署 Azure Monitor for SAP Solutions - Azure 门户
               href: ../virtual-machines/workloads/sap/azure-monitor-sap-quickstart.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: 部署 Azure Monitor for SAP Solutions - Azure PowerShell
               href: ../virtual-machines/workloads/sap/azure-monitor-sap-quickstart-powershell.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+            - name: 监视数据参考
+              href: ../virtual-machines/workloads/sap/monitor-sap-on-azure-reference.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: 适用于 SAP 的 Azure Monitor 解决方案常见问题解答
               href: ../virtual-machines/workloads/sap/azure-monitor-faq.yml?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
         - name: 如何

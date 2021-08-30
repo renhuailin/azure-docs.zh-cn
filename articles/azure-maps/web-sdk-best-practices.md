@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 31db8c4d8a371aaad939e3a85972958befb2206e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 630b354768e3ad0882911f11a99cca06fc87154e
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137556"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234422"
 ---
 # <a name="azure-maps-web-sdk-best-practices"></a>Azure Maps Web SDK 最佳做法
 
@@ -405,7 +405,7 @@ https://azure.com/support
 
 **从哪里获取 Azure Maps 的技术帮助？**
 
-如果与 Power BI 中的 Azure Maps 视觉对象相关： https://powerbi.microsoft.com/support/ 对于所有其他 Azure Maps 服务： https://azure.com/support 或开发人员论坛： https://docs.microsoft.com/answers/topics/azure-maps.html
+如果与 Power BI 中的 Azure Maps 视觉对象相关： https://powerbi.microsoft.com/support/ 对于所有其他 Azure Maps 服务： https://azure.com/support 或开发人员论坛：[https://docs.microsoft.com/answers/topics/azure-maps.html](/answers/topics/azure-maps.html)。
 
 **如何发出功能请求？**
 

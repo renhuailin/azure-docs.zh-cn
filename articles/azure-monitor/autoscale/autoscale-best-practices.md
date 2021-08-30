@@ -4,18 +4,17 @@ description: Azure 中适用于 Web 应用、虚拟机规模集和云服务的�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 5a49c9812848d9ef8cbe5a4499fb1430ca146855
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 42cef2578ed95e7d7935079569e34b221bdd6830
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738421"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114454158"
 ---
 # <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
 Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](../../api-management/api-management-key-concepts.md)。
 
 ## <a name="autoscale-concepts"></a>自动缩放概念
-
 * 一个资源只能具有 *一个* 自动缩放设置
 * 自动缩放设置可以具有一个或多个配置文件，每个配置文件可以具有一个或多个自动缩放规则。
 * 自动缩放设置可水平缩放实例，它在增加实例时是 *扩大*，在减少实例数时是 *缩小*。
@@ -26,19 +25,16 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 * 同样，所有成功的缩放操作也会发布到活动日志中。 然后可以配置活动日志警报，以便在自动缩放操作成功时通过电子邮件、短信或 Webhook 获得通知。 还可以配置电子邮件或 Webhook 通知，以通过自动缩放设置上的通知选项卡获取有关成功缩放操作的通知。
 
 ## <a name="autoscale-best-practices"></a>自动缩放最佳做法
-
 使用自动缩放时，可使用以下最佳做法。
 
 ### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>确保最大和最小值不同，并且它们之间具有足够的余量
-
 如果设置的最小值为 2，最大值为 2，并且当前实例计数为 2，则不可能进行缩放操作。 在最大和最小实例计数之间保留足够的余量（包括端值）。 自动缩放始终在这些限制之间进行。
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>手动缩放通过自动缩放最小和最大值来重置
-
 如果手动将实例计数更新为高于或低于最大值的值，则自动缩放引擎会自动缩放回最小值（如果低于）或最大值（如果高于）。 例如，将范围设置在 3 和 6 之间。 如果有一个正在运行的实例，则自动缩放引擎会在下次运行时缩放为三个实例。 同样，如果将缩放规模手动设置为八个实例，则自动缩放会在下次运行时收缩回六个实例。  手动缩放效果只是暂时的，除非也重置了自动缩放规则。
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>始终使用执行增加和减少的扩大和缩小规则组合
-如果仅使用组合的一个部件，则自动缩放将仅在单个方向采取操作（横向扩展或收缩），直至它达到配置文件中定义的最大或最小实例计数。 这不是最佳的，理想情况下，你希望资源在使用率过高时纵向扩展以确保可用性。 同样，当使用率过低时，你希望资源纵向缩减，以便可以实现成本节省。
+如果仅使用组合的一个部件，则自动缩放将仅在单个方向采取操作（横向扩展或缩减），直至它达到配置文件中定义的最大或最小实例计数。 这不是最佳的，理想情况下，你希望资源在使用率过高时纵向扩展以确保可用性。 同样，当使用率过低时，你希望资源纵向缩减，以便可以实现成本节省。
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>为诊断指标选择相应统计信息
 对于诊断指标，可以选择“平均值”  、“最小值”  、“最大值”  和“总计”  作为用作缩放依据的指标。 最常见的统计信息是“平均值”  。
@@ -78,7 +74,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 > 如果自动缩放引擎检测到由于缩放到目标实例数而可能发生摆动，则它还会尝试缩放到当前计数和目标计数之间的不同实例数。 如果在该范围内未发生摆动，则自动缩放会继续新目标的缩放操作。
 
 ### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>有关特殊指标的缩放阈值的注意事项
- 对于特殊指标（如存储或服务总线队列长度指标），阈值是按照当前实例数可用的消息平均数。 请慎重选择此指标的阈值。
+对于特殊指标（如存储或服务总线队列长度指标），阈值是按照当前实例数可用的消息平均数。 请慎重选择此指标的阈值。
 
 我们来通过一个示例演示它，以确保更好地了解行为。
 
@@ -115,7 +111,6 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 ![自动缩放设置](./media/autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>有关在配置文件中配置多个规则时进行自动缩放的注意事项
-
 在某些情况下可能必须在一个配置文件中设置多个规则。 设置了多个规则时，自动缩放引擎将使用以下自动缩放规则。
 
 进行横向扩展时，只要满足任一规则，自动缩放就会运行。

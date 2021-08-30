@@ -6,21 +6,23 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 133b77653abea93ef87b58ff223b7cbb267921c5
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 46a451fd41f460165435305f2abf5d56fca4837d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001675"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778386"
 ---
 # <a name="connect-to-azure-database-for-mysql---flexible-server-with-encrypted-connections"></a>连接到具有加密连接 Azure Database for MySQL - 灵活服务器
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供
 
 Azure Database for MySQL 灵活服务器支持使用安全套接字层 (SSL) 和传输层安全性 (TLS) 加密将客户端应用程序连接到 MySQL 服务器。 TLS 是一种行业标准协议，可确保在数据库服务器与客户端应用程序之间实现加密的网络连接，使你能够满足合规性要求。
 
-默认情况下，Azure Database for MySQL 灵活服务器支持使用传输层安全性 (TLS 1.2) 的加密连接，并且会拒绝所有使用 TLS 1.0 和 TLS 1.1 的传入连接。 你的灵活服务器上的加密连接强制要求或 TLS 版本配置可以按照本文中的说明进行更改。 
+默认情况下，Azure Database for MySQL 灵活服务器支持使用传输层安全性 (TLS 1.2) 的加密连接，并且会拒绝所有使用 TLS 1.0 和 TLS 1.1 的传入连接。 你的灵活服务器上的加密连接强制要求或 TLS 版本配置可以按照本文中的说明进行更改。
 
 下面是适用于灵活服务器的 SSL 和 TLS 设置的不同配置：
 
@@ -35,32 +37,36 @@ Azure Database for MySQL 灵活服务器支持使用安全套接字层 (SSL) 和
 > 不支持对灵活服务器上的 SSL 密码进行更改。 将 tls_version 设置为 TLS 版本 1.2 时，默认强制使用 FIPS 密码套件。 对于版本 1.2 以外的其他 TLS 版本，SSL 密码将设为 MySQL 社区安装附带的默认设置。
 
 在本文中，你将学习如何：
-* 在以下条件下配置灵活服务器 
-  * 禁用 SSL 
+
+* 在以下条件下配置灵活服务器
+  * 禁用 SSL
   * 强制使用 SSL 和低于 1.2 的 TLS 版本
-* 在以下条件下使用 mysql 命令行连接到灵活服务器 
+* 在以下条件下使用 mysql 命令行连接到灵活服务器
   * 禁用加密连接
   * 启用加密连接
 * 验证连接的加密状态
 * 使用各种应用程序框架以加密连接方式连接到灵活服务器
 
 ## <a name="disable-ssl-enforcement-on-your-flexible-server"></a>在灵活服务器上禁用 SSL 强制要求
+
 如果你的客户端应用程序不支持加密连接，你需要在灵活服务器上禁用加密连接强制要求。 要禁用加密连接强制要求，需要将 require_secure_transport 服务器参数设置为“OFF”（如屏幕截图所示），并保存服务器参数配置，以使其生效。 require_secure_transport 是一个动态服务器参数，它会立即生效，无需重启服务器。
 
 > :::image type="content" source="./media/how-to-connect-tls-ssl/disable-ssl.png" alt-text="屏幕截图显示如何禁用 Azure Database for MySQL 灵活服务器的 SSL。":::
 
 ### <a name="connect-using-mysql-command-line-client-with-ssl-disabled"></a>在禁用 SSL 的情况下使用 mysql 命令行客户端进行连接
 
-以下示例演示如何使用 mysql 命令行界面连接到服务器。 使用 `--ssl-mode=DISABLED` 连接字符串设置来禁用来自 mysql 客户端的 TLS/SSL 连接。 将值替换为实际的服务器名称和密码。 
+以下示例演示如何使用 mysql 命令行界面连接到服务器。 使用 `--ssl-mode=DISABLED` 连接字符串设置来禁用来自 mysql 客户端的 TLS/SSL 连接。 将值替换为实际的服务器名称和密码。
 
 ```bash
  mysql.exe -h mydemoserver.mysql.database.azure.com -u myadmin -p --ssl-mode=DISABLED 
 ```
+
 请务必注意，将 require_secure_transport 设置为 OFF 并不意味着服务器端不支持加密连接。 如果在灵活服务器上将 require_secure_transport 设置为 OFF，则在客户端以加密连接方式连接时，仍然会被接受。 使用 mysql 客户端连接到配置了 require_secure_transport=OFF 的灵活服务器后，也可以正常工作，如下所示。
 
 ```bash
  mysql.exe -h mydemoserver.mysql.database.azure.com -u myadmin -p --ssl-mode=REQUIRED
 ```
+
 ```output
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 17
@@ -94,6 +100,7 @@ mysql> show global variables like '%require_secure_transport%';
 ## <a name="connect-using-mysql-command-line-client-with-tlsssl"></a>使用 mysql 命令行客户端通过 TLS/SSL 进行连接
 
 ### <a name="download-the-public-ssl-certificate"></a>下载公共 SSL 证书
+
 若要对客户端应用程序使用加密连接，需要下载[公共 SSL 证书](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)，该证书也在 Azure 门户“网络”边栏选项卡中提供，如以下屏幕截图中所示。
 
 > :::image type="content" source="./media/how-to-connect-tls-ssl/download-ssl.png" alt-text="屏幕截图显示如何从 Azure 门户下载公共 SSL 证书。":::
@@ -104,15 +111,16 @@ mysql> show global variables like '%require_secure_transport%';
 
 如果使用“公共访问(允许的 IP 地址)”创建了灵活服务器，可以将本地 IP 地址添加到服务器上的防火墙规则列表中。
 
-可以选择 [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) 或 [MySQL Workbench](./connect-workbench.md)，以便从本地环境连接到服务器。 
+可以选择 [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) 或 [MySQL Workbench](./connect-workbench.md)，以便从本地环境连接到服务器。
 
-以下示例演示如何使用 mysql 命令行界面连接到服务器。 使用 `--ssl-mode=REQUIRED` 连接字符串设置强制实施 TLS/SSL 证书验证。 将本地证书文件路径传递给 `--ssl-ca` 参数。 将值替换为实际的服务器名称和密码。 
+以下示例演示如何使用 mysql 命令行界面连接到服务器。 使用 `--ssl-mode=REQUIRED` 连接字符串设置强制实施 TLS/SSL 证书验证。 将本地证书文件路径传递给 `--ssl-ca` 参数。 将值替换为实际的服务器名称和密码。
 
 ```bash
 sudo apt-get install mysql-client
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
+
 > [!Note]
 > 确认传递给 `--ssl-ca` 的值与你保存的证书的文件路径匹配。
 
@@ -129,7 +137,8 @@ ERROR 3159 (HY000): Connections using insecure transport are prohibited while --
 ```dos
 mysql> status
 ```
-查看输出，确认连接是否已加密，如果已加密，输出应显示为：“**SSL: 使用中的密码为 **”。 此密码套件显示了一个示例。你可能会看到不同的密码套件，具体取决于客户端。
+
+查看输出，确认连接是否已加密，如果已加密，输出应显示为：“SSL: 使用的密码为”。 此密码套件显示了一个示例。你可能会看到不同的密码套件，具体取决于客户端。
 
 ## <a name="connect-to-your-flexible-server-with-encrypted-connections-using-various-application-frameworks"></a>使用各种应用程序框架以加密连接方式连接到灵活服务器
 
@@ -138,7 +147,8 @@ mysql> status
 若要从应用程序通过 TLS/SSL 与灵活服务器建立加密连接，请参阅以下代码示例：
 
 ### <a name="wordpress"></a>WordPress
-下载 [SSL 公共证书](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)，在 wp-config.php 中的 ```// ** MySQL settings - You can get this info from your web host ** //``` 行之后添加以下几行。
+
+下载 [SSL 公共证书](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)，在 wp-config.php 中的 ```// **MySQL settings - You can get this info from your web host** //``` 行之后添加以下几行。
 
 ```php
 //** Connect with SSL** //
@@ -238,6 +248,7 @@ db, _ := sql.Open("mysql", connectionString)
 
 ```java
 # generate truststore and keystore in code
+
 String importCert = " -import "+
     " -alias mysqlServerCACert "+
     " -file " + ssl_ca +
@@ -252,6 +263,7 @@ sun.security.tools.keytool.Main.main(importCert.trim().split("\\s+"));
 sun.security.tools.keytool.Main.main(genKey.trim().split("\\s+"));
 
 # use the generated keystore and truststore
+
 System.setProperty("javax.net.ssl.keyStore","path_to_keystore_file");
 System.setProperty("javax.net.ssl.keyStorePassword","password");
 System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file");
@@ -267,6 +279,7 @@ conn = DriverManager.getConnection(url, properties);
 
 ```java
 # generate truststore and keystore in code
+
 String importCert = " -import "+
     " -alias mysqlServerCACert "+
     " -file " + ssl_ca +
@@ -281,6 +294,7 @@ sun.security.tools.keytool.Main.main(importCert.trim().split("\\s+"));
 sun.security.tools.keytool.Main.main(genKey.trim().split("\\s+"));
 
 # use the generated keystore and truststore
+
 System.setProperty("javax.net.ssl.keyStore","path_to_keystore_file");
 System.setProperty("javax.net.ssl.keyStorePassword","password");
 System.setProperty("javax.net.ssl.trustStore","path_to_truststore_file");
@@ -311,6 +325,7 @@ using (var connection = new MySqlConnection(builder.ConnectionString))
 ```
 
 ### <a name="nodejs"></a>Node.js
+
 ```node
 var fs = require('fs');
 var mysql = require('mysql');
@@ -332,8 +347,9 @@ conn.connect(function(err) {
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- [使用 MySQL Workbench 连接到 Azure Database for MySQL 灵活服务器并查询其中的数据](./connect-workbench.md)
-- [使用 PHP 连接到 Azure Database for MySQL 灵活服务器并查询其中的数据](./connect-php.md)
-- [使用 Azure CLI 创建和管理 Azure Database for MySQL 灵活服务器虚拟网络](./how-to-manage-virtual-network-cli.md)。
-- 详细了解 [Azure Database for MySQL 灵活服务器中的网络](./concepts-networking.md)
-- 详细了解 [Azure Database for MySQL 灵活服务器防火墙规则](./concepts-networking.md#public-access-allowed-ip-addresses)
+
+* [使用 MySQL Workbench 连接到 Azure Database for MySQL 灵活服务器并查询其中的数据](./connect-workbench.md)
+* [使用 PHP 连接到 Azure Database for MySQL 灵活服务器并查询其中的数据](./connect-php.md)
+* [使用 Azure CLI 创建和管理 Azure Database for MySQL 灵活服务器虚拟网络](./how-to-manage-virtual-network-cli.md)。
+* 详细了解 [Azure Database for MySQL 灵活服务器中的网络](./concepts-networking.md)
+* 详细了解 [Azure Database for MySQL 灵活服务器防火墙规则](./concepts-networking-public.md#public-access-allowed-ip-addresses)

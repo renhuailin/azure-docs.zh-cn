@@ -2,14 +2,14 @@
 title: 对 Azure Batch 帐户使用专用终结点
 description: 了解如何使用专用终结点专门连接到 Azure Batch 帐户。
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 08/03/2021
 ms.custom: references_regions
-ms.openlocfilehash: d2e9d36e9e964f2e9f9a5a986fbf55d19b3069d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad3a869f2eee259133c6ab5dd18e1e615825a718
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919997"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725545"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>对 Azure Batch 帐户使用专用终结点
 
@@ -20,7 +20,7 @@ ms.locfileid: "98919997"
 专用链接允许用户从虚拟网络内或任何对等虚拟网络访问 Azure Batch 帐户。 映射到专用链接的资源也可以通过 VPN 或 [Azure ExpressRoute](../expressroute/expressroute-introduction.md) 在本地通过专用对等互连访问。 你可以使用[自动或手动审批方法](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)连接到使用专用链接配置的 Azure Batch 帐户。
 
 > [!IMPORTANT]
-> 在 Azure Batch 中专用连接的支持目前适用于所有区域，除德国中部、德国东北部、中国东部、中国东部 2、中国北部和中国北部 2。
+> 目前，除德国中部和德国东北部以外的所有区域都支持 Azure Batch 中的专用连接。
 
 本文介绍了创建专用 Batch 帐户并使用专用终结点访问该帐户的步骤。
 
@@ -57,7 +57,7 @@ ms.locfileid: "98919997"
 
 :::image type="content" source="media/private-connectivity/access-private.png" alt-text="专用终结点 DNS 设置和 IP 地址":::
 
-## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
+## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
 [使用 Azure 资源管理器模板创建 Batch 帐户](quick-create-template.md)时，请修改模板，将 “publicNetworkAccess”设置为“已禁用”，如下所示。
 

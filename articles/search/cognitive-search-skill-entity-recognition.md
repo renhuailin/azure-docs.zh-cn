@@ -2,22 +2,24 @@
 title: 实体识别认知技能
 titleSuffix: Azure Cognitive Search
 description: 在 Azure 认知搜索中从扩充管道中的文本提取各种类型的实体。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 3300d68c6356cb7cdd56a9ad79eb0ac011942eb2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cf6bae3548a459a1d47dc0dcd55d28a290ca0f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547894"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749384"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
 
 **实体识别** 技能从文本中提取各种类型的实体。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)提供的机器学习模型。
+
+> [!IMPORTANT]
+> 实体识别技能现在已停用，替换为 [Microsoft.Skills.Text.V3.EntityRecognitionSkill](cognitive-search-skill-entity-recognition-v3.md)。 按照[已弃用的认知搜索技能](cognitive-search-skill-deprecated.md)中的建议，迁移到支持的技能。
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
@@ -196,3 +198,4 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 + [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
++ [实体识别技能 (V3)](cognitive-search-skill-entity-recognition-v3.md)

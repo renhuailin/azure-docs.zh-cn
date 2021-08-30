@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/14/2021
-ms.openlocfilehash: 6646a2e5a074219df13f3bf373edfc53310c8104
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 07f208753265e35bbc51c74f74a87a1742fa52ff
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556597"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727472"
 ---
 # <a name="search-over-azure-blob-storage-content"></a>对 Azure Blob 存储内容进行搜索
 
@@ -24,7 +24,7 @@ ms.locfileid: "111556597"
 
 ## <a name="what-it-means-to-add-full-text-search-to-blob-data"></a>将全文搜索添加到 Blob 数据意味着什么
 
-Azure 认知搜索是一项搜索服务，它支持通过用户定义的索引进行的索引编制和查询工作负荷，其中包含在云中托管的远程可搜索内容。 为了提高性能，需将可搜索内容与查询引擎共置在一起，使返回结果的速度与用户预期的搜索查询速度相当。
+Azure 认知搜索是一项搜索服务，支持通过用户定义的索引编制索引和查询工作负载，这些索引包含托管在云中的远程可搜索内容。 为了提高性能，需将可搜索内容与查询引擎共置在一起，使返回结果的速度与用户预期的搜索查询速度相当。
 
 认知搜索在索引层与 Azure Blob 存储集成，将 Blob 内容作为搜索文档导入，并编制到反向索引和其他支持自由格式文本查询和筛选器表达式的查询结构中。 由于 Blob 内容已索引到搜索索引中，因此可以使用 Azure 认知搜索中的所有查询功能来查找 Blob 内容中的信息。
 
@@ -32,13 +32,13 @@ Azure 认知搜索是一项搜索服务，它支持通过用户定义的索引�
 
 输出始终是 Azure 认知搜索索引，用于在客户端应用程序中快速执行搜索、检索和浏览。 输入与输出之间是索引管道体系结构本身。 该管道基于本文将会详细介绍的索引器功能。
 
-创建并填充索引后，该索引将独立于 blob 容器而存在，但你可以重新运行索引操作以基于更改的文档刷新索引。 各个 Blob 中的时间戳信息用于执行更改检测。 可以选择按计划执行或按需索引作为刷新机制。
+创建并填充索引后，该索引将独立于 Blob 容器而存在，但可以重新运行索引操作，基于更改的文档刷新索引。 各个 Blob 中的时间戳信息用于执行更改检测。 可以选择按计划执行或按需索引作为刷新机制。
 
 ## <a name="required-resources"></a>所需资源
 
 同时需要 Azure 认知搜索和 Azure Blob 存储。 在 Blob 存储中，需要一个提供源内容的容器。
 
-可以直接在存储帐户门户页中开始。 在左侧导航页中的“Blob 服务”下，单击“添加 Azure 认知搜索”创建新服务或选择现有服务。  
+可以直接在存储帐户门户页中开始。 在左侧导航页中的“Blob 服务”下，选择“添加 Azure 认知搜索”以创建新服务或选择现有服务 。 
 
 将 Azure 认知搜索添加到存储帐户后，可以遵循标准过程为 Blob 数据编制索引。 我们建议使用 Azure 认知搜索中的“导入数据”向导以轻松完成初始引入，或使用 Postman 等工具调用 REST API。 本教程将引导你完成在 Postman 中调用 REST API 的步骤：[在 Azure 认知搜索中为半结构化数据 (JSON Blob) 编制索引以及搜索此类数据](search-semi-structured-data.md) 
 
@@ -48,7 +48,7 @@ Azure 认知搜索是一项搜索服务，它支持通过用户定义的索引�
 
 Azure 存储中的 Blob 使用 [Azure 认知搜索 Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)编制索引。 可以使用“导入数据”向导、REST API 或 .NET SDK 调用此索引器。  在代码中，使用此索引器的方式是设置类型，并提供包括 Azure 存储帐户和 Blob 容器的连接信息。 可以通过创建虚拟目录（随后可将其作为参数传递），或者筛选文件类型扩展名，来指定 Blob 的子集。
 
-索引器执行“文档破解”，会打开一个 Blob 来检查内容。 这是连接到数据源后，在管道中发生的第一个步骤。 对于 Blob 数据，此步骤会检测 PDF、Office 文档和其他内容类型。 文档破解和文本提取是免费的。 如果 Blob 包含图像内容，则除非[添加 AI 扩充](search-blob-ai-integration.md)，否则会忽略图像。 标准索引仅适用于文本内容。
+索引器[“破解文档”](search-indexer-overview.md#document-cracking)，并打开 Blob 检查来内容。 这是连接到数据源后，在管道中发生的第一个步骤。 对于 Blob 数据，这是检测 PDF、Office 文档和其他内容类型的阶段。 文档破解和文本提取是免费的。 如果 Blob 包含图像内容，则除非[添加 AI 扩充](search-blob-ai-integration.md)，否则会忽略图像。 标准索引仅适用于文本内容。
 
 Blob 索引器附带配置参数，如果基础数据提供足够的信息，则索引器支持更改跟踪。 可以在 [Azure 认知搜索 Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)中详细了解核心功能。
 

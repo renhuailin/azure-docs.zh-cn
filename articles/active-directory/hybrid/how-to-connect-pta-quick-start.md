@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5e71522d53bd4e528b2a5a106a4dcc344df3ab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a85f2d5d928d93bf9e85899e53439a2cc4710448
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732850"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455598"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 直通身份验证：快速入门
 
@@ -51,13 +51,13 @@ ms.locfileid: "105732850"
 
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 
-1. 标识运行 Windows Server 2012 R2 或更高版本的服务器，以在其上运行 Azure AD Connect。 如果尚未启用，请[在服务器上启用 TLS 1.2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)。 将该服务器添加到与需要验证其密码的用户同一 Active Directory 林中。 应注意，不支持在 Windows Server Core 版本上安装直通身份验证代理。 
+1. 标识运行 Windows Server 2016 或更高版本的服务器，以在其上运行 Azure AD Connect。 如果尚未启用，请[在服务器上启用 TLS 1.2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)。 将该服务器添加到与需要验证其密码的用户同一 Active Directory 林中。 应注意，不支持在 Windows Server Core 版本上安装直通身份验证代理。 
 2. 在上一步中标识的服务器上安装[最新版 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。 如果已在运行 Azure AD Connect，请确保其版本为 1.1.750.0 或更高版本。
 
     >[!NOTE]
     >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有密码哈希同步相关问题。 如果不打算将密码哈希同步与直通身份验证结合使用，请参阅 [Azure AD Connect 发行说明](./reference-connect-version-history.md)了解详细信息。
 
-3. 确定可以运行独立身份验证代理的一个或多个其他服务器（在启用 TLS 1.2 的情况下运行 Windows Server 2012 R2 或更高版本）。 需要这些额外的服务器来确保登录请求的高可用性。 将这些服务器添加到需要验证其密码的用户所在的同一 Active Directory 林中。
+3. 确定可以运行独立身份验证代理的一个或多个其他服务器（在启用 TLS 1.2 的情况下运行 Windows Server 2016 或更高版本）。 需要这些额外的服务器来确保登录请求的高可用性。 将这些服务器添加到需要验证其密码的用户所在的同一 Active Directory 林中。
 
     >[!IMPORTANT]
     >在生产环境中，我们建议你在租户上至少运行 3 个身份验证代理。 系统限制每位租户最多安装 40 个身份验证代理。 最佳做法是将运行身份验证代理的所有服务器视为第 0 层系统（请参阅[参考](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)）。
@@ -179,7 +179,7 @@ Smart Lockout 功能可帮助锁定那些试图猜测用户密码或使用暴力
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：了解如何在租户中配置智能锁定功能以保护用户帐户。
 - [当前限制](how-to-connect-pta-current-limitations.md)：了解直通身份验证支持和不支持的方案。
 - [技术深入了解](how-to-connect-pta-how-it-works.md)：了解直通身份验证功能的工作原理。
-- [常见问题](how-to-connect-pta-faq.md)：查找常见问题的解答。
+- [常见问题](how-to-connect-pta-faq.yml)：查找常见问题的解答。
 - [故障诊断](tshoot-connect-pass-through-authentication.md)：了解如何解决直通身份验证功能的常见问题。
 - [安全深入了解](how-to-connect-pta-security-deep-dive.md)：获取直通身份验证功能的技术信息。
 - [Azure AD 无缝 SSO](how-to-connect-sso.md)：深入了解此补充功能。

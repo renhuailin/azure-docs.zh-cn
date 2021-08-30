@@ -3,12 +3,12 @@ title: 使用 REST API 还原 Azure 文件共享
 description: 了解如何使用 REST API 从 Azure 备份创建的还原点还原 Azure 文件共享或特定文件
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 60c73caa5db684e38b94b4d5786f2fd24aa65d08
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7673379df250892671eb01fd2635cca651f69b04
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88761791"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457430"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>使用 Rest API 还原 Azure 文件共享
 
@@ -33,7 +33,7 @@ ms.locfileid: "88761791"
 
 ## <a name="fetch-containername-and-protecteditemname"></a>提取 ContainerName 和 ProtectedItemName
 
-多数与还原相关的 API 调用都需要传递 {containerName} 和 {protectedItemName} URI 参数的值。 使用 [GET backupprotectableitems](/rest/api/backup/protecteditems/get) 操作的响应正文中的 ID 属性检索这些参数的值。 在我们的示例中，要保护的文件共享的 ID 是：
+多数与还原相关的 API 调用都需要传递 {containerName} 和 {protectedItemName} URI 参数的值。 使用 [GET backupprotectableitems](/rest/api/backup/protected-items/get) 操作的响应正文中的 ID 属性检索这些参数的值。 在我们的示例中，要保护的文件共享的 ID 是：
 
 `"/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;afsaccount/protectableItems/azurefileshare;azurefiles`
 
@@ -58,7 +58,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 * {protectedItemName}：azurefileshare;azurefiles
 * {ResourceGroupName}：azurefiles
 
-GET URI 包含所有必需的参数。 无需额外提供请求正文。
+GET URI 包含所有必需的参数。 无需另外提供请求正文。
 
 ```http
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare;azurefiles/recoveryPoints?api-version=2019-05-13

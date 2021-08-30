@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: 5b136a95d841775861c0e4d7c0bba1feec101f0d
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 9d59e8eab9aff857991a886838cc1063a36de00c
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110493773"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112120118"
 ---
 # <a name="use-external-file-storage-in-lab-services"></a>在实验室服务中使用外部文件存储
 
@@ -46,9 +46,9 @@ Azure 实验室服务的使用成本不包括外部存储的使用成本。  有
 - 此方法需要文件共享虚拟网络与实验室帐户建立对等互连。 在创建实验室之前，Azure 存储帐户的虚拟网络必须与实验室帐户的虚拟网络建立对等互连。
 
 > [!NOTE]
-> 仅[本地冗余存储帐户](../storage/files/storage-files-how-to-create-large-file-share.md#restrictions)可进行超过 5TB 的文件共享。
+> 标准文件共享默认可承受最多 5 TiB 的容量。 请参阅[创建 Azure 文件共享](../storage/files/storage-how-to-create-file-share.md)，了解如何创建不超过 100 TiB 的文件共享。
 
-按照以下步骤创建连接到 Azure 文件存储共享的 VM。
+按照以下步骤创建连接到 Azure 文件共享的 VM。
 
 1. 创建 [Azure 存储帐户](../storage/files/storage-how-to-create-file-share.md)。 在“连接方法”页上，选择“公共终结点”或“专用终结点”  。
 2. 如果选择专用终结点，请创建[专用终结点](../private-link/tutorial-private-endpoint-storage-portal.md)，以便从虚拟网络访问文件共享。 创建[专用 DNS 区域](../dns/private-dns-privatednszone.md)，或使用现有的 DNS 区域。 专用 Azure DNS 区域在虚拟网络中提供了名称解析。

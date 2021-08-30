@@ -7,12 +7,12 @@ ms.date: 04/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 87f188b414791636e147a19202b6fcf314d6f307
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 0c087838029a5e7863359564682a6843238421c5
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683636"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964583"
 ---
 # <a name="transform-data-for-iot-central"></a>转换 IoT Central 的数据
 
@@ -35,9 +35,9 @@ IoT 设备发送各种格式的数据。 要将设备数据用于 IoT Central �
 |------------------------|-------------|----------|-------|
 | 消息格式         | 转换为或操作 JSON 消息。 | CSV 转换为 JSON  | 在流入过程中。 IoT Central 仅接受值为 JSON 的消息。 有关详细信息，请参阅[遥测、属性和命令有效负载](concepts-telemetry-properties-commands.md)。 |
 | 计算           | [Azure Functions](../../azure-functions/index.yml) 可以执行的数学函数。 | 从华氏到摄氏的单位换算。  | 使用流出模式进行转换，通过与 IoT Central 的直接连接利用可缩放的设备流入。 通过转换数据，可使用可视化效果和作业等 IoT Central 功能。 |
-| 消息扩充     | 未在设备属性或遥测中找到的来自外部数据源的扩充。 有关内部扩充的详细信息，请参阅[使用数据导出将 IoT 数据导出到云目标](howto-export-data.md) | 使用设备中的位置数据向消息添加天气信息。 | 使用流出模式进行转换，通过与 IoT Central 的直接连接利用可缩放的设备流入。 |
+| 消息扩充     | 未在设备属性或遥测中找到的来自外部数据源的扩充。 有关内部扩充的详细信息，请参阅[使用数据导出将 IoT 数据导出到云目标](howto-export-data.md) | 使用设备中的[位置数据](howto-use-location-data.md)向消息添加天气信息。 | 使用流出模式进行转换，通过与 IoT Central 的直接连接利用可缩放的设备流入。 |
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本操作指南中的步骤，需要：
 

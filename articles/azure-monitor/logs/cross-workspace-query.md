@@ -4,30 +4,32 @@ description: 本文介绍了如何在订阅中跨多个工作区以及从特定�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 04/11/2021
-ms.openlocfilehash: 19cc85751fc5e4a165b646ac89d9d6b6e90c4408
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.date: 06/30/2021
+ms.openlocfilehash: ef7a917b504df521f087e5a2729d5c431e84fd62
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379547"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114295904"
 ---
-# <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>在 Azure Monitor 中执行跨工作区和应用的日志查询
+# <a name="perform-log-queries-in-azure-monitor-that-span-across-workspaces-and-apps"></a>在 Azure Monitor 中执行跨工作区和应用的日志查询
 
 Azure Monitor 日志支持跨同一资源组、另一资源组或另一订阅中的多个 Log Analytics 工作区和 Application Insights 应用进行查询。 这可以提供数据的系统级视图。
 
+如果通过 [Azure Lighthouse](../../lighthouse/overview.md) 管理其他 Azure Active Directory (Azure AD) 租户中的订阅，可以在查询中包括[在这些客户租户中创建的 Log Analytics 工作区](../../lighthouse/how-to/monitor-at-scale.md)。
+
 可以通过两种方法来查询存储在多个工作区和应用中的数据：
+
 1. 通过指定工作区和应用详细信息来显式查询。 本文详细介绍了这一方法。
 2. 隐式使用[资源上下文查询](./design-logs-deployment.md#access-mode)。 当你在特定资源、资源组或订阅的上下文中查询时，将从包含这些资源的数据的所有工作区中提取相关数据。 将不会提取存储在应用中的 Application Insights 数据。
 
 > [!IMPORTANT]
-> 如果使用的是[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)，则遥测与其他所有日志数据一起存储在 Log Analytics 工作区中。 使用 workspace() 表达式编写一个查询，使其在多个工作区中包含应用。 对于同一个工作区中的多个应用，则无需跨工作区查询。
-
+> 如果使用的是[基于工作区的 Application Insights 资源](../app/create-workspace-resource.md)，遥测将与所有其他日志数据一起存储到 Log Analytics 工作区中。 使用 workspace() 表达式编写一个包含多个工作区中的应用程序的查询。 对于同一个工作区中的多个应用，则无需跨工作区查询。
 
 ## <a name="cross-resource-query-limits"></a>跨资源查询限制 
 
 * 可以在单个查询中包含的 Application Insights 资源和 Log Analytics 工作区的数量限制为 100。
-* 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作查询，然后将它固定到 Azure 仪表板以[对日志查询进行可视化处理](../visualize/tutorial-logs-dashboards.md)，或包含在[工作簿](../visualize/workbooks-overview.md)中。
+* 视图设计器不支持跨资源查询。 可以在 Log Analytics 中创作一个查询，将其固定到 Azure 仪表板，以[直观显示日志查询](../visualize/tutorial-logs-dashboards.md)或包含在[工作簿](../visualize/workbooks-overview.md)中。
 * 仅当前 [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) 支持日志警报中的跨资源查询。 如果使用的是旧的 Log Analytics 警报 API，则需要[切换到当前 API](../alerts/alerts-log-api-switch.md)。
 
 
@@ -42,11 +44,11 @@ Azure Monitor 日志支持跨同一资源组、另一资源组或另一订阅中
 * 资源名称 - 用户可读的工作区名称，有时称为“组件名称”。 
 
     >[!IMPORTANT]
-    >因为应用和工作区的名称不唯一，所以此标识符可能不明确。 建议按照限定名称、工作区 ID 或 Azure 资源 ID 进行引用。
+    >因为应用和工作区名称不唯一，所以此标识符可能不明确。 建议按限定名称、工作区 ID 或 Azure 资源 ID 引用。
 
     `workspace("contosoretail-it").Update | count`
 
-* 限定名称（即工作区的“全名”）由订阅名称、资源组和组件名称组成，并采用以下格式：subscriptionName/resourceGroup/componentName。 
+* 限定名称 - 工作区的“全名”，由订阅名称、资源组和组件名称组成，并采用以下格式：subscriptionName/resourceGroup/componentName。 
 
     `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 

@@ -4,12 +4,12 @@ description: 有关如何跨 Azure 订阅和资源组移动恢复服务保管库
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 239294f1744da9f040ac62435e6930b60f6bc357
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6de0d6902705ff0edffd5e51e0e8f9abc6378830
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954377"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114298082"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 订阅和资源组移动恢复服务保管库
 
@@ -23,7 +23,7 @@ ms.locfileid: "111954377"
 
 - 在跨资源组的保管库移动期间，源和目标资源组都会被锁定，从而阻止了写入和删除操作。 有关详细信息，请参阅[此文](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 - 只有订阅管理员有权移动保管库。
-- 要在订阅之间移动保管库，目标订阅必须与源订阅位于同一租户中，并且其状态必须为“已启用”。 若要将保管库移动到其他 Azure AD 目录，请参阅[将订阅转移到其他目录](../role-based-access-control/transfer-subscription.md)和[恢复服务保管库常见问题解答](/azure/backup/backup-azure-backup-faq.yml#recovery-services-vault)。
+- 要在订阅之间移动保管库，目标订阅必须与源订阅位于同一租户中，并且其状态必须为“已启用”。 若要将保管库移动到其他 Azure AD，请参阅[将订阅转移到其他目录](../role-based-access-control/transfer-subscription.md)和[恢复服务保管库常见问题解答](/azure/backup/backup-azure-backup-faq#recovery-services-vault)。
 - 必须有权对目标资源组执行写入操作。
 - 移动保管库只会更改资源组。 恢复服务保管库将位于同一位置，并且无法更改。
 - 一次只能在每个区域移动一个恢复服务保管库。

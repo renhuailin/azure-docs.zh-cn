@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 825fb15d9c3a0a0a44a77d3feec767adc0368add
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: a2906145e135f1b2e683ed757efde07ce1d5dd65
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279183"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296587"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>将 Key Vault 与 Azure 专用链接集成
 
@@ -80,9 +80,6 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
     ![屏幕截图显示了“创建专用终结点(预览)”页上的“基本信息”选项卡。](../media/private-link-service-4.png)
 
 可以使用此边栏选项卡选择为任何 Azure 资源创建专用终结点。 可以使用下拉菜单选择资源类型并在目录中选择资源，或者使用资源 ID 连接到任何 Azure 资源。 将“与专用区域 DNS 集成”选项保留不变。  
-
-![屏幕截图显示了使用当前边栏选项卡添加专用终结点的情况。](../media/private-link-service-3.png)
-![屏幕截图显示了“创建专用终结点(预览)”页的示例。](../media/private-link-service-4.png)
 
 创建专用终结点时，必须批准连接。 如果要为其创建专用终结点的资源位于你的目录中，则你可以批准连接请求（前提是你有足够的权限）；如果连接到另一个目录中的 Azure 资源，则必须等待该资源的所有者批准连接请求。
 
@@ -243,7 +240,7 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 * 请检查以确保专用 DNS 区域不缺少 Key Vault 的 A 记录。 
     1. 导航到专用 DNS 区域页。 
     2. 单击“概述”，并检查是否存在具有 Key Vault 的简单名称（即 fabrikam）的 A 记录。 不要指定任何后缀。
-    3. 请务必检查拼写，创建或修复 A 记录。 可以使用 3600（1小时）的 TTL。 
+    3. 请务必检查拼写，创建或修复 A 记录。 可将 TTL 设为 600（10 分钟）。
     4. 确保指定了正确的专用 IP 地址。 
     
 * 检查以确保 A 记录具有正确的 IP 地址。 

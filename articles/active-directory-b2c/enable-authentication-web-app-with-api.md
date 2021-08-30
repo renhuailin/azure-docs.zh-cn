@@ -1,47 +1,48 @@
 ---
-title: 使用 Azure Active Directory B2C 构建基块在调用 Web API 的 Web 中启用身份验证
-description: 使用 Azure Active Directory B2C 调用 Web API 的 ASP.NET Web 应用程序的构建基块。
+title: 使用 Azure Active Directory B2C 构建基块在调用 Web API 的 Web 应用中启用身份验证
+description: 本文讨论了如何对调用 Web API 的 ASP.NET Web 应用使用 Azure Active Directory B2C 构建基块。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/11/2021
+ms.date: 06/25/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 53c81633508bef928faf8919c618b9ad30dd3844
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: fd1d47f879ead2913d5fbfa85febde50a8950907
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072974"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723199"
 ---
-# <a name="enable-authentication-in-your-own-web-application-that-calls-a-web-api-using-azure-active-directory-b2c"></a>在你自己使用 Azure Active Directory B2C 调用 Web API 的 Web 应用程序中启用身份验证
+# <a name="enable-authentication-in-web-apps-that-call-a-web-api-by-using-azure-ad-b2c"></a>使用 Azure AD B2C 在调用 Web API 的 Web 应用中启用身份验证
 
-本文演示如何将 Azure Active Directory B2C (Azure AD B2C) 身份验证添加到调用 Web API 的 ASP.NET Web 应用程序。 了解如何通过使用 [OpenID Connect](openid-connect.md) 协议的 ASP.NET Core 中间件创建 ASP.NET Core Web 应用程序。 将本文与[在调用 Web API 的示例 Web 应用程序中配置身份验证](configure-authentication-sample-web-app-with-api.md)结合使用，用你自己的 Web 应用来替换示例 Web 应用。
+本文演示如何将 Azure Active Directory B2C (Azure AD B2C) 身份验证添加到调用 Web API 的 ASP.NET Web 应用程序。 了解如何通过使用 [OpenID Connect](openid-connect.md) 协议的 ASP.NET Core 中间件创建 ASP.NET Core Web 应用程序。 
+
+将本文与[在调用 Web API 的示例 Web 应用中配置身份验证](configure-authentication-sample-web-app-with-api.md)结合使用，用你自己的 Web 应用来替换示例 Web 应用。
 
 本文重点介绍 Web 应用程序项目。 有关如何创建 Web API 的说明，请参阅[待办事项列表 Web API 示例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/4-WebApp-your-API/4-2-B2C)。
 
 ## <a name="prerequisites"></a>先决条件
 
-查看[调用 Web API 的示例 Web 应用程序中配置身份验证](configure-authentication-sample-web-app-with-api.md)中的先决条件和集成步骤。
+查看[在调用 Web API 的示例 Web 应用中配置身份验证](configure-authentication-sample-web-app-with-api.md)中的先决条件和集成步骤。
 
-## <a name="create-a-web-app-project"></a>创建 Web 应用项目
+以下部分演示如何将 Azure Active Directory B2C (Azure AD B2C) 身份验证添加到 ASP.NET Web 应用程序。
 
-可以使用现有 ASP.NET MVC Web 应用项目或创建新项目。 若要创建新项目，请打开命令行界面，并输入以下命令：
+## <a name="step-1-create-a-web-app-project"></a>步骤 1：创建 Web 应用项目
+
+可以使用现有 ASP.NET 模型视图控制器 (MVC) Web 应用项目或创建新项目。 若要创建新项目，请打开命令行界面，然后输入以下命令：
 
 ```dotnetcli
 dotnet new mvc -o mywebapp
 ```
 
-上述命令：
+上述命令将创建一个新的 MVC Web 应用。 `-o mywebapp` 参数使用应用的源文件创建名为 mywebapp 的目录。
 
-* 创建新 MVC Web 应用。  
-* `-o mywebapp` 参数使用应用的源文件创建名为 mywebapp 的目录。
-
-## <a name="add-the-authentication-libraries"></a>添加身份验证库
+## <a name="step-2-add-the-authentication-libraries"></a>步骤 2：添加身份验证库
 
 首先，添加 Microsoft 标识 Web 库。 这是一组 ASP.NET Core 库，简化了为 Web 应用添加 Azure AD B2C 身份验证和授权支持的过程。 Microsoft 标识 Web 库使用基于 Cookie 的身份验证设置身份验证管道。 它负责发送和接收 HTTP 身份验证消息、令牌验证、声明提取等。
 
@@ -61,10 +62,7 @@ Install-Package Microsoft.Identity.Web
 Install-Package Microsoft.Identity.Web.UI
 ```
 
----
-
-
-## <a name="initiate-the-authentication-libraries"></a>启动身份验证库
+## <a name="step-3-initiate-the-authentication-libraries"></a>步骤 3：启动身份验证库
 
 Microsoft 标识 Web 中间件使用在托管进程启动时运行的启动类。 在此步骤中，添加启动身份验证库所需的代码。
 
@@ -79,7 +77,7 @@ using Microsoft.Identity.Web.UI;
 
 由于 Microsoft 标识 Web 使用基于 Cookie 的身份验证来保护 Web 应用，因此以下代码将设置 SameSite Cookie 设置。 然后，它读取 `AzureADB2C` 应用程序设置，并启动中间件控制器及其视图。 
 
-将 `ConfigureServices(IServiceCollection services)` 函数替换为以下代码片段。 
+将 `ConfigureServices(IServiceCollection services)` 函数替换为以下代码片段： 
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -93,7 +91,7 @@ public void ConfigureServices(IServiceCollection services)
         options.HandleSameSiteCookieCompatibility();
     });
 
-    // Configuration to sign-in users with Azure AD B2C
+    // Configuration to sign in users with Azure AD B2C
     services.AddMicrosoftIdentityWebAppAuthentication(Configuration, "AzureAdB2C")
             // Enable token acquisition to call downstream web API
             .EnableTokenAcquisitionToCallDownstreamApi(new string[] { Configuration["TodoList:TodoListScope"] })
@@ -111,7 +109,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-以下代码添加 Cookie 策略，并使用身份验证模型。 将 `Configure` 函数替换为以下代码片段。 
+以下代码添加 Cookie 策略，并使用身份验证模型。 将 `Configure` 函数替换为以下代码片段： 
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -149,7 +147,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 };
 ```
 
-## <a name="add-the-ui-elements"></a>添加 UI 元素
+## <a name="step-4-add-the-ui-elements"></a>步骤 4：添加 UI 元素
 
 若要添加用户界面元素，请使用分部视图。 分部视图包含用于检查用户是否已登录的逻辑。 如果用户未登录，分部视图将呈现登录按钮。 如果用户已登录，则会显示用户的显示名称和注销按钮。
   
@@ -161,8 +159,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
     <ul class="nav navbar-nav navbar-right">
         <li class="navbar-text">Hello @User.Identity.Name</li>
-        <!-- The Account controller is not defined in this project. Instead, it is part of Microsoft.Identity.Web.UI nuget package and
-            it defines some well known actions such as SignUp/In, SignOut and EditProfile-->
+        <!-- The Account controller is not defined in this project. Instead, it is part of Microsoft.Identity.Web.UI nuget package, and it defines some well-known actions, such as SignUp/In, SignOut, and EditProfile. -->
         <li class="navbar-btn">
             <form method="get" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="EditProfile">
                 <button type="submit" class="btn btn-primary" style="margin-right:5px">Edit Profile</button>
@@ -215,7 +212,7 @@ else
 
 前面的 Razor 代码包含指向将在后续步骤中创建的 `Claims` 和 `TodoList` 操作。
 
-## <a name="add-the-claims-view"></a>添加声明视图
+## <a name="step-5-add-the-claims-view"></a>步骤 5：添加声明视图
 
 若要查看 `Views/Home` 文件夹下的 ID 令牌声明，请添加 `Claims.cshtml` 视图。
 
@@ -243,9 +240,9 @@ else
 </table>
 ```
 
-在此步骤中，添加 `Claims` 操作，将 Claims.cshtml 视图链接到主控制器。 它使用 `[Authorize]` 属性，该属性将“Claims”操作的访问权限限制为经身份验证的用户。  
+在此步骤中，添加 `Claims` 操作，将 Claims.cshtml 视图链接到主控制器。 它使用 `[Authorize]` 属性，该属性将“Claims”操作的访问权限限制为经身份验证的用户。
 
-在 `/Controllers/HomeController.cs` 控制器中，添加以下操作。
+在 /Controllers/HomeController.cs 中添加以下操作：
 
 ```csharp
 [Authorize]
@@ -261,9 +258,9 @@ public IActionResult Claims()
 using Microsoft.AspNetCore.Authorization;
 ```
 
-## <a name="add-the-to-do-list-view"></a>添加待办事项列表视图
+## <a name="step-6-add-the-todolistcshtml-view"></a>步骤6：添加 TodoList.cshtml 视图
 
-若要调用待办事项 Web API，需要具有正确范围的访问令牌。 在此步骤中，你将访问 `Home` 控制器并执行操作。 在 `Views/Home` 文件夹下，添加 `TodoList.cshtml` 视图。
+若要调用 TodoList.cshtml Web API，需要具有正确范围的访问令牌。 在此步骤中，将一个操作添加到 `Home` 控制器。 在 `Views/Home` 文件夹下，添加 `TodoList.cshtml` 视图。
 
 ```razor
 @{
@@ -277,9 +274,9 @@ using Microsoft.AspNetCore.Authorization;
 </div>
 ```
 
-添加视图后，添加 `TodoList` 操作，将 TodoList.cshtml 视图链接到主控制器。 它使用 `[Authorize]` 属性，该属性将“TodoList”操作的访问权限限制为经身份验证的用户。  
+添加视图后，添加 `TodoList` 操作，将 TodoList.cshtml 视图链接到主控制器 。 它使用 `[Authorize]` 属性，该属性将“TodoList”操作的访问权限限制为经身份验证的用户。  
 
-在 `/Controllers/HomeController.cs` 控制器中，添加以下操作类成员，将令牌获取服务注入到控制器。
+在 /Controllers/HomeController.cs 控制器中，添加以下操作类成员，将令牌获取服务注入到控制器。
 
 ```csharp
 public class HomeController : Controller
@@ -301,7 +298,7 @@ public class HomeController : Controller
 }
 ```
 
-然后，添加以下操作。 该操作演示如何调用 Web API 以及持有者令牌。 
+现在添加以下操作，由此演示如何调用 Web API 以及持有者令牌。 
 
 ```csharp
 [Authorize]
@@ -324,22 +321,23 @@ public async Task<IActionResult> TodoListAsync()
 }
 ```
 
-## <a name="add-the-app-settings"></a>添加应用设置
+## <a name="step-7-add-the-app-settings"></a>步骤 7：添加应用设置
 
-Azure AD B2C 标识提供者设置存储在 `appsettings.json` 文件中。 打开 appsettings.js 并添加应用设置，如[步骤5：配置示例 Web 应用](configure-authentication-sample-web-app-with-api.md#step-5-configure-the-sample-web-app)中所述。
+Azure AD B2C 标识提供者设置存储在 appsettings.json 文件中。 打开 appsettings.js 并添加应用设置，如[在使用 Azure AD B2C 调用 Web API 的示例的 Web 应用中配置身份验证](configure-authentication-sample-web-app-with-api.md#step-5-configure-the-sample-web-app)一文的“步骤 5：配置示例 Web 应用”中所述。
 
-## <a name="run-your-application"></a>运行应用程序
+## <a name="step-8-run-your-application"></a>步骤 8：运行应用程序
 
 1. 生成并运行该项目。
-1. 浏览到 https://localhost:5001。 
-1. 选择“登录/注册”。
-1. 完成注册或登录过程。
+1. 转到 https://localhost:5001 ，然后选择“登录/注册”。
+1. 完成登录或注册过程。
 
-成功进行身份验证后，导航栏中会显示显示名称。 
+成功在应用中进行身份验证后，请检查导航栏中的显示名称。 
 
-* 若要查看 Azure AD B2C 令牌返回给应用的声明，请选择“声明”。
+* 若要查看 Azure AD B2C 令牌返回到应用的声明，请选择“声明”。
 * 若要查看访问令牌，请选择“待办事项列表”。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[自定义和增强 Web 应用的 Azure AD B2C 身份验证体验](enable-authentication-web-application-options.md)
+了解如何：
+* [自定义和增强 Web 应用的 Azure AD B2C 身份验证体验](enable-authentication-web-application-options.md)
+* [在自己的 Web API 中启用身份验证](enable-authentication-web-api.md)

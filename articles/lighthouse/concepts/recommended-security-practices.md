@@ -3,12 +3,12 @@ title: 建议的安全做法
 description: 使用 Azure Lighthouse 时，请务必考虑安全性和访问控制。
 ms.date: 03/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3aa50833b547882506bfad125992bb1c2f4e85bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 897f09c41d550d6200cc3d78743bb3b010f2c402
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419297"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768263"
 ---
 # <a name="recommended-security-practices"></a>建议的安全做法
 
@@ -19,7 +19,7 @@ ms.locfileid: "103419297"
 
 ## <a name="require-azure-ad-multi-factor-authentication"></a>需要 Azure AD 多重身份验证
 
-[Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)（也称为双重验证）通过要求进行多重身份验证步骤，以防止攻击者获取帐户的访问权限。 你应要求管理租户中的所有用户（包括任何将有权访问委托的客户资源的用户）都进行多重身份验证。
+[Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)（也称为双重验证）通过要求进行多重身份验证步骤，以防止攻击者获取帐户的访问权限。 你应要求管理租户中的所有用户（包括任何将有权访问委托的客户资源的用户）都进行 Azure AD 多重身份验证。
 
 建议你要求客户对其租户也实施 Azure AD 多重身份验证。
 

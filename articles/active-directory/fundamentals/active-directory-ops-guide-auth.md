@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: b7aefa537c9b822572f38501920afdaa45bc01c3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c1fa9d27bbdfe91eebb74186e69cf707166384fd
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955058"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228619"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 身份验证管理操作参考指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "111955058"
 
 ### <a name="assign-owners-to-key-tasks"></a>将所有者分配到关键任务
 
-管理 Azure Active Directory 需要持续执行关键操作任务和流程，这可能并不完全属于某一个推出式项目。 设置这些任务对于优化环境仍非常重要。 关键任务及其建议所有者包括：
+管理 Azure Active Directory 需要持续执行关键操作任务和过程，这可能并不属于一个推出项目。 设置这些任务对于优化环境仍非常重要。 关键任务及其建议所有者包括：
 
 | 任务 | 所有者 |
 | :- | :- |
@@ -42,7 +42,7 @@ ms.locfileid: "111955058"
 | 会审和调查标记为有风险的用户和漏洞报告（由 Azure AD 标识保护提供） | InfoSec 运营团队 |
 
 > [!NOTE]
-> “Azure AD 标识保护”需要 Azure AD Premium P2 许可证。 要根据需要查找合适的许可证，请参阅[比较 Azure AD 免费版和 Azure AD 高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+> “Azure AD 标识保护”需要 Azure AD Premium P2 许可证。 要根据需要查找合适的许可证，请参阅[比较 Azure AD 免费版和 Azure AD 高级版的正式发布功能](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 查看列表时，可能会发现需要为缺少所有者的任务分配所有者，或使用与上述建议不符的所有者来调整任务的所有权。
 
@@ -249,7 +249,7 @@ Microsoft Intune 应用管理 (MAM) 能够将数据保护控件（如存储加�
 - 指定一小部分可应用于多个应用程序的核心策略
 - 定义空的异常组，并将它们添加到策略中以获得异常策略
 - 规划无 MFA 控件的[打碎玻璃](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency)帐户
-- 通过为 Exchange Online 和 Sharepoint Online 等服务实施相同的控件集合，确保跨 Microsoft 365 客户端应用程序（例如 Teams、OneDrive、Outlook 等）提供一致的体验
+- 通过为 Exchange Online 和 SharePoint Online 等服务实现相同的控件集合，确保跨 Microsoft 365 客户端应用程序（例如 Teams、OneDrive、Outlook 等）提供一致的体验
 - 应通过组（而不是个体）来实现策略的分配
 - 定期检查策略中使用的例外组，以限制用户超出安全状态的时间。 如果你有 Azure AD P2，则可以使用访问评审来自动执行此过程
 
@@ -328,7 +328,7 @@ Microsoft Intune 应用管理 (MAM) 能够将数据保护控件（如存储加�
 
 #### <a name="user-settings"></a>用户设置
 
-- 外部用户 - 企业中可能会有机外部协作，其中包含 Teams、Power BI、Sharepoint Online 和 Azure 信息保护等服务。 如果你有显式约束来控制用户启动的外部协作，则建议你通过使用 [Azure AD 权利管理](../governance/entitlement-management-overview.md)或受控操作（如通过帮助台）来启用外部用户。 如果您不想允许服务进行随机外部协作，则可以[全面阻止成员邀请外部用户](../external-identities/delegate-invitations.md)。 此外，也可以在外部用户邀请中[允许或阻止特定域](../external-identities/allow-deny-list.md)。
+- 外部用户 - 外部协作可以通过 Teams、Power BI、SharePoint Online 和 Azure 信息保护等服务在企业中有机进行。 如果你有显式约束来控制用户启动的外部协作，则建议你通过使用 [Azure AD 权利管理](../governance/entitlement-management-overview.md)或受控操作（如通过帮助台）来启用外部用户。 如果您不想允许服务进行随机外部协作，则可以[全面阻止成员邀请外部用户](../external-identities/delegate-invitations.md)。 此外，也可以在外部用户邀请中[允许或阻止特定域](../external-identities/allow-deny-list.md)。
 - 应用注册 - 启用应用注册后，最终用户可以自行将应用程序加入并向应用程序授予对数据的访问权限。 应用注册的一个典型示例是用户能够让 Outlook 插件或语音助手（如 Alexa 和 Siri）阅读其电子邮件和日历或代表他们发送电子邮件。 如果客户决定关闭应用程序注册，则必须将 InfoSec 和 IAM 团队纳入例外管理（根据业务需求而需要的应用注册），因为这两个团队需要使用管理员帐户注册应用程序，并且大多数情况下，可能需要设计一个流程以使该流程具有可操作性。
 - 管理门户 - 组织可以锁定 Azure 门户中的 Azure AD 边栏选项卡，这样，非管理员就无法访问 Azure 门户中的 Azure AD 管理，避免造成困惑。 在 Azure AD 管理门户中转到用户设置以限制访问：
 

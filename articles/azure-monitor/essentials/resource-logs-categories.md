@@ -2,13 +2,13 @@
 title: Azure Monitor 资源日志支持的服务和类别
 description: Azure Monitor 参考：了解 Azure 资源日志支持的服务和事件架构。
 ms.topic: reference
-ms.date: 05/26/2021
-ms.openlocfilehash: b45e478b11290002cb2445b1a57662bacba407dd
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 08/04/2021
+ms.openlocfilehash: 2cbe701f3fbedacf29124c823743966be1f7ba32
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534420"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183893"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure 资源日志支持的类别
 
@@ -23,9 +23,9 @@ ms.locfileid: "110534420"
 
 ## <a name="costs"></a>成本
 
-将任何数据发送和存储到 Log Analytics、Azure 存储和/或事件中心都会产生相关成本。 你可能需要为将数据获取到这些位置以及将数据保存在那里支付费用。  资源日志是可以发送到这些位置的数据类型之一。 
+[Azure Monitor Log Analytics](https://azure.microsoft.com/pricing/details/monitor/)、[Azure 存储](https://azure.microsoft.com/product-categories/storage/)、[事件中心](https://azure.microsoft.com/pricing/details/event-hubs/)以及直接与 Azure Monitor 集成的合作伙伴（[例如 Datadog](../../partner-solutions/datadog/overview.md)）存在与数据引入和数据存储相关的成本。 请查看上述这些服务的定价页链接，了解这些成本。 资源日志只是可发送到这些位置的其中一种数据。 
 
-将某些类别的资源日志导出到这些位置需要额外费用。 下表列出了那些会产生导出费用的日志。 有关此定价的详细信息，请参阅 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)中的“平台日志”部分。
+此外，将某些类别的资源日志导出到这些位置可能会产生成本。 下表列出了那些可能会产生导出成本的日志。 有关导出定价的详细信息，请参阅 [Azure Monitor 定价页中](https://azure.microsoft.com/pricing/details/monitor/)的“平台日志”部分。
 
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
 
@@ -34,6 +34,7 @@ ms.locfileid: "110534420"
 某些类别可能只适用于特定类型的资源。 如果你觉得缺少资源，请参阅特定于资源的文档。 例如，Microsoft.Sql/servers/databases 类别并非适用于所有类型的数据库。 有关详细信息，请参阅[有关 SQL 数据库诊断日志记录的信息](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)。 
 
 如果仍觉得缺少某些内容，可以在本文底部打开 GitHub 评论。
+
 
 ## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/DomainServices
 
@@ -113,6 +114,7 @@ ms.locfileid: "110534420"
 |---|---|---|
 |审核|审核|是|
 |可运行|可运行|是|
+|请求|请求|是|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
@@ -120,15 +122,6 @@ ms.locfileid: "110534420"
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |ServiceLog|服务日志|否|
-
-
-## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
-
-|Category|类别显示名称|导出成本|
-|---|---|---|
-|BaiClusterEvent|BaiClusterEvent|否|
-|BaiClusterNodeEvent|BaiClusterNodeEvent|否|
-|BaiJobEvent|BaiJobEvent|否|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
@@ -200,6 +193,8 @@ ms.locfileid: "110534420"
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |AuthOperational|操作身份验证日志|是|
+|CallDiagnosticsPRIVATEPREVIEW|调用诊断日志 - 个人预览版|是|
+|CallSummaryPRIVATEPREVIEW|调用摘要日志 - 个人预览版|是|
 |ChatOperational|操作聊天日志|否|
 |SMSOperational|操作短信日志|否|
 |使用情况|使用情况记录|否|
@@ -255,10 +250,18 @@ ms.locfileid: "110534420"
 |accounts|Databricks 帐户|否|
 |clusters|Databricks 群集|否|
 |dbfs|Databricks 文件系统|否|
+|featureStore|Databricks 特征存储|是|
+|genie|Databricks Genie|是|
+|globalInitScripts|Databricks 全局 Init 脚本|是|
+|iamRole|Databricks IAM 角色|是|
 |instancePools|实例池|否|
 |jobs|Databricks 作业|否|
+|mlflowAcledArtifact|Databricks MLFlow 列入 ACL 的项目|是|
+|mlflowExperiment|Databricks MLFlow 试验|是|
 |笔记本|Databricks Notebook|否|
-|secrets|Databricks 机密|否|
+|RemoteHistoryService|Databricks 远程历史记录服务|是|
+|机密|Databricks 机密|否|
+|sqlanalytics|Databricks SQL Analytics|是|
 |sqlPermissions|Databricks SQLPermissions|否|
 |ssh|Databricks SSH|否|
 |工作区|Databricks 工作区|否|
@@ -462,7 +465,7 @@ ms.locfileid: "110534420"
 |ResourceProviderOperation|ResourceProviderOperation|是|
 
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/DatabaseAccounts
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -535,11 +538,18 @@ ms.locfileid: "110534420"
 |请求|请求|否|
 
 
-## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
+## <a name="microsofthealthcareapisworkspacesdicomservices"></a>Microsoft.HealthcareApis/workspaces/dicomservices
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
-|AuditLogs|审核日志|否|
+|AuditLogs|审核日志|是|
+
+
+## <a name="microsofthealthcareapisworkspacesfhirservices"></a>Microsoft.HealthcareApis/workspaces/fhirservices
+
+|Category|类别显示名称|导出成本|
+|---|---|---|
+|AuditLogs|FHIR 审核日志|是|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>microsoft.insights/autoscalesettings
@@ -594,14 +604,14 @@ ms.locfileid: "110534420"
 |TableUsageStatistics|表使用情况统计信息|否|
 
 
-## <a name="microsoftlogicintegrationaccounts"></a>Microsoft.Logic/integrationAccounts
+## <a name="microsoftlogicintegrationaccounts"></a>Microsoft.Logic/IntegrationAccounts
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |IntegrationAccountTrackingEvents|集成帐户跟踪事件|否|
 
 
-## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
+## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/Workflows
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -617,6 +627,27 @@ ms.locfileid: "110534420"
 |AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|否|
 |AmlComputeJobEvent|AmlComputeJobEvent|否|
 |AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|否|
+|ComputeInstanceEvent|ComputeInstanceEvent|是|
+|DataLabelChangeEvent|DataLabelChangeEvent|是|
+|DataLabelReadEvent|DataLabelReadEvent|是|
+|DataSetChangeEvent|DataSetChangeEvent|是|
+|DataSetReadEvent|DataSetReadEvent|是|
+|DataStoreChangeEvent|DataStoreChangeEvent|是|
+|DataStoreReadEvent|DataStoreReadEvent|是|
+|DeploymentEventACI|DeploymentEventACI|是|
+|DeploymentEventAKS|DeploymentEventAKS|是|
+|DeploymentReadEvent|DeploymentReadEvent|是|
+|EnvironmentChangeEvent|EnvironmentChangeEvent|是|
+|EnvironmentReadEvent|EnvironmentReadEvent|是|
+|InferencingOperationACI|InferencingOperationACI|是|
+|InferencingOperationAKS|InferencingOperationAKS|是|
+|ModelsActionEvent|ModelsActionEvent|是|
+|ModelsChangeEvent|ModelsChangeEvent|是|
+|ModelsReadEvent|ModelsReadEvent|是|
+|PipelineChangeEvent|PipelineChangeEvent|是|
+|PipelineReadEvent|PipelineReadEvent|是|
+|RunEvent|RunEvent|是|
+|RunReadEvent|RunReadEvent|是|
 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
@@ -624,6 +655,7 @@ ms.locfileid: "110534420"
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |KeyDeliveryRequests|密钥传递请求|否|
+|MediaAccount|媒体帐户运行状况|是|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationgateways
@@ -644,7 +676,7 @@ ms.locfileid: "110534420"
 |AzureFirewallNetworkRule|Azure 防火墙网络规则|否|
 
 
-## <a name="microsoftnetworkbastionhosts"></a>Microsoft.Network/bastionHosts
+## <a name="microsoftnetworkbastionhosts"></a>microsoft.network/bastionHosts
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -683,7 +715,7 @@ ms.locfileid: "110534420"
 |NetworkSecurityGroupRuleCounter|网络安全组规则计数器|否|
 
 
-## <a name="microsoftnetworkp2svpngateways"></a>Microsoft.Network/p2sVpnGateways
+## <a name="microsoftnetworkp2svpngateways"></a>microsoft.network/p2svpngateways
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -708,7 +740,7 @@ ms.locfileid: "110534420"
 |ProbeHealthStatusEvents|流量管理器探测运行状况结果事件|否|
 
 
-## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
+## <a name="microsoftnetworkvirtualnetworkgateways"></a>microsoft.network/virtualnetworkgateways
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -726,7 +758,7 @@ ms.locfileid: "110534420"
 |VMProtectionAlerts|VM 保护警报|否|
 
 
-## <a name="microsoftnetworkvpngateways"></a>Microsoft.Network/vpnGateways
+## <a name="microsoftnetworkvpngateways"></a>microsoft.network/vpngateways
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -747,7 +779,7 @@ ms.locfileid: "110534420"
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
-|审核|审核日志|否|
+|审核|审核|是|
 
 
 ## <a name="microsoftpowerbitenants"></a>Microsoft.PowerBI/tenants
@@ -755,7 +787,6 @@ ms.locfileid: "110534420"
 |Category|类别显示名称|导出成本|
 |---|---|---|
 |引擎|引擎|否|
-
 
 ## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft.PowerBI/tenants/workspaces
 
@@ -775,6 +806,7 @@ ms.locfileid: "110534420"
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
+|DataSensitivityLogEvent|DataSensitivity|是|
 |ScanStatusLogEvent|ScanStatus|否|
 
 
@@ -939,19 +971,6 @@ ms.locfileid: "110534420"
 |BigDataPoolAppsEnded|已结束的大数据池应用程序|否|
 
 
-## <a name="microsoftsynapseworkspaceskustopools"></a>Microsoft.Synapse/workspaces/kustoPools
-
-|Category|类别显示名称|导出成本|
-|---|---|---|
-|命令|命令|是|
-|FailedIngestion|引入操作失败|是|
-|IngestionBatching|引入批处理|是|
-|查询|查询|是|
-|SucceededIngestion|成功引入操作|是|
-|TableDetails|表详细信息|是|
-|TableUsageStatistics|表使用情况统计信息|是|
-
-
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
 
 |Category|类别显示名称|导出成本|
@@ -980,7 +999,7 @@ ms.locfileid: "110534420"
 |管理|管理|否|
 
 
-## <a name="microsoftwebhostingenvironments"></a>microsoft.web/hostingenvironments
+## <a name="microsoftwebhostingenvironments"></a>Microsoft.Web/hostingEnvironments
 
 |Category|类别显示名称|导出成本|
 |---|---|---|
@@ -1010,6 +1029,7 @@ ms.locfileid: "110534420"
 |AppServiceAppLogs|应用服务应用程序日志|否|
 |AppServiceAuditLogs|访问审核日志|否|
 |AppServiceConsoleLogs|应用服务控制台日志|否|
+|AppServiceDiagnosticToolsLogs|报告诊断工具日志|是|
 |AppServiceFileAuditLogs|站点内容更改审核日志|否|
 |AppServiceHTTPLogs|HTTP 日志|否|
 |AppServiceIPSecAuditLogs|IPSecurity 审核日志|否|
@@ -1023,4 +1043,3 @@ ms.locfileid: "110534420"
 * [将资源日志流式传输到 **事件中心**](./resource-logs.md#send-to-azure-event-hubs)
 * [使用 Azure Monitor REST API 更改资源日志诊断设置](/rest/api/monitor/diagnosticsettings)
 * [使用 Log Analytics 分析 Azure 存储中的日志](./resource-logs.md#send-to-log-analytics-workspace)
-

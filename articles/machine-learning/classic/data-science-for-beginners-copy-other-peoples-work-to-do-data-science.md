@@ -9,14 +9,17 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: b36d7bbde524bf3ddcaed2e096f9403caf16ea3c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5151b00c0ef07b929df30c67e1e27d24245fcf13
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742134"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694548"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>复制其他人的工作以执行数据科研
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
 ## <a name="video-5-data-science-for-beginners-series"></a>视频 5：适合初学者的数据科学系列
 数据科学的商业机密之一是让其他人完成工作。 在 Azure AI 库中查找适合用于自己的机器学习试验的聚类分析算法示例。
 

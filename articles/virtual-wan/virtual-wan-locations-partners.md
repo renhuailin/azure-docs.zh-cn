@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: references_regions
-ms.openlocfilehash: d861a5c820c38eb5e0e8ea8f777e9346871ce658
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: ff6e928c5f50c2f0a15936b190f0191da67b81c3
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579461"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419444"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置
 
@@ -21,7 +21,7 @@ ms.locfileid: "112579461"
 
 Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自动的分支到分支连接。 使用虚拟 WAN 可以连接分支设备，并将其配置为与 Azure 通信。 可手动进行连接和配置，也可通过虚拟 WAN 合作伙伴使用提供商设备来实现。 使用合作伙伴设备可以降低操作难度、简化连接和进行配置管理。
 
-本地设备到虚拟中心的连接将自动建立。 虚拟中心是 Microsoft 托管的虚拟网络。 中心包含不同的服务终结点，可从本地网络 (vpnsite) 建立连接。 每个区域只能有一个中心。
+本地设备到虚拟中心的连接将自动建立。 虚拟中心是 Microsoft 托管的虚拟网络。 中心包含不同的服务终结点，可从本地网络 (vpnsite) 建立连接。 
 
 ## <a name="branch-ipsec-connectivity-automation-from-partners"></a><a name="automation"></a>从合作伙伴自动进行分支 IPsec 连接
 

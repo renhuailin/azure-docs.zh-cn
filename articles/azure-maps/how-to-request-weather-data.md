@@ -7,14 +7,13 @@ ms.date: 04/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 77bc1b435e92861cdabce7b0ce0ac7e9b4212138
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: ed0985778f27f17292428dddadaf4d0dedc9cd46
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326698"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738510"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>使用 Azure Maps 天气服务请求实时和预测的天气数据
 
@@ -50,17 +49,15 @@ Azure Maps [天气服务](/rest/api/maps/weather)是一组 RESTful API，开发�
 
 在本示例中，你将使用[获取当前天气 API](/rest/api/maps/weather/getcurrentconditions) 来检索华盛顿州西雅图坐标处的当前天气状况。
 
-1. 打开 Postman 应用。 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“集合”。  命名集合，然后选择“创建”按钮。 本文档的其余示例中将使用此集合。
+1. 打开 Postman 应用。 选择“新建”以创建请求。 在“新建”窗口中，选择“HTTP 请求” 。 在“请求名称”中，输入请求名称。 
 
-2. 若要创建请求，请再次选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 选择在上一步中创建的集合，然后选择“保存”。
-
-3. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
+2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
 
     ```http
     https://atlas.microsoft.com/weather/currentConditions/json?api-version=1.0&query=47.60357,-122.32945&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-4. 单击蓝色“发送”按钮。 响应正文包含当前天气信息。
+3. 单击蓝色“发送”按钮。 响应正文包含当前天气信息。
 
     ```json
     {
@@ -242,7 +239,7 @@ Azure Maps [天气服务](/rest/api/maps/weather)是一组 RESTful API，开发�
 >[!NOTE]
 >此示例将检索撰写本文时的恶劣天气警报。 请求的位置可能不再有任何恶劣天气警报。 若要在运行此示例时检索实际的恶劣天气警报数据，需要在不同的坐标位置检索数据。
 
-1. 打开 Postman 应用，单击“新建”，然后选择“请求” 。 在“请求名称”中，输入请求名称。 选择在上一部分中创建的集合，或创建一个新集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”以创建请求。 在“新建”窗口中，选择“HTTP 请求” 。 在“请求名称”中，输入请求名称。
 
 2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
 
@@ -294,7 +291,7 @@ Azure Maps [天气服务](/rest/api/maps/weather)是一组 RESTful API，开发�
 
 在此示例中，你将使用[获取每日预测 API](/rest/api/maps/weather/getdailyforecast) 来检索华盛顿州西雅图坐标处的 5 日天气预测。
 
-1. 打开 Postman 应用，单击“新建”，然后选择“请求” 。 在“请求名称”中，输入请求名称。 选择在上一部分中创建的集合，或创建一个新集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”以创建请求。 在“新建”窗口中，选择“HTTP 请求” 。 在“请求名称”中，输入请求名称。
 
 2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
 
@@ -542,7 +539,7 @@ Azure Maps [天气服务](/rest/api/maps/weather)是一组 RESTful API，开发�
 
 在此示例中，你将使用[获取每小时预测 API](/rest/api/maps/weather/gethourlyforecast) 来检索华盛顿州西雅图坐标处未来 12 个小时的每小时天气预测。
 
-1. 打开 Postman 应用，单击“新建”，然后选择“请求” 。 在“请求名称”中，输入请求名称。 选择在上一部分中创建的集合，或创建一个新集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”以创建请求。 在“新建”窗口中，选择“HTTP 请求” 。 在“请求名称”中，输入请求名称。
 
 2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
 
@@ -643,13 +640,14 @@ Azure Maps [天气服务](/rest/api/maps/weather)是一组 RESTful API，开发�
     ]
     }
     ```
+
 ## <a name="request-minute-by-minute-weather-forecast-data"></a>请求每分钟天气预测数据
 
  [获取每分钟预测 API](/rest/api/maps/weather/getminuteforecast) 会返回给定位置未来 120 分钟的每分钟预测。 用户可以 1、5 和 15 分钟的间隔请求天气预测。 响应包括降水类型（包括雨、雪或雨夹雪）、开始时间和降水强度值 (dBZ) 等详细信息。
 
 在此示例中，你将使用[获取每分钟预测 API](/rest/api/maps/weather/getminuteforecast) 来检索华盛顿州西雅图坐标处的每分钟天气预测。 将给出未来 120 分钟的天气预测。 查询请求按 15 分钟的间隔提供预测，但你可将参数调整为 1 或 5 分钟。
 
-1. 打开 Postman 应用，单击“新建”，然后选择“请求” 。 在“请求名称”中，输入请求名称。 选择在上一部分中创建的集合，或创建一个新集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”以创建请求。 在“新建”窗口中，选择“HTTP 请求” 。 在“请求名称”中，输入请求名称。
 
 2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
 

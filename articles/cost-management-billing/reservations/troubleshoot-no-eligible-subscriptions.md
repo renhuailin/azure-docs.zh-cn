@@ -7,13 +7,13 @@ ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 12/15/2020
-ms.openlocfilehash: ad85bd278b5dff1532f218acc0b8e88515d96070
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.date: 06/27/2021
+ms.openlocfilehash: 40002ab69c39481393654629a44a038dfc9d01af
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561199"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988924"
 ---
 # <a name="troubleshoot-no-eligible-subscriptions"></a>对“没有符合条件的订阅”进行故障排除
 
@@ -86,13 +86,17 @@ You can only purchase reservations using subscriptions on which you have owner o
 
 当前预留订单所有者或预留所有者可按照以下步骤向你委托访问权限。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 选择“所有服务” > “预订”以列出自己有权访问的预订。
-1. 选择要将访问权限委托给其他用户的预订。
-1. 选择“访问控制 (IAM)”。
-1. 选择“添加角色分配” > “角色” > “所有者”。 或者，如果希望提供有限的访问权限，请选择其他角色。
-1. 键入要添加为“所有者”的用户的电子邮件地址。
-1. 选择用户，再选择“保存”。
+若要允许其他人管理预留，可通过两种方式实现：
+
+- 通过向单个预留订单的资源范围内的用户分配“所有者”角色，委托该预留订单的访问权限管理。 如果希望提供有限的访问权限，请选择其他角色。  
+     有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+
+- 将用户作为计费管理员添加到企业协议或 Microsoft 客户协议：
+    - 对于企业协议，请添加具有“企业管理员”角色的用户，以便查看和管理适用于企业协议的所有预留订单。 具有“企业管理员（只读）”角色的用户可以查看预留。 除非使用访问控制 (IAM) 将部门管理员和帐户所有者显式添加到预留中，否则他们无法查看相关预留。 有关详细信息，请参阅[管理 Azure 企业角色](../manage/understand-ea-roles.md)。
+
+        企业管理员可以获得预留订单的所有权，并可以使用访问控制 (IAM) 将其他用户添加到预留。
+    - 在 Microsoft 客户协议下，具有计费配置文件所有者角色或计费配置文件参与者角色的用户可以管理使用计费配置文件完成的所有预留购买。 计费配置文件阅读者和发票管理员可以通过计费配置文件查看付费的所有预留。 但是，他们不能对预留进行更改。
+    有关详细信息，请参阅[计费对象信息角色和任务](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks)。
 
 有关详细信息，请参阅[添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)。
 

@@ -5,14 +5,14 @@ author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 06/22/2021
 ms.custom: template-concept
-ms.openlocfilehash: 262616ca82e9c06baec0d7a1b81a0e3dff2ed8db
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 7786cd64ebf46038cc4d41f13ef76bb4d543752f
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304505"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112970114"
 ---
 # <a name="marketing-properties"></a>营销属性
 
@@ -50,13 +50,16 @@ ms.locfileid: "107304505"
 | 目标行业  | 你的设备针对其进行了优化的 3 大行业  | 营销详细信息 |
 | 产品描述  | 可供你编写产品营销说明的免费文本字段。 可以通过这种方式提供门户中未列出的详细信息，或添加其更多上下文进一步介绍使用设备的好处。 | 营销详细信息|
 
-本页的其余部分将重点介绍如何使用表格式来展示设备的技术规格，以帮助客户更好地了解产品。 为方便起见，在页面顶部显示的信息也会在此处列出。 表的其余部分由门户中指定的组件划分。
+本页的其余部分将重点介绍如何使用表格式来展示设备的技术规格，以帮助客户更好地了解产品。 为方便起见，除了一些其他设备信息，此处还列出了页面顶部显示的信息。 表的其余部分由门户中指定的组件划分。
 
 ![PDP 底页](./media/concepts-marketing/pdp-bottom.png)
 
 | 字段 | 说明                  | 在门户中添加的位置                |
 |---------------|-------------------------|----------------------------------|
-| 组件类型 | 设备的外形规格和主要用途分类（[了解详细信息](./resources-glossary.md)）       | 设备详细信息的“产品”详细信息|
+| 环境认证 | 针对不同环境下的性能获得的官方认证     | 设备硬件详细信息  |
+| 操作条件 | 设备限定的入口保护值或温度范围     | 设备软件详细信息  |
+| Azure 软件设置 | 关于将设备连接到 Azure 的设置过程的分类（[了解详细信息](./how-to-software-levels.md)）     | 设备软件详细信息  |
+| 组件类型 | 设备的外形规格和主要用途分类（[了解详细信息](./resources-glossary.md)）       | 设备硬件详细信息|
 | 组件名称| 所描述的组件的名称 | 设备详细信息的“产品”详细信息 |
 | 附加组件信息 | 其他硬件规格，如随附的传感器、连接性、加速器等。  | 设备详细信息的附加组件信息（[了解详细信息](./how-to-using-the-components-feature.md)）  |
 | 设备依赖项文本 | 合作伙伴提供的文本，描述了产品连接到 Azure 时所需的不同依赖项（[了解详细信息](./how-to-indirectly-connected-devices.md)）   | 设备详细信息的“依赖项”选项卡的“面向客户的注释”部分 |
@@ -73,6 +76,7 @@ ms.locfileid: "107304505"
 | Get Device| 指向外部网站的链接，供客户购买设备（或向分销商索取报价单）。 如果分销商与设备制造商相同，显示的页面可能与制造商的相同。 如果购买页面不可用，会重定向到分销商的页面，以便客户直接与他们联系。  | 营销详细信息中的分销商产品页 URL。 如果没有可用的购买页面，链接将默认是“营销”详细信息中的分销商 URL。 |
 
 ## <a name="external-links"></a>外部链接
+
 产品描述页中还包括合作伙伴提供的站点或文件的链接，这些站点或文件可帮助客户更好地了解产品。 它们出现在页面顶部，产品描述文本下方。 不同的设备类型和认证计划显示的链接会有所不同。
 
 | 链接 | 说明                  | 在门户中添加的位置                |

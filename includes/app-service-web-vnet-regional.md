@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 821746856cb37781c8f6a2e58659ce7db43e1479
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 399ce5e8714eb6935e3c2eac06ed44b712a14e35
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609453"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741416"
 ---
 通过区域 VNet 集成，应用可以访问：
 
@@ -37,7 +37,7 @@ ms.locfileid: "105609453"
 1. 选择“保存”。
 
 > [!NOTE]
-> 如果将所有出站流量路由到 VNet，它会受应用于集成子网的 NSG 和 UDR 的约束。 如果 `WEBSITE_VNET_ROUTE_ALL` 设置为 `1`，出站流量还是会从应用属性中列出的地址发送，除非提供可将流量定向到其他位置的路由。
+> 如果将所有出站流量路由到 VNet，它会受应用于集成子网的 NSG 和 UDR 的约束。 如果将 `WEBSITE_VNET_ROUTE_ALL` 设置为 `1`，流向公共 IP 地址的出站流量还是会从应用属性中列出的地址发送，除非提供可将流量定向到其他位置的路由。
 > 
 > 区域 VNet 集成无法使用端口 25。
 
@@ -64,7 +64,7 @@ VNet 集成取决于专用子网。 预配子网时，Azure 子网从一开始�
 | /27             | 27                      | 13                              |
 | /26             | 59                      | 29                              |
 
-<sup>*</sup>假设需要在在某些时候增加或缩减大小或 SKU。 
+<sup>*</sup>假设需要在某些时候增加或缩减大小或 SKU。 
 
 由于子网大小不能在分配后更改，请使用足够大的子网来容纳应用可能会达到的任何规模。 若要避免子网容量出现任何问题，应使用包含 64 个地址的 /26。  
 

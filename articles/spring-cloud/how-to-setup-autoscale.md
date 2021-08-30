@@ -1,18 +1,18 @@
 ---
 title: 为微服务应用程序设置自动缩放功能
 description: 本文介绍如何适用 Microsoft Azure 门户或 Azure CLI 中为应用程序设置自动缩放设置。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 596c0deb833c5af7b85c1680062a24f075cf28cf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d1e0b9cb6beb48e6f9ae8c8d5d985f4dfd930d2d
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134620"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015505"
 ---
 # <a name="set-up-autoscale-for-microservice-applications"></a>为微服务应用程序设置自动缩放功能
 
@@ -38,7 +38,6 @@ ms.locfileid: "108134620"
 6. 转到左侧导航窗格上菜单中的“设置”下的“横向扩展”选项卡。 
 7. 选择要设置自动缩放功能的部署。 你应会看到以下部分中所示的自动缩放选项。
 
-
 ![自动缩放菜单](./media/spring-cloud-autoscale/autoscale-menu.png)
 
 ## <a name="set-up-autoscale-settings-for-your-application-in-the-azure-portal"></a>在 Azure 门户中为应用程序设置自动缩放设置
@@ -53,20 +52,24 @@ ms.locfileid: "108134620"
 ![自定义自动缩放](./media/spring-cloud-autoscale/custom-autoscale.png)
 
 ## <a name="set-up-autoscale-settings-for-your-application-in-azure-cli"></a>在 Azure CLI 中为应用程序设置自动缩放设置
+
 还可以使用 Azure CLI 设置自动缩放模式。  以下命令创建自动缩放设置和自动缩放规则。
 
-* 创建自动缩放设置
-  ```
-  az monitor autoscale create -g demo-rg --resource /subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/demo-rg/providers/Microsoft.AppPlatform/Spring/autoscale/apps/demo/deployments/default --name demo-setting --min-count 1 --max-count 5 --count 1
-  ```
-* 创建自动缩放规则
-  ```
-  az monitor autoscale rule create -g demo-rg --autoscale-name demo-setting --scale out 1 --cooldown 1 --condition "tomcat.global.request.total.count > 100 avg 1m where AppName == demo and Deployment == default"
-  ```
+* 创建自动缩放设置：
+
+   ```azurecli
+   az monitor autoscale create -g demo-rg --resource /subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/demo-rg/providers/Microsoft.AppPlatform/Spring/autoscale/apps/demo/deployments/default --name demo-setting --min-count 1 --max-count 5 --count 1
+   ```
+
+* 创建自动缩放规则：
+
+   ```azurecli
+   az monitor autoscale rule create -g demo-rg --autoscale-name demo-setting --scale out 1 --cooldown 1 --condition "tomcat.global.request.total.count > 100 avg 1m where AppName == demo and Deployment == default"
+   ```
 
 ## <a name="upgrade-to-the-standard-tier"></a>升级到标准层
 
-如果在使用基本层，且受其中一项或多项限制约束，则可升级到标准层。 若要执行此操作，请先选择“标准层”列，然后单击“升级”按钮，转到“定价层”菜单。
+如果在使用基本层，且受其中一项或多项限制约束，则可升级到标准层。 若要执行此操作，请通过先选择“标准层”列，然后选择“升级”按钮，转到“定价层”菜单。
 
 ## <a name="next-steps"></a>后续步骤
 

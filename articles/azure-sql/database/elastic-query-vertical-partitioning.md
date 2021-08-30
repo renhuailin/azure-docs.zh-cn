@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84e7618232c38f8686e7b21e4a0660d812d9638f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792083"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737083"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>跨具有不同架构的云数据库进行查询（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -47,9 +47,8 @@ ms.locfileid: "92792083"
 
 ```sql
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'master_key_password';
-CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
-SECRET = '<password>'
-[;]
+CREATE DATABASE SCOPED CREDENTIAL [<credential_name>]  WITH IDENTITY = '<username>',  
+SECRET = '<password>';
 ```
 
 > [!NOTE]
@@ -59,9 +58,15 @@ SECRET = '<password>'
 
 语法：
 
-<External_Data_Source> ::= CREATE EXTERNAL DATA SOURCE <data_source_name> WITH (TYPE = RDBMS, LOCATION = ’<fully_qualified_server_name>’, DATABASE_NAME = ‘<remote_database_name>’,  
-    CREDENTIAL = <credential_name> ) [;]
-
+```syntaxsql
+<External_Data_Source> ::=
+CREATE EXTERNAL DATA SOURCE <data_source_name> WITH
+    (TYPE = RDBMS,
+    LOCATION = ’<fully_qualified_server_name>’,
+    DATABASE_NAME = ‘<remote_database_name>’,  
+    CREDENTIAL = <credential_name>
+    ) [;]
+```
 > [!IMPORTANT]
 > TYPE 参数必须设置为 **RDBMS**。
 
@@ -90,10 +95,17 @@ select * from sys.external_data_sources;
 
 语法：
 
+```syntaxsql
 CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name . ] table_name  
-    ( { <column_definition> } [ ,...n ]) { WITH ( <rdbms_external_table_options> ) } )[;]
+    ( { <column_definition> } [ ,...n ])
+    { WITH ( <rdbms_external_table_options> ) }
+    )[;]
 
-<rdbms_external_table_options> ::= DATA_SOURCE = <External_Data_Source>, [ SCHEMA_NAME = N'nonescaped_schema_name',] [ OBJECT_NAME = N'nonescaped_object_name',]
+<rdbms_external_table_options> ::=
+    DATA_SOURCE = <External_Data_Source>,
+    [ SCHEMA_NAME = N'nonescaped_schema_name',]
+    [ OBJECT_NAME = N'nonescaped_object_name',]
+```
 
 ### <a name="example"></a>示例
 
@@ -127,7 +139,7 @@ select * from sys.external_tables;
 
 DATA_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分区情况下的远程数据库）。  
 
-使用 SCHEMA_NAME 和 OBJECT_NAME 子句可分别将外部表定义映射到远程数据库上不同架构中的表，或映射到具有不同名称的表。 如果要在远程数据库上为目录视图或 DMV 定义外部表，或者在远程表名已在本地使用的任何其他情况下，这两个子句很有用。  
+使用 SCHEMA_NAME 和 OBJECT_NAME 子句，可分别将外部表定义映射到远程数据库上不同架构中的表，或映射到具有不同名称的表。 如果要在远程数据库上为目录视图或 DMV 定义外部表，或者在远程表名已在本地使用的任何其他情况下，此映射很有用。  
 
 以下 DDL 语句从本地目录中删除现有的外部表定义。 它不会影响远程数据库。
 
@@ -139,7 +151,7 @@ DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]
 
 ## <a name="security-considerations"></a>安全注意事项
 
-有权访问外部表的用户在使用外部数据源定义中提供的凭据时自动获得对基础远程表的访问权。 应小心管理对外部表的访问权以避免通过外部数据源的凭据意外地提升权限。 可以使用常规 SQL 权限来授予或撤消对外部表的访问权，就像它是常规表一样。  
+有权访问外部表的用户在使用外部数据源定义中提供的凭据时自动获得对基础远程表的访问权。 请小心管理对外部表的访问权以避免通过外部数据源的凭据意外地提升权限。 可以使用常规 SQL 权限来授予或撤消对外部表的访问权，就像它是常规表一样。  
 
 ## <a name="example-querying-vertically-partitioned-databases"></a>示例：正在查询垂直分区数据库
 

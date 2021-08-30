@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: 3445ca559dc54e693912e1d796caeb1f940ab23e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d9de6322ac84a86902b5ef218df9abe8528b95a9
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474884"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231478"
 ---
 # <a name="buy-a-reservation"></a>购买预留项
 
@@ -37,7 +37,7 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 
 - **单个资源组范围** - 仅将预留折扣应用到所选资源组中匹配的资源。
 - **单个订阅范围** - 将预留折扣应用到所选订阅中匹配的资源。
-- **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。
+- **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 如果订阅已移动到不同的计费上下文，则该权益将不再适用于该订阅，并将继续适用于计费上下文中的其他订阅。
     - 对于企业协议客户，计费上下文为注册。 预留共享范围会在注册中包含多个 Active Directory 租户。
     - 对于 Microsoft 客户协议客户，计费范围为计费对象信息。
     - 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。

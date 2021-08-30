@@ -9,18 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 6833763ad38bd821067432aa63b166826442ed2f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 19ee8f56fffe3fcaf8d344f8aa4832ef63d346bb
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695516"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581261"
 ---
 # <a name="manage-a-web-service-using-the-machine-learning-studio-classic-web-services-portal"></a>使用机器学习工作室（经典）Web 服务门户管理 Web 服务
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 可以使用机器学习 Web 服务门户管理机器学习工作室（经典）Web 服务。 
 

@@ -2,14 +2,14 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.author: mikben
-ms.openlocfilehash: 31fd56299fb88a0f30843dade782743085ffe852
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ef54504f0299e9726de384f5bbf88bef72a83cf7
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560473"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339420"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -409,12 +409,6 @@ CallDirection callDirection = call.getCallDirection();
 boolean muted = call.isMuted();
 ```
 
-若要查看是否正在录制当前呼叫，请检查 `isRecordingActive` 属性：
-
-```java
-boolean recordingActive = call.isRecordingActive();
-```
-
 若要检查活动视频流，请查看 `localVideoStreams` 集合：
 
 ```java
@@ -430,7 +424,21 @@ Context appContext = this.getApplicationContext();
 call.mute(appContext).get();
 call.unmute(appContext).get();
 ```
+### <a name="change-the-volume-of-the-call"></a>更改通话音量
+    
+在进行通话时，手机上的硬件音量键应允许用户更改通话音量。
+为此，通过在通话所在的活动上使用具有流类型 `AudioManager.STREAM_VOICE_CALL` 的方法 `setVolumeControlStream` 来完成。
+这允许硬件音量键更改通话音量（由电话图标或音量滑块上的类似图标表示），并防止更改其他声音配置文件的音量，如警报、媒体或系统范围的音量。 有关详细信息，可以查看[处理音频输出中的更改 | Android 开发人员](https://developer.android.com/guide/topics/media-apps/volume-and-earphones)。
+    
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    ...
+    setVolumeControlStream(AudioManager.STREAM_VOICE_CALL);
+}
+```
 
+    
 ### <a name="start-and-stop-sending-local-video"></a>开始和停止发送本地视频
 
 若要开始发送视频，必须在 `deviceManager` 对象上使用 `getCameraList` API 来枚举相机。 然后，创建 `LocalVideoStream` 的新实例传递所需的相机，并将其作为参数传递给 `startVideo` API：
@@ -668,6 +676,95 @@ VideoStreamRendererView uiView = previewRenderer.createView(new RenderingOptions
 // Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
 ```
+
+## <a name="record-calls"></a>录制通话
+> [!WARNING]
+> 在 ACS 呼叫 Android SDK 的 1.1.0 版和 beta 版 1.1.0-beta.1 之前，`isRecordingActive` 和 `addOnIsRecordingActiveChangedListener` 是 `Call` 对象的一部分。 对于新的 Beta 版本，这些 API 已作为 `Call` 的扩展功能移动，如下所述。
+
+> [!NOTE]
+> 此 API 以预览状态提供给开发者，可能根据我们收到的反馈更改。 请勿在生产环境中使用此 API。 要使用此 API，请使用“beta”版 ACS 呼叫 Android SDK
+
+通话录制是核心 `Call` API 的扩展功能。 首先需要获取录制功能 API 对象：
+
+```java
+RecordingFeature callRecordingFeature = call.api(RecordingFeature.class);
+```
+
+然后，若要检查是否正在录制通话，请检查 `callRecordingFeature` 的 `isRecordingActive` 属性。 它将返回 `boolean`。
+
+```java
+boolean isRecordingActive = callRecordingFeature.isRecordingActive();
+```
+
+还可以订阅录制更改：
+
+```java
+private void handleCallOnIsRecordingChanged(PropertyChangedEvent args) {
+    boolean isRecordingActive = callRecordingFeature.isRecordingActive();
+}
+
+callRecordingFeature.addOnIsRecordingActiveChangedListener(handleCallOnIsRecordingChanged);
+
+```
+
+如果要从应用程序开始录制，请先按照[通话记录概述](../../../../concepts/voice-video-calling/call-recording.md)的步骤设置通话记录。
+
+在服务器上设置通话记录后，需要从 Android 应用程序中获取来自通话的 `ServerCallId` 值，然后将其发送到服务器以开始录制过程。 可以使用 `CallInfo` 类（可使用 `getInfo()` 在类对象中找到）中的 `getServerCallId()` 查找 `ServerCallId` 值。
+
+```java
+try {
+    String serverCallId = call.getInfo().getServerCallId().get();
+    // Send serverCallId to your recording server to start the call recording.
+} catch (ExecutionException | InterruptedException e) {
+} catch (UnsupportedOperationException unsupportedOperationException) {
+}
+```
+
+当从服务器开始录制时，将触发事件 `handleCallOnIsRecordingChanged`，并且 `callRecordingFeature.isRecordingActive()` 的值为 `true`。
+
+与启动通话记录一样，如果想要停止通话记录，需要获取 `ServerCallId` 并将其发送到录制服务器，这样服务器就能停止通话记录了。
+
+```java
+try {
+    String serverCallId = call.getInfo().getServerCallId().get();
+    // Send serverCallId to your recording server to stop the call recording.
+} catch (ExecutionException | InterruptedException e) {
+} catch (UnsupportedOperationException unsupportedOperationException) {
+}
+```
+
+当服务器停止录制时，将触发事件 `handleCallOnIsRecordingChanged`，并且 `callRecordingFeature.isRecordingActive()` 的值为 `false`。
+
+
+## <a name="call-transcription"></a>通话听录
+> [!WARNING]
+> 在 ACS 呼叫 Android SDK 的 1.1.0 版和 beta 版 1.1.0-beta.1 之前，`isTranscriptionActive` 和 `addOnIsTranscriptionActiveChangedListener` 是 `Call` 对象的一部分。 对于新的 Beta 版本，这些 API 已作为 `Call` 的扩展功能移动，如下所述。
+    
+> [!NOTE]
+> 此 API 以预览状态提供给开发者，可能根据我们收到的反馈更改。 请勿在生产环境中使用此 API。 要使用此 API，请使用“beta”版 ACS 呼叫 Android SDK
+
+通话听录是核心 `Call` API 的扩展功能。 首先需要获取听录功能 API 对象：
+
+```java
+TranscriptionFeature callTranscriptionFeature = call.api(TranscriptionFeature.class);
+```
+
+然后，若要检查是否正在停录通话，请检查 `callTranscriptionFeature` 的 `isTranscriptionActive` 属性。 它将返回 `boolean`。
+
+```java
+boolean isTranscriptionActive = callTranscriptionFeature.isTranscriptionActive();
+```
+
+还可以订阅听录中的更改：
+
+```java
+private void handleCallOnIsTranscriptionChanged(PropertyChangedEvent args) {
+    boolean isTranscriptionActive = callTranscriptionFeature.isTranscriptionActive();
+}
+
+callTranscriptionFeature.addOnIsTranscriptionActiveChangedListener(handleCallOnIsTranscriptionChanged);
+
+```    
 
 ## <a name="eventing-model"></a>事件模型
 可订阅大多数属性和集合，以便在值发生更改时收到通知。

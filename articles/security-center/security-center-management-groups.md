@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/11/2021
 ms.custom: subject-rbac-steps
 ms.author: memildin
-ms.openlocfilehash: 14cad6e5d95492b889a4e1a09abac9bd3ee8e603
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: a4b95636052db0d5d244c5b451ec33dfa4e812f0
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111887272"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237380"
 ---
 # <a name="organize-subscriptions-into-management-groups-and-assign-roles-to-users"></a>将订阅组织到管理组中，并为用户分配角色
 
@@ -43,13 +43,13 @@ ms.locfileid: "111887272"
 
 1. 从 [Azure 门户](https://portal.azure.com)中，使用顶部栏中的“搜索”框找到并打开“管理组”。
 
-    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="访问管理组":::
+    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="访问管理组。":::
 
     此时将显示管理组的列表。
 
 1. 若要创建管理组，请选择“添加管理组”，输入相关详细信息，然后选择“保存” 。
 
-    :::image type="content" source="media/security-center-management-groups/add-management-group.png" alt-text="向 Azure 添加管理组":::
+    :::image type="content" source="media/security-center-management-groups/add-management-group.png" alt-text="将管理组添加到 Azure。":::
 
     - “管理组 ID”是用来在此管理组上提交命令的目录唯一标识符。 此标识符一旦创建便无法再编辑，因为它用来在整个 Azure 系统中标识这个组。 
     - 显示名称字段是在 Azure 门户中显示的名称。 创建管理组时，单独的显示名称是一个可选字段，并且可以随时更改。  
@@ -58,15 +58,15 @@ ms.locfileid: "111887272"
 ### <a name="add-subscriptions-to-a-management-group"></a>向管理组添加订阅
 可以向创建的管理组添加订阅。
 
-1. 从 Azure 门户打开“管理组”，并选择你的订阅的管理组。
+1. 在 Azure 门户中打开“管理组”，然后选择你的订阅所在的管理组。
 
-    :::image type="content" source="./media/security-center-management-groups/management-group-subscriptions.png" alt-text="为你的订阅选择管理组":::
+    :::image type="content" source="./media/security-center-management-groups/management-group-subscriptions.png" alt-text="选择订阅所在的管理组。":::
 
-1. 在组的页打开时，选择“订阅”。
+1. 当该组的页面打开时，选择“订阅”。
 
 1. 从订阅页依次选择“添加”、你的订阅、“保存” 。 重复执行上述步骤，直到已添加范围内的所有订阅。
 
-    :::image type="content" source="./media/security-center-management-groups/management-group-add-subscriptions.png" alt-text="向管理组添加订阅":::
+    :::image type="content" source="./media/security-center-management-groups/management-group-add-subscriptions.png" alt-text="将订阅添加到管理组。":::
 
    > [!IMPORTANT]
    > 管理组可以包含订阅和子管理组。 向父管理组分配拥有 Azure 角色的用户时，子管理组的订阅继承访问权限。 子管理组还继承在父管理组设置的策略。 
@@ -79,7 +79,7 @@ ms.locfileid: "111887272"
 
 1. 从 [Azure 门户](https://portal.azure.com)中，使用顶部栏中的“搜索”框找到并打开“管理组”。
 
-    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="访问管理组":::
+    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="访问管理组。":::
 
     此时将显示管理组的列表。
 
@@ -87,11 +87,11 @@ ms.locfileid: "111887272"
 
 1. 选择“访问控制(IAM)”，打开“角色分配”选项卡，然后选择“添加” > “添加角色分配”   。
 
-    :::image type="content" source="./media/security-center-management-groups/add-user.png" alt-text="将用户添加到管理组":::
+    :::image type="content" source="./media/security-center-management-groups/add-user.png" alt-text="将用户添加到管理组。":::
 
 1. 从“添加角色分配”页中选择相关角色。
 
-    :::image type="content" source="./media/security-center-management-groups/add-role-assignment-page.png" alt-text="“添加角色分配”页":::
+    :::image type="content" source="./media/security-center-management-groups/add-role-assignment-page.png" alt-text="“添加角色分配”页。":::
 
 1. 从“成员”选项卡中选择“+ 选择成员”，并将角色分配到相关成员 。
 
@@ -110,7 +110,7 @@ ms.locfileid: "111887272"
 
 3. 当出现提示时，请使用全局管理员凭据登录。 
 
-    ![登录提示屏幕截图](./media/security-center-management-groups/azurerm-sign-in.PNG)
+    ![登录提示屏幕截图。](./media/security-center-management-groups/azurerm-sign-in.PNG)
 
 4. 运行下面的命令，授予读者角色权限：
 

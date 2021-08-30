@@ -1,23 +1,28 @@
 ---
 title: 参考 - 适用于 Linux 的 Azure Policy 来宾配置基线
 description: Azure 上通过 Azure Policy 来宾配置实现的 Linux 基线的详细信息。
-ms.date: 06/11/2021
+ms.date: 08/03/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 692157fe7c17e013e08f74713a8c896ec29c5204
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4fe3e374b39c880940fa61b84342d2d8cbf94d12
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033007"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731348"
 ---
-# <a name="azure-policy-guest-configuration-baseline-for-linux"></a>适用于 Linux 的 Azure Policy 来宾配置基线
+# <a name="linux-security-baseline"></a>Linux 安全基线
 
-下文详细介绍了“\[预览版\] Linux 计算机应满足 Azure 安全基线的要求”来宾配置策略定义所审核的内容。 有关详细信息，请参阅 [Azure Policy 来宾配置](../concepts/guest-configuration.md)和 [Azure 安全基准概述 (V2)](../../../security/benchmarks/overview.md)。
+本文详细介绍适用于以下实现中的 Linux 来宾的配置设置：
+
+- **\[预览版\] Linux 计算机应符合 Azure 计算安全基线** Azure Policy 来宾配置定义的要求
+- **Azure 安全中心应修复计算机上安全配置中的漏洞**
+
+有关详细信息，请参阅 [Azure Policy 来宾配置](../concepts/guest-configuration.md)和 [Azure 安全基准概述 (V2)](../../../security/benchmarks/overview.md)。
 
 ## <a name="general-security-controls"></a>常规安全控件
 
-|名称<br /><sub>(ID)</sub> |详细信息 |修正检查 |
+|名称<br /><sub>(CCEID)</sub> |详细信息 |修正检查 |
 |---|---|---|
 |确保在 /home 分区上设置 nodev 选项。<br /><sub>(1.1.4)</sub> |说明：攻击者可能在 /home 分区上装入特殊设备（例如，块或字符设备）。 |编辑 /etc/fstab 文件，并将 nodev 添加到 /home 分区的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
 |确保在 /tmp 分区上设置 nodev 选项。<br /><sub>(1.1.5)</sub> |说明：攻击者可能在 /tmp 分区上装入特殊设备（例如，块或字符设备）。 |编辑 /etc/fstab 文件，并将 nodev 添加到 /tmp 分区的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
@@ -41,6 +46,7 @@ ms.locfileid: "112033007"
 |确保配置 /etc/hosts.deny 上的权限。<br /><sub>(3.4.5)</sub> |说明：应务必确保 `/etc/hosts.deny` 文件不会受到未经授权的写入访问，这一点非常重要。 尽管该文件默认受保护，但文件权限有可能发生意外更改或遭受恶意操作篡改。 |将 /etc/hosts.deny 的所有者和组设置为 root，并将权限设置为 0644 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r file-permissions" |
 |确保启用默认的“拒绝防火墙”策略<br /><sub>(3.6.2)</sub> |说明：使用默认的接受策略时，防火墙将接受任何未配置为拒绝的数据包。 使用默认的 DROP 策略可以比使用默认的 ALLOW 策略更轻松地保持防火墙的安全。 |使用防火墙软件，根据具体情况将传入的、传出的和路由的流量的默认策略设置为 `deny` 或 `reject` |
 |应为所有 NFS 装载启用 nodev/nosuid 选项。<br /><sub>(5)</sub> |说明：攻击者可能会通过远程文件系统加载通过提升的安全上下文运行的文件或特殊设备 |将 nosuid 和 nodev 选项添加到 /etc/fstab 中的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
+|确保配置了对 /etc/ssh/sshd_config 的权限。<br /><sub>(5.2.1)</sub> |说明：需要防止无权限的用户对 `/etc/ssh/sshd_config` 文件进行未经授权的更改。 |将 /etc/ssh/sshd_config 的所有者和组设置为 root，并将权限设置为 0600 或运行“/opt/microsoft/omsagent/plugin/omsremediate -r sshd-config-file-permissions” |
 |确保配置密码创建要求。<br /><sub>(5.3.1)</sub> |说明：强密码可在系统遭受暴力破解方法的攻击时为其提供保护。 |在适用于你的发行版的相应 PAM 中设置以下键/值对：minlen=14，minclass = 4，dcredit = -1，ucredit = -1，ocredit = -1，lcredit = -1，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r enable-password-requirements" |
 |确保为失败的密码尝试配置锁定。<br /><sub>(5.3.2)</sub> |说明：在连续 `n` 次不成功的登录尝试后锁定用户 ID 可缓解对系统的暴力破解密码攻击。 |应视情况为 Ubuntu 和 Debian 添加 pam_tally 和 pam_deny 模块。 对于所有其他发行版，请参阅发行版的文档 |
 |禁止安装和使用不需要的文件系统 (cramfs)<br /><sub>(6.1)</sub> |说明：攻击者可能会在 cramfs 中使用漏洞来提升权限 |将文件添加到可禁用 cramfs 的 /etc/modprob.d 目录中，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-unnecessary-kernel-mods" |
@@ -84,8 +90,10 @@ ms.locfileid: "112033007"
 |确保禁用数据包重定向发送。<br /><sub>(38.3)</sub> |描述：攻击者有可能使用被入侵的主机将无效的“ICMP 重定向”发送到其他路由器设备，试图以此破坏路由，让用户访问攻击者设置的系统而不是有效系统。 |在 /etc/sysctl.conf 中设置以下参数："net.ipv4.conf.all.send_redirects = 0" 和 "net.ipv4.conf.default.send_redirects = 0"，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-send-redirects" |
 |应对所有接口禁用 ICMP 重定向发送。 (net.ipv4.conf.default.accept_redirects = 0)<br /><sub>(38.4)</sub> |说明：攻击者有可能更改此系统的路由表，将流量重定向到备用目标 |运行 `sysctl -w key=value` 并将其设置为符合要求的值，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-accept-redirects"。 |
 |应对所有接口禁用 ICMP 重定向发送。 (net.ipv4.conf.default.secure_redirects = 0)<br /><sub>(38.5)</sub> |说明：攻击者有可能更改此系统的路由表，将流量重定向到备用目标 |运行 `sysctl -w key=value` 并将其设置为符合要求的值，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-secure-redirects" |
-|应对所有接口禁用源路由数据包接收。 (net.ipv4.conf.all.accept_source_route = 0)<br /><sub>(40.1)</sub> |说明：攻击者有可能出于恶意目的对流量进行重定向。 |运行 `sysctl -w key=value` 并将其设置为符合要求的值，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-accept-source-route" |
-|应对所有接口禁用源路由数据包接收。 (net.ipv6.conf.all.accept_source_route = 0) 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-accept-source-route"<br /><sub>(40.2)</sub> |说明：攻击者有可能出于恶意目的对流量进行重定向。 |运行 `sysctl -w key=value` 并将其设置为符合要求的值。 |
+|应对所有接口禁用源路由数据包接收。 (net.ipv4.conf.all.accept_source_route = 0)<br /><sub>(40.1)</sub> |说明：攻击者有可能出于恶意目的对流量进行重定向。 |运行 `sysctl -w key=value` 并将其设置为符合要求的值。 |
+|应对所有接口禁用源路由数据包接收。 (net.ipv6.conf.all.accept_source_route = 0)<br /><sub>(40.2)</sub> |说明：攻击者有可能出于恶意目的对流量进行重定向。 |运行 `sysctl -w key=value` 并将其设置为符合要求的值。 |
+|应针对网络接口禁用接受源路由的数据包的默认设置。 (net.ipv4.conf.default.accept_source_route = 0)<br /><sub>(42.1)</sub> |说明：攻击者有可能出于恶意目的对流量进行重定向。 |运行 `sysctl -w key=value` 并将其设置为符合要求的值。 |
+|应针对网络接口禁用接受源路由的数据包的默认设置。 (net.ipv6.conf.default.accept_source_route = 0)<br /><sub>(42.2)</sub> |说明：攻击者有可能出于恶意目的对流量进行重定向。 |运行 `sysctl -w key=value` 并将其设置为符合要求的值。 |
 |应启用对虚假广播 ICMP 响应的忽略。 (net.ipv4.icmp_ignore_bogus_error_responses = 1)<br /><sub>(43)</sub> |说明：攻击者有可能执行 ICMP 攻击，从而导致 DoS |运行 `sysctl -w key=value` 并将其设置为符合要求的值，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r enable-icmp-ignore-bogus-error-responses" |
 |应启用对发送到广播/多播地址的 ICMP 回显请求 (ping) 的忽略。 (net.ipv4.icmp_echo_ignore_broadcasts = 1)<br /><sub>(44)</sub> |说明：攻击者有可能执行 ICMP 攻击，从而导致 DoS |运行 `sysctl -w key=value` 并将其设置为符合要求的值，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r enable-icmp-echo-ignore-broadcasts" |
 |应为所有接口启用 martian 数据包（地址不合理的包）的日志记录。 (net.ipv4.conf.all.log_martians = 1)<br /><sub>(45.1)</sub> |说明：攻击者有可能从假冒地址发送流量且不被检测到 |运行 `sysctl -w key=value` 并将其设置为符合要求的值，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r enable-log-martians" |
@@ -101,6 +109,7 @@ ms.locfileid: "112033007"
 |确保禁用 TIPC。<br /><sub>(57)</sub> |说明：如果不需要该协议，建议不要安装驱动程序以减小潜在攻击面。 |在 `/etc/modprobe.d/` 目录中编辑或创建一个以 .conf 结尾的文件并添加 `install tipc /bin/true`，然后卸载 tipc 模块或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-unnecessary-kernel-mods" |
 |确保配置日志记录。<br /><sub>(60)</sub> |说明：大量与安全相关的重要信息通过 `rsyslog` 发送（例如，成功和失败的 su 尝试、失败的登录尝试、根登录尝试等）。 |视情况适当配置 syslog、rsyslog 或 syslog-ng |
 |应安装 syslog、rsyslog 或 syslog-ng 包。<br /><sub>(61)</sub> |说明：系统不会记录可靠性和安全性问题，这会妨碍得到正确的诊断结果。 |安装 rsyslog 包，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r install-rsyslog" |
+|systemd-journald 服务应配置为保留日志消息<br /><sub>(61.1)</sub> |说明：系统不会记录可靠性和安全性问题，这会妨碍得到正确的诊断结果。 |创建 /var/log/journal，并确保 journald.conf 中的存储是自动的或者持久的 |
 |确保启用日志记录服务<br /><sub>(62)</sub> |说明：应务必具备记录节点上事件的功能。 |启用 rsyslog 包，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r enable-rsyslog" |
 |所有 rsyslog 日志文件的文件权限应设置为 640 或 600。<br /><sub>(63)</sub> |说明：攻击者有可能通过操纵日志来隐藏活动信息 |在文件 "/etc/rsyslog.conf" 中添加一行 "$FileCreateMode 0640" |
 |确保对记录器配置文件进行限制。<br /><sub>(63.1)</sub> |说明：应务必确保日志文件存在，同时应具备正确的权限，以便确保敏感 syslog 数据得到存档和保护。 |将记录器的配置文件设置为 0640 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r logger-config-file-permissions" |
@@ -135,8 +144,23 @@ ms.locfileid: "112033007"
 |确保配置 /etc/cron.monthly 上的权限。<br /><sub>(96)</sub> |说明：向非特权用户授予此目录的写入权限可能会导致他们能够获取未经授权的提升权限。 授予对此目录的读取访问权限，有可能让非特权用户发现如何获取提升的权限或规避审核控制。 |将 /etc/chron.monthly 的所有者和组设置为 root，并将权限设置为 0700 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r fix-cron-file-perms" |
 |确保配置 /etc/cron.weekly 上的权限。<br /><sub>(97)</sub> |说明：向非特权用户授予此目录的写入权限可能会导致他们能够获取未经授权的提升权限。 授予对此目录的读取访问权限，有可能让非特权用户发现如何获取提升的权限或规避审核控制。 |将 /etc/chron.weekly 的所有者和组设置为 root，并将权限设置为 0700 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r fix-cron-file-perms" |
 |确保 at/cron 仅限于授权用户<br /><sub>(98)</sub> |描述：在许多系统上，只有系统管理员有权计划 `cron` 作业。 可使用 `cron.allow` 文件来控制谁可运行 `cron` 作业，从而强制实施此策略。 管理允许列表比管理拒绝列表容易。 使用拒绝列表时，将用户 ID 添加到系统中后，有可能会忘记将其添加到拒绝文件中。 |将 /etc/cron.deny 和 /etc/at.deny 替换为其各自的 `allow` 文件 |
+|必须按最佳做法对 SSH 进行配置和管理。 -“/etc/ssh/sshd_config Protocol = 2”<br /><sub>(106.1)</sub> |说明：攻击者可能会利用较早版本的 SSH 协议中的漏洞来获取访问权限 |运行命令“/opt/microsoft/omsagent/plugin/omsremediate -r configure-ssh-protocol”。 这会在“/etc/ssh/sshd_config”文件中设置“Protocol 2” |
+|必须按最佳做法对 SSH 进行配置和管理。 -“/etc/ssh/sshd_config IgnoreRhosts = yes”<br /><sub>(106.3)</sub> |说明：攻击者可能会利用 Rhosts 协议中的漏洞来获取访问权限 |运行命令“/usr/local/bin/azsecd remediate (/opt/microsoft/omsagent/plugin/omsremediate) -r enable-ssh-ignore-rhosts”。 这会将行“IgnoreRhosts yes”添加到文件“/etc/ssh/sshd_config” |
+|确保将 SSH LogLevel 设置为 INFO<br /><sub>(106.5)</sub> |描述：SSH 提供若干个日志记录级别，其详细程度各不相同。 由于 `DEBUG ` 会导致提供过多数据，以至于难以识别重要的安全信息，因此，除了严格用于调试 SSH 通信之外，不建议使用此级别。 `INFO ` 级别是仅记录 SSH 用户登录活动的基础级别。 在许多情况下（例如，事件响应），确定特定用户在系统上处于活动状态的时间很重要。 注销记录可以消除那些已断开连接的用户，这有助于缩小范围。 |编辑 `/etc/ssh/sshd_config` 文件，按以下所示设置参数：```         LogLevel INFO         ``` |
+|确保将 SSH MaxAuthTries 设置为 6 或更小的数字<br /><sub>(106.7)</sub> |说明：将 `MaxAuthTries ` 参数设置为较小值可最大程度减小对 SSH 服务器的暴力攻击成功的风险。 尽管建议设置为 4，但应根据站点策略设置数值。 |确保将 SSH MaxAuthTries 设置为 6 或更低，编辑 `/etc/ssh/sshd_config` 文件，按以下所示设置参数：```         MaxAuthTries 6         ``` |
+|确保限制 SSH 访问权限<br /><sub>(106.11)</sub> |说明：限制哪些用户可以通过 SSH 远程访问系统可帮助确保只有经过授权的用户才能访问系统。 |确保 SSH 访问权限受到限制，编辑 `/etc/ssh/sshd_config` 文件，按下图所示设置一个或多个参数：```         AllowUsers          AllowGroups          DenyUsers          DenyGroups          ``` |
+|应禁用通过 ssh 服务器实现的 rsh 命令仿真。 -“/etc/ssh/sshd_config RhostsRSAAuthentication = no”<br /><sub>(107)</sub> |说明：攻击者可能会利用 RHosts 协议中的漏洞来获取访问权限 |运行命令“/opt/microsoft/omsagent/plugin/omsremediate -r disable-ssh-rhost-rsa-auth”。 这会将行“RhostsRSAAuthentication no”添加到文件“/etc/ssh/sshd_config” |
+|应禁用 SSH 基于主机的身份验证。 -“/etc/ssh/sshd_config HostbasedAuthentication = no”<br /><sub>(108)</sub> |说明：攻击者可能会利用基于主机的身份验证来获取被入侵主机的访问权限 |运行命令“/opt/microsoft/omsagent/plugin/omsremediate -r disable-ssh-host-based-auth”。 这会将行“HostbasedAuthentication no”添加到文件“/etc/ssh/sshd_config” |
+|应禁用通过 SSH 进行的根登录。 -“/etc/ssh/sshd_config PermitRootLogin = no”<br /><sub>(109)</sub> |说明：攻击者可能暴力破解根密码或通过直接作为根进行登录来隐藏其命令历史记录 |运行密码“/usr/local/bin/azsecd remediate -r disable-ssh-root-login”。 这会将行“PermitRootLogin no”添加到文件“/etc/ssh/sshd_config” |
+|应禁用使用空密码的帐户的远程连接。 -“/etc/ssh/sshd_config PermitEmptyPasswords = no”<br /><sub>(110)</sub> |说明：攻击者可以通过密码猜测获取访问权限 |运行命令“/usr/local/bin/azsecd remediate (/opt/microsoft/omsagent/plugin/omsremediate) -r disable-ssh-empty-passwords”。 这会将行“PermitEmptyPasswords no”添加到文件“/etc/ssh/sshd_config” |
+|确保配置了 SSH 空闲超时间隔。<br /><sub>(110.1)</sub> |说明：如果不为连接设置关联的超时值，就可能导致许未经授权的用户能够访问其他用户的 ssh 会话。 设置超时值至少可以降低发生这种情况的风险。 尽管建议设置为 300 秒（5 分钟），但应根据站点策略设置此超时值。 建议将 `ClientAliveCountMax` 设置为 0。 在这种情况下，客户端会话将在空闲 5 分钟后终止，不会发送任何连接状态下的消息。 |编辑 /etc/ssh/sshd_config 文件，以根据策略设置参数 |
+|确保将 SSH LoginGraceTime 设置为一分钟或更短的时间。<br /><sub>(110.2)</sub> |说明：将 `LoginGraceTime` 参数设置为较小值可最大程度减小对 SSH 服务器的暴力攻击成功的风险。 它还会限制未经过身份验证的并发连接数，尽管建议设置为 60 秒（1 分钟），但仍应基于站点策略来设置。 |编辑 /etc/ssh/sshd_config 文件，以根据策略设置参数或运行“/opt/microsoft/omsagent/plugin/omsremediate -r configure-login-grace-time” |
+|确保只使用批准的 MAC 算法<br /><sub>(110.3)</sub> |描述：MD5 和 96 位 MAC 算法被视为弱算法，且已有证据显示这些算法被用于 SSH 降级攻击的情况有所增加。 随着算力的增加，弱算法因被视为可利用的攻击弱点而持续受到广泛关注。 阻断算法的攻击者可能会利用 MiTM 位置来解密 SSH 隧道并捕获凭据和信息 |编辑 /etc/sshd_config 文件，并添加/修改 MAC 行，在其中包含以逗号分隔的已批准的 MAC 的列表或运行“/opt/microsoft/omsagent/plugin/omsremediate-mac” |
 |确保正确配置远程登录警告横幅。<br /><sub>(111)</sub> |说明：警告消息让试图登录到系统的用户了解到他们的有关系统的法律状态，其中必须包含拥有该系统的组织的名称和任何已实施的监视策略。 在登录横幅中显示操作系统和修补程序级别的信息也会产生副作用，即向对某个系统有特定攻击目的的攻击者提供详细的系统信息。 授权用户可以在登录后通过运行 `uname -a` 命令轻松获取这些信息。 |从 /etc/issue.net 文件中删除 \m \r \s 和 \v 的所有实例 |
 |确保正确配置本地登录警告横幅。<br /><sub>(111.1)</sub> |说明：警告消息让试图登录到系统的用户了解到他们的有关系统的法律状态，其中必须包含拥有该系统的组织的名称和任何已实施的监视策略。 在登录横幅中显示操作系统和修补程序级别的信息也会产生副作用，即向对某个系统有特定攻击目的的攻击者提供详细的系统信息。 授权用户可以在登录后通过运行 `uname -a` 命令轻松获取这些信息。 |从 /etc/issue 文件中删除 \m \r \s 和 \v 的所有实例 |
+|应启用 SSH 警告横幅。 - “/etc/ssh/sshd_config Banner = /etc/issue.net”<br /><sub>(111.2)</sub> |描述：不会向用户发出警告，指示其在系统上的操作受到监视 |运行命令“/usr/local/bin/azsecd remediate -r configure-ssh-banner”。 这会将行“Banner /etc/azsec/banner.txt”添加到文件“/etc/ssh/sshd_config” |
+|不允许用户为 SSH 设置环境选项。<br /><sub>(112)</sub> |说明：攻击者可能会绕过 SSH 上的某些访问限制 |从文件“/etc/ssh/sshd_config”中删除行“PermitUserEnvironment yes” |
+|应为 SSH 使用合适的密码。 (Ciphers aes128-ctr,aes192-ctr,aes256-ctr)<br /><sub>(113)</sub> |说明：攻击者可能会入侵安全保护较弱的 SSH 连接 |运行命令“/usr/local/bin/azsecd remediate -r configure-ssh-ciphers”。 这会将行“Ciphers aes128-ctr,aes192-ctr,aes256-ctr”添加到文件“/etc/ssh/sshd_config” |
 |应禁用 avahi-daemon 服务。<br /><sub>(114)</sub> |说明：攻击者有可能利用 avahi-daemon 中的漏洞来获取访问权限 |禁用 avahi-daemon 服务或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-avahi-daemon" |
 |应禁用 cups 服务。<br /><sub>(115)</sub> |说明：攻击者有可能利用 cup 服务中的缺陷来提升权限 |禁用 cups 服务或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-cups" |
 |应禁用 isc-dhcpd 服务。<br /><sub>(116)</sub> |说明：攻击者有可能使用 dhcpd 向客户端提供错误信息，从而干扰正常运行。 |删除 isc-dhcp-server 包 (apt-get remove isc-dhcp-server) |
@@ -176,7 +200,7 @@ ms.locfileid: "112033007"
 |禁止将 SMB V1 用于 Samba<br /><sub>(185)</sub> |说明：SMB v1 具有已知的严重漏洞，且不加密传输中的数据。 如果出于业务原因必须使用它，强烈建议采取其他步骤来缓解此协议固有的风险。 |如果 Samba 未运行，请删除包，否则，在 /etc/samba/smb.conf 的 [global] 部分会有一行：min protocol = SMB2，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r set-smb-min-version" |
 
 > [!NOTE]
-> Azure Policy 来宾配置设置的具体供应情况在 Azure 政府和其他国家云中可能会有所不同。
+> Azure Policy 来宾配置设置的具体可用情况在 Azure 政府和其他国家云中可能会有所不同。
 
 ## <a name="next-steps"></a>后续步骤
 

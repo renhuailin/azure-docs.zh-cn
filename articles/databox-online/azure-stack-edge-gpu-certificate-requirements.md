@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 9184a3f429804ac383f137de49c5391e2e1db80f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6071420216a4c3e365ca5c35e1bf59713974e679
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439232"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360535"
 ---
 # <a name="certificate-requirements"></a>证书要求
 
@@ -34,7 +34,11 @@ ms.locfileid: "102439232"
 
 ## <a name="certificate-algorithms"></a>证书算法
 
-证书算法必须满足以下要求：
+你的设备仅支持 Rivest–Shamir–Adleman (RSA) 证书。 不支持椭圆曲线数字签名算法 (ECDSA) 证书。
+
+包含 RSA 公钥的证书称为 RSA 证书。 包含椭圆曲线加密 (ECC) 公钥的证书称为 ECDSA（椭圆曲线数字签名算法）证书。
+
+证书算法要求如下所示：
 
 * 证书必须使用 RSA 密钥算法。
 
@@ -87,14 +91,12 @@ Azure Stack Edge Pro 设备上安装的 PFX 证书应满足以下要求：
 
 * 仅使用提供程序为 Microsoft RSA/Schannel Cryptographic Provider 的 RSA 证书。
 
-有关详细信息，请参阅[导出带私钥的 PFX 证书](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)。
+有关详细信息，请参阅[导出带私钥的 PFX 证书](azure-stack-edge-gpu-prepare-certificates-device-upload.md#export-certificates-as-pfx-format-with-private-key)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure Stack Edge Pro 中使用证书](azure-stack-edge-gpu-manage-certificates.md)
+- 为设备创建证书
 
-[使用 Azure Stack Hub 准备情况检查器工具为 Azure Stack Edge Pro 创建证书](azure-stack-edge-gpu-create-certificates-tool.md)
+    - 通过 [Azure PowerShell cmdlet](azure-stack-edge-gpu-create-certificates-powershell.md)
+    - 通过 [Azure Stack Hub 就绪情况检查器工具](azure-stack-edge-gpu-create-certificates-tool.md)。
 
-[导出带私钥的 PFX 证书](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)
-
-[证书错误疑难解答](azure-stack-edge-gpu-certificate-troubleshooting.md)

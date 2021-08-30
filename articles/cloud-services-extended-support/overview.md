@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d61314dc89d341e376de7d3904568825ad3cfb04
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: ffea4e8edd9cc6c11644017e972db3ce3202c766
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293866"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747584"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>关于 Azure 云服务（外延支持）
 
@@ -21,10 +21,13 @@ ms.locfileid: "106293866"
 
 进行这一更改后，云服务的基于 Azure 服务管理器的部署模型将被重命名为[云服务（经典）](../cloud-services/cloud-services-choose-me.md)。 你将保留生成和快速部署 Web 和云应用程序和服务的能力。 你将能够根据当前需求扩展云服务基础结构，并确保应用程序的性能能够保持同步，同时降低成本。  
 
+:::image type="content" source="media/inside-azure-for-iot.png" alt-text="关于云服务（外延支持）的 YouTube 视频。" link="https://youtu.be/H4K9xTUvNdw":::
+
+
 ## <a name="what-does-not-change"></a>未变更的内容 
 - 你将创建代码，定义配置，并将其部署到 Azure。 Azure 设置计算环境，运行代码，然后监视并维护它。
-- 云服务（外延支持）还支持两种类型的角色：[Web 角色和辅助角色](../cloud-services/cloud-services-choose-me.md)。 Web 角色和辅助角色的设计、体系结构或组件不会有任何变化。 
-- 云服务的三个组件服务定义 (.csdef)，服务配置 (.cscfg) 和服务包的 (.cspkg) 将继续使用，而且它们的[格式](cloud-services-model-and-package.md)也不会有任何变化。 
+- 云服务（外延支持）还支持两种类型的角色：[Web 角色和辅助角色](../cloud-services/cloud-services-choose-me.md)。 Web 角色和辅助角色的设计、体系结构或组件没有任何变化。 
+- 云服务的 3 个组件是服务定义 (.csdef)、服务配置 (.cscfg) 和服务包 (.cspkg)，它们将继续使用，而且[格式](cloud-services-model-and-package.md)也不会有任何变化。 
 - 不需要对运行时代码进行任何更改，因为数据平面是相同的，仅控制平面发生变更。 
 - Azure GuestOS 发行版和相关更新与云服务（经典）一致
 - 与更新域相关的基础更新进程，升级如何进行，回滚和允许的服务更改在更新期间不会发生变化
@@ -63,4 +66,4 @@ ms.locfileid: "106293866"
 ## <a name="next-steps"></a>后续步骤
 - 查看云服务（外延支持）的[部署先决条件](deploy-prerequisite.md)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。
-- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.yml)。

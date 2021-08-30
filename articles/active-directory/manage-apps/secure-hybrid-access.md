@@ -1,86 +1,73 @@
 ---
 title: Azure AD 安全混合访问 | Microsoft Docs
-description: 本文介绍将旧版本地、公有云或私有云应用程序与 Azure AD 集成的合作伙伴解决方案。 通过将应用交付控制器或网络连接到 Azure AD 保护旧版应用。
+description: 本文介绍将旧版本地、公有云或私有云应用程序与 Azure AD 集成的合作伙伴解决方案。
 services: active-directory
-author: davidmu1
+author: gargi-sinha
 manager: martinco
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.date: 2/16/2021
-ms.author: davidmu
+ms.date: 8/17/2021
+ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.reviewer: miccohen
-ms.openlocfilehash: d7cafd5c3586feb99aeade5af7f858659baf6100
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3a1447b059409a278850fccde31f43b4dad2dca8
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744098"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418644"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>安全混合访问：使用 Azure Active Directory 保护旧应用
 
 现在可以通过使用以下功能，将本地的和云中的旧身份验证应用程序连接到 Azure Active Directory (AD)，以保护这些应用程序：
 
-- [Azure AD 应用程序代理](#secure-hybrid-access-sha-through-azure-ad-application-proxy)
+- [Azure AD 应用程序代理](#secure-hybrid-access-through-azure-ad-application-proxy)
 
-- [现有的应用程序传送控制器和网络](#sha-through-networking-and-delivery-controllers)
+- [安全的混合访问合作伙伴](#secure-hybrid-access-through-azure-ad-partner-integrations)
 
-- [虚拟专用网络 (VPN) 应用程序和软件定义的外围 (SDP) 应用程序](#sha-through-vpn-and-sdp-applications)
+可以使用 Azure AD 功能（例如 [Azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)和 [Azure AD 标识保护](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)）跨所有应用程序弥补差异并增强安全态势。 通过将 Azure AD 作为标识提供者 (IDP)，可以使用新式身份验证和授权方法（如[单一登录 (SSO)](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) 和[多重身份验证 (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)）来保护本地旧版应用程序。
 
-可以使用 Azure AD 功能（如 Azure AD [条件访问](../conditional-access/overview.md)和 Azure AD [标识保护](../identity-protection/overview-identity-protection.md)）跨所有应用程序弥补差异并加强安全态势。
-
-## <a name="secure-hybrid-access-sha-through-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理进行安全混合访问 (SHA)
+## <a name="secure-hybrid-access-through-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理进行安全的混合访问
   
-使用[应用程序代理](../app-proxy/what-is-application-proxy.md)，可以提供对本地 Web 应用程序的[安全远程访问](../app-proxy/application-proxy.md)。 用户不需要使用 VPN。 用户获得的好处是：可以在[单一登录](add-application-portal-setup-sso.md)后轻松地从任何设备连接到他们的应用程序。 应用程序代理将远程访问作为服务提供，并且允许向公司网络外部的用户[轻松发布本地应用程序](../app-proxy/application-proxy-add-on-premises-application.md)。 它有助于缩放云访问管理，不需要你修改本地应用程序。 接下来，请[计划 Azure AD 应用程序代理部署](../app-proxy/application-proxy-deployment-plan.md)。
+使用[应用程序代理](https://docs.microsoft.com/azure/active-directory/app-proxy/what-is-application-proxy)，可以提供对本地 Web 应用程序的[安全远程访问](https://docs.microsoft.com/azure/active-directory/app-proxy/application-proxy-add-on-premises-application)。 用户不需要使用 VPN。 用户获得的好处是：可以在进行 [SSO](https://docs.microsoft.com/azure/active-directory/app-proxy/application-proxy-config-sso-how-to#how-to-configure-single-sign-on) 后轻松地从任何设备连接到他们的应用程序。 应用程序代理将远程访问作为服务提供，并且允许向公司网络外部的用户[轻松发布本地应用程序](https://docs.microsoft.com/azure/active-directory/app-proxy/application-proxy-add-on-premises-application)。 它有助于缩放云访问管理，不需要你修改本地应用程序。 接下来，请[计划 Azure AD 应用程序代理](https://docs.microsoft.com/azure/active-directory/app-proxy/application-proxy-deployment-plan)部署。
 
-## <a name="azure-ad-partner-integrations"></a>Azure AD 合作伙伴集成
+## <a name="secure-hybrid-access-through-azure-ad-partner-integrations"></a>通过 Azure AD 合作伙伴集成实现安全的混合访问  
 
-### <a name="sha-through-networking-and-delivery-controllers"></a>通过网络和传送控制器进行 SHA
+除了 [Azure AD 应用程序代理](https://aka.ms/whyappproxy)之外，Microsoft 还与第三方提供商合作，实现对本地应用程序和使用旧式身份验证的应用程序进行安全访问的功能。
 
-为了使你能够使用[零信任框架](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)，除了 [Azure AD 应用程序代理](../app-proxy/what-is-application-proxy.md)外，Microsoft 还与第三方提供商合作。 可以使用现有的网络和传送控制器，并可轻松保护对业务流程至关重要但以前无法使用 Azure AD 进行保护的旧应用程序。 你可能已经具备了开始保护这些应用程序所需的全部条件。
+![图中显示了通过应用代理与合作伙伴实现安全的混合访问](./media/secure-hybrid-access/secure-hybrid-access.png)
 
-![图中显示了使用网络合作伙伴和应用代理的安全混合访问](./media/secure-hybrid-access/secure-hybrid-access.png)
+下列合作伙伴提供预建的解决方案来支持按应用程序实施的条件访问策略，并提供有关 Azure AD 集成的详细指南。 
 
-以下网络供应商提供了有关与 Azure AD 集成的预生成解决方案和详细指南。
+- [Akamai 企业应用程序访问](https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial)
 
-- [Akamai 企业应用程序访问 (EAA)](../saas-apps/akamai-tutorial.md)
+- [Citrix 应用程序传送控制器 (ADC)](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial)  
 
-- [Citrix 应用程序传送控制器 (ADC)](../saas-apps/citrix-netscaler-tutorial.md)
+- [Datawiza Access Broker](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)
 
-- [F5 Big-IP APM](./f5-aad-integration.md)
+- [F5 Big-IP APM ADC](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
 
-- [Kemp](../saas-apps/kemp-tutorial.md)
+- [F5 Big-IP APM VPN](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)
 
-- [Pulse Secure 虚拟流量管理器 (VTM)](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
+- [Kemp](https://docs.microsoft.com/azure/active-directory/saas-apps/kemp-tutorial)
 
-### <a name="sha-through-vpn-and-sdp-applications"></a>通过 VPN 和 SDP 应用程序进行 SHA
+- [Perimeter 81](https://docs.microsoft.com/azure/active-directory/saas-apps/perimeter-81-tutorial)
 
-使用 VPN 和 SDP 解决方案，可在保护组织数据的同时，提供随时随地从任何设备对企业网络进行安全访问的功能。 通过将 Azure AD 作为标识提供者 (IDP)，可以使用新式身份验证和授权方法（如 Azure AD [单一登录](./what-is-single-sign-on.md)和[多重身份验证](../authentication/concept-mfa-howitworks.md)）来保护本地旧应用程序。  
+- [Silverfort Authentication Platform](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)
 
-![图中显示了使用 VPN 合作伙伴和应用代理的安全混合访问 ](./media/secure-hybrid-access/app-proxy-vpn.png)
+- [Strata](https://docs.microsoft.com/azure/active-directory/saas-apps/maverics-identity-orchestrator-saml-connector-tutorial)
 
-以下 VPN 供应商提供了有关与 Azure AD 集成的预生成解决方案和详细指南。
+下列合作伙伴提供预建解决方案和有关 Azure AD 集成的详细指南。 
 
-- [Cisco AnyConnect](../saas-apps/cisco-anyconnect.md)
+- [Cisco AnyConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect)
 
-- [Fortinet](../saas-apps/fortigate-ssl-vpn-tutorial.md)
+- [Fortinet](https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial)
 
-- [F5 Big-IP APM](./f5-aad-password-less-vpn.md)
+- [Palo Alto Networks Global Protect](https://docs.microsoft.com/azure/active-directory/saas-apps/paloaltoadmin-tutorial)
 
-- [Palo Alto Networks Global Protect](../saas-apps/paloaltoadmin-tutorial.md)
+- [Pulse Secure Pulse Connect Secure (PCS)](https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-pcs-tutorial)
 
-- [Pulse Secure Pulse Connect Secure (PCS)](../saas-apps/pulse-secure-pcs-tutorial.md)
+- [Pulse Secure 虚拟流量管理器 (VTM)](https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-virtual-traffic-manager-tutorial)
 
-以下 SDP 供应商提供了有关与 Azure AD 集成的预生成解决方案和详细指南。
-
-- [Datawiza Access Broker](./add-application-portal-setup-oidc-sso.md)
-
-- [Perimeter 81](../saas-apps/perimeter-81-tutorial.md)
-
-- [Silverfort Authentication Platform](./add-application-portal-setup-oidc-sso.md)
-
-- [Strata](../saas-apps/maverics-identity-orchestrator-saml-connector-tutorial.md)
-
-- [Zscaler Private Access (ZPA)](../saas-apps/zscalerprivateaccess-tutorial.md)
+- [Zscaler Private Access (ZPA)](https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial)

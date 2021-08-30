@@ -2,16 +2,16 @@
 title: 使用 Azure Site Recovery 在 Azure VM 故障转移后保留 IP 地址
 description: 介绍如何在使用 Azure Site Recovery 将用于灾难恢复的 Azure VM 故障转移到次要区域时保留 IP 地址
 ms.service: site-recovery
-ms.date: 4/9/2019
+ms.date: 07/25/2021
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 782e6247bb17485e8e654c7e879f477fe531edc4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023544"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736231"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>在故障转移期间保留 IP 地址
 
@@ -33,6 +33,8 @@ ms.locfileid: "96023544"
 公司 A 在 Azure 中运行其所有应用。
 
 ### <a name="before-failover"></a>在故障转移之前
+
+>[!注意 现在可以在世界上的任何两个 Azure 区域之间执行复制。 客户不再局限于在其所在洲内启用复制。
 
 下方是故障转移之前的体系结构。
 
@@ -93,7 +95,7 @@ ms.locfileid: "96023544"
         - 恢复 VNet 1 和恢复 VNet 2 各自具有 2 个与源 VNet 1 和源 VNet 2 中的子网匹配的子网 - 东南亚具有地址空间为 10.3.0.0/16 的额外 VNet (Azure VNet)。
         - Azure VNet 包含地址空间为 10.3.4.0/24 的子网（子网 4）。
         SQL Server Always On、域控制器等的副本节点位于子网 4 中。
-- 存在大量站点到站点 VPN 连接： 
+- 存在大量站点到站点 VPN 连接：
     - 源 VNet 1 和 Azure VNet
     - 源 VNet 2 和 Azure VNet
     - 源 VNet 1 和源 VNet 2 通过站点到站点 VPN 进行连接
@@ -121,7 +123,7 @@ ms.locfileid: "96023544"
 
 ## <a name="hybrid-resources-full-failover"></a>混合资源：完全故障转移
 
-在此方案中，公司 B 实行混合部署，其在 Azure 中运行一部分应用程序基础结构，并在本地运行剩余的基础结构。 
+在此方案中，公司 B 实行混合部署，其在 Azure 中运行一部分应用程序基础结构，并在本地运行剩余的基础结构。
 
 ### <a name="before-failover"></a>在故障转移之前
 

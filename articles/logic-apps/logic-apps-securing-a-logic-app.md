@@ -4,14 +4,14 @@ description: 保护对输入、输出、基于请求的触发器、运行历史�
 services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, azla
-ms.topic: conceptual
-ms.date: 05/01/2021
-ms.openlocfilehash: 50087ed6066ba97a866cc2fd40901397a3825e37
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.topic: how-to
+ms.date: 07/29/2021
+ms.openlocfilehash: 296a743924de2093ff9418333bdf8ef7e2f6f0f1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111983917"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731288"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure 逻辑应用中保护访问和数据
 
@@ -40,7 +40,7 @@ Azure 逻辑应用依赖 [Azure 存储](../storage/index.yml)来存储和自动[
 
 逻辑应用通过基于请求的触发器（例如[请求](../connectors/connectors-native-reqres.md)触发器或 [HTTP Webhook](../connectors/connectors-native-webhook.md) 触发器）接收的入站调用支持加密，并[至少使用传输层安全性 (TLS) 1.2](https://en.wikipedia.org/wiki/Transport_Layer_Security)（以前称为安全套接字层 (SSL)）进行保护。 逻辑应用在收到对请求触发器的入站调用或对 HTTP Webhook 触发器或操作的回调时强制实施此版本。 如果出现 TLS 握手错误，请确保使用 TLS 1.2。 有关详细信息，请参阅[解决 TLS 1.0 问题](/security/solving-tls1-problem)。
 
-入站调用支持以下密码套件：
+对于入站调用，请使用以下密码套件：
 
 * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -50,6 +50,24 @@ Azure 逻辑应用依赖 [Azure 存储](../storage/index.yml)来存储和自动[
 * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
+> [!NOTE]
+> 对于向后兼容性，Azure 逻辑应用目前支持一些较旧的密码套件。 但是，在开发新应用时不要使用较旧的密码套件，因为此类套件在将来可能不会得到支持 。 
+>
+> 例如，如果你在使用 Azure 逻辑应用服务时检查 TLS 握手消息，或者使用逻辑应用 URL 上的安全工具，则可能会找到以下密码套件。 同样，请勿使用以下较旧的套件：
+>
+>
+> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+> * TLS_RSA_WITH_AES_256_GCM_SHA384
+> * TLS_RSA_WITH_AES_128_GCM_SHA256
+> * TLS_RSA_WITH_AES_256_CBC_SHA256
+> * TLS_RSA_WITH_AES_128_CBC_SHA256
+> * TLS_RSA_WITH_AES_256_CBC_SHA
+> * TLS_RSA_WITH_AES_128_CBC_SHA
+> * TLS_RSA_WITH_3DES_EDE_CBC_SHA
 
 以下列表包括更多方法，你可以使用它们限制对触发器（这些触发器接收对逻辑应用的入站调用）的访问，以便只有经过授权的客户端才能调用逻辑应用：
 
@@ -553,8 +571,17 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="secure-data-in-run-history-by-using-obfuscation"></a>使用模糊处理保护运行历史记录中的数据
 
-许多触发器和操作具有用于保护逻辑应用的运行历史记录中的输入和/或输出的设置。 在使用这些设置帮助保护此数据之前，请查看以下注意事项：
+许多触发器和操作具有用于保护逻辑应用的运行历史记录中的输入和/或输出的设置。 所有[托管连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)和[自定义连接器](/connectors/custom-connectors/)支持这些选项。 但是，以下[内置操作](../connectors/built-in.md)不支持这些选项：
+     
+| 安全输入 - 不受支持 | 安全输出 - 不受支持 |
+|-----------------------------|------------------------------|
+| 追加到数组变量 <br>追加到字符串变量 <br>递减变量 <br>为每个 <br>如果 <br>递增变量 <br>初始化变量 <br>定期 <br>范围 <br>设置变量 <br>开关 <br>Terminate <br>截止 | 追加到数组变量 <br>追加到字符串变量 <br>撰写 <br>递减变量 <br>为每个 <br>如果 <br>递增变量 <br>初始化变量 <br>分析 JSON <br>定期 <br>响应 <br>范围 <br>设置变量 <br>开关 <br>Terminate <br>截止 <br>Wait |
+|||
 
+#### <a name="considerations-for-securing-inputs-and-outputs"></a>保护输入和输出时的注意事项
+
+在使用这些设置帮助保护此数据之前，请查看以下注意事项：
+                 
 * 遮盖触发器或操作的输入或输出时，逻辑应用不会将安全数据发送到 Azure Log Analytics。 此外，不能将[跟踪的属性](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)添加到该触发器或操作进行监视。
 
 * [用于处理工作流历史记录的逻辑应用 API](/rest/api/logic/) 不会返回受保护的输出。
@@ -951,7 +978,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 在用于向这些终结点�
 
 如果[基本](../active-directory-b2c/secure-rest-api.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性 (JSON) | 必须 | Value | 说明 |
+| 属性（设计器） | 属性 (JSON) | 必须 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | 基本 | 要使用的身份验证类型 |
 | **用户名** | `username` | 是 | <*user-name*>| 用于对目标服务终结点访问进行身份验证的用户名 |
@@ -982,7 +1009,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 在用于向这些终结点�
 
 如果[客户端证书](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性 (JSON) | 必须 | Value | 说明 |
+| 属性（设计器） | 属性 (JSON) | 必须 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | **客户端证书** <br>或 <br>`ClientCertificate` | 可使用的身份验证类型。 可以使用 [Azure API 管理](../api-management/api-management-howto-mutual-certificates.md)来管理证书。 <p></p>**注意**：对于入站和出站调用，自定义连接器不支持基于证书的身份验证。 |
 | **Pfx** | `pfx` | 是 | <*encoded-pfx-file-content*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 <p><p>若要将 PFX 文件转换为 base64 编码格式，可以使用 PowerShell 并执行以下步骤： <p>1.将证书内容保存到某个变量中： <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.使用 `ToBase64String()` 函数转换证书内容，并将该内容保存到某个文本文件中： <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` <p><p>**故障排除**：如果使用 `cert mmc/PowerShell` 命令，可能会出现以下错误： <p><p>`Could not load the certificate private key. Please check the authentication certificate password is correct and try again.` <p><p>若要解决此错误，请尝试使用 `openssl` 命令将 PFX 文件转换为 PEM 文件，再转换回来： <p><p>`openssl pkcs12 -in certificate.pfx -out certificate.pem` <br>`openssl pkcs12 -in certificate.pem -export -out certificate2.pfx` <p><p>然后，在获得证书的新转换 PFX 文件的 base64 编码字符串后，便可以在 Azure 逻辑应用中使用该字符串。 |
@@ -1024,11 +1051,11 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 在用于向这些终结点�
 
 在请求触发器上，可以使用 [Azure Active Directory 开放式身份验证 (Azure AD OAuth)](../active-directory/develop/index.yml)，在为逻辑应用[设置 Azure AD 授权策略](#enable-oauth)后对传入调用进行身份验证。 对于提供 Active Directory OAuth 身份验证类型供你选择的所有其他触发器和操作，请指定以下属性值：
 
-| 属性（设计器） | 属性 (JSON) | 必须 | Value | 说明 |
+| 属性（设计器） | 属性 (JSON) | 必须 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 可使用的身份验证类型。 逻辑应用当前遵循 [OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
-| 颁发机构 | `authority` | 否 | <*URL-for-authority-token-issuer*> | 提供访问令牌的颁发机构的 URL。 此值默认为 `https://login.windows.net`。 |
-| 租户 | `tenant` | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID |
+| 颁发机构 | `authority` | 否 | <*URL-for-authority-token-issuer*> | 提供访问令牌的颁发机构的 URL，例如 Azure 全球服务区域的 `https://login.microsoftonline.com/`。 对于其他国家云，请查看 [Azure AD 身份验证终结点 - 选择标识颁发机构](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints)。 |
+| **租户** | `tenant` | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID |
 | **受众** | `audience` | 是 | <*resource-to-authorize*> | 要用于授权的资源，例如 `https://management.core.windows.net/` |
 | **客户端 ID** | `clientId` | 是 | <*client-ID*> | 请求授权的应用的客户端 ID |
 | **凭据类型** | `credentialType` | 是 | 证书 <br>或 <br>机密 | 客户端用来请求授权的凭据类型。 此属性和值不会显示在逻辑应用的基础定义中，但确定了为选定凭据类型显示的属性。 |
@@ -1081,7 +1108,7 @@ Authorization: OAuth realm="Photos",
 
 在支持原始身份验证的触发器或操作中指定以下属性值：
 
-| 属性（设计器） | 属性 (JSON) | 必须 | Value | 说明 |
+| 属性（设计器） | 属性 (JSON) | 必须 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | 原始 | 要使用的身份验证类型 |
 | **值** | `value` | 是 | <*authorization-header-value*> | 要用于身份验证的授权标头值 |
@@ -1118,10 +1145,10 @@ Authorization: OAuth realm="Photos",
 
    **内置触发器和操作**
 
-   | 属性（设计器） | 属性 (JSON) | 必须 | Value | 说明 |
+   | 属性（设计器） | 属性 (JSON) | 必须 | 值 | 说明 |
    |---------------------|-----------------|----------|-------|-------------|
    | **身份验证** | `type` | 是 | **托管标识** <br>或 <br>`ManagedServiceIdentity` | 要使用的身份验证类型 |
-   | **托管标识** | `identity` | 是 | * 系统分配的托管标识 <br>或 <br>`SystemAssigned` <p><p>* <user-assigned-identity-name> | 要使用的托管标识 |
+   | **托管标识** | `identity` | 是 | * 系统分配的托管标识 <br>或 <br>`SystemAssigned` <p><p>* <*user-assigned-identity-ID*> | 要使用的托管标识 |
    | **受众** | `audience` | 是 | <*target-resource-ID*> | 要访问的目标资源的资源 ID。 <p>例如，`https://storage.azure.com/` 使用于身份验证的[访问令牌](../active-directory/develop/access-tokens.md)对所有存储帐户都有效。 但是，还可以为特定存储帐户指定根服务 URL，如 `https://fabrikamstorageaccount.blob.core.windows.net`。 <p>**注意**：“受众”属性可能已在某些触发器或操作中隐藏。 若要显示此属性，请在触发器或操作中打开“添加新参数”列表，然后选择“受众” 。 <p><p>**重要说明**：请确保此目标资源 ID 完全匹配 Azure AD 所需的值，包括任何必需的尾部反斜杠。 因此，所有 Azure Blob 存储帐户的 `https://storage.azure.com/` 资源 ID 都需要尾部反斜杠。 但是，特定存储帐户的资源 ID 不需要尾部反斜杠。 若要查找这些资源 ID，请参阅[支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |
    |||||
 
@@ -1145,7 +1172,7 @@ Authorization: OAuth realm="Photos",
 
    **托管连接器触发器和操作**
 
-   | 属性（设计器） | 必须 | Value | 说明 |
+   | 属性（设计器） | 必须 | 值 | 说明 |
    |---------------------|----------|-------|-------------|
    | **连接名称** | 是 | <*connection-name*> ||
    | **托管的标识** | 是 | **系统分配的托管标识** <br>或 <br> <*用户分配的托管标识名称*> | 要使用的身份验证类型 |
@@ -1162,11 +1189,11 @@ Authorization: OAuth realm="Photos",
 
 ## <a name="isolation-guidance-for-logic-apps"></a>逻辑应用隔离指导
 
-可以在 [Azure 政府](../azure-government/documentation-government-welcome.md)中，使用在 [Azure 政府影响级别 5 隔离指导](../azure-government/documentation-government-impact-level-5.md#azure-logic-apps)和[美国国防部云计算安全要求指南 (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/SRG/index.html) 中所述的区域支持所有影响级别的 Azure 逻辑应用。 为了满足这些要求，逻辑应用支持在具有专用资源的环境中创建和运行工作流的功能，因此可以减轻逻辑应用中其他 Azure 租户造成的性能影响，并避免与其他租户共享计算资源。
+你可以在 [Azure 政府](../azure-government/documentation-government-welcome.md)中使用 Azure 逻辑应用支持 [Azure 政府影响级别 5 隔离指导](../azure-government/documentation-government-impact-level-5.md)中所述区域的所有影响级别。 为了满足这些要求，逻辑应用支持在具有专用资源的环境中创建和运行工作流的功能，因此可以减轻逻辑应用中其他 Azure 租户造成的性能影响，并避免与其他租户共享计算资源。
 
 * 若要运行自己的代码或执行 XML 转换，请[创建并调用一个 Azure 函数](../logic-apps/logic-apps-azure-functions.md)，而不要使用[内联代码功能](../logic-apps/logic-apps-add-run-inline-code.md)或提供[用作映射的程序集](../logic-apps/logic-apps-enterprise-integration-maps.md)。 此外，为函数应用设置托管环境，以符合隔离要求。
 
-  例如，若要满足影响级别 5 要求，请使用[“隔离”定价层](../app-service/overview-hosting-plans.md)以及同样也使用“隔离”定价层的[应用服务环境 (ASE)](../app-service/environment/intro.md)，在[应用服务计划](../azure-functions/dedicated-plan.md)中创建函数应用。  在此环境中，函数应用将在专用的 Azure 虚拟机和专用的 Azure 虚拟网络中运行，这些资源在计算隔离的基础上为应用提供网络隔离，并提供最大程度的横向扩展功能。 有关详细信息，请参阅 [Azure 政府云影响级别 5 隔离指导 - Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions)。
+  例如，若要满足影响级别 5 要求，请使用[“隔离”定价层](../app-service/overview-hosting-plans.md)以及同样也使用“隔离”定价层的[应用服务环境 (ASE)](../app-service/environment/intro.md)，在[应用服务计划](../azure-functions/dedicated-plan.md)中创建函数应用。  在此环境中，函数应用将在专用的 Azure 虚拟机和专用的 Azure 虚拟网络中运行，这些资源在计算隔离的基础上为应用提供网络隔离，并提供最大程度的横向扩展功能。
 
   有关详细信息，请查看以下文档：
 

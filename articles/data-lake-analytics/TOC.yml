@@ -165,6 +165,8 @@
           href: runtime-troubleshoot.md
         - name: 排查 .NET 升级问题
           href: dotnet-upgrade-troubleshoot.md
+    - name: 迁移到 Azure 数据分析上的 Spark
+      href: migrate-azure-data-lake-analytics-to-synapse.md
 - name: 参考
   items:
     - name: Azure PowerShell

@@ -17,12 +17,12 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b3433031beba287d1412d0c2254941b7a3e9e118
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 4970ef21be1e5c440acc871f5ca5583da1916f52
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968416"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114728496"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>在 Azure AD 权利管理中使用 Azure Monitor 存档日志和进行报告
 
@@ -76,14 +76,15 @@ Azure AD 在审核日志中将审核事件存储最长 30 天。 但是，可以
 
 1. 选择名为“访问包活动”的工作簿。 
 
-1. 在该工作簿中选择一个时间范围（如果不确定，请更改为“全部”），然后从所有访问包的下拉列表中，选择在该时间范围内发生了活动的访问包 ID。 随后会显示在所选时间范围内该访问包发生的相关事件。  
+1. 在该工作簿中选择一个时间范围（如果不确定，请更改为“全部”），然后从所有访问包的下拉列表中，选择在该时间范围内发生了活动的访问包 ID。 随后会显示在所选时间范围内该访问包发生的相关事件。
 
     ![查看访问包事件](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
 
-    每行包含时间、访问包 ID、操作名称、对象 ID、UPN，以及启动该操作的用户的显示名称。  JSON 中包含更多详细信息。   
+    每行包含时间、访问包 ID、操作名称、对象 ID、UPN，以及启动该操作的用户的显示名称。  JSON 中包含更多详细信息。
 
 1. 如果想要查看应用程序的应用程序角色分配是否发生了更改，而这些更改不是由访问包分配引起的（例如全局管理员直接将用户分配给应用程序角色），则可以选择名为“应用程序角色分配活动”的工作簿。
 
+    ![查看应用角色分配](./media/entitlement-management-access-package-incompatible/workbook-ara.png)
 
 ## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>使用 Azure 门户创建自定义 Azure Monitor 查询
 你可以对 Azure AD 审核事件（包括权利管理事件）创建自己的查询。  
@@ -163,7 +164,7 @@ $subs | ft
  
 可以使用类似于 `Connect-AzAccount –Subscription $subs[0].id` 的命令向该订阅重新进行身份验证，并将 PowerShell 会话与其关联。 若要详细了解如何通过 PowerShell 在 Azure 中进行身份验证（包括非交互式身份验证），请参阅[使用 Azure PowerShell 进行登录](/powershell/azure/authenticate-azureps)。
 
-如果你在该订阅中有多个 Log Analytics 工作区，则 cmdlet [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) 会返回工作区列表。 然后，你可以找到包含 Azure AD 日志的工作区。 此 cmdlet 返回的 `CustomerId` 字段与 Azure 门户上 Log Analytics 工作区概览中显示的“工作区 ID”值相同。
+如果你在该订阅中有多个 Log Analytics 工作区，则 cmdlet [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) 会返回工作区列表。 然后，你可以找到包含 Azure AD 日志的工作区。 此 cmdlet 返回的 `CustomerId` 字段与 Azure 门户上 Log Analytics 工作区概述中显示的“工作区 ID”值相同。
  
 ```powershell
 $wks = Get-AzOperationalInsightsWorkspace

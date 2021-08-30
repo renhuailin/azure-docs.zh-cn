@@ -3,15 +3,15 @@ title: Azure 虚拟桌面端的 Microsoft Teams - Azure
 description: 如何使用 Azure 虚拟桌面端的 Microsoft Teams。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/09/2021
+ms.date: 08/02/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 05d1188e00235001ba4d8fd173d4f03a28dadf90
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 63c75636fcab47a31735b772f85a8dccbb9c65f5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111758059"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728452"
 ---
 # <a name="use-microsoft-teams-on-azure-virtual-desktop"></a>使用 Azure 虚拟桌面端的 Microsoft Teams
 
@@ -30,7 +30,7 @@ Azure 虚拟桌面上的 Microsoft Teams 支持聊天和协作。 经媒体优�
 在使用 Azure 虚拟桌面上的 Microsoft Teams 之前，需要执行以下操作：
 
 - 为 Microsoft Teams [准备你的网络](/microsoftteams/prepare-network/)。
-- 在 Windows 10 或 Windows 10 IoT 企业设备上安装 [Windows 桌面客户端](connect-windows-7-10.md)，设备需满足 Microsoft Teams 的[Windows 电脑上 Teams 的硬件要求](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)。
+- 在 Windows 10 或 Windows 10 IoT 企业设备上安装 [Windows 桌面客户端](./user-documentation/connect-windows-7-10.md)，设备需满足 Microsoft Teams 的[Windows 电脑上 Teams 的硬件要求](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)。
 - 连接到 Windows 10 多会话或 Windows 10 企业版虚拟机 (VM)。
 
 ## <a name="install-the-teams-desktop-app"></a>安装 Teams 桌面应用
@@ -51,7 +51,7 @@ Azure 虚拟桌面上的 Microsoft Teams 支持聊天和协作。 经媒体优�
 
 ### <a name="install-the-teams-websocket-service"></a>安装 Teams WebSocket 服务
 
-在 VM 映像上安装最新的[远程桌面 WebRTC 重定向程序服务](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt)。 如果遇到安装错误，请安装[最新的 Microsoft Visual C++ 可再发行程序包](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)，然后重试。
+在 VM 映像上安装最新的[远程桌面 WebRTC 重定向程序服务](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWFYsj)。 如果遇到安装错误，请安装[最新的 Microsoft Visual C++ 可再发行程序包](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)，然后重试。
 
 #### <a name="latest-websocket-service-versions"></a>最新 WebSocket 服务版本
 
@@ -59,8 +59,13 @@ Azure 虚拟桌面上的 Microsoft Teams 支持聊天和协作。 经媒体优�
 
 |版本        |发布日期  |
 |---------------|--------------|
+|1.0.2106.14001 |2021/07/29    |
 |1.0.2006.11001 |2020/07/28    |
 |0.11.0         |05/29/2020    |
+
+#### <a name="updates-for-version-10210614001"></a>针对版本 1.0.2106.14001 的更新
+
+提高了 WebRTC 重定向程序服务和 WebRTC 客户端插件之间的连接可靠性。
 
 #### <a name="updates-for-version-10200611001"></a>针对版本 1.0.2006.11001 的更新
 

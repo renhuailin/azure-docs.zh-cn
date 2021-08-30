@@ -115,6 +115,8 @@
       href: instance-metadata-service-load-balancer.md
 - name: 操作说明
   items:
+    - name: 管理负载均衡器规则
+      href: manage-rules-how-to.md
     - name: 虚拟机规模集
       items:
         - name: 更新或删除虚拟机规模集使用的现有 Azure 负载均衡器
@@ -168,7 +170,7 @@
       href: howto-load-balancer-imds.md
     - name: 仅出站的负载均衡器配置
       href: egress-only.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 对 Azure 负载均衡器进行故障排除
           href: load-balancer-troubleshoot.md

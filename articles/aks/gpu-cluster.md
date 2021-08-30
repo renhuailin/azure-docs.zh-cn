@@ -3,19 +3,17 @@ title: 在 Azure Kubernetes 服务 (AKS) 上使用 GPU
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于高性能计算或图形密集型工作负荷
 services: container-service
 ms.topic: article
-ms.date: 08/21/2020
-ms.author: jpalma
-author: palma21
-ms.openlocfilehash: 95400d75442ba0d61b0d24aef6e67bbea397a240
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 08/06/2021
+ms.openlocfilehash: fa7415f015ad17cc2e8a5ff4822c8ff53578f054
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790447"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751529"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于计算密集型工作负荷
 
-图形处理单元 (GPU) 通常用于计算密集型工作负荷，例如图形和可视化工作负荷。 AKS 支持创建启用 GPU 的节点池，以在 Kubernetes 中运行这些计算密集型工作负荷。 有关可用的启用了 GPU 的 VM 的详细信息，请参阅 [Azure 中 GPU 优化 VM 的大小][gpu-skus]。 对于 AKS 节点，我们建议最小大小为“Standard_NC6”。
+图形处理单元 (GPU) 通常用于计算密集型工作负荷，例如图形和可视化工作负荷。 AKS 支持创建启用 GPU 的节点池，以在 Kubernetes 中运行这些计算密集型工作负荷。 有关可用的启用了 GPU 的 VM 的详细信息，请参阅 [Azure 中 GPU 优化 VM 的大小][gpu-skus]。 对于 AKS 节点池，建议的最小大小为 Standard_NC6。
 
 > [!NOTE]
 > 启用 GPU 的 VM 包含专用硬件，这些硬件定价较高，其可用性受区域限制。 有关详细信息，请参阅[定价][azure-pricing]工具和[区域可用性][azure-availability]。
@@ -24,41 +22,127 @@ ms.locfileid: "110790447"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文假定你拥有现有的 AKS 群集，其中包含支持 GPU 的节点。 AKS 群集须运行 Kubernetes 1.10 或更高版本。 如果需要满足这些要求的 AKS 群集，请参阅本文第一部分来[创建 AKS 群集](#create-an-aks-cluster)。
+本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅[快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集][aks-quickstart]。
 
 还需安装并配置 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
-## <a name="create-an-aks-cluster"></a>创建 AKS 群集
+## <a name="get-the-credentials-for-your-cluster"></a>获取群集的凭据
 
-如果需要可满足最低要求（启用了 GPU 的节点和 Kubernetes 版本 1.10 或更高版本）的 AKS 群集，请完成以下步骤。 如果已拥有满足这些要求的 AKS 群集，请[跳至下一部分](#confirm-that-gpus-are-schedulable)。
-
-首先，使用 [az group create][az-group-create] 命令为群集创建资源组。 以下示例在“Eastus”区域创建名为“myResourceGroup”的资源组：
-
-```azurecli-interactive
-az group create --name myResourceGroup --location eastus
-```
-
-现在，使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例会创建具有一个节点（大小为 `Standard_NC6`）的群集：
-
-```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --node-vm-size Standard_NC6 \
-    --node-count 1
-```
-
-使用 [az aks get-credentials][az-aks-get-credentials] 命令获取 AKS 群集的凭据：
+使用 [az aks get-credentials][az-aks-get-credentials] 命令获取 AKS 群集的凭据。 以下示例命令获取 myResourceGroup 资源组中 myAKSCluster 的凭据 。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-device-plugin"></a>安装 NVIDIA 设备插件
+## <a name="add-the-nvidia-device-plugin"></a>添加 NVIDIA 设备插件
 
-在使用节点中的 GPU 之前，必须为 NVIDIA 设备插件部署 DaemonSet。 此 DaemonSet 在会每个节点上运行 pod，以便为 GPU 提供所需驱动程序。
+可通过两种做法添加 NVIDIA 设备插件：
 
-首先，使用 [kubectl create namespace][kubectl-create] 命令创建命名空间，例如“gpu-resources”  ：
+* 使用 AKS GPU 映像
+* 手动安装 NVIDIA 设备插件
+
+> [!WARNING]
+> 可以采取上述任一做法，但在使用 AKS GPU 映像的群集中不应手动安装 NVIDIA 设备插件守护程序集。
+
+### <a name="update-your-cluster-to-use-the-aks-gpu-image-preview"></a>将群集更新为使用 AKS GPU 映像（预览版）
+
+AKS 提供完全配置的 AKS 映像，其中已包含[适用于 Kubernetes 的 NVIDIA 设备插件][nvidia-github]。
+
+注册 `GPUDedicatedVHDPreview` 功能：
+
+```azurecli
+az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
+```
+
+状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature#az_feature_list) 命令来检查注册状态：
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
+```
+
+当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider#az_provider_register) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+若要安装 aks-preview CLI 扩展，请使用以下 Azure CLI 命令：
+
+```azurecli
+az extension add --name aks-preview
+```
+
+若要更新 aks-preview CLI 扩展，请使用以下 Azure CLI 命令：
+
+```azurecli
+az extension update --name aks-preview
+```
+
+## <a name="add-a-node-pool-for-gpu-nodes"></a>为 GPU 节点添加节点池
+
+若要将节点池添加到群集，请使用 [az aks nodepool add][az-aks-nodepool-add]。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name gpunp \
+    --node-count 1 \
+    --node-vm-size Standard_NC6 \
+    --node-taints sku=gpu:NoSchedule \
+    --aks-custom-headers UseGPUDedicatedVHD=true \
+    --enable-cluster-autoscaler \
+    --min-count 1 \
+    --max-count 3
+```
+
+以上命令将名为 gpunp 的节点池添加到 myResourceGroup 资源组中的 myAKSCluster  。 该命令还将节点池中节点的 VM 大小设置为 Standard_NC6，启用群集自动缩放程序，将群集自动缩放程序配置为在节点池中保留最少一个节点和最多三个节点，在新节点池中指定专用 AKS GPU 映像节点，并为节点池指定 sku=gpu:NoSchedule 排斥 。
+
+> [!NOTE]
+> 只能在创建节点池期间为节点池设置排斥和 VM 大小，但随时可以更新自动缩放程序设置。
+
+> [!NOTE]
+> 如果你的 GPU SKU 需要第二代 VM，请使用 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true。 例如：
+> 
+> ```azurecli
+> az aks nodepool add \
+>    --resource-group myResourceGroup \
+>    --cluster-name myAKSCluster \
+>    --name gpunp \
+>    --node-count 1 \
+>    --node-vm-size Standard_NC6 \
+>    --node-taints sku=gpu:NoSchedule \
+>    --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true \
+>    --enable-cluster-autoscaler \
+>    --min-count 1 \
+>    --max-count 3
+> ```
+
+### <a name="manually-install-the-nvidia-device-plugin"></a>手动安装 NVIDIA 设备插件
+
+或者，可为 NVIDIA 设备插件部署 DaemonSet。 此 DaemonSet 在会每个节点上运行 pod，以便为 GPU 提供所需驱动程序。
+
+使用 [az aks nodepool add][az-aks-nodepool-add] 将节点池添加到群集。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name gpunp \
+    --node-count 1 \
+    --node-vm-size Standard_NC6 \
+    --node-taints sku=gpu:NoSchedule \
+    --enable-cluster-autoscaler \
+    --min-count 1 \
+    --max-count 3
+```
+
+以上命令将名为 gpunp 的节点池添加到 myResourceGroup 资源组中的 myAKSCluster  。 该命令还将节点池中节点的 VM 大小设置为 Standard_NC6，启用群集自动缩放程序，将群集自动缩放程序配置为在节点池中保留最少一个节点和最多三个节点，并为节点池指定 sku=gpu:NoSchedule 排斥 。
+
+> [!NOTE]
+> 只能在创建节点池期间为节点池设置排斥和 VM 大小，但随时可以更新自动缩放程序设置。
+
+使用 [kubectl create namespace][kubectl-create] 命令创建命名空间，例如 gpu-resources：
 
 ```console
 kubectl create namespace gpu-resources
@@ -96,6 +180,10 @@ spec:
       - key: nvidia.com/gpu
         operator: Exists
         effect: NoSchedule
+      - key: "sku"
+        operator: "Equal"
+        value: "gpu"
+        effect: "NoSchedule"
       containers:
       - image: mcr.microsoft.com/oss/nvidia/k8s-device-plugin:1.11
         name: nvidia-device-plugin-ctr
@@ -112,78 +200,13 @@ spec:
             path: /var/lib/kubelet/device-plugins
 ```
 
-现在使用 [kubectl apply][kubectl-apply] 命令创建 DaemonSet 并确认 NVIDIA 设备插件是否已成功创建，如以下示例输出所示：
+使用 [kubectl apply][kubectl-apply] 创建 DaemonSet 并确认是否已成功创建 NVIDIA 设备插件，如以下示例输出中所示：
 
 ```console
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
 
 daemonset "nvidia-device-plugin" created
 ```
-
-## <a name="use-the-aks-specialized-gpu-image-preview"></a>使用 AKS 专用 GPU 映像（预览版）
-
-作为这些步骤的替代方法，AKS 会提供完全配置的 AKS 映像，其中已包含[适用于 Kubernetes 的 NVIDIA 设备插件][nvidia-github]。
-
-> [!WARNING]
-> 不应使用新的 AKS 专用 GPU 映像来为群集手动安装 NVIDIA 设备插件守护程序集。
-
-
-注册 `GPUDedicatedVHDPreview` 功能：
-
-```azurecli
-az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
-```
-
-状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature#az_feature_list) 命令来检查注册状态：
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
-```
-
-当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider#az_provider_register) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
-
-若要安装 aks-preview CLI 扩展，请使用以下 Azure CLI 命令：
-
-```azurecli
-az extension add --name aks-preview
-```
-
-若要更新 aks-preview CLI 扩展，请使用以下 Azure CLI 命令：
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>在新群集上使用 AKS 专用 GPU 映像（预览版）    
-
-在创建群集时将该群集配置为使用 AKS 专用 GPU 映像。 将 `--aks-custom-headers` 标志用于新群集上的 GPU 代理节点，以使用 AKS 专用 GPU 映像。
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
-```
-
-若要使用常规 AKS 映像创建群集，可通过省略自定义 `--aks-custom-headers` 标记来完成。 还可以选择添加更多的专用 GPU 节点池，如下所示。
-
-
-### <a name="use-the-aks-specialized-gpu-image-on-existing-clusters-preview"></a>在现有群集上使用 AKS 专用 GPU 映像（预览版）
-
-将新节点池配置为使用 AKS 专用 GPU 映像。 将 `--aks-custom-headers` 标志用于新节点池上的 GPU 代理节点，以使用 AKS 专用 GPU 映像。
-
-```azurecli
-az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
-```
-
-若要使用常规 AKS 映像创建节点池，可通过省略自定义 `--aks-custom-headers` 标记来完成。 
-
-> [!NOTE]
-> 如果 GPU SKU 需要第 2 代虚拟机，可通过执行以下操作来创建：
-> ```azurecli
-> az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
-> ```
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>确认 GPU 是可计划的
 
@@ -192,8 +215,8 @@ az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myRe
 ```console
 $ kubectl get nodes
 
-NAME                       STATUS   ROLES   AGE   VERSION
-aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
+NAME                   STATUS   ROLES   AGE   VERSION
+aks-gpunp-28993262-0   Ready    agent   13m   v1.20.7
 ```
 
 现在，使用 [kubectl describe node][kubectl-describe] 命令确认 GPU 是可计划的。 在“容量”部分下，GPU 应列为  `nvidia.com/gpu:  1`。
@@ -201,50 +224,17 @@ aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 以下精简示例显示了 GPU 在名为“aks-nodepool1-18821093-0”的节点上可用  ：
 
 ```console
-$ kubectl describe node aks-nodepool1-28993262-0
+$ kubectl describe node aks-gpunp-28993262-0
 
-Name:               aks-nodepool1-28993262-0
+Name:               aks-gpunp-28993262-0
 Roles:              agent
 Labels:             accelerator=nvidia
 
 [...]
 
 Capacity:
- attachable-volumes-azure-disk:  24
- cpu:                            6
- ephemeral-storage:              101584140Ki
- hugepages-1Gi:                  0
- hugepages-2Mi:                  0
- memory:                         57713784Ki
+[...]
  nvidia.com/gpu:                 1
- pods:                           110
-Allocatable:
- attachable-volumes-azure-disk:  24
- cpu:                            5916m
- ephemeral-storage:              93619943269
- hugepages-1Gi:                  0
- hugepages-2Mi:                  0
- memory:                         51702904Ki
- nvidia.com/gpu:                 1
- pods:                           110
-System Info:
- Machine ID:                 b0cd6fb49ffe4900b56ac8df2eaa0376
- System UUID:                486A1C08-C459-6F43-AD6B-E9CD0F8AEC17
- Boot ID:                    f134525f-385d-4b4e-89b8-989f3abb490b
- Kernel Version:             4.15.0-1040-azure
- OS Image:                   Ubuntu 16.04.6 LTS
- Operating System:           linux
- Architecture:               amd64
- Container Runtime Version:  docker://1.13.1
- Kubelet Version:            v1.12.7
- Kube-Proxy Version:         v1.12.7
-PodCIDR:                     10.244.0.0/24
-ProviderID:                  azure:///subscriptions/<guid>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/Microsoft.Compute/virtualMachines/aks-nodepool1-28993262-0
-Non-terminated Pods:         (9 in total)
-  Namespace                  Name                                     CPU Requests  CPU Limits  Memory Requests  Memory Limits  AGE
-  ---------                  ----                                     ------------  ----------  ---------------  -------------  ---
-  kube-system                nvidia-device-plugin-daemonset-bbjlq     0 (0%)        0 (0%)      0 (0%)           0 (0%)         2m39s
-
 [...]
 ```
 
@@ -279,6 +269,11 @@ spec:
           limits:
            nvidia.com/gpu: 1
       restartPolicy: OnFailure
+      tolerations:
+      - key: "sku"
+        operator: "Equal"
+        value: "gpu"
+        effect: "NoSchedule"
 ```
 
 使用 [kubectl apply][kubectl-apply] 命令运行该作业。 此命令分析清单文件并创建定义的 Kubernetes 对象：
@@ -386,6 +381,20 @@ Accuracy at step 490: 0.9494
 Adding run metadata for 499
 ```
 
+## <a name="use-container-insights-to-monitor-gpu-usage"></a>使用容器见解监视 GPU 使用情况
+
+[包含 AKS 的容器见解][aks-container-insights]可使用以下指标来监视 GPU 使用情况。
+
+| 指标名称 | 指标维度（标记） | 说明 |
+|-------------|-------------------------|-------------|
+| containerGpuDutyCycle | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName`, `gpuId`, `gpuModel`, `gpuVendor`   | 在刚过去的采样周期（60 秒）中，GPU 处于繁忙/积极处理容器的状态的时间百分比。 占空比是 1 到 100 之间的数字。 |
+| containerGpuLimits | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName` | 每个容器可以将限值指定为一个或多个 GPU。 不能请求或限制为 GPU 的一部分。 |
+| containerGpuRequests | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName` | 每个容器可以请求一个或多个 GPU。 不能请求或限制为 GPU 的一部分。 |
+| containerGpumemoryTotalBytes | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName`, `gpuId`, `gpuModel`, `gpuVendor` | 可用于特定容器的 GPU 内存量（以字节为单位）。 |
+| containerGpumemoryUsedBytes | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `containerName`, `gpuId`, `gpuModel`, `gpuVendor` | 特定容器使用的 GPU 内存量（以字节为单位）。 |
+| nodeGpuAllocatable | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `gpuVendor` | 节点中可供 Kubernetes 使用的 GPU 数。 |
+| nodeGpuCapacity | `container.azm.ms/clusterId`, `container.azm.ms/clusterName`, `gpuVendor` | 节点中的 GPU 总数。 |
+
 ## <a name="clean-up-resources"></a>清理资源
 
 若要删除本文中创建的相关 Kubernetes 对象，请使用 [kubectl delete job][kubectl delete] 命令，如下所示：
@@ -422,9 +431,11 @@ kubectl delete jobs samples-tf-mnist-demo
 [az-group-create]: /cli/azure/group#az_group_create
 [az-aks-create]: /cli/azure/aks#az_aks_create
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[aks-quickstart]: kubernetes-walkthrough.md
 [aks-spark]: spark-job.md
 [gpu-skus]: ../virtual-machines/sizes-gpu.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [azureml-aks]: ../machine-learning/how-to-deploy-azure-kubernetes-service.md
 [azureml-gpu]: ../machine-learning/how-to-deploy-inferencing-gpus.md
 [azureml-triton]: ../machine-learning/how-to-deploy-with-triton.md
+[aks-container-insights]: monitor-aks.md#container-insights

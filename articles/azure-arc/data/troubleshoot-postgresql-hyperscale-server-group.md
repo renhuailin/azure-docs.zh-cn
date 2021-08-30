@@ -7,33 +7,33 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: b828d9e5765a180e1b42de9b96a0ee06eab085f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "92320217"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733498"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>超大规模 PostgreSQL 服务器组故障排除
 本文介绍一些可用于对服务器组进行故障排除的方法。 除本文以外，你还可以阅读有关如何使用 [Kibana](monitor-grafana-kibana.md) 来搜索日志，或使用 [Grafana](monitor-grafana-kibana.md) 来可视化有关服务器组的指标的文章。 
 
-## <a name="getting-more-details-about-the-execution-of-an-azdata-command"></a>获取有关 azdata 命令执行情况的更多详细信息
-可将参数 --debug 添加到执行的任何 azdata 命令。 这会在控制台中显示有关该命令的执行情况的其他信息。 你会发现此参数非常有用，它可以获取详细信息来帮助你了解该命令的行为。
+## <a name="getting-more-details-about-the-execution-of-a-cli-command"></a>获取有关 CLI 命令执行情况的更多详细信息
+可将参数 --debug 添加到执行的任何 CLI 命令。 这会在控制台中显示有关该命令的执行情况的其他信息。 你会发现此参数非常有用，它可以获取详细信息来帮助你了解该命令的行为。
 例如，可以运行
-```console
-azdata arc postgres server create -n postgres01 -w 2 --debug
+```azurecli
+az postgres arc-server create -n postgres01 -w 2 --debug --k8s-namespace <namespace> --use-k8s
 ```
 
 或
-```console
-azdata arc postgres server edit -n postgres01 --extension SomeExtensionName --debug
+```azurecli
+az postgres arc-server edit -n postgres01 --extension --k8s-namespace <namespace> --use-k8s SomeExtensionName --debug
 ```
 
-此外，可以在任何 azdata 命令中使用参数 --help 来显示一些帮助信息并列出特定命令的参数。 例如：
-```console
-azdata arc postgres server create --help
+此外，可以在任何 CLI 命令中使用参数 --help 来显示一些帮助信息并列出特定命令的参数。 例如：
+```azurecli
+az postgres arc-server create --help
 ```
 
 
@@ -43,33 +43,22 @@ azdata arc postgres server create --help
 
 
 ## <a name="interactive-troubleshooting-with-jupyter-notebooks-in-azure-data-studio"></a>使用 Azure Data Studio 中的 Jupyter 笔记本进行交互式故障排除
+
 笔记本可以通过包括 Markdown 内容（用于说明要执行的操作内容/操作方法）来记录过程。 它还可以提供可执行代码来自动执行某个过程。  此模式适用于从标准操作过程到故障排除指南的一切。
 
 例如，让我们使用 Azure Data Studio 对可能存在一些问题的超大规模 PostgreSQL 服务器组进行故障排除。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+[!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
 ### <a name="install-tools"></a>安装工具
 
-在用于运行 Azure Data Studio 中的笔记本的客户端计算机上安装 Azure Data Studio、`kubectl` 和 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]。 为此，请按照[安装客户端工具](install-client-tools.md)中的说明操作
+在用于运行 Azure Data Studio 中的笔记本的客户端计算机上安装 Azure Data Studio、`kubectl` 和带 `arcdata` 扩展的 Azure (`az`) CLI。 为此，请按照[安装客户端工具](install-client-tools.md)中的说明操作
 
 ### <a name="update-the-path-environment-variable"></a>更新 PATH 环境变量
 
 确保可以从此客户端计算机上的任何位置调用这些工具。 例如，在 Windows 客户端计算机上，请更新 PATH 系统环境变量并添加 kubectl 安装到的文件夹。
-
-### <a name="sign-in-with-azure-data-cli-azdata"></a>使用 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 登录
-
-在启动 Azure Data Studio 之前，从此客户端计算机登录到 Arc 数据控制器。 为此，请运行如下所示的命令：
-
-```console
-azdata login --endpoint https://<IP address>:<port>
-```
-
-请将 `<IP address>` 替换为你的 Kubernetes 群集的 IP 地址，将 `<port>` 替换为 Kubernetes 正在侦听的端口。 系统将提示你输入用户名和密码。 若要查看更多详细信息，请运行：
-
-```console
-azdata login --help
-```
 
 ### <a name="log-into-your-kubernetes-cluster-with-kubectl"></a>使用 kubectl 登录到 Kubernetes 群集
 

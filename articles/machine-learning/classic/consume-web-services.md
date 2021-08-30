@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 11f142c545bad707ec8595f13f80a95cc626674f
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 7d5aef7050501c586fe3a5d4177c80b6be8ada94
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582917"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694595"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>如何使用机器学习工作室（经典版）Web 服务
 
 **适用对象：** ![这是一个复选标记，表示本文适用于机器学习工作室（经典）。](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习工作室（经典）   ![这是一个 X，表示本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 将机器学习工作室（经典）预测模型部署为 Web 服务后，可以使用 REST API 向其发送数据并获取预测。 可以实时或者以批处理模式发送数据。
 

@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 05/16/2021
 ms.author: enewman
-ms.openlocfilehash: 60ac7c3a95564fad5c271c543beac875334b05a1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 96154718ce8e0ecff0ccdce0ded70272cdda828e
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482310"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991759"
 ---
 # <a name="set-up-lab-for-react-on-linux"></a>在 Linux 上设置 React 实验室
 
@@ -45,7 +45,7 @@ ms.locfileid: "110482310"
 本部分的步骤说明了如何完成以下操作来设置模板 VM：
 
 1. 安装开发工具。
-1. 为 Web 浏览器安装调试程序扩展。
+1. 为 Web 浏览器安装调试器扩展。
 1. 更新防火墙设置。
 
 ### <a name="install-development-tools"></a>安装开发工具
@@ -85,6 +85,14 @@ npm install react-jsx
 - [React 开发人员工具 FireFox 加载项](https://addons.mozilla.org/firefox/addon/react-devtools/)
 
 若要在开发模式下运行该应用，请使用 `npm start` 内置命令。  命令输出中会列出本地 URL 和网络 URL。  若要使用 HTTPS 而不是 HTTP，请参阅[在开发中使用 HTTPS 创建 React 应用](https://create-react-app.dev/docs/using-https-in-development)。
+
+### <a name="update-firewall-settings"></a>更新防火墙设置
+
+官方 Ubuntu 版本已安装 [iptables](https://help.ubuntu.com/community/IptablesHowTo)，默认允许所有传入流量。  但是，如果使用的 VM 具有限制性更强的防火墙，请添加入站规则以允许流量发送到 NodeJS 服务器。  以下示例使用 [iptables](https://help.ubuntu.com/community/IptablesHowTo) 来允许流量发送到端口 3000。
+
+```bash
+sudo iptables -I INPUT -p tcp -m tcp --dport 3000 -j ACCEPT
+```
 
 >[!IMPORTANT]
 >讲师必须使用模板 VM 或其他实验室 VM 来访问学生的网站。

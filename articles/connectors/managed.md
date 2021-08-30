@@ -3,27 +3,29 @@ title: 适用于 Azure 逻辑应用的托管连接器
 description: 使用 Microsoft 托管触发器和操作创建使用 Azure 逻辑应用集成其他应用、数据、服务和系统的自动工作流。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: 857c0e41f52c99d83142b3db7471b51b55316b5e
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 05/16/2021
+ms.openlocfilehash: 9461baebfad58f848b27fe689ed8dbd26c9dd07e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316166"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727093"
 ---
 # <a name="managed-connectors-for-logic-apps"></a>适用于逻辑应用的托管连接器
 
 [托管连接器](apis-list.md)提供了一些方法，供你访问未提供[内置触发器和操作](built-in.md)的其他服务和系统。 可以使用这些触发器和操作创建集成数据、应用、基于云的服务和本地系统的工作流。 与内置触发器和操作相比，这些连接器通常绑定到特定服务或系统，例如 Azure Blob 存储、Office 365、SQL、Salesforce 或 SFTP 服务器。 托管连接器由 Microsoft 管理并在 Azure 中承载，通常要求首先从工作流创建连接并验证身份。 同时提供了定期和基于 Webhook 的触发器，因此如果使用定期触发器，请查看[定期行为概述](apis-list.md#recurrence-behavior)。
 
-对于少数服务、系统和协议（如 Azure 服务总线、Azure Functions、SQL、AS2 等），逻辑应用还提供内置版本。 数量和范围因创建的是多租户逻辑应用还是单租户逻辑应用而有所不同。 在少数情况下，内置版本和托管连接器版本都可用。 在大多数情况下，内置版本提供更好的性能、更全面的功能以及更实惠的价格。 例如，若要[使用 AS2 协议交换 B2B 消息](../logic-apps/logic-apps-enterprise-integration-as2.md)，请选择内置版本，除非你需要仅在托管连接器版本（已弃用）中提供的跟踪功能。
+对于少数服务、系统和协议，例如 Azure 服务总线、Azure Functions、Azure Blob、Azure 应用服务、Azure API 管理、SQL、AS2，逻辑应用也提供内置操作。 数量和范围因创建的是多租户逻辑应用还是单租户逻辑应用而有所不同。 在少数情况下，内置版本和托管连接器版本都可用。 在大多数情况下，内置版本提供更好的性能、更全面的功能以及更实惠的价格。 例如，若要[使用 AS2 协议交换 B2B 消息](../logic-apps/logic-apps-enterprise-integration-as2.md)，请选择内置版本，除非你需要仅在托管连接器版本（已弃用）中提供的跟踪功能。
 
 某些适用于逻辑应用的托管连接器属于多个子类别。 例如，SAP 连接器既是[企业连接器](#enterprise-connectors)，也是[本地连接器](#on-premises-connectors)。
 
 * [标准连接器](#standard-connectors)提供对 Azure Blob 存储、Office 365、SharePoint、Salesforce、Power BI、OneDrive 等服务的访问。
+* [企业连接器](#enterprise-connectors)提供对 SAP、IBM MQ 和 IBM 3270 等企业系统的访问。
 * [本地连接器](#on-premises-connectors)提供对本地系统（如 SQL Server、SharePoint Server、SAP、Oracle DB、文件共享等）的访问。
-* [集成帐户连接器](#integration-account-connectors)可帮助转换和验证 XML、编码和解码平面文件，以及使用 AS2、EDIFACT 和 X12 协议处理企业到企业 (B2B) 消息。 
+* [集成帐户连接器](#integration-account-connectors)可帮助转换和验证 XML、编码和解码平面文件，以及使用 AS2、EDIFACT 和 X12 协议处理企业到企业 (B2B) 消息。
+* [集成服务环境连接器](#ise-connectors)，专用于在 ISE 中运行，并提供相较于非 ISE 版本的优势。
 
 ## <a name="standard-connectors"></a>标准连接器
 
@@ -145,7 +147,6 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
         连接到 Salesforce 帐户，以便可以创建和管理记录、作业、对象，等等。
     :::column-end:::
 :::row-end:::
-
 
 ## <a name="on-premises-connectors"></a>本地连接器
 

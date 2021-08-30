@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: 22e5bc0aa411fd4561094fc41d5d3e55a5dcdeb8
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 07/05/2021
+ms.openlocfilehash: f9ca1bbb2bc8556f972a55720b874b08587b06f1
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542283"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594944"
 ---
 # <a name="configure-a-solution-template-plan"></a>配置解决方案模板计划
 
@@ -99,7 +99,7 @@ ms.locfileid: "111542283"
 “计划概述”选项卡的“操作”列中可用的操作根据你的计划状态而有所不同，并且可能包括以下内容：
 
 - 如果计划状态为“草稿”，则“操作”列中的链接将显示“删除草稿”。
-- 如果计划状态为“实时”，则“操作”列中的链接将为“停止销售计划”或“同步私有受众”。 “同步私有受众”链接将仅向你的私有受众发布更改，而不会发布你可能对产品/服务进行的任何其他更新。
+- 如果计划状态为“实时”，则“操作”列中的链接将为“停止分发”或“同步私有受众”。 “同步私有受众”链接将仅向你的私有受众发布更改，而不会发布你可能对产品/服务进行的任何其他更新。
 - 要为此产品/服务创建另一个计划，请在“计划概述”选项卡顶部，选择“+ 创建新计划”。 然后重复[如何为 Azure 应用程序产品/服务创建计划](azure-app-plans.md)中的步骤。 否则，如果你已完成计划的创建，请参阅下一节：后续步骤。
 
 ## <a name="next-steps"></a>后续步骤

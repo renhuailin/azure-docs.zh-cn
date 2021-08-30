@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/15/2021
-ms.openlocfilehash: 4ffbca8e4e70a5201b374d4fac9bdb136c860573
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7c3a2a00c0323bc9e80b1d94d445f873d5b86d34
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144954"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112541331"
 ---
 # <a name="how-to-get-featured-in-microsoft-appsource-and-azure-marketplace"></a>如何在 Microsoft AppSource 和 Azure 市场中推广
 
@@ -38,7 +38,7 @@ Microsoft 的特色应用选择算法生成应用的评分，就如同美国的�
 促销的特色应用不受搜索算法的控制。
 
 >[!Note]
->如果你的解决方案未正确显示在搜索结果中，请通过[合作伙伴中心](https://partner.microsoft.com/)中的“帮助”菜单开具支持票证。
+>如果解决方案未正确显示在搜索结果中，请在合作伙伴中心提交[支持票证](https://go.microsoft.com/fwlink/?linkid=2165533)。
 
 GTM 支持还包括完整的自助服务模板、Web 内容、培训和工具库，可帮助你进一步促销商品和业务。
 
@@ -46,6 +46,4 @@ GTM 支持还包括完整的自助服务模板、Web 内容、培训和工具库
 
 详细了解[商业市场权益](gtm-your-marketplace-benefits.md)。
 
-登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建并配置产品/服务。
-
----
+登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)以创建并配置产品/服务。 在合作伙伴中心[创建一个帐户](create-account.md)（如果尚未创建）。

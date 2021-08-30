@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: f491681c8054c800e15c3c77516ff22e3c70dbac
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 917bcf74adaaec4e354662ec25816bcad471025d
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001495"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991903"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>跨工作区和租户扩展 Azure Sentinel
 
@@ -96,10 +96,13 @@ Azure Sentinel 支持[在单个查询中查询多个工作区](../azure-monitor/
 
 #### <a name="cross-workspace-analytics-rules"></a>跨工作区分析规则<a name="scheduled-alerts"></a>
 <!-- Bookmark added for backward compatibility with old heading -->
-跨工作区查询现在可以包含在计划的分析规则中，但存在以下限制：
+跨工作区查询现在可以包含在计划的分析规则中。 你可以在中央 SOC 中使用跨工作区分析规则，如果是 MSSP 则跨租户（使用 Azure Lighthouse），但存在以下限制：
 
 - 在单个查询中最多可以包含 20 个工作区。
 - 必须将 Azure Sentinel 部署在查询中引用的每个工作区上。
+- 跨工作区分析规则生成的警报，以及从其创建的事件只存在于定义了该规则的工作区中。 它们不会显示在查询中引用的任何其他工作区中。
+
+跨工作区分析规则创建的警报和事件将包含所有相关实体，其中包括所有引用的工作区以及“主”工作区（在其中定义规则）中的实体。 这将允许分析师全面了解警报和事件。
 
 > [!NOTE] 
 > 在同一查询中查询多个工作区可能影响性能，因此仅当逻辑需要此功能时，才建议这样做。

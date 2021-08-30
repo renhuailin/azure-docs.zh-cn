@@ -7,21 +7,18 @@ ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 8ffedc18ba331733723a6293756b60b733cc32cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a64049ab544b2ec790d3625dad9137ae539f3020
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96904714"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733406"
 ---
 # <a name="data-structures-in-azure-maps-mobility-services-preview"></a>Azure Maps 出行服务（预览版）中的数据结构 
 
 > [!IMPORTANT]
-> Azure Maps 出行服务目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-
+> Azure Maps 出行服务（预览版）已停用，2021 年 10 月 5 日之后将不再可用，也不再获得支持。 所有其他 Azure Maps API 和服务不受此停用公告的影响。
+> 有关详细信息，请参阅 [Azure Maps 出行服务（预览版）停用文档](https://azure.microsoft.com/updates/azure-maps-mobility-services-preview-retirement/)。
 
 本文介绍 [Azure Maps 出行服务](/rest/api/maps/mobility)中的都会区概念。 其中将会说明在此服务中查询公交停靠站和线路时返回的一些常见字段。 建议在使用出行服务 API 进行开发之前阅读本文。
 

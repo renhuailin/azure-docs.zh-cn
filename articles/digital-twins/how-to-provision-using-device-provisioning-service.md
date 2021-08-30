@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fee559a25a1a2b45d64d652a87c6670fb2757052
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: c611194819255b4d986f4cfa57d15a2e0d73cd42
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474639"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739376"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用设备预配服务 (DPS) 自动管理 Azure 数字孪生中的设备
 
@@ -25,9 +25,9 @@ ms.locfileid: "110474639"
 ## <a name="prerequisites"></a>必备条件
 
 在设置预配之前，需要设置以下各项：
-* **Azure 数字孪生实例**。 请按照[操作指南：设置实例和身份验证](how-to-set-up-instance-portal.md)中的说明创建 Azure 数字孪生实例。 在 Azure 门户中收集实例的主机名（[说明](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)）。
+* **Azure 数字孪生实例**。 请按照[设置实例和身份验证](how-to-set-up-instance-portal.md)中的说明创建 Azure 数字孪生实例。 在 Azure 门户中收集实例的主机名（[说明](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)）。
 * **IoT 中心**。 有关说明，请参阅此 [IoT 中心快速入门](../iot-hub/quickstart-send-telemetry-cli.md)中的“创建 IoT 中心”部分。
-* 基于 IoT 中心数据更新数字孪生信息的 [Azure 函数](../azure-functions/functions-overview.md)。 请按照[操作指南：引入 IoT 中心数据](how-to-ingest-iot-hub-data.md)中的说明创建此 Azure 函数。 收集函数名称以便在本文中使用。
+* 基于 IoT 中心数据更新数字孪生信息的 [Azure 函数](../azure-functions/functions-overview.md)。 请按照[引入 IoT 中心数据](how-to-ingest-iot-hub-data.md)中的说明创建此 Azure 函数。 收集函数名称以便在本文中使用。
 
 此示例还使用了设备模拟器，其中包括使用设备预配服务的预配。 设备模拟器位于此处：[Azure 数字孪生和 IoT 中心集成示例](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 导航到示例链接，然后选择标题下方的“浏览代码”按钮，从而在你的计算机上获取示例项目。 这会将你转到示例的 GitHub 存储库，可以通过选择“代码”按钮和“下载 ZIP”将其下载为 .zip 文件。  
 
@@ -72,10 +72,10 @@ ms.locfileid: "110474639"
 
 使用设备预配服务预配新设备时，可以在 Azure 数字孪生中为该设备创建一个名称与注册 ID 相同的新孪生体。
 
-创建一个用于预配 IoT 设备的设备预配服务实例。 可以使用以下 Azure CLI 说明，也可以使用 Azure 门户：[快速入门：使用 Azure 门户设置 IoT 中心设备预配服务](../iot-dps/quick-setup-auto-provision.md)。
+创建一个用于预配 IoT 设备的设备预配服务实例。 可以使用以下 Azure CLI 说明，也可以按照[使用 Azure 门户设置 IoT 中心设备预配服务](../iot-dps/quick-setup-auto-provision.md)中的说明使用 Azure 门户。
 
 以下 Azure CLI 命令将创建设备预配服务。 你需要指定设备预配服务名称、资源组和区域。 要查看哪些区域支持设备预配服务，请访问[各区域可用的 Azure 产品](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub)。
-此命令可在 [Cloud Shell](https://shell.azure.com) 中运行，如果[计算机中已安装](/cli/azure/install-azure-cli) Azure CLI，也可在本地运行。
+此命令可在 [Cloud Shell](https://shell.azure.com) 中运行，如果[计算机中已安装 Azure CLI](/cli/azure/install-azure-cli)，也可在本地运行。
 
 ```azurecli-interactive
 az iot dps create --name <Device-Provisioning-Service-name> --resource-group <resource-group-name> --location <region>
@@ -83,29 +83,22 @@ az iot dps create --name <Device-Provisioning-Service-name> --resource-group <re
 
 ### <a name="add-a-function-to-use-with-device-provisioning-service"></a>添加用于设备预配服务的函数
 
-在[先决条件](#prerequisites)部分创建的函数应用项目中，创建一个新函数以用于设备预配服务。 设备预配服务将在[自定义分配策略](../iot-dps/how-to-use-custom-allocation-policies.md)中使用此函数来预配新设备。
+在[先决条件部分](#prerequisites)创建的函数应用项目中，创建一个新函数以用于设备预配服务。 设备预配服务将在[自定义分配策略](../iot-dps/how-to-use-custom-allocation-policies.md)中使用此函数来预配新设备。
 
 首先，在计算机的 Visual Studio 中打开函数应用项目，然后执行以下步骤。
 
-#### <a name="step-1-add-a-new-function"></a>步骤 1：添加一个新函数 
+1. 首先，在 Visual Studio 中，在函数应用项目中创建一个 HTTP 触发器类型的新函数。 有关如何执行此操作的说明，请参阅[使用 Visual Studio 开发 Azure 函数](../azure-functions/functions-develop-vs.md#add-a-function-to-your-project)。
 
-在 Visual Studio 中，向函数应用项目添加一个 *HTTP 触发器* 类型的新函数。
+2. 向项目中添加一个新 NuGet 包：[Microsoft.Azure.Devices.Provisioning.Service](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)。 如果代码中使用的包尚不是项目的一部分，则可能还需要向项目中添加更多包。
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-http-trigger-function-visual-studio.png" alt-text="在 Visual Studio 视图中向函数应用项目中添加 Http 触发器类型 Azure 函数的屏幕截图。" lightbox="media/how-to-provision-using-device-provisioning-service/add-http-trigger-function-visual-studio.png":::
+3. 在新建的函数代码文件中，粘贴以下代码，将该函数重命名为 *DpsAdtAllocationFunc.cs*，然后保存该文件。
 
-#### <a name="step-2-fill-in-function-code"></a>步骤 2：填充函数代码
+    :::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DpsAdtAllocationFunc.cs":::
 
-向项目中添加一个新 NuGet 包：[Microsoft.Azure.Devices.Provisioning.Service](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)。 如果代码中使用的包尚不是项目的一部分，则可能还需要向项目中添加更多包。
+4. 将包含 DpsAdtAllocationFunc.cs 函数的项目发布到 Azure 中的函数应用。 有关如何执行此操作的说明，请参阅[使用 Visual Studio 开发 Azure 函数](../azure-functions/functions-develop-vs.md#publish-to-azure)。
 
-在新建的函数代码文件中，粘贴以下代码，将该函数重命名为 *DpsAdtAllocationFunc.cs*，然后保存该文件。
-
-:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DpsAdtAllocationFunc.cs":::
-
-#### <a name="step-3-publish-the-function-app-to-azure"></a>步骤 3：将函数应用发布到 Azure
-
-将包含 *DpsAdtAllocationFunc.cs* 函数的项目发布到 Azure 中的函数应用。
-
-[!INCLUDE [digital-twins-publish-and-configure-function-app.md](../../includes/digital-twins-publish-and-configure-function-app.md)]
+> [!IMPORTANT]
+> 在[先决条件](#prerequisites)部分首次创建函数应用时，你可能已经为该函数分配了访问角色，并为其配置了访问 Azure 数字孪生实例所需的应用程序设置。 这些操作需要针对整个函数应用执行一次，因此在继续之前，请验证是否已在你的应用中完成这些操作。 可以在 *编写应用验证码* 一文的[配置已发布的应用](how-to-authenticate-client.md#configure-published-app)部分找到相关说明。
 
 ### <a name="create-device-provisioning-enrollment"></a>创建设备预配注册
 
@@ -130,7 +123,7 @@ az iot dps create --name <Device-Provisioning-Service-name> --resource-group <re
 
 ### <a name="set-up-the-device-simulator"></a>设置设备模拟器
 
-此示例使用设备模拟器，其中包括使用设备预配服务进行预配。 设备模拟器位于你在[先决条件](#prerequisites)部分下载的 [Azure 数字孪生和 IoT 中心集成示例](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)中。
+此示例使用设备模拟器，其中包括使用设备预配服务进行预配。 设备模拟器位于你在[先决条件部分](#prerequisites)下载的 [Azure 数字孪生和 IoT 中心集成示例](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)中。
 
 #### <a name="upload-the-model"></a>上传模型
 
@@ -138,7 +131,7 @@ az iot dps create --name <Device-Provisioning-Service-name> --resource-group <re
 
 [!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
 
-有关模型的详细信息，请参阅[操作指南：管理模型](how-to-manage-model.md#upload-models)。
+有关模型的详细信息，请参阅[管理模型](how-to-manage-model.md#upload-models)。
 
 #### <a name="configure-and-run-the-simulator"></a>配置和运行模拟器
 
@@ -185,7 +178,7 @@ node .\adt_custom_register.js
 
 ### <a name="validate"></a>验证
 
-由于在本文中设置了流程，设备将自动注册到 Azure 数字孪生。 使用以下 [Azure 数字孪生 CLI](concepts-cli.md) 命令在创建的 Azure 数字孪生实例中查找设备的孪生体。
+由于在本文中设置了流程，设备将自动注册到 Azure 数字孪生。 使用以下 [Azure 数字孪生 CLI](/cli/azure/dt/twin?view=azure-cli-latest&preserve-view=true#az_dt_twin_show) 命令在创建的 Azure 数字孪生实例中查找设备的孪生体。
 
 ```azurecli-interactive
 az dt twin show --dt-name <Digital-Twins-instance-name> --twin-id "<Device-Registration-ID>"
@@ -228,43 +221,38 @@ az dt twin show --dt-name <Digital-Twins-instance-name> --twin-id "<Device-Regis
 
 #### <a name="configure-event-hub-with-function-app"></a>为事件中心配置函数应用
 
-接下来，配置在[先决条件](#prerequisites)部分设置的 Azure 函数应用，以用于你的新事件中心。 要执行此操作，需要使用事件中心的连接字符串在函数应用内设置环境变量。
+接下来，配置在[先决条件部分](#prerequisites)设置的 Azure 函数应用，以用于你的新事件中心。 要执行此操作，需要使用事件中心的连接字符串在函数应用内设置环境变量。
 
 1. 打开刚刚创建的策略，并复制“连接字符串-主键”值。
 
     :::image type="content" source="media/how-to-provision-using-device-provisioning-service/event-hub-sas-policy-connection-string.png" alt-text="Azure 门户的屏幕截图，显示了如何复制连接字符串-主键。" lightbox="media/how-to-provision-using-device-provisioning-service/event-hub-sas-policy-connection-string.png":::
 
-2. 使用以下 Azure CLI 命令，将连接字符串添加为函数应用设置中的变量。 此命令可在 [Cloud Shell](https://shell.azure.com) 中运行，如果[计算机中已安装](/cli/azure/install-azure-cli) Azure CLI，也可在本地运行。
+2. 使用以下 Azure CLI 命令，将连接字符串添加为函数应用设置中的变量。 此命令可在 [Cloud Shell](https://shell.azure.com) 中运行，如果[计算机中已安装 Azure CLI](/cli/azure/install-azure-cli)，也可在本地运行。
 
     ```azurecli-interactive
-    az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event-Hubs-SAS-connection-string-Listen>" --resource-group <resource-group> --name <your-App-Service-function-app-name>
+    az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event-Hubs-SAS-connection-string-Listen>" --resource-group <resource-group> --name <your-function-app-name>
     ```
 
 ### <a name="add-a-function-to-retire-with-iot-hub-lifecycle-events"></a>添加函数以通过 IoT 中心生命周期事件停用
 
-在[先决条件](#prerequisites)部分创建的函数应用项目中，创建一个新函数，以使用 IoT 中心生命周期事件停用现有设备。
+在[先决条件部分](#prerequisites)创建的函数应用项目中，创建一个新函数，以使用 IoT 中心生命周期事件停用现有设备。
 
 有关生命周期事件的详细信息，请参阅 [IoT 中心非遥测事件](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。 有关事件中心与 Azure 函数结合使用的详细信息，请参阅[适用于 Azure Functions 的 Azure 事件中心触发器](../azure-functions/functions-bindings-event-hubs-trigger.md)。
 
 首先，在计算机的 Visual Studio 中打开函数应用项目，然后执行以下步骤。
 
-#### <a name="step-1-add-a-new-function"></a>步骤 1：添加一个新函数
-     
-在 Visual Studio 中，向函数应用项目添加一个 *事件中心触发器* 类型的新函数。
+1. 首先，在 Visual Studio 中，在函数应用项目中创建一个事件中心触发器类型的新函数。 有关如何执行此操作的说明，请参阅[使用 Visual Studio 开发 Azure 函数](../azure-functions/functions-develop-vs.md#add-a-function-to-your-project)。
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/create-event-hub-trigger-function.png" alt-text="Visual Studio 窗口的屏幕截图，显示了如何在函数应用项目中添加事件中心触发器类型的 Azure 函数。" lightbox="media/how-to-provision-using-device-provisioning-service/create-event-hub-trigger-function.png":::
+2. 向项目中添加一个新 NuGet 包：[Microsoft.Azure.Devices.Provisioning.Service](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/)。 如果代码中使用的包尚不是项目的一部分，则可能还需要向项目中添加更多包。
 
-#### <a name="step-2-fill-in-function-code"></a>步骤 2：填充函数代码
+3. 在新创建的函数代码文件中，粘贴以下代码，将该函数重命名为 DeleteDeviceInTwinFunc.cs，然后保存该文件。
 
-在新建的函数代码文件中，粘贴以下代码，将该函数重命名为 `DeleteDeviceInTwinFunc.cs`，然后保存该文件。
+    :::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DeleteDeviceInTwinFunc.cs":::
 
-:::code language="csharp" source="~/digital-twins-docs-samples-dps/functions/DeleteDeviceInTwinFunc.cs":::
+4. 将包含 DeleteDeviceInTwinFunc.cs 函数的项目发布到 Azure 中的函数应用。 有关如何执行此操作的说明，请参阅[使用 Visual Studio 开发 Azure 函数](../azure-functions/functions-develop-vs.md#publish-to-azure)。
 
-#### <a name="step-3-publish-the-function-app-to-azure"></a>步骤 3：将函数应用发布到 Azure
-
-将包含 DeleteDeviceInTwinFunc.cs 函数的项目发布到 Azure 中的函数应用。
-
-[!INCLUDE [digital-twins-publish-and-configure-function-app.md](../../includes/digital-twins-publish-and-configure-function-app.md)]
+> [!IMPORTANT]
+> 在[先决条件](#prerequisites)部分首次创建函数应用时，你可能已经为该函数分配了访问角色，并为其配置了访问 Azure 数字孪生实例所需的应用程序设置。 这些操作需要针对整个函数应用执行一次，因此在继续之前，请验证是否已在你的应用中完成这些操作。 可以在 *编写应用验证码* 一文的[配置已发布的应用](how-to-authenticate-client.md#configure-published-app)部分找到相关说明。
 
 ### <a name="create-an-iot-hub-route-for-lifecycle-events"></a>为生命周期事件创建 IoT 中心路由
 
@@ -273,7 +261,7 @@ az dt twin show --dt-name <Digital-Twins-instance-name> --twin-id "<Device-Regis
 首先，需要在 IoT 中心创建一个事件中心终结点。 然后，在 IoT 中心添加路由，以便将生命周期事件发送到此事件中心终结点。
 按照以下步骤创建事件中心终结点：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，导航到在[先决条件](#prerequisites)部分创建的 IoT 中心，然后在左侧菜单选项中选择“消息路由”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，导航到在[先决条件部分](#prerequisites)创建的 IoT 中心，然后在左侧菜单选项中选择“消息路由”。
 2. 选择“自定义终结点”选项卡。
 3. 选择“+ 添加”，然后选择“事件中心”以添加事件中心类型的终结点。
 
@@ -320,7 +308,7 @@ az dt twin show --dt-name <Digital-Twins-instance-name> --twin-id "<Device-Regis
 
 可能需要几分钟时间，才能看到 Azure 数字孪生中发生变化。
 
-使用以下 [Azure 数字孪生 CLI](concepts-cli.md) 命令，验证 Azure 数字孪生实例中该设备的孪生体是否被删除。
+使用以下 [Azure 数字孪生 CLI](/cli/azure/dt/twin?view=azure-cli-latest&preserve-view=true#az_dt_twin_show) 命令，验证 Azure 数字孪生实例中该设备的孪生体是否被删除。
 
 ```azurecli-interactive
 az dt twin show --dt-name <Digital-Twins-instance-name> --twin-id "<Device-Registration-ID>"
@@ -349,7 +337,7 @@ az group delete --name <your-resource-group>
 
 为设备创建的数字孪生将在 Azure 数字孪生中存储为平级层次结构，但可为它们增添模型信息和组织的多级别层次结构。 要了解有关此概念的详细信息，请阅读：
 
-* [概念：数字孪生和孪生图](concepts-twins-graph.md)
+* [数字孪生和孪生图](concepts-twins-graph.md)
 
 有关通过 Azure 函数使用 HTTP 请求的详细信息，请参阅：
 
@@ -357,5 +345,5 @@ az group delete --name <your-resource-group>
 
 可以编写自定义逻辑，使用 Azure 数字孪生中已存储的模型和图形数据来自动提供此信息。 要了解管理、升级孪生图和从中检索信息的详情，请参阅以下内容：
 
-* [操作指南：管理数字孪生](how-to-manage-twin.md)
-* [操作指南：查询孪生图](how-to-query-graph.md)
+* [管理数字孪生](how-to-manage-twin.md)
+* [查询孪生图](how-to-query-graph.md)

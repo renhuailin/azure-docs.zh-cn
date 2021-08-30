@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: e339c9847024aa35665b9a8b4114102c8fde22a1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 181e0ae76dccf763d23fb648a5e6553ed352655a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470281"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748139"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>用于 Amazon S3 的 Azure Purview 连接器
 
@@ -25,15 +25,7 @@ ms.locfileid: "110470281"
 
 ## <a name="purview-scope-for-amazon-s3"></a>适用于 Amazon S3 的 Purview 范围
 
-以下范围专门针对将 Amazon S3 存储桶作为 Purview 数据源进行注册和扫描的场景。
-
-|范围  |说明  |
-|---------|---------|
-|**文件类型**     | Purview 扫描程序服务目前支持以下文件类型： <br><br>.avro、.csv、.doc、.docm、.docx、.dot、.json、.odp、.ods、.odt、.orc、.parquet、.pdf、.pot、.pps、.ppsx、.ppt、.pptm、.pptx、.psv、.ssv、.tsv、.txt、.xlc、.xls、.xlsb、.xlsm、.xlsx、.xlt、.xml        |
-|**区域**     | Amazon S3 服务的 Purview 连接器当前仅在特定区域部署。 <br><br>有关详细信息，请参阅[存储和扫描区域](#storage-and-scanning-regions)。   |
-|     |         |
-
-有关详细信息，请参阅以下链接中说明的 Purview 限制：
+如需了解 Purview 限制，请参阅：
 
 - [管理和增加 Azure Purview 资源的配额](how-to-manage-quotas.md)
 - [Azure Purview 中支持的数据源和文件类型](sources-and-scans.md)
@@ -41,7 +33,7 @@ ms.locfileid: "110470281"
 
 ### <a name="storage-and-scanning-regions"></a>存储和扫描区域
 
-下表将存储数据的区域映射到 Azure Purview 将扫描的区域。
+Amazon S3 服务的 Purview 连接器当前仅在特定区域部署。 下表将存储数据的区域映射到 Azure Purview 将扫描的区域。
 
 > [!IMPORTANT]
 > 客户将需根据其存储桶所在的区域支付所有相关的数据传输费用。
@@ -51,24 +43,24 @@ ms.locfileid: "110470281"
 | ------------------------------- | ------------------------------------- |
 | 美国东部（俄亥俄州）                  | 美国东部（俄亥俄州）                        |
 | 美国东部（北 弗吉尼亚）           | 美国东部（北 弗吉尼亚）                       |
-| 美国西部（北 加利福尼亚州）         | 美国东部（俄亥俄州）或美国西部（北 加利福尼亚州）                        |
-| 美国西部（俄勒冈州）                | 美国东部（俄亥俄州）或美国西部（俄勒冈州）                      |
+| 美国西部（北 加利福尼亚州）         | 美国西部（北 加利福尼亚州）                        |
+| 美国西部（俄勒冈州）                | 美国西部（俄勒冈州）                      |
 | 非洲（开普敦）              | 欧洲（法兰克福）                    |
-| 亚太（香港特别行政区）        | 亚太（悉尼）或亚太（新加坡）                |
-| 亚太（孟买）           | 亚太（悉尼）或亚太（新加坡）                |
-| 亚太（大阪-本地）      | 亚太（悉尼）或亚太（东京）                 |
-| 亚太（首尔）            | 亚太（悉尼）或亚太（东京）                 |
-| 亚太（新加坡）        | 亚太（悉尼）或亚太（新加坡）                 |
+| 亚太（香港特别行政区）        | 亚太（东京）                |
+| 亚太（孟买）           | 亚太（新加坡）                |
+| 亚太（大阪-本地）      | 亚太（东京）                 |
+| 亚太（首尔）            | 亚太（东京）                 |
+| 亚太（新加坡）        | 亚太（新加坡）                 |
 | 亚太（悉尼）           | 亚太（悉尼）                  |
-| 亚太（东京）            | 亚太（悉尼）或亚太（东京）                |
+| 亚太（东京）            | 亚太（东京）                |
 | 加拿大（中部）                | 美国东部（俄亥俄州）                        |
 | 中国（北京）                 | 不支持                    |
 | 中国（宁夏）                 | 不支持                   |
 | 欧洲（法兰克福）              | 欧洲（法兰克福）                    |
 | 欧洲（爱尔兰）                | 欧洲（爱尔兰）                   |
-| 欧洲（伦敦）                 | 欧洲（爱尔兰）或欧洲（伦敦）                 |
-| 欧洲（米兰）                  | 欧洲（法兰克福）                    |
-| 欧洲（巴黎）                  | 欧洲（法兰克福）或欧洲（巴黎）                   |
+| 欧洲（伦敦）                 | 欧洲（伦敦）                 |
+| 欧洲（米兰）                  | 欧洲（巴黎）                    |
+| 欧洲（巴黎）                  | 欧洲（巴黎）                   |
 | 欧洲（斯德哥尔摩）              | 欧洲（法兰克福）                    |
 | 中东（巴林）           | 欧洲（法兰克福）                    |
 | 南美洲（圣保罗）       | 美国东部（俄亥俄州）                        |
@@ -305,7 +297,7 @@ AWS 帐户 ID 是用于登录到 AWS 控制台的那个 ID。 在你登录后，
 
     ![启动 Purview 门户。](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
 
-1. 导航到 Azure Purview 的“源”页，依次选择“注册”![“注册”图标](./media/register-scan-amazon-s3/register-button.png) > “Amazon S3” > “继续”。
+1. 导航到 Azure Purview 的“数据映射”页，然后选择“注册”![注册图标](./media/register-scan-amazon-s3/register-button.png) 。 > “Amazon S3” > “继续”。
 
     ![添加一个 Amazon AWS 存储桶作为 Purview 数据源。](./media/register-scan-amazon-s3/add-s3-datasource-to-purview.png)
 
@@ -337,7 +329,7 @@ AWS 帐户 ID 是用于登录到 AWS 控制台的那个 ID。 在你登录后，
 
     ![启动用于 Amazon S3 的连接器的专用 Purview 门户](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
 
-1. 导航到 Azure Purview 的“源”页，依次选择“注册”![“注册”图标](./media/register-scan-amazon-s3/register-button.png) > “Amazon 帐户” > “继续”。
+1. 导航到 Azure Purview 的“数据映射”页，然后选择“注册”![注册图标](./media/register-scan-amazon-s3/register-button.png) 。 > “Amazon 帐户” > “继续”。
 
     ![添加一个 Amazon 帐户作为 Purview 数据源。](./media/register-scan-amazon-s3/add-s3-account-to-purview.png)
 
@@ -362,7 +354,7 @@ AWS 帐户 ID 是用于登录到 AWS 控制台的那个 ID。 在你登录后，
 
 当你添加存储桶作为 Purview 数据源后，可以配置一个按计划的时间间隔运行或立即运行的扫描。
 
-1. 导航到 Azure Purview 的“源”区域，然后执行以下任一操作：
+1. 在 Purview Studio 的左侧窗格中选择“数据映射”选项卡，然后执行以下操作之一：
 
     - 在“映射视图”中，从数据源框中选择“新建扫描” ![“新建扫描”图标](./media/register-scan-amazon-s3/new-scan-button.png) 。
     - 在“列表视图”中，将鼠标悬停在数据源行上，然后选择“新建扫描”![“新建扫描”图标](./media/register-scan-amazon-s3/new-scan-button.png)。
@@ -411,7 +403,7 @@ AWS 帐户 ID 是用于登录到 AWS 控制台的那个 ID。 在你登录后，
 
 ## <a name="explore-purview-scanning-results"></a>浏览 Purview 扫描结果
 
-当对 Amazon S3 存储桶的 Purview 扫描完成后，请在 Purview“源”区域中向下钻取，以查看扫描历史记录。
+对 Amazon S3 存储桶的 Purview 扫描完成后，请在 Purview 的“数据映射”区域中向下钻取，查看扫描历史记录。
 
 选择数据源以查看其详细信息，然后选择“扫描”选项卡，查看当前正在运行或已完成的任何扫描。
 如果你已添加包含多个存储桶的 AWS 帐户，此帐户下将显示每个存储桶的扫描历史记录。

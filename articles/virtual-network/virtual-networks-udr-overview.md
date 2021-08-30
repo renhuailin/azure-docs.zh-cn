@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2021
 ms.author: aldomel
-ms.openlocfilehash: 232b83fef2da312828f4f9f332ab2505e3a68100
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: f7a7ab456fd28e8ba244a29238590da22885c318
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503637"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729635"
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -82,14 +82,16 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
     * 附加到虚拟机的网络接口的[专用 IP 地址](./private-ip-addresses.md)。 如果网络接口附加到虚拟机，而虚拟机将网络流量转发到不是自己地址的地址，则该网络接口必须为其启用 Azure 选项“启用 IP 转发”。 此设置禁止 Azure 在源和目标中检查网络接口。 详细了解如何[为网络接口启用 IP 转发](virtual-network-network-interface.md#enable-or-disable-ip-forwarding)。 虽然“启用 IP 转发”是一项 Azure 设置，但你也可能需要在虚拟机的操作系统中启用 IP 转发，否则设备无法在分配到 Azure 网络接口的专用 IP 地址之间转发流量。 如果必须将流量路由到公共 IP 地址，则设备需通过代理来路由流量，或者通过网络地址转换将源的专用 IP 地址转换为其自己的专用 IP 地址，然后再由 Azure 将网络地址转换为公共 IP 地址，这样才能将流量发送到 Internet。 若要确定虚拟机中的必需设置，请参阅操作系统或网络应用程序的文档。 若要了解 Azure 中的出站连接，请参阅[了解出站连接](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。<br>
 
-        > [!NOTE]
-        > 将虚拟设备部署到子网时，该子网应不同于通过虚拟设备路由的资源所部署到的子网。 如果将虚拟设备部署到同一子网，然后将路由表应用到通过虚拟设备路由流量的子网，则可能导致路由循环，使流量无法离开子网。
+      > [!NOTE]
+      > 将虚拟设备部署到子网时，该子网应不同于通过虚拟设备路由的资源所部署到的子网。 如果将虚拟设备部署到同一子网，然后将路由表应用到通过虚拟设备路由流量的子网，则可能导致路由循环，使流量无法离开子网。
+      > 
+      > 下一个跃点专用 IP 地址必须具有直接连接，而无需通过 ExpressRoute 网关或虚拟 WAN 进行路由。 将下一个跃点设置为不带直接连接的 IP 地址会导致用户定义的路由配置无效。 
 
     * Azure [内部负载均衡器](../load-balancer/quickstart-load-balancer-standard-internal-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的专用 IP 地址。 负载均衡器通常作为[网络虚拟设备的高可用性策略](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json)的一部分使用。
 
     可以在定义路由时，使用“0.0.0.0/0”作为地址前缀，使用“虚拟设备”作为下一跃点类型，这样设备就可以检查流量，并决定是转发流量还是丢弃流量。 若要创建包含 0.0.0.0/0 地址前缀的用户定义路由，请先阅读 [0.0.0.0/0 地址前缀](#default-route)。
 
-* **虚拟网络网关**：需要将目标为特定地址前缀的流量路由到虚拟网络网关时，请指定此项。 创建虚拟网关时，类型必须为“VPN”。 不能在用户定义路由中指定将虚拟网关创建为“ExpressRoute”类型，因为类型为 ExpressRoute 时，必须对自定义路由使用 BGP。 可以定义一个路由，让其将目标为 0.0.0.0/0 地址前缀的流量定向到[基于路由](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#vpntype)的虚拟网关。 可以在本地设置一个设备，让其检查流量并决定是转发还是丢弃流量。 若要创建地址前缀为 0.0.0.0/0 的用户定义路由，请先阅读 [0.0.0.0/0 地址前缀](#default-route)。 可以通过 BGP 播发前缀为 0.0.0.0/0 的路由，而不必配置地址前缀为 0.0.0.0/0 的用户定义路由，前提是[为 VPN 虚拟网关启用 BGP](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。<br>
+* **虚拟网络网关**：需要将目标为特定地址前缀的流量路由到虚拟网络网关时，请指定此项。 创建虚拟网关时，类型必须为“VPN”。 不能在用户定义路由中指定将虚拟网关创建为“ExpressRoute”类型，因为类型为 ExpressRoute 时，必须对自定义路由使用 BGP。 如果有 VPN 和 ExpressRoute 共存的连接，则不能指定虚拟网络网关。 可以定义一个路由，让其将目标为 0.0.0.0/0 地址前缀的流量定向到[基于路由](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#vpntype)的虚拟网关。 可以在本地设置一个设备，让其检查流量并决定是转发还是丢弃流量。 若要创建地址前缀为 0.0.0.0/0 的用户定义路由，请先阅读 [0.0.0.0/0 地址前缀](#default-route)。 可以通过 BGP 播发前缀为 0.0.0.0/0 的路由，而不必配置地址前缀为 0.0.0.0/0 的用户定义路由，前提是[为 VPN 虚拟网关启用 BGP](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。<br>
 * **无**：需要丢弃流向某个地址前缀的流量，而不是将该流量转发到目标时，请指定此项。 如果某项功能尚未完全配置好，Azure 可能会针对部分可选的系统路由列出“无”。 例如，如果看到“无”作为“下一跃点 IP 地址”列出，且“下一跃点类型”为“虚拟网关”或“虚拟设备”，则可能是因为设备未运行或未完全配置好。   Azure 为保留的地址前缀创建系统[默认路由](#default)，使用“无”作为下一跃点类型。<br>
 * **虚拟网络**：需要替代虚拟网络中的默认路由时，请指定此项。 请参阅[路由示例](#routing-example)，通过示例了解为何需创建跃点类型为“虚拟网络”的路由。<br>
 * **Internet**：需要将目标为某个地址前缀的流量显式路由到 Internet 时，或者需要将流量的目标设定为 Azure 服务，且公共 IP 地址始终位于 Azure 主干网络内时，请指定此项。
@@ -126,7 +128,7 @@ az network route-table route create -g MyResourceGroup --route-table-name MyRout
 
 #### <a name="known-issues-april-2021"></a>已知问题（2021 年 4 月）
 
-当存在 BGP 路由或者在子网上配置了服务终结点时，可能无法使用正确的优先级评估路由。 我们正在修复这些问题 </br>
+当存在 BGP 路由或者在子网上配置了服务终结点时，可能无法使用正确的优先级评估路由。 此功能当前不适用于双堆栈 (IPv4+IPv6) 虚拟网络。 我们正在修复这些问题 </br>
 
 
 > [!NOTE] 
@@ -157,7 +159,7 @@ az network route-table route create -g MyResourceGroup --route-table-name MyRout
 
 使用 BGP 与 Azure 交换路由时，系统会针对每个播发的前缀，将一个单独的路由添加到包含虚拟网络中所有子网的路由表。 添加路由时，会将 *虚拟网关* 列为源和下一跃点类型。 
 
-可以使用路由表的一个属性，在子网上禁用 ER 和 VPN 网关路由传播。 使用 BGP 与 Azure 交换路由时，路由不会添加到已禁用虚拟网络网关路由传播的任何子网的路由表。 VPN 连接的连接性是通过下一跃点类型为“虚拟网关”的[自定义路由](#custom-routes)实现的。 不应在 GatewaySubnet 上禁用路由传播。如果禁用此设置，网关将无法工作。 有关详细信息，请参阅[如何禁用虚拟网络网关路由传播](manage-route-table.md#create-a-route-table)。
+可以使用路由表的一个属性，在子网上禁用 ER 和 VPN 网关路由传播。 这样做时，路由不会添加到禁用虚拟网络网关路由传播的任何子网的路由表（静态路由和 BGP 路由）。 VPN 连接的连接性是通过下一跃点类型为“虚拟网关”的[自定义路由](#custom-routes)实现的。 不应在 GatewaySubnet 上禁用路由传播。如果禁用此设置，网关将无法工作。 有关详细信息，请参阅[如何禁用虚拟网络网关路由传播](manage-route-table.md#create-a-route-table)。
 
 ## <a name="how-azure-selects-a-route"></a>Azure 如何选择路由
 
@@ -286,9 +288,9 @@ az network route-table route create -g MyResourceGroup --route-table-name MyRout
 |默认 |活动 |10.2.0.0/16         |VNet 对等互连              |                   |
 |默认 |活动 |10.10.0.0/16        |虚拟网络网关   |[X.X.X.X]          |
 |默认 |活动 |0.0.0.0/0           |Internet                  |                   |
-|默认 |活动 |10.0.0.0/8          |无                      |                   |
+|默认 |可用 |10.0.0.0/8          |无                      |                   |
 |默认 |活动 |100.64.0.0/10       |无                      |                   |
-|默认 |活动 |192.168.0.0/16      |无                      |                   |
+|默认 |可用 |192.168.0.0/16      |无                      |                   |
 
 Subnet2 的路由表包含所有 Azure 创建的默认路由，以及可选的 VNet 对等互连和虚拟网关可选路由。 向虚拟网络添加网关和对等互连时，Azure 向虚拟网络中的所有子网添加了可选路由。 向 Subnet1 添加地址前缀为 0.0.0.0/0 的用户定义路由时，Azure 会从 Subnet1 路由表中删除了地址前缀为 10.0.0.0/8、192.168.0.0/16 和 100.64.0.0/10 的路由 。  
 

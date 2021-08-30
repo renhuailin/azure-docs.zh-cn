@@ -12,22 +12,25 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2019
+ms.date: 08/09/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d4152783129fa1c5950d6cf6287332bf90d32a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2415ad3109863a9cd80df413723b317e880a7063
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97976871"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751619"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步：目录扩展
 通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可通过[扩展](/graph/extensibility-overview
 )使用这些属性。 可以使用 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)查看可用属性。 此外，你也可以使用此功能在 Azure AD 中创建动态组。
 
 目前，没有任何 Microsoft 365 工作负荷使用这些属性。
+
+>[!IMPORTANT]
+>如果导出了一个包含用于同步目录扩展属性的自定义规则的配置，并尝试将此规则导入到新的或现有 Azure AD Connect 安装中，系统会在导入过程中创建该规则，但不会映射其中的目录扩展属性。  你需要重新选择目录扩展属性并将其与规则重新关联，或完全重新创建规则，即可解决此问题。
 
 ## <a name="customize-which-attributes-to-synchronize-with-azure-ad"></a>自定义要与 Azure AD 同步的属性
 

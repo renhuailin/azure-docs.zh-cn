@@ -3,12 +3,12 @@ title: 部署已启用 GPU 的容器实例
 description: 了解如何使用 GPU 资源部署 Azure 容器实例，以运行计算密集型容器应用。
 ms.topic: article
 ms.date: 07/22/2020
-ms.openlocfilehash: 6ffe4840d024c1e1f551966d05673c4ba83e1259
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: cff887f434230fbc24dfbe27b1f14a463d00cf5d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764056"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728911"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 资源的容器实例
 
@@ -63,9 +63,12 @@ ms.locfileid: "107764056"
 
 * **CUDA 驱动程序** - 具有 GPU 资源的容器实例使用 NVIDIA CUDA 驱动程序和容器运行时进行预配，因此可以使用专为 CUDA 工作负载开发的容器映像。
 
-  在此阶段，我们仅支持 CUDA 9.0。 例如，可以对 Docker 文件使用以下基础映像：
+  在此阶段，我们仅支持 CUDA 9.0。 例如，可以对 Dockerfile 使用以下基础映像：
   * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow:1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+
+  > [!NOTE]
+  > 若要提高从 Docker Hub 使用公共容器映像时的可靠性，请在专用 Azure 容器注册表中导入和管理该映像，并更新 Dockerfile 以使用专门管理的基础映像。 [了解有关使用公共映像的详细信息](../container-registry/buffer-gate-public-content.md)。
     
 ## <a name="yaml-example"></a>YAML 示例
 

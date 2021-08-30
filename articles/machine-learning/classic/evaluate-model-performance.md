@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 346cfa898b5745b5ba8e31635337456ea9adb02d
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: ca240dd4684bfe57cd7e5a0ea1db928768d0fa22
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112581711"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694577"
 ---
 # <a name="evaluate-model-performance-in-machine-learning-studio-classic"></a>在机器学习工作室（经典）中评估模型性能
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 本文介绍可用于监视机器学习工作室（经典）中的模型性能的指标。  评估模型性能是数据科学过程的核心阶段之一。 它指示训练的模型为某个数据集评分的成功程度。 机器学习工作室（经典）通过它的两个主要机器学习模块支持模型评估： 
 + [评估模型][evaluate-model] 

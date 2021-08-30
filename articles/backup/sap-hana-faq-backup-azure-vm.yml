@@ -2,14 +2,15 @@
 metadata:
   title: 常见问题解答 - 备份 Azure VM 上的 SAP HANA 数据库
   description: 本文介绍有关如何使用 Azure 备份服务备份 SAP HANA 数据库的常见问题解答。
-  ms.topic: conceptual
-  ms.date: 11/7/2019
-  ms.openlocfilehash: 4a0212e204278214273f49e64b5db1da29da9fad
-  ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+  ms.topic: article
+  ms.service: backup
+  ms.date: 06/23/2021
+  ms.openlocfilehash: 5983508897520ad6fe5b91df3bd6abf26244d09f
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/15/2021
-  ms.locfileid: "111906949"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253652"
 title: 常见问题解答 - 备份 Azure VM 上的 SAP HANA 数据库
 summary: 本文介绍有关如何使用 Azure 备份服务备份 SAP HANA 数据库的常见问题解答。
 sections:
@@ -18,15 +19,24 @@ sections:
   - question: >
       每天支持多少次完整备份？
     answer: >
-      每天仅支持一次完整备份。 不能在同一天触发差异备份和完整备份。
+      一天可以创建一个计划完整备份和多个按需备份。
+
+
+      | 备份类型 | 计划内备份 | 按需备份 |
+
+      | --- | --- | --- |
+
+      | 完整 | 一天仅支持一个。 | 一天支持多次。 |
+
+      | 增量（差异/增量） | 一天仅支持一个。 <br><br> **注意** <br> 仅当没有为特定的日期计划完整备份时，才能计划增量备份。 此外，在一个备份策略中只能计划一种增量备份类型（差异/增量）。 | 一天支持多次。 |
   - question: >
-      成功的备份作业是否会创建警报？
+      在哪里可以找到与备份相关的警报？
     answer: >
-      不是。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](./backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果希望在作业成功的情况下也收到警报，可以使用 [Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md)。
+      现在，成功的备份作业不会生成警报。 只会针对失败的备份作业生成警报。 [了解如何](backup-azure-monitoring-built-in-monitor.md)使用 Azure 门户查看备份警报。
   - question: >
       “备份作业”菜单中是否会显示计划的备份作业？
     answer: >
-      “备份作业”菜单只显示按需备份作业。 对于计划的作业，请使用 [Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md)。
+      “备份作业”菜单仅显示正在进行、成功或失败的按需备份作业。 对于计划的作业，请使用 [Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md)。
   - question: >
       未来的数据库会自动添加备份吗？
     answer: >
@@ -42,25 +52,25 @@ sections:
     answer: >
       已重命名的数据库被视为新数据库。 因此，服务会将此情况视为找不到数据库，会使备份失败。 已重命名的数据库会显示为新数据库，必须对其进行保护性配置。
   - question: >
-      备份 Azure VM 上的 SAP HANA 数据库的先决条件是什么？
+      如何开始使用 Azure 备份服务备份 SAP HANA 数据库？
     answer: >
-      请参阅[先决条件](tutorial-backup-sap-hana-db.md#prerequisites)和[预注册脚本的功能](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)部分。
+      请参阅[该教程](./tutorial-backup-sap-hana-db.md)，获取有关对 SAP HANA 数据库开始使用 Azure 备份的分步指南。 也可以使用 [CLI](./tutorial-sap-hana-backup-cli.md) 来配置和管理备份。
   - question: >
-      应设置哪些权限以便 Azure 可以备份 SAP HANA 数据库？
+      使用 Azure 备份服务备份 SAP HANA 数据库是否需要满足任何先决条件？
     answer: >
-      运行预注册脚本即可设置所需的权限，这样 Azure 就可以备份 SAP HANA 数据库。 可以在[此处](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)详细了解预注册脚本的功能。
+      请参阅对 SAP HANA 使用 Azure 备份所要满足的[先决条件](./tutorial-backup-sap-hana-db.md#prerequisites)。
   - question: >
       将 SAP HANA 从 SDC 迁移到 MDC 后，备份是否正常进行？
     answer: >
       请参考故障排除指南中的[说明](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid)。
   - question: >
-      在同一版本中升级时应执行什么操作？
+      如何确保在同一 HANA 版本中升级 HANA 实例后备份能够继续？
     answer: >
       请参阅故障排除指南中的[此部分](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm)。
   - question: >
       是否可以针对虚拟 IP（负载均衡器）而不是虚拟机设置 Azure HANA 备份？
     answer: >
-      目前，我们无法设置单独针对虚拟 IP 的解决方案。 执行此解决方案需要使用虚拟机。
+      目前，我们无法针对虚拟 IP 或代理设置该解决方案。 执行此解决方案需要使用虚拟机。
   - question: >
       如何将按需备份移动到本地文件系统而不是 Azure 保管库？
     answer: >

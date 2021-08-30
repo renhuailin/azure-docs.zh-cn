@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: edb758469a06dcb7914025ea449b9d952e939533
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f2aaf03f4314386615fabfe65ca47132543577fa
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097204"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091692"
 ---
 # <a name="add-a-symbol-layer-android-sdk"></a>添加符号层 (Android SDK)
 
@@ -137,7 +137,7 @@ map.layers.add(layer)
 
 ::: zone-end
 
-以下屏幕截图显示了使用带有符号层的图标和文本标签来呈现点特征的上述代码。
+以下屏幕截图显示使用带有符号层的图标和文本标签来呈现点特征的上述代码。
 
 ![带有使用符号层呈现的点的地图，其中显示了点特征的图标和文本标签](media/how-to-add-symbol-to-android-map/android-map-pin.png)
 
@@ -146,7 +146,7 @@ map.layers.add(layer)
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer&quot;></a>将自定义图标添加到符号层
 
-符号层是使用 WebGL 呈现的。 因此，所有资源（例如图标图像）必须载入 WebGL 上下文。 此示例演示如何将自定义图标添加到地图资源。 然后，此图标用于使用自定义符号在地图上呈现点数据。 符号层的 `textField` 属性要求指定一个表达式。 在本例中，我们希望呈现温度属性。 由于温度为数字，因此需要将其转换为字符串。 此外，我们还需要在其后追加“°F”。 可使用表达式执行此串联；`concat(Expression.toString(get(&quot;temperature")), literal("°F"))`。
+符号层是使用 WebGL 呈现的。 因此，所有资源（例如图标图像）必须载入 WebGL 上下文。 此示例演示如何将自定义图标添加到地图资源。 然后，此图标用于使用自定义符号在地图上呈现点数据。 符号层的 `textField` 属性要求指定一个表达式。 在本例中，我们希望呈现温度属性。 由于温度为数字，因此需要将其转换为字符串。 此外，我们还需要在其后追加“°F”。 表达式可用于执行此串联；`concat(Expression.toString(get(&quot;temperature")), literal("°F"))`。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -211,13 +211,13 @@ val layer = SymbolLayer(
 
 ::: zone-end
 
-对于本示例，以下图像已加载到应用的可绘制资源文件夹中。
+对于本示例，以下图像加载到应用的可绘制资源文件夹中。
 
 | ![阵雨的天气图标图像](media/how-to-add-symbol-to-android-map/showers.png)|
 |:-----------------------------------------------------------------------:|
 | showers.png                                                  |
 
-以下屏幕截图显示了使用带有符号层的自定义图标和带格式的文本标签来呈现点特征的上述代码。
+以下屏幕截图显示使用带有符号层的自定义图标和带格式的文本标签来呈现点特征的上述代码。
 
 ![带有使用符号层呈现的点的地图，其中显示了点特征的自定义图标和带格式的文本标签](media/how-to-add-symbol-to-android-map/android-custom-symbol-layer.png)
 
@@ -228,7 +228,7 @@ val layer = SymbolLayer(
 
 Azure Maps Android SDK 附带了一组默认标记图标的预定义颜色变体。 例如，可以将 `marker-red` 传递到符号层的 `iconImage` 选项，以呈现该层中标记图标的红色版本。
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
 SymbolLayer layer = new SymbolLayer(source,
@@ -248,27 +248,27 @@ val layer = SymbolLayer(source,
 
 ::: zone-end
 
-下表列出了所有可用的内置图标图像名称。 所有这些标记均从可以替代的颜色资源中提取其颜色。 除了替代此标记的主要填充颜色。 但请注意，替代其中一个标记的颜色将应用于所有使用该图标图像的层。
+下表列出了所有可用的内置图标图像名称。 所有这些标记均从可以替代的颜色资源中提取其颜色。 除了替代此标记的主要填充颜色。 但是，替代其中一个标记的颜色将应用于所有使用该图标图像的层。
 
 | 图标图像名称 | 颜色资源名称 |
 |-----------------|---------------------|
-| `marker-default` | `mapcontrol_marker_default` |
-| `marker-black` | `mapcontrol_marker_black` |
-| `marker-blue` | `mapcontrol_marker_blue` |
-| `marker-darkblue` | `mapcontrol_marker_darkblue` |
-| `marker-red` | `mapcontrol_marker_red` |
-| `marker-yellow` | `mapcontrol_marker_yellow` |
+| `marker-default` | `azure_maps_marker_default` |
+| `marker-black` | `azure_maps_marker_black` |
+| `marker-blue` | `azure_maps_marker_blue` |
+| `marker-darkblue` | `azure_maps_marker_darkblue` |
+| `marker-red` | `azure_maps_marker_red` |
+| `marker-yellow` | `azure_maps_marker_yellow` |
 
-还可使用 `mapcontrol_marker_border` 颜色资源名称替代所有标记的边框颜色。 可以通过在应用的 `colors.xml` 文件中添加同名的颜色来替代这些标记的颜色。 例如，以下 `colors.xml` 文件会使默认标记颜色为亮绿色。
+还可使用 `azure_maps_marker_border` 颜色资源名称替代所有标记的边框颜色。 可以通过在应用的 `colors.xml` 文件中添加同名的颜色来替代这些标记的颜色。 例如，以下 `colors.xml` 文件会使默认标记颜色为亮绿色。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="mapcontrol_marker_default">#00FF00</color>
+    <color name="azure_maps_marker_default">#00FF00</color>
 </resources>
 ```
 
-下面是默认标记向量 XML 的已修改版本，你可以修改该版本以创建默认标记的其他自定义版本。 修改后的版本可以添加到应用的 `drawable` 文件夹中，然后使用 `map.images.add` 添加到地图图像子画面中，然后与符号层一起使用。
+以下代码是默认标记向量 XML 的修改版本，你可修改它来创建默认标记的自定义版本。 修改后的版本可以添加到应用的 `drawable` 文件夹中，然后使用 `map.images.add` 添加到地图图像子画面中，然后与符号层一起使用。
 
 ```xml
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
@@ -279,8 +279,8 @@ val layer = SymbolLayer(source,
     <path
         android:pathData="M12.25,0.25a12.2543,12.2543 0,0 0,-12 12.4937c0,6.4436 6.4879,12.1093 11.059,22.5641 0.5493,1.2563 1.3327,1.2563 1.882,0C17.7621,24.8529 24.25,19.1857 24.25,12.7437A12.2543,12.2543 0,0 0,12.25 0.25Z"
         android:strokeWidth="0.5"
-        android:fillColor="@color/mapcontrol_marker_default"
-        android:strokeColor="@color/mapcontrol_marker_border"/>
+        android:fillColor="@color/azure_maps_marker_default"
+        android:strokeColor="@color/azure_maps_marker_border"/>
 </vector>
 ```
 
@@ -290,6 +290,9 @@ val layer = SymbolLayer(source,
 
 > [!div class="nextstepaction"]
 > [创建数据源](create-data-source-android-sdk.md)
+
+> [!div class="nextstepaction"]
+> [聚类点数据](clustering-point-data-android-sdk.md)
 
 > [!div class="nextstepaction"]
 > [添加气泡层](map-add-bubble-layer-android.md)

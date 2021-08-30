@@ -13,21 +13,18 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2020
+ms.date: 06/29/2021
 ms.author: yelevin
-ms.openlocfilehash: 408913fed864ee5f966b96c81afbfee4b2dc8678
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5aa912e89fbbb1c219c15df8cbf3fed25868ff1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660723"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747143"
 ---
 # <a name="manage-your-soc-better-with-incident-metrics"></a>利用事件指标更好地管理 SOC
 
-> [!IMPORTANT]
-> 事件指标功能当前提供公共预览版。
-> 这些功能在提供时没有附带服务级别协议，不建议用于生产工作负荷。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 作为安全运营中心 (SOC) 管理员，需要随时可以获得总体效率指标和度量值，以衡量团队的表现。 需要按许多不同的条件来查看一段时间内的事件操作，如严重性、MITRE 技巧、平均会审时间、平均解决时间等等。 Azure Sentinel 现在使用 Log Analytics 中新的“SecurityIncident”表和架构以及附带的“安全运营效率”工作簿提供此数据。  你将能够直观显示团队在一段时间内的表现，并使用此见解来提高效率。 还可以针对事件表来写入和使用自己的 KQL 查询，以创建符合特定审核需求和 KPI 的自定义工作簿。
 
@@ -41,12 +38,24 @@ ms.locfileid: "94660723"
 
 例如，如果想要返回按事件编号排序的所有事件的列表，但只想返回每个事件的最新日志，则可以结合使用 KQL [summarize 运算符](/azure/data-explorer/kusto/query/summarizeoperator)和 `arg_max()` [聚合函数](/azure/data-explorer/kusto/query/arg-max-aggfunction)来执行此操作：
 
-
 ```Kusto
 SecurityIncident
 | summarize arg_max(LastModifiedTime, *) by IncidentNumber
 ```
 ### <a name="more-sample-queries"></a>更多示例查询
+
+事件状态 - 给定时间框架内按状态和严重性显示所有事件：
+
+```Kusto
+let startTime = ago(14d);
+let endTime = now();
+SecurityIncident
+| where TimeGenerated >= startTime
+| summarize arg_max(TimeGenerated, *) by IncidentNumber
+| where LastModifiedTime  between (startTime .. endTime)
+| where Status in  ('New', 'Active', 'Closed')
+| where Severity in ('High','Medium','Low', 'Informational')
+```
 
 平均关闭时间：
 ```Kusto
@@ -95,4 +104,4 @@ SecurityIncident
 ## <a name="next-steps"></a>后续步骤
 
 - 若要开始使用 Azure Sentinel，需要订阅 Microsoft Azure。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/free/)。
-- 了解如何[将数据载入到 Azure Sentinel](quickstart-onboard.md)，以及[获取数据和潜在威胁的见解](quickstart-get-visibility.md)。
+- 了解如何[将数据载入到 Azure Sentinel](quickstart-onboard.md)，以及[获取数据和潜在威胁的见解](get-visibility.md)。

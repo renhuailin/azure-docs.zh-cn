@@ -5,14 +5,14 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 07/08/2021
 ms.author: robinsh
-ms.openlocfilehash: 0b8b499613f8234f449e6d72f6ed6ec1f2f21287
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abbef6e0e244f7cfc937f738c7c2d0acd89549dd
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92545406"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114205193"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>使用 Azure CLI 进行 IoT 设备和模块的自动管理
 
@@ -22,13 +22,13 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-自动设备管理的工作原理是使用所需属性更新一组设备孪生或模块孪生，并报告基于孪生报告属性的摘要。  它引入了一个新类以及名为 *Configuration* 的 JSON 文档，其中包含三个组成部分：
+自动设备管理的工作原理是使用所需属性更新一组设备孪生或模块孪生，并报告基于孪生报告属性的摘要。  它引入了一个新类以及名为 Configuration 的 JSON 文档，其中包含三个组成部分：
 
 * **目标条件** 定义要更新的设备孪生或模块孪生的范围。 目标条件在设备孪生标记和/或报告属性中指定为查询。
 
 * **目标内容** 定义要在目标设备孪生或模块孪生中添加或更新的所需属性。 内容包括要更改的所需属性节的路径。
 
-* **指标** 定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。    自定义指标指定为孪生报告的属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的孪生数，以及已成功更新的孪生数。
+* **指标** 定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。    自定义指标指定为孪生报告的属性中的查询。 系统指标是度量孪生更新状态的默认指标，例如，针对的孪生数，以及已成功更新的孪生数。
 
 自动配置在配置创建不久后就首次运行，然后每隔五分钟运行一次。 每次自动配置运行时，都会运行指标查询。
 

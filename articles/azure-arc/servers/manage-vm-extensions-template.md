@@ -1,15 +1,15 @@
 ---
 title: 使用 Azure 资源管理器模板启用 VM 扩展
 description: 本文介绍如何使用 Azure 资源管理器模板将虚拟机扩展部署到在混合云环境中运行的已启用 Azure Arc 的服务器。
-ms.date: 04/13/2021
+ms.date: 07/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ad2cd02393404b419bc7028e54571d2db285982
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: f1ea92383242cb5b1b1a1d09f33f947ff07113c5
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802443"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389800"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>使用 ARM 模板启用 Azure VM 扩展
 
@@ -18,7 +18,7 @@ ms.locfileid: "108802443"
 VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用已启用 Arc 的服务器支持的 VM 扩展，可以通过 Azure PowerShell 在 Linux 或 Windows 计算机上部署支持的 VM 扩展。 下面的每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 >[!NOTE]
->虽然可以将多个扩展分批在一起并进行处理，但它们是以串行方式安装的。 第一个扩展安装完成后，将尝试安装下一扩展。
+>虽然可以将多个扩展分批在一起并进行处理，但它们是以串行方式安装的。 第一个扩展安装完成后，将尝试安装下一个扩展。
 
 > [!NOTE]
 > 已启用 Azure Arc 的服务器不支持管理 VM 扩展，也不支持将 VM 扩展部署到 Azure 虚拟机。 对于 Azure VM，请查看下面的 [VM 扩展概述](../../virtual-machines/extensions/overview.md)一文。
@@ -143,7 +143,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 为了使用自定义脚本扩展，本文提供了在 Windows 和 Linux 上运行的以下示例。 如果不熟悉自定义脚本扩展，请参阅[适用于 Windows 的自定义脚本扩展](../../virtual-machines/extensions/custom-script-windows.md)或[适用于 Linux 的自定义脚本扩展](../../virtual-machines/extensions/custom-script-linux.md)。 对混合计算机使用此扩展时，有几个不同的特征需要了解：
 
-* Azure VM 自定义脚本扩展的支持的操作系统列表不适用于已启用 Azure Arc 的服务器。 可在 [此处](agent-overview.md#supported-operating-systems)找到已启用 Arc 的服务器支持的 OS 列表。
+* Azure VM 自定义脚本扩展的支持的操作系统列表不适用于已启用 Azure Arc 的服务器。 可在[此处](agent-overview.md#supported-operating-systems)找到已启用 Arc 的服务器支持的 OS 列表。
 
 * 有关 Azure 虚拟机规模集或经典 VM 的配置详细信息不适用。
 
@@ -558,7 +558,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
       },
       "resources": [
         {
-          "type": "resourceType/providers/WindowsAgent.AzureSecurityCenter",
+          "type": "Microsoft.HybridCompute/machines/providers/serverVulnerabilityAssessments",
           "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
           "apiVersion": "[parameters('apiVersionByEnv')]"
         }
@@ -595,7 +595,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
       },
       "resources": [
         {
-          "type": "resourceType/providers/LinuxAgent.AzureSecurityCenter",
+          "type": "Microsoft.HybridCompute/machines/providers/serverVulnerabilityAssessments",
           "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
           "apiVersion": "[parameters('apiVersionByEnv')]"
         }

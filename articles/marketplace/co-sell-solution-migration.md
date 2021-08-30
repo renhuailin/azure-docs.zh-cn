@@ -1,19 +1,19 @@
 ---
 title: 将联合销售解决方案从 OCP GTM 迁移到 Microsoft AppSource 合作伙伴中心
-description: 了解如何将联合销售解决方案从 OCP GTM 迁移到 Microsoft AppSource 合作伙伴中心。
+description: 将联合销售解决方案从 OCP GTM 迁移到合作伙伴中心（Azure 市场）。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 05/18/2021
-ms.openlocfilehash: d4eb677b0f55a8ccd2cda33e6026e01238deb9b3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/13/2021
+ms.openlocfilehash: 6ca8c75e5cf6f5290736cf01a20db63a8fb2d077
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971536"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389076"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>将联合销售解决方案从 OCP GTM 迁移到商业市场
 
@@ -36,7 +36,7 @@ Microsoft 正在移动发布体验。 [商业市场](overview.md)的目的是实
 
 ## <a name="publishing-updates-for-attaining-co-sell-ready-status"></a>发布用于获取联合销售就绪状态的更新
 
-为了使解决方案可供 Microsoft 卖方和合作伙伴发现，它必须满足[联合销售就绪要求](./co-sell-overview.md)。 若要激励 Microsoft 卖方，解决方案必须满足[符合激励的要求](./co-sell-overview.md)。 请在合作伙伴中心的“联合销售”选项卡上填写这些要求（请查看本文后面的[此图](#action-2-merge)）。
+为了使解决方案可供 Microsoft 卖方和合作伙伴发现，它必须满足[联合销售就绪要求](./co-sell-overview.md)。 若要将 Microsoft 卖方作为联合销售激励，解决方案必须满足[符合激励的要求](./co-sell-overview.md)。 请在合作伙伴中心的“联合销售”选项卡上填写这些要求（请查看本文后面的[此图](#action-2-merge)）。
 
 > [!NOTE]
 > 在商业市场中，解决方案在整个发布过程中称为“产品/服务”。
@@ -45,8 +45,8 @@ Microsoft 正在移动发布体验。 [商业市场](overview.md)的目的是实
 
 在从 OCP GTM 中导入解决方案之前，请执行以下步骤：
 
-1. 请访问贵公司的[发布者列表](https://partner.microsoft.com/dashboard/account/v3/publishers/list)。 它包括具有发布访问权限的帐户所有者、管理员和开发人员。 了解有关[合作伙伴中心用户角色](user-roles.md)的详细信息。
-2. 要求列出的联系人之一将用户作为“管理员”或“开发人员”[添加](https://partner.microsoft.com/dashboard/account/usermanagement)到商业市场，因为只有这些角色才能编辑和发布解决方案。
+1. 请访问贵公司的[发布者列表](https://go.microsoft.com/fwlink/?linkid=2165704)。 它包括具有发布访问权限的帐户所有者、管理员和开发人员。 了解有关[合作伙伴中心用户角色](user-roles.md)的详细信息。
+2. 要求列出的联系人之一将用户作为“管理员”或“开发人员”[添加](https://go.microsoft.com/fwlink/?linkid=2166003)到商业市场，因为只有这些角色才能编辑和发布解决方案。
 3. 与开发人员协作，将解决方案从 OCP GTM 帐户移到商业市场。
 4. 确定要执行以下哪些操作：
     1. 如果需要将 OCP GTM 中的解决方案迁移到合作伙伴中心，同时保留推荐管道、宣传资料、联合销售状态和激励措施，则有两种方案可供选择：
@@ -66,7 +66,7 @@ Microsoft 正在移动发布体验。 [商业市场](overview.md)的目的是实
 
 ## <a name="begin-the-migration-of-your-solutions-from-ocp-gtm"></a>从 OCP GTM 开始迁移解决方案
 
-1. 从[此处](https://partner.microsoft.com/solutions/migration#)开始迁移。
+1. 从[此处](https://go.microsoft.com/fwlink/?linkid=2165807)开始迁移。
 2. 选择“概述”页面，然后选择“单击此处开始”。
 
     :::image type="content" source="media/co-sell-migrate/welcome-overveiw.png" alt-text="显示“概述”页":::

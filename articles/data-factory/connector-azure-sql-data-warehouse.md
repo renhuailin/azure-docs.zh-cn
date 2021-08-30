@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/15/2021
-ms.openlocfilehash: 6029e571cc1f2d9fe50b2d163a711a89827f2bfd
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.date: 08/24/2021
+ms.openlocfilehash: b12b7effae159709aa7619d6ab7442af9d803c6e
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201940"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822884"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory-or-synapse-pipelines"></a>使用 Azure 数据工厂或 Synapse 管道在 Azure Synapse Analytics 中复制和转换数据
 
@@ -223,11 +223,11 @@ Azure Synapse Analytics 链接服务支持以下属性：
 
 Azure Synapse Analytics 数据集支持以下属性：
 
-| 属性  | 说明                                                  | 必需                    |
+| 属性  | 描述                                                  | 必需                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 **type** 属性必须设置为 **AzureSqlDWTable**。 | 是                         |
-| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
-| table | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
 ### <a name="dataset-properties-example"></a>数据集属性示例
@@ -262,7 +262,7 @@ Azure Synapse Analytics 数据集支持以下属性：
 
 若要从 Azure Synapse Analytics 复制数据，请将复制活动源中的 **type** 属性设置为 **SqlDWSource**。 复制活动 **source** 节支持以下属性：
 
-| 属性                     | 说明                                                  | 必需 |
+| 属性                     | 描述                                                  | 必需 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 复制活动源的 **type** 属性必须设置为 **SqlDWSource**。 | 是      |
 | sqlReaderQuery               | 使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 | 否       |
@@ -633,7 +633,7 @@ Azure Synapse Analytics COPY 语句直接支持 Azure Blob、Azure Data Lake Sto
 
 在复制活动中的 `polyBaseSettings` 下支持以下 PolyBase 设置：
 
-| 属性          | 说明                                                  | 必需                                      |
+| 属性          | 描述                                                  | 必需                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | rejectValue       | 指定在查询失败之前可以拒绝的行数或百分比。<br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅 [CREATE EXTERNAL TABLE (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) 的“参数”部分。 <br/><br/>允许的值为 0（默认值）、1、2 等。 | 否                                            |
 | rejectType        | 指定 **rejectValue** 选项是文本值还是百分比。<br/><br/>允许的值为 **Value**（默认值）和 **Percentage**。 | 否                                            |
@@ -923,10 +923,10 @@ SQL 示例：```Select * from MyTable where customerId > 1000 and customerId < 2
 | :------------------------------------ | :----------------------------- |
 | bigint                                | Int64                          |
 | binary                                | Byte[]                         |
-| bit                                   | Boolean                        |
+| bit                                   | 布尔                        |
 | char                                  | String, Char[]                 |
 | date                                  | DateTime                       |
-| Datetime                              | DateTime                       |
+| datetime                              | DateTime                       |
 | datetime2                             | DateTime                       |
 | Datetimeoffset                        | DateTimeOffset                 |
 | 小数                               | 小数                        |

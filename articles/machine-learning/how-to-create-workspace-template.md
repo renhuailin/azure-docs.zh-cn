@@ -10,12 +10,12 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 04/21/2021
-ms.openlocfilehash: afb0d487d43b2a04aa298d9ec4249a6855d06544
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 7714adf00a40953301cf3f13eb8d6e403cd8c7a3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967750"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736558"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
@@ -28,11 +28,9 @@ ms.locfileid: "111967750"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
+* 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://azure.microsoft.com/free/)。
 
 * 若要在 CLI 中使用模板，需要安装 [Azure PowerShell](/powershell/azure/) 或 [Azure CLI](/cli/azure/install-azure-cli)。
-
-* 某些方案需要你开具支持票证。 例如，使用具有客户管理的密钥的启用了专用链接的工作区。 有关详细信息，请参阅[管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
 ## <a name="limitations"></a>限制
 
@@ -280,7 +278,7 @@ New-AzResourceGroupDeployment `
 如果关联的资源不在虚拟网络后面，则可以将 **privateEndpointType** 参数设置为 `AutoAproval` 或 `ManualApproval`，以将工作区部署到专用终结点后面。 对于新的和现有的工作区，都可以这样做。 更新现有工作区时，请使用现有工作区中的信息填写模板参数。
 
 > [!IMPORTANT]
-> Azure 政府区域不支持使用具有专用链接的 Azure 机器学习工作区。
+> Azure 政府区域不支持使用具有专用终结点的 Azure 机器学习工作区。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -541,7 +539,7 @@ New-AzResourceGroupDeployment `
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
 1. 遵循[从自定义模板部署资源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)中的步骤。 进入“选择模板”界面后，选择“快速入门”条目。 出现该条目时，请选择标记为“单击此处打开模板存储库”的链接。 利用此链接，你能快速找到 Azure 快速入门模板存储库中的 `quickstarts` 目录。
-1. 在快速入门模板列表中，选择“`microsoft.machinelearningservices'. Finally, select `部署到 Azure”。
+1. 在快速入门模板列表中，选择 `microsoft.machinelearningservices`。 最后，选择 `Deploy to Azure`。
 1. 出现此模板后，根据你的部署方案，提供以下必需信息和任何其他参数。
 
    * 订阅：选择用于这些资源的 Azure 订阅。

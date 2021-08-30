@@ -184,6 +184,8 @@
           items:
             - name: 从保管库备份多个 SQL Server VM
               href: backup-sql-server-database-azure-vms.md
+            - name: SQL 可用性组备份
+              href: backup-sql-server-on-availability-groups.md
             - name: 从 VM 窗格备份 SQL Server VM
               href: backup-sql-server-vm-from-vm-pane.md
         - name: 还原

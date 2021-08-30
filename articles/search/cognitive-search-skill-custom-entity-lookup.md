@@ -1,36 +1,25 @@
 ---
 title: 自定义实体查找认知搜索技能
 titleSuffix: Azure Cognitive Search
-description: 从 Azure 认知搜索管道中的文本提取不同的自定义实体。 此技能目前以公共预览版提供。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+description: 从 Azure 认知搜索管道中的文本提取不同的自定义实体。
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 68e4949fe0ef0b10018cd3827e259028c37d5b5c
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 08/12/2021
+ms.openlocfilehash: 977ac567f195e0ab8053d7b8bd98543801a3b6a4
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112019082"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860563"
 ---
-#     <a name="custom-entity-lookup-cognitive-skill"></a>“自定义实体查找”认知技能
+# <a name="custom-entity-lookup-cognitive-skill"></a>“自定义实体查找”认知技能
 
 “自定义实体查找”技能可在用户自定义的单词和短语列表中查找文本。 它使用此列表为包含任何匹配实体的所有文档加上标签。 该技能还支持一定程度的模糊匹配，应用此匹配方法可以查找类似但不完全相同的匹配项。  
 
-此技能不限于认知服务 API。 但是，仍然应该[附加一个认知服务资源](./cognitive-search-attach-cognitive-services.md)，以覆盖每日扩充限制。 每日限制适用于通过 Azure 认知搜索免费访问认知服务的情况。
-
-## <a name="pricing-details"></a>定价详细信息
-
-文本记录对应的是文档中包含 1,000 个字符的单元的数量（作为技能的输入提供）。
-
-|  定价层  |        价格  |
-|--------------|----------------------|
-| 0-500,000 文本记录 | 每 1,000 文本记录 1 美元 |
-| 500,000-2,500,000 个文本记录 | 每 1,000 文本记录 0.75 美元 |
-| 2,500,000-10,000,000 文本记录 | 每 1,000 文本记录 0.30 美元 |
-| 10,000,000 个以上的文本记录 | 每 1,000 文本记录 0.25 美元 |
+> [!NOTE]
+> 此技能未绑定到认知服务 API，但需要认知服务密钥才能允许超过 20 个事务。 此技能[按认知搜索进行计量](https://azure.microsoft.com/pricing/details/search/#pricing)。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.CustomEntityLookupSkill 
@@ -175,13 +164,12 @@ Satya Nadella
 | `accentSensitive` | （可选）作用与前面所述的根实体“accentSensitive”参数相同，但仅应用于这一个别名。 |
 | `fuzzyEditDistance` | （可选）作用与前面所述的根实体“fuzzyEditDistance”参数相同，但仅应用于这一个别名。 |
 
-
 ### <a name="inline-format"></a>内联格式
 
 在某些情况下，直接在技能定义中提供要内联匹配的自定义实体列表会更方便。 对于这种情况，可以使用类似于前面所述的 JSON 格式，但要将它内联在技能定义中。
 只能以内联方式定义小于 10 KB（序列化大小）的配置。 
 
-##    <a name="sample-definition"></a>示例定义
+## <a name="sample-definition"></a>示例定义
 
 下面显示了使用内联格式的示例技能定义：
 
@@ -221,6 +209,7 @@ Satya Nadella
     ]
   }
 ```
+
 或者，如果你决定提供指向实体定义文件的指针，可以参考下面所示的使用 `entitiesDefinitionUri` 格式的示例技能定义：
 
 ```json
@@ -244,7 +233,7 @@ Satya Nadella
 
 ```
 
-##    <a name="sample-input"></a>示例输入
+## <a name="sample-input"></a>示例输入
 
 ```json
 {
@@ -261,7 +250,7 @@ Satya Nadella
 }
 ```
 
-##    <a name="sample-output"></a>示例输出
+## <a name="sample-output"></a>示例输出
 
 ```json
   { 

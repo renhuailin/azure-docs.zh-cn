@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.author: v-erkel
-ms.openlocfilehash: 36e0135102fbede5505e96fb1aa255588b2f2ae2
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 84d5948cd4d3fbf69c3e8e983dedc280f1f7d950
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259894"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585728"
 ---
 # <a name="is-your-job-a-good-fit-for-azure-hpc-cache"></a>你的作业是否适合 Azure HPC 缓存？
 
@@ -19,7 +19,7 @@ Azure HPC 缓存可以为各专业中的高性能计算作业加快对数据的�
 
 [概述](hpc-cache-overview.md)文章还简要概述了何时使用 Azure HPC 缓存，并提供了一些用例。
 
-此外，请阅读[此文](nfs-blob-considerations.md)，了解如何充分利用预览版的[装载了 NFS 的 blob 存储](../storage/blobs/network-file-system-protocol-support.md)。
+此外，请阅读[此文](nfs-blob-considerations.md)，了解如何充分利用[装载了 NFS 的 blob 存储](../storage/blobs/network-file-system-protocol-support.md)。
 
 ## <a name="nfs-version-30-applications"></a>NFS 版本 3.0 应用程序
 
@@ -54,4 +54,4 @@ Azure 虚拟机是高性能计算工作负载的可缩放且经济高效的解�
 ## <a name="next-steps"></a>后续步骤
 
 * 在[概述](hpc-cache-overview.md)和[先决条件](hpc-cache-prerequisites.md)文章中详细了解如何规划和配置缓存
-* 了解将[启用了 NFS 的 Blob 存储](nfs-blob-considerations.md)（预览）与 Azure HPC 缓存配合使用的注意事项
+* 了解将[启用了 NFS 的 Blob 存储](nfs-blob-considerations.md)与 Azure HPC 缓存配合使用的注意事项

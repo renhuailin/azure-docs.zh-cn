@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: f8d0871f07168e0d7a2fbda90df4209ab7e5a28e
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9f1fdfeadd56b070c942c023a7373b43363a1916
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748492"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734969"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -46,9 +46,9 @@ ms.locfileid: "111748492"
 |----|:----|
 |发布状态：|正式发布版 (GA)|
 |定价：|需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
-|支持的计算机：|![是](./media/icons/yes-icon.png) 运行 Windows 和 Linux 的 Azure 和非 Azure 计算机<br>![是](./media/icons/yes-icon.png) [Azure Arc](../azure-arc/index.yml) 计算机|
+|支持的计算机：|:::image type="icon" source="./media/icons/yes-icon.png"::: 运行 Windows 和 Linux 的 Azure 和非 Azure 计算机<br>:::image type="icon" source="./media/icons/yes-icon.png"::: [Azure Arc](../azure-arc/index.yml) 计算机|
 |所需角色和权限：|“安全读者”和“读者”角色可以查看组和已知安全应用程序列表 <br>“参与者”和“安全管理员”角色可以查看组和已知安全应用程序的列表 |
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国家/地区/主权（Azure 政府、Azure 中国世纪互联）|
 |||
 
 
@@ -61,7 +61,7 @@ ms.locfileid: "111748492"
 
 1. 打开 Azure Defender 仪表板，从高级保护区域选择“自适应应用程序控制”。
 
-    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="从 Azure 仪表板打开自适应应用程序控制" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/opening-adaptive-application-control.png" alt-text="从 Azure 仪表板打开自适应应用程序控制。" lightbox="./media/security-center-adaptive-application/opening-adaptive-application-control.png":::
 
     “自适应应用程序控制”页随即打开，你的 VM 会分组到以下多个选项卡中：
 
@@ -87,13 +87,13 @@ ms.locfileid: "111748492"
 
 1. 打开“推荐”选项卡。此时将显示带有推荐允许列表的计算机组。
 
-   ![“推荐”选项卡](./media/security-center-adaptive-application/adaptive-application-recommended-tab.png)
+   ![“推荐”选项卡。](./media/security-center-adaptive-application/adaptive-application-recommended-tab.png)
 
 1. 选择组。 
 
 1. 要配置新规则，请查看此“配置应用程序控制规则”页的各个部分和内容，这些内容对于特定计算机组是唯一的：
 
-   ![配置新规则](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
+   ![配置新规则。](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
 
    1. **选择计算机** - 默认情况下，将选择标识组中的所有计算机。 如果取消选择任何计算机，则会此规则中删除它们。
    
@@ -127,7 +127,7 @@ ms.locfileid: "111748492"
 
    1. 选择“添加规则”。
 
-      ![添加自定义规则](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
+      ![添加自定义规则。](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
    1. 如果要定义已知的安全路径，请将“规则类型”更改为“路径”，然后输入单个路径。 可以在路径中包含通配符。
    
@@ -150,7 +150,7 @@ ms.locfileid: "111748492"
 
     此窗格显示组名称（可修改）、OS 类型、位置和其他相关详细信息。
 
-    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="自适应应用程序控制的“组设置”页" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
+    :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="自适应应用程序控制的“组设置”页面。" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
 1. （可选）修改组名称或文件类型保护模式。
 
@@ -183,13 +183,13 @@ ms.locfileid: "111748492"
 
 1. 要进一步调查，请选择一个组。
 
-   ![最近的警报](./media/security-center-adaptive-application/recent-alerts.png)
+   ![最近的警报。](./media/security-center-adaptive-application/recent-alerts.png)
 
 1. 要查看更多详细信息以及受影响的计算机列表，请选择一个警报。
 
     “警报”页将显示警报的更多详细信息，并提供“执行操作”链接以及有关如何缓解威胁的建议。
 
-    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="自适应应用程序控制警报的开始时间是 ":::
+    :::image type="content" source="media/security-center-adaptive-application/adaptive-application-alerts-start-time.png" alt-text="自适应应用程序控制警报的开始时间是 。":::
 
     > [!NOTE]
     > 自适应应用程序控制每 12 小时计算一次事件数量。 “警报”页中显示的“活动开始时间”是自适应应用程序控制创建警报的时间，而不是可疑进程处于活动状态的时间。
@@ -238,12 +238,12 @@ REST API 提供的一些函数：
 ## <a name="faq---adaptive-application-controls"></a>常见问题解答 - 自适应应用程序控制
 
 - [是否有任何强制执行应用程序控制的选项？](#are-there-any-options-to-enforce-the-application-controls)
-- [为什么我会在我的推荐应用程序中看到 Qualys 应用？](#why-do-i-see-a-qualys-app-in-my-recommendeded-applications)
+- [为什么我会在我的推荐应用程序中看到 Qualys 应用？](#why-do-i-see-a-qualys-app-in-my-recommended-applications)
 
 ### <a name="are-there-any-options-to-enforce-the-application-controls"></a>是否有任何强制执行应用程序控制的选项？
 目前无强制选项可用。 自适应应用程序控制旨在提供安全警报，前提是运行的任何应用程序不是你定义为安全的应用程序。 如本页所示，它具有一系列的优势（[自适应应用程序控制的优势是什么？](#what-are-the-benefits-of-adaptive-application-controls)）并且具有良好的可定制性。
 
-### <a name="why-do-i-see-a-qualys-app-in-my-recommendeded-applications"></a>为什么我会在我的推荐应用程序中看到 Qualys 应用？
+### <a name="why-do-i-see-a-qualys-app-in-my-recommended-applications"></a>为什么我会在我的推荐应用程序中看到 Qualys 应用？
 [适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 可为你的计算机提供漏洞扫描服务，无需额外付费。 你无需具备 Qualys 许可证，甚至还不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 有关此扫描器的详细信息以及如何部署它的说明，请参阅[Defender 的集成漏洞评估解决方案](deploy-vulnerability-assessment-vm.md)。
 
 若要确保安全中心部署扫描程序时不生成警报，自适应应用程序控制建议的允许列表应包括所有计算机的扫描程序。 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/26/2021
+ms.date: 08/03/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bb2a0cbba9d1aaf4a4465de7d4b994cde45f6df1
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 3eeed53c16bbd6b2c1170512606472ac5329b126
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590173"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733762"
 ---
 # <a name="page-layout-versions"></a>页面布局版本
 
@@ -26,19 +26,41 @@ ms.locfileid: "111590173"
 > Azure Active Directory B2C 通过每个新的页面布局版本来发布改进和修复。 强烈建议你让页面布局版本保持最新，以便所有页面元素都反映最新的安全增强功能、辅助功能标准和你的反馈。
 >
 
-## <a name="jquery-version"></a>jQuery 版本
+## <a name="jquery-and-handlebars-versions"></a>jQuery 和 Handlebars 版本
 
-Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)：
+Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)和 [Handlebars 模板](https://handlebarsjs.com/)：
 
-|从页面布局版本  |jQuery 版本  |
-|---------|---------|
-|2.1.4 | 3.5.1 |
-|1.2.0 | 3.4.1 |
-|1.1.0 | 1.10.2 |
+|元素 |页面布局版本范围 |jQuery 版本  |Handlebars 运行时版本 |Handlebars 编译器版本 |
+|---------|---------|------|--------|----------|
+|multifactor |>= 1.2.4 | 3.5.1 | 4.7.6 |4.7.7 |
+|            |< 1.2.4 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|selfasserted |>= 2.1.4 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 2.1.4 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|unifiedssp |>= 2.1.4 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 2.1.4 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|globalexception |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|providerselection |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|claimsconsent |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
+|unifiedssd |>= 1.2.1 | 3.5.1 |4.7.6 |4.7.7 |
+|            |< 1.2.1 | 3.4.1 |4.0.12 |2.0.1 |
+|            |< 1.2.0 | 1.12.4 |
 
 ## <a name="self-asserted-page-selfasserted"></a>自断言页面 (selfasserted)
 
-2\.1.6
+**2.1.7**
+- 修复了导致请求失败的语言编码问题。
+- 修复了一个仅在窗体提交时显示内联错误消息的辅助功能 bug。
+
+**2.1.6**
 - 修复了在另一字段上键入太快时密码错误会被清除的问题。
 
 **2.1.5**
@@ -154,6 +176,9 @@ Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)
 - 初始版本
 
 ## <a name="mfa-page-multifactor"></a>MFA 页面 (multifactor)
+
+**1.2.5**
+- 修复了导致请求失败的语言编码问题。
 
 **1.2.4**
 - 已将 jQuery 更新至版本 3.5.1。

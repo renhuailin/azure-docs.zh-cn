@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: a34bdfe55d2200176d6f6c7fde389c19dc26cfa5
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 4b06a8808826c5b11ecc2c54824db65f37d3b50f
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536467"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431395"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>为 Azure 应用程序产品/服务创建 Azure 托管应用程序计划
 
@@ -32,9 +32,9 @@ Azure“托管应用程序”计划是一种在 Azure 市场发布 Azure 应用�
 | ------------ | ------------- |
 | Azure 订阅 | 托管应用程序必须部署到客户的订阅，但可由第三方管理。 |
 | 计费和计量 | 在客户的 Azure 订阅中提供资源。 使用即用即付付款模型的 VM 通过 Microsoft 与客户交易并通过客户的 Azure 订阅计费。 <br><br> 对于自带许可的 VM，Microsoft 会对客户订阅产生的任何基础结构成本计费，但由你直接参与客户的软件许可证费用交易。 |
-| 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 有关详细信息，请参阅：<br> • [创建 Azure VM 技术资产](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) （针对 Windows VHD）。<br> •  [Azure 支持的 Linux 发行版](../virtual-machines/linux/endorsed-distros.md)（针对 Linux VHD）。 |
+| 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 有关详细信息，请参阅：<br> * [创建 Azure VM 技术资产](./azure-vm-create-certification-faq.yml#address-a-vulnerability-or-an-exploit-in-a-vm-offer)（针对 Windows VHD）。<br> *  [Azure 支持的 Linux 发行版](../virtual-machines/linux/endorsed-distros.md)（针对 Linux VHD）。 |
 | 客户使用情况归因 | 所有新 Azure 应用程序产品/服务还必须包含一个 [Azure 合作伙伴客户使用情况属性 GUID](azure-partner-customer-usage-attribution.md)。 有关客户使用情况属性及其启用方式，请参阅[Azure 合作伙伴客户使用情况属性](azure-partner-customer-usage-attribution.md)。 |
-| 部署包 | 你将需要部署包供客户部署计划。 如果创建的多个计划需要采用相同技术配置，则可以使用相同的包。 有关详细信息，请参阅下一部分：部署包。 |
+| 部署包 | 你将需要一个部署包，以供客户部署计划。 如果创建的多个计划需要采用相同技术配置，则可以使用相同的包。 有关详细信息，请参阅下一部分：部署包。 |
 |||
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Azure“托管应用程序”计划是一种在 Azure 市场发布 Azure 应用�
 
 所有 Azure 应用程序的 .zip 存档根文件夹必须涵盖这两个文件：
 
-- 资源管理器模板文件，名为 [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template)。 此模板定义要部署到客户的 Azure 订阅中的资源。 有关资源管理器模板的示例，请参阅[Azure 快速启动模板库](https://azure.microsoft.com/documentation/templates/)或对应的[GitHub：Azure 资源管理器快速启动模板](https://github.com/azure/azure-quickstart-templates)存储库。
+- 资源管理器模板文件，名为 [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template)。 此模板定义要部署到客户的 Azure 订阅中的资源。 有关资源管理器模板的示例，请参阅[Azure 快速启动模板库](https://azure.microsoft.com/resources/templates/)或对应的[GitHub：Azure 资源管理器快速启动模板](https://github.com/azure/azure-quickstart-templates)存储库。
 - 用于 Azure 应用程序创建体验的用户界面定义，名为 [createUiDefinition.json](../azure-resource-manager/managed-applications/create-uidefinition-overview.md)。 在用户界面中，可以指定让使用者能够提供参数值的元素。
 
 支持的最大文件大小为：

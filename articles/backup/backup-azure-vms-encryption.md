@@ -2,13 +2,13 @@
 title: 备份和还原已加密的 Azure VM
 description: 介绍如何使用 Azure 备份服务备份和还原已加密的 Azure VM。
 ms.topic: conceptual
-ms.date: 06/03/2021
-ms.openlocfilehash: 226c3d08903385a1df97d83209762452a70ed816
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.date: 07/27/2021
+ms.openlocfilehash: ef23abb7ba25675ce267fb6a4b0e273a1cc445a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565641"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722745"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>备份和还原加密的 Azure 虚拟机
 
@@ -44,9 +44,9 @@ Azure 备份可以在使用或者不使用 Azure AD 应用的情况下，通过 
 
 ### <a name="limitations"></a>限制
 
-- 可以备份和还原同一订阅和区域中的 ADE 加密的 VM。
+- 可以备份和还原同一订阅中的 ADE 加密的 VM。
 - Azure 备份支持使用独立密钥加密的 VM。 目前不支持属于用于加密 VM 的证书的任何密钥。
-- 可以备份和还原恢复服务备份保管库所在的同一订阅和区域中的 ADE 加密的 VM。
+- Azure 备份支持将加密的 Azure VM 跨区域还原到 Azure 配对区域。 有关详细信息，请参阅[支持矩阵](./backup-support-matrix.md#cross-region-restore)。
 - 无法在文件/文件夹级别恢复 ADE 加密的 VM。 需要恢复整个 VM 才能还原文件和文件夹。
 - 还原 VM 时，无法对 ADE 加密的 VM 使用[替换现有 VM](backup-azure-arm-restore-vms.md#restore-options) 选项。 只有未加密的托管磁盘才支持此选项。
 

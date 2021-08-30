@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: cbc5ff51a576cf2c784192bc33b06018c6f116c8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fd364d07202a486bfa47c513af601aeefe595bb5
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472086"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437785"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>使用 Azure 负载均衡器配置出站规则
 
@@ -122,7 +122,7 @@ ms.locfileid: "110472086"
 #### <a name="details"></a>详细信息
 
 
-使用此方案将出站连接调整成源自一组公共 IP 地址。 根据来源向允许列表或拒绝列表添加公共 IP 或前缀。
+使用此方案将出站连接调整成源自一组公共 IP 地址。 根据来源向允许列表或阻止列表添加公共 IP 或前缀。
 
 
 此公共 IP 或前缀可与负载均衡规则使用的相同。 
@@ -175,13 +175,13 @@ ms.locfileid: "110472086"
 
 
 > [!NOTE]
-> **Azure 虚拟网络 NAT** 可以为虚拟机提供出站连接，无需使用负载均衡器。 有关详细信息，请参阅[什么是 Azure 虚拟网络 NAT？](../virtual-network/nat-overview.md)。
+> **Azure 虚拟网络 NAT** 可以为虚拟机提供出站连接，无需使用负载均衡器。 有关详细信息，请参阅[什么是 Azure 虚拟网络 NAT？](../virtual-network/nat-gateway/nat-overview.md)。
 
 ### <a name="scenario-4-outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>方案 4：仅对 VM 使用出站 NAT（无入站连接）
 
 
 > [!NOTE]
-> **Azure 虚拟网络 NAT** 可以为虚拟机提供出站连接，无需使用负载均衡器。 有关详细信息，请参阅[什么是 Azure 虚拟网络 NAT？](../virtual-network/nat-overview.md)。
+> **Azure 虚拟网络 NAT** 可以为虚拟机提供出站连接，无需使用负载均衡器。 有关详细信息，请参阅[什么是 Azure 虚拟网络 NAT？](../virtual-network/nat-gateway/nat-overview.md)。
 
 #### <a name="details"></a>详细信息
 
@@ -198,7 +198,7 @@ ms.locfileid: "110472086"
 
 
 
-使用前缀或公共 IP 来缩放 [SNAT](load-balancer-outbound-connections.md) 端口。 将出站连接的源添加到允许列表或拒绝列表。
+使用前缀或公共 IP 来缩放 [SNAT](load-balancer-outbound-connections.md) 端口。 将出站连接的源添加到允许列表或阻止列表。
 
 
 
@@ -206,7 +206,7 @@ ms.locfileid: "110472086"
 
 
 > [!NOTE]
-> **Azure 虚拟网络 NAT** 可以利用内部标准负载均衡器为虚拟机提供出站连接。 有关详细信息，请参阅[什么是 Azure 虚拟网络 NAT？](../virtual-network/nat-overview.md)。
+> **Azure 虚拟网络 NAT** 可以利用内部标准负载均衡器为虚拟机提供出站连接。 有关详细信息，请参阅[什么是 Azure 虚拟网络 NAT？](../virtual-network/nat-gateway/nat-overview.md)。
 
 #### <a name="details"></a>详细信息
 
@@ -255,4 +255,4 @@ ms.locfileid: "110472086"
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解 [Azure 标准负载均衡器](load-balancer-overview.md)
-- 请参阅 [Azure 负载均衡器常见问题解答](load-balancer-faqs.md)
+- 请参阅 [Azure 负载均衡器常见问题解答](load-balancer-faqs.yml)

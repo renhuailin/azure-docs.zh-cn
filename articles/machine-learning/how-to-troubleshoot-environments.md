@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 07/27/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 8f5a286a835da7fb74f969295090b0ecc0731a74
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: e88637f67e8e9db01c46b6de5518c95ad4290ee9
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114728460"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419202"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>对环境映像生成进行故障排除
 
@@ -207,9 +207,6 @@ RUN apt-get update && \
 
  有关详细信息，请参阅[启用虚拟网络](./how-to-network-security-overview.md)。
 
-### <a name="you-need-to-create-an-icm"></a>你需要创建一个 ICM
-
-创建 ICM/将 ICM 分配到元存储时，请提供 CSS 支持票证，以便我们更好地了解问题。
 
 ## <a name="next-steps"></a>后续步骤
 

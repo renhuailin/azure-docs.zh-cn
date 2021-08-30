@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/06/2021
+ms.date: 07/16/2021
 ms.author: b-juche
-ms.openlocfilehash: e16e95bbb65bde6c4c0b38b9c68c0f7287b8b9b3
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 13a63da9abf37f57842b34f32c3ff442f4214062
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795575"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114402768"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp 文件的指标
 
@@ -101,28 +101,26 @@ Azure NetApp 文件提供有关已分配的存储、实际存储使用情况、�
 
 ## <a name="throughput-metrics-for-capacity-pools"></a>容量池的吞吐量指标   
 
-* 分配给卷的池的吞吐量    
-    分配给给定容量池中的卷的总吞吐量。 也就是说，容量池中卷的已分配吞吐量的总数。   
+* 池分配的吞吐量    
+    属于该池的所有卷的总吞吐量。
+    
+* 池的预配吞吐量   
+    此池的预配吞吐量。
 
-* 池消耗的吞吐量   
-    给定容量池中卷消耗的总吞吐量。   
-
-* 分配给卷的池的吞吐量百分比   
-    分配给卷的容量池预配吞吐量百分比。   
-
-* 池消耗的吞吐量百分比    
-    卷消耗的容量池预配吞吐量百分比。
 
 ## <a name="throughput-metrics-for-volumes"></a>卷的吞吐量指标   
 
-*  卷分配的吞吐量    
-    为卷分配的父容量池吞吐量 (MiB/s)。 这是卷能够消耗的最大吞吐量。
+* 读取吞吐量   
+    读取吞吐量（以字节/秒为单位）。
+    
+* 总吞吐量   
+    所有吞吐量的总和（以字节/秒为单位）。
 
-* 卷消耗的吞吐量    
-    卷正在使用的实际吞吐量 (MiB/s)。
+* 写入吞吐量    
+    写入吞吐量（以字节/秒为单位）。
 
-* 卷消耗的吞吐量百分比   
-    卷正在使用的已分配吞吐量百分比。 即“卷消耗的吞吐量”占“卷分配的吞吐量”的百分比。
+* 其他吞吐量   
+    未读取或写入的其他吞吐量（以字节/秒为单位）。
 
 
 ## <a name="next-steps"></a>后续步骤

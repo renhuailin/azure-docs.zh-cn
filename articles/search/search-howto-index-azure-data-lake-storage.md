@@ -1,25 +1,24 @@
 ---
-title: 如何配置索引器以从 Azure Data Lake Storage Gen2 拉取内容和元数据
+title: 为 Azure Data Lake Storage Gen2 中的数据编制索引
 titleSuffix: Azure Cognitive Search
-description: 了解如何为 Azure Data Lake Storage Gen2 中的内容和元数据编制索引。
-manager: luisca
+description: 设置 Azure Data Lake Storage Gen2 索引器以自动为内容和元数据编制索引，以便在 Azure 认知搜索中进行全文搜索。
 author: markheff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/17/2021
-ms.openlocfilehash: 0d5feeb8098016e126e243305babab9746343504
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e0364b3242a0be3e4704ade75f2514c8c63aa779
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752470"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983223"
 ---
-# <a name="how-to-configure-an-indexer-to-pull-content-and-metadata-from-azure-data-lake-storage-gen2"></a>如何配置索引器以从 Azure Data Lake Storage Gen2 拉取内容和元数据
+# <a name="index-data-from-azure-data-lake-storage-gen2"></a>为 Azure Data Lake Storage Gen2 中的数据编制索引
 
-设置 Azure 存储帐户时，可以选择启用[分层命名空间](../storage/blobs/data-lake-storage-namespace.md)。 这样，就可以将帐户中的内容集合组织成目录和嵌套子目录的层次结构。 启用分层命名空间即可启用 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)。
+本文介绍如何配置 Azure Data Lake Storage Gen2 索引器以提取内容，并使内容在 Azure 认知搜索中可搜索。 此工作流会在 Azure 认知搜索上创建搜索索引，并为从 Azure Data Lake Storage Gen2 中提取的现有内容加载此索引。
 
-本文介绍如何开始为 Azure Data Lake Storage Gen2 中的文档编制索引。
+Azure Data Lake Storage Gen2 通过 Azure 存储提供。 设置 Azure 存储帐户时，可以选择启用[分层命名空间](../storage/blobs/data-lake-storage-namespace.md)。 这样，就可以将帐户中的内容集合组织成目录和嵌套子目录的层次结构。 启用分层命名空间即可启用 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)。
 
 ## <a name="supported-access-tiers"></a>支持的访问层
 
@@ -338,7 +337,7 @@ Blob 编制索引可能是一个耗时的过程。 如果有数百万个 blob �
 
 在索引过程中经常发生的错误包括：内容类型不受支持、内容缺失或 blob 过大。
 
-默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，你可能希望即使出现错误也继续进行索引，之后再调试各个文档。 有关索引器错误的详细信息，请参阅[排查常见索引器问题](search-indexer-troubleshooting.md)和[索引器错误和警告](cognitive-search-common-errors-warnings.md)。
+默认情况下，Blob 索引器一旦遇到包含不受支持内容类型（例如图像）的 Blob 时，就会立即停止。 可以使用 `excludedFileNameExtensions` 参数跳过某些内容类型。 但是，你可能希望即使出现错误也继续进行索引，之后再调试各个文档。 有关索引器错误的详细信息，请参阅[索引器故障排除指南](search-indexer-troubleshooting.md)和[索引器错误和警告](cognitive-search-common-errors-warnings.md)。
 
 ### <a name="respond-to-errors"></a>响应错误
 

@@ -6,14 +6,14 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 25ad696ad345fbf672f6bf26eb3f35a13fb03ea5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bfa3e378e9627652810eb6ac1feaeb7b74522539
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019493"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750606"
 ---
-# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>在 Visual Studio Code 中使用作业关系图在本地调试 Azure 流分析查询
+# <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code-preview"></a>在 Visual Studio Code（预览版）中使用作业关系图在本地调试 Azure 流分析查询
 
 不输出结果或输出意外结果的流式处理作业通常需要进行故障排除。 适用于 Azure 流分析的 Visual Studio Code 扩展集成了作业关系图、指标、诊断日志和中间结果，可帮助快速确定问题根源。 在本地测试查询时，可以使用作业关系图检查每个步骤的中间结果集和指标。
 

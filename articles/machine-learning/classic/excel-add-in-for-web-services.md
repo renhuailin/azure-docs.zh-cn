@@ -9,18 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: e915f6a713df68dba539d3e5aeb31501eea6ed8e
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: ee1c55fdfe1ab184853546fd8bb3b293e27fe734
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688869"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581577"
 ---
 # <a name="excel-add-in-for-machine-learning-studio-classic-web-services"></a>适用于机器学习工作室（经典）Web 服务的 Excel 加载项
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 

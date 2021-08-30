@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）：查看和重新运行试验 - Azure
-description: 在 Azure 机器学习工作室（经典）中管理试验运行。 可以在任何时候复查前面运行的试验，以便质询、回顾并最终确认或优化以前的假设。
+description: 在机器学习工作室（经典）中管理试验运行。 可以在任何时候复查前面运行的试验，以便质询、回顾并最终确认或优化以前的假设。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 419a696da1244afab7aa03cd8c4521ea819a5298
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 196d40f7033d6b9cbb6b49cbe65517c299718af0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100515948"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695920"
 ---
-# <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中管理试验运行
+# <a name="manage-experiment-runs-in-machine-learning-studio-classic"></a>在机器学习工作室（经典）中管理试验运行
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 开发预测分析模型是一个迭代过程 - 在修改试验的各种函数和参数时，结果会不断聚合，直到对经过培训的有效模型感到满意为止。 此过程的关键是跟踪试验参数和配置的各种迭代。
 

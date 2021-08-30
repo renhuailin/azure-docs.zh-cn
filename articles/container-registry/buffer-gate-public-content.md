@@ -4,13 +4,13 @@ description: Azure 容器注册表中的一些做法和工作流，用于管理�
 author: dlepow
 ms.topic: article
 ms.author: danlep
-ms.date: 11/20/2020
-ms.openlocfilehash: 0c92899528d417f9c91f8f8930ca4932dc74e850
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/17/2021
+ms.openlocfilehash: 806cb6b49824db65744bc653c6c467c7a816a21e
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95024732"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983691"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>通过 Azure 容器注册表管理公共内容
 
@@ -85,9 +85,16 @@ az acr import \
 
 根据你的组织的需求，你可以将内容导入到专用注册表，或导入到共享注册表中的存储库。
 
-## <a name="automate-application-image-updates"></a>自动执行应用程序映像更新
+## <a name="update-image-references"></a>更新映像引用
 
-应用程序映像的开发人员应确保其代码引用受其控制的本地内容。 例如，Dockerfile 中的 `Docker FROM` 语句应当引用专用基础映像注册表而非公共注册表中的映像。 
+应用程序映像的开发人员应确保其代码引用受其控制的本地内容。
+
+* 更新映像引用以使用专用注册表。 例如，将 Dockerfile 中的 `FROM baseimage:v1` 语句更新为 `FROM myregistry.azurecr.io/mybaseimage:v1`
+* 配置凭据或身份验证机制以使用专用注册表。 确切的机制取决于你用于访问注册表的工具以及管理用户访问的方式。
+    * 如果使用 Kubernetes 群集或 Azure Kubernetes 服务访问注册表，请参阅[身份验证方案](authenticate-kubernetes-options.md)。
+    * 详细了解使用 Azure 容器注册表进行[身份验证的选项](container-registry-authentication.md)。
+
+## <a name="automate-application-image-updates"></a>自动执行应用程序映像更新
 
 在映像导入基础上进行扩展，设置一个 [Azure 容器注册表任务](container-registry-tasks-overview.md)，以在基础映像更新时自动构建应用程序映像。 自动化的构建任务可以同时跟踪[基础映像更新](container-registry-tasks-base-images.md)和[源代码更新](container-registry-tasks-overview.md#trigger-task-on-source-code-update)。
 
@@ -97,7 +104,6 @@ az acr import \
 > 单个预配置的任务可以自动重新构建引用所依赖的基础映像的每个应用程序映像。 
  
 ## <a name="next-steps"></a>后续步骤
- 
 * 详细了解用于在 Azure 中构建、运行、推送和修补容器映像的 [ACR 任务](container-registry-tasks-overview.md)。
 * 请参阅[如何使用 Azure 容器注册表任务消耗和维护公共内容](tasks-consume-public-content.md)，了解用于更新环境的基础映像的自动化门控工作流。 
 * 请参阅 [ACR 任务教程](container-registry-tutorial-quick-task.md)，了解有关自动构建和更新映像的更多示例。

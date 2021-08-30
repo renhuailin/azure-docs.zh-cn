@@ -1,14 +1,14 @@
 ---
 title: 排查已启用 Azure Arc 的服务器 VM 扩展问题
 description: 本文介绍如何排查和解决已启用 Azure Arc 的服务器上出现的 Azure VM 扩展的问题。
-ms.date: 09/24/2020
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 799e5c8ec00a894c6a54c64494edd8f259faf2dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 690b92389d86ca497801af79c6930677c19178fe
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584676"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114390194"
 ---
 # <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>排查已启用 Arc 的服务器 VM 扩展问题
 

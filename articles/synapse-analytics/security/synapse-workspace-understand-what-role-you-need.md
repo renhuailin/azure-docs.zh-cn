@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 56337e349cf2cfad792cecbec11503a4fd866095
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 2d913d0312b75542fa52e73e68170e9a3b91cf5d
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253623"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823342"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>了解在 Synapse 中执行常见任务所需的角色
 
@@ -76,7 +76,7 @@ SQL 池|
 创建 SQL 脚本</br>|Synapse 用户，或者 </br>工作区的 Azure 所有者或参与者， </br>运行 SQL 脚本、发布或提交更改时需要其他 SQL 权限。|
 列出并打开任何已发布的 SQL 脚本| Synapse 项目用户、项目发布者、Synapse 参与者|项目/读取
 在无服务器 SQL 池上运行 SQL 脚本|池的 SQL 权限（自动授予 Synapse 管理员）|无
-在专用 SQL 池上运行 SQL 脚本|池的 SQL 权限|无
+在专用 SQL 池上运行 SQL 脚本|池的 SQL 权限（自动授予 Synapse 管理员）|无
 发布新的、已更新的或已删除的 SQL 脚本|Synapse 项目发布者、Synapse 参与者|sqlScripts/写入、删除
 将对 SQL 脚本的更改提交到 Git 存储库|需要存储库上的 Git 权限|
 在工作区上分配 Active Directory 管理员（通过 Azure 门户中的工作区属性）|工作区的 Azure 所有者或参与者 |

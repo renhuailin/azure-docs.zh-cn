@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: e7c1c8532a3f77054755eb040fceff1bf8cf273e
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: b998f2876e323ad224d4ecb8afddd4c4f7d5f118
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440225"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741415"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -89,13 +89,13 @@ Azure Functions 中的虚拟网络集成将共享基础结构与应用服务 Web
 
 创建函数应用时，必须创建或链接到支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 可以将此存储帐户替换为服务终结点或专用终结点所保护的存储帐户。 
 
-此功能目前适用于专用（应用服务）计划和高级计划中 Windows 虚拟网络支持的所有 SKU。 不支持消耗计划。 若要了解如何使用限制到专用网络的存储帐户设置函数，请参阅[将存储帐户限制到虚拟网络中](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network)。
+专用（应用服务）计划中所有 Windows 虚拟网络支持的 SKU 和高级计划支持此功能。 对于 Linux 虚拟网络支持的 SKU，专用 DNS 也支持此功能。 不支持消耗计划以及 Linux 计划上的自定义 DNS。 若要了解如何使用限制到专用网络的存储帐户设置函数，请参阅[将存储帐户限制到虚拟网络中](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network)。
 
 ## <a name="use-key-vault-references"></a>使用 Key Vault 引用
 
 可以在不需进行任何代码更改的情况下，通过 Azure Key Vault 引用在 Azure Functions 应用程序中使用 Azure Key Vault 中的机密。 Azure Key Vault 是一项服务，可以提供集中式机密管理，并且可以完全控制访问策略和审核历史记录。
 
-目前，如果密钥保管库使用服务终结点进行保护，则 [Key Vault 引用](../app-service/app-service-key-vault-references.md)不起作用。 若要使用虚拟网络集成连接到密钥保管库，需要在应用程序代码中调用 Key Vault。
+如果为应用配置了虚拟网络集成，则可以使用 [Key Vault 引用](../app-service/app-service-key-vault-references.md)来检索网络受限保管库中的机密。
 
 ## <a name="virtual-network-triggers-non-http"></a>虚拟网络触发器（非 HTTP）
 
@@ -172,7 +172,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 若要详细了解网络和 Azure Functions：
 
 * [遵循有关虚拟网络集成入门的教程](./functions-create-vnet.md)
-* [阅读 Functions 网络常见问题解答](./functions-networking-faq.md)
+* [阅读 Functions 网络常见问题解答](./functions-networking-faq.yml)
 * [详细了解虚拟网络与应用服务/Functions 的集成](../app-service/web-sites-integrate-with-vnet.md)
 * [详细了解 Azure 中的虚拟网络](../virtual-network/virtual-networks-overview.md)
 * [在应用服务环境中允许更多的网络功能和控制](../app-service/environment/intro.md)

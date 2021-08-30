@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/24/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: a880e64a710638561eb171b2d7bb14973ef58224
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8b49504fdda0b065b28b90f946dd203716933745
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969767"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446129"
 ---
 # <a name="running-isv-file-services-in-azure"></a>在 Azure 中运行 ISV 文件服务
 
@@ -74,8 +74,8 @@ Azure 提供各种用于存储文件数据的选项。 Azure 本机服务包含�
 | -------- | ----------- | ----------------- |
 | **Nasuni** | UniFS 是一项企业文件服务，提供构建于 Microsoft Azure 的云替代方案，更简单，而且成本低 | - 主文件存储 <br> - 部门文件共享 <br> - 集中式文件管理 <br> - 包含全局文件锁定功能的多站点协作 <br> - Windows 虚拟桌面 <br> - 远程办公/VDI 文件共享 |
 | **NetApp** | Cloud Volumes ONTAP 可优化云存储成本和性能，同时增强数据保护、安全性及符合性。 其中包括企业级数据管理、可用性和持续性 | - 企业应用程序 <br> - 关系和 NoSQL 数据库 <br> - 大数据分析 <br> - 容器的持久性数据 <br> - CI/CD 管道 <br> - 本地 NetApp 解决方案的灾难恢复 |
-| **Panzura**| CloudFS 是一种混合企业全局文件系统，允许在本地或云中访问同一数据集 | - 企业 NAS 替换 <br> - 全球协作 <br> - 云本机访问非结构化数据以进行分析，AI/ML。 |
-| **Tiger Technology** | Tiger Bridge 是一种数据管理软件解决方案。 提供 NTFS 文件系统和 Azure Blob 存储或 Azure 托管磁盘之间的分层服务。 创建可锁定本地文件的单个命名空间。 | - 分析 <br> - 云存档 <br> - 持续数据保护 (CDP) <br> - 适用 Windows 服务器的灾难恢复 <br> - 多同步同步与协作 <br> - 远程工作流 (VDI) |
+| **Panzura**| CloudFS 是一个企业全局文件系统，具有增强的复原能力和高性能。 提供勒索软件防护。 | - 简化了遗留存储替换功能 <br> - 具有精细恢复功能的备份和灾难恢复 <br> - 云本机访问非结构化数据以进行分析，AI/ML。 <br> - 具有自动文件锁定和实时全局文件一致性的多站点文件协作 <br> - 使用云 VDI 的全局远程操作 <br> - 加速了遗留工作负载的云迁移 |
+| **Tiger Technology** | Tiger Bridge 是一种数据管理软件解决方案。 提供 NTFS 文件系统和 Azure Blob 存储或 Azure 托管磁盘之间的分层服务。 创建可锁定本地文件的单个命名空间。 | - 云存档<br> - 持续数据保护 (CDP) <br> - 适用 Windows 服务器的灾难恢复 <br> - 多站点同步与协作 <br> - 远程工作流 (VDI)<br> - 对 Analytics、AI、ML 的云数据的本机访问 |
 | XenData | 云文件网关使用 windows 文件服务器创建高度可扩展的全局文件系统 | - 工程和科学文件的全球共享 <br> - 协作式视频编辑 |
 
 ## <a name="isv-solutions-comparison"></a>ISV 解决方案比较
@@ -133,7 +133,7 @@ Azure 提供各种用于存储文件数据的选项。 Azure 本机服务包含�
 |-----------------------------------------------------|----------------------|--------------------------------|---------------------------|-----------------------|-----------------------|
 | **Azure AD 支持**                                | 是（通过 ADDS）       | 是（通过 ADDS）                 | 是（通过 ADDS）            | 是（通过 ADDS）        | 是（通过 ADDS）        |
 | Active Directory 支持                        | 是                  | 是                            | 是                       | 是                   | 是                   |
-| LDAP 支持                                    | 是                  | 是                            | 否                        | 否                    | 是                   |
+| LDAP 支持                                    | 是                  | 是                            | 否                        | 是                   | 是                   |
 
 ### <a name="management"></a>管理
 
@@ -190,7 +190,6 @@ Azure 提供各种用于存储文件数据的选项。 Azure 本机服务包含�
 - 将重命名应用于云目标的选项
 - 部分写入对象
 - 勒索软件防护
-- 多站点同步/协作
 
 XenData
 - Cosmos DB 服务提供多网关快速同步，包括用于全局协作的特定于应用程序的所有者文件 

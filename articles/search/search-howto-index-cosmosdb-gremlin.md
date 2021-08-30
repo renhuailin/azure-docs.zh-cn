@@ -1,34 +1,32 @@
 ---
-title: 搜索 Azure Cosmos DB Gremlin API 数据（预览版）
+title: Gremlin API 中的索引数据（预览）
 titleSuffix: Azure Cognitive Search
-description: 将 Azure Cosmos DB Gremlin API 中的数据导入 Azure 认知搜索中的可搜索索引。 索引器可自动为所选数据源（如 Azure Cosmos DB）引入数据。
-author: vkurpad
-manager: luisca
-ms.author: vikurpad
+description: 设置 Azure Cosmos DB 索引器，以便自动为 Azure 认知搜索中的全文搜索编制 Gremlin API 内容的索引。
+author: MarkHeff
+ms.author: maheff
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/11/2021
-ms.openlocfilehash: d54432b482e952327083996b486ce27fc56a1c88
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 69642aa1b9d977591bee6dbb8464cdf74ca7be1e
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949087"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731003"
 ---
-# <a name="how-to-index-data-available-through-cosmos-db-gremlin-api-using-an-indexer-preview"></a>如何使用索引器（预览版）为 Cosmos DB Gremlin API 提供的数据编制索引
+# <a name="index-data-using-azure-cosmos-db-gremlin-api"></a>使用 Azure Cosmos DB Gremlin API 编制数据索引
 
 > [!IMPORTANT]
-> Cosmos DB Gremlin API 索引器目前处于预览阶段。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-> 可以填写[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)来请求访问预览版。
-> 对于此预览版，我们建议使用 [REST API 版本 2020-06-30-Preview](search-api-preview.md)。 目前提供有限的门户支持，不提供 .NET SDK 支持。
+> Cosmos DB Gremlin API 索引器根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公共预览阶段。 [请求访问](https://aka.ms/azure-cognitive-search/indexer-preview)此功能，并在启用访问后，使用[预览版 REST API（2020-06-30-preview 或更高版本）](search-api-preview.md)为内容编制索引。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
-> [!WARNING]
-> 为了使 Azure 认知搜索能够通过 Gremlin API 索引 Cosmos DB 中的数据，还必须启用 [Cosmos DB 自己的索引](../cosmos-db/index-overview.md)，并将其设置为[一致](../cosmos-db/index-policy.md#indexing-mode)。 这是 Cosmos DB 的默认配置。 如果未启用 Cosmos DB 的索引，Azure 认知搜索索引将无法正常工作。
+本文介绍如何配置 Azure Cosmos DB 索引器以提取内容，并使内容在 Azure 认知搜索中可搜索。 此工作流会在 Azure 认知搜索上创建搜索索引，并通过现有内容（使用 Gremlin API 从 Azure Cosmos DB 中提取）加载此索引。
 
-[Azure Cosmos DB 索引](../cosmos-db/index-overview.md)和 [Azure 认知搜索索引](search-what-is-an-index.md)属于不同的操作，且是每项服务中特有的操作。 在启动 Azure 搜索索引前，Azure Cosmos DB 数据库必须已存在。
+由于术语可能会造成混淆，特此提示，[Azure Cosmos DB 索引编制](../cosmos-db/index-overview.md)和 [Azure 认知搜索索引编制](search-what-is-an-index.md)属于不同的操作，且是每个服务中特有的操作。 在开始执行 Azure 认知搜索索引编制之前，Azure Cosmos DB 数据库必须已存在且包含数据。
 
-本文演示如何将 Azure 认知搜索配置为使用 Gremlin API 索引 Azure Cosmos DB 中的内容。 此工作流会创建 Azure 认知搜索索引，并通过现有文本（使用 Gremlin API 从 Azure Cosmos DB 中提取）加载此索引。
+## <a name="prerequisites"></a>先决条件
+
+为了使 Azure 认知搜索能够通过 Gremlin API 索引 Cosmos DB 中的数据，还必须启用 [Cosmos DB 自己的索引](../cosmos-db/index-overview.md)，并将其设置为[一致](../cosmos-db/index-policy.md#indexing-mode)。 这是 Cosmos DB 的默认配置。 如果未启用 Cosmos DB 的索引，Azure 认知搜索索引将无法正常工作。
 
 ## <a name="get-started"></a>开始使用
 

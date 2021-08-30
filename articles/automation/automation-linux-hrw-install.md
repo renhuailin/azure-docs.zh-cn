@@ -3,15 +3,15 @@ title: 在 Azure 自动化中部署 Linux 混合 Runbook 辅助角色
 description: 本文介绍如何安装 Azure 自动化混合 Runbook 辅助角色，以便在本地数据中心或云环境中基于 Linux 的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/06/2021
+ms.date: 08/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d60e4964ca9ce4de4b4d8e5545875f5c47f0f809
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 1cd00a81717e95efe65402c2eb0912d2f43d89b6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854389"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744973"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -45,11 +45,11 @@ Linux 混合 Runbook 辅助角色以特殊用户身份执行 Runbook，该用户
 
 * Amazon Linux 2012.09 - 2015.09
 * CentOS Linux 5、6、7 和 8
-* Oracle Linux 5、6 和 7
+* Oracle Linux 6、7 和 8
 * Red Hat Enterprise Linux Server 5、6、7 和 8
 * Debian GNU/Linux 6、7 和 8
-* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和 18.04 LTS
-* SUSE Linux Enterprise Server 12 和 15（SUSE 未发布编号为 13 或 14 的版本）
+* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS、18.04 和 20.04 LTS
+* SUSE Linux Enterprise Server 12、15 和 15.1（SUSE 未发布编号为 13 或 14 的版本）
 
 > [!IMPORTANT]
 > 在启用依赖于系统混合 Runbook 辅助角色的更新管理功能之前，请在[此处](update-management/operating-system-requirements.md)确认它支持的分发。
@@ -67,9 +67,11 @@ Linux 系统和用户混合 Runbook 辅助角色的最低要求如下：
 |Glibc |GNU C 库| 2.5-12 |
 |Openssl| OpenSSL 库 | 1.0（支持 TLS 1.1 和 TLS 1.2）|
 |Curl | cURL Web 客户端 | 7.15.5|
-|Python-ctype | 需要 Python 2.x 或 Python 3.x |
+|Python-ctype | 适用于 Python 的外部函数库| 需要 Python 2.x 或 Python 3.x |
 |PAM | 可插入验证模块|
+
 | **可选包** | **说明** | **最低版本**|
+|--------------------- | --------------------- | -------------------|
 | PowerShell Core | 若要运行 PowerShell runbook，需要安装 PowerShell Core。 请参阅[在 Linux 上安装 PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux) 了解如何安装。 | 6.0.0 |
 
 ### <a name="adding-a-machine-to-a-hybrid-runbook-worker-group"></a>将计算机添加到混合 Runbook 辅助角色组

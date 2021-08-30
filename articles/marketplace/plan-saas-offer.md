@@ -1,266 +1,328 @@
 ---
-title: 如何为 Microsoft 商用 marketplace 规划 SaaS 产品/服务
-description: 如何使用 Microsoft 合作伙伴中心的 "商用 Marketplace" 计划规划新的软件即服务 (SaaS) 产品/服务，以便在 Microsoft AppSource、Azure Marketplace 或通过云解决方案提供商 (CSP) 程序中列出或销售。
+title: 如何面向 Microsoft 商业市场计划 SaaS 产品/服务
+description: 如何使用 Microsoft 合作伙伴中心的商业市场计划规划新的服务型软件 (SaaS) 产品/服务，以在 Microsoft AppSource、Azure 市场或通过云解决方案提供商 (CSP) 计划列出或销售。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/30/2020
-ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.date: 07/31/2021
+ms.openlocfilehash: 7afdd852bebc4eeff24671d8d60cb8805f86f29c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879252"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736490"
 ---
-# <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何为商业市场规划 SaaS 产品/服务
+# <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何面向商业市场规划 SaaS 产品/服务
 
-本文介绍了将软件作为服务发布到 Microsoft 商用 marketplace (SaaS) 产品/服务的不同选项和要求。 SaaS 产品/服务可让你通过联机订阅（而不是在单独的计算机上进行本地安装）向你的客户提供软件解决方案并提供许可证。 本文将帮助你准备产品/服务，以便通过合作伙伴中心发布到商业市场。
+本文介绍面向 Microsoft 商业市场发布服务型软件 (SaaS) 产品/服务的不同选项和要求。 使用 SaaS 产品/服务，可以通过在线订阅向客户交付和许可软件解决方案。 作为 SaaS 发布者，你负责管理所需的基础结构并支付相关费用，以便支持客户使用该产品/服务。 本文将通过合作伙伴中心帮助你准备产品/服务，以便面向商业市场发布。
 
 ## <a name="listing-options"></a>列表选项
 
-准备发布新的 SaaS 产品/服务时，需要确定要选择的 _列表_ 选项。 选择的列表选项决定了在合作伙伴中心创建产品/服务时需要提供的其他信息。 你将在 "  **产品/服务设置** " 页上定义你的列表选项，如 [如何在商业应用商店中创建 SaaS 产品](create-new-saas-offer.md)中所述。
+在准备发布新 SaaS 产品/服务时，需要决定选择哪个“列表”选项。 所选的列表选项决定在合作伙伴中心创建产品/服务时还需要提供哪些信息。 列表选项在“产品/服务设置”页上定义，如“[如何在商业市场创建 SaaS 产品/服务](create-new-saas-offer.md)”中所述。
 
-下表显示了商业应用商店中 SaaS 产品/服务的列表选项。
+下表显示了适用于商业市场中 SaaS 产品/服务的列表选项。
 
 | 列表选项 | 事务处理 |
 | ------------ | ------------- |
-| 与我联系 | 客户直接从列表中的信息与你联系。``*`` |
-| 免费试用 | 客户通过 Azure Active Directory (Azure AD) 重定向到目标 URL。``*`` |
-| 立即获取 (免费)  | 客户通过 Azure AD 重定向到目标 URL。``*`` |
-| 通过 Microsoft 进行销售  | 通过 Microsoft 销售的产品/服务称为 _事务_ 产品。 这是一个事务的产品/服务，Microsoft 可在其中代表出版商提供软件许可证的资金。 我们使用你选择的定价模型来计费 SaaS，并代表你管理客户交易。 Azure 基础结构使用费用会直接向你计费。 你应考虑定价模型中的基础结构成本。 下面的 [SaaS 计费](#saas-billing) 中更详细地说明了这一点。  |
+| 与我联系 | 客户根据列表中的信息直接与你联系。``*``<br>发布产品/服务后，可以更改为其他列表选项。 |
+| 免费试用 | 客户将通过 Azure Active Directory (Azure AD) 重定向到目标 URL。``*``<br>发布产品/服务后，可以更改为其他列表选项。 |
+| 立即获取（免费） | 客户将通过 Azure AD 重定向到目标 URL。``*``<br>发布产品/服务后，可以更改为其他列表选项。 |
+| 通过 Microsoft 进行销售  | 通过 Microsoft 销售的产品/服务称为可交易产品/服务。 可交易的产品/服务是指 Microsoft 代表发布者协助以资金换取软件许可证。 我们使用你所选的定价模型对 SaaS 产品/服务计费，并代表你管理客户事务。 我们直接向你（合作伙伴）收取 Azure 基础结构使用费。 你应将基础结构成本纳入定价模型之中。 有关更多详细信息，请参阅以下“[SaaS 账单](#saas-billing)”。<br><br>注意：发布产品/服务后，便无法再更改此选项。  |
 |||
 
-``*`` 发布者负责支持软件许可证事务的所有方面，包括但不限于订单、履行、计量、计费、开票、支付和收集。
+``*`` 发布者负责为软件许可证交易的各个方面提供支持，包括但不限于订单、履单、计量、账单、开票、付款和收款。
 
-有关这些列表选项的详细信息，请参阅 [商业市场事务处理功能](marketplace-commercial-transaction-capabilities-and-considerations.md)。
+有关这些列表选项的详细信息，请参阅[商业市场交易功能](marketplace-commercial-transaction-capabilities-and-considerations.md)。
 
-发布产品/服务后，你为产品/服务选择的列表选项将显示为产品/服务列表页面左上角的按钮。 例如，以下屏幕截图显示了 Azure Marketplace 中的 "产品/服务列表" 页，其中包含 " **联系我** " 和 " **测试驱动器** " 按钮。
+发布产品/服务后，为产品/服务选择的列表选项将以按钮形式显示在产品/服务列表页的左上角。 例如，以下屏幕截图使用“立即获取”按钮显示了 Azure 市场中的产品/服务列表页。
 
-![说明在线商店中的产品/服务列表。](./media/listing-options.png)
+![说明在线商店中的产品/服务列表。](./media/saas/listing-options-saas.png)
 
 ## <a name="technical-requirements"></a>技术要求
 
-技术要求不同，具体取决于你为产品/服务选择的列表选项。
+技术要求因对产品/服务选择的列表选项而异。
 
-" _与我联系_ " 列表选项没有技术要求。 你可以选择将客户关系管理连接 (CRM) 系统来管理客户潜在顾客。 本文后面的 [客户领导](#customer-leads) 部分对此进行了介绍。
+“与我联系”列表选项没有技术要求。 可以选择连接客户关系管理 (CRM) 系统来管理潜在顾客。 有关信息，请参阅本文后面的[潜在顾客](#customer-leads)部分。
 
-_现在 (免费__试用版) 、免费试用版_ 和 _通过 Microsoft_ 列表选项销售的内容具有以下技术要求：
+“立即获取（免费）”、“免费试用”和“通过 Microsoft 进行销售”  具有以下技术要求：
 
-- SaaS 应用程序必须是多租户解决方案。
-- 你可以 (MSA) 启用 Microsoft 帐户，并 [Azure Active Directory (Azure AD) ](https://azure.microsoft.com/services/active-directory/) 来验证用户。
-- 必须创建登录页。 用户购买产品/服务后，会将其定向到登陆页面。 这可以帮助他们完成任何所需的其他设置或设置。 有关创建登陆页面的指南，请参阅以下文章：
-  - [在商业应用商店中构建事务 SaaS 产品/服务的登陆页面](azure-ad-transactable-saas-landing-page.md)
-  - [在商业应用商店中为免费或试用版 SaaS 服务构建登陆页面](azure-ad-free-or-trial-landing-page.md)
+- 必须同时启用 Microsoft 帐户 (MSA) 和 [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) 来对站点上的买家进行身份验证。 必须让具有 Azure AD 帐户的买家通过单一登录 (SSO) 使用 Azure AD 登录到你的应用程序。
+- 必须创建一个登陆页，为购买产品/服务的客户提供无缝登录和加入体验。 该登陆页可帮助他们完成任何其他所需的预配或设置。 有关创建登陆页的指导，请参阅以下文章：
+  - [为商业市场中的可交易 SaaS 产品/服务构建登陆页](azure-ad-transactable-saas-landing-page.md)
+  - [针对商业市场中的免费或试用版 SaaS 套餐构建登录页](azure-ad-free-or-trial-landing-page.md)
 
-这些额外的技术要求仅适用于 _通过 Microsoft_ (事务) 列表选项销售：
+这些附加技术要求仅适用于“通过 Microsoft 进行销售”（可交易）列表选项：
 
-- Azure AD 具有单一登录 (SSO) 标识管理和身份验证是购买用户访问登陆页面所必需的。 有关详细指南，请参阅 [商业应用商店中的 Azure AD 和事务 SaaS 产品](azure-ad-saas.md)。
-- 必须使用 [SaaS 履单 api](./partner-center-portal/pc-saas-fulfillment-api-v2.md) 与 Azure Marketplace 和 Microsoft AppSource 集成。 必须公开可与 SaaS 订阅交互的服务，以创建、更新和删除用户帐户和服务计划。 必须在 24 小时内支持关键 API 更改。 非关键 API 更改将定期发布。 适用于 [api](./partner-center-portal/pc-saas-fulfillment-api-v2.md)的文档中提供了介绍所收集字段的用法的关系图和详细说明。
-- 您必须为您的产品/服务创建至少一个计划。 你的计划将基于你在发布之前选择的定价模型： _平面速率_ 或 _每用户_。 本文后面提供了有关 [计划](#plans) 的更多详细信息。
+- 必须使用 [SaaS 履单 API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) 与 Azure 市场和 Microsoft AppSource 相集成。 必须公布一项可与 SaaS 订阅交互的服务，以便创建、更新和删除用户帐户与服务计划。 必须在 24 小时内支持关键 API 更改。 非关键 API 更改将定期发布。 有关所收集字段使用情况的图表和详细说明，请参阅相关 [API](./partner-center-portal/pc-saas-fulfillment-api-v2.md) 的文档。
+- 必须至少为你的产品/服务创建一个计划。 该计划将根据你在发布之前选择的定价模型（“统一费率”或“用户费率”）进行定价。  本文后面部分将提供有关[计划](#plans)的更多详细信息。
 - 客户可随时取消你的产品/服务。
 
 ### <a name="technical-information"></a>技术信息
 
-如果要创建事务产品/服务，则需要收集 " **技术配置** " 页的以下信息。 如果选择单独处理事务而不是创建事务产品/服务，请跳过此部分并转到 " [测试驱动器](#test-drives)"。
+如果要创建一款可交易产品/服务，则需要为“技术配置”页收集以下信息。 如果选择独立处理事务而不创建可交易产品/服务，请跳过此部分并转到[体验版](#test-drives)。
 
-- **登陆页 url**： SAAS 网站 url (例如： `https://contoso.com/signup` 从商业市场获取产品/服务后，用户将定向到的) ，从新创建的 SaaS 订阅触发配置过程。 此 URL 将收到一个令牌，该令牌可用于调用履单 Api 以获取交互式注册页面的预配详细信息。
+- 登陆页 URL：用户从商业市场获得产品/服务以及从新创建的 SaaS 订阅触发配置进程后，将被定向到的 SaaS 站点 URL（例如 `https://contoso.com/signup`）。 该 URL 将收到一个令牌，该令牌可用于调用履单 API 以获取交互式注册页面的预配详细信息。
 
-  将通过唯一标识特定客户的 SaaS 购买的 marketplace 购买标识令牌参数调用此 URL。 必须使用 [解析 API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)为相应的 SaaS 订阅详细信息交换此标记。 应将这些详细信息以及要收集的任何其他内容用作客户交互式网页的一部分，以完成客户注册并激活其购买。 在此页上，用户应通过使用 Azure Active Directory (Azure AD) 注册一次单击身份验证。
+  通过唯一标识特定客户 SaaS 购买的市场购买标识令牌参数，可调用此 URL。 必须使用[解析 API](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) 将此令牌换为相应的 SaaS 订阅详细信息。 这些详细信息以及任何其他希望作为客户交互网页一部分收集的内容可用于启动客户加入体验，该体验最终需要在 API 上通过激活调用来启动订阅期。 在此页上，用户应进行注册，并使用 Azure Active Directory (Azure AD) 完成一键式身份验证。
 
-  当客户从 Azure 门户或 M365 管理中心启动托管 SaaS 体验时，还将调用具有 marketplace 购买标识令牌参数的 URL。 应处理这两个流：在新客户购买后首次提供令牌时，以及再次为管理其 SaaS 解决方案的现有客户提供。
+  当客户从 Azure 门户或 Microsoft 365 管理中心启动托管 SaaS 体验时，还会调用包含市场购买标识令牌参数的 URL。 在新客户购买后首次提供令牌时，以及现有客户再次提供令牌来管理其 SaaS 解决方案时，应处理这两个流。
 
-    你配置的登陆页面应已启动并运行24/7。 这是您在商业应用商店中购买的 SaaS 产品或产品/服务的活动订阅的新购买通知的唯一方法。
+    配置的登陆页面应全天候保持正常运行。 只有这样，在商业市场中你的 SaaS 产品/服务有新交易或触发有效产品/服务订阅的配置请求后，你才会收到通知。
 
-- **连接 webhook**：对于 Microsoft 需要发送给你的所有异步事件 (例如，当 SaaS 订阅已取消) 时，我们需要你提供连接 webhook URL。 我们将调用此 URL 来通知你事件。
+- 连接 Webhook：对于 Microsoft 需要向你发送的所有异步事件（例如，SaaS 订阅已取消），我们要求提供连接 Webhook URL。 我们将调用此 URL 来向你通知事件。
 
-  提供的 webhook 应启动并运行24/7。 这是你将收到有关通过商业应用商店购买的客户 SaaS 订阅更新的唯一方法。
-
-  > [!NOTE]
-  > 在 Azure 门户中，我们需要创建单租户 [Azure Active Directory (Azure AD) 应用程序](../active-directory/develop/howto-create-service-principal-portal.md) ，以便使用一个 Azure 应用 ID 对两个服务之间的连接进行身份验证。 若要查找 [租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，请跳到 Azure Active Directory，选择 " **属性**"，然后查找列出的目录 ID 号。 例如，`50c464d3-4930-494c-963c-1e951d15360e`。
-
-- **Azure Active Directory 租户 id**： (也称为目录 ID) 。 在 Azure 门户中，我们要求你 [注册 Azure Active Directory (AD) 应用程序](../active-directory/develop/howto-create-service-principal-portal.md) ，以便可以将其添加到 API (ACL) 的访问控制列表，以确保你有权调用该应用程序。 若要查找 Azure Active Directory (AD) 应用的租户 ID，请参阅 Azure Active Directory 中的 [应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 边栏选项卡。 在 " **显示名称** " 列中，选择应用。 然后查找 (列出的 **目录 (租户) ID** 号，例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
-
-- **Azure Active Directory 应用程序 id**：还需要 [应用程序 id](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 若要获取其值，请转到 Azure Active Directory 中的 " [应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) " 边栏选项卡。 在 " **显示名称** " 列中，选择应用。 然后查找 (列出的应用程序 (客户端) ID 号，例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
-
-  Azure AD 应用程序 ID 与你的合作伙伴中心帐户中的发布者 ID 相关联。 您必须对该帐户中的所有产品/服务使用相同的应用程序 ID。
+  提供的 Webhook 应全天候保持正常运行。 只有这样，你才能收到客户通过商业市场购买的 SaaS 订阅的更新通知。
 
   > [!NOTE]
-  > 如果发布者在合作伙伴中心有两个或更多不同的帐户，则应使用两个或多个不同的 Azure AD 应用 Id，每个帐户对应于一个帐户。 伙伴中心中的每个合作伙伴帐户应为通过此帐户发布的所有 SaaS 产品/服务使用唯一的 Azure AD 应用 ID。
+  > 在 Azure 门户中，要求你创建单租户 [Azure Active Directory (Azure AD) 应用注册](../active-directory/develop/howto-create-service-principal-portal.md)。 调用市场 API 时，请使用应用详细信息对解决方案进行身份验证。 要查找[租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，请转到 Azure Active Directory，选择“属性”，然后查找列出的“目录 ID”编号。 例如 `50c464d3-4930-494c-963c-1e951d15360e`。
+
+- Azure Active Directory 租户 ID：（也称为目录 ID）。 在 Azure 门户中，我们需要你[注册 Azure Active Directory (AD) 应用](../active-directory/develop/howto-create-service-principal-portal.md)，以便可以将其添加到 API 的访问控制列表 (ACL)，从而确保你有权调用该应用。 要查找 Azure Active Directory (Azure AD) 应用的租户 ID，请转到 Azure Active Directory 中的[应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)边栏选项卡。 在“显示名称”列中，选择应用。 然后查找列出的目录（租户）ID号（例如，`50c464d3-4930-494c-963c-1e951d15360e`）。
+
+- Azure Active Directory 应用程序 ID：还需要使用[应用程序 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 要获取其值，请转到 Azure Active Directory 中的[应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)边栏选项卡。 在“显示名称”列中，选择应用。 然后查找列出的应用程序（客户端）ID 号（例如 `50c464d3-4930-494c-963c-1e951d15360e`）。
+
+  Azure AD 应用程序 ID 与合作伙伴中心帐户中的发布者 ID 相关联。 该于该帐户下的所有产品/服务，必须使用同一个应用程序 ID。
+
+  > [!NOTE]
+  > 如果发布者在合作伙伴中心有两个或更多不同的帐户，则 Azure AD 应用程序注册详细信息只能在一个帐户中使用。 不支持在不同的发布者帐户下使用同一租户 ID、产品/服务的应用程序 ID 对。
 
 ## <a name="test-drives"></a>体验版
-可以选择为 SaaS 应用启用测试驱动器。 测试驱动器允许客户在固定的小时数内访问预配置环境。 可以为任何发布选项启用测试驱动器，但此功能具有其他要求。 若要了解有关测试驱动器的详细信息，请参阅 [什么是测试驱动器？](what-is-test-drive.md)。 有关配置不同种类的测试驱动器的信息，请参阅 [测试驱动器技术配置](test-drive-technical-configuration.md)。
+可以选择为 SaaS 应用启用体验版。 体验版允许客户在固定的小时数内访问预配置环境。 可以为任何发布选项启用体验版，但此功能还有其他要求。 若要详细了解体验版，请参阅[什么是体验版？](what-is-test-drive.md)。 有关配置不同类型的体验版的信息，请参阅[体验版技术配置](test-drive-technical-configuration.md)。
 
 > [!TIP]
-> 测试驱动器与 [免费试用版](plans-pricing.md#free-trials)不同。 你可以提供一个测试驱动器和/或免费试用版。 它们都为你的客户提供了一个固定时间段的解决方案。 但在实际实施方案中，一个测试驱动器还包括一项针对您的产品关键功能的动手自学教程。
+> 体验版不同于[免费试用版](plans-pricing.md#free-trials)。 你可以提供体验版、免费试用版，或提供这两者。 这两种版本都可以让客户在固定时间内使用你的解决方案。 但是，体验版还为产品在真实的实现场景中所展示的重要功能和优势提供自我引导式的动手实践教导。
 
 ## <a name="customer-leads"></a>潜在顾客
 
-您必须将产品/服务连接到客户关系管理 (CRM) 系统以收集客户信息。 系统将要求客户允许共享其信息。 这些客户详细信息以及提供程序的名称、ID 和在线商店，将被发送到已配置的 CRM 系统。 商业应用商店支持各种 CRM 系统，以及使用 Azure 表或使用电源自动配置 HTTPS 终结点的选项。
+必须将产品/服务连接到客户关系管理 (CRM) 系统以收集客户信息。 系统将要求客户允许共享其信息。 这些客户详细信息以及产品/服务名称、ID 和他们在其中找到产品/服务的在线商店将发送到你配置的 CRM 系统。 商业市场支持各种 CRM 系统，以及使用 Azure 表或使用 Power Automate 配置 HTTPS 终结点的选项。
 
-你可以在创建产品/服务或之后随时添加或修改 CRM 连接。 有关详细指南，请参阅 [商业 marketplace 产品/服务的客户领导](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
+你可以在创建产品/服务期间或之后随时添加或修改 CRM 连接。 有关详细指导，请参阅[商业市场产品/服务的潜在顾客](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
 ## <a name="selecting-an-online-store"></a>选择在线商店
 
-发布 SaaS 产品/服务时，它将列在 Microsoft AppSource 和/或 Azure Marketplace 中。 每个在线商店都有独特的客户需求。 AppSource 适用于业务解决方案，Azure Marketplace 适用于 IT 解决方案。 你的产品/服务类型、功能和类别将确定你的产品/服务的发布位置。 类别和子类别基于解决方案类型映射到每个在线商店。 
+发布 SaaS 产品/服务后，它将列在 Microsoft AppSource 和/或 Azure 市场中。 每个在线商店可满足独特的客户需求。 AppSource 面向业务解决方案，而 Azure 市场面向 IT 解决方案。 产品/服务类型、交易功能和类别决定该产品/服务将发布到何处。 类别和子类别基于解决方案类型映射到每个在线商店。 
 
-如果 SaaS 产品 */* 服务是 (Azure Marketplace) 的 IT 解决方案， (AppSource) 的业务解决方案，请选择适用于每个在线商店的类别和子类别。 发布到这两个在线商店的产品/服务的价值主张应为 IT 解决方案 *和* 企业解决方案。
+如果 SaaS 产品既是 IT 解决方案（Azure 市场），又是业务解决方案 (AppSource)，则可以选择适用于每个在线商店的类别和子类别。 发布到这两个在线商店的产品/服务应设定价值主张：IT 解决方案和业务解决方案。
 
 > [!IMPORTANT]
-> 通过 Azure Marketplace 和 Azure 门户提供 [按流量计费](partner-center-portal/saas-metered-billing.md) 的 SaaS 产品/服务。 只有专用计划的 SaaS 产品可通过 Azure 门户提供。
+> 通过 Azure 市场和 Azure 门户可获取[按流量计费](partner-center-portal/saas-metered-billing.md)的 SaaS 产品/服务。 通过 Azure 门户可获取只有专用计划的 SaaS 产品/服务。
 
-| 计费计费 | 公共计划 | 私有计划 | 可用项： |
+| 按流量计费 | 公共计划 | 专用计划 | 获取方式： |
 |---|---|---|---|
-| 是             | 是         | 否           | Azure Marketplace 和 Azure 门户 |
-| 是             | 是         | 是          | Azure Marketplace 和 Azure 门户 * |
-| 是             | 否          | 是          | 仅 Azure 门户 |
-| 否              | 否          | 是          | 仅 Azure 门户 |
+| 是             | 是         | 否           | Azure 市场和 Azure 门户 |
+| 是             | 是         | 是          | Azure 市场和 Azure 门户* |
+| 是             | 否          | 是          | 仅使用 Azure 门户 |
+| 否              | 否          | 是          | 仅使用 Azure 门户 |
 |||||
 
-&#42; 产品/服务的私有计划将仅通过 Azure 门户提供
+&#42;产品/服务的专用计划只能通过 Azure 门户获取。
 
-例如，仅 (没有公共计划) 的产品/服务将由 Azure 门户中的客户购买，具有按流量计费的计费和私有计划。 详细了解 [Microsoft 商业 marketplace 中的专用产品/服务](private-offers.md)。
+例如，一款按流量计费的产品/服务只有专用计划（无公共计划），则客户可在 Azure 门户中进行购买。 详细了解 [Microsoft 商业市场中的专用产品/服务](private-offers.md)。
 
-有关列出在线商店支持的选项的详细信息，请参阅 [按在线商店列出和定价选项](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)。 有关类别和子类别的详细信息，请参阅 [商业应用商店中的类别和子](categories.md)类别。
+有关在线商店支持的列表选项的详细信息，请参阅[在线商店支持的列表和定价选项](determine-your-listing-type.md#listing-and-pricing-options-by-online-store)。 有关类别和子类别的详细信息，请参阅[商业市场中的类别和子类别](categories.md)。
 
 ## <a name="legal-contracts"></a>法律协定
 
-为了简化客户的采购过程并降低软件供应商的法律复杂性，Microsoft 提供了一个标准合同，你可以将其用于商业应用商店中的产品/服务。 当你在标准合同下提供软件时，客户只需阅读并接受一次，你就不必创建自定义条款和条件。
+为了简化客户的采购流程并为软件供应商降低法律复杂性，Microsoft 提供了可在商业市场中用于产品/服务的标准协定。 使用标准协定提供软件时，客户只需阅读并接受此协定一次，你不必创建自定义条款和条件。
 
-如果选择使用标准协定，则可以选择将通用修正术语和最多10个自定义改正添加到标准协定。 你还可以使用自己的条款和条件，而不是标准协定。 你将在 " **属性** " 页中管理这些详细信息。 有关详细信息，请参阅 [Microsoft 商用 marketplace 的标准约定](standard-contract.md)。
+如果选择使用标准协定，则可以选择向标准协定中添加通用修订条款和最多 10 条自定义修订。 还可以使用自己的条款和条件，而不是标准协定。 将在“属性”页中管理这些详细信息。 有关详细信息，请参阅 [Microsoft 商业市场的标准协定](standard-contract.md)。
 
 > [!NOTE]
-> 使用商业应用商店的标准合同发布产品/服务后，不能使用自己的自定义条款和条件。 它是“或”方案。 你可以在标准合同或你自己的条款和条件下提供解决方案。 如果要修改标准约定的条款，可以通过标准协定修正来实现。
+> 使用商业市场的标准协定发布产品/服务后，就无法使用你自己的自定义条款和条件。 它是“或”方案。 要么根据标准协定提供解决方案，要么根据自己的条款和条件提供解决方案。 如果想修改标准协定的条款，可以通过标准协定修订进行。
 
+
+## <a name="microsoft-365-integration"></a>Microsoft 365 集成
+
+通过与 Microsoft 365 集成，SaaS 产品/服务可通过相关的免费加载项（如 Teams 应用、Office 加载项和 SharePoint Framework 解决方案）跨多个 Microsoft 365 应用表面提供连接体验。 通过提供以下信息，可帮助你的客户轻松发现 E2E 解决方案的所有方面（Web 服务 + 相关加载项）并将它们部署在一个进程中。 
+  - 如果 SaaS 产品/服务与 Microsoft Graph 集成，则提供 SaaS 产品/服务用于集成的 Azure Active Directory (AAD) 应用 ID。 管理员可以审查 AAD 应用 ID 上设置的 SaaS 产品/服务正常运行所需的访问权限，并在部署时需要高级管理权限时授予访问权限。 
+    
+     如果选择通过 Microsoft 销售产品/服务，则这是已注册在登陆页上使用的同一 AAD 应用 ID，用于获取完成客户订阅激活所需的基本用户信息。 有关详细指导，请参阅[为商业市场中的可交易 SaaS 产品/服务构建登陆页](azure-ad-transactable-saas-landing-page.md)。 
+    
+   -    提供与要链接的 SaaS 产品/服务配合使用的相关加载项列表。 客户将能够在 AppSource 上发现 E2E 解决方案，而管理员可以通过 Microsoft 365 管理中心在同一进程中同时部署 SaaS 和已链接的所有相关加载项。
+    
+        若要链接相关加载项，需要提供加载项的 AppSource 链接，这意味着必须先将加载项发布到 AppSource。 可以链接的受支持加载项类型包括：Teams 应用、Office 加载项和 SharePoint Framework (SPFx) 解决方案。 每个链接的加载项对于 SaaS 产品/服务必须唯一。 
+
+对于链接的产品，在 AppSource 上搜索将返回一个结果，其中包含 SaaS 和所有链接的加载项。客户可以在 SaaS 产品/服务的产品详细信息页和链接的加载项之间导航。IT 管理员可以通过 Microsoft 365 管理中心的集成和连接体验，在同一进程中查看和部署 SaaS 和链接的加载项。 若要了解详细信息，请参阅[测试和部署 Microsoft 365应用 - Microsoft 365 管理](/microsoft-365/admin/manage/test-and-deploy-microsoft-365-apps)。
+
+### <a name="microsoft-365-integration-support-limitations"></a>Microsoft 365 集成支持限制
+
+所有情况下，AppSource 都支持单个 E2E 解决方案发现，但是，以下情况不支持上述通过 Microsoft 365 管理中心简化 E2E 解决方案的部署：
+
+   - “与我联系”仅列出产品/服务。 
+   - 相同加载项链接到多个 SaaS 产品/服务。
+   - SaaS 产品/服务链接到加载项，但它不与 Microsoft Graph 集成，并且未提供 AAD 应用 ID。
+  - SaaS 产品/服务链接到加载项，但为 Microsoft Graph 提供的 AAD 应用 ID 在多个 SaaS 产品/服务之间共享。
+ 
 ## <a name="offer-listing-details"></a>产品/服务列表详细信息
 
-在合作伙伴中心 [创建新的 SaaS 产品](create-new-saas-offer.md) /服务时，你将在 " **产品/服务列表** " 页上输入文本、图像、可选视频和其他详细信息。 这是客户在商业市场中发现你的产品/服务列表时将看到的信息，如以下示例中所示。
+在合作伙伴中心[创建新 SaaS 产品/服务](create-new-saas-offer.md)时，需在“产品/服务列表”页上输入文本、图像、可选视频和其他详细信息。 这些就是客户在商业市场中发现你的产品/服务列表时会看到的信息，如以下示例中所示。
 
-:::image type="content" source="./media/example-saas-1.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
+:::image type="content" source="./media/saas/example-saas-1.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
 
-**拨出说明**
+调用说明
 
 1. 徽标
 2. 类别
 3. 行业
-4. 支持地址 (链接) 
+4. 支持地址（链接）
 5. 使用条款
 6. 隐私策略
 7. 产品名称
-8. 总结
+8. 摘要
 9. 说明
 10. 屏幕截图/视频
 11. 文档
 
-下面的示例演示了 Azure 门户中的产品/服务列表。
+以下示例演示了 Azure 门户中的产品/服务列表。
 
-![说明了 Azure 门户中的产品/服务列表。](./media/example-managed-service-azure-portal.png)
+![说明 Azure 门户中的产品/服务列表。](./media/example-managed-service-azure-portal.png)
 
-**调出说明**
+**调用说明**
 
 1. 标题
 1. 说明
-1. 有用链接
+1. 有用的链接
 1. 屏幕截图
 
 > [!NOTE]
-> 如果产品/服务说明以短语 "此应用程序只能在 [非英语] 中使用"，则产品/服务列表内容不需要为英语。
+> 如果产品/服务说明的开头短语是“此应用程序只提供 [非英语语言] 版本”，那么产品/服务列表内容就不要求是英语的。
 
-为了帮助更轻松地创建你的产品/服务，请提前准备其中一些项。 除非另有说明，否则需要以下各项。
+为了帮助更轻松地创建产品/服务，请提前准备其中一些项。 除非另有说明，以下项均为必填项。
 
-- **名称**：此名称将显示为商业应用商店中的产品/服务列表的标题。 该名称可以是商标字。 它不能包含表情符号（除非它们是商标和版权符号），并且长度必须限制为 50 个字符。
-- **搜索结果摘要**：将产品/服务的用途或功能描述为一个句子，其中不含分行符的100个字符或更少。 此摘要用于商业应用商店，其中列出了) 搜索结果 (。
-- **说明**：此说明将显示在 "商用 marketplace" 列表中 (") 概述"。 考虑包括值主张、关键优势、预期用户群、任何类别或行业关联、应用内购买机会、任何所需的披露以及用于了解详细信息的链接。
+- 名称：该名称将在商业市场中显示为产品/服务列表的标题。 该名称可以是商标字。 它不能包含表情符号（除非它们是商标和版权符号），并且长度必须限制为 50 个字符。
+- 搜索结果摘要：使用无换行符且长度不超过 100 个字符的单句来描述产品/服务的用途或功能。 此摘要用于商业市场列表搜索结果。
+- 说明：此说明将显示在商业市场列表概述中。 考虑的内容包括价值主张、关键优势、目标用户群、任何类别或行业关联、应用内购买机会、任何所需披露，以及用于了解详细信息的链接。
 
-    此文本框包含丰富的文本编辑器控件，你可以使用这些控件来使说明更具吸引力。 你还可以使用 HTML 标记来设置说明格式。 在此框中最多可以输入3000个字符，包括 HTML 标记。 有关其他提示，请参阅[编写出色的应用说明](/windows/uwp/publish/write-a-great-app-description)。
+    此文本框包含富文本编辑器控件，可以使用这些控件来使说明更具吸引力。 还可以使用 HTML 标记来设置说明的格式。 此框中最多可以输入 3,000 个字符（包括 HTML 标记）。 有关其他提示，请参阅[编写出色的应用说明](/windows/uwp/publish/write-a-great-app-description)。
 
-- **入门说明**：如果你选择通过 Microsoft (事务产品/服务销售产品/服务) ，则此字段是必需的。 这些说明可帮助客户连接到 SaaS 产品/服务。 最多可以添加3000个字符的文本，并链接到更详细的联机文档。
-- **搜索关键字** (可选) ：提供多达三个搜索关键字，客户可以使用这些关键字在在线商店中查找你的产品/服务。 不需要包含产品/服务 **名称** 和 **说明**：文本自动包含在搜索中。
-- **隐私策略链接**：你的公司隐私策略的 URL。 你必须提供有效的隐私策略，并负责确保你的应用符合隐私法律和法规。
-- **联系信息**：必须提供组织提供的以下联系人：
+- 入门说明：如果选择通过 Microsoft 销售产品/服务（可交易产品/服务），则此字段是必填字段。 这些说明可帮助客户连接到 SaaS 产品/服务。 可以添加最多 3,000 个字符的文本，以及指向更详细的联机文档的链接。
+- 搜索关键字（可选）：最多可输入三个搜索关键字，客户可以使用它们在在线商店中查找你的产品/服务。 无需包含产品/服务的“名称”和“说明”：该文本自动包含在搜索中。
+- **隐私策略链接**：你公司的隐私策略的 URL。 你必须提供有效的隐私策略并负责确保你的应用符合隐私法律和法规。
+- 联系信息：必须提供组织中的以下联系人：
   - **支持联系人**：提供客户打开票证时要使用的 Microsoft 合作伙伴的姓名、电话和电子邮件。 还必须包含支持网站的 URL。
-  - **工程联系**：提供姓名、电话和电子邮件，以便 Microsoft 在产品/服务出现问题时直接使用。 此联系信息未在商业应用商店中列出。
-  - **Csp 计划联系人** (可选) ：如果你选择了 CSP 计划，请提供姓名、电话号码和电子邮件，以便这些合作伙伴可以与你联系，以解决任何问题。 你还可以将 URL 包含到营销材料。
-- **有用的链接** (可选) ：你可以为产品/服务的用户提供各种资源的链接。 例如，论坛、Faq 和发行说明。
-- **支持文档**：最多可以提供三个面向客户的文档，如白皮书、小册子、清单或 PowerPoint 演示文稿。
-- **媒体–徽标**：提供用于 **大** 徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小型** 和 **中型** 徽标。 稍后可以选择将它们替换为不同的图像。
+  - **工程联系人**：提供姓名、电话和电子邮件，以便 Microsoft 在产品/服务出现问题时直接联系。 此联系信息未列在商业市场中。
+  - CSP 计划联系人（可选）：如果选择加入 CSP 计划，请提供姓名、电话号码和电子邮件，以便这些合作伙伴可以在有任何疑问时与你联系。 你还可以在营销材料中包含 URL。
+- **有用的链接**（可选）：你可以为产品/服务的用户提供各种资源的链接。 例如，论坛、常见问题解答和发行说明。
+- 支持文档：最多可提供三份面向客户的文档，例如白皮书、手册、清单或 PowerPoint 演示文稿。
+- 媒体 – 徽标：为“大”徽标提供 PNG 文件。 合作伙伴中心将使用此文件来创建小徽标和中等徽标。 稍后可以选择将这些徽标替换为其他图像。
 
-   - 大型 (从 216 x 216 到 350 x 350 px，必需) 
-   - 中型 (90 x 90 px，可选) 
-   - 小写 (48 x 48 px，可选) 
+   - 大（216 x 216 到 350 x 350 像素，必选）
+   - 中（90 x 90 像素，可选）
+   - 小（48 x 48 像素，可选）
 
-  这些徽标用于在线商店中的不同位置：
+  这些徽标用于在线商店的不同位置：
 
-  - 小徽标出现在 Azure Marketplace 搜索结果中，并出现在 "Microsoft AppSource" 主页和 "搜索结果" 页上。
-  - 在 Microsoft Azure 中创建新资源时，将显示 "中" 徽标。
-  - 大徽标显示在 Azure Marketplace 中的产品/服务列表页上，并 Microsoft AppSource。
+  - 小徽标显示在 Azure 市场搜索结果中，以及 Microsoft AppSource 主页和搜索结果页上。
+  - 中徽标在 Microsoft Azure 中创建新资源时显示。
+  - 大徽标显示在 Azure 市场和 Microsoft AppSource 的产品/服务列表页上。
 
-- **媒体-屏幕截图**：必须至少添加一个最多5个屏幕截图，其中包含以下要求，其中显示了产品/服务的工作原理：
+- 媒体-屏幕截图：必须至少添加一个符合以下要求的屏幕截图（最多 5 个），以显示产品/服务的工作原理：
   - 1280 x 720 像素
-  - .png 文件
+  - PNG 文件类型
   - 必须包含标题
-- **媒体-视频** (可选) ：最多可以添加四个具有以下要求的视频，其中演示了产品/服务：
+- 媒体 - 视频（可选）：最多可添加四个符合以下要求的视频来演示产品/服务：
   - 名称
   - URL：必须仅托管在 YouTube 或 Vimeo 上。
-  - 缩略图： 1280 x 720 .png 文件
+  - 缩略图：1280 x 720 PNG 文件
 
 > [!Note]
-> 你的产品/服务必须满足一般的 [商业市场认证策略](/legal/marketplace/certification-policies#100-general) 和 [软件即服务策略](/legal/marketplace/certification-policies#1000-software-as-a-service-saas) ，才能发布到商业市场。
-
-## <a name="preview-audience"></a>预览版受众
-预览观众可以在现场发布之前访问你的产品/服务，以便在将其发布之前测试端到端功能。 在 " **预览观众** " 页上，可以定义受限的预览受众。 如果你选择单独处理事务，而不是通过 Microsoft 销售你的产品/服务，则此设置不可用。 如果是这样，则可以跳过本部分并转到 [其他销售机会](#additional-sales-opportunities)。
+> 产品/服务必须满足一般[商业市场认证策略](/legal/marketplace/certification-policies#100-general)和[服务型软件策略](/legal/marketplace/certification-policies#1000-software-as-a-service-saas)，才可发布到商业市场。
 
 > [!NOTE]
-> 预览受众不同于私有计划。 私有计划仅适用于所选的特定群体。 这使您可以与特定客户协商自定义计划。 有关详细信息，请参阅下一节：计划。
+> 预览版受众不同于专用计划。 专用计划仅适用于所选的特定受众。 通过它可以与特定客户协商自定义计划。 有关详细信息，请参阅下一部分“计划”。
 
-可以将邀请发送到 Microsoft 帐户 (MSA) 或 Azure Active Directory (Azure AD) 电子邮件地址。 手动添加最多10个电子邮件地址，或使用 .csv 文件最多导入20个电子邮件地址。 如果你的产品/服务已处于活动阶段，你仍可以定义预览受众来测试产品/服务的任何更改或更新。
+你可以将邀请发送到 Microsoft 帐户 (MSA) 或 Azure Active Directory (Azure AD) 电子邮件地址。 手动最多添加 10 个电子邮件地址，或使用 .csv 文件最多导入 20 个电子邮件地址。 如果产品/服务已上线，仍然可以定义预览版受众，以测试对产品/服务进行的任何更改或更新。
 
 ## <a name="plans"></a>Plans
 
-事务产品/服务需要至少一个计划。 计划定义解决方案范围和限制以及关联的定价。 你可以为你的产品/服务创建多个计划，为你的客户提供不同的技术和定价选项。 如果选择单独处理事务而不是创建事务产品/服务，则不会显示 " **计划** " 页。 如果是这样，请跳过本部分并转到 [其他销售机会](#additional-sales-opportunities)。
+可交易产品/服务至少需要有一个计划。 计划定义解决方案范围和限制以及关联定价。 可以为你的产品/服务创建多个计划，从而为你的客户提供不同的技术和定价选项。 如果选择单独处理事务而不是创建可交易产品/服务，则不会显示“计划”页。 如果是这种情况，请跳过本部分并转到 [其他销售机会](#additional-sales-opportunities)。
 
-有关计划的一般指导，请参阅 [商业 marketplace 的计划和定价](plans-pricing.md) ，包括定价模型、免费试用版和私有计划。 以下部分介绍特定于 SaaS 产品/服务的其他信息。
+有关计划（包括定价模型、免费试用版和专用计划）的一般指导，请参阅[适用于商业市场产品/服务的计划和定价](plans-pricing.md)。 以下部分讨论特定于 SaaS 产品/服务的其他信息。
 
 ### <a name="saas-pricing-models"></a>SaaS 定价模型
 
-SaaS 产品/服务可对每个计划使用两个定价模型中的一种： _平面速率_ 或 _每用户_。 同一产品/服务中的所有计划都必须与同一定价模型相关联。 例如，一个产品/服务不能有一个单层计划和一个每个用户的另一个计划。
+SaaS 产品/服务可对每个计划使用两种定价模型中的一种：统一费率或用户费率。  同一产品/服务的所有计划都必须与同一定价模型相关联。 例如，在某一产品/服务中，不允许一种计划采用“单一费率”，而同时另一种计划采用“每用户”。
 
-**单层** –启用对产品/服务的每月或每年单层费率的访问。 这有时称为基于站点的定价。 使用此定价模型，你可以选择定义使用 marketplace 计量服务 API 的计费计划，以对客户进行计费，使其不会被平整速率所涵盖。 有关计费计费的详细信息，请参阅 [使用商业 marketplace 计量服务的 SaaS 计费计费](./partner-center-portal/saas-metered-billing.md)。 如果 SaaS 服务的使用行为突发，还应使用此选项。
+统一费率 - 支持每月或每年按照一种统一费率价格访问产品/服务。 这有时称为基于站点的定价。 使用此定价模型可以选择性地定义计量计划，这些计划使用市场计量服务 API 向客户收取统一费率不涵盖的使用量的费用。 有关按流量计费的详细信息，请参阅[对使用商业市场流量服务的 SaaS 执行按流量计费](./partner-center-portal/saas-metered-billing.md)。 如果 SaaS 服务的使用行为呈突发状态，也应使用此选项。
 
-**每个用户** -启用对你的产品/服务的访问，其价格基于可访问产品/服务的用户数量。 使用此基于用户的模型，你可以设置计划支持的最小和最大用户数量。 您可以根据用户数量创建多个计划来配置不同的价格点。 这些字段是可选的。 如果未选择此值，则会将用户数解释为不会限制 (最小值为1，最大值为1，并且服务可以支持) 。 这些字段可以作为计划更新的一部分进行编辑。
+用户费率 - 支持按照可访问产品/服务或占用席位的用户数来确定访问产品/服务的价格。 使用这种基于用户的模型，可以设置计划支持的最小和最大用户数。 可以根据用户数创建多个计划来配置不同的价格点。 这些字段是可选的。 如果保持未选中状态，则用户数将被解释为无限制（最小值为 1，最大值为服务可支持的数量）。 这些字段可以作为计划更新的一部分进行编辑。
 
 > [!IMPORTANT]
-> 发布产品/服务后，不能更改定价模型。 此外，同一产品/服务的所有计划必须共享同一定价模型。
+> 发布产品/服务后便无法再更改定价模型。 此外，同一产品/服务的所有计划必须共享同一定价模型。
 
 ### <a name="saas-billing"></a>SaaS 计费
 
-对于在 (发布者) Azure 订阅中运行的 SaaS 应用，将直接对基础结构使用情况计费;客户不会看到实际的基础结构使用费用。 应将 Azure 基础结构使用费用捆绑到软件许可证定价中，以弥补部署的基础结构的成本以运行解决方案。
+对于在（发布者）Azure 订阅中运行的 SaaS 应用，将直接对你收取基础结构使用费，客户看不到实际的基础结构使用费用。 你应当将 Azure 基础结构使用费捆绑到软件许可证定价中，以补偿为运行解决方案而部署的基础结构成本。
 
-SaaS 应用程序产品/服务通过 Microsoft 支持每月或每年使用计费 [计费服务](./partner-center-portal/saas-metered-billing.md)按固定费用、每用户或消耗收费计费。 商业应用商店运营于代理商模型，使出版商设置价格、Microsoft 帐单客户和 Microsoft 将收入支付给出版商，同时为代理商收费。
+SaaS 应用产品/服务支持通过 Microsoft 进行销售，每月或每年按照固定费用、用户费率或使用[按流量计费服务](./partner-center-portal/saas-metered-billing.md)的消耗费用计费。 商业市场基于代理模型运行，即发布者设定价格、Microsoft 向客户收费以及 Microsoft 向发布者支付收入并预扣代理费。
 
-下面的示例演示了成本和付款的示例细分，以演示代理模型。 在此示例中，Microsoft 向客户收取 $100.00 美元的软件许可证费用，并向发布者支付 $80.00 美元。
+下面是一个演示代理模型费用和付款明细的示例。 在此示例中，Microsoft 向客户收取 $100.00 美元的软件许可证费用，并向发布者支付 $80.00 美元。
 
 | 你的许可证费用 | $100 美元/月 |
 | ------------ | ------------- |
 | Azure 使用费用（D1/1 核） | 直接向发布者而不是客户收费 |
 | 由 Microsoft 向客户收费 | $100.00 美元/月（发布者必须将所有产生的或者转嫁的基础结构费用纳入许可证费用中） |
 | **Microsoft 收费** | **$100 美元/月** |
-| Microsoft 将许可证费用的 80% 支付给你<br>`*` 对于合格的 SaaS 应用，Microsoft 将支付90% 的许可证成本| 80.00 美元/月<br>``*`` 90.00 美元/月 |
+| Microsoft 将许可证费用的 80% 支付给你<br>`*` 对于符合资格的 SaaS 应用，Microsoft 支付许可证费用的 90%| 80.00 美元/月<br>``*`` 90.00 美元/月 |
 |||
 
-**`*` 降低 Marketplace 服务费用**–对于在商业市场上发布的特定 SaaS 产品/服务，microsoft 将从 20% (降低其 marketplace 服务费用，如 microsoft Publisher 协议) 到10% 中所述。 为了使你的产品/服务 () 合格，你的产品/服务 () 必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 至少必须在每个日历月结束之前至少满足5个 (5) 工作日内才能获得降低的 Marketplace 服务费用。 一旦满足了资格，就会向下个月的第一天生效的所有事务授予降低的服务费用，并将继续应用，直到 Azure IP 共同销售 incentivized 状态丢失。 有关 IP 共同销售资格的详细信息，请参阅 [共同销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 减少的 Marketplace 服务费用还适用于 Azure IP 共同销售 incentivized Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
+`*` 减少市场服务费 - 对于在商业市场中发布的某些 SaaS 产品/服务，Microsoft 会将其市场服务费从 20%（根据 Microsoft 发布者协议中规定）降低到 10%。 对于符合资格的产品/服务，Microsoft 必须已将其指定为 Azure IP 联合销售激励。 最晚必须在每个日历月结束前五 (5) 个工作日满足资格，才能享受“减少市场服务费用”。 一旦满足资格，减少服务费用将自下个月第一天起对所有交易生效，一直到失去 Azure IP 联合销售激励状态为止。 有关 IP 联合销售资格的详细信息，请参阅[联合销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 减少市场服务费用也适用于纳入 Azure IP 联合销售激励的 VM、托管应用，以及通过商业市场提供的任何其他符合资格的可交易 IaaS 产品/服务。
 
-## <a name="additional-sales-opportunities"></a>其他销售商机
+## <a name="preview-audience"></a>预览版受众
+
+预览版受众可以在你的产品/服务尚未在在线商店实时发布之前提前访问。 他们可以在实时发布之前看到产品/服务在商业市场中的外观，并测试端到端功能。 
+
+在“预览版受众”页上，可以定义有限的预览版受众。 如果选择单独处理交易，而不是通过 Microsoft 销售产品/服务，则此设置不可用。 如果是这种情况，则可以跳过本部分并转到[其他销售机会](#additional-sales-opportunities)。
+
+## <a name="test-offer"></a>测试产品/服务
+
+在实时发布产品/服务之前，应使用预览功能来开发技术实现、测试并试验不同的定价模型。
+
+若要以最低的风险开发和测试 SaaS 产品/服务，建议创建一个测试和开发 (DEV) 产品/服务进行试验和测试。 DEV 产品/服务将与生产 (PROD) 产品/服务分开。
+
+为了防止意外购买 DEV 产品/服务，决不能按“投入使用”按钮实时发布 DEV 产品/服务。
+
+![说明合作伙伴中心中产品/服务的“产品/服务概述”页。 将显示“上线”按钮和预览版链接。 “查看验证报告”链接也显示在“自动验证”下。](./media/review-publish-offer/publish-status-saas.png)
+
+下面是为开发团队创建单独的 DEV 产品/服务以用于开发和测试 PROD 产品/服务的一些原因：
+
+- 避免意外收取客户费用
+- 评估定价模型
+- 不添加不针对实际客户的计划
+
+### <a name="avoid-accidental-customer-charges"></a>避免意外收取客户费用
+
+通过使用 DEV 产品/服务而不是 PROD 产品/服务，并将它们视为开发和生产环境，可以避免意外收取客户费用。
+
+建议注册两个不同的 Azure AD 应用，用于调用市场 API。 开发人员将使用一个包含 DEV 产品/服务设置的 Azure AD 应用，运营团队将使用 PROD 应用注册。 这样一来，就可以避免开发团队犯疏忽的错误，如调用 API 来取消每月支付 10 万美元的客户的订阅。 还可以避免向客户收取未使用的计量使用费用。
+
+### <a name="evaluate-pricing-models"></a>评估定价模型
+
+当开发人员试验不同定价模型时，测试 DEV 产品/服务中的定价模型可降低风险。
+
+发布者可以在 DEV 产品/服务中创建所需的计划，以确定最适合其产品/服务的定价模型。 开发人员可能希望在 DEV 产品/服务中创建多个计划来测试不同的定价组合。 例如，可以使用不同的自定义计量维度集来创建计划。 可以混合使用单一费率和自定义计量维度创建不同的计划。
+
+若要测试多个定价选项，需要为每个唯一定价模型创建一个计划。 有关详细信息，请参阅[计划](#plans)。
+
+### <a name="not-adding-plans-that-do-not-target-actual-customers"></a>不添加不针对实际客户的计划
+
+通过使用 DEV 产品/服务进行开发和测试，可以减少 PROD 产品/服务中不必要的混乱。 例如，如果未提交支持票证，则不能删除创建用于测试不同定价模型或技术配置的计划。 因此，通过创建 DEV 产品/服务测试计划，可以减少 PROD 产品/服务中的混乱。
+
+PROD 产品/服务中的混乱会让产品和营销团队感到沮丧，因为他们希望所有计划都面向真实客户。 特别是对于都希望使用不同沙盒的分散的大型团队，创建两个产品/服务将为 DEV 和 PROD 提供两个不同的环境。 在某些情况下，你可能想要创建多个 DEV 产品/服务，以支持不同人员运行不同测试方案的更大型的团队。 让不同的团队成员在独立于 PROD 产品/服务的 DEV 产品/服务中工作，有助于使生产计划尽可能接近生产就绪状态。
+
+测试 DEV 产品/服务有助于避免达到每个产品/服务 30 个自定义计量维度的上限。 开发人员可以在 DEV 产品/服务中尝试不同的计量组合，不会影响 PROD 产品/服务中的自定义计量维度限制。
+
+## <a name="additional-sales-opportunities"></a>其他销售机会
 
 你可以选择加入 Microsoft 支持的营销和销售渠道。 在合作伙伴中心创建产品/服务时，你将在此过程结束时看到两个选项卡：
 
-- **通过 Csp 转售**：使用此选项可允许 Microsoft 云解决方案提供商 (CSP) 合作伙伴将你的解决方案作为捆绑产品/服务的一部分转售。 有关此计划的详细信息，请参阅 [云解决方案提供商计划](cloud-solution-providers.md)。
+- **通过 CSP 转售**：使用此选项可允许 Microsoft 云解决方案提供商 (CSP) 合作伙伴将你的解决方案作为捆绑产品/服务的一部分转售。 有关此计划的详细信息，请参阅[云解决方案提供商计划](cloud-solution-providers.md)。
 
-- **与 Microsoft 共同销售**：此选项可让 microsoft 销售团队在评估其客户需求时考虑你的 IP 共同销售资格解决方案。 有关共同销售资格的详细信息，请参阅 [共同销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 有关如何准备产品/服务进行评估的详细信息，请参阅 [合作伙伴中心的共同销售选项](commercial-marketplace-co-sell.md)。
+- **与 Microsoft 联合销售**：此选项可让 Microsoft 销售团队在评估其客户需求时考虑符合你的 IP 联合销售资格的解决方案。 有关 IP 联合销售资格的详细信息，请参阅[联合销售状态的要求](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)。 有关如何准备产品/服务以供评估的详细信息，请参阅[合作伙伴中心的联合销售选项](co-sell-configure.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [如何在商业应用商店中创建 SaaS 产品/服务](create-new-saas-offer.md)
+- [如何在商业市场中创建 SaaS 产品/服务](create-new-saas-offer.md)
 - [套餐列出最佳做法](gtm-offer-listing-best-practices.md)

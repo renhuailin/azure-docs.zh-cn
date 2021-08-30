@@ -7,14 +7,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 08/11/2021
 ms.author: justinha
-ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4492824c77a8a97810c5849c221c400560db4bad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98013033"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732409"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>将 Azure Active Directory 域服务从经典虚拟网络模型迁移到资源管理器
 
@@ -228,7 +229,7 @@ Azure AD DS 通常使用地址范围内的前两个可用 IP 地址，但不是�
 
 准备并备份托管域后，可以迁移该域。 此步骤使用资源管理器部署模型重新创建 Azure AD DS 域控制器 VM。 此步骤可能需要 1 到 3 小时才能完成。
 
-使用 -Commit 参数运行 `Migrate-Aadds` cmdlet。 提供你在上一部分中准备的托管域的 -ManagedDomainFqdn，例如 aaddscontoso.com：
+使用 -Commit 参数运行 `Migrate-Aadds` cmdlet。 提供你在上一部分中准备的托管域的 -ManagedDomainFqdn，例如 aaddscontoso.com 。
 
 指定你要将 Azure AD DS 迁移到的虚拟网络所在的目标资源组，例如 myResourceGroup。 提供目标虚拟网络（例如 myVnet）和子网（例如 DomainServices）。
 

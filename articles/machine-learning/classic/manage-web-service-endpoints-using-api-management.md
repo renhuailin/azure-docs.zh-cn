@@ -9,20 +9,20 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 293643ab5354c51142baaf281b1845cfc9fa6f23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2897507270d5f87be01bc87173f48e713b1b791b
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100518022"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581369"
 ---
-# <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理以管理 Azure 机器学习工作室（经典）Web 服务
+# <a name="manage-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理以管理机器学习工作室（经典）Web 服务
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 ## <a name="overview"></a>概述
-本指南介绍如何快速入门，即使用 API 管理来管理 Azure 机器学习工作室（经典）Web 服务。
+本指南介绍如何快速开始使用 API 管理来管理机器学习工作室（经典）Web 服务。
 
 ## <a name="what-is-azure-api-management"></a>什么是 Azure API 管理？
 Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。 有关更多详细信息，请参阅 [Azure API 管理站点](https://azure.microsoft.com/services/api-management/)。 若要开始使用 Azure API 管理，请参阅[导入和发布指南](../../api-management/import-and-publish.md)。 这份额外指南（作为本指南的依据）涵盖更多主题，包括通知配置、层定价、响应处理、用户身份验证、创建产品、开发人员订阅和使用仪表板。
@@ -36,7 +36,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 ## <a name="create-an-api-management-instance"></a>创建 API 管理实例
 
-可以使用 API 管理实例来管理 Azure 机器学习 Web 服务。
+可使用 API 管理实例来管理机器学习 Web 服务。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择“+ 创建资源”。

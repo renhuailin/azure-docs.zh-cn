@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db22b44e032261d138d74e34340dca6fcaf75779
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bf49cfd4d1e0e9b3e65354c9f6c89dd7efd71970
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092865"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739953"
 ---
 # <a name="create-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>创建自定义角色以在 Azure Active Directory 中管理企业应用
 
@@ -54,8 +54,9 @@ ms.locfileid: "110092865"
 >[!NOTE]
 > 自定义角色是在组织范围级别创建和管理的，只在组织的“概述”页中提供。
 
-1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
-1. 依次选择“Azure Active Directory”、“角色和管理员”和“新建自定义角色”  。
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
+
+1. 依次选择“Azure Active Directory” > “角色和管理员”和“新建自定义角色”  。
 
     ![在 Azure AD 中，从角色列表添加新的自定义角色](./media/custom-enterprise-apps/new-custom-role.png)
 
@@ -73,8 +74,10 @@ ms.locfileid: "110092865"
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-portal"></a>使用 Azure 门户将角色分配给用户
 
-1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
-1. 依次选择“Azure Active Directory”、“角色和管理员” 。
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
+
+1. 选择“Azure Active Directory” > “角色和管理员”。 。
+
 1. 选择“授予权限以管理用户和组分配”角色。
 
     ![打开“角色和管理员”并搜索自定义角色](./media/custom-enterprise-apps/select-custom-role.png)

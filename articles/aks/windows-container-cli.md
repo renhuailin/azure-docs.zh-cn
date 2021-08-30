@@ -3,13 +3,13 @@ title: 使用 Azure CLI 在 AKS 群集上创建 Windows Server 容器
 description: 了解如何使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 的 Windows Server 容器中快速创建 Kubernetes 群集并部署应用程序。
 services: container-service
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: 50b5d0a46c97cfd816b80c3fb7c8f8667e3e89d7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 08/06/2021
+ms.openlocfilehash: 29f010bd9067236e1e07ab79f7a8fbec436ffd85
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379364"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733577"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes 服务 (AKS) 群集上创建 Windows Server 容器
 
@@ -93,7 +93,7 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
-    --kubernetes-version 1.20.2 \
+    --kubernetes-version 1.20.7 \
     --network-plugin azure
 ```
 
@@ -121,13 +121,13 @@ az aks nodepool add \
 
 上述命令将创建名为 npwin 的新节点池，并将其添加到 myAKSCluster 。 上述命令还使用运行 `az aks create` 时创建的默认 VNet 中的默认子网。
 
-### <a name="add-a-windows-server-node-pool-with-containerd-preview"></a>使用 `containerd` 添加 Windows Server 节点池（预览版）
+## <a name="optional-using-containerd-with-windows-server-node-pools-preview"></a>可选：将 `containerd` 与 Windows Server 节点池结合使用（预览版）
 
 从 Kubernetes 1.20 及更高版本开始，可以将 `containerd` 指定为 Windows Server 2019 节点池的容器运行时。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-需要 aks-preview Azure CLI 扩展。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展。 或者使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
+将需要 aks-preview Azure CLI 扩展 0.5.24 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展。 或者使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -136,6 +136,12 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
+
+> [!IMPORTANT]
+> 将 `containerd` 与 Windows Server 2019 节点池一起使用时：
+> - 控制平面和 Windows Server 2019 节点池都必须使用 Kubernetes 1.20 或更高版本。
+> - 创建或更新运行 Windows Server 容器的节点池时，node-vm-size 的默认值为 Standard_D2s_v3，这是 Kubernetes 1.20 之前的 Windows Server 2019 节点池的最小建议大小 。 使用 `containerd` 的 Windows Server 2019 节点池的最小建议大小为 Standard_D4s_v3。 设置 node-vm-size 参数时，请检查[受限制的 VM 大小][restricted-vm-sizes]列表。
+> - 强烈建议对运行 `containerd` 的 Windows Server 2019 节点池使用[标记或标签][aks-taints]，并在部署中使用容许或节点选择器，以确保正确计划工作负载。
 
 使用 [az feature register][az-feature-register] 命令注册 `UseCustomizedWindowsContainerRuntime` 功能标志，如以下示例所示：
 
@@ -155,6 +161,8 @@ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/U
 az provider register --namespace Microsoft.ContainerService
 ```
 
+### <a name="add-a-windows-server-node-pool-with-containerd-preview"></a>使用 `containerd` 添加 Windows Server 节点池（预览版）
+
 使用 `az aks nodepool add` 命令添加可以通过 `containerd` 运行时运行 Windows Server 容器的其他节点池。
 
 > [!NOTE]
@@ -167,19 +175,42 @@ az aks nodepool add \
     --os-type Windows \
     --name npwcd \
     --node-vm-size Standard_D4s_v3 \
-    --kubernetes-version 1.20.2 \
+    --kubernetes-version 1.20.5 \
     --aks-custom-headers WindowsContainerRuntime=containerd \
     --node-count 1
 ```
 
 上述命令使用 `containerd` 作为名为 npwcd 的运行时来创建新的 Windows Server 节点池，并将其添加到 myAKSCluster 中 。 上述命令还使用运行 `az aks create` 时创建的默认 VNet 中的默认子网。
 
-> [!IMPORTANT]
-> 将 `containerd` 与 Windows Server 2019 节点池一起使用时：
-> - 控制平面和 Windows Server 2019 节点池都必须使用 Kubernetes 1.20 或更高版本。
-> - 使用 Docker 作为容器运行时的现有 Windows Server 2019 节点池无法升级为使用 `containerd`。 必须创建新的节点池。
-> - 创建运行 Windows Server 容器的节点池时，node-vm-size 的默认值为 Standard_D2s_v3，这是 Kubernetes 1.20 之前的 Windows Server 2019 节点池的最小建议大小 。 使用 `containerd` 的 Windows Server 2019 节点池的最小建议大小为 Standard_D4s_v3。 设置 node-vm-size 参数时，请检查[受限制的 VM 大小][restricted-vm-sizes]列表。
-> - 强烈建议对运行 `containerd` 的 Windows Server 2019 节点池使用[标记或标签][aks-taints]，并在部署中使用容许或节点选择器，以确保正确计划工作负载。
+### <a name="upgrade-an-existing-windows-server-node-pool-to-containerd-preview"></a>将现有 Windows Server 节点池升级到 `containerd`（预览版）
+
+使用 `az aks nodepool upgrade` 命令将特定节点池从 Docker 升级到 `containerd`。
+
+```azurecli
+az aks nodepool upgrade \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name npwd \
+    --kubernetes-version 1.20.7 \
+    --aks-custom-headers WindowsContainerRuntime=containerd
+```
+
+上述命令将名为 npwd 的节点池升级到 `containerd` 运行时。
+
+若要升级群集中的所有现有节点池，以便将 `containerd` 运行时用于所有 Windows Server 节点池：
+
+```azurecli
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version 1.20.7 \
+    --aks-custom-headers WindowsContainerRuntime=containerd
+```
+
+上述命令将升级 myAKSCluster 中的所有 Windows Server 节点池以使用 `containerd` 运行时。
+
+> [!NOTE]
+> 升级所有现有 Windows Server 节点池以使用 `containerd` 运行时后，在添加新的 Windows Server 节点池时，Docker 仍将成为默认运行时。 
 
 ## <a name="connect-to-the-cluster"></a>连接到群集
 
@@ -205,10 +236,10 @@ kubectl get nodes -o wide
 
 ```output
 NAME                                STATUS   ROLES   AGE    VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION     CONTAINER-RUNTIME
-aks-nodepool1-12345678-vmss000000   Ready    agent   34m    v1.20.2   10.240.0.4    <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
-aks-nodepool1-12345678-vmss000001   Ready    agent   34m    v1.20.2   10.240.0.35   <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
-aksnpwcd123456                      Ready    agent   9m6s   v1.20.2   10.240.0.97   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    containerd://1.4.4+unknown
-aksnpwin987654                      Ready    agent   25m    v1.20.2   10.240.0.66   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    docker://19.3.14
+aks-nodepool1-12345678-vmss000000   Ready    agent   34m    v1.20.7   10.240.0.4    <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
+aks-nodepool1-12345678-vmss000001   Ready    agent   34m    v1.20.7   10.240.0.35   <none>        Ubuntu 18.04.5 LTS               5.4.0-1046-azure   containerd://1.4.4+azure
+aksnpwcd123456                      Ready    agent   9m6s   v1.20.7   10.240.0.97   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    containerd://1.4.4+unknown
+aksnpwin987654                      Ready    agent   25m    v1.20.7   10.240.0.66   <none>        Windows Server 2019 Datacenter   10.0.17763.1879    docker://19.3.14
 ```
 
 > [!NOTE]
@@ -238,7 +269,7 @@ spec:
         app: sample
     spec:
       nodeSelector:
-        "beta.kubernetes.io/os": windows
+        "kubernetes.io/os": windows
       containers:
       - name: sample
         image: mcr.microsoft.com/dotnet/framework/samples:aspnetapp

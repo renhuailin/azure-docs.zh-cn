@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 06/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 56a2eff6a39f879de4e9d968eb470243014cb430
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 474bb5582011c9e701a188f227a54238a9f19b57
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982027"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285564"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略为多租户 Azure Active Directory 设置登录
 
@@ -38,7 +38,7 @@ ms.locfileid: "111982027"
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
-## <a name="register-an-application"></a>注册应用程序
+## <a name="register-an-azure-ad-app"></a>注册 Azure AD 应用
 
 若要在 Azure Active Directory B2C (Azure AD B2C) 中为使用 Azure AD 帐户的用户启用登录，则需要在 [Azure 门户](https://portal.azure.com)中创建应用程序。 有关详细信息，请参阅[将应用程序注册到 Microsoft 标识平台](../active-directory/develop/quickstart-register-app.md)。
 
@@ -63,7 +63,7 @@ ms.locfileid: "111982027"
 1. 依次选择“证书和机密”、“新建客户端机密”。 
 1. 为机密输入说明，选择到期时间，然后选择“添加”。 记录机密的值，以便在后续步骤中使用。
 
-## <a name="configuring-optional-claims"></a>配置可选声明
+### <a name="configuring-optional-claims"></a>配置可选声明
 
 如果要从 Azure AD 获取 `family_name` 和 `given_name` 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](../active-directory/develop/active-directory-optional-claims.md)。
 
@@ -75,6 +75,10 @@ ms.locfileid: "111982027"
 1. 对于“令牌类型”，选择“ID”。
 1. 选择要添加的可选声明：`family_name` 和 `given_name`。
 1. 单击“添加”。
+
+## <a name="optional-verify-your-app-authenticity"></a>[可选] 验证应用真实性
+
+[发布者验证](../active-directory/develop/publisher-verification-overview.md)旨在帮助你的用户了解你[注册](#register-an-azure-ad-app)的应用的真实性。 经过验证的应用是指应用的发布者已使用其 MPN Microsoft 合作伙伴网络 (MPN) [验证](/partner-center/verification-responses)其标识。 了解如何[将应用标记为“发布者已验证”](../active-directory/develop/mark-app-as-publisher-verified.md)。 
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
@@ -201,8 +205,6 @@ ms.locfileid: "111982027"
 
 ## <a name="next-steps"></a>后续步骤
 
-当使用自定义策略时，在开发策略期间对策略进行故障排除时，有时可能需要提供其他信息。
-
-若要帮助诊断问题，可暂时将策略置入“开发人员模式”并通过 Azure Application Insights 收集日志。 在 [Azure Active Directory B2C：收集日志](troubleshoot-with-application-insights.md)中了解操作方式。
+了解如何[将 Azure AD 令牌传递给应用程序](idp-pass-through-user-flow.md)。
 
 ::: zone-end

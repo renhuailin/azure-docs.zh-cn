@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
-ms.openlocfilehash: d86d4248b449ad3961a7798fd36a320eb6a74009
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 721119cd8927ee78639dd0e1449a36deb82938ef
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98217067"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397118"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 将多个 IP 地址分配到虚拟机
 
@@ -26,7 +26,7 @@ ms.locfileid: "98217067"
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-本文介绍如何使用 PowerShell 通过 Azure Resource Manager 部署模型创建虚拟机 (VM)。 无法将多个 IP 地址分配到通过经典部署模型创建的资源。 若要详细了解 Azure 部署模型，请阅读 [Understand deployment models](../azure-resource-manager/management/deployment-models.md)（了解部署模型）一文。
+本文介绍如何使用 PowerShell 通过 Azure Resource Manager 部署模型创建虚拟机 (VM)。 尽管经典 VM 可以有多个 NIC，每个 NIC 可以有其自己的 IP 地址，但无法将多个 IP 地址分配给通过经典部署模型创建的单个 NIC。 若要详细了解 Azure 部署模型，请阅读 [Understand deployment models](../azure-resource-manager/management/deployment-models.md)（了解部署模型）一文。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 

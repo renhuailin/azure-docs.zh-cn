@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: duau
-ms.openlocfilehash: 3602c3944e8731263fbb55f024c276783950329f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5dcf58dce7b87862c2f01ad76db8aff66366ee4b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92202355"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733874"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>使用 ExpressRoute 进行高可用性设计
 
@@ -50,23 +50,31 @@ Microsoft 网络配置为以主动-主动模式运行 ExpressRoute 线路的主�
 
 或者，在主动-主动模式下运行 ExpressRoute 线路的主要连接和辅助连接会导致仅有大约一半的流量失败并重新路由，随后 ExpressRoute 连接也会失败。 因此，主动-主动模式明显有助于改善平均恢复时间 (MTTR)。
 
+> [!NOTE]
+> 在维护活动期间，或在出现影响某个连接的计划外事件的情况下，Microsoft 将倾向于使用 AS 路径预置，将流量排出到正常的连接。 从 Microsoft 配置路径预置时需要确保流量能够路由到正常的路径，并且正确配置了所需的路由播发以避免任何服务中断。 
+> 
+
 ### <a name="nat-for-microsoft-peering"></a>Microsoft 对等互连的 NAT 
 
 Microsoft 对等互连旨在实现公共终结点之间的通信。 因此，本地专用终结点在通过 Microsoft 对等互连通信之前，通常会使用客户或合作伙伴网络上的公共 IP 进行网络地址转换 (NAT)。 假设你在主动-主动模式下使用主要连接和辅助连接，执行 NAT 的位置和方式会影响到在某个 ExpressRoute 连接失败后进行恢复的速度。 下图演示了两个不同的 NAT 选项：
 
 [![3]][3]
 
-在选项 1 中，拆分 ExpressRoute 主要连接与辅助连接之间的流量之后应用了 NAT。 为了满足 NAT 的有状态要求，将在主要设备与辅助设备之间使用独立的 NAT 池，使返回流量抵达用于传出流量的同一边缘设备。
+#### <a name="option-1"></a>选项 1：
 
-在选项 2 中，拆分 ExpressRoute 主要连接与辅助连接之间的流量之前使用了一个通用 NAT 池。 必须认识到，在拆分流量之前使用通用 NAT 池并不意味着会造成单一故障点，进而影响高可用性。
+拆分 ExpressRoute 线路主要连接与辅助连接之间的流量之后应用 NAT。 为了满足 NAT 的有状态要求，主要设备与辅助设备均使用独立的 NAT 池。 返回流量将抵达传出流量的同一边缘设备。
 
-如果使用选项 1，发生 ExpressRoute 连接失败后，将无法访问相应的 NAT 池。 因此，在相应的期限超时后，TCP 或应用层必须重建所有已中断的流。 如果使用任一 NAT 池作为任何本地服务器的前端，而相应的连接失败，则在修复连接之前，无法从 Azure 访问本地服务器。
+如果 ExpressRoute 连接失败，则无法访问相应的 NAT 池。 正因如此，在相应的期限超时后，TCP 或应用层必须重建所有已中断的网络流。 在故障期间，Azure 无法使用相应的 NAT 访问本地服务器，直到 ExpressRoute 线路的主要或辅助连接恢复连接为止。
 
-而使用选项 2 时，即使主要连接或辅助连接失败，也仍可访问 NAT。 因此，在发生故障后，网络层本身可以重新路由数据包，帮助更快进行恢复。 
+#### <a name="option-2"></a>选项 2：
+
+在拆分 ExpressRoute 线路主要连接与辅助连接之间的流量之前使用一个通用 NAT 池。 需要分清楚的一点是，在拆分流量之前使用通用 NAT 池并不意味着它会造成单一故障点，进而影响高可用性。
+
+即使主要连接或辅助连接失败，也可以访问此 NAT 池。 这就是在发生故障后网络层本身可以重新路由数据包并帮助更快恢复的原因。 
 
 > [!NOTE]
-> 如果使用 NAT 选项 1（对 ExpressRoute 主要连接和辅助连接使用独立的 NAT 池），并将 IP 地址的端口从一个 NAT 池映射到本地服务器，则在相应的连接失败时，无法通过 ExpressRoute 线路访问服务器。
-> 
+> * 如果使用 NAT 选项 1（对 ExpressRoute 主要连接和辅助连接使用独立的 NAT 池），并将 IP 地址的端口从一个 NAT 池映射到本地服务器，则在相应的连接失败时，无法通过 ExpressRoute 线路访问服务器。
+> * 在有状态设备上终止 ExpressRoute BGP 连接可能会导致 Microsoft 或 ExpressRoute 提供商进行的计划内或计划外维护期间出现故障转移问题。 应对设置进行测试，确保流量能够正确地进行故障转移，并且在可能的情况下终止无状态设备上的 BGP 会话。
 
 ## <a name="fine-tuning-features-for-private-peering"></a>微调专用对等互连的功能
 

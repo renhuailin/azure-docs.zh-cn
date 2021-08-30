@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 25feef60e6b417d835f06be9641207ce56aa53a6
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 5f70febb77d61e9d797c618faa82c8275f37bfef
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536441"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431377"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>计划 Azure 应用程序产品/服务的解决方案模板
 
@@ -26,7 +26,7 @@ ms.locfileid: "111536441"
 | 要求 | 详细信息 |
 | ------------ | ------------- |
 | 计费和计量 | 解决方案模板计划在商业市场中不可处理，但可用于部署通过商业市场计费的付费 VM 产品/服务。 解决方案的 ARM 模板部署的资源是在客户的 Azure 订阅中设置的。 即用即付虚拟机将通过 Microsoft 与客户进行交易并且通过客户的 Azure 订阅进行计费。 <br><br> 对于自带许可 (BYOL) 的计费，尽管 Microsoft 会对客户订阅产生的任何基础结构成本计费，但由你直接与客户处理你的软件许可证费用。 |
-| 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 有关详细信息，请参阅：<ul><li>[创建 Azure VM 技术资产](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer)（针对 Windows VHD）</li><li>[Azure 支持的 Linux 分发](../virtual-machines/linux/endorsed-distros.md)（针对 Linux VHD）。</li></ul> |
+| 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 有关详细信息，请参阅：<ul><li>[创建 Azure VM 技术资产](./azure-vm-create-certification-faq.yml#address-a-vulnerability-or-an-exploit-in-a-vm-offer)（针对 Windows VHD）</li><li>[Azure 支持的 Linux 分发](../virtual-machines/linux/endorsed-distros.md)（针对 Linux VHD）。</li></ul> |
 | 客户使用情况归因 | 发布到 Azure 市场的所有解决方案模板都需要启用客户使用情况归因。 有关客户使用情况属性及其启用方式，请参阅 [Azure 合作伙伴客户使用情况属性](azure-partner-customer-usage-attribution.md)。 |
 | 使用托管磁盘 | [托管磁盘](../virtual-machines/managed-disks-overview.md)是 Azure 中的基础结构即服务 (IaaS) VM 的持久性磁盘的默认选项。 必须使用解决方案模板中的托管磁盘。<ul><li>若要更新解决方案模板，请遵循[使用 Azure 资源管理器模板中的托管磁盘](../virtual-machines/using-managed-disks-template-deployments.md)中的指南，并使用提供的[示例](https://github.com/Azure/azure-quickstart-templates)。</li><li>若要在 Azure 市场中将 VHD 作为映像发布，请使用 [Azure PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd) 或 [Azure CLI](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd) 将托管磁盘的基础 VHD 导入到存储帐户</ul> |
 | 部署包 | 你将需要部署包供客户部署计划。 如果创建的多个计划需要采用相同技术配置，则可以使用相同的计划包。 有关详细信息，请参阅下一部分：部署包。 |
@@ -38,7 +38,7 @@ ms.locfileid: "111536441"
 
 所有 Azure 应用程序必须在 .zip 存档根文件夹中包括这两个文件：
 
-- 资源管理器模板文件，名为 [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template)。 此模板定义要部署到客户的 Azure 订阅中的资源。 有关资源管理器模板的示例，请参阅 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/)或对应的 [GitHub：Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates)存储库。
+- 资源管理器模板文件，名为 [mainTemplate.json](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template)。 此模板定义要部署到客户的 Azure 订阅中的资源。 有关资源管理器模板的示例，请参阅 [Azure 快速入门模板库](https://azure.microsoft.com/resources/templates/)或对应的 [GitHub：Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates)存储库。
 - 用于 Azure 应用程序创建体验的用户界面定义，名为 [createUiDefinition.json](../azure-resource-manager/managed-applications/create-uidefinition-overview.md)。 在用户界面中，可以指定让使用者能够提供参数值的元素。
 
 支持的最大文件大小为：

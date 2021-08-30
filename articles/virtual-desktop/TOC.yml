@@ -16,7 +16,7 @@
       href: getting-started-feature.md
 - name: 教程
   items:
-    - name: 1. 使用 Azure 门户创建主机池
+    - name: 1. 创建主机池
       href: create-host-pools-azure-marketplace.md
     - name: 2. 管理应用组
       href: manage-app-groups.md
@@ -50,7 +50,7 @@
       href: powershell-module.md
     - name: 创建主机池和会话主机
       items:
-        - name: PowerShell
+        - name: 使用 PowerShell 或 Azure CLI 创建主机池
           href: create-host-pools-powershell.md
         - name: 部署已加入 Azure AD 的会话主机
           href: deploy-azure-ad-joined-vm.md
@@ -60,7 +60,7 @@
           href: configure-vm-gpu.md
         - name: 展开现有的主机池
           href: expand-existing-host-pool.md
-        - name: 使用 PowerShell 管理应用组
+        - name: 使用 PowerShell 或 Azure CLI 管理应用组
           href: manage-app-groups-powershell.md
     - name: 删除主机池
       href: delete-host-pool.md

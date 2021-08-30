@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d7d637a98a0f250936fa8c9024ae1302d3aaa536
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 50984f7a22caa6e1340b6ed4d927d9450eccdf9e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572374"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752186"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>为可用性组配置 DNN 侦听器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -179,16 +179,15 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 
 ## <a name="port-considerations"></a>端口注意事项
 
-DNN 侦听器旨在侦听所有 IP 地址，但采用的是特定的唯一端口。 侦听器名称的 DNS 条目应该解析为可用性组中所有副本的地址。 这可通过[创建脚本](#create-script)部分中提供的 PowerShell 脚本自动完成。 由于 DNN 侦听器接受所有 IP 地址上的连接，因此侦听器端口必须唯一，不能由可用性组中的任何其他副本使用。 由于 SQL Server 始终在端口 1433 上直接侦听或通过 SQL Browser 服务进行侦听，因此端口 1433 不能用于任何 DNN 侦听器。
+DNN 侦听器旨在侦听所有 IP 地址，但采用的是特定的唯一端口。 侦听器名称的 DNS 条目应该解析为可用性组中所有副本的地址。 这可通过[创建脚本](#create-script)部分中提供的 PowerShell 脚本自动完成。 由于 DNN 侦听器接受所有 IP 地址上的连接，因此侦听器端口必须唯一，不能由可用性组中的任何其他副本使用。 由于 SQL Server 默认侦听端口 1433（直接侦听或通过 SQL Browser 服务侦听），我们强烈反对将端口 1433 用于 DNN 侦听器。 
 
 ## <a name="next-steps"></a>后续步骤
 
-部署可用性组后，请考虑优化 [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)。 
+部署可用性组后，请考虑优化 [Azure VM 上 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)。 
 
 
 若要了解更多信息，请参阅以下文章：
 
-- [Azure VM 上的 SQL Server 的 Windows Server 故障转移群集](hadr-windows-server-failover-cluster-overview.md)
-- [Azure VM 上的 SQL Server 的 Always On 可用性组](availability-group-overview.md)
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Always On 可用性组与 Azure VM 上的 SQL Server](availability-group-overview.md)
 - [Always On 可用性组概述](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
-

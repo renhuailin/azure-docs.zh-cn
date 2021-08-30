@@ -1,5 +1,5 @@
 ---
-title: Azure Percept 开发工具包安装程序概述
+title: 安装 Azure Percept 开发工具
 description: 详细了解如何使用开发工具包安装程序通过 Azure Percept 加速高级开发
 author: mimcco
 ms.author: mimcco
@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 49d5a6ed7b23169e655a02cdbb14df52a6e82231
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 88d93b98b9bd456c5529bff67fbef98b9e792ba0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099778"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729202"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>开发工具包安装程序概述
 

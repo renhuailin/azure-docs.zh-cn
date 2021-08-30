@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/28/2021
-ms.openlocfilehash: fb3a77291d8b24d5774094533f8c214f1527d771
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/10/2021
+ms.openlocfilehash: e1af69db6f70d5a6a977c6e3fa715e84cbc2673b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99430439"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734966"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
 
@@ -28,8 +28,10 @@ ms.locfileid: "99430439"
 * 你希望使用多个数据源中的数据填充索引字段，而每个数据源使用不同的字段名称。
 * 需要对数据进行 Base64 编码或解码。 字段映射支持多个 **映射函数**，包括用于 Base64 编码和解码的函数。
 
+索引器中的字段映射是将数据字段映射到索引字段的一种简单方法，可实现轻量级数据转换。 较复杂的数据可能需要经过预处理，才能将形状调整为有利于编制索引的形式。 可以考虑使用 [Azure 数据工厂](../data-factory/index.yml)。
+
 > [!NOTE]
-> 索引器中的字段映射是将数据字段映射到索引字段的一种简单方法，可实现轻量级数据转换。 较复杂的数据可能需要经过预处理，才能将形状调整为有利于编制索引的形式。 可以考虑使用 [Azure 数据工厂](../data-factory/index.yml)。
+> 字段映射仅适用于搜索索引。 对于创建[知识存储](knowledge-store-concept-intro.md)的索引器，将忽略字段映射。
 
 ## <a name="set-up-field-mappings"></a>设置字段映射
 

@@ -13,18 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c356ea88d23bf431df2b7785003ef23d28b5c598
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: bcf66b905b1944a160a19c35ff8d8e00c9a52e67
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572451"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446027"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>适用于 Windows 的 AMD GPU 驱动程序扩展
 
 本文概述了用于在 Windows [NVv4 系列](../nvv4-series.md) VM 上部署 AMD GPU 驱动程序的 VM 扩展。 使用此扩展安装 AMD 驱动程序即表示你接受并同意 [AMD 最终用户许可协议](https://amd.com/radeonsoftwarems)的条款。 在安装过程中，VM 可能会重新启动以完成驱动程序安装。
 
-[此处](../windows/n-series-amd-driver-setup.md)提供了有关手动安装驱动程序和当前支持的版本的说明。
+我们提供了有关手动安装驱动程序和当前支持的版本的说明。 有关详细信息，请参阅[适用于 Windows 的 Azure N 系列 AMD GPU 驱动程序安装](../windows/n-series-amd-driver-setup.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -72,7 +72,7 @@ ms.locfileid: "111572451"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | 字符串 |
+| publisher | Microsoft.HpcCompute | string |
 | type | AmdGpuDriverWindows | 字符串 |
 | typeHandlerVersion | 1.0 | int |
 

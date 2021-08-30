@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/26/2020
+ms.date: 08/11/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b03b93c09ebe1c8361379dba018d7c756f409d4
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: a96181c86faf983abd349dcb9b287e2f3ac344de
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745144"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747921"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>排查 Azure Active Directory 中的自助式密码重置写回问题
 
@@ -49,6 +49,18 @@ Azure [GOV 终结点](../../azure-government/compare-azure-government-global-azu
 * \*.servicebus.usgovcloudapi.net
 
 如果需要更细的粒度，请参阅 [Microsoft Azure 数据中心 IP 范围的列表](https://www.microsoft.com/download/details.aspx?id=41653)。 此列表每周三更新一次，并在下个星期一生效。
+
+若要确定环境中对 URL 和端口的访问是否受到限制，请运行以下 cmdlet：
+
+```powershell
+Test-NetConnection -ComputerName https://ssprdedicatedsbprodncu.servicebus.windows.net -Port 443
+```
+
+或者运行以下命令：
+
+```powershell
+Invoke-WebRequest -Uri https://ssprdedicatedbprodscu.windows.net -Verbose
+```
 
 有关详细信息，请参阅 [Azure AD Connect 的连接先决条件](../hybrid/how-to-connect-install-prerequisites.md)。
 
@@ -148,7 +160,7 @@ Azure AD Connect 需要 AD DS“重置密码”权限才能执行密码写回。
 | 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在提交密码后看到错误。 该错误指示存在服务问题。 <br> <br> 除此问题以外，在密码重置期间，可能会在 Azure AD Connect 服务的事件日志中看到一个表示“找不到对象”错误的错误。 | 此错误通常表示同步引擎无法找到 Azure AD 连接器空间中的用户对象或者无法找到链接的 Metaverse (MV) 或 Azure AD 连接器空间对象。 <br> <br> 若要解决此问题，请确保用户确实已通过当前的 Azure AD Connect 实例从本地同步到了 Azure AD，并检查连接器空间和 MV 中的对象的状态。 通过“Microsoft.InfromADUserAccountEnabled.xxx”规则确认 Active Directory 证书服务 (AD CS) 对象是否已连接到 MV 对象。|
 | 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在提交密码后看到错误。 该错误指示存在服务问题。 <br> <br> 除此问题以外，在密码重置操作过程中，可能会在 Azure AD Connect 服务的事件日志中看到一个错误，指出发生“找到多个匹配项”错误。 | 这表示同步引擎通过“Microsoft.InfromADUserAccountEnabled.xxx”检测到 MV 对象连接到了多个 AD CS 对象。 这意味着用户在多个林具有已启用的帐户。 密码写回不支持此方案。 |
 | 密码操作因为发生配置错误而失败。 应用程序事件日志包含 Azure AD Connect 错误 6329，文本为：“0x8023061f (操作失败，因为未在此管理代理上启用密码同步)”。 | 如果在启用密码写回功能之后将 Azure AD Connect 配置更改为添加新的 Active Directory 林（或者更改为删除现有林之后再重新添加），则会发生此错误。 在这些最近添加的林中，用户的密码操作会失败。 要解决此问题，请在林配置更改完成后，先禁用密码写回功能，再重新启用它。
-| SSPR_0029：由于本地配置中的错误，无法重置你的密码。 请联系管理员，并请求他们进行调查。 | 问题：按照所有必需的步骤启用了密码写回，但在尝试更改收到的密码时，你收到“SSPR_0029: 贵组织未正确设置用于密码重置的本地配置”。 检查 Azure AD Connect 系统上的事件日志是否显示管理代理凭据被拒绝访问。可能的解决方案：在 Azure AD Connect 系统和域控制器上使用 RSOP，以查看“计算机配置”>“Windows 设置”>“安全设置”>“本地策略”>“安全选项”下的“网络访问: 限制允许对 SAM 进行远程调用的客户端”策略是否已启用。 编辑策略，将 MSOL_XXXXXXX 管理帐户作为允许用户包含在内。 |
+| SSPR_0029：由于本地配置中的错误，无法重置你的密码。 请联系管理员，并请求他们进行调查。 | 问题：已按照所有必需的步骤启用了密码写回，但在尝试更改密码时收到“SSPR_0029: 贵组织未正确设置用于密码重置的本地配置。” 检查 Azure AD Connect 系统上的事件日志是否显示管理代理凭据被拒绝访问。可能的解决方案：在 Azure AD Connect 系统和域控制器上使用 RSOP，以查看“计算机配置”>“Windows 设置”>“安全设置”>“本地策略”>“安全选项”下的“网络访问: 限制允许对 SAM 进行远程调用的客户端”策略是否已启用。 编辑策略，以将 MSOL_XXXXXXX 管理帐户作为允许的用户包含在内。 |
 
 ## <a name="password-writeback-event-log-error-codes"></a>密码写回事件日志错误代码
 
@@ -185,6 +197,7 @@ Azure AD Connect 需要 AD DS“重置密码”权限才能执行密码写回。
 | 31017| AuthTokenSuccess| 此事件表示为启动卸载或登记过程，我们已成功检索到在设置 Azure AD Connect 期间指定的全局管理员的授权令牌。|
 | 31018| KeyPairCreationSuccess| 此事件表示已成功创建密码加密密钥。 此密钥用于对从云发送到本地环境的密码进行加密。|
 | 31034| ServiceBusListenerError| 此事件指示连接到租户的服务总线侦听器时发生错误。 如果错误消息包含“远程证书无效”，请进行检查，以确保 Azure AD Connect 服务器具有所有必需的根 CA，如 [Azure TLS 证书更改](../../security/fundamentals/tls-certificate-changes.md)中所述。 |
+| 31044| PasswordResetService| 此事件表示密码写回不起作用。 服务总线侦听两个独立中继上的请求来实现冗余。 每个中继连接由唯一的服务主机管理。 如果任一服务主机未运行，则写回客户端将返回错误。|
 | 32000| UnknownError| 此事件表示在执行密码管理操作期间发生未知的错误。 有关更多详细信息，请查看事件中的异常文本。 如果有任何问题，请尝试禁用并重新启用密码写回。 如果这没有帮助，请在提交支持请求时提供事件日志的副本以及指定的跟踪 ID。|
 | 32001| ServiceError| 此事件表示连接到云密码重置服务时发生错误。 此错误通常在本地服务无法连接到密码重置 web 服务时发生。|
 | 32002| ServiceBusError| 此事件表示连接到租户的服务总线实例时发生错误。 发生此错误的原因可能是在本地环境中阻止了出站连接。 请检查防火墙，确保允许基于 TCP 443 的连接或者到 https://ssprdedicatedsbprodncu.servicebus.windows.net 的连接，并重试。 如果仍然出现问题，请尝试禁用并重新启用密码写回。|

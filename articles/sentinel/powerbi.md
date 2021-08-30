@@ -6,12 +6,12 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: 1e641e878bc5370c9f9d7c0cc83be79008b2ebdd
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 0e877439b18d4c7ff6c4b21baa18b3b0fd1586b3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111852058"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724150"
 ---
 # <a name="tutorial-create-a-power-bi-report-from-azure-sentinel-data"></a>教程：基于 Azure Sentinel 数据创建 Power BI 报表
 
@@ -29,6 +29,9 @@ ms.locfileid: "111852058"
 
 你在 Power BI 服务中授予访问权限的人员以及 Teams 通道的成员无需 Azure Sentinel 权限即可查看报表。
 
+> [!NOTE]
+> 本教程为一个排名靠前的客户问题提供基于场景的过程：在 Power BI 中查看 Azure Sentinel 数据的分析报告。 有关详细信息，请参阅[连接数据源](connect-data-sources.md)和[可视化收集的数据](get-visibility.md)。
+>
 ## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
@@ -203,5 +206,5 @@ ms.locfileid: "111852058"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [将 Azure Monitor 日志数据导入到 Power BI 中](/azure/azure-monitor/visualize/powerbi)
+- [将 Azure Monitor 日志数据导入到 Power BI 中](../azure-monitor/visualize/powerbi.md)
 - [Power Query M 公式语言](/powerquery-m/)

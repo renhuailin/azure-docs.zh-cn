@@ -3,17 +3,17 @@ title: 使用 Power BI 应用分析 Azure 成本
 description: 本文介绍如何安装和使用 Azure 成本管理 Power BI 应用。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/19/2021
+ms.date: 06/15/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: b08ff57f964ef7bc3712c930c222a10ed0f89ef4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 903bcab1816263cdd660f5b41561cd5209b6557f
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045025"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112200921"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用适用于企业协议 (EA) 的 Azure 成本管理 Power BI 应用分析成本
 
@@ -46,10 +46,10 @@ Azure 成本管理 Power BI 应用目前仅支持已签署[企业协议](https:/
     :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" alt-text="突出显示“连接数据”链接的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-your-data.png" :::
 1. 在出现的对话框中，为“BillingProfileIdOrEnrollmentNumber”输入 EA 注册编号。 指定要获取的数据的月数。 保留“注册编号”的默认“范围”值，然后选择“下一步”。  
     :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" alt-text="显示 EA 注册信息输入位置的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png" :::
-1. 下一个对话框将连接到 Azure 并获取数据。 保留配置的默认值，然后选择“登录并继续”。  
-    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" alt-text="显示“连接到 Azure 成本管理应用”对话框及其默认值的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" :::
-1. 最后一个安装步骤连接到 EA 注册，并要求使用[企业管理员](../manage/understand-ea-roles.md)帐户。 保留所有默认值。 选择“登录并继续”。  
+1. 下一个安装步骤是连接到 EA 注册，并要求使用[企业管理员](../manage/understand-ea-roles.md)帐户。 保留所有默认值。 选择“登录并继续”。  
     :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" alt-text="显示“连接到 Azure 成本管理应用”对话框以及用于连接的默认值的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png" :::
+1. 最后一个对话框将连接到 Azure 并获取数据。 保留配置的默认值，然后选择“登录并继续”。  
+    :::image type="content" source="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" alt-text="显示“连接到 Azure 成本管理应用”对话框及其默认值的屏幕截图。" lightbox="./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png" :::
 1. 系统会提示你使用EA 注册进行身份验证。 请使用 Power BI 进行身份验证。 完成身份验证后，将开始刷新 Power BI 数据。
     > [!NOTE]
     > 数据刷新过程可能需要相当长的时间才能完成。 具体的时长取决于指定的月数以及需要同步的数据量。

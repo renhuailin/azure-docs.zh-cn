@@ -2,13 +2,13 @@
 title: Application Insights 的版本批注 | Microsoft 文档
 description: 了解如何通过 Application Insights 创建注释以跟踪部署或其他重要事件。
 ms.topic: conceptual
-ms.date: 05/27/2021
-ms.openlocfilehash: cfd1c9b28a79d68983e49ef5d6dfd70dd357ab47
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.date: 07/20/2021
+ms.openlocfilehash: 230d02c26b29bb38ec4c8260109f75f1a8eca468
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071022"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741337"
 ---
 # <a name="release-annotations-for-application-insights"></a>Application Insights 的版本注释
 
@@ -57,6 +57,25 @@ ms.locfileid: "112071022"
 
     :::image type="content" source="./media/annotations/inline-script.png" alt-text="Azure CLI 任务设置的屏幕截图，突出显示了脚本类型、脚本位置、内联脚本和脚本参数。" lightbox="./media/annotations/inline-script.png":::
 
+    下面是可使用 [build](/azure/devops/pipelines/build/variables#build-variables-devops-services) 和 [release](/azure/devops/pipelines/release/variables#default-variables---release) 变量在可选的 releaseProperties 参数中设置的元数据示例。
+    
+
+    ```powershell
+    -releaseProperties @{
+     "BuildNumber"="$(Build.BuildNumber)";
+     "BuildRepositoryName"="$(Build.Repository.Name)";
+     "BuildRepositoryProvider"="$(Build.Repository.Provider)";
+     "ReleaseDefinitionName"="$(Build.DefinitionName)";
+     "ReleaseDescription"="Triggered by $(Build.DefinitionName) $(Build.BuildNumber)";
+     "ReleaseEnvironmentName"="$(Release.EnvironmentName)";
+     "ReleaseId"="$(Release.ReleaseId)";
+     "ReleaseName"="$(Release.ReleaseName)";
+     "ReleaseRequestedFor"="$(Release.RequestedFor)";
+     "ReleaseWebUrl"="$(Release.ReleaseWebUrl)";
+     "SourceBranch"="$(Build.SourceBranch)";
+     "TeamFoundationCollectionUri"="$(System.TeamFoundationCollectionUri)" }
+    ```            
+
 1. 保存。
 
 ## <a name="create-release-annotations-with-azure-cli"></a>使用 Azure CLI 创建版本注释
@@ -103,6 +122,7 @@ ms.locfileid: "112071022"
 |releaseName | 为创建的版本注释提供的名称。 | | 
 |releaseProperties | 用于将自定义元数据附加到注释。 | 可选|
 
+
 ## <a name="view-annotations"></a>查看批注
 
 > [!NOTE]
@@ -132,6 +152,72 @@ ms.locfileid: "112071022"
     :::image type="content" source="./media/annotations/workbook-show-annotations.png" alt-text="“高级设置”菜单的屏幕截图，其中突出显示了“显示注释”复选框。":::
 
 选择任一注释标记可打开有关该发布的详细信息，包括请求者、源代码管理分支、发布管道和环境。
+
+## <a name="release-annotations-using-api-keys"></a>使用 API 密钥发布注释
+
+版本批注是 Azure DevOps 的基于云的 Azure Pipelines 服务功能。
+
+### <a name="install-the-annotations-extension-one-time"></a>安装注释扩展（一次性操作）
+
+若要创建版本批注，必须安装 Visual Studio Marketplace 中提供的多个 Azure DevOps 扩展中的一个。
+
+1. 登录到 [Azure DevOps](https://azure.microsoft.com/services/devops/) 项目。
+   
+1. 在 Visual Studio Marketplace 的[版本批注扩展](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)页上选择你的 Azure DevOps 组织，然后选择“安装”将该扩展添加到你的 Azure DevOps 组织。
+   
+   ![选择 Azure DevOps 组织，然后选择“安装”。](./media/annotations/1-install.png)
+   
+只需为 Azure DevOps 组织安装该扩展一次。 现在，可为组织中的任何项目配置版本批注。
+
+### <a name="configure-release-annotations-using-api-keys"></a>使用 API 密钥配置发布注释
+
+为每个 Azure Pipelines 发布模板单独创建一个 API 密钥。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)并打开负责监视应用程序的 Application Insights 资源。 或者，如果你没有，请[创建一个新的 Application Insights 资源](create-workspace-resource.md)。
+   
+1. 打开“API 访问”选项卡并复制 **Application Insights ID**。
+   
+   ![在“API 访问”下，复制应用程序 ID。](./media/annotations/2-app-id.png)
+
+1. 在另一个浏览器窗口中，打开或创建用于管理 Azure Pipelines 部署的发布模板。
+   
+1. 添加“添加任务”，然后从菜单中选择“Application Insights 版本批注”任务。
+   
+   ![选择“添加任务”，然后选择“Application Insights 版本批注”。](./media/annotations/3-add-task.png)
+
+   > [!NOTE]
+   > “发布注释”任务目前仅支持基于 Windows 的代理；它不会在 Linux、macOS 或其他类型的代理上运行。
+   
+1. 在“应用程序 ID”下，粘贴从“API 访问”选项卡复制的 Application Insights ID。
+   
+   ![粘贴 Application Insights ID](./media/annotations/4-paste-app-id.png)
+   
+1. 返回 Application Insights 的“API 访问”窗口，选择“创建 API 密钥”。 
+   
+   ![在“API 访问”选项卡中，选择“创建 API 密钥”。](./media/annotations/5-create-api-key.png)
+   
+1. 在“创建 API 密钥”窗口中键入说明，选择“编写批注”，然后选择“生成密钥”。 复制新密钥。
+   
+   ![在“创建 API 密钥”窗口中键入说明，选择“编写批注”，然后选择“生成密钥”。](./media/annotations/6-create-api-key.png)
+   
+1. 在“发布模板”窗口中的“变量”选项卡上，选择“添加”以创建新 API 密钥的变量定义。
+
+1. 在“名称”下输入 `ApiKey`，然后在“值”下粘贴从“API 访问”选项卡复制的 API 密钥。
+   
+   ![在“Azure DevOps 变量”选项卡中选择“添加”，将变量命名为 ApiKey，然后在“值”下面粘贴 API 密钥。](./media/annotations/7-paste-api-key.png)
+   
+1. 在“发布模板”主窗口中选择“保存”以保存模板。
+
+
+   > [!NOTE]
+   > API 密钥的限制在 [REST API 速率限制文档](https://dev.applicationinsights.io/documentation/Authorization/Rate-limits)中进行了说明。
+
+### <a name="transition-to-the-new-release-annotation"></a>转换到新的发布注释
+
+要使用新的发布注释，请参阅以下文章： 
+1. [删除发布注释扩展](/azure/devops/marketplace/uninstall-disable-extensions)。
+1. 删除 Azure Pipelines 部署中的 Application Insights 发布注释任务。 
+1. 使用 [Azure Pipelines](#release-annotations-with-azure-pipelines-build) 或 [Azure CLI](#create-release-annotations-with-azure-cli) 创建新的发布注释。
 
 ## <a name="next-steps"></a>后续步骤
 

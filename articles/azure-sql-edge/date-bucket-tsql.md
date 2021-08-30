@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c270d0541a3fda8c42ec42f48a666b3d0aff5220
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93073513"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751354"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
-此函数从 `origin` 参数定义的时间戳或默认原始值 `1900-01-01 00:00:00.000`（如果未指定 origin 参数）返回与每个日期/时间 Bucket 的起始值相对应的日期/时间值。 
+此函数从 `origin` 参数定义的时间戳或默认原始值 `1900-01-01 00:00:00.000`（如果未指定 origin 参数）返回与每个日期/时间 Bucket 的起始值相对应的日期/时间值。
 
 有关所有 Transact-SQL 日期和时间数据类型及函数的概述，请参阅[日期和时间数据类型及函数 &#40;Transact-SQL&#41;](/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql/)。
 
@@ -26,7 +26,7 @@ ms.locfileid: "93073513"
 
 ## <a name="syntax"></a>语法
 
-```sql
+```syntaxsql
 DATE_BUCKET (datePart, number, date, origin)
 ```
 
@@ -37,23 +37,23 @@ DATE_BUCKET (datePart, number, date, origin)
 与“number”参数一起使用的 date 的一部分。 例如： 年、月、分钟、秒等。
 
 > [!NOTE]
-> 对于 datepPart 参数，`DATE_BUCKET` 不接受用户定义的变量等效项。
-  
-|*datePart*|缩写形式|  
+> 对于 datePart 参数，`DATE_BUCKET` 不接受用户定义的变量等效项。
+
+|*datePart*|缩写形式|
 |---|---|
-|day|dd, d  |  
-|week |wk, ww | 
+|day|dd, d  |
+|week |wk, ww |
 |month |mm, m  |
-|quarter |qq, q  |  
-|**year**|yy, yyyy  |  
-|hour |**hh**|  
-|minute |mi, n  |  
-|second |ss, s  |  
-|millisecond |ms|  
+|quarter |qq, q  |
+|**year**|yy, yyyy  |
+|hour |**hh**|
+|minute |mi, n  |
+|second |ss, s  |
+|millisecond |ms|
 
 *数字*
 
-一个整数，用于确定与 datePart 参数组合使用的存储桶的宽度。 这表示从原始时间开始的 dataPart 存储桶的宽度。 **`This argument cannot be a negative integer value`**. 
+一个整数，用于确定与 datePart 参数组合使用的存储桶的宽度。 这表示从原始时间开始的 dataPart 存储桶的宽度。 **`This argument cannot be a negative integer value`**.
 
 *date*
 
@@ -61,25 +61,25 @@ DATE_BUCKET (datePart, number, date, origin)
 
 + **date**
 + **datetime**
-+ **datetimeoffset**
 + **datetime2**
++ **datetimeoffset**
 + **smalldatetime**
 + **time**
 
 对于 date，`DATE_BUCKET` 将接受列表达式、表达式或用户定义的变量，前提是它们解析为上面提到的任何数据类型。
 
-**源** 
+**源**
 
 可解析为下列值之一的可选表达式：
 
 + **date**
 + **datetime**
-+ **datetimeoffset**
 + **datetime2**
++ **datetimeoffset**
 + **smalldatetime**
 + **time**
 
-`Origin` 的数据类型应与 `Date` 参数的数据类型相匹配。 
+`Origin` 的数据类型应与 `Date` 参数的数据类型相匹配。
 
 如果没有为该函数指定原始值，`DATE_BUCKET` 将使用默认原始日期值 `1900-01-01 00:00:00.000`，即 1900 年 1 月 1 日星期一上午 12:00。
 
@@ -91,7 +91,7 @@ DATE_BUCKET (datePart, number, date, origin)
 
 ### <a name="understanding-the-output-from-date_bucket"></a>了解来自 `DATE_BUCKET` 的输出
 
-`Date_Bucket` 返回与 datePart 和 number 参数相对应的最晚日期或时间值。 例如，在下面的表达式中，`Date_Bucket` 将返回输出值 `2020-04-13 00:00:00.0000000`，因为输出是基于从默认原始时间 `1900-01-01 00:00:00.000` 开始的一周存储桶计算得出的。 `2020-04-13 00:00:00.0000000` 值是从原始值 `1900-01-01 00:00:00.000` 开始的 6276 周。 
+`Date_Bucket` 返回与 datePart 和 number 参数相对应的最晚日期或时间值。 例如，在下面的表达式中，`Date_Bucket` 将返回输出值 `2020-04-13 00:00:00.0000000`，因为输出是基于从默认原始时间 `1900-01-01 00:00:00.000` 开始的一周存储桶计算得出的。 `2020-04-13 00:00:00.0000000` 值是从原始值 `1900-01-01 00:00:00.000` 开始的 6276 周。
 
 ```sql
 declare @date datetime2 = '2020-04-15 21:22:11'
@@ -126,32 +126,32 @@ Select DATE_BUCKET(wk, 5, @date, @origin)
 ## <a name="datepart-argument"></a>datepart 参数
 
 dayofyear、day 和 weekday 返回相同的值    。 每个 datepart 及其缩写都返回相同的值。
-  
+
 ## <a name="number-argument"></a>number 参数
 
 number 参数不能超出正 int 值的范围。 在以下语句中，number 的参数超出 int 的范围（超出 1）。 以下语句返回以下错误消息：“`Msg 8115, Level 16, State 2, Line 2. Arithmetic overflow error converting expression to data type int."`
-  
+
 ```sql
 declare @date datetime2 = '2020-04-30 00:00:00'
 Select DATE_BUCKET(dd, 2147483648, @date)
-```  
+```
 
-如果 number 的负值传递到 `Date_Bucket` 函数，将返回以下错误。 
+如果 number 的负值传递到 `Date_Bucket` 函数，将返回以下错误。
 
-```sql
+```txt
 Msg 9834, Level 16, State 1, Line 1
 Invalid bucket width value passed to date_bucket function. Only positive values are allowed.
 ````
 
-## <a name="date-argument"></a>date 参数  
+## <a name="date-argument"></a>date 参数
 
-`DATE_BUCKET` 返回与 `date` 参数的数据类型相对应的基值。 在下面的示例中，将返回具有 datetime2 数据类型的输出值。 
+`DATE_BUCKET` 返回与 `date` 参数的数据类型相对应的基值。 在下面的示例中，将返回具有 datetime2 数据类型的输出值。
 
 ```sql
 Select DATE_BUCKET(dd, 10, SYSUTCDATETIME())
 ```
 
-## <a name="origin-argument"></a>origin 参数  
+## <a name="origin-argument"></a>origin 参数
 
 `origin` 和 `date` 参数的数据类型必须相同。 如果使用不同的数据类型，则会生成错误。
 
@@ -186,7 +186,7 @@ Select 'Seconds',  DATE_BUCKET(ss, 1, @date)
 
 下面是结果集：
 
-```sql
+```txt
 Week    2020-04-27 00:00:00.0000000
 Day     2020-04-30 00:00:00.0000000
 Hour    2020-04-30 21:00:00.0000000
@@ -197,30 +197,30 @@ Seconds 2020-04-30 21:21:21.0000000
 ### <a name="b-using-expressions-as-arguments-for-the-number-and-date-parameters"></a>B. 使用表达式作为 number 和 date 形参的实参
 
 以下示例使用不同类型的表达式作为 number 和 date 形参的实参 。 这些示例是使用“AdventureWorksDW2017”数据库生成的。
-  
-#### <a name="specifying-user-defined-variables-as-number-and-date"></a>将用户定义的变量指定为 number 和 date  
+
+#### <a name="specifying-user-defined-variables-as-number-and-date"></a>将用户定义的变量指定为 number 和 date
 
 此示例将用户定义的变量指定为 number 和 date 的参数 ：
-  
+
 ```sql
 DECLARE @days int = 365,
-        @datetime datetime2 = '2000-01-01 01:01:01.1110000'; /* 2000 was a leap year */;  
+        @datetime datetime2 = '2000-01-01 01:01:01.1110000'; /* 2000 was a leap year */;
 SELECT Date_Bucket(day, @days, @datetime);
 ```
 
 下面是结果集：
 
-```sql
+```txt
 ---------------------------
 1999-12-08 00:00:00.0000000
 
 (1 row affected)
-```  
+```
 
 #### <a name="specifying-a-column-as-date"></a>将一列指定为 date
 
 在下面的示例中，我们将计算基于每周日期存储桶分组的 OrderQuantity 的总和及 UnitPrice 的总和。
-  
+
 ```sql
 SELECT
     Date_Bucket(week, 1 ,cast(Shipdate as datetime2)) AS ShippedDateBucket
@@ -230,11 +230,11 @@ FROM dbo.FactInternetSales FIS
 where Shipdate between '2011-01-03 00:00:00.000' and '2011-02-28 00:00:00.000'
 Group by Date_Bucket(week, 1 ,cast(Shipdate as datetime2))
 order by 1
-```  
+```
 
 下面是结果集：
-  
-```sql
+
+```txt
 ShippedDateBucket           SumOrderQuantity SumUnitPrice
 --------------------------- ---------------- ---------------------
 2011-01-03 00:00:00.0000000 21               65589.7546
@@ -246,38 +246,38 @@ ShippedDateBucket           SumOrderQuantity SumUnitPrice
 2011-02-14 00:00:00.0000000 32               107804.8964
 2011-02-21 00:00:00.0000000 37               119456.3428
 2011-02-28 00:00:00.0000000 9                28968.6982
-```  
+```
 
 #### <a name="specifying-scalar-system-function-as-date"></a>将标量系统函数指定为 date
 
 此示例指定 `SYSDATETIME` 为 date  。 返回的确切值取决于语句执行的日期和时间：
-  
+
 ```sql
-SELECT Date_Bucket(wk, 10, SYSDATETIME());  
-```  
+SELECT Date_Bucket(wk, 10, SYSDATETIME());
+```
 
 下面是结果集：
 
-```sql
+```txt
 ---------------------------
 2020-03-02 00:00:00.0000000
 
 (1 row affected)
-```  
+```
 
 #### <a name="specifying-scalar-subqueries-and-scalar-functions-as-number-and-date"></a>将标量子查询和标量函数指定为 number 和 date
 
 此示例使用标量子查询 `MAX(OrderDate)` 作为 number 和 date 的参数   。 `(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100)` 充当 number 形参的假实参，用来说明如何从值列表中选择 number 实参  。
-  
+
 ```sql
-SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),  
-    (SELECT MAX(OrderDate) FROM dbo.FactInternetSales));  
-```  
-  
+SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where GeographyKey > 100),
+    (SELECT MAX(OrderDate) FROM dbo.FactInternetSales));
+```
+
 #### <a name="specifying-numeric-expressions-and-scalar-system-functions-as-number-and-date"></a>将数值表达式和标量系统函数指定为 number 和 date
 
 此示例使用数值表达式 ((10/2))，和标量系统函数 (SYSDATETIME) 作为 number 和 date 的参数。
-  
+
 ```sql
 SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 ```
@@ -285,20 +285,20 @@ SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>将聚合开窗函数指定为 number
 
 此示例使用聚合开窗函数作为 number 的参数  。
-  
+
 ```sql
-Select 
+Select
     DISTINCT DATE_BUCKET(day, 30, Cast([shipdate] as datetime2)) as DateBucket,
     First_Value([SalesOrderNumber]) OVER (Order by DATE_BUCKET(day, 30, Cast([shipdate] as datetime2))) as First_Value_In_Bucket,
     Last_Value([SalesOrderNumber]) OVER (Order by DATE_BUCKET(day, 30, Cast([shipdate] as datetime2))) as Last_Value_In_Bucket
     from [dbo].[FactInternetSales]
 Where ShipDate between '2011-01-03 00:00:00.000' and '2011-02-28 00:00:00.000'
 order by DateBucket
-GO  
-``` 
+GO
+```
 ### <a name="c-using-a-non-default-origin-value"></a>C. 使用非默认原始值
 
-本示例使用非默认原始值来生成日期 Bucket。 
+本示例使用非默认原始值来生成日期 Bucket。
 
 ```sql
 declare @date datetime2 = '2020-06-15 21:22:11'

@@ -7,16 +7,16 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: d5e9b449aaff6bb14283184c2182d0e9de2ef0c5
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 24e81f9d83212b674b50acdb24042b6d29a9c266
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407554"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741502"
 ---
-# <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
+# <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 
 本文档介绍在 Azure Arc 上创建超大规模 PostgreSQL 服务器组的步骤。
 
@@ -35,25 +35,6 @@ ms.locfileid: "111407554"
 如果你想要在不自行预配完整环境的情况下进行试用，请在 Azure Kubernetes 服务 (AKS)、AWS Elastic Kubernetes 服务 (EKS)、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中，通过 [Azure Arc 快速入门](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)快速开始操作。
 
 
-## <a name="login-to-the-azure-arc-data-controller"></a>登录 Azure Arc 数据控制器
-
-在创建实例之前，必须首先登录 Azure Arc 数据控制器。 如果已登录到数据控制器，则可以跳过此步骤。
-
-```console
-azdata login
-```
-
-然后，系统会提示输入用户名、密码和系统命名空间。  
-
-> 如果使用了脚本来创建数据控制器，则命名空间应为“arc”
-
-```console
-Namespace: arc
-Username: arcadmin
-Password:
-Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting active context to `arc`
-```
-
 ## <a name="preliminary-and-temporary-step-for-openshift-users-only"></a>仅适用于 OpenShift 用户的预备步骤和临时步骤
 在转到下一步骤之前请先执行此步骤。 若要将超大规模 PostgreSQL 服务器组部署到非默认项目中的 Red Hat OpenShift，需要针对群集执行以下命令，以更新安全约束。 此命令为要运行超大规模 PostgreSQL 服务器组的服务帐户授予必要的特权。 安全性上下文约束 (SCC) arc-data-scc 是部署 Azure arc 数据控制器时添加的。
 
@@ -66,13 +47,13 @@ Server-group-name 是要在下一步骤中创建的服务器组的名称。
 有关 OpenShift 中 SCC 的更多详细信息，请参阅 [OpenShift 文档](https://docs.openshift.com/container-platform/4.2/authentication/managing-security-context-constraints.html)。 现在可以执行下一步骤。
 
 
-## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
+## <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 
-若要在 Arc 数据控制器上创建已启用 Azure Arc 的超大规模 PostgreSQL 服务器组，你将使用要向其传递几个参数的 `azdata arc postgres server create` 。
+若要在 Arc 数据控制器上创建已启用 Azure Arc 的超大规模 PostgreSQL 服务器组，你将使用要向其传递多个参数的 `az postgres arc-server create` 命令。
 
 有关在创建时可设置的所有参数的详细信息，请查看以下命令的输出：
-```console
-azdata arc postgres server create --help
+```azurecli
+az postgres arc-server create --help
 ```
 
 应考虑的主要参数是：
@@ -98,15 +79,15 @@ azdata arc postgres server create --help
     - 要设置日志的存储类，请指示参数 `--storage-class-logs` 或 `-scl`，后跟存储类的名称。
     - 要设置备份的存储类：在此已启用 Azure Arc 的超大规模 PostgreSQL 预览版中，可以通过两种方法设置存储类，具体取决于要执行的备份/还原操作的类型。 我们正在努力简化此体验。 你将指示存储类或卷声明装载。 卷声明装载是一对现有永久性卷声明（相同命名空间中）和卷类型（和可选元数据，具体取决于卷类型），用冒号分隔。 将在 PostgreSQL 服务器组的每个 pod 中装载永久性卷。
         - 如果要计划仅执行完整的数据库还原，请设置参数 `--storage-class-backups` 或 `-scb`，后跟存储类的名称。
-        - 如果计划同时执行完整的数据库还原和时间点还原，请设置参数 `--volume-claim-mounts` 或 `-vcm`，后跟卷声明和卷类型的名称。
+        - 如果计划同时执行完整的数据库还原和时间点还原，请设置参数 `--volume-claim-mounts` 或 `--volume-claim-mounts`，后跟卷声明和卷类型的名称。
 
 请注意，执行 create 命令时，系统将提示你输入默认 `postgres` 管理用户的密码。 在此预览版中无法更改该用户的名称。 在运行 create 命令之前，可以通过设置 `AZDATA_PASSWORD` 会话环境变量来跳过交互式提示。
 
 ### <a name="examples"></a>示例
 
 要部署名为 postgres01 且包含 2 个工作器节点的 Postgres 版本 12 服务器组，该服务器组使用与数据控制器相同的存储类，请运行以下命令：
-```console
-azdata arc postgres server create -n postgres01 --workers 2
+```azurecli
+az postgres arc-server create -n postgres01 --workers 2 --k8s-namespace <namespace> --use-k8s
 ```
 
 要部署名为 postgres01 且包含 2 个工作器节点的 Postgres 版本 12 服务器组，该服务器组使用与数据和日志的数据控制器相同的存储类，但其特定存储类用于执行完整还原和时间点还原，请按以下步骤操作：
@@ -138,8 +119,8 @@ kubectl create -f e:\CreateBackupPVC.yml -n arc
 
 然后，创建服务器组：
 
-```console
-azdata arc postgres server create -n postgres01 --workers 2 -vcm backup-pvc:backup
+```azurecli
+az postgres arc-server create -n postgres01 --workers 2 --volume-claim-mounts backup-pvc:backup --k8s-namespace <namespace> --use-k8s
 ```
 
 > [!IMPORTANT]
@@ -156,8 +137,8 @@ azdata arc postgres server create -n postgres01 --workers 2 -vcm backup-pvc:back
 
 要列出在 Arc 数据控制器中部署的超大规模 PostgreSQL 服务器组，请运行以下命令：
 
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 
@@ -171,8 +152,8 @@ postgres01  Ready     2
 
 要查看 PostgreSQL 服务器组的终结点，请运行以下命令：
 
-```console
-azdata arc postgres endpoint list -n <server group name>
+```azurecli
+az postgres arc-server endpoint list -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 例如：
 ```console
@@ -194,6 +175,8 @@ azdata arc postgres endpoint list -n <server group name>
 
 可使用 PostgreSQL 实例终结点从你喜欢的工具连接到 PostgreSQL 超大规模服务器组：[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)、[Pgcli](https://www.pgcli.com/) psql、pgAdmin 等。这样做时，可连接到协调器节点/实例，它负责将查询路由到相应的工作器节点/实例（如果创建了分布式表）。 有关更多详细信息，请参阅[已启用 Azure Arc 的超大规模 PostgreSQL 的概念](concepts-distributed-postgres-hyperscale.md)。
 
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
 ## <a name="special-note-about-azure-virtual-machine-deployments"></a>有关 Azure 虚拟机部署的特别说明
 
 如果使用 Azure 虚拟机，则终结点 IP 地址将不显示公共 IP 地址。 若要查找公共 IP 地址，请使用以下命令：
@@ -214,7 +197,7 @@ az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 
 获取 NSG 的名称后，可使用以下命令添加防火墙规则。 此处的示例值针对端口 30655 创建一个 NSG 规则，并允许来自任何源 IP 地址的连接。  这不是一种最佳安全做法！  通过指定特定于你的客户端 IP 地址或 IP 地址范围（涵盖你的团队或组织的 IP 地址）的 -source-address-prefixes 值，可以更好地锁定内容。
 
-将下面的 --destination-port-ranges 参数的值替换为你在上面的“azdata arc postgres server list”命令中获取的端口号。
+将下面的 --destination-port-ranges 参数的值替换为你在上面的“az postgres arc-server list”命令中获取的端口号。
 
 ```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30655 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
@@ -245,7 +228,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
 ## <a name="next-steps"></a>后续步骤
 
-- 连接到已启用 Azure Arc 的超大规模 PostgreSQL：阅读[获取连接终结点和连接字符串](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)
+- 连接到已启用 Azure Arc 的超大规模 PostgreSQL：请阅读[获取连接终结点和连接字符串](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)
 - 阅读 Azure Database for PostgreSQL 超大规模的概念和操作方法指南，以将数据分布到多个超大规模 PostgreSQL 节点并可能从更好的性能中获益：
     * [节点和表](../../postgresql/concepts-hyperscale-nodes.md)
     * [确定应用程序类型](../../postgresql/concepts-hyperscale-app-type.md)

@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 27d00d137c2fb178b2bd96732664c08965ce3073
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 2b5540d3b45b77cd39e014605780b98b867498fd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634492"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744903"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-powershell"></a>使用 Bicep 和 Azure PowerShell 部署资源
 
@@ -75,7 +75,7 @@ ms.locfileid: "122634492"
 New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 ```
 
-若要部署本地 Bicep 文件，请在部署命令中使用 `-TemplateFile` 参数。
+若要部署本地 Bicep 文件，请在部署命令中使用 `-TemplateFile` 参数。 
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -157,7 +157,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 ## <a name="deploy-template-specs"></a>部署模板规格
 
-目前，Azure PowerShell 不支持通过提供 Bicep 文件来创建模板规格。 但是，可以使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。下面是一个[示例](https://github.com/Azure/azure-docs-bicep-samples/blob/main/create-template-spec-using-bicep/azuredeploy.bicep)。 还可使用 Bicep CLI 将 Bicep 文件生成到 ARM 模板 JSON 中，然后使用 JSON 模板创建模板规格。
+目前，Azure PowerShell 不支持通过提供 Bicep 文件来创建模板规格。 但是，可以使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。下面是一个[示例](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep)。 还可使用 Bicep CLI 将 Bicep 文件生成到 ARM 模板 JSON 中，然后使用 JSON 模板创建模板规格。
 
 ## <a name="deployment-name"></a>部署名称
 

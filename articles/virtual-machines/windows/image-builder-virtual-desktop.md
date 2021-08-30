@@ -1,8 +1,8 @@
 ---
 title: 映像生成器 - 创建 Windows 虚拟桌面映像
 description: 在 PowerShell 中使用 Azure 映像生成器创建 Windows 虚拟桌面的 Azure VM 映像。
-author: danielsollondon
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
 ms.reviewer: cynthn
 ms.date: 05/12/2021
 ms.topic: article
@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 20f50ccfcbfce7a4e70722feaef4d245e11336f8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 45748ac5c21993e6df69950e03de9e90180c4ab0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031108"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472070"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>使用 Azure VM 映像生成器和 PowerShell 创建 Windows 虚拟桌面映像
 
@@ -23,7 +23,7 @@ ms.locfileid: "112031108"
 
 * 安装 [FsLogix](https://github.com/DeanCefola/Azure-WVD/blob/master/PowerShell/FSLogixSetup.ps1)。
 * 从社区存储库运行 [Windows 虚拟桌面优化脚本](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool)。
-* 安装 [Microsoft Teams](../../virtual-desktop/teams-on-wvd.md)。
+* 安装 [Microsoft Teams](../../virtual-desktop/teams-on-avd.md)。
 * [重启](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
 * 运行 [Windows 更新](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer)
 
@@ -74,7 +74,7 @@ ms.locfileid: "112031108"
 
 ## <a name="prerequisites"></a>先决条件
 
-必须安装最新的 Azure PowerShell Cmdlet，请参阅[此处](/powershell/azure/overview)了解安装详细信息。
+必须安装最新的 Azure PowerShell Cmdlet，请参阅 [Azure PowerShell 概述](/powershell/azure/overview)，了解安装详细信息。
 
 ```PowerShell
 # check you are registered for the providers, ensure RegistrationState is set to 'Registered'.
@@ -162,8 +162,7 @@ New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $imag
 ```
 
 > [!NOTE] 
-> 如果看到此错误：“New-AzRoleDefinition: 已超出角色定义限制。 无法创建更多的角色定义。” 请参阅本文以解决此问题： https://docs.microsoft.com/azure/role-based-access-control/troubleshooting 。
-
+> 如果看到此错误：“New-AzRoleDefinition: 已超出角色定义限制。 无法创建更多的角色定义。” 请参阅 [Azure RBAC 故障排除](../../role-based-access-control/troubleshooting.md)。
 
 
 ## <a name="create-the-shared-image-gallery"></a>创建共享映像库 
@@ -273,7 +272,7 @@ $getStatus.LastRunStatusMessage
 $getStatus.LastRunStatusRunSubState
 ```
 ## <a name="create-a-vm"></a>创建 VM
-生成完成后，可以从映像生成 VM，使用[此处](/powershell/module/az.compute/new-azvm#examples)的示例。
+生成完成后，可以从映像生成 VM，使用 [New-AzVM (Az.Compute)](/powershell/module/az.compute/new-azvm#examples) 中的示例。
 
 ## <a name="clean-up"></a>清理
 
@@ -306,3 +305,4 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 ## <a name="next-steps"></a>后续步骤
 
 你可以在 [GitHub](https://github.com/azure/azvmimagebuilder/tree/master/quickquickstarts) 上试用更多示例。
+

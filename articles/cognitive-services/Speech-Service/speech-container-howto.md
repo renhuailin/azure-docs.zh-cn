@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 08/10/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: 5c16a0245361dfa7e3ff160f5ffa45154555aa0b
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: ccca7f1deeeef49b734313c30d13290e47b6ab57
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495324"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727978"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 API 安装并运行 Docker 容器 
 
@@ -25,54 +25,34 @@ ms.locfileid: "110495324"
 
 通过语音容器，客户能够生成语音应用程序体系结构，该体系结构针对强大的云功能和边缘位置进行了优化。 可以使用多个容器，它们的[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)与基于云的 Azure 语音服务相同。
 
-
-> [!IMPORTANT]
-> 以下语音容器现已推出正式版：
-> * 标准语音转文本
-> * 自定义语音转文本
-> * 标准文本转语音
-> * 神经文本转语音
->
-> 以下语音容器已推出受限预览版。
-> * 语音语言识别 
->
-> 若要使用语音容器，必须提交在线请求并获得批准。 有关详细信息，请参阅下面的“请求批准运行容器”部分。
-
-| 容器 | 功能 | 最晚 |
-|--|--|--|
-| 语音转文本 | 使用中间结果分析情绪并听录连续实时语音或批量音频录制内容。  | 2.12.0 |
-| 自定义语音转文本 | 通过[自定义语音识别门户](https://speech.microsoft.com/customspeech)中的自定义模型，使用中间结果将连续实时语音或批量音频录制内容听录成文本。 | 2.12.0 |
-| 文本转语音 | 使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.14.0 |
-| 语音语言识别 | 检测音频文件中讲述的语言。 | 1.0 |
-| 神经文本转语音 | 使用深度神经网络技术将文本转换为自然语音，使合成语音变得更自然。 | 1.6.0 |
+| 容器 | 功能 | 最晚 | 版本状态 |
+|--|--|--|--|
+| 语音转文本 | 使用中间结果分析情绪并听录连续实时语音或批量音频录制内容。  | 2.13.0 | 正式版 |
+| 自定义语音转文本 | 通过[自定义语音识别门户](https://speech.microsoft.com/customspeech)中的自定义模型，使用中间结果将连续实时语音或批量音频录制内容听录成文本。 | 2.13.0 | 正式版 |
+| 文本转语音 | 使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.14.1 | 正式版 |
+| 语音语言识别 | 检测音频文件中讲述的语言。 | 1.3.0 | 门控式预览版 |
+| 神经文本转语音 | 使用深度神经网络技术将文本转换为自然语音，使合成语音变得更自然。 | 1.8.0 | 正式版 |
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-在使用语音容器之前必须满足以下先决条件：
+> [!IMPORTANT]
+> 若要使用语音容器，必须提交在线请求并获得批准。 有关详细信息，请参阅下面的“请求批准运行容器”部分。
 
-| 必须 | 目的 |
-|--|--|
-| Docker 引擎 | 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br> |
-| 熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。 |
-| 语音资源 | 若要使用这些容器，必须具有：<br><br>一个用于获取关联 API 密钥和终结点 URI 的 Azure 语音资源。 可在 Azure 门户的 **语音**“概述”和“密钥”页上获取两个值。 必须获取这两个值才能启动容器。<br><br>**{API_KEY}** ：“密钥”页上提供的两个可用资源密钥中的一个<br><br>**{ENDPOINT_URI}** ：“概述”页上提供的终结点 |
+使用语音服务容器之前，必须满足以下先决条件。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
+
+* 在主机上安装的 [Docker](https://docs.docker.com/)。 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 
+    * 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。
+    * 应基本了解 [Docker 概念](https://docs.docker.com/get-started/overview/)。 
+* 使用免费 (F0) 或标准 (S) [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices"  title="创建语音服务资源"  target="_blank">语音服务资源</a>。
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-## <a name="the-host-computer"></a>主计算机
+
+## <a name="host-computer-requirements-and-recommendations"></a>主机要求和建议
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
-
-### <a name="advanced-vector-extension-support"></a>高级矢量扩展支持
-
-主机是运行 docker 容器的计算机。 主机必须支持[高级矢量扩展](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2)。 可使用以下命令检查 Linux 主机是否提供 AVX2 支持：
-
-```console
-grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
-```
-> [!WARNING]
-> 需要主计算机来支持 AVX2。 如果没有 AVX2 支持，容器将无法正常运行。
 
 ### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
@@ -92,6 +72,16 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 > [!NOTE]
 > 最小和建议值基于 Docker 限制，而不是基于主机资源。 例如，大型语言模型的文本转语音容器内存映射部分；建议将整个文件装入内存，这需要额外的 4-6 GB。 另外，由于模型要在内存中分页，因此首次运行任一容器可能需要更长的时间。
+
+### <a name="advanced-vector-extension-support"></a>高级矢量扩展支持
+
+主机是运行 docker 容器的计算机。 主机必须支持[高级矢量扩展](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2)。 可使用以下命令检查 Linux 主机是否提供 AVX2 支持：
+
+```console
+grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
+```
+> [!WARNING]
+> 需要主计算机来支持 AVX2。 如果没有 AVX2 支持，容器将无法正常运行。
 
 ## <a name="request-approval-to-the-run-the-container"></a>请求批准运行容器
 
@@ -263,7 +253,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/language-d
 
 ## <a name="how-to-use-the-container"></a>如何使用容器
 
-一旦容器位于[主计算机](#the-host-computer)上，请通过以下过程使用容器。
+一旦容器位于[主计算机](#host-computer-requirements-and-recommendations)上，请通过以下过程使用容器。
 
 1. 使用所需的计费设置[运行容器](#run-the-container-with-docker-run)。 提供 `docker run` 命令的多个[示例](speech-container-configuration.md#example-docker-run-commands)。
 1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。
@@ -516,16 +506,6 @@ ApiKey={API_KEY}
 * 分配 1 个 CPU 核心和 1 千兆字节 (GB) 内存。
 * 公开 TCP 端口 5003，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
-
-如果你只是发送语音语言识别请求，则需要将语音客户端的 `phraseDetection` 值设置为 `None`。  
-
-```python
-speech_config.set_service_property(
-      name='speechcontext-phraseDetection.Mode',
-      value='None',
-      channel=speechsdk.ServicePropertyChannel.UriQueryParameter
-   )
-```
 
 如果你要结合语音转文本容器运行此容器，可以使用此 [Docker 映像](https://hub.docker.com/r/antsu/on-prem-client)。 启动这两个容器后，使用此 Docker Run 命令执行 `speech-to-text-with-languagedetection-client`。
 

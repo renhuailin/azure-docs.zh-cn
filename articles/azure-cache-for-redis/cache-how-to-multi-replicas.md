@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: c9be8958dada7acc5d53e6c99c79527e10142121
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d92591e335a24aa50de081c5a001801f22c92dba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463074"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750225"
 ---
 # <a name="add-replicas-to-azure-cache-for-redis"></a>将副本添加到 Azure Cache for Redis
 本文介绍如何使用 Azure 门户设置包含附加副本的 Azure 缓存实例。
@@ -43,10 +43,14 @@ Azure Cache for Redis 标准和高级层通过将每个缓存托管在两个专�
 1. 在“高级”页面上，选择“副本计数” 。
    
     :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="副本计数。":::
+    
+    > [!NOTE]
+    > 目前，不能对多个副本（多于 1 个副本）使用仅追加文件 (AOF) 持久化或异地复制。
+    >
 
 1. 将其他选项保留默认设置。 
 
-1. 单击“创建”。
+1. 选择“创建”。
    
     创建缓存需要花费片刻时间。 可以在 Azure Cache for Redis 的“概述”页上监视进度。  如果“状态”显示为“正在运行”，则表示该缓存可供使用。 
 

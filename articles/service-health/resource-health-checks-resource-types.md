@@ -2,13 +2,13 @@
 title: 通过 Azure 资源运行状况支持的资源类型 | Microsoft Docs
 description: 通过 Azure 资源运行状况支持的资源类型
 ms.topic: conceptual
-ms.date: 01/29/2019
-ms.openlocfilehash: 1b0958732a96786b2fb86b2b145f5cb8d36c0c5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/05/2021
+ms.openlocfilehash: 2b3c2944cff20db2feb3236ca7381107f3db6061
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97883361"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741961"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -264,7 +264,13 @@ ms.locfileid: "97883361"
 |---|
 |<ul><li>主机服务器是否已启动并正在运行？</li><li>Internet 信息服务器是否正在运行？</li><li>负载均衡器是否正在运行？</li><li>是否可从数据中心内访问 Web 应用？</li><li>托管站点内容的存储帐户是否可用？</li></ul>|
 
+## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/vaults
+
+| 执行的检查 |
+| --- |
+|<ul><li>在此保管库中配置的备份项目的任何备份操作是否会由于超出用户控制而失败？</li><li>在此保管库中配置的备份项目的任何还原操作是否会由于超出用户控制而失败？</li></ul> |
+
 ## <a name="next-steps"></a>后续步骤
 -  请参阅 [Azure 服务运行状况仪表板简介](service-health-overview.md)和 [Azure 资源运行状况简介](resource-health-overview.md)，了解更多相关信息。 
--  [有关 Azure 资源运行状况的常见问题解答](resource-health-faq.md)
+-  [有关 Azure 资源运行状况的常见问题解答](resource-health-faq.yml)
 - 设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅[配置服务运行状况事件的警报](./alerts-activity-log-service-notifications-portal.md)。

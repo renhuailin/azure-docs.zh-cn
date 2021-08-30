@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: fca6e59d3aa5b95db0b9ad28f652226ae2eb30ba
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: f25f67839c0bf859e020859db60027d9a5b2db91
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556522"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729132"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure 认知搜索的功能
 
@@ -23,7 +23,7 @@ Azure 认知搜索提供了全文搜索引擎、持久的搜索索引存储、�
 
 | 类别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 功能 |
 |-------------------|----------|
-| 数据源 | 搜索索引可以接受来自任何源的文本，只要该文本是以 JSON 文档格式提交的。 <br/><br/> [**索引器**](search-indexer-overview.md)自动从受支持的 Azure 数据源中引入数据，并处理 JSON 序列化。 连接到 [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-cosmosdb.md) 或 [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)，以提取主要数据存储中的可搜索内容。 Azure Blob 索引器可以执行“文档破解”[从主要文件格式提取文本](search-howto-indexing-azure-blob-storage.md)，包括 Microsoft Office、PDF 和 HTML 文档。 |
+| 数据源 | 搜索索引可以接受来自任何源的文本，只要该文本是以 JSON 文档格式提交的。 <br/><br/> [索引器](search-indexer-overview.md)是一项功能，可自动从支持的数据源导入数据，以便在主数据存储中提取可搜索的内容。 索引器会为你处理 JSON 序列化。 可连接到[各种数据源](search-data-sources-gallery.md)，包括 [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-cosmosdb.md) 或 [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)。 |
 | 分层的嵌套数据结构 | 使用 [**复杂类型**](search-howto-complex-data-types.md)和集合，几乎可以在搜索索引中对任何类型的 JSON 结构建模。 可以通过集合、复杂类型和复杂类型集合，以本机方式表示一对多和多对多基数。|
 | 语言分析 | 分析器是在编制索引和搜索操作期间用于处理文本的组件。 默认情况下，你可以使用常规用途标准 Lucene 分析器，也可以将其替代为某个语言分析器、你配置的自定义分析器或以所需格式生成令牌的其他预定义分析器。 <br/><br/>Lucene 或 Microsoft 的[语言分析器](index-add-language-analyzers.md)用于智能处理特定于语言的语言学，包括谓词时态、词性、不规则复数名词（例如“mouse”与“mice”）、词取消复合、词拆分（对于不带空格的语言）等。 <br/><br/>[**自定义词汇分析器**](index-add-custom-analyzers.md)用于复杂查询形式，例如拼音匹配和正则表达式。<br/><br/> |
 

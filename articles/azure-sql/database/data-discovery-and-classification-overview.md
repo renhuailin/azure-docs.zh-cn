@@ -11,21 +11,21 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/17/2021
+ms.date: 08/16/2021
 tags: azure-synapse
-ms.openlocfilehash: d6b51d32b691919e0f0947d3ddb58d184424b9ad
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: e61660a5c559012cbf4940356bd1a204f3203db6
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534403"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228773"
 ---
 # <a name="data-discovery--classification"></a>数据发现和分类
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 数据发现和分类内置于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics 中。 它提供用于发现、分类、标记和报告数据库中的敏感数据的基本功能。
 
-最敏感的数据可能包括业务、财务、医疗保健或个人信息。 发现和分类这些数据在组织的信息保护方法中发挥举足轻重的作用。 它可以充当基础结构，用于：
+最敏感的数据可能包括业务、财务、医疗保健或个人信息。 它可以充当基础结构，用于：
 
 - 帮助满足数据隐私标准和法规符合性要求。
 - 各种安全方案，如监视（审核）对敏感数据的访问。
@@ -36,11 +36,11 @@ ms.locfileid: "110534403"
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>什么是数据发现和分类？
 
-数据发现和分类形成适用于 SQL 数据库、SQL 托管实例和 Azure Synapse 的新信息保护范例，旨在保护数据，而不仅仅是保护数据库。 目前，它支持以下功能：
+数据发现和分类目前支持以下功能：
 
 - **发现和建议：** 分类引擎扫描数据库，并识别包含潜在敏感数据的列。 使用此功能可以通过 Azure 门户轻松地查看和应用建议的分类。
 
-- **标记：** 可通过使用已添加到 SQL Server 数据库引擎的新元数据属性，将敏感度分类标签永久应用于列。 然后，此元数据可用于基于敏感度的审核和保护方案。
+- **标记：** 可通过使用已添加到 SQL Server 数据库引擎的新元数据属性，将敏感度分类标签永久应用于列。 然后，此元数据可用于基于敏感度的审核方案。
 
 - **查询结果集敏感度：** 出于审核目的实时计算查询结果集的敏感度。
 
@@ -64,7 +64,7 @@ ms.locfileid: "110534403"
 
 可在一个中心位置针对整个 Azure 组织定义和自定义分类。 该位置在 [Azure 安全中心](../../security-center/security-center-introduction.md)内，是安全策略的一部分。 仅对组织根管理组具有管理权限的人员可以执行此任务。
 
-在信息保护的策略管理过程中，可定义自定义标签、对其进行分级，并将其与选定的一组信息类型相关联。 还可以添加自己的自定义信息类型，并使用字符串模式对其进行配置。 这些模式已添加到用于识别数据库中的此类型数据的发现逻辑。
+作为策略管理的一部分，你可定义自定义标签，对其进行分级，并将其与选定的一组信息类型相关联。 还可以添加自己的自定义信息类型，并使用字符串模式对其进行配置。 这些模式已添加到用于识别数据库中的此类型数据的发现逻辑。
 
 有关详细信息，请参阅[在 Azure 安全中心（预览版）中自定义 SQL 信息保护策略](../../security-center/security-center-info-protection-policy.md)。
 
@@ -112,7 +112,7 @@ ms.locfileid: "110534403"
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>审核对敏感数据的访问
 
-信息保护范例的一个重要方面是能够监视对敏感数据的访问。 [Azure SQL 审核](../../azure-sql/database/auditing-overview.md)已得到增强，在审核日志中包括了名为 `data_sensitivity_information` 的新字段。 此字段记录查询返回的数据的敏感度分类（标签）。 下面是一个示例：
+分类的一个重要方面是能够监视对敏感数据的访问。 [Azure SQL 审核](../../azure-sql/database/auditing-overview.md)已得到增强，在审核日志中包括了名为 `data_sensitivity_information` 的新字段。 此字段记录查询返回的数据的敏感度分类（标签）。 下面是一个示例：
 
 ![审核日志](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 

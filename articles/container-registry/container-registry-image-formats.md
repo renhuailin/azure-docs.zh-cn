@@ -3,12 +3,12 @@ title: 支持的内容格式
 description: 了解 Azure 容器注册表支持的内容格式，其中包括与 Docker 兼容的容器映像、Helm 图表、OCI 映像和 OCI 项目。
 ms.topic: article
 ms.date: 03/02/2021
-ms.openlocfilehash: 218d98f3f16e8d0ca76a24692afbb2b69606564b
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 1203bc8cbebfd59ef28f03d19e939b73d707a3f3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223058"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438875"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure 容器注册表中支持的内容格式
 
@@ -28,7 +28,10 @@ Azure 容器注册表支持符合[开放容器计划 (OCI) 映像格式规范](h
 
 ## <a name="oci-artifacts"></a>OCI 项目
 
-Azure 容器注册表支持 [OCI 分发规范](https://github.com/opencontainers/distribution-spec)，这是一个独立于供应商、与云无关的规范，用于存储、共享、保护和部署容器映像和其他内容类型（项目）。 除了容器映像外，该规范还允许注册表存储各种不同的项目。 可以使用适合于项目的工具来推送和拉取项目。 有关示例，请参阅[使用 Azure 容器注册表推送和拉取 OCI 项目](container-registry-oci-artifacts.md)。
+Azure 容器注册表支持 [OCI 分发规范](https://github.com/opencontainers/distribution-spec)，这是一个独立于供应商、与云无关的规范，用于存储、共享、保护和部署容器映像和其他内容类型（项目）。 除了容器映像外，该规范还允许注册表存储各种不同的项目。 可以使用适合于项目的工具来推送和拉取项目。 有关示例，请参阅：
+
+* [使用 Azure 容器注册表推送和拉取 OCI 项目](container-registry-oci-artifacts.md)
+* [将 Helm 图表推送和提取到 Azure 容器注册表](container-registry-helm-repos.md)
 
 若要详细了解 OCI 项目，请参阅 GitHub 上的 [OCI 注册表即存储 (ORAS)](https://github.com/deislabs/oras) 存储库和 [OCI 项目](https://github.com/opencontainers/artifacts)存储库。
 

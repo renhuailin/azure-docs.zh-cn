@@ -7,12 +7,12 @@ ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a0a7b24c2d28e27c44a130383e852838950abe49
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d6a1d252a6b9068697fe738d4d2b1c6bbf6ceeb5
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733186"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588266"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>如何在 Azure IoT Central 解决方案中使用命令
 
@@ -39,7 +39,7 @@ ms.locfileid: "108733186"
 
 | 字段             |说明|
 |-------------------|-----------|
-|显示名称       |仪表板和窗体上使用的命令值。|
+|显示名称       |“仪表板磁贴”和“设备”窗体中使用的命令值。|
 | 名称            | 命令的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 此字段必须为字母数字。 设备代码使用此“名称”值。|
 | 功能类型 | 命令。|
 | 脱机时排队 | 是否让此命令成为脱机命令。 |

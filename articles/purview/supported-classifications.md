@@ -1,18 +1,18 @@
 ---
 title: 支持的分类的列表
 description: 此页列出 Azure Purview 中支持的系统分类。
-author: anmuk601
-ms.author: anmuk
+author: viseshag
+ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
 ms.date: 4/1/2021
-ms.openlocfilehash: e1d3d495d958465e966701aa7ce91bc2706b48e0
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f6282d66a6c499e5a8e14cd90e90dc9b6f6ee633
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219580"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768387"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Azure Purview 中支持的分类
 
@@ -65,7 +65,7 @@ Azure Purview 通过 [RegEx](https://wikipedia.org/wiki/Regular_expression) 和 
 
 ### <a name="keywords"></a>关键字
 
-#### <a name="keyword_aba_routing"></a>Keyword_aba_routing
+#### <a name="keyword_aba_routing"></a>Keyword\_aba\_routing
 
 ```
 amba number
@@ -103,7 +103,7 @@ RTN
 
 ### <a name="keywords"></a>关键字
 
-#### <a name="keyword_argentina_national_id"></a>Keyword_argentina_national_id
+#### <a name="keyword_argentina_national_id"></a>Keyword\_argentina\_national\_id
 
 ```
 Argentina National Identity number
@@ -135,7 +135,7 @@ rnp
 
 ### <a name="keywords"></a>关键字
 
-#### <a name="keyword_australia_bank_account_number"></a>Keyword_australia_bank_account_number
+#### <a name="keyword_australia_bank_account_number"></a>Keyword\_australia\_bank\_account\_number
 
 ```
 swift bank code
@@ -152,7 +152,61 @@ banking information
 full names
 iaea
 ```
+## <a name="australia-business-number"></a>澳大利亚企业编号
 
+### <a name="format"></a>格式
+带可选分隔符的 11 位数字
+
+### <a name="pattern"></a>模式
+带可选分隔符的 11 位数字：
+
+- 2 位数字
+- 1 个可选连字符或空格
+- 3 位数字
+- 1 个可选连字符或空格
+- 3 位数字
+- 1 个可选连字符或空格
+- 3 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_australia_business_number"></a>Keyword\_australia\_business\_number
+```
+australia business no
+business number
+abn#
+businessid#
+business id
+abn
+businessno#
+```
+
+## <a name="australia-company-number"></a>澳大利亚公司编号 
+
+### <a name="format"></a>格式
+带分隔符的 9 位数字
+
+### <a name="pattern"></a>模式
+带分隔符的 9 位数字：
+
+- 3 位数字
+- 1 个空格
+- 3 位数字
+- 1 个空格
+- 3 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_australia_company_number"></a>Keyword\_australia\_company\_number
+```
+acn
+australia company no
+australia company no#
+australia company number
+australian company no
+australian company no#
+australian company number
+```
 ## <a name="australia-drivers-license-number"></a>澳大利亚驾照编号
 
 ### <a name="format"></a>格式
@@ -176,7 +230,7 @@ OR
 
 ### <a name="keywords"></a>关键字
 
-#### <a name="keyword_australia_drivers_license_number"></a>Keyword_australia_drivers_license_number
+#### <a name="keyword_australia_drivers_license_number"></a>Keyword\_australia\_drivers\_license\_number
 
 ```
 international driving permits
@@ -244,7 +298,7 @@ Driver's License#
 Driver's Licenses#
 ```
 
-#### <a name="keyword_australia_drivers_license_number_exclusions"></a>Keyword_australia_drivers_license_number_exclusions
+#### <a name="keyword_australia_drivers_license_number_exclusions"></a>Keyword\_australia\_drivers\_license\_number\_exclusions
 
 ```
 aaa
@@ -299,7 +353,7 @@ Driver's Licenses#
 
 ### <a name="keywords"></a>关键字
 
-#### <a name="keyword_australia_medicare_number"></a>Keyword_Australia_Medicare_Number
+#### <a name="keyword_australia_medicare_number"></a>Keyword\_Australia\_Medicare\_Number
 
 ```
 bank account details
@@ -396,15 +450,383 @@ individual tax return
 tax file number
 tfn
 ```
-
-## <a name="belgium-national-number"></a>比利时国民身份证号码
+## <a name="austria-identity-card"></a>奥地利身份证
 
 ### <a name="format"></a>格式
 
-11 位数字加上可选分隔符
+由字母、数字和特殊字符组成的 24 个字符
 
 ### <a name="pattern"></a>模式
 
+24 个字符：
+
+- 22 个字母（不区分大小写）、数字、反斜杠、正斜杠或加号
+- 2 个字母（不区分大小写）、数字、反斜杠、正斜杠、加号或等号
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_austria_eu_national_id_card"></a>Keyword\_austria\_eu\_national\_id\_card
+
+```
+identity number
+national id
+personalausweis republik österreich
+```
+## <a name="austria-tax-identification-number"></a>奥地利税务标识号
+
+### <a name="format"></a>格式
+
+带可选连字符和正斜杠的 9 位数字
+
+### <a name="pattern"></a>模式
+
+带可选连字符和正斜杠的 9 位数字：
+
+- 2 位数字
+- 1 个连字符（可选）
+- 3 位数字
+- 1 个正斜杠（可选）
+- 4 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_austria_eu_tax_file_number"></a>Keywords\_austria\_eu\_tax\_file\_number
+
+```
+österreich
+st.nr.
+steuernummer
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+tax number
+```
+## <a name="austria-passport-number"></a>加拿大护照号码
+
+### <a name="format"></a>格式
+1 个字母，后跟 1 个可选空格和 7 位数字
+
+### <a name="pattern"></a>模式
+1 个字母、7 位数字和 1 个空格的组合：
+
+- 1 个字母（不区分大小写）
+- 1 个空格（可选）
+- 7 位数字
+
+### <a name="keywords"></a>关键字
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_austria_eu_passport_number"></a>Keywords\_austria\_eu\_passport\_number
+```
+reisepassnummer
+reisepasse
+No-Reisepass
+Nr-Reisepass
+Reisepass-Nr
+Passnummer
+reisepässe
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="austria-social-security-number"></a>奥地利社会安全号码 
+
+### <a name="format"></a>格式
+采用指定格式的 10 位数字
+
+### <a name="pattern"></a>模式
+10 位数：
+
+- 对应于序列号的 3 位数字
+- 1 位校验数字
+- 与出生日期对应的 6 位数字 (DDMMYY)
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_austria_eu_ssn_or_equivalent"></a>Keywords\_austria\_eu\_ssn\_or\_equivalent
+```
+austrian ssn
+ehic number
+ehic no
+insurance code
+insurancecode#
+insurance number
+insurance no
+krankenkassennummer
+krankenversicherung
+socialsecurityno
+socialsecurityno#
+social security no
+social security number
+social security code
+sozialversicherungsnummer
+sozialversicherungsnummer#
+soziale sicherheit kein
+sozialesicherheitkein#
+ssn#
+ssn
+versicherungscode
+versicherungsnummer
+zdravstveno zavarovanje
+```
+
+## <a name="austria-tax-identification-number"></a>奥地利税务标识号 
+
+### <a name="format"></a>格式
+带可选连字符和正斜杠的 9 位数字
+
+### <a name="pattern"></a>模式
+带可选连字符和正斜杠的 9 位数字：
+
+- 2 位数字
+- 1 个连字符（可选）
+- 3 位数字
+- 1 个正斜杠（可选）
+- 4 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_austria_eu_tax_file_number"></a>Keywords\_austria\_eu\_tax\_file\_number
+```
+österreich
+st.nr.
+steuernummer
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+tax number
+```
+
+## <a name="austria-value-added-tax"></a>奥地利增值税 
+### <a name="format"></a>格式
+11 个字符的字母数字模式
+
+### <a name="pattern"></a>模式
+11 个字符的字母数字模式：
+
+- A 或 a
+- T 或 t
+- 可选空格
+- U 或 u
+- 可选空格
+- 2 位或 3 位数字
+- 可选空格
+- 4 位数字
+- 可选空格
+- 1 位或 2 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_austria_value_added_tax"></a>Keyword\_austria\_value\_added\_tax
+```
+vat number
+vat#
+austrian vat number
+vat no.
+vatno#
+value added tax number
+austrian vat
+mwst
+umsatzsteuernummer
+mwstnummer
+ust.-identifikationsnummer
+umsatzsteuer-identifikationsnummer
+vat identification number
+atu number
+uid number
+```
+## <a name="belgium-drivers-license-number"></a>比利时驾照编号 
+
+### <a name="format"></a>格式
+不带空格和分隔符的 10 位数字
+
+### <a name="pattern"></a>模式
+10 位
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+ 
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+
+#### <a name="keywords_belgium_eu_drivers_license_number"></a>Keywords\_belgium\_eu\_driver's\_license\_number
+```
+rijbewijs
+rijbewijsnummer
+führerschein
+führerscheinnummer
+füehrerscheinnummer
+fuhrerschein
+fuehrerschein
+fuhrerscheinnummer
+fuehrerscheinnummer
+permis de conduire
+numéro permis conduire
+```
+## <a name="belgium-national-number"></a>比利时国民身份证号码
+
+### <a name="format"></a>格式
+11 位数字加上可选分隔符
+
+### <a name="pattern"></a>模式
 11 位数字加上可选分隔符：
 
 - 出生日期的格式为 YY.MM.DD，即 6 位数字和 2 个可选句点
@@ -416,7 +838,6 @@ tfn
 ### <a name="keywords"></a>关键字
 
 #### <a name="keyword_belgium_national_number"></a>Keyword\_belgium\_national\_number
-
 ```
 be lasting aantal
 bnn#
@@ -475,6 +896,77 @@ tin ID
 tin no
 tin#
 ```
+## <a name="belgium-passport-number"></a>比利时护照号码 
+
+### <a name="format"></a>格式
+2 个字母，后跟 6 位数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+2 个字母，后跟 6 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_belgium_eu_passport_number"></a>Keywords\_belgium\_eu\_passport\_number
+```
+numéro passeport
+paspoort nr
+paspoort-nr
+paspoortnummer
+paspoortnummers
+Passeport carte
+Passeport livre
+Pass-Nr
+Passnummer
+reisepass kein
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="belgium-value-added-tax-number"></a>比利时增值税号码 
+### <a name="format"></a>格式
+12 个字符的字母数字模式
+
+### <a name="pattern"></a>模式
+12 个字符的字母数字模式：
+
+- 字母 B 或 b
+- 字母 E 或 e
+- 数字 0
+- 从 1 到 9 的 1 位数字
+- 1 个可选的点、连字符或空格
+- 4 位数字
+- 1 个可选的点、连字符或空格
+- 4 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_belgium_value_added_tax_number"></a>Keyword\_belgium\_value\_added\_tax\_number
+```
+nº tva
+vat number
+vat no
+numéro t.v.a
+umsatzsteuer-identifikationsnummer
+umsatzsteuernummer
+btw
+btw#
+vat#
+```
 
 ## <a name="brazil-cpf-number"></a>巴西 CPF 号码
 
@@ -501,7 +993,6 @@ tin#
 ### <a name="keywords"></a>关键字
 
 #### <a name="keyword_brazil_cpf"></a>Keyword\_brazil\_cpf
-
 ```
 CPF
 Identification
@@ -537,7 +1028,6 @@ Receita
 ### <a name="keywords"></a>关键字
 
 #### <a name="keyword_brazil_cnpj"></a>Keyword\_brazil\_cnpj
-
 ```
 CNPJ
 CNPJ/MF
@@ -589,7 +1079,6 @@ Empresa
 ### <a name="keywords"></a>关键字
 
 #### <a name="keyword_brazil_rg"></a>Keyword\_brazil\_rg
-
 ```
 Cédula de identidade
 identity card
@@ -599,6 +1088,98 @@ registro de Iidentidade
 registro geral
 RG (this keyword is case-sensitive)
 RIC (this keyword is case-sensitive)
+```
+## <a name="bulgaria-passport-number"></a>保加利亚护照号码 
+
+### <a name="format"></a>格式
+9 位数字
+### <a name="pattern"></a>模式
+不带空格和分隔符的 9 位数字
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number"></a>keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_bulgaria_eu_passport_number"></a>Keywords\_bulgaria\_eu\_passport\_number
+```
+номер на паспорта
+номер на паспорт
+паспорт №
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="bulgaria-uniform-civil-number"></a>保加利亚统一民用编号
+
+### <a name="format"></a>格式
+不带空格和分隔符的 10 位数字
+
+### <a name="pattern"></a>模式
+不带空格和分隔符的 10 位数字
+
+- 与出生日期对应的 6 位数字 (YYMMDD)
+- 与出生顺序对应的 2 位数字
+- 与性别对应的 1 位数字：偶数表示男性，奇数表示女性
+- 1 位校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_bulgaria_eu_national_id_card"></a>Keywords\_bulgaria\_eu\_national\_id\_card
+```
+bnn#
+bnn
+bucn#
+bucn
+edinen grazhdanski nomer
+egn#
+egn
+identification number
+national id
+national number
+nationalnumber#
+nationalnumber
+personal id
+personal no
+personal number
+personalidnumber#
+social security number
+ssn#
+ssn
+uniform civil id
+uniform civil no
+uniform civil number
+uniformcivilno#
+uniformcivilno
+uniformcivilnumber#
+uniformcivilnumber
+unique citizenship number
+егн#
+егн
+единен граждански номер
+идентификационен номер
+личен номер
+лична идентификация
+лично не
+национален номер
+номер на гражданството
+униформ id
+униформ граждански id
+униформ граждански не
+униформ граждански номер
+униформгражданскиid#
+униформгражданскине.#
 ```
 
 ## <a name="canada-bank-account-number"></a>加拿大银行帐号
@@ -622,7 +1203,6 @@ RIC (this keyword is case-sensitive)
 ### <a name="keywords"></a>关键字
 
 #### <a name="keyword_canada_bank_account_number"></a>Keyword\_canada\_bank\_account\_number
-
 ```
 canada savings bonds
 canada revenue agency
@@ -660,10 +1240,10 @@ direct deposit
 ### <a name="keywords"></a>关键字
 
 #### <a name="keyword_province_name_drivers_license_name"></a>Keyword\_[province\_name]\_drivers\_license\_name
-
-- 省的缩写，例如 AB
-- 省的名称，例如 Alberta
-
+```
+- The province abbreviation, for example AB
+- The province name, for example Alberta
+```
 #### <a name="keyword_canada_drivers_license"></a>Keyword\_canada\_drivers\_license
 
 ```
@@ -1522,7 +2102,34 @@ tin ID
 tin no
 tin#
 ```
+## <a name="croatia-passport-number"></a>克罗地亚护照号码
+### <a name="format"></a>格式
+不带空格和分隔符的 9 位数字
 
+### <a name="pattern"></a>模式
+9 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_croatia_eu_passport_number"></a>Keywords\_croatia\_eu\_passport\_number
+```
+broj putovnice
+br. Putovnice
+br putovnice
+```
 ## <a name="croatia-personal-identification-oib-number"></a>克罗地亚个人身份 (OIB) 编号
 
 ### <a name="format"></a>格式
@@ -1570,7 +2177,581 @@ tin ID
 tin no
 tin#
 ```
+## <a name="cyprus-drivers-license-number"></a>塞浦路斯驾照编号 
 
+### <a name="format"></a>格式
+不带空格和分隔符的 12 位数字
+### <a name="pattern"></a>模式
+12 位数
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_cyprus_eu_drivers_license_number"></a>Keywords\_cyprus\_eu\_driver's\_license\_number
+```
+άδεια οδήγησης
+αριθμό άδειας οδήγησης
+άδειες οδήγησης
+```
+## <a name="cyprus-identity-card"></a>塞浦路斯身份证
+
+### <a name="format"></a>格式
+不带空格和分隔符的 10 位数字
+### <a name="pattern"></a>模式
+
+10 位
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_cyprus_eu_national_id_card"></a>Keywords\_cyprus\_eu\_national\_id\_card
+```
+id card number
+identity card number
+kimlik karti
+national identification number
+personal id number
+ταυτοτητασ
+```
+## <a name="cyprus-passport-number"></a>塞浦路斯护照号码
+### <a name="format"></a>格式
+1 个字母，后跟 6-8 位数字，不带空格或分隔符
+### <a name="pattern"></a>模式
+1 个字母，后跟 6 到 8 位数字
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_cyprus_eu_passport_number"></a>Keywords\_cyprus\_eu\_passport\_number
+```
+αριθμό διαβατηρίου
+pasaportu
+Αριθμός Διαβατηρίου
+κυπριακό διαβατήριο
+διαβατήριο#
+διαβατήριο
+αριθμός διαβατηρίου
+Pasaport Kimliği
+pasaport numarası
+Pasaport no.
+Αρ. Διαβατηρίου
+```
+#### <a name="keywords_cyprus_eu_passport_date"></a>Keywords\_cyprus\_eu\_passport\_date
+```
+expires on
+issued on
+```
+## <a name="cyprus-tax-identification-number"></a>塞浦路斯税务标识号
+
+### <a name="format"></a>格式
+采用指定模式的 8 位数字和 1 个字母
+
+### <a name="pattern"></a>模式
+
+8 位数字和 1 个字母：
+
+- “0”或“9”
+- 7 位数字
+- 1 个字母（不区分大小写）
+
+### <a name="keywords"></a>关键字
+#### <a name="keywords_cyprus_eu_tax_file_number"></a>Keywords\_cyprus\_eu\_tax\_file\_number
+```
+tax id
+tax identification code
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tic#
+tic
+tin id
+tin no
+tin#
+vergi kimlik kodu
+vergi kimlik numarası
+αριθμός φορολογικού μητρώου
+κωδικός φορολογικού μητρώου
+φορολογική ταυτότητα
+φορολογικού κωδικού
+```
+## <a name="czech-republic-drivers-license-number"></a>捷克共和国驾照编号 
+### <a name="format"></a>格式
+2 个字母，后跟 6 位数字
+### <a name="pattern"></a>模式
+字母和数字共 8 位：
+
+- 字母“E”（不区分大小写）
+- 1 个字母
+- 1 个空格（可选）
+- 6 位数字
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_czech_republic_eu_drivers_license_number"></a>Keywords\_czech\_republic\_eu\_driver's\_license\_number
+```
+řidičský prúkaz
+řidičské průkazy
+číslo řidičského průkazu
+čísla řidičských průkazů
+```
+
+## <a name="czech-passport-number"></a>捷克护照号码 
+### <a name="format"></a>格式
+不带空格或分隔符的 8 位数字
+### <a name="pattern"></a>模式
+不带空格或分隔符的 8 位数字
+
+### <a name="keywords"></a>关键字
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_czech_republic_eu_passport_number"></a>Keywords\_czech\_republic\_eu\_passport\_number
+```
+cestovní pas
+číslo pasu
+cestovní pasu
+passeport no
+čísla pasu
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="denmark-drivers-license-number"></a>丹麦驾照编号 
+
+### <a name="format"></a>格式
+不带空格和分隔符的 8 位数字
+
+### <a name="pattern"></a>模式
+8 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_denmark_eu_drivers_license_number"></a>Keywords\_denmark\_eu\_driver's\_license\_number
+```
+kørekort
+kørekortnummer
+```
+## <a name="denmark-passport-number"></a>丹麦护照号码 
+### <a name="format"></a>格式
+不带空格和分隔符的 9 位数字
+### <a name="pattern"></a>模式
+9 位数字
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_denmark_eu_passport_number"></a>Keywords\_denmark\_eu\_passport\_number
+```
+pasnummer
+Passeport n°
+pasnumre
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
 ## <a name="denmark-personal-identification-number"></a>丹麦个人身份编号
 
 ### <a name="format"></a>格式
@@ -1660,7 +2841,220 @@ sygesikringskortnummer
 sygesikringsnr
 sygesikringsnummer
 ```
+## <a name="estonia-drivers-license-number"></a>爱沙尼亚驾照编号 
+### <a name="format"></a>格式
+2 个字母，后跟 6 位数字
+### <a name="pattern"></a>模式
+2 个字母和 6 位数字：
 
+- 字母“ET”（不区分大小写）
+- 6 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_estonia_eu_drivers_license_number"></a>Keywords\_estonia\_eu\_driver's\_license\_number
+```
+-- permis de conduire
+juhilubade numbrid
+juhiloa number
+juhiluba
+```
+## <a name="estonia-passport-number"></a>爱沙尼亚护照号码 
+### <a name="format"></a>格式
+1 个字母，后跟 7 位数字，不带空格或分隔符
+### <a name="pattern"></a>模式
+1 个字母，后跟 7 位数字
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_estonia_eu_passport_number"></a>Keywords\_estonia\_eu\_passport\_number
+```
+eesti kodaniku pass passi number passinumbrid document number document no dokumendi nr
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="estonia-personal-identification-code-isikukood"></a>爱沙尼亚个人身份证编码 (isikukood)
+
+### <a name="format"></a>格式
+不带空格和分隔符的 11 位数字
+
+### <a name="pattern"></a>模式
+11 位数字：
+
+- 与性别和出生世纪对应的 1 位数字（奇数表示男性，偶数表示女性；1-2 表示 19 世纪；3-4 表示 20 世纪；5-6 表示 21 世纪）
+- 与出生日期对应的 6 位数字 (YYMMDD)
+- 与序列号对应的 3 位数字，用于区分出生于同一天的人
+- 1 位校验数字
+### <a name="keywords"></a>关键字
+#### <a name="keywords_estonia_eu_national_id_card"></a>Keywords\_estonia\_eu\_national\_id\_card
+```
+id-kaart
+ik
+isikukood#
+isikukood
+maksu id
+maksukohustuslase identifitseerimisnumber
+maksunumber
+national identification number
+national number
+personal code
+personal id number
+personal identification code
+personal identification number
+personalidnumber#
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
 ## <a name="eu-debit-card-number"></a>欧盟借记卡号码
 
 ### <a name="format"></a>格式
@@ -2135,8 +3529,183 @@ válido hasta
 - 瑞典
 - 英国
 
+## <a name="finland-drivers-license-number"></a>芬兰驾照编号 
 
+### <a name="format"></a>格式
+包含 1 个连字符的 10 位数
 
+### <a name="pattern"></a>模式
+包含 1 个连字符的 10 位数字：
+
+- 6 位数字
+- 1 个连字符
+- 3 位数字
+- 1 位数字或字母
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_finland_eu_drivers_license_number"></a>Keywords\_finland\_eu\_driver's\_license\_number
+```
+ajokortti
+permis de conduire
+ajokortin numero
+kuljettaja lic.
+körkort
+körkortnummer
+förare lic.
+ajokortit
+ajokortin numerot
+```
+## <a name="finland-european-health-insurance-number"></a>芬兰欧洲医疗保险号码
+
+### <a name="format"></a>格式
+20 位数字
+### <a name="pattern"></a>模式
+20 位数字
+- 10 位数字 - 8024680246
+- 1 个可选的空格或连字符
+- 10 位
+
+### <a name="keywords"></a>关键字
+#### <a name="keyword_finland_european_health_insurance_number"></a>Keyword\_finland\_european\_health\_insurance\_number
+```
+ehic#
+ehic
+finlandehicnumber#
+finska sjukförsäkringskort
+health card
+health insurance card
+health insurance number
+hälsokort
+sairaanhoitokortin
+sairausvakuutuskortti
+sairausvakuutusnumero
+sjukförsäkring nummer
+sjukförsäkringskort
+suomen sairausvakuutuskortti
+terveyskortti
+```
 ## <a name="finland-national-id"></a>芬兰国民身份证号码
 
 ### <a name="format"></a>格式
@@ -2390,7 +3959,24 @@ license numbers
 license numbers
 numéros de license
 ```
+## <a name="france-health-insurance-number"></a>法国医疗保险号码
+### <a name="format"></a>格式
+21 位数字
+### <a name="pattern"></a>模式
+21 位数字：
 
+- 10 位
+- （可选）1 个空格
+- 10 位
+- （可选）1 个空格
+- 1 位数字
+### <a name="keywords"></a>关键字
+#### <a name="keyword_france_health_insurance_number"></a>Keyword\_France\_health\_insurance\_number
+```
+insurance card
+carte vitale
+carte d'assuré social
+```
 ## <a name="france-national-id-card-cni"></a>法国国民身份证 (CNI)
 
 ### <a name="format"></a>格式
@@ -2502,7 +4088,78 @@ numéro d'assurance sociale
 numéro de sécu
 code sécu
 ```
+## <a name="france-tax-identification-number-numro-spi"></a>法国税务标识号 (Numéro SPI) 
+### <a name="format"></a>格式 
+13 位数字
+### <a name="pattern"></a>模式
+13 位数字
 
+- 1 位数字，必须是 0、1、2 或 3
+- 1 位数字
+- 1 个空格（可选）
+- 2 位数字
+- 1 个空格（可选）
+- 3 位数字
+- 1 个空格（可选）
+- 3 位数字
+- 1 个空格（可选）
+- 3 位校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_france_eu_tax_file_number"></a>Keywords\_france\_eu\_tax\_file\_number
+```
+numéro d'identification fiscale
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+## <a name="france-value-added-tax-number"></a>法国增值税号码 
+
+### <a name="format"></a>格式 
+13 个字符的字母数字模式
+
+### <a name="pattern"></a>模式
+13 个字符的字母数字模式：
+
+- 2 个字母 - FR（不区分大小写）
+- 1 个可选的空格或连字符
+- 2 个字母或数字
+- 1 个可选的空格、点、连字符或逗号
+- 3 位数字
+- 1 个可选的空格、点、连字符或逗号
+- 3 位数字
+- 1 个可选的空格、点、连字符或逗号
+- 3 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_france_value_added_tax_number"></a>Keyword\_France\_value\_added\_tax\_number
+```
+vat number
+vat no
+vat#
+value added tax
+siren identification no numéro d'identification taxe sur valeur ajoutée
+taxe valeur ajoutée
+taxe sur la valeur ajoutée
+n° tva
+numéro de tva
+numéro d'identification siren
+```
 ## <a name="germany-drivers-license-number"></a>德国驾照编号
 
 此敏感信息类型实体纳入了欧盟驾照编号敏感信息类型，并作为独立的敏感信息类型实体提供。
@@ -2745,7 +4402,219 @@ reisepässe
 passeport no.
 passeport no
 ```
+## <a name="germany-tax-identification-number"></a>德国税务标识号 
 
+### <a name="format"></a>格式 
+不带空格和分隔符的 11 位数字
+
+### <a name="pattern"></a>模式
+11 位数字
+
+- 2 位数字
+- 1 个可选空格
+- 3 位数字
+- 1 个可选空格
+- 3 位数字
+- 1 个可选空格
+- 2 位数字
+- 1 位校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_germany_eu_tax_file_number"></a>Keywords\_germany\_eu_tax\_file\_number
+```
+identifikationsnummer
+steuer id
+steueridentifikationsnummer
+steuernummer
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+zinn#
+zinn
+zinnnummer
+```
+## <a name="germany-value-added-tax-number"></a>德国增值税号码 
+
+### <a name="format"></a>格式 
+11 个字符的字母数字模式
+
+### <a name="pattern"></a>模式
+11 个字符的字母数字模式：
+
+- 字母 D 或 d
+- 字母 E 或 e
+- （可选）1 个空格
+- 3 位数字
+- 1 个可选的空格或逗号
+- 3 位数字
+- 1 个可选的空格或逗号
+- 3 位数字
+
+### <a name="keywords"></a>关键字 
+
+#### <a name="keyword_germany_value_added_tax_number"></a>Keyword\_germany\_value\_added\_tax\_number
+```
+vat number
+vat no
+vat#
+vat#  mehrwertsteuer
+mwst
+mehrwertsteuer identifikationsnummer
+mehrwertsteuer nummer
+```
+## <a name="greece-drivers-license-number"></a>希腊驾照编号 
+不带空格和分隔符的 9 位数字
+
+### <a name="format"></a>格式 
+不带空格和分隔符的 9 位数字
+
+### <a name="pattern"></a>模式
+9 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_greece_eu_drivers_license_number"></a>Keywords\_greece\_eu\_driver's\_license\_number
+```
+δεια οδήγησης
+Adeia odigisis
+Άδεια οδήγησης
+Δίπλωμα οδήγησης
+```
 ## <a name="greece-national-id-card"></a>希腊国民身份证号码
 
 ### <a name="format"></a>格式
@@ -2780,7 +4649,96 @@ tautotita
 ταυτότητα
 ταυτότητας
 ```
+## <a name="greece-passport-number"></a>希腊护照号码
 
+### <a name="format"></a>格式 
+2 个字母，后跟 7 位数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+2 个字母，后跟 7 位数字
+
+### <a name="keywords"></a>关键字
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_greece_eu_passport_number"></a>Keywords\_greece\_eu\_passport\_number
+```
+αριθμός διαβατηρίου
+αριθμούς διαβατηρίου
+αριθμός διαβατηριο
+```
+## <a name="greece-social-security-number-amka"></a>希腊社会安全号码 (AMKA)
+
+### <a name="format"></a>格式 
+不带空格和分隔符的 11 位数字
+
+### <a name="pattern"></a>模式
+- 按 YYMMDD 格式表示出生日期的六位数字
+- 四位数字
+- 1 位校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_greece_eu_ssn_or_equivalent"></a>Keywords\_greece\_eu\_ssn\_or\_equivalent
+```
+- ssn
+- ssn#
+- social security no
+- socialsecurityno#
+- social security number
+- amka
+- a.m.k.a.
+- Αριθμού Μητρώου Κοινωνικής Ασφάλισης
+```
+## <a name="greece-tax-identification-number"></a>希腊税务标识号
+
+### <a name="format"></a>格式 
+不带空格和分隔符的 9 位数字
+
+### <a name="pattern"></a>模式
+9 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_greece_eu_tax_file_number"></a>Keywords\_greece\_eu\_tax\_file\_number
+```
+afm#
+afm
+aφμ|aφμ αριθμός
+aφμ
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+tax registry no
+tax registry number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+taxregistryno#
+tin id
+tin no
+tin#
+αριθμός φορολογικού μητρώου
+τον αριθμό φορολογικού μητρώου
+φορολογικού μητρώου νο
+```
 ## <a name="hong-kong-identity-card-hkid-number"></a>香港特别行政区身份证 (HKID) 号码
 
 ### <a name="format"></a>格式
@@ -2838,7 +4796,302 @@ Hong Kong ID
 香港特別行政區非永久性居民身分證
 香港特別行政區非永久性居民身分証
 ```
+## <a name="hungary-drivers-license-number"></a>匈牙利驾照编号 
 
+### <a name="format"></a>格式 
+2 个字母，后跟 6 位数字
+
+### <a name="pattern"></a>模式
+2 个字母和 6 位数字：
+
+- 2 个字母（不区分大小写）
+- 6 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_hungary_eu_drivers_license_number"></a>Keywords\_hungary\_eu\_driver's\_license\_number
+```
+vezetoi engedely
+vezetői engedély
+vezetői engedélyek
+```
+## <a name="hungary-passport-number"></a>匈牙利护照号码 
+
+### <a name="format"></a>格式 
+2 个字母，后跟 6 位或 7 位数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+2 个字母，后跟 6 位或 7 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_hungary_eu_passport_number"></a>Keywords\_hungary\_eu\_passport\_number
+```
+útlevél száma
+Útlevelek száma
+útlevél szám
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+签发日期 到期日期
+
+## <a name="hungary-personal-identification-number"></a>匈牙利个人标识号 
+
+### <a name="format"></a>格式 
+11 位数字
+
+### <a name="pattern"></a>模式
+11 位数字：
+
+- 与性别对应的 1 位数字，1 表示男性，2 表示女性。 也可能采用其他数字表示 1900 年以前出生的公民或拥有双重国籍的公民。
+- 与出生日期对应的 6 位数字 (YYMMDD)
+- 对应于序列号的 3 位数字
+- 1 位校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_hungary_eu_national_id_card"></a>Keywords\_hungary\_eu\_national\_id\_card
+```
+id number
+identification number
+sz ig
+sz. ig.
+sz.ig.
+személyazonosító igazolvány
+személyi igazolvány
+```
+## <a name="hungary-social-security-number-taj"></a>匈牙利社会安全号码 (TAJ) 
+
+### <a name="format"></a>格式 
+不带空格和分隔符的 9 位数字
+
+### <a name="pattern"></a>模式
+9 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_hungary_eu_ssn_or_equivalent"></a>Keywords\_hungary\_eu\_ssn\_or\_equivalent
+```
+- hungarian social security number
+- social security number
+- socialsecuritynumber#
+- hssn#
+- socialsecuritynno
+- hssn
+- taj
+- taj#
+- ssn
+- ssn#
+- social security no
+- áfa
+- közösségi adószám
+- általános forgalmi adó szám
+- hozzáadottérték adó
+- áfa szám
+- magyar áfa szám
+```
+## <a name="hungary-value-added-tax-number"></a>匈牙利增值税号码 
+
+### <a name="format"></a>格式 
+10 个字符的字母数字模式
+
+### <a name="pattern"></a>模式
+10 个字符的字母数字模式：
+
+- 2 个字母 - HU 或 hu
+- 可选空格
+- 8 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_hungary_value_added_tax_number"></a>Keyword\_Hungary\_value\_added\_tax\_number
+```
+vat
+value added tax number
+vat#
+vatno#
+hungarianvatno#
+tax no.
+value added tax áfa
+közösségi adószám
+általános forgalmi adó szám
+hozzáadottérték adó
+áfa szám
+```
+
+## <a name="hungary-tax-identification-number"></a>匈牙利税务标识号 
+
+### <a name="format"></a>格式 
+10 位数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+10 位数：
+
+- 1 位数字，必须为“8”
+- 8 位数字
+- 1 位校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_hungary_eu_tax_file_number"></a>Keywords\_hungary\_eu\_tax\_file\_number
+```
+adóazonosító szám
+adóhatóság szám
+adószám
+hungarian tin
+hungatiantin#
+tax authority no
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+vat number
+```
 ## <a name="ip-address"></a>IP 地址
 
 ### <a name="format"></a>格式
@@ -2974,6 +5227,187 @@ ad, ae, al, at, az, ba, be, bg, bh, ch, cr, cy, cz, de, dk, do, ee, es, fi, fo, 
 
 无
 
+## <a name="ireland-drivers-license-number"></a>爱尔兰驾照编号 
+
+### <a name="format"></a>格式 
+6 位数字，后跟 4 个字母
+
+### <a name="pattern"></a>模式
+6 位数字和 4 个字母：
+
+- 6 位数字
+- 4 个字母（不区分大小写）
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_ireland_eu_drivers_license_number"></a>Keywords\_ireland\_eu\_driver's\_license\_number
+```
+ceadúnas tiomána
+ceadúnais tiomána 
+```
+## <a name="ireland-passport-number"></a>爱尔兰护照号码 
+
+
+### <a name="format"></a>格式 
+2 个字母或数字，后跟 7 位数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+2 个字母或数字，后跟 7 位数字：
+
+- 2 位数字或字母（不区分大小写）
+- 7 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_ireland_eu_passport_number"></a>Keywords\_ireland\_eu\_passport\_number
+```
+passeport numero
+uimhreacha pasanna
+uimhir pas
+uimhir phas
+uimhreacha pas
+uimhir cárta
+uimhir chárta
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
 ## <a name="ireland-personal-public-service-pps-number"></a>爱尔兰个人公共服务 (PPS) 号码
 
 ### <a name="format"></a>格式
@@ -3140,7 +5574,123 @@ patente guida
 patenti di guida
 patenti guida
 ```
+## <a name="italy-fiscal-code"></a>意大利会计代码 
 
+### <a name="format"></a>格式 
+在指定模式下由字母和数字组成的 16 位字符
+
+### <a name="pattern"></a>模式
+由字母和数字组成的 16 位字符：
+
+- 3 个字母，对应于姓氏中的前三个辅音字母
+- 3 个字母，对应于名字的第 1 个、第 3 个和第 4 个辅音字母
+- 与出生年份的末尾数字对应的 2 位数字
+- 与出生月份的字母对应的 1 个字母：字母按照字母顺序使用，但仅使用字母 A-E、H、L、M、P、R-T（所以一月是 A，十月是 R）
+- 2 位数字，对应于出生月份的日期，用于区分性别，女性的出生日期加上 40
+- 4 位数字，对应于个人出生城市/地区的特定区号（如果是境外的国家/地区，则使用国家/地区范围的代码）
+- 1 位奇偶校验数字 
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_italy_eu_national_id_card"></a>Keywords\_italy\_eu\_national\_id\_card
+```
+codice fiscal
+codice fiscale
+codice id personale
+codice personale
+fiscal code
+numero certificato personale
+numero di identificazione fiscale
+numero id personale
+numero personale
+personal certificate number
+personal code
+personal id code
+personal id number
+personalcodeno#
+tax code
+tax id
+tax identification no
+tax identification number
+tax identity number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+## <a name="italy-passport-number"></a>意大利护照号码 
+
+### <a name="format"></a>格式 
+2 个字母或数字，后跟 7 位数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+2 个字母或数字，后跟 7 位数字：
+
+- 2 位数字或字母（不区分大小写）
+- 7 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_italy_eu_passport_number"></a>Keywords\_italy\_eu\_passport\_number
+```
+italiana passaporto
+passaporto italiana
+passaporto numero
+numéro passeport
+numero di passaporto
+numeri del passaporto
+passeport italien
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="italy-value-added-tax"></a>意大利增值税 
+
+### <a name="format"></a>格式 
+13 个字符的字母数字模式，带有可选分隔符
+
+### <a name="pattern"></a>模式
+13 个字符的字母数字模式，带有可选分隔符：
+
+- I 或 i
+- T 或 t
+- 可选空格、点、连字符或逗号
+- 11 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_italy_value_added_tax_number"></a>Keyword\_italy\_value\_added\_tax\_number
+```
+vat number
+vat no
+vat#
+iva
+iva#
+```
 ## <a name="japan-bank-account-number"></a>日本银行帐号
 
 ### <a name="format"></a>格式
@@ -3263,7 +5813,63 @@ lics#
 免許証#
 免許#
 ```
+## <a name="japanese-my-number--corporate"></a>日本的“个人编号”- 公司 
 
+
+### <a name="format"></a>格式 
+13 位数字
+
+### <a name="pattern"></a>模式
+13 位数字：
+
+- 从 1 到 9 的 1 位数字
+- 12 位数
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_japan_my_number_corporate"></a>Keyword\_japan\_my\_number\_corporate
+```
+corporate number
+マイナンバー
+共通番号
+マイナンバーカード
+マイナンバーカード番号
+個人番号カード
+個人識別番号
+個人識別ナンバー
+法人番号
+指定通知書
+```
+## <a name="japanese-my-number--personal"></a>日本的“个人编号”- 个人 
+
+
+### <a name="format"></a>格式 
+12 位数字
+
+### <a name="pattern"></a>模式
+12 位数字：
+
+- 4 位数字
+- 1 个可选的空格、点或连字符
+- 4 位数字
+- 1 个可选的空格、点或连字符
+- 4 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_japan_my_number_personal"></a>Keyword\_japan\_my\_number\_personal
+```
+my number
+マイナンバー
+個人番号
+共通番号
+マイナンバーカード
+マイナンバーカード番号
+個人番号カード
+個人識別番号
+個人識別ナンバー
+通知カード
+```
 ## <a name="japan-passport-number"></a>日本护照号码
 
 ### <a name="format"></a>格式
@@ -3386,7 +5992,770 @@ Social Insurance Number
 厚生年金
 厚生年金被保険者整理番号
 ```
+## <a name="latvia-drivers-license-number"></a>拉脱维亚驾照编号
 
+### <a name="format"></a>格式
+3 个字母，后跟 6 位数字
+
+### <a name="pattern"></a>模式
+3 个字母和 6 位数字：
+
+- 3 个字母（不区分大小写）
+- 6 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_latvia_eu_drivers_license_number"></a>Keywords\_latvia\_eu\_driver's\_license\_number
+```
+autovadītāja apliecība
+autovadītāja apliecības
+vadītāja apliecība
+```
+## <a name="latvia-passport-number"></a>拉脱维亚护照号码 
+
+### <a name="format"></a>格式 
+2 个字母或数字，后跟 7 位数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+2 个字母或数字，后跟 7 位数字：
+
+- 2 位数字或字母（不区分大小写）
+- 7 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number_common"></a>Keywords\_eu\_passport\_number\_common
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_latvia_eu_passport_number"></a>Keywords\_latvia\_eu\_passport\_number
+```
+pase numurs
+pase numur
+pases numuri
+pases nr
+passeport no
+n° du Passeport
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="latvia-personal-code-personas-kods-or-pic"></a>匈牙利个人代码（角色代码或 PIC）  
+
+### <a name="format"></a>格式 
+11 位数字和 1 个可选连字符
+
+### <a name="pattern"></a>模式
+旧格式
+
+11 位数字和 1 个连字符：
+
+- 与出生日期对应的 6 位数字 (DDMMYY)
+- 1 个连字符
+- 对应于出生世纪的 1 位数字（“0”表示 19 世纪，“1”表示 20 世纪，“2”表示 21 世纪）
+- 随机生成的 4 位数字
+- 新格式
+
+11 位数字
+
+- 2 位数字（“32”）
+- 9 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_latvia_eu_national_id_card"></a>Keywords\_latvia\_eu\_national\_id\_card
+```
+administrative number
+alvas nē
+birth number
+citizen number
+civil number
+electronic census number
+electronic number
+fiscal code
+healthcare user number
+id#
+id-code
+identification number
+identifikācijas numurs
+id-number
+individual number
+latvija alva
+nacionālais id
+national id
+national identifying number
+national identity number
+national insurance number
+national register number
+nodokļa numurs
+nodokļu id
+nodokļu identifikācija numurs
+personal certificate number
+personal code
+personal id code
+personal id number
+personal identification code
+personal identifier
+personal identity number
+personal number
+personal numeric code
+personalcodeno#
+personas kods
+population identification code
+public service number
+registration number
+revenue number
+social insurance number
+social security number
+state tax code
+tax file number
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+voter’s number
+```
+## <a name="lithuania-drivers-license-number"></a>立陶宛驾照编号 
+
+### <a name="format"></a>格式 
+不带空格和分隔符的 8 位数字
+
+### <a name="pattern"></a>模式
+8 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_lithuania_eu_drivers_license_number"></a>Keywords\_lithuania\_eu\_driver's\_license\_number
+```
+vairuotojo pažymėjimas
+vairuotojo pažymėjimo numeris
+vairuotojo pažymėjimo numeriai
+```
+## <a name="lithuania-passport-number"></a>立陶宛护照号码 
+
+### <a name="format"></a>格式 
+8 位数字或字母，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+8 位数字或字母（不区分大小写）
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_lithuania_eu_passport_number"></a>Keywords\_lithuania\_eu\_passport\_number
+```
+paso numeris
+paso numeriai
+paso nr
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="lithuania-personal-code-asmens-kodas"></a>立陶宛个人代码 (Asmens kodas)  
+
+### <a name="format"></a>格式 
+不带空格和分隔符的 11 位数字
+
+### <a name="pattern"></a>模式
+不带空格和分隔符的 11 位数字：
+
+- 对应于人员性别和出生世纪的 1 位数字 (1-6)
+- 与出生日期对应的 6 位数字 (YYMMDD)
+- 与出生日期的序列号相对应的 3 位数字
+- 1 位校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_lithuania_eu_national_id_card"></a>Keywords\_lithuania\_eu\_national\_id\_card
+```
+asmeninis skaitmeninis kodas
+asmens kodas
+citizen service number
+mokesčių id
+mokesčių identifikavimas numeris
+mokesčių identifikavimo numeris
+mokesčių numeris
+national identification number
+personal code
+personal numeric code
+piliečio paslaugos numeris
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+unikalus identifikavimo kodas
+unikalus identifikavimo numeris
+unique identification number
+unique identity number
+uniqueidentityno#
+```
+## <a name="luxembourg-drivers-license-number"></a>卢森堡驾照编号 
+
+### <a name="format"></a>格式 
+不带空格和分隔符的 6 位数字
+
+### <a name="pattern"></a>模式
+6 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_luxemburg_eu_drivers_license_number"></a>Keywords\_luxemburg\_eu\_driver's\_license\_number
+```
+fahrerlaubnis
+Führerschäin
+```
+## <a name="luxembourg-passport-number"></a>卢森堡护照号码 
+
+### <a name="format"></a>格式 
+8 位数字或字母，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+8 位数字或字母（不区分大小写）
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_luxemburg_eu_passport_number"></a>Keywords\_luxemburg\_eu\_passport\_number
+```
+ausweisnummer
+luxembourg pass
+luxembourg passeport
+luxembourg passport
+no de passeport
+no-reisepass
+nr-reisepass
+numéro de passeport
+pass net
+pass nr
+passnummer
+passeport nombre
+reisepässe
+reisepass-nr
+reisepassnummer
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="luxemburg-national-identification-number---natural-persons"></a>卢森堡国民身份证号码 - 自然人
+
+### <a name="format"></a>格式 
+13 位数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+13 位数字：
+
+- 11 位数字
+- 2 个校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_luxemburg_eu_national_id_card"></a>Keywords\_luxemburg\_eu\_national\_id\_card
+```
+eindeutige id
+eindeutige id-nummer
+eindeutigeid#
+id personnelle
+idpersonnelle#
+idpersonnelle
+individual code
+individual id
+individual identification
+individual identity
+numéro d'identification personnel
+personal id
+personal identification
+personal identity
+personalidno#
+personalidnumber#
+persönliche identifikationsnummer
+unique id
+unique identity
+uniqueidkey#
+```
+## <a name="luxemburg-national-identification-number---non-natural-persons"></a>卢森堡国民身份证号码 - 非自然人
+
+### <a name="format"></a>格式 
+11 位数字
+
+### <a name="pattern"></a>模式
+11 位数字
+
+- 2 位数字
+- （可选）1 个空格
+- 3 位数字
+- （可选）1 个空格
+- 3 位数字
+- （可选）1 个空格
+- 2 位数字
+- 1 位校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_luxemburg_eu_tax_file_number"></a>Keywords\_luxemburg\_eu\_tax\_file\_number
+```
+carte de sécurité sociale
+étain non
+étain#
+identifiant d'impôt
+luxembourg tax identifikatiounsnummer
+numéro d'étain
+numéro d'identification fiscal luxembourgeois
+numéro d'identification fiscale
+social security
+sozialunterstützung
+sozialversécherung
+sozialversicherungsausweis
+steier id
+steier identifikatiounsnummer
+steier nummer
+steuer id
+steueridentifikationsnummer
+steuernummer
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+zinn#
+zinn
+zinnzahl
+```
 ## <a name="malaysia-identification-card-number"></a>马来西亚身份证号码
 
 ### <a name="format"></a>格式
@@ -3434,7 +6803,268 @@ malaysian identity card
 nric
 personal identification card
 ```
+## <a name="malta-drivers-license-number"></a>马耳他驾照编号 
 
+### <a name="format"></a>格式 
+按指定模式组合的 2 个字符和 6 位数字
+
+### <a name="pattern"></a>模式
+2 个字符和 6 位数字的组合：
+
+- 2 个字符（数字或字符，不区分大小写）
+- 1 个空格（可选）
+- 3 位数字
+- 1 个空格（可选）
+- 3 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_malta_eu_drivers_license_number"></a>Keywords\_malta\_eu\_driver's\_license\_number
+```
+liċenzja tas-sewqan
+liċenzji tas-sewwieq
+```
+## <a name="malta-identity-card-number"></a>马耳他身份证号码 
+
+### <a name="format"></a>格式 
+7 位数字，后跟 1 个字母
+
+### <a name="pattern"></a>模式
+7 位数字，后跟 1 个字母：
+
+- 7 位数字
+- “M、G、A、P、L、H、B、Z”中的 1 个字母（不区分大小写）
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_malta_eu_national_id_card"></a>Keywords\_malta\_eu\_national\_id\_card
+```
+citizen service number
+id tat-taxxa
+identifika numru tal-biljett
+kodiċi numerali personali
+numru ta 'identifikazzjoni personali
+numru ta 'identifikazzjoni tat-taxxa
+numru ta 'identifikazzjoni uniku
+numru ta' identità uniku
+numru tas-servizz taċ-ċittadin
+numru tat-taxxa
+personal numeric code
+unique identification number
+unique identity number
+uniqueidentityno#
+```
+## <a name="malta-passport-number"></a>马耳他护照号码 
+
+### <a name="format"></a>格式 
+不带空格或分隔符的 7 位数字
+
+### <a name="pattern"></a>模式
+7 位数字
+
+### <a name="keywords"></a>关键字
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_malta_eu_passport_number"></a>Keywords\_malta\_eu\_passport\_number
+```
+numru tal-passaport
+numri tal-passaport
+Nru tal-passaport
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+## <a name="malta-tax-id-number"></a>马耳他税务 ID 编号 
+
+### <a name="format"></a>格式 
+对于马耳他公民：
+
+- 采用指定模式的 7 位数字和 1 个字母
+
+非马耳他国民和马耳他实体：
+
+- 9 位数字
+
+### <a name="pattern"></a>模式
+
+马耳他公民：7 位数字和 1 个字母
+
+- 7 位数字
+- 1 个字母（不区分大小写）
+
+非马耳他公民和马耳他实体：9 位数字
+
+- 9 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_malta_eu_tax_file_number"></a>Keywords\_malta\_eu\_tax\_file\_number
+```
+citizen service number
+id tat-taxxa
+identifika numru tal-biljett
+kodiċi numerali personali
+numru ta 'identifikazzjoni personali
+numru ta 'identifikazzjoni tat-taxxa
+numru ta 'identifikazzjoni uniku
+numru ta' identità uniku
+numru tas-servizz taċ-ċittadin
+numru tat-taxxa
+personal numeric code
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+unique identification number
+unique identity number
+uniqueidentityno#
+```
 ## <a name="netherlands-citizens-service-bsn-number"></a>荷兰公民服务 (BSN) 编号
 
 ### <a name="format"></a>格式
@@ -3478,7 +7108,422 @@ unique identification number
 unique identity number
 uniqueidentityno#
 ```
+## <a name="netherlands-drivers-license-number"></a>荷兰驾照编号 
 
+### <a name="format"></a>格式 
+
+不带空格和分隔符的 10 位数字
+
+### <a name="pattern"></a>模式
+
+10 位
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_netherlands_eu_drivers_license_number"></a>Keywords\_netherlands\_eu\_driver's\_license\_number
+```
+permis de conduire
+rijbewijs
+rijbewijsnummer
+rijbewijzen
+rijbewijs nummer
+rijbewijsnummers
+```
+
+## <a name="netherlands-passport-number"></a>荷兰护照号码 
+
+### <a name="format"></a>格式 
+
+9 个字母或数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+
+9 个字母或数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_netherlands_eu_passport_number"></a>Keywords\_netherlands\_eu\_passport\_number
+```
+paspoort nummer
+paspoortnummers
+paspoortnummer
+paspoort nr
+```
+## <a name="netherlands-tax-identification-number"></a>荷兰税务标识号 
+
+### <a name="format"></a>格式 
+
+不带空格或分隔符的 9 位数字
+
+### <a name="pattern"></a>模式
+
+9 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_netherlands_eu_tax_file_number"></a>Keywords\_netherlands\_eu\_tax\_file\_number
+```
+btw nummer
+hollânske tax identification
+hulandes impuesto id number
+hulandes impuesto identification
+identificatienummer belasting
+identificatienummer van belasting
+impuesto identification number
+impuesto number
+nederlands belasting id nummer
+nederlands belasting identificatie
+nederlands belasting identificatienummer
+nederlands belastingnummer
+nederlandse belasting identificatie
+netherlands tax identification
+netherland's tax identification
+netherlands tin
+netherland's tin
+tax id
+tax identification no
+tax identification number
+tax identification tal
+tax no#
+tax no
+tax number
+tax registration number
+tax tal
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+## <a name="netherlands-value-added-tax-number"></a>荷兰增值税号码 
+
+### <a name="format"></a>格式 
+
+14 个字符的字母数字模式
+
+### <a name="pattern"></a>模式
+
+14 个字符的字母数字模式：
+
+- N 或 n
+- L 或 l
+- 可选的空格、点或连字符
+- 9 位数字
+- 可选的空格、点或连字符
+- B 或 b
+- 2 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_netherlands_value_added_tax_number"></a>Keyword\_netherlands\_value\_added\_tax\_number
+```
+vat number
+vat no
+vat#
+wearde tafoege tax getal
+btw nûmer
+btw-nummer
+```
+## <a name="new-zealand-bank-account-number"></a>新西兰银行帐号 
+
+### <a name="format"></a>格式 
+
+14 位到 16 位数字模式，带有可选分隔符
+
+### <a name="pattern"></a>模式
+
+14 位到 16 位数字模式，带有可选分隔符：
+
+- 2 位数字
+- 1 个可选连字符或空格
+- 3 到 4 位数字
+- 1 个可选连字符或空格
+- 7 位数字
+- 1 个可选连字符或空格
+- 2 到 3 位数字
+- 1 个可选连字符或空格
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_new_zealand_bank_account_number"></a>Keyword\_new\_zealand\_bank\_account\_number
+```
+account number
+bank account
+bank_acct_id
+bank_acct_branch
+bank_acct_nbr
+```
+## <a name="new-zealand-driver-license"></a>新西兰驾照 
+
+### <a name="format"></a>格式 
+
+8 个字符的字母数字模式
+
+### <a name="pattern"></a>模式
+
+8 个字符的字母数字模式
+
+- 2 个字母
+- 6 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_new_zealand_drivers_license_number"></a>Keyword\_new\_zealand\_drivers\_license\_number
+```
+driverlicence
+driverlicences
+driver lic
+driver licence
+driver licences
+driverslic
+driverslicence
+driverslicences
+drivers lic
+drivers lics
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's licence
+driver's licences
+driverlic#
+driverlics#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver licence#
+driver licences#
+driverslic#
+driverslics#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's licence#
+driver's licences#
+international driving permit
+international driving permits
+nz automobile association
+new zealand automobile association
+```
+## <a name="new-zealand-inland-revenue-number"></a>新西兰内陆收入编号 
+
+### <a name="format"></a>格式 
+
+8 位或 9 位数字，带有可选分隔符
+
+### <a name="pattern"></a>模式
+
+8 位或 9 位数字，带有可选分隔符
+
+- 2 位或 3 位数字
+- 1 个可选的空格或连字符
+- 3 位数字
+- 1 个可选的空格或连字符
+- 3 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_new_zealand_inland_revenue_number"></a>Keyword\_new\_zealand\_inland\_revenue\_number
+```
+ird no.
+ird no#
+nz ird
+new zealand ird
+ird number
+inland revenue number
+```
+## <a name="new-zealand-social-welfare-number"></a>新西兰社会福利号码
+
+### <a name="format"></a>格式
+
+9 位数字
+
+### <a name="pattern"></a>模式
+
+9 位数字
+
+- 3 位数字
+- 1 个可选连字符
+- 3 位数字
+- 1 个可选连字符
+- 3 位数字
+
+#### <a name="keyword_new_zealand_social_welfare_number"></a>Keyword\_new\_zealand\_social\_welfare\_number
+```
+social welfare #
+social welfare#
+social welfare No.  
+social welfare number
+swn#
+```
 ## <a name="new-zealand-ministry-of-health-number"></a>新西兰卫生部编号
 
 ### <a name="format"></a>格式
@@ -3563,6 +7608,151 @@ Identity Card
 Pinag-isang Multi-Layunin ID
 ```
 
+## <a name="poland-drivers-license-number"></a>波兰驾照编号
+
+### <a name="format"></a>格式
+
+包含 2 个正斜杠的 14 位数字
+
+### <a name="pattern"></a>模式
+
+14 位数字和 2 个正斜杠：
+
+- 5 位数字
+- 1 个正斜杠
+- 2 位数字
+- 1 个正斜杠
+- 7 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_poland_eu_drivers_license_number"></a>Keywords\_poland\_eu\_driver's\_license\_number
+```
+prawo jazdy
+prawa jazdy
+```
+
 ## <a name="poland-identity-card"></a>波兰身份证号码
 
 ### <a name="format"></a>格式
@@ -3637,6 +7827,82 @@ Nr. Paszportu
 Paszport
 ```
 
+## <a name="poland-regon-number"></a>波兰 REGON 号码
+
+### <a name="format"></a>格式
+
+9 或 14 位数字
+
+### <a name="pattern"></a>模式
+
+9 或 14 位数字：
+
+- 9 位数字或
+- 9 位数字
+- 连字符
+- 5 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_poland_regon_number"></a>Keywords\_poland\_regon\_number
+```
+regon id
+statistical number
+statistical id
+statistical no
+regon number
+regonid#
+regonno#
+company id
+companyid#
+companyidno#
+numer statystyczny
+numeru regon
+numerstatystyczny#
+numeruregon#
+```
+## <a name="poland-tax-identification-number"></a>波兰税务标识号
+
+### <a name="format"></a>格式
+
+11 位数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+
+11 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_poland_eu_tax_file_number"></a>Keywords\_poland\_eu\_tax\_file\_number
+```
+nip#
+nip
+numer identyfikacji podatkowej
+numeridentyfikacjipodatkowej#
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+vat id#
+vat id
+vat no
+vat number
+vatid#
+vatid
+vatno#
+```
 ## <a name="portugal-citizen-card-number"></a>葡萄牙公民卡编号
 
 ### <a name="format"></a>格式
@@ -3836,6 +8102,408 @@ permissão condução
 Licença condução Portugal
 carta de condução
 ```
+## <a name="portugal-passport-number"></a>葡萄牙护照号码
+
+### <a name="format"></a>格式
+
+1 个字母，后跟 6 位数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+
+1 个字母，后跟 6 位数字：
+
+- 1 个字母（不区分大小写）
+- 6 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_portugal_eu_passport_number"></a>Keywords\_portugal\_eu\_passport\_number
+```
+número do passaporte
+portuguese passport
+portuguese passeport
+portuguese passaporte
+passaporte nº
+passeport nº
+números de passaporte
+portuguese passports
+número passaporte
+números passaporte
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+
+## <a name="portugal-tax-identification-number"></a>葡萄牙税务标识号
+
+### <a name="format"></a>格式
+
+9 位数，带可选空格
+
+### <a name="pattern"></a>模式
+
+- 3 位数字
+- （可选）1 个空格
+- 3 位数字
+- （可选）1 个空格
+- 3 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_portugal_eu_tax_file_number"></a>Keywords\_portugal\_eu\_tax\_file\_number
+```
+cpf#
+cpf
+nif#
+nif
+número de identificação fisca
+numero fiscal
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+## <a name="romania-drivers-license-number"></a>罗马尼亚驾照编号
+
+### <a name="format"></a>格式
+
+1 个字符，后跟 8 位数字
+
+### <a name="pattern"></a>模式
+
+1 个字符，后跟 8 位数字：
+
+- 1 个字母（不区分大小写）或数字
+- 8 位数字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_romania_eu_drivers_license_number"></a>Keywords\_romania\_eu\_driver's\_license\_number
+```
+permis de conducere
+permisului de conducere
+permisului conducere
+permisele de conducere
+permisele conducere
+permis conducere
+```
+
+## <a name="romania-passport-number"></a>罗马尼亚护照号码
+
+### <a name="format"></a>格式
+
+8 或 9 位数字，不带空格和分隔符
+
+### <a name="pattern"></a>模式
+
+8 或 9 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_romania_eu_passport_number"></a>Keywords\_romania\_eu\_passport\_number
+```
+numărul pașaportului numarul pasaportului numerele pașaportului Pașaport nr
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
+
+## <a name="romania-personal-numeric-code-cnp"></a>罗马尼亚个人数字代码 (CNP)
+
+### <a name="format"></a>格式
+
+不带空格和分隔符的 13 位数字
+
+### <a name="pattern"></a>模式
+
+- 1-9 中的 1 位数字
+- 表示出生日期的 6 位数字 (YYMMDD)
+- 2 位数字，可以是 01-52 或 99
+- 4 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_romania_eu_national_id_card"></a>Keywords\_romania\_eu\_national\_id\_card
+```
+cnp#
+cnp
+cod identificare personal
+cod numeric personal
+cod unic identificare
+codnumericpersonal#
+codul fiscal nr.
+identificarea fiscală nr#
+id-ul taxei
+insurance number
+insurancenumber#
+national id#
+national id
+national identification number
+număr identificare personal
+număr identitate
+număr personal unic
+număridentitate#
+număridentitate
+numărpersonalunic#
+numărpersonalunic
+număru de identificare fiscală
+numărul de identificare fiscală
+personal numeric code
+pin#
+pin
+tax file no
+tax file number
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+unique identification number
+unique identity number
+uniqueidentityno#
+uniqueidentityno
+```
+
+## <a name="russia-passport-number-domestic"></a>俄罗斯护照号码（国内）
+
+### <a name="format"></a>格式
+
+10 位数字
+
+### <a name="pattern"></a>模式
+
+10 位数字：
+
+- 2 位数字
+- 1 个可选的空格或连字符
+- 2 位数字
+- （可选）1 个空格
+- 6 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_russia_passport_number_domestic"></a>Keyword\_russia\_passport\_number\_domestic
+```
+passport number
+passport no
+passport #
+passport id
+passportno#
+passportnumber#
+паспорт нет
+паспорт id
+pоссийской паспорт
+pусский номер паспорта
+паспорт#
+паспортid#
+номер паспорта
+номерпаспорта#
+```
+## <a name="russia-passport-number-international"></a>俄罗斯护照号码（国际）
+
+### <a name="format"></a>格式
+
+9 位数字
+
+### <a name="pattern"></a>模式
+
+9 位数字：
+
+- 2 位数字
+- 1 个可选的空格或连字符
+- 7 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_russia_passport_number_international"></a>Keywords\_russia\_passport\_number\_international
+```
+passport number
+passport no
+passport #
+passport id
+passportno#
+passportnumber#
+паспорт нет
+паспорт id
+pоссийской паспорт
+pусский номер паспорта
+паспорт#
+паспортid#
+номер паспорта
+номерпаспорта#
+```
 
 ## <a name="saudi-arabia-national-id"></a>沙特阿拉伯国民身份证
 
@@ -3884,6 +8552,477 @@ Foreign Identification Number
 FIN
 身份证
 身份證
+```
+## <a name="slovakia-drivers-license-number"></a>斯洛伐克驾照编号
+
+### <a name="format"></a>格式
+
+1 个字符，后跟 7 位数字
+
+### <a name="pattern"></a>模式
+
+1 个字符，后跟 7 位数字
+
+- 1 个字母（不区分大小写）或数字
+- 7 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_slovakia_eu_drivers_license_number"></a>Keywords\_slovakia\_eu\_driver's\_license\_number
+```
+vodičský preukaz
+vodičské preukazy
+vodičského preukazu
+vodičských preukazov
+```
+## <a name="slovakia-personal-number"></a>斯洛伐克个人号码
+
+### <a name="format"></a>格式
+包含可选反斜杠的 9 或 10 位数字
+
+### <a name="pattern"></a>模式
+- 表示出生日期的 6 位数字
+- 可选斜杠 (/)
+- 3 位数字
+- 1 位可选的校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_slovakia_eu_national_id_card"></a>Keywords\_slovakia\_eu\_national\_id\_card
+```
+azonosító szám
+birth number
+číslo národnej identifikačnej karty
+číslo občianského preukazu
+daňové číslo
+id number
+identification no
+identification number
+identifikačná karta č
+identifikačné číslo
+identity card no
+identity card number
+národná identifikačná značka č
+national number
+nationalnumber#
+nemzeti személyazonosító igazolvány
+personalidnumber#
+rč
+rodne cislo
+rodné číslo
+social security number
+ssn#
+ssn
+személyi igazolvány szám
+személyi igazolvány száma
+személyigazolvány szám
+tax file no
+tax file number
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+## <a name="slovenia-drivers-license-number"></a>斯洛文尼亚驾照编号
+
+### <a name="format"></a>格式
+
+不带空格和分隔符的 9 位数字
+
+### <a name="pattern"></a>模式
+
+9 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+#### <a name="keywords_slovenia_eu_drivers_license_number"></a>Keywords\_slovenia\_eu\_driver's\_license\_number
+```
+vozniško dovoljenje
+vozniška številka licence
+vozniških dovoljenj
+številka vozniškega dovoljenja
+številke vozniških dovoljenj
+```
+## <a name="slovenia-passport-number"></a>斯洛文尼亚护照号码
+
+### <a name="format"></a>格式
+
+2 个字母，后跟 7 位数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+
+2 个字母，后跟 7 位数字：
+
+- 字母“P”
+- 1 个大写字母
+- 7 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+- passport#
+- passport #
+- passportid
+- passports
+- passportno
+- passport no
+- passportnumber
+- passport number
+- passportnumbers
+- passport numbers
+```
+#### <a name="keywords_slovenia_eu_passport_number"></a>Keywords\_slovenia\_eu\_passport\_number
+```
+- številka potnega lista
+- potek veljavnosti
+- potni list#
+- datum rojstva
+- potni list
+- številke potnih listov
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+- date of issue
+- date of expiry
+```
+## <a name="slovenia-tax-identification-number"></a>斯洛文尼亚税务标识号
+
+### <a name="format"></a>格式
+
+8 位数字，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+
+- 1-9 中的 1 位数字
+- 6 位数字
+- 1 位校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_slovenia_eu_tax_file_number"></a>Keywords\_slovenia\_eu\_tax\_file\_number
+```
+davčna številka
+identifikacijska številka davka
+številka davčne datoteke
+tax file no
+tax file number
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+
+## <a name="slovenia-unique-master-citizen-number"></a>斯洛文尼亚唯一主公民编号
+
+### <a name="format"></a>格式
+
+不带空格或分隔符的 13 位数字
+
+### <a name="pattern"></a>模式
+
+采用指定模式的 13 位数字：
+
+- 对应于出生日期的 7 位数字 (DDMMLLL)，其中 LLL 对应的是出生年份的后三位数
+- 对应于出生区域对应的 2 位数字（“50”）
+- 3 位数字，对应于在同一天出生的人的性别和序列号的组合。 男性为 000 到 499，女性为 500 到 999。
+- 1 位校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_slovenia_eu_national_id_card"></a>Keywords\_slovenia\_eu\_national\_id\_card
+```
+edinstvena številka glavnega državljana
+emšo
+enotna maticna številka obcana
+id card
+identification number
+identifikacijska številka
+identity card
+nacionalna id
+nacionalni potni list
+national id
+osebna izkaznica
+osebni koda
+osebni ne
+osebni številka
+personal code
+personal number
+personal numeric code
+številka državljana
+unique citizen number
+unique id number
+unique identity number
+unique master citizen number
+unique registration number
+uniqueidentityno #
+uniqueidentityno#
 ```
 
 ## <a name="south-africa-identification-number"></a>南非身份证号码
@@ -3941,6 +9080,247 @@ RRN
 주민등록번호
 ```
 
+## <a name="spain-dni"></a>西班牙 DNI 
+
+### <a name="format"></a>格式
+
+8 位数字，后跟 1 个字符
+
+### <a name="pattern"></a>模式
+
+7 位数字，后跟 1 个字符
+
+- 8 位数字
+- 1 个可选的空格或连字符
+- 1 个校验字母（不区分大小写）
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_spain_eu_national_id_card"></a>Keywords\_spain\_eu\_national\_id\_card
+```
+carné de identidad
+dni#
+dni
+dninúmero#
+documento nacional de identidad
+identidad único
+identidadúnico#
+insurance number
+national identification number
+national identity
+nationalid#
+nationalidno#
+nie#
+nie
+nienúmero#
+número de identificación
+número nacional identidad
+personal identification number
+personal identity no
+unique identity number
+uniqueid#
+```
+## <a name="spain-drivers-license-number"></a>西班牙驾照编号 
+
+### <a name="format"></a>格式
+
+8 位数字，后跟 1 个字符
+
+### <a name="pattern"></a>模式
+
+8 位数字，后跟 1 个字符：
+
+- 8 位数字
+- 1 个数字或字母（不区分大小写）
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+
+#### <a name="keywords_spain_eu_drivers_license_number"></a>Keywords\_spain\_eu\_driver's\_license\_number
+```
+permiso de conducción
+permiso conducción
+licencia de conducir
+licencia conducir
+permiso conducir
+permiso de conducir
+permisos de conducir
+permisos conducir
+carnet conducir
+carnet de conducir
+licencia de manejo
+licencia manejo
+```
+## <a name="spain-passport-number"></a>西班牙护照号码 
+
+### <a name="format"></a>格式
+
+字母和数字构成的 8 或 9 位的字符组合，不带空格或分隔符
+
+### <a name="pattern"></a>模式
+
+字母和数字构成的 8 或 9 位的字符组合：
+
+- 2 个数字或字母
+- 1 个数字或字母（可选）
+- 6 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_passport_number"></a>Keywords\_eu\_passport\_number
+```
+passport#
+passport #
+passportid
+passports
+passportno
+passport no
+passportnumber
+passport number
+passportnumbers
+passport numbers
+```
+#### <a name="keywords_spain_eu_passport_number"></a>Keywords\_spain\_eu\_passport\_number
+```
+libreta pasaporte
+número pasaporte
+españa pasaporte
+números de pasaporte
+número de pasaporte
+números pasaporte
+pasaporte no
+Passeport n°
+n° Passeport
+pasaporte no.
+pasaporte n°
+spain passport
+```
+#### <a name="keywords_eu_passport_date"></a>Keywords\_eu\_passport\_date
+```
+date of issue
+date of expiry
+```
 ## <a name="spain-social-security-number-ssn"></a>西班牙社会安全号码 (SSN)
 
 此敏感信息类型实体纳入了欧盟社会安全号码或等效身份证号码敏感信息类型，并可作为独立的敏感信息类型实体提供。
@@ -3962,6 +9342,229 @@ RRN
 ### <a name="keywords"></a>关键字
 
 无
+
+## <a name="spain-tax-identification-number"></a>西班牙税务标识号 
+
+### <a name="format"></a>格式
+
+采用指定模式的 7 位或 8 位数字以及 1 个或 2 个字母
+
+### <a name="pattern"></a>模式
+
+持有西班牙身份证的西班牙自然人：
+
+- 8 位数字
+- 1 个大写字母（区分大小写）
+
+没有西班牙身份证的西班牙非永久居民
+
+- 1 个大写字母“L”（区分大小写）
+- 7 位数字
+- 1 个大写字母（区分大小写）
+
+没有西班牙身份证的 14 岁以下的西班牙非永久居民：
+
+- 1 个大写字母“K”（区分大小写）
+- 7 位数字
+- 1 个大写字母（区分大小写）
+
+具有外国人身份证号码的外国人
+
+- 1 个大写字母 -“X”、“Y”或“Z”（区分大小写）
+- 7 位数字
+- 1 个大写字母（区分大小写）
+
+没有外国人身份证号码的外国人
+
+- 1 个大写字母“M”（区分大小写）
+- 7 位数字
+- 1 个大写字母（区分大小写）
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_spain_eu_tax_file_number"></a>Keywords\_spain\_eu\_tax\_file\_number
+```
+cif
+cifid#
+cifnúmero#
+número de contribuyente
+número de identificación fiscal
+número de impuesto corporativo
+spanishcifid#
+spanishcifid
+spanishcifno#
+spanishcifno
+tax file no
+tax file number
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+## <a name="sweden-drivers-license-number"></a>瑞典驾照编号
+
+### <a name="format"></a>格式
+
+包含 1 个连字符的 10 位数
+
+### <a name="pattern"></a>模式
+
+包含 1 个连字符的 10 位数字：
+
+- 6 位数字
+- 1 个连字符
+- 4 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_eu_drivers_license_number"></a>Keywords\_eu\_driver's\_license\_number
+```
+driverlic
+driverlics
+driverlicense
+driverlicenses
+driverlicence
+driverlicences
+driver lic
+driver lics
+driver license
+driver licenses
+driver licence
+driver licences
+driverslic
+driverslics
+driverslicence
+driverslicences
+driverslicense
+driverslicenses
+drivers lic
+drivers lics
+drivers license
+drivers licenses
+drivers licence
+drivers licences
+driver'lic
+driver'lics
+driver'license
+driver'licenses
+driver'licence
+driver'licences
+driver' lic
+driver' lics
+driver' license
+driver' licenses
+driver' licence
+driver' licences
+driver'slic
+driver'slics
+driver'slicense
+driver'slicenses
+driver'slicence
+driver'slicences
+driver's lic
+driver's lics
+driver's license
+driver's licenses
+driver's licence
+driver's licences
+dl#
+dls#
+driverlic#
+driverlics#
+driverlicense#
+driverlicenses#
+driverlicence#
+driverlicences#
+driver lic#
+driver lics#
+driver license#
+driver licenses#
+driver licences#
+driverslic#
+driverslics#
+driverslicense#
+driverslicenses#
+driverslicence#
+driverslicences#
+drivers lic#
+drivers lics#
+drivers license#
+drivers licenses#
+drivers licence#
+drivers licences#
+driver'lic#
+driver'lics#
+driver'license#
+driver'licenses#
+driver'licence#
+driver'licences#
+driver' lic#
+driver' lics#
+driver' license#
+driver' licenses#
+driver' licence#
+driver' licences#
+driver'slic#
+driver'slics#
+driver'slicense#
+driver'slicenses#
+driver'slicence#
+driver'slicences#
+driver's lic#
+driver's lics#
+driver's license#
+driver's licenses#
+driver's licence#
+driver's licences#
+driving licence 
+driving license
+dlno#
+driv lic
+driv licen
+driv license
+driv licenses
+driv licence
+driv licences
+driver licen
+drivers licen
+driver's licen
+driving lic
+driving licen
+driving licenses
+driving licence
+driving licences
+driving permit
+dl no
+dlno
+dl number
+```
+
+#### <a name="keywords_sweden_eu_drivers_license_number"></a>Keywords\_sweden\_eu\_driver's\_license\_number
+```
+ajokortti
+permis de conducere
+ajokortin numero
+kuljettajat lic.
+drivere lic.
+körkort
+numărul permisului de conducere
+שאָפער דערלויבעניש נומער
+förare lic.
+דריווערס דערלויבעניש
+körkortsnummer
+```
 
 ## <a name="sweden-national-id"></a>瑞典国民身份证
 
@@ -4052,6 +9655,52 @@ PasseportNon
 Passeportn °
 ```
 
+## <a name="sweden-tax-identification-number"></a>瑞典税务标识号
+
+### <a name="format"></a>格式
+
+采用指定模式的 10 位数字和 1 个符号
+
+### <a name="pattern"></a>模式
+
+10 位数字和 1 个符号：
+
+- 与出生日期对应的 6 位数字 (YYMMDD)
+- 1 个加号或减号
+- 使标识号具有唯一性的 3 位数字，其中：
+- 对于 1990 之前发行的编号，第 7 位和第 8 位数字标识出生的国家/地区或外国出生人口
+- 第 9 位数字表示性别，男性为奇数，女性为偶数
+- 1 位校验数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keywords_sweden_eu_tax_file_number"></a>Keywords\_sweden\_eu\_tax\_file\_number
+```
+personal id number
+personnummer
+skatt id nummer
+skatt identifikation
+skattebetalarens identifikationsnummer
+sverige tin
+tax file
+tax id
+tax identification no
+tax identification number
+tax no#
+tax no
+tax number
+tax registration number
+taxid#
+taxidno#
+taxidnumber#
+taxno#
+taxnumber#
+taxnumber
+tin id
+tin no
+tin#
+```
+
 ## <a name="swift-code"></a>SWIFT 代码
 
 ### <a name="format"></a>格式
@@ -4094,7 +9743,7 @@ code SWIFT
 le numéro de swift
 swift numéro d'acheminement
 le numéro BIC
-#BIC
+\#BIC
 code identificateur de banque
 SWIFTコード
 SWIFT番号
@@ -4107,6 +9756,48 @@ BIC コード
 金融機関識別コード
 金融機関コード
 銀行コード
+```
+
+## <a name="switzerland-ssn-ahv-number"></a>瑞士 SSN AHV 编号
+
+### <a name="format"></a>格式
+
+13 位数字
+
+### <a name="pattern"></a>模式
+
+13 位数字：
+
+- 3 位数字 - 756
+- 1 个可选点
+- 4 位数字
+- 1 个可选点
+- 4 位数字
+- 1 个可选点
+- 2 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_swiss_ssn_ahv_number"></a>Keyword\_swiss\_ssn\_AHV\_number
+```
+ahv
+ssn
+pid
+insurance number
+personalidno#
+social security number
+personal id number
+personal identification no.
+insuranceno#
+uniqueidno#
+unique identification no.
+avs number
+personal identity no versicherungsnummer
+identifikationsnummer
+einzigartige identität nicht
+sozialversicherungsnummer
+identification personnelle id
+numéro de sécurité sociale
 ```
 
 ## <a name="taiwan-national-identification-number"></a>台湾身份证号码
@@ -4410,6 +10101,50 @@ tin no
 tin#
 ```
 
+## <a name="ukraine-passport-domestic"></a>乌克兰护照（国内）
+
+### <a name="format"></a>格式
+
+9 位数字
+
+### <a name="pattern"></a>模式
+
+9 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_ukraine_passport_domestic"></a>Keyword\_ukraine\_passport\_domestic
+```
+ukraine passport
+passport number
+passport no
+паспорт України
+номер паспорта
+персональний
+```
+## <a name="ukraine-passport-international"></a>乌克兰护照（国际）
+
+### <a name="format"></a>格式
+
+8 个字符的字母数字模式
+
+#### <a name="pattern"></a>模式
+
+8 个字符的字母数字模式：
+
+- 2 个字母或数字
+- 6 位数字
+
+### <a name="keywords"></a>关键字
+
+#### <a name="keyword_ukraine_passport_international"></a>Keyword\_ukraine\_passport\_international
+```
+ukraine passport
+passport number
+passport no
+паспорт України
+номер паспорта
+```
 ## <a name="us-bank-account-number"></a>美国银行帐号
 
 ### <a name="format"></a>格式
@@ -4625,7 +10360,7 @@ individual taxpayer
 
 9 位数字，可能为有格式或者无格式的模式
 
->[!Note]
+> [!Note]
 > 如果是在 2011 年年中之前发行的，SSN 的格式非常严格，号码的某些部分必须在特定范围内才有效（但是没有校验和）。
 >
 

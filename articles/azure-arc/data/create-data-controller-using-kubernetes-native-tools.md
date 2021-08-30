@@ -7,18 +7,17 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: cf352cf9ce944ef3f1bb2702fda249deb6ce186e
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 9f7f5569d5381a7d1ff4d7ebbeac535105f22c93
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407716"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195062"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>使用 Kubernetes 工具创建 Azure Arc 数据控制器
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,27 +32,72 @@ ms.locfileid: "111407716"
 
 ### <a name="cleanup-from-past-installations"></a>清除过去的安装
 
-如果你之前在同一群集上安装了 Azure Arc 数据控制器，并使用 `azdata arc dc delete` 命令删除了该 Azure Arc 数据控制器，则可能仍需要删除一些群集级别对象。 运行以下命令来删除 Azure Arc 数据控制器群集级别对象：
+如果你之前在同一群集上安装了 Azure Arc 数据控制器，并删除了该 Azure Arc 数据控制器，则可能仍需要删除一些群集级别对象。 运行以下命令来删除 Azure Arc 数据控制器群集级别对象：
 
 ```console
 # Cleanup azure arc data service artifacts
-kubectl delete crd datacontrollers.arcdata.microsoft.com 
-kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com 
-kubectl delete crd postgresqls.arcdata.microsoft.com 
+
+# Note: not all of these objects will exist in your environment depending on which version of the Arc data controller was installed
+
+# Custom resource definitions (CRD)
+kubectl delete crd datacontrollers.arcdata.microsoft.com
+kubectl delete crd postgresqls.arcdata.microsoft.com
+kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com
+kubectl delete crd sqlmanagedinstancerestoretasks.tasks.sql.arcdata.microsoft.com
+kubectl delete crd dags.sql.arcdata.microsoft.com
+kubectl delete crd exporttasks.tasks.arcdata.microsoft.com
+kubectl delete crd monitors.arcdata.microsoft.com
+
+# Cluster roles and role bindings
+kubectl delete clusterrole arcdataservices-extension
+kubectl delete clusterrole arc:cr-arc-metricsdc-reader
+kubectl delete clusterrole arc:cr-arc-dc-watch
+kubectl delete clusterrole cr-arc-webhook-job
+
+# Substitute the name of the namespace the data controller was deployed in into {namespace}.  If unsure, get the name of the mutatingwebhookconfiguration using 'kubectl get clusterrolebinding'
+kubectl delete clusterrolebinding {namespace}:crb-arc-metricsdc-reader
+kubectl delete clusterrolebinding {namespace}:crb-arc-dc-watch
+kubectl delete clusterrolebinding crb-arc-webhook-job
+
+# API services
+# Up to May 2021 release
+kubectl delete apiservice v1alpha1.arcdata.microsoft.com
+kubectl delete apiservice v1alpha1.sql.arcdata.microsoft.com
+
+# June 2021 release
+kubectl delete apiservice v1beta1.arcdata.microsoft.com
+kubectl delete apiservice v1beta1.sql.arcdata.microsoft.com
+
+# GA/July 2021 release
+kubectl delete apiservice v1.arcdata.microsoft.com
+kubectl delete apiservice v1.sql.arcdata.microsoft.com
+
+# Substitute the name of the namespace the data controller was deployed in into {namespace}.  If unsure, get the name of the mutatingwebhookconfiguration using 'kubectl get mutatingwebhookconfiguration'
+kubectl delete mutatingwebhookconfiguration arcdata.microsoft.com-webhook-{namespace}
+
 ```
 
 ## <a name="overview"></a>概述
 
 要创建 Azure Arc 数据控制器，大致步骤如下所示：
-1. 为 Arc 数据控制器、Azure SQL 托管实例和超大规模 PostgreSQL 创建自定义资源定义。 [需要 Kubernetes 群集管理员权限]
-2. 创建一个要在其中创建数据控制器的命名空间。 [需要 Kubernetes 群集管理员权限]
-3. 创建引导程序服务，包括副本集、服务帐户、角色和角色绑定。
-4. 为数据控制器管理员用户名和密码创建机密。
-5. 创建数据控制器。
-   
+
+   > [!IMPORTANT]
+   > 以下一些步骤需要 Kubernetes 群集管理员权限。
+
+1. 为 Arc 数据控制器、Azure SQL 托管实例和超大规模 PostgreSQL 创建自定义资源定义。 
+1. 创建一个要在其中创建数据控制器的命名空间。 
+1. 创建引导程序服务，包括副本集、服务帐户、角色和角色绑定。
+1. 为数据控制器管理员用户名和密码创建机密。
+1. 创建 Webhook 部署作业、群集角色和群集角色绑定。 
+1. 创建数据控制器。
+
+
 ## <a name="create-the-custom-resource-definitions"></a>创建自定义资源定义
 
-运行以下命令以创建自定义资源定义。  [需要 Kubernetes 群集管理员权限]
+运行以下命令以创建自定义资源定义。  
+
+   > [!IMPORTANT]
+   > 需要 Kubernetes 群集管理员权限。
 
 ```console
 kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
@@ -66,8 +110,14 @@ kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc
 ```console
 kubectl create namespace arc
 ```
+如果你使用的是 OpenShift，则需要使用 `kubectl edit namespace <name of namespace>` 编辑命名空间上的 `openshift.io/sa.scc.supplemental-groups` 和 `openshift.io/sa.scc.uid-range` 注释。  更改这些现有注释以匹配这些特定的 UID 和 fsGroup ID/范围。
 
-如果要使用此命名空间的其他人并非群集管理员，则建议创建一个命名空间管理员角色，并通过角色绑定向这些用户授予该角色。  命名空间管理员应对命名空间具有完全权限。  稍后将提供更多信息，介绍如何为用户提供更具体的基于角色的访问。
+```console
+openshift.io/sa.scc.supplemental-groups: 1000700001/10000
+openshift.io/sa.scc.uid-range: 1000700001/10000
+```
+
+如果要使用此命名空间的其他人并非群集管理员，则建议创建一个命名空间管理员角色，并通过角色绑定向这些用户授予该角色。  命名空间管理员应对命名空间具有完全权限。  可在 [Azure Arc GitHub 存储库](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/rbac)中找到更具体的角色和示例角色绑定。
 
 ## <a name="create-the-bootstrapper-service"></a>创建引导程序服务
 
@@ -103,13 +153,13 @@ bootstrapper.yaml 模板文件默认从 Microsoft Container Registry (MCR) 拉�
       - name: arc-private-registry #Create this image pull secret if you are using a private container registry
       containers:
       - name: bootstrapper
-        image: mcr.microsoft.com/arcdata/arc-bootstrapper:latest #Change this registry location if you are using a private container registry.
+        image: mcr.microsoft.com/arcdata/arc-bootstrapper:v1.0.0_2021-07-30 #Change this registry location if you are using a private container registry.
         imagePullPolicy: Always
 ```
 
-## <a name="create-a-secret-for-the-data-controller-administrator"></a>为数据控制器管理员创建机密
+## <a name="create-a-secret-for-the-kibanagrafana-dashboards"></a>为 Kibana/Grafana 仪表板创建机密
 
-数据控制器管理员用户名和密码用于向数据控制器 API 进行身份验证，以执行管理功能。  选择安全密码，并只与需要拥有群集管理员权限的人共享。
+用户名和密码用于以管理员身份向 Kibana 和 Grafana 仪表板进行身份验证。  请选择安全的密码，并只与需要拥有这些特权的人共享。
 
 Kubernetes 机密以 base64 编码的字符串形式存储 - 一个用于用户名，另一个用于密码。
 
@@ -145,6 +195,22 @@ kubectl create --namespace arc -f <path to your data controller secret file>
 kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.yaml
 ```
 
+## <a name="create-the-webhook-deployment-job-cluster-role-and-cluster-role-binding"></a>创建 Webhook 部署作业、群集角色和群集角色绑定
+
+首先，在计算机上本地创建[模板文件](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/web-hook.yaml)的副本，以便可以修改某些设置。
+
+编辑文件，将所有位置中的 `{{namespace}}` 替换为在上一步中创建的命名空间的名称。 **保存文件。**
+
+运行以下命令以创建群集角色和群集角色绑定。  
+
+   > [!IMPORTANT]
+   > 需要 Kubernetes 群集管理员权限。
+
+```console
+kubectl create -n arc -f <path to the edited template file on your computer>
+```
+
+
 ## <a name="create-the-data-controller"></a>创建数据控制器
 
 现在，可开始创建数据控制器。
@@ -160,16 +226,14 @@ kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.y
 
 建议查看并在可能的情况下更改默认值
 - storage..className：用于数据控制器数据和日志文件的存储类。  如果不确定 Kubernetes 群集中可用的存储类，可以运行以下命令：`kubectl get storageclass`。  默认值为 `default`，它假定存在一个被命名为 `default` 的存储类，而不是存在一个默认的存储类。  注意：需要将两个 className 设置设为所需的存储类 - 一个用于数据，一个用于日志。
-- serviceType：如果使用的不是 LoadBalancer，请将服务类型更改为 `NodePort`。  注意：需要更改两个 serviceType 设置。
-- 在 Azure Red Hat OpenShift 或 Red Hat OpenShift 容器平台上，必须先应用安全性上下文约束，然后才能创建数据控制器。 按照[在 OpenShift 上为已启用 Azure Arc 的数据服务应用安全性上下文约束](how-to-apply-security-context-constraint.md)中的说明进行操作。
-- Security：对于 Azure Red Hat OpenShift 或 Red Hat OpenShift 容器平台，将 `security:` 设置替换为数据控制器 yaml 文件中的以下值。 
+- serviceType：如果使用的不是 LoadBalancer，请将服务类型更改为 `NodePort`。
+- Security：对于 Azure Red Hat OpenShift 或 Red Hat OpenShift 容器平台，将 `security:` 设置替换为数据控制器 yaml 文件中的以下值。
 
 ```yml
   security:
-    allowDumps: true
+    allowDumps: false
     allowNodeMetricsCollection: false
     allowPodMetricsCollection: false
-    allowRunAsRoot: false
 ```
 
 可选
@@ -188,32 +252,29 @@ kind: ServiceAccount
 metadata:
   name: sa-mssql-controller
 ---
-apiVersion: arcdata.microsoft.com/v1alpha1
-kind: datacontroller
+apiVersion: arcdata.microsoft.com/v1
+kind: DataController
 metadata:
   generation: 1
-  name: arc
+  name: arc-dc
 spec:
   credentials:
     controllerAdmin: controller-login-secret
     dockerRegistry: arc-private-registry #Create a registry secret named 'arc-private-registry' if you are going to pull from a private registry instead of MCR.
-    serviceAccount: sa-mssql-controller
+    serviceAccount: sa-arc-controller
   docker:
     imagePullPolicy: Always
-    imageTag: latest
+    imageTag: v1.0.0_2021-07-30
     registry: mcr.microsoft.com
     repository: arcdata
+  infrastructure: other #Must be a value in the array [alibaba, aws, azure, gcp, onpremises, other]
   security:
-    allowDumps: true
-    allowNodeMetricsCollection: true
-    allowPodMetricsCollection: true
-    allowRunAsRoot: false
+    allowDumps: true #Set this to false if deploying on OpenShift
+    allowNodeMetricsCollection: true #Set this to false if deploying on OpenShift
+    allowPodMetricsCollection: true #Set this to false if deploying on OpenShift
   services:
   - name: controller
     port: 30080
-    serviceType: LoadBalancer # Modify serviceType based on your Kubernetes environment
-  - name: serviceProxy
-    port: 30777
     serviceType: LoadBalancer # Modify serviceType based on your Kubernetes environment
   settings:
     ElasticSearch:
@@ -224,7 +285,7 @@ spec:
       resourceGroup: <your resource group>
       subscription: <your subscription GUID>
     controller:
-      displayName: arc
+      displayName: arc-dc
       enableBilling: "True"
       logs.rotation.days: "7"
       logs.rotation.size: "5000"
@@ -263,7 +324,7 @@ kubectl get datacontroller/arc --namespace arc
 kubectl get pods --namespace arc
 ```
 
-还可运行如下命令来检查任何特定 Pod 的创建状态。  这对于排查任何问题都特别有用。
+还可运行如下命令来检查任何特定 Pod 的创建状态。  这对于排查问题特别有用。
 
 ```console
 kubectl describe pod/<pod name> --namespace arc
@@ -271,10 +332,6 @@ kubectl describe pod/<pod name> --namespace arc
 #Example:
 #kubectl describe pod/control-2g7bl --namespace arc
 ```
-
-适用于 Azure Data Studio 的 Azure Arc 扩展提供了一个笔记本，可引导你逐步了解如何设置已启用 Azure Arc 的 Kubernetes，并将其配置来监视包含示例 SQL 托管实例 yaml 文件的 git 存储库。 一切连接后，新的 SQL 托管实例将部署到 Kubernetes 群集。
-
-请参阅适用于 Azure Data Studio 的 Azure Arc 扩展中的“使用已启用 Azure Arc 的 Kubernetes 和 Flux 部署 SQL 托管实例”笔记本。
 
 ## <a name="troubleshooting-creation-problems"></a>排查创建问题
 

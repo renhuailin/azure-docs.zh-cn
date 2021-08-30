@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: tisande
-ms.openlocfilehash: 436ad1da3e1b212e03113132d4aff9f48a3d80da
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7cc6acc29cf8019bf65d3495cfd8a00a87da11bc
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384892"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112914240"
 ---
 # <a name="azure-cosmos-db-dedicated-gateway---overview-preview"></a>Azure Cosmos DB 专用网关 - 概述（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,6 +26,9 @@ ms.locfileid: "110384892"
 专用网关内置于 Azure Cosmos DB 中。 [预配专用网关](how-to-configure-integrated-cache.md)时，你将获得一个完全托管的节点，该节点可将请求路由到后端分区。 与通过标准网关连接到 Azure Cosmos DB 相比，通过专用网关连接到 Azure Cosmos DB 的延迟更低且更容易预测。 即使发生缓存未命中，专用网关的延迟也要优于标准网关。
 
 只需对代码做出极少量的更改，就能让应用程序使用专用网关。 新的和现有的 Azure Cosmos DB 帐户都可以预配专用网关来提高读取性能。
+
+> [!NOTE]
+> 是否对专用网关有任何反馈？ 我们想听一听！ 欢迎直接与 Azure Cosmos DB 工程团队分享反馈：cosmoscachefeedback@microsoft.com
 
 ## <a name="connection-modes"></a>连接模式
 

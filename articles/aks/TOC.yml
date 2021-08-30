@@ -124,6 +124,12 @@
         - name: JBoss EAP
           href: /azure/developer/java/migration/migrate-jboss-eap-to-wildfly-on-azure-kubernetes-service
           maintainContext: false
+        - name: Java Web 应用容器化和迁移
+          href: /azure/migrate/tutorial-app-containerization-java-kubernetes
+          maintainContext: false
+        - name: ASP.NET 应用容器化和迁移
+          href: /azure/migrate/tutorial-app-containerization-aspnet-kubernetes
+          maintainContext: false
     - name: 受支持的 Kubernetes 版本
       href: supported-kubernetes-versions.md
     - name: 主机 OS 中的安全强化
@@ -368,7 +374,7 @@
           href: deployment-center-launcher.md
         - name: 适用于 Kubernetes 的 GitHub 操作
           href: ../aks/kubernetes-action.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 常见问题
           href: troubleshooting.md

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac59d16fc25b8f7d47d3422687a390013df38ebf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97693730"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752397"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>安装使用现有应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -29,7 +29,7 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
 
 ## <a name="prerequisites"></a>先决条件
 本文档假设已安装以下工具和基础结构：
-- 已启用[高级网络](../aks/configure-azure-cni.md)的 [AKS](https://azure.microsoft.com/services/kubernetes-service/)
+- 带有 [Azure 容器网络接口 (CNI)](../aks/configure-azure-cni.md) 的 [AKS](https://azure.microsoft.com/services/kubernetes-service/)
 - AKS 所在的同一虚拟网络中的[应用程序网关 v2](./tutorial-autoscale-ps.md)
 - 已在 AKS 群集上安装 [AAD Pod Identity](https://github.com/Azure/aad-pod-identity)
 - [Cloud Shell](https://shell.azure.com/) 是 Azure Shell 环境，它已安装 `az` CLI、`kubectl` 和 `helm`。 需要使用这些工具来运行下面所述的命令。

@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba3bdc3f58395f17911042c699a0aca3cbae92a2
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 3a1c9bcec2a9aec2673e29a3f578146cad7de5d6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290625"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730760"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -177,12 +177,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 #### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox（所有平台）
 
-Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须使用以下步骤手动将 Azure AD URL 添加到其 Firefox 设置：
-1. 运行 Firefox 并在地址栏中输入 `about:config`。 关闭你看到的任何通知。
-2. 搜索 network.negotiate-auth.trusted-uris 首选项。 此首选项列出了用于 Kerberos 身份验证的 Firefox 的受信任站点。
-3. 右键单击并选择“修改”。
-4. 在字段中输入 `https://autologon.microsoftazuread-sso.com`。
-5. 选择“确定”，然后重新打开浏览器。
+如果要在环境中使用[身份验证](https://github.com/mozilla/policy-templates/blob/master/README.md#authentication)策略设置，请确保将 Azure AD URL (`https://autologon.microsoftazuread-sso.com`) 添加到 SPNEGO 部分。 还可以将 PrivateBrowsing 选项设置为 true，以允许在隐私浏览模式下使用无缝 SSO。
 
 #### <a name="safari-macos"></a>Safari (macOS)
 
@@ -198,17 +193,20 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome（所有平台）
 
-如果已替代环境中的 [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) 或 [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) 策略设置，请确保也向其添加 Azure AD 的 URL (`https://autologon.microsoftazuread-sso.com`)。
+如果已替代环境中的 [AuthNegotiateDelegateAllowlist](https://chromeenterprise.google/policies/#AuthNegotiateDelegateAllowlist) 或 [AuthServerAllowlist](https://chromeenterprise.google/policies/#AuthServerAllowlist) 策略设置，请确保也向其添加 Azure AD 的 URL (`https://autologon.microsoftazuread-sso.com`)。
 
-#### <a name="google-chrome-macos-and-other-non-windows-platforms"></a>Google Chrome（macOS 和其他非 Windows 平台）
+#### <a name="macos"></a>macOS
 
-对于 macOS 和其他非 Windows 平台上的 Google Chrome，请参阅 [Chromium 项目策略列表](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)，了解如何控制用于集成身份验证的 Azure AD URL 的允许列表。
-
-使用第三方 Active Directory 组策略扩展将 Azure AD URL 扩展到 Mac 上的 Firefox、Google Chrome，不在本文讨论范围之内。
+使用第三方 Active Directory 组策略扩展将 Azure AD URL 扩展到面向 macOS 用户的 Firefox 和 Google Chrome，此内容不在本文讨论范围之内。
 
 #### <a name="known-browser-limitations"></a>已知的浏览器限制
 
-无缝 SSO 在 Firefox 的隐私浏览模式下不起作用。 它在以增强保护模式下运行的 Internet Explorer 中也不起作用。 无缝 SSO 支持基于 Chromium 的下一版本的 Microsoft Edge，它根据设计在 InPrivate 和来宾模式下工作。 不再支持 Microsoft Edge（旧版）。
+无缝 SSO 在以增强保护模式下运行的 Internet Explorer 中不起作用。 无缝 SSO 支持基于 Chromium 的下一版本的 Microsoft Edge，它根据设计在 InPrivate 和来宾模式下工作。 不再支持 Microsoft Edge（旧版）。 
+
+ 可能需要根据相应的文档，为 InPrivate 和/或来宾用户配置 `AmbientAuthenticationInPrivateModesEnabled`：
+ 
+   - [Microsoft Edge Chromium](/DeployEdge/microsoft-edge-policies#ambientauthenticationinprivatemodesenabled)
+   - [Google Chrome](https://chromeenterprise.google/policies/?policy=AmbientAuthenticationInPrivateModesEnabled)
 
 ## <a name="step-4-test-the-feature"></a>步骤 4：测试功能
 
@@ -219,7 +217,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
   - 你可以通过组策略[将此功能扩展到用户](#step-3-roll-out-the-feature)。
 
 要测试用户仅输入用户名而不是密码的场景：
-   - 登录到 `https://myapps.microsoft.com/ 。 请确保清除浏览器缓存，或在专用模式下将新的专用浏览器会话与任何受支持的浏览器一起使用。
+   - 登录 https://myapps.microsoft.com/ 。 请确保清除浏览器缓存，或在专用模式下将新的专用浏览器会话与任何受支持的浏览器一起使用。
 
 要测试用户并非必须输入用户名或密码的场景，请使用以下步骤之一： 
    - 登录到 `https://myapps.microsoft.com/contoso.onmicrosoft.com` 请确保清除浏览器缓存，或在专用模式下将新的专用浏览器会话与任何受支持的浏览器一起使用。 将“contoso”替换为租户的名称。
@@ -232,7 +230,7 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 >[!IMPORTANT]
 >如果泄露，可以使用计算机帐户上的 Kerberos 解密密钥为 AD 林中的任意用户生成 Kerberos 票证。 然后，恶意执行组件可以为遭到入侵的用户模拟 Azure AD 登录。 强烈建议定期滚动更新这些 Kerberos 解密密钥，至少每 30 天一次。
 
-有关如何滚动更新密钥的说明，请参阅 [Azure Active Directory 无缝单一登录：常见问题](how-to-connect-sso-faq.md)。 我们正在努力引入自动化滚动更新密钥的功能。
+有关如何滚动更新密钥的说明，请参阅 [Azure Active Directory 无缝单一登录：常见问题](how-to-connect-sso-faq.yml)。
 
 >[!IMPORTANT]
 >启用该功能后无需 _立即_ 执行此步骤。 至少每隔 30 天滚动更新一次 Kerberos 解密密钥。
@@ -240,6 +238,6 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 ## <a name="next-steps"></a>后续步骤
 
 - [深入技术探究](how-to-connect-sso-how-it-works.md)：了解无缝单一登录功能的工作原理。
-- [常见问题](how-to-connect-sso-faq.md)：获取无缝单一登录常见问题的解答。
+- [常见问题](how-to-connect-sso-faq.yml)：获取无缝单一登录常见问题的解答。
 - [疑难解答](tshoot-connect-sso.md)：了解如何解决无缝单一登录功能的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)：使用 Azure Active Directory 论坛来提交新的功能请求。

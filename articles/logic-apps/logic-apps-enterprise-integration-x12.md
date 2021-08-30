@@ -1,47 +1,64 @@
 ---
-title: 为 B2B 发送和接收 X12 消息
-description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 X12 消息以实现 B2B 企业集成方案
+title: 交换 X12 消息以实现 B2B 集成
+description: 使用 Azure 逻辑应用和 Enterprise Integration Pack 生成 B2B 企业集成解决方案时，发送、接收和处理 X12 消息。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
-ms.topic: article
-ms.date: 04/29/2020
-ms.openlocfilehash: 87a2bcc386ec5688fadb68aabdd2e5239e205516
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.reviewer: estfan, divswa, azla
+ms.topic: how-to
+ms.date: 07/16/2021
+ms.openlocfilehash: 5328fad1530ee8dd7b4a2c79581d443488c44b28
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077462"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453834"
 ---
-# <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 X12 消息以实现 B2B 企业集成
+# <a name="exchange-x12-messages-for-b2b-enterprise-integration-using-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 交换 X12 消息以实现 B2B 企业集成
 
-若要在 Azure 逻辑应用中使用 X12 消息，可以使用 X12 连接器，它提供用于管理 X12 通信的触发器和操作。 有关 EDIFACT 消息的详细信息，请参阅[交换 EDIFACT 消息](logic-apps-enterprise-integration-edifact.md)。
+在 Azure 逻辑应用中，可创建使用 X12 操作处理 X12 消息的工作流。 这些操作包括可在工作流中用于处理 X12 通信的触发器和操作。 你可以使用与在工作流中添加任何其他触发器和操作相同的方式添加 X12 触发器和操作，但需要满足额外的先决条件才能使用 X12 操作。
+
+本文介绍在工作流中使用 X12 触发器和操作的要求和设置。 如果要改为查找 EDIFACT 消息，请查看[交换 EDIFACT 消息](logic-apps-enterprise-integration-edifact.md)。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](logic-apps-overview.md)和[快速入门：使用多租户 Azure 逻辑应用和 Azure 门户创建集成工作流](quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 要从中使用 X12 连接器的逻辑应用，以及用于启动逻辑应用工作流的触发器。 X12 连接器仅提供操作，而不提供触发器。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 要在其中使用 X12 触发器或操作的逻辑应用资源和工作流。 若要使用 X12 触发器，需要一个空白工作流。 若要使用 X12 操作，需要一个具有现有触发器的工作流。
 
-* 与 Azure 订阅相关联并链接到计划使用 X12 连接器的逻辑应用的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 逻辑应用和集成帐户必须存在于同一位置或 Azure 区域中。
+* 一个已链接到你的逻辑应用资源的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)。 逻辑应用和集成帐户必须使用相同的 Azure 订阅，并且存在于同一 Azure 区域或位置。
 
-* 你已使用 X12 标识限定符在集成帐户中定义的至少两个[贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)。
+  集成帐户还需要包含以下 B2B 项目：
 
-* 用于已添加到集成帐户的 XML 验证的[架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 如果使用健康保险流通与责任法案 (HIPAA) 架构，请参阅 [HIPAA 架构](#hipaa-schemas)。
+  * 至少两个使用 X12 标识限定符的[贸易合作伙伴](logic-apps-enterprise-integration-partners.md)。
 
-* 在可以使用 X12 连接器之前，必须先在贸易合作伙伴之间签订 X12 [协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)并将该协议存储在集成帐户中。 如果使用健康保险流通与责任法案 (HIPAA) 架构，则需要在协议中添加 `schemaReferences` 部分。 有关详细信息，请参阅 [HIPAA 架构](#hipaa-schemas)。
+  * 贸易合作伙伴之间定义的 X12 [协议](logic-apps-enterprise-integration-agreements.md)。 有关接收和发送消息时要使用的设置的信息，请查看[接收设置](#receive-settings)和[发送设置](#send-settings)。
+
+    > [!IMPORTANT]
+    > 如果使用健康保险流通与责任法案 (Health Insurance Portability and Accountability Act, HIPAA) 架构，则需要在协议中添加 `schemaReferences` 部分。 有关详细信息，请参阅 [HIPAA 架构和消息类型](#hipaa-schemas)。
+
+  * 用于 XML 验证的[架构](logic-apps-enterprise-integration-schemas.md)。
+
+    > [!IMPORTANT]
+    > 如果使用健康保险流通与责任法案 (HIPAA) 架构，请确保查看 [HIPAA 架构和消息类型](#hipaa-schemas)。
+
+## <a name="connector-reference"></a>连接器参考
+
+有关此连接器的更多技术信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](/connectors/x12/)。
+
+> [!NOTE]
+> 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本使用 [ISE 的 B2B 消息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。
 
 <a name="receive-settings"></a>
 
 ## <a name="receive-settings"></a>接收设置
 
-设置协议属性后，可以配置此协议如何识别和处理从合作伙伴接收的入站消息。
+在贸易合作伙伴协议中设置协议属性后，可以配置此协议如何识别和处理从合作伙伴接收的入站消息。
 
 1. 在“添加”下面，选择“接收设置”。 
 
-1. 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 “接收设置”划分为以下部分：
+1. 根据要与其交换消息的合作伙伴达成的协议，请在“接收设置”窗格中设置属性，其中包含以下部分：
 
    * [标识符](#inbound-identifiers)
    * [确认](#inbound-acknowledgement)
@@ -50,8 +67,6 @@ ms.locfileid: "106077462"
    * [控制编号](#inbound-control-numbers)
    * [验证](#inbound-validations)
    * [内部设置](#inbound-internal-settings)
-
-   有关属性说明，请参阅本部分中的表格。
 
 1. 完成后，请务必选择“确定”保存设置。
 
@@ -200,7 +215,7 @@ ms.locfileid: "106077462"
 | 属性 | 说明 |
 |----------|-------------|
 | 预期的 TA1 | 向交换发送方返回技术确认 (TA1)。 <p>此设置指定发送消息的管理方请求协议中的托管方的确认。 管理方基于协议的接收设置需要这些确认。 |
-| 预期的 FA | 向交换发送方返回功能确认 (FA)。 对于“FA 版本”属性，根据架构版本，选择 997 或 999 确认。 <p>此设置指定发送消息的管理方请求协议中的托管方的确认。 管理方基于协议的接收设置需要这些确认。 |
+| 预期的 FA | 向交换发送方返回功能确认 (FA)。 对于“FA 版本”属性，根据架构版本，选择 997 或 999 确认。 <p>此设置指定发送消息的主机合作伙伴请求协议中来宾合作伙伴的确认。 管理方基于协议的接收设置需要这些确认。 |
 |||
 
 <a name="outbound-schemas"></a>
@@ -309,7 +324,7 @@ ms.locfileid: "106077462"
 
 ## <a name="hipaa-schemas-and-message-types"></a>HIPAA 架构和消息类型
 
-使用 HIPAA 架构和 277 或 837 消息类型时，需要执行一些额外的步骤。 这些消息类型的[文档版本号 (GS8)](#outbound-control-version-number) 具有超过 9 个字符，例如“005010X222A1”。 此外，某些文档版本号映射到变体消息类型。 如果在架构和协议中未引用正确的消息类型，则会收到以下错误消息：
+使用 HIPAA 架构和 277 或 837 消息类型时，需要执行一些额外的步骤。 这些消息类型的[文档版本号 (GS8)](#outbound-control-version-number) 具有 9 个以上的字符，例如“005010X222A1”。 此外，某些文档版本号映射到变体消息类型。 如果在架构和协议中未引用正确的消息类型，则会收到以下错误消息：
 
 `"The message has an unknown document type and did not resolve to any of the existing schemas configured in the agreement."`
 
@@ -378,13 +393,8 @@ ms.locfileid: "106077462"
 
    ![为所有消息类型或每个消息类型禁用验证](./media/logic-apps-enterprise-integration-x12/x12-disable-validation.png) 
 
-## <a name="connector-reference"></a>连接器参考
-
-有关此连接器的更多技术详细信息（例如连接器的 Swagger 文件所述的操作和限制），请查看[连接器的参考页](/connectors/x12/)。
-
-> [!NOTE]
-> 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本使用 [ISE 的 B2B 消息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。
-
 ## <a name="next-steps"></a>后续步骤
 
-* 了解其他[适用于逻辑应用的连接器](../connectors/apis-list.md)
+* [X12 TA1 技术确认和错误代码](logic-apps-enterprise-integration-x12-ta1-acknowledgment.md)
+* [X12 997 功能确认和错误代码](logic-apps-enterprise-integration-x12-997-acknowledgment.md)
+* [关于 Azure 逻辑应用中的连接器](../connectors/apis-list.md)

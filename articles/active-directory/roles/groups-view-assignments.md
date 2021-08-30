@@ -1,6 +1,6 @@
 ---
 title: 查看分配给 Azure Active Directory 中的组的角色 | Microsoft 文档
-description: 了解如何使用 Azure AD 管理中心查看分配给组的角色。 查看组和分配的角色是默认的用户权限。
+description: 了解如何使用 Azure 门户查看分配给组的角色。 查看组和分配的角色是默认的用户权限。
 services: active-directory
 author: rolyon
 manager: daveba
@@ -13,29 +13,31 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e44dc442180631b0ebe11cae374a59fed37cc13
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 87e59c7ab9bfc5fa9211d84d2d9a855dea97ec1a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085736"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732325"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>查看分配给 Azure Active Directory 中的组的角色
 
-本部分介绍如何使用 Azure AD 管理中心查看分配给组的角色。 查看组和分配的角色是默认的用户权限。
+本部分介绍如何使用 Azure 门户查看分配给组的角色。 查看组和分配的角色是默认的用户权限。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 使用 PowerShell 时需要 AzureADPreview 模块
+- 使用 PowerShell 时需要 AzureAD 模块
 - 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
 
 有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
-1. 选择所需的组。
+1. 选择“Azure Active Directory” > “组”。
+
+1. 选择你感兴趣的可分配角色组。
 
 1. 选择“分配的角色”。 你现在可以查看分配给此组的所有 Azure AD 角色。
 
@@ -71,5 +73,5 @@ GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$f
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用云组来管理角色分配](groups-concept.md)
-- [分配给云组的角色疑难解答](groups-faq-troubleshooting.md)
+- [使用 Azure AD 组来管理角色分配](groups-concept.md)
+- [排查分配给组的 Azure AD 角色的问题](groups-faq-troubleshooting.yml)

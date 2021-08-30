@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 08/26/2020
+ms.date: 06/28/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1dee21182349108c44f9d498417d3b760ac4913
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76b4469b9b0e6fcb23f9c12fa648a8204b06eb79
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103600856"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004945"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>排查在 Azure Active Directory 中进行自助式密码重置时遇到的问题
 
@@ -49,6 +49,16 @@ UI 的许多元素都是隐藏的，直到需要它们时才会显示。 在查�
 ## <a name="sspr-reporting"></a>SSPR 报告
 
 如果在 Azure 门户中遇到 SSPR 报告方面的问题，请查看以下故障排除步骤：
+
+### <a name="i-see-an-authentication-method-that-i-have-disabled-in-the-add-method-option-in-combined-registration"></a>我看到了一种身份验证方法，但在组合注册的“添加方法”选项中我已禁用该方法。
+
+组合注册采用三个策略来确定哪些方法在“添加方法”中显示： 
+
+- [自助式密码重置](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
+- [MFA](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)
+- [身份验证方法](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthenticationMethodsMenuBlade/AdminAuthMethods)
+
+如果在 SSPR 中禁用应用通知，但在 MFA 策略中启用，则该选项将显示在组合注册中。 另举一例，如果用户在 SSPR 中禁用办公电话，并设置了电话/办公电话属性，则办公电话还是会显示为选项 。 
 
 ### <a name="i-dont-see-any-password-management-activity-types-in-the-self-service-password-management-audit-event-category"></a>“自助密码管理”审核事件类别中未显示任何密码管理活动类型。
 
@@ -98,6 +108,7 @@ UI 的许多元素都是隐藏的，直到需要它们时才会显示。 在查�
 | 我已经设置了密码重置策略，但当管理员帐户使用密码重置时，该策略未应用。 | 为确保最高级别的安全性，管理员密码重置策略由 Microsoft 进行管理和控制。 |
 | 一天中阻止用户尝试密码重置的次数太多。 | 自动扼制机制用于阻止用户在短时间内过多地尝试重置其密码。 出现以下情况时会进行扼制： <br><ul><li>用户在一小时内 5 次尝试验证某个电话号码。</li><li>用户在一小时内 5 次尝试使用安全问题入口。</li><li>用户在一小时内 5 次尝试为同一用户帐户重置密码。</li></ul>如果用户遇到此问题，必须在上次尝试后等待 24 小时。 然后用户即可重置其密码。 |
 | 用户在验证其电话号码时看到了一个错误。 | 当输入的电话号码与存档的电话号码不匹配时，会发生此错误。 当尝试使用基于电话的方法进行密码重置时，请确保用户输入了完整的电话号码（包括区域和国家/地区代码）。 |
+| 用户使用其电子邮件地址时看到错误。 | 如果 UPN 不同于用户的主要 ProxyAddress/SMTPAddress，则必须为租户启用[使用电子邮件作为备用登录 ID 登录到 Azure AD](howto-authentication-use-email-signin.md) 设置。 |
 | 处理请求时出错。 | 许多问题都可能会导致出现一般性的 SSPR 注册错误，但此错误通常是由服务中断或配置问题造成的。 如果在重试 SSPR 注册过程时仍然看到这个一般性的错误，请[联系 Microsoft 支持部门](#contact-microsoft-support)来获取更多帮助。 |
 | 本地策略冲突 | 该密码不符合本地 Active Directory 密码策略。 用户必须定义满足复杂性或强度要求的密码。 |
 | 密码不符合模糊策略 | 使用的密码显示在[禁用密码列表](./concept-password-ban-bad.md#how-are-passwords-evaluated)中，无法使用。 用户必须定义满足或超过禁用密码列表策略要求的密码。 |

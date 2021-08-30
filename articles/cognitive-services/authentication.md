@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 07/22/2021
 ms.author: erhopf
-ms.openlocfilehash: c7aeb9e9f4de7b4de62f9b5a8da6d997e32a2399
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e81b2121e8b4f71040014d3e211177dc8656b556
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94363317"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447611"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>对 Azure 认知服务的请求进行身份验证
 
@@ -64,8 +64,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>使用多服务订阅密钥进行身份验证
 
->[!WARNING]
-> 目前，以下服务不支持多服务密钥：QnA Maker、语音服务、自定义视觉和异常检测器。
+> [!WARNING]
+> 目前，多服务密钥不支持 QnA Maker、沉浸式阅读器、个性化体验创建服务和异常检测器。
 
 此选项仍使用订阅密钥对请求进行身份验证。 主要区别在于订阅密钥未绑定到特定服务，而单个密钥可用于对多个认知服务的请求进行身份验证。 有关区域可用性、支持的功能和定价的信息，请参阅[认知服务定价](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
@@ -96,6 +96,13 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 - `westeurope`
 - `westus`
 - `westus2`
+- `francecentral`
+- `koreacentral`
+- `northcentralus`
+- `southafricanorth`
+- `uaenorth`
+- `switzerlandnorth`
+
 
 ### <a name="sample-requests"></a>示例请求
 

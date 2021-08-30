@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6e5de3cdec7a9c503f4b7bf7056bd62f1ddf682d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e1348040bb496448d85c8d1bec3b9621025bf22
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594017"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653586"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 
@@ -19,12 +19,13 @@ ms.locfileid: "100594017"
 
 在特定的区域（例如“西欧”）中创建应用服务计划时，将在该区域中为该计划创建一组计算资源。 放入此应用服务计划的任何应用都在应用服务计划定义的这些计算资源中运行。 每个应用服务计划定义：
 
+- 操作系统（Windows、Linux）
 - 区域（美国西部、美国东部，等等）
 - VM 实例数
 - VM 实例大小（“小型”、“中型”、“大型”）
 - 定价层（“免费”、“共享”、“基本”、“标准”、“高级”、“高级 V2”、“高级 V3”、“独立”）
 
-应用服务计划的定价层确定了所提供的应用服务功能和计划费用。  定价层有以下几个类别：
+应用服务计划的定价层确定了所提供的应用服务功能和计划费用。  应用服务计划可用的定价层取决于创建时选择的操作系统。 定价层有以下几个类别：
 
 - **共享计算**：“免费”和“共享”，这两个基本层在其他应用服务应用（包括其他客户的应用）所在的同一个 Azure VM 上运行应用。   这些层为共享资源中运行的每个应用分配 CPU 配额，且资源不可横向扩展。
 - 专用计算：“基本”、“标准”、“高级”、“高级 V2”和“高级 V3”层在专用的 Azure VM 上运行应用。      只有同一应用服务计划中的应用可以共享相同的计算资源。 层越高，可用于横向扩展的 VM 实例就越多。

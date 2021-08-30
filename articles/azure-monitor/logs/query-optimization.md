@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 7b5412b2ca738f5d2099521062e37afcff90e938
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6612d365250a48d9532c0ef331d011c719b95666
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047326"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112321641"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>优化 Azure Monitor 中的日志查询
 Azure Monitor 日志使用 [Azure 数据资源管理器 (ADX)](/azure/data-explorer/) 来存储日志数据，并运行查询来分析这些数据。 它为你创建、管理和维护 ADX 群集，并针对你的日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储着工作区数据的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器都使用许多自动查询优化机制。 虽然自动优化已提供了显著的性能提升，但在某些情况下，你还可以显著提高查询性能。 本文介绍了性能注意事项和解决相关问题的几种方法。
@@ -23,6 +23,10 @@ Azure Monitor 日志使用 [Azure 数据资源管理器 (ADX)](/azure/data-explo
 - 被限制或拒绝的可能性更小。
 
 应特别注意反复使用的和阵发性的查询，例如涉及仪表板、警报、逻辑应用和 Power BI 的查询。 在这些情况下，无效查询的影响是巨大的。
+
+下面是一个关于优化查询的详细视频演练。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4NUH0]
 
 ## <a name="query-performance-pane"></a>查询性能窗格
 在 Log Analytics 中运行查询后，单击查询结果上方的向下箭头可查看查询性能窗格，其中显示查询的多个性能指标的结果。 下一部分介绍了这些性能指标中的每一个。

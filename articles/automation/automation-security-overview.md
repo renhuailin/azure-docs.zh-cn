@@ -4,15 +4,15 @@ description: 本文概述了 Azure 自动化帐户身份验证。
 keywords: 自动化安全性, 安全的自动化; 自动化身份验证
 services: automation
 ms.subservice: process-automation
-ms.date: 04/29/2021
+ms.date: 08/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 33402eb41ed9c22cf38890229d833cd2ab00d65d
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 78b188b270ec08aa546311b449f908d47313a9a1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279507"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730584"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Azure 自动化帐户身份验证概述
 
@@ -34,11 +34,11 @@ Azure 自动化帐户不同于 Microsoft 帐户或在 Azure 订阅中创建的�
 
 ## <a name="managed-identities-preview"></a>托管标识（预览）
 
-借助 Azure Active Directory (Azure AD) 的托管标识，runbook 可以轻松访问其他受 Azure AD 保护的资源。 标识由 Azure 平台托管，无需设置或转交任何机密。 有关 Azure AD 中的托管标识的详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
+借助 Azure Active Directory (Azure AD) 的托管标识，runbook 可以轻松访问其他受 Azure AD 保护的资源。 标识由 Azure 平台托管，无需预配或轮换任何机密。 有关 Azure AD 中的托管标识的详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 下面是使用托管标识的一些好处：
 
-- 可以使用托管标识对支持 Azure AD 身份验证的任何 Azure 服务进行身份验证。 它们可用于云和混合作业。 混合作业在运行于 Azure 或非 Azure VM 上的混合 Runbook 辅助角色上运行时可以使用托管标识。
+- 使用托管标识而非自动化运行方式帐户可以简化管理。 你不需要续订运行方式帐户所使用的证书。
 
 - 无需额外付费也可使用托管标识。
 
@@ -52,8 +52,8 @@ Azure 自动化帐户不同于 Microsoft 帐户或在 Azure 订阅中创建的�
 
 - 用户分配的标识是可以分配给应用的独立 Azure 资源。 一个应用可以具有多个用户分配的标识。
 
->[!NOTE]
-> 尚不支持用户分配的标识。
+> [!NOTE]
+> 仅云作业支持用户分配的标识。 若要详细了解不同的托管标识，请参阅[管理标识类型](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。
 
 有关使用托管标识的详细信息，请参阅[为 Azure 自动化（预览）启用托管标识](enable-managed-identity-for-automation.md)。
 
@@ -61,8 +61,37 @@ Azure 自动化帐户不同于 Microsoft 帐户或在 Azure 订阅中创建的�
 
 Azure 自动化中的运行方式帐户提供的身份验证适用于管理 Azure 资源管理器资源或在经典部署模型上部署的资源。 Azure 自动化中有两种类型的运行方式帐户：
 
-* 使用 Azure 运行方式帐户，你可以基于 Azure 的 Azure 资源管理器部署和管理服务来管理 Azure 资源。
-* 使用 Azure 经典运行方式帐户，你可以根据经典部署模型管理 Azure 经典资源。
+若要创建或续订运行方式帐户，需要以下三个级别的权限：
+
+- 订阅、
+- Azure Active Directory (Azure AD)，以及
+- 自动化帐户
+
+### <a name="subscription-permissions"></a>订阅权限
+
+你需要 `Microsoft.Authorization/*/Write` 权限。 此权限可通过以下某个 Azure 内置角色的成员身份获取：
+
+- [所有者](../role-based-access-control/built-in-roles.md#owner)
+- [用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)
+
+若要配置或续订经典运行方式帐户，需要在订阅级别具有共同管理员角色。 若要详细了解有关经典订阅权限，请参阅 [Azure 经典订阅管理员](../role-based-access-control/classic-administrators.md#add-a-co-administrator)。
+
+### <a name="azure-ad-permissions"></a>Azure AD 权限
+
+若要创建或续订服务主体，需要成为以下某个 Azure AD 内置角色的成员：
+
+- [应用程序管理员](../active-directory/roles/permissions-reference.md#application-administrator)
+- [应用程序开发人员](../active-directory/roles/permissions-reference.md#application-developer)
+
+可以在目录级将成员身份分配给租户中的所有用户，这是默认行为。 可以在目录级别向任一角色授予成员身份。 有关详细信息，请参阅[谁有权向我的 Azure AD 实例添加应用程序？](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)
+
+### <a name="automation-account-permissions"></a>自动化帐户权限
+
+若要创建或更新自动化帐户，需要成为以下某个自动化帐户角色的成员：
+
+- [所有者](./automation-role-based-access-control.md#owner)
+- [参与者](./automation-role-based-access-control.md#contributor)
+- [自定义 Azure 自动化参与者](./automation-role-based-access-control.md#custom-azure-automation-contributor-role)
 
 若要了解有关 Azure 资源管理器和经典部署模型的详细信息，请参阅[资源管理器与经典部署](../azure-resource-manager/management/deployment-models.md)。
 
@@ -101,7 +130,7 @@ Azure 自动化中的运行方式帐户提供的身份验证适用于管理 Azur
 
 ## <a name="service-principal-for-run-as-account"></a>运行方式帐户的服务主体
 
-默认情况下，运行方式帐户的服务主体对 Azure AD 没有读取权限。 如果你希望添加读取或管理 Azure AD 的权限，需要在“API 权限”下对服务主体授予该权限。 若要了解详细信息，请参阅[添加用于访问 Web API 的权限](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)。
+默认情况下，运行方式帐户的服务主体没有读取 Azure AD 的权限。 如果你希望添加读取或管理 Azure AD 的权限，需要在“API 权限”下对服务主体授予该权限。 若要了解详细信息，请参阅[添加用于访问 Web API 的权限](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api)。
 
 ## <a name="run-as-account-permissions"></a><a name="permissions"></a>运行方式帐户的权限
 
@@ -130,13 +159,16 @@ Azure 自动化中的运行方式帐户提供的身份验证适用于管理 Azur
 1. 在 Azure 门户的“Azure Active Directory”窗格中，选择“用户和组”。
 2. 选择“所有用户”。
 3. 选择名称，然后选择“配置文件”。
-4. 请确保用户配置文件下“用户类型”属性的值未设置为“来宾” 。
+4. 确保用户配置文件下的“用户类型”属性的值未设置为“来宾”。 
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
 基于角色的访问控制在 Azure 资源管理器中可用，用于向 Azure AD 用户帐户和运行方式帐户授予允许的操作，并对服务主体进行身份验证。 请阅读 [Azure 自动化中基于角色的访问控制](automation-role-based-access-control.md)一文，详细了解如何开发自动化权限管理模型。
 
 如果对资源组中的权限分配具有严格的安全控制，则需要将运行方式帐户成员身份分配给资源组中的“参与者”角色。
+
+> [!NOTE]
+> 建议你不要使用 **Log Analytics 参与者** 角色来执行自动化作业。 而是创建 Azure 自动化参与者自定义角色，并将其用于与自动化帐户相关的操作。 有关详细信息，请参阅[自定义 Azure 自动化参与者角色](./automation-role-based-access-control.md#custom-azure-automation-contributor-role)。
 
 ## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色的 Runbook 身份验证
 

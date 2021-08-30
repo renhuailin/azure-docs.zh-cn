@@ -4,28 +4,27 @@ description: 了解如何访问有关商业市场产品/服务订单的分析报
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: 344c7e6c14ca8ecdd91ffb9c148ce01d2b937573
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 08/06/2021
+ms.openlocfilehash: 1cc7e76833ac710ae4bdd511efa3033f8cf8fed7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542012"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724298"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“订单”仪表板
 
 本文提供有关合作伙伴中心中的订单仪表板的信息。 此仪表板显示有关订单的信息，包括以图形格式和可下载格式提供的增长趋势。
 
-若要访问合作伙伴中心的“订单”仪表板，请在“商业市场”下选择[“分析”](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) > “订单”。
-
 >[!NOTE]
-> 有关分析术语的详细定义，请参阅[商业市场分析术语和常见问题](./analytics-faq.md)。
+> 有关分析术语的详细定义，请参阅[商业市场分析术语和常见问题](./analytics-faq.yml)。
 
 ## <a name="orders-dashboard"></a>订单仪表板
 
-“订单”仪表板显示所有软件即服务 (SaaS) 产品/服务的当前订单。 你可以查看以下各项的图形表示形式：
+[“订单”仪表板](https://go.microsoft.com/fwlink/?linkid=2165914)显示所有服务型软件 (SaaS) 产品/服务的当前订单。 你可以查看以下各项的图形表示形式：
 
 - 订单趋势
 - 每席位和每站点的订单趋势
@@ -40,6 +39,8 @@ ms.locfileid: "111542012"
 ## <a name="elements-of-the-orders-dashboard"></a>“订单”仪表板的元素
 
 以下部分介绍如何使用“订单”仪表板以及如何读取数据。
+
+若要访问合作伙伴中心的“订单”仪表板，请在“商业市场”下选择[“分析”](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) > “订单”。
 
 ### <a name="month-range"></a>月份范围
 
@@ -118,7 +119,7 @@ SaaS 产品/服务可对每个计划使用两种定价模型中的一种：统�
 | 市场订阅 ID | 市场订阅 ID | 与客户用来购买商业市场产品/服务的 Azure 订阅关联的唯一标识符。 对于基础结构产品/服务，这是客户的 Azure 订阅 GUID。 对于 SaaS 产品/服务，此项显示为零，因为 SaaS 购买不需要 Azure 订阅。 | 市场订阅 ID |
 | MonthStartDate | MonthStartDate | 月份开始日期表示购买月份。 格式为 yyyy-mm-dd。 | MonthStartDate |
 | 产品/服务类型 | 产品/服务类型 | 商业市场产品/服务的类型。 | OfferType |
-| Azure 许可证类型 | Azure 许可证类型 | 购买 Azure 的客户使用的许可协议类型。 也称为“渠道”。 可能的值包括：<ul><li>云解决方案提供商</li><li>Enterprise</li><li>通过经销商购买产品/服务的企业</li><li>即用即付</li></ul> | AzureLicenseType |
+| Azure 许可证类型 | Azure 许可证类型 | 购买 Azure 的客户使用的许可协议类型。 也称为“渠道”。 可能的值包括：<ul><li>[云解决方案提供商](cloud-solution-providers.md)</li><li>Enterprise</li><li>通过经销商购买产品/服务的企业</li><li>即用即付</li><li>GTM</li></ul> | AzureLicenseType |
 | 市场许可证类型 | 市场许可证类型 | 商业市场产品/服务的计费方式。 不同的值包括：<ul><li>通过 Azure 计费</li><li>自带许可</li><li>免费</li><li>Microsoft 充当经销商</li></ul> | MarketplaceLicenseType |
 | SKU | SKU | 与产品/服务关联的计划 | SKU |
 | 客户所在国家/地区 | 客户所在国家/地区 | 客户提供的国家/地区名称。 此处的国家/地区可能不同于客户的 Azure 订阅中的国家/地区。 | CustomerCountry |
@@ -136,7 +137,16 @@ SaaS 产品/服务可对每个计划使用两种定价模型中的一种：统�
 | 客户 ID | 客户 ID | 分配给客户的唯一标识符。 一个客户可以有零个或零个以上的 Azure 市场订阅。 | CustomerId |
 | 计费帐户 ID | 计费帐户 ID | 针对其生成账单的帐户的标识符。 将“计费帐户 ID”映射到 customerID，以将“付款交易报表”与“客户”、“订单”和“使用情况报表”关联起来。 | BillingAccountId |
 | AssetCount | 资产计数 | 与订单 ID 关联的资产数。 | 不推荐使用 |
+| 不可用 * | TermStartDate | 指示订单有效期的开始日期。 | TermStartDate |
+| 不可用 * | TermEndDate | 指示订单有效期的结束日期。 | TermEndDate |
+| 不可用 * | purchaseRecordId | 与订单相关的购买记录的标识符。 | purchaseRecordId |
+| 不可用 * | purchaseRecordLineItemId | 与此订单相关的购买记录行项的标识符。 | purchaseRecordLineItemId |
+| 不可用 * | EstimatedCharges | 在纳税之前，将向客户收取的所有订单单元的总价。 在含税的国家/地区，此价格包含税款，在不含税的国家/地区，此价格不含税款。 | EstimatedCharges |
+| 不可用 * | 货币 | 产品/服务的计费货币 | 货币 |
+| 不可用 * | HasTrial | 表示产品/服务是否有试用期。 | HasTrial |
 |||||
+
+`*` 这些新字段当前在 ISVOrderV2 数据集中提供，可通过编程方式进行访问。
 
 ### <a name="orders-page-filters"></a>“订单页面”筛选器
 
@@ -153,4 +163,4 @@ SaaS 产品/服务可对每个计划使用两种定价模型中的一种：统�
 - 有关虚拟机 (VM) 产品/服务使用情况和按流量计费指标的信息，请参阅[商业市场分析中的“使用情况”仪表板](./usage-dashboard.md)。
 - 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](downloads-dashboard.md)。
 - 若要查看客户对 Azure 市场和 AppSource 中产品/服务的反馈的综合视图，请参阅[合作伙伴中心的评分和评价分析仪表板](ratings-reviews.md)。
-- 有关商业市场分析的常见问题解答以及数据术语的综合词典，请参阅[商业市场分析术语和常见问题](./analytics-faq.md)。
+- 有关商业市场分析的常见问题解答以及数据术语的综合词典，请参阅[商业市场分析术语和常见问题](./analytics-faq.yml)。

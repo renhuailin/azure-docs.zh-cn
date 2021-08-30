@@ -1,14 +1,14 @@
 ---
 title: 将已启用 Azure Arc 的服务器加入 Azure Sentinel
 description: 了解如何将已启用 Azure Arc 的服务器添加到 Azure Sentinel，并主动监视其安全状态。
-ms.date: 11/16/2020
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2364ba72ac5b10ec4e1f433cc6d591c3ca389ecd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c0af2c48db12eca6453415767e611b0993554ee
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584736"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608265"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>将已启用 Azure Arc 的服务器加入 Azure Sentinel
 
@@ -43,8 +43,8 @@ Azure Sentinel 附带了许多 Microsoft 解决方案的连接器，这些连接
 
 建议使用 Azure Policy 来安装适用于 Windows 或 Linux 的 Log Analytics 代理。
 
-在连接已启用 Arc 的服务器后，数据会开始流式传输到 Azure Sentinel，并会准备就绪供你开始使用。 你可以在[内置仪表板](../../sentinel/quickstart-get-visibility.md)中查看日志并开始在 Log Analytics 中构建查询以[调查数据](../../sentinel/tutorial-investigate-cases.md)。
+在连接已启用 Arc 的服务器后，数据会开始流式传输到 Azure Sentinel，并会准备就绪供你开始使用。 你可以在[内置仪表板](/azure/sentinel/get-visibility)中查看日志并开始在 Log Analytics 中构建查询以[调查数据](/azure/sentinel/investigate-cases)。
 
 ## <a name="next-steps"></a>后续步骤
 
-开始[使用 Azure Sentinel 检测威胁](../../sentinel/tutorial-detect-threats-built-in.md)。
+开始[使用 Azure Sentinel 检测威胁](/azure/sentinel/detect-threats-built-in)。

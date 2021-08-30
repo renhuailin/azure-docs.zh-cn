@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 06/16/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 0afaa9a577432741da44317a9d13e288cdea0d0d
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: b8b59db6b73cdc2ecae3ca60741a892580162602
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052475"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287743"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按发票为 Azure 订阅付款
 
@@ -31,9 +31,9 @@ ms.locfileid: "99052475"
 ## <a name="request-to-pay-by-invoice"></a>请求按发票付款
 
 1. 要提交支持请求，请登录到 Azure 门户。 搜索并选择“帮助 + 支持”。  
-    ![搜索“帮助和支持”、Microsoft Azure 门户](./media/pay-by-invoice/search-for-help-and-support.png)
+    :::image type="content" source="./media/pay-by-invoice/search-for-help-and-support.png" alt-text="搜索“帮助和支持”的屏幕截图。" lightbox="./media/pay-by-invoice/search-for-help-and-support.png" :::
 1. 选择“新建支持请求”。  
-    ![“新建支持请求”链接、“帮助和支持”屏幕、Microsoft Azure 门户](./media/pay-by-invoice/help-and-support.png)
+    :::image type="content" source="./media/pay-by-invoice/help-and-support.png" alt-text="“新建支持请求”链接的屏幕截图。" lightbox="./media/pay-by-invoice/help-and-support.png" :::
 1. 选择“计费”作为“问题类型”。  问题类型是支持请求类别。 选择要按发票付款的订阅，选择支持计划，然后选择“下一步”。
 1. 选择“付款”作为“问题类型”。  问题类型是支持请求子类别。
 1. 选择“切换到按发票付款”作为“问题子类型” 。
@@ -75,11 +75,11 @@ ms.locfileid: "99052475"
 执行以下步骤，将 Azure 订阅切换为发票付款（支票/电汇）。 *切换为按发票付款（支票/电汇）后，无法切换回信用卡付款*。
 
 1. 转到 Azure 门户，以帐户管理员身份登录。 搜索并选择“成本管理 + 计费”。  
-    ![屏幕截图显示在 Azure 门户中搜索“成本管理 + 计费”。](./media/pay-by-invoice/search.png)
+    :::image type="content" source="./media/pay-by-invoice/search.png" alt-text="显示在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图。" lightbox="./media/pay-by-invoice/search.png" :::
 1. 选择要切换为发票付款的订阅。
 1. 选择“付款方式”。
 1. 在命令栏中，选择“按发票付款”按钮。  
-    ![“按发票付款”按钮、付款方式、Microsoft Azure 门户](./media/pay-by-invoice/pay-by-invoice.png)
+    :::image type="content" source="./media/pay-by-invoice/pay-by-invoice.png" alt-text="显示“按发票付款”的屏幕截图。" lightbox="./media/pay-by-invoice/pay-by-invoice.png" :::
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>将计费对象信息切换为支票/电汇
 
@@ -87,12 +87,12 @@ ms.locfileid: "99052475"
 
 1. 转到 Azure 门户，查看计费信息。 搜索并选择“成本管理 + 计费”。
 1. 在菜单中，选择“计费对象信息”。  
-    ![计费对象信息菜单项、成本管理和计费、Microsoft Azure 门户](./media/pay-by-invoice/billing-profile.png)
+    :::image type="content" source="./media/pay-by-invoice/billing-profile.png" alt-text="显示“计费对象信息”菜单项的屏幕截图。" lightbox="./media/pay-by-invoice/billing-profile.png" :::
 1. 选择计费对象信息。
 1. 在“计费对象信息”菜单中，选择“付款方式”。  
-   ![付款方式菜单项、计费对象信息、成本管理、Microsoft Azure 门户](./media/pay-by-invoice/billing-profile-payment-methods.png)
-1. 选择指出你有资格用支票/电汇付款的横幅。  
-    ![用于切换到支票/电汇的横幅、付款方式、Microsoft Azure 门户](./media/pay-by-invoice/customer-led-switch-to-invoice.png)
+   :::image type="content" source="./media/pay-by-invoice/billing-profile-payment-methods.png" alt-text="显示“付款方式”菜单项的屏幕截图。" lightbox="./media/pay-by-invoice/billing-profile-payment-methods.png" :::
+1. 在“其他付款方式”标题下，选择省略号 (…)，然后选择“设为默认值”。  
+    :::image type="content" source="./media/pay-by-invoice/customer-led-switch-to-invoice.png" alt-text="显示“支票/电汇”省略号和“设为默认值”选项的屏幕截图。" lightbox="./media/pay-by-invoice/customer-led-switch-to-invoice.png" :::
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

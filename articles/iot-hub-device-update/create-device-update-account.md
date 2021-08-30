@@ -6,12 +6,13 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d3f7f4e1cdd56675d6084448abc810c9a41992f9
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 5ad119017f4fe1dda0703547480c7444978d1878
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520133"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113129016"
 ---
 # <a name="device-update-for-iot-hub-resource-management"></a>IoT 中心设备更新资源管理
 
@@ -28,11 +29,11 @@ ms.locfileid: "107520133"
 
 1. 转到 [Azure 门户](https://portal.azure.com)
 
-2. 单击“创建资源”，然后搜索“适用于 IoT 中心的设备更新”
+2. 单击“创建资源”，然后搜索“Device Update for IoT Hub”
 
    :::image type="content" source="media/create-device-update-account/device-update-marketplace.png" alt-text="适用于 IoT 中心资源的设备更新的屏幕截图。" lightbox="media/create-device-update-account/device-update-marketplace.png":::
 
-3. 单击“创建”->“IoT 中心的设备更新”
+3. 单击“创建” -> “Device Update for IoT Hub” 
 
 4. 指定要与设备更新帐户和资源组关联的 Azure 订阅
 
@@ -43,7 +44,9 @@ ms.locfileid: "107520133"
  > [!NOTE]
  > 可以转到[按区域划分的 Azure 产品页](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub)，以发现提供适用于 IoT 中心的设备更新的区域。 如果你所在地区不提供适用于 IoT 中心的设备更新，则可以选择在离你最近的可用区域中创建帐户。 
 
-6. 单击“下一步：查看 + 创建 >”
+6. （可选）可以选中此框，将“设备更新管理员角色”分配给自己。 还可使用“配置访问控制角色”部分中列出的步骤，为用户和应用程序提供适当访问级别的角色组合。
+
+8. 单击“下一步: 查看 + 创建 >”
 
    :::image type="content" source="media/create-device-update-account/account-review.png" alt-text="帐户详细信息检查的屏幕截图。" lightbox="media/create-device-update-account/account-review.png":::
 
@@ -94,7 +97,7 @@ ms.locfileid: "107520133"
 
    :::image type="content" source="media/create-device-update-account/instance-configure-selected.png" alt-text="同意为实例配置 IoT 中心的屏幕截图。" lightbox="media/create-device-update-account/instance-configure-selected.png":::
 
-3. 单击“更新”
+3. 单击“更新”  。
 
    > [!NOTE] 
    > 如果你使用的是免费的 Azure IoT 中心层，则允许的消息路由数限制为 5。 Device Update for IoT Hub 需要配置 4 条消息路由才能正常工作。 
@@ -104,7 +107,7 @@ ms.locfileid: "107520133"
 
 ## <a name="configure-access-control-roles"></a>配置访问控制角色
 
-为了使其他用户有权访问设备更新，必须为用户授予对此资源的访问权限。 
+为了使其他用户有权访问设备更新，必须为用户授予对此资源的访问权限。 如果在帐户创建过程中为自己分配了“设备更新管理员角色”，并且不需要向其他用户或应用程序提供访问权限，可以跳过此步骤。 
 
 1. 在设备更新帐户中转到访问控制 (IAM)
 
@@ -112,7 +115,7 @@ ms.locfileid: "107520133"
 
 2. 单击“添加角色分配”
 
-3. 在“选择角色”下，从提供的选项中选择设备更新角色
+3. 在“角色”选项卡下，从提供的选项中选择设备更新角色
      - 设备更新管理员
      - 设备更新读取者
      - 设备更新内容管理员
@@ -124,9 +127,15 @@ ms.locfileid: "107520133"
     
     [了解适用于 IoT 中心的设备更新中基于角色的访问控制](device-update-control-access.md) 
     
-4. 为用户或 Azure AD 组分配访问权限
-5. 点击“保存”(Save)
-6. 你现在已准备好从 IoT 中心内使用设备更新体验
+4. 点击“下一步” 
+5. 为用户或 Azure AD 组分配访问权限
+6. 选择成员
+   
+   :::image type="content" source="media/create-device-update-account/role-assignment-2.png" alt-text="设备更新帐户中访问控制成员选择的屏幕截图。" lightbox="media/create-device-update-account/role-assignment-2.png":::
+
+6. 单击“查看 + 分配”
+7. 查看新角色分配，并再次单击“查看 + 分配”
+8. 你现在已准备好从 IoT 中心内使用设备更新体验
 
 ## <a name="next-steps"></a>后续步骤
 

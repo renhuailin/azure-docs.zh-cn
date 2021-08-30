@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a275b1c43f8a7c5526209f943e48a1d943eca149
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 389bf4438fa31b0c1174441cd62f814f18b271d2
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713677"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729509"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的资源角色
 
@@ -109,7 +109,7 @@ ms.locfileid: "109713677"
 
 ## <a name="add-an-application-resource-role"></a>添加应用程序资源角色
 
-为用户分配访问包后，可让 Azure AD 自动为用户分配对 Azure AD 企业应用程序（包括 SaaS 应用程序，以及联合到 Azure AD 的组织应用程序）的访问权限。 对于通过联合单一登录与 Azure AD 集成的应用程序，Azure AD 将为分配给该应用程序的用户颁发联合身份验证令牌。
+为用户分配访问包时，可以让 Azure AD 自动为用户分配 Azure AD 企业应用程序的访问权限，包括 SaaS 应用程序和与 Azure AD 集成的组织的应用程序。 对于通过联合单一登录与 Azure AD 集成的应用程序，Azure AD 将为分配给该应用程序的用户颁发联合身份验证令牌。
 
 应用程序可以有多个角色。 将某个应用程序添加到访问包时，如果该应用程序有多个角色，则你需要为这些用户指定相应的角色。 如果要开发应用程序，可以在[如何：为企业应用程序配置 SAML 令牌中颁发的角色声明](../develop/active-directory-enterprise-app-role-management.md)中了解有关如何将这些角色添加到应用程序的详细信息。
 

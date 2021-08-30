@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 08/17/2020
+ms.date: 07/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 749829f641119273813d3c8ca826daf8b4dc4d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e2212171f0be8d754ac1a86567641c2bad8a9a0
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96742657"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602770"
 ---
 # <a name="enable-per-user-azure-ad-multi-factor-authentication-to-secure-sign-in-events"></a>启用每用户 Azure AD 多重身份验证来保护登录事件
 
@@ -27,7 +27,7 @@ ms.locfileid: "96742657"
 
 如果需要，你可转而使每个帐户进行每用户 Azure AD 多重身份验证。 逐个为用户启用此功能后，他们每次登录时都会执行多重身份验证（有一些例外情况，例如，当他们从受信任的 IP 地址登录时，或者开启了“记住受信任设备上的 MFA”功能时）。
 
-如果 Azure AD 许可证不包括条件访问，并且你不想使用安全默认值，则建议更改用户状态。 有关启用 MFA 的不同方法的详细信息，请参阅 [Azure AD 多重身份验证的功能和许可证](concept-mfa-licensing.md)。
+如果 Azure AD 许可证不包括条件访问，并且你不想使用安全默认值，则建议更改[用户状态](#azure-ad-multi-factor-authentication-user-states)。 有关启用 MFA 的不同方法的详细信息，请参阅 [Azure AD 多重身份验证的功能和许可证](concept-mfa-licensing.md)。
 
 > [!IMPORTANT]
 >
@@ -79,76 +79,15 @@ ms.locfileid: "96742657"
 
 启用用户后，通过电子邮件通知他们。 告诉用户显示了提示，要求他们在下次登录时注册。 此外，如果你的组织使用不支持新式身份验证的非浏览器应用，则他们需要创建应用密码。 有关详细信息，请参阅 [Azure AD 多重身份验证最终用户指南](../user-help/multi-factor-authentication-end-user-first-time.md)，以帮助他们开始使用。
 
-## <a name="change-state-using-powershell"></a>使用 PowerShell 更改状态
+### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>将用户从每用户 MFA 转换为基于条件访问的 MFA
 
-若要使用 [Azure AD PowerShell](/powershell/azure/) 更改用户状态，请更改用户帐户的 `$st.State` 参数。 用户帐户有三种可能的状态：
+如果使用每用户启用和强制执行的 Azure AD 多重身份验证启用用户，则以下 PowerShell 可帮助你转换为基于条件访问的 Azure AD 多重身份验证。
 
-* *已启用*
-* *已强制*
-* *已禁用*  
-
-通常，如果用户已注册 MFA，请将其状态直接切换为“已强制执行”状态。 如果执行上述操作，则旧式身份验证应用程序将停止工作，因为用户尚未完成 Azure AD 多重身份验证注册并获得[应用程序密码](howto-mfa-app-passwords.md)。 在某些情况下，此行为可能是理想的，但在用户完成注册前，这会影响用户的体验。
-
-若要开始，请按如下所示使用 [Install-Module](/powershell/module/powershellget/install-module) 安装 MSOnline 模块：
-
-```PowerShell
-Install-Module MSOnline
-```
-
-接下来，使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice) 进行连接：
-
-```PowerShell
-Connect-MsolService
-```
-
-以下示例 PowerShell 脚本为名为 *bsimon@contoso.com* 的个人用户启用 MFA：
-
-```PowerShell
-$st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-$st.RelyingParty = "*"
-$st.State = "Enabled"
-$sta = @($st)
-
-# Change the following UserPrincipalName to the user you wish to change state
-Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
-```
-
-当需要批量启用用户时，使用 PowerShell 是一个不错的选择。 以下脚本循环访问用户列表并在其帐户上启用 MFA。 定义用户帐户，并在 `$users` 的第一行中对其进行设置，如下所示：
-
-   ```PowerShell
-   # Define your list of users to update state in bulk
-   $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
-
-   foreach ($user in $users)
-   {
-       $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
-       $st.RelyingParty = "*"
-       $st.State = "Enabled"
-       $sta = @($st)
-       Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
-   }
-   ```
-
-为禁用 MFA，以下示例使用 [Get-MsolUser](/powershell/module/msonline/get-msoluser) 获取用户，然后使用 [Set-MsolUser](/powershell/module/msonline/set-msoluser) 删除为所定义的用户设置的任何 StrongAuthenticationRequirements：
-
-```PowerShell
-Get-MsolUser -UserPrincipalName bsimon@contoso.com | Set-MsolUser -StrongAuthenticationRequirements @()
-```
-
-还可以使用 [Set-MsolUser](/powershell/module/msonline/set-msoluser) 直接为用户禁用 MFA，如下所示：
-
-```PowerShell
-Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements @()
-```
-
-## <a name="convert-users-from-per-user-mfa-to-conditional-access"></a>将用户从每用户 MFA 转换为条件访问
-
-以下 PowerShell 可帮助你转换到基于条件访问的 Azure AD 多重身份验证。
+在 ISE 窗口中运行此 PowerShell，或另存为要在本地运行的 `.PS1` 文件。 操作只能使用 [MSOnline 模块](/powershell/module/msonline/?view=azureadps-1.0#msonline)完成。 
 
 ```PowerShell
 # Sets the MFA requirement state
 function Set-MfaState {
-
     [CmdletBinding()]
     param(
         [Parameter(ValueFromPipelineByPropertyName=$True)]
@@ -158,7 +97,6 @@ function Set-MfaState {
         [ValidateSet("Disabled","Enabled","Enforced")]
         $State
     )
-
     Process {
         Write-Verbose ("Setting MFA state for user '{0}' to '{1}'." -f $ObjectId, $State)
         $Requirements = @()
@@ -169,18 +107,13 @@ function Set-MfaState {
             $Requirement.State = $State
             $Requirements += $Requirement
         }
-
         Set-MsolUser -ObjectId $ObjectId -UserPrincipalName $UserPrincipalName `
                      -StrongAuthenticationRequirements $Requirements
     }
 }
-
 # Disable MFA for all users
 Get-MsolUser -All | Set-MfaState -State Disabled
 ```
-
-> [!NOTE]
-> 如果对某用户重新启用了 MFA，且该用户不重新注册，其 MFA 状态在 MFA 管理 UI 中不会从“已启用”转换为“已强制执行” 。 在这种情况下，管理员必须将用户的状态直接切换为“已强制执行”。
 
 ## <a name="next-steps"></a>后续步骤
 

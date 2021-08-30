@@ -9,16 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 4eb1ecb84acdf6ccf65852f4da83c238ac136ceb
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 47498a3b790af5b1ff8eeee821b655e8a307660d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582323"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693593"
 ---
 # <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>定义机器学习工作室（经典）的自定义 R 模块
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 本主题介绍如何创作和部署自定义 R 工作室（经典版）。 解释什么是自定义 R 模块以及要使用什么文件来定义此类模块， 并举例说明如何构建定义模块的文件以及如何在机器学习工作区中进行模块部署注册。 随后本主题会详细说明用于定义自定义模块的元素和属性。 本主题还会讨论如何使用辅助功能和文件以及多个输出。 
 

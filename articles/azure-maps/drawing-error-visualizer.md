@@ -3,19 +3,19 @@ title: 使用 Azure Maps 绘图错误可视化工具
 description: 本文介绍了如何可视化由 Creator 转换 API 返回的警告和错误。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/21/2021
+ms.date: 05/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: dcd9ccbcbc2372b5648bf6d5367b2c364a34eb0f
-ms.sourcegitcommit: 5c136a01bddfccb2cc9f7e7e7741e2cf2651ddbe
+ms.openlocfilehash: c541a35bf2ef79fd058a58713afd927413ec8fcf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111352428"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738528"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer-with-creator"></a>在 Creator 中使用 Azure Maps 绘图错误可视化工具
+
 
 绘图错误可视化工具是一款独立 Web 应用，用于显示在转换过程中检测到的[绘图包警告和错误](drawing-conversion-error-codes.md)。 错误可视化工具 Web 应用由一个静态页组成，可以在不连接到 Internet 的情况下使用此页。  可以使用错误可视化工具来根据[绘图包要求](drawing-requirements.md)修复错误和警告。 只有在检测到错误时，[Azure Maps 转换 API](/rest/api/maps/v2/conversion) 才会返回包含错误可视化工具链接的响应。
 
@@ -45,9 +45,8 @@ ms.locfileid: "111352428"
         "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Failed",
-        "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
         "properties": {
-            "diagnosticPackageLocation": "https://atlas.microsoft.com/mapData/ce61c3c1-faa8-75b7-349f-d863f6523748?api-version=1.0"
+            "diagnosticPackageLocation": "https://us.atlas.microsoft.com/mapData/ce61c3c1-faa8-75b7-349f-d863f6523748?api-version=2.0"
         }
     }
     ```

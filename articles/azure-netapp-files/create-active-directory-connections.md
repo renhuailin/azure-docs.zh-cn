@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 08/17/2021
 ms.author: b-juche
-ms.openlocfilehash: e6bc27674cadc8798afa3f9f9297b0d573d7ce64
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 30b00320e9273ecb010239d66a3c056d3f95f332
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071042"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397692"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>为 Azure NetApp 文件创建和管理 Active Directory 连接
 
@@ -30,7 +30,7 @@ Azure NetApp 文件的几项功能需要 Active Directory 连接。  例如，�
 * 必须已设置容量池。 请参阅[设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
 * 子网必须委派给 Azure NetApp 文件。 请参阅[将子网委托给 Azure NetApp 文件](azure-netapp-files-delegate-subnet.md)。
 
-## <a name="requirements-for-active-directory-connections"></a>Active Directory 连接的要求
+## <a name="requirements-and-considerations-for-active-directory-connections"></a><a name="requirements-for-active-directory-connections"></a>Active Directory 连接的要求和注意事项
 
 * 对于每个订阅和每个区域，只能配置一个 Active Directory (AD) 连接。   
 
@@ -39,6 +39,8 @@ Azure NetApp 文件的几项功能需要 Active Directory 连接。  例如，�
     AD 连接仅通过创建它的 NetApp 帐户可见。 但是，可以启用共享 AD 功能，从而允许同一订阅和同一区域下的 NetApp 帐户使用其中一个 NetApp 帐户中创建的 AD 服务器。 请参阅[将同一订阅和区域中的多个 NetApp 帐户映射到 AD 连接](#shared_ad)。 启用此功能后，AD 连接变得在同一订阅和同一区域下的所有 NetApp 帐户中可见。 
 
 * 你使用的管理帐户必须能够在你将指定的组织单位 (OU) 路径中创建计算机帐户。  
+
+* 如果更改 Azure NetApp 文件中使用的 Active Directory 用户帐户的密码，请确保更新在 [Active Directory 连接](#create-an-active-directory-connection)中配置的密码。 否则，你将无法创建新卷，对现有卷的访问也可能受影响，具体取决于设置。  
 
 * 必须在适用的 Windows Active Directory (AD) 服务器上打开正确的端口。  
     所需的端口如下： 
@@ -118,7 +120,6 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
 * Azure NetApp 文件支持 `user` 和 `resource forest` 类型。
 * 对于同步类型，可以选择 `All` 或 `Scoped`。   
     如果选择 `Scoped`，请确保选择了正确的 Azure AD 组以访问 SMB 共享。  如果不确定，可以使用 `All` 同步类型。
-* 需要使用 Enterprise 或 Premium SKU。 标准 SKU 不受支持。
 
 创建Active Directory 连接时，请注意 AADDS 的以下具体信息：
 

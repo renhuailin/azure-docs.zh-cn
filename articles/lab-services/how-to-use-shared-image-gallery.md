@@ -3,15 +3,20 @@ title: 在 Azure 实验室服务中使用共享映像库 | Microsoft Docs
 description: 了解如何将实验室帐户配置为使用共享映像库，以便用户可以与其他用户共享映像，其他用户可以使用该映像在实验室中创建模板 VM。
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: e4ebc0c865784922cc52d4f9b67c61f27908df55
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: caba089d5f3f0f9ec50f575a06ce9fad1bf8ef8f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969996"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743249"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 实验室服务中使用共享映像库
-本文介绍教师/实验室管理员如何将模板虚拟机映像保存到[共享映像库](../virtual-machines/shared-image-galleries.md)，以便其他人可以使用它来创建实验室。 
+
+映像包含 VM 上安装的操作系统、软件应用程序、文件和设置。  设置新实验室时，可以使用两种类型的映像：
+-   Microsoft 预装的、在 Azure 内使用的市场映像。  这些映像已安装Windows 或 Linux，并且可能还包括软件应用程序。  例如，[Data Science Virtual Machine 映像](../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm)包括已安装的深度学习框架和工具。
+-   由机构 IT 部门以及\或其他教师创建的自定义映像。  可以同时创建 Windows 和 Linux 自定义映像，并灵活地根据你的独特需求安装 Microsoft 和第三方应用程序。  还可以添加文件、更改应用程序设置等。
+
+本文介绍教师/实验室管理员如何创建自定义映像并将其从模板虚拟机保存到[共享映像库](../virtual-machines/shared-image-galleries.md)，以便其他人可以使用它来创建新实验室。
 
 > [!IMPORTANT]
 > 使用共享映像库时，Azure 实验室服务仅支持 OS 磁盘空间小于 128 GB 的映像。 在创建实验室期间，具有超过 128 GB 的磁盘空间或多个磁盘的映像将不会显示在虚拟机映像列表中。
@@ -27,7 +32,6 @@ ms.locfileid: "111969996"
 ## <a name="prerequisites"></a>先决条件
 - 使用 [Azure PowerShell](../virtual-machines/shared-images-powershell.md) 或 [Azure CLI](../virtual-machines/shared-images-cli.md) 创建共享映像库。
 - 你已将共享映像库附加到实验室帐户。 有关分步说明，请参阅[如何附加或分离共享映像库](how-to-attach-detach-shared-image-gallery.md)。
-
 
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>将映像保存到共享映像库
 附加共享映像库后，实验室帐户管理员或教师可以将映像保存到共享映像库，以便其他教师可以重复使用。 
@@ -49,7 +53,7 @@ ms.locfileid: "111969996"
     将映像保存到共享映像库后，可以在创建其他实验室时从库中使用该映像。 还可以将映像上传到实验室上下文之外的共享映像库。 有关详细信息，请参阅：
 
     - [共享映像库概述](../virtual-machines/shared-images-powershell.md)
-    - [将自定义映像上传到共享映像库](upload-custom-image-shared-image-gallery.md)
+    - [创建自定义映像的建议方法](approaches-for-custom-image-creation.md)
 
     > [!IMPORTANT]
     > 在 Azure 实验室服务中[将实验室的模板映像保存](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery)到共享映像库时，会将该映像作为专用映像上传到库。 [专用映像](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)保留计算机特定的信息和用户配置文件。 你仍可以直接将通用映像上传到 Azure 实验室服务外部的库。    
@@ -75,6 +79,6 @@ ms.locfileid: "111969996"
 ## <a name="next-steps"></a>后续步骤
 若要了解如何通过将共享映像库附加和拆离到实验室帐户来设置共享映像库，请参阅[如何附加和拆离共享映像库](how-to-attach-detach-shared-image-gallery.md)。
 
-若要将 Windows 自定义映像引入实验室上下文之外的共享映像库，请参阅[将自定义映像引入共享映像库](upload-custom-image-shared-image-gallery.md)。
+若要探索在非实验室情景中将自定义映像引入共享映像库的其他选择，请参阅[建议的自定义映像创建方法](approaches-for-custom-image-creation.md)。
 
 若要详细了解共享映像库的常规概念，请参阅[共享映像库](../virtual-machines/shared-image-galleries.md)。

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/26/2021
 ms.author: justinha
-ms.openlocfilehash: f1f2499c49c4adf16b632bc75c246a28330ad27b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67eeae96e7965db1eb92f34f23ca6d8745aaac3a
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619379"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707976"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>管理 Azure Active Directory 域服务托管域中的组策略
 
@@ -43,8 +43,6 @@ Azure Active Directory 域服务 (Azure AD DS) 中的用户和计算机对象的
 > 可以通过将新模板复制到管理工作站，来使用组策略管理模板。 将 .admx 文件复制到 `%SYSTEMROOT%\PolicyDefinitions` 并将特定于区域设置的 .adml 文件复制到 `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`，其中 `Language-CountryRegion` 与 .adml 文件的语言和区域相匹配  。
 >
 > 例如，将 .adml 文件的美国英语版本复制到 `\en-us` 文件夹中。
->
-> 或者，你可以在托管域中的域控制器上集中存储组策略管理模板。 有关详细信息，请参阅[如何为 Windows 中的组策略管理模板创建和管理中心存储](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)。
 
 ## <a name="install-group-policy-management-tools"></a>安装组策略管理工具
 

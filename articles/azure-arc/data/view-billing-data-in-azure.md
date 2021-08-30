@@ -7,28 +7,27 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 7ef1cd43d2efbc5ab92cc2b4cba4d237805d8921
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2c4e25aebf46ea13b69b8ca24d1336c4ba5521ad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202648"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751490"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>将计费数据上传到 Azure 并在 Azure 门户中查看该数据
 
 > [!IMPORTANT] 
 >  预览期间使用已启用 Azure Arc 的数据服务不会产生费用。 尽管计费系统端到端工作，但计费计量器设置为 0 美元。  如果遵循此方案，用户将在计费中看到当前名为“混合数据服务”的服务条目和“Microsoft.AzureArcData/”类型的资源条目 **`<resource type>`** 。 用户将能够看到创建的每个数据服务 - Azure Arc 的记录，但每个记录将收取 0 美元。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="connectivity-modes---implications-for-billing-data"></a>连接模式 - 计费数据的含意
 
 将来，可以通过两种模式运行已启用 Azure Arc 的数据服务：
 
-- **间接连接** - 不会直接连接到 Azure。 数据仅通过导出/上传过程发送到 Azure。 目前，预览版中所有 Azure Arc 数据服务部署均以此模式工作。
-- **直接连接** - 在此模式下，将依赖于已启用 Azure Arc 的 Kubernetes 服务，在 Azure 与已启用 Azure Arc 的数据服务运行的 Kubernetes 群集之间提供直接连接。 这可以实现更多功能，还可让用户使用 Azure 门户和 Azure CLI 管理已启用 Azure Arc 的数据服务，就像在 Azure PaaS 中管理数据服务一样。  预览版目前尚不提供此连接模式，但即将推出。
+- **间接连接** - 不会直接连接到 Azure。 数据仅通过导出/上传过程发送到 Azure。
+- 直接连接 - 在此模式下，将依赖于已启用 Azure Arc 的 Kubernetes 服务，在 Azure 与已启用 Azure Arc 的数据服务运行的 Kubernetes 群集之间提供直接连接。 这可以实现更多功能，还可让用户使用 Azure 门户和 Azure CLI 管理已启用 Azure Arc 的数据服务，就像在 Azure PaaS 中管理数据服务一样。  预览版目前尚不提供此连接模式，但即将推出。
 
 可以阅读有关[连接模式](./connectivity.md)之间差异的详细信息。
 
@@ -40,14 +39,14 @@ ms.locfileid: "102202648"
 
 1. 如果还没有已启用 Azure Arc 的数据服务，请先创建。 例如，创建以下服务之一：
    - [在 Azure Arc 上创建 Azure SQL 托管实例](create-sql-managed-instance.md)
-   - [创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组](create-postgresql-hyperscale-server-group.md)
+   - [创建已启用 Azure Arc 的 PostgreSQL 超大规模服务器组](create-postgresql-hyperscale-server-group.md)
 1. 如果尚未将资源清单、使用情况数据、指标和日志上传到 Azure Monitor，请[上传](upload-metrics-and-logs-to-azure-monitor.md)。
 1. 创建数据服务之后至少等待 2 小时，以便计费遥测收集过程收集一些计费数据。
 
 运行以下命令以导出计费数据：
 
-```console
-azdata arc dc export -t usage -p usage.json
+```azurecli
+az arcdata dc export -t usage -p usage.json --k8s-namespace <namespace> --use-k8s
 ```
 
 目前，文件未加密以便查看内容。 可以随意在文本编辑器中打开，并查看内容的呈现情况。
@@ -103,8 +102,8 @@ azdata arc dc export -t usage -p usage.json
 
 运行以下命令，将 usage.json 文件上传到 Azure：
 
-```console
-azdata arc dc upload -p usage.json
+```azurecli
+az arcdata dc upload -p usage.json
 ```
 
 ## <a name="view-billing-data-in-azure-portal"></a>在 Azure 门户中查看计费数据

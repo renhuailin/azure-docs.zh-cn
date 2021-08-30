@@ -9,13 +9,13 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 01/19/2021
-ms.openlocfilehash: 0a95d95842d0b361a1a276566b01b7ea735c4670
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 07/22/2021
+ms.openlocfilehash: 890330700e21c34b1a3d9ae78068f577f5f64c6b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952073"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739160"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>在工作区中运行 Jupyter Notebook
 
@@ -28,7 +28,7 @@ ms.locfileid: "107952073"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 ## <a name="edit-a-notebook"></a>编辑笔记本
@@ -72,6 +72,31 @@ ms.locfileid: "107952073"
 在代码片段面板中，还可以提交添加新代码片段的请求。
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/propose-new-snippet.png" alt-text="在代码片段面板中可以建议新的代码片段":::
+
+## <a name="collaborate-with-notebook-comments-preview"></a>使用笔记本注释（预览版）进行协作
+
+使用笔记本注释与有权访问你的笔记本的其他人协作。
+
+在笔记本顶部使用“笔记本注释”工具打开和关闭“注释”窗格。  如果屏幕不够宽，请首先选择工具集末尾的“...”来查找此工具。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/notebook-comments-tool.png" alt-text="顶部工具栏中笔记本注释工具的屏幕截图。":::  
+
+无论注释窗格是否可见，都可以在任何代码单元格中添加注释：
+
+1. 在代码单元格中选择一些文本。  你只能对代码单元格中的文本进行注释。
+1. 使用“新建注释线程”工具创建注释。
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/comment-from-code.png" alt-text="向代码单元格添加注释的工具的屏幕截图。":::
+1. 如果之前隐藏了“注释”窗格，现在它将打开。  
+1. 使用该工具键入注释并发布，或按 Ctrl+Enter 键。
+1. 发布注释后，选择右上方的“...”，以执行以下操作：
+    * 编辑注释
+    * 解析线程
+    * 删除线程
+
+已注释的文本将在代码中以紫色突出显示。 在“注释”窗格中选择注释时，笔记本将滚动到包含突出显示文本的单元格。
+
+> [!NOTE]
+> 注释将被保存到该代码单元格的元数据中。
 
 ## <a name="clean-your-notebook-preview"></a>清理笔记本（预览版）
 
@@ -288,9 +313,11 @@ ms.locfileid: "107952073"
 
 * 如果无法连接到笔记本，请确保未禁用 Web 套接字通信。 为了让计算实例 Jupyter 功能可以正常运行，必须启用 Web 套接字通信。 确保网络允许与 *.instances.azureml.net 和 *.instances.azureml.ms 建立 websocket 连接。 
 
-* 在专用链接工作区中部署计算实例时，只能[从虚拟网络内部访问](./how-to-secure-training-vnet.md#compute-instance)。 如果使用自定义 DNS 或 hosts 文件，请为 < instance-name >.< region >.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
+* 当计算实例部署在具有专用终结点的工作区中时，只能[从虚拟网络内部访问](./how-to-secure-training-vnet.md#compute-instance)它。 如果使用自定义 DNS 或 hosts 文件，请为 < instance-name >.< region >.instances.azureml.ms 添加一个条目，让该条目包含工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md?tabs=azure-cli) 一文。
 
-* 如果内核崩溃并重启，你可运行以下命令查看 jupyter 日志并了解更多详细信息。 `sudo journalctl -u jupyter`. 如果内核问题仍然存在，请考虑使用具有更多内存的计算实例。
+* 如果内核崩溃并重启，则可以运行以下命令查看 jupyter 日志并了解更多详细信息：`sudo journalctl -u jupyter`。 如果内核问题仍然存在，请考虑使用具有更多内存的计算实例。
+
+* 如果遇到令牌过期的问题，请注销 Azure ML Studio，再重新登录，然后重启笔记本内核。
     
 ## <a name="next-steps"></a>后续步骤
 

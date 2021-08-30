@@ -1,28 +1,25 @@
 ---
-title: 使用托管标识通过 Azure 流分析作业访问事件中心（预览版）
+title: 使用托管标识从 Azure 流分析作业访问事件中心
 description: 本文介绍如何使用托管标识通过 Azure 事件中心输入和输出对 Azure 流分析作业进行身份验证。
-author: sidramadoss
-ms.author: sidram
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 06/07/2021
-ms.openlocfilehash: c0f81c5abdffe307550d2b0b3e1f86f67f867f5a
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 07/07/2021
+ms.openlocfilehash: 4b470ff5336807fd92ae14af2548cd3a4305c6ed
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591289"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113485898"
 ---
-# <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>使用托管标识通过 Azure 流分析作业访问事件中心（预览版）
+# <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job"></a>使用托管标识从 Azure 流分析作业访问事件中心
 
 Azure 流分析支持针对 Azure 事件中心的输入和输出进行托管标识身份验证。 托管标识消除了基于用户的身份验证方法的限制，例如，由于每隔 90 天进行一次密码更改（否则用户令牌会过期），需要重新进行身份验证。 当你不再需要手动进行身份验证时，流分析部署可以完全自动化。  
 
 托管标识是 Azure Active Directory 中注册的表示给定流分析作业的托管应用程序。 托管应用程序用于向目标资源（包括位于防火墙或虚拟网络 (VNet) 后面的事件中心）进行身份验证。 若要详细了解如何绕过防火墙，请参阅[允许通过专用终结点访问 Azure 事件中心命名空间](../event-hubs/private-link-service.md#trusted-microsoft-services)。
 
 本文介绍如何通过 Azure 门户为流分析作业的事件中心输入或输出启用托管标识。在启用托管标识之前，必须先有一个流分析作业和事件中心资源。
-
-### <a name="limitation"></a>限制
-在预览期间，如果使用托管标识身份验证模式，在 Azure 门户上从事件中心进行采样输入将不起作用。
 
 ## <a name="create-a-managedidentity"></a>创建托管标识  
 

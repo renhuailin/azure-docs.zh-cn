@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: b66011ff41e1dd4a7439105862ca61355a95bd71
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e90c33f63eb360bae4182ac1f9ed32eb9b8aa0c8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042702"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439082"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 代理收集自定义日志
 
@@ -52,8 +52,8 @@ ms.locfileid: "102042702"
 ### <a name="step-1-open-the-custom-log-wizard"></a>步骤 1。 打开自定义日志向导
 自定义日志向导在 Azure 门户中运行，使用它可以定义要收集的新自定义日志。
 
-1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区 >“高级设置”   。
-2. 单击“数据”   > “自定义日志”  。
+1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区 >“设置” 。
+2. 单击“自定义日志”。
 3. 默认情况下，所有配置更改均会自动推送到所有代理。 对于 Linux 代理，配置文件会发送到 Fluentd 数据收集器。
 4. 单击“添加+”  ，打开自定义日志向导。
 

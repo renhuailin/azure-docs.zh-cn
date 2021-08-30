@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: 1a4e3495702a536ca03274dc81df64722ae165f5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 87520d26ac4f83297d076ff7539a7731ddbd09fd
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738460"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708812"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Azure 存储资源管理器支持生命周期和策略
 
@@ -41,6 +41,8 @@ Azure 存储资源管理器每年发布四到六次。 Microsoft 也可能在计
 
 | 存储资源管理器版本  | 发布日期       | 支持结束日期 |
 |:-------------------------:|:------------------:|:-------------------:|
+| v1.20.1                   | 2021 年 7 月 23 日      | 2022 年 7 月 23 日       |
+| v1.20.0                   | 2021 年 6 月 25 日      | 2022 年 6 月 25 日       |
 | v1.19.1                   | 2021 年 4 月 29 日     | 2022 年 4 月 29 日      |
 | v1.19.0                   | 2021 年 4 月 15 日     | 2022 年 4 月 15 日      |
 | v1.18.1                   | 2021 年 3 月 4 日      | 2022 年 3 月 4 日       |

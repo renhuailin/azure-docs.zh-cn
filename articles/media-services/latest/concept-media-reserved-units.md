@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4b3a06d2d441c918c4c109d9dc624ebfa1cd4c97
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 44205bc628a839dd28cd574dbd19a22e9856d999
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120803"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719419"
 ---
 # <a name="media-reserved-units"></a>媒体预留单位
 
@@ -43,7 +43,7 @@ ms.locfileid: "106120803"
 
 ## <a name="considerations"></a>注意事项
 
-* 对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈推荐为帐户预配 10 个 S3 单位。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.com/)打开一个支持票证。
+* 对于由媒体服务 v3 或 Azure 视频分析器媒体版触发的音频分析和视频分析作业，强烈推荐为帐户预配 10 个 S3 单位。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.com/)打开一个支持票证。
 * 对于没有 MRU 的编码任务，任务在排队状态下可花费的时间没有上限，并且一次最多只能运行一个任务。
 
 ## <a name="billing"></a>计费

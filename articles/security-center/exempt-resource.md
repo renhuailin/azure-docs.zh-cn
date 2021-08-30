@@ -7,12 +7,12 @@ ms.date: 05/12/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 01be1037b38e2991a2266c37dfd3ca026ca874ff
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: f69b7174ec37a38fd972f53daaaf09776a279cea
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846412"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745096"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>从安全功能分数中免除资源和建议 
 
@@ -36,7 +36,7 @@ ms.locfileid: "109846412"
 | 定价：                        | 这是一项高级 Azure Policy 功能，Azure Defender 客户无需额外付费即可使用此功能。 对于其他用户，将来可能需要付费。                                                                                                                                                                 |
 | 所需角色和权限： | 要创建免除的所有者或资源策略参与者 <br>若要创建规则，你需要在 Azure Policy 中编辑策略的权限。<br>若要了解详细信息，请参阅 [Azure Policy 中的 Azure RBAC 权限](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)。                                            |
 | 的限制：                    | 只能为安全中心的默认计划、[Azure 安全基准](/security/benchmark/azure/introduction)或提供的任意法规标准计划中包含的建议创建免除。 不能免除从自定义计划中生成的建议。 详细了解[策略、计划和建议](security-policy-concept.md)之间的关系。 |
-| 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）                                                                                                                                                                                         |
+| 云：                         | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/no-icon.png":::国家/地区/主权（Azure 政府、Azure 中国世纪互联）                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>定义免除
@@ -77,7 +77,7 @@ ms.locfileid: "109846412"
     1. （可选）输入说明。
     1. 选择“创建”。
 
-    :::image type="content" source="media/exempt-resource/defining-recommendation-exemption.png" alt-text="创建免除规则以从订阅或管理组中免除建议的步骤":::
+    :::image type="content" source="media/exempt-resource/defining-recommendation-exemption.png" alt-text="创建免除规则以从订阅或管理组中免除建议的步骤。":::
 
     免除生效（最多可能需要 30 分钟）后：
     - 建议或资源不会影响安全功能分数。
@@ -88,11 +88,11 @@ ms.locfileid: "109846412"
 
     - “建议详细信息”页顶部的信息栏中会更新已免除资源的数量：
         
-        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="已免除资源的数量":::
+        :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="已免除资源的数量。":::
 
 1. 若要查看已免除的资源，请打开“不适用”选项卡：
 
-    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="修改免除":::
+    :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="修改免除。":::
 
     表 (1) 中包含了每项免除的原因。
 

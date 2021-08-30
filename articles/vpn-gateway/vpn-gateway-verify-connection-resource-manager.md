@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 3616c425f191c9ff7788cb5f4333fa69d65e5728
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: eaeb77e1dafe7b2791537190d0b4d220363280a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204596"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729473"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>验证 VPN 网关连接
 
-本文介绍如何验证经典部署模型和 Resource Manager 部署模型的 VPN 网关连接。
+本文介绍如何验证经典部署模型和[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)的 VPN 网关连接。
 
 ## <a name="azure-portal"></a>Azure 门户
 

@@ -1,18 +1,20 @@
 ---
 title: 使用 Hadoop 流式处理活动转换数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 说明如何使用 Azure 数据工厂中的 Hadoop 流式处理活动通过在 HDInsight 群集上运行 Hadoop 流式处理程序来转换数据。
 author: nabhishek
 ms.author: abnarain
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 05/08/2020
-ms.openlocfilehash: e2a9bc9d664ba15da3cdefa5cf28519ab703d6ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4285ee6ae7c5799fa8b65df6bf5adfa79861e3c0
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361428"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271199"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -92,5 +94,5 @@ ms.locfileid: "100361428"
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [Azure 机器学习工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
+* [ML 工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

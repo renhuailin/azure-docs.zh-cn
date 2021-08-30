@@ -3,24 +3,23 @@ title: 使用 Microsoft Azure Maps 出行服务（预览版）请求实时公共
 description: 了解如何请求实时公共交通数据，例如某个公交车站的车辆到站情况。 了解如何使用 Azure Maps 出行服务（预览版）来执行此操作。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 06/23/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d3e3dc4b0e3bc64a38856da8344583b744ea62b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e7358e76cdcf07f39a9b5a5fcab7ab0151ebc32
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96906040"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742621"
 ---
 # <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>使用 Azure Maps 出行服务（预览版）请求实时公共交通数据 
 
 > [!IMPORTANT]
-> Azure Maps 出行服务目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure Maps 出行服务（预览版）已停用，在 2021 年 10 月 5 日之后将不再可用，也不再受支持。 所有其他 Azure Maps API 和服务不受此停用公告的影响。
+> 有关详细信息，请参阅 [Azure Maps 出行服务（预览版）停用](https://azure.microsoft.com/updates/azure-maps-mobility-services-preview-retirement/)。
 
 
 本文介绍如何使用 Azure Maps [出行服务](/rest/api/maps/mobility)来请求实时公共交通数据。
@@ -39,19 +38,15 @@ ms.locfileid: "96906040"
 
 我们使用“522”作为 metroID，这是“华盛顿州西雅图–塔科马–贝尔维尤”地区的 metroID。 使用“522---2060603”作为 stopID，此车站位于“Ne 24th St & 162nd Ave Ne, Bellevue WA”。 若要针对这一站所有接下来的实时到站来请求接下来的五批实时到站数据，请完成以下步骤：
 
-1. 打开 Postman 应用，创建用于存储这些请求的集合。 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“集合”。  命名集合，然后选择“创建”按钮。
+1. 打开 Postman 应用。 选择“新建”以创建请求。 在“新建”窗口中，选择“HTTP 请求” 。 在“请求名称”中，输入请求名称。
 
-2. 若要创建请求，请再次选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 选择在上一步创建的集合，作为保存请求的位置。 然后选择“保存”。
-
-    ![在 Postman 中创建请求](./media/how-to-request-transit-data/postman-new.png)
-
-3. 在生成器选项卡上选择 GET HTTP 方法，并输入以下 URL 来创建 GET 请求。 将 `{subscription-key}` 替换为 Azure Maps 主密钥。
+2. 在生成器选项卡上选择 GET HTTP 方法，并输入以下 URL 来创建 GET 请求。 将 `{subscription-key}` 替换为 Azure Maps 主密钥。
 
     ```HTTP
     https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=522---2060603&transitType=bus
     ```
 
-4. 在请求成功之后，会收到以下响应。  请注意，参数“scheduleType”定义预计的到站时间是基于实时数据还是静态数据。
+3. 在请求成功之后，会收到以下响应。  请注意，参数“scheduleType”定义预计的到站时间是基于实时数据还是静态数据。
 
     ```JSON
     {

@@ -13,22 +13,23 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/18/2021
+ms.date: 06/30/2021
 ms.author: radeltch
-ms.openlocfilehash: a4c4631a0a1263e5a5398c44a8570f92571102e8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 97564fef2278861f2e22e85752cd803ad289c766
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045830"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737373"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>使用适用于 SAP 应用程序的 Azure NetApp 文件 (SMB) 实现 Windows 上 Azure VM 的 SAP NetWeaver 高可用性
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
+[high-availability-guide]:high-availability-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-azure-doc]:../../../azure-netapp-files/azure-netapp-files-introduction.md
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=storage&regions=all
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
@@ -50,9 +51,9 @@ ms.locfileid: "102045830"
 [suse-drbd-guide]:https://www.suse.com/documentation/sle-ha-12/singlehtml/book_sleha_techguides/book_sleha_techguides.html
 [suse-ha-12sp3-relnotes]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
 
-[template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
-[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
-[template-file-server]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-file-server-md%2Fazuredeploy.json
+[template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
+[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
+[template-file-server]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-file-server-md%2Fazuredeploy.json
 
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
@@ -117,6 +118,9 @@ SMB 文件共享的先决条件为：
 
    > [!IMPORTANT]
    > 在创建 SMB 卷之前，需要创建 Active Directory 连接。 查看 [Active Directory 连接要求](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)。  
+   >   
+   > 创建 Active Directory 连接时，请确保输入的 SMB 服务器（计算机帐户）前缀不超过 8 个字符，以避免违反 SAP 应用程序的 13 个字符主机名限制（会自动在 SMB 计算机帐户名称中添加一个后缀）。     
+   > SAP 应用程序的主机名限制在 [2718300 - 物理和虚拟主机名长度限制](https://launchpad.support.sap.com/#/notes/2718300)和 [611361 - SAP ABAP 平台服务器的主机名](https://launchpad.support.sap.com/#/notes/611361)中进行了介绍。  
 
 5. 按照[创建 Active Directory 连接](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection)中所述创建 Active Directory 连接  
 6. 按照[添加 SMB 卷](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)中的说明创建 SMB Azure NetApp 文件 SMB 卷  
@@ -163,6 +167,20 @@ SMB 文件共享的先决条件为：
 
 1. 在第二个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到“产品” > “DBMS”>“安装”>“应用程序服务器 ABAP”（或“Java”）>“高可用性系统”>“ASCS/SCS 实例”>“附加群集节点” 。  
 
+### <a name="update-the-sap-ascsscs-instance-profile"></a>更新 SAP ASCS/SCS 实例配置文件
+
+更新 SAP ASCS/SCS 实例配置文件 \<SID>ASCS/SCS\<Nr>\<Host> 中的参数。
+
+
+| 参数名称 | 参数值 |
+| --- | --- |
+| gw/netstat_once | **0** |
+| enque/encni/set_so_keepalive  | **true** |
+| service/ha_check_node | **1** |
+
+仅当使用 ENSA1 时才需要参数 `enque/encni/set_so_keepalive`。  
+重启 SAP ASCS/SCS 实例。 按照[在 SAP ASCS/SCS 实例的群集节点上设置注册表项][high-availability-guide]的说明，在两个 SAP ASCS/SCS 群集节点上设置 `KeepAlive` 参数。 
+
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>安装 DBMS 实例和 SAP 应用程序服务器
 
 安装以下组件以完成 SAP 安装：
@@ -192,6 +210,40 @@ SMB 文件共享的先决条件为：
 ![图 3：执行故障转移测试后已保留锁定条目](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-3.png)  
 
 有关详细信息，请参阅 [Troubleshooting for Enqueue Failover in ASCS with ERS](https://wiki.scn.sap.com/wiki/display/SI/Troubleshooting+for+Enqueue+Failover+in+ASCS+with+ERS)（排查 ERS 中 ASCS 的排队故障转移问题）
+
+## <a name="optional-configurations"></a>可选配置
+
+下图显示了运行 Microsoft Windows 故障转移群集（以减少 VM 总数）的 Azure VM 上的多个 SAP 实例。
+
+这可以是 SAP ASCS/SCS 群集上的本地 SAP 应用程序服务器，也可以是 Microsoft SQL Server Always On 节点上的 SAP ASCS/SCS 群集角色。
+
+> [!IMPORTANT]
+> 不支持在 SQL Server Always On 节点上安装本地 SAP 应用程序服务器。
+>
+
+SAP ASCS/SCS 和 Microsoft SQL Server 数据库都是单一故障点 (SPOF)。 为了在 Windows 环境中保护这些 SPOF，使用了 Azure NetApp 文件 SMB。
+
+虽然 SAP ASCS/SCS 的资源消耗较小，但建议将 SQL Server 或 SAP 应用程序服务器的内存配置减少 2 GB。
+
+### <a name="sap-application-servers-on-wsfc-nodes-using-netapp-files-smb"></a><a name="5121771a-7618-4f36-ae14-ccf9ee5f2031"></a>使用 NetApp 文件 SMB 的 WSFC 节点上的 SAP 应用程序服务器
+
+![图 4：Azure 中的 Windows Server 故障转移群集配置，包含 Windows NetApp 文件 SMB 和本地安装的 SAP 应用程序服务器][sap-ha-guide-figure-8007A]
+
+> [!NOTE]
+> 图为使用额外的本地磁盘。 对于不会在 OS 驱动器 (C:\) 上安装应用程序软件的客户，这是可选的
+>
+### <a name="sap-ascsscs-on-sql-server-always-on-nodes-using-azure-netapp-files-smb"></a><a name="01541cf2-0a03-48e3-971e-e03575fa7b4f"></a>使用 Azure NetApp 文件 SMB 的 SQL Server Always On 节点上的 SAP ASCS/SCS
+
+> [!IMPORTANT]
+> 不支持将 Azure NetApp 文件 SMB 用于任何 SQL Server 卷。
+> 
+
+![图：使用 Azure NetApp 文件 SMB 的 SQL Server Always On 节点上的 SAP ASCS/SCS][sap-ha-guide-figure-8007B]
+
+> [!NOTE]
+> 图为使用额外的本地磁盘。 对于不会在 OS 驱动器 (C:\) 上安装应用程序软件的客户，这是可选的
+>
+
 ## <a name="next-steps"></a>后续步骤
 
 * [适用于 SAP 的 Azure 虚拟机规划和实施][planning-guide]
@@ -200,3 +252,6 @@ SMB 文件共享的先决条件为：
 * 若要了解如何建立 Azure 上的 SAP HANA（大型实例）高可用性并规划其 
 * 灾难恢复，请参阅 [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)。
 * 若要了解如何在 Azure VM 上建立 SAP HANA 高可用性以及规划灾难恢复，请参阅 [Azure 虚拟机 (VM) 上的 SAP HANA 高可用性][sap-hana-ha]
+
+[sap-ha-guide-figure-8007A]:./media/virtual-machines-shared-sap-high-availability-guide/ha-smb-as.png
+[sap-ha-guide-figure-8007B]:./media/virtual-machines-shared-sap-high-availability-guide/ha-sql-ascs-smb.png

@@ -4,12 +4,14 @@ description: 汇总了使用 Azure Site Recovery 执行 Hyper-V VM 到 Azure 的
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
-ms.openlocfilehash: 338bbf8fdaffb284aa4a34aea0ad20108d4e54fb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+author: Sharmistha-Rai
+ms.author: sharrai
+ms.openlocfilehash: 7c64aee5177adf7ee1d5f5d47ba80c5e25a53002
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440851"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444797"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>将本地 Hyper-V VM 灾难恢复到 Azure 时的支持矩阵
 
@@ -95,8 +97,8 @@ Azure 虚拟网络服务终结点<br/> （不带 Azure 存储防火墙） | 是 
 ## <a name="hyper-v-host-storage"></a>Hyper-V 主机存储
 
 **存储** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
---- | --- | --- 
-NFS | 不可用 | NA
+--- | --- | ---
+NFS | 不可用 | 不可用
 SMB 3.0 | 是 | 是
 SAN (ISCSI) | 是 | 是
 多路径 (MPIO)。 测试时使用的对象：<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | 是 | 是
@@ -111,7 +113,7 @@ VHD/VHDX | 是 | 是
 EFI/UEFI<br></br>Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。 该 VM 应仅运行 Windows Server 2012 及更高版本。 OS 磁盘应该最多有五个分区或更少，OS 磁盘的大小应该小于 300 GB。| 是 | 是
 共享群集磁盘 | 否 | 否
 加密磁盘 | 否 | 否
-NFS | 不可用 | NA
+NFS | 不可用 | 不可用
 SMB 3.0 | 否 | 否
 RDM | 不可用 | 不可用
 磁盘 > 1 TB | 是，最大 4,095 GB | 是，最大 4,095 GB
@@ -151,6 +153,7 @@ RDM | 不可用 | 不可用
 **功能** | **使用 Virtual Machine Manager 的 Hyper-V** | **不使用 Virtual Machine Manager 的 Hyper-V**
 --- | --- | ---
 可用性集 | 是 | 是
+可用性区域 | 否 | 否
 HUB | 是 | 是  
 托管磁盘 | 是，用于故障转移。<br/><br/> 不支持托管磁盘的故障回复。 | 是，用于故障转移。<br/><br/> 不支持托管磁盘的故障回复。
 
@@ -190,7 +193,7 @@ VM 类型 | 第 1 代<br/><br/> 第 2 代 - Windows | OS 磁盘类型为“基�
 若要确保部署与本文的设置兼容，请确保运行的是最新的提供程序和代理版本。
 
 **名称** | **说明** | **详细信息**
---- | --- | --- 
+--- | --- | ---
 Azure Site Recovery 提供程序 | 协调本地服务器与 Azure 之间的通信 <br/><br/> 使用 Virtual Machine Manager 的 Hyper-V：安装在 Virtual Machine Manager 服务器上<br/><br/> 不使用 Virtual Machine Manager 的 Hyper-V：安装在 Hyper-V 主机上| [最新功能和修复](./site-recovery-whats-new.md)
 Microsoft Azure 恢复服务代理 | 协调 Hyper-V VM 与 Azure 之间的复制<br/><br/> 在本地 Hyper-V 服务器（使用或不使用 Virtual Machine Manager）上安装 | 可从门户获取最新代理
 

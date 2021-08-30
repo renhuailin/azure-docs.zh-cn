@@ -7,14 +7,14 @@ ms.subservice: extensions
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 07/29/2021
 ms.author: srijangupta
-ms.openlocfilehash: 406793d1e28f48a007cdf92ef87042e6f79bcbde
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: be1bf712d91aaaff460ff2dcc4a899f8b8a089be
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208142"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741766"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中虚拟机的 cloud-init 支持
 本文介绍在 Azure 中预配时用于配置虚拟机 (VM) 或虚拟机规模集的 [cloud-init](https://cloudinit.readthedocs.io) 的现有支持。 Azure 预配资源后，这些 cloud-init 配置即会在首次启动时运行。  
@@ -38,68 +38,65 @@ cloud-init 还支持不同的发行版。 例如，不要使用 apt-get 安装�
 ### <a name="canonical"></a>Canonical
 | 发布者/版本| 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonical 20.04 |UbuntuServer |18.04-LTS |最新 |是 | 是 |
+|Canonical 20.04 |UbuntuServer |20.04-LTS |最新 |是 | 是 |
 |Canonical 18.04 |UbuntuServer |18.04-LTS |最新 |是 | 是 |
-|Canonical 16.04|UbuntuServer |16.04-LTS |最新 |是 | 是 |
-|Canonical 14.04|UbuntuServer |14.04.5-LTS |最新 |是 | 是 |
+
 
 ### <a name="rhel"></a>RHEL
-| 发布者/版本 | 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
+| 发布者/版本| 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |是 | 是 - 通过包版本支持：*18.2-1.el7_6.2*|
-|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | 是（注意：这是预览版映像，不得继续使用，将于 2020 年 9 月 1 日删除） | 空值 |
-|RedHat 7.7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | 是 | 是 - 通过包版本支持：*18.5-6.el7*|
-|RedHat 7.7 (Gen2)|RHEL | 77-gen2 | 7.7.2020051913 | 是 | 是 - 通过包版本支持：*18.5-6.el7*|
-|RedHat 7.7 (Gen1)|RHEL |7-LVM | 7.7.2020051921 | 是 | 是 - 通过包版本支持：*18.5-6.el7*|
-|RedHat 7.7 (Gen2)|RHEL | 7lvm-gen2 | 7.7.2020051922  | 是 | 是 - 通过包版本支持：*18.5-6.el7*|
-|RedHat 7.7 (Gen1) |rhel-byos | rhel-lvm77 | 7.7.20200416 | 是  | 是 - 通过包版本支持：*18.5-6.el7*|
-|RedHat 8.1 (Gen1) |RHEL |8.1-ci |8.1.2020042511 | 是（请注意：这是一个预览版映像，一旦所有 RHEL 8.1 映像都支持 cloud-init，就会在 2020 年 8 月 1 日删除此映像） | 否，完整支持的 ETA 为 2020 年 6 月|
-|RedHat 8.1 (Gen2) |RHEL |81-ci-gen2 |8.1.2020042524 | 是（请注意：这是一个预览版映像，一旦所有 RHEL 8.1 映像都支持 cloud-init，就会在 2020 年 8 月 1 日删除此映像） | 否，完整支持的 ETA 为 2020 年 6 月 |
+|RedHat 7 |RHEL |7.7、7.8、7_9 |最新 |是 | 是 |
+|RedHat 8 |RHEL |8.1、8.2、8_3、8_4 |最新 |是 | 是 |
 
-* 所有 RedHat:RHEL 7.8 和 8.2（Gen1 和 Gen2）映像都是用 cloud-init 预配的。
+* 从 RHEL 7（版本 7.7）和 RHEL 8（版本 8.1）开始的所有其他 RedHat SKU（包括 Gen1 和 Gen2 映像）都是用 cloud-init 预配的。 RHEL 6 映像不支持 cloud-init。 
+
 
 ### <a name="centos"></a>CentOS
-
-| 发布者/版本 | 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
+ 发布者/版本| 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |是（注意：这是预览版映像，不得继续使用，将于 2020 年 9 月 1 日删除） | 空值 |
-|OpenLogic 7.7 |CentOS | 7.7 |7.7.2020062400 |是 | 是 - 以下包版本提供支持：`18.5-6.el7.centos.5`|
-|OpenLogic 7.7 (Gen2) |CentOS | 7_7-gen2 |7.7.2020062401 |是 | 是 - 以下包版本提供支持：`18.5-6.el7.centos.5`|
-|OpenLogic 7.7 |CentOS-HPC | 7.7 |7.6.2020062600 |是 | 是 - 以下包版本提供支持：`18.5-6.el7.centos.5`|
-|OpenLogic 7.7 (Gen2) |CentOS-HPC | 7_7-gen2 |7.6.2020062601 |是 | 是 - 以下包版本提供支持：`18.5-6.el7.centos.5`|
-|OpenLogic 8.1 |CentOS | 8_1 |8.1.2020062400 |是 | 是 - 以下包版本提供支持：`18.5-7.el8_1.1`|
-|OpenLogic 8.1 (Gen2) |CentOS | 8_1-gen2 |8.1.2020062401 |是 | 是 - 以下包版本提供支持：`18.5-7.el8_1.1`|
-|OpenLogic 8.1 |CentOS-HPC | 8_1 |8.1.2020062400 |是 | 是 - 以下包版本提供支持：`18.5-7.el8_1.1`|
-|OpenLogic 8.1 (Gen2) |CentOS-HPC:8_1-gen2 | 8_1-gen2 |8.1.2020062401 |是 | 是 - 以下包版本提供支持：`18.5-7.el8_1.1`|
+|OpenLogic 7 |CentOS |7.7、7.8、7.9 |最新 |是 | 是 |
+|OpenLogic 8 |CentOS |8.1、8.2、8.3 |最新 |是 | 是 |
 
-* 所有 OpenLogic:CentOS 7.8 和 8.2（Gen1 和 Gen2）映像都是使用 cloud-init 预配的。
+* 从 CentOS 7（版本 7.7）和 CentOS 8（版本 8.1）开始，所有其他 CentOS SKU（包括 Gen1 和 Gen2 映像）都是用 cloud-init 预配的。 CentOS 6.10、7.4、7.5 和 7.6 映像不支持 cloud-init。 
+
+> [!NOTE]
+> OpenLogic 现为 Rogue Wave Software 
+
+
 
 ### <a name="oracle"></a>Oracle
 
-| 发布者/版本 | 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
+ 发布者/版本| 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Oracle 7.7 |Oracle-Linux |77-ci |7.7.01| 预览版映像（请注意：这是一个预览版映像，一旦所有 Oracle 7.7 映像都支持 cloud-init，就会在 2020 年中期删除此映像，届时会发出通知） | 否，在预览版中，包为：*18.5-3.0.1.el7*
+|Oracle 7 |Oracle Linux |77、78、ol79 |最新 |是 | 是 |
+|Oracle 8 |Oracle Linux |81、ol82、ol83-lvm、ol84-lvm |最新 |是 | 是 |
+
+* 从 Oracle 7 (版本 7.7) 和 Oracle 8 (版本 8.1) 开始，所有其他 Oracle SKU（包括 Gen1 和 Gen2 映像）都是用 cloud-init 预配的。
+
 
 ### <a name="suse-sles"></a>SUSE SLES
-这些 SLES 映像已更新为使用 cloud-init 预配，Gen2 映像变体也已经更新。
-* suse:sles-15-sp1-{basic/byos/hpc/hpc-byos/chost-byos}:gen1:2020.06.10
-* suse:sles-sap-15-sp1:gen1:2020.06.10
-* suse:sles-sap-15-sp1-byos:gen1:2020.06.10
-* suse:manager-proxy-4-byos:gen1:2020.06.10
-* suse:manager-server-4-byos:gen1:2020.06.10
-* suse:sles-{byos/sap/sap-byos}:15:2020.06.10
-* suse:sles-12-sp5:gen1:2020.06.10
-* suse:sles-12-sp5{-byos/basic/hpc-byos/hpc}:gen1:2020.06.10
-* suse:sles-{byos/sap/sap-byos}:12-sp4:2020.06.10
-* suse:sles-{byos/sap/sap-byos}:12-sp3:2020.06.10
-* suse:sles-{byos/sap/sap-byos}:12-sp2:2020.06.10
+
+ 发布者/版本| 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+| SUSE 15 |SLES (SUSE Linux Enterprise Server) |sp1、sp2、sp3 |最新 |是 | 是 |
+|SUSE 12 |SLES (SUSE Linux Enterprise Server) |sp5 |最新 |是 | 是 |
+
+* 从 SLES 15 (sp1) 和 SLES 12 (sp5) 开始，所有其他 SUSE SKU（包括 Gen1 和 Gen2 映像）都是用 cloud-init 预配的。
+* 此外，这些映像也是使用 cloud-init 预配的。
+
+
+ 发布者/版本| 产品/服务 | SKU/版本
+|:--- |:--- |:---
+|SUSE 12 |SLES (SUSE Linux Enterprise Server) |sles-{byos/sap/sap-byos}:12-sp4:2020.06.10
+|SUSE 12 |SLES (SUSE Linux Enterprise Server) |sles-{byos/sap/sap-byos}:12-sp3:2020.06.10
+|SUSE 12 |SLES (SUSE Linux Enterprise Server) |sles-{byos/sap/sap-byos}:12-sp2:2020.06.10
+| SUSE 15 |SLES (SUSE Linux Enterprise Server) |manager-proxy-4-byosgen1:2020.06.10
+| SUSE 15 |SLES (SUSE Linux Enterprise Server) |manager-server-4-byos:gen1:2020.06.10
 
 
 ### <a name="debian"></a>Debian
 | 发布者/版本 | 产品/服务 | SKU | 版本 | 映像 cloud-init 准备就绪 | Azure 上的 cloud-init 包支持|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| debian (Gen1) |debian-10 | 10-cloudinit |cloud-init-preview| 是（注意：这是预览版映像，不得继续使用，将于 2021 年 1 月 1 日删除） | 否，以预览版提供。 |
-| debian (Gen2) |debian-10 | 10-cloudinit-gen2 |cloud-init-preview| 是（注意：这是预览版映像，不得继续使用，将于 2021 年 1 月 1 日删除） | 否，以预览版提供。 |
 | debian (Gen1) |debian-10 | 10-cloudinit |10:0.20201013.422| 是 | 是 - 以下包版本提供支持：`20.2-2~deb10u1` |
 | debian (Gen2) |debian-10 | 10-cloudinit-gen2 |0.20201013.422| 是 | 是 - 以下包版本提供支持：`20.2-2~deb10u1` |
 
@@ -116,6 +113,9 @@ cloud-init 无法处理 Azure 扩展，因此，仍需在映像中包含 WALA �
 创建 VM 时，如果在预配时未包括 Azure CLI `--custom-data` 开关，cloud-init 或 WALA 将采用所需的最小 VM 预配参数来预配 VM 并使用默认值完成部署。  如果使用 `--custom-data` 开关引用 cloud-init 配置，在 VM 启动时，自定义数据中包含的任何内容均可用于 cloud-init。
 
 应用于 VM 的 cloud-init 配置没有时限，也不会因为超时导致部署失败。对于 WALA，这一点并不适用。如果更改 WALA 默认值来处理自定义数据，则用于处理自定义数据的时间不能超过 VM 预配总时间限制（40 分钟），否则 VM 创建操作将会失败。
+
+## <a name="cloud-init-vm-provisioning-without-a-udf-driver"></a>无需 UDF 驱动程序的 cloud-init VM 预配  
+从 cloud-init 21.2 开始，可以使用 cloud-init 在 Azure 中预配 VM，而无需 UDF 驱动程序。 如果映像中未提供 UDF 驱动程序，cloud-init 将使用 Azure 实例元数据服务中提供的元数据来预配 VM。 请注意，此选项仅适用于 SSH 密钥和[用户数据](../user-data.md)。 若要在预配期间将密码或自定义数据传递到 VM，必须使用 UDF 驱动程序。
 
 ## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>部署已启用 cloud-init 的虚拟机
 部署已启用 cloud-init 的虚拟机就和在部署期间引用已启用 cloud-init 的分发一样简单。  Linux 分发 Maintainer 需要选择启用 cloud-init，并将 cloud-init 集成到其基本 Azure 已发布映像中。 确认想要部署的映像已启用 cloud-init 之后，就可以使用 AzureCLI 部署映像。 

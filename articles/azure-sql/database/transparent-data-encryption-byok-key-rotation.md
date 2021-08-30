@@ -11,13 +11,13 @@ ms.topic: how-to
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
-ms.date: 03/12/2019
-ms.openlocfilehash: 9c43cb7bb60b758230664571fd7d7e592009fff2
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 06/23/2021
+ms.openlocfilehash: c14d209f5f4b846b51a99ac875e2304129b4e765
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110667149"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090270"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>轮换透明数据加密 (TDE) 保护器
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -32,6 +32,9 @@ ms.locfileid: "110667149"
 
 > [!IMPORTANT]
 > 在滚动更新之后，请勿删除旧版密钥。 滚动更新密钥时，某些数据仍使用以前的密钥进行加密，例如旧版数据库备份。
+
+> [!NOTE]
+> 本文适用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics（专用 SQL 池（以前称为 SQL DW））。 有关 Synapse 工作区内专用 SQL 池的透明数据加密的文档，请参阅 [Azure Synapse Analytics 加密](../../synapse-analytics/security/workspaces-encryption.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

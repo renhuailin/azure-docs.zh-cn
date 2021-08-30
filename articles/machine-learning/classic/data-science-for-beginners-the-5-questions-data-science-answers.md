@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）：适合初学者的数据科学 - Azure
-description: 适合初学者的数据科学以 5 个较短的视频讲授基本概念，从 5 个数据科学可解答的问题开始。 来自 Azure 机器学习。
+description: 适合初学者的数据科学以 5 个较短的视频讲授基本概念，从 5 个数据科学可解答的问题开始。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,14 +9,16 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: e9bbadc95be3479da82d91e9a4a4f712fbc32c57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef1d8586dc79d529df56e5d0e3101ba69e7a2cab
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520385"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694999"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适用于初学者的数据科学视频 1：5 个数据科学问题的解答
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 通过顶级数据科学家制作的“适合初学者的数据科学”的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。
 
@@ -136,4 +138,4 @@ ms.locfileid: "100520385"
 
 ## <a name="next-steps"></a>后续步骤
 * [使用机器学习工作室（经典）尝试第一个数据科学试验](create-experiment.md)
-* [在 Microsoft Azure 上获取机器学习简介](../overview-what-is-azure-ml.md)
+* [获取 Azure 机器学习简介](../overview-what-is-azure-machine-learning.md)

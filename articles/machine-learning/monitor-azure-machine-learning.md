@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: e5fd0fdd5a6f9a4a7537a844b096efdfef253638
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: c0f35290aa653d5b9e9be9f1a9a0184854509889
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816847"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862213"
 ---
 # <a name="monitor-azure-machine-learning"></a>监视 Azure 机器学习
 
@@ -29,7 +29,7 @@ ms.locfileid: "107816847"
 > * [使用 MLflow 跟踪试验](how-to-use-mlflow.md)
 > * [使用 TensorBoard 将运行可视化](how-to-monitor-tensorboard.md)
 >
-> 如果要监视部署为 Web 服务或 IoT Edge 模块的模型生成的信息，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。
+> 如果要监视由部署为 Web 服务的模型生成的信息，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。
 
 ## <a name="what-is-azure-monitor"></a>说明是 Azure Monitor？
 
@@ -60,9 +60,9 @@ Azure 机器学习收集的监视数据的类型与 [Azure 资源的监视数据
 
 平台指标和活动日志会自动收集和存储，但你可以使用诊断设置将其路由到其他位置。  
 
-在创建诊断设置并将其路由到一个或多个位置之前，不会收集和存储资源日志。
+在创建诊断设置并将其路由到一个或多个位置之前，不会收集和存储资源日志。 需要管理多个Azure 机器学习工作区时，可将所有工作区的日志路由到同一个日志记录目标，并从单个位置查询所有日志。
 
-有关使用 Azure 门户、CLI 或 PowerShell 创建诊断设置的详细过程，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)。 创建诊断设置时，请指定要收集的日志类别。 Azure 机器学习的类别在 [Azure 机器学习监视数据参考](monitor-resource-reference.md#resource-logs)中列出。
+有关使用 Azure 门户、Azure CLI 或 PowerShell 创建诊断设置的详细过程，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)。 创建诊断设置时，请指定要收集的日志类别。 Azure 机器学习的类别在 [Azure 机器学习监视数据参考](monitor-resource-reference.md#resource-logs)中列出。
 
 > [!IMPORTANT]
 > 启用这些设置需要额外的 Azure 服务（存储帐户、事件中心或 Log Analytics），这可能会增加成本。 若要估算成本，请访问 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator)。
@@ -74,6 +74,7 @@ Azure 机器学习收集的监视数据的类型与 [Azure 资源的监视数据
 | AmlComputeClusterEvent | Azure 机器学习计算群集的事件。 |
 | AmlComputeClusterNodeEvent | Azure 机器学习计算群集内节点的事件。 |
 | AmlComputeJobEvent | Azure 机器学习计算上运行的作业的事件。 |
+
 
 > [!NOTE]
 > 启用诊断设置中的指标时，当前发送到存储帐户、事件中心或 log analytics 的信息中并不包含维度信息。
@@ -111,9 +112,20 @@ Azure Monitor 日志中的数据以表形式存储，每个表包含自己独有
 
 | 表 | 说明 |
 |:---|:---|
-| AmlComputeClusterEvent | Azure 机器学习计算群集的事件。 |
+| AmlComputeClusterEvent | Azure 机器学习计算群集的事件。|
 | AmlComputeClusterNodeEvent | Azure 机器学习计算群集内节点的事件。 |
 | AmlComputeJobEvent | Azure 机器学习计算上运行的作业的事件。 |
+| AmlComputeInstanceEvent | 访问（读取/写入）ML 计算实例时生成的事件。 类别包括：ComputeInstanceEvent（非常琐碎）。 |
+| AmlDataLabelEvent | 访问（读取、创建或删除）数据标签或其项目时生成的事件。 类别包括：DataLabelReadEvent、DataLabelChangeEvent。  |
+| AmlDataSetEvent | 访问（读取、创建或删除）已注册或未注册的 ML 数据集时生成的事件。 类别包括：DataSetReadEvent、DataSetChangeEvent。 |
+| AmlDataStoreEvent | 访问（读取、创建或删除）ML 数据存储时生成的事件。 类别包括：DataStoreReadEvent、DataStoreChangeEvent。 |
+| AmlDeploymentEvent | 在 ACI 或 AKS 上进行模型部署时生成的事件。 类别包括：DeploymentReadEvent、DeploymentEventACI、DeploymentEventAKS。 |
+| AmlInferencingEvent | AKS 或 ACI 计算类型上的推理或相关操作事件。 类别包括：InferencingOperationACI（非常琐碎）、InferencingOperationAKS（非常琐碎）。 |
+| AmlModelsEvent | 访问（读取、创建或删除）ML 模型时生成的事件。 包括将模型和资产打包成随时可生成的包时生成的事件。 类别包括：ModelsReadEvent、ModelsActionEvent。|
+| AmlPipelineEvent | 访问（读取、创建或删除）ML 管道草稿、终结点或模块时生成的事件。类别包括：PipelineReadEvent、PipelineChangeEvent。 |
+| AmlRunEvent | 访问（读取、创建或删除）ML 试验时生成的事件。 类别包括：RunReadEvent、RunEvent。 |
+| AmlEnvironmentEvent | 访问（读取、创建或删除）ML 环境配置时生成的事件。 类别包括：EnvironmentReadEvent（非常琐碎）、EnvironmentChangeEvent。 |
+
 
 > [!IMPORTANT]
 > 在 Azure 机器学习菜单中选择“日志”时，Log Analytics 随即打开，其查询范围设置为当前工作区。 这意味着日志查询只包含来自该资源的数据。 如果希望运行的查询包含其他数据库或其他 Azure 服务的数据，请从“Azure Monitor”菜单中选择“日志”。 有关详细信息，请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](../azure-monitor/logs/scope.md)。
@@ -157,6 +169,17 @@ Azure Monitor 日志中的数据以表形式存储，每个表包含自己独有
     AmlComputeClusterNodeEvent
     | where TimeGenerated > ago(8d) and NodeAllocationTime  > ago(8d)
     | distinct NodeId
+    ```
+
+将多个 Azure 机器学习工作区连接到同一个 Log Analytics 工作区时，可以跨所有资源进行查询。 
+
++ 获取过去一天内各个工作区和群集中运行的节点数：
+
+    ```Kusto
+    AmlComputeClusterEvent
+    | where TimeGenerated > ago(1d)
+    | summarize avgRunningNodes=avg(TargetNodeCount), maxRunningNodes=max(TargetNodeCount)
+             by Workspace=tostring(split(_ResourceId, "/")[8]), ClusterName, ClusterType, VmSize, VmPriority
     ```
 
 ## <a name="alerts"></a>警报

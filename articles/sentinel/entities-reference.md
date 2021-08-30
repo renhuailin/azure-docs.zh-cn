@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: acae7a6121587a1a58c6f19b0b09287b3d93cc84
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: 5b1fc91868f420b2f156fbb4d219d08cf5ad2ab6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992154"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726059"
 ---
 # <a name="azure-sentinel-entity-types-reference"></a>Azure Sentinel 实体类型引用
 
 ## <a name="entity-types-and-identifiers"></a>实体类型和标识符
 
-下表显示了当前可用于在 Azure Sentinel 中映射的“实体类型”，并显示了可用作每个实体类型的“标识符”的属性，这些属性显示在[分析规则向导](tutorial-detect-threats-custom.md)的[实体映射](map-data-fields-to-entities.md)部分的“标识符”下拉列表中   。
+下表显示了当前可用于在 Azure Sentinel 中映射的“实体类型”，并显示了可用作每个实体类型的“标识符”的属性，这些属性显示在[分析规则向导](detect-threats-custom.md)的[实体映射](map-data-fields-to-entities.md)部分的“标识符”下拉列表中   。
 
 “必需的标识符”列中的每个标识符都必须至少用于标识其实体。 但是，必需的标识符本身可能并不足以提供唯一标识。 使用的标识符越多，唯一标识的可能性就越大。 单个实体映射最多可以使用三个标识符。
 
@@ -139,7 +139,7 @@ ms.locfileid: "107992154"
 | ----- | ---- | ----------- |
 | 类型 | 字符串 | “IP” |
 | 地址 | String | 字符串形式的 IP 地址，如 127.0.0.1（在 IPv4 或 IPv6）中。 |
-| 位置 | GeoLocation | 附加到 IP 实体的地理位置上下文。 |
+| 位置 | GeoLocation | 附加到 IP 实体的地理位置上下文。 <br><br>有关详细信息，另请参阅[通过 REST API 用地理位置数据丰富 Azure Sentinel 中的实体](geolocation-data-api.md)。 |
 |
 
 IP 实体的强标识符：

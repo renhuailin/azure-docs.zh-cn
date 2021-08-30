@@ -1,24 +1,22 @@
 ---
-title: 使用 CLI（azdata 或 kubectl）纵向扩展和缩减 Azure Database for PostgreSQL 超大规模服务器组
-description: 使用 CLI（azdata 或 kubectl）纵向扩展和缩减 Azure Database for PostgreSQL 超大规模服务器组
+title: 使用 CLI（az 或 kubectl）纵向扩展和缩减 Azure Database for PostgreSQL 超大规模服务器组
+description: 使用 CLI（az 或 kubectl）纵向扩展和缩减 Azure Database for PostgreSQL 超大规模服务器组
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 490eaaef7e4e8569e4422b2ef2659ced583f7ff2
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 8b2b64de8dd16e36b6956c289beda986d89a5c98
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407392"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733505"
 ---
-# <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>使用 CLI（azdata 或 kubectl）纵向扩展和缩减 Azure Database for PostgreSQL 超大规模服务器组
-
-
+# <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-az-or-kubectl"></a>使用 CLI（az 或 kubectl）纵向扩展和缩减 Azure Database for PostgreSQL 超大规模服务器组
 
 有时候你可能需要更改服务器组的特征或定义。 例如：
 
@@ -35,10 +33,10 @@ ms.locfileid: "111407392"
 
 若要显示服务器组的当前定义并查看当前的 vCore 和内存设置，请运行以下命令之一：
 
-### <a name="cli-with-azdata"></a>CLI azdata
+### <a name="cli-with-azure-cli-az"></a>CLI 和 azure cli (az)
 
-```console
-azdata arc postgres server show -n <server group name>
+```azurecli
+az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 ### <a name="cli-with-kubectl"></a>CLI kubectl
 
@@ -107,32 +105,29 @@ Spec:
 
 **常规语法为：**
 
-```console
-azdata arc postgres server edit -n <servergroup name> --memory-limit/memory-request/cores-request/cores-limit <coordinator=val1,worker=val2>
+```azurecli
+az postgres arc-server edit -n <servergroup name> --memory-limit/memory-request/cores-request/cores-limit <coordinator=val1,worker=val2> --k8s-namespace <namespace> --use-k8s
 ```
 
 为内存设置指示的值是数字，其后是卷的单位。 例如，若要指示 1Gb，应指示 1024Mi 或 1Gi。
 若要指示多个内核，只需传递没有单位的数字。 
 
-### <a name="examples-using-the-azdata-cli"></a>使用 azdata CLI 的示例
-
-
-
-
+### <a name="examples-using-the-azure-cli"></a>使用 Azure CLI 的示例
 
 配置协调器角色，注意不可超过 2 个核心，而工作器不得超过 4 个核心：
-```console
- azdata arc postgres server edit -n postgres01 --cores-request coordinator=1, --cores-limit coordinator=2
- azdata arc postgres server edit -n postgres01 --cores-request worker=1, --cores-limit worker=4
+
+```azurecli
+ az postgres arc-server edit -n postgres01 --cores-request coordinator=1, --cores-limit coordinator=2  --k8s-namespace <namespace> --use-k8s
+ az postgres arc-server edit -n postgres01 --cores-request worker=1, --cores-limit worker=4 --k8s-namespace <namespace> --use-k8s
 ```
 
 或
-```console
-azdata arc postgres server edit -n postgres01 --cores-request coordinator=1,worker=1 --cores-limit coordinator=4,worker=4
+```azurecli
+az postgres arc-server edit -n postgres01 --cores-request coordinator=1,worker=1 --cores-limit coordinator=4,worker=4 --k8s-namespace <namespace> --use-k8s
 ```
 
 > [!NOTE]
-> 有关这些参数的详细信息，请运行 `azdata arc postgres server edit --help`。
+> 有关这些参数的详细信息，请运行 `az postgres arc-server edit --help`。
 
 ### <a name="example-using-kubernetes-native-tools-like-kubectl"></a>使用 Kubernetes 本机工具（如 `kubectl`）的示例
 
@@ -190,14 +185,14 @@ kubectl edit postgresql/<servergroup name> -n <namespace name>
 ## <a name="reset-to-default-values"></a>重置为默认值
 若要将核心/内存限制/请求参数重置为其默认值，请对其进行编辑，并传递空字符串而非实际值。 例如，如要重置核心限制参数，请运行以下命令：
 
-```console
-azdata arc postgres server edit -n postgres01 --cores-request coordinator='',worker=''
-azdata arc postgres server edit -n postgres01 --cores-limit coordinator='',worker=''
+```azurecli
+az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit -n postgres01 --cores-limit coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
 ```
 
 或 
-```console
-azdata arc postgres server edit -n postgres01 --cores-request coordinator='',worker='' --cores-limit coordinator='',worker=''
+```azurecli
+az postgres arc-server edit -n postgres01 --cores-request coordinator='',worker='' --cores-limit coordinator='',worker='' --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="next-steps"></a>后续步骤

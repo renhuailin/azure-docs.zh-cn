@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 08/09/2021
 ms.author: victorh
-ms.openlocfilehash: 2b6e923bf7645e89434b461da47408be23f65f86
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: a23c02a406b7329f7c7cdbecba1e0c92b05d1e19
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634758"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860656"
 ---
 # <a name="use-azure-firewall-to-protect-azure-virtual-desktop-deployments"></a>使用 Azure 防火墙保护 Azure 虚拟桌面部署
 
@@ -22,7 +22,7 @@ Azure 虚拟桌面是在 Azure 运行的桌面和应用虚拟化服务。 当最
 
 请参阅本文中的指南，使用 Azure 防火墙为 Azure 虚拟桌面主机池提供额外保护。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 
  - 已部署的 Azure 虚拟桌面环境和主机池。
@@ -44,7 +44,7 @@ Azure 虚拟桌面是在 Azure 运行的桌面和应用虚拟化服务。 当最
 --- | --- | --- | --- | --- | --- | ---
 | 规则名称 | IP 地址 | VNet 或子网 IP 地址 | 80 | TCP |  IP 地址 | 169.254.169.254、168.63.129.16
 | 规则名称 | IP 地址 | VNet 或子网 IP 地址 | 443 | TCP | 服务标记 | AzureCloud、WindowsVirtualDesktop
-| 规则名称 | IP 地址 | VNet 或子网 IP 地址 | 53 | TCP、UDP | IP 地址 | *
+| 规则名称 | IP 地址 | VNet 或子网 IP 地址 | 52 | TCP、UDP | IP 地址 | *
 
 
 ### <a name="create-application-rules"></a>创建应用程序规则 

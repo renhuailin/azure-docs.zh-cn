@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/21/2021
 ms.author: lajanuar
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 9ce82cddc4f4f663f6e5aa0f2372756edf9cdcfd
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: e24a24b54d31a98497bfba453b6677ebf0f560a9
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066580"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322880"
 ---
 # <a name="how-to-use-language-identification"></a>如何使用语言识别
 
@@ -33,7 +33,7 @@ ms.locfileid: "122066580"
 目前，语言识别针对单步识别的限制为 4 种语言，针对连续识别的限制为 10 种语言 。 构造 `AutoDetectSourceLanguageConfig` 对象时，请记住此限制。 在下面的示例中，使用 `AutoDetectSourceLanguageConfig` 定义可能要识别的语言列表，然后在运行语音识别时引用这些语言。
 
 > [!IMPORTANT]
-> 连续语言识别功能目前提供预览版，仅在 C# 和 C++ 中受支持。
+> 连续语言识别功能仅在 C#、C++ 和 Python 中受支持。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -155,14 +155,11 @@ using (var audioInput = AudioConfig.FromWavFileInput(@"path-to-your-audio-file.w
 ```
 
 > [!NOTE]
-> `Latency` 和 `Accuracy` 模式以及多语言连续识别功能目前仅在 C# 和 C++ 中受支持。
+> `Latency` 和 `Accuracy` 模式以及多语言连续识别功能目前仅在 C#、C++ 和 Python 中受支持。
  
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
-
-> [!IMPORTANT]
-> 如下所示，此功能目前提供预览版。
 
 以下示例运行单步识别，并优先使用 `Latency`。 此属性还可设置为 `Accuracy`，具体取决于用例的优先级。 如果需要低延迟结果（例如，对于实时传送视频流用例）但不知道音频样本中的语言，最好使用 `Latency`。 
 
@@ -265,7 +262,7 @@ recognizer->StopContinuousRecognitionAsync().get();
 ```
 
 > [!NOTE]
-> `Latency` 和 `Accuracy` 模式以及多语言连续识别功能目前仅在 C# 和 C++ 中受支持。
+> `Latency` 和 `Accuracy` 模式以及多语言连续识别功能目前仅在 C#、C++ 和 Python 中受支持。
 
 ::: zone-end
 
@@ -406,22 +403,22 @@ if (result->Reason == ResultReason::RecognizedSpeech)
 
 ::: zone pivot="programming-language-java"
 > [!IMPORTANT]
-> 此功能目前仅在 C# 和 C++ 中受支持。
+> 此功能目前仅在 C#、C++ 和 Python 中受支持。
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 > [!IMPORTANT]
-> 此功能目前仅在 C# 和 C++ 中受支持。
+> 此功能目前仅在 C#、C++ 和 Python 中受支持。
 ::: zone-end
 
 ::: zone pivot="programming-language-objectivec"
 > [!IMPORTANT]
-> 此功能目前仅在 C# 和 C++ 中受支持。
+> 此功能目前仅在 C#、C++ 和 Python 中受支持。
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
 > [!IMPORTANT]
-> 此功能目前仅在 C# 和 C++ 中受支持。
+> 此功能目前仅在 C#、C++ 和 Python 中受支持。
 ::: zone-end
 
 ## <a name="use-a-custom-model-for-language-identification"></a>使用自定义模型进行语言识别

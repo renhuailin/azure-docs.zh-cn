@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 08/11/2021
 ms.author: justinha
-ms.openlocfilehash: df132af1675b3f373fe1eab5685c5d2f07813445
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c28711e937290df75687376f3ee6e067a69ad91d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619226"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742915"
 ---
 # <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Azure Active Directory 域服务托管域上的密码和帐户锁定策略
 
@@ -63,7 +63,7 @@ ms.locfileid: "96619226"
 
 * **帐户锁定持续时间：** 30
 * **允许的登录尝试失败次数：** 5
-* **多长时间后重置登录尝试失败计数：** 30 分钟
+* 多长时间后重置失败登录尝试计数：2 分钟
 * **最长密码期限（生存期）：** 90 天
 
 使用这些默认设置时，如果在 2 分钟内使用了 5 个无效密码，则会将用户帐户锁定 30 分钟。 帐户将在 30 分钟后自动解锁。
@@ -105,10 +105,7 @@ ms.locfileid: "96619226"
 
     设置自定义密码策略的优先级（例如 1）来替代默认值。
 
-1. 根据需要编辑其他密码策略设置。 请记住以下要点：
-
-    * 密码复杂性、期限或过期时间等设置仅适用于在托管域中手动创建的用户。
-    * 帐户锁定设置适用于所有用户，但仅在托管域中生效，而不会在 Azure AD 本身中生效。
+1. 根据需要编辑其他密码策略设置。 帐户锁定设置适用于所有用户，但仅在托管域中生效，而不会在 Azure AD 本身中生效。
 
     ![创建自定义的细化密码策略](./media/password-policy/custom-fgpp.png)
 

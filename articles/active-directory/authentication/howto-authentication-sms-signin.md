@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 06/09/2021
 ms.author: justinha
 author: justinha
 manager: daveba
-ms.reviewer: rateller
+ms.reviewer: anjusingh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ee91482ac17ac5e91715f5dfe6191c6ed4007a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 3505f53c9ddeb4f3605554799c029a8195a9ab65
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982697"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004981"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>为用户配置和启用通过 Azure Active Directory 进行基于短信的身份验证 
 
 为了简化和保护登录到应用程序和服务的过程，Azure Active Directory (Azure AD) 提供多种身份验证选项。 利用基于短信的身份验证，用户无需提供甚至无需知道自己的用户名和密码即可登录。 在标识管理员创建了用户帐户后，用户可以在登录提示中输入他们的电话号码。 他们会通过短信收到身份验证代码，然后可以提供这个代码来完成登录。 这种身份验证方法简化了对应用程序和服务的访问，尤其是对一线工作人员而言。
 
-本文介绍如何在 Azure AD 中为选定的用户或组启用基于短信的身份验证。
+本文介绍如何在 Azure AD 中为选定的用户或组启用基于短信的身份验证。 有关支持使用基于短信的登录的应用列表，请参阅[应用对基于短信的身份验证的支持](how-to-authentication-sms-supported-apps.md)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -34,8 +34,8 @@ ms.locfileid: "111982697"
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 需要在 Azure AD 租户中拥有“全局管理员”特权才能启用基于短信的身份验证。
 * 短信身份验证方法策略中启用的每个用户都必须获得许可，即使他们不使用该方法也是如此。 每个启用的用户都必须具有以下 Azure AD、EMS、Microsoft 365 许可证之一：
-    * [Microsoft 365 (M365) F1 或 F3][m365-firstline-workers-licensing]
-    * [企业移动性 + 安全性 (EMS) E3 或 E5][ems-licensing] 或 [Microsoft 365 (M365) E3 或 E5][m365-licensing]
+    * [Microsoft 365 F1 或 F3][m365-firstline-workers-licensing]
+    * [企业移动性 + 安全性 (EMS) E3 或 E5][ems-licensing] 或 [Microsoft 365 E3 或 E5][m365-licensing]
     * [Office 365 F3][o365-f3]
 
 ## <a name="known-issues"></a>已知问题
@@ -124,9 +124,11 @@ ms.locfileid: "111982697"
 
 1. 现在，用户无需提供用户名或密码就已登录。
 
+
 ## <a name="troubleshoot-sms-based-sign-in"></a>排查基于短信的登录的问题
 
-如果在启用和使用基于短信的登录时遇到问题，可以使用以下方案和故障排除步骤。
+如果在启用和使用基于短信的登录时遇到问题，可以使用以下方案和故障排除步骤。 有关支持使用基于短信的登录的应用列表，请参阅[应用对基于短信的身份验证的支持](how-to-authentication-sms-supported-apps.md)。
+
 
 ### <a name="phone-number-already-set-for-a-user-account"></a>已经为用户帐户设置了电话号码
 
@@ -148,9 +150,10 @@ ms.locfileid: "111982697"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关不使用密码登录 Azure AD 的其他方法（例如 Microsoft Authenticator 应用或 FIDO2 安全密钥），请参阅 [Azure AD 无密码身份验证选项][concepts-passwordless]。
+- 有关支持使用基于短信的登录的应用列表，请参阅[应用对基于短信的身份验证的支持](how-to-authentication-sms-supported-apps.md)。
+- 有关不使用密码登录 Azure AD 的其他方法（例如 Microsoft Authenticator 应用或 FIDO2 安全密钥），请参阅 [Azure AD 无密码身份验证选项][concepts-passwordless]。
+- 你还可以使用 Microsoft Graph REST API 版本来[启用][rest-enable]或[禁用][rest-disable]基于短信的登录。
 
-你还可以使用 Microsoft Graph REST API 版本来[启用][rest-enable]或[禁用][rest-disable]基于短信的登录。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md

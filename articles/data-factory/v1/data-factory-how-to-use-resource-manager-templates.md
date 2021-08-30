@@ -7,16 +7,16 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ec2e7d2f80e19d2e001fec0a3949f469b33149d2
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f527b33445ed55fbc64a08144a94ba9a05f38092
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957147"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112554471"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用模板来创建 Azure 数据工厂实体
 > [!NOTE]
-> 本文适用于数据工厂版本 1。 
+> 本文适用于数据工厂版本 1。
 
 ## <a name="overview"></a>概述
 使用 Azure 数据工厂实现数据集成需求时，可能发现自己在不同环境中重复使用同一模式，或在同一解决方案内重复执行相同任务。 使用模板可轻松实现和管理这些方案。 Azure 数据工厂中的模板非常适合于涉及可重用性和重复的情况。
@@ -39,12 +39,12 @@ ms.locfileid: "111957147"
 ## <a name="data-factory-templates-on-github"></a>GitHub 上的数据工厂模板
 请查看 GitHub 上的以下 Azure 快速启动模板：
 
-* [创建数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
-* [创建包含 Azure HDInsight 群集上的 Hive 活动的数据工厂](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
-* [创建数据工厂，将数据从 Salesforce 复制到 Azure Blob](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
-* [创建可链接活动的数据工厂：将数据从 FTP 服务器复制到 Azure Blob，调用按需 HDInsight 群集上的 Hive 脚本来转换数据，并将结果复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
+* [创建数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-blob-to-sql-copy)
+* [创建包含 Azure HDInsight 群集上的 Hive 活动的数据工厂](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-hive-transformation)
+* [创建数据工厂，将数据从 Salesforce 复制到 Azure Blob](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-salesforce-to-blob-copy)
+* [创建可链接活动的数据工厂：将数据从 FTP 服务器复制到 Azure Blob，调用按需 HDInsight 群集上的 Hive 脚本来转换数据，并将结果复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-ftp-hive-blob)
 
-随意共享 [Azure 快速启动](https://azure.microsoft.com/documentation/templates/)处的 Azure 数据工厂模板。 开发可通过此存储库共享的模板时，请参考 [contribution guide](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)（贡献指南）。
+随意共享 [Azure 快速启动](https://azure.microsoft.com/resources/templates/)处的 Azure 数据工厂模板。 开发可通过此存储库共享的模板时，请参考 [contribution guide](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)（贡献指南）。
 
 下面部分详细介绍了如何定义 Resource Manager 模板中的数据工厂资源。
 

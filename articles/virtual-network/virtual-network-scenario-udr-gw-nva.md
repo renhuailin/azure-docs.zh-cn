@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
-ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1d84a09ddd758f333ccb588ac341dce607509d8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86231703"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749266"
 ---
 # <a name="virtual-appliance-scenario"></a>虚拟设备方案
 在较大的 Azure 客户中，一种常见情况是需要向 Internet 公开某个双层应用程序，同时允许从本地数据中心访问后端层。 本文档指导实施一种使用用户定义的路由 (UDR)、VPN 网关和网络虚拟设备部署双层环境的方案，该方案可满足以下要求：
@@ -144,8 +144,12 @@ AZF1 代表包含以下规则的 Azure 虚拟设备：
 ### <a name="azf2"></a>AZF2
 AZF2 代表包含以下规则的 Azure 虚拟设备：
 
-* **路由**：发往 10.0.0.0/16 (**onpremvnet**) 的所有流量必须通过 **port1** 发送到 Azure 网关 IP 地址（即 10.0.0.1）。
 * **策略**：允许 **port1** 与 **port2** 之间的所有双向流量。
+
+### <a name="azf3"></a>AZF3
+AZF3 代表包含以下规则的 Azure 虚拟设备：
+
+* 路由：发往 192.168.0.0/16 (onpremvnet) 的所有流量必须通过 port1 发送到 Azure 网关 IP 地址（即 10.0.0.1）  。
 
 ## <a name="network-security-groups-nsgs"></a>网络安全组 (NSG)
 此方案中未使用 NSG。 但是，可以向每个子网应用 NSG，以限制传入和传出的流量。 例如，可将以下 NSG 规则应用到外部 FW 子网。
@@ -167,4 +171,3 @@ AZF2 代表包含以下规则的 Azure 虚拟设备：
 3. 预配属于 **AZURERG** 的资源。
 4. 预配从 **onpremvnet** 到 **azurevnet** 的隧道。
 5. 预配所有资源后，登录到 **onpremvm2** 并 ping 10.0.3.101，以测试 **onpremsn2** 与 **azsn3** 之间的连接。
-

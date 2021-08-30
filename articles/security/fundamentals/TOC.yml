@@ -1,7 +1,5 @@
 - name: 基础知识文档
   href: index.yml
-- name: 从系统标识泄露中恢复
-  href: recover-from-identity-compromise.md
 - name: 概述
   items:
     - name: Azure 安全性简介
@@ -10,6 +8,14 @@
       href: end-to-end.md
     - name: 云中责任分担
       href: shared-responsibility.md
+- name: 检测并缓解威胁
+  items:
+    - name: 针对勒索软件的备份和还原计划
+      href: backup-plan-to-protect-against-ransomware.md
+    - name: 从系统标识泄露中恢复
+      href: recover-from-identity-compromise.md
+    - name: 威胁防护
+      href: threat-detection.md
 - name: 在 Azure 中保护工作负荷
   items:
     - name: 安全技术功能
@@ -144,8 +150,6 @@
       href: service-fabric-best-practices.md
 - name: 监视、审核和操作
   items:
-    - name: 威胁防护
-      href: threat-detection.md
     - name: Azure 日志记录和审核
       href: log-audit.md
     - name: 安全管理和监视

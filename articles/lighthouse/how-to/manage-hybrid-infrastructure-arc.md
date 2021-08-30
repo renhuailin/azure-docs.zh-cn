@@ -3,12 +3,12 @@ title: 利用 Azure Arc 大规模管理混合基础结构
 description: Azure Lighthouse 可帮助你有效地管理 Azure 外部的客户计算机和 Kubernetes 群集。
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: edb9553288ff909e5a5f51bf1440c29914672cb9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 926ec6d3fdca6b31ee5296832e12a63a2dfa9d65
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082075"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228837"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>利用 Azure Arc 大规模管理混合基础结构
 
@@ -46,7 +46,7 @@ ms.locfileid: "112082075"
 ## <a name="next-steps"></a>后续步骤
 
 - 浏览 [Azure Arc GitHub 存储库](https://github.com/microsoft/azure_arc)中的快速入门和示例。
-- 了解[启用 Azure Arc 的服务器的支持方案](../../azure-arc/servers/overview.md#supported-scenarios)。
+- 了解[启用 Azure Arc 的服务器的支持方案](../../azure-arc/servers/overview.md#supported-cloud-operations)。
 - 了解 [Azure Arc 支持的 Kubernetes 分布](../../azure-arc/kubernetes/overview.md#supported-kubernetes-distributions)。
 - 了解如何[大规模部署策略](policy-at-scale.md)。
 - 了解如何[大规模使用 Azure Monitor 日志](monitor-at-scale.md)。

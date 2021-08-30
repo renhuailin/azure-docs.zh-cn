@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: b1a56c8acf1789690c01f1c16b7c37a237720e39
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4fdcf88200b3c2a6b5371633c10d9246cfbf4c31
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564868"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730237"
 ---
 # <a name="limitations-of-azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc 的超大规模 PostgreSQL 的限制
 
@@ -61,7 +61,7 @@ Microsoft 及其客户在 Azure PaaS 服务（平台即服务）和 Azure 混合
 
 - 请试用。在 Azure Kubernetes 服务 (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中通过 [Azure Arc 快速入门](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)快速开始。 
 
-- **创建自己的服务器组。** 按照以下步骤在自己的 Kubernetes 群集上创建： 
+- “自行创建。” 请按以下步骤在自己的 Kubernetes 群集上创建： 
    1. [安装客户端工具](install-client-tools.md)
    2. [创建 Azure Arc 数据控制器](create-data-controller.md)
    3. [在 Azure Arc 上创建 Azure Database for PostgreSQL 超大规模服务器组](create-postgresql-hyperscale-server-group.md) 

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/06/2021
+ms.date: 07/30/2021
 ms.author: rolyon
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 66efe0015e0ca85ac793100ee6d8d0944e3614c1
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 49ca89112f011f8f1c6d411ab187697b29523eeb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690880"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728695"
 ---
 # <a name="list-azure-role-definitions"></a>列出 Azure 角色定义
 
@@ -29,10 +29,6 @@ ms.locfileid: "110690880"
 
 按照以下步骤在 Azure 门户中列出所有角色。
 
-“角色”选项卡最近更新了一些附加功能。 若要查看以前的体验，请参阅“角色(经典)”选项卡。可以使用任一角色选项卡来使用角色，但如果创建或删除自定义角色，则可能需要手动刷新页面才能查看最新更改。
-
-#### <a name="roles"></a>[角色](#tab/roles/)
-
 1. 在 Azure 门户中单击“所有服务”，然后选择任意范围。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源  。
 
 1. 单击特定的资源。
@@ -43,6 +39,9 @@ ms.locfileid: "110690880"
 
    ![显示使用新体验的角色列表的屏幕截图。](./media/shared/roles-list.png)
 
+    > [!TIP]
+    > 若要查看以前的角色列表体验，请单击“使用经典体验”。
+  
 1. 若要查看特定角色的权限，请在“详细信息”列中，单击“查看”链接 。
 
     “权限”窗格随即显示。
@@ -50,22 +49,6 @@ ms.locfileid: "110690880"
 1. 单击“权限”选项卡以查看和搜索所选角色的权限。
 
    ![显示使用新体验的角色权限的屏幕截图。](./media/role-definitions-list/role-permissions.png)
-
-#### <a name="roles-classic"></a>[角色(经典)](#tab/roles-classic/)
-
-1. 在 Azure 门户中单击“所有服务”，然后选择任意范围。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源  。
-
-1. 单击特定的资源。
-
-1. 单击“访问控制(IAM)”。
-
-1. 单击“角色(经典)”选项卡以查看包含所有内置角色和自定义角色的列表。
-
-   可以看到在当前范围分配到每个角色的用户和组的数目。
-
-   ![角色列表](./media/role-definitions-list/roles-list-classic.png)
-
----
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

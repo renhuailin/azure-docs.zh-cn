@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: fe60a36d93a77ee75df578e0f6fc6665da26681e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 49dab18a0f3b58d82b7de9c393f63428ac0d115b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743010"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695188"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>步骤 2：配置安全解决方案以发送 CEF 消息
 
@@ -64,7 +64,7 @@ ms.locfileid: "121743010"
 
 1. 要在 Log Analytics 中搜索 CEF 事件，请在查询窗口中输入 `CommonSecurityLog`。
 
-1. 继续执行步骤 3：[验证连接性](connect-cef-verify.md)。
+1. 继续执行步骤 3：[验证连接性](troubleshooting-cef-syslog.md#validate-cef-connectivity)。
 
 > [!NOTE]
 > 更改 TimeGenerated 字段的源

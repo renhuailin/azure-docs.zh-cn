@@ -1,14 +1,14 @@
 ---
 title: Azure 备份服务器 V3 RTM 可备份的内容
 description: 本文提供保护矩阵，其中列出 Azure 备份服务器 V3 RTM 保护的所有工作负荷、数据类型和安装。
-ms.date: 11/13/2018
+ms.date: 07/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1ec8240844061b9b250a3cbf92ffcc5f2b3f474b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3dfae3e241a5dadd1d49d3d537b46308446d60b8
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98986881"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720207"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure 备份服务器 V3 RTM 保护矩阵
 
@@ -27,7 +27,7 @@ ms.locfileid: "98986881"
 |客户端计算机（64 位和 32 位）|Windows 7|VMware 中的 Windows 虚拟机（保护在 VMware 中的 Windows 虚拟机上运行的工作负载）|V3、V2|卷、共享、文件夹、文件、重复删除的卷<br /><br />受保护的卷必须采用 NTFS 格式。 不支持 FAT 和 FAT32。<br /><br />卷必须至少有 1 GB 空间。 Azure 备份服务器使用卷影复制服务 (VSS) 来创建数据快照；仅当卷至少有 1 GB 空间时，快照才能正常工作。|
 |服务器（64 位）|Windows Server 2019|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /><br />VMware 中的 Windows 虚拟机（保护在 VMware 中的 Windows 虚拟机上运行的工作负载）<br /><br />物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3 <br />非 Nano Server|卷、共享、文件夹、文件、系统状态/裸机、已删除重复数据的卷|
 |服务器（32 位和 64 位）|Windows Server 2016|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /><br />VMware 中的 Windows 虚拟机（保护在 VMware 中的 Windows 虚拟机上运行的工作负载）<br /><br />物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3、V2<br />非 Nano Server|卷、共享、文件夹、文件、系统状态/裸机、已删除重复数据的卷|
-|服务器（32 位和 64 位）|Windows Server 2012 R2 - Datacenter 和 Standard|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /> <br /> Azure Stack|V3、V2|卷、共享、文件夹、文件<br /><br />Azure 备份服务器必须至少在 Windows Server 2012 R2 上运行才能保护 Windows Server 2012 已删除重复数据的卷。|
+|服务器（32 位和 64 位）|Windows Server 2012 R2 – 数据中心版和标准版|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /> <br /> Azure Stack|V3、V2|卷、共享、文件夹、文件<br /><br />Azure 备份服务器必须至少在 Windows Server 2012 R2 上运行才能保护 Windows Server 2012 已删除重复数据的卷。|
 |服务器（32 位和 64 位）|Windows Server 2012 R2 - Datacenter 和 Standard|VMware 中的 Windows 虚拟机（保护在 VMware 中的 Windows 虚拟机上运行的工作负载）<br /> <br /> Azure Stack|V3、V2|卷、共享、文件夹、文件、系统状态/裸机<br /><br />Azure 备份服务器必须在 Windows Server 2012 或 2012 R2 上运行才能保护 Windows Server 2012 已删除重复数据的卷。|
 |服务器（32 位和 64 位）|Windows Server 2012/2012 SP1 - Datacenter 和 Standard|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3、V2|卷、共享、文件夹、文件、系统状态/裸机<br /><br />Azure 备份服务器必须至少在 Windows Server 2012 R2 上运行才能保护 Windows Server 2012 已删除重复数据的卷。|
 |服务器（32 位和 64 位）|Windows Server 2012/2012 SP1 - Datacenter 和 Standard|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /> <br /> Azure Stack|V3、V2|卷、共享、文件夹、文件<br /><br />Azure 备份服务器必须至少在 Windows Server 2012 R2 上运行才能保护 Windows Server 2012 已删除重复数据的卷。|
@@ -77,8 +77,8 @@ ms.locfileid: "98986881"
 |Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 MABS 保护代理|Windows Server 2008 R2 SP1 - Enterprise 和 Standard|物理服务器<br /><br />本地 Hyper-V 虚拟机|V3、V2|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：虚拟机、文件和文件夹的项目级恢复、卷、虚拟硬盘驱动器|
 |Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 MABS 保护代理|Windows Server 2008 SP2|物理服务器<br /><br />本地 Hyper-V 虚拟机|不支持|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：虚拟机、文件和文件夹的项目级恢复、卷、虚拟硬盘驱动器|
 |VMware VM|VMware vCenter/vSphere ESX/ESXi 许可版本 5.5/6.0/6.5 |物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMware 中的 Windows VM|V3、V2|群集共享卷 (CSV)、NFS 和 SAN 存储中的 VMware VM<br /> 文件和文件夹的项目级恢复仅适用于 Windows VM，不支持 VMware vApp。|
-|VMware VM|[VMware vSphere 许可版本 6.7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMware 中的 Windows VM|V3|群集共享卷 (CSV)、NFS 和 SAN 存储中的 VMware VM<br /> 文件和文件夹的项目级恢复仅适用于 Windows VM，不支持 VMware vApp。|
-|Linux|以 [Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) 或 [VMware](backup-azure-backup-server-vmware.md) 来宾身份运行的 Linux|物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMware 中的 Windows VM|V3、V2|Hyper-V 必须在 Windows Server 2012 R2 或 Windows Server 2016 上运行。 保护：整个虚拟机<br /><br />恢复：整个虚拟机 <br/><br/> 仅支持文件一致性快照。 <br/><br/> 有关支持的 Linux 分发版和版本的完整列表，请参阅 [Azure 认可的分发中的 Linux](../virtual-machines/linux/endorsed-distros.md) 一文。|
+|VMware VM|[VMware vSphere 许可版本 6.7 和 7.0](backup-azure-backup-server-vmware.md#vmware-vsphere-67-and-70) |物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMware 中的 Windows VM|V3|群集共享卷 (CSV)、NFS 和 SAN 存储中的 VMware VM<br /> 文件和文件夹的项目级恢复仅适用于 Windows VM，不支持 VMware vApp。|
+|Linux|以 [Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) 或 [VMware](backup-azure-backup-server-vmware.md) 来宾身份运行的 Linux|物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMware 中的 Windows VM|V3、V2|Hyper-V 必须在 Windows Server 2012 R2 或 Windows Server 2016 上运行。 保护：整个虚拟机<br /><br />恢复：整个虚拟机 <br/><br/> 仅支持文件一致的快照。 <br/><br/> 有关支持的 Linux 分发版和版本的完整列表，请参阅 [Azure 认可的分发中的 Linux](../virtual-machines/linux/endorsed-distros.md) 一文。|
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute 支持
 

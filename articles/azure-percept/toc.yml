@@ -80,6 +80,8 @@
           href: delete-voice-assistant-application.md
     - name: 更新 Azure Percept 设备
       items:
+        - name: 如何确定更新策略
+          href: how-to-determine-your-update-strategy.md
         - name: 设置无线更新
           href: how-to-set-up-over-the-air-updates.md
         - name: 识别更新包
@@ -120,6 +122,14 @@
           href: how-to-get-hardware-support.md
 - name: 参考
   items:
+    - name: 版本
+      items:
+        - name: OTA 更新的软件版本
+          href: software-releases-over-the-air-updates.md
+        - name: 针对通过 USB 更新的 Azure Percept DK 软件版本
+          href: software-releases-usb-cable-updates.md
+        - name: Azure Percept DK 软件发行说明
+          href: azure-percept-devkit-software-release-notes.md
     - name: Azure Percept 设备数据表
       items:
         - name: Azure Percept DK 数据表

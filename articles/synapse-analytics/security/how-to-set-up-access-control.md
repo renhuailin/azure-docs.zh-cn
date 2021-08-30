@@ -1,37 +1,38 @@
 ---
 title: 如何为 Synapse 工作区设置访问控制
-description: 本文介绍如何使用 Azure 角色、Synapse 角色、SQL 权限和 Git 权限控制对 Synapse 工作区的访问。
+description: 本文将介绍如何使用 Azure 角色、Synapse 角色、SQL 权限和 Git 权限控制对 Azure Synapse 工作区的访问。
 services: synapse-analytics
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
-ms.date: 12/03/2020
+ms.date: 8/05/2021
 ms.author: ronytho
-ms.reviewer: jrasnick
-ms.openlocfilehash: 91eaf655a3259cff31767353fb2c2b7fcd787d63
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.reviewer: jrasnick, wiassaf
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 6a604c4e2a3b1f12fa5d296558023be9bc31cd96
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108122954"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862242"
 ---
-# <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>如何为 Synapse 工作区设置访问控制 
+# <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>如何为 Azure Synapse 工作区设置访问控制 
 
-本文介绍如何使用 Azure 角色、Synapse 角色、SQL 权限和 Git 权限控制对 Synapse 工作区的访问。   
+本文介绍如何使用 Azure 角色、Azure Synapse 角色、SQL 权限和 Git 权限控制对 Microsoft Azure Synapse 工作区的访问。   
 
-在本指南中，你将设置一个工作区，并配置一个适用于许多 Synapse 项目的基本访问控制系统。  本指南还介绍了更高级的选项，允许你根据需要进行更精细的控制。  
+在本指南中，你将设置一个工作区，并配置一个适用于许多 Azure Synapse 项目的基本访问控制系统。  本指南还介绍了更高级的选项，允许你根据需要进行更精细的控制。  
 
-你可以使用与组织中的角色相对应的安全组来简化 Synapse 访问控制。  只需从安全组添加和删除用户即可管理访问权限。
+你可以使用与组织中的角色相对应的安全组来简化 Azure Synapse 访问控制。  只需从安全组添加和删除用户即可管理访问权限。
 
-在开始本演练之前，请阅读 [Synapse 访问控制概述](./synapse-workspace-access-control-overview.md)，自行熟悉 Synapse 所使用的访问控制机制。   
+在开始本演练之前，请阅读 [Azure Synapse 访问控制概述](./synapse-workspace-access-control-overview.md)，熟悉 Azure Synapse Analytics 使用的访问控制机制。   
 
 ## <a name="access-control-mechanisms"></a>访问控制机制
 
 > [!NOTE]
 > 本指南中采用的方法是创建多个安全组，然后将角色分配给这些组。 设置组后，只需管理安全组中的成员身份即可控制对工作区的访问。
 
-为了保护 Synapse 工作区，你需要遵循一种模式来配置以下项：
+为了保护 Azure Synapse 工作区，你需要遵循一种模式来配置以下项：
 
 - **安全组**，用于对具有相似访问要求的用户分组。
 - **Azure 角色**，用于控制谁可以创建和管理 SQL 池、Apache Spark 池和集成运行时，以及访问 ADLS Gen2 存储。
@@ -39,13 +40,13 @@ ms.locfileid: "108122954"
 - **SQL 权限**，用于控制对 SQL 池的管理和数据平面访问。 
 - **Git 权限**，用于在为工作区配置 Git-support 的情况下控制谁可以访问源代码管理中的代码项目 
  
-## <a name="steps-to-secure-a-synapse-workspace"></a>保护 Synapse 工作区的步骤
+## <a name="steps-to-secure-an-azure-synapse-workspace"></a>保护 Azure Synapse 工作区的步骤
 
 本文档使用标准名称来简化说明。 请将它们替换为你选择的名称。
 
 |设置 | 标准名称 | 说明 |
 | :------ | :-------------- | :---------- |
-| **Synapse 工作区** | `workspace1` |  Synapse 工作区的名称。 |
+| **Synapse 工作区** | `workspace1` |  Azure Synapse 工作区的名称。 |
 | **ADLSGEN2 帐户** | `storage1` | 用于工作区的 ADLS 帐户。 |
 | **容器** | `container1` | STG1 中的容器，由工作区默认使用。 |
 | **Active Directory 租户** | `contoso` | Active Directory 租户名称。|
@@ -54,7 +55,7 @@ ms.locfileid: "108122954"
 ## <a name="step-1-set-up-security-groups"></a>步骤 1：创建安全组
 
 >[!Note] 
->预览期间，建议创建映射到 Synapse 的“Synapse SQL 管理员”角色和“Synapse Apache Spark 管理员”角色的安全组。  由于引入了新的细化 Synapse RBAC 角色和范围，因此现在我们建议你使用这些新功能来控制对工作区的访问。  这些新角色和范围可提供更大的配置灵活性，并可让你认识到开发人员在创建分析应用程序时经常会混合使用 SQL 和 Spark。你可能需要向它们授予对特定资源（而不是整个工作区）的访问权限。 [详细了解](./synapse-workspace-synapse-rbac.md) Synapse RBAC。
+>预览期间，建议创建映射到 Azure Synapse“Synapse SQL 管理员”和“Synapse Apache Spark 管理员”角色的安全组 。  由于引入了新的细化 Synapse RBAC 角色和范围，因此现在我们建议你使用这些新功能来控制对工作区的访问。  这些新角色和范围可提供更大的配置灵活性，并可让你认识到开发人员在创建分析应用程序时经常会混合使用 SQL 和 Spark。你可能需要向它们授予对特定资源（而不是整个工作区）的访问权限。 [详细了解](./synapse-workspace-synapse-rbac.md) Synapse RBAC。
 
 为工作区创建以下安全组：
 
@@ -81,7 +82,7 @@ ms.locfileid: "108122954"
 
 ## <a name="step-2-prepare-your-adls-gen2-storage-account"></a>步骤 2：准备 ADLS Gen2 存储帐户
 
-Synapse 工作区将默认存储容器用于：
+Azure Synapse 工作区将默认存储容器用于：
   - 存储 Spark 表的备份数据文件
   - Spark 作业的执行日志
   - 管理你选择安装的库
@@ -90,23 +91,37 @@ Synapse 工作区将默认存储容器用于：
 
 - 用于工作区的 ADLS Gen2 帐户。 本文档将它称为 `storage1`。 `storage1` 被视为工作区的“主”存储帐户。
 - `workspace1` 中的容器，将由 Synapse 工作区默认使用。 本文档将它称为 `container1`。 
+ 
+- 选择“访问控制 (IAM)”。
 
-- 使用 Azure 门户，为安全组分配 `container1` 上的以下 Azure 角色 
+- 选择“添加” > “添加角色分配”，打开“添加角色分配”页面 。
 
-  - 将“存储 Blob 数据参与者”角色分配到 `workspace1_SynapseAdmins` 
-  - 将“存储 Blob 数据参与者”角色分配到 `workspace1_SynapseContributors`
-  - 将“存储 Blob 数据参与者”角色分配到 `workspace1_SynapseComputeOperators`
+- 分配以下角色。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+    
+    | 设置 | 值 |
+    | --- | --- |
+    | 角色 | 存储 Blob 数据参与者 |
+    | 将访问权限分配到 |SERVICEPRINCIPAL |
+    | 成员 |workspace1_SynapseAdmins、workspace1_SynapseContributors 和 workspace1_SynapseComputeOperators|
 
-## <a name="step-3-create-and-configure-your-synapse-workspace"></a>第 3 步：创建和配置 Synapse 工作区
+    ![Azure 门户中的“添加角色分配”页。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
-在 Azure 门户中，创建 Synapse 工作区：
+## <a name="step-3-create-and-configure-your-azure-synapse-workspace"></a>第 3 步：创建和配置 Azure Synapse 工作区
+
+在 Azure 门户中，创建 Azure Synapse 工作区：
 
 - 选择订阅
+
 - 选择或创建一个你具有 Azure“所有者”角色的资源组。
+
 - 将工作区命名为 `workspace1`
+
 - 选择“`storage1`”作为“存储帐户”
+
 - 选择“`container1`”作为要用作“文件系统”的容器。
+
 - 在 Synapse Studio 中打开 WS1
+
 - 导航到“管理” > “访问控制”，并在工作区范围内将 Synapse 角色分配给安全组，如下所示： 
   - 将“Synapse 管理员”角色分配给 `workspace1_SynapseAdministrators` 
   - 将“Synapse 参与者”角色分配给 `workspace1_SynapseContributors` 
@@ -114,13 +129,25 @@ Synapse 工作区将默认存储容器用于：
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>步骤 4：向工作区 MSI 授予对默认存储容器的访问权限
 
-为了运行管道和执行系统任务，Synapse 会要求工作区托管服务标识 (MSI) 访问默认 ADLS Gen2 帐户中的 `container1`。
+若要运行管道和执行系统任务，Azure Synapse 要求工作区托管服务标识 (MSI) 需要访问默认 ADLS Gen2 帐户中的 `container1`。 有关详细信息，请参阅 [Azure Synapse 工作区托管标识](synapse-workspace-managed-identity.md)。
 
 - 打开 Azure 门户
 - 找到存储帐户 `storage1`，然后找到 `container1`
-- 使用“访问控制(IAM)”，确保将“存储 Blob 数据参与者”角色分配给工作区 MSI
-  - 如果未分配它，则分配它。
-  - MSI 与工作区同名。 在本文中，它将为 `workspace1`。
+- 选择“访问控制 (IAM)”。
+- 选择“添加” > “添加角色分配”，打开“添加角色分配”页面 。
+- 分配以下角色。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+    
+    | 设置 | 值 |
+    | --- | --- |
+    | 角色 | 存储 Blob 参与者 |
+    | 将访问权限分配到 | MANAGEDIDENTITY |
+    | 成员 | 托管标识名称  |
+
+    > [!NOTE]
+    > 托管标识名称也是工作区名称。
+
+    ![Azure 门户中的“添加角色分配”页。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
+
 
 ## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>步骤 5：向 Synapse 管理员授予工作区中的“Azure 参与者”角色 
 
@@ -128,7 +155,17 @@ Synapse 工作区将默认存储容器用于：
 
 - 打开 Azure 门户
 - 找到工作区 `workspace1`
-- 将 `workspace1` 上的“Azure 参与者”角色分配给 `workspace1_SynapseAdministrators`。 
+- 选择“访问控制 (IAM)”。
+- 选择“添加” > “添加角色分配”，打开“添加角色分配”页面 。
+- 分配以下角色。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+    
+    | 设置 | 值 |
+    | --- | --- |
+    | 角色 | 参与者 |
+    | 将访问权限分配到 | SERVICEPRINCIPAL |
+    | 成员 | workspace1_SynapseAdministrators  |
+
+    ![Azure 门户中的“添加角色分配”页。](../../../includes/role-based-access-control/media/add-role-assignment-page.png) 
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>步骤 6：分配“SQL Active Directory 管理员”角色
 
@@ -147,7 +184,7 @@ Synapse 工作区将默认存储容器用于：
 默认情况下，被分配“Synapse 管理员”角色的所有用户也会被分配 SQL `db_owner` 角色（在无服务器 SQL 池“Built-in”及其所有数据库中）。
 
 对于其他用户和工作区 MSI，可以使用 SQL 权限来控制对 SQL 池的访问。  分配 SQL 权限要求在每个已创建的 SQL 数据库上运行 SQL 脚本。  下面三种情况需要你运行这些脚本：
-1. 向其他用户授予对无服务器 SQL 池“Built-in”及其数据库的访问权限
+1. 向其他用户授予对无服务器 SQL 池、“Built-in”及其数据库的访问权限
 2. 授予任何用户对专用池数据库的访问权限
 3. 向工作区 MSI 授予对 SQL 池数据库的访问权限，使那些需要 SQL 池访问权限的管道能够成功运行。
 
@@ -209,7 +246,7 @@ ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 
 ### <a name="step-72-dedicated-sql-pools"></a>步骤 7.2：专用 SQL 池
 
-若要授予对 **单个** 专用 SQL 池数据库的访问权限，请在 Synapse SQL 脚本编辑器中执行以下步骤：
+若要授予访问单个专用 SQL 池数据库的权限，请在 Azure Synapse SQL 脚本编辑器中执行以下步骤：
 
 1. 在数据库中创建用户，方法是：在使用“连接到”下拉列表选择的目标数据库上运行以下命令：
 
@@ -231,17 +268,17 @@ ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 
 创建用户后，请运行查询以验证无服务器 SQL 池是否可以查询存储帐户。
 
-### <a name="step-73-sql-access-control-for-synapse-pipeline-runs"></a>步骤 7.3：Synapse 管道运行的 SQL 访问控制
+### <a name="step-73-sql-access-control-for-azure-synapse-pipeline-runs"></a>步骤 7.3：Azure Synapse 管道运行的 SQL 访问控制
 
 ### <a name="workspace-managed-identity"></a>工作区托管标识
 
 > [!IMPORTANT]
 > 若要成功运行包含引用 SQL 池的数据集或活动的管道，需要向工作区标识授予对 SQL 池的访问权限。
 
-请针对每个 SQL 池运行以下命令，以允许工作区托管系统标识对 SQL 池数据库运行管道：  
+有关工作区托管标识的详细信息，请参阅 [Azure Synapse 工作区托管标识](synapse-workspace-managed-identity.md)。 请针对每个 SQL 池运行以下命令，以允许工作区托管系统标识对 SQL 池数据库运行管道：  
 
 >[!note]
->在下面的脚本中，对于专用 SQL 池数据库，databasename 与池名称相同。  对于无服务器 SQL 池“Built-in”中的数据库，databasename 是数据库的名称。
+>在下面脚本中，对于专用 SQL 池数据库，`<databasename>` 与池名称相同。  对于无服务器 SQL 池“Built-in”中的数据库，`<databasename>` 是数据库的名称。
 
 ```sql
 --Create a SQL user for the workspace MSI in database
@@ -265,15 +302,15 @@ DROP USER [<workspacename>];
 
 访问控制系统的初始配置已完成。
 
-若要管理访问权限，可以在设置的安全组中添加和删除用户。  尽管可以手动将用户分配到 Synapse 角色，但是如果你这样做，将会导致权限配置不一致。 相反，请只在安全组中添加或删除用户。
+若要管理访问权限，可以在设置的安全组中添加和删除用户。  尽管可以手动将用户分配到 Azure Synapse 角色，但是如果你这样做，将会导致权限配置不一致。 相反，请只在安全组中添加或删除用户。
 
 ## <a name="step-9-network-security"></a>步骤 9：网络安全
 
-这是对工作区进行保护的最后一个步骤，你应该使用以下方式确保网络访问安全：
-- [工作区防火墙](./synapse-workspace-ip-firewall.md)
-- [托管虚拟网络](./synapse-workspace-managed-vnet.md) 
-- [专用终结点](./synapse-workspace-managed-private-endpoints.md)
-- [专用链接](../../azure-sql/database/private-endpoint-overview.md)
+作为保护工作区的最后一步，应该使用[工作区防火墙](./synapse-workspace-ip-firewall.md)保护网络访问。
+
+- 无论是否使用[托管虚拟网络](./synapse-workspace-managed-vnet.md)，都可以从公共网络连接到工作区。 有关详细信息，请参阅[连接性设置](connectivity-settings.md)。
+- 通过启用[公用网络访问功能](connectivity-settings.md#public-network-access)或[工作区防火墙](./synapse-workspace-ip-firewall.md)，可以控制来自公用网络的访问。
+- 或者，可以使用[托管专用终结点](synapse-workspace-managed-private-endpoints.md)和[专用链接](../../azure-sql/database/private-endpoint-overview.md)来连接到工作区。 没有 [Azure Synapse Analytics 托管虚拟网络](synapse-workspace-managed-vnet.md)的 Azure Synapse 工作区无法通过托管专用终结点进行连接。
 
 ## <a name="step-10-completion"></a>步骤 10：完成
 
@@ -285,10 +322,11 @@ DROP USER [<workspacename>];
 
 对于更高级的开发方案（包括 CI/CD），为工作区启用 Git-support。  在 Git 模式下时，Git 权限将决定用户是否可以提交对其工作分支的更改。  只能从协作分支发布到服务。  考虑为需要在工作分支中开发和调试更新的开发人员创建安全组，但不需要将更改发布到实时服务。
 
-限制开发人员对特定资源的访问权限。  为只需访问特定资源的开发人员创建其他更细化的安全组。  为这些组分配适当的、权利范围为特定 Spark 池、集成运行时或凭据的 Synapse 角色。
+限制开发人员对特定资源的访问权限。  为只需访问特定资源的开发人员创建其他更细化的安全组。  为这些组分配适当的、权利范围为特定 Azure Spark 池、集成运行时或凭据的 Synapse 角色。
 
 限制操作员访问代码项目。  为需要监视 Synapse 计算资源的运行状态和查看日志但不需要访问代码或将更新发布到服务的操作员创建安全组。 将权力范围为特定 Spark 池和集成运行时的“计算操作员”角色分配给这些组。  
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[如何管理 Synapse RBAC 角色分配](./how-to-manage-synapse-rbac-role-assignments.md) 创建 [Synapse 工作区](../quickstart-create-workspace.md)
+ - 了解[如何管理 Azure Synapse RBAC 角色分配](./how-to-manage-synapse-rbac-role-assignments.md)
+ - 创建 [Synapse 工作区](../quickstart-create-workspace.md)

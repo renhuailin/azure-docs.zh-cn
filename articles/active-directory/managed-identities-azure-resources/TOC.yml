@@ -120,13 +120,15 @@
       items:
         - name: PowerShell
           href: how-to-assign-app-role-managed-identity-powershell.md
+    - name: 查看托管标识活动
+      href: how-to-view-managed-identity-activity.md
 - name: 参考
   items:
     - name: .NET
       href: /dotnet/api/overview/azure/identity-readme
     - name: Java
       href: /java/api/overview/azure/identity-readme
-    - name: Javascript
+    - name: JavaScript
       href: /javascript/api/overview/azure/identity-readme
     - name: Python
       href: /python/api/overview/azure/identity-readme

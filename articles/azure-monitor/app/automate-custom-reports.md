@@ -1,17 +1,17 @@
 ---
-title: 使用 Azure Application Insights 数据自动化自定义报表
-description: 使用 Azure Application Insights 数据自动化自定义每日/每周/每月报表
+title: 使用 Application Insights 数据自动化自定义报表
+description: 使用 Azure Monitor Application Insights 数据自动化自定义每日/每周/每月报表
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 39970227fc94d3073688b23cc530462f368a6ecf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1579874f77a41abbfef6a9ba44f997d1ec06bb76
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100590043"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195728"
 ---
-# <a name="automate-custom-reports-with-azure-application-insights-data"></a>使用 Azure Application Insights 数据自动化自定义报表
+# <a name="automate-custom-reports-with-application-insights-data"></a>使用 Application Insights 数据自动化自定义报表
 
 定期报表有助于团队了解其业务关键型服务的状况。 开发人员、DevOps/SRE 团队及其管理人员可以通过自动化报表获得可靠的见解，而无需每个人都登录到门户，从而提高工作效率。 此类报表还有助于识别可能不会触发任何警报规则的延迟、负载或故障率的逐渐增加趋势。
 

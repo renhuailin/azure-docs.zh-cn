@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Purview 文档
-summary: 了解如何使用 Azure Purview 来让组织能够查找、了解、治理、使用数据源。
+summary: 了解如何使用 Azure Purview 来让组织能够查找、了解、治理和使用数据源。 教程、REST API 参考和其他文档介绍了如何规划和配置数据存储库 - 你可在此存储库中发现可用数据源和管理适当使用情况。
 metadata:
   title: Azure Purview 文档
   description: 了解如何使用 Azure Purview - 组织可通过它来查找、了解和使用数据源。 教程、REST API 参考和其他文档介绍了如何规划和配置数据存储库 - 数据使用者可在此存储库中发现可用数据源，学习主题专家分享的知识。
@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: whhender
   ms.author: whhender
-  ms.date: 08/19/2021
-  ms.openlocfilehash: e2949948c7635c241ce52aac42860af92175cdd3
-  ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+  ms.date: 08/26/2021
+  ms.openlocfilehash: fbe52bbe6bc7835dc80251f7dffcd31c7a999d52
+  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/20/2021
-  ms.locfileid: "122515570"
+  ms.lasthandoff: 08/26/2021
+  ms.locfileid: "122969725"
 landingContent:
 - title: 关于 Azure Purview
   linkLists:
@@ -24,26 +24,30 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
-    - text: 使用 Purview Studio
-      url: use-purview-studio.md
     - text: 部署最佳做法
       url: deployment-best-practices.md
-    - text: Purview 访问控制
+    - text: 使用 Purview Studio
+      url: use-purview-studio.md
+    - text: 了解 Purview 访问控制
       url: catalog-permissions.md
-    - text: 支持的数据源和文件类型
-      url: sources-and-scans.md
-    - text: 数据世系
-      url: concept-data-lineage.md
+    - text: 了解弹性数据映射
+      url: catalog-permissions.md
+    - text: 扫描和引入源
+      url: concept-scans-and-ingestion.md
 - title: 入门
   linkLists:
   - linkListType: quickstart
     links:
     - text: 创建 Purview 帐户 - 门户
       url: create-catalog-portal.md
-    - text: 创建 Purview 帐户 - PowerShell/CLI
-      url: create-catalog-powershell.md
-    - text: 创建集合
+    - text: 创建集合 - 门户
       url: quickstart-create-collection.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理访问权限和集合
+      url: how-to-create-and-manage-collections.md
+    - text: 连接到源
+      url: manage-credentials.md
   - linkListType: tutorial
     links:
     - text: 运行初学者工具包并扫描数据
@@ -56,6 +60,8 @@ landingContent:
       url: tutorial-schemas-and-classifications.md
     - text: 创建术语表术语
       url: tutorial-import-create-glossary-terms.md
+    - text: 使用 REST API
+      url: tutorial-using-rest-apis.md
 - title: 注册并扫描 Azure 数据源
   linkLists:
   - linkListType: how-to-guide
@@ -70,29 +76,15 @@ landingContent:
       url: register-scan-synapse-workspace.md
     - text: 扫描 Power BI 租户
       url: register-scan-power-bi-tenant.md
-    - text: 扫描 Azure 专用 SQL 池（以前称为 SQL DW）
-      url: register-scan-azure-synapse-analytics.md
     - text: 扫描 Azure Blob 存储
       url: register-scan-azure-blob-storage-source.md
+    - text: 对连接进行故障排除
+      url: troubleshoot-connections.md
   - linkListType: tutorial
     links:
     - text: 大规模载入 Azure 源
       url: tutorial-data-sources-readiness.md
-- title: 发现数据
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: 浏览和世系
-      url: tutorial-browse-and-view-lineage.md
-  - linkListType: how-to-guide
-    links:
-    - text: 使用数据世系功能
-      url: catalog-lineage-user-guide.md
-    - text: 按资产类型进行浏览
-      url: how-to-browse-catalog.md
-    - text: 搜索资产、术语、注释和联系人
-      url: how-to-search-catalog.md
-- title: 策展数据
+- title: 对数据分类
   linkLists:
   - linkListType: tutorial
     links:
@@ -102,12 +94,30 @@ landingContent:
       url: tutorial-import-create-glossary-terms.md
   - linkListType: how-to-guide
     links:
+    - text: 应用敏感度标签
+      url: create-sensitivity-label.md
     - text: 创建、编辑和删除自定义分类和规则
       url: create-a-custom-classification-and-classification-rule.md
     - text: 创建、导入和导出术语表
       url: how-to-create-import-export-glossary.md
     - text: 批量编辑资产
       url: how-to-bulk-edit-assets.md
+- title: 发现数据
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 浏览和世系
+      url: tutorial-browse-and-view-lineage.md
+  - linkListType: how-to-guide
+    links:
+    - text: 连接到 Azure 数据工厂
+      url: how-to-link-azure-data-factory.md
+    - text: 使用数据世系功能
+      url: catalog-lineage-user-guide.md
+    - text: 按资产类型进行浏览
+      url: how-to-browse-catalog.md
+    - text: 搜索资产、术语、注释和联系人
+      url: how-to-search-catalog.md
 - title: 扫描非 Azure 数据源
   linkLists:
   - linkListType: how-to-guide
@@ -122,7 +132,7 @@ landingContent:
       url: register-scan-oracle-source.md
     - text: 扫描 Hive 元存储数据库
       url: register-scan-hive-metastore-source.md
-- title: 了解数据资产
+- title: 了解数据
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -134,3 +144,13 @@ landingContent:
       url: classification-insights.md
     - text: 查看术语表见解
       url: glossary-insights.md
+- title: 保护网络
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 对 Purview 使用专用终结点
+      url: catalog-private-link.md
+    - text: 网络配置
+      url: catalog-private-link-name-resolution.md
+    - text: 连接到专用网络
+      url: manage-integration-runtimes.md

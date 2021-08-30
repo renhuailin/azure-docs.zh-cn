@@ -7,13 +7,13 @@ author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 08/23/2021
-ms.openlocfilehash: 38e1d89a6934c603fa15c4b50e2309c57dc28622
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.date: 02/02/2021
+ms.openlocfilehash: 30e87110ae7124141eaeb18fafa77bcef1d59201
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771806"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726912"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>自动发布持续集成和交付
 
@@ -79,10 +79,10 @@ ms.locfileid: "122771806"
 
 ### <a name="export-arm-template"></a>导出 ARM 模板
 
-运行 `npm run build export <rootFolder> <factoryId> [outputFolder]` 以使用给定文件夹的资源导出 ARM 模板。 此命令还在生成 ARM 模板之前运行验证检查。 下面是一个示例：
+运行 `npm run start export <rootFolder> <factoryId> [outputFolder]` 以使用给定文件夹的资源导出 ARM 模板。 此命令还在生成 ARM 模板之前运行验证检查。 下面是一个示例：
 
 ```dos
-npm run build export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory ArmTemplateOutput
+npm run start export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory ArmTemplateOutput
 ```
 
 - `RootFolder` 是表示数据工厂资源所在位置的必填字段。
@@ -94,10 +94,10 @@ npm run build export C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxx
 
 ### <a name="validate"></a>验证
 
-运行 `npm run build validate <rootFolder> <factoryId>` 以验证给定文件夹的所有资源。 下面是一个示例：
+运行 `npm run start validate <rootFolder> <factoryId>` 以验证给定文件夹的所有资源。 下面是一个示例：
 
 ```dos
-npm run build validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory
+npm run start validate C:\DataFactories\DevDataFactory /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/DevDataFactory
 ```
 
 - `RootFolder` 是表示数据工厂资源所在位置的必填字段。

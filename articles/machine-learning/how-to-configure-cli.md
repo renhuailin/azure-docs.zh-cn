@@ -10,12 +10,13 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 05/25/2021
 ms.reviewer: laobri
-ms.openlocfilehash: e93985b6583f164e1ea497f5d8cad7352b60f556
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.custom: devx-track-azurecli, devplatv2
+ms.openlocfilehash: 53d7b42426919ec5b91821ac67fbde940972494a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755548"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745228"
 ---
 # <a name="install-set-up-and-use-the-20-cli-preview"></a>安装、设置和使用 2.0 CLI（预览版）
 
@@ -25,7 +26,7 @@ ms.locfileid: "111755548"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+- 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 - 若要从本地环境使用本文档中的 CLI 命令，需要使用 [Azure CLI](/cli/azure/install-azure-cli)。
 
     > [!TIP]
@@ -60,6 +61,14 @@ az version
 可将扩展升级到最新版本：
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_ml_update":::
+
+### <a name="installation-on-linux"></a>在 Linux 上安装
+
+如果使用的是 Linux，安装所需 CLI 版本和机器学习扩展的最快方法是：
+
+:::code language="bash" source="~/azureml-examples-main/cli/misc.sh" id="az_extension_install_linux":::
+
+有关详细信息，请参阅[安装适用于 Linux 的 Azure CLI](/cli/azure/install-azure-cli-linux)。
 
 ## <a name="set-up"></a>设置
 

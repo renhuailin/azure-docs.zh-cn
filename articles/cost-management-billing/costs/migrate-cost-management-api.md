@@ -3,17 +3,17 @@ title: 将 EA 迁移到 Microsoft 客户协议 API - Azure
 description: 本文帮助你了解将 Microsoft 企业协议 (EA) 迁移到 Microsoft 客户协议的影响。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 07/13/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 9e7d1d08a3d69337cc205bdaf4bf3afc8941dd77
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2d3bae2f6282a4e505e2d5aa9ce2cf3f52b80006
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750292"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762275"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>从企业协议迁移到 Microsoft 客户协议 API
 
@@ -42,7 +42,7 @@ ms.locfileid: "111750292"
 - 更新所有编程代码以[使用 Azure AD 身份验证](/rest/api/azure/#create-the-request)。
 - 更新所有编程代码，以将 EA API 调用替换为 MCA API 调用。
 - 更新错误处理，以使用新的错误代码。
-- 查看其他集成产品/服务，例如 Cloudyn 和 Power BI，以完成其他所需操作。
+- 查看其他集成产品/服务（例如 Power BI），以完成其他所需操作。
 
 ## <a name="ea-apis-replaced-with-mca-apis"></a>已替换为 MCA API 的 EA API
 
@@ -78,7 +78,6 @@ EA API 使用 API 密钥进行身份验证和授权。 MCA API 使用 Azure AD �
 
 | 目的 | 旧产品/服务 | 新产品/服务 |
 | --- | --- | --- |
-| Cloudyn | Cloudyn | [Azure 成本管理](https://azure.microsoft.com/services/cost-management/) |
 | Power BI | [Microsoft Consumption Insights](/power-bi/desktop-connect-azure-consumption-insights) 内容包和连接器 |  [Azure Consumption Insights 连接器](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>用于获取余额和额度的 API
@@ -515,18 +514,6 @@ Microsoft 客户协议中的 Azure 消耗服务价格对于 productOrderName 和
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationSummaries?api-version=2019-01-01` |
 
-
-
-## <a name="move-from-cloudyn-to-cost-management"></a>从 Cloudyn 转移到成本管理
-
-使用 Cloudyn 的组织应开始使用 [Azure 成本管理](https://azure.microsoft.com/services/cost-management/)来解决任何成本管理需求。 无需任何载入过程和经过 8 小时的延迟，即可在 Azure 门户中使用成本管理。 有关详细信息，请参阅[成本管理文档](../index.yml)。
-
-使用 Azure 成本管理可以：
-
-- 查看一段时间内的成本并将其与预定义的预算进行比较。 分析每日成本模式，以识别并阻止支出异常。 按标记、资源组、服务和位置细分成本。
-- 创建预算以针对用量和成本设置限制，并在即将达到重要阈值时收到通知。 使用操作组设置自动化，以触发自定义事件，并基于条款强制实施硬性限制。
-- 根据 Azure 顾问的建议优化成本和用量。 通过预留、缩小利用不足的虚拟机，以及删除未使用的资源以保持在预算范围内，找出采购优化措施。
-- 计划成本和用量数据导出，每日将一个 CSV 文件发布到存储帐户。 自动与外部系统集成，使计费数据保持同步和最新。
 
 ## <a name="power-bi-integration"></a>Power BI 集成
 

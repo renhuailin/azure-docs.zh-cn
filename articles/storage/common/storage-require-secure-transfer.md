@@ -6,30 +6,32 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 06/01/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7b62265d75aa7c7c09f1f6e55632dcbe98efc411
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c44336e41c173cffad28a52bed3c29ec13df497f
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128914"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112323153"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>需要安全传输以确保安全连接
 
 可以通过为存储帐户设置“需要安全传输”属性，将存储帐户配置为仅接受来自安全连接的请求。 要求安全传输时，来自不安全连接的任何请求都会被拒绝。 Microsoft 建议始终对所有存储帐户都要求采用安全传输。
 
-要求安全传输时，必须通过 HTTPS 调用 Azure 存储 REST API 操作。 通过 HTTP 发出的任何请求都会被拒绝。
+要求安全传输时，必须通过 HTTPS 调用 Azure 存储 REST API 操作。 通过 HTTP 发出的任何请求都会被拒绝。 默认情况下，创建存储帐户时，会启用“需要安全传输”属性。
 
-如果存储帐户需要安全传输，则在不加密的情况下通过 SMB 连接到 Azure 文件共享会失败。 不安全连接的示例包括通过 SMB 2.1、不加密的 SMB 3.0 或某些版本的 Linux SMB 客户端进行的连接。
+Azure Policy 提供内置策略，以确保存储帐户需要安全传输。 有关详细信息，请参阅 [Azure Policy 内置策略定义](../../governance/policy/samples/built-in-policies.md#storage)中的“存储”部分。
 
-默认情况下，创建存储帐户时，会启用“需要安全传输”属性。
+如果存储帐户需要安全传输，则在不加密的情况下通过 SMB 连接到 Azure 文件共享会失败。 不安全连接的示例包括在不加密的情况下通过 SMB 2.1 或 SMB 3.x 建立的连接。
 
 > [!NOTE]
-> 由于 Azure 存储对自定义域名不支持 HTTPS，因此使用自定义域名时不应用此选项。 不支持经典存储帐户。
+> 由于 Azure 存储对自定义域名不支持 HTTPS，因此使用自定义域名时不应用此选项。
+> 
+> 此安全传输设置不适用于 TCP。 在 Azure Blob 存储中使用 TCP（不安全）通过 NFS 3.0 协议支持进行连接会成功。  
 
 ## <a name="require-secure-transfer-in-the-azure-portal"></a>需要在 Azure 门户中进行安全传输
 

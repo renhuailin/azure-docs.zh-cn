@@ -8,12 +8,12 @@ ms.subservice: troubleshooting
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: a80e6fd1c220d626d4e18923bb95aa465f568a1e
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 29aff19ee900c8683249241725904e5509eced8b
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396949"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446488"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>对 Azure 数据工厂中的管道业务流程和触发器进行故障排除
 
@@ -115,7 +115,7 @@ Azure 数据工厂会评估所有叶级活动的结果。 仅当所有叶都成�
 
 * 按照[如何处理管道故障和错误](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)一文的说明实施活动级检查。
 * 按照[通过工厂进行查询](/rest/api/datafactory/pipelineruns/querybyfactory)一文的说明使用 Azure 逻辑应用来定期监视管道。
-* [以可视方式监视管道](./monitor-visually.md)
+* [以可视方式监视管道](monitor-visually.md)
 
 ### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>如何按固定的时间间隔监视管道失败
 
@@ -125,9 +125,9 @@ Azure 数据工厂会评估所有叶级活动的结果。 仅当所有叶都成�
 
 **分辨率**
 * 可以根据[按照工厂进行查询](/rest/api/datafactory/pipelineruns/querybyfactory)中所述，将 Azure 逻辑应用设置为每隔 5 分钟查询所有失败的管道。 然后，可将事件报告给票证系统。
-* 你可以重新运行管道和活动，如[此文](https://docs.microsoft.com/azure/data-factory/monitor-visually#rerun-pipelines-and-activities)所述。
-* 如果已取消活动，或者出现故障，可按照[在活动出现故障后重新运行](https://docs.microsoft.com/azure/data-factory/monitor-visually#rerun-from-failed-activity)来重新运行活动。
-* [以可视方式监视管道](./monitor-visually.md)
+* 你可以重新运行管道和活动，如[此文](monitor-visually.md#rerun-pipelines-and-activities)所述。
+* 如果已取消活动，或者出现故障，可按照[在活动出现故障后重新运行](monitor-visually.md#rerun-from-failed-activity)来重新运行活动。
+* [以可视方式监视管道](monitor-visually.md)
 
 ### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>提高并行度不会提高吞吐量
 
@@ -159,9 +159,10 @@ Azure 数据工厂会评估所有叶级活动的结果。 仅当所有叶都成�
  
 * 并发限制：如果管道具有并发策略，请确认当前没有旧管道运行。 
 * 监视限制：请转到 ADF 创作画布，选择你的管道，并确定是否已为其分配了并发属性。 如果已分配，请转到“监视”视图，确保过去 45 天内没有任何正在进行的事项。 如果有某个事项正在进行，可以取消它，然后新的管道运行应当会启动。
-* 暂时性问题：有可能是暂时性网络问题、凭据故障、服务中断等影响了你的运行。如果发生这种情况，Azure 数据工厂会通过一个内部恢复过程来应对，它会监视所有运行，并在发现问题时启动这些运行。 你可以重新运行管道和活动，如[此文](https://docs.microsoft.com/azure/data-factory/monitor-visually#rerun-pipelines-and-activities)所述。 如果已取消活动，或者出现故障，可按照[在活动出现故障后重新运行](https://docs.microsoft.com/azure/data-factory/monitor-visually#rerun-from-failed-activity)来重新运行活动。
-* 
-* 此过程每隔 1 小时发生一次，因此，如果运行停滞超过 1 小时，请创建支持案例。
+
+* 暂时性问题：有可能是暂时性网络问题、凭据故障、服务中断等影响了你的运行。如果发生这种情况，Azure 数据工厂会通过一个内部恢复过程来应对，它会监视所有运行，并在发现问题时启动这些运行。 你可以重新运行管道和活动，如[此文](https://docs.microsoft.com/azure/data-factory/monitor-visually#rerun-pipelines-and-activities)所述。 如果已取消活动，或者出现故障，可按照[在活动出现故障后重新运行](https://docs.microsoft.com/azure/data-factory/monitor-visually#rerun-from-failed-activity)来重新运行活动。 此过程每隔 1 小时发生一次，因此，如果运行停滞超过 1 小时，请创建支持案例。
+
+
  
 ### <a name="longer-start-up-times-for-activities-in-adf-copy-and-data-flow"></a>ADF 复制和数据流中活动的启动时间很长
 
@@ -171,8 +172,8 @@ Azure 数据工厂会评估所有叶级活动的结果。 仅当所有叶都成�
 
 **分辨率**
 
-* 如果每个复制活动最多需要 2 分钟才能开始，而问题主要出在 VNet 联接（相较于Azure IR），这可能是复制性能问题。 若要查看故障排除步骤，请参阅[复制性能改进](./copy-activity-performance-troubleshooting.md)。
-* 可以使用“生存时间”功能来减少数据流活动的群集启动时间。 请查看[数据流集成运行时](./control-flow-execute-data-flow-activity.md#data-flow-integration-runtime)。
+* 如果每个复制活动最多需要 2 分钟才能开始，而问题主要出在 VNet 联接（相较于Azure IR），这可能是复制性能问题。 若要查看故障排除步骤，请参阅[复制性能改进](copy-activity-performance-troubleshooting.md)。
+* 可以使用“生存时间”功能来减少数据流活动的群集启动时间。 请查看[数据流集成运行时](control-flow-execute-data-flow-activity.md#data-flow-integration-runtime)。
 
  ### <a name="hitting-capacity-issues-in-shirself-hosted-integration-runtime"></a>遇到 SHIR（自承载 Integration Runtime）的容量问题
  
@@ -182,7 +183,7 @@ Azure 数据工厂会评估所有叶级活动的结果。 仅当所有叶都成�
 
 **分辨率**
 
-* 如果遇到 SHIR 的容量问题，请升级 VM 以增加节点来平衡活动。 如果收到有关自承载 IR 一般性故障或错误、自承载 IR 升级或自承载 IR 连接问题的错误消息（可能会生成长队列），请参阅[排查自承载集成运行时问题](./self-hosted-integration-runtime-troubleshoot-guide.md)。
+* 如果遇到 SHIR 的容量问题，请升级 VM 以增加节点来平衡活动。 如果收到有关自承载 IR 一般性故障或错误、自承载 IR 升级或自承载 IR 连接问题的错误消息（可能会生成长队列），请参阅[排查自承载集成运行时问题](self-hosted-integration-runtime-troubleshoot-guide.md)。
 
 ### <a name="error-messages-due-to-long-queues-for-adf-copy-and-data-flow"></a>由于 ADF 复制和数据流队列较长而出现错误消息
 
@@ -191,10 +192,10 @@ Azure 数据工厂会评估所有叶级活动的结果。 仅当所有叶都成�
 由于各种原因，可能会出现与长队列相关的错误消息。 
 
 **分辨率**
-* 如果通过连接器收到了来自任何源或目标的错误消息（可能会生成长队列），请参阅[连接器故障排除指南](./connector-troubleshoot-guide.md)
-* 如果收到有关映射数据流的错误消息（可能会生成长队列），请参阅[数据流故障排除指南](./data-flow-troubleshoot-guide.md)。
-* 如果收到有关 Databricks、自定义活动或 HDI 等其他活动的错误消息（可能会生成长队列），请参阅[活动故障排除指南](./data-factory-troubleshoot-guide.md)
-* 如果收到有关运行 SSIS 包（可能会生成长队列）的错误消息，请转到 [Azure-SSIS 包执行故障排除指南](./ssis-integration-runtime-ssis-activity-faq.yml)和 [Integration Runtime 管理故障排除指南](./ssis-integration-runtime-management-troubleshoot.md)。
+* 如果通过连接器收到了来自任何源或目标的错误消息（可能会生成长队列），请参阅[连接器故障排除指南](connector-troubleshoot-guide.md)
+* 如果收到有关映射数据流的错误消息（可能会生成长队列），请参阅[数据流故障排除指南](data-flow-troubleshoot-guide.md)。
+* 如果收到有关 Databricks、自定义活动或 HDI 等其他活动的错误消息（可能会生成长队列），请参阅[活动故障排除指南](data-factory-troubleshoot-guide.md)
+* 如果收到有关运行 SSIS 包（可能会生成长队列）的错误消息，请转到 [Azure-SSIS 包执行故障排除指南](ssis-integration-runtime-ssis-activity-faq.yml)和 [Integration Runtime 管理故障排除指南](ssis-integration-runtime-management-troubleshoot.md)。
 
 ### <a name="error-message---codebadrequest-messagenull"></a>错误消息 - "code":"BadRequest", "message":"null"
 
@@ -222,7 +223,7 @@ Azure 数据工厂会评估所有叶级活动的结果。 仅当所有叶都成�
 
 你更改了协作分支以删除存储事件触发器。 你在尝试发布时收到“`Trigger deactivation error`”消息。
 
-**分辨率**
+**解决方法**
 
 这是由于锁定了用于事件触发器的存储帐户。 解锁帐户。
 
@@ -253,7 +254,7 @@ Azure 数据工厂会评估所有叶级活动的结果。 仅当所有叶都成�
 
 你尚未优化映射数据流。
 
-**分辨率**
+**解决方法**
 
 * 处理大量的数据和转换时，请使用内存优化计算。
 * 减小批大小，以防每项活动都出现问题。

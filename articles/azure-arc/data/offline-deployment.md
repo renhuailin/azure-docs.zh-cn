@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5fa0b6ca41349d20614a64006536e78d8ee71844
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e81ccc8ef133cdf7c454a7a50610a1bfdf2be442
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97955359"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113731263"
 ---
 # <a name="offline-deployment-overview"></a>脱机部署概述
 

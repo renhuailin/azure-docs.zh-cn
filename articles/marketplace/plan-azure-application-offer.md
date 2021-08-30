@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: bd0e89e1967842e8167c3da1fc3d2a716a5f7bd6
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: c8faefa8f1793275e4c93bf772e89ebf852b33d4
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633775"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112283440"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>为商业市场计划 Azure 应用程序产品/服务
 
@@ -95,7 +95,7 @@ ms.locfileid: "122633775"
 
 ## <a name="categories-and-subcategories"></a>类别和子类别
 
-你可以选择至少一个且最多两个类别，用于将产品/服务分组到适当的商业市场搜索区域中。 每个主类别和辅助类别最多选择两个子类别。 有关类别和子类别的完整列表，请参阅[产品/服务列表最佳做法](marketplace-categories-industries.md#categories)。
+你可以选择至少一个且最多两个类别，用于将产品/服务分组到适当的商业市场搜索区域中。 每个主类别和辅助类别最多选择两个子类别。 有关类别和子类别的完整列表，请参阅[产品/服务列表最佳做法](gtm-offer-listing-best-practices.md#categories)。
 
 ## <a name="legal-contracts"></a>法律协定
 
@@ -120,7 +120,7 @@ ms.locfileid: "122633775"
 4. 使用条款
 5. 隐私策略地址（链接）
 6. 产品名称
-7. 总结
+7. 摘要
 8. 说明
 9. 屏幕截图/视频
 

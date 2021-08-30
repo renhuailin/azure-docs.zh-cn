@@ -134,7 +134,7 @@
           href: structured-app-log.md
         - name: New Relic Java 进程内代理
           href: how-to-new-relic-monitor.md
-        - name: Azure 活动日志和 Azure 服务运行状况
+        - name: 监视应用生命周期事件
           href: monitor-app-lifecycle-events.md
     - name: 网络
       items:

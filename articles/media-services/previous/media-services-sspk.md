@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: 5a0dd1c0e19d008d729b2c68d8fcae8ac17223e5
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: db297b2c5e07b812d946241d03ca94e92cb84631
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749194"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271632"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权 Microsoft&reg; 平滑流式处理客户端移植工具包
 
@@ -96,12 +96,14 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * ZTE Corporation
 
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft 平滑流式处理客户端最终产品协议受证人
+* Advanced Digital Broadcast SA
 * AmTRAN Technology Co., Ltd 
 * Arcadyan Technology Corporation
 * Arcelik A.S
 * Compal Electronics, Inc.
 * Enseo, LLC
 * EXPRESS LUCK TECHNOLOGY LIMITED
+* FAIRWIT HONGKONG CO., LIMITED
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
 * Hisense Broadband Multimedia Technologies Co.,Ltd.
@@ -109,12 +111,12 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * Hisense Visual Technology Co., Ltd
 * HKC Corporation Limited
 * Hong Kong Konka Ltd
-* Innolux Corporation
 * Jinpin Electrical Company Ltd.Zhuhai.S.E.Z
 * KAONMEDIA CO., Ltd.
 * KDDI Corporation
 * K-Tronics (Suzhou) Technology Co., Ltd.
 * LG Electronics, Inc.
+* 自由全球技术服务 BV
 * Mega Fame Electronics Co. Limited
 * MINGCAI NEW CENTURY (HK) CO., LIMITED
 * MIRC Electronics Limited
@@ -122,6 +124,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
 * Panasonic Corporation
 * Qingdao Haier Optronics Co., Ltd.
+* SAGEMCOM BROADBAND SAS
 * Sharp Consumer Electronics Poland Sp. z o.o.
 * Shenzhen ATEKO PHOTO Electricity Co.,Ltd.
 * Shenzhen Chuangwei-RGB Electronics Co.,Ltd.
@@ -129,15 +132,18 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * Shenzhen KTC Technology Co., Ltd. 
 * Shenzhen Maxmade Technology Co., Ltd
 * Shenzhen MTC Co., Ltd
+* SHENZHEN QIYUE OPTRONICS CO.,LTD
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
 * SKARDIN INDUSTRIAL CORP
 * Sky CP Ltd
 * SMARDTV GLOBAL SAS
+* Sony Corporation
 * SoftAtHome
 * Technicolor Delivery Technologies, SAS
 * Top Victory Investments, Ltd.
 * Vizio, Inc.
+* Walton Hi-Tech Industries Ltd.
 * ZTE CORPORATION
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

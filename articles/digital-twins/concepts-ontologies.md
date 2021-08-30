@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 了解特定域中用于建模的 DTDL 行业 ontology
 author: baanders
 ms.author: baanders
-ms.date: 2/12/2021
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 17411f3c0a12e544d3204b2194e53d9565b164a9
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: d87f6a7a536f4dc9d15d87fe141f14760cab8aaa
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061895"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253753"
 ---
 # <a name="what-is-an-ontology"></a>什么是 ontology？ 
 
@@ -42,9 +42,9 @@ Ontology 为数字孪生解决方案提供了良好的起点。 它们包含一�
 
 | 策略 | 说明 | 资源 |
 | --- | --- | --- |
-| **采用** | 你可以使用开源 DTDL ontology 启动自己的解决方案，这种 ontology 基于广泛采用的行业标准构建。 可以使用现成的模型集，也可以自行添加扩展，形成定制解决方案。 | [概念：&nbsp;采用&nbsp;行业&nbsp;标准 ontology](concepts-ontologies-adopt.md)<br><br>[概念：&nbsp;扩展 &nbsp;ontology](concepts-ontologies-extend.md) |
-| **转换** | 如果目前已有以其他标准格式表示的模型，则可以将它们转换为 DTDL，以便将它们用于 Azure 数字孪生。 | [概念：&nbsp;转换 &nbsp;ontology](concepts-ontologies-convert.md)<br><br>[概念：&nbsp;扩展 &nbsp;ontology](concepts-ontologies-extend.md) |
-| **作者** | 你随时都可以使用任何适用的行业标准作为灵感，从头开发自己的自定义 DTDL 模型。 | [概念：DTDL 模型](concepts-models.md) |
+| **采用** | 你可以使用开源 DTDL ontology 启动自己的解决方案，这种 ontology 基于广泛采用的行业标准构建。 可以使用现成的模型集，也可以自行添加扩展，形成定制解决方案。 | [采用&nbsp;行业&nbsp;标准本体](concepts-ontologies-adopt.md)<br><br>[扩展&nbsp;本体](concepts-ontologies-extend.md) |
+| **转换** | 如果目前已有以其他标准格式表示的模型，则可以将它们转换为 DTDL，以便将它们用于 Azure 数字孪生。 | [转换&nbsp;本体](concepts-ontologies-convert.md)<br><br>[扩展&nbsp;本体](concepts-ontologies-extend.md) |
+| **作者** | 你随时都可以使用任何适用的行业标准作为灵感，从头开发自己的自定义 DTDL 模型。 | [DTDL 模型](concepts-models.md) |
 
 ### <a name="using-ontology-strategies-in-a-model-development-path"></a>在模型开发路径中使用 ontology 策略
 
@@ -64,8 +64,8 @@ Ontology 为数字孪生解决方案提供了良好的起点。 它们包含一�
 ## <a name="next-steps"></a>后续步骤
 
 阅读有关采用、转换和创作 ontology 策略的详细信息：
-* [概念：采用行业标准 ontology](concepts-ontologies-adopt.md)
-* [概念：转换 ontology](concepts-ontologies-convert.md)
-* [如何：管理 DTDL 模型](how-to-manage-model.md)
+* [采用行业标准 ontology](concepts-ontologies-adopt.md)
+* [转换 ontology](concepts-ontologies-convert.md)
+* [管理 DTDL 模型](how-to-manage-model.md)
 
-或者，了解如何使用模型来创建数字孪生：[概念：数字孪生和孪生关系图](concepts-twins-graph.md)。
+或者，了解如何使用模型来创建数字孪生体：[数字孪生体和孪生体关系图](concepts-twins-graph.md)。

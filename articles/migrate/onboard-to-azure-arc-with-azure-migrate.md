@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/27/2021
-ms.openlocfilehash: 09c27d77c80b7c9178fbbe9f7c5e01b3bc67c567
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 675c90218f456fc0f238fcf3b1fb93d2e5a7bc44
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969046"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296305"
 ---
 # <a name="onboard-on-premises-servers-in-vmware-virtual-environment-to-azure-arc"></a>将 VMware 虚拟环境中的本地服务器加入 Azure Arc   
 
@@ -21,19 +21,22 @@ ms.locfileid: "111969046"
 
 ## <a name="before-you-get-started"></a>准备工作
 
-- [查看要求](/azure/migrate/tutorial-discover-vmware#prerequisites)，使用 Azure Migrate 发现和评估工具来发现在 VMware 环境中运行的服务器。  
-- 准备 [VMware vCenter](/azure/migrate/tutorial-discover-vmware#prepare-vmware) 以供使用，查看有关执行软件清单的 [VMware 要求](migrate-support-matrix-vmware.md#vmware-requirements)。 软件清单必须是完整的，这样才能开始将已发现的服务器加入 Azure Arc。   
-- 在服务器上启动软件清单之前，请查看[应用程序发现要求](migrate-support-matrix-vmware.md#application-discovery-requirements)。 必须在 Windows 服务器上安装 PowerShell 3.0 或更高版本。 
-- 验证端口访问要求以允许远程连接到已发现服务器的清单。 
-    - Windows：WinRM 端口 5985 (HTTP) 上的入站连接。 <br/>
-    - Linux：端口 22 (TCP) 上的入站连接。 
-- 请务必验证 [Azure Arc 的先决条件](/azure/azure-arc/servers/agent-overview#prerequisites)，并查看以下注意事项：
+- [查看要求](./tutorial-discover-vmware.md#prerequisites)，使用 Azure Migrate 发现和评估工具来发现在 VMware 环境中运行的服务器。  
+- 准备 [VMware vCenter](./tutorial-discover-vmware.md#prepare-vmware) 以供使用，查看有关执行软件清单的 [VMware 要求](migrate-support-matrix-vmware.md#vmware-requirements)。 软件清单必须是完整的，这样才能开始将已发现的服务器加入 Azure Arc。   
+- 在服务器上启动软件清单之前，请查看[应用程序发现要求](migrate-support-matrix-vmware.md#software-inventory-requirements)。 必须在 Windows 服务器上安装 PowerShell 3.0 或更高版本。 
+- 验证先决条件，以允许远程连接到已发现服务器的清单，以便将它们加入 Azure Arc。 
+    1. 允许到已发现服务器的入站远程连接 
+        - 对于 Windows：WinRM 端口 5985 (HTTP) 上的入站连接。 在所有目标 Windows 服务器上，运行“winrm qc”命令，以启用本地计算机上的 WS-Management 协议。 
+        - 对于 Linux：在所有目标 Linux 服务器上，允许端口 22 上的入站连接 (SSH)。
+        - 也可以将远程计算机（发现的服务器）的 IP 地址添加到设备上的 WinRM TrustedHosts 列表。 
+    2. Azure Migrate 设备应具有到目标服务器的网络视线。 
+- 请务必验证 [Azure Arc 的先决条件](../azure-arc/servers/agent-overview.md#prerequisites)，并查看以下注意事项：
     - 完成 vCenter Server 发现和软件清单后，才能开始加入到 Azure Arc。 软件清单打开后最多 6 小时就会完成。
-    -  在 Arc 加入过程中，将在已发现的服务器上安装 [Azure Arc Hybrid Connected Machine 代理](/azure/azure-arc/servers/learn/quick-enable-hybrid-vm)。 请务必提供在服务器上具有管理员权限的凭据来安装和配置代理。 在 Linux 上提供根帐户；在 Windows 上，提供“本地管理员”组中的帐户。 
-    - 验证服务器是否正在运行[受支持的操作系统](/azure/azure-arc/servers/agent-overview#supported-operating-systems)。
-    - 确保 Azure 帐户已被分配了[所需的 Azure 角色](/azure/azure-arc/servers/agent-overview#required-permissions)。
-    - 如果已发现的服务器通过防火墙或代理服务器进行连接来通过 Internet 通信，请确保[所需的 RUL](/azure/azure-arc/servers/agent-overview#networking-configuration) 不会被阻止。
-    - 查看 Azure Arc [支持的区域](/azure/azure-arc/servers/overview#supported-regions)。 
+    -  在 Arc 加入过程中，将在已发现的服务器上安装 [Azure Arc Hybrid Connected Machine 代理](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)。 请务必提供在服务器上具有管理员权限的凭据来安装和配置代理。 在 Linux 上提供根帐户；在 Windows 上，提供“本地管理员”组中的帐户。 
+    - 验证服务器是否正在运行[受支持的操作系统](../azure-arc/servers/agent-overview.md#supported-operating-systems)。
+    - 确保 Azure 帐户已被分配了[所需的 Azure 角色](../azure-arc/servers/agent-overview.md#required-permissions)。
+    - 如果已发现的服务器通过防火墙或代理服务器进行连接来通过 Internet 通信，请确保[所需的 RUL](../azure-arc/servers/agent-overview.md#networking-configuration) 不会被阻止。
+    - 查看 Azure Arc [支持的区域](../azure-arc/servers/overview.md#supported-regions)。 
     - 已启用 Azure Arc 的服务器在一个资源组中支持多达 5,000 个计算机实例。
 
 
@@ -132,12 +135,13 @@ ms.locfileid: "111969046"
 未满足有关连接到服务器的[先决条件](./migrate-support-matrix-physical.md)，或者在连接到服务器时出现网络问题，例如一些代理设置。
 
 **建议的操作**   
-- 确保服务器满足[此处](https://go.microsoft.com/fwlink/?linkid=2134728)记录的先决条件和端口访问要求。 
-- 将远程计算机（发现的服务器）的 IP 地址添加到 Azure Migrate 设备上的 WinRM TrustedHosts 列表，然后重试该操作。 
+- 确保服务器满足[先决条件](#before-you-get-started)和[端口访问要求](./migrate-support-matrix-physical.md)。 
+- 将远程计算机（发现的服务器）的 IP 地址添加到 Azure Migrate 设备上的 WinRM TrustedHosts 列表，然后重试该操作。 这是为了允许服务器上的远程入站连接 - Windows：WinRM 端口 5985 (HTTP) 和 Linux：SSH 端口 22 (TCP) 。
 - 确保已在设备上选择了正确的身份验证方法来连接到服务器。 
    > [!Note] 
    > Azure Migrate 支持对 Linux 服务器使用基于密码的身份验证和基于 SSH 密钥的身份验证。
-- 如果问题仍然存在，请提交 Microsoft 支持案例，并提供设备计算机 ID（可在设备配置管理器的页脚中找到）。    
+- 如果问题仍然存在，请提交 Microsoft 支持案例，并提供设备计算机 ID（可在设备配置管理器的页脚中找到）。     
+   
 
 ### <a name="error-60002---invalidservercredentials"></a>错误 60002 - InvalidServerCredentials  
 
@@ -157,7 +161,7 @@ ms.locfileid: "111969046"
 **建议的操作**  
 - 确保受影响的服务器已安装最新的内核和 OS 更新。
 - 确保设备与服务器之间没有网络延迟。 建议将设备和源服务器置于同一域中来避免出现延迟问题。
-- 从设备连接到受影响的服务器，并运行[此处所述](./troubleshoot-appliance-discovery.md)的命令来检查它们是否返回 null 或空数据。
+- 从设备连接到受影响的服务器，并运行[此处所述](./troubleshoot-appliance.md)的命令来检查它们是否返回 null 或空数据。
 - 如果问题仍然存在，请提交 Microsoft 支持案例，并提供设备计算机 ID（可在设备配置管理器的页脚中找到）。  
 
 ### <a name="error-60108---softwareinventorycredentialnotassociated"></a>错误 60108 - SoftwareInventoryCredentialNotAssociated  

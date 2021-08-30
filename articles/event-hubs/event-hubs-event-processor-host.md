@@ -2,14 +2,14 @@
 title: 使用事件处理程序主机接收事件 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍 Azure 事件中心中的事件处理程序主机，它简化了检查点操作、租用和读取事件的管理。
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 08/04/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d97b446993d3f0a280c1f4fadb237726ac09228a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0e10a472c261c14fcdd3debf1caaf9f00fdeb5e0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313413"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733902"
 ---
 # <a name="event-processor-host"></a>事件处理程序主机
 > [!NOTE]
@@ -84,6 +84,9 @@ public class SimpleEventProcessor : IEventProcessor
 - **consumerGroupName：** 事件中心使用 $Default 作为默认使用者组的名称，但合理的做法是创建一个使用者组，以进行特定方面的处理。
 - **eventHubConnectionString：** 事件中心的连接字符串，可从 Azure 门户中检索。 此连接字符串应该对事件中心拥有“侦听”权限。
 - **storageConnectionString：** 用于内部资源管理的存储帐户。
+
+> [!IMPORTANT]
+> 请勿在用作检查点存储的存储帐户上启用软删除功能。 
 
 最后，使用者将 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 实例注册到事件中心服务。 向 EventProcessorHost 实例注册事件处理程序类会启动事件处理。 注册操作告知事件中心服务预期使用者应用会使用其某些分区发送的事件，并且每当推送要使用的事件时，都要调用 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 实现代码。 
 

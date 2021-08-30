@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 03/25/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 39f1245883c7d296de5b2bad77f1558be9b49910
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: c162a782965156545cf238f8f0489409433a0345
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111887413"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724761"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务 (AKS)
 
@@ -53,7 +53,7 @@ ms.locfileid: "111887413"
 Azure Migrate 提供了一个统一平台来评估本地服务器、基础结构、应用程序和数据并将其迁移到 Azure。 对于 AKS，可以使用 Azure Migrate 进行以下任务：
 
 * [将 ASP.NET 应用程序容器化并迁移到 AKS](../migrate/tutorial-app-containerization-aspnet-kubernetes.md)
-* [将Java Web 应用程序容器化并迁移到 AKS](../migrate/tutorial-containerize-java-kubernetes.md)
+* [将Java Web 应用程序容器化并迁移到 AKS](../migrate/tutorial-app-containerization-java-kubernetes.md)
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>包含标准负载均衡器和虚拟机规模集的 AKS
 
@@ -182,11 +182,13 @@ az aks create \
 
 建议使用现有的持续集成 (CI) 和持续交付 (CD) 管道将已知正常的配置部署到 AKS。 可以使用 Azure Pipelines [生成应用程序并将其部署到 AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template)。 克隆现有的部署任务，并确保 `kubeconfig` 指向新的 AKS 群集。
 
-如果无法做到这一点，请从现有 Kubernetes 群集导出资源定义，并将其应用到 AKS。 可以使用 `kubectl` 导出对象。
+如果无法做到这一点，请从现有 Kubernetes 群集导出资源定义，并将其应用到 AKS。 可以使用 `kubectl` 导出对象。 例如：
 
 ```console
-kubectl get deployment -o=yaml --export > deployments.yaml
+kubectl get deployment -o yaml > deployments.yaml
 ```
+
+请务必检查输出并删除任何不必要的实时数据字段。
 
 ### <a name="moving-existing-resources-to-another-region"></a>将现有资源移到另一个区域
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 01/20/2021
-ms.openlocfilehash: a6f9debd9b4daec96fdb2f00f81bcbeb5073e4c7
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 07/06/2021
+ms.openlocfilehash: f5822a3d5594388627858be22ca9bbc0a43c1739
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691729"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361074"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>使用只读副本卸载只读的查询工作负荷
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,10 +45,12 @@ ms.locfileid: "110691729"
 
 ## <a name="data-consistency"></a>数据一致性
 
-副本的优势之一是，它始终处于事务一致性状态，但在不同的时间点，不同的副本之间可能会有一些较小的延迟。 读取横向扩展支持会话级一致性。 这意味着，如果只读会话在由于副本不可用而出现连接错误后重新连接，可以使用读写副本将其重定向到并非完全处于最新状态的副本。 同样，如果应用程序使用读写会话写入数据，并立即使用只读会话读取该数据，则最新的更新可能不会在副本中立即可见。 延迟是由异步事务日志恢复操作导致的。
+对主要副本进行的数据更改以异步方式传播到只读副本。 在连接到只读副本的会话中，读取始终在事务上保持一致。 但是，由于数据传播延迟是可变的，因此不同的副本可能会在相对于主要副本和其他副本略微不同的时间点返回数据。 如果只读副本变得不可用并且会话重新连接，则它可能会连接到与原始副本位于不同时间点的副本。 同样，如果应用程序使用读写会话更改数据，并立即使用只读会话读取该数据，则最新的更改可能不会在只读副本中立即可见。
+
+主要副本和只读副本之间的典型数据传播延迟在几十毫秒到几秒的范围内变化。 但是，数据传播延迟没有固定的上限。 副本中的高资源利用率等条件会显著增加延迟。 如果应用程序需要保证跨会话数据一致性或需要提交的数据立即可读，则应使用主要副本。
 
 > [!NOTE]
-> 区域中的复制延迟较低，且这种情况很少见。 若要监视复制延迟，请参阅[对只读副本进行监视和故障排除](#monitoring-and-troubleshooting-read-only-replicas)。
+> 若要监视数据传播延迟，请参阅[对只读副本进行监视和故障排除](#monitoring-and-troubleshooting-read-only-replicas)。
 
 ## <a name="connect-to-a-read-only-replica"></a>连接到只读副本
 
@@ -89,7 +91,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 |:---|:---|
 |[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 提供最近一小时的资源利用率指标，包括相对于服务目标限制的 CPU、数据 IO 和日志写入使用率。|
 |[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| 提供数据库引擎实例的聚合等待统计信息。 |
-|[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| 提供副本运行状况状态和同步统计信息。 重做队列大小和重做速率用作只读副本上数据延迟的指示。 |
+|[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| 提供副本运行状况状态和同步统计信息。 重做队列大小和重做速率针对只读副本用作数据传播延迟的指示。 |
 |[sys.dm_os_performance_counters](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| 提供数据库引擎性能计数器。|
 |[sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| 提供每个查询的执行统计信息，例如执行次数、已用 CPU 时间等。|
 |[sys.dm_exec_query_plan()](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| 提供缓存的查询计划。 |
@@ -123,7 +125,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 > 如果针对只读副本运行查询时收到错误 3961、1219 或 3947，则重试查询。
 
 > [!TIP]
-> 在“高级”和“业务关键”服务层级中，当连接到只读副本时，[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV 中的 `redo_queue_size` 和 `redo_rate` 列都可用于监视数据同步过程，作为只读副本上数据延迟的指示。
+> 在“高级”和“业务关键”服务层级中，连接到只读副本时，[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV 中的 `redo_queue_size` 和 `redo_rate` 列都可用于监视数据同步过程，作为只读副本上数据传播延迟的指示。
 > 
 
 ## <a name="enable-and-disable-read-scale-out"></a>启用和禁用读取扩展

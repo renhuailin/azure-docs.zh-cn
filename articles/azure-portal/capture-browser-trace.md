@@ -1,24 +1,27 @@
 ---
 title: 捕获浏览器跟踪以进行故障排除
 description: 捕获浏览器跟踪中的网络信息，以帮助排查 Azure 门户的问题。
-ms.date: 03/25/2021
+ms.date: 08/16/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 63bc3e93187274db607b5f60216de461729801dc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d1db82c9671879c435a6dba73929d9a4eb183f7f
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563475"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228876"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>捕获浏览器跟踪以进行故障排除
 
 如果你正在对 Azure 门户进行故障排除，并且需要联系 Microsoft 支持，我们建议你首先捕获浏览器跟踪和一些其他信息。 收集的信息可以在问题发生时提供有关门户的重要详细信息。 对于使用的浏览器中的开发人员工具，请按照本文中的步骤进行操作：Google Chrome 或 Microsoft Edge (Chromium)、Microsoft Edge (EdgeHTML)、Apple Safari 或 Firefox。
 
+> [!IMPORTANT]
+> Microsoft 支持人员仅出于故障排除目的使用这些跟踪。 请小心与你共享跟踪的人员，因为他们可能会包含有关你环境的敏感信息。
+
 ## <a name="google-chrome-and-microsoft-edge-chromium"></a>Google Chrome 和 Microsoft Edge (Chromium)
 
 Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://www.chromium.org/Home)。 以下步骤说明如何使用开发人员工具，这些工具在这两个浏览器中非常类似。 有关详细信息，请参阅 [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) 和 [Microsoft Edge (Chromium) 开发工具](/microsoft-edge/devtools-guide-chromium)。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 必须在开始跟踪之前登录，以免跟踪包含登录相关的敏感信息。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 必须在开始跟踪之前登录，以免跟踪包含登录相关的敏感信息。
 
 1. 使用[步骤录制器](https://support.microsoft.com/help/22878/windows-10-record-steps)开始录制在门户中执行的步骤。
 
@@ -164,7 +167,7 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
 以下步骤说明如何在 Firefox 中使用开发人员工具。 有关详细信息，请参阅 [Firefox 开发人员工具](https://developer.mozilla.org/docs/Tools)。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 必须在开始跟踪之前登录，以免跟踪包含登录相关的敏感信息。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 必须在开始跟踪之前登录，以免跟踪包含登录相关的敏感信息。
 
 1. 开始记录在门户中执行的步骤。 在 Windows 上使用[步骤记录器](https://support.microsoft.com/help/22878/windows-10-record-steps)，或者查看[如何在 Mac 上记录屏幕](https://support.apple.com/HT208721)。
 
@@ -204,4 +207,5 @@ Google Chrome 和 (Chromium)都基于 [Chromium 开放源代码项目](https://w
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 门户概述](azure-portal-overview.md)
+- 详细了解 [Azure 门户](azure-portal-overview.md)。
+- 了解如何在 Azure 门户中[创建支持请求](supportability/how-to-create-azure-support-request.md)。

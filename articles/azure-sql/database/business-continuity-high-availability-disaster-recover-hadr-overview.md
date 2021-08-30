@@ -13,14 +13,14 @@ author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 06/25/2019
-ms.openlocfilehash: 2e246d6b67ad1457deb9057e771e5e95d4987809
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: c4a7228662d1070f001b5cbe9d2199639362bccb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110708884"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465635"
 ---
-# <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
+# <a name="overview-of-business-continuity-with-azure-sql-database--azure-sql-managed-instance"></a>使用 Azure SQL 数据库和 Azure SQL 托管实例确保业务连续性的相关概述
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Azure SQL 数据库和 SQL 托管实例中的业务连续性是指在遇到中断（尤其是计算基础结构的中断）时，使企业能够继续运营的机制、策略和过程。 在大多数情况下，SQL 数据库和 SQL 托管实例将会处理云环境中可能发生的中断事件，并让应用程序和业务流程保持运行。 但是，SQL 数据库无法自动处理某些中断事件，例如：

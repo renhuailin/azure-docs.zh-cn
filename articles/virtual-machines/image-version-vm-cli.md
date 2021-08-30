@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7bfe8b1255c88878c2dc4661e9daa3e16397e9f4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 75ce18b89975aaf0f45620291ccd106db69656ec
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792266"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114205091"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>使用 Azure CLI 从 Azure 中的 VM 创建映像版本
 
@@ -75,6 +75,9 @@ az sig image-definition create \
    --os-state specialized
 ```
 
+> [!NOTE]
+> 对于将包含从第三方映像继承的映像的映像定义，计划信息必须与第三方映像中的计划信息完全匹配。 创建映像定义时，通过添加 `--plan-name`、`--plan-product` 和 `--plan-publisher` 在映像定义中包含计划信息。
+>
 
 ## <a name="create-the-image-version"></a>创建映像版本
 

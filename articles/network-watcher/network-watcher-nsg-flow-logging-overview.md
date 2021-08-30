@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 4f46dc092776e73556a67fee705a98fa883dfbc6
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 23960e112dd03a711027c2364f648f60f23d0c8e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810689"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742020"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -66,7 +66,7 @@ ms.locfileid: "109810689"
 - - NSG 拒绝规则是终止类型。 拒绝流量的 NSG 会将其记录在流日志中，在这种情况下，处理将在任何 NSG 拒绝流量后停止。 
 - - NSG 允许规则是非终止类型，这意味着即使一个 NSG 允许，处理也会继续下一 NSG。 允许流量的最后一个 NSG 会将流量记录到流日志。
 - NSG 流日志将写入到存储帐户，从存储帐户中可以访问这些日志。
-- 可以使用 TA、Splunk、Grafana、Stealthwatch 等工具导出、处理、分析和可视化流日志。
+- 可使用流量分析、Splunk、Grafana、Stealthwatch 等工具导出、处理、分析和可视化流日志。
 
 ## <a name="log-format"></a>日志格式
 
@@ -374,6 +374,8 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **入站流被从 Internet IP 记录到了没有公共 IP 的虚拟机**：对于没有通过与 NIC 关联的公共 IP 地址分配公共 IP 地址作为实例级公共 IP 的虚拟机，或者是属于基本负载均衡器后端池的一部分的虚拟机，请使用 [默认SNAT](../load-balancer/load-balancer-outbound-connections.md)，并使用由 Azure 分配的 IP 地址以便于进行出站连接。 因此，如果流的目的地是分配给 SNAT 的端口范围内的端口，你可能会看到来自 Internet IP 地址的流的流日志条目。 虽然 Azure 不允许将这些流传输到 VM，但是按照设计，该尝试会被记录并显示在网络观察程序的 NSG 流日志中。 我们建议使用 NSG 来显式阻止不需要的入站 Internet 流量。
 
+**ExpressRoute 网关子网上的 NSG** - 不建议在 ExpressRoute 网关子网上记录流，因为流量可以绕过快速路由网关（例如 [FastPath](../expressroute/about-fastpath.md)）。 因此，如果 NSG 已链接到 ExpressRoute 网关子网并且 NSG 流日志已启用，可能无法捕获发往虚拟机的出站流。 必须在 VM 的子网或 NIC 中捕获此类流。 
+
 应用程序网关 V2 子网 NSG 的问题：当前[不支持](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet)对应用程序网关 V2 子网 NSG 使用流日志记录。 此问题不会影响应用程序网关 V1。
 
 不兼容的服务：由于当前的平台限制，NSG 流日志不支持一小部分 Azure 服务。 当前不兼容的服务的列表为
@@ -415,7 +417,7 @@ NSG 流日志可能需要长达 5 分钟的时间才能显示在存储帐户中�
 
 **我想自动执行 NSG 流日志**
 
-NSG 流日志当前不支持通过 ARM 模板进行自动化操作。 有关详细信息，请阅读[功能公告](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/)。
+NSG 流日志现在支持通过 ARM 模板进行自动化操作。 有关详细信息，请阅读[功能公告](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/)和 [ARM 模板快速入门](quickstart-configure-network-security-group-flow-logs-from-arm-template.md)。
 
 ## <a name="faq"></a>常见问题
 

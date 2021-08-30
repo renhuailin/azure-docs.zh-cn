@@ -2,14 +2,14 @@
 title: 使用 Cloud Native Buildpack 生成映像
 description: 在不使用 Dockerfile 的情况下，使用 az acr pack build 命令从应用生成容器映像并将其推送到 Azure 容器注册表。
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 06/24/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 1700c8fda8ac91e7d447d35c0989da2d5fc3aefe
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 28630c46ea56bd4df1a43e5e377b3051f9cdd966
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780922"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913955"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>使用 Cloud Native Buildpack 从应用生成映像并推送该映像
 
@@ -29,19 +29,19 @@ Azure CLI 命令 `az acr pack build` 使用 [`pack`](https://github.com/buildpac
 * 在其中运行命令的 Azure 容器注册表
 * 生成的映像的映像名称和标记
 * ACR 任务的[受支持上下文位置](container-registry-tasks-overview.md#context-locations)之一，例如本地目录、GitHub 存储库或远程 tarball
-* 适合你的应用程序的 Buildpack 生成器映像的名称。 为加快生成速度，Azure 容器注册表会缓存 `cloudfoundry/cnb:0.0.34-cflinuxfs3` 等生成器映像。  
+* 适合你的应用程序的 Buildpack 生成器映像的名称。 如果未由 Azure 容器注册表缓存，则必须使用 `--pull` 参数来请求生成器映像。  
 
 `az acr pack build` 支持 ACR 任务命令的其他功能，包括 [run 变量](container-registry-tasks-reference-yaml.md#run-variables)以及[任务运行日志](container-registry-tasks-logs.md)（这些日志会进行流式传输，还会进行保存供以后检索）。
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>示例：使用 Cloud Foundry 生成器生成 Node.js 映像
 
-以下示例使用 `cloudfoundry/cnb:0.0.34-cflinuxfs3` 生成器，从 [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) 存储库中的 Node.js 应用生成容器映像。 Azure 容器注册表会缓存此生成器，因此无需指定 `--pull` 参数：
+以下示例使用 `cloudfoundry/cnb:cflinuxfs3` 生成器，从 [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) 存储库中的 Node.js 应用生成容器映像。
 
 ```azurecli
 az acr pack build \
     --registry myregistry \
-    --image {{.Run.Registry}}/node-app:1.0 \
-    --builder cloudfoundry/cnb:0.0.34-cflinuxfs3 \
+    --image node-app:1.0 \
+    --pull --builder cloudfoundry/cnb:cflinuxfs3 \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
@@ -65,7 +65,7 @@ docker run --rm -p 1337:1337 myregistry.azurecr.io/node-app:1.0
 
 ## <a name="example-build-java-image-with-heroku-builder"></a>示例：使用 Heroku 生成器生成 Java 映像
 
-以下示例使用 `heroku/buildpacks:18` 生成器从 [buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) 存储库中的 Java 应用生成容器映像。 `--pull` 参数指定命令应提取最新的生成器映像。 
+以下示例使用 `heroku/buildpacks:18` 生成器从 [buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) 存储库中的 Java 应用生成容器映像。 
 
 ```azurecli
 az acr pack build \

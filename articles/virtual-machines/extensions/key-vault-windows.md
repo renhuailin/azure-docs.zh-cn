@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 546537003d599dc66f77ace31471e04c8cef2d43
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: d7424b6ad88bc7e77a4b7d191feb54658f67ff21
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854821"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220670"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -113,11 +113,11 @@ ms.locfileid: "111854821"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | 字符串 |
+| publisher | Microsoft.Azure.KeyVault | string |
 | type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | 字符串 |
-| certificateStoreName | MY | 字符串 |
+| pollingIntervalInS | 3600 | string |
+| certificateStoreName | MY | string |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | LocalMachine 或 CurrentUser（区分大小写） | string |
 | requireInitialSync | 是 | boolean |
@@ -254,9 +254,9 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
 
    ```azurecli
         # Start the deployment
-        az vmss extension set -name "KeyVaultForWindows" `
+        az vmss extension set --name "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
-         -resource-group "<resourcegroup>" `
+         --resource-group "<resourcegroup>" `
          --vmss-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
@@ -273,7 +273,7 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
 * 可设置的 observedCertificates 数是否有限制？
   没有，Key Vault VM 扩展对 observedCertificates 数没有限制。
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 运行以下命令。
 
@@ -288,10 +288,16 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
 #### <a name="logs-and-configuration"></a>日志和配置
+Key Vault VM 扩展日志仅存在于本地 VM 上，并且在进行故障排除时最能提供信息
 
-```
-%windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<version>\akvvm_service_<date>.log
-```
+|位置|说明|
+|--|--|
+| C:\WindowsAzure\Logs\WaAppAgent.log | 显示进行扩展更新的时间。 |
+| C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\ | 显示证书下载的状态。 下载位置始终为 Windows 计算机的 MY 存储位置 (certlm.msc)。 |
+| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\RuntimeSettings\ |   Key Vault VM 扩展服务日志显示 akvvm_service 服务的状态。 |
+| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\Status\  | Key Vault VM 扩展服务的配置和二进制文件。 |
+|||  
+
 
 ### <a name="support"></a>支持
 

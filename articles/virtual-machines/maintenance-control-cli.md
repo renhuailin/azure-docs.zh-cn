@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: c57f66eca5d15024c6b10e8fad12ddb575b9f894
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a611daf290bda8d6511cb4217e411de2886ce822
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765892"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112370844"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>使用维护控制和 Azure CLI 来控制更新
 
@@ -191,7 +191,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>应用更新
 
-使用 `az maintenance apply update` 来应用挂起的更新。 成功后，此命令会返回包含更新详细信息的 JSON。
+使用 `az maintenance apply update` 来应用挂起的更新。 成功后，此命令会返回包含更新详细信息的 JSON。 应用更新调用可能需要长达 2 小时才能完成。
 
 ### <a name="isolated-vm"></a>隔离的 VM
 

@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 06/10/2021
+ms.date: 07/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: 0e8c63827ba6e2e022e0d7876952b0a159c1e569
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 1c26761fe23fb1a7558100dea3cb74d7b078550d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984619"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749498"
 ---
 # <a name="azure-machine-learning-feature-availability-across-clouds-regions"></a>Azure 机器学习跨云区域的功能可用性
 
@@ -57,15 +57,14 @@ ms.locfileid: "111984619"
 | Jupyter、JupyterLab 集成                                            | GA                   | YES                | YES         |
 | 虚拟网络 (VNet) 支持                                             | 公共预览版       | YES                | YES         |
 | **SDK 支持** |  |  | | 
-| [R SDK 支持](https://azure.github.io/azureml-sdk-for-r/reference/index.html)                                                              | 公共预览版       | YES                | YES         |
 | [Python SDK 支持](/python/api/overview/azure/ml/)                                                         | GA                   | YES                | YES         |
 | **[安全性](concept-enterprise-security.md)** |   | | | 
 | 虚拟网络 (VNet) 训练支持                                | GA                   | YES                | YES         |
 | 虚拟网络 (VNet) 推理支持                               | GA                   | YES                | YES         |
 | 对终结点身份验证评分                                            | 公共预览版       | YES                | YES         |
-| 工作区专用终结点                                                 | 公共预览版       | 是                 | 是          |
+| 工作区专用终结点                                                 | GA  |  公共预览版  |  公共预览版 |
 | VNet 后的 ACI                                                            | 公共预览版       | 是                 | 是          |
-| VNet 后的 ACR                                                            | 公共预览版       | 是                 | 是          |
+| VNet 后的 ACR                                                            | GA       | YES                 | YES          |
 | AKS 群集的专用 IP                                                  | 公共预览版       | 是                 | 是          |
 | **计算** |   | | |
 | [跨工作区配额管理](how-to-manage-quotas.md)                                         | GA                   | YES                | YES         |
@@ -101,9 +100,8 @@ ms.locfileid: "111984619"
 | [批处理推理](tutorial-pipeline-batch-scoring-classification.md)                                                          | GA                   | YES                | YES         |
 | [带 FPGA 的 Data Box Edge](how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)                                                    | 公共预览版       | 是                 | 是          |
 | **其他** |   | | |
-| [开放数据集](/azure/open-datasets/samples)                                                              | 公共预览版       | YES                | YES         |
+| [开放数据集](../open-datasets/samples.md)                                                              | 公共预览版       | YES                | YES         |
 | [自定义认知搜索](how-to-deploy-model-cognitive-search.md)                                                    | 公共预览版       | YES                | YES         |
-| [多模型解决方案加速器](https://github.com/microsoft/solution-accelerator-many-models)                                                                | 公共预览版       | 是                 | 是          |
 
 
 ### <a name="azure-government-scenarios"></a>Azure 政府方案
@@ -111,15 +109,14 @@ ms.locfileid: "111984619"
 | 方案                                                    | 美国-弗吉尼亚 | 美国-亚利桑那| 限制  |
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|-------------|
 | **常规安全设置** |   | | |
-| 两个服务之间的专用网络通信                                     | 是 | 是 | 当前没有专用链接 | 
-| 禁用/控制 Internet 访问（入站和出站）和特定 VNet | PARTIAL| PARTIAL   | VNet 后的 ACR 在 Azure 政府版中不可用 - 请仔细检查 ACI | 
+| 禁用/控制 Internet 访问（入站和出站）和特定 VNet | PARTIAL| PARTIAL   |  | 
 | 所有关联资源/服务的放置  | YES | YES |  |
 | 静态加密和传输中加密。                                                 | YES | YES |  |
 | 对计算资源的 Root 和 SSH 访问。                                          | YES | YES |  |
-| 维护已部署系统（实例、终结点等）的安全性，包括终结点保护、修补和日志记录 |  PARTIAL|  PARTIAL |VNet 后的 ACI 和专用终结点当前不可用 |                                  
-| 控制（禁用/限制/约束）ACI/AKS 集成的使用                    | PARTIAL| PARTIAL |VNet 后的 ACI 和专用终结点当前不可用|
+| 维护已部署系统（实例、终结点等）的安全性，包括终结点保护、修补和日志记录 |  PARTIAL|  PARTIAL |VNet 后面的 ACI 目前不可用 |                                  
+| 控制（禁用/限制/约束）ACI/AKS 集成的使用                    | PARTIAL| PARTIAL |VNet 后面的 ACI 目前不可用|
 | Azure 基于角色的访问控制 (Azure RBAC) - 自定义角色创建                           | YES | YES |  |
-| 控制对 ML 服务使用的 ACR 映像的访问（Azure 提供/维护的与自定义的）  |PARTIAL|  PARTIAL | Azure 政府版不支持专用终结点和 VNet 后的 ACR |
+| 控制对 ML 服务使用的 ACR 映像的访问（Azure 提供/维护的与自定义的）  |PARTIAL|  PARTIAL |  |
 | **机器学习服务常规使用情况** |  | | |
 | 能够使用开发环境构建模型、训练该模型、将其作为终结点托管并通过 WebApp 使用它     | YES | YES |  |
 | 能够从 ADLS (Data Lake Storage) 中拉取数据                                 |YES | YES |  |
@@ -132,7 +129,7 @@ ms.locfileid: "111984619"
 * 对于 Azure 机器学习计算实例，Azure 政府版中未提供对持续时间超过 24 小时的令牌进行刷新的功能。
 * 模型分析在美国-亚利桑那区域不支持 4 CPU。   
 * 示例笔记本在需要访问公共数据的情况下可能无法在 Azure 政府版中使用。
-* IP 地址：[VNet 和强制隧道](how-to-secure-training-vnet.md#forced-tunneling)指令中使用的 CLI 命令不返回 IP 范围。 请改用[适用于 Azure 政府版的 Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=57063)。
+* IP 地址：[所需的公共 Internet 访问](how-to-secure-training-vnet.md#required-public-internet-access)说明中使用的 CLI 命令不会返回 IP 范围。 请改用[适用于 Azure 政府版的 Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=57063)。
 * 对于计划的管道，我们还提供了基于 blob 的触发器机制。 CMK 工作区不支持此机制。 若要为 CMK 工作区启用基于 blob 的触发器，必须进行其他设置。 有关详细信息，请参阅[从逻辑应用触发机器学习管道的运行](how-to-trigger-published-pipeline.md)。
 * 防火墙：使用 Azure 政府区域时，请将下述主机添加到防火墙设置：
 
@@ -166,19 +163,18 @@ ms.locfileid: "111984619"
 | R 和 Python 支持                                                       | GA               | YES       | 空值        |
 | 虚拟网络支持                                                    | 公共预览版   | 是        | 空值        |
 | **计算实例** |    | | |
-| 集成式笔记本的托管计算实例                         | GA               | 是        | 空值        |
+| 集成式笔记本的托管计算实例                         | GA               | YES        | 空值        |
 | Jupyter、JupyterLab 集成                                            | GA               | YES       | 空值        |
 | 虚拟网络 (VNet) 支持                                             | 公共预览版   | YES       | 空值        |
 | **SDK 支持** |    | | |
-| R SDK 支持                                                              | 公共预览版   | YES       | 空值        |
 | Python SDK 支持                                                         | GA               | YES       | 空值        |
 | **安全性** |   | | |
 | 虚拟网络 (VNet) 训练支持                                | GA               | YES       | 空值        |
 | 虚拟网络 (VNet) 推理支持                               | GA               | YES       | 空值        |
 | 对终结点身份验证评分                                            | 公共预览版   | YES       | 空值        |
-| 工作区专用链接                                                     | GA               | 是        | 空值        |
+| 工作区专用终结点                                                 | GA               | 是        | 空值        |
 | VNet 后的 ACI                                                            | 公共预览版   | 是        | 空值        |
-| VNet 后的 ACR                                                            | 公共预览版   | 是        | 空值        |
+| VNet 后的 ACR                                                            | GA   | YES       | 空值        |
 | AKS 群集的专用 IP                                                  | 公共预览版   | 是        | 空值        |
 | **计算** |   | | |
 | 跨工作区配额管理                                         | GA               | YES       | 空值        |
@@ -216,7 +212,6 @@ ms.locfileid: "111984619"
 | **其他** |    | | |
 | 开放数据集                                                              | 公共预览版   | YES       | 空值        |
 | 自定义认知搜索                                                    | 公共预览版   | YES       | 空值        |
-| 许多模型                                                                | 公共预览版   | 是        | 空值        |
 
 
 
@@ -232,8 +227,8 @@ ms.locfileid: "111984619"
     | Azure Active Directory              | `https://login.microsoftonline.com`          | `https://login.chinacloudapi.cn`             |
 
 * 示例笔记本在需要访问公共数据的情况下可能无法使用。
-* IP 地址范围：[VNet 强制隧道](how-to-secure-training-vnet.md#forced-tunneling)指令中使用的 CLI 命令不返回 IP 范围。 请改用[适用于 Azure 中国版的 Azure IP 范围和服务标记](https://www.microsoft.com//download/details.aspx?id=57062)。
-* 目前，启用了专用链接的工作区中不支持 Azure 机器学习计算实例 (CI) 预览版，但在下一次将服务扩展部署到所有 AML 区域时，会支持 CI。
+* IP 地址范围：[所需的公共 Internet 访问](how-to-secure-training-vnet.md#required-public-internet-access)说明中使用的 CLI 命令不会返回 IP 范围。 请改用[适用于 Azure 中国版的 Azure IP 范围和服务标记](https://www.microsoft.com//download/details.aspx?id=57062)。
+* 目前，启用了专用终结点的工作区不支持 Azure 机器学习计算实例预览版，但在下一次将服务扩展部署到所有 AML 区域时，会支持 CI。
 
 ## <a name="next-steps"></a>后续步骤
 

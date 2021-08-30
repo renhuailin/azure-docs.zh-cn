@@ -4,12 +4,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 预览版（或者 alpha 或 b
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 3e4f5e4411eb81ab14d844adf03433e9de0d73b2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1e85effa5a8efca59bfc88aada050ee5ddcc7fcf
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368103"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666434"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
 
@@ -127,7 +127,7 @@ AKS 代表你管理代理节点的生命周期和操作 - **不支持** 修改�
 
 ## <a name="network-ports-access-and-nsgs"></a>网络端口、访问和 NSG
 
-只能在自定义子网中自定义 NSG。 不能在托管子网上或代理节点的 NIC 级别上自定义 NSG。 AKS 对特定终结点有流出量要求，目的是控制流出量并确保必要的连接性，请参阅[限制出口流量](limit-egress-traffic.md)。
+只能在自定义子网中自定义 NSG。 不能在托管子网上或代理节点的 NIC 级别上自定义 NSG。 AKS 对特定终结点有流出量要求，目的是控制流出量并确保必要的连接性，请参阅[限制出口流量](limit-egress-traffic.md)。 对于流入量，要求基于已部署到群集的应用程序。
 
 ## <a name="stopped-or-de-allocated-clusters"></a>停止或取消分配的群集
 

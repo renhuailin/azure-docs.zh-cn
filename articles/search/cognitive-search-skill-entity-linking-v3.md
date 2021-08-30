@@ -7,25 +7,21 @@ author: ayokande
 ms.author: aakande
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/19/2021
-ms.openlocfilehash: d93e9ae7c9b3fae1d947ee7d121df920fa414ec8
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.date: 08/12/2021
+ms.openlocfilehash: cda66e72dac7e2adde5dbf2a59e13db5a236d37d
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528691"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862327"
 ---
-#    <a name="entity-linking-cognitive-skill"></a>实体链接认知技能
-
-> [!IMPORTANT] 
-> 此技能目前为公共预览版。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前不支持门户或 .NET SDK。
+# <a name="entity-linking-cognitive-skill"></a>实体链接认知技能
 
 实体链接技能从文本中提取链接实体。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)提供的机器学习模型。
 
 > [!NOTE]
-> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 此技能绑定到认知服务，对于超过每个索引器每天 20 个文档的事务，需要[一个计费资源](cognitive-search-attach-cognitive-services.md)。 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)所述。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.V3.EntityLinkingSkill

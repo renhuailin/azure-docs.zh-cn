@@ -1,26 +1,27 @@
 ---
-title: 适用于 Azure AD 应用程序的高级 SAML 令牌证书签名选项
+title: SAML 令牌中的高级证书签名选项
+titleSuffix: Azure AD
 description: 了解如何使用 Azure Active Directory 中预先集成的应用的 SAML 令牌中的高级证书签名选项
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.author: mtillman
-ms.reviewer: jeedes
+ms.date: 07/30/2021
+ms.author: davidmu
+ms.reviewer: saumadan
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a3ca6af6a70abd1781a62337ba67ea1d3f4961a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 8c44d2a346dcd77352715b63937e5bad5274f2d1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080230"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738866"
 ---
-# <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory 中库应用的 SAML 令牌中的高级证书签名选项
+# <a name="advanced-certificate-signing-options-in-a-saml-token"></a>SAML 令牌中的高级证书签名选项
 
 Azure Active Directory (Azure AD) 目前支持 Azure Active Directory 应用库中的数千个预先集成应用程序。 超过 500 个应用程序通过使用 [安全断言标记语言](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) 2.0 协议（如 [NetSuite](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) 应用程序）支持单一登录。 当用户通过 Azure AD 使用 SAML 对应用程序进行身份验证时，Azure AD 会将令牌发送到应用程序（通过 HTTP POST）。 然后，应用程序验证并使用该令牌来登录用户账号，而不是提示输入用户名和密码。 这些 SAML 令牌已使用 Azure AD 中生成的唯一证书根据特定的标准算法签名。
 
@@ -52,7 +53,7 @@ Azure AD 支持使用两种签名算法或哈希算法 (SHAs) 来为 SAML 响应
 
 1. 在 [Azure Active Directory 门户](https://aad.portal.azure.com/)中，登录到你的帐户。 此时会显示“Azure Active Directory 管理中心”页。
 1. 在左窗格中，选择“企业应用程序”。 此时将显示帐户中企业应用程序的列表。
-1. 选择应用程序。 此时将显示应用程序的 "概览" 页面。
+1. 选择应用程序。 此时将显示应用程序的 "概览" 页面。 本示例使用 Salesforce 应用程序。
 
    ![示例：应用程序“”概览”页面](./media/certificate-signing-options/application-overview-page.png)
 

@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: ef47a97381c0c01afb13b66495167795c49b03c3
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: d689d06536dd04532571190b8857c3be24278866
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444716"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729316"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -83,7 +83,7 @@ Azure 门户中当前不支持客户管理的密钥的配置，可以通过 [Pow
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-不可用
+空值
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -128,7 +128,7 @@ Authorization: Bearer <token>
   }
   ```
 
-请遵循[“专用群集”一文](./logs-dedicated-clusters.md#create-a-dedicated-cluster)中说明的过程。 
+请遵循[“专用群集”一文](./logs-dedicated-clusters.md#creating-a-cluster)中说明的过程。 
 
 ## <a name="grant-key-vault-permissions"></a>授予 Key Vault 权限
 
@@ -245,7 +245,7 @@ Content-type: application/json
 
 需要具有对工作区和群集的“写入”权限才能执行此操作，其中包括 `Microsoft.OperationalInsights/workspaces/write` 和 `Microsoft.OperationalInsights/clusters/write`。
 
-请遵循[“专用群集”一文](./logs-dedicated-clusters.md#link-a-workspace-to-a-cluster)中说明的过程。
+请遵循[“专用群集”一文](./logs-dedicated-clusters.md#link-a-workspace-to-cluster)中说明的过程。
 
 ## <a name="key-revocation"></a>密钥吊销
 
@@ -414,7 +414,7 @@ Content-type: application/json
 - 当前不能在中国使用密码箱。 
 
 - 对于受支持区域中自 2020 年 10 月开始创建的群集，系统会自动为其配置[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以通过在群集上发送 GET 请求并观察启用了双重加密的群集的 `isDoubleEncryptionEnabled` 值是否为 `true` 来验证是否为你的群集配置了双重加密。 
-  - 如果你创建群集并收到错误“区域名称不支持对群集进行双重加密。”，则你仍可通过在 REST 请求正文中添加 `"properties": {"isDoubleEncryptionEnabled": false}` 来创建无双重加密的群集。
+  - 如果你创建群集并收到错误“<区域名称> 不支持对群集进行双重加密。”，则你仍可通过在 REST 请求正文中添加 `"properties": {"isDoubleEncryptionEnabled": false}` 以在不使用双重加密的情况下创建群集。
   - 创建群集后，无法更改双重加密设置。
 
   - 将群集的 `identity` `type` 设置为 `None` 也会撤销对你的数据的访问权限，但不建议使用此方法，因为在不联系支持人员的情况下无法还原这种访问权限。 建议通过[密钥吊销](#key-revocation)来撤销对你的数据的访问权限。

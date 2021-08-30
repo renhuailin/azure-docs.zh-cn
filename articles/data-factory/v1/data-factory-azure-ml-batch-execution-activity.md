@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure 数据工厂创建预测数据管道
-description: 介绍如何使用 Azure 数据工厂和 Azure 机器学习工作室（经典版）创建预测管道
+description: 介绍了如何使用 Azure 数据工厂和机器学习工作室（经典）创建预测管道
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 2773ab2a7caa1eb4d198495a3ebe4ef0c14a5a32
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a613a48f1787c456885aabb0012efb4d71829aae
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785506"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396848"
 ---
-# <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>使用 Azure 机器学习工作室（经典版）和 Azure 数据工厂创建预测管道
+# <a name="create-predictive-pipelines-using-ml-studio-classic-and-azure-data-factory"></a>使用机器学习工作室（经典）和 Azure 数据工厂创建预测管道
 
 > [!div class="op_single_selector" title1="转换活动"]
 > * [Hive 活动](data-factory-hive-activity.md)
@@ -22,8 +22,8 @@ ms.locfileid: "104785506"
 > * [MapReduce 活动](data-factory-map-reduce.md)
 > * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
-> * [Azure 机器学习工作室（经典）批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure 机器学习工作室（经典）更新资源活动](data-factory-azure-ml-update-resource-activity.md)
+> * [机器学习工作室（经典）批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
+> * [机器学习工作室（经典）更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 > * [存储过程活动](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
@@ -32,10 +32,10 @@ ms.locfileid: "104785506"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[在数据工厂中使用机器学习转换数据](../transform-data-using-machine-learning.md)。
 
-### <a name="azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典）
-[Azure 机器学习工作室（经典版）](https://azure.microsoft.com/documentation/services/machine-learning/)让用户能够生成、测试和部署预测分析解决方案。 从高层次的角度来看，这可通过三个步骤完成：
+### <a name="ml-studio-classic"></a>机器学习工作室（经典版）
+使用[机器学习工作室（经典）](https://azure.microsoft.com/documentation/services/machine-learning/)可生成、测试和部署预测分析解决方案。 从高层次的角度来看，这可通过三个步骤完成：
 
-1. **创建训练实验**。 使用 Azure 机器学习工作室（经典版）执行此步骤。 工作室（经典版）是一个协作式可视开发环境，可用于通过定型数据来定型和测试预测分析模型。
+1. **创建训练实验**。 使用机器学习工作室（经典）执行此步骤。 工作室（经典版）是一个协作式可视开发环境，可用于通过定型数据来定型和测试预测分析模型。
 2. **将其转换为预测实验**。 利用现有数据定型模型后，便可将其用于对新数据进行评分，为评分准备并简化实验。
 3. **将其部署为 Web 服务**。 可将评分实验作为 Azure Web 服务发布。 可通过此 Web 服务终结点向模型发送数据，并从模型接收结果预测。
 
@@ -47,19 +47,19 @@ ms.locfileid: "104785506"
 有关 Azure 数据工厂服务的快速入门，请参阅文章 [Azure 数据工厂简介](data-factory-introduction.md)和[生成第一个管道](data-factory-build-your-first-pipeline.md)。
 
 ### <a name="data-factory-and-machine-learning-studio-classic-together"></a>结合数据工厂和机器学习工作室（经典版）
-借助 Azure 数据工厂，可轻松创建相关管道，利用已发布的 [Azure 机器学习工作室（经典版）][azure-machine-learning]Web 服务进行预测分析。 使用 Azure 数据工厂管道中的 **批处理执行活动**，可调用工作室（经典）Web 服务来预测批处理中的数据。 有关详细信息，请参阅使用批处理执行活动调用 Azure 机器学习工作室（经典版）Web 服务部分。
+借助 Azure 数据工厂，可轻松创建管道，这些管道使用已发布的[机器学习工作室（经典）][azure-machine-learning]Web 服务进行预测分析。 使用 Azure 数据工厂管道中的 **批处理执行活动**，可调用工作室（经典）Web 服务来预测批处理中的数据。 有关详细信息，请参阅“使用批处理执行活动调用机器学习工作室（经典）Web 服务”部分。
 
 随着时间推移，需要使用新的输入数据集重新定型工作室（经典版）评分实验中的预测模型。 执行以下步骤可重新定型数据工厂管道中的工作室（经典版）模型：
 
 1. 将训练实验（非预测实验）作为 Web 服务发布。 在工作室（经典版）中，如同在前一方案中将预测实验作为 Web 服务公开那样执行此步骤。
 2. 使用工作室（经典版）批处理执行活动调用训练实验的 Web 服务。 基本上，可使用工作室（经典版）批处理执行活动调用定型 Web 服务和评分 Web 服务。
 
-完成重新训练后，使用 **Azure 机器学习工作室（经典版）更新资源活动** 通过新的定型模型更新评分 Web 服务（作为 Web 服务公开的预测实验）。 有关详细信息，请参阅[使用更新资源活动更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
+重新训练完以后，请使用“机器学习工作室(经典)更新资源活动”通过新训练的模型更新评分 Web 服务（作为 Web 服务公开的预测试验）。 有关详细信息，请参阅[使用更新资源活动更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
 
 ## <a name="invoking-a-web-service-using-batch-execution-activity"></a>使用批处理执行活动调用 Web 服务
 使用 Azure 数据工厂来安排数据移动和处理，并使用工作室（经典版）进行批处理执行。 下方列出了顶级步骤：
 
-1. 创建 Azure 机器学习工作室（经典版）链接服务。 需要以下值：
+1. 创建机器学习工作室（经典）链接服务。 需要以下值：
 
    1. 用于批处理执行 API 的 **请求 URI**。 在 Web 服务页中，单击“批处理执行”链接可找到此请求 URI。
    2. 已发布的工作室（经典版）Web 服务的 **API 密钥**。 单击已发布的 Web 服务可找到此 API 密钥。
@@ -358,7 +358,7 @@ ms.locfileid: "104785506"
 {
   "name": "MLWithSqlReaderSqlWriter",
   "properties": {
-    "description": "Azure Machine Learning Studio (classic) model with sql azure reader/writer",
+    "description": "ML Studio (classic) model with sql azure reader/writer",
     "activities": [
       {
         "name": "MLSqlReaderSqlWriterActivity",
@@ -411,7 +411,7 @@ ms.locfileid: "104785506"
 #### <a name="web-service-requires-multiple-inputs"></a>Web 服务需要多个输入
 如果 Web 服务需要多个输入，可改为使用 **webServiceInputs** 属性，而不是 **webServiceInput**。 **webServiceInputs** 引用的数据集也必须包括在活动 **inputs** 中。
 
-在 Azure 机器学习工作室（经典版）实验中，Web 服务输入和输出端口及全局参数具有可自定义的默认名称（“input1”、“input2”）。 用于 webServiceInputs、webServiceOutputs 和 globalParameters 设置的名称必须与实验中的名称完全匹配。 可在工作室（经典版）的“批处理执行帮助”页上查看示例请求有效负载，验证预期映射。
+在机器学习工作室（经典）试验中，Web 服务输入和输出端口及全局参数具有可自定义的默认名称（“input1”、“input2”）。 用于 webServiceInputs、webServiceOutputs 和 globalParameters 设置的名称必须与实验中的名称完全匹配。 可在工作室（经典版）的“批处理执行帮助”页上查看示例请求有效负载，验证预期映射。
 
 ```JSON
 {
@@ -454,7 +454,7 @@ ms.locfileid: "104785506"
 ```
 
 #### <a name="web-service-does-not-require-an-input"></a>Web 服务不需要输入
-Azure 机器学习工作室（经典版）批处理执行 Web 服务可用于运行不需要任何输入的任何工作流，例如 R 或 Python 脚本。 或者，可使用不会公开任何 GlobalParameters 的读取器模块配置实验。 在这种情况下，AzureMLBatchExecution 活动配置如下：
+机器学习工作室（经典）批处理执行 Web 服务可用于运行可能不需要任何输入的任何工作流，例如 R 或 Python 脚本。 或者，可使用不会公开任何 GlobalParameters 的读取器模块配置实验。 在这种情况下，AzureMLBatchExecution 活动配置如下：
 
 ```JSON
 {
@@ -481,7 +481,7 @@ Azure 机器学习工作室（经典版）批处理执行 Web 服务可用于运
 ```
 
 #### <a name="web-service-does-not-require-an-inputoutput"></a>Web 服务不需要输入/输出
-Azure 机器学习工作室（经典版）批处理执行 Web 服务可能未配置任何 Web 服务输出。 在此示例中，未配置任何 Web 服务输入、输出或 GlobalParameters。 虽然在活动本身仍配置了一个输出，但不会将其视作 webServiceOutput。
+机器学习工作室（经典）批处理执行 Web 服务可以不配置任何 Web 服务输出。 在此示例中，未配置任何 Web 服务输入、输出或 GlobalParameters。 虽然在活动本身仍配置了一个输出，但不会将其视作 webServiceOutput。
 
 ```JSON
 {
@@ -505,7 +505,7 @@ Azure 机器学习工作室（经典版）批处理执行 Web 服务可能未配
 ```
 
 #### <a name="web-service-uses-readers-and-writers-and-the-activity-runs-only-when-other-activities-have-succeeded"></a>Web 服务使用读取器和编写器，且活动仅在其他活动成功时运行
-可将 Azure 机器学习工作室（经典版）Web 服务读取器和编写器模块配置为使用/不使用任何 GlobalParameters 运行。 但是，可能需要在使用数据集依赖项的管道中嵌入服务调用才能仅在某一上游处理完成时调用服务。 还可使用此方法，在批处理执行完成后触发其他某种操作。 在这种情况下，可使用活动输入和输出表示依赖项，无需将任何依赖项命名为 Web 服务输入或输出。
+可将机器学习工作室（经典）Web 服务读取器和编写器模块配置为在使用/不使用 GlobalParameters 的情况下运行。 但是，可能需要在使用数据集依赖项的管道中嵌入服务调用才能仅在某一上游处理完成时调用服务。 还可使用此方法，在批处理执行完成后触发其他某种操作。 在这种情况下，可使用活动输入和输出表示依赖项，无需将任何依赖项命名为 Web 服务输入或输出。
 
 ```JSON
 {
@@ -545,7 +545,7 @@ Azure 机器学习工作室（经典版）批处理执行 Web 服务可能未配
 
 
 ## <a name="updating-models-using-update-resource-activity"></a>使用更新资源活动更新模型
-完成重新训练后，使用 **Azure 机器学习工作室（经典版）更新资源活动** 通过新的定型模型更新评分 Web 服务（作为 Web 服务公开的预测实验）。 有关详细信息，请参阅[使用更新资源活动更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
+重新训练完以后，请使用“机器学习工作室(经典)更新资源活动”通过新训练的模型更新评分 Web 服务（作为 Web 服务公开的预测试验）。 有关详细信息，请参阅[使用更新资源活动更新模型](data-factory-azure-ml-update-resource-activity.md)一文。
 
 ### <a name="reader-and-writer-modules"></a>读取器和编写器模块
 使用 Web 服务参数的常见方案是使用 Azure SQL 读取器和编写器。 读取器模块用于将数据加载到工作室（经典版）外数据管理服务的实验中。 编写器模块用于将实验数据保存到工作室（经典版）外的数据管理服务。
@@ -557,14 +557,14 @@ Azure 机器学习工作室（经典版）批处理执行 Web 服务可能未配
 
 **答:** 是的。 有关详细信息，请参阅 **使用读取器模块读取 Azure Blob 中多个文件的数据** 部分。
 
-## <a name="azure-machine-learning-studio-classic-batch-scoring-activity"></a>Azure 机器学习工作室（经典版）批处理评分活动
-如果使用 **AzureMLBatchScoring** 活动集成 Azure 机器学习工作室（经典版），建议使用最新的 **AzureMLBatchExecution** 活动。
+## <a name="ml-studio-classic-batch-scoring-activity"></a>机器学习工作室（经典）批处理评分活动
+如果使用 AzureMLBatchScoring 活动来与机器学习工作室（经典）集成，建议使用最新的 AzureMLBatchExecution 活动。
 
 Azure SDK 和 Azure PowerShell 的 2015 年 8 月版中引入了 AzureMLBatchExecution 活动。
 
 如果希望继续使用 AzureMLBatchScoring 活动，请继续阅读本部分。
 
-### <a name="azure-machine-learning-studio-classic-batch-scoring-activity-using-azure-storage-for-inputoutput"></a>将 Azure 存储用于输入/输出的 Azure 机器学习工作室（经典版）批处理评分活动
+### <a name="ml-studio-classic-batch-scoring-activity-using-azure-storage-for-inputoutput"></a>将 Azure 存储用于输入/输出的机器学习工作室（经典）批处理评分活动
 
 ```JSON
 {
@@ -628,7 +628,7 @@ Azure SDK 和 Azure PowerShell 的 2015 年 8 月版中引入了 AzureMLBatchExe
 >
 
 ## <a name="see-also"></a>另请参阅
-* [Azure 博客文章：Azure 数据工厂和 Azure 机器学习入门](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
+* [Azure 博客文章：Azure 数据工厂和机器学习工作室（经典）入门](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
 
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md
 

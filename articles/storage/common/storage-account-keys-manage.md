@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 06/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6435fbffc6a78d82129443f15a9ebcc41ab52ce8
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 600c651601e4281b717c1c8fa7808f3663be4af6
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109635186"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093908"
 ---
 # <a name="manage-storage-account-access-keys"></a>管理存储帐户访问密钥
 
@@ -28,18 +28,21 @@ Microsoft 建议使用 Azure 密钥保管库来管理访问密钥，并且定期
 
 可以使用 Azure 门户、PowerShell 或 Azure CLI 查看和复制帐户访问密钥。 Azure 门户还为你的存储帐户提供了一个可供复制的连接字符串。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要从 Azure 门户查看和复制存储帐户访问密钥或连接字符串，请执行以下操作：
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到存储帐户。
-1. 在“安全性 + 网络”下，选择“访问密钥” 。 此时会显示帐户访问密钥，以及每个密钥的完整连接字符串。
-1. 找到“key1”下面的“密钥”值，单击“复制”按钮复制该帐户密钥。  
-1. 或者，可以复制整个连接字符串。 找到“密钥 1”下面的“连接字符串”值，单击“复制”按钮复制该连接字符串。  
+
+2. 在“设置”下，选择“访问密钥” 。 此时会显示帐户访问密钥，以及每个密钥的完整连接字符串。
+
+3. 找到“key1”下面的“密钥”值，单击“复制”按钮复制该帐户密钥。  
+
+4. 或者，可以复制整个连接字符串。 找到“密钥 1”下面的“连接字符串”值，单击“复制”按钮复制该连接字符串。  
 
     :::image type="content" source="media/storage-account-keys-manage/portal-connection-string.png" alt-text="显示如何在 Azure 门户中查看访问密钥的屏幕截图":::
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要使用 PowerShell 检索帐户访问密钥，请调用 [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey) 命令。
 
@@ -52,7 +55,7 @@ $storageAccountKey = `
     -Name <storage-account>).Value[0]
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 列出帐户访问密钥，请调用 [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) 命令，如以下示例中所示。 请记得将括号中的占位符值替换为你自己的值。 
 
@@ -84,23 +87,138 @@ Microsoft 建议定期轮换访问密钥，以帮助保护存储帐户的安全�
 > [!WARNING]
 > 重新生成访问密钥可能会影响依赖于存储帐户密钥的所有应用程序或 Azure 服务。 使用帐户密钥访问存储帐户的任何客户端必须更新为使用新密钥，其中包括媒体服务、云、桌面和移动应用程序，以及适用于 Azure 存储的图形用户界面应用程序，例如 [Azure存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+如果你计划手动轮换访问密钥，那么 Microsoft 建议设置密钥过期策略，然后使用 Azure Monitor 中的查询来确定何时需要轮换访问密钥。
+
+### <a name="create-a-key-expiration-policy"></a>创建密钥过期策略
+
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+使用 Azure 门户设置密钥过期策略的功能尚不可用。 可以使用 PowerShell 或 Azure CLI。
+
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+若要创建密钥过期策略，请使用 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) 命令，并将 `-KeyExpirationPeriodInDay` 参数设置为访问密钥在其轮换之前处于活动状态的天数。 
+
+```powershell
+$account = Set-AzStorageAccount -ResourceGroupName <resource-group> -Name `
+    <storage-account-name>  -KeyExpirationPeriodInDay <period-in-days> 
+```
+
+> [!TIP]
+> 创建存储帐户时，还可以通过设置 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 命令的 `-KeyExpirationPeriodInDay` 参数来设置密钥过期策略。
+
+若要验证已应用的策略，请使用上述命令中返回到 `$account` 变量的 [PSStorageAccount](/dotnet/api/microsoft.azure.commands.management.storage.models.psstorageaccount) 的 `KeyPolicy` 属性。 
+  
+```powershell
+$account.KeyPolicy
+``` 
+
+密钥有效期会显示在控制台输出中。
+
+> [!div class="mx-imgBorder"]
+> ![访问密钥有效期](./media/storage-account-keys-manage/key-policy-powershell.png)
+
+如果现有密钥处于活动状态的时间超过了有效期，可能需要对其进行轮换。 若要查看密钥创建日期，请使用 `KeyCreationTime` 属性。 
+  
+```powershell
+$account.KeyCreationTime
+``` 
+
+这两个访问密钥的访问密钥创建时间都会显示在控制台输出中。
+
+> [!div class="mx-imgBorder"]
+> ![访问密匙创建时间](./media/storage-account-keys-manage/key-creation-time-powershell.png)
+
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要在现有的存储帐户上创建密钥过期策略，请使用 [az storage account update](/cli/azure/storage/account#az_storage_account_update) 命令，并将 `--key-exp-days` 参数设置为访问密钥在应进行轮换之前处于活动状态的天数。 
+
+```azurecli-interactive
+az storage account update \
+  -n <storage-account-name> \
+  -g <resource-group> --key-exp-days <period-in-days>
+```
+
+> [!TIP]
+> 创建存储帐户时，还可以通过设置 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令的 `-KeyExpirationPeriodInDay` 参数来设置密钥过期策略。
+
+若要验证已应用的策略，请调用 [az storage account show](/cli/azure/storage/account#az_storage_account_show) 命令，并在 `-query` 参数中使用字符串 `{KeyPolicy:keyPolicy}`。
+  
+```azurecli-interactive
+az storage account show \
+  -n <storage-account-name> \
+  -g <resource-group-name> \
+  --query "{KeyPolicy:keyPolicy}"
+```
+
+密钥有效期会显示在控制台输出中。
+
+```json
+{
+  "KeyPolicy": {
+    "keyExpirationPeriodInDays": 5
+  }
+}
+```
+
+
+如果现有密钥处于活动状态的时间超过了有效期，可能需要对其进行轮换。 若要查看密钥创建日期，请使用 [az storage account show](/cli/azure/storage/account#az_storage_account_show) 命令，并在 -query 参数中使用 `keyCreationTime` 字符串。
+  
+```azurecli-interactive
+az storage account show \
+  -n <storage-account-name> \
+  -g <resource-group-name> \
+  --query "keyCreationTime"
+```
+
+---
+
+### <a name="query-for-policy-violations"></a>查询策略冲突
+
+如果创建的诊断设置[将日志发送到 Azure Log Analytics](../blobs/monitor-blob-storage.md#send-logs-to-azure-log-analytics) 工作区，则可使用 Azure Monitor 日志查询来确定密钥是否已过期。 
+
+若要确定密钥是否已过期，请在“日志搜索”栏中输入以下查询。
+
+```Kusto
+StorageBlobLogs | where KeyExpiryStatus startsWith "Policy Violated". 
+```
+
+还可以创建一个查询，以帮助确定查询是否即将过期。 以下查询提供此信息。
+
+```Kusto
+resources  
+| where type =~ 'microsoft.storage/storageAccounts' 
+| extend days = datetime_diff('day', now(), todatetime(parse_json(properties).keyCreationTime)) 
+| extend KeyExpiryStatus = iff(days > 180, "Policy Violated", "") 
+| project name, days, KeyExpiryStatus  
+```
+
+### <a name="rotate-access-keys"></a>轮换访问密钥
+
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在 Azure 门户中轮换存储帐户访问密钥：
 
 1. 更新应用程序代码中的连接字符串以引用存储帐户的辅助访问密钥。
-1. 在 [Azure 门户](https://portal.azure.com)中导航到存储帐户。
-1. 在“安全性 + 网络”下，选择“访问密钥” 。
-1. 若要为存储帐户重新生成主访问密钥，请选择主访问密钥旁边的“重新生成”按钮。
-1. 更新代码中的连接字符串以引用新的主访问密钥。
-1. 以相同方式重新生成辅助访问密钥。
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+2. 在 [Azure 门户](https://portal.azure.com)中导航到存储帐户。
+
+3. 在“设置”下，选择“访问密钥” 。
+
+4. 若要为存储帐户重新生成主访问密钥，请选择主访问密钥旁边的“重新生成”按钮。
+
+5. 更新代码中的连接字符串以引用新的主访问密钥。
+
+6. 以相同方式重新生成辅助访问密钥。
+
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 轮换存储帐户访问密钥：
 
 1. 更新应用程序代码中的连接字符串以引用存储帐户的辅助访问密钥。
-1. 调用 [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) 命令以重新生成主访问密钥，如以下示例中所示：
+
+2. 调用 [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) 命令以重新生成主访问密钥，如以下示例中所示：
 
     ```powershell
     New-AzStorageAccountKey -ResourceGroupName <resource-group> `
@@ -108,15 +226,17 @@ Microsoft 建议定期轮换访问密钥，以帮助保护存储帐户的安全�
       -KeyName key1
     ```
 
-1. 更新代码中的连接字符串以引用新的主访问密钥。
-1. 以相同方式重新生成辅助访问密钥。 若要重新生成辅助密钥，请将 `key2`（而不是 `key1`）用作密钥名称。
+3. 更新代码中的连接字符串以引用新的主访问密钥。
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+4. 以相同方式重新生成辅助访问密钥。 若要重新生成辅助密钥，请将 `key2`（而不是 `key1`）用作密钥名称。
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用 Azure CLI 轮换存储帐户访问密钥：
 
 1. 更新应用程序代码中的连接字符串以引用存储帐户的辅助访问密钥。
-1. 调用 [az storage account keys renew](/cli/azure/storage/account/keys#az_storage_account_keys_renew) 命令以重新生成主访问密钥，如以下示例中所示：
+
+2. 调用 [az storage account keys renew](/cli/azure/storage/account/keys#az_storage_account_keys_renew) 命令以重新生成主访问密钥，如以下示例中所示：
 
     ```azurecli-interactive
     az storage account keys renew \
@@ -126,7 +246,8 @@ Microsoft 建议定期轮换访问密钥，以帮助保护存储帐户的安全�
     ```
 
 1. 更新代码中的连接字符串以引用新的主访问密钥。
-1. 以相同方式重新生成辅助访问密钥。 若要重新生成辅助密钥，请将 `key2`（而不是 `key1`）用作密钥名称。
+
+2. 以相同方式重新生成辅助访问密钥。 若要重新生成辅助密钥，请将 `key2`（而不是 `key1`）用作密钥名称。
 
 ---
 

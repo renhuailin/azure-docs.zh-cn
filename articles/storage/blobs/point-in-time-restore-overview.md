@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 07/06/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b959038753dd15282de357da746ef9b0e0cf2be5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d98c239da9c415da0a87f0eecad20af147802aca
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802261"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228726"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>块 blob 的时间点还原
 
@@ -78,9 +78,10 @@ Azure 存储会分析在所请求的还原点（UTC 时间）和当前时间段�
 
 块 blob 的时间点还原具有以下限制和已知问题：
 
-- 在时间点还原操作过程中，只能还原标准常规用途 v2 存储帐户中的块 blob。 不会还原追加 blob、页 blob 和高级块 blob。 
-- 如果在保持期内删除了某个容器，则该容器将无法使用时间点还原操作进行还原。 如果尝试还原的 blob 范围包含已删除的容器中的 blob，则时间点还原操作将失败。 若要了解如何防止删除容器，请参阅[容器软删除（预览版）](soft-delete-container-overview.md)。
-- 如果在当前时间与还原点之间的时间段内，blob 已移动到热层和冷层之间，则会将 blob 还原到其以前的层。 不支持还原存档层中的块 blob。 例如，如果热层中的某一 blob 在两天前已移至存档层，而还原操作还原至三天前的某个时间点，则该 blob 不会被还原至热层。 若要还原已存档的 blob，请先将其从存档层移开。 有关详细信息，请参阅[从存档层解冻 Blob 数据](storage-blob-rehydration.md)。
+- 在时间点还原操作过程中，只能还原标准常规用途 v2 存储帐户中的块 blob。 不会还原追加 blob、页 blob 和高级块 blob。
+- 如果在保持期内删除了某个容器，则该容器将无法使用时间点还原操作进行还原。 如果尝试还原的 blob 范围包含已删除的容器中的 blob，则时间点还原操作将失败。 若要了解如何防止删除容器，请参阅[容器软删除](soft-delete-container-overview.md)。
+- 如果在当前时间与还原点之间的时间段内，blob 已移动到热层和冷层之间，则会将 blob 还原到其以前的层。 不支持还原存档层中的块 blob。 例如，如果热层中的某一 blob 在两天前已移至存档层，而还原操作还原至三天前的某个时间点，则该 blob 不会被还原至热层。 若要还原已存档的 blob，请先将其从存档层移开。 有关详细信息，请参阅[存档层中的 Blob 解除冻结概述](archive-rehydrate-overview.md)。
+- 如果配置了不可变策略，则可以启动还原操作，但任何受不可变策略保护的 blob 不会被修改。 在这种情况下，还原操作不会导致将一致状态还原到给定的日期和时间。
 - 通过 [Put Block](/rest/api/storageservices/put-block) 或 [Put Block from URL](/rest/api/storageservices/put-block-from-url) 上传、但未通过 [Put Block List](/rest/api/storageservices/put-block-list) 提交的块不是 blob 的一部分，因此不会在还原操作过程中还原。
 - 无法还原具有活动租约的 blob。 如果要还原的 blob 范围内包含具有活动租约的 blob，则还原操作将自动失败。 在启动还原操作之前，中断任何活动租约。
 - 在还原操作过程中，不会创建或删除快照。 仅可将基本 blob 还原到其以前的状态。

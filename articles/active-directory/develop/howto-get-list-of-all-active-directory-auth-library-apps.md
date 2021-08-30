@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/22/2021
 ms.author: shermanouko
-ms.custom: aaddev, has-adal-ref
+ms.custom: aaddev
 ms.reviewer: aiwang, marsma
-ms.openlocfilehash: 9d9c0f9787360ed599d586295181ef359fdff293
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 7f4dfaaaaae39245c54c8ee3fc7879fd58b8ea9e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418667"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725759"
 ---
 # <a name="how-to-get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>操作方法：获取租户中使用 ADAL 的应用的完整列表
 
@@ -60,7 +60,7 @@ ms.locfileid: "122418667"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 MSAL（包括使用情况信息以及可用于不同编程语言和应用程序类型的库），请参阅：
+有关 MSAL（包括使用情况信息以及可用于不同编程语言和应用程序类型的库）的详细信息，请参阅：
 
 - [使用 MSAL 获取和缓存令牌](msal-acquire-cache-tokens.md)
 - [应用程序配置选项](msal-client-application-configuration.md)

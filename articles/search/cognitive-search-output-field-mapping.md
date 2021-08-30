@@ -1,21 +1,20 @@
 ---
-title: 将输入映射到输出字段
+title: 映射技能输出字段
 titleSuffix: Azure Cognitive Search
-description: 提取并扩充源数据字段，然后映射到 Azure 认知搜索索引中的输出字段。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+description: 通过将技能集的输出字段映射到搜索索引中的字段，导出其创建的扩充内容。
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 58bb87d5af785d3cffd96f3bd02477f97ed967a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/10/2021
+ms.openlocfilehash: 0e1db5f12e83a88697db38a6ddd77edab445f6c0
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001297"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195204"
 ---
-# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>如何将 AI 扩充字段映射到可搜索索引
+# <a name="map-enrichment-output-to-fields-in-a-search-index"></a>将扩充输出映射到搜索索引中的字段
 
 ![索引器阶段](./media/cognitive-search-output-field-mapping/indexer-stages-output-field-mapping.png "索引器阶段")
 
@@ -32,7 +31,7 @@ ms.locfileid: "96001297"
 * 你没有技能组，但正在从 Cosmos DB 数据库中索引复杂类型。 你希望获取该复杂类型上的节点，并将其映射到索引中的字段。
 
 > [!NOTE]
-> 我们最近在输出字段映射上启用了映射函数的功能。 有关映射函数的更多详细信息，请参阅[字段映射函数](./search-indexer-field-mappings.md#field-mapping-functions)
+> 输出字段映射仅适用于搜索索引。 对于创建[知识存储](knowledge-store-concept-intro.md)的索引器，将忽略输出字段映射。
 
 ## <a name="use-outputfieldmappings"></a>使用 outputFieldMappings
 
@@ -81,7 +80,7 @@ Content-Type: application/json
 }
 ```
 
-对于每个输出字段映射，请设置数据在扩充的文档树中的位置 (sourceFieldName)，以及如索引中引用的字段名称 (targetFieldName)。
+对于每个输出字段映射，请设置数据在扩充的文档树中的位置 (sourceFieldName)，以及如索引中引用的字段名称 (targetFieldName)。 在将字段内容存储到索引之前，分配转换字段内容所需的任何[映射函数](search-indexer-field-mappings.md#field-mapping-functions)。
 
 ## <a name="flattening-information-from-complex-types"></a>平展复杂类型的信息 
 

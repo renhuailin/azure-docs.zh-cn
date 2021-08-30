@@ -9,16 +9,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 2fb710bab03d595d6e54bc8dd8fbda38c57123e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eee11a2f50dbc0d3121d3ba603e85d3700e333bb
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668206"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294022"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>请于 2023 年 3 月 1 日之前将 IaaS 资源迁移到 Azure 资源管理器 
 
-2014 年，我们在 [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)上推出了基础结构即服务 (IaaS)。 从那时起，我们一直在强化功能。 由于 Azure 资源管理器现具有完整的 IaaS 功能和其他改进，因此我们在 2020 年 2 月 28 日弃用了通过 [Azure Service Manager](./migration-classic-resource-manager-faq.md#what-is-azure-service-manager-and-what-does-it-mean-by-classic) (ASM) 管理 IaaS 虚拟机 (VM) 的功能。 此功能将于 2023 年 3 月 1 日完全停用。 
+2014 年，我们在 [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)上推出了基础结构即服务 (IaaS)。 从那时起，我们一直在强化功能。 由于 Azure 资源管理器现具有完整的 IaaS 功能和其他改进，因此我们在 2020 年 2 月 28 日弃用了通过 [Azure Service Manager](/azure/virtual-machines/migration-classic-resource-manager-faq#what-is-azure-service-manager-and-what-does-it-mean-by-classic) (ASM) 管理 IaaS 虚拟机 (VM) 的功能。 此功能将于 2023 年 3 月 1 日完全停用。 
 
 目前，大约有 90% 的 IaaS VM 在使用 Azure 资源管理器。 如果你在通过 ASM 使用 IaaS 资源，请立即开始计划迁移。 为了使用 [Azure 资源管理器](../azure-resource-manager/management/index.yml)请在 2023 年 3 月 1 日之前完成迁移。
 
@@ -56,7 +56,7 @@ ms.locfileid: "101668206"
    - 还可使用[门户](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22)或 [PowerShell](../governance/resource-graph/concepts/work-with-data.md) 查询 Azure Resource Graph，进而查看已选订阅的所有带标记的 VM（经典）及相关信息的列表。 
    - 2020 年 2 月 8 日和 9 月 2 日，我们向订阅所有者发送了电子邮件，主题为“开始计划将 IaaS VM 迁移到 Azure 资源管理器”。 电子邮件中列出了所有订阅和其中的 VM（经典）。 请使用它们来生成此列表。 
 
-1. [详细了解](./migration-classic-resource-manager-overview.md)如何将 [Linux](./migration-classic-resource-manager-plan.md) 和 [Windows](./migration-classic-resource-manager-plan.md) VM（经典）迁移到 Azure 资源管理器。 若要了解详细信息，请参阅[有关从经典部署模型迁移到 Azure 资源管理器部署模型的常见问题](./migration-classic-resource-manager-faq.md)。
+1. [详细了解](./migration-classic-resource-manager-overview.md)如何将 [Linux](./migration-classic-resource-manager-plan.md) 和 [Windows](./migration-classic-resource-manager-plan.md) VM（经典）迁移到 Azure 资源管理器。 若要了解详细信息，请参阅[有关从经典部署模型迁移到 Azure 资源管理器部署模型的常见问题](./migration-classic-resource-manager-faq.yml)。
 
 1. 建议使用[平台支持迁移工具](./migration-classic-resource-manager-overview.md)开始规划，按照验证、准备和提交这三个简单步骤迁移现有 VM。 此工具旨在迁移 VM 的同时确保不停机或停机时间最少。 
 
@@ -68,4 +68,4 @@ ms.locfileid: "101668206"
 
 1. 如果有技术问题、疑惑或在将订阅添加到允许列表时需要帮助，请[联系支持人员](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"})。
 
-1. 请尽快完成迁移，从而避免业务影响，并利用 Azure 资源管理器改进后的性能、安全性和新功能。 
+1. 请尽快完成迁移，从而避免业务影响，并利用 Azure 资源管理器改进后的性能、安全性和新功能。

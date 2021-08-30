@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 07/06/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
-ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 2658c088304eba457b25bb3dc421b356ba70b57f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40, has-adal-ref
+ms.openlocfilehash: fca6234742958f363d45c02780c2d01246ac58a9
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100102472"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428842"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中的权限和许可
 
@@ -43,19 +43,17 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 
 将资源的功能分割成小的权限集时，可将第三方应用构建为只请求执行其功能所需的权限。 用户和管理员能够知道应用可以访问哪些数据， 因此可以更加确信应用不会出现恶意行为。 开发人员应始终遵守“最低特权”原则，仅请求分配正常运行应用程序所需的权限。
 
-在 OAuth 2.0 中，这些类型的权限集称为“范围”。 它们通常也称为“权限”。 在 Microsoft 标识平台中，权限以字符串值形式表示。 以 Microsoft Graph 为例，下面是每个权限的字符串值：
-
-* 使用 `Calendars.Read`
-* 使用 `Calendars.ReadWrite`
-* 使用 `Mail.Send`
+在 OAuth 2.0 中，这些类型的权限集称为“范围”。 它们通常也称为“权限”。 在 Microsoft 标识平台中，权限以字符串值形式表示。 应用通过在 `scope` 查询参数中指定权限来请求所需的权限。 标识平台支持多个定义明确的 [OpenID Connect 范围](#openid-connect-scopes)以及基于资源的权限（通过将权限值追加到资源的标识符或应用程序 ID URI 来指示每个权限）。 例如，权限字符串 `https://graph.microsoft.com/Calendars.Read` 用于请求在 Microsoft Graph 中读取用户日历的权限。
 
 应用往往是通过在发往 Microsoft 标识平台授权终结点的请求中指定范围来请求这些权限。 但是，某些高特权权限只能通过管理员同意来授予。 可以通过使用[管理员同意终结点](#admin-restricted-permissions)来请求或授予这些权限。 请继续阅读以了解详细信息。
+
+在对 Microsoft 标识平台的授权、令牌或同意终结点请求中，如果在 scope 参数中省略资源标识符，则假定资源为 Microsoft Graph。 例如，`scope=User.Read` 等效于 `https://graph.microsoft.com/User.Read`。
 
 ## <a name="permission-types"></a>权限类型
 
 Microsoft 标识平台支持两种类型的权限：委托的权限和应用程序权限 。
 
-* **委托的权限** 由包含登录用户的应用使用。 对于这些应用，由用户或管理员同意应用请求的权限， 并向应用授予委托的权限，以便该应用在对目标资源进行调用时可充当登录的用户。 
+* **委托的权限** 由包含登录用户的应用使用。 对于这些应用，由用户或管理员同意应用请求的权限， 当应用调用目标资源时，它被委托了充当已登录用户的权限。 
 
     某些委托的权限可由非管理用户同意， 但某些高特权权限需要[管理员同意](#admin-restricted-permissions)。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure Active Directory (Azure AD) 中的管理员角色权限](../roles/permissions-reference.md)。
 
@@ -110,6 +108,37 @@ OpenID Connect 的 Microsoft 标识平台实现具有一些已明确定义并托
 
 有关如何获取及使用刷新令牌的详细信息，请参阅 [Microsoft 标识平台协议参考](active-directory-v2-protocols.md)。
 
+## <a name="consent-types"></a>同意类型
+
+Microsoft 标识平台中的应用程序必须获得同意才能访问所需的资源或 API。 应用可能需要了解多种类型的许可才能成功访问。 在定义权限时，还需要了解用户如何获取应用或 API 的访问权限。
+
+### <a name="static-user-consent"></a>静态用户同意 
+
+在静态用户同意方案中，必须在 Azure 门户的应用配置中指定应用所需的所有权限。 如果用户（或管理员，视情况而定）尚未对此应用授予同意，则 Microsoft 标识平台会提示用户提供同意。
+
+静态权限还使管理员能够[代表组织中的所有用户进行同意](#requesting-consent-for-an-entire-tenant)。
+
+尽管在 Azure 门户中定义应用的静态权限能保持代码的简洁性，但可能会给开发人员带来几个问题：
+
+- 应用需要在用户首次登录时请求可能需要的权限。 这可能会导致冗长的权限列表，而让最终用户在初始登录时打消审批应用程序访问权限的念头。
+
+- 应用需要事先知道可能访问的所有资源。 很难创建能够访问任意数量资源的应用。
+
+### <a name="incremental-and-dynamic-user-consent"></a>增量同意和动态用户同意
+
+使用 Microsoft 标识平台终结点，可以忽略在 Azure 门户的应用注册信息中定义的静态权限，而以递增方式请求权限。  可以一开始请求最少的一组权限，然后随着时间的推移，当客户使用更多的应用功能时，再请求更多的权限。 为此，可以在[请求访问令牌](#requesting-individual-user-consent)时，通过在 `scope` 参数中包含新的范围指定应用所需的范围 - 无需在应用程序注册信息中预定义这些范围。 如果用户尚未许可添加到请求的新范围，则系统会提示他们仅许可新的权限。 增量许可或动态许可仅适用于委托的权限，而不适用于应用程序权限。
+
+允许应用通过 `scope` 参数动态请求权限可让开发人员完全控制用户的体验。 还可以将许可体验提前，并在一个初始授权请求中请求所有的权限。 如果应用需要大量的权限，则你可以在用户尝试使用应用的某些功能过程中，以递增方式向用户收集这些权限。
+
+> [!IMPORTANT]
+> 动态许可有时十分方便，但对于管理员许可的权限而言，可能会带来很大的挑战，因为管理员许可体验在许可时不知道这些权限。 如果你需要管理员特权权限，或者应用使用动态许可，则必须在 Azure 门户中注册所有权限（而不仅仅是需要管理员同意的权限子集）。 这使租户管理员能够代表其所有用户同意。
+
+### <a name="admin-consent"></a>管理员同意
+
+应用需要访问特定的高特权权限时，必须执行[管理员同意](#using-the-admin-consent-endpoint)。 管理员同意可以确保管理员在授权应用或用户访问组织中的高特权数据之前拥有某些额外的控制权。
+
+[代表组织执行管理员同意](#requesting-consent-for-an-entire-tenant)仍需要为应用注册静态权限。 如果需要管理员代表整个组织授予同意，请在应用注册门户中为应用设置这些权限。 这会减少组织管理员设置应用程序所需的周期数。
+
 ## <a name="requesting-individual-user-consent"></a>请求单个用户的许可
 
 在 [OpenID Connect 或 OAuth 2.0](active-directory-v2-protocols.md) 授权请求中，应用可以使用 `scope` 查询参数来请求所需的权限。 例如，当用户登录应用时，应用会发送类似于以下示例的请求 （添加换行符是为了方便阅读）。
@@ -140,7 +169,9 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 组织在购买应用程序的许可证或订阅时，通常需要主动设置该应用程序，以使其可供组织的所有成员使用。 在此过程中，管理员可以代表租户中的任何用户授予对该应用程序的许可。 如果管理员为整个租户授予同意，则组织的用户不会看到应用程序的同意页。
 
-若要为租户中的所有用户请求许可委托的权限，应用可以使用管理员许可终结点。
+代表组织执行管理员同意仍需要为应用注册静态权限。 如果需要管理员代表整个组织授予同意，请在应用注册门户中为应用设置这些权限。
+
+若要为租户中的所有用户请求同意委托的权限，应用可以使用[管理员同意终结点](#using-the-admin-consent-endpoint)。
 
 此外，应用程序必须使用管理员同意终结点来请求应用程序权限。
 
@@ -217,13 +248,13 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| 参数        | 条件        | 说明                                                                                |
+| 参数        | 条件        | 描述                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
-| `tenant` | 必须 | 要向其请求权限的目录租户。 可使用 GUID 或易记名称格式提供它， 也可以采用常规方式使用组织来引用它，如示例所示。 请勿使用“common”，因为除非在租户的上下文中，否则个人帐户无法提供管理员同意。 为了确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
+| `tenant` | 必需 | 要向其请求权限的目录租户。 可使用 GUID 或易记名称格式提供它， 也可以采用常规方式使用组织来引用它，如示例所示。 请勿使用“common”，因为除非在租户的上下文中，否则个人帐户无法提供管理员同意。 为了确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
 | `client_id` | 必需 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给你的应用的应用程序（客户端）ID。 |
 | `redirect_uri` | 必须 |要向其发送响应，供应用处理的重定向 URI。 必须与在应用注册门户中注册的重定向 URI 之一完全匹配。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 使用该状态可在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
-|`scope`        | 必须        | 定义应用程序请求的权限集。 范围可以是静态范围（使用 [`/.default`](#the-default-scope)），也可以是动态范围。  此集可以包括 OpenID Connect 范围（`openid`、`profile`、`email`）。 如果需要应用程序权限，必须使用 `/.default` 来请求静态配置的权限列表。  |
+|`scope`        | 必需        | 定义应用程序请求的权限集。 范围可以是静态范围（使用 [`/.default`](#the-default-scope)），也可以是动态范围。  此集可以包括 OpenID Connect 范围（`openid`、`profile`、`email`）。 如果需要应用程序权限，必须使用 `/.default` 来请求静态配置的权限列表。  |
 
 
 此时，Azure AD 要求租户管理员登录，以完成请求。 系统会要求管理员批准你在 `scope` 参数中请求的所有权限。  如果你使用了静态 (`/.default`) 值，则它的功能将类似于 v1.0 管理员同意终结点，并且它会请求对应用所需权限中找到的所有范围的同意。
@@ -270,7 +301,7 @@ Content-Type: application/json
     "grant_type": "authorization_code",
     "client_id": "6731de76-14a6-49ae-97bc-6eba6914391e",
     "scope": "https://outlook.office.com/mail.read https://outlook.office.com/mail.send",
-    "code": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq..."
+    "code": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...",
     "redirect_uri": "https://localhost/myapp",
     "client_secret": "zc53fwe80980293klaj9823"  // NOTE: Only required for web apps
 }

@@ -2,17 +2,18 @@
 title: 源代码管理
 description: 了解如何在 Azure 数据工厂中配置源代码管理
 ms.service: data-factory
+ms.subservice: ci-cd
 author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/26/2021
-ms.openlocfilehash: 77f5d940c06ef5a2a504033225b42b7ddd2c17c1
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 06/04/2021
+ms.openlocfilehash: 1dc73117d1d9fc470ae284461e520c9d45358e87
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903265"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730125"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -55,15 +56,15 @@ ms.locfileid: "107903265"
 
 ### <a name="configuration-method-1-home-page"></a>配置方法 1：主页
 
-在 Azure 数据工厂主页中，选择“设置代码存储库”。
+在 Azure 数据工厂主页中，选择顶部的“设置代码存储库”。
 
-![从主页配置代码存储库](media/author-visually/configure-repo.png)
+![从主页配置代码存储库](media/doc-common-process/set-up-code-repository.png)
 
 ### <a name="configuration-method-2-authoring-canvas"></a>配置方法 2：创作画布
 
 在 Azure 数据工厂用户体验创作画布中，依次选择“数据工厂”下拉菜单和“设置代码存储库”。
 
-![从创作画布配置代码存储库设置](media/author-visually/configure-repo-2.png)
+![通过创作配置代码存储库设置](media/author-visually/configure-repo-2.png)
 
 ### <a name="configuration-method-3-management-hub"></a>配置方法 3：管理中心
 
@@ -275,7 +276,7 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 
 ## <a name="switch-to-a-different-git-repository"></a>切换到不同 Git 存储库
 
-若要切换到不同 Git 存储库，请转到管理中心的“源代码管理”下的“Git 配置”页面。 选择“断开”。 
+若要切换到另一个 Git 存储库，请转到“源代码管理”下的管理中心的“Git 配置”页。 选择“断开”。 
 
 ![“Git”图标](media/author-visually/remove-repository.png)
 

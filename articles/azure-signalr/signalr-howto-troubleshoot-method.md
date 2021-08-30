@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: ed8775c6544791571746b0f3784a60ce2af0de7a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a85e61536e04bd670cd49127f906c69727acc8e9
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726968"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113134972"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>如何排查连接性问题和消息传送问题
 
@@ -27,9 +27,17 @@ ms.locfileid: "105726968"
 
 * 对于 `Classic` 模式，请参考[经典模式故障排除](#classic_mode_tsg)
 
-<a name="default_mode_tsg"></a>
+其次，需要捕获服务跟踪以进行故障排除。 若要了解如何捕获跟踪，请参阅[如何捕获服务跟踪](#how-to-capture-service-traces)。
 
 [有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+
+## <a name="how-to-capture-service-traces"></a>如何捕获服务跟踪
+
+为了简化故障排除过程，Azure SignalR 服务提供了实时跟踪工具来公开有关连接和消息类别的服务跟踪  。 跟踪包括但不限于已连接/已断开连接事件、已收到消息/已留言事件。 使用实时跟踪工具，可以对实时跟踪执行捕获、查看、排序、筛选和导出操作。 有关更多详细信息，请参阅[如何使用实时跟踪工具](./signalr-howto-troubleshoot-live-trace.md)。
+
+[有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
+
+<a name="default_mode_tsg"></a>
 
 ## <a name="default-mode-troubleshooting"></a>默认模式故障排除
 

@@ -8,15 +8,19 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 28365f4c5e4096c83bdf7b1c4cd7ade3fe1e46b2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d9b5803069316a97d6180429bd6b096d401d2396
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742120"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695579"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>提出数据方面的可解答问题
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
 ## <a name="video-3-data-science-for-beginners-series"></a>视频 3：适合初学者的数据科学系列
+
 通过学习“适合初学者的数据科学”视频 3，了解如何将数据科学难题公式化为一个问题。 此视频包括对分类和回归算法问题的比较。
 
 若要充分利用此系列内容，请观看所有视频。 [转到视频列表](#other-videos-in-this-series)

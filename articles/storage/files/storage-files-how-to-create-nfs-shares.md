@@ -1,30 +1,39 @@
 ---
-title: 创建 NFS 共享 - Azure 文件存储（预览）
+title: 创建 NFS 共享（预览版）- Azure 文件存储
 description: 了解如何创建可使用网络文件系统协议装载的 Azure 文件共享。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a4d5ff9298b8cbf4203e157bc21fae6059342130
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2b1e7f17445fe2b24b19acf4669637ef4c47c196
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663423"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728500"
 ---
-# <a name="how-to-create-an-nfs-share"></a>如何创建 NFS 共享
-Azure 文件共享是位于云中的完全托管文件共享。 本文介绍如何创建可使用 NFS 协议的文件共享。 有关这两种协议的详细信息，请参阅 [Azure 文件共享协议](storage-files-compare-protocols.md)。
+# <a name="how-to-create-an-nfs-share-preview"></a>如何创建 NFS 共享（预览版）
+Azure 文件共享是位于云中的完全托管文件共享。 本文介绍如何创建可使用 NFS 协议（预览版）的文件共享。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![否](../media/icons/no-icon.png) | ![是](../media/icons/yes-icon.png) |
 
 ## <a name="limitations"></a>限制
 [!INCLUDE [files-nfs-limitations](../../../includes/files-nfs-limitations.md)]
+
 
 ### <a name="regional-availability"></a>区域可用性
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
 ## <a name="prerequisites"></a>先决条件
+- NFS 共享只接受数字 UID/GID。 为了避免客户端发送字母数字 UID/GID，请禁用 ID 映射。
 - 只能从受信任的网络访问 NFS 共享。 与 NFS 共享的连接必须来自以下源之一：
     - [创建专用终结点](storage-files-networking-endpoints.md#create-a-private-endpoint)（建议）或[限制对公共终结点的访问](storage-files-networking-endpoints.md#restrict-public-endpoint-access)。
     - [在 Linux 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用](storage-files-configure-p2s-vpn-linux.md)。
@@ -34,6 +43,9 @@ Azure 文件共享是位于云中的完全托管文件共享。 本文介绍如�
 - 如果你打算使用 Azure CLI，请[安装最新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="register-the-nfs-41-protocol"></a>注册 NFS 4.1 协议
+
+必须先注册此功能，然后才能创建 NFS Azure 文件共享。 无法在注册前创建的存储帐户中创建 NFS 共享。
+
 如果你使用的是 Azure PowerShell 模块或 Azure CLI，请使用以下命令注册功能：
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
@@ -43,12 +55,10 @@ Azure 文件共享是位于云中的完全托管文件共享。 本文介绍如�
 ```azurepowershell
 # Connect your PowerShell session to your Azure account, if you have not already done so.
 Connect-AzAccount
-
 # Set the actively selected subscription, if you have not already done so.
 $subscriptionId = "<yourSubscriptionIDHere>"
 $context = Get-AzSubscription -SubscriptionId $subscriptionId
 Set-AzContext $context
-
 # Register the NFS 4.1 feature with Azure Files to enable the preview.
 Register-AzProviderFeature `
     -ProviderNamespace Microsoft.Storage `
@@ -61,16 +71,13 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```azurecli
 # Connect your Azure CLI to your Azure account, if you have not already done so.
 az login
-
 # Provide the subscription ID for the subscription where you would like to 
 # register the feature
 subscriptionId="<yourSubscriptionIDHere>"
-
 az feature register \
     --name AllowNfsFileShares \
     --namespace Microsoft.Storage \
     --subscription $subscriptionId
-
 az provider register \
     --namespace Microsoft.Storage
 ```
@@ -96,7 +103,6 @@ az feature show \
     --namespace Microsoft.Storage \
     --subscription $subscriptionId
 ```
-
 ---
 
 ## <a name="create-a-filestorage-storage-account"></a>创建 FileStorage 存储帐户
@@ -170,7 +176,7 @@ az storage account create \
 1. 导航到存储帐户，然后选择“文件共享”。
 1. 选择“+ 文件共享”创建新的文件共享。
 1. 为文件共享命名，选择预配的容量。
-1. 对于“协议”，请选择“NFS (预览)”。
+1. 对于“协议”，请选择“NFS” 。
 1. 对于“根 Squash”，在以下选项中进行选择。
 
     - 根 Squash (默认) - 远程超级用户（根）的访问映射到 UID (65534) 和 GID (65534)。
@@ -183,32 +189,6 @@ az storage account create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. 确保已安装 .NET Framework。 请参阅[下载 .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)。
- 
-1. 使用以下命令验证安装的 PowerShell 版本是否为 `5.1` 或以上。    
-
-   ```powershell
-   echo $PSVersionTable.PSVersion.ToString() 
-   ```
-    
-   若要升级 PowerShell 版本，请参阅[升级现有的 Windows PowerShell](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
-    
-1. 安装最新版本的 PowershellGet 模块。
-
-   ```powershell
-   install-Module PowerShellGet –Repository PSGallery –Force  
-   ```
-
-1. 关闭 PowerShell 控制台，然后重新将其打开。
-
-1. 安装 Az.Storage 预览模块版本 2.5.2-preview。
-
-   ```powershell
-   Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
-   ```
-
-   有关如何安装 PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)
-   
 1. 若要使用 Azure PowerShell 模块创建高级文件共享，请使用 [New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) cmdlet。
 
     > [!NOTE]

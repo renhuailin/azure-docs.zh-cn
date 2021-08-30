@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 author: jpe316
 ms.author: jordane
-ms.date: 03/17/2020
+ms.date: 07/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: 88a2dc2e38861cff540cfa1fcdc0b3f6e9651b04
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 0ef4715bb854905f8076ee116f672eee2d33a059
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111439901"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860809"
 ---
 # <a name="mlops-model-management-deployment-lineage-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure 机器学习进行模型管理、部署、世系跟踪和监视
 
@@ -39,6 +39,7 @@ Azure 机器学习提供以下 MLOps 功能：
 - **监视 ML 应用程序中的操作和 ML 相关问题**。 比较训练与推理之间的模型输入，浏览特定于模型的指标，以及针对 ML 基础结构提供监视和警报。
 - 使用 Azure 机器学习和 Azure Pipelines 自动化端到端 ML 生命周期。 使用管道可以频繁更新模型、测试新模型，并连同其他应用程序和服务持续推出新的 ML 模型。
 
+有关 MLOps 的详细信息，请参阅[机器学习 DevOps (MLOps)](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-mlops)。
 ## <a name="create-reproducible-ml-pipelines"></a>创建可重现的 ML 管道
 
 使用 Azure 机器学习中的 ML 管道，将模型训练过程涉及的所有步骤汇聚到一起。
@@ -94,9 +95,9 @@ Azure 机器学习可帮助你了解部署模型时要创建的服务的 CPU 和
 
 ### <a name="use-models"></a>使用模型
 
-已训练的机器学习模型将在云中或本地部署为 Web 服务。 也可以将模型部署到 Azure IoT Edge 设备。 部署使用 CPU、GPU 或现场可编程门阵列 (FPGA) 进行推理。 也可以使用 Power BI 中的模型。
+已训练的机器学习模型将在云中或本地部署为 Web 服务。 部署使用 CPU、GPU 或现场可编程门阵列 (FPGA) 进行推理。 也可以使用 Power BI 中的模型。
 
-将模型用作 Web 服务或 IoT Edge 设备时，需提供以下项：
+将模型用作 Web 服务时，需提供以下项：
 
 * 用于对提交到服务/设备的数据进行评分的模型。
 * 一个入口脚本。 此脚本接受请求，使用模型对数据评分，然后返回响应。
@@ -105,7 +106,7 @@ Azure 机器学习可帮助你了解部署模型时要创建的服务的 CPU 和
 
 还需要提供目标部署平台的配置。 例如，部署到 Azure Kubernetes 服务时的 VM 系列类型、可用内存和核心数。
 
-创建映像时，还会添加 Azure 机器学习所需的组件。 例如，运行 Web 服务以及与 IoT Edge 交互所需的资产。
+创建映像时，还会添加 Azure 机器学习所需的组件。 例如，运行 Web 服务所需的资产。
 
 #### <a name="batch-scoring"></a>批评分
 支持通过 ML 管道进行批量评分。 有关详细信息，请参阅[针对大数据的批量预测](./tutorial-pipeline-batch-scoring-classification.md)。
@@ -135,12 +136,6 @@ Azure 机器学习可帮助你了解部署模型时要创建的服务的 CPU 和
 * 通过在终结点配置中更新流量百分比，在终结点版本之间切换。
 
 有关详细信息，请参阅 [ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
-
-#### <a name="iot-edge-devices"></a>IoT Edge 设备
-
-可以通过 **Azure IoT Edge 模块** 在 IoT 设备中使用模型。 IoT Edge 模块将部署到支持推理或模型评分的硬件设备。
-
-有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md)。
 
 ### <a name="analytics"></a>分析
 

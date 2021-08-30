@@ -1,27 +1,29 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/20/2020
-ms.author: trbye
-ms.openlocfilehash: d2fae1c08132c855f570750a4528a9a37343434e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: lajanuar
+ms.openlocfilehash: cdf9b7132b6509b936d7a3c4d0d41a23933ef389
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105103999"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122068967"
 ---
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
 需要先安装 <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">JavaScript 语音 SDK</a>，然后才能执行操作。 根据你的平台，使用以下说明：
 
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
+- <a href="/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
 class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web 浏览器 </a>
 
 ## <a name="create-voice-signatures"></a>创建语音签名
 
-第一步是为对话参与者创建语音签名，以便可以将这些参与者识别为非重复的说话人。 用于创建语音签名的输入 `.wav` 音频文件应为 16 位、16 kHz 采样率和单通道（单声道）格式。 每个音频样本的建议时长为 30 秒至 2 分钟。 `.wav` 文件应该是一个人的语音样本，以便创建独一无二的语音配置文件。
+（如果不想使用预先注册的用户配置文件来识别特定参与者，则可以跳过此步骤。）
+
+如果想要注册用户配置文件，第一步是为对话参与者创建语音签名，以便可以将这些参与者识别为非重复的说话人。 用于创建语音签名的输入 `.wav` 音频文件必须为 16 位、16 kHz 采样率、单通道（单声道）格式。 每个音频样本的建议时长为 30 秒至 2 分钟。 如果音频样本太短，会导致在识别说话人时准确性降低。 `.wav` 文件应该是一个人的语音样本，以便创建独一无二的语音配置文件。
 
 以下示例展示了如何通过[使用 JavaScript 的 REST API](https://aka.ms/cts/signaturegenservice) 来创建语音签名。 请注意，对于 `subscriptionKey`、`region` 和 `.wav` 样本文件的路径，需要替换为实际信息。
 
@@ -62,6 +64,11 @@ main();
 ## <a name="transcribe-conversations"></a>听录对话
 
 下面的示例代码演示了如何实时听录两名说话人的对话。 假定已经按上面所述为每名说话人创建了语音签名字符串。 请用真实信息替换 `subscriptionKey`、`region` 和要听录的音频的路径 `filepath`。
+
+如果未使用预先注册的用户配置文件，则将未知用户首次识别为 speaker1、speaker2 等时需要多花几秒钟的时间。
+
+> [!NOTE]
+> 请确保在应用程序中使用相同的 `subscriptionKey` 来创建签名，否则会遇到错误。 
 
 此示例代码执行以下操作：
 

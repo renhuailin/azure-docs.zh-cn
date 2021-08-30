@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: f2d9d9afb1e31f959c4e219c0c95e435c966ccd1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: a095d2f6e05957e4a3daac76f3ac745e5a20de4a
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757060"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228981"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>了解实时 (JIT) VM 访问
 
@@ -56,11 +56,11 @@ ms.locfileid: "111757060"
 
 下图显示了在决定如何对受支持的 VM 分类时安全中心应用的逻辑： 
 
-[![实时 (JIT) 虚拟机 (VM) 逻辑流](media/just-in-time-explained/jit-logic-flow.png)](media/just-in-time-explained/jit-logic-flow.png#lightbox)
+[![实时 (JIT) 虚拟机 (VM) 逻辑流。](media/just-in-time-explained/jit-logic-flow.png)](media/just-in-time-explained/jit-logic-flow.png#lightbox)
 
 当安全中心发现可以受益于 JIT 的计算机时，它会将该计算机添加到建议的“不正常的资源”选项卡中。 
 
-![实时 (JIT) 虚拟机 (VM) 访问建议](./media/just-in-time-explained/unhealthy-resources.png)
+![实时 (JIT) 虚拟机 (VM) 访问建议。](./media/just-in-time-explained/unhealthy-resources.png)
 
 
 ## <a name="faq---just-in-time-virtual-machine-access"></a>常见问题解答 - 实时虚拟机访问
@@ -74,7 +74,7 @@ JIT 要求在订阅上启用[适用于服务器的 Azure Defender](defender-for-
 如果要创建可用于 JIT 的自定义角色，则需要下表中的详细信息。
 
 > [!TIP]
-> 若要为那些需要请求对 VM 进行 JIT 访问而不执行其他 JIT 操作的用户创建最小特权角色，请使用安全中心 GitHub 社区页面中的 [Set-JitLeastPrivilegedRole 脚本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)。
+> 若要为那些需要请求对 VM 进行 JIT 访问而不执行其他 JIT 操作的用户创建最小特权角色，请使用安全中心 GitHub 社区页面中的 [Set-JitLeastPrivilegedRole 脚本](https://github.com/Azure/Azure-Security-Center/tree/main/Powershell%20scripts/JIT%20Scripts/JIT%20Custom%20Role)。
 
 | 使用户能够： | 要设置的权限|
 | --- | --- |
@@ -89,9 +89,7 @@ JIT 要求在订阅上启用[适用于服务器的 Azure Defender](defender-for-
 
 ## <a name="next-steps"></a>后续步骤
 
-本页说明了为何应使用实时 (JIT) 虚拟机 (VM) 访问。 
-
-请转到操作指南文章，了解如何启用 JIT 并请求对启用 JIT 的 VM 进行访问：
+本页说明了为何应使用实时 (JIT) 虚拟机 (VM) 访问。 若要了解如何启用 JIT 并请求访问已启用 JIT 的 VM，请参阅以下内容：
 
 > [!div class="nextstepaction"]
 > [如何使用 JIT 保护管理端口](security-center-just-in-time.md)

@@ -1,22 +1,22 @@
 ---
 title: 使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
-description: 通过浏览器、Azure 经典 CLI、Azure PowerShell、REST 或 SDK 为 HDInsight 设置 Hadoop、Kafka、Spark、HBase、R Server 或 Storm 群集。
+description: 通过浏览器、Azure 经典 CLI、Azure PowerShell、REST 或 SDK 为 HDInsight 设置 Hadoop、Kafka、Spark、HBase 或 Storm 群集。
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18, devx-track-azurecli
 ms.date: 08/06/2020
-ms.openlocfilehash: 4f412e4a8f85f10efcaaf8a7ec45562d298f4bb5
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 95d61f99dcfac8161a24806afbccfbbf80327274
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890658"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112280526"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
-[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
+[!INCLUDE [selector](includes/hdinsight-create-linux-cluster-selector.md)]
 
-了解如何在 HDInsight 中设置和配置 Apache Hadoop、Apache Spark、Apache Kafka、交互式查询、Apache HBase、机器学习服务或 Apache Storm。 另外，了解如何自定义群集，并将它们加入域以提高安全性。
+了解如何在 HDInsight 中设置和配置 Apache Hadoop、Apache Spark、Apache Kafka、Interactive Query、Apache HBase 或 Apache Storm。 另外，了解如何自定义群集，并将它们加入域以提高安全性。
 
 Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点）组成。 Azure HDInsight 对各个节点的安装和配置的实现细节进行处理，因此你只需提供常规配置信息。
 
@@ -31,12 +31,12 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 
 | 群集创建方法 | Web 浏览器 | 命令行 | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure 门户](hdinsight-hadoop-create-linux-clusters-portal.md) |âœ” |&nbsp; |&nbsp; |&nbsp; |
-| [Azure 数据工厂](hdinsight-hadoop-create-linux-clusters-adf.md) |âœ” |âœ” |âœ” |âœ” |
-| [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |âœ” |&nbsp; |&nbsp; |
-| [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |âœ” |&nbsp; |&nbsp; |
-| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |âœ” |âœ” |&nbsp; |
-| [Azure Resource Manager 模板](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |âœ” |&nbsp; |&nbsp; |
+| [Azure 门户](hdinsight-hadoop-create-linux-clusters-portal.md) |✅ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure 数据工厂](hdinsight-hadoop-create-linux-clusters-adf.md) |✅ |✅ |✅ |✅ |
+| [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✅ |&nbsp; |&nbsp; |
+| [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✅ |&nbsp; |&nbsp; |
+| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✅ |✅ |&nbsp; |
+| [Azure Resource Manager 模板](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✅ |&nbsp; |&nbsp; |
 
 本文介绍了如何在 [Azure 门户](https://portal.azure.com)中进行设置，并通过该门户创建 HDInsight 群集。
 
@@ -77,7 +77,6 @@ Azure HDInsight 目前提供以下群集类型，每种类型都具有一组用�
 | [HBase](hbase/apache-hbase-overview.md) |大量无架构 NoSQL 数据的处理 |
 | [交互式查询](./interactive-query/apache-interactive-query-get-started.md) |更快的交互式 Hive 查询的内存中缓存 |
 | [Kafka](kafka/apache-kafka-introduction.md) | 分布式流式处理平台，可用于构建实时流数据管道和应用程序 |
-| [ML Services](r-server/r-server-overview.md) |各种大数据统计信息、预测模型和机器学习功能 |
 | [Spark](spark/apache-spark-overview.md) |内存中处理、交互式查询、微批流处理 |
 | [Storm](storm/apache-storm-overview.md) |实时事件处理 |
 
@@ -126,7 +125,7 @@ HDInsight 群集可以使用以下存储选项：
 
 在配置期间，对于默认存储终结点，需要指定 Azure 存储帐户的 Blob 容器或 Data Lake Storage。 默认存储包含应用程序日志和系统日志。 可以选择指定群集可访问的其他链接的 Azure 存储帐户和 Data Lake Storage 帐户。 HDInsight 群集和相关的存储帐户必须在同一个 Azure 位置。
 
-[!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
+[!INCLUDE [secure-transfer-enabled-storage-account](includes/hdinsight-secure-transfer.md)]
 
 > [!IMPORTANT]
 > 在创建群集后启用安全存储传输可能会导致使用存储帐户时出错，因此不建议这样做。 最好使用已启用安全传输的存储帐户创建新群集。

@@ -9,12 +9,12 @@ ms.date: 03/22/2021
 ms.author: cynthn
 ms.collection: linux
 ms.custom: contperf-fy21q3-portal, devx-track-azurecli
-ms.openlocfilehash: db21cf9e4dc28a83b98f58e73db9a5d76f80aef2
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: f440518e0d7b4fc347da6455e7f6c06e18633598
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886669"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740074"
 ---
 # <a name="find-azure-marketplace-image-information-using-the-azure-cli"></a>使用 Azure CLI 查找 Azure 市场映像信息
 
@@ -31,7 +31,7 @@ Azure 中的市场映像具有以下属性：
 * **SKU**：产品/服务的实例，例如分发的主要版本。 示例：18.04-LTS、2019-Datacenter
 * **版本**：映像 SKU 的版本号。 
 
-这些值可以单独传递，也可以作为映像 URN 进行传递，从而将用冒号 (:) 分隔的值组合在一起。 例如：*Publisher*:*Offer*:*Sku*:*Version*。 可将 URN 中的版本号替换为 `latest`，以使用最新版本的映像。 
+可以单独传递这些值，或将这些值作为映像 URN 传递，并将它们用冒号 (:) 隔开。 例如：发布者:产品/服务:SKU:版本   。 可将 URN 中的版本号替换为 `latest`，以使用最新版本的映像。 
 
 如果映像发布服务器提供附加许可和购买条款，则必须先接受这些许可和条款才能使用映像。  有关详细信息，请参阅[查看购买计划信息](#check-the-purchase-plan-information)。
 
@@ -195,7 +195,7 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 
 ## <a name="accept-the-terms"></a>接受条款
 
-若要查看并接受许可条款，请使用 [az vm image accept-terms](/cli/azure/vm/image/terms) 命令。 接受条款时，将在订阅中启用编程部署。 对于映像的每个订阅，只需接受条款一次。 例如：
+若要查看并接受许可条款，请使用 [az vm image terms](/cli/azure/vm/image/terms) 命令。 接受条款时，将在订阅中启用编程部署。 对于映像的每个订阅，只需接受条款一次。 例如：
 
 ```azurecli
 az vm image terms show --urn bitnami:rabbitmq:rabbitmq:latest

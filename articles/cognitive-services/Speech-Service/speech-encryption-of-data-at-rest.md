@@ -7,14 +7,14 @@ manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 07/14/2021
 ms.author: egeaney
-ms.openlocfilehash: 3e2f4cbdf7f84f7b6cbd749225a2e0f7ed60cdd5
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: cdf8276904fda5098b3192779e0372b4a1bcc9d2
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202868"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766614"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>语音识别服务静态数据的加密
 
@@ -39,7 +39,12 @@ ms.locfileid: "108202868"
 
 ## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>自带存储 (BYOS) 以进行自定义和日志记录
 
-若要请求访问自带存储，请填写并提交 [语音服务 - 自带存储 (BYOS) 请求表单](https://aka.ms/cogsvc-cmk)。 获得批准后，需要创建自己的存储帐户来存储进行自定义和日志记录所需的数据。 添加存储帐户时，语音服务资源将启用系统分配的托管标识。 启用系统分配的托管标识后，此资源将注册到 Azure Active Directory (AAD)。 注册后，将向托管标识授予存储帐户的访问权限。 你可以在此处详细了解托管标识。 有关托管标识的详细信息，请参阅[什么是托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+若要请求访问自带存储，请填写并提交 [语音服务 - 自带存储 (BYOS) 请求表单](https://aka.ms/cogsvc-cmk)。 获得批准后，需要创建自己的存储帐户来存储进行自定义和日志记录所需的数据。 添加存储帐户时，语音服务资源将启用系统分配的托管标识。
+
+> [!IMPORTANT]
+> 用于创建启用了 BYOS 功能的语音资源的用户帐户应被分配 [Azure 订阅范围内的“所有者”角色](../../cost-management-billing/manage/add-change-subscription-administrator.md#to-assign-a-user-as-an-administrator)。 否则，在资源预配期间将收到授权错误。
+
+启用系统分配的托管标识后，此资源将注册到 Azure Active Directory (AAD)。 注册后，将向托管标识授予存储帐户的访问权限。 有关托管标识的详细信息，请参阅[什么是托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 > [!IMPORTANT]
 > 如果禁用系统分配的托管标识，则将删除对存储帐户的访问权限。 这将导致需要访问存储帐户的部分语音服务停止工作。  

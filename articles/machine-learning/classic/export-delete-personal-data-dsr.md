@@ -9,18 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 0f590f52224eed6fd32dbb2af0297669b99a3fe8
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 47ca53ac4fa6aa30ae67fdaf9be3cf6eb3f489bb
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688851"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581495"
 ---
 # <a name="export-and-delete-in-product-user-data-from-machine-learning-studio-classic"></a>从机器学习工作室（经典）中导出和删除产品内用户数据
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
+
 
 可以使用 Azure 门户、工作室（经典）界面、PowerShell 和经身份验证的 REST API 删除或导出机器学习工作室（经典）存储的产品内数据。 本文介绍了相关实现方法。 
 

@@ -2,15 +2,41 @@
 title: Microsoft Azure 备份服务器中的新增功能
 description: Microsoft Azure 备份服务器提供用于保护 VM、文件和文件夹、工作负载等的增强备份功能。
 ms.topic: conceptual
-ms.date: 05/24/2020
-ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/27/2021
+ms.openlocfilehash: 8f7c0e8709cd899b9b6a285dcd8c556763869c65
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91332757"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722660"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure 备份服务器 (MABS) 中的新增功能
+
+## <a name="whats-new-in-mabs-v3-ur2"></a>MABS v3 UR2 中的新增功能
+
+Microsoft Azure 备份服务器 (MABS) 版本 3 UR2 支持以下新功能/功能更新。
+
+有关 UR2 问题修复和安装说明的信息，请参阅[知识库文章](https://support.microsoft.com/topic/update-rollup-2-for-microsoft-azure-backup-server-v3-350de164-0ae4-459a-8acf-7777dbb7fd73)。
+
+### <a name="support-for-azure-stack-hci"></a>支持 Azure Stack HCI
+
+借助 MABS v3 UR2，可以在 Azure Stack HCI 上备份虚拟机。 [了解详细信息](./back-up-azure-stack-hyperconverged-infrastructure-virtual-machines.md)。
+
+### <a name="support-for-vmware-70"></a>支持 VMware 7.0
+
+借助 MABS v3 UR2，可以备份 VMware 7.0 VM。 [了解详细信息](./backup-azure-backup-server-vmware.md)。
+
+### <a name="support-for-sql-server-failover-cluster-instance-fci-using-cluster-shared-volume-csv"></a>使用群集共享卷 (CSV) 的 SQL Server 故障转移群集实例 (FCI) 支持
+
+MABS v3 UR2 支持使用群集共享卷 (CSV) 的 SQL Server 故障转移群集实例 (FCI)。 借助 CSV，可以简化 SQL Server 实例的管理。 这有助于你从任何节点管理基础存储，因为具有拥有磁盘的节点的抽象。 [了解详细信息](./backup-azure-sql-mabs.md)。
+
+### <a name="optimized-volume-migration"></a>优化的卷迁移
+
+MABS v3 UR2 支持优化的卷迁移。 借助优化的卷迁移，你可以更快地将数据源移至新卷。 此增强迁移过程仅将活动备份副本（活动副本）迁移到新卷。 所有新恢复点均在新卷上创建，而现有恢复点则在现有卷上维护，并根据保留策略进行清除。 [了解详细信息](/system-center/dpm/volume-to-volume-migration?view=sc-dpm-2019&preserve-view=true)。
+
+### <a name="offline-backup-using-azure-data-box"></a>使用 Azure Data Box 进行脱机备份
+
+MABS v3 UR2 支持使用 Azure Data Box 进行脱机备份。 借助 Microsoft Azure Data Box 集成，可以克服将数 TB 的备份数据从本地存储移至 Azure 存储的挑战。 Azure Data Box 可节省购买自己的与 Azure 兼容的磁盘和连接器或将临时存储预配为暂存位置所需完成的工作量。 Microsoft 还处理端到端的传输物流，你可以通过 Azure 门户跟踪。 [了解详细信息](./offline-backup-azure-data-box-dpm-mabs.md)。
 
 ## <a name="whats-new-in-mabs-v3-ur1"></a>MABS V3 UR1 中的新增功能
 
@@ -61,7 +87,7 @@ MABS V3 UR1 为关键操作添加了额外的身份验证层。 当你执行“�
 MABS v3 UR1 通过 Azure 导入/导出服务改善了脱机备份体验。 有关详细信息，请参阅[此处](./backup-azure-backup-server-import-export.md)的更新步骤。
 
 >[!NOTE]
->此更新还通过使用 MABS 中的 Azure Data Box 提供脱机备份预览。 请联系 [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com) 了解更多信息。
+>通过 MABS v3 UR2，MABS 可以使用 Azure Data Box 执行脱机备份。 [了解详细信息](./offline-backup-azure-data-box-dpm-mabs.md)。
 
 ### <a name="new-cmdlet-parameter"></a>新的 cmdlet 参数
 

@@ -3,16 +3,16 @@ title: 适用于 Azure 虚拟桌面的 PowerShell 模块 - Azure
 description: 如何安装和设置适用于 Azure 虚拟桌面的 PowerShell 模块。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 07/20/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 029034cd4c4e118cca532509208f08843ca8b7fd
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 916ce455d2d053746afb37b6b6dcc84168083b61
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753118"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464558"
 ---
 # <a name="set-up-the-powershell-module-for-azure-virtual-desktop"></a>设置适用于 Azure 虚拟桌面的 PowerShell 模块
 
@@ -47,6 +47,12 @@ Connect-AzAccount
 > 
 > ```powershell
 > Connect-AzAccount -EnvironmentName AzureUSGovernment
+> ```
+> 
+> 若要连接到 Azure 中国门户，请运行此 cmdlet：
+> 
+> ```powershell
+> Connect-AzAccount -EnvironmentName AzureChinaCloud
 > ```
 
 登录到 Azure 帐户的操作需要在运行 Connect cmdlet 时生成的代码。 若要登录，请访问 <https://microsoft.com/devicelogin>，输入代码，然后使用 Azure 管理员凭据登录。

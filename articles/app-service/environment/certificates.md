@@ -7,22 +7,24 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 604adeb3eeb716027ba821b4e230285602680e00
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88962037"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433159"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>证书和应用服务环境 
-
+> [!NOTE]
+> 本文介绍用于独立应用服务计划的应用服务环境 v2
+> 
 应用服务环境 (ASE) 是在 Azure 虚拟网络 (VNet) 中运行的 Azure 应用服务的部署。 可以使用能够通过 Internet 访问的应用程序终结点或者 VNet 中的应用程序终结点来部署 ASE。 如果使用可通过 Internet 访问的终结点部署 ASE，则该部署称为外部 ASE。 如果使用 VNet 中的终结点部署 ASE，则该部署称为 ILB ASE。 可以在[创建和使用 ILB ASE](./create-ilb-ase.md) 文档中详细了解 ILB ASE。
 
 ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使用的功能不能在多租户应用服务中使用。 
 
 ## <a name="ilb-ase-certificates"></a>ILB ASE 证书 
 
-如果使用外部 ASE，则可以通过 [应用名称].[ASE 名称].p.azurewebsites.net 访问应用。 默认情况下，所有 ASE 甚至 ILB ASE，都是使用遵循该格式的证书创建的。 创建 ILB ASE 后，可以基于创建 ILB ASE 时指定的域名来访问应用。 为使应用支持 TLS，需要上传证书。 可通过三种方式获取有效的 TLS/SSL 证书：使用内部证书颁发机构、向外部颁发者购买证书或使用自签名证书。 
+如果使用外部 ASE，则可以通过&lt;应用名称&gt;.&lt;ASE 名称&gt;.p.azurewebsites.net 访问应用。 默认情况下，所有 ASE 甚至 ILB ASE，都是使用遵循该格式的证书创建的。 创建 ILB ASE 后，可以基于创建 ILB ASE 时指定的域名来访问应用。 为使应用支持 TLS，需要上传证书。 可通过三种方式获取有效的 TLS/SSL 证书：使用内部证书颁发机构、向外部颁发者购买证书或使用自签名证书。 
 
 可以使用两个选项配置 ILB ASE 的证书。  可为 ILB ASE 设置通配符默认证书，或者在 ASE 中的单个 Web 应用上设置证书。  无论做出哪种选择，都必须正确配置以下证书属性：
 
@@ -35,7 +37,7 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
 在门户中创建 ILB ASE 之后，必须为 ILB ASE 设置证书。 在设置证书之前，ASE 将显示一个横幅，指出未设置证书。  
 
-上传的证书必须是 .pfx 文件。 上传证书后，ASE 将执行缩放操作以设置证书。 
+上传的证书必须是 .pfx 文件。 上传证书后，大约有 20 分钟的时间延迟，然后才能使用证书。 
 
 无法在门户中一次性创建 ASE 并上传证书，即使在一个模板中也无法做到这一点。 作为单独的操作，可以使用[从模板创建 ASE](./create-from-template.md) 文档中所述的模板上传证书。  
 

@@ -2,13 +2,14 @@
 title: 对访问 Azure 事件中心资源的应用程序进行身份验证
 description: 本文提供有关对使用 Azure Active Directory 访问 Azure 事件中心资源的应用程序进行身份验证的信息
 ms.topic: conceptual
-ms.date: 05/10/2021
-ms.openlocfilehash: 1db8ec57145f619cc71e2fb78d64ace23761073a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/14/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: f87866ece2699a457e00a4afba6855933118cf19
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378208"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112123081"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>对使用 Azure Active Directory 访问事件中心资源的应用程序进行身份验证
 Microsoft Azure 基于 Azure Active Directory (Azure AD) 针对资源和应用程序提供了集成的访问控制管理功能。 将 Azure AD 与 Azure 事件中心配合使用的主要优势在于，不再需要将凭据存储在代码中。 可以从 Microsoft 标识平台请求 OAuth 2.0 访问令牌。 请求令牌的资源名称为 `https://eventhubs.azure.net/`，所有云/租户都是如此（对于 Kafka 客户端，请求令牌的资源为 `https://<namespace>.servicebus.windows.net`）。 Azure AD 对运行应用程序的安全主体（用户、组或服务主体）进行身份验证。 如果身份验证成功，Azure AD 会将访问令牌返回应用程序，应用程序可随之使用访问令牌对 Azure 事件中心资源请求授权。
@@ -68,27 +69,9 @@ Azure 提供了以下 Azure 内置角色，用于通过 Azure AD 和 OAuth 授�
 
 
 ## <a name="assign-azure-roles-using-the-azure-portal"></a>使用 Azure 门户分配 Azure 角色  
-注册应用程序后，可以将该应用程序的服务主体分配给 [Azure 事件中心的内置角色](#built-in-roles-for-azure-event-hubs)部分中所述的事件中心 Azure AD 角色。 
+将其中一个[事件中心角色](#built-in-roles-for-azure-event-hubs)分配给所需范围（事件中心命名空间、资源组、订阅）内的应用程序服务主体。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，导航到你的事件中心命名空间。
-2. 在“概述”页上，选择要为其分配角色的事件中心。
-
-    ![选择事件中心](./media/authenticate-application/select-event-hub.png)
-1. 选择“访问控制(IAM)”以显示事件中心的访问控制设置。 
-1. 选择“角色分配”  选项卡以查看角色分配列表。 在工具栏上选择“添加”按钮，然后选择“添加角色分配”。 
-
-    ![工具栏上的“添加”按钮](./media/authenticate-application/role-assignments-add-button.png)
-1. 在“添加角色分配”  页上，执行以下步骤：
-    1. 选择要分配的 **事件中心角色**。 
-    1. 通过搜索找到要为其分配该角色的 **安全主体**（用户、组、服务主体）。 从列表中选择已注册的应用程序。 
-    1. 选择“保存”以保存角色分配。 
-
-        ![向用户分配角色](./media/authenticate-application/assign-role-to-user.png)
-    4. 切换到“角色分配”选项卡并确认角色分配。 例如，下图显示 mywebapp 充当“Azure 事件中心数据发送方”角色 。 
-        
-        ![列表中的用户](./media/authenticate-application/user-in-list.png)
-
-可以遵循类似的步骤来分配范围限定为事件中心命名空间、资源组或订阅的角色。 定义角色及其范围后，可以使用[此 GitHub 位置](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)提供的示例测试此行为。 若要详细了解如何使用 Azure RBAC 和 Azure 门户管理对 Azure 资源的访问，请参阅[此文](..//role-based-access-control/role-assignments-portal.md)。 
+定义角色及其范围后，可以使用[此 GitHub 位置](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)提供的示例测试此行为。 若要详细了解如何使用 Azure RBAC 和 Azure 门户管理对 Azure 资源的访问，请参阅[此文](..//role-based-access-control/role-assignments-portal.md)。 
 
 
 ### <a name="client-libraries-for-token-acquisition"></a>用于获取令牌的客户端库  

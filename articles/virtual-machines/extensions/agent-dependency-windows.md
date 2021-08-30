@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.collection: windows
 ms.date: 06/01/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1de4facc6cc945b5cada2201d3da667efae793aa
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: fdfdb0ec6f9c265245ca4699aa6e2ab49dd4fdbd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110797350"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744978"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Azure Monitor 依赖项虚拟机扩展
 
@@ -132,35 +132,26 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
     -Publisher "Microsoft.Azure.Monitoring.DependencyAgent" `
     -ExtensionType "DependencyAgentWindows" `
     -TypeHandlerVersion 9.5 `
-    -Location WestUS 
+    -Location WestUS
 ```
 
-## <a name="automatic-upgrade-preview"></a>自动升级（预览版）
-现已在公共预览版中提供了自动升级依赖项扩展次要版本的新功能。 若要启用此功能，必须执行以下配置更改。
+## <a name="automatic-extension-upgrade"></a>自动扩展升级
+现已提供[自动升级依赖项扩展次要版本](../automatic-extension-upgrade.md)的新功能。
 
--   使用[启用预览访问](../automatic-extension-upgrade.md#enabling-preview-access)中的方法之一为订阅启用该功能。
-- 将 `enableAutomaticUpgrade` 特性添加到模板。
+若要为扩展启用自动扩展升级，必须确保将 `enableAutomaticUpgrade` 属性设置为 `true` 并添加到扩展模板。 必须单独在每个 VM 或 VM 规模集上启用此属性。 使用[启用](../automatic-extension-upgrade.md#enabling-automatic-extension-upgrade)部分中所述的方法之一为 VM 或 VM 规模集启用该功能。
 
-Dependency Agent 扩展版本控制方案遵循以下格式：
+在 VM 或 VM 规模集中启用自动扩展升级后，每当扩展发布者发布了扩展的新版本，该扩展就会自动升级。 按照[此处](../automatic-extension-upgrade.md#how-does-automatic-extension-upgrade-work)所述的可用性优先原则安全地应用升级。
 
-```
-<MM.mm.bb.rr> where M = Major version number, m = minor version number, b = bug number, r = revision number.
-```
+`enableAutomaticUpgrade` 属性的功能不同于 `autoUpgradeMinorVersion` 的功能。 扩展发布服务器发布新版本时，`autoUpgradeMinorVersion` 属性不会自动触发次要版本更新。 `autoUpgradeMinorVersion` 属性指示扩展在部署时是否应当使用更新的次要版本（如果可用）。 但是，部署后，除非重新部署，否则扩展不会升级次要版本，即使此属性设置为 true 也是如此。
 
-`enableAutomaticUpgrade` 和 `autoUpgradeMinorVersion` 特性共同确定订阅中虚拟机的升级处理方式。
-
-| enableAutomaticUpgrade | autoUpgradeMinorVersion | 效果 |
-|:---|:---|:---|
-| true | false | 如果存在较新版本的 bb.rr，则升级依赖项代理。 例如，如果你运行的是 9.6.0.1355，而较新的版本为 9.6.2.1366，则启用的订阅中的虚拟机会升级到 9.6.2.1366。 |
-| true | true |  如果存在较新版本的 mm.bb.rr 或 bb.rr，此设置会升级依赖项代理。 例如，如果你运行的是 9.6.0.1355，而较新的版本为 9.7.1.1416，则启用的订阅中的虚拟机会升级到 9.7.1.1416。 同样，如果你运行的是 9.6.0.1355，而较新的版本为 9.6.2.1366，则启用的订阅中的虚拟机会升级到 9.6.2.1366。 |
-| false | true 或 false | 自动升级已禁用。
+若要使扩展版本保持更新，建议将 `enableAutomaticUpgrade` 与扩展部署一起使用。
 
 > [!IMPORTANT]
-> 如果将 `enableAutomaticUpgrade` 添加到模板，请确保至少使用 API 版本 2019-12-01。
+> 如果将 `enableAutomaticUpgrade` 添加到模板，请确保使用 API 2019-12-01 或更高版本。
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令：
 

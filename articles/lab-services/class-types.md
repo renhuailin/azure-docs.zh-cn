@@ -3,12 +3,12 @@ title: Azure 实验室服务中的示例类类型 | Microsoft Docs
 description: 提供可以使用 Azure 实验室服务为其设置实验室的某些类型的类。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 81b3426446894b9dd7bfccc942e04c3d9a7ea492
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 0bdbca13fa699d12b566d9943e9e14efa3f37d51
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278751"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113037501"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>类类型概述 - Azure 实验室服务
 
@@ -44,12 +44,19 @@ ms.locfileid: "108278751"
 
 有关如何设置此类实验室的详细信息，请参阅[使用 Azure 实验室服务设置专注于自然语言处理中的深度学习的实验室](class-type-deep-learning-natural-language-processing.md)。
 
-## <a name="ethical-hacking"></a>道德黑客攻击
+## <a name="ethical-hacking-with-hyper-v"></a>Hyper-V 的道德黑客攻击
 可以为专注于道德黑客取证方面的课程设置实验室。 渗透测试是道德黑客社区使用的一种做法，当某人试图获得对系统或网络的访问权限以证明恶意攻击者可能利用的漏洞时，就会进行渗透测试。
 
 在道德黑客课程中，学生可以学习抵御漏洞的新式技术。 每个学生都获得一个 Windows Server 主机虚拟机，它包含两个嵌套虚拟机 - 一个是带有 [Metasploitable3](https://github.com/rapid7/metasploitable3) 映像的虚拟机，另一个是带有 [Kali Linux](https://www.kali.org/) 映像的虚拟机。 Metasploitable 虚拟机用于开发目的。  Kali Linux 虚拟机用于访问执行取证任务所需的工具。
 
 有关如何设置此类实验室的详细信息，请参阅[设置实验室以教授道德黑客课程](class-type-ethical-hacking.md)。
+
+## <a name="ethical-hacking-with-virtualbox"></a>VirtualBox 的道德黑客攻击
+可以为专注于道德黑客取证方面的课程设置实验室。 渗透测试是道德黑客社区使用的一种做法，当某人试图获得对系统或网络的访问权限以证明恶意攻击者可能利用的漏洞时，就会进行渗透测试。
+
+在道德黑客课程中，学生可以学习抵御漏洞的新式技术。 每个学生都获得一个 Windows Server 主机虚拟机，它包含两个嵌套虚拟机 - 一个是带有 [SEED 实验室](https://seedsecuritylabs.org/)映像的虚拟机，另一个是带有 [Kali Linux](https://www.kali.org/) 映像的虚拟机。 SEED 虚拟机用于开发目的。  Kali Linux 虚拟机用于访问执行取证任务所需的工具。
+
+有关如何设置此类实验室的详细信息，请参阅[设置实验室以教授道德黑客课程](class-type-ethical-hacking-virtualbox.md)。
 
 ## <a name="matlab"></a>MATLAB
 [MATLAB](https://www.mathworks.com/products/matlab.html)（代表矩阵实验室）是 [MathWorks](https://www.mathworks.com/) 的编程平台。  它结合了计算能力和可视化效果，是数学、工程、物理和化学领域的常用工具。

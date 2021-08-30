@@ -6,25 +6,25 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8931103305d85b50a76dab001b37612a6c50a5cf
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: d32ea2a26bfcf4f1186cc93f65d67ed10b1eb4e9
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028606"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860789"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>会话主机虚拟机配置
 
 >[!IMPORTANT]
->本内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-vm-configuration-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-vm-configuration-2019.md)。
 
 使用本文来排查在配置 Azure 虚拟桌面会话主机虚拟机 (VM) 时遇到的问题。
 
 ## <a name="provide-feedback"></a>提供反馈
 
-请访问 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)，与产品团队和活跃的社区成员共同探讨 Azure 虚拟桌面服务。
+请访问 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/bd-p/AzureVirtualDesktopForum)，与产品团队和活跃的社区成员共同探讨 Azure 虚拟桌面服务。
 
-## <a name="vms-are-not-joined-to-the-domain"></a>VM 未加入域
+## <a name="vms-arent-joined-to-the-domain"></a>VM 未加入域
 
 如果在将虚拟机 (VM) 加入到域时遇到问题，请按照以下说明进行操作。
 
@@ -76,7 +76,7 @@ ms.locfileid: "112028606"
 - 按照[更改 DNS 服务器](../virtual-network/virtual-network-network-interface.md#change-dns-servers)中的步骤，将网络接口的 DNS 服务器设置更改为“自定义”，并指定虚拟网络中 DNS 服务器的专用 IP 地址。
 - 按照[更改 DNS 服务器](../virtual-network/virtual-network-network-interface.md#change-dns-servers)中的步骤，将网络接口的 DNS 服务器设置更改为“从虚拟网络继承”，然后按照[更改 DNS 服务器](../virtual-network/manage-virtual-network.md#change-dns-servers)中的步骤更改虚拟网络的 DNS 服务器设置。
 
-## <a name="azure-virtual-desktop-agent-and-azure-virtual-desktop-boot-loader-are-not-installed"></a>未安装 Azure 虚拟桌面代理和 Azure 虚拟桌面启动加载器
+## <a name="azure-virtual-desktop-agent-and-azure-virtual-desktop-boot-loader-arent-installed"></a>未安装 Azure 虚拟桌面代理和 Azure 虚拟桌面启动加载器
 
 建议使用 Azure 门户创建模板来预配 VM。 该模板会自动安装 Azure 虚拟桌面代理和 Azure 虚拟桌面代理启动加载器。
 
@@ -110,7 +110,7 @@ ms.locfileid: "112028606"
 - 确认用于连接到 Azure 虚拟桌面的帐户对 Azure 订阅或资源组是否具有权限来创建主机池。
 - 确认帐户没有 MFA。
 
-## <a name="azure-virtual-desktop-agent-is-not-registering-with-the-azure-virtual-desktop-service"></a>Azure 虚拟桌面代理未向 Azure 虚拟桌面服务注册
+## <a name="azure-virtual-desktop-agent-isnt-registering-with-the-azure-virtual-desktop-service"></a>Azure 虚拟桌面代理未向 Azure 虚拟桌面服务注册
 
 首次在会话主机 VM 上安装 Azure 虚拟桌面代理（采用手动方式或通过 Azure 资源管理器模板和 PowerShell DSC）时，它会提供注册令牌。 以下部分介绍适用于 Azure 虚拟桌面代理和令牌的故障排除问题。
 
@@ -138,7 +138,7 @@ ms.locfileid: "112028606"
 
 1. 如果已有注册令牌，请使用 Remove-AzWvdRegistrationInfo 将其删除。
 2. 运行 New-AzWvdRegistrationInfo cmdlett 以生成新令牌。
-3. 确认“-ExpriationTime”参数设置为 3 天。
+3. 确认“-ExpriationTime”参数设置为三天。
 
 ### <a name="error-azure-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>错误：运行 Get-AzWvdSessionHost 时，Azure 虚拟桌面代理未报告检测信号
 
@@ -215,7 +215,7 @@ Azure 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Mic
 1. 使用远程桌面协议 (RDP) 以本地管理员身份直接进入会话主机 VM。
 2. 通过[使用 PowerShell 创建主机池](create-host-pools-powershell.md)安装并行堆栈。
 
-## <a name="how-to-fix-a-azure-virtual-desktop-side-by-side-stack-that-malfunctions"></a>如何修复发生故障的 Azure 虚拟桌面并行堆栈
+## <a name="how-to-fix-an-azure-virtual-desktop-side-by-side-stack-that-malfunctions"></a>如何修复发生故障的 Azure 虚拟桌面并行堆栈
 
 存在已知会导致并列堆栈发生故障的情况：
 
@@ -343,6 +343,10 @@ Azure 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Mic
 
 若要详细了解此策略，请参阅[允许通过远程桌面服务登录](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services)。
 
+## <a name="i-cant-deploy-the-golden-image"></a>我无法部署黄金映像
+
+黄金映像不得包含 Azure 虚拟桌面代理。 只有在部署黄金映像后，才能安装代理。
+
 ## <a name="next-steps"></a>后续步骤
 
 - 如需大致了解如何排查 Azure 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
@@ -351,7 +355,7 @@ Azure 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Mic
 - 若要排查与 Azure 虚拟桌面代理或会话连接性相关的问题，请参阅[排查常见的 Azure 虚拟桌面代理问题](troubleshoot-agent.md)。
 - 若要排查 Azure 虚拟桌面客户端连接问题，请参阅 [Azure 虚拟桌面服务连接](troubleshoot-service-connection.md)。
 - 若要排查远程桌面客户端的问题，请参阅[排查远程桌面客户端问题](troubleshoot-client.md)
-- 若要排查结合使用 PowerShell 与 Azure 虚拟桌面时遇到的问题，请参阅 [Azure 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
+- 若要排查将 PowerShell 与 Azure 虚拟桌面结合使用时遇到的问题，请参阅 [Azure 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要详细了解该服务，请参阅 [Azure 虚拟桌面环境](environment-setup.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: cb3c503000e895344368f09dfdceac1156628bb9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: dd32e421b678b9cfc6277bdc593a06f93fab447f
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969987"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136105"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
@@ -40,18 +40,6 @@ Azure Key Vault 保护云中的加密密钥、证书（以及与证书关联的�
 - HTTPS 协议允许客户端参与 TLS 协商。 客户端可以强制实施最新版的 TLS，并且当客户端执行此操作时，整个连接将采用相应级别的保护。 Key Vault 仍支持较旧版的 TLS，但这不会影响使用较新版 TLS 的连接的安全性。
 - 尽管 TLS 协议中存在已知漏洞，但在已知的攻击中，当攻击者使用存在漏洞的 TLS 版本启动某个连接时，尚无法通过恶意代理从密钥保管库中提取任何信息。 攻击者仍需要进行身份验证和授权，并且只要有权限的客户端始终连接最新版 TLS，凭据就不会通过旧版 TLS 的漏洞泄漏。
 
-## <a name="identity-management"></a>身份管理
-
-在 Azure 订阅中创建密钥保管库时，该密钥保管库自动与订阅的 Azure AD 租户关联。 尝试管理或检索保管库内容的任何人都必须通过 Azure AD 进行身份验证。 在这两种情况下，应用程序都可以通过三种方式来访问 Key Vault：
-
-- 仅应用程序：该应用程序表示服务主体或托管标识。 对于需要定期从密钥保管库中访问证书、密钥或机密的应用程序而言，此标识是最常见的方案。 为了让这种方案起作用，必须在访问策略中指定应用程序的 `objectId`，并且不能指定 `applicationId`，或者它必须为 `null`。
-- 仅用户：用户从租户中注册的任何应用程序访问密钥保管库。 此类访问的示例包括 Azure PowerShell 和 Azure 门户。 这了让这种该方案起作用，必须在访问策略中指定用户的 `objectId`，并且不能指定 `applicationId`，或者它必须为 `null`。
-- 应用程序和用户（有时称为“复合标识”）：用户需要从特定应用程序访问密钥保管库，并且该应用程序必须使用代理身份验证 (OBO) 流来模拟用户。 要使此方案起作用，必须在访问策略中指定 `applicationId` 和 `objectId`。 `applicationId` 标识所需的应用程序，`objectId` 标识用户。 目前，此选项不可用于数据平面 Azure RBAC。
-
-在所有类型的访问中，应用程序都使用 Azure AD 进行身份验证。 应用程序根据应用程序类型使用任何[支持的身份验证方法](../../active-directory/develop/authentication-vs-authorization.md)。 应用程序通过获取平面中资源的令牌来授予访问权限。 资源是管理平面或数据平面中基于 Azure 环境的终结点。 应用程序使用令牌并向密钥保管库发送 REST API 请求。 若要了解详细信息，请查看[整个身份验证流](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
-
-有关完整的详细信息，请参阅 [Key Vault 身份验证基础知识](/azure/key-vault/general/authentication.md)
-
 ## <a name="key-vault-authentication-options"></a>Key Vault 身份验证选项
 
 在 Azure 订阅中创建密钥保管库时，该密钥保管库自动与订阅的 Azure AD 租户关联。 两个平面中的所有调用方都必须在此租户中注册并进行身份验证，然后才能访问该密钥保管库。 在这两种情况下，应用程序都可以通过三种方式来访问 Key Vault：
@@ -68,6 +56,8 @@ Azure Key Vault 保护云中的加密密钥、证书（以及与证书关联的�
 - 离职的用户会立即失去对组织中所有密钥保管库的访问权限。
 - 组织可以通过 Azure AD 中的选项自定义身份验证（例如，启用多重身份验证以提高安全性）。
 
+有关详细信息，请参阅 [Key Vault 身份验证基础知识](authentication.md)。
+
 ## <a name="access-model-overview"></a>访问模型概述
 
 可通过以下两个接口来控制对密钥保管库的访问：**管理平面** 和 **数据平面**。 管理平面用于管理密钥保管库本身。 此平面中的操作包括创建和删除密钥保管库、检索密钥保管库属性以及更新访问策略。 数据平面用于处理密钥保管库中存储的数据。 可以添加、删除和修改密钥、机密及证书。
@@ -82,7 +72,7 @@ Azure Key Vault 保护云中的加密密钥、证书（以及与证书关联的�
 - 组安全主体标识在 Azure Active Directory 中创建的一组用户。 分配给组的任何角色或权限都将授予组内的所有用户。
 - 服务主体是一类安全主体，它标识应用程序或服务，即一段代码，而不是用户或组。 服务主体的对象 ID 称为其客户端 ID，作用类似于其用户名。 服务主体的客户端密码或证书的作用类似于其密码 。 许多 Azure 服务支持分配带有 **客户端 ID** 和 **证书** 自动管理功能的 [托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 对于在 Azure 中进行身份验证而言，托管标识是最安全的，建议选择这种方式。
 
-若要详细了解如何对 Key Vault 进行身份验证，请参阅[对 Azure Key Vault 进行身份验证](authentication.md)
+若要详细了解如何对 Key Vault 进行身份验证，请参阅[向 Azure Key Vault 进行身份验证](authentication.md)。
 
 ## <a name="privileged-access"></a>特权访问
 

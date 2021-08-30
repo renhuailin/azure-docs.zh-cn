@@ -1,27 +1,27 @@
 ---
 title: 数据库账本
 description: 本文提供有关 Azure SQL 数据库中账本数据库表和关联视图的信息。
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 01fad48fccb956ab44cd54e67120ac5f7425cacd
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 85ae3c86c98f83499409e024431f83a54622d0f2
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080104"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665889"
 ---
 # <a name="what-is-the-database-ledger"></a>什么是数据库账本？
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Azure SQL 数据库账本目前为公共预览版，在美国中西部提供。
+> Azure SQL 数据库账本目前为公共预览版，在欧洲西部、巴西南部和美国中西部提供。
 
 数据库账本是 Azure SQL 数据库账本功能的一部分。 由于数据库随着时间推移而发展，数据库账本不断捕获数据库的状态，同时账本表会进行更新。 它在逻辑上使用区块链和 [Merkle 树数据结构](/archive/msdn-magazine/2018/march/blockchain-blockchain-fundamentals)。 
 

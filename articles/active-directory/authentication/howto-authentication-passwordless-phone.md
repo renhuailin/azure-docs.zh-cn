@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 07/02/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f741cb21f427734c49001b9c672ed3e61c43adbc
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 3f2f3a3c561b2fe82dcbeaaee1138c0d465ac6a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613224"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737327"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>启用使用 Microsoft Authenticator 应用的无密码登录 
 
@@ -36,7 +36,12 @@ ms.locfileid: "110613224"
 
 若要使用 Microsoft Authenticator 应用进行无密码手机登录，必须满足以下先决条件：
 
-- Azure AD 多重身份验证，允许将推送通知作为验证方法。
+- Azure AD 多重身份验证，允许将推送通知作为验证方法。 向智能手机或平板电脑推送通知可帮助 Authenticator 应用防止未经授权访问帐户并阻止欺诈交易。 Authenticator 应用在设置为发送推送通知时会自动生成代码，因此即使用户的设备没有连接，用户也有备用登录方法。 
+  
+  必须启用 Azure 多重身份验证连接器，以允许用户注册电话登录的推送通知。
+
+  ![Azure 多重身份验证连接器已启用的屏幕截图。](media/howto-authentication-passwordless-phone/connector.png)
+
 - 已在运行 iOS 8.0 或更高版本或者 Android 6.0 或更高版本的设备上安装最新版本的 Microsoft Authenticator。
 - 必须在 Azure AD 租户内将安装 Microsoft Authenticator 应用的设备注册到单个用户。 
 
@@ -57,7 +62,7 @@ ms.locfileid: "110613224"
 
 若要启用无密码手机登录验证方法，请完成以下步骤：
 
-1. 使用“全局管理员”帐户登录 [Azure 门户](https://portal.azure.com)。
+1. 使用“身份验证策略管理员”帐户登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择“Azure Active Directory”，然后浏览到“安全” > “身份验证方法” > “策略”。
 1. 在“Microsoft Authenticator”下，选择以下选项：
    1. “启用”-“是”或“否”
@@ -144,5 +149,5 @@ ms.locfileid: "110613224"
 若要了解 Azure AD 身份验证和无密码方法，请参阅以下文章：
 
 - [了解无密码身份验证的工作原理](concept-authentication-passwordless.md)
-- [了解设备注册](../devices/overview.md#getting-devices-in-azure-ad)
+- [了解设备注册](../devices/overview.md)
 - [了解 Azure AD 多重身份验证](../authentication/howto-mfa-getstarted.md)

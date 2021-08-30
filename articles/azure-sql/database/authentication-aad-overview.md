@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, sstein
-ms.date: 04/23/2020
-ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: vanto
+ms.date: 08/11/2021
+ms.openlocfilehash: 51494c02ea56c68945377b50869a1bad2be6718f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96454298"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735585"
 ---
 # <a name="use-azure-active-directory-authentication"></a>使用 Azure Active Directory 身份验证
 
@@ -152,6 +152,7 @@ Azure AD 服务器主体（登录名）支持以下身份验证方法：
 - 无论何时都仅可为 SQL 数据库或 Azure Synapse 配置一个 Azure AD 管理员（一个用户或组）。
   - 为 SQL 托管实例添加 Azure AD 服务器主体（登录名）即可创建能够添加到 `sysadmin` 角色的多个 Azure AD 服务器主体（登录名）。
 - 只有服务器的 Azure AD 管理员可以在最开始时使用 Azure Active Directory 帐户连接到服务器或托管实例。 Active Directory 管理员可以配置后续的 Azure AD 数据库用户。
+- 不支持属于超过 2048 个 Azure AD 安全组的成员的 Azure AD 用户和服务主体（Azure AD 应用程序）通过 SQL 数据库、托管实例或 Azure Synapse 登录到数据库。
 - 我们建议将连接超时值设置为 30 秒。
 - SQL Server 2016 Management Studio 和 SQL Server Data Tools for Visual Studio 2015（版本 14.0.60311.1（2016 年 4 月）或更高版本）支持 Azure Active Directory 身份验证。 （**用于 SqlServer 的 .NET Framework 数据提供程序**（.NET Framework 4.6 或更高版本）支持 Azure AD 身份验证）。 因此，这些工具和数据层应用程序（DAC 和 BACPAC）的最新版本可以使用 Azure AD 身份验证。
 - 从版本 15.0.1 开始，[sqlcmd 实用工具](/sql/tools/sqlcmd-utility)和 [bcp 实用工具](/sql/tools/bcp-utility)支持采用了多重身份验证的 Active Directory 交互式身份验证。

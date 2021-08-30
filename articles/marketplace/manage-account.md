@@ -7,12 +7,12 @@ ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 04/07/2021
-ms.openlocfilehash: fa09a03a9ffda04e09bbd5708e97334304013078
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 2bd5ae6696c5ce1c2d4ea3be974245fde1053b71
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006574"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416283"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心管理商业市场帐户
 
@@ -21,7 +21,7 @@ ms.locfileid: "112006574"
 - 所有者
 - Manager
 
-[创建合作伙伴中心帐户](./create-account.md)后，就可以使用[商业市场仪表板](https://go.microsoft.com/fwlink/?linkid=2165290)管理帐户和产品/服务。
+[创建合作伙伴中心帐户](./create-account.md)后，就可以使用[商业市场仪表板](https://go.microsoft.com/fwlink/?linkid=2166002)管理帐户和产品/服务。
 
 ## <a name="access-your-account-settings"></a>访问你的帐户设置
 
@@ -122,7 +122,7 @@ ms.locfileid: "112006574"
 
 若要设置付款配置文件，请执行以下操作：
 
-1. 转到合作伙伴中心内的[商业市场概述页](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。
+1. 转到合作伙伴中心内的[商业市场概述](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)页。
 2. 在“配置文件”部分的“付款配置文件”旁边，选择“更新”  。
 3. 选择付款方式：银行帐户或 PayPal。
 4. 添加付款信息：这可能包括选择帐户类型（支票或储蓄）、输入帐户持有者姓名、帐号和银行代号、帐单邮寄地址、电话号码或 PayPal 电子邮件地址。 有关使用 PayPal 作为帐户付款方式，以及是否在你的市场或区域中支持该付款方式的详细信息，请参阅 [PayPal 信息](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)。

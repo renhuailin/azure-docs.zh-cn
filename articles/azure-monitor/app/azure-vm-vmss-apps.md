@@ -4,12 +4,12 @@ description: 针对 Azure VM 和 Azure 虚拟机规模集进行应用程序性�
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d60b06331f10f33fabfb7ef03365ee6ac8689bcf
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 2fc5057826eda1856b5b3671b6a995e9e80468f5
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315158"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720645"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>在 Azure 虚拟机和 Azure 虚拟机规模集上部署 Azure Monitor Application Insights 代理
 
@@ -20,7 +20,7 @@ ms.locfileid: "108315158"
 > 在 Azure VM 和 VMSS 上运行的基于 **Java** 的应用程序是通过 **[Application Insights Java 3.0 代理](./java-in-process-agent.md)** 监视的，该代理已正式发布。
 
 > [!IMPORTANT]
-> 在 Azure VM 和 VMSS 上运行的 ASP.NET 应用程序的 Azure Application Insights 代理当前为公共预览版。 若要监视本地运行的 ASP.Net 应用程序，请使用[用于本地服务器的 Azure Application Insights 代理](./status-monitor-v2-overview.md)。该代理已正式发布，是完全受支持的。
+> 适用于在 Azure VM 和 VMSS 上运行的 ASP.NET 和 ASP.NET Core 应用程序的 Azure Application Insights 代理目前以公共预览版提供。 若要监视本地运行的 ASP.NET 应用程序，请使用[用于本地服务器的 Azure Application Insights 代理](./status-monitor-v2-overview.md)。该代理已正式发布且完全受支持。
 > 用于 Azure VM 和 VMSS 的预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有些功能可能不受支持，有些功能可能受到限制。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -35,10 +35,10 @@ ms.locfileid: "108315158"
 * 对于 Azure 虚拟机和 Azure 虚拟机规模集，建议至少启用此级别的监视。 然后，可以根据具体情况评估是否需要手动检测。
 
 > [!NOTE]
-> 自动检测目前仅可用于 .NET IIS 托管的应用程序和 Java。 请使用 SDK 检测托管在 Azure 虚拟机和虚拟机规模集上的 ASP.NET Core、Node.js 和 Python 应用程序。
+> 自动检测功能目前仅适用于 ASP.NET、ASP.NET Core IIS 托管的应用程序和 Java。 使用 SDK 来检测托管在 Azure 虚拟机和虚拟机规模集上的 Node.js 和 Python 应用程序。
 
 
-#### <a name="net"></a>.NET
+#### <a name="aspnet--aspnet-core"></a>ASP.NET / ASP.NET Core
 
   * Application Insights 代理自动收集与 .NET SDK 相同的、现成的依赖项信号。 若要了解详细信息，请参阅[依赖项自动收集](./auto-collect-dependencies.md#net)。
         
@@ -47,16 +47,13 @@ ms.locfileid: "108315158"
 
 ### <a name="code-based-via-sdk"></a> 通过 SDK 执行的“基于代码”方法
     
-#### <a name="net"></a>.NET
+#### <a name="aspnet--aspnet-core"></a>ASP.NET / ASP.NET Core
   * 对于 .NET 应用，此方法的可自定义程度更高，但需要[添加 Application Insights SDK NuGet 包中的一个依赖项](./asp-net.md)。 使用此方法还需要自行管理对最新版本的包的更新。
 
   * 如果需要发出自定义 API 调用来跟踪基于代理的监视在默认情况下不会捕获的事件/依赖项，则需要使用此方法。 有关详细信息，请查看 [自定义事件和指标的 API](./api-custom-events-metrics.md) 一文。
 
     > [!NOTE]
     > 仅限 .NET 应用 - 如果同时检测到了基于代理的监视和基于手动 SDK 的检测，则只会采用手动检测设置， 这是为了防止发送重复数据。 有关详细信息，请查看下面的[故障排除部分](#troubleshooting)。
-
-#### <a name="net-core"></a>.NET Core
-若要监视 .NET Core 应用程序，请使用 [SDK](./asp-net-core.md)。 
 
 #### <a name="java"></a>Java 
 

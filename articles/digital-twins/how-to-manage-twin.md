@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2c83ac769cc4a8aec6148e1a45ec6435f117d73a
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: b670c244c502049cc9eb419aa6570ad40e5aafa7
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111812026"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114689934"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
 环境中的实体由[数字孪生体](concepts-twins-graph.md)表示。 数字孪生体的管理操作可能包括创建、修改和删除。
 
-本文重点介绍如何管理数字孪生体；若要将关系和[孪生图](concepts-twins-graph.md)作为一个整体进行处理，请参阅操作指南：使用关系管理孪生图。
+本文重点介绍如何管理数字孪生体；若要将关系和[孪生图](concepts-twins-graph.md)作为一个整体进行处理，请参阅[管理孪生图和关系](how-to-manage-graph.md)。
 
 > [!TIP]
 > 所有 SDK 函数都提供同步和异步版本。
@@ -40,7 +40,7 @@ ms.locfileid: "111812026"
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwinCall":::
 
 若要创建数字孪生体，需要提供：
-* 数字孪生体所需的 ID
+* 所需的数字孪生体的 ID（在此阶段定义）
 * 要使用的[模型](concepts-models.md)
 
 （可选）为数字孪生体的所有属性提供初始值。 属性视为可选项，可在以后设置，但在设置后才会显示为孪生体的一部分。
@@ -57,7 +57,7 @@ ms.locfileid: "111812026"
 
 可在创建孪生体时初始化该孪生体的属性。 
 
-孪生体创建 API 接受序列化为孪生体属性的有效 JSON 说明的对象。 请参阅概念：数字孪生体和孪生图，获取孪生体的 JSON 格式的说明。 
+孪生体创建 API 接受序列化为孪生体属性的有效 JSON 说明的对象。 请参阅[数字孪生体和孪生图](concepts-twins-graph.md)，获取孪生体的 JSON 格式的说明。 
 
 首先，可以创建一个数据对象来表示孪生体及其属性数据。 可以手动创建参数对象，也可使用提供的帮助程序类创建参数对象。 下面举例说明每种方法。
 
@@ -86,7 +86,12 @@ ms.locfileid: "111812026"
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwinCall":::
 
-此调用以强类型对象类型的形式返回孪生体的数据，如 `BasicDigitalTwin`。 `BasicDigitalTwin` 是 SDK 中随附的序列化帮助程序类，它将以预分析形式返回孪生体的核心元数据和属性。 以下示例演示如何使用此方法来查看孪生体的详细信息：
+此调用以强类型对象类型的形式返回孪生体的数据，如 `BasicDigitalTwin`。 `BasicDigitalTwin` 是 SDK 中随附的序列化帮助程序类，它将以预分析形式返回孪生体的核心元数据和属性。 始终可使用你选择的 JSON 库（如 `System.Text.Json` 或 `Newtonsoft.Json`）反序列化孪生数据。 然而，若要对孪生体进行基本访问，帮助程序类可使此操作更方便。
+
+> [!NOTE]
+> `BasicDigitalTwin` 使用 `System.Text.Json` 特性。 若要将 `BasicDigitalTwin` 用于 [DigitalTwinsClient](/dotnet/api/azure.digitaltwins.core.digitaltwinsclient?view=azure-dotnet&preserve-view=true)，必须使用默认构造函数初始化客户端，或者，如果要自定义序列化程序选项，请使用 [JsonObjectSerializer](/dotnet/api/azure.core.serialization.jsonobjectserializer?view=azure-dotnet&preserve-view=true)。
+
+使用 `BasicDigitalTwin` 帮助程序类，还可通过 `Dictionary<string, object>` 访问孪生体上定义的属性。 若要列出孪生体的属性，可使用：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin" highlight="2":::
 
@@ -95,7 +100,7 @@ ms.locfileid: "111812026"
 >[!TIP]
 >孪生体的 `displayName` 是其模型元数据的一部分，因此在获取孪生体实例的数据时，它将不会显示。 若要查看此值，可[从模型中进行检索](how-to-manage-model.md#retrieve-models)。
 
-若要使用单个 API 调用检索多个孪生体，请参阅操作指南：查询孪生图中的查询 API 示例。
+若要使用单个 API 调用检索多个孪生体，请参阅[查询孪生图](how-to-query-graph.md)中的查询 API 示例。
 
 请看下面定义月亮的模型（用[数字孪生体定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL) 编写）：
 
@@ -137,7 +142,7 @@ ms.locfileid: "111812026"
   - 每个可写属性的同步状态。 这对设备最为有用，因为服务和设备的状态可能不同（例如当设备离线时）。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 若使用元数据部分中的数据，可了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅此 [IoT 中心教程](../iot-hub/tutorial-device-twins.md)，了解如何同步设备状态。
   - 服务特定的元数据，如来自 IoT 中心或 Azure 数字孪生的元数据。 
 
-若要详细了解 `BasicDigitalTwin` 等序列化帮助程序类，可阅读[概念：Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)。
+若要详细了解 `BasicDigitalTwin` 等序列化帮助程序类，可参阅 [Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md#serialization-helpers)。
 
 ## <a name="view-all-digital-twins"></a>查看所有数字孪生体
 
@@ -162,7 +167,7 @@ ms.locfileid: "111812026"
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-可使用 Azure .NET SDK 的 [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true) 创建修补程序。 示例如下。
+若要更新对孪生和关系的调用，请使用 [JSON 修补程序](http://jsonpatch.com/)结构。 可使用 Azure .NET SDK 的 [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true) 创建修补程序。 示例如下。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
@@ -184,15 +189,7 @@ ms.locfileid: "111812026"
 
 这可以通过 JSON 修补 `add` 操作来完成，如下所示：
 
-```json
-[
-  {
-    "op": "add", 
-    "path": "/ObjectProperty", 
-    "value": {"StringSubProperty":"<string-value>"}
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-object-sub-property-1.json":::
 
 >[!NOTE]
 > 如果 `ObjectProperty` 具有多个属性，则应将所有属性都包含在此操作的 `value` 字段中，即使只更新一个属性也是如此：
@@ -203,15 +200,7 @@ ms.locfileid: "111812026"
 
 完成此操作后，将存在一个 `StringSubProperty` 路径，并且现在可以通过典型的 `replace` 操作直接更新它：
 
-```json
-[
-  {
-    "op": "replace",
-    "path": "/ObjectProperty/StringSubProperty",
-    "value": "<string-value>"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-object-sub-property-2.json":::
 
 虽然在创建孪生体时实例化了 `ObjectProperty` 的情况下不需要第一步，但建议在每次首次更新子属性时使用该步骤，因为你可能并不总是能够确定对象属性最初是否已实例化。
 
@@ -257,7 +246,7 @@ Azure 数字孪生确保所有传入请求都会一个接一个地得到处理�
 
 ### <a name="delete-all-digital-twins"></a>删除所有数字孪生体
 
-有关如何一次删除所有孪生体的示例，请下载教程：使用示例客户端应用了解基础知识中使用的示例应用。 CommandLoop.cs 文件在 `CommandDeleteAllTwins()` 函数中执行此操作。
+有关如何一次删除所有孪生体的示例，请下载[使用示例客户端应用了解基础知识](tutorial-command-line-app.md)中使用的示例应用。 CommandLoop.cs 文件在 `CommandDeleteAllTwins()` 函数中执行此操作。
 
 ## <a name="runnable-digital-twin-code-sample"></a>可运行的数字孪生体代码示例
 
@@ -299,4 +288,4 @@ Azure 数字孪生确保所有传入请求都会一个接一个地得到处理�
 ## <a name="next-steps"></a>后续步骤
 
 了解如何创建和管理数字孪生体之间的关系：
-* [操作指南：使用关系管理孪生图](how-to-manage-graph.md)
+* [管理孪生图和关系](how-to-manage-graph.md)

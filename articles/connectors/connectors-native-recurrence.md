@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: 3749a7080bf17c020b48ae3ebc3cff3aa998eeef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ade5e44e7b43e30447a31dcc138a2514771fe21
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382287"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443670"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的定期触发器创建、计划和运行重复任务和工作流
 
@@ -122,6 +122,23 @@ ms.locfileid: "100382287"
          "timeZone": "Pacific Standard Time"
       }
    }
+}
+```
+
+以下示例显示如何更新触发器定义，以便触发器仅在每个月的最后一天运行一次：
+
+```json
+"triggers": {
+    "Recurrence": {
+        "recurrence": {
+            "frequency": "Month",
+            "interval": 1,
+            "schedule": {
+                "monthDays": [-1]
+            }
+        },
+        "type": "Recurrence"
+    }
 }
 ```
 

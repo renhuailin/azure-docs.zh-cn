@@ -1,6 +1,6 @@
 ---
-title: 使用 AzCopy v10 从 Azure Blob 存储下载 Blob | Microsoft Docs
-description: 本文包含一组 AzCopy 示例命令，可帮助从 Azure Blob 存储下载 Blob。
+title: 使用 AzCopy v10 从 Azure Blob 存储下载 blob | Microsoft Docs
+description: 本文包含一组 AzCopy 示例命令，可帮助从 Azure Blob 存储下载 blob。
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -8,14 +8,14 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 56bb36cfda9d0cf1a8882950c862a73ad1e77898
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c57744817e26cc79c101246f146d32d3db061ed5
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502940"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361472"
 ---
-# <a name="download-blobs-from-azure-blob-storage-by-using-azcopy"></a>使用 AzCopy 从 Azure Blob 存储下载 Blob
+# <a name="download-blobs-from-azure-blob-storage-by-using-azcopy"></a>使用 AzCopy 从 Azure Blob 存储下载 blob
 
 你可以使用 AzCopy v10 命令行实用程序从 Blob 存储下载 Blob 和目录。 
 
@@ -233,7 +233,7 @@ azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFil
 
 ## <a name="next-steps"></a>后续步骤
 
-在以下文章中查找更多示例：
+如需了解更多示例，请参阅以下文章：
 
 - [示例：上载](storage-use-azcopy-blobs-upload.md)
 - [示例：在帐户之间复制](storage-use-azcopy-blobs-copy.md)
@@ -243,8 +243,8 @@ azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFil
 - [示例：Azure 文件存储](storage-use-azcopy-files.md)
 - [教程：使用 AzCopy 将本地数据迁移到云存储](storage-use-azcopy-migrate-on-premises-data.md)
 
-请参阅以下文章了解如何配置设置、优化性能和排查问题：
+请参阅以下文章，配置设置、优化性能和排查问题：
 
 - [AzCopy 配置设置](storage-ref-azcopy-configuration-settings.md)
 - [优化 AzCopy 的性能](storage-use-azcopy-optimize.md)
-- [使用日志文件排查 Azure 存储中的 AzCopy V10 问题](storage-use-azcopy-configure.md)
+- [使用日志文件对 Azure 存储中的 AzCopy V10 问题进行故障排除](storage-use-azcopy-configure.md)

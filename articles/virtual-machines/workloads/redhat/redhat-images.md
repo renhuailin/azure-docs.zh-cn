@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 42e0788a25efa5124f24a77b48469d6ed8265dfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 970e0931556a787b461b8c614b41fd88271bdf1c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694676"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469113"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映像概述
 
@@ -101,7 +101,7 @@ RHEL 7.x 映像有几种不同的映像类型。 下表显示了我们提供的�
 ## <a name="rhel-8-image-types"></a>RHEL 8 映像类型
 
 >[!NOTE]
-> Red Hat 建议使用 Grubby 在 RHEL 8+ 中配置内核命令行参数。 [此处](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)提供了更多详细信息。
+> Red Hat 建议使用 Grubby 在 RHEL 8+ 中配置内核命令行参数。 有关详细信息，请参阅[第 5 章：配置内核命令行参数 Red Hat Enterprise Linux 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)。
 
 下面是 RHEL 8 映像类型的详细信息。
 
@@ -160,7 +160,7 @@ RedHat:RHEL:7.6:7.6.2019102813
 RHEL 7.4      |RedHat:RHEL:7.4:7.4.2019041718 | 默认情况下，2019 年 4 月及之后发布的映像是 EUS 映像。|
 RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | 默认情况下，2019 年 6 月及之后发布的映像是 EUS 映像。 |
 RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | 默认情况下，2019 年 5 月及之后发布的映像是 EUS 映像。 |
-RHEL 8.0      |空值                            | Red Hat 中没有可用的 EUS。                               |
+RHEL 8.0      |不适用                            | Red Hat 中没有可用的 EUS。                               |
 
 ### <a name="update-services-for-sap"></a>SAP 更新服务
 
@@ -193,6 +193,6 @@ Microsoft 和 Red Hat 会在以下情况下更新映像：新的次要版本发�
 ## <a name="next-steps"></a>后续步骤
 
 * 若要查看 Azure 中 RHEL 映像的完整列表，请参阅 [Azure 中提供的 Red Hat Enterprise Linux (RHEL) 映像](./redhat-imagelist.md)。
-* 若要了解有关 Azure Red Hat 更新基础结构的详细信息，请参阅 [Azure 中按需的 RHEL VM 的 Red Hat 更新基础结构](./redhat-rhui.md)。
-* 若要了解有关 RHEL BYOS 产品/服务的详细信息，请参阅 [Azure 中 Red Hat Enterprise Linux 自带订阅黄金映像](./byos.md)。
+* 若要了解有关 Azure Red Hat 更新基础结构的详细信息，请参阅 [Azure 中按需 RHEL VM 的 Red Hat 更新基础结构](./redhat-rhui.md)。
+* 若要了解有关 RHEL BYOS 产品/服务的详细信息，请参阅 [Azure 中的 Red Hat Enterprise Linux 自带订阅黄金映像](./byos.md)。
 * 有关 RHEL 所有版本的 Red Hat 支持策略的信息，请参阅 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)。

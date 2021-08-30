@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 06/08/2021
+ms.date: 07/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: b37b63fda6b142fc1aba458c007b6fe0eb5db814
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: cefbd6d014dda28a5e88a41a0131eeb92fc5f311
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111810941"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440715"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>为 P2S VPN 客户端播发自定义路由
 
@@ -21,7 +21,7 @@ ms.locfileid: "111810941"
 
 :::image type="content" source="./media/vpn-gateway-p2s-advertise-custom-routes/custom-routes.png" alt-text="播发自定义路由的关系图。":::
 
-## <a name="advertise-custom-routes"></a>播发自定义路由
+## <a name="advertise-custom-routes"></a><a name="advertise"></a>播发自定义路由
 
 若要播发自定义路由，请使用 `Set-AzVirtualNetworkGateway cmdlet`。 以下示例演示如何播发 [Contoso 存储帐户表](https://contoso.table.core.windows.net)的 IP。
 
@@ -45,9 +45,13 @@ ms.locfileid: "111810941"
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute x.x.x.x/xx , y.y.y.y/yy
     ```
 
-## <a name="advertise-custom-routes---forced-tunneling"></a>播发自定义路由 - 强制隧道
+## <a name="advertise-custom-routes---forced-tunneling"></a><a name="forced-tunneling"></a>播发自定义路由 - 强制隧道
 
 可以通过将 0.0.0.0/1 和 128.0.0.0/1 作为自定义路由播发到客户端，将所有流量定向到 VPN 隧道。 将 0.0.0.0/0 拆分为两个较小的子网的原因是，这些较小的前缀比可能已在本地网络适配器上配置的默认路由更具体，因此路由流量时，这是首选。
+
+> [!NOTE]
+> 不通过 VPN 网关提供 Internet 连接。 因此，会删除所有绑定到 Internet 的流量。
+>
 
 1. 若要启用强制隧道，请使用以下命令：
 
@@ -55,7 +59,8 @@ ms.locfileid: "111810941"
     $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute 0.0.0.0/1 , 128.0.0.0/1
     ```
-## <a name="view-custom-routes"></a>查看自定义路由
+
+## <a name="view-custom-routes"></a><a name="view"></a>查看自定义路由
 
 使用以下示例查看自定义路由：
 
@@ -63,7 +68,7 @@ ms.locfileid: "111810941"
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
   $gw.CustomRoutes | Format-List
   ```
-## <a name="delete-custom-routes"></a>删除自定义路由
+## <a name="delete-custom-routes"></a><a name="delete"></a>删除自定义路由
 
 使用以下示例删除自定义路由：
 

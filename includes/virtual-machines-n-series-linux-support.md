@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4bfac9be5041fdf4ebfe7ea56f064b8b85806703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52082c22053a5a54a4462fb01012bdceff848a96
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98859686"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113364756"
 ---
 ## <a name="supported-distributions-and-drivers"></a>支持的分发和驱动程序
 
@@ -33,7 +33,7 @@ Azure 重新分发的 GRID 驱动程序不适用于非 NV 系列 VM，如 NC、N
 
 |分发|驱动程序|
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.7 至 7.9、8.0、8.1<br/><br/>SUSE Linux Enterprise Server 12 SP2 <br/><br/>SUSE Linux Enterprise Server 15 SP2 | NVIDIA GRID 12.0，驱动程序分支 [R460](https://go.microsoft.com/fwlink/?linkid=874272)(.exe)|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.7 至 7.9、8.0、8.1<br/><br/>SUSE Linux Enterprise Server 12 SP2 <br/><br/>SUSE Linux Enterprise Server 15 SP2 | NVIDIA GRID 12.2，驱动程序分支 [R460](https://go.microsoft.com/fwlink/?linkid=874272)(.exe)|
 
 有关所有以前的 Nvidia GRID 驱动程序链接的完整列表，请访问 [GitHub](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json)。
 

@@ -7,18 +7,17 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 24abb1ece1d307276be736b384c3e5e3c7d40f2a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: dbc2f2efffcab9800deff27e42e4130061c531d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407482"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741486"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>使用 Kubernetes 工具创建 Azure SQL 托管实例
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,8 +47,8 @@ metadata:
   name: sql1-login-secret
 type: Opaque
 ---
-apiVersion: sql.arcdata.microsoft.com/v1alpha1
-kind: sqlmanagedinstance
+apiVersion: sql.arcdata.microsoft.com/v1
+kind: SqlManagedInstance
 metadata:
   name: sql1
   annotations:
@@ -133,7 +132,7 @@ echo -n '<your string to encode here>' | base64
 - 出于计费目的，核心限制值是必需的。
 - 资源请求和限制的其余部分是可选的。
 - 核心限制和请求必须是正整数值（如果已指定）。
-- 核心请求至少需要 2 个核心（如果已指定）。
+- 核心请求至少需要 1 个核心（如果已指定）。
 - 内存值格式遵循 Kubernetes 表示法。  
 - 内存请求至少需要 2Gi（如果已指定）。
 - 一般指导原则是，对于生产用例，应为每个核心使用 4GB 的 RAM。

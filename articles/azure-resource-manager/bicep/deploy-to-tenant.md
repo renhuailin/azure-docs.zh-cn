@@ -2,13 +2,13 @@
 title: 使用 Bicep 将资源部署到租户
 description: 介绍如何在 Bicep 文件中的租户范围内部署资源。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: af1ca550a6443fa7791d4f5ac496ae2d0626b176
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 07/19/2021
+ms.openlocfilehash: 3f446670cd85daa5b541cc9b5858ab768ac8411d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371750"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453402"
 ---
 # <a name="tenant-deployments-with-bicep-file"></a>使用 Bicep 文件的租户部署
 
@@ -146,7 +146,7 @@ resource mgName_resource 'Microsoft.Management/managementGroups@2020-02-01' = {
 
 ### <a name="scope-to-management-group"></a>将范围设定为管理组
 
-若要以租户内的管理组为目标，请添加一个模块。 使用 [managementGroup 函数](bicep-functions-scope.md#managementgroup)设置其 `scope` 属性。 提供管理组名称。
+若要以租户内的管理组为目标，请添加一个[模块](modules.md)。 使用 [managementGroup 函数](bicep-functions-scope.md#managementgroup)设置其 `scope` 属性。 提供管理组名称。
 
 ```bicep
 targetScope = 'tenant'
@@ -235,7 +235,7 @@ resource roleAssignment 'Microsoft.Authorization/roleAssignments@2020-03-01-prev
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解其他范围，请参阅以下文章：
+若要了解其他范围，请参阅：
 
 * [资源组部署](deploy-to-resource-group.md)
 * [订阅部署](deploy-to-subscription.md)

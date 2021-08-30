@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 kured 更�
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: 35c9e76c234e4b09fbb090eda363506ee3e11130
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a81d778b8346a03622ef837b6732e7d50e807652
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88164234"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747848"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>将安全更新和内核更新应用于 Azure Kubernetes 服务 (AKS) 中的 Linux 节点
 
@@ -39,6 +39,12 @@ ms.locfileid: "88164234"
 
 你可以使用自己的工作流和进程来重启节点，或使用 `kured` 安排该进程。 使用 `kured`，可以部署在群集每个 Linux 节点上运行 Pod 的 [DaemonSet][DaemonSet]。 DaemonSet 中的这些 pod 会监视是否存在 /var/run/reboot-required 文件，然后启动重启节点的进程。
 
+### <a name="node-image-upgrades"></a>节点映像升级
+
+无人参与的升级将更新应用于 Linux 节点 OS，但用于为群集创建节点的节点映像保持不变。 如果将新的 Linux 节点添加到你的群集，则原始映像将用于创建节点。 这个新节点将在每晚自动检查期间接收所有可用的安全更新和内核更新，但在所有检查和重启完成之前将保持未修补状态。
+
+此外，也可使用节点映像升级来检查和更新群集使用的节点映像。 有关节点映像升级的更多详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 节点映像升级][node-image-upgrade]。
+
 ### <a name="node-upgrades"></a>节点升级
 
 AKS 中还有额外的进程，可通过该进程升级群集。 升级通常是指移动到 Kubernetes 的较新版本，而不仅是应用节点安全更新。 AKS 升级执行以下操作：
@@ -65,7 +71,7 @@ helm repo update
 kubectl create namespace kured
 
 # Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
-helm install kured kured/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
+helm install kured kured/kured --namespace kured --set nodeSelector."kubernetes\.io/os"=linux
 ```
 
 也可以为 `kured` 配置其他参数，例如与 Prometheus 或 Slack 集成。 有关其他配置参数的详细信息，请参阅 [kured Helm 图表][kured-install]。
@@ -118,3 +124,4 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 [aks-ssh]: ssh.md
 [aks-upgrade]: upgrade-cluster.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[node-image-upgrade]: node-image-upgrade.md

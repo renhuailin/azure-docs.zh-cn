@@ -4,12 +4,12 @@ description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的
 ms.topic: conceptual
 ms.date: 05/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8feda70f346347a3559e2696d2912d2a976b0a63
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 612493d55adddea82e3e8d1e3d169eee963bfda2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890298"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724730"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -63,7 +63,7 @@ AKS 在多个 Azure 基础结构资源之上构建，包括虚拟机规模集、
 要启用此体系结构，每个 AKS 部署都需跨越两个资源组：
 
 1. 创建第一个资源组。 此组仅包含 Kubernetes 服务资源。 在部署期间，AKS 资源提供程序自动创建第二个资源组， 例如 MC_myResourceGroup_myAKSCluster_eastus。 如需了解如何指定第二个资源组的名称，请参阅下一节。
-1. 第二个资源组（称为节点资源组）包含与该群集相关联的所有基础结构资源。 这些资源包括 Kubernetes 节点 VM、虚拟网络和存储。 默认情况下，节点资源组的名称类似于 MC_myResourceGroup_myAKSCluster_eastus。 每当删除群集时，AKS 会自动删除节点资源，因此，仅应对生命周期与群集相同的资源使用 AKS。
+1. 第二个资源组（称为节点资源组）包含与该群集相关联的所有基础结构资源。 这些资源包括 Kubernetes 节点 VM、虚拟网络和存储。 默认情况下，节点资源组的名称类似于 MC_myResourceGroup_myAKSCluster_eastus。 每当删除群集时，AKS 会自动删除节点资源组，因此，仅应对生命周期与群集相同的资源使用 AKS。
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>我是否可为 AKS 节点资源组提供自己的名称？
 
@@ -286,6 +286,11 @@ spec:
 ## <a name="can-i-use-fips-cryptographic-libraries-with-deployments-on-aks"></a>是否可以将 FIPS 加密库用于 AKS 上的部署？
 
 已启用 FIPS 的节点目前在基于 Linux 的节点池上提供预览版。 有关更多详细信息，请参阅[添加已启用 FIPS 的节点池（预览版）](use-multiple-node-pools.md#add-a-fips-enabled-node-pool-preview)。
+
+## <a name="can-i-configure-nsgs-with-aks"></a>能否使用 AKS 配置 NSG？
+
+如果提供自己的子网，则必须管理与该子网关联的网络安全组 (NSG)。 AKS 将仅在 NIC 级别修改 NSG，而不会修改与该子网关联的任何 NSG。 如果使用的是 CNI，还必须确保 NSG 中的安全规则允许节点和 Pod CIDR 范围之间的流量。 如果使用的是 kubenet，还必须确保 NSG 中的安全规则允许节点和 Pod CIDR 之间的流量。
+
 
 <!-- LINKS - internal -->
 

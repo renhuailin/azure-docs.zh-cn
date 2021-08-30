@@ -10,12 +10,12 @@ ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 21f7d3e6f624c3a8e550a33293b46284bf5c5815
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 784adc6829a66269fb863cce7e1e103a45fde7d9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816289"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455667"
 ---
 # <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>使用 Azure CLI 在可用性集中创建和部署虚拟机
 
@@ -104,5 +104,5 @@ az vm availability-set list-sizes \
 > [创建虚拟机规模集](tutorial-create-vmss.md)
 
 * 若要详细了解可用性区域，请访问[可用性区域文档](../../availability-zones/az-overview.md)。
-* 有关可用性集和可用性区域的更多文档也可以在[此处](../availability.md)获得。
+* [Azure 虚拟机的可用性选项](../availability.md)中还提供了有关可用性集和可用性区域的更多文档。
 * 若要试用可用性区域，请访问[使用 Azure CLI 在可用性区域中创建 Linux 虚拟机](./create-cli-availability-zone.md)

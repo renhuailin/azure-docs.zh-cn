@@ -1,15 +1,15 @@
 ---
 title: 在 Azure 门户中创建帐户
-description: 了解如何在 Azure 门户中创建 Azure Batch 帐户，以便在云中运行大规模并行工作负荷
+description: 了解如何在 Azure 门户中创建 Azure Batch 帐户，以便在云中运行大规模并行工作负荷。
 ms.topic: how-to
-ms.date: 02/23/2021
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 36759a0caef41af9307bf621a1b6b634ddf586cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/01/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 745a2fc2e1279d05fa380b7bc053171d20a3fa4c
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101703658"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213266"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -21,7 +21,7 @@ ms.locfileid: "101703658"
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在主页中，选择“创建资源”。
 
@@ -83,13 +83,11 @@ ms.locfileid: "101703658"
 
     :::image type="content" source="media/batch-account-create-portal/register_provider.png" alt-text="屏幕截图显示 Microsoft.Batch 资源提供程序。":::
 
-1. 返回“订阅”页，选择“访问控制(IAM)” > “角色分配” > “添加” > “添加角色分配”。
+1. 返回“订阅”页，然后选择“访问控制(IAM)”。
 
-    :::image type="content" source="media/batch-account-create-portal/subscription_iam.png" alt-text="订阅的“角色分配”页的屏幕截图。":::
+1. 将“参与者”或“所有者”角色分配给 Batch API。 可以通过搜索“Microsoft Azure Batch”或“MicrosoftAzureBatch”来找到此帐户。 （Batch API 的对象 ID 为“f520d84c-3fd3-4cc8-88d4-2ed25b00d27a”，应用程序 ID 为“ddbf3205-c6bd-46ae-8127-60eb93363864”。）
 
-1. 在“添加角色分配”页上，选择“参与者”或“所有者”角色，然后搜索“Batch API” 。 搜索 Microsoft Azure Batch 或 MicrosoftAzureBatch 找到该 API 。 （ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的应用程序 ID。）
-
-1. 找到此 Batch API 后，将其选中，然后选择“保存”。
+   有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="create-a-key-vault"></a>创建密钥保管库
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 06/04/2021
-ms.openlocfilehash: 812c7871a6fd9501164530f0e9feee92f275426b
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: ab622cd2d8d88c79a4dd0098beded490f9e76a36
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526481"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514654"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>排查 Azure Purview 中的连接问题
 
@@ -63,7 +63,7 @@ ms.locfileid: "111526481"
 > [!IMPORTANT]
 > 扫描包含如 Azure SQL 数据库这样具有“拒绝公共网络访问权限”的数据库的多个数据源将失败。 若要使用专用终结点扫描这些数据源，请改为使用注册单个数据源选项。
 
-有关设置自承载集成运行时的详细信息，请参阅[在专用网络、Vnet 中和专用终结点之后的引入专用终结点和扫描源](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources-in-private-networks-vnets-and-behind-private-endpoints)
+有关设置自承载集成运行时的详细信息，请参阅[引入专用终结点和扫描源](catalog-private-link-ingestion.md#deploy-self-hosted-integration-runtime-ir-and-scan-your-data-sources)
 
 有关如何在 Azure Purview 中创建新凭据的详细信息，请参阅 [Azure Purview 中的源身份验证凭据](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
 

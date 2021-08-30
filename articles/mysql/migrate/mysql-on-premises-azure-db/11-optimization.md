@@ -1,6 +1,6 @@
 ---
-title: 从本地 MySQL 到 Azure Database for MySQL 的迁移指南优化
-description: 使用 Azure 指标，不仅可以监视审核和活动日志，还可以监视服务器性能。
+title: 将本地 MySQL 迁移到 Azure Database for MySQL：优化
+description: 使用 Azure 指标，不仅可以监视审核与活动日志，还可以监视服务器性能。
 ms.service: mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: c207e4981adc64d92804c97a69225eacb89e2fac
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 4a1f279ad8eb81891a184700b1076bcec89b92e8
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082666"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296208"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-optimization"></a>从本地 MySQL 到 Azure Database for MySQL 的迁移指南优化
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-optimization"></a>将本地 MySQL 迁移到 Azure Database for MySQL：优化
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,7 +26,7 @@ ms.locfileid: "112082666"
 
 ## <a name="monitoring-hardware-and-query-performance"></a>监视硬件和查询性能
 
-使用 [Azure 指标](/azure/azure-monitor/platform/data-platform-metrics)，不仅可以监视审核和活动日志，还可以监视服务器性能。 每分钟提供一次 Azure 指标，可以通过 Azure 指标来配置警报。 有关详细信息，请参阅 [在 Azure Database for MySQL 中进行监视](/azure/mysql/concepts-monitoring)以具体解可以监视的指标类型。
+使用 [Azure 指标](../../../azure-monitor/essentials/data-platform-metrics.md)，不仅可以监视审核和活动日志，还可以监视服务器性能。 每分钟提供一次 Azure 指标，可以通过 Azure 指标来配置警报。 更多详细信息，请参阅[在 Azure Database for MySQL 中进行监视](../../concepts-monitoring.md)以具体了解可以监视的指标类型。
 
 如上所述，在决定是否升级数据库层时，监视 CPU \_百分比或内存\_百分比等指标可能非常重要。 如果值始终很高，则可能表示需要进行层升级。
 
@@ -38,12 +40,12 @@ AzureDiagnostics
 | where Category == 'MySqlSlowLogs'
 | project TimeGenerated, LogicalServerName\_s, 
 event\_class\_s, start\_time\_t , q uery\_time\_d, 
-sql\_text\_s | top 5 by query\_time\_d desc
+sql\_text\_s| top 5 by query\_time\_d desc
 ```
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
 
-除了基本服务器监视方面以外，Azure 还提供用于监视应用程序查询性能的工具。 更正或改进查询可能使查询吞吐量大幅增加。 使用 [Query Performance Insight 工具](/azure/mysql/concepts-query-performance-insight)分析运行时间最长的查询，并确定如果这些项在设定期间内具有确定性，是否可缓存这些项，或修改查询以提高其性能。
+除了基本服务器监视方面以外，Azure 还提供用于监视应用程序查询性能的工具。 更正或改进查询可能使查询吞吐量大幅增加。 使用 [Query Performance Insight 工具](../../concepts-query-performance-insight.md)分析运行时间最长的查询，并确定如果这些项在设定期间内具有确定性，是否可缓存这些项，或修改查询以提高其性能。
 
 可以将 `slow\_query\_log` 设置为在 MySQL 日志文件中显示慢速查询（默认为“OFF”）。 服务器参数 `long\_query\_time` 可以提醒用户注意长时间运行的查询（默认为 10 秒）。
 
@@ -59,15 +61,15 @@ sql\_text\_s | top 5 by query\_time\_d desc
 
 ## <a name="moving-regions"></a>移动区域
 
-将数据库移到不同的 Azure 区域取决于方法和体系结构。 根据方法，这可能导致系统停机。
+将数据库移到不同的 Azure 区域取决于方法和体系结构。 采用特定方法时，这可能导致系统停机。
 
-建议的过程与利用读取副本进行维护故障转移的过程相同。 但是，与上述计划内维护方法相比，在应用程序中实现故障转移层后，故障转移速度要快得多。 在读取副本故障转移过程中，应用程序只需停机几分钟。 “业务连续性和灾难恢复”一节中介绍了更多详细信息。
+建议的过程与利用只读副本进行维护故障转移的过程相同。 但是，与上述计划内维护方法相比，在应用程序中实现故障转移层后，故障转移速度要快得多。 在只读副本故障转移过程中，应用程序只需停机几分钟。 “业务连续性和灾难恢复”一节中介绍了更多详细信息。
 
 ## <a name="wwi-scenario"></a>WWI 方案
 
 WWI 业务和应用程序用户对于按需扩展数据库的功能感到非常激动。 他们还希望使用 Query Performance Insight 来确定是否需要解决长时间运行的查询的性能。
 
-他们选择在任何可能的故障转移或需要只读的情况下使用读取副本服务器。
+他们选择利用一个只读副本服务器来解决任何潜在的故障转移或需要只读的情况。
 
 迁移团队与 Azure 工程师合作，设置 KQL 查询来监视 MySQL 服务器性能的任何潜在问题。 已设置 KQY 查询，其中包含警报，以通过电子邮件向数据库和会议团队发送事件问题。
 
@@ -83,6 +85,8 @@ WWI 业务和应用程序用户对于按需扩展数据库的功能感到非常�
 
   - 考虑移动用户或应用程序需要更改的区域。  
 
+
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [业务连续性和灾难恢复 (BCDR)](./12-business-continuity-and-disaster-recovery.md)

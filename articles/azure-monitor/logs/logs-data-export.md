@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: 73cce13f296d65167ab2c45f677849b7f05f8b3a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b9efc6c8f568d054662f9084d63b83de7b39e776
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410110"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735783"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -30,7 +30,6 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 - 使用逻辑应用从日志查询进行计划性导出。 这类似于数据导出功能，但你可向 Azure 存储发送经过筛选或聚合的数据。 不过，此方法受限于[日志查询限制](../service-limits.md#log-analytics-workspaces)，请参阅[使用逻辑应用将 Log Analytics 工作区中的数据存档到 Azure 存储](logs-export-logic-app.md)。
 - 使用 PowerShell 脚本一次性导出到本地计算机。 请参阅 [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport)。
 
-
 ## <a name="limitations"></a>限制
 
 - 当前可以使用 CLI 或 REST 请求来执行配置。 尚不支持 Azure 门户或 PowerShell。
@@ -38,7 +37,7 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 - 受支持的表当前仅限于下面[受支持的表](#supported-tables)部分指定的那些表。 例如，目前不支持自定义日志表。
 - 如果数据导出规则包含不受支持的表，操作不会失败，但在表受到支持之前，不会导出该表的任何数据。 
 - 如果数据导出规则包含不存在的表，操作会失败并出现错误 `Table <tableName> does not exist in the workspace`。
-- 数据导出功能将在所有区域提供，但目前不适用于以下区域：Azure 政府区域、日本西部、巴西东南部、挪威东部、挪威西部、阿拉伯联合酋长国北部、阿拉伯联合酋长国中部、澳大利亚中部 2、瑞士北部、瑞士西部、德国中西部、印度南部、法国南部、日本西部
+- 数据导出将在所有区域提供，但目前在下列区域不可用：瑞士北部、瑞士西部、德国中西部、澳大利亚中部 2、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部、日本西部、巴西东南部、挪威东部、挪威西部、法国南部、印度南部、韩国南部、Jio 印度中部、Jio 印度西部、加拿大东部、美国西部 3、瑞典中部、瑞典南部、政府云、中国。
 - 可以在工作区中定义最多 10 个已启用的规则。 允许更多规则，但这些规则处于禁用状态。 
 - 在工作区的所有导出规则中，目标必须唯一。
 - 目标存储帐户或事件中心必须与 Log Analytics 工作区位于同一区域。
@@ -61,7 +60,7 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 
 [![存储示例数据](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
-当基于时间的保留策略启用了 allowProtectedAppendWrites 设置时，Log Analytics 数据导出可以将追加 Blob 写入不可变存储帐户。 该设置允许将新块写入追加 Blob，同时维持不可变性保护和合规性。 请参阅[允许受保护的追加 Blob 写入](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)。
+当基于时间的保留策略启用了 allowProtectedAppendWrites 设置时，Log Analytics 数据导出可以将追加 Blob 写入不可变存储帐户。 该设置允许将新块写入追加 Blob，同时维持不可变性保护和合规性。 请参阅[允许受保护的追加 Blob 写入](../../storage/blobs/immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)。
 
 ### <a name="event-hub"></a>事件中心
 数据到达 Azure Monitor 时，将准实时地发送到事件中心。 将为导出的每个数据类型创建一个事件中心，其名称为 am- 后跟表的名称。 例如，表 SecurityEvent 将发送到名为 am-SecurityEvent 的事件中心中 。 如果要将导出的数据传递到特定事件中心，或者有一个表的名称超过了 47 个字符的限制，则可提供自己的事件中心名称并将定义的表的所有数据导出到该事件中心。
@@ -76,8 +75,8 @@ Log Analytics 工作区数据导出会持续从 Log Analytics 工作区导出数
 ## <a name="prerequisites"></a>先决条件
 在配置 Log Analytics 数据导出之前，必须符合下列先决条件：
 
-- 必须在导出规则配置之前创建目标，并且目标应与 Log Analytics 工作区位于同一区域。 如果需要将数据复制到其他存储帐户，可使用任何 [Azure 存储冗余选项](../../storage/common/storage-redundancy.md)。  
-- 存储帐户必须是 StorageV1 或 StorageV2。 不支持经典存储  
+- 必须在导出规则配置之前创建目标，并且目标应与 Log Analytics 工作区位于同一区域。 如果需要将数据复制到其他存储帐户，可以使用任何 [Azure 存储冗余选项](../../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region)，包括 GRS 和 GZRS。
+- 存储帐户必须是 StorageV1 或更高版本。 不支持经典存储。
 - 如果你已将存储帐户配置为允许从所选网络进行访问，则需要在存储帐户设置中添加一个例外来允许 Azure Monitor 写入存储。
 
 ## <a name="enable-data-export"></a>启用数据导出
@@ -440,7 +439,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 如果在特定时间段（例如执行测试时）不需要保留数据，可以禁用导出规则来停止导出。 使用以下命令通过 CLI 禁用数据导出规则。
 
 ```azurecli
-az monitor log-analytics workspace data-export update --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --enable false
+az monitor log-analytics workspace data-export update --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --enable false
 ```
 
 # <a name="rest"></a>[REST](#tab/rest)
@@ -558,8 +557,11 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | AADManagedIdentitySignInLogs |  |
 | AADNonInteractiveUserSignInLogs |  |
 | AADProvisioningLogs |  |
+| AADRiskyUsers |  |
 | AADServicePrincipalSignInLogs |  |
+| AADUserRiskEvents |  |
 | ABSBotRequests |  |
+| ACSAuthIncomingOperations |  |
 | ACSBillingUsage |  |
 | ACSChatIncomingOperations |  |
 | ACSSMSIncomingOperations |  |
@@ -569,6 +571,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | ADFSSignInLogs |  |
 | ADFTriggerRun |  |
 | ADPAudit |  |
+| ADPDiagnostics |  |
 | ADPRequests |  |
 | ADReplicationResult |  |
 | ADSecurityAssessmentRecommendation |  |
@@ -580,7 +583,9 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | ADXQuery |  |
 | AegDeliveryFailureLogs |  |
 | AegPublishFailureLogs |  |
+| AEWAuditLogs |  |
 | 警报 |  |
+| AmlOnlineEndpointConsoleLog |  |
 | ApiManagementGatewayLogs |  |
 | AppCenterError |  |
 | AppPlatformSystemLogs |  |
@@ -594,13 +599,17 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | AutoscaleEvaluationsLog |  |
 | AutoscaleScaleActionsLog |  |
 | AWSCloudTrail |  |
+| AWSGuardDuty |  |
+| AWSVPCFlow |  |
 | AzureAssessmentRecommendation |  |
 | AzureDevOpsAuditing |  |
 | BehaviorAnalytics |  |
 | BlockchainApplicationLog |  |
 | BlockchainProxyLog |  |
+| CDBCassandraRequests |  |
 | CDBControlPlaneRequests |  |
 | CDBDataPlaneRequests |  |
+| CDBGremlinRequests |  |
 | CDBMongoRequests |  |
 | CDBPartitionKeyRUConsumption |  |
 | CDBPartitionKeyStatistics |  |
@@ -636,6 +645,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | Dynamics365Activity |  |
 | EmailAttachmentInfo |  |
 | EmailEvents |  |
+| EmailPostDeliveryEvents |  |
 | EmailUrlInfo |  |
 | 事件 | 部分支持 - 导出完全支持来自 Log Analytics 代理 (MMA) 或 Azure Monitor 代理 (AMA) 的数据。 通过诊断扩展代理到达的数据是通过存储收集的，而导出不支持此路径。2 |
 | ExchangeAssessmentRecommendation |  |
@@ -645,9 +655,14 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | HDInsightAmbariSystemMetrics |  |
 | HDInsightHadoopAndYarnLogs |  |
 | HDInsightHadoopAndYarnMetrics |  |
+| HDInsightHBaseLogs |  |
+| HDInsightHBaseMetrics |  |
 | HDInsightHiveAndLLAPLogs |  |
 | HDInsightHiveAndLLAPMetrics |  |
 | HDInsightHiveTezAppStats |  |
+| HDInsightJupyterNotebookEvents |  |
+| HDInsightKafkaLogs |  |
+| HDInsightKafkaMetrics |  |
 | HDInsightOozieLogs |  |
 | HDInsightSecurityLogs |  |
 | HDInsightSparkApplicationEvents |  |
@@ -674,6 +689,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | KubeServices |  |
 | LAQueryLogs |  |
 | McasShadowItReporting |  |
+| MCCEventLogs |  |
 | MicrosoftAzureBastionAuditLogs |  |
 | MicrosoftDataShareReceivedSnapshotLog |  |
 | MicrosoftDataShareSentSnapshotLog |  |
@@ -681,7 +697,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | MicrosoftHealthcareApisAuditLogs |  |
 | NWConnectionMonitorPathResult |  |
 | NWConnectionMonitorTestResult |  |
-| OfficeActivity | 部分支持 - 某些数据是通过 Webhook 从 O365 引入 LA 的。 当前导出中缺少此部分。 |
+| OfficeActivity | 政府云中的部分支持 - 某些数据是通过 Webhook 从 O365 引入 LA 的。 当前导出中缺少此部分。 |
 | Operation | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
 | 性能 | 部分支持 – 当前仅支持 windows 性能数据。 当前导出中缺少 Linux 性能数据。 |
 | PowerBIDatasetsWorkspace |  |
@@ -706,6 +722,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SigninLogs |  |
 | SPAssessmentRecommendation |  |
 | SQLAssessmentRecommendation |  |
+| SQLSecurityAuditEvents |  |
 | SucceededIngestion |  |
 | SynapseBigDataPoolApplicationsEnded |  |
 | SynapseBuiltinSqlPoolRequestsEnded |  |

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: bde1b1f84847c3ebf05f14312b89ae8227908948
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 5a2b51573e4b639c80fd36b69cef667b9ea6eff5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411172"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743854"
 ---
 # <a name="delete-resources-from-azure"></a>从 Azure 中删除资源
 
@@ -48,7 +48,6 @@ ms.locfileid: "111411172"
     - [使用 Azure CLI 删除 Azure Arc 数据控制器资源](#delete-azure-arc-data-controller-resources-using-the-azure-cli)
     - [使用 Azure CLI 删除资源组](#delete-a-resource-group-using-the-azure-cli)
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="delete-an-entire-resource-group"></a>删除整个资源组
 
@@ -62,7 +61,7 @@ ms.locfileid: "111411172"
 
 ## <a name="delete-specific-resources-in-the-resource-group"></a>删除资源组中的特定资源
 
-在 Azure 门户中，可通过执行以下操作删除资源组中特定的已启用 Azure Arc 的数据服务资源：
+在 Azure 门户中，可通过执行以下操作删除资源组中特定已启用 Azure Arc 的数据服务资源：
 
 - 在 Azure 门户中，转到已在其中创建已启用 Azure Arc 的数据服务资源的资源组。
 - 选择要删除的所有资源。
@@ -71,7 +70,7 @@ ms.locfileid: "111411172"
 
 ## <a name="delete-resources-using-the-azure-cli"></a>使用 Azure CLI 删除资源
 
-可以使用 Azure CLI 删除特定的已启用 Azure Arc 的数据服务资源。
+可以使用 Azure CLI 删除特定已启用 Azure Arc 的数据服务资源。
 
 ### <a name="delete-sql-managed-instance-resources-using-the-azure-cli"></a>使用 Azure CLI 删除 SQL 托管实例资源
 

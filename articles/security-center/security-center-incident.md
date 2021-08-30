@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 722a508679c74f9d62df07575ffa1006528f4398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e385dec04db44e88ef5759cf8e2391b19b77dccc
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652085"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237523"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>在 Azure 安全中心管理安全事件
 
@@ -31,19 +31,19 @@ ms.locfileid: "100652085"
 
 1. 在安全中心的警报页上，使用“添加筛选器”按钮按警报名称筛选到警报名称“在多个资源上检测到的安全事件” 。 
 
-    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="在 Azure 安全中心的“警报”页上查找事件":::
+    :::image type="content" source="media/security-center-incident/locating-incidents.png" alt-text="在 Azure 安全中心的“警报”页上查找事件。":::
 
     现在，此列表已经过筛选，只显示事件。 请注意，安全事件与安全警报的图标不同。
 
-    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Azure 安全中心的“警报”页上的事件列表":::
+    :::image type="content" source="media/security-center-incident/incidents-list.png" alt-text="Azure 安全中心的“警报”页上的事件列表。":::
 
 1. 若要查看事件的详细信息，请从列表中选择一个事件。 此时会显示一个侧窗格，其中包含有关事件的更多详细信息。
 
-    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="显示事件详细信息的侧窗格":::
+    :::image type="content" source="media/security-center-incident/incident-quick-peek.png" alt-text="显示事件详细信息的侧窗格。":::
 
 1. 若要查看更多详细信息，请选择“查看完整详细信息”。
 
-    [![在 Azure 安全中心响应安全事件](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
+    [![在 Azure 安全中心响应安全事件。](media/security-center-incident/incident-details.png)](media/security-center-incident/incident-details.png#lightbox)
 
     “安全事件”页的左窗格显示有关安全事件的大致信息：标题、严重性、状态、活动时间、说明以及受影响的资源。 在受影响的资源旁边，可以看到相关的 Azure 标记。 在调查警报时，可以使用这些标记来推断资源的组织环境。
 
@@ -52,7 +52,7 @@ ms.locfileid: "100652085"
     >[!TIP]
     > 有关特定警报的详细信息，请选择该警报。 
 
-    [![事件的“执行操作”选项卡](media/security-center-incident/incident-take-action-tab.png)](media/security-center-incident/incident-take-action-tab.png#lightbox)
+    [![事件的“执行操作”选项卡。](media/security-center-incident/incident-take-action-tab.png)](media/security-center-incident/incident-take-action-tab.png#lightbox)
 
     若要切换到“执行操作”选项卡，请选择该选项卡或右窗格底部的按钮。 使用此选项卡执行更多操作，例如：
     - 缓解威胁 - 为此安全事件提供手动修正步骤

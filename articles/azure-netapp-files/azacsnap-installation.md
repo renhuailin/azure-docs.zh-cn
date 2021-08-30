@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/19/2021
+ms.date: 08/03/2021
 ms.author: phjensen
-ms.openlocfilehash: 0eae929d60ce852e7a98f12430de796aa664d86f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5eae527b288570053e1e899bc776d541ffa9e60b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481443"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729232"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool"></a>安装 Azure 应用程序一致性快照工具
 
@@ -69,9 +69,13 @@ ms.locfileid: "110481443"
 
 ## <a name="enable-communication-with-storage"></a>启用与存储的通信
 
-本节介绍如何启用与存储的通信。
+本节介绍如何启用与存储的通信。  
 
-### <a name="azure-netapp-files"></a>Azure NetApp 文件
+按照以下任一说明为你的配置配置存储：
+1. [Azure NetApp 文件（使用虚拟机）](#azure-netapp-files-with-virtual-machine) 
+1. [Azure 大型实例（裸机）](#azure-large-instance-bare-metal)
+
+### <a name="azure-netapp-files-with-virtual-machine"></a>Azure NetApp 文件（使用虚拟机）
 
 创建 RBAC 服务主体
 
@@ -114,7 +118,7 @@ ms.locfileid: "110481443"
 
 1. 将输出内容剪切并粘贴到名为 `azureauth.json` 的文件中，该文件与 `azacsnap` 命令存储在同一系统上，并使用适当的系统权限保护文件。
 
-### <a name="azure-large-instance"></a>Azure 大型实例
+### <a name="azure-large-instance-bare-metal"></a>Azure 大型实例（裸机）
 
 与存储后端的通信通过加密的 SSH 通道执行。 以下示例步骤提供了为此通信设置 SSH 的相关指导。
 

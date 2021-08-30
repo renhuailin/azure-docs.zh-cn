@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 1c28f549cf93d77f6aef6bcde6a2225345a79cc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 500cc23f2091c38006f7e58e150fb246f2a9ca64
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91612942"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586898"
 ---
 # <a name="plan-the-aggregated-namespace"></a>规划聚合命名空间
 
@@ -48,7 +48,7 @@ Azure HPC 缓存允许客户端通过一个虚拟命名空间访问各种存储�
 | /goldline/templates/acme2017/sku980     | /templates/sku980      |
 | sourcecollection                        | /source/               |
 
-一个 NFS 存储目标可以有多个虚拟命名空间路径，前提是每个路径引用唯一的导出路径。 （请参阅 [NFS 命名空间路径](add-namespace-paths.md#nfs-namespace-paths)，了解每个 NFS 存储目标的建议最大命名空间路径数。）
+一个 NFS 存储目标可以有多个虚拟命名空间路径，前提是每个路径引用唯一的导出路径。 （请参阅 [NFS 命名空间路径](add-namespace-paths.md#nfs-namespace-paths)，了解有关将多个命名空间路径与 NFS 存储目标一起使用的更多信息。）
 
 由于 NFS 源路径是同一导出的子目录，因此需要从同一存储目标定义多个命名空间路径。
 

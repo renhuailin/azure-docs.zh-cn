@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: devx-track-python, data4ml, synapse-azureml, contperf-fy21q4
-ms.openlocfilehash: 247b70e195bb17c8983d8012880f77de7bf5884b
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 424e1908df6d3e92d365e2dd3e10a42f7d1ddb2a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408724"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296415"
 ---
 # <a name="data-wrangling-with-apache-spark-pools-preview"></a>使用 Apache Spark 池进行数据整理（预览版） 
 
@@ -95,9 +95,15 @@ env.register(workspace=ws)
 
 要通过 Apache Spark 池和自定义环境开始准备数据，请指定 Apache Spark 池名称和在 Apache Spark 会话期间使用的环境。 此外，还可以提供订阅 ID、机器学习工作区资源组和机器学习工作区的名称。
 
+>[!IMPORTANT]
+> 确保在链接的 Synapse 工作区中启用了[允许会话级别包](../synapse-analytics/spark/apache-spark-manage-python-packages.md#session-scoped-packages-preview)。
+>
+>![启用会话级别包](media/how-to-data-prep-synapse-spark-pool/enable-session-level-package.png)
+
 ```python
 %synapse start -c SynapseSparkPoolAlias -e myenv -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName
 ```
+
 ## <a name="load-data-from-storage"></a>从存储加载数据
 
 Apache Spark 会话启动后，请读取要准备的数据。 Azure Blob 存储和 Azure Data Lake Storage Gen 1 和 Gen 2 支持数据加载。
@@ -108,7 +114,7 @@ Apache Spark 会话启动后，请读取要准备的数据。 Azure Blob 存储�
 
 * 从现有 [Azure 机器学习数据集](how-to-create-register-datasets.md)中读取数据。
 
-若要访问这些存储服务，需要具有“存储 Blob 数据读取者”权限。 如果打算将数据写回这些存储服务，则需要具有“存储 Blob 数据参与者”权限。 [详细了解存储权限和角色](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)。
+若要访问这些存储服务，需要具有“存储 Blob 数据读取者”权限。 如果打算将数据写回这些存储服务，则需要具有“存储 Blob 数据参与者”权限。 [详细了解存储权限和角色](../storage/blobs/assign-azure-role-data-access.md)。
 
 ### <a name="load-data-with-hadoop-distributed-files-system-hdfs-path"></a>使用 Hadoop 分布式文件系统 (HDFS) 路径加载数据
 
@@ -207,7 +213,7 @@ df.show()
 
 数据探索和准备工作完成后，将准备好的数据存储在 Azure 上的存储帐户中，以供以后使用。
 
-在以下示例中，会将准备好的数据写回到 Azure Blob 存储，并覆盖 `training_data` 目录中的原始 `Titanic.csv` 文件。 若要写回到存储，需要具有“存储 Blob 数据参与者”权限。 [详细了解存储权限和角色](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)。
+在以下示例中，会将准备好的数据写回到 Azure Blob 存储，并覆盖 `training_data` 目录中的原始 `Titanic.csv` 文件。 若要写回到存储，需要具有“存储 Blob 数据参与者”权限。 [详细了解存储权限和角色](../storage/blobs/assign-azure-role-data-access.md)。
 
 ```python
 %% synapse

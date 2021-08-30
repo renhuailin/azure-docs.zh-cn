@@ -3,12 +3,12 @@ title: 管理 Azure 开发测试实验室和计算 VM 的自动关机策略 | Mi
 description: 了解如何设置实验室的自动关机策略，以便在虚拟机不使用时自动关闭虚拟机。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: cd7974580ea30c9d0591c88380a4e626711bad1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 946ee2a4d6f3503671664b0e46806fef7f71a459
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93318976"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301989"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>配置 Azure 开发测试实验室中实验室和计算虚拟机的自动关机
 
@@ -112,7 +112,7 @@ ms.locfileid: "93318976"
 
 建议你使用 web hook，因为 Azure 逻辑应用和 Slack 等各种应用都广泛支持它们。  Webhook 允许你实现自己的发送通知的方式。 例如，本文指导你如何配置自动关机通知，以便使用 Azure 逻辑应用向 VM 所有者发送电子邮件。 首先，让我们快速浏览在实验室中启用自动关机通知的基本步骤。
 
-### <a name="create-a-logic-app-that-receives-email-notifications"></a>创建接收电子邮件通知的逻辑应用
+### <a name="create-a-logic-app-that-sends-email-notifications"></a>创建用于发送电子邮件通知的逻辑应用
 
 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)提供了许多连接器，使你可以轻松地将服务与其他客户端（如 Office 365 和 Twitter）相集成。 概括来说，为电子邮件通知设置逻辑应用的步骤可以分为四个阶段：
 

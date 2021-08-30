@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, mathoma, danil
-ms.date: 05/18/2021
-ms.openlocfilehash: 1f645b8d62bc3e0acdbdd12a21b335deea3cd53e
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 08/12/2021
+ms.openlocfilehash: b55149666af89b392bb533b317e3d6ba236779f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690023"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744877"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>功能比较：Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -93,7 +93,7 @@ Azure 管理数据库并保证其高可用性。 可能影响高可用性或无�
 | [运算符](/sql/t-sql/language-elements/operators-transact-sql) | 大多数 - 请参阅单个运算符 |是 - 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Polybase](/sql/relational-databases/polybase/polybase-guide) | 否。 可以使用 `OPENROWSET` 函数或使用[引用 Synapse Analytics 中的无服务器 SQL 池的外部表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)查询放置在 Azure Blob 存储上的文件中的数据。 | 不是。 可以使用 `OPENROWSET` 函数、[引用 Synapse Analytics 中的无服务器 SQL 池的链接服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)或引用 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)或 SQL Server 的外部表查询放置在 Azure Blob 存储上的文件中的数据。 |
 | [查询通知](/sql/relational-databases/native-client/features/working-with-query-notifications) | 否 | 是 |
-| [机器学习服务](/sql/advanced-analytics/what-is-sql-server-machine-learning)（_以前称为 R Services_）| 是，[处于公开预览状态](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | 否 |
+| [机器学习服务](/sql/advanced-analytics/what-is-sql-server-machine-learning)（_以前称为 R Services_）| 是，[处于公开预览状态](/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services) | 是的。 请参阅[Azure SQL 托管实例中的机器学习服务](../managed-instance/machine-learning-services-overview.md) |
 | [恢复模型](/sql/relational-databases/backup-restore/recovery-models-sql-server) | 仅支持保证高可用性的完整恢复。 “简单”和“批量日志记录”恢复模式不可用。 | 仅支持保证高可用性的完整恢复。 “简单”和“批量日志记录”恢复模式不可用。 |
 | [资源调控器](/sql/relational-databases/resource-governor/resource-governor) | 否 | 是 |
 | [RESTORE 语句](/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | 否 | 是，对 Azure Blob 存储上的备份文件使用必需的 `FROM URL` 选项。 请参阅[还原差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#restore-statement) |
@@ -137,14 +137,14 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | 文件系统访问 | 否。 使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) 作为替代方法来访问和加载 Azure Blob 存储中的数据。 | 否。 使用 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) 或 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) 作为替代方法来访问和加载 Azure Blob 存储中的数据。 |
 | [异地还原](recovery-using-backups.md#geo-restore) | 是 | 是 |
 | [超大规模体系结构](service-tier-hyperscale.md) | 是 | 否 |
-| [长期备份保留 - LTR](long-term-retention-overview.md) | 是，将自动创建的备份最长保留 10 年。 | 还不可以。 使用 `COPY_ONLY` [手动备份](../managed-instance/transact-sql-tsql-differences-sql-server.md#backup)作为临时解决方法。 |
+| [长期备份保留 - LTR](long-term-retention-overview.md) | 是，将自动创建的备份最长保留 10 年。 | 是，将自动创建的备份最长保留 10 年。 |
 | 暂停/恢复 | 是，在[无服务器模型](serverless-tier-overview.md)中 | 否 |
 | [基于策略的管理](/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | 否 | 否 |
 | 公共 IP 地址 | 是的。 访问权限可以使用防火墙或服务终结点来限制。  | 是的。 需要显式启用，且必须在 NSG 规则中启用端口 3342。 可根据需要禁用公共 IP。 有关更多详细信息，请参阅[公共终结点](../managed-instance/public-endpoint-overview.md)。 |
 | [数据库时间点还原](/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | 是 - 除超大规模之外的所有服务层级 - 请参阅 [SQL 数据库恢复](recovery-using-backups.md#point-in-time-restore) | 是 - 请参阅 [SQL 数据库恢复](recovery-using-backups.md#point-in-time-restore) |
 | 资源池 | 是，用作[弹性池](elastic-pool-overview.md) | 是的。 SQL 托管实例的单个实例可以包含多个共享同一资源池的数据库。 此外，还可以在可共享资源的[实例池（预览版）](../managed-instance/instance-pools-overview.md)中部署 SQL 托管实例的多个实例。 |
 | 纵向扩展或缩减（联机） | 是，可以更改 DTU、预留的 vCore 数或最大存储，这只会造成极短时间的停机。 | 是，可以更改预留的 vCore 数或最大存储，这只会造成极短时间的停机。 |
-| [SQL 别名](/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | 否，使用 [DNS 别名](dns-alias-overview.md) | 否，请使用 [Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) 在客户端计算机上设置别名。 |
+| [SQL 别名](/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | 否，使用 [DNS 别名](dns-alias-overview.md) | 否，使用 [Cliconfg](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022) 在客户端计算机上设置别名。 |
 | [SQL Analytics](../../azure-monitor/insights/azure-sql.md) | 是 | 是 |
 | [SQL 数据同步](sql-data-sync-sql-server-configure.md) | 是 | 否 |
 | [SQL Server Analysis Services (SSAS)](/sql/analysis-services/analysis-services) | 否，[Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) 是一项单独的 Azure 云服务。 | 否，[Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) 是一项单独的 Azure 云服务。 |
@@ -154,7 +154,7 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | [VNet](../../virtual-network/virtual-networks-overview.md) | 部分支持，可以使用 [VNet 终结点](vnet-service-endpoint-rule-overview.md)进行受限访问 | 是，SQL 托管实例注入到客户的 VNet 中。 请参阅[子网](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet)和 [VNet](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
 | VNet 服务终结点 | [是](vnet-service-endpoint-rule-overview.md) | 否 |
 | VNet 全球对等互连 | 是，使用[专用 IP 和服务终结点](vnet-service-endpoint-rule-overview.md) | 是，使用[虚拟网络对等互连](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913)。 |
-| [专用连接](../../private-link/private-link-overview.md) | 是，使用[专用链接](/database/private-endpoint-overview.md) | 是，使用 VNet。 | 
+| [专用连接](../../private-link/private-link-overview.md) | 是，使用[专用链接](../../private-link/private-endpoint-overview.md) | 是，使用 VNet。 | 
 
 ## <a name="tools"></a>工具
 

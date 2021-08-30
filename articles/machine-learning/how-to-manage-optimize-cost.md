@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: f5f0351e21588d6e01a633a11d5638358e4d706b
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: bf29f435c2d9439659abdcc76a7f8d85cf51c2af
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112008262"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739155"
 ---
 # <a name="manage-and-optimize-azure-machine-learning-costs"></a>管理和优化 Azure 机器学习成本
 
@@ -26,8 +26,9 @@ ms.locfileid: "112008262"
 - 设置订阅和工作区上的配额
 - 针对“训练运行”设置终止策略
 - 使用低优先级虚拟机 (VM)
+- 将计算实例计划为自动关闭并启动
 - 使用 Azure 虚拟机预留实例
-- 在本地训练
+- 本地训练
 - 并行化训练
 - 设置数据保留和删除策略
 - 将资源部署到同一区域
@@ -55,7 +56,7 @@ AmlCompute 群集的设计旨在根据工作负载动态进行缩放。 群集�
 + 如果执行迭代较少的试验，请缩短此时间以节省成本。
 + 如果迭代较多的开发/测试试验，可能需要增加此时间，这样就不用在每次更改训练脚本或环境后为纵向扩展或纵向缩减付费。
 
-可以使用 [AmlCompute SDK 类](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute)、[AmlCompute CLI](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute) 以及 [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) 来配置 AmlCompute 群集，以适应 Azure 门户中不断变化的工作负载要求。
+可以使用 [AmlCompute SDK 类](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute)、[AmlCompute CLI](/cli/azure/ml(v1)/computetarget/create#az_ml_v1__computetarget_create_amlcompute) 以及 [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) 来配置 AmlCompute 群集，以适应 Azure 门户中不断变化的工作负载要求。
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300
@@ -86,6 +87,10 @@ Azure 允许在虚拟机规模集、Batch 和机器学习服务中将未利用�
 
  低优先级 VM 不适用于计算实例，因为后者需要支持交互式笔记本体验。
 
+## <a name="schedule-compute-instances"></a>计划计算实例
+
+创建[计算实例](concept-compute-instance.md)时，VM 将保持打开状态，以供你操作。  [设置计划](how-to-create-manage-compute-instance.md#schedule)以自动启动和停止计算实例（预览版），以节省非计划使用成本。
+
 ## <a name="use-reserved-instances"></a>使用预留实例
 
 节省计算资源成本的另一种方法是 Azure 虚拟机预留实例。 此产品按一年或三年的期限提供。 其折扣最高可达即用即付价格的 72%，并直接应用于每月 Azure 帐单。
@@ -104,7 +109,7 @@ Visual Studio Code 提供了一个功能完备的环境，用于开发机器学�
 
 ## <a name="set-data-retention--deletion-policies"></a>设置数据保留和删除策略
 
-每次执行管道时，都会在每个步骤中生成中间数据集。 随着时间的推移，这些中间数据集会占用存储帐户中的空间。 请考虑设置策略，在数据的整个生命周期中管理数据，以存档和删除数据集。 有关详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](/storage/blobs/storage-lifecycle-management-concepts.md)。
+每次执行管道时，都会在每个步骤中生成中间数据集。 随着时间的推移，这些中间数据集会占用存储帐户中的空间。 请考虑设置策略，在数据的整个生命周期中管理数据，以存档和删除数据集。 有关详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](../storage/blobs/storage-lifecycle-management-concepts.md)。
 
 ## <a name="deploy-resources-to-the-same-region"></a>将资源部署到同一区域
 

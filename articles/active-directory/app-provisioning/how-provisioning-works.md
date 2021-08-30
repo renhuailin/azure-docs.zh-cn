@@ -1,25 +1,24 @@
 ---
-title: 了解 Azure AD 预配的工作原理 |Microsoft Docs
-description: 了解 Azure AD 预配的工作原理
+title: 了解应用程序预配在 Azure Active Directory 中的工作方式
+description: 了解应用程序预配在 Azure Active Directory 中的工作方式。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 06/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 19ec3ec95fbbccbaa5c646c8de16999b86349626
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 415824041c8e721c96ad9a9d480d5e50436310e4
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579444"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964763"
 ---
-# <a name="how-provisioning-works"></a>预配工作原理
+# <a name="how-application-provisioning-works-in-azure-active-directory"></a>应用程序预配在 Azure Active Directory 中的工作方式
 
 自动预配是指在用户需要访问的云应用程序中创建用户标识和角色。 除了创建用户标识外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 在开始部署之前，可以阅读本文以了解 Azure AD 预配的工作原理并获取配置建议。 
 
@@ -144,7 +143,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 ### <a name="errors-and-retries"></a>错误和重试
 
-如果目标系统中的错误阻止在目标系统中添加、更新或删除单个用户，则在下一个同步周期中重试该操作。 如果用户操作继续失败，则重试频率将开始递减，并逐渐减少到每天只尝试一次。 若要解决失败，管理员需要查看[预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)，以确定根本原因并采取适当的措施。 常见的失败包括：
+如果目标系统中的错误阻止在目标系统中添加、更新或删除单个用户，则在下一个同步周期中重试该操作。 错误会不断被重试，并逐渐减少重试的频率。 若要解决失败，管理员需要查看[预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)，以确定根本原因并采取适当的措施。 常见的失败包括：
 
 - 未在源系统中填充目标系统中所需的某个用户属性
 - 源系统中存在一个在目标系统中具有唯一约束的用户属性值，但另一条用户记录中存在相同的值

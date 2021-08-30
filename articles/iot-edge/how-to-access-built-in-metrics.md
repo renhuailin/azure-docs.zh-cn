@@ -2,31 +2,32 @@
 title: 访问内置指标 - Azure IoT Edge
 description: 远程访问 IoT Edge 运行时组件中的内置指标
 author: v-tcassi
-manager: philmea
 ms.author: v-tcassi
-ms.date: 10/05/2020
+ms.date: 06/25/2021
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1a78db821c0fab01ad5d6752216a8f7682fb2c46
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ee4c39b7dfc4097480588620465eedd40eba53f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200494"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743323"
 ---
 # <a name="access-built-in-metrics"></a>访问内置指标
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-IoT Edge 运行时组件（IoT Edge 中心和 IoT Edge 代理）以[Prometheus 公开格式](https://prometheus.io/docs/instrumenting/exposition_formats/)生成内置指标。 远程访问这些指标来监视和了解 IoT Edge 设备的运行状况。
+IoT Edge 运行时组件（IoT Edge 中心和 IoT Edge 代理）以 [Prometheus 公开格式](https://prometheus.io/docs/instrumenting/exposition_formats/)生成内置指标。 远程访问这些指标来监视和了解 IoT Edge 设备的运行状况。
+
+你可以使用自己的解决方案来访问这些指标。 也可使用[指标收集器模块](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.metrics-collector)来收集内置指标并将它们发送到 Azure Monitor 或 Azure IoT 中心。 有关详细信息，请参阅[收集和传输指标](how-to-collect-and-transport-metrics.md)。
 
 从版本 1.0.10 开始，默认情况下，指标会自动在 edgeHub 和 edgeAgent 模块（`http://edgeHub:9600/metrics` 和 `http://edgeAgent:9600/metrics`）的端口 9600 公开  。 默认情况下，这些端口不会映射到主机。
 
 通过从模块的 `createOptions` 公开和映射指标端口来访问主机中的指标。 下面的示例将默认指标端口映射到主机上的端口 9601：
 
-```
+```json
 {
   "ExposedPorts": {
     "9600/tcp": {}
@@ -116,5 +117,6 @@ edgeAgent 模块生成以下指标：
 
 ## <a name="next-steps"></a>后续步骤
 
+* [收集和传输指标](how-to-collect-and-transport-metrics.md)
 * [了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)
 * [IoT Edge 代理和 IoT Edge 中心模块孪生的属性](module-edgeagent-edgehub.md)

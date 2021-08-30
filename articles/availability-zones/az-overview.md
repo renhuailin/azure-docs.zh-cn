@@ -8,12 +8,12 @@ ms.date: 04/09/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: a15a94694f3c0623830650a8b5bbb00dc4c4cb6b
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 8d2198c4c2c2dd100d7bbf88eebc4e521d6ace04
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285507"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747778"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的区域和可用性区域
 
@@ -38,7 +38,7 @@ Microsoft Azure 服务遍布全球各地，可推动云操作实现最佳水平�
 
 ## <a name="regions"></a>区域
 
-区域是指在定义了延迟的外围中部署的一系列数据中心，它们通过专用的区域性低延迟网络互相连接。 借助 Azure，可灵活地将应用程序部署到所需的位置，包括跨多个区域来提供跨区域复原能力。 有关详细信息，请参阅[复原能力支柱概述](/azure/architecture/framework/resiliency/overview)。
+区域是指在定义了延迟的外围中部署的一系列数据中心，它们通过专用的区域性低延迟网络互相连接。 借助 Azure，可灵活地将应用程序部署到所需的位置，包括跨多个区域来提供跨区域复原能力。 有关详细信息，请参阅[复原能力支柱概述](/azure/architecture/framework/resiliency/principles)。
 
 ## <a name="availability-zones"></a>可用性区域
 
@@ -50,6 +50,9 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 
 - 区域服务 – 将资源固定到某个特定区域（例如，虚拟机、托管磁盘、标准 IP 地址）；或
 - 区域冗余服务 – Azure 平台自动跨区域复制（例如，区域冗余存储、SQL 数据库）。
+
+> [!NOTE]
+> “标准 SKU 公共 IP 地址”和“公共 IP 地址前缀”资源类型也具有“无区域”选项。  这样，客户可使用标准 SKU 公共 IP（并将其关联到仅允许标准 SKU 的资源），但它不保证实现冗余。  （从基本 SKU [升级](https://docs.microsoft.com/azure/virtual-network/public-ip-upgrade-portal)到标准 SKU 的所有公共 IP 地址都属于“无区域”类型。）
 
 若要在 Azure 上实现全面的业务连续性，可结合使用可用性区域和 Azure 区域对来构建应用程序体系结构。 可以使用 Azure 区域中的可用性区域以同步方式复制应用程序和数据以实现高可用性，并以异步方式跨 Azure 区域复制以实现灾难恢复保护。
  

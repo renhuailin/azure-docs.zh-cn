@@ -1,26 +1,23 @@
 ---
-title: 提供服务器凭据以发现软件清单、依赖项以及 SQL Server 实例和数据库
+title: 提供服务器凭据以发现软件清单、依赖项、Web 应用以及 SQL Server 实例和数据库
 description: 了解如何在设备配置管理器上提供服务器凭据
-author: vineetvikram
-ms.author: vivikram
+author: vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: e72d509f71704bbf8608543df5e819a9b8783935
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e1d8e42eaa11aacfc2d05e2f22434b604d3af592
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562063"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726228"
 ---
-# <a name="provide-server-credentials-to-discover-software-inventory-dependencies-and-sql-server-instances-and-databases"></a>提供服务器凭据以发现软件清单、依赖项以及 SQL Server 实例和数据库
+# <a name="provide-server-credentials-to-discover-software-inventory-dependencies-web-apps-and-sql-server-instances-and-databases"></a>提供服务器凭据以发现软件清单、依赖项、Web 应用以及 SQL Server 实例和数据库
 
-请参阅本文，了解如何在设备配置管理器上添加多个服务器凭据，以执行软件清单（发现已安装的应用程序）、无代理依赖项分析，以及发现 SQL Server 实例和数据库。
+请参阅本文，了解如何在设备配置管理器上添加多个服务器凭据，以执行软件清单（发现已安装的应用程序）、无代理依赖项分析，以及发现 Web 应用、SQL Server 实例和数据库。
 
-> [!Note]
-> 目前，对 VMware 环境中运行的 SQL Server 实例和数据库的发现和评估功能以预览版提供。 若要试用此功能，请使用[此链接](https://aka.ms/AzureMigrate/SQL)在澳大利亚东部区域创建一个项目 。 如果在澳大利亚东部已有项目，并且想要尝试此功能，请确保已在门户上完成这些[先决条件](how-to-discover-sql-existing-project.md)。
-
-[Azure Migrate 设备](migrate-appliance.md)是“Azure Migrate: 发现和评估”使用的一种轻型设备，可发现在 VMware 环境中运行的本地服务器，并将服务器配置和性能元数据发送到 Azure。 该设备还可用于执行软件清单、无代理依赖项分析以及发现 SQL Server 实例和数据库。
+[Azure Migrate 设备](migrate-appliance.md)是“Azure Migrate: 发现和评估”使用的一种轻型设备，可发现在 VMware 环境中运行的本地服务器，并将服务器配置和性能元数据发送到 Azure。 该设备还可用于执行软件清单、无代理依赖项分析以及发现 Web 应用程序、SQL Server 实例和数据库。
 
 若要使用这些功能，可遵循以下步骤提供服务器凭据。 设备会尝试自动将凭据映射到服务器以执行发现功能。
 
@@ -34,11 +31,11 @@ ms.locfileid: "105562063"
 
 凭据类型 | 说明
 --- | ---
-域凭据 | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加“域凭据”。  <br/><br/> 若要提供域凭据，你需要指定域名，该域名必须以 FQDN 格式提供（例如 prod.corp.contoso.com）。 <br/><br/> 你还需要为凭据、用户名和密码指定一个易记名称。 <br/><br/> 添加的域凭据将根据域的 Active Directory 自动验证其真实性。 这是为了防止在设备尝试根据所发现的服务器映射域凭据时发生帐户锁定的情况。 <br/><br/> 设备不会尝试映射验证失败的域凭据。 你需要至少有一个已成功验证的域凭据或至少一个非域凭据才能继续执行软件清单。<br/><br/>针对 Windows 服务器自动映射的域凭据将用来执行软件清单，并且可以用来发现 SQL Server 实例和数据库（如果你已在 SQL Server 上配置了 Windows 身份验证模式）。<br/> [详细了解](/dotnet/framework/data/adonet/sql/authentication-in-sql-server) SQL Server 上支持的身份验证模式的类型。
+域凭据 | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加“域凭据”。  <br/><br/> 若要提供域凭据，你需要指定域名，该域名必须以 FQDN 格式提供（例如 prod.corp.contoso.com）。 <br/><br/> 你还需要为凭据、用户名和密码指定一个易记名称。 <br/><br/> 添加的域凭据将根据域的 Active Directory 自动验证其真实性。 这是为了防止在设备尝试根据所发现的服务器映射域凭据时发生帐户锁定的情况。 <br/><br/> 设备不会尝试映射验证失败的域凭据。 你需要至少有一个已成功验证的域凭据或至少一个非域凭据才能继续执行软件清单。<br/><br/>针对 Windows 服务器自动映射的域凭据将用来执行软件清单，并且可以用来发现 Web 应用、SQL Server 实例和数据库（如果你已在 SQL Server 上配置了 Windows 身份验证模式）。<br/> [详细了解](/dotnet/framework/data/adonet/sql/authentication-in-sql-server) SQL Server 上支持的身份验证模式的类型。
 非域凭据 (Windows/Linux) | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加 Windows（非域）或 Linux（非域）凭据。   <br/><br/> 你需要为凭据、用户名和密码指定一个易记名称。
 SQL Server 身份验证凭据 | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加“SQL Server 身份验证”凭据。  <br/><br/> 你需要为凭据、用户名和密码指定一个易记名称。 <br/><br/> 如果你已在 SQL Server 上配置了 SQL Server 身份验证模式，则可以添加此类型的凭据，以发现在 VMware 环境中运行的 SQL Server 实例和数据库。<br/> [详细了解](/dotnet/framework/data/adonet/sql/authentication-in-sql-server) SQL Server 上支持的身份验证模式的类型。<br/><br/> 你需要提供至少一个已成功验证的域凭据或至少一个 Windows（非域）凭据，以便使设备能够完成软件清单来发现服务器上安装的 SQL，然后再使用 SQL Server 身份验证凭据来发现 SQL Server 实例和数据库。
 
-检查 Windows/Linux 凭据所需的权限，以执行软件清单、无代理依赖项分析以及发现 SQL Server 实例和数据库。
+检查 Windows/Linux 凭据所需的权限，以执行软件清单、无代理依赖项分析以及发现 Web 应用、SQL Server 实例和数据库。
 
 ### <a name="required-permissions"></a>所需的权限
 
@@ -46,13 +43,14 @@ SQL Server 身份验证凭据 | 在“添加凭据”模式下，你可以通过
 
 功能 | Windows 凭据 | Linux 凭据
 ---| ---| ---
-软件清单 | 来宾用户帐户 | 常规/普通用户帐户（非 sudo 访问权限）
+**软件清单** | 来宾用户帐户 | 常规/普通用户帐户（非 sudo 访问权限）
 发现 SQL Server 实例和数据库 | 作为 sysadmin 服务器角色成员的用户帐户。 | _当前不支持_
+**ASP.NET Web 应用的发现** | 具有管理权限的域或非域（本地）帐户 | _当前不支持_
 **无代理依赖项分析** | 具有管理权限的域或非域（本地）帐户 | 根用户帐户，或 <br/> 对 /bin/netstat 和 /bin/ls 文件具有以下权限的帐户：CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。<br/><br/> 使用以下命令设置这些功能： <br/><br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls<br/><br/> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat
 
 ### <a name="recommended-practices-to-provide-credentials"></a>有关如何提供凭据的建议做法
 
-- 建议创建一个拥有[必需权限](add-server-credentials.md#required-permissions)的专用域用户帐户，该帐户的权限范围是对所需服务器上的 SQL Server 实例和数据库执行软件清单、无代理依赖项分析和发现。
+- 建议创建一个拥有[必需权限](add-server-credentials.md#required-permissions)的专用域用户帐户，该帐户的权限范围是对所需服务器上的 Web 应用、SQL Server 实例和数据库执行软件清单、无代理依赖项分析和发现。
 - 建议提供至少一个已成功验证的域凭据或至少一个非域凭据，以便开始执行软件清单。
 - 如果你已在 SQL Server 上配置了 Windows 身份验证模式，则若要发现 SQL Server 实例和数据库，你可以提供域凭据。
 - 如果你已在 SQL Server 上配置了 SQL Server 身份验证模式，则还可以提供 SQL Server 身份验证凭据，但建议提供至少一个已成功验证的域凭据或至少一个 Windows（非域）凭据，以便设备可以先完成软件清单。

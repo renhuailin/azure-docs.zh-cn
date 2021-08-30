@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 4/23/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 07376647edac05384c2efc1240c2242fd5eb664b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a06a488473264a992d947ef78ad69c61776d34ae
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949815"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271208"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -43,7 +43,7 @@ ms.locfileid: "111949815"
 - 支持[区域](https://azure.microsoft.com/regions)范围。
 - 可在 [Azure 防火墙](../firewall/service-tags.md)规则中使用。
 
-默认情况下，服务标记反映了整个云的范围。 某些服务标记还通过将相应的 IP 范围限于指定的区域，带给你更精细的控制。 例如，服务标记“Storage”表示整个云的 Azure 存储，而“Storage.WestUS”则将范围缩小到来自美国西部区域的存储 IP 地址范围 。 下表指出每个服务标记是否支持此类区域范围。  
+默认情况下，服务标记反映了整个云的范围。 某些服务标记还通过将相应的 IP 范围限于指定的区域，带给你更精细的控制。 例如，服务标记“Storage”表示整个云的 Azure 存储，而“Storage.WestUS”则将范围缩小到来自美国西部区域的存储 IP 地址范围 。 下表指出每个服务标记是否支持此类区域范围。 请注意，为每个标记列出的方向为建议项。 例如，AzureCloud 标记可用于允许入站流量。 但在大多数情况下，我们不建议这样做，因为这意味着允许来自所有 Azure IP 的流量，包括其他 Azure 客户使用的流量。 
 
 | 标记 | 目的 | 可以使用入站还是出站连接？ | 可以支持区域范围？ | 是否可与 Azure 防火墙一起使用？ |
 | --- | -------- |:---:|:---:|:---:|
@@ -56,8 +56,8 @@ ms.locfileid: "111949815"
 | **AzureActiveDirectory** | Azure Active Directory。 | 出站 | 否 | 是 |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory 域服务专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
 | **AzureAdvancedThreatProtection** | Azure 高级威胁防护。 | 出站 | 否 | 否 |
-| **AzureAPIForFHIR** | Azure API for FHIR（快速医疗保健互操作性资源）。<br/><br/> 注意：此标签当前无法通过 Azure 门户进行配置。| 出站 | 否 | 否 |
 | **AzureArcInfrastructure** | 已启用 Azure Arc 的服务器、已启用 Azure Arc 的 Kubernetes 和来宾配置流量。<br/><br/>注意：此标记依赖于 AzureActiveDirectory、AzureTrafficManager 和 AzureResourceManager 标记  。 此标记当前不可通过 Azure 门户进行配置。| 出站 | 否 | 是 |
+| **AzureAttestation** | Azure 证明。<br/><br/>注意：此标签当前无法通过 Azure 门户进行配置 | 出站 | 否 | 是 | 
 | **AzureBackup** |Azure 备份。<br/><br/>*注意：* 此标记依赖于 **存储** 和 **AzureActiveDirectory** 标记。 | 出站 | 否 | 是 |
 | **AzureBotService** | Azure 机器人服务。 | 出站 | 否 | 否 |
 | **AzureCloud** | 所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 出站 | 是 | 是 |
@@ -74,7 +74,7 @@ ms.locfileid: "111949815"
 | **AzureEventGrid** | Azure 事件网格。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureInformationProtection** | Azure 信息保护。<br/><br/>*注意：* 此标记依赖于 AzureActiveDirectory、AzureFrontDoor.Frontend 和 AzureFrontDoor.FirstParty 标记  。 | 出站 | 否 | 否 |
-| **AzureIoTHub** | Azure IoT 中心。 | 出站 | 否 | 否 |
+| **AzureIoTHub** | Azure IoT 中心。 | 出站 | 是 | 否 |
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注意：* 此标记依赖于 **AzureActiveDirectory** 标记。 | 出站 | 是 | 是 |
 | **AzureLoadBalancer** | Azure 基础结构负载均衡器。 此标记将转换为[主机的虚拟 IP 地址](./network-security-groups-overview.md#azure-platform-considerations) (168.63.129.16)，Azure 的运行状况探测源于该 IP。 这只包括探测流量，而不包括到后端资源的实际流量。 如果不使用 Azure 负载均衡器，则可替代此规则。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureMachineLearning** | Azure 机器学习。 | 推送、请求和匿名 | 否 | 是 |
@@ -106,7 +106,7 @@ ms.locfileid: "111949815"
 | **PowerQueryOnline** | Power Query Online。 | 推送、请求和匿名 | 否 | 否 |
 | **服务总线** | 使用高级服务层级的 Azure 服务总线流量。 | 出站 | 是 | 是 |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此标记表示每个区域的控制平面的 Service Fabric 服务终结点。 通过它，客户可从其 VNET 针对 Service Fabric 群集执行管理操作（终结点，例如 https:// westus.servicefabric.azure.com） | 推送、请求和匿名 | 否 | 否 |
-| **Sql** | Azure SQL 数据库、Azure Database for MySQL、Azure Database for PostgreSQL 和 Azure Synapse Analytics。<br/><br/>*注意：* 此标记代表服务，而不是服务的特定实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 SQL 数据库或服务器。 此标记不适用于 SQL 托管实例。 | 出站 | 是 | 是 |
+| **Sql** | Azure SQL 数据库、Azure Database for MySQL、Azure Database for PostgreSQL、Azure Database for MariaDB 和 Azure Synapse Analytics。<br/><br/>*注意：* 此标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 SQL 数据库或服务器。 此标记不适用于 SQL 托管实例。 | 出站 | 是 | 是 |
 | **SqlManagement** | SQL 专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
 | **存储** | Azure 存储。 <br/><br/>*注意：* 此标记表示服务而不是服务的特定实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。 | 出站 | 是 | 是 |
 | **StorageSyncService** | 存储同步服务。 | 推送、请求和匿名 | 否 | 否 |

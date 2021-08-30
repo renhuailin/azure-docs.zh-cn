@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: b0f5bf01080d89e6dc6d6843312d96243b8526ba
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 5c8858e50707209b47eb61d554a8e4f7313c92c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484534"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731188"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>缩放将 VMware 虚拟机迁移到 Azure 的无代理迁移过程
 
@@ -60,42 +60,45 @@ ms.locfileid: "109484534"
 ### <a name="2-download-the-installer-for-the-scale-out-appliance"></a>2. 下载横向扩展设备的安装程序
 
 在“下载 Azure Migrate 设备”中，单击“下载” 。 你需要下载 PowerShell 安装程序脚本，以便在运行 Windows server 2016 的现有服务器上部署横向扩展设备，并使用所需的硬件配置（32 GB RAM、8 个 vCPU、约 80 GB 的磁盘存储和 Internet 访问，直接或通过代理访问）。
+
 :::image type="content" source="./media/how-to-scale-out-for-migration/download-scale-out.png" alt-text="下载横向扩展设备的脚本":::
 
 > [!TIP]
 > 可以使用以下步骤验证已下载的 zip 文件的校验和：
 >
-> 1. 以管理员身份打开命令提示符
+> 1. 在下载文件的服务器上，打开管理员命令窗口。
 > 2. 运行以下命令以生成 zip 文件的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 公有云的示例用法：```C:\>Get-FileHash -Path .\AzureMigrateInstaller-VMware-Public-Scaleout.zip -Algorithm SHA256 ```
-> 3. 如果计算所得的哈希值与以下字符串不匹配，请从门户下载最新版本的横向扩展设备安装程序：1E6B6E3EE8B2A800818B925F5DA67EF7874DAD87E32847120B32F3E21F5960F9
+    - 用法示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+> 3. 如果计算出的哈希值与以下字符串不匹配，请从门户下载最新版本的横向扩展设备安装程序：b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3.运行 Azure Migrate 安装程序脚本
-此安装程序脚本执行以下操作：
 
-- 安装网关代理和设备配置管理器以执行更多并发服务器复制。
-- 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。
-- 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
-- 在路径下创建以下文件：
-    - **配置文件**：%Programdata%\Microsoft Azure\Config
-    - **日志文件**：%Programdata%\Microsoft Azure\Logs
-
-按如下所示运行脚本：
-
-1. 将 zip 文件解压缩到托管横向扩展设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
+1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
 2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
-3. 将 PowerShell 目录更改为用于提取内容的下载的 zip 文件所在的文件夹。
-4. 使用以下命令运行名为“AzureMigrateInstaller.ps1”的脚本：
+3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
+4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-    - 对于公有云： 
-    
-        ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 ```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-    脚本将在完成执行时启动设备配置管理器。
+5. 从方案、云、配置和连接选项中进行选择，以部署所需的设备。 例如，下面所示的选择会在 Azure 公有云上一个已建立默认（公共终结点）连接的 Azure Migrate 项目中设置一个横向扩展设备，用于在 VMware 环境中运行的服务器上启动并发复制  。
 
-如果出现任何问题： <br/> 可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志以进行故障排除。
+    :::image type="content" source="./media/how-to-scale-out-for-migration/script-vmware-scaleout-inline.png" alt-text="显示如何设置横向扩展设备的屏幕截图。" lightbox="./media/how-to-scale-out-for-migration/script-vmware-scaleout-expanded.png":::
+
+6. 此安装程序脚本执行以下操作：
+
+    - 安装网关代理和设备配置管理器以执行更多并发服务器复制。
+    - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
+    - 下载并安装 IIS 可重写模块。
+    - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
+    - 在路径下创建以下文件：
+        - **配置文件**：%Programdata%\Microsoft Azure\Config
+        - **日志文件**：%Programdata%\Microsoft Azure\Logs
+
+成功执行该脚本后，将自动启动设备配置管理器。
+
+> [!NOTE]
+> 如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。
 
 
 ### <a name="4-configure-the-appliance"></a>4.配置设备
@@ -121,7 +124,8 @@ ms.locfileid: "109484534"
 
 1. 粘贴从门户复制的 Azure Migrate 项目密钥。 如果没有密钥，请转到“服务器评估”>“发现”>“管理现有设备”，选择主设备名称，找到与其关联的横向扩展设备，然后复制相应的密钥。
 1. 需要使用设备代码对 Azure 进行身份验证。 单击“登录”将打开包含设备代码的模式，如下所示。
-:::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="显示设备代码的模式":::
+
+   :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="显示设备代码的模式":::
 
 1. 单击“复制代码并登录”以复制设备代码，并在新的浏览器选项卡中打开 Azure 登录提示。如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
 1. 在新选项卡上，粘贴设备代码并使用 Azure 用户名和密码登录。

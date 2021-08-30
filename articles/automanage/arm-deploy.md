@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 04/09/2021
 ms.author: alsin
-ms.openlocfilehash: 78cf28903311c542a83c9ace4f794e1cdda9a61c
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 34f20a50fc62cff98362380222822ac016b76a48
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368424"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746765"
 ---
 # <a name="onboard-a-machine-to-automanage-with-an-azure-resource-manager-arm-template"></a>使用 Azure 资源管理器 (ARM) 模板将计算机加入 Automanage
 
@@ -22,8 +22,9 @@ ms.locfileid: "107368424"
 按照下面的步骤将计算机加入 Automanage 最佳做法。 下面的 ARM 模板将创建一个 `configurationProfileAssignment` 对象，这是一种 Azure 资源，用于表示已加入 Automanage 的计算机。
 
 ## <a name="prerequisites"></a>必备知识
-* 必须已创建一个现有的 Automanage 帐户。 有关 Automanage 帐户及其创建方法的详细信息，请参阅[此文档](./automanage-account.md)。
-* 对于包含要加入 Automanage 的计算机的资源组，必须具有其“参与者”角色
+* 必须已创建一个现有的 Automanage 帐户，并为其分配了正确的权限。 请参阅[此文档](./automanage-account.md)，详细了解 Automanage 帐户及其创建方法和分配权限方法。
+* 如果你有一个已分配权限的现有 Automanage 帐户，还必须在包含要加入 Automanage 的计算机的资源组上具有参与者角色。
+
 
 ## <a name="arm-template-overview"></a>ARM 模板概述
 下面的 ARM 模板会将指定的计算机加入 Azure Automanage 最佳做法。 请参阅下面的 [ARM 模板部署](#arm-template-deployment)部分，详细了解 ARM 模板及其部署步骤。
@@ -64,7 +65,7 @@ ms.locfileid: "107368424"
 * “DevTest”
 
 请遵照以下步骤部署 ARM 模板：
-1. 将下面的 ARM 模板另存为 `azuredeploy.json`
+1. 将上面的 ARM 模板另存为 `azuredeploy.json`
 1. 使用 `az deployment group create --resource-group myResourceGroup --template-file azuredeploy.json` 运行 ARM 模板部署
 1. 当系统发出提示时，提供 machineName、automanageAccountName 和 configurationProfileAssignment 的值
 1. 完成！

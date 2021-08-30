@@ -1,28 +1,28 @@
 ---
 title: 文档提取认知技能
 titleSuffix: Azure Cognitive Search
-description: 从扩充管道内的文件中提取内容。 此技能目前为公共预览版。
+description: 从扩充管道内的文件中提取内容。
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 08/12/2021
 ms.author: chalton
-ms.openlocfilehash: 681900e2d2175e3e52a906072ae0b31a835cd1c8
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 02d3431ecc7a5c460be75885fd786b3b4c4d276f
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483652"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860569"
 ---
 # <a name="document-extraction-cognitive-skill"></a>文档提取认知技能
 
 **文档提取** 技能从扩充管道内的文件中提取内容。 这使你可以利用文档提取步骤，该步骤通常在技能组执行之前对可能由其他技能生成的文件执行。
 
 > [!NOTE]
-> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 在调用认知服务中的 API 时，以及在索引编制中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 此技能不受限于认知服务，也没有认知服务密钥要求。
+> 此技能可提取文本和图像。 文本提取是免费的。 图像提取[由 Azure 认知搜索计量](https://azure.microsoft.com/pricing/details/search/)。 在免费搜索服务中，每个索引器每天 20 个事务的成本已吸收，因此你可以免费完成快速入门、教程和小型搜索。 对于基本、标准及以上的服务，图像提取是收费的。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如[定价页](https://azure.microsoft.com/pricing/details/search/)所述。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.DocumentExtractionSkill
@@ -45,7 +45,7 @@ DocumentExtractionSkill 可从以下文档格式提取文本：
 
 | 配置参数   | 允许的值 | 说明 |
 |-------------------------|----------------|-------------|
-| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | 若要忽略数据集中的嵌入图像或图像文件，请设置为 `none`。 这是默认值。 <br/>对于[使用认知技能的图像分析](cognitive-search-concept-image-scenarios.md)，设置为 `generateNormalizedImages` 可让技能在文档破解过程中创建规范化图像的数组。 此操作需要将 `parsingMode` 设置为 `default`，将 `dataToExtract` 设置为 `contentAndMetadata`。 规范化的图像是指在视觉搜索结果中包含图像时，对图像进行额外的处理，使图像的输出一致，并通过调整大小和旋转方向使图像在呈现时更一致（例如，使图像控件中的照片大小一致，如 [JFK 演示](https://github.com/Microsoft/AzureSearch_JFK_Files)中所示）。 当使用此选项时，将为每个图像生成此信息。  <br/>如果设置为 `generateNormalizedImagePerPage`，则将以不同的方式对待 PDF 文件，将不会提取嵌入的图像，而是将每个页面呈现为图像并相应地规范化。  对待非 PDF 文件类型的方式与设置了 `generateNormalizedImages` 时相同。
+| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | 若要忽略数据集中的嵌入图像或图像文件，请设置为 `none`。 这是默认值。 <br/>对于[使用认知技能的图像分析](cognitive-search-concept-image-scenarios.md)，设置为 `generateNormalizedImages` 可使技能在[文档破解](search-indexer-overview.md#document-cracking)过程中创建规范化图像的数组。 此操作需要将 `parsingMode` 设置为 `default`，将 `dataToExtract` 设置为 `contentAndMetadata`。 规范化的图像是指在视觉搜索结果中包含图像时，对图像进行额外的处理，使图像的输出一致，并通过调整大小和旋转方向使图像在呈现时更一致（例如，使图像控件中的照片大小一致，如 [JFK 演示](https://github.com/Microsoft/AzureSearch_JFK_Files)中所示）。 当使用此选项时，将为每个图像生成此信息。  <br/>如果设置为 `generateNormalizedImagePerPage`，则将以不同的方式对待 PDF 文件，将不会提取嵌入的图像，而是将每个页面呈现为图像并相应地规范化。  对待非 PDF 文件类型的方式与设置了 `generateNormalizedImages` 时相同。
 | `normalizedImageMaxWidth` | 一个介于 50 和 10000 之间的整数 | 生成的规范化图像的最大宽度（以像素为单位）。 默认为 2000。 | 
 | `normalizedImageMaxHeight` | 一个介于 50 和 10000 之间的整数 | 生成的规范化图像的最大高度（以像素为单位）。 默认为 2000。 |
 

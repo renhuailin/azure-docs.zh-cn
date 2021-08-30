@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: bf8a4e51e23f438265af706914a6bc73ec30f64d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de17fface1a99e7e3832cf815eadda6915a707fd
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667668"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583142"
 ---
 # <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>如何运行或重置索引器、技能或文档
 
@@ -73,7 +73,7 @@ ms.locfileid: "101667668"
 ## <a name="reset-skills-preview"></a>重置技能（预览版）
 
 > [!IMPORTANT] 
-> [重置技能](/rest/api/searchservice/preview-api/reset-skills)目前为公共预览版，仅可通过预览版 REST API 使用。 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览功能按原样提供。
+> [重置技能](/rest/api/searchservice/preview-api/reset-skills)根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公开预览状态。 [预览版 REST API](/rest/api/searchservice/index-preview) 支持此功能。
 
 对于具有技能组的索引器，可以重置特定的技能，以强制处理该技能，以及依赖于其输出的任何下游技能。 此外还会刷新[缓存的扩充](search-howto-incremental-index.md)。 重置技能会使缓存的技能结果失效，当已部署某个技能的新版本，并且你希望索引器对所有文档重新运行该技能时，此功能非常有用。 
 
@@ -99,7 +99,7 @@ POST https://[service name].search.windows.net/skillsets/[skillset name]/resetsk
 ## <a name="reset-docs-preview"></a>重置文档（预览版）
 
 > [!IMPORTANT] 
-> [重置文档](/rest/api/searchservice/preview-api/reset-documents)目前为公共预览版，仅可通过预览版 REST API 使用。 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览功能按原样提供。
+> [重置文档](/rest/api/searchservice/preview-api/reset-documents)目前为公共预览版，仅可通过预览版 REST API 使用。 根据[使用条款补充](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览功能按原样提供。
 
 [重置文档 API](/rest/api/searchservice/preview-api/reset-documents) 接受文档键列表，因此你可以刷新特定的文档。 如果已指定重置参数，这些参数将成为要处理哪些内容的唯一决定因素，而不管基础数据发生了其他哪些更改。 例如，如果自上次索引器运行以来添加或更新了 20 个 Blob，但你只重置了一个文档，则只会处理这一个文档。
 

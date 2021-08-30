@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c5f8a4361774368e3934d1e2b16c8311876f5caa
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 63892e4ed71ec435a7068c9c68b9981a71205fb1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491859"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725466"
 ---
 # <a name="how-to-meet-data-residency-requirements-in-azure-cosmos-db"></a>如何满足 Azure Cosmos DB 的数据驻留要求
 
-通过 Azure Cosmos DB 可以将数据和备份配置并保留到单个区域中，满足[驻留要求。](https://azure.microsoft.com/en-us/global-infrastructure/data-residency/)
+通过 Azure Cosmos DB 可以将数据和备份配置并保留到单个区域中，满足[驻留要求。](https://azure.microsoft.com/global-infrastructure/data-residency/)
 
 ## <a name="residency-requirements-for-data"></a>数据驻留要求
 
@@ -24,7 +24,7 @@ ms.locfileid: "106491859"
 
 ## <a name="residency-requirements-for-backups"></a>备份的驻留要求
 
-连续模式备份：默认情况下，这些备份存储在本地冗余或区域冗余存储中。 了解更多信息，请参阅[连续备份](continuous-backup-restore-portal.md)一文。
+连续模式备份：默认情况下，这些备份存储在本地冗余或区域冗余存储中。 了解更多信息，请参阅[连续备份](provision-account-continuous-backup.md)一文。
 
 周期模式备份：默认情况下，周期模式备份会存储到异地冗余存储中。 对于周期备份模式，可以在帐户级别配置数据冗余。 备份存储有三个冗余选项。 分别是本地冗余、区域冗余或异地冗余。 了解更多信息，请参阅如何使用门户[配置备份冗余](configure-periodic-backup-restore.md#configure-backup-interval-retention)。
 
@@ -37,4 +37,7 @@ Azure Policy 是一项服务，可用于创建、分配和管理将规则应用�
 ## <a name="next-steps"></a>后续步骤
 
 * 使用 [Azure 门户](configure-periodic-backup-restore.md)配置和管理周期备份
-* 使用 [Azure 门户](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md)、[CLI](continuous-backup-restore-command-line.md) 或 [Azure 资源管理器](continuous-backup-restore-template.md)配置和管理连续备份。
+* 使用 [Azure 门户](provision-account-continuous-backup.md#provision-portal)、[PowerShell](provision-account-continuous-backup.md#provision-powershell)、[CLI](provision-account-continuous-backup.md#provision-cli) 或 [Azure 资源管理器](provision-account-continuous-backup.md#provision-arm-template)预配连续备份。
+* 使用 [Azure 门户](restore-account-continuous-backup.md#restore-account-portal)、[PowerShell](restore-account-continuous-backup.md#restore-account-powershell)、[CLI](restore-account-continuous-backup.md#restore-account-cli) 或 [Azure 资源管理器](restore-account-continuous-backup.md#restore-arm-template)还原连续备份帐户。
+* [将帐户从定期备份迁移到连续备份](migrate-continuous-backup.md)。
+

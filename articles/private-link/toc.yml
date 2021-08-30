@@ -61,7 +61,7 @@
   items:
     - name: 导出专用终结点 DNS 记录
       href: private-endpoint-export-dns.md
-    - name: 对专用终结点禁用网络策略
+    - name: 管理专用终结点的网络策略
       href: disable-private-endpoint-network-policy.md
     - name: 对专用链接服务禁用网络策略
       href: disable-private-link-service-network-policy.md

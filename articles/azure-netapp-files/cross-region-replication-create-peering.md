@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 08/11/2021
 ms.author: b-juche
-ms.openlocfilehash: 84b10fefbfae4ca42fa96cc96f357dbfe0d25800
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 94528abaf90a94c59dd97c9a4ae0d15162914bc7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108794765"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751378"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>为 Azure NetApp 文件创建卷复制
 
@@ -106,10 +106,13 @@ Azure NetApp 文件复制当前不支持多个订阅；必须在单个订阅下�
 
 6. 在“授权”字段中，粘贴在步骤 3 中获取的目标复制卷资源 ID，然后单击“确定”。
 
+    > [!NOTE]
+    > 由于各种因素（例如目标存储在给定时间的状态），源卷的已用空间和目标卷的已用空间之间可能存在差异。 <!-- ANF-14038 --> 
+
 ## <a name="next-steps"></a>后续步骤  
 
 * [跨区域复制](cross-region-replication-introduction.md)
-* [跨区域复制的要求和注意事项](cross-region-replication-requirements-considerations.md)
+* [使用跨区域复制的要求和注意事项](cross-region-replication-requirements-considerations.md)
 * [显示复制关系的运行状况](cross-region-replication-display-health-status.md)
 * [卷复制指标](azure-netapp-files-metrics.md#replication)
 * [管理灾难恢复](cross-region-replication-manage-disaster-recovery.md)

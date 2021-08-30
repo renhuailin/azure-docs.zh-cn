@@ -5,33 +5,28 @@ services: azure-monitor
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/12/2021
-ms.openlocfilehash: a7b2e6ee4b54427f33ba9701ae13f139341a1941
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.date: 07/22/2021
+ms.openlocfilehash: 204c7a75eed5be4b6c3aca91d59011fd2b1327b5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030946"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750138"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
 虚拟机和其他计算资源需要代理收集所需的监视数据，以度量其来宾操作系统和工作负荷的性能和可用性。 本文介绍 Azure Monitor 使用的代理，并帮助你确定需要满足特定环境的哪些要求。
 
 > [!NOTE]
-> 由于 Azure Monitor 和 Log Analytics 最近已合并到一起，Azure Monitor 目前有多个代理。 虽然它们的特性可能存在重叠，但每个特性都有独特的功能。 可能需要在计算机上有一个或多个代理，具体取决于要求。 
-
-你可能有一组特定的要求，这些要求在为特定计算机设置单个代理的情况下无法完全满足。 例如，你可能想要使用需要 Azure 诊断扩展的指标警报，但同时又想要利用 VM 见解功能，该功能需要 Log Analytics 代理和依赖关系代理。 在这样的情况下，可以使用多个代理。对于需要每个代理中的功能的客户，这很常见。
+> Azure Monitor 最近推出了一个新代理，即 Azure Monitor 代理，该代理提供收集来宾操作系统监视数据所需的全部功能。 虽然 Azure Monitor 和 Log Analytics 合并导致存在许多旧版代理，这些代理都有独特的功能，但也存在一些重叠，因此我们建议使用新的代理，该新代理合并了现有全部代理的功能并具有额外的优势。 [了解详细信息](./azure-monitor-agent-overview.md)
 
 ## <a name="summary-of-agents"></a>代理摘要
 
 下表对适用于 Windows 和 Linux 的 Azure Monitor 代理进行了快速比较。 以下部分提供了每个代理的更多详细信息。
 
-> [!NOTE]
-> Azure Monitor 代理目前以功能有限的预览版提供。 此表会进行更新 
-
 ### <a name="windows-agents"></a>Windows 代理
 
-| | Azure Monitor 代理（预览版） | 诊断<br>扩展 (WAD) | Log Analytics<br>代理 | 依赖项<br>代理 |
+| | Azure Monitor 代理 | 诊断<br>扩展 (WAD) | Log Analytics<br>代理 | 依赖项<br>代理 |
 |:---|:---|:---|:---|:---|
 | **支持的环境** | Azure<br>其他云 (Azure Arc)<br>本地 (Azure Arc)  | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | 
 | **代理要求**  | 无 | 无 | 无 | 需要 Log Analytics 代理 |
@@ -41,30 +36,40 @@ ms.locfileid: "112030946"
 
 ### <a name="linux-agents"></a>Linux 代理
 
-| | Azure Monitor 代理（预览版） | 诊断<br>扩展 (LAD) | Telegraf<br>代理 | Log Analytics<br>代理 | 依赖项<br>代理 |
+| | Azure Monitor 代理 | 诊断<br>扩展 (LAD) | Telegraf<br>代理 | Log Analytics<br>代理 | 依赖项<br>代理 |
 |:---|:---|:---|:---|:---|:---|
-| 支持的环境（请参阅下表以了解支持的操作系统） | Azure<br>其他云 (Azure Arc)<br>本地 (Azure Arc) | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 |
+| **支持的环境** | Azure<br>其他云 (Azure Arc)<br>本地 (Azure Arc) | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 |
 | **代理要求**  | 无 | 无 | 无 | 无 | 需要 Log Analytics 代理 |
 | **收集的数据** | Syslog<br>性能 | Syslog<br>性能 | 性能 | Syslog<br>性能| 过程依赖项<br>网络连接指标 |
-| **数据发送目标** | Azure Monitor 日志<br>Azure Monitor 指标 | Azure 存储<br>事件中心 | Azure Monitor 指标 | Azure Monitor 日志 | Azure Monitor 日志<br>（通过 Log Analytics 代理） |
+| **数据发送目标** | Azure Monitor 日志<br>Azure Monitor 指标<sup>1</sup> | Azure 存储<br>事件中心 | Azure Monitor 指标 | Azure Monitor 日志 | Azure Monitor 日志<br>（通过 Log Analytics 代理） |
 | **支持的**<br>**功能**<br>**支持** | Log Analytics<br>指标资源管理器 | | 指标资源管理器 | VM 见解<br>Log Analytics<br>Azure 自动化<br>Azure 安全中心<br>Azure Sentinel | VM 见解<br>服务映射 |
 
+<sup>1</sup> 目前，适用于 Linux 的 Azure Monitor 代理存在一个限制，即不支持将 Azure Monitor 指标用作唯一目标。 将其与 Azure Monitor 日志一起使用是可行的。 此限制将在下一扩展更新中解决。
 
-## <a name="azure-monitor-agent-preview"></a>Azure Monitor 代理（预览版）
+## <a name="azure-monitor-agent"></a>Azure Monitor 代理
 
-[Azure Monitor 代理](azure-monitor-agent-overview.md)目前为预览版，它将取代 Windows 和 Linux 计算机上的 Log Analytics 代理和 Telegraf 代理。 它可将数据发送到 Azure Monitor 日志和 Azure Monitor 指标，并使用[数据收集规则 (DCR)](data-collection-rule-overview.md)，这些规则提供了伸缩性更强的方法来为每个代理配置数据收集和目标。
+我们推出 [Azure Monitor 代理](azure-monitor-agent-overview.md)的目的是让其取代 Windows 和 Linux 计算机上的 Log Analytics 代理、Azure 诊断扩展和 Telegraf 代理。 它可将数据发送到 Azure Monitor 日志和 Azure Monitor 指标，并使用[数据收集规则 (DCR)](data-collection-rule-overview.md)，这些规则提供了伸缩性更强的方法来为每个代理配置数据收集和目标。
 
 如需执行以下操作，请使用 Azure Monitor 代理：
 
 - 从 Azure、其他云或本地的任何计算机中收集来宾日志和指标。 （Azure 之外的计算机需要[已启用 Azure Arc 的服务器](../../azure-arc/servers/overview.md)。） 
+- 使用[数据收集规则](./data-collection-rule-overview.md)集中管理数据收集配置，并使用 Azure 资源管理器 (ARM) 模板或策略进行整体管理
 - 将数据发送到 Azure Monitor 日志和 Azure Monitor 指标来供 Azure Monitor 分析。 
-- 将数据发送到 Azure 存储进行存档。
-- 使用 [Azure 事件中心](./diagnostics-extension-stream-event-hubs.md)将数据发送到第三方工具。
-- 使用 [Azure 安全中心](../../security-center/security-center-introduction.md)或 [Azure Sentinel](../../sentinel/overview.md) 管理计算机的安全性。 （不适用于预览版。）
-
+- 利用 Windows 事件筛选或多归属功能处理 Windows 或 Linux 上的日志
+<!--- Send data to Azure Storage for archiving.
+- Send data to third-party tools using [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md).
+- Manage the security of your machines using [Azure Security Center](../../security-center/security-center-introduction.md)  or [Azure Sentinel](../../sentinel/overview.md). (Available in private preview.)
+- Use [VM insights](../vm/vminsights-overview.md) which allows you to monitor your machines at scale and monitors their processes and dependencies on other resources and external processes..  
+- Manage the security of your machines using [Azure Security Center](../../security-center/security-center-introduction.md)  or [Azure Sentinel](../../sentinel/overview.md).
+- Use different [solutions](../monitor-reference.md#insights-and-core-solutions) to monitor a particular service or application. */
+-->
 Azure Monitor 代理存在以下限制：
+- 无法在生产环境中使用 Log Analytics 解决方案（仅提供预览版，请参阅[支持的内容](./azure-monitor-agent-overview.md#supported-services-and-features)）。
+- 尚不支持涉及专用链接的网络场景。 
+- 尚不支持收集自定义日志（文件）或 IIS 日志文件。 
+- 尚不支持将事件中心和存储帐户作为目标。
+- 不支持混合 Runbook 辅助角色。
 
-- 目前以公共预览版提供。 有关公共预览版期间的限制的列表，请查看[当前限制](azure-monitor-agent-overview.md#current-limitations)。
 
 ## <a name="log-analytics-agent"></a>Log Analytics 代理
 
@@ -127,9 +132,9 @@ Azure 诊断扩展的限制包括：
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
-[Windows](../../virtual-machines/extensions/oms-windows.md) 和 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics 扩展在 Azure 虚拟机上安装 Log Analytics 代理。 [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) 和 [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) 的 Azure Monitor 依赖项扩展会在 Azure 虚拟机上安装依赖关系代理。 它们是如上所述的代理，但你可以通过[虚拟机扩展](../../virtual-machines/extensions/overview.md)对它们进行管理。 应尽可能使用扩展来安装和管理代理。
+[Azure Monitor 代理](./azure-monitor-agent-install.md#virtual-machine-extension-details)仅作为虚拟机扩展提供。 [Windows](../../virtual-machines/extensions/oms-windows.md) 和 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics 扩展在 Azure 虚拟机上安装 Log Analytics 代理。 [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) 和 [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) 的 Azure Monitor 依赖项扩展会在 Azure 虚拟机上安装依赖关系代理。 它们是如上所述的代理，但你可以通过[虚拟机扩展](../../virtual-machines/extensions/overview.md)对它们进行管理。 应尽可能使用扩展来安装和管理代理。
 
-在混合计算机上，使用[已启用 Azure Arc 的服务器](../../azure-arc/servers/manage-vm-extensions.md)部署 Log Analytics 和 Azure Monitor 依赖项 VM 扩展。
+在混合计算机上，使用[已启用 Azure Arc 的服务器](../../azure-arc/servers/manage-vm-extensions.md)部署 Azure Monitor 代理、Log Analytics 和 Azure Monitor 依赖项 VM 扩展。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -146,7 +151,8 @@ Azure 诊断扩展的限制包括：
 | Windows Server 2012 R2                                   | X | X | X | X |
 | Windows Server 2012                                      | X | X | X | X |
 | Windows Server 2008 R2 SP1                               | X | X | X | X |
-| Windows Server 2008 R2                                   |   | X | X | X |
+| Windows Server 2008 R2                                   |   |   | X | X |
+| Windows Server 2008 SP2                                   |   | X |  |  |
 | Windows 10 企业版<br>（包括多会话）和专业版<br>（仅限服务器方案）  | X | X | X | X |
 | Windows 8 企业版和专业版<br>（仅限服务器方案）  |   | X | X |   |
 | Windows 7 SP1<br>（仅限服务器方案）                 |   | X | X |   |
@@ -169,7 +175,7 @@ Azure 诊断扩展的限制包括：
 | Oracle Linux 7                                              | X | X |   | X |
 | Oracle Linux 6                                              |   | X |   |   |
 | Oracle Linux 6.4+                                           |   | X |   | X |
-| Red Hat Enterprise Linux Server 8.3                         | X <sup>3</sup> | X | X |   |
+| Red Hat Enterprise Linux Server 8.2、8.3、8.4               | X <sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 8                           | X <sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 7                           | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                           |   | X | X |   |
@@ -227,6 +233,7 @@ Azure 诊断扩展的限制包括：
 
 在以下站点获取每个代理的更多详细信息：
 
+- [Azure Monitor 代理概述](./azure-monitor-agent-overview.md)
 - [Log Analytics 代理概述](./log-analytics-agent.md)
 - [Azure 诊断扩展概述](./diagnostics-extension-overview.md)
 - [使用 InfluxData Telegraf 代理收集 Linux VM 的自定义指标](../essentials/collect-custom-metrics-linux-telegraf.md)

@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 06/26/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: df218c2a4c066343ef571c6f24554ecaa806b639
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e62f2a07b4266671bb055e6a672e13f69e2a0bab
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99987882"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982809"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层
 
-[创建搜索服务](search-create-service-portal.md)的一部分意味着选择定价层（或 SKU），该定价层（或 SKU）在服务的生存期内是固定的。 创建服务时，门户的“选择定价层”页面中将显示价格（或运行服务的每月估计成本）。 如果通过 PowerShell 或 Azure CLI 进行预配，并且通过 `-Sku` 参数指定层级，则应查看[服务定价](https://azure.microsoft.com/pricing/details/search/)以了解估计成本。
+[创建搜索服务](search-create-service-portal.md)的一部分意味着选择定价层（或 SKU），该定价层（或 SKU）在服务的生存期内是固定的。 在门户中创建服务时，在“选择定价层”页中指定层级。 如果要通过 PowerShell 或 Azure CLI 预配，则通过 `-Sku` 参数指定层级
 
 你选择的层级决定了以下事项：
 
@@ -27,6 +27,8 @@ ms.locfileid: "99987882"
 + 按计费费率计费，每月成本是固定的，但在添加容量的情况下成本会增加
 
 在一些实例中，选择的层级决定了[高级版功能](#premium-features)的可用性。
+
+定价（或运行服务的每月预估成本）在门户的“选择定价层”页中显示。 应查看[服务定价](https://azure.microsoft.com/pricing/details/search/)，了解估计成本。
 
 > [!NOTE]
 > 正在查找有关 Azure SKU 的详细信息？ 从 [Azure 定价](https://azure.microsoft.com/pricing/)开始，然后向下滚动查看每服务定价页面的链接。
@@ -56,12 +58,13 @@ ms.locfileid: "99987882"
 | 功能 | 限制 |
 |---------|-------------|
 | [索引器](search-indexer-overview.md) | 索引器在 S3 HD 上不可用。  |
-| [AI 扩充](search-security-manage-encryption-keys.md) | 在免费层上运行，但不建议这样做。 |
+| [AI 扩充](cognitive-search-concept-intro.md) | 在免费层上运行，但不建议这样做。 |
 | [用于出站（索引器）访问的托管或受信任标识](search-howto-managed-identities-data-sources.md) | 在免费层上不可用。|
 | [客户托管的加密密钥](search-security-manage-encryption-keys.md) | 在免费层上不可用。 |
 | [IP 防火墙访问](service-configure-firewall.md) | 在免费层上不可用。 |
 | [专用终结点（与 Azure 专用链接集成）](service-create-private-endpoint.md) | 对于到搜索服务的入站连接，在免费层上不可用。 对于通过索引器连接到其他 Azure 资源的出站连接，在免费层或 S3 HD 上不可用。 对于使用技能组的索引器，在免费层、基本层、S1 或 S3 HD 上不可用。| 
-| [可用性区域](search-performance-optimization.md) | 在免费层和基本层上不可用。 |
+| [可用性区域](search-performance-optimization.md) | 在免费层或基本层上不可用。 |
+| [语义搜索（预览）] | 在免费层或基本层上不可用。 |
 
 资源密集型功能可能无法正常运行，除非你为其提供足够的容量。 例如，[AI 扩充](cognitive-search-concept-intro.md)包含长时间运行的技能，除非数据集较小，否则这些技能在免费服务中会超时。
 

@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/21/2018
+ms.date: 08/11/2021
 ms.author: alkohli
-ms.openlocfilehash: d683f49cadb384ef59d3bae819156733691813cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81a906e6d1a5630ed7b40092d997ba0f81c7220b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88183490"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750610"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple 数据管理器解决方案概述
 
@@ -27,7 +27,7 @@ ms.locfileid: "88183490"
 
 Microsoft Azure StorSimple 使用云存储作为本地解决方案的扩展，可跨本地存储和云自动将数据分层。 为最大限度提高效率并降低成本，数据采用删除重复数据的压缩格式存储在云中。 由于数据采用 StorSimple 格式存储，因此用户要使用的其他云应用程序无法直接使用这些数据。
 
-借助 StorSimple 数据管理器，可在云中无缝访问和使用 StorSimple 格式的数据。 通过将 StorSimple 格式转换为可与 Azure 媒体服务、Azure HDInsights 和 Azure 机器学习等其他服务结合使用的本机 blob 和文件，就可实现此目的。
+借助 StorSimple 数据管理器，可在云中无缝访问和使用 StorSimple 格式的数据。 通过将 StorSimple 格式转换为可与 Azure 媒体服务、Azure HDInsight 和 Azure 机器学习等其他服务结合使用的本机 blob 和文件，就可实现此目的。
 
 本文概述了 StorSimple 数据管理器解决方案。 它还说明如何使用此服务编写使用 StorSimple 数据和云中的其他 Azure 服务的应用程序。
 
@@ -91,9 +91,11 @@ StorSimple 数据管理器不收集，也不显示任何个人信息。 有关�
 ## <a name="known-limitations"></a>已知限制
 
 该服务目前具有以下限制：
-- StorSimple 数据管理器当前不适用于 bitlocker 加密的卷。 如果尝试使用加密驱动器运行该服务，将会看到作业失败。
+- StorSimple 数据管理器当前不适用于 BitLocker 加密的卷。 如果尝试使用加密驱动器运行该服务，将会看到作业失败。
+- 无法在存储 StorSimple 备份的存储帐户上启用防火墙。 如果在存储帐户上启用防火墙，则作业将失败。 
 - 文件的某些元数据（包括 ACL）将不会保留在转换后的数据中。
 - 此服务仅适用于 NTFS 卷。
+- StorSimple 数据管理器不支持迁移虚拟硬盘 (VHD)。 若要迁移 VHD，可以使用 Azure Data Box 或 Azure 文件同步服务。
 - 文件路径长度必须小于 256 个字符，否则作业将失败。
 
 ## <a name="next-steps"></a>后续步骤

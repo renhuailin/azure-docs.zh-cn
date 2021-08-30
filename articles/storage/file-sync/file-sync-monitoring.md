@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8e9fbd5fd8fc90681432ee8403b6dd139d02a5a5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: cb1f793e9abad7c28b91da5c3028483637c53740
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795925"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114722039"
 ---
 # <a name="monitor-azure-file-sync"></a>监视 Azure 文件同步
 
@@ -45,12 +45,14 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 | 指标名称 | 说明 |
 |-|-|
 | 同步的字节数 | 传输数据大小（上传和下载）。<br><br>单元：字节<br>聚合类型：Sum<br>适用的维度：服务器终结点名称、同步方向、同步组名称 |
-| 云分层回调 | 回调的数据大小。<br><br>注意：未来将删除该指标。 使用云分层召回大小指标以监视召回的数据的大小。<br><br>单元：字节<br>聚合类型：Sum<br>适用的维度：服务器名称 |
+| 云分层缓存命中率 | 从缓存中提供与从云中召回的字节百分比，不是整个文件。<br><br>单位：百分比<br>聚合类型：平均值<br>适用的维度：服务器终结点名称、服务器名称、同步组名称 |
 | 云分层重调大小 | 回调的数据大小。<br><br>单元：字节<br>聚合类型：Sum<br>适用的维度：服务器名称、同步组名称 |
 | 应用程序的云分层重调大小 | 应用程序召回的数据大小。<br><br>单元：字节<br>聚合类型：Sum<br>适用的维度：应用程序名称、服务器名称、同步组名称 |
+| 云分层重调成功率 | 成功的召回请求的百分比。<br><br>单位：百分比<br>聚合类型：平均值<br>适用的维度：服务器终结点名称、服务器名称、同步组名称 |
 | 云分层重调吞吐量 | 数据召回吞吐量大小。<br><br>单元：字节<br>聚合类型：Sum<br>适用的维度：服务器名称、同步组名称 |
 | 未同步的文件 | 未能同步的文件数。<br><br>单位：计数<br>聚合类型：Average、Sum<br>适用的维度：服务器终结点名称、同步方向、同步组名称 |
 | 同步的文件 | 已传输的文件数（上传和下载）。<br><br>单位：计数<br>聚合类型：Sum<br>适用的维度：服务器终结点名称、同步方向、同步组名称 |
+| 服务器缓存大小 | 服务器上缓存的数据大小。<br><br>单元：字节<br>聚合类型：平均值<br>适用的维度：服务器终结点名称、服务器名称、同步组名称 |
 | 服务器联机状态 | 从服务器接收的检测信号数。<br><br>单位：计数<br>聚合类型：最大值<br>适用的维度：服务器名称 |
 | 同步会话结果 | 同步会话结果（1=成功同步会话；0=失败同步会话）<br><br>单位：计数<br>聚合类型：Maximum<br>适用的维度：服务器终结点名称、同步方向、同步组名称 |
 
@@ -195,7 +197,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 ### <a name="how-to-create-an-alert-if-the-server-endpoint-health-shows-an-error-in-the-portal"></a>如果服务器终结点运行状况在门户中显示错误应如何创建警报
 
-1. 在“Azure 门户”中，导航到响应的“存储同步服务” 。 
+1. 在“Azure 门户”中，导航到相应的“存储同步服务” 。 
 2. 转到“监视”部分并单击“警报” 。 
 3. 单击“+ 新建警报规则”，创建新的警报规则。 
 4. 通过单击“选择条件”配置条件。
@@ -208,7 +210,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
      - 阈值设置为“静态” 
      - 运算符：小于 
      - 聚合类型：Maximum  
-     - 阈值值：1 
+     - 阈值：1 
      - 计算依据：聚合粒度 = 24 小时 | 计算频率 = 每小时  
      - 单击“完成”。 
 8. 单击“选择操作组”，通过选择现有操作组或创建新的操作组，将一个操作组（电子邮件、短信等）添加到警报中。
@@ -217,7 +219,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 ### <a name="how-to-create-an-alert-if-files-are-failing-to-sync-to-a-server-or-cloud-endpoint"></a>如果文件未能同步到服务器或云终结点应如何创建警报
 
-1. 在“Azure 门户”中，导航到响应的“存储同步服务” 。 
+1. 在“Azure 门户”中，导航到相应的“存储同步服务” 。 
 2. 转到“监视”部分并单击“警报” 。 
 3. 单击“+ 新建警报规则”，创建新的警报规则。 
 4. 通过单击“选择条件”配置条件。
@@ -239,7 +241,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 ### <a name="how-to-create-an-alert-if-a-registered-server-is-failing-to-communicate-with-the-storage-sync-service"></a>如果已注册的服务器未能与存储同步服务进行通信应如何创建警报
 
-1. 在“Azure 门户”中，导航到响应的“存储同步服务” 。 
+1. 在“Azure 门户”中，导航到相应的“存储同步服务” 。 
 2. 转到“监视”部分并单击“警报” 。 
 3. 单击“+ 新建警报规则”，创建新的警报规则。 
 4. 通过单击“选择条件”配置条件。
@@ -262,7 +264,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 ### <a name="how-to-create-an-alert-if-the-cloud-tiering-recall-size-has-exceeded-500gib-in-a-day"></a>如果云分层召回大小在一天内超过 500GiB 应如何创建警报
 
-1. 在“Azure 门户”中，导航到响应的“存储同步服务” 。 
+1. 在“Azure 门户”中，导航到相应的“存储同步服务” 。 
 2. 转到“监视”部分并单击“警报” 。 
 3. 单击“+ 新建警报规则”，创建新的警报规则。 
 4. 通过单击“选择条件”配置条件。

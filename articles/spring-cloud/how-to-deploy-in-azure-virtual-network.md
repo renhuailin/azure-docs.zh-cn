@@ -1,18 +1,18 @@
 ---
 title: 在虚拟网络中部署 Azure Spring Cloud
 description: 在虚拟网络中部署 Azure Spring Cloud（VNet 注入）。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java, devx-track-azurecli, subject-rbac-steps
-ms.openlocfilehash: 0921c3d9bf254e3d486ec381c3243a8035bb6f50
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6822514e6bcbb5a232f7ee7f22ec8b0ee8a21e10
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750346"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396741"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>在虚拟网络中部署 Azure Spring Cloud
 
@@ -25,6 +25,12 @@ ms.locfileid: "111750346"
 * 从企业网络中的 Internet 隔离 Azure Spring Cloud 应用和服务运行时。
 * Azure Spring Cloud 与本地数据中心内的系统或其他虚拟网络中的 Azure 服务进行交互。
 * 授权客户控制 Azure Spring Cloud 的入站和出站网络通信。
+
+以下视频介绍了如何使用托管虚拟网络保护 Spring Boot 应用程序。
+
+<br>
+
+> [!VIDEO https://www.youtube.com/embed/LbHD0jd8DTQ?list=PLPeZXlCR7ew8LlhnSH63KcM0XhMKxT1k_]
 
 > [!Note]
 > 仅当创建新的 Azure Spring Cloud 服务实例时，才能选择 Azure 虚拟网络。 创建 Azure Spring Cloud 后，不能改为使用其他虚拟网络。
@@ -62,7 +68,7 @@ az provider register --namespace Microsoft.ContainerService
 
 1. 在“创建虚拟网络”对话框中，输入或选择以下信息：
 
-    |设置          |Value                                             |
+    |设置          |“值”                                             |
     |-----------------|--------------------------------------------------|
     |订阅     |选择订阅。                         |
     |资源组   |选择你的资源组，或新建一个资源组。  |
@@ -88,22 +94,24 @@ Azure Spring Cloud 要求对虚拟网络具有“所有者”权限，以便在�
 
     ![屏幕截图显示“访问控制”屏幕。](./media/spring-cloud-v-net-injection/access-control.png)
 
-1. 将“所有者”角色分配给 Azure Spring Cloud 资源提供程序。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
+1. 将“所有者”角色分配给 Azure Spring Cloud 资源提供程序。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md#step-2-open-the-add-role-assignment-pane)。
 
-还可以通过运行以下 Azure CLI 命令来执行此步骤：
+    ![显示资源提供程序的所有者分配情况的屏幕截图。](./media/spring-cloud-v-net-injection/assign-owner-resource-provider.png)
 
-```azurecli
-VIRTUAL_NETWORK_RESOURCE_ID=`az network vnet show \
-    --name ${NAME_OF_VIRTUAL_NETWORK} \
-    --resource-group ${RESOURCE_GROUP_OF_VIRTUAL_NETWORK} \
-    --query "id" \
-    --output tsv`
+    还可以通过运行以下 Azure CLI 命令来执行此步骤：
 
-az role assignment create \
-    --role "Owner" \
-    --scope ${VIRTUAL_NETWORK_RESOURCE_ID} \
-    --assignee e8de9221-a19c-4c81-b814-fd37c6caf9d2
-```
+    ```azurecli
+    VIRTUAL_NETWORK_RESOURCE_ID=`az network vnet show \
+        --name ${NAME_OF_VIRTUAL_NETWORK} \
+        --resource-group ${RESOURCE_GROUP_OF_VIRTUAL_NETWORK} \
+        --query "id" \
+        --output tsv`
+
+    az role assignment create \
+        --role "Owner" \
+        --scope ${VIRTUAL_NETWORK_RESOURCE_ID} \
+        --assignee e8de9221-a19c-4c81-b814-fd37c6caf9d2
+    ```
 
 ## <a name="deploy-an-azure-spring-cloud-instance"></a>部署 Azure Spring Cloud 实例
 
@@ -113,7 +121,7 @@ az role assignment create \
 
 1. 在顶部搜索框中，搜索“Azure Spring Cloud”。 从结果中选择“Azure Spring Cloud”。
 
-1. 在“Azure Spring Cloud”页上，选择“+ 添加” 。
+1. 在 Azure Spring Cloud 页面上，选择“+ 添加” 。
 
 1. 在 Azure Spring Cloud“创建”页中填写表单。
 
@@ -167,7 +175,7 @@ az role assignment create \
 | /25             | 128       | 120           | <p> 具有 1 个核心的应用：500<br> 具有 2 个核心的应用：500<br>  具有 3 个核心的应用：480<br>  具有 4 个核心的应用：360</p> |
 | /24             | 256       | 248           | <p> 具有 1 个核心的应用：500<br/> 具有 2 个核心的应用：500<br/>  具有 3 个核心的应用：500<br/>  具有 4 个核心的应用：500</p> |
 
-Azure 为子网预留 5 个 IP 地址，而 Azure Spring Cloud 至少需要四个地址。 至少需要 9 个 IP 地址，因此 /29 和/30 不适用。
+Azure 为子网预留 5 个 IP 地址，而 Azure Spring Cloud 至少需要 3 个地址。 至少需要 8 个 IP 地址，因此 /29 和/30 不适用。
 
 对于服务运行时子网，最小大小为 /28。 此大小与应用程序实例的数量无关。
 
@@ -177,9 +185,8 @@ Azure Spring Cloud 支持使用现有的子网和路由表。
 
 如果自定义子网不包含路由表，Azure Spring Cloud 将为每个子网创建路由表，并在整个实例生命周期中将规则添加到路由表。 如果自定义子网包含路由表，Azure Spring Cloud 将在实例操作期间确认现有路由表，并相应地添加/更新和/或删除操作规则。
 
-> [!Warning] 
+> [!Warning]
 > 可将自定义规则添加到自定义路由表中并对其进行更新。 但是，规则由 Azure Spring Cloud 添加，且不可更新或删除。 诸如 0.0.0.0/0 的规则必须始终存在于给定的路由表中，并映射到 internet 网关的目标，例如 NVA 或其他出口网关。 更新规则时请谨慎，在此情况下只会修改自定义规则。
-
 
 ### <a name="route-table-requirements"></a>路由表要求
 
@@ -193,9 +200,6 @@ Azure Spring Cloud 支持使用现有的子网和路由表。
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 VNet 中将应用程序部署到 Azure Spring Cloud 中](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
-
-## <a name="see-also"></a>请参阅
-
+- [在 VNet 中将应用程序部署到 Azure Spring Cloud 中](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)
 - [在 VNET 中排除 Azure Spring Cloud 的故障](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/05-troubleshooting-azure-spring-cloud-in-vnet.md)
 - [在 VNET 中运行 Azure Spring Cloud 的客户责任](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/06-customer-responsibilities-for-running-azure-spring-cloud-in-vnet.md)

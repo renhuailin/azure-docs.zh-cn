@@ -11,12 +11,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd2d660a0591506b59aaa1b11526175582d2785b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9dc0eed20ee392b668078425946b39ac6c6440c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108758764"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742890"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect 云同步先决条件
 本文指导如何选择 Azure Active Directory (Azure AD) Connect 云同步并将其作为标识解决方案。
@@ -109,6 +109,9 @@ ms.locfileid: "108758764"
     ```
 
 1. 重新启动服务器。
+## <a name="ntlm-requirement"></a>NTLM 要求
+
+不应在运行 Azure AD Connect 预配代理的 Windows Server 上启用 NTLM，如果已启用，应确保将其禁用。 
 
 ## <a name="known-limitations"></a>已知的限制
 

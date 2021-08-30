@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78f4642b8f9f1ede65766a0026940c0af0f01ec2
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 48d424a64df215a7506130a44d57fc45d638255d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110872"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739944"
 ---
 # <a name="best-practices-for-azure-ad-roles"></a>Azure AD 角色的最佳做法
 
@@ -32,7 +32,9 @@ ms.locfileid: "106110872"
 
 遵循以下步骤可帮助你找到适当的角色。
 
-1. 在 Azure 门户中，打开[角色和管理员](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)，查看 Azure AD 角色的列表。
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
+
+1. 选择“Azure Active Directory” > “角色和管理员”以查看 Azure AD 角色。
 
 1. 使用“服务”筛选器缩小角色列表的范围。
 
@@ -44,7 +46,7 @@ ms.locfileid: "106110872"
 
 ## <a name="2-use-privileged-identity-management-to-grant-just-in-time-access"></a>2. 使用 Privileged Identity Management 授予实时访问权限
 
-最小特权原则之一是仅应在特定时间段内授予访问权限。 通过 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 可以向管理员授予实时访问权限。 Microsoft 建议在 Azure AD 中启用 PIM。 使用 PIM，可以使用户成为 Azure AD 角色的合格成员。 然后，在有限时间范围内，他们可以在每次需要使用该角色时激活该角色。 该时间范围到期后，将自动删除特权访问。 还可以[配置 PIM 设置](../privileged-identity-management/pim-how-to-change-default-settings.md)以便在用户需要激活其角色分配时要求审批或接收通知电子邮件。 向高特权角色添加新用户时，通知会发出警报。 
+最小特权原则之一是仅应在特定时间段内授予访问权限。 通过 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) 可以向管理员授予实时访问权限。 Microsoft 建议在 Azure AD 中启用 PIM。 使用 PIM，用户可以成为 Azure AD 角色的合格成员，然后在需要时激活该角色一段有限的时间。 该时间范围到期后，将自动删除特权访问。 还可以[配置 PIM 设置](../privileged-identity-management/pim-how-to-change-default-settings.md)以便在用户需要激活其角色分配时要求审批或接收通知电子邮件。 向高特权角色添加新用户时，通知会发出警报。 
 
 ## <a name="3-turn-on-multi-factor-authentication-for-all-your-administrator-accounts"></a>3. 为所有管理员帐户启用多重身份验证
 
@@ -66,7 +68,7 @@ ms.locfileid: "106110872"
 
 Microsoft 建议将全局管理员角色分配给组织中五个以下的人员，这是最佳做法。 全局管理员持整个组织范围的权限，因此出于利益考虑有必要将攻击面保持在较低水平。 如前所述，所有这些帐户都应通过多重身份验证进行保护。
 
-默认情况下，当用户注册 Microsoft 云服务时，系统会创建一个 Azure AD 租户，并使该用户成为全局管理员角色的成员。 已分配有全局管理员角色的用户可以读取和修改 Azure AD 组织中的每项管理设置。 除少数例外，全局管理员还可以读取和修改 Microsoft 365 组织中的所有配置设置。 全球管理员还可以提升其对读取数据的访问权限。
+默认情况下，当用户注册 Microsoft 云服务时，系统会创建一个 Azure AD 租户，并使该用户成为全局管理员角色的成员。 已分配有全局管理员角色的用户可以读取和修改 Azure AD 组织中的每项管理设置。 除少数例外，全局管理员还可以读取和修改 Microsoft 365 组织中的所有配置设置。 全局管理员还可以提升其对读取数据的访问权限。
 
 Microsoft 建议保留两个永久分配给全局管理员角色的紧急访问帐户。 请确保这些帐户不需要使用与普通管理帐户相同的多重身份验证机制进行登录，如[在 Azure AD 中管理紧急访问帐户](../roles/security-emergency-access.md)中所述。 
 
@@ -74,7 +76,7 @@ Microsoft 建议保留两个永久分配给全局管理员角色的紧急访问�
 
 如果你有一个利用组的外部治理系统，应考虑将角色分配给 Azure AD 组，而不是单个用户。 还可以在 PIM 中管理可接受角色分配的组，以确保这些特权组中不存在长期所有者或成员。 有关详细信息，请参阅[特权访问 Azure AD 组的管理功能](../privileged-identity-management/groups-features.md)。
 
-可以将所有者分配给角色可分配的组。 该所有者可决定要添加到组中或从组中删除的人员，因此可间接决定谁将获取角色分配。 通过这种方式，全局管理员或特权角色管理员可以通过使用组按角色委托角色管理。 有关详细信息，请参阅[使用云组来管理 Azure Active Directory 中的角色分配](groups-concept.md)。
+可以将所有者分配给角色可分配的组。 该所有者可决定要添加到组中或从组中删除的人员，因此可间接决定谁将获取角色分配。 通过这种方式，全局管理员或特权角色管理员可以通过使用组按角色委托角色管理。 有关详细信息，请参阅[使用 Azure AD 组来管理角色分配](groups-concept.md)。
 
 ## <a name="7-activate-multiple-roles-at-once-using-privileged-access-groups"></a>7. 使用特权访问组一次性激活多个角色
 

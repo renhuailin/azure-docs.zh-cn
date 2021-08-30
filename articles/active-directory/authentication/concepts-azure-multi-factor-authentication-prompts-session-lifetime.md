@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 08/12/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47898b1708ebecc43ace9888dfd237fa72079c6b
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 93f5af54992189d553c9e5c5c141a6ca08b7018e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590353"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860526"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>优化重新身份验证提示并了解 Azure AD 多重身份验证的会话生存期
 
@@ -34,8 +34,8 @@ Azure AD 的默认用户登录频率配置为 90 天滚动时限。 经常要求
 
 * 如果有 Azure AD Premium：
     * 请使用[受管理设备](../devices/overview.md)或[无缝 SSO](../hybrid/how-to-connect-sso.md) 跨应用程序启用单一登录 (SSO)。
-    * 如果需要重新进行身份验证，请使用条件访问[登录频率策略](../conditional-access/howto-conditional-access-session-lifetime.md)。
-    * 对于从非受管理设备登录的用户或移动设备方案，请通过条件访问来启用持久性浏览器会话和登录频率策略。
+    * 如需重新进行身份验证，请使用条件访问[登录频率策略](../conditional-access/howto-conditional-access-session-lifetime.md)。
+    * 对于从非托管设备或移动设备场景登录的用户，持久性浏览器会话可能不是首选方案，或者你可使用条件访问通过登录频率策略启用持久性浏览器会话。 根据登录风险将持续时间限制为适当的时间，用户风险越小，会话持续时间越长。
 * 如果拥有 Microsoft 365 应用许可证或 Azure AD 免费层：
     * 请使用[受管理设备](../devices/overview.md)或[无缝 SSO](../hybrid/how-to-connect-sso.md) 跨应用程序启用单一登录 (SSO)。
     * 保持启用“保持登录状态”选项，并引导用户接受该选项。

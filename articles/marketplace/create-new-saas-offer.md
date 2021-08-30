@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 03/19/2021
-ms.openlocfilehash: 05512c247f26dc8e6d41876bc3a09acdd278caac
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 07/30/2021
+ms.openlocfilehash: 4a0ebea8d0fb8d5b9ae5fa78004c071a348615e4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559261"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731206"
 ---
 # <a name="create-a-saas-offer"></a>创建 SaaS 产品/服务
 
@@ -54,6 +54,9 @@ ms.locfileid: "111559261"
    + 若要为你的产品/服务提供免费订阅，请选择“立即获取(免费)”。 然后在显示的“产品/服务 URL”框中输入 URL（以 http 或 https开头），通过该 URL，客户可以[使用 Azure Active Directory (Azure AD) 进行一键式身份验证](azure-ad-saas.md)以获取试用版。 例如 `https://contoso.com/saas-app`。
    + 若要提供 30 天的免费试用版，请选择“免费试用版”，然后在显示的“试用版 URL”框中输入 URL（以 http 或 https 开头），通过该 URL，客户可以[使用 Azure Active Directory (Azure AD) 进行一键式身份验证](azure-ad-saas.md)来访问免费试用版。 例如 `https://contoso.com/trial/saas-app`。
    + 若要让潜在客户联系你购买产品/服务，请选择“与我联系”。
+
+    > [!NOTE]
+    > 如果你的情况发生变化，你可以将已发布的仅列入清单产品/服务转换为通过商业市场出售的产品/服务，但你不能将已发布的可交易产品/服务转换为仅列入清单产品/服务。 相反，必须创建新的仅仅列入清单产品/服务并停止分发已发布的可交易产品/服务。
 
 ## <a name="enable-a-test-drive-optional"></a>启用体验版（可选）
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 02/22/2021
+ms.date: 06/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 67dd2b35229c15ae4df5ec8acb357aa35621d67c
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: b5a607b9c0a64c6872ab511f13034e9d6eeb86d7
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102436628"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360498"
 ---
 # <a name="troubleshooting-certificate-errors"></a>排查证书错误
 
@@ -64,4 +64,5 @@ ms.locfileid: "102436628"
 
 ## <a name="next-steps"></a>后续步骤
 
-[证书要求](azure-stack-edge-gpu-certificate-requirements.md)
+- 审阅[证书要求](azure-stack-edge-gpu-certificate-requirements.md)。
+- [使用设备日志和诊断测试进行故障排除](azure-stack-edge-gpu-troubleshoot.md)。

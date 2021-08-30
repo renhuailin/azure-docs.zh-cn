@@ -2,17 +2,17 @@
 title: 已启用 Azure Arc 的 Kubernetes 群集扩展
 services: azure-arc
 ms.service: azure-arc
-ms.date: 05/25/2021
+ms.date: 06/18/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 在已启用 Azure Arc 的 Kubernetes 上部署扩展并管理其生命周期
-ms.openlocfilehash: cd2d0915b173f3621502f22a2d47e25271f87400
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 28f82471b13ec798f7c75f6b17d88321dd4f79a9
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951676"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378063"
 ---
 # <a name="deploy-and-manage-azure-arc-enabled-kubernetes-cluster-extensions"></a>部署并管理已启用 Azure Arc 的 Kubernetes 群集扩展
 
@@ -64,6 +64,7 @@ Kubernetes 扩展功能可在已启用 Azure Arc 的 Kubernetes 群集上实现�
 | [Azure Arc 上的 Azure 应用服务](../../app-service/overview-arc-integration.md) | 允许在已启用 Azure Arc 的 Kubernetes 群集基础之上预配应用服务 Kubernetes 环境。 |
 | [Kubernetes 上的事件网格](../../event-grid/kubernetes/overview.md) | 在已启用 Azure Arc 的 Kubernetes 群集基础之上创建并管理事件网格资源，如主题和事件订阅。 |
 | [Azure Arc 上的 Azure API 管理](../../api-management/how-to-deploy-self-hosted-gateway-azure-arc.md) | 在已启用 Azure Arc 的 Kubernetes 群集上部署并管理 API 管理网关。 |
+| [已启用 Azure Arc 的机器学习](../../machine-learning/how-to-attach-arc-kubernetes.md) | 在已启用 Azure Arc 的 Kubernetes 群集上部署并运行 Azure 机器学习。 |
 
 ## <a name="usage-of-cluster-extensions"></a>群集扩展的用法
 

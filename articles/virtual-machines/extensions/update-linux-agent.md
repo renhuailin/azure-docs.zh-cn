@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 08/02/2017
-ms.openlocfilehash: a274435d6e0fc32bdf5b2ab04702ed971d7c5175
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: da94bc47a5d7796e0b13bcdaa0dc5e30db55722c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558978"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445857"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>如何更新 VM 上的 Azure Linux 代理
 
@@ -397,7 +397,7 @@ cd WALinuxAgent-2.2.14
 
 ### <a name="2-install-the-azure-linux-agent"></a>2.安装 Azure Linux 代理
 
-对于版本 2.2.x，请使用：可能需要先安装程序包 `setuptools` -- 详情请参阅 [此处](https://pypi.python.org/pypi/setuptools)。 然后运行：
+对于版本 2.2.x，请使用：可能需要首先安装包 `setuptools` - 请参阅 [setuptools](https://pypi.python.org/pypi/setuptools)。 然后运行：
 
 ```bash
 sudo python setup.py install

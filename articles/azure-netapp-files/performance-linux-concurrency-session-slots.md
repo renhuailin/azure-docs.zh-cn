@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/03/2021
+ms.date: 08/02/2021
 ms.author: b-juche
-ms.openlocfilehash: 3158d4fae313afcb1fef69ba7a2728df4d235175
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 522c9e590f1f63a12bd4f52f56eac0798ba78aa7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525329"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729228"
 ---
 # <a name="linux-concurrency-best-practices-for-azure-netapp-files---session-slots-and-slot-table-entries"></a>Azure NetApp 文件的 Linux 并发最佳做法 - 会话槽和槽表条目
 
-本文可帮助你理解有关 Azure NetApp 文件 NFS 协议的会话槽和槽表条目的并发最佳做法。 
+本文有助于你理解 Azure NetApp 文件 NFS 协议的会话槽和槽表条目的并发最佳做法。 
 
 ## <a name="nfsv3"></a>NFSv3
 
@@ -48,7 +48,7 @@ NFSv3 没有用于在客户端和服务器之间协商并发的机制。 客户�
 
 有关详细信息，请参阅 [Azure NetApp 文件单卷上的 Oracle 数据库性能](performance-oracle-single-volumes.md)。
 
-可优化的 `sunrpc.max_tcp_slot_table_entries` 参数是连接级优化参数。  最佳做法是，将此值设置为每个连接 128 或更少，而不是超过 3,000 个槽环境范围。
+可优化的 `sunrpc.max_tcp_slot_table_entries` 参数是连接级优化参数。  最佳做法是将此值设置为每个连接 128 或更少，而不是超过 10,000 个槽环境范围。
 
 ### <a name="examples-of-slot-count-based-on-concurrency-recommendation"></a>基于并发建议进行槽计数的示例 
 
@@ -109,7 +109,7 @@ NFSv3 没有用于在客户端和服务器之间协商并发的机制。 客户�
         * 客户端将在每个连接中向服务器发出不超过 8 个正在进行的请求。
         * 服务器将从此单个连接中接收不超过 128 个正在进行的请求。
 
-使用 NFSv3 时，应共同将存储终结点槽计数保持在 2,000 或更低。 当应用程序跨多个网络连接横向扩展时（通常是 `nconnect` 和 HPC，特别是 EDA），最好将 `sunrpc.max_tcp_slot_table_entries` 的每个连接值设置为小于 128。  
+使用 NFSv3 时，应将存储终结点槽总计数保持在 10,000 或更低。 当应用程序跨多个网络连接横向扩展时（通常是 `nconnect` 和 HPC，特别是 EDA），最好将 `sunrpc.max_tcp_slot_table_entries` 的每个连接值设置为小于 128。  
 
 ### <a name="how-to-calculate-the-best-sunrpcmax_tcp_slot_table_entries"></a>如何计算最佳 `sunrpc.max_tcp_slot_table_entries` 
 
@@ -129,7 +129,7 @@ NFSv3 没有用于在客户端和服务器之间协商并发的机制。 客户�
 
 ### <a name="how-to-calculate-concurrency-settings-by-connection-count"></a>如何按连接计数计算并发设置
 
-例如，工作负载是 EDA 场，200 个客户端都将工作负载驱动到同一存储终结点（存储终结点是存储 IP 地址），然后计算所需的 I/O 速率，并跨场划分并发数。
+例如，如果工作负载是一个 EDA 场，并且 1,250 个客户端都将工作负载驱动到同一存储终结点（存储终结点是存储 IP 地址），则计算所需的 I/O 速率，并在该场之间划分并发数。
 
 假设工作负载为 4,000 MiB/s，平均操作大小为 256-KiB，平均延迟为 10 毫秒。 要计算并发数，请使用以下公式：
 
@@ -139,7 +139,7 @@ NFSv3 没有用于在客户端和服务器之间协商并发的机制。 客户�
  
 `(160 = 16,000 × 0.010)`
 
-考虑到需要 200 个客户端，可以安全地将 `sunrpc.max_tcp_slot_table_entries` 设置为每个客户端 2 个，以达到 4,000 MiB/s。  但是，你可能会决定通过将每个客户端的数量设置为 4 甚至 8 来增加额外的空间，保持在建议的 2000 个槽上限以下。 
+考虑到需要 1,250 个客户端，可以安全地将 `sunrpc.max_tcp_slot_table_entries` 设置为每个客户端 2 个，以达到 4,000 MiB/s。  但是，你可能会决定通过将每个客户端的数量设置为 4 或甚至 8 来增加额外的空余空间，保持在建议的 10,000 个槽上限以下。 
 
 ### <a name="how-to-set-sunrpcmax_tcp_slot_table_entries-on-the-client"></a>如何在客户端上设置 `sunrpc.max_tcp_slot_table_entries`
 
@@ -266,5 +266,9 @@ Azure NetApp 文件将每个会话限制为最多 180 个命令。 因此，请�
 
 ## <a name="next-steps"></a>后续步骤  
 
+* [适用于 Azure NetApp 文件的 Linux 直接 I/O 最佳做法](performance-linux-direct-io.md)
+* [适用于 Azure NetApp 文件的 Linux 文件系统缓存最佳做法](performance-linux-filesystem-cache.md)
 * [适用于 Azure NetApp 文件的 Linux NFS 装载选项最佳做法](performance-linux-mount-options.md)
+* [Linux NFS 文件预读最佳做法](performance-linux-nfs-read-ahead.md)
+* [Azure 虚拟机 SKU 最佳做法](performance-virtual-machine-sku.md) 
 * [Linux 性能基准](performance-benchmarks-linux.md) 

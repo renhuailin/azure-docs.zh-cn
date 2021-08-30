@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 04/09/2021
+ms.date: 06/17/2021
 ms.author: cshoe
-ms.openlocfilehash: 693a102c988d87dc4ed6ac9f0f4cb2176ec78ca5
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 210618ba5c49fbe0e53bd5b3fb2fe808b6b6aa03
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059987"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728505"
 ---
 # <a name="configure-azure-static-web-apps"></a>配置 Azure Static Web Apps
 
@@ -25,13 +25,16 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
 - HTTP 响应替代
 - 全局 HTTP 头定义
 - 自定义 MIME 类型
+- 网络
 
 > [!NOTE]
 > 以前用于配置路由的 [_routes.json_](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated)) 已被启用。 使用本文中所述的 _staticwebapp.config.json_ ，为静态 Web 应用配置路由和其他设置。
+> 
+> 本文档涉及 Azure Static Web Apps，它是一项独立的产品，与 Azure 存储的[静态网站托管](../storage/blobs/storage-blob-static-website.md)功能不同。
 
 ## <a name="file-location"></a>文件位置
 
-建议将 _staticwebapp.config.json_ 置于 [工作流文件](./github-actions-workflow.md)中设置为 `app_location` 的文件夹内。 但是，可将该文件放在应用程序源代码文件夹中的任何位置。
+建议将 _staticwebapp.config.json_ 置于 [工作流文件](./github-actions-workflow.md)中设置为 `app_location` 的文件夹内。 但是，可将该文件放在设置为 `app_location` 的文件夹的任何子文件夹中。
 
 有关详细信息，请参阅[示例配置](#example-configuration-file)文件。
 
@@ -76,9 +79,9 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
 
 ## <a name="securing-routes-with-roles"></a>使用角色保护路由
 
-通过将一个或多个角色名称添加到规则的 `allowedRoles` 数组来保护路由，用户通过[邀请](./authentication-authorization.md)关联到自定义角色。 有关用法示例，请参阅[示例配置文件](#example-configuration-file)。
+通过将一个或多个角色名称添加到规则的 `allowedRoles` 数组中来保护路由。 有关用法示例，请参阅[示例配置文件](#example-configuration-file)。
 
-默认情况下，每个用户都属于内置 `anonymous` 角色，所有登录用户都是 `authenticated` 角色成员。
+默认情况下，每个用户都属于内置 `anonymous` 角色，所有登录用户都是 `authenticated` 角色成员。 或者，用户通过[邀请](./authentication-authorization.md)关联到自定义角色。
 
 例如，若要将路由限制为仅经过身份验证的用户，请将内置 `authenticated` 角色添加到 `allowedRoles` 数组。
 
@@ -149,7 +152,17 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
 
 单页应用程序通常依赖于客户端路由。 这些客户端路由规则无需向服务器发回请求即可更新浏览器的窗口位置。 如果刷新页面或者直接导航到客户端路由规则生成的 URL，则需要使用服务器端回退路由来提供相应的 HTML 页面（通常是客户端应用的 _index.html_）。
 
-可将应用配置为使用实现回退路由的规则，如以下示例中所示。该示例的文件筛选器使用了路径通配符：
+通过添加 `navigationFallback` 部分可定义回退规则。 以下示例针对所有与所部署的文件不匹配的静态文件请求返回 /index.html。
+
+```json
+{
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  }
+}
+```
+
+可通过定义筛选器来控制哪些请求返回回退文件。 在下面的示例中，对 /images 文件夹中的某些路由和 /css 文件夹中的所有文件的请求不会返回回退文件 。
 
 ```json
 {
@@ -184,6 +197,9 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
 | _/css/global.css_                                      | 样式表文件                                                                                           | `200`              |
 | _/images_ 或 _/css_ 文件夹外部的任何其他文件 | _index.html_ 文件                                                                                        | `200`              |
 
+> [!IMPORTANT]
+> 如果要从弃用的 [routes.json](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated)) 文件迁移，请勿在[路由规则](#routes)中包含旧版回退路由 (`"route": "/*"`)。
+
 ## <a name="global-headers"></a>全局头
 
 `globalHeaders` 节提供一组应用于每个响应的 [HTTP 头](https://developer.mozilla.org/docs/Web/HTTP/Headers)，除非由[路由头](#route-headers)规则替代，否则将从路由和全局头返回两个头的并集。
@@ -217,24 +233,44 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
 {
   "responseOverrides": {
     "400": {
-      "rewrite": "/invalid-invitation-error.html",
-      "statusCode": 200
+      "rewrite": "/invalid-invitation-error.html"
     },
     "401": {
       "statusCode": 302,
       "redirect": "/login"
     },
     "403": {
-      "rewrite": "/custom-forbidden-page.html",
-      "statusCode": 200
+      "rewrite": "/custom-forbidden-page.html"
     },
     "404": {
-      "rewrite": "/custom-404.html",
-      "statusCode": 200
+      "rewrite": "/custom-404.html"
     }
   }
 }
 ```
+
+## <a name="networking"></a>网络
+
+`networking` 部分控制静态 Web 应用的网络配置。 若要限制对应用的访问，请在 `allowedIpRanges` 中指定允许的 IP 地址块的列表。
+
+> [!NOTE]
+> 只能在 Azure Static Web Apps 标准计划中使用网络配置。
+
+采用无类别域际路由选择 (CIDR) 表示法定义每个 IPv4 地址块。 若要详细了解 CIDR 表示法，请参阅[无类别域际路由选择](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 每个 IPv4 地址块都可以表示公共地址空间或专用地址空间。 如果只需从单个 IP 地址访问，可以使用 `/32` CIDR 块。
+
+```json
+{
+  "networking": {
+    "allowedIpRanges": [
+      "10.0.0.0/24",
+      "100.0.0.0/32",
+      "192.168.100.0/22"
+    ]
+  }
+}
+```
+
+指定一个或多个 IP 地址块时，从与 `allowedIpRanges` 中值不匹配的 IP 地址发起的请求将被拒绝访问。
 
 ## <a name="example-configuration-file"></a>示例配置文件
 
@@ -345,7 +381,7 @@ Azure Static Web Apps 的配置在 _staticwebapp.config.json_ 文件中定义，
 
 ## <a name="restrictions"></a>限制
 
-_staticwebapps.config.json_ 文件存在以下限制。
+staticwebapp.config.json 文件存在以下限制。
 
 - 最大文件大小为 100 KB
 - 最多 50 个不同角色

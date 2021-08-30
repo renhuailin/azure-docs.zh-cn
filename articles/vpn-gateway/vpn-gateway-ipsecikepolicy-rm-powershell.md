@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fe50cc3b8387b8cf377a1dce7cdcd69d174bd6ef
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6bbea74f635375785f325f48a2babb01af7c8228
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671867"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463184"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略
 
@@ -63,7 +63,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 | IKEv2 完整性  | SHA384、SHA256、SHA1、MD5  |
 | DH 组         | DHGroup24、ECP384、ECP256、DHGroup14、DHGroup2048、DHGroup2、DHGroup1、无 |
 | IPsec 加密 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、无    |
-| IPsec 完整性  | GCMASE256、GCMAES192、GCMAES128、SHA256、SHA1、MD5 |
+| IPsec 完整性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5 |
 | PFS 组        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、无 
 | QM SA 生存期   | （**可选**：如果未指定，则使用默认值）<br>秒（整数；至少为 300 秒/默认为 27000 秒）<br>KB（整数；至少为 1024 KB/默认为 102400000 KB）   |
 | 流量选择器 | UsePolicyBasedTrafficSelectors**（$True/$False; **可选**，如果未指定，则使用默认值 $False）    |
@@ -84,8 +84,8 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 > 3. 在上表中：
 >    * IKEv2 对应于主模式或阶段 1
 >    * IPsec 对应于快速模式或阶段 2
->    * DH 组指定在主模式或阶段 1 中使用的 Diffie-Hellmen 组
->    * PFS 组指定在快速模式或阶段 2 中使用的 Diffie-Hellmen 组
+>    * DH 组指定在主模式或阶段 1 中使用的 Diffie-Hellman 组
+>    * PFS 组指定在快速模式或阶段 2 中使用的 Diffie-Hellman 组
 > 4. 在 Azure VPN 网关上，IKEv2 主模式 SA 生存期固定为 28,800 秒
 > 5. 对于连接，将“UsePolicyBasedTrafficSelectors”设置为 $True，此时会配置 Azure VPN 网关，以连接到基于策略的本地 VPN 防火墙。 如果启用 PolicyBasedTrafficSelectors，则需确保对于本地网络（本地网关）前缀与 Azure 虚拟网络前缀的所有组合，VPN 设备都定义了与之匹配的流量选择器（而不是任意到任意）。 例如，如果本地网络前缀为 10.1.0.0/16 和 10.2.0.0/16，虚拟网络前缀为 192.168.0.0/16 和 172.16.0.0/16，则需指定以下流量选择器：
 >    * 10.1.0.0/16 <====> 192.168.0.0/16

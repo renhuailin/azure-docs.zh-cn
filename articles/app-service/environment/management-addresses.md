@@ -6,15 +6,18 @@ ms.assetid: a7738a24-89ef-43d3-bff1-77f43d5a3952
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: ccompy
-ms.custom: seodec18, references_regions
-ms.openlocfilehash: 25bdfb7a0301af472baa89d3d9e73aacf8cff139
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.custom: seodec18, references_regions, devx-track-azurecli
+ms.openlocfilehash: 1480b23f4c213d1c251e47678b235c9f8c8d45df
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104954609"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432889"
 ---
 # <a name="app-service-environment-management-addresses"></a>应用服务环境管理地址
+> [!NOTE]
+> 本文介绍用于独立应用服务计划的应用服务环境 v2
+> 
 
 应用服务环境 (ASE) 是在 Azure 虚拟网络 (VNet) 中运行的 Azure 应用服务的单租户部署。  尽管 ASE 确实在 VNet 中运行，但仍必须能够从 Azure 应用服务用来管理服务的多个专用 IP 地址访问 ASE。  使用 ASE 时，管理流量将遍历用户控制的网络。 如果此流量被阻塞或被错误路由，则 ASE 将会挂起。 有关 ASE 网络依赖项的详细信息，请阅读[网络注意事项和应用服务环境][networking]。 有关 ASE 的一般信息，请先阅读[应用服务环境简介][intro]。
 

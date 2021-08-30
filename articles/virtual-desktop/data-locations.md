@@ -4,15 +4,15 @@ description: Azure 虚拟桌面数据和元数据存储位置的简要概述。
 author: Heidilohr
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 06/08/2021
+ms.date: 06/30/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ef72214cf0a5a5d0d65cc13dba88a4776b4240ad
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: bc356e828adbe9b2d93a202f6b58673dd4ec5efc
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745288"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113125899"
 ---
 # <a name="data-locations-for-azure-virtual-desktop"></a>Azure 虚拟桌面的数据位置
 
@@ -49,7 +49,8 @@ Azure 虚拟桌面目前可用于所有地理位置。 管理员可以在创建�
 
 - 美国 (US)（正式发布）
 - 欧洲 (EU)（正式发布）
-- 英国 (UK)（公共预览版）
+- 英国 (UK)（正式发布）
+- 加拿大 (CA)（正式发布）
 
 随着服务的增长，我们会支持更多的地区。 存储的信息静态加密，并且异地冗余镜像在该地理区域维护。 客户数据（如应用程序设置和用户数据）将储存在客户选择的位置，并且不受服务管理。
 

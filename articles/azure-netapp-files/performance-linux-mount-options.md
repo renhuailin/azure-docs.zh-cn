@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2021
 ms.author: b-juche
-ms.openlocfilehash: f62c22c5615b1494ad8c1ebb966db9f1c25a8df7
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 445920e1846e668f0baa3567111f169fd6dd7508
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441883"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232513"
 ---
 # <a name="linux-nfs-mount-options-best-practices-for-azure-netapp-files"></a>适用于 Azure NetApp 文件的 Linux NFS 装载选项最佳做法
 
-本文有助于你了解装载选项以及在 Azure NetApp 文件中使用这些选项的最佳做法。
+本文将帮助你了解装载选项以及在 Azure NetApp 文件中使用这些选项的最佳做法。
 
 ## `Nconnect` 
 
@@ -90,7 +90,7 @@ sudo vi /etc/fstab
 10.23.1.4:/HN1-shared/shared /hana/shared  nfs   rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys  0  0
 ```
  
-又如，SAS Viya 建议使用 256-KiB 读取和写入大小，而 [SAS 网格](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/606973/highlight/true#M17740)将 `r/wsize` 限制为 64 KiB，同时通过增加的 NFS 装载的预读扩充读取性能。  <!-- For more information on readahead, see the article “NFS Readahead”. --> 
+又如，SAS Viya 建议使用 256-KiB 读取和写入大小，而 [SAS 网格](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/606973/highlight/true#M17740)将 `r/wsize` 限制为 64 KiB，同时通过增加的 NFS 装载的预读扩充读取性能。 有关详细信息，请参阅 [Azure NetApp 文件的 NFS 预读最佳做法](performance-linux-nfs-read-ahead.md)。
 
 以下注意事项适用于 `rsize` 和 `wsize` 的使用：
 
@@ -138,5 +138,9 @@ Close-to-open 一致性（`cto` 装载选项）确保无论缓存的状态如何
 
 ## <a name="next-steps"></a>后续步骤  
 
+* [适用于 Azure NetApp 文件的 Linux 直接 I/O 最佳做法](performance-linux-direct-io.md)
+* [适用于 Azure NetApp 文件的 Linux 文件系统缓存最佳做法](performance-linux-filesystem-cache.md)
 * [适用于 Azure NetApp 文件的 Linux 并发最佳做法](performance-linux-concurrency-session-slots.md)
+* [Linux NFS 文件预读最佳做法](performance-linux-nfs-read-ahead.md)
+* [Azure 虚拟机 SKU 最佳做法](performance-virtual-machine-sku.md) 
 * [Linux 性能基准](performance-benchmarks-linux.md) 

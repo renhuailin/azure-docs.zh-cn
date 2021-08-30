@@ -7,12 +7,12 @@ ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: 7013357f10e8c1e7998d15f215eadeecbae4597f
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 3a64b641342bb93904f35663098ad085d19ee06c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738061"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462120"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 到专用主机
 
@@ -307,4 +307,4 @@ az group delete -n myDHResourceGroup
 
 - 也可以使用 [Azure 门户](../dedicated-hosts-portal.md)创建专用主机。
 
-- [此处](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)有示例模板，它使用区域和容错域来实现区域中的最大复原能力。
+- [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)提供了示例模板，该模板同时使用区域和容错域以实现区域中的最大复原能力。

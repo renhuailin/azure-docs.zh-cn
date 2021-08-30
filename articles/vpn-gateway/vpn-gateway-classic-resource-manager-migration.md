@@ -10,15 +10,15 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: 0d7d4dda75fba86bf5d624ea277b8866490ea608
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a69cb5e2a4563f96fb18979ff8aefdf805e94d7f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291183"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729554"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN 网关从经典部署模型迁移到 Resource Manager 部署模型
-VPN 网关现可从经典部署模型迁移到 Resource Manager 部署模型。 可以阅读有关 Azure 资源管理器[功能和优点](../azure-resource-manager/management/overview.md)的更多内容。 在本文中，我们将详细介绍如何从经典部署模型迁移到更新的基于 Resource Manager 的部署模型。 
+VPN 网关现可从经典部署模型迁移到[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)。 可以阅读有关 Azure 资源管理器[功能和优点](../azure-resource-manager/management/overview.md)的更多内容。 在本文中，我们将详细介绍如何从经典部署模型迁移到更新的基于 Resource Manager 的部署模型。 
 
 作为 VNet 迁移的一部分，VPN 网关将从经典部署模型迁移到 Resource Manager 部署模型。 一次仅限一个 VNet 完成此迁移。 就迁移工具或迁移前提条件而言，没有什么额外要求。 迁移步骤与现有 VNet 迁移步骤相同，并且已在 [IaaS 资源迁移页](../virtual-machines/migration-classic-resource-manager-ps.md)进行了编档。 在迁移期间没有任何数据路径停机时间，因此，现有的工作负荷将继续运行，并且在迁移期间不会丢失本地连接。 在迁移过程中，与 VPN 网关关联的公共 IP 地址不会更改。 这就说明完成迁移后无需重新配置本地路由器。  
 

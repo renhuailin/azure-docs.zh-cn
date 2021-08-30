@@ -1,5 +1,5 @@
 ---
-title: 从本地 MySQL 到 Azure Database for MySQL 的迁移指南附录
+title: 本地 MySQL 到 Azure Database for MySQL 示例应用程序
 description: 下载我们为此迁移指南创建的其他文档，并了解如何进行配置。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,19 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: feb02ded8e597f38c941b96eb6027061180a0177
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 27f4ded8e1378ccceeb11409e9c393fbc46c92aa
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082696"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113084545"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-appendix"></a>从本地 MySQL 到 Azure Database for MySQL 的迁移指南附录
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-sample-applications"></a>将本地 MySQL 迁移到 Azure Database for MySQL 示例应用程序
 
-## <a name="prerequisites"></a>先决条件
-
-[摘要](14-summary.md)
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="overview"></a>概述
 

@@ -1,19 +1,20 @@
 ---
 title: 大规模使用 Azure 视频分析器媒体版（以前称为视频索引器）时的注意事项 - Azure
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: 本主题说明大规模使用 Azure 视频分析器媒体版（以前称为视频索引器）时的注意事项。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: how-to
+ms.subservice: azure-video-analyzer-media
 ms.date: 11/13/2020
 ms.author: juliako
-ms.openlocfilehash: bfad40e55deae4ebad930907221517ae3ef4e5f4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8784b82c59575a569730949d71473027cd30479a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385179"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734160"
 ---
 # <a name="things-to-consider-when-using-video-analyzer-for-media-at-scale"></a>大规模使用视频分析器媒体版时的注意事项
 
@@ -48,21 +49,11 @@ ms.locfileid: "110385179"
 > [!TIP]
 > 使用上传视频 API 的 `videoUrl` 可选参数。
 
-要查看如何使用 URL 上传视频的示例，请查看[此示例](upload-index-videos.md#code-sample)。 或者，可以使用 [AzCopy](../../storage/common/storage-use-azcopy-v10.md) 快速可靠地将内容获取到存储帐户，从该存储帐户可以使用 [SAS URL](../../storage/common/storage-sas-overview.md) 将内容提交到视频分析器媒体版。
+要查看如何使用 URL 上传视频的示例，请查看[此示例](upload-index-videos.md#code-sample)。 或者，可以使用 [AzCopy](../../storage/common/storage-use-azcopy-v10.md) 快速可靠地将内容获取到存储帐户，从该存储帐户可以使用 [SAS URL](../../storage/common/storage-sas-overview.md) 将内容提交到视频分析器媒体版。 视频分析器媒体版建议使用只读 SAS URL。
 
-## <a name="increase-media-reserved-units-if-needed"></a>根据需要，增加媒体保留单位
+## <a name="automatic-scaling-of-media-reserved-units"></a>对媒体保留单位进行自动缩放 
 
-通常，在刚开始使用视频分析器媒体版的概念证明阶段，你不需要大量的计算能力。 当你开始有需要编制索引的更大的视频存档，并且希望该过程的发展速度适应你的用例时，就需要扩展视频分析器媒体版的使用情况。 因此，如果当前计算能力不够，则应考虑增加所使用的计算资源数。
-
-在 Azure 媒体服务中，当你想要增加计算能力和并行度时，需要注意媒体[保留单位](../../media-services/latest/concept-media-reserved-units.md) (RU)。 RU 是确定媒体处理任务的参数的计算单位。 RU 的数量会影响每个帐户中可并发处理的媒体任务的数量，其类型决定了处理速度，而一个视频的索引如何很复杂，则可能需要多个 RU。 如果你的 RU 处于繁忙状态，则新任务将保留在队列中，直到另一个资源可用。
-
-为了有效地操作并避免资源在某些时候处于空闲状态，视频索引器提供了一个自动缩放系统，该系统在需要较少处理时减少 RU，在高峰时间增加 RU（直到充分利用所有 RU）。 通过在帐户设置中[打开自动缩放](manage-account-connected-to-azure.md#autoscale-reserved-units)，或使用 [Update-Paid-Account-Azure-Media-Services API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Paid-Account-Azure-Media-Services)，可启用此功能。
-
-:::image type="content" source="./media/considerations-when-use-at-scale/second-consideration.jpg" alt-text="大规模使用视频分析器媒体版时的第二个注意事项":::
-
-:::image type="content" source="./media/considerations-when-use-at-scale/reserved-units.jpg" alt-text="AMS 保留单位":::
-
-为了最大限度地减少索引持续时间和低吞吐量，建议你从 S3 类型的 10 个 RU 开始。 稍后，如果纵向扩展以支持更多内容或更高的并发性，并且需要更多的资源来执行此操作，则可以[使用支持系统与我们联系](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)（仅限付费帐户）请求分配更多 RU。
+从 2021 年 8 月 1 日开始，Azure 视频分析器媒体版（以前称为“视频索引器”）通过 [Azure 媒体服务](../../media-services/latest/media-services-overview.md) (AMS) 启用了[保留单位](../../media-services/latest/concept-media-reserved-units.md) (MRU) 自动缩放，这样就无需通过 Azure 视频分析器媒体版对其进行管理。 这可实现价格优化，例如在许多情况下根据业务需求降低价格，因为它会自动缩放。 
 
 ## <a name="respect-throttling"></a>遵守带宽限制
 

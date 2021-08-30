@@ -4,15 +4,16 @@ description: 了解 Azure 专用链接在 Azure 数据工厂中的工作原理�
 ms.author: lle
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/10/2021
-ms.openlocfilehash: 9d41ff8d2b0bfd1e83f15366e152398f5de8ccf9
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 06/16/2021
+ms.openlocfilehash: f4ae3d0653ce99be2017b1ef08ca0645c599ee10
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020956"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740989"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>用于 Azure 数据工厂的 Azure 专用链接
 
@@ -46,7 +47,7 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
 
 与 Azure 数据工厂服务的通信通过专用链接进行，可提供安全的专用连接性。 
 
-![Azure 数据工厂的专用链接体系结构关系图。](./media/data-factory-private-link/private-link-architecture.png)
+:::image type="content" source="./media/data-factory-private-link/private-link-architecture.png" alt-text="Azure 数据工厂的专用链接体系结构关系图。":::
 
 为上述每个信道启用专用链接服务可提供以下功能：
 - 支持：
@@ -60,7 +61,7 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
    > 对于当前不支持的功能，仍需要在虚拟网络或企业防火墙中配置前面提到的域和端口。 
 
    > [!NOTE]
-   > 通过专用终结点连接到 Azure 数据工厂仅适用于数据工厂中的自承载集成运行时。 Synapse 不支持此功能。
+   > 通过专用终结点连接到 Azure 数据工厂仅适用于数据工厂中的自承载集成运行时。 Azure Synapse 不支持此操作。
 
 > [!WARNING]
 > 如果你在 Azure 数据工厂中启用专用链接并同时阻止公共访问，请确保在创建链接服务时，凭据存储在 Azure 密钥保管库中。 否则，凭据将无法生效。
@@ -142,7 +143,7 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
 
 9. 选择“查看 + 创建”  选项卡，或选择“查看 + 创建”  按钮。
 
-10. 选择“创建”  。
+10. 选择“创建”。
 
 ### <a name="create-a-virtual-machine-for-the-self-hosted-integration-runtime-shir"></a>为自承载集成运行时 (SHIR) 创建一个虚拟机
 你还必须创建或分配现有虚拟机，以在上述新子网中运行自承载集成运行时。
@@ -196,7 +197,7 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
 
 2. 在“创建专用终结点”的“基本信息”选项卡中，输入或选择以下信息： 
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅 |
@@ -209,7 +210,7 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
     
 4. 在“资源”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 连接方法 | 选择“连接到我的目录中的 Azure 资源” |
     | 订阅 | 选择订阅 |
@@ -221,9 +222,9 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
 
 6. 在“配置”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
-    | **网络** |  |
+    | **联网** |  |
     | 虚拟网络 | 选择上述创建的虚拟网络。 |
     | 子网 | 选择上述创建的子网。 |
     | **专用 DNS 集成** |  |

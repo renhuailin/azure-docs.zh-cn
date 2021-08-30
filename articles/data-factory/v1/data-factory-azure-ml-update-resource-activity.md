@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure 数据工厂更新机器学习模型
-description: 介绍如何使用 Azure 数据工厂 v1 和 Azure 机器学习工作室（经典版）创建预测管道
+description: 介绍了如何使用 Azure 数据工厂 v1 和机器学习工作室（经典）创建预测管道
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 2d9156bfcc11817a647c33053a2d04c653c0a706
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 42a1318ffb4c0063875939c8d3633ea513818ba4
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785489"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397071"
 ---
-# <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>使用更新资源活动更新 Azure 机器学习工作室（经典版）模型
+# <a name="updating-ml-studio-classic-models-using-update-resource-activity"></a>使用更新资源活动更新机器学习工作室（经典）模型
 
 > [!div class="op_single_selector" title1="转换活动"]
 > * [Hive 活动](data-factory-hive-activity.md) 
@@ -22,8 +22,8 @@ ms.locfileid: "104785489"
 > * [MapReduce 活动](data-factory-map-reduce.md)
 > * [Hadoop 流式处理活动](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活动](data-factory-spark.md)
-> * [Azure 机器学习工作室（经典）批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure 机器学习工作室（经典）更新资源活动](data-factory-azure-ml-update-resource-activity.md)
+> * [机器学习工作室（经典）批处理执行活动](data-factory-azure-ml-batch-execution-activity.md)
+> * [机器学习工作室（经典）更新资源活动](data-factory-azure-ml-update-resource-activity.md)
 > * [存储过程活动](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活动](data-factory-usql-activity.md)
 > * [.NET 自定义活动](data-factory-use-custom-activities.md)
@@ -32,26 +32,26 @@ ms.locfileid: "104785489"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用当前版本数据工厂服务，请参阅[在数据工厂中更新机器学习模型](../update-machine-learning-models.md)。
 
-本文是对[使用 Azure 机器学习工作室（经典版）和 Azure 数据工厂创建预测管道](data-factory-azure-ml-batch-execution-activity.md)的补充，后者是一篇有关 Azure 数据工厂与 Azure 机器学习工作室（经典版）集成的主要文章。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。 
+本文是对[使用机器学习工作室（经典）和 Azure 数据工厂创建预测管道](data-factory-azure-ml-batch-execution-activity.md)的补充，后者是一篇有关 Azure 数据工厂 - 机器学习工作室（经典）集成的主要文章。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。 
 
 ## <a name="overview"></a>概述
-随着时间的推移，需要使用新的输入数据集来重新训练 Azure 机器学习工作室（经典版）评分实验中的预测模型。 完成重新定型后，需使用重新定型的机器学习模型更新评分 Web 服务。 通过 Web 服务来重新训练和更新工作室（经典版）模型的常规步骤如下：
+随着时间的推移，需要使用新的输入数据集重新训练机器学习工作室（经典）评分试验中的预测模型。 完成重新定型后，需使用重新定型的机器学习模型更新评分 Web 服务。 通过 Web 服务来重新训练和更新工作室（经典版）模型的常规步骤如下：
 
-1. 在 [Azure 机器学习工作室（经典版）](https://studio.azureml.net)中创建实验。
-2. 在对模型满意之后，使用 Azure 机器学习工作室（经典版）发布用于训练实验和评分/预测实验的 Web 服务。
+1. 在[机器学习工作室（经典）](https://studio.azureml.net)中创建试验。
+2. 对模型满意后，使用机器学习工作室（经典）为训练试验和评分/预测试验发布 Web 服务。
 
-下表介绍了本示例所用的 Web 服务。  有关详细信息，请参阅[以编程方式重新训练 Azure 机器学习工作室（经典版）模型](../../machine-learning/classic/retrain-machine-learning-model.md)。
+下表介绍了本示例所用的 Web 服务。  有关详细信息，请参阅[以编程方式重新训练机器学习工作室（经典）模型](../../machine-learning/classic/retrain-machine-learning-model.md)。
 
 - **定型 Web 服务** - 接收定型数据和生成定型模型。 重新定型的输出是 Azure Blob 存储中的 .ilearner 文件。 将训练实验作为 Web 服务发布时，会自动创建 **默认终结点**。 还可创建更多终结点，但本示例仅使用默认终结点。
 - **评分 Web 服务** - 接收未标记的数据示例并进行预测。 预测的输出可以有多种不同形式，例如 .csv 文件或 Azure SQL 数据库中的行，具体取决于实验的配置。 将预测实验作为 Web 服务发布时，会自动创建默认终结点。 
 
-下图描绘了 Azure 机器学习工作室（经典版）中训练和评分终结点之间的关系。
+下图描绘了机器学习工作室（经典）中训练终结点与评分终结点之间的关系。
 
 ![Web 服务](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-可以通过使用 Azure 机器学习工作室（经典版）批处理执行活动来调用训练 Web 服务 。 对于数据评分，调用训练 Web 服务与调用 Azure 机器学习工作室（经典版）Web 服务（评分 Web 服务）相同。 前面几部分详细介绍了如何从 Azure 数据工厂管道调用 Azure 机器学习工作室（经典版）Web 服务。 
+可以使用“机器学习工作室(经典)批处理执行活动”调用训练 Web 服务。 对于数据评分，调用训练 Web 服务与调用机器学习工作室（经典）Web 服务（评分 Web 服务）是相同的。 前面几部分详细介绍了如何从 Azure 数据工厂管道调用机器学习工作室（经典）Web 服务。 
 
-可以通过使用 Azure 机器学习工作室（经典版）更新资源活动来调用评分 Web 服务，以便使用新训练的模型来更新该 Web 服务 。 以下示例提供了链接服务定义： 
+可以使用“机器学习工作室(经典)更新资源活动”调用评分 Web 服务，以使用新的已训练模型更新 Web 服务。 以下示例提供了链接服务定义： 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>评分 Web 服务是经典 Web 服务
 如果评分 Web 服务是经典 Web 服务，请使用 Azure 门户创建第二个“非默认且可更新的终结点” 。 请参阅[创建终结点](../../machine-learning/classic/create-endpoint.md)一文以了解相关步骤。 创建非默认的可更新终结点之后，执行以下步骤：
@@ -84,7 +84,7 @@ ms.locfileid: "104785489"
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-可以在 [Azure 机器学习工作室（经典版）Web 服务门户](https://services.azureml.net/)上查询 Web 服务时获取 URL 中占位符的值。 新类型的更新资源终结点要求 AAD (Azure Active Directory) 令牌。 在工作室（经典版）链接服务中指定 servicePrincipalId 和 servicePrincipalKey 。 请参阅[如何创建服务主体和分配权限来管理 Azure 资源](../../active-directory/develop/howto-create-service-principal-portal.md)。 此处为一示例 AzureML 链接服务定义： 
+在[机器学习工作室（经典）Web 服务门户](https://services.azureml.net/)上查询 Web 服务时，可以获取 URL 中占位符的值。 新类型的更新资源终结点要求 AAD (Azure Active Directory) 令牌。 在工作室（经典版）链接服务中指定 servicePrincipalId 和 servicePrincipalKey 。 请参阅[如何创建服务主体和分配权限来管理 Azure 资源](../../active-directory/develop/howto-create-service-principal-portal.md)。 此处为一示例 AzureML 链接服务定义： 
 
 ```json
 {
@@ -107,7 +107,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 以下方案提供更多详细信息。 其中包含了有关从 Azure 数据工厂管道重新训练和更新工作室（经典版）模型的示例。
 
 ## <a name="scenario-retraining-and-updating-a-studio-classic-model"></a>方案：重新训练和更新工作室（经典版）模型
-本部分提供了一个示例管道，该管道使用 Azure 机器学习工作室（经典版）批处理执行活动来重新训练模型。 该管道还使用 Azure 机器学习工作室（经典版）更新资源活动来更新评分 Web 服务中的模型。 此外，本部分为示例中的所有链接服务、数据集和管道提供 JSON 片段。
+本部分提供了使用“机器学习工作室(经典)批处理执行活动”来重新训练模型的示例管道。 该管道还使用“机器学习工作室(经典)更新资源活动”来更新评分 Web 服务中的模型。 此外，本部分为示例中的所有链接服务、数据集和管道提供 JSON 片段。
 
 下面是示例管道的图示视图。 如你所见，工作室（经典版）批处理执行活动采用训练输入并生成训练输出（iLearner 文件）。 工作室（经典版）更新资源活动采用此训练输出并更新评分 Web 服务终结点中的模型。 更新资源活动不会生成任何输出。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
 
@@ -165,7 +165,7 @@ Azure 存储保留以下数据：
 ```
 
 ### <a name="training-output-dataset"></a>定型输出数据集：
-以下数据集表示 Azure 机器学习工作室（经典版）训练 Web 服务的输出 iLearner 文件。 Azure 机器学习工作室（经典）批处理执行活动会生成此数据集。 此数据集也是 Azure 机器学习工作室（经典版）更新资源活动的输入。
+以下数据集表示机器学习工作室（经典）训练 Web 服务中的输出 iLearner 文件。 机器学习工作室（经典）批处理执行活动会生成此数据集。 此数据集也是机器学习工作室（经典）更新资源活动的输入。
 
 ```JSON
 {
@@ -204,12 +204,12 @@ Azure 存储保留以下数据：
 }
 ```
 
-在 Azure 机器学习工作室（经典版）中，执行以下操作以获取 mlEndpoint 和 apiKey 的值  ：
+在“机器学习工作室(经典)”中，执行以下操作以获取 mlEndpoint 和 apiKey 的值：
 
 1. 在左侧菜单上，单击“Web 服务”。
 2. 在 Web 服务列表中，单击“定型 Web 服务”。
 3. 单击“API 密钥”文本框旁的“复制”。 将剪贴板中的密钥粘贴到数据工厂 JSON 编辑器。
-4. 在 Azure 机器学习工作室（经典版）中，单击“批处理执行”链接 。
+4. 在“机器学习工作室(经典)”中，单击“批处理执行”链接。
 5. 从“请求”分区复制“请求 URI”，然后将其粘贴到数据工厂 JSON 编辑器。   
 
 ### <a name="linked-service-for-studio-classic-updatable-scoring-endpoint"></a>适用于工作室（经典版）可更新评分终结点的链接服务：
@@ -256,7 +256,7 @@ Azure 存储保留以下数据：
 ```
 
 ### <a name="pipeline"></a>管道
-管道具有两个活动：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Azure 机器学习工作室（经典版）批处理执行活动采用训练数据作为输入，并生成 iLearner 文件作为输出。 活动会通过输入定型数据调用定型 Web 服务（作为 Web 服务公开的训练实验），并从 Web 服务接收 ilearner 文件。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
+管道具有两个活动：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 机器学习工作室（经典）批处理执行活动采用训练数据作为输入，并生成 iLearner 文件作为输出。 活动会通过输入定型数据调用定型 Web 服务（作为 Web 服务公开的训练实验），并从 Web 服务接收 ilearner 文件。 placeholderBlob 只是 Azure 数据工厂服务运行管道所需的虚拟输出数据集。
 
 ![管道关系图](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

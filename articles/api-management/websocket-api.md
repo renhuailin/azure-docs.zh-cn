@@ -6,14 +6,14 @@ ms.service: api-management
 author: v-hhunter
 ms.author: v-hhunter
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 06/02/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 4c179aaca2d5d80686340c36dc271f4d5bb0fa40
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 887e1257ef5585e99da1922aa840761ebcb7aa05
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110481965"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439758"
 ---
 # <a name="import-a-websocket-api-preview"></a>导入 WebSocket API（预览版）
 
@@ -29,6 +29,8 @@ ms.locfileid: "110481965"
 > [!div class="checklist"]
 > * 了解 Websocket 传递流。
 > * 将 WebSocket API 添加到 API 管理实例。
+> * 测试 WebSocket API。
+> * 查看 WebSocket API 的指标和日志。
 > * 了解 WebSocket API 的限制。
 
 ## <a name="prerequisites"></a>先决条件
@@ -80,6 +82,23 @@ API 管理支持 WebSocket 传递。
     | 网关 | 将 WebSocket API 与现有网关相关联。 |
  
 1. 单击 **“创建”** 。
+
+## <a name="test-your-websocket-api"></a>测试 WebSocket API
+
+1. 导航到 WebSocket API。
+1. 在 WebSocket API 中，选择 onHandshake 操作。
+1. 选择“测试”选项卡以访问“测试”控制台。 
+1. （可选）提供 WebSocket 握手所需的查询字符串参数。
+
+    :::image type="content" source="./media/websocket-api/test-websocket-api.png" alt-text="测试 API 示例":::
+
+1. 单击“连接” 。
+1. 在“输出”中查看连接状态。
+1. 在“有效负载”中输入值。 
+1. 单击“发送”。
+1. 在“输出”中查看收到的消息。
+1. 重复上述步骤以测试不同的有效负载。
+1. 测试完成时，选择“断开连接”。
 
 ## <a name="limitations"></a>限制
 

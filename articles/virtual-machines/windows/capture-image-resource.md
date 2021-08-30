@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: f1c67f9d4fda2e0ca26d8125f30e2f71213b0749
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: aa377267fb522de03ee181db99963498b5075fc4
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111853075"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112574337"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
@@ -22,52 +22,9 @@ ms.locfileid: "111853075"
 
 一个托管映像最多支持 20 个同时部署。 如果尝试从同一托管映像同时创建超过 20 个 VM，则可能会由于单个 VHD 的存储性能限制而导致预配超时。 若要同时创建 20 个以上的 VM，请使用为每 20 个并发 VM 部署配置 1 个副本的[共享映像库](../shared-image-galleries.md)映像。
 
-## <a name="generalize-the-windows-vm-using-sysprep"></a>使用 Sysprep 通用化 Windows VM
+## <a name="prerequisites"></a>先决条件
 
-Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像的计算机。 有关 Sysprep 的信息，请参阅 [Sysprep 概述](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
-
-确保 Sysprep 支持计算机上运行的服务器角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)和[不支持的方案](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)。 
-
-> [!IMPORTANT]
-> 在 VM 上运行 Sysprep 后，该 VM 将被视为已通用化而无法重启。 通用化 VM 的过程是不可逆的。 如果需要保持原始 VM 正常运行，请创建 [VM 的副本](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)并将其副本通用化。 
->
->Sysprep 要求对驱动器进行完全解密。 如果在 VM 上启用了加密，请在运行 Sysprep 之前在 Azure 中将其禁用。 
->
->若要使用 PowerShell 禁用 Azure 磁盘加密，请使用 Disable-AzVMDiskEncryption，然后使用 Remove-AzVMDiskEncryptionExtension。 禁用加密之前，运行 Remove-AzVMDiskEncryptionExtension 会失败。 较高级别命令不仅从 VM 内解密磁盘，还会在 VM 外部更新与 VM 关联的重要平台级别加密设置和扩展设置。 如果这些设置未保持一致，则平台将无法正确报告加密状态或预配 VM。
->
-> 如果计划在首次将虚拟硬盘 (VHD) 上传到 Azure 之前运行 Sysprep，请确保先[准备好 VM](prepare-for-upload-vhd-image.md)。  
-> 
-> 
-
-若要将 Windows VM 通用化，请执行以下步骤：
-
-1. 登录到 Windows VM。
-   
-2. 以管理员身份打开“命令提示符”窗口。 
-
-3. 删除 panther 目录 (C:\Windows\Panther)。 然后将目录切换到 %windir%\system32\sysprep，然后运行 `sysprep.exe`。
-   
-4. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，并选中“通用”复选框。
-   
-5. 在“关机选项”中选择“关机”。
-   
-6. 选择“确定”。
-   
-    ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-
-6. Sysprep 在完成运行后会关闭 VM。 不要重新启动 VM。
-
-> [!TIP]
-> **可选** 使用 [DISM](/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) 优化映像并减少 VM 的首次启动时间。
->
-> 若要优化映像，请通过在 Windows 资源管理器中双击 VHD 来装载它，然后使用 `/optimize-image` 参数运行 DISM。
->
-> ```cmd
-> DISM /image:D:\ /optimize-image /boot
-> ```
-> 其中 D：是装载的 VHD 的路径。
->
-> 运行 `DISM /optimize-image` 应该是你对 VHD 所做的最后一次修改。 如果在部署之前对 VHD 进行了任何更改，则必须再次运行 `DISM /optimize-image`。
+需要[通用化](../generalize.md) VM 才能创建映像。
 
 ## <a name="create-a-managed-image-in-the-portal"></a>在门户中创建托管映像 
 

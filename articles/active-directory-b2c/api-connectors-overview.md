@@ -5,18 +5,18 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 07/05/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a9eeb7ed664f67e1273a7dfff701a18970cd91fd
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: cade077501e499893686fcc856129deb61e8778e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108174517"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723316"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows"></a>使用 API 连接器来自定义并扩展注册用户流
 
@@ -24,32 +24,28 @@ ms.locfileid: "108174517"
 
 ::: zone pivot="b2c-user-flow"
 
-> [!IMPORTANT]
-> 用于注册的 API 连接器是 Azure AD B2C 的一项公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 ## <a name="overview"></a>概述 
 
 作为开发者或 IT 管理员，你可以使用 API 连接器将注册用户流与 REST API 集成，以自定义注册体验，并与外部系统集成。 例如，使用 API 连接器，可以：
 
 - 验证用户输入数据。 针对格式错误或无效的用户数据进行验证。 例如，可以根据外部数据存储或允许值列表中的现有数据验证用户提供的数据。 如果无效，你可以要求用户提供有效数据或阻止用户继续注册流。
-- 与自定义批准工作流集成。 连接到用于管理和限制帐户创建的自定义审批系统。
-- 覆盖用户属性。 重新格式化或为从用户收集的属性赋值。 例如，如果用户使用全小写或全大写字母输入了名字，则你可以设置该名字的格式，只将第一个字母大写。 
 - **验证用户标识**。 使用身份验证服务为帐户创建决策添加额外的安全级别。
+- 与自定义批准工作流集成。 连接到用于管理和限制帐户创建的自定义审批系统。
+- **使用来自外部源的属性扩充令牌**。 使用来自 Azure AD B2C 外部资源（如云系统、自定义用户存储、自定义权限系统、旧版标识服务等）的用户属性来扩充令牌。
+- 覆盖用户属性。 重新格式化或为从用户收集的属性赋值。 例如，如果用户使用全小写或全大写字母输入了名字，则你可以设置该名字的格式，只将第一个字母大写。 
 - 运行自定义业务逻辑。 可以在云系统中触发下游事件，以发送推送通知、更新企业数据库、管理权限、审核数据库以及执行其他自定义操作。
 
-API 连接器通过定义 API 调用的 HTTP 终结点 URL 和身份验证，为 Azure AD B2C 提供调用 API 终结点所需的信息。 配置 API 连接器后，可以为用户流中的特定步骤启用它。 当用户到达注册流中的那一步时，API 连接器被调用，并作为 HTTP POST 请求具体化到你的 API 中，将用户信息（“声明”）作为 JSON 正文中的键值对。 API 响应可能会影响用户流的执行。 例如，API 响应可以阻止用户进行注册，要求用户重新输入信息，或覆盖并追加用户属性。
+API 连接器通过定义 API 调用的 HTTP 终结点 URL 和身份验证，为 Azure AD B2C 提供调用 API 终结点所需的信息。 配置 API 连接器后，可以为用户流中的特定步骤启用它。 当用户到达注册流中的那一步时，API 连接器被调用，并作为 HTTP POST 请求具体化到你的 API 中，将用户信息（“声明”）作为 JSON 正文中的键值对。 API 响应可能会影响用户流的执行。 例如，API 响应可以阻止用户进行注册，要求用户重新输入信息，或覆盖用户属性。
 
 ## <a name="where-you-can-enable-an-api-connector-in-a-user-flow"></a>可在其中启用用户流中的 API 连接器
 
-用户流中有两个位置可用于启用 API 连接器：
+用户流中有三个位置可用于启用 API 连接器：
 
-- 使用标识提供者登录之后
-- 创建用户之前
+- **在注册期间与标识提供者进行联合之后** - 仅适用于注册体验
+- **创建用户之前** - 仅适用于注册体验
+- **发送令牌之前（预览版）** - 适用于注册和登录
 
-> [!IMPORTANT]
-> 在这两种情况下，将在用户“注册”而不是登录过程中调用 API 连接器。
-
-### <a name="after-signing-in-with-an-identity-provider"></a>使用标识提供者登录之后
+### <a name="after-federating-with-an-identity-provider-during-sign-up"></a>在注册期间与标识提供者进行联合之后
 
 在注册过程的此步骤中，在用户使用标识提供者（例如 Google、Facebook 和 Azure AD）进行身份验证之后，会立即调用 API 连接器。 此步骤优先于特性收集页，后者是向用户显示的用于收集用户特性的表单。 如果用户正在使用本地帐户注册，则不会调用此步骤。 以下是可能在此步骤中启用的 API 连接器方案的示例：
 
@@ -65,13 +61,22 @@ API 连接器通过定义 API 调用的 HTTP 终结点 URL 和身份验证，为
 - 验证用户标识。
 - 在外部系统中查询有关用户的现有数据，以将其返回到应用程序令牌中或将其存储在 Azure AD 中。
 
+### <a name="before-sending-the-token-preview"></a>发送令牌之前（预览版）
+
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
+
+将在颁发令牌之前调用注册或登录过程中的此步骤的 API 连接器。 以下是可能在此步骤中启用的场景示例：
+- 使用与目录不同的源（包括旧标识系统、HR 系统、外部用户存储等）中的用户属性扩充令牌。
+- 使用在你自己的权限系统中存储和管理的组或角色属性扩充令牌。 
+- 将声明转换或操作应用于目录中声明的值。
+
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
 构成 Azure Active Directory B2C (Azure AD B2C) 的基础的 Identity Experience Framework 可在用户旅程中与 RESTful API 相集成。 本文介绍如何使用 [RESTful 技术配置文件](restful-technical-profile.md)创建与 RESTful 服务交互的用户旅程。
 
-使用 Azure AD B2C 可以通过调用 RESTful 服务，将自己的业务逻辑添加到用户旅程中。 Identity Experience Framework 可以在 RESTful 服务中发送和接收数据，以交换声明。 例如，可以：
+使用 Azure AD B2C 可以通过调用 RESTful 服务，将自己的业务逻辑添加到用户旅程中。 Identity Experience Framework 可以在 RESTful 服务中发送和接收数据，以交换声明。 例如，你能够：
 
 - 验证用户输入数据。 例如，可以验证用户提供的电子邮件地址是否在客户数据库中存在，如果不存在，则显示错误消息。
 - 处理声明。 如果用户使用全小写或全大写字母输入了其名字，REST API 可以设置该名字的格式，只将第一个字母，然后将此名字返回到 Azure AD B2C。
@@ -146,7 +151,35 @@ RESTful 声明提供程序分析的输出声明始终预期分析平面 JSON 正
 </OutputClaims>
 ```
 
-若要分析嵌套的 JSON 正文响应，请将 ResolveJsonPathsInJsonTokens 的元数据设置为 true。 在输出声明中，将 PartnerClaimType 设置为要输出的 JSON 路径元素。
+### <a name="handling-null-values"></a>处理 null 值 
+
+如果列中的值未知或缺失，则使用数据库中的 null 值。  勿包含具有 `null` 值的 JSON 键。 在下面的示例中，电子邮件返回 `null` 值：
+
+```json
+{
+  "name": "Emily Smith",
+  "email": null,
+  "loyaltyNumber":  1234
+}
+```
+
+当元素为 null 时，可以：
+
+- 省略 JSON 中的键值对。
+- 返回一个值，该值对应于 Azure AD B2C 声明数据类型。 例如，对于 `string` 数据类型，返回空字符串 `""`。 对于 `integer` 数据类型，返回零值 `0`。 对于 `dateTime` 数据类型，返回最小值 `1970-00-00T00:00:00.0000000Z`。
+
+以下示例演示如何处理 null 值。 JSON 中省略了电子邮件：
+
+```json
+{
+  "name": "Emily Smith",
+  "loyaltyNumber":  1234
+}
+```
+
+### <a name="parse-a-nested-json-body"></a>分析嵌套的 JSON 正文
+
+若要分析嵌套的 JSON 正文响应，请将 ResolveJsonPathsInJsonTokens 元数据设置为 true。 在输出声明中，将 PartnerClaimType 设置为要输出的 JSON 路径元素。
 
 ```json
 "contacts": [
@@ -210,71 +243,26 @@ REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该
 
 ::: zone-end
 
-## <a name="security-considerations"></a>安全注意事项
+## <a name="development-of-your-rest-api"></a>开发 REST API 
 
-应保护 REST API 终结点，以便只有经过身份验证的客户端才能与它通信。 REST API 必须使用 HTTPS 终结点。 将身份验证类型设置为以下身份验证方法之一。
-
-### <a name="api-key"></a>API 密钥
-
-API 密钥是用于对要访问 REST API 终结点的用户进行身份验证的唯一标识符。 例如，[Azure Functions HTTP 触发器](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)将 `code` 作为查询参数包含在终结点 URL 中。
-
-::: zone pivot="b2c-user-flow"
-
-```http
-https://contoso.azurewebsites.net/api/endpoint?code=0123456789 
-```
-
-不应在生产中单独使用 API 密钥身份验证。 因此，始终需要基本身份验证或证书身份验证的配置。 如果你不想要出于开发目的实现任何身份验证方法（不建议），可以选择基本身份验证，并为 `username` 和 `password` 使用临时值，在 API 中实现授权时，API 可以忽视这些值。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-可以向 API 密钥发送自定义 HTTP 标头。 例如，[Azure Functions HTTP 触发器](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)使用 `x-functions-key` HTTP 标头来标识请求者。  
-
-::: zone-end
-
-### <a name="client-certificate"></a>客户端证书
-
-客户端证书身份验证是一种基于证书的相互身份验证方法，其中，客户端向服务器提供客户端证书来证明自己的身份。 在这种情况下，Azure AD B2C 将使用你上传的证书作为 API 连接器配置的一部分。  此行为在 SSL 握手期间发生。 
-
-然后 API 服务可限制只有拥有适当证书的服务才能访问。 客户端证书是一种 PKCS12 (PFX) X.509 数字证书。 在生产环境中，必须由证书颁发机构为此证书签名。
-
-### <a name="http-basic-authentication"></a>HTTP 基本身份验证
-
-HTTP 基本身份验证在 [RFC 2617](https://tools.ietf.org/html/rfc2617) 中进行定义。 Azure AD B2C 使用 `Authorization` 头中的客户端凭据（`username` 和 `password`）发送 HTTP 请求。 凭据的格式是 base64 编码的字符串 `username:password`。 然后，API 将检查这些值，以确定是否要拒绝 API 调用。
-
-::: zone pivot="b2c-custom-policy"
-
-### <a name="bearer-token"></a>持有者令牌
-
-持有者令牌身份验证在 [OAuth2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) 中进行定义。 在持有者令牌身份验证中，Azure AD B2C 使用授权标头中的令牌发送 HTTP 请求。
-
-```http
-Authorization: Bearer <token>
-```
-
-持有者令牌是一种不透明字符串。 它可以是 JWT 访问令牌，也可以是 REST API 要求 Azure AD B2C 在授权标头中发送的任何字符串。 
- 
-::: zone-end
-
-## <a name="rest-api-platform"></a>REST API 平台
-
-REST API 可以基于任何平台并以任何编程语言进行编写，但前提需保证它是安全的，并且可以发送和接收 JSON 格式的声明。
+你可在任何平台开发并以任何编程语言编写 REST API，但前提是需保证它是安全的，并且可以发送和接收 JSON 格式的声明。
 
 对 REST API 服务的请求来自 Azure AD B2C 服务器。 必须将 REST API 服务发布到可公开访问的 HTTPS 终结点。 REST API 调用将从 Azure 数据中心 IP 地址抵达。
 
-请对 REST API 服务及其底层组件（例如数据库和文件系统）采用高可用性设计。
+可使用无服务器云功能简化开发，如 Azure Functions 中的 [HTTP](../azure-functions/functions-bindings-http-webhook-trigger.md) 触发器。
 
+应将 REST API 服务及其基础组件（例如数据库和文件系统）设计为高度可用。
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-
-
 ::: zone pivot="b2c-user-flow"
 
-- 了解如何[向用户流添加 API 连接器](add-api-connector.md)
-- 开始使用我们的[示例](code-samples.md#api-connectors)。
+- 了解如何[添加 API 连接器以修改注册体验](add-api-connector.md)
+- 了解如何[添加 API 连接器以使用外部声明扩充令牌](add-api-connector-token-enrichment.md)
+- 了解如何[保护 API 连接器](secure-rest-api.md)
+- 开始使用我们的[示例](api-connector-samples.md#api-connector-rest-api-samples)
 
 ::: zone-end
 
@@ -283,7 +271,7 @@ REST API 可以基于任何平台并以任何编程语言进行编写，但前�
 有关使用 RESTful 技术配置文件的示例，请参阅以下文章：
 
 - [演练：将 API 连接器添加到注册用户流](add-api-connector.md)
-- [演练：在 Azure Active Directory B2C 中将 REST API 声明交换添加到自定义策略](custom-policy-rest-api-claims-exchange.md)
+- [演练：在 Azure Active Directory B2C 中将 REST API 声明交换添加到自定义策略](add-api-connector-token-enrichment.md)
 - [保护 REST API 服务](secure-rest-api.md)
 - [参考：RESTful 技术配置文件](restful-technical-profile.md)
 

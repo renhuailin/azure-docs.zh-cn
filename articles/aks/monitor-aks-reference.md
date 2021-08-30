@@ -1,0 +1,102 @@
+---
+title: 有关监视 AKS 数据的参考
+description: 监视 AKS 时所需的重要参考资料
+ms.service: container-service
+ms.custom: subject-monitoring
+ms.date: 07/29/2021
+ms.topic: reference
+ms.openlocfilehash: 4dfbe6ba3e8bb64e2fdf41a06932f84fb1b7be94
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253562"
+---
+# <a name="monitoring-aks-data-reference"></a>有关监视 AKS 数据的参考
+
+有关收集和分析 AKS 监视数据的详细信息，请参阅[监视 AKS](monitor-aks.md)。
+
+## <a name="metrics"></a>指标
+
+下表列出了为 AKS 收集的平台指标。  单击每个链接可查看每种特定类型的指标的详细列表。
+
+|指标类型 | 资源提供程序/类型命名空间<br/> 和到各个指标的链接 |
+|-------|-----|
+| 托管群集 | [Microsoft.ContainerService/managedClusters](../azure-monitor/essentials/metrics-supported.md#microsoftcontainerservicemanagedclusters)
+| 连接的群集 | [microsoft.kubernetes/connectedClusters](../azure-monitor/essentials/metrics-supported.md#microsoftkubernetesconnectedclusters)
+| 虚拟机| Microsoft.Compute/virtualMachines  |
+| 虚拟机规模集 | [Microsoft.Compute/virtualMachineScaleSets](../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
+| 虚拟机规模集虚拟机 | [Microsoft.Compute/virtualMachineScaleSets/virtualMachines](../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesetsvirtualmachines)|
+
+有关详细信息，请参阅 [Azure Monitor 支持的所有平台指标的列表](../azure-monitor/essentials/metrics-supported.md)。
+
+## <a name="metric-dimensions"></a>指标维度
+
+下表列出了 AKS 指标的[维度](../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics)。 
+
+<!-- listed here /azure/azure-monitor/essentials/metrics-supported#microsoftcontainerservicemanagedclusters-->
+
+| 维度名称 | 说明 |
+| ------------------- | ----------------- |
+| requestKind | 由“进行中的请求”等指标用来按请求类型进行拆分。 |
+| condition | 由“各种节点条件的状态”、“处于就绪状态的 Pod 数”等指标用来按条件类型进行拆分 。 |
+| 状态 | 由“各种节点条件的状态”等指标用来按条件状态进行拆分。 |
+| status2 | 由“各种节点条件的状态”等指标用来按条件状态进行拆分。  |
+| 节点 | 由“CPU 使用率(毫核心)”等指标用来按节点名称进行拆分。 |
+| phase | 由“按阶段列出的 Pod 数”等指标用来按 Pod 阶段进行拆分。 |
+| 命名空间 | 由“按阶段列出的 Pod 数”等指标用来按 Pod 命名空间进行拆分。 |
+| Pod | 由“按阶段列出的 Pod 数”等指标用来按 Pod 名称进行拆分。 |
+| nodepool | 由“磁盘已用字节数”等指标用来按节点池名称进行拆分。 |
+| 设备 | 由“磁盘已用字节数”等指标用来按设备名称进行拆分。 |
+
+## <a name="resource-logs"></a>资源日志
+
+下表列出了可为 AKS 收集的资源日志类别。 这些日志是 AKS 控制平面组件的日志。 有关创建诊断设置以收集这些日志的信息，以及有关要启用的设置的建议，请参阅[配置监视](monitor-aks.md#configure-monitoring)。 有关查询示例，请参阅[如何从容器见解查询日志](../azure-monitor/containers/container-insights-log-query.md#resource-logs)。
+
+有关参考，请参阅 [Azure Monitor 支持的所有资源日志类别类型](../azure-monitor/essentials/resource-logs-schema.md)列表。 
+
+| 类别                | 说明 |
+|:---|:---|
+| cluster-autoscale       | 了解 AKS 群集为何纵向扩展或缩减（这种行为可能不符合预期）。 此信息还可用于关联群集中发生某种需要引以关注的问题的时间间隔。 |
+| 防护                   | 托管 Azure Active Directory 和 Azure RBAC 审核。 对于托管 Azure AD，这包括令牌输入和用户信息输出。对于 Azure RBAC，这包括访问评审输入和输出。 |
+| kube-apiserver          | 来自 API 服务器的日志。 |
+| kube-audit              | 每个审核事件（包括 get、list、create、update、delete、patch 和 post）的审核日志数据。 |
+| kube-audit-admin        | kube-audit 日志类别的子集。 通过从日志中排除 get 和 list 审核事件来大幅减少日志数量。 |
+| kube-controller-manager | 更深入地了解 Kubernetes 与 Azure 控制平面之间可能出现的问题。 一个典型示例是 AKS 群集缺少权限，无法与 Azure 交互。 |
+| kube-scheduler          | 来自计划程序的日志。 |
+| AllMetrics              | 包括所有平台指标。 将这些值发送到 Log Analytics 工作区，在其中可以使用日志查询连同其他数据一起评估这些值。 |
+
+## <a name="azure-monitor-logs-tables"></a>Azure Monitor 日志表
+
+本部分介绍与 AKS 相关的并可供 Log Analytics 查询的所有 Azure Monitor 日志表。 
+
+
+
+|资源类型 | 说明 |
+|-------|-----|
+| [Kubernetes 服务](/azure/azure-monitor/reference/tables/tables-resourcetype#kubernetes-services) | 单击此链接可查看 AKS 使用的所有表及其结构说明的列表。 |
+
+
+有关所有 Azure Monitor 日志/Log Analytics 表的参考，请参阅 [Azure Monitor 日志表参考](/azure/azure-monitor/reference/tables/tables-resourcetype)。
+
+
+## <a name="activity-log"></a>活动日志
+
+下表列出了可在[活动日志](../azure-monitor/essentials/activity-log.md)中创建的与 AKS 相关的几个示例操作。 使用活动日志可以跟踪群集创建时间或者群集配置更改时间等信息。 可以在门户中查看此信息，也可以创建活动日志警报，以便在发生某个事件时主动收到通知。
+
+| 操作 | 说明 |
+|:---|:---|
+| Microsoft.ContainerService/managedClusters/write | 创建或更新托管群集 |
+| Microsoft.ContainerService/managedClusters/delete | 删除托管群集 |
+| Microsoft.ContainerService/managedClusters/listClusterMonitoringUserCredential/action | 列出 clusterMonitoringUser 凭据 |
+| Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | 列出 clusterAdmin 凭据 |
+| Microsoft.ContainerService/managedClusters/agentpools/write | 创建或更新代理池 |
+
+有关可能的日志条目的完整列表，请参阅 [Microsoft.ContainerService 资源提供程序选项](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)。
+
+有关活动日志条目架构的详细信息，请参阅[活动日志架构](../azure-monitor/essentials/activity-log-schema.md)。 
+
+## <a name="see-also"></a>另请参阅
+
+- 有关如何监视 Azure AKS，请参阅[监视 Azure AKS](monitor-aks.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](/azure/azure-monitor/essentials/monitor-azure-resource)。

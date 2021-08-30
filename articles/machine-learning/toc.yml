@@ -259,8 +259,9 @@
             - name: 配置安全的 Web 服务
               displayName: 'ssl, tls'
               href: how-to-secure-web-service.md
-            - name: 配置防火墙
+            - name: 配置所需的网络流量
               href: how-to-access-azureml-behind-firewall.md
+              displayName: 'firewall, user-defined route, udr'
         - name: 数据保护
           items:
             - name: 故障转移和灾难恢复

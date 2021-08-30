@@ -4,14 +4,15 @@ description: 本文介绍如何使用 SQL Server Management Studio 将 SQL Serve
 author: chugugrace
 ms.author: chugu
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: ec10abfd6f2fc221a9e86203b2faa0d173d67675
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a9e69b0672a5b4235effcd68b50eeddc5ec9f82
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379584"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735311"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>使用 SSMS 将 SQL Server 代理作业迁移到 ADF
 
@@ -30,7 +31,7 @@ ms.locfileid: "100379584"
 |---------|---------|---------|
 |SQL 代理作业|管道     |将为 \<job name> 生成管道名称。 <br> <br> 内置代理作业不适用： <li> SSIS 服务器维护作业 <li> syspolicy_purge_history <li> collection_set_* <li> mdw_purge_data_* <li> sysutility_*|
 |SSIS 作业步骤|执行 SSIS 包活动|<li> 活动名称将是 \<step name>。 <li> 在作业步骤中使用的代理帐户将作为此活动的 Windows 身份验证进行迁移。 <li> 在迁移中将忽略作业步骤中定义的除“使用 32 位运行时”以外的执行选项 。 <li> 在迁移中将忽略作业步骤中定义的验证。|
-|schedule      |计划触发器        |将为 \<schedule name> 生成计划触发器的名称。 <br> <br> 在迁移中将忽略 SQL 代理作业计划中的以下选项： <li> 二级间隔。 <li> *SQL Server 代理启动时自动启动* <li> *CPU 空闲时启动* <li> 工作日和周末  <time zone> <br> 下面是将 SQL 代理作业计划迁移到 ADF 计划触发器后的差异： <li> ADF 计划触发器后续运行独立于先前已触发的运行的执行状态。 <li> ADF 计划触发器重复周期配置不同于 SQL 代理作业中的每日频率。|
+|schedule      |计划触发器        |将为 \<schedule name> 生成计划触发器的名称。 <br> <br> 在迁移中将忽略 SQL 代理作业计划中的以下选项： <li> 二级间隔。 <li> *SQL Server 代理启动时自动启动* <li> *CPU 空闲时启动* <li> 工作日和周末&gt;时区&lt;  <br> 下面是将 SQL 代理作业计划迁移到 ADF 计划触发器后的差异： <li> ADF 计划触发器后续运行独立于先前已触发的运行的执行状态。 <li> ADF 计划触发器重复周期配置不同于 SQL 代理作业中的每日频率。|
 
 - 在本地输出文件夹中生成 Azure 资源管理器 (ARM) 模板，并直接部署到数据工厂，或在以后手动进行部署。 有关 ADF 资源管理器模板的详细信息，请参阅 [Microsoft.DataFactory 资源类型](/azure/templates/microsoft.datafactory/allversions)。
 

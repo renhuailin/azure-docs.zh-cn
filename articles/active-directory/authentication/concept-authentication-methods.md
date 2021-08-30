@@ -5,26 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 07/01/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: b6071370d510881d06c5b81f8660781169596a72
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5adc3bd8ef03b2613198518fc22284686c2bfee9
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764400"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730744"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
 
-作为 Azure Active Directory (Azure AD) 中帐户的登录体验的一部分，用户可以通过不同的方式进行身份验证。 用户名和密码是用户历来提供凭据的最常见方式。 借助 Azure AD 中的新式身份验证和安全功能，应使用更安全的身份验证方法作为基本密码的补充或替代方法。
+Microsoft 建议使用无密码身份验证方法（例如 Windows Hello、FIDO2 安全密钥和 Microsoft Authenticator 应用），因为它们提供最安全的登录体验。 尽管用户可使用其他常见方法（例如用户名和密码）登录，但应将密码替换为更安全的身份验证方法。
 
 ![Azure AD 中的身份验证方法强度和首选身份验证方法表](media/concept-authentication-methods/authentication-methods.png)
-
-无密码身份验证方法（如 Windows Hello、FIDO2 安全密钥和 Microsoft Authenticator 应用）提供最安全的登录事件。
 
 用户登录时，与仅使用密码相比，Azure AD 多重身份验证 (MFA) 增加了额外的安全性。 可以提示用户进行其他形式的身份验证，例如响应推送通知、输入软件或硬件令牌中的验证码，或者响应短信或电话。
 
@@ -68,8 +66,8 @@ ms.locfileid: "108764400"
 | Windows Hello 企业版     | 是                    | MFA                       |
 | Microsoft Authenticator 应用    | 是                    | MFA 和 SSPR              |
 | FIDO2 安全密钥             | 是                    | MFA                       |
-| OATH 硬件令牌（预览版） | 否                     | MFA                       |
-| OATH 软件令牌           | 否                     | MFA                       |
+| OATH 硬件令牌（预览版） | 否                     | MFA 和 SSPR              |
+| OATH 软件令牌           | 否                     | MFA 和 SSPR              |
 | SMS                            | 是                    | MFA 和 SSPR              |
 | 语音呼叫                     | 否                     | MFA 和 SSPR              |
 | 密码                       | 是                    |                           |
@@ -89,9 +87,6 @@ ms.locfileid: "108764400"
 
 > [!NOTE]
 > 在 Azure AD 中，密码通常是主要身份验证方法之一。 不能禁用密码身份验证方法。 如果使用密码作为主要身份验证因素，则使用 Azure AD 多重身份验证提高登录事件的安全性。
-
-> [!IMPORTANT]
-> 虽然 FIDO2 满足作为一种 MFA 形式的必要要求，但 FIDO2 只能用作一种无密码的身份验证形式。
 
 在某些情况下，可使用以下附加验证方法：
 

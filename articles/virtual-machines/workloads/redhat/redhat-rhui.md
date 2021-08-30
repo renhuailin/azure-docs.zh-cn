@@ -9,19 +9,19 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 968377ed09996b9a717e0739a3de8355d1c8d88d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02ea434b74e92e2bdd126a98d33e9e68adb811d0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677133"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468974"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
 
 已预先配置 Red Hat Enterprise Linux (RHEL) 即用即付 (PAYG) 映像来访问 Azure RHUI。 不需要任何其他配置。 要获取最新更新，请在 RHEL 实例准备好后运行 `sudo yum update`。 RHEL PAYG 软件费涵盖了此服务。
 
-[此处](./redhat-images.md)提供了关于 Azure 中的 RHEL 映像的更多信息，包括发布和保留策略。
+若要详细了解 Azure 中的 RHEL 映像（包括发布和保留策略），请参阅 [Azure 中的 Red Hat Enterprise Linux 映像概述](./redhat-images.md)。
 
 可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。
 
@@ -79,7 +79,7 @@ RedHat:RHEL:7.6:7.6.2019062116
 对于可能会希望在预配 VM 后将其 RHEL VM 锁定到特定 RHEL 次要版本的客户，扩展更新支持 (EUS) 存储库可供使用。 可以通过对存储库进行更新以指向扩展的更新支持存储库来将 RHEL VM 的版本锁定到特定的次版本。 也可撤消 EUS 版本锁定操作。
 
 >[!NOTE]
-> RHEL Extras 不支持 EUS。 这意味着，如果要安装通常可从 RHEL Extras 渠道获得的包，则在 EUS 上将无法这样做。 [此处](https://access.redhat.com/support/policy/updates/extras/)详细介绍了 Red Hat Extras 产品生命周期。
+> RHEL Extras 不支持 EUS。 这意味着，如果要安装通常可从 RHEL Extras 渠道获得的包，则在 EUS 上将无法这样做。 [Red Hat Enterprise Linux Extras 产品生命周期 - Red Hat 客户门户](https://access.redhat.com/support/policy/updates/extras/)页面上详细说明了 Red Hat Extras 产品生命周期。
 
 在撰写本文时，对 RHEL 7.4 及更低版本的 EUS 支持已终止。 有关更多详细信息，请参阅 [Red Hat 文档](https://access.redhat.com/support/policy/updates/errata/#Long_Support)中的“Red Hat Enterprise Linux 扩展维护”部分。
 * RHEL 7.4 EUS 支持于 2019 年 8 月 31 日终止
@@ -231,7 +231,7 @@ RedHat:RHEL:7.6:7.6.2019062116
 >从 2020 年 1 月起，新的 Azure 美国政府版映像将使用上面 Azure 全球标头中提到的公共 IP。
 
 >[!NOTE]
->另请注意，已弃用 Azure 德国，取而代之的是公共德国地区。 建议 Azure 德国客户使用[此处](#manual-update-procedure-to-use-the-azure-rhui-servers)的步骤开始指向公共 RHUI。
+>另请注意，已弃用 Azure 德国，取而代之的是公共德国地区。 建议 Azure 德国客户使用 [Red Hat 更新基础结构](#manual-update-procedure-to-use-the-azure-rhui-servers)页面上的步骤开始指向公共 RHUI。
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUI 基础结构
 

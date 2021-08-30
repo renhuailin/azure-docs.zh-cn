@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: cddaf1bde84d7e60eb59bd4c58c65fa889e06ae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ab256d58284e79323b988b2b81f4c664fa3fc16
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028805"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456645"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>排查 Azure 负载均衡器问题
 
@@ -35,7 +35,7 @@ ms.locfileid: "98028805"
 
 验证及解决方法
 
-标准 ILB 在默认情况下是安全的。 基本 ILB 允许通过隐藏的公共 IP 地址连接到 Internet。 不建议将其用于生产工作负载，因为该 IP 地址既不是静态的，也不是通过你拥有的 NSG 进行锁定的。 如果你最近从基本 ILB 迁移到了标准 ILB，则应通过[仅出站](egress-only.md)配置显式创建公共 IP，该配置会通过 NSG 锁定 IP。 你还可以在子网上使用 [NAT 网关](../virtual-network/nat-overview.md)。
+标准 ILB 在默认情况下是安全的。 基本 ILB 允许通过名为默认出站访问 IP 的隐藏公共 IP 地址连接到 Internet。 不建议将其用于生产工作负载，因为该 IP 地址既不是静态的，也不是通过你拥有的 NSG 进行锁定的。 如果你最近从基本 ILB 迁移到了标准 ILB，则应通过[仅出站](egress-only.md)配置显式创建公共 IP，该配置会通过 NSG 锁定 IP。 你还可以在子网上使用 [NAT 网关](../virtual-network/nat-gateway/nat-overview.md)。 NAT 网关是建议用于出站的解决方案。
 
 ## <a name="cant-change-backend-port-for-existing-lb-rule-of-a-load-balancer-that-has-virtual-machine-scale-set-deployed-in-the-backend-pool"></a>无法更改已在后端池中部署了虚拟机规模集的负载均衡器的现有 LB 规则的后端端口。
 

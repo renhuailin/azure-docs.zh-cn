@@ -10,16 +10,23 @@ ms.date: 3/02/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 37f3d7a8ff56ea16f6004516c43ac33989263023
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 465109f42a0f5608c6b0a4b030476c915c3514df
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669835"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721785"
 ---
 # <a name="monitoring-azure-files"></a>监视 Azure 文件存储
 
 如果你有依赖 Azure 资源的关键应用程序和业务流程，则需要监视这些资源的可用性、性能和操作。 本文介绍 Azure 文件存储生成的监视数据，以及如何使用 Azure Monitor 的各种功能分析这些数据的相关警报。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
 
 ## <a name="monitor-overview"></a>Monitor 概述
 
@@ -62,7 +69,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 ## <a name="creating-a-diagnostic-setting"></a>创建诊断设置
 
-可以使用 Azure 门户、PowerShell、Azure CLI 或 Azure 资源管理器模板创建诊断设置。
+可使用 Azure 门户、PowerShell、Azure CLI、Azure 资源管理器模板或 Azure Policy 创建诊断设置。
 
 > [!NOTE]
 > Azure Monitor 中的 Azure 存储日志目前为公共预览版，可在所有公有云区域中进行预览测试。 此预览版支持 blob（包括 Azure Data Lake Storage Gen2）、文件、队列和表日志。 此功能适用于使用 Azure 资源管理器部署模型创建的所有存储帐户。 请参阅[存储帐户概述](../common/storage-account-overview.md)。
@@ -263,6 +270,10 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 ### <a name="template"></a>[模板](#tab/template)
 
 若要查看创建诊断设置的 Azure 资源管理器模板，请参阅 [Azure 存储的诊断设置](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)。
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
+
+可使用策略定义来创建诊断设置。 这样，就可确保为创建或更新的每个帐户创建一个诊断设置。 请参阅 [Azure 存储的 Azure Policy 内置定义](../common/policy-reference.md)。
 
 ---
 
@@ -465,6 +476,10 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 ```
 
 # <a name="template"></a>[模板](#tab/template)
+
+不适用。
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
 
 不适用。
 

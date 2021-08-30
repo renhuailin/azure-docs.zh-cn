@@ -102,21 +102,21 @@
         - name: 发送和接收消息
           href: iot-hub-devguide-messaging.md
           items:
+            - name: 创建和读取 IoT 中心消息
+              href: iot-hub-devguide-messages-construct.md
+            - name: 选择设备通信协议
+              href: iot-hub-devguide-protocols.md
+            - name: 通过内置终结点读取设备到云的消息
+              href: iot-hub-devguide-messages-read-builtin.md
             - name: 使用消息路由功能发送设备到云的消息
               href: iot-hub-devguide-messages-d2c.md
               items:
-                - name: 创建和读取 IoT 中心消息
-                  href: iot-hub-devguide-messages-construct.md
-                - name: 通过内置终结点读取设备到云的消息
-                  href: iot-hub-devguide-messages-read-builtin.md
                 - name: 对设备到云的消息使用自定义终结点和路由规则
                   href: iot-hub-devguide-messages-read-custom.md
                 - name: 向消息路由添加查询
                   href: iot-hub-devguide-routing-query-syntax.md
             - name: 从 IoT 中心发送云到设备的消息
               href: iot-hub-devguide-messages-c2d.md
-            - name: 选择通信协议
-              href: iot-hub-devguide-protocols.md
         - name: 通过事件网格来响应 IoT 中心事件
           href: iot-hub-event-grid.md
         - name: 从设备上传文件
@@ -310,6 +310,8 @@
           href: iot-hub-ip-filtering.md
         - name: 管理公用网络访问
           href: iot-hub-public-network-access.md
+        - name: 限制出站网络访问
+          href: iot-hub-restrict-outbound-network-access.md
         - name: 大规模自动设备管理
           items:
             - name: 使用 Azure 门户

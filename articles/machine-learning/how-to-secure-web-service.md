@@ -5,16 +5,16 @@ description: 了解如何使用 TLS 版本 1.2 启用 HTTPS，以保护通过 Az
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: aashishb
-author: aashishb
-ms.date: 03/11/2021
+ms.author: jhirono
+author: jhirono
+ms.date: 07/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 9531862ffb62a92a3b9be33b38e4ecef97bf974e
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: ca7a6e424125980f79ccb6521df0d7b87a9ce456
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884653"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694963"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 保护通过 Azure 机器学习部署的 Web 服务
 
@@ -83,7 +83,7 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证。 有关�
   > [!NOTE]
   > 为设计器部署安全的 Web 服务时，此部分中的信息也适用。 如果不熟悉如何使用 Python SDK，请参阅[什么是适用于 Python 的 Azure 机器学习 SDK？](/python/api/overview/azure/ml/intro)。
 
-在 AML 工作区中[创建或附加 AKS 群集](how-to-create-attach-kubernetes.md)时，可以使用 [AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-) 和 [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) 配置对象来启用 TLS 终止 。 两种方法都会返回具有 enable_ssl 方法的配置对象，并且你可以使用 enable_ssl 方法来启用 TLS 。
+在 AML 工作区中[创建或附加 AKS 群集](how-to-create-attach-kubernetes.md)时，可以使用 [AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-) 和 [AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-) 配置对象来启用 TLS 终止 。 这两种方法都返回一个具有 enable_ssl 方法的配置对象，你可以使用 enable_ssl 方法启用 TLS。
 
 可以使用 Microsoft 证书或从 CA 购买的自定义证书来启用 TLS。 
 
@@ -152,16 +152,21 @@ aci_config = AciWebservice.deploy_configuration(
 
 对于使用自定义证书进行的 AKS 部署，或者对于 ACI 部署，你必须更新 DNS 记录，使其指向评分终结点的 IP 地址。
 
-  > [!IMPORTANT]
-  > 将 Microsoft 提供的证书用于 AKS 部署时，无需手动更新群集的 DNS 值。 应自动设置该值。
+> [!IMPORTANT]
+> 将 Microsoft 提供的证书用于 AKS 部署时，无需手动更新群集的 DNS 值。 应自动设置该值。
 
 可以按照以下步骤更新自定义域名的 DNS 记录：
-* 从评分终结点 URI（其格式通常为 *http://104.214.29.152:80/api/v1/service/<service-name>/score* ）获取评分终结点 IP 地址。 
-* 使用域名注册机构的工具来更新域名的 DNS 记录。 该记录必须指向评分终结点的 IP 地址。
-* DNS 记录更新之后，可以使用 nslookup custom-domain-name 命令验证 DNS 解析。 如果 DNS 记录已正确更新，自定义域名将指向评分终结点的 IP 地址。
-* 可能延迟几分钟到几小时之后客户端才能解析域名，具体取决于注册机构和为域名配置的“生存时间”(TTL)。
+1. 从评分终结点 URI（其格式通常为 `http://104.214.29.152:80/api/v1/service/<service-name>/score` ）获取评分终结点 IP 地址。 在此示例中，IP 地址为 104.214.29.152。
+1. 使用域名注册机构的工具来更新域名的 DNS 记录。 该记录将 FQDN（例如 www\.contoso.com）映射到 IP 地址。 该记录必须指向评分终结点的 IP 地址。
 
+    > [!TIP]
+    > Microsoft 不负责更新自定义 DNS 名称或证书的 DNS。 必须用你的域名注册器来进行更新。
 
+1. DNS 记录更新之后，可以使用 nslookup custom-domain-name 命令验证 DNS 解析。 如果 DNS 记录已正确更新，自定义域名将指向评分终结点的 IP 地址。
+
+    可能延迟几分钟到几小时之后客户端才能解析域名，具体取决于注册机构和为域名配置的“生存时间”(TTL)。
+
+有关使用 Azure 机器学习进行 DNS 解析的详细信息，请参阅[如何将工作区用于自定义 DNS 服务器](how-to-custom-dns.md)。
 ## <a name="update-the-tlsssl-certificate"></a>更新 TLS/SSL 证书
 
 TLS/SSL 证书已过期，必须续订。 通常每年都会发生这种情况。 使用以下部分中的信息为部署到 Azure Kubernetes 服务的模型更新和续订证书：
@@ -263,3 +268,4 @@ aks_target.update(update_config)
 了解如何：
 + [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 + [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)
++ [如何将工作区用于自定义 DNS 服务器](how-to-custom-dns.md)

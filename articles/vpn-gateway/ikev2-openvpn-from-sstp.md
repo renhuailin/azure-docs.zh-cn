@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/04/2021
 ms.author: alzam
-ms.openlocfilehash: c9b6671a2baa807d8def27a78d7776eb6fec2c1a
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: af136cab65034be5cd0f3ec18d22492a826678d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559423"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749212"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>从 SSTP 过渡到 OpenVPN 协议或 IKEv2
 
-点到站点 (P2S) VPN 网关连接用于创建从单个客户端计算机到虚拟网络的安全连接。 可通过从客户端计算机启动连接来建立 P2S 连接。 本文适用于资源管理器部署模型，介绍如何通过过渡到 OpenVPN 协议或 IKEv2，来克服 SSTP 的 128 个并发连接的限制。
+点到站点 (P2S) VPN 网关连接用于创建从单个客户端计算机到虚拟网络的安全连接。 可通过从客户端计算机启动连接来建立 P2S 连接。 本文适用于[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)，介绍如何通过过渡到 OpenVPN 协议或 IKEv2，来克服 SSTP 的 128 个并发连接限制。
 
 ## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S 使用哪种协议？
 
@@ -27,11 +27,11 @@ ms.locfileid: "111559423"
 
 * 安全套接字隧道协议 (SSTP)，一个基于 SSL 的专属 VPN 协议。  由于大多数防火墙都会打开 SSL 所用的出站 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。 无论网关 SKU 是什么，SSTP 最多仅支持 128 个并发连接。 
 
-* IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备（macOS 10.11 及更高版本）进行连接。
+* IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（macOS 10.11 和更高版本）。
 
 
 >[!NOTE]
->P2S 的 IKEv2 和 OpenVPN 仅可用于资源管理器部署模型。 它们不可用于经典部署模型。 基本网关 SKU 不支持 IKEv2 或 OpenVPN 协议。 如果使用的是基本 SKU，则必须删除再重新创建生产 SKU 虚拟网络网关。
+>P2S 的 IKEv2 和 OpenVPN 仅可用于[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)。 它们不可用于经典部署模型。 基本网关 SKU 不支持 IKEv2 或 OpenVPN 协议。 如果使用的是基本 SKU，则必须删除再重新创建生产 SKU 虚拟网络网关。
 >
 
 ## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>从 SSTP 迁移到 IKEv2 或 OpenVPN

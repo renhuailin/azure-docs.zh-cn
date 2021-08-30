@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 116e99339ac79e9e6a2de5e7a6222460a71bf4a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 575ef3f6df84c62e1ac62d1981b6c2e9ed60aae2
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102615085"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272266"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>平台支持的从经典部署模型到 Azure Resource Manager 的 IaaS 资源迁移
 
@@ -25,7 +25,7 @@ ms.locfileid: "102615085"
 
 本文概述平台支持的迁移工具、如何将资源从 Azure 服务管理器 (ASM)（经典）迁移到资源管理器 (ARM) 部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 用户可以阅读有关 [Azure Resource Manager 功能和优点](../azure-resource-manager/management/overview.md)的更多内容。 
 
-ASM 支持两种不同的计算产品：Azure 虚拟机（经典）（也称为 IaaS VM）和 [Azure 云服务（经典）](../cloud-services/index.yml)（也称为 PaaS VM 或 Web/辅助角色）。 本文档仅讨论迁移 Azure 虚拟机（经典）。
+ASM 支持两种不同的计算产品：Azure 虚拟机（经典）（也称为 IaaS VM），以及 [Azure 云服务（经典）](../cloud-services/index.yml)（也称为 PaaS VM）或 Web/辅助角色。 本文档仅讨论迁移 Azure 虚拟机（经典）。
 
 ## <a name="goal-for-migration"></a>迁移目标
 Resource Manager 除了可让你通过模板部署复杂的应用程序之外，还可使用 VM 扩展来配置虚拟机，并且纳入了访问管理和标记。 Azure Resource Manager 将虚拟机的可缩放并行部署包含在可用性集内。 新部署模型还针对计算、网络和存储单独提供生命周期管理。 最后，将重点介绍为了默认启用安全性而要在虚拟网络中实施虚拟机的做法。
@@ -35,7 +35,8 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 ## <a name="supported-resources--configurations-for-migration"></a>迁移支持的资源和配置
 
 ### <a name="supported-resources-for-migration"></a>迁移支持的资源
-* 虚拟机
+* 虚拟机（带 VM 的云服务）
+* [云服务（带 Web/辅助角色）](../cloud-services-extended-support/in-place-migration-overview.md)
 * 可用性集
 * 存储帐户
 * 虚拟网络
@@ -88,12 +89,12 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 如果存储帐户没有任何关联的磁盘或虚拟机数据，并且只有 blob、文件、表和队列，那么到 Azure 资源管理器的迁移可以作为独立的迁移完成，而不需要依赖项。
 
 > [!NOTE]
-> Resource Manager 部署模型没有经典映像和磁盘的概念。 迁移存储帐户时，经典映像和磁盘不在 Resource Manager 堆栈中可见，但后备 VHD 保留在存储帐户中。
+> Resource Manager 部署模型没有经典映像和磁盘的概念。 迁移存储帐户时，经典映像和磁盘在 Azure 门户中不再可见，但后备 VHD 保留在存储帐户中。
 
 以下屏幕截图演示了如何使用 Azure 门户将经典存储帐户升级到 Azure 资源管理器存储帐户：
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到存储帐户。
-3. 在“设置”部分单击“迁移到 ARM”。
+3. 在“设置”部分，单击“迁移到 Azure 资源管理器” 。
 4. 单击“验证”，确定迁移可行性。
 5. 如果验证通过，请单击“准备”，以便创建迁移的存储帐户。
 6. 键入“是”对迁移进行确认，然后单击“提交”完成迁移。
@@ -136,10 +137,9 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 | 计算 |具有警报、自动缩放策略的虚拟机 |迁移进行下去时，这些设置会删除。 强烈建议用户在进行迁移之前先评估其环境。 或者，也可以在迁移完成之后重新配置警报设置。 |
 | 计算 |XML VM 扩展（BGInfo 1.*、Visual Studio 调试器、Web 部署和远程调试） |此操作不受支持。 建议用户在继续迁移之前从虚拟机中删除这些扩展，否则系统会在迁移过程中自动删除它们。 |
 | 计算 |使用高级存储启动诊断 |在继续执行迁移之前，为 VM 禁用启动诊断功能。 在迁移完成之后，可以在 Resource Manager 堆栈中重新启用启动诊断。 此外，应删除正用于屏幕截图和串行日志的 blob，以便不会再为这些 blob 付费。 |
-| 计算 | 包含 Web 角色/辅助角色的云服务 | 目前不支持。 |
 | 计算 | 云服务包含一个以上可用性集或多个可用性集。 |目前不支持。 在迁移之前，请将虚拟机移到同一可用性集中。 |
 | 计算 | 带 Azure 安全中心扩展的 VM | Azure 安全中心在虚拟机上自动安装扩展，用于监视其安全性并引发警报。 如果在订阅上启用了 Azure 安全中心策略，通常会自动安装这些扩展。 若要迁移虚拟机，则禁用订阅上的安全中心策略，这将从虚拟机删除监视扩展的安全中心。 |
-| 计算 | 带备份或快照扩展的 VM | 这些扩展安装在配置有 Azure 备份服务的虚拟机上。 当不支持迁移这些 VM 时，请按照[此处](./migration-classic-resource-manager-faq.md#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault)的指导，在迁移前保留备份。  |
+| 计算 | 带备份或快照扩展的 VM | 这些扩展安装在配置有 Azure 备份服务的虚拟机上。 虽然不支持迁移迁移这些 VM，但请遵循[有关从经典部署模型迁移到 Azure 资源管理器部署模型的常见问题](/azure/virtual-machines/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault)中的指导，保留迁移之前已进行的备份。  |
 | 计算 | 具有 Azure Site Recovery 扩展的 VM | 这些扩展安装在配置了 Azure Site Recovery 服务的虚拟机上。 虽然可以与 Site Recovery 配合使用来迁移存储，但是当前复制将受到影响。 需要在存储迁移后禁用并启用 VM 复制。 |
 | 网络 |包含虚拟机和 Web 角色/辅助角色的虚拟网络 |目前不支持。 在迁移之前，请将 Web/辅助角色移动到其自己的虚拟网络。 一旦迁移经典虚拟网络，就可以将迁移的 Azure 资源管理器虚拟网络与经典虚拟网络对等，从而实现与以前类似的配置。|
 | 网络 | 经典 Express Route 线路 |目前不支持。 这些线路需要在开始迁移 IaaS 之前迁移到 Azure 资源管理器。 有关详细信息，请参阅[将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型](../expressroute/expressroute-move.md)。|
@@ -156,4 +156,4 @@ Resource Manager 除了可让你通过模板部署复杂的应用程序之外，
 * [使用 CLI 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](migration-classic-resource-manager-cli.md)
 * [用于帮助将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的社区工具](migration-classic-resource-manager-community-tools.md)
 * [查看最常见的迁移错误](migration-classic-resource-manager-errors.md)
-* [查看有关将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的最常见问题](migration-classic-resource-manager-faq.md)
+* [查看有关将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的最常见问题](migration-classic-resource-manager-faq.yml)

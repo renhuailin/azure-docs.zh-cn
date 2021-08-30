@@ -6,12 +6,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 11/24/2020
 ms.author: apimpm
-ms.openlocfilehash: ca7bd70bbf99a6d0079717a7a02328b11528d2e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da8b462eba7b5f68e345ffe5e73bd4096831935f
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96841382"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114713053"
 ---
 # <a name="get-api-analytics-in-azure-api-management"></a>获取 Azure API 管理中的 API 分析
 
@@ -25,6 +25,9 @@ Azure API 管理为你的 API 提供了内置的分析功能。 跨多个维度�
 * 订阅
 * 用户
 * 请求
+
+> [!NOTE]
+> 地理值是基于 IP 地址映射的近似值。
 
 :::image type="content" source="media/howto-use-analytics/analytics-report-portal.png" alt-text="门户中的时间线分析":::
 
@@ -46,7 +49,7 @@ Azure API 管理为你的 API 提供了内置的分析功能。 跨多个维度�
 
 ## <a name="analytics---rest-api"></a>分析 - REST API
 
-使用 API 管理 REST API 中的[报告](/rest/api/apimanagement/2019-12-01/reports)操作检索和筛选 API 管理实例的分析数据。
+使用 API 管理 REST API 中的[报告](/rest/api/apimanagement/2020-12-01/reports)操作检索和筛选 API 管理实例的分析数据。
 
 可用操作按 API、地理位置、API 操作、产品、请求、订阅、时间或用户返回报告记录。
 

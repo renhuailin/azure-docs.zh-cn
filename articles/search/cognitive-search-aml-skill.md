@@ -8,19 +8,19 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 6cefe543ea8ba992b028448070bf041a77bfec64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 529be70de61fe9adb025ee801bd417bc860ef5e6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97630269"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736327"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 认知搜索扩充管道中的 AML 技能
 
 > [!IMPORTANT] 
-> 此技能以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前不支持 .NET SDK。
+> 此技能根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公开预览状态。 [预览版 REST API](/rest/api/searchservice/index-preview) 支持此技能。
 
-通过 AML 技能，可以使用自定义 [Azure 机器学习](../machine-learning/overview-what-is-azure-ml.md) (AML) 模型来扩展 AI 扩充。 在[训练和部署](../machine-learning/concept-azure-machine-learning-architecture.md#workspace) AML 模型后，AML 技能即可将其集成到 AI 扩充中。
+通过 AML 技能，可以使用自定义 [Azure 机器学习](../machine-learning/overview-what-is-azure-machine-learning.md) (AML) 模型来扩展 AI 扩充。 在[训练和部署](../machine-learning/concept-azure-machine-learning-architecture.md#workspace) AML 模型后，AML 技能即可将其集成到 AI 扩充中。
 
 与内置技能一样，AML 技能具有输入和输出。 输入将以 JSON 对象形式发送到已部署的 AML 服务，进而以响应形式输出 JSON 有效负载以及成功状态代码。 响应需包含 AML 技能指定的输出。 其他任何响应都被视为错误，并且不会执行任何扩充。
 

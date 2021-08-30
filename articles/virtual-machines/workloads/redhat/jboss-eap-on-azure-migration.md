@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: cbfbbfaea3954afd2a77090acb140c41e0b93052
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: d733e42d6a415ec6ccbe5ee85f66dd11a87591d4
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290642"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770141"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>如何将 Java 应用程序迁移到 Azure VM 和虚拟机规模集上的 JBoss EAP
 
@@ -54,20 +54,20 @@ Red Hat 和 Microsoft 进行合作引入了一组 [Azure 市场产品/服务上�
 
 - JBoss EAP 安装 - 需要有一个 Red Hat 帐户，该帐户具有针对 JBoss EAP 的 Red Hat 订阅管理 (RHSM) 权利。 此权利允许你下载 Red Hat 经过测试和认证的 JBoss EAP 版本。  如果没有 EAP 权利，可以通过[适用于个人的 Red Hat 开发人员订阅](https://developers.redhat.com/register)注册免费的开发人员订阅。 注册后，你可以在 [Red Hat 客户门户](https://access.redhat.com/management/)中找到必要的凭据（池 ID）。
 
-- **RHEL 选项** - 在即用即付 (PAYG) 或自带订阅 (BYOS) 之间进行选择。 若使用 BYOS，则在使用解决方案模板部署市场产品/服务之前需要激活 [Red Hat Cloud Access](https://access.redhat.com/) [RHEL 黄金映像](https://azure.microsoft.com/updates/red-hat-enterprise-linux-gold-images-now-available-on-azure/)。 按照[以下说明](https://access.redhat.com/documentation/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access)启用 RHEL 黄金映像，以在 Microsoft Azure 中使用。
+- **RHEL 选项** - 在即用即付 (PAYG) 或自带订阅 (BYOS) 之间进行选择。 若使用 BYOS，则在使用解决方案模板部署市场产品/服务之前需要激活 [Red Hat Cloud Access](https://access.redhat.com/) [RHEL 黄金映像](https://azure.microsoft.com/updates/red-hat-enterprise-linux-gold-images-now-available-on-azure/)。 按照[以下说明](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide)启用 RHEL 黄金映像，以在 Microsoft Azure 中使用。
 
 - **[Azure 命令行界面 (CLI)](/cli/azure/overview)** 。
 
 - **Java 源代码和 [Java 开发工具包 (JDK) 版本](https://www.oracle.com/java/technologies/javase-downloads.html)**
 
-- **[基于 JBoss EAP 7.2 的 Java 应用程序](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/development_guide/index#become_familiar_with_java_enterprise_edition_8)** 或 **[基于 JBoss EAP 7.3 的 Java 应用程序](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html-single/development_guide/index#get_started_developing_applications)** 。
+- **[基于 JBoss EAP 7.2 的 Java 应用程序](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/development_guide/index)** 或 **[基于 JBoss EAP 7.3 的 Java 应用程序](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html-single/development_guide/index#get_started_developing_applications)** 。
 
-RHEL 选项 - 在 PAYG 或 BYOS 之间选择。 对于 BYOS，你将需要激活 [Red Hat Cloud Access](https://access.redhat.com/documentation/red_hat_subscription_management/1/html-single/red_hat_cloud_access_reference_guide/index) RHEL 黄金映像，才能使用 Azure 市场产品/服务。 BYOS 产品/服务将显示在 Azure 门户的“专用产品/服务”部分中。 
+RHEL 选项 - 在 PAYG 或 BYOS 之间选择。 对于 BYOS，你将需要激活 [Red Hat Cloud Access](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index) RHEL 黄金映像，才能使用 Azure 市场产品/服务。 BYOS 产品/服务将显示在 Azure 门户的“专用产品/服务”部分中。 
 
 **产品版本**
 
-* [JBoss EAP 7.2](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/)
-* [JBoss EAP 7.3](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/)
+* [JBoss EAP 7.2](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2)
+* [JBoss EAP 7.3](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3)
 * [RHEL 7.7](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RedHatEnterpriseLinux77-ARM)
 * [RHEL 8.0](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RedHatEnterpriseLinux80-ARM)
 
@@ -161,7 +161,7 @@ keytool -list -v -keystore <path to keystore>
 * 连接池配置是什么？
 * 在哪里可以找到 Java Database Connectivity (JDBC) 驱动程序 JAR 文件？
 
-有关详细信息，请参阅 JBoss EAP 文档中的[关于 JBoss EAP 数据源](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/html/configuration_guide/datasource_management)。
+有关详细信息，请参阅 JBoss EAP 文档中的[关于 JBoss EAP 数据源](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3html/configuration_guide/datasource_management)。
 
 ### <a name="determine-whether-and-how-the-file-system-is-used"></a>确定是否使用以及如何使用文件系统
 
@@ -220,20 +220,20 @@ keytool -list -v -keystore <path to keystore>
 
 有一些工具可帮助进行迁移：
 
-* [用于分析迁移应用程序的 Red Hat 应用程序迁移工具包](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/migration_guide/index#use_windup_to_analyze_applications_for_migration)。
-* [用于迁移服务器配置的 JBoss 服务器迁移工具](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/migration_guide/index#migration_tool_server_migration_tool)
+* [用于分析迁移应用程序的 Red Hat 应用程序迁移工具包](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/migration_guide/index#use_windup_to_analyze_applications_for_migration)。
+* [用于迁移服务器配置的 JBoss 服务器迁移工具](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/migration_guide/index#migration_tool_server_migration_tool)
 
-若要将服务器配置从较旧的 JBoss EAP 版本迁移到较新的 JBoss EAP 版本，你可以使用 [JBoss 服务器迁移工具](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/migration_guide/index#migrate_server_migration_tool_option)，也可以在[管理 CLI 迁移操作](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/migration_guide/index#migrate__migrate_operation_option)的帮助下执行手动迁移。
+若要将服务器配置从较旧的 JBoss EAP 版本迁移到较新的 JBoss EAP 版本，你可以使用 [JBoss 服务器迁移工具](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/migration_guide/index#migrate_server_migration_tool_option)，也可以在[管理 CLI 迁移操作](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.2/html/migration_guide/index#migrate__migrate_operation_option)的帮助下执行手动迁移。
 
 ### <a name="run-red-hat-application-migration-toolkit"></a>运行 Red Hat 应用程序迁移工具包
 
 可以[在交互模式下运行 JBoss 服务器迁移工具](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html-single/using_the_jboss_server_migration_tool/index#migration_tool_server_run_interactive_mode)。 默认情况下，JBoss 服务器迁移工具以交互方式运行。 此模式允许你准确选择要迁移的服务器配置。
 
-还可以[在非交互模式下运行 JBoss 服务器迁移工具](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/using_the_jboss_server_migration_tool/index#migration_tool_server_run_noninteractive_mode)。 此模式允许它在没有提示的情况下运行。
+还可以[在非交互模式下运行 JBoss 服务器迁移工具](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html/using_the_jboss_server_migration_tool/running_the_server_migration_tool#migration_tool_server_run_noninteractive_mode)。 此模式允许它在没有提示的情况下运行。
 
 ### <a name="review-the-result-of-jboss-server-migration-toolkit-execution"></a>查看 JBoss 服务器迁移工具包执行的结果
 
-迁移完成后，查看 EAP_HOME/standalone/configuration/ 和 EAP_HOME/domain/configuration/ 目录中迁移的服务器配置文件。 有关详细信息，请访问[查看 JBoss 服务器迁移工具执行的结果](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/html-single/using_the_jboss_server_migration_tool/index#migration_tool_server_results)。
+迁移完成后，查看 EAP_HOME/standalone/configuration/ 和 EAP_HOME/domain/configuration/ 目录中迁移的服务器配置文件。 有关详细信息，请访问[查看 JBoss 服务器迁移工具执行的结果](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html/using_the_jboss_server_migration_tool/running_the_server_migration_tool#migration_tool_server_results)。
 
 ### <a name="expose-the-application"></a>公开应用程序
 

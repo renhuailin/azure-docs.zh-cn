@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/11/2021
+ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: 364072c44791cb9b74d385dbc3f2688a3725d76c
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 5acb23767f8c766de80961fb8e76297f4b31a5c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033503"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738085"
 ---
 # <a name="azure-firewall-features"></a>Azure 防火墙功能
 
@@ -35,7 +35,7 @@ Azure 防火墙包括以下功能：
 - 多个公共 IP 地址
 - Azure Monitor 日志记录
 - 强制隧道
-- Web 类别（预览版）
+- Web 类别
 - 认证
 
 ## <a name="built-in-high-availability"></a>内置的高可用性
@@ -68,6 +68,8 @@ Azure 防火墙包括以下功能：
 ## <a name="network-traffic-filtering-rules"></a>网络流量筛选规则
 
 可以根据源和目标 IP 地址、端口和协议，集中创建“允许”或“拒绝”网络筛选规则。  Azure 防火墙是完全有状态的，因此它能区分不同类型的连接的合法数据包。 将跨多个订阅和虚拟网络实施与记录规则。
+
+Azure 防火墙支持对第 3 层和第 4 层网络协议进行有状态筛选。 通过在网络规则中选择“任意”协议并为端口选择通配符 \*，可对第 3 层 IP 协议进行筛选 。
 
 ## <a name="fqdn-tags"></a>FQDN 标记
 
@@ -114,9 +116,9 @@ Azure 防火墙工作簿为 Azure 防火墙数据分析提供了一个灵活的�
 
 你可以对 Azure 防火墙进行配置，使其将所有 Internet 绑定的流量路由到指定的下一跃点，而不是直接前往 Internet。 例如，你可能有一个本地边缘防火墙或其他网络虚拟设备 (NVA)，用于对网络流量进行处理，然后再将其传递到 Internet。 有关详细信息，请参阅 [Azure 防火墙强制隧道](forced-tunneling.md)。
 
-## <a name="web-categories-preview"></a>Web 类别（预览版）
+## <a name="web-categories"></a>Web 类别
 
-通过 Web 类别，管理员可以允许或拒绝用户访问某些类别的网站，例如赌博网站、社交媒体网站等。 Web 类别还包含在 Azure 防火墙标准版中，但在 Azure 防火墙高级预览版中，它会进行更多微调。 标准版 SKU 中的 Web 类别功能根据 FQDN 来匹配类别，而高级版 SKU 则根据 HTTP 和 HTTPS 流量的整个 URL 来匹配类别。 若要详细了解 Azure 防火墙高级预览版，请参阅 [Azure 防火墙高级预览版功能](premium-features.md)。
+通过 Web 类别，管理员可以允许或拒绝用户访问某些类别的网站，例如赌博网站、社交媒体网站等。 Web 类别还包含在 Azure 防火墙标准版中，但在 Azure 防火墙高级版中，它会进行更多微调。 标准版 SKU 中的 Web 类别功能根据 FQDN 来匹配类别，而高级版 SKU 则根据 HTTP 和 HTTPS 流量的整个 URL 来匹配类别。 要详细了解 Azure 防火墙高级版，请参阅 [Azure 防火墙高级版功能](premium-features.md)。
 
 例如，如果 Azure 防火墙截获了 `www.google.com/news` 的 HTTPS 请求，则需要进行以下分类： 
 
@@ -125,18 +127,6 @@ Azure 防火墙工作簿为 Azure 防火墙数据分析提供了一个灵活的�
 - 防火墙高级版 – 检查完整的 URL，因此 `www.google.com/news` 将被分类为新闻。
 
 这些类别是根据“责任”、“高带宽”、“商业用途”、“生产力损失”、“常规上网”和“未分类”下的严重性来组织的。     
-
-### <a name="categorization-change"></a>分类更改
-
-你可以在下面两种情况下请求更改类别：
-
- - 认为 FQDN 或 URL 应采用不同的类别 
- 
-或 
-
-- 对于未分类的 FQDN 或 URL，有建议的类别
-
-欢迎通过 [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) 提交请求。
 
 ### <a name="category-exceptions"></a>类别例外
 
@@ -150,4 +140,4 @@ Azure 防火墙符合支付卡行业 (PCI)、服务组织控制 (SOC)、国际�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 防火墙高级预览版功能](premium-features.md)
+- [Azure 防火墙高级版功能](premium-features.md)

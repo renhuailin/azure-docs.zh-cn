@@ -3,14 +3,14 @@ title: 关于使用 Azure Site Recovery 进行 Azure VM 灾难恢复的常见问
 description: 本文介绍了关于使用 Azure Site Recovery 进行 Azure VM 灾难恢复的常见问题解答。
 author: sideeksh
 manager: rochakm
-ms.date: 11/03/2019
+ms.date: 07/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: cd44d3361e96a22ddb70fb5568926583ac3dbb67
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: c2fb5175b077275d0c2ef5b0a37f6d4ead76b9d5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107952685"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728579"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常见问题：Azure 到 Azure 的灾难恢复
 
@@ -59,13 +59,13 @@ Site Recovery 团队和 Azure 容量管理团队规划了足够的基础结构�
 
 ### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>是否可以从不同的资源组中选择自动化帐户？
 
-当允许 Site Recovery 为在复制的 Azure VM 上运行的出行服务扩展管理更新时，它会通过 Azure 自动化帐户部署全局 runbook（由 Azure 服务使用）。 可以使用 Site Recovery 创建的自动化帐户，也可以选择使用现有的自动化帐户。 
+当允许 Site Recovery 为在复制的 Azure VM 上运行的出行服务扩展管理更新时，它会通过 Azure 自动化帐户部署全局 runbook（由 Azure 服务使用）。 可以使用 Site Recovery 创建的自动化帐户，也可以选择使用现有的自动化帐户。
 
 当前，在门户中，只能选择与保管库位于同一资源组中的自动化帐户。 你可以使用 PowerShell 从不同的资源组中选择自动化帐户。 [了解详细信息](azure-to-azure-autoupdate.md#enable-automatic-updates)。
 
 ### <a name="if-i-use-a-customer-automation-account-thats-not-in-the-vault-resource-group-can-i-delete-the-default-runbook"></a>如果我使用的客户自动化帐户不在保管库资源组中，是否可以删除默认的 runbook？
 
-是，如果不需要它，可以将其删除。 
+是，如果不需要它，可以将其删除。
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>是否可将 VM 复制到另一个订阅？
 
@@ -73,9 +73,9 @@ Site Recovery 团队和 Azure 容量管理团队规划了足够的基础结构�
 
 ### <a name="can-i-replicate-vms-in-an-availability-zone-to-another-region"></a>是否可以将可用性区域中的 Vm 复制到另一个区域？
 
-是的，可以将可用性区域中的 Vm 复制到另一个 Azure 区域。 
+是的，可以将可用性区域中的 Vm 复制到另一个 Azure 区域。
 
-### <a name="can-i-replicate-non-zone-vms-to-a-zone-within-the-same-region"></a>是否可以将非分区 Vm 复制到同一区域内的区域？ 
+### <a name="can-i-replicate-non-zone-vms-to-a-zone-within-the-same-region"></a>是否可以将非分区 Vm 复制到同一区域内的区域？
 
 门户中不支持此操作。 可以使用 REST API/PowerShell 来执行此操作。
 
@@ -89,7 +89,7 @@ Site Recovery 团队和 Azure 容量管理团队规划了足够的基础结构�
 
 ### <a name="can-i-replicate-new-disks-added-to-replicated-vms"></a>是否可以复制添加到复制的 VM 的新磁盘？
 
-对于具有托管磁盘的复制的 VM，可以添加新磁盘，并为其启用复制。 添加新磁盘时，复制的 VM 将显示一条警告消息，指出 VM 上的一个或多个磁盘可用于保护。 
+对于具有托管磁盘的复制的 VM，可以添加新磁盘，并为其启用复制。 添加新磁盘时，复制的 VM 将显示一条警告消息，指出 VM 上的一个或多个磁盘可用于保护。
 
 - 如果为添加的磁盘启用复制，此警告会在初次复制后消失。
 - 如果你不想为磁盘启用复制，则可以消除警告。
@@ -101,13 +101,13 @@ Site Recovery 不支持将磁盘从复制的 VM 中“热删除”。 如果删�
 
 将 Azure VM 复制到另一个 Azure 区域时，复制是持续性的。 [详细了解](./azure-to-azure-architecture.md#replication-process)复制的工作原理。
 
-### <a name="can-i-replicate-virtual-machines-within-a-region"></a>是否可以在某个区域中复制虚拟机？ 
+### <a name="can-i-replicate-virtual-machines-within-a-region"></a>是否可以在某个区域中复制虚拟机？
 
 不能使用 Site Recovery 在区域中复制磁盘。
 
 ### <a name="can-i-replicate-vm-instances-to-any-azure-region"></a>能否将 VM 实例复制到任意 Azure 区域？
 
-可以在同一地理群集中的任意两个区域之间复制和恢复 VM。 地理群集的定义考虑到了数据延迟和主权。 [详细了解](./azure-to-azure-support-matrix.md#region-support)区域支持。
+可以在任意两个区域之间复制和恢复 VM。 
 
 ### <a name="does-site-recovery-need-internet-connectivity"></a>Site Recovery 是否需要建立 Internet 连接？
 
@@ -162,7 +162,7 @@ Site Recovery 可以创建应用一致性恢复点，其最小频率为一小时
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>如何生成和保存恢复点？
 
-为了了解 Site Recovery 如何生成恢复点，让我们使用一个示例。 
+为了了解 Site Recovery 如何生成恢复点，让我们使用一个示例。
 
 - 复制策略将恢复点保留 24 小时，并每小时获取一个应用一致性频率快照。
 - Site Recovery 每隔五分钟创建一个崩溃一致性恢复点。 你无法更改此频率。
@@ -176,7 +176,7 @@ Site Recovery 可以创建应用一致性恢复点，其最小频率为一小时
 
 可以使用的最早恢复点是 72 小时。
 
-### <a name="what-happens-if-site-recovery-cant-generate-recovery-points-for-more-than-24-hours"></a>如果 Site Recovery 无法生成恢复点超过 24 小时，会发生什么情况？ 
+### <a name="what-happens-if-site-recovery-cant-generate-recovery-points-for-more-than-24-hours"></a>如果 Site Recovery 无法生成恢复点超过 24 小时，会发生什么情况？
 
 如果复制策略为 24 小时，并且 Site Recovery 无法生成恢复点超过 24 小时，则将保留旧恢复点。 Site Recovery 仅在生成新点时替换最旧的点。 到达保留期之后，在出现新的恢复点之前，所有旧恢复点将会保留。
 
@@ -198,7 +198,7 @@ Site Recovery 可以创建应用一致性恢复点，其最小频率为一小时
 
 多 VM 一致性可以确保恢复点在复制的虚拟机之间保持一致。
 
-- 当启用多 VM 一致性时，Site Recovery 会创建启用了该选项并包含所有计算机的复制组。 
+- 当启用多 VM 一致性时，Site Recovery 会创建启用了该选项并包含所有计算机的复制组。
 - 对复制组中的计算机进行故障转移时，它们共享崩溃一致性恢复点和应用一致性恢复点。
 
 [了解](azure-to-azure-tutorial-enable-replication.md#enable-replication)如何启用多 VM 一致性。
@@ -217,8 +217,8 @@ Site Recovery 可以创建应用一致性恢复点，其最小频率为一小时
 
 ### <a name="can-i-add-a-replicating-vm-to-a-replication-group"></a>是否可以将复制的 VM 添加到复制组？
 
-为 VM 启用复制时，可以将其添加到新的复制组或现有组中。 无法添加已复制到组中的 VM。 
- 
+为 VM 启用复制时，可以将其添加到新的复制组或现有组中。 无法添加已复制到组中的 VM。
+
 ## <a name="failover"></a>故障转移
 
 ### <a name="how-do-we-ensure-capacity-in-the-target-region"></a>如何确保目标区域中的容量？
@@ -270,7 +270,7 @@ Site Recovery 团队和 Azure 容量管理团队规划了足够的基础结构�
 
 ### <a name="what-is-the-rto-of-a-vm-failover"></a>什么是 VM 故障转移的 RTO？
 
-Site Recovery 的 [RTO SLA 为两小时](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 大多数情况下，Site Recovery 会在几分钟内对 VM 进行故障转移。 若要计算 RTO，请查看故障转移作业，该作业显示启动 VM 所需的时间。 
+Site Recovery 的 [RTO SLA 为两小时](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 大多数情况下，Site Recovery 会在几分钟内对 VM 进行故障转移。 若要计算 RTO，请查看故障转移作业，该作业显示启动 VM 所需的时间。
 
 ## <a name="recovery-plans"></a>恢复计划
 
@@ -280,7 +280,7 @@ Site Recovery 中的[恢复计划](site-recovery-create-recovery-plans.md)可以
 
 - 定义一组一起进行故障转移的 VM
 - 定义 VM 之间的依赖关系，使应用程序能够适时启动。
-- 自动恢复，可以选择对 VM 故障转移以外的任务执行自定义手动操作。 
+- 自动恢复，可以选择对 VM 故障转移以外的任务执行自定义手动操作。
 
 
 ### <a name="how-does-sequencing-work"></a>排序如何工作？
@@ -299,11 +299,11 @@ Site Recovery 中的[恢复计划](site-recovery-create-recovery-plans.md)可以
 
 ## <a name="reprotection-and-failback"></a>重新保护和故障回复
 
-### <a name="after-failover-are-vms-in-the-secondary-region-protected-automatically"></a>故障转移后，次要区域中的 VM 是否自动受到保护？ 
+### <a name="after-failover-are-vms-in-the-secondary-region-protected-automatically"></a>故障转移后，次要区域中的 VM 是否自动受到保护？
 
 不是。 将 VM 从一个区域故障转移到另一个区域后，VM 将在目标灾难恢复区域中启动，但处于不受保护状态。 若要[重新保护](./azure-to-azure-how-to-reprotect.md)次要区域中的 VM，可以启用到主要区域的复制。
 
-### <a name="when-i-reprotect-is-all-data-replicated-from-the-secondary-region-to-primary"></a>重新保护时，是否将所有数据从次要区域复制到主要区域？ 
+### <a name="when-i-reprotect-is-all-data-replicated-from-the-secondary-region-to-primary"></a>重新保护时，是否将所有数据从次要区域复制到主要区域？
 
 不一定。如果源区域 VM 存在，则只会同步源磁盘与目标磁盘之间的更改。 Site Recovery 将磁盘与不同的磁盘进行比较，然后传输数据。 此过程通常需要几个小时。 [了解详细信息](azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection)。
 

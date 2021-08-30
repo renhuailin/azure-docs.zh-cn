@@ -2,14 +2,14 @@
 title: 容器工作负荷
 description: 了解如何在 Azure Batch 上通过容器映像运行和缩放应用。 创建支持运行容器任务的计算节点池。
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 08/13/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c753a6ca0566b666eb343b922bd2ea673e56d9ee
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91843441"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181499"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 
@@ -32,14 +32,13 @@ ms.locfileid: "91843441"
   - Batch Java SDK 版本 3.0
   - Batch Node.js SDK 版本 3.0
 
-- **帐户**：在 Azure 订阅中，需要创建 Batch 帐户和 Azure 存储帐户（后者为可选）。
+- **帐户**：在 Azure 订阅中，需要创建 [Batch 帐户](accounts.md)和 Azure 存储帐户（后者为可选）。
 
-- **受支持的 VM 映像**：容器仅在使用来自映像的虚拟机配置创建的池中受支持，有关详细信息，请参阅下一节“受支持的虚拟机映像”。 如果提供自定义映像，请参阅以下部分所述的注意事项，以及[使用托管的自定义映像创建虚拟机池](batch-custom-images.md)中所述的要求。
+- **支持的 VM 映像**：容器仅在使用来自受支持映像（下一节列出）的虚拟机配置创建的池中受支持。 如果提供自定义映像，请参阅以下部分所述的注意事项，以及[使用托管的自定义映像创建虚拟机池](batch-custom-images.md)中所述的要求。
 
 请记住以下限制：
 
 - 批处理仅对在 Linux 池上运行的容器提供 RDMA 支持。
-
 - 对于 Windows 容器工作负荷，建议为你的池选择多核 VM 大小。
 
 ## <a name="supported-virtual-machine-images"></a>受支持的虚拟机映像
@@ -71,10 +70,8 @@ Batch 支持被指派了容器支持的 Windows Server 映像。 通常，这些
 这些映像只能在 Azure Batch 池中使用，适用于 Docker 容器执行。 这些映像具有以下特性：
 
 - 预装了与 Docker 兼容的 [Moby](https://github.com/moby/moby) 容器运行时
-
 - 预装了 NVIDIA GPU 驱动程序和 NVIDIA 容器运行时，可简化 Azure N 系列 VM 上的部署
-
-- 预安装/预配置了映像，支持后缀为 `-rdma` 的映像的 Infiniband RDMA VM 大小。 这些映像目前不支持 SR-IOV IB/RDMA VM 大小。
+- 后缀为“-rdma”的 VM 映像已预先配置了对 InfiniBand RDMA VM 大小的支持。 这些 VM 映像不应与没有 InfiniBand 支持的 VM 大小一起使用。
 
 也可以从与 Batch 兼容的 Linux 分发版之一上运行 Docker 的 VM 创建自定义映像。 如果选择提供你自己的自定义 Linux 映像，请参阅[使用托管自定义映像创建虚拟机池](batch-custom-images.md)中的说明。
 
@@ -83,7 +80,6 @@ Batch 支持被指派了容器支持的 Windows Server 映像。 通常，这些
 使用自定义 Linux 映像时的其他注意事项：
 
 - 若要在使用自定义映像时利用 Azure N 系列大小的 GPU 性能，请预装 NVIDIA 驱动程序。 此外，还需要安装 NVIDIA GPU 的 Docker 引擎实用工具 [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker)。
-
 - 若要访问 Azure RDMA 网络，请使用支持 RDMA 的 VM 大小。 Batch 支持的 CentOS HPC 和 Ubuntu 映像中已安装所需的 RDMA 驱动程序。 可能还需要其他配置来运行 MPI 工作负载。 请参阅[在批处理池中使用支持 RDMA 或启用了 GPU 的实例](batch-pool-compute-intensive-sizes.md)。
 
 ## <a name="container-configuration-for-batch-pool"></a>批处理池的容器配置
@@ -285,7 +281,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 - 如果在容器映像上运行任务，[云任务](/dotnet/api/microsoft.azure.batch.cloudtask)和[作业管理器任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)将需要容器设置。 但是，[启动任务](/dotnet/api/microsoft.azure.batch.starttask)、[作业准备任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作业发布任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)都不需要容器设置（即，它们可以在容器上下文中或直接在节点上运行）。
 
-- 对于 Windows，任务必须在 [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) 设置为 `admin` 的情况下运行。 
+- 对于 Windows，任务必须在 [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) 设置为 `admin` 的情况下运行。
 
 - 对于 Linux，Batch 会将用户/组权限映射到容器。 如果访问容器中的任何文件夹都需要管理员权限，则可能需要以管理员提升级别在池范围内运行任务。 这将确保 Batch 在容器上下文中以 root 身份运行任务。 否则，非管理员用户可能无权访问这些文件夹。
 
@@ -361,7 +357,7 @@ containerTask.ContainerSettings = cmdContainerSettings;
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要通过 [Shipyard 方法](https://github.com/Azure/batch-shipyard/tree/master/recipes)在 Azure Batch 上轻松部署容器工作负荷，请参阅 [Batch Shipyard](https://github.com/Azure/batch-shipyard) 工具包。
+- 若要通过 [Shipyard 方案](https://github.com/Azure/batch-shipyard/tree/master/recipes)在 Azure Batch 上轻松部署容器工作负载，请参阅 [Batch Shipyard](https://github.com/Azure/batch-shipyard) 工具包。
 - 若要了解如何在 Linux 上安装和使用 Docker CE，请参阅 [Docker](https://docs.docker.com/engine/installation/) 文档。
 - 了解如何[使用托管的自定义映像创建虚拟机池](batch-custom-images.md)。
 - 详细了解 [Moby 项目](https://mobyproject.org/)（用于创建基于容器的系统的框架）。

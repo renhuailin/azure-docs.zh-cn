@@ -9,22 +9,22 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 52fe23315bc6f455460e8e3727d263e14799b186
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: b5394302d3b1028ff6746e9a655028fdb82d9142
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582827"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695017"
 ---
 # <a name="consuming-an-machine-learning-studio-classic-web-service-from-excel"></a>从 Excel 使用机器学习工作室（经典）Web 服务
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
 机器学习工作室（经典）可以轻松地直接从 Excel 调用 Web 服务，而无需编写任何代码。
 
 如果使用的 Excel 2013 （或更高版本）或 Excel Online，则建议使用 Excel 的 [Excel 加载项](excel-add-in-for-web-services.md)。
-
-
 
 ## <a name="steps"></a>步骤
 发布 Web 服务。 [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)说明如何执行此操作。 目前，仅具有单个输出（即单个评分标签）的请求/响应服务支持 Excel 工作簿功能。 

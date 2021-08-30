@@ -1,7 +1,7 @@
 ---
 title: 什么是异常检测器多变量 API？
 titleSuffix: Azure Cognitive Services
-description: 新异常检测器公共预览版多变量 API 的概述。
+description: 新异常检测器预览版多变量 API 的概述。
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: mbullwin
 keywords: 异常检测, 机器学习, 算法
-ms.openlocfilehash: e913cc4738b0f58a411e80f3e2b602a072f28665
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 2e74edb0f716862925bb19140a4425366ebab894
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005980"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587654"
 ---
-# <a name="multivariate-time-series-anomaly-detection-public-preview"></a>多变量时序异常检测（公共预览版）
+# <a name="multivariate-time-series-anomaly-detection-preview"></a>多变量时序异常检测（预览版）
 
 利用新的 **多变量异常情况检测** API，开发人员能够轻松集成高级 AI，从而检测指标组中的异常，并且无需机器学习知识或带标记的数据。 现在，我们会将多达 300 个不同信号之间的依赖关系和相互关联自动视为关键因素。 这一新功能可帮助你主动防止复杂系统发生故障，例如，软件应用程序、服务器、工厂计算机、航天器，或者甚至是业务。
 
@@ -38,10 +38,9 @@ ms.locfileid: "112005980"
 
 若要运行 Notebook，应获取有效的异常检测器 API 订阅密钥和 API 终结点。 在笔记本中，将有效的异常检测器 API 订阅密钥添加到 `subscription_key` 变量，并将 `endpoint` 变量更改为你的终结点。
 
-
 ## <a name="region-support"></a>区域支持
 
-目前，异常检测器多变量的公共预览版在六个区域提供：美国西部 2、西欧、美国东部 2、美国中南部、美国东部和英国南部。
+异常检测器多变量预览版目前在 10 个 Azure 区域可用：东南亚、澳大利亚东部、加拿大中部、北欧、西欧、美国东部、美国东部 2、美国中南部、美国西部 2 和英国南部。
 
 ## <a name="algorithms"></a>算法
 
@@ -60,5 +59,6 @@ ms.locfileid: "112005980"
 
 ## <a name="next-steps"></a>后续步骤
 
+- [教程](./tutorials/learn-multivariate-anomaly-detection.md)：本文是一个介绍如何使用多变量 API 的端到端教程。
 - [快速入门](./quickstarts/client-libraries-multivariate.md)。
-- [最佳做法](./concepts/best-practices-multivariate.md)：本文介绍建议与多变量 API 一起使用的模式。
+- [最佳做法](./concepts/best-practices-multivariate.md)：本文介绍与多变量 API 一起使用的建议模式。

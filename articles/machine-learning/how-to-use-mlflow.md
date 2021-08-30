@@ -1,7 +1,7 @@
 ---
 title: ML 试验的 MLflow 跟踪
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 机器学习设置 MLflow 以记录 ML 模型的指标和项目，并将 ML 模型部署为 Web 服务。
+description: 使用 Azure 机器学习设置 MLflow 跟踪以记录 ML 模型的指标和项目。
 services: machine-learning
 author: shivp950
 ms.author: shipatel
@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 783be7d595022ba08d7896540683635dbc59ade4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 867f4a7c2c45a73c3ebc651a0f2d7a4b38156b90
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378832"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031096"
 ---
 # <a name="track-ml-models-with-mlflow-and-azure-machine-learning"></a>使用 MLflow 和 Azure 机器学习跟踪 ML 模型
 
@@ -26,11 +26,13 @@ ms.locfileid: "110378832"
 
 + 在 [Azure 机器学习工作区](./concept-azure-machine-learning-architecture.md#workspace)中跟踪和记录试验指标及项目。 如果已为试验使用 MLflow 跟踪，工作区可提供集中、安全和可缩放的位置，用于存储训练指标和模型。
 
-+ [使用 MLflow 项目和 Azure 机器学习后端支持（预览版）提交训练作业](how-to-train-mlflow-projects.md)。 你可以使用 Azure 机器学习跟踪在本地提交作业，也可以像通过 [Azure 机器学习计算](how-to-create-attach-compute-cluster.md)那样将运行迁移到云中。
++ [使用具有 Azure 机器学习后端支持的 MLflow 项目提交训练作业](how-to-train-mlflow-projects.md)。 你可以使用 Azure 机器学习跟踪在本地提交作业，也可以像通过 [Azure 机器学习计算](how-to-create-attach-compute-cluster.md)那样将运行迁移到云中。
 
 + 在 MLflow 和 Azure 机器学习模型注册表中跟踪和管理模型。
 
 [MLflow](https://www.mlflow.org) 是一个开放源代码库，用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件，它可以记录和跟踪训练运行指标及模型项目，无论试验环境是在本地计算机上、远程计算目标上、虚拟机上，还是在 [Azure Databricks 群集](how-to-use-mlflow-azure-databricks.md)上。 
+
+有关其他的 MLflow 和 Azure 机器学习功能集成，请参阅 [MLflow 和 Azure 机器学习](concept-mlflow.md)。
 
 下图说明使用 MLflow 跟踪，你可以跟踪试验的运行指标，并将模型项目存储在 Azure 机器学习工作区中。
 
@@ -41,24 +43,6 @@ ms.locfileid: "110378832"
 
 > [!NOTE] 
 > 可以使用 [MLflow Skinny 客户端](https://github.com/mlflow/mlflow/blob/master/README_SKINNY.rst)，它是一个不带 SQL 存储、服务器、UI 或数据科学依赖项的轻型 MLflow 包。 对于主要需要用到跟踪和日志记录功能，但不需要导入整个 MLflow 功能套件（包括部署）的用户，建议使用此客户端。 
-
-## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>比较 MLflow 和 Azure 机器学习客户端
-
- 下表汇总了可以使用 Azure 机器学习的不同客户端，以及它们各自的功能。
-
- MLflow 跟踪提供指标记录和项目存储功能，这些功能仅通过 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 提供。
-
-| 功能 | MLflow 跟踪和部署 | Azure 机器学习 Python SDK |  Azure 机器学习 CLI | Azure 机器学习工作室|
-|---|---|---|---|---|
-| 管理工作区 |   | ✓ | ✓ | ✓ |
-| 使用数据存储  |   | ✓ | ✓ | |
-| 记录指标      | ✓ | ✓ |   | |
-| 上传项目 | ✓ | ✓ |   | |
-| 查看指标     | ✓ | ✓ | ✓ | ✓ |
-| 管理计算   |   | ✓ | ✓ | ✓ |
-| 部署模型    | ✓ | ✓ | ✓ | ✓ |
-|监视模型性能||✓|  |   |
-| 检测数据偏差 |   | ✓ |   | ✓ |
 
 ## <a name="prerequisites"></a>先决条件
 

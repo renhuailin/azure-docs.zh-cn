@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 08/06/2021
 ms.author: victorh
-ms.openlocfilehash: b8e10eef89df12807cabd96d64d9c7d659f91d6c
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 7b8dd13c5d2c3c080ca20115dfc41b23dd6e545e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109503"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725378"
 ---
 # <a name="deploy-a-security-partner-provider"></a>部署安全合作伙伴提供程序
 
@@ -69,6 +69,9 @@ ms.locfileid: "106109503"
 
 要设置连接虚拟中心 VPN 网关的隧道，第三方提供程序需要具有对中心的访问权限。 为此，请将服务主体与订阅或资源组关联，并授予访问权限。 然后，必须通过其门户将这些凭据分配给第三方。
 
+> [!NOTE]
+> 第三方安全提供程序代表你创建 VPN 站点。 此 VPN 站点不会显示在 Azure 门户中。
+
 ### <a name="create-and-authorize-a-service-principal"></a>创建服务主体并为其授权
 
 1. 创建 Azure Active Directory (AD) 服务主体：可以跳过重定向 URL。 
@@ -103,6 +106,8 @@ ms.locfileid: "106109503"
 
    :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="安全配置":::
 5. 此外，如果你的组织使用虚拟网络和分支机构中的公共 IP 范围，则需要使用“专用流量前缀”显式指定这些 IP 前缀。 公共 IP 地址前缀可以单独指定，也可以作为聚合来指定。
+
+   如果将非 RFC1918 地址用于专用流量前缀，可能需要为防火墙配置 SNAT 策略，以对非 RFC1918 专用流量禁用 SNAT。 默认情况下，Azure 防火墙 SNAT 应用于所有非 RFC1918 流量。
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>通过第三方服务的分支或 VNet Internet 流量
 

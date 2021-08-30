@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 8315c2fa094f1d12a788d42a336cb01feb58c6c9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 89230372c641168c1aff4fade8475a48f1a95e04
+ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110450269"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112428784"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -442,6 +442,9 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 
 
 ### <a name="generalize-a-vhd"></a>通用化 VHD
+
+>[!NOTE]
+> 如果要从现有 Azure VM 创建通用映像，我们建议在运行 sysprep 之前删除 VM 扩展。
 
 >[!NOTE]
 > 在以下步骤中运行 `sysprep.exe` 后，请关闭 VM。 在 Azure 中从该 VM 创建映像之前，请不要将其重新打开。

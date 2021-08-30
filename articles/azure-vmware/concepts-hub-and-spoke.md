@@ -3,12 +3,12 @@ title: 概念-在中心和分支体系结构中集成 Azure VMware 解决方案�
 description: 了解关于在 Azure 上在中心和分支体系结构中集成 Azure VMware 解决方案部署。
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: bfc442e569572349b1323500fbd0b2f912ebbc62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ed815904b8bb15b9822fbc9603b65e20ccdce43
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99062739"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069515"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>在中心和分支体系结构中集成 Azure VMware 解决方案
 
@@ -32,7 +32,7 @@ ms.locfileid: "99062739"
 
 此图示出了通过 ExpressRoute Global Reach 连接到本地和 Azure VMware 解决方案的 Azure 中的中心和分支部署的示例。
 
-:::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png" alt-text="Azure VMware 解决方案中心和分支集成部署" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png":::
+:::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png" alt-text="图表显示 Azure VMware 解决方案中心和分支集成部署。" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-and-spoke-deployment.png":::
 
 此体系结构具有以下主要组成部分：
 
@@ -52,7 +52,7 @@ ms.locfileid: "99062739"
 
 - **辐射虚拟网络**
 
-    - “IaaS 分支”：IaaS 分支托管基于 Azure IaaS 的工作负载，包括 VM 可用性集和虚拟机规模集，以及相应的网络组件。
+    - “IaaS 分支”：托管基于 Azure IaaS 的工作负载，包括 VM 可用性集和虚拟机规模集，以及相应的网络组件。
 
     - “PaaS 分支”：由于[专用终结点](../private-link/private-endpoint-overview.md)和[专用链接](../private-link/private-link-overview.md)，PaaS 分支使用专用寻址来托管 Azure PaaS 服务。
 
@@ -68,23 +68,23 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 
 * **本地到 Azure VMware 解决方案通信流**
 
-  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="本地到 Azure VMware 解决方案通信流" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png" alt-text="图表显示本地到 Azure VMware 解决方案通信流。" border="false" lightbox="./media/hub-spoke/on-premises-azure-vmware-solution-traffic-flow.png":::
 
 
 * **Azure VMware 解决方案到中心 VNET 的通信流**
 
-  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="Azure VMware 解决方案到中心虚拟网络通信流" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
+  :::image type="content" source="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png" alt-text="图表显示 Azure VMware 解决方案到中心虚拟网络通信流。" border="false" lightbox="./media/hub-spoke/azure-vmware-solution-hub-vnet-traffic-flow.png":::
 
 
 有关 Azure VMware 解决方案网络和连接性概念的详细信息，请参阅 [Azure Vmware 解决方案产品文档](./concepts-networking.md)。
 
 ### <a name="traffic-segmentation"></a>流量分段
 
-[Azure 防火墙](../firewall/index.yml)是中心和分支拓扑中心，部署在中心虚拟网络上。 使用 Azure 防火墙或其他支持 Azure 的网络虚拟设备来建立流量规则，并对不同分支和 Azure VMware 解决方案工作负载之间的通信进行分段。
+[Azure 防火墙](../firewall/index.yml)是中心和分支拓扑中心，部署在中心虚拟网络上。 使用 Azure 防火墙或其他支持 Azure 的网络虚拟设备 (NVA) 来建立流量规则，并对不同分支和 Azure VMware 解决方案工作负载之间的通信进行分段。
 
 创建路由表以将流量定向到 Azure 防火墙。  对于分支虚拟网络，创建将默认路由设置为 Azure 防火墙内部接口的路由。 这样，当虚拟网络中的工作负载需要访问 Azure VMware 解决方案地址空间时，防火墙就可以对其进行评估，并应用相应的流量规则来允许或拒绝它。  
 
-:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="创建路由表以将流量定向到 Azure 防火墙" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
+:::image type="content" source="media/hub-spoke/create-route-table-to-direct-traffic.png" alt-text="屏幕截图显示将流量定向到 Azure 防火墙的路由表。" lightbox="media/hub-spoke/create-route-table-to-direct-traffic.png":::
 
 
 > [!IMPORTANT]
@@ -92,7 +92,7 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 
 针对相应的路由表设置特定网络的路由。 例如，从分支工作负载访问 Azure VMware 解决方案管理和工作负载 IP 前缀或反方向的路由。
 
-:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="针对相应的路由表设置特定网络的路由" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
+:::image type="content" source="media/hub-spoke/specify-gateway-subnet-for-route-table.png" alt-text="屏幕截图显示针对相应的路由表设置特定网络的路由。" lightbox="media/hub-spoke/specify-gateway-subnet-for-route-table.png":::
 
 使用分支和中心内的网络安全组进行二级流量分段来创建更精细的流量策略。
 
@@ -105,7 +105,7 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 
 有关详细信息，请参阅[应用程序网关上](./protect-azure-vmware-solution-with-application-gateway.md)的特定于 Azure VMware 解决方案的文章。
 
-:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="使用网络安全组的第二级流量分段" border="false":::
+:::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="图表显示使用网络安全组的第二级流量分段。" border="false":::
 
 
 ### <a name="jump-box-and-azure-bastion"></a>Jump box 和 Azure Bastion
@@ -115,13 +115,13 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 >[!IMPORTANT]
 >Azure Bastion 是推荐用于连接到 jump box 的服务，以防止向 internet 公开 Azure VMware 解决方案。 不能使用 Azure Bastion 连接到 Azure VMware 解决方案 VM，因为它们不是 Azure IaaS 对象。  
 
-作为安全性最佳做法，在中心虚拟网络中部署 [Microsoft Azure Bastion](../bastion/index.yml) 服务。 Azure Bastion 提供对 Azure 上部署的 VM 的无缝 RDP 和 SSH 访问，而无需为这些资源预配公共 IP 地址。 预配 Azure Bastion 服务后，可以从 Azure 门户访问所选 VM。 建立连接后，会打开一个新的选项卡，显示 jump box 桌面，并从该桌面访问 Azure VMware 解决方案私有云管理平面。
+作为安全性最佳做法，在中心虚拟网络中部署 [Microsoft Azure Bastion](../bastion/index.yml) 服务。 Azure Bastion 提供对 Azure 上部署的 VM 的无缝 RDP 和 SSH 访问，而无需为这些资源提供公共 IP 地址。 预配 Azure Bastion 服务后，可以从 Azure 门户访问所选 VM。 建立连接后，会打开一个新的选项卡，显示 jump box 桌面，并从该桌面访问 Azure VMware 解决方案私有云管理平面。
 
 > [!IMPORTANT]
 > 不要向 jump box VM 提供公共 IP 地址，也不要向公共 internet 公开 3389/TCP 端口。 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure Bastion 中心虚拟网络" border="false":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="图表显示 Azure Bastion 中心虚拟网络。" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Azure DNS 解析注意事项
@@ -134,7 +134,7 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 
 最佳方法是将两者结合起来，为 Azure VMware 解决方案、本地和 Azure 提供可靠的名称解析。
 
-作为一般的设计建议，请使用现有的 Azure DNS 基础结构（在这种情况下为 Active Directory 集成的 DNS），该基础结构部署到部署在中心虚拟网络中的至少两个 Azure VM并在分支虚拟网络中进行配置，以在 DNS 设置中使用这些 Azure DNS 服务器。
+作为一般的设计建议，请使用现有 Active Directory 集成的 DNS，其部署到中心虚拟网络中的至少两个 Azure VM 并在分支虚拟网络中进行配置，以在 DNS 设置中使用这些 Azure DNS 服务器。
 
 可以使用 Azure 专用 DNS，其中 Azure 专用 DNS 区域链接到虚拟网络。  DNS 服务器用作混合解析器，通过使用客户 Azure 专用 DNS 基础结构而条件转发到的本地或运行 DNS 的 Azure VMware 解决方案。 
 

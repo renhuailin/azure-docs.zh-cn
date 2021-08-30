@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/07/2021
-ms.openlocfilehash: 9746c6509673d3268a4afa15bcbeee9fa676d8c1
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 08/03/2021
+ms.openlocfilehash: 12c4cd7848b0d58fd6b91e27e254ccc613ff5676
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111554401"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751909"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>缩放超大规模 (Citus) 服务器组
 
@@ -24,8 +24,7 @@ Azure Database for PostgreSQL - 超大规模 (Citus) 提供了自助服务扩展
 
 > [!NOTE]
 >
-> 使用[基本层（预览版）](concepts-hyperscale-tiers.md)创建的超大规模 (Citus) 服务器组没有工作器。 增加工作器计数会自动将服务器组升级到标准层。
-> 在将服务器组升级到标准层之后，不能将其降级回基本层。
+> 使用[基本层](concepts-hyperscale-tiers.md)创建的超大规模 (Citus) 服务器组没有辅助角色。 增加工作器计数会自动将服务器组升级到标准层。  在将服务器组升级到标准层之后，不能将其降级回基本层。
 
 :::image type="content" source="./media/howto-hyperscale-scaling/01-sliders-workers.png" alt-text="资源滑块":::
 
@@ -35,7 +34,7 @@ Azure Database for PostgreSQL - 超大规模 (Citus) 提供了自助服务扩展
 > 增加并保存后，无法使用滑块减少工作器节点数。
 
 > [!NOTE]
-> 若要利用新添加的节点，必须[重新均衡分布式表分片](howto-hyperscale-scale-rebalance.md)，这意味着将一些[分片](concepts-hyperscale-distributed-data.md#shards)从现有节点移到新节点。
+> 若要利用新添加的节点，必须[重新均衡分布式表分片](howto-hyperscale-scale-rebalance.md)，这意味着将一些[分片](concepts-hyperscale-distributed-data.md#shards)从现有节点移到新节点。 重新均衡可以在后台运行，无需停机。
 
 ## <a name="increase-or-decrease-vcores-on-nodes"></a>增加或减少节点上的 vCore
 

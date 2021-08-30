@@ -1,22 +1,23 @@
 ---
 title: Azure 视频分析器媒体版（以前称为视频索引器）发行说明 | Microsoft Docs
 description: 为了让大家随时了解最新的开发成果，本文提供了 Azure 视频分析器媒体版（以前称为视频索引器）的最新更新。
-services: media-services
+services: azure-video-analyzer
 documentationcenter: ''
 author: Juliako
 manager: femila
 editor: ''
 ms.workload: na
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.custom: references_regions
-ms.date: 05/06/2021
+ms.date: 08/01/2021
 ms.author: juliako
-ms.openlocfilehash: d67d8dba31a453f4a42982519d619f294d47e04f
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 69d0190454a1b5948e894c5bc5a03a235daca78d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813812"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752145"
 ---
 # <a name="video-analyzer-for-media-release-notes"></a>视频分析器媒体版发行说明
 
@@ -29,6 +30,18 @@ ms.locfileid: "111813812"
 * Bug 修复
 * 已弃用的功能
 
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="automatic-scaling-of-media-reserved-units"></a>对媒体保留单位进行自动缩放
+ 
+从 2021 年 8 月 1 日开始，Azure 视频分析器媒体版（以前称为“视频索引器”）通过 [Azure 媒体服务](../../media-services/latest/media-services-overview.md)启用了[媒体保留单位](../../media-services/latest/concept-media-reserved-units.md) (MRU) 自动缩放，这样就无需通过 Azure 视频分析器媒体版对其进行管理。 这可实现价格优化，例如在许多情况下根据业务需求降低价格，因为它会自动缩放。
+
+## <a name="june-2021"></a>2021 年 6 月
+ 
+### <a name="video-analyzer-for-media-deployed-in-six-new-regions"></a>视频分析器媒体版已部署在六个区域
+ 
+现在，你可以在法国中部、美国中部、巴西南部、美国中西部、韩国中部和日本西部地区创建视频分析器媒体版付费帐户。
+  
 ## <a name="may-2021"></a>2021 年 5 月
 
 ### <a name="new-source-languages-support-for-speech-to-text-stt-translation-and-search"></a>语音转文本 (STT)、翻译和搜索支持新的源语言
@@ -51,13 +64,19 @@ ms.locfileid: "111813812"
  
 ### <a name="new-option-to-toggle-bounding-boxes-for-observed-people-on-the-player"></a>用于在播放器上切换边界框（用于观测到的人员）的新选项  
 
-当你通过高级视频设置为视频编制索引时，可以查看我们新的观测到的人员功能。
-
-如果在媒体文件中检测到人员，可以通过媒体播放器对检测到的人员启用边界框。
+当你通过高级视频设置为视频编制索引时，可以查看我们新的观测到的人员功能。 如果在媒体文件中检测到人员，可以通过媒体播放器对检测到的人员启用边界框。
 
 ## <a name="april-2021"></a>2021 年 4 月
 
 视频索引器服务已重命名为 Azure 视频分析器媒体版。
+
+### <a name="improved-upload-experience-in-the-portal"></a>改进了门户中的上传体验
+ 
+视频分析器媒体版在[门户](https://www.videoindexer.ai)中有新的上传体验。 若要上传媒体文件，请从“媒体文件”选项卡按“上传”按钮 。
+
+### <a name="new-developer-portal-in-available-in-gov-cloud"></a>gov-cloud 中提供了新的开发人员门户
+ 
+[视频分析器媒体版开发人员门户](https://api-portal.videoindexer.ai)现也在适用于美国政府的 Azure 中提供。
 
 ### <a name="observed-people-tracing-preview"></a>观测到的人员跟踪（预览版）  
 
@@ -76,14 +95,6 @@ Azure 视频分析器媒体版现在可检测视频中观测到的人员，并�
 现在可以在隐藏式字幕文件中查看检测到的声学事件。 可以从视频分析器媒体版门户下载该文件，并且该文件将在 GetArtifact API 中作为项目提供。
 
 音频效果检测（预览版）组件检测各种声学事件，并将它们分类到不同的声学类别（例如枪声、尖叫和人群反应等）。 有关详细信息，请参阅[音频效果检测](audio-effects-detection.md)。
-
-### <a name="improved-upload-experience-in-the-portal"></a>改进了门户中的上传体验
-
-视频分析器媒体版在门户中有新的上传体验：
-
-* Fairfax 中提供了新的开发人员门户
-
-政府云中现在也提供了视频分析器媒体版的新[开发人员门户](https://api-portal.videoindexer.ai)。
 
 ## <a name="march-2021"></a>2021 年 3 月
 

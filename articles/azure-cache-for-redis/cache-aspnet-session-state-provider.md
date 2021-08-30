@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
-ms.openlocfilehash: ce77f5074d707da5cfb251a103653b96e4644b5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78610123c984196740d39cb209d1eff5ca380f06
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92544522"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284359"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 会话状态提供程序
 
@@ -22,10 +22,9 @@ Azure Redis 缓存提供了一个会话状态提供程序，可使用该提供�
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>在缓存中存储 ASP.NET 会话状态
 
-要使用 Azure Redis 缓存会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次单击“NuGet 包管理器”和“包管理器控制台”  。
+若要使用 Azure Cache for Redis 会话状态 NuGet 包在 Visual Studio 中配置客户端应用程序，请在“工具”菜单中依次选择“NuGet 包管理器”、“包管理器控制台”  。
 
 从 `Package Manager Console` 窗口运行以下命令。
-    
 
 ```powershell
 Install-Package Microsoft.Web.RedisSessionStateProvider
@@ -33,8 +32,8 @@ Install-Package Microsoft.Web.RedisSessionStateProvider
 
 > [!IMPORTANT]
 > 如果使用高级层的聚类分析功能，则必须使用 [RedisSessionStateProvider 2.0.1](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 或更高版本，否则会引发异常。 移到 2.0.1 或更高版本是一项重大更改；有关详细信息，请参阅 [v2.0.0 Breaking Change Details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)（2.0.0 版重大更改详细信息）。 本文更新时，此包的当前版本是 2.2.3。
-> 
-> 
+>
+>
 
 Redis 会话状态提供程序 NuGet 包依赖于 StackExchange.Redis.StrongName 包。 如果项目中没有 StackExchange.Redis.StrongName 包，则会安装它。
 
@@ -80,7 +79,7 @@ NuGet 包会下载并添加所需的程序集引用，并将以下节添加到 w
 
 注释部分提供了属性及每个属性的示例设置的一个示例。
 
-在 Microsoft Azure 门户中使用缓存边栏选项卡中的值配置属性，并根据需要配置其他值。 有关访问缓存属性的说明，请参阅[配置 Azure Redis 缓存设置](cache-configure.md#configure-azure-cache-for-redis-settings)。
+在 Microsoft Azure 门户中使用左侧来自缓存的值配置这些属性，并根据需要配置其他值。 有关访问缓存属性的说明，请参阅[配置 Azure Redis 缓存设置](cache-configure.md#configure-azure-cache-for-redis-settings)。
 
 * **host** - 指定缓存终结点。
 * **port** - 使用非 TLS/SSL 端口或 TLS/SSL 端口，具体取决于 TLS 设置。
@@ -116,8 +115,8 @@ NuGet 包会下载并添加所需的程序集引用，并将以下节添加到 w
 
 > [!IMPORTANT]
 > 与可以存储在默认的内存中 ASP.NET 会话状态提供程序中的数据不同，在缓存中存储的数据必须可序列化。 使用适用于 Redis 的会话状态提供程序时，请确保在会话状态中存储的数据类型可序列化。
-> 
-> 
+>
+>
 
 ## <a name="aspnet-session-state-options"></a>ASP.NET 会话状态选项
 
@@ -135,3 +134,4 @@ NuGet 包会下载并添加所需的程序集引用，并将以下节添加到 w
 ## <a name="next-steps"></a>后续步骤
 
 请查看[用于 Azure Redis 缓存的 ASP.NET 输出缓存提供程序](cache-aspnet-output-cache-provider.md)。
+

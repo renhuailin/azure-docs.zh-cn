@@ -3,13 +3,13 @@ title: Azure 视频分析器配额和限制 - Azure
 description: 本文介绍 Azure 视频分析器配额和限制。
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: d4bc488411319832b59540fb1392b5d3259cef69
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.date: 06/01/2021
+ms.openlocfilehash: a94ebd36728519b7ae73d9cc48c82097dcfdbb21
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110652180"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602082"
 ---
 # <a name="video-analyzer-quotas-and-limitations"></a>视频分析器配额和限制
 
@@ -60,7 +60,9 @@ ms.locfileid: "110652180"
 ### <a name="supported-cameras"></a>支持的照相机
 只能使用支持 RTSP 协议的 IP 相机。 可以在 [ONVIF 一致性](https://www.onvif.org/conformant-products)产品页上找到支持 RTSP 的 IP 相机。 查找符合配置文件 G、S 或 T 的设备。
 
-此外，还应将这些相机配置为使用 H.264 视频和 AAC 音频。 当前不支持其他编解码器。
+应将这些相机配置为使用 H.264 视频和 AAC 音频。 当前不支持其他编解码器。
+
+视频分析器仅支持对[交错 RTP 流]( https://datatracker.ietf.org/doc/html/rfc2326#section-10.12)使用 RTSP。 在此模式下，RTP 流量通过 RTSP TCP 连接进行隧道传输。 不支持 RTP 流量通过 UDP。
 
 ### <a name="support-for-video-ai"></a>支持视频 AI
 HTTP 或 gRPC 扩展处理器仅支持通过外部 AI 模块发送图像/视频帧数据。 因此，不支持对音频数据运行推断。 因此，将 RTSP 源节点作为 `inputs` 之一的管道拓扑中的处理器节点还使用 `outputSelectors` 属性，以确保只将视频传递到处理器中。 请参阅此示例[拓扑](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/evr-grpcExtension-video-sink/topology.json)。

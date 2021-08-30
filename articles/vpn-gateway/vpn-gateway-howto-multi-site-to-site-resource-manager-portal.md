@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: d65367b561ed94c4872ce86edede2043f99cced4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 304d96e9f7566ab80ac71d176fc52ccf3c852b49
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292677"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729528"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>将其他 S2S 连接添加到 VNet：Azure 门户
 
@@ -31,7 +31,7 @@ ms.locfileid: "108292677"
 确认以下各项：
 
 * 你没有配置新的 ExpressRoute 和 VPN 网关共存配置。
-* 有一个使用 Resource Manager 部署模型创建的、包含现有连接的虚拟网络。
+* 你有一个使用[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)创建的虚拟网络，其中包含现有连接。
 * VNet 的虚拟网络网关是 RouteBased 类型。 如果使用 PolicyBased VPN 网关，必须先删除虚拟网络网关，然后创建新的 RouteBased VPN 网关。
 * 此 VNet 连接到的任何 VNet 都不存在地址范围重叠的情况。
 * 有一台兼容的 VPN 设备，并且可对其进行配置。 请参阅 [关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。 如果不熟悉 VPN 设备的配置，或者不熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。

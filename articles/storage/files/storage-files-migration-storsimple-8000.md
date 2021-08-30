@@ -7,18 +7,25 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 48924cd16eef4cafb2ee0d6a85e30903203169ce
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f51f4b9a838a7a08259b280c4d9cd185b42e588b
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785504"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112116983"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>将 StorSimple 8100 和 8600 迁移到 Azure 文件同步
 
 StorSimple 8000 系列的代表是 8100 或 8600 本地物理设备及其云服务组件。 可以将这些设备中的任一设备的数据迁移到 Azure 文件同步环境。 Azure 文件同步是 StorSimple 设备可迁移到的、默认的、策略性的长期 Azure 服务。
 
 StorSimple 8000 系列将于 2022 年 12 月[停用](/lifecycle/products/azure-storsimple-8000-series)。 请务必尽快开始进行迁移规划。 本文提供成功迁移到 Azure 文件同步所需的背景知识和迁移步骤。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="phase-1-prepare-for-migration"></a>阶段 1 - 准备迁移
 

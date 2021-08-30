@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 646495597565bbb033ac3adaa15f3754f33e8fd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d6a9ca83060c074740985b87af841bfa4be17f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634153"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728680"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>禁止来自 Azure Defender 的警报
 
@@ -26,7 +26,7 @@ ms.locfileid: "100634153"
 |发布状态：|正式发布版 (GA)|
 |定价：|免费<br>（大多数安全警报仅适用于 Azure Defender）|
 |所需角色和权限：|“安全管理员”和“所有者”可以创建/删除规则 。<br>“安全读取者”和“读取者”可以查看规则 。|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png":::国家/地区/主权（Azure 政府、Azure 中国世纪互联）|
 |||
 
 
@@ -45,7 +45,7 @@ ms.locfileid: "100634153"
 > [!CAUTION]
 > 抑制安全警报会降低 Azure Defender 的威胁防护效果。 应仔细检查任何抑制规则的潜在影响，并在一段时间内对其进行监视。
 
-:::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="创建警报抑制规则":::
+:::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="创建警报抑制规则。":::
 
 ## <a name="create-a-suppression-rule"></a>创建抑制规则
 
@@ -64,7 +64,7 @@ ms.locfileid: "100634153"
 
     - 或者，选择页面顶部的“抑制规则”链接，然后从“抑制规则”页面中选择“创建新的抑制规则” ：
 
-        ![创建新的抑制规则** 按钮](media/alerts-suppression-rules/create-new-suppression-rule.png)
+        ![“创建新的抑制规则”按钮。](media/alerts-suppression-rules/create-new-suppression-rule.png)
 
 1. 在“新建抑制规则”窗格中，输入新规则的详细信息。
     - 你的规则可以消除对“所有资源”的警报，因此以后就不会收到类似于此的警报。     
@@ -73,7 +73,7 @@ ms.locfileid: "100634153"
     > [!TIP]
     > 如果从特定警报打开“新规则”页，则将在新规则中自动配置警报和订阅。 如果使用“创建新的抑制规则”链接，则所选订阅将与门户中的当前筛选器匹配。
 
-    [![抑制规则创建窗格](media/alerts-suppression-rules/new-suppression-rule-pane.png)](media/alerts-suppression-rules/new-suppression-rule-pane.png#lightbox)
+    [![抑制规则创建窗格。](media/alerts-suppression-rules/new-suppression-rule-pane.png)](media/alerts-suppression-rules/new-suppression-rule-pane.png#lightbox)
 1. 输入规则的详细信息：
     - **名称** - 输入规则的名称。 规则名称必须以字母或数字开头，介于 2 到 50 个字符之间，并且不包含除破折号 (-) 或下划线 (_) 以外的任何符号。 
     - **状态** - 已启用或已禁用。
@@ -90,7 +90,7 @@ ms.locfileid: "100634153"
 1. 从安全中心的“安全警报”页面中，选择页面顶部的“抑制规则”链接。
 1. 此时将打开“抑制规则”页，其中包含选定订阅的所有规则。
 
-    [![抑制规则列表](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
+    [![抑制规则列表。](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
 
 1. 若要编辑单个规则，请打开该规则的省略号菜单 (...) 并选择“编辑”。
 1. 进行必要的更改并选择“应用”。 
@@ -103,7 +103,7 @@ ms.locfileid: "100634153"
 1. 此时将打开“抑制规则”页，其中包含选定订阅的所有规则。
 1. 若要删除单个规则，请打开该规则的省略号菜单 (...)，然后选择“删除”。
 1. 若要删除多个规则，请选中要删除的规则的复选框，然后选择“删除”。
-    ![删除一个或多个抑制规则](media/alerts-suppression-rules/delete-multiple-alerts.png)
+    ![删除一个或多个抑制规则。](media/alerts-suppression-rules/delete-multiple-alerts.png)
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>通过 API 创建和管理抑制规则
 

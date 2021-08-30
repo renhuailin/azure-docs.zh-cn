@@ -9,18 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: 16ee5957336a271b0b5cd58ed7576f104de7b85e
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1042b33dd0e753b8706bed8ab77a57d65c63fb4b
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689512"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583331"
 ---
 # <a name="enable-logging-for-machine-learning-studio-classic-web-services"></a>为机器学习工作室（经典）Web 服务启用日志记录
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 本文档提供有关机器学习工作室（经典版）Web 服务的日志记录功能的信息。 日志记录可提供错误编号和消息以外的其他信息，这些信息有助于对调用机器学习工作室（经典版）API 进行故障排除。  
 

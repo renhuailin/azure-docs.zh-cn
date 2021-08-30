@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c12cb6c344554f4d18af28dd563b7c96358ea2ee
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4702a91154a4aa93a504597a02a915d1fb26ea0f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095133"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724638"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure Key Vault 分析解决方案
 
@@ -75,7 +75,7 @@ Azure Key Vault 解决方案直接从 Key Vault 收集诊断日志。
 | Azure |  |  |&#8226; |  |  | 到达时 |
 
 ## <a name="use-azure-key-vault"></a>使用 Azure 密钥保管库
-[安装解决方案](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?source=intercept.nl&tab=Overview)后，请在 Azure Monitor 的“概览”页中单击“Key Vault 分析”磁贴，查看 Key Vault 数据。 通过点击“见解”部分下的“更多”，从“Azure Monitor”菜单打开此页面  。 
+安装解决方案后，请在 Azure Monitor 的“概览”页中单击“Key Vault 分析”磁贴，查看 Key Vault 数据 。 通过点击“见解”部分下的“更多”，从“Azure Monitor”菜单打开此页面  。 
 
 ![“Azure Monitor 概述”页上“Key Vault 分析”磁贴的屏幕截图，其中显示了一段时间内密钥保管库操作量的图表。](media/azure-key-vault/log-analytics-keyvault-tile.png)
 
@@ -150,4 +150,3 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Azure Monitor 中的日志查询](../logs/log-query-overview.md)查看详细的 Azure Key Vault 数据。
-

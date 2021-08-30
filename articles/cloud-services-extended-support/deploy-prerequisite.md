@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: bce09fad6ffa169a019628498a686226eff266c7
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: f21dc3251a64a3a432320e1d7a1f64abc124b61e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384966"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752079"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>部署 Azure 云服务（外延支持）的先决条件
 
@@ -35,6 +35,7 @@ ms.locfileid: "106384966"
        <Subnet name="<subnet-name>"/> 
      </Subnets> 
     </InstanceAddress> 
+  </AddressAssignments> 
 ```
 
 #### <a name="virtual-network-located-in-different-resource-group"></a>位于其他资源组中的虚拟网络
@@ -46,6 +47,7 @@ ms.locfileid: "106384966"
         <Subnet name="<subnet-name>"/> 
        </Subnets> 
      </InstanceAddress> 
+   </AddressAssignments>
 ```
 ### <a name="2-remove-the-old-plugins"></a>2) 删除旧插件
 
@@ -110,6 +112,9 @@ Azure 资源管理器中已弃用以下大小。 但是，如果要继续使用�
 ```xml
 <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
 ```
+## <a name="access-control"></a>访问控制
+
+对于云服务（外延支持），包含网络资源的订阅需要具有[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)访问权限或更高权限。 有关详细信息，请参阅 [RBAC 内置角色](../role-based-access-control/built-in-roles.md)
 
 ## <a name="key-vault-creation"></a>创建密钥保管库 
 
@@ -118,5 +123,5 @@ Key Vault 用于存储与云服务（外延支持）关联的证书。 将证书
 ## <a name="next-steps"></a>后续步骤 
 - 查看云服务（外延支持）的[部署先决条件](deploy-prerequisite.md)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。
-- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.yml)。
 - 访问[云服务（外延支持）示例存储库](https://github.com/Azure-Samples/cloud-services-extended-support)

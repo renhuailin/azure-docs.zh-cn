@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8b25f1d92fb1ba7e7caa79ed3f4a31bdf9fa60fd
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b0f67862352f2354dbdb5439542229dbee67ae00
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746298"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107462"
 ---
 # <a name="connect-to-an-internal-virtual-network-using-azure-api-management"></a>利用 Azure API 管理连接至内部虚拟网络 
 借助 Azure 虚拟网络 (VNET)，Azure API 管理可以使用多种 VPN 技术来管理无法访问 Internet 的 API，以建立连接。 你可以通过[外部](./api-management-using-with-vnet.md)或内部模式来部署 API 管理。 通过本文，你将了解如何在内部 VNET 模式中部署 API 管理。
@@ -32,7 +32,7 @@ API 管理在内部 VNET 模式中部署时，你只能在你控制访问权限�
 
 在内部模式中使用 API 管理可以：
 
-* 让 API 安全地托管在专用数据中心，该数据中心可由第三方通过站点到站点连接或 Azure ExpressRoute VPN 进行访问。
+* 通过使用 Azure VPN 连接或 Azure ExpressRoute，使专用数据中心内托管的 API 可由其外部的第三方安全访问。
 * 通过公共网关公开基于云的 API 和本地 API，以便启用混合云方案。
 * 使用单一网关终结点管理托管在多个地理位置的 API。
 
@@ -44,7 +44,7 @@ API 管理在内部 VNET 模式中部署时，你只能在你控制访问权限�
 
 + **一个有效的 Azure 订阅**。 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ **一个 Azure API 管理实例**。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ 一个 Azure API 管理实例（支持的 SKU：开发人员 SKU、高级 SKU 和独立 SKU）。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
 [!INCLUDE [api-management-public-ip-for-vnet](../../includes/api-management-public-ip-for-vnet.md)]
 

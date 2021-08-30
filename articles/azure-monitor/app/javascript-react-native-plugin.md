@@ -1,21 +1,21 @@
 ---
-title: 适用于 Application Insights JavaScript SDK 的 Native React 插件
-description: 如何安装和使用适用于 Application Insights JavaScript SDK 的 Native React 插件。
+title: 适用于 Application Insights JavaScript SDK 的 React Native 插件
+description: 如何安装和使用适用于 Application Insights JavaScript SDK 的 React Native 插件。
 services: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 0c122a21fc7149e9943825cafbed77069b7919f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b407fdc0614d94862257ce3bebc0f58f971f9d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593588"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735833"
 ---
-# <a name="native-react-plugin-for-application-insights-javascript-sdk"></a>适用于 Application Insights JavaScript SDK 的 Native React 插件
+# <a name="react-native-plugin-for-application-insights-javascript-sdk"></a>适用于 Application Insights JavaScript SDK 的 React Native 插件
 
-Application Insights JavaScript SDK 的 Native React 插件收集设备信息，默认情况下此插件会自动收集：
+Application Insights JavaScript SDK 的 React Native 插件收集设备信息，默认情况下此插件会自动收集以下信息：
 
 - 唯一设备 ID（也称为安装 ID。）
 - 设备型号名称（如 iPhone X、Samsung Galaxy Fold、Huawei P30 Pro 等。）

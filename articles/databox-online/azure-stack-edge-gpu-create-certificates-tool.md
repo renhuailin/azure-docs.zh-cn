@@ -1,21 +1,21 @@
 ---
-title: 使用 Microsoft Azure Stack Hub 准备情况检查器工具创建证书 | Microsoft Docs
+title: 通过 Azure Stack Hub 就绪情况检查器工具为 Azure Stack Edge Pro GPU 创建证书
 description: 介绍如何使用 Azure Stack Hub 准备情况检查器工具创建证书请求，然后在 Azure Stack Edge Pro GPU 设备上获取和安装证书。
 services: Azure Stack Edge Pro
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 06/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 8316dd0abfa437d4bf88e8268dfe034344c6614c
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 7b167efdc0b1edaa1f09b0b85a1abbf86ef77037
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389326"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113353910"
 ---
-# <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack Hub 准备情况检查器工具为 Azure Stack Edge Pro 创建证书 
+# <a name="create-certificates-for-your-azure-stack-edge-pro-gpu-using-azure-stack-hub-readiness-checker-tool"></a>使用 Azure Stack Hub 就绪情况检查器工具为 Azure Stack Edge Pro GPU 创建证书 
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
@@ -121,7 +121,7 @@ ms.locfileid: "107389326"
     你还会看到一个 INF 文件夹。 这包含一个明文形式的对证书进行了详细说明的 management.<edge-devicename> 信息文件。  
 
 
-6. 将这些文件（内部文件或公共文件）提交给证书颁发机构。 确保 CA 根据生成的请求来生成符合 Azure Stack Edge Pro 证书要求（针对[节点证书](azure-stack-edge-gpu-manage-certificates.md#node-certificates)、[终结点证书](azure-stack-edge-gpu-manage-certificates.md#endpoint-certificates)和[本地 UI 证书](azure-stack-edge-gpu-manage-certificates.md#local-ui-certificates)）的证书。
+6. 将这些文件（内部文件或公共文件）提交给证书颁发机构。 确保 CA 根据生成的请求来生成符合 Azure Stack Edge Pro 证书要求（针对[节点证书](azure-stack-edge-gpu-certificates-overview.md#node-certificates)、[终结点证书](azure-stack-edge-gpu-certificates-overview.md#endpoint-certificates)和[本地 UI 证书](azure-stack-edge-gpu-certificates-overview.md#local-ui-certificates)）的证书。
 
 ## <a name="prepare-certificates-for-deployment"></a>为部署准备证书
 
@@ -152,4 +152,4 @@ ms.locfileid: "107389326"
 
 ## <a name="next-steps"></a>后续步骤
 
-[部署 Azure Stack Edge Pro 设备](azure-stack-edge-gpu-deploy-prep.md)
+[在设备上上传证书](azure-stack-edge-gpu-manage-certificates.md)。

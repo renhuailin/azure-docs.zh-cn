@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5cecf43f3795e38daa75f9463cadec94114046de
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 66b762cac767987a1ea2cf74b9e706e7a7939d51
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111568893"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862653"
 ---
 # <a name="configure-azure-load-balancer-for-an-fci-vnn"></a>为 FCI VNN 配置 Azure 负载均衡器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,13 +42,16 @@ ms.locfileid: "111568893"
 
 ## <a name="create-load-balancer"></a>创建负载均衡器
 
+可以创建内部负载均衡器或外部负载均衡器。 只能从网络内部的专用资源访问内部负载均衡器。  外部负载均衡器可将来自公共资源的流量路由到内部资源。 在配置内部负载均衡器期间，请在配置负载均衡规则时，将 FCI 资源所用的同一个 IP 地址用作前端 IP。 配置外部负载均衡器时，不能使用同一个 IP 地址，因为 FCI IP 地址不能是公共 IP 地址。 因此，若要使用外部负载均衡器，请以逻辑方式在 FCI 所在的同一子网中分配一个不与其他任何 IP 地址冲突的 IP 地址，并使用此地址作为负载均衡规则的前端 IP 地址。 
+
+
 使用 [Azure 门户](https://portal.azure.com)创建负载均衡器：
 
 1. 在 Azure 门户中，转到包含虚拟机的资源组。
 
 1. 选择 **添加** 。 在 Azure 市场中搜索“负载均衡器”。 选择“负载均衡器”。
 
-1. 选择“创建”  。
+1. 选择“创建”。
 
 1. 使用以下值设置负载均衡器：
 
@@ -75,7 +78,7 @@ ms.locfileid: "111568893"
 
 1. 将该后端池与包含 VM 的可用性集进行关联。
 
-1. 在“目标网络 IP 配置”下选择“虚拟机”，并选择要作为群集节点参与操作的虚拟机。  请务必包括将承载 FCI 的所有虚拟机。
+1. 在“目标网络 IP 配置”下选择“虚拟机”，并选择要作为群集节点参与操作的虚拟机。  请务必包括将承载 FCI 的所有虚拟机。 仅添加每个 VM 的主 IP 地址，不添加任何辅助 IP 地址。 
 
 1. 选择“确定”以创建后端池。
 
@@ -97,14 +100,19 @@ ms.locfileid: "111568893"
 
 ## <a name="set-load-balancing-rules"></a>设置负载均衡规则
 
+为负载均衡器设置负载均衡规则。 
+
+
+# <a name="private-load-balancer"></a>[专用负载均衡器](#tab/ilb)
+
+按照以下步骤为专用负载均衡器设置负载均衡规则： 
+
 1. 在负载均衡器窗格中，选择“负载均衡规则”。
-
 1. 选择 **添加** 。
-
 1. 设置负载均衡规则参数：
 
    - **名称**：负载均衡规则的名称。
-   - **前端 IP 地址**：SQL Server FCI 或 AG 侦听程序的群集化网络资源的 IP 地址。
+   - 前端 IP 地址：SQL Server FCI 的群集网络资源的 IP 地址。
    - **端口**：SQL Server TCP 端口。 默认实例端口为 1433。
    - **后端端口**：与启用“浮动 IP (直接服务器返回)”时使用的“端口”值相同的端口。 
    - **后端池**：前面配置的后端池名称。
@@ -115,9 +123,35 @@ ms.locfileid: "111568893"
 
 1. 选择“确定”  。
 
+# <a name="public-load-balancer"></a>[公共负载均衡器](#tab/elb)
+
+按照以下步骤为公共负载均衡器设置负载均衡规则： 
+
+1. 在负载均衡器窗格中，选择“负载均衡规则”。
+1. 选择 **添加** 。
+1. 设置负载均衡规则参数：
+
+   - **名称**：负载均衡规则的名称。
+   - 前端 IP 地址：供客户端用来连接到公共终结点的公共 IP 地址。 
+   - **端口**：SQL Server TCP 端口。 默认实例端口为 1433。
+   - 后端端口：FCI 实例使用的端口。 默认值为 1433。 
+   - **后端池**：前面配置的后端池名称。
+   - **运行状况探测**：前面配置的运行状况探测。
+   - **会话持久性**：无。
+   - **空闲超时(分钟)** ：4.
+   - 浮动 IP (直接服务器返回)：已禁用。
+
+1. 选择“确定”  。
+
+---
+
+
+
 ## <a name="configure-cluster-probe"></a>配置群集探测
 
 在 PowerShell 中设置群集探测端口参数。
+
+# <a name="private-load-balancer"></a>[专用负载均衡器](#tab/ilb)
 
 若要设置群集探测端口参数，请使用环境中的值更新以下脚本中的变量。 从脚本中删除尖括号（`<` 和 `>`）。
 
@@ -138,7 +172,7 @@ Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"
 |**值**|**说明**|
 |---------|---------|
 |`Cluster Network Name`| Windows Server 故障转移群集的网络名称。 在“故障转移群集管理器” > “网络”中，右键单击该网络并选择“属性”。   正确的值位于“常规”选项卡的“名称”下。|
-|`SQL Server FCI/AG listener IP Address Resource Name`|SQL Server FCI 的或 AG 侦听程序的 IP 地址的资源名称。 在“故障转移群集管理器” > “角色”中“SQL Server FCI”角色的“服务器名称”下，右键单击 IP 地址资源并选择单击“属性”。    正确的值位于“常规”选项卡的“名称”下。|
+|`SQL Server FCI IP Address Resource Name`|SQL Server FCI IP 地址的资源名称。 在“故障转移群集管理器” > “角色”中“SQL Server FCI”角色的“服务器名称”下，右键单击 IP 地址资源并选择单击“属性”。    正确的值位于“常规”选项卡的“名称”下。|
 |`ILBIP`|内部负载均衡器 (ILB) 的 IP 地址。 在 Azure 门户中将此地址配置为 ILB 的前端地址。 这也是 SQL Server FCI 的 IP 地址。 可在“故障转移群集管理器”中找到该地址，它与 `<SQL Server FCI/AG listener IP Address Resource Name>` 位于同一属性页。|
 |`nnnnn`|在负载均衡器的运行状况探测中配置的探测端口。 任何未使用的 TCP 端口都有效。|
 |"SubnetMask"| 群集参数的子网掩码。 它必须是 TCP IP 广播地址：`255.255.255.255`。| 
@@ -149,6 +183,43 @@ Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"
 ```powershell
 Get-ClusterResource $IPResourceName | Get-ClusterParameter
 ```
+
+# <a name="public-load-balancer"></a>[公共负载均衡器](#tab/elb)
+
+若要设置群集探测端口参数，请使用环境中的值更新以下脚本中的变量。 从脚本中删除尖括号（`<` 和 `>`）。
+
+```powershell
+$ClusterNetworkName = "<Cluster Network Name>"
+$IPResourceName = "<SQL Server FCI IP Address Resource Name>" 
+$ELBIP = "<n.n.n.n>" 
+[int]$ProbePort = <nnnnn>
+
+Import-Module FailoverClusters
+
+Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ELBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+```
+
+下表介绍了需要更新的值：
+
+
+|**值**|**说明**|
+|---------|---------|
+|`Cluster Network Name`| Windows Server 故障转移群集的网络名称。 在“故障转移群集管理器” > “网络”中，右键单击该网络并选择“属性”。   正确的值位于“常规”选项卡的“名称”下。|
+|`SQL Server FCI IP Address Resource Name`|SQL Server FCI IP 地址的资源名称。 在“故障转移群集管理器” > “角色”中“SQL Server FCI”角色的“服务器名称”下，右键单击 IP 地址资源并选择单击“属性”。    正确的值位于“常规”选项卡的“名称”下。|
+|`ELBIP`|外部负载均衡器 (ELB) 的 IP 地址。 此地址在 Azure 门户中配置为 ELB 的前端地址，用于从外部资源连接到公共负载均衡器。 |
+|`nnnnn`|在负载均衡器的运行状况探测中配置的探测端口。 任何未使用的 TCP 端口都有效。|
+|"SubnetMask"| 群集参数的子网掩码。 它必须是 TCP IP 广播地址：`255.255.255.255`。| 
+
+设置群集探测后，可在 PowerShell 中看到所有群集参数。 运行此脚本：
+
+```powershell
+Get-ClusterResource $IPResourceName | Get-ClusterParameter
+```
+
+> [!NOTE]
+> 由于外部负载均衡器没有专用 IP 地址，因此用户无法直接使用 VNN DNS 名称，因为它会解析子网中的 IP 地址。 使用公共 LB 的公共 IP 地址，或者在 DNS 服务器上配置另一个 DNS 映射。 
+
+---
 
 ## <a name="modify-connection-string"></a>修改连接字符串 
 
@@ -189,8 +260,8 @@ Get-ClusterResource yourFCIname | Set-ClusterParameter HostRecordTTL 300
 
 若要测试连接，请登录到同一虚拟网络中的另一个虚拟机。 打开“SQL Server Management Studio”并连接到 SQL Server FCI 名称。 
 
->[!NOTE]
->如果需要，可以[下载 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)。
+> [!NOTE]
+> 如果需要，可以[下载 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 
 
@@ -200,8 +271,8 @@ Get-ClusterResource yourFCIname | Set-ClusterParameter HostRecordTTL 300
 
 若要了解更多信息，请参阅以下文章：
 
-- [Azure VM 上的 SQL Server 的 Windows Server 故障转移群集](hadr-windows-server-failover-cluster-overview.md)
-- [Azure VM 上的 SQL Server 的故障转移群集实例](failover-cluster-instance-overview.md)
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [故障转移群集实例与 Azure VM 上的 SQL Server](failover-cluster-instance-overview.md)
 - [故障转移群集实例概述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 - [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)
 

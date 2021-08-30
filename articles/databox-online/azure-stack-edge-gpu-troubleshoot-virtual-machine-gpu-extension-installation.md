@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/02/2021
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 256902ef26328050b4ed52053f465571974ffefe
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: a2e6996bd2b86da470b364da1349248e26b2fa58
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111422149"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747355"
 ---
 # <a name="troubleshoot-gpu-extension-issues-for-gpu-vms-on-azure-stack-edge-pro-gpu"></a>排查 Azure Stack Edge Pro GPU 上的 GPU VM 的 GPU 扩展问题
 
@@ -36,7 +36,7 @@ ms.locfileid: "111422149"
 
 建议的解决方案：准备具有 GPU 扩展支持的操作系统的新 VM 映像。 
 
-* 有关支持的操作系统的列表，请参阅 [GPU VM 支持的 OS 和 GPU 驱动程序](./azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#supported-os-and-gpu-drivers)。
+* 有关支持的操作系统的列表，请参阅 [GPU VM 支持的 OS 和 GPU 驱动程序](./azure-stack-edge-gpu-overview-gpu-virtual-machines.md#supported-os-and-gpu-drivers)。
 
 * 有关 GPU VM 的映像准备要求，请参阅[创建 GPU VM](./azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#create-gpu-vms)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "111422149"
 
 错误说明：扩展预配在扩展安装期间或启用状态期间失败。
 
-1. 检查来宾日志中的关联错误。 <!--To collect the guest logs, see [Collect guest logs for VMs on an Azure Stack Edge Pro](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md).-->
+1. 检查来宾日志中的关联错误。 若要收集来宾日志，请参阅[在 Azure Stack Edge Pro 上收集 VM 的来宾日志](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)。
 
    在 Linux VM 上：
    * 在 `/var/log/waagent.log` 或 `/var/log/azure/nvidia-vmext-status` 中查找。
@@ -78,7 +78,7 @@ ms.locfileid: "111422149"
 
 建议的解决方案：若要解决此问题，请执行以下步骤：
 
-1.  若要了解锁的应用进程，请搜索 \var\log\azure\nvidia-vmext-status 日志中的错误，例如“dpkg 由另一个进程使用”或“另一个应用持有 yum 锁”。
+1.  若要了解锁的应用进程，请搜索 \var\log\azure\nvidia-vmext-status 日志中的错误，例如“dpkg 由另一个进程使用”或“另一个应用持有 `yum lock`”。
 
 1. 等待进程完成，或结束进程。
 
@@ -89,5 +89,4 @@ ms.locfileid: "111422149"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [安装 GPU 扩展](./azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md?tabs=linux)<!--Temporary link until next one can be restored.-->
-<!-- Remove link while cmdlet is fixed. - [Collect guest logs, and create a Support package](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)-->
+[收集来宾日志并创建支持包](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)

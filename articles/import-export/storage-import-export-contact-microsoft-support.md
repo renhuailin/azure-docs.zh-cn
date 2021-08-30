@@ -5,66 +5,72 @@ services: storsimple
 author: alkohli
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 07/30/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 03d953bd534595e47702642403626a05b7f67aba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: 7b0153f56efa4a78f06d2b8182c64b1c5316fc20
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98706280"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729903"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>针对导入/导出作业开具支持票证
 
-如果在使用导入/导出服务时遇到任何问题，可以创建服务请求以获取技术支持。 本文介绍：
+如果在使用导入/导出服务时遇到任何问题，可创建服务请求来获取技术支持。  
 
-* 如何创建支持请求。
-* 如何从门户内部管理支持请求生命周期。
+本文介绍：
+
+* 如何创建支持请求 
+* 如何从门户内部管理支持请求生命周期
 
 ## <a name="create-a-support-request"></a>创建支持请求
 
-可以执行以下步骤来创建支持请求：
+若要创建支持请求，请执行以下步骤：
 
-1. 转到导入/导出作业。 导航到“支持 + 故障排除”部分，然后选择“新建支持请求”。
+1. 转到导入/导出作业。 在“支持 + 故障排除”下，选择“新建支持请求” 。
      
-    ![基础](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
+    ![基础](./media/storage-import-export-contact-microsoft-support/import-export-support-01.png)
    
-2. 在“新建支持请求”中选择“基本信息”。  在“基本信息”中执行以下步骤：
-    
-    1. 从“颁发类型”下拉列表中，选择“技术” 。
-    2. 选择“订阅”。
-    3. 在“服务”下，检查“我的服务”。  在下拉列表中，可以选择以下选项之一：“存储帐户管理”、“Blob”或“文件”。 
-        - 如果选择了“存储帐户管理”，请选择“资源”和“支持计划”。
-            ![选择存储帐户管理](./media/storage-import-export-contact-microsoft-support/import-export-support3.png)
-        - 如果选择了“Blob”，请选择“资源”、“容器名称”（可选）和“支持计划”。
-            ![选择 Blob](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
-        - 如果选择了“文件”，请选择“资源”、“文件共享名称”（可选）和“支持计划”。 ![选择文件](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. 选择“**下一步**”。
+1. 在“基本信息”选项卡上输入所需的基本信息。 系统已填充与导入/导出订单相关的基本信息。
 
-3. 在“新建支持请求”中，选择“步骤 2: 问题”。  在“问题”中执行以下步骤：
-    
-    1. 选择“C - 轻微影响”作为“严重性”。  支持人员会根据需要更新严重性。
-    2. 选择“数据迁移”作为“问题类型”。
-    3. 选择“导入 - 导出”作为“类别”。
-    4. 提供问题的 **标题** 和其他 **详细信息**。
-    5. 提供问题的开始日期和时间。
-    6. 在“文件上传”中选择文件夹图标，浏览要上传的任何其他文件。
-    7. 选中“共享诊断信息”。
-    8. 选择“**下一步**”。
+     |选项|说明|
+     |------|-----------|
+     |**摘要** | 简单描述你的问题。|
+     |**问题类型**|选择“技术”。|
+     |**订阅**|为导入/导出订单选择订阅。 |
+     |**服务**|选择“我的服务”。|
+     | **服务类型**| 选择“Azure 导入/导出服务”。|
+     |**资源**|选择导入/导出订单。|
+     |**问题类型**|从导入/导出订单的问题类型中选择一个问题类型。|
+     |**问题子类型**|为问题类型选择适当的子类型。|
+ 
+     ![屏幕截图显示了导入/导出服务支持请求的“基本信息”屏幕上的信息。 其中突出显示了用于打开“解决方案”选项卡的按钮。](./media/storage-import-export-contact-microsoft-support/import-export-support-02.png)
 
-       ![问题](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
+   选择“下一步: 解决方案>>”以继续。
 
-4. 在“新建支持请求”中，选择“步骤 3 联系信息”。 在“联系信息”中执行以下步骤：
+1. “解决方案”选项卡显示所述问题的专家解决方案。 如果未找到相关问题的解决方案，请选择“下一步: 详细信息>>”，以创建支持请求。
 
-   1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。 系统会根据订阅计划自动选择响应时间。
-   2. 在“联系人信息”中提供姓名、电子邮件、可选联系人和国家/地区。 选中“保存联系人更改以便在将来的支持请求中使用”复选框。
-   3. 选择“创建”。
-   
-       ![联系信息](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
+    ![屏幕截图显示了导入/导出服务支持请求的“解决方案”选项卡。 “解决方案”选项卡显示所选问题的专家解决方案。 其中突出显示了用于打开“解决方案”选项卡的按钮。](./media/storage-import-export-contact-microsoft-support/import-export-support-03.png)
 
-      Microsoft 支持将使用此信息与你联系，以获得进一步信息、诊断和解决方法。
-      提交请求后，支持工程师会与你联系，以便继续处理请求。
+1. 使用“详细信息”选项卡提供支持工单信息。
+
+    |分组|选项|
+    |--------|-------------------|
+    |**问题详细信息**|<ul><li>**该问题是何时开始的？** 使用本地时间，输入问题开始的时间。</li><li>**详细信息**：描述所遇到的问题。</li><li>**文件**：可视情况附加一个或多个文件。 选择文件夹图标。 然后浏览到要上传的任何文件。</li></ul>|
+    |**共享诊断信息**|<ul><li>请选择“否”。 Azure 支持人员会在需要时让你提供更多信息。</li></ul>|
+    |**支持方法**|<ul><li>将“严重性”保留为“C - 轻微影响” 。 Azure 支持人员将根据你提供的信息调整严重性级别。</li><li>否则，请告知你的联系方式 - 通过电子邮件还是电话，采用何种语言？</li></ul>|
+    |**联系人信息**|<ul><li>你可以视情况编辑联系人信息。</li></ul>|
+
+    ![屏幕截图显示了导入/导出服务支持请求的“详细信息”选项卡。 其中突出显示了用于打开“查看 + 创建”选项卡的按钮。](./media/storage-import-export-contact-microsoft-support/import-export-support-04.png)
+
+    选择“下一步: 查看 + 创建 >>”以继续。
+
+1. 在“查看 + 创建”选项卡中查看支持请求。视情况进行修改。 然后选择“创建”。 
+
+    ![屏幕截图显示了新的 Azure 支持请求的“查看 + 创建”选项卡。 其中突出显示了“创建”按钮。](./media/storage-import-export-contact-microsoft-support/import-export-support-05.png)
+
 
 ## <a name="manage-a-support-request"></a>管理支持请求
 
@@ -74,15 +80,15 @@ ms.locfileid: "98706280"
 
 1. 若要访问“帮助和支持”页，请导航到“浏览”>“帮助 + 支持”。
 
-    ![屏幕截图显示“帮助”对话框。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket2.png)   
+    ![屏幕截图显示了如何在 Azure 门户主页上选择“帮助 + 支持”。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket-01.png)
 
 2. “帮助 + 支持”中会显示“最近的支持请求”表格。 
 
-    ![屏幕截图显示处于打开状态的支持请求的“帮助 + 支持”页。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
+    ![屏幕截图显示了“帮助 + 支持”页面，页面中突出显示了“打开支持请求"。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket-02.png) 
 
 3. 选择并单击某个支持请求。 可以查看此请求的状态和详细信息。 如果想要跟进此请求，请选择“+ 新建消息”。
 
-    ![屏幕截图显示为此请求选择的新消息。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
+    ![屏幕截图显示了为 Azure 支持请求选择的新消息。](./media/storage-import-export-contact-microsoft-support/manage-support-ticket-03.png)
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: 0d9c849ce7454e2875c4f00e73cc3b3edc37ad7e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b1ca1b1caa1da1c38e0a7af8ec714c3734ca1191
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971562"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110288"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器体验版
 
@@ -26,7 +26,7 @@ ms.locfileid: "111971562"
 
 部署模板，其中包含组成解决方案的所有 Azure 资源。 适合此方案的产品仅使用 Azure 资源。 在“合作伙伴中心”中设置以下属性：
 
-- **区域**（必需）- 当前存在 26 个 Azure 支持的区域，可在这些区域提供你的体验版。 通常情况下，你希望在预计客户数最多的区域中提供你的体验版，以便他们可以选择最接近的区域以获得最佳性能。 需确保允许订阅在所选的各个区域中部署所需的所有资源。
+- **区域**（必需）- 当前存在 26 个 Azure 支持的区域，可在这些区域提供你的体验版。 为了获得最佳性能，建议选择一个预期客户人数最多的区域。 需确保允许订阅在所选的各个区域中部署所需的所有资源。
 
 - **实例** - 选择类型（热或冷）和可用实例的数量，将其乘以提供产品/服务的区域数量。
 
@@ -194,9 +194,9 @@ ms.locfileid: "111971562"
 
 ### <a name="deployment-location"></a>部署位置
 
-用户可以在不同的 Azure 区域中部署体验版。 此想法是希望让用户选择最近的区域，进而提供最佳的用户体验。
+用户可以在不同的 Azure 区域中部署体验版。
 
-当体验版创建实验室实例时，通常会在用户所选的区域中创建一个资源组，然后在此组上下文中执行部署模板。 因此，模板应从资源组选择部署位置：
+当体验版创建实验室实例时，通常会在所选区域中创建一个资源组，然后在此组上下文中执行部署模板。 因此，模板应从资源组选择部署位置：
 
 ```JSON
 "variables": {

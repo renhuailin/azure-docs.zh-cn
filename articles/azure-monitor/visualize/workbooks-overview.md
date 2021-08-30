@@ -5,12 +5,12 @@ services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 3d75d7605ba082aac84973aef247de79d55b4c9c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c9a535e06278146f89f2c8f6a1844813c2417a1a
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482766"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114706921"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor 工作簿
 
@@ -19,6 +19,9 @@ ms.locfileid: "107482766"
 下面是有关如何创建工作簿的视频演练。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B4Ap]
+
+> [!NOTE]
+> 旧工作簿和专用工作簿已删除。 使用[工作簿检索工具](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/LegacyAI/DeprecatedWorkbookRetrievalTool.md)检索旧工作簿的内容。
 
 ## <a name="data-sources"></a>数据源
 
@@ -47,6 +50,8 @@ ms.locfileid: "107482766"
 * [树](../visualize/workbooks-tree-visualizations.md)
 * [关系图](../visualize/workbooks-graph-visualizations.md)
 * [复合条](../visualize/workbooks-composite-bar.md)
+* [蜂巢](workbooks-honey-comb.md)
+* [Map](workbooks-map-visualizations.md)
 
 :::image type="content" source="./media/workbooks-overview/visualizations.png" alt-text="工作簿可视化效果的示例。" border="false" lightbox="./media/workbooks-overview/visualizations.png":::
 
@@ -54,7 +59,7 @@ ms.locfileid: "107482766"
 
 当工作簿处于固定模式，或者工作簿作者已启用显示图钉图标的设置时，可以使用工作簿中的文本、查询和指标步骤上的图钉按钮，来固定这些项。
 
-若要访问固定模式，请单击“编辑”进入编辑模式，然后选择顶部栏中的蓝色图钉图标。 然后，单个图钉图标将显示在屏幕右侧的每个对应工作簿部分的“编辑”框的上方。
+要访问 pin 模式，请选择“编辑”来进入编辑模式，然后选择顶部栏中的蓝色图钉图标。 然后，单个图钉图标将显示在屏幕右侧的每个对应工作簿部分的“编辑”框的上方。
 
 :::image type="content" source="./media/workbooks-overview/pin-experience.png" alt-text="固定体验的屏幕截图。" border="false":::
 
@@ -146,6 +151,7 @@ ms.locfileid: "107482766"
 ## <a name="sharing-workbook-templates"></a>共享工作簿模板
 
 开始创建自己的工作簿模板后，你可能希望将其与更广泛的社区成员共享。 若要了解详细信息，或要探索其他未包含在默认 Azure Monitor 库视图中的模板，请访问我们的 [GitHub 存储库](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md)。 若要浏览现有的工作簿，请访问 GitHub 上的[工作簿库](https://github.com/microsoft/Application-Insights-Workbooks/tree/master/Workbooks)。
+
 
 ## <a name="next-step"></a>后续步骤
 

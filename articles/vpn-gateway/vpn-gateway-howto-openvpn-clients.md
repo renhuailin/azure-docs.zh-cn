@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 07/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 5a7b125ef89d5d598e22fc4458b5b1c7f8c4a41c
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 8c9ddff536c74182e1c13d51dde2900f07fb7470
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289347"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729512"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>为 Azure VPN 网关配置 OpenVPN 客户端
 
@@ -22,6 +22,12 @@ ms.locfileid: "108289347"
 ## <a name="before-you-begin"></a>准备阶段
 
 验证你已完成为 VPN 网关配置 OpenVPN 的步骤。 有关详细信息，请参阅[为 Azure VPN 网关配置 OpenVPN](vpn-gateway-howto-openvpn.md)。
+
+## <a name="vpn-client-configuration-files"></a>VPN 客户端配置文件
+
+可从门户或使用 PowerShell 生成和下载 VPN 客户端配置文件。 两种方法之一都会返回相同的 zip 文件。 解压缩该文件，查看 OpenVPN 文件夹。
+
+:::image type="content" source="./media/howto-openvpn-clients/download.png" alt-text="突出显示“下载 VPN 客户端”的屏幕截图。" :::
 
 [!INCLUDE [configuration steps](../../includes/vpn-gateway-vwan-config-openvpn-clients.md)]
 

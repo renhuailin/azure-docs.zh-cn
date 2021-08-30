@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2021
-ms.openlocfilehash: 59df6fa8624a19b611515551839076a511fe717f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ef34ec8531242dfdb20e984c4c6d8f86d08b8fcf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481987"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724600"
 ---
 # <a name="query-packs-in-azure-monitor-logs-preview"></a>Azure Monitor 日志中的查询包（预览版）
 查询包是一个资源管理器对象，它充当 Azure Monitor 中日志查询的容器，该容器可用于保存日志查询，并在 Log Analytics 中的多个工作区和其他上下文之间共享这些查询。 
@@ -25,7 +25,7 @@ ms.locfileid: "110481987"
 可以在 Azure 门户中查看查询包时设置其权限。 用户需要拥有以下权限才能使用查询包：
 
 - 读取者 - 用户可以查看和运行查询包中的所有查询。
-- 参与者 - 用户可以修改现有查询，以及在查询包中添加新查询。
+- **参与者** - 用户可以修改现有查询，以及在查询包中添加新查询。
 
 ## <a name="default-query-pack"></a>默认查询包
 保存第一个查询时，将在名为 LogAnalyticsDefaultResources 的资源组中的每个订阅内自动创建一个名为 DefaultQueryPack 的查询包 。 可以在此查询包中创建查询，或者创建其他查询包，具体取决于你的需求。

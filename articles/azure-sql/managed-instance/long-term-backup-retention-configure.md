@@ -1,32 +1,32 @@
 ---
 title: Azure SQL 托管实例：长期备份保留
-description: 了解如何使用 PowerShell 为 Azure SQL 托管实例在单独的 Azure Blob 存储容器上存储和还原自动备份。
+description: 了解如何使用 Azure 门户和 PowerShell 为 Azure SQL 托管实例在单独的 Azure Blob 存储容器上存储和还原自动备份。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: backup-restore
 ms.custom: devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: shkale-msft
-ms.author: shkale
-ms.reviewer: mathoma, sstein
-ms.date: 02/25/2021
-ms.openlocfilehash: 1f2988a383620fa1e69b64841b93700f92313a5c
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+author: SQLSourabh
+ms.author: sourabha
+ms.reviewer: mathoma
+ms.date: 07/13/2021
+ms.openlocfilehash: cc25b431c6e1eb4cbb6b31cfc5f9b1a1a26f8a03
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592520"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751244"
 ---
-# <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>管理 Azure SQL 托管实例长期备份保留 (PowerShell)
+# <a name="manage-azure-sql-managed-instance-long-term-backup-retention"></a>管理 Azure SQL 托管实例长期备份保留
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-在 Azure SQL 托管实例中，可以配置[长期备份保留](../database/long-term-retention-overview.md)策略 (LTR)，这是一项公共预览功能。 这样就可以在单独的 Azure Blob 存储容器中自动将数据库备份保留长达 10 年的时间。 然后，可以通过 PowerShell 使用这些备份来恢复数据库。
+在 Azure SQL 托管实例中，可以配置[长期备份保留](../database/long-term-retention-overview.md)策略 (LTR)，这是一项公共预览功能。 这样就可以在单独的 Azure Blob 存储容器中自动将数据库备份保留长达 10 年的时间。 然后，可以通过 Azure 门户和 PowerShell 使用这些备份来恢复数据库。
 
    > [!IMPORTANT]
    > 托管实例的 LTR 当前在 Azure 公共区域中以公共预览版提供。 
 
-以下各部分展示了如何使用 PowerShell 配置长期备份保留、查看 Azure SQL 存储中的备份，以及从 Azure SQL 存储中的备份进行还原。
+以下各部分展示了如何使用 Azure 门户和 PowerShell 配置长期备份保留、查看 Azure SQL 存储中的备份，以及从 Azure SQL 存储中的备份进行还原。
 
 
 ## <a name="using-the-azure-portal"></a>使用 Azure 门户

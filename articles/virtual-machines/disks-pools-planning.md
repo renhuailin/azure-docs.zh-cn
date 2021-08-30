@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 74d50826811198811e6cea671641cae378d1235c
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: e3ffadcdc77d09d04518cdf577208250c2906407
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419585"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469880"
 ---
 # <a name="azure-disk-pools-preview-planning-guide"></a>Azure 磁盘池（预览）规划指南
 
@@ -65,6 +65,8 @@ ms.locfileid: "122419585"
 - 将无法再访问与磁盘池关联的所有数据存储。
 - 此 Azure VMware 解决方案云中托管的使用受影响数据存储的所有 VMware VM 将处于不正常状态。
 - 此 Azure VMware 解决方案云中群集的运行状况不受影响，但一个操作除外：你将无法将主机置于维护模式。 Azure VMware 解决方案将处理此故障，并通过断开受影响的数据存储来尝试恢复。
+
+如果进入到此状态，请按照以下[步骤](disks-pools-troubleshoot.md#recover-a-disk-pool-or-an-iscsi-target)恢复磁盘池。
 
 ## <a name="next-steps"></a>后续步骤
 

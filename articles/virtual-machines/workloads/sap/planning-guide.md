@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 717d98591fe5dc8326e6ee311c569bdca83eaa19
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 4e01f431ab9074286c701a6661e2bf58db125e56
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960941"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445993"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -233,7 +233,7 @@ ms.locfileid: "111960941"
 [resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam
-[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
+[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
 [sap-templates-3-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image%2Fazuredeploy.json
@@ -247,8 +247,8 @@ ms.locfileid: "111960941"
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
-[templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
-[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
+[templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows
+[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
 [virtual-machines-Az-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
@@ -349,7 +349,7 @@ Microsoft Azure 是 Microsoft 提供的一个云服务平台，它提供了各�
 
 
 ### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>资源
-Azure 文档中 SAP 工作负荷的入口点位于[此处](./get-started.md)。 从此入口点开始，会找到许多涵盖以下内容主题的文章：
+有关 Azure 上的 SAP 工作负载文档的切入点，请参阅 [Azure VM 上的 SAP 入门](./get-started.md)。 从此入口点开始，会找到许多涵盖以下内容主题的文章：
 
 - Azure 的 SAP NetWeaver 和 Business One
 - Azure 中各种 DBMS 系统的 SAP DBMS 指南
@@ -591,7 +591,7 @@ Azure 中的每个虚拟机都需要连接到虚拟网络。
 
 
 ##### <a name="secondary-ip-addresses-for-sap-hostname-virtualization"></a>SAP 主机名虚拟化的辅助 IP 地址
-每个 Azure 虚拟机的网络接口卡可以有多个分配给它的 IP 地址，此辅助 IP 可用于 SAP 虚拟主机名，在需要时可映射到 DNS A/PTR 记录。 必须按[本文](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md)所述将辅助 IP 地址分配到 Azure vNICs IP 配置，并在 OS 中进行配置，因为未通过 DHCP 分配辅助 IP。 每个辅助 IP 必须来自 vNIC 绑定到的同一子网。 对于辅助 IP 配置（如 Pacemaker 群集），[不支持](../../../load-balancer/load-balancer-multivip-overview.md#limitations) 使用 Azure 负载均衡器的浮动 IP，在这种情况下，负载均衡器的 IP 会启用 SAP 虚拟主机名。 另请参阅有关使用虚拟主机名的一般指南的 SAP 说明 [#962955](https://launchpad.support.sap.com/#/notes/962955)。
+每个 Azure 虚拟机的网络接口卡可以有多个分配给它的 IP 地址，此辅助 IP 可用于 SAP 虚拟主机名，在需要时可映射到 DNS A/PTR 记录。 必须按[本文](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md)所述将辅助 IP 地址分配到 Azure vNICs IP 配置，并在 OS 中进行配置，因为未通过 DHCP 分配辅助 IP。 每个辅助 IP 必须来自 vNIC 绑定到的同一子网。 对于辅助 IP 配置（如 Pacemaker 群集），[不支持](../../../load-balancer/load-balancer-multivip-overview.md#limitations)使用 Azure 负载均衡器的浮动 IP，在这种情况下，负载均衡器的 IP 会启用 SAP 虚拟主机名。 另请参阅有关使用虚拟主机名的一般指南的 SAP 说明 [#962955](https://launchpad.support.sap.com/#/notes/962955)。
 
 
 ##### <a name="multiple-nics-per-vm"></a>每个 VM 可以有多个 NIC
@@ -685,7 +685,7 @@ ExpressRoute 强制隧道由通过 ExpressRoute BGP 对等互连会话广告默�
 
 ![用于确定能否在 Azure 上部署 SAP 的决策树][planning-guide-figure-700]
 
-1. 首先要获取的最重要信息是有关给定 SAP 系统的 SAPS 要求。 需要将 SAPS 要求划分为 DBMS 部分和 SAP 应用程序部分，即使该 SAP 系统已部署在本地的双层配置中。 对于现有系统，通常可以根据现有的 SAP 基准来确定或估测使用中的硬件的相关 SAPS。 可在[此处](https://sap.com/about/benchmark.html)找到结果。 对于新部署的 SAP 系统，应该事先完成整个大小调整活动，该活动应得出系统的 SAPS 要求。
+1. 首先要获取的最重要信息是有关给定 SAP 系统的 SAPS 要求。 需要将 SAPS 要求划分为 DBMS 部分和 SAP 应用程序部分，即使该 SAP 系统已部署在本地的双层配置中。 对于现有系统，通常可以根据现有的 SAP 基准来确定或估测使用中的硬件的相关 SAPS。 有关结果，请访问[关于 SAP 标准应用程序基准](https://sap.com/about/benchmark.html)页面。 对于新部署的 SAP 系统，应该事先完成整个大小调整活动，该活动应得出系统的 SAPS 要求。
 1. 对于现有系统，应该度量 DBMS 服务器上的每秒 I/O 量和 I/O 运算次数。 对于新规划的系统，在针对新的系统完成选型活动后，应该也能给出 DBMS 端 I/O 要求的粗略观点。 如果对这种结果没有把握，最终需要开展概念认证。
 1. 将 DBMS 服务器的 SAPS 要求与 Azure 的不同 VM 类型可以提供的 SAPS 进行比较。 SAP 说明 [1928533] 中阐述了有关不同 Azure VM 类型的 SAPS 的信息。 首先应该将注意力集中在 DBMS VM 上，因为数据库层是 SAP NetWeaver 系统上的、不能在大多数部署中横向扩展的层。 相比之下，SAP 应用程序层可以横向扩展。如果 SAP 支持的 Azure VM 类型都不能提供所需的 SAPS，则规划的 SAP 系统的工作负荷不能在 Azure 上运行。 在此情况下，需要将系统部署在本地，或者更改系统的工作负荷量。
 1. 如[此文 (Linux)][virtual-machines-sizes-linux] 和[此文 (Windows)][virtual-machines-sizes-windows] 所述，Azure 针对每个磁盘强制实施 IOPS 配额，而不管使用的是标准存储还是高级存储。 可装载的数据磁盘数量根据 VM 类型的不同而异。 因此，可以计算出使用每个不同 VM 类型能够实现的最大 IOPS 数。 根据数据库文件布局，可将磁盘条带化，使之成为来宾 OS 中的一个卷。 但是，如果所部署 SAP 系统的当前 IOPS 量即将超出最大 Azure VM 类型的计算得出的限制，并且无法使用更多的内存来予以补偿，那么，SAP 系统的工作负荷可能会受到严重的影响。 在这种情况下，可以认定不应将该系统部署在 Azure 上。
@@ -898,7 +898,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 
 * 使用 *az login* 登录到订阅
 * 使用 az account set --subscription `<subscription name or id`> 选择订阅
-* 使用 *az storage blob upload* 上传 VHD - 请参阅[结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]。
+* 使用 *az storage blob upload* 上传 VHD - 请参阅 [结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]。
 * （可选）使用 *az disk create* 从 VHD 创建托管磁盘 - 请参阅 [az disk](/cli/azure/disk)。
 * 使用 az vm create 和参数 --attach-os-disk 创建新的 VM，并将上传的 VHD 或托管磁盘指定为 OS 磁盘 
 * 使用 az vm disk attach 和参数 --new 将数据磁盘添加到新 VM 
@@ -907,7 +907,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 
 * 使用 PowerShell 或 Azure CLI 上传 VHD
 * （可选）使用 PowerShell、Azure CLI 或 Azure 门户从 VHD 创建托管磁盘
-* 使用引用 VHD 的 JSON 模板（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)中所示）或使用托管磁盘（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)中所示）部署 VM。
+* 使用引用 VHD 的 JSON 模板（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)中所示）或使用托管磁盘（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/application-workloads/sap/sap-2-tier-user-image-md/azuredeploy.json)中所示）部署 VM。
 
 #### <a name="deployment-of-a-vm-image"></a>部署 VM 映像
 若要从本地网络上传现有 VM 或 VHD 以将其用作 Azure VM 映像，这种 VM 或 VHD 需要满足本文档的[准备使用特定于客户的映像为 SAP 部署 VM][planning-guide-5.2.2] 一章中列出的要求。
@@ -927,7 +927,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 在 Windows 上使用 *sysprep* 或者在 Linux 上使用 *waagent -deprovision* 将 VM 通用化 - 请参阅 [Sysprep 技术参考](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))（适用于 Windows）或 [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][capture-image-linux-step-2-create-vm-image]（适用于 Linux）
 * 使用 *az login* 登录到订阅
 * 使用 az account set --subscription `<subscription name or id`> 选择订阅
-* 使用 *az storage blob upload* 上传 VHD - 请参阅[结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]。
+* 使用 *az storage blob upload* 上传 VHD - 请参阅 [结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]。
 * （可选）使用 *az image create* 从 VHD 创建托管磁盘映像 - 请参阅 [az image](/cli/azure/image]。
 * 使用 az vm create 和参数 --image 创建新的 VM，并将上传的 VHD 或托管磁盘映像指定为 OS 磁盘 
 
@@ -936,7 +936,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 在 Windows 上使用 *sysprep* 或者在 Linux 上使用 *waagent -deprovision* 将 VM 通用化 - 请参阅 [Sysprep 技术参考](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))（适用于 Windows）或 [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][capture-image-linux-step-2-create-vm-image]（适用于 Linux）
 * 使用 PowerShell 或 Azure CLI 上传 VHD
 * （可选）使用 PowerShell、Azure CLI 或 Azure 门户从 VHD 创建托管磁盘映像
-* 使用引用映像 VHD 的 JSON 模板（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)中所示）或使用托管磁盘映像（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)中所示）部署 VM。
+* 使用引用映像 VHD 的 JSON 模板（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)中所示）或使用托管磁盘映像（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/application-workloads/sap/sap-2-tier-user-image-md/azuredeploy.json)中所示）部署 VM。
 
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>将 VHD 或托管磁盘下载到本地
 Azure 基础结构即服务不仅能够上传 VHD 和 SAP 系统， 而且你还可以在其中将 SAP 系统从 Azure 移回到本地。

@@ -7,19 +7,22 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/26/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 752d7f86941967c218b3a57fa163698b9f502057
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c40a8b002605b8776ac04d2af0d920b824aaeab0
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98897014"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396653"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
 
 Azure Automation State Configuration 是一种 Azure 配置管理服务，允许为任何云或本地数据中心内的节点编写、管理和编译 PowerShell 所需状态配置 (DSC) [配置](/powershell/scripting/dsc/configurations/configurations)。 该服务还导入 [DSC 资源](/powershell/scripting/dsc/resources/resources)，并将配置分配给目标节点，一切操作均在云中完成。 可以通过选择“配置管理”下的“状态配置 (DSC)”在 Azure 门户中访问 Azure Automation State Configuration 。
+
+> [!NOTE]
+> 在启用 Automation State Configuration 之前，我们希望你了解 [Azure Policy 来宾配置](../governance/policy/concepts/guest-configuration.md)，该配置可以审核或配置在 Azure 中运行的计算机或在 Azure 外部与[已启用 Arc 的服务器](../azure-arc/servers/overview.md)连接的计算机上的设置。 Azure Policy 来宾配置提供类似的功能，旨在利用 Azure 中的较新技术。
 
 可以使用 Azure Automation State Configuration 管理各种不同的计算机：
 

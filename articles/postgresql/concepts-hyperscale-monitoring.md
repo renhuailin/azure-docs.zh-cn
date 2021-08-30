@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 544f871f62481243cda2409db24b0d067df28c32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/26/2021
+ms.openlocfilehash: cb88998009ab05eb91b8945a138ef935660dac35
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580591"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710765"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>监视和优化 Azure Database for PostgreSQL - 超大规模 (Citus)
 
@@ -20,9 +20,17 @@ ms.locfileid: "100580591"
 
 ## <a name="metrics"></a>指标
 
-超大规模 (Citus) 为服务器组中的每个节点提供指标。 这些指标有助于深入了解支持资源的行为。 每项指标以一分钟为频率发出，历史记录长达 30 天。
+超大规模 (Citus) 为服务器组中的节点提供指标，并整体聚合组的指标。 这些指标有助于深入了解支持资源的行为。 每项指标以一分钟为频率发出，历史记录长达 30 天。
 
 除了查看指标图形，还可以配置警报。 有关分步指南，请参阅[如何设置警报](howto-hyperscale-alert-on-metric.md)。  其他任务包括设置自动操作、运行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../azure-monitor/data-platform.md)。
+
+### <a name="per-node-vs-aggregate"></a>每节点与聚合
+
+默认情况下，Azure 门户在服务器组中的节点上聚合超大规模 (Citus) 指标。 但是，某些指标（如磁盘使用百分比）在每个节点的基础上提供更多信息。 要查看单独显示的节点的指标，按服务器名称使用 Azure Monitor [指标拆分](../azure-monitor/essentials/metrics-charts.md#metric-splitting)。
+
+> [!NOTE]
+>
+> 某些超大规模 (Citus) 服务器组不支持指标拆分。 在这些服务器组上，可以单击服务器组“概述”页中的节点名称来查看各个节点的指标。 然后打开节点的“指标”页。
 
 ### <a name="list-of-metrics"></a>指标列表
 
@@ -44,3 +52,4 @@ Azure 总体上不提供群集的聚合指标，但可以将多个节点的指�
 ## <a name="next-steps"></a>后续步骤
 
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-hyperscale-alert-on-metric.md)。
+- 了解如何执行[指标拆分](../azure-monitor/essentials/metrics-charts.md#metric-splitting)检查服务器组中每个节点的指标。

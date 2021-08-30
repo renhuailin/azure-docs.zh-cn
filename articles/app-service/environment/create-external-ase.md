@@ -7,23 +7,22 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c953c31792b8d01199d409cbd91124138a6ebb15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 118c91ec204a2e207b28343fe0535c67b89b03b7
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92927441"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433339"
 ---
 # <a name="create-an-external-app-service-environment"></a>创建外部应用服务环境
 
-Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络 (VNet) 的子网中。
-
 > [!NOTE]
-> 每个应用服务环境都具有虚拟 IP (VIP)，可用于联系应用服务环境。
+> 本文介绍用于独立应用服务计划的应用服务环境 v2
+> 
 
-可通过两种方法部署应用服务环境 (ASE)：
+Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络 (VNet) 的子网中。 可通过两种方法部署应用服务环境 (ASE)：
 
-- 使用外部 IP 地址上的 VIP，通常称为外部 ASE。
+- 使用面向公众的外部 IP 地址上的 VIP，通常称为外部 ASE。
 - 使用内部 IP 地址上的 VIP，通常称为 ILB ASE，因为内部终结点是内部负载均衡器 (ILB)。
 
 本文介绍如何创建外部 ASE。 有关 ASE 的概述，请参阅[应用服务环境简介][Intro]。 若要了解如何创建 ILB ASE，请参阅[创建和使用 ILB ASE][MakeILBASE]。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 704697a88a723182c2dbbcb2f25eb18df7be34c1
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: b8ada581eabe0a2fedda08d0fbb1fa9585da0cca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111429827"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121801602"
 ---
 **数据收集量和保留期** 
 
@@ -47,9 +47,9 @@ ms.locfileid: "111429827"
 | 单个发布内容的最大大小 | 30 MB | 将较大的卷拆分为多个发布内容。 |
 | 字段值的最大大小  | 32 KB | 超过 32 KB 的字段会被截断。 |
 
-**搜索 API**
+**查询 API**
 
-| Category | 限制 | 注释 |
+| 类别 | 限制 | 注释 |
 |:---|:---|:---|
 | 单个查询中返回的最大记录数 | 500,000 | |
 | 返回的数据的最大大小 | 约 104 MB（约 100 MiB）| |
@@ -60,8 +60,8 @@ ms.locfileid: "111429827"
 
 | Category | 限制 | 注释 |
 |:---|:---|:---|
+| 最大数据大小 | ~16.7 MB (~16 MiB) | 连接器基础结构规定该限制设置为低于查询 API 限制 |
 | 最大记录数 | 500,000 | |
-| 返回的数据的最大大小 | 约 104 MB（约 100 MiB） | |
 | 最大查询超时 | 110 秒 | |
 | 图表 | | 日志页面中的可视化效果与连接器使用不同的图表库，某些功能当前不可在连接器中使用。 |
 

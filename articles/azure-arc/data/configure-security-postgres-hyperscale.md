@@ -1,22 +1,22 @@
 ---
-title: 为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
-description: 为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
+title: 为已启用 Azure Arc 的超大规模 PostgreSQL 服务器组配置安全性
+description: 为已启用 Azure Arc 的超大规模 PostgreSQL 服务器组配置安全性
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: b6f9570c04b9182e756560a23ffb6bbbdc079cd1
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 8841c3abae51de0cfcd1391940f9232c4585c02f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407734"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744927"
 ---
-# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>为已启用 Azure Arc 的 PostgreSQL 超大规模服务器组配置安全性
+# <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>为已启用 Azure Arc 的超大规模 PostgreSQL 服务器组配置安全性
 
 本文档介绍与服务器组的安全性相关的各方面：
 - 静态加密
@@ -36,7 +36,7 @@ ms.locfileid: "111407734"
 - 通过 LUKS `cryptsetup` 加密命令 (Linux)(https://www.cyberciti.biz/security/howto-linux-hard-disk-encryption-with-luks-cryptsetup-command/) 实现的磁盘加密，具体来说，由于支持 Azure Arc 的数据服务在你提供的物理基础结构上运行，你需要负责保护基础结构。
 
 ### <a name="software-use-the-postgresql-pgcrypto-extension-in-your-server-group"></a>软件：在服务器组中使用 PostgreSQL `pgcrypto` 扩展
-除了对用于托管 Azure Arc 设置的磁盘进行加密外，还可以配置已启用 Azure Arc 的超大规模 PostgreSQL 服务器组，以便公开应用程序可用于加密数据库中数据的机制。 此 `pgcrypto` 扩展是 `contrib` Postgres 扩展的一部分，可在已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中使用。 可在[此处](https://www.postgresql.org/docs/current/pgcrypto.html)查看有关 `pgcrypto` 扩展的详细信息。
+除了对用于托管 Azure Arc 设置的磁盘进行加密外，还可以配置已启用 Azure Arc 的超大规模 PostgreSQL 服务器组，以便公开应用程序可用于加密数据库中数据的机制。 `pgcrypto` 扩展是 `contrib` Postgres 扩展的一部分，可在已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中使用。 可在[此处](https://www.postgresql.org/docs/current/pgcrypto.html)查看有关 `pgcrypto` 扩展的详细信息。
 总而言之，可以使用以下命令启用、创建并使用该扩展：
 
 
@@ -154,10 +154,10 @@ select * from mysecrets;
 可以使用标准 Postgres 方式来创建用户或角色。 但是，如果这样做，这些项目将仅在协调器角色上可用。 在预览期间，这些用户/角色尚不能够访问在服务器组的协调器节点外部和工作器节点上分布的数据。 原因在于，在预览版中，用户定义不会复制到工作器节点。
 
 ### <a name="change-the-password-of-the-_postgres_-administrative-user"></a>更改 _postgres_ 管理用户的密码
-已启用 Azure Arc 的超大规模 PostgreSQL 附带了标准 Postgres 管理用户 _postgres_，你将在创建服务器组时为其设置密码。
+已启用 Azure Arc 的超大规模 PostgreSQL 附带了标准 Postgres 管理用户 postgres，你将在创建服务器组时为其设置密码。
 用于更改其密码的命令的常规格式为：
-```console
-azdata arc postgres server edit --name <server group name> --admin-password
+```azurecli
+az postgres arc-server edit --name <server group name> --admin-password --k8s-namespace <namespace> --use-k8s
 ```
 
 其中 `--admin-password` 是布尔值，与 AZDATA_PASSWORD **会话** 环境变量中是否存在某个值相关。
@@ -169,12 +169,13 @@ azdata arc postgres server edit --name <server group name> --admin-password
 
 1. 删除 AZDATA_PASSWORD **会话** 环境变量或删除其值
 2. 运行以下命令：
-   ```console
-   azdata arc postgres server edit --name <server group name> --admin-password
+
+   ```azurecli
+   az postgres arc-server edit --name <server group name> --admin-password --k8s-namespace <namespace> --use-k8s
    ```
    例如：
-   ```console
-   azdata arc postgres server edit -n postgres01 --admin-password
+   ```azurecli
+   az postgres arc-server edit -n postgres01 --admin-password --k8s-namespace <namespace> --use-k8s
    ```
    系统将提示你输入密码并进行确认：
    ```console
@@ -191,12 +192,12 @@ azdata arc postgres server edit --name <server group name> --admin-password
 #### <a name="change-the-password-of-the-postgres-administrative-user-using-the-azdata_password-session-environment-variable"></a>使用 AZDATA_PASSWORD **会话** 环境变量更改 postgres 管理用户的密码：
 1. 将 AZDATA_PASSWORD **会话** 环境变量的值设置为所需密码。
 2. 运行命令：
-   ```console
-   azdata arc postgres server edit --name <server group name> --admin-password
+   ```azurecli
+   az postgres arc-server edit --name <server group name> --admin-password --k8s-namespace <namespace> --use-k8s
    ```
    例如：
-   ```console
-   azdata arc postgres server edit -n postgres01 --admin-password
+   ```azurecli
+   az postgres arc-server edit -n postgres01 --admin-password --k8s-namespace <namespace> --use-k8s
    ```
    
    在密码更新时，该命令的输出显示为：

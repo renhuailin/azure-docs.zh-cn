@@ -1,8 +1,8 @@
 ---
-title: 通过 Java 使用 Azure 服务总线队列
-description: 本教程介绍如何创建 Java 应用程序来向 Azure 服务总线队列发送消息以及从中接收消息。
-ms.date: 06/23/2020
-ms.topic: quickstart
+title: 通过 Java 使用 Azure 服务总线队列（旧版本）
+description: 本文介绍如何创建 Java 应用程序来向/从 Azure 服务总线队列发送/接收消息。
+ms.date: 07/27/2021
+ms.topic: how-to
 ms.devlang: Java
 ms.custom:
 - seo-java-july2019
@@ -10,24 +10,24 @@ ms.custom:
 - seo-java-september2019
 - devx-track-java
 - mode-api
-ms.openlocfilehash: 38657f333fea4ca18fb76eb5832649067bfd01b4
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 28b57d309c673cfe57bd6d743d876c07685b6353
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538249"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778382"
 ---
-# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>快速入门：通过 Java 使用 Azure 服务总线队列发送和接收消息
+# <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages-old-package"></a>通过 Java 使用 Azure 服务总线队列来发送和接收消息（旧包）
 
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-本教程介绍如何创建 Java 应用程序来向 Azure 服务总线队列发送消息以及从中接收消息。 
+[!INCLUDE [service-bus-selector-queues](./includes/service-bus-selector-queues.md)]
+本文介绍如何创建 Java 应用程序来向/从 Azure 服务总线队列发送/接收消息。 
 
 > [!WARNING]
->  本快速入门使用旧的 `azure-servicebus` 包。 有关使用最新 `azure-messaging-servicebus` 包的快速入门，请参阅[使用 `azure-messaging-servicebus` 发送和接收消息](service-bus-java-how-to-use-queues.md)。 
+>  本文使用旧的 `azure-servicebus` 包。 如需使用最新 `azure-messaging-servicebus` 包的文章，请参阅[使用 `azure-messaging-servicebus` 发送和接收消息](service-bus-java-how-to-use-queues.md)。 
 
 
 ## <a name="prerequisites"></a>先决条件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+1. Azure 订阅。 要完成本文中的步骤，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
     1. 阅读服务总线 **队列** 的快速 **概述**。 
     2. 创建一个服务总线 **命名空间**。 
@@ -121,7 +121,7 @@ public void run() throws Exception {
 从队列接收消息的主要方法是使用 **ServiceBusContract** 对象。 收到的消息可在两种不同模式下工作：**ReceiveAndDelete** 和 **PeekLock**。
 
 当使用 **ReceiveAndDelete** 模式时，接收是一项单次操作，即，服务总线接收到队列中某条消息的读取请求时，会将该消息标记为“已使用”并将其返回给应用程序。 **ReceiveAndDelete** 模式（默认模式）是最简单的模式，最适合应用程序可容忍出现故障时不处理消息的情景。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。
-由于服务总线已将消息标记为“已使用”，因此当应用程序重启并重新开始使用消息时，它就漏掉了在发生故障前使用的消息。
+由于服务总线已将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
 
 在 **PeekLock** 模式下，接收变成了一个两阶段操作，从而有可能支持无法允许遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，并将该消息返回到应用程序。 应用程序完成消息处理（或可靠地存储消息以供将来处理）后，它将通过对收到的消息调用 **complete()** 完成接收过程的第二个阶段。 看到 **complete()** 调用时，服务总线会将消息标记为“已使用”，并将消息从队列中删除。 
 
@@ -178,7 +178,7 @@ public void run() throws Exception {
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
-服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序出于某种原因无法处理消息，它可以在客户端对象上调用 **abandon()** 方法并使用通过 **getLockToken()** 获取的已收到消息的锁定令牌。 这会导致服务总线解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
+Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序出于某种原因无法处理消息，它可以在客户端对象上调用 **abandon()** 方法并使用通过 **getLockToken()** 获取的已收到消息的锁定令牌。 这会导致服务总线解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
 
 还存在与队列中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），则服务总线将自动解锁该消息并使它可再次被接收。
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 9c11a28fafc633879f22f0133b544fe99a8c4a72
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 6c5dd94cdc98c1889519790599864971729367c1
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191748"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587726"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>在 HDInsight 上为 Apache HBase 和 Apache Phoenix 设置备份与复制
 
@@ -243,7 +243,7 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.<ac
 5. 将源表中的现有数据复制到目标表。
 6. 复制功能会自动将源表中新数据的修改内容复制到目标表。
 
-若要在 HDInsight 上启用复制，请对运行中的源 HDInsight 群集应用脚本操作。 如需在群集中启用复制的演练，或要使用 Azure 资源管理模板对虚拟网络中创建的示例群集体验复制，请参阅[配置 Apache HBase 复制](apache-hbase-replication.md)。 该文章还包含有关启用 Phoenix 元数据复制的说明。
+若要在 HDInsight 上启用复制，请对运行中的源 HDInsight 群集应用脚本操作。 如需在群集中启用复制的演练，或要使用 Azure 资源管理器模板在虚拟网络中创建的示例群集上试验复制，请参阅[配置 Apache HBase 复制](apache-hbase-replication.md)。 该文章还包含有关启用 Phoenix 元数据复制的说明。
 
 ## <a name="next-steps"></a>后续步骤
 

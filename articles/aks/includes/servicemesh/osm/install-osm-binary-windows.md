@@ -3,16 +3,16 @@ author: phillipgibson
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: pgibson
-ms.openlocfilehash: 990a1f7d6e81c888d9a9901bf651e61cd7072fd4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5ceb1a5e5afbcb5de85d19fe02e5c7eaaec2b0d9
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468078"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112907904"
 ---
 ## <a name="download-and-install-the-osm-client-binary"></a>下载并安装 OSM 客户端库
 
-在 Windows 上基于 PowerShell 的 shell 中，使用 `Invoke-WebRequest` 下载 Istio 发行版，然后使用 `Expand-Archive` 进行解压缩，如下所示：
+在 Windows 上基于 PowerShell 的 shell 中，使用 `Invoke-WebRequest` 下载 OSM 发行版，然后使用 `Expand-Archive` 进行解压缩，如下所示：
 
 ```powershell
 # Specify the OSM version that will be leveraged throughout these instructions

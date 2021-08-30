@@ -1,6 +1,6 @@
 ---
 title: ML 工作室（经典）：使用 Azure 资源管理器部署工作区 - Azure
-description: 如何使用 Azure 资源管理器模板为 Azure 机器学习工作室（经典）部署工作区
+description: 如何使用 Azure 资源管理器模板为机器学习工作室（经典）部署工作区
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,23 +9,23 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-azurepowershell
 ms.date: 02/05/2018
-ms.openlocfilehash: 6c81397fb7729e6ce55da6fa7c8121de43c96130
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9a915a3e5df97da522c8e566a857e04d7491c471
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956046"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581567"
 ---
-# <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>使用 Azure 资源管理器部署 Azure 机器学习工作室（经典）工作区
+# <a name="deploy-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>使用 Azure 资源管理器部署机器学习工作室（经典）工作区
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-通过提供部署带有验证和重试机制的互连组件的可扩展方法，使用 Azure 资源管理器部署模板可节约时间。 例如，若要设置 Azure 机器学习工作室（经典）工作区，需要先配置 Azure 存储帐户，然后再部署工作区。 想象为数百个工作区手动执行此操作的样子。 更轻松的替代方法是使用 Azure 资源管理器模板部署工作室（经典）工作区及其所有依赖项。 本文将引导逐步完成此过程。 有关 Azure 资源管理器的整体概述，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
+通过提供部署带有验证和重试机制的互连组件的可扩展方法，使用 Azure 资源管理器部署模板可节约时间。 例如，若要设置机器学习工作室（经典）工作区，需要先配置 Azure 存储帐户，然后再部署工作区。 想象为数百个工作区手动执行此操作的样子。 更轻松的替代方法是使用 Azure 资源管理器模板部署工作室（经典）工作区及其所有依赖项。 本文将引导逐步完成此过程。 有关 Azure 资源管理器的整体概述，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>分布说明：创建机器学习工作区
-我们将创建 Azure 资源组，然后使用资源管理器模板部署新的 Azure 存储帐户和新的 Azure 机器学习工作室（经典）工作区。 部署完成后，我们将打印有关所创建工作区的重要信息（主密钥、workspaceID 和该工作区的 URL）。
+我们将创建 Azure 资源组，然后使用资源管理器模板部署新的 Azure 存储帐户和新的机器学习工作室（经典）工作区。 部署完成后，我们将打印有关所创建工作区的重要信息（主密钥、workspaceID 和该工作区的 URL）。
 
 ### <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 
@@ -128,7 +128,7 @@ $rgd = New-AzResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworks
 完成部署后，可直接访问所部属工作区的属性。 例如，可访问主密钥令牌。
 
 ```powershell
-# Access Azure Machine Learning Studio Workspace Token after its deployment.
+# Access Machine Learning Studio (classic) Workspace Token after its deployment.
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
@@ -138,7 +138,7 @@ $rgd.Outputs.mlWorkspaceToken.Value
 # List the primary and secondary tokens of all workspaces
 Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
-预配工作区后，还可使用[适用于 Azure 机器学习工作室（经典）的 PowerShell 模块](https://aka.ms/amlps)自动执行许多 Azure 机器学习工作室（经典）任务。
+预配工作区后，还可使用[适用于机器学习工作室（经典）的 PowerShell 模块](https://aka.ms/amlps)自动执行许多机器学习工作室（经典）任务。
 
 ## <a name="next-steps"></a>后续步骤
 

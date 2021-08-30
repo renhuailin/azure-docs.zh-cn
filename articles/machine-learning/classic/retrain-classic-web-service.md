@@ -9,17 +9,18 @@ author: peterclu
 ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT, devx-track-csharp
 ms.date: 02/14/2019
-ms.openlocfilehash: b9b249dff4bbb6f5c3aa688986bf470e3d449372
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: a7dba27f5c4ef0f63b270111692c35080b2ec378
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579533"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688815"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新训练和部署经典工作室（经典）Web 服务
 
 适用对象：![适用于](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![X 表示否定。](../../../includes/media/aml-applies-to-skus/no.png)[不适用于。](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 重新训练机器学习模型是确保它们保持准确并基于最相关的数据的一种方法。 本文介绍如何重新训练经典工作室（经典）Web 服务。 有关如何重新训练新的工作室（经典）Web 服务的指南，请[查看此操作指南文章](retrain-machine-learning-model.md)。
 

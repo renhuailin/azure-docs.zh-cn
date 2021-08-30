@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: e795431a0a3e42b7aa91ac7dcb95c7bcb9c9990b
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 160af623d29391e22ab9ffaf4014d3b1996e97ee
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107892069"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551085"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -117,7 +117,7 @@ Microsoft 建议根据 [NIST 指导](https://pages.nist.gov/800-63-3/sp800-63b.h
 
 请务必了解各种 [Azure AD 应用程序许可体验](../../active-directory/develop/application-consent-experience.md)、[权限和许可的类型](../../active-directory/develop/v2-permissions-and-consent.md)以及它们对组织安全状况的影响。 默认情况下，Azure AD 中的所有用户都可以对利用 Microsoft 标识平台访问组织数据的应用程序进行授权。 尽管允许用户自行许可确实可让用户轻松获取与 Microsoft 365、Azure 和其他服务集成的有用应用程序，但如果未小心使用或未受监视，这可能会带来风险。
 
-Microsoft 建议限制用户同意，以便减少外围应用并降低此风险。 你还可以使用[应用同意策略（预览版）](../../active-directory/manage-apps/configure-user-consent.md)将最终用户同意限制为仅适用于已验证的发布者和你选择的权限。 如果最终用户同意受到限制，则以前的同意授予仍然有效，但所有将来的同意操作必须由管理员执行。 对于受限情况，用户可以通过集成的[管理员同意请求工作流](../../active-directory/manage-apps/configure-admin-consent-workflow.md)或通过你自己的支持流程来请求管理员同意。 在限制最终用户同意之前，请根据我们的[建议](../../active-directory/manage-apps/manage-consent-requests.md)在你的组织中计划此更改。 对于希望允许所有用户访问的应用程序，请考虑[代表所有用户授予许可](../../active-directory/develop/v2-admin-consent.md)，确保尚未单独许可的用户能够访问该应用。 如果不希望这些应用程序对所有场景中的所有用户都可用，请使用[应用程序分配](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)和条件访问来限制用户对[特定应用](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)的访问。
+Microsoft 建议[限制用户同意](../../active-directory/manage-apps/configure-user-consent.md)，以允许最终用户仅同意来自经验证的出版商的应用，并且只同意所选择的权限。 如果最终用户同意受到限制，则以前的同意授予仍然有效，但所有将来的同意操作必须由管理员执行。 对于受限情况，用户可以通过集成的[管理员同意请求工作流](../../active-directory/manage-apps/configure-admin-consent-workflow.md)或通过你自己的支持流程来请求管理员同意。 在限制最终用户同意之前，请根据我们的[建议](../../active-directory/manage-apps/manage-consent-requests.md)在你的组织中计划此更改。 对于希望允许所有用户访问的应用程序，请考虑[代表所有用户授予许可](../../active-directory/develop/v2-admin-consent.md)，确保尚未单独许可的用户能够访问该应用。 如果不希望这些应用程序对所有场景中的所有用户都可用，请使用[应用程序分配](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)和条件访问来限制用户对[特定应用](../../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)的访问。
 
 确保用户可以请求管理员批准新应用程序，以减少用户摩擦、最大程度降低支持量并防止用户使用非 Azure AD 凭据注册应用程序。 管控许可操作后，管理员应定期审核应用和许可权限。
 

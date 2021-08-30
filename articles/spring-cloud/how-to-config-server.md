@@ -3,16 +3,16 @@ title: 在 Azure Spring Cloud 中设置 Config Server 实例
 description: 了解如何在 Azure 门户中为 Azure Spring Cloud 设置 Spring Cloud Config Server 实例
 ms.service: spring-cloud
 ms.topic: how-to
-ms.author: brendm
-author: bmitchell287
+ms.author: karler
+author: karlerickson
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: e4e4701b535e5363d0eb64f377fe4dccc3a3dd7d
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 123cc401d03a802c0a390f88cfc727893f165364
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653589"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015451"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>为服务设置 Spring Cloud 配置服务器实例
 
@@ -23,12 +23,13 @@ ms.locfileid: "110653589"
 Spring Cloud Config 为分布式系统中的外部化配置提供服务器和客户端支持。 使用配置服务器实例可在一个中心位置管理所有环境中应用程序的外部属性。 有关详细信息，请参阅 [Spring Cloud 配置服务器引用](https://spring.io/projects/spring-cloud-config)。
 
 ## <a name="prerequisites"></a>先决条件
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 一个已预配的处于运行状态的 Azure Spring Cloud 服务。 若要设置并启动 Azure Spring Cloud 服务，请参阅[快速入门：使用 Azure CLI 启动 Java Spring 应用程序](./quickstart.md)。
 
 ## <a name="restriction"></a>限制
 
-在后端上使用配置服务器时存在一些限制。 某些属性将自动注入到应用程序环境，以访问“配置服务器”和“服务发现”。 如果你同时从配置服务器文件配置了这些属性，可能会遇到冲突和意外的行为。 属性包括： 
+在后端上使用配置服务器时存在一些限制。 某些属性将自动注入到应用程序环境，以访问“配置服务器”和“服务发现”。 如果你同时从配置服务器文件配置了这些属性，可能会遇到冲突和意外的行为。 属性包括：
 
 ```yaml
 eureka.client.service-url.defaultZone
@@ -139,17 +140,17 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 
 4. 在“默认存储库”部分，将“URI”设置为“https://github.com/Azure-Samples/piggymetrics-config” 。
 
-5. 单击 **“验证”** 。
+5. 选择“验证”。
 
     ![导航到配置服务器](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
-6. 完成验证后，请单击“应用”以保存更改。
+6. 完成验证后，选择“应用”以保存更改。
 
     ![正在验证配置服务器](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
 
 7. 更新配置可能需要几分钟。
- 
-    ![正在更新配置服务器](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+    ![正在更新配置服务器](media/spring-cloud-quickstart-launch-app-portal/updating-config.png)
 
 8. 配置完成后，会收到通知。
 
@@ -157,14 +158,14 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 
 #### <a name="default-repository"></a>默认存储库
 
-* **公共存储库**：在“默认存储库”部分的“Uri”框中粘贴存储库 URI 。  将“标签”设置为“配置” 。确保“身份验证”设置为“公共”，然后选择“应用”以完成操作  。 
+* **公共存储库**：在“默认存储库”部分的“Uri”框中粘贴存储库 URI 。  将“标签”设置为“配置” 。确保“身份验证”设置为“公共”，然后选择“应用”以完成操作  。
 
 * **专用存储库**：Azure Spring Cloud 支持基本的基于密码/令牌的身份验证和 SSH。
 
     * **基本身份验证**：在“默认存储库”部分的“Uri”框中，粘贴存储库 URI，然后选择“身份验证”（“铅笔”图标）按钮  。 在“编辑身份验证”窗格的“身份验证类型”下拉列表中选择“HTTP 基本”，然后输入你的用户名和密码/令牌以授权访问 Azure Spring Cloud  。 选择“确定”，然后选择“应用”完成配置服务器实例的设置 。
 
     ![“编辑身份验证”窗格基本身份验证](media/spring-cloud-tutorial-config-server/basic-auth.png)
-    
+
     > [!CAUTION]
     > 一些 Git 存储库服务器（例如 GitHub）将个人令牌或访问令牌（例如密码）用于基本身份验证 。 你可以在 Azure Spring Cloud 中使用这种类型的令牌作为密码，因为它将永不过期。 但对于其他 Git 存储库服务器（例如 BitBucket 和 Azure DevOps），访问令牌将在一到两小时后过期。 这意味着，在将这些存储库服务器与 Azure Spring Cloud 一起使用时，此选项是不可行的。
 
@@ -174,7 +175,7 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 
 #### <a name="pattern-repository"></a>模式存储库
 
-如果要使用可选的“模式存储库”来配置服务，请使用与“默认存储库”相同的方式指定“URI”和“身份验证”。 请确保为模式包含“名称”，然后选择“应用”以将其附加到实例 。 
+如果要使用可选的“模式存储库”来配置服务，请使用与“默认存储库”相同的方式指定“URI”和“身份验证”。 请确保为模式包含“名称”，然后选择“应用”以将其附加到实例 。
 
 ### <a name="enter-repository-information-into-a-yaml-file"></a>将存储库信息输入 YAML 文件
 
@@ -196,34 +197,33 @@ spring:
 
 ![“配置服务器通知”窗格](media/spring-cloud-tutorial-config-server/local-yml-success.png)
 
-
-YAML 文件中的信息应显示在 Azure 门户中。 选择“应用”以完成操作。 
+YAML 文件中的信息应显示在 Azure 门户中。 选择“应用”以完成操作。
 
 ## <a name="using-azure-repos-for-azure-spring-cloud-configuration"></a>使用 Azure Repos 进行 Azure Spring Cloud 配置
 
 Azure Spring Cloud 可以访问公开、由 SSH 保护的，或使用 HTTP 基本身份验证保护的 Git 存储库。 我们将使用最后一个选项，因为它更易于使用 Azure Repos 进行创建和管理。
 
 ### <a name="get-repo-url-and-credentials"></a>获取存储库 URL 和凭据
-1. 在项目的 Azure Repos 门户中，单击“克隆”按钮：
+
+1. 在项目的 Azure Repos 门户中，选择“克隆”按钮：
 
     ![克隆按钮](media/spring-cloud-tutorial-config-server/clone-button.png)
 
 1. 从文本框中复制克隆 URL。 此 URL 通常采用以下格式：
 
-    ```Text
+    ```text
     https://<organization name>@dev.azure.com/<organization name>/<project name>/_git/<repository name>
     ```
 
     删除 `https://` 后和 `dev.azure.com` 之前的所有内容，包括 `@`。 生成的 URL 格式应为：
 
-    ```Text
+    ```text
     https://dev.azure.com/<organization name>/<project name>/_git/<repository name>
     ```
 
     保存此 URL 以便在下一部分中使用。
 
-1. 单击“生成 Git 凭据”。 将显示用户名和密码。 保存这些内容以便在下一部分中使用。
-
+1. 选择“生成 Git 凭据”。 将显示用户名和密码。 保存这些内容以便在下一部分中使用。
 
 ### <a name="configure-azure-spring-cloud-to-access-the-git-repository"></a>配置 Azure Spring Cloud 以访问 Git 存储库
 
@@ -234,11 +234,12 @@ Azure Spring Cloud 可以访问公开、由 SSH 保护的，或使用 HTTP 基�
 1. 选择要配置的服务。
 
 1. 在服务页的左窗格中的“设置”下，选择“配置服务器”选项卡 。配置之前创建的存储库：
-   - 添加从上一部分中保存的存储库 URL
-   - 单击 `Authentication`，然后选择 `HTTP Basic`
-   - “用户名”是上一部分中保存的用户名
-   - “密码”是从上一部分保存的密码
-   - 单击“应用”并等待操作成功
+
+   - 添加从上一部分中保存的存储库 URL。
+   - 选择“身份验证”，然后选择“HTTP 基本” 。
+   - “用户名”是从上一部分中保存的用户名。
+   - “密码”是从上一部分保存的密码。
+   - 选择“应用”，然后等待操作成功完成。
 
    ![Spring Cloud Config Server](media/spring-cloud-tutorial-config-server/config-server-azure-repos.png)
 
@@ -247,6 +248,7 @@ Azure Spring Cloud 可以访问公开、由 SSH 保护的，或使用 HTTP 基�
 可以选择“配置服务器”选项卡中显示的“重置”按钮，以彻底清除现有的设置 。 如果你希望将配置服务器实例连接到另一个源（例如，从 GitHub 移到 Azure DevOps），请删除配置服务器设置。
 
 ## <a name="config-server-refresh"></a>配置服务器刷新
+
 更改属性时，需要通知使用这些属性的服务，然后才能进行更改。 Spring Cloud Config 的默认解决方案是手动触发[刷新事件](https://spring.io/guides/gs/centralized-configuration/)。如果有很多应用实例，这可能不可行。 也可在 Azure Spring Cloud 中让配置客户端根据刷新间隔来轮询更改，从而自动刷新配置服务器中的值。
 
 - 首先将 spring-cloud-starter-azure-spring-cloud-client 包括在 pom.xml 的 dependency 节中。
@@ -262,7 +264,7 @@ Azure Spring Cloud 可以访问公开、由 SSH 保护的，或使用 HTTP 基�
 - 接着在 application.yml 中启用 auto-refresh 并设置适当的刷新间隔。 在此示例中，客户端将每隔 5 秒钟轮询一次配置更改，这是可为刷新间隔设置的最小值。
 默认情况下，auto-refresh 设置为 false，refresh-interval 设置为 60 秒。
 
-  ``` yml
+  ```yml
   spring:
     cloud:
       config:
@@ -272,15 +274,14 @@ Azure Spring Cloud 可以访问公开、由 SSH 保护的，或使用 HTTP 基�
 
 - 最后在代码中添加 @refreshScope。 在此示例中，变量 connectTimeout 将每隔 5 秒钟自动刷新一次。
 
-  ``` java
+  ```java
   @RestController
   @RefreshScope
   public class HelloController {
       @Value("${timeout:4000}")
-      private String connectTimeout;    
+      private String connectTimeout;
   }
   ```
-
 
 ## <a name="next-steps"></a>后续步骤
 

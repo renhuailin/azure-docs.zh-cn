@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Spring Cloud 中分析日志和指标 | Microsoft Docs
 description: 了解如何在 Azure Spring Cloud 中分析诊断数据
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 7e2042294ebaefa2640873bb1ce941d9a60c7834
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e2d903f781e86670139347930289599bec6ee7e7
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128984"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015552"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
@@ -56,9 +56,10 @@ ms.locfileid: "108128984"
 
 > [!NOTE]
 > 1. 发出日志或指标后，可能需要最多 15 分钟它们才会显示在存储帐户、事件中心或 Log Analytics 中。
-> 1. 如果删除或移动了 Azure Spring Cloud 实例，则该操作将不会级联到诊断设置资源。 必须手动删除诊断设置资源，才能对其父级（即 Azure Spring Cloud 实例）进行操作。 否则，如果为新的 Azure Spring Cloud 实例预配了与已删除实例相同的资源 ID，或者将 Azure Spring Cloud 实例移回，则先前的诊断设置资源将继续对其进行扩展。
+> 1. 如果删除或移动了 Azure Spring Cloud 实例，则该操作将不会级联到诊断设置资源。 必须先手动删除“诊断设置”资源，然后才能对其父级（即 Azure Spring Cloud 实例）进行操作。 否则，如果为新的 Azure Spring Cloud 实例预配了与已删除实例相同的资源 ID，或者将 Azure Spring Cloud 实例移回，则先前的诊断设置资源将继续对其进行扩展。
 
 ## <a name="view-the-logs-and-metrics"></a>查看日志和指标
+
 有多种方法可以查看日志和指标，如以下标题中所述。
 
 ### <a name="use-the-logs-blade"></a>使用“日志”边栏选项卡
@@ -72,12 +73,14 @@ ms.locfileid: "108128984"
     AppPlatformLogsforSpring
     | limit 50
     ```
+
    * 若要查看指标，请输入一个简单的查询，例如：
 
     ```sql
     AzureMetrics
     | limit 50
     ```
+
 1. 若要查看搜索结果，请选择“运行”。
 
 ### <a name="use-log-analytics"></a>使用 Log Analytics
@@ -92,6 +95,7 @@ ms.locfileid: "108128984"
     AppPlatformLogsforSpring
     | limit 50
     ```
+
     * 若要查看指标，请输入一个简单的查询，例如：
 
     ```sql
@@ -107,8 +111,9 @@ ms.locfileid: "108128984"
     | where ServiceName == "YourServiceName" and AppName == "YourAppName" and InstanceName == "YourInstanceName"
     | limit 50
     ```
-> [!NOTE]
-> `==` 区分大小写，但 `=~` 不区分大小写。
+
+    > [!NOTE]
+    > `==` 区分大小写，但 `=~` 不区分大小写。
 
 若要详细了解 Log Analytics 中使用的查询语言，请参阅 [Azure Monitor 日志查询](/azure/data-explorer/kusto/query/)。 要从一个集中的客户端查询所有 Log Analytics 日志，请查看 [Azure 数据资源管理器](/azure/data-explorer/query-monitor-data)。
 
@@ -198,12 +203,14 @@ Azure Monitor 通过使用 Log Analytics 为查询应用程序日志提供了广
     </root>
 </configuration>
 ```
+
 然后可以在 Log Analytics 中再次将换行符替换为标记，如下所示：
 
 ```sql
 AppPlatformLogsforSpring
 | extend Log = array_strcat(split(Log, '\\n'), '\n')
 ```
+
 可以对其他 Java 日志库使用相同的策略。
 
 ## <a name="next-steps"></a>后续步骤

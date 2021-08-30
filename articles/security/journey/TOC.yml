@@ -8,7 +8,7 @@
       href: ../fundamentals/shared-responsibility.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: 标识用作安全外围
       href: ../fundamentals/paas-deployments.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
-- name: 了解 Azure 安全性
+- name: 探索 Azure 安全性
   items:
     - name: 端到端安全性
       href: ../fundamentals/end-to-end.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
@@ -57,13 +57,13 @@
       href: ../fundamentals/isolation-choices.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: AWS 和 Azure 安全服务的比较
       href: /azure/architecture/aws-professional/services#security-identity-and-access?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
-    - name: GCP 和 Azure 安全服务的比较
+    - name: GCP 与 Azure 安全服务的比较
       href: /azure/architecture/gcp-professional/services#security?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
-- name: 迁移计划
+- name: 规划迁移
   items:
-    - name: 评估安全就绪性
+    - name: 评估安全就绪情况
       href: /assessments/?mode=pre-assessment&session=local
-    - name: 在整个业务中实现安全性
+    - name: 实现跨业务的安全性
       href: /azure/cloud-adoption-framework/get-started/security?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: 设计安全的体系结构
       href: /azure/architecture/framework/security/security-principles?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
@@ -77,7 +77,7 @@
       href: /azure/cloud-adoption-framework/migrate/azure-best-practices/governance-or-compliance?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: 保护
   items:
-    - name: 安全最佳方案
+    - name: 安全最佳做法
       href: ../fundamentals/best-practices-and-patterns.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: 安全控制和基线
       href: ../benchmarks/introduction.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
@@ -208,8 +208,10 @@
                   href: ../fundamentals/operational-best-practices.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
                 - name: 安全清单
                   href: ../fundamentals/operational-checklist.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
-- name: 检测和缓解威胁
+- name: 检测并缓解威胁
   items:
+    - name: 针对勒索软件的备份和还原计划
+      href: ../fundamentals/backup-plan-to-protect-against-ransomware.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: 威胁防护
       href: ../fundamentals/threat-detection.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: 威胁分析
@@ -218,7 +220,7 @@
   items:
     - name: Azure 日志记录和审核
       href: ../fundamentals/log-audit.md?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
-    - name: 查看和审核
+    - name: 评审和审核
       href: /azure/architecture/framework/security/monitor-audit?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: 标识和网络风险
       href: /azure/architecture/framework/security/monitor-identity-network?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
@@ -226,7 +228,7 @@
       href: /azure/architecture/framework/security/monitor?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
 - name: 优化安全投资
   items:
-    - name: 治理、风险和合规性
+    - name: 治理、风险和符合性
       href: /azure/architecture/framework/security/governance?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json
     - name: 验证并测试
       href: /azure/architecture/framework/security/monitor-test?toc=/azure/security/journey/toc.json&bc=/azure/security/breadcrumb/toc.json

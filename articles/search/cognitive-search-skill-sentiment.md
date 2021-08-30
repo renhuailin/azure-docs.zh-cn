@@ -2,22 +2,24 @@
 title: 情绪认知技能
 titleSuffix: Azure Cognitive Search
 description: 在 Azure 认知搜索中从 AI 扩充管道中的文本提取积极-消极情绪分数。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 6519cd952bd1265b4daad3b77b29aabd47ea4cc5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11190d27a8c8fa7fac465ca7132439f0bc34fef0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547469"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737625"
 ---
 # <a name="sentiment-cognitive-skill"></a>情绪认知技能
 
 情绪技能可沿着一个积极-消极连续统评估非结构化文本，对于每个记录，会返回一个介于 0 和 1 之间的数字评分。 评分接近 1 代表积极的情绪，评分接近 0 代表消极的情绪。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)提供的机器学习模型。
+
+> [!IMPORTANT]
+> 现在，情绪技能已由 [Microsoft.Skills.Text.V3.SentimentSkill](cognitive-search-skill-sentiment-v3.md) 取代。 按照[已弃用的认知搜索技能](cognitive-search-skill-deprecated.md)中的建议，迁移到支持的技能。
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
@@ -118,3 +120,4 @@ Microsoft.Skills.Text.SentimentSkill
 
 + [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
++ [情绪技能 (V3)](cognitive-search-skill-sentiment-v3.md)

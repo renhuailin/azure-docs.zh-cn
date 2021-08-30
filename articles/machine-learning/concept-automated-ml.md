@@ -1,21 +1,21 @@
 ---
 title: 什么是自动化 ML？ 自动化 ML
 titleSuffix: Azure Machine Learning
-description: 了解 Azure 机器学习如何使用你提供的参数和条件来自动生成模型。
+description: 了解 Azure 机器学习如何通过使用你在自动化机器学习中提供的参数和条件来自动生成模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 author: cartacioS
 ms.author: sacartac
-ms.date: 10/27/2020
+ms.date: 07/01/2021
 ms.custom: automl
-ms.openlocfilehash: a45d3a9be8c4741b0d9a1df615a70b9d7e88415f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 33fa0218a81d57ae6d33578cd08917bfd2055770
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094593"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690773"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
@@ -23,9 +23,9 @@ ms.locfileid: "110094593"
 
 传统的机器学习模型开发是资源密集型的，需要具备丰富的领域知识，并需要花费大量的时间来生成和比较数十个模型。 使用自动化机器学习可以缩减生成生产就绪型 ML 模型所需的时间，同时使工作变得更轻松高效。
 
-## <a name="automl-in-azure-machine-learning"></a>Azure 机器学习中的 AutoML
+## <a name="ways-to-use-automl-in-azure-machine-learning"></a>Azure 机器学习中 AutoML 的使用方法
 
-Azure 机器学习提供了两种使用自动化 ML 的体验方式：
+Azure 机器学习提供了以下两种使用自动化 ML 的体验。 请参阅以下各部分，以了解[每种体验中的功能可用性](#parity)。
 
 * 编程经验丰富的客户可以使用 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro)。  请先查看[教程：使用自动化机器学习预测出租车费](tutorial-auto-train-models.md)。
 
@@ -33,8 +33,56 @@ Azure 机器学习提供了两种使用自动化 ML 的体验方式：
     * [教程：使用 Azure 机器学习中的自动化 ML 创建分类模型](tutorial-first-experiment-automated-ml.md)。
     *  [教程：使用自动化机器学习预测需求](tutorial-automated-ml-forecast.md)
 
+<a name="parity"></a>
 
-## <a name="when-to-use-automl-classify-regression--forecast"></a>何时使用 AutoML：分类、回归和预测
+## <a name="automl-settings-and-configuration"></a>AutoML 设置和配置
+
+### <a name="experiment-settings"></a>试验设置 
+
+可以使用以下设置来配置自动化 ML 试验。 
+
+| |Python SDK|工作室 Web 体验|
+----|:----:|:----:
+|**将数据拆分为训练/验证集**| ✓|✓
+|**支持 ML 任务：分类、回归和预测**| ✓| ✓
+|**基于主要指标进行优化**| ✓| ✓
+|支持将 Azure ML 计算作为计算目标 | ✓|✓
+|配置预测范围、目标滞后和滚动窗口|✓|✓
+|**设置退出条件** |✓|✓ 
+|**设置并发迭代数**| ✓|✓
+|删除列| ✓|✓
+|**块算法**|✓|✓
+|**交叉验证** |✓|✓
+|**支持在 Azure Databricks 群集上训练**| ✓|
+|**查看工程特征名称**|✓|
+|**特征化摘要**| ✓|
+|**假日特征化**|✓|
+|**日志文件详细级别**| ✓|
+
+### <a name="model-settings"></a>模型设置
+
+可将这些设置应用到自动化 ML 试验生成的最佳模型。
+
+| |Python SDK|工作室 Web 体验|
+|----|:----:|:----:|
+|**最佳模型注册、部署、可解释性**| ✓|✓|
+|**启用投票集成和堆栈集成模型**| ✓|✓|
+|**显示基于非主要指标的最佳模型**|✓||
+|**启用/禁用 ONNX 模型兼容性**|✓||
+|**测试模型** | ✓| |
+
+### <a name="run-control-settings"></a>运行控制设置
+
+使用这些设置可以查看和控制试验运行及其子运行。 
+
+| |Python SDK|工作室 Web 体验|
+|----|:----:|:----:|
+|**运行摘要表**| ✓|✓|
+|**取消运行和子运行**| ✓|✓|
+|**获取护栏**| ✓|✓|
+|**暂停和恢复运行**| ✓| |
+
+## <a name="when-to-use-automl-classification-regression--forecasting"></a>何时使用 AutoML：分类、回归和预测
 
 想要通过 Azure 机器学习使用指定的目标指标训练和优化模型时，可以运用自动化 ML。 自动化 ML 可将机器学习模型开发过程标准化，并使其用户（无论是否具备数据科学知识）能够在端到端的机器学习管道中识别任何问题。
 
@@ -181,7 +229,7 @@ Azure 机器学习提供了两种使用自动化 ML 的体验方式：
 
  使用远程计算时，有更多的功能可用，如下表中所示。 
 
-| 功能                                                    | Remote | Local | 
+| Feature                                                    | Remote | Local | 
 |------------------------------------------------------------|--------|-------|
 | 数据流式处理（最高 100 GB 的大数据支持）          | ✓      |       | 
 | 基于 DNN-BERT 的文本特征化和训练             | ✓      |       |
@@ -199,62 +247,6 @@ Azure 机器学习提供了两种使用自动化 ML 的体验方式：
 | 在 UI 中注册和可视化试验的信息与指标 | ✓      | ✓     |
 | 数据护栏                                            | ✓      | ✓     |
 
-## <a name="many-models"></a>多模型 
-
-[多模型解决方案加速器](https://aka.ms/many-models)（预览版）构建在 Azure 机器学习的基础之上，可让你使用自动化 ML 来训练、操作和管理数百甚至数千个机器学习模型。
-
-例如，在下面的方案中为每个实例或个体生成模型可以改善结果：
-
-* 预测每家店铺的销售额
-* 对数百口油井进行预测性维护
-* 为个人用户定制体验。
-
-<a name="parity"></a>
-
-### <a name="experiment-settings"></a>试验设置 
-
-可以使用以下设置来配置自动化 ML 试验。 
-
-| |Python SDK|工作室 Web 体验|
-----|:----:|:----:
-|**将数据拆分为训练/验证集**| ✓|✓
-|**支持 ML 任务：分类、回归和预测**| ✓| ✓
-|**基于主要指标进行优化**| ✓| ✓
-|支持将 Azure ML 计算作为计算目标 | ✓|✓
-|配置预测范围、目标滞后和滚动窗口|✓|✓
-|**设置退出条件** |✓|✓ 
-|**设置并发迭代数**| ✓|✓
-|删除列| ✓|✓
-|**块算法**|✓|✓
-|**交叉验证** |✓|✓
-|**支持在 Azure Databricks 群集上训练**| ✓|
-|**查看工程特征名称**|✓|
-|**特征化摘要**| ✓|
-|**假日特征化**|✓|
-|**日志文件详细级别**| ✓|
-
-### <a name="model-settings"></a>模型设置
-
-可将这些设置应用到自动化 ML 试验生成的最佳模型。
-
-| |Python SDK|工作室 Web 体验|
-|----|:----:|:----:|
-|**最佳模型注册、部署、可解释性**| ✓|✓|
-|**启用投票集成和堆栈集成模型**| ✓|✓|
-|**显示基于非主要指标的最佳模型**|✓||
-|**启用/禁用 ONNX 模型兼容性**|✓||
-|**测试模型** | ✓| |
-
-### <a name="run-control-settings"></a>运行控制设置
-
-使用这些设置可以查看和控制试验运行及其子运行。 
-
-| |Python SDK|工作室 Web 体验|
-|----|:----:|:----:|
-|**运行摘要表**| ✓|✓|
-|**取消运行和子运行**| ✓|✓|
-|**获取护栏**| ✓|✓|
-|**暂停和恢复运行**| ✓| |
 
 <a name="use-with-onnx"></a>
 
@@ -264,7 +256,7 @@ Azure 机器学习提供了两种使用自动化 ML 的体验方式：
 
 [在此 Jupyter 笔记本示例中](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)了解如何转换为 ONNX 格式。 了解 [ONNX 支持的算法](how-to-configure-auto-train.md#select-your-experiment-type)。
 
-ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生成的模型，而无需重新编写代码，同时可避免 REST 终结点造成的任何网络延迟。 详细了解[在带有 ML.NET 的 .NET 应用程序中使用 AutoML ONNX 模型](./how-to-use-automl-onnx-model-dotnet.md)和[使用 ONNX 运行时 C# API 推断 ONNX 模型](https://github.com/plaidml/onnxruntime/blob/plaidml/docs/CSharp_API.md)。 
+ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生成的模型，而无需重新编写代码，同时可避免 REST 终结点造成的任何网络延迟。 详细了解[在带有 ML.NET 的 .NET 应用程序中使用 AutoML ONNX 模型](./how-to-use-automl-onnx-model-dotnet.md)和[使用 ONNX 运行时 C# API 推断 ONNX 模型](https://www.onnxruntime.ai/docs/reference/api/csharp-api.html)。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -272,17 +264,17 @@ ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生�
 
 ### <a name="tutorials-how-tos"></a>教程/操作指南
 教程是 AutoML 方案的端到端介绍性示例。
-+ 若要体验 Code First，请按[教程：使用 Azure 机器学习 Python SDK 自动训练回归模型](tutorial-auto-train-models.md)的说明操作。
++ 对于代码优先体验，请遵循[教程：使用 AutoML 和 Python 训练回归模型](tutorial-auto-train-models.md)。
 
- + 若要实现少代码或无代码体验，请参阅[教程：使用 Azure 机器学习工作室创建自动化 ML 分类模型](tutorial-first-experiment-automated-ml.md)。
+ + 对于低代码或无代码体验，请参阅[教程：在 Azure 机器学习工作室中使用无代码 AutoML 训练分类模型](tutorial-first-experiment-automated-ml.md)。
 
-操作指南文章提供了 AutoML 所提供功能的更多详细信息。 例如， 
+操作方法文章进一步详细介绍了自动化 ML 提供的功能。 例如， 
 
 + 配置自动训练试验的设置
-    + 在 Azure 机器学习工作室中[使用这些步骤](how-to-use-automated-ml-for-ml-models.md)。 
-    + 在 Python SDK 中[使用这些步骤](how-to-configure-auto-train.md)。
+    + [在 Azure 机器学习工作室中没有代码](how-to-use-automated-ml-for-ml-models.md)。 
+    + [使用 Python SDK](how-to-configure-auto-train.md)。
 
-+  了解如何[使用这些步骤](how-to-auto-train-forecast.md)通过时序数据自动进行训练。
++  了解如何[使用时序数据训练预测模型](how-to-auto-train-forecast.md)。
 
 ### <a name="jupyter-notebook-samples"></a>Jupyter 笔记本示例 
 

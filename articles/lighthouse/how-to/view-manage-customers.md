@@ -1,14 +1,14 @@
 ---
 title: 查看和管理 Azure 门户中的客户及委派资源
 description: 作为使用 Azure Lighthouse 的服务提供商或企业，你可以通过转到 Azure 门户中的“我的客户”，查看所有委派的资源和订阅。
-ms.date: 03/12/2021
+ms.date: 08/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 78344015ee027b9844b6339fa7cd95d348488a54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a29f34983bc42d74efd65a45605bb99944897345
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419323"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861007"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources-in-the-azure-portal"></a>查看和管理 Azure 门户中的客户及委派资源
 
@@ -41,6 +41,9 @@ ms.locfileid: "103419323"
 - 若要查看关于产品/服务及其委派的详细信息，请选择产品/服务名称。
 - 若要查看关于角色分配的更多详细信息，对于委托订阅或资源组，请选择“委托”列中的条目。
 
+> [!NOTE]
+> 如果客户在委托订阅后对其进行重命名，你会看到更新的订阅名称。 如果它他们重命名租户，你可能仍会在 Azure 门户的某些位置看到较早的租户名称。
+
 ## <a name="view-and-manage-delegations"></a>查看和管理委派
 
 委派显示已委派的订阅或资源组，以及有权访问该订阅/资源组的用户和权限。 若要查看此信息，请选择“我的客户”页左侧的“委派”。
@@ -67,15 +70,18 @@ ms.locfileid: "103419323"
 
 可直接在 Azure 门户中的委派订阅上下文内进行操作，而无需切换已登录到的目录。 为此，请执行以下操作：
 
-1. 选择 Azure 门户顶部附近的“目录 + 订阅”图标。
-2. 在“默认订阅”筛选器中，请确保仅选中该委派订阅的框。 可以使用“当前 + 委派目录”下拉框来仅显示特定目录中的订阅。 （请勿使用“切换目录”选项，因为这会更改已登录的目录。）
+1. 选择 Azure 门户顶部附近的“目录 + 订阅”或“设置”图标 。
+1. 在[“目录 + 订阅”设置页](../../azure-portal/set-preferences.md#directories--subscriptions)中，请确保“高级筛选器”切换开关为[关闭状态](../../azure-portal/set-preferences.md#subscription-filters)。
+1. 在“默认订阅筛选器”部分，选择合适的目录和订阅。
 
-如果之后访问支持[跨租户管理体验](../concepts/cross-tenant-management-experience.md)的服务，该服务将默认为所选委派订阅的上下文。 可通过执行上述步骤并选中“全选”框（或选择要处理的一个或多个订阅），来对此进行更改。
+:::image type="content" source="../media/subscription-filter-delegated.png" alt-text="显示已委托订阅的筛选器的屏幕截图。":::
+
+如果之后访问支持[跨租户管理体验](../concepts/cross-tenant-management-experience.md)的服务，该服务将默认为包含在筛选器中的已委派订阅的上下文。 可通过执行上述步骤并选中“全选”框（或选择要处理的一个或多个订阅），来对此进行更改。
 
 > [!NOTE]
 > 如果已向你授予访问一个或多个资源组的权限，而非访问整个订阅的权限，请选择该资源组所属的订阅。 然后，可在该订阅的上下文中操作，但只能访问委派资源组。
 
-还可通过选择该服务中的订阅或资源组，来访问与服务（支持跨租户管理体验）中的委派订阅或资源组相关的功能。
+还可以选择单个服务中的订阅或资源组，来访问与服务（支持跨租户管理体验）中已委派订阅或资源组相关的功能。
 
 ## <a name="cloud-solution-provider-preview"></a>云解决方案提供商（预览）
 

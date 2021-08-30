@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 07dd3319416f6b8cad4cd77d69da81020569788f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 1cbdbad379887687c71bd8c52b5791bde4e08a08
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296401"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492876"
 ---
 # <a name="azure-digital-twins-query-language-reference-from-clause"></a>Azure 数字孪生查询语言参考：FROM 子句
 
@@ -40,11 +40,11 @@ FROM 子句是查询的第二部分。 它指定查询将处理的集合和任�
 
 ### <a name="examples"></a>示例
 
-以下是基本查询。 下面的查询将返回实例中的所有数字孪生体。 
+下面是一个基本查询。 下面的查询将返回实例中的所有数字孪生体。 
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="FromDigitalTwinsExample":::
 
-以下是包含已命名的集合的查询。 下面的查询会为集合分配名称 `T`，并且仍会返回实例中的所有数字孪生体。
+下面是一个使用已命名集合的查询。 下面的查询会为集合分配名称 `T`，并且仍会返回实例中的所有数字孪生体。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="FromDigitalTwinsNamedExample":::
 
@@ -73,7 +73,7 @@ FROM 子句是查询的第二部分。 它指定查询将处理的集合和任�
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="FromRelationshipsExample":::
 
-以下是返回来自数字孪生体 `A`、`B`、`C` 或 `D` 的所有关系的查询。
+以下是返回来自孪生体 `A`、`B`、`C` 或 `D` 的所有关系的查询。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="FromRelationshipsFilteredExample":::
 

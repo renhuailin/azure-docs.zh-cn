@@ -8,15 +8,16 @@ manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: na
+ms.custom: references_regions
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 7eff89301fa54312ffef323023100660237185a4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3258baa30d689513ae09ea727ac1db603f8bf5fe
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955339"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720292"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -29,11 +30,60 @@ ms.locfileid: "111955339"
 * Bug 修复
 * 已弃用的功能
 
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="additional-live-event-ingest-heartbeat-properties-for-improved-diagnostics"></a>用于改进诊断的其他实时事件引入检测信号属性
+
+其他实时事件引入检测信号属性已添加到事件网格消息。 其中包括以下新字段，用于帮助诊断实时引入过程中的问题。  如果需要监视将内容从源引入编码器推送到实时事件过程中出现的网络延迟，可以使用 ingestDriftValue。 如果此值偏移过大，则表明网络延迟过高，实时传送视频流事件无法成功。
+
+有关更多详细信息，请参阅 [LiveEventIngestHeartbeat 架构](./monitoring/media-services-event-schemas.md#liveeventingestheartbeat)。
+
+### <a name="private-links-support-is-now-ga"></a>专用链接支持现已正式发布
+
+对通过[专用链接](../../private-link/index.yml)使用媒体服务的支持现已正式发布，在所有 Azure 区域（包括 Azure 政府云）都提供这一项支持。
+利用 Azure 专用链接，可实现通过虚拟网络中的专用终结点访问 Azure PaaS 服务和 Azure 托管的归客户所有的/合作伙伴服务。
+虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。
+
+若要详细了解如何通过专用链接使用媒体服务，请参阅[使用专用链接创建媒体服务和存储帐户](./security-private-link-how-to.md)
+
+### <a name="new-us-west-3-region-is-ga"></a>新的美国西部 3 区域正式发布
+
+美国西部 3 区域现已正式发布，可供客户在创建新的媒体服务帐户时使用。
+
+### <a name="key-delivery-supports-ip-allowlist-restrictions"></a>密钥传递支持 IP 允许列表限制
+
+媒体服务帐户现在可以配置对密钥传递的 IP 允许列表限制。 通过 SDK 以及门户和 CLI 可在媒体服务帐户资源上获得新的允许列表设置。
+这允许操作员将 DRM 许可证和 AES-128 内容密钥的传递限制在特定的 IPv4 范围内。
+
+此功能还可用于关闭 DRM 许可证或 AES-128 密钥的所有公共 Internet 传递，并将传递限制在专用网络终结点。
+
+有关详细信息，请参阅文章[使用 IP 允许列表限制对 DRM 许可证和 AES 密钥传递的访问](./drm-content-protection-key-delivery-ip-allow.md)。
+
+### <a name="new-samples-for-python-and-nodejs-with-typescript"></a>Python 和 Node.js 的新示例（使用 Typescript）
+Node.js 的更新示例，使用 Azure SDK 中最新的 Typescript 支持。
+
+|示例|说明|
+|---|---|
+|[实时传送视频流](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/Live/index.ts)| 基本实时传送视频流示例。 警告：在使用实时传送视频流时，请确保检查是否已清理所有资源，并且不再在门户中计费|
+|[上传和流式传输 HLS 和 DASH](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/StreamFilesSample/index.ts)| 上传本地文件或从源 URL 编码的基本示例。 示例演示如何使用存储 SDK 下载内容，并演示如何流式传输到播放机 |
+|[使用 Playready 和 Widevine DRM 上传和流式传输 HLS 和 DASH](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/StreamFilesWithDRMSample/index.ts)| 演示如何使用 Widevine 和 PlayReady DRM 进行编码和流式传输 |
+|[上传并使用 AI 为视频和音频编制索引](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/main/AMSv3Samples/VideoIndexerSample/index.ts)| 使用视频和音频分析器预设生成视频或音频文件中的元数据和见解的示例 |
+
+
+新的 Python 示例演示如何使用 Azure Functions 和事件网格来触发人脸编修预设。
+
+|示例|说明|
+|---|---|
+|[使用事件和函数进行人脸编修](https://github.com/Azure-Samples/media-services-v3-python/tree/main/VideoAnalytics/FaceRedactorEventBased) | 这是一个基于事件的方法的示例，它在视频到达 Azure 存储帐户后立即触发 Azure 媒体服务人脸编修作业。 它为解决方案利用 Azure 媒体服务、Azure 函数、事件网格和 Azure 存储。 有关解决方案的完整说明，请参阅 [README.md](https://github.com/Azure-Samples/media-services-v3-python/blob/main/VideoAnalytics/FaceRedactorEventBased/README.md) |
+
+
 ## <a name="may-2021"></a>2021 年 5 月
 
 ### <a name="availability-zones-default-support-in-media-services"></a>媒体服务中的可用性区域默认支持
 
 媒体服务现在支持[可用性区域](concept-availability-zones.md)，在同一 Azure 区域内提供故障隔离位置。  媒体服务帐户现在默认为区域冗余，无需其他配置或设置。 请注意，这仅适用于具有[可用性区域支持](../../availability-zones/az-region.md#azure-regions-with-availability-zones)的区域
+
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -274,7 +324,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 - 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间针对可变帧速率 (VFR) 内容维持常规 GOP 节奏。  这意味着，如果提交的混合帧速率内容存在差异（例如 15-30 fps），客户现在会看到常规的 GOP 距离，此类距离根据自适应比特率流式处理 MP4 文件的输出进行计算。 这会提高通过 HLS 或 DASH 进行交付时在跟踪之间无缝切换的功能。 
 -  改进了可变帧速率 (VFR) 源内容的 AV 同步
 
-### <a name="video-indexer-video-analytics"></a>视频索引器，视频分析
+### <a name="azure-video-analyzer-for-media-video-analytics"></a>Azure 视频分析器媒体版、视频分析
 
 - 使用 VideoAnalyzer 预设提取的关键帧现在采用视频的原始分辨率，而不是重设大小。 高分辨率关键帧提取可为你提供原始质量的图像，并允许你利用 Microsoft 计算机视觉和自定义视觉服务提供的基于图像的人工智能模型，从视频中获得更多见解。
 
@@ -290,7 +340,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 #### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 有关停用日期，请参阅[旧组件](../previous/legacy-components.md)文章。 Azure 媒体服务视频索引器取代了这些旧版媒体处理器。
+我们宣布弃用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 有关停用日期，请参阅[旧组件](../previous/legacy-components.md)文章。 Azure 视频分析器媒体版取代了这些旧版媒体处理器。
 
 有关详细信息，请参阅[从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](../previous/migrate-indexer-v1-v2.md)。
 

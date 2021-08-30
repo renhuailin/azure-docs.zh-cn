@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 07/14/2021
 ms.author: alkohli
-ms.openlocfilehash: bb70946fda4fad7a42fd885a2515cb0d82698eca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06f0408587cc7c5533bdb852f7ad4f59094a33da
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92124667"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220252"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>排查 Azure Data Box 和 Azure Data Box Heavy 的相关问题
 
@@ -31,9 +31,10 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 | 容器或共享大小限制 | 容器或共享中的总数据量超过了 Azure 限制。   |下载错误列表。 <br> 减小容器或共享中的总数据量。 [了解详细信息](#container-or-share-size-limit-errors)。|
 | 对象或文件大小限制 | 容器或共享中的对象或文件大小超过了 Azure 限制。|下载错误列表。 <br> 减小容器或共享中的文件大小。 [了解详细信息](#object-or-file-size-limit-errors)。 |    
 | 数据或文件类型 | 数据格式或文件类型不受支持。 |下载错误列表。 <br> 对于页 Blob 或托管磁盘，请确保数据已经过 512 字节对齐，并已复制到预先创建的文件夹。 [了解详细信息](#data-or-file-type-errors)。 |
+| 文件夹或文件内部错误 | 文件或文件夹出现内部错误。 |下载错误列表。 <br> 删除文件并重新复制。 对于文件夹，请重命名或者添加或删除文件对其进行修改。 错误会在 30 分钟内消失。  [了解详细信息](#folder-or-file-internal-errors)。 |
 | 非关键 Blob 或文件错误  | Blob 或文件名称未遵循 Azure 命名规则，或文件类型不受支持。 | 无法复制这些 Blob 或文件，或者名称可能已更改。 [了解如何修复这些错误](#non-critical-blob-or-file-errors)。 |
 
-\* 前四个错误类别属于关键错误，必须先予以修复，才能继续准备交付。
+\* 前五个错误类别是关键错误，必须先修复，然后才能继续准备交付。
 
 
 ## <a name="container-or-share-name-errors"></a>容器或共享名称错误
@@ -119,8 +120,8 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 - 在错误日志中找到存在此问题的文件夹，并确保该文件夹中的文件小于 5 TiB。
 - 5 TiB 限制不会应用于允许大型文件共享的存储帐户。 但是，必须在下单时配置大型文件共享。 
   - 请联系 [Microsoft 支持部门](data-box-disk-contact-microsoft-support.md)并请求一个新的发货标签。
-  - [在存储帐户上启用大型文件共享。](../storage/files/storage-files-how-to-create-large-file-share.md#enable-large-files-shares-on-an-existing-account)
-  - [展开存储帐户中的文件共享](../storage/files/storage-files-how-to-create-large-file-share.md#expand-existing-file-shares)，并将配额设置为 100 TiB。
+  - [在存储帐户上启用大型文件共享](../storage/files/storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account)
+  - [展开存储帐户中的文件共享](../storage/files/storage-how-to-create-file-share.md#expand-existing-file-shares)，并将配额设置为 100 TiB。
   
   
 ## <a name="object-or-file-size-limit-errors"></a>对象或文件大小限制错误
@@ -176,6 +177,11 @@ Data Box 和 Data Box Heavy 中的错误概括如下：
 
 **建议的解决方法：** 符号链接通常是链接、竖线和文件等其他元素。 请删除链接，或解决链接错误并复制数据。
 
+## <a name="folder-or-file-internal-errors"></a>文件夹或文件内部错误
+
+**错误说明：** 文件或文件夹为内部错误状态。
+
+**建议的解决方法：** 如果这是一个文件，请删除该文件，然后再次复制。 如果这是一个文件夹，请修改该文件夹。 重命名文件夹，或者添加或删除文件夹中的文件。 错误会在 30 分钟内自行清除。 如果错误依然出现，请联系 Microsoft 支持部门。
 
 ## <a name="non-critical-blob-or-file-errors"></a>非关键 Blob 或文件错误
 

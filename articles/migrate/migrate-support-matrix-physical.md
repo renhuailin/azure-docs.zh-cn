@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate 中的物理发现和评估支持
 description: 了解使用 Azure Migrate 发现和评估功能时的物理发现和评估支持
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: aad800a710a1bc3942efc128f8350044a513d44f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2d68a74332ef77694d44597e6f879858fa0051bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472017"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726226"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>物理服务器发现与评估的支持矩阵 
 
@@ -38,10 +38,44 @@ ms.locfileid: "110472017"
 
 **权限：**
 
-- 对于 Windows 服务器，针对已加入域的服务器使用域帐户，针对未加入域的服务器使用本地帐户。 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。
+设置一个可供设备用于访问物理服务器的帐户。
+
+**Windows 服务器**
+
+- 对于 Windows 服务器，针对已加入域的服务器使用域帐户，针对未加入域的服务器使用本地帐户。 
+- 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。 
+- 如果远程管理用户组不存在，请将用户帐户添加到以下组：WinRMRemoteWMIUsers_。
+- 该帐户需要拥有这些权限才能让设备创建与服务器的 CIM 连接，并从[此处](migrate-appliance.md#collected-data---physical)列出的 WMI 类中拉取所需的配置和性能元数据。
+- 在某些情况下，将帐户添加到这些组可能不会从 WMI 类返回所需的数据，因为该帐户可能由 [UAC](/windows/win32/wmisdk/user-account-control-and-wmi) 筛选。 要绕过 UAC 筛选，用户帐户需在目标服务器上的 CIMV2 命名空间和子命名空间中拥有所需的权限。 可按[此处](troubleshoot-appliance.md#access-is-denied-when-connecting-to-physical-servers-during-validation)所述的步骤启用所需的权限。
+
     > [!Note]
-    > 对于 Windows Server 2008 和 2008 R2，请确保在服务器上安装 WMF 3.0，以及向这些组中添加用于访问服务器的域/本地帐户：性能监视器用户、性能日志用户和 WinRMRemoteWMIUsers。
-- 对于 Linux 服务器，需要在要发现的 Linux 服务器上拥有根帐户。 或者，可使用以下命令设置具有所需功能的非根帐户：
+    > 对于 Windows Server 2008 和 2008 R2，请确保在服务器上安装了 WMF 3.0。
+
+**Linux 服务器**
+
+- 在要发现的服务器上需有一个根帐户。 也可提供拥有 sudo 权限的用户帐户。
+- 2021 年 7 月 20 日之后从门户下载的新设备安装程序脚本默认支持添加具有 sudo 访问权限的用户帐户。
+- 对于较旧的设备，可按照以下步骤来启用该功能：
+    1. 在运行设备的服务器上，打开注册表编辑器。
+    1. 导航到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance。
+    1. 创建 DWORD 值为 1 的注册表项“isSudo”。
+
+    :::image type="content" source="./media/tutorial-discover-physical/issudo-reg-key.png" alt-text="显示如何启用 sudo 支持的屏幕截图。":::
+
+- 要发现目标服务器中的配置和性能元数据，需要为[此处](migrate-appliance.md#linux-server-metadata)列出的命令启用 sudo 访问权限。 确保已启用“NOPASSWD”，使帐户能够运行所需的命令，且不会在每次调用 sudo 命令时都提示用户输入密码。
+- 以下 Linux OS 发行版支持使用拥有 sudo 访问权限的帐户通过 Azure Migrate 进行发现：
+
+    操作系统 | 版本 
+    --- | ---
+    Red Hat Enterprise Linux | 6、7、8
+    Cent OS | 6.6、8.2
+    Ubuntu | 14.04、16.04、18.04
+    SUSE Linux | 11.4、12.4
+    Debian | 7、10
+    Amazon Linux | 2.0.2021
+    CoreOS 容器 | 2345.3.0
+
+- 如果无法提供具有 sudo 访问权限的根帐户或用户帐户，则可以在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance 注册表中将“isSudo”注册表项的值设置为“0”，并使用以下命令为非根帐户提供所需的功能：
 
 **命令** | **用途**
 --- | --- |

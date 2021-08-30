@@ -1,20 +1,20 @@
 ---
-title: 从 Azure 逻辑应用连接到 SharePoint
+title: 连接到 SharePoint
 description: 使用 Azure 逻辑应用在 SharePoint Online 或本地 SharePoint Server 中监视和管理资源
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: estfan, azla
 ms.topic: article
-ms.date: 04/27/2021
+ms.date: 08/11/2021
 tags: connectors
-ms.openlocfilehash: 750253d5607262614cf8576c376b261616361266
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: e53fca8b0e9f8dbca3dba8bd684e71ef25c88738
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285441"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722526"
 ---
-# <a name="connect-to-sharepoint-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用连接到 SharePoint 资源
+# <a name="connect-to-sharepoint-resources-using-azure-logic-apps"></a>使用 Azure 逻辑应用连接到 SharePoint 资源
 
 如需将用于在 SharePoint Online 或本地 SharePoint Server 中监视和管理文件、文件夹、列表和项等资源的任务自动化，你可以使用 Azure 逻辑应用和 SharePoint 连接器创建自动化的任务和工作流。
 
@@ -36,9 +36,16 @@ ms.locfileid: "108285441"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
+* 你的 Microsoft Office 365 帐户凭据，用于在使用[工作或学校帐户](https://support.microsoft.com/office/what-account-to-use-with-office-and-you-need-one-914e6610-2763-47ac-ab36-602a81068235#bkmk_msavsworkschool)登录时与 SharePoint 配合使用。
 
-* SharePoint 站点地址和用户凭据。 需要提供这些凭据才能授权工作流访问 SharePoint 帐户。
+  需要提供这些凭据才能授权工作流访问 SharePoint 帐户。
+
+  > [!NOTE]
+  > 如果使用的是[世纪互联运营的 Microsoft Azure](https://portal.azure.cn)，则 Azure Active Directory (Azure AD) 身份验证仅适用于世纪互联 (.cn) 运营的 Microsoft Office 365 帐户，而不适用于 .com 帐户。
+
+* 你的 SharePoint 站点地址
+
+* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * 对于本地 SharePoint Server 连接，需要在本地计算机上和[已在 Azure 中创建的数据网关资源](../logic-apps/logic-apps-gateway-connection.md)上[安装并设置本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
 
@@ -49,13 +56,17 @@ ms.locfileid: "108285441"
   * 若要使用 SharePoint 触发器启动工作流，需要一个空白逻辑应用工作流。
   * 若要添加 SharePoint 操作，工作流需要拥有触发器。
 
+## <a name="connector-reference"></a>连接器参考
+
+有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/sharepoint/)。
+
 ## <a name="connect-to-sharepoint"></a>连接到 SharePoint
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
 ## <a name="add-a-trigger"></a>添加触发器
 
-1. 请从 Azure 门户、Visual Studio Code 或 Visual Studio 在逻辑应用设计器中打开逻辑应用工作流（如果尚未打开）。
+1. 请从 Azure 门户、Visual Studio Code 或 Visual Studio 在视觉对象设计器中打开逻辑应用工作流（如果尚未打开）。
 
 1. 在设计器的搜索框中输入 `sharepoint` 作为搜索词。 选择 SharePoint 连接器。
 
@@ -74,7 +85,7 @@ ms.locfileid: "108285441"
 
 ## <a name="add-an-action"></a>添加操作
 
-1. 请从 Azure 门户、Visual Studio Code 或 Visual Studio 在逻辑应用设计器中打开逻辑应用工作流（如果尚未打开）。
+1. 请从 Azure 门户、Visual Studio Code 或 Visual Studio 在视觉对象设计器中打开逻辑应用工作流（如果尚未打开）。
 
 1. 选择以下选项之一：
 
@@ -95,10 +106,6 @@ ms.locfileid: "108285441"
    工作流成功创建连接后，所选操作将会显示。
 
 1. 提供设置操作所需信息并继续构建工作流。
-
-## <a name="connector-reference"></a>连接器参考
-
-有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请查看[连接器的参考页](/connectors/sharepoint/)。
 
 ## <a name="next-steps"></a>后续步骤
 

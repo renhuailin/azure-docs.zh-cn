@@ -1,21 +1,21 @@
 ---
 title: 有关选择时序 ID 的最佳做法 - Azure 时序见解 | Microsoft Docs
 description: 了解在 Azure 时序见解第 2 代中选择时序 ID 时的最佳做法。
-author: shipramishra
-ms.author: shmishr
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: 8aefa6efa5f10dae8a28e7126b91b7b5f6ac77a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a15b0c74ebe9a4696c2b61b6dd3b16d9f4b9d10
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950733"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730913"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法
 
@@ -37,7 +37,7 @@ ms.locfileid: "104950733"
 > * 不可变属性：一旦创建，无法更改。
 
 > [!TIP]
-> 如果事件源是 IoT 中心，则时序 ID 可能是 iothub-connection-device-id。
+> 如果事件源是 IoT 中心，则时序 ID 可能是 iothub-connection-device-id。如果你计划使用 IoT 即插即用设备模型，或在不使用组件的情况下使用它们，则应将 dt-subject 作为组合键的一部分，以备将来需要时使用。
 
 要遵守的主要最佳做法包括：
 

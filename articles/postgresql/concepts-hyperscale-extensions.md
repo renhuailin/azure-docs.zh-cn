@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 221d8b1d9fdd40a71bcfdeed57c02451e44052f2
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 08/03/2021
+ms.openlocfilehash: 27c7ae33dc889f7bbc29bb5e396fae3a6cdea67d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012756"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726170"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL - 超大规模 (Citus) 中的 PostgreSQL 扩展
 
@@ -21,6 +21,13 @@ PostgreSQL 还支持使用扩展来扩展数据库功能。 扩展允许在单�
 ## <a name="use-postgresql-extensions"></a>使用 PostgreSQL 扩展
 
 必须先在数据库中安装 PostgreSQL 扩展，然后才能使用它们。 若要安装特定扩展，请通过 psql 工具运行 [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) 命令，将打包的对象加载到数据库中。
+
+> [!NOTE]
+> 如果 `CREATE EXTENSION` 失败并出现权限被拒绝错误，请改为尝试 `create_extension()` 函数。 例如：
+>
+> ```sql
+> SELECT create_extension('postgis');
+> ```
 
 Azure Database for PostgreSQL - 超大规模 (Citus) 目前支持部分关键扩展（已在此处列出）。 所列扩展以外的扩展不受支持。 不能使用 Azure Database for PostgreSQL 创建自己的扩展。
 
@@ -35,7 +42,7 @@ Azure Database for PostgreSQL - 超大规模 (Citus) 目前支持部分关键扩
 > [!div class="mx-tableFixed"]
 > | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** |
 > |---|---|---|---|---|
-> | [citus](https://github.com/citusdata/citus) | Citus 分布式数据库。 | 9.5-1 | 9.5-1 | 10.0-2 |
+> | [citus](https://github.com/citusdata/citus) | Citus 分布式数据库。 | 9.5-2 | 10.0-3 | 10.0-3 |
 
 ### <a name="data-types-extensions"></a>数据类型扩展
 
@@ -44,14 +51,14 @@ Azure Database for PostgreSQL - 超大规模 (Citus) 目前支持部分关键扩
 > |---|---|---|---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | 提供不区分大小写的字符串类型。 | 1.5 | 1.6 | 1.6 |
 > | [cube](https://www.postgresql.org/docs/current/static/cube.html) | 提供用于多维数据集的数据类型。 | 1.4 | 1.4 | 1.4 |
-> | [hll](https://github.com/citusdata/postgresql-hll) | 提供 HyperLogLog 数据结构。 | 2.14 | 2.15 | 2.15 |
+> | [hll](https://github.com/citusdata/postgresql-hll) | 提供 HyperLogLog 数据结构。 | 2.15 | 2.15 | 2.15 |
 > | [hstore](https://www.postgresql.org/docs/current/static/hstore.html) | 提供用于存储键值对集的数据类型。 | 1.5 | 1.6 | 1.7 |
 > | [isn](https://www.postgresql.org/docs/current/static/isn.html) | 提供用于国际产品编号标准的数据类型。 | 1.2 | 1.2 | 1.2 |
 > | [lo](https://www.postgresql.org/docs/current/lo.html) | 大型对象维护。 | 1.1 | 1.1 | 1.1 |
 > | [ltree](https://www.postgresql.org/docs/current/static/ltree.html) | 提供用于分层树形结构的数据类型。 | 1.1 | 1.1 | 1.2 |
 > | [seg](https://www.postgresql.org/docs/current/seg.html) | 用于表示线段或浮点间隔的数据类型。 | 1.3 | 1.3 | 1.3 |
 > | [tdigest](https://github.com/tvondra/tdigest) | 用于基于排名的统计信息（如分位数和剪裁方式）在线累积的数据类型。 | 1.0 | 1.0 | 1.0 |
-> | [topn](https://github.com/citusdata/postgresql-topn/) | Top-n JSONB 的类型。 | 2.2.2 | 2.3.1 | 2.3.1 |
+> | [topn](https://github.com/citusdata/postgresql-topn/) | Top-n JSONB 的类型。 | 2.3.1 | 2.3.1 | 2.3.1 |
 
 ### <a name="full-text-search-extensions"></a>全文搜索扩展
 
@@ -74,11 +81,10 @@ Azure Database for PostgreSQL - 超大规模 (Citus) 目前支持部分关键扩
 > | [intagg](https://www.postgresql.org/docs/current/intagg.html) | 整数聚合器和枚举器（已过时）。 | 1.1 | 1.1 | 1.1 |
 > | [intarray](https://www.postgresql.org/docs/current/static/intarray.html) | 提供用于操作无 null 整数数组的函数和运算符。 | 1.2 | 1.2 | 1.3 |
 > | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | 用于跟踪上次修改时间的函数。 | 1.0 | 1.0 | 1.0 |
-> | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 按时间或 ID 管理已分区表。 | 4.1 | 4.4.1 | 4.4.1 |
+> | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 按时间或 ID 管理已分区表。 | 4.5.1 | 4.5.1 | 4.5.1 |
 > | [pg\_trgm](https://www.postgresql.org/docs/current/static/pgtrgm.html) | 提供函数和运算符，用于基于三元匹配确定字母数字文本的相似性。 | 1.4 | 1.4 | 1.5 |
 > | [pgcrypto](https://www.postgresql.org/docs/current/static/pgcrypto.html) | 提供加密函数。 | 1.3 | 1.3 | 1.3 |
 > | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | 用于实现引用完整性的函数（已过时）。 | 1.0 | 1.0 | 1.0 |
-> | session\_analytics | 用于查询 hstore 数组的函数。 | | | |
 > | [tablefunc](https://www.postgresql.org/docs/current/static/tablefunc.html) | 提供可操作整个表（包括交叉表）的函数。 | 1.0 | 1.0 | 1.0 |
 > | [tcn](https://www.postgresql.org/docs/current/tcn.html) | 触发了更改通知。 | 1.0 | 1.0 | 1.0 |
 > | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | 用于实现按时间顺序查看的函数。 | 1.0 | | |
@@ -111,7 +117,7 @@ Azure Database for PostgreSQL - 超大规模 (Citus) 目前支持部分关键扩
 > | [file\_fdw](https://www.postgresql.org/docs/current/file-fdw.html) | 用于平面文件访问的外部数据包装器。 | 1.0 | 1.0 | 1.0 |
 > | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | 在较低级别检查数据库页的内容。 | 1.7 | 1.7 | 1.8 |
 > | [pg\_buffercache](https://www.postgresql.org/docs/current/static/pgbuffercache.html) | 提供一种方法用于实时检查共享缓冲区缓存的当前状况。 | 1.3 | 1.3 | 1.3 |
-> | [pg\_cron](https://github.com/citusdata/pg_cron) | PostgreSQL 的作业计划程序。 | 1.1 | 1.3 | 1.3 |
+> | [pg\_cron](https://github.com/citusdata/pg_cron) | PostgreSQL 的作业计划程序。 | 1.3 | 1.3 | 1.3 |
 > | [pg\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | 检查可用空间映射 (FSM)。 | 1.2 | 1.2 | 1.2 |
 > | [pg\_prewarm](https://www.postgresql.org/docs/current/static/pgprewarm.html) | 提供一种方法用于将相关数据加载到缓冲区缓存中。 | 1.2 | 1.2 | 1.2 |
 > | [pg\_stat\_statements](https://www.postgresql.org/docs/current/static/pgstatstatements.html) | 提供一种方法用于跟踪服务器执行的所有 SQL 语句的执行统计信息。 有关此扩展的信息，请参阅“pg_stat_statements”部分。 | 1.6 | 1.7 | 1.8 |
@@ -130,11 +136,11 @@ Azure Database for PostgreSQL - 超大规模 (Citus) 目前支持部分关键扩
 > [!div class="mx-tableFixed"]
 > | **扩展名** | **说明** | **PG 11** | **PG 12** | **PG 13** |
 > |---|---|---|---|---|
-> | [PostGIS](https://www.postgis.net/), postgis\_topology, postgis\_tiger\_geocoder, postgis\_sfcgal | PostgreSQL 的空间和地理对象。 | 2.5.1 | 3.0.3 | 3.0.3 |
-> | address\_standardizer, address\_standardizer\_data\_us | 用于将地址分析成构成元素。 用于支持地理编码地址规范化步骤。 | 2.5.1 | 3.0.3 | 3.0.3 |
-> | postgis\_sfcgal | PostGIS SFCGAL 函数。 | 2.5.1 | 3.0.3 | 3.0.3 |
-> | postgis\_tiger\_geocoder | PostGIS tiger 地理编码器和反向地理编码器。 | 2.5.1 | 3.0.3 | 3.0.3 |
-> | postgis\_topology | PostGIS 拓扑空间类型和函数。 | 2.5.1 | 3.0.3 | 3.0.3 |
+> | [PostGIS](https://www.postgis.net/), postgis\_topology, postgis\_tiger\_geocoder, postgis\_sfcgal | PostgreSQL 的空间和地理对象。 | 2.5.5 | 3.0.3 | 3.0.3 |
+> | address\_standardizer, address\_standardizer\_data\_us | 用于将地址分析成构成元素。 用于支持地理编码地址规范化步骤。 | 2.5.5 | 3.0.3 | 3.0.3 |
+> | postgis\_sfcgal | PostGIS SFCGAL 函数。 | 2.5.5 | 3.0.3 | 3.0.3 |
+> | postgis\_tiger\_geocoder | PostGIS tiger 地理编码器和反向地理编码器。 | 2.5.5 | 3.0.3 | 3.0.3 |
+> | postgis\_topology | PostGIS 拓扑空间类型和函数。 | 2.5.5 | 3.0.3 | 3.0.3 |
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements

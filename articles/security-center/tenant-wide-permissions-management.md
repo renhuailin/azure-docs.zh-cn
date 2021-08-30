@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 03/11/2021
-ms.openlocfilehash: 0a24546579df020dcb7c7a9b01ee3d181226d2df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99e7e09ac1b73dfb24cea14fe1b407f491e4ade5
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102617482"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236888"
 ---
 # <a name="grant-and-request-tenant-wide-visibility"></a>授予和请求租户范围的可见性
 
@@ -26,11 +26,11 @@ ms.locfileid: "102617482"
 
 1. 以在租户的根管理组上不具有分配权限的全局管理员用户身份，打开安全中心的概述页面，并在横幅中选择“租户范围可见性”链接 。 
 
-    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-banner.png" alt-text="在 Azure 安全中心启用租户级权限":::
+    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-banner.png" alt-text="在 Azure 安全中心启用租户级权限。":::
 
 1. 选择要分配的 Azure 新角色。 
 
-    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-form.png" alt-text="用于定义要分配给用户的租户级权限的窗体":::
+    :::image type="content" source="media/security-center-management-groups/enable-tenant-level-permissions-form.png" alt-text="用于定义要分配给用户的租户级权限的窗体。":::
 
     > [!TIP]
     > 通常情况下，若要在根级别应用策略，需要安全管理员角色，若要提供租户级可见性，安全读取者角色就足够了。 有关这些角色授予的权限的详细信息，请参阅[安全管理员内置角色说明](../role-based-access-control/built-in-roles.md#security-admin)或[安全读取者内置角色说明](../role-based-access-control/built-in-roles.md#security-reader)。
@@ -71,13 +71,13 @@ ms.locfileid: "102617482"
 
 1. 在详细的请求表单中，选择所需的角色和你需要这些权限的理由。
 
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="详细信息页，用于向 Azure 全局管理员请求租户范围的权限":::
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="用于向 Azure 全局管理员请求租户范围权限的详细信息页。":::
 
 1. 选择“请求访问权限”。
 
     将向全局管理员发送一封电子邮件。 此电子邮件包含指向安全中心的链接，而全局管理员可在该安全中心批准或拒绝该请求。
 
-    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="向全局管理员发送电子邮件来请求新权限":::
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="向全局管理员发送电子邮件来请求新权限。":::
 
     全局管理员选择“检查请求”并完成该过程之后，会通过电子邮件将决定发送给发出请求的用户。 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 142c8b1439447da4d535dd97e191a0ada503fe94
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 14a357bf5f7fece43ce72b58142aa0047213bfab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632594"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737467"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制列表 (ACL)
 
@@ -23,7 +23,7 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 
 ## <a name="about-acls"></a>关于 ACL
 
-可将[安全主体](../../role-based-access-control/overview.md#security-principal)关联到对文件和目录的访问权限级别。 这些关联在访问控制列表 (ACL) 中捕获。 存储帐户中的每个文件和目录都有一个访问控制列表。 当安全主体尝试对文件或目录执行操作时，ACL 检查将确定安全主体（用户、组、服务主体或托管标识）是否具有执行该操作所需的正确权限级别。
+可将[安全主体](../../role-based-access-control/overview.md#security-principal)关联到对文件和目录的访问权限级别。 每个关联都捕获为访问控制列表中的一个条目。 存储帐户中的每个文件和目录都有一个访问控制列表。 当安全主体尝试对文件或目录执行操作时，ACL 检查将确定安全主体（用户、组、服务主体或托管标识）是否具有执行该操作所需的正确权限级别。
 
 > [!NOTE]
 > ACL 仅应用于同一个租户中的安全主体，不应用于使用共享密钥或共享访问签名 (SAS) 令牌身份验证的用户。 那是因为没有与调用方关联的标识，因此不能执行基于安全主体权限的授权。  
@@ -94,7 +94,7 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 
 下表显示了让安全主体执行“操作”列中列出的操作所需的 ACL 条目。 
 
-此表显示的列代表虚构目录层次结构的每个级别。 容器的根目录 (`\`)、名为 **Oregon** 的子目录、Oregon 目录的名为 **Portland** 的子目录以及 Portland 目录中名为 **Data.txt** 的文本文件分别对应一个列。 
+此表显示的列代表虚构目录层次结构的每个级别。 容器的根目录 (`/`)、名为 **Oregon** 的子目录、Oregon 目录的名为 **Portland** 的子目录以及 Portland 目录中名为 **Data.txt** 的文本文件分别对应一个列。 
 
 > [!IMPORTANT]
 > 此表假设你仅在使用 ACL，没有使用任何 Azure 角色分配。 若要查看组合使用 Azure RBAC 和 ACL 的类似表，请参阅[权限表：组合使用 Azure RBAC 和 ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)。
@@ -154,11 +154,21 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 > [!NOTE]
 > 拥有组无法更改某个文件或目录的 ACL。  虽然拥有组设置为在根目录那一种情况（即上面的 **案例 1**）中创建了帐户的用户，但单个用户帐户不能有效地用于通过拥有组提供权限。 可以将此权限分配给有效的用户组（如果适用）。
 
-## <a name="access-check-algorithm"></a>访问检查算法
+## <a name="how-permissions-are-evaluated"></a>权限是如何评估的
 
-以下伪代码显示了存储帐户的访问检查算法。
+标识按以下顺序评估： 
 
-```console
+1. 超级用户
+2. 拥有用户
+3. 命名用户、服务主体或托管标识
+4. 拥有组或命名组
+5. 所有其他用户
+
+如果这些标识中有多个应用于安全主体，则授予与第一个标识关联的权限级别。 例如，如果安全主体既是拥有用户也是命名用户，则应用与拥有用户关联的权限级别。
+
+以下伪代码显示了存储帐户的访问检查算法。 此算法显示标识的评估顺序。
+
+```python
 def access_check( user, desired_perms, path ) : 
   # access_check returns true if user has the desired permissions on the path, false otherwise
   # user is the identity that wants to perform an operation on path
@@ -206,7 +216,7 @@ def access_check( user, desired_perms, path ) :
 
 |实体|目录|文件|
 |--|--|--|
-|拥有用户|`rwx`|`r-w`|
+|拥有用户|`rwx`|`rw-`|
 |拥有组|`r-x`|`r--`|
 |其他|`---`|`---`|
 

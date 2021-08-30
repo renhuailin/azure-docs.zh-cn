@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: cd87d2261ab89b521829d1049a0c17db125a14f3
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: cc38ad6ee6dfc958be405db2969bd5c083e1c5c0
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063407"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195330"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 专用 HSM 网络
 
@@ -39,7 +39,7 @@ Azure 专用 HSM 需要高度安全的网络环境。 无论是要 Azure 云连�
 
 ### <a name="subnets"></a>子网
 
-子网将部署资源的虚拟网络分段成可由 Azure 资源使用的独立地址空间。 专用 HSM 部署在虚拟网络的子网中。 客户子网中部署的每个专用 HSM 设备将从此子网接收专用 IP 地址。 需将部署 HSM 设备的子网显式委托给服务 Microsoft.HardwareSecurityModules/dedicatedHSMs。 这会向 HSM 服务授予特定的权限，使其可部署到该子网中。 专用 HSM 委托会对子网施加特定的策略限制。 委托的子网目前不支持网络安全组 (NSG) 和用户定义的路由 (UDR)。 因此，将某个子网委托给专用 HSM 后，该子网只可用于部署 HSM 资源。 将其他任何客户资源部署到该子网都会失败。
+子网将部署资源的虚拟网络分段成可由 Azure 资源使用的独立地址空间。 专用 HSM 部署在虚拟网络的子网中。 客户子网中部署的每个专用 HSM 设备将从此子网接收专用 IP 地址。 需将部署 HSM 设备的子网显式委托给服务 Microsoft.HardwareSecurityModules/dedicatedHSMs。 这会向 HSM 服务授予特定的权限，使其可部署到该子网中。 专用 HSM 委托会对子网施加特定的策略限制。 委托的子网目前不支持网络安全组 (NSG) 和用户定义的路由 (UDR)。 因此，将某个子网委托给专用 HSM 后，该子网只可用于部署 HSM 资源。 将其他任何客户资源部署到该子网都会失败。  专用 HSM 的子网大小没有任何要求，但每个 HSM 设备都会占用一个专用 IP，因此应确保子网足够大，可以容纳部署所需的 HSM 设备。
 
 ### <a name="expressroute-gateway"></a>ExpressRoute 网关
 

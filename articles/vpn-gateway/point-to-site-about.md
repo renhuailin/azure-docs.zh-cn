@@ -6,18 +6,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 05/28/2021
+ms.date: 07/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1be0ecfe773bfa56900295db8701d9a582389046
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ddcb49b1ce2bd882590b1d85cb634846ef3b4d40
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111554671"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729630"
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
-点到站点 (P2S) VPN 网关连接用于创建从单个客户端计算机到虚拟网络的安全连接。 可通过从客户端计算机启动连接来建立 P2S 连接。 对于要从远程位置（例如从家里或会议室）连接到 Azure VNet 的远程工作者，此解决方案很有用。 如果只有一些客户端需要连接到 VNet，则还可以使用 P2S VPN 这一解决方案来代替 S2S VPN。 本文适用于 Resource Manager 部署模型。
+点到站点 (P2S) VPN 网关连接用于创建从单个客户端计算机到虚拟网络的安全连接。 可通过从客户端计算机启动连接来建立 P2S 连接。 对于要从远程位置（例如从家里或会议室）连接到 Azure VNet 的远程工作者，此解决方案很有用。 如果只有一些客户端需要连接到 VNet，则还可以使用 P2S VPN 这一解决方案来代替 S2S VPN。 本文适用于[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)。
 
 ## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S 使用哪种协议？
 
@@ -25,13 +25,13 @@ ms.locfileid: "111554671"
 
 * **OpenVPN® 协议**，一种基于 SSL/TLS 的 VPN 协议。 由于大多数防火墙都会打开 TLS 所用的出站 TCP 端口 443，因此 TLS VPN 解决方案可以穿透防火墙。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（macOS 10.13 及更高版本）进行连接。
 
-* 安全套接字隧道协议 (SSTP)，一个基于 TLS 的专属 VPN 协议。 由于大多数防火墙都会打开 TLS 所用的出站 TCP 端口 443，因此 TLS VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
+* 安全套接字隧道协议 (SSTP)，一个基于 TLS 的专属 VPN 协议。 由于大多数防火墙都会打开 TLS 所用的出站 TCP 端口 443，因此 TLS VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 并支持 TLS 1.2 的 Windows 版本（Windows 8.1 和更高版本）。
 
 * IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（macOS 10.11 和更高版本）。
 
 
 >[!NOTE]
->P2S 的 IKEv2 和 OpenVPN 仅可用于资源管理器部署模型。 它们不可用于经典部署模型。
+>P2S 的 IKEv2 和 OpenVPN 仅可用于[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)。 它们不可用于经典部署模型。
 >
 
 ## <a name="how-are-p2s-vpn-clients-authenticated"></a><a name="authentication"></a>如何对 P2S VPN 客户端进行身份验证？

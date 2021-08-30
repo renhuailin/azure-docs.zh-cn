@@ -1,5 +1,5 @@
 ---
-title: 通过使用关系来管理孪生图
+title: 管理孪生图和关系
 titleSuffix: Azure Digital Twins
 description: 了解如何使用关系将数字孪生体连接起来以管理数字孪生图。
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c48f62d193af953ec080fcd559c9d7593428d99e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e43617a2874a7a6817dc8126bca8e1af79436eb2
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454593"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114689962"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用关系管理数字孪生图
 
@@ -20,7 +20,7 @@ Azure 数字孪生的核心是代表整个环境的[孪生图](concepts-twins-gr
 
 拥有有效的 [Azure 数字孪生实例](how-to-set-up-instance-portal.md)并在客户端应用中设置了[验证](how-to-authenticate-client.md)码后，就可在 Azure 数字孪生实例中创建、修改和删除数字孪生体及其关系。
 
-本文重点介绍如何将关系和图作为一个整体进行管理；若要单独处理数字孪生体，请参阅操作指南：管理数字孪生体。
+本文重点介绍如何将关系和图作为一个整体进行管理；若要单独处理数字孪生体，请参阅[管理数字孪生体](how-to-manage-twin.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,13 +52,13 @@ Azure 数字孪生的核心是代表整个环境的[孪生图](concepts-twins-gr
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="CreateRelationshipMethod" highlight="13":::
 
-现在可调用此自定义函数来创建 contains 关系，如下所示： 
+现在可调用此自定义函数来创建 contains 关系，方法如下： 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseCreateRelationship":::
 
 如果希望创建多个关系，可重复调用同一方法，将不同的关系类型传递到参数。 
 
-有关帮助程序类 `BasicRelationship` 的详细信息，请参阅[概念：Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md#serialization-helpers)。
+有关帮助程序类 `BasicRelationship` 的详细信息，请参阅 [Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md#serialization-helpers)。
 
 ### <a name="create-multiple-relationships-between-twins"></a>在孪生体之间创建多种关系
 
@@ -75,11 +75,19 @@ Azure 数字孪生的核心是代表整个环境的[孪生图](concepts-twins-gr
 
 ## <a name="list-relationships"></a>列出关系
 
-若要访问图中给定孪生体的传出关系列表，可使用如下所示的 `GetRelationships()` 方法：
+### <a name="list-properties-of-a-single-relationship"></a>列出单个关系的属性
+
+始终可将关系数据反序列化为你选择的类型。 若要对关系进行基本访问，请使用类型 `BasicRelationship`。 使用 `BasicRelationship` 帮助程序类，还可通过 `IDictionary<string, object>` 访问关系上定义的属性。 若要列出属性，可使用：
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="ListRelationshipProperties":::
+
+### <a name="list-outgoing-relationships-from-a-digital-twin"></a>列出数字孪生体中传出的关系
+
+若要访问图中给定孪生体的传出关系列表，可使用如下所示的 `GetRelationships()` 方法： 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="GetRelationshipsCall":::
 
-这会返回 `Azure.Pageable<T>` 或 `Azure.AsyncPageable<T>`，具体取决于你使用的是同步还是异步版本的调用。
+此方法会返回 `Azure.Pageable<T>` 或 `Azure.AsyncPageable<T>`，具体取决于你使用的是同步还是异步版本的调用。
 
 以下为检索关系列表的示例。 在可能出现在较大程序上下文中的自定义方法中，它使用 SDK 调用（已突出显示）。
 
@@ -89,11 +97,11 @@ Azure 数字孪生的核心是代表整个环境的[孪生图](concepts-twins-gr
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseFindOutgoingRelationships":::
 
-你可使用检索到的关系导航到图中的其他孪生体。 为此，请从返回的关系中读取 `target` 字段，并将其用作下次调用 `GetDigitalTwin()` 时的 ID。
+可以使用检索到的关系导航到图中的其他孪生体，方法如下：从返回的关系中读取 `target` 字段，并将它用作下次调用 `GetDigitalTwin()` 的 ID。
 
-### <a name="find-incoming-relationships-to-a-digital-twin"></a>查找数字孪生体的传入关系
+### <a name="list-incoming-relationships-to-a-digital-twin"></a>列出传入数字孪生体的关系
 
-Azure 数字孪生还提供了一个 API，用于查找给定孪生体的所有传入关系。 这在反向导航或删除孪生体时通常很有用。
+Azure 数字孪生还提供了一个 SDK 调用，用于查找传入到给定孪生体的所有关系。 此 SDK 在反向导航或删除孪生体时通常很有用。
 
 >[!NOTE]
 > `IncomingRelationship` 调用不返回关系的完整正文。 有关 `IncomingRelationship` 类的更多信息，请参阅其[参考文档](/dotnet/api/azure.digitaltwins.core.incomingrelationship?view=azure-dotnet&preserve-view=true)。
@@ -108,7 +116,7 @@ Azure 数字孪生还提供了一个 API，用于查找给定孪生体的所有�
 
 ### <a name="list-all-twin-properties-and-relationships"></a>列出所有的孪生体属性和关系
 
-通过使用上述方法列出孪生体的传出和传入关系，可以创建一种方法来输出完整的孪生体信息，包括孪生体的属性以及这两种关系。 下面是一个自定义方法示例，演示了如何组合上述自定义方法来实现此目的。
+通过使用上述方法列出孪生体的传出和传入关系，可以创建一种方法来输出完整的孪生体信息，包括孪生体的属性以及这两种关系。 下面是一个自定义方法示例，展现了如何组合上述自定义方法来实现此目的。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FetchAndPrintMethod":::
 
@@ -123,13 +131,16 @@ Azure 数字孪生还提供了一个 API，用于查找给定孪生体的所有�
 >[!NOTE]
 >此方法用于更新关系的属性。 如果需要更改关系的源孪生体或目标孪生体，则需要[删除该关系](#delete-relationships)，然后使用新的孪生体[重新创建关系](#create-relationships)。
 
-客户端调用所需的参数包括源孪生体（关系起源的孪生体）的 ID、要更新的关系的 ID 以及包含要更新的属性和新值的 [JSON 修补程序](http://jsonpatch.com/)文档。
+客户端调用所需的参数包括：
+- 源孪生体（关系起源的孪生体）的 ID。
+- 要更新的关系的 ID。
+- 包含要更新的属性和新值的 [JSON 修补程序](http://jsonpatch.com/)文档。
 
-下面是演示如何使用此方法的示例代码。 在可能出现在较大程序上下文中的自定义方法中，此示例使用 SDK 调用（已突出显示）。
+下面是展现如何使用此方法的示例代码片段。 在可能出现在较大程序上下文中的自定义方法中，此示例使用 SDK 调用（已突出显示）。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UpdateRelationshipMethod" highlight="6":::
 
-以下示例说明如何调用此自定义方法，传入包含更新属性所需信息的 JSON 修补程序文档。
+以下示例展现了如何调用此自定义方法，传入包含更新属性所需信息的 JSON 修补程序文档。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="UseUpdateRelationship":::
 
@@ -137,7 +148,7 @@ Azure 数字孪生还提供了一个 API，用于查找给定孪生体的所有�
 
 第一个参数指定源孪生体（关系起源的孪生体）。 另一个参数是关系 ID。 同时需要孪生体 ID 和关系 ID，因为关系 ID 只在孪生体范围内唯一。
 
-下面是演示如何使用此方法的示例代码。 在可能出现在较大程序上下文中的自定义方法中，此示例使用 SDK 调用（已突出显示）。
+下面是展现如何使用此方法的示例代码。 在可能出现在较大程序上下文中的自定义方法中，此示例使用 SDK 调用（已突出显示）。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="DeleteRelationshipMethod" highlight="5":::
 
@@ -158,7 +169,7 @@ Azure 数字孪生还提供了一个 API，用于查找给定孪生体的所有�
 | dtmi:example:Room;1    | Room1 | | | {"Temperature": 80} |
 | dtmi:example:Room;1    | Room0 | | | {"Temperature": 70} |
 
-若要将此数据导入到 Azure 数字孪生，可将表转换为 CSV 文件，然后编写代码将文件解释为命令，从而创建孪生体和关系。 下面的代码示例演示如何从 CSV 文件读取数据并在 Azure 数字孪生中创建孪生图。
+若要将此数据导入到 Azure 数字孪生，可以将表转换为 CSV 文件。 转换表后，可以编写代码来将文件解释为命令以创建孪生体和关系。 下面的代码示例演示如何从 CSV 文件读取数据并在 Azure 数字孪生中创建孪生图。
 
 在下面的代码中，CSV 文件名为 data.csv，并且还有一个占位符，表示 Azure 数字孪生实例的主机名。 该示例还利用了多个包，你可将这些包添加到项目中来帮助完成此过程。
 
@@ -190,7 +201,7 @@ Azure 数字孪生还提供了一个 API，用于查找给定孪生体的所有�
       dotnet add package Azure.Identity
       ```
 
-如果要直接运行该示例，还需要设置本地凭据。 下一节将详细介绍这一点。
+如果要直接运行该示例，还需要设置本地凭据。 下一节将详细介绍这一过程。
 [!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
 
 ### <a name="run-the-sample"></a>运行示例
@@ -207,5 +218,5 @@ Azure 数字孪生还提供了一个 API，用于查找给定孪生体的所有�
 ## <a name="next-steps"></a>后续步骤
 
 了解如何查询 Azure 数字孪生孪生图：
-* [概念：查询语言](concepts-query-language.md)
-* [操作指南：查询孪生图](how-to-query-graph.md)
+* [查询语言](concepts-query-language.md)
+* [查询孪生图](how-to-query-graph.md)

@@ -12,12 +12,12 @@ ms.date: 08/16/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b64806b3683db8f6cd3ec665b462f4f6f26397eb
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c88954434c38a04d0d1263e96639e6cca03c3a1b
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770150"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201636"
 ---
 # <a name="enable-custom-domains-for-azure-active-directory-b2c"></a>为 Azure Active Directory B2C 启用自定义域
 
@@ -99,7 +99,7 @@ ms.locfileid: "122770150"
 按照以下步骤创建 Azure AD B2C 租户的 Front Door。 有关详细信息，请参阅[创建应用程序的 Front Door](../frontdoor/quickstart-create-front-door.md#create-a-front-door-for-your-application)。
   
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择“目录 + 订阅”，然后选择包含要用于 Azure Front Door 的 Azure 订阅的目录。 此目录不应是包含 Azure AD B2C 租户的目录。
 1. 在主页或 Azure 菜单中，选择“创建资源”。 选择“网络” > “查看全部” > “Front Door”。
 1. 在“创建 Front Door”页的“基本信息”选项卡中，输入或选择以下信息，然后选择“下一步:  配置”。
@@ -114,7 +114,7 @@ ms.locfileid: "122770150"
 
 前端主机是应用程序使用的域名。 创建 Front Door 时，默认前端主机是 `azurefd.net` 的子域。
 
-Azure Front Door 提供用于将自定义域与前端主机相关联的选项。 使用此选项，可将 Azure AD B2C 用户界面与 URL 中的自定义域（而不是 Front Door 拥有的域名）相关联。 例如，`https://login.contoso.com`。
+Azure Front Door 提供用于将自定义域与前端主机相关联的选项。 使用此选项，可将 Azure AD B2C 用户界面与 URL 中的自定义域（而不是 Front Door 拥有的域名）相关联。 例如 https://login.contoso.com。
 
 若要添加前端主机，请执行以下步骤：
 
@@ -193,7 +193,7 @@ CNAME 记录是一种 DNS 记录，用于将源域名映射到目标域名（别
 
    - 键入：输入 *CNAME*。
 
-   - 目标：输入你在[步骤 2.1](#21-add-frontend-host) 中创建的默认 Front Door 前端主机。 必须采用 &lt;主机名&gt;.azurefd.net 格式  。 例如，`contoso.azurefd.net`。
+   - 目标：输入你在[步骤 2.1](#21-add-frontend-host) 中创建的默认 Front Door 前端主机。 必须采用 &lt;主机名&gt;.azurefd.net 格式  。 例如 `contoso.azurefd.net`。
 
 1. 保存所做更改。
 
@@ -220,7 +220,7 @@ CNAME 记录是一种 DNS 记录，用于将源域名映射到目标域名（别
 
 1. 对于“证书管理类型”，选择 [Front Door 管理](../frontdoor/front-door-custom-domain-https.md#option-1-default-use-a-certificate-managed-by-front-door)或[使用我自己的证书](../frontdoor/front-door-custom-domain-https.md#option-2-use-your-own-certificate)。 如果选择“托管的 Front Door”选项，请等待证书完全预配完毕。
 
-1. 选择 **添加** 。
+1. 选择 **添加**。
 
 ### <a name="33-update-the-routing-rule"></a>3.3 更新传递规则
 

@@ -9,14 +9,14 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: d79458cfc76adcfd35a6b8dee40c0c45786abc28
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.topic: how-to
+ms.custom: devx-track-python, responsible-ml
+ms.openlocfilehash: b033b37532bffa92bcc8f427abe4508c5b93aefc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763282"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739197"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解释性包通过 Python 解释 ML 模型和预测（预览版）
 
@@ -29,7 +29,9 @@ ms.locfileid: "107763282"
 
 * 在 Azure 中解释整个模型的行为和单个预测。
 
-* 使用可视化仪表板与模型解释进行交互。
+* 将解释上传到 Azure 机器学习运行历史记录。
+
+* 在 Jupyter 笔记本和 Azure 机器学习工作室中使用可视化仪表板与模型解释进行交互。
 
 * 将评分解释器与模型一起部署，以便在推理过程中观察解释。
 
@@ -298,14 +300,14 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 将说明下载到本地 Jupyter Notebook 后，可以使用说明仪表板中的可视化效果来了解和解释模型。 若要在 Jupyter Notebook 中加载说明仪表板小组件，请使用以下代码：
 
 ```python
-from interpret_community.widget import ExplanationDashboard
+from raiwidgets import ExplanationDashboard
 
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
 可视化效果同时支持有关工程化特征和原始特征的说明。 原始解释基于原始数据集的特征，工程化解释基于应用了特征工程的数据集的特征。
 
-尝试解释与原始数据集相关的模型时，建议使用原始解释，因为每个特征重要性将对应于原始数据集中的一个列。 工程化解释可能有用的一个场景是，从分类特征观察各个类别的影响。 如果对某个分类特征应用了独热编码，则生成的工程化解释会为每个类别包含一个不同的重要性值，为每个独热工程化特征包含一个重要性值。 这在缩小范围以确定数据集的哪一部分提供的信息对模型最有用时很有用。
+尝试解释与原始数据集相关的模型时，建议使用原始解释，因为每个特征重要性将对应于原始数据集中的一个列。 工程化解释可能有用的一个场景是，从分类特征观察各个类别的影响。 如果对某个分类特征应用了独热编码，则生成的工程化解释会为每个类别包含一个不同的重要性值，为每个独热工程化特征包含一个重要性值。 这种编码在缩小范围以确定数据集的哪一部分提供的信息对模型最有用时很有用。
 
 > [!NOTE]
 > 工程化解释和原始解释按顺序计算。 首先会基于模型和特征化管道创建一个工程化解释。 然后，通过聚合来自同一原始特征的工程化特征的重要性，基于该工程化解释创建原始解释。
@@ -564,7 +566,7 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
 
 * 不支持稀疏数据：当存在大量特征时，模型解释仪表板会出现故障，或者速度明显减慢，因此我们目前不支持稀疏数据格式。 此外，当使用大型数据集和大量特征时，会产生常规的内存问题。 
 
-* 模型解释不支持预测模型：可解释性（最佳模型解释）不适用于将以下算法推荐为最佳模型的 AutoML 预测试验：TCNForecaster、AutoArima、Prophet、ExponentialSmoothing、Average、Naive、Seasonal Average 和 Seasonal Naive。 AutoML 预测具有支持解释的回归模型。 但是，在解释仪表板中，不支持将“单个特征重要性”选项卡用于预测，因为其数据管道太复杂。
+* 模型解释不支持预测模型：可解释性（最佳模型解释）不适用于将以下算法推荐为最佳模型的 AutoML 预测试验：TCNForecaster、AutoArima、Prophet、ExponentialSmoothing、Average、Naive、Seasonal Average 和 Seasonal Naive。 AutoML 预测回归模型支持解释。 但是，在解释仪表板中，不支持将“单个特征重要性”选项卡用于预测，因为其数据管道太复杂。
 
 * 数据索引的本地解释：如果原始验证数据集有 5000 个以上的数据点，则解释仪表板不支持将本地重要性值关联到该数据集中的行标识符，因为仪表板会随机对数据进行下采样。 但是，仪表板会在“单个特征重要性”选项卡下显示传递到仪表板中的每个数据点的原始数据集特征值。用户可以通过对原始数据集特征值进行匹配将本地重要性映射回原始数据集。 如果验证数据集的大小小于 5000 个样本，则 AzureML 工作室中的 `index` 特征将对应于验证数据集中的索引。
 

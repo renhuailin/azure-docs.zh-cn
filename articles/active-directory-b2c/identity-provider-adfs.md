@@ -1,7 +1,7 @@
 ---
-title: 使用自定义策略将 AD FS 添加为 SAML 标识提供者
+title: 使用自定义策略将 AD FS 添加为 OpenID Connect 标识提供者
 titleSuffix: Azure AD B2C
-description: 在 Azure Active Directory B2C 中使用 SAML 协议和自定义策略设置 AD FS 2016
+description: 在 Azure Active Directory B2C 中使用 OpenID Connect 协议和自定义策略设置 AD FS 2016
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -13,121 +13,168 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 292a244a4804f97e8622d6841c33b153af373290
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69803dc374e92b8fcc856237cb8b791dac5cb40c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489162"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723191"
 ---
-# <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 AD FS 作为 SAML 标识提供者
+# <a name="add-ad-fs-as-an-openid-connect-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略将 AD FS 添加为 OpenID Connect 标识提供者
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
+
+## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+
+## <a name="create-an-ad-fs-application"></a>创建 AD FS 应用程序
+
+若要在 Azure Active Directory B2C (Azure AD B2C) 中为使用 AD FS 帐户的用户启用登录，请在 AD FS 中创建应用程序组。 有关详细信息，请参阅[结合使用 OpenID Connect 和 AD FS 2016 及更高版本生成 Web 应用程序](/windows-server/identity/ad-fs/development/enabling-openid-connect-with-ad-fs)
+
+若要创建应用程序组，请执行以下步骤：
+
+1. 在“服务器管理器”中，选择“工具”，然后选择“AD FS 管理”  。
+1. 在”AD FS管理”中，右键单击“应用程序组”，然后选择“添加应用程序组” 。
+1. 在“应用程序组向导”的“欢迎”屏幕上：
+    1. 输入应用程序的名称。 例如“Azure AD B2C 应用程序”。
+    1. 在“客户端-服务器应用程序”下，选择“访问 Web 应用程序的 Web 浏览器”模板 。
+    1. 选择“下一步”。
+1. 在“应用程序组向导”的“本机应用程序”屏幕上：
+    1. 复制“客户端标识符”值。 客户端标识符是 AD FS“应用程序 ID”。 本文稍后需要应用程序 ID。
+    1. 在“重定向 URI”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称，将 `your-domain-name` 替换为你的自定义域。
+    1. 选择“下一步”，然后选择“下一步”以完成应用注册向导 。 
+    1. 选择“关闭”。
+
+
+### <a name="configure-the-app-claims"></a>配置应用声明
+
+在此步骤中，配置 AD FS 应用程序返回到 Azure AD B2C 的声明。  
+
+1. 在“应用程序组”中，选择你创建的应用程序。
+1. 在“应用程序属性”窗口的“应用程序”下，选择“Web 应用程序” 。 然后选择“编辑”。
+    :::image type="content" source="./media/identity-provider-adfs/ad-fs-edit-app.png" alt-text="该屏幕截图显示如何编辑 Web 应用程序。":::
+1. 选择“颁发转换规则”选项卡，然后选择“添加规则” 。
+1. 在“声明规则模板”中，选择“以声明方式发送 LDAP 特性”。
+1. 提供“声明规则名称”。 有关“属性存储”，选择“选择 Active Directory”并添加以下声明 。
+
+    | LDAP 属性 | 传出声明类型 |
+    | -------------- | ------------------- |
+    | User-Principal-Name | UPN |
+    | Surname | family_name |
+    | Given-Name | given_name |
+    | Display-Name | name |
+
+    请注意，某些名称将不会显示在传出声明类型下拉列表中。 需要手动键入它们。 （下拉列表是可编辑的）。
+
+1. 选择“完成”，然后选择“关闭” 。
+
+
 ::: zone pivot="b2c-user-flow"
 
-[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+## <a name="configure-ad-fs-as-an-identity-provider"></a>将 AD FS 配置为标识提供者
+
+1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+1. 选择“标识提供程序”，然后选择“新建 OpenID Connect 提供程序” 。
+1. 输入“名称”。 例如，Contoso。
+1. 对于“元数据 URL”，请输入 [AD FS OpenID Connect 配置文档](/windows-server/identity/ad-fs/development/ad-fs-openid-connect-oauth-concepts#ad-fs-endpoints)的 URL。 例如：
+
+    ```http
+    https://adfs.contoso.com/adfs/.well-known/openid-configuration 
+    ```
+
+1. 对于“客户端 ID”，输入之前记录的应用程序 ID。
+1. 对于“范围”，请输入 `openid`。
+1. 对于“响应类型”，请选择“id_token” 。
+1. （可选）对于“域提示”，请输入 `contoso.com`。 有关详细信息，请参阅[使用 Azure Active Directory B2C 设置直接登录](direct-signin.md#redirect-sign-in-to-a-social-provider)。
+1. 在“标识提供者声明映射”下，选择以下声明：
+
+    - 用户 ID：sub
+    - 显示名称：unique_name
+    - 给定名称：given_name
+    - 姓氏：family_name
+
+1. 选择“保存”。
+
+## <a name="add-ad-fs-identity-provider-to-a-user-flow"></a>将 AD FS 标识提供者添加到用户流 
+
+此时，AD FS (Contoso) 标识提供者已设置，但还不能在任何登录页中使用。 将 AD FS 标识提供者添加到用户流的步骤：
+
+1. 在 Azure AD B2C 租户中，选择“用户流”  。
+1. 选择要将 AD FS 标识提供者 (Contoso) 添加到的用户流。
+1. 在“社交标识提供者”下，选择“Contoso” 。
+1. 选择“保存”。
+1. 若要测试策略，请选择“运行用户流”。
+1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“运行用户流”按钮。
+1. 在注册或登录页面上，选择“Contoso”以使用 Contoso 帐户登录。
+
+如果登录过程成功，则浏览器将重定向到 `https://jwt.ms`，其中显示了 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介绍如何让 AD FS 用户帐户使用 Azure Active Directory B2C (Azure AD B2C) 中的[自定义策略](custom-policy-overview.md)登录。 可通过将 [SAML 标识提供者](identity-provider-generic-saml.md)添加到自定义策略来实现登录。
+## <a name="configure-ad-fs-as-an-identity-provider"></a>将 AD FS 配置为标识提供者
 
-## <a name="prerequisites"></a>先决条件
-
-[!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
-
-## <a name="create-a-self-signed-certificate"></a>创建自签名证书
-
-[!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
-
-## <a name="create-a-policy-key"></a>创建策略密钥
-
-需要将你的证书存储在 Azure AD B2C 租户中。
-
-1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
-4. 在“概述”页上选择“标识体验框架”。
-5. 选择“策略密钥”，然后选择“添加”。
-6. 对于“选项”，请选择 `Upload`。
-7. 输入策略密钥的 **名称**。 例如，`SAMLSigningCert`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
-8. 浏览并选择带有私钥的证书 .pfx 文件。
-9. 单击“创建”。
-
-## <a name="add-a-claims-provider"></a>添加声明提供程序
-
-如果希望用户使用 AD FS 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
-
-可以通过在策略的扩展文件中将 AD FS 帐户添加到 ClaimsProviders 元素，将该帐户定义为声明提供程序。 有关详细信息，请参阅[定义 SAML 标识提供者](identity-provider-generic-saml.md)。
+要使用户能够使用 AD FS 帐户登录，需将 AD FS 定义为 Azure AD B2C 可通过终结点与之通信的声明提供程序。 
 
 1. 打开 *TrustFrameworkExtensions.xml*。
-1. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
-1. 如下所示添加新的 **ClaimsProvider**：
+2. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
+3. 如下所示添加新的 **ClaimsProvider**：
 
     ```xml
     <ClaimsProvider>
       <Domain>contoso.com</Domain>
       <DisplayName>Contoso</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Contoso-SAML2">
+        <TechnicalProfile Id="Contoso-OpenIdConnect">
           <DisplayName>Contoso</DisplayName>
-          <Description>Login with your AD FS account</Description>
-          <Protocol Name="SAML2"/>
+          <Protocol Name="OpenIdConnect" />
           <Metadata>
-            <Item Key="WantsEncryptedAssertions">false</Item>
-            <Item Key="PartnerEntity">https://your-AD-FS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
+            <Item Key="METADATA">https://your-adfs-domain/adfs/.well-known/openid-configuration</Item>
+            <Item Key="response_types">id_token</Item>
+            <Item Key="response_mode">form_post</Item>
+            <Item Key="scope">openid</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <!-- Update the Client ID below to the Application ID -->
+            <Item Key="client_id">Your AD FS application ID</Item>
           </Metadata>
-          <CryptographicKeys>
-            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
-          </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="userPrincipalName" />
-            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name"/>
-            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name"/>
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email"/>
-            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name"/>
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="contoso.com" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication"/>
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="upn" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="unique_name" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss"  />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
           </OutputClaims>
           <OutputClaimsTransformations>
-            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName"/>
-            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName"/>
-            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
-            <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
           </OutputClaimsTransformations>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-idp"/>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
     ```
 
-1. 将 `your-AD-FS-domain` 替换为你的 AD FS 域的名称，将 identityProvider 输出声明的值替换为你的 DNS（表示你的域的任意值）。
+4. 对于“元数据 URL”，请输入 [AD FS OpenID Connect 配置文档](/windows-server/identity/ad-fs/development/ad-fs-openid-connect-oauth-concepts#ad-fs-endpoints)的 URL。 例如：
 
-1. 找到 `<ClaimsProviders>` 部分并添加以下 XML 片段。 如果策略已包含 `SM-Saml-idp` 技术配置文件，请跳到下一步。 有关详细信息，请参阅[单一登录会话管理](custom-policy-reference-sso.md)。
-
-    ```xml
-    <ClaimsProvider>
-      <DisplayName>Session Management</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="SM-Saml-idp">
-          <DisplayName>Session Management Provider</DisplayName>
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-          <Metadata>
-            <Item Key="IncludeSessionIndex">false</Item>
-            <Item Key="RegisterServiceProviders">false</Item>
-          </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
     ```
-
-1. 保存文件。
+    https://adfs.contoso.com/adfs/.well-known/openid-configuration 
+    ```
+5. 将 **client_id** 设置为应用程序注册中的应用程序 ID。
+6. 保存文件。
 
 [!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
+
 
 ```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
@@ -141,108 +188,25 @@ ms.locfileid: "103489162"
 <OrchestrationStep Order="2" Type="ClaimsExchange">
   ...
   <ClaimsExchanges>
-    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
+    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-OpenIdConnect" />
   </ClaimsExchanges>
 </OrchestrationStep>
 ```
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-## <a name="configure-an-ad-fs-relying-party-trust"></a>配置 AD FS 信赖方信任
-
-要将 AD FS 用作 Azure AD B2C 中的标识提供者，需要使用 Azure AD B2C SAML 元数据创建 AD FS 信赖方信任。 以下示例显示 Azure AD B2C 技术配置文件的 SAML 元数据的 URL 地址：
-
-```
-https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
-```
-
-使用[自定义域](custom-domain.md)时，请使用以下格式：
-
-```
-https://your-domain-name/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
-```
-
-请替换以下值：
-
-- 将 your-tenant-name 替换为租户的名称，例如 your-tenant.onmicrosoft.com。
-- 将 your-domain-name 替换为你的自定义域名，例如 login.contoso.com。
-- 将 your-policy 替换为你的策略名称。 例如，B2C_1A_signup_signin_adfs。
-- 将 your-technical-profile 替换为 SAML 标识提供者技术配置文件的名称。 例如，Contoso-SAML2。
-
-打开浏览器并导航到此 URL。 确保键入正确的 URL 并且你有权访问 XML 元数据文件。 要通过使用 AD FS 管理管理单元添加新的依赖方信任并手动配置设置，请在联合服务器上执行以下过程。 本地计算机上“管理员”中的成员身份或同等身份是完成此过程所需的最低要求。
-
-1. 在“服务器管理器”中，选择“工具”，然后选择“AD FS 管理”。
-2. 选择“添加信赖方信任”。
-3. 在“欢迎”页上，选择“声明感知”，然后单击“启动”。
-4. 在“选择数据源”页上，选择“导入有关依赖方在线或在本地网络上发布的数据”提供 Azure AD B2C 元数据 URL，然后单击“下一步”。
-5. 在“指定显示名称”页上，输入一个“显示名称”，在“说明”下输入有关此信赖方信任的描述，然后单击“下一步”。
-6. 在“选择访问控制策略”页上选择一个策略，然后单击“下一步”。
-7. 在“准备好添加信任”页上，复查设置，然后单击“下一步”来保存信赖方信任的信息。
-8. 在“完成”页上，单击“关闭”，此操作将自动显示“编辑声明规则”对话框。
-9. 选择“添加规则”。
-10. 在“声明规则模板”中，选择“以声明方式发送 LDAP 特性”。
-11. 提供“声明规则名称”。 有关“属性存储”，选择“选择 Active Directory”添加以下声明，然后单击“完成”和“确定”。
-
-    | LDAP 属性 | 传出声明类型 |
-    | -------------- | ------------------- |
-    | User-Principal-Name | userPrincipalName |
-    | Surname | family_name |
-    | Given-Name | given_name |
-    | E-Mail-Address | 电子邮件 |
-    | Display-Name | name |
-
-    请注意，这些名称将不会显示在传出声明类型下拉列表中。 需要手动键入它们。 （下拉列表实际上是可以编辑的）。
-
-12.  根据证书类型，可能需要设置哈希算法。 在信赖方信任（B2C 演示）属性窗口上，选择“高级”选项卡并将“安全哈希算法”更改为 `SHA-256`，然后单击“确定”。
-13. 在“服务器管理器”中，选择“工具”，然后选择“AD FS 管理”。
-14. 选择所创建的信赖方信任，选择“从联合元数据更新”，然后单击“更新”。
-
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
-1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
-1. 在“策略”下，选择“Identity Experience Framework”
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
 1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
-1. 在注册或登录页面上，选择“Contoso AD FS”以使用 Contoso AD FS 标识提供者登录。
+1. 在注册或登录页面上，选择“Contoso”以使用 Contoso 帐户登录。
 
 如果登录过程是成功的，则你的浏览器会被重定向到 `https://jwt.ms`，其中显示 Azure AD B2C 返回的令牌内容。
 
-## <a name="troubleshooting-ad-fs-service"></a>AD FS 服务疑难解答  
-
-AD FS 被配置为使用 Windows 应用程序日志。 如果在 Azure AD B2C 中使用自定义策略将设置 AD FS 作为 SAML 标识提供者时遇到挑战，你可能想要检查 AD FS 事件日志：
-
-1. 在 Windows“搜索栏”中，键入“事件查看器”，然后选择“事件查看器”桌面应用。
-1. 若要查看另一台计算机的日志，右键单击“事件查看器（本地）”。 选择“连接到另一台计算机”，并填写字段以完成“选择计算机”对话框。
-1. 在“事件查看器”中，打开“应用程序和服务日志” 。
-1. 依次选择“AD FS”和“管理员”。 
-1. 若要查看有关某事件的详细信息，请双击该事件。  
-
-### <a name="saml-request-is-not-signed-with-expected-signature-algorithm-event"></a>SAML 请求未通过预期的签名算法事件进行签名
-
-此错误表明，Azure AD B2C 发送的 SAML 请求未通过 AD FS 中配置的预期签名算法进行签名。 例如，SAML 请求是通过签名算法 `rsa-sha256` 进行签名的，但预期签名算法却是 `rsa-sha1`。 若要解决此问题，请确保 Azure AD B2C 和 AD FS 均配置有相同的签名算法。
-
-#### <a name="option-1-set-the-signature-algorithm-in-azure-ad-b2c"></a>选项 1：在 Azure AD B2C 中设置签名算法  
-
-可以配置如何在 Azure AD B2C 中对 SAML 请求进行签名。 [XmlSignatureAlgorithm](identity-provider-generic-saml.md) 元数据控制 SAML 请求中 `SigAlg` 参数（查询字符串或 post 参数）的值。 下面的示例将配置 Azure AD B2C 以使用 `rsa-sha256` 签名算法。
-
-```xml
-<Metadata>
-  <Item Key="WantsEncryptedAssertions">false</Item>
-  <Item Key="PartnerEntity">https://your-AD-FS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
-  <Item Key="XmlSignatureAlgorithm">Sha256</Item>
-</Metadata>
-```
-
-#### <a name="option-2-set-the-signature-algorithm-in-ad-fs"></a>选项 2：在 AD FS 中设置签名算法 
-
-或者，你还可以在 AD FS 中配置预期的 SAML 请求签名算法。
-
-1. 在“服务器管理器”中，选择“工具”，然后选择“AD FS 管理”。
-1. 选择之前创建的“信赖方信任”。
-1. 依次选择“属性”和“高级”
-1. 配置“安全哈希算法”，然后选择“确定”以保存更改。
 
 ::: zone-end
+
+## <a name="next-steps"></a>后续步骤
+
+了解如何[将 AD-FS 令牌传递给应用程序](idp-pass-through-user-flow.md)。

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 12/18/2020
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1151981eb96862493eb6a1740e46845c98f7e2ea
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98789189"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752006"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>教程：创建 Azure Data Box 的导出命令
 
@@ -273,6 +273,11 @@ Azure Data Box 是一种混合解决方案，可让将 Azure 中的数据移到�
 Data Box 复制源存储帐户的数据。 数据复制完成后，Data Box 被锁定，门户将显示订单处于“**复制已完成**”状态。
 
 ![Data Box 导出命令，数据复制完成](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-complete.png)
+
+从 Azure 存储到 Data Box 的数据导出有时会失败。 请确保这些 blob 不是存档 blob，因为不支持导出这些 blob。 
+
+> [!NOTE]
+> 对于存档 blob，需要先将这些 blob 解除冻结，然后才能将其从 Azure 存储帐户导出到 Data Box。 有关详细信息，请参阅[将存档 blob 解除冻结]( ../storage/blobs/storage-blob-rehydration.md)。
 
 如果没有设备可以使用，用户会收到通知。 如果设备有货，Microsoft 会确定要发货的设备，并准备发货。 在设备准备期间，会执行以下操作：
 

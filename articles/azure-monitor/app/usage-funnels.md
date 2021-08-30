@@ -1,46 +1,45 @@
 ---
-title: Azure Application Insights 漏斗图
+title: Application Insights 漏斗图
 description: 了解如何使用漏斗图来发现客户与你的应用程序的交互方式。
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 07/17/2017
-ms.reviewer: mbullwin
-ms.openlocfilehash: c09667e0493fc39e8a2679a698f06301bab6ba45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: lgayhardt
+ms.author: lagayhar
+ms.date: 07/30/2021
+ms.openlocfilehash: 0c0ab7da554b85f9adcde4d4991e1271f2acb433
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024942"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732006"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>使用 Application Insights 漏斗图了解客户如何使用你的应用程序
 
-了解客户体验对你的业务而言至关重要。 如果你的应用程序涉及多个阶段，那么需要知道是否大多数客户正在完成整个进程，或者他们是否即将在某个时间点结束进程。 Web 应用程序中通过一系列步骤完成的进度被称为“漏斗图”。 Azure Application Insights 漏斗图可用于深入了解你的用户，并监视分步转换率。 
+了解客户体验对你的业务而言至关重要。 如果你的应用程序涉及多个阶段，那么需要知道是否大多数客户正在完成整个进程，或者他们是否即将在某个时间点结束进程。 Web 应用程序中通过一系列步骤完成的进度被称为“漏斗图”。 可使用 Application Insights 漏斗图深入了解你的用户，并监视分步转换率。 
 
 ## <a name="create-your-funnel"></a>创建漏斗图
-在创建漏斗图之前，需要决定想要回答的问题。 例如，你可能想要知道多少个用户正在查看主页、查看客户配置文件和创建票证。 在此示例中，Fabrikam Fiber 公司的所有者想要知道成功创建客户票证的客户的百分比。
+在创建漏斗图之前，需要决定想要回答的问题。 例如，你可能想要知道多少个用户正在查看主页、查看客户配置文件和创建票证。 
 
-以下是他们创建漏斗图所执行的步骤。
+创建漏斗图：
 
-1. 在 Application Insights 漏斗图工具中，选择“新建”。
-1. 从“时间范围”下拉菜单中，选择“最近 90 天”。  选择“我的漏斗图”或“共享漏斗图”。 
-1. 从“步骤 1”下拉列表中选择“索引”。 
-1. 从“步骤 2”列表中选择“客户”。 
-1. 从“步骤 3”列表中选择“创建”。 
-1. 向漏斗图中添加一个名称，然后选择“保存”。
+1. 在“漏斗图”选项卡中选择“编辑” 。
+1. 选择你的“第一步”。
 
-以下屏幕截图显示漏斗图工具生成的数据类型示例。 Fabrikam 所有者从此处可以看到，在过去 90 天内，54.3% 访问了主页的客户创建了客户票证。 他们还可以查看 2,700 个客户从主页进入索引。 这可能表示刷新问题。
+     :::image type="content" source="./media/usage-funnels/funnel.png" alt-text="“漏斗”选项卡的屏幕截图，其中选择了“编辑”选项卡上的步骤。" lightbox="./media/usage-funnels/funnel.png":::
 
+1. 要将筛选器应用到步骤，请选择“添加筛选器”，它会在为第一步选择项目后出现。
+1. 然后选择“第二步”，依此类推。
+1. 选择“视图”选项卡，以查看漏斗图结果
 
-![包含数据的漏斗图工具屏幕截图](media/usage-funnels/funnel1.png)
+      :::image type="content" source="./media/usage-funnels/funnel-2.png" alt-text="“视图”选项卡上“漏斗图”选项卡的屏幕截图，其中显示第一步和第二步的结果。" lightbox="./media/usage-funnels/funnel-2.png":::
+
+1. 要保存漏斗图以便下次查看，请选择顶部“保存”。 可使用“打开”以打开保存的漏斗图。
 
 ### <a name="funnels-features"></a>漏斗图功能
-上面的屏幕截图包括五个突出显示的区域。 这些是漏斗图的功能。 以下列表更详细说明了屏幕截图中的每个相应区域：
-1. 如果对应用进行采样，将看到采样横幅。 选择标题栏打开上下文窗格，其中说明了如何关闭采样。 
-2. 可以将漏斗图导出到 [Power BI](./export-power-bi.md)。
-3. 选择一个步骤以在右侧查看更多详细信息。 
-4. 历史转换图显示过去 90 天内的兑换率。 
-5. 通过访问用户工具更好地了解用户。 可在每个步骤中使用筛选器。 
+
+- 如果对应用进行采样，你会看到采样横幅。 选择标题栏打开上下文窗格，其中说明了如何关闭采样。 
+- 选择一个步骤以在右侧查看更多详细信息。 
+- 历史转换图显示过去 90 天内的兑换率。 
+- 通过访问用户工具更好地了解用户。 可在每个步骤中使用筛选器。 
 
 ## <a name="next-steps"></a>后续步骤
   * [使用情况概述](usage-overview.md)

@@ -4,33 +4,32 @@ description: 了解如何使用商业市场分析中的“客户”仪表板访�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 11/09/2020
-author: sayantanroy83
-ms.author: sroy
-ms.openlocfilehash: 3d5016e1671bb52d4b819c10e7c52c12e5046b7e
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 43332c559c309bc99754467994a4718ece78d3cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541177"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731209"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“客户”仪表板
 
 本文介绍合作伙伴中心的“客户”仪表板。 此仪表板显示有关客户的信息，包括以图形和可下载的格式显示的增长趋势。
 
-若要访问合作伙伴中心的“客户”仪表板，请在“商业市场”下选择[“分析”](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) > “客户”。
-
 >[!NOTE]
-> 有关分析术语的详细定义，请参阅[商业市场分析术语和常见问题](./analytics-faq.md)。
+> 有关分析术语的详细定义，请参阅[商业市场分析术语和常见问题](./analytics-faq.yml)。
 
 ## <a name="customers-dashboard"></a>“客户”仪表板
 
-“客户”仪表板显示已获取产品/服务的客户的数据。 你可以查看以下各项的图形表示形式：
+[“客户”仪表板](https://go.microsoft.com/fwlink/?linkid=2166011)显示已获取产品/服务的客户的数据。 你可以查看以下各项的图形表示形式：
 
 - 活跃客户和流失客户的趋势
 - 客户（包括现有客户、新客户和流失客户）增长趋势
 - 按订单和使用量分类的客户
-- 客户百分位数 
+- 客户百分位数
 - 按订单量和使用量统计的客户类型
 - 按地域分类的客户
 - 客户详细信息表
@@ -42,6 +41,8 @@ ms.locfileid: "111541177"
 ## <a name="elements-of-the-customers-dashboard"></a>“客户”仪表板的元素
 
 下面各部分介绍了如何使用“客户”仪表板以及如何读取数据。
+
+若要访问合作伙伴中心的“客户”仪表板，请在“商业市场”下选择[“分析”](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) > “客户”。
 
 ### <a name="month-range"></a>月份范围
 
@@ -181,4 +182,4 @@ ms.locfileid: "111541177"
 - 有关虚拟机 (VM) 产品/服务使用情况和按流量计费指标的信息，请参阅[商业市场分析中的使用情况仪表板](./usage-dashboard.md)。
 - 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](downloads-dashboard.md)。
 - 若要查看客户对 Azure 市场和 Microsoft AppSource 中产品/服务的反馈的综合视图，请参阅[合作伙伴中心的评分和评价分析仪表板](ratings-reviews.md)。
-- 有关商业市场分析的常见问题解答以及数据术语的综合词典，请参阅[商业市场分析术语和常见问题](./analytics-faq.md)。
+- 有关商业市场分析的常见问题解答以及数据术语的综合词典，请参阅[商业市场分析术语和常见问题](./analytics-faq.yml)。

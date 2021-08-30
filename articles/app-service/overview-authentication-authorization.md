@@ -3,15 +3,15 @@ title: 身份验证和授权
 description: 了解 Azure 应用服务和 Azure Functions 中内置的身份验证和授权支持，并了解它如何保护应用，防止未经授权的访问。
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 03/29/2021
+ms.date: 07/21/2021
 ms.reviewer: mahender
-ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: a362e99e9da7cf4c41f042364792a05a27b1aa6a
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: 304dc18933cc89a19dcc949fd6ff6b33a9be4479
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892681"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397348"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 应用服务和 Azure Functions 中的身份验证和授权
 
@@ -52,54 +52,54 @@ Azure 应用服务提供内置的身份验证和授权功能（有时称为“�
 
 ## <a name="how-it-works"></a>工作原理
 
-[Windows 上的功能体系结构（非容器部署）](#feature-architecture-on-windows-non-container-deployment)
-
-[Linux 和容器上的功能体系结构](#feature-architecture-on-linux-and-containers)
+[功能体系结构](#feature-architecture)
 
 [身份验证流](#authentication-flow)
 
 [授权行为](#authorization-behavior)
 
-[用户和应用程序声明](#user-and-application-claims)
-
 [令牌存储](#token-store)
 
 [日志记录和跟踪](#logging-and-tracing)
 
-#### <a name="feature-architecture-on-windows-non-container-deployment"></a>Windows 上的功能体系结构（非容器部署）
+### <a name="feature-architecture"></a>功能体系结构
 
-身份验证和授权模块在应用程序代码所在的同一沙盒中运行。 启用后，每个传入的 HTTP 请求将通过此模块，然后由应用程序代码处理。
+身份验证和授权中间件组件是平台的一项功能，与应用程序在同一 VM 上运行。 启用后，每个传入的 HTTP 请求将通过此模块，然后由应用程序处理。
 
 :::image type="content" source="media/app-service-authentication-overview/architecture.png" alt-text="一个体系结构图，显示请求被站点沙盒中的进程拦截，该进程与标识提供者进行交互，然后再允许流量发往已部署的站点" lightbox="media/app-service-authentication-overview/architecture.png":::
 
-此模块为应用处理多项操作：
+平台中间件处理应用的几个操作：
 
-- 使用指定的提供程序对用户进行身份验证
-- 验证、存储和刷新令牌
+- 使用指定的标识提供者对用户和客户端进行身份验证
+- 验证、存储和刷新由配置的标识提供者颁发的 OAuth 令牌
 - 管理经过身份验证的会话
-- 将标识信息插入请求标头
+- 将标识信息插入 HTTP 请求标头
 
-此模块独立于应用程序代码运行，使用应用设置进行配置。 不需要任何 SDK、特定语言，或者对应用程序代码进行更改。 
+该模块独立于应用程序代码运行，并且可以使用 Azure 资源管理器设置或使用[配置文件](configure-authentication-file-based.md)进行配置。 不需要任何 SDK、特定编程语言，或者对应用程序代码进行更改。 
+
+#### <a name="feature-architecture-on-windows-non-container-deployment"></a>Windows 上的功能体系结构（非容器部署）
+
+身份验证和授权模块在应用程序所在的同一沙盒中作为本机 [IIS 模块](/iis/get-started/introduction-to-iis/iis-modules-overview)运行。 启用后，每个传入的 HTTP 请求将通过此模块，然后由应用程序处理。
 
 #### <a name="feature-architecture-on-linux-and-containers"></a>Linux 和容器上的功能体系结构
 
 身份验证和授权模块在独立于应用程序代码的单独容器中运行。 使用所谓的[代表模式](/azure/architecture/patterns/ambassador)，它与传入的流量交互，以执行与在 Windows 上所执行的类似功能。 由于它不在进程内运行，因此不能与特定的语言框架直接集成；但是，应用所需的相关信息通过使用请求标头进行传递，如下所述。
 
-#### <a name="authentication-flow"></a>身份验证流
+### <a name="authentication-flow"></a>身份验证流
 
 身份验证流对于所有提供程序是相同的，但根据是否要使用提供程序的 SDK 登录而有所差别：
 
 - 不使用提供程序 SDK：应用程序向应用服务委托联合登录。 浏览器应用通常采用此方案，这可以防止向用户显示提供程序的登录页。 服务器代码管理登录过程，因此，此流也称为“服务器导向流”或“服务器流”。  此方案适用于浏览器应用。 它也适用于使用移动应用客户端 SDK 登录用户的本机应用，因为 SDK 会打开 Web 视图，使用应用服务身份验证将用户登录。
 - 使用提供程序 SDK：应用程序手动将用户登录到提供程序，然后将身份验证令牌提交给应用服务进行验证。 无浏览器应用通常采用此方案，这可以防止向用户显示提供程序的登录页。 应用程序代码管理登录过程，因此，此流也称为“客户端导向流”或“客户端流”。  此方案适用于 REST API、[Azure Functions](../azure-functions/functions-overview.md) 和 JavaScript 浏览器客户端，以及在登录过程中需要更高灵活性的浏览器应用。 它还适用于使用提供程序 SDK 登录用户的本机移动应用。
 
-对于应用服务中受信任浏览器应用对应用服务或 [Azure Functions](../azure-functions/functions-overview.md) 中另一 REST API 的调用，可以使用服务器导向流对其进行身份验证。 有关详细信息，请参阅[在应用服务中自定义身份验证和授权](app-service-authentication-how-to.md)。
+对于应用服务中受信任浏览器应用对应用服务或 [Azure Functions](../azure-functions/functions-overview.md) 中另一 REST API 的调用，可以使用服务器导向流对其进行身份验证。 有关详细信息，请参阅[自定义登录和注销](configure-authentication-customize-sign-in-out.md)。
 
 下表说明了身份验证流的步骤。
 
 | 步骤 | 不使用提供程序 SDK | 使用提供程序 SDK |
 | - | - | - |
 | 1.将用户登录 | 将客户端重定向到 `/.auth/login/<provider>`。 | 客户端代码直接使用提供程序的 SDK 将用户登录，并接收身份验证令牌。 有关详细信息，请参阅提供程序文档。 |
-| 2.身份验证后 | 提供程序将客户端重定向到 `/.auth/login/<provider>/callback`。 | 客户端代码[将来自提供程序的令牌发布到](app-service-authentication-how-to.md#validate-tokens-from-providers)`/.auth/login/<provider>` 进行验证。 |
+| 2.身份验证后 | 提供程序将客户端重定向到 `/.auth/login/<provider>/callback`。 | 客户端代码[将来自提供程序的令牌发布到](configure-authentication-customize-sign-in-out.md#client-directed-sign-in)`/.auth/login/<provider>` 进行验证。 |
 | 3.建立经过身份验证的会话 | 应用服务将经过身份验证的 Cookie 添加到响应中。 | 应用服务将自身的身份验证令牌返回给客户端代码。 |
 | 4.提供经过身份验证的内容 | 客户端在后续请求中包含身份验证 Cookie（由浏览器自动处理）。 | 客户端代码在 `X-ZUMO-AUTH` 标头中提供身份验证令牌（由移动应用客户端 SDK 自动处理）。 |
 
@@ -107,7 +107,7 @@ Azure 应用服务提供内置的身份验证和授权功能（有时称为“�
 
 <a name="authorization"></a>
 
-#### <a name="authorization-behavior"></a>授权行为
+### <a name="authorization-behavior"></a>授权行为
 
 在 [Azure 门户](https://portal.azure.com)中，当传入请求未经过身份验证时，可以使用多种行为配置应用服务。 以下标题介绍了选项。
 
@@ -115,13 +115,13 @@ Azure 应用服务提供内置的身份验证和授权功能（有时称为“�
 
 此选项将对未经身份验证的流量的授权交给应用程序代码处理。 对于经过身份验证的请求，应用服务还会在 HTTP 标头中一起传递身份验证信息。
 
-使用此选项可以更灵活地处理匿名请求。 例如，可以向用户[提供多个登录提供程序](app-service-authentication-how-to.md#use-multiple-sign-in-providers)。 但是，必须编写代码。
+使用此选项可以更灵活地处理匿名请求。 例如，可以向用户[提供多个登录提供程序](configure-authentication-customize-sign-in-out.md#use-multiple-sign-in-providers)。 但是，必须编写代码。
 
 **需要身份验证**
 
 此选项将拒绝任何未经身份验证流量流入应用程序。 这个拒绝可以是指向已配置的标识提供者的重定向操作。 在这些情况下，浏览器客户端将重定向到所选提供商的 `/.auth/login/<provider>`。 如果匿名请求来自本机移动应用，则返回的响应为 `HTTP 401 Unauthorized`。 你还可针对所有请求将拒绝配置为 `HTTP 401 Unauthorized` 或 `HTTP 403 Forbidden`。
 
-使用此选项不需要在应用中编写任何身份验证代码。 可以通过检查用户的声明来处理精细授权，例如角色特定的授权（请参阅[访问用户声明](app-service-authentication-how-to.md#access-user-claims)）。
+使用此选项不需要在应用中编写任何身份验证代码。 可以通过检查用户的声明来处理精细授权，例如角色特定的授权（请参阅[访问用户声明](configure-authentication-user-identities.md)）。
 
 > [!CAUTION]
 > 以这种方式限制访问适用于对应用的所有调用，对于想要主页公开可用的应用程序来说，这可能是不可取的，就像在许多单页应用程序中一样。
@@ -129,38 +129,31 @@ Azure 应用服务提供内置的身份验证和授权功能（有时称为“�
 > [!NOTE]
 > 默认情况下，Azure AD 租户中的任何用户都可以从 Azure AD 请求应用程序的令牌。 若要仅允许一组定义的用户访问应用，可以[在 Azure AD 中配置应用程序](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)。
 
-
-#### <a name="user-and-application-claims"></a>用户和应用程序声明
-
-对于所有语言框架，应用服务都通过将传入令牌（无论是来自经过身份验证的最终用户还是来自客户端应用程序）中的声明注入请求标头，使其可供代码使用。 对于 ASP.NET 4.6 应用，应用服务会在 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) 中填充经过身份验证的用户声明，使你能够遵循标准的 .NET 代码模式（包括 `[Authorize]` 属性）。 同样，对于 PHP 应用，应用服务会填充 `_SERVER['REMOTE_USER']` 变量。 对于 Java 应用，[可从 Tomcat servlet 访问](configure-language-java.md#authenticate-users-easy-auth)声明。
-
-对于 [Azure Functions](../azure-functions/functions-overview.md)，没有为 .NET 代码填充 `ClaimsPrincipal.Current`，但你仍然可以在请求标头中找到用户声明，也可通过请求上下文甚至通过绑定参数来获取 `ClaimsPrincipal` 对象。 有关详细信息，请参阅[使用客户端标识](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities)。
-
-有关详细信息，请参阅[访问用户声明](app-service-authentication-how-to.md#access-user-claims)。
-
-对于 .NET Core，[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) 支持使用身份验证/授权功能填充当前用户。 若要了解详细信息，可以在 [Microsoft.Identity.Web Wiki](https://github.com/AzureAD/microsoft-identity-web/wiki/1.2.0#integration-with-azure-app-services-authentication-of-web-apps-running-with-microsoftidentityweb) 上阅读相关内容，或查看[本教程中有关访问 Microsoft Graph 的 Web 应用的演示](./scenario-secure-app-access-microsoft-graph-as-user.md?tabs=command-line#install-client-library-packages)。
-
-#### <a name="token-store"></a>令牌存储
+### <a name="token-store"></a>令牌存储
 
 应用服务提供内置的令牌存储，这是与 Web 应用、API 或本机移动应用的用户相关联的令牌存储库。 对任何提供程序启用身份验证时，此令牌存储可立即供应用使用。 如果应用程序代码需要代表用户访问这些提供程序中的数据，例如：
 
 - 发布到经过身份验证的用户的 Facebook 时间线
 - 使用 Microsoft Graph API 读取用户的公司数据
 
-通常，必须编写代码才能在应用程序中收集、存储和刷新这些令牌。 使用令牌存储，只需在需要令牌时才[检索令牌](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)；当令牌失效时，可以[告知应用服务刷新令牌](app-service-authentication-how-to.md#refresh-identity-provider-tokens)。 
+通常，必须编写代码才能在应用程序中收集、存储和刷新这些令牌。 使用令牌存储，只需在需要令牌时才[检索令牌](configure-authentication-oauth-tokens.md#retrieve-tokens-in-app-code)；当令牌失效时，可以[告知应用服务刷新令牌](configure-authentication-oauth-tokens.md#refresh-auth-tokens)。 
 
 将为经身份验证的会话缓存 ID 令牌、访问令牌和刷新令牌，它们只能由关联的用户访问。  
 
 如果不需要在应用中使用令牌，可以在应用的“身份验证/授权”页中禁用令牌存储。
 
-#### <a name="logging-and-tracing"></a>日志记录和跟踪
+### <a name="logging-and-tracing"></a>日志记录和跟踪
 
 如果[启用应用程序日志记录](troubleshoot-diagnostic-logs.md)，将在日志文件中直接看到身份验证和授权跟踪。 如果出现意外的身份验证错误，查看现有的应用程序日志即可方便找到所有详细信息。 如果启用[失败请求跟踪](troubleshoot-diagnostic-logs.md)，可以确切地查看身份验证和授权模块在失败请求中发挥的作用。 在跟踪日志中，找到对名为 `EasyAuthModule_32/64` 的模块的引用。
 
 ## <a name="more-resources"></a>更多资源
 
 - [操作说明：将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录](configure-authentication-provider-aad.md)
-- [Azure 应用服务中的身份验证和授权的高级用法](app-service-authentication-how-to.md)
+- [自定义登录和注销](configure-authentication-customize-sign-in-out.md)
+<!-- - [Authenticate native client apps](configure-authentication-client-apps.md) -->
+- [使用 OAuth 令牌和会话](configure-authentication-oauth-tokens.md)
+- [访问用户和应用程序声明](configure-authentication-user-identities.md)
+- [基于文件的配置](configure-authentication-file-based.md)
 
 示例：
 - [教程：向 Azure 应用服务上运行的 Web 应用添加身份验证](scenario-secure-app-authentication-app-service.md)

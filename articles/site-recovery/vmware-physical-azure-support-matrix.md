@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 30c214e4268f12bad59755ffe92e22686e16e115
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 5ecd5d345244d97e1040205a12d101e9477078a5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784791"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734782"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -111,17 +111,19 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 16.04 LTS | [9.39](https://support.microsoft.com/help/4597409/) | 4.4.0-21-generic 到 4.4.0-194-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-123-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1098-azure|
 16.04 LTS | [9.38](https://support.microsoft.com/help/4590304/) | 4.4.0-21-generic 到 4.4.0-190-generic，<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-118-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1096-azure|
 |||
-18.04 LTS |[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 4.15.0-20-generic 到 4.15.0-140-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-65-generic </br> 5.3.0-19-generic 到 5.3.0-72-generic </br> 5.4.0-37-generic 到 5.4.0-70-generic </br> 4.15.0-1009-azure 到 4.15.0-1111-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1035-azure </br> 5.4.0-1020-azure 到 5.4.0-1043-azure|
+18.04 LTS |[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 4.15.0-20-generic 到 4.15.0-140-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-65-generic </br> 5.3.0-19-generic 到 5.3.0-72-generic </br> 5.4.0-37-generic 到 5.4.0-70-generic </br> 4.15.0-1009-azure 到 4.15.0-1111-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1035-azure </br> 5.4.0-1020-azure 到 5.4.0-1043-azure </br> 4.15.0-1114-azure </br> 4.15.0-143-generic </br> 5.4.0-1047-azure </br> 5.4.0-73-generic </br> 4.15.0-1115-azure </br> 4.15.0-144-generic </br> 5.4.0-1048-azure </br> 5.4.0-74-generic |
 18.04 LTS | [9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) | 4.15.0-20-generic 到 4.15.0-135-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-65-generic </br> 5.3.0-19-generic 到 5.3.0-70-generic </br> 5.4.0-37-generic 到 5.4.0-59-generic</br> 5.4.0-60-generic 到 5.4.0-65-generic </br> 4.15.0-1009-azure 到 4.15.0-1106-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1035-azure </br> 5.4.0-1020-azure 到 5.4.0-1039-azure|
 18.04 LTS | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.15.0-20-generic 到 4.15.0-129-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-63-generic </br> 5.3.0-19-generic 到 5.3.0-69-generic </br> 5.4.0-37-generic 到 5.4.0-59-generic</br> 4.15.0-1009-azure 到 4.15.0-1103-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1035-azure </br> 5.4.0-1020-azure 到 5.4.0-1035-azure|
 18.04 LTS | [9.39](https://support.microsoft.com/help/4597409/) | 4.15.0-20-generic 到 4.15.0-123-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-63-generic </br> 5.3.0-19-generic 到 5.3.0-69-generic </br> 5.4.0-37-generic 到 5.4.0-53-generic</br> 4.15.0-1009-azure 到 4.15.0-1099-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1035-azure </br> 5.4.0-1020-azure 到 5.4.0-1031-azure|
 18.04 LTS | [9.38](https://support.microsoft.com/help/4590304/) | 4.15.0-20-generic 到 4.15.0-118-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-61-generic </br> 5.3.0-19-generic 到 5.3.0-67-generic </br> 5.4.0-37-generic 到 5.4.0-48-generic</br> 4.15.0-1009-azure 到 4.15.0-1096-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1035-azure </br> 5.4.0-1020-azure 到 5.4.0-1026-azure|
 |||
-20.04 LTS |[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)| 5.4.0-26-generic 到 5.4.0-60-generic </br> -generic 5.4.0-1010-azure 到 5.4.0-1043-azure </br> 5.8.0-29-generic 到 5.8.0-48-generic|
-20.04 LTS |[9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)| 5.4.0-26-generic 到 5.4.0-65 </br> -generic 5.4.0-1010-azure 到 5.4.0-1039-azure </br> 5.8.0-29-generic 到 5.8.0-43-generic </br>
-20.04 LTS |[9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)| 5.4.0-26-generic 到 5.4.0-59 </br> -generic 5.4.0-1010-azure 到 5.4.0-1035-azure </br> 5.8.0-29-generic 到 5.8.0-34-generic|
+20.04 LTS |[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)| 5.4.0-26-generic 到 5.4.0-60-generic </br> -generic 5.4.0-1010-azure 到 5.4.0-1043-azure </br> 5.4.0-1047-azure </br> 5.4.0-73-generic </br> 5.4.0-1048-azure </br> 5.4.0-74-generic |
+20.04 LTS |[9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)| 5.4.0-26-generic 到 5.4.0-65 </br> -generic 5.4.0-1010-azure 到 5.4.0-1039-azure |
+20.04 LTS |[9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)| 5.4.0-26-generic 到 5.4.0-59 </br> -generic 5.4.0-1010-azure 到 5.4.0-1035-azure |
 20.04 LTS |[9.39](https://support.microsoft.com/help/4597409/) | 5.4.0-26-generic 到 5.4.0-53 </br> -generic 5.4.0-1010-azure 到 5.4.0-1031-azure
 20.04 LTS |[9.38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic 到 5.4.0-48 </br> -generic 5.4.0-1010-azure 到 5.4.0-1026-azure
+
+*注意：对于 Ubuntu 20.04，我们最初推出了对内核 5.8 的支持。 但此后我们发现了对该内核的支持存在问题，因此暂时在我们的支持声明中修订了这些内核。 
 
 ### <a name="debian-kernel-versions"></a>Debian 内核版本
 
@@ -146,7 +148,7 @@ Debian 10 | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-fo
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4、SP5） | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4、SP5 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.47-azure |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4、SP5） | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4、SP5 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.56-azure |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4、SP5） | [9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4、SP5 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.44-azure |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4、SP5） | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4、SP5 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.38-azure|
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4、SP5） | [9.39](https://support.microsoft.com/help/4597409/) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4、SP5 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.34-azure |
@@ -156,7 +158,7 @@ SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4、SP5） | [9.38](https:
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15、SP1、SP2 | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | 默认支持所有[库存 SUSE 15、SP1、SP2 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.12.14-5.5-azure 到 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure 到 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure 到 5.3.18-18.38-azure
+SUSE Linux Enterprise Server 15、SP1、SP2 | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | 默认支持所有[库存 SUSE 15、SP1、SP2 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.12.14-5.5-azure 到 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure 到 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure 到 5.3.18-18.47-azure
 SUSE Linux Enterprise Server 15、SP1、SP2 | [9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 默认支持所有[库存 SUSE 15、SP1、SP2 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.12.14-5.5-azure 到 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure 到 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure 到 5.3.18-18.35-azure
 SUSE Linux Enterprise Server 15、SP1、SP2 | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 默认支持所有[库存 SUSE 15、SP1、SP2 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.12.14-5.5-azure 到 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure 到 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure 到 5.3.18-18.29-azure
 SUSE Linux Enterprise Server 15、SP1、SP2 | [9.39](https://support.microsoft.com/help/4597409/)  | 默认支持所有[库存 SUSE 15、SP1、SP2 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.12.14-5.5-azure 到 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure 到 4.12.14-8.47-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure 到 5.3.18-18.21-azure
@@ -239,7 +241,7 @@ FIPS 加密 | 否
 来宾/服务器 iSCSI | 对于迁移 - 是<br/>对于灾难恢复 - 否，iSCSI 将作为附加磁盘故障回复到 VM
 来宾/服务器 SMB 3.0 | 否
 来宾/服务器 RDM | 是<br/><br/> 在物理服务器上不适用
-> 1 TB 的来宾/服务器磁盘 | 是，磁盘必须大于 1024 MB<br/><br/>复制到托管磁盘时高达 8,192 GB（9.26 版及更高版本）<br></br> 复制到存储帐户时高达 4,095 GB
+> 1 TB 的来宾/服务器磁盘 | 是，磁盘必须大于 1024 MB<br/><br/>复制到托管磁盘时高达 32,767 GB（9.41 版及更高版本）<br></br> 复制到存储帐户时高达 4,095 GB
 逻辑和物理扇区大小均为 4K 的来宾/服务器磁盘 | 否
 逻辑扇区大小为 4K 且物理扇区大小为 512 字节的来宾/服务器磁盘 | 否
 包含 > 4 TB 的条带化磁盘的来宾/服务器卷 | 是
@@ -302,6 +304,7 @@ HUB | 是
 操作系统磁盘计数 | 1 </br> 不支持在不同磁盘上启动和进行系统分区 | 如果不支持，检查会失败。
 数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。
 数据磁盘大小 | 复制到托管磁盘时高达 32,767 GB（9.41 版及更高版本）<br> 复制到存储帐户时高达 4,095 GB </br> 最小磁盘大小要求 - 至少 1024 MB| 如果不支持，检查会失败。
+RAM | ASR 驱动程序占用 6% 的 RAM。
 网络适配器 | 支持多个适配器。 |
 共享 VHD | 不支持。 | 如果不支持，检查会失败。
 FC 磁盘 | 不支持。 | 如果不支持，检查会失败。

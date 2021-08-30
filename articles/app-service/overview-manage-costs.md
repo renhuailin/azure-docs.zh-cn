@@ -4,13 +4,13 @@ description: 了解如何使用 Azure 门户中的成本分析来计划和管理
 ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
-ms.date: 01/01/2021
-ms.openlocfilehash: ada4c1991a57c8252247c9617e097dc82cb3b4a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: 3f2ae25c3f2e1076cf714aa56f7ecdf867d6dd8f
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593981"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112554182"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>计划和管理 Azure 应用服务的成本
 
@@ -27,25 +27,33 @@ ms.locfileid: "100593981"
 
 本文介绍如何计划和管理 Azure 应用服务的成本。 首先，使用 Azure 定价计算器来帮助计划应用服务成本，然后再添加任何服务资源来估算成本。 接下来，在添加 Azure 资源时，查看预估成本。 在开始使用应用服务资源之后，请使用[成本管理](../cost-management-billing/index.yml?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)功能来设置预算和监视成本。 你还可以查看预测成本并确定支出趋势，以确定你可能想要对其采取措施的区域。Azure 应用服务的成本仅是 Azure 帐单中每月成本的一部分。 尽管本文介绍了如何为应用服务计划和管理成本，但用户需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。
 
-## <a name="relevant-costs-for-app-service"></a>应用服务的相关成本
+## <a name="understand-the-full-billing-model-for-azure-app-service"></a>了解 Azure 应用服务的完整计费模式
 
-应用服务在累计成本的 Azure 基础结构上运行。 需要了解的是，其他基础结构可能会产生成本。 对已部署的资源进行更改时必须管理该成本。
+Azure 应用服务在 Azure 基础结构上运行，部署新资源时，该基础结构会随之产生成本。 用户务必了解，是否可能产生其他基础结构成本。
 
-### <a name="costs-that-accrue-with-azure-app-service"></a>Azure 应用服务累计的成本
+### <a name="how-youre-charged-for-azure-app-service"></a>Azure 应用服务的收费方式
 
-根据在应用服务中使用的功能，可能会创建以下会产生成本的资源：
+创建或使用应用服务资源时，将按以下计量标准付费：
 
-- 应用服务计划  托管“应用服务”应用所必需。
-- 隔离层  应用服务环境需要[虚拟网络](../virtual-network/index.yml)。
-- 备份  需要一个[存储帐户](../storage/index.yml)进行备份。
-- 诊断日志  用户可以选择[存储帐户](../storage/index.yml)作为日志记录选项，或与 [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) 集成。
-- 应用服务证书  在 Azure 中购买的证书必须在 [Azure 密钥保管库](../key-vault/index.yml)维护。
+- 根据应用服务计划的定价层收取每小时费率（按比例分配到第二小时）。
+- 根据分配 VM 实例的时间量，向计划中每个横向扩展实例收取费用。 
 
 应用服务的其他成本资源包括（请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)以了解详情）：
 
 - [应用服务域](manage-custom-dns-buy-domain.md) 如果启用自动续订，则按年收取域注册的订阅费用。
 - [应用服务证书](configure-ssl-certificate.md#import-an-app-service-certificate) 购买时的一次性付费。 如果有多个子域要保护，则可以购买一个通配符证书而不是多个标准证书，以此来降低成本。
 - 基于 [IP 的证书绑定](configure-ssl-bindings.md#create-binding) 在应用级别的证书上配置绑定。 每个绑定都累计成本。 对于“标准”层和更高版本，不会对首个基于 IP 的绑定收费。
+
+在计费周期结束时，每个 VM 实例的费用。 帐单或发票显示的费用是所有应用服务成本的一部分。 每个计量标准都有单独的一行项目。
+
+### <a name="other-costs-that-might-accrue-with-azure-app-service"></a>Azure 应用服务可能产生的其他成本
+
+根据在应用服务中使用的功能，可能会创建以下会产生成本的资源：
+
+- 隔离层  应用服务环境需要[虚拟网络](../virtual-network/index.yml)并单独收费。
+- 备份  需要一个[存储帐户](../storage/index.yml)进行备份并单独收费。
+- 诊断日志  用户可以选择[存储帐户](../storage/index.yml)作为日志记录选项，或与 [Azure Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) 集成。 这些服务单独收费。
+- 应用服务证书  在 Azure 中购买的证书必须在 [Azure Key Vault](../key-vault/index.yml) 中维护（单独收费）。
 
 ### <a name="costs-that-might-accrue-after-resource-deletion"></a>删除资源后可能会累计的成本
 
@@ -59,9 +67,9 @@ ms.locfileid: "100593981"
 - 为了交付诊断日志而创建的 Log Analytic 命名空间
 - 尚未过期的应用服务的[实例或标记预留](#azure-reservations)
 
-### <a name="using-monetary-credit-with-azure-app-service"></a>将货币额度用于 Azure 应用服务
+### <a name="using-azure-prepayment-with-azure-app-service"></a>对 Azure 应用服务使用 Azure 预付款
 
-可以使用 Azure 预付（之前称为货币承诺）额度支付 Azure 应用服务费用。 但是，不能使用 Azure 预付额度来支付第三方产品和服务（包括 Azure 市场中的第三方产品和服务）的费用。
+可以使用 Azure 预付款额度支付 Azure 应用服务费用。 但是，不能使用 Azure 预付额度来支付第三方产品和服务（包括 Azure 市场中的第三方产品和服务）的费用。
 
 ## <a name="estimate-costs"></a>估算成本
 
@@ -136,7 +144,7 @@ ms.locfileid: "100593981"
 要在成本分析中查看应用服务成本，请执行以下操作：
 
 1. 登录到 Azure 门户。
-2. 在 Azure 门户中打开范围，并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析” 。 选择“范围”，在成本分析中切换到不同的范围。
+2. 在 Azure 门户中打开范围，并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择一项订阅，然后在菜单中选择“成本分析” 。 选择“范围”，在成本分析中切换到不同的范围。
 3. 默认情况下，服务的成本显示在第一个圆环图中。 选择图表中标记为“应用服务”的区域。
 
 最初打开成本分析时，会显示实际的每月成本。 下面是显示所有每月使用成本的示例。

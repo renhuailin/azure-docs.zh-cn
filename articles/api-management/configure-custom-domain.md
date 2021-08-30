@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0e8dfaf4c03ee3cfd47271b2044a7d0d9480643
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92311142"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271981"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>为 Azure API 管理实例配置自定义域名
 
@@ -59,7 +59,7 @@ ms.locfileid: "92311142"
     > 只有“网关”终结点可用于“消耗”层中的配置。
     > 可以更新所有终结点或者更新其中的一部分。 通常，客户会更新“网关”（此 URL 用来调用通过 API 管理公开的 API）和“门户”（开发人员门户 URL） 。
     > “管理”和“SCM”终结点由 API 管理实例所有者在内部使用，因此很少会为其分配自定义域名 。
-    > “高级”层级支持为“网关”终结点设置多个主机名。 
+    > “高级”和“开发人员”层支持为“网关”终结点设置多个主机名称  。
 
 1. 选择要更新的终结点。
 1. 在右侧窗口中，单击“自定义”。
@@ -93,7 +93,7 @@ ms.locfileid: "92311142"
 -   配置一条指向 API 管理网关 IP 地址的 A 记录。
 
 > [!NOTE]
-> 尽管 API 管理实例 IP 地址是静态的，但在少数情况下它可能会更改。 因此，建议在配置自定义域时使用 CNAME。 选择 DNS 配置方法时，请考虑到这一点。 有关详细信息，请参阅 [IP 文档文章](api-management-howto-ip-addresses.md#changes-to-the-ip-addresses)和 [API 管理常见问题解答](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)。
+> 尽管 API 管理实例 IP 地址是静态的，但在少数情况下它可能会更改。 因此，建议在配置自定义域时使用 CNAME。 选择 DNS 配置方法时，请考虑到这一点。 有关详细信息，请参阅 [IP 文档文章](api-management-howto-ip-addresses.md#changes-to-the-ip-addresses)和 [API 管理常见问题解答](api-management-faq.yml#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services-)。
 
 ## <a name="next-steps"></a>后续步骤
 

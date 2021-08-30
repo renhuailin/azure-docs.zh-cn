@@ -15,12 +15,12 @@ ms.date: 5/6/2021
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaf1bd295528792ebc181027af7d5dfb21583bd4
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 3b4426f10ced8d8cda294c3a80923712f59e8466
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410200"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195360"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中创建对组和应用程序的访问评审
 
@@ -127,7 +127,7 @@ ms.locfileid: "111410200"
 15. 在“高级设置”部分，你可以执行以下操作：
     - 将“必须提供理由”设置为“启用”，以要求审阅者提供批准原因。 
     - 将“电子邮件通知”设置为“启用”，以便让 Azure AD 在访问评审开始时向审阅者发送电子邮件通知，在评审完成时向管理员发送电子邮件通知。 
-    - 将“提醒”设置为“启用”，让 Azure AD 向尚未完成其审阅的审阅者发送访问评审正在进行的提醒。   这些提醒会在评审过程中自行出现。
+    - 将“提醒”设置为“启用”，让 Azure AD 向所有审阅者发送访问评审正在进行的提醒 。 审阅者将在审核过程中途收到提醒，无论他们当时是否已完成评审。
     - 发送给审阅者的电子邮件的内容是根据评审详细信息（如评审名称、资源名称、截止日期等）自动生成的。如果你需要一种方式来传达其他信息（例如其他说明或联系人信息），则可在“审阅者电子邮件的其他内容”部分指定这些详细信息。 你输入的信息包含在发送给分配的审阅者的邀请和提醒电子邮件中。 下图中突出显示的部分显示了此信息的显示位置。
 
       ![有关审阅者的其他内容](./media/create-access-review/additional-content-reviewer.png)
@@ -183,7 +183,7 @@ ms.locfileid: "111410200"
 ## <a name="create-reviews-via-apis"></a>通过 API 创建评审
 
 也可以使用 API 创建访问评审。 在 Azure 门户中管理组和应用程序用户的访问评审的方法也可以使用 Microsoft Graph API 来实现。 
-+ 有关详细信息，请参阅 [Azure AD 访问评审 API 参考](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)。
++ 有关详细信息，请参阅 [Azure AD 访问评审 API 参考](/graph/api/resources/accessreviewsv2-root)。
 + 有关教程，请参阅[使用访问评审 API 评审对 Microsoft 365 组的来宾访问](/graph/tutorial-accessreviews-m365group)。
 + 有关代码示例，请参阅[通过 Microsoft Graph 检索 Azure AD 访问评审的示例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)。
 

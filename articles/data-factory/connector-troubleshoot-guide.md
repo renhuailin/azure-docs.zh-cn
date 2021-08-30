@@ -1,24 +1,26 @@
 ---
-title: 排查 Azure 数据工厂连接器问题
-description: 了解如何排查 Azure 数据工厂中的连接器问题。
+title: 连接器疑难解答
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何排查 Azure 数据工厂和 Azure Synapse Analytics 中的连接器问题。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 04/13/2021
+ms.date: 08/16/2021
 ms.author: jianleishen
-ms.custom: has-adal-ref
-ms.openlocfilehash: c08456b08b6b11745cced97fd92417f07af23dda
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: has-adal-ref, synapse
+ms.openlocfilehash: 02bb677438a4139fb67b335b9e6cbbf43f8a2600
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484822"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271441"
 ---
-# <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题
+# <a name="troubleshoot-azure-data-factory-and-azure-synapse-analytics-connectors"></a>排查 Azure 数据工厂 Azure Synapse Analytics 连接器问题
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文探讨排查 Azure 数据工厂连接器问题的常见方法。
+本文探讨排查 Azure 数据工厂和 Azure Synapse 连接器问题的常见方法。
 
 ## <a name="azure-blob-storage"></a>Azure Blob 存储
 
@@ -39,6 +41,31 @@ ms.locfileid: "109484822"
 
 - **解决方法**：编辑数据集或管道 JSON 定义以使类型一致，然后重新运行部署。
 
+### <a name="error-code-fipsmodeisnotsupport"></a>错误代码：FIPSModeIsNotSupport
+
+- **消息**：`Fail to read data form Azure Blob Storage for Azure Blob connector needs MD5 algorithm which can't co-work with FIPS mode. Please change diawp.exe.config in self-hosted integration runtime install directory to disable FIPS policy following https://docs.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/runtime/enforcefipspolicy-element.`
+
+- **原因**：在安装了自承载集成运行时的 VM 上启用了 FIPS 策略。
+
+- **建议**：在安装了自承载集成运行时的 VM 上禁用 FIPS 模式。 Windows不建议使用 FIPS 模式。
+
+### <a name="error-code-azureblobinvalidblocksize"></a>错误代码：AzureBlobInvalidBlockSize
+
+- **消息**：`Block size should between %minSize; MB and 100 MB.`
+
+- **原因**：块大小超过 Blob 限制。
+
+### <a name="error-code-azurestorageoperationfailedconcurrentwrite"></a>错误代码：AzureStorageOperationFailedConcurrentWrite
+
+- **消息**：`Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+
+- **原因**：有多个并发复制活动运行或应用程序写入到同一文件。
+
+### <a name="error-code-azureappendblobconcurrentwriteconflict"></a>错误代码：AzureAppendBlobConcurrentWriteConflict
+
+- **消息**：`Detected concurrent write to the same append blob file, it's possible because you have multiple concurrent copy activities runs or applications writing to the same file '%name;'. Please check your ADF configuration and retry.`
+
+- **原因**：存在多个并发写入请求，这会导致文件内容冲突。
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
@@ -85,7 +112,7 @@ ms.locfileid: "109484822"
 
 - **故障描述**：为 Azure Cosmos DB 导入架构进行列映射时，缺少一些列。 
 
-- **原因**：数据工厂根据前 10 个 Azure Cosmos DB 文档推断架构。 如果某些文档列或属性没有任何值，则数据工厂不会检测到架构，因此不显示架构。
+- **原因**：Azure 数据工厂和 Synapse 管道从前 10 个 Azure Cosmos DB 文档中推断架构。 如果某些文档列或属性不包含值，则不会检测到架构，因此不会显示架构。
 
 - **解决方法**：可按下面的代码所示优化查询，强制列值以空值显示在结果集中。 假设前 10 个文档中缺少“不可能”列。 或者，可以手动添加要映射的列。
 
@@ -139,7 +166,7 @@ ms.locfileid: "109484822"
 
 - **原因**：一个可能原因是，你使用的服务主体或托管身份无权访问某个文件夹或文件。
 
-- **解决方法**：授予对要复制的所有文件夹和子文件夹的相应权限。 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen1 复制数据](connector-azure-data-lake-store.md#linked-service-properties)。
+- **解决方法**：授予对要复制的所有文件夹和子文件夹的相应权限。 有关详细信息，请参阅[向/从 Azure Data Lake Storage Gen1 复制数据](connector-azure-data-lake-store.md#linked-service-properties)。
 
 ### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>错误消息：无法使用服务主体来获取访问令牌。 ADAL 错误: service_unavailable
 
@@ -164,7 +191,7 @@ ms.locfileid: "109484822"
   | 原因分析                                               | 建议                                               |
   | :----------------------------------------------------------- | :----------------------------------------------------------- |
   | 如果该错误是由 Azure Data Lake Storage Gen2 引发的，则表明某个操作失败。| 请查看 Azure Data Lake Storage Gen2 引发的错误的详细消息。 如果错误是暂时性故障，请重试该操作。 如需更多帮助，请联系 Azure 存储支持部门并提供错误消息中的请求 ID。 |
-  | 如果错误消息包含“禁止”这一字符串，则你使用的服务主体或托管标识可能没有足够的权限访问 Azure Data Lake Storage Gen2。 | 若要解决此错误，请参阅[使用 Azure 数据工厂在 Azure Data Lake Storage Gen2 中复制和转换数据](./connector-azure-data-lake-storage.md#service-principal-authentication)。 |
+  | 如果错误消息包含“禁止”这一字符串，则你使用的服务主体或托管标识可能没有足够的权限访问 Azure Data Lake Storage Gen2。 | 若要排查此错误，请参阅[在 Azure Data Lake Storage Gen2 中复制和转换数据](./connector-azure-data-lake-storage.md#service-principal-authentication)。 |
   | 如果错误消息包含字符串“InternalServerError”，则该错误是由 Azure Data Lake Storage Gen2 返回的。 | 此错误可能是由暂时性故障导致的。 如果是，请重试操作； 如果问题仍然存在，请联系 Azure 存储支持部门并提供错误消息中的请求 ID。 |
 
 ### <a name="request-to-azure-data-lake-storage-gen2-account-caused-a-timeout-error"></a>“请求 Azure Data Lake Storage Gen2 帐户导致超时”错误
@@ -195,6 +222,20 @@ ms.locfileid: "109484822"
         }
         ```
 
+        
+## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
+
+### <a name="error-code-azurepostgresqlnpgsqldatatypenotsupported"></a>错误代码：AzurePostgreSqlNpgsqlDataTypeNotSupported
+
+- **消息**：`The data type of the chosen Partition Column, '%partitionColumn;', is '%dataType;' and this data type is not supported for partitioning.`
+
+- **建议**：选择包含 int、bigint、smallint、serial、bigserial、smallserial、timestamp（带或不带时区、不带时区或日期数据类型的时间）的分区列。
+
+### <a name="error-code-azurepostgresqlnpgsqlpartitioncolumnnamenotprovided"></a>错误代码：AzurePostgreSqlNpgsqlPartitionColumnNameNotProvided
+
+- **消息**：`Partition column name must be specified.`
+
+- **原因**：未提供分区列名称，并且无法自动确定该名称。
                   
 ## <a name="azure-files-storage"></a>Azure 文件存储
 
@@ -220,7 +261,7 @@ ms.locfileid: "109484822"
     | 对于 Azure SQL，如果错误消息包含 SQL 错误代码（例如“SqlErrorNumber=[errorcode]”），请查看 Azure SQL 疑难解答指南。 | 有关建议，请参阅[排查 Azure SQL 数据库和 Azure SQL 托管实例的连接问题和其他错误](../azure-sql/database/troubleshoot-common-errors-issues.md)。 |
     | 检查端口 1433 是否在防火墙允许列表中。 | 有关详细信息，请参阅 [SQL Server 使用的端口](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-)。 |
     | 如果错误消息包含字符串“SqlException”，则该错误是由 SQL 数据库引发的，表示某个特定操作失败。 | 有关详细信息，请按[数据库引擎错误](/sql/relational-databases/errors-events/database-engine-events-and-errors)中的 SQL 错误代码进行搜索。 如需更多帮助，请联系 Azure SQL 支持部门。 |
-    | 如果这是暂时性问题（例如网络连接不稳定），请在活动策略中添加重试操作来进行缓解。 | 有关详细信息，请参阅 [Azure 数据工厂中的管道和活动](./concepts-pipelines-activities.md#activity-policy)。 |
+    | 如果这是暂时性问题（例如网络连接不稳定），请在活动策略中添加重试操作来进行缓解。 | 有关详细信息，请参阅[管道和活动](./concepts-pipelines-activities.md#activity-policy)。 |
     | 如果错误消息包含“不允许 IP 地址为 '…' 的客户端访问服务器”这一字符串，并且你正在尝试连接到 Azure SQL 数据库，则该错误通常是由 Azure SQL 数据库防火墙问题引起的。 | 在 Azure SQL Server 防火墙配置中，启用“允许 Azure 服务和资源访问此服务器”选项。 有关详细信息，请参阅 [Azure SQL 数据库和 Azure Synapse IP 防火墙规则](../azure-sql/database/firewall-configure.md)。 |
     
 ### <a name="error-code-sqloperationfailed"></a>错误代码：SqlOperationFailed
@@ -233,7 +274,7 @@ ms.locfileid: "109484822"
     | :----------------------------------------------------------- | :----------------------------------------------------------- |
     | 如果错误消息包含字符串“SqlException”，则该错误是由 SQL 数据库的，表示某个特定操作失败。 | 如果 SQL 错误不明确，请尝试将数据库更改为最新的兼容性级别“150”。 它可能会引发最新版本 SQL 错误。 有关详细信息，请参阅[本文档](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat)。 <br/> 若要详细了解如何排查 SQL 问题，请按[数据库引擎错误](/sql/relational-databases/errors-events/database-engine-events-and-errors)中的 SQL 错误代码进行搜索。 如需更多帮助，请联系 Azure SQL 支持部门。 |
     | 如果错误消息包含字符串“PdwManagedToNativeInteropException”，则这通常是由于源列和接收器列的大小不匹配导致的。 | 请检查源列和接收器列的大小。 如需更多帮助，请联系 Azure SQL 支持部门。 |
-    | 如果错误消息包含字符串“InvalidOperationException”，则通常是由于输入数据无效导致的。 | 若要确定是哪一行遇到了问题，请在复制活动上启用容错功能，该功能可将有问题的行重定向到存储，以便进一步调查。 有关详细信息，请参阅 [Azure 数据工厂中复制活动的容错](./copy-activity-fault-tolerance.md)。 |
+    | 如果错误消息包含字符串“InvalidOperationException”，则通常是由于输入数据无效导致的。 | 若要确定是哪一行遇到了问题，请在复制活动上启用容错功能，该功能可将有问题的行重定向到存储，以便进一步调查。 有关详细信息，请参阅[复制活动的容错](./copy-activity-fault-tolerance.md)。 |
 
 
 ### <a name="error-code-sqlunauthorizedaccess"></a>错误代码：SqlUnauthorizedAccess
@@ -331,7 +372,7 @@ ms.locfileid: "109484822"
 
 - **原因**：SQL 大容量复制失败，因为它从大容量复制程序实用工具 (bcp) 客户端接收到无效的列长度。
 
-- **建议**：若要确定是哪一行遇到了问题，请在复制活动上启用容错功能。 这可将有问题的行重定向到存储，以供进一步调查。 有关详细信息，请参阅 [Azure 数据工厂中复制活动的容错](./copy-activity-fault-tolerance.md)。
+- **建议**：若要确定是哪一行遇到了问题，请在复制活动上启用容错功能。 这可将有问题的行重定向到存储，以供进一步调查。 有关详细信息，请参阅[复制活动的容错](./copy-activity-fault-tolerance.md)。
 
 
 ### <a name="error-code-sqlconnectionisclosed"></a>错误代码：SqlConnectionIsClosed
@@ -342,6 +383,37 @@ ms.locfileid: "109484822"
 
 - **建议**：重试连接。 如果仍然出现此问题，请联系 Azure SQL 支持部门。
 
+### <a name="error-code-sqlserverinvalidlinkedservicecredentialmissing"></a>错误代码：SqlServerInvalidLinkedServiceCredentialMissing
+
+- **消息**：`The SQL Server linked service is invalid with its credential being missing.`
+
+- **原因**：链接服务的配置不正确。
+
+- **建议**：验证并修复 SQL Server 链接服务。 
+
+### <a name="error-code-sqlparallelfailedtodetectpartitioncolumn"></a>错误代码：SqlParallelFailedToDetectPartitionColumn
+
+- **消息**：`Failed to detect the partition column with command '%command;', %message;.`
+
+- **原因**：表中没有主键或唯一键。
+
+- **建议**：检查表以确保创建了主键或唯一索引。 
+
+### <a name="error-code-sqlparallelfailedtodetectphysicalpartitions"></a>错误代码：SqlParallelFailedToDetectPhysicalPartitions
+
+- **消息**：`Failed to detect the physical partitions with command '%command;', %message;.`
+
+- **原因**：没有为表创建物理分区。 请检查数据库。
+
+- **建议**：若要解决此问题，请参阅[创建已分区表和索引](/sql/relational-databases/partitions/create-partitioned-tables-and-indexes?view=sql-server-ver15&preserve-view=true)。
+
+### <a name="error-code-sqlparallelfailedtogetpartitionrangesynapse"></a>错误代码：SqlParallelFailedToGetPartitionRangeSynapse
+
+- **消息**：`Failed to get the partitions for azure synapse with command '%command;', %message;.`
+
+- **原因**：没有为表创建物理分区。 请检查数据库。
+
+- **建议**：若要解决此问题，请参阅[ SQL 池中的分区表](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-partition.md)。
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>错误消息：将字符串转换为唯一标识符失败
 
@@ -450,6 +522,12 @@ ms.locfileid: "109484822"
 
     3. 相应地更新表架构。
 
+### <a name="error-code-faileddboperation"></a>错误代码：FailedDbOperation
+
+- **消息**：`User does not have permission to perform this action.`
+
+- **建议**：确保在使用 PolyBase 加载数据时，Azure Synapse Analytics 连接器中配置的用户必须对目标数据库具有“CONTROL”权限。 有关详细信息，请参阅此[文档](./connector-azure-sql-data-warehouse.md#required-database-permission)。
+
 
 ## <a name="azure-table-storage"></a>Azure 表存储
 
@@ -470,7 +548,7 @@ ms.locfileid: "109484822"
 
 - **消息**：`Error thrown from driver. Sql code: '%code;'`
 
-- **原因**：如果错误消息包含字符串“SQLSTATE=51002 SQLCODE=-805”，请按照 [使用 Azure 数据工厂从 DB2 复制数据](./connector-db2.md#linked-service-properties)中的提示操作。
+- **原因**：如果错误消息包含字符串“SQLSTATE=51002 SQLCODE=-805”，请按照[从 DB2 复制数据](./connector-db2.md#linked-service-properties)中的“提示”进行操作。
 
 - **建议**：尝试在 `packageCollection` 属性中设置“NULLID”。
 
@@ -495,11 +573,11 @@ ms.locfileid: "109484822"
   | 原因分析                                               | 建议                                               |
   | :----------------------------------------------------------- | :----------------------------------------------------------- |
   | 有问题的行的列计数大于第一行的列计数。 它可能是由于数据问题或列分隔符/引号字符设置有误而导致的。 | 请从错误消息中获取行计数，检查行的列，并修复数据。 |
-  | 如果错误消息中预期的列计数为“1”，则你可能指定了错误的压缩或格式设置，这导致数据工厂错误地分析了文件。 | 请检查格式设置，确保它们与源文件匹配。 |
+  | 如果错误消息中预期的列计数为“1”，则可能指定了错误的压缩或格式设置，这导致文件未正确解析。 | 请检查格式设置，确保它们与源文件匹配。 |
   | 如果源是文件夹，则指定文件夹下的文件可能具有不同的架构。 | 请确保指定文件夹中的文件具有相同的架构。 |
 
 
-## <a name="dynamics-365-common-data-service-and-dynamics-crm"></a>Dynamics 365、Common Data Service 和 Dynamics CRM
+## <a name="dynamics-365-dataverse-common-data-service-and-dynamics-crm"></a>Dynamics 365、Dataverse (Common Data Service) 和 Dynamics CRM
 
 ### <a name="error-code-dynamicscreateserviceclienterror"></a>错误代码：DynamicsCreateServiceClientError
 
@@ -514,7 +592,7 @@ ms.locfileid: "109484822"
 
 - **故障描述**：导入架构或预览数据时，缺少某些列。 错误消息：`The valid structure information (column name and type) are required for Dynamics source.`
 
-- **原因**：此问题是设计使然，因为数据工厂无法显示前 10 条记录中不包含值的列。 请确保添加的列格式正确。 
+- **原因**：此问题是设计使然的，因为数据工厂和 Synapse 管道无法在前 10 条记录中显示不包含值的列。 请确保添加的列格式正确。 
 
 - **建议**：在“映射”选项卡中手动添加列。
 
@@ -557,10 +635,21 @@ ms.locfileid: "109484822"
 - **建议**：有关详细信息，请检查网络连接或查看 Dynamics 服务器日志。 如需更多帮助，请联系 Dynamics 支持部门。
 
 
-### <a name="error-code--dynamicsfailedtoconnect"></a>错误代码：DynamicsFailedToConnect 
+### <a name="error-code-dynamicsfailedtoconnect"></a>错误代码：DynamicsFailedToConnect 
  
  - **消息**：`Failed to connect to Dynamics: %message;` 
  
+ - 原因：如果用例满足以下所有三个条件，你将看到 `ERROR REQUESTING ORGS FROM THE DISCOVERY SERVERFCB 'EnableRegionalDisco' is disabled.`，否则将看到 `Unable to Login to Dynamics CRM, message:ERROR REQUESTING Token FROM THE Authentication context - USER intervention required but not permitted by prompt behavior AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access '00000007-0000-0000-c000-000000000000'`：
+    - 正在连接到 Dynamics 365、Common Data Service 或 Dynamics CRM。
+    - 正在使用 Office365 身份验证。
+    - 在 Azure Active Directory 中为租户和用户配置了[条件访问](../active-directory/conditional-access/overview.md)且/或需要多重身份验证（请参阅此 Dataverse 文档[链接](/powerapps/developer/data-platform/authenticate-office365-deprecation)）。
+    
+    在这种情况下，连接曾在 2021/6/8 之前成功。
+    由于区域发现服务弃用，从 2021/6/9 开始，连接将会失败（请参阅此[链接](/power-platform/important-changes-coming#regional-discovery-service-is-deprecated)）。
+ 
+ -  **建议**：  
+    如果租户和用户在 Azure Active Directory 中配置为[条件访问](../active-directory/conditional-access/overview.md)和/或多重身份验证是必需验证方法，则在 2021 年 6 月 8 日后必须使用“Azure AD 服务主体”进行身份验证。 请点击此[链接](./connector-dynamics-crm-office-365.md#prerequisites)，了解详细步骤。
+
 
  - **原因**：如果在错误消息中看到 `Office 365 auth with OAuth failed`，则表明服务器可能有一些与 OAuth 不兼容的配置。 
  
@@ -603,7 +692,7 @@ ms.locfileid: "109484822"
  - **建议**：使用 [XrmToolBox](https://www.xrmtoolbox.com/) 建立连接。 如果错误仍然存在，请与 Dynamics 支持团队联系以获取帮助。 
  
  
-### <a name="error-code--dynamicsoperationfailed"></a>错误代码：DynamicsOperationFailed 
+### <a name="error-code-dynamicsoperationfailed"></a>错误代码：DynamicsOperationFailed 
  
 - **消息**：`Dynamics operation failed with error code: %code;, error message: %message;.` 
 
@@ -612,7 +701,7 @@ ms.locfileid: "109484822"
 - **建议**：从错误消息 `Dynamics operation failed with error code: {code}` 中提取 Dynamics 操作的错误代码，并参阅 [Web 服务错误代码](/powerapps/developer/data-platform/org-service/web-service-error-codes)一文以了解更多详细信息。 如有必要，可联系 Dynamics 支持团队。 
  
  
-### <a name="error-code--dynamicsinvalidfetchxml"></a>错误代码：DynamicsInvalidFetchXml 
+### <a name="error-code-dynamicsinvalidfetchxml"></a>错误代码：DynamicsInvalidFetchXml 
   
 - **消息**：`The Fetch Xml query specified is invalid.` 
 
@@ -621,7 +710,7 @@ ms.locfileid: "109484822"
 - **建议**：修复提取 XML 中的错误。 
  
  
-### <a name="error-code--dynamicsmissingkeycolumns"></a>错误代码：DynamicsMissingKeyColumns 
+### <a name="error-code-dynamicsmissingkeycolumns"></a>错误代码：DynamicsMissingKeyColumns 
  
 - **消息**：`Input DataSet must contain keycolumn(s) in Upsert/Update scenario. Missing key column(s): %column;`
  
@@ -630,7 +719,7 @@ ms.locfileid: "109484822"
 - **建议**：确认键列在源数据中或将源列映射到接收器实体上的键列。 
  
  
-### <a name="error-code--dynamicsprimarykeymustbeguid"></a>错误代码：DynamicsPrimaryKeyMustBeGuid 
+### <a name="error-code-dynamicsprimarykeymustbeguid"></a>错误代码：DynamicsPrimaryKeyMustBeGuid 
  
 - **消息**：`The primary key attribute '%attribute;' must be of type guid.` 
  
@@ -639,7 +728,7 @@ ms.locfileid: "109484822"
 - **建议**：请确保源数据中的主键列是“Guid”类型。 
  
 
-### <a name="error-code--dynamicsalternatekeynotfound"></a>错误代码：DynamicsAlternateKeyNotFound 
+### <a name="error-code-dynamicsalternatekeynotfound"></a>错误代码：DynamicsAlternateKeyNotFound 
  
 - **消息**：`Cannot retrieve key information of alternate key '%key;' for entity '%entity;'.` 
  
@@ -650,7 +739,7 @@ ms.locfileid: "109484822"
     1. 请确保对该实体具有足够的权限。 
  
  
-### <a name="error-code--dynamicsinvalidschemadefinition"></a>错误代码：DynamicsInvalidSchemaDefinition 
+### <a name="error-code-dynamicsinvalidschemadefinition"></a>错误代码：DynamicsInvalidSchemaDefinition 
  
 - **消息**：`The valid structure information (column name and type) are required for Dynamics source.` 
  
@@ -669,6 +758,14 @@ ms.locfileid: "109484822"
 
 - **建议**：检查目标服务器的端口。 FTP 使用端口 21。
 
+### <a name="error-code-ftpfailedtoreadftpdata"></a>错误代码：FtpFailedToReadFtpData
+
+- **消息**：`Failed to read data from ftp: The remote server returned an error: 227 Entering Passive Mode (*,*,*,*,*,*).`
+
+- **原因**：对于数据工厂或 Synapse 管道支持的被动模式下的数据传输，未打开端口范围 1024 到 65535。
+
+- **建议**：检查目标服务器的防火墙设置。 打开端口 1024-65535 或在 FTP 服务器中将端口范围指定为 SHIR/Azure IR IP 地址。
+
 
 ## <a name="http"></a>HTTP
 
@@ -676,7 +773,7 @@ ms.locfileid: "109484822"
 
 - **消息**：`Failed to read data from http server. Check the error from http server：%message;`
 
-- **原因**：当 Azure 数据工厂与 HTTP 服务器通信，但 HTTP 请求操作失败时，出现此错误。
+- **原因**：当数据工厂或 Synapse 管道与 HTTP 服务器通信时，如果 HTTP 请求操作失败，则会发生此错误。
 
 - **建议**：查看错误消息中的 HTTP 状态代码，并修复远程服务器问题。
 
@@ -687,11 +784,11 @@ ms.locfileid: "109484822"
 
 - 消息：`Hour, Minute, and Second parameters describe an un-representable DateTime.`
 
-- **原因**：在数据工厂中，支持的 DateTime 值范围为 0001-01-01 00:00:00 至 9999-12-31 23:59:59。 但是，Oracle 支持范围更广的 DateTime 值（例如公元前世纪或 min/sec>59），这导致数据工厂失败。
+- **原因**：在 Azure 数据工厂和 Synapse 管道中，支持从 0001-01-01 00:00:00 到 9999-12-31 23:59:59 范围内的日期时间值。 但是，Oracle 支持范围更广的日期时间值（例如公元前世纪或 min/sec>59），这会导致失败。
 
 - **建议**： 
 
-    若要查看 Oracle 中的值是否在数据工厂的范围内，请运行 `select dump(<column name>)`。 
+    若要查看 Oracle 中的值是否处于支持的日期范围内，请运行 `select dump(<column name>)`。 
 
     若要了解结果中的字节序列，请参阅[如何在 Oracle 中存储日期？](https://stackoverflow.com/questions/13568193/how-are-dates-stored-in-oracle)。
 
@@ -747,9 +844,9 @@ ms.locfileid: "109484822"
 
 - 消息：`Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
 
-- **原因：** Azure 数据工厂不支持 Parquet 格式。
+- **原因**：Azure 数据工厂和 Synapse 管道不支持 Parquet 格式。
 
-- **建议**：转到 [Azure 数据工厂中复制活动支持的文件格式和压缩编解码器](./supported-file-formats-and-compression-codecs.md)，仔细检查源数据。
+- **建议**：通过转到[复制活动支持的文件格式和压缩编解码器](./supported-file-formats-and-compression-codecs.md)来仔细检查源数据。
 
 
 ### <a name="error-code-parquetmisseddecimalprecisionscale"></a>错误代码：ParquetMissedDecimalPrecisionScale
@@ -785,7 +882,7 @@ ms.locfileid: "109484822"
 
 - **原因**：数据无法转换为 mappings.source 中指定的类型。
 
-- **建议**：仔细检查源数据，或在复制活动列映射中为此列指定正确的数据类型。 有关详细信息，请参阅 [Azure 数据工厂中复制活动支持的文件格式和压缩编解码器](./supported-file-formats-and-compression-codecs.md)。
+- **建议**：仔细检查源数据，或在复制活动列映射中为此列指定正确的数据类型。 有关详细信息，请参阅[活动支持的文件格式和压缩编解码器](./supported-file-formats-and-compression-codecs.md)。
 
 
 ### <a name="error-code-parquetdatacountnotmatchcolumncount"></a>错误代码：ParquetDataCountNotMatchColumnCount
@@ -870,6 +967,21 @@ ms.locfileid: "109484822"
     - 包含空格的第一行是否用作列名。
     - OriginalType 类型是否受支持。 请尽量不要使用以下特殊字符：`,;{}()\n\t=`。 
 
+### <a name="error-code-parquetdatetimeexceedlimit"></a>错误代码：ParquetDateTimeExceedLimit
+
+- 消息：`The Ticks value '%ticks;' for the datetime column must be between valid datetime ticks range -621355968000000000 and 2534022144000000000.`
+
+- **原因：** 如果日期/时间值为“0001-01-01 00:00:00”，则可能是儒略历和公历之间的差异导致的。 有关更多详细信息，请参阅[儒略历和外推格里历日期之间的差异](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar#Difference_between_Julian_and_proleptic_Gregorian_calendar_dates)。
+
+- **解决方法**：检查时钟周期值，并避免使用日期/时间值“0001-01-01 00:00:00”。
+
+### <a name="error-code-parquetinvalidcolumnname"></a>错误代码：ParquetInvalidColumnName
+
+- **消息**：`The column name is invalid. Column name cannot contain these character:[,;{}()\n\t=]`
+
+- **原因**：列名包含无效字符。
+
+- **解决方法**：添加或修改列映射，使接收器列名有效。
 
 ## <a name="rest"></a>REST
 
@@ -877,9 +989,23 @@ ms.locfileid: "109484822"
 
 - **消息**：`Rest Endpoint responded with Failure from server. Check the error from server:%message;`
 
+- **原因**：如果数据工厂或 Synapse 管道通过 HTTP 协议与 REST 终结点通信，并且请求操作失败，则会发生此错误。
+
+- **建议**：检查错误消息中的 HTTP 状态代码或消息，并修复远程服务器问题。
+
+### <a name="error-code-restsourcecallfailed"></a>错误代码：RestSourceCallFailed
+
+- **消息**：`The HttpStatusCode %statusCode; indicates failure.&#xA;Request URL: %requestUri;&#xA;Response payload:%payload;`
+
 - **原因**：当 Azure 数据工厂通过 HTTP 协议与 REST 终结点通信，并且请求操作失败时，发生此错误。
 
-- **建议**：查看 HTTP 状态码或错误消息中的消息，并修复远程服务器问题。
+- **建议**：检查错误消息中的 HTTP 状态代码、请求 URL 或响应工作负载，并修复远程服务器问题。
+
+### <a name="error-code-restsinkunsupportedcompressiontype"></a>错误代码：RestSinkUNSupportedCompressionType
+
+- **消息**：`User Configured CompressionType is Not Supported By Azure Data Factory：%message;`
+
+- **建议**：检查 REST 接收器支持的压缩类型。
 
 ### <a name="unexpected-network-response-from-the-rest-connector"></a>来自 REST 连接器的意外网络响应
 
@@ -896,7 +1022,7 @@ ms.locfileid: "109484822"
 
       也可使用“curl--help”来更高级地使用命令。
 
-    - 如果只有数据工厂 REST 连接器返回意外响应，请联系 Microsoft 支持人员进行进一步的故障排除。
+    - 如果只有 REST 连接器返回意外响应，请联系 Microsoft 支持人员进行进一步的故障排除。
     
     - 请注意，“curl”可能不适合重现 SSL 证书验证问题。 在某些情况下，“curl”命令成功执行，没有遇到任何 SSL 证书验证问题。 但是，当在浏览器中执行相同的 URL 时，实际上不会返回任何 SSL 证书以供客户端与服务器建立信任。
 
@@ -933,7 +1059,7 @@ ms.locfileid: "109484822"
 
     如果私钥内容来自密钥保管库，则在将原始密钥文件直接上传到 SFTP 链接服务时，该文件有效。
 
-    有关详细信息，请参阅[使用 Azure 数据工厂从/向 SFTP 服务器复制数据](./connector-sftp.md#use-ssh-public-key-authentication)。 私钥内容是 base64 编码的 SSH 私钥内容。
+    有关详细信息，请参阅[使用数据工厂或 Synapse 管道从/向 SFTP 服务器复制数据](./connector-sftp.md#use-ssh-public-key-authentication)。 私钥内容是 base64 编码的 SSH 私钥内容。
 
     请使用 base64 编码对整个原始私钥文件进行编码，并将已编码的字符串存储在密钥保管库中。 如果选择从文件上传，则可在 SFTP 链接服务上使用原始私钥文件。
 
@@ -962,7 +1088,7 @@ ms.locfileid: "109484822"
 
 - **建议**：  
 
-    当前不支持使用 PKCS#8 格式的 SSH 私钥（开头为“-----BEGIN ENCRYPTED PRIVATE KEY-----”）访问数据工厂中的 SFTP 服务器。 
+    当前不支持使用 PKCS#8 格式的 SSH 私钥（开头为“-----BEGIN ENCRYPTED PRIVATE KEY-----”）访问 SFTP 服务器。 
 
     若要将密钥转换为传统的 SSH 密钥格式（开头为“-----BEGIN RSA PRIVATE KEY-----”），请运行以下命令：
 
@@ -995,7 +1121,7 @@ ms.locfileid: "109484822"
 
 - **建议**：检查目标服务器的端口。 SFTP 默认使用端口 22。
 
-- **原因**：如果错误消息包含“服务器响应不包含 SSH 协议标识”这一字符串，则可能是由于 SFTP 服务器限制了连接而导致的。 数据工厂将创建多个连接以从 SFTP 服务器并行下载，有时还会遇到 SFTP 服务器限制。 通常，不同的服务器在遇到限制时会返回不同的错误。
+- **原因**：如果错误消息包含“服务器响应不包含 SSH 协议标识”这一字符串，则可能是由于 SFTP 服务器限制了连接而导致的。 创建了多个连接来从 SFTP 服务器并行下载，有时会遇到 SFTP 服务器限制。 通常，不同的服务器在遇到限制时会返回不同的错误。
 
 - **建议**：  
 
@@ -1006,6 +1132,40 @@ ms.locfileid: "109484822"
     * 如果使用自承载 IR，请将自承载 IR 计算机的 IP 添加到允许列表中。
     * 如果使用的是 Azure IR，请添加 [Azure Integration Runtime IP 地址](./azure-integration-runtime-ip-addresses.md)。 如果不想将一系列 IP 添加到 SFTP 服务器允许列表中，请改用自承载 IR。
 
+
+#### <a name="error-code-sftppermissiondenied"></a>错误代码：SftpPermissionDenied
+
+- **消息**：`Permission denied to access '%path;'`
+
+- **原因**：指定的用户在操作时没有对文件夹或文件的读取或写入权限。
+
+- **建议**：授予用户对 SFTP 服务器上文件夹或文件的读取或写入权限。
+ 
+### <a name="error-code-sftpauthenticationfailure"></a>错误代码：SftpAuthenticationFailure
+
+- **消息**：`Meet authentication failure when connect to Sftp server '%server;' using '%type;' authentication type. Please make sure you are using the correct authentication type and the credential is valid. For more details, see our troubleshooting docs.`
+
+- **原因**：指定的凭据（密码或私钥）无效。
+
+- **建议**：检查凭据。
+
+- **原因**：指定的身份验证类型不被允许或不足以在 SFTP 服务器中完成身份验证。
+
+- **建议**：应用以下选项以使用正确的身份验证类型：
+    - 如果服务器需要密码，请使用“基本”。
+    - 如果服务器需要私钥，请使用“SSH 公钥身份验证”。
+    - 如果服务器需要“密码”和“私钥”，请使用“多重身份验证”。
+
+- **原因**： SFTP 服务器需要“键盘 - 交互式”身份验证，但提供的是“密码”。
+
+- **建议**： 
+
+    “键盘 - 交互式”是一种特殊的身份验证方法，不同于“密码”。 这意味着登录服务器时，必须手动输入密码，并且无法使用之前保存的密码。 但 Azure 数据工厂 (ADF) 是一项计划的数据传输服务，并且它没有可以让你在运行时提供密码的弹出输入框。 <br/> 
+    
+    作为一个折衷方案，系统提供了一个选项来模拟后台的输入，而不是实际的手动输入，这等效于将“键盘 - 交互式”更改为“密码”。 如果可以接受此安全问题，请按照以下步骤进行启用：<br/> 
+    1. 在 ADF 门户中，将鼠标悬停在 SFTP 链接服务上，并通过选择“代码”按钮打开其有效负载。
+    1. 在“typeProperties”部分中添加 `"allowKeyboardInteractiveAuth": true`。
+ 
 ## <a name="sharepoint-online-list"></a>SharePoint Online 列表
 
 ### <a name="error-code-sharepointonlineauthfailed"></a>错误代码：SharePointOnlineAuthFailed
@@ -1083,7 +1243,7 @@ ms.locfileid: "109484822"
 
 - **解决方案**：了解 [为什么我们不再推荐“FIPS 模式”](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/why-we-8217-re-not-recommending-8220-fips-mode-8221-anymore/ba-p/701037)，并评估你是否可在自承载 IR 计算机上禁用 FIPS。
 
-    如果只想让 Azure 数据工厂绕过 FIPS 并使活动运行成功，请执行以下操作：
+    此外，如果只想绕过 FIPS 并使活动运行成功，请执行以下操作：
 
     1. 打开安装自承载 IR 的文件夹。 路径通常是 C:\Program Files\Microsoft Integration Runtime \<IR version>\Shared。
 
@@ -1093,6 +1253,163 @@ ms.locfileid: "109484822"
 
     3. 保存文件，然后重启自承载 IR 计算机。
 
+### <a name="error-code-jniexception"></a>错误代码：JniException
+
+- **消息**：`An error occurred when invoking Java Native Interface.`
+
+- **原因**：如果错误消息包含“无法创建 JVM: JNI 返回代码 [-6][JNI 调用失败: 参数无效。]”，则可能的原因是设置了一些非法的（全局）参数，导致无法创建 JVM。
+
+- **建议**：登录托管自承载集成运行时的每个节点的计算机。 检查确保系统变量设置正确，如下所示：`_JAVA_OPTIONS "-Xms256m -Xmx16g" with memory bigger than 8G`。 重启所有集成运行时节点，然后重新运行该管道。
+
+### <a name="error-code-getoauth2accesstokenerrorresponse"></a>错误代码：GetOAuth2AccessTokenErrorResponse
+
+- **消息**：`Failed to get access token from your token endpoint. Error returned from your authorization server: %errorResponse;.`
+
+- **原因**：客户端 ID 或客户端机密无效，并且身份验证在授权服务器中失败。
+
+- **建议**：更正授权服务器的所有 OAuth2 客户端凭据流设置。
+
+### <a name="error-code-failedtogetoauth2accesstoken"></a>错误代码：FailedToGetOAuth2AccessToken
+
+- **消息**：`Failed to get access token from your token endpoint. Error message: %errorMessage;.`
+
+- **原因**：OAuth2 客户端凭据流设置无效。
+
+- **建议**：更正授权服务器的所有 OAuth2 客户端凭据流设置。
+
+### <a name="error-code-oauth2accesstokentypenotsupported"></a>错误代码：OAuth2AccessTokenTypeNotSupported
+
+- **消息**：`The toke type '%tokenType;' from your authorization server is not supported, supported types: '%tokenTypes;'.`
+
+- **原因**：不支持授权服务器。
+
+- **建议**：使用可以返回具有受支持令牌类型的令牌的授权服务器。
+
+### <a name="error-code-oauth2clientidcolonnotallowed"></a>错误代码：OAuth2ClientIdColonNotAllowed
+
+- **消息**：`The character colon(:) is not allowed in clientId for OAuth2ClientCredential authentication.`
+
+- **原因**：客户端 ID 包含无效的字符冒号 (`:`)。
+
+- **建议**：使用有效的客户端 ID。
+
+### <a name="error-code-managedidentitycredentialobjectnotsupported"></a>错误代码：ManagedIdentityCredentialObjectNotSupported
+
+- **消息**：`Managed identity credential is not supported in this version ('%version;') of Self Hosted Integration Runtime.`
+
+- **建议**：检查支持的版本，并将集成运行时升级到更高版本。
+
+### <a name="error-code-querymissingformatsettingsindataset"></a>错误代码：QueryMissingFormatSettingsInDataset
+
+- **消息**：`The format settings are missing in dataset %dataSetName;.`
+
+- **原因**：数据集类型为不受支持的二进制类型。
+
+- **建议**：请改为使用 DelimitedText、Json、Avro、Orc 或 Parquet 数据集。
+
+- **原因**：对于文件存储，数据集中缺少格式设置。
+
+- **建议**：取消选择数据集中的“二进制副本”并设置正确的格式设置。
+
+### <a name="error-code-queryunsupportedcommandbehavior"></a>错误代码：QueryUnsupportedCommandBehavior
+
+- **消息**：`The command behavior "%behavior;" is not supported.`
+
+- **建议**：不要将命令行为添加为可供预览的参数或 GetSchema API 请求 URL 的参数。
+
+### <a name="error-code-dataconsistencyfailedtogetsourcefilemetadata"></a>错误代码：DataConsistencyFailedToGetSourceFileMetadata
+
+- **消息**：`Failed to retrieve source file ('%name;') metadata to validate data consistency.`
+
+- **原因**：接收器数据存储存在暂时性问题，或者不允许从接收器数据存储检索元数据。
+
+### <a name="error-code-dataconsistencyfailedtogetsinkfilemetadata"></a>错误代码：DataConsistencyFailedToGetSinkFileMetadata
+
+- **消息**：`Failed to retrieve sink file ('%name;') metadata to validate data consistency.`
+
+- **原因**：接收器数据存储存在暂时性问题，或者不允许从接收器数据存储检索元数据。
+
+### <a name="error-code-dataconsistencyvalidationnotsupportedfornondirectbinarycopy"></a>错误代码：DataConsistencyValidationNotSupportedForNonDirectBinaryCopy
+
+- **消息**：`Data consistency validation is not supported in current copy activity settings.`
+
+- **原因**：仅直接二进制复制场景中支持数据一致性验证。
+
+- **建议**：删除复制活动有效负载中的“validateDataConsistency”属性。
+
+### <a name="error-code-dataconsistencyvalidationnotsupportedforlowversionselfhostedintegrationruntime"></a>错误代码：DataConsistencyValidationNotSupportedForLowVersionSelfHostedIntegrationRuntime
+
+- **消息**：`'validateDataConsistency' is not supported in this version ('%version;') of Self Hosted Integration Runtime.`
+
+- **建议**：检查支持的集成运行时版本，将其升级到更高版本，或者从复制活动中删除“validateDataConsistency”属性。
+
+### <a name="error-code-skipmissingfilenotsupportedfornondirectbinarycopy"></a>错误代码：SkipMissingFileNotSupportedForNonDirectBinaryCopy
+
+- **消息**：`Skip missing file is not supported in current copy activity settings, it's only supported with direct binary copy with folder.`
+
+- **建议**：删除复制活动有效负载中 skipErrorFile 设置的“fileMissing”。
+
+### <a name="error-code-skipinconsistencydatanotsupportedfornondirectbinarycopy"></a>错误代码：SkipInconsistencyDataNotSupportedForNonDirectBinaryCopy
+
+- **消息**：`Skip inconsistency is not supported in current copy activity settings, it's only supported with direct binary copy when validateDataConsistency is true.`
+
+- **建议**：删除复制活动有效负载中 skipErrorFile 设置的“dataInconsistency”。
+
+### <a name="error-code-skipforbiddenfilenotsupportedfornondirectbinarycopy"></a>错误代码：SkipForbiddenFileNotSupportedForNonDirectBinaryCopy
+
+- **消息**：`Skip forbidden file is not supported in current copy activity settings, it's only supported with direct binary copy with folder.`
+
+- **建议**：删除复制活动有效负载中 skipErrorFile 设置的“fileForbidden”。
+
+### <a name="error-code-skipforbiddenfilenotsupportedforthisconnector"></a>错误代码：SkipForbiddenFileNotSupportedForThisConnector
+
+- **消息**：`Skip forbidden file is not supported for this connector: ('%connectorName;').`
+
+- **建议**：删除复制活动有效负载中 skipErrorFile 设置的“fileForbidden”。
+
+### <a name="error-code-skipinvalidfilenamenotsupportedfornondirectbinarycopy"></a>错误代码：SkipInvalidFileNameNotSupportedForNonDirectBinaryCopy
+
+- **消息**：`Skip invalid file name is not supported in current copy activity settings, it's only supported with direct binary copy with folder.`
+
+- **建议**：删除复制活动有效负载中 skipErrorFile 设置的“invalidFileName”。
+
+### <a name="error-code-skipinvalidfilenamenotsupportedforsource"></a>错误代码：SkipInvalidFileNameNotSupportedForSource
+
+- **消息**：`Skip invalid file name is not supported for '%connectorName;' source.`
+
+- **建议**：删除复制活动有效负载中 skipErrorFile 设置的“invalidFileName”。
+
+### <a name="error-code-skipinvalidfilenamenotsupportedforsink"></a>错误代码：SkipInvalidFileNameNotSupportedForSink
+
+- **消息**：`Skip invalid file name is not supported for '%connectorName;' sink.`
+
+- **建议**：删除复制活动有效负载中 skipErrorFile 设置的“invalidFileName”。
+
+### <a name="error-code-skipallerrorfilenotsupportedfornonbinarycopy"></a>错误代码：SkipAllErrorFileNotSupportedForNonBinaryCopy
+
+- **消息**：`Skip all error file is not supported in current copy activity settings, it's only supported with binary copy with folder.`
+
+- **建议**：删除复制活动有效负载中 skipErrorFile 设置的“allErrorFile”。
+
+### <a name="error-code-deletefilesaftercompletionnotsupportedfornondirectbinarycopy"></a>错误代码：DeleteFilesAfterCompletionNotSupportedForNonDirectBinaryCopy
+
+- **消息**：`'deleteFilesAfterCompletion' is not support in current copy activity settings, it's only supported with direct binary copy.`
+
+- **建议**：删除“deleteFilesAfterCompletion”设置或使用直接二进制副本。
+
+### <a name="error-code-deletefilesaftercompletionnotsupportedforthisconnector"></a>错误代码：DeleteFilesAfterCompletionNotSupportedForThisConnector
+
+- **消息**：`'deleteFilesAfterCompletion' is not supported for this connector: ('%connectorName;').`
+
+- **建议**：删除复制活动有效负载中的“deleteFilesAfterCompletion”设置。
+
+### <a name="error-code-failedtodownloadcustomplugins"></a>错误代码：FailedToDownloadCustomPlugins
+
+- **消息**：`Failed to download custom plugins.`
+
+- **原因**：下载链接无效或暂时性连接问题。
+
+- **建议**：如果消息显示它是暂时性问题，请重试。 如果问题持续出现，请联系技术支持。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,23 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 07/26/2021
 ms.author: mimart
 author: msmimart
-manager: celestedg
+manager: CelesteDG
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a59e573c9b24d9a8b5577b55d143fcaca67952f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 36bc5a283665abb03bd1c49a0a067b551bcc979d
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102120753"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720940"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app"></a>向应用添加自助注册用户流
-
-> [!NOTE]
-> 本文中提到的某些功能是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 对于你构建的应用程序，也可以创建用户流，以允许用户注册应用并创建新的来宾帐户。 自助服务注册用户流定义了用户在注册过程中将要遵循的一系列步骤、将允许他们使用的标识提供者，以及想要收集的用户属性。 可以将一个或多个应用程序与单个用户流相关联。
 
@@ -32,9 +29,9 @@ ms.locfileid: "102120753"
 
 ### <a name="add-identity-providers-optional"></a>添加标识提供者（可选）
 
-Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情况下，用户可以使用 Azure AD 帐户进行注册。 在自助注册用户流中，还可以包括 Google 和 Facebook 等社交标识提供者、Microsoft 帐户（预览版）以及电子邮件一次性密码（预览版）。
+Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情况下，用户可以使用 Azure AD 帐户进行注册。 在自助注册用户流中，还可包括 Google 和 Facebook 等社交标识提供者、Microsoft 帐户以及电子邮件一次性密码。 有关详细信息，请参阅以下文章：
 
-- [Microsoft 帐户（预览版）标识提供者](microsoft-account.md)
+- [Microsoft 帐户标识提供者](microsoft-account.md)
 - [电子邮件一次性密码身份验证](one-time-passcode.md)
 - [向社交标识提供者列表添加 Facebook](facebook-federation.md)
 - [向社交标识提供者列表添加 Google](google-federation.md)

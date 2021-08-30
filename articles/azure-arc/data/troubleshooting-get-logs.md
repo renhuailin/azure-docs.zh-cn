@@ -7,53 +7,46 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 0c4cff7583f08fe27649cee464fcef802cddd88f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82152756b5caf5bfbe0301a14185d8ffed1d1afe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93234031"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727997"
 ---
 # <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>获取日志以便对已启用 Azure Arc 的数据服务进行故障排除
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
 在继续操作之前，需要：
 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. 有关详细信息，请参阅“[安装用于部署和管理 Azure Arc 数据服务的客户端工具](./install-client-tools.md)”。
+* 带有 `arcdata` 扩展的 Azure CLI (`az`) 有关详细信息，请参阅“[安装用于部署和管理 Azure Arc 数据服务的客户端工具](./install-client-tools.md)”。
 * 用于登录到已启用 Azure Arc 的数据控制器的管理员帐户。
 
 ## <a name="get-log-files"></a>获取日志文件
 
-可以在所有 Pod 或特定 Pod 中获取服务日志，以便进行故障排除。 一种方法是使用标准的 Kubernetes 工具，如 `kubectl logs` 命令。 在本文中，你将使用 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 工具，这样可以更轻松地一次获取所有日志。
+可以在所有 Pod 或特定 Pod 中获取服务日志，以便进行故障排除。 一种方法是使用标准的 Kubernetes 工具，如 `kubectl logs` 命令。 在本文中，将使用 Azure (`az`) CLI `arcdata` 扩展，这样可以更轻松地一次获取所有日志。
 
-1. 使用管理员帐户登录到数据控制器。
+运行以下命令来转储日志：
 
-   ```console
-   azdata login
-   ```
-
-2. 运行以下命令来转储日志：
-
-   ```console
-   azdata arc dc debug copy-logs --namespace <namespace name> --exclude-dumps --skip-compress
+   ```azurecli
+   az arcdata dc debug copy-logs --exclude-dumps --skip-compress
    ```
 
    例如：
 
-   ```console
-   #azdata arc dc debug copy-logs --namespace arc --exclude-dumps --skip-compress
+   ```azurecli
+   #az arcdata dc debug copy-logs --exclude-dumps --skip-compress
    ```
 
 数据控制器会在名为“`logs`”的子目录中的当前工作目录中创建日志文件。 
 
 ## <a name="options"></a>选项
 
-`azdata arc dc debug copy-logs` 命令提供了以下用于管理输出的选项：
+`az arcdata dc debug copy-logs` 命令提供了以下用于管理输出的选项：
 
 * 使用 `--target-folder` 参数将日志文件输出到不同的目录。
 * 通过省略 `--skip-compress` 参数来压缩文件。
@@ -63,14 +56,14 @@ ms.locfileid: "93234031"
 
 使用这些参数，可以替换以下示例中的 `<parameters>`： 
 
-```console
-azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
+```azurecli
+az arcdata dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name>
 ```
 
 例如：
 
 ```console
-#azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
+#az arcdata dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 
 ```
 
 以下文件夹层次结构是一个示例。 它按 Pod 名称，然后按容器，再按该容器中的目录层次结构来进行组织。
@@ -194,6 +187,3 @@ azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps -
             └───openvpn
 ```
 
-## <a name="next-steps"></a>后续步骤
-
-[azdata arc dc debug copy-logs](/sql/azdata/reference/reference-azdata-arc-dc-debug#azdata-arc-dc-debug-copy-logs?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json)

@@ -1,14 +1,14 @@
 ---
 title: 链接合作伙伴 ID 以跟踪对委派资源的影响
 description: 关联合作伙伴 ID，以获得在通过 Azure Lighthouse 管理的客户资源上合作伙伴赚取的额度 (PEC)。
-ms.date: 02/12/2021
+ms.date: 07/02/2021
 ms.topic: how-to
-ms.openlocfilehash: e21fc641f421580e6f00de8036f88632cc860060
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 72a31da9cf9927de00f005ce374488c0de9eba47
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075612"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288718"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>链接合作伙伴 ID 以跟踪对委派资源的影响 
 
@@ -24,7 +24,7 @@ ms.locfileid: "112075612"
 
 1. 在管理租户中[创建服务主体用户帐户](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。 在此示例中，我们将使用此服务主体帐户的名称“Provider Automation Account”。
 1. 使用该服务主体帐户，在管理租户中[链接到已关联的 MPN ID](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id)。 此操作只需执行一次。
-1. 当[使用 ARM 模板](onboard-customer.md)或[托管服务产品](publish-managed-services-offers.md)来加入客户时，请务必添加授权，其中包括 Provider Automation Account 作为具有[符合 PEC 条件的 Azure 内置角色](/partner-center/azure-roles-perms-pec)的用户。
+1. 当[使用 ARM 模板](onboard-customer.md)或[托管服务产品](publish-managed-services-offers.md)加入客户时，请务必至少添加一个授权，其中包括 Provider Automation Account 作为具有[符合 PEC 条件的 Azure 内置角色](/partner-center/azure-roles-perms-pec)的用户。 此角色必须作为永久分配授予，而不是作为即时[合格授权](create-eligible-authorizations.md)，才能应用 PEC。
 
 按照这些步骤操作，你管理的每个客户租户都将与你的合作伙伴 ID 相关联。 Provider Automation Account 无需在客户租户中进行身份验证或执行任何操作。
 
@@ -32,7 +32,7 @@ ms.locfileid: "112075612"
 
 ## <a name="add-your-partner-id-to-previously-onboarded-customers"></a>将合作伙伴 ID 添加到之前载入的客户
 
-如果之前已载入客户，可能不想执行其他部署来添加 Provider Automation Account 服务主体。 那么可以改为将 **已关联的 MPN ID** 链接到已有权在该客户的租户中运行的某个用户帐户。 确保该帐户已被授予[符合 PEC 条件的 Azure 内置角色](/partner-center/azure-roles-perms-pec)。
+如果之前已载入客户，可能不想执行其他部署来添加 Provider Automation Account 服务主体。 那么可以改为将 **已关联的 MPN ID** 链接到已有权在该客户的租户中运行的某个用户帐户。 确保该帐户已被授予[符合 PEC 条件的 Azure 内置角色](/partner-center/azure-roles-perms-pec)作为永久角色分配。
 
 在管理租户中将帐户[链接到已关联的 MPN ID](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) 后，将能够跟踪识别对该客户的影响。
 

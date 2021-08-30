@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 7648482fcf1d3618c02e4c8c8cf18aa521013baf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 22a953058084b4f828160cc9ba99c14a5313c9fb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078262"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747783"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义容器
 
@@ -233,7 +233,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_MEMORY_LIMIT_MB"=2000}
 ```
 
-该值以 MB 为单位定义，并且必须小于或等于主机的总物理内存。 例如，在具有 8 GB RAM 的应用服务计划中，所有应用的累积总数 `WEBSITE_MEMORY_LIMIT_MB` 不得超过 8 GB。 有关每个定价层可用内存的信息，可以在 [高级容器 (Windows) 计划](https://azure.microsoft.com/pricing/details/app-service/windows/)章节中的 **应用服务定价** 中找到。
+该值以 MB 为单位定义，并且必须小于或等于主机的总物理内存。 例如，在具有 8 GB RAM 的应用服务计划中，所有应用的累积总数 `WEBSITE_MEMORY_LIMIT_MB` 不得超过 8 GB。 有关每个定价层可用内存的信息，可以在 [高级 v3 服务计划](https://azure.microsoft.com/pricing/details/app-service/windows/)章节中的 **应用服务定价** 中找到。
 
 ## <a name="customize-the-number-of-compute-cores"></a>自定义计算核心数
 
@@ -259,7 +259,7 @@ Get-ComputerInfo | ft CsNumberOfLogicalProcessors # Total number of enabled logi
 Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
 ```
 
-处理器可能是多核处理器或超线程处理器。 有关每个定价层可用内核数的信息，可以在 [高级容器 (Windows) 计划](https://azure.microsoft.com/pricing/details/app-service/windows/)章节中的 **应用服务定价** 中找到。
+处理器可能是多核处理器或超线程处理器。 有关每个定价层可用内核数的信息，可以在 [高级 v3 服务计划](https://azure.microsoft.com/pricing/details/app-service/windows/)章节中的 **应用服务定价** 中找到。
 
 ## <a name="customize-health-ping-behavior"></a>自定义运行状况 ping 行为
 
@@ -386,6 +386,7 @@ wordpress:
 - 托管标识
 - CORS
 - Docker Compose 方案不支持 VNET 集成
+- 目前，Azure 应用服务上的 Docker Compose 的限制为 4,000 个字符。
 
 ### <a name="docker-compose-options"></a>Docker Compose 选项
 
@@ -431,4 +432,5 @@ wordpress:
 
 或者参阅其他某些资源：
 
-[在 Windows/Linux 容器中加载证书](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)
+- [环境变量和应用设置参考](reference-app-settings.md)
+- [在 Windows/Linux 容器中加载证书](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)

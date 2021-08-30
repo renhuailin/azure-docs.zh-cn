@@ -9,15 +9,16 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 5d0617412fcfef3846670d5ff5e957dad8e98ee8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: af787dbb441a455392af3515edbe6176b9e301b0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742113"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695599"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>使用简单的模型预测答案
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 ## <a name="video-4-data-science-for-beginners-series"></a>视频 4：适合初学者的数据科学系列
 在“适合初学者的数据科学”视频 4 中学习“如何创建简单的回归模型来预测钻石价格”。 我们将绘制一个具有目标数据的回归模型。

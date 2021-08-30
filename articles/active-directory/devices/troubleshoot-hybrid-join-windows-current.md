@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 87de8f27114c8b79c297f65805226a33c70b11a9
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 5c601d81053979108ab7c49dee5b1bccbb33bf53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286953"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464003"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>排查已加入混合 Azure Active Directory 的设备的问题
 
@@ -374,7 +374,7 @@ WamDefaultAuthority: organizations
 ##### <a name="other-errors"></a>其他错误数
 
 - DSREG_AUTOJOIN_ADCONFIG_READ_FAILED (0x801c001d/-2145648611)
-   - 原因：EventID 220 存在于用户设备注册事件日志中。 Windows 无法访问 Active Directory 中的计算机对象。 该事件中可能包含 Windows 错误代码。 错误代码 ERROR_NO_SUCH_LOGON_SESSION (1312) 和 ERROR_NO_SUCH_USER (1317) 对应的错误与本地 AD 中的复制问题有关。
+   - 原因：EventID 220 存在于用户设备注册事件日志中。 Windows 无法访问 Active Directory 中的计算机对象。 该事件中可能包含 Windows 错误代码。 错误代码 ERROR_NO_SUCH_LOGON_SESSION (1312) 和 ERROR_NO_SUCH_USER (1317) 与本地 AD 中的复制问题有关。
    - 解决方法：排查 AD 中的复制问题。 复制问题可能是暂时性的，可能会在一段时间后消失。
 
 ##### <a name="federated-join-server-errors"></a>联合加入服务器错误
@@ -393,28 +393,296 @@ WamDefaultAuthority: organizations
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>步骤 5：收集日志并联系 Microsoft 支持部门
 
-从 [https://github.com/CSS-Identity/DRS/tree/main/Auth](https://github.com/CSS-Identity/DRS/tree/main/Auth) 下载 Auth.zip 文件
+从 [https://cesdiagtools.blob.core.windows.net/windows/Auth.zip](https://cesdiagtools.blob.core.windows.net/windows/Auth.zip) 下载 Auth.zip 文件
 
-1. 将文件解压缩，并将包括的文件 start-auth.txt 和 stop-auth.txt 重命名为 start-auth.cmd 和 stop-auth.cmd。
-1. 在权限提升的命令提示符下，运行 start-auth.cmd。
+1. 将文件解压缩到某个文件夹（例如 C:\temp），然后切换到该文件夹。
+1. 在权限提升的 PowerShell 会话中，运行 .\start-auth.ps1 -v -accepteula。
 1. 使用“切换帐户”切换到有问题的用户的其他会话。
 1. 重现此问题。
 1. 使用“切换帐户”切换回运行跟踪的管理会话。
-1. 在权限提升的命令提示符下，运行 stop-auth.cmd。
+1. 在权限提升的 PowerShell 会话中，运行 .\stop-auth.ps1。
 1. 从执行了脚本的文件夹中解压缩并发送文件夹 Authlogs。
+    
+## <a name="troubleshoot-post-join-authentication-issues"></a>排查加入后的身份验证问题
 
-## <a name="troubleshoot-post-join-issues"></a>排查加入后问题
+### <a name="step-1-retrieve-prt-status-using-dsregcmd-status"></a>步骤 1：使用 dsregcmd.exe /status 检索 PRT 状态
 
-### <a name="retrieve-the-join-status"></a>检索加入状态
+若要检索 PRT 状态，请执行以下操作：
 
-#### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet：YES，AzureADPrt：YES
+1. 打开命令提示符。 
+   > [!NOTE] 
+   > 若要获取 PRT 状态，应在已登录用户的上下文中运行命令提示符 
 
-这些字段指示用户在登录设备时是否已成功通过 Azure AD 的身份验证。
-如果值为 **NO**，原因可能是：
+2. 键入 dsregcmd /status 
 
-- 与设备关联的 TPM 在注册时包含错误的存储密钥（请在以提升的权限运行时检查 KeySignTest）。
-- 备用登录 ID
-- 找不到 HTTP 代理
+3. “SSO state”部分将提供当前 PRT 状态。 
+
+4. 如果 AzureAdPrt 字段设置为“NO”，则表示从 Azure AD 获取 PRT 时出错。 
+
+5. 如果 AzureAdPrtUpdateTime 超过 4 小时，则可能表示在刷新 PRT 时出现了问题。 锁定设备，然后再解锁设备以强制 PRT 刷新，然后检查该时间是否已更新。
+
+```
++----------------------------------------------------------------------+
+| SSO State                                                            |
++----------------------------------------------------------------------+
+
+                AzureAdPrt : YES
+      AzureAdPrtUpdateTime : 2020-07-12 22:57:53.000 UTC
+      AzureAdPrtExpiryTime : 2019-07-26 22:58:35.000 UTC
+       AzureAdPrtAuthority : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx
+             EnterprisePrt : YES
+   EnterprisePrtUpdateTime : 2020-07-12 22:57:54.000 UTC
+   EnterprisePrtExpiryTime : 2020-07-26 22:57:54.000 UTC
+    EnterprisePrtAuthority : https://corp.hybridadfs.contoso.com:443/adfs
+
++----------------------------------------------------------------------+
+```
+
+### <a name="step-2-find-the-error-code"></a>步骤 2：查找错误代码 
+
+### <a name="from-dsregcmd-output"></a>在 dsregcmd 输出中查找
+
+> [!NOTE]
+>  从 Windows 10 May 2021 Update（版本 21H1）开始可以使用此方法。
+
+AzureAdPrt 字段下的“Attempt Status”字段将提供上次 PRT 尝试的状态，以及其他所需的调试信息。 对于较旧的 Windows 版本，需要从 AAD 分析和操作日志提取此信息。
+
+```
++----------------------------------------------------------------------+
+| SSO State                                                            |
++----------------------------------------------------------------------+
+
+                AzureAdPrt : NO
+       AzureAdPrtAuthority : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx
+     AcquirePrtDiagnostics : PRESENT
+      Previous Prt Attempt : 2020-07-18 20:10:33.789 UTC
+            Attempt Status : 0xc000006d
+             User Identity : john@contoso.com
+           Credential Type : Password
+            Correlation ID : 63648321-fc5c-46eb-996e-ed1f3ba7740f
+              Endpoint URI : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx/oauth2/token/
+               HTTP Method : POST
+                HTTP Error : 0x0
+               HTTP status : 400
+         Server Error Code : invalid_grant
+  Server Error Description : AADSTS50126: Error validating credentials due to invalid username or password.
+```
+
+### <a name="from-aad-analytic-and-operational-logs"></a>在 AAD 分析和操作日志中查找
+
+使用事件查看器找到 AAD CloudAP 插件在获取 PRT 期间记录的日志条目 
+
+1. 在事件查看器中打开 AAD 事件日志。 在“应用程序和服务日志”>“Microsoft”>“Windows”>“AAD”下查找 
+
+   > [!NOTE]
+   > CloudAP 插件会将错误事件记录到操作日志中，而信息事件将记录到分析日志中。 若要排查问题，需要查看分析日志事件和操作日志事件。 
+
+2. 分析日志中的事件 1006 表示 PRT 获取流开始，分析日志中的事件 1007 表示 PRT 获取流结束。 AAD 日志（分析日志和操作日志）中记录在事件 1006 与 1007 之间的所有事件是作为 PRT 获取流的一部分记录的。 
+
+3. 事件 1007 记录最终错误代码。
+
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/event-viewer-prt-acquire.png" alt-text="事件查看器的屏幕截图。ID 为 1006 和 1007 的事件包围在红框中，最终错误代码已突出显示。" border="false":::
+
+### <a name="step-3-follow-additional-troubleshooting-based-on-the-found-error-code-from-the-list-below"></a>步骤 3：根据从以下列表中找到的错误代码进一步进行故障排除
+
+STATUS_LOGON_FAILURE (-1073741715/ 0xc000006d)
+
+STATUS_WRONG_PASSWORD (-1073741718/ 0xc000006a)
+
+原因： 
+-  设备无法连接到 AAD 身份验证服务
+-  从 AAD 身份验证服务或 WS-Trust 终结点收到了错误响应 (HTTP 400)。
+> [!NOTE]
+> 联合身份验证需要 WS-Trust
+
+解决方法： 
+-  如果本地环境需要出站代理，则 IT 管理员必须确保设备的计算机帐户能够发现出站代理并以无提示方式向其进行身份验证。
+-  事件 1081 和 1088（AAD 操作日志）会分别包含源自 AAD 身份验证服务和 WS-Trust 终结点的错误的服务器错误代码与错误说明。 下一部分列出了常见的服务器错误代码及其解决方法。 事件 1081 或 1088 之前的事件 1022（AAD 分析日志）的第一个实例将包含正在访问的 URL。
+
+---
+
+STATUS_REQUEST_NOT_ACCEPTED (-1073741616/ 0xc00000d0)
+
+原因：
+-  从 AAD 身份验证服务或 WS-Trust 终结点收到了错误响应 (HTTP 400)。
+> [!NOTE]
+> 联合身份验证需要 WS-Trust
+
+解决方法：
+-  事件 1081 和 1088（AAD 操作日志）会分别包含源自 AAD 身份验证服务和 WS-Trust 终结点的错误的服务器错误代码与错误说明。 下一部分列出了常见的服务器错误代码及其解决方法。 事件 1081 或 1088 之前的事件 1022（AAD 分析日志）的第一个实例将包含正在访问的 URL。
+
+---
+
+STATUS_NETWORK_UNREACHABLE (-1073741252/ 0xc000023c)
+
+STATUS_BAD_NETWORK_PATH (-1073741634/ 0xc00000be)
+
+STATUS_UNEXPECTED_NETWORK_ERROR (-1073741628/ 0xc00000c4)
+
+原因：
+-  从 AAD 身份验证服务或 WS-Trust 终结点收到了错误响应 (HTTP > 400)。
+> [!NOTE]
+> 联合身份验证需要 WS-Trust
+-  与所需终结点之间的网络连接出现问题
+
+解决方法： 
+-  对于服务器错误，事件 1081 和 1088（AAD 操作日志）会分别包含来自 AAD 身份验证服务和 WS-Trust 终结点的错误代码与错误说明。 下一部分列出了常见的服务器错误代码及其解决方法。
+-  对于连接问题，事件 1022（AAD 分析日志）和 1084（AAD 操作日志）将分别包含正在访问的 URL 和来自网络堆栈的子错误代码。
+
+---
+STATUS_NO_SUCH_LOGON_SESSION (-1073741729/ 0xc000005f)
+
+原因： 
+-  由于 AAD 身份验证服务找不到用户的域，用户领域发现失败
+
+解决方法：
+-  必须将用户 UPN 的域添加为 AAD 中的自定义域。 事件 1144（AAD 分析日志）将包含提供的 UPN。
+-  如果本地域名不可路由 (jdoe@contoso.local)，请配置备用登录 ID (AltID)。 参考：[先决条件](hybrid-azuread-join-plan.md) [configuring-alternate-login-id](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) 
+
+---
+
+AAD_CLOUDAP_E_OAUTH_USERNAME_IS_MALFORMED (-1073445812/ 0xc004844c)
+
+原因： 
+-  用户的 UPN 未采用所需的格式。 
+> [!NOTE] 
+> - 对于已建立 Azure AD 联接的设备，UPN 是用户在 LoginUI 中输入的文本。
+> - 对于已建立混合 Azure AD 联接的设备，UPN 是在登录过程中从域控制器返回的。
+
+解决方法：
+-  用户的 UPN 应是基于 Internet 标准 [RFC 822](https://www.ietf.org/rfc/rfc0822.txt) 的 Internet 样式登录名。 事件 1144（AAD 分析日志）将包含提供的 UPN。
+-  对于已加入混合 AAD 的设备，请确保将域控制器配置为以正确的格式返回 UPN。 whoami/upn 应显示域控制器中配置的 UPN。
+-  如果本地域名不可路由 (jdoe@contoso.local)，请配置备用登录 ID (AltID)。 参考：[先决条件](hybrid-azuread-join-plan.md) [configuring-alternate-login-id](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) 
+
+---
+
+AAD_CLOUDAP_E_OAUTH_USER_SID_IS_EMPTY (-1073445822/ 0xc0048442)
+
+原因：
+-  AAD 身份验证服务返回的 ID 令牌中缺少用户 SID
+
+解决方法： 
+-  确保网络代理不会干扰和修改服务器响应。 
+
+---
+
+AAD_CLOUDAP_E_WSTRUST_SAML_TOKENS_ARE_EMPTY (--1073445695/ 0xc00484c1)
+
+原因：
+-  收到了来自 WS-Trust 终结点的错误。
+> [!NOTE]
+> 联合身份验证需要 WS-Trust
+
+解决方法： 
+-  确保网络代理不会干扰和修改 WS-Trust 响应。
+-  事件 1088（AAD 操作日志）将包含来自 WS-Trust 终结点的服务器错误代码和错误说明。 下一部分列出了常见的服务器错误代码及其解决方法
+
+---
+
+AAD_CLOUDAP_E_HTTP_PASSWORD_URI_IS_EMPTY (-1073445749/ 0xc004848b)
+
+原因:
+-  未正确配置 MEX 终结点。 MEX 响应不包含任何密码 URL
+
+解决方法： 
+-  确保网络代理不会干扰和修改服务器响应
+-  修复 MEX 配置，以在响应中返回有效的 URL。    
+
+---
+
+WC_E_DTDPROHIBITED (-1072894385/ 0xc00cee4f)
+
+原因: 
+-  来自 WS-TRUST 终结点的 XML 响应包含 DTD。 XML 响应中不应包含 DTD；如果包含 DTD，分析响应将会失败。
+> [!NOTE]
+> 联合身份验证需要 WS-Trust
+
+解决方法：
+-  修复标识提供者中的配置，以避免在 XML 响应中发送 DTD。 
+-   事件 1022（AAD 分析日志）将包含正在访问的 URL，该 URL 返回包含 DTD 的 XML 响应。
+
+---
+
+常见服务器错误代码：
+
+AADSTS50155：设备身份验证失败
+
+原因: 
+-  AAD 无法对设备进行身份验证，因此无法颁发 PRT
+-  确认未在 Azure 门户中删除或禁用该设备。 [了解详细信息](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-devices)
+
+解决方法：
+-  按照[此处](faq.yml#i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell--but-the-local-state-on-the-device-says-it-s-still-registered--what-should-i-do)列出的步骤，根据设备加入类型重新注册设备。
+
+---
+
+AADSTS50034：<tenant id> 目录中不存在用户帐户 <Account>
+
+原因: 
+-  AAD 在租户中找不到该用户帐户。
+
+解决方法：
+-  确保用户键入了正确的 UPN。
+-  确保本地用户帐户正在同步到 AAD。
+-  事件 1144（AAD 分析日志）将包含提供的 UPN。
+
+---
+
+AADSTS50126：由于用户名或密码无效，验证凭据时出错。
+
+原因: 
+-  用户在 Windows LoginUI 中输入的用户名和密码不正确。
+-  如果为租户启用了密码哈希同步，且设备已加入混合 AAD，而用户刚刚更改了密码，那么，该错误的原因可能是新密码尚未同步到 AAD。 
+
+解决方法：
+-  等待 AAD 同步完成，以使用新凭据获取全新的 PRT。 
+
+---
+
+常见网络错误代码：
+
+ERROR_WINHTTP_TIMEOUT (12002)
+
+ERROR_WINHTTP_NAME_NOT_RESOLVED (12007)
+
+ERROR_WINHTTP_CANNOT_CONNECT (12029)
+
+ERROR_WINHTTP_CONNECTION_ERROR (12030)
+
+原因: 
+-  常见的一般性网络相关问题。 
+
+解决方法： 
+-  事件 1022（AAD 分析日志）和 1084（AAD 操作日志）将包含正在访问的 URL
+-  如果本地环境需要出站代理，则 IT 管理员必须确保设备的计算机帐户能够发现出站代理并以无提示方式向其进行身份验证
+
+> [!NOTE]
+> 在[此处](/windows/win32/winhttp/error-messages)可以找到其他网络错误代码。
+
+---
+
+### <a name="step-4-collect-logs"></a>步骤 4：收集日志 ###
+
+常规日志
+
+1. 转到 https://aka.ms/icesdptool ，随即会自动下载包含诊断工具的 .cab 文件。
+2. 运行该工具并再现你的场景。 完成该过程。
+3. 对于 Fiddler 跟踪，请接受弹出的证书请求。
+4. 向导将提示你输入密码来保护跟踪文件。 提供密码。
+5. 最后，打开收集的所有日志存储到的文件夹。 这通常是一个类似于 %LOCALAPPDATA%\ElevatedDiagnostics\<numbers> 的文件夹
+7. 与支持人员联系，并向其提供 latest.cab 的内容，其中包含所有已收集的日志。
+
+**网络跟踪**
+
+> [!NOTE]
+> 收集网络跟踪：（在再现场景期间不得使用 Fiddler，这一点非常重要）
+
+1.  netsh trace start scenario=InternetClient_dbg capture=yes persistent=yes
+2.  锁定设备，然后再解锁设备。 对于已加入混合 AAD 的设备，请至少等待一分钟，让 PRT 获取任务完成。
+3.  netsh trace stop
+4.  共享 nettrace.cab
+
+---
 
 ## <a name="known-issues"></a>已知问题
 - 当连接到移动热点或外部 WiFi 网络时，在“设置”->“帐户”->“访问工作或学校帐户”下，加入了混合 Azure AD 的设备可能会显示两个不同的帐户，一个用于 Azure AD，另一个用于本地 AD。 这只是一个 UI 问题，不会对功能产生任何影响。

@@ -4,31 +4,57 @@ description: 介绍适用于 Azure 资源管理器部署的 Bicep 运算符。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 154a42d1bcdc78eee63241286e8f65ab7777bc6b
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/29/2021
+ms.openlocfilehash: 143c7881d3f22bf67b3dfabf74ca54825efffc94
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025995"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741210"
 ---
 # <a name="bicep-operators"></a>Bicep 运算符
 
-本文介绍创建 Bicep 模板和使用 Azure 资源管理器部署资源时可用的 Bicep 运算符。 运算符用于计算值，比较值或计算条件。 有三种类型的 Bicep 运算符：
+本文介绍 Bicep 运算符。 运算符用于计算值，比较值或计算条件。 有 4 种类型的 Bicep 运算符：
 
+- [取值函数 (accessor)](#accessor)
 - [比较](#comparison)
 - [逻辑](#logical)
 - [numeric](#numeric)
 
+## <a name="operator-precedence-and-associativity"></a>运算符优先级和关联性
+
+下面的运算符按优先级降序列出（位置越靠近顶部，优先级越高）。 同一层上列出的运算符具有相等的优先级。
+
+| 符号 | 运算类型 | 结合性 |
+|:-|:-|:-|
+| `(` `)` `[` `]` `.` `::` | 括号、数组索引器、属性访问器和嵌套资源访问器  | 从左到右 |
+| `!` `-` | 一元 | 从右到左 |
+| `%` `*` `/` | 乘法 | 从左到右 |
+| `+` `-` | 加法 | 从左到右 |
+| `<=` `<` `>` `>=` | 关系 | 从左到右 |
+| `==` `!=` `=~` `!~` | 相等 | 从左到右 |
+| `&&` | 逻辑与 | 从左到右 |
+| `||` | 逻辑或 | 从左到右 |
+| `?` `:` | 条件表达式（三元） | 从右到左
+| `??` | Coalesce | 从左到右
+
 将表达式用 `(` 和 `)` 括住，可替代默认 Bicep 运算符优先级。 例如，表达式 x + y/z 先计算除法，然后计算加法。 但表达式 (x + y)/z 则首先计算加法，然后计算除法。
 
-若要了解如何通过 `::` 运算符访问某个资源，请参阅[在 Bicep 中设置子资源的名称和类型](child-resource-name-type.md)。
+## <a name="accessor"></a>访问器
+
+访问器运算符用于访问对象上的嵌套资源和属性。
+
+| 运算符 | 名称 | 说明 |
+| ---- | ---- | ---- |
+| `::` | [嵌套资源访问器](./operators-access.md#nested-resource-accessor) | 从父资源外部访问嵌套资源。 |
+| `.` | [属性访问器](./operators-access.md#property-accessor)。 | 访问对象的属性。 |
+| `.` | [函数访问器](./operators-access.md#function-accessor) | 在资源上调用函数。 |
 
 ## <a name="comparison"></a>比较
 
 比较运算符用于比较值并返回 `true` 或 `false`。
 
-| 操作员 | 名称 | 说明 |
+| 运算符 | 名称 | 说明 |
 | ---- | ---- | ---- |
 | `>=` | [大于或等于](./operators-comparison.md#greater-than-or-equal-) | 计算第一个值是否大于或等于第二个值。 |
 | `>`  | 大于 | 计算第一个值是否大于第二个值。 |
@@ -43,7 +69,7 @@ ms.locfileid: "111025995"
 
 逻辑运算符用于计算布尔值，返回非 NULL 值，或计算条件表达式。
 
-| 操作员 | 名称 | 描述 |
+| 运算符 | 名称 | 描述 |
 | ---- | ---- | ---- |
 | `&&` | [And](./operators-logical.md#and-) | 如果所有值为 true，则返回 `true`。 |
 | `||`| [Or](./operators-logical.md#or-) | 确定任一值为 true，则返回 `true`。 |
@@ -55,7 +81,7 @@ ms.locfileid: "111025995"
 
 数值运算符使用整数进行计算并返回整数值。
 
-| 操作员 | 名称 | 说明 |
+| 运算符 | 名称 | 说明 |
 | ---- | ---- | ---- |
 | `*` | [乘](./operators-numeric.md#multiply-) | 两个整数相乘。 |
 | `/` | [除](./operators-numeric.md#divide-) | 两个整数相除。 |
@@ -66,6 +92,7 @@ ms.locfileid: "111025995"
 
 > [!NOTE]
 > 减法和一元减法运算使用同一个运算符。 但功能不同，减法使用两个操作数，而一元减法只使用一个操作数。
+
 
 ## <a name="next-steps"></a>后续步骤
 

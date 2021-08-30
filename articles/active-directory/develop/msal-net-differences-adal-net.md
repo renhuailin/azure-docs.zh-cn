@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/09/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ea83d0098eaa44ffa6510a5f0fc8cea18115815c
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: 7b7f94b5e71719b53e724c76f9604f40ba7990e2
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112970252"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419046"
 ---
 # <a name="differences-between-adalnet-and-msalnet-apps"></a>ADAL.NET 与 MSAL.NET 应用之间的差异
 

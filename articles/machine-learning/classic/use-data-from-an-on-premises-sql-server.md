@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: b47a8e50245df652db1c0c43aa0dddd6f8a5a0c8
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: f038cf653b4efc15c70aa566fc76e484a47472f2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580757"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688425"
 ---
 # <a name="perform-analytics-with-machine-learning-studio-classic-using-a-sql-server-database"></a>在机器学习工作室（经典）中使用 SQL Server 数据库执行分析
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 通常，使用本地数据的企业希望利用云的规模和灵活性来平衡其机器学习工作负荷。 但他们并不希望在将企业的本地数据移动到云时中断其当前业务处理和工作流。 机器学习工作室（经典）现在支持从 SQL Server 数据库读取数据，并使用该数据对模型进行训练和评分。 再也不必在云和本地服务器之间手动复制并同步数据。 相反，机器学习工作室（经典）中的导入数据模块现在可以为训练和评分作业直接从 SQL Server 数据库中读取。
 

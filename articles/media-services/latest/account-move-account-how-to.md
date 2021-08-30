@@ -10,12 +10,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5f48a60ee139cf4a89c0873633feea93cdde0940
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: cbda31a3aaaf741424db174aa6a676858b27a23c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963567"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471205"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>管理 Azure 媒体服务 v3 帐户
 
@@ -25,12 +25,17 @@ ms.locfileid: "105963567"
 
 [!INCLUDE [account creation note](./includes/note-2020-05-01-account-creation.md)]
 
-## <a name="moving-a-media-services-account-between-subscriptions"></a>在订阅之间移动媒体服务帐户 
+## <a name="media-services-account-names"></a>媒体服务帐户名称
+
+媒体服务帐户名称必须由小写字母或数字构成（不含空格），长度介于 3 到 24 个字符之间。 媒体服务帐户名称在 Azure 位置中必须是唯一的。
+
+删除媒体服务帐户后，帐户名称将保留一年。 在帐户删除后的一年内，帐户名称只能由包含原始帐户的订阅在同一 Azure 位置重复使用。
+
+媒体服务帐户名称用于 DNS 名称，包括密钥交付、实时事件和流式处理终结点名称。 如果已将防火墙或代理配置为允许媒体服务 DNS 名称，请确保在删除媒体服务帐户后的一年内删除这些配置。
+
+## <a name="moving-a-media-services-account-between-subscriptions"></a>在订阅之间移动媒体服务帐户
 
 如果需要将媒体服务帐户移到新订阅，需要先将包含媒体服务帐户的整个资源组移到新订阅。 你必须移动所有附加资源：Azure 存储帐户、Azure CDN 配置文件等。有关详细信息，请参阅[将资源移到新资源组或订阅](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 与 Azure 中的任何资源一样，资源组移动可能需要一些时间才能完成。
-
-> [!NOTE]
-> 媒体服务 v3 支持多租户模型。
 
 ### <a name="considerations"></a>注意事项
 

@@ -3,12 +3,12 @@ title: Azure 资源运行状况概述
 description: 了解 Azure 资源运行状况如何帮助你诊断和获得对影响 Azure 资源的服务问题的支持。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 903a86d216e118f783411b38ef7ad75ad004df7f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 532c7001b12efb2917c906f7607fef33bac194ff
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786249"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728582"
 ---
 # <a name="resource-health-overview"></a>资源运行状况概述
  
@@ -96,4 +96,4 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 若要了解有关资源运行状况的详细信息，请参阅以下参考文章：
 -  [Azure 资源运行状况中的资源类型和运行状况检查](resource-health-checks-resource-types.md)
--  [有关 Azure 资源运行状况的常见问题解答](resource-health-faq.md)
+-  [有关 Azure 资源运行状况的常见问题解答](resource-health-faq.yml)

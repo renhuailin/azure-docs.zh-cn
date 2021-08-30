@@ -4,15 +4,16 @@ description: 了解如何访问客户对 Microsoft AppSource 和 Azure 市场中
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/03/2021
-author: mingshen-ms
-ms.author: mingshen
-ms.openlocfilehash: 66b3254fd8079f555a7ba2b981df6d4c60262ad0
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 07/06/2021
+ms.openlocfilehash: d1a4f749e883ecc184ac54e16a7eeb5d83686ad6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542261"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732731"
 ---
 # <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>合作伙伴中心的“评分和评价”分析仪表板
 
@@ -22,7 +23,7 @@ ms.locfileid: "111542261"
 - 评价发布在 Azure 市场或 AppSource 产品/服务的产品显示页的“评价”选项卡中。 客户可以提供其姓名，也可以匿名发布。  
 
 >[!NOTE]
-> 有关分析术语的详细定义，请参阅[适用于商业市场分析的常见问题和术语](analytics-faq.md)。
+> 有关分析术语的详细定义，请参阅[适用于商业市场分析的常见问题和术语](analytics-faq.yml)。
 
 ## <a name="access-the-dashboard"></a>访问仪表板
 
@@ -54,7 +55,7 @@ ms.locfileid: "111542261"
 
 ### <a name="responding-to-a-review"></a>响应评价
 
-你可以响应用户的评价，该响应将显示在 Azure 市场或 AppSource 店面上。 若要响应评价，请执行以下步骤：
+你可以响应用户的评价，该响应将显示在 Azure 市场或 AppSource 店面上。 此功能适用于以下产品/服务类型：Azure 应用程序、Azure 容器、Azure 虚拟机、Dynamics 365 Business Central、Dynamics 365 Customer Engagement & Power Apps、Dynamics 365 Operations、IoT Edge 模块、托管服务、Power BI 应用和服务型软件。 若要响应评价，请执行以下步骤：
 
 1. 选择“评分和评价”选项卡，然后选择“Azure 市场”或“AppSource”。 可以选择筛选器来缩小评价列表的范围，例如，只显示具有特定星级评分的评价
 

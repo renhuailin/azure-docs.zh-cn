@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fb154e6c3551bdf51a0920b3a94a53deede8b637
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: f74e9a4f99523e26feb703f5ed2bedf33366f8d6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822299"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738938"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
@@ -275,7 +275,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 10. 运行以下命令，创建具有最新服务修补程序的新预配作业。
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
- `{   "templateId": "scim"   }`
+ `{   templateId: "scim"   }`
    
 11. 在最后一步的结果中，复制以“scim”开头的完整“ID”字符串。 可选择运行以下命令，将 [new-job-id] 替换为复制的新作业 ID，并输入第七步的 JSON 输出作为请求正文来重新应用旧属性映射。
 

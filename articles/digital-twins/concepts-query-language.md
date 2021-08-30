@@ -4,24 +4,24 @@ titleSuffix: Azure Digital Twins
 description: 了解 Azure 数字孪生查询语言的基础知识。
 author: baanders
 ms.author: baanders
-ms.date: 4/22/2021
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8a5a092da37b453b719669109bd4924b032c0604
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 00bc85b06bd734a075ff9a9ca2baf3fe58e95623
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616216"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253629"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>关于 Azure 数字孪生的查询语言
 
 回忆一下，Azure 数字孪生中心是依据数字孪生体和关系构建的[孪生图](concepts-twins-graph.md)。 
 
-可以查询此图以获取有关数字孪生体及其包含的关系的信息。 这些查询是用类似于 SQL 的自定义查询语言编写的，称为 Azure 数字孪生查询语言。 这类似于具有许多可比较功能的 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-query-language.md)。
+可以查询此图以获取有关数字孪生体及其包含的关系的信息。 这些查询是用类似于 SQL 的自定义查询语言编写的，称为 Azure 数字孪生查询语言。 此语言类似于具有许多可比较功能的 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-query-language.md)。
 
-本文介绍了查询语言及其功能的基础知识。 有关查询语法以及如何运行查询请求的详细信息，请参阅操作方法：查询孪生图。
+本文介绍了查询语言及其功能的基础知识。 有关查询语法以及如何运行查询请求的详细示例，请参阅[查询孪生体图](how-to-query-graph.md)。
 
 ## <a name="about-the-queries"></a>关于查询
 
@@ -31,7 +31,7 @@ ms.locfileid: "110616216"
 * 关系
   - 关系属性
 
-若要从客户端应用将查询提交到服务，请使用 Azure 数字孪生查询 API。 使用 API 的一种方法是通过 Azure 数字孪生的一个 [SDK](concepts-apis-sdks.md#overview-data-plane-apis)。
+若要从客户端应用将查询提交到服务，请使用 Azure 数字孪生[查询 API](/rest/api/digital-twins/dataplane/query)。 使用 API 的一种方法是通过 Azure 数字孪生的一个 [SDK](concepts-apis-sdks.md#overview-data-plane-apis)。
 
 [!INCLUDE [digital-twins-query-reference.md](../../includes/digital-twins-query-reference.md)]
 
@@ -47,4 +47,4 @@ ms.locfileid: "110616216"
 
 ## <a name="next-steps"></a>后续步骤
 
-学习如何编写查询，并查看操作方法：查询孪生图中的客户端代码示例。
+学习如何编写查询，并查看[查询孪生体图](how-to-query-graph.md)中的客户端代码示例。

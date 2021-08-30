@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: a6fcb3b3fece367ab950426c29df2d1b39735957
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 0daf5cab1627819093514833667606758707f17a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228715"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728676"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>使用资产清单浏览和管理资源
 
@@ -42,14 +42,14 @@ Azure 安全中心的资产清单页提供了一个页面，用于查看已连�
 |发布状态：|正式发布版 (GA)|
 |定价：|免费|
 |所需角色和权限：|所有用户|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png":::国家/地区/主权（Azure 政府、Azure 中国世纪互联）|
 |||
 
 
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>资产库存的主要功能是什么？
 库存页提供以下工具：
 
-:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Azure 安全中心内资产清单页的主要功能" lightbox="media/asset-inventory/highlights-of-inventory.png":::
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Azure 安全中心内资产清单页的主要功能。" lightbox="media/asset-inventory/highlights-of-inventory.png":::
 
 
 ### <a name="1---summaries"></a>1 - 摘要
@@ -116,18 +116,18 @@ ARG 用于提供高效资源探索，并具有大规模查询的功能。
 
     - 关 - 不受 Azure Defender 计划保护的资源。 可以右键单击其中任意一些资源并对其进行升级：
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="通过右键单击将资源升级到 Azure Defender" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="通过右键单击将资源升级到 Azure Defender。" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
     - 开 - 受 Azure Defender 计划保护的资源
     - 部分 - 此选项应用于禁用了某些（但不是全部）Azure Defender 计划的订阅 。 例如，以下订阅已禁用五个 Azure Defender 计划。 
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="部分开启 Azure Defender 的订阅":::
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="部分开启 Azure Defender 的订阅。":::
 
 1. 若要进一步检查查询结果，请选择你感兴趣的资源。
 
 1. 若要在 Resource Graph Explorer 中以查询的形式查看当前选定的筛选器选项，请选择“打开查询”。
 
-    ![ARG 中的库存查询](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
+    ![ARG 中的库存查询。](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
 1. 如果已经定义了一些筛选器并使页面保持打开状态，则安全中心不会自动更新结果。 除非手动重新加载页面或选择“刷新”，否则对资源的任何更改都不会影响显示的结果。
 
@@ -140,7 +140,7 @@ ARG 用于提供高效资源探索，并具有大规模查询的功能。
 
 例如，以下屏幕截图显示了一个有权访问 38 个订阅但只有 10 个订阅现在有建议的用户。 因此，当它们按“资源类型 = 订阅”进行筛选时，库存中仅显示具有有效建议的那 10 个订阅：
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="在没有有效建议的情况下，并非所有子项都返回":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="在没有有效建议的情况下，并非所有子项都返回。":::
 
 ### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>为什么我的一些资源在 Azure Defender 或代理监视列中显示空值？
 
@@ -148,7 +148,7 @@ ARG 用于提供高效资源探索，并具有大规模查询的功能。
 
 当定价或代理监视与资源无关时，库存的这些列中将不会显示任何内容。
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="某些资源在代理监视或 Azure Defender 列中显示空白信息":::
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="某些资源在代理监视或 Azure Defender 列中显示空白信息。":::
 
 ## <a name="next-steps"></a>后续步骤
 

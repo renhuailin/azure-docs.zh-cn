@@ -3,12 +3,12 @@ title: 备份中心的支持矩阵
 description: 本文汇总了备份中心支持的每种工作负载类型的方案
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: d6e5d34e201edda4fd1e9fda85f210fb88211e28
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b922f2e320f9b41186f5a6397af5cd5f4b3f7750
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504501"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181362"
 ---
 # <a name="support-matrix-for-backup-center"></a>备份中心的支持矩阵
 
@@ -31,14 +31,15 @@ ms.locfileid: "102504501"
 | 洞察力 | 查看备份报告 | <li> Azure 虚拟机 <br><br> <li> Azure 虚拟机中的 SQL <br><br> <li> Azure 虚拟机中的 SAP HANA <br><br> <li> Azure 文件 <br><br> <li> 系统中心数据保护管理器 <br><br> <li> Azure 备份代理 (MARS) <br><br> <li> Azure 备份服务器 (MABS) | 请参阅[备份报告支持的方案](./configure-reports.md#supported-scenarios) |
 | 调控 | 在“备份”类别下查看并分配内置和自定义 Azure 策略 | 空值 | 空值 |
 | 调控 | 查看没有配置备份的数据源 | <li> Azure 虚拟机 <br><br> <li> Azure Database for PostgreSQL 服务器 | 空值 |
+| 监视 | 大规模查看 Azure Monitor 警报 | <li> Azure 虚拟机 <br><br> <li> Azure Database for PostgreSQL 服务器 <br><br> <li> Azure VM 中的 SQL <br><br> <li> Azure VM 中的 SAP HANA <br><br> <li> Azure 文件<br/><br/> <li>Azure Blob<br/><br/> <li>Azure 托管磁盘 | 请参阅[警报](./backup-azure-monitoring-built-in-monitor.md#azure-monitor-alerts-for-azure-backup-preview)文档 |
+| 操作 | 从备份中心执行跨区域还原作业 | <li> Azure 虚拟机 <br><br> <li> Azure VM 中的 SQL <br><br> <li> Azure VM 中的 SAP HANA | 请参阅[跨区域还原](./backup-create-rs-vault.md#set-cross-region-restore)文档 |
 
 ## <a name="unsupported-scenarios"></a>不支持的方案
 
 | **类别** | **方案**  |
 |--------------|---------------|
-| 监视 | 大规模查看警报 |
-| 操作 | 大规模配置保管库设置 |
-| 操作 | 从备份中心执行跨区域还原作业 |
+| 操作 | 备份中心当前不支持大规模配置保管库设置 |
+| 可用性 | 备份中心当前在国家/地区云中不可用 | 
 
 ## <a name="next-steps"></a>后续步骤
 

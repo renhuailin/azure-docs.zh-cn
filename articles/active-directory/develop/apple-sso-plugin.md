@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
-ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 5b490ff71253739779089da92c87532f7abbdbcc
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.custom: aaddev
+ms.openlocfilehash: aae64b3ef63d5ac18bb26019ba74756438adfc7a
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418527"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272260"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>适用于 Apple 设备的 Microsoft 企业 SSO 插件（预览版）
 
@@ -173,7 +173,7 @@ macOS 设置：
 
 | 键 | 类型 | 值 |
 |--|--|--|
-| `Enable_SSO_On_All_ManagedApps` | Integer | `1` 表示为所有托管应用启用 SSO，`0` 表示为所有托管应用禁用 SSO。 |
+| `Enable_SSO_On_All_ManagedApps` | 整数 | `1` 表示为所有托管应用启用 SSO，`0` 表示为所有托管应用禁用 SSO。 |
 | `AppAllowList` | 字符串<br/>（逗号分隔的列表） | 允许其参与 SSO 的应用程序的捆绑 ID。 |
 | `AppBlockList` | 字符串<br/>（逗号分隔的列表） | 不允许其参与 SSO 的应用程序的捆绑 ID。 |
 | `AppPrefixAllowList` | 字符串<br/>（逗号分隔的列表） | 允许其参与 SSO 的应用程序的捆绑 ID 前缀。 |

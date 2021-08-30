@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 4a25d7a23d486c8ce22fa433cc1ead390726facc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9b6cddc32b81f0e1bf915bfa09527a3ef395f744
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048856"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735791"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>适用于逻辑应用和 Power Automate 的 Azure Monitor 日志连接器
 借助 [Azure 逻辑应用](../../logic-apps/index.yml) 和 [Power Automate](https://flow.microsoft.com)，可以使用数百个操作为多种服务创建自动化工作流。 使用 Azure Monitor 日志连接器，可以在 Azure Monitor 中生成可从 Log Analytics 工作区或 Application Insights 应用程序检索数据的工作流。 本文介绍该连接器附带的操作，并演练如何使用这些数据生成工作流。
@@ -20,11 +20,10 @@ ms.locfileid: "102048856"
 
 ## <a name="connector-limits"></a>连接器限制
 Azure Monitor 日志连接器具有以下限制：
-* 最大数据大小：16 MB
-* 最大查询响应大小 100 MB
+* 最大查询响应大小约为 16.7 MB MB (16 MiB)。 连接器基础结构指出，限制设定值低于查询 API 限制
 * 最大记录数：500,000
-* 最大查询超时 110 秒。
-* 图表可视化效果可能在“日志”页中可用，但在连接器中丢失，因为连接器和“日志”页当前使用的图表库不同。
+* 最大查询超时 110 秒
+* 图表可视化效果可能在“日志”页中可用，但在连接器中丢失，因为连接器和“日志”页当前使用的图表库不同
 
 根据数据大小和所用的查询，连接器可能会达到其限制而失败。 调整触发器重复周期，增加运行频率、减少每次查询的数据量，即可解决这种情况。 你可以使用能聚合数据的查询来返回更少的记录和列。
 
