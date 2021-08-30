@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 1fb18deaa4a9cbb43aa75fb21ab8d58fd8976791
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: dbb2834d6d51f2555da05863c606b4678b9a17b7
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293485"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772283"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>将客户管理的加密密钥用于 Azure HPC 缓存
 
@@ -122,7 +122,7 @@ Azure HPC 缓存可使用两种类型的托管标识：
 
 这些设置是可选的：
 
-* 若要使用[自动密钥轮换](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys-preview)，请选中“始终使用当前密钥版本”框。
+* 若要使用[自动密钥轮换](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys)，请选中“始终使用当前密钥版本”框。
 
 * 若要对此缓存使用特定的托管标识，请在“托管标识”部分中选择”用户分配的”，然后选择要使用的标识 。 若要获取帮助，请参阅[托管标识文档](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。
 

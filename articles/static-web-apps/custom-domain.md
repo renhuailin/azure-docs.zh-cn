@@ -5,14 +5,14 @@ services: static-web-apps
 author: burkeholland
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 08/04/2021
 ms.author: buhollan
-ms.openlocfilehash: fd8df4e162b33aef8a0e929da818e8b961953d9b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 07da31c48d70f25a2364b4af242bc0d1331d7036
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066101"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750668"
 ---
 # <a name="set-up-a-custom-domain-with-free-certificate-in-azure-static-web-apps"></a>在 Azure Static Web Apps 中设置具有免费证书的自定义域
 
@@ -174,13 +174,13 @@ Azure 使用 TXT 记录来验证你是否拥有某个域。 当你想要执行�
 
 1. 使用以下值创建新的 TXT 记录集。
 
-   | 设置  | 值                                       |
-   | -------- | ------------------------------------------- |
-   | 名称     | `@`（表示根域），或输入子域 |
-   | 类型     | TXT                                         |
-   | TTL      | 保留为默认值                      |
-   | TTL 单位 | 保留为默认值                      |
-   | 值    | 粘贴剪贴板中的代码          |
+   | 设置  | 值                                                                           |
+   | -------- | ------------------------------------------------------------------------------- |
+   | 名称     | `@` 表示根域，或输入 `_dnsauth.<YOUR_SUBDOMAIN>` 以表示子域         |
+   | 类型     | TXT                                                                             |
+   | TTL      | 保留为默认值                                                          |
+   | TTL 单位 | 保留为默认值                                                          |
+   | 值    | 粘贴剪贴板中的代码                                              |
 
 1. 选择“确定”。
 
@@ -211,15 +211,15 @@ Azure 使用 TXT 记录来验证你是否拥有某个域。 当你想要执行�
 
 1. 使用以下值创建新的 TXT 记录...
 
-   | 设置             | 值                                       |
-   | ------------------- | ------------------------------------------- |
-   | 类型                | TXT                                         |
-   | 主机                | `@`（表示根域），或输入子域 |
-   | 值               | 粘贴剪贴板中的代码          |
-   | TTL（如果适用） | 保留为默认值                      |
+   | 设置             | 值                                                                        |
+   | ------------------- | ---------------------------------------------------------------------------- |
+   | 类型                | TXT                                                                          |
+   | 主机                | `@` 表示根域，或输入 `_dnsauth.<YOUR_SUBDOMAIN>` 以表示子域      |
+   | 值               | 粘贴剪贴板中的代码                                           |
+   | TTL（如果适用） | 保留为默认值                                                       |
 
 > [!NOTE]
-> 某些 DNS 提供程序会自动将“@”更改为你的根域（即 mydomain.com）。 这在意料之内，验证过程仍会正常进行。
+> 某些 DNS 提供程序使用与“@”不同的约定来指示根域，或者它们会自动将“@”更改为你的根域（即 mydomain.com）。 这在意料之内，验证过程仍会正常进行。
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-validate-txt.md)]
 
@@ -292,6 +292,38 @@ ALIAS 记录将一个域映射到另一个域。 此记录专用于根域（即 
 现已配置根域，DNS 提供程序可能需要几个小时才能在全球范围内传播更改。
 
 ---
+
+## <a name="redirect-requests-to-a-default-domain"></a>将请求重定向到默认域
+
+可以使用静态 Web 应用自动生成的域以及你配置的任何自定义域访问该静态 Web 应用。 或者，你可以将应用配置为将所有流量重定向到默认域。
+
+### <a name="set-a-default-domain"></a>设置默认域
+
+将自定义域指定为应用的默认域时，对其他域的请求会自动重定向到该默认域。 只能将一个自定义域设置为默认域。
+
+请按照以下步骤将自定义域设置为默认域。
+
+1. 在 Azure 门户中打开静态 Web 应用后，选择菜单中的“自定义域”。
+
+1. 选择要配置为默认域的自定义域。
+
+1. 选择“设为默认域”。
+
+   :::image type="content" source="media/custom-domain/set-default.png" alt-text="将自定义域设置为默认域":::
+
+1. 操作完成后，刷新表以确认该域被标记为“默认域”。
+
+### <a name="unset-a-default-domain"></a>取消设置默认域
+
+要让域停止重定向到默认域，请执行以下步骤。
+
+1. 在 Azure 门户中打开静态 Web 应用后，选择菜单中的“自定义域”。
+
+1. 选择配置为默认域的自定义域。
+
+1. 选择“取消设为默认域”。
+
+1. 操作完成后，刷新表以确认没有域被标记为“默认域”。
 
 ## <a name="next-steps"></a>后续步骤
 
