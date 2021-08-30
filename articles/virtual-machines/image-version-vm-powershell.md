@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d992d34b552c94d75bf714048c5e9bebd96364c0
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: b3b0de7b9229f8bfd43e41f26ccb7d7d7c790b92
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673186"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114205108"
 ---
 # <a name="create-an-image-from-a-vm"></a>从 VM 创建映像
 
@@ -96,7 +96,9 @@ $imageDefinition = New-AzGalleryImageDefinition `
    -Offer 'myOffer' `
    -Sku 'mySKU'
 ```
-
+> [!NOTE]
+> 对于将包含从第三方映像继承的映像的映像定义，计划信息必须与第三方映像中的计划信息完全匹配。 创建映像定义时，通过添加 `-PurchasePlanName`、`-PurchasePlanProduct` 和 `-PurchasePlanPublisher` 在映像定义中包含计划信息。
+>
 
 ## <a name="create-an-image-version"></a>创建映像版本
 

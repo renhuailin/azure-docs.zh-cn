@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 54cbd03283814fd21a95dfe7578173f3481c4cd8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6b5316f25725f90be63fb5fbbc135285ad5bce3e
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757600"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204117"
 ---
 # <a name="host-pool-load-balancing-methods"></a>主机池负载均衡方法
 
@@ -23,7 +23,7 @@ Azure 虚拟桌面支持两种负载均衡方法。 每种方法将确定在用�
 Azure 虚拟桌面提供以下负载均衡方法：
 
 - 广度优先负载均衡允许你在主机池中的会话主机之间均匀分布用户会话。
-- 深度优先负载均衡可使用主机池中的用户会话让会话主机饱和。 第一个会话达到其会话限制阈值后，负载均衡器会将任何新用户连接定向到主机池中的下一个会话，直至会话主机达到限制，以此类推。
+- 深度优先负载均衡可使用主机池中的用户会话让会话主机饱和。 第一个会话主机达到其会话限制阈值后，负载均衡器会将任何新用户连接定向到主机池中的下一个会话，直至会话主机达到限制，以此类推。
 
 每个主机池只能配置一种特定的负载均衡。 但是，无论它们位于哪个主机池，这两种负载均衡方法均具有以下行为：
 

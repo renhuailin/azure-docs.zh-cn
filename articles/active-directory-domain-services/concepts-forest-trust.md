@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 06/18/2021
 ms.author: justinha
-ms.openlocfilehash: 5c72ab7d085de558ee95f3c602ccc6be6160b322
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d7c3eeb184f7ceb09541ca9533203f4b45194bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96620199"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730831"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>信任关系如何作用于 Azure Active Directory 域服务中的资源林
 
@@ -37,7 +37,7 @@ Net Logon 服务使用经过身份验证的远程过程调用 (RPC) 与受信任
 
 信任之间的通信流取决于信任的方向。 信任可以是单向或双向的，可以是可传递或不可传递的。
 
-下图显示，默认情况下，树 1 和树 2 中的所有域之间具有可传递的信任关系。  因此，在资源处分配适当的权限时，树 1 中的用户可以访问树 2 所含域中的资源，且树 1 中的用户可以访问树 2 中的资源。   
+下图显示，默认情况下，树 1 和树 2 中的所有域之间具有可传递的信任关系。  因此，在资源处分配适当的权限时，树 1 中的用户可以访问树 2 所含域中的资源，且树 2 中的用户可以访问树 1 中的资源。   
 
 ![两个林之间的信任关系图](./media/concepts-forest-trust/trust-relationships.png)
 
@@ -108,7 +108,7 @@ AD DS 林中的所有域信任都是双向可传递信任。 创建新的子域�
 
 若要创建林信任，你必须是（林根域中的）“域管理员”组或 Active Directory 中的“企业管理员”组的成员。 为每个信任分配一个密码，这两个林中的管理员都必须知道该密码。 两个林中的“企业管理员”成员可以同时在这两个林中创建信任，在这种情况下，会自动为这两个林生成并写入随机加密的密码。
 
-在 Azure 门户中创建 Azure AD 域服务的出站林信任。 不用手动创建与托管域本身的信任。 传入林信任必须由具有以前在本地 Active Directory 中记录的特权的用户配置。
+托管域资源林支持多达五个到本地林的单向出站林信任。 在 Azure 门户中创建 Azure AD 域服务的出站林信任。 不用手动创建与托管域本身的信任。 传入林信任必须由具有以前在本地 Active Directory 中记录的特权的用户配置。 
 
 ## <a name="trust-processes-and-interactions"></a>信任进程和交互
 

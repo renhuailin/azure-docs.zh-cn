@@ -2,17 +2,19 @@
 title: 将 Azure 网络资源移到新订阅或资源组
 description: 使用 Azure 资源管理器将虚拟网络和其他网络资源移到新的资源组或订阅。
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: 0ac503a778b3de8945b074628242233f9bcd6a3b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 08/16/2021
+ms.openlocfilehash: 5a609b8c6a08136827062e0ae4107905aa1b8fe8
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129956"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252758"
 ---
 # <a name="move-guidance-for-networking-resources"></a>网络资源移动指南
 
 本文介绍如何针对特定方案移动虚拟网络和其他网络资源。
+
+在移动过程中，网络资源将在不中断的情况下运行。
 
 ## <a name="dependent-resources"></a>依赖资源
 

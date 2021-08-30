@@ -5,17 +5,17 @@ ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 03/05/2021
-ms.openlocfilehash: 32ad688a2b42f2699933f2e26aed44122f36ff40
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 08/09/2021
+ms.openlocfilehash: 82070e6b10a1b0bffddb511545f54d369f6f99b8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409570"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745579"
 ---
 # <a name="get-started-with-document-translation"></a>文档翻译入门
 
- 本文介绍如何通过 HTTP REST API 方法使用文档翻译。 文档翻译是 [Azure 翻译器](../translator-info-overview.md)服务的一个基于云的功能。  使用文档翻译 API 可以翻译整个文档，同时保留源文档结构和文本格式。
+ 本文介绍如何通过 HTTP REST API 方法使用文档翻译。 文档翻译是 [Azure 翻译器](../translator-overview.md)服务的一个基于云的功能。  使用文档翻译 API 可以翻译整个文档，同时保留源文档结构和文本格式。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,11 +29,11 @@ ms.locfileid: "111409570"
 
 * 一个有效的 [**Azure 帐户**](https://azure.microsoft.com/free/cognitive-services/)。  如果没有帐户，可以 [**创建一个免费帐户**](https://azure.microsoft.com/free/)。
 
-* 一个 [**翻译器**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)服务资源（**并非** 认知服务资源）。
+* [单服务的 Translator 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)（并非多服务的认知服务资源） 。
 
 * 一个 [**Azure Blob 存储帐户**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 你将创建一个容器，以便存储和组织存储帐户中的 Blob 数据。
 
-## <a name="get-your-custom-domain-name-and-subscription-key"></a>获取自定义域名和订阅密钥
+## <a name="custom-domain-name-and-subscription-key"></a>自定义域名和订阅密钥
 
 > [!IMPORTANT]
 >
@@ -65,13 +65,15 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 
 :::image type="content" source="../media/translator-keys.png" alt-text="Azure 门户中获取订阅密钥字段的插图。":::
 
-## <a name="create-your-azure-blob-storage-containers"></a>创建 Azure Blob 存储容器
+## <a name="create-azure-blob-storage-containers"></a>创建 Azure Blob 存储容器
 
-需要在 [**Azure Blob 存储帐户**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)中为源、目标和可选词汇表文件 [**创建容器**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)。
+需要在 [Azure Blob 存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)中为源文件和目标文件[创建容器](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) 。
 
 * **源容器**。 将在此容器中上传要翻译的文件（必需）。
-* **目标容器**。 将在此容器中存储已翻译的文件（必需）。  
-* **词汇表容器**。 将词汇表文件上传到此容器（可选）。  
+* **目标容器**。 将在此容器中存储已翻译的文件（必需）。
+
+> [!NOTE]
+> 文档翻译支持词汇表作为目标容器中的 blob（不是单独的词汇表容器）。 如果要包含自定义词汇表，请将其添加到目标容器，并包含 ` glossaryUrl` 和请求。  如果词汇表中没有翻译语言对，则不会应用该词汇表。 请参阅[使用自定义词汇表翻译文档](#translate-documents-using-a-custom-glossary)
 
 ### <a name="create-sas-access-tokens-for-document-translation"></a>**为文档翻译创建 SAS 访问令牌**
 
@@ -79,15 +81,123 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 
 * **源** 容器或 Blob 必须已指定 **读取** 和 **列出** 访问权限。
 * **目标** 容器或 Blob 必须已指定 **写入** 和 **列出** 访问权限。
-* **词汇表** 容器或 Blob 必须已指定 **读取** 和 **列出** 访问权限。
+* 词汇表 blob 必须已指定的读取和列出访问权限  。
 
 > [!TIP]
 >
-> * 如果在某个操作中翻译 **多个** 文件 (Blob)，请 **在容器级别委托 SAS 访问权限**。  
-> * 如果在某个操作中翻译 **单个** 文件 (Blob)，请 **在 Blob 级别委托 SAS 访问权限**。  
+> * 如果在某个操作中翻译 **多个** 文件 (Blob)，请 **在容器级别委托 SAS 访问权限**。
+> * 如果在某个操作中翻译 **单个** 文件 (Blob)，请 **在 Blob 级别委托 SAS 访问权限**。
 >
 
-## <a name="set-up-your-coding-platform"></a>设置编程平台
+## <a name="document-translation-http-requests"></a>文档翻译：HTTP 请求
+
+批处理文档翻译请求将通过 POST 请求提交到翻译器服务终结点。 如果成功，POST 方法将返回 `202 Accepted` 响应代码，服务将创建批处理请求。
+
+### <a name="http-headers"></a>HTTP 头
+
+每个文档翻译器 API 请求包含以下请求头：
+
+|HTTP 标头|说明|
+|---|--|
+|Ocp-Apim-Subscription-Key|**必需**：该值是翻译器或认知服务资源的 Azure 订阅密钥。|
+|Content-Type|**必需**：指定有效负载的内容类型。 接受的值为 application/json 或 charset=UTF-8。|
+|Content-Length|**必需**：请求正文的长度。|
+
+### <a name="post-request-body-properties"></a>POST 请求正文属性
+
+* POST 请求 URL 是 POST `https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches`
+* POST 请求正文是名为 `inputs` 的 JSON 对象。
+* `inputs` 对象包含源语言和目标语言对的 `sourceURL` 与 `targetURL` 容器地址
+* `prefix` 和 `suffix` 字段（可选）用于筛选容器中的文档（包括文件夹）。
+* 翻译文档时将应用 `glossaries` 字段（可选）的值。
+* 每个目标语言的 `targetUrl` 必须唯一。
+
+>[!NOTE]
+> 如果目标中已存在同名的文件，将覆盖该文件。
+
+<!-- markdownlint-disable MD024 -->
+### <a name="translate-all-documents-in-a-container"></a>翻译容器中的所有文档
+
+```json
+{
+    "inputs": [
+        {
+            "source": {
+                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D"
+            },
+            "targets": [
+                {
+                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
+                    "language": "fr"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### <a name="translate-a-specific-document-in-a-container"></a>翻译容器中的特定文档
+
+* 确保指定了 "storageType": "File"
+* 确保已为特定 Blob/文档（而非容器）创建了源 URL 和 SAS 令牌
+* 确保已将目标文件名指定为目标 URL 的一部分 - 尽管 SAS 令牌仍适用于容器。
+* 下面的示例请求显示了翻译成两种目标语言的单个文档
+
+```json
+{
+    "inputs": [
+        {
+            "storageType": "File",
+            "source": {
+                "sourceUrl": "https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D"
+            },
+            "targets": [
+                {
+                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
+                    "language": "es"
+                },
+                {
+                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
+                    "language": "de"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### <a name="translate-documents-using-a-custom-glossary"></a>使用自定义词汇表来翻译文档
+
+```json
+{
+    "inputs": [
+        {
+            "source": {
+                "sourceUrl": "https://myblob.blob.core.windows.net/source",
+                "filter": {
+                    "prefix": "myfolder/"
+                }
+            },
+            "targets": [
+                {
+                    "targetUrl": "https://myblob.blob.core.windows.net/target",
+                    "language": "es",
+                    "glossaries": [
+                        {
+                            "glossaryUrl": "https:// myblob.blob.core.windows.net/glossary/en-es.xlf",
+                            "format": "xliff"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+## <a name="use-code-to-submit-document-translation-requests"></a>使用代码来提交文档翻译请求
+
+### <a name="set-up-your-coding-platform"></a>设置编程平台
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
@@ -105,7 +215,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 * 设置终结点、订阅密钥和容器 URL 值。
 * 运行程序。
 
-### <a name="python"></a>[Python](#tab/python)  
+### <a name="python"></a>[Python](#tab/python)
 
 * 创建新项目。
 * 将一个示例中的代码复制并粘贴到项目中。
@@ -120,7 +230,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 mkdir sample-project
 ```
 
-* 在项目目录中创建以下子目录结构：  
+* 在项目目录中创建以下子目录结构：
 
   src</br>
 &emsp; └ main</br>
@@ -167,7 +277,7 @@ gradle build
 gradle run
 ```
 
-### <a name="go"></a>[Go](#tab/go)  
+### <a name="go"></a>[Go](#tab/go)
 
 * 创建新的 Go 项目。
 * 添加以下提供的代码。
@@ -178,87 +288,6 @@ gradle run
 * 运行文件，例如“example-code”。
 
  ---
-
-## <a name="make-document-translation-requests"></a>发出文档翻译请求
-
-批处理文档翻译请求将通过 POST 请求提交到翻译器服务终结点。 如果成功，POST 方法将返回 `202 Accepted` 响应代码，服务将创建批处理请求。
-
-### <a name="http-headers"></a>HTTP 头
-
-每个文档翻译器 API 请求包含以下请求头：
-
-|HTTP 标头|说明|
-|---|--|
-|Ocp-Apim-Subscription-Key|**必需**：该值是翻译器或认知服务资源的 Azure 订阅密钥。|
-|Content-Type|**必需**：指定有效负载的内容类型。 接受的值为 application/json 或 charset=UTF-8。|
-|Content-Length|**必需**：请求正文的长度。|
-
-### <a name="post-request-body-properties"></a>POST 请求正文属性
-
-* POST 请求 URL 是 POST `https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0/batches`
-* POST 请求正文是名为 `inputs` 的 JSON 对象。
-* `inputs` 对象包含源和目标语言对的 `sourceURL` 与 `targetURL` 容器地址，可以选择性地包含 `glossaryURL` 容器地址。
-* `prefix` 和 `suffix` 字段（可选）用于筛选容器中的文档（包括文件夹）。
-* 翻译文档时将应用 `glossaries` 字段（可选）的值。
-* 每个目标语言的 `targetUrl` 必须唯一。
-
->[!NOTE]
-> 如果目标中已存在同名的文件，将覆盖该文件。
-
-## <a name="post-a-translation-request"></a>通过 POST 方法发出翻译请求
-
-<!-- markdownlint-disable MD024 -->
-### <a name="post-request-body-to-translate-all-documents-in-a-container"></a>POST 请求正文以翻译容器中的所有文档
-
-```json
-{
-    "inputs": [
-        {
-            "source": {
-                "sourceUrl": "https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D"
-            },
-            "targets": [
-                {
-                    "targetUrl": "https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D",
-                    "language": "fr"
-                }
-            ]
-        }
-    ]
-}
-```
-
-
-### <a name="post-request-body-to-translate-a-specific-document-in-a-container"></a>POST 请求正文以翻译容器中的特定文档
-
-* 确保指定了 "storageType": "File"
-* 确保已为特定 Blob/文档（而非容器）创建了源 URL 和 SAS 令牌 
-* 确保已将目标文件名指定为目标 URL 的一部分 - 尽管 SAS 令牌仍适用于容器。
-* 下面的示例请求显示了翻译成两种目标语言的单个文档
-
-```json
-{
-    "inputs": [
-        {
-            "storageType": "File",
-            "source": {
-                "sourceUrl": "https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D"
-            },
-            "targets": [
-                {
-                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
-                    "language": "es"
-                },
-                {
-                    "targetUrl": "https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D",
-                    "language": "de"
-                }
-            ]
-        }
-    ]
-}
-```
-
 
 > [!IMPORTANT]
 >
@@ -286,9 +315,7 @@ Operation-Location   | https://<<span>NAME-OF-YOUR-RESOURCE>.cognitiveservices.a
 
 >
 
-## <a name="_post-document-translation_-request"></a>通过 POST 方法发出文档翻译请求
-
-将批处理文档翻译请求提交到翻译服务。
+ ## <a name="translate-documents"></a>翻译文档
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
@@ -298,7 +325,7 @@ Operation-Location   | https://<<span>NAME-OF-YOUR-RESOURCE>.cognitiveservices.a
     using System.Net.Http;
     using System.Threading.Tasks;
     using System.Text;
-    
+
 
     class Program
     {
@@ -310,27 +337,27 @@ Operation-Location   | https://<<span>NAME-OF-YOUR-RESOURCE>.cognitiveservices.a
         private static readonly string subscriptionKey = "<YOUR-SUBSCRIPTION-KEY>";
 
         static readonly string json = ("{\"inputs\": [{\"source\": {\"sourceUrl\": \"https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS\",\"storageSource\": \"AzureBlob\",\"language\": \"en\",\"filter\":{\"prefix\": \"Demo_1/\"} }, \"targets\": [{\"targetUrl\": \"https://YOUR-TARGET-URL-WITH-WRITE-LIST-ACCESS-SAS\",\"storageSource\": \"AzureBlob\",\"category\": \"general\",\"language\": \"es\"}]}]}");
-        
+
         static async Task Main(string[] args)
         {
             using HttpClient client = new HttpClient();
             using HttpRequestMessage request = new HttpRequestMessage();
             {
-            
+
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 request.Method = HttpMethod.Post;
                 request.RequestUri = new Uri(endpoint + route);
                 request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 request.Content = content;
-                
+
                 HttpResponseMessage  response = await client.SendAsync(request);
                 string result = response.Content.ReadAsStringAsync().Result;
                 if (response.IsSuccessStatusCode)
                 {
                     Console.WriteLine($"Status code: {response.StatusCode}");
                     Console.WriteLine();
-                    Console.WriteLine($"Response Headers:"); 
+                    Console.WriteLine($"Response Headers:");
                     Console.WriteLine(response.Headers);
                 }
                 else
@@ -519,14 +546,14 @@ if err != nil {
 
 ---
 
-## <a name="_get-file-formats_"></a>通过 GET 方法获取文件格式 
+## <a name="get-file-formats"></a>获取文件格式
 
 检索受支持文件格式的列表。 如果成功，此方法将返回 `200 OK` 响应代码。
 
 ### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-   
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -577,7 +604,7 @@ let route = '/documents/formats';
 let config = {
   method: 'get',
   url: endpoint + route,
-  headers: { 
+  headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey
   }
 };
@@ -610,7 +637,7 @@ public class GetFileFormats {
     public void get() throws IOException {
         Request request = new Request.Builder().url(
                 url).method("GET", null).addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).build();
-        Response response = client.newCall(request).execute(); 
+        Response response = client.newCall(request).execute();
             System.out.println(response.body().string());
         }
 
@@ -696,7 +723,7 @@ func main() {
 
 ---
 
-## <a name="_get-job-status_"></a>通过 GET 方法获取作业状态 
+## <a name="get-job-status"></a>获取作业状态
 
 在文档翻译请求中获取单个作业的当前状态以及所有作业的摘要。 如果成功，此方法将返回 `200 OK` 响应代码。
 <!-- markdownlint-disable MD024 -->
@@ -704,7 +731,7 @@ func main() {
 ### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-   
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -755,7 +782,7 @@ let route = '/batches/{id}';
 let config = {
   method: 'get',
   url: endpoint + route,
-  headers: { 
+  headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey
   }
 };
@@ -789,7 +816,7 @@ public class GetJobStatus {
     public void get() throws IOException {
         Request request = new Request.Builder().url(
                 url).method("GET", null).addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).build();
-        Response response = client.newCall(request).execute(); 
+        Response response = client.newCall(request).execute();
             System.out.println(response.body().string());
         }
 
@@ -875,7 +902,7 @@ func main() {
 
 ---
 
-## <a name="_get-document-status_"></a>通过 GET 方法获取文档状态
+## <a name="get-document-status"></a>获取文档状态
 
 ### <a name="brief-overview"></a>简要概述
 
@@ -884,7 +911,7 @@ func main() {
 ### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-   
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -935,7 +962,7 @@ let route = '/{id}/document/{documentId}';
 let config = {
   method: 'get',
   url: endpoint + route,
-  headers: { 
+  headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey
   }
 };
@@ -969,7 +996,7 @@ public class GetDocumentStatus {
     public void get() throws IOException {
         Request request = new Request.Builder().url(
                 url).method("GET", null).addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).build();
-        Response response = client.newCall(request).execute(); 
+        Response response = client.newCall(request).execute();
             System.out.println(response.body().string());
         }
 
@@ -1055,7 +1082,7 @@ func main() {
 
 ---
 
-## <a name="_delete-job_"></a>通过 DELETE 方法删除作业 
+## <a name="delete-job"></a>删除作业
 
 ### <a name="brief-overview"></a>简要概述
 
@@ -1064,7 +1091,7 @@ func main() {
 ### <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
-   
+
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -1115,7 +1142,7 @@ let route = '/batches/{id}';
 let config = {
   method: 'delete',
   url: endpoint + route,
-  headers: { 
+  headers: {
     'Ocp-Apim-Subscription-Key': subscriptionKey
   }
 };
@@ -1149,7 +1176,7 @@ public class DeleteJob {
     public void get() throws IOException {
         Request request = new Request.Builder().url(
                 url).method("DELETE", null).addHeader("Ocp-Apim-Subscription-Key", subscriptionKey).build();
-        Response response = client.newCall(request).execute(); 
+        Response response = client.newCall(request).execute();
             System.out.println(response.body().string());
         }
 
@@ -1248,6 +1275,18 @@ func main() {
 |翻译内存文件的大小| ≤ 10 MB|
 
 文档翻译不能用于翻译受保护的文档，例如具有加密密码或对复制内容的访问受限的文档。
+
+## <a name="troubleshooting"></a>疑难解答
+
+### <a name="common-http-status-codes"></a>常见的 HTTP 状态代码
+
+| HTTP 状态代码 | 说明 | 可能的原因 |
+|------------------|-------------|-----------------|
+| 200 | OK | 请求已成功。 |
+| 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |
+| 401 | 未授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 在 Azure 门户上管理订阅时，请确保使用的是 Translator 单服务资源，而非认知服务多服务资源。
+| 429 | 请求过多 | 已经超过了订阅允许的配额或请求速率。 |
+| 502 | 错误的网关    | 网络或服务器端问题。 也可能表示标头无效。 |
 
 ## <a name="learn-more"></a>了解更多
 

@@ -1,15 +1,15 @@
 ---
 title: 使用 Azure CLI 启用 VM 扩展
 description: 本文介绍如何使用 Azure CLI 将虚拟机扩展部署到在混合云环境中运行的已启用 Azure Arc 的服务器。
-ms.date: 04/13/2021
+ms.date: 08/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f2255742e626e62f771730359c1c19c3b10f9d71
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: e493e035caf3a201d3670bb352c19455b3cfee72
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015170"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750241"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>使用 Azure CLI 启用 Azure VM 扩展
 
@@ -30,9 +30,9 @@ az extension add --name connectedmachine
 
 ## <a name="enable-extension"></a>启用扩展
 
-要在已启用 Arc 的服务器上启用 VM 扩展，请结合使用 [az connectedmachine extension create](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_create) 命令以及 `--machine-name`、`--extension-name`、`--location`、`--type`、`settings` 和 `--publisher` 参数。
+若要在已启用 Arc 的服务器上启用 VM 扩展，请结合使用 [az connectedmachine extension create](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_create) 命令以及 `--machine-name`、`--extension-name`、`--location`、`--type`、`settings` 和 `--publisher` 参数。
 
-以下示例将在已启用 Arc 的服务器上启用日志分析 VM 扩展：
+以下示例将在已启用 Arc 的服务器上启用 Log Analytics VM 扩展：
 
 ```azurecli
 az connectedmachine extension create --machine-name "myMachineName" --name "OmsAgentForLinux or MicrosoftMonitoringAgent" --location "eastus" --settings '{\"workspaceId\":\"myWorkspaceId\"}' --protected-settings '{\"workspaceKey\":\"myWorkspaceKey\"}' --resource-group "myResourceGroup" --type-handler-version "1.13" --type "OmsAgentForLinux or MicrosoftMonitoringAgent" --publisher "Microsoft.EnterpriseCloud.Monitoring" 
@@ -44,7 +44,7 @@ az connectedmachine extension create --machine-name "myMachineName" --name "OmsA
 az connectedmachine extension create --machine-name "myMachineName" --name "CustomScriptExtension" --location "eastus" --type "CustomScriptExtension" --publisher "Microsoft.Compute" --settings "{\"commandToExecute\":\"powershell.exe -c \\\"Get-Process | Where-Object { $_.CPU -gt 10000 }\\\"\"}" --type-handler-version "1.10" --resource-group "myResourceGroup"
 ```
 
-以下示例将在已启用 Arc 的服务器上启用 Key Vault VM 扩展（预览版）：
+以下示例将在已启用 Arc 的服务器上启用 Key Vault VM 扩展：
 
 ```azurecli
 az connectedmachine extension create --resource-group "resourceGroupName" --machine-name "myMachineName" --location "regionName" --publisher "Microsoft.Azure.KeyVault" --type "KeyVaultForLinux or KeyVaultForWindows" --name "KeyVaultForLinux or KeyVaultForWindows" --settings '{"secretsManagementSettings": { "pollingIntervalInS": "60", "observedCertificates": ["observedCert1"] }, "authenticationSettings": { "msiEndpoint": "http://localhost:40342/metadata/identity" }}'
@@ -60,7 +60,7 @@ az connectedmachine extension create --resource-group "resourceGroupName" --mach
 az connectedmachine extension list --machine-name "myMachineName" --resource-group "myResourceGroup"
 ```
 
-默认情况下，Azure CLI 命令的输出采用 JSON（JavaScript 对象表示法）格式。 若要更改列表或表的默认输出，请使用 [az configure --output](/cli/azure/reference-index)。 还可以向任何命令添加 `--output` 来对输出格式进行一次性更改。
+默认情况下，Azure CLI 命令的输出采用 JSON（JavaScript 对象表示法）格式。 例如，若要更改列表或表的默认输出，请使用 [az config set core.output=table](/cli/azure/reference-index)。 还可以向任何命令添加 `--output` 来对输出格式进行一次性更改。
 
 以下示例显示了 `az connectedmachine extension -list` 命令的部分 JSON 输出：
 

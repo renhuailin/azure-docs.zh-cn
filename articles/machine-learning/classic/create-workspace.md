@@ -1,6 +1,6 @@
 ---
 title: ML 工作室（经典）：创建工作区 - Azure
-description: 若要使用机器学习工作室（经典），你必须拥有一个机器学习工作室（经典）工作区。 此工作区包含创建、管理和发布试验所需的工具。
+description: 若要使用机器学习工作室（经典版），你必须拥有一个机器学习工作室（经典）工作区。 此工作区包含创建、管理和发布试验所需的工具。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,18 +9,20 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 76aad9dc8ffa4ff0fb3ccb3c8093ee4efaea09b6
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 307134aa36508600783ce7eb518037fb13dde6f4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582395"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693815"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>创建并共享机器学习工作室（经典）工作区
 
 适用范围：![这是复选标记，意味着本文适用于](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）![机器学习工作室（经典版）   这是 X，意味着本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-若要使用机器学习工作室（经典），你必须拥有一个机器学习工作室（经典）工作区。 此工作区包含创建、管理和发布试验所需的工具。
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
+若要使用机器学习工作室（经典版），你必须拥有一个机器学习工作室（经典）工作区。 此工作区包含创建、管理和发布试验所需的工具。
 
 ## <a name="create-a-studio-classic-workspace"></a>创建工作室（经典）工作区
 

@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: adea0e63c9e285a751a1a0508e84c5b83a10e994
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: e2acad2519fbf29aec72b97095318b4131207f91
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074684"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464541"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 配置 AD DS 连接器帐户权限 
 
@@ -84,7 +84,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
 
 务必将 `<ADAccountName>`、`<ADDomainName>` 和 `<ADAccountDN>` 替换为适合你的环境的值。
 
-如果不想修改 AdminSDHolder 容器的权限，请使用开关 `-SkipAdminSdHolders`。 
+如果想修改 AdminSDHolder 容器的权限，请使用开关 `-IncludeAdminSdHolders`。 请注意，不推荐这样做。
 
 默认情况下，所有设定的权限 cmdlet 都将尝试在林中每个域的根上设置 AD DS 权限，这意味着运行 PowerShell 会话的用户需要林中每个域的域管理员权限。  由于此要求，建议从林根中使用企业管理员。 如果 Azure AD Connect 部署具有多个 AD DS 连接器，则需要在具有 AD DS 连接器的每个林上运行相同的 cmdlet。 
 

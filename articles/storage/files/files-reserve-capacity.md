@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 918320cdb24442e551249e4e67d65e4ba85846c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 216ebdeb843f2faa76751f333e838c3cc32a6664
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027442"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539261"
 ---
 # <a name="optimize-costs-for-azure-files-with-reserved-capacity"></a>使用预留容量优化 Azure 文件存储的成本
 可以通过产能预留来节省 Azure 文件共享的存储成本。 如果你承诺预留一年或三年，Azure 文件存储预留容量可提供容量折扣，以节省存储成本。 预留在预留期内提供固定数量的存储容量。
@@ -22,6 +22,13 @@ ms.locfileid: "105027442"
 Azure 文件存储预留容量可大幅降低在 Azure 文件共享中存储数据的容量成本。 保存量将取决于预留期、选择预留的总容量以及为 Azure 文件共享选择的层级和冗余设置。 预留容量可提供计费折扣，并且不影响 Azure 文件共享的状态。
 
 有关 Azure 文件存储预留容量的定价信息，请参阅 [Azure 文件存储定价](https://azure.microsoft.com/pricing/details/storage/files/)。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
 
 ## <a name="reservation-terms-for-azure-files"></a>Azure 文件存储的预留条款
 以下各部分介绍 Azure 文件存储产能预留的条款。
@@ -35,9 +42,7 @@ Azure 文件存储预留容量可用于单个订阅或多个订阅（共享范�
 Azure 文件存储的产能预留仅涵盖订阅或共享资源组中存储的数据量。 预留中不包括事务、带宽和数据传输费用。 购买预留后，与预留属性匹配的容量费用将以折扣率（而不是按即用即付费率）计收。 有关 Azure 预留的详细信息，请参阅[什么是 Azure 预留？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)。
 
 ### <a name="supported-tiers-and-redundancy-options"></a>支持的层和冗余选项
-Azure 文件存储预留容量仅适用于常规用途版本 2 存储帐户 (GPv2) 中部署的标准文件共享。 预留容量不适用于高级或事务优化层中的 Azure 文件共享。
-
-当前，只有热层和冷层中的 Azure 文件共享支持预留。 所有存储冗余都支持预留。 有关冗余选项的详细信息，请参阅 [Azure 文件存储冗余](storage-files-planning.md#redundancy)。
+Azure 文件存储预留容量可用于高级、热层和冷层文件共享。 预留容量不适用于事务优化层中的 Azure 文件共享。 所有存储冗余都支持预留。 有关冗余选项的详细信息，请参阅 [Azure 文件存储冗余](storage-files-planning.md#redundancy)。
 
 ### <a name="security-requirements-for-purchase"></a>购买的安全要求
 若要购买预留容量，须满足以下条件：
@@ -69,13 +74,13 @@ Azure 文件存储预留容量仅适用于常规用途版本 2 存储帐户 (GPv
    |**范围**   |  指示可享受与预留关联的计费权益的订阅数。 它还控制将预留应用于特定订阅的方式。 <br/><br/> 如果选择“共享”，则预留折扣将应用到计费背景下任何订阅中的 Azure 文件存储容量。 计费上下文基于 Azure 的注册方式。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围包括由帐户管理员创建的所有采用即用即付费率的个人订阅。  <br/><br/>  如果选择“单个订阅”，预留折扣将应用到所选订阅中的 Azure 文件存储容量。 <br/><br/> 如果选择“单个资源组”，预留折扣将应用到所选订阅中的 Azure 文件存储容量，以及该订阅内的所选资源组。 <br/><br/> 购买预留后，可以更改预留范围。  |
    |**订阅**  | 用于支付 Azure 文件存储预留的订阅。 收取费用时将采用所选订阅中的付款方式。 订阅必须是以下类型之一： <br/><br/>  企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）：对于企业订阅，从注册的 Azure 预付款余额（以前称为货币承诺）中扣除费用或作为超额费用收取。 <br/><br/> 采用即用即付费率的个人订阅（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）：对于采用即用即付费率的个人订阅，通过信用卡收取费用或按订阅中的发票付款方式收费。    |
    | **区域** | 预留有效的区域。 |
-   | **层** | 预留所适用的层。 选项包括“热”和“冷” 。 |
+   | **层** | 预留所适用的层。 选项包括“高级”、“热层”和“冷层”  。 |
    | **冗余** | 预留的冗余选项。 选项包括“LRS”、“ZRS”、“GRS”和“GZRS”   。 有关冗余选项的详细信息，请参阅 [Azure 文件存储冗余](storage-files-planning.md#redundancy)。 |
    | **账单频率** | 指示帐户按预留计费的频率。 选项包括“月付”或“预付” 。 |
    | **大小** | 要预留的容量总量。 |
    |**条款**  | 一年或三年。   |
 
-1. 选择预留参数后，Azure 门户将显示费用。 该门户还显示即用即付账单的折扣百分比。
+1. 选择预留参数后，Azure 门户会显示费用。 该门户还显示即用即付账单的折扣百分比。
 
 1. 在“购买预留”边栏选项卡中，查看预留的总费用。 还可以为预留提供名称。
 

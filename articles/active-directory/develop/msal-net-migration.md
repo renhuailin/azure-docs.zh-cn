@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: cb62c7558f7811ce7123ba405cbf01a75d7a3392
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: d920cb4fc16f618c0c1945daf8e58246549d8b9d
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419333"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966547"
 ---
 # <a name="migrating-applications-to-msalnet-or-microsoftidentityweb"></a>将应用程序迁移到 MSAL.NET 或 Microsoft.Identity.Web
 

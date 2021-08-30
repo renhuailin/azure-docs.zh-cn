@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/27/2021
+ms.date: 07/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80de2d30055d5a78f4a0105d33f01b4fabfbcd47
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 766228eb291776c0ba4162f78238d6336d9194ae
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955084"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746148"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
@@ -24,7 +24,9 @@ ms.locfileid: "111955084"
 将来宾用户添加到目录时，来宾用户帐户的同意状态（可在 PowerShell 中查看）最初设置为“PendingAcceptance”。 在来宾接受邀请并同意隐私策略和使用条款之前，此设置一直保留。 此后，同意状态会更改为“已接受”，且不再向来宾显示同意页。
 
    > [!IMPORTANT]
-   > - 从 2021 年下半年开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果正在对 B2B 邀请或 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 使用 Google 联合身份验证，或者正在将自助注册与 Gmail 一起使用，那么当你的应用通过嵌入的 Web 视图对用户进行身份验证时，Google Gmail 用户将无法登录。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   >
+   > - 从 2021 年 7 月 12 日开始，如果 Azure AD B2B 客户设置了新的 Google 集成，将其用于自定义应用程序或业务线应用程序的自助注册，则在身份验证转移到系统 Web 视图之前，无法使用 Google 标识进行身份验证。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   > - 从 2021 年 9 月 30 日开始，Google 将[弃用嵌入式 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果你的应用使用嵌入式 Web 视图对用户进行身份验证，而你将 Google 联合身份验证与 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 或 Azure AD B2B 配合使用来进行[外部用户邀请](google-federation.md)或[自助注册](identity-providers.md)，则 Google Gmail 用户将无法进行身份验证。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
    > - 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择加入现已正式发布的[电子邮件一次性密码身份验证](one-time-passcode.md)。
 
 ## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>通过常用终结点进行的兑换和登录
@@ -62,16 +64,16 @@ ms.locfileid: "111955084"
 
 ## <a name="redemption-limitation-with-conflicting-contact-object"></a>冲突的 Contact 对象的兑换限制
 有时，受邀的外部来宾用户的电子邮件可能会与现有的 [Contact 对象](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)冲突，从而导致创建来宾用户时没有 proxyAddress。 这是一个已知限制，可防止来宾用户： 
-- 使用 [SAML/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation)、[Microsoft 帐户](/azure/active-directory/external-identities/microsoft-account)、[Google 联合身份验证](/azure/active-directory/external-identities/google-federation)或[电子邮件一次性密码](/azure/active-directory/external-identities/one-time-passcode)帐户通过直接链接兑换邀请。 
-- 使用 [SAML/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation) 和[电子邮件一次性密码](/azure/active-directory/external-identities/one-time-passcode)帐户通过邀请电子邮件兑换链接兑换邀请。
-- 使用 [SAML/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation) 和 [Google 联合身份验证](/azure/active-directory/external-identities/google-federation)帐户兑换后重新登录应用程序。
+- 使用 [SAML/WS-Fed IdP](./direct-federation.md)、[Microsoft 帐户](./microsoft-account.md)、[Google 联合身份验证](./google-federation.md)或[电子邮件一次性密码](./one-time-passcode.md)帐户通过直接链接兑换邀请。 
+- 使用 [SAML/WS-Fed IdP](./direct-federation.md) 和[电子邮件一次性密码](./one-time-passcode.md)帐户通过邀请电子邮件兑换链接兑换邀请。
+- 使用 [SAML/WS-Fed IdP](./direct-federation.md) 和 [Google 联合身份验证](./google-federation.md)帐户兑换后重新登录应用程序。
 
 若要取消阻止因 [Contact 对象](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)冲突而无法兑换邀请的用户，请执行以下步骤：
 1. 删除冲突的 Contact 对象。
 2. 删除 Azure 门户中的来宾用户（用户的“已接受邀请”属性应处于挂起状态）。
 3. 重新邀请来宾用户。
-4. 等待用户兑换邀请
-5. 将用户的联系人电子邮件重新添加到 Exchange 以及他们应属于的任何 DL 中
+4. 等待用户兑换邀请。
+5. 将用户的联系人电子邮件重新添加到 Exchange 以及他们应属于的任何 DL 中。
 
 ## <a name="invitation-redemption-flow"></a>邀请兑换流
 
@@ -126,7 +128,12 @@ ms.locfileid: "111955084"
 
    ![显示应用访问面板的屏幕截图](media/redemption-experience/myapps.png) 
 
-在目录中，来宾的“已接受邀请”值更改为“是” 。 如果创建了 MSA，则来宾的“源”将显示“Microsoft 帐户”。 有关来宾用户帐户属性的详细信息，请参阅 [Azure AD B2B 协作用户的属性](user-properties.md)。 
+> [!NOTE]
+> 仅在用户登录后才会出现同意体验，而不会在此之前出现。 在某些情况下，不会向用户显示同意体验，例如：
+> - 用户已接受同意体验
+> - 管理员[向应用程序授予租户范围的管理员同意](../manage-apps/grant-admin-consent.md)
+
+在目录中，来宾的“已接受邀请”值更改为“是” 。 如果创建了 MSA，则来宾的“源”将显示“Microsoft 帐户”。 有关来宾用户帐户属性的详细信息，请参阅 [Azure AD B2B 协作用户的属性](user-properties.md)。 如果在访问应用程序时遇到需要管理员同意的错误，请参阅[如何向应用授予管理员同意](../develop/v2-admin-consent.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/14/2021
-ms.openlocfilehash: 99e507fed35e5b74aa44bc2713550f7cf9d7b2e5
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 07/09/2021
+ms.openlocfilehash: fc52bac390763418d21cb001e5ae224acbaaa906
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518875"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595518"
 ---
 # <a name="point-in-time-restore-of-a-hyperscale-citus-server-group"></a>超大规模 (Citus) 服务器组的时间点还原
 
@@ -27,7 +27,7 @@ ms.locfileid: "107518875"
 2.  单击左侧面板中的“概述”，然后单击“还原” 。
 
     > [!IMPORTANT]
-    > 如果你的服务器组中尚不存在“还原”按钮，请打开 Azure 支持请求。
+    > 如果服务器组还没有“还原”按钮，请建立 Azure 支持请求以还原服务器组。
 
 3.  还原页将要求你在“最早”和“自定义”还原点之间选择，并且该页将显示最早的日期 。
 
@@ -50,7 +50,7 @@ ms.locfileid: "107518875"
 2.  单击左侧面板中的“概述”，然后单击“还原” 
 
     > [!IMPORTANT]
-    > 如果你的服务器组中尚不存在“还原”按钮，请打开 Azure 支持请求。
+    > 如果服务器组还没有“还原”按钮，请创建还原该服务器组的 Azure 支持请求。
 
 3.  还原页将要求你在“最早”和“自定义”还原点之间选择，并且该页将显示最早的日期 。
 

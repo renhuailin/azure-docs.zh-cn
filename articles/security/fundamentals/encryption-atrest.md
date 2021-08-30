@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6c302b10baad157cd70751d49fe6d50911c2ce75
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: a73965d0ec5d0d3fbcf665d648137e1153506721
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074783"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746230"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -38,7 +38,7 @@ Microsoft Azure 提供了许多工具，可以使用它们根据你公司的安�
 - 将使用对称加密密钥在将数据写入到存储时对数据进行加密。
 - 当数据在内存中就绪可供使用时，将会使用同一加密密钥来解密该数据。
 - 可以将数据分区，并可对每个分区使用不同的密钥。
-- 必须将密钥存储在实施了基于标识的访问控制和审核策略的安全位置。 数据加密密钥通常由 Azure Key Vault 中的密钥加密密钥进行加密，以进一步限制访问。
+- 必须将密钥存储在实施了基于标识的访问控制和审核策略的安全位置。 存储在安全位置之外的数据加密密钥使用保存在安全位置的密钥加密密钥进行加密。
 
 在实践中，密钥管理和控制方案以及规模和可用性保证都需要其他构造。 下面描述的是 Microsoft Azure 静态加密概念和组件。
 
@@ -75,7 +75,7 @@ Microsoft 致力于提供跨云服务的静态加密选项，可让客户控制�
 - 数据加密密钥 (DEK) – 对称 AES256 密钥，用于加密数据分区或块。  单个资源可能有多个分区和多个数据加密密钥。 使用不同的密钥加密每个数据块可以增加加密分析攻击的难度。 资源提供程序或应用程序实例需要 DEK 访问权限才能加密和解密特定的块。 将 DEK 替换为新密钥时，仅其关联的块中的数据需要使用新密钥重新加密。
 - **密钥加密密钥 (KEK)** - 用来加密数据加密密钥的一个加密密钥。 使用从不离开 Key Vault 的密钥加密密钥可以加密和控制数据加密密钥本身。 具有 KEK 访问权限的实体可能不同于需要 DEK 的实体。 实体可能会代理对 DEK 的访问以将每个 DEK 的访问限制到特定分区。 由于解密 DEK 需要 KEK，因此 KEK 实际上构成了一个单点机制：删除 KEK 即可删除 DEK。
 
-使用密钥加密密钥加密的数据加密密钥将单独进行存储，只有能够访问密钥加密密钥的实体才能解密这些数据加密密钥。 支持各种不同的密钥存储模型。 有关详细信息，请参阅[数据加密模型](encryption-models.md)。
+资源提供程序和应用程序实例存储使用密钥加密密钥加密的数据加密密钥，通常作为受数据加密密钥保护的数据的元数据。 只有有权访问密钥加密密钥的实体才能解密这些数据加密密钥。 支持各种不同的密钥存储模型。 有关详细信息，请参阅[数据加密模型](encryption-models.md)。
 
 ## <a name="encryption-at-rest-in-microsoft-cloud-services"></a>Microsoft 云服务中的静态加密
 

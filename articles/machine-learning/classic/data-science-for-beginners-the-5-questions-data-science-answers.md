@@ -9,16 +9,14 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: ef1d8586dc79d529df56e5d0e3101ba69e7a2cab
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4c67f9db1e06f9a269ff9d75407cadb60a967386
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694999"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742103"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>适用于初学者的数据科学视频 1：5 个数据科学问题的解答
-
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 通过顶级数据科学家制作的“适合初学者的数据科学”的五个简短视频，快速了解数据科学。 这些视频介绍基础知识，但无论是对研究数据科学感兴趣还是与数据科学家合作，这些内容都非常有用。
 

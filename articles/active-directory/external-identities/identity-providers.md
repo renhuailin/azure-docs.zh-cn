@@ -5,34 +5,34 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 07/26/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fd158c5d19c805fe7b7592904fc42ed3117bef6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0f867e0091d792ef88b79f1c1bb7f4272a35e928
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764344"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721376"
 ---
 # <a name="identity-providers-for-external-identities"></a>外部标识的标识提供者
-
-> [!NOTE]
-> 本文中提到的某些功能是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 标识提供程序创建、维护和管理标识信息，同时向应用程序提供身份验证服务。 与外部用户共享应用和资源时，Azure AD 是用于共享的默认标识提供者。 这意味着，当你邀请已有 Azure AD 或 Microsoft 帐户的外部用户时，这些用户可以自动登录，而无需你进行进一步的配置。
 
 除了 Azure AD 帐户外，外部标识还提供各种标识提供者。
 
-- Microsoft 帐户（预览版）：来宾用户可使用自己的个人 Microsoft 帐户 (MSA) 兑换 B2B 协作邀请。 设置自助式注册用户流时，可将 [Microsoft 帐户（预览版）](microsoft-account.md)添加为允许的标识提供者之一。 无需其他配置，此标识提供者即可供用户流使用。
+- **Microsoft 帐户**：来宾用户可使用自己的个人 Microsoft 帐户 (MSA) 兑换 B2B 协作邀请。 设置自助式注册用户流时，可将 [Microsoft 帐户](microsoft-account.md)添加为允许的标识提供者之一。 无需其他配置，此标识提供者即可供用户流使用。
 
-- 电子邮件一次性密码（预览版）：兑换邀请或访问共享资源时，来宾用户可请求临时代码，该代码将发送到其电子邮件地址。 他们输入此代码后，可以继续登录。 在无法通过其他方式对 B2B 来宾用户进行身份验证时，可使用电子邮件一次性密码功能对其进行身份验证。 设置自助式注册用户流时，可将电子邮件一次性密码（预览版）添加为允许的标识提供者之一。 需进行一些设置；请参阅[电子邮件一次性密码身份验证](one-time-passcode.md)。
+- **电子邮件一次性密码**：兑换邀请或访问共享资源时，来宾用户可请求临时代码，该代码将发送到其电子邮件地址。 他们输入此代码后，可以继续登录。 在无法通过其他方式对 B2B 来宾用户进行身份验证时，可使用电子邮件一次性密码功能对其进行身份验证。 设置自助式注册用户流时，可将电子邮件一次性密码添加为允许的标识提供者之一。 需进行一些设置；请参阅[电子邮件一次性密码身份验证](one-time-passcode.md)。
 
 - **Google**：通过 Google 联合身份验证，外部用户可以使用他们自己的 Gmail 帐户登录你的应用，来兑换你发出的邀请。 Google 联合身份验证还可以用于自助注册用户流。 了解如何将 [Google 添加为标识提供者](google-federation.md)。
    > [!IMPORTANT]
-   > 从 2021 年下半年开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果正在对 B2B 邀请或 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 使用 Google 联合身份验证，或者正在将自助注册与 Gmail 一起使用，那么当你的应用通过嵌入的 Web 视图对用户进行身份验证时，Google Gmail 用户将无法登录。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   >
+   > - 从 2021 年 7 月 12 日开始，如果 Azure AD B2B 客户设置了新的 Google 集成，将其用于自定义应用程序或业务线应用程序的自助注册，则在身份验证转移到系统 Web 视图之前，无法使用 Google 标识进行身份验证。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   > - 从 2021 年 9 月 30 日开始，Google 将[弃用嵌入式 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果你的应用使用嵌入式 Web 视图对用户进行身份验证，而你将 Google 联合身份验证与 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 或 Azure AD B2B 配合使用来进行[外部用户邀请](google-federation.md)或自助注册，则 Google Gmail 用户将无法进行身份验证。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+
 
 - **Facebook**：生成应用时，可以配置自助注册并启用 Facebook 联合身份验证，这样用户即能够使用他们自己的 Facebook 帐户注册你的应用。 Facebook 只能用于自助注册用户流，当用户兑换你发出的邀请时不能将它用作登录选项。 了解如何将 [Facebook 添加为标识提供者](facebook-federation.md)。
 

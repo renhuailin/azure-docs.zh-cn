@@ -7,24 +7,24 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd740c773998450ef6e8bb95c4df3a1abadaceed
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8ba54fa398d42aea43a93d3b3369f21f4d2168ec
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795777"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182512"
 ---
 # <a name="how-to-manage-tiered-files"></a>如何管理分层的文件
 
-本文为遇到与管理分层文件相关的问题的用户提供指导。 有关云分层的概念性问题，请参阅 [Azure 文件存储常见问题解答](../files/storage-files-faq.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json)。
+本文为遇到与管理分层文件相关问题的用户提供指导。 有关云分层的概念性问题，请参阅 [Azure 文件存储常见问题解答](../files/storage-files-faq.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json)。
 
 ## <a name="how-to-check-if-your-files-are-being-tiered"></a>如何检查是否在对文件进行分层
 
-是否需要按设置的策略对文件进行分层会每小时评估一次。 创建新服务器终结点时，可能会遇到两种情况：
+每小时评估一次是否需要按设置的策略对文件进行分层。 创建新服务器终结点时，可能会遇到两种情况：
 
 首次添加新服务器终结点时，文件通常存在于该服务器位置。 需要先上传它们，然后才能开始云分层。 在完成所有文件的初始上传之前，卷可用空间策略不会开始发挥作用。 但是，一旦文件已上传，可选日期策略便会立即开始基于单独文件发挥作用。 一小时间隔也适用于此处。 
 
-添加新服务器终结点时，你可能会将空服务器位置连接到包含你数据的 Azure 文件共享。 如果选择在初次下载到服务器的过程中下载命名空间并召回内容，则在命名空间降临后，会根据上次修改时间戳召回文件，直到达到卷可用空间策略和可选日期策略限制。
+添加新服务器终结点时，用户可能会将空服务器位置连接到包含数据的 Azure 文件共享。 如果选择在初次下载到服务器的过程中下载命名空间并召回内容，则在命名空间降临后，会根据上次修改时间戳召回文件，直到达到卷可用空间策略和可选日期策略限制。
 
 有多种查看文件是否已被分层到 Azure 文件共享的方法：
     
@@ -35,9 +35,9 @@ ms.locfileid: "107795777"
         |:----------------:|-----------|------------|
         | A | 存档 | 指示备份软件应备份此文件。 无论文件被分层还是完全存储在磁盘上，始终都会设置此属性。 |
         | P | 稀疏文件 | 指示该文件为稀疏文件。 稀疏文件是 NTFS 提供的专用化文件类型，用于在占用空间流上的文件几乎为空时提高使用效率。 Azure 文件同步将使用稀疏文件，因为文件会被完全分层或部分召回。 在完全分层文件中，文件流存储在云中。 在部分召回的文件中，文件的一部分已在磁盘上。 应用程序（例如，多媒体播放器或压缩工具）对文件进行了部分读取时可能会发生此情况。 如果文件被完全召回到磁盘，Azure 文件同步会将其从稀疏文件转换为常规文件。 此属性仅在 Windows Server 2016 及更低版本上设置。|
-        | M | 进行数据访问时召回 | 指示文件的数据未完全存在于本地存储中。 读取文件会导致从服务器终结点所连接到的 Azure 文件共享至少提取部分文件内容。 此属性仅在 Windows Server 2019 上设置。 |
+        | M | 进行数据访问时召回 | 指示文件的数据未完全存在于本地存储中。 读取文件会导致至少从服务器终结点所连接到的 Azure 文件共享提取部分文件内容。 此属性仅在 Windows Server 2019 上设置。 |
         | L | 重分析点 | 指示该文件包含重分析点。 重分析点是供文件系统筛选器使用的特殊指针。 Azure 文件同步使用重分析点来定义 Azure 文件同步文件系统筛选器 (StorageSync.sys) 存储文件的云位置。 这样即可支持无缝访问。 用户无需知道是否使用了 Azure 文件同步或如何获取在 Azure 文件共享中的文件访问权限。 如果文件被完全召回，则 Azure 文件同步将从此文件中删除重分析点。 |
-        | O | Offline | 指示文件的部分或全部内容未存储在磁盘上。 如果文件被完全召回，Azure 文件同步将删除此属性。 |
+        | O | 脱机 | 指示文件的部分或全部内容未存储在磁盘上。 如果文件被完全召回，Azure 文件同步将删除此属性。 |
 
         ![文件的“属性”对话框（“详细信息”选项卡被选中）](../files/media/storage-files-faq/azure-file-sync-file-attributes.png)
         
@@ -49,28 +49,32 @@ ms.locfileid: "107795777"
         > 所有这些属性也将对部分召回的文件可见。
         
    * “使用 `fsutil` 检查文件上的重分析点”。
-       如前面的选项中所述，分层的文件始终具有重分析点集。 重分析点使 Azure 文件同步文件系统筛选器驱动程序 (StorageSync.sys) 可以从不以本地方式存储在服务器上的 Azure 文件共享检索内容。 
+       如前面的选项中所述，分层的文件始终具有重分析点集。 重分析点使 Azure 文件同步文件系统筛选器驱动程序 (StorageSync.sys) 可以从未以本地方式存储在服务器上的 Azure 文件共享检索内容。 
 
        若要查看文件是否包含重分析点，你可以在提升的命令提示符或 PowerShell 窗口中运行 `fsutil` 实用程序：
 
         ```powershell
         fsutil reparsepoint query <your-file-name>
         ```
-       如果文件包含重分析点，应能看到“重分析标记值: 0x8000001e”。 此十六进制值是 Azure 文件同步拥有的重分析点值。输出还会包含表示 Azure 文件共享中文件路径的重分析数据。
+       如果文件包含重分析点，应能看到“重分析标记值: 0x8000001e”。 该十六进制值是 Azure 文件同步拥有的重分析点值。输出还会包含表示 Azure 文件共享中文件路径的重分析数据。
         
         > [!WARNING]  
         > 同时，`fsutil reparsepoint` 实用程序命令还包含删除重分析点的功能。 除非 Azure 文件同步工程团队要求，否则请不要执行此命令。 运行此命令可能会导致数据丢失。 
 
 ## <a name="how-to-exclude-applications-from-cloud-tiering-last-access-time-tracking"></a>如何从云分层中上次访问时间跟踪中排除应用程序
 
-使用 Azure 文件同步代理版本 11.1 时，现在可以从上次访问跟踪中排除应用程序。 当应用程序访问某个文件时，该文件的上次访问时间会在云分层数据库中更新。 扫描文件系统的应用程序（如防病毒软件）会导致所有文件具有相同的上次访问时间，这会影响文件的分层。
+当应用程序访问某个文件时，该文件的上次访问时间会在云分层数据库中更新。 扫描文件系统的应用程序（如防病毒软件）会导致所有文件具有相同的上次访问时间，这会影响文件的分层。
 
-若要从上次访问时间跟踪中排除应用程序，请将进程名称添加到位于 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync 下的 HeatTrackingProcessNameExclusionList 注册表设置。
+若要从上次访问时间跟踪中排除应用程序，请将进程名称添加到位于 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync 下的相应注册表设置。
 
+对于 v11 和 v12 版本，请将进程排除项添加到 HeatTrackingProcessNameExclusionList 注册表设置中。
 示例：reg ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync" /v HeatTrackingProcessNameExclusionList /t REG_MULTI_SZ /d "SampleApp.exe\0AnotherApp.exe" /f
 
+对于 v13 版本及更新版本，将进程排除项添加到 HeatTrackingProcessNamesExclusionList 注册表设置中。
+示例：reg ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync" /v HeatTrackingProcessNamesExclusionList /t REG_SZ /d "SampleApp.exe,AnotherApp.exe" /f
+
 > [!NOTE]
-> 默认情况下会排除重复数据删除和文件服务器资源管理器 (FSRM) 进程。 系统每 5 分钟接受一次对进程排除列表的更改。
+> 重复数据删除和文件服务器资源管理器 (FSRM) 进程将默认排除。 系统每 5 分钟接受一次对进程排除列表的更改。
 
 ## <a name="how-to-access-the-heat-store"></a>如何访问热度存储
 
@@ -118,7 +122,7 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
     * 如果配置了卷可用空间和日期策略，则会召回文件，直到达到卷可用空间或日期策略设置。 例如，如果卷可用空间策略设置为 20%，日期策略为 7天，则一旦卷可用空间达到 20% 或是 7 天内访问或修改的所有文件都在本地，召回便会停止。
 * `-ThreadCount` 确定可并行召回的文件数。
 * `-PerFileRetryCount` 确定尝试召回当前被阻止的文件的频率。
-* `-PerFileRetryDelaySeconds` 确定重试到召回尝试之间的时间间隔（以秒为单位），并且此参数应始终与上一参数结合使用。
+* `-PerFileRetryDelaySeconds` 确定重试召回尝试之间的时间间隔（以秒为单位），并且此参数应始终与上一参数结合使用。
 
 示例：
 ```powershell

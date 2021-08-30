@@ -9,12 +9,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 07/07/2021
 ms.topic: how-to
-ms.openlocfilehash: ca7a6e424125980f79ccb6521df0d7b87a9ce456
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 10eb9d57b19968737077a595030bb2a986ec6c7b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694963"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113564781"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 保护通过 Azure 机器学习部署的 Web 服务
 
@@ -156,7 +156,7 @@ aci_config = AciWebservice.deploy_configuration(
 > 将 Microsoft 提供的证书用于 AKS 部署时，无需手动更新群集的 DNS 值。 应自动设置该值。
 
 可以按照以下步骤更新自定义域名的 DNS 记录：
-1. 从评分终结点 URI（其格式通常为 `http://104.214.29.152:80/api/v1/service/<service-name>/score` ）获取评分终结点 IP 地址。 在此示例中，IP 地址为 104.214.29.152。
+1. 从评分终结点 URI（其格式通常为 *http://104.214.29.152:80/api/v1/service/<service-name>/score* ）获取评分终结点 IP 地址。 在此示例中，IP 地址为 104.214.29.152。
 1. 使用域名注册机构的工具来更新域名的 DNS 记录。 该记录将 FQDN（例如 www\.contoso.com）映射到 IP 地址。 该记录必须指向评分终结点的 IP 地址。
 
     > [!TIP]

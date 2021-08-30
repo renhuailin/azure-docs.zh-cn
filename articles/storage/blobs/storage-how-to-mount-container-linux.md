@@ -5,15 +5,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.date: 2/1/2019
+ms.date: 07/06/2021
 ms.author: tamram
 ms.reviewer: twooley
-ms.openlocfilehash: 9fa64d491a872d830ac57a1d097045d1702dd852
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 30a91858b03c89d38a58ba02efb75d4368d9e8d5
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527291"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302475"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 将 Blob 存储装载为文件系统
 
@@ -30,7 +30,7 @@ ms.locfileid: "111527291"
 ## <a name="install-blobfuse-on-linux"></a>在 Linux 上安装 Blobfuse
 适用于 Ubuntu、Debian、SUSE、CentoOS、Oracle Linux 和 RHEL 发行版的 Blobfuse 二进制文件通过[适用于 Linux 的 Microsoft 软件存储库](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)提供。 若要在这些发行版上安装 blobfuse，请从列表中配置其中一个存储库。 如果你的发行版没有可用的二进制文件，还可以按照 [Azure 存储安装步骤](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)从源代码生成二进制文件。
 
-支持安装 Blobfuse 的 Ubuntu 版本：16.04、18.04 和 20.04；RHEL 版本：7.5、7.8、8.0、8.1、8.2；CentOS 版本：7.0、8.0；Debian 版本：9.0、10.0；SUSE 版本：15、OracleLinux 8.1。 运行以下命令以确保你已部署了以下版本之一：
+对于 Ubuntu 版本，Blobfuse 将发布在 Linux 存储库中：16.04、18.04 和 20.04，RHEL 版本：7.5、7.8、8.0、8.1、8.2，CentOS 版本：7.0、8.0，Debian 版本：9.0、10.0，SUSE 版本：15，OracleLinux 8.1。 运行以下命令以确保你已部署了以下版本之一：
 ```
 lsb_release -a
 ```

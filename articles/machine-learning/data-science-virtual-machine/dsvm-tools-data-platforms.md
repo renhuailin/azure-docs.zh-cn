@@ -9,12 +9,12 @@ author: timoklimmer
 ms.author: tklimmer
 ms.topic: conceptual
 ms.date: 04/29/2021
-ms.openlocfilehash: 8e8920d2a2ebbf326c9d5d0aba100ad5352ca6c4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 13da66fbe5b79026028dc6c525283e40f1d55dad
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071193"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742049"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
 
@@ -38,6 +38,8 @@ DSVM 支持以下数据平台工具。
 > [!NOTE]
 > 对 Machine Learning Server 独立版的支持将于 2021 年 7 月 1 日结束。 我们将在 6 月 30 日之后从 DSVM 映像中删除它。 现有部署可继续访问该软件，但由于已到达支持结束日期，因此在 2021 年 7 月 1 日之后将不再为其提供支持。
 
+> [!NOTE]
+> 我们将在 2021 年 11 月底之前从 DSVM 映像中删除 SQL Server Developer Edition。 现有部署将继续安装 SQL Server Developer Edition。 在新部署中，如果希望有权访问 SQL Server Developer Edition，可通过 Docker 支持安装和使用它，详见[快速入门：使用 Docker 运行 SQL Server 容器映像](/sql/linux/quickstart-install-connect-docker?view=sql-server-ver15&pivots=cs1-)
 
 ### <a name="windows"></a>Windows
 

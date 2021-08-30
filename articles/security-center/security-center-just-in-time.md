@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 977284ba735eef4f02907d63ee1ae65332d7990f
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: dff90bc02ef9ee20284adb895eb05e765bdfba72
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778438"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734870"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>使用实时访问保护管理端口
 
@@ -36,7 +36,7 @@ ms.locfileid: "122778438"
 |发布状态：|正式发布版 (GA)|
 |定价：|需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
 |支持的 VM：|:::image type="icon" source="./media/icons/yes-icon.png"::: 通过 Azure 资源管理器部署的 VM。<br>:::image type="icon" source="./media/icons/no-icon.png"::: 通过经典部署模型部署的 VM。 [了解有关这些部署模型的详细信息](../azure-resource-manager/management/deployment-models.md)。<br>:::image type="icon" source="./media/icons/no-icon.png"::: 由 [Azure 防火墙管理器](../firewall-manager/overview.md)控制的 Azure 防火墙保护的 VM|
-|所需角色和权限：|“读取者”角色和“安全读取者”角色都可以查看 JIT 状态和参数。<br>若要创建可与 JIT 配合使用的自定义角色，请参阅[配置和使用 JIT 时需要哪些权限？](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)。<br>若要为那些需要请求对 VM 进行 JIT 访问而不执行其他 JIT 操作的用户创建最小特权角色，请使用安全中心 GitHub 社区页面中的 [Set-JitLeastPrivilegedRole 脚本](https://github.com/Azure/Azure-Security-Center/tree/main/Powershell%20scripts/JIT%20Scripts/JIT%20Custom%20Role)。|
+|所需角色和权限：|“读取者”角色和“安全读取者”角色都可以查看 JIT 状态和参数。<br>若要创建可与 JIT 配合使用的自定义角色，请参阅[配置和使用 JIT 时需要哪些权限？](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)。<br>若要为那些需要请求对 VM 进行 JIT 访问而不执行其他 JIT 操作的用户创建最小特权角色，请使用安全中心 GitHub 社区页面中的 [Set-JitLeastPrivilegedRole 脚本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)。|
 |云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国家/地区/主权（Azure 政府、Azure 中国世纪互联）|
 |||
 
@@ -333,6 +333,13 @@ ms.locfileid: "122778438"
 
 ---
 
+
+
+
+
+
+
+
 ## <a name="audit-jit-access-activity-in-security-center"></a>审核安全中心的 JIT 访问活动
 
 可以使用日志搜索深入了解 VM 活动。 若要查看日志，请执行以下操作：
@@ -348,6 +355,11 @@ ms.locfileid: "122778438"
    活动日志提供了一个经筛选的视图，其中包含以前针对该 VM 进行的操作以及时间、日期和订阅。
 
 1. 若要下载日志信息，请选择“以 CSV 格式下载”。
+
+
+
+
+
 
 
 

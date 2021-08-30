@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: 92068911c2df95a835de45ea6bb0ba786baf596f
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 07/30/2021
+ms.openlocfilehash: 86543f160a9ffc725a9512069bac39e6e222d543
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989430"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745092"
 ---
 # <a name="pgbouncer-in-azure-database-for-postgresql---flexible-server"></a>PgBouncer - Azure Database for PostgreSQL - 灵活服务器
 
@@ -25,7 +25,7 @@ PgBouncer 使用更轻量的模型，该模型使用异步 I/O，并且仅在需
 启用后，PgBouncer 将在数据库服务器上的端口 6432 上运行。 你可以将应用程序的数据库连接配置更改为使用同一主机名，但将端口更改为 6432，便可开始使用 PgBouncer 并受益于改进的空闲连接缩放功能。
 
 > [!Note]
-> PgBouncer 仅支持常规用途和内存优化计算层。
+> 公共访问网络和专用访问网络中的常规用途和内存优化计算层都支持 PgBouncer。
 
 ## <a name="enabling-and-configuring-pgbouncer"></a>启用和配置 PgBouncer
 
@@ -36,10 +36,14 @@ PgBouncer 使用更轻量的模型，该模型使用异步 I/O，并且仅在需
 | 参数名称             | 说明 | 默认 | 
 |----------------------|--------|-------------|
 | pgbouncer.default_pool_size | 将此参数值设置为每个用户/数据库对的连接数      | 50       | 
-| pgBouncer.max_client_conn | 将此参数值设置为要支持的 PgBouncer 客户端连接的最大数量      | 5000     | 
+| pgBouncer.max_client_conn | 将此参数值设置为要支持的 PgBouncer 客户端连接的最大数量。     | 5000     | 
 | pgBouncer.pool_mode | 将此参数值设置为事务池的事务（此为大多数工作负载的建议设置）。      | TRANSACTION     |
 | pgBouncer.min_pool_size | 如果低于此数量，请将更多服务器连接添加到池。    |   0（禁用）   |
-| pgBouncer.stats_users | 可选。 将此参数值设置为现有用户的名称，以便能够登录到特殊的 PgBouncer 统计数据库（名为“PgBouncer”）    |      |
+| pgbouncer.ignore_startup_parameters | PgBouncer 可忽略的以逗号分隔的参数列表。 例如，可以让 PgBouncer 忽略 `extra_float_digits` 参数。|   |
+| pgbouncer.query_wait_timeout | 允许查询等待执行的最长时间（以秒为单位）。 如果在此时间段内未将查询分配给服务器，客户端将断开连接。 | 120s |
+| pgBouncer.stats_users | 可选。 将此参数值设置为现有用户的名称，以便能够登录到特殊的 PgBouncer 统计数据库（名为“PgBouncer”）。    |      |
+
+有关 PgBouncer 配置的更多详细信息，请参阅 [pgbouncer.ini](https://www.pgbouncer.org/config.html)。
 
 > [!Note] 
 > PgBouncer 的升级将由 Azure 管理。

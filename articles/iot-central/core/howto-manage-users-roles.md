@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 00dd677610924fba58f8b0c6c709b162dd2088bf
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: acb26e18fd208f73053505d6e3ab5cca0f33fd2e
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110794121"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963196"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>管理 IoT Central 应用程序中的用户和角色
 
@@ -271,4 +271,4 @@ ms.locfileid: "110794121"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何在 IoT Central 应用程序中管理用户和角色后，建议接下来了解如何[管理帐单](howto-view-bill.md)。
+了解如何在 IoT Central 应用程序中管理用户和角色后，建议接下来了解如何[自定义应用程序 UI](howto-customize-ui.md)。

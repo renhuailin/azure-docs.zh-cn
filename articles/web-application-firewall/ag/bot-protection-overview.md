@@ -5,24 +5,21 @@ description: 本文概述了应用程序网关上的 Web 应用程序防火墙 (
 services: web-application-firewall
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 05/20/2020
+ms.date: 07/30/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e01f9ac8966223e11ad218af7bf6fbb2462f28f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19453e987c276ae2716e06900ea2fc8ecc2a6ba6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83714893"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729428"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway-bot-protection-overview"></a>Azure 应用程序网关上的 Azure Web 应用程序防火墙机器人防护概述
 
 大约有 20% 的 Internet 流量来自不良机器人。 它们执行一些操作，例如抓取、扫描和查找 Web 应用程序中的漏洞。 当这些机器人受到 Web 应用程序防火墙 (WAF) 的阻止时，则无法攻击你。 它们还将无法使用你的资源和服务，例如后端和其他底层基础结构。
 
 可以为 WAF 启用托管机器人防护规则集，以便阻止或记录来自已知恶意 IP 地址的请求。 IP 地址源自 Microsoft 威胁智能源。 Intelligent Security Graph 为 Microsoft 威胁智能助力，它已得到 Azure Security Center 等多项服务的运用。
-
-> [!IMPORTANT]
-> 机器人防护规则集当前为公共预览版，并提供预览版服务级别协议。 某些功能可能不受支持或者受限。 有关详细信息，请参阅  [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 。
 
 ## <a name="use-with-owasp-rulesets"></a>配合使用 OWASP 规则集
 
@@ -63,4 +60,4 @@ ms.locfileid: "83714893"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [为 Azure 应用程序网关上的 Web 应用程序防火墙配置机器人防护（预览）](bot-protection.md)
+- [为 Azure 应用程序网关上的 Web 应用程序防火墙配置机器人防护](bot-protection.md)

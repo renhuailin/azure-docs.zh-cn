@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/15/2021
-ms.openlocfilehash: 1feb5f2e858113086b9349c79dacb024570fb5a4
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 5e46b920359615c34864d670363b11c451b416b3
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635155"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114295125"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-cli"></a>使用 Bicep 和 Azure CLI 部署资源
 
@@ -156,7 +156,7 @@ az deployment group create \
   --resource-group testgroup \
   --template-file <path-to-bicep> \
   --parameters $params
-```
+``` 
 
 但是，如果将 Azure CLI 与 Windows 命令提示符 (CMD) 或 PowerShell 一起使用，请将变量设置为 JSON 字符串。 转义引号：`$params = '{ \"prefix\": {\"value\":\"start\"}, \"suffix\": {\"value\":\"end\"} }'`。
 
@@ -182,7 +182,7 @@ az deployment group create \
 
 ## <a name="deploy-template-specs"></a>部署模板规格
 
-目前，Azure CLI 不支持通过提供 Bicep 文件来创建模板规格。 但是，可以使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。此处有一个[示例](https://github.com/Azure/azure-docs-bicep-samples/blob/main/create-template-spec-using-bicep/azuredeploy.bicep)。 还可使用 Bicep CLI 将 Bicep 文件生成到 ARM 模板 JSON，然后使用 JSON 模板创建模板规格。
+目前，Azure CLI 不支持通过提供 Bicep 文件来创建模板规格。 但是，可以使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。此处有一个[示例](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep)。 还可使用 Bicep CLI 将 Bicep 文件生成到 ARM 模板 JSON，然后使用 JSON 模板创建模板规格。
 
 ## <a name="deployment-name"></a>部署名称
 

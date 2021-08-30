@@ -3,13 +3,13 @@ title: 概念 - 存储
 description: 了解 Azure VMware 解决方案私有云中的存储容量、存储策略、容错和存储集成。
 ms.topic: conceptual
 ms.custom: contperf-fy21q4
-ms.date: 04/26/2021
-ms.openlocfilehash: 8aa421cdee105573bd8edd91a4297ed773f7a459
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.date: 07/28/2021
+ms.openlocfilehash: ae37e0147ea03f91c2af68b8733a1702a02f81f3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108069788"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729012"
 ---
 # <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware 解决方案存储概念
 
@@ -35,7 +35,7 @@ Azure VMware 解决方案私有云提供具有 VMware vSAN 的本机、群集范
 
 该默认存储策略设置为 RAID-1（镜像）、FTT-1 和厚预配。  除非调整存储策略或应用新策略，否则群集将继续随此配置增长。 在三主机群集中，FTT-1 用于容纳单个主机的失败。 Microsoft 会定期控制失败，并在从体系结构角度检测到事件时替换硬件。
 
-:::image type="content" source="media/vsphere-vm-storage-policies.png" alt-text="显示 vSphere 客户端 VM 存储策略的屏幕截图。":::
+:::image type="content" source="media/concepts/vsphere-vm-storage-policies.png" alt-text="显示 vSphere 客户端 VM 存储策略的屏幕截图。":::
 
 
 |预配类型  |说明  |
@@ -46,7 +46,7 @@ Azure VMware 解决方案私有云提供具有 VMware vSAN 的本机、群集范
 >[!TIP]
 >如果不确定群集是否会增长到 4 或更大，请使用默认策略进行部署。  如果确定群集会增长，建议在部署过程中部署额外的主机，而不是在初始部署后再扩展群集。 在 VM 部署到群集后，将 VM 设置中的磁盘存储策略更改为 RAID-5 FTT-1 或 RAID-6 FTT-2。 
 >
->:::image type="content" source="media/vsphere-vm-storage-policies-2.png" alt-text="屏幕截图":::
+>:::image type="content" source="media/concepts/vsphere-vm-storage-policies-2.png" alt-text="显示 RAID-5 FTT-1 和 RAID-6 Ftt-2 选项的屏幕截图。":::
 
 
 ## <a name="data-at-rest-encryption"></a>静态数据加密
@@ -65,9 +65,10 @@ vSAN 数据存储默认使用 Azure Key Vault 中存储的密钥进行静态数�
 
 现在，你已了解 Azure VMware 解决方案存储概念，建议你了解以下内容：
 
-- [在私有云中缩放群集][tutorial-scale-private-cloud]
-- [将 Azure NetApp 文件与 Azure VMware 解决方案配合使用](netapp-files-with-azure-vmware-solution.md)
-- [适用于 Azure VMware 解决方案的 vSphere 基于角色的访问控制](concepts-identity.md)
+- [将磁盘池附加到 Azure VMware 解决方案（预览版）](attach-disk-pools-to-azure-vmware-solution-hosts.md) - 可以使用磁盘作为 Azure VMware 解决方案的持久性存储以实现最佳成本和性能。
+- [缩放私有云中的群集][tutorial-scale-private-cloud] - 可以根据应用程序工作负载的需求，缩放私有云中的群集和主机。 应该逐一解决特定服务的性能和可用性限制。
+- [Azure NetApp 文件与 Azure VMware 解决方案](netapp-files-with-azure-vmware-solution.md) - 可使用 Azure NetApp 迁移和运行云中要求最苛刻的企业文件工作负荷：数据库、SAP 和高性能计算应用程序，而无需更改代码。 
+- [适用于 Azure VMware 解决方案的 vSphere 基于角色的访问控制](concepts-identity.md) - 可使用 vCenter 管理 VM 工作负载以及使用 NSX-T Manager 管理和扩展私有云。 访问和身份管理对 vCenter 使用 CloudAdmin 角色，对 NSX-T Manager 使用受限的管理员权限。
 
 
 <!-- LINKS - external-->

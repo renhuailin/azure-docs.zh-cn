@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: shkale-msft
-ms.author: shkale
+author: rothja
+ms.author: jroth
 ms.reviewer: mathoma
 ms.date: 03/10/2021
-ms.openlocfilehash: 325a2feb0cf29a03a88249e2d0ac3a22f685d498
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 2a725512f3fa18a9af43d2725cda4ce1248e796a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694546"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737105"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>复制 Azure SQL 数据库中数据库的事务一致性副本
 
@@ -30,6 +30,14 @@ ms.locfileid: "110694546"
 
 > [!NOTE]
 > Azure SQL 数据库可配置备份存储冗余目前在巴西南部提供公共预览版，且仅在 Azure 东南亚地区正式发布。 在预览中，如果源数据库是使用本地冗余或区域冗余备份存储冗余创建的，则不支持将数据库副本复制到其他 Azure 区域中的服务器。 
+
+## <a name="database-copy-for-azure-sql-hyperscale"></a>Azure SQL 超大规模的数据库复制
+
+对于 Azure SQL 超大规模，目标数据库确定复制是快速复制还是数据复制大小。
+
+快速复制：当复制在与源的同一区域中完成时，会从 blob 快照创建复制，无论数据库大小如何，此复制都是一项快速操作。
+
+数据复制大小：如果目标数据库与源数据库位于不同的区域，或者目标数据库的数据库备份存储冗余（本地、区域、异地）与源数据库不同，则复制操作将是数据操作大小。 复制时间不会与大小成正比，因为页服务器 blob 是并行复制的。
 
 ## <a name="logins-in-the-database-copy"></a>数据库副本中的登录名
 
@@ -86,7 +94,11 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 
 > [!NOTE]
 > 终止 T-SQL 语句不会终止数据库复制操作。 若要终止该操作，请删除目标数据库。
->
+> [!NOTE]
+> 如果源服务器和/或目标服务器配置了专用终结点，并且禁用了公共网络访问，则不支持数据库复制。 如果已配置专用终结点但允许公共网络访问，则从公共 IP 地址连接到目标服务器时，启动数据库复制的操作会成功。
+若要确定当前连接的源 IP 地址，请执行 `SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id = @@SPID;`
+ 
+
 
 > [!IMPORTANT]
 > 使用 T-SQL CREATE DATABASE 时选择备份存储冗余…尚不支持 AS COPY OF 命令。 

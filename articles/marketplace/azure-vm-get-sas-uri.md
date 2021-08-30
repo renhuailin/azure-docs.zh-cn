@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 04/21/2021
-ms.openlocfilehash: 1935d64db958112a7b6951abb81e3bd4d7119bda
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.date: 06/23/2021
+ms.openlocfilehash: 4bebe0ea34f9f9cc62b0ed4e96fd6fb1c7615635
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525743"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913448"
 ---
 # <a name="generate-a-sas-uri-for-a-vm-image"></a>为 VM 映像生成 SAS URI
 
@@ -21,7 +21,7 @@ ms.locfileid: "111525743"
 
 为 VHD 生成 SAS URI 需要满足以下要求：
 
-- 只需要“列出”和“读取”权限。 不要提供“写入”或“删除”访问权限。
+- 只需要“列出”和“读取”权限。 请不要提供“写入”或“删除”访问权限。
 - 访问权限持续时间（过期日期）应至少是从 SAS URI 创建时间开始算起的 3 周。
 - 若要防范 UTC 时间更改，请将开始日期设置为当前日期的前一天。 例如，如果当前日期是 2020 年 6 月 16 日，请选择 6/15/2020。
 
@@ -58,7 +58,7 @@ $resourceGroupName=myResourceGroupName
 $snapshotName=mySnapshot
 
 #Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
-#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
+#Know more about SAS here: https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1
 $sasExpiryDuration=3600
 
 #Provide storage account name where you want to copy the underlying VHD file. Currently, only general purpose v1 storage is supported.
@@ -84,7 +84,7 @@ az storage blob copy start --destination-blob $destinationVHDFileName --destinat
 此脚本使用以下命令生成快照的 SAS URI，然后使用该 SAS URI 将基础 VHD 复制到存储帐户。 表中的每条命令均链接到特定于命令的文档。
 
 
-|命令  |说明  |
+|Command  |说明  |
 |---------|---------|
 | az disk grant-access    |     生成只读 SAS，使用该 SAS 可以将基础 VHD 文件复制到存储帐户或将其下载到本地    |
 |  az storage blob copy start   |    将 Blob 从一个存储帐户异步复制到另一个存储帐户。 使用 az storage blob show 检查新 Blob 的状态。     |
@@ -128,7 +128,7 @@ az storage blob copy start --destination-blob $destinationVHDFileName --destinat
 2. 创建一个 PowerShell 文件（扩展名为 .ps1），在其中复制以下代码，然后在本地保存该文件。
 
     ```azurecli-interactive
-    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net’ --name <container-name> --permissions rl --start ‘<start-date>’ --expiry ‘<expiry-date>’
+    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <container-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
     ```
 
 3. 编辑该文件以使用以下参数值。 以 UTC 日期时间格式提供日期，例如 2020-04-01T00:00:00Z。
@@ -141,7 +141,7 @@ az storage blob copy start --destination-blob $destinationVHDFileName --destinat
     下面是（在撰写本文时）正确的参数值示例：
 
     ```azurecli-interactive
-    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net’ --name <container-name> -- permissions rl --start ‘2020-04-01T00:00:00Z’ --expiry ‘2021-04-01T00:00:00Z’
+    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name <container-name> -- permissions rl --start '2020-04-01T00:00:00Z' --expiry '2021-04-01T00:00:00Z'
     ```
 
 1. 保存更改。
@@ -174,5 +174,5 @@ az storage blob copy start --destination-blob $destinationVHDFileName --destinat
 ## <a name="next-steps"></a>后续步骤
 
 - 如果遇到问题，请参阅 [VM SAS 失败消息](azure-vm-sas-failure-messages.md)
-- [登录到合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
+- [登录到合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165935)
 - [在 Azure 市场中创建虚拟机产品/服务](azure-vm-create.md)

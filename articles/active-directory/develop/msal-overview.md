@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/22/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a3095d4123abd9dce48cd08e1b7f250ba246eafc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: aaddev, identityplatformtop40, has-adal-ref
+ms.openlocfilehash: 405843ad0d56a75dac20dc2a6c85d8bc15600312
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741729"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429101"
 ---
 # <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft 身份验证库 (MSAL) 的概述
 借助 Microsoft 身份验证库 (MSAL)，开发人员能够从 Microsoft 标识平台获取[令牌](developer-glossary.md#security-token)，以便对用户进行身份验证并访问受保护的 Web API。 它可用于提供对 Microsoft Graph、其他 Microsoft API、第三方 Web API 或你自己的 Web API 的安全访问。 MSAL 支持许多不同的应用程序体系结构和平台，包括 .NET、JavaScript、Java、Python、Android 和 iOS。

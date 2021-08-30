@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 07/06/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
-ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40, has-adal-ref
-ms.openlocfilehash: fca6234742958f363d45c02780c2d01246ac58a9
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
+ms.openlocfilehash: 77737060d8cfc84d9b433d9be2ea5ad9ba11b0a4
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428842"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861225"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中的权限和许可
 
@@ -248,7 +248,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| 参数        | 条件        | 描述                                                                                |
+| 参数        | 条件        | 说明                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | 必需 | 要向其请求权限的目录租户。 可使用 GUID 或易记名称格式提供它， 也可以采用常规方式使用组织来引用它，如示例所示。 请勿使用“common”，因为除非在租户的上下文中，否则个人帐户无法提供管理员同意。 为了确保与管理租户的个人帐户的兼容性最佳，请尽可能使用租户 ID。 |
 | `client_id` | 必需 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给你的应用的应用程序（客户端）ID。 |

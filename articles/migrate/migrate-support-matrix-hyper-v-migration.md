@@ -6,12 +6,12 @@ ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 14660ca026dc51bc6e722559a28ef4a77361100b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1e203fb70bd13d1ab6681d0b579ffff8458d400d
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094557"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721173"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V 迁移的支持矩阵
 
@@ -31,8 +31,7 @@ ms.locfileid: "110094557"
 | 主机操作系统 | Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2（含最新更新）。 注意：还支持这些操作系统的服务器核心安装。 |
 | **其他软件要求** | .NET Framework 4.7 或更高版本 |
 | **端口访问** |  HTTPS 端口 443 上的出站连接，用于发送 VM 复制数据。
-| **可用磁盘空间（缓存）** |  600 GB |
-| **可用磁盘空间（保留磁盘）** |  600 GB |
+
 
 
 ## <a name="hyper-v-vms"></a>Hyper-V VM
@@ -41,7 +40,7 @@ ms.locfileid: "110094557"
 | :----------------------------- | :------------------- |
 | **操作系统** | Azure 支持的所有 [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) 和 [Linux](../virtual-machines/linux/endorsed-distros.md) 操作系统。 |
 **Windows Server 2003** | 对于运行 Windows Server 2003 的 VM，需要在迁移之前[安装 Hyper-V 集成服务](prepare-windows-server-2003-migration.md)。 | 
-**Azure 中的 Linux VM** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对以下操作系统做出这些更改：<br/> - Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x<br/> - Cent OS 7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - SUSE Linux Enterprise Server 15 SP1 <br/>- Ubuntu 19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 对于其他操作系统，手动进行[所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating)。
+**Azure 中的 Linux VM** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对以下操作系统做出这些更改：<br/> - Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x<br/> - Cent OS 7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - SUSE Linux Enterprise Server 15 SP1 <br/>- Ubuntu 20.04、19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 对于其他操作系统，手动进行[所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating)。
 | **Azure 所需的更改** | 某些 VM 可能需要经过更改才能在 Azure 中运行。 在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。 |
 | **Linux 启动**                 | 如果 /boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不是分布在多个磁盘上。<br/> 如果 /boot 是根 (/) 分区的一部分，则“/”分区应在 OS 磁盘上，而不是分布在其他磁盘上。 |
 | **UEFI 启动**                  | 支持。 基于 UEFI 的 VM 将迁移到 Azure 第 2 代 VM。  |
@@ -106,7 +105,7 @@ time.nist.gov | 验证系统时间与全球时间之间的时间同步。
 FC 磁盘 | 不支持。 | 如果不支持，检查会失败。
 BitLocker | 不支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
-在迁移后进行连接 - Windows | 若要在迁移后连接到运行 Windows 的 Azure VM，请执行以下操作：<br/><br/> - 在迁移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP  。<br/><br/> - 为了通过站点到站点 VPN 进行访问，启用 RDP 并在“Windows 防火墙” -> “允许的应用和功能”中同意域和专用网络使用 RDP。 此外，检查操作系统的 SAN 策略是否已设置为 OnlineAll。 [了解详细信息](prepare-for-migration.md)。 |
+在迁移 Windows 后进行连接 | 若要在迁移后连接到运行 Windows 的 Azure VM，请执行以下操作：<br/><br/> - 在迁移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP  。<br/><br/> - 为了通过站点到站点 VPN 进行访问，启用 RDP 并在“Windows 防火墙” -> “允许的应用和功能”中同意域和专用网络使用 RDP。 此外，检查操作系统的 SAN 策略是否已设置为 OnlineAll。 [了解详细信息](prepare-for-migration.md)。 |
 在迁移后进行连接 - Linux | 若要在使用 SSH 迁移后连接到 Azure VM，请执行以下操作：<br/><br/> - 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为“启动”，以及防火墙规则是否允许 SSH 连接。<br/><br/> - 在 Azure VM 上执行迁移后，允许已故障转移的 VM 及其所连接 Azure 子网上的网络安全组规则与 SSH 端口建立传入连接。 此外，为 VM 添加公共 IP 地址。 |  
 
 ## <a name="next-steps"></a>后续步骤

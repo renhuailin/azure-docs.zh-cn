@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/31/2020
+ms.date: 07/01/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07094e399f153f56746a931a4a100b3c0d38f92f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30d16b2042e2bfc8e11824fe64cf709413fd05d8
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772070"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113218378"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>通过 Azure 门户控制 Azure HANA 大型实例
 
@@ -123,7 +123,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 
 ![Azure 门户中 HLI 属性的顶部部分](./media/hana-li-portal/portal-properties-top.png)
 
-你已经在概述屏幕中看到过前几个数据项。 但是，数据的一个重要部分是 ExpressRoute 线路 ID，这是在移交首批已部署单元时获得的信息。 在某些支持案例中，可能会要求提供该数据。 屏幕截图底部显示了一个重要数据条目。 显示的数据为 NFS 存储头（将存储隔离到 HANA 大型实例堆栈中的租户）的 IP 地址。 编辑[存储快照备份的配置文件](./hana-backup-restore.md#set-up-storage-snapshots)时，也需要此 IP 地址。 
+你已经在概述屏幕中看到过前几个数据项。 但是，数据的一个重要部分是 ExpressRoute 线路 ID，这是在移交首批已部署单元时获得的信息。 在某些支持案例中，可能会要求提供该数据。 屏幕截图底部显示了一个重要数据条目。 显示的数据为 NFS 存储头（将存储隔离到 HANA 大型实例堆栈中的租户）的 IP 地址。 编辑[配置 Azure 应用程序一致快照工具](../../../azure-netapp-files/azacsnap-cmd-ref-configure.md)时也需要此 IP 地址。 
 
 在属性窗格中向下滚动可获得其他数据，例如 HANA 大型实例单元的唯一资源 ID 或分配给部署的订阅 ID。
 

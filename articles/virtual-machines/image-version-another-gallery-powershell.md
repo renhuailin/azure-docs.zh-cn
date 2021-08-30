@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bf5a3e753f3110fd07b6ab6bcde4b40bd2940153
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: e7ac7408405e0e77b29cf48a16d91725332ca3f5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669488"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445840"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>使用 PowerShell 复制另一个库中的映像
 
@@ -61,7 +61,7 @@ $sourceImgVer = Get-AzGalleryImageVersion `
 
 ## <a name="create-the-image-definition"></a>创建映像定义 
 
-需要创建一个与源的映像定义相匹配的新映像定义。 可以使用 [Get-AzGalleryImageDefinition](/powershell/module/az.compute/get-azgalleryimagedefinition) 查看重新创建映像定义所需的全部信息。
+需要创建与操作系统、操作系统状态以及包含源映像版本的映像定义的 Hyper-V 代系相匹配的新映像定义。 可以使用 [Get-AzGalleryImageDefinition](/powershell/module/az.compute/get-azgalleryimagedefinition) 查看重新创建映像定义所需的全部信息。
 
 ```azurepowershell-interactive
 Get-AzGalleryImageDefinition `
@@ -121,10 +121,14 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
    -Sku 'mySKU'
 ```
 
+> [!NOTE]
+> 对于将包含从第三方映像继承的映像的映像定义，计划信息必须与第三方映像中的计划信息完全匹配。 创建映像定义时，通过添加 `-PurchasePlanName`、`-PurchasePlanProduct` 和 `-PurchasePlanPublisher` 在映像定义中包含计划信息。
+>
+
 
 ## <a name="create-the-image-version"></a>创建映像版本
 
-使用 [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像版本。 需要在 `-Source` 参数中传递源映像的 ID，用于在目标库中创建映像版本。 
+使用 [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像版本。 需要在 `-SourceImageId` 参数中传递源映像的 ID，用于在目标库中创建映像版本。 
 
 允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
 
@@ -143,7 +147,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -ResourceGroupName myDestinationRG `
    -Location WestUS `
    -TargetRegion $targetRegions  `
-   -Source $sourceImgVer.Id.ToString() `
+   -SourceImageId $sourceImgVer.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-01' `
    -asJob 
 ```

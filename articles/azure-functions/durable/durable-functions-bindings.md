@@ -2,14 +2,14 @@
 title: Durable Functions 的绑定 - Azure
 description: 如何使用 Azure Functions 的 Durable Functions 扩展的触发器和绑定。
 ms.topic: conceptual
-ms.date: 05/07/2021
+ms.date: 08/03/2021
 ms.author: azfuncdf
-ms.openlocfilehash: a07748f996788825b21b5c23a117954085dadcbf
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 097527dbbf4363365e609a1f5aac1d851eb5dc60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656931"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742661"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 的绑定
 
@@ -397,6 +397,21 @@ async def main(msg: func.QueueMessage, starter: str) -> None:
 > 从 Durable Functions 2.x 开始提供实体触发器。
 
 在内部，此触发器绑定轮询已配置的持久存储以查找需执行的新实体操作。
+
+如果在 .NET 中创作函数，实体触发器会使用 [EntityTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.entitytriggerattribute) .NET 属性进行配置。
+
+如果使用的是 JavaScript、Python 或 PowerShell，则由 function.json 的 `bindings` 数组中的以下 JSON 对象定义实体触发器：
+
+```json
+{
+    "name": "<Name of input parameter in function signature>",
+    "entityName": "<Optional - name of the entity>",
+    "type": "entityTrigger",
+    "direction": "in"
+}
+```
+
+默认情况下，实体的名称就是函数的名称。
 
 ### <a name="trigger-behavior"></a>触发器行为
 

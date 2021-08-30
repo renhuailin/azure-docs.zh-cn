@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 04/22/2019
-ms.openlocfilehash: ad047a30b901d71604c775e9882b0f242f094638
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/20/2021
+ms.openlocfilehash: af13306598db75e89064507b9a2fad80d8d33542
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "74793027"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453164"
 ---
 # <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>有关在配有 Enterprise Integration Pack 的 Azure 逻辑应用中进行 AS2 消息设置的参考指南
 
@@ -25,7 +25,7 @@ ms.locfileid: "74793027"
 
 ![选择“接收设置”](./media/logic-apps-enterprise-integration-as2-message-settings/receive-settings.png)
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 |----------|----------|-------------|
 | **替代消息属性** | 否 | 用属性设置替代传入消息的属性。 |
 | **应对消息进行签名** | 否 | 指定是否必须对所有传入消息进行数字签名。 若需要签名，在“证书”列表中选择现有来宾合作伙伴公共证书来验证消息的签名。 若没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
@@ -44,10 +44,10 @@ ms.locfileid: "74793027"
 
 ![选择“发送设置”](./media/logic-apps-enterprise-integration-as2-message-settings/send-settings.png)
 
-| 属性 | 必选 | 说明 |
+| 属性 | 必须 | 说明 |
 |----------|----------|-------------|
 | **启用消息签名** | 否 | 指定是否必须对所有传出消息进行数字签名。 若需要签名，请选择以下值： <p>- 请在“签名算法”列表中，选择用于对消息进行签名的算法。 <br>- 请在“证书”列表中，选择用于对消息进行签名的现有宿主合伙伙伴私有证书。 若没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
-| **启用消息加密** | 否 | 指定是否必须对所有传出消息进行加密。 若需要加密，请选择以下值： <p>- 请在“加密算法”列表中，选择用于对消息进行加密的来宾合作伙伴公共证书算法。 <br>- 请在“证书”列表中，选择用于对传出信息进行加密的现有宿主合作伙伴私有证书。 若没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
+| **启用消息加密** | 否 | 指定是否必须对所有传出消息进行加密。 若需要加密，请选择以下值： <p>- 请在“加密算法”列表中，选择用于对消息进行加密的来宾合作伙伴公共证书算法。 <br>- 请在“证书”列表中，选择用于对传出信息进行加密的现有来宾合作伙伴公用证书。 若没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
 | **启用消息压缩** | 否 | 指定是否必须对所有传出消息进行压缩。 |
 | **展开 HTTP 标头** | 否 | 将 HTTP `content-type` 标头置于单行上方。 |
 | 在 MIME 标头中传输文件名 | 否 | 指定是否在 MIME 标头中包含文件名。 |

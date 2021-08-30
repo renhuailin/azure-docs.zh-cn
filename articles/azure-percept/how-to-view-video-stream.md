@@ -1,20 +1,20 @@
 ---
-title: 查看 Azure Percept DK 的 RTSP 视频流
+title: 查看 Azure Percept DK RTSP 视频流
 description: 了解如何从 Azure Percept DK 查看 RTSP 视频流
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5f77e99dc5c34867fef2b0ac47c709824fa4477d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ef0f7a581329e9ee5e4d891b41d321ed559d64d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095997"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727193"
 ---
-# <a name="view-your-azure-percept-dks-rtsp-video-stream"></a>查看 Azure Percept DK 的 RTSP 视频流
+# <a name="view-your-azure-percept-dk-rtsp-video-stream"></a>查看 Azure Percept DK RTSP 视频流
 
 按照此指南进行操作，查看 Azure Percept Studio 中 Azure Percept DK 的 RTSP 视频流。 部署到设备的视觉 AI 模型的推断将可在 Web 流中查看。
 
@@ -30,7 +30,7 @@ ms.locfileid: "102095997"
 
 1. 转到 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)。
 
-1. 在概述页的左侧，单击“设备”。
+1. 在“概述”页的左侧，单击“设备”。
 
     :::image type="content" source="./media/how-to-view-video-stream/overview-devices-inline.png" alt-text="Azure Percept Studio 概述屏幕。" lightbox="./media/how-to-view-video-stream/overview-devices.png":::
 

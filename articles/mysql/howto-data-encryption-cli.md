@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2661e73b5ef1a820d28d71b93fd96db034e8daf6
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96519036"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114675326"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>使用 Azure CLI 为 Azure Database for MySQL 进行数据加密
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 了解如何使用 Azure CLI 为 Azure Database for MySQL 设置和管理数据加密。
 
@@ -54,8 +56,8 @@ ms.locfileid: "96519036"
 * 该密钥必须具有以下属性才能用作客户管理的密钥：
   * 无过期日期
   * 未禁用
-  * 执行“get”、“wrap”、“unwrap”操作
-  * “恢复级别”属性设置为“可恢复”（这要求启用软删除，并将保留期设置为 90 天）
+  * 执行 **get**、**wrap**、**unwrap** 操作
+  * recoverylevel 属性设置为 **Recoverable**（这要求启用软删除，并将保留期设置为 90 天）
   * 已启用清除保护
 
 可以使用以下命令来验证密钥的上述属性：
@@ -63,6 +65,7 @@ ms.locfileid: "96519036"
 ```azurecli-interactive
 az keyvault key show --vault-name <key_vault_name> -n <key_name>
 ```
+* Azure Database for MySQL - 单一服务器应位于常规用途或内存优化定价层和常规用途存储 v2 上。 在继续操作之前，请参阅[使用客户管理的密钥进行数据加密](concepts-data-encryption-mysql.md#limitations)的限制。
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>为密钥操作设置正确的权限
 
@@ -168,7 +171,7 @@ az mysql server key delete -g <resource_group> --kid <key url>
 
 * 在属性对象中的 `Uri` 属性下，传递先前复制的 Azure Key Vault 密钥的资源 ID。
 
-* 使用“2020-01-01-预览版”作为 API 版本。
+* 使用“2020-01-01-preview”作为 API 版本。
 
 ```json
 {
@@ -280,4 +283,7 @@ az mysql server key delete -g <resource_group> --kid <key url>
 
 ## <a name="next-steps"></a>后续步骤
 
- 要了解有关数据加密的详细信息，请参阅[使用客户托管密钥进行 Azure Database for MySQL 数据加密](concepts-data-encryption-mysql.md)。
+* [验证 Azure Database for MySQL 的数据加密](howto-data-encryption-validation.md)
+* [对 Azure Database for MySQL 中的数据加密进行故障排除](howto-data-encryption-troubleshoot.md)
+* [使用客户管理的密钥进行加密的概念](concepts-data-encryption-mysql.md)。
+

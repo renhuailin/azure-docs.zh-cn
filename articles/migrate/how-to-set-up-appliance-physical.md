@@ -1,17 +1,17 @@
 ---
 title: 为物理服务器设置 Azure Migrate 设备
 description: 了解如何设置 Azure Migrate 设备以进行物理服务器发现和评估。
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 2c185fc20c68dab549461f64d9ff8f0540a2b06a
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 7dd11143e3852d17787de5e20ebe53290f5af96f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753090"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731185"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>为物理服务器设置设备
 
@@ -29,11 +29,11 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate：发现和评估�
 
 若要设置该设备，请执行以下操作：
 
-- 提供设备名称，并在门户中生成项目密钥。
-- 从 Azure 门户下载带有 Azure Migrate 安装程序脚本的压缩文件。
-- 从压缩文件中提取内容。 使用管理权限启动 PowerShell 控制台。
-- 执行 PowerShell 脚本以启动设备 Web 应用程序。
-- 完成设备的首次配置，并使用项目密钥将其注册到项目。
+1. 提供设备名称，并在门户中生成项目密钥。
+2. 从 Azure 门户下载带有 Azure Migrate 安装程序脚本的压缩文件。
+3. 从压缩文件中提取内容。 使用管理权限启动 PowerShell 控制台。
+4. 执行 PowerShell 脚本以启动设备配置管理器。
+5. 完成设备的首次配置，并使用项目密钥将其注册到项目。
 
 ### <a name="generate-the-project-key"></a>生成项目密钥
 
@@ -44,57 +44,57 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate：发现和评估�
 1. 成功创建 Azure 资源后，会生成一个 **项目密钥**。
 1. 复制密钥，因为配置设备时需要输入该密钥才能完成设备注册。
 
+   ![对于生成密钥的选择](./media/tutorial-assess-physical/generate-key-physical-1.png)
+
 ### <a name="download-the-installer-script"></a>下载安装程序脚本
 
 在“2:下载 Azure Migrate 设备”中，单击“下载”。
-
-   ![对于发现计算机的选择](./media/tutorial-assess-physical/servers-discover.png)
-
-
-   ![对于生成密钥的选择](./media/tutorial-assess-physical/generate-key-physical.png)
 
 ### <a name="verify-security"></a>验证安全性
 
 在部署压缩文件之前检查其安全性。
 
-1. 在已将文件下载到其中的服务器上，打开管理员命令窗口。
+1. 在下载文件的服务器上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 公有云的示例用法：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
-    - 政府云的示例用法：```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  验证设备的最新版本以及[哈希值](tutorial-discover-physical.md#verify-security)设置。
- 
+    - 用法示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+3.  验证最新设备版本和哈希值：
 
-## <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本
-此安装程序脚本执行以下操作：
+    **下载** | **哈希值**
+    --- | ---
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
 
-- 安装用于物理服务器发现和评估的代理和 Web 应用程序。
-- 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。
-- 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
-- 在路径下创建以下文件：
-    - **配置文件**：%Programdata%\Microsoft Azure\Config
-    - **日志文件**：%Programdata%\Microsoft Azure\Logs
+> [!NOTE]
+> 该脚本可用于为 Azure 公有云或 Azure 政府云设置物理设备。
 
-按如下所示运行脚本：
+### <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本
 
-1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  确保不要在已安装 Azure Migrate 设备的服务器上运行该脚本。
+1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
 2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
 4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-    - 对于公有云： 
     
-        ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 ```
-    - 对于 Azure 政府： 
-    
-        ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-    脚本将在成功完成时启动设备 Web 应用程序。
+5. 从方案、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 公有云上已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现和评估物理服务器（或在 AWS、GCP、Xen 等其他云上运行的服务器） 。
 
-如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。
+    :::image type="content" source="./media/tutorial-discover-physical/script-physical-default-1.png" alt-text="显示如何设置具有所需配置的设备的屏幕截图。":::
 
+6. 此安装程序脚本执行以下操作：
 
+    - 安装代理和 Web 应用程序。
+    - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
+    - 下载并安装 IIS 可重写模块。
+    - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
+    - 在路径下创建以下文件：
+        - **配置文件**：%Programdata%\Microsoft Azure\Config
+        - **日志文件**：%Programdata%\Microsoft Azure\Logs
+
+成功执行脚本后，将自动启动设备配置管理器。
+
+> [!NOTE]
+> 如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。
 
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 

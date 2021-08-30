@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 84164e95d5b961392787f4011abbe553b2cb5595
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 14197b7974db7697b9718f13ef59ac3e34c22a9b
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079870"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397148"
 ---
 # <a name="vm-size-performance-best-practices-for-sql-server-on-azure-vms"></a>VM 大小：Azure VM 上 SQL Server 的性能最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,6 +42,7 @@ ms.locfileid: "112079870"
 - 对于任务关键型工作负载和数据仓库工作负载，考虑更高的内存与 vCore 比率。 
 - 利用 Azure 虚拟机市场映像作为 SQL Server 设置，并配置存储选项以获得最佳 SQL Server 性能。 
 - 收集目标工作负载的性能特征，并使用它们来确定适用于你的业务的 VM 大小。
+- 使用[数据迁移助手](https://www.microsoft.com/download/details.aspx?id=53595) [SKU 建议](/sql/dma/dma-sku-recommend-sql-db)工具为现有 SQL Server 工作负载查找正确的 VM 大小。
 
 若要将 VM 大小清单与其他清单进行比较，请参阅全面的[性能最佳做法清单](performance-guidelines-best-practices-checklist.md)。 
 

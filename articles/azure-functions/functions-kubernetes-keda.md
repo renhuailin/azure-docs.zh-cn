@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: eamono
-ms.openlocfilehash: a1b7113c8d63163023baffa0abeb7d5cf7de7a6b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 736945109cd18bd7c6f3a6b9a16b6549f7c65652
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481426"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741393"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Kubernetes 上使用 KEDA 的 Azure Functions
 
@@ -24,38 +24,37 @@ Azure Functions 服务由两个关键组件组成：运行时和缩放控制器�
 
 ## <a name="managing-keda-and-functions-in-kubernetes"></a>在 Kubernetes 中管理 KEDA 和函数
 
-若要在 Kubernetes 群集上运行函数，必须安装 KEDA 组件。 可以使用 [Azure Functions Core Tools](functions-run-local.md) 安装此组件。
+若要在 Kubernetes 群集上运行函数，必须安装 KEDA 组件。 可通过下面其中一种方式安装此组件：
 
-### <a name="installing-with-helm"></a>通过 Helm 安装
++ Azure Functions Core Tools：使用 [`func kubernetes install` 命令](functions-core-tools-reference.md#func-kubernetes-install)。
 
-可以通过多种方式在任何 Kubernetes 群集中安装 KEDA，包括 Helm。  [KEDA 站点](https://keda.sh/docs/deploy/)上提供了部署选项。
++ Helm：可以通过多种方式在所有 Kubernetes 群集中安装 KEDA，包括 Helm。  [KEDA 站点](https://keda.sh/docs/deploy/)上提供了部署选项。
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>将函数应用部署到 Kubernetes
 
-可以将任何函数应用部署到运行 KEDA 的 Kubernetes 群集。  由于函数在 Docker 容器中运行，因此项目需要 `Dockerfile`。  如果还没有 Dockerfile，则可以通过在 Functions 项目的根目录中运行以下命令来添加 Dockerfile：
+可以将任何函数应用部署到运行 KEDA 的 Kubernetes 群集。  由于函数在 Docker 容器中运行，因此项目需要一个 Dockerfile。  调用 `func init` 创建项目时，可以使用 [`--docker` 选项][func init]创建 Dockerfile。 如果忘记执行此操作，则始终可以从 Functions 项目的根再次调用 `func init`，这次使用 [`--docker-only` 选项][func init]，如以下示例所示。 
 
-> [!NOTE]
-> Core Tools 会自动创建用 .NET、Node、Python 或 PowerShell 编写的用于 Azure Functions 的 Dockerfile。 对于用 Java 编写的函数应用，必须手动创建 Dockerfile。 使用 Azure Functions [映像列表](https://github.com/Azure/azure-functions-docker)可查找 Azure 函数所基于的正确映像。
-
-```cli
+```command
 func init --docker-only
 ```
 
+若要详细了解 Dockerfile 生成，请参阅 [`func init`][func init] 参考。 
+
 若要生成映像并将函数部署到 Kubernetes，请运行以下命令：
 
-> [!NOTE]
-> Core Tools 将利用 docker CLI 生成并发布映像。 请确保已安装 docker 并使用 `docker login` 连接到你的帐户。
-
-```cli
+```command
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
 ```
 
-> 将 `<name-of-function-deployment>` 替换为你的函数应用的名称。
+在本例中，将 `<name-of-function-deployment>` 替换为函数应用名称。
 
-“部署”命令执行一系列操作：
+部署命令执行以下操作：
+
 1. 先前创建的 Dockerfile 用于生成适用于函数应用的本地映像。
-2. 本地映像被标记并推送到用户登录的容器注册表。
-3. 创建清单并将其应用于定义 Kubernetes `Deployment` 资源、`ScaledObject` 资源和 `Secrets`（包括从 `local.settings.json` 文件导入的环境变量）的群集。
+1. 本地映像被标记并推送到用户登录的容器注册表。
+1. 创建清单并将其应用于定义 Kubernetes `Deployment` 资源、`ScaledObject` 资源和 `Secrets`（包括从 `local.settings.json` 文件导入的环境变量）的群集。
+
+要了解详细信息，请参阅 [`func kubernetes deploy` 命令](functions-core-tools-reference.md#func-kubernetes-deploy)。
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>从专用注册表部署函数应用
 
@@ -65,7 +64,7 @@ func kubernetes deploy --name <name-of-function-deployment> --registry <containe
 
 部署之后，可以通过删除创建的关联 `Deployment`、`ScaledObject` 和 `Secrets` 来删除函数。
 
-```cli
+```command
 kubectl delete deploy <name-of-function-deployment>
 kubectl delete ScaledObject <name-of-function-deployment>
 kubectl delete secret <name-of-function-deployment>
@@ -73,7 +72,11 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>从 Kubernetes 卸载 KEDA
 
-[KEDA 站点](https://keda.sh/docs/deploy/)上提供了用于卸载 KEDA 的步骤。
+可以通过以下其中一种方法从群集中删除 KEDA：
+
++ Azure Functions Core Tools：使用 [`func kubernetes remove` 命令](functions-core-tools-reference.md#func-kubernetes-remove)。
+
++ Helm：请参阅 [KEDA 网站上](https://keda.sh/docs/deploy/)的卸载步骤。
 
 ## <a name="supported-triggers-in-keda"></a>KEDA 中支持的触发器
 
@@ -95,3 +98,5 @@ KEDA 支持以下 Azure 函数触发器：
 * [使用自定义映像创建函数](functions-create-function-linux-custom-image.md)
 * [在本地对 Azure Functions 进行编码和测试](functions-develop-local.md)
 * [Azure 函数消耗计划的工作原理](functions-scale.md)
+
+[func init]: functions-core-tools-reference.md#func-init

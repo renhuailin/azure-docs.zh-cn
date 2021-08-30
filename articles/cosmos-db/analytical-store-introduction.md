@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 事务性（基于行）和分析（基于�
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 9328b8159b04d4e7e7bc2383739c86c76dbf156a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 5bcc0fed8413affe6d525f03bd08e8b61751f893
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985879"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745519"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>什么是 Azure Cosmos DB 分析存储？
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -153,28 +153,66 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
 
 ### <a name="schema-representation"></a>架构表示形式
 
-在分析存储中，架构表示形式有两种模式。 这些模式在简化列式表示形式、处理多态架构和简化查询体验之间进行了权衡：
+在分析存储中，架构表示形式有两种模式。 这些模式为数据库帐户中的所有容器定义架构表示方法，并在查询体验简单性与多态架构的更大包容性纵栏表示形式的方便性之间进行权衡。
 
-* 定义明确的架构表示形式
-* 完全保真架构表示形式
+* 明确定义的架构表示形式，是 SQL (CORE) API 帐户的默认选项。 
+* 全保真架构表示形式，是 Azure Cosmos DB API for MongoDB 帐户的默认选项。
 
+可为 SQL (Core) API 帐户使用全保真架构。 下面是有关这种可行方案的注意事项：
+
+ * 此选项仅对未启用 Synapse Link 的帐户有效。
+ * 无法通过关闭再打开 Synapse Link 来重置默认选项并从明确定义的表示形式更改为全保真表示形式。
+ * 无法使用任何其他过程从明确定义的表示形式更改为全保真表示形式。
+ * MongoDB 帐户与这种更改表示方法的可行方案不兼容。
+ * 目前无法通过 Azure 门户做出此决策。
+ * 应在对帐户启用 Synapse Link 的同时对此选项做出决策：
+ 
+ 使用 Azure CLI：
+ ```cli
+ az cosmosdb create --name MyCosmosDBDatabaseAccount --resource-group MyResourceGroup --subscription MySubscription --analytical-storage-schema-type "FullFidelity" --enable-analytical-storage true
+ ```
+ 
 > [!NOTE]
-> 对于 SQL（核心）API 帐户，启用分析存储后，将明确定义分析存储中的默认架构表示形式。 而对于用于 MongoDB 帐户的 Azure Cosmos DB API，分析存储中的默认架构表示形式是完全保真架构表示形式。 
+> 在以上命令中，请将针对现有帐户运行的 `create` 替换为 `update`。
+ 
+  使用 PowerShell：
+  ```
+   New-AzCosmosDBAccount -ResourceGroupName MyResourceGroup -Name MyCosmosDBDatabaseAccount  -EnableAnalyticalStorage true -AnalyticalStorageSchemaType "FullFidelity"
+   ```
+ 
+> [!NOTE]
+> 在以上命令中，请将针对现有帐户运行的 `New-AzCosmosDBAccount` 替换为 `Update-AzCosmosDBAccount`。
+ 
 
-**定义明确的架构表示形式**
+
+#### <a name="well-defined-schema-representation"></a>定义明确的架构表示形式
 
 定义明确的架构表示形式可在事务存储中创建与架构无关的数据的简单表格表示形式。 定义明确的架构表示形式具有以下注意事项：
 
-* 一个属性在多个项中的类型始终相同。
-* 我们仅允许一种类型更改，就是从 null 更改为任何其他数据类型。列数据类型由第一个出现的非 null 项进行定义。
+* 第一个文档定义基本架构，属性必须始终在所有文档中具有相同的类型。 仅有的例外情况是：
+  * 从 null 更改为任何其他数据类型。第一个出现的非 null 项定义列数据类型。 不遵循第一个非 null 数据类型的任何文档不会在分析存储中表示。
+  * 从 `float` 到 `integer`。 所有文档将在分析存储中表示。
+  * 从 `integer` 到 `float`。 所有文档将在分析存储中表示。 但是，若要使用 Azure Synapse SQL 无服务器池读取此数据，必须使用 WITH 子句将列转换为 `varchar`。 完成这种初始转换后，可以再次将列转换为数字。 请查看以下示例，其中的 num 初始值是整数，第二个值是浮点数。
 
-  * 例如，`{"a":123} {"a": "str"}` 没有完善定义的架构，因为 `"a"` 有时是字符串，有时是数值。 在这种情况下，分析存储会将 `"a"` 的数据类型注册为容器生存期期间第一个出现的项中的 `“a”` 的数据类型。 该文档仍将包含在分析存储中，但是呈不同数据类型 `"a"` 的项将不会包括在内。
+```SQL
+SELECT CAST (num as float) as num
+FROM OPENROWSET(PROVIDER = 'CosmosDB',
+                CONNECTION = '<your-connection',
+                OBJECT = 'IntToFloat',
+                SERVER_CREDENTIAL = 'your-credential'
+) 
+WITH (num varchar(100)) AS [IntToFloat]
+```
+
+  * 不遵循基本架构数据类型的属性不会在分析存储中表示。 以下面的 2 个文档为例，其中第一个文档定义了分析存储基本架构。 第二个文档（其中的 `id` 为 `2`）没有明确定义的架构，因为属性 `"a"` 是字符串，而第一个文档中的 `"a"` 是数字。 在这种情况下，分析存储会在容器生存期内将 `"a"` 数据类型注册为 `integer`。 第二个文档仍会包含在分析存储中，但其 `"a"` 属性则不会。
   
-    此条件不适用于 null 属性。 例如，`{"a":123} {"a":null}` 仍是定义明确的。
+    * `{"id": "1", "a":123}` 
+    * `{"id": "2", "a": "str"}`
+     
+ > [!NOTE]
+ > 上述条件不适用于 null 属性。 例如，`{"a":123} and {"a":null}` 仍是定义明确的。
 
-* 数组类型必须包含单个重复的类型。
-
-  * 例如，`{"a": ["str",12]}` 不是定义明确的架构，因为此数组包含整数和字符串类型组合。
+* 数组类型必须包含单个重复的类型。 例如，`{"a": ["str",12]}` 不是定义明确的架构，因为此数组包含整数和字符串类型组合。
 
 > [!NOTE]
 > 如果 Azure Cosmos DB 分析存储遵循定义明确的架构表示形式，但某些项违反了上述规范，则这些项不会包含在分析存储中。
@@ -192,7 +230,7 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
   * Azure Synapse 中的 SQL 无服务器池会将这些列表示为 `NULL`。
 
 
-**完全保真架构表示形式**
+#### <a name="full-fidelity-schema-representation"></a>完全保真架构表示形式
 
 完全保真架构表示形式旨在处理与架构无关的操作数据中的各种多态架构。 在此架构表示形式中，即使违反定义明确的架构约束（也就是既没有混合数据类型字段也没有混合数据类型数组），也不会从分析存储中删除任何项。
 
@@ -260,7 +298,11 @@ salary: 1000000
 
 ## <a name="security"></a>安全性
 
-对分析存储进行身份验证的方式，与对给定数据库的事务性存储进行身份验证的方式相同。 可以使用主密钥或只读密钥进行身份验证。 可以利用 Synapse Studio 中的链接服务，以防止粘贴 Spark 笔记本中的 Azure Cosmos DB 密钥。 有权访问工作区的任何用户都可以访问此链接服务。
+* 对分析存储进行身份验证的方式，与对给定数据库的事务性存储进行身份验证的方式相同。 可以使用主密钥或只读密钥进行身份验证。 可以利用 Synapse Studio 中的链接服务，以防止粘贴 Spark 笔记本中的 Azure Cosmos DB 密钥。 有权访问工作区的任何用户都可以访问此链接服务。
+
+* **使用专用终结点的网络隔离** - 可以单独控制对事务性和分析存储中的数据的网络访问。 在 Azure Synapse 工作区的托管虚拟网络内，为每个存储使用单独的托管专用终结点进行网络隔离。 如要了解详细信息，请参阅如何[为分析存储配置专用终结点](analytical-store-private-endpoints.md)一文。
+
+* 使用客户管理的密钥进行数据加密 - 可以采用自动且透明的方式使用相同的客户管理密钥无缝地跨事务存储和分析存储加密数据。 Azure Synapse Link 仅支持使用 Azure Cosmos DB 帐户的托管标识配置客户管理的密钥。 在帐户上[启用 Azure Synapse Link](configure-synapse-link.md#enable-synapse-link) 之前，必须在 Azure Key Vault 访问策略中配置帐户的托管标识。 若要了解详细信息，请参阅[如何使用 Azure Cosmos DB 帐户的托管标识配置客户管理的密钥](how-to-setup-cmk.md#using-managed-identity)一文。
 
 ## <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>支持多个 Azure Synapse Analytics 运行时
 
@@ -323,6 +365,8 @@ salary: 1000000
 若要了解更多信息，请参阅下列文档：
 
 * [Azure Synapse Link for Azure Cosmos DB](synapse-link.md)
+
+* 查看有关如何[使用 Azure Synapse Analytics 设计混合事务和分析处理](/learn/modules/design-hybrid-transactional-analytical-processing-using-azure-synapse-analytics/)的学习模块
 
 * [开始使用 Azure Synapse Link for Azure Cosmos DB](configure-synapse-link.md)
 

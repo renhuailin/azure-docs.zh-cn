@@ -7,29 +7,27 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 12/08/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: cb53aba300b933c78d9ac2f5fc5cf8054f3413e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8d18d296a54b85cb3b571099e13f8c3e4e7a9c7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104669995"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750243"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>使用 Kibana 和 Grafana 查看日志和指标
 
-提供了 Kibana 和 Grafana Web 仪表板，可让你深入了解启用了 Azure Arc 的数据服务所使用的 Kubernetes 命名空间。
+提供了 Kibana 和 Grafana Web 仪表板，可让你深入了解并明确启用了 Azure Arc 的数据服务所使用的 Kubernetes 命名空间。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 
 ## <a name="monitor-azure-sql-managed-instances-on-azure-arc"></a>监视 Azure Arc 上的 Azure SQL 托管实例
 
 若要访问已启用 Arc 的 SQL 托管实例的日志和监视仪表板，请运行以下 `azdata` CLI 命令
 
-```bash
-
-azdata arc sql endpoint list -n <name of SQL instance>
+```azurecl
+az sql mi-arc endpoint list -n <name of SQL instance>
 
 ```
 相关的 Grafana 仪表板包括：
@@ -43,7 +41,7 @@ azdata arc sql endpoint list -n <name of SQL instance>
 >  系统提示输入用户名和密码时，请输入在创建 Azure Arc 数据控制器时提供的用户名和密码。
 
 > [!NOTE]
->  由于预览版中使用的证书是自签名证书，因此会显示证书警告。
+>  由于证书是自签名证书，因此会提示证书警告。
 
 
 ## <a name="monitor-azure-database-for-postgresql-hyperscale-on-azure-arc"></a>监视 Azure Arc 上的 Azure Database for PostgreSQL 超大规模
@@ -52,7 +50,7 @@ azdata arc sql endpoint list -n <name of SQL instance>
 
 ```bash
 
-azdata arc postgres endpoint list -n <name of postgreSQL instance>
+az postgres arc-server endpoint list -n <name of postgreSQL instance> --k8s-namespace <namespace> --use-k8s
 
 ```
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 35fd78a9d55dc684045fdb4b83691c1613801421
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01b2dbaa8ed318f08fd68660078ae6fb9923221d
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97724863"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112969723"
 ---
 # <a name="configure-authentication"></a>配置身份验证
 
@@ -47,9 +47,25 @@ Azure 远程渲染使用与 [Azure 空间定位点 (ASA)](../../spatial-anchors/
 
 建议仅在开发期间使用帐户密钥进行快速原型制作。 建议不要使用应用程序中的嵌入式帐户密钥将应用程序交付到生产环境。 建议的方法是使用基于用户或基于服务的 Azure AD 身份验证方法。
 
- Azure AD 身份验证在 [Azure 空间定位点 (ASA)](../../spatial-anchors/index.yml) 服务的 [Azure AD 用户身份验证](../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)部分中进行了说明。
+### <a name="azure-ad-user-authentication"></a>Azure AD 用户身份验证
 
- 有关详细信息，请参阅[教程：保护 Azure 远程渲染和模型存储 - Azure Active Directory 身份验证](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
+[Azure 空间定位点文档](../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)中介绍了 Azure AD 身份验证。
+
+按照以下步骤在 Azure 门户内配置 Azure Active Directory 用户身份验证。
+
+1. 在 Azure Active Directory 中注册应用程序。 在注册过程中，需要确定应用程序是否应为多租户应用程序。 还需要在“身份验证”边栏选项卡中提供应用程序允许的重定向 URL。
+:::image type="content" source="./media/azure-active-directory-app-setup.png" alt-text="身份验证设置":::
+
+1. 在“API 权限”选项卡中，在“mixedreality”下请求“mixedreality.signin”范围的“委托权限”  。
+:::image type="content" source="./media/azure-active-directory-app-api-permissions.png" alt-text="API 权限":::
+
+1. 在“安全性”>“权限”选项卡中授予管理员同意。:::image type="content" source="./media/azure-active-directory-grant-admin-consent.png" alt-text="管理员同意":::
+
+1. 然后，导航到 Azure 远程渲染资源。 在“访问控制”面板中，为应用程序和用户授予所需的[角色](#azure-role-based-access-control)，代表他们使用对 Azure 远程渲染资源的委托访问权限。
+:::image type="content" source="./media/azure-remote-rendering-add-role-assignment.png" alt-text="添加权限":::
+:::image type="content" source="./media/azure-remote-rendering-role-assignments.png" alt-text="角色分配":::
+
+有关在应用程序代码中使用 Azure AD 用户身份验证的信息，请参阅[教程：保护 Azure 远程渲染和模型存储 - Azure Active Directory 身份验证](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
 
 ## <a name="azure-role-based-access-control"></a>Azure 基于角色的访问控制
 

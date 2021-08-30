@@ -1,5 +1,5 @@
 ---
-title: 在地图上聚类点数据 | Microsoft Azure Maps
+title: 在 Web SDK 中聚类点数据 | Microsoft Azure Maps
 description: 了解如何在地图上聚类点数据。 了解如何使用 Azure Maps Web SDK 来聚类数据，响应聚类鼠标事件以及显示聚类聚合。
 author: rbrundritt
 ms.author: richbrun
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: f798b4a7964eba112ed9948b2db4f6d5c3edd1e3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 70b1ac01c2019b4ce74895b67cb79f5e93226b64
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608351"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091854"
 ---
-# <a name="clustering-point-data"></a>聚类点数据
+# <a name="clustering-point-data-in-the-web-sdk"></a>在 Web SDK 中聚类点数据
 
 在地图上可视化大量的数据点时，数据点将会彼此重叠。 重叠可能会导致地图不可读且难以使用。 聚类点数据是将相邻的点数据合并在一起，并在地图上将其作为单个聚类数据点进行呈现的过程。 当用户放大地图时，聚类的各个数据点将会分开。 处理大量数据点时，请使用聚类过程来改善用户体验。
 

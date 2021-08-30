@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 6ad12ac3d06d9e0a6b4f1bf45344ece2819c1486
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 834caf50ca65fdbb4701ed3681546513785686c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140040"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749333"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>为 SQL Server 设置灾难恢复
 
@@ -85,9 +85,9 @@ BCDR 技术 Always On、活动异地复制和自动故障转移组为目标 Azur
 
 使用应用层和 Web 层虚拟机[创建恢复计划](site-recovery-create-recovery-plans.md)。 以下步骤说明如何添加数据库层的故障转移：
 
-1. 导入相应的脚本，用于在[资源管理器虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)和[经典虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)中对 SQL 可用性组进行故障转移。 将脚本导入到 Azure 自动化帐户中。
+1. 导入相应的脚本，用于在[资源管理器虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/demos/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)和[经典虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/demos/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)中对 SQL 可用性组进行故障转移。 将脚本导入到 Azure 自动化帐户中。
 
-    [![“部署到 Azure”徽标图像](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [![部署到 Azure 徽标](../media/template-deployments/deploy-to-azure.svg)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. 将 ASR-SQL-FailoverAG 脚本添加为恢复计划的第一个组的准备操作。
 

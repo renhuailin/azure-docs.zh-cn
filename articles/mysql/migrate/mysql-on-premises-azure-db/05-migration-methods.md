@@ -1,5 +1,5 @@
 ---
-title: 从本地 MySQL 到 Azure Database for MySQL 的迁移指南 - 迁移方法
+title: 将本地 MySQL 迁移到 Azure Database for MySQL：迁移方法
 description: 从源获取数据并发送到目标需要使用 MySQL 的工具或功能来完成迁移。
 ms.service: mysql
 ms.subservice: migration-guide
@@ -8,15 +8,17 @@ author: arunkumarthiags
 ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
-ms.date: 06/11/2021
-ms.openlocfilehash: be44dd31b5a038414a10a7dac47e53a12573449e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 06/21/2021
+ms.openlocfilehash: 6a4b0e2dc084168e1bffa539924ad897ac93961e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082687"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113084995"
 ---
-# <a name="mysql-on-premises-to-azure-database-for-mysql-migration-guide-migration-methods"></a>从本地 MySQL 到 Azure Database for MySQL 的迁移指南 - 迁移方法
+# <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-migration-methods"></a>将本地 MySQL 迁移到 Azure Database for MySQL：迁移方法
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](../../includes/applies-to-mysql-single-flexible-server.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -102,9 +104,9 @@ WWI 可通过多种路径迁移其 MySQL 工作负载。 我们提供了一个�
 
 | 目标 | 说明 | 工具 | 先决条件 | 优点 | 缺点 |
 |-----------|-------------|------|---------------|------------|---------------|
-| **可能最快的迁移速度** | 并行方法 | mydumper 和 myloader | Linux | 高度并行化 | 目标限制 |
-| **联机迁移** | 尽可能长时间地保持源的正常状态 | binlog | 无 | 无缝 | 额外处理和存储  |
-| **脱机迁移** | 尽可能长时间地保持源的正常状态 | 数据库迁移服务 (DMS) | 无 | 可重复进程  | 仅限于数据，支持所有 MySQL 版本 |
+| **可能最快的迁移速度** | 并行方法| mydumper 和 myloader | Linux | 高度并行化 | 目标限制 |
+| **联机迁移** | 尽可能长时间地保持源的正常状态 | binlog | 无 | 无缝 | 额外处理和存储 |
+| **脱机迁移** | 尽可能长时间地保持源的正常状态 | 数据库迁移服务 (DMS)| 无 | 可重复进程 | 仅限于数据，支持所有 MySQL 版本 |
 | **高度自定义的脱机迁移** | 有选择地导出对象 | mysqldump | 无 | 高度可自定义 | 手动 |
 | **脱机迁移半自动化** | 基于 UI 的导出和导入 | MySQL Workbench | 下载并安装 | 半自动 | 仅支持通用开关集 |
 
@@ -120,6 +122,8 @@ WWI 已选择其会议数据库作为首次迁移工作负载。 之所以选择
 
   - 请始终验证数据工作负载是否支持方法。  
 
+
+## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
 > [测试计划](./06-test-plans.md)

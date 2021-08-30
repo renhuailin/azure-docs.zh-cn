@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 91c62faf53bd0a0f81322316e5225579eaa6ca9d
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 69ddda7bd88218a3667b16bfdc9fa33aa5349ff6
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813042"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112573933"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis 的故障转移和修补
 
@@ -19,8 +19,8 @@ ms.locfileid: "111813042"
 
 在本文中，你将找到以下信息：  
 
-- 什么是故障转移。
-- 修补期间会出现什么样的故障转移。
+- 什么是故障转移？
+- 在修补期间如何进行故障转移。
 - 如何构建可复原的客户端应用程序。
 
 ## <a name="what-is-a-failover"></a>什么是故障转移？
@@ -78,12 +78,6 @@ Azure Cache for Redis 服务定期使用最新的平台功能和修补程序更�
 
 大多数客户端库会尝试重新连接到缓存（如果采用此配置）。 但是，不可预测的 bug 偶尔会将库对象置于不可恢复状态。 如果出错的持续时间超过了预先配置的时间，则应重新创建连接对象。 在 Microsoft.NET 和其他面向对象的语言中，可以使用 [Lazy\<T\> 模式](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)来重新创建连接，而无需重启应用程序。
 
-### <a name="how-do-i-make-my-application-resilient"></a>如何使应用程序能够复原？
-
-由于故障转移不可完全避免，因此，编写的客户端应用程序应该能够弹性应对连接中断和请求失败。 尽管大多数客户端库可自动重新连接到缓存终结点，但有少量的客户端库会尝试重试失败的请求。 根据具体的应用方案，使用支持退让的重试逻辑可能有作用。
-
-若要测试客户端应用程序的复原能力，请使用[重新启动](cache-administration.md#reboot)作为连接中断时的手动触发器。 此外，我们建议针对缓存[计划更新](cache-administration.md#schedule-updates)。 告知管理服务在指定的每周时段应用 Redis 运行时修补程序。 通常，这些时段是客户端应用程序流量较低的时段，目的是避免潜在的事件。
-
 ### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>能否提前得到计划内维护的通知？
 
 Azure Cache for Redis 现在会在计划内更新前约 30 秒在名为 [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) 的发布/订阅通道上发布通知。 通知是运行时通知。 这些通知专门为可使用断路器绕过缓存或缓冲区命令的应用程序而生成，例如，在计划内更新期间。 该机制不能提前几天或几小时通知你。
@@ -95,7 +89,23 @@ Azure Cache for Redis 现在会在计划内更新前约 30 秒在名为 [AzureRe
 - 在过渡槽与生产槽之间交换客户端应用程序的虚拟 IP 地址。
 - 缩放应用程序实例的大小或数量。
 
-此类更改可能会导致持续一分钟以下的连接问题。 客户端应用程序不仅会断开与 Azure Cache for Redis 服务的连接以外，还会断开与其他外部网络资源的连接。
+此类更改可能会导致持续一分钟以下的连接问题。 客户端应用程序可能不仅会断开与其他外部网络资源的连接，而且还会断开与 Azure Cache for Redis 服务的连接。
+
+## <a name="build-in-resiliency"></a>内置的复原能力
+
+无法完全避免故障转移。 应该合理编写客户端应用程序，使之能够弹性应对连接中断和请求失败的问题。 大多数客户端库可以自动重新连接到缓存终结点，但有少量的客户端库会重试失败的请求。 根据具体的应用方案，使用支持退让的重试逻辑可能有作用。
+
+### <a name="how-do-i-make-my-application-resilient"></a>如何使应用程序能够复原？
+
+请参考这些设计模式来构建可复原的客户端，特别是断路器和重试模式：
+
+- [可靠性模式 - 云设计模式](/azure/architecture/framework/resiliency/reliability-patterns#resiliency)
+- [Azure 服务的重试指南 - 云应用程序最佳做法](/azure/architecture/best-practices/retry-service-specific)
+- [实现使用指数退避算法的重试](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)
+
+若要测试客户端应用程序的复原能力，请使用[重新启动](cache-administration.md#reboot)作为连接中断时的手动触发器。
+
+此外，我们建议对缓存[计划更新](cache-administration.md#schedule-updates)，以便在每周的特定时段应用 Redis 运行时补丁。 通常，这些时段是客户端应用程序流量较低的时段，目的是避免潜在的事件。
 
 ## <a name="next-steps"></a>后续步骤
 

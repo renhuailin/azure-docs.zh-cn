@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2021
 ms.author: yelevin
-ms.openlocfilehash: 7cf50ee7b165fec445f65d3e57e229f04db5320b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: ccf05bb51c64a94c07a0277ed901912f9e4dda3e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695143"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742993"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>连接使用通用事件格式的外部解决方案
 
@@ -27,7 +27,7 @@ ms.locfileid: "122695143"
 
 连接发送 CEF 消息的外部解决方案时，会执行三个步骤来连接 Azure Sentinel：
 
-步骤 1：[通过部署 Syslog/CEF 转发器连接 CEF](connect-cef-agent.md)；步骤 2：[执行特定于解决方案的步骤](connect-cef-solution-config.md)；步骤 3：[验证连接](troubleshooting-cef-syslog.md#validate-cef-connectivity)
+步骤 1：[通过部署 Syslog/CEF 转发器连接 CEF](connect-cef-agent.md)；步骤 2：[执行特定于解决方案的步骤](connect-cef-solution-config.md)；步骤 3：[验证连接](connect-cef-verify.md)
 
 本文将介绍连接工作原理，列出先决条件，并介绍为安全解决方案部署一个机制以基于 Syslog 发送通用事件格式 (CEF) 消息的步骤。 
 
@@ -100,7 +100,7 @@ ms.locfileid: "122695143"
 
 - 步骤 1：[通过部署 Syslog/CEF 转发器连接 CEF](connect-cef-agent.md)
 - 步骤 2：[执行特定于解决方案的步骤](connect-cef-solution-config.md)
-- 步骤 3：[验证连接](troubleshooting-cef-syslog.md#validate-cef-connectivity)
+- 步骤 3：[验证连接](connect-cef-verify.md)
 
 若要详细了解如何处理 Azure Sentinel 中收集的数据，请参阅以下文章：
 

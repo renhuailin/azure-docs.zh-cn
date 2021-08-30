@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6bf090cde7262fdae9c98ef55227bf2925937dbf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b0643f0245a208d2011d7508b4b7593e81e6d510
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739825"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964205"
 ---
 # <a name="azure-load-balancer-components"></a>Azure 负载均衡器组件
 
@@ -50,7 +50,7 @@ IP 地址的性质决定了所创建的负载均衡器的类型。 选择“专�
 
 虚拟机规模集中用于处理传入请求的虚拟机组或实例组。 为了经济高效地扩展以满足大量传入流量，计算准则通常建议向后端池添加更多实例。
 
-纵向扩展或缩减实例时，负载均衡器可即时通过自动重新配置来重新配置自身。 在后端池中添加或删除 VM 会重新配置负载均衡器，无需执行其他操作。 后端池的范围包括虚拟网络中的任何虚拟机。
+纵向扩展或缩减实例时，负载均衡器可即时通过自动重新配置来重新配置自身。 在后端池中添加或删除 VM 会重新配置负载均衡器，无需执行其他操作。 后端池的范围包括单个虚拟网络中的任何虚拟机。
 
 考虑如何设计后端池时，请在设计时尽量减少后端池单个资源的数目，从而缩短管理操作的时长。 数据平面的性能或规模并无差异。
 
@@ -129,7 +129,7 @@ HA 端口负载均衡规则可帮助实现关键方案，如虚拟网络内部�
 - 了解负载均衡器[限制](../azure-resource-manager/management/azure-subscription-service-limits.md) 
 - 负载均衡器针对特定的 TCP 或 UDP 协议提供了负载均衡和端口转发。 负载均衡规则和入站 NAT 规则支持 TCP 和 UDP，但不支持其他 IP 协议（包括 ICMP）。
 - 从后端 VM 到内部负载均衡器前端的出站流将会失败。
-- 负载均衡器规则不能跨越两个虚拟网络。  前端及其后端实例必须位于同一个虚拟网络中。  
+- 负载均衡器规则不能跨越两个虚拟网络。 所有负载均衡器前端及其后端实例都必须位于单个虚拟网络中。  
 - 负载均衡规则不支持转发 IP 片段。 负载均衡规则不支持 UDP 和 TCP 数据包的 IP 片段。 HA 端口负载均衡规则可用于转发现有 IP 片段。 有关详细信息，请参阅[高可用性端口概述](load-balancer-ha-ports-overview.md)。
 - 每个可用性集只能有 1 个公共负载均衡器和 1 个内部负载均衡器
 

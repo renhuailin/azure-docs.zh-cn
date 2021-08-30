@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 08/04/2020
+ms.date: 07/31/2021
 ms.author: allensu
-ms.openlocfilehash: 1a0f4456f38939632026645500dd48acbf7dbc88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fcb16f44aed90f483be80c64d31781f54203de6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93242202"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733254"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN 的标准规则引擎参考
 
@@ -41,10 +41,7 @@ ms.locfileid: "93242202"
 
 ## <a name="limits-and-pricing"></a>限制和定价 
 
-每个 Azure CDN 终结点最多可以有 25 个规则。 每个规则最多可以有 10 个匹配条件和 5 个操作。 规则引擎的定价遵循以下维度： 
-- 规则：每个规则每月 $1 
-- 处理的请求数：每百万个请求 $0.60
-- 前 5个规则始终免费
+有关规则限制，请参阅 [CDN 规模限制](../azure-resource-manager/management/azure-subscription-service-limits.md#content-delivery-network-limits)。 有关规则引擎定价，请参阅[内容分发网络定价](https://azure.microsoft.com/pricing/details/cdn/)。
 
 ## <a name="syntax"></a>语法
 

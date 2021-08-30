@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: b9efc6c8f568d054662f9084d63b83de7b39e776
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c0eea1c7f041899d5c00062de2cbf35f83b9d53b
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735783"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662084"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -124,7 +124,7 @@ find where TimeGenerated > ago(24h) | distinct Type
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-空值
+不可用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -400,7 +400,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-空值
+不可用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -432,7 +432,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-空值
+不可用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -479,7 +479,7 @@ Content-type: application/json
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-空值
+不可用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -511,7 +511,7 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-空值
+不可用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -634,11 +634,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | DatabricksSQLPermissions |  |
 | DatabricksSSH |  |
 | DatabricksWorkspace |  |
-| DeviceFileEvents |  |
-| DeviceNetworkEvents |  |
 | DeviceNetworkInfo |  |
-| DeviceProcessEvents |  |
-| DeviceRegistryEvents |  |
 | DnsEvents |  |
 | DnsInventory |  |
 | DummyHydrationFact |  |

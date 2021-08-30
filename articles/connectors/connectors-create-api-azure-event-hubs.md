@@ -3,16 +3,16 @@ title: 连接到 Azure 事件中心
 description: 连接到事件中心，并将触发器或操作添加到 Azure 逻辑应用中的工作流。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
-ms.topic: conceptual
-ms.date: 05/03/2021
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 07/16/2021
 tags: connectors
-ms.openlocfilehash: 7f82debf0cc09d032b00de8197cf873c01801353
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 079d131cac55c6d7a54547a3720546ab6422f7d5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755578"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114473069"
 ---
 # <a name="connect-to-an-event-hub-from-workflows-in-azure-logic-apps"></a>通过 Azure 逻辑应用中的工作流连接到事件中心
 
@@ -135,10 +135,12 @@ Azure 事件中心连接器可帮助你将逻辑应用工作流连接到 Azure �
 
 ## <a name="trigger-polling-behavior"></a>触发器轮询行为
 
-所有事件中心触发器都是长轮询触发器，这意味着触发器可处理所有事件，然后为每个分区等待 30 秒，让更多事件出现在事件中心。 
+所有事件中心触发器都是长轮询触发器。 此行为意味着当触发器触发时，触发器将处理所有事件，然后等待 30 秒，让更多事件出现在事件中心。 按照设计，如果在 30 秒内没有出现任何事件，则会跳过该触发器。 否则，该触发器将继续读取事件，直到事件中心为空。 下一次触发器轮询的发生将基于触发器属性中设置的重复周期间隔。
 
 例如，如果对触发器设置了四个分区，则此延迟可能需要最长两分钟时间，触发器才能完成对所有分区的轮询。 如果在此延迟内未收到任何事件，则会跳过触发器运行。 否则，该触发器将继续读取事件，直到事件中心为空。 下一次触发器轮询的发生将基于触发器的属性中指定的重复周期间隔。
 
+如果知道消息出现的特定分区，可以通过设置触发器的最大和最小分区键来更新触发器，以仅从特定分区读取事件。 有关详细信息，请查看[添加事件中心触发器](#add-trigger)部分。
+     
 ## <a name="trigger-checkpoint-behavior"></a>触发器检查点行为
 
 当事件中心触发器从事件中心内的每个分区读取事件时，它将使用自身的状态来保留有关流偏移量（分区中的事件位置）以及它从中读取事件的分区的信息。
@@ -157,7 +159,7 @@ Azure 事件中心连接器可帮助你将逻辑应用工作流连接到 Azure �
 
 1. 在触发器或另一操作下，添加一个新步骤。
 
-   若要在现有步骤之间添加一个步骤，请将鼠标移到箭头上方。 选择出现的加号 ( **+** )，然后选择“添加操作”。 
+   若要在现有步骤之间添加一个步骤，请将鼠标移到箭头上方。 选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 在操作搜索框中，输入 `event hubs`。 在操作列表中，选择名为“发送事件”的操作。
 

@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2021
+ms.date: 07/07/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c060a029b1cdbdd890ced96cab732966cb652de0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94b00fb293913e5501bd70ecb782304c56314ed9
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500574"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113430117"
 ---
 # <a name="userinfo-endpoint"></a>UserInfo 终结点
 
@@ -132,7 +132,7 @@ UserInfo 终结点是 [OpenID Connect 标准](https://openid.net/specs/openid-co
         }
         ```
     
-1.  **UserInfoAuthorization** 技术配置文件的 OutputClaims 元素指定要从访问令牌中读取的属性。 ClaimTypeReferenceId 是对声明类型的引用。 可选的 **PartnerClaimType** 是在访问令牌中定义的声明类型的名称。
+1.  **UserInfoAuthorization** 技术配置文件的 OutputClaims 元素指定要从访问令牌中读取的属性。 ClaimTypeReferenceId 是对声明类型的引用。 可选的 PartnerClaimType 是在访问令牌中定义的声明的名称。
 
 
 
@@ -217,7 +217,7 @@ UserInfo 终结点是 [OpenID Connect 标准](https://openid.net/specs/openid-co
 
 ### <a name="4-upload-the-files"></a>4.上传文件
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 选择“标识体验框架”。
@@ -266,6 +266,43 @@ Authorization: Bearer <your access token>
     "signInNames.emailAddress": "john.s@contoso.com"
 }
 ```
+
+## <a name="provide-optional-claims"></a>提供可选声明
+
+要为应用提供更多声明，请按照以下步骤操作：
+
+1. [添加用户属性并自定义用户输入](configure-user-input.md)。
+1. 将[信赖方策略技术配置文件](relyingparty.md#technicalprofile) OutputClaims 元素修改为要提供的声明。 使用 `DefaultValue` 属性设置默认值。 也可将默认值设置为[声明解析器](claim-resolver-overview.md)，例如 `{Context:CorrelationId}`。 要强制使用默认值，请将 `AlwaysUseDefaultValue` 属性设置为 `true`。 以下示例使用默认值添加城市声明。
+    
+    ```xml
+    <RelyingParty>
+      ...
+      <TechnicalProfile Id="PolicyProfile">
+        ...
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="city" DefaultValue="Berlin" />
+        </OutputClaims>
+        ...
+      </TechnicalProfile>
+    </RelyingParty>
+    ```
+  
+1. 将 UserInfoIssuer 技术配置文件 InputClaims 元素修改为要提供的声明。 使用 `PartnerClaimType` 属性将声明返回的名称更改为应用。 以下示例添加了城市声明并更改了一些声明的名称。
+
+    ```xml
+    <TechnicalProfile Id="UserInfoIssuer">
+      ...
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="objectId" />
+        <InputClaim ClaimTypeReferenceId="city" />
+        <InputClaim ClaimTypeReferenceId="givenName" />
+        <InputClaim ClaimTypeReferenceId="surname" PartnerClaimType="familyName" />
+        <InputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+        <InputClaim ClaimTypeReferenceId="signInNames.emailAddress" PartnerClaimType="email" />
+      </InputClaims>
+      ...
+    </TechnicalProfile>
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

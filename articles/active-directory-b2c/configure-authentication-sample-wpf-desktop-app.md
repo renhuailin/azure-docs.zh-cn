@@ -11,16 +11,16 @@ ms.date: 08/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: fb9f90e93ed13faf64703cb511cd540f9af685ba
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9e61065e209a22d3ded08cf205350a737f7fe94f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778174"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770168"
 ---
 # <a name="configure-authentication-in-a-sample-wpf-desktop-application-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 在示例 WPF 桌面应用程序中配置身份验证
 
-本文使用一个示例 [WPF 桌面](/visualstudio/designers/getting-started-with-wpf.md)应用程序，说明如何向桌面应用添加 Azure Active Directory B2C (Azure AD B2C) 身份验证。
+本文使用一个示例 [WPF 桌面](/visualstudio/designers/getting-started-with-wpf)应用程序，说明如何向桌面应用添加 Azure Active Directory B2C (Azure AD B2C) 身份验证。
 
 ## <a name="overview"></a>概述
 
@@ -32,16 +32,16 @@ OpenID Connect (OIDC) 是基于 OAuth 2.0 构建的身份验证协议，可用�
 1. 应用打开桌面设备的系统浏览器，并发起到 Azure AD B2C 的身份验证请求。
 1. 用户[注册或登录](add-sign-up-and-sign-in-policy.md)、[重置密码](add-password-reset-policy.md)或使用[社交帐户](add-identity-provider.md)登录。
 1. 成功登录后，Azure AD B2C 向应用返回一个授权代码。
-1. 应用执行下列操作：
+1. 应用执行以下操作：
     1. 用授权代码交换 ID 令牌、访问令牌和刷新令牌。
     1. 读取 ID 令牌声明。
-    1. 将令牌存储在内存中缓存中供以后使用。
+    1. 将令牌存储到内存中缓存以供以后使用。
 
 ### <a name="app-registration-overview"></a>应用注册概述
 
-若要让应用能够使用 Azure AD B2C 登录并调用 Web API，需要在 Azure AD B2C 目录中注册两个应用程序。  
+要使应用能够通过 Azure AD B2C 登录并调用 Web API，请在 Azure AD B2C 目录中注册两个应用程序。  
 
-- 通过桌面应用程序注册，你的应用可使用 Azure AD B2C 进行登录。 在应用注册过程中，请指定重定向 URI。 重定向 URI 是用户通过 Azure AD B2C 完成身份验证之后 Azure AD B2C 将用户重定向到的终结点。 应用注册过程会生成应用程序 ID（也称为“客户端 ID”），作为桌面应用的唯一标识 。 例如“应用 ID：1”。
+- 通过桌面应用程序注册，你的应用可使用 Azure AD B2C 进行登录。 在应用注册期间，指定“重定向 URI”。 重定向 URI 是用户通过 Azure AD B2C 完成身份验证之后 Azure AD B2C 将用户重定向到的终结点。 应用注册过程会生成应用程序 ID（也称为“客户端 ID”），作为桌面应用的唯一标识 。 例如“应用 ID：1”。
 
 - Web API 注册使你的应用可以调用受保护的 Web API。 注册将公开 Web API 权限（范围）。 应用注册过程会生成应用程序 ID，作为 Web API 的唯一标识。  例如，“应用 ID：2”。 向桌面应用（应用 ID：1）授予对 Web API 范围（应用 ID：2）的权限。 
 
@@ -86,7 +86,7 @@ OpenID Connect (OIDC) 是基于 OAuth 2.0 构建的身份验证协议，可用�
 1. 输入应用程序的“名称”。 例如，desktop-app1。
 1. 在“支持的帐户类型”下，选择“任何标识提供者或组织目录中的帐户(用于通过用户流对用户进行身份验证)” 。 
 1. 在“重定向 URL”下，选择“公共客户端/本机(移动和桌面)”，然后输入：`https://your-tenant-name.b2clogin.com/oauth2/nativeclient` 。 将 `your-tenant-name` 替换为你的[租户名称](tenant-management.md#get-your-tenant-name)。 有关更多选项，请参阅[配置重定向 URI](enable-authentication-wpf-desktop-app-options.md#configure-redirect-uri)。
-1. 选择“注册”  。
+1. 选择“注册”。
 1. 完成应用注册后，选择“概述”。
 1. 记下“应用程序(客户端) ID”，以便在稍后配置桌面应用程序时使用。
     ![屏幕截图显示了如何获取桌面应用程序 ID。](./media/configure-authentication-sample-wpf-desktop-app/get-azure-ad-b2c-app-id.png)  
@@ -97,9 +97,9 @@ OpenID Connect (OIDC) 是基于 OAuth 2.0 构建的身份验证协议，可用�
 
 ## <a name="step-3-configure-the-sample-web-api"></a>步骤 3：配置示例 Web API
 
-此示例获取一个访问令牌，该令牌具有桌面应用可对 Web API 使用的相关范围。  若要通过代码调用 Web API，请执行以下步骤：
+此示例获取一个访问令牌，该令牌具有桌面应用可对 Web API 使用的相关范围。  若要从代码中调用 Web API，请执行以下步骤：
 
-1. 使用现有 Web API，或新建一个。 有关详细信息，请参阅[使用 Azure AD B2C 在自己的 Web API 中启用身份验证](enable-authentication-web-api.md)。
+1. 使用现有的 Web API，或创建新的 Web API。 有关详细信息，请参阅[使用 Azure AD B2C 在自己的 Web API 中启用身份验证](enable-authentication-web-api.md)。
 1. 配置 Web API 后，复制 Web API 终结点的 URI。 你将在以下步骤中使用该 Web API 终结点。
 
 > [!TIP]
@@ -125,11 +125,11 @@ OpenID Connect (OIDC) 是基于 OAuth 2.0 构建的身份验证协议，可用�
 
 |键  |值  |
 |---------|---------|
-|`TenantName`|Azure AD B2C [租户名称](tenant-management.md#get-your-tenant-name)的第一部分。 例如 `contoso.b2clogin.com`。|
+|`TenantName`|Azure AD B2C [租户名称](tenant-management.md#get-your-tenant-name)的第一部分。 例如，`contoso.b2clogin.com`。|
 |`ClientId`|[步骤 2.3](#23-register-the-desktop-app) 中的桌面应用程序 ID。|
 |`PolicySignUpSignIn`| 注册或登录用户流，或在[步骤 1](#step-1-configure-your-user-flow) 中创建的自定义策略。|
 |`PolicyEditProfile`|编辑个人资料用户流，或在[步骤 1](#step-1-configure-your-user-flow) 中创建的自定义策略。|
-|`ApiEndpoint`| （可选）在[步骤 3](#step-3-configure-the-sample-web-api) 中创建的 Web API 终结点。 例如 `https://contoso.azurewebsites.net/hello`。|
+|`ApiEndpoint`| （可选）在[步骤 3](#step-3-configure-the-sample-web-api) 中创建的 Web API 终结点。 例如，`https://contoso.azurewebsites.net/hello`。|
 | `ApiScopes` | 在[步骤 2.4](#24-grant-the-desktop-app-permissions-for-the-web-api) 中创建的 Web API 范围。| 
 
 最终的 App.xaml.cs 文件应类似于下面的 C# 代码：
@@ -154,7 +154,7 @@ public static string ApiEndpoint = "https://contoso.azurewebsites.net/hello";
 
 ## <a name="step-6-run-and-test-the-desktop-app"></a>步骤 6：运行并测试桌面应用
 
-1. [还原 NuGet 包](/nuget/consume-packages/package-restore.md)。
+1. [还原 NuGet 包](/nuget/consume-packages/package-restore)。
 1. 按 **F5** 生成并运行示例。
 1. 选择“登录”。 然后，使用你的 Azure AD B2C 本地帐户或社交帐户注册或登录。
 

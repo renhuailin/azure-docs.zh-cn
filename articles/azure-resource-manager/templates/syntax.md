@@ -2,13 +2,13 @@
 title: 模板结构和语法
 description: 介绍使用声明性 JSON 语法的 Azure 资源管理器模板的结构和属性。
 ms.topic: conceptual
-ms.date: 05/17/2021
-ms.openlocfilehash: 9a1ead39ed680921f444068e8e52136247272ac5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/16/2021
+ms.openlocfilehash: ee60651da5cee986a19cba9940c068679b342c53
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959919"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228668"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 模板的结构和语法
 
@@ -185,6 +185,12 @@ ms.locfileid: "111959919"
           "<tag-name1>": "<tag-value1>",
           "<tag-name2>": "<tag-value2>"
       },
+      "identity": {
+        "type": "<system-assigned-or-user-assigned-identity>",
+        "userAssignedIdentities": {
+          "<resource-id-of-identity>": {}
+        }
+      },
       "sku": {
           "name": "<sku-name>",
           "tier": "<sku-tier>",
@@ -234,6 +240,7 @@ ms.locfileid: "111959919"
 | location |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常选取靠近用户的位置。 通常还会将彼此交互的资源置于同一区域。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 请参阅[设置资源位置](resource-location.md)。 |
 | dependsOn |否 |部署此资源之前必须部署的资源。 Resource Manager 会评估资源之间的依赖关系，并按正确的顺序部署资源。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 在此模板中仅部署列出的资源。 未在此模板中定义的资源必须是已存在的资源。 避免添加不必要的依赖项，因为这些依赖项可能会降低部署速度并创建循环依赖项。 有关设置依赖项的指南，请参阅[在 ARM 模板中定义部署资源的顺序](./resource-dependency.md)。 |
 | 标记 |否 |与资源关联的标记。 应用可以在订阅中对资源进行逻辑组织的标记。 |
+| 标识 | 否 | 某些资源支持 [Azure 资源托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 这些资源在资源声明的根级别具有标识对象。 可以设置标识是用户分配还是系统分配。 对于用户分配的标识，请提供标识的资源 ID 列表。 将键设置为资源 ID，将值设置为空对象。 有关详细信息，请参阅[使用模板在 Azure VM 上配置 Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)。 |
 | sku | 否 | 某些资源接受定义了要部署的 SKU 的值。 例如，可以为存储帐户指定冗余类型。 |
 | kind | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
 | scope | 否 | scope 属性仅适用于[扩展资源类型](../management/extension-resource-types.md)。 指定与部署范围不同的范围时，请使用该属性。 请参阅[在 ARM 模板中设置扩展资源的范围](scope-extension-resources.md)。 |
@@ -284,9 +291,7 @@ ms.locfileid: "111959919"
 
 > [!NOTE]
 >
-> 若要部署带注释的模板，请使用 Azure PowerShell 或 Azure CLI。 对于 CLI，请使用 2.3.0 或更高版本，并指定 `--handle-extended-json-format` 开关。
->
-> 如果通过 Azure 门户、DevOps 管道或 REST API 部署模板，则不支持注释。
+> 使用 Azure CLI 部署带有注释的模板时，请使用 2.3.0 或更高版本，并指定 `--handle-extended-json-format` 开关。
 
 ```json
 {
@@ -406,8 +411,8 @@ ms.locfileid: "111959919"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要查看许多不同类型的解决方案的完整模型，请参阅 [Azure Quickstart Templates](https://azure.microsoft.com/documentation/templates/)（Azure 快速入门模板）。
+* 若要查看许多不同类型的解决方案的完整模型，请参阅 [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/)（Azure 快速入门模板）。
 * 有关用户可以使用的来自模板中的函数的详细信息，请参阅 [ARM 模板函数](template-functions.md)。
 * 若要在部署期间合并若干模板，请参阅[部署 Azure 资源时使用链接模版和嵌套模版](linked-templates.md)。
 * 有关创建模板的建议，请参阅 [ARM 模板的最佳做法](./best-practices.md)。
-* 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.md)。
+* 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.yml)。

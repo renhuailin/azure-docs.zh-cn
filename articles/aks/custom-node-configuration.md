@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c2173118b58ca92d69286fb36014872c19058bd6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a280a191d25a2d41173b30c56447b1ece7077206
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779968"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728163"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>自定义 Azure Kubernetes 服务 (AKS) 节点池的节点配置（预览版）
 
@@ -62,7 +62,7 @@ az extension update --name aks-preview
 | 参数 | 允许的值/间隔 | 默认 | 说明 |
 | --------- | ----------------------- | ------- | ----------- |
 | `cpuManagerPolicy` | 无、静态 | 无 | 静态策略允许 CPU 请求数为整数的 [Guaranteed Pod](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/) 中的容器访问节点上的独占 CPU。 |
-| `cpuCfsQuota` | true、false | true |  为指定 CPU 限制的容器启用/禁用 CPU CFS 配额强制。 | 
+| `cpuCfsQuota` | true、false | 是 |  为指定 CPU 限制的容器启用/禁用 CPU CFS 配额强制。 | 
 | `cpuCfsQuotaPeriod` | 以毫秒为单位的间隔（毫秒） | `100ms` | 设置 CPU CFS 配额周期值。 | 
 | `imageGcHighThreshold` | 0-100 | 85 | 自此起始终运行映像垃圾回收的磁盘使用量百分比。 会触发垃圾回收的最低磁盘使用率。 如果要禁用映像垃圾回收，则设置为 100。 | 
 | `imageGcLowThreshold` | 0-100，不大于 `imageGcHighThreshold` | 80 | 在此之前从不运行映像垃圾回收的磁盘使用量百分比。 可触发垃圾回收的最低磁盘使用率。 |
@@ -198,7 +198,7 @@ az aks nodepool add --name mynodepool1 --cluster-name myAKSCluster --resource-gr
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [aks-support-policies]: support-policies.md
 [aks-upgrade]: upgrade-cluster.md
-[aks-view-master-logs]: ./view-control-plane-logs.md#enable-resource-logs
+[aks-view-master-logs]: ../azure-monitor/containers/container-insights-log-query.md#enable-resource-logs
 [autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az_aks_show

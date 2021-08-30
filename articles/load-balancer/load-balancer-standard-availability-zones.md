@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 3c18b6d8dc44762649a9c07b88af348a18888fb5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfec3e6305b6b955cfb7b2cfd787507db36ff6ba
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699107"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213590"
 ---
 # <a name="load-balancer-and-availability-zones"></a>负载均衡器和可用性区域
 
@@ -75,6 +75,12 @@ Azure 负载均衡器支持可用性区域方案。 可以使用标准负载均�
 发生局部区域故障时使用了该局部区域的流量流可能会受影响，但应用程序可以恢复。 在 Azure 融合各方力量从局部区域故障中恢复并重新传输数据后，流量将继续传入 Azure 区域中正常的局部区域。
 
 请查看 [Azure 云设计模式](/azure/architecture/patterns/)来改善应用程序在故障情况下的复原能力。
+
+## <a name="limitations"></a>限制
+
+* 创建后，资源的区域无法更改、更新或创建。
+
+* 创建后，无法将资源从“局部区域”更新为“区域冗余”，反之亦然。
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[可用性区域](../availability-zones/az-overview.md)

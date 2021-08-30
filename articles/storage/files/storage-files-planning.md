@@ -4,32 +4,48 @@ description: 了解规划 Azure 文件部署。 可以直接装载 Azure 文件�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 7b1e8ba6ed5f3ffe4acebfb5bb3047ebb945e40f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e1736d94c50d5c145a66fc845936c5c26a8725cb
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477492"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224051"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 [Azure 文件存储](storage-files-introduction.md)的部署主要有两种方式：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步功能在本地缓存 Azure 文件共享。所选择的部署方式决定了规划部署时需要考虑的事项。 
 
-- **直接装载 Azure 文件共享**：由于 Azure 文件存储提供服务器消息块 (SMB) 或网络文件系统 (NFS) 访问，因此可以使用操作系统中提供的标准 SMB 或 NFS 客户端将 Azure 文件共享装载到本地或云中。 由于 Azure 文件共享是无服务器的，因此针对生产方案进行部署不需要管理文件服务器或 NAS 设备。 这意味着无需应用软件修补程序或换出物理磁盘。 
+- 直接装载 Azure 文件共享：由于 Azure 文件存储提供服务器消息块 (SMB) 或网络文件系统 (NFS) 访问，因此你可以使用 OS 中提供的标准 SMB 或 NFS（预览版）客户端在本地或云中装载 Azure 文件共享。 由于 Azure 文件共享是无服务器的，因此针对生产方案进行部署不需要管理文件服务器或 NAS 设备。 这意味着无需应用软件修补程序或换出物理磁盘。 
 
 - **使用 Azure 文件同步在本地缓存 Azure 文件共享**：借助 Azure 文件同步，可以在 Azure 文件存储中集中管理组织的文件共享，同时又能保留本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将本地（或云中的）Windows Server 转换为 Azure SMB 文件共享的快速缓存。 
 
 本文主要阐述有关部署可供本地或云客户端直接装载的 Azure 文件共享时的部署注意事项。 若要规划 Azure 文件同步部署，请参阅[规划 Azure 文件同步部署](../file-sync/file-sync-planning.md)。
 
 ## <a name="available-protocols"></a>可用的协议
+Azure 文件存储提供两种用于装载 Azure 文件共享的行业标准协议：[服务器消息块 (SMB)](files-smb-protocol.md) 协议和[网络文件系统 (NFS)](files-nfs-protocol.md) 协议。 Azure 文件存储可让你选择最适合你工作负载的文件系统协议。 尽管可以在同一存储帐户中创建 SMB 和 NFS Azure 文件共享，但 Azure 文件共享不支持在同一个文件共享中同时使用 SMB 和 NFS 协议。 目前只有新的 FileStorage 存储帐户类型中支持 NFS 4.1（仅限高级文件共享）。
 
-Azure 文件存储提供了两种协议，可以用于装载文件共享、SMB 和网络文件系统 (NFS)。 有关协议的详细信息，请参阅 [Azure 文件共享协议](storage-files-compare-protocols.md)。
+对于 SMB 和 NFS 文件共享，Azure 文件存储提供企业级文件共享，这些共享可以纵向扩展以满足你的存储需求，并且可同时由数千个客户端访问。
 
-> [!IMPORTANT]
-> 本文的大部分内容仅适用于 SMB 共享。 任何适用于 NFS 共享的内容都将专门说明。
+| 功能 | SMB | NFS（预览版） |
+|---------|-----|---------------|
+| 支持的协议版本 | SMB 3.1.1、SMB 3.0、SMB 2.1 | NFS 4.1 |
+| 推荐的操作系统 | <ul><li>Windows 10 版本 21H1+</li><li>Windows Server 2019+</li><li>Linux 内核版本 5.3+</li></ul> | Linux 内核版本 4.3+ |
+| [可用层](storage-files-planning.md#storage-tiers)  | 高级、事务优化、热和冷 | 高级 |
+| 计费模式 | <ul><li>[高级文件共享的预配容量](./understanding-billing.md#provisioned-model)</li><li>[标准文件共享的即用即付计费模式](./understanding-billing.md#pay-as-you-go-model)</li></ul> | [预配的容量](./understanding-billing.md#provisioned-model) |
+| [冗余](storage-files-planning.md#redundancy) | LRS、ZRS、GRS、GZRS | LRS、ZRS |
+| 文件系统语义 | Win32 | POSIX |
+| 身份验证 | 基于标识的身份验证 (Kerberos)、共享密钥身份验证 (NTLMv2) | 基于主机的身份验证 |
+| 授权 | Win32 样式访问控制列表 (ACL) | UNIX 样式权限 |
+| 事例敏感性 | 不区分大小写，但保留大小写 | 区分大小写 |
+| 删除或修改打开的文件 | 仅使用锁定 | 是 |
+| 文件共享 | [Windows 共享模式](/windows/win32/fileio/creating-and-opening-files) | 字节范围的公告网络锁管理器 |
+| 硬链接支持 | 不支持 | 支持 |
+| 符号链接支持 | 不支持 | 支持 |
+| （可选）可通过 Internet 访问 | 是（仅限 SMB 3.0+） | 否 |
+| 支持 FileREST | 是 | 子网： <br /><ul><li>[针对 `FileService` 的操作](/rest/api/storageservices/operations-on-the-account--file-service-)</li><li>[针对 `FileShares` 的操作](/rest/api/storageservices/operations-on-shares--file-service-)</li><li>[针对 `Directories` 的操作](/rest/api/storageservices/operations-on-directories)</li><li>[针对 `Files` 的操作](/rest/api/storageservices/operations-on-files)</li></ul> |
 
 ## <a name="management-concepts"></a>管理概念
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
@@ -57,7 +73,7 @@ Azure 文件存储提供了两种协议，可以用于装载文件共享、SMB �
 
 若要取消阻止对 Azure 文件共享的访问，可以采用两种做法：
 
-- 对组织的本地网络取消阻止端口 445。 在外部，只能使用 Internet 安全协议（例如 SMB 3.x 和 FileREST API）通过公共终结点访问 Azure 文件共享。 这是从本地访问 Azure 文件共享的最简单方法，因为它不需要进行高级网络配置，而只需更改组织的出站端口规则；但是，我们建议删除传统的已弃用版本的 SMB 协议，即 SMB 1.0。 若要了解如何执行此操作，请参阅[保护 Windows/Windows Server](storage-how-to-use-files-windows.md#securing-windowswindows-server)和[保护 Linux](storage-how-to-use-files-linux.md#securing-linux)。
+- 对组织的本地网络取消阻止端口 445。 在外部，只能使用 Internet 安全协议（例如 SMB 3.x 和 FileREST API）通过公共终结点访问 Azure 文件共享。 这是从本地访问 Azure 文件共享的最简单方法，因为它不需要进行高级网络配置，而只需更改组织的出站端口规则；但是，我们建议删除传统的已弃用版本的 SMB 协议，即 SMB 1.0。 若要了解如何执行此操作，请参阅[保护 Windows/Windows Server](/windows-server/storage/file-server/troubleshoot/detect-enable-and-disable-smbv1-v2-v3)和[保护 Linux](files-remove-smb1-linux.md)。
 
 - 通过 ExpressRoute 或 VPN 连接访问 Azure 文件共享。 通过网络隧道访问 Azure 文件共享时，可以像装载本地文件共享一样装载 Azure 文件共享，因为 SMB 流量不会通过组织边界。   
 
@@ -78,11 +94,11 @@ Azure 文件存储支持两种不同类型的加密：传输中加密（与装�
 ### <a name="encryption-in-transit"></a>传输中加密
 
 > [!IMPORTANT]
-> 本部分介绍 SMB 共享的传输中加密详细信息。 有关通过 NFS 共享进行传输中加密的详细信息，请参阅[安全性](storage-files-compare-protocols.md#security)。
+> 本部分介绍 SMB 共享的传输中加密详细信息。 有关通过 NFS 共享进行传输中加密的详细信息，请参阅[安全性和网络](files-nfs-protocol.md#security-and-networking)。
 
-默认情况下，所有 Azure 存储帐户均已启用传输中加密。 即，通过 SMB 装载文件共享或通过 FileREST 协议（例如，通过 Azure 门户、PowerShell/CLI 或 Azure SDK）访问文件共享时，Azure 文件存储仅允许通过加密或 HTTPS 使用 SMB 3.x 建立的连接。 如果启用了传输中加密，不支持 SMB 3.x 的客户端或支持 SMB 3.x 但不支持 SMB 加密的客户端将无法装载 Azure 文件共享。 若要详细了解哪些操作系统支持具有加密功能的 SMB 3.x，请参阅适用于 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 和 [Linux](storage-how-to-use-files-linux.md) 的详细文档。 PowerShell、CLI 和 SDK 的所有当前版本均支持 HTTPS。  
+默认情况下，所有 Azure 存储帐户均已启用传输中加密。 即通过 SMB 装载文件共享或通过 FileREST 协议（例如，通过 Azure门户、PowerShell/CLI 或 Azure SDK）访问文件共享时，Azure 文件存储仅允许通过加密或 HTTPS 使用 SMB 3.x 及更高版本建立的连接。 如果启用了传输中加密，则不支持 SMB 3.x 的客户端或支持 SMB 3.x 但不支持 SMB 加密的客户端将无法装载 Azure 文件共享。 要详细了解哪些操作系统支持具有加密功能的 SMB 3.x，请参阅适用于 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 和 [Linux](storage-how-to-use-files-linux.md) 的详细文档。 PowerShell、CLI 和 SDK 的所有当前版本均支持 HTTPS。  
 
-可以为 Azure 存储帐户禁用传输中加密。 禁用加密后，Azure 文件存储还会允许没有加密功能的 SMB 2.1、SMB 3.x，以及通过 HTTP 进行的未经加密的 FileREST API 调用。 禁用传输中加密的主要原因是为了支持必须在更低版本的操作系统（例如，Windows Server 2008 R2 或更低版本的 Linux 发行版）上运行的旧版应用程序。 Azure 文件存储仅允许在与 Azure 文件共享相同的 Azure 区域内建立 SMB 2.1 连接；Azure 文件共享的 Azure 区域之外的 SMB 2.1 客户端（例如，本地或其他 Azure 区域）将无法访问文件共享。
+可以为 Azure 存储帐户禁用传输中加密。 禁用加密后，Azure 文件存储还将允许没有加密功能的 SMB 2.1、SMB 3.x，以及通过 HTTP 进行的未加密 FileREST API 调用。 禁用传输中加密的主要原因是为了支持必须在更低版本的操作系统（例如，Windows Server 2008 R2 或更低版本的 Linux 发行版）上运行的旧版应用程序。 Azure 文件存储仅允许在与 Azure 文件共享相同的 Azure 区域内建立 SMB 2.1 连接；Azure 文件共享的 Azure 区域之外的 SMB 2.1 客户端（例如，本地或其他 Azure 区域）将无法访问文件共享。
 
 强烈建议启用传输中数据加密。
 
@@ -117,10 +133,6 @@ Azure 文件共享的软删除（预览版）是一种存储帐户级别设置�
 
 ## <a name="storage-tiers"></a>存储层
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>让标准文件共享能够承受最多 100 TiB 的容量
-默认情况下，标准文件共享不得超过 5 TiB，但你可将共享上限提高到 100 TiB。 若要了解如何提高共享上限，请参阅[启用和创建大型文件共享](storage-files-how-to-create-large-file-share.md)。
-
 
 #### <a name="limitations"></a>限制
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]

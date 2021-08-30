@@ -7,12 +7,12 @@ ms.collection: linux
 ms.topic: conceptual
 ms.date: 04/08/2021
 ms.reviewer: davberg
-ms.openlocfilehash: 57892c7648be1bf05a84dcd7de5d4503fa412a3b
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 2a00c966d7a1ba40d0ba27dc4f4ca3b386a44601
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483735"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587852"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM 的计算基准测试分数
 以下 CoreMark 基准测试分数显示运行 Ubuntu 18.04 的 Azure 高性能 VM 产品阵容的计算性能。 此外，还提供了 [Windows VM](../windows/compute-benchmark-scores.md)的计算基准测试分数。
@@ -614,6 +614,7 @@ ms.locfileid: "107483735"
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_M208ms_v2 | Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz | 208 | 4 | 5,700.0 | 3,009,120 | 58,843 | 1.96% | 42 |
 | Standard_M208ms_v2 | Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz | 208 | 8 | 5,700.0 | 3,093,184 | 33,253 | 1.08% | 42 |
+| Standard_M208s_v2 | Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz | 208 | 4 | 2,850.0 | 3,020,762 | 55,134 | 1.83% | 84 |
 | Standard_M416s_v2 | Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz | 416 | 8 | 5,700.0 | 5,959,252 | 93,933 | 1.58% | 84 |
 | Standard_M416-208s_v2 | Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz | 208 | 4 | 5,700.0 | 2,992,729 | 52,652 | 1.76% | 14 |
 | Standard_M416-208s_v2 | Intel(R) Xeon(R) Platinum 8180M CPU @ 2.50GHz | 208 | 8 | 5,700.0 | 3,085,232 | 36,568 | 1.19% | 70 |

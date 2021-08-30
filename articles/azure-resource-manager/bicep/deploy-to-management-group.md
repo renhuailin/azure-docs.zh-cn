@@ -1,20 +1,20 @@
 ---
-title: 使用 Bicep tp 将资源部署到管理组
-description: 描述如何创建在管理组范围部署资源的 Bicep 文件。
+title: 使用 Bicep 将资源部署到管理组
+description: 介绍如何创建一个在管理组范围内部署资源的 Bicep 文件。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 58fbed44045a90f4f344117fd76f7de8b0493771
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 07/19/2021
+ms.openlocfilehash: afa4a0f266eb7720a569df123c9828fd151d21e0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372187"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453593"
 ---
-# <a name="management-group-deployments-with-bicep-files"></a>使用 Bicep 文件部署管理组
+# <a name="management-group-deployments-with-bicep-files"></a>使用 Bicep 文件进行管理组部署
 
 本文介绍如何在部署到管理组时使用 Bicep 来设置范围。
 
-随着组织的不断发展，你可以部署 Bicep 文件，以便在管理组级别创建资源。 例如，你可能需要为管理组定义和分配[策略](../../governance/policy/overview.md)或 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。 使用管理组级别的模板，可以声明方式在管理组级别应用策略和分配角色。
+随着组织的不断发展，可以部署 Bicep 文件来创建管理组级别的资源。 例如，你可能需要为管理组定义和分配[策略](../../governance/policy/overview.md)或 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md)。 使用管理组级别的模板，可以声明方式在管理组级别应用策略和分配角色。
 
 ## <a name="supported-resources"></a>支持的资源
 
@@ -97,7 +97,7 @@ New-AzManagementGroupDeployment `
 
 对于管理组级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。 [订阅](deploy-to-subscription.md)和[租户](deploy-to-tenant.md)部署也需要位置。 对于[资源组](deploy-to-resource-group.md)部署，资源组的位置用于存储部署数据。
 
-可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署名为 main.bicep 的模板会创建默认部署名称 main。
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署名为“main.bicep”的模板会创建默认部署名称 main。
 
 每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 例如，如果在 centralus 中创建名为“deployment1”的管理组部署，则以后不能创建另一个名为“deployment1”但位置为“westus”的部署   。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
@@ -117,7 +117,7 @@ New-AzManagementGroupDeployment `
 
 ### <a name="scope-to-management-group"></a>将范围设定为管理组
 
-若要将资源部署到目标管理组，请使用 `resource` 关键字来添加这些资源。
+若要将资源部署到目标管理组，请添加那些具有关键字 `resource` 的资源。
 
 ```bicep
 targetScope = 'managementGroup'
@@ -128,7 +128,7 @@ resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01'
 }
 ```
 
-若要以其他管理组作为目标，请添加模块。 使用 [managementGroup 函数](bicep-functions-scope.md#managementgroup)来设置 `scope` 属性。 提供管理组名称。
+若要以其他管理组作为目标，请添加[模块](modules.md)。 使用 [managementGroup 函数](bicep-functions-scope.md#managementgroup)设置 `scope` 属性。 提供管理组名称。
 
 ```bicep
 targetScope = 'managementGroup'
@@ -137,7 +137,7 @@ param otherManagementGroupName string
 
 // module deployed at management group level but in a different management group
 module exampleModule 'module.bicep' = {
-  name: 'deployToDifferntMG'
+  name: 'deployToDifferentMG'
   scope: managementGroup(otherManagementGroupName)
 }
 ```
@@ -146,7 +146,7 @@ module exampleModule 'module.bicep' = {
 
 还可以将管理组中的订阅作为目标。 部署模板的用户必须有权访问指定的作用域。
 
-若要以管理组中的订阅为目标，请添加模块。 使用 [subscription 函数](bicep-functions-scope.md#subscription)来设置 `scope` 属性。 提供订阅 ID。
+若要以管理组中的订阅为目标，请添加模块。 使用 [subscription 函数](bicep-functions-scope.md#subscription)设置 `scope` 属性。 提供订阅 ID。
 
 ```bicep
 targetScope = 'managementGroup'
@@ -164,7 +164,7 @@ module exampleModule 'module.bicep' = {
 
 还可以将管理组中的资源组作为目标。 部署模板的用户必须有权访问指定的作用域。
 
-若要以管理组中的资源组为目标，请添加模块。 使用 [resourceGroup 函数](bicep-functions-scope.md#resourcegroup)来设置 `scope` 属性。  提供订阅 ID 和资源组名称。
+若要以管理组中的资源组为目标，请添加模块。 使用 [resourceGroup 函数](bicep-functions-scope.md#resourcegroup)设置 `scope` 属性。  提供订阅 ID 和资源组名称。
 
 ```bicep
 targetScope = 'managementGroup'
@@ -181,7 +181,7 @@ module exampleModule 'module.bicep' = {
 
 ### <a name="scope-to-tenant"></a>将范围设定为租户
 
-若要在租户处创建资源，请添加模块。 使用 [tenant 函数](bicep-functions-scope.md#tenant)来设置其 `scope` 属性。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
+要在租户中创建资源，请添加一个模块。 使用 [tenant 函数](bicep-functions-scope.md#tenant)设置其 `scope` 属性。 部署模板的用户必须具有[在租户中进行部署所需的访问权限](deploy-to-tenant.md#required-access)。
 
 ```bicep
 targetScope = 'managementGroup'
@@ -299,7 +299,7 @@ resource policyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01'
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解其他范围，请参阅以下文章：
+若要了解其他范围，请参阅：
 
 * [资源组部署](deploy-to-resource-group.md)
 * [订阅部署](deploy-to-subscription.md)

@@ -9,20 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: a050425cec6062bdf4d62c6ace3c61d84eaede5d
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: c4cfe742789576a4aaf61cd3194af64ede849aa7
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582809"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695008"
 ---
 # <a name="create-endpoints-for-deployed-machine-learning-studio-classic-web-services"></a>为部署的机器学习工作室（经典）Web 服务创建终结点
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-
-> [!NOTE]
-> 本主题介绍适用于经典机器学习 Web 服务的技术。
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 部署 Web 服务之后，将为该服务创建默认终结点。 该默认终结点可以使用其 API 密钥调用。 可以从 Web 服务门户添加更多具有自身密钥的终结点。
 Web 服务中的每个终结点都是独立处理、限制和托管的。 每个终结点唯一 URL 和身份验证密钥，可以将其分发给客户。

@@ -8,18 +8,19 @@ ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: 5418671373b1b95f1c9ac4f1131016e51b58ba2f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 96b56fecda94d1a2958275dde6f48fc1c3b48cd9
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688797"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580127"
 ---
 # <a name="get-support-and-training-for-machine-learning-studio-classic"></a>获取机器学习工作室（经典）的支持和培训
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
+
+
 
 本文介绍如何了解有关机器学习工作室（经典）的详细信息，以及如何获取相关问题的支持。
 

@@ -3,14 +3,14 @@ title: 异地复制注册表
 description: 开始创建和管理异地复制的 Azure 容器注册表，使注册表能够为多个区域提供多主区域副本。 异地复制是高级服务层级的一项功能。
 author: stevelas
 ms.topic: article
-ms.date: 06/09/2021
+ms.date: 06/28/2021
 ms.author: stevelas
-ms.openlocfilehash: b60de8dd9dc4ba5b66594fe6d75caa43ef0017b5
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: c616c3e196547d72825759de94792cc6573a12d9
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029650"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113037969"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -64,9 +64,6 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 Azure 容器注册表还支持[可用性区域](zone-redundancy.md)，以便在 Azure 区域中创建可复原和高度可用的 Azure 容器注册表。 某个区域内用于冗余的可用性区域和跨多个区域的异地复制合并在一起，可增强注册表的可靠性和性能。
 
-> [!IMPORTANT]
-> 如果在注册表的主区域（即最初部署注册表的区域）发生特定的中断，则异地复制的注册表可能会变得不可用。
-
 ## <a name="configure-geo-replication"></a>配置异地复制
 
 配置异地复制就如在地图上单击区域一样简单。 还可以使用工具（包括 Azure CLI 中的 [az acr replication](/cli/azure/acr/replication) 命令）管理异地复制，或使用 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/container-registry-geo-replication/)部署为异地复制启用的注册表。
@@ -105,6 +102,13 @@ ACR 将开始在配置的副本间同步映像。 完成后，门户将显示“
 * 若要管理依赖于异地复制注册表的推送更新的工作流，建议你配置 [Webhook](container-registry-webhook.md) 以响应推送事件。 你可以在异地复制注册表中设置区域性 Webhook，以跟踪在异地复制区域内完成的推送事件。
 * 为了向表示内容层的 blob 提供服务，Azure 容器注册表使用了数据终结点。 可以在注册表的每个异地复制区域中为注册表启用[专用数据终结点](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)。 这些终结点允许配置严格限定范围的防火墙访问规则。 出于故障排除目的，你可以选择[禁止路由到副本](#temporarily-disable-routing-to-replication)同时维护复制的数据。
 * 如果使用虚拟网络中的专用终结点为注册表配置[专用链接](container-registry-private-link.md)，则默认情况下会启用每个异地复制区域中的专用数据终结点。 
+
+## <a name="considerations-for-high-availability"></a>高可用性注意事项
+
+* 为实现高可用性和复原能力，我们建议在支持启用[区域冗余](zone-redundancy.md)的区域创建注册表。 也建议在每个副本区域中启用区域冗余。
+* 如果注册表主区域（创建区域）或其中某个副本区域出现中断，则异地复制注册表仍可用于数据平面操作，例如推送或拉取容器映像。 
+* 如果注册表主区域变得不可用，则可能无法执行注册表管理操作，包括配置网络规则、启用可用性区域和管理副本。
+* 若要规划使用 Azure 密钥保管库中存储的[客户管理的密钥](container-registry-customer-managed-keys.md)加密的异地复制注册表的高可用性，请查看密钥保管库[故障转移和冗余](../key-vault/general/disaster-recovery-guidance.md)指南。
 
 ## <a name="delete-a-replica"></a>删除副本
 

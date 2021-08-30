@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 61076b49d396c83a67635e46eb4f1b928b3f9e1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec65980e3886b62b8718799d1566a11d5c13a679
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933976"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721761"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 
@@ -80,10 +80,10 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 - x.x.x.0：网络地址
 - x.x.x.1：由 Azure 为默认网关保留
 - x.x.x.2、x.x.x.3：由 Azure 保留以将 Azure DNS IP 映射到 VNet 空间
-- x.x.x.255：网络广播地址
+- x.x.x.255：大小大于或等于 /25 的子网的网络广播地址。 在较小的子网中，这将是一个不同的地址。 
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>VNet 和子网的最小和最大容量是多少？
-支持的最小 IPv4 子网为 /29，最大为 /8（使用 CIDR 子网定义）。  IPv6 子网的大小必须是 /64。  
+支持的最小 IPv4 子网为 /29，最大为 /2（使用 CIDR 子网定义）。  IPv6 子网的大小必须是 /64。  
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>是否可以使用 VNet 将 VLAN 引入 Azure 中？
 否。 VNet 是第 3 层重叠。 Azure 不支持任何第 2 层语义。
@@ -419,7 +419,7 @@ Azure Active Directory (Azure AD) 不以本机方式支持服务终结点。 可
 |Azure 存储| 100|
 |Azure SQL| 128|
 |Azure Synapse Analytics|   128|
-|Azure KeyVault|    127|
+|Azure KeyVault|    200 |
 |Azure Cosmos DB|   64|
 |Azure 事件中心|   128|
 |Azure 服务总线| 128|

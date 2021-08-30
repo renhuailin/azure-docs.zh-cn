@@ -10,13 +10,13 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
-ms.date: 01/25/2019
-ms.openlocfilehash: e78f6762e3eb94e010909941cc84d19a37f3afc4
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 06/22/2021
+ms.openlocfilehash: dc246908497d8f13bddbc06498900842850397ae
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691357"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253169"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>如何使用批处理来提升 Azure SQL 数据库和 Azure SQL 托管实例应用程序的性能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -602,7 +602,7 @@ exec sp_InsertOrdersBatch @orders, @details
 
 ### <a name="upsert"></a>UPSERT
 
-另一批处理方案涉及同时更新现有行和插入新行。 此操作有时称为“UPSERT”（更新 + 插入）操作。 不用单独调用 INSERT 和 UPDATE，MERGE 语句最适合此任务。 MERGE 语句可以在单个调用中执行插入和更新操作。
+另一批处理方案涉及同时更新现有行和插入新行。 此操作有时称为“UPSERT”（更新 + 插入）操作。 一个合适的替代方法是使用 MERGE 语句，而不是单独调用 INSERT 和 UPDATE。 MERGE 语句可以在单个调用中执行插入和更新操作。 MERGE 语句锁定机制的工作原理与单独的 INSERT 和 UPDATE 语句的不同。 在部署到生产环境之前测试特定工作负载。
 
 可以将表值参数用于 MERGE 语句以执行更新和插入。 例如，请考虑使用包含以下列的简化 Employee 表：EmployeeID、FirstName、LastName、SocialSecurityNumber：
 

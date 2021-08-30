@@ -7,35 +7,34 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 87d9ca35cbed711f8fad0faf4759e3f6c3833b86
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: c0a64d5756895f18cbb1285586570ac72dd1c12e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495991"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745854"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>连接到已启用 Azure Arc 的 SQL 托管实例
 
 本文介绍如何连接到已启用 Azure Arc 的 SQL 托管实例。 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="view-azure-arc-enabled-sql-managed-instances"></a>查看已启用 Azure Arc 的 SQL 托管实例
 
 若要查看已启用 Azure Arc 的 SQL 托管实例和外部终结点，请使用以下命令：
 
-```console
-azdata arc sql mi list
+```azurecli
+az sql mi-arc list --k8s-namespace <namespace> --use-k8s -o table
 ```
 
 输出应如下所示：
 
 ```console
-Name    Replicas    ExternalEndpoint    State
-------  ----------  ----------------  -------
-sqldemo 1/1         10.240.0.4:32023  Ready
+Name       PrimaryEndpoint      Replicas    State
+---------  -------------------  ----------  -------
+sqldemo    10.240.0.107,1433    1/1         Ready
 ```
 
 如果你使用 AKS、kubeadm 或 OpenShift 等，可以从此处复制外部 IP 和端口号，并使用偏好的工具连接到此 IP 和端口，以连接到 Azure Data Studio 或 SQL Server Management Studio 等 SQL Server/Azure SQL 实例。  但是，如果你使用快速入门 VM，请参阅以下有关如何从 Azure 外部连接到该 VM 的特殊信息。 
@@ -84,7 +83,7 @@ az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 
 获取 NSG 的名称后，可使用以下命令添加防火墙规则。 此处的示例值针对端口 30913 创建一个 NSG 规则，并允许来自任何源 IP 地址的连接。  这不是一种最佳安全做法！  通过指定特定于你的客户端 IP 地址或 IP 地址范围（涵盖你的团队或组织的 IP 地址）的 -source-address-prefixes 值，可以更好地锁定内容。
 
-请将下面的 `--destination-port-ranges` 参数值替换为从上述 `azdata sql instance list`F 命令获取的端口号。
+请将下面的 `--destination-port-ranges` 参数值替换为从上述 `az sql mi-arc list` 命令获取的端口号。
 
 ```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30913 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'

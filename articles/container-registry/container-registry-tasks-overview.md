@@ -2,13 +2,13 @@
 title: ACR 任务概述
 description: 介绍 ACR 任务。ACR 任务是 Azure 容器注册表中的功能套件，它在云中提供安全、自动化的容器映像的生成、管理和修补。
 ms.topic: article
-ms.date: 08/12/2020
-ms.openlocfilehash: a42a2bfcdc1621689421940c4db2fcf4f5e64b89
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/14/2021
+ms.openlocfilehash: 8a68ff312df13517bfe2b59d97dff25783da11ab
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780994"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112202267"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 任务自动执行容器映像的生成和维护
 
@@ -61,12 +61,21 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 | 提交 | 是 |
 | 拉取请求 | 否 |
 
-若要配置源代码更新触发器，你需要为任务提供个人访问令牌 (PAT)，以便在公共或专用 GitHub 或 Azure DevOps 存储库中设置 Webhook。
-
 > [!NOTE]
 > 目前，ACR 任务不支持 GitHub Enterprise 存储库中的提交或拉取请求触发器。
 
 第二篇 ACR 任务教程[使用 Azure 容器注册表任务自动执行容器映像生成](container-registry-tutorial-build-task.md)中介绍了如何在提交源代码时触发生成。
+
+### <a name="personal-access-token"></a>个人访问令牌
+
+若要配置源代码更新触发器，你需要为任务提供个人访问令牌 (PAT)，以便在公共或专用 GitHub 或 Azure DevOps 存储库中设置 Webhook。 PAT 所需的范围如下：
+
+| 存储库类型 |GitHub  |DevOps  |
+|---------|---------|---------|
+|公共存储库    | repo:status<br/>public_repo        | 代码（读取）        |
+|专用存储库   | 存储库（完全控制）    | 代码（读取）      |
+
+若要创建 PAT，请参阅 [GitHub](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) 或 [Azure DevOps](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) 文档。
 
 ## <a name="automate-os-and-framework-patching"></a>自动执行 OS 和框架修补
 
@@ -114,7 +123,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 | 容器注册表中的项目 | 容器注册表存储库中的 [OCI 项目](container-registry-oci-artifacts.md)文件。 | `oci://myregistry.azurecr.io/myartifact:mytag` |
 
 > [!NOTE]
-> 使用专用 Git 存储库作为任务的上下文时，需要提供个人访问令牌 (PAT)。
+> 使用 Git 存储库作为源代码更新触发的任务的上下文时，需要提供[个人访问令牌 (PAT)](#personal-access-token)。
 
 ## <a name="image-platforms"></a>映像平台
 

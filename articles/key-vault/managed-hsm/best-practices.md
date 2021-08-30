@@ -2,19 +2,19 @@
 title: 使用 Azure Key Vault 托管 HSM 的最佳做法
 description: 本文档介绍了一些使用密钥保管库的最佳做法
 services: key-vault
-author: amitbapat
+author: mbaldwin
 tags: azure-key-vault
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.author: ambapat
-ms.openlocfilehash: a7cccecc47973d372453ce86d0d5d12c8d773b3a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 06/21/2021
+ms.author: mbaldwin
+ms.openlocfilehash: 99a313f64e9f5bafd13dbbf45a6881e1c6e2f275
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413962"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459689"
 ---
 # <a name="best-practices-when-using-managed-hsm"></a>使用托管 HSM 时的最佳做法
 
@@ -44,6 +44,13 @@ ms.locfileid: "111413962"
 
 - 默认启用[软删除](soft-delete-overview.md)。 可选择 7 到 90 天的保留期。
 - 启用清除保护以防止立即永久删除 HSM 或密钥。 当启用清除保护时，HSM 或密钥将保持已删除状态，直到保留天数已过。
+
+## <a name="generate-and-import-keys-from-on-premise-hsm"></a>从本地 HSM 生成并导入密钥
+
+> [!NOTE]
+> 在托管 HSM 中创建或导入其中的密钥不可导出。
+
+- 若要确保长期可移植性和密钥持久性，请在本地 HSM 中生成密钥，并[将它们导入托管 HSM](hsm-protected-keys-byok.md)。 你将有一份密钥副本安全地存储在本地 HSM 中，以供将来使用。
 
 ## <a name="next-steps"></a>后续步骤
 

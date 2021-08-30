@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ba55d88de3a5a4087db30613b22a7d2441de9be1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa21a1a6d6dfdd89f6532159a8da98fc5df08465
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93334372"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281352"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>使用多个写入区域时的冲突类型和解决策略
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -46,7 +46,7 @@ Azure Cosmos DB 提供了灵活的策略驱动型机制来解决写入冲突。 
   如果为容器配置了自定义解决选项，但无法在容器中注册合并过程，或者合并过程在运行时引发异常，则冲突将写入到冲突源。  然后，应用程序需要自行解决冲突源中的冲突。 有关详细信息，请参阅[自定义解决策略和冲突源的用法示例](how-to-manage-conflicts.md)。
 
   > [!NOTE]
-  > 自定义冲突解决策略仅适用于 SQL API 帐户。
+  > 自定义冲突解决策略仅适用于 SQL API 帐户，并且只能在创建时设置。 不能在现有容器上设置自定义解决方案策略。
 
 ## <a name="next-steps"></a>后续步骤
 

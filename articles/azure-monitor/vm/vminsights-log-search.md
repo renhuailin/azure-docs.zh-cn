@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 28ee7f3d327c09f5837c7dc9e2f39c0f2ca4d888
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5a210fbab93ebc3a7c47db4ef2e1d74183ba2bc7
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046527"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539639"
 ---
 # <a name="how-to-query-logs-from-vm-insights"></a>如何从 VM 见解查询日志
 
@@ -18,7 +18,7 @@ VM 见解收集性能和连接指标、计算机和进程库存数据以及运�
 
 ## <a name="map-records"></a>映射记录
 
-除了在进程或计算机启动或载入 VM 见解映射功能时生成的记录外，还针对每个唯一计算机和进程每小时生成一条记录。 这些记录的属性在下表中列出。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
+除了在进程或计算机启动或添加 VM 见解时生成的记录外，还针对每个唯一计算机和进程每小时生成一条记录。 ServiceMapComputer_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中计算机资源的字段。 ServiceMapProcess_CL 事件中的字段和值映射到 ServiceMap Azure 资源管理器 API 中进程资源的字段。 ResourceName_s 字段与相应的 Azure Resource Manager 资源中的名称字段匹配。 
 
 包含内部生成的可用于标识唯一进程和计算机的属性：
 

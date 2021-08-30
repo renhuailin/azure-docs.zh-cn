@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 02/09/2021
+ms.date: 08/03/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f25e83644c78328d866751a71e15a9658932e66f
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 65df8c53522bb971bcd089967047f8a86de55f44
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689277"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749362"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
@@ -166,7 +166,7 @@ Update-Module -Name Az.Search
 
 ## <a name="get-search-service-information"></a>获取搜索服务信息
 
-导入 **Az.Search** 之后，如果你知道哪个资源组包含你的搜索服务，请运行 [Get-AzSearchService](/powershell/module/az.search/get-azsearchservice) 返回服务定义，包括名称、区域、层级、副本计数和分区计数。
+导入 **Az.Search** 之后，如果你知道哪个资源组包含你的搜索服务，请运行 [Get-AzSearchService](/powershell/module/az.search/get-azsearchservice) 返回服务定义，包括名称、区域、层级、副本计数和分区计数。 对于此命令，请提供包含搜索服务的资源组。
 
 ```azurepowershell-interactive
 Get-AzSearchService -ResourceGroupName <resource-group-name>
@@ -241,15 +241,15 @@ New-AzSearchService -ResourceGroupName <resource-group-name> `
 
 ## <a name="create-a-service-with-a-private-endpoint"></a>创建具有专用终结点的服务
 
-Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview.md)允许虚拟网络上的客户端通过[专用链接](../private-link/private-link-overview.md)安全地访问搜索索引中的数据。 专用终结点将[虚拟网络地址空间](../virtual-network/private-ip-addresses.md)中的 IP 地址用于你的搜索服务。 客户端与搜索服务之间的网络流量将穿过虚拟网络以及 Microsoft 主干网络上的专用链接，不会从公共 Internet 公开。 有关更多详细信息，请参阅有关[为 Azure 认知搜索创建专用终结点](service-create-private-endpoint.md)的文档
+Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview.md)允许虚拟网络上的客户端通过[专用链接](../private-link/private-link-overview.md)安全地访问搜索索引中的数据。 专用终结点将[虚拟网络地址空间](../virtual-network/private-ip-addresses.md)中的 IP 地址用于你的搜索服务。 客户端与搜索服务之间的网络流量将穿过虚拟网络以及 Microsoft 主干网络上的专用链接，不会从公共 Internet 公开。 有关更多详细信息，请参阅[为 Azure 认知搜索创建专用终结点](service-create-private-endpoint.md)
 
-下面的示例演示了如何使用专用终结点创建搜索服务。
+下面的示例演示了如何使用专用终结点创建搜索服务。 
 
 首先，部署一个搜索服务，将 `PublicNetworkAccess` 设为 `Disabled`。
 
 ```azurepowershell-interactive
 $searchService = New-AzSearchService `
-    -ResourceGroupName <resource-group-name> `
+    -ResourceGroupName <search-service-resource-group-name> `
     -Name <search-service-name> `
     -Sku Standard `
     -Location "West US" `
@@ -269,7 +269,7 @@ $subnetConfig = New-AzVirtualNetworkSubnetConfig `
 
 # Create the virtual network
 $virtualNetwork = New-AzVirtualNetwork `
-    -ResourceGroupName <resource-group-name> `
+    -ResourceGroupName <vm-resource-group-name> `
     -Location "West US" `
     -Name <virtual-network-name> `
     -AddressPrefix 10.1.0.0/16 `
@@ -284,7 +284,7 @@ $privateLinkConnection = New-AzPrivateLinkServiceConnection `
 # Create the private endpoint
 $privateEndpoint = New-AzPrivateEndpoint `
     -Name <private-endpoint-name> `
-    -ResourceGroupName <resource-group-name> `
+    -ResourceGroupName <private-endpoint-resource-group-name> `
     -Location "West US" `
     -Subnet $virtualNetwork.subnets[0] `
     -PrivateLinkServiceConnection $privateLinkConnection
@@ -295,12 +295,12 @@ $privateEndpoint = New-AzPrivateEndpoint `
 ```azurepowershell-interactive
 ## Create private dns zone
 $zone = New-AzPrivateDnsZone `
-    -ResourceGroupName <resource-group-name> `
+    -ResourceGroupName <private-dns-resource-group-name> `
     -Name "privatelink.search.windows.net"
 
 ## Create dns network link
 $link = New-AzPrivateDnsVirtualNetworkLink `
-    -ResourceGroupName <resource-group-name> `
+    -ResourceGroupName <private-dns-link-resource-group-name> `
     -ZoneName "privatelink.search.windows.net" `
     -Name "myLink" `
     -VirtualNetworkId $virtualNetwork.Id
@@ -312,7 +312,7 @@ $config = New-AzPrivateDnsZoneConfig `
 
 ## Create DNS zone group
 New-AzPrivateDnsZoneGroup `
-    -ResourceGroupName <resource-group-name> `
+    -ResourceGroupName <private-dns-zone-resource-group-name> `
     -PrivateEndpointName <private-endpoint-name> `
     -Name 'myZoneGroup' `
     -PrivateDnsZoneConfig $config
@@ -327,19 +327,19 @@ New-AzPrivateDnsZoneGroup `
 [Get-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Get-AzSearchPrivateEndpointConnection) 用于检索专用终结点连接并查看其状态。
 
 ```azurepowershell-interactive
-Get-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name>
+Get-AzSearchPrivateEndpointConnection -ResourceGroupName <search-service-resource-group-name> -ServiceName <search-service-name>
 ```
 
 [Set-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Set-AzSearchPrivateEndpointConnection) 用于更新连接。 以下示例将专用终结点连接设置为“已拒绝”：
 
 ```azurepowershell-interactive
-Set-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <pe-connection-name> -Status Rejected  -Description "Rejected"
+Set-AzSearchPrivateEndpointConnection -ResourceGroupName <search-service-resource-group-name> -ServiceName <search-service-name> -Name <pe-connection-name> -Status Rejected  -Description "Rejected"
 ```
 
 [Remove-AzSearchPrivateEndpointConnection](/powershell/module/az.search/Remove-AzSearchPrivateEndpointConnection) 用于删除专用终结点连接。
 
 ```azurepowershell-interactive
- Remove-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <pe-connection-name>
+ Remove-AzSearchPrivateEndpointConnection -ResourceGroupName <search-service-resource-group-name> -ServiceName <search-service-name> -Name <pe-connection-name>
 ```
 
 ## <a name="regenerate-admin-keys"></a>重新生成管理员密钥
@@ -353,7 +353,7 @@ Set-AzSearchPrivateEndpointConnection -ResourceGroupName <resource-group-name> -
 API 密钥的值由服务生成。 无法提供自定义密钥供 Azure 认知搜索使用。 同样，管理 API 密钥没有用户定义的名称。 对密钥的引用是固定的字符串：`primary` 或 `secondary`。 
 
 ```azurepowershell-interactive
-New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
+New-AzSearchAdminKey -ResourceGroupName <search-service-resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
 ```
 
 结果应如以下输出所示。 即使每次只更改一个，也会同时返回两个密钥。
@@ -371,7 +371,7 @@ Primary                    Secondary
 无法提供密钥供 Azure 认知搜索使用。 API 密钥由服务生成。
 
 ```azurepowershell-interactive
-New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <query-key-name> 
+New-AzSearchQueryKey -ResourceGroupName <search-service-resource-group-name> -ServiceName <search-service-name> -Name <query-key-name> 
 ```
 
 ## <a name="scale-replicas-and-partitions"></a>缩放副本和分区
@@ -385,7 +385,7 @@ New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <sear
 提交命令后，没有任何办法可以中途终止该命令。 必须等到该命令完成才能修改计数。
 
 ```azurepowershell-interactive
-Set-AzSearchService -ResourceGroupName <resource-group-name> -Name <search-service-name> -PartitionCount 6 -ReplicaCount 6
+Set-AzSearchService -ResourceGroupName <search-service-resource-group-name> -Name <search-service-name> -PartitionCount 6 -ReplicaCount 6
 ```
 
 结果应如以下输出所示。
@@ -412,13 +412,13 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 [New-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/New-AzSearchSharedPrivateLinkResource) 用于创建共享的专用链接资源。 请记住，在运行此命令之前，可能需要对数据源进行一些配置。
 
 ```azurepowershell-interactive
-New-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -PrivateLinkResourceId /subscriptions/<alphanumeric-subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/myBlobStorage -GroupId <group-id> -RequestMessage "Please approve" 
+New-AzSearchSharedPrivateLinkResource -ResourceGroupName <search-serviceresource-group-name> -ServiceName <search-service-name> -Name <spl-name> -PrivateLinkResourceId /subscriptions/<alphanumeric-subscription-ID>/resourceGroups/<storage-resource-group-name>/providers/Microsoft.Storage/storageAccounts/myBlobStorage -GroupId <group-id> -RequestMessage "Please approve" 
 ```
 
 [Get-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/Get-AzSearchSharedPrivateLinkResource) 用于检索共享的专用链接资源并查看其状态。
 
 ```azurepowershell-interactive
-Get-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name>
+Get-AzSearchSharedPrivateLinkResource -ResourceGroupName <search-service-resource-group-name> -ServiceName <search-service-name> -Name <spl-name>
 ```
 
 需要先使用以下命令批准连接，然后才能使用该连接。
@@ -427,14 +427,14 @@ Get-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -
 Approve-AzPrivateEndpointConnection `
     -Name <spl-name> `
     -ServiceName <search-service-name> `
-    -ResourceGroupName <resource-group-name> `
+    -ResourceGroupName <search-service-resource-group-name> `
     -Description = "Approved"
 ```
 
 [Remove-AzSearchSharedPrivateLinkResource](/powershell/module/az.search/Remove-AzSearchSharedPrivateLinkResource) 用于删除共享的专用链接资源。
 
 ```azurepowershell-interactive
-$job = Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -Force -AsJob
+$job = Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName <search-service-resource-group-name> -ServiceName <search-service-name> -Name <spl-name> -Force -AsJob
 
 $job | Get-Job
 ```

@@ -3,12 +3,12 @@ title: 在 Azure 实验室服务中附加或分离共享映像库 | Microsoft Do
 description: 本文介绍了如何在 Azure 实验室服务中将共享映像库附加到课堂实验室。
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: 2a460e25d59d2c5fcde341212e7912882f5fe111
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 62020f30b000292bf3e6af4cab61364e99ce4b5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190687"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737685"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 实验室服务中附加或分离共享映像库
 本文介绍了如何将共享映像库附加到实验室帐户或与之分离。 
@@ -89,6 +89,6 @@ ms.locfileid: "110190687"
 ## <a name="next-steps"></a>后续步骤
 若要了解如何将实验室映像保存到共享映像库，或使用共享映像库中的映像来创建 VM，请参阅[如何使用共享映像库](how-to-use-shared-image-gallery.md)。
 
-若要将 Windows 自定义映像引入实验室上下文之外的共享映像库，请参阅[将自定义映像引入共享映像库](upload-custom-image-shared-image-gallery.md)。
+若要探索在实验室上下文之外将自定义映像引入共享映像库的其他选项，请参阅[创建自定义映像的建议方法](approaches-for-custom-image-creation.md)。
 
 若要详细了解共享映像库的常规概念，请参阅[共享映像库](../virtual-machines/shared-image-galleries.md)。

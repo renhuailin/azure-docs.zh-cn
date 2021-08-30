@@ -4,16 +4,16 @@ description: 若要在 Azure 中创建具有高可用性和弹性的应用程序
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 05/27/2021
+ms.date: 08/04/2021
 ms.author: prsandhu
-ms.reviewer: cynthn
+ms.reviewer: cnthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 07f0e87b77d359d9bc1009ccc7e5176795e12cd5
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 6271fcb1702d14913578f6cc535b1dd74ba3205b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029002"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750377"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支持可用性区域的 Azure 服务
 
@@ -53,14 +53,14 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 | Brazil South       | 法国中部       | 南非北部* | 澳大利亚东部 |
 | 加拿大中部     | 德国中西部 |                     | 印度中部* |
 | 美国中部         | 北欧         |                     | 日本东部     |
-| 美国东部            | 英国南部             |                     | 韩国中部* |
-| 美国东部 2          | 西欧          |                     | 东南亚 |
-| 美国中南部 |                      |                     |                |
+| 美国东部            | 挪威东部*         |                     | 韩国中部* |
+| 美国东部 2          | 英国南部             |                     | 东南亚 |
+| 美国中南部 | 西欧          |                     |                |
 | US Gov 弗吉尼亚州    |                      |                     |                |
 | 美国西部 2        |                      |                     |                |
-| 美国西部 3*       |                      |                     |                |
+| 美国西部 3        |                      |                     |                |
 
-\* 若要详细了解这些地理区域中的可用性区域和可用服务支持，请与 Microsoft 销售或客户代表联系。 有关即将支持可用性区域的地理区域，请参阅 [Azure 地理位置](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)。
+\* 若要详细了解这些地理区域中的可用性区域和可用服务支持，请与 Microsoft 销售或客户代表联系。 有关即将支持可用性区域的地理区域，请参阅 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。
 
 
 ## <a name="azure-services-supporting-availability-zones"></a>支持可用性区域的 Azure 服务
@@ -123,6 +123,7 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 |     [应用服务环境](../app-service/environment/zone-redundancy.md)                                    | :large_blue_diamond:  |
 |     [Azure Active Directory 域服务](../active-directory-domain-services/overview.md)                      | :large_blue_diamond:  |
 |     [Azure API 管理](../api-management/zone-redundancy.md)                      | :large_blue_diamond:  |
+|     [Azure 应用配置](../azure-app-configuration/faq.yml#how-does-app-configuration-ensure-high-data-availability)   | :large_blue_diamond:  |    
 |     [Azure Bastion](../bastion/bastion-overview.md)                                               | :large_blue_diamond:  |
 |     [用于 Redis 的 Azure 缓存](../azure-cache-for-redis/cache-high-availability.md)                              | :large_blue_diamond:  |
 |     [Azure 认知搜索](../search/search-performance-optimization.md#availability-zones)               | :large_blue_diamond:  |
@@ -131,11 +132,12 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 |     [Azure 数据工厂](../data-factory/index.yml)                               | :large_blue_diamond:  |
 |     Azure Database for MySQL - [灵活服务器](../mysql/flexible-server/concepts-high-availability.md)                  | :large_blue_diamond:  |
 |     Azure Database for PostgreSQL - [灵活服务器](../postgresql/flexible-server/overview.md)             | :large_blue_diamond:  |
-|     [Azure DDoS 防护](../ddos-protection/ddos-faq.md)                                       | :large_blue_diamond:  |
+|     [Azure DDoS 防护](../ddos-protection/ddos-faq.yml)                                       | :large_blue_diamond:  |
 |     [Azure 磁盘加密](../virtual-machines/disks-redundancy.md)                                       | :large_blue_diamond:  |
 |     [Azure 防火墙](../firewall/deploy-availability-zone-powershell.md)                                              | :large_blue_diamond:  |
 |     [Azure 防火墙管理器](../firewall-manager/quick-firewall-policy.md)                                      | :large_blue_diamond:  |
 |     [Azure Kubernetes 服务 (AKS)](../aks/availability-zones.md)                              | :large_blue_diamond:  |
+|     [Azure 媒体服务 (AMS)](../media-services/latest/concept-availability-zones.md)        | :large_blue_diamond:  |
 |     [Azure 专用链接](../private-link/private-link-overview.md)                                          | :large_blue_diamond:  |
 |     [Azure Site Recovery](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)                                         | :large_blue_diamond:  |
 |     Azure SQL：[虚拟机](../azure-sql/database/high-availability-sla.md)                                  | :large_blue_diamond:  |

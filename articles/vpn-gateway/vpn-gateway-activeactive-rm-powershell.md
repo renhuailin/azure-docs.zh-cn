@@ -10,16 +10,16 @@ ms.date: 09/03/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 373c3e28e1d2dffdde8e8483a78c23174bd6513a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: ee5213adf10ddc7ea17c93011989e52fe570b3ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110678589"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729555"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>配置与 Azure VPN 网关的主动-主动 S2S VPN 连接
 
-本文逐步讲解如何使用 Resource Manager 部署模型和 PowerShell 创建主动-主动跨界连接与 VNet 到 VNet 连接。 还可以在 Azure 门户中配置主动-主动网关。
+本文逐步讲解如何使用[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)和 PowerShell 创建主动-主动跨界连接与 VNet 到 VNet 连接。 还可以在 Azure 门户中配置主动-主动网关。
 
 ## <a name="about-highly-available-cross-premises-connections"></a>关于高可用性跨界连接
 若要实现跨界连接和 VNet 到 VNet 连接的高可用性，应该部署多个 VPN 网关，在网络与 Azure 之间建立多个并行连接。 有关连接选项和拓扑的概述，请参阅[高可用性跨界连接与 VNet 到 VNet 连接](vpn-gateway-highlyavailable.md)。
@@ -122,7 +122,7 @@ $gw1ipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf2 -Subnet $sub
 ```
 
 #### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2.使用主动-主动配置创建 VPN 网关
-为 TestVNet1 创建虚拟网络网关。 请注意有两个 GatewayIpConfig 条目，并且已设置 EnableActiveActiveFeature 标志。 创建网关可能需要花费一段时间（45 分钟或更久才能完成）。
+为 TestVNet1 创建虚拟网络网关。 请注意有两个 GatewayIpConfig 条目，并且已设置 EnableActiveActiveFeature 标志。 创建网关可能需要一定的时间（45 分钟或更长的时间，具体取决于所选的 SKU）。
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN -EnableActiveActiveFeature -Debug

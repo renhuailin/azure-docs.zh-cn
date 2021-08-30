@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 286ce9b628eff0975cff1cfa006f914ed43c3c46
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 195e47ce7165a02c5bb7126521432d448e2199a9
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469672"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238801"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用适用于容器注册表的 Azure Defender 来扫描映像是否存在漏洞
 
@@ -56,7 +56,7 @@ ms.locfileid: "110469672"
 
 1. 若要查看发现结果，请访问“建议”页面。 如果发现问题，你将看到“应修正 Azure 容器注册表映像中的漏洞”的建议
 
-    ![解决问题的建议 ](media/monitor-container-security/acr-finding.png)
+    ![修正问题的建议。](media/monitor-container-security/acr-finding.png)
 
 1. 选择建议。 
 
@@ -64,29 +64,29 @@ ms.locfileid: "110469672"
 
 1. 选择特定的注册表以查看其中具有易受攻击存储库的存储库。
 
-    ![选择一个注册表](media/monitor-container-security/acr-finding-select-registry.png)
+    ![选择一个注册表。](media/monitor-container-security/acr-finding-select-registry.png)
 
     “注册表详细信息”页随即打开，并列出受影响的存储库。
 
 1. 选择特定的存储库以查看其中具有易受攻击映像的存储库。
 
-    ![选择存储库](media/monitor-container-security/acr-finding-select-repository.png)
+    ![选择存储库。](media/monitor-container-security/acr-finding-select-repository.png)
 
     “存储库详细信息”页随即打开。 它列出了易受攻击的映像以及对发现结果严重性的评估。
 
 1. 选择特定映像以查看漏洞。
 
-    ![选择映像](media/monitor-container-security/acr-finding-select-image.png)
+    ![选择映像。](media/monitor-container-security/acr-finding-select-image.png)
 
     所选映像的发现结果列表随即打开。
 
-    ![发现结果列表](media/monitor-container-security/acr-findings.png)
+    ![发现结果列表。](media/monitor-container-security/acr-findings.png)
 
 1. 若要详细了解发现结果，请选择“发现结果”。 
 
     发现结果详细信息窗格随即打开。
 
-    [![发现结果详细信息窗格](media/monitor-container-security/acr-finding-details-pane.png)](media/monitor-container-security/acr-finding-details-pane.png#lightbox)
+    [![发现结果详细信息窗格。](media/monitor-container-security/acr-finding-details-pane.png)](media/monitor-container-security/acr-finding-details-pane.png#lightbox)
 
     此窗格包括问题的详细说明，以及有助于缓解威胁的外部资源的链接。
 
@@ -138,12 +138,12 @@ ms.locfileid: "110469672"
 1. 定义你的条件。
 1. 选择“应用规则”。
 
-    :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="为注册表上的 VA 发现结果创建禁用规则":::
+    :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="为注册表上的 VA 发现结果创建禁用规则。":::
 
 1. 若要查看、替代或删除规则，请执行以下操作： 
     1. 选择“禁用规则”。
     1. 在范围列表中，具有有效规则的订阅显示为“已应用规则”。
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="修改或删除现有规则":::
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="修改或删除现有规则。":::
     1. 若要查看或删除规则，请选择省略号菜单（“...”）。
 
 

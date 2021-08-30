@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 0a4d2ef5b7f367130151fabda3f1d97b65605931
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b34f4c70e572aade6e37c55d67801423602430cc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676038"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450767"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 中可用的 Red Hat Enterprise Linux (RHEL) 映像
 Azure 针对不同用例提供了各种 RHEL 映像。
@@ -70,9 +70,9 @@ RHEL-SAP      | 7.4      | LVM    | Linux 代理 | 用于 SAP HANA 和 Business 
 |             | 7.6       | LVM    | Linux 代理 | 用于 SAP HANA 和 Business Apps 的 RHEL 7.6。 附加到 E4S 存储库，将对 SAP 和 RHEL 收取额外费用，并收取基础计算费用。
 |             | 76sap-gen2| LVM    | Linux 代理 | 用于 SAP HANA 和 Business Apps 的 RHEL 7.6。 第 2 代映像。 附加到 E4S 存储库，将对 SAP 和 RHEL 收取额外费用，并收取基础计算费用。
 |             | 7.7       | LVM    | Linux 代理 | 用于 SAP HANA 和 Business Apps 的 RHEL 7.7。 附加到 E4S 存储库，将对 SAP 和 RHEL 收取额外费用，并收取基础计算费用。
-RHEL-SAP-HANA（将于 2020 年 11 月删除） | 6.7       | RAW    | Linux 代理 | 用于 SAP HANA 的 RHEL 6.7。 已过时，取而代之的是 RHEL-SAP 映像。 此映像将于 2020 年 11 月删除。 [此处](https://access.redhat.com/articles/3751271)提供了有关 Red Hat 的 SAP 云产品/服务的更多详细信息。
-|             | 7.2       | LVM    | Linux 代理 | 用于 SAP HANA 的 RHEL 7.2。 已过时，取而代之的是 RHEL-SAP 映像。 此映像将于 2020 年 11 月删除。 [此处](https://access.redhat.com/articles/3751271)提供了有关 Red Hat 的 SAP 云产品/服务的更多详细信息。
-|             | 7.3       | LVM    | Linux 代理 | 用于 SAP HANA 的 RHEL 7.3。 已过时，取而代之的是 RHEL-SAP 映像。 此映像将于 2020 年 11 月删除。 [此处](https://access.redhat.com/articles/3751271)提供了有关 Red Hat 的 SAP 云产品/服务的更多详细信息。
+RHEL-SAP-HANA（将于 2020 年 11 月删除） | 6.7       | RAW    | Linux 代理 | 用于 SAP HANA 的 RHEL 6.7。 已过时，取而代之的是 RHEL-SAP 映像。 此映像将于 2020 年 11 月删除。 有关 Red Hat 的 SAP 云产品/服务的更多详细信息，请访问[经过认证的云提供商提供的 SAP 产品/服务](https://access.redhat.com/articles/3751271)。
+|             | 7.2       | LVM    | Linux 代理 | 用于 SAP HANA 的 RHEL 7.2。 已过时，取而代之的是 RHEL-SAP 映像。 此映像将于 2020 年 11 月删除。 有关 Red Hat 的 SAP 云产品/服务的更多详细信息，请访问[经过认证的云提供商提供的 SAP 产品/服务](https://access.redhat.com/articles/3751271)。
+|             | 7.3       | LVM    | Linux 代理 | 用于 SAP HANA 的 RHEL 7.3。 已过时，取而代之的是 RHEL-SAP 映像。 此映像将于 2020 年 11 月删除。 有关 Red Hat 的 SAP 云产品/服务的更多详细信息，请访问[经过认证的云提供商提供的 SAP 产品/服务](https://access.redhat.com/articles/3751271)。
 RHEL-SAP-APPS | 6.8       | RAW    | Linux 代理 | 用于 SAP Business Applications 的 RHEL 6.8。 已过时，取而代之的是 RHEL-SAP 映像。
 |             | 7.3       | LVM    | Linux 代理 | 用于 SAP Business Applications 的 RHEL 7.3。 已过时，取而代之的是 RHEL-SAP 映像。
 |             | 7.4       | LVM    | Linux 代理 | 用于 SAP Business Applications 的 RHEL 7.4。
@@ -113,7 +113,7 @@ rhel-byos     |rhel-lvm74| LVM    | Linux 代理 | RHEL 7.4 BYOS 映像，不附
 |             |rhel-lvm82-gen2 | LVM    | Linux 代理 | RHEL 8.2 第 2 代 BYOS 映像，不附加到任何更新源，也不会收取 RHEL 额外费用。
 
 > [!NOTE]
-> Red Hat 认为 RHEL-SAP-HANA 产品的生命周期已终止。 现有部署将继续正常运行，但 Red Hat 建议客户从 RHEL-SAP-HANA 映像迁移到 RHEL-SAP-HA 映像，其中包括 SAP HANA 存储库以及 HA 加载项。 [此处](https://access.redhat.com/articles/3751271)提供了有关 Red Hat 的 SAP 云产品/服务的更多详细信息。
+> Red Hat 认为 RHEL-SAP-HANA 产品的生命周期已终止。 现有部署将继续正常运行，但 Red Hat 建议客户从 RHEL-SAP-HANA 映像迁移到 RHEL-SAP-HA 映像，其中包括 SAP HANA 存储库以及 HA 加载项。 有关 Red Hat 的 SAP 云产品/服务的更多详细信息，请访问[经过认证的云提供商提供的 SAP 产品/服务](https://access.redhat.com/articles/3751271)。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解 [Azure 中的 Red Hat 映像](./redhat-images.md)。

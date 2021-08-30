@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/07/2021
 ms.author: terrylan
-ms.openlocfilehash: 7612732f01075759d76c2bce5e8c710afc676642
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9e68df70afdc0f8e35ec862d9f9570dd13306191
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132856"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466048"
 ---
 # <a name="end-to-end-security-in-azure"></a>Azure 的端到端安全服务
 将 Azure 用于应用程序和服务的最合理原因之一是可以利用其各种安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。 Microsoft Azure 提供具备保密性、完整性和可用性的客户数据，同时还能实现透明的问责制。
@@ -64,7 +64,7 @@ ms.locfileid: "108132856"
 | [Azure Front Door](../../frontdoor/front-door-overview.md) | 可缩放的全局入口点，它使用 Microsoft 全球边缘网络来创建快速、安全且可大规模缩放的 Web 应用程序。 |
 | [Azure 防火墙](../../firewall/overview.md) | 是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。 |
 | [Azure Key Vault](../../key-vault/general/overview.md) | 一种安全的机密存储，适用于令牌、密码、证书、API 密钥以及其他机密。 通过 Key Vault，还可以创建和控制用于加密数据的加密密钥。 |
-| [Key Vault 托管 HSM（预览版）](../../key-vault/managed-hsm/overview.md) | 一项完全托管、高度可用、单租户、符合标准的云服务，通过该服务，你可以使用 FIPS 140-2 级别 3 验证的 HSM 保护云应用程序的加密密钥。 |
+| [Key Vault 托管 HSM](../../key-vault/managed-hsm/overview.md) | 一项完全托管、高度可用、单租户、符合标准的云服务，通过该服务，你可以使用 FIPS 140-2 级别 3 验证的 HSM 保护云应用程序的加密密钥。 |
 | [Azure 专用链接](../../private-link/private-link-overview.md) | 借助该服务，可以通过虚拟网络中的专用终结点访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。 |
 | [Azure 应用程序网关](../../application-gateway/overview.md) | 一种高级 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。 应用程序网关可以根据 HTTP 请求的其他属性（例如 URI 路径或主机头）进行路由决策。 |
 | [Azure 服务总线](../../service-bus-messaging/service-bus-messaging-overview.md) | 一个完全托管的企业消息中转站，其中包含消息队列和发布订阅主题。 可使用服务总线将应用程序和服务相互分离。 |

@@ -10,13 +10,13 @@ ms.topic: reference
 ms.date: 07/06/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.custom: b2c-support, has-adal-ref
-ms.openlocfilehash: b9341909f6dd1dd9d01408a7b7af46e47a0ff339
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.custom: b2c-support
+ms.openlocfilehash: f4a20474ed309403b418022a356db3366fda4b04
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428711"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113300963"
 ---
 # <a name="enable-authentication-in-your-own-android-application-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 在自己的 Android 应用程序中启用身份验证
 

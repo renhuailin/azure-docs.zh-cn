@@ -4,14 +4,14 @@ description: 如何使用 Azure 门户或 Azure CLI 管理并更新 Azure HPC �
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 07/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: a831aa7b2f3b0d438d9db8fefa3d26428fea3680
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cd4dcb4bac5f2876db9af194abc5835c1d0f5a3c
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862590"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586970"
 ---
 # <a name="manage-your-cache"></a>管理缓存
 
@@ -33,6 +33,9 @@ Azure 门户中的缓存概述页面显示了缓存的项目详细信息、缓�
 * [**删除**](#delete-the-cache) - 永久性销毁缓存
 
 在下面阅读有关这些选项的详细信息。
+
+> [!TIP]
+> 还可以管理单个存储目标 - 有关详细信息，请阅读[管理存储目标](manage-storage-targets.md)。
 
 单击下面的图像，观看演示缓存管理任务的[视频](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)。
 
@@ -247,14 +250,6 @@ $
 
 ---
 
-## <a name="cache-metrics-and-monitoring"></a>缓存指标和监视
-
-概述页面显示了一些基本缓存统计信息的图形：缓存吞吐量、每秒操作数和延迟。
-
-![该屏幕截图显示了三个折线图，其中显示的是上述示例缓存的统计信息](media/hpc-cache-overview-stats.png)
-
-这些图表是 Azure 内置监视和分析工具的一部分。 门户侧边栏的“监视”标题下的页面提供了其他工具和警报。 有关详细信息，请参阅 [Azure 监视文档](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-in-the-azure-portal)的门户部分。
-
 ## <a name="view-warnings"></a>查看警告
 
 如果缓存进入运行不正常状态，请检查“警告”页。 此页显示来自缓存软件的通知，这些通知有助于了解其状态。
@@ -271,5 +266,5 @@ $
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关 [Azure 指标和统计信息工具的](../azure-monitor/index.yml)的详细信息
+* [使用统计信息监视缓存](metrics.md)
 * 获取[有关 AZURE HPC 缓存方面的帮助](hpc-cache-support-ticket.md)

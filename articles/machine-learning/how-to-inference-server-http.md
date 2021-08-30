@@ -1,7 +1,7 @@
 ---
 title: Azure 机器学习推理 HTTP 服务器
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习推理 http 服务器启用本地开发。
+description: 了解如何使用 Azure 机器学习推理 HTTP 服务器实现本地开发。
 author: shivanissambare
 ms.author: ssambare
 ms.reviewer: larryfr
@@ -9,31 +9,31 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.custom: inference server, local development, local debugging
+ms.custom: inference server, local development, local debugging, devplatv2
 ms.date: 05/14/2021
-ms.openlocfilehash: d54195829c4f4734d135e3468897711bdaa0421f
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 924995fe9330a44b52a40a8e3eb651efdeb24398
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538442"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751948"
 ---
-# <a name="azure-machine-learning-inference-http-server-preview"></a>Azure 机器学习推理 HTTP 服务器（预览）
+# <a name="azure-machine-learning-inference-http-server-preview"></a>Azure 机器学习推理 HTTP 服务器（预览版）
 
-Azure 机器学习推理 HTTP 服务器[（预览）](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)是一种 Python 包，可用于在本地开发环境中轻松验证入口脚本 (`score.py`)。 如果评分脚本出现问题，该服务器将返回一个错误。 它还将返回发生错误的位置。
+Azure 机器学习推理 HTTP 服务器[（预览版）](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)是一个 Python 包，可用于在本地开发环境中轻松验证入口脚本 (`score.py`)。 如果评分脚本出现问题，该服务器将返回一个错误。 它还将返回发生错误的位置。
 
 在持续集成和部署管道中创建验证入口时，也可以使用该服务器。 例如，使用候选脚本启动服务器，并针对本地终结点运行测试套件。
 
 ## <a name="prerequisites"></a>先决条件
 
-- Python 版本 3.7
+- 需要：Python >=3.7
 
 ## <a name="installation"></a>安装
 
 > [!NOTE]
 > 若要避免包冲突，请在虚拟环境中安装服务器。
 
-若要安装 `azureml-inference-server-http package`，请在 cmd/终端中运行以下命令：
+若要安装 `azureml-inference-server-http package`，请在 cmd/ 终端中运行以下命令：
 
 ```bash
 python -m pip install azureml-inference-server-http
@@ -55,13 +55,13 @@ python -m pip install azureml-inference-server-http
     source myenv/bin/activate
     ```
 
-1. 从 [pypi](https://pypi.org/) 源安装 `azureml-inference-server-http` 包：
+1. 从 [pypi](https://pypi.org/project/azureml-inference-server-http/) 源安装 `azureml-inference-server-http` 包：
 
     ```bash
     python -m pip install azureml-inference-server-http
     ```
 
-1. 创建入口脚本 (`score.py`)。 下面的示例创建一个基本的入口脚本：
+1. 创建入口脚本 (`score.py`)。 以下示例创建一个基本的入口脚本：
 
     ```bash
     echo '
@@ -84,13 +84,6 @@ python -m pip install azureml-inference-server-http
     > [!NOTE]
     > 服务器托管在 0.0.0.0 上，这意味着它将侦听托管计算机的所有 IP 地址。
 
-    服务器正在侦听这些路由的端口 5001。
-
-    | 名称 | 路由|
-    | --- | --- |
-    | 运行情况探测 | 127.0.0.1:5001/|
-    | Score | 127.0.0.1:5001/score|
-
 1. 使用 `curl` 将评分请求发送到服务器：
 
     ```bash
@@ -105,6 +98,15 @@ python -m pip install azureml-inference-server-http
 
 现在，可以通过再次运行服务器来修改评分脚本并测试更改。
 
+## <a name="server-routes"></a>服务器路由
+
+服务器正在侦听这些路由的端口 5001。
+
+| 名称 | 路由|
+| --- | --- |
+| 运行情况探测 | 127.0.0.1:5001/|
+| 分数 | 127.0.0.1:5001/score|
+
 ## <a name="server-parameters"></a>服务器参数
 
 下表包含服务器接受的参数：
@@ -113,8 +115,9 @@ python -m pip install azureml-inference-server-http
 | ---- | --- | ---- | ----|
 | entry_script | True | 空值 | 评分脚本的相对路径或绝对路径。|
 | model_dir | 错误 | 空值 | 包含用于推理的模型的目录的相对路径或绝对路径。
-| port | False | 5001 | 服务器的服务端口。|
-| worker_count | False | 1 | 将处理并发请求的工作线程数。 |
+| port | 错误 | 5001 | 服务器的服务端口。|
+| worker_count | 错误 | 1 | 将处理并发请求的工作线程数。 |
+| appinsights_instrumentation_key | 错误 | 空值 | 将在其中发布日志的 application insights 的检测密钥。 |
 
 ## <a name="request-flow"></a>请求流
 
@@ -129,6 +132,7 @@ python -m pip install azureml-inference-server-http
 1. 最后，将请求发送到入口脚本。 然后，入口脚本对已加载的模型进行推理调用并返回响应。
 
 :::image type="content" source="./media/how-to-inference-server-http/inference-server-architecture.png" alt-text="HTTP 服务器进程示意图":::
+
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="do-i-need-to-reload-the-server-when-changing-the-score-script"></a>更改评分脚本时，是否需要重新加载服务器？
@@ -141,4 +145,5 @@ Azure 机器学习推理服务器在基于 Windows 和 Linux 的操作系统上�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何创建入口脚本和部署模型的详细信息，请参阅[如何使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
+* 有关如何创建入口脚本和部署模型的详细信息，请参阅[如何使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
+* 了解[用于推理的预生成 Docker 映像](concept-prebuilt-docker-images-inference.md)

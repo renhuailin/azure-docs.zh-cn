@@ -3,12 +3,12 @@ title: 使用适用于设备生成器的 Defender for IoT 配置 Azure Sentinel
 description: 本文介绍如何配置 Azure Sentinel 来接收适用于设备生成器的 Defender for IoT 解决方案中的数据。
 ms.topic: how-to
 ms.date: 05/26/2021
-ms.openlocfilehash: 7f017dc155dcbfa50b3fac6712da1a11af08b65b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a470f55cc36625bd2236b40ea3766a138868f0a3
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689156"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183645"
 ---
 # <a name="connect-your-data-from-defender-for-iot-for-device-builders-to-azure-sentinel-public-preview"></a>将适用于设备生成器的 Defender for IoT 中的数据连接到 Azure Sentinel（公共预览版）
 
@@ -56,5 +56,5 @@ SecurityAlert | where ProductName == "Azure Security Center for IoT"
 
 本文档介绍了如何将 Defender for IoT 连接到 Azure Sentinel。 若要了解有关威胁检测和安全数据访问的详细信息，请参阅以下文章：
 
-- 要了解如何使用 Azure Sentinel，请参阅[快速入门：Azure Sentinel 入门](/azure/sentinel/get-visibility)。
+- 要了解如何使用 Azure Sentinel，请参阅[快速入门：Azure Sentinel 入门](/azure/defender-for-iot/device-builders/articles/sentinel/get-visibility.md)。
 - 了解如何[访问 IoT 安全性数据](how-to-security-data-access.md)

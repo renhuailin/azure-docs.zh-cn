@@ -3,19 +3,19 @@ title: 如何为自定义语音准备数据 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音服务为品牌创建自定义语音。 在你提供工作室录制内容和关联的脚本后，服务将生成针对录制的语音优化的独特语音模型。 使用此语音可以合成产品、工具和应用程序中的语音。
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: b745a5673aa5cebe62be4c0571d90839399668d6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.author: lajanuar
+ms.openlocfilehash: 74f23dd6a7629e98189f73ebc305755d70f3c7a1
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479263"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122068991"
 ---
 # <a name="prepare-training-data"></a>准备训练数据
 
@@ -44,7 +44,7 @@ ms.locfileid: "110479263"
 | 数据类型 | 说明 | 何时使用 | 需要额外的处理 |
 | --------- | ----------- | ----------- | --------------------------- |
 | **单个言语 + 匹配的脚本** | 单个言语形式的音频文件 (.wav) 集合 (.zip)。 每个音频文件的长度不应超过 15 秒，并与带格式的脚本 (.txt) 配对。 | 包含匹配脚本的专业录制内容 | 做好训练准备。 |
-| **长音频 + 脚本 (beta)** | 长的未分段音频文件（长度超过 20 秒）集合 (.zip)，与包含所有口语的脚本 (.txt) 配对。 | 有音频文件和匹配的脚本，但它们未分段成言语。 | 分段（使用批量听录）。<br>根据需要进行音频格式转换。 |
+| **长音频 + 脚本 (beta)** | 未分段的长音频文件（超过 20 秒）集合 (.zip)，与包含所有口语的脚本集合 (.zip) 配对。 | 有音频文件和匹配的脚本，但它们未分段成言语。 | 分段（使用批量听录）。<br>根据需要进行音频格式转换。 |
 | **仅限音频 (beta)** | 不包含脚本的音频文件集合 (.zip)。 | 只有音频文件，没有脚本。 | 分段 + 脚本生成（使用批量听录）。<br>根据需要进行音频格式转换。|
 
 文件应按类型分组成数据集，并作为 zip 文件上传。 每个数据集只能包含一种数据类型。

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 05/27/2021
 ms.author: yushwang
-ms.openlocfilehash: f00de78ba4e2b46595489f46155546157642fb12
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 82a1ad0968a80be1ff1780b1cf83ec928a016dbb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953845"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729534"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性跨界连接与 VNet 到 VNet 连接
 
@@ -83,5 +83,5 @@ ms.locfileid: "111953845"
 这可以确保用于任何计划内维护事件的两个虚拟网络之间始终有一对隧道，进一步提高可用性。 尽管用于跨界连接的相同拓扑需要两个连接，但如上所示的 VNet 到 VNet 拓扑只需要为每个网关建立一个连接。 此外，除非基于 VNet 到 VNet 连接的传输路由是必需的，否则 BGP 是可选的。
 
 ## <a name="next-steps"></a>后续步骤
-有关配置主动-主动跨界连接和 VNet 到 VNet 连接的步骤，请参阅[为跨界连接和 VNet 到 VNet 连接配置主动-主动 VPN 网关](vpn-gateway-activeactive-rm-powershell.md)。
+请参阅使用 [Azure 门户](active-active-portal.md)或 [PowerShell](vpn-gateway-activeactive-rm-powershell.md) 来[配置主动-主动网关](active-active-portal.md)。
 

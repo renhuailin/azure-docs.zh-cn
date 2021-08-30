@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: nitinme
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ea2a127ffbf966b024322ab5a908466dec1cc8a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: afedf72e1d6fa52bbcccefe5a3d15ec203251c51
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935628"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744828"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>将人脸数据迁移到其他人脸订阅
 
@@ -236,4 +236,4 @@ await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 - [快照参考文档 (.NET SDK)](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations)
 - [人脸快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [添加人脸](how-to-add-faces.md)
-- [检测图像中的人脸](HowtoDetectFacesinImage.md)
+- [调用检测 API](HowtoDetectFacesinImage.md)

@@ -9,18 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 196d40f7033d6b9cbb6b49cbe65517c299718af0
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 28fc0941c69d9cf874a5f17c4d714f96369a1eed
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695920"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581279"
 ---
 # <a name="manage-experiment-runs-in-machine-learning-studio-classic"></a>在机器学习工作室（经典）中管理试验运行
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 开发预测分析模型是一个迭代过程 - 在修改试验的各种函数和参数时，结果会不断聚合，直到对经过培训的有效模型感到满意为止。 此过程的关键是跟踪试验参数和配置的各种迭代。
 

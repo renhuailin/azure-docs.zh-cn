@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 2233e6f40c1023f1b02543f4e234b00422f6f77f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 0b1cf7d0dbf7456d01f6530355e6943c8ead54db
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077187"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014922"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序
 
@@ -48,6 +48,9 @@ IoT Edge 设备可以充当网关，提供网络上的其他下游设备与 IoT 
 有两种网关模式：
 
 * 在“透明网关”模式下，IoT Edge 中心模块的行为类似于 IoT Central，并处理在 IoT Central 中注册的设备的连接。 消息从下游设备传递到 IoT Central，就好像它们之间没有任何网关。
+
+    > [!NOTE]
+    > IoT Central 目前不支持将 IoT Edge 设备作为下游设备连接到 IoT Edge 透明网关。 这是因为连接到 IoT Central 的所有设备均使用设备预配服务 (DPS) 进行预配，而 DPS 不支持嵌套的 IoT Edge 方案。
 
 * 在“转换网关”模式下，无法自行连接到 IoT Central 的设备会改为连接到自定义 IoT Edge 模块。 IoT Edge 设备中的模块处理传入的下游设备消息，然后将其转发到 IoT Central。
 
@@ -281,6 +284,10 @@ IoT Edge 部署清单列出要在设备上部署的 IoT Edge 模块以及如何�
 如果选择 IoT Edge 设备作为网关设备，则可以将下游关系添加到将连接到网关设备的设备的设备模型。
 
 若要了解详细信息，请参阅[如何通过 IoT Edge 透明网关连接设备](how-to-connect-iot-edge-transparent-gateway.md)。
+
+## <a name="monitor-your-iot-edge-devices"></a>监视 IoT Edge 设备
+
+若要了解如何使用 Azure Monitor 和内置指标集成远程监视 IoT Edge 队列，请参阅[收集和传输指标](../../iot-edge/how-to-collect-and-transport-metrics.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

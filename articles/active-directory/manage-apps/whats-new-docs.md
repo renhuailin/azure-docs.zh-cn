@@ -1,31 +1,61 @@
 ---
 title: Azure Active Directory 应用程序管理中的新增内容
 description: 有关 Azure Active Directory 应用程序管理的新文档和更新文档。
-ms.date: 06/02/2021
+ms.date: 08/03/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
-ms.author: mtillman
-author: mtillman
+ms.author: davidmu
+author: davidmu1
 manager: CelesteDG
-ms.openlocfilehash: 361fb5cc46d356fbab53defc5c3add4d7a5b768b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+reviewer: napuri
+ms.openlocfilehash: d95c81256dcb58b64273d6062563daf38dfdb4fa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079186"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727627"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory 应用程序管理：新增内容
 
 欢迎查看 Azure Active Directory 应用程序管理文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解应用程序管理服务的新增内容，请查看 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="updated-articles"></a>更新的文章
+
+- [在“我的应用”门户中创建集合](access-panel-collections.md)
+- [快速入门：向应用程序分配用户](add-application-portal-assign-users.md)
+- [快速入门：配置应用程序的属性](add-application-portal-configure.md)
+- [快速入门：为应用程序配置基于 OIDC 的单一登录](add-application-portal-setup-oidc-sso.md)
+- [快速入门：为应用程序设置基于 SAML 的单一登录](add-application-portal-setup-sso.md)
+- [快速入门：将应用程序添加到租户](add-application-portal.md)
+- [快速入门：从租户中删除应用程序](delete-application-portal.md)
+- [Azure Active Directory 应用程序管理：新增内容](whats-new-docs.md)
+- [快速入门：查看使用 Azure Active Directory (Azure AD) 租户进行标识管理的应用程序列表](view-applications-portal.md)
+- [配置管理员同意工作流](configure-admin-consent-workflow.md)
+
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="updated-articles"></a>更新的文章
+
+- [快速入门：向 Azure Active Directory (Azure AD) 租户添加应用程序](add-application-portal.md)
+- [配置组所有者对应用访问组数据的同意](configure-user-consent-groups.md)
+- [快速入门：在 Azure Active Directory (Azure AD) 租户中配置应用程序的属性](add-application-portal-configure.md)
+- [在 Azure Active Directory 中管理应用的用户分配](assign-user-or-group-access-portal.md)
+- [登录到应用程序时出现的意外许可提示](application-sign-in-unexpected-user-consent-prompt.md)
+- [向应用程序授予租户范围的管理许可](grant-admin-consent.md)
+- [使用租户限制管理对 SaaS 云应用程序的访问](tenant-restrictions.md)
+- [Azure Active Directory 应用程序管理：新增内容](whats-new-docs.md)
+
 
 ## <a name="may-2021"></a>2021 年 5 月
 
 ### <a name="updated-articles"></a>更新的文章
 
 - [Azure Active Directory 应用程序管理：新增内容](whats-new-docs.md)
-
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -47,7 +77,6 @@ ms.locfileid: "112079186"
 - [配置管理员同意工作流](configure-admin-consent-workflow.md)
 - [使用租户限制管理对 SaaS 云应用程序的访问](tenant-restrictions.md)
 - [将 Azure Active Directory 与应用程序集成入门指南](plan-an-application-integration.md)
-
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -76,7 +105,6 @@ ms.locfileid: "112079186"
 - [Azure AD 应用程序代理：版本发布历史记录](../app-proxy/application-proxy-release-version-history.md)
 - [使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为](configure-authentication-for-federated-users-portal.md)
 - [将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory](migrate-adfs-apps-to-azure.md)
-
 
 ## <a name="february-2021"></a>2021 年 2 月
 

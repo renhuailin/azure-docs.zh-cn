@@ -4,12 +4,12 @@ description: 在注册表中设置专用的计算池（代理池），以运行 
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: c23d2ab866f621db27488860ab62a41765faef40
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a303155b82cc35461cd6080b3cce694ffe7a1fc4
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763696"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122832"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>在专用的代理池上运行 ACR 任务
 
@@ -56,10 +56,10 @@ ms.locfileid: "107763696"
 
 ### <a name="set-default-registry-optional"></a>设置默认注册表（可选）
 
-若要简化后面的 Azure CLI 命令，请通过运行 [az configure][az-configure] 命令来设置默认注册表：
+若要简化后面的 Azure CLI 命令，请通过运行 [az config][az-config] 命令来设置默认注册表：
 
 ```azurecli
-az configure --defaults acr=<registryName>
+az config set defaults.acr=<registryName>
 ```
 
 以下示例假定已经设置了默认注册表。 如果尚未设置，请在每个 `az acr` 命令中传递 `--registry <registryName>` 参数。
@@ -185,7 +185,7 @@ az acr agentpool show \
 [azure-cli]:           /cli/azure/install-azure-cli
 [open-support-ticket]: https://aka.ms/acr/support/create-ticket
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
-[az-configure]: /cli/azure#az_configure
+[az-config]: /cli/azure#az_config
 [az-acr-agentpool-create]: /cli/azure/acr/agentpool#az_acr_agentpool_create
 [az-acr-agentpool-update]: /cli/azure/acr/agentpool#az_acr_agentpool_update
 [az-acr-agentpool-show]: /cli/azure/acr/agentpool#az_acr_agentpool_show

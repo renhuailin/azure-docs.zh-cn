@@ -3,12 +3,12 @@ title: 充当事件网格源的 Azure Key Vault
 description: 介绍针对 Azure 事件网格中的 Azure Key Vault 事件提供的属性和架构
 ms.topic: conceptual
 ms.date: 02/11/2021
-ms.openlocfilehash: 48f4df660a17c36030b6b6d2396bd96cfec48edc
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 31a5e77cc238dcfc774ebc851e864c916206fd9e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110794079"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748468"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>充当事件网格源的 Azure Key Vault
 
@@ -23,13 +23,13 @@ Azure Key Vault 帐户生成以下事件类型：
 | ---------- | ----------- |---|
 | Microsoft.KeyVault.CertificateNewVersionCreated | 创建的证书新版本 | 创建新证书或新证书版本时触发。 |
 | Microsoft.KeyVault.CertificateNearExpiry | 证书即将过期 | 当前版本的证书即将过期时触发。 （此事件在证书到期日期前 30 天触发。） |
-| Microsoft.KeyVault.CertificateExpired | 证书已过期 | 证书过期时触发。 |
+| Microsoft.KeyVault.CertificateExpired | 证书已过期 | 当前版本的证书过期时触发。 |
 | Microsoft.KeyVault.KeyNewVersionCreated | 创建的密钥新版本 | 创建新密钥或新密钥版本时触发。 |
 | Microsoft.KeyVault.KeyNearExpiry | 密钥即将过期 | 当前版本的密钥即将过期时触发。 （此事件在证书到期日期前 30 天触发。） |
-| Microsoft.KeyVault.KeyExpired | 密钥已过期 | 密钥过期时触发。 |
+| Microsoft.KeyVault.KeyExpired | 密钥已过期 | 当前版本的密钥过期时触发。 |
 | Microsoft.KeyVault.SecretNewVersionCreated | 创建的机密新版本 | 创建新机密或新机密版本时触发。 |
 | Microsoft.KeyVault.SecretNearExpiry | 机密即将过期 | 当前版本的机密即将过期时触发。 （此事件在机密到期日期前 30 天触发。） |
-| Microsoft.KeyVault.SecretExpired | 机密已过期 | 机密过期时触发。 |
+| Microsoft.KeyVault.SecretExpired | 机密已过期 | 当前版本的机密过期时触发。 |
 | Microsoft.KeyVault.VaultAccessPolicyChanged | 保管库访问策略已更改 | 当 Key Vault 上的访问策略发生更改时触发。 它包括将 Key Vault 权限模型更改为 Azure 基于角色的访问控制或从 Azure 基于角色的访问控制更改为 Key Vault 权限模型时的方案。   |
 
 ## <a name="event-examples"></a>事件示例
@@ -100,7 +100,7 @@ Azure Key Vault 帐户生成以下事件类型：
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `eventType` | string | 此事件源的一个注册事件类型。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
+| `id` | string | 事件的唯一标识符。 |
 | `data` | 对象 | 应用配置事件数据。 |
 | `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
@@ -116,7 +116,7 @@ Azure Key Vault 帐户生成以下事件类型：
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | 字符串 | 事件的唯一标识符。 |
+| `id` | string | 事件的唯一标识符。 |
 | `data` | 对象 | 应用配置事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 

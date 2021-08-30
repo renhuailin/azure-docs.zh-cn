@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ed79831559802efdf7e3813f48b74c2fd3c63e87
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: bfcbdeb2755f76d5391de4a3c64a934b43e8f0f2
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581864"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982935"
 ---
 # <a name="monitor-indexer-status-and-results-in-azure-cognitive-search"></a>监视 Azure 认知搜索中的索引器状态和结果
 
@@ -48,7 +48,7 @@ ms.locfileid: "106581864"
 
 警告经常会出现在某些类型的索引器上，不一定表示出现了问题。 例如，当图像或 PDF 文件不包含任何有待处理的文本时，使用认知服务的索引器可能会报告警告。 
 
-有关调查索引器错误和警告的详细信息，请参阅[排查 Azure 认知搜索中的常见索引器问题](search-indexer-troubleshooting.md)。
+有关调查索引器错误和警告的详细信息，请参阅[索引器故障排除指南](search-indexer-troubleshooting.md)。
 
 ## <a name="monitor-using-get-indexer-status-rest-api"></a>使用“获取索引器状态”(REST API) 进行监视
 

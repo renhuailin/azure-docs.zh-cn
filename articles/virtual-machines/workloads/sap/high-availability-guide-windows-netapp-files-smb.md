@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/30/2021
+ms.date: 07/29/2021
 ms.author: radeltch
-ms.openlocfilehash: 97564fef2278861f2e22e85752cd803ad289c766
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b6eceec68433c9cacfa4aa507e260cae86766609
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737373"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419573"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>使用适用于 SAP 应用程序的 Azure NetApp 文件 (SMB) 实现 Windows 上 Azure VM 的 SAP NetWeaver 高可用性
 
@@ -213,7 +213,7 @@ SMB 文件共享的先决条件为：
 
 ## <a name="optional-configurations"></a>可选配置
 
-下图显示了运行 Microsoft Windows 故障转移群集（以减少 VM 总数）的 Azure VM 上的多个 SAP 实例。
+下图显示了 Azure VM 上运行 Microsoft Windows 故障转移群集以减少 VM 总数的多个 SAP 实例。
 
 这可以是 SAP ASCS/SCS 群集上的本地 SAP 应用程序服务器，也可以是 Microsoft SQL Server Always On 节点上的 SAP ASCS/SCS 群集角色。
 

@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a80770013d373dbbd1ca672fbd2153731b604f5c
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 619c29b2c28c04e1cbf4d4dcda8fe3048234e7dd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079546"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752178"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理扩展实现自动管理
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -78,6 +78,7 @@ SQL Server IaaS 代理扩展可以解锁许多功能权益用于管理 SQL Serve
 | **在门户中查看磁盘使用率** | 可让你在 Azure 门户中查看 SQL 数据文件的磁盘使用率的图形表示形式。  <br/> 管理模式：完全 | 
 | **灵活许可** | 在自带许可（也称为 Azure 混合权益）与即用即付许可模型之间来回[无缝转换](licensing-model-azure-hybrid-benefit-ahb-change.md)，从而节省成本。 <br/> 管理模式：轻型和完全| 
 | **灵活的发行版本/产品版本** | 如果你决定更改 SQL Server 的[发行版本](change-sql-server-version.md)或[产品版本](change-sql-server-edition.md)，可以在 Azure 门户中更新元数据，而无需重新部署整个 SQL Server VM。  <br/> 管理模式：轻型和完全| 
+| **安全中心门户集成** | 如果已启用 [Azure Defender for SQL](../../../security-center/defender-for-sql-usage.md)，则可直接在 Azure 门户的 [SQL 虚拟机](manage-sql-vm-portal.md)资源中查看安全中心建议。 有关详细信息，请参阅[安全最佳做法](security-considerations-best-practices.md)。  <br/> 管理模式：轻型和完全| 
 
 
 ## <a name="management-modes"></a>管理模式
@@ -173,4 +174,4 @@ Azure SQL 虚拟机和 SQL IaaS 代理扩展不会将客户数据移到或存储
 
 有关在 Azure 虚拟机中运行 SQL Server 的详细信息，请参阅[什么是 Azure 虚拟机中的 SQL Server？](sql-server-on-azure-vm-iaas-what-is-overview.md)。
 
-有关详细信息，请参阅[常见问题解答](frequently-asked-questions-faq.yml)。 
+有关详细信息，请参阅[常见问题解答](frequently-asked-questions-faq.yml)。

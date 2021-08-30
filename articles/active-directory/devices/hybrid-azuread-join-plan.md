@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 05/28/2021
+ms.date: 06/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30c0d0fa394c8b962206879a80d600987753f2f6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: db8be2618ee4bdeab517242870d593e88f631cfa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953468"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740026"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入的实施
 
@@ -36,6 +36,14 @@ ms.locfileid: "111953468"
 
 > [!NOTE]
 > Windows 10 混合 Azure AD 联接所需的最低域控制器版本为 Windows Server 2008 R2。
+
+已加入混合 Azure AD 的设备需要定期通过网络连接到域控制器。 如果没有此连接，设备将变为不可用。
+
+在无法连接到域控制器的情况下中断的方案：
+
+- 设备密码更改
+- 用户密码更改（缓存的凭据）
+- TPM 重置
 
 ## <a name="plan-your-implementation"></a>规划实施
 
@@ -93,7 +101,7 @@ ms.locfileid: "111953468"
 
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>处理已注册 Azure AD 状态的设备
 
-如果已加入 Windows 10 域的设备向租户[注册了 Azure AD](overview.md#getting-devices-in-azure-ad)，则可能会导致已加入混合 Azure AD 和已注册 Azure AD 设备的双重状态。 建议升级到 Windows 10 1803（应用了 KB4489894）或更高版本来自动处理此场景。 在 1803 之前的版本中，需要手动删除已注册 Azure AD 状态，然后才能启用混合 Azure AD 联接。 在 1803 及更高版本中，进行了以下更改来避免此双重状态：
+如果已加入 Windows 10 域的设备向租户[注册了 Azure AD](concept-azure-ad-register.md)，则可能会导致已加入混合 Azure AD 和已注册 Azure AD 设备的双重状态。 建议升级到 Windows 10 1803（应用了 KB4489894）或更高版本来自动处理此场景。 在 1803 之前的版本中，需要手动删除已注册 Azure AD 状态，然后才能启用混合 Azure AD 联接。 在 1803 及更高版本中，进行了以下更改来避免此双重状态：
 
 - 在设备已加入混合 Azure AD 且同一用户登录后，系统会自动删除用户的任何现有的已注册 Azure AD 状态<i></i>。 例如，如果用户 A 在设备上有已注册 Azure AD 的状态，则仅当用户 A 登录到设备时，才会清除用户 A 的双重状态。 如果同一设备上有多个用户，则当这些用户登录时，系统会单独清除双重状态。 除了删除已注册 Azure AD 状态外，如果注册是通过自动注册进行的 Azure AD 注册，Windows 10 还会从 Intune 或其他 MDM 取消注册该设备。
 - 设备上任何本地帐户的 Azure AD 注册状态不受此更改影响。 它仅适用于域帐户。 因此，即使在用户登录之后，本地帐户的 Azure AD 注册状态也不会自动删除，因为该用户不是域用户。 
@@ -103,13 +111,13 @@ ms.locfileid: "111953468"
 > [!NOTE]
 > 尽管 Windows 10 会在本地自动删除已注册 Azure AD 状态，但如果 Azure AD 中的设备对象由 Intune 管理，则不会立即将其删除。 可以通过运行 dsregcmd /status 来验证是否已删除已注册 Azure AD 状态，并基于这一点将设备视为没有注册到 Azure AD。
 
-### <a name="hybrid-azure-ad-join-for-single-forest-multiple-azure-ad-tenants"></a>用于单林、多 Azure AD 租户的混合 Azure AD 联接
+### <a name="hybrid-azure-ad-join-for-single-forest-multiple-azure-ad-tenants"></a>用于单个林、多个 Azure AD 租户的混合 Azure AD 联接
 
-若要将设备注册为各自租户的混合 Azure AD 联接设备，各组织需要确保在设备上而不是在 AD 中完成 SCP 配置。 有关如何完成此操作的更多详细信息，请参阅[混合 Azure AD 联接的受控验证](hybrid-azuread-join-control.md)一文。 此外，各组织还务必了解某些 Azure AD 功能在单林、多个 Azure AD 租户配置中无效。
-- [设备写回](../hybrid/how-to-connect-device-writeback.md)将失效。 这会影响[使用 ADFS 联合的本地应用基于设备的条件访问](/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises)。 这还会影响[使用混合证书信任模型时的 Windows Hello 企业版部署](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust)。
+若要将设备注册为混合 Azure AD 联接以连接到各个租户，组织需要确保在设备上而不是在 AD 中完成 SCP 配置。 有关如何完成此操作的更多详细信息，请参阅[混合 Azure AD 联接的受控验证](hybrid-azuread-join-control.md)一文。 对于组织而言，了解某些 Azure AD 功能在单个林、多个 Azure AD 租户配置中不起作用也很重要。
+- [设备写回](../hybrid/how-to-connect-device-writeback.md)将不起作用。 这会影响[使用 ADFS 联合的本地应用的基于设备的条件访问](/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises)。 这还会影响[使用混合证书信任模型时的 Windows Hello 企业版部署](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust)。
 - [组写回](../hybrid/how-to-connect-group-writeback.md)将失效。 这会影响将 Office 365 组写回已安装 Exchange 的林中。
 - [无缝 SSO](../hybrid/how-to-connect-sso.md) 将失效。 这会影响组织可以跨操作系统/浏览器平台使用的 SSO 方案，例如带有 Firefox、Safari、Chrome 但没有 Windows 10 扩展的 iOS/Linux。
-- [托管环境中 Windows 下层设备的混合 Azure AD 联接](./hybrid-azuread-join-managed-domains.md#enable-windows-down-level-devices)将失效。 例如，在托管环境中 Windows Server 2012 R2 的混合 Azure AD 联接需要无缝 SSO，但由于无缝 SSO 失效，此类设置的混合 Azure AD 联接亦将不起失效。
+- [托管环境中 Windows 低端设备的混合 Azure AD 联接](./hybrid-azuread-join-managed-domains.md#enable-windows-down-level-devices)将不起作用。 例如，在托管环境中 Windows Server 2012 R2 的混合 Azure AD 联接需要无缝 SSO，但由于无缝 SSO 失效，此类设置的混合 Azure AD 联接亦将不起失效。
 - [本地 Azure AD 密码保护](../authentication/concept-password-ban-bad-on-premises.md)将失效。这会影响使用 Azure AD 中存储的相同全局和自定义受禁密码列表，对本地 Active Directory 域服务 (AD DS) 域控制器执行密码更改和密码重置活动的能力。
 
 
@@ -183,7 +191,7 @@ ms.locfileid: "111953468"
 | ----- | ----- | ----- | ----- |
 | 可路由的 | 联合 | 从 1703 版本开始 | 正式发布 |
 | 非可路由的 | 联合 | 从 1803 版本开始 | 正式发布 |
-| 可路由的 | 托管 | 从 1803 版本开始 | 正式发布，不支持 Windows 锁屏上的 Azure AD SSPR 本地 UPN 必须同步到 Azure AD 中的 `onPremisesUserPrincipalName` 属性 |
+| 可路由的 | 托管 | 从 1803 版本开始 | 正式发布，不支持 Windows 锁屏上的 Azure AD SSPR。 本地 UPN 必须同步到 Azure AD 中的 `onPremisesUserPrincipalName` 属性 |
 | 非可路由的 | 托管 | 不支持 | |
 
 ## <a name="next-steps"></a>后续步骤

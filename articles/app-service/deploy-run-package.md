@@ -3,12 +3,12 @@ title: 从 ZIP 包运行应用
 description: 部署应用的具有原子性的 ZIP 包。 提高应用在 ZIP 部署过程中的行为的可预测性和可靠性。
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: d3315370342f54091598aa3f77f70f03bda4ad33
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 99de9745b75bd21a0fb3126c51b38b047e9b77f4
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772732"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135278"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>直接从 ZIP 包运行 Azure 应用服务中的应用
 
@@ -53,7 +53,7 @@ az webapp deployment source config-zip --resource-group <group-name> --name <app
 
 ## <a name="run-from-external-url-instead"></a>改为从外部 URL 运行
 
-还可以从外部 URL（例如 Azure Blob 存储）运行包。 可以使用 [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)将包文件上传到 Blob 存储帐户。 应通过[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 使用专用存储容器，使应用服务运行时能够安全访问包。 
+还可以从外部 URL（例如 Azure Blob 存储）运行包。 可以使用 [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)将包文件上传到 Blob 存储帐户。 应使用带[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 的专用存储容器或[使用托管标识](#fetch-a-package-from-azure-blob-storage-using-a-managed-identity)，使应用服务运行时能够安全访问包。 
 
 将文件上传到 Blob 存储并获取该文件的 SAS URL 后，请将 `WEBSITE_RUN_FROM_PACKAGE` 应用设置指定为该 URL。 以下示例使用 Azure CLI 执行此操作：
 
@@ -62,6 +62,10 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ```
 
 如果将同名的已更新包发布到 Blob 存储，则需要重启应用，以便将更新的包加载到应用服务中。
+
+### <a name="fetch-a-package-from-azure-blob-storage-using-a-managed-identity"></a>使用托管标识从 Azure Blob 存储提取包
+
+[!INCLUDE [Run from package via Identity](../../includes/app-service-run-from-package-via-identity.md)]
 
 ## <a name="troubleshooting"></a>故障排除
 

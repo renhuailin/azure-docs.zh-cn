@@ -4,15 +4,15 @@ description: 了解将集成解决方案发布到 Microsoft AppSource 和 Azure 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: vikrambmsft
-ms.author: vikramb
-ms.date: 04/16/2020
-ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: Microsoft-BradleyWright
+ms.author: brwrigh
+ms.date: 06/22/2021
+ms.openlocfilehash: afdfce29840bbc88bdfc853e12e8109881f8366a
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880264"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113002023"
 ---
 # <a name="publish-an-integrated-solution"></a>发布集成解决方案
 
@@ -81,19 +81,13 @@ ms.locfileid: "98880264"
     * API
     * 统一数据存储库
 
-    在开发过程中使用以下资源：
+2. 确定跨合作伙伴项目经理，以推动在业务和技术讨论会中制定的项目计划和时间线。
 
-    * [业务决策研讨会讨论指南](https://aka.ms/AA5qicx)
-    * [技术决策研讨会讨论指南](https://aka.ms/AA5qid1)
-    * [快速入门视频：集成解决方案研讨会](https://partner.microsoft.com/asset/detail/integrated-solutions-workshop-quickstart-guide-mp4)
+3. 开发解决方案的完整技术集成。
 
-1. 确定跨合作伙伴项目经理，以推动在业务和技术讨论会中制定的项目计划和时间线。
+4. 确定解决方案定价和在 Microsoft AppSource 或 Azure 市场上显示的单一价格点。
 
-1. 开发解决方案的完整技术集成。
-
-1. 确定解决方案定价和在 Microsoft AppSource 或 Azure 市场上显示的单一价格点。
-
-1. 完成在 Microsoft AppSource 或 Azure 市场上市的营销宣传，其中包括：
+5. 完成在 Microsoft AppSource 或 Azure 市场上市的营销宣传，其中包括：
 
     * 组合解决方案的名称。
     * 集成解决方案的上市说明。 遵循[产品/服务上市最佳做法](./gtm-offer-listing-best-practices.md)。
@@ -103,7 +97,7 @@ ms.locfileid: "98880264"
 
 ## <a name="publish-your-integrated-solution"></a>发布集成解决方案
 
-完成技术集成和营销宣传后，请参阅 [Microsoft AppSource 和 Azure 市场咨询服务](./plan-consulting-service-offer.md)发布者指南。 使用此资源确定是否将在 Microsoft AppSource 或 Azure 市场中发布解决方案。 还可以使用指南准备发布项目并完成发布过程。
+完成技术集成和营销宣传后，请参阅 [Microsoft AppSource 和 Azure 市场咨询服务](./plan-consulting-service-offer.md)的发布者指南，确定是将在 Microsoft AppSource 还是在 Azure 市场发布解决方案。 建议使用指南来准备发布项目并完成发布过程。
 
 尽管有五种服务类型可用于咨询服务产品，但集成解决方案必须是概念证明或完整实现。
 

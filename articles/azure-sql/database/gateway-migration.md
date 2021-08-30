@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, mathoma
 ms.date: 07/01/2019
-ms.openlocfilehash: 58194f74bb32fec7d58f707d74720c37e26dba5a
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: c6afb13902282e1e89acb6fe7929e97994883589
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110699494"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463409"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>将 Azure SQL 数据库流量迁移到更新的网关
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,13 +29,26 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保我们�
 ## <a name="status-updates"></a>状态更新
 
 # <a name="in-progress"></a>[正在学习](#tab/in-progress-ip)
+## <a name="august-2021"></a>2021 年 8 月
+将会向以下区域添加新的 SQL 网关：
+
+- 挪威东部：51.120.104.32、51.120.208.32
+- 日本东部：40.79.184.32
+- 印度中部：40.80.48.32、20.192.96.32
+
+这些 SQL 网关会在 2021 年 8 月 2 日开始接受客户流量。
+
 ## <a name="june-2021"></a>2021 年 6 月
 将会向以下区域添加新的 SQL 网关：
+
 - 英国西部：51.140.208.96、51.140.208.97
 - 韩国中部：20.44.24.32、20.194.64.33
 - 日本东部：13.78.104.32
 
-此 SQL 网关应在 2021 年 6 月 1 日开始接受客户流量。
+这些 SQL 网关应在 2021 年 6 月 1 日开始接受客户流量。
+
+# <a name="completed"></a>[已完成](#tab/completed-ip)
+以下网关迁移已完成： 
 
 ## <a name="may-2021"></a>2021 年 5 月
 将会向以下区域添加新的 SQL 网关：
@@ -74,9 +87,6 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保我们�
 - 美国西部：23.99.34.75
 
 不会对客户造成任何影响，因为这些网关（在旧版硬件上运行）不会路由任何客户流量。 这些网关的 IP 地址会在 2021 年 3 月 15 日停用。
-
-# <a name="completed"></a>[已完成](#tab/completed-ip)
-以下网关迁移已完成： 
 
 ## <a name="february-2021"></a>2021 年 2 月
 将会向以下区域添加新的 SQL 网关：
@@ -192,7 +202,7 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保我们�
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>在受影响的情况下怎么办
 
-对于区域中 TCP 端口为 1433 以及端口范围为 11000-11999 的所有[网关 IP 地址](connectivity-architecture.md#gateway-ip-addresses)，建议你允许发往 IP 地址的出站流量。 此建议适用于从本地连接的客户端，以及通过服务终结点连接的客户端。 有关端口范围的详细信息，请参阅[连接策略](connectivity-architecture.md#connection-policy)。
+我们建议你允许出站流量通过 TCP 端口 1433 传输到该区域所有[网关 IP 地址](connectivity-architecture.md#gateway-ip-addresses)的 IP 地址。 此外，当从位于 Azure 中的客户端（例如 Azure VM）连接时或当“连接策略”设置为“重定向”时，允许端口范围为 11000 到 11999。 此建议适用于从本地连接的客户端，以及通过服务终结点连接的客户端。 有关端口范围的详细信息，请参阅[连接策略](connectivity-architecture.md#connection-policy)。
 
 使用低于 4.0 版的 Microsoft JDBC Driver 从应用程序进行的连接可能无法通过证书验证。 版本较低的 Microsoft JDBC 依赖于证书的“使用者”字段中的公用名 (CN)。 缓解措施是确保将 hostNameInCertificate 属性设置为 *.database.windows.net。 若要详细了解如何设置 hostNameInCertificate 属性，请参阅[使用加密进行连接](/sql/connect/jdbc/connecting-with-ssl-encryption)。
 

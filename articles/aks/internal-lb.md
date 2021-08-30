@@ -5,12 +5,12 @@ description: 了解如何通过 Azure Kubernetes 服务 (AKS) 创建和使用内
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: cbb898d05ecc1f0796f3609adb1368c3d77de2c5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0e55ec0b6066b2b2582adf20acd646117c47f8e4
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779734"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666451"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>使用包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器
 
@@ -67,7 +67,7 @@ internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 
 ## <a name="specify-an-ip-address"></a>指定 IP 地址
 
-若要对内部负载均衡器使用特定的 IP 地址，请将 loadBalancerIP 属性添加到负载均衡器 YAML 清单。 在此方案中，指定的 IP 地址必须位于 AKS 群集所在的子网，并且必须尚未分配给某个资源。 例如，不应使用为 Kubernetes 子网指定的范围内的 IP 地址。
+若要对内部负载均衡器使用特定的 IP 地址，请将 loadBalancerIP 属性添加到负载均衡器 YAML 清单。 在此方案中，指定的 IP 地址必须位于 AKS 群集所在的子网，且尚未分配给资源。 例如，为 AKS 群集中 Kubernetes 子网指定的范围内的 IP 地址不应使用。
 
 ```yaml
 apiVersion: v1

@@ -14,20 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2021
 ms.author: yelevin
-ms.openlocfilehash: a706704365731d5f5ba157837269a90dbcb12e18
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 851b1659baf10826d98246aaf8ebd8ec138c5542
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810293"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182536"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中通过用户和实体行为分析 (UEBA) 来识别高级威胁
 
 > [!IMPORTANT]
 >
-> - UEBA 和实体页功能现已在所有 Azure Sentinel 地理位置和区域正式发布 。
+> - UEBA 和实体页功能现已在所有 Azure Sentinel 地理位置和区域正式发布 。 
 >
 > - IP 地址实体目前为预览版。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>什么是用户和实体行为分析 (UEBA)？
 
@@ -82,7 +84,7 @@ Azure Sentinel 提供的项目可帮助安全分析师结合上下文并通过�
 - 右侧面板显示关于该实体的行为见解。 这些见解可帮助快速识别异常和安全威胁。 见解是由 Microsoft 安全研究团队开发的，它们基于异常情况检测模型。
 
 > [!NOTE]
-> IP 地址实体页（现为预览版）包含 Microsoft 威胁情报服务提供的地理位置数据。   此服务综合了 Microsoft 解决方案以及第三方供应商和合作伙伴的地理位置数据。 接下来就可以将数据用于在安全事件上下文中进行分析和调查。
+> IP 地址实体页（现为预览版）包含 Microsoft 威胁情报服务提供的地理位置数据。   此服务综合了 Microsoft 解决方案以及第三方供应商和合作伙伴的地理位置数据。 接下来就可以将数据用于在安全事件上下文中进行分析和调查。 有关详细信息，另请参阅[通过 REST API 用地理位置数据扩充 Azure Sentinel 中的实体（公共预览版）](geolocation-data-api.md)。
 
 ### <a name="the-timeline"></a>时间线
 
@@ -94,7 +96,7 @@ Azure Sentinel 提供的项目可帮助安全分析师结合上下文并通过�
 
 时间线中包含以下类型的项：
 
-- 警报 - 将实体定义为“映射实体”的所有警报。 请注意，如果你的组织已创建[使用分析规则的自定义警报](./tutorial-detect-threats-custom.md)，那么你应确保规则的实体映射已正确完成。
+- 警报 - 将实体定义为“映射实体”的所有警报。 请注意，如果你的组织已创建[使用分析规则的自定义警报](./detect-threats-custom.md)，那么你应确保规则的实体映射已正确完成。
 
 - 书签 - 包含页面上显示的特定实体的所有书签。
 
@@ -163,7 +165,7 @@ Azure Sentinel 基于 BehaviorAnalytics 表提供一组现成的搜寻查询、�
 有关详细信息，请参阅：
 
 - [使用 Azure Sentinel 搜寻威胁](hunting.md)
-- [可视化和监视数据](tutorial-monitor-your-data.md)
+- [可视化和监视数据](monitor-your-data.md)
 
 随着旧式防御工具的过时，组织拥有的数字资产可能因过于庞大且漏洞百出而变得无法管理，导致组织无法全面了解其环境可能面临的风险和状况。 严重依赖于反应措施（如分析和规则）使恶意行动者能够了解如何规避那些措施。 UEBA 可通过提供风险评分方法和算法来让你了解真实情况，这是 UEBA 的独特优势。
 

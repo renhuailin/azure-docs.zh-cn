@@ -9,16 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 036cbd0582cf8364fa3398c55d693610800271b5
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 47845c8768e807dff7b12f401feeab3d35a9d81b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582773"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696691"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>机器学习工作室（经典）模型如何从试验逐步演变为 Web 服务
 
 适用范围：![这是复选标记，意味着本文适用于](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）![机器学习工作室（经典版）   这是 X，意味着本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 机器学习工作室（经典版）提供交互式画布，使你能开发、运行、测试和迭代表示预测分析模型的试验。 有大量各种不同的模块可用于：
 

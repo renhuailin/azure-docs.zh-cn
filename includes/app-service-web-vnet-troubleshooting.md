@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f7e7e9261eb0ea2969dbfb752426ca16dd3b33c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95999415"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728091"
 ---
 虽然此功能很容易设置，但这并不意味着你的体验不会遇到任何问题。 如果在访问所需终结点时遇到问题，可以使用某些实用程序来测试从应用控制台发出的连接。 可以使用两种控制台。 一种是 Kudu 控制台，另一种是 Azure 门户中的控制台。 若要访问应用中的 Kudu 控制台，请转到“工具”   >   “Kudu”。 此外，还可以通过 [sitename].scm.azurewebsites.net 访问 Kudo 控制台。 打开网站负载后，转到“调试控制台”选项卡  。若要从应用访问 Azure 门户托管的控制台，请转到“工具”   >   “控制台”。
 
@@ -43,7 +43,7 @@ tcpping.exe hostname [optional: port]
 如果这些方法未解决问题，请首先检查以下因素：
 
 **区域 VNet 集成**
-* 目标是否为非 RFC1918 地址，并且未将 WEBSITE_VNET_ROUTE_ALL 设置为 1？
+* 目标是否为非 RFC1918 地址，并且未启用全部路由？
 * 是否有 NSG 阻止了集成子网传出数据？
 * 如果通过 Azure ExpressRoute 或 VPN 传输，本地网关是否配置为将流量路由回 Azure？ 如果可以访问虚拟网络中的终结点，但不能访问本地的终结点，请检查路由。
 * 是否有足够的权限在集成子网上设置委派？ 在区域 VNet 集成配置期间，集成子网会委托给 Microsoft.Web/serverFarms。 VNet 集成 UI 会自动将子网委托给 Microsoft.Web/serverFarms。 如果帐户没有足够的网络权限来设置委派，将需要可设置集成子网中的属性的用户来委托子网。 若要手动委托集成子网，请转到 Azure 虚拟网络子网 UI，并设置 Microsoft.Web/serverFarms 的委派。

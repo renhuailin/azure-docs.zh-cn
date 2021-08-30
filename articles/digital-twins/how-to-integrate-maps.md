@@ -8,12 +8,12 @@ ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 69a02db3eafa9c75808eece69ce8ed676adf0ab2
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: dd161468cda08a0046f2f46a79a973e4bbf8b49a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110615808"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735297"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 数字孪生更新 Azure Maps 室内地图
 
@@ -27,9 +27,9 @@ ms.locfileid: "110615808"
 
 ### <a name="prerequisites"></a>必备条件
 
-* 按照 Azure 数字孪生的教程：连接端到端解决方案进行操作。
+* 按照 Azure 数字孪生的[连接端到端解决方案](./tutorial-end-to-end.md)进行操作。
     * 你将使用额外的终结点和路由扩展此孪生体。 你还将向你在该教程中创建的函数应用添加另一个函数。 
-* 按照 Azure Maps 的[教程：使用 Azure Maps Creator 创建室内地图](../azure-maps/tutorial-creator-indoor-maps.md)创建具有某个“特征状态集”的 Azure Maps 室内地图。
+* 按照 Azure Maps 的[使用 Azure Maps Creator 创建室内地图](../azure-maps/tutorial-creator-indoor-maps.md)创建具有某个“特征状态集”的 Azure Maps 室内地图。
     * [特征状态集](../azure-maps/creator-indoor-maps.md#feature-statesets)是分配给数据集特征（例如房间或设备）的动态属性（状态）的集合。 在上述 Azure Maps 教程中，特征状态集存储会在地图上显示的房间状态。
     * 你需要特征状态集 ID 和 Azure Maps 订阅密钥。
 
@@ -45,7 +45,7 @@ ms.locfileid: "110615808"
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>对孪生体更新通知创建路由和筛选器
 
-每当孪生体的状态更新时，Azure 数字孪生实例就可以发出孪生体更新事件。 上面链接的 Azure 数字孪生教程：连接端到端解决方案展示了以下方案：使用温度计来更新附加到房间的孪生体的温度属性。 你将扩展该解决方案，方法是：订阅孪生体的更新通知，并使用该信息来更新地图。
+每当孪生体的状态更新时，Azure 数字孪生实例就可以发出孪生体更新事件。 上面链接的 Azure 数字孪生[连接端到端解决方案](./tutorial-end-to-end.md)展示了以下方案：使用温度计来更新附加到房间的孪生体的温度属性。 你将扩展该解决方案，方法是：订阅孪生体的更新通知，并使用该信息来更新地图。
 
 此模式直接从房间孪生体读取数据，而不是从 IoT 设备读取数据，这样你就能灵活地更改温度的基础数据源，而无需更新映射逻辑。 例如，你可以添加多个温度计或将此房间设置为与另一个房间共用一个温度计，所有这些都不需要更新你的地图逻辑。
 
@@ -72,7 +72,7 @@ ms.locfileid: "110615808"
 
 ## <a name="create-a-function-to-update-maps"></a>创建一个函数来更新地图
 
-你将在端到端教程（教程：连接端到端解决方案）的函数应用中创建一个事件网格触发的函数。 此函数会解压这些通知并将更新发送到 Azure Maps 特征状态集，以更新一个房间的温度。
+你将在端到端教程（[连接端到端解决方案](./tutorial-end-to-end.md)）的函数应用中创建一个事件网格触发的函数。 此函数会解压这些通知并将更新发送到 Azure Maps 特征状态集，以更新一个房间的温度。
 
 有关参考信息，请参阅以下文档：Azure Functions 的 Azure 事件网格触发器。
 
@@ -83,17 +83,17 @@ ms.locfileid: "110615808"
 你需要在函数应用中设置两个环境变量。 其中一个是你的 [Azure Maps 主订阅密钥](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)，另一个是你的 [Azure Maps 状态集 ID](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)。
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <your-App-Service-function-app-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
-az functionapp config appsettings set --name <your-App-Service-function-app-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
+az functionapp config appsettings set --name <your-function-app-name> --resource-group <your-resource-group> --settings "subscription-key=<your-Azure-Maps-primary-subscription-key>"
+az functionapp config appsettings set --name <your-function-app-name>  --resource-group <your-resource-group> --settings "statesetID=<your-Azure-Maps-stateset-ID>"
 ```
 
 ### <a name="view-live-updates-on-your-map"></a>在地图上查看实时更新
 
 若要查看实时更新的温度，请执行以下步骤：
 
-1. 通过运行 Azure 数字孪生教程：连接端到端解决方案中的 **DeviceSimulator** 项目，开始发送模拟的 IoT 数据。 有关此操作的说明，请参阅配置并运行模拟部分。
+1. 通过运行 Azure 数字孪生[连接端到端解决方案](tutorial-end-to-end.md)中的 DeviceSimulator 项目，开始发送模拟的 IoT 数据。 有关此操作的说明，请参阅配置并运行模拟部分。
 2. 使用 [Azure Maps Indoor](../azure-maps/how-to-use-indoor-module.md) 模块呈现你在 Azure Maps Creator 中创建的室内地图。
-    1. 将室内地图[教程：使用 Azure Maps Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md)的[示例：使用 Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)部分的 HTML 复制到一个本地文件。
+    1. 将室内地图[使用 Azure Maps Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md)的[示例：使用 Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)部分的 HTML 复制到一个本地文件。
     1. 将本地 HTML 文件中的订阅密钥、tilesetId 和 statesetID 替换为你的值。
     1. 在浏览器中打开该文件。
 
@@ -113,5 +113,5 @@ az functionapp config appsettings set --name <your-App-Service-function-app-name
 
 若要了解管理、升级孪生图和从中检索信息的详情，请查看以下参考内容：
 
-* [操作指南：管理数字孪生体](./how-to-manage-twin.md)
-* [操作指南：查询孪生图](./how-to-query-graph.md)
+* [管理数字孪生](./how-to-manage-twin.md)
+* [查询孪生图](./how-to-query-graph.md)

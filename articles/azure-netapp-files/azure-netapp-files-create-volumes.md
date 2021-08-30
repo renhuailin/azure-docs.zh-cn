@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 08/06/2021
 ms.author: b-juche
-ms.openlocfilehash: d8e8daba3806ad651f66324f362eb2573111dd80
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: ed67984dac9d1beb7106c78a8ffa35d778f69d59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112070896"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725606"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
 
-Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协议（NFSv3 和 SMB）创建卷。 卷的容量消耗是依据其池的预配容量计数的。 
+Azure NetApp 文件支持使用 NFS（NFSv3 或 NFSv4.1）、SMB3 或双重协议（NFSv3 和 SMB，或 NFSv4.1 和 SMB）创建卷。 卷的容量消耗是依据其池的预配容量计数的。 
 
 本文介绍如何创建 NFS 卷。 对于 SMB 卷，请参阅[创建 SMB 卷](azure-netapp-files-create-volumes-smb.md)。 对于双重协议卷，请参阅[创建双重协议卷](create-volumes-dual-protocol.md)。
 
@@ -62,7 +62,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协�
     * **卷名称**      
         指定要创建的卷的名称。   
 
-        卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 你可以使用任何字母数字字符。   
+        卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 名称必须以字母开头。 其中包含字母、数字、下划线（“_”）和连字符（“-”）。
 
         不能使用 `default` 或 `bin` 作为卷名称。
 
@@ -104,12 +104,12 @@ Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协�
     * 选择“NFS”  作为卷的协议类型。   
 
     * 指定卷的唯一文件路径。 当你创建装载目标时，系统将使用此路径。 路径要求如下：   
-        - 在区域中的每个子网内必须不得重复。 
+        - 在区域中的每个子网内不得重复。 
         - 必须以字母字符开头。
         - 只能包含字母、数字或短划线 (`-`)。 
-        - 长度不能超过 80 个字符。
+        - 长度不得超过 80 个字符。
 
-    * 选择卷的 NFS 版本（**NFSv3** 或 **NFSv4.1**）。  
+    * 选择卷的版本（NFSv3 或 NFSv4.1  ）。  
 
     * 如果使用的是 NFSv4.1，请指出是否要为卷启用 Kerberos 加密。  
 
@@ -117,6 +117,9 @@ Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协�
 
     * 若要启用 Active Directory LDAP 用户和扩展组（最多 1024 个组）访问该卷，请选择 LDAP 选项。 按照[使用扩展组配置 ADDS LDAP 以访问 NFS 卷](configure-ldap-extended-groups.md)中的说明，完成所需的配置。 
  
+    *  按需自定义“Unix 权限”，以指定安装路径的更改权限。 此设置不适用于安装路径下的文件。 默认设置为 `0770`。 此默认设置向所有者和组授予“读取”、“写入”和“执行”权限，但不向其他用户授予任何权限。     
+        注册要求和注意事项适用于“Unix 权限”设置。 按照[配置 Unix 权限和更改所有者模式](configure-unix-permissions-change-ownership-mode.md)中的说明进行操作。   
+
     * 或者，参阅[配置 NFS 卷的导出策略](azure-netapp-files-configure-export-policy.md)。
 
     ![指定 NFS 协议](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
@@ -135,5 +138,6 @@ Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协�
 * [配置添加 LDAP，其中包含用于 NFS 卷访问的扩展组](configure-ldap-extended-groups.md)
 * [为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [为 NFS 卷配置导出策略](azure-netapp-files-configure-export-policy.md)
+* [配置 Unix 权限并更改所有者模式](configure-unix-permissions-change-ownership-mode.md)。 
 * [Azure NetApp 文件的资源限制](azure-netapp-files-resource-limits.md)
 * [了解 Azure 服务的虚拟网络集成](../virtual-network/virtual-network-for-azure-services.md)

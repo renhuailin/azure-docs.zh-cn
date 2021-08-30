@@ -2,13 +2,13 @@
 title: 概念 - 网络互连
 description: 了解 Azure VMware 解决方案中网络和互连的关键方面和用例。
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: b3107ff85302e24e3c047ef0ea08f7a4b879b3be
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 06/28/2021
+ms.openlocfilehash: 91bd1bfc207a2fb08b644e4ecf54be7b254c39fa
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089589"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071965"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware 解决方案网络和互连概念
 
@@ -20,7 +20,7 @@ Azure VMware 解决方案私有云中有两种互连方式：
 
 - [本地到私有云的完整互连](#on-premises-interconnectivity)扩展了仅限 Azure 的基本实现，使其包括本地与 Azure VMware 解决方案私有云之间的互连。
  
-在本文中，我们将介绍建立网络和互连的关键概念，包括要求和限制。 本文提供了配置网络以使用 Azure VMware 解决方案需要了解的信息。
+本文介绍建立网络和互连的关键概念，包括要求和限制。 此外，本文还提供了使用 Azure VMware 解决方案配置网络时需要了解的信息。
 
 ## <a name="azure-vmware-solution-private-cloud-use-cases"></a>Azure VMware 解决方案私有云用例
 
@@ -45,7 +45,7 @@ Azure VMware 解决方案私有云的用例包括：
 - 对私有云中运行的工作负载的入站访问。
 
 
-:::image type="content" source="media/concepts/adjacency-overview-drawing-single.png" alt-text="基本虚拟网络到私有云的连接" border="false":::
+:::image type="content" source="media/concepts/adjacency-overview-drawing-single.png" alt-text="此图显示了在 Azure VMware 解决方案私有云部署时建立的基本网络互连。" border="false":::
 
 ## <a name="on-premises-interconnectivity"></a>本地互连
 
@@ -56,7 +56,7 @@ Azure VMware 解决方案私有云的用例包括：
 - 本地和 Azure VMware 解决方案之间的热/冷 vCenter vMotion。
 - 本地到 Azure VMware 解决方案私有云的管理访问。
 
-:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="虚拟网络和本地完整私有云连接" border="false":::
+:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="此图显示了虚拟网络和本地与私有云的互连。" border="false":::
 
 为了与私有云完全互连，需要启用 ExpressRoute Global Reach，然后在 Azure 门户中为 Global Reach 请求授权密钥和专用对等互连 ID。 授权密钥和对等互连 ID 用于在订阅中的 ExpressRoute 线路和私有云的 ExpressRoute 线路之间建立 Global Reach。 链接后，这两条 ExpressRoute 线路将本地环境之间的网络流量路由到私有云。 有关这些过程的详细信息，请参阅[教程：创建与私有云对等互连的 ExpressRoute Global Reach](tutorial-expressroute-global-reach-private-cloud.md)。
 
@@ -69,7 +69,7 @@ Azure VMware 解决方案私有云的用例包括：
 
 - [Azure VMware 解决方案存储概念](concepts-storage.md)
 - [Azure VMware 解决方案标识概念](concepts-identity.md)
-- [如何启用 Azure VMware 解决方案资源](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)
+- [启用 Azure VMware 解决方案资源提供程序](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider)
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: how-to
 ms.custom: devx-track-python, responsible-ml
-ms.openlocfilehash: 3b71347f9375ebb24befe665c031af9cd7ad7cc3
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 86916a14c79e9e2432dc5fb03da66081d4bab737
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884833"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014823"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>将 Azure 机器学习与 Fairlearn 开源程序包配合使用来评估机器学习模型的公平性（预览版）
 
@@ -31,7 +31,7 @@ ms.locfileid: "107884833"
 
 ## <a name="azure-machine-learning-fairness-sdk"></a>Azure 机器学习公平性 SDK 
 
-Azure 机器学习公平性 SDK `azureml-contrib-fairness` 在 Azure 机器学习中集成了开源 Python 程序包 [Fairlearn](http://fairlearn.github.io)。 若要详细了解 Azure 机器学习中的 Fairlearn 的集成，请查看这些[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)。 有关 Fairlearn 的详细信息，请参阅[示例指南](https://fairlearn.org/v0.6.0/auto_examples/)和[示例笔记本](https://github.com/fairlearn/fairlearn/tree/master/notebooks)。 
+Azure 机器学习公平性 SDK `azureml-contrib-fairness` 在 Azure 机器学习中集成了开源 Python 程序包 [Fairlearn](http://fairlearn.github.io)。 若要详细了解 Azure 机器学习中的 Fairlearn 的集成，请查看这些[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)。 有关 Fairlearn 的详细信息，请参阅[示例指南](https://fairlearn.org/main/auto_examples/)和[示例笔记本](https://github.com/fairlearn/fairlearn/tree/master/notebooks)。 
 
 使用以下命令安装 `azureml-contrib-fairness` 和 `fairlearn` 程序包：
 ```bash
@@ -64,7 +64,7 @@ pip install fairlearn==0.4.6
     from sklearn.compose import make_column_selector as selector
     from sklearn.pipeline import Pipeline
     
-    from fairlearn.widget import FairlearnDashboard
+    from raiwidgets import FairnessDashboard
 
     # Load the census dataset
     data = fetch_openml(data_id=1590, as_frame=True)
@@ -126,12 +126,12 @@ pip install fairlearn==0.4.6
     # Train the model on the test data
     lr_predictor.fit(X_train, y_train)
 
-    # (Optional) View this model in Fairlearn's fairness dashboard, and see the disparities which appear:
-    from fairlearn.widget import FairlearnDashboard
-    FairlearnDashboard(sensitive_features=A_test, 
-                       sensitive_feature_names=['Race', 'Sex'],
-                       y_true=y_test,
-                       y_pred={"lr_model": lr_predictor.predict(X_test)})
+    # (Optional) View this model in the fairness dashboard, and see the disparities which appear:
+    from raiwidgets import FairnessDashboard
+    FairnessDashboard(sensitive_features=A_test, 
+                      sensitive_feature_names=['Race', 'Sex'],
+                      y_true=y_test,
+                      y_pred={"lr_model": lr_predictor.predict(X_test)})
     ```
 
 2. 登录到 Azure 机器学习并注册你的模型。
@@ -227,7 +227,7 @@ pip install fairlearn==0.4.6
     1. 如果已通过前面的步骤注册了原始模型，则可在左侧窗格中选择“模型”来查看它。
     1. 选择一个模型，然后选择“公平性”选项卡来查看解释可视化效果仪表板。
 
-    若要详细了解此可视化效果面板及其包含的内容，请查看 Fairlearn 的[用户指南](https://fairlearn.org/v0.6.0/user_guide/assessment.html#fairlearn-dashboard)。
+    若要详细了解此可视化效果面板及其包含的内容，请查看 Fairlearn 的[用户指南](https://fairlearn.org/main/user_guide/assessment.html#fairlearn-dashboard)。
 
 ## <a name="upload-fairness-insights-for-multiple-models"></a>为多个模型上传公平性见解
 
@@ -269,9 +269,9 @@ pip install fairlearn==0.4.6
     model_dict[svm_reg_id] = svm_predictor
     ```
 
-3. 在本地加载 Fairlearn 仪表板
+3. 在本地加载“公平性”仪表板
 
-    在将公平性见解上传到 Azure 机器学习之前，可以在通过本地方式调用的 Fairlearn 仪表板中检查这些预测。 
+    在将公平性见解上传到 Azure 机器学习之前，可以在本地调用的“公平性”仪表板中检查这些预测。 
 
 
 
@@ -281,12 +281,12 @@ pip install fairlearn==0.4.6
     for n, p in model_dict.items():
         ys_pred[n] = p.predict(X_test)
 
-    from fairlearn.widget import FairlearnDashboard
+    from raiwidgets import FairnessDashboard
 
-    FairlearnDashboard(sensitive_features=A_test, 
-                    sensitive_feature_names=['Race', 'Sex'],
-                    y_true=y_test.tolist(),
-                    y_pred=ys_pred)
+    FairnessDashboard(sensitive_features=A_test, 
+                      sensitive_feature_names=['Race', 'Sex'],
+                      y_true=y_test.tolist(),
+                      y_pred=ys_pred)
     ```
 
 3. 预先计算公平性指标。
@@ -338,14 +338,14 @@ pip install fairlearn==0.4.6
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>上传未修正和已修正公平性见解
 
-你可以使用 Fairlearn 的[修正算法](https://fairlearn.org/v0.6.0/user_guide/mitigation.html)，将其生成的修正模型与原始的未修正模型进行比较，查看所比较模型在性能/公平性方面的权衡情况。
+你可以使用 Fairlearn 的[修正算法](https://fairlearn.org/main/user_guide/mitigation.html)，将其生成的修正模型与原始的未修正模型进行比较，查看所比较模型在性能/公平性方面的权衡情况。
 
-若要通过示例来了解如何使用[网格搜索](https://fairlearn.org/v0.6.0/user_guide/mitigation.html#grid-search)修正算法（用于创建一系列在公平性和性能方面进行了各种权衡的修正模型），请查看此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)。 
+若要通过示例来了解如何使用[网格搜索](https://fairlearn.org/main/user_guide/mitigation.html#grid-search)修正算法（用于创建一系列在公平性和性能方面进行了各种权衡的修正模型），请查看此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)。 
 
 在单个运行中上传多个模型的公平性见解就可以比较模型的公平性和性能。 你可以单击模型比较图表中显示的任何模型，以查看针对特定模型的详细公平性见解。
 
 
-[![模型比较 Fairlearn 仪表板](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)
+[![模型比较“公平性”仪表板](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)
     
 
 ## <a name="next-steps"></a>后续步骤

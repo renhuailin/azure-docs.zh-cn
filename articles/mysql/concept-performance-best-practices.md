@@ -6,14 +6,16 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 7b5223bc08c470a0e8722b76b80473aaa235b51a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc47e06643f3bb4ebf986382e149e13fd9bbc968
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727152"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779694"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>获得 Azure Database for MySQL 单一服务器的最佳性能的最佳做法
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 了解如何在使用 Azure Database for MySQL 单一服务器时获得最佳性能。 在向平台添加新功能时，我们将继续优化本部分中的建议。
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: d061eed42280fffa1ff7f53e43adb7b85a94ae0d
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 3869b18f580d0a12b2581554acf63258cb08f64a
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813209"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112380673"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps"></a>在 Azure 静态 Web 应用中查看预生产环境中的拉取请求
 
@@ -33,7 +33,7 @@ Azure 静态 Web 应用会在存储库中生成 GitHub 操作工作流。 当针
 - 在部署到生产环境之前执行健全性检查。
 
 > [!NOTE]
-> 一次[最多允许三个过渡环境](quotas.md)。
+> 拉取请求和预生产环境目前仅支持用于 GitHub Actions 部署。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -104,12 +104,16 @@ Azure 静态 Web 应用会在存储库中生成 GitHub 操作工作流。 当针
 
 ## <a name="limitations"></a>限制
 
-即使 GitHub 存储库是专用的，应用程序的暂存版本当前可通过其 URL 公开访问。
+- 即使 GitHub 存储库是专用的，应用程序的暂存版本当前可通过其 URL 公开访问。
 
-> [!WARNING]
-> 将敏感内容发布到暂存版本时要小心，因为不会限制对预生产环境的访问。
+    > [!WARNING]
+    > 将敏感内容发布到暂存版本时要小心，因为不会限制对预生产环境的访问。
 
-适用于使用静态 Web 应用部署的每个应用的预生产环境数取决于所使用的 SKU 层。 例如，在使用免费层时，除了生产环境之外，还可以有 3 个预生产环境。
+- 根据你使用的[托管计划](plans.md)来确定使用静态 Web 应用部署的每个应用的预生产环境数。 例如，在使用免费层时，除了生产环境之外，还可以有 3 个预生产环境。
+
+- 预生产环境不是地理分布式的。
+
+- 目前，只有 GitHub Actions 部署支持预生产环境。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.collection: linux
 ms.date: 06/12/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 664d087f93d72c146908c6f708f527a8147d7e28
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f5fbea307653b8ee603c799a442f0e4d0a132be7
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949873"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300392"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -284,7 +284,7 @@ $publicConfig = '{
 
 可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 部署需要部署后配置（例如，载入 Azure 自动化）的一个或多个虚拟机时，模板是理想选择。
 
-[201-dsc-linux-azure-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) 和 [201-dsc-linux-public-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu) 是示例资源管理器模板。
+[dsc-linux-azure-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/dsc-linux-azure-storage-on-ubuntu) 和 [dsc-linux-public-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/dsc-linux-public-storage-on-ubuntu) 是示例资源管理器模板。
 
 有关 Azure 资源管理器模板的详细信息，请参阅[创作 Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)。
 

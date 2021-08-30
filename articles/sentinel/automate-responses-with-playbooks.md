@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 06/29/2021
 ms.author: yelevin
-ms.openlocfilehash: 0687b3bf486d2496763237164536be34f504f7ed
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: bddd27b29a1546f0c985f7a5b3aa15027be75d46
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112070878"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726101"
 ---
 # <a name="automate-threat-response-with-playbooks-in-azure-sentinel"></a>在 Azure Sentinel 中使用 playbook 实现威胁响应自动化
 
@@ -33,6 +33,8 @@ SIEM/SOC 团队通常会定期收到大量的安全警报和事件，数量之�
 这些警报和事件中的许多（如果不是大多数）警报和事件都符合定期模式，可通过特定的修正操作集和定义的修正操作集进行处理。
 
 playbook 是可以作为例程从 Azure Sentinel 运行的修正操作的集合。 playbook 可以帮助 [**自动执行和协调威胁响应**](tutorial-respond-threats-playbook.md)；可以手动运行或设置为自动运行以响应特定警报或事件（当由分析规则或自动化规则触发时）。
+
+例如，如果帐户和计算机受到损害，playbook 可以将计算机和网络隔离，并在 SOC 团队收到事件通知时阻止帐户。
 
 Playbook 在订阅级别创建和应用，但新的“自动化”边栏选项卡中的“Playbook”选项卡显示了所有选定订阅上可用的所有 playbook。
 
@@ -197,7 +199,7 @@ Playbook 既可“手动”运行，也可“自动”运行。
 
 对于通过创建警报触发并接收警报作为其输入的 playbook（其第一步是“触发 Azure Sentinel 警报时”），将此 playbook 附加到分析规则：
 
-1. 编辑生成要为其定义自动响应的警报的[分析规则](tutorial-detect-threats-custom.md)。
+1. 编辑生成要为其定义自动响应的警报的[分析规则](detect-threats-custom.md)。
 
 1. 在“自动响应”选项卡的“警报自动化”下，选择在创建警报时此分析规则将触发的 playbook。
 
@@ -242,7 +244,7 @@ Playbook 既可“手动”运行，也可“自动”运行。
 
 ### <a name="run-a-playbook-manually-on-an-incident"></a>对事件手动运行 playbook
 
-尚不支持。 <!--make this a note instead? -->
+尚不支持。
 
 ## <a name="manage-your-playbooks"></a>管理 playbook
 
@@ -275,6 +277,29 @@ API 连接用于将逻辑应用连接到其他服务。 每次对逻辑应用连
 查看 API 连接的另一种方式是转到“所有资源”边栏选项卡，按类型“API 连接”进行筛选。 这样可以一次选择、标记和删除多个连接。
 
 若要更改现有连接的授权，请输入连接资源，然后选择“编辑 API 连接”。
+
+## <a name="recommended-playbooks"></a>建议的 playbook
+
+以下建议的 playbook 和其他相似 playbook 在 [Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)中提供：
+
+- 创建警报或事件时会触发通知 playbook，并向配置目标发送通知：
+
+    - [在 Microsoft Teams 通道中发布消息](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Post-Message-Teams)
+    - [发送 Outlook 电子邮件通知](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Incident-Email-Notification)
+    - [在 Slack 通道中发布消息](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Post-Message-Slack)
+
+- 创建警报或事件时，会触发阻止 playbook，收集帐户、IP 地址和主机等实体信息，并阻止它们采取进一步行动：
+
+    - [阻止 IP 地址的提示](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Block-IPs-on-MDATP-Using-GraphSecurity)。
+    - [阻止 AAD 用户](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Block-AADUser)
+    - [重置 AAD 用户密码](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Reset-AADUserPassword/)
+    - [隔离计算机的提示](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Isolate-AzureVMtoNSG)
+
+- 创建、更新或关闭 playbook 可以在 Azure Sentinel、Microsoft 365 安全服务或其他票证服务中创建、更新和关闭事件：
+
+    - [更改事件的严重性](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Change-Incident-Severity)
+    - [创建 ServiceNow 事件](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Create-SNOW-record)
+
 
 ## <a name="next-steps"></a>后续步骤
 

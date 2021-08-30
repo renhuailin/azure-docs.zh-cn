@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: devx-track-python
-ms.openlocfilehash: 55672b5d58c6c1185c6bf6b17ea63302b6f9b891
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 7aac4d2fcab192d77c1629e8f53b91f5dadedd86
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487954"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729837"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>计划和广播作业 (Python)
 
@@ -32,7 +32,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 * 设备孪生和属性：[设备孪生入门](iot-hub-python-twin-getstarted.md)和[教程：如何使用设备孪生属性](tutorial-device-twins.md)
 
-* 直接方法：[IoT 中心开发人员指南 - 直接方法](iot-hub-devguide-direct-methods.md)和[教程：直接方法](quickstart-control-device-python.md)
+* 直接方法：[IoT 中心开发人员指南 - 直接方法](iot-hub-devguide-direct-methods.md)和[快速入门：直接方法](./quickstart-control-device.md?pivots=programming-language-python)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -81,62 +81,56 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
 3. 在 simDevice.py 文件的开头添加以下 `import` 语句和变量。 将 `deviceConnectionString` 替换为上述创建的设备的连接字符串：
 
     ```python
-    import threading
-    import time
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
 
     CONNECTION_STRING = "{deviceConnectionString}"
+    client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
     ```
 
-4. 添加以下功能回调以处理 lockDoor 方法：
+4. 定义以下处理程序函数，该函数将用于响应 lockDoor 方法：
 
     ```python
-    def lockdoor_listener(client):
-        while True:
-            # Receive the direct method request
-            method_request = client.receive_method_request("lockDoor")  # blocking call
-            print( "Locking Door!" )
+    def method_request_handler(method_request):
+        if method_request.name == "lockDoor":
+            print("Locking Door!")
 
             resp_status = 200
             resp_payload = {"Response": "lockDoor called successfully"}
-            method_response = MethodResponse(method_request.request_id, resp_status, resp_payload)
+            method_response = MethodResponse.create_from_method_request(
+                method_request=method_request,
+                status=resp_status,
+                payload=resp_payload
+            )
             client.send_method_response(method_response)
     ```
 
-5. 再添加一个功能回调来处理设备孪生更新：
+5. 再添加一个处理程序函数来接收设备孪生更新：
 
     ```python
-    def twin_update_listener(client):
-        while True:
-            patch = client.receive_twin_desired_properties_patch()  # blocking call
-            print ("")
-            print ("Twin desired properties patch received:")
-            print (patch)
+    def twin_patch_handler(twin_patch):
+        print("")
+        print("Twin desired properties patch received:")
+        print(twin_patch)
     ```
 
-6. 添加以下代码以注册 **lockDoor** 方法的处理程序。 此外还包含 `main` 例程：
+6. 添加以下代码以注册 lockDoor 方法的处理程序以及孪生修补程序。 此外还包含 `main` 例程：
 
     ```python
     def iothub_jobs_sample_run():
+        print("Beginning to listen for 'lockDoor' direct method invocations...")
+        client.on_method_request_received = method_request_handler
+        print("Beginning to listen for updates to the Twin desired properties...")
+        client.on_twin_desired_properties_patch_received = twin_patch_handler
+
+        client.connect()
+
         try:
-            client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
-
-            print( "Beginning to listen for 'lockDoor' direct method invocations...")
-            lockdoor_listener_thread = threading.Thread(target=lockdoor_listener, args=(client,))
-            lockdoor_listener_thread.daemon = True
-            lockdoor_listener_thread.start()
-
-            # Begin listening for updates to the Twin desired properties
-            print ( "Beginning to listen for updates to Twin desired properties...")
-            twin_update_listener_thread = threading.Thread(target=twin_update_listener, args=(client,))
-            twin_update_listener_thread.daemon = True
-            twin_update_listener_thread.start()
-            
             while True:
-                time.sleep(1000)
-
+                import time
+                time.sleep(100)
         except KeyboardInterrupt:
-            print ( "IoTHubDeviceClient sample stopped" )
+            print("IoTHubDeviceClient sample stopped!")
+            client.shutdown()
 
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Python jobs sample..." )

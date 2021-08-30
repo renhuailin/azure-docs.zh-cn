@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/19/2020
-ms.openlocfilehash: ce9927a66da64d64e83f10e3dfd906005635e5ed
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1accce46358c360be83ebc3ea85f0f2257b567c8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99507530"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456534"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立软件供应商 (ISV) Connect 计划加入指南
 
@@ -25,7 +25,7 @@ ms.locfileid: "99507530"
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>设置 Microsoft 合作伙伴中心帐户
 
-要为 ISV Connect 计划设置和管理帐户，请完成以下文章中的步骤：[在合作伙伴中心创建商业市场帐户](./partner-center-portal/create-account.md)。 本文提供了创建新帐户的所有步骤，以及有关将新发布者添加到商业市场计划的信息。
+要为 ISV Connect 计划设置和管理帐户，请完成以下文章中的步骤：[在合作伙伴中心创建商业市场帐户](create-account.md)。 本文提供了创建新帐户的所有步骤，以及有关将新发布者添加到商业市场计划的信息。
 
 > [!NOTE]
 > 此步骤需要合作伙伴中心的“所有者”或“管理员”角色。 
@@ -37,7 +37,7 @@ ms.locfileid: "99507530"
 > [!NOTE]
 > 此步骤要求合作伙伴中心的“所有者”或“经理”角色对法律协议进行签名。 
 
-1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard)。
+1. 登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165507)。
 1. 选择“设置”（齿轮图标）>“帐户设置”。 
 1. 选择“协议”。
 1. 选择版本链接并查看协议。
@@ -50,7 +50,7 @@ ms.locfileid: "99507530"
 > [!NOTE]
 > 此步骤要求合作伙伴中心的“所有者”或“经理”角色更新账单信息。 
 
-1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard)。
+1. 登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165507)。
 1. 选择“设置”（齿轮图标）>“帐户设置”。 
 1. 在“组织概况”下，选择“计费对象信息”，然后选择“开发人员”选项卡。  
 1. 查看根据你的法律实体填充的主要联系人和账单信息。
@@ -77,8 +77,7 @@ ms.locfileid: "99507530"
 
 询问你的客户经理或联系 [Microsoft 合作伙伴支持](https://aka.ms/marketplacepublishersupport)部门以获取你的帐户帮助。 有关业务应用程序 ISV Connect 计划的一般信息，请参阅：
 
-- [Business Applications for ISVs（面向 ISV 的业务应用程序）](https://partner.microsoft.com/solutions/business-applications/isv-overview)（在线文章）
-- [Overview of the New Program for Business Applications ISVs（面向业务应用程序 ISV 的新计划概览）](https://aka.ms/BizAppsISVProgram)(PDF)
-- [Business Applications ISV Connect Program FAQ（业务应用程序 ISV Connect 计划常见问题）](https://assetsprod.microsoft.com/faq-using-partner-center-isv-connect.pdf)(PDF)
-- [Upcoming program for Business Applications ISVs（面向业务应用程序 ISV 即将发布的计划）](https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/)（博客文章）
-- [ISV Connect Program Policies（ISV Connect 计划政策）](https://aka.ms/bizappsisvpolicies)(PDF)
+- [Business Applications 合作伙伴信息](https://aka.ms/bizappsisvWeb)（网站）
+- [ISV Connect 计划指南](https://aka.ms/bizappsisvProgram) (PDF)
+- [ISV Connect 计划合作伙伴常见问题解答](https://powerplatformpartners.transform.microsoft.com/download?assetname=assets/ISV%20Connect%20Partner%20FAQ.pdf&download=1) (PDF)
+- [ISV Connect 计划更改](https://cloudblogs.microsoft.com/dynamics365/bdm/2021/07/14/innovate-and-grow-with-the-simplified-business-applications-isv-connect-program/)（博客文章）

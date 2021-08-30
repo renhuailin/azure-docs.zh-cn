@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7f9a10aca24203b69ff38ff5fab7960681145af5
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 9b0e33b80cf5bd8963efa036dc76ae9f634fee66
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227823"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460531"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H 系列和 N 系列 VM 的已知问题
 
@@ -49,7 +49,7 @@ max_qp: 4096
 
 ## <a name="infiniband-driver-installation-on-non-sr-iov-vms"></a>非 SR-IOV VM 上的 InfiniBand 驱动程序安装
 
-目前 H16r、H16mr 和 NC24r 未启用 SR-IOV。 [此处](../../sizes-hpc.md#rdma-capable-instances)提供了有关 InfiniBand 堆栈分流的一些详细信息。
+目前 H16r、H16mr 和 NC24r 未启用 SR-IOV。 有关 InfiniBand 堆栈分流的详细信息，请参阅 [Azure VM 大小 - HPC](../../sizes-hpc.md#rdma-capable-instances)。
 可在启用了 SR-IOV 的 VM 上通过 OFED 驱动程序配置 InfiniBand，而非 SR-IOV VM 需要 ND 驱动程序。 此 IB 支持在 [CentOS、RHEL 和 Ubuntu](configure.md) 上根据情况提供。
 
 ## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>在 H 系列和 N 系列 VM 上，Ubuntu 中的 cloud-init 存在重复 MAC
@@ -133,4 +133,4 @@ echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 
 - 查看 [HB 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)，以了解如何对工作负载进行优化配置以提高性能和可伸缩性。
 - 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
-- 有关运行 HPC 工作负荷的高层架构视图，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。
+- 若要从体系结构角度更概略性地看待如何运行 HPC 工作负载，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

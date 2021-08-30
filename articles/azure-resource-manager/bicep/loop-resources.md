@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: b510d2601c7f1d2724e104017707345e05fb47c7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3185d6bac1e20e1d29c4f55b0a4e954b5ae35499
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453334"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634881"
 ---
 # <a name="resource-iteration-in-bicep"></a>Bicep 中的资源迭代
 
@@ -188,9 +188,9 @@ resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2021-02-01
 
 |模板  |说明  |
 |---------|---------|
-|[循环存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/loopstorage.bicep) |部署名称中带索引号的多个存储帐户。 |
-|[串行循环存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/loopserialstorage.bicep) |一次部署多个存储帐户。 名称包含索引号。 |
-|[使用数组的循环存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/loopstoragewitharray.bicep) |部署多个存储帐户。 名称包含数组中的值。 |
+|[循环存储](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopstorage.bicep) |部署名称中带索引号的多个存储帐户。 |
+|[串行循环存储](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopserialstorage.bicep) |一次部署多个存储帐户。 名称包含索引号。 |
+|[使用数组的循环存储](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopstoragewitharray.bicep) |部署多个存储帐户。 名称包含数组中的值。 |
 
 ## <a name="next-steps"></a>后续步骤
 

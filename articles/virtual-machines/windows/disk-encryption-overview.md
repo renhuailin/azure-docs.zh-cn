@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e283ff2de003146c8228d36843f00ca8e4faced9
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2d7e096a0dbd730b2ec5f64589a5924340e32f66
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748564"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195542"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>适用于 Windows VM 的 Azure 磁盘加密
 
@@ -38,12 +38,13 @@ Azure 磁盘加密可在区域内复原，与虚拟机的方式相同。 有关�
 
 Windows VM 的大小有[多种](../sizes-general.md)。 Azure 磁盘加密在第 1 代和第 2 代 VM 上受支持。 Azure 磁盘加密还可用于使用高级存储的 VM。
 
-Azure 磁盘加密在 [A 系列基本 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) 或内存小于 2 GB 的虚拟机上不可用。  Azure 磁盘加密对于没有临时磁盘（Dv4、Dsv4、Ev4 和 Esv4）的 VM 映像也不可用。  请参阅[无本地临时磁盘的 Azure VM 规格](../azure-vms-no-temp-disk.md)。  有关更多例外，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-windows.md#unsupported-scenarios)。
+Azure 磁盘加密在 [A 系列基本 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) 或内存小于 2 GB 的虚拟机上不可用。  Azure 磁盘加密对于没有临时磁盘（Dv4、Dsv4、Ev4 和 Esv4）的 VM 映像也不可用。  请参阅[无本地临时磁盘的 Azure VM 规格](../azure-vms-no-temp-disk.yml)。  有关更多例外，请参阅 [Azure 磁盘加密：不支持的方案](disk-encryption-windows.md#unsupported-scenarios)。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
 - Windows 客户端：Windows 8 和更高版本。
-- Windows Server：Windows Server 2008 R2 和更高版本。  
+- Windows Server：Windows Server 2008 R2 和更高版本。
+- Windows 10 企业版多会话。  
  
 > [!NOTE]
 > Windows Server 2008 R2 要求安装 .NET Framework 4.5 以支持加密；请从 Windows 更新安装此组件，并安装适用于 Windows Server 2008 R2 基于 x64 的系统的 Microsoft .NET Framework 4.5.2 可选更新 ([KB2901983](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2901983))。  
@@ -63,7 +64,9 @@ Azure 磁盘加密在 [A 系列基本 VM](https://azure.microsoft.com/pricing/de
 
 Azure 磁盘加密对 Windows VM 使用 BitLocker 外部密钥保护程序。 对于已加入域的 VM，请不要推送会强制执行 TPM 保护程序的任何组策略。 有关“在没有兼容 TPM 的情况下允许 BitLocker”的组策略信息，请参阅 [BitLocker 组策略参考](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)。
 
-具有自定义组策略的已加入域虚拟机上的 BitLocker 策略必须包含以下设置：[配置 BitLocker 恢复信息的用户存储 -> 允许 256 位恢复密钥](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密将会失败。 在没有正确策略设置的计算机上，应用新策略，强制更新新策略 (gpupdate.exe /force)，然后可能需要重启。
+具有自定义组策略的已加入域虚拟机上的 BitLocker 策略必须包含以下设置：[配置 BitLocker 恢复信息的用户存储 -> 允许 256 位恢复密钥](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings)。 如果 BitLocker 的自定义组策略设置不兼容，Azure 磁盘加密将会失败。 在没有正确策略设置的计算机上，应用新策略并强制更新新策略 (gpupdate.exe /force)。  可能需要重启。
+
+Microsoft Bitlocker Administration and Monitoring (MBAM) 组策略功能与 Azure 磁盘加密不兼容。
 
 > [!WARNING]
 > Azure 磁盘加密不存储恢复密钥。 如果启用了[交互式登录：计算机帐户锁定阈值](/windows/security/threat-protection/security-policy-settings/interactive-logon-machine-account-lockout-threshold)安全设置，则只能通过串行控制台提供恢复密钥来恢复计算机。 有关确保启用适当恢复策略的说明，请参阅 [Bitlocker 恢复指南计划](/windows/security/information-protection/bitlocker/bitlocker-recovery-guide-plan)。

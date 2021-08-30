@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27c95b0b16c36ca24709ec72c741dec633c5c81
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: c81a9912dc33a78d78f77fedecc58b658b4fac3e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108063956"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443086"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>在 Azure Active Directory 门户中下载用户列表
 
@@ -36,8 +36,9 @@ Azure Active Directory (Azure AD) 支持批量用户导入（创建）操作。
 4. 在“下载用户”页上，选择“开始”以接收列出用户配置文件属性的 CSV 文件 。 如果有错误，可以在“批量操作结果”页下载并查看结果文件。 该文件包含每个错误的原因。
 
    ![选择要将用户列表下载到其中的位置](./media/users-bulk-download/bulk-download.png)
-
-   下载文件将包含已筛选的用户列表。
+   
+>[!NOTE]
+>下载文件将包含基于所应用的筛选器范围的已筛选用户列表。
 
    包含以下用户属性：
 

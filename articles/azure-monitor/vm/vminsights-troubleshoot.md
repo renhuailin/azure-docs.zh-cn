@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 59b4f38efde2416687702647031d2b37553ff8ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7bcce4d18f6bcfe299a31dae3eb036bef12da9b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103554993"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729284"
 ---
 # <a name="troubleshoot-vm-insights"></a>对 VM 见解进行故障排除
 本文提供了当你在启用或使用 VM 见解时遇到问题的情况下所需的故障排除信息。
@@ -39,12 +39,12 @@ ms.locfileid: "103554993"
 | 操作系统 | 代理 | 
 |:---|:---|
 | Windows | MicrosoftMonitoringAgent<br>Microsoft.Azure.Monitoring.DependencyAgent |
-| Linux | OMSAgentForLinux<br>DependencyAgentForLinux |
+| Linux | OMSAgentForLinux<br>DependencyAgentLinux |
 
 如果在已安装的扩展列表中看不到你的操作系统的两个扩展，则需要安装它们。 如果已列出扩展，但状态未显示为“预配成功”，则应删除并重新安装该扩展。
 
 ### <a name="do-you-have-connectivity-issues"></a>是否存在连接问题？
-对于 Windows 计算机，可以使用 TestCloudConnectivity 工具来确定连接问题。 默认情况下，该工具会连同代理一起安装在 %SystemRoot%\Program Files\Microsoft Monitoring Agent\Agent 文件夹中。 从提升的命令提示符运行该工具。 它将返回结果，并突出显示测试失败的位置。 
+对于 Windows 计算机，可以使用 TestCloudConnectivity 工具来确定连接问题。 默认情况下，该工具连同代理一起安装在 %SystemDrive%\Program Files\Microsoft Monitoring Agent\Agent 文件夹中。 从提升的命令提示符运行该工具。 它将返回结果，并突出显示测试失败的位置。 
 
 ![TestCloudConnectivity 工具](media/vminsights-troubleshoot/test-cloud-connectivity.png)
 
@@ -61,17 +61,17 @@ ms.locfileid: "103554993"
 ### <a name="has-your-log-analytics-workspace-reached-its-data-limit"></a>Log Analytics 工作区是否达到了其数据限制？
 查看[产能预留和数据引入的定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
-### <a name="is-your-virtual-machine-sending-log-and-performance-data-to-azure-monitor-logs"></a>虚拟机是否将日志和性能数据发送到 Azure Monitor 日志？
+### <a name="is-your-virtual-machine-agent-connected-to-azure-monitor-logs"></a>虚拟机代理是否连接到 Azure Monitor 日志？
 
 在 Azure 门户中，从“Azure Monitor”菜单中的“日志”打开 Log Analytics。 对计算机运行以下查询：
 
 ```kuso
-Usage 
-| where Computer == "my-computer" 
-| summarize sum(Quantity), any(QuantityUnit) by DataType
+Heartbeat
+| where Computer == "my-computer"
+| sort by TimeGenerated desc 
 ```
 
-如果未看到任何数据，则代理可能存在问题。 查看以上部分，了解代理故障排除信息。
+如果没有看到任何数据，或者计算机最近未发送检测信号，则代理可能有问题。 查看以上部分，了解代理故障排除信息。
 
 ## <a name="virtual-machine-doesnt-appear-in-map-view"></a>虚拟机未出现在映射视图中
 

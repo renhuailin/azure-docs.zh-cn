@@ -6,16 +6,16 @@ services: api-management
 documentationcenter: API Management
 author: mikebudzynski
 ms.service: api-management
-ms.topic: article
-ms.date: 04/15/2021
+ms.topic: troubleshooting
+ms.date: 07/30/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: afe41f7db56be5de56831d039a1161f1ee2c69f5
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b7b7efda7ca28382ca1dfbdead64db9976d67bd4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285261"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747791"
 ---
 # <a name="api-management-developer-portal---frequently-asked-questions"></a>API 管理开发人员门户 - 常见问题
 
@@ -149,6 +149,27 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
 如果本地版本的开发人员门户无法保存或检索来自存储帐户或 API 管理实例的信息，则 SAS 令牌可能已过期。 可以通过生成新令牌来解决该问题。 有关说明，请参阅[自承载开发人员门户](developer-portal-self-host.md#step-2-configure-json-files-static-website-and-cors-settings)的相关教程。
 
+## <a name="how-do-i-disable-sign-up-in-the-developer-portal"></a>如何在开发人员门户中禁用注册？
+
+如果不需要开发人员门户中默认启用的注册功能，可以通过以下步骤禁用它：
+
+1. 在 Azure 门户，导航到 API 管理实例。
+1. 在菜单的“开发人员门户”下，选择“标识” 。
+1. 删除列表中显示的每个标识提供者。 选择每个提供者，选择上下文菜单（“...”），然后选择“删除” 。
+ 
+   :::image type="content" source="media/developer-portal-faq/delete-identity-providers.png" alt-text="更新标识提供者":::
+ 
+1. 导航到开发人员门户管理界面。
+1. 删除门户内容中的“注册”链接和导航项。 有关自定义门户内容的信息，请参阅[教程：访问和自定义开发人员门户](api-management-howto-developer-portal-customize.md)。
+ 
+   :::image type="content" source="media/developer-portal-faq/delete-navigation-item.png" alt-text="删除导航项":::
+ 
+1. 修改“注册”页面内容以删除用于输入标识数据的字段，以防用户直接导航到该数据。
+   
+   可以选择性地删除“注册”页。 目前可使用 [contentItem](/rest/api/apimanagement/2021-01-01-preview/content-item) REST API 来列出和删除此页面。
+ 
+1. 保存更改并[重新发布门户](api-management-howto-developer-portal-customize.md#publish)。
+
 ## <a name="how-can-i-remove-the-developer-portal-content-provisioned-to-my-api-management-service"></a>如何删除预配到 API 管理服务的开发人员门户内容？
 
 在开发人员门户 [GitHub 存储库](https://github.com/Azure/api-management-developer-portal)中的 `scripts.v3/cleanup.bat` 脚本中提供所需参数，然后运行该脚本
@@ -167,10 +188,11 @@ cd ..
 https://contoso.com/signin-sso?token=[user-specific token]
 ```
 ### <a name="generate-user-tokens"></a>生成用户令牌
-可以使用 [API 管理 REST API](/rest/api/apimanagement/apimanagementrest/api-management-rest) 的[获取共享访问令牌](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken)操作来生成特定于用户的令牌（包括管理令牌）。
+可以使用 [API 管理 REST API](/rest/api/apimanagement/apimanagementrest/api-management-rest) 的[获取共享访问令牌](/rest/api/apimanagement/2020-12-01/user/get-shared-access-token)操作来生成特定于用户的令牌（包括管理令牌）。
 
 > [!NOTE]
 > 令牌必须进行 URL 编码。
+
 
 ## <a name="next-steps"></a>后续步骤
 

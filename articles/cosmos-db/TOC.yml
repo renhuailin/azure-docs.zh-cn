@@ -145,26 +145,26 @@
         - name: 创建 Cosmos DB 资源
           items:
             - name: Azure 门户
-              href: create-cosmosdb-resources-portal.md
+              href: sql/create-cosmosdb-resources-portal.md
             - name: ARM 模板
               displayName: Resource Manager
-              href: quick-create-template.md
+              href: sql/quick-create-template.md
             - name: .NET 应用 - V4 SDK
-              href: create-sql-api-dotnet-v4.md
+              href: sql/create-sql-api-dotnet-v4.md
             - name: .NET 应用 - V3 SDK
-              href: create-sql-api-dotnet.md
+              href: sql/create-sql-api-dotnet.md
             - name: Java 应用
-              href: create-sql-api-java.md
+              href: sql/create-sql-api-java.md
             - name: Spring Data 应用
-              href: create-sql-api-spring-data.md
+              href: sql/create-sql-api-spring-data.md
             - name: Spark v3 应用
-              href: create-sql-api-spark.md
+              href: sql/create-sql-api-spark.md
             - name: Node.js 应用
-              href: create-sql-api-nodejs.md
+              href: sql/create-sql-api-nodejs.md
             - name: Python 应用
-              href: create-sql-api-python.md
+              href: sql/create-sql-api-python.md
             - name: Xamarin 应用
-              href: create-sql-api-xamarin-dotnet.md
+              href: sql/create-sql-api-xamarin-dotnet.md
     - name: 教程
       items:
         - name: 1 - 创建和管理数据
@@ -172,69 +172,69 @@
             - name: 构建控制台应用
               items:
                 - name: .NET
-                  href: sql-api-get-started.md
+                  href: sql/sql-api-get-started.md
                 - name: Java
-                  href: ./create-sql-api-java.md
+                  href: sql/create-sql-api-java.md
                 - name: 异步 Java
-                  href: ./create-sql-api-java.md
+                  href: sql/create-sql-api-java.md
                 - name: Node.js
-                  href: sql-api-nodejs-get-started.md
+                  href: sql/sql-api-nodejs-get-started.md
             - name: 构建 Web 应用
               items:
                 - name: .NET
-                  href: sql-api-dotnet-application.md
+                  href: sql/sql-api-dotnet-application.md
                 - name: Java
-                  href: sql-api-java-application.md
+                  href: sql/sql-api-java-application.md
                 - name: Node.js
-                  href: sql-api-nodejs-application.md
+                  href: sql/sql-api-nodejs-application.md
             - name: 构建移动应用
               items:
                 - name: Xamarin
-                  href: mobile-apps-with-xamarin.md
+                  href: sql/mobile-apps-with-xamarin.md
         - name: 2 - 迁移数据
           items:
             - name: 使用数据迁移工具
               href: import-data.md
             - name: 使用 .NET 批量支持
-              href: tutorial-sql-api-dotnet-bulk-import.md
+              href: sql/tutorial-sql-api-dotnet-bulk-import.md
         - name: 3 - 查询数据
-          href: tutorial-query-sql-api.md
+          href: sql/tutorial-query-sql-api.md
         - name: 4 - 创建笔记本
-          href: create-notebook-visualize-data.md
+          href: sql/create-notebook-visualize-data.md
         - name: 5 - 全球分配数据
-          href: tutorial-global-distribution-sql-api.md
+          href: sql/tutorial-global-distribution-sql-api.md
     - name: 示例
       items:
         - name: .NET V2 SDK 示例
-          href: sql-api-dotnet-samples.md
+          href: sql/sql-api-dotnet-samples.md
         - name: .NET V3 SDK 示例
-          href: sql-api-dotnet-v3sdk-samples.md
+          href: sql/sql-api-dotnet-v3sdk-samples.md
         - name: Java SDK v4 示例
-          href: sql-api-java-sdk-samples.md
+          href: sql/sql-api-java-sdk-samples.md
         - name: Spring Data v3 示例
-          href: sql-api-spring-data-sdk-samples.md
+          href: sql/sql-api-spring-data-sdk-samples.md
         - name: Node.js 示例
-          href: sql-api-nodejs-samples.md
+          href: sql/sql-api-nodejs-samples.md
         - name: Python 示例
-          href: sql-api-python-samples.md
+          href: sql/sql-api-python-samples.md
         - name: PowerShell
-          href: powershell-samples.md
+          href: sql/powershell-samples.md
         - name: Azure CLI
-          href: cli-samples.md
+          href: sql/cli-samples.md
         - name: Azure 资源管理器
-          href: templates-samples-sql.md
+          href: sql/templates-samples-sql.md
     - name: 概念
       items:
         - name: 建模和分区
           items:
             - name: 模型文档数据
               displayName: document
-              href: modeling-data.md
+              href: sql/modeling-data.md
             - name: 建模和分区 - 实际示例
               displayName: 'model, partition, example'
-              href: how-to-model-partition-example.md
+              href: sql/how-to-model-partition-example.md
             - name: 合成分区键
-              href: synthetic-partition-keys.md
+              href: sql/synthetic-partition-keys.md
         - name: SQL 查询 (SQL query)
           items:
             - name: 入门
@@ -588,7 +588,7 @@
                   href: sql/sql-query-geospatial-index.md
             - name: DateTime
               displayName: 'datetime, date, time'
-              href: working-with-dates.md
+              href: sql/working-with-dates.md
             - name: 参数化查询
               displayName: 'parameterized query, parameterized, parameter, parameters'
               href: sql/sql-query-parameterized-queries.md
@@ -605,32 +605,32 @@
               href: index-overview.md
             - name: 生存时间
               displayName: 'delete, delete data, ttl'
-              href: time-to-live.md
+              href: sql/time-to-live.md
             - name: 唯一键约束
               href: unique-keys.md
             - name: 事务和乐观并发控制
-              href: database-transactions-optimistic-concurrency.md
+              href: sql/database-transactions-optimistic-concurrency.md
             - name: Attachments
               href: attachments.md
         - name: 更改源
           items:
             - name: 更改源设计模式
-              href: change-feed-design-patterns.md
+              href: sql/change-feed-design-patterns.md
             - name: 读取更改源
-              href: read-change-feed.md
-            - name: 更改源处理器
-              href: change-feed-processor.md
+              href: sql/read-change-feed.md
+            - name: sql/更改源处理器
+              href: sql/change-feed-processor.md
             - name: 触发 Azure Functions
               displayName: change feed
-              href: change-feed-functions.md
+              href: sql/change-feed-functions.md
             - name: 更改源请求模型
-              href: change-feed-pull-model.md
+              href: sql/change-feed-pull-model.md
         - name: 服务器端编程
           items:
             - name: 存储过程、触发器和 UDF
-              href: stored-procedures-triggers-udfs.md
+              href: sql/stored-procedures-triggers-udfs.md
             - name: JavaScript 查询 API
-              href: javascript-query-api.md
+              href: sql/javascript-query-api.md
         - name: 集成缓存
           items:
             - name: 专用网关概述
@@ -645,208 +645,208 @@
               displayName: 'primary key, resource token, users, roles'
               href: secure-access-to-data.md
             - name: 高级威胁防护
-              href: cosmos-db-advanced-threat-protection.md
+              href: sql/advanced-threat-protection.md
         - name: 连接模式
-          href: sql-sdk-connection-modes.md
+          href: sql/sql-sdk-connection-modes.md
     - name: 操作指南
       items:
         - name: 全球分布
           items:
             - name: 配置多区域写入
-              href: how-to-multi-master.md
+              href: sql/how-to-multi-master.md
             - name: 管理一致性级别
               displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
-              href: how-to-manage-consistency.md
+              href: sql/how-to-manage-consistency.md
             - name: 配置冲突解决策略
-              href: how-to-manage-conflicts.md
+              href: sql/how-to-manage-conflicts.md
             - name: 转换会话令牌格式
-              href: how-to-convert-session-token.md
+              href: sql/how-to-convert-session-token.md
         - name: 容量
           items:
             - name: 预配的吞吐量
               items:
                 - name: 预配标准（手动）吞吐量 - 容器
                   displayName: 'request units, RUs, RU, collection level'
-                  href: how-to-provision-container-throughput.md
+                  href: sql/how-to-provision-container-throughput.md
                 - name: 预配标准（手动）吞吐量 - 数据库
                   displayName: 'request units, RUs, RU, shared throughput, database level'
-                  href: how-to-provision-database-throughput.md
+                  href: sql/how-to-provision-database-throughput.md
                 - name: 预配自动缩放吞吐量 - 数据库或容器
                   displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
-                  href: how-to-provision-autoscale-throughput.md
+                  href: sql/how-to-provision-autoscale-throughput.md
                 - name: 使用容量规划器估算 RU/秒
                   displayName: 'request units, RUs, RU, capacity'
-                  href: estimate-ru-with-capacity-planner.md
+                  href: sql/estimate-ru-with-capacity-planner.md
                 - name: 使用 Azure Functions 计时器缩放
                   displayName: 'request units, RUs, RU, timer'
-                  href: scale-on-schedule.md
+                  href: sql/scale-on-schedule.md
             - name: 查找请求单位费用
               displayName: 'request units, RUs, RU, charge, consumption'
-              href: find-request-unit-charge.md
+              href: sql/find-request-unit-charge.md
         - name: 针对容器和项的操作
           items:
             - name: 创建容器 - SQL API
-              href: how-to-create-container.md
+              href: sql/how-to-create-container.md
             - name: 使用大型分区键创建容器
               href: large-partition-keys.md
             - name: 查询容器
-              href: how-to-query-container.md
+              href: sql/how-to-query-container.md
             - name: 迁移到分区的容器
-              href: migrate-containers-partitioned-to-nonpartitioned.md
+              href: sql/migrate-containers-partitioned-to-nonpartitioned.md
             - name: 配置生存时间
               displayName: 'delete, delete data, ttl'
-              href: how-to-time-to-live.md
+              href: sql/how-to-time-to-live.md
             - name: 定义唯一键
               href: how-to-define-unique-keys.md
             - name: 执行事务性批处理操作
-              href: transactional-batch.md
+              href: sql/transactional-batch.md
         - name: 最佳方案
           items:
             - name: .NET
-              href: best-practice-dotnet.md
+              href: sql/best-practice-dotnet.md
         - name: 性能
           items:
             - name: 查询
               items:
                 - name: 获取查询执行指标
-                  href: profile-sql-api-query.md
+                  href: sql/profile-sql-api-query.md
                 - name: 调整查询性能
-                  href: sql-api-query-metrics.md
+                  href: sql/sql-api-query-metrics.md
             - name: 索引
               items:
                 - name: 索引策略
                   displayName: 'consistent, none, indexing, policy'
                   href: index-policy.md
                 - name: 管理索引策略
-                  href: how-to-manage-indexing-policy.md
+                  href: sql/how-to-manage-indexing-policy.md
             - name: .NET
               items:
                 - name: .NET SDK v3 性能提示
-                  href: performance-tips-dotnet-sdk-v3-sql.md
+                  href: sql/performance-tips-dotnet-sdk-v3-sql.md
                 - name: .NET SDK v2 性能提示
-                  href: performance-tips.md
+                  href: sql/performance-tips.md
             - name: Java
               items:
                 - name: 适用于 Java SDK v4 的性能提示
-                  href: performance-tips-java-sdk-v4-sql.md
+                  href: sql/performance-tips-java-sdk-v4-sql.md
                 - name: Async Java SDK v2
-                  href: performance-tips-async-java.md
+                  href: sql/performance-tips-async-java.md
                 - name: Sync Java SDK v2
-                  href: performance-tips-java.md
+                  href: sql/performance-tips-java.md
             - name: 配置集成缓存
               href: how-to-configure-integrated-cache.md
             - name: 性能测试 - 示例应用
-              href: performance-testing.md
+              href: sql/performance-testing.md
             - name: 以经济高效的方式读取和写入
               href: key-value-store-cost.md
         - name: 迁移到更新的 SDK
           items:
             - name: 迁移到 Java V4 SDK
-              href: migrate-java-v4-sdk.md
+              href: sql/migrate-java-v4-sdk.md
             - name: 迁移到 .NET V3 SDK
-              href: migrate-dotnet-v3.md
+              href: sql/migrate-dotnet-v3.md
             - name: 迁移到 .NET V2 SDK
-              href: migrate-dotnet-v2.md
+              href: sql/migrate-dotnet-v2.md
         - name: 连接器
           items:
             - name: Kafka Connect
-              href: kafka-connector.md
+              href: sql/kafka-connector.md
             - name: Kafka Connect - 源
-              href: kafka-connector-source.md
+              href: sql/kafka-connector-source.md
             - name: Kafka Connect - 接收器
-              href: kafka-connector-sink.md
+              href: sql/kafka-connector-sink.md
         - name: 疑难解答
           items:
             - name: 常见错误
               items:
                 - name: 查询性能故障排除
-                  href: troubleshoot-query-performance.md
+                  href: sql/troubleshoot-query-performance.md
                 - name: 排查服务请求超时故障
-                  href: troubleshoot-request-timeout.md
+                  href: sql/troubleshoot-request-timeout.md
                 - name: 排查请求速率过大故障
-                  href: troubleshoot-request-rate-too-large.md
+                  href: sql/troubleshoot-request-rate-too-large.md
                 - name: 未找到疑难解答
-                  href: troubleshoot-not-found.md
+                  href: sql/troubleshoot-not-found.md
                 - name: 故障排除未经授权
-                  href: troubleshoot-unauthorized.md
+                  href: sql/troubleshoot-unauthorized.md
                 - name: 故障排除被禁止
-                  href: troubleshoot-forbidden.md
+                  href: sql/troubleshoot-forbidden.md
                 - name: 排查错误请求
-                  href: troubleshoot-bad-request.md
+                  href: sql/troubleshoot-bad-request.md
                 - name: 多区域环境中的可用性问题
-                  href: troubleshoot-sdk-availability.md
+                  href: sql/troubleshoot-sdk-availability.md
             - name: .NET
               items:
                 - name: 排查 .NET SDK 常规故障
-                  href: troubleshoot-dot-net-sdk.md
+                  href: sql/troubleshoot-dot-net-sdk.md
                 - name: 排查请求标头太大故障
-                  href: troubleshoot-dot-net-sdk-request-header-too-large.md
+                  href: sql/troubleshoot-dot-net-sdk-request-header-too-large.md
                 - name: 排查请求超时故障
-                  href: troubleshoot-dot-net-sdk-request-timeout.md
+                  href: sql/troubleshoot-dot-net-sdk-request-timeout.md
                 - name: 排查请求速度缓慢的问题
-                  href: troubleshoot-dot-net-sdk-slow-request.md
+                  href: sql/troubleshoot-dot-net-sdk-slow-request.md
                 - name: 排查服务不可用故障
                   href: troubleshoot-service-unavailable.md
             - name: .Java
               items:
                 - name: 排查 Java SDK v4 问题
-                  href: troubleshoot-java-sdk-v4-sql.md
+                  href: sql/troubleshoot-java-sdk-v4-sql.md
                 - name: 排查请求超时故障
-                  href: troubleshoot-request-timeout-java-sdk-v4-sql.md
+                  href: sql/troubleshoot-request-timeout-java-sdk-v4-sql.md
                 - name: 排查服务不可用故障
-                  href: troubleshoot-service-unavailable-java-sdk-v4-sql.md
+                  href: sql/troubleshoot-service-unavailable-java-sdk-v4-sql.md
                 - name: 排除故障 - Async Java SDK v2
-                  href: troubleshoot-java-async-sdk.md
+                  href: sql/troubleshoot-java-async-sdk.md
         - name: 更改源
           items:
             - name: Azure Cosmos DB 触发器高级配置
-              href: how-to-configure-cosmos-db-trigger.md
+              href: sql/how-to-configure-cosmos-db-trigger.md
             - name: 多个 Azure Cosmos DB 触发器
-              href: how-to-create-multiple-cosmos-db-triggers.md
+              href: sql/how-to-create-multiple-cosmos-db-triggers.md
             - name: 排查 Azure Cosmos DB 触发器问题
-              href: troubleshoot-changefeed-functions.md
+              href: sql/troubleshoot-changefeed-functions.md
             - name: 使用更改源估算器
-              href: how-to-use-change-feed-estimator.md
+              href: sql/how-to-use-change-feed-estimator.md
             - name: 从更改源处理器库迁移
-              href: how-to-migrate-from-change-feed-library.md
+              href: sql/how-to-migrate-from-change-feed-library.md
             - name: 更改源 - Async Java 示例
-              href: create-sql-api-java-changefeed.md
+              href: sql/create-sql-api-java-changefeed.md
         - name: 服务器端编程
           items:
             - name: 编写存储过程、触发器和 UDF
-              href: how-to-write-stored-procedures-triggers-udfs.md
+              href: sql/how-to-write-stored-procedures-triggers-udfs.md
             - name: 使用 JavaScript 查询 API 编写存储过程和触发器
-              href: how-to-write-javascript-query-api.md
+              href: sql/how-to-write-javascript-query-api.md
             - name: 使用存储过程、触发器和 UDF
-              href: how-to-use-stored-procedures-triggers-udfs.md
+              href: sql/how-to-use-stored-procedures-triggers-udfs.md
         - name: 内置的 Jupyter 笔记本
           items:
             - name: 启用笔记本
-              href: enable-notebooks.md
+              href: sql/enable-notebooks.md
             - name: 从 GitHub 导入笔记本
-              href: import-github-notebooks.md
+              href: sql/import-github-notebooks.md
             - name: 将笔记本发布到库
-              href: publish-notebook-gallery.md
+              href: sql/publish-notebook-gallery.md
             - name: 使用内置 Python 笔记本命令
-              href: use-python-notebook-features-and-commands.md
+              href: sql/use-python-notebook-features-and-commands.md
             - name: 使用内置 C# 笔记本命令
-              href: use-csharp-notebook-features-and-commands.md
+              href: sql/use-csharp-notebook-features-and-commands.md
         - name: 批量执行程序库
           items:
             - name: 关于批量执行程序库
               href: bulk-executor-overview.md
             - name: 批量执行程序 - .NET 库
-              href: bulk-executor-dot-net.md
+              href: sql/bulk-executor-dot-net.md
             - name: 从批量执行程序迁移到 .NET SDK
-              href: how-to-migrate-from-bulk-executor-library.md
+              href: sql/how-to-migrate-from-bulk-executor-library.md
             - name: 批量执行程序 - Java 库
-              href: bulk-executor-java.md
+              href: sql/bulk-executor-java.md
         - name: 将 Cosmos DB 数据可视化
           items:
             - name: 使用 Power BI
-              href: powerbi-visualize.md
+              href: sql/powerbi-visualize.md
             - name: 创建实时天气仪表板
-              href: create-real-time-weather-dashboard-powerbi.md
+              href: sql/create-real-time-weather-dashboard-powerbi.md
             - name: 使用 Qlik Sense
               href: visualize-qlik-sense.md
         - name: 将内置分析功能与 Apache Spark 配合使用
@@ -856,17 +856,17 @@
         - name: 将数据迁移到 Cosmos DB
           items:
             - name: 使用 Striim 迁移到 SQL API
-              href: cosmosdb-sql-api-migrate-data-striim.md
+              href: sql/migrate-data-striim.md
             - name: 迁移一对多关系数据
-              href: migrate-relational-to-cosmos-db-sql-api.md
+              href: sql/migrate-relational-to-cosmos-db-sql-api.md
             - name: 迁移 - Couchbase 到 SQL API
-              href: couchbase-cosmos-migration.md
+              href: sql/couchbase-cosmos-migration.md
             - name: 迁移 - DynamoDB 到 SQL API
-              href: dynamo-to-cosmos.md
+              href: sql/dynamo-to-cosmos.md
         - name: 安全
           items:
             - name: 配置跨源资源共享 (CORS)
-              href: how-to-configure-cross-origin-resource-sharing.md
+              href: sql/how-to-configure-cross-origin-resource-sharing.md
             - name: 配置基于角色的访问控制
               href: how-to-setup-rbac.md
               displayName: 'aad, active directory, rbac'
@@ -874,25 +874,25 @@
               href: managed-identity-based-authentication.md
               displayName: 'msi, managed service identity, aad, azure active directory, identity'
             - name: 使用证书访问数据
-              href: certificate-based-authentication.md
+              href: sql/certificate-based-authentication.md
             - name: 使用“始终加密”
               href: how-to-always-encrypted.md
         - name: 客户端开发
           items:
             - name: 会话状态和缓存提供程序
-              href: session-state-and-caching-provider.md
+              href: sql/session-state-and-caching-provider.md
         - name: 与其他 Azure 服务集成
           items:
             - name: 更改源电子商务解决方案
               href: changefeed-ecommerce-solution.md
             - name: Azure 应用服务
-              href: create-website.md
+              href: sql/create-website.md
             - name: Azure 认知搜索索引器
               href: ../search/search-howto-index-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Azure Functions
               items:
                 - name: 无服务器计算
-                  href: serverless-computing-database.md
+                  href: sql/serverless-computing-database.md
                 - name: Azure Function 绑定
                   href: ../azure-functions/functions-bindings-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Azure 数据工厂
@@ -908,45 +908,45 @@
             - name: Spring Data 开发人员指南
               href: /azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: ODBC 驱动程序
-              href: odbc-driver.md
+              href: sql/odbc-driver.md
     - name: 参考
       items:
         - name: .NET SDK
           items:
             - name: .NET SDK v3
-              href: sql-api-sdk-dotnet-standard.md
+              href: sql/sql-api-sdk-dotnet-standard.md
             - name: .NET SDK v2
-              href: sql-api-sdk-dotnet.md
+              href: sql/sql-api-sdk-dotnet.md
             - name: .NET Core SDK v2
-              href: sql-api-sdk-dotnet-core.md
+              href: sql/sql-api-sdk-dotnet-core.md
             - name: .NET 更改源库 v2
-              href: sql-api-sdk-dotnet-changefeed.md
+              href: sql/sql-api-sdk-dotnet-changefeed.md
             - name: .NET 批量执行程序库 v2
-              href: sql-api-sdk-bulk-executor-dot-net.md
+              href: sql/sql-api-sdk-bulk-executor-dot-net.md
         - name: Java SDK 和连接符
           items:
             - name: Java SDK v4
-              href: sql-api-sdk-java-v4.md
+              href: sql/sql-api-sdk-java-v4.md
             - name: Async Java SDK v2
-              href: sql-api-sdk-async-java.md
+              href: sql/sql-api-sdk-async-java.md
             - name: Sync Java SDK v2
-              href: sql-api-sdk-java.md
+              href: sql/sql-api-sdk-java.md
             - name: Spring 数据连接器 v2
-              href: sql-api-sdk-java-spring-v2.md
+              href: sql/sql-api-sdk-java-spring-v2.md
             - name: Spring 数据连接器 v3
-              href: sql-api-sdk-java-spring-v3.md
+              href: sql/sql-api-sdk-java-spring-v3.md
             - name: Spark 3 OLTP 连接器
-              href: sql-api-sdk-java-spark-v3.md
+              href: sql/sql-api-sdk-java-spark-v3.md
             - name: Spark 2 OLTP 连接器
-              href: sql-api-sdk-java-spark.md
+              href: sql/sql-api-sdk-java-spark.md
             - name: Java 批量执行程序库 v2
-              href: sql-api-sdk-bulk-executor-java.md
+              href: sql/sql-api-sdk-bulk-executor-java.md
         - name: Azure CLI
           href: /cli/azure/azure-cli-reference-for-cosmos-db
         - name: Node.js
-          href: sql-api-sdk-node.md
+          href: sql/sql-api-sdk-node.md
         - name: Python
-          href: sql-api-sdk-python.md
+          href: sql/sql-api-sdk-python.md
         - name: REST（数据平面）
           href: /rest/api/cosmos-db/
         - name: REST（管理平面）
@@ -1401,11 +1401,11 @@
         - name: 管理 Azure Cosmos 帐户
           href: how-to-manage-database-account.md
         - name: 使用 PowerShell
-          href: manage-with-powershell.md
+          href: sql/manage-with-powershell.md
         - name: 使用 Azure CLI
-          href: manage-with-cli.md
+          href: sql/manage-with-cli.md
         - name: 使用资源管理器模板
-          href: manage-with-templates.md
+          href: sql/manage-with-templates.md
           displayName: ARM
         - name: 在区域之间移动
           href: how-to-move-regions.md
@@ -1447,7 +1447,9 @@
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 分析存储和专用终结点
           href: analytical-store-private-endpoints.md
-        - name: 使用 Azure Synapse Spark 进行查询
+        - name: 使用 Azure Synapse Spark 3 进行查询
+          href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: 使用 Azure Synapse Spark 2 进行查询
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 使用无服务器 SQL 池进行查询
           href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
@@ -1489,7 +1491,7 @@
     - name: 企业就绪情况
       items:
         - name: 请求增加配额
-          href: create-support-request-quota-increase.md
+          href: sql/create-support-request-quota-increase.md
     - name: 监视
       items:
         - name: 监视 Cosmos DB
@@ -1535,7 +1537,7 @@
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/?products=azure-cosmos-db
     - name: 查询备忘单
-      href: query-cheat-sheet.md
+      href: sql/query-cheat-sheet.md
     - name: 常见问题解答
       href: faq.yml
     - name: 白皮书

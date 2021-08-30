@@ -1,19 +1,19 @@
 ---
 title: Azure IoT 中心设备预配服务 - TPM 证明
 description: 本文以概念的方式概述了使用 IoT 设备预配服务 (DPS) 的 TPM 证明流。
-author: nberdy
-ms.author: nberdy
-ms.date: 04/04/2019
+author: wesmc7777
+ms.author: wesmc
+ms.date: 06/21/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 12860629d78391ed271306daba29a51aeb326c1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e670b0feabfe785712dc7140bcc594b770783e74
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90531587"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457869"
 ---
 # <a name="tpm-attestation"></a>TPM 证明
 
@@ -68,4 +68,5 @@ TPM 还有另一类密钥，称为存储根密钥 (SRK)。 SRK 可以由 TPM 的
 设备连接到 IoT 中心以后，你就可以确信设备的密钥已安全地存储。 了解设备预配服务如何使用 TPM 安全地验证设备的标识以后，若要学习更多内容，请查看以下文章：
 
 * [了解预配的概念](about-iot-dps.md#provisioning-process)
-* [自动预配入门](./quick-setup-auto-provision.md)：使用 SDK 来管理流。
+* [自动预配入门](./quick-setup-auto-provision.md) 
+* [使用 SDK 创建 TPM 注册](./quick-enroll-device-tpm-java.md)

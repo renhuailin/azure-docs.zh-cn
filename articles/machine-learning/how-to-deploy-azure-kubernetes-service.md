@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/28/2021
-ms.openlocfilehash: 9f4147cd349bd1865f29791432c3b0f0cf796292
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: a620d1cbd9ae0f9a4f03e6bf744cf2febd8ac240
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662279"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736520"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 
@@ -166,7 +166,6 @@ Azureml-fe 会纵向（垂直）扩展以使用更多的核心，并会横向（
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
 from azureml.core.model import Model
-from azureml.core.compute import AksCompute
 
 aks_target = AksCompute(ws,"myaks")
 # If deploying to a cluster configured for dev/test, ensure that it was created with enough

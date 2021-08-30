@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2021
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6537728feb2145520ee49457b00d9944d5967c9f
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 656d72663045b4604b9a94cbc686150925caca83
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072976"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112202033"
 ---
 # <a name="maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-azure-portal"></a>使用 Azure 门户为 Azure 虚拟机规模集上的 OS 映像升级进行维护控制
 
@@ -60,7 +60,7 @@ ms.locfileid: "112072976"
 
 ![屏幕截图显示了如何分配资源](media/virtual-machine-scale-sets-maintenance-control-portal/maintenance-configurations-add-assignment.png)
 
-选择要将维护配置分配到的资源，然后选择“确定”。 “类型”列显示资源是独立 VM 还是 Azure 专用主机。 VM 需要处于运行状态才能分配配置。 如果尝试将配置分配给已停止的 VM，则会出现错误。 
+选择要将维护配置分配到的虚拟机规模集资源，然后选择“确定”。  
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,29 +6,31 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 01/29/2021
-ms.openlocfilehash: 224f46f16f03f53009c3f7beb55d252c5ce5e1e7
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 08/03/2021
+ms.openlocfilehash: 330f102dffb392540879d8d583e02a68fbe436c7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316148"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745166"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL 超大规模 (Citus) 中的审核日志记录
 
-Azure Database for PostgreSQL 超大规模 (Citus) 中数据库活动的审核日志记录可以通过 PostgreSQL 审核扩展 [pgAudit](https://www.pgaudit.org/) 来获取。 pgAudit 提供详细的会话和/或对象审核日志记录。
-
 > [!IMPORTANT]
-> pgAudit 在 Azure Database for PostgreSQL 超大规模 (Citus) 上为预览版
+> Hyperscale (Citus) 中的 pgAudit 扩展目前处于预览状态。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+>
+> 请参阅[超大规模 (Citus) 的预览功能](hyperscale-preview-features.md)，以查看其他新功能的完整列表。
+
+Azure Database for PostgreSQL 超大规模 (Citus) 中数据库活动的审核日志记录可以通过 PostgreSQL 审核扩展 [pgAudit](https://www.pgaudit.org/) 来获取。 pgAudit 提供详细的会话或对象审核日志记录。
 
 如果需要对计算和存储缩放之类的操作进行 Azure 资源级别的日志记录，请参阅 [Azure 活动日志](../azure-monitor/essentials/platform-logs-overview.md)。
 
 ## <a name="usage-considerations"></a>使用注意事项
-默认情况下，使用 Postgres 的标准日志记录设备将 pgAudit 日志语句与常规日志语句一起发出。 在 Azure Database for PostgreSQL 超大规模 (Citus) 中，可将所有日志配置为发送到 Azure Monitor 日志存储，以供将来在 Log Analytics 中进行分析。 如果启用 Azure Monitor 资源日志记录，系统会将日志（以 JSON 格式）自动发送到 Azure 存储、事件中心和/或 Azure Monitor 日志，具体取决于你的选择。
+默认情况下，使用 Postgres 的标准日志记录设备将 pgAudit 日志语句与常规日志语句一起发出。 在 Azure Database for PostgreSQL 超大规模 (Citus) 中，可将所有日志配置为发送到 Azure Monitor 日志存储，以供将来在 Log Analytics 中进行分析。 如果启用 Azure Monitor 资源日志记录，系统会将日志（以 JSON 格式）自动发送到 Azure 存储、事件中心或 Azure Monitor 日志，具体取决于你的选择。
 
 ## <a name="enabling-pgaudit"></a>启用 pgAudit
 
-PgAudit 扩展在所有超大规模 (Citus) 服务器组节点上预安装和启用。 无需执行任何操作即可启用。
+pgAudit 扩展在大多数超大规模 (Citus) 服务器组节点上已预安装和启用。 如果它未在节点上启用，请打开[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 ## <a name="pgaudit-settings"></a>pgAudit 设置
 
@@ -39,7 +41,7 @@ PgAudit 扩展在所有超大规模 (Citus) 服务器组节点上预安装和启
 >
 > 此外，pgAudit 设置是按服务器组中的每个节点指定的。 若要在所有节点上进行更改，必须将其单独应用到每个节点。
 
-必须将 pgAudit 参数配置为开始记录。 [pgAudit 文档](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings)提供每个参数的定义。 请先测试参数，确认获取的是预期的行为。
+必须将 pgAudit 参数配置为开始记录。 [pgAudit 文档](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings)提供每个参数的定义。 请先测试参数，确认获取的是预期行为。
 
 > [!NOTE]
 > 将 `pgaudit.log_client` 设置为 ON 会将日志重定向到客户端进程（例如 psql）而不是写入文件。 通常应让此设置保持禁用状态。 <br> <br>

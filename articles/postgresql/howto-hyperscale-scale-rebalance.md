@@ -6,17 +6,17 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/09/2021
-ms.openlocfilehash: 63322fac4c6ad5b705deedcd8a80466ddd803814
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 07/20/2021
+ms.openlocfilehash: 19b44306185dcfcdd3675898b9066019f686dc75
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305695"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463550"
 ---
 # <a name="rebalance-shards-in-hyperscale-citus-server-group"></a>在超大规模 (Citus) 服务器组中再平衡分片
 
-若要利用新添加的节点，必须再平衡分布式表[分片](concepts-hyperscale-distributed-data.md#shards)，这意味着将一些分片从现有节点移到新节点。
+若要利用新添加的节点，必须再平衡分布式表[分片](concepts-hyperscale-distributed-data.md#shards)，这意味着将一些分片从现有节点移到新节点。 超大规模 (Citus) 提供零停机时间重新平衡，意味着查询可以在分片重新平衡期间运行，而不会中断。
 
 ## <a name="determine-if-the-server-group-needs-a-rebalance"></a>确定服务器组是否需要再平衡
 

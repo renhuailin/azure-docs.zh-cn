@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 90d037fc02bdc1c4d6fe682386790561c890c1e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b84150196467606800df737ba9c9d50c69346e30
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100213"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093582"
 ---
 # <a name="add-controls-to-a-map-android-sdk"></a>向地图添加控件 (Android SDK)
 
@@ -126,7 +126,7 @@ map.controls.add(TrafficControl())
 
 ## <a name="a-map-with-all-controls"></a>包含所有控件的地图
 
-可以将多个控件放入一个数组中，然后将其一次性添加到地图中，并放置在地图的同一区域以简化开发。 下面使用这种方法将标准导航控件添加到地图。
+可以将多个控件放入一个数组并同时添加到地图中，然后放置在地图的相同区域，以简化开发。 下面的代码使用这种方法将标准导航控件添加到地图中。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -158,7 +158,7 @@ map.controls.add(
 
 ::: zone-end
 
-下面的屏幕截图显示了地图上加载的所有控件。 请注意，它们添加到地图的顺序就是它们的显示顺序。
+下面的屏幕截图显示了地图上加载的所有控件。 它们添加到地图的顺序就是它们的显示顺序。
 
 ![已添加到地图的所有控件](media/map-add-controls-android/android-all-controls.jpg)
 

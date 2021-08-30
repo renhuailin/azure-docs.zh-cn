@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥配置加密（预览版）
+title: 使用 Azure Key Vault 托管 HSM 中存储的客户管理的密钥配置加密
 titleSuffix: Azure Storage
-description: 了解如何通过使用 Azure CLI 来使用 Azure Key Vault 管理的 HSM（预览版）中存储的客户管理的密钥配置 Azure 存储加密。
+description: 了解如何通过使用 Azure CLI 来使用 Azure Key Vault 管理的 HSM 中存储的客户管理的密钥配置 Azure 存储加密。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,20 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f340ac18cb74523d64f4dbf8d6ae1d6f4559582a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 09f62865c80c05fd0860fa39b18d99c583cf3e56
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411874"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461616"
 ---
-# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥配置加密（预览版）
+# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm"></a>使用 Azure Key Vault 托管 HSM 中存储的客户管理的密钥配置加密
 
-Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了更进一步控制加密密钥，你可以管理自己的密钥。 客户管理的密钥必须存储在 Azure Key Vault 或 Key Vault 管理的硬件安全模型 (HSM)（预览版）中。 Azure Key Vault 管理的 HSM 是经过 FIPS 140-2 第 3 级验证的 HSM。
+Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了更进一步控制加密密钥，你可以管理自己的密钥。 客户管理的密钥必须存储在 Azure Key Vault 或 Key Vault 托管硬件安全模型 (HSM) 中。 Azure Key Vault 管理的 HSM 是经过 FIPS 140-2 第 3 级验证的 HSM。
 
 本文介绍如何通过使用 Azure CLI 来使用存储在托管的 HSM 中的客户管理的密钥配置加密。 若要了解如何使用密钥保管库中存储的客户管理的密钥来配置加密，请参阅[使用 Azure Key Vault 中存储的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault.md)。
 
-> [!IMPORTANT]
->
-> 使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥进行加密目前是一项 **预览版** 功能。 有关 beta 版本、预览版或尚未正式发布的版本的 Azure 功能所适用的法律条款，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
+> [!NOTE]
 > Azure 密钥保管库和 Azure 密钥保管库托管 HSM 支持使用相同的 API 和管理界面进行配置。
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>将标识分配到存储帐户

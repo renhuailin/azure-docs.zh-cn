@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
-ms.openlocfilehash: 1df132e558421d2ec6e26c3883c89457716dfc42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c22465ab66e1425139a8440a2b4ca9e0e5e539a
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419008"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397354"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>为 Azure 网络接口添加、更改或删除 IP 地址
 
@@ -37,7 +37,7 @@ ms.locfileid: "103419008"
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
 - 如果使用门户，请打开 https://portal.azure.com ，并使用 Azure 帐户登录。
-- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 必须将登录或连接到 Azure 所用的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有“[网络接口权限](virtual-network-network-interface.md#permissions)”中所列适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
@@ -136,16 +136,14 @@ ms.locfileid: "103419008"
 
 默认情况下，Azure DHCP 服务器将 Azure 网络接口的[主要 IP 配置](#primary)的专用 IPv4 地址分配给虚拟机操作系统内的网络接口。 除非必要，永远不应当在虚拟机操作系统中手动设置网络接口的 IP 地址。
 
-> [!WARNING]
-> 如果在虚拟机操作系统中设置为网络接口的主要 IP 地址的 IPv4 地址曾经不同于为附加到 Azure 中的虚拟机的主要网络接口的主要 IP 配置分配的专用 IPv4 地址，则会失去到虚拟机的连接。
+在许多方案中，需要手动设置虚拟机操作系统内的网络接口的 IP 地址。 例如，在向 Azure 虚拟机添加多个 IP 地址时，必须手动设置 Windows 操作系统的主要和辅助 IP 地址。 对于 Linux 虚拟机，只需手动设置辅助 IP 地址。 有关详细信息，请参阅[向 VM 操作系统添加 IP 地址](virtual-network-multiple-ip-addresses-portal.md#os-config)。 如果需要更改分配给 IP 配置的地址，我们建议：
 
-在许多方案中，需要手动设置虚拟机操作系统内的网络接口的 IP 地址。 例如，在向 Azure 虚拟机添加多个 IP 地址时，必须手动设置 Windows 操作系统的主要和辅助 IP 地址。 对于 Linux 虚拟机，可能只需要手动设置辅助 IP 地址。 有关详细信息，请参阅[向 VM 操作系统添加 IP 地址](virtual-network-multiple-ip-addresses-portal.md#os-config)。 如果需要更改分配给 IP 配置的地址，我们建议：
-
-1. 确保虚拟机接收来自 Azure DHCP 服务器的地址。 之后，将分配的 IP 地址更改回到操作系统中的 DHCP，并重新启动虚拟机。
-2. 关闭（解除分配）虚拟机。
-3. 在 Azure 中更改 IP 配置的 IP 地址。
-4. 启动虚拟机。
-5. 在操作系统中[手动配置](virtual-network-multiple-ip-addresses-portal.md#os-config)辅助 IP 地址（在 Windows 内还需要配置主要 IP 地址）以配置在 Azure.
+1. 确保虚拟机从 Azure DHCP 服务器接收主 IP 地址。 如果运行 Linux VM，请勿在操作系统中设置此地址。
+2. 删除要更改的 IP 配置。
+3. 使用要设置的新地址创建一个新的 IP 配置。
+4. 在操作系统中[手动配置](virtual-network-multiple-ip-addresses-portal.md#os-config)辅助 IP 地址（在 Windows 内还需要配置主要 IP 地址）以配置在 Azure. 不要在 Linux 的 OS 网络配置中手动设置主 IP 地址，否则它在重新加载配置后可能无法连接到 Internet。
+5. 重新加载来宾操作系统上的网络配置。 只需重启系统，或在运行 NetworkManager 的 Linux 系统中运行“nmcli con down "System eth0 && nmcli con up "System eth0"”，即可完成此操作。
+6. 验证网络设置是否符合需求。 测试系统的所有 IP 地址的连接性。
 
 通过遵循上述步骤，在 Azure 中分配给网络接口的专用 IP 地址与在虚拟机操作系统中分配的地址会保持相同。 为了跟踪在操作系统中为订阅中的哪些虚拟机手动设置了 IP 地址，请考虑向虚拟机添加一个 Azure [标记](../azure-resource-manager/management/tag-resources.md)。 例如，可以使用“IP 地址分配: 静态”。 这样，可以轻松找到订阅中在操作系统中手动为其设置了 IP 地址的虚拟机。
 

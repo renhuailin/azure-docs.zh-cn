@@ -5,14 +5,14 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: fa40ab22f0c1ebf47bb490a50f782a848d1441e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7aad80816a7bf8f6a1c55c8a4f1de1d4761fc523
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182105"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733596"
 ---
-# <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes 服务 (AKS) 中为 Azure 磁盘和 Azure 文件存储启用容器存储接口 (CSI) 驱动程序（预览版）
+# <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中为 Azure 磁盘和 Azure 文件存储启用容器存储接口 (CSI) 驱动程序
 
 容器存储接口 (CSI) 是有关在 Kubernetes 上的容器化工作负载中公开任意块和文件存储系统的一套标准。 Azure Kubernetes 服务 (AKS) 可以采用 CSI 来编写、部署和迭代插件，以在 Kubernetes 中公开新的或改进现有的存储系统，而无需改动核心 Kubernetes 代码并等待经历代码发布周期。
 
@@ -29,47 +29,7 @@ ms.locfileid: "102182105"
 
 - 只能在创建群集时设置此功能。
 - 支持 CSI 驱动程序的最低 Kubernetes 次要版本为 v1.17。
-- 在预览期，默认存储类仍与[树中存储类相同](concepts-storage.md#storage-classes)。 在此功能推出正式版后，默认存储类将是 `managed-csi` 存储类，而树中存储类将被删除。
-- 在第一个预览阶段，仅支持 Azure CLI。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-### <a name="register-the-enableazurediskfilecsidriver-preview-feature"></a>注册 `EnableAzureDiskFileCSIDriver` 预览功能
-
-若要为 Azure 磁盘和 Azure 文件存储创建可使用 CSI 驱动程序的 AKS 群集，必须在订阅中启用 `EnableAzureDiskFileCSIDriver` 功能标志。
-
-使用 [az feature register][az-feature-register] 命令注册 `EnableAzureDiskFileCSIDriver` 功能标志，如以下示例所示：
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureDiskFileCSIDriver"
-```
-
-状态显示为“已注册”需要几分钟时间。 使用 [az feature list][az-feature-list] 命令验证注册状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureDiskFileCSIDriver')].{Name:name,State:properties.state}"
-```
-
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
-
-若要创建可使用 CSI 存储驱动程序的 AKS 群集或节点池，需要最新的 aks-preview Azure CLI 扩展。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展。 或者使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-``` 
-
+- 默认存储类将是 `managed-csi` 存储类。
 
 ## <a name="create-a-new-cluster-that-can-use-csi-storage-drivers"></a>创建可使用 CSI 存储驱动程序的新群集
 
@@ -86,7 +46,7 @@ az group create --name myResourceGroup --location canadacentral
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
-az aks create -g MyResourceGroup -n MyManagedCluster --network-plugin azure -k 1.17.9 --aks-custom-headers EnableAzureDiskFileCSIDriver=true
+az aks create -g MyResourceGroup -n MyManagedCluster --network-plugin azure  --aks-custom-headers EnableAzureDiskFileCSIDriver=true
 ```
 
 如果要在树存储驱动程序而不是 CSI 存储驱动程序中创建群集，可以省略自定义参数 `--aks-custom-headers`。
@@ -122,18 +82,18 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/disks-types.md
-[az-disk-list]: /cli/azure/disk#az-disk-list
-[az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
-[az-disk-create]: /cli/azure/disk#az-disk-create
-[az-disk-show]: /cli/azure/disk#az-disk-show
+[az-disk-list]: /cli/azure/disk#az_disk_list
+[az-snapshot-create]: /cli/azure/snapshot#az_snapshot_create
+[az-disk-create]: /cli/azure/disk#az_disk_create
+[az-disk-show]: /cli/azure/disk#az_disk_show
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

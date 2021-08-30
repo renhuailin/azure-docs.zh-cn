@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d9d63c7a703987d7b17e6e03d8b5596d5f1dfa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2500d1872c2c70c8d39afa0b564c35a8bb9bcb9b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560610"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747871"
 ---
 # <a name="securing-external-access-with-groups"></a>使用组保护外部访问 
 
-组是任何访问控制策略的重要组成部分。 Azure Active Directory (Azure AD) 安全组和 Microsoft 365 (M365) 组可用作对资源访问保护的基础。
+组是任何访问控制策略的重要组成部分。 Azure Active Directory (Azure AD) 安全组和 Microsoft 365 组可用作对资源访问保护的基础。
 
 组是用作以下访问控制机制的基础的最佳选项：
 
@@ -30,7 +30,7 @@ ms.locfileid: "102560610"
 
 * 权利管理访问包 
 
-* 对 M365 资源、Microsoft Teams 和 SharePoint 站点的访问权限
+* 对 Microsoft 365 资源、Microsoft Teams 和 SharePoint 站点的访问权限
 
 组具有以下角色：
 
@@ -52,7 +52,7 @@ ms.locfileid: "102560610"
 
       * 还可[在 Azure Active Directory 中设置自助服务组管理](../enterprise-users/groups-self-service-management.md)。 
 
-   * 默认情况下，所有用户均可创建 M365 组，并且组对租户中的所有（内部和外部）用户开放，以便加入。 
+   * 默认情况下，所有用户都可以创建 Microsoft 365 组和其他组，以便租户中的所有（内部和外部）用户加入。 
 
       * 可以限制只有特定安全组的成员才可[创建 Microsoft 365 组](/microsoft-365/solutions/manage-creation-of-groups)。 使用 Windows PowerShell 配置此设置。 
 
@@ -98,15 +98,15 @@ ms.locfileid: "102560610"
 
 ### <a name="types-of-groups"></a>组的类型
 
-Azure AD 安全组和 Microsoft 365 组均可从 Azure AD 门户或 M365 管理门户创建。 这两种类型都可用作保护外部访问的基础：
+Azure AD 安全组和 Microsoft 365 组均可从 Azure AD 门户或 Microsoft 365 管理门户中创建。 这两种类型都可用作保护外部访问的基础：
 
 |注意事项 | Azure AD 安全组（手动和动态）| Microsoft 365 组 |
 | - | - | - |
 | 组可以包含哪些内容？| 用户<br>组<br>服务主体<br>设备| 仅用户 |
-| 组在何处创建？| Azure AD 门户<br>M365 门户（若要支持邮件）<br>PowerShell<br>Microsoft Graph<br>最终用户门户| M365 门户<br>Azure AD 门户<br>PowerShell<br>Microsoft Graph<br>在 Microsoft 365 应用程序中 |
+| 组在何处创建？| Azure AD 门户<br>Microsoft 365 门户（若要支持邮件）<br>PowerShell<br>Microsoft Graph<br>最终用户门户| Microsoft 365 门户<br>Azure AD 门户<br>PowerShell<br>Microsoft Graph<br>在 Microsoft 365 应用程序中 |
 | 默认谁创建？| 管理员 <br>最终用户| 管理员<br>最终用户 |
 | 默认情况下可添加谁？| 内部用户（成员）| 来自任何组织的租户成员和来宾 |
-| 它授予什么内容的访问权限？| 仅分配给它的资源。| 所有组相关的资源：<br>（组邮箱、站点、团队、聊天和其他包含的 M365 资源）<br>添加到组中的任何其他资源 |
+| 它授予什么内容的访问权限？| 仅分配给它的资源。| 所有组相关的资源：<br>（组邮箱、站点、团队、聊天和其他包含的 Microsoft 365 资源）<br>添加到组中的任何其他资源 |
 | 可用于| 条件性访问<br>权利管理<br>组许可| 条件性访问<br>权利管理<br>敏感度标签 |
 
 
@@ -127,9 +127,9 @@ Azure AD 安全组和 Microsoft 365 组均可从 Azure AD 门户或 M365 管理�
 
 Azure AD 安全组还可用于：
 
-* 为 M365、Dynamics 365 和企业移动性和安全性等服务分配许可证。 有关详细信息，请参阅[基于组的许可](./active-directory-licensing-whatis-azure-portal.md)。
+* 为 Microsoft 365、Dynamics 365 和企业移动性和安全性等服务分配许可证。 有关详细信息，请参阅[基于组的许可](./active-directory-licensing-whatis-azure-portal.md)。
 
-* 分配提升的权限。 有关详细信息，请参阅[使用云组来管理角色分配（预览版）](../roles/groups-concept.md)。 
+* 分配提升的权限。 有关详细信息，请参阅[使用 Azure AD 组来管理角色分配](../roles/groups-concept.md)。 
 
 若要[在 Azure 门户中](./active-directory-groups-create-azure-portal.md)创建组，请导航到 Azure Active Directory，然后转到“组”。 还可使用 [PowerShell cmdlet](../enterprise-users/groups-settings-v2-cmdlets.md) 创建 Azure AD 安全组。 
 
@@ -150,9 +150,9 @@ Azure AD 安全组还可用于：
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365 组
 
-[Microsoft 365 组](/microsoft-365/admin/create-groups/office-365-groups)是驱动 M365 上所有访问的基础成员身份服务。 可通过 [Azure 门户](https://portal.azure.com/)或 [M365 门户](https://admin.microsoft.com/)来创建这种组。 创建 M365 组后，你可授予对用于协作的一组资源的访问权限。 有关这些资源的完整列表，请参阅[面向管理员的 Microsoft 365 组概述](/microsoft-365/admin/create-groups/office-365-groups)。
+[Microsoft 365 组](/microsoft-365/admin/create-groups/office-365-groups)是推动跨 Microsoft 365 的所有访问的基础成员身份服务。 可通过 [Azure 门户](https://portal.azure.com/)或 [Microsoft 365 门户](https://admin.microsoft.com/)来创建这些组。 创建 Microsoft 365 组后，你可授予对用于协作的一组资源的访问权限。 有关这些资源的完整列表，请参阅[面向管理员的 Microsoft 365 组概述](/microsoft-365/admin/create-groups/office-365-groups)。
 
-M365 组在角色方面有以下细微差别
+Microsoft 365 组在角色方面有以下细微差别
 
 * **所有者** - 组所有者可以添加或删除成员，并具有独特的权限，例如可从共享收件箱中删除会话或更改组设置。 组所有者可以重命名组、更新说明或图片等。
 
@@ -162,7 +162,7 @@ M365 组在角色方面有以下细微差别
 
  
 
-### <a name="m365-group-settings"></a>M365 组设置
+### <a name="microsoft-365-group-settings"></a>Microsoft 365 组设置
 
 在设置时，选择电子邮件别名、隐私以及是否为团队启用该组。 
 

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: f440ec76d3085e7a5ef7ec99f1a5a76c9c444ef9
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 71b365a2034e40831d4216f83d046c0b897bbe26
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205334"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729498"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 门户创建站点到站点连接（经典）
 
@@ -34,7 +34,7 @@ ms.locfileid: "108205334"
 
 在开始配置之前，请验证是否符合以下条件：
 
-* 确认要使用经典部署模型。 如果要使用资源管理器部署模型，请参阅[创建站点到站点连接（资源管理器）](./tutorial-site-to-site-portal.md)。 我们建议你使用资源管理器部署模型，因为经典模型是旧模型。
+* 确认要使用经典部署模型。 如果想要使用[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)，请参阅[创建站点到站点连接（资源管理器）](./tutorial-site-to-site-portal.md)。 我们建议你使用资源管理器部署模型，因为经典模型是旧模型。
 * 确保有一台兼容的 VPN 设备和能够对其进行配置的人员。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 * 确认 VPN 设备有一个面向外部的公共 IPv4 地址。
 * 如果不熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。

@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 5137b633f66088efbee41b96ba715eb3b18961dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91fe9cee0178dc3f742ac59995212ae1ef3a7a38
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519246"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582953"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>有关机器学习工作室（经典）的 Net# 神经网络规范语言的指南
 
@@ -22,10 +22,10 @@ ms.locfileid: "100519246"
 
 Net# 是由 Microsoft 开发的用于定义复杂神经网络体系结构（例如深度神经网络或任意维度的卷积）的语言。 可使用复杂的结构改进图像、视频或音频等数据的学习。
 
-在下列上下文中，可以使用 Net# 体系结构规范：
-
-+ Microsoft Azure 机器学习工作室（经典）中的所有神经网络模块：[多类神经网络](/azure/machine-learning/studio-module-reference/multiclass-neural-network)[双类神经网络](/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神经网络回归](/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Microsoft ML Server 中的神经网络函数：R 语言的 [NeuralNet](/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [rxNeuralNet](/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及 Python 的 [rx_neural_network](/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
+可以在机器学习工作室（经典）的所有神经网络模块中使用 Net# 体系结构规范： 
+* [多类神经网络](/azure/machine-learning/studio-module-reference/multiclass-neural-network)
+* [双类神经网络](/azure/machine-learning/studio-module-reference/two-class-neural-network)
+* [神经网络回归](/azure/machine-learning/studio-module-reference/neural-network-regression)
 
 
 本文介绍了使用 Net# 开发自定义神经网络的基本概念和所需语法：
@@ -33,7 +33,6 @@ Net# 是由 Microsoft 开发的用于定义复杂神经网络体系结构（例�
 + 神经网络要求以及如何定义主要组件
 + Net# 规范语言的语法和关键字
 + 使用 Net# 创建的自定义神经网络的示例
-
 
 
 ## <a name="neural-network-basics"></a>神经网络基础知识
@@ -57,7 +56,7 @@ Net# 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射
 
 ## <a name="supported-customizations"></a>支持的自定义项
 
-在 Azure 机器学习工作室（经典）中创建的神经网络模型的体系结构可通过使用 Net# 广泛自定义。 可以：
+在机器学习工作室（经典）中创建的神经网络模型的体系结构可通过使用 Net# 广泛自定义。 可以：
 
 + 创建隐藏层并控制每层的节点数。
 + 指定如何相互连接层。
@@ -293,7 +292,7 @@ from P1 response norm {
   }
 ```
 
-+ 源层包括五个映射，每个具有一个 12x12 维度，总计 1440 个节点。
++ 源层包括五个映射，每个映射的维度为 12x12，总共 1440 个节点。
 + 值 **KernelShape** 指示这是一个相同的映射规范化层，其中邻域为一个 3x3 矩形。
 + **Padding** 的默认值为 False，因此目标层的每个维度中只有 10 个节点。 要包括一个与源层中每个节点对应的目标层中的节点，可添加 Padding = [true, true, true]；然后将 RN1 的大小更改为 [5, 12, 12]。
 
@@ -461,6 +460,6 @@ output Digit [10] from Hid3 all;
 + 可通过使用层的声明维数 [50, 5, 5] 来计算节点总数，如下所示：`MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + 因为只有 `d == 0` 时 `Sharing[d]` 为 False，因此内核数为 `MapCount * NodeCount\[0] = 10 * 5 = 50`。
 
-## <a name="acknowledgements"></a>致谢
+## <a name="acknowledgments"></a>致谢
 
-用于自定义神经网络体系结构的 Net# 语言由 Microsoft 的 Shon Katzenberger（架构师，机器学习）和 Alexey Kamenev（软件工程师，Microsoft Research）开发。 在内部，其用于机器学习项目和应用程序，其范围包括从映像检测到文本分析。 有关详细信息，请参阅 [Neural Nets in Azure Machine Learning studio - Introduction to Net#](/archive/blogs/machinelearning/neural-nets-in-azure-ml-introduction-to-net)（Azure 机器学习工作室中的神经网络 - Net# 简介）
+用于自定义神经网络体系结构的 Net# 语言由 Microsoft 的 Shon Katzenberger（架构师，机器学习）和 Alexey Kamenev（软件工程师，Microsoft Research）开发。 在内部，其用于机器学习项目和应用程序，其范围包括从映像检测到文本分析。 有关详细信息，请参阅[机器学习工作室中的神经网络 - Net# 简介](/archive/blogs/machinelearning/neural-nets-in-azure-ml-introduction-to-net)

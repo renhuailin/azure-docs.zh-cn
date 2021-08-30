@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: a4c551a6e9b8d79fdeb7b5219f311c7c7c969757
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d47eae06f5e7869e9797867d8d35d1c2c8a79317
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97505352"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743583"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>文本分析 API 的示例用户方案
 
@@ -41,7 +41,7 @@ ms.locfileid: "97505352"
 
 ## <a name="monitor-your-products-social-media-feeds"></a>监视产品的社交媒体源
 
-在产品的 Twitter 或 Facebook 页监视用户对产品提供的反馈。 使用数据来分析客户对新推出产品的情绪，提取有关功能和功能请求的关键短语，或者在出现客户投诉时解决投诉。 请参阅 [Microsoft Power Automate 模板](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)示例。
+在 Twitter 或 Facebook 页面监视用户对产品提供的反馈。 使用数据来分析客户对新产品发布会的情绪，提取有关功能和功能请求的关键短语，或者在出现客户投诉时解决投诉。 请参阅 [Microsoft Power Automate 模板](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/)示例。
 
 ![描述如何使用关键短语提取在社交媒体上监视产品和公司反馈的插图](media/use-cases/social-feed.svg)
 

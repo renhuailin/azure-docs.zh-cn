@@ -1,27 +1,27 @@
 ---
 title: 创建和使用仅追加账本表
 description: 了解如何在 Azure SQL 数据库中创建和使用仅追加账本表。
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: how-to
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: f433e56140a199cdb872bc733343a8cf88c818cb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: fede72baa7df89e821e496066090658bda2df80e
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076395"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665838"
 ---
 # <a name="create-and-use-append-only-ledger-tables"></a>创建和使用仅追加账本表
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Azure SQL 数据库账本目前为公共预览版，已在美国中西部发布。
+> Azure SQL 数据库账本目前为公共预览版，在欧洲西部、巴西南部和美国中西部提供。
 
 本文介绍如何在 Azure SQL 数据库中创建[仅追加账本表](ledger-append-only-ledger-tables.md)。 随后，你可在仅追加账本表中插入值，然后尝试对数据进行更新。 最后，可使用账本视图查看结果。 我们将以设施的卡密钥访问系统为例，这是一种仅追加系统模式。 我们的示例将让你实际了解仅追加账本表及其对应的账本视图之间的关系。
 

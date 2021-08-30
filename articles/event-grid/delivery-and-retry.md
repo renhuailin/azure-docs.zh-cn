@@ -2,59 +2,21 @@
 title: Azure 事件网格传送和重试
 description: 介绍 Azure 事件网格如何传送事件以及如何处理未送达的消息。
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: e24b7540ea1ac41774e2c23781265f9a61940cb1
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.date: 07/27/2021
+ms.openlocfilehash: a6055a99e717dd379dc6bd43411c73456bdaede8
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276733"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730324"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试
-
-本文介绍了未确认送达时 Azure 事件网格如何处理事件。
-
-事件网格提供持久传送。 它会将每个订阅的每条消息至少发送一次。 事件会立即发送到每个订阅的已注册终结点。 如果终结点未确认收到事件，事件网格会重试传送事件。
+事件网格提供持久传送。 它会尝试为每个匹配的订阅至少立即传递每个消息一次。 如果订阅方的终结点没有确认收到事件或有故障发生，事件网格会根据固定的“重试计划”和“重试策略”重试传递 。 默认情况下，事件网格模块一次向一个订阅方传递一个事件。 但有效负载是一个包含单个事件的数组。
 
 > [!NOTE]
 > 事件网格不保证事件传送的顺序，因此订阅者可能会收到不按顺序的事件。 
 
-## <a name="batched-event-delivery"></a>批量事件传送
-
-默认情况下，事件网格单独将每个事件发送给订阅者。 订阅者接收包含单个事件的数组。 你可以将事件网格配置为批量处理要传送的事件，以在高吞吐量方案中提高 HTTP 性能。
-
-批量传送有两个设置：
-
-* **每批最大事件数** - 事件网格每批将传送的最大事件数。 永远不会超过此数目，但是，如果在发布时没有更多事件，则可能会传送较少的事件。 如果只有较少的事件，事件网格不会为了创建某个批而延迟事件传送。 必须介于 1 到 5,000 之间。
-* **首选批大小(KB)** - 批大小的目标上限 (KB)。 与最大事件数类似，如果发布时没有更多的事件，则批大小可能会较小。 如果单个事件大于首选大小，则批可能会大于首选批大小。 例如，如果首选大小为 4 KB，并且一个 10 KB 的事件推送到了事件网格，则 10 KB 事件将会在其自己的批中传送，而不会被删除。
-
-可以通过门户、CLI、PowerShell 或 SDK 以每事件订阅为基础配置批量传送。
-
-### <a name="azure-portal"></a>Azure 门户： 
-![文件传送设置](./media/delivery-and-retry/batch-settings.png)
-
-### <a name="azure-cli"></a>Azure CLI
-创建事件订阅时，请使用以下参数： 
-
-- **max-events-per-batch** - 每批的最大事件数。 必须是介于 1 和 5000 之间的数字。
-- **preferred-batch-size-in-kilobytes** - 首选批大小 (KB)。 必须是介于 1 和 1024 之间的数字。
-
-```azurecli
-storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
-endpoint=https://$sitename.azurewebsites.net/api/updates
-
-az eventgrid event-subscription create \
-  --resource-id $storageid \
-  --name <event_subscription_name> \
-  --endpoint $endpoint \
-  --max-events-per-batch 1000 \
-  --preferred-batch-size-in-kilobytes 512
-```
-
-有关将 Azure CLI 与事件网格配合使用的详细信息，请参阅[使用 Azure CLI 将存储事件路由到 Web 终结点](../storage/blobs/storage-blob-event-quickstart.md)。
-
-## <a name="retry-schedule-and-duration"></a>重试计划和持续时间
-
+## <a name="retry-schedule"></a>重试计划
 当 EventGrid 收到有关尝试传递事件的错误时，EventGrid 会根据错误类型决定它是应当重试传递，对该事件进行死信处理，还是删除该事件。 
 
 如果订阅的终结点所返回的错误是不能通过重试来解决的配置相关错误（例如，如果终结点已删除），则 EventGrid 将对该事件进行死信处理，或者删除该事件（如果未配置死信）。
@@ -89,12 +51,68 @@ az eventgrid event-subscription create \
 
 事件网格为所有重试步骤添加小的随机性，在某个终结点持续运行不正常、停机很长时间，或者看起来已过载的情况下，会适时跳过某些重试。
 
-对于确定性行为，请在[订阅重试策略](manage-event-delivery.md)中设置事件生存时间和最大传递尝试次数。
+## <a name="retry-policy"></a>重试策略
+当使用以下两个配置创建事件订阅时，可自定义重试策略。 如果事件达到任一重试策略限制，模块会将其删除。 
 
-默认情况下，事件网格会使所有在 24 小时内未送达的事件过期。 创建事件订阅时，可[自定义重试策略](manage-event-delivery.md)。 提供最大传递尝试次数（默认值为 30）和事件生存时间（默认为 1440 分钟）。
+- **最大尝试次数** - 值必须是介于 1 和 30 之间的整数。 默认值为 30。
+- **事件生存时间 (TTL)** - 值必须是介于 1 和 1440 之间的整数。 默认值为 1440 分钟
+
+如需用于配置这些设置的示例 CLI 和 PowerShell 命令，请参阅[设置重试策略](manage-event-delivery.md#set-retry-policy)。
+
+## <a name="output-batching"></a>输出批处理 
+默认情况下，事件网格单独将每个事件发送给订阅者。 订阅者接收包含单个事件的数组。 你可以将事件网格配置为批量处理要传送的事件，以在高吞吐量方案中提高 HTTP 性能。 默认情况下批处理处于关闭状态，但可以根据订阅打开。
+
+### <a name="batching-policy"></a>批处理策略
+批量传送有两个设置：
+
+* **每批最大事件数** - 事件网格每批将传送的最大事件数。 永远不会超过此数目，但是，如果在发布时没有更多事件，则可能会传送较少的事件。 如果只有较少的事件，事件网格不会为了创建某个批而延迟事件传送。 必须介于 1 到 5,000 之间。
+* **首选批大小(KB)** - 批大小的目标上限 (KB)。 与最大事件数类似，如果发布时没有更多的事件，则批大小可能会较小。 如果单个事件大于首选大小，则批可能会大于首选批大小。 例如，如果首选大小为 4 KB，并且一个 10 KB 的事件推送到了事件网格，则 10 KB 事件将会在其自己的批中传送，而不会被删除。
+
+可以通过门户、CLI、PowerShell 或 SDK 以每事件订阅为基础配置批量传送。
+
+### <a name="batching-behavior"></a>批处理行为
+
+* 全或无
+
+  事件网格使用“全或无”语义运行。 它不支持批处理传送部分成功。 订阅者应注意，只为每批请求他们可在 60 秒内合理处理的尽可能多的事件。
+
+* 乐观批处理
+
+  批处理策略设置对批处理行为的限制并不严格，应尽力遵守。 如果事件处理率较低，则会发现批大小小于每批请求的最大事件数。
+
+* 默认设置为关闭
+
+  默认情况下，事件网格仅向每个传送请求添加一个事件。 打开批处理的方法是在事件订阅 JSON 中设置本文前面提到的一个设置。
+
+* 默认值
+
+  创建事件订阅时，不必同时指定设置（每批最大事件数和近似批大小 (KB)）。 如果仅设置一项设置，事件网格将使用（可配置）默认值。 请参阅以下各节，了解默认值以及如何替代它们。
+
+### <a name="azure-portal"></a>Azure 门户： 
+![文件传送设置](./media/delivery-and-retry/batch-settings.png)
+
+### <a name="azure-cli"></a>Azure CLI
+创建事件订阅时，请使用以下参数： 
+
+- **max-events-per-batch** - 每批的最大事件数。 必须是介于 1 和 5000 之间的数字。
+- **preferred-batch-size-in-kilobytes** - 首选批大小 (KB)。 必须是介于 1 和 1024 之间的数字。
+
+```azurecli
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint $endpoint \
+  --max-events-per-batch 1000 \
+  --preferred-batch-size-in-kilobytes 512
+```
+
+有关将 Azure CLI 与事件网格配合使用的详细信息，请参阅[使用 Azure CLI 将存储事件路由到 Web 终结点](../storage/blobs/storage-blob-event-quickstart.md)。
+
 
 ## <a name="delayed-delivery"></a>延迟传送
-
 当终结点遇到传送失败时，事件网格将开始延迟向该终结点传送和重试事件。 例如，如果发布到某个终结点的前 10 个事件失败，事件网格将假设该终结点遇到问题，并将所有后续重试和新的传送操作延迟一段时间 - 在某些情况下，会延迟几个小时。 
 
 从功能上讲，延迟传送的目的是保护不正常的终结点以及事件网格系统。 如果不采用退让机制并延迟向不正常的终结点传送事件，事件网格的重试策略和卷功能可能很容易使系统瘫痪。

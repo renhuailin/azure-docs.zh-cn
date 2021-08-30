@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: 3a1de2f0e35a3ef747818d7dea47ecacb2753cea
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 29ab3c33611b0f525b28fe51245edba377bae0b5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747268"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441420"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 发行说明 
 
@@ -23,7 +23,7 @@ ms.locfileid: "111747268"
 
 ## <a name="azure-sql-edge-104"></a>Azure SQL Edge 1.0.4
 
-SQL 引擎内部版本 15.0.2000.1558
+SQL 引擎内部版本 15.0.2000.1559
 
 ### <a name="whats-new"></a>新增功能
 
@@ -32,7 +32,7 @@ SQL 引擎内部版本 15.0.2000.1558
 
 ## <a name="azure-sql-edge-103"></a>Azure SQL Edge 1.0.3
 
-SQL 引擎内部版本 15.0.2000.1554
+SQL 引擎内部版本 15.0.2000.1557
 
 ### <a name="fixes"></a>修复项
 
@@ -42,7 +42,7 @@ SQL 引擎内部版本 15.0.2000.1554
    
 ## <a name="azure-sql-edge-102"></a>Azure SQL Edge 1.0.2
 
-SQL 引擎内部版本 15.0.2000.1554
+SQL 引擎内部版本 15.0.2000.1557
 
 ### <a name="fixes"></a>修复项
 

@@ -2,15 +2,16 @@
 title: 部署托管应用时使用 Key Vault
 description: 演示在部署托管应用程序时如何使用 Azure Key Vault 中的访问机密
 author: tfitzmac
+ms.custom: subject-rbac-steps
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 08/16/2021
 ms.author: tomfitz
-ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5a6dc1de2ee574a69b8dab746a24bcf82b44d64
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81458277"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253166"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>部署 Azure 托管应用程序时访问 Key Vault 机密
 
@@ -36,19 +37,9 @@ ms.locfileid: "81458277"
 
 ## <a name="add-service-as-contributor"></a>将服务添加为参与者
 
-1. 选择“访问控制 (IAM)”。
+将“参与者”角色分配给密钥保管库范围内的“设备资源提供程序”用户 。
 
-   ![选择访问控制](./media/key-vault-access/access-control.png)
-
-1. 选择“添加角色分配”。
-
-   ![选择“添加”](./media/key-vault-access/add-access-control.png)
-
-1. 对角色选择“参与者”。 搜索“设备资源提供程序”，然后从可用选项中选择它。
-
-   ![搜索提供程序](./media/key-vault-access/search-provider.png)
-
-1. 选择“保存”。
+有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="reference-key-vault-secret"></a>引用 Key Vault 机密
 

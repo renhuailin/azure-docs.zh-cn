@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/17/2021
+ms.date: 07/15/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f6cf40e7b384c9b0e88db679f9de8ac9bbba1607
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3e05dd70ab0919ca4429cee15ecfc9d6ac9ee627
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "112078756"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122261462"
 ---
 如果你是第一次执行此操作，则为磁盘设置客户托管密钥时将要求你按特定顺序创建资源。 首先，需要创建并设置 Azure Key Vault。
 
@@ -27,7 +27,7 @@ ms.locfileid: "112078756"
     > [!IMPORTANT]
     > Azure Key Vault、磁盘加密集、VM、磁盘和快照必须都位于同一区域和订阅中才能成功部署。
 
-1. 选择“+添加”以创建新的 Key Vault。
+1. 选择“+创建”以创建新的 Key Vault。
 1. 创建新的资源组。
 1. 输入 Key Vault 名称，选择区域，然后选择定价层。
 
@@ -47,7 +47,7 @@ ms.locfileid: "112078756"
 1. 将“密钥类型”设置为“RSA”，将“RSA 密钥大小”设置为“2048”   。
 1. 根据需要填写其余选项，然后选择“创建”。
 
-    ![选择“生成/导入”按钮后出现的“创建密钥”边栏选项卡的屏幕截图](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
+    ![选择“生成/导入”按钮后出现的“密钥”窗格的屏幕截图](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
 
 ### <a name="add-an-azure-rbac-role"></a>添加 Azure RBAC 角色
 
@@ -59,7 +59,7 @@ ms.locfileid: "112078756"
 ## <a name="set-up-your-disk-encryption-set"></a>设置磁盘加密集
 
 1. 搜索“磁盘加密集”并选择它。
-1. 在“磁盘加密集”边栏选项卡上，选择“+添加” 。
+1. 在“磁盘加密集”窗格中，选择“+创建”。
 
     ![磁盘加密门户主屏幕的屏幕截图。 突出显示“添加”按钮](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
 
@@ -74,4 +74,4 @@ ms.locfileid: "112078756"
 1. 按“选择”。
 1. 选择“审阅 + 创建”，然后选择“创建” 。
 
-    ![磁盘加密创建边栏选项卡的屏幕截图。 显示订阅、资源组、磁盘加密集名称、区域以及 Key Vault + 密钥选择器。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
+    ![“磁盘加密创建”窗格的屏幕截图。 显示订阅、资源组、磁盘加密集名称、区域以及 Key Vault + 密钥选择器。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)

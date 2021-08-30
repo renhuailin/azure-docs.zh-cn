@@ -9,16 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 46cefe1e7f535a066125f368e1c80497a1a28d3f
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 6d0e0fb8f3e179177995ed4cea8cbf42a3c060d7
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579767"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691481"
 ---
 # <a name="get-started-with-machine-learning-studio-classic-in-r"></a>开始在机器学习工作室（经典版）中使用 R
 
 适用范围：![这是复选标记，意味着本文适用于](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）![机器学习工作室（经典版）   这是 X，意味着本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
 本教程介绍如何使用机器学习工作室（经典版）创建、测试和执行 R 代码。 学完本教程后，你将获得一个完整的预测解决方案。

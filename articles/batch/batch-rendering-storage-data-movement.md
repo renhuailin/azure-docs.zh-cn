@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 0a18ee6961cb601b0fa9db7213eb6115afa20096
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 60e2044bc837c986701ec7be048fde04cf6a529a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765190"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747570"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>用于渲染资产和输出文件的存储与数据移动选项
 
@@ -20,7 +20,7 @@ ms.locfileid: "107765190"
 
 * [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)：
   * 将场景和资产文件从本地文件系统上传到 Blob 存储。 当应用程序由某个任务运行时，会将所需的文件从 Blob 存储复制到 VM，使渲染应用程序能够访问它们。 输出文件由渲染应用程序写入 VM 磁盘，然后复制到 Blob 存储。  如果需要，可将输出文件从 Blob 存储下载到本地文件系统。
-  * Azure blob 存储是简单且经济高效的选项，适合小型项目。  由于每个池 VM 上需要所有资产文件，一旦资产文件的数量和大小增加，就需要谨慎确保文件传输尽量高效。  
+  * Azure Blob 存储是简单且经济高效的选项，适合小型项目。  由于每个池 VM 上需要所有资产文件，一旦资产文件的数量和大小增加，就需要谨慎确保文件传输尽量高效。  
 * 使用 [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) 且用作文件系统的 Azure 存储：
   * 对于 Linux VM，使用 blobfuse 虚拟文件系统驱动程序时，可以公开一个存储帐户，并将其用作文件系统。
   * 此选项的优势在于，它极其经济高效，文件系统不需要任何 VM，此外，VM 上的 blobfuse 缓存可避免重复为多个作业和任务下载相同的文件。  数据移动也很简单，因为文件只是一些 Blob，可以使用标准的 API 和工具（例如 azcopy）在本地文件系统与 Azure 存储之间复制文件。
@@ -85,7 +85,7 @@ Blobfuse 是适用于 Azure Blob 存储的虚拟文件系统驱动程序，用�
 
 ## <a name="using-azure-files-with-windows-vms"></a>对 Windows VM 使用 Azure 文件
 
-[Azure 文件](../storage/files/storage-files-introduction.md)在云中提供可通过 SMB 协议访问的完全托管式文件共享。  Azure 文件基于 Azure Blob 存储；它非常[经济高效](https://azure.microsoft.com/pricing/details/storage/files/)，可以使用数据复制将其配置到另一个区域，以实现全局冗余。  应评审[缩放目标](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets)，以确定是否应该针对特定的预测池大小和资产文件数量使用 Azure 文件。
+[Azure 文件](../storage/files/storage-files-introduction.md)在云中提供可通过 SMB 协议访问的完全托管式文件共享。  Azure 文件存储基于 Azure Blob 存储；它非常[经济高效](https://azure.microsoft.com/pricing/details/storage/files/)，可以使用数据复制将其配置到另一个区域，以实现全局冗余。  应评审[缩放目标](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets)，以确定是否应该针对特定的预测池大小和资产文件数量使用 Azure 文件。
 
 此[文档](../storage/files/storage-how-to-use-files-windows.md)介绍了如何装载 Azure 文件共享。
 
@@ -132,6 +132,6 @@ Blobfuse 是适用于 Azure Blob 存储的虚拟文件系统驱动程序，用�
 
 有关存储选项的详细信息，请参阅深度文档：
 
-* [Azure blob 存储](../storage/blobs/storage-blobs-introduction.md)
+* [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)
 * [Blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)
 * [Azure 文件](../storage/files/storage-files-introduction.md)

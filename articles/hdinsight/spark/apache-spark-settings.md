@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 25ff8611cc988c9777b52a313cfd74d4ee0a638c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9b434852764508899f091cbb88aa0817654e08c0
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104870290"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113650730"
 ---
 # <a name="configure-apache-spark-settings"></a>配置 Apache Spark 设置
 
@@ -47,7 +47,7 @@ spark.sql.files.maxPartitionBytes 1099511627776
 spark.sql.files.openCostInBytes 1099511627776
 ```
 
-上面所示的示例替代了五个 Spark 配置参数的多个默认值。  这些值是压缩编解码器 Apache Hadoop MapReduce 拆分的最小大小和 parquet 块大小， 同时也是 Spar SQL 分区和打开文件大小默认值。  之所以选择这些配置更改，是因为关联的数据和作业（在此示例中为基因组数据）具有特定的特征。 使用这些自定义配置设置可以更好地利用这些特征。
+上面所示的示例替代了五个 Spark 配置参数的多个默认值。  这些值是压缩编解码器 Apache Hadoop MapReduce 拆分的最小大小和 parquet 块大小， 同时也是 Spark SQL 分区和打开文件大小默认值。  之所以选择这些配置更改，是因为关联的数据和作业（在此示例中为基因组数据）具有特定的特征。 使用这些自定义配置设置可以更好地利用这些特征。
 
 ---
 

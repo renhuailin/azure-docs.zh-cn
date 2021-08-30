@@ -1,23 +1,23 @@
 ---
 title: 使用 PostgreSQL 扩展
 description: 使用 PostgreSQL 扩展
-titleSuffix: Azure Arc enabled data services
+titleSuffix: Azure Arc-enabled data services
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: ba92ca8a959fae389dbdb30c295e6592f76100eb
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 831b3e220afe826b5190588b8855b72a8d648916
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288519"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743838"
 ---
-# <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>在已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中使用 PostgreSQL 扩展
+# <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>在已启用 Azure Arc 的 PostgreSQL 超大规模服务器组中使用 PostgreSQL 扩展
 
 如果将其用于扩展，PostgreSQL 的效果最佳。 事实上，我们自己的超大规模功能的一个关键元素是默认安装的 Microsoft 提供的 `citus` 扩展，它允许 Postgres 以透明方式在多个节点间对数据进行分片。
 
@@ -59,12 +59,12 @@ ms.locfileid: "108288519"
 - 对于 shared_preload_libraries 不需要预加载的扩展，不需要此步骤。 如需了解这些扩展，可以跳到下一个段：[创建扩展](#create-extensions)。
 
 ### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>在创建服务器组时添加扩展
-```console
-azdata arc postgres server create -n <name of your postgresql server group> --extensions <extension names>
+```azurecli
+az postgres arc-server create -n <name of your postgresql server group> --extensions <extension names>
 ```
 ### <a name="add-an-extension-to-an-instance-that-already-exists"></a>将扩展添加到已存在的实例
-```console
-azdata arc postgres server edit -n <name of your postgresql server group> --extensions <extension names>
+```azurecli
+az postgres arc-server server edit -n <name of your postgresql server group> --extensions <extension names>
 ```
 
 
@@ -73,9 +73,9 @@ azdata arc postgres server edit -n <name of your postgresql server group> --exte
 ## <a name="show-the-list-of-extensions-added-to-shared_preload_libraries"></a>显示添加到 shared_preload_libraries 的扩展的列表
 运行以下任一命令。
 
-### <a name="with-an-azdata-cli-command"></a>使用 azdata CLI 命令
-```console
-azdata arc postgres server show -n <server group name>
+### <a name="with-cli-command"></a>使用 CLI 命令
+```azurecli
+az postgres arc-server show -n <server group name>
 ```
 滚动输出，并注意服务器组规范中的 engine\extensions 部分。 例如：
 ```console
@@ -185,8 +185,8 @@ SELECT name, address FROM coffee_shops ORDER BY geom <-> ST_SetSRID(ST_MakePoint
 
 现在，让我们通过将其添加到 shared_preload_libraries，在 PostgreSQL 服务器组上启用 `pg_cron`：
 
-```console
-azdata postgres server update -n pg2 -ns arc --extensions pg_cron
+```azurecli
+az postgres arc-server update -n pg2 -ns arc --extensions pg_cron
 ```
 
 服务器组将重启并完成扩展的安装。 这可能需要 2-3 分钟。

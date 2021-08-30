@@ -1,19 +1,19 @@
 ---
 title: Azure 中继混合连接 - 节点中的 WebSocket
-description: 为 Azure 中继混合连接 Websocket 编写 Node.js 控制台应用程序
+description: 为 Azure 中继混合连接 WebSocket 编写 Node.js 控制台应用程序
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 06/23/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: b362caa6570d4a8e212ff7adf4310a0c63e8b755
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ceca28f7873757aafd72e72c9ad8c1c64035ab87
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91263702"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665988"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>开始在 Node.js 中使用中继混合连接 WebSocket
 
-[!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
+[!INCLUDE [relay-selector-hybrid-connections](./includes/relay-selector-hybrid-connections.md)]
 
 在本快速入门中，请创建 Node.js 发送者和接收者应用程序，以便在 Azure 中继中通过混合连接 WebSocket 发送和接收消息。 若要了解 Azure 中继的常规信息，请参阅 [Azure 中继](relay-what-is-it.md)。 
 
@@ -31,20 +31,20 @@ ms.locfileid: "91263702"
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-namespace"></a>创建命名空间
-[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
+[!INCLUDE [relay-create-namespace-portal](./includes/relay-create-namespace-portal.md)]
 
 ## <a name="create-a-hybrid-connection"></a>创建混合连接
-[!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
+[!INCLUDE [relay-create-hybrid-connection-portal](./includes/relay-create-hybrid-connection-portal.md)]
 
 ## <a name="create-a-server-application-listener"></a>创建服务器应用程序（侦听程序）
 若要侦听和接收来自中继的消息，请编写 Node.js 控制台应用程序。
 
-[!INCLUDE [relay-hybrid-connections-node-get-started-server](../../includes/relay-hybrid-connections-node-get-started-server.md)]
+[!INCLUDE [relay-hybrid-connections-node-get-started-server](./includes/relay-hybrid-connections-node-get-started-server.md)]
 
 ## <a name="create-a-client-application-sender"></a>创建客户端应用程序（发送程序）
 若要将消息发送到中继，请编写 Node.js 控制台应用程序。
 
-[!INCLUDE [relay-hybrid-connections-node-get-started-client](../../includes/relay-hybrid-connections-node-get-started-client.md)]
+[!INCLUDE [relay-hybrid-connections-node-get-started-client](./includes/relay-hybrid-connections-node-get-started-client.md)]
 
 ## <a name="run-the-applications"></a>运行应用程序
 

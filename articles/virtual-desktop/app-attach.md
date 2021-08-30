@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1ff5ea8c4bb0af326b37d0e4ff2185be22393f16
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6b54afdb77bd1fc3a958b959dad4fcb030e1fe2f
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745432"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228779"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach"></a>为 MSIX 应用附加创建 PowerShell 脚本
 
@@ -200,6 +200,9 @@ Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 #endregion
 ```
 
+>[!NOTE]
+>即使在执行 destage 脚本后 $volumeGuid 点仍然存在，也可以关闭设备。
+
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>为 MSIX 应用附加代理设置模拟脚本
 
 创建脚本之后，用户可以手动运行它们，或者将其设置为自动运行的启动、登录、注销和关闭脚本。 若要了解有关这些类型脚本的详细信息，请参阅[在组策略中使用启动、关闭、登录和注销脚本](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)。
@@ -210,6 +213,9 @@ Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 - 登录脚本运行注册脚本。
 - 注销脚本运行取消注册脚本。
 - 关闭脚本运行转储脚本。
+
+>[!NOTE]
+>可以使用暂存脚本运行任务计划程序。 若要运行脚本，请将任务触发器设置为“当计算机启动时”，然后启用“以最高权限运行”。
 
 ## <a name="use-packages-offline"></a>脱机使用包
 

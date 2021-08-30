@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02def8321ce5df33fb89ca8d9f6c24167c15bbb6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "73182174"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733855"
 ---
 ### <a name="what-is-expressroute-direct"></a>什么是 ExpressRoute Direct？
 
@@ -39,6 +39,8 @@ ExpressRoute Direct 为客户提供到 Microsoft 全球主干线中的直接 100
 
 ExpressRoute Direct 将针对端口对按固定金额计费。 标准线路将包含在内（不含额外的小时），高级线路将稍加一些附加费用。 流出量将基于对等互连位置的区域按每条线路进行计费。
 
-### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>ExpressRoute Direct 端口对何时开始计费？
+### <a name="when-does-billing-start-and-stop-for-the-expressroute-direct-port-pairs"></a>ExpressRoute Direct 端口对的计费何时开始和停止？
 
 创建 ExpressRoute Direct 资源 45 天后，或启用了一个或两个链接时，ExpressRoute Direct 端口对开始计费，以先到者为准。 我们提供 45 天的宽限期，让客户能够完成与主机托管提供程序的交叉连接过程。
+
+删除直接端口并删除交叉连接后，你将不再为 ExpressRoute Direct 的端口对付费。 

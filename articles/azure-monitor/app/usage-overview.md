@@ -1,20 +1,19 @@
 ---
-title: 使用 Azure Application Insights 进行使用情况分析 | Microsoft docs
+title: Application Insights 使用分析 | Azure Monitor
 description: 了解用户，以及他们将应用用于哪些目的。
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.openlocfilehash: 8be8f6ad5285819d2cdb7e369c98d6e9da9d76c8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/30/2021
+ms.openlocfilehash: 67739c94afeb841450eb465fe5cd5259093e2e78
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110082335"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729321"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
-Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现了其目标？ 他们是否中途放弃应用，后来又回头使用了吗？  [Azure Application Insights](./app-insights-overview.md) 可帮助你有效地深入分析人们如何使用应用。 每次更新应用时，都可以评估它在用户那里的运行状况。 了解这些信息后，可以针对下一个开发周期做出数据驱动的决策。
+Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现了其目标？ 他们是否中途放弃应用，后来又回头使用了吗？  [Application Insights](./app-insights-overview.md) 可帮助你有效地深入分析人们如何使用应用。 每次更新应用时，都可以评估它在用户那里的运行状况。 了解这些信息后，可以针对下一个开发周期做出数据驱动的决策。
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Cijb]
 
 ## <a name="send-telemetry-from-your-app"></a>从应用发送遥测数据
 
@@ -47,7 +46,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 3. **移动应用代码：** 通过 [按照此指南操作](../app/mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
 
-4. **获取遥测：** 在调试模式下运行项目几分钟，并在“Application Insights”中的“概述”边栏选项卡中查找结果。
+4. **获取遥测：** 在调试模式下运行项目几分钟，并在“Application Insights”中的“概述”窗格中查找结果。
 
     发布应用以监视应用性能，并查看用户使用该应用在执行哪些操作。
 
@@ -56,7 +55,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 “用户和会话”报告按页面或自定义事件筛选数据，并按位置、环境和页面等属性将数据分段。 也可以添加自己的筛选器。
 
-![屏幕截图，显示虚构公司的“用户概述”页。](./media/usage-overview/users.png)  
+:::image type="content" source="./media/usage-overview/users.png" alt-text="屏幕截图显示了以条形图显示的“用户”选项卡。" lightbox="./media/usage-overview/users.png":::
 
 右侧的见解指出了数据集中的相关模式。  
 
@@ -73,11 +72,11 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 - 基于真实的用户数据构成假设 
 - 确定产品中是否存在保留问题 
 
-![屏幕截图，显示“保留概述”页，其中显示了有关用户返回使用其应用的频率的信息。](./media/usage-overview/retention.png) 
+:::image type="content" source="./media/usage-overview/retention.png" alt-text="屏幕截图显示了保留工作簿，其中显示了有关用户返回使用其应用的频率的信息。" lightbox="./media/usage-overview/retention.png":::
 
 使用顶部的保留控件可以定义特定的事件和时间范围来计算保留。 中间的图表根据指定的时间范围提供总体保留百分比的视觉表示形式。 底部的图表显示给定时间段内的各个保留。 这种详细程度可让你更细致地了解用户正在做什么，以及哪些因素可能会影响用户回头。  
 
-[有关保留工具的详细信息](usage-retention.md)
+[有关保留工作簿的详细信息](usage-retention.md)
 
 ## <a name="custom-business-events"></a>自定义业务事件
 
@@ -87,12 +86,11 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 尽管在某些情况下页面视图可呈现有用的事件，但一般情况下这些事件并不真实。 用户无需购买产品即可打开产品页面。 
 
-使用特定的业务事件可以绘制用户在站点中的进度图表。 可以了解用户对不同选项的偏好，以及他们在哪个位置放弃了应用或者遇到了问题。 了解这些信息后，可以针对开发积压工作的优先级做出明智的决策。
+使用特定的业务事件可以绘制用户在站点中的进度图表。 了解用户对不同选项的偏好，以及他们在哪个位置放弃了应用或者遇到了问题。 了解这些信息后，可以针对开发积压工作的优先级做出明智的决策。
 
 可以在应用的客户端记录事件：
 
 ```JavaScript
-
     appInsights.trackEvent("ExpandDetailTab", {DetailTab: tabName});
 ```
 
@@ -107,14 +105,15 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
     tc.TrackEvent("CompletedPurchase");
 ```
 
-可将属性值附加到这些事件，以便在门户检查事件时可以筛选或拆分事件。 此外，已将一组标准属性（例如匿名用户 ID）附加到每个事件，以便你跟踪单个用户的活动序列。
+可将属性值附加到这些事件，以便在门户检查事件时可以筛选或拆分事件。 也已将一组标准属性（例如匿名用户 ID）附加到每个事件，以便你跟踪单个用户的活动序列。
 
 详细了解[自定义事件](./api-custom-events-metrics.md#trackevent)和[属性](./api-custom-events-metrics.md#properties)。
 
 ### <a name="slice-and-dice-events"></a>分解事件
 
 在“用户”、“会话”和“事件”工具中，可按用户、事件名称和属性分解自定义事件。
-![屏幕截图，显示虚构公司的“用户概述”页。](./media/usage-overview/users.png)  
+
+:::image type="content" source="./media/usage-overview/events.png" alt-text="屏幕截图显示了按 AnalyticsItemsOperation 筛选并按 AppID 拆分的“事件”选项卡。" lightbox="./media/usage-overview/events.png":::
   
 ## <a name="design-the-telemetry-with-the-app"></a>在应用中设计遥测
 

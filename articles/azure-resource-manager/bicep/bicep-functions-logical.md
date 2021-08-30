@@ -4,17 +4,19 @@ description: 介绍 Bicep 文件中用于确定逻辑值的函数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: e2b0f79b2d8e0bf1f00e4db108b7a5f33a1be9a7
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/29/2021
+ms.openlocfilehash: 8fe09057ea293300754fc35614c00a9b808da247
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025967"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744910"
 ---
 # <a name="logical-functions-for-bicep"></a>Bicep 的逻辑函数
 
-资源管理器为 Bicep 提供 `bool` 函数。 某些 Azure 资源管理器 JSON 逻辑函数将被替换为 [Bicep 逻辑运算符](./operators-logical.md)。
+资源管理器为 Bicep 提供 `bool` 函数。 
+
+Azure 资源管理器模板中的大多数逻辑函数在 Bicep 中都被替换为[逻辑运算符](./operators-logical.md)。
 
 ## <a name="bool"></a>bool
 
@@ -24,7 +26,7 @@ ms.locfileid: "111025967"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
 
@@ -54,4 +56,5 @@ output falseInt bool = bool(0)
 
 ## <a name="next-steps"></a>后续步骤
 
+* 对于大多数逻辑操作，请参阅 [Bicep 逻辑运算符](./operators-logical.md)。
 * 有关 Bicep 文件中各部分的说明，请参阅[了解 Bicep 文件的结构和语法](./file.md)。

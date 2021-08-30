@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/01/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 5a911b7855e74b241b2281c1e466f7f9236730af
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 9abb17c1be9c862cb0d67110c88386a9c0e7313d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597255"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724558"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -271,10 +271,10 @@ AzureDiagnostics
 
 **REST API**：
 
-- [创建或更新数据库审核策略](/rest/api/sql/2017-03-01-preview/server-auditing-settings/create-or-update)
+- [创建或更新数据库审核策略](/rest/api/sql/database%20auditing%20settings/createorupdate)
 - [创建或更新服务器审核策略](/rest/api/sql/server%20auditing%20settings/createorupdate)
 - [获取数据库审核策略](/rest/api/sql/database%20auditing%20settings/get)
-- [获取服务器审核策略](/rest/api/sql/2017-03-01-preview/server-auditing-settings/get) 
+- [获取服务器审核策略](/rest/api/sql/server%20auditing%20settings/get)
 
 支持使用 WHERE 子句执行附加筛选的扩展策略：
 
@@ -299,7 +299,7 @@ AzureDiagnostics
 > [!NOTE]
 > 链接的示例位于外部公共存储库中，按“原样”提供，不含任何担保，在任何 Microsoft 支持计划/服务下均不受支持。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - 第 9 频道上的 Data Exposed 剧集 [Azure SQL 审核中的新增功能](https://channel9.msdn.com/Shows/Data-Exposed/Whats-New-in-Azure-SQL-Auditing)。
 - [SQL 托管实例的审核](../managed-instance/auditing-configure.md)

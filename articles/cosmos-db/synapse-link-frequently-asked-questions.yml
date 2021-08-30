@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 11/30/2020
   ms.custom: synapse-cosmos-db
-  ms.openlocfilehash: 49c8546ebe4c06135c4a7848a46385643fbfbd2e
-  ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+  ms.openlocfilehash: ce507f756b766869960a06bd00a8b6ea98711205
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/22/2021
-  ms.locfileid: "111907032"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114442866"
 title: 有关 Azure Synapse Link for Azure Cosmos DB 的常见问题
 summary: >
   [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -26,6 +26,10 @@ sections:
   - question: >
       所有 Azure Cosmos DB API 是否都支持 Azure Synapse Link？
     answer: "Azure Cosmos DB SQL (Core) API 和 Azure Cosmos DB API for MongoDB 支持 Azure Synapse Link。 \n"
+  - question: >
+      Azure Cosmos DB 无服务器支持 Azure Synapse Link 吗？
+    answer: >
+      当前不能在无服务器帐户上启用 Synapse Link 功能。
   - question: >
       多区域 Azure Cosmos DB 帐户是否支持 Azure Synapse Link？
     answer: >
@@ -41,9 +45,6 @@ sections:
       所有 Azure Cosmos DB 区域中是否都支持分析存储？
     answer: >
       是的。
-  - question: >
-      启用了 Azure Synapse Link 的帐户是否支持备份和还原？
-    answer: "对于启用了分析存储的容器，目前不支持自动备份和还原分析存储中的数据。 \n\n在数据库帐户上启用 Synapse Link 后，Azure Cosmos DB 会像往常一样，继续按计划的备份间隔以自动方式仅对容器的事务性存储中的数据[执行备份](./online-backup-and-restore.md)。 需要特别注意的是，将启用了分析存储的容器还原到新帐户时，将仅使用事务性存储来还原容器，而不会启用分析存储。 \n"
   - question: >
       我是否可以为 Azure Cosmos DB 帐户禁用 Azure Synapse Link 功能？
     answer: >
@@ -154,6 +155,14 @@ sections:
 
 
       使用 Synapse 无服务器 SQL 池时，可以通过预先创建用于存储账户密钥的 SQL 凭据并在 OPENROWSET 函数中引用这些凭证来查询 Azure Cosmos DB 分析存储。 如要了解详细信息，请参阅[在 Azure Synapse Link 中使用无服务器 SQL 池进行查询](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)一文。
+  - question: >
+      是否可以将客户管理的密钥与 Azure Synapse Link 一起使用？
+    answer: >
+      可以，Azure Synapse Link 支持使用 Azure Cosmos DB 帐户的托管标识来配置客户管理的密钥。 可以采用自动且透明的方式使用相同的客户管理密钥无缝地跨事务存储和分析存储加密数据。 有关详细信息，请参阅[使用 Azure Cosmos DB 帐户的托管标识来配置客户管理的密钥](how-to-setup-cmk.md#using-managed-identity)一文。
+  - question: >
+      Azure Synapse Link 是否提供与 Azure Synapse 托管虚拟网络的网络隔离？
+    answer: >
+      是的，可以单独控制对事务性和分析存储中的数据的网络访问。 在 Azure Synapse 工作区的托管虚拟网络内，为每个存储使用单独的托管专用终结点进行网络隔离。 如要了解详细信息，请参阅如何[为分析存储配置专用终结点](analytical-store-private-endpoints.md)一文。
 - name: Synapse 运行时
   questions:
   - question: >

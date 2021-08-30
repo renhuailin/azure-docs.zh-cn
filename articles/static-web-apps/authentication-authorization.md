@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 1ba278b80d75e64b4394bfeb1b98cd0ec2d805a8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 00f01e184b254e4fbc40fefa79506498bae30597
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469951"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634908"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps"></a>Azure 静态 Web 应用的身份验证和授权
 
@@ -196,7 +196,7 @@ Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相�
 ```json
 {
   "route": "/.auth/login/twitter",
-  "statusCode": "404"
+  "statusCode": 404
 }
 ```
 

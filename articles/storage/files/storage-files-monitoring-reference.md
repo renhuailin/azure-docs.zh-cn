@@ -9,22 +9,29 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 4575709a4fa7067b02228036fb2e2b4a60844e21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5dea90773340bb16b4f3c01e11affb2d4d2851b0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592325"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723384"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Azure 文件存储监视数据参考
 
 有关收集和分析 Azure 文件存储监视数据的详细信息，请参阅[监视 Azure 文件存储](storage-files-monitoring.md)。
 
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
+
 ## <a name="metrics"></a>指标
 
 下表列出了为 Azure 文件存储收集的平台指标。 
 
-### <a name="capacity-metrics"></a>容量度量值
+### <a name="capacity-metrics"></a>容量指标
 
 容量指标值每天刷新（最多 24 小时）。 时间粒度定义呈现指标值的时间间隔。 所有容量指标的受支持时间粒度为一小时 (PT1H)。
 
@@ -44,7 +51,7 @@ Azure 文件存储在 Azure Monitor 中提供以下容量指标。
 | FileCount   | 存储帐户中的文件数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 | FileShareCapacityQuota | Azure 文件服务可使用的存储量上限（以字节为单位）。 <br/><br/> 单元：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024|
 | FileShareCount | 存储帐户中的文件共享数目。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
-| FileShareProvisionedIOPS | 文件共享上预配的 IOPS 数。 此指标仅适用于高级文件存储。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 |
+| FileShareProvisionedIOPS | 文件共享上预配的 IOPS 数。 此指标仅适用于高级文件存储。 <br/><br/> 单位：每秒计数 <br/> 聚合类型：平均值 |
 | FileShareSnapshotCount | 存储帐户的 Azure 文件存储服务的共享中存在的快照数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 | 
 |FileShareSnapshotSize|存储帐户的 Azure 文件存储服务中的快照所用存储量。 <br/><br/> 单元：字节 <br/> 聚合类型：平均值|
 

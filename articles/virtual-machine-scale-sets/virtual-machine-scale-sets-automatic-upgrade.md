@@ -1,20 +1,20 @@
 ---
 title: Azure 虚拟机规模集的自动 OS 映像升级
 description: 了解如何自动升级规模集中 VM 实例上的 OS 映像
-author: avirishuv
-ms.author: avverma
+author: mayanknayar
+ms.author: manayar
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: automatic-os-upgrade
-ms.date: 06/26/2020
+ms.date: 07/29/2021
 ms.reviewer: jushiman
-ms.custom: avverma, devx-track-azurepowershell
-ms.openlocfilehash: 2e0a93f07a0bfb11d783518884417a7cf40cda25
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b080c741276233e671d5724b3ee72cc7b4738446
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110674023"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751732"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虚拟机规模集自动 OS 映像升级
 
@@ -25,20 +25,42 @@ ms.locfileid: "110674023"
 - 配置后，映像发布者发布的最新 OS 映像将自动应用于规模集，无需用户干预。
 - 每次发布者发布新映像时，以滚动方式分批升级实例。
 - 与应用程序运行状况探测和[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)集成。
-- 适用于所有 VM 大小，同时适用于 Windows 和 Linux 映像。
+- 适用于所有 VM 大小以及 Windows和 Linux 映像，包括通过[共享映像库](../virtual-machines/shared-image-galleries.md)获取的自定义映像。
 - 可以随时取消自动升级（也可以手动启动 OS 升级）。
 - VM 的 OS 磁盘将被替换为使用最新映像版本创建的新 OS 磁盘。 运行配置的扩展和自定义数据脚本，同时保留永久性数据磁盘。
 - 支持[扩展定序](virtual-machine-scale-sets-extension-sequencing.md)。
-- 可在任意大小的规模集上启用自动 OS 映像升级。
+- 可在任意大小的规模集上启用。
 
 ## <a name="how-does-automatic-os-image-upgrade-work"></a>自动 OS 映像升级的工作原理是什么？
 
-升级工作原理是将 VM 的 OS 磁盘替换为使用最新映像版本创建的新磁盘。 所配置的任何扩展和自定义数据脚本将在 OS 磁盘上运行，同时保留永久性数据磁盘。 为了尽量减少应用程序停机时间，将分批进行升级，在任一时间，规模集内正在进行升级的计算机不会超过 20%。 还可以集成 Azure 负载均衡器应用程序运行状况探测或[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)。 我们建议在升级过程中使用应用程序检测信号，并针对每个批次验证升级是否成功。
+升级工作原理是将 VM 的 OS 磁盘替换为使用最新映像版本创建的新磁盘。 所配置的任何扩展和自定义数据脚本将在 OS 磁盘上运行，同时保留数据磁盘。 为了尽量减少应用程序停机时间，将分批进行升级，在任一时间，规模集内正在进行升级的计算机不会超过 20%。
 
-升级过程如下所述：
+可以集成 Azure 负载均衡器应用程序运行状况探测或[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)，以便在升级后跟踪应用程序的运行状况。 我们建议整合应用程序检测信号来验证升级是否成功。
+
+### <a name="availability-first-updates"></a>可用性优先更新
+下面所述的用于平台协调式更新的可用性优先模型可确保在多个可用性级别遵循 Azure 中的可用性配置。
+
+跨区域：
+- 更新将以分阶段的方式在整个 Azure 中全局推进，以防出现 Azure 范围的部署失败。
+- 一个“阶段”可以涵盖一个或多个区域，仅当前一阶段中符合条件的 VM 成功更新时，更新才会进入下一阶段。
+- 地理配对的区域不会并发更新，因此它们不能处于同一区域阶段。
+- 更新是否成功是通过跟踪 VM 在更新后的运行状况来衡量的。
+
+在区域内部：
+- 位于不同 Azure 可用性区域中的 VM 不会使用同一更新同时进行更新。
+
+在“集”内部：
+- 公用规模集中的所有 VM 不会同时更新。  
+- 公用虚拟机规模集中的 VM 将分组成批，并在更新域边界内更新，如下所述。
+
+将会遵循平台协调式更新过程每月推出受支持的 OS 平台映像升级。 对于通过共享映像库获取的自定义映像，仅当已将新映像发布并[复制](../virtual-machines/shared-image-galleries.md#replication)到该规模集的区域时，才为特定的 Azure 区域启动映像升级。
+
+### <a name="upgrading-vms-in-a-scale-set"></a>升级规模集中的 VM
+
+规模集的区域可以通过适用于平台映像的可用性优先过程或者通过复制共享映像库的新自定义映像版本来获取映像升级。 然后，按如下所述将映像升级分批应用于单个规模集：
 1. 在开始升级过程之前，业务流程协调程序将确保整个规模集中（出于任何原因）不正常的实例不会超过 20%。
-2. 升级业务流程协调程序会标识要升级的 VM 实例的批，其中任何一个批最多可以包括占实例总数的 20% 的实例，具体取决于一个虚拟机的最小批大小。
-3. VM 实例的所选批的 OS 磁盘将替换为基于最新映像创建的新 OS 磁盘。 规模集模型中的所有指定扩展和配置都将应用于已升级的实例。
+2. 升级业务流程协调程序会标识要升级的 VM 实例的批，其中任何一个批最多可以包括占实例总数的 20% 的实例，具体取决于一个虚拟机的最小批大小。 没有最小规模集大小的要求，包含 5 个或更少实例的规模集的每个升级批包含 1 个 VM（最小批大小）。
+3. 所选升级批中每个 VM 的 OS 磁盘将替换为基于最新映像创建的新 OS 磁盘。 规模集模型中的所有指定扩展和配置都将应用于已升级的实例。
 4. 对于配置了应用程序运行状况探测或应用程序运行状况扩展的规模集，升级最多等待 5 分钟来等待实例变得正常，然后继续升级下一批。 如果实例在升级后 5 分钟内未恢复其运行状况，则默认情况下将还原该实例先前的 OS 磁盘。
 5. 升级业务流程协调程序还会跟踪升级后不正常的实例百分比。 如果升级过程中超过 20% 的已升级实例变得不正常，升级将会停止。
 6. 上述过程会持续到升级了规模集中的所有实例为止。
@@ -60,21 +82,23 @@ ms.locfileid: "110674023"
 | OpenLogic               | CentOS        | 7.5                |
 | MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
 | MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    |
-| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-smalldisk |
 | MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-with-Containers |
 | MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter |
-| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-smalldisk |
 | MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-with-Containers |
-| MicrosoftWindowsServer  | WindowsServer | Datacenter-Core-1903-with-Containers-smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Core |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Core-with-Containers |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-gensecond |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>配置自动 OS 映像升级时的要求
 
 - 映像的版本属性必须设置为“最新” 。
-- 对非 Service Fabric 规模集使用应用程序运行状况探测或[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)。
+- 对于非 Service Fabric 规模集，或者对于仅限无状态节点类型的铜级持久性层上的 Service Fabric 规模集，请使用应用程序运行状况探测或[应用程序运行状况扩展](virtual-machine-scale-sets-health-extension.md)。
 - 请使用计算 API 版本 2018-10-01 或更高版本。
 - 确保规模集模型中指定的外部资源可用且已更新。 示例包括，VM 扩展属性中用于引导有效负载的 SAS URI、存储帐户中的有效负载、对模型中的机密的引用，等等。
-- 对于使用 Windows 虚拟机的规模集，从计算 API 版本 2019-03-01 开始，在规模集模型定义中，必须将“virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates”属性设置为“false” 。 以上属性启用 VM 内升级，其中“Windows 更新”应用操作系统补丁，无需替换 OS 磁盘。 在规模集上启用自动 OS 映像升级后，不需要通过“Windows 更新”进行其他更新。
+- 对于使用 Windows 虚拟机的规模集，从计算 API 版本 2019-03-01 开始，在规模集模型定义中，必须将“virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates”属性设置为“false” 。 enableAutomaticUpdates 属性启用 VM 内部修补，其中的“Windows 更新”将应用操作系统补丁但不替换 OS 磁盘。 在规模集上启用自动 OS 映像升级后，不需要通过 Windows 更新执行额外的修补过程。
 
 ### <a name="service-fabric-requirements"></a>Service Fabric 要求
 
@@ -82,7 +106,8 @@ ms.locfileid: "110674023"
 -   Service Fabric [持续性级别](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)为白银或黄金，而不是青铜（支持自动 OS 映像升级的纯无状态节点类型除外）。
 -   根据规模集模型定义，Service Fabric 扩展必须具有 TypeHandlerVersion 1.1 或更高版本。
 -   根据规模集模型定义，Service Fabric 群集与 Service Fabric 扩展的持久性级别应相同。
-- 不需要额外的运行状况探测或使用应用程序运行状况扩展。
+- 对于银级或金级持久性层，不需要额外的运行状况探测或使用应用程序运行状况扩展。 仅限无状态节点类型的铜级持久性层需要额外的运行状况探测。
+- 在规模集模型定义中，virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates 属性必须设置为 false 。 enableAutomaticUpdates 属性启用通过“Windows 更新”进行的 VM 内部修补，在 Service Fabric 规模集上不受支持。
 
 请确保 Service Fabric 群集与 Service Fabric 扩展上的持久性设置匹配，因为不匹配将导致升级错误。 可以通过[此页](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)上概述的指导原则来修改持久性级别。
 
@@ -107,7 +132,7 @@ ms.locfileid: "110674023"
 以下示例说明如何在规模集模型上设置自动 OS 升级：
 
 ```
-PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2019-12-01`
+PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2021-03-01`
 ```
 
 ```json
@@ -189,7 +214,7 @@ OS 升级过程中，规模集中的 VM 实例每次只升级一批。 只有客
 以下示例使用 [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) 检查 myResourceGroup 资源组中 myScaleSet 规模集的状态 ：
 
 ```
-GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
+GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2021-03-01`
 ```
 
 GET 调用将返回类似以下示例输出的属性：
@@ -249,7 +274,7 @@ az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSe
 
 ### <a name="rest-api"></a>REST API
 ```
-GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2019-12-01`
+GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2021-03-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -274,7 +299,7 @@ az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServ
 使用[启动 OS 升级](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API 调用来启动滚动升级，将所有虚拟机规模集实例移动到最新可用的映像 OS 版本。 已在运行最新可用 OS 版本的实例不会受到影响。 以下示例详细说明如何在 myResourceGroup 资源组中的 myScaleSet 规模集上启动 OS 滚动升级 ：
 
 ```
-POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
+POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2021-03-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -291,11 +316,6 @@ Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetNam
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"
 ```
 
-## <a name="deploy-with-a-template"></a>使用模板进行部署
-
-可以使用模板通过受支持映像（例如 [Ubuntu 16.04-LTS](https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json)）的自动 OS 升级来部署规模集。
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Azure." /></a>
-
 ## <a name="next-steps"></a>后续步骤
-有关如何将自动 OS 升级用于规模集的更多示例，请查看 [GitHub 存储库](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade)。
+> [!div class="nextstepaction"]
+> [了解应用程序运行状况扩展](../virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension.md)
