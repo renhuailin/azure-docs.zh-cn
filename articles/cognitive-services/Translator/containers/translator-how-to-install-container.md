@@ -12,12 +12,12 @@ ms.date: 05/25/2021
 ms.author: lajanuar
 recommendations: false
 keywords: 本地, Docker, 容器, 标识
-ms.openlocfilehash: 4cbc6e65eb72050726a0da5969aab07bf06358f2
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 680f1f6f1bfddc5bf525ae06b61bcf9098dc850f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961723"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745606"
 ---
 # <a name="install-and-run-translator-containers-preview"></a>安装并运行翻译器容器（预览版）
 
@@ -36,7 +36,7 @@ ms.locfileid: "111961723"
 
 首先，需要一个有效的 [**Azure 帐户**](https://azure.microsoft.com/free/cognitive-services/)。  如果没有帐户，可以 [**创建一个免费帐户**](https://azure.microsoft.com/free/)。
 
-还需要以下各项来使用翻译器容器：
+还需要以下项：
 
 | 必须 | 目的 |
 |--|--|
@@ -165,7 +165,7 @@ curl -X POST "http://localhost:5000/translate?api-version=3.0&from=en&to=zh-HANS
 
 #### <a name="english-leftrightarrow-german"></a>英语 &leftrightarrow; 德语
 
-导航到 swagger 页面：<http://localhost:5000/swagger/index.html>
+导航到 swagger 页面：`<http://localhost:5000/swagger/index.html>`
 
 1. 选择“POST/翻译”
 1. 选择“试用”

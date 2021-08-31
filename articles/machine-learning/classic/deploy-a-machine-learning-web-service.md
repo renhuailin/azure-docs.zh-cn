@@ -1,6 +1,6 @@
 ---
 title: ML 工作室（经典）：部署 Web 服务 - Azure
-description: 如何将训练试验转换为预测试验、准备进行部署，然后将其部署为 Azure 机器学习工作室（经典）Web 服务。
+description: 如何将训练试验转换为预测试验、准备进行部署，然后将其部署为机器学习工作室（经典）Web 服务。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,23 +9,24 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 018e292abc7050f5d71c6bf9065618fecf8b5668
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8aff3996bf9722dc954c5532740247b05477a21b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520436"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694586"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure 机器学习工作室（经典）Web 服务
 
-**适用对象：** ![这是复选标记，意味着本文适用于机器学习工作室（经典版）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）   ![这是 X，意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+适用范围：![这是复选标记，意味着本文适用于](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）![机器学习工作室（经典版）   这是 X，意味着本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
-可以使用 Azure 机器学习工作室（经典）构建和测试预测分析解决方案。 然后，可以将该解决方案部署为 Web 服务。
+可以使用机器学习工作室（经典）构建和测试预测分析解决方案。 然后，可以将该解决方案部署为 Web 服务。
 
 机器学习工作室（经典）Web 服务提供了应用程序与机器学习工作室（经典）工作流评分模型之间的接口。 外部应用程序可以实时与机器学习工作室（经典）工作流评分模型进行通信。 调用机器学习工作室（经典）Web 服务可将预测结果返回外部应用程序。 若要调用 Web 服务，需要在传递部署 Web 服务时创建的 API 密钥。 机器学习工作室（经典）Web 服务基于 REST，后者是用于 Web 编程项目的一种流行的体系结构。
 
-Azure 机器学习工作室（经典）有两种类型的 Web 服务：
+机器学习工作室（经典）有两种类型的 Web 服务：
 
 * 请求响应服务 (RRS)：一种低延迟且高度可缩放的服务，用于对单个数据记录进行评分。
 * 批处理执行服务 (BES)：对一批数据记录进行评分的一种异步服务。
@@ -44,10 +45,10 @@ BES 的输入类似于 RRS 使用的数据输入。 主要区别在于，BES 读
 
 在别处对创建和管理训练实验的过程进行了更详细地介绍。 有关详细信息，请参阅以下文章：
 
-* [在 Azure 机器学习工作室（经典）中创建一个简单的试验](create-experiment.md)
-* [使用 Azure 机器学习工作室（经典）开发预测解决方案](tutorial-part1-credit-risk.md)
-* [将训练数据导入 Azure 机器学习工作室（经典）中](import-data.md)
-* [在 Azure 机器学习工作室（经典）中管理试验迭代](manage-experiment-iterations.md)
+* [在机器学习工作室（经典）中创建一个简单的实验](create-experiment.md)
+* [使用机器学习工作室（经典）开发预测解决方案](tutorial-part1-credit-risk.md)
+* [将训练数据导入机器学习工作室（经典）](import-data.md)
+* [在机器学习工作室（经典）中管理试验迭代](manage-experiment-iterations.md)
 
 ## <a name="convert-the-training-experiment-to-a-predictive-experiment"></a>将训练实验转换为预测实验
 
@@ -130,7 +131,7 @@ BES 的输入类似于 RRS 使用的数据输入。 主要区别在于，BES 读
 
 可以定义 Web 服务参数并将其与一个或多个模块参数关联，可以指定它们是否是必需或可选。 访问该服务时，Web 服务的用户可为这些参数提供值，并可对模块操作进行相应的修改。
 
-有关 Web 服务参数是什么以及其使用方法的详细信息，请参阅[使用 Azure 机器学习 Web 服务参数][webserviceparameters]。
+有关 Web 服务参数是什么及其使用方法的详细信息，请参阅[使用机器学习 Web 服务参数][webserviceparameters]。
 
 以下步骤描述如何将预测实验部署为新的 Web 服务。 还可将实验部署为经典 Web 服务。
 
@@ -141,7 +142,7 @@ BES 的输入类似于 RRS 使用的数据输入。 主要区别在于，BES 读
 若要部署预测实验，请单击实验画布底部的“运行”。 实验运行完毕后，单击“部署 Web 服务”或 **部署 Web 服务 [全新]** 。  机器学习工作室（经典）Web 服务门户的部署页随即打开。
 
 > [!NOTE] 
-> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 
+> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 
 
 ### <a name="web-service-portal-deploy-experiment-page"></a>Web 服务门户“部署试验”页
 
@@ -190,7 +191,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 **使用** 页提供访问 Web 服务所需的所有信息。 例如，提供 API 密钥以允许对服务的授权访问。
 
-有关访问机器学习工作室（经典）Web 服务的详细信息，请参阅[如何使用 Azure 机器学习工作室（经典）Web 服务](consume-web-services.md)。
+有关访问机器学习工作室（经典）Web 服务的详细信息，请参阅[如何使用机器学习工作室（经典）Web 服务](consume-web-services.md)。
 
 ### <a name="manage-your-new-web-service"></a>管理新 Web 服务
 
@@ -204,7 +205,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 #### <a name="create-a-plan-in-another-region"></a>在另一个区域中创建计划
 
-1. 登录到 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net/)。
+1. 登录到 [机器学习 Web 服务](https://services.azureml.net/)。
 2. 单击“计划”菜单选项。
 3. 在视图页中的“计划”上，单击“新建”。
 4. 从“订阅”下拉列表中，选择新计划将驻留的订阅。
@@ -216,7 +217,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 #### <a name="deploy-the-web-service-to-another-region"></a>将 Web 服务部署到另一个区域
 
-1. 在 Microsoft Azure 机器学习 Web 服务页上，单击“Web 服务”菜单选项。
+1. 在机器学习 Web 服务页上，单击“Web 服务”菜单选项。
 2. 选择要部署到新区域的 Web 服务。
 3. 单击 **“复制”** 。
 4. 在“Web 服务名称”中，键入 Web 服务的新名称。
@@ -242,7 +243,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 若要测试请求响应 Web 服务，请单击 Web 服务仪表板中的“测试”按钮。 将弹出一个对话框，要求输入服务的输入数据。 下面是评分实验预期的列。 输入一组数据，并单击“确定”。 Web 服务生成的结果显示在仪表板的底部。
 
-可以单击“测试”预览链接，在 Azure 机器学习工作室（经典）Web 服务门户中测试服务，如“新建 Web 服务”部分中所示。
+可以单击“测试”预览链接，在机器学习工作室（经典）Web 服务门户中测试服务，如“新建 Web 服务”部分中所示。
 
 若要测试 Batch 执行服务，请单击“测试”预览链接。 在 Batch 测试页上，单击输入下的“浏览”，并选择包含相应示例值的 CSV 文件。 如果没有 CSV 文件，并且已使用机器学习工作室（经典）创建了预测试验，则可以下载预测试验的数据集并使用它。
 
@@ -256,21 +257,21 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 ![在 Web 服务门户中启用日志记录](./media/publish-a-machine-learning-web-service/figure-4.png)
 
-还可在 Azure 机器学习 Web 服务门户中配置 Web 服务的终结点，类似于之前在“新建 Web 服务”部分中显示的过程。 选项有所不同，可以添加或更改服务描述、启用日志记录，并启用样本数据进行测试。
+还可以在机器学习 Web 服务门户中配置 Web 服务的终结点，类似于之前在“新建 Web 服务”部分中显示的过程。 选项有所不同，可以添加或更改服务描述、启用日志记录，并启用样本数据进行测试。
 
 ### <a name="access-your-classic-web-service"></a>访问经典 Web 服务
 
-从 Azure 机器学习工作室（经典）部署 Web 服务后，可以采用编程方式向服务发送数据并接收响应。
+从机器学习工作室（经典）部署 Web 服务后，可以采用编程方式向服务发送数据并接收响应。
 
 仪表板提供访问 Web 服务所需的所有信息。 例如，提供 API 密钥以允许对服务的授权访问，并提供 API 帮助页以帮助你开始编写代码。
 
-有关访问机器学习工作室（经典）Web 服务的详细信息，请参阅[如何使用 Azure 机器学习工作室（经典）Web 服务](consume-web-services.md)。
+有关访问机器学习工作室（经典）Web 服务的详细信息，请参阅[如何使用机器学习工作室（经典）Web 服务](consume-web-services.md)。
 
 ### <a name="manage-your-classic-web-service"></a>管理经典 Web 服务
 
 可通过执行各种操作来监视 Web 服务。 可以将其更新，也可以将其删除。 除了部署经典 Web 服务时创建的默认终结点外，还可向其添加其他终结点。
 
-有关详细信息，请参阅[管理 Azure 机器学习工作室（经典）工作区](manage-workspace.md)和[使用 Azure 机器学习工作室（经典）Web 服务门户管理 Web 服务](manage-new-webservice.md)。
+有关详细信息，请参阅[管理机器学习工作室（经典）工作区](manage-workspace.md)和[使用机器学习工作室（经典）Web 服务门户管理 Web 服务](manage-new-webservice.md)。
 
 ## <a name="update-the-web-service"></a>更新 Web 服务
 可更改 Web 服务，例如使用其他训练数据更新模型、重新部署、覆盖原始 Web 服务等。
@@ -288,9 +289,9 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 * 有关部署如何工作的详细技术细节，请参阅[机器学习工作室（经典）模型如何从实验逐步变为运营 Web 服务](model-progression-experiment-to-web-service.md)。
 
-* 有关如何使模型就绪可部署的详细信息，请参阅[如何准备模型以便在 Azure 机器学习工作室（经典）中进行部署](deploy-a-machine-learning-web-service.md)。
+* 有关如何使模型就绪可部署的详细信息，请参阅[如何准备模型使其可在机器学习工作室（经典）中部署](deploy-a-machine-learning-web-service.md)。
 
-* 可通过多种方法来使用 REST API 和访问 Web 服务。 请参阅[如何使用 Azure 机器学习工作室（经典）Web 服务](consume-web-services.md)。
+* 可通过多种方法来使用 REST API 和访问 Web 服务。 请参阅[如何使用机器学习工作室（经典）Web 服务](consume-web-services.md)。
 
 <!-- internal links -->
 [创建训练实验]: #create-a-training-experiment

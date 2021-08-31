@@ -7,23 +7,31 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/06/2021
-ms.openlocfilehash: b1f742c1de259f6c1c06d9b31a8788699f0b8426
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 06/18/2021
+ms.openlocfilehash: c7c5ce32801efe68d653dc3abd97c1e5ff3a7f9b
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580039"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113000403"
 ---
-# <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>估计和管理 Azure 认知搜索服务的容量
+# <a name="estimate-and-manage-capacity-of-a-search-service"></a>估计和管理搜索服务的容量
 
-在[预配搜索服务](search-create-service-portal.md)和锁定特定的定价层之前，请花几分钟时间来了解容量如何工作以及如何调整副本和分区来适应工作负荷波动。
+在[创建搜索服务](search-create-service-portal.md)并锁定在特定[定价层](search-sku-tier.md)中之前，请花几分钟时间了解容量的工作原理，以及如何调整副本和分区以适应工作负载波动。
 
-容量是[服务层](search-sku-tier.md)的一种功能，它为每个服务和每个分区创建最大的存储空间，以及为你可创建的对象数创建最大的限制。 基本层适用于具有适中存储要求（仅一个分区）的应用，但可以在高可用性配置（3 个副本）中运行。 其他层适用于特定的工作负载或模式，例如多租户。 在内部，在这些层上创建的服务受益于帮助这些情况的硬件。
+在 Azure 认知搜索中，容量基于副本和分区。 副本是搜索引擎的副本。
+分区是存储单位。 每个新搜索服务从一个搜索服务开始，但你可以独立纵向扩展每个资源，以适应波动的工作负载。 添加任一资源都[可计费](search-sku-manage-costs.md#billable-events)。
 
-Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活组合，以便你可根据是否需要更多的查询或索引功能来改变容量。 创建服务后，可以单独增加或减少副本或分区数。 每增加一个物理资源，成本就会增加，但是一旦完成大的工作负载，就可以减小规模以降低费用。 增加或减少容量所需的时间为 15 分钟到几个小时，具体取决于调整的层和大小。
+副本和分区的物理特征（如处理速度和磁盘 IO）因[服务层级](search-sku-tier.md)而异。 如果在标准版上预配，则副本和分区的速度将比基本版的副本和分区更快且更大。
 
-修改副本和分区的分配时，建议使用 Azure 门户。 该门户针对允许的组合强制实施限制，使其低于层的上限。 但是，如果需要使用基于脚本或基于代码的预配方法，[Azure PowerShell](search-manage-powershell.md) 或[管理 REST API](/rest/api/searchmanagement/services) 是替代的解决方案。
+更改容量不是即时的。 最多可能需要一小时才能授权分区或解除分区授权，尤其是在包含大量数据的服务上。
+
+缩放搜索服务时，可以从以下工具和方法中进行选择：
+
++ [Azure 门户](#adjust-capacity)
++ [Azure PowerShell](search-manage-powershell.md)
++ [Azure CLI](/cli/azure/search)
++ [管理 REST API](/rest/api/searchmanagement/2020-08-01/services)
 
 ## <a name="concepts-search-units-replicas-partitions-shards"></a>概念：搜索单位、副本、分区、分片
 
@@ -123,7 +131,7 @@ Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活�
 
 ## <a name="when-to-add-capacity"></a>何时添加容量
 
-最初为服务分配了由一个分区和一个副本组成的最低级别的资源。 [所选的层](search-sku-tier.md)确定了分区大小和速度，每个层已根据一组适合不同方案的特征进行优化。 如果选择更高端的层，所需的分区数可能比使用 S1 时更少。 需要通过自我引导式测试解答的一个问题是，对于性能而言，使用更大且更昂贵的分区，是否比在较低层上预配的服务中使用两个更廉价的分区更好。
+最初为服务分配了由一个分区和一个副本组成的最低级别的资源。 [所选的层](search-sku-tier.md)确定了分区大小和速度，每个层已根据一组适合不同方案的特征进行优化。 如果选择更高端的层，[所需的分区数](search-performance-tips.md#service-capacity)可能比使用 S1 时更少。 需要通过自我引导式测试解答的一个问题是，对于性能而言，使用更大且更昂贵的分区，是否比在较低层上预配的服务中使用两个更廉价的分区更好。
 
 单个服务必须具有足够的资源才能处理所有工作负荷（索引和查询）。 没有任何工作负荷在后台运行。 如果查询请求在性质上不频繁，则可以计划索引编制，但如果不这样做，服务也不会排定任务的优先级。 此外，在内部更新服务或节点时，一定程度的冗余也会销蚀查询性能。
 
@@ -154,7 +162,7 @@ Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活�
 
    :::image type="content" source="media/search-capacity-planning/1-initial-values.png" alt-text="显示当前值的“规模”页" border="true":::
 
-1. 使用滑块增加或减少分区数。 底部的公式指示正在使用多少个搜索单位。 选择“保存”。
+1. 使用滑块增加或减少分区数。 选择“保存”。
 
    此示例添加第二个副本和分区。 请注意搜索单位计数；现在有 4 个搜索单位，因为计费公式是副本数乘以分区数 (2 x 2)。 将容量翻倍不仅仅会使运行服务的成本翻倍。 如果搜索单位的成本是 $100，则新的每月费用将是 $400。
 
@@ -172,9 +180,31 @@ Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活�
 
 > [!NOTE]
 > 预配服务后，无法升级到更高的层。 必须在新层中创建搜索服务，并重新加载索引。 有关服务预配的帮助，请参阅[在门户中创建 Azure 认知搜索服务](search-create-service-portal.md)。
->
-> 此外，分区和副本是由服务在内部专门管理的。 不存在处理器关联或者将工作负荷分配到特定节点的概念。
->
+
+## <a name="how-scale-requests-are-handled"></a>如何处理缩放请求
+
+收到缩放请求时，搜索服务：
+
+1. 检查请求是否有效。
+1. 开始备份数据和系统信息。
+1. 检查服务是否已处于预配状态（当前添加或消除副本或分区）。
+1. 启动预配。
+
+缩放服务可能最少需要 15 分钟或 1 个小时的时间，具体取决于服务的大小和请求的范围。 备份可能需要几分钟的时间，具体取决于数据量以及分区和副本的数目。
+
+上述步骤并非完全连续。 例如，系统在可以安全地预配时开始预配，这可能是在备份逐步结束时。
+
+## <a name="errors-during-scaling"></a>缩放期间的错误
+
+由于在服务已处理上一个请求时重复请求进行纵向扩展或缩减，因此出现错误消息“目前不允许服务更新操作，因为我们正在处理上一个请求”。
+
+通过检查服务状态以验证预配状态来解决此错误：
+
+1. 使用[管理 REST API](/rest/api/searchmanagement/2020-08-01/services)、[Azure PowerShell](search-manage-powershell.md) 或 [Azure CLI](/cli/azure/search) 获取服务状态。
+1. 调用 [Get Service](/rest/api/searchmanagement/2020-08-01/services/get)
+1. 检查[“预配状态”：“预配”](/rest/api/searchmanagement/2020-08-01/services/get#provisioningstate)的响应
+
+如果状态为“预配”，则等待请求完成。 在尝试另一个请求之前，状态应为“成功”或“失败”。 备份没有任何状态。 备份是一个内部操作，不太可能是任何缩放练习中断的因素。
 
 <a id="chart"></a>
 
@@ -192,12 +222,12 @@ Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活�
 | **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |不适用 |
 | **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |不适用 |
 | **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |不适用 |
-| **12 副本** |12 SU |24 SU |36 个 SU |空值 |空值 |不适用 |
+| **12 副本** |12 SU |24 SU |36 个 SU |不适用 |空值 |不适用 |
 
 Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请参阅 [Pricing Details](https://azure.microsoft.com/pricing/details/search/)（定价详细信息）。
 
 > [!NOTE]
-> 副本数和分区数必须能被 12 整除（具体而言，为 1、2、3、4、6、12）。 这是因为，Azure 认知搜索将每个索引预先分割为 12 个分片，以便将其平均分散到所有分区。 例如，如果服务有三个分区，而你创建了新索引，则每个分区将包含该索引的四个分片。 Azure 认知搜索为索引分片的方法属于实现细节，在将来的版本中可能发生变化。 尽管目前的分区数为 12，但请不要料想将来该数字永远都是 12。
+> 副本数和分区数必须能被 12 整除（具体而言，为 1、2、3、4、6、12）。 Azure 认知搜索将每个索引预先分割为 12 个分片，以便将其平均分散到所有分区。 例如，如果服务有三个分区，而你创建了新索引，则每个分区将包含该索引的四个分片。 Azure 认知搜索为索引分片的方法属于实现细节，在将来的版本中可能发生变化。 尽管目前的分区数为 12，但请不要料想将来该数字永远都是 12。
 >
 
 ## <a name="next-steps"></a>后续步骤

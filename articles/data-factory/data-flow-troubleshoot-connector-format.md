@@ -5,21 +5,60 @@ author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 05/24/2021
-ms.openlocfilehash: 1dbbbc76cb67adb678cc557c4193c0a25f280540
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 06/24/2021
+ms.openlocfilehash: 055b933834c3cf112742d011a7f34205a07c5e04
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952957"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746562"
 ---
 # <a name="troubleshoot-connector-and-format-issues-in-mapping-data-flows-in-azure-data-factory"></a>排查 Azure 数据工厂中映射数据流中的连接器和格式问题
 
 
 本文探讨了 Azure 数据工厂 (ADF) 中与映射数据流的连接器和格式相关的故障排除方法。
 
+## <a name="azure-blob-storage"></a>Azure Blob 存储
 
-## <a name="cosmos-db--json"></a>Cosmos DB 和 JSON
+### <a name="account-kind-of-storage-general-purpose-v1-doesnt-support-service-principal-and-mi-authentication"></a>存储帐户类型（常规用途 v1）不支持服务主体和 MI 身份验证
+
+#### <a name="symptoms"></a>症状
+
+在数据流中，如果将 Azure Blob 存储（常规用途 v1）与服务主体或 MI 身份验证一起使用，则可能会遇到以下错误消息：
+
+`com.microsoft.dataflow.broker.InvalidOperationException: ServicePrincipal and MI auth are not supported if blob storage kind is Storage (general purpose v1)`
+
+#### <a name="cause"></a>原因
+
+在数据流中使用 Azure Blob 链接服务时，如果帐户类型为空或“存储”，则不支持托管标识或服务主体身份验证。 此情况如下图 1 和图 2 所示。
+
+图 1： Azure Blob 存储链接服务中的帐户类型
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/storage-account-kind.png" alt-text="屏幕截图：显示 Azure Blob 存储链接服务中存储帐户类型。"::: 
+
+图 2：存储帐户页
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/storage-account-page.png" alt-text="屏幕截图：显示存储帐户页。" lightbox="./media/data-flow-troubleshoot-connector-format/storage-account-page.png"::: 
+
+
+#### <a name="recommendation"></a>建议
+
+若要解决此问题，请参考以下建议：
+
+- 如果在 Azure Blob 链接服务中存储帐户类型为“无”，请指定适当的帐户类型，并参阅下图 3 来完成该操作。 此外，请参阅图 2 获取存储帐户类型，检查并确认该帐户类型不是“存储”（常规用途 v1）。
+
+    图 3：在 Azure Blob 存储链接服务中指定存储帐户类型
+
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/specify-storage-account-kind.png" alt-text="屏幕截图：显示如何在 Azure Blob 存储链接服务中指定存储帐户类型。"::: 
+    
+
+- 如果帐户类型为“存储”（常规用途 v1），请将存储帐户升级为常规用途 v2 或选择其他身份验证。
+
+    图 4：将存储帐户升级为常规用途 v2
+
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/upgrade-storage-account.png" alt-text="屏幕截图：显示如何将存储帐户升级为常规用途 v2。" lightbox="./media/data-flow-troubleshoot-connector-format/upgrade-storage-account.png"::: 
+
+## <a name="azure-cosmos-db-and-json-format"></a>Azure Cosmos DB 和 JSON 格式
 
 ### <a name="support-customized-schemas-in-the-source"></a>支持源中的自定义架构
 
@@ -55,185 +94,143 @@ ms.locfileid: "111952957"
 
     ![屏幕截图，显示用于自定义源架构的第二个选项。](./media/data-flow-troubleshoot-connector-format/customize-schema-option-2.png)
 
+### <a name="support-map-type-in-the-source"></a>在源中支持映射类型
+
+#### <a name="symptoms"></a>症状
+在 ADF 数据流中，Cosmos DB 或 JSON 源无法直接支持映射数据类型，因此你无法在“导入投影”下获得映射数据类型。
+
+#### <a name="cause"></a>原因
+Cosmos DB 和 JSON 利用无架构连接，而相关的 spark 连接器使用示例数据来推理架构，然后该架构将用作 Cosmos DB/JSON 源架构。 推理架构时，Cosmos DB/JSON spark 连接器只能将对象数据推理为结构，而不能推理为映射数据类型，这正是无法直接支持映射类型的原因。
+
+#### <a name="recommendation"></a>建议 
+若要解决此问题，请参阅以下示例和步骤，手动更新 Cosmos DB/JSON 源的脚本 (DSL) 以支持映射数据类型。
+
+示例：
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/script-example.png" alt-text="显示有关更新 Cosmos DB/JSON 源脚本 (DSL) 的示例的屏幕截图。" lightbox="./media/data-flow-troubleshoot-connector-format/script-example.png"::: 
+    
+步骤 1：打开数据流活动的脚本。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/open-script.png" alt-text="显示如何打开数据流活动脚本的屏幕截图。" ::: 
+    
+步骤 2：参考上述示例更新 DSL 以支持映射类型。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/update-dsl.png" alt-text="显示如何更新 DSL 的屏幕截图。" ::: 
+
+映射类型支持：
+
+|类型 |是否支持映射类型？   |注释|
+|-------------------------|-----------|------------|
+|Excel、CSV  |否      |两者都是使用基元类型的表格数据源，因此无需支持映射类型。 |
+|Orc、Avro |是 |无。|
+|JSON|是 |无法直接支持映射类型，请按照本部分中的建议更新源投影下的脚本 (DSL)。|
+|Cosmos DB |是 |无法直接支持映射类型，请按照本部分中的建议更新源投影下的脚本 (DSL)。|
+|Parquet |是 |parquet 数据集目前不支持复杂数据类型，因此你需要使用数据流 parquet 源下的“导入投影”来获取映射类型。|
+|XML |否 |无。|
+
 ### <a name="consume-json-files-generated-by-copy-activities"></a>使用复制活动生成的 JSON 文件
 
 #### <a name="symptoms"></a>症状
 
-如果使用复制活动生成一些 JSON 文件，然后尝试在数据流中读取这些文件，则会失败并看到错误消息 `JSON parsing error, unsupported encoding or multiline`
+如果使用复制活动生成一些 JSON 文件，尝试在数据流中读取这些文件会失败，并显示错误消息：`JSON parsing error, unsupported encoding or multiline`
 
 #### <a name="cause"></a>原因
 
-复制和数据流的 JSON 分别存在以下限制：
+对于复制和数据流，JSON 分别有以下限制：
 
-- 对于 Unicode 编码（utf-8、utf-16、utf-32）的 JSON 文件，复制活动始终会生成带有 BOM 的 JSON 文件。
-- 启用“单一文档”的数据流 JSON 源不支持带有 BOM 的 Unicode 编码。
+- 对于 Unicode 编码（utf-8、utf-16、utf-32）JSON 文件，复制活动始终生成带有 BOM 的 JSON 文件。
+- 启用了“单个文档”的数据流 JSON 源不支持使用 BOM 进行 Unicode 编码。
 
-    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/enabled-single-document.png" alt-text="屏幕截图：显示已启用的“单一文档”。"::: 
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/enabled-single-document.png" alt-text="显示启用了“单个文档”的屏幕截图。"::: 
 
 
-因此，如果满足以下条件，则会遇到问题：
+因此，在满足以下条件时将出现问题：
 
-- 将复制活动所使用的接收器数据集设置为 Unicode 编码（utf-8、utf-16、utf-16be、utf-32、utf-32be）或使用默认值。
-- 无论数据流 JSON 源中是否已启用“单一文档”，复制接收器均设置为使用“对象数组”文件模式，如下图所示。 
+- 复制活动使用的接收器数据集设置为 Unicode 编码（utf-8、utf-16、utf-16be、utf-32、utf-32be）或使用默认值。
+- 复制接收器设置为使用“对象数组”文件模式（如下图所示），无论数据流 JSON 源中是否启用了“单个文件”。 
 
-    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/array-of-objects-pattern.png" alt-text="屏幕截图：显示所设置的“对象数组”模式。"::: 
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/array-of-objects-pattern.png" alt-text="显示“对象数组”模式设置的屏幕截图。"::: 
    
 #### <a name="recommendation"></a>建议
 
-- 如果在数据流中使用所生成的文件，请始终在复制接收器中使用默认文件模式或显式“对象集”模式。
-- 禁用数据流 JSON 源中的“单一文档”选项。
+- 如果在数据流中使用生成的文件，请始终在复制接收器中使用默认文件模式或显式“对象集”模式。
+- 禁用数据流 JSON 源中的“单个文档”选项。
 
 >[!Note]
-> 从性能角度来看，我们还建议使用“对象集”。 由于数据流中的“单一文档”JSON 无法针对单个大型文件启用并行读取，因此该建议不会产生负面影响。
+> 从性能角度来看，还建议使用“对象集”。 由于数据流中的“单个文档”JSON 无法对单个大文件进行并行读取，因此本建议没有任何负面影响。
 
-### <a name="the-query-with-parameters-does-not-work"></a>带参数的查询无效
+### <a name="the-query-with-parameters-does-not-work"></a>使用参数的查询不起作用
 
 #### <a name="symptoms"></a>症状
 
-Azure 数据工厂中的映射数据流支持使用参数。 参数值由调用管道通过执行数据流活动设置，使用参数可使数据流具有通用性、灵活性和可重用性。 可以使用[参数化映射数据流](./parameters-data-flow.md)一文中的参数对数据流设置和表达式进行参数化。
+Azure 数据工厂中的映射数据流支持使用参数。 参数值由调用管道通过执行数据流活动设置，使用参数可以使数据流具有通用性、灵活性和可重用性。 可以使用这些参数将数据流设置和表达式参数化：[参数化映射数据流](./parameters-data-flow.md)。
 
-设置参数并在数据流源的查询中使用后，这些参数并不奏效。
+设置参数并在数据流源查询中使用它们后，这些参数不会生效。
 
 #### <a name="cause"></a>原因
 
-出现此错误是配置错误所致。
+遇到此错误是由于配置错误。
 
 #### <a name="recommendation"></a>建议
 
-请使用下述规则设置查询中的参数，有关更多详细信息，请参阅[在映射数据流中生成表达式](./concepts-data-flow-expression-builder.md)。
+使用以下规则设置查询中的参数，有关详细信息，请参阅[在映射数据流中生成表达式](./concepts-data-flow-expression-builder.md)。
 
 1. 在 SQL 语句的开头应用双引号。
-2. 使用单引号将参数括起来。
-3. 对所有子句语句使用小写字母。
+2. 在参数两侧使用单引号。
+3. 对所有 CLAUSE 语句使用小写字母。
 
 例如：
 
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/set-parameter-in-query.png" alt-text="屏幕截图：显示查询中所设置的参数。"::: 
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/set-parameter-in-query.png" alt-text="查询中设置参数的屏幕截图。"::: 
 
-## <a name="cdm"></a>CDM
+## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
-### <a name="modeljson-files-with-special-characters"></a>带有特殊字符的 Model.Json 文件
-
-#### <a name="symptoms"></a>症状 
-可能会遇到 model.json 文件的最终名称中包含特殊字符这一问题。  
-
-#### <a name="error-message"></a>错误消息  
-`at Source 'source1': java.lang.IllegalArgumentException: java.net.URISyntaxException: Relative path in absolute URI: PPDFTable1.csv@snapshot=2020-10-21T18:00:36.9469086Z. ` 
-
-#### <a name="recommendation"></a>建议  
-替换文件名中的特殊字符，这些特殊字符可在 Synapse 中奏效，但在 ADF 中无效。  
-
-### <a name="no-data-output-in-the-data-preview-or-after-running-pipelines"></a>数据预览中或运行管道后无数据输出
+### <a name="fail-to-create-files-with-service-principle-authentication"></a>无法创建具有服务主体身份验证的文件
 
 #### <a name="symptoms"></a>症状
-使用用于 CDM 的 manifest.json 时，系统在数据预览的过程中或运行管道后不会显示任何数据， 仅显示标头。 可在下图中查看此问题。<br/>
+尝试将数据从不同源移动或传输至 ADLS Gen1 接收器时，如果链接服务的身份验证方法为服务主体身份验证，则作业可能会失败，并显示以下错误消息：
 
-![屏幕截图：显示无数据输出症状。](./media/data-flow-troubleshoot-connector-format/no-data-output.png)
-
-#### <a name="cause"></a>原因
-清单文档用于描述 CDM 文件夹，例如，文件夹中的实体，这些实体的引用以及与此实例对应的数据。 清单文档缺少指示 ADF 从何处读取数据的 `dataPartitions` 信息。由于该信息为空，系统将返回零数据。 
-
-#### <a name="recommendation"></a>建议
-更新清单文档以获取 `dataPartitions` 信息，可参阅 [Common Data Model 元数据：引入清单](/common-data-model/cdm-manifest#example-manifest-document)示例清单文档以更新文档。
-
-### <a name="json-array-attributes-are-inferred-as-separate-columns"></a>将 JSON 数组属性推断为单独一列
-
-#### <a name="symptoms"></a>症状 
-可能会遇到 CDM 实体的一个属性（字符串类型）将 JSON 数组作为数据这一问题。 遇到此数据时，ADF 会错误地将其推断为单独一列。 如下图所示，源 (msfp_otherproperties) 中显示的单个属性在 CDM 连接器的预览中被推断为单独一列。<br/> 
-
-- 在 CSV 源数据中（参考第二列）： <br/>
-
-    ![屏幕截图：显示 CSV 源数据中的属性。](./media/data-flow-troubleshoot-connector-format/json-array-csv.png)
-
-- 在 CDM 源数据预览中： <br/>
-
-    ![屏幕截图：显示 CDM 源数据中的单独一列。](./media/data-flow-troubleshoot-connector-format/json-array-cdm.png)
-
- 
-你也可能尝试过映射偏移列，并使用数据流表达式将此属性转换为数组。 但在读取时，此属性作为单独列读取，因此，转换为数组无效。  
+`org.apache.hadoop.security.AccessControlException: CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.). [2b5e5d92-xxxx-xxxx-xxxx-db4ce6fa0487] failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)`
 
 #### <a name="cause"></a>原因
-此问题可能是由此列的 JSON 对象值中的逗号所致。 由于数据文件应为 CSV 文件，逗号表示其为列值的末尾。 
+
+RWX 权限或数据集属性设置不正确。
 
 #### <a name="recommendation"></a>建议
-若要解决此问题，需要使用双引号将 JSON 列括起来，并使用反斜杠 (`\`) 避免任何内部引号。 如此一来，可以将该列值的内容完全作为单列读取。  
-  
->[!Note]
->CDM 不会通知列值的数据类型为 JSON，但会通知数据类型为字符串并按此进行分析。
 
-### <a name="unable-to-fetch-data-in-the-data-flow-preview"></a>无法在数据流预览中提取数据
+- 如果目标文件夹未具备正确的权限，请参阅[使用服务主体身份验证](./connector-azure-data-lake-store.md#use-service-principal-authentication)一文，以在 Gen1 中分配正确的权限。
+
+- 如果目标文件夹具有正确的权限，并且你在数据流中使用文件名属性以定位至正确的文件夹和文件名，但数据集的文件路径属性未设置为目标文件路径（通常不设置），如下图所示，你将遇到此失败，因为后端系统尝试基于数据集的文件路径创建文件，而数据集的文件路径未具备正确的权限。
+    
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/file-path-property.png" alt-text="显示文件路径属性的屏幕截图。"::: 
+    
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/file-name-property.png" alt-text="显示文件名属性的屏幕截图。"::: 
+
+    
+    有两种方法可以解决此问题：
+    1. 为数据集的文件路径分配 WX 权限。
+    1. 将数据集的文件路径设置为具有 WX 权限的文件夹，并在数据流中设置其余文件夹路径和文件名。
+
+## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
+
+### <a name="failed-with-an-error-error-while-reading-file-xxx-it-is-possible-the-underlying-files-have-been-updated"></a>失败并显示错误：“读取文件 XXX 时出错。 基础文件可能已更新”
 
 #### <a name="symptoms"></a>症状
-你将 CDM 与 Power BI 生成的 model.json 一起使用。 使用数据流预览对 CDM 数据进行预览时，遇到错误 `No output data.`
+
+在数据流中使用 ADLS Gen2 作为接收器来预览数据、调试/触发运行等，并且“接收器”阶段“优化”选项卡中的分区设置不是默认设置时，可能会发现作业失败并显示以下错误消息：
+
+`Job failed due to reason: Error while reading file abfss:REDACTED_LOCAL_PART@prod.dfs.core.windows.net/import/data/e3342084-930c-4f08-9975-558a3116a1a9/part-00000-tid-7848242374008877624-5df7454e-7b14-4253-a20b-d20b63fe9983-1-1-c000.csv. It is possible the underlying files have been updated. You can explicitly invalidate the cache in Spark by running 'REFRESH TABLE tableName' command in SQL or by recreating the Dataset/DataFrame involved.`
 
 #### <a name="cause"></a>原因
- Power BI 数据流生成的 model.json 文件的分区中存在以下代码。
-```json
-"partitions": [  
-{  
-"name": "Part001",  
-"refreshTime": "2020-10-02T13:26:10.7624605+00:00",  
-"location": "https://datalakegen2.dfs.core.windows.net/powerbi/salesEntities/salesPerfByYear.csv @snapshot=2020-10-02T13:26:10.6681248Z"  
-}  
-```
-对于此 model.json 文件，问题在于数据分区文件的命名架构包含特殊字符，且当前不存在支持带有“@”的文件路径。  
+
+1. 没有为 MI/SP 身份验证分配适当的权限。
+1. 你可能拥有自定义作业来处理不需要的文件，这将影响数据流的中间输出。
 
 #### <a name="recommendation"></a>建议
-请从数据分区文件名和 model.json 文件中删除 `@snapshot=2020-10-02T13:26:10.6681248Z` 部分，然后重试。 
+1. 检查链接服务是否具有 Gen2 的 R/W/E 权限。 如果使用 MI 身份验证/SP 身份验证，请至少在访问控制 (IAM) 中授予“存储 Blob 数据参与者”角色。
+1. 确认你是否有特定作业，可将文件删除或移动到其他位置，而其名称与你的规则并不匹配。 由于数据流首先将分区文件写入目标文件夹，然后执行合并和重命名操作，因此中间文件的名称可能与你的规则并不匹配。
 
-### <a name="the-corpus-path-is-null-or-empty"></a>语料库路径为 null 或为空
-
-#### <a name="symptoms"></a>症状
-在具有模型格式的数据流中使用 CDM 时，无法预览数据，且遇到错误 `DF-CDM_005 The corpus path is null or empty`。 该错误如下图所示：  
-
-![屏幕截图：显示语料库路径错误。](./media/data-flow-troubleshoot-connector-format/corpus-path-error.png)
-
-#### <a name="cause"></a>原因
-model.json 中的数据分区路径指向 Blob 存储位置，而非数据湖。 对于 ADLS Gen2，该位置的基 URL 应为 .dfs.core.windows.net。 
-
-#### <a name="recommendation"></a>建议
-若要解决此问题，请参阅 [ADF 向数据流中添加针对内联数据集和 Common Data Model 的支持](https://techcommunity.microsoft.com/t5/azure-data-factory/adf-adds-support-for-inline-datasets-and-common-data-model-to/ba-p/1441798)一文，该文中语料库路径错误的修复方法如下图所示。
-
-![屏幕截图：显示语料库路径错误的修复方法。](./media/data-flow-troubleshoot-connector-format/fix-format-issue.png)
-
-### <a name="unable-to-read-csv-data-files"></a>无法读取 CSV 数据文件
-
-#### <a name="symptoms"></a>症状 
-你将内联数据集用作通用数据模型且将清单作为源，并提供输入清单文件、根路径、实体名称和路径。 在清单中，你的数据分区中包含 CSV 文件位置。 与此同时，实体架构和 CSV 架构相同，且已成功进行所有验证。 但是，在数据预览中，仅加载架构而不加载数据，并且数据不可见，如下图所示：
-
-![屏幕截图：显示无法读取数据文件的问题。](./media/data-flow-troubleshoot-connector-format/unable-read-data.png)
-
-#### <a name="cause"></a>原因
-CDM 文件夹不会分割为逻辑模型和物理模型，并且 CDM 文件夹中仅存在物理模型。 [逻辑定义](/common-data-model/sdk/logical-definitions)和[解析逻辑实体定义](/common-data-model/sdk/convert-logical-entities-resolved-entities)两篇文章中介绍了这两种模型的差异。<br/> 
-
-#### <a name="recommendation"></a>建议
-对于使用 CDM 作为源的数据流，请尝试使用逻辑模型作为实体引用，并使用描述物理解析实体位置和数据分区位置的清单。 可在公共 CDM Github 存储库 [CDM-schemaDocuments](https://github.com/microsoft/CDM/tree/master/schemaDocuments) 中查看逻辑实体定义的示例<br/>
-
-若要构建语料库，一个不错的做法是复制“架构文档”文件夹（Github 存储库中的同一级别）中的文件，然后将这些文件放入文件夹。 之后，可以在存储库中使用其中一个预定义逻辑实体（作为起点或参考点）创建逻辑模型。<br/>
-
-设置语料库后，建议使用 CDM 作为数据流中的接收器，以便正确创建格式标准的 CDM 文件夹。 可以使用 CSV 数据集作为源，然后将其接收到所创建的 CDM 模型。
-
-## <a name="delta"></a>增量
-
-### <a name="the-sink-does-not-support-the-schema-drift-with-upsert-or-update"></a>接收器不支持带有更新插入或更新的架构偏差
-
-#### <a name="symptoms"></a>症状
-你可能会遇到映射数据流中的增量接收器不支持带有更新插入/更新的架构偏差这一问题。 问题表现为当增量是映射数据流中的目标并且用户配置更新/更新插入时，架构偏差无效。 
-
-如果在“初始”加载到增量后，向源中添加了列，则后续作业会失败，并显示无法找到新列的错误。在使用更改行进行更新插入/更新时，会发生此情况。 似乎仅插入操作不会出现此症状。
-
-#### <a name="error-message"></a>错误消息
-`DF-SYS-01 at Sink 'SnkDeltaLake': org.apache.spark.sql.AnalysisException: cannot resolve target.BICC_RV in UPDATE clause given columns target. `
-
-#### <a name="cause"></a>原因
-由于数据流运行时中使用的 io 增量库存在限制，因此这属于增量格式问题。 此问题仍在修复中。
-
-#### <a name="recommendation"></a>建议
-若要解决此问题，需要首先更新架构，然后写入数据。 可执行以下步骤： <br/>
-1. 创建数据流，其中包含具有“合并架构”选项的仅限插入增量接收器，以此更新架构。 
-1. 在第 1 步之后，使用删除/更新插入/更新，在不更改架构的情况下修改目标接收器。 <br/>
-
-## <a name="azure-postgresql"></a>Azure PostgreSQL
+## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 
 ### <a name="encounter-an-error-failed-with-exception-handshake_failure"></a>遇到错误：失败并出现异常：handshake_failure 
 
@@ -255,74 +252,81 @@ CDM 文件夹不会分割为逻辑模型和物理模型，并且 CDM 文件夹�
 #### <a name="recommendation"></a>建议
 可以尝试使用复制活动解除阻止此问题。 
 
-## <a name="csv-and-excel"></a>CSV 和 Excel
-
-### <a name="set-the-quote-character-to-no-quote-char-is-not-supported-in-the-csv"></a>CSV 中不支持将引号字符设置为“无引号字符”
+## <a name="azure-sql-database"></a>Azure SQL 数据库
  
-#### <a name="symptoms"></a>症状
-
-引号字符设置为“无引号字符”时，CSV 中不支持以下几个问题：
-
-1. 引号字符设置为“无引号字符”时，多字符列分隔符不能以相同的字母开头和结尾。
-2. 引号字符设置为“无引号字符”时，多字符列分隔符不能包含转义字符 `\`。
-3. 引号字符设置为“无引号字符”时，列值不能包含行分隔符。
-4. 如果列值包含列分隔符，则引号字符和转义字符不能同时为空（即无引号和无转义）。
-
-#### <a name="cause"></a>原因
-
-下文分别举例说明这些症状的原因：
-1. 以相同字母开头和结尾。<br/>
-`column delimiter: $*^$*`<br/>
-`column value: abc$*^    def`<br/>
-`csv sink: abc$*^$*^$*def ` <br/>
-`will be read as "abc" and "^&*def"`<br/>
-
-2. 多字符分隔符包含转义字符。<br/>
-`column delimiter: \x`<br/>
-`escape char:\`<br/>
-`column value: "abc\\xdef"`<br/>
-转义字符将转义列分隔符或转义字符。
-
-3. 列值包含行分隔符。 <br/>
-`We need quote character to tell if row delimiter is inside column value or not.`
-
-4. 引号字符和转义字符都为空，并且列值包含列分隔符。<br/>
-`Column delimiter: \t`<br/>
-`column value: 111\t222\t33\t3`<br/>
-`It will be ambigious if it contains 3 columns 111,222,33\t3 or 4 columns 111,222,33,3.`<br/>
-
-#### <a name="recommendation"></a>建议
-第一个症状和第二个症状目前无法解决。 对于第三个和第四个症状，可以应用以下方法：
-- 对于症状 3，请勿对多行 csv 文件使用“无引号字符”。
-- 对于症状 4，请将引号字符或转义字符设置为非空，或者可以删除数据中的所有列分隔符。
-
-### <a name="read-files-with-different-schemas-error"></a>读取具有不同架构的文件时出错
+### <a name="unable-to-connect-to-the-sql-database"></a>无法连接到 SQL 数据库
 
 #### <a name="symptoms"></a>症状
 
-使用数据流读取具有不同架构的文件（如 CSV 和 Excel 文件）时，数据流调试、沙盒或活动运行将失败。
-- 对于 CSV，文件架构不同时，会出现数据未对齐情况。 
-
-    ![屏幕截图：显示第一个架构错误。](./media/data-flow-troubleshoot-connector-format/schema-error-1.png)
-
-- 对于 Excel，文件架构不同时，会发生错误。
-
-    ![屏幕截图：显示第二个架构错误。](./media/data-flow-troubleshoot-connector-format/schema-error-2.png)
+Azure SQL 数据库可以在链接服务中的数据复制、数据集预览数据和测试连接中正常运行，但当相同的 Azure SQL 数据库用作数据流中的源或接收器时会失败，并显示诸如 `Cannot connect to SQL database: 'jdbc:sqlserver://powerbasenz.database.windows.net;..., Please check the linked service configuration is correct, and make sure the SQL database firewall allows the integration runtime to access` 的错误
 
 #### <a name="cause"></a>原因
 
-系统不支持在数据流中读取具有不同架构的文件。
+Azure SQL 数据库服务器上的防火墙设置不正确，因此数据流运行时无法连接至该服务器。 目前，尝试使用数据流读取/写入 Azure SQL 数据库时，Azure Databricks 可用于构建 Spark 群集来运行作业，但不支持固定 IP 范围。 有关更多详细信息，请参阅 [Azure Integration Runtime IP 地址](./azure-integration-runtime-ip-addresses.md)。
 
 #### <a name="recommendation"></a>建议
 
-如果仍要在数据流中传输具有不同架构的文件（如 CSV 和 Excel 文件），可以使用以下方法解决此问题：
+检查 Azure SQL 数据库的防火墙设置并将其设置为“允许访问 Azure 服务”，而不是设置固定 IP 范围。
 
-- 对于 CSV，需要手动合并不同文件的架构以获取完整架构。 例如，file_1 的列为 `c_1, c_2, c_3`，而 file_2 的列为 `c_3, c_4,... c_10`，因此合并后的完整架构是 `c_1, c_2... c_10`。 然后，即使其他文件中没有数据（例如，file_x 仅包含列 `c_1, c_2, c_3, c_4`），也让其具有相同的完整架构，在文件中添加其他列 `c_5, c_6, ... c_10`，即可正常运行。
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/allow-access-to-azure-service.png" alt-text="屏幕截图：显示如何在防火墙设置中允许访问 Azure 服务。"::: 
 
-- 对于 Excel，可以应用以下选项之一来解决此问题：
+### <a name="syntax-error-when-using-queries-as-input"></a>使用查询作为输入时出现语法错误
 
-    - 选项 1：需要手动合并不同文件的架构以获取完整架构。 例如，file_1 的列为 `c_1, c_2, c_3`，而 file_2 的列为 `c_3, c_4,... c_10`，因此合并后的完整架构是 `c_1, c_2... c_10`。 然后，即使其他文件中没有数据（例如，带有“SHEET_1”工作表的 file_x 仅包含列 `c_1, c_2, c_3, c_4`），也让其具有相同的架构，在工作表中添加其他列 `c_5, c_6, ... c_10`，即可正常运行。
-    - 选项 2：使用范围（例如 A1：G100）+ firstRowAsHeader=false，即使列名和计数不同，也可以从所有 Excel 文件加载数据。
+#### <a name="symptoms"></a>症状
+
+在 Azure SQL 的数据流源中使用查询作为输入时会失败，并显示以下错误消息：
+
+`at Source 'source1': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax XXXXXXXX.`
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/error-detail.png" alt-text="屏幕截图显示了错误详细信息。"::: 
+
+#### <a name="cause"></a>原因
+
+数据流源中使用的查询应该能够作为子查询运行。 失败的原因是查询语法不正确，或者无法作为子查询运行。 可以在 SSMS 中运行以下查询进行验证：
+
+`SELECT top(0) * from ($yourQuery) as T_TEMP`
+
+#### <a name="recommendation"></a>建议
+
+提供正确的查询，并首先在 SSMS 中测试该查询。
+
+### <a name="failed-with-an-error-sqlserverexception-111212-operation-cannot-be-performed-within-a-transaction"></a>失败并显示错误：“SQLServerException：111212；无法在事务中执行操作。”
+
+#### <a name="symptoms"></a>症状
+
+在数据流中使用 Azure SQL 数据库作为接收器来预览数据、调试/触发运行和执行其他活动时，可能会发现作业失败并显示以下错误消息：
+
+`{"StatusCode":"DFExecutorUserError","Message":"Job failed due to reason: at Sink 'sink': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: 111212;Operation cannot be performed within a transaction.","Details":"at Sink 'sink': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: 111212;Operation cannot be performed within a transaction."}`
+
+#### <a name="cause"></a>原因
+错误“`111212;Operation cannot be performed within a transaction.`”仅在 Synapse 专用 SQL 池中出现。 但你错误地将 Azure SQL 数据库用作连接器。
+
+#### <a name="recommendation"></a>建议
+确认 SQL 数据库是否为 Synapse 专用 SQL 池。 如果是，请使用 Azure Synapse Analytics 作为连接器，如下图所示。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/synapse-analytics-connector.png" alt-text="屏幕截图：显示 Azure Synapse Analytics 连接器。"::: 
+
+### <a name="data-with-the-decimal-type-become-null"></a>十进制类型的数据为 null
+
+#### <a name="symptoms"></a>症状
+
+你想要将数据插入到 SQL 数据库的表格中。 如果数据包含十进制类型，并且需要插入到 SQL 数据库中具有十进制类型的列中，数据值可能会更改为 null。
+
+如果进行预览，在先前阶段中，将显示如下图所示的值：
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/value-in-previous-stage.png" alt-text="屏幕截图：显示先前阶段的值。"::: 
+
+在接收器阶段，该值将变为 null，如下图所示。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/value-in-sink-stage.png" alt-text="屏幕截图：显示接收器阶段的值。"::: 
+
+#### <a name="cause"></a>原因
+十进制类型具有小数位数和精度属性。 如果数据类型与接收器表中的数据类型不匹配，系统将验证目标十进制值是否大于原始十进制值，并且确保原始值不会在目标十进制值中溢出。 因此，该值将强制转换为 null。
+
+#### <a name="recommendation"></a>建议
+检查并比较 SQL 数据库中数据和表格之间的十进制类型，并将小数位数和精度更改为相同。
+
+可以使用 toDecimal（IDecimal、小数位数、精度）确定原始数据是否可强制转换为目标小数位数和精度。 如果返回 null，则表示在插入时无法强制转换和进一步处理数据。
 
 ## <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
@@ -458,102 +462,254 @@ CDM 文件夹不会分割为逻辑模型和物理模型，并且 CDM 文件夹�
 #### <a name="recommendation"></a>建议
 针对存储创建 Azure Data Lake Gen2 链接服务，并选择 Gen2 存储作为数据流活动中的暂存链接服务。
 
+## <a name="common-data-model-format"></a>Common Data Model 格式
 
-## <a name="azure-blob-storage"></a>Azure Blob 存储
+### <a name="modeljson-files-with-special-characters"></a>带有特殊字符的 Model.json 文件
 
-### <a name="account-kind-of-storage-general-purpose-v1-doesnt-support-service-principal-and-mi-authentication"></a>存储帐户类型（常规用途 v1）不支持服务主体和 MI 身份验证
+#### <a name="symptoms"></a>症状 
+你可能会遇到 model.json 文件的最终名称包含特殊字符的问题。  
+
+#### <a name="error-message"></a>错误消息  
+`at Source 'source1': java.lang.IllegalArgumentException: java.net.URISyntaxException: Relative path in absolute URI: PPDFTable1.csv@snapshot=2020-10-21T18:00:36.9469086Z. ` 
+
+#### <a name="recommendation"></a>建议  
+替换文件名中的特殊字符，这将在 Synapse 中起作用，但在 ADF 中不起作用。  
+
+### <a name="no-data-output-in-the-data-preview-or-after-running-pipelines"></a>数据预览中或在运行管道后没有数据输出
 
 #### <a name="symptoms"></a>症状
+将 manifest.json 用于 CDM 时，数据预览中或在运行管道后不会显示任何数据。 只显示标头。 可以在下图中查看此问题。<br/>
 
-在数据流中，如果将 Azure Blob 存储（常规用途 v1）与服务主体或 MI 身份验证一起使用，则可能会遇到以下错误消息：
+![显示无数据输出症状的屏幕截图。](./media/data-flow-troubleshoot-connector-format/no-data-output.png)
 
-`com.microsoft.dataflow.broker.InvalidOperationException: ServicePrincipal and MI auth are not supported if blob storage kind is Storage (general purpose v1)`
+#### <a name="cause"></a>原因
+清单文档描述 CDM 文件夹，例如，文件夹中有哪些实体、这些实体的引用以及与此实例对应的数据。 你的清单文档中缺少指示 ADF 在何处读取数据的 `dataPartitions` 信息，并且由于它是空文档，因此不会返回任何数据。 
+
+#### <a name="recommendation"></a>建议
+更新清单文档以获得 `dataPartitions` 信息，可以参考此示例清单文档来更新你的文档：[Common Data Model 元数据：引入清单示例清单文档](/common-data-model/cdm-manifest#example-manifest-document)。
+
+### <a name="json-array-attributes-are-inferred-as-separate-columns"></a>JSON 数组属性被推断为单独的列
+
+#### <a name="symptoms"></a>症状 
+你可能会遇到 CDM 实体的一个属性（字符串类型）有一个 JSON 数组作为数据的问题。 遇到此数据时，ADF 错误地将数据推断为单独的列。 从下面的图片中可以看到，源 (msfp_otherproperties) 中显示的单个属性在 CDM 连接器的预览中被推断为一个单独的列。<br/> 
+
+- 在 CSV 源数据（参阅第二列）中： <br/>
+
+    ![显示 CSV 源数据中的属性的屏幕截图。](./media/data-flow-troubleshoot-connector-format/json-array-csv.png)
+
+- 在 CDM 源数据预览中： <br/>
+
+    ![显示 CDM 源数据中单独的列的屏幕截图。](./media/data-flow-troubleshoot-connector-format/json-array-cdm.png)
+
+ 
+还可以尝试映射偏移列，并使用数据流表达式将此属性转换为数组。 但由于在读取时将此属性作一个单独的列读取，因此转换为数组不起作用。  
+
+#### <a name="cause"></a>原因
+此问题可能是由该列的 JSON 对象值中的逗号引起的。 因为数据文件应该是 CSV 文件，所以逗号表示它是列值的结尾。 
+
+#### <a name="recommendation"></a>建议
+若要解决此问题，需要使用双引号将 JSON 列括起来，并使用反斜杠 (`\`) 避免任何内部引号。 如此一来，可以将该列值的内容完全作为单列读取。  
+  
+>[!Note]
+>CDM 不会通知列值的数据类型为 JSON，但会通知数据类型为字符串并按此进行分析。
+
+### <a name="unable-to-fetch-data-in-the-data-flow-preview"></a>无法在数据流预览中提取数据
+
+#### <a name="symptoms"></a>症状
+你将 CDM 与由 Power BI 生成的 model.json 一起使用。 使用数据流预览来预览 CDM 数据时，会遇到错误：`No output data.`
+
+#### <a name="cause"></a>原因
+ 由 Power BI 数据流生成的 model.json 文件的分区中存在以下代码。
+```json
+"partitions": [  
+{  
+"name": "Part001",  
+"refreshTime": "2020-10-02T13:26:10.7624605+00:00",  
+"location": "https://datalakegen2.dfs.core.windows.net/powerbi/salesEntities/salesPerfByYear.csv @snapshot=2020-10-02T13:26:10.6681248Z"  
+}  
+```
+对于此 model.json 文件，问题是数据分区文件的命名架构中包含特殊字符，并且当前不存在带有“@”的支持文件路径。  
+
+#### <a name="recommendation"></a>建议
+请从数据分区文件名和 model.json 文件中删除 `@snapshot=2020-10-02T13:26:10.6681248Z`，然后重试。 
+
+### <a name="the-corpus-path-is-null-or-empty"></a>语料库路径为 null 或空
+
+#### <a name="symptoms"></a>症状
+将数据流中的 CDM 用于模型格式时，无法预览数据，并遇到错误：`DF-CDM_005 The corpus path is null or empty`。 该错误如下图所示：  
+
+![显示语料库路径错误的屏幕截图。](./media/data-flow-troubleshoot-connector-format/corpus-path-error.png)
+
+#### <a name="cause"></a>原因
+model.json 中的数据分区路径指向 Blob 存储位置，而非数据湖。 对于 ADLS Gen2，该位置的基 URL 应为 .dfs.core.windows.net。 
+
+#### <a name="recommendation"></a>建议
+为了解决此问题，可以参考文章：[ADF 向数据流添加了对内联数据集和 Common Data Model 的支持](https://techcommunity.microsoft.com/t5/azure-data-factory/adf-adds-support-for-inline-datasets-and-common-data-model-to/ba-p/1441798)。下面的图片展示了修复了此文中所述语料库路径错误的方法。
+
+![显示如何修复语料库路径错误的屏幕截图。](./media/data-flow-troubleshoot-connector-format/fix-format-issue.png)
+
+### <a name="unable-to-read-csv-data-files"></a>无法读取 CSV 数据文件
+
+#### <a name="symptoms"></a>症状 
+你使用内联数据集作为常见数据模型，将清单作为源，并提供了条目清单文件、根路径、实体名称和路径。 在清单中，有包含 CSV 文件位置的数据分区。 同时，实体架构和 CSV 架构完全相同，所有验证均成功。 但是，在数据预览中，只加载了架构而未加载数据，且数据不可见，如下图所示：
+
+![显示无法读取数据文件的问题的屏幕截图。](./media/data-flow-troubleshoot-connector-format/unable-read-data.png)
+
+#### <a name="cause"></a>原因
+CDM 文件夹不分为逻辑模型和物理模型，并且其中只存在物理模型。 以下两篇文章介绍了差异：[逻辑定义](/common-data-model/sdk/logical-definitions)和[解析逻辑实体定义](/common-data-model/sdk/convert-logical-entities-resolved-entities)。<br/> 
+
+#### <a name="recommendation"></a>建议
+对于使用 CDM 作为源的数据流，请尝试使用逻辑模型作为实体引用，并使用描述物理解析实体位置和数据分区位置的清单。 可以在公共 CDM github 存储库 ([CDM-schemaDocuments](https://github.com/microsoft/CDM/tree/master/schemaDocuments)) 中看到一些逻辑实体定义示例<br/>
+
+构建语料库的一个好的起点是复制架构文档文件夹（github 存储库中的该级别）中的文件，然后将这些文件放到一个文件夹中。 之后，可以使用存储库中预定义的逻辑实体之一（作为起点或参考点）来创建逻辑模型。<br/>
+
+设置语料库后，建议将 CDM 用作数据流中的接收器，这样就可以正确地创建格式标准的 CDM 文件夹。 可以使用 CSV 数据库作为源，然后将其接收到所创建的 CDM 模型。
+
+## <a name="csv-and-excel-format"></a>CSV 和 Excel 格式
+
+### <a name="set-the-quote-character-to-no-quote-char-is-not-supported-in-the-csv"></a>CSV 中不支持将引号字符设置为“无引号字符”
+ 
+#### <a name="symptoms"></a>症状
+
+当引号字符设置为“无引号字符”时，CSV 中不支持以下几个问题：
+
+1. 当引号字符设置为“无引号字符”时，多字符列分隔符不能以相同的字母开头和结尾。
+2. 当引号字符设置为“无引号字符”时，多字符列分隔符不能包含转义字符：`\`。
+3. 当引号字符设置为“无引号字符”时，列值不能包含行分隔符。
+4. 如果列值包含列分隔符，则引号字符和转义字符不能同时为空（无引号且无转义）。
 
 #### <a name="cause"></a>原因
 
-在数据流中使用 Azure Blob 链接服务时，如果帐户类型为空或“存储”，则不支持托管标识或服务主体身份验证。 此情况如下图 1 和图 2 所示。
+下面分别举例说明了这些症状的原因：
+1. 以相同字母开头和结尾。<br/>
+`column delimiter: $*^$*`<br/>
+`column value: abc$*^    def`<br/>
+`csv sink: abc$*^$*^$*def ` <br/>
+`will be read as "abc" and "^&*def"`<br/>
 
-图 1： Azure Blob 存储链接服务中的帐户类型
+2. 多字符分隔符包含转义字符。<br/>
+`column delimiter: \x`<br/>
+`escape char:\`<br/>
+`column value: "abc\\xdef"`<br/>
+转义字符将对列分隔符或字符进行转义。
 
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/storage-account-kind.png" alt-text="屏幕截图：显示 Azure Blob 存储链接服务中存储帐户类型。"::: 
+3. 列值包含行分隔符。 <br/>
+`We need quote character to tell if row delimiter is inside column value or not.`
 
-图 2：存储帐户页
+4. 引号字符和转义字符都为空，列值包含列分隔符。<br/>
+`Column delimiter: \t`<br/>
+`column value: 111\t222\t33\t3`<br/>
+`It will be ambigious if it contains 3 columns 111,222,33\t3 or 4 columns 111,222,33,3.`<br/>
 
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/storage-account-page.png" alt-text="屏幕截图：显示存储帐户页。" lightbox="./media/data-flow-troubleshoot-connector-format/storage-account-page.png"::: 
+#### <a name="recommendation"></a>建议
+当前无法解决第一个症状和第二个症状。 对于第三个和第四个症状，可以应用以下方法：
+- 对于症状 3，请勿对多行 CSV 文件使用“无引号字符”。
+- 对于症状 4，将引号或转义字符设置为非空，或者可以删除数据中的所有列分隔符。
 
+### <a name="read-files-with-different-schemas-error"></a>读取具有不同架构的文件出错
+
+#### <a name="symptoms"></a>症状
+
+使用数据流读取具有不同架构的文件（例如 CSV 和 Excel 文件）时，数据流调试、沙盒或活动运行将失败。
+- 对于 CSV，当文件架构不同时，存在数据未对齐的情况。 
+
+    ![显示第一个架构错误的屏幕截图。](./media/data-flow-troubleshoot-connector-format/schema-error-1.png)
+
+- 对于 Excel，文件架构不同时，会发生错误。
+
+    ![显示第二个架构错误的屏幕截图。](./media/data-flow-troubleshoot-connector-format/schema-error-2.png)
+
+#### <a name="cause"></a>原因
+
+不支持读取数据流中具有不同架构的文件。
 
 #### <a name="recommendation"></a>建议
 
-若要解决此问题，请参考以下建议：
+如果仍要传输数据流中具有不同架构的文件（如 CSV 和 Excel 文件），可以使用以下方法解决此问题：
 
-- 如果在 Azure Blob 链接服务中存储帐户类型为“无”，请指定适当的帐户类型，并参阅下图 3 来完成该操作。 此外，请参阅图 2 获取存储帐户类型，检查并确认该帐户类型不是“存储”（常规用途 v1）。
+- 对于 CSV，需要手动合并不同文件的架构，以获取完整的架构。 例如，file_1 具有列 `c_1, c_2, c_3`，file_2 具有列 `c_3, c_4,... c_10`，因此合并的完整架构为 `c_1, c_2... c_10`。 然后使其他文件也有相同的完整架构（即使它没有数据），例如，file_x 只有列 `c_1, c_2, c_3, c_4`，请在文件中添加额外的列 `c_5, c_6, ... c_10`，以便其正常运行。
 
-    图 3：在 Azure Blob 存储链接服务中指定存储帐户类型
+- 对于 Excel，你可以通过应用下列选项之一来解决此问题：
 
-    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/specify-storage-account-kind.png" alt-text="屏幕截图：显示如何在 Azure Blob 存储链接服务中指定存储帐户类型。"::: 
-    
+    - **选项-1**：需要手动合并不同文件的架构，以获取完整的架构。 例如，file_1 具有列 `c_1, c_2, c_3`，file_2 具有列 `c_3, c_4,... c_10`，因此合并的完整架构为 `c_1, c_2... c_10`。 然后使其他文件也有相同的架构（即使它没有数据），例如，file_x 与工作表“SHEET_1”只有列 `c_1, c_2, c_3, c_4`，请在工作表中添加额外的列 `c_5, c_6, ... c_10`，以便其正常运行。
+    - **选项-2**：使用“范围（例如 A1:G100）+ firstRowAsHeader=false”，然后它可以从所有 Excel 文件加载数据，即使列名和计数不同。
 
-- 如果帐户类型为“存储”（常规用途 v1），请将存储帐户升级为常规用途 v2 或选择其他身份验证。
+## <a name="delta-format"></a>增量格式
 
-    图 4：将存储帐户升级为常规用途 v2
+### <a name="the-sink-does-not-support-the-schema-drift-with-upsert-or-update"></a>接收器不支持通过更新插入和更新实现架构偏差
 
-    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/upgrade-storage-account.png" alt-text="屏幕截图：显示如何将存储帐户升级为常规用途 v2。" lightbox="./media/data-flow-troubleshoot-connector-format/upgrade-storage-account.png"::: 
-    
+#### <a name="symptoms"></a>症状
+你可能会面临这样一个问题：映射数据流中的增量接收器不支持通过更新插入/更新实现架构偏差。 问题在于，当增量是映射数据流中的目标并且用户配置了更新插入/更新时，架构偏差将不起作用。 
+
+如果在“初始”加载到增量后将列添加到源中，则后续作业将失败，并出现找不到新列的错误，在使用更改行进行更新插入/更新时会发生这种情况。 增量接收器似乎仅适用于插入操作。
+
+#### <a name="error-message"></a>错误消息
+`DF-SYS-01 at Sink 'SnkDeltaLake': org.apache.spark.sql.AnalysisException: cannot resolve target.BICC_RV in UPDATE clause given columns target. `
+
+#### <a name="cause"></a>原因
+这是增量格式的一个问题，由数据流运行时使用的 IO 增量库的限制造成。 此问题仍在修复中。
+
+#### <a name="recommendation"></a>建议
+要解决此问题，需要首先更新架构，然后写入代码。 可执行以下步骤： <br/>
+1. 创建一个数据流，其中包含一个仅插入增量接收器，并使用合并架构选项来更新架构。 
+1. 在步骤 1 之后，使用删除/更新插入/更新来修改目标接收器，而不更改架构。 <br/>
+
+
 
 ## <a name="snowflake"></a>Snowflake
 
-### <a name="unable-to-connect-to-the-snowflake-linked-service"></a>无法连接至 Snowflake 链接服务
+### <a name="unable-to-connect-to-the-snowflake-linked-service"></a>无法连接到 Snowflake 链接服务
 
 #### <a name="symptoms"></a>症状
 
-如果在公用网络中创建 Snowflake 链接服务，并使用自动解析集成运行时，会遇到以下错误。
+在公用网络中创建 Snowflake 链接服务并使用自动解析集成运行时时，遇到以下错误。
 
 `ERROR [HY000] [Microsoft][Snowflake] (4) REST request for URL https://XXXXXXXX.east-us- 2.azure.snowflakecomputing.com.snowflakecomputing.com:443/session/v1/login-request?requestId=XXXXXXXXXXXXXXXXXXXXXXXXX&request_guid=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` 
 
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/connection-fail-error.png" alt-text="屏幕截图：显示连接失败错误。"::: 
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/connection-fail-error.png" alt-text="显示连接失败错误的屏幕截图。"::: 
 
 #### <a name="cause"></a>原因
 
-没有按照 Snowflake 帐户文档（包括标识区域和云平台的其他部分）中给出的格式应用帐户名称，例如 `XXXXXXXX.east-us-2.azure`。 有关详细信息，请参阅[链接服务属性](./connector-snowflake.md#linked-service-properties)一文。
+尚未以 Snowflake 帐户文档中给定的格式（包括标识区域和云平台的其他段）应用帐户名，例如 `XXXXXXXX.east-us-2.azure`。 有关详细信息，请参阅文档：[链接服务属性](./connector-snowflake.md#linked-service-properties)。
 
 #### <a name="recommendation"></a>建议
 
-若要解决此问题，请更改帐户名称格式。 角色应为下图所示的角色之一，但默认角色为“公共”。
+要解决此问题，请更改帐户名格式。 角色应为下图所示的角色之一，但默认值为“Public”。
 
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/account-role.png" alt-text="屏幕截图：显示帐户角色。"::: 
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/account-role.png" alt-text="显示帐户角色的屏幕截图。"::: 
 
 ### <a name="sql-access-control-error-insufficient-privileges-to-operate-on-schema"></a>SQL 访问控制错误：“权限不足，无法对架构进行操作”
 
 #### <a name="symptoms"></a>症状
 
-在数据流的 Snowflake 源中尝试使用“导入投影”、“数据预览”等时，会遇到诸如 `net.snowflake.client.jdbc.SnowflakeSQLException: SQL access control error: Insufficient privileges to operate on schema` 的错误。
+尝试在数据流的 Snowflake 源中使用“导入投影”、“数据预览”等时，遇到类似 `net.snowflake.client.jdbc.SnowflakeSQLException: SQL access control error: Insufficient privileges to operate on schema` 的错误。
 
 #### <a name="cause"></a>原因
 
-出现此错误是配置错误所致。 使用数据流读取 Snowflake 数据时，运行时 Azure Databricks (ADB) 不会直接选择查询到 Snowflake。 相反，ADB 会创建临时阶段，将数据从表格中拉取到该阶段，然后进行压缩并拉取。 此过程如下图所示。
+遇到此错误是由于配置错误。 使用数据流读取 Snowflake 数据时，运行时 Azure Databricks (ADB) 不会直接选择 Snowflake 的查询。 而是创建一个临时阶段，将数据从表拉取到该阶段，然后由 ADB 压缩和拉取数据。 此过程如下图所示。
 
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/snowflake-data-read-model.png" alt-text="屏幕截图：显示 Snowflake 数据读取模型。"::: 
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/snowflake-data-read-model.png" alt-text="显示 Snowflake 数据读取模型的屏幕截图。"::: 
 
-因此，在 ADB 中使用的用户/角色应具有在 Snowflake 中执行此操作所需的权限。 但用户/角色通常不具有该权限，这是因为数据库在共享上创建而来。 
+因此，在 ADB 中使用的用户/角色应具有在 Snowflake 中执行此操作所需的权限。 但用户/角色通常不具有该权限，因为该数据库是在该共享上创建的。 
 
 #### <a name="recommendation"></a>建议
-若要解决此问题，可以创建不同的数据库，并在共享数据库的顶部创建视图，以从 ADB 访问该数据库。 有关更多详细信息，请参阅 [Snowflake](https://community.snowflake.com/s/question/0D50Z000095ktE4SAI/insufficient-privileges-to-operate-on-schema)。
+要解决此问题，可以创建不同的数据库，并在共享 DB 的基础上创建视图，以便从 ADB 访问该数据库。 有关更多详细信息，请参阅 [Snowflake](https://community.snowflake.com/s/question/0D50Z000095ktE4SAI/insufficient-privileges-to-operate-on-schema)。
 
-### <a name="failed-with-an-error-snowflakesqlexception-ip-xxxx-is-not-allowed-to-access-snowflake-contact-your-local-security-administrator"></a>失败并显示错误：“SnowflakeSQLException：不允许 IP x.x.x.x 访问 Snowflake。 请联系本地安全管理员”
+### <a name="failed-with-an-error-snowflakesqlexception-ip-xxxx-is-not-allowed-to-access-snowflake-contact-your-local-security-administrator"></a>失败并出现错误：“SnowflakeSQLException: 不允许 IP x.x.x.x 访问 Snowflake。 请联系你的本地安全管理员”
 
 #### <a name="symptoms"></a>症状
 
-在 Azure 数据工厂中使用 Snowflake 时，可以成功地在 Snowflake 链接服务中使用测试连接，在 Snowflake 数据集上预览数据/导入架构，并用其运行复制/查找/获取元数据或其他活动。 但在数据流活动中使用 Snowflake 时，可能会遇到诸如 `SnowflakeSQLException: IP 13.66.58.164 is not allowed to access Snowflake. Contact your local security administrator.` 的错误
+在 Azure 数据工厂中使用 Snowflake 时，可以成功使用 Snowflake 链接服务中的测试连接、Snowflake 数据集上的预览数据/导入架构，并使用它运行复制/查找/获取元数据或其他活动。 但在数据流活动中使用 Snowflake 时，可能会遇到类似 `SnowflakeSQLException: IP 13.66.58.164 is not allowed to access Snowflake. Contact your local security administrator.` 的错误
 
 #### <a name="cause"></a>原因
 
-Azure 数据工厂数据流不支持使用固定 IP 范围，可以参阅 [Azure Integration Runtime IP 地址](./azure-integration-runtime-ip-addresses.md)以获取更多详细信息。
+Azure 数据工厂数据流不支持使用固定 IP 范围，可以参考 [Azure Integration Runtime IP 地址](./azure-integration-runtime-ip-addresses.md)了解更多详细信息。
 
 #### <a name="recommendation"></a>建议
 
-若要解决此问题，可以更改 Snowflake 帐户防火墙设置，步骤如下：
+要解决此问题，可以通过以下步骤更改 Snowflake 帐户防火墙设置：
 
-1. 可以从“服务标记 IP 范围下载链接”（[使用可下载的 JSON 文件发现服务标记](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)）获取服务标记的 IP 范围列表。
+1. 可以从“服务标记 IP 范围下载链接”中获取服务标记的 IP 范围列表：[使用可下载的 JSON 文件发现服务标记](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
 
     :::image type="content" source="./media/data-flow-troubleshoot-connector-format/ip-range-list.png" alt-text="屏幕截图：显示 IP 范围列表。"::: 
 
@@ -561,172 +717,49 @@ Azure 数据工厂数据流不支持使用固定 IP 范围，可以参阅 [Azure
 
     :::image type="content" source="./media/data-flow-troubleshoot-connector-format/allow-access-with-name.png" alt-text="屏幕截图：显示如何允许从具有特定名称的所有地址进行访问。"::: 
 
-### <a name="queries-in-the-source-does-not-work"></a>源中的查询无效
+### <a name="queries-in-the-source-does-not-work"></a>源中的查询不起作用
 
 #### <a name="symptoms"></a>症状
 
-尝试使用查询从 Snowflake 读取数据时，可能会遇到如下错误：
+尝试通过查询从 Snowflake 读取数据时，可能会遇到如下错误：
 
 1. `SQL compilation error: error line 1 at position 7 invalid identifier 'xxx'`
 2. `SQL compilation error: Object 'xxx' does not exist or not authorized.`
 
 #### <a name="cause"></a>原因
 
-出现此错误是配置错误所致。
+遇到此错误是由于配置错误。
 
 #### <a name="recommendation"></a>建议
 
-对于 Snowflake，请应用以下规则，以便在创建/定义时存储标识符，并在查询和其他 SQL 语句中对其进行解析：
+对于 Snowflake，它在创建/定义时将以下规则应用于存储标识符，并在查询和其他 SQL 语句中解析它们：
 
-如果标识符（表名称、架构名称、列名称等）不带引号，则默认以大写形式存储和解析该标识符，并且不区分大小写。 例如：
+当标识符（表名、架构名、列名等）不带引号时，默认情况下以大写形式存储和解析，并且不区分大小写。 例如：
 
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/unquoted-identifier.png" alt-text="屏幕截图：显示不带引号标识符的示例。"lightbox="./media/data-flow-troubleshoot-connector-format/unquoted-identifier.png"::: 
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/unquoted-identifier.png" alt-text="显示不带引号的标识符示例的屏幕截图。"lightbox="./media/data-flow-troubleshoot-connector-format/unquoted-identifier.png"::: 
 
-由于不区分大小写，因此可以在结果相同的情况下随意使用以下查询来读取 Snowflake 数据：<br/>
+因为它不区分大小写，所以你可以随意使用以下查询来读取 Snowflake 数据，而结果是相同的：<br/>
 - `Select MovieID, title from Public.TestQuotedTable2`<br/>
 - `Select movieId, title from Public.TESTQUOTEDTABLE2`<br/>
 - `Select movieID, TITLE from PUBLIC.TESTQUOTEDTABLE2`<br/>
 
-如果标识符（表名称、架构名称、列名称等）为双引号，则完全按输入内容存储和解析该标识符，包括大小写，因为系统会区分大小写，示例如下图所示。 有关更多详细信息，请参阅[标识符要求](https://docs.snowflake.com/en/sql-reference/identifiers-syntax.html#identifier-requirements)一文。
+当标识符（表名、架构名、列名等）带有双引号时，它的存储和解析方式与输入完全一致，包括大小写（因为区分大小写），你可以在下图中看到一个示例。 有关更多详细信息，请参阅此文档：[标识符要求](https://docs.snowflake.com/en/sql-reference/identifiers-syntax.html#identifier-requirements)。
 
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/double-quoted-identifier.png" alt-text="屏幕截图：显示双引号标识符的示例。" lightbox="./media/data-flow-troubleshoot-connector-format/double-quoted-identifier.png"::: 
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/double-quoted-identifier.png" alt-text="显示带双引号的标识符示例的屏幕截图。" lightbox="./media/data-flow-troubleshoot-connector-format/double-quoted-identifier.png"::: 
 
-因为区分大小写的标识符（表名称、架构名称、列名称等）包含小写字符，所以在使用查询读取数据时必须引用标识符，例如： <br/>
+由于区分大小写的标识符（表名、架构名、列名等）具有小写字符，因此在使用查询读取数据时必须在标识符两边使用引号，例如： <br/>
 
-- 从 Public.“testQuotedTable2”中选择“movieId”和“title”
+- Select "movieId", "title" from Public."testQuotedTable2"  
 
-如果在 Snowflake 查询中遇到错误，请检查某些标识符（表名称、架构名称、列名称等）是否区分大小写，步骤如下：
+如果 Snowflake 查询出现错误，请按以下步骤检查某些标识符（表名、架构名、列名等）是否区分大小写：
 
-1. 登录 Snowflake 服务器（`https://{accountName}.azure.snowflakecomputing.com/`，将 {accountName} 替换为自己的帐户名）以检查标识符（表名称、架构名称、列名称等）。
+1. 登录 Snowflake 服务器（`https://{accountName}.azure.snowflakecomputing.com/`，将 {accountName} 替换为你的帐户名）以检查标识符（表名、架构名、列名等）。
 
 1. 创建用于测试和验证查询的工作表：
-    - 运行 `Use database {databaseName}`，并将 {databaseName} 替换为自己的数据库名称。
-    - 运行带有表格的查询，例如：`select "movieId", "title" from Public."testQuotedTable2"`
+    - 运行 `Use database {databaseName}`，将 {databaseName} 替换为你的数据库名。
+    - 使用表运行查询，例如 `select "movieId", "title" from Public."testQuotedTable2"`
     
-1. 测试并验证 Snowflake 的 SQL 查询后，可以直接在数据流 Snowflake 源中使用该查询。
-
-## <a name="azure-sql-database"></a>Azure SQL 数据库
- 
-### <a name="unable-to-connect-to-the-sql-database"></a>无法连接到 SQL 数据库
-
-#### <a name="symptoms"></a>症状
-
-Azure SQL 数据库可以在链接服务中的数据复制、数据集预览数据和测试连接中正常运行，但当相同的 Azure SQL 数据库用作数据流中的源或接收器时会失败，并显示诸如 `Cannot connect to SQL database: 'jdbc:sqlserver://powerbasenz.database.windows.net;..., Please check the linked service configuration is correct, and make sure the SQL database firewall allows the integration runtime to access` 的错误
-
-#### <a name="cause"></a>原因
-
-Azure SQL 数据库服务器上的防火墙设置不正确，因此数据流运行时无法连接至该服务器。 目前，尝试使用数据流读取/写入 Azure SQL 数据库时，Azure Databricks 可用于构建 Spark 群集来运行作业，但不支持固定 IP 范围。 有关更多详细信息，请参阅 [Azure Integration Runtime IP 地址](./azure-integration-runtime-ip-addresses.md)。
-
-#### <a name="recommendation"></a>建议
-
-检查 Azure SQL 数据库的防火墙设置并将其设置为“允许访问 Azure 服务”，而不是设置固定 IP 范围。
-
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/allow-access-to-azure-service.png" alt-text="屏幕截图：显示如何在防火墙设置中允许访问 Azure 服务。"::: 
-
-### <a name="syntax-error-when-using-queries-as-input"></a>使用查询作为输入时出现语法错误
-
-#### <a name="symptoms"></a>症状
-
-在 Azure SQL 的数据流源中使用查询作为输入时会失败，并显示以下错误消息：
-
-`at Source 'source1': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: Incorrect syntax XXXXXXXX.`
-
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/error-detail.png" alt-text="屏幕截图显示了错误详细信息。"::: 
-
-#### <a name="cause"></a>原因
-
-数据流源中使用的查询应该能够作为子查询运行。 失败的原因是查询语法不正确，或者无法作为子查询运行。 可以在 SSMS 中运行以下查询进行验证：
-
-`SELECT top(0) * from ($yourQuery) as T_TEMP`
-
-#### <a name="recommendation"></a>建议
-
-提供正确的查询，并首先在 SSMS 中测试该查询。
-
-### <a name="failed-with-an-error-sqlserverexception-111212-operation-cannot-be-performed-within-a-transaction"></a>失败并显示错误：“SQLServerException：111212；无法在事务中执行操作。”
-
-#### <a name="symptoms"></a>症状
-
-在数据流中使用 Azure SQL 数据库作为接收器来预览数据、调试/触发运行和执行其他活动时，可能会发现作业失败并显示以下错误消息：
-
-`{"StatusCode":"DFExecutorUserError","Message":"Job failed due to reason: at Sink 'sink': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: 111212;Operation cannot be performed within a transaction.","Details":"at Sink 'sink': shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: 111212;Operation cannot be performed within a transaction."}`
-
-#### <a name="cause"></a>原因
-错误“`111212;Operation cannot be performed within a transaction.`”仅在 Synapse 专用 SQL 池中出现。 但你错误地将 Azure SQL 数据库用作连接器。
-
-#### <a name="recommendation"></a>建议
-确认 SQL 数据库是否为 Synapse 专用 SQL 池。 如果是，请使用 Azure Synapse Analytics 作为连接器，如下图所示。
-
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/synapse-analytics-connector.png" alt-text="屏幕截图：显示 Azure Synapse Analytics 连接器。"::: 
-
-### <a name="data-with-the-decimal-type-become-null"></a>十进制类型的数据为 null
-
-#### <a name="symptoms"></a>症状
-
-你想要将数据插入到 SQL 数据库的表格中。 如果数据包含十进制类型，并且需要插入到 SQL 数据库中具有十进制类型的列中，数据值可能会更改为 null。
-
-如果进行预览，在先前阶段中，将显示如下图所示的值：
-
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/value-in-previous-stage.png" alt-text="屏幕截图：显示先前阶段的值。"::: 
-
-在接收器阶段，该值将变为 null，如下图所示。
-
-:::image type="content" source="./media/data-flow-troubleshoot-connector-format/value-in-sink-stage.png" alt-text="屏幕截图：显示接收器阶段的值。"::: 
-
-#### <a name="cause"></a>原因
-十进制类型具有小数位数和精度属性。 如果数据类型与接收器表中的数据类型不匹配，系统将验证目标十进制值是否大于原始十进制值，并且确保原始值不会在目标十进制值中溢出。 因此，该值将强制转换为 null。
-
-#### <a name="recommendation"></a>建议
-检查并比较 SQL 数据库中数据和表格之间的十进制类型，并将小数位数和精度更改为相同。
-
-可以使用 toDecimal（IDecimal、小数位数、精度）确定原始数据是否可强制转换为目标小数位数和精度。 如果返回 null，则表示在插入时无法强制转换和进一步处理数据。
-
-## <a name="adls-gen2"></a>ADLS Gen2
-
-### <a name="failed-with-an-error-error-while-reading-file-xxx-it-is-possible-the-underlying-files-have-been-updated"></a>失败并显示错误：“读取文件 XXX 时出错。 基础文件可能已更新”
-
-#### <a name="symptoms"></a>症状
-
-在数据流中使用 ADLS Gen2 作为接收器来预览数据、调试/触发运行等，并且“接收器”阶段“优化”选项卡中的分区设置不是默认设置时，可能会发现作业失败并显示以下错误消息：
-
-`Job failed due to reason: Error while reading file abfss:REDACTED_LOCAL_PART@prod.dfs.core.windows.net/import/data/e3342084-930c-4f08-9975-558a3116a1a9/part-00000-tid-7848242374008877624-5df7454e-7b14-4253-a20b-d20b63fe9983-1-1-c000.csv. It is possible the underlying files have been updated. You can explicitly invalidate the cache in Spark by running 'REFRESH TABLE tableName' command in SQL or by recreating the Dataset/DataFrame involved.`
-
-#### <a name="cause"></a>原因
-
-1. 没有为 MI/SP 身份验证分配适当的权限。
-1. 你可能拥有自定义作业来处理不需要的文件，这将影响数据流的中间输出。
-
-#### <a name="recommendation"></a>建议
-1. 检查链接服务是否具有 Gen2 的 R/W/E 权限。 如果使用 MI 身份验证/SP 身份验证，请至少在访问控制 (IAM) 中授予“存储 Blob 数据参与者”角色。
-1. 确认你是否有特定作业，可将文件删除或移动到其他位置，而其名称与你的规则并不匹配。 由于数据流首先将分区文件写入目标文件夹，然后执行合并和重命名操作，因此中间文件的名称可能与你的规则并不匹配。
-
-## <a name="adls-gen1"></a>ADLS Gen1
-
-### <a name="fail-to-create-files-with-service-principle-authentication"></a>无法创建具有服务主体身份验证的文件
-
-#### <a name="symptoms"></a>症状
-尝试将数据从不同源移动或传输至 ADLS Gen1 接收器时，如果链接服务的身份验证方法为服务主体身份验证，则作业可能会失败，并显示以下错误消息：
-
-`org.apache.hadoop.security.AccessControlException: CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.). [2b5e5d92-xxxx-xxxx-xxxx-db4ce6fa0487] failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)`
-
-#### <a name="cause"></a>原因
-
-RWX 权限或数据集属性设置不正确。
-
-#### <a name="recommendation"></a>建议
-
-- 如果目标文件夹未具备正确的权限，请参阅[使用服务主体身份验证](./connector-azure-data-lake-store.md#use-service-principal-authentication)一文，以在 Gen1 中分配正确的权限。
-
-- 如果目标文件夹具有正确的权限，并且你在数据流中使用文件名属性以定位至正确的文件夹和文件名，但数据集的文件路径属性未设置为目标文件路径（通常不设置），如下图所示，你将遇到此失败，因为后端系统尝试基于数据集的文件路径创建文件，而数据集的文件路径未具备正确的权限。
-    
-    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/file-path-property.png" alt-text="屏幕截图：显示文件路径属性"::: 
-    
-    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/file-name-property.png" alt-text="屏幕截图：显示文件名属性"::: 
-
-    
-    有两种方法可以解决此问题：
-    1. 为数据集的文件路径分配 WX 权限。
-    1. 将数据集的文件路径设置为具有 WX 权限的文件夹，并在数据流中设置其余文件夹路径和文件名。
+1. 测试和验证 Snowflake 的 SQL 查询后，可以直接在数据流 Snowflake 源中使用它。
 
 ## <a name="next-steps"></a>后续步骤
 在故障排除时如需更多帮助，请参阅以下资源：

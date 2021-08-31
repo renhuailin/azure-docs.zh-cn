@@ -1,19 +1,19 @@
 ---
-title: Azure Migrate 中的 VMware 服务器评估支持
+title: Azure Migrate 中的 VMware 服务器发现支持
 description: 了解适用于 VMware 服务器环境的 Azure Migrate 发现和评估支持。
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: de4d66f3ef8195e13ff8b67538901d1ebc7d88aa
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: dedb05df1713238a6271af4dfd7b9cf1695d0bc7
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971066"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182273"
 ---
-# <a name="support-matrix-for-vmware-assessment"></a>VMware 评估支持矩阵 
+# <a name="support-matrix-for-vmware-discovery"></a>VMware 发现支持矩阵 
 
 本文汇总了使用 [Azure Migrate：发现和评估](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool)工具来对用于 Azure 迁移的 VMware 服务器执行发现与评估的先决条件和支持要求。
 
@@ -35,7 +35,7 @@ ms.locfileid: "111971066"
 
 VMware | 详细信息
 --- | ---
-**vCenter Server** | 要发现和评估的服务器必须由 vCenter Server 7.0、6.7、6.5、6.0 或 5.5 管理。<br /><br /> 目前不支持通过在设备中提供 ESXi 主机详细信息来发现服务器。
+**vCenter Server** | 要发现和评估的服务器必须由 vCenter Server 7.0、6.7、6.5、6.0 或 5.5 管理。<br /><br /> 目前不支持通过在设备中提供 ESXi 主机详细信息来发现服务器。 <br /><br /> IPv6 地址不适用于 vCenter Server（用于服务器的发现和评估）和 ESXi 主机（用于服务器的复制）。
 **权限** | “Azure Migrate：发现和评估”工具需要 vCenter Server 只读帐户。<br /><br /> 如果要使用该工具执行软件清单和无代理依赖关系分析，则帐户必须具有在 VMware VM 上执行来宾操作的权限。
 
 ## <a name="server-requirements"></a>服务器要求
@@ -62,23 +62,25 @@ Azure Migrate 设备 | TCP 端口 3389 上的入站连接，可便于通过远�
 **vCenter Server** | TCP 端口 443 上的入站连接，可便于设备收集用于评估的配置和性能元数据。 <br /><br /> 默认情况下，设备在端口 443 上连接到 vCenter。 如果 vCenter Server 在不同端口上侦听，可以在设置发现时修改端口。
 **ESXi 主机** | 若要[发现软件清单](how-to-discover-applications.md)或[无代理依赖关系分析](concepts-dependency-visualization.md#agentless-analysis)，可以将设备连接到 TCP 端口 443 上的 ESXi 主机，以发现服务器上的软件清单和依赖关系。
 
-## <a name="application-discovery-requirements"></a>应用程序发现要求
+## <a name="software-inventory-requirements"></a>软件清单需求
 
-除发现服务器之外，“Azure Migrate：发现和评估”工具还可以针对在服务器上运行的软件完成软件清单。 通过应用程序发现，可以确定和计划为本地工作负载定制的迁移路径。
+除了发现服务器以外，“Azure Migrate：发现和评估”还可以执行服务器上的软件清单。 通过软件清单，可以确定和计划为本地工作负荷定制的迁移路径。
 
 支持 | 详细信息
 --- | ---
-**支持的服务器** | 目前仅支持 VMware 环境中的服务器。 最多可从每台 Azure Migrate 设备的 10,000 个服务器上完成应用程序发现。
+**支持的服务器** | 目前仅支持 VMware 环境中的服务器。 可以从每个 Azure Migrate 设备中对最多 10000 台服务器执行软件清单。
 **操作系统** | 支持运行所有 Windows 和 Linux 版本的服务器。
-**VM 要求** | 若要发现软件清单，必须在服务器上安装并运行 VMware 工具。 <br /><br /> VMware 工具版本必须为 10.2.1 或更高版本。<br /><br /> 在 Windows 服务器上必须安装 PowerShell 2.0 或更高版本。
-**发现** | 使用服务器上安装的 VMware 工具，从 vCenter Server 执行应用程序发现。 设备通过 vSphere API 从运行 vCenter Server 的服务器收集有关软件清单的信息。 应用程序发现是无代理的。 服务器上未安装代理，并且设备不会直接连接到服务器。 WMI 和 SSH 必须分别在 Windows 和 Linux 服务器上启用及使用。
-vCenter Server 用户帐户 | 若要与服务器交互以发现应用程序，用于评估的 vCenter Server 只读帐户必须具有在 VMware VM 上执行来宾操作的权限。
-**服务器访问** | 可以在用于发现应用程序的设备配置管理器中添加多个域和非域 (Windows/Linux) 凭据。<br /><br /> 你必须拥有适用于 Windows 服务器的来宾用户帐户和适用于所有 Linux 的标准用户帐户（访问 non-`sudo`）。
-**端口访问** | Azure Migrate 设备必须能够连接到运行要在其上执行应用程序发现的服务器的 ESXi 主机上的 TCP 端口 443。 运行 vCenter Server 的服务器将返回 ESXi 主机连接，以下载包含软件清单详细信息的文件。
+**VM 要求** | 对于软件清单，必须在服务器上安装并运行 VMware 工具。 <br /><br /> VMware 工具版本必须为 10.2.1 或更高版本。<br /><br /> 在 Windows 服务器上必须安装 PowerShell 2.0 或更高版本。
+**发现** | 使用服务器上安装的 VMware 工具，从 vCenter Server 执行软件清单。 设备通过 vSphere API 从运行 vCenter Server 的服务器收集有关软件清单的信息。 软件清单是无代理的。 服务器上未安装代理，并且设备不会直接连接到服务器。 必须在 Windows 服务器上启用 WMI 并可供使用，以收集服务器上安装的角色和功能的详细信息。
+vCenter Server 用户帐户 | 若要与适用于软件清单的服务器进行交互，用于评估的 vCenter Server 只读帐户必须具有在 VMware VM 上执行来宾操作的权限。
+**服务器访问** | 可以在软件清单的设备配置管理器中添加多个域和非域 (Windows/Linux) 凭据。<br /><br /> 你必须拥有适用于 Windows 服务器的来宾用户帐户和适用于所有 Linux 的标准用户帐户（访问 non-`sudo`）。
+**端口访问** | Azure Migrate 设备必须能够连接到运行要在其上执行软件清单的服务器的 ESXi 主机上的 TCP 端口 443。 运行 vCenter Server 的服务器将返回 ESXi 主机连接，以下载包含软件清单详细信息的文件。
 
 ## <a name="sql-server-instance-and-database-discovery-requirements"></a>SQL Server 实例和数据库发现要求
 
-[应用程序发现](how-to-discover-applications.md)会标识 SQL Server 实例。 设备会使用此信息，尝试通过设备配置管理器中提供的 Windows 身份验证或 SQL Server 身份验证凭据连接到相应的 SQL Server 实例。 连接设备后，其会收集 SQL Server 实例和数据库的配置及性能数据。 SQL Server 配置数据每 24 小时更新一次。 每 30 秒捕获一次性能数据。
+[软件清单](how-to-discover-applications.md)会标识 SQL Server 实例。 设备会使用此信息，尝试通过设备配置管理器中提供的 Windows 身份验证或 SQL Server 身份验证凭据连接到相应的 SQL Server 实例。 设备只能连接到与其建立了网络连接的 SQL Server 实例，而软件盘存本身无需网络连接。
+
+连接设备后，其会收集 SQL Server 实例和数据库的配置及性能数据。 SQL Server 配置数据每 24 小时更新一次。 每 30 秒捕获一次性能数据。
 
 支持 | 详细信息
 --- | ---
@@ -93,22 +95,38 @@ vCenter Server 用户帐户 | 若要与服务器交互以发现应用程序，�
 支持的 SQL 服务 | 仅支持 SQL Server 数据库引擎。 <br /><br /> 不支持 SQL Server Reporting Services (SSRS)、SQL Server Integration Services (SSIS) 和 SQL Server Analysis Services (SSAS) 的发现。
 
 > [!NOTE]
-> [TrustServerCertificate](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) 属性设置为 `true` 时，Azure Migrate 会加密 Azure Migrate 设备和源 SQL Server 实例之间的通信。 传输层使用 SSL 加密通道并绕过证书链来验证信任。 必须将设备服务器设置为[信任证书的根颁发机构](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
+> 默认情况下，Azure Migrate 使用最安全的方法连接到 SQL 实例，即 Azure Migrate 通过将 TrustServerCertificate 属性设置为 `true`，对 Azure Migrate 设备和源 SQL Server 实例之间的通信进行加密。 此外，传输层使用 SSL 加密通道并绕过证书链来验证信任。 因此，必须将设备服务器设置为信任证书的根颁发机构。 
 >
-> 如果服务器在启动时未预配有任何证书，SQL Server 将生成可用于加密登录数据包的自签名证书。 [了解详细信息](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
->
+> 但是，可以通过在设备上选择“编辑 SQL Server 连接属性”来修改连接设置。[了解详细信息](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)以了解要选择的内容。
+
+## <a name="aspnet-web-apps-discovery-requirements"></a>ASP.NET Web 应用发现要求
+
+[软件清单](how-to-discover-applications.md)识别发现的服务器上存在的 Web 服务器角色。 如果发现服务器已启用 Web 服务器角色，Azure Migrate 将在服务器上执行 Web 应用发现。
+用户可以在设备中同时添加域凭据和非域凭据。 请确保使用的帐户在源服务器上具有本地管理员权限。 Azure Migrate 自动将凭据映射到相应的服务器，因此不必手动映射凭据。 最重要的是，这些凭据从不发送到 Microsoft，而是保留在源环境中运行的设备上。
+连接该设备后，它会收集 IIS Web 服务器和 ASP.NET Web 应用的配置数据。 Web 应用配置数据每 24 小时更新一次。
+
+支持 | 详细信息
+--- | ---
+**支持的服务器** | 目前仅支持在 VMware 环境中运行 IIS 的 Windows 服务器。
+**Windows 服务器** | 支持 Windows Server 2008 R2 及更高版本。
+**Linux 服务器** | 当前不支持。
+IIS 访问 | Web 应用发现需要本地管理员用户帐户。
+IIS 版本 | 支持 IIS 7.5 及更高版本。
+
+> [!NOTE]
+> 数据始终在传输过程中静态加密。
 
 ## <a name="dependency-analysis-requirements-agentless"></a>依赖关系分析要求（无代理）
 
 [依赖关系分析](concepts-dependency-visualization.md)有助于确定要评估并迁移到 Azure 的本地服务器之间的依赖关系。 下表总结了设置无代理依赖关系分析所需满足的要求：
 
 支持 | 详细信息
---- | --- 
+--- | ---
 **支持的服务器** | 目前仅支持 VMware 环境中的服务器。
-**Windows 服务器** | Windows Server 2016<br /> Windows Server 2012 R2<br /> Windows Server 2012<br /> Windows Server 2008 R2（64 位）<br />Microsoft Windows Server 2008（32 位）
+**Windows 服务器** | Windows Server 2019<br />Windows Server 2016<br /> Windows Server 2012 R2<br /> Windows Server 2012<br /> Windows Server 2008 R2（64 位）<br />Microsoft Windows Server 2008（32 位）
 **Linux 服务器** | Red Hat Enterprise Linux 7、6、5<br /> Ubuntu Linux 16.04、14.04<br /> Debian 8、7<br /> Oracle Linux 7、6<br /> CentOS 7、6、5<br /> SUSE Linux Enterprise Server 11 及更高版本
 **服务器要求** | 必须在要分析的服务器上安装并运行 VMware 工具（10.2.1 及更高版本）。<br /><br /> 服务器必须安装 PowerShell 版本 2.0 或更高版本。
-**发现方法** |  通过使用在运行 vCenter Server 的服务器上安装的 VMware 工具，即可收集服务器之间的依赖关系信息。 设备使用 vSphere API 收集服务器上的信息。 不会在服务器上安装代理，并且设备不会直接连接到服务器。 应在 Windows 和 Linux 服务器上分别启用和使用 WMI 和 SSH。
+**发现方法** |  通过使用在运行 vCenter Server 的服务器上安装的 VMware 工具，即可收集服务器之间的依赖关系信息。 设备使用 vSphere API 收集服务器上的信息。 不会在服务器上安装代理，并且设备不会直接连接到服务器。 应在 Windows 服务器上启用 WMI 并可供使用。
 vCenter 帐户 | 用于评估的 Azure Migrate 只读帐户必须具有在 VMware VM 上执行来宾操作的权限。
 Windows 服务器权限 |  具有服务器管理权限的用户帐户（本地或域）。
 **Linux 帐户** | 根用户帐户，或对 /bin/netstat 和 /bin/ls 文件具有以下权限的帐户： <br />CAP_DAC_READ_SEARCH<br /> CAP_SYS_PTRACE<br /><br /> 使用以下命令设置这些功能：<br /><code>sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/ls<br /> sudo setcap CAP_DAC_READ_SEARCH,CAP_SYS_PTRACE=ep /bin/netstat</code>

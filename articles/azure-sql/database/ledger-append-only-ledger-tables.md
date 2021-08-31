@@ -1,27 +1,27 @@
 ---
 title: Azure SQL 数据库仅追加账本表
 description: 本文提供有关 Azure SQL 数据库中仅追加账本表架构和视图的信息。
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: bb8c1c933bda5a972209133fea301c1d87f6bd06
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: a23190552239af387fa2af362592347c0c46b900
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080194"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666719"
 ---
 # <a name="azure-sql-database-append-only-ledger-tables"></a>Azure SQL 数据库仅追加账本表
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Azure SQL 数据库账本目前为公共预览版，在美国中西部提供。
+> Azure SQL 数据库账本目前为公共预览版，在西欧、巴西南部和美国中西部提供。
 
 仅追加账本表只允许对表执行 `INSERT` 操作，确保数据库管理员等特权用户无法通过传统的[数据操作语言](/sql/t-sql/queries/queries)操作更改数据。 仅追加账本表非常适合不会更新或删除记录的系统（例如安全信息事件和管理系统），或需要将数据从区块链复制到数据库的区块链系统。 由于不能对仅追加表执行 `UPDATE` 或 `DELETE` 操作，因此不需要像对[可更新账本表](ledger-updatable-ledger-tables.md)那样提供相应的历史记录表。
 

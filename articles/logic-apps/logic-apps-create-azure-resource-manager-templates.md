@@ -3,15 +3,15 @@ title: 创建用于部署的逻辑应用模板
 description: 了解如何在 Azure 逻辑应用中创建用于自动化部署的 Azure 资源管理器模板
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
-ms.topic: article
-ms.date: 07/26/2019
-ms.openlocfilehash: 9bf6e9a09cfd271fb701b930eaee7b0e8bdee61f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 07/20/2021
+ms.openlocfilehash: 3378c04fd6a43d50b670767d1d3fc4f59043e1e9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961612"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456596"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>创建 Azure 资源管理器模板以自动化 Azure 逻辑应用的部署
 
@@ -49,10 +49,11 @@ Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 
 
 这些示例演示如何使用 Azure 资源管理器模板、Azure DevOps 中的 Azure Pipelines，以及 Azure PowerShell 来创建和部署逻辑应用：
 
-* [示例：从 Azure 逻辑应用连接到 Azure 服务总线队列](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：从 Azure 逻辑应用连接到 Azure 存储帐户](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：为 Azure 逻辑应用设置函数应用操作](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [示例：从 Azure 逻辑应用连接到集成帐户](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [示例：使用 Azure 逻辑应用协调 Azure Pipelines](https://github.com/Azure-Samples/azure-logic-apps-pipeline-orchestration)
+* [示例：从 Azure 逻辑应用连接到 Azure 存储帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/storage-account-connections)
+* [示例：从 Azure 逻辑应用连接到 Azure 服务总线队列并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/service-bus-connections)
+* [示例：为 Azure 逻辑应用设置 Azure Functions 操作并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/function-app-actions)
+* [示例：从 Azure 逻辑应用连接到集成帐户并在 Azure DevOps 中使用 Azure Pipelines 进行部署](https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/integration-account-connections)
 
 ### <a name="install-powershell-modules"></a>安装 PowerShell 模块
 
@@ -122,7 +123,7 @@ Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileN
 | 参数 | 必需 | 说明 |
 |------------|----------|-------------|
 | TemplateFile | 是 | 模板文件的文件路径 |
-| KeyVault | 否 | 一个枚举，描述如何处理可能的 Key Vault 值。 默认值为 `None`。 |
+| KeyVault | 否 | 一个枚举，描述如何处理可能的 Key Vault 值。 默认为 `None`。 |
 ||||
 
 ## <a name="next-steps"></a>后续步骤

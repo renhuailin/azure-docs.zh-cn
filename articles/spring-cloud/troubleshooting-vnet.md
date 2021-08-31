@@ -1,18 +1,18 @@
 ---
 title: 在虚拟网络中排除 Azure Spring Cloud 的故障
 description: Azure Spring Cloud 虚拟网络故障排除指南。
-author: mikedodaro
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/19/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 82ee9b368ecb98d4bb1833ab9a4fc1dc22182e99
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 95b288181180e2409bcb18f4f8233af568bd311c
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968877"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015439"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>在虚拟网络中排除 Azure Spring Cloud 的故障
 
@@ -46,4 +46,4 @@ ms.locfileid: "111968877"
 
 ## <a name="other-issues"></a>其他问题
 
-[排查常见的 Azure Spring Cloud 问题](./troubleshoot.md)。
+[排查常见的 Azure Spring Cloud 问题](./troubleshoot.md)

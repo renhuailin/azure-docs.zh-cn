@@ -15,12 +15,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: ab57e66ff37fb31a91a1949896a4e7736669d6c6
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 0f9d98eb2a4fe09728a890af59b4c54afbed3737
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078916"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291648"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 Azure 快速启动模板为 Azure VM 上的 SQL Server 配置可用性组
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,8 +29,8 @@ ms.locfileid: "112078916"
 
    | 模板 | 说明 |
    | --- | --- |
-   | [101-sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | 创建 Windows 故障转移群集并将 SQL Server VM 加入其中。 |
-   | [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | 创建可用性组侦听程序并配置内部负载均衡器。 使用此模板的前提是，Windows 故障转移群集是使用“101-sql-vm-ag-setup”模板创建的。 |
+   | [sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-ag-setup) | 创建 Windows 故障转移群集并将 SQL Server VM 加入其中。 |
+   | [sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-aglistener-setup) | 创建可用性组侦听程序并配置内部负载均衡器。 使用此模板的前提是，Windows 故障转移群集是使用“101-sql-vm-ag-setup”模板创建的。 |
    | &nbsp; | &nbsp; |
 
 其他可用性组配置部分（例如创建可用性组，以及创建内部负载均衡器）必须手动完成。 本文提供自动和手动步骤的顺序。
@@ -60,12 +60,12 @@ ms.locfileid: "112078916"
 
 将 SQL Server VM 添加到 *SqlVirtualMachineGroups* 资源组会启动 Windows 故障转移群集服务，以便创建群集并将这些 SQL Server VM 加入该群集。 此步骤通过“101-sql-vm-ag-setup”快速启动模板自动执行。 可通过执行以下步骤实现它：
 
-1. 转到 [101-sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) 快速启动模板。 然后，选择“部署到 Azure”以在 Azure 门户中打开快速启动模板。
+1. 转到 [sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-ag-setup) 快速启动模板。 然后，选择“部署到 Azure”以在 Azure 门户中打开快速启动模板。
 1. 填写必填字段，以配置 Windows 故障转移群集元数据。 可将可选字段留空。
 
    下表显示了模板的所需值： 
 
-   | **字段** | Value |
+   | **字段** | 值 |
    | --- | --- |
    | **订阅** |  SQL Server VM 所在的订阅。 |
    |**资源组** | SQL Server VM 所在的资源组。 | 
@@ -90,9 +90,9 @@ ms.locfileid: "112078916"
 
 ## <a name="configure-quorum"></a>配置仲裁
 
-虽然磁盘见证是最具复原能力的仲裁选项，但它需要 Azure 共享磁盘，这对可用性组施加了一些限制。 因此，对于在 Azure VM 上的 SQL Server 中托管可用性组的群集，云见证是建议的仲裁解决方案。 
+虽然磁盘见证是最具复原能力的仲裁选项，但它需要 Azure 共享磁盘，这对可用性组施加了一些限制。 因此，对于在 Azure VM 上的 SQL Server 中托管可用性组的群集，推荐使用云见证作为仲裁解决方案。 
 
-如果群集中的投票数为偶数，请配置最适合你的业务需求的[仲裁解决方案](hadr-cluster-quorum-configure-how-to.md)。 有关详细信息，请参阅 [SQL Server VM 上的仲裁](hadr-windows-server-failover-cluster-overview.md#quorum)。 
+如果群集中的投票数为偶数，请配置最适合业务需求的[仲裁解决方案](hadr-cluster-quorum-configure-how-to.md)。 有关详细信息，请参阅 [SQL Server VM 上的仲裁](hadr-windows-server-failover-cluster-overview.md#quorum)。 
 
 ## <a name="validate-cluster"></a>验证群集 
 
@@ -128,7 +128,7 @@ Always On 可用性组侦听器需要 Azure 负载均衡器的内部实例。 �
 4. 在“负载均衡器”边栏选项卡上，选择“创建” 。
 5. 在“创建负载均衡器”对话框中配置负载均衡器，如下所示：
 
-   | 设置 | Value |
+   | 设置 | 值 |
    | --- | --- |
    | **名称** |输入用于表示负载均衡器的文本名称。 例如，输入“sqlLB”。 |
    | 类型 |**内部**：大多数实施方案使用内部负载均衡器，它可让同一虚拟网络中的应用程序连接到可用性组。  </br> **外部**：可让应用程序通过公共 Internet 连接连接到可用性组。 |
@@ -161,12 +161,12 @@ Always On 可用性组侦听器需要 Azure 负载均衡器的内部实例。 �
    
    
 若要配置内部负载均衡器并创建可用性组侦听程序，请执行以下操作：
-1. 转到 [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) 快速启动模板，然后选择“部署到 Azure”以在 Azure 门户中启动快速启动模板。
+1. 转到 [sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-aglistener-setup) 快速启动模板，然后选择“部署到 Azure”以在 Azure 门户中启动快速启动模板。
 1. 填写必填字段以配置内部负载均衡器，并创建可用性组侦听程序。 可将可选字段留空。 
 
    下表显示了模板的所需值： 
 
-   | **字段** | Value |
+   | **字段** | 值 |
    | --- | --- |
    |**资源组** | SQL Server VM 和可用性组所在的资源组。 | 
    |**现有故障转移群集名称** | SQL Server VM 要加入到的群集的名称。 |

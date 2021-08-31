@@ -2,13 +2,13 @@
 title: 使用 Azure 服务总线资源管理器在服务总线上执行数据操作（预览版）
 description: 本文介绍如何使用基于门户的 Azure 服务总线资源管理器访问 Azure 服务总线数据。
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: 0b5274c492a1dfb2523c52d7aea2b7ebf8eae675
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 06/16/2021
+ms.openlocfilehash: 3b561586e77940eda5647aa0ab333ab88937463f
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738950"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294348"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>使用服务总线资源管理器在服务总线上执行数据操作（预览版）
 
@@ -56,6 +56,9 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 :::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="左侧导航菜单中的“服务总线资源管理器”":::
 
+> [!NOTE]
+> Service Bus Explorer 支持最大为 1 MB 的消息。 
+
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>向队列或主题发送消息
 
 若要向“队列”或“主题”发送消息，请单击 Service Bus Explorer 中的“发送”选项卡  。
@@ -100,7 +103,7 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 3. 在“队列”与“死信”子队列之间进行选择。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadLetter":::
 
 4. 单击“接收”按钮，然后单击“是”以确认执行“接收并删除”操作。
 
@@ -124,7 +127,7 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 3. 然后在“队列”与“死信”子队列之间进行选择。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadLetter":::
 
 4. 单击“速览”按钮。 
 
@@ -153,7 +156,7 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 2. 在“订阅”与“死信”子实体之间进行选择。
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadLetter":::
 
 3. 单击“接收”按钮，然后单击“是”以确认执行“接收并删除”操作。
 
@@ -171,7 +174,7 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 2. 在“订阅”与“死信”子实体之间进行选择。
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadLetter":::
 
 3. 单击“速览”按钮。
 
@@ -181,8 +184,8 @@ Azure 服务总线资源管理器扩展了门户功能，使其不仅支持管�
 
 > [!NOTE]
 >
-> 由于速览不是破坏性操作，因此 **不会** 从队列中删除该消息。
->
+> - 由于速览不是破坏性操作，因此 **不会** 从队列中删除该消息。
+
 
 ## <a name="next-steps"></a>后续步骤
 

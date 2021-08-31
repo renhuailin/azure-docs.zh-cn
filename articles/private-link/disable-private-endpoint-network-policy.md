@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/14/2021
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 41cdefd340ace93d5a068c9a74543965834d01ca
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: 90bb1584c94f58d96151e32c7b9c9e02989a840d
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114221347"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634420"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>对专用终结点禁用网络策略
 
@@ -27,7 +27,7 @@ ms.locfileid: "114221347"
 * Azure 门户中的 Cloud Shell。
 * Azure PowerShell
 * Azure CLI
-* Azure 资源管理器模板
+* Azure Resource Manager 模板
  
 以下示例介绍如何对名为 myVNet 的虚拟网络禁用 `PrivateEndpointNetworkPolicies`，该虚拟网络的默认子网托管在名为 myResourceGroup 的资源组中。  
 
@@ -42,7 +42,7 @@ $net =@{
 }
 $vnet = Get-AzVirtualNetwork @net
 
-($vnet | Select -ExpandProperty subnets).PrivateEndpointNetworkPolicies = "Disabled"
+($vnet | Select -ExpandProperty subnets | Where-Object {$_.Name -eq 'default'}).PrivateEndpointNetworkPolicies = "Disabled"
 
 $vnet | Set-AzVirtualNetwork
 ```

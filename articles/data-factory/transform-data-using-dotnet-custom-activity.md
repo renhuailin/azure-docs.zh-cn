@@ -1,32 +1,34 @@
 ---
 title: 在管道中使用自定义活动
-description: 了解如何使用 .NET 创建自定义活动，然后在 Azure 数据工厂管道中使用这些活动。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何使用 .NET 创建自定义活动，然后在 Azure 数据工厂或 Azure Synapse Analytics 管道中使用这些活动。
 ms.service: data-factory
+ms.subservice: tutorials
 author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
-ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell, synapse
 ms.date: 11/26/2018
-ms.openlocfilehash: 3b5370baacc2bf82ae0575d44d00d1535a4549de
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: e2b8ab8dd06bb290993ce80ad98d3e07ff727a49
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665414"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272072"
 ---
-# <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
+# <a name="use-custom-activities-in-an-azure-data-factory-or-azure-synapse-analytics-pipeline"></a>在 Azure 数据工厂或 Azure Synapse Analytics 管道中使用自定义活动
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-use-custom-activities.md)
 > * [当前版本](transform-data-using-dotnet-custom-activity.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-在 Azure 数据工厂管道中可使用两类活动。
+在 Azure 数据工厂或 Synapse 管道中可使用两类活动。
 
 - [数据移动活动](copy-activity-overview.md)：在[支持的源与接收器数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间移动数据。
-- [数据转换活动](transform-data.md)：使用 Azure HDInsight、Azure Batch 和 Azure 机器学习等计算服务转换数据。
+- [数据转换活动](transform-data.md)：使用 Azure HDInsight、Azure Batch 和 ML 工作室（经典）等计算服务转换数据。
 
-若要将数据移入/移出数据工厂不支持的数据存储，或者要以数据工厂不支持的方式转换/处理数据，可以使用你自己的数据移动或转换逻辑创建 **自定义活动**，并在管道中使用该活动。 自定义活动在虚拟机的 **Azure Batch** 池上运行自定义代码逻辑。
+若要将数据移入/移出服务不支持的数据存储，或者要以数据工厂不支持的方式转换/处理数据，可以使用你自己的数据移动或转换逻辑创建自定义活动，并在管道中使用该活动。 自定义活动在虚拟机的 **Azure Batch** 池上运行自定义代码逻辑。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -41,7 +43,7 @@ ms.locfileid: "110665414"
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 链接服务
 
-下面的 JSON 定义了一个示例 Azure Batch 链接服务。 有关详细信息，请参阅 [Azure 数据工厂支持的计算环境](compute-linked-services.md)
+下面的 JSON 定义了一个示例 Azure Batch 链接服务。 有关详细信息，请参阅[支持的计算环境](compute-linked-services.md)
 
 ```json
 {
@@ -100,7 +102,7 @@ ms.locfileid: "110665414"
 
 下表描述了此活动特有的属性的名称和描述。
 
-| 属性              | 说明                              | 必须 |
+| 属性              | 说明                              | 必需 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -109,7 +111,7 @@ ms.locfileid: "110665414"
 | command               | 要执行的自定义应用程序的命令。 如果应用程序在 Azure Batch 池节点上已可用，可以跳过 resourceLinkedService 和 folderPath。 例如，可以将命令指定为 `cmd /c dir`，Windows Batch 池节点针对该命令提供了本机支持。 | 是      |
 | resourceLinkedService | 存储着自定义应用程序的存储帐户的 Azure 存储链接服务 | 否 &#42;       |
 | folderPath            | 自定义应用程序及其所有依赖项所在的文件夹的路径<br/><br/>如果将依赖项存储在子文件夹中（即 *folderPath* 下的分层文件夹结构中），目前当文件复制到 Azure Batch 时，文件夹结构将被平展。 也就是说，所有文件将复制到没有子文件夹的单个文件夹中。 若要解决此行为，请考虑压缩文件，复制压缩文件，然后在所需位置使用自定义代码解压缩文件。 | 否 &#42;       |
-| referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用数据工厂的资源 | 否       |
+| referenceObjects      | 现有链接服务和数据集的数组。 所引用的链接服务和数据集采用 JSON 格式传递到自定义应用程序，因此，自定义代码可以引用服务的资源 | 否       |
 | extendedProperties    | 可以采用 JSON 格式传递到自定义应用程序的用户定义属性，以便自定义代码可以引用更多属性 | 否       |
 | retentionTimeInDays | 为自定义活动提交的文件的保留时间。 默认值为 30 天。 | 否 |
 
@@ -148,7 +150,7 @@ ms.locfileid: "110665414"
 
 ## <a name="passing-objects-and-properties"></a>传递对象和属性
 
-此示例展示了如何使用 referenceObjects 和 extendedProperties 将数据工厂对象和用户定义的属性传递到自定义应用程序。
+此示例展示了如何使用 referenceObjects 和 extendedProperties 将对象和用户定义的属性从服务传递到自定义应用程序。
 
 ```json
 {
@@ -306,11 +308,11 @@ Activity Error section:
 
 ## <a name="pass-outputs-to-another-activity"></a>将输出传递给另一个活动
 
-可以通过自定义活动中的代码将自定义值发送回 Azure 数据工厂。 可以通过从应用程序将自定义值写入 `outputs.json` 来完成此操作。 数据工厂复制 `outputs.json` 的内容，并将其作为 `customOutput` 属性的值追加到活动输出中。 （大小限制为 2 MB。）若要在下游活动中使用 `outputs.json` 的内容，可以使用表达式 `@activity('<MyCustomActivity>').output.customOutput` 获取值。
+可以通过自定义活动中的代码将自定义值发送回服务。 可以通过从应用程序将自定义值写入 `outputs.json` 来完成此操作。 服务复制 `outputs.json` 的内容，并将其作为 `customOutput` 属性的值追加到活动输出中。 （大小限制为 2 MB。）若要在下游活动中使用 `outputs.json` 的内容，可以使用表达式 `@activity('<MyCustomActivity>').output.customOutput` 获取值。
 
 ## <a name="retrieve-securestring-outputs"></a>检索 SecureString 输出
 
-指定为 *SecureString* 类型的敏感属性值（如本文中的某些示例所示）在数据工厂用户界面的“监视”选项卡中被屏蔽。  但是，在实际的管道执行中，*SecureString* 属性在 `activity.json` 文件中以纯文本形式序列化为 JSON。 例如：
+指定为 SecureString 类型的敏感属性值（如本文中的某些示例所示）在用户界面的“监视”选项卡中被屏蔽。  但是，在实际的管道执行中，*SecureString* 属性在 `activity.json` 文件中以纯文本形式序列化为 JSON。 例如：
 
 ```json
 "extendedProperties": {
@@ -321,7 +323,7 @@ Activity Error section:
 }
 ```
 
-此序列化并不是真正安全的，也不应是安全的。 其目的是提示数据工厂屏蔽“监视”选项卡中的值。
+此序列化并不是真正安全的，也不应是安全的。 其目的是提示服务屏蔽“监视”选项卡中的值。
 
 若要从自定义活动访问 *SecureString* 类型的属性，请读取 `activity.json` 文件（该文件与 .EXE 放在同一个文件夹中），反序列化 JSON，然后访问 JSON 属性（extendedProperties => [propertyName] => 值）。
 
@@ -329,13 +331,13 @@ Activity Error section:
 
 在 Azure 数据工厂版本 1 中，通过使用实现 `IDotNetActivity` 接口的 `Execute` 方法的类创建 .NET 类库项目来实现（自定义）DotNet 活动。 （自定义）DotNet 活动的 JSON 负载中的链接服务、数据集和扩展属性作为强类型对象传递到执行方法。 有关版本 1 行为的详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 由于此实现，版本 1 DotNet 活动节点必须面向 .NET Framework 4.5.2。 版本 1 DotNet 活动还必须在基于 Windows 的 Azure Batch 池节点上执行。
 
-在 Azure 数据工厂 V2 自定义活动中，不需要实现 .NET 接口。 现在可以直接运行命令、脚本和自己的已编译为可执行文件的自定义代码。 要配置该实现，请指定 `Command` 属性和 `folderPath` 属性。 自定义活动会将可执行文件及其依赖项上传到 `folderpath`，并执行命令。
+在 Azure 数据工厂 V2 和 Synapse 管道自定义活动中，不需要实现 .NET 接口。 现在可以直接运行命令、脚本和自己的已编译为可执行文件的自定义代码。 要配置该实现，请指定 `Command` 属性和 `folderPath` 属性。 自定义活动会将可执行文件及其依赖项上传到 `folderpath`，并执行命令。
 
-可执行文件可以将链接服务、数据集（在 referenceObjects 中定义）和数据工厂 v2 自定义活动的 JSON 有效负载中定义的扩展属性作为 JSON 文件进行访问。 可以使用 JSON 序列化程序访问所需的属性，如前面的 SampleApp.exe 代码示例所示。
+可执行文件可以将链接服务、数据集（在 referenceObjects 中定义）和数据工厂 v2 或 Synapse 管道自定义活动的 JSON 有效负载中定义的扩展属性作为 JSON 文件进行访问。 可以使用 JSON 序列化程序访问所需的属性，如前面的 SampleApp.exe 代码示例所示。
 
-借助数据工厂 V2 自定义活动中引入的更改，可以使用自己喜欢的语言编写自定义代码逻辑，然后在 Azure Batch 支持的 Windows 和 Linux 操作系统上执行该代码逻辑。
+借助数据工厂 V2 和 Synapse 管道自定义活动中引入的更改，可以使用自己喜欢的语言编写自定义代码逻辑，然后在 Azure Batch 支持的 Windows 和 Linux 操作系统上执行该代码逻辑。
 
-下表介绍数据工厂 V2 自定义活动和数据工厂版本 1（自定义）DotNet 活动之间的差异：
+下表介绍数据工厂 V2 和 Synapse 管道自定义活动和数据工厂版本 1（自定义）DotNet 活动之间的差异：
 
 |差异      | 自定义活动      | 版本 1（自定义）DotNet 活动      |
 | ---- | ---- | ---- |
@@ -356,7 +358,7 @@ Activity Error section:
   - 不再需要 Microsoft.Azure.Management.DataFactories NuGet 包。
   - 编译代码，将可执行文件及其依赖项上传到 Azure 存储，并在 `folderPath` 属性中定义路径。
 
-有关端到端 DLL 和数据工厂版本 1 文章[在 Azure 数据工厂管道中使用自定义活动](./v1/data-factory-use-custom-activities.md)中所述的管道示例如何重写为数据工厂自定义活动的完整示例，请参阅[数据工厂自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample)。
+有关端到端 DLL 和数据工厂版本 1 文章[在 Azure 数据工厂管道中使用自定义活动](./v1/data-factory-use-custom-activities.md)中所述的管道示例如何重写为数据工厂 v2 和 Synapse 管道的自定义活动的完整示例，请参阅[自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample)。
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自动缩放
 
@@ -387,5 +389,5 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
-* [Azure 机器学习工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
+* [机器学习工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

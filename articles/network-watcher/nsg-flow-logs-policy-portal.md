@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: a507f0845fad1e43ce775e5d46f9fa8a548e369f
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 2e0ab4a22665741abb7ed4ab2569d1b55e090457
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122607472"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113688535"
 ---
 # <a name="quickstart-deploy-and-manage-nsg-flow-logs-using-azure-policy"></a>快速入门：使用 Azure Policy 部署和管理 NSG 流日志 
 
 ## <a name="overview"></a>概述
 Azure Policy 可帮助实施组织标准并大规模评估合规性。 Azure Policy 的常见用例包括实施监管来满足资源一致性、法规遵从性、安全性、成本和管理方面的要求。 在本文中，我们将使用两个可用于 NSG 流日志的内置策略来管理流日志设置。 第一个策略对未启用流日志的所有 NSG 进行标记。 第二个策略为未启用流日志的 NSG 自动部署流日志。 
 
-如果你是首次创建 Azure Policy 定义，可仔细阅读： 
+如果是首次创建 Azure Policy，可仔细阅读： 
 - [Azure Policy 概述](../governance/policy/overview.md) 
-- [有关创建 Azure Policy 分配的教程](../governance/policy/assign-policy-portal.md#create-a-policy-assignment)。
+- [策略创建教程](../governance/policy/assign-policy-portal.md#create-a-policy-assignment)。
 
 
 ## <a name="locate-the-policies"></a>查找策略

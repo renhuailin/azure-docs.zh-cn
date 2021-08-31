@@ -81,6 +81,8 @@
           href: certificate-signing-options.md
         - name: 管理证书
           href: manage-certificates-for-federated-single-sign-on.md
+        - name: 防护同意钓鱼
+          href: protect-against-consent-phishing.md
         - name: 租户限制
           href: tenant-restrictions.md
         - name: 配置 SAML 令牌加密

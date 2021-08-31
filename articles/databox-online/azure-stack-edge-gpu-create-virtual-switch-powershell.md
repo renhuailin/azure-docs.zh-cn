@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 06/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 1ad86695510a8fe93bbeeab27db53f5afbef92fd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 9910ac4d817879812803cd41f6b184846e1b02be
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555866"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113106238"
 ---
 # <a name="create-a-new-virtual-switch-in-azure-stack-edge-pro-gpu-via-powershell"></a>通过 PowerShell 在 Azure Stack Edge Pro GPU 中创建新的虚拟交换机
 
@@ -52,7 +52,7 @@ ms.locfileid: "106555866"
     ```
     下面是示例输出：
     
-    ```powershell
+    ```output
         [10.100.10.10]: PS>Get-NetAdapter -Physical
         
         Name                      InterfaceDescription                    ifIndex Status       MacAddress       LinkSpeed
@@ -70,13 +70,13 @@ ms.locfileid: "106555866"
 2. 选择一个网络接口，该接口：
 
     - 处于“启动”状态。 
-    - 未用于任何现有虚拟交换机。 目前只能为每个网络接口配置一个 vSwitch。 
+    - 未用于任何现有虚拟交换机。 目前只能为每个网络接口配置一个虚拟交换机。 
     
     若要检查现有虚拟交换机和网络接口关联，请运行 `Get-HcsExternalVirtualSwitch` 命令。
  
     下面是示例输出。
 
-    ```powershell
+    ```output
     [10.100.10.10]: PS>Get-HcsExternalVirtualSwitch
 
     Name                          : vSwitch1
@@ -106,8 +106,8 @@ Add-HcsExternalVirtualSwitch -InterfaceAlias <Network interface name> -WaitForSw
 
 下面是示例输出：
 
-```powershell
-[10.100.10.10]: P> Add-HcsExternalVirtualSwitch -InterfaceAlias Port5 -WaitForSwitchCreation $true
+```output
+[10.100.10.10]: PS> Add-HcsExternalVirtualSwitch -InterfaceAlias Port5 -WaitForSwitchCreation $true
 [10.100.10.10]: PS>Get-HcsExternalVirtualSwitch
 
 Name                          : vSwitch1
@@ -135,11 +135,69 @@ Type                          : External
 [10.100.10.10]: PS>
 ```
 
-## <a name="verify-network-subnet"></a>验证网络、子网 
+## <a name="verify-network-subnet-for-switch"></a>验证交换机的网络和子网
 
 创建新的虚拟交换机后，Azure Stack Edge Pro GPU 会自动创建对应的虚拟网络和子网。 创建 VM 时，可以使用此虚拟网络。
 
-<!--To identify the virtual network and subnet associated with the new switch that you created, use the `Get-HcsVirtualNetwork` command. This cmdlet will be released in April some time. -->
+若要标识与创建的新交换机关联的虚拟网络和子网，请使用 `Get-HcsVirtualNetwork` cmdlet。 
+
+## <a name="create-virtual-lans"></a>创建虚拟 LAN
+
+若要在虚拟交换机上添加局域网 (LAN) 配置，请使用以下 cmdlet。
+
+```powershell
+Add-HcsVirtualNetwork-VirtualSwitchName <Virtual Switch name> -VnetName <Virtual Network Name> –VlanId <Vlan Id> –AddressSpace <Address Space> –GatewayIPAddress <Gateway IP>–DnsServers <Dns Servers List> -DnsSuffix <Dns Suffix name>
+``` 
+
+以下参数可以与 `Add-HcsVirtualNetwork-VirtualSwitchName` cmdlet 一起使用。
+
+
+|参数  |说明  |
+|---------|---------|
+|VNetName     |虚拟 LAN 网络名称         |
+|VirtualSwitchName    |要添加虚拟 LAN 配置的虚拟交换机名称         |
+|AddressSpace     |虚拟 LAN 网络的子网地址空间         |
+|GatewayIPAddress     |虚拟网络网关         |
+|DnsServers     |DNS 服务器 IP 地址列表         |
+|DnsSuffix     |没有虚拟 LAN 网络子网主机部分的 DNS 名称         |
+
+
+
+下面是示例输出。
+
+```output
+[10.100.10.10]: PS> Add-HcsVirtualNetwork -VirtualSwitchName vSwitch1 -VnetName vlanNetwork100 -VlanId 100 -AddressSpace 5.5.0.0/16 -GatewayIPAddress 5.5.0.1 -DnsServers "5.5.50.50&quot;,&quot;5.5.50.100&quot; -DnsSuffix &quot;name.domain.com"
+
+[10.100.10.10]: PS> Get-HcsVirtualNetwork
+ 
+Name             : vnet2015
+AddressSpace     : 10.128.48.0/22
+SwitchName       : vSwitch1
+GatewayIPAddress : 10.128.48.1
+DnsServers       : {}
+DnsSuffix        :
+VlanId           : 2015
+ 
+Name             : vnet3011
+AddressSpace     : 10.126.64.0/22
+SwitchName       : vSwitch1
+GatewayIPAddress : 10.126.64.1
+DnsServers       : {}
+DnsSuffix        :
+VlanId           : 3011
+```
+ 
+> [!NOTE]
+> - 可以在同一虚拟交换机上配置多个虚拟 LAN。 
+> - 网关 IP 地址必须与作为地址空间传入的参数在同一子网中。
+> - 如果配置了虚拟 LAN，则不能删除虚拟交换机。 若要删除此虚拟交换机，首先需要删除虚拟 LAN，然后删除虚拟交换机。
+
+## <a name="verify-network-subnet-for-virtual-lan"></a>验证虚拟 LAN 的网络和子网
+
+创建虚拟 LAN 后，会自动创建虚拟网络和相应的子网。 创建 VM 时，可以使用此虚拟网络。
+
+若要标识与创建的新交换机关联的虚拟网络和子网，请使用 `Get-HcsVirtualNetwork` cmdlet。
+
 
 ## <a name="next-steps"></a>后续步骤
 

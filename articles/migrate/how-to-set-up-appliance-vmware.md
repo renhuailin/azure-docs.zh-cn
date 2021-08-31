@@ -5,13 +5,13 @@ author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 04/16/2020
-ms.openlocfilehash: 5b0a5d2117ea17ec003eb20084a0742e81d12ecb
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.date: 07/27/2021
+ms.openlocfilehash: b2bdd5ee189d4fe350171d37e51d0f88b3e3ac20
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804081"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747193"
 ---
 # <a name="set-up-an-appliance-for-servers-in-a-vmware-environment"></a>为 VMware 环境中的服务器设置设备
 
@@ -152,7 +152,7 @@ ms.locfileid: "108804081"
 
 ### <a name="provide-server-credentials"></a>提供服务器凭据
 
-在“步骤 3: 提供服务器凭据以执行软件盘存、无代理依赖项分析以及对 SQL Server 实例和数据库的发现”中，可以提供多个服务器凭据。 如果不想使用上述任何设备功能，可以跳过此步骤，开始执行 vCenter Server 发现。 随时可以更改此选项。
+在“步骤 3: 提供服务器凭据以在 VMware 环境中执行软件清单、无代理依赖项分析、SQL Server 实例与数据库的发现和 ASP.NET Web 应用的发现”中，可提供多个服务器凭据。 如果不想使用上述任何设备功能，可以跳过此步骤，开始执行 vCenter Server 发现。 随时可以更改此选项。
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="此屏幕截图显示为软件盘存、依赖项分析和 SQL Server 发现提供凭据。":::
 
@@ -171,7 +171,7 @@ ms.locfileid: "108804081"
     选择“保存”。
 
     如果选择使用域凭据，还需要输入域的 FQDN。 必须使用 FQDN 才能在该域的 Active Directory 实例中验证凭据的真实性。
-1. 检查用于发现已安装的应用程序、执行无代理依赖项分析，以及发现 SQL Server 实例和数据库的帐户的[所需权限](add-server-credentials.md#required-permissions)。
+1. 在“步骤 3: 提供服务器凭据以执行软件清单、无代理依赖项分析、SQL Server 实例与数据库的发现和 ASP.NET Web 应用的发现”中，查看帐户的[所需权限](add-server-credentials.md#required-permissions)。
 1. 若要一次添加多个凭据，请选择“添加更多”，以保存和添加更多凭据。
     选择“保存”或“添加更多”时，设备将使用域的 Active Directory 实例验证域凭据以进行身份验证。 每次添加后都会进行验证，以避免在设备循环访问以将凭据映射到相应服务器时帐户锁定。
 
@@ -185,16 +185,17 @@ ms.locfileid: "108804081"
 
 ### <a name="start-discovery"></a>启动发现
 
-若要开始 vCenter Server 发现，在“步骤 3: 提供服务器凭据以执行软件盘存、无代理依赖项分析以及对 SQL Server 实例和数据库的发现”中，选择“开始发现”。 成功启动发现后，可以通过查看源表中的 vCenter Server IP 地址或 FQDN 检查发现状态。
+要启动 vCenter Server 发现，在“步骤 3: 提供服务器凭据以在 VMware 环境中执行软件清单、无代理依赖项分析、SQL Server 实例与数据库的发现和 ASP.NET Web 应用的发现”中，选择“启动发现”。 成功启动发现后，可以通过查看源表中的 vCenter Server IP 地址或 FQDN 检查发现状态。
 
 ## <a name="how-discovery-works"></a>发现的工作原理
 
 * 在 Azure 门户中，大约需要 15 分钟才能显示发现服务器的库存。
 * 如果已提供服务器凭据，则在发现运行 vCenter Server 的服务器完成后，会自动启动软件盘存（发现已安装的应用程序）。 软件盘存每 12 小时发生一次。
 * [软件盘存](how-to-discover-applications.md)会标识在服务器上运行的 SQL Server 实例。 设备利用该功能收集的信息，尝试通过 Windows 身份验证凭据或设备上提供的 SQL Server 身份验证凭据连接到 SQL Server 实例。 然后，它会收集有关 SQL Server 数据库及其属性的数据。 SQL Server 发现每 24 小时执行一次。
+* [软件清单](how-to-discover-applications.md)标识服务器上的 Web 服务器角色。 设备利用该功能收集的信息，尝试通过设备上提供的 Windows 身份验证凭据连接到 IIS Web 服务器。 然后，它收集有关 Web 应用的数据。 Web 应用发现每 24 小时执行一次。
 * 对安装的应用程序的发现过程可能需要超过 15 分钟。 具体时间取决于发现的服务器数量。 如果有 500 个服务器，门户中的 Azure Migrate 项目大约需要一小时才会显示发现的库存。
 * 在软件盘存过程中，针对服务器循环访问已添加的服务器凭据，并对这些凭据进行验证，以便进行无代理依赖项分析。 完成服务器发现后，可以在门户中对服务器启用无代理依赖项分析。 只能选择验证成功的服务器来启用无代理依赖项分析。
-* 在开始发现后的 24 小时内，SQL Server 实例和数据库数据将开始在门户中显示。
+* 在启动发现后的 24 小时内，SQL Server 实例及数据库数据和 Web 应用数据将开始在门户中显示。
 
 ## <a name="next-steps"></a>后续步骤
 

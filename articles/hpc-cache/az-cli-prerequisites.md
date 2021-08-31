@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 0b8e1158bc60c4cceea508db988000fe952a90a4
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 8e153a513219d59ac3a5825da9c4f59179aae99f
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864282"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121258"
 ---
 # <a name="set-up-azure-cli-for-azure-hpc-cache"></a>设置适用于 Azure HPC Cache 的 Azure CLI
 
@@ -23,7 +23,7 @@ ms.locfileid: "107864282"
 
 ## <a name="set-default-resource-group-optional"></a>设置默认资源组（可选）
 
-大多数 hpc 缓存命令要求传递缓存的资源组。 可以使用 [az configure](/cli/azure/reference-index#az_configure) 设置默认资源组。
+大多数 hpc 缓存命令要求传递缓存的资源组。 可以使用 [az config](/cli/azure/reference-index#az_config) 设置默认资源组。
 
 ## <a name="next-steps"></a>后续步骤
 

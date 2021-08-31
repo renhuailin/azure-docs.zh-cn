@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: e26434ae1ff2f9d8829d3665807f7d9916233833
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: c16b4a91f297621fa96e0e18f816d77e9f3b4e2a
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792231"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112322397"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>使用 Azure Migrate: 服务器迁移通过 ExpressRoute 复制数据
 
@@ -170,48 +170,67 @@ ExpressRoute 线路通过连接提供商将本地基础结构连接到 Microsoft
 - 如果使用自定义 DNS，请查看自定义 DNS 设置，并验证 DNS 配置是否正确。 有关指南，请参阅[专用终结点概述：DNS 配置](../private-link/private-endpoint-overview.md#dns-configuration)。 
 - 如果使用 Azure 提供的 DNS 服务器，请使用本指南作为进一步故障排除的参考，[以进行进一步的故障排除](./troubleshoot-network-connectivity.md#validate-the-private-dns-zone)。   
 
+### <a name="configure-proxy-bypass-rules-on-the-azure-migrate-appliance-for-expressroute-private-peering-connectivity"></a>在 Azure Migrate 设备上配置代理跳过规则（适用于 ExpressRoute 专用对等互连） 
+对于代理跳过，可以为缓存存储帐户添加代理跳过规则，如下所示 
+- _storageaccountname_.blob.core.windows.net。
+
+> [!Important]
+>  请勿跳过 *.blob.core.windows.net，因为 Azure Migrate 使用需要 Internet 访问权限的其他存储帐户。 此存储帐户（即网关存储帐户）仅用于存储有关所要复制的 VM 的状态信息。 可以通过识别 Azure Migrate 项目资源组的存储帐户名称中的前缀“gwsa”找到网关存储帐户。 
+
 ## <a name="replicate-data-by-using-an-expressroute-circuit-with-microsoft-peering"></a>使用具备 Microsoft 对等互连的 ExpressRoute 线路复制数据
 
 你可使用 Microsoft 对等互连或现有公共对等互连域（不建议用于新的 ExpressRoute 连接），通过 ExpressRoute 线路路由复制流量。
 
 ![此图显示使用 Microsoft 对等互连进行复制。](./media/replicate-using-expressroute/replication-with-microsoft-peering.png)
 
-即使在通过 Microsoft 对等互连线路传输复制数据的情况下，仍需要从本地站点建立 Internet 连接，才能与 Azure Migrate（控制平面）进行其他通信。 某些其他 URL 无法通过 ExpressRoute 访问。 复制设备或 Hyper-V 主机需要访问这些 URL 才能协调复制过程。 请根据迁移方案（[VMware 无代理迁移](./migrate-appliance.md#public-cloud-urls)或[基于代理的迁移](./migrate-replication-appliance.md)）查看 URL 要求。
+即使在通过 Microsoft 对等互连线路传输复制数据的情况下，仍需要从本地站点建立 Internet 连接，才能获取控制平面流量以及无法通过 ExpressRoute 到达的其他 URL。 复制设备或 Hyper-V 主机需要访问这些 URL 才能协调复制过程。 请根据迁移方案（[VMware 无代理迁移](./migrate-appliance.md#public-cloud-urls)或[基于代理的迁移](./migrate-replication-appliance.md)）查看 URL 要求。 
 
-如果你在本地站点上使用代理，并且要将 ExpressRoute 用于复制流量，请在本地设备上配置针对相关 URL 的代理跳过。
-
-### <a name="configure-proxy-bypass-rules-on-the-azure-migrate-appliance-for-vmware-agentless-migrations"></a>在 Azure Migrate 设备上配置代理跳过规则（适用于 VMware 无代理迁移）
-
-1. 通过远程桌面登录 Azure Migrate 设备。
-1. 使用记事本打开 C:/ProgramData/MicrosoftAzure/Config/appliance.json 文件。
-1. 在该文件中，将内容为 `"EnableProxyBypassList": "false"` 的行更改为 `"EnableProxyBypassList": "true"`。 保存所做的更改，并重启该设备。
-1. 重新启动后，当你打开设备配置管理器时，你会在 Web 应用 UI 中看到代理跳过选项。 请将下列 URL 添加到代理跳过列表中：
-
-    - .*.vault.azure.net
-    - .*.servicebus.windows.net
-    - .*.discoverysrv.windowsazure.com
-    - .*.migration.windowsazure.com
-    - .*.hypervrecoverymanager.windowsazure.com
-    - .*.blob.core.windows.net
-
-### <a name="configure-proxy-bypass-rules-on-the-replication-appliance-for-agent-based-migrations"></a>在复制设备上配置代理绕过规则（适用于基于代理的迁移）
-
-若要在配置服务器和进程服务器上配置代理跳过列表：
-
-1. 下载 [PsExec 工具](/sysinternals/downloads/psexec)来访问系统用户上下文。
-1. 运行以下命令行，在系统用户上下文中打开 Internet Explorer：`psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"`。
-1. 在 Internet Explorer 中添加代理设置。
-1. 在绕过列表中，添加 URL：*.blob.core.windows.net、*.hypervrecoverymanager.windowsazure.com 和 *.backup.windowsazure.com。 
-
-上述跳过规则可确保复制流量可以通过 ExpressRoute，而管理通信可以通过 Internet 的代理。
-
-此外，还必须在路由筛选器中播发下列 BGP 社区的路由，使 Azure Migrate 复制流量遍历 ExpressRoute 线路而不是 Internet：
+ 若要通过 Microsoft 对等互连传输复制数据，请将路由筛选器配置为播发 Azure 存储终结点的路由。 这会成为目标 Azure 区域的区域 BGP 团体（迁移区域）。 若要通过 Microsoft 对等互连路由控制平面流量，请将路由筛选器配置为根据需要播发其他公共终结点的路由。  
 
 - 源 Azure 区域的区域 BGP 社区（Azure Migrate 项目区域）
 - 目标 Azure 区域的区域 BGP 团体（迁移区域）
 - Azure Active Directory 的 BGP (12076:5060)
 
 详细了解[路由筛选器](../expressroute/how-to-routefilter-portal.md)以及 [ExpressRoute 的 BGP 社区](../expressroute/expressroute-routing.md#bgp)列表。
+
+### <a name="proxy-configuration-for-expressroute-microsoft-peering"></a>ExpressRoute Microsoft 对等互连的代理配置
+
+如果设备使用代理进行 Internet 连接，则可能需要为某些 URL 配置代理跳过，以通过 Microsoft 对等互连线路路由它们。 
+
+#### <a name="configure-proxy-bypass-rules-for-expressroute-microsoft-peering-on-the-azure-migrate-appliance-for-vmware-agentless-migrations"></a>在 Azure Migrate 设备上为 ExpressRoute Microsoft 对等互连配置代理跳过规则（适用于 VMware 无代理迁移）
+
+1. 通过远程桌面登录 Azure Migrate 设备。
+2.  使用记事本打开 C:/ProgramData/MicrosoftAzure/Config/appliance.json 文件。
+3. 在该文件中，将内容为 `"EnableProxyBypassList": "false"` 的行更改为 `"EnableProxyBypassList": "true"`。 保存所做的更改，并重启该设备。
+4. 重新启动后，当你打开设备配置管理器时，你会在 Web 应用 UI 中看到代理跳过选项。 
+5. 对于复制流量，可以为“.*.blob.core.windows.net”配置代理跳过规则。 可以根据需要为其他控制平面终结点配置代理跳过规则。 这些终结点包括： 
+
+    - .*.vault.azure.net
+    - .*.servicebus.windows.net
+    - .*.discoverysrv.windowsazure.com
+    - .*.migration.windowsazure.com
+    - .*.hypervrecoverymanager.windowsazure.com
+
+> [!Note]
+> 无法通过 ExpressRoute 访问以下 URL，它们需要 Internet 连接：*.portal.azure.com、*.windows.net、*.msftauth.net、*.msauth.net、*.microsoft.com、*.live.com、*.office.com、*.microsoftonline.com、*.microsoftonline-p.com、*.microsoftazuread-sso.com、management.azure.com、.services.visualstudio.com（可选）、aka.ms/（可选）、download.microsoft.com/download。
+
+
+#### <a name="configure-proxy-bypass-rules-expressroute-microsoft-peering-on-the-replication-appliance-for-agent-based-migrations"></a>在复制设备上为 ExpressRoute Microsoft 对等互连配置代理绕过规则（适用于基于代理的迁移）
+
+若要在配置服务器和进程服务器上配置代理跳过列表：
+
+1. 下载 [PsExec 工具](/sysinternals/downloads/psexec)来访问系统用户上下文。
+2. 运行以下命令行，在系统用户上下文中打开 Internet Explorer：`psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"`。
+3. 在 Internet Explorer 中添加代理设置。
+4. 对于复制流量，可以为“.*.blob.core.windows.net”配置代理跳过规则。 可以根据需要为其他控制平面终结点配置代理跳过规则。 这些终结点包括： 
+
+    - .*.backup.windowsazure.com
+    - .*.hypervrecoverymanager.windowsazure.com
+
+Azure 存储终结点的跳过规则将确保复制流量可以通过 ExpressRoute，而控制平面通信可以通过 Internet 的代理进行。 
+
+> [!Note]
+> 无法通过 ExpressRoute 访问以下 URL，它们需要 Internet 连接：*.portal.azure.com、*.windows.net、*.msftauth.net、*.msauth.net、*.microsoft.com、*.live.com、*.office.com、*.microsoftonline.com、*.microsoftonline-p.com、*.microsoftazuread-sso.com、management.azure.com、.services.visualstudio.com（可选）、aka.ms/（可选）、download.microsoft.com/download、dev.mysql.com。
 
 ## <a name="next-steps"></a>后续步骤
 

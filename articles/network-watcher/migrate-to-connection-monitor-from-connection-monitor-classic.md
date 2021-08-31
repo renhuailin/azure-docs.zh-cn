@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: fc5bcc7f0cd11160b33bb6501526fce9f29d710b
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: c9130b83d0d4491152e05157c9cb52dfb89231a1
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366379"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105734"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>从连接监视器（经典版）迁移到连接监视器
 
@@ -67,8 +67,23 @@ ms.locfileid: "107366379"
 * 已迁移的连接监视器不再显示为旧的连接监视器解决方案。 它们现在仅可用于连接监视器。
 * 必须手动迁移所有外部集成，例如 Power BI 和 Grafana 中的面板，以及与安全信息和事件管理 (SIEM) 系统的集成。 这是迁移安装程序所需执行的唯一手动步骤。
 
+## <a name="common-errors-encountered"></a>遇到常见错误
+
+下面是迁移过程中遇到的一些常见错误： 
+
+| 错误  |    Reason   |
+|---|---|
+|无法导入以下连接监视器，因为一个或多个订阅/区域组合未启用网络观察程序。 启用网络观察程序，并单击“刷新”以导入它们。 连接监视器列表 - {0}   |  当用户将测试从 CM（经典）迁移到连接监视器，而未在 CM（经典）的一个或多个订阅和区域中启用网络观察程序扩展时，则会出现此错误。 用户需要在订阅中启用 NW 扩展并刷新以导入它们，然后再重新迁移   |
+|无法导入具有以下测试的连接监视器，因为一个或多个 Azure 虚拟机未安装网络观察程序扩展。 安装网络观察程序扩展，并单击“刷新”以导入它们。 测试列表 - {0} |    当用户将测试从 CM（经典）迁移到连接监视器，而未在 CM（经典）的一个或多个 Azure VM 中安装网络观察程序扩展时，则会出现此错误。 用户需要在 Azure VM 中安装 NW 扩展并刷新，然后再重新迁移 |
+|没有行可供显示   |  当用户尝试将订阅从 CM（经典）迁移到 CM，但在订阅中未创建 CM（经典）时，将出现此错误 |
+
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解连接监视器，请参阅：
 * [从网络性能监视器迁移到连接监视器](./migrate-to-connection-monitor-from-network-performance-monitor.md)
 * [使用 Azure 门户创建连接监视器](./connection-monitor-create-using-portal.md)
+
+
+    
+ 
+    

@@ -7,14 +7,13 @@ ms.date: 06/14/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philMea
 zone_pivot_groups: facility-ontology-schema
-ms.openlocfilehash: 63e9702f8bebb449518002e18a824c65d81fab80
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c08faefc795fd65c71163bd9f8c24a1f8cd939f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076449"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725614"
 ---
 # <a name="facility-ontology"></a>Facility Ontology
 
@@ -62,7 +61,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 :::zone pivot="facility-ontology-v1"
 
-| 属性           | 类型                        | 必须 | 说明                                                  |
+| 属性           | 类型                        | 必需 | 说明                                                  |
 |--------------------|-----------------------------|----------|--------------------------------------------------------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
@@ -85,7 +84,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 :::zone pivot="facility-ontology-v2"
 
-| 属性           | 类型                        | 必须 | 说明                                                  |
+| 属性           | 类型                        | 必需 | 说明                                                  |
 |--------------------|-----------------------------|----------|--------------------------------------------------------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
@@ -111,7 +110,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 几何类型：Polygon
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
@@ -130,7 +129,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 几何类型：Polygon
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
@@ -148,7 +147,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 几何类型：MultiPolygon
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
@@ -168,14 +167,13 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 几何类型：MultiPolygon
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
 |`categoryId`        | [category.Id](#category)      |是      | [`category`](#category) 特征的 ID。|
 |`occupants`         | [directoryInfo.Id](#directoryinfo) 的数组 |    false |    [directoryInfo](#directoryinfo) 特征的 ID。 用于表示特征中的一个或多个使用者。 |
 |`addressId`         | [directoryInfo.Id](#directoryinfo)  | 是     | [directoryInfo](#directoryinfo) 特征的 ID。 用于表示特征的地址。|
-|`addressRoomNumber`         |  [directoryInfo.Id](#directoryinfo)| 是     | 单元的房间/单间/公寓/套房编号。|
 |`name` |    字符串 |    false |    以本地语言表示的特征的名称。 允许的最大长度为 1000。 |
 |`nameSubtitle` |    字符串 |    false |   显示在特征的 `name` 下的副标题。 可用于以不同的语言显示名称等等。 允许的最大长度为 1000。 |
 |`nameAlt` |    字符串 |    false |   用于该特征的替代名称。  允许的最大长度为 1000。|
@@ -191,7 +189,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 :::zone pivot="facility-ontology-v1"
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
@@ -210,7 +208,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 :::zone pivot="facility-ontology-v2"
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
@@ -233,7 +231,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 :::zone pivot="facility-ontology-v1"
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
@@ -250,7 +248,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 :::zone pivot="facility-ontology-v2"
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
@@ -266,19 +264,19 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 几何类型：None
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
 |`streetAddress`        |字符串    |false    |地址中的街道地址部分。  允许的最大长度为 1000。 |
 |`unit`        |字符串    |false    |地址中的单元编号部分。  允许的最大长度为 1000。 |
-|`locality`|    字符串|    false    |地址的位置。 （例如：市、自治区、村）。 允许的最大长度为 1000。|
+|`locality`|    字符串|    false    |地址的位置。 例如：市、自治区、村。 允许的最大长度为 1000。|
 |`adminDivisions`|    字符串|    false    |地址的行政区划部分，从最小到最大（县、省/市/自治区、国家/地区）。 例如：["King", "Washington", "USA" ] or ["West Godavari", "Andhra Pradesh", "IND" ]。 允许的最大长度为 1000。|
 |`postalCode`|    字符串 |    false    |地址中的邮政编码部分。 允许的最大长度为 1000。|
 |`name` |    字符串 |    false |    以本地语言表示的特征的名称。  允许的最大长度为 1000。|
 |`nameSubtitle` |    字符串 |    false |   显示在特征的 `name` 下的副标题。 可用于以不同的语言显示名称等等。 允许的最大长度为 1000。 |
 |`nameAlt` |    字符串 |    false |   用于该特征的替代名称。 允许的最大长度为 1000。 |
-|`phoneNumber` |    字符串 |    false |    电话号码。 |
+|`phoneNumber` |    字符串 |    false |    电话号码。 允许的最大长度为 1000。 |
 |`website` |    字符串 |    false |  网站 URL。 允许的最大长度为 1000。 |
 |`hoursOfOperation` |    字符串 |    false |   以文本形式显示的运行小时数，遵循[开放街道地图规范](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification)。 允许的最大长度为 1000。 |
 
@@ -288,7 +286,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 几何类型：MultiPoint
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
@@ -305,7 +303,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 几何类型：LinearMultiString
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
@@ -324,7 +322,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 几何类型：MultiPolygon
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将特征与不同数据集（如内部数据库）中的另一个特征进行关联的 ID。 允许的最大长度为 1000。|
@@ -345,7 +343,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 :::zone pivot="facility-ontology-v1"
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的类别的原始 ID。 允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将类别与不同数据集（如内部数据库）中的另一个类别进行关联的 ID。 允许的最大长度为 1000。|
@@ -357,7 +355,7 @@ Facility 2.0 包含对 [Azure Maps 服务](https://aka.ms/AzureMaps)的 Facility
 
 :::zone pivot="facility-ontology-v2"
 
-| 属性  | 类型 | 必须 | 说明 |
+| 属性  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
 |`originalId`        | 字符串     |true      | 从客户端数据派生的类别的原始 ID。  允许的最大长度为 1000。|
 |`externalId`        | 字符串     |true      | 客户端用于将类别与不同数据集（如内部数据库）中的另一个类别进行关联的 ID。 允许的最大长度为 1000。|

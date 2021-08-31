@@ -5,14 +5,14 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 08/01/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b372c9d8be31ab6f51d737cd00c692ac9242e4db
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c20eb75fbb248ff67fb244fde1355aae9c726d7a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605266"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745154"
 ---
 # <a name="supported-postgresql-major-versions"></a>支持的 PostgreSQL 主版本
 
@@ -21,13 +21,13 @@ ms.locfileid: "105605266"
 Azure Database for PostgreSQL 目前支持以下主版本：
 
 ## <a name="postgresql-version-11"></a>PostgreSQL 版本 11
-当前次要版本为 11.6。 若要详细了解此次要版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/11/static/release-11-6.html)。
+当前次要版本为 11.11。 若要详细了解此次要版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/11/static/release-11-11.html)。
 
 ## <a name="postgresql-version-10"></a>PostgreSQL 版本 10
-当前次要版本为 10.11。 若要详细了解此次要版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/10/static/release-10-11.html)。
+当前的次要版本为 10.16。 若要详细了解此次要版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/10/static/release-10-16.html)。
 
 ## <a name="postgresql-version-96"></a>PostgreSQL 版本 9.6
-当前次要版本为 9.6.16。 若要详细了解此次要版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/9.6/static/release-9-6-16.html)。
+当前的次要版本为 9.6.21。 若要详细了解此次要版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/9.6/static/release-9-6-21.html)。
 
 ## <a name="postgresql-version-95-retired"></a>PostgreSQL 版本 9.5（已停用）
 为遵守 Postgres 社区的[版本控制策略](https://www.postgresql.org/support/versioning/)，Azure Database for PostgreSQL 已于 2021 年 2 月 11 日起停用 Postgres 版本 9.5。 请参阅 [Azure Database for PostgreSQL 版本控制策略](concepts-version-policy.md)以了解更多详细信息和限制。 如果运行的是此主版本，请升级到更高版本，最好尽早升级到 PostgreSQL 11。

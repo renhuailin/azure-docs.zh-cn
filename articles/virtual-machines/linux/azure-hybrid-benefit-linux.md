@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 5b81883b8c9556500ec6b6bd994d50a1f4202808
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 72bf18bee387dc0602f543161afc20c73c2e4144
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949906"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741798"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure 混合权益如何应用于 Linux 虚拟机
 
@@ -64,32 +64,46 @@ RHEL 的 Azure 混合权益适用于同时满足以下两个条件的 Red Hat �
 
 ### <a name="suse-customers"></a>SUSE 客户
 
+SUSE 的 Azure 混合权益适用于具有以下订阅的客户：
+
+- 未使用过且有资格在 Azure 中使用的 SUSE 订阅。
+- 一个或多个在本地使用，且应移动到 Azure 的有效 SUSE 订阅。
+- 已在 SUSE 客户中心激活并要在 Azure 中使用的已购买的订阅。 
+
+> [!IMPORTANT]
+> 确保选择要在 Azure 中使用的正确订阅。
+
 若要开始使用 SUSE 权益：
 
-1. 向 SUSE 公有云计划进行注册。
-1. 通过 Azure 门户或 Azure CLI 将权益应用于新创建的或现有 VM。
-1. 使用单独的更新源注册接收权益的 VM。
+1. 将从 SUSE 或 SUSE 分销商处购买的订阅注册到 [SUSE 客户中心](https://scc.suse.com)。
+2. 在 SUSE 客户中心激活订阅。
+3. 将接收权益的 VM 注册到 SUSE 客户中心，以从 SUSE 客户中心获取更新。
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-portal"></a>在 Azure 门户中启用和禁用权益
 
-可以通过访问左侧的“配置”选项并按照其中的步骤进行操作，对现有 VM 启用权益。 可以在 VM 创建体验期间对新 VM 启用权益。
+在 Azure 门户中，可以对现有 VM 启用权益，也可以在创建 VM 时对新的 VM 启用权益。
 
-### <a name="azure-portal-example-to-enable-the-benefit-during-creation-of-vm"></a>在创建 VM 期间启用权益的 Azure 门户示例：
-1. 访问 [Microsoft Azure 门户](https://portal.azure.com/)
-1. 请在门户中转到“创建虚拟机”页。
- ![创建 VM 时的 AHB](./media/azure-hybrid-benefit/create-vm-ahb.png)
-1. 单击复选框以启用 AHB 转换并使用云访问许可证。
- ![创建 VM 时的 AHB 复选框](./media/azure-hybrid-benefit/create-vm-ahb-checkbox.png)
-1. 按照下一组说明创建虚拟机
-1. 检查“配置”边栏选项卡，会看到选项已启用。 
-![创建后的 AHB 配置边栏选项卡](./media/azure-hybrid-benefit/create-configuration-blade.png)
+### <a name="enable-the-benefit-for-an-existing-vm-in-the-azure-portal"></a>在 Azure 门户中为现有 VM 启用权益
 
-### <a name="azure-portal-example-to-enable-the-benefit-for-an-existing-vm"></a>为现有 VM 启用权益的 Azure 门户示例：
-1. 访问 [Microsoft Azure 门户](https://portal.azure.com/)
+若要为现有 VM 启用权益，请执行以下操作：
+
+1. 转到 [Azure 门户](https://portal.azure.com/)。
 1. 打开要应用转换的虚拟机页。
 1. 在左侧转到“配置”选项。 你会看到“许可”部分。 若要启用 AHB 转换，请选中“是”单选按钮，并选中“确认”复选框。
 ![创建后的 AHB 配置边栏选项卡](./media/azure-hybrid-benefit/create-configuration-blade.png)
 
+### <a name="enable-the-benefit-when-you-create-the-vm-in-the-azure-portal"></a>在 Azure 门户中创建 VM 时启用权益
+
+若要在创建 VM 时启用权益（SUSE 工作流与此处所示的 RHEL 示例相同），请执行以下操作：
+
+1. 转到 [Azure 门户](https://portal.azure.com/)。
+1. 在门户中转到“创建虚拟机”页。
+ ![创建 VM 时的 AHB](./media/azure-hybrid-benefit/create-vm-ahb.png)
+1. 单击复选框以启用 AHB 转换并使用云访问许可证。
+ ![创建 VM 时的 AHB 复选框](./media/azure-hybrid-benefit/create-vm-ahb-checkbox.png)
+1. 按照下一组说明创建虚拟机。
+1. 检查“配置”边栏选项卡，会看到选项已启用。 
+![创建后的 AHB 配置边栏选项卡](./media/azure-hybrid-benefit/create-configuration-blade.png)
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>在 Azure CLI 中启用和禁用权益
 
@@ -172,11 +186,16 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="suse"></a>SUSE
 
+使用 Azure 混合权益的客户需要将云更新基础结构移动到以下三个选项之一，为这些 VM 提供软件更新和补丁：
+- [SUSE 客户中心](https://scc.suse.com)
+- SUSE 管理器
+- SUSE 存储库镜像工具 (RMT) 
+
 若要对 SLES VM 使用 Azure 混合权益，以及有关从 SLES PAYG 迁移到 BYOS 或从 SLES BYOS 迁移到 PAYG 的信息，请参阅 [SUSE Linux Enterprise 和 Azure 混合权益](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/)。 
 
 ## <a name="azure-hybrid-benefit-on-reserved-instances"></a>预留实例的 Azure 混合权益 
 
-Azure 预留项（Azure 虚拟机预留实例）通过承诺多种产品的一年期或三年期计划，帮助你节省资金。 在[此处](../../cost-management-billing/reservations/save-compute-costs-reservations.md)了解有关预留实例的更多信息。 Azure 混合权益适用于[虚拟机预留实例 (RI)](/azure/cost-management-billing/reservations/save-compute-costs-reservations#charges-covered-by-reservation)。 
+Azure 预留项（Azure 虚拟机预留实例）通过承诺多种产品的一年期或三年期计划，帮助你节省资金。 在[此处](../../cost-management-billing/reservations/save-compute-costs-reservations.md)了解有关预留实例的更多信息。 Azure 混合权益适用于[虚拟机预留实例 (RI)](../../cost-management-billing/reservations/save-compute-costs-reservations.md#charges-covered-by-reservation)。 
 
 这意味着，如果你已使用 RI 按折扣费率支付计算成本，则可对 RHEL 及其中 SUSE 的许可成本应用 AHB 权益。 将 AHB 权益应用于 RI 实例的步骤与将其应用于常规 VM 的步骤完全相同。
 ![RI 的 AHB](./media/azure-hybrid-benefit/reserved-instances.png)
@@ -198,13 +217,13 @@ Azure 预留项（Azure 虚拟机预留实例）通过承诺多种产品的一�
 
 答：否，不能。 Azure 混合权益仅支持在即用即付映像上进行转换。
 
-问：我将自己的 RHEL 映像从本地（通过 Azure Migrate、Azure Site Recovery 或其他方式）上传到了 Azure。是否可以将这些映像上的计费从 BYOS 转换为 PAYG？
+问：我已经将自己的 RHEL 或 SLES 映像从本地（通过 Azure Migrate、Azure Site Recovery 或其他方式）上传到了 Azure。我是否可以将对这些映像的计费从 BYOS 转换为 PAYG？
 
 答：否，不能。 Azure 混合权益功能目前仅适用于 Azure 市场中的 RHEL 和 SLES 映像。 
 
-问：我将自己的 RHEL 映像从本地（通过 Azure Migrate、Azure Site Recovery 或其他方式）上传到了 Azure。是否需要执行某些操作才能受益于 Azure 混合权益？
+问：我已经将自己的 RHEL 或 SLES 映像从本地（通过 Azure Migrate、Azure Site Recovery 或其他方式）上传到了 Azure。我是否需要执行某些操作才能享受 Azure 混合权益？
 
-答：否，不需要。 上传的 RHEL 映像已被视为 BYOS，你只需为 Azure 基础结构成本付费。 你需要负责 RHEL 订阅成本，正如在本地环境中一样。 
+答：否，不需要。 上传的 RHEL 或 SLES 映像已被视为 BYOS，你只需为 Azure 基础结构成本付费。 你需要负责 RHEL 订阅成本，正如在本地环境中一样。 
 
 问：我是否可以在从 Azure 市场 RHEL 和 SLES SAP 映像部署的 VM 上使用 Azure 混合权益？
 

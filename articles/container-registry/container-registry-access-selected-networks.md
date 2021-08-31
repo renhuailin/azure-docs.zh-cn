@@ -2,13 +2,13 @@
 title: 配置公共注册表访问
 description: 配置 IP 规则，以便能够从所选的公共 IP 地址或地址范围访问 Azure 容器注册表。
 ms.topic: article
-ms.date: 03/08/2021
-ms.openlocfilehash: 00912f0e66c84feff40e6439d59ccdfa82a4ab6a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/30/2021
+ms.openlocfilehash: cb48a91190f352154a2f0af1e02dcd3e36f436d5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785829"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722511"
 ---
 # <a name="configure-public-ip-network-rules"></a>配置公共 IP 网络规则
 
@@ -108,15 +108,32 @@ az acr update --name myContainerRegistry --public-network-enabled true
 
 ## <a name="troubleshoot"></a>故障排除
 
+### <a name="access-behind-https-proxy"></a>从 HTTPS 代理后访问
+
 如果设置了公用网络规则，或拒绝对注册表的公共访问，则尝试从禁止的公用网络登录注册表会失败。 如果未设置代理的访问规则，则从 HTTPS 代理后面进行的客户端访问也会失败。 你会看到类似于 `Error response from daemon: login attempt failed with status: 403 Forbidden` 或 `Looks like you don't have access to registry` 的错误消息。
 
 如果使用网络访问规则所允许的 HTTPS 代理，但未在客户端环境中正确配置该代理，则也可能会发生这些错误。 检查 Docker 客户端和 Docker 守护程序均已针对代理行为进行了配置。 有关详细信息，请参阅 Docker 文档中的 [HTTP/HTTPS 代理](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy)。
 
+### <a name="access-from-azure-pipelines"></a>从 Azure Pipelines 访问
+
+如果将 Azure Pipelines 用于限制对特定 IP 地址的访问的 Azure 容器注册表，则管道可能无法访问注册表，因为管道中的出站 IP 地址不是固定的。 默认情况下，管道使用 Microsoft 托管[代理](/azure/devops/pipelines/agents/agents)在具有一组不断变化的 IP 地址的虚拟机池上运行作业。
+
+一种解决方法是将用于运行管道的代理从 Microsoft 托管更改为自托管。 通过在你管理的 [Windows](/azure/devops/pipelines/agents/v2-windows) 或 [Linux](/azure/devops/pipelines/agents/v2-linux) 计算机上运行的自托管代理，你可以控制管道的出站 IP 地址，并且可以将该地址添加到注册表 IP 访问规则中。
+
+### <a name="access-from-aks"></a>从 AKS 访问
+
+如果将 AKS Azure Kubernetes 服务 (AKS) 与限制对特定 IP 地址的访问的 Azure 容器注册表结合使用，则默认情况下无法配置固定的 AKS IP 地址。 从 AKS 群集的出口 IP 地址是随机分配的。
+
+若要允许 AKS 群集访问注册表，可以使用以下选项：
+
+* 如果使用 Azure 基本负载均衡器，则为 AKS 群集设置一个[静态 IP 地址](../aks/egress.md)。 
+* 如果使用 Azure 标准负载均衡器，请参阅[控制群集的出口流量](../aks/limit-egress-traffic.md)指南。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 要使用虚拟网络中的专用终结点限制对注册表的访问，请参阅[为 Azure 容器注册表配置 Azure 专用链接](container-registry-private-link.md)。
 * 如需设置从客户端防火墙后访问注册表的规则，请参阅[配置从防火墙后访问 Azure 容器注册表的规则](container-registry-firewall-access-rules.md)。
+* 有关更多故障排除指南，请参阅[排查注册表的网络问题](container-registry-troubleshoot-access.md)。
 
 [az-acr-login]: /cli/azure/acr#az_acr_login
 [az-acr-network-rule-add]: /cli/azure/acr/network-rule/#az_acr_network_rule_add

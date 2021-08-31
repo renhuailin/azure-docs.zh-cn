@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 08/06/2020
+ms.date: 07/16/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: fbe9c1585ab2eee6e0d38c309a2d1d279ffab0b4
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 8f74b21e2c40b441c48cc3a2837f396252408224
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331477"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736598"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中创建计算目标以进行模型训练和部署
 
@@ -29,10 +29,14 @@ ms.locfileid: "108331477"
   * [其他计算资源](how-to-attach-compute-targets.md)
 * 用于 Azure 机器学习的 [VS Code 扩展](how-to-manage-resources-vscode.md#compute-clusters)。
 
+> [!IMPORTANT]
+> 本文中标记了“（预览版）”的项目目前为公共预览版。
+> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)
+* 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://azure.microsoft.com/free/)
 * 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)
 
 ## <a name="whats-a-compute-target"></a>什么是计算目标？ 
@@ -51,7 +55,7 @@ ms.locfileid: "108331477"
 
     :::image type="content" source="media/how-to-create-attach-studio/view-compute-targets.png" alt-text="查看计算目标的列表":::
 
-## <a name="create-compute-target"></a><a id="portal-create"></a>创建计算目标
+## <a name="start-creation-process"></a><a id="portal-create"></a>启动创建过程
 
 遵循上述步骤查看计算目标的列表。 然后使用以下步骤创建计算目标：
 
@@ -68,10 +72,10 @@ ms.locfileid: "108331477"
 
 1. 为你的计算类型填写表单：
 
-  * [计算实例](#compute-instance)
-  * [计算群集](#amlcompute)
-  * [推理群集](#inference-clusters)
-  * [附加的计算](#attached-compute)
+    * [计算实例](how-to-create-manage-compute-instance.md?tabs=azure-studio#create)
+    * [计算群集](#amlcompute)
+    * [推理群集](#inference-clusters)
+    * [附加的计算](#attached-compute)
 
 1. 选择“创建”。
 
@@ -79,48 +83,50 @@ ms.locfileid: "108331477"
 
     :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="从列表中查看计算状态":::
 
-
-### <a name="compute-instance"></a><a name="compute-instance"></a> 计算实例
-
-使用[上述步骤](#portal-create)创建计算实例。  然后按如下所示填写表单：
-
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="新建计算实例":::
+按照[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md?tabs=azure-studio#create)中的步骤操作。
 
 
-|字段  |说明  |
-|---------|---------|
-|计算名称     |  <li>名称是必须提供的，且长度必须介于 3 到 24 个字符之间。</li><li>有效字符为大小写字母、数字和 **-** 字符。</li><li>名称必须以字母开头</li><li>名称必须在 Azure 区域内的全部现有计算中都是唯一的。 如果选择的名称不是唯一的，则会显示警报</li><li>如果在名称中使用了 **-** 字符，在此字符之后必须至少跟有一个字母</li>     |
-|虚拟机类型 |  选择“CPU”或“GPU”。 此类型在创建后无法更改     |
-|虚拟机大小     |  在你的区域中，支持的虚拟机大小可能会受到限制。 请查看[可用性列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
-|启用/禁用 SSH 访问     |   默认情况下会禁用 SSH 访问。  SSH 访问 在创建后无法更改。 如果计划使用 [VS Code Remote](how-to-set-up-vs-code-remote.md) 以交互模式进行调试，请确保启用访问权限   |
-|高级设置     |  可选。 配置虚拟网络 指定 **资源组**、**虚拟网络** 和 **子网**，以在 Azure 虚拟网络 (vnet) 中创建计算实例。 有关详细信息，请参阅 vnet 的这些[网络要求](./how-to-secure-training-vnet.md)。  还可使用高级设置来指定[安装脚本](how-to-create-manage-compute-instance.md#setup-script)。 |
-
-### <a name="compute-clusters"></a><a name="amlcompute"></a> 计算群集
+## <a name="create-compute-clusters"></a><a name="amlcompute"></a>创建计算群集
 
 为训练、批量推理或强化学习工作负载创建单个或多个节点计算群集。 使用[上述步骤](#portal-create)创建计算群集。  然后按如下所示填写表单：
 
+|字段  |说明  |
+|---------|---------|
+| 位置 | 将会在其中创建计算群集的 Azure 区域。 在默认情况下，此位置与工作区的位置相同。 将该位置设置为不同于工作区所在区域的区域的功能目前为预览版，只可用于计算群集，不可用于计算实例 。</br>在使用不同于工作区或数据存储所在区域的区域时，可能会出现网络延迟加重和数据传输成本增加的情况。 在创建群集以及在该群集上运行作业时，可能会存在这样的延迟和成本。 |
+|虚拟机类型 |  选择“CPU”或“GPU”。 此类型在创建后无法更改     |
+|虚拟机优先级 | 选择“专用”或“低优先级”。  低优先级虚拟机的费用更低，但不能保证计算节点。 其他作业可能会抢先于你的作业执行。
+|虚拟机大小     |  在你的区域中，支持的虚拟机大小可能会受到限制。 请查看[可用性列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
+
+选择“下一步”，继续进行“高级设置”，并按如下所示填写表单：
 
 |字段  |说明  |
 |---------|---------|
 |计算名称     |  <li>名称是必须提供的，且长度必须介于 3 到 24 个字符之间。</li><li>有效字符为大小写字母、数字和 **-** 字符。</li><li>名称必须以字母开头</li><li>名称必须在 Azure 区域内的全部现有计算中都是唯一的。 如果选择的名称不是唯一的，则会显示警报</li><li>如果在名称中使用了 **-** 字符，在此字符之后必须至少跟有一个字母</li>     |
-|虚拟机类型 |  选择“CPU”或“GPU”。 此类型在创建后无法更改     |
-|虚拟机优先级 | 选择“专用”或“低优先级”。  低优先级虚拟机的费用更低，但不能保证计算节点。 其他作业可能会抢先于你的作业执行。
-|虚拟机大小     |  在你的区域中，支持的虚拟机大小可能会受到限制。 请查看[可用性列表](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |最小节点数 | 需要预配的节点的最小数量。 如果需要专用数量的节点，请在此处设置所需计数。 将最小值设置为 0 可节省费用，这样在群集空闲时就不需要为任何节点付费。 |
 |最大节点数 | 需要预配的节点的最大数量。 提交作业时，计算将自动缩放到此节点计数的最大值。 |
+| 缩减前的空闲秒数 | 将群集缩减到最小节点数前的空闲时间。 |
+| 启用 SSH 访问 | 为计算实例使用[启用 SSH 访问](#enable-ssh)的相同说明（上文）。 |
 |高级设置     |  可选。 配置虚拟网络 指定 **资源组**、**虚拟网络** 和 **子网**，以在 Azure 虚拟网络 (vnet) 中创建计算实例。 有关详细信息，请参阅 vnet 的这些[网络要求](./how-to-secure-training-vnet.md)。   另外请附加[托管标识](#managed-identity)以授予对资源的访问权限     |
 
-#### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> 设置托管标识
+### <a name="enable-ssh-access"></a><a name="enable-ssh"></a> 启用 SSH 访问
+
+默认情况下会禁用 SSH 访问。  SSH 访问在创建后便不可更改。 如果计划使用 [VS Code Remote](how-to-set-up-vs-code-remote.md) 以交互式方式进行调试，请确保启用访问权限。  
+
+[!INCLUDE [amlinclude-info](../../includes/machine-learning-enable-ssh.md)]
+
+创建并运行计算群集后，请参阅[使用 SSH 访问进行连接](#ssh-access)。
+
+### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> 设置托管标识
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 
 在群集创建过程中或在编辑计算群集详细信息时，请在“高级设置”中切换“分配托管标识”并指定系统分配的标识或用户分配的标识 。
 
-#### <a name="managed-identity-usage"></a>托管标识用法
+### <a name="managed-identity-usage"></a>托管标识用法
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
 
-### <a name="inference-clusters"></a>推理群集
+## <a name="create-inference-clusters"></a><a name="inference-clusters"></a> 创建推理群集
 
 > [!IMPORTANT]
 > 将 Azure Kubernetes 服务与 Azure 机器学习配合使用有多个配置选项。 某些场景（如网络）需要额外的设置和配置。 有关将 AKS 与 Azure 机器学习配合使用的详细信息，请参阅[创建和附加 Azure Kubernetes 服务群集](how-to-create-attach-kubernetes.md)。
@@ -139,7 +145,7 @@ ms.locfileid: "108331477"
 | 网络配置 | 选择“高级”以在现有虚拟网络中创建计算。 若要详细了解虚拟网络中的 AKS，请参阅[使用专用终结点和虚拟网络的训练和推理过程中的网络隔离](./how-to-secure-inferencing-vnet.md)。 |
 | 启用 SSL 配置 | 此选项用于针对计算配置 SSL 证书 |
 
-### <a name="attached-compute"></a>附加的计算
+## <a name="attach-other-compute"></a><a name="attached-compute"></a> 附加其他计算
 
 若要使用在 Azure 机器学习工作区外部创建的计算目标，必须附加这些计算目标。 附加计算目标会使其可供你的工作区使用。  附加的计算用于为训练附加计算目标 。  推理群集用于为推理附加 AKS 群集 。
 
@@ -151,6 +157,7 @@ ms.locfileid: "108331477"
     * Azure Databricks（在机器学习管道中使用）
     * Azure Data Lake Analytics（在机器学习管道中使用）
     * Azure HDInsight
+    * Kubernetes（预览版）
 
 1. 填写表单，并提供必需属性的值。
 
@@ -160,8 +167,43 @@ ms.locfileid: "108331477"
     > * [在 Linux 或 macOS 上创建和使用 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md)
     > * [在 Windows 上创建和使用 SSH 密钥](../virtual-machines/linux/ssh-from-windows.md)
 
-1. 选择“附加”。 
+1. 选择“附加”。
 
+[!INCLUDE [arc-enabled-machine-learning-create-training-compute](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
+
+> [!IMPORTANT]
+> 若要附加 Azure Kubernetes 服务 (AKS) 或启用了 Arc 的 Kubernetes 群集，你必须是订阅所有者，或者必须有权访问订阅中的 AKS 群集资源。 否则，“附加新计算”页上的群集列表将会是空白。
+
+若要拆离计算，请使用以下步骤：
+
+1. 在 Azure 机器学习工作室中，选择“计算”、“附加的计算”，以及要删除的计算 。
+1. 使用“拆离”链接来拆离计算。
+
+## <a name="connect-with-ssh-access"></a><a name="ssh-access"></a> 通过 SSH 访问连接
+
+如果创建计算实例或计算群集的同时启用了 SSH 访问，请使用以下步骤进行访问。
+
+1. 在工作区资源中查找计算：
+    1. 在左侧选择“计算”。
+    1. 使用顶部的选项卡选择“计算实例”或“计算群集”以查找计算机。
+1. 在资源列表中选择计算名称。
+1. 查找连接字符串：
+
+    * 对于“计算实例”，请在“详细信息”部分顶部选择“连接”。
+
+        :::image type="content" source="media/how-to-create-attach-studio/details.png" alt-text="屏幕截图：“详细信息”页顶部的“连接”工具。":::
+
+    * 对于“计算群集”，选择顶部的“节点”，然后在表中为节点选择“连接字符串”。
+        :::image type="content" source="media/how-to-create-attach-studio/compute-nodes.png" alt-text="屏幕截图：计算群集中节点的“连接字符串”。":::
+
+1. 复制该连接字符串。
+1. 对于 Windows，打开 PowerShell 或命令提示符：
+    1. 进入用来存储密钥的目录或文件夹
+    1. 将 -i 标志添加到连接字符串，以查找私钥并指向其存储位置：
+    
+        ```ssh -i <keyname.pem> azureuser@... (rest of connection string)```
+
+1. 对于 Linux 用户，请按照[在 Azure 中创建和使用适用于 Linux VM 的 SSH 密钥对](../virtual-machines/linux/mac-create-ssh-keys.md)中的步骤操作
 
 ## <a name="next-steps"></a>后续步骤
 

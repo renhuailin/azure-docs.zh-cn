@@ -1,34 +1,66 @@
 ---
 title: 使用 Azurite 模拟器进行本地 Azure 存储开发
 description: Azurite 开源模拟器提供一个免费的本地环境，用于测试 Azure 存储应用程序。
-author: twooley
-ms.author: twooley
-ms.date: 07/15/2020
+author: normesta
+ms.author: normesta
+ms.date: 08/02/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a921de0d976b9c92ca7978feb7caf69484ba9379
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e01957c04e422f26601eab6f4e53694e317e22a3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277119"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741883"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>使用 Azurite 模拟器进行本地 Azure 存储开发
 
-Azurite 开源模拟器提供一个免费的本地环境，用于测试 Azure Blob 和队列存储应用程序。 如果你对应用程序在本地的工作状况感到满意，可以改用云中的 Azure 存储帐户。 该仿真器在 Windows、Linux 和 macOS 上提供跨平台支持。
+Azurite 开源仿真器提供一个免费的本地环境，用于测试 Azure Blob、队列存储和表存储应用程序。 如果你对应用程序在本地的工作状况感到满意，可以改用云中的 Azure 存储帐户。 该仿真器在 Windows、Linux 和 macOS 上提供跨平台支持。
 
 Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿真器](storage-use-emulator.md)。 Azurite 将持续更新，以支持最新版本的 Azure 存储 API。
 
-可通过多种不同的方法在本地系统上安装并运行 Azurite：
+可通过多种不同的方法在本地系统上安装并运行 Azurite。 选择这些选项卡中的任意一个。
 
-  1. [安装并运行 Azurite Visual Studio Code 扩展](#install-and-run-the-azurite-visual-studio-code-extension)
-  1. [使用 NPM 安装并运行 Azurite](#install-and-run-azurite-by-using-npm)
-  1. [安装并运行 Azurite Docker 映像](#install-and-run-the-azurite-docker-image)
-  1. [从 GitHub 存储库克隆、生成并运行 Azurite](#clone-build-and-run-azurite-from-the-github-repository)
+## <a name="install-and-run-azurite"></a>安装并运行 Azurite
 
-## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>安装并运行 Azurite Visual Studio Code 扩展
+### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+在 Visual Studio 中，创建 Azure 项目，如 Azure Functions 项目。
+
+![新建 Azure Function 项目](media/storage-use-azurite/visual-studio-azure-function-project.png)
+
+假设你创建了一个 Azure Functions 项目，确保选择“Http 触发器”。 然后在“授权级别”下拉列表中，选择“匿名”。
+
+![函数项目设置](media/storage-use-azurite/visual-studio-azure-function-project-settings.png)
+
+安装 [Node.js 8.0 或更高版本](https://nodejs.org)。 Node 包管理器 (npm) 是每个 Node.js 安装随附的包管理工具。 安装 Node.js 后，请执行以下 `npm` 命令以安装 Azurite。
+
+```console
+npm install -g azurite
+```
+
+在命令行中，使用以下命令启动 Azurite：
+
+```console
+azurite
+```
+
+将在控制台中显示类似以下内容的输出信息。
+
+![命令行输出](media/storage-use-azurite/azurite-command-line-output.png)
+
+更改到[版本生成配置](/visualstudio/debugger/how-to-set-debug-and-release-configurations#change-the-build-configuration)，然后运行项目。
+
+>[!NOTE]
+> 如果使用调试生成配置启动项目，则可能会收到错误。 这是因为 Visual Studio 可能会尝试启动 Visual Studio 中内置的旧存储仿真器。 由于 Azurite 正在使用旧存储仿真器所需的侦听端口，因此启动旧仿真器的任何尝试都将被阻止。
+
+下图显示了在运行 Azure Function 项目时显示的命令行输出。
+
+![运行项目后的命令行输出](media/storage-use-azurite/azurite-command-line-output-2.png)
+
+### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 在 Visual Studio Code 中选择“扩展”窗格，然后在“扩展: 市场”中搜索 *Azurite*。 
 
@@ -41,12 +73,15 @@ Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿�
    - **Azurite:Clean** - 重置所有 Azurite 服务永久性数据
    - **Azurite:Clean Blob Service** - 清理 Blob 服务
    - **Azurite:Clean Queue Service** - 清理队列服务
+   - Azurite: Clean Table Service - 清理表服务
    - **Azurite:Close** - 关闭所有 Azurite 服务
    - **Azurite:Close Blob Service** - 关闭 Blob 服务
    - **Azurite:Close Queue Service** - 关闭队列服务
+   - Azurite: Close Table Service - 关闭表服务
    - **Azurite:Start** - 启动所有 Azurite 服务
    - **Azurite:Start Blob Service** - 启动 Blob 服务
    - **Azurite:Start Queue Service** - 启动队列服务
+   - Azurite: Start Table Service - 启动表服务
 
 若要在 Visual Studio Code 中配置 Azurite，请选择“扩展”窗格。 选择 **Azurite** 所对应的“管理”(齿轮)图标。 选择“扩展设置”。
 
@@ -67,8 +102,10 @@ Azurite 是未来的存储仿真器平台。 Azurite 取代了 [Azure 存储仿�
    - **Azurite:队列端口** - 队列服务的侦听端口。 默认端口为 10001。
    - **Azurite:无提示** - 无提示模式会禁用访问日志。 默认值是 **false** 秒。
    - **Azurite:跳过 API 版本检查** - 跳过请求 API 版本检查。 默认值是 **false** 秒。
+   - Azurite: 表主机 - 表服务侦听终结点，默认情况下设置为 127.0.0.1。
+   - Azurite: 表端口 - 表服务侦听端口，默认为 10002。
 
-## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安装并运行 Azurite
+### <a name="npm"></a>[npm](#tab/npm)
 
 此安装方法需要安装 [Node.js 8.0 或更高版本](https://nodejs.org)。 Node 包管理器 (npm) 是每个 Node.js 安装随附的包管理工具。 安装 Node.js 后，请执行以下 `npm` 命令以安装 Azurite。
 
@@ -78,7 +115,7 @@ npm install -g azurite
 
 安装 Azurite 后，请参阅[从命令行运行 Azurite](#run-azurite-from-a-command-line)。
 
-## <a name="install-and-run-the-azurite-docker-image"></a>安装并运行 Azurite Docker 映像
+### <a name="docker-hub"></a>[Docker 中心](#tab/docker-hub)
 
 使用以下命令通过 [DockerHub](https://hub.docker.com/) 提取[最新的 Azurite 映像](https://hub.docker.com/_/microsoft-azure-storage-azurite)：
 
@@ -91,7 +128,7 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 以下命令运行 Azurite Docker 映像。 `-p 10000:10000` 参数将来自主机端口 10000 的请求重定向到 Docker 实例。
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 \
+docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 \
     mcr.microsoft.com/azure-storage/azurite
 ```
 
@@ -100,7 +137,7 @@ docker run -p 10000:10000 -p 10001:10001 \
 在以下示例中，`-v c:/azurite:/data` 参数指定“c:/azurite”作为 Azurite 永久性数据的位置。 必须在运行 Docker 命令之前创建目录“c:/azurite”。
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 \
+docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 \
     -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
 ```
 
@@ -113,7 +150,7 @@ docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite \
 
 若要详细了解如何在启动时配置 Azurite，请参阅[命令行选项](#command-line-options)。
 
-## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>从 GitHub 存储库克隆、生成并运行 Azurite
+### <a name="github"></a>[GitHub](#tab/github)
 
 此安装方法需要安装 [Git](https://git-scm.com/)。 使用以下控制台命令克隆 Azurite 项目的 [GitHub 存储库](https://github.com/azure/azurite)。
 
@@ -131,10 +168,12 @@ npm install -g
 
 安装并生成 Azurite 后，请参阅[从命令行运行 Azurite](#run-azurite-from-a-command-line)。
 
+---
+
 ## <a name="run-azurite-from-a-command-line"></a>从命令行运行 Azurite
 
 > [!NOTE]
-> 如果只是安装了 Visual Studio Code 扩展，则无法从命令行运行 Azurite。 请改用 Visual Studio Code 命令面板。 有关详细信息，请参阅[安装并运行 Azurite Visual Studio Code 扩展](#install-and-run-the-azurite-visual-studio-code-extension)。
+> 如果只是安装了 Visual Studio Code 扩展，则无法从命令行运行 Azurite。 请改用 Visual Studio Code 命令面板。 
 
 若要立即开始使用命令行，请创建名为 *c:\azurite* 的目录，然后发出以下命令以启动 Azurite：
 
@@ -233,6 +272,46 @@ azurite --queuePort 8888
 
 ```console
 azurite --queuePort 0
+```
+
+Azurite 启动期间，会显示正在使用的端口。
+
+### <a name="table-listening-host"></a>表侦听主机
+
+**可选** - 默认情况下，Azurite 将侦听本地服务器 127.0.0.1。 可根据需要使用 `--tableHost` 开关设置地址。
+
+仅接受本地计算机上的请求：
+
+```console
+azurite --tableHost 127.0.0.1
+```
+
+允许远程请求：
+
+```console
+azurite --tableHost 0.0.0.0
+```
+
+> [!CAUTION]
+> 允许远程请求可能会导致系统容易受到外部攻击。
+
+### <a name="table-listening-port-configuration"></a>表侦听端口配置
+
+可选 - 默认情况下，Azurite 将在端口 10002 上侦听表服务。 使用 `--tablePort` 开关可指定所需的侦听端口。
+
+> [!NOTE]
+> 使用自定义端口后，需要在 Azure 存储工具或 SDK 中更新连接字符串或相应的配置。
+
+自定义表服务侦听端口：
+
+```console
+azurite --tablePort 11111
+```
+
+让系统自动选择可用端口：
+
+```console
+azurite --tablePort 0
 ```
 
 Azurite 启动期间，会显示正在使用的端口。
@@ -558,9 +637,13 @@ Azurite 支持读取访问异地冗余复制 (RA-GRS)。 对于存储资源，�
 
 ### <a name="table-support"></a>表支持
 
-对 Azurite 中表的支持目前正在开发中，欢迎为此做出贡献！ 有关最新进度，请查看 [Azurite V3 表](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table)项目。
+对 Azurite 中的表支持目前处于预览阶段。 有关详细信息，请参阅 [Azurite V3 Table](https://github.com/Azure/Azurite/wiki/Azurite-V3-Table) 项目。
 
 支持持久函数需要表。
+
+> [!IMPORTANT]
+>
+> 对表存储的 Azurite 支持目前处于预览阶段。 有关 beta 版本、预览版或尚未正式发布的版本的 Azure 功能所适用的法律条款，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="azurite-is-open-source"></a>Azurite 是开源的
 

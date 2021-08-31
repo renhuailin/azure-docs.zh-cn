@@ -1,27 +1,23 @@
 ---
-title: 使用 Azure 数据资源管理器（预览版）查询 Azure Monitor 中的数据
+title: 使用 Azure 数据资源管理器查询 Azure Monitor 中的数据
 description: 通过 Azure 数据资源管理器，可以在 Azure Monitor 中的 Azure 数据资源管理器、Log Analytics 工作区和经典 Application Insights 应用程序之间执行跨产品查询。
 author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 65dba60a798b1157a44a7a198b8eba7de1e8fe81
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9faa9ff9c0635c84ebc5c56a343db0426873f945
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031253"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735838"
 ---
-# <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器（预览版）查询 Azure Monitor 中的数据
+# <a name="query-data-in-azure-monitor-using-azure-data-explorer"></a>使用 Azure 数据资源管理器查询 Azure Monitor 中的数据
 
 Azure 数据资源管理器支持 Azure 数据资源管理器、[Application Insights (AI)](../app/app-insights-overview.md) 和 [Log Analytics (LA)](./data-platform-logs.md) 之间的跨服务查询。 然后，你可使用 Azure 数据资源管理器工具来查询 Log Analytics/Application Insights 工作区，并在跨服务查询中引用它。 本文介绍如何创建跨服务查询，以及如何将 Log Analytics/Application Insights 工作区添加到 Azure 数据资源管理器 Web UI。
 
 Azure 数据资源管理器跨服务查询流：:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure 数据资源管理器代理流。":::
-
-> [!NOTE]
-> * 现可通过直接使用 Azure 数据资源管理器客户端工具，或者通过在 Azure 数据资源管理器群集上运行查询以间接方式从 Azure 数据资源管理器中查询 Azure Monitor 数据 - 此查询功能现处于预览版模式。
->* 如有任何问题，请联系[跨服务查询](mailto:adxproxy@microsoft.com)团队。
 
 ## <a name="add-a-log-analyticsapplication-insights-workspace-to-azure-data-explorer-client-tools"></a>将 Log Analytics/Application Insights 工作区添加到 Azure 数据资源管理器客户端工具
 
@@ -89,7 +85,8 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-cross-query-proxy.png" alt-text="从 Azure 数据资源管理器进行跨服务查询。":::
 
-如果使用 [`join` 运算符](/azure/data-explorer/kusto/query/joinoperator)而不是 union，那么可能需要 [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) 才能在 Azure 数据资源管理器本机群集上运行它。
+>[!TIP]
+>* 如果使用 [`join` 运算符](/azure/data-explorer/kusto/query/joinoperator)而不是 union，那么可能需要 [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) 才能在 Azure 数据资源管理器本机群集上运行它。
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>将一个租户的 Azure 数据资源管理器群集中的数据与另一个租户的 Azure Monitor 资源联接
 

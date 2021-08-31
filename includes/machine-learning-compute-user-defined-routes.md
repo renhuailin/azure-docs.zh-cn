@@ -4,21 +4,21 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 08/12/2021
 ms.author: larryfr
-ms.openlocfilehash: c2ad7408f00d8abf4cb5afdbdba44af5e0779380
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 8f60a29adcdf8e679a523748a97a24ba2f06cbdd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122603963"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739143"
 ---
 使用 Azure 机器学习计算实例或计算群集时，允许来自 Azure Batch 管理和 Azure 机器学习服务的入站流量 。 为此流量创建用户定义的路由时，可以使用 IP 地址或服务标记来路由流量 。
 
 > [!IMPORTANT]
-> 结合使用服务标记与用户定义的路由目前处于预览阶段，可能不完全受支持。 有关详细信息，请参阅[虚拟网络路由](/azure/virtual-network/virtual-networks-udr-overview#service-tags-for-user-defined-routes-preview)。
+> 结合使用服务标记与用户定义的路由目前处于预览阶段，可能不完全受支持。 有关详细信息，请参阅[虚拟网络路由](/azure/virtual-network/virtual-networks-udr-overview.md#service-tags-for-user-defined-routes-preview)。
 
 # <a name="ip-address-routes"></a>[IP 地址路由](#tab/ipaddress)
 
-对于 Azure 机器学习服务，必须添加主要和次要区域的 IP 地址 。 若要查找次要区域，请参阅[使用 Azure 配对区域确保业务连续性和灾难恢复](/azure/best-practices-availability-paired-regions#azure-regional-pairs)。 例如，如果 Azure 机器学习服务位于“美国东部 2”，则次要区域是“美国中部”。 
+对于 Azure 机器学习服务，必须添加主要和次要区域的 IP 地址 。 若要查找次要区域，请参阅[使用 Azure 配对区域确保业务连续性和灾难恢复](/azure/best-practices-availability-paired-regions.md#azure-regional-pairs)。 例如，如果 Azure 机器学习服务位于“美国东部 2”，则次要区域是“美国中部”。 
 
 若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
 
@@ -63,4 +63,4 @@ az network route-table route create -g MyResourceGroup --route-table-name MyRout
 
 ---
 
-有关配置 UDR 的信息，请参阅[使用路由表路由网络流量](/azure/virtual-network/tutorial-create-route-table-portal)。
+有关配置 UDR 的信息，请参阅[使用路由表路由网络流量](/azure/virtual-network/tutorial-create-route-table-portal.md)。

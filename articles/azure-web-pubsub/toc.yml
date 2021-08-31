@@ -43,16 +43,14 @@
     - name: 使用服务支持的子协议进行客户端流式传输
       href: tutorial-subprotocol.md
     - name: 身份验证和权限
-      href: 'https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions'
+      href: tutorial-permission.md
 - name: 操作指南
   expanded: true
   items:
     - name: 开发
       items:
-        - name: 使用子协议
-          href: 'https://azure.github.io/azure-webpubsub/getting-started/using-pubsub-subprotocol/js-work-with-subprotocols'
-        - name: 身份验证和权限
-          href: 'https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions'
+        - name: 如何创建 WebSocket 客户端
+          href: howto-websocket-connect.md
     - name: 安全
       items:
         - name: 保护访问密钥
@@ -92,7 +90,15 @@
     - name: 函数触发器和绑定
       href: reference-functions-bindings.md
     - name: 服务器 SDK
-      href: choose-server-sdks.md
+      items:
+        - name: 服务器 SDK - C#
+          href: reference-server-sdk-csharp.md
+        - name: 服务器 SDK - Java
+          href: reference-server-sdk-java.md
+        - name: 服务器 SDK - JavaScript
+          href: reference-server-sdk-js.md
+        - name: 服务器 SDK - Python
+          href: reference-server-sdk-python.md
     - name: REST API
       href: /rest/api/webpubsub
 - name: 资源

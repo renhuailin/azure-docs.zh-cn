@@ -4,12 +4,12 @@ description: 了解如何在 Azure 备份中使用安全功能，使备份更加
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 29a441db597de5d71ec71dde3f13e0630fabc05e
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2ba21b9e7fd864b70ad2916de2053530677438c5
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681278"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113304203"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 备份的软删除
 
@@ -28,7 +28,9 @@ ms.locfileid: "110681278"
 
 ## <a name="enabling-and-disabling-soft-delete"></a>启用和禁用软删除
 
-软删除在新创建的保管库上默认启用，目的是防止意外或恶意删除备份数据。  建议不要禁用此功能。 唯一应该考虑禁用软删除的情况是，你打算将受保护的项移到新保管库，需要在删除后重新进行保护，因此等不及要求的 14 天（例如在测试环境中）。只有保管库所有者可以禁用此功能。 如果禁用此功能，将来删除任何受保护项将导致立即删除，而无法还原。 禁用此功能之前，以软删除状态存在的备份数据将在 14 天内保持软删除状态。 若要立即永久删除这些项，则需先取消删除，然后再次将其删除，这样就可以永久删除它们。
+软删除在新创建的保管库上默认启用，目的是防止意外或恶意删除备份数据。  建议不要禁用此功能。 唯一应该考虑禁用软删除的情况是，你打算将受保护的项移到新保管库，需要在删除后重新进行保护，因此等不及要求的 14 天（例如在测试环境中）。
+
+若要在保管库上禁用软删除，必须具有该保管库的备份参与者角色（你应有权在保管库上执行 Microsoft.RecoveryServices/Vaults/backupconfig/write）。 如果禁用此功能，将来删除任何受保护项将导致立即删除，而无法还原。 禁用此功能之前，以软删除状态存在的备份数据将在 14 天内保持软删除状态。 若要立即永久删除这些项，则需先取消删除，然后再次将其删除，这样就可以永久删除它们。
 
 务必记住，禁用软删除后，将对所有类型的工作负载禁用该功能。 例如，不能仅对 SQL Server 或 SAP HANA DB 禁用软删除，而仍对同一保管库中的虚拟机启用软删除。 可以创建单独的保管库以进行精细控制。
 

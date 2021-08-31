@@ -3,12 +3,12 @@ title: 从包运行 Azure Functions
 description: 通过装载包含函数应用项目文件的部署包文件，让 Azure Functions 运行时运行函数。
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: aad6991d0ddd5c439d03e41adec63837a21db87b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0be037d5a9270d60c16f8fc128030705be8b81ef
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581586"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136879"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>从包文件运行 Azure Functions
 
@@ -35,7 +35,7 @@ ms.locfileid: "104581586"
 | 值  | 说明  |
 |---------|---------|
 | **`1`**  | 建议用于在 Windows 上运行的函数应用。 从函数应用的 `d:\home\data\SitePackages` 文件夹中的某个包文件运行。 如果不[使用 zip deploy 进行部署](#integration-with-zip-deployment)，则此选项要求该文件夹同时包含名为 `packagename.txt` 的文件。 此文件仅包含文件夹中包文件的名称（没有任何空白字符）。 |
-|**`<URL>`**  | 要运行的特定包文件的位置。 使用 Blob 存储时，应通过[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 使用专用容器，使 Functions 运行时能够访问包。 可以使用 [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)将包文件上传到 Blob 存储帐户。 指定 URL 时，还必须在发布更新的包后[同步触发器](functions-deployment-technologies.md#trigger-syncing)。 |
+|**`<URL>`**  | 要运行的特定包文件的位置。 指定 URL 时，还必须在发布更新的包后[同步触发器](functions-deployment-technologies.md#trigger-syncing)。 <br/>使用 Blob 存储时，通常不应使用公共 Blob， 而应使用带有[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 的专用容器，或者[使用托管标识](#fetch-a-package-from-azure-blob-storage-using-a-managed-identity)，以便允许 Functions 运行时来访问包。 可以使用 [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)将包文件上传到 Blob 存储帐户。 |
 
 > [!CAUTION]
 > 在 Windows 上运行函数应用时，外部 URL 选项会导致糟糕的冷启动性能。 将函数应用部署到 Windows 时，应将 `WEBSITE_RUN_FROM_PACKAGE` 设置为 `1` 并通过 zip 部署进行发布。
@@ -46,6 +46,10 @@ ms.locfileid: "104581586"
 
 > [!NOTE]
 > 目前仅支持 .zip 包文件。
+
+### <a name="fetch-a-package-from-azure-blob-storage-using-a-managed-identity"></a>使用托管标识从 Azure Blob 存储提取包
+
+[!INCLUDE [Run from package via Identity](../../includes/app-service-run-from-package-via-identity.md)]
 
 ## <a name="integration-with-zip-deployment"></a>与 zip 部署集成
 

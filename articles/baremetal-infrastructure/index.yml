@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: Ajayan1008
   ms.author: v-hborys
-  ms.date: 04/14/2021
-  ms.openlocfilehash: 6682385741d8d72eafe6817194698b13e52a5865
-  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+  ms.date: 08/27/2021
+  ms.openlocfilehash: e5eb67ce6a1baa7c5764b927f9595b73518ebce3
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/26/2021
-  ms.locfileid: "122968855"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123109327"
 landingContent:
 - title: 关于 BareMetal 基础结构
   linkLists:
@@ -129,8 +129,8 @@ landingContent:
       url: ../virtual-machines/workloads/sap/azure-monitor-providers.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
     - text: 部署 Azure Monitor for SAP Solutions - Azure 门户
       url: ../virtual-machines/workloads/sap/azure-monitor-sap-quickstart.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
-    - text: 部署 Azure Monitor for SAP Solutions - Azure PowerShell
-      url: ../virtual-machines/workloads/sap/azure-monitor-sap-quickstart-powershell.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+    - text: 在 Azure Monitor for SAP Solutions 中配置警报
+      url: ../virtual-machines/workloads/sap/azure-monitor-alerts-portal.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
   - linkListType: how-to-guide
     links:
     - text: 使用 STONITH 进行 HA 设置

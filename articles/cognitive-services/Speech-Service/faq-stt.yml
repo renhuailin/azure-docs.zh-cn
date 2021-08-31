@@ -1,0 +1,197 @@
+### YamlMime:FAQ
+metadata:
+  title: 语音转文本常见问题解答
+  titleSuffix: Azure Cognitive Services
+  description: 获取有关语音转文本服务的常见问题的解答。
+  services: cognitive-services
+  author: PanosPeriorellis
+  manager: nitinme
+  ms.service: cognitive-services
+  ms.subservice: speech-service
+  ms.topic: conceptual
+  ms.date: 02/01/2021
+  ms.author: panosper
+  ms.openlocfilehash: f175467ac7075c2f10c49249cbb4b7e72ae64294
+  ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113034621"
+title: 语音转文本常见问题解答
+summary: >
+  如果在本常见问题解答中找不到你的问题的解答，请检查[其他支持选项](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)。
+sections:
+- name: 常规
+  questions:
+  - question: >
+      基线模型和自定义语音转文本模型之间有什么区别？
+    answer: >
+      基线模型已使用 Microsoft 拥有的数据定型，并且已部署在云中。 你可以使用自定义模型来调整模型，以便更好地适应具有特定环境噪音或语言的具体环境。 工厂、汽车或嘈杂的街道需要适应的声学模型。 生物学、物理学、放射学、产品名称和自定义首字母缩略词等主题需要适应的语言模型。 如果训练自定义模型，则应首先添加相关文本来改进对特殊术语和短语的识别。
+  - question: >
+      如果想要使用基线模型，从何处开始？
+    answer: >
+      首先，获取[订阅密钥](overview.md#try-the-speech-service-for-free)。 如果想要对预先部署的基线模型进行 REST 调用，请参阅 [REST API](./overview.md#reference-docs)。 如果想要使用 WebSocket，请[下载 SDK](speech-sdk.md)。
+  - question: >
+      是否始终需要生成自定义语音模型？
+    answer: >
+      不能。 如果应用程序使用通用的日常语言，则无需自定义模型。 如果应用程序用于背景噪音很小或无背景噪音的环境，则无需自定义模型。
+
+
+      你可以在门户中部署基线模型和自定义模型，并针对这些模型运行准确度测试。 可以使用此功能衡量基线模型与自定义模型的准确度。
+  - question: >
+      如何知道何时完成数据集或模型的处理？
+    answer: >
+      目前，表中模型或数据集的状态是唯一可以了解的途径。 处理完成后，状态是“成功”  。
+  - question: >
+      能否创建多个模型？
+    answer: >
+      集合中可以拥有的模型数量没有限制。
+  - question: >
+      我意识到自己犯了一个错误。 如何取消正在进行的数据导入或模型创建？
+    answer: >
+      当前无法回滚声学或语言适应过程。 可以在导入的数据和模型处于终点状态时删除它们。
+  - question: >
+      我针对每个短语获得了采用详细输出格式的多个结果。 应使用哪种方法？
+    answer: >
+      始终采用第一个结果，即使另一个结果（“N-最佳”）可能具有更高的置信度值。 语音服务认为第一个结果是最佳的。 如果未识别出语音，则它也可以是空字符串。
+
+
+      其他结果可能更糟，可能没有应用完整的大写和标点。 这些结果在特殊情况下非常有用，例如，为用户提供选项来从列表中选取更正项或处理错误识别的命令。
+  - question: >
+      为什么会有不同的基础模型？
+    answer: >
+      你可以从语音服务的多个基础模型中进行选择。 每个模型名称都包含添加它的日期。 开始训练自定义模型时，请使用最新模型以获取最佳准确度。 当有新模型可用时，较旧的基础模型在一段时间内仍可供使用。 你可以继续使用所用的模型，直到它被停用（请参阅[模型和终结点生命周期](./how-to-custom-speech-model-and-endpoint-lifecycle.md)）。 仍建议切换到最新的基础模型，以提高准确度。
+  - question: >
+      能否更新现有模型（模型堆叠）？
+    answer: >
+      无法更新现有模型。 一种解决方案是将旧数据集与新数据集合并，然后重新适应。
+
+
+      旧数据集和新数据集必须合并为单个 .zip 文件（用于声学数据）或 .txt 文件（用于语言数据）。 适应完成后，需要重新部署新的更新后模型以获取新的终结点
+  - question: >
+      当有新版本的基础模型可用时，我的部署是否会自动更新？
+    answer: >
+      部署不会自动更新。
+
+
+      如果你已调整并部署了某个模型，该部署会保持原样。 你可以解除已部署的模型，使用较新版本的基础模型重新调整，并重新部署以提高准确度。
+
+
+      基础模型和自定义模型在一段时间后都会被停用（请参阅[模型和终结点生命周期](./how-to-custom-speech-model-and-endpoint-lifecycle.md)）。
+  - question: >
+      能否下载模型并在本地运行？
+    answer: >
+      你可以在 [Docker 容器](speech-container-howto.md?tabs=cstt)中本地运行自定义模型。
+  - question: >
+      是否可以将数据集、模型和部署复制或移动到另一个区域或订阅？
+    answer: >
+      你可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) 将自定义模型复制到另一个区域或订阅。 无法复制数据集或部署。 可以在另一个订阅中再次导入数据集，并使用模型副本在其中创建终结点。
+  - question: >
+      是否记录了我的请求？
+    answer: >
+      默认情况下不记录请求（既不进行音频记录，也不进行听录）。 如果需要，可以在[创建自定义终结点](how-to-custom-speech-train-model.md#deploy-a-custom-model)时选择“从此终结点记录内容”选项。 你还可以在[语音 SDK](how-to-use-logging.md) 中逐个请求启用音频日志记录，而无需创建自定义终结点。 在两种情况下，请求的音频和识别结果都将存储在安全的存储中。 对于使用 Microsoft 拥有的存储的订阅，它们将可供使用 30 天。
+
+
+      如果你在启用了“从此终结点记录内容”的情况下使用自定义终结点，则可在 Speech Studio 中的部署页面上导出所记录的文件。 如果音频日志记录是通过 SDK 启用的，请调用 [API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) 来访问文件。
+  - question: >
+      我的请求是否受到限制？
+    answer: >
+      请参阅[语音服务配额和限制](speech-services-quotas-and-limits.md)。
+  - question: >
+      双声道音频如何收费？
+    answer: >
+      如果你单独提交每个声道（每个声道在其自己的文件中），则将按每个文件的持续时间对你收费。 如果你提交单个文件，其中每个声道都一起多路复用，则按单个文件的持续时间对你收费。 有关定价的详细信息，请参阅 [Azure 认知服务定价页](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+
+
+      > [!IMPORTANT]
+
+      > 如果有禁止使用自定义语音识别服务的其他隐私问题，请联系其中一个支持渠道。
+
+
+      ## <a name="increasing-concurrency"></a>提高并发性
+
+
+      请参阅[语音服务配额和限制](speech-services-quotas-and-limits.md)。
+- name: 导入数据
+  questions:
+  - question: >
+      数据集大小的限制是什么？为何限制？
+    answer: >
+      之所以有此限制，是由于 HTTP 上传文件大小存在限制。 有关实际限制，请参阅[语音服务配额和限制](speech-services-quotas-and-limits.md)。 你可以将数据拆分为多个数据集，并选择所有数据集来训练模型。
+  - question: >
+      是否可以压缩文本文件，以便上传更大的文本文件？
+    answer: >
+      不能。 目前，仅允许未压缩的文本文件。
+  - question: >
+      数据报告表明，有言语导入失败。 问题出在哪里？
+    answer: >
+      未能上传文件中 100% 的话语并不是什么问题。 如果成功导入了声学或语言数据集中的绝大多数话语（如 95% 以上的话语），则该数据集可用。 但是，建议尝试了解话语失败的原因并解决问题。 大多数常见问题（如格式设置错误）很容易修复。
+- name: 创建声学模型
+  questions:
+  - question: >
+      需要多少声学数据？
+    answer: >
+      建议开始时先使用 30 分钟到 1 小时的声学数据。
+  - question: >
+      应该收集哪些数据？
+    answer: >
+      收集尽可能接近于应用程序方案和用例的数据。 数据收集应在设备、环境和说话人类型方面与目标应用程序和用户匹配。 一般而言，应从尽可能广泛的说话人中收集数据。
+  - question: >
+      如何收集声学数据？
+    answer: >
+      可以创建独立的数据收集应用程序，或使用现成的录音软件。 你还可以创建一个用于记录音频数据并使用该数据的应用程序版本。
+  - question: >
+      是否需要自行转录适应数据？
+    answer: >
+      是的。 可以自行转录或使用专业听录服务进行转录。 有些用户更喜欢使用专业听录器，而其他用户则使用众包或自己进行听录。
+  - question: >
+      使用音频数据训练一个自定义模型需要多长时间？
+    answer: >
+      使用音频数据训练模型可能是一个漫长的过程。 创建自定义模型可能需要几天时间，具体取决于数据量。 如果它无法在一周内完成，则服务可能会中止训练操作并将该模型报告为失败。
+
+
+      使用其中有用于训练的专用硬件的[区域](custom-speech-overview.md#set-up-your-azure-account)之一。 在这些地区，语音服务将使用长达 20 小时的音频进行训练。 而在其他区域中，最多只会使用 8 小时的音频。
+
+
+      通常情况下，该服务在具有专用硬件的区域每天处理大约 10 小时的音频数据。 在其他区域，它每天只能处理大约 1 小时的音频数据。 你可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) 将已完全训练好的模型复制到另一个区域。 仅使用文本进行训练速度要快得多，通常在几分钟内就可完成。
+
+
+      某些基础模型不能使用音频数据进行自定义。 对于这些模型，该服务会仅使用听录的文本进行训练并忽略音频数据。 然后，训练的完成速度会快得多，结果将与仅使用文本进行训练相同。 有关支持使用音频数据进行训练的基础模型的列表，请参阅[语言支持](language-support.md#speech-to-text)。
+- name: 精确度测试
+  questions:
+  - question: >
+      什么是字错误率 (WER) 以及如何计算此错误率？
+    answer: >
+      WER 是用于语音识别的评估指标。 WER 由错误总数（包括插入、删除和替换）除以引用听录中的总字数得出。 有关详细信息，请参阅[评估自定义语音识别准确度](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy)。
+  - question: >
+      如何确定准确度测试的结果是否良好？
+    answer: >
+      测试结果对基线模型和自定义模型进行了比较。 应以超越基线模型为目标，使自定义模型变得有价值。
+  - question: >
+      如何确定基础模型的 WER 以便查看是否有改进？
+    answer: >
+      离线测试结果显示了自定义模型的基线准确度以及与基线相比的改进情况。
+- name: 创建语言模型
+  questions:
+  - question: >
+      需要上传多少文本数据？
+    answer: >
+      这取决于应用程序中使用的词汇和短语与初始语言模型存在多大差异。 对于所有新字词，尽可能多地提供这些字的使用示例很有用。 对于应用程序中使用的常用短语，在语言数据中添加短语也很有用，因为这会告知系统也要侦听这些术语。 在语言数据集中至少有 100 句话语（通常几百句或更多话语）是很常见的。 另外，如果预期某些类型的查询比其他查询更加常用，则可以在数据集中插入常用查询的多个副本。
+  - question: >
+      能否只上传字词列表？
+    answer: >
+      上传字词列表会将字词添加到词汇中，但不会告知系统这些字词的通常用法。 通过提供完整或部分话语（用户很可能会说事物的句子或短语），语言模型可以学习这些新字词及其用法。 自定义语言模型不仅适用于向系统中添加新字词，还适用于调整应用程序已知字词的概率。 提供完整话语可帮助系统更好地学习。
+- name: 租户模型（使用 Microsoft 365 数据的自定义语音识别）
+  questions:
+  - question: >
+      租户模型中包含哪些信息，它是如何创建的？
+    answer: >
+      租户模型是使用[公用组](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)电子邮件和文档生成的，贵组织中的任何人都可以看到该模型。
+  - question: >
+      租户模型改进了哪些语音体验？
+    answer: >
+      启用、创建并发布租户模型后，它将用于改进使用语音服务生成的任何企业应用程序的识别；这些应用程序还会传递一个向企业表明成员身份的用户 Azure AD 令牌。
+
+
+      为语音服务应用程序创建租户模型时，不会改变内置于 Microsoft 365 中的语音体验，如听写和 PowerPoint 字幕。
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n- [故障排除](troubleshooting.md)\n- [发行说明](releasenotes.md)"

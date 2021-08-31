@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 05/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 77138d6a303bd773b1e9842fdeca27462ec37f34
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 60de3b926e490ce1eb6a74b5234e21f8173a8ade
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614908"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220340"
 ---
 # <a name="azure-stack-edge-2105-release-notes"></a>Azure Stack Edge 2105 发行说明
 
@@ -64,7 +64,8 @@ Azure Stack Edge 2105 版本中提供了以下新功能。
 
 | 不是。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
-|**1.**|预览功能 |此版本中提供了以下所有功能的预览版：本地 Azure 资源管理器、VM、VM 的云管理、Kubernetes 云管理、启用了 Azure Arc 的 Kubernetes、用于 Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 的 VPN、用于 Azure Stack Edge Pro GPU 的多进程服务 (MPS)。  |将在以后的版本中正式推出这些功能。 |
+|**1.**|预览功能 |此版本中提供了以下所有功能的预览版：本地 Azure 资源管理器、VM、VM 的云管理、Kubernetes 云管理、启用了 Azure Arc 的 Kubernetes、用于 Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 的 VPN、多进程服务 (MPS)、用于 Azure Stack Edge Pro GPU 的网络功能管理器。  |将在以后的版本中正式推出这些功能。 |
+|**2.**|多接入边缘计算 (MEC)/网络功能管理器 (NFM) 部署 |对于 2105 更新之前的 MEC/NFM 部署，你可能会遇到这一罕见问题，即来自 LAN/WAN VM NetAdapter 的流量会被丢弃。 <br><br> 在 Azure Stack Edge 设备上，端口 5 和端口 6 连接到 Mellanox 网络接口卡，以允许[加速网络](../virtual-network/create-vm-accelerated-networking-powershell.md)。 加速网络允许来自端口 5 和端口 6 的 LAN/WAN 流量绕过虚拟机监控程序层和虚拟交换机，直接访问物理交换机。 <br><br> 可以通过在 LAN/WAN 网络接口上禁用[虚拟功能 (VF)](/windows-hardware/drivers/network/sr-iov-virtual-functions--vfs-) 设备来禁用加速网络。 来自 VM 的所有网络流量现在都将遍历执行安全检查的虚拟机监控程序层。 如果应用程序使用任意单播源 IP 地址（不是 VM NetAdapter 的 IP）发送流量，则安全检查会导致流量丢弃（因为它似乎源自虚拟网络功能协定中未指定的任意 IP）。|若要解决此问题，可以暂停 2105 更新，并等待具有此问题修补程序的下一版本。<br><br> 或者，可以在 Azure Stack Edge 设备上应用 2105 更新，重新部署相同的 VNF。 2105 更新后部署的 VNF 不需要修复。 |
 
 
 ## <a name="known-issues-from-previous-releases"></a>以前版本中的已知问题
@@ -102,6 +103,7 @@ Azure Stack Edge 2105 版本中提供了以下新功能。
 |27.|自定义脚本 VM 扩展 |在早期版本中创建的 Windows VM 存在一个已知问题，并且设备已更新为 2103。 <br> 如果在这些虚拟机上添加自定义脚本扩展，Windows VM 来宾代理（仅限版本 2.7.41491.901）会在更新中停滞，导致扩展部署超时。 | 若要解决此问题，请执行以下操作： <ul><li> 使用远程桌面协议 (RDP) 连接到 Windows VM。 </li><li> 确保 `waappagent.exe` 正在计算机上运行：`Get-Process WaAppAgent`。 </li><li> 如果 `waappagent.exe` 未在运行，请重启 `rdagent` 服务：`Get-Service RdAgent` \| `Restart-Service`。 等待 5 分钟。</li><li> 在 `waappagent.exe` 正在运行时，终止 `WindowsAzureGuest.exe` 进程。 </li><li>在终止该进程后，该进程会使用较新的版本再次开始运行。</li><li>使用此命令来验证 Windows VM 来宾代理版本是否为 2.7.41491.971：`Get-Process WindowsAzureGuestAgent` \| `fl ProductVersion`。</li><li>[在 Windows VM 上设置自定义脚本扩展](azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md)。 </li><ul> |
 |28.|GPU VM |在此版本之前，更新流中未管理 GPU VM 生命周期。 因此，在更新到 2103 版本时，在更新过程中不会自动停止 GPU VM。 在更新设备之前，需要使用 `stop-stayProvisioned` 标志来手动停止 GPU VM。 有关详细信息，请参阅[暂停或关闭 VM](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#suspend-or-shut-down-the-vm)。<br> 所有在更新前保持运行状态的 GPU VM 都会在更新后启动。 在这些情况下，VM 上运行的工作负载不会正常终止。 并且 VM 在更新后可能最终会处于异常状态。 <br>所有在更新前通过 `stop-stayProvisioned` 停止的 GPU VM 都会在更新后自动启动。 <br>如果通过 Azure 门户停止 GPU VM，则需要在设备更新后手动启动该 VM。| 如果运行使用 Kubernetes 的 GPU VM，请在即将更新前再停止这些 GPU VM。 <br>在 GPU VM 停止时，Kubernetes 将会接管原来由 VM 使用的 GPU。 <br>GPU VM 处于停止状态的时间越长，Kubernetes 将会接管 GPU 的可能性就越大。 |
 |29.|多进程服务 (MPS) |在更新设备软件和 Kubernetes 群集时，不会为工作负载保留 MPS 设置。   |[重新启用 MPS](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface) 并重新部署曾经使用 MPS 的工作负载。 |
+
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -14,12 +14,12 @@ ms.date: 09/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3afeadff71bd373354b891bd6690d94d28fc0805
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29cc31121a4888c23ccbec1c549f2313d0c9e165
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92096345"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439315"
 ---
 # <a name="custom-installation-of-azure-active-directory-connect"></a>Azure Active Directory Connect 的自定义安装
 如果希望有更多的安装选项，请使用 Azure Active Directory (Azure AD) Connect 中的自定义设置。 例如，如果你有多个林或希望配置可选功能，请使用这些设置。 只要[快速安装](how-to-connect-install-express.md)不能满足部署或拓扑需求，即可使用自定义设置。
@@ -42,7 +42,7 @@ ms.locfileid: "92096345"
 - [同步](#sync-pages)
 
 ### <a name="install-required-components"></a>安装所需的组件
-安装同步服务时，可以让可选配置部分保持未选中状态， Azure AD Connect 会自动完成所有设置。 它会设置 SQL Server 2012 Express LocalDB 实例、创建相应的组并分配权限。 如果要更改默认值，请取消选中相应的框。  下表汇总了这些选项，并提供指向其他信息的链接。 
+安装同步服务时，可以让可选配置部分保持未选中状态， Azure AD Connect 会自动完成所有设置。 它会设置 SQL Server 2019 Express LocalDB 实例、创建相应的组并分配权限。 如果要更改默认值，请取消选中相应的框。  下表汇总了这些选项，并提供指向其他信息的链接。 
 
 ![屏幕截图，显示 Azure AD Connect 中所需安装组件的可选选项。](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "92096345"
 
 如果 userPrincipalName 属性不可路由且无法进行验证，可以选择另一属性。 例如，可以选择 email 作为保存登录 ID 的属性。 使用除 userPrincipalName 以外的某个属性时，该属性称为“备用 ID”。 
 
-备用 ID 属性值必须遵循 RFC 822 标准。 可以将替代 ID 与密码哈希同步、直通身份验证和联合身份验证一起使用。 在 Active Directory 中，不能将该属性定义为多值，即使它只有单个值。 有关替代 ID 的详细信息，请参阅[直通身份验证：常见问题](./how-to-connect-pta-faq.md#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)。
+备用 ID 属性值必须遵循 RFC 822 标准。 可以将替代 ID 与密码哈希同步、直通身份验证和联合身份验证一起使用。 在 Active Directory 中，不能将该属性定义为多值，即使它只有单个值。 有关替代 ID 的详细信息，请参阅[直通身份验证：常见问题](./how-to-connect-pta-faq.yml#does-pass-through-authentication-support--alternate-id--as-the-username--instead-of--userprincipalname--)。
 
 >[!NOTE]
 > 启用直通身份验证时，必须至少有一个已验证的域才能继续自定义安装过程。

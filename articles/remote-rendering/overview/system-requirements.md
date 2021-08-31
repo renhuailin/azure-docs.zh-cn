@@ -1,19 +1,19 @@
 ---
-title: 系统需求
+title: 系统要求
 description: 列出 Azure 远程渲染的系统要求
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
-ms.openlocfilehash: 789233ce1ede751276f965143716694c6feca3ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 320f9ef1285f16a3f7b38b3b4be3e5c51eff269f
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105032781"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729788"
 ---
-# <a name="system-requirements"></a>系统需求
+# <a name="system-requirements"></a>系统要求
 
 本章列出了使用 Azure 远程渲染 (ARR) 的最低系统要求。
 
@@ -96,7 +96,6 @@ Azure 远程渲染目前只支持使用 HoloLens 2 和 Windows 桌面设备作�
 | 8266              | UDP      | 传出 | 数据传输 |
 | 5000、5433、8443  | TCP      | 传出 | [ArrInspector 工具](../resources/tools/arr-inspector.md)所需|
 
-
 ## <a name="software"></a>软件
 
 必须安装以下软件：
@@ -111,10 +110,26 @@ Azure 远程渲染目前只支持使用 HoloLens 2 和 Windows 桌面设备作�
 
 ## <a name="unity"></a>Unity
 
-若要使用 Unity 进行开发，请安装最新版本的 Unity 2019.3 或 2019.4 LTS [（下载）](https://unity3d.com/get-unity/download)。 建议使用 Unity Hub 来管理安装。
+若要使用 Unity 进行开发，请安装支持版本的 Unity[（下载）](https://unity3d.com/get-unity/download)。 建议使用 Unity Hub 来管理安装。
 请确保在 Unity 安装中包括以下模块：
 * **UWP** - 通用 Windows 平台生成支持
 * **IL2CPP** - Windows 生成支持 (IL2CPP)
+
+### <a name="unity-2019"></a>Unity 2019
+
+支持 Unity 2019 版本 2019.3 或 2019.4 LTS。 但是，若要使用 OpenXR 版本的插件，需要基于 2020 的版本。
+
+Unity 2019 ARR 既支持适用于 Windows 混合现实的旧版内置 XR 集成，也支持新的 XR SDK 插件框架。
+
+### <a name="unity-2020"></a>Unity 2020
+
+对于 Unity 2020，请使用最新版本的 Unity 2020.3。
+
+> [!IMPORTANT]
+> 使用 OpenXR 版本的插件时，必须验证通用呈现管道 (URP) 的版本是否为 10.5.1 或更高版本。 若要检查这一点，请从 Unity Windows 菜单中打开“包管理器”，并参阅“通用 RP”部分：![通用 RP 版本](./media/unity-universal-rp-version-10-5-1.png)
+
+> [!IMPORTANT]
+> 适用于 Unity 2020.3 的 WMR（Windows 混合现实）插件当前在 ARR 中性能降级。 为了获得更好的体验，建议继续使用 Unity 2019.X 或切换到 OpenXR 版本。
 
 ## <a name="next-steps"></a>后续步骤
 

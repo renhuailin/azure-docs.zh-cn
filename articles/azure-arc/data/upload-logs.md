@@ -7,24 +7,19 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: f3f29ae1ab868a96e6f70ed964f79c47bc591c4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 812b6add11ac032eb6dffea7de54111574393cf9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92375217"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733492"
 ---
 # <a name="upload-logs-to-azure-monitor"></a>将日志上传到 Azure Monitor
 
 可以定期导出日志，然后将其上传到 Azure。 导出和上传数据也会在 Azure 中创建和更新数据控制器、SQL 托管实例及超大规模 PostgreSQL 服务器组资源。
-
-> [!NOTE] 
-> 在预览期，使用已启用 Azure Arc 的数据服务不会产生费用。
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -124,7 +119,6 @@ SET WORKSPACE_SHARED_KEY=<primarySharedKey>
 ```console
 $Env:WORKSPACE_SHARED_KEY='<primarySharedKey>'
 ```
-```
 ::: zone-end
 
 
@@ -216,24 +210,27 @@ echo $SPN_AUTHORITY
 
  若要上传已启用 Azure Arc 的 SQL 托管实例和已启用 Azure Arc 的超大规模 PostgreSQL 服务器组的日志，请运行以下 CLI 命令 -
 
-1. 使用 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 登录到 Azure Arc 数据控制器。
+1. 通过 Azure (`az`) CLI 使用 `arcdata` 扩展登录到 Azure Arc 数据控制器。
 
-   ```console
-   azdata login
+   ```azurecli
+   az arcdata login
    ```
 
    按照提示设置命名空间、管理员用户名和密码。 
 
 1. 将所有日志导出到指定文件：
 
-   ```console
-   azdata arc dc export --type logs --path logs.json
+> [!NOTE]
+> 使用命令 `az arcdata dc export` 导出使用情况/计费信息、指标和日志时，需要暂时绕过 SSL 验证。  系统将提示你绕过 SSL 验证，你也可设置 `AZDATA_VERIFY_SSL=no` 环境变量来避免出现提示。  目前无法为数据控制器导出 API 配置 SSL 证书。
+
+   ```azurecli
+   az arcdata dc export --type logs --path logs.json
    ```
 
 2. 将日志上传到 Azure Monitor Log Analytics 工作区：
 
-   ```console
-   azdata arc dc upload --path logs.json
+   ```azurecli
+   az arcdata dc upload --path logs.json
    ```
 
 ## <a name="view-your-logs-in-azure-portal"></a>在 Azure 门户中查看日志
@@ -254,11 +251,11 @@ echo $SPN_AUTHORITY
 
 如果你要按计划上传指标和日志，可以创建脚本，并每隔几分钟按照计时器运行该脚本。 下面是使用 Linux shell 脚本自动执行上传的示例。
 
-在你常用的文本/代码编辑器中，将以下脚本添加到文件，并将该文件另存为脚本可执行文件，如 .sh (Linux/Mac) 或 .cmd、.bat、.ps1。
+在常用的文本/代码编辑器中，将以下脚本添加到文件，并将该文件另存为脚本可执行文件，如 .sh (Linux/Mac) 或 .cmd、.bat、.ps1。
 
-```console
-azdata arc dc export --type metrics --path metrics.json --force
-azdata arc dc upload --path metrics.json
+```azurecli
+az arcdata dc export --type logs --path logs.json --force
+az arcdata dc upload --path logs.json
 ```
 
 使脚本文件成为可执行文件
@@ -281,6 +278,6 @@ watch -n 1200 ./myuploadscript.sh
 
 [将使用情况数据、指标和日志上传到 Azure Monitor](upload-usage-data.md)
 
-[将账单数据上传到 Azure 并在 Azure 门户中查看该数据](view-billing-data-in-azure.md)
+[将计费数据上传到 Azure 并在 Azure 门户中查看该数据](view-billing-data-in-azure.md)
 
 [在 Azure 门户中查看 Azure Arc 数据控制器资源](view-data-controller-in-azure-portal.md)

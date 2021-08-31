@@ -1,57 +1,64 @@
 ---
 title: 升级到 .NET SDK 版本 11
 titleSuffix: Azure Cognitive Search
-description: 将代码从 Azure 认知搜索 .NET SDK 的旧版本迁移到版本 11。 了解新增功能和所需的代码更改。
+description: 将代码从 Azure 认知搜索 .NET SDK 的旧版本迁移到版本 11。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 06/09/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df8841cb2dcac6335b09a5e7715f42c508c69e76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb596e993981275bbf61efd2542dbf1b566e1a3a
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99536809"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003883"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升级到 Azure 认知搜索 .NET SDK 版本 11
 
-如果你使用的是 10.0 或更低版本的 [.NET SDK](/dotnet/api/overview/azure/search)，则本文可帮助你升级到版本 11 以及 Azure.Search.Documents客户端库。
+如果搜索解决方案基于 [Azure SDK for .NET](/dotnet/azure/) 构建而成，则本文将帮助你将代码从早期版本的 [**Microsoft.Azure.Search**](/dotnet/api/overview/azure/search/client10) 迁移到版本 11（新 [Azure.Search.Documents](/dotnet/api/overview/azure/search.documents-readme) 客户端库）。 版本 11 是完全重新设计的客户端库，由 Azure SDK 开发团队发布（以前的版本由 Azure 认知搜索开发团队生成）。 
 
-版本 11 是完全重新设计的客户端库，由 Azure SDK 开发团队发布（以前的版本由 Azure 认知搜索开发团队生成）。 已对该库进行了重新设计，使其与其他 Azure 客户端库更加一致，依赖于 [Azure.Core](/dotnet/api/azure.core) 和 [System.Text.Json](/dotnet/api/system.text.json)，并为常见任务实现了熟悉的方法。
+除了[一个例外](#WhatsNew)，版本 10 的所有功能都在版本 11 中实现。 关键不同点包括：
 
-新版本中的一些主要区别包括：
-
-+ 一个包和库，而不是多个
-+ 新包名称是 `Azure.Search.Documents`，而不是 `Microsoft.Azure.Search`。
-+ 三个客户端（而不是两个）：`SearchClient`、`SearchIndexClient`、`SearchIndexerClient`
++ 一个程序包 (Azure.Search.Documents)，而不是四个
++ 三个客户端而不是两个客户端：SearchClient、SearchIndexClient、SearchIndexerClient
 + 一系列 API 的命名差异，以及简化了某些任务的小的结构差异
 
-除了本文之外，你还可以查看[变更日志](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)来获取 .NET SDK 版本 11 中的变更的详细列表。
+客户端库的[更改日志](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)包含更新的项化列表。
 
-## <a name="package-and-library-consolidation"></a>包和库合并
+认知搜索产品文档中的所有 C# 代码示例和代码片段已修改为使用新的Azure.Search.Documents 客户端库。
 
-版本 11 将多个包和库合并成了一个。 迁移后，需要管理的库较少。
+## <a name="why-upgrade"></a>为什么升级？
 
-+ [Azure.Search.Documents 包](https://www.nuget.org/packages/Azure.Search.Documents/)
+升级的好处总结如下：
 
-+ [客户端库的 API 参考](/dotnet/api/overview/azure/search.documents-readme)
++ 新功能将仅添加到 Azure.Search.Documents。 以前的版本 Microsoft.Azure.Search 现在是旧版客户端。 对旧库的更新仅限于高优先级 bug 修复。
 
-## <a name="client-differences"></a>客户端差异
++ 与其他 Azure 客户端库一致。 Azure.Search.Documents 依赖于 [Azure.Core](/dotnet/api/azure.core) 和 [System.Text.Json](/dotnet/api/system.text.json)，并遵循常见任务（如客户端连接和授权）的传统方法。
+
+## <a name="package-comparison"></a>包比较
+
+版本 11 合并并简化了包管理，以便减少要管理的数量。
+
+| 版本 10 及早期版本 | 版本 11 |
+|------------------------|------------|
+| [Microsoft.Azure.Search](https://www.nuget.org/packages/Microsoft.Azure.Search/) </br>[Microsoft.Azure.Search.Service](https://www.nuget.org/packages/Microsoft.Azure.Search.Service/) </br>[Microsoft.Azure.Search.Data](https://www.nuget.org/packages/Microsoft.Azure.Search.Data/) </br>[Microsoft.Azure.Search.Common](https://www.nuget.org/packages/Microsoft.Azure.Search.Common/)  | [Azure.Search.Documents 包](https://www.nuget.org/packages/Azure.Search.Documents/) |
+
+## <a name="client-comparison"></a>客户端比较
 
 下表映射了两个版本的客户端库（适用情况下）。
 
-| 操作作用域 | Microsoft.Azure.Search&nbsp;(v10) | Azure.Search.Documents&nbsp;(v11) |
+| 客户端操作 | Microsoft.Azure.Search&nbsp;(v10) | Azure.Search.Documents&nbsp;(v11) |
 |---------------------|------------------------------|------------------------------|
-| 用于查询以及用于填充索引的客户端。 | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
-| 用于索引、分析器、同义词映射的客户端 | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
-| 用于索引器、数据源、技能组的客户端 | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient（**新增**）](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
+| 面向索引的文档集合（查询和数据导入） | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
+| 面向索引相关的对象（索引、分析器、同义词映射 | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
+| 面向索引器相关的对象（索引器、数据源、技能组） | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient（**新增**）](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
-> [!Important]
-> `SearchIndexClient` 在两个版本中均存在，但支持不同的功能。 在版本 10 中，`SearchIndexClient` 创建索引和其他对象。 在版本 11 中，`SearchIndexClient` 处理现有索引。 为了避免在更新代码时产生混淆，请注意更新客户端引用时的顺序。 按照[升级步骤](#UpgradeSteps)中的顺序进行操作应当有助于缓解任何字符串替换问题。
+> [!Caution]
+> 请注意，SearchIndexClient 存在于这两个版本中，但针对不同的操作。 在版本 10 中，SearchIndexClient 创建索引和其他对象。 在版本 11 中，SearchIndexClient 适用于现有索引，以具有查询和数据输入 API 的文档集合为目标。 为了避免在更新代码时产生混淆，请注意更新客户端引用时的顺序。 按照[升级步骤](#UpgradeSteps)中的顺序进行操作应当有助于缓解任何字符串替换问题。
 
 <a name="naming-differences"></a>
 
@@ -64,7 +71,7 @@ ms.locfileid: "99536809"
 | 版本 10 | 版本 11 等效项 |
 |------------|-----------------------|
 | [SearchCredentials](/dotnet/api/microsoft.azure.search.searchcredentials) | [AzureKeyCredential](/dotnet/api/azure.azurekeycredential) |
-| `EncryptionKey`（已作为正式版功能存在于[预览版 SDK](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) 中） | [SearchResourceEncryptionKey](/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
+| EncryptionKey（API 参考中未记录。 对此 API 的支持已转换为 v10 中的正式版，但仅在[预览 SDK](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) 中可用） | [SearchResourceEncryptionKey](/dotnet/api/azure.search.documents.indexes.models.searchresourceencryptionkey) |
 
 ### <a name="indexes-analyzers-synonym-maps"></a>索引、分析器、同义词映射
 
@@ -101,13 +108,16 @@ ms.locfileid: "99536809"
 | [IndexAction](/dotnet/api/microsoft.azure.search.models.indexaction) | [IndexDocumentsAction](/dotnet/api/azure.search.documents.models.indexdocumentsaction) |
 | [IndexBatch](/dotnet/api/microsoft.azure.search.models.indexbatch) | [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch) |
 
-### <a name="query-definitions-and-results"></a>查询定义和结果
+### <a name="query-requests-and-responses"></a>查询请求和响应
 
 | 版本 10 | 版本 11 等效项 |
 |------------|-----------------------|
+| [DocumentsOperationsExtensions.SearchAsync](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.searchasync) | [SearchClient.SearchAsync](/dotnet/api/azure.search.documents.searchclient.searchasync) |
 | [DocumentSearchResult](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) | [SearchResult](/dotnet/api/azure.search.documents.models.searchresult-1) 或 [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1)，具体取决于结果是单个文档还是多个文档。 |
 | [DocumentSuggestResult](/dotnet/api/microsoft.azure.search.models.documentsuggestresult-1) | [SuggestResults](/dotnet/api/azure.search.documents.models.suggestresults-1) |
 | [SearchParameters](/dotnet/api/microsoft.azure.search.models.searchparameters) |  [SearchOptions](/dotnet/api/azure.search.documents.searchoptions)  |
+| [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters) |  [SuggestOptions](/dotnet/api/azure.search.documents.suggestoptions) |
+| [SearchParameters.Filter](/dotnet/api/microsoft.azure.search.models.searchparameters.filter) |  [SearchFilter](/dotnet/api/azure.search.documents.searchfilter)（构造 OData 筛选器表达式的新类） |
 
 ### <a name="json-serialization"></a>JSON 序列化
 
@@ -143,33 +153,43 @@ Response<SearchResults<Mountain>> results = client.Search<Mountain>("Rainier");
 
 如果使用 Newtonsoft.Json 进行 JSON 序列化，则可以通过使用类似的特性或通过使用 [JsonSerializerSettings](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonSerializerSettings.htm) 上的属性来传入全局命名策略。 有关与以上示例等效的示例，请参阅 Newtonsoft.Json 自述文件中的[反序列化文档示例](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)。
 
-
 <a name="WhatsNew"></a>
 
-## <a name="whats-in-version-11"></a>版本 11 中的功能
+## <a name="inside-v11"></a>在 v11 内
 
-Azure 认知搜索客户端库的每个版本都面向 REST API 的一个对应版本。 REST API 被视为服务的基础，而各个 SDK 用于包装 REST API 的版本。 作为 .NET 开发人员，如果想要了解有关特定对象或操作的更多背景知识，查看 [REST API 文档](/rest/api/searchservice/)会很有帮助。
-
-版本 11 对应于 [2020-06-30 搜索服务](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/search/data-plane/Azure.Search/preview/2020-06-30/searchservice.json)。 因为版本 11 也是从头开始构建的新客户端库，所以大部分开发工作都集中在与版本 10 的等效性上，一些 REST API 功能支持尚待提供。
+Azure 认知搜索客户端库的每个版本都面向 REST API 的一个对应版本。 REST API 被视为服务的基础，而各个 SDK 用于包装 REST API 的版本。 作为 .NET 开发人员，查看更详细的 [REST API 文档](/rest/api/searchservice/)可以帮助更深入地了解特定对象或操作。 版本 11 对应于 [2020-06-30 搜索服务](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/search/data-plane/Azure.Search/preview/2020-06-30/searchservice.json)。 
 
 版本 11.0 完全支持以下对象和操作：
 
 + 索引创建和管理
 + 同义词映射创建和管理
-+ 所有查询类型和语法（地理空间筛选器除外）
-+ 用于为 Azure 数据源（包括数据源和技能组）编制索引的索引器对象和操作
++ 索引器创建和管理
++ 索引器数据源创建和管理
++ 技能组创建和管理
++ 所有查询类型和语法
 
-版本 11.1 添加了以下项：
+版本 11.1 附加内容（[更改日志](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md#1110-2020-08-11)详细信息）：
 
 + [FieldBuilder](/dotnet/api/azure.search.documents.indexes.fieldbuilder)（在 11.1 中添加）
 + [序列化程序属性](/dotnet/api/azure.search.documents.searchclientoptions.serializer)（在 11.1 中添加），用于支持自定义序列化
 
-### <a name="pending-features"></a>待解决功能
+版本 11.2 附加内容（[更改日志](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md#1120-2021-02-10)详细信息）：
 
-版本 10 中的以下功能在版本 11 中尚不可用。 如果需要这些功能，请推迟迁移，直到这些功能受支持。
++ [EncryptionKey](/dotnet/api/azure.search.documents.indexes.models.searchindexer.encryptionkey) 属性已添加索引器、数据源和技能组
++ [IndexingParameters.IndexingParametersConfiguration](/dotnet/api/azure.search.documents.indexes.models.indexingparametersconfiguration) 属性支持
++ [FieldBuilder](/dotnet/api/azure.search.documents.indexes.fieldbuilder.build) 本机支持[地理空间类型](/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype.geographypoint)。 [SearchFilter](/dotnet/api/azure.search.documents.searchfilter) 可以在没有显式程序集依赖项的情况下编码来自 Microsoft.Spatial 的几何类型。
+
+  还可以继续显式声明对 [Microsoft.Spatial](https://www.nuget.org/packages/Microsoft.Spatial/) 的依赖关系。 此方法示例可用于 [System.Text.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) 和 [Newtonsoft.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)。
+
+当前不支持任何版本的 Azure.Search.Documents：
 
 + [知识存储](knowledge-store-concept-intro.md)
-+ 地理空间类型 - 地理空间类型的第一类支持仍在进行中。 目前，可以使用 [Microsoft 空间](https://www.nuget.org/packages/Microsoft.Spatial/)包来支持地理操作。 示例可用于 [System.Text.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md)和 [Newtonsoft.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md)。
+
+## <a name="before-upgrading"></a>升级前
+
++ 已更新[快速入门](search-get-started-dotnet.md)、教程和 [C# 示例](samples-dotnet.md)，以使用 Azure.Search.Documents 包。 建议在开始迁移练习之前查看现有示例和演练，以了解新 API。
+
++ [如何使用 Azure.Search.Documents](search-howto-dotnet-sdk.md) 介绍了最常使用的 API。 即使是认知搜索的知识丰富的用户，也可能希望在迁移之前查看此新库简介。
 
 <a name="UpgradeSteps"></a>
 
@@ -248,6 +268,8 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的一个对应�
 
 ## <a name="next-steps"></a>后续步骤
 
++ [如何在 C# .NET 应用程序中使用 Azure.Search.Documents](search-howto-dotnet-sdk.md)
++ [教程：向 Web 应用添加搜索](tutorial-csharp-overview.md)
 + [Azure.Search.Documents 包](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [GitHub 上的示例](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)
 + [Azure.Search.Document API 参考](/dotnet/api/overview/azure/search.documents-readme)

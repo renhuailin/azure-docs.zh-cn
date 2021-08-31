@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 73e42ac1f076b67d31cbad0823ea63db40045c1e
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 584e200beac484ea742d51341a9cb93f0cfc4a41
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746026"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745645"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>在语音 SDK 中启用日志记录
 
@@ -47,6 +47,12 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 
 ```objc
 [config setPropertyTo:@"LogfilePathAndName" byId:SPXSpeechLogFilename];
+```
+
+```go
+import ("github.com/Microsoft/cognitive-services-speech-sdk-go/common")
+
+config.SetProperty(common.SpeechLogFilename, "LogfilePathAndName")
 ```
 
 可以基于配置对象创建识别器。 这会为所有识别器启用日志记录。
@@ -141,6 +147,31 @@ self.speechConfig!.setPropertyTo(logFilePath!.absoluteString, by: SPXPropertyId.
 ```
 
 [此处](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html)提供了有关 iOS 文件系统的详细信息。
+
+## <a name="logging-with-multiple-recognizers"></a>使用多个识别器进行日志记录
+
+尽管将日志文件输出路径指定为 `SpeechRecognizer` 或其他 SDK 对象中的配置属性，但 SDK 日志记录是一个在整个进程中持续的单一功能，没有单个实例的概念。 可以将其视为 `SpeechRecognizer` 构造函数（或类似方法），使用相应的 `SpeechConfig` 中可用的属性数据隐式调用一个静态的内部“配置全局日志记录”例程。
+
+这意味着，例如，不能将六个并行识别器配置为同时输出到六个单独的文件。 相反，创建的最新识别器将配置全局日志记录实例，以输出到其配置属性中指定的文件，并将所有 SDK 日志记录发送到该文件。
+
+这也意味着已配置日志记录的对象的生存期与日志记录的持续时间无关。 日志记录不会因为 SDK 对象的发布而停止，只要没有提供新的日志记录配置，日志记录就会继续。 一旦启动，可以通过在创建新对象时将日志文件路径设置为空字符串来停止整个进程的日志记录。
+
+为了减少在为多个实例配置日志记录时可能出现的混乱，将日志记录的控制从执行实际工作的对象中抽象出来可能很有用。 下面是帮助程序例程的一个示例对：
+
+```cpp
+void EnableSpeechSdkLogging(const char* relativePath)
+{
+    auto configForLogging = SpeechConfig::FromSubscription("unused_key", "unused_region");
+    configForLogging->SetProperty(PropertyId::Speech_LogFilename, relativePath);
+    auto emptyAudioConfig = AudioConfig::FromStreamInput(AudioInputStream::CreatePushStream());
+    auto temporaryRecognizer = SpeechRecognizer::FromConfig(configForLogging, emptyAudioConfig);
+}
+
+void DisableSpeechSdkLogging()
+{
+    EnableSpeechSdkLogging("");
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

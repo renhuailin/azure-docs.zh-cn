@@ -8,17 +8,17 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/27/2021
-ms.openlocfilehash: d0390bd70080ea0174a81cce9538396321dec658
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 3a8c00dcb2bf016cf70f02dcfdebc5e55bf5d66c
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539346"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178128"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>在 Azure 认知搜索中返回语义答案
 
 > [!IMPORTANT]
-> 语义搜索根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公开预览状态。 可通过 Azure 门户、预览版 REST API 和 beta 版本的 SDK 获得。 这些功能将计费。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
+> 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，语义搜索为预览版。 它可通过 Azure 门户、预览版 REST API 和 beta 版本的 SDK 获得。 这些功能将计费。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
 
 调用[语义排名和标题](semantic-how-to-query-request.md)时，可选择性地从最匹配的文档中直接提取能够“回答”查询的内容。 可以在响应中包含一个或多个答案，然后可以在搜索页上呈现这些答案，以改善应用的用户体验。
 
@@ -69,7 +69,7 @@ ms.locfileid: "111539346"
 
 + “searchFields”确定哪些字符串字段向提取模型提供标记。 生成标题的字段也会生成答案。 有关如何设置此字段以使其同时适用于标题和答案的精确指导，请参阅[设置 searchFields](semantic-how-to-query-request.md#searchfields)。 
 
-+ 对于“answers”，参数构造为 `"answers": "extractive"`，其中，返回的默认答案数为 1。 可通过添加 `count`（如上例所示）来增加答案的数量（最多 5 个）。  是否需要多个答案取决于应用的用户体验以及呈现结果的方式。
++ 对于“answers”，参数构造为 `"answers": "extractive"`，其中，返回的默认答案数为 1。 可通过添加 `count`（如上例所示）来增加答案的数量（最多 10 个）。  是否需要多个答案取决于应用的用户体验以及呈现结果的方式。
 
 ## <a name="deconstruct-an-answer-from-the-response"></a>解构响应中的答案
 

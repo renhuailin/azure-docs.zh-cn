@@ -1,7 +1,7 @@
 ---
 title: 如何部署机器学习模型
 titleSuffix: Azure Machine Learning
-description: 了解如何以及在哪里部署机器学习模型。 部署到 Azure 容器实例、Azure Kubernetes 服务、Azure IoT Edge 和 FPGA。
+description: 了解如何以及在哪里部署机器学习模型。 部署到 Azure 容器实例、Azure Kubernetes 服务 和 FPGA。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.date: 04/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4
 adobe-target: true
-ms.openlocfilehash: 0592577040d411d3ecad395d8697828a5c4bc516
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6fc1fbb6a665d03e250beec85c66178feaa55189
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081364"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862259"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>将机器学习模型部署到 Azure 
 
@@ -37,6 +37,8 @@ ms.locfileid: "112081364"
 1. 测试生成的 Web 服务
 
 若要详细了解机器学习部署工作流中涉及的概念，请参阅[使用 Azure 机器学习来管理、部署和监视模型](concept-model-management-and-deployment.md)。
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -88,7 +90,7 @@ ws = Workspace(subscription_id="<subscription_id>",
 已部署的机器学习服务会遇到的典型情况是需要以下组件：
     
  + 表示要部署的特定模型的资源（例如：pytorch 模型文件）
- + 将在服务中运行的代码（可针对给定输入执行模型）
+ + 你将在服务中运行的代码，根据给定输入执行模型
 
 Azure 机器学习允许你将部署分成两个单独的部分以便保留相同代码，但只限更新模型。 我们将上传模型与代码“分开”的这种机制定义为“注册模型”。
 
@@ -410,7 +412,7 @@ Deploy your service again: null
 
 若要从工作区中删除已注册的模型，请使用 `az ml model delete <model id>`
 
-详细了解如何[删除 webservice](/cli/azure/ml/service#az_ml_service_delete) 和[删除模型](/cli/azure/ml/model#az_ml_model_delete)。
+详细了解如何[删除 webservice](/cli/azure/ml(v1)/computetarget/create#az_ml_service_delete) 和[删除模型](/cli/azure/ml/model#az_ml_model_delete)。
 
 # <a name="python"></a>[Python](#tab/python)
 

@@ -2,13 +2,13 @@
 title: 使用 MABS 将 SharePoint 场备份到 Azure
 description: 使用 Azure 备份服务器备份和还原 SharePoint 数据。 本文介绍如何配置 SharePoint 场，以便在 Azure 中存储所需的数据。 可以从磁盘或 Azure 还原受保护的 SharePoint 数据。
 ms.topic: conceptual
-ms.date: 04/26/2020
-ms.openlocfilehash: dd0c6ede50151114994152ed2375cf53f708c620
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 07/30/2021
+ms.openlocfilehash: 2c52ace2515fbb1423c2ca3be75dfde837e6dd5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769356"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734010"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>使用 MABS 将 SharePoint 场备份到 Azure
 
@@ -253,7 +253,26 @@ ms.locfileid: "108769356"
 
    这将启动一致性检查。
 
-1. 如果执行了步骤 6，那么现在可以从保护组中删除该卷。
+1. 如果执行了第 6 步，现在可以从保护组中删除该卷。
+
+## <a name="remove-a-database-from-a-sharepoint-farm"></a>从 SharePoint 场删除数据库
+
+从 SharePoint 场删除数据库时，MABS 将跳过该数据库的备份，继续备份 SharePoint 场中的其他数据库，并向备份管理员发出警报。
+
+### <a name="mabs-alert---farm-configuration-changed"></a>MABS 警报 - 场配置已更改
+
+这是在 SharePoint 数据库的自动保护失败时，Microsoft Azure 备份服务器 (MABS) 中生成的警报。 有关此警报原因的详细信息，请参阅警报“详细信息”窗格。
+
+若要解决此警报，请执行这些步骤：
+
+1. 如果已从场中自动删除数据库，请与 SharePoint 管理员验证。 如果已从场中删除了数据库，那么必须从 MABS 中的主动保护中删除该数据库。
+1. 若要从主动保护删除数据库，请执行以下操作：
+   1. 在 MABS 管理员控制台中，单击导航栏上的“保护”。
+   1. 在“显示”窗格中，右键单击 SharePoint 场的保护组，然后单击“停止保护成员”。
+   1. 在“停止保护”对话框中，单击“保留受保护的数据”。
+   1. 单击“停止保护”。
+
+使用“修改保护组”向导，可以添加 SharePoint 场再次进行保护。 在重新保护期间，选择 SharePoint 前端服务器并单击“刷新”以更新 SharePoint 数据库缓存，然后选择 SharePoint 场进行下一步操作。
 
 ## <a name="next-steps"></a>后续步骤
 

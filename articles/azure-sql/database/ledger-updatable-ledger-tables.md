@@ -1,27 +1,27 @@
 ---
 title: Azure SQL 数据库可更新账本表
 description: 本文提供有关 Azure SQL 数据库中可更新账本表、账本架构和账本视图的信息。
-ms.custom: ''
-ms.date: 05/25/2021
+ms.custom: references_regions
+ms.date: 07/23/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 688bcf79acd64006f35f7d5c6909088f5448d31d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 4a84cb359a0840f593fd732339a4ef9f9f3588db
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080392"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114665502"
 ---
 # <a name="azure-sql-database-updatable-ledger-tables"></a>Azure SQL 数据库可更新账本表
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Azure SQL 数据库账本目前为公共预览版，在美国中西部提供。
+> Azure SQL 数据库账本目前为公共预览版，在西欧、巴西南部和美国中西部提供。
 
 可更新账本表是系统版本控制表，用户可对其进行更新和删除，同时还提供防篡改功能。 更新或删除时，行的所有早期版本都将保留在辅助表中，称为历史记录表。 历史记录表反映了可更新账本表的架构。 更新行时，行的最新版本将保留在账本表中，而其早期版本由系统插入到历史记录表中，以透明方式向应用程序显示。 
 

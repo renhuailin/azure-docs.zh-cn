@@ -18,8 +18,6 @@ items:
             href: create-purview-dotnet.md
           - name: 创建 Purview 帐户 - Python
             href: create-purview-python.md
-          - name: 创建 Purview 帐户 - Azure 门户常见问题解答
-            href: create-purview-portal-faq.md
       - name: 创建集合 - Azure Purview Studio
         href: quickstart-create-collection.md
   - name: 教程
@@ -129,7 +127,7 @@ items:
               - name: Azure Data Lake Storage Gen 2
                 href: register-scan-adls-gen2.md
                 displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
-              - name: Azure SQL 数据库
+              - name: Azure SQL Database
                 href: register-scan-azure-sql-database.md
                 displayName: Register and scan Azure SQL DB
               - name: Azure SQL 数据库托管实例
@@ -237,28 +235,30 @@ items:
             href: sensitivity-insights.md
           - name: 查看文件扩展见解
             href: file-extension-insights.md
-      - name: 安全性和网络
+      - name: 网络和安全
         items:
-          - name: Azure Purview 专用终结点概述
-            href: catalog-private-link.md
-          - name: 私密且安全地连接到你的 Purview 帐户
-            href: catalog-private-link-account-portal.md
-          - name: 私密且安全地扫描数据源
-            href: catalog-private-link-ingestion.md
-          - name: 私密且安全地连接到你的 Azure Purview 并扫描数据源
-            href: catalog-private-link-end-to-end.md
-          - name: Azure Purview 专用终结点 DNS 配置
-            href: catalog-private-link-name-resolution.md
-          - name: Azure Purview 专用终结点故障排除指南
-            href: catalog-private-link-troubleshoot.md
-          - name: Azure Purview 专用终结点常见问题解答
-            href: catalog-private-link-faqs.md
-      - name: 灾难恢复
-        items:
-          - name: 灾难恢复
-            href: disaster-recovery.md
+          - name: 专用终结点
+            items:
+              - name: Azure Purview 专用终结点概述
+                href: catalog-private-link.md
+              - name: 私密且安全地连接到你的 Purview 帐户
+                href: catalog-private-link-account-portal.md
+              - name: 私密且安全地扫描数据源
+                href: catalog-private-link-ingestion.md
+              - name: 私密且安全地连接到你的 Azure Purview 并扫描数据源
+                href: catalog-private-link-end-to-end.md
+              - name: Azure Purview 专用终结点 DNS 配置
+                href: catalog-private-link-name-resolution.md
+              - name: Azure Purview 专用终结点故障排除指南
+                href: catalog-private-link-troubleshoot.md
+              - name: Azure Purview 专用终结点常见问题解答
+                href: catalog-private-link-faqs.md
+          - name: Azure 策略异常
+            href: create-purview-portal-faq.md
       - name: 管理 Kafka 通知 - .NET
         href: manage-kafka-dotnet.md
+      - name: 灾难恢复
+        href: disaster-recovery.md
   - name: 参考
     items:
       - name: Java

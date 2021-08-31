@@ -13,22 +13,22 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/11/2020
+ms.date: 08/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 274db058f9f291d720fc350bb23f7bfdde2791e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3975f23ad184ec04849fca57ef37d5fe57c2b48f
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670930"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272029"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 虚拟机支持的方案中的 SAP 工作负载
-在 Azure 中设计 SAP NetWeaver、Business One、`Hybris` 或 S/4HANA 系统体系结构为使用各种体系结构和工具实现可缩放、高效且高度可用的部署创造了大量不同的机会。 不过，这存在一些限制，具体取决于所用的操作系统或 DBMS。 此外，在本地受支持的方案不一定在 Azure 中受到同等的支持。 本文档介绍受支持的非高可用性和高可用性配置，以及仅使用 Azure VM 的体系结构。 有关 [HANA 大型实例](./hana-overview-architecture.md)支持的方案，请查看 [HANA 大型实例支持的方案](./hana-supported-scenario.md)一文。 
+在 Azure 中设计 SAP NetWeaver、Business One、`Hybris` 或 S/4HANA 系统体系结构为使用各种体系结构和工具实现可缩放、高效且高度可用的部署创造了各种不同的机会。 不过，这存在一些限制，具体取决于所用的操作系统或 DBMS。 此外，在本地受支持的方案不一定在 Azure 中受到同等的支持。 本文档介绍受支持的非高可用性和高可用性配置，以及仅使用 Azure VM 的体系结构。 有关 [HANA 大型实例](./hana-overview-architecture.md)支持的方案，请查看 [HANA 大型实例支持的方案](./hana-supported-scenario.md)一文。 
 
 
 ## <a name="2-tier-configuration"></a>2 层配置
-SAP 2 层配置被认为建立在由同一服务器或 VM 单元上运行的 SAP DBMS 和应用程序层组合而成的层的基础之上。 第二层被视为用户界面层。 采用 2 层配置时，DBMS 和 SAP 应用程序层共享 Azure VM 的资源。 因此，需要以一种避免资源争用的方式配置不同的组件。 此外，还需要小心不要过度订阅 VM 的资源。 此类配置不提供比各种相关 Azure 组件的 [Azure 服务级别协议](https://azure.microsoft.com/support/legal/sla/)更高的高可用性。
+SAP 2 层配置被认为建立在由同一服务器或 VM 单元上运行的 SAP DBMS 和应用程序层组合而成的层的基础之上。 第二层被视为用户界面层。 采用 2 层配置时，DBMS 和 SAP 应用程序层共享 Azure VM 的资源。 因此，需要以一种避免让不同的组件争用资源的方式来配置这些组件。 此外，还需要小心不要过度订阅 VM 的资源。 此类配置不提供比各种相关 Azure 组件的 [Azure 服务级别协议](https://azure.microsoft.com/support/legal/sla/)更高的高可用性。
 
 此类配置的图形表示形式如下所示：
 
@@ -69,7 +69,7 @@ SAP 2 层配置被认为建立在由同一服务器或 VM 单元上运行的 SAP
 - 对于 SAP HANA，支持一个 VM 上的多个实例（SAP 将此部署方法称为 MCOS）。 有关详细信息，请参阅 SAP 文章 [一台主机上的多个 SAP HANA 系统 (MCOS)](https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
 - /b2751fd43bec41a9a14e01913f1edf18.html)
 
-在一台主机上运行多个数据库实例时，需要确保不同的实例不会争用资源，从而导致超出 VM 的物理资源限制。 需要限制任一共享 VM 的实例可分配的内存时，尤其需要在内存方面做到这一点。 对于不同数据库实例可以利用的 CPU 资源，可能也是如此。 提到的所有 DBMS 都采用允许在实例级别限制内存分配和 CPU 资源的配置。
+在一台主机上运行多个数据库实例时，需要确保不同的实例不会争用资源，从而导致超出 VM 的物理资源限制。 需要限制任一共享 VM 的实例可分配的内存时，尤其需要在内存方面做到这一点。 对于不同数据库实例可以使用的 CPU 资源，可能也是如此。 提到的所有 DBMS 都采用允许在实例级别限制内存分配和 CPU 资源的配置。
 要使 Azure VM 支持此类配置，不同实例管理的数据库的数据文件和日志/重做日志文件所用的磁盘或卷应该是独立的。 换言之，不同 DBMS 实例管理的数据库的数据文件或日志/重做日志文件不应共享相同的磁盘或卷。 
 
 HANA 大型实例的磁盘配置已提供，请参阅 [HANA 大型实例支持的方案](./hana-supported-scenario.md#single-node-mcos)中的详细信息。 
@@ -246,7 +246,7 @@ SAP Central Services 是 SAP 配置的另一个单一故障点。 因此，也�
 - 如果在一个 Azure 可用性集中收集不同的 VM，或者应该在 VM 的 M 系列与 Mv2 系列之间进行大小调整，则跨 VM 系列调整大小可能会造成问题
 - 考虑数据库实例的 CPU 和内存消耗量，确保它能够以极短的延迟接收更改流，并有足够的 CPU 和内存资源，能够以极短的延迟对数据应用这些更改  
 
-可在[此处](../../sizes.md)找到有关不同 VM 大小限制的更多详细信息 
+可在 [VM 大小](../../sizes.md)页面找到有关不同 VM 大小限制的更多详细信息
 
 部署 DR 目标的另一种受支持方法是，在运行非生产 SAP 实例的非生产 DBMS 实例的 VM 上安装另一个 DBMS 实例。 此方法可能有点难度，因为需要确定应在 DR 方案中充当主要实例的特定目标实例所需的内存、CPU 资源、网络带宽和存储带宽。 尤其是在 HANA 中，强烈建议在共享主机上配置充当 DR 目标的实例，使数据不会预先加载到 DR 目标实例中。
 
@@ -282,20 +282,20 @@ Azure 体系结构上的 SAP 工作负载不支持某些方案。 “不支持�
 
 - 存储软设备：Azure 市场中提供了许多存储软设备。 某些供应商会提供自己的文档，介绍如何在 Azure 上使用这些与 SAP 软件相关的存储软设备。 涉及此类存储软设备的配置或部署的支持需要由这些存储软设备的供应商来提供。 [SAP 支持说明 #2015553](https://launchpad.support.sap.com/#/notes/2015553) 中也表述了这一事实
 - 高可用性框架：对于 Azure 上的 SAP 工作负载，仅支持使用 Pacemaker 和 Windows Server 故障转移群集作为高可用性框架。 如前所述，Microsoft 介绍了 SIOS `Datakeeper` 解决方案并制作了其文档。 尽管如此，SIOS `Datakeeper` 的组件需要通过 SIOS（作为提供这些组件的供应商）来提供支持。 SAP 还在不同的 SAP 说明中列出了其他已通过认证的高可用性框架。 其中的某些框架也通过了 Azure 第三方供应商的认证。 尽管如此，使用这些产品的配置需要由产品供应商提供支持。 不同的供应商集成到 SAP 支持流程的方式不同。 决定在 Azure 上部署的 SAP 配置中使用产品之前，应明确知道哪种支持流程最适合特定的供应商。
-- 数据库文件驻留在共享磁盘上的共享磁盘群集不受支持（maxDB 除外）。 对于其他所有数据库，支持的解决方案是使用单独的存储位置，而不是 SMB、NFS 共享或共享磁盘来配置高可用性方案
+- 数据库文件驻留在共享磁盘上的共享磁盘群集不受支持（maxDB 除外）。 对于其他所有数据库，支持的解决方案是使用单独的存储位置，而不是使用 SMB、NFS 共享或共享磁盘来配置高可用性方案
 
 不支持的其他方案如下所述：
 
 - 像在 NetWeaver、S/4HANA 和 `Hybris` 等系统中那样，会在 SAP 通用体系结构中的 SAP 应用层与 SAP DBMS 层之间造成较高网络延迟的部署方案。 这包括：
     - 在本地部署一个层，并在 Azure 中部署另一个层
     - 在不同的 Azure 区域中部署系统的 SAP 应用层，而部署的层不是 DBMS 层
-    - 在与 Azure 位于同一位置的数据中心内部署一个层，并在 Azure 中部署另一个层，但此类体系结构模式由 Azure 原生服务提供时除外
+    - 在与 Azure 位于同一位置的数据中心内部署一个层，并在 Azure 中部署另一个层，只不过此类体系结构模式是由 Azure 原生服务提供的
     - 在 SAP 应用层与 DBMS 层之间部署网络虚拟设备
     - 将与 Azure 数据中心位于同一位置的数据中心内托管的存储用于 SAP DBMS 层或 SAP 全局传输目录
     - 在两家不同的云供应商处部署两个层。 例如，在 Oracle 云基础结构中部署 DBMS 层，并在 Azure 中部署应用层
 - 多实例 HANA Pacemaker 群集配置
 - Windows 支持通过适用于 SAP 数据库的 ANF 上的 SOFS 或 SMB 进行使用共享磁盘的 Windows 群集配置。 不过，我们建议使用特定数据库的本机高可用性复制，并使用单独的存储堆栈
-- 在 Linux 上，支持使用位于 ANF 顶层的 NFS 共享中的数据库文件部署 SAP 数据库，但 SAP HANA 除外
+- 在 Linux 上，支持使用位于 ANF 顶层的 NFS 共享中的数据库文件部署 SAP 数据库，但 SAP HANA、Oracle Linux 上的 Oracle 以及 SUSE 和 RedHat 上的 Db2 除外
 - 在除 Windows 和 Oracle Linux 以外的任何其他来宾 OS 上部署 Oracle DBMS。 另请参阅 [SAP 支持说明 #2039619](https://launchpad.support.sap.com/#/notes/2039619)
 
 我们未进行测试，因此没有经验的方案包括：

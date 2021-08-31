@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 06/11/2021
+ms.date: 07/01/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack
-ms.openlocfilehash: dff2e9c0c1de1b92f0d00d5dc50aeb7dadca348f
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 2da9b19bb0d2bcdf09cb478898590d55398b2cc9
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030892"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180067"
 ---
 # <a name="set-up-automl-training-with-python"></a>使用 Python 设置自动化机器学习训练
 
@@ -46,13 +46,15 @@ ms.locfileid: "112030892"
     * 创建一个计算实例，该实例将自动安装 SDK 并针对 ML 工作流进行预先配置。 有关详细信息，请参阅[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)。 
 
     * [自行安装 `automl` 包](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)，其中包括 SDK [默认安装](/python/api/overview/azure/ml/install#default-install)。
+
+    [!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
     
     > [!WARNING]
     > Python 3.8 与 `automl` 不兼容。 
 
 ## <a name="select-your-experiment-type"></a>选择试验类型
 
-在开始试验之前，应确定要解决的机器学习问题类型。 自动化机器学习支持 `classification`、`regression` 和 `forecasting` 任务类型。 详细了解[任务类型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
+在开始试验之前，应确定要解决的机器学习问题类型。 自动化机器学习支持 `classification`、`regression` 和 `forecasting` 任务类型。 详细了解[任务类型](concept-automated-ml.md#when-to-use-automl-classification-regression--forecasting)。
 
 下面的代码使用 `AutoMLConfig` 构造函数中的 `task` 参数将试验类型指定为 `classification`。
 
@@ -71,14 +73,14 @@ automl_config = AutoMLConfig(task = "classification")
 - 数据必须为表格格式。
 - 要预测的值（目标列）必须位于数据中。
 
-**对于远程试验**，必须能够从远程计算访问训练数据。 AutoML 仅在处理远程计算时才接受 [Azure 机器学习 TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset)。 
+**对于远程试验**，必须能够从远程计算访问训练数据。 自动化 ML 仅在处理远程计算时才接受 [Azure 机器学习 TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset)。 
 
 Azure 机器学习数据集公开的功能可以：
 
 * 轻松地将数据从静态文件或 URL 源传输到工作区。
 * 在云计算资源上运行时，使数据可用于训练脚本。 有关使用 `Dataset` 类将数据装载到远程计算目标的示例，请参阅[如何使用数据集进行训练](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets)。
 
-下面的代码从一个 Web URL 创建 TabularDataset。 有关从其他源（例如本地文件和数据存储）创建数据集的代码示例，请参阅[创建 TabularDataset](how-to-create-register-datasets.md#create-a-tabulardataset)。
+下面的代码从一个 Web URL 创建 TabularDataset。 有关如何从其他源（例如本地文件和数据存储）创建数据集的代码示例，请参阅[创建 TabularDataset](how-to-create-register-datasets.md#create-a-tabulardataset)。
 
 ```python
 from azureml.core.dataset import Dataset
@@ -108,6 +110,22 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 |**小于 20,000 行**| 将应用交叉验证方法。 默认折数取决于行数。 <br> **如果数据集小于 1,000 行**，则使用 10 折。 <br> **如果行数在 1,000 到 20,000 之间**，则使用 3 折。
 
 此时，你需要提供自己的 **测试数据** 来进行模型评估。 如果需要通过代码示例来演示如何引入你自己的测试数据进行模型评估，请参阅 [此 Jupyter 笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)的 **Test** 节。
+
+### <a name="large-data"></a>大型数据 
+
+自动化 ML 支持使用有限数量的算法针对大型数据进行训练，这样可以在小型虚拟机上成功生成大数据的模型。 自动化 ML 启发式方法取决于数据大小、虚拟机内存大小、试验超时和特征化设置等属性，以确定是否应该应用这些大型数据算法。 [详细了解自动化 ML 支持哪些模型](#supported-models)。 
+
+* 对于回归，[联机梯度下降回归量](/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?preserve-view=true&view=nimbusml-py-latest)和[快速线性回归量](/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?preserve-view=true&view=nimbusml-py-latest)
+
+* 对于分类，[平均感知器分类器](/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)和[线性 SVM 分类器](/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)；其中，线性 SVM 分类器同时具有大型数据和小型数据版本。
+
+如果要替代这些启发式方法，请应用以下设置： 
+
+任务 | 设置 | 说明
+|---|---|---
+阻止数据流式处理算法&nbsp; | `AutoMLConfig` 对象中的 `blocked_models`，并列出不需要使用的模型。 | 导致运行失败或长时间运行
+使用数据流式处理算法&nbsp;&nbsp;&nbsp;| `AutoMLConfig` 对象中的 `allowed_models`，并列出需要使用的模型。| 
+使用数据流式处理算法&nbsp;&nbsp;&nbsp; <br> [（工作室 UI 试验）](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)|阻止除要使用的大数据算法之外的所有模型。 |
 
 ## <a name="compute-to-run-experiment"></a>用于运行试验的计算环境
 
@@ -183,7 +201,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 下表按任务类型汇总了支持的模型。 
 
 > [!NOTE]
-> 如果你计划将自动化机器学习创建的模型导出为 [ONNX 模型](concept-onnx.md)，只有标有 * 的算法才能转换为 ONNX 格式。 详细了解[如何将模型转换为 ONNX](concept-automated-ml.md#use-with-onnx)。 <br> <br> 另请注意，ONNX 目前只支持分类和回归任务。 
+> 如果你计划将自动化 ML 创建的模型导出为 [ONNX 模型](concept-onnx.md)，则只有标有 *（星号）的算法才能被转换为 ONNX 格式。 详细了解[如何将模型转换为 ONNX](concept-automated-ml.md#use-with-onnx)。 <br> <br> 另请注意，ONNX 目前只支持分类和回归任务。 
 
 分类 | 回归 | 时序预测
 |-- |-- |--
@@ -204,6 +222,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 ||| 平均值
 ||| SeasonalAverage
 ||| [ExponentialSmoothing](https://www.statsmodels.org/v0.10.2/generated/statsmodels.tsa.holtwinters.ExponentialSmoothing.html)
+
 ### <a name="primary-metric"></a>主要指标
 `primary metric` 参数决定了将在模型训练期间用于优化的指标。 你可选择的可用指标取决于所选择的任务类型，下表显示了每种任务类型的有效主要指标。
 
@@ -213,15 +232,14 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 |分类 | 回归 | 时序预测
 |--|--|--
-|`accuracy`| `spearman_correlation` | `spearman_correlation`
-|`AUC_weighted` | `normalized_root_mean_squared_error` | `normalized_root_mean_squared_error`
-|`average_precision_score_weighted` | `r2_score` | `r2_score`
-|`norm_macro_recall` | `normalized_mean_absolute_error` | `normalized_mean_absolute_error`
+|`accuracy`| `spearman_correlation` | `normalized_root_mean_squared_error`
+|`AUC_weighted` | `normalized_root_mean_squared_error` | `r2_score`
+|`average_precision_score_weighted` | `r2_score` | `normalized_mean_absolute_error`
+|`norm_macro_recall` | `normalized_mean_absolute_error` | 
 |`precision_score_weighted` |
 
-### <a name="primary-metrics-for-classification-scenarios"></a>分类方案的主要指标 
-
-对于类别偏斜严重（类别不均衡）的小型数据集或预期的指标值非常接近 0.0 或 1.0 时，发布的阈值指标（如 `accuracy`、`average_precision_score_weighted`、`norm_macro_recall` 和 `precision_score_weighted`）可能也不是最优的。 在这些情况下，对于主要指标，`AUC_weighted` 可能是更好的选择。 自动机器学习完成后，可以根据最能满足你业务需求的指标选择所需模型。
+#### <a name="metrics-for-classification-scenarios"></a>分类方案的指标 
+如果数据集小、类倾斜非常大（类不均衡），或者预期的指标值非常接近 0.0 或 1.0，则阈值后指标（如 `accuracy`、`average_precision_score_weighted`、`norm_macro_recall` 和 `precision_score_weighted`）可能也不是最优的。 在这些情况下，对于主要指标，`AUC_weighted` 可能是更好的选择。 自动机器学习完成后，可以根据最能满足你业务需求的指标选择所需模型。
 
 | 指标 | 示例用例 |
 | ------ | ------- |
@@ -231,8 +249,8 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 | `norm_macro_recall` | 流失预测 |
 | `precision_score_weighted` |  |
 
-### <a name="primary-metrics-for-regression-scenarios"></a>回归方案的主要指标
-
+#### <a name="metrics-for-regression-scenarios"></a>回归方案的指标
+ 
 当要预测的值的范围涵盖多个数量级时，`r2_score` 和 `spearman_correlation` 等指标可以更好地体现模型的质量。 例如，在薪水估算中，许多人的薪水在 2 万至 10 万美元之间，但某些人的薪水在 1 亿美元的范围中，这极大地拉大了总量级范围。 
 
 在这种情况下，`normalized_mean_absolute_error` 和 `normalized_root_mean_squared_error` 会认为 2 万美元的预测误差对于薪水为 3 万美元的工人和薪水为 2000 万美元的工人是没有区别的。 但实际上，在 2000 万美元薪水的基础上增减 2 万美元和增减前的预测应该非常接近（相对差值很小，增减占比 0.1%），而在 3 万美元薪水的基础上增减 2 万美元和增减前的预测应该非常大（相对差值很大，增减占比 67%）。 当要预测的值在相似的量级范围内时，`normalized_mean_absolute_error` 和 `normalized_root_mean_squared_error` 会比较有用。
@@ -244,14 +262,12 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 | `r2_score` | 航空延迟、薪金估算、Bug 解决时间 |
 | `normalized_mean_absolute_error` |  |
 
-### <a name="primary-metrics-for-time-series-forecasting-scenarios"></a>时序预测方案的主要指标
-
-请参阅上面的回归注释。
+#### <a name="metrics-for-time-series-forecasting-scenarios"></a>时序预测方案的指标
+这些建议与针对回归方案提供的建议类似。 
 
 | 指标 | 示例用例 |
 | ------ | ------- |
-| `spearman_correlation` | |
-| `normalized_root_mean_squared_error` | 价格预测（预测）、库存优化、需求预测 |
+| `normalized_root_mean_squared_error` | 价格预测（预测）、库存优化、需求预测 | 
 | `r2_score` | 价格预测（预测）、库存优化、需求预测 |
 | `normalized_mean_absolute_error` | |
 
@@ -353,6 +369,9 @@ automl_classifier = AutoMLConfig(
 达到某个分数| 使用 `experiment_exit_score` 将在达到指定的主要指标分数后完成试验。
 
 ## <a name="run-experiment"></a>运行试验
+
+> [!WARNING]
+> 如果多次使用相同的配置设置和主要指标运行一个试验，你可能会发现每个试验最终指标分数与生成的模型之间的差异。 自动化 ML 使用的算法本身具有随机性，这可能会导致试验输出的模型与建议的模型最终指标分数（如准确度）之间出现细微差异。 你也可能会看到模型名称相同，但使用的超参数不同的结果。 
 
 对于自动化 ML，可以创建 `Experiment` 对象，这是 `Workspace` 中用于运行实验的命名对象。
 
@@ -492,8 +511,6 @@ best_run, model_from_aml = automl_run.get_output()
 print_model(model_from_aml)
 
 ```
-> [!NOTE]
-> 自动化 ML 使用的算法本身具有随机性，这可能会导致建议的模型最终指标分数（如准确度）出现细微差异。 自动化 ML 还可在必要时对数据执行操作，例如训练-测试拆分、训练-验证拆分或交叉验证。 因此，如果多次使用相同的配置设置和主要指标运行一个试验，你可能会发现由于这些因素导致每个试验最终指标分数存在差异。 
 
 ## <a name="monitor-automated-machine-learning-runs"></a><a name="monitor"></a> 监视自动化机器学习运行
 
@@ -519,14 +536,14 @@ RunDetails(run).show()
 
 ```Python
 
-best_run, fitted_model = run.get_output()
+best_run = run.get_best_child()
 print(fitted_model.steps)
 
 model_name = best_run.properties['model_name']
 description = 'AutoML forecast example'
 tags = None
 
-model = remote_run.register_model(model_name = model_name, 
+model = run.register_model(model_name = model_name, 
                                   description = description, 
                                   tags = tags)
 ```
@@ -554,7 +571,5 @@ model = remote_run.register_model(model_name = model_name,
 + 详细了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
 
 + 详细了解[如何使用自动化机器学习训练回归模型](tutorial-auto-train-models.md)。
-
-+ 了解如何在[多模型解决方案加速器](https://aka.ms/many-models)中使用 AutoML 训练多个模型。
 
 + [对自动化 ML 试验进行故障排除](how-to-troubleshoot-auto-ml.md)。 

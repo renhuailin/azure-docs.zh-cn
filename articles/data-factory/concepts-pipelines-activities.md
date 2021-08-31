@@ -1,33 +1,36 @@
 ---
-title: Azure 数据工厂中的管道和活动
-description: 了解有关 Azure 数据工厂中的管道和活动的信息。
+title: 管道和活动
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解 Azure 数据工厂和 Azure Synapse Analytics 中的管道和活动。
 author: dcstwh
 ms.author: weetok
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 8c910264a01967b62ebae80f63ac3f40e98ab48a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 08/24/2021
+ms.openlocfilehash: 135d9235a94dd22311a804ee8c20046d2608a95c
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773264"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822218"
 ---
-# <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
+# <a name="pipelines-and-activities-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的管道和活动
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-create-pipelines.md)
 > * [当前版本](concepts-pipelines-activities.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文帮助你了解 Azure 数据工厂中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端到端数据驱动工作流。
+本文帮助你了解 Azure 数据工厂和 Azure Synapse Analytics 中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端到端数据驱动工作流。
 
 ## <a name="overview"></a>概述
-数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 例如，管道可以包含一组活动，这些活动引入和清除日志数据，然后启动映射数据流以分析日志数据。 可以通过管道将活动作为一个集来管理，而非单独管理每个活动。 可以部署和计划管道，而不需单独对活动进行操作。
+一个数据工厂或 Synapse 工作区可以有一个或多个管道。 “管道”是共同执行一项任务的活动的逻辑分组。 例如，管道可以包含一组活动，这些活动引入和清除日志数据，然后启动映射数据流以分析日志数据。 可以通过管道将活动作为一个集来管理，而非单独管理每个活动。 可以部署和计划管道，而不需单独对活动进行操作。
 
 管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从 SQL Server 复制到 Azure Blob 存储。 然后，使用数据流活动或 Databricks Notebook 活动来处理数据并将数据从 Blob 存储转换为 Azure Synapse Analytics 池，在此池的基础上构建商业智能报表解决方案。
 
-数据工厂包含三组活动：[数据移动活动](copy-activity-overview.md)、[数据转换活动](transform-data.md)和[控制活动](#control-flow-activities)。 每个活动可获取零个或多个输入[数据集](concepts-datasets-linked-services.md)，并生成一个或多个输出[数据集](concepts-datasets-linked-services.md)。 下图显示了数据工厂中管道、活动和数据集之间的关系：
+Azure 数据工厂和 Azure Synapse Analytics 支持三组活动：[数据移动活动](copy-activity-overview.md)、[数据转换活动](transform-data.md)和[控制活动](#control-flow-activities)。 每个活动可获取零个或多个输入[数据集](concepts-datasets-linked-services.md)，并生成一个或多个输出[数据集](concepts-datasets-linked-services.md)。 下图显示了管道、活动和数据集之间的关系：
 
 ![数据集、活动和管道之间的关系](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
@@ -42,18 +45,18 @@ ms.locfileid: "108773264"
 有关详细信息，请参阅[复制活动 - 概述](copy-activity-overview.md)一文。
 
 ## <a name="data-transformation-activities"></a>数据转换活动
-Azure 数据工厂支持以下转换活动，这些活动既可以单独添加到管道，也可以与其他活动关联在一起添加。
+Azure 数据工厂和 Azure Synapse Analytics 支持以下转换活动，这些活动既可以单独添加，也可以与其他活动关联在一起添加。
 
 数据转换活动 | 计算环境
 ---------------------------- | -------------------
-[数据流](control-flow-execute-data-flow-activity.md) | Azure Databricks 由 Azure 数据工厂管理
+[数据流](control-flow-execute-data-flow-activity.md) | 由 Azure 数据工厂管理的 Apache Spark 群集
 [Azure Function](control-flow-azure-function-activity.md) | Azure Functions
 [Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop 流式处理](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[Azure 机器学习工作室（经典版）活动：批处理执行和更新资源](transform-data-using-machine-learning.md) | Azure VM
+[ML 工作室（经典）活动：批处理执行和更新资源](transform-data-using-machine-learning.md) | Azure VM
 [存储过程](transform-data-using-stored-procedure.md) | Azure SQL、Azure Synapse Analytics 或 SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [自定义活动](transform-data-using-dotnet-custom-activity.md) | Azure Batch
@@ -69,17 +72,17 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 控制活动 | 说明
 ---------------- | -----------
 [追加变量](control-flow-append-variable-activity.md) | 向现有数组变量中添加值。
-[执行管道](control-flow-execute-pipeline-activity.md) | Execute Pipeline 活动允许数据工厂管道调用另一个管道。
+[执行管道](control-flow-execute-pipeline-activity.md) | 执行管道活动允许数据工厂或 Synapse 管道调用另一个管道。
 [Filter](control-flow-filter-activity.md) | 将筛选器表达式应用于输入数组
 [对每一个](control-flow-for-each-activity.md) | ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
-[获取元数据](control-flow-get-metadata-activity.md) | GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的元数据。
+[获取元数据](control-flow-get-metadata-activity.md) | GetMetadata 活动可用于检索数据工厂或 Synapse 管道中的任何数据的元数据。
 [If Condition 活动](control-flow-if-condition-activity.md) | If Condition 可用于基于计算结果为 true 或 false 的条件进行分支。 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为 `true` 时，它会计算一组活动，当条件计算结果为 `false.` 时，它会计算另一组活动
 [Lookup 活动](control-flow-lookup-activity.md) | 查找活动可用于从任何外部源读取或查找记录/表名称/值。 此输出可进一步由后续活动引用。
 [设置变量](control-flow-set-variable-activity.md) | 设置现有变量的值。
-[Until 活动](control-flow-until-activity.md) | 实现类似于采用编程语言的 Do-Until 循环结构的 Do-Until 循环。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。
+[Until 活动](control-flow-until-activity.md) | 实现类似于采用编程语言的 Do-Until 循环结构的 Do-Until 循环。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 可以为 Until 活动指定超时值。
 [验证活动](control-flow-validation-activity.md) | 确保管道仅在存在引用数据集、满足指定条件或已超时时才继续执行。
 [Wait 活动](control-flow-wait-activity.md) | 在管道中使用 Wait 活动时，管道将等待指定的时间，然后继续执行后续活动。
-[Web 活动](control-flow-web-activity.md) | Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
+[Web 活动](control-flow-web-activity.md) | Web 活动可用于从管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
 [Webhook 活动](control-flow-webhook-activity.md) | 使用 Webhook 活动，调用终结点并传递回调 URL。 管道运行在继续下一个活动之前，等待调用回调。
 
 ## <a name="pipeline-json"></a>管道 JSON
@@ -109,7 +112,7 @@ name | 管道的名称。 指定一个名称，它表示管道要执行的操作
 description | 指定描述管道用途的文本。 | 字符串 | 否
 活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
 parameters | **参数** 部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
-concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则附加管道运行将排队，直到较早的管道完成为止 | Number | 否 
+concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则附加管道运行将排队，直到较早的管道完成为止 | 数字 | 否 
 annotations | 与管道关联的标记的列表 | Array | 否
 
 ## <a name="activity-json"></a>活动 JSON
@@ -138,12 +141,12 @@ annotations | 与管道关联的标记的列表 | Array | 否
 
 下表描述了活动 JSON 定义中的属性：
 
-标记 | 说明 | 必需
+标记 | 描述 | 必需
 --- | ----------- | ---------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\"” | 是</li></ul>
 description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-flow-activities)部分。 | 是
-linkedServiceName | 活动使用的链接服务的名称。<br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 | 对 HDInsight 活动、Azure 机器学习工作室（经典）批处理评分活动和存储过程活动是必需的。 <br/><br/>对其他活动均非必需
+linkedServiceName | 活动使用的链接服务的名称。<br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 | 对 HDInsight 活动、ML 工作室（经典）批处理评分活动和存储过程活动是必需的。 <br/><br/>对其他活动均非必需
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
 policy | 影响活动运行时行为的策略。 该属性包括超时和重试行为。 如果未指定，将使用默认值。 有关详细信息，请参阅[活动策略](#activity-policy)部分。 | 否
 dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前活动的依赖方式。 有关详细信息，请参阅[活动依赖项](#activity-dependency) | 否
@@ -203,7 +206,7 @@ secureOutput | 当设置为 true 时，来自活动的输出会被视为安全�
 }
 ```
 
-标记 | 说明 | 必需
+标记 | 描述 | 必需
 --- | ----------- | --------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\"” | 是</li><ul>
 description | 描述活动用途的文本 | 是
@@ -403,3 +406,6 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 
 - [构建包含复制活动的管道](quickstart-create-data-factory-powershell.md)
 - [使用数据转换活动生成管道](tutorial-transform-data-spark-powershell.md)
+
+如何使用 Azure 数据工厂实现 CI/CD（持续集成和持续交付）
+- [Azure 数据工厂中的持续集成和持续交付](continuous-integration-deployment.md)

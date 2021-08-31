@@ -1,23 +1,20 @@
 ---
-title: 在 Azure Application Insights 中使用 Impact | Microsoft docs
+title: Application Insights 使用情况影响 - Azure Monitor
 description: 分析不同的属性对应用部件的转换率造成的潜在影响。
 ms.topic: conceptual
-author: NumberByColors
-ms.author: daviste
-ms.date: 01/08/2019
-ms.reviewer: mbullwin
-ms.openlocfilehash: 8ce49488124f07f05b8df2d9f4eae41e041aa0aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: lgayhardt
+ms.author: lagayhar
+ms.date: 07/30/2021
+ms.openlocfilehash: 3e484cb0f083292ba22c7a30c79202d01d1b10eb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026183"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734363"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights 中的 Impact 分析功能
 
 Impact 可以分析加载时间和其他属性对应用的各个部件的转换率造成的影响。 更准确地说，Impact 可以发现 **页面视图** 的 **任何维度**、**自定义事件** 或 **请求** 对不同 **页面视图** 或 **自定义事件** 造成的影响。 
-
-![Impact 工具](./media/usage-impact/0001-impact.png)
 
 ## <a name="still-not-sure-what-impact-does"></a>仍不确定 Impact 的作用？
 
@@ -25,26 +22,36 @@ Impact 可以分析加载时间和其他属性对应用的各个部件的转换�
 
 不过，分析性能只是 Impact 的一部分功能。 由于 Impact 支持自定义事件和维度，只需单击几下鼠标，就能解答用户浏览器的选择与不同转换率之间的相关性等问题。
 
-![浏览器转换屏幕截图](./media/usage-impact/0004-browsers.png)
-
 > [!NOTE]
-> Application Insights 资源必须包含页面视图或自定义事件才能使用 Impact 工具。 [了解如何使用 Application Insights JavaScript SDK 将应用设置为自动收集页面访问次数](./javascript.md)。 另请注意，由于分析的是相关性，因此样本大小非常重要。
->
->
+> Application Insights 资源必须包含页面视图或自定义事件才能使用 Impact 分析工作簿。 [了解如何使用 Application Insights JavaScript SDK 将应用设置为自动收集页面访问次数](./javascript.md)。 另请注意，由于分析的是相关性，因此样本大小非常重要。
+
+## <a name="impact-analytics-workbook"></a>Impact 分析工作簿 
+
+要使用 Impact 分析工作簿，请在 Application Insights 资源中导航到“使用情况” > “Impact”并选择“Impact 分析工作簿”。 也可在“工作簿”选项卡中选择“公共模板”，然后在“使用情况”下选择“用户 Impact 分析”。
+
+:::image type="content" source="./media/usage-impact/workbooks-gallery.png" alt-text="公共模板上工作簿库的屏幕截图。" lightbox="./media/usage-impact/workbooks-gallery.png":::
+
+
+### <a name="using-the-workbook"></a>使用工作簿
+
+:::image type="content" source="./media/usage-impact/selected-event.png" alt-text="屏幕截图中显示了在何处选择初始页面视图、自定义事件或请求。" lightbox="./media/usage-impact/selected-event.png":::
+
+1. 在“已选事件”下拉列表中选择事件
+2. 在“分析其性能影响”下拉列表中选择指标
+3. 在“影响事件”下拉列表中选择事件 
+1. 如果你想添加筛选器，可以在“添加已选事件筛选器”和/或“添加影响事件筛选器”中执行此操作。
+
 
 ## <a name="is-page-load-time-impacting-how-many-people-convert-on-my-page"></a>页面加载时间是否影响了页面上的人员转换数量？
 
-若要开始使用 Impact 工具解答问题，请选择初始页面视图、自定义事件或请求。
+若要开始使用 Impact 工作簿解答问题，请选择初始页面视图、自定义事件或请求。
 
-![屏幕截图中显示了在何处选择初始页面视图、自定义事件或请求。](./media/usage-impact/0002-dropdown.png)
-
-1. 从“针对页面视图”下拉列表中选择一个页面视图。
+1. 在“已选事件”下拉列表中选择事件。
 2. 将“分析依据”下拉列表中的选择保留为“持续时间”（在此上下文中，“持续时间”是“页面加载时间”的别名）。
-3. 在“影响以下对象的使用”下拉列表中，选择一个自定义事件。 此事件应该对应于在步骤 1 中选择的页面视图的 UI 元素。
+3. 在“影响事件”下拉列表中，选择一个自定义事件。 此事件应该对应于在步骤 1 中选择的页面视图的 UI 元素。
 
-![结果的屏幕截图](./media/usage-impact/0003-results.png)
 
-在此情况下，随着“产品页面”加载时间的增加，“单击‘购买产品’”的转换率下降。 根据上面的分布，可将最佳页面加载持续时间 3.5 秒指定为目标，以实现潜在的 55% 转换率。 可将加载时间降到 3.5 秒以下的其他性能改进措施目前与带来的其他转换优势没有关联。
+:::image type="content" source="./media/usage-impact/impact.png" alt-text="屏幕截图显示了一个示例，该示例将所选事件作为按持续时间分析的主页。" lightbox="./media/usage-impact/impact.png":::
 
 ## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>是否能以自定义的方式跟踪页面视图或加载时间？
 
@@ -52,20 +59,19 @@ Impact 支持标准和自定义的属性与度量值。 可以任意使用这两
 
 ## <a name="do-users-from-different-countries-or-regions-convert-at-different-rates"></a>来自不同国家或地区的用户是否以不同的比率转换？
 
-1. 从“针对页面视图”下拉列表中选择一个页面视图。
+1. 在“已选事件”下拉列表中选择事件。
 2. 在“分析依据”下拉列表中选择“国家或地区”
-3. 在“影响以下对象的使用”下拉列表中，选择与在步骤 1 中选择的页面视图中的 UI 元素对应的自定义事件。
+3. 在“影响事件”下拉列表中，选择与在步骤 1 中选择的页面视图中的 UI 元素对应的自定义事件。
 
-在本例中，结果不再像第一个示例中一样拟合到持续 X 轴模型中， 而是显示类似于分段漏斗图的可视化效果。 按“使用情况”排序，可以按国家/地区查看自定义事件转换的变体。
+:::image type="content" source="./media/usage-impact/regions.png" alt-text="屏幕截图显示了一个示例，其中已选事件作为按国家/地区分析的 GET。" lightbox="./media/usage-impact/regions.png":::
 
+## <a name="how-does-the-impact-analysis-workbook-calculate-these-conversion-rates"></a>Impact 分析工作簿如何计算这些转换率？
 
-## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Impact 工具如何计算这些转换率？
-
-在底层，Impact 工具依赖于[皮尔逊相关系数](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)。 结果是在 -1 与 1 之间计算的，-1 表示负线性相关，1 表示正线性相关。
+在幕后，Impact 分析工作簿依赖于[皮尔逊相关系数](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)。 结果是在 -1 与 1 之间计算的，-1 表示负线性相关，1 表示正线性相关。
 
 简单而言，Impact Analysis 工作原理的分解如下：
 
-让 _A_ = 在第一个下拉列表中选择的主要页面视图/自定义事件/请求。 （**针对页面视图**）。
+让 _A_ = 在第一个下拉列表中选择的主要页面视图/自定义事件/请求。 （已选事件）。
 
 让 _B_ = 选择的次要页面视图/自定义事件（**影响以下对象的使用**）。
 
@@ -80,6 +86,7 @@ Impact 最终计算方式根据是按指标还是按维护分析而异。 使用
 
 ## <a name="next-steps"></a>后续步骤
 
+- 要详细了解工作簿，请访问[工作簿概述](../visualize/workbooks-overview.md)。
 - 若要启用使用体验，请首先发送[自定义事件](./api-custom-events-metrics.md#trackevent)或[页面视图](./api-custom-events-metrics.md#page-views)。
 - 如果已经发送自定义事件或页面视图，请浏览使用情况工具，了解用户如何使用服务。
     - [漏斗图](usage-funnels.md)

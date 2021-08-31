@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: aabe246c343537a42c33d3eaad0bfae3989022fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 012fdf6e35b0b0c27f8ad9afe10b5f70709fcc64
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604509"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093547"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>在地图上显示交通数据 (Android SDK)
 
@@ -31,12 +31,12 @@ Azure Maps 中提供了两种类型的交通数据：
 - 事件数据 - 由基于点和线的数据组成，针对诸如施工、道路封闭和事故等事项。
 - 流量数据 - 提供有关道路交通流量的指标。 通常，交通流量流数据用于为道路着色。 这些颜色基于相对于速度限制或其他指标而言，多大的交通会减慢流量。 有四个值可传递到地图的交通 `flow` 选项。
 
-    |交通流量值 | 说明|
+    |流量枚举 | 说明|
     | :-- | :-- |
-    | TrafficFlow.NONE | 不在地图上显示交通数据 |
-    | TrafficFlow.RELATIVE | 显示相对于道路的自由流量速度的交通数据 |
-    | TrafficFlow.RELATIVE_DELAY | 显示比平均预期延迟更慢的区域 |
-    | TrafficFlow.ABSOLUTE | 显示道路中所有车辆的绝对速度 |
+    | `TrafficFlow.NONE` | 不在地图上显示交通数据 |
+    | `TrafficFlow.RELATIVE` | 显示相对于道路的自由流量速度的交通数据 |
+    | `TrafficFlow.RELATIVE_DELAY` | 显示比平均预期延迟更慢的区域 |
+    | `TrafficFlow.ABSOLUTE` | 显示道路中所有车辆的绝对速度 |
 
 下面的代码演示如何在地图上显示交通数据。
 
@@ -182,6 +182,77 @@ map.events.add(OnFeatureClick { features: List<Feature>? ->
 以下屏幕截图显示了上面的代码在地图上进行的实时交通信息渲染，以及显示事件详细信息的 toast 消息。
 
 ![地图上显示实时交通信息，并且包含一个显示交通事件详细信息的 toast 消息](media/how-to-show-traffic-android/android-traffic-details.png)
+
+## <a name="filter-traffic-incidents"></a>筛选交通事件
+
+在大多数主要城市，通常每天会有非常多的交通事件，但根据你的场景，可能需要进行筛选，以显示一部分这些事件。 在设置流量选项时，`incidentCategoryFilter` 和 `incidentMagnitudeFilter` 选项会接受一批事件类别、量级枚举器或字符串值。
+
+下表显示了可在 `incidentCategoryFilter` 选项中使用的所有交通事件类别。
+
+| 类别枚举 | 字符串值 | 说明 |
+|--------------------|--------------|-------------|
+| `IncidentCategory.UNKNOWN` | `"unknown"` | 不符合任何已定义类别或尚未分类的事件。 |
+| `IncidentCategory.ACCIDENT` | `"accident"` | 交通事故。 |
+| `IncidentCategory.FOG` | `"fog"` | 雾天，会降低能见度，很可能会减少交通流量，并增加事故风险。 |
+| `IncidentCategory.DANGEROUS_CONDITIONS` | `"dangerousConditions"` | 道路中的危险情况，例如道路上有物体。 |
+| `IncidentCategory.RAIN` | `"rain"` | 大雨，可能会降低能见度，使驾驶条件变得恶劣，并可能增加事故风险。 |
+| `IncidentCategory.ICE` | `"ice"` | 结冰路况，可能导致驾驶困难或危险。 |
+| `IncidentCategory.JAM` | `"jam"` | 交通阻塞，会导致车辆行驶速度减慢。 |
+| `IncidentCategory.LANE_CLOSED` | `"laneClosed"` | 行车道关闭。 |
+| `IncidentCategory.ROAD_CLOSED` | `"roadClosed"` | 道路关闭。 |
+| `IncidentCategory.ROAD_WORKS` | `"roadWorks"` | 此区域中有道路工程/施工。 |
+| `IncidentCategory.WIND` | `"wind"` | 大风，可能会使侧面轮廓较大或重心较高的车辆难以行驶。 |
+| `IncidentCategory.FLOODING` | `"flooding"` | 道路淹没。 |
+| `IncidentCategory.DETOUR` | `"detour"` | 正在指挥交通绕行。 |
+| `IncidentCategory.CLUSTER` | `"cluster"` | 一组不同类别的交通事故。 放大地图会使集中的事件分解为各个事件。 |
+| `IncidentCategory.BROKEN_DOWN_VEHICLE` | `"brokenDownVehicle"` | 道路上或路边发生车辆故障。 |
+
+下表显示了可在 `incidentMagnitudeFilter` 选项中使用的所有交通事件量级。
+
+| 量级枚举 | 字符串值 | 说明 |
+|--------------------|--------------|-------------|
+| `IncidentMagnitude.UNKNOWN` | `"unknown"` | 尚未对其量级进行分类的事件。 |
+| `IncidentMagnitude.MINOR` | `"minor"` | 轻度交通问题，通常只用于提供信息，对交通流量的影响很小。 |
+| `IncidentMagnitude.MODERATE` | `"moderate"` | 中度交通问题，对交通流量有一定影响。 |
+| `IncidentMagnitude.MAJOR` | `"major"` |  重大交通问题，对交通流量有重大影响。 |
+
+以下代码筛选了交通事件，使地图上只显示中等程度的交通堵塞和具有危险性的事件。
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+map.setTraffic(
+    incidents(true),
+    incidentMagnitudeFilter(new String[] { IncidentMagnitude.MODERATE }),
+    incidentCategoryFilter(new String[] { IncidentCategory.DANGEROUS_CONDITIONS, IncidentCategory.JAM })              
+);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.setTraffic(
+    incidents(true),
+    incidentMagnitudeFilter(*arrayOf(IncidentMagnitude.MODERATE)),
+    incidentCategoryFilter(
+        *arrayOf(
+            IncidentCategory.DANGEROUS_CONDITIONS,
+            IncidentCategory.JAM
+        )
+    )
+)
+```
+
+::: zone-end
+
+下面的屏幕截图显示了一个地图，其中显示了中等程度的交通堵塞和具有危险性的事件。
+
+![显示中等程度的交通堵塞和具有危险性的事件的地图。](media/how-to-show-traffic-android/android-traffic-incident-filters.jpg)
+
+> [!NOTE]
+> 一些交通事件可能分配有多个类别。 如果一个事件的任何类别与传入 `incidentCategoryFilter` 的任何选项相匹配，则会显示该事件。 主要事件类别可能不同于筛选器中指定的类别，因此会显示不同的图标。
 
 ## <a name="next-steps"></a>后续步骤
 

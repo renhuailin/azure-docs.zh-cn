@@ -9,18 +9,18 @@ ms.topic: how-to
 author: cawrites
 ms.author: chadam
 ms.date: 08/25/2020
-ms.openlocfilehash: 85f65fa17e1fac05bd9c9040e77b2fbde104b176
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 0a6f7bca2e6a3a1f0ac10f868ddeffe72d082c28
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961954"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746666"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>迁移指南：Oracle 到 Azure SQL 数据库
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-本指南介绍如何使用适用于 Oracle 的 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)助手 (SSMA for Oracle) 将 Oracle 架构[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。
+本指南介绍如何使用适用于 Oracle 的 [SQL Server 迁移](https://azure.microsoft.com/migration/sql-server/)助手 (SSMA for Oracle) 将 Oracle 架构[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。
 
 有关其他迁移指南，请参阅 [Azure 数据库迁移指南](/data-migration)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "111961954"
 - 下载 [SSMA for Oracle](https://www.microsoft.com/download/details.aspx?id=54258)。
 - 拥有目标 [SQL 数据库](../../database/single-database-create-quickstart.md)实例。
 - 获取 [SSMA for Oracle 的必需权限](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql)和[提供程序](/sql/ssma/oracle/connect-to-oracle-oracletosql)。
- 
+
 ## <a name="pre-migration"></a>预迁移
 
 满足先决条件后，就已准备就绪，可以探索环境的拓扑并评估 [Azure 云迁移](https://azure.microsoft.com/migration)的可行性了。 迁移过程的这一部分涉及到对需要迁移的数据库进行清点、评估这些数据库是否存在潜在的迁移问题或阻碍因素，然后处理你可能已发现的任何项目。
@@ -88,7 +88,7 @@ ms.locfileid: "111961954"
 
     ![显示“连接到 Azure SQL 数据库”的屏幕截图。](./media/oracle-to-sql-database-guide/connect-to-sql-database.png)
 
-1. 在“Oracle 元数据资源管理器”中，右键单击 Oracle 架构，然后选择“转换架构” 。 或者，可选择架构，然后选择“转换架构”选项卡。
+1. 在“Oracle 元数据资源管理器”中，右键单击 Oracle 架构，然后选择“转换架构” 。 或者，可以选择架构，然后选择“转换架构”选项卡。
 
    ![显示“转换架构”的屏幕截图。](./media/oracle-to-sql-database-guide/convert-schema.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "111961954"
 
    ![显示“与数据库同步”检查的屏幕截图。](./media/oracle-to-sql-database-guide/synchronize-with-database-review.png)
 
-1. 迁移数据：在“Oracle 元数据资源管理器”中右键单击要迁移的数据库或对象，然后选择“迁移数据” 。 或者，可选择“迁移数据”选项卡。若要迁移整个数据库的数据，请选中数据库名称旁边的复选框。 若要从单个表中迁移数据，请展开数据库、展开“表”，然后选中表旁边的复选框。 若要忽略单个表中的数据，请清除对应的复选框。
+1. 迁移数据：在“Oracle 元数据资源管理器”中右键单击要迁移的数据库或对象，然后选择“迁移数据” 。 或者选择“迁移数据”选项卡。若要迁移整个数据库的数据，请选中数据库名称旁边的复选框。 若要从单个表中迁移数据，请展开数据库，展开“表”，然后选中表旁边的复选框。 若要忽略单个表中的数据，请清除对应的复选框。
 
    ![显示“迁移数据”的屏幕截图。](./media/oracle-to-sql-database-guide/migrate-data.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "111961954"
 
    ![显示 SQL Server Management Studio 中验证情况的屏幕截图。](./media/oracle-to-sql-database-guide/validate-data.png)
 
-此外，还可使用 SQL Server Integration Services 来执行迁移。 若要了解更多信息，请参阅以下文章：
+或者，还可使用 SQL Server Integration Services 来执行迁移。 若要了解更多信息，请参阅以下文章：
 
 - [SQL Server Integration Services 入门](/sql/integration-services/sql-server-integration-services)
 - [SQL Server Integration Services for Azure 和混合数据移动](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)
@@ -154,6 +154,94 @@ ms.locfileid: "111961954"
 1. **运行验证测试**：针对源和目标运行验证测试，然后分析结果。
 1. 运行性能测试：针对源和目标运行性能测试，然后分析和比较结果。
 
+### <a name="validate-migrated-objects"></a>验证迁移的对象
+
+适用于 Oracle 的 Microsoft SQL Server 迁移助手测试程序（SSMA 测试程序）可用于测试迁移的数据库对象。 SSMA 测试程序用于验证转换后对象的行为方式是否相同。
+
+#### <a name="create-test-case"></a>创建测试用例
+
+1. 打开 SSMA for Oracle，选择“测试程序”，然后选择“新建测试用例”。
+   ![显示用于创建新测试用例的屏幕截图。](./media/oracle-to-sql-database-guide/ssma-tester-new.png)
+
+1. 提供新测试用例的以下信息：
+
+   名称：输入名称以标识测试用例。
+
+   创建日期：当天的当前日期，自动定义。
+
+   上次修改日期：自动填充，不应更改。
+
+   说明：输入任何其他信息以标识测试用例的用途。
+
+   ![显示初始化测试用例步骤的屏幕截图。](./media/oracle-to-sql-database-guide/tester-init-test-case.png)
+
+1. 从位于左侧的 Oracle 对象树中选择属于测试用例的对象。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-select-configure-objects.png" alt-text="显示选择和配置对象步骤的屏幕截图。":::
+
+   在本示例中，选择了存储过程 `ADD_REGION` 和表 `REGION`。
+
+     若要了解详细信息，请参阅[选择并配置要测试的对象](/sql/ssma/oracle/selecting-and-configuring-objects-to-test-oracletosql)。
+
+1. 接下来，从左侧窗口中的 Oracle 对象树中选择表、外键和其他依赖对象。
+
+   :::image type="content" source="./media//oracle-to-sql-database-guide/tester-select-configure-affected.png" alt-text="显示选择和配置受影响对象步骤的屏幕截图。":::
+
+   若要了解详细信息，请参阅[选择并配置受影响的对象。](/sql/ssma/oracle/selecting-and-configuring-affected-objects-oracletosql)
+
+1. 查看对象的评估顺序。 单击网格中的按钮来更改顺序。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/test-call-ordering.png" alt-text="显示测试对象执行排序步骤的屏幕截图。":::
+
+1. 查看前面步骤中提供的信息来完成测试用例。 根据测试方案配置测试执行选项。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-finalize-case.png" alt-text="显示完成对象步骤的屏幕截图。":::
+
+   有关测试用例设置的详细信息，请参阅[完成测试用例准备](/sql/ssma/oracle/finishing-test-case-preparation-oracletosql)
+
+1. 单击“完成”以创建测试用例。
+
+   :::image type="content" source="./media//oracle-to-sql-database-guide/tester-test-repo.png" alt-text="显示测试存储库步骤的屏幕截图。":::
+
+#### <a name="run-test-case"></a>运行测试用例
+
+当 SSMA 测试程序运行测试用例时，测试引擎会执行为测试选择的对象并生成验证报告。
+
+1. 从测试存储库中选择测试用例，然后单击“运行”。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-repo-run.png" alt-text="显示查看测试存储库的屏幕截图。":::
+
+1. 查看启动测试用例，然后单击“运行”。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-run-test-case.png" alt-text="显示运行测试用例步骤的屏幕截图":::
+
+1. 接下来，提供 Oracle 源凭据。 输入凭据后单击“连接”。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-oracle-connect.png" alt-text="显示连接到 Oracle 源的步骤的屏幕截图":::
+
+1. 提供目标 SQL Server 凭据，然后单击“连接”。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-sql-connect.png" alt-text="显示连接到 SQL 目标的步骤的屏幕截图。":::
+
+   成功后，测试用例会进入初始化阶段。
+
+1. 实时进度栏显示测试运行的执行状态。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-run-status.png" alt-text="显示测试程序测试进度的屏幕截图。":::
+
+1. 测试完成后查看报表。 该报表提供统计信息、测试运行期间的所有错误和详细信息报告。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-test-result.png" alt-text="显示示例测试程序测试报告的屏幕截图":::
+
+1. 单击“详细信息”以获取详细信息。
+
+   正面数据验证示例。
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-test-success.png" alt-text="显示示例测试程序成功报告的屏幕截图。":::
+
+   失败的数据验证示例。
+
+   :::image type="content" source="./media/oracle-to-sql-database-guide/tester-test-failed.png" alt-text="显示测试程序失败报告的屏幕截图。":::
+
 ### <a name="optimize"></a>优化
 
 迁移后阶段对于协调任何数据准确性问题、验证完整性以及解决工作负载的性能问题至关重要。
@@ -167,12 +255,10 @@ ms.locfileid: "111961954"
 
 | **标题/链接**                                                                                                                                          | **说明**                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [数据工作负载评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 此工具为给定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。                                                          |
-| [Oracle 清单脚本项目](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | 该资产包含一个 PL/SQL 查询，它会命中 Oracle 系统表，并按架构类型、对象类型和状态提供对象计数。 它还提供每个架构中“原始数据”和表大小的粗略估算，结果以 CSV 格式存储。                                                                                                               |
-| [自动进行 SSMA Oracle 评估收集和整合](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | 这组资源使用 .csv 文件作为输入（项目文件夹中的 sources.csv），来生成在控制台模式下运行 SSMA 评估所需的 xml 文件。 source.csv 是客户根据现有 Oracle 实例的清单提供的。 输出文件为 AssessmentReportGeneration_source_1.xml、ServersConnectionFile.xml 和 VariableValueFile.xml。|
-| [SSMA for Oracle 的常见错误及其解决方法](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | 借助 Oracle，可在 WHERE 子句中分配非标量条件。 但是，SQL Server 不支持这种类型的条件。 因此，SSMA for Oracle 不会在 WHERE 子句中使用非标量条件转换查询。 相反，它会生成错误 O2SS0001。 可在该白皮书中更详细地了解问题及其解决方法。          |
-| [Oracle 到 SQL Server 迁移手册](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | 本文档重点介绍在将 Oracle 架构迁移到最新版 SQL Server 数据库时所涉及的任务。 如果迁移需要更改特性/功能，则必须仔细考量每项更改可能对使用数据库的应用程序造成的影响。                                                     |
-|[Oracle 到 SQL DB - 数据库比较实用工具](https://www.microsoft.com/download/details.aspx?id=103016)|SSMA for Oracle 测试工具是推荐用于自动验证数据库对象转换和数据迁移的工具，它是数据库比较功能的超集。<br /><br />如果要查找备用的数据验证选项，则可使用数据库比较实用工具沿所有或所选表、行和列中的行或列级别比较数据。|
+| [数据工作负载评估模型和工具](https://www.microsoft.com/download/details.aspx?id=103130) | 此工具为给定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。                                                          |
+| [Oracle 清单脚本项目](https://www.microsoft.com/download/details.aspx?id=103121)                 | 该资产包含一个 PL/SQL 查询，它会命中 Oracle 系统表，并按架构类型、对象类型和状态提供对象计数。 它还提供每个架构中“原始数据”和表大小的粗略估算，结果以 CSV 格式存储。                                                                                                               |
+| [自动进行 SSMA Oracle 评估收集和整合](https://www.microsoft.com/download/details.aspx?id=103120)                                             | 这组资源使用 .csv 文件作为输入（项目文件夹中的 sources.csv），来生成在控制台模式下运行 SSMA 评估所需的 xml 文件。 source.csv 是客户根据现有 Oracle 实例的清单提供的。 输出文件为 AssessmentReportGeneration_source_1.xml、ServersConnectionFile.xml 和 VariableValueFile.xml。|
+| [Oracle 到 SQL DB - 数据库比较实用工具](https://www.microsoft.com/download/details.aspx?id=103016)|SSMA for Oracle 测试工具是推荐用于自动验证数据库对象转换和数据迁移的工具，它是数据库比较功能的超集。<br /><br />如果要查找备用的数据验证选项，则可使用数据库比较实用工具沿所有或所选表、行和列中的行或列级别比较数据。|
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 

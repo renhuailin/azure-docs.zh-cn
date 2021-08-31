@@ -3,13 +3,13 @@ title: 使用 Azure 门户还原 VM
 description: 使用 Azure 门户（包括“跨区域还原”功能）从恢复点还原 Azure 虚拟机。
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 05/01/2021
-ms.openlocfilehash: 26efe6cafc5829cedcb7bb74f8ea796256d45d10
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/06/2021
+ms.openlocfilehash: 75320c54c9496b1c978fdabb8a0a7560087f777c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966787"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738449"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -120,6 +120,9 @@ Azure 备份提供了几种用来还原 VM 的方法。
 1. 在“还原”中，选择“部署模板”来启动模板部署 。
 
     ![深入到还原作业](./media/backup-azure-arm-restore-vms/restore-job-drill-down1.png)
+   
+   >[!Note]
+   >对于将“允许存储帐户密钥访问”设置为“禁用”的共享访问签名 (SAS)，选择“部署模板”时，模板不会部署。
 
 1. 若要自定义模板中提供的 VM 设置，请选择“编辑模板”。 若要添加其他自定义项，请选择“编辑参数”。
     - [详细了解](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)如何从自定义模板部署资源。
@@ -227,6 +230,51 @@ Azure 备份提供了几种用来还原 VM 的方法。
 **还原一个林中的多个域** | 建议使用[林恢复](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 
 有关详细信息，请参阅[备份和还原 Active Directory 域控制器](active-directory-backup-restore.md)。
+
+## <a name="restore-vms-with-managed-identities"></a>通过托管标识还原 VM
+
+托管标识使用户无需维护凭据。 托管标识为应用程序提供一个标识，可以在连接到支持 Azure Active Directory (Azure AD) 身份验证的资源时使用。  
+
+Azure 备份提供了通过[托管标识](../active-directory/managed-identities-azure-resources/overview.md)还原托管 Azure VM 的灵活性。 可以选择[系统托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)或用户托管标识，如下图所示。 这是在 Azure VM 的[还原配置边栏选项卡](#create-a-vm)中引入的输入参数之一。 用作输入参数之一的托管标识仅用于访问存储帐户，该帐户在还原期间用作暂存位置，不适用于任何其他 Azure 资源控制。 这些托管标识必须与保管库相关联。
+
+:::image type="content" source="./media/backup-azure-arm-restore-vms/select-system-managed-identities-or-user-managed-identities.png" alt-text="用于选择系统托管标识或用户托管标识的选项的屏幕截图。":::
+
+如果选择系统分配或用户分配的托管标识，请在目标临时存储帐户上检查是否有针对托管标识的以下操作。
+
+```json
+"permissions": [
+            {
+                "actions": [
+                    "Microsoft.Authorization/*/read",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/delete",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/write"
+                ],
+                "notActions": [],
+                "dataActions": [
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action"
+                ],
+                "notDataActions": []
+            }
+```
+
+或者，在暂存位置 (Storage Account) 上添加角色分配，以提供[存储帐户备份参与者](./blob-backup-configure-manage.md#grant-permissions-to-the-backup-vault-on-storage-accounts)和[存储 Blob 数据参与者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)实现成功还原操作。
+
+:::image type="content" source="./media/backup-azure-arm-restore-vms/add-role-assignment-on-staging-location.png" alt-text="在暂存位置添加角色分配的屏幕截图。":::
+
+你还可以选择[用户托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，方法是将输入作为其 MSI 资源 ID 提供，如下图所示。   
+
+:::image type="content" source="./media/backup-azure-arm-restore-vms/select-user-managed-identity-by-providing-input-as-msi-resource-id.png" alt-text="通过将输入作为 MSI 资源 ID 提供来选择用户托管标识的屏幕截图。":::
+
+>[!Note]
+>支持仅适用于托管 VM，不支持经典 VM 和非托管 VM。 对于[防火墙限制的存储帐户](../storage/common/storage-network-security.md?tabs=azure-portal)，只支持系统 MSI。
+>
+>托管标识不支持跨区域还原。
+>
+>目前，这在所有 Azure 公有云和国家云区域中均可用。
 
 ## <a name="track-the-restore-operation"></a>跟踪还原操作
 

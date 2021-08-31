@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 AAD Pod 托
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: 1b1e8ab4e95a0f721f83f933b527cc40b9d5747c
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 44f4415e09ca9e2942eb1da4c69cf98759f737ce
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592589"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253877"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>在 Azure Kubernetes 服务中使用 Azure Active Directory Pod 托管标识（预览）
 
@@ -17,7 +17,7 @@ Azure Active Directory Pod 托管标识使用 Kubernetes 基元将[Azure 资源�
 
 > [!NOTE]
 >本文档中介绍的 Pod 托管标识（预览）功能将被替换为 Pod 托管标识 V2（预览）。
-> 如果你有现有的 AADPODIDENTITY 安装，必须删除现有安装。 启用此功能意味着不需要 MIC 组件。
+> 如果已经安装 AADPODIDENTITY，那么将有一个适用于 V2 的迁移选项。 随着 2022 年第 2 季度的公共预览版的发布，将提供有关迁移的更多详细信息。 启用此功能意味着不需要 MIC 组件。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -26,7 +26,7 @@ Azure Active Directory Pod 托管标识使用 Kubernetes 基元将[Azure 资源�
 必须安装了以下资源：
 
 * Azure CLI 2.20.0 或更高版本
-* `azure-preview` 扩展 0.5.5 或更高版本
+* `aks-preview` 扩展 0.5.5 或更高版本
 
 ### <a name="limitations"></a>限制
 
@@ -44,7 +44,7 @@ az feature register --name EnablePodIdentityPreview --namespace Microsoft.Contai
 
 ### <a name="install-the-aks-preview-azure-cli"></a>安装 `aks-preview` Azure CLI
 
-还需要 *aks-preview* Azure CLI 扩展 0.4.64 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展。 或者使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
+还需要 aks-preview Azure CLI 扩展 0.5.5 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展。 或者使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -54,7 +54,7 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-## <a name="create-an-aks-cluster-with-azure-cni"></a>创建使用 Azure CNI 的 AKS 群集
+## <a name="create-an-aks-cluster-with-azure-container-networking-interface-cni"></a>使用 Azure 容器网络接口 (CNI) 创建 AKS 群集
 
 > [!NOTE]
 > 这是建议的默认配置
@@ -65,6 +65,15 @@ az extension update --name aks-preview
 az group create --name myResourceGroup --location eastus
 az aks create -g myResourceGroup -n myAKSCluster --enable-pod-identity --network-plugin azure
 ```
+> [!NOTE]
+> Azure Active Directory Pod 标识支持 2 种操作模式：
+> 
+> 1. 标准模式：在此模式下，将以下 2 个组件部署到 AKS 群集： 
+>     * [托管标识控制器 (MIC)](https://azure.github.io/aad-pod-identity/docs/concepts/mic/)：一种 Kubernetes 控制器，通过 Kubernetes API 服务器监视对 Pod、[AzureIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentity/) 和 [AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentitybinding/) 所做的更改。 检测到相关更改时，MIC 会根据需要添加或删除 [AzureAssignedIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureassignedidentity/)。 具体而言，如果计划了 Pod，MIC 会将 Azure 上的托管标识分配给节点池在创建阶段使用的基础 VMSS。 删除所有使用该标识的 Pod 时，MIC 会从节点池的 VMSS 中删除标识，除非其他 Pod 使用相同的托管标识。 创建或删除 AzureIdentity 或 AzureIdentityBinding 时，MIC 会执行类似的操作。
+>     * [节点托管标识 (NMI)](https://azure.github.io/aad-pod-identity/docs/concepts/nmi/)：是在 AKS 群集中每个节点上作为 DaemonSet 运行的 Pod。 NMI 截获每个节点上对 [Azure 实例元数据服务](../virtual-machines/linux/instance-metadata-service.md?tabs=linux)的安全令牌请求，将这些请求重定向到自身并验证 Pod 是否有权访问它为其请求令牌的标识，并代表应用程序从 Azure Active Directory 租户中提取令牌。
+> 2. 托管模式：在此模式下，只有 NMI。 标识需要由用户手动分配和管理。 有关详细信息，请参阅[托管模式下的 Pod 标识](https://azure.github.io/aad-pod-identity/docs/configure/pod_identity_in_managed_mode/)。
+>
+>如[安装指南](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/)中所示通过 Helm 图表或 YAML 清单安装 Azure Active Directory Pod 标识时，可以在 `standard` 和 `managed` 模式之间进行选择。 如果决定改为如本文所述使用 [AKS 群集加载项](/azure/aks/use-azure-ad-pod-identity)安装 Azure Active Directory Pod 标识，安装程序将使用 `managed` 模式。
 
 使用 [az aks get-credentials][az-aks-get-credentials] 登录到 AKS 群集。 此命令还会在开发计算机上下载并配置 `kubectl` 客户端证书。
 
@@ -77,7 +86,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 更新使用 Azure CNI 的现有 AKS 群集以包含 Pod 托管标识。
 
 ```azurecli-interactive
-az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --network-plugin azure
+az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity
 ```
 ## <a name="using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities"></a>将 Kubenet 网络插件与 Azure Active Directory Pod 托管标识配合使用 
 
@@ -146,12 +155,12 @@ export IDENTITY_RESOURCE_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n
 
 ## <a name="assign-permissions-for-the-managed-identity"></a>为托管标识分配权限
 
-IDENTITY_CLIENT_ID 托管标识必须在包含 AKS 群集虚拟机规模集的资源组中拥有“托管标识操作员”权限。
+若要运行演示，IDENTITY_CLIENT_ID 托管标识必须在包含 AKS 群集虚拟机规模集的资源组中拥有“虚拟机参与者”权限。
 
 ```azurecli-interactive
 NODE_GROUP=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
 NODES_RESOURCE_ID=$(az group show -n $NODE_GROUP -o tsv --query "id")
-az role assignment create --role "Managed Identity Operator" --assignee "$IDENTITY_CLIENT_ID" --scope $NODES_RESOURCE_ID
+az role assignment create --role "Virtual Machine Contributor" --assignee "$IDENTITY_CLIENT_ID" --scope $NODES_RESOURCE_ID
 ```
 
 ## <a name="create-a-pod-identity"></a>创建 Pod 标识
@@ -159,7 +168,9 @@ az role assignment create --role "Managed Identity Operator" --assignee "$IDENTI
 使用 `az aks pod-identity add` 创建群集的 Pod 标识。
 
 > [!IMPORTANT]
-> 必须在订阅中拥有相应的权限（例如 `Owner`）才能创建标识和角色绑定。
+> 必须具有订阅上的相关权限（例如，所有者），以创建标识和将角色绑定到群集标识。
+> 
+> 群集标识必须具有适用于要分配的标识的“托管标识操作员权限”。
 
 ```azurecli-interactive
 export POD_IDENTITY_NAME="my-pod-identity"
@@ -169,6 +180,9 @@ az aks pod-identity add --resource-group myResourceGroup --cluster-name myAKSClu
 
 > [!NOTE]
 > 在 AKS 群集上启用 Pod 托管标识时，会将名为 *aks-addon-exception* 的 AzurePodIdentityException 添加到 *kube-system* 命名空间。 AzurePodIdentityException 允许带有特定标签的 Pod 访问 Azure 实例元数据服务 (IMDS) 终结点，而不会被节点托管标识 (NMI) 服务器拦截。 *aks-addon-exception* 允许 AKS 第一方加载项（例如 AAD Pod 托管标识）正常运行，而无需手动配置 AzurePodIdentityException。 （可选）可以使用 `az aks pod-identity exception add`、`az aks pod-identity exception delete`、`az aks pod-identity exception update` 或 `kubectl` 添加、删除和更新 AzurePodIdentityException。
+
+> [!NOTE]
+> 使用 `pod-identity add` 分配 pod 标识时，Azure CLI 尝试通过 pod 标识 (IDENTITY_RESOURCE_ID) 向群集标识授予“托管标识操作员”角色。
 
 ## <a name="run-a-sample-application"></a>运行示例应用程序
 
@@ -183,15 +197,15 @@ kind: Pod
 metadata:
   name: demo
   labels:
-    aadpodidbinding: POD_IDENTITY_NAME
+    aadpodidbinding: $POD_IDENTITY_NAME
 spec:
   containers:
   - name: demo
     image: mcr.microsoft.com/oss/azure/aad-pod-identity/demo:v1.6.3
     args:
-      - --subscriptionid=SUBSCRIPTION_ID
-      - --clientid=IDENTITY_CLIENT_ID
-      - --resourcegroup=IDENTITY_RESOURCE_GROUP
+      - --subscriptionid=$SUBSCRIPTION_ID
+      - --clientid=$IDENTITY_CLIENT_ID
+      - --resourcegroup=$IDENTITY_RESOURCE_GROUP
     env:
       - name: MY_POD_NAME
         valueFrom:
@@ -299,9 +313,9 @@ spec:
   - name: demo
     image: mcr.microsoft.com/oss/azure/aad-pod-identity/demo:v1.6.3
     args:
-      - --subscriptionid=SUBSCRIPTION_ID
-      - --clientid=IDENTITY_CLIENT_ID
-      - --resourcegroup=IDENTITY_RESOURCE_GROUP
+      - --subscriptionid=$SUBSCRIPTION_ID
+      - --clientid=$IDENTITY_CLIENT_ID
+      - --resourcegroup=$IDENTITY_RESOURCE_GROUP
     env:
       - name: MY_POD_NAME
         valueFrom:

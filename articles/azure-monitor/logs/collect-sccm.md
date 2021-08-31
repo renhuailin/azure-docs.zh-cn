@@ -4,19 +4,19 @@ description: 本文介绍将 Configuration Manager 连接到 Azure Monitor 中�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/30/2020
-ms.openlocfilehash: 7302f61fce6763fdbb41c2b4899dea749ac3225f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 08/02/2021
+ms.openlocfilehash: 2bb6bcc45c6ebb325dbb8ec56eb37b6fdce293ab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031066"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735830"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>将 Configuration Manager 连接到 Azure Monitor
 可将 Microsoft Endpoint Configuration Manager 环境连接到 Azure Monitor 以同步设备集合数据，并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
 
 > [!IMPORTANT]
-> 从 Configuration Manager 版本 2010 开始，此功能已被弃用。<!-- 8269855 --> 有关详细信息，请参阅 [Configuration Manager 中已删除和已弃用的功能](/mem/configmgr/core/plan-design/changes/deprecated/removed-and-deprecated-cmfeatures)。
+> 从 Configuration Manager 版本 2010 开始，此功能已被弃用。<!-- 8269855 --> 从版本 2107 开始，它将从 Configuration Manager 中被删除。<!-- 9649296 --> 有关详细信息，请参阅 [Configuration Manager 中已删除和已弃用的功能](/mem/configmgr/core/plan-design/changes/deprecated/removed-and-deprecated-cmfeatures)。
 
 ## <a name="prerequisites"></a>必备条件
 

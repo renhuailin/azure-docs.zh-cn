@@ -5,25 +5,29 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8f0fb9ab5c53c3fd1bfb32ac7b112a116301cba7
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 2478ec3f0e8608e1dd868745fca2c323677fadce
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575337"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729841"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
 此页列出了干扰 Azure 远程渲染的常见问题，以及解决这些问题的方式。
 
+## <a name="client-cant-connect-to-server"></a>客户端无法连接到服务器
+
+确保防火墙（在设备上、路由器内部等）未阻止[系统要求](../overview/system-requirements.md#network-firewall)中提到的端口。
+
+## <a name="failed-to-load-model"></a>未能加载模型
+
+尽管 blob 配置正确，但模型加载（例如，通过 Unity 示例）仍失败时，blob 存储可能未正确链接。 这会在[存储帐户链接](../how-tos/create-an-account.md#link-storage-accounts)一章中对此进行说明。 请注意，正确链接后，可能需要 30 分钟更改才会生效。
+
 ## <a name="cant-link-storage-account-to-arr-account"></a>无法将存储帐户链接到 ARR 帐户
 
 有时在[存储帐户链接](../how-tos/create-an-account.md#link-storage-accounts)期间，未列出远程渲染帐户。 若要解决此问题，请转到 Azure 门户中找的 ARR 帐户，在左侧“设置”组下选择“标识”。 确保“状态”设置为“开启”。
 ![Unity 帧调试器](./media/troubleshoot-portal-identity.png)
-
-## <a name="client-cant-connect-to-server"></a>客户端无法连接到服务器
-
-确保防火墙（在设备上、路由器内部等）未阻止[系统要求](../overview/system-requirements.md#network-firewall)中提到的端口。
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>错误“`Disconnected: VideoFormatNotAvailable`”
 
@@ -161,6 +165,8 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
 
 此问题的原因可能在于 MSAA、HDR 或启用了后处理。 请确保选择低质量配置文件，并将其设置为 Unity 中的默认配置文件。 为此，请转到“编辑”>“项目设置...”>“质量”。
 
+在 Unity 2020 中使用 OpenXR 插件时，无论是否启用后处理，一些 URP（通用呈现管道）版本都会创建此额外的屏幕外呈现目标。 因此，必须手动将 URP 版本升级到至少 10.5.1（或更高版本）。 [系统要求](../overview/system-requirements.md#unity-2020)中对此进行了说明。
+
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>使用远程渲染 API 的 Unity 代码未编译
 
 ### <a name="use-debug-when-compiling-for-unity-editor"></a>在为 Unity 编辑器进行编译时使用调试
@@ -183,9 +189,9 @@ Azure 远程渲染挂钩到 Unity 渲染管道中，以通过视频进行帧合�
 
 ## <a name="native-c-based-application-does-not-compile"></a>基于 C++ 的本机应用程序不能编译
 
-### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP 应用程序或 Dll 发生“找不到库”错误
+### <a name="library-not-found-error-for-uwp-application-or-dll"></a>UWP 应用程序或 DLL 发生“找不到库”错误
 
-在 C++ NuGet 包中，有一个 `microsoft.azure.remoterendering.Cpp.targets` 文件定义了要使用的二进制风格。 为了识别 `UWP`，该文件中的条件会检查是否存在 `ApplicationType == 'Windows Store'` 的情况。 因此，需确保在项目中设置此类型。 通过 Visual Studio 的项目向导创建 UWP 应用程序或 Dll 时，应该就会设置此类型。
+在 C++ NuGet 包中，有一个 `microsoft.azure.remoterendering.Cpp.targets` 文件定义了要使用的二进制风格。 为了识别 `UWP`，该文件中的条件会检查是否存在 `ApplicationType == 'Windows Store'` 的情况。 因此，需确保在项目中设置此类型。 通过 Visual Studio 的项目向导创建 UWP 应用程序或 DLL 时，应该就会设置此类型。
 
 ## <a name="unstable-holograms"></a>不稳定全息影像
 

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 06/04/2021
+ms.date: 08/03/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: 616354174f5eb4bdae8e4b76379106e309c0dd14
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6395f88f4841ef5447b8dfef5310fba6e0440e32
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969104"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771452"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何将工作区用于自定义 DNS 服务器
 
@@ -25,6 +25,15 @@ ms.locfileid: "111969104"
 > [!IMPORTANT]
 > 本文介绍了如果你想在 DNS 解决方案中手动注册 DNS 记录，如何为这些条目查找完全限定的域名 (FQDN) 和 IP 地址。 此外，本文还提供了有关如何配置自定义 DNS 解决方案以自动将 FQDN 解析为正确 IP 地址的体系结构建议。 本文不提供有关如何配置这些项的 DNS 记录的信息。 请参阅 DNS 文档获取如何添加记录的信息。
 
+> [!TIP]
+> 本文是介绍如何保护 Azure 机器学习工作流的系列文章的一部分。 请参阅本系列中的其他文章：
+>
+> * [虚拟网络概述](how-to-network-security-overview.md)
+> * [保护工作区资源](how-to-secure-workspace-vnet.md)
+> * [保护训练环境](how-to-secure-training-vnet.md)
+> * [保护推理环境](how-to-secure-inferencing-vnet.md)
+> * [启用工作室功能](how-to-enable-studio-virtual-network.md)
+> * [使用防火墙](how-to-access-azureml-behind-firewall.md)
 ## <a name="prerequisites"></a>先决条件
 
 - 使用[你自己的 DNS 服务器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)的 Azure 虚拟网络。
@@ -50,6 +59,7 @@ ms.locfileid: "111969104"
 
 虽然你的体系结构可能不同于这些示例，但你可以将它们用作参考点。 这两个示例体系结构都提供了故障排除步骤，可帮助识别可能配置错误的组件。
 
+另一种方法是在连接到 Azure 虚拟网络 (VNet)（其中包含你的工作区）的客户端上修改 `hosts` 文件。 有关详细信息，请参阅[主机文件](#hosts)部分。
 ### <a name="workspace-dns-resolution-path"></a>工作区 DNS 解析路径
 
 通过与以下列出的完全限定的域（称为工作区 FQDN）进行通信，可以通过专用链接访问给定的 Azure 机器学习工作区：
@@ -86,7 +96,7 @@ Azure 美国政府区域：
 - ```<per-workspace globally-unique identifier>.workspace.<region the workspace was created in>.privatelink.api.ml.azure.us```
 - ```ml-<workspace-name, truncated>-<region>-<per-workspace globally-unique identifier>.privatelink.notebooks.usgovcloudapi.net```
 
-FQDN 解析为该区域中 Azure 机器学习工作区的 IP 地址。 但是，在使用与上面创建的专用 DNS 区域链接的虚拟网络中的 Azure DNS 虚拟服务器 IP 地址进行解析时，工作区专用链接 FQDN 的解析将被替代。
+FQDN 解析为该区域中 Azure 机器学习工作区的 IP 地址。 但是，可以使用虚拟网络中托管的自定义 DNS 服务器替代工作区专用链接 FQDN 的解析。 有关此体系结构的示例，请参阅 [vnet 中托管的自定义 DNS 服务器](#example-custom-dns-server-hosted-in-vnet)示例。
 
 ## <a name="manual-dns-server-integration"></a>手动 DNS 服务器集成
 
@@ -147,10 +157,37 @@ FQDN 解析为该区域中 Azure 机器学习工作区的 IP 地址。 但是，
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurecli
-az network private-endpoint show --endpoint-name <endpoint> --resource-group <resource-group> --query 'customDnsConfigs[*].{FQDN: fqdn, IPAddress: ipAddresses[0]}' --output table
-```
+1. 若要获取专用终结点网络接口的 ID，请使用以下命令：
 
+    ```azurecli
+    az network private-endpoint show --endpoint-name <endpoint> --resource-group <resource-group> --query 'networkInterfaces[*].id' --output table
+    ```
+
+1. 若要获取 IP 地址和 FQDN 信息，请使用以下命令。 将 `<resource-id>` 替换为上一步中的 ID：
+
+    ```azurecli
+    az network nic show --ids <resource-id> --query 'ipConfigurations[*].{IPAddress: privateIpAddress, FQDNs: privateLinkConnectionProperties.fqdns}'
+    ```
+
+    输出将类似于以下文本：
+
+    ```json
+    [
+        {
+            "FQDNs": [
+            "fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms",
+            "fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.cert.api.azureml.ms"
+            ],
+            "IPAddress": "10.1.0.5"
+        },
+        {
+            "FQDNs": [
+            "ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net"
+            ],
+            "IPAddress": "10.1.0.6"
+        }
+    ]
+    ```
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
@@ -234,7 +271,10 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 2. 使用专用 DNS 集成创建专用终结点，该集成以链接到 DNS 服务器虚拟网络的专用 DNS 区域为目标：
 
-    下一步是为 Azure 机器学习工作区创建专用终结点。 专用终结点可确保已启用专用 DNS 集成。 专用终结点以在步骤 1 中创建的两个专用 DNS 区域为目标。 这可确保与工作区的所有通信都是通过 Azure 机器学习虚拟网络中的专用终结点完成的。
+    下一步是为 Azure 机器学习工作区创建专用终结点。 专用终结点以在步骤 1 中创建的两个专用 DNS 区域为目标。 这可确保与工作区的所有通信都是通过 Azure 机器学习虚拟网络中的专用终结点完成的。
+
+    > [!IMPORTANT]
+    > 若要使此示例正常运行，专用终结点必须启用专用 DNS 集成。
 
 3. 在 DNS 服务器中创建条件转发器以转发到 Azure DNS： 
 
@@ -243,16 +283,19 @@ $workspaceDns.CustomDnsConfigs | format-table
     下面列出了要有条件地转发的区域。 Azure DNS 虚拟服务器 IP 地址为 168.63.129.16：
 
     Azure 公共区域：
-    - ``` privatelink.api.azureml.ms```
-    - ``` privatelink.notebooks.azure.net```
+    - ```api.azureml.ms```
+    - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```
     
     Azure 中国区域：
-    - ```privatelink.api.ml.azure.cn```
-    - ```privatelink.notebooks.chinacloudapi.cn```
+    - ```api.ml.azure.cn```
+    - ```notebooks.chinacloudapi.cn```
+    - ```instances.ml.azure.cn```
     
     Azure 美国政府区域：
-    - ```privatelink.api.ml.azure.us```
-    - ```privatelink.notebooks.usgovcloudapi.net```
+    - ```api.ml.azure.us```
+    - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > 此处不包含 DNS 服务器的配置步骤，因为有许多可用的 DNS 解决方案可以用作自定义 DNS 服务器。 请参阅 DNS 解决方案的文档，了解如何正确配置条件转发。
@@ -274,9 +317,9 @@ $workspaceDns.CustomDnsConfigs | format-table
     - ```<per-workspace globally-unique identifier>.workspace.<region the workspace was created in>.api.ml.azure.us```
     - ```ml-<workspace-name, truncated>-<region>-<per-workspace globally-unique identifier>. notebooks.usgovcloudapi.net```
 
-5. 公共 DNS 以 CNAME 响应：
+5. Azure DNS 以递归方式将工作区域解析为 CNAME：
 
-    DNS 服务器将继续从公共 DNS 解析步骤 4 中的 FQDN。 公共 DNS 将使用步骤 1 的信息部分中列出的某个域进行响应。
+    DNS 服务器将解析 Azure DNS 步骤 4 中的 FQDN。 Azure DNS 将使用步骤 1 中列出的域之一进行响应。
 
 6. DNS 服务器以递归方式解析 Azure DNS 的工作区域 CNAME 记录：
 
@@ -361,7 +404,10 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 2. 使用专用 DNS 集成创建专用终结点，该集成以链接到 DNS 服务器虚拟网络的专用 DNS 区域为目标：
 
-    下一步是为 Azure 机器学习工作区创建专用终结点。 专用终结点可确保已启用专用 DNS 集成。 专用终结点以在步骤 1 中创建的两个专用 DNS 区域为目标。 这可确保与工作区的所有通信都是通过 Azure 机器学习虚拟网络中的专用终结点完成的。
+    下一步是为 Azure 机器学习工作区创建专用终结点。 专用终结点以在步骤 1 中创建的两个专用 DNS 区域为目标。 这可确保与工作区的所有通信都是通过 Azure 机器学习虚拟网络中的专用终结点完成的。
+
+    > [!IMPORTANT]
+    > 若要使此示例正常运行，专用终结点必须启用专用 DNS 集成。
 
 3. 在 DNS 服务器中创建条件转发器以转发到 Azure DNS：
 
@@ -370,16 +416,19 @@ $workspaceDns.CustomDnsConfigs | format-table
     下面列出了要有条件地转发的区域。 Azure DNS 虚拟服务器 IP 地址为 168.63.129.16。
 
     Azure 公共区域：
-    - ``` privatelink.api.azureml.ms```
-    - ``` privatelink.notebooks.azure.net```
+    - ```api.azureml.ms```
+    - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```     
     
     Azure 中国区域：
-    - ```privatelink.api.ml.azure.cn```
-    - ```privatelink.notebooks.chinacloudapi.cn```
-    
+    - ```api.ml.azure.cn```
+    - ```notebooks.chinacloudapi.cn```
+    - ```instances.ml.azure.cn```
+
     Azure 美国政府区域：
-    - ```privatelink.api.ml.azure.us```
-    - ```privatelink.notebooks.usgovcloudapi.net```
+    - ```api.ml.azure.us```
+    - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > 此处不包含 DNS 服务器的配置步骤，因为有许多可用的 DNS 解决方案可以用作自定义 DNS 服务器。 请参阅 DNS 解决方案的文档，了解如何正确配置条件转发。
@@ -391,16 +440,19 @@ $workspaceDns.CustomDnsConfigs | format-table
     下面列出了要有条件地转发的区域。 要转发到的 IP 地址是 DNS 服务器的 IP 地址：
 
     Azure 公共区域：
-    - ``` privatelink.api.azureml.ms```
-    - ``` privatelink.notebooks.azure.net```
+    - ```api.azureml.ms```
+    - ```notebooks.azure.net```
+    - ```instances.ml.azure.us```
     
     Azure 中国区域：
-    - ```privatelink.api.ml.azure.cn```
-    - ```privatelink.notebooks.chinacloudapi.cn```
+    - ```api.ml.azure.cn```
+    - ```notebooks.chinacloudapi.cn```
+    - ```instances.ml.azure.cn```
     
     Azure 美国政府区域：
-    - ```privatelink.api.ml.azure.us```
-    - ```privatelink.notebooks.usgovcloudapi.net```
+    - ```api.ml.azure.us```
+    - ```notebooks.usgovcloudapi.net```
+    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > 此处不包含 DNS 服务器的配置步骤，因为有许多可用的 DNS 解决方案可以用作自定义 DNS 服务器。 请参阅 DNS 解决方案的文档，了解如何正确配置条件转发。
@@ -423,26 +475,62 @@ $workspaceDns.CustomDnsConfigs | format-table
     - ```<per-workspace globally-unique identifier>.workspace.<region the workspace was created in>.api.ml.azure.us```
     - ```ml-<workspace-name, truncated>-<region>-<per-workspace globally-unique identifier>. notebooks.usgovcloudapi.net```
 
-6. 公共 DNS 以 CNAME 响应：
+6. 本地 DNS 服务器以递归方式解析工作区域：
 
-    DNS 服务器将继续从公共 DNS 解析步骤 4 中的 FQDN。 公共 DNS 将使用步骤 1 的信息部分中列出的某个域进行响应。
+    本地 DNS 服务器将解析 DNS 服务器步骤 5 中的 FQDN。 由于有条件转发（步骤 4），因此本地 DNS 服务器会将请求发送到 DNS 服务器进行解析。
 
-7. 本地 DNS 服务器以递归方式解析 DNS 服务器的工作区域 CNAME 记录：
+7. DNS 服务器将工作区域从 Azure DNS 解析为 CNAME：
 
-    本地 DNS 服务器将继续以递归方式解析步骤 6 中收到的 CNAME。 由于在步骤 4 中设置了条件转发器，因此本地 DNS 服务器将向 DNS 服务器发送请求以进行解析。
+    DNS 服务器将解析 Azure DNS 步骤 5 中的 FQDN。 Azure DNS 将使用步骤 1 中列出的域之一进行响应。
 
-8. DNS 服务器以递归方式解析 Azure DNS 的工作区域 CNAME 记录：
+8. 本地 DNS 服务器以递归方式解析 DNS 服务器的工作区域 CNAME 记录：
 
-    DNS 服务器将继续以递归方式解析步骤 5 中收到的 CNAME。 由于在步骤 3 中设置了条件转发器，因此 DNS 服务器将向 Azure DNS 虚拟服务器 IP 地址发送请求以进行解析。
+    本地 DNS 服务器将继续以递归方式解析步骤 7 中收到的 CNAME。 由于在步骤 4 中设置了条件转发器，因此本地 DNS 服务器将向 DNS 服务器发送请求以进行解析。
 
-9. Azure DNS 返回专用 DNS 区域中的记录：
+9. DNS 服务器以递归方式解析 Azure DNS 的工作区域 CNAME 记录：
+
+    DNS 服务器将继续以递归方式解析步骤 7 中收到的 CNAME。 由于在步骤 3 中设置了条件转发器，因此 DNS 服务器将向 Azure DNS 虚拟服务器 IP 地址发送请求以进行解析。
+
+10. Azure DNS 返回专用 DNS 区域中的记录：
 
     存储在专用 DNS 区域中的相应记录将返回到 DNS 服务器，这意味着 Azure DNS 虚拟服务器将返回专用终结点的 IP 地址。
 
-10. 本地 DNS 服务器将工作区域名解析为专用终结点地址：
+11. 本地 DNS 服务器将工作区域名解析为专用终结点地址：
 
-    在步骤 7 中，从本地 DNS 服务器到 DNS 服务器的查询最终将与专用终结点关联的 IP 地址返回到 Azure 机器学习工作区。 这些 IP 地址将返回到原始客户端，该客户端现在将通过在步骤 1 中配置的专用终结点与 Azure 机器学习工作区通信。
+    在步骤 8 中，从本地 DNS 服务器到 DNS 服务器的查询最终将与专用终结点关联的 IP 地址返回到 Azure 机器学习工作区。 这些 IP 地址将返回到原始客户端，该客户端现在将通过在步骤 1 中配置的专用终结点与 Azure 机器学习工作区通信。
 
+<a id="hosts"></a>
+## <a name="example-hosts-file"></a>示例：Hosts 文件
+
+`hosts` 文件是一个文本文档，Linux、macOS 和 Windows 都使用它来替代本地计算机的名称解析。 该文件包含 IP 地址和相应主机名的列表。 当本地计算机尝试解析某个主机名时，如果该主机名已在 `hosts` 文件中列出，则它会解析为相应的 IP 地址。
+
+> [!IMPORTANT]
+> `hosts` 文件只会替代本地计算机的名称解析。 如果要在多台计算机中使用某个 `hosts` 文件，必须在每台计算机上单独修改该文件。
+
+下表列出了 `hosts` 文件的位置：
+
+| 操作系统 | 位置 |
+| ----- | ----- |
+| Linux | `/etc/hosts` |
+| macOS | `/etc/hosts` |
+| Windows | `%SystemRoot%\System32\drivers\etc\hosts` |
+
+> [!TIP]
+> 文件名是不带扩展名的 `hosts`。 编辑该文件时，请使用管理员访问权限。 例如，在 Linux 或 macOS 上，可以使用 `sudo vi`。 在 Windows 上，以管理员身份运行记事本。
+
+下面是 Azure 机器学习的 `hosts` 文件条目示例：
+
+```
+# For core Azure Machine Learning hosts
+10.1.0.5    fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms
+10.1.0.5    fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.cert.api.azureml.ms
+10.1.0.6    ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net
+
+# For a compute instance named 'mycomputeinstance'
+10.1.0.5    mycomputeinstance.eastus.instances.azureml.ms
+```
+
+有关 `hosts` 文件的详细信息，请参阅 [https://wikipedia.org/wiki/Hosts_(file)](https://wikipedia.org/wiki/Hosts_(file))。
 
 #### <a name="troubleshooting"></a>故障排除
 
@@ -477,6 +565,15 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 ## <a name="next-steps"></a>后续步骤
 
-有关将 Azure 机器学习与虚拟网络结合使用的详细信息，请参阅[虚拟网络概述](how-to-network-security-overview.md)。
+本文是介绍如何保护 Azure 机器学习工作流系列文章的一部分。 请参阅本系列中的其他文章：
 
-有关将专用终结点集成到 DNS 配置的详细信息，请参阅 [Azure 专用终结点 DNS 配置](../private-link/private-endpoint-dns.md)。
+* [虚拟网络概述](how-to-network-security-overview.md)
+* [保护工作区资源](how-to-secure-workspace-vnet.md)
+* [保护训练环境](how-to-secure-training-vnet.md)
+* [保护推理环境](how-to-secure-inferencing-vnet.md)
+* [启用工作室功能](how-to-enable-studio-virtual-network.md)
+* [使用防火墙](how-to-access-azureml-behind-firewall.md)
+
+有关将专用终结点集成到 DNS 配置的信息，请参阅 [Azure 专用终结点 DNS 配置](../private-link/private-endpoint-dns.md)。
+
+有关使用自定义 DNS 名称或 TLS 安全性部署模型的信息，请参阅[使用 TLS 保护 Web 服务](how-to-secure-web-service.md)。

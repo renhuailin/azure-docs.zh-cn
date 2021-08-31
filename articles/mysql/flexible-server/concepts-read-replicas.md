@@ -5,15 +5,17 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/14/2021
-ms.openlocfilehash: e51b9667e3bb20a6bd463d3286888085a927f2c0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/17/2021
+ms.openlocfilehash: 9f998115b2fb0b787af38e8cce660fd7d32f3527
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109652"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765573"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL 灵活服务器中的只读副本
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器中的只读副本现处于预览状态。
@@ -30,7 +32,6 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 
 > [!NOTE]
 > 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
->
 
 ## <a name="common-use-cases-for-read-replica"></a>只读副本的常见用例
 
@@ -84,7 +85,7 @@ Azure Database for MySQL 灵活服务器在 Azure Monitor 中提供“复制滞�
 选择停止复制到副本时，它会丢失指向其以前的源和其他副本的所有链接。 在源与其副本之间无法自动进行故障转移。
 
 > [!IMPORTANT]
-> 独立服务器不能再次成为副本。
+>独立服务器不能再次成为副本。
 > 在只读副本上停止复制之前，请确保副本包含所需的全部数据。
 
 了解如何[停止复制到副本](how-to-read-replicas-portal.md)。
@@ -110,6 +111,31 @@ Azure Database for MySQL 灵活服务器在 Azure Monitor 中提供“复制滞�
 
 在应用程序成功处理了读取和写入操作之后，故障转移即已完成。 应用程序经历的停机时间取决于何时检测到问题并完成上面的步骤 1 和 2。
 
+## <a name="global-transaction-identifier-gtid"></a>全局事务标识符 (GTID)
+
+全局事务标识符 (GTID) 是使用源服务器上的每个提交的事务创建的唯一标识符，在 Azure Database for MySQL 灵活服务器中默认处于关闭状态。 GTID 在版本 5.7 和 8.0 上受支持。 若要详细了解 GTID 及其在复制中的使用方式，请参阅 MySQL 的[使用 GTID 进行复制](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html)文档。
+
+以下服务器参数可用于配置 GTID： 
+
+|**服务器参数**|**说明**|**默认值**|**值**|
+|--|--|--|--|
+|`gtid_mode`|指示是否使用 GTID 标识事务。 若要在两个模式之间进行更改，只能按升序顺序一次完成一个步骤（例如 `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`：新事务和复制事务都必须是匿名事务 <br> `OFF_PERMISSIVE`：新事务是匿名事务。 复制的事务可以是匿名事务，也可以是 GTID 事务。 <br> `ON_PERMISSIVE`：新事务是 GTID 事务。 复制的事务可以是匿名事务，也可以是 GTID 事务。 <br> `ON`：新事务和复制事务都必须是 GTID 事务。|
+|`enforce_gtid_consistency`|通过仅允许执行能够以事务性安全方式记录的语句来强制实施 GTID 一致性。 在启用 GTID 复制之前，必须将此值设置为 `ON`。 |`OFF`|`OFF`：允许所有事务违反 GTID 一致性。  <br> `ON`：不允许任何事务违反 GTID 一致性。 <br> `WARN`：允许所有事务违反 GTID 一致性，但系统会生成警告。 | 
+
+> [!NOTE]
+>
+> * 在启用 GTID 后，无法再将其关闭。 如果需要关闭 GTID，请与支持人员联系。 
+>
+> * 若要更改 GTID 的值，只能按模式的升序一次完成一个步骤。 例如，如果 gtid_mode 设置为 OFF_PERMISSIVE，则可以更改为 ON_PERMISSIVE，但不能更改为 ON。
+>
+> * 为了保持复制一致性，无法更新主服务器/副本服务器的此设置。
+>
+> * 建议先将 enforce_gtid_consistency 设置为 ON，然后再设置 gtid_mode=ON
+
+若要启用 GTID 并配置一致性行为，请使用 [Azure 门户](how-to-configure-server-parameters-portal.md)或 [Azure CLI](how-to-configure-server-parameters-cli.md) 更新 `gtid_mode` 和 `enforce_gtid_consistency` 服务器参数。
+
+如果在源服务器上启用了 GTID（`gtid_mode` = 开），则新创建的副本也将启用 GTID 并使用 GTID 复制。 为了确保复制一致性，在启用 GTID 的情况下创建主服务器或副本服务器后，无法更改 `gtid_mode`。
+
 ## <a name="considerations-and-limitations"></a>注意事项和限制
 
 | 方案 | 限制/注意事项 |
@@ -123,7 +149,8 @@ Azure Database for MySQL 灵活服务器在 Azure Monitor 中提供“复制滞�
 | 停止的副本 | 如果停止源服务器与只读副本之间的复制，已停止的副本会成为接受读取和写入操作的独立服务器。 独立服务器不能再次成为副本。 |
 | 已删除的源服务器和独立服务器 | 在删除源服务器时，会对所有只读副本都停止复制。 这些副本会自动成为独立服务器，并且可以接受读取和写入。 源服务器本身会被删除。 |
 | 用户帐户 | 源服务器上的用户会复制到只读副本。 只能使用源服务器上可用的用户帐户来连接到只读副本。 |
-| 服务器参数 | 为了防止数据不同步并避免潜在的数据丢失或损坏，使用读取副本时，会锁定某些服务器参数以防止其更新。 <br> 源服务器和副本服务器上都会锁定以下服务器参数：<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> 副本服务器上的 [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) 参数处于锁定状态。 <br> 若要在源服务器上更新上述某个参数，请删除副本服务器，更新源上的参数值，然后重新创建副本。 |
+| 服务器参数 | 为了防止数据不同步并避免潜在的数据丢失或损坏，使用读取副本时，会锁定某些服务器参数以防止其更新。 <br> 源服务器和副本服务器上都会锁定以下服务器参数：<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> 副本服务器上的 [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) 参数处于锁定状态。 <br> 若要在源服务器上更新上述某个参数，请删除副本服务器，更新源上的参数值，然后重新创建副本。 
+<br> 在只读副本上配置“foreign_keys_checks”之类的会话级参数时，请确保在只读副本上设置的参数值与源服务器的参数值一致。|
 | 其他 | - 不支持创建副本服务器的副本。 <br> - 内存中的表可能会导致副本服务器变得不同步。这是 MySQL 复制技术的限制。 有关详细信息，请阅读 [MySQL 参考文档](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html)中的更多信息。 <br>- 确保源服务器表具有主键。 缺少主键可能会导致源和副本之间出现复制延迟。<br>- 查看 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)中 MySQL 复制限制的完整列表 |
 
 ## <a name="next-steps"></a>后续步骤

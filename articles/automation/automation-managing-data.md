@@ -6,18 +6,18 @@ ms.subservice: shared-capabilities
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cb18cca782b85e608c3c7ddb001ecb03b86055f6
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: a2d78b83ac7725f07060b3b61b01e57837fb053b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833519"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465895"
 ---
 # <a name="management-of-azure-automation-data"></a>管理 Azure 自动化数据
 
 本文包含多个主题，介绍如何在 Azure 自动化环境中保护数据。
 
-## <a name="tls-12-enforcement-for-azure-automation"></a>强制 Azure 自动化执行 TLS 1.2
+## <a name="tls-12-for-azure-automation"></a>用于 Azure 自动化的 TLS 1.2
 
 为了确保传输到 Azure 自动化的数据的安全性，我们强烈建议你配置为使用传输层安全性 (TLS) 1.2。 下面列出了通过 HTTPS 与自动化服务进行通信的方法或客户端：
 

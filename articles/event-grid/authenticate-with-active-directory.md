@@ -3,12 +3,12 @@ title: 使用 Azure Active Directory 对事件网格发布客户端进行身份�
 description: 本文介绍如何使用 Azure Active Directory 对 Azure 事件网格发布客户端进行身份验证。
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: c34ce75d02d4e3044819e5e310bdb9e74c1b0004
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b15febf10316406489d3f5bad7fc1085624ee96a
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778568"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662252"
 ---
 # <a name="authentication-and-authorization-with-azure-active-directory-preview"></a>使用 Azure Active Directory 进行身份验证和授权（预览版）
 本文介绍如何使用 Azure Active Directory (Azure AD) 对 Azure 事件网格发布客户端进行身份验证。
@@ -70,14 +70,14 @@ ms.locfileid: "121778568"
 
 使用[事件网格数据平面 SDK](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/) 将事件发布到事件网格。 事件网格的 SDK 支持所有身份验证方法，包括 Azure AD 身份验证。 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 以下是向事件网格进行身份验证的先决条件。
 
 - 在应用程序上安装 SDK。
    - [Java](/java/api/overview/azure/messaging-eventgrid-readme#include-the-package)
    - [.NET](/dotnet/api/overview/azure/messaging.eventgrid-readme-pre#install-the-package)
-   - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventgrid/eventgrid.md#install-the-azureeventgrid-package)
+   - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventgrid/eventgrid#install-the-azureeventgrid-package)
    - [Python](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/eventgrid/azure-eventgrid#install-the-package)
 - 安装 Azure 标识客户端库。 事件网格 SDK 依赖于用于身份验证的 Azure 标识客户端库。 
    - [适用于 Java 的 Azure 标识客户端库](/java/api/overview/azure/identity-readme)
@@ -100,7 +100,7 @@ ms.locfileid: "121778568"
 如果使用与客户端发布应用程序关联的安全主体，必须配置环境变量，如 [Java SDK 自述文件](/java/api/overview/azure/identity-readme#environment-variables)所示。 `DefaultCredentialBuilder` 读取这些环境变量以使用正确的标识。 有关详细信息，请参阅 [Java API 概述](/java/api/overview/azure/identity-readme#defaultazurecredential)。
 
 
-有关详细信息，请参阅以下文章：
+有关详细信息，请参阅下列文章：
 
 - [适用于 Java 的 Azure 事件网格客户端库](/java/api/overview/azure/messaging-eventgrid-readme)
 - [适用于 .NET 的 Azure 事件网格客户端库](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/eventgrid/Azure.Messaging.EventGrid#authenticate-using-azure-active-directory)
@@ -148,7 +148,7 @@ New-AzResource -ResourceGroupName <ResourceGroupName> -ResourceType Microsoft.Ev
     - Java SDK：[github](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventgrid/azure-messaging-eventgrid) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventgrid/azure-messaging-eventgrid/src/samples/java/com/azure/messaging/eventgrid) | [以前 SDK 版本的迁移指南](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventgrid/azure-messaging-eventgrid/migration-guide.md)
     - .NET SDK：[github](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventgrid/Azure.Messaging.EventGrid) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventgrid/Azure.Messaging.EventGrid/samples) | [以前 SDK 版本的迁移指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventgrid/Azure.Messaging.EventGrid/MigrationGuide.md)
     - Python SDK：[github](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventgrid/azure-eventgrid) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventgrid/azure-eventgrid/samples) | [以前 SDK 版本的迁移指南](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventgrid/azure-eventgrid/migration_guide.md)
-    - JavaScript SDK：[github](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/) | [示例](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/samples) | [以前 SDK 版本的迁移指南](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/migration.md)
+    - JavaScript SDK：[github](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/) | [示例](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventgrid/eventgrid/samples) | [以前 SDK 版本的迁移指南](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/eventgrid/eventgrid/MIGRATION.md)
 - [事件网格 SDK 博客](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/)
 - Azure 标识客户端库
    - [Java](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/identity/azure-identity/README.md)

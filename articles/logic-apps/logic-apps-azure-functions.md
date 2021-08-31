@@ -1,37 +1,39 @@
 ---
-title: 从 Azure 逻辑应用添加和调用函数
-description: 通过 Azure 逻辑应用中的自动化任务和工作流，调用和运行 Azure 中创建的函数中的自定义代码
+title: 从逻辑应用工作流调用 Azure Functions
+description: 通过创建和调用 Azure Functions，在使用 Azure 逻辑应用创建的工作流中运行自己的代码。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
-ms.topic: article
-ms.date: 10/01/2019
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 06/14/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 7df9f7d072af7c5f6523fd1be0432ce51954fa10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b04ce478f214358c6cd55a35ebfe05f0863e053e
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791873"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422672"
 ---
-# <a name="call-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用函数
+# <a name="create-and-run-your-own-code-from-workflows-in-azure-logic-apps-by-using-azure-functions"></a>使用 Azure Functions 从 Azure 逻辑应用中的工作流创建和运行你自己的代码
 
-若要在逻辑应用中运行执行特定作业的代码，可以使用 [Azure Functions](../azure-functions/functions-overview.md) 创建自己的函数。 该服务有助于创建 Node.js、C# 和 F# 函数，使你无需为运行代码而构建完整的应用或基础结构。 还可以[从函数内部调用逻辑应用](#call-logic-app)。 Azure Functions 在云中提供无服务器计算，且对执行任务非常有用，如以下示例：
+若要运行在逻辑应用工作流中执行特定作业的代码，可以使用 [Azure Functions](../azure-functions/functions-overview.md) 创建函数。 该服务有助于创建 Node.js、C# 和 F# 函数，使你无需为运行代码而构建完整的应用或基础结构。 还可以[从 Azure Functions 内部调用逻辑应用工作流](#call-logic-app)。 Azure Functions 在云中提供无服务器计算，且对执行某些任务非常有用，例如：
 
 * 通过 Node.js 或 C# 函数扩展逻辑应用的行为。
 * 在逻辑应用工作流中执行计算。
-* 在逻辑应用中应用高级格式设置或计算字段。
+* 在逻辑应用工作流中应用高级格式设置或计算字段。
 
 若要在不使用 Azure Functions 的情况下运行代码片段，请参阅如何[添加和运行内联代码](../logic-apps/logic-apps-add-run-inline-code.md)。
 
 > [!NOTE]
-> 在逻辑应用和 Azure Functions 之间集成目前不适用于槽已启用的情况。
+> Azure 逻辑应用不支持使用启用了部署槽的 Azure Functions。 尽管此方案有时可能会起作用，但此行为是不可预测的，并且可能会在工作流尝试调用 Azure 函数时导致授权问题。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 一个函数应用，是在 Azure Functions 中创建的函数以及你创建的函数的容器。 若没有函数应用，请先[创建函数应用](../azure-functions/functions-get-started.md)。 然后才可以在逻辑应用外部（在 Azure 门户中）或[逻辑应用内部](#create-function-designer)（在逻辑应用设计器中）创建函数。
+* 一个函数应用，是在 Azure Functions 中创建的函数以及你创建的函数的容器。
+
+  若没有函数应用，请先[创建函数应用](../azure-functions/functions-get-started.md)。 然后，可以在 Azure 门户中在逻辑应用外部创建函数，也可以在工作流设计器中在[逻辑应用内部](#create-function-designer)创建函数。
 
 * 使用逻辑应用时，同样的要求适用于函数应用和函数，不管它们是现有的还是全新的：
 
@@ -41,11 +43,11 @@ ms.locfileid: "98791873"
 
   * 你的函数使用 **HTTP 触发器** 模板。
 
-    此 HTTP 触发器模板可从逻辑应用接受具有 `application/json` 类型的内容。 当你向逻辑应用添加函数时，逻辑应用设计器会显示 Azure 订阅内基于此模板创建的自定义函数。
+    此 HTTP 触发器模板可从逻辑应用接受具有 `application/json` 类型的内容。 当你向逻辑应用添加函数时，工作流设计器会显示 Azure 订阅内基于此模板创建的自定义函数。
 
   * 函数不使用自定义路由，除非你定义了 [OpenAPI 定义](../azure-functions/functions-openapi-definition.md)（旧称为“[Swagger 文件](https://swagger.io/)”）。
 
-  * 如果你已为函数定义了 OpenAPI 定义，逻辑应用设计器会在你使用函数参数时提供更丰富的体验。 在逻辑应用查找并访问具有 OpenAPI 定义的函数之前，请先[按以下步骤设置函数应用](#function-swagger)。
+  * 如果你已为函数定义了 OpenAPI 定义，工作流设计器会在你使用函数参数时提供更丰富的体验。 在逻辑应用查找并访问具有 OpenAPI 定义的函数之前，请先[按以下步骤设置函数应用](#function-swagger)。
 
 * 要在其中添加函数的逻辑应用（加入[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)是逻辑应用中的第一步）
 
@@ -55,7 +57,7 @@ ms.locfileid: "98791873"
 
 ## <a name="find-functions-that-have-openapi-descriptions"></a>查找包含 OpenAPI 说明的函数
 
-为了在使用函数参数时在逻辑应用设计器中获得更丰富的体验，请为函数[生成 OpenAPI 定义](../azure-functions/functions-openapi-definition.md)（旧称为“[Swagger 文件](https://swagger.io/)”）。 若要设置函数应用以使其可查找和使用具备 Swagger 描述的函数，请按照以下步骤操作：
+为了在使用函数参数时在工作流设计器中获得更丰富的体验，请为函数[生成 OpenAPI 定义](../azure-functions/functions-openapi-definition.md)（旧称为 [Swagger 文件](https://swagger.io/)）。 若要设置函数应用以使其可查找和使用具备 Swagger 描述的函数，请按照以下步骤操作：
 
 1. 确保函数应用正在运行。
 
@@ -102,11 +104,11 @@ function convertToDateString(request, response){
 
 ## <a name="create-functions-inside-logic-apps"></a>在逻辑应用内部创建函数
 
-使用逻辑应用设计器中的内置 Azure Functions 操作，可以直接通过逻辑应用的工作流创建函数，但这种方法只能用于使用 JavaScript 编写的函数。 对于其他语言，可以通过 Azure 门户中的 Azure Functions 体验来创建函数。 有关详细信息，请参阅[在 Azure 门户中创建首个函数](../azure-functions/functions-get-started.md)。
+使用工作流设计器中的内置 Azure Functions 操作，可以直接通过逻辑应用的工作流创建函数，但这种方法只能用于使用 JavaScript 编写的函数。 对于其他语言，可以通过 Azure 门户中的 Azure Functions 体验来创建函数。 有关详细信息，请参阅[在 Azure 门户中创建首个函数](../azure-functions/functions-get-started.md)。
 
 不过，必须已经有函数应用（即函数容器），然后才能在 Azure 中创建函数。 若没有函数应用，请先创建一个。 请参阅[在 Azure 门户中创建第一个函数](../azure-functions/functions-get-started.md)。
 
-1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
+1. 在 [Azure 门户](https://portal.azure.com)的设计器中打开逻辑应用。
 
 1. 按照适用于自身方案的步骤，创建并添加函数：
 
@@ -114,7 +116,7 @@ function convertToDateString(request, response){
 
    * 如果介于逻辑应用工作流中现有步骤之间，请将鼠标移至箭头上，选择加号 (+)，然后选择“添加操作”。
 
-1. 在搜索框中输入“Azure Functions”作为筛选器。 在操作列表中，选择“选择 Azure 函数”操作，例如：
+1. 在搜索框中输入 `azure functions`。 在操作列表中，选择“选择 Azure 函数”操作，例如：
 
    ![在 Azure 门户中查找函数。](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -161,13 +163,13 @@ function convertToDateString(request, response){
 
 ## <a name="add-existing-functions-to-logic-apps"></a>将现有函数添加至逻辑应用
 
-若要从逻辑应用调用现有函数，可以添加函数，具体方法与在逻辑应用设计器中执行的任何其他操作一样。
+若要从逻辑应用调用现有函数，可以添加函数，具体方法与在工作流设计器中执行的任何其他操作一样。
 
-1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
+1. 在 [Azure 门户](https://portal.azure.com)的设计器中打开逻辑应用。
 
 1. 在要添加函数的步骤下，选择“新建步骤”。
 
-1. 在“选择操作”下的搜索框中，输入“azure 函数”作为筛选器。 在操作列表中，选择“选择 Azure 函数”操作。
+1. 在“选择操作”下的搜索框中输入 `azure functions`。 在操作列表中，选择“选择 Azure 函数”操作，例如：
 
    ![在 Azure 中查找函数。](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -201,7 +203,7 @@ function convertToDateString(request, response){
 
 ## <a name="enable-authentication-for-functions"></a>为函数启用身份验证
 
-为了轻松验证对 Azure Active Directory (Azure AD) 保护的其他资源的访问，而无需登录并提供凭据或机密，逻辑应用可以使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（旧称为“托管服务标识 (MSI)”）。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 详细了解[支持 Azure AD 身份验证的托管标识的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
+为了轻松验证对 Azure Active Directory (Azure AD) 保护的资源的访问，而无需登录并提供凭据或机密，逻辑应用可以使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（旧称为“托管服务标识 (MSI)”）。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 详细了解[支持 Azure AD 身份验证的托管标识的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
 如果你将逻辑应用设置为使用系统分配标识或手动创建的用户分配标识，那么逻辑应用中的函数也可以使用同一标识进行身份验证。 若要详细了解逻辑应用中函数的身份验证支持，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
@@ -254,11 +256,11 @@ function convertToDateString(request, response){
 
   * 若要生成此对象 ID，请[启用逻辑应用的系统分配标识](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app)。
 
-  * 否则，若要查找此对象 ID，请在逻辑应用设计器中打开逻辑应用。 在逻辑应用菜单中的“设置”下，选择“标识” > “系统分配”。  
+  * 否则，若要查找此对象 ID，请在设计器中打开逻辑应用。 在逻辑应用菜单中的“设置”下，选择“标识” > “系统分配”。  
 
 * Azure Active Directory (Azure AD) 中租户的目录 ID
 
-  若要获取租户的目录 ID，可以运行 [`Get-AzureAccount`](/powershell/module/servicemanagement/azure.service/get-azureaccount) Powershell 命令。 或者，在 Azure 门户中执行以下步骤：
+  若要获取租户的目录 ID，可以运行 [`Get-AzureAccount`](/powershell/module/servicemanagement/azure.service/get-azureaccount) PowerShell 命令。 或者，在 Azure 门户中执行以下步骤：
 
   1. 在 [Azure 门户](https://portal.azure.com)中，找到并选择你的函数应用。
 
@@ -311,7 +313,7 @@ function convertToDateString(request, response){
 
 1. 完成后，请选择“确定”。
 
-1. 返回逻辑应用设计器，并遵循[使用托管标识对访问进行身份验证的步骤](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)操作。
+1. 返回到设计器，并按照[使用托管标识验证访问的步骤](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)操作。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c2a687dc1165b2eca52213811721b35e998a6d9
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 87fd2189222828eef2ff03a82125e0b6dcf7111e
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033277"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179866"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
 
@@ -29,7 +29,7 @@ ms.locfileid: "112033277"
 以下 Windows 组件在请求和使用 PRT 时起着重要作用：
 
 * **云身份验证提供程序** (CloudAP)：CloudAP 是 Windows 登录的新式身份验证提供程序，用于验证登录到 Windows 10 设备的用户。 CloudAP 提供一个插件框架，可基于该框架构建标识提供者，以便使用该标识提供者的凭据完成 Windows 身份验证。
-* **Web 帐户管理器** (WAM)：WAM 是 Windows 10 设备上的默认令牌代理。 WAM 也提供一个插件框架，可基于该框架构建标识提供者，并为依赖该标识提供者的应用程序启用 SSO。
+* **Web 帐户管理器** (WAM)：WAM 是 Windows 10 设备上的默认令牌代理。 WAM 也提供一个插件框架，可基于该框架构建标识提供者，并为依赖该标识提供者的应用程序启用 SSO。 （未包含在 Windows Server 2016 LTSC 版本中）
 * **Azure AD CloudAP 插件**：基于 CloudAP 框架构建的 Azure AD 特定插件，用于在 Windows 登录期间通过 Azure AD 验证用户凭据。
 * **Azure AD WAM 插件**：基于 WAM 框架构建的 Azure AD 特定插件，可为依赖于 Azure AD 进行身份验证的应用程序启用 SSO。
 * **Dsreg**：Windows 10 上的 Azure AD 特定组件，用于处理所有设备状态的设备注册过程。
@@ -59,7 +59,7 @@ PRT 是从 Azure AD 发送的不透明 blob，其内容对于任何客户端组�
 
 * **已建立 Azure AD 联接** 或 **已建立混合 Azure AD 联接**：当用户使用组织凭据登录时，在 Windows 登录过程中将颁发 PRT。 使用 Windows 10 支持的所有凭据（例如密码和 Windows Hello 企业版）颁发 PRT。 在此方案中，Azure AD CloudAP 插件是 PRT 的主要颁发机构。
 * **Azure AD 注册设备**：当用户将辅助工作帐户添加到 Windows 10 设备时，将颁发 PRT。 用户可以通过两种不同的方式将帐户添加到 Windows 10：  
-   * 登录到某个应用（例如 Outlook）后，会出现“在此设备上的所有位置使用此帐户”提示，通过该提示添加帐户
+   * 登录应用（例如 Outlook）后，通过“允许我的组织管理我的设备”提示添加帐户
    * 通过“设置” > “帐户” > “访问工作或学校” > “连接”添加帐户   
 
 在设备已注册 Azure AD 的方案中，Azure AD WAM 插件是 PRT 的主要颁发机构，因为此 Azure AD 帐户未发生 Windows 登录。
@@ -122,8 +122,6 @@ PRT 通过两种不同的方法续订：
 * **WAM 交互式登录中的 MFA**：在通过 WAM 请求令牌时，如果用户需要进行 MFA 才能访问应用，则在此交互过程中续订的 PRT 将带有 MFA 声明。
    * 在这种情况下，MFA 声明不会持续更新，因此，MFA 的持续时间取决于目录上设置的生存期。
    * 使用已有的 PRT 和 RT 访问应用时，PRT 和 RT 将被视为身份验证的第一项证明。 将需要具有第二项证明和 MFA 声明的新 AT。 这还将颁发新的 PRT 和 RT。
-* **设备注册期间的 MFA**：如果管理员已将 Azure AD 中的设备设置配置为 [需要完成 MFA 才能注册设备](device-management-azure-portal.md#configure-device-settings)，则用户需要进行 MFA 才能完成注册。 在此过程中，颁发给用户的 PRT 具有在注册期间获得的 MFA 声明。 此功能仅适用于设备的注册所有者，而不适用于登录该设备的其他用户。
-   * 与 WAM 交互式登录类似，MFA 声明不会持续更新，因此，MFA 的持续时间取决于目录上设置的生存期。
 
 Windows 10 维护每个凭据的 PRT 分区列表。 Windows Hello 企业版、密码或智能卡中的每一个都有 PRT。 此分区确保根据使用的凭据隔离 MFA 声明，而不会在令牌请求过程中混合在一起。
 
@@ -182,9 +180,9 @@ Windows 10 维护每个凭据的 PRT 分区列表。 Windows Hello 企业版、�
 | 步骤 | 说明 |
 | :---: | --- |
 | A | 应用程序（例如 Outlook、OneNote 等）向 WAM 发出令牌请求。 随后 WAM 会要求 Azure AD WAM 插件处理该令牌请求。 |
-| B | 如果应用程序的刷新令牌已可用，Azure AD WAM 插件将使用该令牌来请求访问令牌。 为了提供设备绑定的证明，WAM 插件会使用会话密钥对请求进行签名。 Azure AD 验证会话密钥，颁发应用的访问令牌和新的刷新令牌，并使用会话密钥进行加密。 WAM 插件请求 Cloud AP 插件对令牌进行解密，再由 Cloud AP 插件请求 TPM 使用会话密钥进行解密，从而让 WAM 插件获取这两个令牌。 接下来，WAM 插件仅提供应用程序的访问令牌，同时使用 DPAPI 重新加密刷新令牌并将其存储在自己的缓存中  |
+| B | 如果应用程序的刷新令牌已可用，Azure AD WAM 插件将使用该令牌来请求访问令牌。 为了提供设备绑定的证明，WAM 插件会使用会话密钥对请求进行签名。 Azure AD 验证会话密钥，颁发应用的访问令牌和新的刷新令牌，并使用会话密钥进行加密。 WAM 插件请求 CloudAP 插件对令牌进行解密，再由 CloudAP 插件请求 TPM 使用会话密钥进行解密，从而让 WAM 插件获取这两个令牌。 接下来，WAM 插件仅提供应用程序的访问令牌，同时使用 DPAPI 重新加密刷新令牌并将其存储在自己的缓存中  |
 | C |  如果应用程序的刷新令牌不可用，Azure AD WAM 插件将使用 PRT 来请求访问令牌。 为了提供所有权证明，WAM 插件会使用会话密钥对包含 PRT 的请求进行签名。 Azure AD 通过将会话密钥签名与 PRT 中嵌入的会话密钥进行比较来验证该签名，并验证设备是否有效，然后颁发应用程序的访问令牌和刷新令牌。 此外，Azure AD 可以基于刷新周期颁发新的 PRT，这些内容全都由会话密钥加密。 |
-| D | WAM 插件请求 Cloud AP 插件对令牌进行解密，再由 Cloud AP 插件请求 TPM 使用会话密钥进行解密，从而让 WAM 插件获取这两个令牌。 接下来，WAM 插件仅提供应用程序的访问令牌，同时使用 DPAPI 重新加密刷新令牌并将其存储在自己的缓存中。 WAM 插件从此会将刷新密钥用于该应用程序。 WAM 插件还将新的 PRT 返回至 Cloud AP 插件，该插件会先通过 Azure AD 验证该 PRT，然后再在其自己的缓存中进行更新。 Cloud AP 插件从此将使用新的 PRT。 |
+| D | WAM 插件请求 CloudAP 插件对令牌进行解密，再由 CloudAP 插件请求 TPM 使用会话密钥进行解密，从而让 WAM 插件获取这两个令牌。 接下来，WAM 插件仅提供应用程序的访问令牌，同时使用 DPAPI 重新加密刷新令牌并将其存储在自己的缓存中。 WAM 插件从此会将刷新密钥用于该应用程序。 WAM 插件还将新的 PRT 返回至 CloudAP 插件，该插件会先通过 Azure AD 验证该 PRT，然后再在其自己的缓存中进行更新。 CloudAP 插件从此将使用新的 PRT。 |
 | E | WAM 向 WAM 提供新颁发的访问令牌，随后 WAM 又将其返回至调用应用程序|
 
 ### <a name="browser-sso-using-prt"></a>使用 PRT 的浏览器 SSO

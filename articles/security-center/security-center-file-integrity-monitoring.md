@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/25/2021
+ms.date: 07/01/2021
 ms.author: memildin
-ms.openlocfilehash: e14307207ddbe9f1b89bd05d7015dafd76b10d51
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: 0632389800c4c524623314bcc50bb21a375e3855
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992383"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734874"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
@@ -25,13 +25,13 @@ ms.locfileid: "107992383"
 |发布状态：|正式发布版 (GA)|
 |定价：|需要[适用于服务器的 Azure Defender](defender-for-servers-introduction.md)。<br>FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。|
 |所需角色和权限：|工作区所有者可以启用/禁用 FIM（有关详细信息，请参阅 [Log Analytics 的 Azure 角色](/services-hub/health/azure-roles#azure-roles)）。<br>读取者可以查看结果。|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权云（US Gov、中国政府云、其他政府云）<br>仅在可以使用 Azure 自动化更改跟踪解决方案的区域中受支持。<br>![是](./media/icons/yes-icon.png) 已启用 [Azure Arc](../azure-arc/servers/overview.md) 的设备。<br>请参阅[链接的 Log Analytics 工作区支持的区域](../automation/how-to/region-mappings.md)。<br>[详细了解更改跟踪](../automation/change-tracking/overview.md)。|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国家/地区/主权（Azure 政府、Azure 中国世纪互联）<br>仅在可以使用 Azure 自动化更改跟踪解决方案的区域中受支持。<br>:::image type="icon" source="./media/icons/yes-icon.png"::: [ 已启用 Azure Arc](../azure-arc/servers/overview.md) 的设备。<br>请参阅[链接的 Log Analytics 工作区支持的区域](../automation/how-to/region-mappings.md)。<br>[详细了解更改跟踪](../automation/change-tracking/overview.md)。|
 |||
 
 ## <a name="what-is-fim-in-security-center"></a>安全中心内的 FIM 是什么？
 文件完整性监视 (FIM)（也称为“更改监视”）检查操作系统文件、Windows 注册表、应用程序软件、Linux 系统文件等是否发生了可能表示受到攻击的变化。 
 
-安全中心建议使用 FIM 监视实体，你也可以定义自己的 FIM 策略或要监视的实体。 发生如下所述的可疑活动时，FIM 将发出警报：
+安全中心建议使用 FIM 监视实体，你也可以定义自己的 FIM 策略或要监视的实体。 发生如下所述的可疑活动时，FIM 将通知你：
 
 - 创建或删除文件和注册表项
 - 文件修改（文件大小、访问控制列表和内容哈希的更改）
@@ -48,7 +48,7 @@ ms.locfileid: "107992383"
 
 ## <a name="how-does-fim-work"></a>FIM 的工作原理是什么？
 
-FIM 将这些项的当前状态与上次扫描过程中的状态进行比较，如果发生了可疑的修改，FIM 将发出警报。
+FIM 将这些项的当前状态与上次扫描过程中的状态进行比较，如果发生了可疑的修改，FIM 将通知你。
 
 FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视后，会获得一个“解决方案”类型的“更改跟踪”资源 。 有关数据收集频率的详细信息，请参阅[更改跟踪数据收集详细信息](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection)。
 
@@ -100,7 +100,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
 1. 在“Azure Defender”仪表板的“高级保护”区域中，选择“文件完整性监视”  。
 
-   :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="启动 FIM" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
+   :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="启动 FIM。" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
 
     此时会打开“文件完整性监视”配置页。
 
@@ -115,20 +115,20 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
     - 访问和查看每个工作区的状态与设置
 
-    - ![升级计划图标][4] 升级工作区以使用 Azure Defender。 此图标表示相应的工作区或订阅不受 Azure Defender 保护。 若要使用 FIM 功能，你的订阅必须受 Azure Defender 保护。 有关详细信息，请参阅 [Azure 安全中心免费版与已启用 Azure Defender 的版本的比较](security-center-pricing.md)。
+    - ![“升级计划”图标。][4] 升级工作区以使用 Azure Defender。 此图标表示相应的工作区或订阅不受 Azure Defender 保护。 若要使用 FIM 功能，你的订阅必须受 Azure Defender 保护。 有关详细信息，请参阅 [Azure 安全中心免费版与已启用 Azure Defender 的版本的比较](security-center-pricing.md)。
 
     - ![启用图标][3] 对工作区下的所有计算机启用 FIM，并配置 FIM 选项。 此图标表示未对工作区启用 FIM。
 
-        :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="对特定的工作区启用 FIM":::
+        :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="对特定的工作区启用 FIM。":::
 
 
     > [!TIP]
-    > 如果没有“启用”或“升级”按钮，并且空间为空白，则表示已在工作区中启用 FIM。
+    > 如果未显示启用或升级按钮，并且行尾空间是空白的，则表示已对工作区启用 FIM。
 
 
 1. 选择“启用”。 此时将显示工作区的详细信息，包括工作区下的 Windows 和 Linux 计算机数目。
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-fim-status.png" alt-text="FIM 工作区详细信息页":::
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-fim-status.png" alt-text="FIM 工作区详细信息页。":::
 
    此外，还会列出适用于 Windows 和 Linux 的建议设置。  展开“Windows 文件”、“注册表”和“Linux 文件”查看建议项的完整列表。  
 
@@ -145,7 +145,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
 “文件完整性监视”仪表板显示已启用 FIM 的工作区。 对工作区启用 FIM 后或者在“文件完整性监视”窗口中选择已启用 FIM 的工作区时，FIM 仪表板将会打开。
 
-:::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="FIM 仪表板及其各种信息面板":::
+:::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="FIM 仪表板及其各种信息面板。":::
 
 工作区的 FIM 仪表板显示以下详细信息：
 
@@ -156,7 +156,7 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
 选择仪表板顶部的“筛选器”可以更改所显示的更改的时间段。
 
-:::image type="content" source="./media/security-center-file-integrity-monitoring/dashboard-filter.png" alt-text="FIM 仪表板的时间段筛选器":::
+:::image type="content" source="./media/security-center-file-integrity-monitoring/dashboard-filter.png" alt-text="FIM 仪表板的时间段筛选器。":::
 
 “服务器”选项卡列出向此工作区报告的计算机。 对于每台计算机，仪表板将会列出：
 
@@ -182,11 +182,11 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
 ## <a name="edit-monitored-entities"></a>编辑受监视的实体
 
-1. 在工作区的文件完整性监视仪表板中，从工具栏中选择“设置”。 
+1. 从工作区的文件完整性监视仪表板的工具栏中，选择“设置” 。 
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-dashboard-settings.png" alt-text="访问工作区的文件完整性监视设置" lightbox="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-dashboard-settings.png":::
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-dashboard-settings.png" alt-text="访问工作区的文件完整性监视设置。" lightbox="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-dashboard-settings.png":::
 
-   “工作区配置”随即打开，其中包含可监视的每类元素的选项卡：
+   “工作区配置”打开，并显示可监视的各类元素的选项卡：
 
       - Windows 注册表
       - Windows 文件
@@ -196,9 +196,9 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
       每个选项卡列出可在该类别中编辑的实体。 对于列出的每个实体，安全中心会指出是已启用 (true) 还是未启用 (false) FIM。  编辑实体可以启用或禁用 FIM。
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-workspace-configuration.png" alt-text="Azure 安全中心中的文件完整性监视的工作区配置":::
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-workspace-configuration.png" alt-text="Azure 安全中心中文件完整性监视的工作区配置。":::
 
-1. 从其中一个选项卡中选择一个条目，并在“编辑更改跟踪”窗格中编辑任何可用字段。 选项包括：
+1. 从其中一个选项卡选择一个条目，然后在“编辑更改跟踪”窗格中编辑任意可用字段。 选项包括：
 
     - 启用 (True) 或禁用 (False) 文件完整性监视
     - 提供或更改实体名称
@@ -240,9 +240,9 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
 若要禁用 FIM：
 
-1. 从工作区的文件完整性监视仪表板中，选择“禁用”。
+1. 从工作区的文件完整性监视仪表板中，选择“禁用” 。
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring/disable-file-integrity-monitoring.png" alt-text="从“设置”页禁用文件完整性监视":::
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/disable-file-integrity-monitoring.png" alt-text="从设置页面禁用文件完整性监视。":::
 
 1. 选择“删除” 。
 

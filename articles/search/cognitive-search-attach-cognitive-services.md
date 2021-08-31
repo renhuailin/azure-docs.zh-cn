@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: 0fe9a87e82ab391fc0e1ccfca95ad48a0ef5dc61
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c5f29cb909dae7b8e362cdf37481111dbf75c8d9
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772463"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195412"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>将认知服务资源附加到 Azure 认知搜索中的技能组
 
@@ -47,7 +47,7 @@ ms.locfileid: "122772463"
   如前所述，[自定义实体查找](cognitive-search-skill-custom-entity-lookup.md)是一种特殊情况，此时需要一个键，但[由认知搜索计量](https://azure.microsoft.com/pricing/details/search/#pricing)。
 
 > [!TIP]
-> 为了降低技能集处理的成本，启用[增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)以缓存和重复使用任何不受技能集更改影响的扩充。 缓存需要 Azure 存储（请参阅[定价](https://azure.microsoft.com/pricing/details/storage/blobs/)），但如果可以重复使用现有的扩充，则技能组执行的累积成本会降低，尤其是对于使用图像提取和分析的技能组。
+> 为了降低技能集处理的成本，启用[增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)以缓存和重复使用任何不受技能集更改影响的扩充。 缓存需要 Azure 存储（请参阅[定价](/pricing/details/storage/blobs/)），但如果可以重复使用现有的扩充，则技能组执行的累积成本会降低，尤其是对于使用图像提取和分析的技能组。
 
 ## <a name="same-region-requirement"></a>相同区域要求
 

@@ -5,14 +5,15 @@ author: minhe-msft
 ms.author: hemin
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: da0a9b457127400bdeb67c671b2710447b37784e
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 3029f7756d50e509d7bd539dc5fde8de8a075424
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903193"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272206"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>使用 Azure Monitor 监视数据工厂和发警报
 
@@ -567,13 +568,13 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | 属性                   | 类型   | 说明                                                   | 示例                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | 事件的时间，采用 UTC 格式 `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | String | SSIS IR 操作的名称                            | `Start/Stop/Maintenance` |
+| **operationName**          | String | SSIS IR 操作的名称                            | `Start/Stop/Maintenance/Heartbeat` |
 | **category**               | String | 诊断日志的类别                               | `SSISIntegrationRuntimeLogs` |
 | **correlationId**          | String | 用于跟踪特定操作的唯一 ID             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
 | **dataFactoryName**        | String | ADF 的名称                                          | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名称                                      | `MySSISIR` |
 | **level**                  | String | 诊断日志的级别                                  | `Informational` |
-| **resultType**             | String | SSIS IR 操作的结果                          | `Started/InProgress/Succeeded/Failed` |
+| **resultType**             | String | SSIS IR 操作的结果                          | `Started/InProgress/Succeeded/Failed/Healthy/Unhealthy` |
 | **message**                | String | SSIS IR 操作的输出消息                  | `The stopping of your SSIS integration runtime has succeeded.` |
 | **resourceId**             | String | ADF 资源的唯一 ID                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
@@ -895,9 +896,20 @@ Azure Monitor 和 Log Analytics 中的 SSIS 包执行日志的架构和内容类
 
 无论使用哪种调用方法，所选 SSIS 包执行日志始终会发送到 Log Analytics。 例如，可以在支持 Azure 的 SSDT 中、在 SSMS、SQL Server 代理或其他指定工具中通过 T-SQL，或者作为 ADF 管道中“执行 SSIS 包”活动的已触发运行或调试运行来调用包执行。
 
-在 Logs Analytics 上查询 SSIS IR 操作日志时，可以使用 OperationName 和 ResultType 属性，这两个属性分别设置为 `Start/Stop/Maintenance` 和 `Started/InProgress/Succeeded/Failed` 。 
+在 Logs Analytics 上查询 SSIS IR 操作日志时，可以使用 OperationName 和 ResultType 属性，这两个属性分别设置为 `Start/Stop/Maintenance/Heartbeat` 和 `Started/InProgress/Succeeded/Failed/Healthy/Unhealthy` 。
 
 ![在 Log Analytics 上查询 SSIS IR 操作日志](media/data-factory-monitor-oms/log-analytics-query.png)
+
+若要查询 SSIS IR 节点状态，可以将 OperationName 属性设置为 `Heartbeat`。 通常，每个节点每分钟都会向日志分析发送一个 `Heartbeat` 记录，通过 ResultType 属性反映其状态，当节点可用于包执行时其属性为 `Healthy`，反之则为 `Unhealthy`。 例如，如果 SSIS IR 有两个可用节点，将在任意一个一分钟时间段内始终可以看到两个 ResultType 属性设置为 `Healthy` 的 `Heartbeat` 记录。
+
+![在日志分析上查询 SSIS IR 检测信号](media/data-factory-monitor-oms/log-analytics-query-3.png)
+
+你可以查询以下模式以检测 SSIS IR 节点的不可用性：
+
+* SSIS IR 仍在运行时，在许多一分钟时间段内都会缺失 `Heartbeat` 记录。
+* SSIS IR 仍在运行时，在许多一分钟时间段内会有 ResultType 属性设置为 `Unhealthy` 的 `Heartbeat` 记录。
+
+你可以将以上查询转换成[警报](../azure-monitor/alerts/alerts-unified-log.md)，然后转到 [SSIS IR 监视页面](monitor-integration-runtime.md#monitor-the-azure-ssis-integration-runtime-in-azure-portal)以确认收到那些警报。
 
 在 Logs Analytics 上查询 SSIS 包执行日志时，可以使用 OperationId/ExecutionId/CorrelationId 属性联接它们  。 对于与未存储在 SSISDB 中的包/通过 T-SQL 调用的包相关的所有操作/执行，OperationId/ExecutionId 始终设置为 `1`  。
 

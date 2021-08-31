@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 10caff631d59085aa2bbfcd573c3e3114b0306f7
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 3b64b77d4e9061e122c627154c4623fcebfce631
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560863"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178951"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
@@ -23,8 +23,6 @@ ms.locfileid: "111560863"
 [应用服务静态 Web 应用](https://azure.microsoft.com/services/app-service/static/)是 Azure 存储静态网站托管的绝佳替代方案，也适用于不需要 Web 服务器呈现内容的案例。 应用服务静态 Web 应用提供了从 GitHub 源到全局部署的完全托管的持续集成和持续交付 (CI/CD) 工作流。
 
 如果需要 Web 服务器来呈现内容，可以使用 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)。
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up-a-static-website"></a>设置静态网站
 
@@ -121,6 +119,36 @@ ms.locfileid: "111560863"
 可以在静态网站页面上启用指标。 启用指标后，指标仪表板会报告有关 $web 容器中的文件的流量统计信息。
 
 若要在静态网站页面上启用指标，请参阅[在静态网站页面上启用指标](storage-blob-static-website-how-to.md#metrics)。
+
+## <a name="faq"></a>常见问题解答
+
+##### <a name="does-the-azure-storage-firewall-work-with-a-static-website"></a>Azure 存储防火墙是否适用于静态网站？
+
+存储帐户具有内置的[防火墙功能](../common/storage-network-security.md)，但此防火墙不影响静态网站终结点。 它只能用于保护其他存储终结点，例如 blob、文件、表和队列服务终结点。 
+
+##### <a name="do-static-websites-support-azure-active-directory-azure-ad"></a>静态网站是否支持 Azure Active Directory (Azure AD)？
+
+是的。 但是，不提供使用社交标识提供者的选项（例如使用 OpenID 的 Google 身份验证或 Facebook）。
+
+##### <a name="how-do-i-use-a-custom-domain-with-a-static-website"></a>如何将自定义域与静态网站配合使用？
+
+可以使用 [Azure 内容分发网络 (Azure CDN)](./storage-custom-domain-name.md#map-a-custom-domain-with-https-enabled) 在静态网站中配置[自定义域](./static-website-content-delivery-network.md)。 Azure CDN 在世界各地为网站提供了一致的低延迟。 
+
+##### <a name="how-do-i-use-a-custom-ssl-certificate-with-a-static-website"></a>如何将自定义 SSL 证书用于静态网站？
+
+可以使用 [Azure CDN](./storage-custom-domain-name.md#map-a-custom-domain-with-https-enabled) 在静态网站中配置[自定义 SSL](./static-website-content-delivery-network.md) 证书。 Azure CDN 在世界各地为网站提供了一致的低延迟。
+
+##### <a name="how-do-i-add-custom-headers-and-rules-with-a-static-website"></a>如何向静态网站添加自定义标头和规则？
+
+可以使用 [Azure CDN - Verizon 高级](../../cdn/cdn-verizon-premium-rules-engine.md)为静态网站配置主机标头。 我们非常期待你能通过此处提供反馈。
+
+##### <a name="why-am-i-getting-an-http-404-error-from-a-static-website"></a>为什么会从静态网站收到 HTTP 404 错误？
+
+如果使用不正确的大小写来引用文件名，则会发生这种情况。 例如，`Index.html` 而非 `index.html`。 静态网站的 URL 中的文件名和扩展名区分大小写，即使通过 HTTP 提供也是如此。 如果尚未预配 Azure CDN 终结点，也会发生这种情况。 预配新的 CDN 后，最长等待 90 分钟，以完成传播。
+
+##### <a name="why-isnt-the-root-directory-of-the-website-not-redirecting-to-the-default-index-page"></a>为什么网站的根目录不重定向到默认索引页？
+
+在 Azure 门户中，打开帐户的静态网站配置页，并查找在“索引文档名称”字段中设置的名称和扩展名。 确保此名称与位于存储帐户的 $web 容器中的文件的名称完全相同。 静态网站的 URL 中的文件名和扩展名区分大小写，即使通过 HTTP 提供也是如此。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,23 +10,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2021
+ms.date: 08/09/2021
 ms.author: yelevin
-ms.openlocfilehash: fb947b6f5930e3a0d81d53a1660885ebf1c51cca
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: b68d2a8219e7aa23aac3187333160dfd4276e7b8
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810491"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182174"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 中的高级多阶段攻击检测
 
 > [!IMPORTANT]
 > 某些 Fusion 检测（如下文所示）目前为预览版。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 使用基于机器学习的 Fusion 技术，Azure Sentinel 可以通过识别在不同终止链阶段观测到的异常行为与可疑活动的组合，来自动检测多阶段攻击。 Azure Sentinel 根据这些发现结果生成事件，否则很难捕获这些事件。 这些事件由两个或者更多个警报或活动构成。 根据设计，这些事件具有数量少、保真度高和严重性高的特点。
 
 此项检测技术已根据你的环境进行自定义，不仅可以减少[误报](false-positives.md)率，而且还能在信息有限或缺失的情况下检测到攻击。
+
+
 
 ## <a name="configuration-for-advanced-multistage-attack-detection"></a>高级多阶段攻击检测的配置
 
@@ -57,7 +61,7 @@ ms.locfileid: "109810491"
 >
 > - 使用分析规则警报的基于 Fusion 的检测目前以预览版提供。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
-Fusion 可以使用一组[计划分析规则](tutorial-detect-threats-custom.md)生成的警报来检测多阶段攻击。 建议执行以下步骤来配置并启用这些规则，以充分利用 Azure Sentinel 的 Fusion 功能。
+Fusion 可以使用一组[计划分析规则](detect-threats-custom.md)生成的警报来检测多阶段攻击。 建议执行以下步骤来配置并启用这些规则，以充分利用 Azure Sentinel 的 Fusion 功能。
 
 1. 使用以下计划分析规则模板（可在“分析”边栏选项卡中的“规则模板”选项卡中找到）创建新规则  。 单击模板库中的规则名称，然后单击预览窗格中的“创建规则”：
 
@@ -737,6 +741,26 @@ MITRE ATT&CK 方法：有效帐户 (T1078)、加密数据以造成影响 (T1486)
 
 - 从凭据已泄露的用户发起登录事件，进而在云应用中执行勒索软件
 
+### <a name="multiple-alerts-possibly-related-to-ransomware-activity-detected-public-preview"></a>可能与检测到的勒索软件活动相关的多个警报（公共预览版）
+
+Azure Sentinel 从以下数据源检测到多个不同类型的警报，并且这些警报可能与勒索软件活动相关时，则会生成事件：
+
+- [Azure Defender（Azure 安全中心）](connect-azure-security-center.md)
+- [用于终结点的 Microsoft Defender](connect-microsoft-defender-advanced-threat-protection.md)
+- [Microsoft Defender for Identity](connect-azure-atp.md)
+- [Microsoft Cloud App Security](connect-cloud-app-security.md)
+- [Azure Sentinel 计划分析规则](detect-threats-built-in.md#scheduled)。 Fusion 仅考虑包含策略信息的计划分析规则。
+
+此类 Fusion 事件命名为“多个警报可能与检测到的勒索软件活动相关”，这些事件在特定时间范围内检测到相关警报时生成，并与攻击的“执行”和“防御规避”阶段相关联。
+
+例如，如果在特定时间范围内在同一主机上触发以下警报，则 Azure Sentinel 会为可能的勒索软件活动生成事件：
+
+- Azure Sentinel 计划警报(信息性)：Windows 错误和警告事件
+- Azure Defender (中)：“GandCrab”勒索软件已被阻止
+- Microsoft Defender for Endpoint (信息性)：检测到“Emotet”恶意软件
+- Azure Defender (低)：检测到“Tofsee”后门程序
+- Microsoft Defender for Endpoint (信息性)：检测到“Parite”恶意软件
+
 ## <a name="remote-exploitation"></a>远程恶意利用
 
 ### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>以可疑方式使用攻击框架，然后 Palo Alto Networks 防火墙标记了异常流量
@@ -779,6 +803,6 @@ MITRE ATT&CK 方法：有效帐户 (T1078)、资源劫持 (T1496)
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已详细了解高级多阶段攻击检测，接下来你可能对以下快速入门感兴趣，其中介绍了如何洞察数据和潜在威胁：[Azure Sentinel 入门](quickstart-get-visibility.md)。
+现在你已详细了解高级多阶段攻击检测，接下来你可能对以下快速入门感兴趣，其中介绍了如何洞察数据和潜在威胁：[Azure Sentinel 入门](get-visibility.md)。
 
-如果你已准备好调查系统为你创建的事件，请参阅以下教程：[使用 Azure Sentinel 调查事件](tutorial-investigate-cases.md)。
+如果你已准备好调查系统为你创建的事件，请参阅以下教程：[使用 Azure Sentinel 调查事件](investigate-cases.md)。

@@ -2,14 +2,14 @@
 title: 锁定资源以防止更改
 description: 通过对所有用户和角色应用锁，来防止用户更新或删除 Azure 资源。
 ms.topic: conceptual
-ms.date: 05/07/2021
+ms.date: 07/01/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 780957dec73177541e8677fb5f6551a6ad147797
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 27ab9d607f3b8fad669682e980bc0178e8dfad42
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951432"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122202065"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
@@ -43,7 +43,9 @@ ms.locfileid: "111951432"
 
 - 存储帐户上的只读锁阻止用户列出帐户密钥。 Azure 存储[列出密钥](/rest/api/storagerp/storageaccounts/listkeys)操作通过 POST 请求进行处理，以保护对帐户密钥的访问，从而提供对存储帐户中数据的完全访问。 如果为存储帐户配置了只读锁，没有帐户密钥的用户就必须使用 Azure AD 凭据来访问 blob 或队列数据。 只读锁还阻止分配存储帐户或数据容器（blob 容器或队列）范围内的 Azure RBAC 角色。
 
-- 存储帐户上的无法删除锁不会阻止删除或修改该帐户中的数据。 此类型的锁仅保护存储帐户本身不被删除，而不会保护存储帐户中的 blob、队列、表或文件数据。
+- 存储帐户上的无法删除锁不会阻止删除或修改该帐户中的数据。 该锁类型仅能保护存储账号本身不被删除。 如果请求使用[数据平面操作](control-plane-and-data-plane.md#data-plane)，那么存储帐户上的锁不会保护该存储帐户中的 Blob、队列、表或文件数据。 但是，如果请求使用[控制平面操作](control-plane-and-data-plane.md#control-plane)，那么锁会保护这些功能。
+
+  例如，如果请求使用[“文件共享 - 删除”](/rest/api/storagerp/file-shares/delete)（控制平面操作），删除将被拒绝。 如果请求使用[“删除共享”](/rest/api/storageservices/delete-share)（数据平面操作），删除将成功。 我们建议使用控制平面操作。
 
 - 存储帐户上的只读锁不会阻止删除或修改该帐户中的数据。 此类型的锁仅保护存储帐户本身不被删除或修改，而不会保护存储帐户中的 blob、队列、表或文件数据。
 
@@ -60,6 +62,10 @@ ms.locfileid: "111951432"
 - 资源组上的“无法删除”锁定可防止 Azure 机器学习自动缩放 [Azure 机器学习计算群集](../../machine-learning/concept-compute-target.md#azure-machine-learning-compute-managed)来删除未使用的节点 。
 
 - **订阅** 上的只读锁会导致 **Azure 顾问** 无法正常运行。 顾问将无法存储其查询的结果。
+
+- 应用程序网关上的只读锁将阻止获取应用程序网关的后端运行状况。 [该操作使用 POST](/rest/api/application-gateway/application-gateways/backend-health)（被只读锁阻止）。
+
+- AKS 群集上的只读锁会阻止所有用户从 Azure 门户上的 AKS 群集左侧边栏选项卡的“Kubernetes 资源”部分访问任意群集资源。 这些操作需要 POST 请求进行身份验证。
 
 ## <a name="who-can-create-or-delete-locks"></a>谁可以创建或删除锁
 

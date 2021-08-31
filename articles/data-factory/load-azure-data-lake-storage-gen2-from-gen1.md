@@ -4,15 +4,16 @@ description: 使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 1af7e5ea1038d78250271a8f9a2c69316e66883a
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 08/06/2021
+ms.openlocfilehash: 5538000573a70340b576e79b3e1dcab9367e7d89
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488638"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201901"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2
 
@@ -38,11 +39,11 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 1. 在左侧菜单中，选择“创建资源” > “数据 + 分析” > “数据工厂”。
    
-   ![在“新建”窗格中选择数据工厂](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   ![屏幕截图显示在“新建”窗格中选择“数据工厂”。](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
 2. 在“新建数据工厂”页中，为下图中所示的字段提供值： 
       
-   ![“新建数据工厂”页](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)
+   ![屏幕截图显示“新建数据工厂”页。](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)
  
     * **名称**：输入 Azure 数据工厂的全局唯一名称。 如果收到错误“数据工厂名称 \"LoadADLSDemo\" 不可用”，请输入不同的数据工厂名称。 例如，使用名称 _**yourname**_**ADFTutorialDataFactory**。 再次创建数据工厂。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
     * **订阅**：选择要在其中创建数据工厂的 Azure 订阅。 
@@ -53,124 +54,122 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 3. 选择“创建”  。
 4. 完成创建操作后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示： 
    
-   ![数据工厂主页](./media/load-azure-data-lake-storage-gen2-from-gen1/data-factory-home-page.png)
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
 
-5. 选择“创作和监视”磁贴，在单独的选项卡中启动数据集成应用程序。
+5. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，以便在单独选项卡中启动“数据集成应用程序”。
 
 ## <a name="load-data-into-azure-data-lake-storage-gen2"></a>将数据加载到 Azure Data Lake Storage Gen2 中
 
-1. 在“入门”页中，单击“复制数据”磁贴启动复制数据工具 。 
+1. 在主页中，选择“引入”磁贴启动复制数据工具。 
 
-   ![“复制数据”工具磁贴](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-tile.png)
-2. 在“属性”页中，为“任务名称”字段指定“CopyFromADLSGen1ToGen2”。   选择“**下一页**”。
+   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png )
 
-    ![“属性”页](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-properties-page.png)
-3. 在“源数据存储”页中，选择“+ 新建连接”。 
+2. 在“属性”页上，在“任务类型”下选择“内置复制任务”，在“任务节奏或任务计划”下选择“现在运行一次”，然后选择“下一页”。
 
-    ![“源数据存储”页](./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page.png)
+3. 在“源数据存储”页中，选择“+ 新建连接”。
     
 4. 从连接器库中选择“Azure Data Lake Storage Gen1”，然后选择“继续” 。
     
-    ![源数据存储 Azure Data Lake Storage Gen1 页](./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page-adls-gen1.png)
+    ![屏幕截图显示了选择 Azure Data Lake Storage Gen1 连接的页面。](./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page-adls-gen1.png)
     
-5. 在“指定 Azure Data Lake Storage Gen1 连接”页中，按以下步骤执行操作：
-
-   a. 选择你的 Data Lake Storage Gen1 作为帐户名称，并指定或验证 **租户**。
+5. 在“新建连接(Azure Data Lake Storage Gen1)”页中，按以下步骤操作：
+   1. 选择你的 Data Lake Storage Gen1 作为帐户名称，并指定或验证 **租户**。
+   1. 选择“测试连接”以验证设置。 然后选择“创建”。
   
-   b. 选择“测试连接”以验证设置。 然后选择“完成”。
-  
-   c. 你会看到创建了一个新连接。 选择“**下一页**”。
-   
    > [!IMPORTANT]
    > 在本演练中，使用 Azure 资源的托管身份来对 Azure Data Lake Storage Gen1 进行身份验证。 请按照[这些说明](connector-azure-data-lake-store.md#managed-identity)授予托管身份在 Azure Data Lake Storage Gen1 中的适当权限。
    
-   ![指定 Azure Data Lake Storage Gen1 帐户](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen1-account.png)
+   ![屏幕截图显示了 Azure Data Lake Storage Gen1 连接配置。](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen1-account.png)
       
-6. 在“选择输入文件或文件夹”页中，浏览到要复制的文件夹和文件。 选择文件夹或文件，然后选择“选择”。
-
-    ![选择输入文件或文件夹](./media/load-azure-data-lake-storage-gen2-from-gen1/choose-input-folder.png)
-
-7. 选择“以递归方式复制文件”和“以二进制方式复制”选项，指定复制行为 。 选择“**下一页**”。
-
-    ![屏幕截图显示了“选择输入文件或文件夹”，你可以在其中选择“以递归方式复制文件”和“以二进制方式复制”。](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
+6. 在“源数据存储”页上，完成以下步骤。 
+    1. 在“连接”部分中选择新建的连接。
+    1. 在“文件或文件夹”下，浏览到要复制的文件夹和文件。 选择文件夹或文件，然后选择“确定”。
+    1. 选择“以递归方式”和“以二进制方式复制”选项，指定复制行为。 选择“下一步”。
     
-8. 在“目标数据存储”页中，选择“+ 创建新连接” > “Azure Data Lake Storage Gen2” > “继续”。   
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page.png" alt-text="屏幕截图显示“源数据存储”页。":::
+    
+7. 在“目标数据存储”页中，选择“+ 新建连接” > “Azure Data Lake Storage Gen2” > “继续”。
 
-    ![“目标数据存储”页](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-storage-page.png)
+    ![屏幕截图显示了选择 Azure Data Lake Storage Gen2 连接的页面。](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-store-page-adls-gen2.png)
 
-9. 在“指定 Azure Data Lake Storage Gen2 连接”页中，按以下步骤执行操作：
+8. 在“新建连接(Azure Data Lake Storage Gen2)”页中，按以下步骤操作：
+   1. 从“存储帐户名称”下拉列表中选择能使用 Data Lake Storage Gen2 的帐户。
+   1. 选择“创建”以创建连接。 
 
-   a. 从“存储帐户名称”下拉列表中选择能使用 Data Lake Storage Gen2 的帐户。
-   
-   b. 选择“完成”  以创建连接。 然后，选择“下一步”。
-   
-   ![指定 Azure Data Lake Storage Gen2 帐户](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
+   ![屏幕截图显示了 Azure Data Lake Storage Gen2 连接配置。](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 
-10. 在“选择输出文件或文件夹”页上，输入 **copyfromadlsgen1** 作为输出文件夹名称，然后选择“下一步”。 数据工厂会在复制过程中创建相应的 Azure Data Lake Storage Gen2 文件系统和子文件夹（如果不存在）。
+9. 在“目标数据存储”页上，完成以下步骤。 
+    1. 在“连接”块中选择新建的连接。 
+    1. 在“文件夹路径”下，输入“copyfromadlsgen1”作为输出文件夹名称，然后选择“下一步”。 数据工厂会在复制过程中创建相应的 Azure Data Lake Storage Gen2 文件系统和子文件夹（如果不存在）。
 
-    ![屏幕截图显示了所输入的文件夹路径。](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-path.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-store-page.png" alt-text="屏幕截图显示“目标数据存储”页。":::
 
-11. 在“设置”页上，选择“下一步”以使用默认设置。
+10. 在“设置”页中，为“任务名称”字段指定“CopyFromADLSGen1ToGen2”，然后选择“下一步”，以使用默认设置。
 
-12. 在“摘要”页中检查设置，然后选择“下一步”。
 
-    ![“摘要”页](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-summary.png)
-13. 在“部署”页中，选择“监视”以监视管道。 
+11. 在“摘要”页中检查设置，然后选择“下一步”。
 
-    ![“部署”页](./media/load-azure-data-lake-storage-gen2-from-gen1/deployment-page.png)
-14. 请注意，界面中已自动选择左侧的“监视”选项卡。 “操作”列中包含用于查看活动运行详细信息以及用于重新运行管道的链接。
+    ![屏幕截图显示了“摘要”页。](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-summary.png)
 
-    ![监视管道运行](./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-pipeline-runs.png)
+12. 在“部署”页中，选择“监视”以监视管道。 
 
-15. 若要查看与管道运行关联的活动运行，请选择“操作”列中的“查看活动运行”链接。  该管道只包含一个活动（复制活动），因此只显示了一个条目。 若要切换回到管道运行视图，请选择顶部的“管道”链接。 选择“刷新”可刷新列表。 
+    ![屏幕截图显示了“部署”页。](./media/load-azure-data-lake-storage-gen2-from-gen1/deployment-page.png)
 
-    ![监视活动运行](./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-activity-runs.png)
+13. 请注意，界面中已自动选择左侧的“监视”选项卡。  “管道名称”列中包含用于查看活动运行详细信息以及用于重新运行管道的链接。
 
-16. 若要监视每个复制活动的执行详细信息，请在活动监视视图中选择“操作”下的“详细信息”链接（眼镜图标）。 可以监视详细信息，例如，从源复制到接收器的数据量、吞吐量、执行步骤以及相应的持续时间和使用的配置。
+    ![屏幕截图显示监视管道运行页面。](./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-pipeline-runs.png)
 
-    ![监视活动运行详细信息](./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-activity-run-details.png)
+14. 若要查看与管道运行关联的活动运行，请选择“管道名称”列中的链接。 该管道只包含一个活动（复制活动），因此只显示了一个条目。 若要切换回“管道运行”视图，请选择顶部痕迹导航菜单中的“所有管道运行”链接。 选择“刷新”可刷新列表。 
 
-17. 验证数据是否已复制到 Azure Data Lake Storage Gen2 帐户。
+    ![屏幕截图显示监视活动运行页面。](./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-activity-runs.png)
+
+15. 若要监视每个复制活动的执行详细信息，请在活动监视视图中选择“活动名称”列下的“详细信息”链接（眼镜图标）。 可以监视详细信息，例如，从源复制到接收器的数据量、吞吐量、执行步骤以及相应的持续时间和使用的配置。
+
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-activity-run-details.png" alt-text="屏幕截图显示活动运行详细信息。":::
+
+16. 验证数据是否已复制到 Azure Data Lake Storage Gen2 帐户。
 
 ## <a name="best-practices"></a>最佳做法
 
 若要对从 Azure Data Lake Storage Gen1 到 Azure Data Lake Storage Gen2 的升级进行常规性评估，请参阅[将大数据分析解决方案从 Azure Data Lake Storage Gen1 升级到 Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)。 以下部分介绍了使用数据工厂将数据从 Data Lake Storage Gen1 升级到 Data Lake Storage Gen2 的最佳做法。
 
-### <a name="data-partition-for-historical-data-copy"></a>分区复制历史数据
+### <a name="historical-data-copy"></a>历史数据复制
 
-- 如果 Data Lake Storage Gen1 中的总数据大小小于 30 TB，且文件数低于一百万个，则可以在单个复制活动运行中复制所有数据。
-- 如果要复制的数据量较大，或者想要灵活地按批管理数据迁移并使每批数据在特定期限内是完整的，请对数据进行分区。 分区还会降低发生任何意外问题的风险。
+#### <a name="performance-tuning-by-proof-of-concept"></a>通过概念证明优化性能
 
 使用概念证明来验证端到端解决方案并测试环境中的复制吞吐量。 概念证明的主要步骤为： 
 
-1. 使用单个复制活动创建数据工厂管道，以将几万亿字节的数据从 Data Lake Storage Gen1 复制到 Data Lake Storage Gen2，从而获取复制性能基线。 从 128 个[数据集成单元 (DIU)](copy-activity-performance-features.md#data-integration-units) 开始。 
-2. 根据在步骤 1 中获取的复制吞吐量，估算整个数据迁移所需的时间。 
-3. （可选）创建控制表并定义文件筛选器，以对要迁移的文件进行分区。 对文件进行分区的方式为： 
+1. 使用单个复制活动创建数据工厂管道，以将几万亿字节的数据从 Data Lake Storage Gen1 复制到 Data Lake Storage Gen2，从而获取复制性能基线。 从 128 个[数据集成单元 (DIU)](copy-activity-performance-features.md#data-integration-units) 开始。 [并行复制](copy-activity-performance-features.md#parallel-copy)建议设置为”空(默认)”。
+2. 根据在步骤 1 中获取的复制吞吐量，估算整个数据迁移所需的时间。 如果复制吞吐量对你有影响，请遵循[性能优化步骤](copy-activity-performance.md#performance-tuning-steps)来确定并解决性能瓶颈问题。
+3. 如果你已将单个复制活动的性能最大化，但还没有达到环境的吞吐量上限，那么可以并行运行多个复制活动。 可以将每个复制活动配置为一次复制一个分区，以便多个复制活动可以同时从单个 Data Lake Storage Gen1 帐户复制数据。 对文件进行分区的方法是使用[复制活动属性](connector-azure-data-lake-store.md#copy-activity-properties)中的 name range- listAfter/listBefore。
 
-    - 按文件夹名称或含通配符的文件夹名称筛选器进行分区。 我们建议使用此方法。
-    - 按文件的最后修改时间进行分区。
+如果 Data Lake Storage Gen1 中的总数据大小小于 30 TB，且文件数低于一百万个，则可以在单个复制活动运行中复制所有数据。 如果要复制的数据量较大，或者想要灵活地按批管理数据迁移并使每批数据在特定期限内是完整的，请对数据进行分区。 分区还会降低发生任何意外问题的风险。 
 
-### <a name="network-bandwidth-and-storage-io"></a>网络带宽和存储 I/O 
 
-可以控制数据工厂从 Data Lake Storage Gen1 读取数据并将其写入 Data Lake Storage Gen2 的复制作业并发。 通过这种方式，你可以管理该存储 I/O 的使用情况，避免在迁移期间影响 Data Lake Storage Gen1 的正常业务工作。
+#### <a name="network-bandwidth-and-storage-io"></a>网络带宽和存储 I/O 
 
-### <a name="permissions"></a>权限 
+如果看到[复制活动监视](copy-activity-monitoring.md#monitor-visually)中出现大量限制错误，则表明已达到存储帐户的容量上限。 ADF 将自动重试以克服每个限制错误，从而确保不会丢失任何数据，但重试次数过多也会影响复制吞吐量。 在这种情况下，建议减少同时运行的复制活动数量，以避免大量限制错误。 如果一直在使用单个复制活动来复制数据，则建议减少[数据集成单元 (DIU)](copy-activity-performance-features.md#data-integration-units) 的数量。
 
-在数据工厂中，[Data Lake Storage Gen1 连接器](connector-azure-data-lake-store.md)支持将服务主体和托管身份用于 Azure 资源身份验证。 [Data Lake Storage Gen2 连接器](connector-azure-data-lake-storage.md)支持将帐户密钥、服务主体和托管身份用于 Azure 资源身份验证。 若要使数据工厂能够导航并复制所有文件或所需的访问控制列表，请为提供的帐户授予足够高的权限来访问、读取或写入所有文件和设置 ACL 帐户（如果你选择这样做）。 在迁移期间向其授予超级用户或所有者角色。 
-
-### <a name="preserve-acls-from-data-lake-storage-gen1"></a>从 Data Lake Storage Gen1 保留 ACL
-
-若要在从 Data Lake Storage Gen1 升级到 Data Lake Storage Gen2 时复制 ACL 和数据文件，请参阅[从 Data Lake Storage Gen1 保留 ACL](connector-azure-data-lake-storage.md#preserve-acls)。 
 
 ### <a name="incremental-copy"></a>增量复制 
 
 可以使用多种方法仅加载 Data Lake Storage Gen1 中的新文件或已更新的文件：
 
 - 按时间分区的文件夹或文件名加载新文件或更新的文件。 例如 /2019/05/13/*。
-- 按 LastModifiedDate 加载新文件或更新的文件。
+- 按 LastModifiedDate 加载新文件或更新的文件。 如果要复制大量文件，请首先执行分区，以避免由于单个复制活动扫描整个 Data Lake Storage Gen1 帐户来识别新文件而导致低复制吞吐量。 
 - 通过任何第三方工具或解决方案标识新文件或更新的文件。 然后通过参数、表或文件将文件或文件夹名称传递到数据工厂管道。 
 
 执行增量加载的正确频率取决于 Azure Data Lake Storage Gen1 中的文件总数以及每次加载的新文件或已更新文件的数量。 
+
+
+### <a name="preserve-acls"></a>保留 ACL
+
+若要在从 Data Lake Storage Gen1 升级到 Data Lake Storage Gen2 时复制 ACL 和数据文件，请参阅[从 Data Lake Storage Gen1 保留 ACL](connector-azure-data-lake-storage.md#preserve-acls)。 
+
+### <a name="permissions"></a>权限 
+
+在数据工厂中，[Data Lake Storage Gen1 连接器](connector-azure-data-lake-store.md)支持将服务主体和托管身份用于 Azure 资源身份验证。 [Data Lake Storage Gen2 连接器](connector-azure-data-lake-storage.md)支持将帐户密钥、服务主体和托管身份用于 Azure 资源身份验证。 若要使数据工厂能够导航并复制所有文件或所需的访问控制列表，请为提供的帐户授予足够高的权限来访问、读取或写入所有文件和设置 ACL 帐户（如果你选择这样做）。 在迁移期间向其授予超级用户或所有者角色。 
+
 
 ## <a name="next-steps"></a>后续步骤
 

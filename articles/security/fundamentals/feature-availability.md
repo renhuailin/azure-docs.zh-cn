@@ -5,20 +5,21 @@ author: TerryLanfear
 ms.author: terrylan
 ms.service: security
 ms.topic: reference
-ms.date: 05/23/2021
-ms.openlocfilehash: 817e23bfe21aeabde51064cd2606fa447ee6de22
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.date: 08/15/2021
+ms.openlocfilehash: f8e860cb93930c8e412fe102cf52fbf0c8b78e41
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060005"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418340"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>适用于美国政府客户的云功能可用性
 
-
 本文介绍了 Microsoft Azure 和 Azure 政府版中以下安全服务的云功能可用性：
 
+- [Azure 安全中心](#azure-security-center)
 - [Azure Sentinel](#azure-sentinel)
+- [适用于 IoT 的 Azure Defender](#azure-defender-for-iot)
 
 > [!NOTE]
 > 本文中即将添加其他安全服务。
@@ -50,6 +51,72 @@ Office 365 GCC 环境可帮助客户遵守 FedRAMP High、CJIS 和 IRS 1075 等�
 
 以下各节标识了服务与 Microsoft 365 集成的时间以及 Office 365 GCC、Office 365 High 和 Office 365 DoD 的功能可用性。
 
+## <a name="azure-security-center"></a>Azure 安全中心
+
+Azure 安全中心是一个统一的基础结构安全管理系统，可以增强数据中心的安全态势，以及为云中（无论是否在 Azure 中）和本地的混合工作负荷提供高级威胁防护。
+
+有关详细信息，请参阅 [Azure 安全中心产品文档](../../security-center/security-center-introduction.md)。
+
+下表显示 Azure 和 Azure 政府中当前的安全中心功能可用性。
+
+
+| 功能/服务                                                                                                                                                               | Azure          | Azure Government               |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|--------------------------------|
+| **安全中心免费功能**                                                                                                                                             |                |                                |
+| - [连续导出](../../security-center/continuous-export.md)                                                                                                             | GA             | GA                             |
+| - [工作流自动化](../../security-center/continuous-export.md)                                                                                                           | GA             | GA                             |
+| - [建议例外规则](../../security-center/exempt-resource.md)                                                                                                  | 公共预览版 | 不可用                  | 
+| - [警报抑制规则](../../security-center/alerts-suppression-rules.md)                                                                                                | GA             | GA                             | 
+| - [安全警报的电子邮件通知](../../security-center/security-center-provide-security-contact-details.md)                                                        | GA             | GA                             | 
+| - [代理和扩展的自动预配](../../security-center/security-center-enable-data-collection.md)                                                              | GA             | GA                             | 
+| - [资产清单](../../security-center/asset-inventory.md)                                                                                                                 | GA             | GA                             | 
+| - [Azure 安全中心工作簿库中的 Azure Monitor 工作簿报表](../../security-center/custom-dashboards-azure-workbooks.md)                                  | GA             | GA                             | 
+| **Azure Defender 计划和扩展**                                                                                                                                       |                |                                | 
+| - [适用于服务器的 Azure Defender](../../security-center/defender-for-servers-introduction.md)                                                                                    | GA             | GA                             | 
+| - [适用于应用服务的 Azure Defender](../../security-center/defender-for-app-service-introduction.md)                                                                            | GA             | 不可用                  | 
+| - [适用于 DNS 的 Azure Defender](../../security-center/defender-for-dns-introduction.md)                                                                                            | GA             | 不可用                  | 
+| - [适用于容器注册表的 Azure Defender](../../security-center/defender-for-container-registries-introduction.md) <sup>[1](#footnote1)</sup>                               | GA             | GA  <sup>[2](#footnote2)</sup> | 
+| - [适用于容器注册表的 Azure Defender 扫描 CI/CD 工作流中的容器映像](../../security-center/defender-for-container-registries-cicd.md) <sup>[3](#footnote3)</sup> | 公共预览版 | 不可用                  | 
+| - [Azure Defender for Kubernetes](../../security-center/defender-for-kubernetes-introduction.md) <sup>[4](#footnote4)</sup>                                                   | GA             | GA                             | 
+| - [适用于启用了 Azure Arc 的 Kubernetes 群集的 Azure Defender 扩展](../../security-center/defender-for-kubernetes-azure-arc.md) <sup>[5](#footnote5)</sup>                 | 公共预览版 | 不可用                  | 
+| - [适用于 Azure SQL 数据库服务器的 Azure Defender](../../security-center/defender-for-sql-introduction.md)                                                                     | GA             | GA                             | 
+| - [计算机上的 Azure Defender for SQL 服务器](../../security-center/defender-for-sql-introduction.md)                                                                        | GA             | GA                             |
+| - [适用于开源关系数据库的 Azure Defender](../../security-center/defender-for-databases-introduction.md)                                                         | GA             | 不可用                  |
+| - [适用于 Key Vault 的 Azure Defender](../../security-center/defender-for-key-vault-introduction.md)                                                                                | GA             | 不可用                  |
+| - [适用于资源管理器的 Azure Defender](../../security-center/defender-for-resource-manager-introduction.md)                                                                  | GA             | GA                             |
+| - [适用于存储的 Azure Defender](../../security-center/defender-for-storage-introduction.md) <sup>[6](#footnote6)</sup>                                                         | GA             | GA                             |
+| - [针对 Cosmos DB 的威胁防护](../../security-center/other-threat-protections.md#threat-protection-for-azure-cosmos-db-preview)                                          | 公共预览版 | 不可用                  |
+| - [Kubernetes 工作负载保护](../../security-center/kubernetes-workload-protections.md)                                                                                  | GA             | GA                             |
+| - [使用 Sentinel 进行双向警报同步](../../sentinel/connect-azure-security-center.md)                                                                          | 公共预览版 | 不可用                  | 
+| **适用于服务器功能的 Azure Defender** <sup>[7](#footnote7)</sup>                                                                                                            |                |                                |
+| - [实时 VM 访问](../../security-center/security-center-just-in-time.md)                                                                                             | GA             | GA                             |
+| - [文件完整性监视](../../security-center/security-center-file-integrity-monitoring.md)                                                                             | GA             | GA                             |
+| - [自适应应用程序控制](../../security-center/security-center-adaptive-application.md)                                                                              | GA             | GA                             |
+| - [自适应网络强化](../../security-center/security-center-adaptive-network-hardening.md)                                                                           | GA             | 不可用                  |
+| - [Docker 主机强化](../../security-center/harden-docker-hosts.md)                                                                                                       | GA             | GA                             |
+| - [计算机的集成漏洞评估](../../security-center/deploy-vulnerability-assessment-vm.md)                                                             | GA             | 不可用                  |
+| - [合规性仪表板和报表](../../security-center/security-center-compliance-dashboard.md) <sup>[8](#footnote8)</sup>                                       | GA             | GA                             |
+| - [Microsoft Defender for Endpoint 部署和集成许可证](../../security-center/security-center-wdatp.md)                                                         | GA             | GA                             |
+| - [连接 AWS 帐户](../../security-center/quickstart-onboard-aws.md)                                                                                                      | GA             | 不可用                  |
+| - [连接 GCP 帐户](../../security-center/quickstart-onboard-gcp.md)                                                                                                      | GA             | 不可用                  |
+|                                                                                                                                                                               |                |                                |
+
+<sup><a name="footnote1" /></a>1</sup> 部分 GA：禁用漏洞扫描的特定发现的功能处于公共预览状态。
+
+<sup><a name="footnote2" /></a>2</sup> Azure Gov 上容器注册表的漏洞扫描只能通过“推送扫描”功能来执行。
+
+<sup><a name="footnote3" /></a>3</sup> 需要适用于容器注册表的 Azure Defender。
+
+<sup><a name="footnote4" /></a>4</sup> 部分 GA：对启用了 Arc 的群集的支持处于公开预览状态，在 Azure 政府中不可用。
+
+<sup><a name="footnote5" /></a>5</sup> 需要 Azure Defender for Kubernetes。
+
+<sup><a name="footnote6" /></a>6</sup> 部分 GA：适用于存储的 Azure Defender 中的部分威胁防护警报处于公共预览状态。
+
+<sup><a name="footnote7" /></a>7</sup> 这些功能都需要[适用于服务器的 Azure Defender](../../security-center/defender-for-servers-introduction.md)。
+
+<sup><a name="footnote8" /></a>8</sup> 每个云类型提供的标准可能存在差异。
+
 ## <a name="azure-sentinel"></a>Azure Sentinel
 
 Microsoft Azure Sentinel 是可缩放的云原生安全信息事件管理 (SIEM) 和安全业务流程自动响应 (SOAR) 解决方案。 Azure Sentinel 在整个企业范围内提供智能安全分析和威胁智能，为警报检测、威胁可见性、主动搜寻和威胁响应提供单一解决方案。
@@ -61,6 +128,7 @@ Azure 和 Azure 政府版中 Azure Sentinel 的当前功能可用性如下表所
 
 | 功能 | Azure | Azure Government  |
 | ----- | ----- | ---- |
+|- [自动化规则](../../sentinel/automate-incident-handling-with-automation-rules.md) | 公共预览版 | 公共预览版 |
 |- [自带 ML (BYO-ML)](../../sentinel/bring-your-own-ml.md) | 公共预览版 | 公共预览版 |
 | - [跨租户/跨工作区事件视图](../../sentinel/multiple-workspace-view.md) |公共预览版 | 公共预览版 |
 | - [实体见解](../../sentinel/enable-entity-behavior-analytics.md) | GA | 公共预览版 |
@@ -68,57 +136,57 @@ Azure 和 Azure 政府版中 Azure Sentinel 的当前功能可用性如下表所
 | - [搜寻](../../sentinel/hunting.md) | GA | GA |
 |- [笔记本](../../sentinel/notebooks.md) | GA | GA |
 |- [SOC 事件审核指标](../../sentinel/manage-soc-with-incident-metrics.md) | GA | GA |
-|- [播放列表](https://techcommunity.microsoft.com/t5/azure-sentinel/what-s-new-watchlist-is-now-in-public-preview/ba-p/1765887) | 公共预览版 | 不可用 |
+|- [播放列表](../../sentinel/watchlists.md) | GA | GA |
 | 威胁情报支持 | | |
-| - [威胁情报 - TAXII 数据连接器](../../sentinel/import-threat-intelligence.md)  | 公共预览版 | 不可用 |
-| - [威胁情报平台数据连接器](../../sentinel/import-threat-intelligence.md)  | 公共预览版 | 不可用 |
+| - [威胁情报 - TAXII 数据连接器](../../sentinel/understand-threat-intelligence.md)  | 公共预览版 | 不可用 |
+| - [威胁情报平台数据连接器](../../sentinel/understand-threat-intelligence.md)  | 公共预览版 | 不可用 |
 | - [威胁情报研究边栏选项卡](https://techcommunity.microsoft.com/t5/azure-sentinel/what-s-new-threat-intelligence-menu-item-in-public-preview/ba-p/1646597)  | 公共预览版 | 不可用 |
-| - [URL 引爆](https://techcommunity.microsoft.com/t5/azure-sentinel/using-the-new-built-in-url-detonation-in-azure-sentinel/ba-p/996229) | GA | 不可用 |
+| - [URL 引爆](https://techcommunity.microsoft.com/t5/azure-sentinel/using-the-new-built-in-url-detonation-in-azure-sentinel/ba-p/996229) | 公共预览版 | 不可用 |
 | - [威胁情报工作簿](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)  | GA | 不可用 |
 |检测支持 | | |
 | - [异常 Windows 文件共享访问检测](../../sentinel/fusion.md)  | 公共预览版 | 不可用 |
 | - [异常 RDP 登录检测](../../sentinel/connect-windows-security-events.md#configure-the-security-events--windows-security-events-connector-for-anomalous-rdp-login-detection)<br>内置 ML 检测 | 公共预览版 | 不可用 |
 | - [异常 SSH 登录检测](../../sentinel/connect-syslog.md#configure-the-syslog-connector-for-anomalous-ssh-login-detection)<br>内置 ML 检测 | 公共预览版 | 不可用 |
-| Azure 服务连接器 | | |
-| - [Azure 活动日志](../../sentinel/connect-azure-activity.md)                                  |   GA           |    GA         |
-| - [Azure Active Directory](../../sentinel/connect-azure-active-directory.md)                |      GA        |       GA        |
-| - [Azure ADIP](../../sentinel/connect-azure-ad-identity-protection.md)                         |  GA            |        GA              |
-| - [Azure DDoS 防护](../../sentinel/connect-azure-ddos-protection.md)                |     GA         |       GA               |
-| - [Azure Defender](../../sentinel/connect-azure-security-center.md)                  |    GA          |        GA              |
-| - [适用于 IoT 的 Azure Defender](../../sentinel/connect-asc-iot.md)           |       GA       |  不可用           |
-| - [Azure 防火墙](../../sentinel/connect-azure-firewall.md)                        |   GA           |        GA              |
-| - [Azure 信息保护](../../sentinel/connect-azure-information-protection.md)              |     公共预览版         |         不可用             |
-| - [Azure 密钥保管库](../../sentinel/connect-azure-key-vault.md)                           |       公共预览版         |         不可用                       |
-| - [Azure Kubernetes 服务 (AKS)](../../sentinel/connect-azure-kubernetes-service.md)           |       公共预览版         |         不可用                |
-| - [Azure SQL 数据库](../../sentinel/connect-azure-sql-logs.md)                        |     GA         |         GA             |
-| - [Azure WAF](../../sentinel/connect-azure-waf.md)                                  |      GA        |      GA                |
-| Windows 连接器 | | |
-| - [Windows 防火墙](../../sentinel/connect-windows-firewall.md)                                 |     GA         |   GA           |
-| - [Windows 安全事件](../../sentinel/connect-windows-security-events.md)                                  |      GA        |         GA     |
-| 外部连接器| | |
-| - [Agari Phishing Defense 和 Agari Brand Protection](../../sentinel/connect-agari-phishing-defense.md)       | 公共预览版 | 公共预览版 |
-| - [AI Analyst Darktrace](../../sentinel/connect-data-sources.md)                            | 公共预览版 | 公共预览版 |
-| - [AI Vectra Detect](../../sentinel/connect-ai-vectra-detect.md)                                 | 公共预览版 | 公共预览版 |
-| - [Akamai Security Events](../../sentinel/connect-akamai-security-events.md)                           | 公共预览版 | 公共预览版 |
-| - [Alcide kAudit](../../sentinel/connect-alcide-kaudit.md)                                   | 公共预览版 | 不可用      |
-| - [适用于 Active Directory 的 Alsid](../../sentinel/connect-alsid-active-directory.md)                      | 公共预览版 | 不可用      |
-| - [Apache HTTP Server](../../sentinel/connect-apache-http-server.md)                               | 公共预览版 | 不可用      |
-| - [Aruba ClearPass](../../sentinel/connect-aruba-clearpass.md)                                  | 公共预览版 | 公共预览版 |
-| - [AWS](../../sentinel/connect-data-sources.md)                                             | GA             | GA             |
-| - [Barracuda CloudGen 防火墙](../../sentinel/connect-barracuda-cloudgen-firewall.md)                      | GA             | GA             |
-| - [Barracuda Web 应用防火墙](../../sentinel/connect-barracuda.md)                       | GA             | GA             |
-| - [BETTER Mobile Threat Defense MTD](../../sentinel/connect-better-mtd.md)                 | 公共预览版 | 不可用      |
-| - [Beyond Security beSECURE](../../sentinel/connect-besecure.md)                        | 公共预览版 | 不可用      |
-| - [Blackberry CylancePROTECT](../../sentinel/connect-data-sources.md)                        | 公共预览版 | 公共预览版 |
-| - [Broadcom Symantec DLP](../../sentinel/connect-broadcom-symantec-dlp.md)                            | 公共预览版 | 公共预览版 |
-| - [Check Point](../../sentinel/connect-checkpoint.md)                                      | GA             | GA             |
-| - [Cisco ASA](../../sentinel/connect-cisco.md)                                        | GA             | GA             |
-| - [Cisco Meraki](../../sentinel/connect-cisco-meraki.md)                                     | 公共预览版 | 公共预览版 |
-| - [Cisco Umbrella](../../sentinel/connect-cisco-umbrella.md)                                   | 公共预览版 | 公共预览版 |
-| - [Cisco UCS](../../sentinel/connect-cisco-ucs.md)                                        | 公共预览版 | 公共预览版 |
-| - [Cisco Firepower EStreamer](../../sentinel/connect-data-sources.md)                          | 公共预览版 | 公共预览版 |
-| - [Citrix Analytics WAF](../../sentinel/connect-citrix-waf.md)                             | GA             | GA             |
-| - [通用事件格式(CEF)](../../sentinel/connect-common-event-format.md)                        | GA             | GA             |
+| Azure 服务连接器 |  |  |
+| - [Azure 活动日志](../../sentinel/connect-azure-activity.md) | GA | GA |
+| - [Azure Active Directory](../../sentinel/connect-azure-active-directory.md) | GA | GA |
+| - [Azure ADIP](../../sentinel/connect-azure-ad-identity-protection.md) | GA | GA |
+| - [Azure DDoS 防护](../../sentinel/connect-azure-ddos-protection.md) | GA | GA |
+| - [Azure Defender](../../sentinel/connect-azure-security-center.md) | GA | GA |
+| - [适用于 IoT 的 Azure Defender](../../sentinel/connect-asc-iot.md) | 公共预览版 | 不可用 |
+| - [Azure 防火墙](../../sentinel/connect-azure-firewall.md) | GA | GA |
+| - [Azure 信息保护](../../sentinel/connect-azure-information-protection.md) | 公共预览版 | 不可用 |
+| - [Azure 密钥保管库](../../sentinel/connect-azure-key-vault.md) | 公共预览版 | 不可用 |
+| - [Azure Kubernetes 服务 (AKS)](../../sentinel/connect-azure-kubernetes-service.md) | 公共预览版 | 不可用 |
+| - [Azure SQL 数据库](../../sentinel/connect-azure-sql-logs.md) | GA | GA |
+| - [Azure WAF](../../sentinel/connect-azure-waf.md) | GA | GA |
+| Windows 连接器 |  |  |
+| - [Windows 防火墙](../../sentinel/connect-windows-firewall.md) | GA | GA |
+| - [Windows 安全事件](../../sentinel/connect-windows-security-events.md) | GA | GA |
+| 外部连接器 |  |  |
+| - [Agari Phishing Defense 和 Agari Brand Protection](../../sentinel/connect-agari-phishing-defense.md) | 公共预览版 | 公共预览版 |
+| - [AI Analyst Darktrace](../../sentinel/connect-data-sources.md) | 公共预览版 | 公共预览版 |
+| - [AI Vectra Detect](../../sentinel/connect-ai-vectra-detect.md) | 公共预览版 | 公共预览版 |
+| - [Akamai Security Events](../../sentinel/connect-akamai-security-events.md) | 公共预览版 | 公共预览版 |
+| - [Alcide kAudit](../../sentinel/connect-alcide-kaudit.md) | 公共预览版 | 不可用 |
+| - [适用于 Active Directory 的 Alsid](../../sentinel/connect-alsid-active-directory.md) | 公共预览版 | 不可用 |
+| - [Apache HTTP Server](../../sentinel/connect-apache-http-server.md) | 公共预览版 | 不可用 |
+| - [Aruba ClearPass](../../sentinel/connect-aruba-clearpass.md) | 公共预览版 | 公共预览版 |
+| - [AWS](../../sentinel/connect-data-sources.md) | GA | GA |
+| - [Barracuda CloudGen 防火墙](../../sentinel/connect-barracuda-cloudgen-firewall.md) | GA | GA |
+| - [Barracuda Web 应用防火墙](../../sentinel/connect-barracuda.md) | GA | GA |
+| - [BETTER Mobile Threat Defense MTD](../../sentinel/connect-better-mtd.md) | 公共预览版 | 不可用 |
+| - [Beyond Security beSECURE](../../sentinel/connect-besecure.md) | 公共预览版 | 不可用 |
+| - [Blackberry CylancePROTECT](../../sentinel/connect-data-sources.md) | 公共预览版 | 公共预览版 |
+| - [Broadcom Symantec DLP](../../sentinel/connect-broadcom-symantec-dlp.md) | 公共预览版 | 公共预览版 |
+| - [Check Point](../../sentinel/connect-checkpoint.md) | GA | GA |
+| - [Cisco ASA](../../sentinel/connect-cisco.md) | GA | GA |
+| - [Cisco Meraki](../../sentinel/connect-cisco-meraki.md) | 公共预览版 | 公共预览版 |
+| - [Cisco Umbrella](../../sentinel/connect-cisco-umbrella.md) | 公共预览版 | 公共预览版 |
+| - [Cisco UCS](../../sentinel/connect-cisco-ucs.md) | 公共预览版 | 公共预览版 |
+| - [Cisco Firepower EStreamer](../../sentinel/connect-data-sources.md) | 公共预览版 | 公共预览版 |
+| - [Citrix Analytics WAF](../../sentinel/connect-citrix-waf.md) | GA | GA |
+| - [通用事件格式(CEF)](../../sentinel/connect-common-event-format.md) | GA | GA |
 | - [CyberArk Enterprise Password Vault (EPV) Events](../../sentinel/connect-cyberark.md) | 公共预览版 | 公共预览版 |
 | - [ESET Enterprise Inspector](../../sentinel/connect-data-sources.md)                       | 公共预览版 | 不可用      |
 | - [Eset Security Management Center](../../sentinel/connect-data-sources.md)                  | 公共预览版 | 不可用      |
@@ -126,8 +194,8 @@ Azure 和 Azure 政府版中 Azure Sentinel 的当前功能可用性如下表所
 | - [F5 BIG-IP](../../sentinel/connect-f5-big-ip.md)                                       | GA             | GA             |
 | - [F5 Networks](../../sentinel/connect-f5.md)                                     | GA             | GA             |
 | - [Forcepoint NGFW](../../sentinel/connect-forcepoint-casb-ngfw.md)                                  | 公共预览版 | 公共预览版 |
-| - [Forepoint CASB](../../sentinel/connect-forcepoint-casb-ngfw.md)                                  | 公共预览版 | 公共预览版 |
-| - [Forepoint DLP](../../sentinel/connect-forcepoint-dlp.md)                                   | 公共预览版 | 不可用      |
+| - [Forcepoint CASB](../../sentinel/connect-forcepoint-casb-ngfw.md)                                  | 公共预览版 | 公共预览版 |
+| - [Forcepoint DLP ](../../sentinel/connect-forcepoint-dlp.md)                                   | 公共预览版 | 不可用      |
 | - [适用于 CEF 的 ForgeRock Common Audit](../../sentinel/connect-data-sources.md)                  | 公共预览版 | 公共预览版 |
 | - [Fortinet](../../sentinel/connect-fortinet.md)                                         | GA             | GA             |
 | - [Google Workspace (G Suite)](../../sentinel/connect-google-workspace.md)                      | 公共预览版 | 不可用      |
@@ -159,8 +227,8 @@ Azure 和 Azure 政府版中 Azure Sentinel 的当前功能可用性如下表所
 | - [Symantec ProxySG](../../sentinel/connect-symantec-proxy-sg.md)                                | 公共预览版 | 公共预览版 |
 | - [Symantec VIP](../../sentinel/connect-symantec-vip.md)                                     | 公共预览版 | 公共预览版 |
 | - [Syslog](../../sentinel/connect-syslog.md)                                           | GA             | GA             |
-| - [威胁情报平台](../../sentinel/connect-threat-intelligence.md)                   | 公共预览版 | 不可用      |
-| - [威胁情报 TAXII](../../sentinel/connect-threat-intelligence.md)                       | 公共预览版 | 不可用      |
+| - [威胁情报平台](../../sentinel/connect-threat-intelligence-tip.md)                   | 公共预览版 | 不可用      |
+| - [威胁情报 TAXII](../../sentinel/connect-threat-intelligence-tip.md)                       | 公共预览版 | 不可用      |
 | - [Thycotic Secret Server](../../sentinel/connect-thycotic-secret-server.md)                          | 公共预览版 | 公共预览版 |
 | - [Trend Micro Deep Security](../../sentinel/connect-trend-micro.md)                       | GA             | GA             |
 | - [Trend Micro TippingPoint](../../sentinel/connect-trend-micro-tippingpoint.md)                         | 公共预览版 | 公共预览版 |
@@ -183,46 +251,76 @@ Office 365 GCC 与 Azure 中的 Azure Active Directory (Azure AD) 配对。 Offi
 > 请务必注意 Azure 环境，以了解[可实现互操作性之处](#microsoft-365-integration)。 在下表中，无法实现的互操作性以破折号 (-) 进行标记，表示不相关的支持。
 >
 
-| 连接器 | Azure  | Azure Government  |
-| ------------------------------------ | -------------- | ---------------------- |
-| [Dynamics365](../../sentinel/connect-dynamics-365.md)                               |              |                      |
-| - Office 365 GCC |公共预览版 | -|
-| - Office 365 GCC High | -|不可用 |
-| - Office 365 DoD |- | 不可用|
-| **[Microsoft 365 Defender](../../sentinel/connect-microsoft-365-defender.md)**                             |              |                      |
-| - Office 365 GCC | 公共预览版| -|
-| - Office 365 GCC High |- |不可用 |
-| - Office 365 DoD |- | 不可用|
-| **[Microsoft Cloud App Security (MCAS)](../../sentinel/connect-cloud-app-security.md)**                                      |              |                      |
-| - Office 365 GCC | GA| -|
-| - Office 365 GCC High |-|GA |
-| - Office 365 DoD |- |GA |
-| **[Microsoft Cloud App Security (MCAS)](../../sentinel/connect-cloud-app-security.md)** <br>影子 IT 日志                                  |              |                      |
-| - Office 365 GCC | 公共预览版| -|
-| - Office 365 GCC High |-|公共预览版 |
-| - Office 365 DoD |- |公共预览版 |
-| **[Microsoft Cloud App Security (MCAS)](../../sentinel/connect-cloud-app-security.md)**                  <br>警报                    |              |                      |
-| - Office 365 GCC | 公共预览版| -|
-| - Office 365 GCC High |-|公共预览版 |
-| - Office 365 DoD |- |公共预览版 |
-| **[用于终结点的 Microsoft Defender](../../sentinel/connect-microsoft-defender-advanced-threat-protection.md)**                                       |              |                      |
-| - Office 365 GCC | GA|- |
-| - Office 365 GCC High |- |不可用 |
-| - Office 365 DoD |- | 不可用|
-| **[Microsoft Defender for Identity](../../sentinel/connect-azure-atp.md)**                                        |              |                      |
-| - Office 365 GCC |公共预览版 | -|
-| - Office 365 GCC High |- | 不可用 |
-| - Office 365 DoD |- |不可用 |
-| **[Microsoft Defender for Office 365](../../sentinel/connect-office-365-advanced-threat-protection.md)**               |              |                      |
-| - Office 365 GCC |公共预览版 |- |
-| - Office 365 GCC High |- |不可用 |
-| - Office 365 DoD | -|不可用 |
-| **[Office 365](../../sentinel/connect-office-365.md)**                                      |              |                      |
-| - Office 365 GCC | GA|- |
-| - Office 365 GCC High |- |GA |
-| - Office 365 DoD |- |GA |
-| | |
+| 连接器 | Azure | Azure Government |
+|--|--|--|
+| [Dynamics365](../../sentinel/connect-dynamics-365.md) |  |  |
+| - Office 365 GCC | 公共预览版 | - |
+| - Office 365 GCC High | - | 不可用 |
+| - Office 365 DoD | - | 不可用 |
+| **[Microsoft 365 Defender](../../sentinel/connect-microsoft-365-defender.md)** |  |  |
+| - Office 365 GCC | 公共预览版 | - |
+| - Office 365 GCC High | - | 不可用 |
+| - Office 365 DoD | - | 不可用 |
+| **[Microsoft Cloud App Security (MCAS)](../../sentinel/connect-cloud-app-security.md)** |  |  |
+| - Office 365 GCC | GA | - |
+| - Office 365 GCC High | - | GA |
+| - Office 365 DoD | - | GA |
+| **[Microsoft Cloud App Security (MCAS)](../../sentinel/connect-cloud-app-security.md)** <br>影子 IT 日志 |  |  |
+| - Office 365 GCC | 公共预览版 | - |
+| - Office 365 GCC High | - | 公共预览版 |
+| - Office 365 DoD | - | 公共预览版 |
+| **[Microsoft Cloud App Security (MCAS)](../../sentinel/connect-cloud-app-security.md)**                  <br>警报 |  |  |
+| - Office 365 GCC | 公共预览版 | - |
+| - Office 365 GCC High | - | 公共预览版 |
+| - Office 365 DoD | - | 公共预览版 |
+| **[用于终结点的 Microsoft Defender](../../sentinel/connect-microsoft-defender-advanced-threat-protection.md)** |  |  |
+| - Office 365 GCC | GA | - |
+| - Office 365 GCC High | - | GA |
+| - Office 365 DoD | - | GA |
+| **[Microsoft Defender for Identity](../../sentinel/connect-azure-atp.md)** |  |  |
+| - Office 365 GCC | 公共预览版 | - |
+| - Office 365 GCC High | - | 不可用 |
+| - Office 365 DoD | - | 不可用 |
+| **[Microsoft Defender for Office 365](../../sentinel/connect-office-365-advanced-threat-protection.md)** |  |  |
+| - Office 365 GCC | 公共预览版 | - |
+| - Office 365 GCC High | - | 不可用 |
+| - Office 365 DoD | - | 不可用 |
+| **[Office 365](../../sentinel/connect-office-365.md)** |  |  |
+| - Office 365 GCC | GA | - |
+| - Office 365 GCC High | - | GA |
+| - Office 365 DoD | - | GA |
+|  |  |
 
+## <a name="azure-defender-for-iot"></a>适用于 IoT 的 Azure Defender
+
+Azure Defender for IoT 使你可以通过在所有 IoT/OT 设备上提供全面的安全来加速 IoT/OT 创新。对于最终用户组织，Azure Defender for IoT 提供无代理网络层安全性，可快速部署、使用各种工业设备，以及与 Azure Sentinel 和其他 SOC 工具互操作。 部署在本地或与 Azure 连接的环境中。对于 IoT 设备生成器，Azure Defender for IoT 安全代理使你可以直接在新的 IoT 设备和 Azure IoT 项目中构建安全性。 微代理具有灵活的部署选项，包括以二进制包进行部署或修改源代码的功能。 微代理适用于标准 IoT 操作系统，如 Linux 和 Azure RTO。 有关详细信息，请参阅 [Azure Defender for IoT 产品文档](../../defender-for-iot/index.yml)。
+
+下表显示 Azure 和 Azure 政府中当前的 Azure Defender for IoT 功能可用性。
+
+### <a name="for-organizations"></a>对于组织
+
+| 功能 | Azure | Azure Government |
+|--|--|--|
+| [本地设备发现和清单](../../defender-for-iot/how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md) | GA | GA |
+| [漏洞管理](../../defender-for-iot/how-to-create-risk-assessment-reports.md) | GA | GA |
+| [通过 IoT 和 OT 行为分析进行威胁检测](../../defender-for-iot/how-to-work-with-alerts-on-your-sensor.md) | GA | GA |
+| [自动威胁情报更新](../../defender-for-iot/how-to-work-with-threat-intelligence-packages.md) | GA | GA |
+| 通过 SIEM、SOAR 和 XDR 统一 IT 和 OT 安全性 |  |  |
+| - [转发警报信息](../../defender-for-iot/how-to-forward-alert-information-to-partners.md) | GA | GA |
+| - [使用 Azure Defender for IoT 配置 Sentinel](../../defender-for-iot/how-to-configure-with-sentinel.md) | GA | 不可用 |
+| - [SOC 系统](../../defender-for-iot/integration-splunk.md) | GA | GA |
+| - [票证系统和 CMDB（立即服务）](../../defender-for-iot/integration-servicenow.md) | GA | GA |
+| - [传感器预配](../../defender-for-iot/how-to-manage-sensors-on-the-cloud.md) | GA | GA |
+
+### <a name="for-device-builders"></a>对于设备构建者
+
+| 功能 | Azure | Azure Government |
+|--|--|--|
+| [适用于 Azure RTOS 的微代理](../../defender-for-iot/iot-security-azure-rtos.md) | GA | GA |
+| - [使用 Azure Defender for IoT 配置 Sentinel](../../defender-for-iot/how-to-configure-with-sentinel.md) | GA | 不可用 |
+| **适用于 Linux 的独立微代理概述** |  |  |
+| - [独立微代理概述](../../defender-for-iot/concept-standalone-micro-agent-overview.md) | 公共预览版 | 公共预览版 |
+| - [独立代理二进制安装](../../defender-for-iot/quickstart-standalone-agent-binary-installation.md) | 公共预览版 | 公共预览版 |
 
 ## <a name="next-steps"></a>后续步骤
 

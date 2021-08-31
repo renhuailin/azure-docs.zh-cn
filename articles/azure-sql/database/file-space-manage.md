@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: jrasnick, sstein
-ms.date: 05/28/2021
-ms.openlocfilehash: fb5ee8b096f64faa47756642b4e94bae429fb879
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.reviewer: jrasnick, wiassaf
+ms.date: 08/09/2021
+ms.openlocfilehash: 27adb19b07dc67a91d1bdafb6aac54ad59eaa778
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591253"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178463"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的数据库的文件空间
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,31 +36,19 @@ ms.locfileid: "111591253"
 - 允许减少单一数据库或弹性池的最大大小。
 - 允许将单一数据库或弹性池更改为最大大小更小的其他服务层级或性能层。
 
+> [!NOTE]
+> 收缩操作不应被视为常规维护操作。 由于定期业务操作而增长的数据和日志文件不需要执行收缩操作。 
+
 ### <a name="monitoring-file-space-usage"></a>监视文件空间用量
 
 以下 API 中显示的大多数存储空间指标仅度量已用数据页面的大小：
 
 - 基于 Azure 资源管理器的指标 API，包括 PowerShell [get-metrics](/powershell/module/az.monitor/get-azmetric)
-- T-SQL：[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 但是，以下 API 还度量分配给数据库和弹性池的空间大小：
 
 - T-SQL：[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL：[sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
-
-### <a name="shrinking-data-files"></a>收缩数据文件
-
-由于对数据库性能的潜在影响，Azure SQL 数据库不会自动收缩数据文件以回收已分配但未使用的空间。  但是，客户可遵循[回收未使用的分配空间](#reclaim-unused-allocated-space)中所述的步骤，在其选定的时间通过自助式操作收缩数据文件。
-
-### <a name="shrinking-transaction-log-file"></a>收缩事务日志文件
-
-与数据文件不同的是，Azure SQL 数据库会自动收缩事务日志文件，避免过度使用空间而导致空间不足错误。 客户通常不需要收缩事务日志文件。
-
-在“高级”和“业务关键”服务层中，如果事务日志变得很大，则可能会显著影响本地存储消耗，直至达到[最大本地存储](resource-limits-logical-server.md#storage-space-governance)限制。 如果本地存储消耗接近于限制，客户可以选择使用 [DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql) 命令收缩事务日志，如以下示例所示。 此命令完成后，将立即释放本地存储，而无需等待定期自动收缩操作。
-
-```tsql
-DBCC SHRINKFILE (2);
-```
 
 ## <a name="understanding-types-of-storage-space-for-a-database"></a>了解数据库存储空间的类型
 
@@ -210,31 +198,77 @@ ORDER BY end_time DESC;
 
 ## <a name="reclaim-unused-allocated-space"></a>回收已分配但未使用的空间
 
-> [!NOTE]
+> [!IMPORTANT]
 > Shrink 命令在运行时可能会影响数据库的性能，请尽量在使用率较低的时候运行它。
 
-### <a name="dbcc-shrink"></a>DBCC 收缩
+### <a name="shrinking-data-files"></a>收缩数据文件
 
-识别可回收已分配但未使用的空间的数据库后，请修改以下命令中的数据库名称，以收缩每个数据库的数据文件。
+由于对数据库性能的潜在影响，Azure SQL 数据库不会自动收缩数据文件。 但是，客户可在他们选择的时间通过自助式操作收缩数据文件。 这不应是定期计划的操作，而是一次性事件，以响应数据文件已用空间使用量的明显减少。
+
+在 Azure SQL 数据库中，若要收缩文件，可以使用 `DBCC SHRINKDATABASE` 或 `DBCC SHRINKFILE` 命令：
+
+- `DBCC SHRINKDATABASE` 将收缩所有数据库数据和日志文件，这通常是不必要的。 该命令一次收缩一个文件。 它还将[收缩日志文件](#shrinking-transaction-log-file)。 Azure SQL 数据库根据需要自动收缩日志文件。
+- `DBCC SHRINKFILE` 命令支持更高级的方案：
+    - 它可根据需要以单个文件为目标，而不是收缩数据库中的所有文件。
+    - 每个 `DBCC SHRINKFILE` 命令可以与其他 `DBCC SHRINKFILE` 命令并行运行，以更快地收缩数据库，代价是资源使用率更高，且阻止用户查询的可能性更高（如果在收缩期间执行）。
+    - 如果文件尾部不包含数据，则可以通过指定 TRUNCATEONLY 参数来更快地减小分配的文件大小。 这不需要在文件中移动数据。
+- 有关这些收缩命令的详细信息，请参阅 [DBCC SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) 或 [DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql)。
+
+在连接到目标用户数据库而不是 `master` 数据库时，必须执行以下示例。
+
+若要使用 `DBCC SHRINKDATABASE` 收缩给定数据库中的所有数据和日志文件，请执行以下操作：
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'db1');
+DBCC SHRINKDATABASE (N'database_name');
 ```
 
-Shrink 命令在运行时可能会影响数据库的性能，请尽量在使用率较低的时候运行它。  
+在 Azure SQL 数据库中，数据库可能包含一个或多个数据文件。 只能自动创建其他数据文件。 若要确定数据库的文件布局，请通过以下示例脚本查询 `sys.database_files` 目录视图：
 
-还应注意删减数据库文件对性能造成的潜在负面影响，请参阅下面的[重新生成索引](#rebuild-indexes)部分。
+```sql
+-- Review file properties, including file_id values to reference in shrink commands
+SELECT file_id,
+       name,
+       CAST(FILEPROPERTY(name, 'SpaceUsed') AS bigint) * 8 / 1024. AS space_used_mb,
+       CAST(size AS bigint) * 8 / 1024. AS space_allocated_mb,
+       CAST(max_size AS bigint) * 8 / 1024. AS max_size_mb
+FROM sys.database_files
+WHERE type_desc IN ('ROWS','LOG');
+GO
+```
 
-有关此命令的详细信息，请参阅 [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。
+仅通过 `DBCC SHRINKFILE` 命令对一个文件执行收缩操作，例如：
+
+```sql
+-- Shrink database data file named 'data_0` by removing all unused at the end of the file, if any.
+DBCC SHRINKFILE ('data_0', TRUNCATEONLY);
+GO
+```
+
+还应了解收缩数据库文件对性能的潜在负面影响，请参阅下面的[重新生成索引](#rebuild-indexes)部分。 
+
+### <a name="shrinking-transaction-log-file"></a>收缩事务日志文件
+
+与数据文件不同的是，Azure SQL 数据库会自动收缩事务日志文件，避免过度使用空间而导致空间不足错误。 客户通常不需要收缩事务日志文件。
+
+在“高级”和“业务关键”服务层中，如果事务日志变得很大，则可能会显著影响本地存储消耗，直至达到[最大本地存储](resource-limits-logical-server.md#storage-space-governance)限制。 如果本地存储消耗接近于限制，客户可以选择使用 [DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql) 命令收缩事务日志，如以下示例所示。 此命令完成后，将立即释放本地存储，而无需等待定期自动收缩操作。
+
+在连接到目标用户数据库而不是 master 数据库时，应执行以下示例。
+
+```tsql
+-- Shrink the database log file (always file_id = 2), by removing all unused space at the end of the file, if any.
+DBCC SHRINKFILE (2, TRUNCATEONLY);
+```
 
 ### <a name="auto-shrink"></a>自动收缩
 
-或者，可以为数据库启用自动收缩。  自动收缩可降低文件管理的复杂性，并且与 `SHRINKDATABASE` 或 `SHRINKFILE` 相比，对数据库性能的影响更小。 如果在管理弹性池时，有许多数据库使用的空间显著增减，则自动收缩尤其有用。 但是，与 `SHRINKDATABASE` 和 `SHRINKFILE` 相比，自动收缩在回收文件空间方面的效率更低。
+或者，可以为数据库启用自动收缩。 但是，与 `DBCC SHRINKDATABASE` 和 `DBCC SHRINKFILE` 相比，自动收缩在回收文件空间方面的效率更低。  
+
+在一个特定方案中，弹性池包含许多数据库，这些数据库的已用数据文件空间显著增长和减少，这种情况下，自动收缩非常有用。 此方案不太常见。 
 
 默认情况下，自动收缩处于禁用状态，这是适用于大多数数据库的建议设置。 如果有必要启用自动收缩，建议在达到空间管理目标后禁用它，而不是将其永久启用。 有关详细信息，请参阅 [AUTO_SHRINK 注意事项](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink)。
 
-若要启用自动收缩，请在你的数据库中（而非在 master 数据库中）执行以下命令。
+若要启用自动收缩，请在连接到数据库时（而非在 master 数据库中）执行以下命令。
 
 ```sql
 -- Enable auto-shrink for the current database.
@@ -243,9 +277,11 @@ ALTER DATABASE CURRENT SET AUTO_SHRINK ON;
 
 有关此命令的详细信息，请参阅 [DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options) 选项。
 
-### <a name="rebuild-indexes"></a>重建索引
+### <a name="index-maintenance-before-or-after-shrink"></a><a name="rebuild-indexes"></a> 收缩前或收缩后的索引维护
 
-收缩数据文件后，索引可能会碎片化，失去其性能优化效力。 如果性能降低，请考虑重建数据库索引。 有关碎片和索引维护详细信息，请参阅[优化索引维护以提高查询性能并减少资源消耗](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)。
+对数据文件执行完收缩操作后，索引可能会变得碎片化，且对某些工作负载的性能优化不再有效，例如使用大型扫描进行的查询。 如果在收缩操作完成后发生性能下降，请考虑使用索引维护来重新生成索引。 
+
+如果数据库中的页密度较低，则收缩需要更长时间，因为它必须移动每个数据文件中的更多页面。 Microsoft 建议在执行收缩命令之前确定平均页密度。 如果页密度较低，请重新生成或重新组织索引，以在运行收缩之前增加页密度。 有关详细信息，包括用于确定页密度的示例脚本，请参阅[优化索引维护以提高查询性能并减少资源消耗](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -254,5 +290,3 @@ ALTER DATABASE CURRENT SET AUTO_SHRINK ON;
   - [使用基于 DTU 的购买模型的单一数据库的资源限制](resource-limits-dtu-single-databases.md)
   - [适用于弹性池的 Azure SQL 数据库基于 vCore 的购买模型限制](resource-limits-vcore-elastic-pools.md)
   - [使用基于 DTU 的购买模型的弹性池的资源限制](resource-limits-dtu-elastic-pools.md)
-- 有关 `SHRINKDATABASE` 命令的详细信息，请参阅 [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。
-- 有关碎片和重新生成索引的详细信息，请参阅[重新组织和重新生成索引](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: be12a9054fd67b243530ff671c10fa53acafc308
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 0ec16b16c8e71d764fb0fe21520eb407493ed8d7
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366345"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105356"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>从网络性能监视器迁移到连接监视器
 
@@ -51,7 +51,7 @@ ms.locfileid: "107366345"
 
 若要将测试从网络性能监视器迁移到连接监视器，请执行以下操作：
 
-1. 在网络观察程序中，选择“连接监视器”，然后选择“从 NPM 迁移测试”选项卡 。 
+1. 在“网络观察程序”中，选择“连接监视器”，然后选择“从 NPM 导入测试”选项卡。 
 
     :::image type="content" source="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png" alt-text="将测试从网络性能监视器迁移到连接监视器" lightbox="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png":::
     
@@ -77,6 +77,23 @@ ms.locfileid: "107366345"
 * 手动禁用 NPM 中的测试。 在执行此操作之前，你将继续为其付费。 
 * 禁用 NPM 时，在 NWConnectionMonitorTestResult 表和 NWConnectionMonitorPathResult 表中重新创建警报或使用指标。 
 * 将任何外部集成迁移到 NWConnectionMonitorTestResult 表和 NWConnectionMonitorPathResult 表。 外部集成的示例包括 Power BI 和 Grafana 中的仪表板，以及与安全信息和事件管理 (SIEM) 系统的集成。
+
+## <a name="common-errors-encountered"></a>遇到常见错误
+
+下面是迁移过程中遇到的一些常见错误： 
+
+| 错误  |    Reason   |
+|---|---|
+| 找不到有效的 NPM 配置。 转到 NPM UI 以检查配置     |     当用户从 NPM 中选择“导入测试”以迁移测试，但工作区中未启用 NPM 时，则会出现此错误   |
+|所选工作区没有“服务连接监视器”配置    |       当用户将测试从 NPM 的服务连接监视器迁移到连接监视器，但没有在服务连接监视器中配置测试时，将出现此错误 |
+|所选工作区没有“ExpressRoute 监视器”配置    |     当用户将测试从 NPM 的 ExpressRoute 监视器迁移到连接监视器，但没有在 ExpressRoute 监视器中配置测试时，将出现此错误  |
+|所选工作区没有“性能监视器”配置    |      当用户将测试从 NPM 的性能监视器迁移到连接监视器，但没有在性能监视器中配置测试时，将出现此错误 |
+|所选工作区没有有效的“{0}”测试    |      当用户将测试从 NPM 迁移到连接监视器，但用户选择迁移的功能中没有有效测试时，将出现此错误  |
+|在尝试迁移之前，请在选择订阅和所选的 LA 工作区位置中启用网络观察程序扩展      |      当用户将测试从 NPM 迁移到连接监视器，并且在所选的 LA 工作区中未启用网络观察程序扩展时，将出现此错误。 用户需要在迁移测试前启用 NW 扩展 |
+|少数 {1} 测试包含不再处于活动状态的代理。 非活动代理列表 - {0}。 这些代理可能在过去运行，但已关闭/不再运行。 启用代理并迁移到连接监视器。 单击‘继续’以迁移不包含非活动代理的测试”       |    当用户将测试从 NPM 迁移到连接监视器，并且某些选定的测试包含非活动网络观察程序代理，或此类不再处于活动状态但在过去处于活动状态且已关闭的 NW 代理时，将出现此错误。 用户可以取消选择这些测试并继续选择迁移不包含任何此类非活动代理的测试  |
+|{1} 测试包含不再处于活动状态的代理。 非活动代理列表 - {0}。 这些代理可能在过去运行，但已关闭/不再运行。 启用代理并迁移到连接监视器     | 当用户将测试从 NPM 迁移到连接监视器，并且选定的测试包含非活动网络观察程序代理，或此类不再处于活动状态但在过去处于活动状态且已关闭的 NW 代理时，将出现此错误。 用户需要启用代理，然后继续将这些测试迁移到连接监视器    |
+|将测试导入连接监视器时出错     |    当用户尝试将测试从 NPM 迁移到 CM，但由于错误迁移未成功时，将出现此错误 |
+
 
 
 ## <a name="next-steps"></a>后续步骤

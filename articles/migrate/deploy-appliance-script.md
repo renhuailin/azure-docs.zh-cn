@@ -2,82 +2,98 @@
 title: 使用脚本设置 Azure Migrate 设备
 description: 了解如何使用脚本设置 Azure Migrate 设备
 ms.topic: how-to
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.date: 03/18/2021
-ms.openlocfilehash: dfa96948b7e582457a9f09eed89d5cbe3bbc762d
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: bcd455590e804ad337f25afbd38d729f03ef3dc4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750386"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743237"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>使用脚本设置设备
 
-按照本文所述，创建一个 [Azure Migrate 设备](./migrate-appliance-architecture.md)，以用于在 VMware 和 Hyper-V 上评估/迁移服务器。 运行脚本以创建设备，并验证其是否可以连接到 Azure。 
+按照本文说明，使用 PowerShell 脚本部署 [Azure Migrate 设备](./migrate-appliance-architecture.md)，以便执行以下操作：
+- 发现和评估在 VMware 环境中运行的服务器，并对这些服务器进行无代理复制
+- 发现和评估在 Hyper-V 环境中运行的服务器。
 
-可以使用脚本为 VMware 和 Hyper-V 上的服务器部署设备，也可以使用从 Azure 门户下载的模板进行部署。 如果无法使用下载的模板创建设备，则使用脚本将非常有用。
+可以使用脚本为 VMware 和 Hyper-V 上的服务器部署设备，也可以使用从 Azure 门户下载的模板 (OVA/VHD) 进行部署。 如果无法使用下载的模板创建设备，则使用脚本将非常有用。
 
-- 若要使用模板，请遵循有关 [VMware](./tutorial-discover-vmware.md) 或 [Hyper-V](./tutorial-discover-hyper-v.md) 的教程。
+- 若要使用模板，请按照 [VMware](./tutorial-discover-vmware.md) 和 [Hyper-V](./tutorial-discover-hyper-v.md) 的教程操作。
 - 若要为物理服务器设置设备，则只能使用脚本。 按照[本文](how-to-set-up-appliance-physical.md)所述操作。
-- 若要在 Azure 政府版云中设置设备，请按照[本文](deploy-appliance-script-government.md)所述操作。
+- 若要在 Azure 政府云中设置设备，只能使用脚本。 按照[本文](deploy-appliance-script-government.md)所述操作。
 
 ## <a name="prerequisites"></a>先决条件
 
-脚本是在现有服务器上设置 Azure Migrate 设备。
+可以使用脚本将 Azure Migrate 设备部署到 VMware 或 Hyper-V 环境中的现有服务器上。
 
-- 充当设备的服务器必须满足以下硬件和操作系统要求：
+- 托管设备的服务器必须满足以下硬件和操作系统要求：
 
 方案 | 要求
 --- | ---
-VMware | Windows Server 2016，含 32 GB 内存，8 个 vCPU，约 80 GB 的磁盘存储
-Hyper-V | Windows Server 2016，含 16 GB 内存，8 个 vCPU，约 80 GB 的磁盘存储
+VMware | Windows Server 2016，含 32 GB 内存，8 个 vCPU，约 80 GB 的磁盘存储空间。
+Hyper-V | Windows Server 2016，含 16 GB 内存，8 个 vCPU，约 80 GB 的磁盘存储空间。
 
 - 服务器还需要有一个外部虚拟交换机。 它需要静态或动态 IP 地址。 
-- 在部署设备之前，请先检查针对 [VMware 上服务器](migrate-appliance.md#appliance---vmware)和 [Hyper-V 上](migrate-appliance.md#appliance---hyper-v)服务器的详细设备要求。
-- 请勿在现有的 Azure Migrate 设备上运行脚本。
+- 在部署设备之前，请先查看针对 [VMware](migrate-appliance.md#appliance---vmware) 和 [Hyper-V](migrate-appliance.md#appliance---hyper-v) 的详细设备要求。
+- 如果你在已设置 Azure Migrate 设备的服务器上运行脚本，可以选择清理现有配置，并设置具有所需配置的新设备。 执行脚本时，你将收到如下通知：
+
+    ![使用所需配置设置设备](./media/deploy-appliance-script/script-reconfigure-appliance.png)
 
 ## <a name="set-up-the-appliance-for-vmware"></a>为 VMware 设置设备
 
-若要为 VMware 设置设备，请从门户或从[此处](https://go.microsoft.com/fwlink/?linkid=2140334)下载名为 AzureMigrateInstaller-Server-Public.zip 的压缩文件，然后提取内容。 运行 PowerShell 脚本以启动设备 Web 应用。 设置设备并完成首次配置。 然后将设备注册到项目中。
+1. 若要设置设备，请从门户或从[此处](https://go.microsoft.com/fwlink/?linkid=2116601)下载名为 AzureMigrateInstaller.zip 的压缩文件。
+1. 在你要部署设备的服务器上提取内容。
+1. 执行 PowerShell 脚本以启动设备配置管理器。
+1. 设置设备并完成首次配置。
 
-### <a name="verify-file-security"></a>验证文件安全性
+### <a name="verify-security"></a>验证安全性
 
 在部署压缩文件之前检查其安全性。
 
 1. 在下载文件的服务器上，打开管理员命令窗口。
-2. 运行以下命令以生成 zip 文件的哈希
+2. 运行以下命令以生成 zip 文件的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-Public.zip SHA256```
-3. 验证 Azure 公有云的最新设备版本和脚本：
+    - 用法示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+3.  验证最新设备版本和哈希值：
 
-    **算法** | **下载** | **SHA256**
-    --- | --- | ---
-    VMware (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
+    **下载** | **哈希值**
+    --- | ---
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2116601) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+
+> [!NOTE]
+> 同样的脚本可用于为 Azure 公有云或 Azure 政府云设置 VMware 设备。
 
 ### <a name="run-the-script"></a>运行脚本
 
-以下是脚本功能：
+1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
+2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
+3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
+4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-- 安装代理和 Web 应用程序。
-- 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。
-- 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置。
-- 创建日志和配置文件，如下所示：
-    - 配置文件：%ProgramData%\Microsoft Azure\Config
-    - 日志文件：%ProgramData%\Microsoft Azure\Logs
+    
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-若要运行该脚本，请执行以下操作：
+5. 从场景、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会设置一个设备，用于发现和评估 VMware 环境中运行的服务器，并通过 Azure 公有云上的默认（公共终结点）连接将其迁移到 Azure Migrate 项目 。
 
-1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。 请确保不要在现有 Azure Migrate 设备上运行脚本。
-2. 以管理员（提升）权限在服务器上启动 PowerShell。
-3. 将 PowerShell 目录更改为包含从下载的压缩文件中提取的内容的文件夹。
-4. 运行脚本 AzureMigrateInstaller.ps1，如下所示：
+    :::image type="content" source="./media/deploy-appliance-script/script-vmware-default-inline.png" alt-text="显示如何设置具有所需配置的 VMware 设备的屏幕截图。" lightbox="./media/deploy-appliance-script/script-vmware-default-expanded.png":::
 
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario VMware ```
-  
-5. 脚本成功运行后，将启动设备 Web 应用程序，以便可以设置设备。 如果遇见任何问题，请查看位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志。
+6. 此安装程序脚本执行以下操作：
+
+ - 安装代理和 Web 应用程序。
+ - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
+ - 下载并安装 IIS 可重写模块。
+ - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
+ - 在路径下创建以下文件：
+    - **配置文件**：%Programdata%\Microsoft Azure\Config
+    - **日志文件**：%Programdata%\Microsoft Azure\Logs
+
+成功执行脚本后，设备配置管理器将自动启动。
+
+> [!NOTE]
+> 如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。
 
 ### <a name="verify-access"></a>验证访问权限
 
@@ -85,46 +101,56 @@ Hyper-V | Windows Server 2016，含 16 GB 内存，8 个 vCPU，约 80 GB 的磁
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>为 Hyper-V 设置设备
 
-若要为 Hyper-V 设置设备，请从门户或从[此处](https://go.microsoft.com/fwlink/?linkid=2105112)下载名为 AzureMigrateInstaller-Server-Public.zip 的压缩文件，然后提取内容。 运行 PowerShell 脚本以启动设备 Web 应用。 设置设备并完成首次配置。 然后将设备注册到项目中。
+1. 若要设置设备，请从门户或从[此处](https://go.microsoft.com/fwlink/?linkid=2116657)下载名为 AzureMigrateInstaller.zip 的压缩文件。
+1. 在你要部署设备的服务器上提取内容。
+1. 执行 PowerShell 脚本以启动设备配置管理器。
+1. 设置设备并完成首次配置。
 
-
-### <a name="verify-file-security"></a>验证文件安全性
+### <a name="verify-security"></a>验证安全性
 
 在部署压缩文件之前检查其安全性。
 
 1. 在下载文件的服务器上，打开管理员命令窗口。
-2. 运行以下命令以生成 zip 文件的哈希
+2. 运行以下命令以生成 zip 文件的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-HyperV.zip SHA256```
+    - 用法示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+3.  验证最新设备版本和哈希值：
 
-3. 验证 Azure 公有云的最新设备版本和脚本：
+    **下载** | **哈希值**
+    --- | ---
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2116657) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
 
-    **方案** | **下载** | **SHA256**
-    --- | --- | ---
-    Hyper-V (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2116657) |  9bbef62e2e22481eda4b77c7fdf05db98c3767c20f0a873114fb0dcfa6ed682a
+> [!NOTE]
+> 同样的脚本可用于为 Azure 公有云或 Azure 政府云设置 Hyper-V 设备。
 
 ### <a name="run-the-script"></a>运行脚本
 
-以下是脚本功能：
+1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
+2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
+3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
+4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-- 安装代理和 Web 应用程序。
-- 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。
-- 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置。
-- 创建日志和配置文件，如下所示：
-    - 配置文件：%ProgramData%\Microsoft Azure\Config
-    - 日志文件：%ProgramData%\Microsoft Azure\Logs
+    
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-若要运行该脚本，请执行以下操作：
+5. 从场景、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会设置一个设备，用于发现和评估 Hyper-V 环境中运行的服务器，并通过 Azure 公有云上的默认（公共终结点）连接将其迁移到 Azure Migrate 项目 。
 
-1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。 请确保不要在现有 Azure Migrate 设备上运行脚本。
-2. 以管理员（提升）权限在服务器上启动 PowerShell。
-3. 将 PowerShell 目录更改为包含从下载的压缩文件中提取的内容的文件夹。
-4. 运行脚本 AzureMigrateInstaller.ps1，如下所示：
+    :::image type="content" source="./media/deploy-appliance-script/script-hyperv-default-inline.png" alt-text="显示如何设置具有所需配置的 Hyper-V 设备的屏幕截图。" lightbox="./media/deploy-appliance-script/script-hyperv-default-expanded.png":::
 
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario Hyperv ```
-   
-5. 脚本成功运行后，将启动设备 Web 应用程序，以便可以设置设备。 如果遇见任何问题，请查看位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志。
+6. 此安装程序脚本执行以下操作：
+
+    - 安装代理和 Web 应用程序。
+    - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
+    - 下载并安装 IIS 可重写模块。
+    - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
+    - 在路径下创建以下文件：
+        - **配置文件**：%Programdata%\Microsoft Azure\Config
+        - **日志文件**：%Programdata%\Microsoft Azure\Logs
+
+成功执行脚本后，设备配置管理器将自动启动。
+
+> [!NOTE]
+> 如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。
 
 ### <a name="verify-access"></a>验证访问权限
 

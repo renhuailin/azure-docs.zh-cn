@@ -4,15 +4,15 @@ description: 在 Azure 市场中为虚拟机产品/服务创建计划。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: mingshen-ms
-ms.author: mingshen
-ms.date: 05/20/2021
-ms.openlocfilehash: f0e05f06258cc30253fefdc7113fce045009f500
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+author: iqshahmicrosoft
+ms.author: iqshah
+ms.date: 07/26/2021
+ms.openlocfilehash: a974bf12873d46b7835d861b8c4d7007fb7e72ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527615"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747248"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>为虚拟机产品/服务创建计划
 
@@ -31,7 +31,7 @@ ms.locfileid: "111527615"
 此窗格上的可用操作因计划的当前状态而异。
 
 - 如果计划状态为“草稿”，选择“删除草稿”。
--  如果计划状态为上线，选择“停止销售计划”或“同步专用受众”。
+- 如果计划状态为上线，选择“弃用计划”或“同步专用受众”。
 
 ## <a name="create-a-new-plan"></a>创建新计划
 
@@ -149,7 +149,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 任何 Azure 客户都可以使用 PowerShell 或 CLI 部署该产品/服务。  如果希望向有限的一组客户提供此产品/服务，请将计划设置为“专用”。 
 
-隐藏的计划不会生成预览链接。 不过，你可以通过[按以下步骤操作](azure-vm-create-faq.md#how-do-i-test-a-hidden-preview-image)来测试它们。 
+隐藏的计划不会生成预览链接。 不过，你可以通过[按以下步骤操作](azure-vm-create-faq.yml#how-do-i-test-a-hidden-preview-image-)来测试它们。 
 
 选择“保存草稿”，然后继续转到左侧导航计划菜单的下一个选项卡“技术配置”。
 
@@ -179,7 +179,23 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 ### <a name="properties"></a>属性
 
-选择 VM 是否“支持加速网络”。 有关详细信息，请参阅[加速网络](https://go.microsoft.com/fwlink/?linkid=2124513)。
+下面是可以为 VM 选择的属性列表。
+
+- 支持备份：如果映像支持 Azure VM 备份，请启用此属性。 详细了解 [Azure VM 备份](../backup/backup-azure-vms-introduction.md)。
+
+- 支持加速网络：如果此计划的 VM 映像支持对 VM 的单根 I/O 虚拟化 (SR-IOV)，则启用此属性，从而在网络接口上实现低延迟和高吞吐量。 详细了解[加速网络](https://go.microsoft.com/fwlink/?linkid=2124513)。
+
+- 支持 cloud-init 配置：如果此计划中的映像支持 cloud-init 后期部署脚本，则启用此属性。 详细了解 [cloud-init 配置](../virtual-machines/linux/using-cloud-init.md)。
+
+- 支持热补丁：Windows Server Azure 版本支持热补丁。 详细了解[热补丁](../automanage/automanage-hotpatch.md)。
+
+- 支持扩展：如果该计划中的映像支持扩展，则启用此属性。 扩展是小型应用程序，用于在 Azure VM 上提供部署后配置和自动化。 详细了解 [Azure 虚拟机扩展](./azure-vm-create-certification-faq.yml#vm-extensions)。
+
+- 是网络虚拟设备：如果该产品是网络虚拟设备，则启用此属性。 网络虚拟设备是执行一个或多个网络功能的产品，例如负载均衡器、VPN 网关、防火墙或应用程序网关。 详细了解[网络虚拟设备](https://go.microsoft.com/fwlink/?linkid=2155373)。
+
+- 远程桌面或 SSH 已禁用：如果使用这些映像部署的虚拟机不允许客户使用远程桌面或 SSH 访问它，请启用此属性。 详细了解[锁定的 VM 镜像](./azure-vm-create-certification-faq.yml#locked-down-or-ssh-disabled-offer)。
+
+- 需要自定义 ARM 模板进行部署：如果该计划中的映像只能使用自定义 ARM 模板进行部署，则启用此属性。 若要了解更多信息，请参阅[排查虚拟机认证问题中的自定义模板部分](./azure-vm-create-certification-faq.yml#custom-templates)。
 
 ### <a name="generations"></a>代数
 

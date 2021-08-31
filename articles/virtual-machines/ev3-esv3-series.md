@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: mimckitt
-ms.openlocfilehash: e96c54fb5e0bab71a68bd6a9749a358843b76a0c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5920a7c0aecd02e4d5b7bbcac9c5254a14d7f192
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083307"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751676"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
@@ -32,13 +32,13 @@ Ev3 系列 VM 的 Intel® 超线程技术功能。
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大网卡数/网络带宽等级 |
 |---|---|---|---|---|---|---|
-| Standard_E2_v3  | 2  | 16  | 50   | 4  | 3000/46/23     | 2/1000  |
+| Standard_E2_v3<sup>1</sup>  | 2  | 16  | 50   | 4  | 3000/46/23     | 2/1000  |
 | Standard_E4_v3  | 4  | 32  | 100  | 8  | 6000/93/46     | 2/2000  |
 | Standard_E8_v3  | 8  | 64  | 200  | 16 | 12000/187/93   | 4/4000  |
 | Standard_E16_v3 | 16 | 128 | 400  | 32 | 24000/375/187  | 8/8000  |
@@ -48,6 +48,7 @@ Ev3 系列 VM 的 Intel® 超线程技术功能。
 | Standard_E64_v3 | 64 | 432 | 1600 | 32 | 96000/1000/500 | 8/30000 |
 | Standard_E64i_v3 <sup>2</sup> | 64 | 432 | 1600 | 32 | 96000/1000/500 | 8/30000 |
 
+<sup>1</sup> 加速网络只能应用于单个 NIC。 
 <sup>2</sup> 实例对于专用于单个客户的硬件独立。
 
 ## <a name="esv3-series"></a>Esv3 系列
@@ -62,13 +63,13 @@ Esv3 系列 VM 的 Intel® 超线程技术功能。
 [实时迁移](maintenance-and-updates.md)：支持<br>
 [内存保留更新](maintenance-and-updates.md)：支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
-[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（至少需要 4 个 vCPU）<br>
+[加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
 [临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 突发缓存吞吐量和临时存储吞吐量：IOPS/MBps<sup>3</sup> | 最大非缓存磁盘吞吐量：IOPS/MBps |  突发非缓存磁盘吞吐量：IOPS/MBps<sup>3</sup>| 最大 NIC 数/预期网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_E2s_v3                | 2  | 16  | 32  | 4  | 4000/32 (50)       | 4000/100    | 3200/48    | 4000/100 | 2/1000 |
+| Standard_E2s_v3<sup>4</sup>                | 2  | 16  | 32  | 4  | 4000/32 (50)       | 4000/100    | 3200/48    | 4000/100 | 2/1000 |
 | Standard_E4s_v3 <sup>1</sup>   | 4  | 32  | 64  | 8  | 8000/64 (100)      | 8000/200    | 6400/96    | 8000/200 | 2/2000 |
 | Standard_E8s_v3 <sup>1</sup>   | 8  | 64  | 128 | 16 | 16000/128 (200)    | 16000/400   | 12800/192  | 16000/400 | 4/4000 |
 | Standard_E16s_v3 <sup>1</sup>  | 16 | 128 | 256 | 32 | 32000/256 (400)    | 32000/800   | 25600/384  | 32000/800 | 8/8000 |
@@ -78,11 +79,11 @@ Esv3 系列 VM 的 Intel® 超线程技术功能。
 | Standard_E64s_v3 <sup>1</sup>  | 64 | 432 | 864 | 32 | 128000/1024 (1600) | 128000/2000 | 80000/1200 | 80000/2000 | 8/30000 |
 | Standard_E64is_v3 <sup>2</sup> | 64 | 432 | 864 | 32 | 128000/1024 (1600) | 128000/2000 | 80000/1200 | 80000/2000 | 8/30000 |
 
-<sup>1</sup> [受约束的可用核心规格](./constrained-vcpu.md)。
+<sup>1</sup> [受约束的可用核心规格](./constrained-vcpu.md)。<br>
+<sup>2</sup> 实例对于专用于单个客户的硬件独立。<br>
+<sup>3</sup> Esv3 系列 VM 可通过[突发](./disk-bursting.md)方式提高其磁盘性能，并达到其突发的最大值，一次长达 30 分钟。<br>
+<sup>4</sup> 加速网络只能应用于单个 NIC。 
 
-<sup>2</sup> 实例对于专用于单个客户的硬件独立。
-
-<sup>3</sup> Esv3 系列 VM 可通过[突发](./disk-bursting.md)方式提高其磁盘性能，并达到其突发的最大值，一次长达 30 分钟。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
