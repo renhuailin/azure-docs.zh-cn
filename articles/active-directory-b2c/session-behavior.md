@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/07/2021
+ms.date: 06/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2e0af2e682799d4286a0d00daa2ce7e3805cf4ac
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: 9259fac727287ce4d52594d146eaac96a3085433
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565241"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738967"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置会话行为
 
@@ -114,7 +114,7 @@ ms.locfileid: "111565241"
 
 ## <a name="enable-keep-me-signed-in-kmsi"></a>启用“使我保持登录状态 (KMSI)”
 
-可以为在 Azure AD B2C 目录中拥有本地帐户的 Web 和本机应用程序的用户启用 KMSI 功能。 该功能启用时，用户能够选择保持登录状态，这样当他们关闭浏览器后会话也保持活动状态。 于是他们重新打开浏览器时系统不会提示他们重新输入用户名和密码。 当用户注销时，会撤销此访问权限。
+可以为在 Azure AD B2C 目录中拥有本地帐户的 Web 和本机应用程序的用户启用 KMSI 功能。 该功能启用时，用户能够选择保持登录状态，这样当他们关闭浏览器后会话也保持活动状态。 通过设置[永久性 Cookie](cookie-definitions.md) 维护会话。 选择 KMSI 的用户重新打开浏览器时不会提示其重新输入用户名和密码。 当用户注销时，会撤销此访问权限（永久性 Cookie）。 
 
 ![显示“使我保持登录状态”复选框的示例注册登录页](./media/session-behavior/keep-me-signed-in.png)
 
@@ -194,7 +194,7 @@ ms.locfileid: "111565241"
 
 ### <a name="configure-a-relying-party-file"></a>配置信赖方文件
 
-更新用于启动创建的用户旅程的信赖方 (RP) 文件。 keepAliveInDays 参数允许你配置“使我保持登录 (KMSI) 会话状态”Cookie 的持续时间。 例如，如果将值设置为 30，则 KMSI 会话 Cookie 将保留 30 天。 该值的范围为 1 到 90 天。
+更新用于启动创建的用户旅程的信赖方 (RP) 文件。 keepAliveInDays 参数允许你配置“使我保持登录 (KMSI) 会话状态”Cookie 的持续时间。 例如，如果将值设置为 30，则 KMSI 会话 Cookie 将保留 30 天。 该值的范围为 1 到 90 天。 将此值设置为 0 会关闭 KMSI 功能。
 
 1. 打开自定义策略文件。 例如，SignUpOrSignin.xml。
 1. 如果它尚不存在，请将 `<UserJourneyBehaviors>` 子节点添加到 `<RelyingParty>` 节点。 它必须紧跟在 `<DefaultUserJourney ReferenceId="User journey Id" />` 之后，例如：`<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`。

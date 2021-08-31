@@ -10,12 +10,12 @@ ms.date: 11/12/2020
 ms.author: cynthn
 ms.reviewer: zivr
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 06622c01ea2f25b4b4fde301ddf549ee846abd55
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: d6b6ad9f6b74af06f693dd90bca8949061e90f21
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669232"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114437376"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 将 VM 部署到专用主机
 
@@ -268,6 +268,6 @@ Remove-AzResourceGroup -Name $rgName
 
 ## <a name="next-steps"></a>后续步骤
 
-- [此处](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)有一个示例模板，该模板使用区域和容错域来最大限度地提高在某个地区的复原能力。
+- [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)提供了示例模板，该模板同时使用区域和容错域以实现区域中的最大复原能力。
 
 - 也可以使用 [Azure 门户](../dedicated-hosts-portal.md)专用主机。

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 04/30/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 2ae52b60b425f113c57950e816d93d1adc2f52ea
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 6a69e1eeeb1861f7d2a14e1a96c959c18a090682
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616267"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438738"
 ---
 # <a name="azure-digital-twins-apis-and-sdks"></a>Azure 数字孪生 API 和 SDK
 
@@ -41,7 +41,7 @@ Azure 数字孪生配备有“控制平面 API”和“数据平面 API”，用
 
 ## <a name="overview-data-plane-apis"></a>概述：数据平面 API
 
-数据平面 API 是用于管理 Azure 数字孪生实例中的元素的 Azure 数字孪生 API。 其中包括创建路由、上传模型、创建关系和管理孪生体等操作。 这些 API 大致可分为以下几类：
+数据平面 API 是用于管理 Azure 数字孪生实例中的元素的 Azure 数字孪生 API。 这包括创建路由、上传模型、创建关系和管理孪生等操作，并且可大体上可以划分为以下类别：
 * **DigitalTwinModels** - DigitalTwinModels 类别包含用于管理 Azure 数字孪生实例中的 [模型](concepts-models.md)的 API。 管理活动包括上传、验证、检索和删除在 DTDL 中创作的模型。
 * **DigitalTwins** - DigitalTwins 类别包含让开发人员能够在 Azure 数字孪生实例中创建、修改和删除 [数字孪生体](concepts-twins-graph.md)及其关系的 API。
 * **查询** - 查询类别让开发人员能够跨关系 [查找孪生图中的数字孪生体集](how-to-query-graph.md)。
@@ -80,43 +80,13 @@ Azure 数字孪生 .NET (C#) SDK 是用于 .NET 的 Azure SDK 的一部分。 �
 > [!NOTE]
 > 有关 SDK 设计的详细信息，请参阅常规的 [Azure SDK 设计原则](https://azure.github.io/azure-sdk/general_introduction.html)和具体的 [.NET 设计准则](https://azure.github.io/azure-sdk/dotnet_introduction.html)。
 
-若要使用 SDK，请在项目中包括 NuGet 包 Azure.DigitalTwins.Core。 还需要最新版本的 Azure.Identity 包。 在 Visual Studio 中，可使用 NuGet 包管理器添加这些包（通过“工具”>“NuGet 管理器”>“管理解决方案的 NuGet 包”进行访问）。 或者，可在 .NET 命令行工具中使用下方 NuGet 包链接中找到的命令，将这些包添加到项目中：
-* [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core). 这是用于[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的包。 
-* [Azure.Identity](https://www.nuget.org/packages/Azure.Identity). 该库提供可帮助进行 Azure 身份验证的工具。
+若要使用 SDK，请在项目中包括 NuGet 包 Azure.DigitalTwins.Core。 还需要最新版本的 Azure.Identity 包。 在 Visual Studio 中，可使用 NuGet 包管理器添加这些包（通过“工具”>“NuGet 管理器”>“管理解决方案的 NuGet 包”进行访问）。 可在 .NET 命令行工具中使用下方 NuGet 包链接中找到的命令，将这些包添加到项目中：
+* [Azure.DigitalTwins.Core](https://www.nuget.org/packages/Azure.DigitalTwins.Core)：这个包用于[适用于 .NET 的 Azure 数字孪生 SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)。 
+* [Azure.Identity](https://www.nuget.org/packages/Azure.Identity)：该库提供可帮助进行 Azure 身份验证的工具。
 
-有关如何在实践中使用 API 的详细演练步骤，请参阅教程：编写客户端应用代码。 
+有关如何在实践中使用 API 的详细演练步骤，请参阅[便可客户端应用程序代码](tutorial-code.md)。 
 
-### <a name="net-sdk-usage-examples"></a>.NET SDK 用法示例
-
-下面是演示如何使用 .NET SDK 的一些代码示例。
-
-对服务进行身份验证：
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="DefaultAzureCredential_basic":::
-
-[!INCLUDE [Azure Digital Twins: local credentials note](../../includes/digital-twins-local-credentials-note.md)] 
-
-上传模型：
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
-
-列出模型：
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="GetModels":::
-
-创建孪生体：
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
-
-查询孪生体并循环遍历结果：
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="FullQuerySample":::
-
-有关此示例应用代码的演练步骤，请参阅[教程：编写客户端应用代码](tutorial-code.md)。 
-
-还可在[适用于 .NET (C#) SDK 的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)中找到更多示例。
-
-#### <a name="serialization-helpers"></a>序列化帮助程序
+### <a name="serialization-helpers"></a>序列化帮助程序
 
 序列化帮助程序是可在 SDK 内使用的帮助程序函数，用于快速创建或反序列化孪生数据以访问基本信息。 由于核心 SDK 方法默认以 JSON 形式返回孪生数据，因此，使用这些帮助程序类有助于进一步细分孪生数据。
 
@@ -126,49 +96,6 @@ Azure 数字孪生 .NET (C#) SDK 是用于 .NET 的 Azure SDK 的一部分。 �
 * `BasicRelationship`：一般表示关系的核心数据
 * `DigitalTwinsJsonPropertyName`：包含在自定义数字孪生类型的 JSON 序列化和反序列化中使用的字符串常数
 
-##### <a name="deserialize-a-digital-twin"></a>反序列化数字孪生
-
-始终可使用你选择的 JSON 库（如 `System.Text.Json` 或 `Newtonsoft.Json`）反序列化孪生数据。 若要对孪生体进行基本访问，帮助程序类可使此操作更方便。
-
-使用 `BasicDigitalTwin` 帮助程序类，还可通过 `Dictionary<string, object>` 访问孪生体上定义的属性。 若要列出孪生体的属性，可使用：
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
-
-> [!NOTE]
-> `BasicDigitalTwin` 使用 `System.Text.Json` 特性。 若要将 `BasicDigitalTwin` 用于 [DigitalTwinsClient](/dotnet/api/azure.digitaltwins.core.digitaltwinsclient?view=azure-dotnet&preserve-view=true)，必须使用默认构造函数初始化客户端，或者，如果要自定义序列化程序选项，请使用 [JsonObjectSerializer](/dotnet/api/azure.core.serialization.jsonobjectserializer?view=azure-dotnet&preserve-view=true)。
-
-##### <a name="create-a-digital-twin"></a>创建数字孪生体
-
-使用 `BasicDigitalTwin` 类，可准备用于创建孪生实例的数据：
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
-
-上面的代码等效于以下“手动”变体：
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
-
-##### <a name="deserialize-a-relationship"></a>反序列化关系
-
-始终可将关系数据反序列化为你选择的类型。 若要对关系进行基本访问，请使用类型 `BasicRelationship`。
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="GetRelationshipsCall":::
-
-使用 `BasicRelationship` 帮助程序类，还可通过 `IDictionary<string, object>` 访问关系上定义的属性。 若要列出属性，可使用：
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="ListRelationshipProperties":::
-
-##### <a name="create-a-relationship"></a>创建关系
-
-使用 `BasicRelationship` 类，还可准备用于在孪生实例上创建关系的数据：
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
-
-##### <a name="create-a-patch-for-twin-update"></a>为孪生体更新创建修补程序
-
-若要更新对孪生和关系的调用，请使用 [JSON 修补程序](http://jsonpatch.com/)结构。 若要创建 JSON 修补程序操作列表，可使用 `JsonPatchDocument`，如下所示。
-
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
-
 ## <a name="general-apisdk-usage-notes"></a>常规 API/SDK 使用说明
 
 > [!NOTE]
@@ -176,10 +103,10 @@ Azure 数字孪生 .NET (C#) SDK 是用于 .NET 的 Azure SDK 的一部分。 �
 
 以下列表提供了有关使用 API 和 SDK 的更多详细信息和一般准则。
 
-* 可使用 HTTP REST 测试工具（如 Postman）直接对 Azure 数字孪生 API 进行调用。 有关此过程的详细信息，请参阅操作指南：通过 Postman 发出请求。
-* 若要使用 SDK，请实例化 `DigitalTwinsClient` 类。 构造函数需要凭据，可使用各种身份验证方法在 `Azure.Identity` 包中获得。 有关 `Azure.Identity` 的详细信息，请参阅其[命名空间文档](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)。 
+* 可使用 HTTP REST 测试工具（如 Postman）直接对 Azure 数字孪生 API 进行调用。 有关此过程的详细信息，请参阅[通过 Postman 发出 API 请求](how-to-use-postman.md)。
+* 若要使用 SDK，请实例化 `DigitalTwinsClient` 类。 构造函数需要凭据，可使用不同类型的身份验证方法在 `Azure.Identity` 包中获得。 有关 `Azure.Identity` 的详细信息，请参阅其[命名空间文档](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)。 
 * 你可能会发现 `InteractiveBrowserCredential` 在入门时非常有用，但还有其他几个选项，包括[托管标识](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)的凭据，你可使用此类凭据针对 Azure 数字孪生对[使用 MSI 设置的 Azure 函数](../app-service/overview-managed-identity.md?tabs=dotnet)进行身份验证。 有关 `InteractiveBrowserCredential` 的详细信息，请参阅其[类文档](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)。
-* 请求 Azure 数字孪生 API 的用户或者服务主体需要属于 Azure 数字孪生实例所在的相同 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 租户。 为了防止对 Azure 数字孪生终结点进行恶意扫描，将针对使用发起租户外部的访问令牌进行的请求返回“404 找不到子域”错误消息。 即使已通过 [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) 协作向用户或服务主体授予 Azure 数字孪生数据所有者或 Azure 数字孪生数据读取者角色，也会返回此错误。 有关如何在多个租户之间实现访问的信息，请参阅[如何：编写应用身份验证代码](how-to-authenticate-client.md#authenticate-across-tenants)。
+* 请求 Azure 数字孪生 API 的用户或者服务主体需要属于 Azure 数字孪生实例所在的相同 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 租户。 为了防止对 Azure 数字孪生终结点进行恶意扫描，将针对使用发起租户外部的访问令牌进行的请求返回“404 找不到子域”错误消息。 即使已通过 [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) 协作向用户或服务主体授予 Azure 数字孪生数据所有者或 Azure 数字孪生数据读取者角色，也会返回此错误。 有关如何在多个租户之间实现访问的信息，请参阅[编写应用身份验证代码](how-to-authenticate-client.md#authenticate-across-tenants)。
 * 所有服务 API 调用都公开为 `DigitalTwinsClient` 类的成员函数。
 * 所有服务函数都存在于同步和异步版本中。
 * 如果返回状态为 400 或更高，所有服务函数均会引发异常。 请确保将调用包装到 `try` 部分，并至少捕获 `RequestFailedExceptions`。 有关此类异常的详细信息，请参阅其[参考文档](/dotnet/api/azure.requestfailedexception?view=azure-dotnet&preserve-view=true)。
@@ -204,7 +131,7 @@ Azure 数字孪生 .NET (C#) SDK 是用于 .NET 的 Azure SDK 的一部分。 �
 ## <a name="next-steps"></a>后续步骤
 
 请参阅如何使用 Postman 直接请求 API：
-* [操作指南：通过 Postman 发出请求](how-to-use-postman.md)
+* [通过 Postman 发出 API 请求](how-to-use-postman.md)
 
 或使用本教程创建客户端应用，练习使用 .NET SDK：
-* [教程：为客户端应用编写代码](tutorial-code.md)
+* [为客户端应用编写代码](tutorial-code.md)

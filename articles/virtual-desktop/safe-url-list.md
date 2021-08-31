@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7206b035724027f346fe49c8834c2fd35ec83af9
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: da8cc0ea77de3b544b4bcb97d2ed699c74329e68
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752956"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113757639"
 ---
 # <a name="required-url-list"></a>所需的 URL 列表
 
@@ -152,4 +152,4 @@ ms.locfileid: "111752956"
 >[!IMPORTANT]
 >若要获取可靠的客户端体验，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。
 >
->这些 URL 仅对应于客户端站点和资源。 此列表不包含其他服务（如 Azure Active Directory）的 URL。 可以在 [Office 365 URL 和 IP 地址范围](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)的 ID 56 下找到 Azure Active Directory URL。
+>这些 URL 仅对应于客户端站点和资源。 此列表不包含其他服务（如 Azure Active Directory）的 URL。 可以在 [Office 365 URL 和 IP 地址范围](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)的 ID 56、59 和 125 下找到 Azure Active Directory URL。

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 07/08/2021
 ms.author: alkohli
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 21cb737cf6168f44c1e71815d90139a04ba1d37b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 97ba43602899ee60a6a2d24cdd699b12b8a1c687
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110697090"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219702"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>管理 Azure Stack Edge Pro GPU 的访问、电源和连接模式
 
@@ -161,9 +161,12 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 除了在默认的完全连接模式下运行以外，设备还可以在部分连接或完全断开连接模式下运行。 下面介绍上述每种模式：
 
-- **完全连接** - 这是设备运行时的常规默认模式。 在此模式下，云上传和下载数据都处于启用状态。 可以使用 Azure 门户或本地 web UI 来管理设备。
+- **完全连接** - 这是设备运行时的常规默认模式。 在此模式下，云上传和下载数据都处于启用状态。 可以使用 Azure 门户或本地 web UI 来管理设备。 
 
-- **部分断开连接** - 在此模式下，设备无法上传或下载任何共享数据，但可以通过 Azure 门户管理设备。
+    > [!NOTE]
+    > 对于网络功能管理器部署，Azure Stack 边缘设备必须处于联机状态，且在完全连接模式下运行。
+
+- **部分断开连接** - 在此模式下，设备无法上传或下载任何共享数据，但你可以通过 Azure 门户管理设备。
 
     使用按流量计费的卫星网络，并且目标是尽量减少网络带宽消耗时，通常会使用此模式。 执行设备监视操作时，仍有可能会消耗少量的网络带宽。
 

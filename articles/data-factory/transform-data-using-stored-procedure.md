@@ -1,18 +1,20 @@
 ---
 title: 使用存储过程活动转换数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 说明如何使用 SQL Server 存储过程活动从数据工厂管道调用 Azure SQL 数据库/数据仓库中的存储过程。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 11/27/2018
-ms.openlocfilehash: b9ba2f9de82522d4348fa341ad0b41d43c3eebcc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3815bfca83d6dcf789a780a2d82ff1d4bb62285
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375640"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271975"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SQL Server 存储过程活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -74,17 +76,12 @@ ms.locfileid: "100375640"
 | storedProcedureParameters | 指定存储过程的参数值。 使用 `"param1": { "value": "param1Value","type":"param1Type" }` 传递数据源支持的参数值及其类型。 如果需要为参数传递 null，请使用 `"param1": { "value": null }`（全部小写）。 | 否       |
 
 ## <a name="parameter-data-type-mapping"></a>参数数据类型映射
-为参数指定的数据类型是 Azure 数据工厂类型，该类型映射到正在使用的数据源中的数据类型。 可以在连接器区域中找到数据源的数据类型映射。 下面是一些示例
+为参数指定的数据类型是 Azure 数据工厂类型，该类型映射到正在使用的数据源中的数据类型。 可以在连接器文档中找到所述数据源的数据类型映射。 例如：
 
-| 数据源          | 数据类型映射 |
-| ---------------------|-------------------|
-| Azure Synapse Analytics | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#data-type-mapping-for-azure-sql-data-warehouse |
-| Azure SQL 数据库   | https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#data-type-mapping-for-azure-sql-database | 
-| Oracle               | https://docs.microsoft.com/azure/data-factory/connector-oracle#data-type-mapping-for-oracle |
-| SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
-
-
-
+- [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#data-type-mapping-for-azure-synapse-analytics)
+- [Azure SQL 数据库数据类型映射](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)
+- [Oracle 数据类型映射](connector-oracle.md#data-type-mapping-for-oracle)
+- [SQL Server 数据类型映射](connector-sql-server.md#data-type-mapping-for-sql-server)
 
 ## <a name="next-steps"></a>后续步骤
 参阅以下文章了解如何以其他方式转换数据： 
@@ -96,5 +93,5 @@ ms.locfileid: "100375640"
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [Azure 机器学习工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
+* [机器学习工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: bd46e7b2f0713da67842def47dfeadc837027d8f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6868739d5b2350d5ac29e12f48278348ee7204a8
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027962"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437439"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure 门户中的帐户管理员任务
 
@@ -25,6 +25,11 @@ ms.locfileid: "97027962"
 - 向 Azure 开放许可订阅添加额度
 
 只有帐户管理员才能执行上述任务。
+
+## <a name="accounts-portal-is-retiring"></a>帐户门户即将停用
+
+帐户门户将停用，并将于 2021 年 12 月 31 日之前将客户重定向到 Azure 门户。 帐户门户中支持的功能将迁移到 Azure 门户。 本文介绍如何在 Azure 门户中执行一些最常见的操作。
+
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>导航到订阅的付款方式
 

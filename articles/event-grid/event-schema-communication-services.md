@@ -2,14 +2,14 @@
 title: 充当事件网格源的 Azure 通信服务
 description: 本文介绍了如何将 Azure 通信服务用作事件网格事件源。
 ms.topic: conceptual
-ms.date: 02/11/2021
+ms.date: 06/11/2021
 ms.author: mikben
-ms.openlocfilehash: 72941faf122be50d2c721fd4c8421ae4339d5d2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6e4245d9f38c00ec337d689a11d185299d71891
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656237"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748487"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure 通信服务中的事件处理
 
@@ -17,7 +17,7 @@ Azure 通信服务与 [Azure 事件网格](https://azure.microsoft.com/services/
 
 Azure 事件网格是一种完全托管的事件路由服务，它使用发布-订阅模型。 事件网格提供对 Azure 服务（如 [Azure Functions](../azure-functions/functions-overview.md) 和 [Azure 逻辑应用](../azure-functions/functions-overview.md)）的内置支持。 它可以使用 Webhook 将事件警报传递到非 Azure 服务。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](overview.md)。
 
-:::image type="content" source="https://docs.microsoft.com/azure/event-grid/media/overview/functional-model.png" alt-text="显示 Azure 事件网格的事件模型的关系图。":::
+:::image type="content" source="./media/overview/functional-model.png" alt-text="显示 Azure 事件网格的事件模型的关系图。":::
 
 > [!NOTE]
 > 要详细了解数据驻留与事件处理有何关系，请访问[数据驻留概念文档](../communication-services/concepts/privacy.md)
@@ -50,6 +50,7 @@ Azure 通信服务发出以下事件类型：
 | Microsoft.Communication.ChatThreadPropertiesUpdated| 更新聊天线程的属性（如主题）时发布。|    
 | Microsoft.Communication.ChatMessageEditedInThread | 在聊天线程中编辑消息时发布 |  
 | Microsoft.Communication.ChatMessageDeletedInThread | 在聊天线程中删除消息时发布  |  
+| Microsoft.Communication.RecordingFileStatusUpdated | 记录文件可用时发布 |
 
 可以使用 Azure 门户或 Azure CLI 订阅通信服务资源发出的事件。 可通过查看[如何在通信服务中处理短信事件](../communication-services/quickstarts/telephony-sms/handle-sms-events.md)，来开始处理事件
 
@@ -141,6 +142,10 @@ Azure 通信服务发出以下事件类型：
     "data": {
       "messageBody": "Welcome to Azure Communication Services",
       "messageId": "1613694358927",
+      "metadata": {
+        "key": "value",
+        "description": "A map of data associated with the message"
+      },
       "senderId": "8:acs:109f0644-b956-4cd9-87b1-71024f6e2f44_00000008-578d-7caf-07fd-084822001724",
       "senderCommunicationIdentifier": {
         "rawId": "8:acs:109f0644-b956-4cd9-87b1-71024f6e2f44_00000008-578d-7caf-07fd-084822001724",
@@ -181,6 +186,10 @@ Azure 通信服务发出以下事件类型：
       "editTime": "2021-02-19T00:28:20.784Z",
       "messageBody": "Let's Chat about new communication services.",
       "messageId": "1613694357917",
+      "metadata": {
+        "key": "value",
+        "description": "A map of data associated with the message"
+      },
       "senderId": "8:acs:109f0644-b956-4cd9-87b1-71024f6e2f44_00000008-578d-7caf-07fd-084822001724",
       "senderCommunicationIdentifier": {
         "rawId": "8:acs:109f0644-b956-4cd9-87b1-71024f6e2f44_00000008-578d-7caf-07fd-084822001724",
@@ -730,6 +739,10 @@ Azure 通信服务发出以下事件类型：
     "data": {
       "messageBody": "Talk about new Thread Events in commuication services",
       "messageId": "1613783230064",
+      "metadata": {
+        "key": "value",
+        "description": "A map of data associated with the message"
+      },
       "type": "Text",
       "version": "1613783230064",
       "senderDisplayName": "Bob",
@@ -762,6 +775,10 @@ Azure 通信服务发出以下事件类型：
       "editTime": "2021-02-20T00:59:10.464+00:00",
       "messageBody": "8effb181-1eb2-4a58-9d03-ed48a461b19b",
       "messageId": "1613782685964",
+      "metadata": {
+        "key": "value",
+        "description": "A map of data associated with the message"
+      },
       "type": "Text",
       "version": "1613782750464",
       "senderDisplayName": "Scott",
@@ -814,7 +831,40 @@ Azure 通信服务发出以下事件类型：
   }
 ]
 ```
+> [!IMPORTANT]
+> 通话记录功能仍处于公共预览版
 
+### <a name="microsoftcommunicationrecordingfilestatusupdated"></a>Microsoft.Communication.RecordingFileStatusUpdated
+
+```json
+[
+ {
+  "id": "7283825e-f8f1-4c61-a9ea-752c56890500",
+  "topic": "/subscriptions/{subscription-id}/resourcegroups/}{group-name}/providers/microsoft.communication/communicationservices/{communication-services-resource-name}",
+  "subject": "/recording/call/{call-id}/recordingId/{recording-id}",
+  "data": {
+    "recordingStorageInfo": {
+      "recordingChunks": [
+        {
+          "documentId": "0-eus-d12-801b3f3fc462fe8a01e6810cbff729b8",
+          "index": 0,
+          "endReason": "SessionEnded",
+          "contentLocation": "https://storage.asm.skype.com/v1/objects/0-eus-d12-801b3f3fc462fe8a01e6810cbff729b8/content/video",
+          "metadataLocation": "https://storage.asm.skype.com/v1/objects/0-eus-d12-801b3f3fc462fe8a01e6810cbff729b8/content/acsmetadata"
+        }
+      ]
+    },
+    "recordingStartTime": "2021-07-27T15:20:23.6089755Z",
+    "recordingDurationMs": 6620,
+    "sessionEndReason": "CallEnded"
+  },
+  "eventType": "Microsoft.Communication.RecordingFileStatusUpdated",
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "eventTime": "2021-07-27T15:20:34.2199328Z"
+ }
+]
+```
 
 ## <a name="quickstarts-and-how-tos"></a>快速入门和操作说明
 

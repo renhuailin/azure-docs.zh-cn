@@ -3,12 +3,12 @@ title: 部署流量管理器以平衡 Azure VMware 解决方案工作负载
 description: 了解如何将流量管理器与 Azure VMware 解决方案集成，以平衡不同区域中多个终结点之间的应用程序工作负载。
 ms.topic: how-to
 ms.date: 02/08/2021
-ms.openlocfilehash: d00f699c094995dad15d4ab5558fcd838ed33128
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ac8f402eadcced4e8592a68f13abd6d2693b8b0c
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110086997"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601973"
 ---
 # <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>部署流量管理器以平衡 Azure VMware 解决方案工作负载
 
@@ -18,7 +18,7 @@ ms.locfileid: "110086997"
 
 此图显示了流量管理器如何为不同区域终结点之间的 DNS 级别应用程序进行负载平衡。 网关将后端池成员配置为 IIS 服务器，并引用为 Azure VMware 解决方案外部终结点。 两个私有云区域之间通过虚拟网络建立的连接将使用 ExpressRoute 网关。   
 
-:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="流量管理器与 Azure VMware 解决方案集成的体系结构关系图" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
+:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="流量管理器与 Azure VMware 解决方案集成的关系图。" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
 
 在开始之前，请先查看[先决条件](#prerequisites)，然后再完成以下步骤：
 
@@ -56,7 +56,7 @@ ms.locfileid: "110086997"
 
    此时会打开一个窗口，显示应用程序网关上的各种信息。 
 
-   :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="“应用程序网关”页面屏幕截图显示了所选应用程序网关详细信息。" lightbox="media/traffic-manager/backend-pool-config.png":::
+   :::image type="content" source="media/traffic-manager/backend-pool-configuration.png" alt-text="“应用程序网关”页面屏幕截图显示了所选应用程序网关详细信息。" lightbox="media/traffic-manager/backend-pool-configuration.png":::
 
 1. 选择“后端池”，验证其中一个后端池的配置。 用户可以看到该 VM 后端池成员配置为 Web 服务器，IP 地址为 172.29.1.10。
  
@@ -70,7 +70,7 @@ ms.locfileid: "110086997"
 
 1. 选择“网段”查看已配置的网段。  用户将看到连接到 Contoso-T01 网关的 Contoso-segment1，它是第 1 层灵活路由器。
 
-   :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="显示 NSX-T Manager 中网段配置文件的屏幕截图。" lightbox="media/traffic-manager/nsx-t-segment-avs.png":::    
+   :::image type="content" source="media/traffic-manager/nsx-t-segment-azure-vmware-solution.png" alt-text="显示 NSX-T Manager 中网段配置文件的屏幕截图。" lightbox="media/traffic-manager/nsx-t-segment-azure-vmware-solution.png":::    
 
 1. 选择“第 1 层网关”，查看包含已连接网段数量的第 1 层网关列表。 
 
@@ -89,7 +89,7 @@ ms.locfileid: "110086997"
 
 ## <a name="create-your-traffic-manager-profile"></a>创建流量管理器配置文件
 
-1. 登录到 [Azure 门户](https://rc.portal.azure.com/#home)。 在“Azure 服务 > 网络”中，选择“流量管理器配置文件”。
+1. 登录 [Azure 门户](https://rc.portal.azure.com/#home)。 在“Azure 服务 > 网络”中，选择“流量管理器配置文件”。
 
 2. 选择“新建”创建新的流量管理器配置文件。
  

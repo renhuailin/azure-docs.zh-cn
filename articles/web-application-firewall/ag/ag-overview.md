@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: babd628280ebaee408d44dfacfaf6a5e14f57019
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: ea3bc751d91e72c68bd9900f07c3c2e8aae38212
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481814"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729443"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>什么是 Azure 应用程序网关上的 Azure Web 应用程序防火墙？
 
@@ -41,7 +41,7 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 
 * 为同一 WAF 后面的不同站点创建自定义 WAF 策略 
 
-* 利用 IP 信誉规则集保护 Web 应用程序免受恶意机器人的攻击（预览版）
+* 利用 IP 信誉规则集保护 Web 应用程序免受恶意机器人的攻击
 
 ### <a name="monitoring"></a>监视
 
@@ -69,8 +69,8 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 - 具有下限和上限的可配置请求大小限制。
 - 排除列表允许你忽略 WAF 评估中的某些请求属性。 常见示例是 Active Directory 插入的令牌，这些令牌用于身份验证或密码字段。
 - 根据应用程序的具体需求创建自定义规则。
-- 按地理位置筛选流量，以允许或阻止从特定的国家/地区访问你的应用程序。 （预览版）
-- 使用机器人缓解规则集防范应用程序遭到机器人攻击。 （预览版）
+- 按地理位置筛选流量，以允许或阻止从特定的国家/地区访问你的应用程序。
+- 使用机器人缓解规则集防范应用程序遭到机器人攻击。
 - 检查请求正文中的 JSON 和 XML
 
 ## <a name="waf-policy-and-rules"></a>WAF 策略和规则
@@ -99,19 +99,13 @@ Azure 应用程序网关提供的 Azure Web 应用程序防火墙 (WAF) 可以�
 
 应用程序网关也支持自定义规则。 使用自定义规则，可以创建自己的规则，将针对通过 WAF 传递的每个请求评估这些规则。 这些规则的优先级高于托管规则集中的其他规则。 如果满足一组条件，则执行操作以进行允许或阻止。 
 
-自定义规则的 geomatch 运算符现以公共预览版提供。 有关详细信息，请参阅 [geomatch 自定义规则](custom-waf-rules-overview.md#geomatch-custom-rules-preview)。
-
-> [!NOTE]
-> 自定义规则的 geomatch 运算符当前为公共预览版，并提供预览版服务级别协议。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+自定义规则的 geomatch 运算符现以正式发布。 有关详细信息，请参阅 [geomatch 自定义规则](custom-waf-rules-overview.md#geomatch-custom-rules)。
 
 有关自定义规则的详细信息，请参阅[应用程序网关的自定义规则](custom-waf-rules-overview.md)。
 
-### <a name="bot-mitigation-preview"></a>机器人缓解（预览版）
+### <a name="bot-mitigation"></a>机器人缓解措施
 
 可以为 WAF 启用托管机器人防护规则集，以便阻止或记录来自已知恶意 IP 地址的请求以及托管规则集。 IP 地址源自 Microsoft 威胁智能源。 Intelligent Security Graph 为 Microsoft 威胁智能助力，它已得到 Azure Security Center 等多项服务的运用。
-
-> [!NOTE]
-> 机器人防护规则集当前为公共预览版，并提供预览版服务级别协议。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 如果启用了机器人防护，则与恶意机器人的客户端 IP 匹配的传入请求将记录在防火墙日志中。有关详细信息，请参阅下文。 可以从存储帐户、事件中心或日志分析访问 WAF 日志。 
 

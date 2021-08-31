@@ -6,12 +6,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/12/2021
 ms.custom: devx-track-terraform, devx-track-azurepowershell
-ms.openlocfilehash: b1f40ff5175de88e101bfe8f22f9593502e7d6d0
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 9536002cb5c3e30f32479b74e761d7128090af26
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005872"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729779"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure 客户使用情况归因
 
@@ -33,6 +33,11 @@ ms.locfileid: "112005872"
 ## <a name="commercial-marketplace-azure-apps"></a>商业市场 Azure 应用
 
 从发布到商业市场的 Azure 应用中跟踪 Azure 使用情况主要是自动进行的。 在[市场 Azure 应用计划的技术配置](./azure-app-solution.md#define-the-technical-configuration)中上传资源管理器模板时，合作伙伴中心将添加 Azure 资源管理器可读的跟踪 ID。
+
+>[!NOTE]
+>若要确保在系统中正确归因应用程序的使用情况，请执行以下操作：
+>1. 如果在资源类型 Microsoft.Resources/deployment 中使用变量定义跟踪 ID，请在计划的“技术配置”页中将该变量替换为“合作伙伴中心”显示的跟踪 ID（请参阅下面的[向资源管理器模板添加 GUID](#add-a-guid-to-a-resource-manager-template)）。
+>2. 如果资源管理器模板使用类型为 Microsoft.Resources/deployments 的资源不是为了进行客户使用情况归因，Microsoft 将无法代表你添加客户使用情况归因跟踪 ID。 请在计划的“技术配置”页中添加类型为 Microsoft.Resources/deployments 的新资源，并添加在“合作伙伴中心”显示的跟踪 ID（请参阅下面的[向资源管理器模板添加 GUID](#add-a-guid-to-a-resource-manager-template)）。
 
 如果使用 Azure 资源管理器 API，将需要根据[以下说明](#use-resource-manager-apis)添加跟踪 ID，以在代码部署资源时将其传递给 Azure 资源管理器。 此 ID 在“合作伙伴中心”中你的计划的“技术配置”页上显示。 
 
@@ -162,7 +167,7 @@ foreach ($deployment in $deployments){
 
 在某些情况下，你可能直接调用资源管理器 REST API 来部署 Azure 服务。 [Azure 支持使用多个 SDK](../index.yml?pivot=sdkstools) 来启用这些调用。 你可以使用其中一个 SDK，也可以直接调用 REST API 来部署资源。
 
-要启用客户使用情况归因，在设计 API 调用时，请在请求的用户代理标头中包含跟踪 ID。 将字符串的格式设置为采用 `pid-` 前缀。 示例:
+要启用客户使用情况归因，在设计 API 调用时，请在请求的用户代理标头中包含跟踪 ID。 将字符串的格式设置为采用 `pid-` 前缀。 示例：
 
 ```xml
 //Commercial Marketplace Azure app

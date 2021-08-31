@@ -6,14 +6,14 @@ ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: reference
 ms.custom: mvc
-ms.date: 05/12/2021
+ms.date: 07/21/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 42cd84387d1b5b67a09afcc072c897d6980b3d49
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: f2a634aa73cf9b9cb2b379887f9a677a79c39b57
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109815175"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745056"
 ---
 # <a name="azure-sentinel-sap-solution-logs-reference-public-preview"></a>Azure Sentinel SAP 解决方案日志参考（公共预览版）
 
@@ -38,7 +38,7 @@ ms.locfileid: "109815175"
 
 - “日志用途”：记录应用程序执行的进度，以便以后根据需要重新构造。
 
-    可通过将 RFC 与基于 XBP 接口的标准服务的自定义服务一起使用获得。
+    可通过将 RFC 与基于 XBP 接口的标准服务的自定义服务一起使用获得。 此日志是按客户端生成的。
 
 
 ### <a name="abapapplog_cl-log-schema"></a>ABAPAppLog_CL 日志架构
@@ -90,9 +90,9 @@ ms.locfileid: "109815175"
 
     - SAP 系统中的其他实体，例如用户数据、角色、地址。
 
-    可通过将 RFC 与基于标准服务的自定义服务一起使用获得。
+    可通过将 RFC 与基于标准服务的自定义服务一起使用获得。 此日志是按客户端生成的。
 
-### <a name="abapauditlog_cl-log-schema"></a>ABAPAuditLog_CL 日志架构
+### <a name="abapchangedocslog_cl-log-schema"></a>ABAPChangeDocsLog_CL 日志架构
 
 
 | 字段                    | 说明                 |
@@ -134,7 +134,7 @@ ms.locfileid: "109815175"
 
 - “日志用途”：包括更改和传输系统 (CTS) 日志，包括进行了更改的 Directory 对象和自定义项。
 
-    可通过将 RFC 与基于标准表的自定义服务和标准服务一起使用获得。
+    可通过将 RFC 与基于标准表的自定义服务和标准服务一起使用获得。 此日志使用所有客户端中的数据生成。
 
 > [!NOTE]
 > 除了应用程序日志记录、更改文档和表记录外，使用更改和传输系统对生产系统进行的所有更改都记录在 CTS 和 TMS 日志中。
@@ -170,7 +170,7 @@ ms.locfileid: "109815175"
 
 - “日志用途”：为那些对审核至关重要或容易受到审核的表提供日志记录。
 
-    可通过将 RFC 与自定义服务一起使用获得。
+    可通过将 RFC 与自定义服务一起使用获得。 此日志使用所有客户端中的数据生成。
 
 ### <a name="abaptabledatalog_cl-log-schema"></a>ABAPTableDataLog_CL 日志架构
 
@@ -196,15 +196,15 @@ ms.locfileid: "109815175"
 
 ## <a name="abap-gateway-log"></a>ABAP 网关日志
 
-- “Azure Sentinel 中的名称”：`GW_CL`
+- “Azure Sentinel 中的名称”：`ABAPOS_GW_CL`
 
 - “相关 SAP 文档”：[SAP 帮助门户](https://help.sap.com/viewer/62b4de4187cb43668d15dac48fc00732/7.5.7/en-US/48b2a710ca1c3079e10000000a42189b.html)
 
-- “日志用途”：监视网关活动。 可通过 SAP 控制 Web 服务获得。
+- “日志用途”：监视网关活动。 可通过 SAP 控制 Web 服务获得。 此日志使用所有客户端中的数据生成。
 
-### <a name="gw_cl-log-schema"></a>GW_CL 日志架构
+### <a name="abapos_gw_cl-log-schema"></a>ABAPOS_GW_CL 日志架构
 
-| 字段        | 描述      |
+| 字段        | 说明      |
 | ------------ | ---------------- |
 | 主机         | 主机             |
 | 实例     | ABAP 实例，采用以下语法：`<HOST>_<SYSID>_<SYSNR>`   |
@@ -216,17 +216,17 @@ ms.locfileid: "109815175"
 
 ## <a name="abap-icm-log"></a>ABAP ICM 日志
 
-- “Azure Sentinel 中的名称”：`ICM_CL`
+- “Azure Sentinel 中的名称”：`ABAPOS_ICM_CL`
 
 - “相关 SAP 文档”：[SAP 帮助门户](https://help.sap.com/viewer/683d6a1797a34730a6e005d1e8de6f22/7.52.4/en-US/a10ec40d01e740b58d0a5231736c434e.html)
 
 - “日志目的”：记录入站和出站请求，并编译 HTTP 请求的统计信息。
 
-    可通过 SAP 控制 Web 服务获得。
+    可通过 SAP 控制 Web 服务获得。 此日志使用所有客户端中的数据生成。
 
-### <a name="icm_cl-log-schema"></a>ICM_CL 日志架构
+### <a name="abapos_icm_cl-log-schema"></a>ABAPOS_ICM_CL 日志架构
 
-| 字段        | 描述      |
+| 字段        | 说明      |
 | ------------ | ---------------- |
 | 主机         | 主机             |
 | 实例     | ABAP 实例，采用以下语法：`<HOST>_<SYSID>_<SYSNR>`   |
@@ -244,7 +244,7 @@ ms.locfileid: "109815175"
 
 - “日志用途”：合并所有后台处理作业日志 (SM37)。
 
-    可通过将 RFC 与基于 XBP 接口的标准服务的自定义服务一起使用获得。
+    可通过将 RFC 与基于 XBP 接口的标准服务的自定义服务一起使用获得。 此日志使用所有客户端中的数据生成。
 
 ### <a name="abapjoblog_cl-log-schema"></a>ABAPJobLog_CL 日志架构
 
@@ -292,7 +292,7 @@ ms.locfileid: "109815175"
     - 提供更高级别数据的信息，例如成功和失败的登录尝试
     - 启用一系列事件重建的信息，例如成功或失败的事务启动
 
-    可通过使用 RFC XAL/SAL 接口获得。 版本 Basis 7.50 及更高版本支持此功能。
+    可通过使用 RFC XAL/SAL 接口获得。 版本 Basis 7.50 及更高版本支持此功能。 此日志使用所有客户端中的数据生成。
 
 ### <a name="abapauditlog_cl-log-schema"></a>ABAPAuditLog_CL 日志架构
 
@@ -338,7 +338,7 @@ ms.locfileid: "109815175"
 
 - “日志用途”：用作 SAP 打印的主日志，包含 spool 请求的历史记录。 (SP01)。
 
-    可通过将 RFC 与基于标准表的自定义服务一起使用获得。
+    可通过将 RFC 与基于标准表的自定义服务一起使用获得。 此日志使用所有客户端中的数据生成。
 
 ### <a name="abapspoollog_cl-log-schema"></a>ABAPSpoolLog_CL 日志架构
 
@@ -397,7 +397,7 @@ ms.locfileid: "109815175"
 
 - “日志用途”：用作 SAP 打印的主日志，包含 spool 输出请求的历史记录。 (SP02)。
 
-    可通过将 RFC 与基于标准表的自定义服务一起使用获得。
+    可通过将 RFC 与基于标准表的自定义服务一起使用获得。 此日志使用所有客户端中的数据生成。
 
 ### <a name="abapspooloutputlog_cl-log-schema"></a>ABAPSpoolOutputLog_CL 日志架构
 
@@ -442,15 +442,15 @@ ms.locfileid: "109815175"
 
 ## <a name="abap-syslog"></a>ABAP SysLog
 
-- “Azure Sentinel 中的名称”：`SysLog_CL`
+- “Azure Sentinel 中的名称”：`ABAPOS_Syslog_CL`
 
 - “相关 SAP 文档”：[SAP 帮助门户](https://help.sap.com/viewer/56bf1265a92e4b4d9a72448c579887af/7.5.7/en-US/c769bcbaf36611d3a6510000e835363f.html)
 
 - “日志用途”：记录所有 SAP NetWeaver 应用程序服务器 (SAP NetWeaver AS) ABAP 系统错误、警告、由于已知用户的登录尝试失败而锁定的用户锁、进程消息。
 
-    可通过 SAP 控制 Web 服务获得。
+    可通过 SAP 控制 Web 服务获得。 此日志使用所有客户端中的数据生成。
 
-### <a name="syslog_cl-log-schema"></a>SysLog_CL 日志架构
+### <a name="abapos_syslog_cl-log-schema"></a>ABAPOS_Syslog_CL 日志架构
 
 
 | 字段            | 说明            |
@@ -479,7 +479,7 @@ ms.locfileid: "109815175"
 
     例如，未映射的业务进程可能是简单的发布或审批过程，或者是更复杂的业务进程，如创建基本材料，然后协调关联的部门。
 
-    可通过将 RFC 与基于标准表的自定义服务和标准服务一起使用获得。
+    可通过将 RFC 与基于标准表的自定义服务和标准服务一起使用获得。 此日志是按客户端生成的。
 
 ### <a name="abapworkflowlog_cl-log-schema"></a>ABAPWorkflowLog_CL 日志架构
 
@@ -526,18 +526,18 @@ ms.locfileid: "109815175"
 
 ## <a name="abap-workprocess-log"></a>ABAP WorkProcess 日志
 
-- “Azure Sentinel 中的名称”：`WP_CL`
+- “Azure Sentinel 中的名称”：`ABAPOS_WP_CL`
 
 - “相关 SAP 文档”：[SAP 帮助门户](https://help.sap.com/viewer/d0739d980ecf42ae9f3b4c19e21a4b6e/7.3.15/en-US/46fb763b6d4c5515e10000000a1553f6.html)
 
 - “日志用途”：合并所有工作进程日志。 （默认：`dev_*`）。
 
-    可通过 SAP 控制 Web 服务获得。
+    可通过 SAP 控制 Web 服务获得。 此日志使用所有客户端中的数据生成。
 
-### <a name="wp_cl-log-schema"></a>WP_CL 日志架构
+### <a name="abapos_wp_cl-log-schema"></a>ABAPOS_WP_CL 日志架构
 
 
-| 字段        | 描述         |
+| 字段        | 说明         |
 | ------------ | ------------------- |
 | 主机         | 主机                |
 | 实例     | ABAP 实例，采用以下语法：`<HOST>_<SYSID>_<SYSNR>`   |
@@ -557,7 +557,7 @@ ms.locfileid: "109815175"
 
 - “日志用途”：记录 SAP HANA 数据库中的用户操作或尝试的操作。 例如，能够实现记录和监视对敏感数据的读取访问。
 
-    可通过 Syslog 的 Sentinel Linux 代理获得。
+    可通过 Syslog 的 Sentinel Linux 代理获得。 此日志使用所有客户端中的数据生成。
 
 ### <a name="syslog-log-schema"></a>Syslog 日志架构
 
@@ -581,7 +581,7 @@ ms.locfileid: "109815175"
 
 - “日志用途”：合并所有基于 Java 文件的日志，包括安全审核日志和系统（群集和服务器进程）、性能和网关日志。 还包括开发人员跟踪和默认跟踪日志。
 
-    可通过 SAP 控制 Web 服务获得。
+    可通过 SAP 控制 Web 服务获得。 此日志使用所有客户端中的数据生成。
 
 ### <a name="javafileslogscl-log-schema"></a>JavaFilesLogsCL 日志架构
 
@@ -618,7 +618,8 @@ ms.locfileid: "109815175"
 
 有关详细信息，请参阅：
 
-- [教程：为 SAP 部署 Azure Sentinel 解决方案](sap-deploy-solution.md)
+- [为 SAP 部署 Azure Sentinel 解决方案](sap-deploy-solution.md)
 - [Azure Sentinel SAP 解决方案详细的 SAP 要求](sap-solution-detailed-requirements.md)
-- [在本地部署 Azure Sentinel SAP 数据连接器](sap-solution-deploy-alternate.md)
+- [专家配置选项、本地部署和 SAPControl 日志源](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP 解决方案：内置安全内容](sap-solution-security-content.md)
+- [Azure Sentinel SAP 解决方案部署故障排除](sap-deploy-troubleshoot.md)

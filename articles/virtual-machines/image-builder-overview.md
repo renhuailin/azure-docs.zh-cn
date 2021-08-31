@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 7289d9d814385f31a71cbd598889e564958a0140
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 3e27cbb2284f77abb9bd46bc6dcb7433b50a72e8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441809"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751639"
 ---
 # <a name="azure-image-builder-overview"></a>Azure 映像生成器概述
 
@@ -28,7 +28,7 @@ ms.locfileid: "111441809"
 Azure 映像生成器支持以下功能：
 
 - 创建基线映像，该映像包括最低安全性和企业配置，使部门可以进一步对其进行自定义。
-- 集成核心应用程序，因此 VM 可以在创建后执行工作负载，或添加配置以支持 Windows 虚拟桌面映像。
+- 集成核心应用程序，因此 VM 可以在创建后执行工作负载，或添加配置以支持 Azure 虚拟桌面映像。
 - 修补现有映像，使用映像生成器可以持续修补现有的自定义映像。
 - 将映像生成器连接到现有的虚拟网络，以便连接到现有的配置服务器（DSC、Chef、Puppet 等）、文件共享或任何其他可路由的服务器/服务。
 - 与 Azure 共享映像库集成，以在全球范围内分发、更改和缩放映像，并提供映像管理系统。
@@ -52,6 +52,8 @@ AIB 将支持 Azure 市场基础 OS 映像：
 - Windows 10 RS5 Enterprise/Enterprise 多会话/Professional
 - Windows 2016
 - Windows 2019
+
+我们列出了已测试并了解可以与 Azure 映像生成器一起工作的操作系统。 但是，Azure 映像生成器应可与市场中的任何 Linux 或 Windows 映像一起工作。
 
 ## <a name="how-it-works"></a>工作原理
 

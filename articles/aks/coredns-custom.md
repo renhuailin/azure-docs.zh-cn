@@ -6,12 +6,12 @@ author: palma21
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jpalma
-ms.openlocfilehash: ff7862636ec96db525e4a6920b35dbc1ce6be6d7
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 2472e6cc2c0b24ed73532f3b04cd514a266542fd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076233"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723092"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>使用 Azure Kubernetes 服务自定义 CoreDNS
 
@@ -52,7 +52,6 @@ data:
         rewrite name substring <domain to be rewritten>.com default.svc.cluster.local
         kubernetes cluster.local in-addr.arpa ip6.arpa {
           pods insecure
-          upstream
           fallthrough in-addr.arpa ip6.arpa
         }
         forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
@@ -179,22 +178,6 @@ metadata:
   namespace: kube-system
 data:
     test.override: | # you may select any name here, but it must end with the .override file extension
-          hosts example.hosts example.org { # example.hosts must be a file
-              10.0.0.1 example.org
-              fallthrough
-          }
-```
-
-使用 INLINE 指定主机表中的一行或多行：
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: coredns-custom # this is the name of the configmap you can overwrite with your changes
-  namespace: kube-system
-data:
-    test.override: | # you may select any name here, but it must end with the .override file extension
           hosts { 
               10.0.0.1 example1.org
               10.0.0.2 example2.org
@@ -203,7 +186,9 @@ data:
           }
 ```
 
-## <a name="enable-logging-for-dns-query-debugging"></a>启用日志记录以进行 DNS 查询调试 
+## <a name="troubleshooting"></a>故障排除
+
+有关常规 CoreDNS 故障排除步骤（例如检查终结点或解析）的信息，请参阅[调试 DNS 解析][coredns-troubleshooting]。
 
 若要启用 DNS 查询日志记录，请在 coredns-custom ConfigMap 中应用以下配置：
 
@@ -216,6 +201,12 @@ metadata:
 data:
   log.override: | # you may select any name here, but it must end with the .override file extension
         log
+```
+
+应用配置更改后，使用 `kubectl logs` 命令查看 CoreDNS 调试日志记录。 例如：
+
+```console
+kubectl logs --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -233,6 +224,7 @@ data:
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
 [coredns hosts]: https://coredns.io/plugins/hosts/
+[coredns-troubleshooting]: https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
 
 <!-- LINKS - internal -->
 [concepts-network]: concepts-network.md

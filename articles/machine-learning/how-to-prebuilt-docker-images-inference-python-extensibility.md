@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 8af27f876f1c325cf99214e36f680e012e86c98d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 08139501886f580033aae46bdabd55ed300c5059
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536319"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710012"
 ---
 # <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>预生成 Docker 映像的 Python 包扩展性（预览版）
 
@@ -173,6 +173,13 @@ myenv.environment_variables = {
 
 
 * 有关如何加载已注册模型或本地模型的详细信息，请参阅[在何处以及如何部署](how-to-deploy-and-where.md?tabs=azcli#define-a-dummy-entry-script)。
+
+## <a name="bug-fixes"></a>Bug 修复
+
+### <a name="2021-07-26"></a>2021-07-26
+
+* `AZUREML_EXTRA_REQUIREMENTS_TXT` 和 `AZUREML_EXTRA_PYTHON_LIB_PATH` 现在总是相对于评分脚本的目录。
+例如，如果 requirements.txt 和评分脚本都位于 my_folder 中，则需要将 `AZUREML_EXTRA_REQUIREMENTS_TXT` 设置为 requirements.txt。 不再将 `AZUREML_EXTRA_REQUIREMENTS_TXT` 设置为 my_folder/requirements.txt。
 
 ## <a name="next-steps"></a>后续步骤
 

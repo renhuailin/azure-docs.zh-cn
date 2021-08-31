@@ -1,21 +1,21 @@
 ---
-title: 排查 Windows 虚拟桌面代理问题 - Azure
+title: 排查 Azure 虚拟桌面代理问题 - Azure
 description: 如何解决常见的代理和连接问题。
 author: Sefriend
 ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 67bc4218e28e561b618ab092f0b73207438bd2aa
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 718648be0f4a5ec9dd3520127552138b8471d57c
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633332"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710485"
 ---
-# <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>排查常见的 Windows 虚拟桌面代理问题
+# <a name="troubleshoot-common-azure-virtual-desktop-agent-issues"></a>排查常见的 Azure 虚拟桌面代理问题
 
-由于多种因素，Windows 虚拟桌面代理可能会导致连接问题：
+由于多种因素，Azure 虚拟桌面代理可能会导致连接问题：
    - 中转站上出现了错误，导致代理停止服务。
    - 与更新相关的问题。
    - 在代理安装过程中与安装相关的问题会破坏到会话主机的连接。
@@ -23,7 +23,7 @@ ms.locfileid: "109633332"
 本文将指导你了解这些常见情形的解决方案以及如何解决连接问题。
 
 >[!NOTE]
->为了排查与会话连接和 Windows 虚拟桌面代理相关的问题，建议在“事件查看器” > “Windows 日志” > “应用程序”中查看事件日志  。 查找具有以下某一种源的事件，以确定问题：
+>为了排查与会话连接和 Azure 虚拟桌面代理相关的问题，建议在“事件查看器” > “Windows 日志” > “应用程序”中查看事件日志  。 查找具有以下某一种源的事件，以确定问题：
 >
 >- WVD-Agent
 >- WVD-Agent-Updater
@@ -106,19 +106,19 @@ ms.locfileid: "109633332"
    > ![未成功加载的中转站全局访问的屏幕截图](media/unsuccessful-broker-global.png)
 
 8. 如果网络阻止这些 URL，则需要取消阻止所需的 URL。 有关详细信息，请参阅[所需 URL 的列表](safe-url-list.md)。
-9. 如果这样不解决问题，请确保你没有任何组策略使用了阻止代理连接到中转站的密码。 Windows 虚拟桌面使用与 [Azure Front Door](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-) 相同的 TLS 1.2 密码。 有关详细信息，请参阅[连接安全性](network-connectivity.md#connection-security)。
+9. 如果这样不解决问题，请确保你没有任何组策略使用了阻止代理连接到中转站的密码。 Azure 虚拟桌面使用与 [Azure Front Door](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-) 相同的 TLS 1.2 密码。 有关详细信息，请参阅[连接安全性](network-connectivity.md#connection-security)。
 
 ## <a name="error-3703"></a>错误：3703
 
-请参阅“事件查看器” > “Windows 日志” > “应用程序”  。 如果看到 ID 为 3703 的事件在说明中显示“RD 网关 URL：无法访问”，则表明代理无法访问网关 URL。 若要成功连接到会话主机，并允许到这些终结点的网络流量绕过限制，则必须取消阻止[所需 URL 的列表](safe-url-list.md)中的 URL。 此外，请确保防火墙或代理设置不会阻止这些 URL。 使用 Windows 虚拟桌面需要取消阻止这些 URL。
+请参阅“事件查看器” > “Windows 日志” > “应用程序”  。 如果看到 ID 为 3703 的事件在说明中显示“RD 网关 URL：无法访问”，则表明代理无法访问网关 URL。 若要成功连接到会话主机，并允许到这些终结点的网络流量绕过限制，则必须取消阻止[所需 URL 的列表](safe-url-list.md)中的 URL。 此外，请确保防火墙或代理设置不会阻止这些 URL。 使用 Azure 虚拟桌面需要取消阻止这些 URL。
 
 若要解决此问题，请验证防火墙和/或 DNS 设置是否未阻止这些 URL：
-1. [使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
+1. [使用 Azure 防火墙保护 Azure 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
 2. 配置 [Azure 防火墙 DNS 设置](../firewall/dns-settings.md)。
 
 ## <a name="error-3019"></a>错误：3019
 
-请参阅“事件查看器” > “Windows 日志” > “应用程序”  。 如果看到 ID 为 3019 的事件，则表明代理无法访问 Web 套接字传输 URL。 若要成功连接到会话主机，并允许网络流量绕过这些限制，则必须取消阻止[所需 URL 的列表](safe-url-list.md)中列出的 URL。 请与 Azure 网络团队合作，以确保防火墙、代理和 DNS 设置未阻止这些 URL。 还可以检查网络跟踪日志，以确定正在阻止 Windows 虚拟桌面服务的位置。 如果为此特定问题提出支持请求，请确保将网络跟踪日志附加到该请求。
+请参阅“事件查看器” > “Windows 日志” > “应用程序”  。 如果看到 ID 为 3019 的事件，则表明代理无法访问 Web 套接字传输 URL。 若要成功连接到会话主机，并允许网络流量绕过这些限制，则必须取消阻止[所需 URL 的列表](safe-url-list.md)中列出的 URL。 请与 Azure 网络团队合作，以确保防火墙、代理和 DNS 设置未阻止这些 URL。 还可以检查网络跟踪日志，以确定正在阻止 Azure 虚拟桌面服务的位置。 如果为此特定问题提出支持请求，请确保将网络跟踪日志附加到该请求。
 
 ## <a name="error-installationhealthcheckfailedexception"></a>错误：InstallationHealthCheckFailedException
 
@@ -144,7 +144,7 @@ ms.locfileid: "109633332"
 3. 确保[代理服务正在运行](#error-the-rdagentbootloader-andor-remote-desktop-agent-loader-has-stopped-running)并且[堆栈侦听器运行正常](#error-stack-listener-isnt-working-on-windows-10-2004-vm)。
 4. 确保[代理可以连接到中转站](#error-agent-cannot-connect-to-broker-with-invalid_form)。
 5. 确保 [VM 具有有效注册令牌](#error-invalid_registration_token)。
-6. 确保 [VM 注册令牌未过期](faq.md#how-often-should-i-turn-my-vms-on-to-prevent-registration-issues)。 
+6. 确保 [VM 注册令牌未过期](/azure/virtual-desktop/faq#how-often-should-i-turn-my-vms-on-to-prevent-registration-issues)。 
 
 ## <a name="error-installmsiexception"></a>错误：InstallMsiException
 
@@ -189,9 +189,9 @@ ms.locfileid: "109633332"
 
 ## <a name="error-stack-listener-isnt-working-on-windows-10-2004-vm"></a>错误：堆栈侦听器在 Windows 10 2004 VM 上不起作用
 
-在命令提示符下运行“qwinsta”，并记下“rdp-sxs”旁边显示的版本号 。 如果在运行 qwinsta 后未看到 rdp-tcp 和 rdp sxs 组件在它们旁边显示“侦听”，或者它们完全不出现，则表明存在堆栈问题   。 堆栈更新会与代理更新一起安装，并且在此安装完成时，Windows 虚拟桌面侦听器将不起作用。
+在命令提示符下运行“qwinsta”，并记下“rdp-sxs”旁边显示的版本号 。 如果在运行 qwinsta 后未看到 rdp-tcp 和 rdp sxs 组件在它们旁边显示“侦听”，或者它们完全不出现，则表明存在堆栈问题   。 堆栈更新会与代理更新一起安装，并且在此安装完成时，Azure 虚拟桌面侦听器将不起作用。
 
-若要解决此问题，请执行下列操作：
+要解决此问题：
 1. 打开注册表编辑器。
 2. 转到“HKEY_LOCAL_MACHINE” > “SYSTEM” > “CurrentControlSet” > “Control” > “Terminal Server” > “WinStations”     。
 3. 在“WinStations”下，你可能会看到不同堆栈版本的多个文件夹，请选择与你在命令提示符中运行 qwinsta 时看到的版本信息匹配的文件夹 。
@@ -224,7 +224,7 @@ ms.locfileid: "109633332"
 
 ## <a name="error-agent-fails-to-update-with-missingmethodexception"></a>错误：代理无法更新，出现 MissingMethodException
 
-请参阅“事件查看器” > “Windows 日志” > “应用程序”  。 如果看到 ID 为 3389 的事件在说明中显示“MissingMethodException：找不到方法”，则表明 Windows 虚拟桌面代理未成功更新，并且还原到了某个早期版本。 这可能是因为 VM 上目前安装的 .NET framework 的版本号低于 4.7.2。 若要解决此问题，需要通过按照 [.NET Framework 文档](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)中的安装说明操作来将 .NET 升级到版本 4.7.2 或更高版本。
+请参阅“事件查看器” > “Windows 日志” > “应用程序”  。 如果看到 ID 为 3389 的事件在说明中显示“MissingMethodException: 找不到方法”，则表明 Azure 虚拟桌面代理未成功更新，并且还原到了某个早期版本。 这可能是因为 VM 上目前安装的 .NET framework 的版本号低于 4.7.2。 若要解决此问题，需要通过按照 [.NET Framework 文档](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)中的安装说明操作来将 .NET 升级到版本 4.7.2 或更高版本。
 
 
 ## <a name="error-vms-are-stuck-in-unavailable-or-upgrading-state"></a>错误：VM 停滞，状态为“不可用”或“正在升级”
@@ -287,7 +287,7 @@ VM 的名称已经注册，可能是重复的。
 
 ## <a name="your-issue-isnt-listed-here-or-wasnt-resolved"></a>你的问题未在此处列出或未解决
 
-如果在本文中找不到你的问题，或者说明内容没有帮助，建议卸载、重新安装并重新注册 Windows 虚拟桌面代理。 本部分中的说明将介绍如何通过以下方式将 VM 注册到 Windows 虚拟桌面服务：卸载所有代理、启动加载程序和堆栈组件，从主机池删除会话主机，为 VM 生成新注册密钥，以及重新安装代理和启动加载程序。 如果你遇到以下一个或多个场景，请按以下说明操作：
+如果在本文中找不到你的问题，或者说明内容没有帮助，建议卸载、重新安装并重新注册 Azure 虚拟桌面代理。 本部分中的说明将介绍如何通过以下方式将 VM 注册到 Azure 虚拟桌面服务：卸载所有代理、启动加载程序和堆栈组件，从主机池删除会话主机，为 VM 生成新注册密钥，以及重新安装代理和启动加载程序。 如果你遇到以下一个或多个场景，请按以下说明操作：
 - VM 停滞，状态为“正在升级”或“不可用” 
 - 堆栈侦听器不起作用，并且是在 Windows 10 1809、1903 或 1909 上运行
 - 收到 EXPIRED_REGISTRATION_TOKEN 错误
@@ -345,7 +345,7 @@ VM 的名称已经注册，可能是重复的。
 ### <a name="step-4-reinstall-the-agent-and-boot-loader"></a>步骤 4：重新安装代理和启动加载程序
 
 通过重新安装代理和启动加载程序的最新版本，并行堆栈和日内瓦监视代理也会自动安装。 若要重新安装代理和启动加载程序，请执行以下操作：
-1. 以管理员身份登录到 VM，并根据 VM 运行的 Windows 的版本不同为部署使用正确的代理安装程序版本。 如果有 Windows 10 VM，请按照[注册虚拟机](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)中的说明来下载 Windows 虚拟桌面代理和 Windows 虚拟桌面代理启动加载程序 。 如果有 Windows 7 VM，请按照[注册虚拟机](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine)中的步骤 13-14 来下载 Windows 虚拟桌面代理和 Windows 虚拟桌面代理管理器 。
+1. 以管理员身份登录到 VM，并根据 VM 运行的 Windows 的版本不同为部署使用正确的代理安装程序版本。 如果有 Windows 10 VM，请按照[注册虚拟机](create-host-pools-powershell.md#register-the-virtual-machines-to-the-azure-virtual-desktop-host-pool)中的说明来下载 Azure 虚拟桌面代理和 Azure 虚拟桌面代理启动加载程序 。 如果有 Windows 7 VM，请按照[注册虚拟机](deploy-windows-7-virtual-machine.md#configure-a-windows-7-virtual-machine)中的步骤 13-14 来下载 Azure 虚拟桌面代理和 Azure 虚拟桌面代理管理器 。
 
    > [!div class="mx-imgBorder"]
    > ![代理和启动加载程序下载页的屏幕截图](media/download-agent.png)
@@ -353,7 +353,7 @@ VM 的名称已经注册，可能是重复的。
 2. 右键单击下载的代理和启动加载程序安装程序。
 3. 选择“属性”。
 4. 选择“取消阻止”。
-5. 选择“确定”。
+5. 选择“确定”  。
 6. 运行代理安装程序。
 7. 在安装程序要求提供注册令牌时，请从剪贴板粘贴注册密钥。 
 
@@ -371,15 +371,15 @@ VM 的名称已经注册，可能是重复的。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果问题仍然存在，请创建支持案例，并包括有关所遇问题的详细信息，以及任何为尝试解决此问题所采取的操作。 以下列表包括了其他可用于排查 Windows 虚拟桌面部署中的问题的资源。
+如果问题仍然存在，请创建支持案例，并包括有关所遇问题的详细信息，以及任何为尝试解决此问题所采取的操作。 以下列表包括了其他可用于排查 Azure 虚拟桌面部署中的问题的资源。
 
-- 如需简要了解如何排查 Windows 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
-- 若要排查在 Windows 虚拟桌面环境中创建主机池时遇到的问题，请参阅[环境和主机池创建](troubleshoot-set-up-issues.md)。
-- 若要排查在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
-- 要对 Windows 虚拟桌面客户端连接问题进行故障排除，请参阅 [Windows 虚拟桌面服务连接](troubleshoot-service-connection.md)。
+- 有关排查 Azure 虚拟桌面问题和进行升级跟踪的概述，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
+- 若要排查在 Azure 虚拟桌面环境中创建主机池时的问题，请参阅[环境和主机池创建](troubleshoot-set-up-issues.md)。
+- 若要排查在 Azure 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
+- 若要排查 Azure 虚拟桌面客户端连接问题，请参阅 [Azure 虚拟桌面服务连接](troubleshoot-service-connection.md)。
 - 若要排查有关远程桌面客户端的问题，请参阅[远程桌面客户端故障排除](troubleshoot-client.md)。
-- 若要排查将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅 [Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
-- 若要详细了解服务，请参阅 [Windows 虚拟桌面环境](environment-setup.md)。
+- 若要排查将 PowerShell 与 Azure 虚拟桌面结合使用时遇到的问题，请参阅 [Azure 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
+- 若要详细了解该服务，请参阅 [Azure 虚拟桌面环境](environment-setup.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

@@ -5,20 +5,21 @@ author: minhe-msft
 ms.author: hemin
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: monitoring
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: bcc10ccde73f5036e50d1717528933a49ccd69cd
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 07/30/2021
+ms.openlocfilehash: 81649565955d1de031e4eefca548c5d58f7e28c6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904939"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730156"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以可视化方式监视 Azure 数据工厂
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在 Azure 数据工厂中创建并发布管道以后，即可将其与触发器关联，或者手动启动临时运行。 可以在 Azure 数据工厂用户体验中以本机方式监视所有管道运行。 若要打开监视体验，请在 [Azure 门户](https://portal.azure.com/)的数据工厂边栏选项卡中选择“监视和管理”磁贴。 如果已在 ADF UX 中，请单击左侧边栏上的“监视”图标。
+在 Azure 数据工厂中创建并发布管道以后，即可将其与触发器关联，或者手动启动临时运行。 可以在 Azure 数据工厂用户体验中以本机方式监视所有管道运行。 若要打开监视体验，请选择 [Azure 门户](https://portal.azure.com/)的“数据工厂”边栏选项卡中的“监视和管理”磁贴。 如果已在 ADF UX 中，请单击左侧边栏上的“监视”图标。
 
 默认情况下，所有数据工厂运行都以浏览器的本地时区显示。 如果你更改时区，所有日期/时间字段都会与你选择的时区保持一致。
 
@@ -95,7 +96,19 @@ ms.locfileid: "107904939"
 
 ![具有用户属性的列的活动运行列表](media/monitor-visually/view-user-properties.png)
 
+
 ## <a name="rerun-pipelines-and-activities"></a>重新运行管道和活动
+ 
+ 容器活动的重新运行行为如下所示：
+ 
+- `Wait`- 活动将像以前一样运行。
+- `Set Variable`- 活动将像以前一样运行。
+- `Filter`- 活动将像以前一样运行。
+- `Until` 活动会评估表达式，并会循环，直到条件得到满足。 可能仍会根据重新运行规则跳过内部活动。
+- `Foreach` 活动将始终在其收到的项上循环。 可能仍会根据重新运行规则跳过内部活动。
+- `If and switch` - 始终会对条件进行评估。 可能仍会根据重新运行规则跳过内部活动。
+- `Execute pipeline activity` - 将触发子管道，但仍可能会根据重新运行规则跳过子管道中的所有活动。
+
 
 若要从开始处重新运行之前已运行过的管道，请将鼠标悬停在该特定管道运行上，并选择“重新运行”。 如果选择多个管道，可以使用“重新运行”按钮来运行所有这些管道。
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 92db62622c37241a76d7847931df030162de8f00
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: e810a5d3a94ad4e356d0b44a422b757b5710a781
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504220"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182276"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 
@@ -157,4 +157,4 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 + 门户中的[应用程序生成器](search-create-app-portal.md)可以创建带有搜索栏、分面导航和包含图像的结果区域的 HTML 页面。
 + [使用 C# 创建你的第一个应用](tutorial-csharp-create-first-app.md)教程介绍了如何构建正常运行的客户端。 示例代码演示了分页查询、命中项突出显示和排序。
 
-多个代码示例包含一个 Web 前端接口，相关内容可参阅：[纽约市作业演示应用](https://aka.ms/azjobsdemo)、[实现了实时演示站点的 JavaScript 示例代码](https://github.com/liamca/azure-search-javascript-samples)和 [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+多个代码示例包含一个 Web 前端接口，相关内容可参阅：[New York City Jobs 演示应用](https://aka.ms/azjobsdemo) 或 [JavaScript 示例代码（具有实时演示站点）](https://github.com/liamca/azure-search-javascript-samples)。

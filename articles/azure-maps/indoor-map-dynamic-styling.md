@@ -7,13 +7,12 @@ ms.date: 05/20/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 85b64f52fc1832ec1d25767c1cdfef8977d96fe8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 05e169667067033428d5fc995af4d866dc46d20b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030316"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751434"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>实现 Creator 室内定位的动态样式
 
@@ -68,33 +67,27 @@ map.events.add("click", function(e){
 
 1. 在 Postman 应用中，选择“新建”。
 
-2. 在“新建”窗口中，选择“集合”。
+2. 在“新建”窗口中，选择“HTTP 请求” 。
 
-3. 再次选择“新建”。
+3. 在“请求名称”中输入请求名称，比如 POST Data Upload。
 
-4. 在“新建”窗口中，选择“请求”。
-
-5. 在“请求名称”中输入请求名称，比如 POST Data Upload。
-
-6. 选择之前创建的集合，然后选择“保存”。
-
-7. 在[特征更新状态 API](/rest/api/maps/v2/feature-state/update-states) 中输入以下 URL（将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，将 `statesetId` 替换为 `statesetId`）：
+4. 在[特征更新状态 API](/rest/api/maps/v2/feature-state/update-states) 中输入以下 URL（将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，将 `statesetId` 替换为 `statesetId`）：
 
     ```http
     https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-8. 选择“标头”选项卡  。
+5. 选择“标头”选项卡  。
 
-9. 在“键”字段中，选择 `Content-Type`。 在“值”字段中，选择 `application/json`。
+6. 在“键”字段中，选择 `Content-Type`。 在“值”字段中，选择 `application/json`。
 
      :::image type="content" source="./media/indoor-map-dynamic-styling/stateset-header.png"alt-text="用于创建状态集的“标头”选项卡信息。":::
 
-10. 选择“正文”选项卡。
+7. 选择“正文”选项卡。
 
-11. 在下拉列表中，选择“原始”和“JSON”。
+8. 在下拉列表中，选择“原始”和“JSON”。
 
-12. 复制以下 JSON 样式，然后将其粘贴到“正文”窗口中：
+9. 复制以下 JSON 样式，然后将其粘贴到“正文”窗口中：
 
     ```json
     {
@@ -111,13 +104,13 @@ map.events.add("click", function(e){
     >[!IMPORTANT]
     >只有当 POST 请求的时间戳晚于同一特征 `ID` 的上一特征状态更新请求的时间戳时，才会保存更新。
 
-13. 通过将 `UNIT26` 替换为 `UNIT27`，更改步骤 7 中使用的 URL：
+10. 通过将 `UNIT26` 替换为 `UNIT27`，更改步骤 7 中使用的 URL：
 
     ```http
     https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT27?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-14. 复制以下 JSON 样式，然后将其粘贴到“正文”窗口中：
+11. 复制以下 JSON 样式，然后将其粘贴到“正文”窗口中：
 
     ``` json
     {

@@ -1,24 +1,24 @@
 ---
-title: Azure 数据资源管理器数据分析（ADX 数据分析预览版）| Microsoft Docs
+title: Azure 数据资源管理器数据分析（ADX 数据分析）| Microsoft Docs
 description: 本文介绍 Azure 数据资源管理器数据分析（ADX 数据分析）
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 274d907c4fd8d09e444b938447365a4df64af3e4
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 872c1e29b6c85f24c4e9841dca359a9429b92321
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061625"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458109"
 ---
-# <a name="azure-data-explorer-insights-preview"></a>Azure 数据资源管理器数据分析（预览版）
+# <a name="azure-data-explorer-insights"></a>Azure 数据资源管理器数据分析
 
-Azure 数据资源管理器数据分析（预览版）通过提供群集性能、操作、使用情况和故障的统一视图，对群集进行全面监视。
-本文将帮助你了解如何加入和使用 Azure 数据资源管理器数据分析（预览版）。
+Azure 数据资源管理器数据分析通过提供群集性能、操作、使用情况和故障的统一视图，对群集进行全面监视。
+本文将帮助你了解如何加入和使用 Azure 数据资源管理器数据分析。
 
-## <a name="introduction-to-azure-data-explorer-insights-preview"></a>Azure 数据资源管理器数据分析（预览版）简介
+## <a name="introduction-to-azure-data-explorer-insights"></a>Azure 数据资源管理器数据分析简介
 
 在深入了解此体验之前，应该了解它如何呈现和可视化信息。
 -    大规模透视图，其中显示群集主要指标的快照视图，以方便跟踪查询、引入和导出操作的性能。
@@ -33,7 +33,7 @@ Azure 数据资源管理器数据分析（预览版）通过提供群集性能�
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)
 
-2. 在 Azure 门户的左侧窗格中选择“监视”，然后在“见解中心”部分下选择“Azure 数据资源管理器群集(预览版)” 。
+2. 在 Azure 门户的左侧窗格中选择“监视”，然后在“见解中心”部分下选择“Azure 数据资源管理器群集” 。
 
 ![“概览”体验的屏幕截图，其中显示了多个关系图](./media/data-explorer/insights-hub.png)
 
@@ -77,7 +77,7 @@ Azure 数据资源管理器数据分析（预览版）通过提供群集性能�
 
 1. 在 Azure 门户中，选择“Azure 数据资源管理器群集”。
 
-2. 从列表中选择一个 Azure 数据资源管理器群集。 在监视部分选择“见解(预览版)”。
+2. 从列表中选择一个 Azure 数据资源管理器群集。 在“监视”部分中，选择“见解”。
 
 还可以通过从 Azure Monitor 见解视图中选择某个 Azure 数据资源管理器群集的资源名称来访问这些视图。
 
@@ -114,7 +114,7 @@ Azure 数据资源管理器数据分析结合日志和指标，提供全局监�
 
 “表”选项卡显示群集中的表的最新属性和历史属性。 可以查看哪些表占用的空间最多，按表大小、热数据和行数跟踪一段时间内的增长历史记录。
 
-“缓存”选项卡可让用户分析其实际查询的回溯时段图，并将其与已配置的缓存策略（针对每个表）进行比较。 可以识别由大多数查询和表使用的、但根本未查询的表，并相应地调整缓存策略。 可以基于实际查询在过去 30 天的回溯时段和适用于至少 95% 查询的未优化缓存策略，在 Azure 顾问中获取有关特定表的特殊缓存策略建议（目前，只能从 [Azure 顾问主仪表板](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)查看缓存建议）。 Azure 顾问中的缓存缩减建议适用于“受数据限制”的群集（即，这些群集的 CPU 利用率和引入利用率较低，但由于数据容量较高，群集无法横向或纵向缩减）。
+“缓存”选项卡可让用户分析其实际查询的回溯时段图，并将其与已配置的缓存策略（针对每个表）进行比较。 可以识别由大多数查询和表使用的、但根本未查询的表，并相应地调整缓存策略。 可以基于实际查询在过去 30 天的回溯时段和适用于至少 95% 查询的未优化缓存策略，在 Azure 顾问中获取有关特定表的特殊缓存策略建议（目前，只能从 [Azure 顾问主仪表板](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)查看缓存建议）。 Azure 顾问中的缓存缩减建议适用于“受数据限制”的群集（即，这些群集的 CPU 利用率和引入利用率较低，但由于数据容量较高，群集无法横向或纵向缩减）。
 
 [![缓存详细信息的屏幕截图](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
@@ -148,7 +148,7 @@ Azure 数据资源管理器数据分析结合日志和指标，提供全局监�
 
 如需常规故障排除指南，请参阅专用的基于工作簿的见解[故障排除文章](troubleshoot-workbooks.md)。
 
-本部分帮助你诊断和排查在使用 Azure 数据资源管理器数据分析（预览版）时可能遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
+本部分帮助你诊断和排查在使用 Azure 数据资源管理器数据分析时可能遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
 
 ### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>为什么在订阅选取器中看不到所有订阅？
 

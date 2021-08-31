@@ -3,15 +3,15 @@ title: 管理 Azure 自动化运行方式帐户
 description: 本文介绍如何使用 PowerShell 或 Azure 门户管理 Azure 自动化运行方式帐户。
 services: automation
 ms.subservice: ''
-ms.date: 05/17/2021
+ms.date: 08/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2d615df07e89e1fc2d4e63066d320002718d200
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b6248ee0815d90be83030931c011bb2e8208eeaa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059673"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723018"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>管理 Azure 自动化运行方式帐户
 
@@ -23,7 +23,7 @@ Azure 自动化中的运行方式帐户提供身份验证，以使用自动化 r
    * 如何从企业或第三方证书颁发机构 (CA) 续订证书
    * 管理运行方式帐户的权限
 
-若要详细了解 Azure 自动化帐户身份验证以及有关流程自动化方案的指导，请参阅[自动化帐户身份验证概述](automation-security-overview.md)。
+若要详细了解 Azure 自动化帐户身份验证、管理运行方式帐户所需的权限以及有关流程自动化方案的指导，请参阅[自动化帐户身份验证概述](automation-security-overview.md)。
 
 ## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>续订自签名证书
 
@@ -89,7 +89,7 @@ Azure 自动化支持在一个订阅中使用单个自动化帐户，并针对�
 
 在授予运行方式帐户权限之前，需要先记下要分配的服务主体的显示名称。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在“自动化帐户”的“帐户设置”下，选择“运行方式帐户” 。
 1. 选择“Azure 运行方式帐户”。
 1. 复制或记下“Azure 运行方式帐户”页上的“显示名称”的值。

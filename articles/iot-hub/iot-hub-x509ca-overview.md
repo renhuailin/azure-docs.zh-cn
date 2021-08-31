@@ -6,18 +6,18 @@ manager: arjmands
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 09/18/2017
+ms.date: 07/13/2021
 ms.author: eustacea
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 7b0cf04adbf3da1f02e9f18b5e3c20760f9dbf53
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: bd8576994f47eb370c4e396253d9b8594fb43145
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147186"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287169"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 证书进行设备身份验证
 
@@ -36,7 +36,7 @@ ms.locfileid: "108147186"
 
 ## <a name="prerequisite"></a>先决条件
 
-使用 X.509 CA 功能需要有一个 IoT 中心帐户。  [了解如何创建 IoT 中心实例](quickstart-send-telemetry-dotnet.md)（如果没有）。
+使用 X.509 CA 功能需要有一个 IoT 中心帐户。  [了解如何创建 IoT 中心实例](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)（如果没有）。
 
 ## <a name="how-to-get-an-x509-ca-certificate"></a>如何获取 X.509 CA 证书
 
@@ -82,7 +82,7 @@ X.509 CA 证书的所有者能以加密方式为某个中间 CA 签名，而该 
 
 注册 X.509 CA 证书并在证书信任链中为设备签名后，剩余的操作就是在设备连接时（甚至包括首次连接）进行设备身份验证。  当 X.509 CA 签名的设备建立连接时，会上传其证书链用于验证。 该链包含所有中间 CA 和设备证书。  使用此信息，IoT 中心可通过一个两步过程对设备进行身份验证。  IoT 中心以加密方式验证证书链的内部一致性，然后向设备发出所有权证明质询。  如果设备返回了所有权证明成功响应，则 IoT 中心会声明该设备可信。  此声明假设设备的私钥受到保护，并且只有该设备才能成功响应此质询。  我们建议使用设备中的安全芯片（例如硬件安全模块 (HSM)）来保护私钥。
 
-设备成功连接到 IoT 中心后，身份验证过程即告完成，这也表明设置正确。
+设备成功连接到 IoT 中心后，身份验证过程即告完成，这也表明设置正确。 每次设备进行连接时，IoT 中心都会重新协商 TLS 会话并验证设备的 X.509 证书。 
 
 在此处了解如何[完成此设备连接步骤](./tutorial-x509-scripts.md)。
 

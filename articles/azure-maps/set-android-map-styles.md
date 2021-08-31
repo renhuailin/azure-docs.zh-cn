@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 4d96d116bc4350a3326722c87f65e887d5a54791
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 84e87593a67bfda512619c5637ffc13c07fa8111
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326536"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091261"
 ---
 # <a name="set-map-style-android-sdk"></a>设置地图样式 (Android SDK)
 
@@ -33,14 +33,14 @@ ms.locfileid: "108326536"
 在添加地图控件时，你可以在活动类的布局文件中设置地图样式。 以下代码可设置中心位置、缩放级别和地图样式。
 
 ```XML
-<com.microsoft.azure.maps.mapcontrol.MapControl
+<com.azure.android.maps.control.MapControl
     android:id="@+id/mapcontrol"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:mapcontrol_centerLat="47.602806"
-    app:mapcontrol_centerLng="-122.329330"
-    app:mapcontrol_zoom="12"
-    app:mapcontrol_style="grayscale_dark"
+    app:azure_maps_centerLat="47.602806"
+    app:azure_maps_centerLng="-122.329330"
+    app:azure_maps_zoom="12"
+    app:azure_maps_style="grayscale_dark"
     />
 ```
 
@@ -204,6 +204,47 @@ map.setCamera(
 ::: zone-end
 
 边界框的纵横比可能与地图的纵横比不同，因此地图通常会显示完整的边界框区域，但通常仅在垂直或水平方向紧缩。
+
+### <a name="animate-map-view"></a>将地图视图制成动画
+
+设置地图的相机选项时，动画选项还可用于创建当前地图视图和下一个地图视图之间的过渡效果。 这些选项指定动画的类型和移动照相机所需的持续时间。
+
+| 选项 | 说明 |
+|--------|-------------|
+| `animationDuration(Integer durationMs)` | 指定相机在视图之间进行动画处理的时间（以毫秒 (ms) 为单位）。 |
+| `animationType(AnimationType animationType)` | 指定要执行的动画过渡效果类型。<br/><br/> - `JUMP` - 即时更改。<br/> - `EASE` - 逐渐更改相机的设置。<br/> - `FLY` - 在类似飞行的弧线之后逐渐改变相机的设置。 |
+
+下面的代码演示如何在三秒钟内使用 `FLY` 动画对地图视图进行动画处理。
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+map.setCamera(
+    center(Point.fromLngLat(-122.33, 47.6)),
+    zoom(12),
+    animationType(AnimationType.FLY), 
+    animationDuration(3000)
+);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+map.setCamera(
+    center(Point.fromLngLat(-122.33, 47.6)),
+    zoom(12.0),
+    AnimationOptions.animationType(AnimationType.FLY),
+    AnimationOptions.animationDuration(3000)
+)
+```
+
+::: zone-end
+
+下面演示了以上代码对从纽约到西雅图的地图视图产生的动画效果。
+
+![相机从纽约变换到西雅图的地图动画效果](media/set-android-map-styles/android-animate-camera.gif)
 
 ## <a name="next-steps"></a>后续步骤
 

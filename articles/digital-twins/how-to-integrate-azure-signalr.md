@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 902a028b77352a09fe4c615992192bc9246e9aa5
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: fcf3167e4f407a64d474275e495b73f511feabdf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616046"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748526"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>将 Azure 数字孪生与 Azure SignalR 服务集成
 
@@ -24,7 +24,7 @@ ms.locfileid: "110616046"
 
 下面是在继续操作之前应完成的必备条件：
 
-* 在阅读本文将解决方案与 Azure SignalR 服务集成之前，应先阅读 Azure 数字孪生教程：连接端到端解决方案，因为本操作说明以该教程为基础。 本教程介绍如何设置 Azure 数字孪生实例，以使该实例与虚拟 IoT 设备一起触发数字孪生体更新。 本操作说明将使用 Azure SignalR 服务将这些更新连接到示例 Web 应用。
+* 在将你的解决方案与本文中的 Azure SignalR 服务集成之前，应先完成 Azure 数字孪生[连接端到端解决方案](tutorial-end-to-end.md)，因为本操作方法文章以该方案为基础。 本教程介绍如何设置 Azure 数字孪生实例，以使该实例与虚拟 IoT 设备一起触发数字孪生体更新。 本操作说明将使用 Azure SignalR 服务将这些更新连接到示例 Web 应用。
 
 * 需要使用本教程中的以下值：
   - 事件网格主题
@@ -44,7 +44,7 @@ ms.locfileid: "110616046"
 ## <a name="download-the-sample-applications"></a>下载示例应用程序
 
 首先，下载所需的示例应用。 下面两个均需要下载：
-* [Azure 数字孪生端到端示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)：此示例包含一个 AdtSampleApp，它包含两个用于移动 Azure 数字孪生实例相关数据的 Azure 函数（请查看[教程：连接端到端解决方案](tutorial-end-to-end.md)，详细了解此方案）。 此外还包含一个 *devicesimulator.exe* 示例应用程序，可模拟 IoT 设备，每秒生成一个新的温度值。
+* [Azure 数字孪生端到端示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)：此示例包含一个 AdtSampleApp，它包含两个用于移动 Azure 数字孪生实例相关数据的 Azure 函数（可以在[连接端到端解决方案](tutorial-end-to-end.md)中详细了解此方案）。 此外还包含一个 *devicesimulator.exe* 示例应用程序，可模拟 IoT 设备，每秒生成一个新的温度值。
     - 如果尚未下载此示例作为本教程[先决条件](#prerequisites)的一部分，[请导航到示例](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)，然后选择标题下面的“浏览代码”按钮。 此时会转到这些示例的 GitHub 存储库，你可以通过选择“代码”按钮和“下载 ZIP”将其下载为 .zip 。
 
         :::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub 上的 digital-twins-samples 存储库的屏幕截图，其中包含将该存储库下载为 zip 的步骤。" lightbox="media/includes/download-repo-zip.png":::
@@ -65,7 +65,7 @@ ms.locfileid: "110616046"
 
 启动 Visual Studio（或选择其他代码编辑器），然后在 *digital-twins-samples-master > ADTSampleApp* 文件夹中打开代码解决方案。 按下列步骤创建函数：
 
-1. 在 *SampleFunctionsApp* 项目中，新建一个名为 **SignalRFunctions.cs** 的 c # 类。
+1. 在 *SampleFunctionsApp* 项目中，新建一个名为 **SignalRFunctions.cs** 的 c # 类。 有关如何执行此操作的说明，请参阅[使用 Visual Studio 开发 Azure Functions](../azure-functions/functions-develop-vs.md#add-a-function-to-your-project)。
 
 1. 将类文件的内容替换为以下代码：
     
@@ -78,9 +78,11 @@ ms.locfileid: "110616046"
 
     这应该能解决类中的所有依赖关系问题。
 
-1. 按照“连接端到端解决方案”教程的[“发布应用”部分](tutorial-end-to-end.md#publish-the-app)中所述的步骤，将函数发布到 Azure。 可以将其发布到端到端教程[必备条件](#prerequisites)中使用的同一应用服务/函数应用，也可以创建新的应用服务/函数应用，但可能希望使用同一个应用来最大程度减少重复项。 
+1. 将函数发布到 Azure。 可以将其发布到端到端教程[必备条件](#prerequisites)中使用的同一应用服务/函数应用，也可以创建新的应用服务/函数应用，但可能希望使用同一个应用来最大程度减少重复项。 若要了解如何使用 Visual Studio 发布函数，请参阅[使用 Visual Studio 开发 Azure Functions](../azure-functions/functions-develop-vs.md#publish-to-azure)。
 
-接下来，将这些函数配置为与 Azure SignalR 实例通信。 首先收集 SignalR 实例的连接字符串，然后将其添加到函数应用的设置。
+### <a name="configure-the-function"></a>配置函数
+
+接下来，将该函数配置为与 Azure SignalR 实例通信。 首先收集 SignalR 实例的连接字符串，然后将其添加到函数应用的设置。
 
 1. 转到 [Azure 门户](https://portal.azure.com/)，在门户顶部的搜索栏中搜索 SignalR 实例的名称。 选择该实例以将其打开。
 1. 从实例菜单选择“密钥”，以查看 SignalR 服务实例的连接字符串。
@@ -91,14 +93,14 @@ ms.locfileid: "110616046"
 1. 最后，使用以下 Azure CLI 命令将 Azure SignalR 连接字符串添加到函数应用的设置中。 此外，还需将占位符替换为在[教程必备条件](how-to-integrate-azure-signalr.md#prerequisites)中准备的资源组和应用服务/函数应用名称。 可在 [Azure Cloud Shell](https://shell.azure.com) 中运行此命令，如果[计算机中安装了 Azure CLI](/cli/azure/install-azure-cli)，也可在本地运行它：
  
     ```azurecli-interactive
-    az functionapp config appsettings set --resource-group <your-resource-group> --name <your-App-Service-function-app-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
+    az functionapp config appsettings set --resource-group <your-resource-group> --name <your-function-app-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
     ```
 
     此命令的输出将打印为 Azure 函数设置的所有应用设置。 在列表底部查找 `AzureSignalRConnectionString`，验证是否已添加。
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/output-app-setting.png" alt-text="命令窗口中输出的屏幕截图，显示名为“AzureSignalRConnectionString”的列表项。":::
 
-#### <a name="connect-the-function-to-event-grid"></a>将函数连接到事件网格
+## <a name="connect-the-function-to-event-grid"></a>将函数连接到事件网格
 
 接下来，将 Azure 函数 broadcast 订阅到在[教程必备条件](how-to-integrate-azure-signalr.md#prerequisites)期间创建的事件网格主题。 此操作会使遥测数据从 thermostat67 孪生体经由事件网格主题流到该函数。 在这里，该函数会将数据广播到所有客户端。
 

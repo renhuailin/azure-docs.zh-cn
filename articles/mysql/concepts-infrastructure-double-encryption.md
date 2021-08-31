@@ -6,28 +6,30 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: e9182a2a0b88f85af5305f5794fec2ffe7935701
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b6d87c3bfabf3884d9a90966994eea002a45dd8
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98631727"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674428"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL 基础结构双重加密
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL 使用 Microsoft 的托管密钥对数据进行[静态数据存储加密](concepts-security.md#at-rest)。 数据（包括备份）在磁盘上加密，这种加密始终可用且无法禁用。 加密使用 FIPS 140-2 验证的加密模块和 AES 256 位密码进行 Azure 存储加密。
 
 基础结构双重加密可使用服务托管密钥添加另一层加密。 这种功能使用 FIPS 140-2 验证的加密模块，但使用不同的加密算法。 这样可为静态数据提供额外一层保护。 基础结构双重加密中使用的密钥也由 Azure Database for MySQL 服务管理。 基础结构双重加密默认处于禁用状态，因为额外一层加密可能会影响性能。
 
 > [!NOTE]
-> 只有 Azure Database for MySQL 的“常规用途”和“内存优化”定价层支持此功能。
+> 与静态数据加密一样，仅在“通用”和“内存优化”定价层中可用的“通用存储 v2（支持高达 16TB）”存储上支持此功能。 有关更多详细信息，请参阅[存储概念](concepts-pricing-tiers.md#storage)。 有关其他限制，请参阅[限制](concepts-infrastructure-double-encryption.md#limitations)部分。
 
 基础结构层加密的优势是可在距离存储设备或网络线路最近的层实现加密。 Azure Database for MySQL 使用服务托管密钥来实现两层加密。 尽管从技术上讲，加密仍位于服务层，但距离存储静态数据的硬件非常近。 对于预配的 MySQL 服务器，仍可以选择使用[客户管理的密钥](concepts-data-encryption-mysql.md)来启用静态数据加密。 
 
 在基础结构层实现加密也支持密钥多样化。 基础结构必须了解计算机和网络的不同群集。 因此，将使用不同的密钥来最大程度地减小基础结构攻击的冲击半径，以及各种硬件和网络故障。 
 
 > [!NOTE]
-> 由于有额外的加密过程，所以使用基础结构双重加密将会对 Azure Database for MySQL 服务器造成一定的性能影响。
+> 由于有额外的加密过程，所以使用基础结构双重加密将会对 Azure Database for MySQL 服务器的吞吐量造成 5% 到 10% 的性能影响。
 
 ## <a name="benefits"></a>优点
 
@@ -56,14 +58,16 @@ Azure Database for MySQL 提供的加密功能可以一起使用。 下面是可
 
 ## <a name="limitations"></a>限制
 
-对于 Azure Database for MySQL，对使用服务托管密钥进行基础结构双重加密的支持具有以下限制：
+对于 Azure Database for MySQL，对基础设施双重加密的支持几乎没有限制 -
 
 * 对此功能的支持仅限“常规用途”和“内存优化”定价层。
-* 此功能仅在支持多达 16 TB 存储的区域和服务器上受支持。 有关支持多达 16TB 存储的 Azure 区域列表，请参阅[存储文档](concepts-pricing-tiers.md#storage)。
+* 此功能仅在支持通用存储 v2（最高 16 TB）的区域和服务器上受支持。 有关支持存储最多 16 TB 的 Azure 区域的列表，请参阅[此处](concepts-pricing-tiers.md#storage)文档中的“存储”部分
 
     > [!NOTE]
-    > - 此外，在上述所列区域创建的所有新 MySQL 服务器也支持使用客户管理的密钥进行数据加密。 对于这种情况，通过时间点还原 (PITR) 或只读副本创建的服务器不属于“新”服务器。
-    > - 要验证预配的服务器是否支持多达 16 TB，可转到门户中的“定价层”边栏选项卡，查看存储滑块是否可以上移到 16 TB。 如果只能将滑块上移到 4 TB，则该服务器可能不支持使用客户管理的密钥进行加密；但是，始终可使用服务托管密钥对数据进行加密。 如果有任何疑问，请联系 AskAzureDBforMySQL@service.microsoft.com。
+    > - [Azure 区域](concepts-pricing-tiers.md#storage)中创建的所有新 MySQL 服务器都支持通用存储 v2，因此也支持使用客户管理器密钥的加密。 时间点还原 (PITR) 服务器或只读副本不符合条件，尽管其在理论上是“新的”。
+    > - 要验证预配的服务器是否支持通用存储 v2，可以在门户中访问“定价层”边栏选项卡，并查看预配服务器支持的最大存储大小。 如果可以将滑块向上移动到 4TB，则服务器是通用存储 v1，不支持通过客户管理的密钥进行加密。 但是，始终使用服务托管密钥对数据进行加密。 如果有任何疑问，请联系 AskAzureDBforMySQL@service.microsoft.com。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

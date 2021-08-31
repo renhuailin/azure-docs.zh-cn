@@ -2,19 +2,18 @@
 title: 使用 az search 模块的 Azure CLI 脚本
 titleSuffix: Azure Cognitive Search
 description: 使用 Azure CLI 创建和配置 Azure 认知搜索服务。 可以纵向扩展或缩减服务，对管理和查询 API 密钥进行管理，以及查询系统信息。
-manager: luisca
 author: DerekLegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: 456aaf20c0b6d198ae353490d961a69a319b6601
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 08/03/2021
+ms.openlocfilehash: b5689b17bf2e4eace52e7c3cb28c40dc05e58ade
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045104"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179393"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>使用 Azure CLI 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
@@ -58,7 +57,7 @@ az resource list --resource-type Microsoft.Search/searchServices --output table
 在服务列表中返回有关特定资源的信息。
 
 ```azurecli-interactive
-az resource list --name <service-name>
+az resource list --name <search-service-name>
 ```
 
 ## <a name="list-all-az-search-commands"></a>列出所有 az search 命令
@@ -103,10 +102,10 @@ az search service create --help
 
 ## <a name="get-search-service-information"></a>获取搜索服务信息
 
-如果你知道哪个资源组包含你的搜索服务，请运行 [az search service show](/cli/azure/search/service#az_search_service_show) 来返回服务定义，包括名称、区域、层级，以及副本和分区计数。
+如果你知道哪个资源组包含你的搜索服务，请运行 [az search service show](/cli/azure/search/service#az_search_service_show) 来返回服务定义，包括名称、区域、层级，以及副本和分区计数。 对于此命令，请提供包含搜索服务的资源组。
 
 ```azurecli-interactive
-az search service show --name <service-name> --resource-group <resource-group-name>
+az search service show --name <service-name> --resource-group <search-service-resource-group-name>
 ```
 
 ## <a name="create-or-delete-a-service"></a>创建或删除服务
@@ -116,7 +115,7 @@ az search service show --name <service-name> --resource-group <resource-group-na
 ```azurecli-interactive
 az search service create \
     --name <service-name> \
-    --resource-group <resource-group-name> \
+    --resource-group <search-service-resource-group-name> \
     --sku Standard \
     --partition-count 1 \
     --replica-count 1
@@ -158,8 +157,8 @@ az search service create \
 
 ```azurecli-interactive
 az search service create \
-    --name <service-name> \
-    --resource-group <resource-group-name> \
+    --name <search-service-name> \
+    --resource-group <search-service-resource-group-name> \
     --sku Standard \
     --partition-count 1 \
     --replica-count 1 \
@@ -172,8 +171,8 @@ az search service create \
 
 ```azurecli-interactive
 az search service create \
-    --name <service-name> \
-    --resource-group <resource-group-name> \
+    --name <search-service-name> \
+    --resource-group <search-service-resource-group-name> \
     --sku Standard \
     --partition-count 1 \
     --replica-count 1 \
@@ -190,8 +189,8 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 ```azurecli-interactive
 az search service create \
-    --name <service-name> \
-    --resource-group <resource-group-name> \
+    --name <search-service-name> \
+    --resource-group <search-service-resource-group-name> \
     --sku Standard \
     --partition-count 1 \
     --replica-count 1 \
@@ -203,7 +202,7 @@ az search service create \
 ```azurecli-interactive
 # Create the virtual network
 az network vnet create \
-    --resource-group <resource-group-name> \
+    --resource-group <vnet-resource-group-name> \
     --location "West US" \
     --name <virtual-network-name> \
     --address-prefixes 10.1.0.0/16 \
@@ -213,21 +212,21 @@ az network vnet create \
 # Update the subnet to disable private endpoint network policies
 az network vnet subnet update \
     --name <subnet-name> \
-    --resource-group <resource-group-name> \
+    --resource-group <vnet-resource-group-name> \
     --vnet-name <virtual-network-name> \
     --disable-private-endpoint-network-policies true
 
 # Get the id of the search service
 id=$(az search service show \
-    --resource-group <resource-group-name> \
-    --name <service-name> \
+    --resource-group <search-service-resource-group-name> \
+    --name <search-service-name> \
     --query [id] \
     --output tsv)
 
 # Create the private endpoint
 az network private-endpoint create \
     --name <private-endpoint-name> \
-    --resource-group <resource-group-name> \
+    --resource-group <private-endpoint-resource-group-name> \
     --vnet-name <virtual-network-name> \
     --subnet <subnet-name> \
     --private-connection-resource-id $id \
@@ -240,12 +239,12 @@ az network private-endpoint create \
 ```azurecli-interactive
 ## Create private DNS zone
 az network private-dns zone create \
-    --resource-group <resource-group-name> \
+    --resource-group <private-dns-resource-group-name> \
     --name "privatelink.search.windows.net"
 
 ## Create DNS network link
 az network private-dns link vnet create \
-    --resource-group <resource-group-name> \
+    --resource-group <private-dns-resource-group-name> \
     --zone-name "privatelink.search.windows.net" \
     --name "myLink" \
     --virtual-network <virtual-network-name> \
@@ -253,7 +252,7 @@ az network private-dns link vnet create \
 
 ## Create DNS zone group
 az network private-endpoint dns-zone-group create \
-   --resource-group <resource-group-name>\
+   --resource-group <private-endpoint-resource-group-name>\
    --endpoint-name <private-endpoint-name> \
    --name "myZoneGroup" \
    --private-dns-zone "privatelink.search.windows.net" \
@@ -272,7 +271,7 @@ az network private-endpoint dns-zone-group create \
 az search private-endpoint-connection show \
     --name <pe-connection-name> \
     --service-name <search-service-name> \
-    --resource-group <resource-group-name> 
+    --resource-group <search-service-resource-group-name> 
 ```
 
 若要更新连接，请使用 [az search private-endpoint-connection update](/cli/azure/search/private-endpoint-connection#az_search_private_endpoint_connection_update)。 以下示例将专用终结点连接设置为“已拒绝”：
@@ -281,7 +280,7 @@ az search private-endpoint-connection show \
 az search private-endpoint-connection show \
     --name <pe-connection-name> \
     --service-name <search-service-name> \
-    --resource-group <resource-group-name> 
+    --resource-group <search-service-resource-group-name> 
     --status Rejected \
     --description "Rejected" \
     --actions-required "Please fix XYZ"
@@ -293,7 +292,7 @@ az search private-endpoint-connection show \
 az search private-endpoint-connection delete \
     --name <pe-connection-name> \
     --service-name <search-service-name> \
-    --resource-group <resource-group-name> 
+    --resource-group <search-service-resource-group-name> 
 ```
 
 ## <a name="regenerate-admin-keys"></a>重新生成管理员密钥
@@ -308,7 +307,7 @@ API 密钥的值由服务生成。 无法提供自定义密钥供 Azure 认知�
 
 ```azurecli-interactive
 az search admin-key renew \
-    --resource-group <resource-group-name> \
+    --resource-group <search-service-resource-group-name> \
     --service-name <search-service-name> \
     --key-kind primary
 ```
@@ -331,7 +330,7 @@ az search admin-key renew \
 ```azurecli-interactive
 az search query-key create \
     --name myQueryKey \
-    --resource-group <resource-group-name> \
+    --resource-group <search-service-resource-group-name> \
     --service-name <search-service-name>
 ```
 
@@ -347,8 +346,8 @@ az search query-key create \
 
 ```azurecli-interactive
 az search service update \
-    --name <service-name> \
-    --resource-group <resource-group-name> \
+    --name <search-service-name> \
+    --resource-group <search-service-resource-group-name> \
     --partition-count 6 \
     --replica-count 6
 ```
@@ -357,9 +356,9 @@ az search service update \
 
 ## <a name="create-a-shared-private-link-resource"></a>创建共享的专用链接资源
 
-通过 Azure 认知搜索 API 创建的安全资源的专用终结点称为“共享的专用链接资源”。 这是因为你是在“共享”对已与 [Azure 专用链接服务](https://azure.microsoft.com/services/private-link/)集成的资源（例如存储帐户）的访问权限。
+通过 Azure 认知搜索 API 创建的安全资源的专用终结点称为共享的专用链接资源。 这是因为你正在“共享”对已与 [Azure 专用链接服务](https://azure.microsoft.com/services/private-link/)集成的资源（例如存储帐户）的访问权限。
 
-如果你是使用索引器在 Azure 认知搜索中为数据编制索引，并且数据源位于专用网络上，则可以创建出站[专用终结点连接](../private-link/private-endpoint-overview.md)来访问数据。
+如果正使用索引器在 Azure 认知搜索中为数据编制索引，并且数据源位于专用网络上，则可以创建出站[专用终结点连接](../private-link/private-endpoint-overview.md)来访问数据。
 
 可在[此处](search-indexer-howto-access-private.md#shared-private-link-resources-management-apis)找到可从 Azure 认知搜索中为其创建出站专用终结点的 Azure 资源的完整列表，以及相关的“组 ID”值。
 
@@ -369,7 +368,7 @@ az search service update \
 az search shared-private-link-resource create \
     --name <spl-name> \
     --service-name <search-service-name> \
-    --resource-group <resource-group-name> \
+    --resource-group <search-service-resource-group-name> \
     --group-id blob \
     --resource-id "/subscriptions/<alphanumeric-subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/myBlobStorage"  \
     --request-message "Please approve" 
@@ -381,7 +380,7 @@ az search shared-private-link-resource create \
 ```azurecli-interactive
 az search shared-private-link-resource list \
     --service-name <search-service-name> \
-    --resource-group <resource-group-name> 
+    --resource-group <search-service-resource-group-name> 
 ```
 
 需要先使用以下命令批准连接，然后才能使用该连接。 需要从子资源中检索专用终结点连接的 ID。 在本例中，我们通过 az storage 获取连接 ID。
@@ -398,7 +397,7 @@ az network private-endpoint-connection approve --id $id
 az search shared-private-link-resource delete \
     --name <spl-name> \
     --service-name <search-service-name> \
-    --resource-group <resource-group-name> 
+    --resource-group <search-service-resource-group-name> 
 ```
 
 有关设置共享专用链接资源的完整详细信息，请参阅[通过专用终结点建立索引器连接](search-indexer-howto-access-private.md)的文档。

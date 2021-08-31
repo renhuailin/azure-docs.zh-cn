@@ -4,12 +4,12 @@ description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 7a2a95a25bc42de9f4c93200d4fdd1e5d558549a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8ffa633479189ad8391d4c03c59113dc957d77e6
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377426"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667128"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>处理 Durable Functions 中的错误 (Azure Functions)
 
@@ -218,7 +218,7 @@ Invoke-DurableActivity -FunctionName 'FlakyFunction' -RetryOptions $retryOptions
 
 上一示例中的活动函数调用使用一个参数来配置自动重试策略。 可通过多种选项自定义自动重试策略：
 
-* **最大尝试次数**：最大重试尝试次数。
+* **最大尝试次数**：尝试的最大次数。 如果设置为 1，则不会重试。
 * **首次重试间隔**：首次尝试重试前需要等待的时间。
 * **回退系数**：用来确定回退增加速率的系数。 默认值为 1。
 * **最大重试间隔**：尝试重试之间需要等待的最长时间。

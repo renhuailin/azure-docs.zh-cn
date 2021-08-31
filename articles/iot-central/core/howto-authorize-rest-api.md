@@ -7,12 +7,12 @@ ms.date: 03/24/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 73ef942b42858a3219502fe09c3b9281be81f964
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 540137495e06bb05fbf5e96e3b930e0c8cda4b10
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776315"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461223"
 ---
 # <a name="how-to-authenticate-and-authorize-iot-central-rest-api-calls"></a>如何对 IoT Central REST API 调用进行身份验证和授权
 
@@ -24,9 +24,11 @@ ms.locfileid: "108776315"
 
 ## <a name="token-types"></a>令牌类型
 
+在自己进行一些自动化/测试/API 调用时，将需要使用用户持有者令牌；在自动化/编写开发环境（即 devops）脚本时，需要要使用 SPN 持有者令牌。 API 令牌可用于这两种情况，但具有到期和泄漏的风险，因此，我们建议尽可能使用持有者。 这是否有用？ 
+
 若要通过 REST API 访问 IoT Central 应用程序，可以使用：
 
-- Azure Active Directory 持有者令牌。 持有者令牌与 Azure Active Directory 用户帐户相关联。 该令牌为调用方授予用户在 IoT Central 应用程序中所拥有的相同权限。
+- Azure Active Directory 持有者令牌。 持有者令牌与 Azure Active Directory 用户帐户或服务主体相关联。 该令牌为调用方授予用户或服务主体在 IoT Central 应用程序中所拥有的相同权限。
 - IoT Central API 令牌。 API 令牌与 IoT Central 应用程序中的角色相关联。
 
 若要详细了解 IoT Central 中的用户和角色，请参阅[在 IoT Central 应用程序中管理用户和角色](howto-manage-users-roles.md)。
@@ -56,6 +58,8 @@ az account get-access-token --resource https://apps.azureiotcentral.com
 ```
 
 持有者令牌的有效期大约为一小时，此期限过后需要创建新令牌。
+
+若要获取服务主体的持有者令牌，请参阅[服务主体身份验证](/rest/api/iotcentral/authentication#service-principal-authentication)。
 
 ## <a name="get-an-api-token"></a>获取 API 令牌
 

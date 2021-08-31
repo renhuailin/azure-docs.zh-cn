@@ -1,27 +1,27 @@
 ---
 title: B2B 来宾用户的属性 - Azure Active Directory | Microsoft Docs
-description: 邀请兑换前后的 Azure Active Directory B2B 来宾用户属性和状态
+description: 邀请兑换前后的 Azure Active Directory B2B 受邀来宾用户属性和状态
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 08/04/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 954515335badba8e3ea649cb66bbc7d41e6328c0
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 8a10345851d80bf8903e2b7bcb7fd295e6656bc7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110584954"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746144"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
 
-本文介绍了邀请兑换前后 Azure Active Directory (Azure AD) 中的 B2B 来宾用户对象的属性和状态。 Azure AD 企业对企业 (B2B) 协作用户是 UserType = Guest 的用户。 此来宾用户通常来自某个合作伙伴组织，默认情况下，对邀请方的目录拥有有限的特权。
+本文介绍在邀请兑换前后受邀 Azure Active Directory B2B (Azure AD B2B) 协作用户对象的属性和状态。 Azure AD B2B 协作用户通常是来自合作伙伴组织的外部用户，而用户邀请他们使用自己的凭据登录到 Azure AD 组织。 然后，这类 B2B 协作用户（通常也称为“来宾用户”）则可以访问要与其共享的应用和资源。 对于 B2B 协作用户，需要在与员工相同的目录中为其创建一个用户对象。 默认情况下，B2B 协作用户对象在该目录中具有受限的特权，用户可以像对待员工一样对之进行管理，例如将其添加到组等。
 
 根据邀请方组织的需要，Azure AD B2B 协作用户可以处于以下帐户状态之一：
 
@@ -59,7 +59,7 @@ ms.locfileid: "110584954"
 
 ![兑换产品之后，状态 2 的来宾用户](media/user-properties/after-redemption-state2.png)
 
-对于状态 3 和状态 4 中的来宾用户，“源”属性设置为“Azure Active Directory”或“Windows Server Active Directory”，如下一节所述    。
+对于状态 3 和状态 4 的来宾用户，“源”属性将设置为“Azure Active Directory”或“Windows Server AD” ，如下一部分中所述。
 
 ## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Azure AD B2B 协作用户的关键属性
 ### <a name="usertype"></a>UserType
@@ -82,7 +82,7 @@ ms.locfileid: "110584954"
 
 - Microsoft 帐户：此用户驻留在某个 Microsoft 帐户中，使用 Microsoft 帐户进行身份验证。 此登录类型对应于状态 2。
 
-- Windows Server Active Directory：此用户从属于此组织的本地 Active Directory 进行登录。 此登录类型对应于状态 3。
+- Windows Server AD：此用户将通过属于此组织的本地 Active Directory 登录。 此登录类型对应于状态 3。
 
 - Azure Active Directory：此用户使用属于此组织的 Azure AD 帐户进行身份验证。 此登录类型对应于状态 4。
   > [!NOTE]
@@ -96,7 +96,7 @@ ms.locfileid: "110584954"
 ![屏幕截图，显示用于来宾用户的筛选器](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>转换 UserType
-可使用 PowerShell 将 UserType 从“成员”转换为“来宾”，反之亦然。 但是，UserType 属性表示用户与组织之间的关系。 因此，只有当用户与组织之间的关系发生更改时，才应当更改此属性。 如果用户的关系发生更改，用户主体名称 (UPN) 是否应该更改？ 用户是否应该继续有权访问同样的资源？ 是否应该分配邮箱？ 我们不建议使用 PowerShell 以原子活动的形式更改 UserType。 此外，为防止使用 PowerShell 导致此属性不可变，我们不建议对此值产生依赖关系。
+可使用 PowerShell 将 UserType 从“成员”转换为“来宾”，反之亦然。 但是，UserType 属性表示用户与组织之间的关系。 因此，只有当用户与组织之间的关系发生更改时，才应当更改此属性。 如果用户的关系发生更改，用户主体名称 (UPN) 是否应该更改？ 用户是否应该继续有权访问同样的资源？ 是否应该分配邮箱？ 
 
 ## <a name="remove-guest-user-limitations"></a>删除来宾用户限制
 在某些情况下，你可能想要为来宾用户提供更高的特权。 可将来宾用户添加到任何角色，甚至可在目录中删除默认的来宾用户限制，向用户提供与成员相同的特权。

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: tisande
-ms.openlocfilehash: ddfdd4897a0cd194465828bba4bea0c002a4e434
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b8c2e27b7023a106815b34538f1cd3dba85354b3
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110797662"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667648"
 ---
 # <a name="how-to-configure-the-azure-cosmos-db-integrated-cache-preview"></a>如何配置 Azure Cosmos DB 集成缓存（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -59,6 +59,11 @@ ms.locfileid: "110797662"
 
 3. 如果使用 .NET 或 Java SDK，请将连接模式设置为[网关模式](sql-sdk-connection-modes.md#available-connectivity-modes)。 对于 Python 和 Node.js SDK，不强制要求执行此步骤，因为除了网关模式之外，它们没有其他连接选项。
 
+> [!NOTE]
+> 如果使用最新的 .NET 或 Java SDK 版本，则默认连接模式为直接模式。 若要使用集成缓存，必须重写此默认值。
+
+如果使用的是 Java SDK，还必须手动将 `CosmosClientBuilder` 中的 [contentResponseOnWriteEnabled](/java/api/com.azure.cosmos.cosmosclientbuilder.contentresponseonwriteenabled?view=azure-java-stable&preserve-view=true) 设置为 `true`。 如果使用的是任何其他 SDK，则此值已默认为 `true`，因此无需进行任何更改。
+
 ## <a name="adjust-request-consistency"></a>调整请求一致性
 
 请务必将请求一致性调整为“最终”。 否则，请求将始终绕过集成缓存。 要为所有读取操作配置最终一致性，最简单的方法是[在帐户级别设置](consistency-levels.md#configure-the-default-consistency-level)。 你还可在[请求级别](how-to-manage-consistency.md#override-the-default-consistency-level)配置一致性，如果只希望部分读取使用集成缓存，则建议在请求级别配置。
@@ -85,7 +90,7 @@ FeedIterator<Food> myQuery = container.GetItemQueryIterator<Food>(new QueryDefin
 ```
 
 > [!NOTE]
-> 目前，只能使用最新的 .NET 和 Java 预览 SDK 来调整 MaxIntegratedCacheStaleness。
+> 目前，只能使用最新的 [.NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.17.0-preview) 和 [Java](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.16.0-beta.1) 预览 SDK 来调整 MaxIntegratedCacheStaleness。
 
 ## <a name="verify-cache-hits"></a>验证缓存命中数
 
@@ -96,6 +101,10 @@ FeedIterator<Food> myQuery = container.GetItemQueryIterator<Food>(new QueryDefin
 -   客户端连接到专用网关终结点
 -  客户端使用网关模式（Python 和 Node.js SDK 始终使用网关模式）
 -   请求的一致性必须设置为“最终”。
+
+> [!NOTE]
+> 你对集成缓存有何反馈？ 我们想听一听！ 欢迎直接与 Azure Cosmos DB 工程团队分享反馈：cosmoscachefeedback@microsoft.com
+
 
 ## <a name="next-steps"></a>后续步骤
 

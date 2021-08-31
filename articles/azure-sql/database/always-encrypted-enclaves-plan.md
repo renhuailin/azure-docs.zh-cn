@@ -9,20 +9,17 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
-ms.date: 01/15/2021
-ms.openlocfilehash: ccf4d00aa48edfc5cbe8df894d7d1a28387ecff2
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 07/14/2021
+ms.openlocfilehash: bed170c4dbf61006c7d2aca14117f8946563f357
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411552"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727271"
 ---
 # <a name="plan-for-intel-sgx-enclaves-and-attestation-in-azure-sql-database"></a>在 Azure SQL Database 中规划 Intel SGX enclave 和证明
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
-
-> [!NOTE]
-> Azure SQL 数据库的具有安全 Enclave 的 Always Encrypted 目前提供公共预览版。
 
 Azure SQL 数据库中[具有安全 enclave 的 Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) 可使用 [Intel Software Guard Extensions (Intel SGX)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) enclave，并需要 [Microsoft Azure 证明](/sql/relational-databases/security/encryption/always-encrypted-enclaves#secure-enclave-attestation)。
 
@@ -38,13 +35,9 @@ Intel SGX 是基于硬件的受信任执行环境技术。 Intel SGX 适用于�
 
 ## <a name="plan-for-attestation-in-azure-sql-database"></a>在 Azure SQL 数据库中规划证明
 
-[Microsoft Azure 证明](../../attestation/overview.md) (预览版) 是证明受信任执行环境 (TEE) 的解决方案，其中包括使用 DC 系列硬件生成的 Azure SQL 数据库中的 Intel SGX enclave。
+[Microsoft Azure 证明](../../attestation/overview.md)是证明受信任执行环境 (TEE) 的解决方案，其中包括使用 DC 系列硬件生成的 Azure SQL 数据库中的 Intel SGX enclave。
 
-若要在 Azure SQL 数据库中使用适用于证明 Intel SGX enclave 的 Azure 证明，需执行以下操作：
-
-1. 创建[证明提供程序](../../attestation/basic-concepts.md#attestation-provider)，并使用证明策略进行配置。 
-
-2. 授予 Azure SQL 逻辑服务器对所创建证明提供程序的访问权限。
+若要在 Azure SQL 数据库中使 用Azure 证明来证明 Intel SGX enclave，需要创建[证明提供程序](../../attestation/basic-concepts.md#attestation-provider)，并使用 Microsoft 提供的证明策略进行配置。 请参阅[使用 Azure 证明为 Always Encrypted 配置证明](always-encrypted-enclaves-configure-attestation.md)
 
 ## <a name="roles-and-responsibilities-when-configuring-sgx-enclaves-and-attestation"></a>配置 SGX enclave 和证明时的角色和职责
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 10/02/2020
-ms.openlocfilehash: 966b471efc7fcadbb4207fe94bb11e5333bfb0a0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/27/2021
+ms.openlocfilehash: bba8329075ecb47d367fc04afa1f2df0b4fcf721
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095439"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742099"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -28,6 +28,11 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 
 为了让计算实例 Jupyter 功能可以正常运行，请确保没有禁用 Web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。
 
+> [!IMPORTANT]
+> 本文中标记了“（预览版）”的项目目前为公共预览版。
+> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 ## <a name="why-use-a-compute-instance"></a>为何使用计算实例？
 
 计算实例是一个完全托管的基于云的工作站，已针对机器学习开发环境进行优化。 它提供以下优势：
@@ -39,16 +44,12 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 |已针对 ML 进行了预配置|使用预配置的最新 ML 包、深度学习框架和 GPU 驱动程序完成设置任务，可节省时间。|
 |完全可自定义|支持多种 Azure VM 类型，包括 GPU 和持久性低级自定义，例如，安装相应的包和驱动程序可以轻而易举地实现高级方案。 |
 
-你可以自行[创建计算实例](how-to-create-manage-compute-instance.md?tabs=python#create)，也可以由管理员[代表你创建计算实例](how-to-create-manage-compute-instance.md?tabs=python#on-behalf)。
-
-你还可以[使用设置脚本（预览版）](how-to-create-manage-compute-instance.md#setup-script)，根据需要以自动化方式自定义并配置计算实例。
+* 计算实例也是类似于计算群集的安全训练计算目标，但它是单节点。
+* 你可以自行[创建计算实例](how-to-create-manage-compute-instance.md?tabs=python#create)，也可以由管理员[代表你创建计算实例](how-to-create-manage-compute-instance.md?tabs=python#on-behalf)。
+* 你还可以[使用设置脚本（预览版）](how-to-create-manage-compute-instance.md#setup-script)，根据需要以自动化方式自定义并配置计算实例。
+* 若要节省成本，[创建计划](how-to-create-manage-compute-instance.md#schedule)以自动启动和停止计算实例（预览版）。
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>工具和环境
-
-> [!IMPORTANT]
-> 本文中标记了“（预览版）”的项目目前为公共预览版。
-> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用 Azure 机器学习计算实例可以在工作区中的完全集成式笔记本体验中创作、训练和部署模型。
 
@@ -73,7 +74,6 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 |----|:----:|
 |RStudio Server 开源版（预览版）||
 |R 内核||
-|适用于 R 的 Azure 机器学习 SDK|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>SDK 示例|
 
 |**PYTHON** 工具和环境|详细信息|
 |----|----|
@@ -85,7 +85,7 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 |Conda 包|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |深度学习包|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
 |ONNX 包|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
-|Azure 机器学习 Python 和 R SDK 示例||
+|Azure 机器学习 Python 示例||
 
 Python 包都安装在“Python 3.8 - AzureML”环境中。 计算实例使用 Ubuntu 18.04 作为基础 OS。
 
@@ -101,15 +101,7 @@ Python 包都安装在“Python 3.8 - AzureML”环境中。 计算实例使用 
 
 与写入到计算实例本地磁盘本身相比，在网络驱动器上写入小文件可能速度更慢。  若要写入许多小文件，请尝试直接在计算实例上使用某个目录，例如 `/tmp` 目录。 请注意，无法从其他计算实例访问这些文件。
 
-请勿在笔记本文件共享上存储训练数据。 你可以使用计算实例上的 `/tmp` 目录来保存临时数据。  但是，请勿在计算实例的 OS 磁盘上写入非常大的数据文件。 计算实例上的 OS 磁盘容量为 128 GB。 也可以在 /mnt 上装载的临时磁盘上存储临时训练数据。 临时磁盘大小可以根据所选 VM 大小来配置。如果选择了较大的 VM，则可以存储更大量的数据。 还可以装载[数据存储和数据集](concept-azure-machine-learning-architecture.md#datasets-and-datastores)。
-
-## <a name="managing-a-compute-instance"></a>管理计算实例
-
-在 Azure 机器学习工作室中的工作区内选择“计算”，然后在顶部选择“计算实例”。 
-
-![管理计算实例](./media/concept-compute-instance/manage-compute-instance.png)
-
-若要详细了解如何管理计算实例，请参阅[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)。
+请勿在笔记本文件共享上存储训练数据。 你可以使用计算实例上的 `/tmp` 目录来保存临时数据。  但是，请勿在计算实例的 OS 磁盘上写入非常大的数据文件。 计算实例上的 OS 磁盘容量为 128 GB。 也可以在 /mnt 上装载的临时磁盘上存储临时训练数据。 临时磁盘大小可以根据所选 VM 大小来配置。如果选择了较大的 VM，则可以存储更大量的数据。 还可以装载[数据存储和数据集](concept-azure-machine-learning-architecture.md#datasets-and-datastores)。 你安装的所有软件包将保存在计算实例的 OS 磁盘上。 请注意，OS 磁盘当前不支持客户管理的密钥加密。 计算实例的 OS 磁盘使用 Microsoft 管理的密钥进行加密。 
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>创建计算实例
 
@@ -117,7 +109,7 @@ Python 包都安装在“Python 3.8 - AzureML”环境中。 计算实例使用 
 
 还可以[使用设置脚本（预览版）](how-to-create-manage-compute-instance.md#setup-script)，以自动化方式自定义并配置计算实例。
 
-若要为自己创建计算实例，请使用 Azure 机器学习工作室中你的工作区，在准备好运行某个笔记本时，从“计算”部分或在“笔记本”部分[新建计算实例](how-to-create-attach-compute-studio.md#compute-instance) 。
+若要为自己创建计算实例，请使用 Azure 机器学习工作室中你的工作区，在准备好运行某个笔记本时，从“计算”部分或在“笔记本”部分[新建计算实例](how-to-create-manage-compute-instance.md?tabs=azure-studio#create) 。
 
 也可以通过以下方式创建实例
 * 直接从[集成式笔记本体验](tutorial-train-models-with-aml.md#azure)

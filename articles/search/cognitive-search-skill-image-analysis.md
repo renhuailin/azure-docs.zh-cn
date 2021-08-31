@@ -2,30 +2,36 @@
 title: 图像分析认知技能
 titleSuffix: Azure Cognitive Search
 description: 在 Azure 认知搜索中的 AI 扩充管道中，使用 ImageAnalysis 认知技能通过图像分析来提取语义文本。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 69b84a3edb606ed99b6aaca7db5ad0e57124f1b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: d6b32dfedcb5ad5322a32c519084eac3858225ba
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91948929"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861490"
 ---
 # <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
 图像分析技能根据图像内容提取一组丰富的可视特征  。 例如，可从图像生成标题栏、生成标记或识别名人和地标。 此技能使用认知服务中的[计算机视觉](../cognitive-services/computer-vision/overview.md)提供的机器学习模型。 
 
+图像分析可以处理符合以下要求的图像：
+
++ 图像必须以 JPEG、PNG、GIF 或 BMP 格式显示
++ 图像的文件大小必须不到 4 兆字节 (MB)
++ 图像的尺寸必须大于 50 x 50 像素
+
 > [!NOTE]
-> 如果事务量较少（不到 20 个事务），则这些事务可以在 Azure 认知搜索中免费执行，但较大的工作负荷需要[附加可计费认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 此技能绑定到认知服务，对于超过每个索引器每天 20 个文档的事务，需要[一个计费资源](cognitive-search-attach-cognitive-services.md)。 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。
+> 
+> 此外，图像提取[可由 Azure 认知搜索计费](https://azure.microsoft.com/pricing/details/search/)。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)所述。
 
+## <a name="odatatype"></a>@odata.type 
 
-## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Vision.ImageAnalysisSkill 
 
 ## <a name="skill-parameters"></a>技能参数
@@ -43,8 +49,6 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 | 输入名称      | 说明                                          |
 |---------------|------------------------------------------------------|
 | `image`         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为非 ```none``` 值时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
-
-
 
 ##  <a name="sample-skill-definition"></a>示例技能定义
 
@@ -86,7 +90,9 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
         }
 ```
+
 ### <a name="sample-index-for-only-the-categories-description-faces-and-tags-fields"></a>示例索引（仅适用于类别、说明、人脸和标记字段）
+
 ```json
 {
     "fields": [
@@ -298,7 +304,9 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 }
 
 ```
+
 ### <a name="sample-output-field-mapping-for-the-above-index"></a>示例输出字段映射（适用于上述索引）
+
 ```json
     "outputFieldMappings": [
         {
@@ -322,6 +330,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             "targetFieldName": "brands"
         }
 ```
+
 ### <a name="variation-on-output-field-mappings-nested-properties"></a>输出字段映射的变体（嵌套属性）
 
 可以将输出字段映射定义为较低级别的属性，例如仅地标或名人。 在这种情况下，请确保索引架构有一个字段专门包含地标。
@@ -333,6 +342,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             "targetFieldName": "celebrities"
         }
 ```
+
 ##  <a name="sample-input"></a>示例输入
 
 ```json
@@ -540,6 +550,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 
 ## <a name="see-also"></a>另请参阅
 
++ [什么是图像分析？](../cognitive-services/computer-vision/overview-image-analysis.md)
 + [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [创建索引器 (REST)](/rest/api/searchservice/create-indexer)

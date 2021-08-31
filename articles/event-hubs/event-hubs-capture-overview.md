@@ -3,15 +3,17 @@ title: 捕获流式处理事件 - Azure 事件中心 | Microsoft Docs
 description: 本文概述了捕获功能，该功能可以捕获通过 Azure 事件中心流式处理的事件。
 ms.topic: article
 ms.date: 02/16/2021
-ms.openlocfilehash: d3153c4d82cfbdf232d1834db8f26462f893961b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fbc151b7dafe5c2f29f0101122b3936ae162a734
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375087"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735260"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件
 使用 Azure 事件中心，可以按指定的时间间隔或大小差异在所选的 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或者 [Azure Data Lake Storage Gen 1 或 Gen 2](https://azure.microsoft.com/services/data-lake-store/) 帐户中自动捕获事件中心的流式处理数据。 设置捕获极其简单，无需管理费用即可运行它，并且可以使用事件中心标准层中的[吞吐量单位](event-hubs-scalability.md#throughput-units)或高级层中的[处理单位](event-hubs-scalability.md#processing-units)自动缩放它。 事件中心捕获是在 Azure 中加载流式处理数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
+
+:::image type="content" source="./media/event-hubs-features/capture.png" alt-text="显示将事件中心数据捕获到 Azure 存储或 Azure Data Lake Storage 中的图像":::
 
 > [!NOTE]
 > 将事件中心捕获配置为使用 Azure Data Lake Storage Gen 2 的方法与将其配置为使用 Azure Blob 存储的方法相同。 有关详细信息，请参阅[配置事件中心捕获](event-hubs-capture-enable-through-portal.md)。 
@@ -79,7 +81,7 @@ https://mystorageaccount.blob.core.windows.net/mycontainer/mynamespace/myeventhu
 
 [Apache Drill：Azure Blob 存储插件][Apache Drill: Azure Blob Storage Plugin]
 
-若要轻松查询捕获的文件，可以通过容器在启用了 Apache Drill 的情况下创建和执行 VM 来访问 Azure Blob 存储。 请参阅以下示例：[使用事件中心捕获功能进行大规模流式传输](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture)。
+若要轻松查询捕获的文件，可以通过容器在启用了 Apache Drill 的情况下创建和执行 VM 来访问 Azure Blob 存储。 请参阅以下示例：[使用事件中心捕获功能进行大规模流式传输](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-capture-databricks-delta)。
 
 ### <a name="use-apache-spark"></a>使用 Apache Spark
 

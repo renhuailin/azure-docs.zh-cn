@@ -2,18 +2,18 @@
 title: 创建增量快照
 description: 了解托管磁盘的增量快照，包括如何使用 Azure 门户、Azure PowerShell 模块和 Azure 资源管理器创建增量快照。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 08/10/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ccb008ae74c67d243399cd810b43fc968755937a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: bbd87d8f8e4c140c1ced76a3c60e82d3066d2f5a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673560"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745007"
 ---
 # <a name="create-an-incremental-snapshot-for-managed-disks"></a>为托管磁盘创建增量快照
 
@@ -23,10 +23,47 @@ ms.locfileid: "110673560"
 
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-restrictions](../../includes/virtual-machines-disks-incremental-snapshots-restrictions.md)]
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+可以使用 Azure CLI 创建增量快照。 需要最新版本的 Azure CLI。 请参阅以下文章，了解如何[安装](/cli/azure/install-azure-cli)或[更新](/cli/azure/update-azure-cli) Azure CLI。
 
-可以使用 Azure PowerShell 创建增量快照。 将需要最新版本的 Azure PowerShell，以下命令将安装它或将现有安装更新到最新版本：
+以下脚本将创建特定磁盘的增量快照：
+
+```azurecli
+# Declare variables
+diskName="yourDiskNameHere"
+resourceGroupName="yourResourceGroupNameHere"
+snapshotName="desiredSnapshotNameHere"
+
+# Get the disk you need to backup
+yourDiskID=$(az disk show -n $diskName -g $resourceGroupName --query "id" --output tsv)
+
+# Create the snapshot
+az snapshot create -g $resourceGroupName -n $snapshotName --source $yourDiskID --incremental true
+```
+
+可以使用快照的 `SourceResourceId` 属性识别同一磁盘中的增量快照。 `SourceResourceId` 是父磁盘的 Azure 资源管理器资源 ID。
+
+可以使用 `SourceResourceId` 创建一个与特定磁盘关联的所有快照的列表。 将 `yourResourceGroupNameHere` 替换为你的值，然后可以使用以下示例列出现有增量快照：
+
+
+```azurecli
+# Declare variables and create snapshot list
+subscriptionId="yourSubscriptionId"
+resourceGroupName="yourResourceGroupNameHere"
+diskName="yourDiskNameHere"
+
+az account set --subscription $subscriptionId
+
+diskId=$(az disk show -n $diskName -g $resourceGroupName --query [id] -o tsv)
+
+az snapshot list --query "[?creationData.sourceResourceId=='$diskId' && incremental]" -g $resourceGroupName --output table
+```
+
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+可以使用 Azure PowerShell 模块创建增量快照。 需要最新版本的 Azure PowerShell 模块。 以下命令将安装最新版本或将现有安装更新到最新版本：
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
@@ -51,9 +88,10 @@ New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName
 
 可以使用快照的 `SourceResourceId` 和 `SourceUniqueId` 属性标识同一磁盘中的增量快照。 `SourceResourceId` 是父磁盘的 Azure 资源管理器资源 ID。 `SourceUniqueId` 是从磁盘的 `UniqueId` 属性继承的值。 如果要删除某个磁盘，然后创建具有相同名称的新磁盘，则 `UniqueId` 属性的值将更改。
 
-可以使用 `SourceResourceId` 和 `SourceUniqueId` 来创建与特定磁盘关联的所有快照的列表。 将 `<yourResourceGroupNameHere>` 替换为你的值，然后可以使用以下示例列出现有增量快照：
+可以使用 `SourceResourceId` 和 `SourceUniqueId` 来创建与特定磁盘关联的所有快照的列表。 将 `yourResourceGroupNameHere` 替换为你的值，然后可以使用以下示例列出现有增量快照：
 
 ```PowerShell
+$resourceGroupName = "yourResourceGroupNameHere"
 $snapshots = Get-AzSnapshot -ResourceGroupName $resourceGroupName
 
 $incrementalSnapshots = New-Object System.Collections.ArrayList

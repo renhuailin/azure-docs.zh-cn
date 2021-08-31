@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: c6c09389628e1a9648d827eb5562a06c4f746db2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8c40af42248e41346d10ec0028c1f13ff7ef22d6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370936"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457940"
 ---
 # <a name="cognitive-services-development-options"></a>认知服务开发选项
 
@@ -54,14 +54,14 @@ Azure 提供了各种类型的工具，这些工具适用于不同类型的用�
 * **UI**：不适用 - 仅限代码
 * **订阅**：Azure 帐户 + 认知服务资源
 
-如果你想要详细了解可用的客户端库和 REST API，请参阅我们的[认知服务概述](index.yml)来选择服务，并开始使用我们针对视觉、决策、语言和语音提供的快速入门之一。
+若要详细了解可用的客户端库和 REST API，请使用我们的[认知服务概述](index.yml)选取服务，并开始学习关于视觉、决策、语言和语音的快速入门之一。
 
 ### <a name="cognitive-services-for-big-data"></a>适用于大数据的认知服务
 
-借助适用于大数据的认知服务，可以将不断改进的智能模型直接嵌入 Apache Spark&trade; 和 SQL 计算中。 这些工具将开发人员从低级网络细节中解放出来，使他们可以专注于创建智能的分布式应用程序。 适用于大数据的认知服务支持以下平台和连接器： Azure Databricks、Azure Synapse、Azure Kubernetes 服务和数据连接器。
+借助适用于大数据的认知服务，可以将不断改进的智能模型直接嵌入 Apache Spark&trade; 和 SQL 计算中。 这些工具将开发人员从低级网络细节中解放出来，使他们可以专注于创建智能的分布式应用程序。 适用于大数据的认知服务支持以下平台和连接器：Azure Databricks、Azure Synapse、Azure Kubernetes 服务和数据连接器。
 
 * **目标用户**：数据科学家和数据工程师
-* **优点**：适用于大数据的 Azure 认知服务让用户可以使用 Apache Spark 通过认知服务传输 TB 级数据&trade;。 可以轻松借助任何数据存储创建大规模的智能应用程序。
+* 优点：适用于大数据的 Azure 认知服务让用户可以使用 Apache Spark 通过认知服务传输 TB 级数据&trade;。 可以轻松借助任何数据存储创建大规模的智能应用程序。
 * **UI**：不适用 - 仅限代码
 * **订阅**：Azure 帐户 + 认知服务资源
 
@@ -78,7 +78,7 @@ Azure 提供了各种类型的工具，这些工具适用于不同类型的用�
 
 ### <a name="azure-logic-apps"></a>Azure 逻辑应用 
 
-[Azure 逻辑应用](../logic-apps/index.yml)与 Power Automate 共享相同的工作流设计器和连接器，但提供更高级的控制，其中包括与 Visual Studio 和 DevOps 的集成。 有了 Power Automate，就可以通过特定于服务的连接器轻松地与认知服务资源集成，这些连接器围绕 API 提供代理或包装器。 它们与 Power Automate 中提供的连接器相同。 
+[Azure 逻辑应用](../logic-apps/index.yml)与 Power Automate 共享相同的工作流设计器和连接器，但提供了更高级的控制，包括与 Visual Studio 和 DevOps 的集成。 有了 Power Automate，就可以通过特定于服务的连接器轻松地与认知服务资源集成，这些连接器围绕 API 提供代理或包装器。 它们与 Power Automate 中提供的连接器相同。 
 
 * **目标用户**：开发人员、集成人员、IT 专业人员、开发运营人员
 * **优点：** 设计器优先（声明性）开发模型，在低代码解决方案中提供高级选项和集成
@@ -96,7 +96,7 @@ Power Automate 是 [Power Platform](/power-platform/) 中的一项服务，可�
 
 ### <a name="ai-builder"></a>AI Builder 
 
-[AI Builder](/ai-builder/overview) 是一种 Microsoft Power Platform 功能，可以用来自动执行流程并预测结果以提高业务绩效。 AI Builder 通过点击体验将 AI 功能带入你的解决方案。 许多认知服务（例如表单识别器、文本分析和计算机视觉）已直接集成在这里，你不需要创建自己的认知服务。 
+[AI Builder](/ai-builder/overview) 是一种 Microsoft Power Platform 功能，可以用来自动执行流程并预测结果以提高业务绩效。 AI Builder 通过点击式体验，在你的解决方案中引入了 AI 功能。 许多认知服务（例如表单识别器、文本分析和计算机视觉）已直接集成在这里，你不需要创建自己的认知服务。 
 
 * **目标用户**：业务用户（分析人员）和 SharePoint 管理员
 * **优点：** 统包式解决方案，通过点击体验引入 AI 功能。 无需编码或数据科学技能。
@@ -105,7 +105,7 @@ Power Automate 是 [Power Platform](/power-platform/) 中的一项服务，可�
 
 ### <a name="continuous-integration-and-deployment"></a>持续集成和持续部署
 
-你可以使用 Azure DevOps 和 GitHub Actions 来管理你的部署。 在讨论的[以下部分](#continuous-integration-and-delivery-with-devops-and-github-actions)中，我们提供了两个 CI/CD 集成示例，用于为语音和语言理解 (LUIS) 服务训练和部署自定义模型。 
+你可以使用 Azure DevOps 和 GitHub Actions 来管理你的部署。 在[下面的部分中](#continuous-integration-and-delivery-with-devops-and-github-actions)，我们提供了两个 CI/CD 集成示例，用于训练和部署语音识别和语言理解 ( LUIS) 服务的自定义模型。 
 
 * **目标用户**：开发人员、数据科学家和数据工程师
 * **优点：** 允许你以编程方式持续调整、更新和部署应用程序和模型。 当定期使用你的数据来改进和更新语音、视觉、语言和决策的模型时，这有明显的优势。 
@@ -127,7 +127,6 @@ Power Automate 是 [Power Platform](/power-platform/) 中的一项服务，可�
 | 影像 | 自定义视觉 | https://www.customvision.ai/ | [快速入门](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
 | 影像 | 表单识别器 | [示例标记工具](https://aka.ms/fott-2.1-ga) | [操作指南文章](./form-recognizer/label-tool.md?tabs=v2-0) |
 | 决策 | 内容审查器 | https://contentmoderator.cognitive.microsoft.com/dashboard | [快速入门](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
-| 决策 | 指标顾问 | https://metricsadvisor.azurewebsites.net/  | [快速入门](./metrics-advisor/quickstarts/web-portal.md) |
 | 决策 | 个性化体验创建服务 | Azure 门户的个性化体验创建服务中提供 UI。 | [快速入门](./personalizer/quickstart-personalizer-sdk.md) |
 | 语言 | 语言理解 (LUIS) | https://www.luis.ai/ | |
 | 语言 | QnA Maker | https://www.qnamaker.ai/ | [快速入门](./qnamaker/quickstarts/create-publish-knowledge-base.md) |
@@ -143,7 +142,7 @@ Power Automate 是 [Power Platform](/power-platform/) 中的一项服务，可�
 * [自定义语音识别的 CI/CD](./speech-service/how-to-custom-speech-continuous-integration-continuous-deployment.md)
 * [LUIS 的 CI/CD](./luis/luis-concept-devops-automation.md)
 
-## <a name="on-prem-containers"></a>本地容器 
+## <a name="on-premises-containers"></a>本地容器 
 
 许多认知服务可以部署在容器中，供本地访问和使用。 借助这些容器，你能够灵活地将认知服务移至更接近你的数据的位置，以满足合规性、安全性或其他操作目的。 有关认知服务容器的完整列表，请参阅[认知服务的本地容器](./cognitive-services-container-support.md)。
 

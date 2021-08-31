@@ -45,8 +45,9 @@ ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na m
 * 安装 Visual Studio Code 或 Visual Studio。
 * [创建媒体服务帐户](./account-create-how-to.md)。
 * 根据[访问 API](./access-api-howto.md) 中所述，获取使用媒体服务 API 时所需的凭据。
+* 在应用配置文件 (appsettings.json 或 .env 文件) 中设置相应的值。
 
-## <a name="download-code"></a>下载代码
+## <a name="download-and-configure-the-sample"></a>下载并配置示例
 
 使用以下命令，将包含本文中所述完整 .NET 示例的 GitHub 存储库克隆到计算机：
 
@@ -55,6 +56,8 @@ ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na m
  ```
 
 “使用 AES-128 加密”示例位于 [EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithAES) 文件夹中。
+
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 > [!NOTE]
 > 每次运行应用时，该示例就会创建唯一的资源。 通常，我们会重复使用现有的资源，例如转换和策略（如果现有资源具有所需的配置）。

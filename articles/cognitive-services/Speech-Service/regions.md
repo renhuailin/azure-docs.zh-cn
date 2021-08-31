@@ -3,20 +3,20 @@ title: 区域 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音服务的可用区域和终结点列表，包括语音转文本、文本转语音和语音翻译。
 services: cognitive-services
-author: mahilleb-msft
+author: PanosPeriorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 07/01/2021
 ms.author: panosper
 ms.custom: seodec18,references_regions
-ms.openlocfilehash: ab3e61a9c6593f8ee3075dd0ef6f0dee62c3a9c2
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 002f8ce7311d59a101f676908453fb1493b6dd39
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315248"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710417"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -29,6 +29,9 @@ ms.locfileid: "108315248"
 * 如果应用程序使用[语音 SDK](speech-sdk.md)，请在创建语音配置时提供区域标识符，例如 `westus`。
 * 如果应用程序使用某个语音服务的 [REST API](./overview.md#reference-docs)，则区域是你在发出请求时使用的终结点 URI 的一部分。
 * 为某个区域创建的密钥仅在该区域有效。 尝试在其他区域使用此类密钥会导致身份验证错误。
+
+> [!NOTE]
+> 语音服务不会在客户部署服务实例的区域之外存储/处理客户数据。
 
 ## <a name="speech-sdk"></a>语音 SDK
 
@@ -63,7 +66,7 @@ ms.locfileid: "108315248"
 | 北美 | 美国中西部  | `westcentralus`      |
 | 北美 | 美国西部          | `westus`             |
 | 北美 | 美国西部 2        | `westus2`            |
-| 南美洲 | 巴西南部     | `brazilsouth`        |
+| 南美洲 | Brazil South     | `brazilsouth`        |
 
 这是[语言理解服务 (LUIS)](../luis/luis-reference-regions.md) 支持的发布区域的子集。
 

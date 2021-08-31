@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd70bccde30c2b844cfa6188a3fb06a075558a91
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 667995b505339ae4db500964c1ce81bef6d9d0fa
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142992"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467683"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
 本文档提供有关配置 Azure 基础结构以及操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档还包含有关 M128s VM SKU 的 SAP HANA 横向扩展的配置信息。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
@@ -64,7 +64,7 @@ ms.locfileid: "108142992"
 - Azure PowerShell cmdlet。
 - Azure CLI。
 
-还可通过 [SAP 云平台](https://cal.sap.com/)在 Azure VM 服务上部署整个已安装的 SAP HANA 平台。 [在 Azure 上部署 SAP S/4HANA 或 BW/4HANA](./cal-s4h.md) 中介绍了安装过程，也可以使用[此处](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)所述的自动化功能完成安装。
+还可通过 [SAP 云平台](https://cal.sap.com/)在 Azure VM 服务上部署整个已安装的 SAP HANA 平台。 [在 Azure 上部署 SAP S/4HANA 或 BW/4HANA](./cal-s4h.md) 中介绍了安装过程，也可以使用 [GitHub](https://github.com/AzureCAT-GSI/SAP-HANA-ARM) 中所述的自动化功能完成安装。
 
 >[!IMPORTANT]
 > 要使用 M208xx_v2 VM，需要谨慎从 Azure VM 映像库中选择 Linux 映像。 要阅读详细信息，请阅读文章[内存优化虚拟机大小](../../mv2-series.md)。
@@ -211,7 +211,7 @@ SAP BW 或 S4HANA 不支持 SAP HANA Dynamic Tiering 2.0。 现在的主要用�
 - M64-32ms 
 - E32sv3 
 
-请在[此处](../../sizes-memory.md)查看 VM 类型说明
+有关 VM 类型说明的详细信息，请参阅 [Azure VM 大小 - 内存](../../sizes-memory.md)
 
 鉴于 DT 2.0 的基本理念，卸载“warm”数据以节省成本，最好使用相应的 VM 大小。 但对于可能的组合，并没有严格的规定。 这取决于特定的客户工作负载。
 
@@ -232,7 +232,7 @@ SAP HANA 认证的 M 系列 VM 与受支持的 DT 2.0 VM（M64-32ms 和 E32sv3�
 
 如果要在专用 VM 上安装 DT 2.0，DT 2.0 VM 和 SAP HANA VM 之间的网络吞吐量必须至少为 10 Gb。 因此，必须将所有 VM 放在相同的 Azure Vnet 中，并启用 Azure 加速网络。
 
-有关 Azure 加速网络的更多信息，请参阅[此处](../../../virtual-network/create-vm-accelerated-networking-cli.md)
+有关 Azure 加速网络的其他信息，请参阅[使用 Azure CLI 创建包含加速网络的 Azure VM](../../../virtual-network/create-vm-accelerated-networking-cli.md)
 
 ### <a name="vm-storage-for-sap-hana-dt-20"></a>适用于 SAP HANA DT 2.0 的 VM 存储
 
@@ -243,9 +243,9 @@ SAP HANA 认证的 M 系列 VM 与受支持的 DT 2.0 VM（M64-32ms 和 E32sv3�
 
 必须将多个 Azure 磁盘连接到 DT 2.0 VM 并在 OS 级别创建软件 RAID（带区），以实现每个 VM 的磁盘吞吐量的最大限制。 在这方面，单个 Azure 磁盘无法提供该吞吐量以达到最大 VM 限制。 Azure 高级存储是运行 DT 2.0 的必需条件。 
 
-- 有关可用的 Azure 磁盘类型的详细信息，请参阅[此处](../../disks-types.md)
-- 有关通过 mdadm 创建软件 RAID 的详细信息，请参阅[此处](/previous-versions/azure/virtual-machines/linux/configure-raid)
-- 有关配置 LVM 以创建最大吞吐量的带区卷的详细信息，请参阅[此处](/previous-versions/azure/virtual-machines/linux/configure-lvm)
+- 有关可用 Azure 磁盘类型的详细信息，请参阅选择[选择 Azure IaaS VM 的磁盘类型 - 托管磁盘](../../disks-types.md)页
+- 有关通过 mdadm 创建软件 RAID 的详细信息，请参阅[在 Linux VM 上配置软件 RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) 页
+- 有关配置 LVM 以创建条带卷从而获得最大吞吐量的详细信息，请参阅[在运行 Linux 的虚拟机上配置 LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) 页
 
 根据大小要求，可使用不同的选项来达到 VM 的最大吞吐量。 以下是针对每个 DT 2.0 VM 类型以实现 VM 的吞吐量上限可能的数据卷磁盘配置。 E32sv3 VM 应视为较小工作负载的入门级别。 如果它的速度不够快，可能需要将 VM 的大小调整为 M64-32ms。
 由于 M64-32ms VM 具有大量内存，因此 IO 负载可能无法达到限制，尤其是对于读取密集型工作负载而言。 因此，根据客户特定的工作负荷，在条带集中使用更少的磁盘可能就足够了。 但为了安全起见，请选择下面的磁盘配置以保证最大吞吐量：
@@ -259,7 +259,7 @@ SAP HANA 认证的 M 系列 VM 与受支持的 DT 2.0 VM（M64-32ms 和 E32sv3�
 
 特别是在工作负载读取密集的情况下，它可以提高 IO 性能，以打开 Azure 主机缓存“只读”，如数据库软件数据卷所建议的那样。 而对于事务日志，Azure 主机磁盘缓存必须是“无”。 
 
-关于日志卷的大小，推荐的起始点是数据大小的 15％。 可使用不同的 Azure 磁盘类型来完成日志卷的创建，具体取决于成本和吞吐量要求。 对于日志卷，必须提供较高的 I/O 吞吐量。  如果使用 VM 类型 M64-32ms，则必需启用[写入加速器](../../how-to-enable-write-accelerator.md)。 Azure 写入加速器为事务日志提供最佳磁盘写入延迟（仅适用于 M 系列）。 有一些事项需要注意，比如每个 VM 类型的最大磁盘数。 在[此处](../../how-to-enable-write-accelerator.md)可以找到有关写入加速器的详细信息
+关于日志卷的大小，推荐的起始点是数据大小的 15％。 可使用不同的 Azure 磁盘类型来完成日志卷的创建，具体取决于成本和吞吐量要求。 对于日志卷，必须提供较高的 I/O 吞吐量。  如果使用 VM 类型 M64-32ms，则必需启用[写入加速器](../../how-to-enable-write-accelerator.md)。 Azure 写入加速器为事务日志提供最佳磁盘写入延迟（仅适用于 M 系列）。 有一些事项需要注意，比如每个 VM 类型的最大磁盘数。 有关写入加速器的详细信息，请参阅 [Azure 写入加速器](../../how-to-enable-write-accelerator.md)页
 
 
 下面是一些有关调整日志卷大小的示例：

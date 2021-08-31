@@ -1,23 +1,23 @@
 ---
-title: 存档层支持（预览版）
+title: 存档层支持
 description: 了解对 Azure 备份的存档层支持
 ms.topic: conceptual
-ms.date: 06/03/2021
+ms.date: 08/04/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c817e5e0fbed7ebe6c659a91e180820de3fdc677
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ccb85c42685f962da3c9faf098d7847a93f4de74
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410092"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722742"
 ---
-# <a name="archive-tier-support-preview"></a>存档层支持（预览版）
+# <a name="archive-tier-support"></a>存档层支持
 
 客户依靠 Azure 备份来存储备份数据，包括可满足由组织的合规性规则定义的保留需求的长期保留 (LTR) 备份数据。 在大多数情况下，较旧的备份数据很少被访问，只是为了满足合规性需求而存储。
 
 除了快照和标准层以外，Azure 备份还支持备份存档层中的长期保留点。
 
-## <a name="scope-for-preview"></a>预览范围
+## <a name="scope"></a>范围
 
 支持的工作负荷：
 
@@ -36,8 +36,8 @@ ms.locfileid: "111410092"
 
 - 使用 PowerShell 来提供功能
 
->[!NOTE]
->对 Azure VM 及其 SQL Server 的存档层支持以有限的公共预览版和有限的注册形式提供。 若要注册存档支持，请使用此[链接](https://aka.ms/ArchivePreviewInterestForm)。
+>[!Note]
+>Azure VM 中对 SQL Server 的存档层支持现已在北欧、印度中部、南部东亚和澳大利亚东部正式发布。 有关受支持的区域的详细列表，请参阅[支持矩阵](#support-matrix)。    <br><br>    对于 Azure VM 中提供 SQL Server 的其他区域，存档层支持以有限公共预览版提供。 对 Azure 虚拟机的存档层支持也以有限公共预览版提供。 若要注册有限公共预览版，请使用此[链接](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u)。
 
 ## <a name="get-started-with-powershell"></a>PowerShell 入门
 
@@ -46,7 +46,7 @@ ms.locfileid: "111410092"
 1. 在 PowerShell 中运行以下命令：
   
     ```azurepowershell
-    install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.0.0-preview -AllowPrerelease -force
+    install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.4.0 -AllowPrerelease -force
     ```
 
 1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure。
@@ -86,7 +86,7 @@ ms.locfileid: "111410092"
 
     ```
     >[!NOTE]
-    >开始日期和结束日期的跨度不应超过 30 天。<br><br>若要查看不同时间范围的恢复点，请相应地修改开始日期和结束日期。
+    >若要查看不同时间范围的恢复点，请相应地修改开始日期和结束日期。
 ## <a name="use-powershell"></a>使用 PowerShell
 
 ### <a name="check-archivable-recovery-points"></a>查看可存档的恢复点
@@ -207,6 +207,13 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 停止保护并删除数据会删除所有恢复点。 对于保留在存档层中未满 180 天的恢复点，删除恢复点将导致产生早期删除费用。
 
+## <a name="support-matrix"></a>支持矩阵
+
+| 工作负荷 | 预览 | 正式发布 |
+| --- | --- | --- |
+| Azure VM 中的 SQL Server | 美国东部、美国东部 2、美国中部、美国中南部、美国西部、美国西部 2、美国中西部、美国中北部、巴西南部、加拿大东部、加拿大中部、欧洲西部、英国南部、英国西部、东亚、日本东部、印度南部 | 澳大利亚东部、印度中部、欧洲北部、南东亚 |
+| Azure 虚拟机 | 美国东部、美国东部 2、美国中部、美国中南部、美国西部、美国西部 2、美国中西部、美国中北部、巴西南部、加拿大东部、加拿大中部、欧洲西部、英国南部、英国西部、东亚、日本东部、印度南部、东南亚、澳大利亚东部、印度中部、欧洲北部 | 无 |
+
 ## <a name="error-codes-and-troubleshooting-steps"></a>错误代码和故障排除步骤
 
 无法将恢复点移动到存档时出现多个错误代码。
@@ -217,7 +224,7 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 说明 – 当所选恢复点类型不符合移动到存档的条件时，将显示此错误代码。
 
-建议的操作 – 在[此处](#scope-for-preview)检查恢复点的资格
+建议的操作 – 在[此处](#scope)检查恢复点的资格
 
 ### <a name="recoverypointhaveactivedependencies"></a>RecoveryPointHaveActiveDependencies
 
@@ -225,7 +232,7 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 说明 – 所选恢复点具有活动依赖项，因此无法移动到存档。
 
-建议的操作 – 在[此处](#scope-for-preview)检查恢复点的资格
+建议的操作 – 在[此处](#scope)检查恢复点的资格
 
 ### <a name="minlifespaninstandardrequiredforarchive"></a>MinLifeSpanInStandardRequiredForArchive
 
@@ -233,7 +240,7 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 说明 – 对于 Azure 虚拟机，恢复点必须在标准层中至少保留三个月，对于 Azure 虚拟机中的 SQL Server，保留 45 天
 
-建议的操作 – 在[此处](#scope-for-preview)检查恢复点的资格
+建议的操作 – 在[此处](#scope)检查恢复点的资格
 
 ### <a name="minremaininglifespaninarchiverequired"></a>MinRemainingLifeSpanInArchiveRequired
 
@@ -241,7 +248,7 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 说明 – 恢复点为符合存档移动的条件所需的最小生命周期值为 6 个月。
 
-建议的操作 – 在[此处](#scope-for-preview)检查恢复点的资格
+建议的操作 – 在[此处](#scope)检查恢复点的资格
 
 ### <a name="usererrorrecoverypointalreadyinarchivetier"></a>UserErrorRecoveryPointAlreadyInArchiveTier
 

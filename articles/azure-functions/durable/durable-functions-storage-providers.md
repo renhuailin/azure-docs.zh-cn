@@ -5,21 +5,23 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/05/2021
 ms.author: azfuncdf
-ms.openlocfilehash: bf50f0bdc3c8e654a3d2f780bb7f0c32533948eb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: bbeb730b0e22bd555f06514870448a229fccfbc6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465793"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438094"
 ---
 # <a name="durable-functions-storage-providers"></a>Durable Functions 存储提供程序
 
 Durable Functions 会自动将函数参数、返回值和其他状态保存到持久存储中，以确保可靠的执行。 Durable Functions 的默认配置将此运行时状态存储在 Azure 存储（经典）帐户中。 但是，可以配置 Durable Functions v2.0 及更高版本以使用备用持久存储提供程序。
 
-Durable Functions 是由[持久任务框架](https://github.com/Azure/durabletask) (DTFx) 在内部提供支持的一组 Azure Functions 触发器和绑定。 DTFx 支持各种后端存储提供程序，包括 Durable Functions 使用的 Azure 存储提供程序。 从 Durable Functions v2.4.3 开始，用户可以将其函数应用配置为使用 DTFx 存储提供程序而不是 Azure 存储提供程序。
+Durable Functions 是由[持久任务框架](https://github.com/Azure/durabletask) (DTFx) 在内部提供支持的一组 Azure Functions 触发器和绑定。 DTFx 支持各种后端存储提供程序，包括 Durable Functions 使用的 Azure 存储提供程序。 从 Durable Functions v2.5.0 开始，用户可以将其函数应用配置为使用 DTFx 存储提供程序而不是 Azure 存储提供程序。
 
 > [!NOTE]
 > 应该谨慎选择使用 Azure 存储之外的存储提供程序。 在 Azure 中运行的大多数函数应用应使用默认的适用于 Durable Functions 的 Azure 存储提供程序。 但是，在决定是否使用备用存储提供程序时，应就重要的成本、可伸缩性和数据管理进行权衡考虑。 本文详细介绍了其中的许多要权衡的方面。
+>
+> 另请注意，目前无法将数据从一个存储提供程序迁移到另一个存储提供程序。 如果要使用新的存储提供程序，则应创建配置了新存储提供程序的新应用。
 
 我们开发了两个备用 DTFx 存储提供程序，以便与 Durable Functions、Netherite 存储提供程序和 Microsoft SQL Server (MSSQL) 存储提供程序配合使用 。 本文介绍了这三个支持的提供程序，将它们相互比较，并提供了有关如何开始使用它们的基本信息。
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 9d81af064b18ca8113599b460f2b9524c7288439
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50e1a5b98607046f8f57699e49be764439baa6f2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711070"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114474137"
 ---
 # <a name="monitor-surface-hubs-with-azure-monitor-to-track-their-health"></a>使用 Azure Monitor 监视 Surface Hub 以跟踪其运行状况
 
@@ -38,14 +38,16 @@ ms.locfileid: "101711070"
 
 Intune 是 Microsoft 的一个产品，它允许集中管理应用于一个或多个设备的 Log Analytics 工作区配置设置。 请按照以下步骤通过 Intune 配置设备：
 
-1. 登录 Intune。
-2. 导航到“**设置**” > “**连接源**”。
-3. 创建或编辑基于 Surface Hub 模板的策略。
-4. 导航到策略的“Azure 操作见解”部分，为策略添加 Log Analytics“工作区 ID”和“工作区密钥”。
-5. 保存策略。
-6. 关联策略和相应的设备组。
+1. 登录 [Microsoft Endpoint Manager 管理中心](https://endpoint.microsoft.com/)。
+2. 选择“设备” > “配置文件”。
+3. 创建一个新的 Windows 10 配置文件，然后选择“模板”。
+4. 在模板列表中，选择“设备限制（Windows 10 协同版）”。
+5. 输入配置文件的名称和描述。
+6. 对于“Azure Operational Insights”，选择“启用”。 
+7. 输入日志分析 **工作区 ID** 并输入策略的 **工作区密钥**。
+8. 将策略分配到 Surface Hub 设备组，并保存策略。
 
-   ![Intune 策略](./media/surface-hubs/intune.png)
+    :::image type="content" source="./media/surface-hubs/intune.png" alt-text="显示设置 Intune 策略的屏幕截图。":::
 
 Intune 然后会在 Log Analytics 工作区中注册设备，从而将 Log Analytics 设置与目标组中的设备同步。
 
@@ -58,9 +60,10 @@ Intune 然后会在 Log Analytics 工作区中注册设备，从而将 Log Analy
 2. 在出现提示时，输入设备管理凭据。
 3. 单击“此设备”，并单击“监视”下面的“配置 Log Analytics 设置”。
 4. 选择“**启用监视**”。
-5. 在“Log Analytics 设置”对话框中，键入 Log Analytics“工作区 ID”和“工作区密钥”。  
-   ![屏幕截图显示了 Microsoft Operations Manager Suite 设置，其中选中了“启用监视”并显示了“工作区 ID”和“工作区密钥”的文本框。](./media/surface-hubs/settings.png)
-6. 单击“**确定**”以完成配置。
+5. 在“Log Analytics 设置”对话框中，键入 Log Analytics“工作区 ID”和“工作区密钥”。 
+
+    ![屏幕截图显示了 Microsoft Operations Manager Suite 设置，其中选中了“启用监视”并显示了“工作区 ID”和“工作区密钥”的文本框。](./media/surface-hubs/settings.png)
+1. 单击“**确定**”以完成配置。
 
 将显示一条确认信息，告诉你是否已将配置成功应用于设备。 如果是，则会出现一条消息，注明代理已成功连接到 Azure Monitor。 然后，设备开始将数据发送到 Azure Monitor，可以查看数据并采取相应操作。
 

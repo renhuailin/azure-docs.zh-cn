@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 4e0091d1d94a173df07f956959580f7f862ec08f
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 5fd588cc9ff36f4213d62ee47ce296e9eadfc40e
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930022"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296750"
 ---
 # <a name="back-up-using-azure-application-consistent-snapshot-tool"></a>使用 Azure 应用程序一致的快照工具进行备份
 
@@ -85,9 +85,11 @@ azacsnap -c backup --volume data --prefix hana_TEST --retention 9 --trim
 
 此命令不会输出到控制台，但会写入日志文件、结果文件和 `/var/log/messages`。
 
-“日志文件”由命令名称 + -c 选项 + 配置文件名组成。 默认情况下， `-c backup` 的日志文件名使用默认配置文件名 `azacsnap-backup-azacsnap.log` 运行。
+在本示例中，“日志文件”名为 `azacsnap-backup-azacsnap.log`（请参阅[日志文件](#log-files)）
 
-“结果”文件与日志文件具有相同的基本名，`.result` 为其后缀，例如，包含以下输出的 `azacsnap-backup-azacsnap.result`：
+运行包含 `--volume data` 选项的 `-c backup` 时，还会生成一个结果文件，该文件将允许快速检查备份结果。  “结果”文件与日志文件具有相同的基本名，`.result` 为其后缀。
+
+在本示例中，“结果文件”名为 `azacsnap-backup-azacsnap.result`，该文件包含以下输出：
 
 ```bash
 cat logs/azacsnap-backup-azacsnap.result
@@ -124,7 +126,7 @@ azacsnap -c backup --volume other --prefix logs_TEST --retention 9
 
 此命令不会输出到控制台，但仅会写入日志文件。  它“不”会写入结果文件或 `/var/log/messages`。
 
-“日志文件”由命令名称 + -c 选项 + 配置文件名组成。 默认情况下， `-c backup` 的日志文件名使用默认配置文件名 `azacsnap-backup-azacsnap.log` 运行。
+在本示例中，“日志文件”名为 `azacsnap-backup-azacsnap.log`（请参阅[日志文件](#log-files)）。
 
 ## <a name="example-with-other-parameter-to-backup-host-os"></a>`other` 参数的示例（备份主机 OS）
 
@@ -135,15 +137,17 @@ azacsnap -c backup --volume other --prefix logs_TEST --retention 9
 azacsnap -c backup --volume other --prefix boot_TEST --retention 9 --configfile bootVol.json
 ```
 
+> [!IMPORTANT]
+> 对于 Azure 大型实例，引导卷的配置文件卷参数在主机操作系统级别可能不可见。
+> 此值可由 Microsoft Operations 提供。
+
 此命令不会输出到控制台，但仅会写入日志文件。  它“不”会写入结果文件或 `/var/log/messages`。
 
-在该示例中，“日志文件”名为 `azacsnap-backup-bootVol.log`。
+在本示例中，“日志文件”名为 `azacsnap-backup-bootVol.log`（请参阅[日志文件](#log-files)）。
 
-> [!NOTE]
-> 日志文件由“（命令名称-（`-c` 选项）-配置文件名）”组成。  例如，如果将 `-c backup` 选项与日志文件名 `h80.json` 一起使用，则日志文件叫作 `azacsnap-backup-h80.log`。  或者，如果将 `-c test` 选项与相同的配置文件一起使用，则日志文件叫作 `azacsnap-test-h80.log`。
+## <a name="log-files"></a>日志文件
 
-- HANA 大型实例类型：有两个有效的值，`TYPEI` 或 `TYPEII`，具体取决于 HANA 大型实例单元。
-- 请参阅[用于 HANA 大型实例的 SKU](../virtual-machines/workloads/sap/hana-available-skus.md)，以确认可用的 SKU。
+日志文件由“（命令名称）-（`-c` 选项）-（配置文件名）”这些内容构成。  例如，如果运行 `azacsnap -c backup --configfile h80.json --retention 5 --prefix one-off` 命令，则日志文件叫做 `azacsnap-backup-h80.log`。  或者，如果将 `-c test` 选项与相同的配置文件（例如 `azacsnap -c test --configfile h80.json`）一起使用，则日志文件叫作 `azacsnap-test-h80.log`。
 
 ## <a name="next-steps"></a>后续步骤
 

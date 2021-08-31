@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/27/2021
+ms.date: 07/23/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bdd0c8a3ddacd3a99627bfc29c41e61a165350c6
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: f3125852edd149f6daf7589248be54bafcc1ca2d
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111812361"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688206"
 ---
 # <a name="manage-and-restore-soft-deleted-blobs"></a>管理和还原软删除的 Blob
 
@@ -23,11 +23,13 @@ Blob 软删除会在系统中将已删除的数据保留指定的一段时间，
 
 Blob 软删除是针对 Blob 数据的综合性数据保护策略的一部分。 若要详细了解 Microsoft 的数据保护建议，请参阅[数据保护概述](data-protection-overview.md)。
 
-## <a name="manage-soft-deleted-blobs-with-the-azure-portal"></a>使用 Azure 门户管理软删除的 Blob
+## <a name="manage-soft-deleted-blobs"></a>管理软删除的 Blob
+
+### <a name="manage-soft-deleted-blobs-with-the-azure-portal"></a>使用 Azure 门户管理软删除的 Blob
 
 可以使用 Azure 门户来查看和还原软删除的 Blob 与快照。
 
-### <a name="view-deleted-blobs"></a>查看已删除的 Blob
+#### <a name="view-deleted-blobs"></a>查看已删除的 Blob
 
 将 Blob 软删除后，默认情况下它们不会显示在 Azure 门户中。 若要查看软删除的 Blob，请导航到容器的“概述”页，并切换“显示已删除的 Blob”设置 。 软删除的 Blob 显示为“已删除”状态。
 
@@ -37,13 +39,13 @@ Blob 软删除是针对 Blob 数据的综合性数据保护策略的一部分。
 
 :::image type="content" source="media/soft-delete-blob-manage/soft-deleted-blob-properties-portal.png" alt-text="显示 Azure 门户中软删除的 Blob 的属性的屏幕截图":::
 
-### <a name="view-deleted-snapshots"></a>显示已删除的快照
+#### <a name="view-deleted-snapshots"></a>显示已删除的快照
 
 删除某个 Blob 也会删除与该 Blob 关联的所有快照。 如果软删除的 Blob 具有快照，则也可以在门户中显示已删除的快照。 显示软删除的 Blob 的属性，导航到“快照”选项卡，然后切换为“显示已删除的快照” 。
 
 :::image type="content" source="media/soft-delete-blob-manage/soft-deleted-blob-snapshots-portal.png" alt-text="屏幕截图":::
 
-### <a name="restore-soft-deleted-objects-when-versioning-is-disabled"></a>禁用版本控制时还原软删除的对象
+#### <a name="restore-soft-deleted-objects-when-versioning-is-disabled"></a>禁用版本控制时还原软删除的对象
 
 若要在未启用 Blob 版本控制的情况下在 Azure 门户中还原软删除的某个 Blob，请先显示该 Blob 的属性，然后选择“概述”选项卡上的“取消删除”按钮。还原某个 Blob 也会还原在软删除保留期内删除的所有快照 。
 
@@ -53,7 +55,7 @@ Blob 软删除是针对 Blob 数据的综合性数据保护策略的一部分。
 
 :::image type="content" source="media/soft-delete-blob-manage/promote-snapshot.png" alt-text="显示如何将快照提升到基础 Blob 的屏幕截图":::
 
-### <a name="restore-soft-deleted-blobs-when-versioning-is-enabled"></a>启用版本控制时还原软删除的 Blob
+#### <a name="restore-soft-deleted-blobs-when-versioning-is-enabled"></a>启用版本控制时还原软删除的 Blob
 
 若要在启用了版本控制的情况下在 Azure 门户中还原软删除的 Blob，请选择软删除的 Blob 以显示其属性，然后选择“版本”选项卡。选择要提升为当前版本的版本，然后选择“设为当前版本” 。  
 
@@ -64,13 +66,13 @@ Blob 软删除是针对 Blob 数据的综合性数据保护策略的一部分。
 > [!NOTE]
 > 启用版本控制后，对已删除的 Blob 选择“取消删除”按钮会还原所有已软删除的版本或快照，但不会还原基础 Blob。 若要还原基础 Blob，必须提升前一个版本。
 
-## <a name="manage-soft-deleted-blobs-with-code"></a>使用代码管理软删除的 Blob
+### <a name="manage-soft-deleted-blobs-with-code"></a>使用代码管理软删除的 Blob
 
 可以使用 Azure 存储客户端库来还原软删除的 Blob 或快照。 以下示例演示如何使用 .NET 客户端库。
 
-### <a name="restore-soft-deleted-objects-when-versioning-is-disabled"></a>禁用版本控制时还原软删除的对象
+#### <a name="restore-soft-deleted-objects-when-versioning-is-disabled"></a>禁用版本控制时还原软删除的对象
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+##### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 若要在未启用版本控制的情况下还原已删除的 Blob，请对这些 Blob 调用[取消删除 Blob](/rest/api/storageservices/undelete-blob) 操作。 “取消删除 Blob”操作还原已软删除的 Blob，以及与这些 Blob 关联的所有已删除的快照。
 
@@ -82,7 +84,7 @@ Blob 软删除是针对 Blob 数据的综合性数据保护策略的一部分。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobSnapshot":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+##### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 若要在未启用版本控制的情况下还原已删除的 Blob，请对这些 Blob 调用[取消删除 Blob](/rest/api/storageservices/undelete-blob) 操作。 “取消删除 Blob”操作还原已软删除的 Blob，以及与这些 Blob 关联的所有已删除的快照。
 
@@ -114,19 +116,271 @@ blockBlob.StartCopy(copySource);
 
 ---
 
-### <a name="restore-soft-deleted-blobs-when-versioning-is-enabled"></a>启用版本控制时还原软删除的 Blob
+#### <a name="restore-soft-deleted-blobs-when-versioning-is-enabled"></a>启用版本控制时还原软删除的 Blob
 
 若要在启用了版本控制的情况下还原软删除的 Blob，请使用[复制 Blob](/rest/api/storageservices/copy-blob) 或[从 URL 复制 Blob](/rest/api/storageservices/copy-blob-from-url) 操作将前一个版本复制到基础 Blob。  
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+##### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RestorePreviousVersion":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+##### <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 不适用。 Blob 版本控制仅在 Azure 存储客户端库版本 12.x 和更高版本中受支持。
 
 ---
+
+## <a name="manage-soft-deleted-blobs-and-directories-hierarchical-namespace"></a>管理软删除的 Blob 和目录（分层命名空间）
+
+可以在拥有分层命名空间的帐户中还原软删除的 Blob 和目录。 
+
+> [!IMPORTANT]
+> 在已启用分层命名空间功能的帐户中进行的软删除目前为预览版，并在全球所有 Azure 区域内均可用。
+> 有关 beta 版本、预览版或尚未正式发布的版本的 Azure 功能所适用的法律条款，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>
+>
+> 若要注册预览版，请参阅[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pUOVRVOUpDRUtHVUtDUUtMVTZUR0tUMjZWNy4u)。
+
+### <a name="manage-soft-deleted-blobs-with-the-azure-portal"></a>使用 Azure 门户管理软删除的 Blob
+
+可以使用 Azure 门户来查看和还原软删除的 Blob 与目录。
+
+#### <a name="view-deleted-blobs-and-directories"></a>查看删除的 Blob 和目录
+
+将 Blob 或目录软删除后，默认情况下它们不会显示在 Azure 门户中。 若要查看软删除的 Blob 和目录，请导航到容器的“概述”页，并切换“显示已删除的 Blob”设置 。 软删除的 Blob 和目录显示为“已删除”状态。 下图显示一个软删除的目录。
+
+> [!div class="mx-imgBorder"]
+> ![显示如何在 Azure 门户中列出软删除的 Blob（已启用分层命名空间的帐户）的屏幕截图](media/soft-delete-blob-manage/soft-deleted-blobs-list-portal-hns.png)
+
+> [!NOTE]
+> 如果重命名包含软删除项（子目录和 Blob）的目录，则这些软删除项会与目录断开连接，因此当切换“显示已删除 Blob”设置时，它们不会显示在 Azure 门户中。 如果要在 Azure 门户中查看它们，则必须将目录的名称还原为原始名称，或者创建一个使用原始目录名称的单独目录。 
+
+接下来，从列表中选择已删除的目录或 Blob，以显示其属性。 在“概述”选项卡下，可以看到状态设置为“已删除” 。 门户还会显示在永久删除该 Blob 之前剩余的天数。
+
+> [!div class="mx-imgBorder"]
+> ![显示 Azure 门户中软删除的 Blob 的属性（已启用分层命名空间的帐户）的屏幕截图](media/soft-delete-blob-manage/soft-deleted-blob-properties-portal-hns.png)
+
+#### <a name="restore-soft-delete-blobs-and-directories"></a>还原软删除的 Blob 和目录
+
+若要在 Azure 门户中还原软删除的 Blob 或目录，请首先显示 Blob 或目录的属性，然后选择“概述”选项卡上的“取消删除”按钮。下图显示了软删除的目录上的“取消删除”按钮。 
+
+> [!div class="mx-imgBorder"]
+> ![显示如何在 Azure 门户中还原软删除的 Blob（已启用分层命名空间的帐户）的屏幕截图](media/soft-delete-blob-manage/undelete-soft-deleted-blob-portal-hns.png)
+
+### <a name="restore-soft-deleted-blobs-and-directories-by-using-powershell"></a>使用 PowerShell 还原软删除的 Blob 和目录
+
+>[!IMPORTANT]
+> 本部分仅适用于具有分层命名空间的帐户。
+
+1. 请确保已安装“Az.Storage”预览版模块。 请参阅[使用 PowerShell 启用 Blob 软删除](soft-delete-blob-enable.md?tabs=azure-powershell#enable-blob-soft-delete-hierarchical-namespace)。
+
+2. 使用存储帐户密钥、连接字符串或 Azure Active Directory (Azure AD) 获取存储帐户授权。 请参阅[连接到帐户](data-lake-storage-directory-file-acl-powershell.md#connect-to-the-account)。
+
+   以下示例使用存储帐户密钥获取授权。
+
+   ```powershell
+   $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -StorageAccountKey '<storage-account-key>'
+   ```
+
+3. 若要还原软删除项，请使用 `Restore-AzDataLakeGen2DeletedItem` 命令。
+
+   ```powershell
+   $filesystemName = "my-file-system"
+   $dirName="my-directory"
+   $deletedItems = Get-AzDataLakeGen2DeletedItem -Context $ctx -FileSystem $filesystemName -Path $dirName
+   $deletedItems | Restore-AzDataLakeGen2DeletedItem
+   ```
+
+   如果重命名包含软删除项的目录，则这些项会与目录断开连接。 如果要还原这些项，则必须将目录的名称还原为原始名称，或者创建一个使用原始目录名称的单独目录。 否则，在尝试还原这些软删除项时，会出现错误。
+
+### <a name="restore-soft-deleted-blobs-and-directories-by-using-azure-cli"></a>使用 Azure CLI 还原软删除的 Blob 和目录
+
+>[!IMPORTANT]
+> 本部分仅适用于具有分层命名空间的帐户。
+
+1. 请确保已安装了 `storage-preview` 扩展。 请参阅[使用 PowerShell 启用 Blob 软删除](soft-delete-blob-enable.md?tabs=azure-CLI#enable-blob-soft-delete-hierarchical-namespace)。
+
+2. 获取删除项列表。
+
+   ```azurecli
+   $filesystemName = "my-file-system"
+   az storage fs list-deleted-path -f $filesystemName --auth-mode login
+   ```
+
+3. 若要还原某个项，请使用 `az storage fs undelete-path` 命令。
+
+   ```azurecli
+   $dirName="my-directory"
+   az storage fs undelete-path -f $filesystemName --deleted-path-name $dirName —deletion-id "<deletionId>" --auth-mode login
+   ```
+
+   如果重命名包含软删除项的目录，则这些项会与目录断开连接。 如果要还原这些项，则必须将目录的名称还原为原始名称，或者创建一个使用原始目录名称的单独目录。 否则，在尝试还原这些软删除项时，会出现错误。
+
+### <a name="restore-soft-deleted-blobs-and-directories-by-using-net"></a>使用 .NET 还原软删除的 Blob 和目录
+
+>[!IMPORTANT]
+> 本部分仅适用于具有分层命名空间的帐户。
+
+1. 请打开命令提示符或将目录 (`cd`) 更改为项目文件夹，例如：
+
+   ```console
+   cd myProject
+   ```
+
+2. 使用 `dotnet add package` 命令安装 `Azure.Storage.Files.DataLake -v 12.7.0` 版本的 [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) NuGet 包。 
+
+   ```console
+   dotnet add package Azure.Storage.Files.DataLake -v -v 12.7.0 -s https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json
+   ```
+
+3. 然后，将这些 using 语句添加到代码文件的顶部。
+
+    ```csharp
+    using Azure;
+    using Azure.Storage;
+    using Azure.Storage.Files.DataLake;
+    using Azure.Storage.Files.DataLake.Models;
+    using NUnit.Framework;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    ```
+
+4. 以下代码将删除目录，然后还原软删除的目录。
+
+   此方法假定你已创建 [DataLakeServiceClient](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) 实例。 若要了解如何创建 [DataLakeServiceClient](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) 实例，请参阅[连接到帐户](data-lake-storage-directory-file-acl-dotnet.md#connect-to-the-account)。
+
+   ```csharp
+      public void RestoreDirectory(DataLakeServiceClient serviceClient)
+      {
+          DataLakeFileSystemClient fileSystemClient = 
+             serviceClient.GetFileSystemClient("my-container");
+
+          DataLakeDirectoryClient directory = 
+              fileSystem.GetDirectoryClient("my-directory");
+
+          // Delete the Directory
+          await directory.DeleteAsync();
+ 
+          // List Deleted Paths
+          List<PathHierarchyDeletedItem> deletedItems = new List<PathHierarchyDeletedItem>();
+          await foreach (PathHierarchyDeletedItem deletedItem in fileSystemClient.GetDeletedPathsAsync())
+          {
+            deletedItems.Add(deletedItem);
+          }
+ 
+          Assert.AreEqual(1, deletedItems.Count);
+          Assert.AreEqual("my-directory", deletedItems[0].Path.Name);
+          Assert.IsTrue(deletedItems[0].IsPath);
+ 
+          // Restore deleted directory.
+          Response<DataLakePathClient> restoreResponse = await fileSystemClient.RestorePathAsync(
+          deletedItems[0].Path.Name,
+          deletedItems[0].Path.DeletionId);
+
+      }
+
+   ```
+
+   如果重命名包含软删除项的目录，则这些项会与目录断开连接。 如果要还原这些项，则必须将目录的名称还原为原始名称，或者创建一个使用原始目录名称的单独目录。 否则，在尝试还原这些软删除项时，会出现错误。
+
+### <a name="restore-soft-deleted-blobs-and-directories-by-using-java"></a>使用 Java 还原软删除的 Blob 和目录
+
+>[!IMPORTANT]
+> 本部分仅适用于具有分层命名空间的帐户。
+
+1. 若要开始操作，请在文本编辑器中打开 pom.xml 文件。 将以下依赖项元素添加到依赖项组。
+
+   ```xml
+   <dependency>
+     <groupId>com.azure</groupId>
+     <artifactId>azure-storage-file-datalake</artifactId>
+     <version>12.6.0</version>
+   </dependency>
+   ```
+
+2. 然后将这些 imports 语句添加到代码文件。
+
+   ```java
+   Put imports here
+   ```
+
+3. 以下代码片段将还原名为 `my-file` 的软删除的文件。 
+
+   此方法假定你已创建 **DataLakeServiceClient** 实例。 若要了解如何创建 **DataLakeServiceClient** 实例，请参阅[连接到帐户](data-lake-storage-directory-file-acl-java.md#connect-to-the-account)。
+
+   ```java
+
+   public void RestoreFile(DataLakeServiceClient serviceClient){
+
+       DataLakeFileSystemClient fileSystemClient = 
+           serviceClient.getFileSystemClient("my-container");
+       
+       DataLakeFileClient fileClient = 
+           fileSystemClient.getFileClient("my-file");
+
+       String deletionId = null;
+
+       for (PathDeletedItem item : fileSystemClient.listDeletedPaths()) {
+    
+           if (item.getName().equals(fileClient.getFilePath())) {
+              deletionId = item.getDeletionId();
+           }
+       }
+
+       fileSystemClient.restorePath(fileClient.getFilePath(), deletionId);
+    }
+
+   ```
+
+   如果重命名包含软删除项的目录，则这些项会与目录断开连接。 如果要还原这些项，则必须将目录的名称还原为原始名称，或者创建一个使用原始目录名称的单独目录。 否则，在尝试还原这些软删除项时，会出现错误。
+
+### <a name="restore-soft-deleted-blobs-and-directories-by-using-python"></a>使用 Python 还原软删除的 Blob 和目录
+
+>[!IMPORTANT]
+> 本部分仅适用于具有分层命名空间的帐户。
+
+1. 使用 [pip](https://pypi.org/project/pip/) 安装适用于 Python 的 Azure Data Lake Storage 客户端库 `12.4.0` 或更高版本。 此命令将安装适用于 Python 的 Azure Data Lake Storage 客户端库的最新版本。
+
+   ```
+   pip install azure-storage-file-datalake
+   ```
+
+2. 将这些 import 语句添加到代码文件的顶部。
+
+   ```python
+   import os, uuid, sys
+   from azure.storage.filedatalake import DataLakeServiceClient
+   from azure.storage.filedatalake import FileSystemClient
+   ```
+
+3. 以下代码将删除目录，然后还原软删除的目录。
+
+   以下代码示例包含名为 `service_client`、类型为 **DataLakeServiceClient** 的对象。 若要查看如何创建 **DataLakeServiceClient** 实例的示例，请参阅[连接到帐户](data-lake-storage-directory-file-acl-python.md#connect-to-the-account)。
+
+    ```python
+    def restoreDirectory():
+
+        try:
+            global file_system_client
+
+            file_system_client = service_client.create_file_system(file_system="my-file-system")
+
+            directory_path = 'my-directory'
+            directory_client = file_system_client.create_directory(directory_path)
+            resp = directory_client.delete_directory()
+        
+            restored_directory_client = file_system_client.undelete_path(directory_client, resp['deletion_id'])
+            props = restored_directory_client.get_directory_properties()
+        
+            print(props)
+   
+        except Exception as e:
+            print(e)
+
+    ```
+
+   如果重命名包含软删除项的目录，则这些项会与目录断开连接。 如果要还原这些项，则必须将目录的名称还原为原始名称，或者创建一个使用原始目录名称的单独目录。 否则，在尝试还原这些软删除项时，会出现错误。
 
 ## <a name="next-steps"></a>后续步骤
 

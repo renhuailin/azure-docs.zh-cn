@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 05/20/2021
+ms.date: 07/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
-ms.custom: references_regions, devx-track-azurecli
+ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34a43212e8883e1ae727d18c53d5c28f873d9e94
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 972929f93737342942ed22f103598bc55dbb57fc
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110458067"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688607"
 ---
 # <a name="preview-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-ssh-certificate-based-authentication"></a>预览版：通过基于 SSH 证书的身份验证使用 Azure Active Directory 登录到 Azure 中的 Linux 虚拟机
 
@@ -102,9 +102,10 @@ Azure 中国
 
 确保客户端满足以下要求：
 
-- SSH 客户端必须支持基于 OpenSSH 的证书进行身份验证。 可以使用 Az CLI（2.21.1 或更高版本）或 Azure Cloud Shell 来满足此要求。 
-- 用于 Az CLI 的 SSH 扩展。 可使用 az 安装。 使用 Azure Cloud Shell 时，无需安装此扩展，因为它已预安装。
-- 如果使用 Az CLI 或支持 OpenSSH 的 Azure Cloud Shell 以外的任何其他 SSH 客户端，则仍需使用具有 SSH 扩展的 Az CLI 在配置文件中检索临时 SSH 证书，并将配置文件用于 SSH 客户端。
+- SSH 客户端必须支持使用基于 OpenSSH 的证书进行身份验证。 可以配合使用 Az CLI（2.21.1 或更高版本）和 OpenSSH（包含在 Windows 10 版本 1803 或更高版本）或使用 Azure Cloud Shell 来满足此要求。 
+- 适用于 Az CLI 的 SSH 扩展。 可使用 `az extension add --name ssh` 安装。 使用 Azure Cloud Shell 时，无需安装此扩展，因为它已预安装。
+- 如果使用 Az CLI 或支持 OpenSSH 证书的 Azure Cloud Shell 以外的任何其他 SSH 客户端，则仍需使用具有 SSH 扩展的 Az CLI 检索临时 SSH 证书以及可选的配置文件，并将配置文件用于 SSH 客户端。
+- 客户端到 VM 公共或专用 IP 的 TCP 连接（也可以使用 ProxyCommand 或 SSH 转发到已连接的计算机）。
 
 ## <a name="enabling-azure-ad-login-in-for-linux-vm-in-azure"></a>为 Azure 中的 Linux VM 启用 Azure AD 登录
 
@@ -189,12 +190,18 @@ az vm extension set \
 
 若要为启用 Azure AD 的 Linux VM 配置角色分配，请执行以下操作：
 
-1. 导航到要配置的虚拟机。
-1. 从菜单选项中选择“访问控制 (IAM)”。
-1. 选择“添加”、“添加角色分配”以打开“添加角色分配”窗格 。
-1. 在“角色”下拉列表中，选择角色“虚拟机管理员登录”或“虚拟机用户登录”。
-1. 在“选择”字段中，选择用户、组、服务主体或托管标识。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
-1. 选择“保存”以分配该角色。
+1. 选择“访问控制 (IAM)”。
+
+1. 选择“添加” > “添加角色分配”，打开“添加角色分配”页面 。
+
+1. 分配以下角色。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+    
+    | 设置 | 值 |
+    | --- | --- |
+    | 角色 | 虚拟机管理员登录或虚拟机用户登录 |
+    | 将访问权限分配到 | 用户、组、服务主体或托管标识 |
+
+    ![Azure 门户中的“添加角色分配”页。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 片刻之后，会在所选范围内为安全主体分配角色。
  
@@ -317,7 +324,7 @@ az ssh vm -n myVM -g AzureADLinuxVMPreview
 az ssh config --file ~/.ssh/config -n myVM -g AzureADLinuxVMPreview
 ```
 
-或者，也可通过只指定 IP 地址来导出配置。 将示例中的 IP 地址替换为 VM 的公共或专用 IP 地址。 键入 `az ssh config -h` 获取有关此命令的帮助。
+或者，也可通过只指定 IP 地址来导出配置。 将示例中的 IP 地址替换为 VM 的公共或专用 IP 地址（必须自行连接专用 IP）。 键入 `az ssh config -h` 获取有关此命令的帮助。
 
 ```azurecli
 az ssh config --file ~/.ssh/config --ip 10.11.123.456
@@ -345,7 +352,7 @@ az vmss identity assign --vmss-name myVMSS --resource-group AzureADLinuxVMPrevie
 az vmss extension set --publisher Microsoft.Azure.ActiveDirectory --name Azure ADSSHLoginForLinux --resource-group AzureADLinuxVMPreview --vmss-name myVMSS
 ```
 
-虚拟机规模集通常没有公共 IP 地址，因此必须从另一台能够访问其 Azure 虚拟网络的计算机连接到它们。 此示例演示如何使用虚拟机规模集 VM 的专用 IP 进行连接。 
+虚拟机规模集通常没有公共 IP 地址，因此必须从另一台能够访问其 Azure 虚拟网络的计算机连接到它们。 此示例演示如何使用虚拟机规模集 VM 的专用 IP 从同一虚拟网络中的计算机进行连接。 
 
 ```azurecli
 az ssh vm --ip 10.11.123.456
@@ -371,9 +378,9 @@ az ssh vm --ip 10.11.123.456
                 --resource-group myResourceGroup \
                 --vm-name myVM
       ```
-## <a name="using-azure-policy-to-ensure-standards-and-assess-compliance"></a>使用 Azure 策略确保标准并评估符合性
+## <a name="using-azure-policy-to-ensure-standards-and-assess-compliance"></a>使用 Azure Policy 来确保符合标准并评估合规性
 
-使用 Azure 策略确保为新的和现有的 Linux 虚拟机启用 Azure AD 登录，并在 Azure 策略符合性仪表板上大规模评估环境的符合性。 通过此功能，可以使用多个级别的强制：可以标记环境中未启用 Azure AD 登录的新的和现有的 Linux VM。 还可以使用 Azure 策略在未启用 Azure AD 登录的新 Linux VM 上部署 Azure AD 扩展，以及将现有 Linux VM 恢复为相同标准。 除这些功能以外，还可以使用策略来检测并标记在其计算机上创建了未批准的本地帐户的 Linux VM。 若要了解详细信息，请查看 [Azure 策略](https://www.aka.ms/AzurePolicy)。
+使用 Azure 策略确保为新的和现有的 Linux 虚拟机启用 Azure AD 登录，并在 Azure 策略符合性仪表板上大规模评估环境的符合性。 通过此功能，可以使用多个级别的强制：可以标记环境中未启用 Azure AD 登录的新的和现有的 Linux VM。 还可以使用 Azure 策略在未启用 Azure AD 登录的新 Linux VM 上部署 Azure AD 扩展，以及将现有 Linux VM 恢复为相同标准。 除这些功能以外，还可以使用策略来检测并标记在其计算机上创建了未批准的本地帐户的 Linux VM。 有关详细信息，请查看 [Azure 策略](https://www.aka.ms/AzurePolicy)。
 
 ## <a name="troubleshoot-sign-in-issues"></a>排查登录问题
 

@@ -6,18 +6,18 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/06/2021
+ms.date: 06/29/2021
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 2590ffd15ec046d0fc81e73b98577fa9ad91ae41
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 71007f18edcac6089be89537f0021f75c2cc4b38
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109712741"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294747"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -183,8 +183,10 @@ iothub-message-schema | moduleLifecycleNotification |
 | deviceId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- . + % _ # * ? ! ( ) , : = @ $ '`）的区分大小写字符串（最长为 128 个字符）。 |
 | generationId |必需，只读 |IoT 中心生成的区分大小写字符串，最长为 128 个字符。 在删除并重新创建设备时，此值用于区分具有相同 **deviceId** 的设备。 |
 | etag |必需，只读 |一个字符串，根据 [RFC7232](https://tools.ietf.org/html/rfc7232) 表示设备标识的弱 ETag。 |
-| auth |可选 |包含身份验证信息和安全材料的复合对象。 |
-| auth.symkey |可选 |包含主密钥和辅助密钥的复合对象，以 base64 格式存储。 |
+| 身份验证 |可选 |包含身份验证信息和安全材料的复合对象。 有关详细信息，请参阅 REST API 文档中的[身份验证机制](/rest/api/iothub/service/devices/get-identity#authenticationmechanism)。 |
+| capabilities | 可选 | 设备的功能集。 例如，设备是否是边缘设备。 有关详细信息，请参阅 REST API 文档中的[设备功能](/rest/api/iothub/service/devices/get-identity#devicecapabilities)。 |
+| deviceScope | 可选 | 设备的范围。 在边缘设备中自动生成且不可变。 在非边缘设备中已弃用。 但是，在子（叶）设备中，请将此属性设置为与 parentScopes 属性（父设备的 deviceScope）相同的值，以便与以前版本的 API 后向兼容。 有关详细信息，请参阅[使用 IoT Edge 作为网关：父子关系](../iot-edge/iot-edge-as-gateway.md#parent-and-child-relationships)。|
+| parentScopes | 可选 | 子设备的直接父级的范围（父设备的 deviceScope 属性的值）。 在边缘设备中，如果设备没有父级，则该值为空。 在非边缘设备中，如果设备没有父级，则该属性不存在。 有关详细信息，请参阅[使用 IoT Edge 作为网关：父子关系](../iot-edge/iot-edge-as-gateway.md#parent-and-child-relationships)。 |
 | 状态 |必填 |访问指示器。 可以是 **Enabled** 或 **Disabled**。 如果是 **Enabled**，则允许设备连接。 如果是 **Disabled**，则此设备无法访问任何面向设备的终结点。 |
 | statusReason |可选 |128 个字符的字符串，用于存储设备标识状态的原因。 允许所有 UTF-8 字符。 |
 | statusUpdateTime |只读 |临时指示器，显示上次状态更新的日期和时间。 |
@@ -208,11 +210,9 @@ iothub-message-schema | moduleLifecycleNotification |
 | moduleId |必需，更新时只读 |ASCII 7 位字母数字字符 + 某些特殊字符（`- . + % _ # * ? ! ( ) , : = @ $ '`）的区分大小写字符串（最长为 128 个字符）。 |
 | generationId |必需，只读 |IoT 中心生成的区分大小写字符串，最长为 128 个字符。 在删除并重新创建设备时，此值用于区分具有相同 **deviceId** 的设备。 |
 | etag |必需，只读 |一个字符串，根据 [RFC7232](https://tools.ietf.org/html/rfc7232) 表示设备标识的弱 ETag。 |
-| auth |可选 |包含身份验证信息和安全材料的复合对象。 |
-| auth.symkey |可选 |包含主密钥和辅助密钥的复合对象，以 base64 格式存储。 |
-| 状态 |必填 |访问指示器。 可以是 **Enabled** 或 **Disabled**。 如果是 **Enabled**，则允许设备连接。 如果是 **Disabled**，则此设备无法访问任何面向设备的终结点。 |
-| statusReason |可选 |128 个字符的字符串，用于存储设备标识状态的原因。 允许所有 UTF-8 字符。 |
-| statusUpdateTime |只读 |临时指示器，显示上次状态更新的日期和时间。 |
+| 身份验证 |可选 |包含身份验证信息和安全材料的复合对象。 有关详细信息，请参阅 REST API 文档中的[身份验证机制](/rest/api/iothub/service/modules/get-identity#authenticationmechanism)。 |
+| managedBy | 可选 | 标识管理此模块的人。 例如，如果 Edge 运行时拥有此模块，则此值为“IotEdge”。 |
+| cloudToDeviceMessageCount | 只读 | 当前排队等待发送到模块的云到模块消息的数量。 |
 | connectionState |只读 |指示连接状态的字段：**Connected** 或 **Disconnected**。 此字段表示设备连接状态的 IoT 中心视图。 **重要说明**：此字段仅应当用于开发/调试目的。 仅使用 MQTT 或 AMQP 的设备才更新连接状态。 此外，它基于协议级别的 ping（MQTT ping 或 AMQP ping），并且最多只有 5 分钟的延迟。 出于这些原因，可能会发生误报，例如，将设备报告为已连接，但实际上已断开连接。 |
 | connectionStateUpdatedTime |只读 |临时指示器，显示上次更新连接状态的日期和时间。 |
 | lastActivityTime |只读 |临时指示器，显示设备上次连接、接收或发送消息的日期和时间。 |
@@ -248,7 +248,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 
-* [Azure IoT 中心入门](quickstart-send-telemetry-dotnet.md)
+* [Azure IoT 中心入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)
 
 若要了解如何使用 IoT 中心设备预配服务启用零接触实时预配，请参阅： 
 

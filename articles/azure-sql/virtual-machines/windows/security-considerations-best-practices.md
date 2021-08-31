@@ -12,15 +12,15 @@ ms.subservice: security
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/23/2018
+ms.date: 05/30/2021
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a0eca49f600855e3fa092ed45e2ee314284ec474
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 39ef6e17e07833fede323ace8d06fd8b767eafac
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079762"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435481"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的安全注意事项
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,9 +29,29 @@ ms.locfileid: "112079762"
 
 Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运行的 SQL Server 生成符合规定的解决方案。 有关 Azure 合规性的信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。
 
+除了本主题所述做法外，建议你在借鉴传统本地安全做法和虚拟机安全最佳做法的基础上回顾并实施安全最佳做法。 
+
+## <a name="azure-defender-for-sql"></a>Azure Defender for SQL 
+
+[Azure Defender for SQL](../../../security-center/defender-for-sql-introduction.md) 支持 Azure 安全中心安全功能，例如漏洞评估和安全警报。 请参阅[启用 Azure Defender for SQL](../../../security-center/defender-for-sql-usage.md) 了解详细信息。 
+
+## <a name="portal-management"></a>门户管理
+
+[向 SQL IaaS 扩展注册 SQL Server VM](sql-agent-extension-manually-register-single-vm.md) 后，可以在 Azure 门户中使用 [SQL 虚拟机资源](manage-sql-vm-portal.md)配置许多安全设置，例如启用 Azure Key Vault 集成或 SQL 身份验证。 
+
+此外，启用 [Azure Defender for SQL](../../../security-center/defender-for-sql-usage.md) 后，可以直接在 Azure 门户的 [SQL 虚拟机资源](manage-sql-vm-portal.md)中查看安全中心功能，例如漏洞评估和安全警报。 
+
+请参阅[在门户中管理 SQL Server VM](manage-sql-vm-portal.md) 了解详细信息。 
+
+## <a name="azure-key-vault-integration"></a>Azure 密钥保管库集成 
+
+SQL Server 加密功能多种多样，包括透明数据加密 (TDE)、列级加密 (CLE) 和备份加密。 这些加密形式要求管理和存储用于加密的加密密钥。 Azure 密钥保管库服务专用于在一个高度可用的安全位置改进这些密钥的安全性和管理。 SQL Server 连接器使 SQL Server 能够使用 Azure Key Vault 中的这些密钥。
 如需了解更全面详尽的信息，请参阅本系列中的其他文章：[清单](performance-guidelines-best-practices-checklist.md)、[VM 大小](performance-guidelines-best-practices-vm-size.md)、[存储](performance-guidelines-best-practices-storage.md)、[HADR 配置](hadr-cluster-best-practices.md)和[收集基线](performance-guidelines-best-practices-collect-baseline.md)。 
 
-## <a name="control-access-to-the-sql-virtual-machine"></a>控制对 SQL 虚拟机的访问
+请参阅 [Azure Key Vault 集成](azure-key-vault-integration-configure.md)以了解详细信息。
+
+
+## <a name="access-control"></a>访问控制 
 
 创建 SQL Server 虚拟机时，请考虑如何谨慎控制有权访问虚拟机和 SQL Server 的人员。 通常，应执行以下操作：
 
@@ -60,17 +80,15 @@ Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运�
 
 ## <a name="encryption"></a>Encryption
 
-托管磁盘提供服务器端加密和 Azure 磁盘加密。 [服务器端加密](../../../virtual-machines/disk-encryption.md)提供静态加密并保护数据，让你的组织能够信守安全性与合规性方面所做的承诺。 [Azure 磁盘加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)使用 Bitlocker 或 DM-Crypt 技术，并与 Azure Key Vault 集成，以便对 OS 和数据磁盘进行加密。 
+托管磁盘提供服务器端加密和 Azure 磁盘加密。 [服务器端加密](../../../virtual-machines/disk-encryption.md)提供静态加密并保护数据，让你的组织能够信守安全性与合规性方面所做的承诺。 [Azure 磁盘加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)使用 BitLocker 或 DM-Crypt 技术并与 Azure Key Vault 集成，可对 OS 磁盘和数据磁盘进行加密。 
 
-## <a name="use-a-non-default-port"></a>使用非默认端口
+## <a name="non-default-port"></a>非默认端口
 
 默认情况下，SQL Server 侦听已知端口 1433。 为了提高安全性，请将 SQL Server 配置为侦听 1401 等非默认端口。 如果在 Azure 门户中配置 SQL Server 库映像，则可在“SQL Server 设置”边栏选项卡中指定此端口。
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
 若要在预配后配置此端口，可以使用两个选项：
 
-- 对于资源管理器 VM，可以从 [SQL 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)中选择“安全性”。 这会提供一个用于更改端口的选项。
+- 对于资源管理器 VM，可以从 [SQL 虚拟机资源](manage-sql-vm-portal.md#access-the-resource)中选择“安全性”。 这会提供一个用于更改端口的选项。
 
   ![在门户中更改 TCP 端口](./media/security-considerations-best-practices/sql-vm-change-tcp-port.png)
 
@@ -98,16 +116,14 @@ SQL Server 侦听非默认端口时，必须在连接时指定该端口。 例�
 
   - 如果必须使用 SA 登录名，请在预配后启用该登录名，并分配新的强密码。
 
-## <a name="additional-best-practices"></a>其他最佳做法
-
-除了本主题所述做法外，建议你在借鉴传统本地安全做法和虚拟机安全最佳做法的基础上回顾并实施安全最佳做法。 
-
-有关本地安全做法的详细信息，请参阅 [SQL Server 安装的安全注意事项](/sql/sql-server/install/security-considerations-for-a-sql-server-installation)和[安全中心](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)。 
-
-有关虚拟机安全性的详细信息，请参阅[虚拟机安全性概述](../../../security/fundamentals/virtual-machines-overview.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
+
+如果还对有关性能的最佳做法感兴趣，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](./performance-guidelines-best-practices-checklist.md)。
+
+若要了解与在 Azure VM 中运行 SQL Server 相关的其他主题，请参阅 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.yml)。
+
 
 若要了解详细信息，请参阅本系列中的其他文章：
 
@@ -118,5 +134,4 @@ SQL Server 侦听非默认端口时，必须在连接时指定该端口。 例�
 - [HADR 设置](hadr-cluster-best-practices.md)
 - [收集基线](performance-guidelines-best-practices-collect-baseline.md)
 
-若要了解与在 Azure VM 中运行 SQL Server 相关的其他主题，请参阅 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.yml)。
 

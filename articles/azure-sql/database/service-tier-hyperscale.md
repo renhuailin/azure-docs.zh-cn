@@ -10,15 +10,16 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 3/31/2021
-ms.openlocfilehash: a3a3ca1e4a6161f12b5695ac96a3d9e562a13947
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 7/8/2021
+ms.openlocfilehash: ca9bfaa6155c2d0f4600ed56bf5a3cab3880274c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693335"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722907"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结构已根据云环境做出调整，以确保即使在发生基础结构故障时，也仍能提供 99.99% 的可用性。 Azure SQL 数据库中使用了三种体系结构模型：
 
@@ -41,10 +42,10 @@ Azure SQL 数据库中的“超大规模”服务层级提供了以下附加功�
 - 几乎瞬时完成数据库备份（基于存储在 Azure Blob 存储中的文件快照），无论数据库大小，也不会对计算资源造成 IO 影响  
 - 在几分钟内快速完成数据库还原（基于文件快照），无需数小时或数天（不基于数据操作的大小）
 - 无论数据卷如何，由于更高的日志吞吐量和更快的事务提交速度，整体性能更高
-- 快速横向扩展 - 可预配一个或多个只读节点，以卸载读取工作负载并用作热备用服务器
+- 快速横向扩展 - 可预配一个或多个[只读副本](service-tier-hyperscale-replicas.md)，以减轻读取工作负载并将这些副本用作热备用服务器
 - 快速纵向扩展 - 可在不变的时间内纵向扩展计算资源，以在需要时应对繁重的工作负载，然后在不需要时重新纵向缩减计算资源。
 
-“超大规模”服务层级消除了传统上云数据库中出现的许多实际限制。 当大多数其他数据库受单个节点中可用资源的限制时，“超大规模”服务层级中的数据库则没有此类限制。 它具备灵活的存储体系结构，存储可按需增长。 实际上，不会使用定义的最大大小创建“超大规模”数据库。 “超大规模”数据库会按需扩大，你仅需为所使用的容量付费。 对于读取密集型工作负荷，“超大规模”服务层级通过按需预配其他只读副本来卸载读取工作负荷，从而实现快速横向扩展。
+“超大规模”服务层级消除了传统上云数据库中出现的许多实际限制。 当大多数其他数据库受单个节点中可用资源的限制时，“超大规模”服务层级中的数据库则没有此类限制。 它具备灵活的存储体系结构，存储可按需增长。 实际上，不会使用定义的最大大小创建“超大规模”数据库。 “超大规模”数据库会按需扩大，你仅需为所使用的容量付费。 对于读取密集型工作负载，“超大规模”服务层级通过按需预配其他副本来减轻读取工作负载，从而实现快速横向扩展。
 
 此外，创建数据库备份或纵向扩展/横向扩展所需的时间不再与数据库中的数据卷相关。 几乎可以即时备份“超大规模”数据库。 还可在几分钟内纵向扩展或横向扩展数十 TB 的数据库。 此功能使你无需担心受初始配置选项的约束。
 
@@ -69,7 +70,7 @@ Azure SQL 数据库中的“超大规模”服务层级提供了以下附加功�
 
 - **计算**：
 
-  “超大规模”计算单位按副本计费。 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)价格会自动应用到读取扩展副本。 我们默认为每个超大规模数据库创建一个主副本和一个只读副本。  用户可以在 1-5 的范围内调整副本总数（包括主副本）。
+  “超大规模”计算单位按副本计费。 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)价格将自动应用于高可用性副本和命名副本。 我们默认将为每个超大规模数据库创建一个主要副本和一个次要的[高可用性副本](service-tier-hyperscale-replicas.md)。  用户可根据所需的 [SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-database/) 在 0-4 的范围内调整高可用性副本总数。 
 
 - **存储**：
 
@@ -79,7 +80,7 @@ Azure SQL 数据库中的“超大规模”服务层级提供了以下附加功�
 
 ## <a name="distributed-functions-architecture"></a>分布式功能体系结构
 
-不同于将所有数据管理功能集中在一个位置/进程中的传统数据库引擎（即便是当今生产中所谓的分布式数据库也有单片数据引擎的多个副本），“超大规模”数据库将查询处理引擎（其中各种数据引擎的语义不同）与为数据提供长期存储和持久性的组件分隔开来。 通过这种方式，可根据需要顺利地扩大存储容量（初始目标是 100 TB）。 只读副本共享相同的存储组件，因此无需数据副本来启动新的可读副本。
+不同于将所有数据管理功能集中在一个位置/进程中的传统数据库引擎（即便是当今生产中所谓的分布式数据库也有单片数据引擎的多个副本），“超大规模”数据库将查询处理引擎（其中各种数据引擎的语义不同）与为数据提供长期存储和持久性的组件分隔开来。 通过这种方式，可根据需要顺利地扩大存储容量（初始目标是 100 TB）。 高可用性副本和命名副本共享相同的存储组件，因此无需进行数据复制即可运转新副本。
 
 下图说明了“超大规模”数据库中不同类型的节点：
 
@@ -141,22 +142,11 @@ ALTER DATABASE [DB2] MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen
 GO
 ```
 
-## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>连接到“超大规模”数据库的读取扩展副本
-
-在“超大规模”数据库中，由客户端提供的连接字符串中的 `ApplicationIntent` 参数决定连接是路由到写入副本，还是路由到只读的次要副本。 如果将 `ApplicationIntent` 设置为 `READONLY`并且数据库不具有辅助副本，连接将路由到主副本，默认执行 `ReadWrite` 行为。
-
-```cmd
--- Connection string with application intent
-Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
-```
-
-“超大规模”次要副本全部相同，它们使用与主要副本相同的服务级别目标。 如果存在多个次要副本，则会在所有可用的次要副本之间分配工作负荷。 每个次要副本单独更新。 因此，不同的次要副本可能存在（相对于主要副本的）不同的数据延迟。
-
 ## <a name="database-high-availability-in-hyperscale"></a>“超大规模”中的数据库高可用性
 
-与所有其他服务层级一样，“超大规模”保证已提交事务的数据持久性，而不管计算副本的可用性如何。 由于主要副本不可用而导致的停机时间取决于故障转移的类型（计划性或非计划性），以及是否至少存在一个次要副本。 在计划性故障转移（例如维护事件）中，系统将在启动故障转移之前创建新的主要副本，或使用现有的次要副本作为故障转移目标。 在非计划性故障转移（例如，主要副本发生硬件故障）中，系统使用次要副本（如果存在）作为故障转移目标，或者在可用计算容量池中创建新的主要副本。 对于后一种情况，停机持续时间更长，因为需要执行额外的步骤来创建新的主要副本。
+与所有其他服务层级一样，“超大规模”保证已提交事务的数据持久性，而不管计算副本的可用性如何。 由于主要副本不可用而导致的停机时间取决于故障转移的类型（计划内或计划外），以及是否至少存在一个高可用性副本。 在计划内故障转移（例如维护事件）中，系统将在启动故障转移之前创建新的主要副本，或使用现有的高可用性副本作为故障转移目标。 在计划外故障转移（例如，主要副本发生硬件故障）中，系统使用高可用性副本（如果存在）作为故障转移目标，或者在可用计算容量池中创建新的主要副本。 对于后一种情况，停机持续时间更长，因为需要执行额外的步骤来创建新的主要副本。
 
-有关“超大规模”SLA，请参阅 [Azure SQL 数据库的 SLA](https://azure.microsoft.com/support/legal/sla/sql-database/)。
+有关“超大规模”SLA，请参阅 [Azure SQL 数据库的 SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-database)。
 
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>超大规模数据库的灾难恢复
 
@@ -175,7 +165,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 所有区域均提供 Azure SQL 数据库超大规模层级选项，但在下列区域中默认启用该层级。 如果要在默认未启用超大规模的区域中创建超大规模数据库，可以通过 Azure 门户发送加入请求。 相关说明，请参阅[请求增加 Azure SQL 数据库配额](quota-increase-request.md)。 提交请求时，请遵循以下准则：
 
 - 使用[区域访问](quota-increase-request.md#region) SQL 数据库配额类型。
-- 在说明中，添加计算 SKU/内核总数（包括可读副本），并表明你正在请求超大规模容量。
+- 在说明中，添加计算 SKU/内核总数（包括高可用性副本和命名副本），并表明你正在请求超大规模容量。
 - 还要以 TB 为单位指定一段时间内所有数据库总大小的推测值。
 
 已启用区域：
@@ -230,11 +220,11 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 | 迁移到“超大规模”服务层级目前是单向操作 | 将数据库迁移到“超大规模”层级后，它不能直接迁移到非“超大规模”服务层级。 目前，将数据库从“超大规模”迁移到非“超大规模”的唯一方法是，使用 bacpac 文件或其他数据移动技术（大容量复制、Azure 数据工厂、Azure Databricks、SSIS 等）进行导出/导入。不支持从 Azure 门户、PowerShell（使用 [New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) 或 [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)）、Azure CLI（使用 [az sql db export](/cli/azure/sql/db#az_sql_db_export) 和 [az sql db import](/cli/azure/sql/db#az_sql_db_import)）以及从 [REST API](/rest/api/sql/) 进行 bacpac 导出/导入。 支持使用 SSMS 和 [SqlPackage](/sql/tools/sqlpackage) 版本 18.4 及更高版本对较小的超大规模数据库（最多 200 GB）进行 bacpac 导入/导出。 对于较大的数据库，bacpac 导出/导入可能需要很长时间，并且可能会因各种原因失败。|
 | 迁移包含内存中 OLTP 对象的数据库 | 超大规模支持内存中 OLTP 对象的子集，包括内存优化表类型、表变量和本机编译模块。 但是，如果要迁移的数据库中存在任何类型的内存中 OLTP 对象，则不支持从“高级”和“业务关键”服务层级迁移到“超大规模”。 若要将此类数据库迁移到“超大规模”，必须删除所有内存中 OLTP 对象及其依赖项。 迁移数据库之后，可以重新创建这些对象。 “超大规模”目前不支持持久的和非持久的内存优化表，必须将这些表更改为为磁盘表。|
 | 异地复制  | 超大规模上的[异地复制](active-geo-replication-overview.md)现为公共预览版。 |
-| 数据库复制 | 超大规模上的[数据库复制](database-copy.md)现为公共预览版。 |
 | 智能数据库功能 | 除了“强制计划”选项外，所有其他“自动优化”选项在“超大规模”中尚不受支持：这些选项可能看上去已启用，但不会提出任何建议或执行任何操作。 |
 | 查询性能见解 | “超大规模”数据库目前不支持 Query Performance Insights。 |
 | 收缩数据库 | “超大规模”数据库目前不支持 DBCC SHRINKDATABASE 或 DBCC SHRINKFILE。 |
 | 数据库完整性检查 | “超大规模”数据库目前不支持 DBCC CHECKDB。 可使用 DBCC CHECKFILEGROUP 和 DBCC CHECKTABLE 作为解决方法。 有关 Azure SQL 数据库中数据完整性管理的详细信息，请参阅 [Azure SQL 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。 |
+| 弹性作业 | 不支持使用超大规模数据库作为作业数据库。 但是，弹性作业可将超大规模数据库用作目标，就如同将任何其他 Azure SQL 数据库用作目标一样。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,16 +1,16 @@
 ---
 title: 关于服务网格
-description: 获取服务网格的概述、其体系结构和功能，以及在选择要部署的服务网格时应考虑的条件。
-author: paulbouwer
+description: 大致了解服务网格、支持的方案、选择条件以及要探索的后续步骤。
+author: pgibson
 ms.topic: article
-ms.date: 10/09/2019
-ms.author: pabouwer
-ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/29/2021
+ms.author: pgibson
+ms.openlocfilehash: b77ee6fb25f45b365003850627276c0ecd47c7b5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77594305"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741636"
 ---
 # <a name="about-service-meshes"></a>关于服务网格
 
@@ -28,48 +28,9 @@ ms.locfileid: "77594305"
 
 - **可观测性** - 洞察服务如何连接到它们之间流动的流量。 获取群集中所有流量以及入口/出口的指标、日志和跟踪。 将分布式跟踪功能添加到应用程序。
 
-## <a name="architecture"></a>体系结构
-
-服务网格通常由控制平面和数据平面构成。
-
-**控制平面** 具有许多为服务网格的管理提供支持的组件。 这些组件通常包括一个管理界面（UI 或 API）。 通常，还有一个组件管理规则和策略定义（定义服务网格应如何实现特定的功能）。 还有一些组件管理安全性的各个方面，例如 mTLS 的强标识和证书。 服务网格通常还包含指标或可观测性组件，该组件从工作负荷收集和聚合指标与遥测数据。
-
-**数据平面** 通常包括一个代理，该代理以透明方式作为分支注入到工作负荷。 此代理配置为控制进出包含工作负荷的 pod 的所有网络流量。 这样，就可以将代理配置为通过 mTLS 保护流量、动态路由流量、对流量应用策略，以及收集指标和跟踪信息。 
-
-![典型的服务网格体系结构](media/servicemesh/typical-architecture.png)
-
-## <a name="capabilities"></a>功能
-
-每个服务网格原生适合并专注于支持特定的方案，但你通常会发现，大多数服务网格实现下面的许多（但不是全部）功能。
-
-### <a name="traffic-management"></a>流量管理 
-
-- 协议 - 第7层（http、grpc）
-- 动态路由 - 条件、加权、镜像
-- 复原能力 - 超时、重试、断路器
-- 策略 - 访问控制、速率限制、配额
-- **测试** - 故障注入
-
-### <a name="security"></a>安全
-
-- 加密 - mTLS、证书管理、外部 CA
-- 强标识 - SPIFFE 或类似功能
-- 身份验证 - 身份验证、授权
-
-### <a name="observability"></a>可观察性
-
-- 指标 - 黄金指标、prometheus、grafana
-- **跟踪** - 跨工作负荷跟踪
-- 流量 - 群集、流入量/流出量
-
-### <a name="mesh"></a>网格
-
-- **支持的计算** - Kubernetes、虚拟机
-- **多群集** - 网关、联合
-
 ## <a name="selection-criteria"></a>选择条件
 
-在选择服务网格之前，请确保了解安装服务网格的要求和理由。 尝试提出以下问题。
+在选择服务网格之前，请确保了解安装服务网格的要求和理由。 提出下列问题。
 
 - **入口控制器是否足以满足我的需求？** - 有时，在入口位置使用 a/b 测试或流量拆分等功能就足以支持所需的方案。 不要无谓地增大环境的复杂性。
 
@@ -79,41 +40,38 @@ ms.locfileid: "77594305"
 
 - **是否能够以递进的方式采用此服务网格？** - 某些提供多种功能的服务网格能够以更递进的方式采用。 安装所需的组件即可确保成功。 随着使用越来越熟练或者需要更多的功能，可以探索这些功能。 避免从一开始就迫不急待地安装所有组件。
 
-如果在经过仔细的考虑后，你确定需要使用服务网格来提供所需的功能，则下一个决策是“要使用哪个服务网格？”
-
-请考虑以下几个方面，以及哪种描述与要求最相符。 这可以引导你找出最适合环境和工作负荷的解决方案。 [后续步骤](#next-steps)部分提供了进一步详细介绍具体的服务网格及其如何映射到这些方面的链接。
-
-- **技术** - 流量管理、策略、安全性、可观测性
-
-- **商务** - 商业支持、基金会 (CNCF)、OSS 许可证、监管
-
-- 操作 - 安装/升级、资源要求、性能要求、集成（指标、遥测、仪表板、工具、SMI）、混合工作负荷（Linux 和 Windows 节点池）、计算（Kubernetes、虚拟机）、多群集
-
-- **安全性** - 身份验证、标识、证书管理和轮换、可插接式外部 CA
-
-
 ## <a name="next-steps"></a>后续步骤
 
-以下文档提供了有关可在 Azure Kubernetes 服务 (AKS) 中试用的服务网格的详细信息：
+下一步，在 Azure Kubernetes 服务 (AKS) 上探索 Open Service Mesh (OSM)：
 
 > [!div class="nextstepaction"]
-> [详细了解 Istio ...][istio-about]
+> [了解 OSM 详细信息...][osm-about]
 
-> [!div class="nextstepaction"]
-> [详细了解 Linkerd ...][linkerd-about]
+此外，还可通过适用于每个服务网格的综合项目文档在 Azure Kubernetes 服务 (AKS) 上探索以下服务网格：
 
-> [!div class="nextstepaction"]
-> [详细了解 Consul ...][consul-about]
+- [Istio][istio]
+- [Linkerd][linkerd]
+- [Consul 连接][consul]
 
-你还可能想要了解服务网格接口 (SMI) - 适用于 Kubernetes 中的服务网格的标准接口：
+若要详细了解服务网格环境、更广泛的可用服务网格、工具和符合性，请探索：
+
+- [第 5 层服务网格环境][service-mesh-landscape]
+
+此外，用户可能还想要探索各种服务网格的标准化工作：
 
 - [服务网格接口 (SMI)][smi]
+- [服务网格联合][smf]
+- [服务网格性能 (SMP)][smp]
 
 
 <!-- LINKS - external -->
+[istio]: https://istio.io/latest/docs/setup/install/
+[linkerd]: https://linkerd.io/getting-started/
+[consul]: https://learn.hashicorp.com/tutorials/consul/service-mesh-deploy
+[service-mesh-landscape]: https://layer5.io/service-mesh-landscape
 [smi]: https://smi-spec.io/
+[smf]: https://github.com/vmware/hamlet
+[smp]: https://github.com/service-mesh-performance/service-mesh-performance
 
 <!-- LINKS - internal -->
-[istio-about]: ./servicemesh-istio-about.md
-[linkerd-about]: ./servicemesh-linkerd-about.md
-[consul-about]: ./servicemesh-consul-about.md
+[osm-about]: ./servicemesh-osm-about.md

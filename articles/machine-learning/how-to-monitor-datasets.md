@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: sgilley
-ms.author: copeters
-author: lostmygithubaccount
+ms.author: wibuchan
+author: buchananwp
 ms.date: 06/25/2020
-ms.topic: conceptual
-ms.custom: how-to, data4ml, contperf-fy21q2
-ms.openlocfilehash: 95fb2dfeea98b988eaeaea43efc4ea44fd6e33fd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.topic: how-to
+ms.custom: data4ml, contperf-fy21q2
+ms.openlocfilehash: 5d4c3974bdd1ef90556d19e3ca49cc613d36923d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770302"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729792"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）
 
@@ -41,7 +41,7 @@ Azure 机器学习数据集监视器（预览版）具有以下功能：
 ## <a name="prerequisites"></a>先决条件
 
 若要创建和使用数据集监视器，需要：
-* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 * 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 * [已安装适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/install)，其中包含 azureml-datasets 包。
 * 在数据中的文件路径、文件名或列中指定了带时间戳的结构化（表格）数据。
@@ -102,7 +102,7 @@ Azure 机器学习通过计算单个指标来简化偏移检测，该指标将�
 
 ## <a name="create-target-dataset"></a>创建目标数据集
 
-需要通过数据中的某个列或者派生自文件路径模式的某个虚拟列指定一个时间戳列，为目标数据集设置 `timeseries` 特征。 可通过 [Python SDK](#sdk-dataset) 或 [Azure 机器学习工作室](#studio-dataset)创建带时间戳的数据集。 必须指定表示“时间戳”的列，才能向数据集添加 `timeseries` 特征。 如果数据已分区成包含时间信息的文件夹结构（例如“{yyyy/MM/dd}”），请通过路径模式设置来创建虚拟列，并将其设置为“分区时间戳”，以提高时序功能的重要性。
+需要通过数据中的某个列或者派生自文件路径模式的某个虚拟列指定一个时间戳列，为目标数据集设置 `timeseries` 特征。 可通过 [Python SDK](#sdk-dataset) 或 [Azure 机器学习工作室](#studio-dataset)创建带时间戳的数据集。 必须指定表示“时间戳”的列，才能向数据集添加 `timeseries` 特征。 如果数据已分区为包含时间信息的文件夹结构（例如“{yyyy/MM/dd}”），请通过路径模式设置创建虚拟列，并设置为"分区时间戳"以启用时序 API 功能。
 
 # <a name="python"></a>[Python](#tab/python)
 <a name="sdk-dataset"></a>
@@ -147,11 +147,11 @@ dset = dset.register(ws, 'target')
 
 [![分区格式](./media/how-to-monitor-datasets/partition-format.png)](media/how-to-monitor-datasets/partition-format-expand.png)
 
-在“架构”设置中，通过指定的数据集中的虚拟列或实际列指定时间戳列：
+在“架构”设置中，从指定的数据集中的虚拟列或实际列中指定“时间戳”列。  此类型指示数据具有时间组件。 
 
 :::image type="content" source="media/how-to-monitor-datasets/timestamp.png" alt-text="设置时间戳":::
 
-如果按日期对数据分区（此处的示例就是如此），还可指定 partition_timestamp。  这样可以更高效地处理日期。
+如果数据已按日期或时间分区，如此处案例所示，还可以指定“分区时间戳”。 这样，就可以更高效地处理日期并启用可在训练期间利用的时序 API。
 
 :::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="分区时间戳":::
 
@@ -175,7 +175,7 @@ from datetime import datetime
 ws = Workspace.from_config()
 
 # get the target dataset
-dset = Dataset.get_by_name(ws, 'target')
+target = Dataset.get_by_name(ws, 'target')
 
 # set the baseline dataset
 baseline = target.time_before(datetime(2019, 2, 1))

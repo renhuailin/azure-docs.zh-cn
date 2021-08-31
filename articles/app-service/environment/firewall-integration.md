@@ -4,17 +4,20 @@ description: 了解如何与 Azure 防火墙集成，以保护应用服务环境
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 07/07/2021
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: b930412508753ba2025e8126b9720d9a519d9281
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: f2ac32c304365ba5f833df904d11400c89249c45
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220056"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113651145"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
+> [!NOTE]
+> 本文介绍用于独立应用服务计划的应用服务环境 v2
+> 
 
 应用服务环境 (ASE) 需要访问许多的外部依赖项才能正常运行。 ASE 驻留在客户的 Azure 虚拟网络 (VNet) 中。 客户必须允许 ASE 依赖项流量，对于想要锁定从 VNet 传出的所有流量的客户而言，这是一个问题。
 
@@ -241,6 +244,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 | \*.identity.azure.net:443 |
 | \*.ctldl.windowsupdate.com:80 |
 | \*.ctldl.windowsupdate.com:443 |
+| \*.prod.microsoftmetrics.com:443 |
 
 #### <a name="linux-dependencies"></a>Linux 依赖项 
 
@@ -374,6 +378,7 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 |\*ctldl.windowsupdate.com:443 |
 |\*.management.usgovcloudapi.net:443 |
 |\*.update.microsoft.com:443 |
+|\*.prod.microsoftmetrics.com:443 |
 |admin.core.usgovcloudapi.net:443 |
 |azperfmerges.blob.core.windows.net:443 |
 |azperfmerges.blob.core.windows.net:443 |
@@ -404,6 +409,7 @@ Linux 在 US Gov 区域中不可用，因此未在可选配置中列出。
 |gcwsprodgmdm2billing.queue.core.usgovcloudapi.net:443 |
 |gcwsprodgmdm2billing.table.core.usgovcloudapi.net:443 |
 |global.metrics.nsatc.net:443 |
+|prod.microsoftmetrics.com:443 |
 |go.microsoft.com:443 |
 |gr-gcws-prod-bd3.usgovcloudapp.net:443 |
 |gr-gcws-prod-bn1.usgovcloudapp.net:443 |

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f344b0f4dd93b921abc0c1c95c18c54e4486716
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 81e40a295d9572fb38a1289d4bdf661095b9ca7a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951886"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449116"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>计划和部署本地 Azure Active Directory 密码保护
 
@@ -188,6 +188,9 @@ Azure AD 密码保护代理服务通常位于你本地 AD DS 环境中的成员�
     ```powershell
     Import-Module AzureADPasswordProtection
     ```
+    
+    > [!WARNING]
+    > 必须使用 64 位版本的 PowerShell。 某些 cmdlet 可能不适用于 PowerShell (x86)。
 
 1. 若要检查 Azure AD 密码保护代理服务是否正在运行，请使用以下 PowerShell 命令：
 

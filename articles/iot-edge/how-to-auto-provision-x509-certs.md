@@ -2,20 +2,18 @@
 title: 使用 X.509 证书通过 DPS 自动预配设备 - Azure IoT Edge | Microsoft Docs
 description: 使用 X.509 证书通过设备预配服务测试 Azure IoT Edge 的自动设备预配
 author: kgremban
-manager: philmea
 ms.author: kgremban
-ms.reviewer: kevindaw
-ms.date: 03/01/2021
+ms.date: 06/18/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 180226741d77defb0a9f0d00165cf858cb65ecbb
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 4095207fbc4fbbf4cb3f6463e3091717fcd3921a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906505"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740656"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 X.509 证书创建和预配 IoT Edge 设备
 
@@ -123,7 +121,7 @@ Windows:
       }
       ```
 
-1. 选择“保存” 。
+1. 选择“保存”  。
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 转到[安装 IoT Edge 运行时](#install-the-iot-edge-runtime)部分来设置 IoT Edge 设备。
 
@@ -208,7 +206,7 @@ Windows:
       }
       ```
 
-1. 选择“保存” 。
+1. 选择“保存”  。
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。 转到下一部分来设置 IoT Edge 设备。
 
@@ -216,7 +214,28 @@ Windows:
 
 IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在容器中运行，允许你将其他容器部署到设备，以便在边缘上运行代码。
 
+<!-- 1.1 -->
+:::moniker range="=iotedge-2018-06"
+
+根据你的操作系统按照相应步骤安装 Azure IoT Edge：
+
+* [安装 IoT Edge for Linux](how-to-install-iot-edge.md)
+* [安装 IoT Edge for Linux on Windows 设备](how-to-install-iot-edge-on-windows.md)
+  * 此方案是运行 IoT Edge on Windows 设备的建议方法。
+* [使用 Windows 容器安装 IoT Edge](how-to-install-iot-edge-windows-on-windows.md)
+
+在设备上安装 IoT Edge 后，请返回到本文来预配此设备。
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
 按照[安装 Azure IoT Edge 运行时](how-to-install-iot-edge.md)中的步骤操作，然后返回到本文来预配设备。
+
+:::moniker-end
+<!-- end 1.2 -->
 
 只有 IoT Edge 1.0.9 或更高版本才支持使用 DPS 进行的 X.509 预配。
 
@@ -230,7 +249,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 * 设备上的设备标识证书链文件。
 * 设备上的设备标识密钥文件。
 
-### <a name="linux-device"></a>Linux 设备
+# <a name="linux"></a>[Linux](#tab/linux)
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
@@ -338,7 +357,57 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 :::moniker-end
 <!-- end 1.2 -->
 
-### <a name="windows-device"></a>Windows 设备
+# <a name="linux-on-windows"></a>[Linux on Windows](#tab/eflow)
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+可以使用 PowerShell 或 Windows Admin Center 来预配 IoT Edge 设备。
+
+### <a name="powershell"></a>PowerShell
+
+对于 PowerShell，请运行以下命令，其中将占位符值更新为你自己的值：
+
+```powershell
+Provision-EflowVm -provisioningType DPSX509 -scopeId <ID_SCOPE_HERE> -identityCertPath <ABSOLUTE_CERT_DEST_PATH_ON_WINDOWS_HOST> -identityPrivKeyPath <ABSOLUTE_PRIVATE_KEY_DEST_PATH_ON_WINDOWS_HOST>
+```
+
+### <a name="windows-admin-center"></a>Windows Admin Center
+
+对于 Windows Admin Center，请使用以下步骤：
+
+1. 在“Azure IoT Edge 设备预配”窗格上，从“预配方法”下拉列表中选择“X.509 证书(DPS)”。
+
+1. 在 [Azure 门户](https://ms.portal.azure.com/)中，导航到你的 DPS 实例。
+
+1. 在“概述”选项卡上，复制“ID 作用域”值。 将其粘贴到 Windows Admin Center 中的“作用域 ID”字段。
+
+1. 在 Windows Admin Center 的“注册 ID”字段中提供设备的注册 ID。
+
+1. 上传你的证书和私钥文件。
+
+1. 选择“使用所选方法进行预配”。
+
+   ![填写 X.509 证书预配的必填字段后，选择“使用所选方法进行预配”。](./media/how-to-install-iot-edge-on-windows/provisioning-with-selected-method-x509-certs.png)
+
+1. 预配完成后，选择“完成”。 将返回到主仪表板。 现在，你应该会看到一个列出的新设备，其类型为“`IoT Edge Devices`”。 你可以选择该 IoT Edge 设备以连接到它。 在“概述”页上以后，即可查看设备的“IoT Edge 模块列表”和“IoT Edge 状态”。
+
+:::moniker-end
+<!-- end 1.1. -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>目前，不支持在 IoT Edge for Linux for Windows 上运行的 IoT Edge 版本 1.2。
+
+:::moniker-end
+<!-- end 1.2 -->
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 1. 在管理员模式下打开 PowerShell 窗口。 在安装 IoT Edge 而不是 PowerShell (x86) 时，请确保使用 PowerShell 的 AMD64 会话。
 
@@ -358,15 +427,29 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
    >[!TIP]
    >配置文件以文件 URI 的形式存储证书和密钥信息。 但是，Initialize-IoTEdge 命令将为你处理此格式设置步骤，因此，可以提供证书和密钥文件在设备上的绝对路径。
 
+:::moniker-end
+<!-- end 1.1. -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>目前不支持在 Windows 上运行的 IoT Edge 版本 1.2。
+
+:::moniker-end
+<!-- end 1.2 -->
+
+---
+
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 
 如果运行时成功启动，则可以进入 IoT 中心，开始将 IoT Edge 模块部署到你的设备。
 
 可以验证是否使用了在设备预配服务中创建的个人注册。 在 Azure 门户中导航到设备预配服务实例。 打开创建的个人注册的注册详细信息。 注意注册状态是否为“已分配”并且设备 ID 已列出。 
 
-在设备上使用以下命令验证是否已成功安装并启动运行时。
+在设备上使用以下命令验证是否已成功安装并启动 IoT Edge。
 
-### <a name="linux-device"></a>Linux 设备
+# <a name="linux"></a>[Linux](#tab/linux)
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
@@ -388,6 +471,7 @@ journalctl -u iotedge --no-pager --no-full
 ```cmd/sh
 iotedge list
 ```
+
 :::moniker-end
 
 <!-- 1.2 -->
@@ -410,9 +494,53 @@ sudo iotedge system logs
 ```cmd/sh
 sudo iotedge list
 ```
+
 :::moniker-end
 
-### <a name="windows-device"></a>Windows 设备
+# <a name="linux-on-windows"></a>[Linux on Windows](#tab/eflow)
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+连接到 IoT Edge for Linux on Windows 虚拟机。
+
+```powershell
+Connect-EflowVM
+```
+
+检查 IoT Edge 服务的状态。
+
+```cmd/sh
+sudo systemctl status iotedge
+```
+
+检查服务日志。
+
+```cmd/sh
+sudo journalctl -u iotedge --no-pager --no-full
+```
+
+列出正在运行的模块。
+
+```cmd/sh
+sudo iotedge list
+```
+
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>目前，不支持在 IoT Edge for Linux for Windows 上运行的 IoT Edge 版本 1.2。
+
+:::moniker-end
+<!-- end 1.2 -->
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+<!-- 1.1 -->
+:::moniker range="=iotedge-2018-06"
 
 检查 IoT Edge 服务的状态。
 
@@ -431,6 +559,19 @@ Get-Service iotedge
 ```powershell
 iotedge list
 ```
+
+:::moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>目前不支持在 Windows 上运行的 IoT Edge 版本 1.2。
+
+:::moniker-end
+<!-- end 1.2 -->
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

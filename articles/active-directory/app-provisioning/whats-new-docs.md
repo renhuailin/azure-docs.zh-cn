@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 应用程序预配中的新增内容
 description: 有关 Azure Active Directory 应用程序预配的新文档和更新文档。
-ms.date: 06/02/2021
+ms.date: 08/03/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,47 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: mtillman
-ms.openlocfilehash: 77f09b6285a5fcb3539c377b65d333141384c81e
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 23d3c074ee1a4cb07b4770b27ee1ead145bae28a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409030"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732404"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory 应用程序预配：新增内容
 
 欢迎查看 Azure Active Directory 应用程序预配文档中的新增内容。 本文列出了过去三个月内添加的新文档以及有重要更新的文档。 若要了解预配服务的新增内容，请查看 [Azure Active Directory 中的新增功能](../fundamentals/whats-new.md)。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="updated-articles"></a>更新的文章
+
+- [有关在 Azure Active Directory 中编写特性映射表达式的参考](functions-for-customizing-application-data.md)
+- [使用 Microsoft Graph API 配置预配](application-provisioning-configuration-api.md)
+- [在 Azure Active Directory 中规划自动用户预配部署](plan-auto-user-provisioning.md)
+- [计划云 HR 应用程序到 Azure Active Directory 的用户预配](plan-cloud-hr-provision.md)
+- [Azure Active Directory 中的应用程序预配的已知问题](known-issues.md)
+- [Azure AD ECMA 连接器主机通用 SQL 连接器教程](tutorial-ecma-sql-connector.md)
+- [Azure Active Directory 中的应用预配是什么？](user-provisioning.md)
+- [ECMA 连接器主机问题故障排除](on-premises-ecma-troubleshoot.md)
+- [导出 Microsoft Identity Manager 连接器以与 Azure AD ECMA 连接器主机一起使用](on-premises-migrate-microsoft-identity-manager.md)
+- [从 Azure AD 本地应用程序预配到已启用 SCIM 的应用](on-premises-scim-provisioning.md)
+- [Azure AD ECMA 连接器主机泛型 SQL 连接器配置](on-premises-sql-connector-configure.md)
+
+
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="new-articles"></a>新文章
+
+- [使用 Microsoft Graph API 配置预配](application-provisioning-configuration-api.md)
+- [了解应用程序预配中表达式生成器的工作原理](expression-builder.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [应用程序预配在 Azure Active Directory 中的工作方式](how-provisioning-works.md)
+- [计划云 HR 应用程序到 Azure Active Directory 的用户预配](plan-cloud-hr-provision.md)
+- [Azure Active Directory 预配与 Workday 的集成方式](workday-integration-reference.md)
+
 
 ## <a name="may-2021"></a>2021 年 5 月
 

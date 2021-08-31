@@ -11,18 +11,18 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: a42db5b6787f56f981ea1afa34958fecf6b2f9fc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 75ee1ca92fb687975dabe0011ce8a95b8c03172b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477007"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723086"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Java 应用
 
 Azure 应用服务可让 Java 开发人员在完全托管服务中快速生成、部署和缩放其 Java SE、Tomcat 和 JBoss EAP Web 应用程序。 可以在命令行或者 IntelliJ、Eclipse 或 Visual Studio Code 等编辑器中使用 Maven 插件部署应用程序。
 
-本指南为使用应用服务的 Java 开发人员提供了重要概念和说明。 如果你从未用过 Azure 应用服务，首先应该通读 [Java 快速入门](quickstart-java.md)。 [应用服务常见问题解答](faq-configuration-and-management.md)中解答了有关使用应用服务且非特定于 Java 开发的一般问题。
+本指南为使用应用服务的 Java 开发人员提供了重要概念和说明。 如果你从未用过 Azure 应用服务，首先应该通读 [Java 快速入门](quickstart-java.md)。 [应用服务常见问题解答](faq-configuration-and-management.yml)中解答了有关使用应用服务且非特定于 Java 开发的一般问题。
 
 ## <a name="show-java-version"></a>显示 Java 版本
 
@@ -69,7 +69,7 @@ az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
 若要将 .jar 文件部署到 Java SE，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#rest)。 
 
 > [!NOTE]
->  必须将 .jar 应用程序命名为 `app.jar`，应用服务才能识别和运行应用程序。 Maven 插件（如上所述）将在部署期间自动对应用程序进行重命名。 如果不希望将 JAR 重命名为 app.jar，可上传含有该命令的 shell 脚本来运行 .jar 应用。 将此脚本的绝对路径粘贴到门户“配置”部分的[启动文件](faq-app-service-linux.md#built-in-images)文本框中。 启动脚本不从放置它的目录运行。 因此，请始终使用绝对路径在启动脚本中引用文件（例如：`java -jar /home/myapp/myapp.jar`）。
+>  必须将 .jar 应用程序命名为 `app.jar`，应用服务才能识别并运行该应用程序。 在部署过程中，（上述）Maven 插件会自动重命名应用程序。 如果不希望将 JAR 重命名为 app.jar，可使用命令上传 shell 脚本来运行 .jar 应用。 将此脚本的绝对路径粘贴到门户的“配置”部分的[启动文件](/azure/app-service/faq-app-service-linux#built-in-images)文本框中。 启动脚本不从放置它的目录运行。 因此，请始终使用绝对路径在启动脚本中引用文件（例如：`java -jar /home/myapp/myapp.jar`）。
 
 ### <a name="tomcat"></a>Tomcat
 
@@ -126,7 +126,7 @@ az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
 
 #### <a name="timed-recording"></a>计时记录
 
-若要进行定时记录，需要 Java 应用程序的 PID（进程 ID）。 要查找 PID，请打开浏览器，访问 Web 应用的 SCM 站点，网址为 https://<站点名称>.scm.azurewebsites.net/ProcessExplorer/。 此页面显示 Web 应用中正在运行的进程。 在表中找到名为“java”的进程，并复制相应的 PID（进程 ID）。
+若要进行定时记录，需要 Java 应用程序的 PID（进程 ID）。 若要查找 PID，请打开浏览器访问 Web 应用的 SCM 站点 (`https://<your-site-name>.scm.azurewebsites.net/ProcessExplorer/`)。 此页面显示 Web 应用中正在运行的进程。 在表中找到名为“java”的进程，并复制相应的 PID（进程 ID）。
 
 接下来，打开 SCM 站点顶部工具栏中的“调试控制台”，运行以下命令。 将 `<pid>` 替换为此前复制的进程 ID。 此命令会启动对 Java 应用程序的 30 秒探查器记录，并在 `D:\home` 目录中生成名为 `timed_recording_example.jfr` 的文件。
 
@@ -156,7 +156,7 @@ jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/hom
 
 #### <a name="continuous-recording"></a>连续记录
 
-你可以使用 Zulu 网络流量记录器在对运行时的性能影响最小的情况下连续分析 Java 应用程序（[源](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)）。 为此，请运行以下 Azure CLI 命令，通过必要的配置创建名为 JAVA_OPTS 的应用设置。 应用启动后，JAVA_OPTS 应用设置的内容会被传递到 `java` 命令。
+你可以使用 Zulu 网络流量记录器在对运行时的性能影响最小的情况下连续分析 Java 应用程序。 为此，请运行以下 Azure CLI 命令，通过必要的配置创建名为 JAVA_OPTS 的应用设置。 应用启动后，JAVA_OPTS 应用设置的内容会被传递到 `java` 命令。
 
 ```azurecli
 az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --settings JAVA_OPTS=-XX:StartFlightRecording=disk=true,name=continuous_recording,dumponexit=true,maxsize=1024m,maxage=1d
@@ -197,7 +197,7 @@ jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
 
 - [配置应用设置](configure-common.md#configure-app-settings)
 - [设置自定义域](app-service-web-tutorial-custom-domain.md)
-- [配置 SSL 绑定](configure-ssl-bindings.md)
+- [配置 TLS/SSL 绑定](configure-ssl-bindings.md)
 - [添加 CDN](../cdn/cdn-add-to-web-app.md)
 - [配置 Kudu 站点](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
@@ -206,7 +206,7 @@ jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
 
 若要设置分配的内存或其他 JVM 运行时选项，请使用这些选项创建名为 `JAVA_OPTS` 的[应用设置](configure-common.md#configure-app-settings)。 应用服务在启动时，会将此设置作为环境变量传递给 Java 运行时。
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `-Xms512m -Xmx1204m`。
+在 Azure 门户中，在 Web 应用的“应用设置”下为 Java SE 创建一个名为 `JAVA_OPTS` 的新应用设置，或为包括 `-Xms512m -Xmx1204m` 等其他设置的 Tomcat 创建一个 `CATALINA_OPTS`。
 
 若要通过 Maven 插件配置应用设置，请在 Azure 插件部分中添加设置/值标记。 以下示例设置特定的最小和最大 Java 堆大小：
 
@@ -269,7 +269,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="authenticate-users-easy-auth"></a>对用户进行身份验证（简易身份验证）
 
-在 Azure 门户中使用“身份验证和授权”选项设置应用身份验证。 在此处，可以使用 Azure Active Directory 或社交登录名（例如 Facebook、Google、或 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。 有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](configure-authentication-provider-aad.md)，以及其他标识提供者的相关文章。 如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](app-service-authentication-how-to.md)一文中的说明。
+在 Azure 门户中使用“身份验证和授权”选项设置应用身份验证。 在此处，可以使用 Azure Active Directory 或社交登录名（例如 Facebook、Google、或 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。 有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](configure-authentication-provider-aad.md)，以及其他标识提供者的相关文章。 如果需要多个登录提供程序，请按照“[自定义登录和注销](configure-authentication-customize-sign-in-out.md)”文章中的说明执行操作。
 
 #### <a name="java-se"></a>Java SE
 
@@ -297,7 +297,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-若要注销用户，请使用 `/.auth/ext/logout` 路径。 若要执行其他操作，请参阅介绍[应用服务身份验证和授权的用法](./app-service-authentication-how-to.md)的文档。 还可以阅读关于 Tomcat [HttpServletRequest 接口](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)及其方法的官方文档。 以下 Servlet 方法是基于你的应用服务配置解除冻结的：
+若要注销用户，请使用 `/.auth/ext/logout` 路径。 若要执行其他操作，请参阅关于[自定义登录和注销](configure-authentication-customize-sign-in-out.md)的文档。 还可以阅读关于 Tomcat [HttpServletRequest 接口](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html)及其方法的官方文档。 以下 Servlet 方法是基于你的应用服务配置解除冻结的：
 
 ```java
 public boolean isSecure()
@@ -311,7 +311,7 @@ public int getServerPort()
 
 ### <a name="configure-tlsssl"></a>配置 TLS/SSL
 
-按照[在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)中的说明上传现有的 SSL 证书，并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
+按照[在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)中的说明上传现有的 TLS/SSL 证书，并将与应用的域名绑定。 默认情况下，该应用仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 TLS/SSL。
 
 ### <a name="use-keyvault-references"></a>使用 Key Vault 引用
 
@@ -337,7 +337,7 @@ public int getServerPort()
 
 #### <a name="initialize-the-java-key-store"></a>初始化 Java 密钥存储
 
-要初始化 `import java.security.KeyStore` 对象，请使用密码加载密钥存储文件。 两个密钥存储的默认密码均为“changeit”。
+要初始化 `import java.security.KeyStore` 对象，请使用密码加载密钥存储文件。 这两个密钥存储的默认密码均为 `changeit`。
 
 ```java
 KeyStore keyStore = KeyStore.getInstance("jks");
@@ -369,11 +369,11 @@ Azure Monitor Application Insights 是一项云本机应用程序监视服务，
 
 #### <a name="azure-portal"></a>Azure 门户
 
-要从 Azure 门户启用 Application Insights，请转到左侧菜单的“Application Insights”，选择“启用 Application Insights” 。 默认情况下，将使用与 Web 应用名称相同的新 Application Insights 资源。 可以选择使用现有的 Application Insights 资源，也可以更改名称。 单击底部的“应用”
+要从 Azure 门户启用“Application Insights”，请转到左侧菜单的“Application Insights”，选择“启用 Application Insights”。 默认情况下，将使用与 Web 应用名称相同的新 Application Insights 资源。 可以选择使用现有的 Application Insights 资源，也可以更改名称。 单击底部的“应用”
 
 #### <a name="azure-cli"></a>Azure CLI
 
-要通过 Azure CLI 启用，需要创建一个 Application Insights 资源并在门户上设置几个应用设置，以将 Application Insights 连接到 Web 应用。
+要通过 Azure CLI 启用，需要创建一个 Application Insights 资源并在 Azure 门户上设置几个应用设置，以将 Application Insights 连接到 Web 应用。
 
 1. 启用 Applications Insights 扩展
 
@@ -548,16 +548,18 @@ Azure Monitor Application Insights 是一项云本机应用程序监视服务，
 
 #### <a name="shared-server-level-resources"></a>共享的服务器级资源
 
-Windows 上的应用服务的 Tomcat 安装位于应用服务计划的共享空间中。 不能直接修改 Tomcat 安装以进行服务器范围的配置。 要对 Tomcat 安装进行服务器级别的配置更改，必须将 Tomcat 复制到本地文件夹，可在其中修改 Tomcat 的配置。 
+Windows 上的应用服务上的 Tomcat 安装存在于应用服务计划中的共享空间内。 不能为服务器范围的配置直接修改 Tomcat 安装。 若要对 Tomcat 安装进行服务器级配置更改，必须将 Tomcat 复制到本地文件夹，你可以在其中修改 Tomcat 的配置。 
 
 ##### <a name="automate-creating-custom-tomcat-on-app-start"></a>在应用启动时自动创建自定义 Tomcat
 
-可以使用启动脚本在 Web 应用启动之前执行操作。 用于自定义 Tomcat 的启动脚本需要完成以下步骤：
+你可以使用启动脚本在 web 应用启动之前执行操作。 用于自定义 Tomcat 的启动脚本需要完成以下步骤：
 
 1. 检查是否已在本地复制并配置 Tomcat。 如果是，启动脚本可以在此处结束。
-2. 在本地复制 Tomcat。
+2. 本地复制 Tomcat。
 3. 进行所需的配置更改。
-4. 表示配置已成功完成。
+4. 指示配置已成功完成。
+
+对于 Windows 站点，在 `wwwroot` 目录中创建一个名为 `startup.cmd` 或 `startup.ps1` 的文件。 这样将在 Tomcat 服务器启动之前自动执行。
 
 下面是完成这些步骤的 PowerShell 脚本：
 
@@ -586,11 +588,11 @@ Windows 上的应用服务的 Tomcat 安装位于应用服务计划的共享空�
 
 ##### <a name="transforms"></a>转换
 
-自定义 Tomcat 版本的一个常见用例是修改 `server.xml`、`context.xml` 或 `web.xml` Tomcat 配置文件。 应用服务已修改这些文件以提供平台功能。 要继续使用这些功能，请务必在更改这些文件时保留其内容。 为此，建议使用 [XSL 转换 (XSLT)](https://www.w3schools.com/xml/xsl_intro.asp)。 使用 XSL 转换对 XML 文件进行更改，同时保留文件的原始内容。
+自定义 Tomcat 版本的一个常见用例是修改 `server.xml`、`context.xml` 或 `web.xml` Tomcat 配置文件。 应用服务已修改这些文件以提供平台功能。 若要继续使用这些功能，请在对这些文件进行更改时保留其内容，这一点很重要。 为实现此目的，建议使用 [XSL 转换 (XSLT)](https://www.w3schools.com/xml/xsl_intro.asp)。 使用 XSL 转换对 XML 文件进行更改，同时保留该文件的原始内容。
 
-###### <a name="example-xslt-file"></a>XSLT 文件示例
+###### <a name="example-xslt-file"></a>示例 XSLT 文件
 
-此转换示例将一个新的连接器节点添加到 `server.xml`。 请记住标识转换，它会保留文件的原始内容。
+此示例转换将新的连接器节点添加到 `server.xml`。 请注意“标识转换”，它会保留文件的原始内容。
 
 ```xml
     <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
@@ -656,7 +658,7 @@ Windows 上的应用服务的 Tomcat 安装位于应用服务计划的共享空�
 
 ###### <a name="function-for-xsl-transform"></a>用于 XSL 转换的函数
 
-PowerShell 具有使用 XSL 转换来转换 XML 文件的内置工具。 以下脚本是一个示例函数，可在 `startup.ps1` 中使用该函数来执行转换：
+PowerShell 具有使用 XSL 转换来转换 XML 文件的内置工具。 下面的脚本是一个示例函数，你可以在 `startup.ps1` 中使用它来执行转换：
 
 ```powershell
     function TransformXML{
@@ -692,7 +694,7 @@ PowerShell 具有使用 XSL 转换来转换 XML 文件的内置工具。 以下�
 
 ##### <a name="app-settings"></a>应用设置
 
-平台还需要知道 Tomcat 的自定义版本的安装位置。 可以在 `CATALINA_BASE` 应用设置中设置安装位置。
+平台还需要了解自定义版本的 Tomcat 的安装位置。 可以在 `CATALINA_BASE` 应用设置中设置安装的位置。
 
 可以使用 Azure CLI 更改此设置：
 
@@ -700,17 +702,17 @@ PowerShell 具有使用 XSL 转换来转换 XML 文件的内置工具。 以下�
     az webapp config appsettings set -g $MyResourceGroup -n $MyUniqueApp --settings CATALINA_BASE="%LOCAL_EXPANDED%\tomcat"
 ```
 
-或者，可以在 Azure 门户中手动更改此设置：
+或者，可以在 Azure 门户中手动更改设置：
 
-1. 转到“设置” > “配置” > “应用程序设置”  。
+1. 请转到“设置” > “配置” > “应用程序设置”。
 1. 选择“新建应用程序设置”。
-1. 使用以下值创建运行此设置：
+1. 使用以下值创建设置：
    1. **名称**：`CATALINA_BASE`
    1. **值**：`"%LOCAL_EXPANDED%\tomcat"`
 
 ##### <a name="example-startupps1"></a>示例 startup.ps1
 
-下面的示例脚本将自定义 Tomcat 复制到本地文件夹，执行 XSL 转换，并指示转换已成功：
+下面的示例脚本会将自定义 Tomcat 复制到本地文件夹，执行 XSL 转换，并指示转换成功：
 
 ```powershell
     # Locations of xml and xsl files
@@ -856,7 +858,7 @@ PowerShell 具有使用 XSL 转换来转换 XML 文件的内置工具。 以下�
 
 #### <a name="shared-server-level-resources"></a>共享的服务器级资源
 
-添加共享的服务器级数据源需要编辑 Tomcat 的 server.xml。 首先，上传[启动脚本](faq-app-service-linux.md#built-in-images)，然后在“配置” > “启动命令”中设置该脚本的路径 。 你可以使用 [FTP](deploy-ftp.md) 上传启动脚本。
+添加共享的服务器级数据源需要编辑 Tomcat 的 server.xml。 首先，上传[启动脚本](/azure/app-service/faq-app-service-linux#built-in-images)，然后在“配置” > “启动命令”中设置该脚本的路径 。 你可以使用 [FTP](deploy-ftp.md) 上传启动脚本。
 
 启动脚本将进行 [xsl 转换](https://www.w3schools.com/xml/xsl_intro.asp)，转换为 server.xml 文件，并将所得的 xml 文件输出到 `/usr/local/tomcat/conf/server.xml`。 启动脚本应通过 apk 安装 libxslt。 你的 xsl 文件和启动脚本均可通过 FTP 上传。 下面是一个示例启动脚本。
 
@@ -1020,11 +1022,11 @@ JBoss EAP 仅适用于高级 v3 和独立 v2 应用服务计划类型。 在公�
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK 版本和维护
 
-Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.azul.com/) 提供的 [Zulu](https://www.azul.com/downloads/azure-only/zulu/)。 Azul Zulu Enterprise 内部版 OpenJDK 是适用于 Azure 和 Azure Stack 的 OpenJDK 的免费、多平台、生产就绪型发行版，由 Microsoft 及 Azul Systems 提供支持。 这些版本包含构建和运行 Java SE 应用程序所需的所有组件。 你可以通过 [Java JDK 安装](/azure/developer/java/fundamentals/java-jdk-long-term-support)安装 JDK。
+Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.azul.com/) 提供的 [Zulu](https://www.azul.com/downloads/azure-only/zulu/)。 Azul Zulu Enterprise 内部版 OpenJDK 是适用于 Azure 和 Azure Stack 的 OpenJDK 的免费、多平台、生产就绪型发行版，由 Microsoft 及 Azul Systems 提供支持。 这些版本包含构建和运行 Java SE 应用程序所需的所有组件。 你可以通过 [Java JDK 安装](/azure/developer/java/fundamentals/java-support-on-azure)安装 JDK。
 
 主要版本更新将通过 Azure 应用服务中的新运行时选项提供。 客户可以通过配置应用服务部署来更新到这些较新的 Java 版本，他们需要负责测试和确保重大更新符合其需求。
 
-支持的 JDK 将在每年的 1 月、4 月、7 月和 10 月按季度自动修补。 有关 Azure 上的 Java 的详细信息，请参阅[此支持文档](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+支持的 JDK 将在每年的 1 月、4 月、7 月和 10 月按季度自动修补。 有关 Azure 上的 Java 的详细信息，请参阅[此支持文档](/azure/developer/java/fundamentals/java-support-on-azure)。
 
 ### <a name="security-updates"></a>安全更新
 
@@ -1049,4 +1051,5 @@ Tomcat 8.0 [已经在 2018 年 9 月 30 日生命周期终止 (EOL)。](https://
 
 请访问[面向 Java 开发人员的 Azure](/java/azure/) 中心查找 Azure 快速入门、教程和 Java 参考文档。
 
-[应用服务 Linux 常见问题解答](faq-app-service-linux.md)中解答了并不特定于 Java 开发的、适用于 Linux 的应用服务的一般用法问题。
+- [应用服务 Linux 常见问题解答](faq-app-service-linux.yml)
+- [环境变量和应用设置参考](reference-app-settings.md)

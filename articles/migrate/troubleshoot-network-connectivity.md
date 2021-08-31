@@ -6,13 +6,13 @@ ms.author: v-ssudhir
 ms.manager: deseelam
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/21/2021
-ms.openlocfilehash: 9e987b4db88379e0dfe40b8839b073b893811fb4
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 06/15/2021
+ms.openlocfilehash: 1b2dd711fb44b1b6b684257e5e5f6abefb5eda50
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110547514"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291146"
 ---
 # <a name="troubleshoot-network-connectivity"></a>排查网络连接问题
 本文帮助你在专用终结点使用 Azure Migrate 排查网络连接问题。
@@ -61,6 +61,7 @@ ms.locfileid: "110547514"
 
 如果 DNS 解析不正确，请执行以下步骤：  
 
+建议用于测试：通过使用专用链接资源 FQDN 及其相关专用 IP 地址来编辑本地设备上的 DNS 主机文件，以此手动更新源环境的 DNS 记录。
 - 如果使用自定义 DNS，请查看自定义 DNS 设置，并验证 DNS 配置是否正确。 有关指南，请参阅[专用终结点概述：DNS 配置](../private-link/private-endpoint-overview.md#dns-configuration)。
 - 如果使用 Azure 提供的 DNS 服务器，请参阅以下部分进一步排除故障。  
 
@@ -121,3 +122,146 @@ Azure Migrate 自动创建专用 DNS 区域（用户选择的缓存/复制存储
 - 自定义网关 (NAT) 解决方案，可能会影响流量（包括来自 DNS 查询的流量）的路由方式。
 
 有关详细信息，请参阅[专用终结点连接问题的排除指南。](../private-link/troubleshoot-private-endpoint-connectivity.md)  
+
+## <a name="common-issues-while-using-azure-migrate-with-private-endpoints"></a>使用结合专用终结点的 Azure Migrate 时的常见问题
+本部分将列出一些常见问题，并提供便于你自行进行故障排除的建议步骤以解决这些问题。
+
+### <a name="appliance-registration-fails-with-the-error-forbiddentoaccesskeyvault"></a>设备注册失败，出现 ForbiddenToAccessKeyVault 错误
+由于发生错误“<ErrorMessage>”，无法对“<KeyVaultName>”执行 Azure Key Vault 创建或更新操作 
+#### <a name="possible-causes"></a>可能的原因：
+如果用于注册设备的 Azure 帐户没有所需权限，或者 Azure Migrate 设备无法访问 Key Vault，则可能发生此问题。
+#### <a name="remediation"></a>补救措施：
+排查 Key Vault 访问问题的步骤：
+1. 确保用于注册设备的 Azure 用户帐户在订阅上至少具有“参与者”权限。
+2. 确保尝试注册设备的用户有权访问 Key Vault，并且已在“Key Vault”>“访问策略”部分中为其分配了访问策略。 [了解详细信息](../key-vault/general/assign-access-policy-portal.md)
+- [详细了解](./migrate-appliance.md#appliance---vmware)所需的 Azure 角色和权限。
+
+排查与 Key Vault 连接问题的步骤：如果已启用设备进行专用终结点连接，请使用以下步骤排查网络连接问题：
+- 请确保该设备托管在同一虚拟网络中，或者通过专用链接连接到目标 Azure 虚拟网络（已在其中创建 Key Vault 专用终结点）。 Key Vault 专用终结点将在创建项目期间选择的虚拟网络中创建。 可以在“Azure Migrate”>“属性”页中验证该虚拟网络的详细信息。
+![Azure Migrate 属性](./media/how-to-use-azure-migrate-with-private-endpoints/azure-migrate-properties-page.png)  
+
+- 确保设备通过专用链接与 Key Vault 建立网络连接。 若要验证专用链接的连接，请从托管设备的本地服务器执行 Key Vault 资源终结点的 DNS 解析，并确保其解析为专用 IP 地址。
+- 转到“Azure Migrate: 发现和评估”>“属性”，找到密钥生成步骤期间创建的 Key Vault 等资源的专用终结点详细信息。  
+
+    ![Azure Migrate 服务器评估属性](./media/how-to-use-azure-migrate-with-private-endpoints/azure-migrate-server-assessment-properties.png)  
+- 选择“下载 DNS 设置”以下载 DNS 映射。
+
+    ![下载 DNS 设置](./media/how-to-use-azure-migrate-with-private-endpoints/download-dns-settings.png)  
+
+- 打开命令行并运行以下 nslookup 命令，验证与 DNS 设置文件中提到的 Key Vault URL 之间的网络连接。   
+
+    ```console
+    nslookup <your-key-vault-name>.vault.azure.net
+    ```
+
+    如果运行 ns lookup　命令通过公共终结点解析 Key Vault 的 IP 地址，将会看到如下所示的结果：
+
+    ```console
+    c:\ >nslookup <your-key-vault-name>.vault.azure.net
+
+    Non-authoritative answer:
+    Name:    
+    Address:  (public IP address)
+    Aliases:  <your-key-vault-name>.vault.azure.net
+    ```
+
+    如果运行 ns lookup　命令通过专用终结点解析 Key Vault 的 IP 地址，将会看到如下所示的结果：
+
+    ```console
+    c:\ >nslookup your_vault_name.vault.azure.net
+
+    Non-authoritative answer:
+    Name:    
+    Address:  10.12.4.20 (private IP address)
+    Aliases:  <your-key-vault-name>.vault.azure.net
+              <your-key-vault-name>.privatelink.vaultcore.azure.net
+    ```
+
+    nslookup 命令应解析为如上所述的专用 IP 地址。 专用 IP 地址应与 DNS 设置文件中列出的 IP 地址相匹配。
+
+如果 DNS 解析不正确，请执行以下步骤：
+1. 通过使用 DNS 映射及其相关专用 IP 地址来编辑本地设备上的 DNS 主机文件，以此手动更新源环境的 DNS 记录。 此选项建议用于测试。
+
+   ![DNS 主机文件](./media/how-to-use-azure-migrate-with-private-endpoints/dns-hosts-file-1.png)
+
+2. 如果使用自定义 DNS 服务器，请查看自定义 DNS 设置，并验证 DNS 配置是否正确。 有关指南，请参阅[专用终结点概述：DNS 配置](../private-link/private-endpoint-overview.md#dns-configuration)。
+3. 如果问题仍然存在，请[参阅本部分](#validate-the-private-dns-zone)以进一步进行故障排除。
+
+验证连接后，请重试注册过程。
+
+### <a name="start-discovery-fails-with-the-error-agentnotconnected"></a>启动发现失败，出现 AgentNotConnected 错误
+设备无法启动发现，因为本地代理无法与 Azure Migrate 服务终结点（Azure 中的 <URLname>）进行通信。
+
+![代理未连接错误](./media/how-to-use-azure-migrate-with-private-endpoints/agent-not-connected-error.png)  
+
+#### <a name="possible-causes"></a>可能的原因：
+如果设备无法访问错误消息中提到的服务终结点，则可能出现此问题。
+#### <a name="remediation"></a>补救措施：
+确保设备直接或通过代理进行连接，并且可以解析错误消息中提供的服务终结点。  
+
+如果已启用设备进行专用终结点连接，请确保该设备已通过专用链接连接到 Azure 虚拟网络，并且可以解析错误消息中提供的服务终结点。
+
+排查与 Azure Migrate 服务终结点的专用链接连接问题的步骤：
+
+如果已启用设备进行专用终结点连接，请使用以下步骤排查网络连接问题：
+
+- 请确保该设备托管在同一虚拟网络中，或者通过专用链接连接到目标 Azure 虚拟网络（已在其中创建专用终结点）。 Azure Migrate 服务专用终结点将在创建项目期间选择的虚拟网络中创建。 可以在“Azure Migrate”>“属性”页中验证该虚拟网络的详细信息。
+
+![Azure Migrate 属性](./media/how-to-use-azure-migrate-with-private-endpoints/azure-migrate-properties-page.png)   
+
+- 确保设备通过专用链接的连接与错误消息中提到的服务终结点 URL 及其他 URL 建立网络连接。 若要验证专用链接的连接，请从托管设备的本地服务器执行 URL 的 DNS 解析，并确保其解析为专用 IP 地址。
+- 转到“Azure Migrate: 发现和评估”>“属性”，找到密钥生成步骤期间创建的服务终结点的专用终结点详细信息。  
+    ![Azure Migrate 服务器评估属性](./media/how-to-use-azure-migrate-with-private-endpoints/azure-migrate-server-assessment-properties.png)  
+- 选择“下载 DNS 设置”以下载 DNS 映射。
+
+    ![下载 DNS 设置](./media/how-to-use-azure-migrate-with-private-endpoints/download-dns-settings.png)   
+
+|**包含专用终结点 URL 的 DNS 映射**  | **详细信息** |
+|--- | ---|
+|*.disc.privatelink.test.migration.windowsazure.com | Azure Migrate 发现服务终结点
+|*.asm.privatelink.test.migration.windowsazure.com  | Azure Migrate 评估服务终结点  
+|*.hub.privatelink.test.migration.windowsazure.com  | 用于接收其他 Microsoft 或外部[独立软件供应商 (ISV)](./migrate-services-overview.md#isv-integration) 产品/服务数据的 Azure Migrate 中心终结点
+|*.vault.azure.net | Key Vault 终结点
+|*.blob.core.windows.net | 用于依赖关系和性能数据的存储帐户终结点  
+
+除了上述 URL，设备还需要访问以下 URL（通过 Internet、直接访问或通过代理进行访问）。
+
+| **其他公有云 URL <br>（公共终结点 URL）** | **详细信息** |
+|--- | ---|
+|*.portal.azure.com | 导航到 Azure 门户
+|*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com <br/> *.microsoftonline.com <br/> *.microsoftonline-p.com <br/> | 由 Azure Active Directory 用于访问控制和标识管理
+|management.azure.com | 用于触发 Azure 资源管理器部署
+|*.services.visualstudio.com（可选） | 上传用于内部监视的设备日志
+|aka.ms/*（可选） | 允许访问 aka 链接；用于下载和安装设备服务的最新更新
+|download.microsoft.com/download | 允许从 Microsoft 下载中心中进行下载    
+
+- 打开命令行并运行以下 nslookup 命令，验证与 DNS 设置文件中列出的 URL 之间的专用链接连接。 对 DNS 设置文件中的所有 URL 重复执行此步骤。
+
+    示例：验证与发现服务终结点的专用链接连接
+
+    ```console
+    nslookup 04b8c9c73f3d477e966c8d00f352889c-agent.cus.disc.privatelink.prod.migration.windowsazure.com
+    ```
+    如果请求可以通过专用终结点访问发现服务终结点，则会看到如下所示的结果：
+
+    ```console
+    nslookup 04b8c9c73f3d477e966c8d00f352889c-agent.cus.disc.privatelink.prod.migration.windowsazure.com
+
+    Non-authoritative answer:
+    Name:    
+    Address:  10.12.4.23 (private IP address)
+    Aliases:  04b8c9c73f3d477e966c8d00f352889c-agent.cus.disc.privatelink.prod.migration.windowsazure.com
+              prod.cus.discoverysrv.windowsazure.com
+    ```
+
+    nslookup 命令应解析为如上所述的专用 IP 地址。 专用 IP 地址应与 DNS 设置文件中列出的 IP 地址相匹配。
+
+如果 DNS 解析不正确，请执行以下步骤：
+1. 通过使用 DNS 映射及其相关专用 IP 地址来编辑本地设备上的 DNS 主机文件，以此手动更新源环境的 DNS 记录。 此选项建议用于测试。
+
+   ![DNS 主机文件](./media/how-to-use-azure-migrate-with-private-endpoints/dns-hosts-file-1.png)
+
+2. 如果使用自定义 DNS 服务器，请查看自定义 DNS 设置，并验证 DNS 配置是否正确。 有关指南，请参阅[专用终结点概述：DNS 配置](../private-link/private-endpoint-overview.md#dns-configuration)。
+3. 如果问题仍然存在，请[参阅本部分](#validate-the-private-dns-zone)以进一步进行故障排除。
+
+验证连接后，请重试发现过程。

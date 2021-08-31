@@ -2,14 +2,14 @@
 title: 专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 07/06/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a44d6d31edb6329c11103e99f0b21aa1ea686ca3
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: aac0fc7b25a43130a157540825395e9eb8c9e4c5
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110678316"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301143"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
@@ -24,7 +24,7 @@ ms.locfileid: "110678316"
 - 为保管库创建专用终结点后，保管库将被锁定。 除包含该保管库的专用终结点的网络之外，无法从其他网络访问它（用于备份和还原）。 如果删除该保管库的所有专用终结点，则可以从所有网络访问该保管库。
 - 用于备份的专用终结点连接在子网中总共使用 11 个专用 IP，其中包括 Azure 备份用于存储的 IP。 对于某些 Azure 区域，此数字可能更高（最多 25 个）。 因此，我们建议你在尝试创建用于备份的专用终结点时，拥有足够的可用专用 IP。
 - 尽管恢复服务保管库可用于 Azure 备份和 Azure Site Recovery 这两种服务，但本文仅介绍将专用终结点用于 Azure 备份的情况。
-- Azure Active Directory 当前不支持专用终结点。 因此在 Azure VM 中执行数据库备份和使用 MARS 代理进行备份时，需要允许 Azure Active Directory 在区域中操作所需的 IP 和 FQDN 从受保护的网络进行出站访问。 如果适用，还可以使用 NSG 标记和 Azure 防火墙标记来允许访问 Azure AD。
+- 用于备份的专用终结点不提供对 Azure Active Directory (Azure AD) 的访问权限，该权限需要单独确保。 因此在 Azure VM 中执行数据库备份和使用 MARS 代理进行备份时，需要允许 Azure AD 在区域中操作所需的 IP 和 FQDN 从受保护的网络进行出站访问。 如果适用，还可以使用 NSG 标记和 Azure 防火墙标记来允许访问 Azure AD。
 - 具有网络策略的虚拟网络不支持专用终结点。 在继续之前，需要[禁用网络策略](../private-link/disable-private-endpoint-network-policy.md)。
 - 如果在 2020 年 5 月 1 日之前注册了恢复服务资源提供程序，则需在订阅中重新注册它。 若要重新注册提供程序，请转到 Azure 门户中的订阅，导航到左侧导航栏上的“资源提供程序”，然后选择“Microsoft.RecoveryServices”，并选择“重新注册”  。
 - 如果为保管库启用了专用终结点，则不支持对 SQL 和 SAP HANA 数据库备份进行[跨区域还原](backup-create-rs-vault.md#set-cross-region-restore)。
@@ -38,6 +38,9 @@ ms.locfileid: "110678316"
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Azure VM 备份**                                         | VM 备份不要求你允许访问任何 IP 或 FQDN。 因此，它不需要专用终结点来备份和还原磁盘。  <br><br>   但是，从包含专用终结点的保管库执行文件恢复将限制为包含该保管库的终结点的虚拟网络。 <br><br>    使用 ACL 非托管磁盘时，请确保包含磁盘的存储帐户允许访问受信任的 Microsoft 服务（如果为 ACL）。 |
 | **Azure 文件备份**                                      | Azure 文件备份存储在本地存储帐户中。 因此，它不需要专用终结点来进行备份和还原。 |
+
+>[!Note]
+>DPM 和 MABS 服务器不支持专用终结点。 
 
 ## <a name="get-started-with-creating-private-endpoints-for-backup"></a>开始创建用于备份的专用终结点
 
@@ -536,26 +539,33 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-问： 是否可以为现有的备份保管库创建专用终结点？<br>
-A. 不可以，只能为新备份保管库创建专用终结点。 因此，保管库不能包含受保护的任何项。 事实上，在创建专用终结点之前，不会尝试保护保管库中的任何项。
+### <a name="can-i-create-a-private-endpoint-for-an-existing-backup-vaultbr"></a>是否可以为现有的备份保管库创建专用终结点？<br>
 
-问： 我尝试过保护保管库中的某一项，但失败了，并且保管库仍未包含任何受保护的项。 是否可以为此保管库创建专用终结点？<br>
-A. 不可以，保管库在过去不能尝试保护任何项。
+不可以，只能为新备份保管库创建专用终结点。 因此，保管库不能包含受保护的任何项。 事实上，在创建专用终结点之前，不会尝试保护保管库中的任何项。
 
-问： 我有一个使用专用终结点进行备份和还原的保管库。 在我具有保管库的受保护备份项的情况下，是否可以在之后添加或删除此保管库的专用终结点？<br>
-A. 是的。 如果已为保管库创建专用终结点并保护了该保管库的备份项，则可以根据需要在之后添加或删除专用终结点。
+### <a name="i-tried-to-protect-an-item-to-my-vault-but-it-failed-and-the-vault-still-doesnt-contain-any-items-protected-to-it-can-i-create-private-endpoints-for-this-vaultbr"></a>我尝试过保护保管库中的某一项，但失败了，并且保管库仍未包含任何受保护的项。 是否可以为此保管库创建专用终结点？<br>
 
-问： Azure 备份的专用终结点是否也可用于 Azure Site Recovery？<br>
-A. 否，用于备份的专用终结点仅可用于 Azure 备份。 如果服务支持，则需要为 Azure Site Recovery 创建新的专用终结点。
+不可以，保管库在过去不能尝试保护任何项。
 
-问： 我漏掉了本文中的一个步骤，并继续对数据源进行了保护。 我是否仍可以使用专用终结点？<br>
-A. 未遵循本文的步骤操作并继续保护项可能导致无法使用专用终结点。 因此，建议在继续保护项之前查看此清单。
+### <a name="i-have-a-vault-thats-using-private-endpoints-for-backup-and-restore-can-i-later-add-or-remove-private-endpoints-for-this-vault-even-if-i-have-backup-items-protected-to-itbr"></a>我有一个使用专用终结点进行备份和还原的保管库。 在我具有保管库的受保护备份项的情况下，是否可以在之后添加或删除此保管库的专用终结点？<br>
 
-问： 我是否可以使用自己的 DNS 服务器，而不使用 Azure 专用 DNS 区域或集成的专用 DNS 区域？<br>
-A. 是的，你可以使用自己的 DNS 服务器。 但是，请确保按照本部分中的建议添加所有必需的 DNS 记录。
+是的。 如果已为保管库创建专用终结点并保护了该保管库的备份项，则可以根据需要在之后添加或删除专用终结点。
 
-问： 按照本文中的过程操作后，是否需要在服务器上执行任何其他步骤？<br>
-A. 按照本文中详细说明的过程操作后，无需执行其他操作即可使用专用终结点进行备份和还原。
+### <a name="can-the-private-endpoint-for-azure-backup-also-be-used-for-azure-site-recoverybr"></a>Azure 备份的专用终结点是否也可用于 Azure Site Recovery？<br>
+
+否，用于备份的专用终结点仅可用于 Azure 备份。 如果服务支持，则需要为 Azure Site Recovery 创建新的专用终结点。
+
+### <a name="i-missed-one-of-the-steps-in-this-article-and-went-on-to-protect-my-data-source-can-i-still-use-private-endpointsbr"></a>我漏掉了本文中的一个步骤，并继续对数据源进行了保护。 我是否仍可以使用专用终结点？<br>
+
+未遵循本文的步骤操作并继续保护项可能导致无法使用专用终结点。 因此，建议在继续保护项之前查看此清单。
+
+### <a name="can-i-use-my-own-dns-server-instead-of-using-the-azure-private-dns-zone-or-an-integrated-private-dns-zonebr"></a>我是否可以使用自己的 DNS 服务器，而不使用 Azure 专用 DNS 区域或集成的专用 DNS 区域？<br>
+
+是的，你可以使用自己的 DNS 服务器。 但是，请确保按照本部分中的建议添加所有必需的 DNS 记录。
+
+### <a name="do-i-need-to-perform-any-additional-steps-on-my-server-after-ive-followed-the-process-in-this-articlebr"></a>按照本文中的过程操作后，是否需要在服务器上执行任何其他步骤？<br>
+
+按照本文中详细说明的过程操作后，无需执行其他操作即可使用专用终结点进行备份和还原。
 
 ## <a name="next-steps"></a>后续步骤
 

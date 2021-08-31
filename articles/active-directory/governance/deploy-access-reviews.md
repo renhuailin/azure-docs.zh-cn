@@ -16,12 +16,12 @@ ms.date: 04/16/2021
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db1878c2760cfcaa157d0ef233bb1931a5f310b3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9acbe5d7b57906c894021ec4e4f83633433b3c3b
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970903"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228616"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>规划 Azure Active Directory 访问评审部署
 
@@ -82,7 +82,7 @@ ms.locfileid: "111970903"
 
 你需要一个有效的 Azure AD Premium (P2) 许可证，用于将创建或执行访问评审的每个用户（不是全局管理员或用户管理员）。 有关详细信息，请参阅[访问评审许可证要求](access-reviews-overview.md)。
 
-可能还需要其他 Identity Governance 功能，例如[权利生命周期管理](entitlement-management-overview.md)或 Privileged Identity Management。 在这种情况下，可能还需要相关的许可证。 有关详细信息，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
+可能还需要其他 Identity Governance 功能，例如[权利生命周期管理](entitlement-management-overview.md)或 Privileged Identity Management。 在这种情况下，可能还需要相关的许可证。 有关详细信息，请参阅 [Azure Active Directory 定价](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 ## <a name="plan-the-access-reviews-deployment-project"></a>规划访问评审部署项目
 
@@ -208,7 +208,7 @@ ms.locfileid: "111970903"
 
 * 将要分别自证需要持续访问权限的最终用户。
 
-* 管理员评审其直接下属对资源的访问权限。 
+* 管理人员查看其直接下属对资源的访问权限。 
 
 创建访问评审时，管理员可以选择一个或多个审阅者。 所有审阅者都可以启动并执行评审，选择可以持续访问某个资源的用户或将其删除。 
 
@@ -245,7 +245,7 @@ ms.locfileid: "111970903"
 | **要评审的资源**| 对 Microsoft Dynamics 的访问权限 |
 | **评审频率**| 每月一次 |
 | **谁执行评审**| Dynamics 业务组项目经理 |
-| **通知**| 在评审开始时发送给别名 Dynamics-Pms 的电子邮件<p>包括向审阅者发出的鼓励性自定义消息以获得其认同 |
+| **通知**| 在评审开始时向别名 Dynamics-Pms 发送电子邮件<p>包括向审阅者发出的鼓励性自定义消息以获得其认同 |
 | **时间线**| 通知发出后的 48 小时内 |
 |**自动操作**| 删除在 90 天内没有交互式登录的任何帐户的访问权限，方法是：从安全组 dynamics access 中删除用户。 <p>如果未在时间线内进行评审，则执行相关操作。 |
 | **手动操作**| 审阅者可以根据需要在自动操作之前执行删除审批。 |
@@ -278,7 +278,7 @@ ms.locfileid: "111970903"
 
 * 在 Azure AD 或 Azure 订阅中分配一个特权角色
 
-请参阅[示例脚本](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse)。 此脚本会显示在何处使用受邀加入租户的外部标识。 你可以在 Azure AD 中查看外部用户的组成员身份、角色分配和应用程序分配。 此脚本不会显示 Azure AD 之外的任何分配，例如无需使用组即可针对 Sharepoint 资源完成的直接权限分配。
+请参阅[示例脚本](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse)。 此脚本会显示在何处使用受邀加入租户的外部标识。 你可以在 Azure AD 中查看外部用户的组成员身份、角色分配和应用程序分配。 此脚本不会显示 Azure AD 之外的任何分配，例如无需使用组即可针对 SharePoint 资源完成的直接权限分配。
 
 创建组或应用程序的访问评审时，可以选择让审阅者专注于具有访问权限的“所有人”或“仅来宾用户”。 如果选择“仅来宾用户”，系统会为审阅者提供一个集中列表，其中包含 Azure AD B2B 中有权访问资源的外部标识。
 
@@ -313,7 +313,7 @@ ms.locfileid: "111970903"
 
 * 组的成员，允许自证
 
-* 管理员评审其直接下属访问权限 
+* 管理人员查看其直接下属的访问权限 
 
 ### <a name="group-ownership"></a>组所有权
 
@@ -332,11 +332,11 @@ ms.locfileid: "111970903"
 
 ### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>评审条件访问策略中排除组的成员身份 
 
-转到[使用 Azure AD 访问评审管理已从条件访问策略中排除的用户](conditional-access-exclusion.md)，了解如何评审排除组的成员身份。
+转到[使用 Azure AD 访问评审来管理从条件访问策略中排除的用户](conditional-access-exclusion.md)，了解如何评审排除组的成员资格。
 
 ### <a name="review-guest-users-group-memberships"></a>评审来宾用户的组成员身份
 
-转到[使用 Azure AD 访问评审管理来宾访问权限](./manage-guest-access-with-access-reviews.md)，了解如何评审来宾用户对组成员身份的访问权限。
+转到[使用 Azure AD 访问评审管理来宾访问](./manage-guest-access-with-access-reviews.md)，了解如何评审来宾用户对组成员身份的访问权限。
 
 ### <a name="review-access-to-on-premises-groups"></a>评审对本地组的访问权限
 
@@ -394,7 +394,7 @@ ms.locfileid: "111970903"
 
 * 所有 Microsoft 365 和 Dynamics 服务管理角色
 
-评审的角色包括永久和合格分配。 
+评审的角色包括永久性和符合条件的分配。 
 
 在“审阅者”部分选择一人或多人来评审所有用户。 也可以选择让成员评审自己的访问权限。
 

@@ -17,12 +17,12 @@ ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7bbea4fabcfce3a8f73045ab1f5071b7df0855b8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 74ce4cf27f8a8be8fd86bad3e3f03589cf3640ea
+ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670333"
+ms.lasthandoff: 07/11/2021
+ms.locfileid: "113600525"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何扩展虚拟机的 OS 驱动器
 
@@ -57,7 +57,7 @@ ms.locfileid: "110670333"
 5. 在“大小和性能”中，选择所需的磁盘大小。
    
    > [!WARNING]
-   > 新大小应该大于现有磁盘大小。 对于 OS 磁盘来说，允许的最大值为 2,048 GB。 （可以扩展 VHD Blob，使之超出该大小，但操作系统只能使用空间的头 2,048 GB。）
+   > 新大小应该大于现有磁盘大小。 对于 OS 磁盘来说，允许的最大值为 4,095 GB。 （可以扩展 VHD Blob，使之超出该大小，但 OS 只能使用前 4,095 GB 空间。）
    > 
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="此屏幕截图显示了“大小和性能”窗格，其中已选择磁盘大小。":::
@@ -105,7 +105,7 @@ ms.locfileid: "110670333"
     Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
     ```   
     > [!WARNING]
-    > 新大小应该大于现有磁盘大小。 对于 OS 磁盘来说，允许的最大值为 2,048 GB。 （可以扩展 VHD Blob，使之超出该大小，但 OS 只能使用空间的头 2,048 GB。）
+    > 新大小应该大于现有磁盘大小。 对于 OS 磁盘来说，允许的最大值为 4,095 GB。 （可以扩展 VHD Blob，使之超出该大小，但 OS 只能使用前 4,095 GB 空间。）
     > 
          
 6. 更新 VM 可能需要几秒钟时间。 命令执行完后，请重启 VM：

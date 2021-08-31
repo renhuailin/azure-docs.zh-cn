@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
-ms.date: 03/05/2020
+ms.date: 07/20/2021
 adobe-target: true
-ms.openlocfilehash: 730fcf3fb552b92a02b255ad654f64d5ff7a92fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebe02e264a9f3faea2812253eeced6d56319627d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100367050"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742168"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure 机器学习设计器机器学习算法备忘单
 
@@ -23,13 +23,13 @@ ms.locfileid: "100367050"
 
 Azure 机器学习有一个大型算法库，包括“分类”、“推荐系统”、“聚类分析”、“异常检测”、“回归” 和“文本分析” 系列。 每一类算法都可用于解决一种类型的机器学习问题。
 
-有关其他指南，请参阅[如何选择算法](how-to-select-algorithms.md)
+有关详细信息，请参阅[如何选择算法](how-to-select-algorithms.md)。
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>下载：机器学习算法备忘单
 
 **在此下载备忘单：[机器学习算法备忘单(11 x 17 英寸)](https://download.microsoft.com/download/3/5/b/35bb997f-a8c7-485d-8c56-19444dafd757/azure-machine-learning-algorithm-cheat-sheet-nov2019.pdf?WT.mc_id=docs-article-lazzeri)**
 
-![机器学习算法备忘单：了解如何选择机器学习算法。](./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet.svg)
+![机器学习算法备忘单：了解如何选择机器学习算法。](./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet.png)
 
 下载该机器学习算法备忘单，并将其打印为 Tabloid 大小，既方便携带又可帮助你选择算法。
 
@@ -59,9 +59,9 @@ Azure 机器学习有一个大型算法库，包括“分类”、“推荐系�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅有关[如何选择算法](how-to-select-algorithms.md)的其他指南
+* 请参阅有关[如何选择算法](how-to-select-algorithms.md)的更多信息。
 
-* [了解 Azure 机器学习中的工作室和 Azure 门户](overview-what-is-azure-ml.md)。
+* [了解 Azure 机器学习中的工作室和 Azure 门户](overview-what-is-azure-machine-learning.md)。
 
 * [教程：在 Azure 机器学习设计器中构建预测模型](tutorial-designer-automobile-price-train-score.md)。
 

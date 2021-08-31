@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 3394754f2829018f7862b3775f8ab2cb2d07d005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b76ffc9c0c8d061e63636f40f696cc41a1238b1a
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98051354"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437767"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>升级 Azure 内部负载均衡器 - 需要出站连接
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](./skus.md#skus)。 由于标准内部负载均衡器不提供出站连接，因此我们提供了一个解决方案，改为创建标准公共负载均衡器。
@@ -58,7 +58,7 @@ ms.locfileid: "98051354"
   
 使用以下命令运行该脚本：
 
-`Install-Script -Name AzurePublicLBUpgrade`
+`Install-Script -Name AzureLBUpgrade`
 
 此命令还会安装所需的 Az 模块。  
 
@@ -84,7 +84,7 @@ ms.locfileid: "98051354"
     **示例**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg&quot; -oldLBName &quot;LBForPublic&quot; -newrgName &quot;test_userInput3_rg&quot; -newlocation &quot;centralus&quot; -newLbName &quot;LBForUpgrade"
+   AzureLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg&quot; -oldLBName &quot;LBForPublic&quot; -newrgName &quot;test_userInput3_rg&quot; -newlocation &quot;centralus&quot; -newLbName &quot;LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>将 VM 添加到标准负载均衡器的后端池
@@ -95,7 +95,7 @@ ms.locfileid: "98051354"
   
 以下几种方案说明了如何配置将 VM 添加到新建标准公共负载均衡器的后端池，我们提供了每种方案的建议：
 
-* **将现有 VM 从旧基本公共负载均衡器的后端池移到新建标准公共负载均衡器的后端池**。
+* 将现有 VM 从旧的基本内部负载均衡器的后端池移动到新创建的标准公共负载均衡器的后端池。
     1. 若要执行本快速入门中的任务，请登录 [Azure 门户](https://portal.azure.com)。
  
     1. 在左侧菜单中选择“所有资源”，然后从资源列表中选择“新建的标准负载均衡器”。 

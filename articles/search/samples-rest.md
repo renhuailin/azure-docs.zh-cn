@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: 7a903b63ad1da2dbb029fdbeba1106d3090ba3ef
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 8e25c921b390211f159e7f845dca9c7cbc9168c7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111554815"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739063"
 ---
 # <a name="rest-code-samples-for-azure-cognitive-search"></a>Azure 认知搜索的 REST 代码示例
 
@@ -37,7 +37,7 @@ REST 示例通常在 Postman 上进行开发和测试，但你可以使用支持
 | [Debug-sessions](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Debug-sessions) | [教程：诊断、修正和提交对技能组的更改](cognitive-search-tutorial-debug-sessions.md)的源代码。 本文介绍如何在 Azure 门户中使用技能组调试会话。 REST 用于创建调试过程中使用的对象。|
 | [custom-analyzers](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/custom-analyzers) | [教程：为电话号码创建自定义分析器](tutorial-create-custom-analyzer.md)的源代码。 本文介绍如何使用分析器保留可搜索内容中的模式和特殊字符。|
 | [knowledge-store](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) | [使用 REST 和 Postman 创建知识库](knowledge-store-create-rest.md)的源代码。 本文介绍了填充用于知识挖掘工作流的知识存储的必要步骤。 |
-| [projections](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/projections) | [如何形成和导出扩充](knowledge-store-projections-examples.md)的源代码。 本文介绍如何在知识存储中指定物理数据结构。|
+| [projections](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/projections) | [在知识存储中定义投影](knowledge-store-projections-examples.md)的源代码。 本文介绍如何在知识存储中指定物理数据结构。|
 | [index-encrypted-blobs](https://github.com/Azure-Samples/azure-search-postman-samples/commit/f5ebb141f1ff98f571ab84ac59dcd6fd06a46718) | [如何使用 blob 索引器和技能组为加密的 blob 编制索引](search-howto-index-encrypted-blobs.md)的源代码。 本文介绍了如何在 Azure Blob 存储中为之前已使用 Azure Key Vault 加密的文档编制索引。 |
 
 > [!Tip]

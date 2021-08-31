@@ -4,13 +4,13 @@ description: 介绍如何在使用 Bicep 部署扩展资源类型时使用 scope
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 59b6576dfb1bd5e0ac4f56e6a59b6ea4d5c4b5f4
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/30/2021
+ms.openlocfilehash: a899622c22d68217fd4fbf73e495f89885f4d7ba
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026000"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445410"
 ---
 # <a name="set-scope-for-extension-resources-in-bicep"></a>在 Bicep 中设置扩展资源的范围
 
@@ -25,9 +25,9 @@ ms.locfileid: "111026000"
 
 ## <a name="apply-at-deployment-scope"></a>在部署范围内应用
 
-若要在目标部署范围内应用扩展资源类型，请将该资源添加到模板中，就像应用任何资源类型一样。 可用的范围是[资源组](deploy-to-resource-group.md)、[订阅](deploy-to-subscription.md)、[管理组](deploy-to-management-group.md)和[租户](deploy-to-tenant.md)。 部署范围必须支持该资源类型。
+若要在目标部署范围内应用扩展资源类型，请将该资源添加到模板中，就像应用任何其他资源类型一样。 可用的范围是[资源组](deploy-to-resource-group.md)、[订阅](deploy-to-subscription.md)、[管理组](deploy-to-management-group.md)和[租户](deploy-to-tenant.md)。 部署范围必须支持该资源类型。
 
-以下模板会部署一个锁。
+部署到资源组时，以下模板会将一个锁添加到该资源组。
 
 ```bicep
 resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {
@@ -39,7 +39,7 @@ resource createRgLock 'Microsoft.Authorization/locks@2016-09-01' = {
 }
 ```
 
-下一个示例会分配角色。
+下一个示例将角色分配给它所部署到的订阅。
 
 ```bicep
 targetScope = 'subscription'
@@ -75,7 +75,7 @@ resource roleAssignSub 'Microsoft.Authorization/roleAssignments@2020-04-01-previ
 
 ## <a name="apply-to-resource"></a>应用于资源
 
-若要将扩展资源应用于资源，请使用 `scope` 属性。 将 scope 属性设置为要将扩展添加到其中的资源的名称。 scope 属性是扩展资源类型的根属性。
+若要将扩展资源应用于资源，请使用 `scope` 属性。 在 scope 属性中，引用你要将扩展添加到其中的资源。 可以通过提供资源的符号名称来引用资源。 scope 属性是扩展资源类型的根属性。
 
 下面的示例创建一个存储帐户并对其应用角色。
 
@@ -102,7 +102,7 @@ var role = {
 }
 var uniqueStorageName = 'storage${uniqueString(resourceGroup().id)}'
 
-resource storageName 'Microsoft.Storage/storageAccounts@2019-04-01' = {
+resource demoStorageAcct 'Microsoft.Storage/storageAccounts@2019-04-01' = {
   name: uniqueStorageName
   location: location
   sku: {
@@ -118,10 +118,24 @@ resource roleAssignStorage 'Microsoft.Authorization/roleAssignments@2020-04-01-p
     roleDefinitionId: role[builtInRoleType]
     principalId: principalId
   }
-  scope: storageName
-  dependsOn: [
-    storageName
-  ]
+  scope: demoStorageAcct
+}
+```
+
+可以将扩展资源应用于现有资源。 以下示例将一个锁添加到现有存储帐户。
+
+```bicep
+resource demoStorageAcct 'Microsoft.Storage/storageAccounts@2021-04-01' existing = {
+  name: 'examplestore'
+}
+
+resource createStorageLock 'Microsoft.Authorization/locks@2016-09-01' = {
+  name: 'storeLock'
+  scope: demoStorageAcct
+  properties: {
+    level: 'CanNotDelete'
+    notes: 'Storage account should not be deleted.'
+  }
 }
 ```
 

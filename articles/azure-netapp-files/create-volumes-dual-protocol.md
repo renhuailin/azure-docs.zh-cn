@@ -1,6 +1,6 @@
 ---
-title: 为 Azure NetApp 文件创建双重协议（NFSv3 和 SMB）卷 | Microsoft Docs
-description: 介绍如何创建使用 NFSv3 和 SMB 双重协议并提供 LDAP 用户映射支持的卷。
+title: 为 Azure NetApp 文件创建双重协议卷 | Microsoft Docs
+description: 介绍如何创建使用双重协议（NFSv3 和 SMB，或 NFSv4.1 和 SMB）并提供 LDAP 用户映射支持的卷。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 08/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 92ba9ea8b63671112b6f9e16a984b50439c9d45d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 33e01466a3e0629af9a691e33eb9161bf8098611
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072030"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751431"
 ---
-# <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议（NFSv3 和 SMB）卷
+# <a name="create-a-dual-protocol-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建双重协议卷
 
-Azure NetApp 文件支持创建使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协议的卷。 本文介绍如何创建使用 NFSv3 和 SMB 双重协议并提供 LDAP 用户映射支持的卷。 
+Azure NetApp 文件支持使用 NFS（NFSv3 或 NFSv4.1）、SMB3 或双重协议（NFSv3 和 SMB，或 NFSv4.1 和 SMB）创建卷。 本文介绍如何创建使用双重协议并提供 LDAP 用户映射支持的卷。 
 
 若要创建 NFS 卷，请参阅[创建 NFS 卷](azure-netapp-files-create-volumes.md)。 若要创建 SMB 卷，请参阅[创建 SMB 卷](azure-netapp-files-create-volumes-smb.md)。 
 
@@ -43,7 +43,7 @@ Azure NetApp 文件支持创建使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双�
 * 确保 NFS 客户端是最新的，并且正在运行操作系统的最新更新。
 * 双重协议支持 Active Directory 域服务 (ADDS) 和 Azure Active Directory 域服务 (AADDS)。 
 * 双重协议卷不支持在 AADDS 中通过 TLS 使用 LDAP。 请参阅 [TLS 上的 LDAP 注意事项](configure-ldap-over-tls.md#considerations)。
-* 双重协议卷使用的 NFS 版本为 NFSv3。 因此需要注意以下事项：
+* 双重协议卷使用的 NFS 版本可以是 NFSv3 或 NFSv4.1。 请注意以下事项：
     * 双重协议不支持 NFS 客户端的 Windows ACLS 扩展属性 `set/get`。
     * NFS 客户端无法更改 NTFS 安全样式的权限，Windows 客户端无法更改 UNIX 样式双重协议卷的权限。   
 
@@ -51,7 +51,7 @@ Azure NetApp 文件支持创建使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双�
         
         | 安全样式    | 可以修改权限的客户端   | 客户端可以使用的权限  | 生成的有效安全样式    | 可访问文件的客户端     |
         |-  |-  |-  |-  |-  |
-        | `Unix`    | NFS   | NFSv3 模式位   | UNIX  | NFS 和 Windows   |
+        | `Unix`    | NFS   | NFSv3 或 NFSv4.1 模式位    | UNIX  | NFS 和 Windows   |
         | `Ntfs`    | Windows   | NTFS ACL     | NTFS  |NFS 和 Windows|
 
     * 发生名称映射的方向（Windows 到 UNIX 或 UNIX 到 Windows）取决于所使用的协议以及应用于卷的安全样式。 Windows 客户端始终需要 Windows 到 UNIX 的名称映射。 用户是否应用于查看权限取决于安全样式。 相反，如果使用 NTFS 安全样式，则 NFS 客户端只需使用 UNIX 到 Windows 的名称映射。 
@@ -68,7 +68,6 @@ Azure NetApp 文件支持创建使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双�
 * 如果拓扑较大并且将 `Unix` 安全样式用于具有扩展组的双重协议卷或 LDAP，Azure NetApp 文件可能无法访问拓扑中的全部服务器。  如果发生这种情况，请联系帐户团队寻求帮助。  <!-- NFSAAS-15123 --> 
 * 创建双重协议卷不需要服务器根 CA 证书。 只有在启用了基于 TLS 的 LDAP 时，才需要它。
 
-
 ## <a name="create-a-dual-protocol-volume"></a>创建双协议卷
 
 1.  从“容量池”边栏选项卡中单击“卷”边栏选项卡。 单击“+ 添加卷”以创建卷。 
@@ -79,7 +78,7 @@ Azure NetApp 文件支持创建使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双�
     * **卷名称**      
         指定要创建的卷的名称。   
 
-        卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 你可以使用任何字母数字字符。   
+        卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 名称必须以字母开头。 只能包含字母、数字、下划线（“_”）和连字符（“-”）。  
 
         不能使用 `default` 或 `bin` 作为卷名称。
 
@@ -117,8 +116,10 @@ Azure NetApp 文件支持创建使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双�
 
         ![显示高级选择](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-3. 单击“协议”  ，然后完成以下操作：  
-    * 选择双重协议 (NFSv3 和 SMB) 作为卷的协议类型。   
+3. 单击“协议”选项卡，然后完成以下操作：  
+    * 选择“双重协议”作为卷的协议类型。   
+
+    * 指定要使用的“Active Directory”连接。
 
     * 指定唯一卷路径。 创建装载目标时，系统将使用此路径。 路径要求如下：  
 
@@ -126,6 +127,24 @@ Azure NetApp 文件支持创建使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双�
         - 必须以字母字符开头。
         - 只能包含字母、数字或短划线 (`-`)。 
         - 长度不得超过 80 个字符。
+
+    * 选择要用于双重协议的“版本”：“NFSv4.1 和 SMB”或“NFSv3 和 SMB”。  
+
+        要使用“NFSv4.1 和 SMB”双重协议的功能目前以预览版提供。 如果你是首次使用此功能，则需要注册该功能：  
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFDualProtocolNFSv4AndSMB
+        ```
+
+        检查功能注册的状态： 
+
+        > [!NOTE]
+        > RegistrationState 可能会处于 `Registering` 状态长达 60 分钟，然后才更改为 `Registered` 状态。 请等到状态变为“已注册”后再继续。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFDualProtocolNFSv4AndSMB
+        ```
+        此外，[Azure CLI 命令](/cli/azure/feature) `az feature register` 和 `az feature show` 分别可用于注册功能和显示注册状态。 
 
     * 指定要使用的安全样式：NTFS（默认）或 UNIX。
 
@@ -150,6 +169,13 @@ Azure NetApp 文件支持创建使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双�
         
         此外，[Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` 和 `az feature show` 分别可用于注册功能和显示注册状态。  
 
+    * 如果为双重协议卷版本选择了 NFSv 4.1 和 SMB，则指示是否要为卷启用“Kerberos”加密。
+
+        Kerberos 需要其他配置。 按照[配置 NFSv4.1 Kerberos 加密](configure-kerberos-encryption.md)中的说明进行操作。
+
+    *  按需要自定义“Unix 权限”，以指定装载路径的更改权限。 此设置不适用于装载路径下的文件。 默认设置为 `0770`。 此默认设置向所有者和组授予读取、写入和执行权限，但不向其他用户授予任何权限。     
+        注册要求和注意事项适用于“Unix 权限”设置。 请按照[配置 Unix 权限和更改所有权模式](configure-unix-permissions-change-ownership-mode.md)中的说明操作。  
+
     * 或[配置卷的导出策略](azure-netapp-files-configure-export-policy.md)。
 
     ![指定双重协议](../media/azure-netapp-files/create-volume-protocol-dual.png)
@@ -165,7 +191,8 @@ Azure NetApp 文件支持创建使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双�
 Active Directory 连接中的“允许具有 LDAP 的本地 NFS 用户”选项使 Windows LDAP 服务器上不存在的本地 NFS 客户端用户能够访问启用了扩展组的 LDAP 的双重协议卷。 
 
 > [!NOTE] 
-> 在启用此选项之前，应了解[注意事项](#considerations)。 
+> 在启用此选项之前，应了解[注意事项](#considerations)。   
+> “允许本地 NFS 用户使用 LDAP”选项是“带有扩展组的 LDAP”功能的一部分，需要注册。  有关详细信息，请参阅[配置添加 LDAP，其中包含用于 NFS 卷访问的扩展组](configure-ldap-extended-groups.md)。
 
 1. 单击“Active Directory 连接”。  在现有 Active Directory 连接上，单击上下文菜单（三个点 `…`），然后选择“编辑”。  
 
@@ -187,6 +214,10 @@ Active Directory 连接中的“允许具有 LDAP 的本地 NFS 用户”选项�
     `objectClass: posixGroup`, `gidNumber: 555`
 * 所有用户和组必须分别具有唯一的 `uidNumber` 和 `gidNumber`。 
 
+Azure Active Directory 域服务 (AADDS) 不允许修改在组织 AADDC 用户 OU 中创建的用户和组的 POSIX 属性。 作为一种解决方法，可以创建自定义 OU，并在自定义 OU 中创建用户和组。
+
+如果要将 Azure AD 租户中的用户和组同步到 AADDC 用户 OU 中的用户和组，则不能将用户和组移到自定义 OU 中。 在自定义 OU 中创建的用户和组不会同步到 AD 租户。 有关详细信息，请参阅 [AADDS 自定义 OU 注意事项和限制](../active-directory-domain-services/create-ou.md#custom-ou-considerations-and-limitations)。
+
 ### <a name="access-active-directory-attribute-editor"></a>访问 Active Directory 属性编辑器 
 
 在 Windows 系统中，可以访问 Active Directory 属性编辑器，如下所示：  
@@ -204,7 +235,10 @@ Active Directory 连接中的“允许具有 LDAP 的本地 NFS 用户”选项�
 
 ## <a name="next-steps"></a>后续步骤  
 
+* [配置 NFSv 4.1 Kerberos 加密](configure-kerberos-encryption.md)
 * [为 Azure NetApp 文件配置 NFS 客户端](configure-nfs-clients.md)
+* [配置 Unix 权限并更改所有权模式](configure-unix-permissions-change-ownership-mode.md)。 
 * [通过 TLS 配置 Azure NetApp 文件的 ADDS LDAP](configure-ldap-over-tls.md)
+* [配置添加 LDAP，其中包含用于 NFS 卷访问的扩展组](configure-ldap-extended-groups.md)
 * [SMB 或双重协议卷故障排除](troubleshoot-dual-protocol-volumes.md)
 * [LDAP 卷问题故障排除](troubleshoot-ldap-volumes.md)

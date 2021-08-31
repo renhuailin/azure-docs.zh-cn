@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/05/2021
+ms.date: 07/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 056e9a44009f90be23d66c5da005902ccc8ebebf
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ab7826a89dc879c1bad62e8c56415047d164c6f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205424"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729494"
 ---
 # <a name="configure-openvpn-for-point-to-site-vpn-gateways"></a>为点到站点 VPN 网关配置 OpenVPN
 
@@ -21,13 +21,13 @@ ms.locfileid: "108205424"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 本文假设你已拥有一个可正常工作的点到站点环境。 如果没有，请使用下列方法之一创建一个。
+* 本文假设你已拥有一个可正常工作的点到站点环境。 如果没有，请使用下列方法之一创建一个。 在创建网关时请注意，“基本”SKU 不支持 OpenVPN 隧道类型。
 
   * [门户 - 创建点到站点](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 
   * [PowerShell - 创建点到站点](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-* 验证 VPN 网关不使用基本 SKU。 OpenVPN 不支持基本 SKU。
+* 如果已经有一个 VPN 网关，请确认网关没有使用“基本”SKU。 OpenVPN 不支持基本 SKU。 有关 SKU 的详细信息，请参阅 [VPN 网关配置设置](vpn-gateway-about-vpn-gateway-settings.md)。 若要调整基本 SKU 的大小，请参阅[调整旧网关的大小](vpn-gateway-about-skus-legacy.md#resource-manager)。 
 
 ## <a name="portal"></a>门户
 
@@ -39,10 +39,10 @@ ms.locfileid: "108205424"
 
 ## <a name="powershell"></a>PowerShell
 
-1. 使用以下示例在网关上启用 OpenVPN：
+1. 使用以下示例在网关上启用 OpenVPN，并根据需要调整值。
 
    ```azurepowershell-interactive
-   $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $name
+   $gw = Get-AzVirtualNetworkGateway -ResourceGroupName TestRG1 -name VNet1GW
    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVPN
    ```
 1. 继续执行后续步骤。

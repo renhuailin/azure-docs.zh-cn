@@ -3,12 +3,12 @@ title: 使用虚拟网络的方案
 description: 将容器组部署到 Azure 虚拟网络的方案、资源和限制。
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 6de99c68c3f05e4734dd46a579d28a6f1a3b824e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4d56ba43480182077acc114200ebc69569835bca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763768"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742465"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>虚拟网络方案和资源
 
@@ -45,9 +45,9 @@ ms.locfileid: "107763768"
 * 不能在部署到虚拟网络的容器组中使用[托管标识](container-instances-managed-identity.md)。
 * 不能在部署到虚拟网络的容器组中启用[运行情况探测](container-instances-liveness-probe.md)或[就绪情况探测](container-instances-readiness-probe.md)。
 * 由于涉及到其他网络资源，部署到虚拟网络通常比部署标准容器实例要慢。
+* 目前不支持到端口 25 的出站连接。
 * 如果要将容器组连接到 Azure 存储帐户，则必须向该资源添加[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
-
-[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
+* 目前不支持 [IPv6 地址](../virtual-network/ipv6-overview.md)。 
 
 ## <a name="required-network-resources"></a>所需的网络资源
 
@@ -67,7 +67,7 @@ ms.locfileid: "107763768"
 
 网络配置文件是 Azure 资源的网络配置模板。 它指定资源的某些网络属性，例如，该资源应部署到哪个子网。 首次使用 [az container create][az-container-create] 命令将容器组部署到某个子网（并因此部署到虚拟网络）时，Azure 会自动创建一个网络配置文件。 以后在部署到该子网时，可以使用该网络配置文件。 
 
-若要使用资源管理器模板、YAML 文件或编程方法将容器组部署到子网，则需要提供网络配置文件的完整资源管理器资源 ID。 可以使用以前使用 [az container create][az-container-create] 创建的配置文件，也可以使用资源管理器模板创建配置文件（请参阅[模板示例](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet)和[参考](/azure/templates/microsoft.network/networkprofiles)）。 若要获取以前创建的配置文件的 ID，请使用 [az network profile list][az-network-profile-list] 命令。 
+若要使用资源管理器模板、YAML 文件或编程方法将容器组部署到子网，则需要提供网络配置文件的完整资源管理器资源 ID。 可以使用以前使用 [az container create][az-container-create] 创建的配置文件，也可以使用资源管理器模板创建配置文件（请参阅[模板示例](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet)和[参考](/azure/templates/microsoft.network/networkprofiles)）。 若要获取以前创建的配置文件的 ID，请使用 [az network profile list][az-network-profile-list] 命令。 
 
 在下图中，有多个容器组已部署到委派给 Azure 容器实例的子网。 将一个容器组部署到某个子网后，可以通过指定相同的网络配置文件，将其他容器组部署到该子网。
 
@@ -76,7 +76,7 @@ ms.locfileid: "107763768"
 ## <a name="next-steps"></a>后续步骤
 
 * 有关使用 Azure CLI 的部署示例，请参阅[将容器实例部署到 Azure 虚拟网络](container-instances-vnet.md)。
-* 若要使用资源管理器模板部署新的虚拟网络、子网、网络配置文件和容器组，请参阅 [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+* 若要使用资源管理器模板部署新的虚拟网络、子网、网络配置文件和容器组，请参阅 [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet
 )（使用 VNet 创建 Azure 容器组）。
 * 使用 [Azure 门户](container-instances-quickstart-portal.md)创建容器实例时，还可以在“网络”选项卡上为新的或现有的虚拟网络提供设置。
 

@@ -2,23 +2,22 @@
 title: 从图像中提取文本
 titleSuffix: Azure Cognitive Search
 description: 处理和提取 Azure 认知搜索管道中的图像中的文本和其他信息。
-manager: nitinme
-author: LuisCabrer
-ms.author: luisca
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68186c5294c0a3a2f376a93ef1902307780f48bb
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 2591e3468999bfb48fc125bd6edfe17da8eecefd
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538284"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114728137"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>如何处理和提取 AI 扩充方案中的图像中的信息
 
-Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档破解过程中，可以使用 *imageAction* 参数从包含字母数字文本的照片或图片中提取文本，例如停车标志中的“停”字样。 其他场景包括：生成图像的文本表示形式，例如代表蒲公英照片的“蒲公英”字样，或者“黄色”颜色。 还可以提取图像的元数据，例如其大小。
+Azure 认知搜索有多项适用于图像和图像文件的功能。 在[文档破解](search-indexer-overview.md#document-cracking)过程中，可以使用 imageAction 参数从包含字母数字文本的照片或图片中提取文本，例如停车标志中的“停”字样。 其他场景包括：生成图像的文本表示形式，例如代表蒲公英照片的“蒲公英”字样，或者“黄色”颜色。 还可以提取图像的元数据，例如其大小。
 
 本文详细介绍图像处理，并提供了在 AI 扩充管道中处理图像的指南。
 

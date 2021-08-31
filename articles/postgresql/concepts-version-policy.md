@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 05/25/2020
+ms.date: 08/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7f4cf4c0109d524d0a8fe62ae1930165173db170
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 6d66d030514f121fabe8de36783d879afe0b5ea9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407050"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725248"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>Azure Database for PostgreSQL 版本策略
 
@@ -24,14 +24,12 @@ Azure Database for PostgreSQL 支持以下数据库版本。
 
 | 版本 | 单台服务器 | 灵活服务器（预览版） | 超大规模 (Citus) |
 | ----- | :------: | :----: | :----: |
-| PostgreSQL 13 |  | X  | X\* |
-| PostgreSQL 12 |  | X  | X\* |
+| PostgreSQL 13 |  | X  | X |
+| PostgreSQL 12 |  | X  | X |
 | PostgreSQL 11 | X | X | X |
 | PostgreSQL 10 | X |  |  |
 | PostgreSQL 9.6 | X |  |  |
 | *PostgreSQL 9.5（已停用）* | X |  |  |
-
-（\* PostgreSQL 12 和 13 作为超大规模 (Citus) 中的预览功能提供。）
 
 ## <a name="major-version-support"></a>主要版本支持
 如 [PostgreSQL 社区版本控制策略](https://www.postgresql.org/support/versioning/)所述，从 Azure 开始支持该版本之日起，到 PostgreSQL 社区停用该版本之日结束，在此期间，Azure Database for PostgreSQL 将支持 PostgreSQL 的每个主版本。
@@ -55,7 +53,7 @@ Azure Database for PostgreSQL 支持以下数据库版本。
 
 可以继续在 Azure Database for PostgreSQL 中运行已停用的版本。 但是，请注意每个 PostgreSQL 数据库版本的停用日期之后的以下限制：
 - 由于社区将不会发布任何进一步的 bug 修复或安全修复，Azure Database for PostgreSQL 将不会针对任何 bug 或安全问题修补已停用的数据库引擎，也不会针对已停用的数据库引擎采取安全措施。 因此，你可能会遇到安全漏洞或其他问题。 但是，Azure 将继续对主机、OS、容器以及任何其他与服务相关的组件执行定期维护和修补。
-- 如果你可能遇到的任何支持问题与 PostgreSQL 数据库有关，我们可能无法为你提供支持。 在这种情况下，必须升级数据库，以便我们为你提供任何支持。
+- 如果遇到的任何支持问题与 PostgreSQL 引擎本身有关，由于社区不再提供补丁，因此我们可能无法为您提供支持。 在这种情况下，必须将数据库升级到受支持的版本之一。
 - 无法为已停用的版本创建新的数据库服务器。 但能够执行时间点恢复并为现有服务器创建只读副本。
 - Azure Database for PostgreSQL 开发的新服务功能可能仅适用于受支持的数据库服务器版本。
 - 运行时间 SLA 将仅适用于与 Azure Database for PostgreSQL 服务相关的问题，而不适用于与数据库引擎相关的 bug 导致的任何故障时间。  

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 2703e5f92ad0756ece8088c4948170ea13fa0e06
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: c0e63d0aee60ae81c14fa8971369c3a50f9b2bde
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683436"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461393"
 ---
 # <a name="how-to-connect-devices-through-an-iot-edge-transparent-gateway"></a>如何通过 IoT Edge 透明网关连接设备
 
@@ -70,7 +70,7 @@ IoT Edge 支持[透明网关模式和转换网关模式](../../iot-edge/iot-edge
 
 :::image type="content" source="media/how-to-connect-iot-edge-transparent-gateway/device-template-relationship.png" alt-text="显示 IoT Edge 网关设备模板与恒温器下游设备模板关系的屏幕截图。":::
 
-上一个屏幕截图显示了没有定义模块的 IoT Edge 网关设备模板。 透明网关不需要任何模块，因为 IoT Edge 运行时将消息从下游设备转发到 IoT Central。 如果网关本身需要发送遥测、同步属性或处理命令，则可以在默认组件或模块中定义这些功能。
+上一个屏幕截图显示了没有定义模块的 IoT Edge 网关设备模板。 透明网关不需要任何模块，因为 IoT Edge 运行时将消息从下游设备转发到 IoT Central。 如果网关本身需要发送遥测、同步属性或处理命令，则可以在根组件或模块中定义这些功能。
 
 在发布网关和下游设备模板之前，添加任何所需的云属性和视图。
 

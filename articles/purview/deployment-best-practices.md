@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: e02ad9187743603d46259d70965e49d6839ecd71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4aa2a22f6e7bfef4a04eb65ac6063c81077b6153
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104949832"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739100"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Azure Purview 部署最佳做法
 

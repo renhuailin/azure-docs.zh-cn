@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: f2771284925e35cea975febdabe2ca377a192df8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 10639653c00fc5e781a9edd2b49c60f659d00966
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127112"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746167"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>在 Linux 虚拟机中设置 DPDK
 
@@ -46,6 +46,7 @@ DPDK 可以在支持多个操作系统分发版的 Azure 虚拟机中运行。 D
 | SLES 15 SP1  | 4.12.14-8.19-azure+          | 
 | RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
 | CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
+| Debian 10    | 4.19.0-1-cloud+              |
 
 所记录的版本是最低要求。 还支持较新版本。
 
@@ -61,7 +62,7 @@ DPDK 可以在支持多个操作系统分发版的 Azure 虚拟机中运行。 D
 
 必须在 Linux 虚拟机上启用加速网络。 虚拟机应至少有两个网络接口，其中一个接口用于管理。 不建议在管理界面上启用加速网络。 了解如何[创建启用加速网络的 Linux 虚拟机](create-vm-accelerated-networking-cli.md)。
 
-## <a name="install-dpdk"></a>安装 DPDK
+## <a name="install-dpdk-via-system-package-recommended"></a>通过系统包安装 DPDK（建议）
 
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
@@ -83,15 +84,39 @@ sudo apt-get install -y dpdk
 sudo apt-get install -y dpdk
 ```
 
-### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
+## <a name="install-dpdk-manually-not-recommended"></a>手动安装 DPDK（不推荐）
+
+### <a name="install-build-dependencies"></a>安装版本依赖项
+
+#### <a name="ubuntu-1804"></a>Ubuntu 18.04
+
+```bash
+sudo add-apt-repository ppa:canonical-server/server-backports -y
+sudo apt-get update
+sudo apt-get install -y build-essential librdmacm-dev libnuma-dev libmnl-dev meson
+```
+
+#### <a name="ubuntu-2004-and-newer"></a>Ubuntu 20.04 和更高版本
+
+```bash
+sudo apt-get install -y build-essential librdmacm-dev libnuma-dev libmnl-dev meson
+```
+
+#### <a name="debian-10-and-newer"></a>Debian 10 和更高版本
+
+```bash
+sudo apt-get install -y build-essential librdmacm-dev libnuma-dev libmnl-dev meson
+```
+
+#### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
 
 ```bash
 yum -y groupinstall "Infiniband Support"
 sudo dracut --add-drivers "mlx4_en mlx4_ib mlx5_ib" -f
-yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel libmnl-devel
+yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel libmnl-devel meson
 ```
 
-### <a name="sles-15-sp1"></a>SLES 15 SP1
+#### <a name="sles-15-sp1"></a>SLES 15 SP1
 
 **Azure 内核**
 
@@ -99,7 +124,7 @@ yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel 
 zypper  \
   --no-gpg-checks \
   --non-interactive \
-  --gpg-auto-import-keys install kernel-azure kernel-devel-azure gcc make libnuma-devel numactl librdmacm1 rdma-core-devel
+  --gpg-auto-import-keys install kernel-azure kernel-devel-azure gcc make libnuma-devel numactl librdmacm1 rdma-core-devel meson
 ```
 
 **默认内核**
@@ -108,16 +133,15 @@ zypper  \
 zypper \
   --no-gpg-checks \
   --non-interactive \
-  --gpg-auto-import-keys install kernel-default-devel gcc make libnuma-devel numactl librdmacm1 rdma-core-devel
+  --gpg-auto-import-keys install kernel-default-devel gcc make libnuma-devel numactl librdmacm1 rdma-core-devel meson
 ```
 
-## <a name="set-up-the-virtual-machine-environment-once"></a>设置虚拟机环境（一次性操作）
+### <a name="compile-and-install-dpdk-manually"></a>编译并手动安装 DPDK
 
-1. [下载最新的 DPDK](https://core.dpdk.org/download)。 Azure 需要 18.11 版 LTS 或 19.11 版 LTS。
-2. 运行 `make config T=x86_64-native-linuxapp-gcc` 生成默认配置。
-3. 使用 `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config` 在生成的配置中启用 Mellanox PMDs。
-4. 使用 `make` 进行编译。
-5. 使用 `make install DESTDIR=<output folder>` 进行安装。
+1. [下载最新的 DPDK](https://core.dpdk.org/download)。 Azure 需要 19.11 版 LTS 或更高版本。
+2. 运行 `meson builddir` 生成默认配置。
+3. 使用 `ninja -C builddir` 进行编译。
+4. 使用 `DESTDIR=<output folder> ninja -C builddir install` 进行安装。
 
 ## <a name="configure-the-runtime-environment"></a>配置运行时环境
 

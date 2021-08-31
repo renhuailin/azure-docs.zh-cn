@@ -4,17 +4,17 @@ description: 可以通过加密范围在容器或单个 Blob 级别管理加密�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 06/01/2021
+ms.date: 07/19/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d089ef587e209810fe0400871aba9a55cb9c0ed3
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 0d8f1a7e0312ea350a5a34c13d8389b240c14476
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372650"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472462"
 ---
 # <a name="encryption-scopes-for-blob-storage"></a>Blob 存储的加密范围
 
@@ -72,7 +72,7 @@ Azure 存储中的基础结构加密支持对数据进行双重加密。 启用�
 
 禁用加密范围后，将不再为此付费。 禁用不需要的任何加密范围以避免不必要的费用。
 
-如果你的加密范围受客户管理的密钥保护，而你删除了密钥保管库中的密钥，将无法访问数据。 请确保同时禁用加密范围，以避免为其付费。
+如果加密范围受客户管理的密钥保护，但用户吊销了密钥保管库中的密钥，则无法访问数据。 在吊销密钥保管库中的密钥之前，请务必禁用加密范围，以免为加密范围付费。
 
 请记住，客户管理的密钥受到密钥保管库中的软删除和清除保护功能的保护，删除的密钥受到为这些属性定义的行为的约束。 有关详细信息，请参阅 Azure Key Vault 文档中的以下主题之一：
 

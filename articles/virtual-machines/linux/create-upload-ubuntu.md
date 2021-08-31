@@ -1,26 +1,26 @@
 ---
 title: 在 Azure 中创建和上传 Ubuntu Linux VHD
 description: 了解如何创建和上传包含 Ubuntu Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
-author: danielsollondon
+author: srijang
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 06/06/2020
-ms.author: danis
-ms.openlocfilehash: 92ceecd16a428593764fe5ab6478cc4ea7ab91d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/28/2021
+ms.author: srijangupta
+ms.openlocfilehash: f0417c156de07cd5a6fd45bdd63ed9134078966f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554609"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732481"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>为 Azure 准备 Ubuntu 虚拟机
 
 
 Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) 下载。 如果需要为 Azure 构建自己专用的 Ubuntu 映像，而不是使用以下手动过程，则我们建议先使用这些已知良好的 VHD，并根据需要进行自定义。 始终可以在以下位置找到最新的映像版本：
 
-* Ubuntu 16.04/Xenial：[ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk](https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vmdk)
-* Ubuntu 18.04/Bionic：[bionic-server-cloudimg-amd64.vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
+* Ubuntu 18.04/Bionic：[bionic-server-cloudimg-amd64-azure.vhd.zip](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64-azure.vhd.zip)
+* Ubuntu 20.04/Focal：[focal-server-cloudimg-amd64-azure.vhd.zip](https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64-azure.vhd.zip)
 
 ## <a name="prerequisites"></a>先决条件
 本文假设已在虚拟硬盘中安装 Ubuntu Linux 操作系统。 可使用多种工具创建 .vhd 文件，如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅 [安装 Hyper-V 角色和配置虚拟机](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
@@ -51,7 +51,7 @@ Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](
     # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
     ```
 
-    Ubuntu 16.04 和 Ubuntu 18.04：
+    Ubuntu 18.04 和 Ubuntu 20.04：
 
     ```console
     # sudo sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
@@ -61,7 +61,7 @@ Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](
 
 4. Ubuntu Azure 映像现在使用的是 [Azure 定制内核](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)。 运行以下命令，将操作系统更新为最新版 Azure 定制内核，并安装 Azure Linux 工具（包括 Hyper-V 依赖项）：
 
-    Ubuntu 16.04 和 Ubuntu 18.04：
+    Ubuntu 18.04 和 Ubuntu 20.04：
 
     ```console
     # sudo apt update
@@ -81,7 +81,7 @@ Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](
 
 6. 请确保已安装 SSH 服务器且将其配置为在引导时启动。  这通常是默认设置。
 
-7. 安装 cloud-init（预配代理）和 Azure Linux 代理（来宾扩展处理程序）。 Cloud init 在预配和之后的每次引导期间都会使用 netplan 配置系统网络配置。
+7. 安装 cloud-init（预配代理）和 Azure Linux 代理（来宾扩展处理程序）。 Cloud-init 使用 `netplan` 在预配和每次后续引导期间配置系统网络配置。
 
     ```console
     # sudo apt update
@@ -91,17 +91,17 @@ Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](
    > [!Note]
    >  安装 `walinuxagent` 包时会删除 `NetworkManager` 和 `NetworkManager-gnome` 包（如果已安装它们）。
 
-8. 删除 cloud-init 默认配置和多余的 netplan 项目，它们可能与 Azure 中的 cloud-init 设置产生冲突：
+8. 删除可能与 Azure 上的 cloud-init 配置冲突的 cloud-init 默认配置和剩余 `netplan` 工件：
 
     ```console
-    # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
+    # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
     # rm -f /etc/cloud/ds-identify.cfg
     # rm -f /etc/netplan/*.yaml
     ```
 
 9. 将 cloud-init 配置为使用 Azure 数据源预配系统：
 
-    ```console
+    ```bash
     # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
     datasource_list: [ Azure ]
     EOF
@@ -163,7 +163,7 @@ Ubuntu 现已发布正式 Azure VHD，可从 [https://cloud-images.ubuntu.com/](
 12. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
 
     > [!NOTE]
-    > `sudo waagent -force -deprovision+user` 命令将尝试清除系统并使其能够进行重新预配。 `+user` 选项会删除上次预配的用户帐户和关联的数据。
+    > `sudo waagent -force -deprovision+user` 命令通过尝试清理系统并使其适合重新预配，以此将映像通用化。 `+user` 选项会删除上次预配的用户帐户和关联的数据。
 
     > [!WARNING]
     > 使用上述命令取消预配无法保证清除映像中的所有敏感信息且适用于分发版。

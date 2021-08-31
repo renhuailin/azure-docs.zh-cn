@@ -2,22 +2,22 @@
 title: 使用租户限制管理对 SaaS 应用的访问 - Azure AD
 description: 如何使用租户限制来根据用户的 Azure AD 租户管理可访问应用的用户。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 6/2/2021
-ms.author: mtillman
-ms.reviewer: hpsin
+ms.date: 7/30/2021
+ms.author: davidmu
+ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c443f3084c465e1a8f2358c1b8db365e576b04f5
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: d013d383192b206fdc05f36f320b01fe57526bb8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082228"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737298"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -53,7 +53,7 @@ ms.locfileid: "112082228"
 
 ### <a name="urls-and-ip-addresses"></a>URL 和 IP 地址
 
-要使用租户限制，客户端必须能够连接到以下 Azure AD URL 进行身份验证：[login.microsoftonline.com](https://login.microsoftonline.com/)、[login.microsoft.com](https://login.microsoft.com/) 和 [login.windows.net](https://login.windows.net/)。 此外，要访问 Office 365，客户端还必须能够连接到 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中定义的完全限定域名 (FQDN)、URL 和 IP 地址。 
+要使用租户限制，客户端必须能够连接到以下 Azure AD URL 进行身份验证：[login.microsoftonline.com](https://login.microsoftonline.com/)、[login.microsoft.com](https://login.microsoft.com/) 和 [login.windows.net](https://login.windows.net/)。 此外，要访问 Office 365，客户端还必须能够连接到 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中定义的完全限定域名 (FQDN)、URL 和 IP 地址。
 
 ### <a name="proxy-configuration-and-requirements"></a>代理配置和要求
 
@@ -81,9 +81,9 @@ ms.locfileid: "112082228"
 - 对于 Restrict-Access-Context，应使用单个目录 ID 的值，用于声明哪个租户将要设置租户限制。 例如，要将 Contoso 声明为设置租户限制策略的租户，名称/值对如下所示：`Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`。  在此位置，必须使用自己的目录 ID 才能获取这些身份验证的日志。
 
 > [!TIP]
-> 可在 [Azure Active Directory 门户](https://aad.portal.azure.com/)中找到该目录 ID。 以管理员身份登录，选择“Azure Active Directory”，再选择“属性”即可。  
+> 可在 [Azure Active Directory 门户](https://aad.portal.azure.com/)中找到该目录 ID。 以管理员身份登录，选择“Azure Active Directory”，再选择“属性”即可。 
 >
-> 要验证目录 ID 或域名是否引用了同一个租户，请使用该 ID 或域代替 URL `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration` 中的 <tenant>。  如果域和 ID 的结果相同，则指同一租户。 
+> 要验证目录 ID 或域名是否引用了同一个租户，请使用该 ID 或域代替 URL `https://login.microsoftonline.com/<tenant>/v2.0/.well-known/openid-configuration` 中的 <tenant>。  如果域和 ID 的结果相同，则指同一租户。
 
 为了防止用户插入其自己的包含未批准租户的 HTTP 标头，代理需要替换 Restrict-Access-To-Tenants 标头（如果传入的请求中已提供此标头）。
 
@@ -111,11 +111,11 @@ ms.locfileid: "112082228"
 
 Restricted-Access-Context 租户的管理员可以使用此报告来查看由于租户限制策略而被阻止的登录，包括使用的标识和目标目录 ID。 如果设置限制的租户是登录的用户租户或资源租户，则会包含登录。
 
-当 Restricted-Access-Context 租户之外的其他租户中的用户登录时，该报告可能包含有限的信息，例如目标目录 ID。 在这种情况下，用户身份信息（例如，名称和用户主体名称）将被过滤，以保护其他租户中的用户数据（“{已删除 PII}@domain.com”或根据需要使用 00000000-0000-0000-0000-000000000000 代替用户名和对象 ID）。 
+当 Restricted-Access-Context 租户之外的其他租户中的用户登录时，该报告可能包含有限的信息，例如目标目录 ID。 在这种情况下，用户身份信息（例如，名称和用户主体名称）将被过滤，以保护其他租户中的用户数据（“{已删除 PII}@domain.com”或根据需要使用 00000000-0000-0000-0000-000000000000 代替用户名和对象 ID）。
 
 与使用 Azure 门户中的其他报告时一样，可以使用筛选器来指定报告的范围。 可以根据特定的时间间隔、用户、应用程序、客户端或状态进行筛选。 如果选择“列”按钮，则可以选择通过任意组合以下字段来显示数据：
 
-- 用户 - 此字段可以删除个人数据，它将被设置为 `00000000-0000-0000-0000-000000000000`。 
+- 用户 - 此字段可以删除个人数据，它将被设置为 `00000000-0000-0000-0000-000000000000`。
 - **应用程序**
 - **Status**
 - **Date**
@@ -133,7 +133,7 @@ Microsoft 365 应用程序必须满足两个条件才能完全支持租户限制
 1. 使用的客户端支持新式身份验证。
 2. 已启用新式身份验证作为云服务的默认身份验证协议。
 
-有关哪些 Office 客户端目前支持新式身份验证的最新信息，请参阅 [Updated Office 365 modern authentication](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)（更新的 Office 365 新式身份验证）。 该页面还包含有关如何在特定的 Exchange Online 和 Skype for Business Online 租户中启用新式身份验证的说明文档链接。 SharePoint Online 已默认启用新式身份验证。
+有关哪些 Office 客户端目前支持新式身份验证的最新信息，请参阅 [Updated Office 365 modern authentication](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)（更新的 Office 365 新式身份验证）。 该页面还包含有关如何在特定的 Exchange Online 和 Skype for Business Online 租户中启用新式身份验证的说明文档链接。 SharePoint Online 已默认启用新式身份验证。 Teams 仅支持新式身份验证，不支持旧式身份验证，因此免验证不适用于 Teams。 
 
 Microsoft 365 基于浏览器的应用程序（Office 门户、Yammer、SharePoint 网站、Outlook 网页版等）目前支持租户限制。 胖客户端（Outlook、Skype for Business、Word、Excel、PowerPoint 等）仅在使用新式身份验证时才可强制实施租户限制。  
 
@@ -157,7 +157,7 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
 
    1. 在 Fiddler Web 调试器工具中选择“规则”菜单，并选择“自定义规则...”  打开 CustomRules 文件。
 
-   2. 将以下行添加到 `OnBeforeRequest` 函数的开头。 将 \<List of tenant identifiers\> 替换为已注册到租户的域（例如 `contoso.onmicrosoft.com`）。 将 \<directory ID\> 替换为租户的 Azure AD GUID 标识符。  必须包含正确的 GUID 标识符，租户中才能显示日志。 
+   2. 将以下行添加到 `OnBeforeRequest` 函数的开头。 将 \<List of tenant identifiers\> 替换为已注册到租户的域（例如 `contoso.onmicrosoft.com`）。 将 \<directory ID\> 替换为租户的 Azure AD GUID 标识符。  必须包含正确的 GUID 标识符，租户中才能显示日志。
 
    ```JScript.NET
     // Allows access to the listed tenants.

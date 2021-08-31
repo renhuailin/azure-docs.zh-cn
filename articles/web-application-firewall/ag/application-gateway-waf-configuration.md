@@ -4,16 +4,16 @@ description: 本文将提供 Azure 门户的应用程序网关中 Web 应用程�
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 02/20/2020
+ms.date: 07/06/2021
 ms.author: victorh
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e6403b1bab2bcdd6a001c5f55b34519b9447194d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 3b6042ec28e7b774f57be19809c585ad919b25b0
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668620"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432493"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 应用程序防火墙请求大小限制和排除列表
 
@@ -97,7 +97,12 @@ Web 应用程序防火墙允许你在下限和上限内配置请求大小限制�
    - 对于 v1 大型 WAF 网关为 500 MB
    - 对于 v2 WAF 网关为 750 MB 
 
- 文件上传限制的默认值为 100 MB。
+文件上传限制的默认值为 100 MB。
+
+对于 CRS 3.2（在 WAF_v2 SKU 上）和更高版本，这些限制如下：
+   
+   - 2MB 请求正文大小限制
+   - 4GB 文件上传限制 
 
 WAF 还提供了可配置的旋钮以打开或关闭请求正文检查。 默认情况下，请求正文检查处于启用状态。 如果请求正文检查处于关闭状态，则 WAF 不会评估 HTTP 消息正文的内容。 在这种情况下，WAF 会继续对标头、cookie 和 URI 强制实施 WAF 规则。 如果请求正文检查处于关闭状态，则最大请求正文大小字段不适用，且无法设置。 关闭请求正文检查允许将大于 128 KB 的消息发送到 WAF，但不会检查消息正文中是否有漏洞。
 

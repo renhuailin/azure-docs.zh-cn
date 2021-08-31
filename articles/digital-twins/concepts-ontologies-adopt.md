@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 73b115ad6f49d943c423c7490df347afce7c5869
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: e31ee4ed9b7baa074f59bc615b9044cbf314a47d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668415"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438507"
 ---
 # <a name="adopting-an-industry-ontology"></a>采用行业 ontology
 
-由于使用开源 DTDL ontology 比从空白页开始更加轻松，Microsoft 将与域专家合作发布本体论，后者代表广泛接受的行业约定，并支持各种客户用例。 
+由于使用开源 DTDL 本体比从空白页开始更容易，因此 Microsoft 正在与领域专家合作发布本体。 这些本体表示广泛接受的行业约定，并支持各种客户用例。 
 
-因此，我们得到了一系列基于开源 DTDL 的 ontology，它们借鉴、构建、借鉴或直接使用行业标准。 这些 ontology 旨在满足下游开发者的需求，可能会被行业广泛采用和/或扩展。
+因此，我们得到了一系列基于开源 DTDL 的 ontology，它们借鉴、构建或直接使用行业标准。 这些 ontology 旨在满足下游开发者的需求，可能会被行业广泛采用和扩展。
 
 目前，Microsoft 已与合作伙伴共同开发[智能建筑](#realestatecore-smart-building-ontology)、[智慧城市](#smart-cities-ontology)和[能源网格](#energy-grid-ontology)的本体论，它们为基于这些行业中的标准进行建模提供了共同的基础，以避免重复发明的需要。 
 
@@ -50,7 +50,7 @@ Microsoft 已与 [Open Agile Smart Cities (OASC)](https://oascities.org/) 和 [S
 
 从以下存储库获取本体论：[适用于能源网格的数字孪生定义语言 (DTDL) 本体论](https://github.com/Azure/opendigitaltwins-energygrid/)。
 
-此本体论是为了帮助解决方案提供商加速开发用于能源用例的数字孪生解决方案（监视网格资产、中断和影响分析、模拟和预测性维护）以及促进能源网格的数字化转型和现代化。 它改编自[通用信息模型 (CIM)](https://cimug.ucaiug.org/)，这是用于能源网格资产管理、供电系统运营建模和物理能源商品市场的全球标准。
+此本体论是为了帮助解决方案提供商加速开发用于能源用例的数字孪生解决方案（监视网格资产、中断和影响分析、模拟和预测性维护）以及实现能源网格的数字化转型和现代化。 它改编自[通用信息模型 (CIM)](https://cimug.ucaiug.org/)，这是用于能源网格资产管理、供电系统运营建模和物理能源商品市场的全球标准。
 
 若要了解有关该本体论的详细信息及使用和参与方式，请访问 GitHub 上的本体论存储库：[Azure/opendigitaltwins-energygrid](https://github.com/Azure/opendigitaltwins-energygrid/)。 
 
@@ -58,6 +58,6 @@ Microsoft 已与 [Open Agile Smart Cities (OASC)](https://oascities.org/) 和 [S
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关扩展行业标准本体以满足要求的详细信息：概念：扩展行业本体。
+* 了解有关扩展行业标准本体以满足要求的详细信息：[扩展行业本体](concepts-ontologies-extend.md)。
 
 * 或者，继续开发基于本体的模型：在模型开发路径中使用本体策略。

@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 792801c568255b471487c14b6a812942298ad0d4
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 925c468ff744df8b543618e4282ec9b6a9dda78a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906541"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723062"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -64,6 +64,8 @@ ms.locfileid: "107906541"
 
 即使从其他槽克隆设置，新部署槽位也无内容。 例如，可以[使用 Git 发布到此槽](./deploy-local-git.md)。 可以从其他存储库分支或不同的存储库部署到槽。
 
+槽的 URL 格式为 `http://sitename-slotname.azurewebsites.net`。 若要使 URL 长度在所需的 DNS 限制内，站点名称将截断为 40 个字符，槽名称将截断为 19 个字符，并额外追加 4 个随机字符，以确保生成的域名是唯一的。 
+
 <a name="AboutConfiguration"></a>
 
 ## <a name="what-happens-during-a-swap"></a>交换期间发生的情况
@@ -94,6 +96,9 @@ ms.locfileid: "107906541"
 1. 源槽包含先前位于目标槽中的预交换应用后，通过应用所有设置并重启实例来执行相同的操作。
 
 在执行交换操作期间的任何时候，初始化已交换应用的所有工作都在源槽上发生。 准备和预热源槽时，目标槽将保持联机，而不管交换是成功还是失败。 若要将过渡槽与生产槽交换，请确保生产槽始终是目标槽。 这样，交换操作才不会影响生产应用。
+
+> [!NOTE]
+> 交换过程的最后一个步骤会快速回收先前生产实例中的实例（即交换操作之后将交换到临时过程的实例）。 如果应用程序中存在任何长时间运行的操作，则在辅助角色回收时，这些操作会被放弃。 这同样适用于函数应用。 因此，应采用容错方式编写应用程序代码。 
 
 ### <a name="which-settings-are-swapped"></a>交换哪些设置？
 
@@ -173,7 +178,7 @@ ms.locfileid: "107906541"
 ## <a name="configure-auto-swap"></a>配置自动交换
 
 > [!NOTE]
-> Linux 上的 Web 应用中不支持自动交换。
+> Linux 上的 Web 应用和用于容器的 Web 应用上不支持自动交换。
 
 自动交换简化了 Azure DevOps 方案，在此方案中，可连续部署应用，无需冷启动且不会给应用的客户造成停机。 启用从某个槽到生产槽的自动交换后，每次将代码更改推送到该槽时，应用服务会在源槽中预热后自动[将应用交换到生产槽](#swap-operation-steps)中。
 

@@ -12,22 +12,30 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2021
+ms.date: 07/27/2021
 ms.author: bagol
-ms.openlocfilehash: 1a3f199276d5c9b04ab5ac117c022a63fd3fb866
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: 6e29b444f7a9e1afbea3ffc7f9d53c0279c6af8c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109665293"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725156"
 ---
-# <a name="investigate-incidents-with-ueba-data"></a>使用 UEBA 数据调查事件
+# <a name="tutorial-investigate-incidents-with-ueba-data"></a>教程：使用 UEBA 数据调查事件
 
 本文介绍关于在常规调查工作流中使用[用户实体行为分析 (UEBA)](identify-threats-with-entity-behavior-analytics.md) 的常用方法和示例程序。
 
+> [!IMPORTANT]
+>
+> 本文中提到的功能目前为预览版。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+>
+
+> [!NOTE]
+> 本教程为主要客户任务提供了基于方案的过程：使用 UEBA 数据进行调查。 有关详细信息，请参阅[通过 Azure Sentinel 调查事件](investigate-cases.md)。
+>
 ## <a name="prerequisites"></a>先决条件
 
-在调查中使用 UEBA 数据之前，必须[在 Azure Sentinel 中启用用户和实体行为分析 (UEBA)](enable-entity-behavior-analytics.md)。 
+在调查中使用 UEBA 数据之前，必须[在 Azure Sentinel 中启用用户和实体行为分析 (UEBA)](enable-entity-behavior-analytics.md)。
 
 在启用 UEBA 约一周后开始寻找计算机助力的见解。
 
@@ -75,13 +83,46 @@ ms.locfileid: "109665293"
 
 [![打开事件的用户实体页面。](media/ueba/open-entity-pages.png)](media/ueba/open-entity-pages.png#lightbox)
 
-从[事件页面](tutorial-investigate-cases.md#how-to-investigate-incidents)本身和[调查图](tutorial-investigate-cases.md#use-the-investigation-graph-to-deep-dive)还可以链接到用户实体页面。
+从[事件页面](investigate-cases.md#how-to-investigate-incidents)本身和[调查图](investigate-cases.md#use-the-investigation-graph-to-deep-dive)还可以链接到用户实体页面。
 
 > [!TIP]
 > 确认与事件相关的特定用户的用户实体页面上的数据后，转到 Azure Sentinel“搜寻”区域，了解用户的对等方是否通常也从相同位置进行连接。 如果是，这些证据将为假正提供更强有力的理由。
 >
 > 在“搜寻”区域，运行“异常地理位置登录”查询 。 有关详细信息，请参阅[通过 Azure Sentinel 搜寻威胁](hunting.md)。
 >
+
+### <a name="embed-identityinfo-data-in-your-analytics-rules-public-preview"></a>将 IdentityInfo 数据嵌入分析规则（公开预览版）
+
+由于攻击者经常使用组织自己的用户和服务帐户，有关这些用户帐户的数据（包括用户标识和特权）对于调查过程中的分析至关重要。
+
+嵌入来自 IdentityInfo 表中的数据以微调分析规则，使其适合用例，从而减少误报，并可能加快调查过程。
+
+例如：
+
+- 在 IT 部门以外的人员访问服务器时触发的警报中，将安全事件与 IdentityInfo 表关联： 
+
+    ```kusto
+    SecurityEvent
+    | where EventID in ("4624","4672")
+    | where Computer == "My.High.Value.Asset"
+    | join kind=inner  (
+        IdentityInfo
+        | summarize arg_max(TimeGenerated, *) by AccountObjectId) on $left.SubjectUserSid == $right.AccountSID
+    | where Department != "IT"
+    ```
+
+- 在非特定安全组成员的人访问应用程序时触发的警报中，将 Azure AD 登录日志与 IdentityInfo 表关联：
+
+    ```kusto
+    SigninLogs
+    | where AppDisplayName == "GithHub.Com"
+    | join kind=inner  (
+        IdentityInfo
+        | summarize arg_max(TimeGenerated, *) by AccountObjectId) on $left.UserId == $right.AccountObjectId
+    | where GroupMembership !contains "Developers"
+    ```
+
+IdentityInfo 表与 Azure AD 的工作区同步，以创建用户配置文件数据的快照，如用户元数据、组信息和分配给每个用户 Azure AD 角色。 有关更多信息，请参阅 UEBA 扩充参考中的 [IdentityInfo 表](ueba-enrichments.md#identityinfo-table-public-preview)。
 
 ## <a name="identify-password-spray-and-spear-phishing-attempts"></a>识别密码喷射和鱼叉式网络钓鱼攻击
 
@@ -105,11 +146,31 @@ ms.locfileid: "109665293"
 > 还可以运行 Anomalous Failed Logon [搜寻查询](hunting.md)，以监视组织的所有异常登录失败。 使用查询结果开始调查可能的密码喷射攻击。
 >
 
+## <a name="url-detonation-public-preview"></a>URL 引爆（公共预览版）
+
+如果 Azure Sentinel 中引入的日志中包含 URL，这些 URL 将自动引爆，这有助于加快会审过程。 
+
+调查图包含引爆的 URL 的节点，以及以下详细信息：
+
+- DetonationVerdict。 引爆中的高级布尔值确定。 例如，“Bad”表示该端被归类为托管恶意软件或网络钓鱼内容。
+- DetonationFinalURL。 从原始 URL 进行所有重定向后，观察到的最终登陆页 URL。
+- DetonationScreenshot。 触发警报时页面外观的屏幕截图。 选择要放大的屏幕截图。
+
+例如：
+
+:::image type="content" source="media/investigate-with-ueba/url-detonation-example.png" alt-text="调查图中显示的示例 URL 引爆。":::
+
+> [!TIP]
+> 如果日志中没有看到 URL，请检查是否为安全 Web 网关、Web 代理、防火墙或旧 IDS/IPS 启用了 URL 日志记录（也称为威胁日志记录）。
+>
+> 还可以创建自定义日志，将相关的特定 URL 输送到 Azure Sentinel 以便进一步调查。
+>
+
 ## <a name="next-steps"></a>后续步骤
 
 了解有关 UEBA、调查和搜寻的更多信息：
 
 - [在 Azure Sentinel 中通过用户和实体行为分析 (UEBA) 来识别高级威胁](identify-threats-with-entity-behavior-analytics.md)
 - [Azure Sentinel UEBA 扩充引用](ueba-enrichments.md)
-- [教程：使用 Azure Sentinel 调查事件](tutorial-investigate-cases.md)
+- [教程：使用 Azure Sentinel 调查事件](investigate-cases.md)
 - [使用 Azure Sentinel 搜寻威胁](hunting.md)

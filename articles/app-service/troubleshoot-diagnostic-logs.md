@@ -3,14 +3,14 @@ title: 启用诊断日志记录
 description: 了解如何启用诊断日志记录并将检测添加到应用程序，以及如何访问由 Azure 记录的信息。
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 07/06/2021
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: b12b3db9266284509e88cef85a33a1a43b500907
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: b7bf1d7353917808fca222a7027dda74f89aff70
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075476"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736097"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -104,7 +104,9 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 
 在“详细错误日志记录”或“失败请求跟踪”下，选择“打开”，然后选择“保存”。   
 
-这两种类型的日志都将存储在应用服务文件系统中。 最多可保留 50 个错误（文件/文件夹）。 当 HTML 文件的数目超过 50 个时，会自动删除最早的 26 个错误。
+这两种类型的日志都将存储在应用服务文件系统中。 最多可保留 50 个错误（文件/文件夹）。 当 HTML 文件的数目超出 50 时，最旧的错误文件会自动删除。
+
+默认情况下，失败请求跟踪功能会捕获 HTTP 状态代码在 400 到 600 之间的失败请求的日志。 若要指定自定义规则，可以覆盖 web.config 文件中的 `<traceFailedRequests>` 部分。
 
 ## <a name="add-log-messages-in-code"></a>在代码中添加日志消息
 
@@ -187,17 +189,17 @@ az webapp log tail --name appname --resource-group myResourceGroup --provider ht
 |-|-|-|-|-|-|
 | AppServiceConsoleLogs | Java SE 和 Tomcat | 是 | 是 | 是 | 标准输出和标准错误 |
 | AppServiceHTTPLogs | 是 | 是 | 是 | 是 | Web 服务器日志 |
-| AppServiceEnvironmentPlatformLogs | 是 | 空值 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
+| AppServiceEnvironmentPlatformLogs | 是 | 不适用 | 是 | 是 | 应用服务环境：缩放、配置更改和状态日志|
 | AppServiceAuditLogs | 是 | 是 | 是 | 是 | 通过 FTP 和 Kudu 进行的登录活动 |
 | AppServiceFileAuditLogs | 是 | 是 | TBA | TBA | 对站点内容所做的文件更改；仅适用于高级层和更高层级 |
-| AppServiceAppLogs | ASP .NET 和 Tomcat <sup>1</sup> | ASP .NET 和 Tomcat <sup>1</sup> | Java SE 和 Tomcat Blessed 映像 <sup>2</sup> | Java SE 和 Tomcat Blessed 映像 <sup>2</sup> | 应用程序日志 |
+| AppServiceAppLogs | ASP.NET 和 Tomcat <sup>1</sup> | ASP.NET 和 Tomcat <sup>1</sup> | Java SE 和 Tomcat Blessed 映像 <sup>2</sup> | Java SE 和 Tomcat Blessed 映像 <sup>2</sup> | 应用程序日志 |
 | AppServiceIPSecAuditLogs  | 是 | 是 | 是 | 是 | 来自 IP 规则的请求 |
 | AppServicePlatformLogs  | TBA | 是 | 是 | 是 | 容器操作日志 |
 | AppServiceAntivirusScanAuditLogs | 是 | 是 | 是 | 是 | 使用 Microsoft Defender 的[防病毒扫描日志](https://azure.github.io/AppService/2020/12/09/AzMon-AppServiceAntivirusScanAuditLogs.html)；仅适用于高级层 | 
 
-<sup>1</sup> 对于 Tomcat 应用，请将“TOMCAT_USE_STARTUP_BAT”添加到应用设置，并将其设置为“false”或“0”。 需要使用最新的 Tomcat 版本，并使用 java.util.logging 。
+<sup>1</sup> 对于 Tomcat 应用，请将 `TOMCAT_USE_STARTUP_BAT` 添加到应用设置并将其设置为 `false` 或 `0`。 需要使用最新的 Tomcat 版本，并使用 java.util.logging 。
 
-<sup>2</sup> 对于 Java SE 应用，请将“$WEBSITE_AZMON_PREVIEW_ENABLED”添加到应用设置，并将其设置为“true”或“1”。
+<sup>2</sup> 对于 Java SE 应用，请将 `WEBSITE_AZMON_PREVIEW_ENABLED` 添加到应用设置并将其设置为 `true` 或 `1`。
 
 ## <a name="next-steps"></a><a name="nextsteps"></a> 后续步骤
 * [使用 Azure Monitor 查询日志](../azure-monitor/logs/log-query-overview.md)

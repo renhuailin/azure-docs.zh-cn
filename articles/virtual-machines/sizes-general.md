@@ -9,14 +9,17 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: 46a9b7e630001161fbf2790cfb9be474379864b6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b9910995632cb1e6e32e228a6e68be625117951c
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557618"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253643"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>常规用途虚拟机大小
+
+> [!TIP]
+> 请尝试使用[虚拟机选择器工具](https://aka.ms/vm-selector)查找最适合你的工作负载的其他尺寸。
 
 常规用途 VM 大小提供均衡的 CPU 与内存之比。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 本文提供了有关常规用途计算产品/服务的信息。
 

@@ -6,15 +6,15 @@ author: tomaschladek
 manager: nmurav
 services: azure-communication-services
 ms.author: tchladek
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 5e53f9e89dd9718111da4f8016bc3e5a7f791627
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 452fffa58d9845c1655c8b643dcde54f0b6a7d90
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103496569"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459255"
 ---
 # <a name="identity-model"></a>标识模型
 
@@ -86,3 +86,4 @@ Azure 通信服务不复制 Azure 标识管理系统的功能。 它不会为客
 * 有关访问令牌管理的简介，请参阅[创建和管理访问令牌](../quickstarts/access-tokens.md)。
 * 有关身份验证的简介，请参阅对 [Azure 通信服务进行身份验证](./authentication.md)。
 * 有关数据驻留和隐私的简介，请参阅[区域可用性和数据驻留](./privacy.md)。
+* 若要了解如何快速创建用于测试的标识，请参阅[快速创建标识快速入门](../quickstarts/identity/quick-create-identity.md)。

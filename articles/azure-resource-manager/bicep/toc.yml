@@ -58,6 +58,9 @@
             - name: 资源
               displayName: 'iteration,copy,multiple,batches,child,condition,filter'
               href: loop-resources.md
+            - name: 模块
+              displayName: 'iteration,copy,multiple,batches,condition,filter'
+              href: loop-modules.md
             - name: 属性
               displayName: 'iteration,copy,multiple'
               href: loop-properties.md

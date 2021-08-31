@@ -2,24 +2,22 @@
 title: 在 Azure Active Directory 中创建“我的应用”门户的集合 |Microsoft Docs
 description: 使用“我的应用”集合自定义“我的应用”页，以便为最终用户提供更简单的“我的应用”体验。 以单独的选项卡的方式将应用程序组织到组中。
 services: active-directory
-documentationcenter: ''
-author: mtillman
+author: davidmu1
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.author: mtillman
-ms.reviewer: kasimpso
+ms.author: davidmu
+ms.reviewer: lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 239bd084a1a593211a544b86ba8b24ed9c13624a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e47e7900fd6d678e07b4fb4ccfe02b17f734c67f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077675"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727634"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>在“我的应用”门户中创建集合
 
@@ -71,15 +69,13 @@ ms.locfileid: "112077675"
 
 11. 选择“查看 + 创建”  。 此时会显示新集合的属性。
 
-
 ## <a name="view-audit-logs"></a>查看审核日志
 
 审核日志会记录“我的应用”集合操作，包括集合创建最终用户操作。 以下事件是从“我的应用”生成的：
 
-* 创建集合
-* 编辑集合
-* 删除集合
-* 启动应用程序（最终用户）
+* 创建管理员集合
+* 编辑管理员集合
+* 删除管理员集合
 * 添加自助服务应用程序（最终用户）
 * 删除自助服务应用程序（最终用户）
 
@@ -89,11 +85,12 @@ ms.locfileid: "112077675"
 
 在“我的应用”页中，用户可以选择“我的帐户” > “查看我的帐户”打开其帐户设置。 在 Azure AD“我的帐户”页上，用户可以管理其安全信息、设备、密码等。 他们还可以访问其 Office 帐户设置。
 
-如果需要针对 Azure AD 帐户页或 Office 帐户页上的问题提交支持请求，请按照以下步骤进行操作，以便正确路由请求： 
+如果需要针对 Azure AD 帐户页或 Office 帐户页上的问题提交支持请求，请按照以下步骤进行操作，以便正确路由请求：
 
 * 对于 Azure AD“我的帐户”页中的问题，请从 Azure 门户内打开支持请求。 转到“Azure 门户” > “Azure Active Directory” > “新建支持请求”。  
 
-* 对于 Office“我的帐户”页的问题，请从 Microsoft 365 管理中心内打开支持请求。 转到“ Microsoft 365 管理中心” > “支持”。 
+* 对于 Office“我的帐户”页的问题，请从 Microsoft 365 管理中心内打开支持请求。 转到“ Microsoft 365 管理中心” > “支持”。
 
 ## <a name="next-steps"></a>后续步骤
+
 [Azure Active Directory 中应用程序的最终用户体验](end-user-experiences.md)

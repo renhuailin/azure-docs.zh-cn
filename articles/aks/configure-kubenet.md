@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c373e45c8607f10c36f40a23c776bd081bf13207
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 59eb3874a7f0de9eba1f5b75204618c887cb9bb2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789512"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122184115"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
@@ -54,6 +54,7 @@ Azure 在一个 UDR 中最多支持 400 个路由，因此，AKS 群集中的节
 * 需要路由表和用户定义的路由才能使用 Kubenet，这会增加操作的复杂性。
 * 由于 Kubenet 设计，Kubenet 不支持直接 Pod 寻址。
 * 与 Azure CNI 群集不同，多个 Kubenet 群集无法共享一个子网。
+* 如果提供自己的子网，则必须管理与该子网关联的网络安全组 (NSG)。 AKS 不会修改与该子网关联的任何 NSG。 还必须确保 NSG 中的安全规则允许节点和 Pod CIDR 之间的流量。
 * Kubenet 不支持的功能包括：
    * [Azure 网络策略](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)，但 Kubenet 支持 Calico 网络策略
    * [Windows 节点池](./windows-faq.md)

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 05/06/2021
 ms.author: v-erkel
-ms.openlocfilehash: 59b83132f4de25886494bdc5c23819243240e962
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 202f942bc4fb47b2c71802667e31e08de7cfe13e
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737323"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588806"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
@@ -93,7 +93,7 @@ Azure HPC 缓存需要具有以下特质的专用子网：
 ## <a name="storage-infrastructure"></a>存储基础结构
 <!-- heading is linked in create storage target GUI as aka.ms/hpc-cache-prereq#storage-infrastructure - make sure to fix that if you change the wording of this heading -->
 
-缓存支持 Azure Blob 容器、NFS 硬件存储导出和已装载 NFS 的 ADLS Blob 容器（目前为预览版）。 创建缓存后添加存储目标。
+缓存支持 Azure Blob 容器、NFS 硬件存储导出和已装载 NFS 的 ADLS Blob 容器。 创建缓存后添加存储目标。
 
 缓存的大小决定其可支持的存储目标数，大多数缓存最多可支持 10 个存储目标，最大的缓存最多可支持 20 个存储目标。 有关详细信息，请参阅[正确调整缓存大小以支持存储目标](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)。
 
@@ -104,7 +104,7 @@ Azure HPC 缓存需要具有以下特质的专用子网：
 若要将 Azure Blob 存储与缓存配合使用，需要一个兼容的存储帐户，以及一个空的 Blob 容器，或者一个已按照[将数据移到 Azure Blob 存储](hpc-cache-ingest.md)中所述填充了 Azure HPC 缓存格式的数据的容器。
 
 > [!NOTE]
-> 已装载 NFS 的 Blob 存储适用不同的要求。 有关详细信息，请阅读 [ADLS-NFS 存储要求](#nfs-mounted-blob-adls-nfs-storage-requirements-preview)。
+> 已装载 NFS 的 Blob 存储适用不同的要求。 有关详细信息，请阅读 [ADLS-NFS 存储要求](#nfs-mounted-blob-adls-nfs-storage-requirements)。
 
 在尝试添加存储目标之前创建帐户。 添加目标时可以创建新容器。
 
@@ -122,7 +122,7 @@ Azure HPC 缓存需要具有以下特质的专用子网：
 此外，必须按照前面的[权限](#permissions)中所述，向缓存应用程序授予对你的 Azure 存储帐户的访问权限。 遵循[添加存储目标](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)中的过程为缓存提供所需的访问角色。 如果你不是存储帐户所有者，请让所有者执行此步骤。
 
 ### <a name="nfs-storage-requirements"></a>NFS 存储要求
-<!-- linked from configuration.md -->
+<!-- linked from configuration.md and add storage -->
 
 如果使用 NFS 存储系统（例如本地硬件 NAS 系统），请确保该系统满足这些要求。 可能需要与存储系统（或数据中心）的网络管理员或防火墙管理者协作来验证这些设置。
 
@@ -171,14 +171,11 @@ Azure HPC 缓存需要具有以下特质的专用子网：
 
 * NFS 后端存储必须是兼容的硬件/软件平台。 如需详细信息，请联系 Azure HPC 缓存团队。
 
-### <a name="nfs-mounted-blob-adls-nfs-storage-requirements-preview"></a>已装载 NFS 的 Blob (ADLS-NFS) 存储要求（预览版）
+### <a name="nfs-mounted-blob-adls-nfs-storage-requirements"></a>已装载 NFS 的 Blob (ADLS-NFS) 存储要求
 
 Azure HPC 缓存还可以使用已装载 NFS 协议的 Blob 容器作为存储目标。
 
-> [!NOTE]
-> Azure Blob 存储的 NFS 3.0 协议支持目前以公共预览版提供。 其可用性受限，目前的功能可能与正式版的功能有所不同。 请不要在生产系统中使用预览版技术。
->
-> 有关此预览版功能的详细信息，请阅读 [Azure Blob 存储中的 NFS 3.0 协议支持](../storage/blobs/network-file-system-protocol-support.md)。
+有关此功能的详细信息，请阅读 [Azure Blob 存储中的 NFS 3.0 协议支持](../storage/blobs/network-file-system-protocol-support.md)。
 
 ADLS-NFS Blob 存储目标和标准 Blob 存储目标的存储帐户要求不同。 请仔细按照[使用网络文件系统 (NFS) 3.0 协议装载 Blob 存储](../storage/blobs/network-file-system-protocol-support-how-to.md)中的说明创建并配置支持 NFS 的存储帐户。
 

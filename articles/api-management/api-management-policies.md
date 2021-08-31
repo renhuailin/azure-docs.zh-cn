@@ -4,20 +4,16 @@ description: 了解可在 Azure API 管理中使用的策略。 策略允许发�
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/17/2021
+ms.date: 07/19/2021
 ms.author: apimpm
-ms.openlocfilehash: e809efa9da32da5fe9ca296608c602e770f78265
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6856226c1eda0e8d5fde7df6d2b251007a47fa2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562342"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468511"
 ---
 # <a name="api-management-policies"></a>API 管理策略
 本部分提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。
@@ -36,11 +32,13 @@ ms.locfileid: "103562342"
     -   [按订阅设置使用量配额](api-management-access-restriction-policies.md#SetUsageQuota) - 允许根据订阅强制实施可续订或有生存期的调用量和/或带宽配额。
     -   [按密钥设置使用量配额](api-management-access-restriction-policies.md#SetUsageQuotaByKey) - 允许根据密钥强制消耗可续订或有生存期的调用量和/或带宽配额。
     -   [验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) - 强制从指定 HTTP 标头或指定查询参数提取的 JWT 必须存在且有效。
+    -   [验证客户端证书](api-management-access-restriction-policies.md#validate-client-certificate) - 强制客户端提供给 API 管理实例的证书与指定的验证规则和声明相匹配。
 -   [高级策略](api-management-advanced-policies.md#AdvancedPolicies)
     -   [控制流](api-management-advanced-policies.md#choose) - 根据布尔表达式的求值，有条件地应用策略语句。
     -   [转发请求](api-management-advanced-policies.md#ForwardRequest) - 将请求转发到后端服务。
     -   [限制并发](api-management-advanced-policies.md#LimitConcurrency) - 阻止括住的策略一次执行超过指定数量的请求。
     -   [记录到事件中心](api-management-advanced-policies.md#log-to-eventhub) - 将指定格式的消息发送到记录器实体定义的消息目标。
+    -   [发出指标](api-management-advanced-policies.md#emit-metrics) - 在执行时将自定义指标发送到 Application Insights。
     -   [模拟响应](api-management-advanced-policies.md#mock-response) - 中止管道执行，将模拟的响应直接返回给调用方。
     -   [重试](api-management-advanced-policies.md#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统会按指定的时间间隔重复执行，直到达到指定的重试计数为止。
     -   [返回响应](api-management-advanced-policies.md#ReturnResponse) - 中止管道执行，将指定的响应直接返回给调用方。

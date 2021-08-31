@@ -3,12 +3,12 @@ title: 容器见解的监视成本 | Microsoft Docs
 description: 本文介绍容器见解收集的指标和清单数据的监视成本，以帮助客户管理其使用情况和相关成本。
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 78387e950d476126d7c2065a530844e44fd59b4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2ff3616b3c78bbd7202acb08ffb3e46e0f7591b0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728903"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738502"
 ---
 # <a name="understand-monitoring-costs-for-container-insights"></a>了解容器见解的监视成本
 
@@ -37,7 +37,7 @@ Azure Monitor 定价模型主要基于 Log Analytics 工作区中每天引入的
 
 - Prometheus 指标的主动抓取
 
-- AKS 群集中 Kubernetes 主节点日志的[诊断日志收集](../../aks/view-control-plane-logs.md)，用于分析由主组件（例如 kube-apiserver 和 kube-controller-manager）生成的日志数据。
+- AKS 群集中 Kubernetes 主节点日志的[诊断日志收集](../../aks/monitor-aks.md#configure-monitoring)，用于分析由主组件（例如 kube-apiserver 和 kube-controller-manager）生成的日志数据。
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>从 Kubernetes 群集收集的内容
 
@@ -108,7 +108,7 @@ Azure Monitor 定价模型主要基于 Log Analytics 工作区中每天引入的
 - 五个 Kubernetes 服务（包括 kube-system Pod、服务和命名空间）
 - 收集频率 = 60 秒（默认值）
 
-你可以在分配的 Log Analytics 工作区中查看以下表和每小时生成的数据量。 有关其中每个表的详细信息，请参阅[容器记录](container-insights-log-search.md#container-records)。
+你可以在分配的 Log Analytics 工作区中查看以下表和每小时生成的数据量。 有关每个表的详细信息，请参阅 [Azure Monitor 日志表](../../aks/monitor-aks-reference.md#azure-monitor-logs-tables)。
 
 |表 | 规模估算（MB/小时） |
 |------|---------------|
@@ -138,7 +138,7 @@ Azure Monitor 定价模型主要基于 Log Analytics 工作区中每天引入的
 - 按“容器日志(应用程序日志)”查看引入的计费数据
 - 按“Kubernetes 命名空间”查看引入的计费容器日志数据
 - 按“群集名称”查看引入并分隔的计费容器日志数据
-- 按“日志源条目”查看引入的计费容器日志数据
+- 按日志源条目查看引入的计费容器日志数据
 - 按“诊断主节点日志”查看引入的计费诊断数据
 
 [![数据使用情况工作簿](media/container-insights-cost/data-usage-workbook.png)](media/container-insights-cost/data-usage-workbook.png#lightbox)

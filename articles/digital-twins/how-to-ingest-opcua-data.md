@@ -7,12 +7,12 @@ ms.author: dahellem
 ms.date: 5/20/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: db195f845a9e2f19108b0e40d569d76939dd6b6b
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: b191bdb1303ae0210573d295ffb5b371cc81ddfb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111373028"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748595"
 ---
 # <a name="ingesting-opc-ua-data-with-azure-digital-twins"></a>使用 Azure 数字孪生引入 OPC UA 数据
 
@@ -28,7 +28,7 @@ ms.locfileid: "111373028"
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本文，请完成以下先决条件：
-* **下载示例存储库**：本文使用一个 [DTDL 模型](concepts-models.md)文件和[“OPC UA 到 Azure 数字孪生”GitHub 存储库](https://github.com/Azure-Samples/opcua-to-azure-digital-twins)中的一个 Azure 函数体。 首先，将示例存储库下载到计算机上。 可以选择存储库的“代码”按钮，克隆存储库或将其作为 .zip 文件下载到计算机。
+* **下载示例存储库**：本文使用一个 [DTDL 模型](concepts-models.md)文件和 [“OPC UA 到 Azure 数字孪生”GitHub 存储库](https://github.com/Azure-Samples/opcua-to-azure-digital-twins)中的一个 Azure 函数体。 首先，将示例存储库下载到计算机上。 可以选择存储库的“代码”按钮，克隆存储库或将其作为 .zip 文件下载到计算机。
 
     :::image type="content" source="media/how-to-ingest-opcua-data/download-repo.png" alt-text="GitHub 上 digital-twins-samples 存储库的屏幕截图，突出显示了克隆或下载代码的步骤。" lightbox="media/how-to-ingest-opcua-data/download-repo.png":::
     
@@ -63,7 +63,7 @@ ms.locfileid: "111373028"
 * [在 Azure IoT Edge 上安装 OPC 发布服务器的分步指南](https://www.linkedin.com/pulse/step-by-step-guide-installing-opc-publisher-azure-iot-kevin-hilscher) 
 * [在 Linux 上安装 IoT Edge](../iot-edge/how-to-install-iot-edge.md) 
 * [GitHub 上的 OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)
-* [配置 OPC 发布服务器](../iot-accelerators/howto-opc-publisher-configure.md)
+* [配置 OPC 发布服务器](/previous-versions/azure/iot-accelerators/howto-opc-publisher-configure)
 
 ### <a name="set-up-opc-ua-server"></a>设置 OPC UA 服务器
 
@@ -163,7 +163,7 @@ VM 必须可通过 Internet 访问。 为简化本演练，可以打开所有端
 
 #### <a name="install-iot-edge-container"></a>安装 IoT Edge 容器
 
-按照说明[在 Linux 上安装 IoT Edge](../virtual-machines/linux/use-remote-desktop.md)。
+按照说明[在 Linux 上安装 IoT Edge](../iot-edge/how-to-install-iot-edge.md)。
 
 安装完成后，运行以下命令以验证安装状态：
 
@@ -263,7 +263,7 @@ az iot hub monitor-events -n <iot-hub-instance> -t 0
 ```
 
 > [!TIP]
-> 尝试使用 [Azure IoT 资源管理器](../iot-pnp/howto-use-iot-explorer.md)监视 IoT 中心消息。
+> 尝试使用 [Azure IoT 资源管理器](../iot-fundamentals/howto-use-iot-explorer.md)监视 IoT 中心消息。
 
 #### <a name="verify-completion"></a>验证完成
 
@@ -288,7 +288,7 @@ az iot hub monitor-events -n <iot-hub-instance> -t 0
 
 ### <a name="create-azure-digital-twins-instance"></a>创建 Azure 数字孪生实例
 
-首先，使用[操作说明：设置实例和身份验证](how-to-set-up-instance-portal.md)中的指南来部署新的 Azure 数字孪生实例。
+首先，按照[设置实例和身份验证](how-to-set-up-instance-portal.md)中的指导部署一个新 Azure 数字孪生实例。
 
 ### <a name="upload-model-and-create-twin"></a>上传模型并创建孪生体
 
@@ -358,23 +358,18 @@ az iot hub monitor-events -n <iot-hub-instance> -t 0
 
 在本部分中，发布在[先决条件](#prerequisites)中下载的 Azure 函数，该函数将处理 OPC UA 数据并更新 Azure 数字孪生。
 
-#### <a name="step-1-open-the-function-in-visual-studio"></a>步骤 1：在 Visual Studio 中打开函数
+1. 导航到本地计算机上下载的 [OPC UA 到 Azure 数字孪生](https://github.com/Azure-Samples/opcua-to-azure-digital-twins) 项目，然后进入“Azure Functions/OPCUAFunctions”文件夹。 在 Visual Studio 中打开“OPCUAFunctions.sln”解决方案。
+2. 将项目发布到 Azure 中的函数应用。 有关如何执行此操作的说明，请参阅[使用 Visual Studio 开发 Azure Functions](../azure-functions/functions-develop-vs.md#publish-to-azure)。
 
-导航到本地计算机上下载的 [OPC UA 到 Azure 数字孪生](https://github.com/Azure-Samples/opcua-to-azure-digital-twins) 项目，然后进入“Azure Functions/OPCUAFunctions”文件夹。 在 Visual Studio 中打开“OPCUAFunctions.sln”解决方案。
+#### <a name="configure-the-function-app"></a>配置函数应用
 
-#### <a name="step-2-publish-the-function"></a>步骤 2：发布函数
+接下来，为函数分配访问角色并配置应用程序设置，使之能够访问 Azure 数字孪生实例。
 
-将函数项目发布到 Azure 中的函数应用。
+[!INCLUDE [digital-twins-configure-function-app.md](../../includes/digital-twins-configure-function-app.md)]
 
-有关如何执行此操作的说明，请参阅《操作说明：设置用于处理数据的函数》一文中的[将函数应用发布到 Azure](how-to-create-azure-function.md#publish-the-function-app-to-azure) 部分。
+#### <a name="add-application-settings"></a>添加应用程序设置
 
-#### <a name="step-3-configure-the-function-app"></a>步骤 3：配置函数应用
-
-为函数分配访问角色，并配置应用程序设置，使之能够访问 Azure 数字孪生实例 。 有关如何执行此操作的说明，请参阅《操作说明：设置用于处理数据的函数》一文中的[为函数应用设置安全访问](how-to-create-azure-function.md#set-up-security-access-for-the-function-app)部分。
-
-#### <a name="step-4-add-application-settings"></a>步骤 4：添加应用程序设置
-
-还需要添加一些应用程序设置，以完全设置环境。 转到 [Azure 门户](https://portal.azure.com)，并通过在门户搜索栏中搜索名称来导航到新创建的 Azure 函数。
+此外，还需要添加一些应用程序设置，才能全面设置环境和 Azure 函数。 转到 [Azure 门户](https://portal.azure.com)，并通过在门户搜索栏中搜索名称来导航到新创建的 Azure 函数。
 
 从函数左侧导航菜单中选择“配置”。 使用“+ 新建应用程序设置”按钮，开始创建新设置。
 
@@ -405,9 +400,18 @@ az iot hub monitor-events -n <iot-hub-instance> -t 0
 
 完成此步骤后，所有必需的组件都应已安装并运行。 数据应该从 OPC UA 模拟服务器流过 Azure IoT 中心，然后流入 Azure 数字孪生实例。 
 
+### <a name="verify-completion"></a>验证完成
+
+在本部分中，设置一个 Azure 函数，用于将 OPC UA 数据连接到 Azure 数字孪生。 验证是否已完成以下清单：
+> [!div class="checklist"]
+> * 已创建“opcua-mapping.json”文件并将其导入到 blob 存储容器。 
+> * 已将示例函数 ProcessOPCPublisherEventsToADT 发布到 Azure 中的函数应用。
+> * 向 Azure Functions 应用添加了三个新的应用程序设置。
+> * 创建了用于将 IoT 中心事件发送到函数应用的事件订阅。
+
 下一部分提供了一些 Azure CLI 命令，可以运行这些命令来监视事件并验证一切是否正常工作。
 
-### <a name="verify-and-monitor"></a>验证和监视
+## <a name="verify-and-monitor"></a>验证和监视
 
 本部分中的命令可在 [Azure Cloud Shell](https://shell.azure.com) 或[本地 Azure CLI 窗口](/cli/azure/install-azure-cli)中运行。
 
@@ -425,16 +429,6 @@ az webapp log tail –name <function-name> --resource-group <resource-group-name
 
 :::image type="content" source="media/how-to-ingest-opcua-data/adt-explorer-2.png" alt-text="使用 Azure Digital Twins Explorer 监视孪生属性更新的屏幕截图":::
 
-### <a name="verify-completion"></a>验证完成
-
-在本部分中，设置一个 Azure 函数，用于将 OPC UA 数据连接到 Azure 数字孪生。 验证是否已完成以下清单：
-> [!div class="checklist"]
-> * 已创建“opcua-mapping.json”文件并将其导入到 blob 存储容器。 
-> * 已将示例函数 ProcessOPCPublisherEventsToADT 发布到 Azure 中的函数应用。
-> * 向 Azure Functions 应用添加了三个新的应用程序设置。
-> * 创建了用于将 IoT 中心事件发送到函数应用的事件订阅。
-> * 已使用 Azure CLI 命令验证最终数据流
-
 ## <a name="next-steps"></a>后续步骤
 
 在本文中，你设置了一个完整的数据流，用于将模拟 OPC UA 服务器数据引入 Azure 数字孪生，并在此过程中更新了数字孪生体上的一个属性。
@@ -444,6 +438,6 @@ az webapp log tail –name <function-name> --resource-group <resource-group-name
 * [在 Azure IoT Edge 上安装 OPC 发布服务器的分步指南](https://www.linkedin.com/pulse/step-by-step-guide-installing-opc-publisher-azure-iot-kevin-hilscher) 
 * [在 Linux 上安装 IoT Edge](../iot-edge/how-to-install-iot-edge.md) 
 * [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher)
-* [配置 OPC 发布服务器](../iot-accelerators/howto-opc-publisher-configure.md)
+* [配置 OPC 发布服务器](/previous-versions/azure/iot-accelerators/howto-opc-publisher-configure)
 * [UANodeSetWebViewer](https://github.com/barnstee/UANodesetWebViewer) 
 * [OPCUA2DTDL](https://github.com/khilscher/OPCUA2DTDL)

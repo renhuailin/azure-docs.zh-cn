@@ -3,18 +3,17 @@ title: 将 Azure Maps 室内定位模块与 Microsoft Creator 服务搭配使用
 description: 了解如何使用 Microsoft Azure Maps 室内定位模块，通过嵌入模块的 JavaScript 库来呈现定位。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/20/2020
+ms.date: 07/13/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 59521aa0be652ef37c39f45bb323fbc49a93b99d
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 32df2b3805d5c79504380676a72d43467ff2092d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030406"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727270"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>使用 Azure Maps 室内定位模块
 
@@ -50,8 +49,8 @@ Azure Maps Web SDK 包括“Azure Maps 室内”模块。 通过“Azure Maps �
   2. 引用 HTML 文件 `<head>` 元素中的“Azure Maps 室内”模块 JavaScript 和样式表：
 
       ```html
-      <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.css" type="text/css" />
-      <script src="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.js"></script>
+      <link rel="stylesheet" href="node_modules/azure-maps-indoor/dist/atlas-indoor.min.css" type="text/css" />
+      <script src="node_modules/azure-maps-indoor/dist/atlas-indoor.min.js"></script>
       ```
 
 ## <a name="instantiate-the-map-object"></a>实例化定位对象
@@ -103,6 +102,14 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 if (statesetId.length > 0) {
     indoorManager.setDynamicStyling(true);
 }
+```
+
+## <a name="geographic-settings-optional"></a>地理设置（可选）
+
+本指南假设已在美国创建 Creator 服务。 如何是这样，你可以跳过此部分。 但是，如果 Creator 服务是在欧洲创建的，请添加以下代码：
+
+```javascript
+  indoorManager.setOptions({ geography: 'eu' });.
 ```
 
 ## <a name="indoor-level-picker-control"></a>室内楼层选取器控件

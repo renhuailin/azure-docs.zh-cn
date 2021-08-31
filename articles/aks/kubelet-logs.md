@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 节点的 kubelet 日
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: 355c665db2627fe04595a8b519b16bd475ebcadf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20296d100d5a6bcd2cffbc93f29bfd71f56099c1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735142"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733580"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>从 Azure Kubernetes 服务 (AKS) 群集节点获取 kubelet 日志
 
@@ -27,11 +27,14 @@ ms.locfileid: "101735142"
 
 ## <a name="get-kubelet-logs"></a>获取 kubelet 日志
 
-连接到节点后，运行以下命令以拉取 *kubelet* 日志：
+通过 `kubectl debug` 连接到节点后，运行以下命令以拉取 kubelet 日志：
 
 ```console
-sudo journalctl -u kubelet -o cat
+chroot /host
+journalctl -u kubelet -o cat
 ```
+> [!NOTE]
+> 不需要使用 `sudo journalctl`，因为你已经是节点上的 `root`。
 
 > [!NOTE]
 > 对于 Windows 节点，日志数据位于 `C:\k` 中，可以使用 more 命令查看：
@@ -71,8 +74,8 @@ I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname fr
 
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md
-[aks-master-logs]: ./view-control-plane-logs.md
+[aks-master-logs]: monitor-aks-reference.md#resource-logs
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[aks-master-logs]: ./view-control-plane-logs.md
+[aks-master-logs]: monitor-aks-reference.md#resource-logs
 [azure-container-logs]: ../azure-monitor/containers/container-insights-overview.md

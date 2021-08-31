@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2021
+ms.date: 07/26/2021
 ms.author: yelevin
-ms.openlocfilehash: 737fce0dff06e8af5599158bb7b6e795bf43ba0c
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 4b906e9c9fc72cd44513969c316900b190aa5a76
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109811689"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114689221"
 ---
 # <a name="customize-activities-on-entity-page-timelines"></a>在实体页时间线上自定义活动
 
@@ -45,6 +45,13 @@ ms.locfileid: "109811689"
 
 1. 你将看到一个页面，其中列出了你在“我的活动”选项卡中创建的所有活动。在“活动模板”选项卡中，将会看到 Microsoft 安全研究人员现成提供的活动集合 。 这些活动已在实体页中的时间线上跟踪和显示。
 
+    > [!NOTE]
+    > - 只要尚未创建任何由用户定义的活动，实体页就会显示在“活动模板”选项卡下面列出的所有活动。
+    >
+    > - 定义单个自定义活动后，您的实体页面将仅显示出现在“我的活动”选项卡中的活动。 
+    >
+    > - 如果要继续查看实体页中的开箱即用活动，则必须为要跟踪和显示的每个模板创建一个活动。 按照下面的“从模板创建活动”中的说明进行操作。
+
 ## <a name="create-an-activity-from-a-template"></a>从模板创建活动
 
 1. 单击“活动模板”选项卡查看默认提供的各种活动。 可以按实体类型和数据源筛选该列表。 从列表中选择一个活动会在预览窗格中显示以下详细信息：
@@ -57,9 +64,11 @@ ms.locfileid: "109811689"
 
     - 导致检测此活动的查询
 
-1. 单击预览窗格底部的“创建活动”按钮以启动活动创建向导。 
+1. 单击预览窗格底部的“创建活动”按钮以启动活动创建向导。
 
-1. 此时会打开“活动向导 - 从模板创建新活动”，其中的字段内已填充了来自模板的值。 可以在“常规”和“活动配置”选项卡中进行所需的更改 。
+    :::image type="content" source="./media/customize-entity-activities/activity-details.png" alt-text="查看活动详细信息":::
+
+1. 此时会打开“活动向导 - 从模板创建新活动”，其中的字段内已填充了来自模板的值。 可以在“常规”和“活动配置”选项卡中根据需要进行更改，或不进行任何更改以继续查看开箱即用的活动。 
 
 1. 如果对设置感到满意，请选择“查看并创建”选项卡。看到“已通过验证”消息后，单击底部的“创建”按钮  。
 
@@ -79,6 +88,10 @@ ms.locfileid: "109811689"
 1. 可以按附加参数进行筛选，以帮助细化查询并优化其性能。 例如，可以选择“IsDomainJoined”参数并将值设置为“True”来筛选 Active Directory 用户 。
 
 1. 可以选择“已启用”或“已禁用”作为活动的初始状态 。
+
+1. 选择“下一步：活动配置”以进入下一个选项卡。
+
+    :::image type="content" source="./media/customize-entity-activities/create-new-activity.png" alt-text="屏幕截图 - 创建新活动":::
 
 ### <a name="activity-configuration-tab"></a>活动配置选项卡
 
@@ -113,26 +126,62 @@ ms.locfileid: "109811689"
 系统将根据所选的实体显示可用的标识符。 单击相关标识符会将标识符粘贴到查询中光标所在的位置。
 
 > [!NOTE]
-> - 查询必须包含“TimeGenerated”字段才能将检测到的活动放入实体的时间线中。
+> - 查询 **最多可包含 10 个字段**，因此必须投影所需的字段。
 >
-> - 在查询中最多可以投影 10 个字段。
+> - 投影字段必须包含“TimeGenerated”字段才能将检测到的活动放入实体的时间线中。
+
+```kusto
+SecurityEvent
+| where EventID == "4728"
+| where (SubjectUserSid == '{{Account_Sid}}' ) or (SubjectUserName == '{{Account_Name}}' and SubjectDomainName == '{{Account_NTDomain}}' )
+| project TimeGenerated, SubjectUserName, MemberName, MemberSid, GroupName=TargetUserName
+```
+
+:::image type="content" source="./media/customize-entity-activities/new-activity-query.png" alt-text="屏幕截图 - 输入查询以检测活动":::
 
 #### <a name="presenting-the-activity-in-the-timeline"></a>在时间线中显示活动
 
-你可以确定如何出于自己的便利在时间线中显示活动。
+为方便起见，你可能希望通过将动态参数添加到活动输出来确定活动在时间线中的显示方式。
 
-可以使用以下格式将动态参数添加到活动输出：`{{ParameterName}}`
+Azure Sentinel 提供了内置参数以供使用，并且还可以基于查询中预测的字段使用其他参数。
 
-可以添加以下参数： 
+对参数使用以下格式：`{{ParameterName}}`
 
-- 在查询中投影的任何字段  
-- Count – 使用此参数可以汇总 KQL 查询输出的计数 
-- StartTimeUTC – 活动开始时间，采用 UTC 格式 
-- EndTimeUTC – 活动结束时间，采用 UTC 格式 
+活动查询通过验证并显示查询窗口下方的“查看查询结果”链接后，你将能够展开“可用值”部分，以查看在创建动态活动标题时可供使用的参数。 
 
-示例：“`{{SubjectUsername}}` 已将用户 `{{TargetUsername}}` 添加到组 `{{GroupName}}`”
+选择特定参数旁边的“复制”图标以将该参数复制到剪贴板，以便你可以将其粘贴到上面的“活动标题”字段中。 
 
-### <a name="review-and-create-tab"></a>“审核并创建”选项卡 
+将以下任何参数添加到查询：
+
+- 在查询中投影的任何字段.
+
+- 查询中提到的任何实体的实体标识符。
+
+- `StartTimeUTC`，添加活动的开始时间（UTC 时间）。
+
+- `EndTimeUTC`，添加活动的结束时间（UTC 时间）。
+
+- `Count`，将多个 KQL 查询输出汇总为单个输出。
+
+    `count` 参数在后台将以下命令添加到查询，即使未完全显示在编辑器中：
+
+    ```kql
+    Summarize count() by <each parameter you’ve projected in the activity>
+    ```
+
+    然后，当你在实体页中使用“存储桶大小”筛选器时，还会将以下命令添加到在后台运行的查询中：
+
+    ```kql
+    Summarize count() by <each parameter you’ve projected in the activity>, bin (TimeGenerated, Bucket in Hours)
+    ```
+
+例如：
+
+:::image type="content" source="./media/customize-entity-activities/new-activity-title.png" alt-text="屏幕截图-查看活动标题的可用值":::
+
+如果对查询和活动标题满意，请选择“下一步：评审”。
+
+### <a name="review-and-create-tab"></a>“审核并创建”选项卡
 
 1. 验证自定义活动的所有配置信息。
 

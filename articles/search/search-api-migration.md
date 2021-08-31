@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: d7734fde529c24e8113ea3b019d343b7223f0122
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95e774b1f10f07a447ec168aa7716bab799acd73
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91929636"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732579"
 ---
 # <a name="upgrade-to-the-latest-rest-api-in-azure-cognitive-search"></a>升级到 Azure 认知搜索服务中最新的 REST API
 
@@ -85,7 +85,7 @@ ms.locfileid: "91929636"
 
 #### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>“命名实体识别”认知技能现已停用
 
-如果在代码中调用[命名实体识别](cognitive-search-skill-named-entity-recognition.md)技能，调用会失败。 替代的功能是[实体识别](cognitive-search-skill-entity-recognition.md)。 无需进行任何其他更改应该就能替换技能引用。 两个版本的 API 签名相同。 
+如果在代码中调用[命名实体识别](cognitive-search-skill-named-entity-recognition.md)技能，调用会失败。 替代的功能是[实体识别技能 (V3)](cognitive-search-skill-entity-recognition-v3.md)。 按照[已弃用的认知搜索技能](cognitive-search-skill-deprecated.md)中的建议，迁移到支持的技能。
 
 ### <a name="upgrading-complex-types"></a>升级复杂类型
 

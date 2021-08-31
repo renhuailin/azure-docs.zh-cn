@@ -2,15 +2,15 @@
 title: 可视化 Azure Monitor 中的数据 | Microsoft 文档
 description: 概述了将 Azure Monitor 中存储的指标和日志数据可视化时可使用的方法。
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 01/25/2021
-ms.openlocfilehash: 1da3f75fb95488d45a3f29284bdc8c7424b6bc9a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+author: rboucher
+ms.author: robb
+ms.date: 07/28/2021
+ms.openlocfilehash: 4a98a44cd56691947536779103f55b4e713c74df
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459098"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724607"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -85,6 +85,9 @@ ms.locfileid: "110459098"
 
 ![显示 Grafana 可视化效果的屏幕截图。](media/visualizations/grafana.png)
 
+> [!IMPORTANT]
+> Internet Explorer 浏览器和旧版 Microsoft Edge 浏览器与 Grafana 不兼容，必须使用基于 chromium 的浏览器，包括 Microsoft Edge。 请参阅 [Grafana 支持的浏览器](https://grafana.com/docs/grafana/latest/installation/requirements/#supported-web-browsers)。
+
 ### <a name="advantages"></a>优点
 - 丰富的可视化效果。
 - 丰富的数据源生态系统。
@@ -95,6 +98,15 @@ ms.locfileid: "110459098"
 - 无 Azure 集成。 无法通过 Azure 资源管理器管理仪表板和模型。
 - 支持额外 Grafana 基础结构的成本或用于 Grafana Cloud 的额外成本。
 
+## <a name="azure-monitor-partners"></a>Azure Monitor 合作伙伴
+某些 [Azure Monitor 合作伙伴](./partners.md)可能会提供可视化功能。 上一链接列出了 Microsoft 评估的合作伙伴。 
+
+### <a name="advantages"></a>优点
+- 可能会提供现成的可视化效果，节省时间
+
+### <a name="limitations"></a>限制
+- 可能会产生额外成本
+- 研究和评估合作伙伴产品/服务的时间
 
 ## <a name="build-your-own-custom-application"></a>生成自己的自定义应用程序
 你可以使用任何 REST 客户端通过其 API 访问 Azure Monitor 中的日志和指标数据，从而可以生成自己的自定义网站和应用程序。
@@ -105,7 +117,6 @@ ms.locfileid: "110459098"
 
 ### <a name="disadvantages"></a>缺点
 - 所需的工程工作量明显较大。
-
 
 ## <a name="azure-monitor-views"></a>Azure Monitor 视图
 
@@ -140,4 +151,3 @@ ms.locfileid: "110459098"
 - 了解如何[将日志数据导入 Power BI](./visualize/powerbi.md)。
 - 了解 [Grafana Azure Monitor 数据源插件](./visualize/grafana-plugin.md)。
 - 了解 [Azure Monitor 中的视图](visualize/view-designer.md)。
-

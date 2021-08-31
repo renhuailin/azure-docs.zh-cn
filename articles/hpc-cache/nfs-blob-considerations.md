@@ -4,21 +4,18 @@ description: 介绍将 ADLS-NFS blob 存储与 Azure HPC 缓存配合使用时�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 07/12/2021
 ms.author: v-erkel
-ms.openlocfilehash: d861a41d8cdeac548729ff341b3ffe27c0aa8152
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 70b1dc3e2de6c70a6b59aa739a9bed254295a4f9
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259896"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293426"
 ---
-# <a name="use-nfs-mounted-blob-storage-preview-with-azure-hpc-cache"></a>将 NFS 装载的 Blob 存储（预览）与 Azure HPC 缓存配合使用
+# <a name="use-nfs-mounted-blob-storage-with-azure-hpc-cache"></a>将装载了 NFS 的 blob 存储与 Azure HPC 缓存配合使用
 
-从 2021 年 3 月开始，可以将装载 NFS 的 blob 容器与 Azure HPC 缓存配合使用。 有关详细信息，请参阅 Blob 存储文档站点上的 [Azure blob 存储中的 NFS 3.0 协议支持](../storage/blobs/network-file-system-protocol-support.md)。
-
-> [!NOTE]
-> Azure Blob 存储中的 NFS 3.0 协议支持提供预览版，不应在生产环境中使用。 请查看 [NFS 协议支持文档](../storage/blobs/network-file-system-protocol-support.md)，获取更新和更多详细信息。
+可以将装载 NFS 的 blob 容器与 Azure HPC 缓存配合使用。 有关详细信息，请参阅 Blob 存储文档站点上的 [Azure blob 存储中的 NFS 3.0 协议支持](../storage/blobs/network-file-system-protocol-support.md)。
 
 Azure HPC 缓存在其 ADLS-NFS 存储目标类型中使用已启用 NFS 的 blob 存储。 这些存储目标与常规 NFS 存储目标类似，而且与常规 Azure Blob 目标有一些重叠。
 
@@ -26,9 +23,9 @@ Azure HPC 缓存在其 ADLS-NFS 存储目标类型中使用已启用 NFS 的 blo
 
 此外，还应阅读 NFS blob 文档，尤其是以下介绍兼容和不兼容场景的部分：
 
-* [功能概述](../storage/blobs/network-file-system-protocol-support.md#applications-and-workloads-suited-for-this-feature)
-* [尚不支持的功能](../storage/blobs/network-file-system-protocol-support.md#azure-storage-features-not-yet-supported)
+* [功能概述](../storage/blobs/network-file-system-protocol-support.md)
 * [性能注意事项](../storage/blobs/network-file-system-protocol-support-performance.md)
+* [已知问题和限制](../storage/blobs/network-file-system-protocol-known-issues.md)
 
 ## <a name="understand-consistency-requirements"></a>了解一致性要求
 
@@ -38,9 +35,10 @@ HPC 缓存要求 ADLS-NFS 存储目标保持高度一致。 默认情况下，�
 
 此设置在容器的生存期内保持不变，即使将其从缓存中删除也是如此。
 
-## <a name="preload-data-with-nfs-protocol"></a>用 NFS 协议预加载数据
+## <a name="pre-load-data-with-nfs-protocol"></a>通过 NFS 协议预加载数据
+<!-- cross-referenced from hpc-cache-ingest.md and here -->
 
-在已启用 NFS 的 blob 容器上，只能通过创建某文件时所用的同一协议来编辑该文件。 也就是说，如果使用 Azure REST API 填充容器，则不能使用 NFS 来更新这些文件。 由于 Azure HPC 缓存只使用 NFS，因此无法编辑使用 Azure REST API 创建的任何文件。
+在已启用 NFS 的 blob 容器上，只能通过创建某文件时所用的同一协议来编辑该文件。 也就是说，如果使用 Azure REST API 填充容器，则不能使用 NFS 来更新这些文件。 由于 Azure HPC 缓存只使用 NFS，因此无法编辑使用 Azure REST API 创建的任何文件。 （详细了解 [blob 存储 API 已知问题](../storage/blobs/network-file-system-protocol-known-issues.md#blob-storage-apis)）
 
 如果容器为空，或者文件是使用 NFS 创建的，则不会出现缓存问题。
 
@@ -52,7 +50,7 @@ HPC 缓存要求 ADLS-NFS 存储目标保持高度一致。 默认情况下，�
 * 清空文件（将其截断为 0）。
 * 保存文件的副本。 该副本标记为 NFS 创建的文件，可以使用 NFS 进行编辑。
 
-Azure HPC 缓存无法编辑使用 REST 创建的文件的内容。 这意味着它不能将已更改的文件从客户端保存回存储目标。
+Azure HPC 缓存无法编辑使用 REST 创建的文件的内容。 这意味着缓存不能将已更改的文件从客户端保存回存储目标。
 
 了解此限制很重要，因为如果在未使用 NFS 创建的文件上使用读/写缓存使用量模型，则可能会导致数据完整性问题。
 
@@ -68,7 +66,7 @@ Azure HPC 缓存无法编辑使用 REST 创建的文件的内容。 这意味着
 * 大于 15% 的写入量，每 60 秒检查一次后备服务器是否有更改
 * 大于 15% 的写入量，每 30 秒写回到服务器一次
 
-仅使用这些使用量模型来编辑使用 NFS 创建的文件。
+写入缓存使用量模型应仅用于使用 NFS 创建的文件。
 
 如果尝试对 REST 创建的文件使用写入缓存，则文件更改可能会丢失。 这是因为缓存不会立即尝试将文件编辑保存到存储容器。
 
@@ -100,13 +98,7 @@ Azure HPC 缓存无法编辑使用 REST 创建的文件的内容。 这意味着
 
 如果 NFS 工作流最初为硬件存储系统而编写，则客户端应用程序可能会包含 NLM 请求。 若要在将进程移到启用 NFS 的 blob 存储时解决此限制，请确保客户端在装载缓存时禁用 NLM。
 
-若要禁用 NLM，请使用客户端的 ``mount`` 命令中的 ``-o nolock`` 选项。 此选项可防止客户端请求 NLM 锁定并在响应中接收错误。
-
-在少数情况下，Azure HPC 缓存会自行确认来自客户端的请求。 名为“读取操作频繁，写入操作罕见”的缓存使用量模型代表其后端存储确认 NLM 请求。 此系统会阻止客户端上的错误，但实际上不会在 ADLS 容器上创建锁。
-
-如果将 ADLS-NFS 存储目标的使用量模型切换为“读取操作频繁，写入操作罕见”或从该模型进行切换，则必须使用 ``nolock`` 选项重新装入所有客户端。
-
-[了解缓存使用量模型](cache-usage-models.md#know-when-to-remount-clients-for-nlm)中提供了有关 NLM、HPC 缓存和使用模型的详细信息。
+若要禁用 NLM，请使用客户端的 ``mount`` 命令中的 ``-o nolock`` 选项。 此选项可防止客户端请求 NLM 锁定并在响应中接收错误。 ``nolock`` 选项在不同操作系统中以不同方式实现；有关详细信息，请查看客户端 OS 文档 (man 5 nfs)。
 
 ## <a name="streamline-writes-to-nfs-enabled-containers-with-hpc-cache"></a>利用 HPC 缓存简化对已启用 NFS 的容器的写入
 
@@ -117,9 +109,9 @@ Azure HPC 缓存有助于提升工作负载性能，包括将更改写入到 ADL
 
 已启用 NFS 的 blob [性能注意事项一文](../storage/blobs/network-file-system-protocol-support-performance.md)中概述的一项限制是，ADLS-NFS 存储在覆盖现有文件方面不是非常有效。 如果将 Azure HPC 缓存与装载 NFS 的 blob 存储配合使用，则缓存会在客户端修改活动文件时处理间歇重写。 向后端容器写入文件的延迟会对客户端隐藏。
 
-请记住[通过 NFS 协议预加载数据](#preload-data-with-nfs-protocol)中所述的限制。
+请记住[通过 NFS 协议预加载数据](#pre-load-data-with-nfs-protocol)中所述的限制。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解 [ADLS-NFS 存储目标先决条件](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview)
+* 了解 [ADLS-NFS 存储目标先决条件](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements)
 * 创建[已启用 NFS 的 blob 存储帐户](../storage/blobs/network-file-system-protocol-support-how-to.md)

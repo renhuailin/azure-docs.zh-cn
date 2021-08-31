@@ -6,13 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: rajap
 ms.author: rajap
+ms.reviewer: sroy
 ms.date: 06/01/2021
-ms.openlocfilehash: c3588ff5946af766e8046d37d97dab3950499756
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: be65d22ca33e68d7ccec50dd3cd8617bb6ee1ad7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542313"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748217"
 ---
 # <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>访问合作伙伴中心内的商业市场分析报告
 
@@ -20,10 +21,10 @@ ms.locfileid: "111542313"
 
 ## <a name="partner-center-analytics-tools"></a>合作伙伴中心分析工具
 
-若要访问合作伙伴中心分析工具，请在“商业市场”下打开“[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)”仪表板。
+要访问合作伙伴中心分析工具，请转至[摘要](https://go.microsoft.com/fwlink/?linkid=2165765)仪表板。
 
 >[!NOTE]
-> 有关分析术语的详细定义，请参阅[适用于商业市场分析的常见问题和术语](analytics-faq.md)。
+> 有关分析术语的详细定义，请参阅[适用于商业市场分析的常见问题和术语](analytics-faq.yml)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -31,6 +32,7 @@ ms.locfileid: "111542313"
 - 有关采用图形和可下载格式显示的订单的信息，请参阅[商业市场分析中的“订单”仪表板](orders-dashboard.md)。
 - 有关虚拟机 (VM) 产品/服务使用情况和按流量计费指标的信息，请参阅[商业市场分析中的“使用情况”仪表板](usage-dashboard.md)。
 - 有关客户的详细信息（包括增长趋势），请参阅[商业市场分析中的“客户”仪表板](customer-dashboard.md)。
+- 有关许可证的详细信息，请参阅[商业市场分析中的“许可证”仪表板](license-dashboard.md)
 - 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](downloads-dashboard.md)。
 - 若要查看客户对 Azure 市场和 AppSource 中产品/服务的反馈的综合视图，请参阅[商业市场分析中的“评级和评论”仪表板](ratings-reviews.md)。
-- 有关商业市场分析的常见问题解答以及数据术语的综合词典，请参阅[商业市场分析的常见问题解答和术语](analytics-faq.md)。
+- 有关商业市场分析的常见问题解答以及数据术语的综合词典，请参阅[商业市场分析的常见问题解答和术语](analytics-faq.yml)。

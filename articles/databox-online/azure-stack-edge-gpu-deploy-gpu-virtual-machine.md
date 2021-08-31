@@ -1,121 +1,133 @@
 ---
-title: Azure Stack Edge Pro GPU 设备上的 GPU VM 概述和部署
-description: 介绍如何使用模板在 Azure Stack Edge Pro GPU 设备上创建和管理 GPU 虚拟机 (VM)。
+title: 在 Azure Stack Edge Pro GPU 设备上部署 GPU VM
+description: 介绍如何通过 Azure 门户或使用模板在 Azure Stack Edge Pro GPU 上创建和部署 GPU 虚拟机 (VM)。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/28/2021
+ms.date: 08/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 754cb296d6edebe4a8026df612fc52113e171a1c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 958c87a78551555d2994c37e2b72c75cb989a834
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663869"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740818"
 ---
 # <a name="deploy-gpu-vms-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上部署 GPU VM
 
 [!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
-本文概述了 Azure Stack Edge Pro GPU 设备上的 GPU 虚拟机 (VM)。 本文还介绍了如何使用 Azure 资源管理器模板创建 GPU VM。 
+本文介绍如何在 Azure 门户中或使用 Azure 资源管理器模板创建 GPU VM。
 
-
-## <a name="about-gpu-vms"></a>关于 GPU VM
-
-Azure Stack Edge 设备配备了 1 个或 2 个 Nvidia 的 Tesla T4 GPU。 要在这些设备上部署 GPU 加速的 VM 工作负载，请使用 GPU 优化的 VM 大小。 例如，应使用 NC T4 v3 系列来部署采用 T4 GPU 的推理工作负载。 
-
-有关详细信息，请参阅 [NC T4 v3 系列 VM](../virtual-machines/nct4-v3-series.md)。
-
-## <a name="supported-os-and-gpu-drivers"></a>支持的 OS 和 GPU 驱动程序 
-
-要利用 Azure N 系列 VM 的 GPU 功能，必须安装 Nvidia GPU 驱动程序。 
-
-Nvidia GPU 驱动程序扩展可以安装适当的 Nvidia CUDA 或 GRID 驱动程序。 你可以使用 Azure 资源管理器模板来安装或管理扩展。
-
-### <a name="supported-os-for-gpu-extension-for-windows"></a>适用于 Windows 的 GPU 扩展支持的 OS
-
-此扩展支持以下操作系统 (OS)。 其他版本可能也有效，但尚未在 Azure Stack Edge 设备上运行的 GPU VM 上对这些版本进行内部测试。
-
-| 分发 | 版本 |
-|---|---|
-| Windows Server 2019 | 核心 |
-| Windows Server 2016 | 核心 |
-
-### <a name="supported-os-for-gpu-extension-for-linux"></a>适用于 Linux 的 GPU 扩展支持的 OS
-
-此扩展支持以下 OS 发行版，具体取决于特定 OS 版本对驱动程序的支持。 其他版本可能也有效，但尚未在 Azure Stack Edge 设备上运行的 GPU VM 上对这些版本进行内部测试。
-
-
-| 分发 | 版本 |
-|---|---|
-| Ubuntu | 18.04 LTS |
-| Red Hat Enterprise Linux | 7.4 |
-
-
-## <a name="gpu-vms-and-kubernetes"></a>GPU VM 和 Kubernetes
-
-在设备上部署 GPU VM 之前，如果设备上已配置 Kubernetes，请了解以下注意事项。
-
-#### <a name="for-1-gpu-device"></a>对于使用 1 个 GPU 的设备： 
-
-- 在设备上创建 GPU VM，然后配置 Kubernetes：在这种情况下，创建 GPU VM 和配置 Kubernetes 均能成功。 此时 Kubernetes 无法访问 GPU。
-
-- 在设备上配置 Kubernetes，然后创建 GPU VM：在这种情况下，Kubernetes 将回收设备上的 GPU，且创建 VM 将失败，因为没有可用的 GPU 资源。
-
-#### <a name="for-2-gpu-device"></a>对于使用 2 个 GPU 的设备
-
-- 在设备上创建 GPU VM，然后配置 Kubernetes：在这种情况下，你创建的 GPU VM 将回收设备上的一个 GPU，且配置 Kubernetes 将成功，并回收剩余的一个 GPU。 
-
-- 在设备上创建两个GPU VM，然后配置 Kubernetes：在这种情况下，两个 GPU VM 将回收设备上的两个 GPU，并且 Kubernetes 配置成功，没有 GPU。 
-
-- 在设备上配置 Kubernetes，然后创建 GPU VM：在这种情况下，Kubernetes 将回收设备上的两个 GPU，且创建 VM 将失败，因为没有可用的 GPU 资源。
-
-<!--Li indicated that this is fixed. If you have GPU VMs running on your device and Kubernetes is also configured, then anytime the VM is deallocated (when you stop or remove a VM using Stop-AzureRmVM or Remove-AzureRmVM), there is a risk that the Kubernetes cluster will claim all the GPUs available on the device. In such an instance, you will not be able to restart the GPU VMs deployed on your device or create GPU VMs. -->
-
+使用 Azure 门户快速部署单个 GPU VM。 可以在创建 VM 期间或之后安装 GPU 扩展。 或者，使用 Azure 资源管理器模板高效地部署和管理多个 GPU VM。
 
 ## <a name="create-gpu-vms"></a>创建 GPU VM
 
-在设备上部署 GPU VM 时，请执行以下步骤：
+可以通过门户或使用 Azure 资源管理器模板部署 GPU VM。
 
-1. 确定设备是否将同时运行 Kubernetes。 如果设备将运行 Kubernetes，需要先创建 GPU VM，然后再配置 Kubernetes。 如果先配置了 Kubernetes，它将回收所有可用的 GPU 资源，创建 GPU VM 便会失败。
+有关 GPU VM 支持的操作系统、驱动程序和 VM 大小的列表，请参阅[什么是 GPU 虚拟机？](azure-stack-edge-gpu-overview-gpu-virtual-machines.md)。 有关部署注意事项，请参阅 [GPU VM 和 Kubernetes](azure-stack-edge-gpu-overview-gpu-virtual-machines.md#gpu-vms-and-kubernetes)。
+
+
+> [!IMPORTANT]
+> 如果设备将运行 Kubernetes，请先部署 GPU VM，再配置 Kubernetes。 如果先配置了 Kubernetes，它将声明所有可用的 GPU 资源，而创建 GPU VM 将会失败。 有关 1-GPU 和 2-GPU 设备上的 Kubernetes 部署注意事项，请参阅 [GPU VM 和 Kubernetes](azure-stack-edge-gpu-overview-gpu-virtual-machines.md#gpu-vms-and-kubernetes)。
+
+### <a name="portal"></a>[Portal](#tab/portal)
+
+在设备上通过 Azure 门户部署 GPU VM 时，请执行以下步骤：
+
+1. 若要创建 GPU VM，请按照[在 Azure Stack Edge 上使用 Azure 门户部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-portal.md) 中的所有步骤执行操作，并满足以下配置要求：
+
+    - 在“基本”选项卡上，选择 [NCasT4-v3 系列中的 VM 大小](azure-stack-edge-gpu-virtual-machine-sizes.md#ncast4_v3-series-preview)。
+
+       ![Azure Stack Edge 中“添加虚拟机”部分“基本”选项卡的屏幕截图。 突出显示了“大小”选项（包括 GPU VM 支持的 VM 大小）。](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/basics-vm-size-for-gpu.png)
+
+    - 若要在部署期间安装 GPU 扩展，请在“高级”选项卡上选择“选择要安装的扩展”。 然后，选择要安装的 GPU 扩展。 GPU 扩展仅适用于符合 [NCasT4-v3 系列中的虚拟机 大小](azure-stack-edge-gpu-virtual-machine-sizes.md#ncast4_v3-series-preview)的虚拟机。
+        
+        > [!NOTE]
+        > 如果使用 Red Hat 映像，则需要在 VM 部署后安装 GPU 扩展。 按照[安装 GPU 扩展](azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md)中的步骤执行操作。
+    
+       ![在“添加虚拟机”的“高级”选项卡中添加 GPU 扩展的步骤插图。 突出显示了选择和添加扩展的选项。](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/add-extension-01.png)
+
+       “高级”选项卡显示已选的扩展。
+
+       ![“添加虚拟机”的“高级”选项卡的屏幕截图。 突出显示了已安装的 GPU 扩展。](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/add-extension-02.png)
+
+1. 成功创建 GPU VM 后，可以在 Azure 门户的 Azure Stack Edge 资源中的虚拟机列表中查看此 VM。
+
+    ![Azure Stack Edge 中“虚拟机”视图的屏幕截图，其中突出显示了新创建的 GPU VM。](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/list-virtual-machines-01.png)
+
+    选择 VM，并进一步了解详细信息。 确保 GPU 扩展的状态为“已成功”。
+
+    ![Azure Stack Edge“详细信息”窗格的屏幕截图。 突出显示了已安装的扩展（包括已安装的 GPU 扩展）。](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/vm-details-extension-installed.png)
+
+
+### <a name="templates"></a>[模板](#tab/templates)
+
+使用 Azure 资源管理器模板在设备上部署 GPU VM 时，请执行以下步骤：
 
 1. [将 VM 模板和参数文件下载](https://aka.ms/ase-vm-templates)到客户端计算机。 将它解压缩到将用作工作目录的那个目录中。
 
 1. 在 Azure Stack Edge 设备上部署 VM 之前，必须先将客户端配置为使用 Azure PowerShell 通过 Azure 资源管理器连接到设备。 有关详细说明，请参阅[连接到 Azure Stack Edge 设备上的 Azure 资源管理器](azure-stack-edge-gpu-connect-resource-manager.md)。
 
-1. 若要创建 GPU VM，请执行[使用模板在 Azure Stack Edge 上部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-templates.md) 或[使用 Azure 门户在 Azure Stack Edge 上部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-portal.md) 中的所有步骤，以下差异除外： 
-
+1. 若要创建 GPU VM，请按照[在 Azure Stack Edge 上使用模板部署 VM](azure-stack-edge-gpu-deploy-virtual-machine-templates.md) 中的所有步骤执行操作，并满足以下配置要求： 
             
-    1. 如果使用模板创建 VM，则在指定 GPU VM 大小时，请确保在 `CreateVM.parameters.json` 中使用 NCasT4-v3 系列，因为它们受 GPU VM 支持。 有关详细信息，请参阅 [GPU VM 支持的 VM 大小](azure-stack-edge-gpu-virtual-machine-sizes.md#ncast4_v3-series-preview)。
+    - 指定 GPU VM 大小时，请确保在 `CreateVM.parameters.json` 中使用 NCasT4-v3 系列，因为它们受 GPU VM 支持。 有关详细信息，请参阅 [GPU VM 支持的 VM 大小](azure-stack-edge-gpu-virtual-machine-sizes.md#ncast4_v3-series-preview)。
 
-        ```json
-            "vmSize": {
-          "value": "Standard_NC4as_T4_v3"
-        },
-        ```
-        如果使用 Azure 门户创建 VM，则仍可从 NCasT4-v3 系列中选择 VM 大小。
+       ```json
+           "vmSize": {
+         "value": "Standard_NC4as_T4_v3"
+       },
+       ```
 
-    1. 成功创建 GPU VM 后，可以在 Azure 门户的 Azure Stack Edge 资源中的虚拟机列表中查看此 VM。
+    成功创建 GPU VM 后，可以在 Azure 门户的 Azure Stack Edge 资源中的虚拟机列表中查看此 VM。
 
-        ![Azure 门户中虚拟机列表中的 GPU VM](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/list-virtual-machine-1.png)
+    ![Azure Stack Edge 中“虚拟机”视图的屏幕截图。 突出显示了新创建的 GPU VM。](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/list-virtual-machines-01.png)
 
-1. 选择 VM 并进一步了解详细信息。 复制分配给 VM 的 IP。
+1. 选择 VM，并进一步了解详细信息。 复制分配给 VM 的 IP 地址。
 
-    ![Azure 门户中分配给 GPU VM 的 IP](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/get-ip-gpu-virtual-machine-1.png)
+    ![Azure Stack Edge 虚拟机“详细信息”窗格的屏幕截图。 突出显示了“网络”下的 IP 地址。](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/get-ip-of-virtual-machine.png)
 
-1. 如有需要，可将计算网络切换回你需要的任何位置。 
+创建 VM 后，可[使用扩展模板部署 GPU 扩展](azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md?tabs=linux)。
 
-
-创建 VM 后，可使用扩展模板部署 GPU 扩展。
-
+---
 
 > [!NOTE]
 > 将设备软件版本从 2012 更新到更高版本时，需要手动停止 GPU VM。
 
+## <a name="install-gpu-extension-after-deployment"></a>部署后安装 GPU 扩展
 
+要利用 Azure N 系列 VM 的 GPU 功能，必须安装 Nvidia GPU 驱动程序。 在 Azure 门户中，可以在 VM 部署期间或之后安装 GPU 扩展。 如果使用模板，则在创建 VM 后再安装 GPU 扩展。
+
+---
+
+### <a name="portal"></a>[Portal](#tab/portal)
+
+如果在创建 VM 时未安装 GPU 扩展，请按照以下步骤在部署的 VM 上安装该扩展：
+
+1. 转到要将 GPU 扩展添加到的虚拟机。
+
+    ![Azure Stack Edge 设备“虚拟机”视图的屏幕截图，VM 列表中突出显示了一个虚拟机。](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/add-extension-after-deployment-01.png)
+  
+1. 在“详细信息”中，选择“+ 添加扩展” 。 然后，选择要安装的 GPU 扩展。
+
+    GPU 扩展仅适用于符合 [NCasT4-v3 系列中的虚拟机 大小](azure-stack-edge-gpu-virtual-machine-sizes.md#ncast4_v3-series-preview)的虚拟机。 如果需要，可以在[部署后安装 GPU 扩展](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#install-gpu-extension-after-deployment)。
+
+![该插图显示了使用虚拟机“详细信息”窗格上的“+ 添加扩展”按钮将 GPU 扩展添加到 Azure Stack Edge 设备的 VM 上的 2 个步骤。](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/add-extension-after-deployment-02.png)
+
+> [!Note]
+> 无法通过门户删除 GPU 扩展。 请改为使用 Azure PowerShell 中的 [Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension?view=azurermps-6.13.0&preserve-view=true) cmdlet。 有关说明，请参阅[删除 GPU 扩展](azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md#remove-gpu-extension)
+
+### <a name="templates"></a>[模板](#tab/templates)
+
+使用模板创建 GPU VM 时，可在部署后安装 GPU 扩展。 有关使用模板在 Windows 虚拟机或 Linux 虚拟机上部署 GPU 扩展的详细步骤，请参阅[安装 GPU 扩展](azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md)。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何在设备上运行的 GPU VM 上[安装 GPU 扩展](azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md)。
+- [排查 VM 部署问题](azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md)
+- [排查 GPU 扩展问题](azure-stack-edge-gpu-troubleshoot-virtual-machine-gpu-extension-installation.md)
+- [监视设备上的 VM 活动](azure-stack-edge-gpu-monitor-virtual-machine-activity.md)
+- [监视 VM 上的 CPU 和内存](azure-stack-edge-gpu-monitor-virtual-machine-metrics.md)

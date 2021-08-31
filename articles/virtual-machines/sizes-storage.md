@@ -9,14 +9,17 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: d97fe6cda1134d45468e257965fd5e28fe170e6f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b7c9683e11c82c5bee0ad61ae6ef95cfdb4515f9
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561018"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253708"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>存储优化虚拟机大小
+
+> [!TIP]
+> 请尝试使用[虚拟机选择器工具](https://aka.ms/vm-selector)查找最适合你的工作负载的其他尺寸。
 
 存储优化 VM 大小可提供较高的磁盘吞吐量和 IO，非常适合于大数据、SQL、NoSQL 数据库、数据仓库和大型事务数据库。  示例包括 Cassandra、MongoDB、Cloudera 和 Redis。 本文介绍 vCPU、数据磁盘和 NIC 的数量以及每个优化大小的本地存储吞吐量和网络带宽。
 

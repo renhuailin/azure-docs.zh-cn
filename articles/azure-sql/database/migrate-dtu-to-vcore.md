@@ -9,13 +9,13 @@ ms.custom: sqldbrb=1
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma, moslake
-ms.date: 02/09/2021
-ms.openlocfilehash: e0f2ffbb09929a919f90fdec50fe72173af78606
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 07/26/2021
+ms.openlocfilehash: aad6da736bde6a50d3bf0b0164830333823f444b
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411838"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114709764"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>将 Azure SQL 数据库从基于 DTU 的模型迁移到基于 vCore 的模型
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,15 +35,15 @@ ms.locfileid: "111411838"
 > [!TIP]
 > 此规则是一个近似规则，因为它不考虑用于 DTU 数据库或弹性池的硬件代系。 
 
-在 DTU 模型中，任何可用的[硬件代系](purchasing-models.md#hardware-generations-in-the-dtu-based-purchasing-model)都可用于数据库或弹性池。 此外，只能通过选择更高或更低的 DTU 或 eDTU 值，间接控制 vCore（逻辑 CPU）数目。 
+在 DTU 模型中，系统可以为数据库或弹性池选择任何可用的[硬件代系](purchasing-models.md#hardware-generations-in-the-dtu-based-purchasing-model)。 此外，在 DTU 模型中，只能通过选择更高或更低的 DTU 或 eDTU 值，间接控制 vCore（逻辑 CPU）数目。 
 
-使用 vCore 模型时，客户必须明确选择硬件代系和 vCore（逻辑 CPU）数目。 DTU 模型不提供这些选项，但通过动态管理视图公开了硬件代系以及用于每个数据库和弹性池的逻辑 CPU 数目。 这样就可以更精确地确定匹配的 vCore 服务目标。 
+在 vCore 模型中，客户必须明确选择硬件代系和 vCore（逻辑 CPU）数目。 虽然 DTU 模型不提供这些选项，但通过动态管理视图公开了用于每个数据库和弹性池的硬件代系和逻辑 CPU 数目。 这样就可以更精确地确定匹配的 vCore 服务目标。 
 
 以下方法使用此信息来确定具有相似资源分配的 vCore 服务目标，以在迁移到 vCore 模型后获得相似的性能级别。
 
 ### <a name="dtu-to-vcore-mapping"></a>DTU 到 vCore 的映射
 
-在要迁移的 DTU 数据库的上下文中执行以下 T-SQL 查询时，系统将返回 vCore 模型的每个硬件代系中匹配的 vCore 数目（可能是小数）。 通过将此数字舍入为与 vCore 模型内每个硬件代系中[数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)可用的 vCore 数目最接近的数，客户可以选择与其 DTU 数据库或弹性池最匹配的 vCore 服务目标。 
+以下 T-SQL 查询在要迁移的 DTU 数据库的上下文中执行时，会返回 vCore 模型中每个硬件代系中的匹配 vCore 数目（可能是小数）。 通过将此数字舍入为与 vCore 模型内每个硬件代系中[数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)可用的 vCore 数目最接近的数，客户可以选择与其 DTU 数据库或弹性池最匹配的 vCore 服务目标。 
 
 [示例](#dtu-to-vcore-migration-examples)部分中介绍了使用此方法的示例迁移方案。
 
@@ -65,7 +65,7 @@ SELECT rg.slo_name,
 FROM sys.dm_user_db_resource_governance AS rg
 CROSS JOIN (SELECT COUNT(1) AS scheduler_count FROM sys.dm_os_schedulers WHERE status = 'VISIBLE ONLINE') AS s
 CROSS JOIN sys.dm_os_job_object AS jo
-WHERE dtu_limit > 0
+WHERE rg.dtu_limit > 0
       AND
       DB_NAME() <> 'master'
       AND
@@ -103,18 +103,18 @@ FROM dtu_vcore_map;
 除了 vCore（逻辑 CPU）数目和硬件代系之外，还有一些其他因素也可能影响 vCore 服务目标的选择：
 
 - 映射 T-SQL 查询根据 CPU 容量来匹配 DTU 和 vCore 服务目标，因此对于 CPU 密集型工作负载，结果更准确。
-- 硬件代系和 vCore 数目相同时，vCore 数据库的 IOPS 和事务日志吞吐量资源限制通常高于 DTU 数据库。 对于 IO 密集型工作负载，在 vCore 模型中使用较少数量的 vCore 就有可能达到相同的性能级别。 DTU 和 vCore 数据库的资源限制（以绝对值表示）在 [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 视图中公开。 在要迁移的 DTU 数据库和使用近似匹配服务目标的 vCore 数据库之间比较这些值有助于更精确地选择 vCore 服务目标。
+- 硬件代系和 vCore 数目相同时，vCore 数据库的 IOPS 和事务日志吞吐量资源限制通常高于 DTU 数据库。 对于 IO 密集型工作负载，在 vCore 模型中使用较少数量的 vCore 就有可能达到相同的性能级别。 [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 视图中公开了 DTU 和 vCore 数据库的实际资源限制。 在要迁移的 DTU 数据库或池和使用近似匹配服务目标的 vCore 数据库或池之间比较这些值有助于更精确地选择 vCore 服务目标。
 - 映射查询还返回要迁移的 DTU 数据库或弹性池以及 vCore 模型中每个硬件代系的每个内核的内存量。 对于需要大量内存数据缓存来实现足够性能的工作负载或需要大量内存授予来进行查询处理的工作负载，必须确保在迁移到 vCore 之后具有相似或更高的总内存。 对于此类工作负载，可能有必要增加 vCore 的数量以获得足够的总内存，具体取决于实际性能。
 - 选择 vCore 服务目标时，应考虑 DTU 数据库的[历史资源使用率](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)。 若 DTU 数据库的 CPU 资源一直未得到充分利用，则其需要的 vCore 数目可能比映射查询所返回的数目少。 相反，对于因持续的 CPU 高利用率而导致工作负载性能不足的 DTU 数据库，其需要的 vCore 数目可能比映射查询所返回的数量多。
-- 如果要迁移具有间歇性或不可预测的使用模式的数据库，请考虑使用[无服务器](serverless-tier-overview.md)计算层。 请注意，无服务器中并发辅助角色（请求）的最大数目是所配置的最大 vCore 数的预配计算限制的 75%。 此外，无服务器中可用的最大内存为配置的最大 vCore 数目乘以 3 GB。例如，当配置的最大 vCore 数目为 40 时，最大内存为 120 GB。   
+- 如果要迁移具有间歇性或不可预测的使用模式的数据库，请考虑使用[无服务器](serverless-tier-overview.md)计算层。 请注意，无服务器中并发辅助角色（请求）的最大数目是所配置的最大 vCore 数的预配计算限制的 75%。 此外，无服务器中可用的最大内存为配置的最大 vCore 数目乘以 3 GB，小于预配计算的每核内存。 例如，在 Gen5 上，当无服务器中配置 40 最大 vCore 数时，最大内存为 120 GB，而对于 40 vCore 预配计算，最大内存为 204 GB。
 - 在 vCore 模型中，支持的最大数据库大小可能因硬件代系而异。 对于大型数据库，请检查 vCore 模型中支持的[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)最大大小。
 - 对于弹性池，[DTU](resource-limits-dtu-elastic-pools.md) 和 [vCore](resource-limits-vcore-elastic-pools.md) 模型中每个池支持的数据库最大数目有所不同。 迁移包含多个数据库的弹性池时，应该考虑这一点。
-- 某些硬件代系可能并非在每个区域都可用。 在 [SQL 数据库的硬件代系](./service-tiers-sql-database-vcore.md#hardware-generations)或 [SQL 托管实例的硬件代系](../managed-instance/service-tiers-managed-instance-vcore.md#hardware-generations)下检查可用性。
+- 某些硬件代系可能并非在每个区域都可用。 在 [SQL 数据库的硬件代系](./service-tiers-sql-database-vcore.md#hardware-generations)下检查可用性。
 
 > [!IMPORTANT]
 > 上述从 DTU 到 vCore 的大小调整指南旨在帮助初步估计目标数据库服务目标。
 >
-> 目标数据库的最佳配置取决于工作负荷。 因此，若要在迁移后达到最佳性价比，可能需要利用 vCore 模型的灵活性来调整 vCore 数目、硬件代系、服务层级和计算层，以及优化其他数据库配置参数，例如[最大并行度](/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)。
+> 目标数据库的最佳配置取决于工作负荷。 因此，若要在迁移后达到最佳性价比，可能需要利用 vCore 模型的灵活性来调整 Vcore 数目、硬件代系以及服务和计算层级。 可能还需要调整数据库配置参数（如[最大并行度](configure-max-degree-of-parallelism.md)），和/或更改数据库[兼容性级别](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level)以启用数据库引擎中的最近改进。
 > 
 
 ### <a name="dtu-to-vcore-migration-examples"></a>DTU 到 vCore 的迁移示例
@@ -198,7 +198,7 @@ FROM dtu_vcore_map;
 
 ## <a name="use-database-copy-to-migrate-from-dtu-to-vcore"></a>使用数据库副本从 DTU 迁移到 vCore
 
-可将采用基于 DTU 的计算大小的任何数据库复制到采用基于 vCore 的计算大小的数据库，且无需遵守上述限制或特殊的顺序，前提是目标计算大小支持源数据库的最大数据库大小。 数据库复制会在复制操作启动时创建数据快照，且不会在源数据库与目标数据库之间同步数据。
+可将采用基于 DTU 的计算大小的任何数据库复制到采用基于 vCore 的计算大小的数据库，且无需遵守上述限制或特殊的顺序，前提是目标计算大小支持源数据库的最大数据库大小。 数据库复制在复制操作开始后的某个时间点创建数据的事务一致快照。 在该时间点之后，它不会同步源和目标之间的数据。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,193 +5,123 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/03/2021
-ms.author: justinha
-author: justinha
+ms.date: 07/22/2021
+ms.author: BaSelden
+author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa57446053531ee4d3b40b617e8664eb0648c725
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 120e97e62980427fb83c6bf7884da92dd9c5e1f7
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951929"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602305"
 ---
-# <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>规划 Azure AD 多重身份验证部署
+# <a name="plan-an-azure-active-directory-multi-factor-authentication-deployment"></a>规划 Azure Active Directory 多重身份验证部署 
 
-人们要在日益复杂的场景中连接到组织资源。 人们会使用智能手机、平板电脑、电脑和笔记本电脑（通常在多种平台上），通过公司内部或外部网络从组织所有设备、个人设备和公用设备进行连接。 在现今始终处于连接状态的多设备和多平台环境中，用户帐户的安全性比以往更重要。 在设备、网络和平台上使用的密码，无论其复杂程度如何，都不足以确保用户帐户的安全性，特别是当用户倾向于在帐户之间重复使用密码时。 复杂的网络钓鱼和其他社会工程攻击可能导致用户名和密码在暗网上被发布和销售。
+Azure Active Directory (Azure AD) 多重身份验证 (MFA) 通过使用第二种形式的身份验证提供另一层安全性，可帮助保护对数据和应用程序的访问。 组织可以使用[条件访问](../conditional-access/overview.md)来启用多重身份验证，以使解决方案满足其特定需求。
 
-[Azure AD 多重身份验证 (MFA)](concept-mfa-howitworks.md) 有助于保护对数据和应用程序的访问。 它使用第二种形式的身份验证提供额外的安全层。 组织可以使用[条件访问](../conditional-access/overview.md)来使解决方案满足其特定需求。
+本部署指南介绍了如何计划和实施 [Azure AD MFA](concept-mfa-howitworks.md) 的推出。
 
-本部署指南介绍如何规划和测试 Azure AD 多重身份验证推出。
+## <a name="prerequisites-for-deploying-azure-ad-mfa"></a>部署 Azure AD MFA 的先决条件
 
-快速查看正在使用的 Azure AD 多重身份验证，并返回以理解其他部署注意事项：
-
-> [!div class="nextstepaction"]
-> [启用 Azure AD 多重身份验证](tutorial-enable-azure-mfa.md)
-
-## <a name="prerequisites"></a>必备条件
-
-在开始部署 Azure AD 多重身份验证之前，需要考虑一些必备项。
+在开始部署之前，请确保满足相关方案的以下先决条件。
 
 | 场景 | 先决条件 |
-| --- | --- |
-| 具有新式身份验证的仅限云的标识环境 | 无其他先决条件任务 |
-| 混合标识方案 | 部署 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 并将用户标识与具有 Azure Active Directory 的本地 Active Directory 域服务同步或联合。 |
-| 为云访问发布的本地旧版应用程序 | 部署 Azure AD [应用程序代理](../app-proxy/application-proxy.md)。 |
-| 将 Azure AD MFA 与 RADIUS 身份验证结合使用 | 部署[网络策略服务器 (NPS)](howto-mfa-nps-extension.md)。 |
-| 用户具有 Microsoft Office 2010 或更早版本，或针对 iOS 11 或更早版本的 Apple Mail | 升级到 [Microsoft Office 2013 或更高版本](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o)和针对 iOS 12 或更高版本的 Apple Mail。 旧式身份验证协议不支持条件访问。 |
+|----------|--------------|
+|具有新式身份验证的仅限云的标识环境 | 无先决条件任务 |
+|混合标识方案 | 部署 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 并在本地 Active Directory 域服务 (AD DS) 和 Azure AD 之间同步用户身份。 |
+| 为云访问发布的本地旧版应用程序| 部署 [Azure AD 应用程序代理](../app-proxy/application-proxy-deployment-plan.md) |
 
-## <a name="plan-user-rollout"></a>计划用户推出
+## <a name="choose-authentication-methods-for-mfa"></a>为 MFA 选择身份验证方法
 
-MFA 推出计划应包括一个试点部署，随后在支持的容量范围内进行后续部署。 通过将条件访问策略应用于一小组试点用户来开始推出。 在评估对试点用户、使用的进程和注册行为的影响后，可以向策略添加更多的组，也可以向现有组添加更多用户。
+有许多方法可用于第二因素身份验证。 可以从可用身份验证方法列表中选择，在安全性、易用性和可用性方面评估每种方法。
 
-### <a name="user-communications"></a>用户通信
+>[!IMPORTANT]
+>启用多种 MFA 方法，以便用户在其主要方法不可用时具有可用的备用方法。 方法包括：
 
-在计划的通信中，通知用户即将进行的更改、Azure AD MFA 注册要求以及任何必要的用户操作至关重要。 建议与组织内部的代表（如通信、更改管理或人力资源部门）协同开发通信。
+- [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-overview)
+- [Microsoft Authenticator 应用](concept-authentication-authenticator-app.md)
+- [FIDO2 安全密钥（预览版）](concept-authentication-passwordless.md#fido2-security-keys)
+- [OATH 硬件令牌（预览版）](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
+- [OATH 软件令牌](concept-authentication-oath-tokens.md#oath-software-tokens)
+- [短信验证](concept-authentication-phone-options.md#mobile-phone-verification)
+- [语音呼叫验证](concept-authentication-phone-options.md)
 
-Microsoft 提供[通信模板](https://aka.ms/mfatemplates)和[最终用户文档](../user-help/security-info-setup-signin.md)来帮助草拟通信。 可以在该页上选择“安全信息”链接，将用户导航到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 以直接注册。
+选择将在租户中使用的身份验证方法时，请考虑这些方法的安全性和易用性：
 
-## <a name="deployment-considerations"></a>部署注意事项
+![选择正确的身份验证方法](media/concept-authentication-methods/authentication-methods.png)
 
-通过强制执行带有条件访问的策略来部署 Azure AD 多重身份验证。 条件访问策略可要求用户在满足某些条件时执行多重身份验证，例如：
+若要详细了解这些方法的优势和安全性及其工作方式，请参阅以下资源：
 
-* 所有用户、特定用户、组成员或分配的角色
-* 所访问的特定云应用程序
-* 设备平台
-* 设备状态
-* 网络位置或地理定位 IP 地址
-* 客户端应用程序
-* 登录风险（需要标识保护）
-* 合规的设备
-* 混合 Azure AD 加入设备
-* 批准的客户端应用程序
+- [Azure Active Directory 中有哪些可用的身份验证和验证方法？](concept-authentication-methods.md)
+- [视频：选择正确的身份验证方法，确保组织安全](https://youtu.be/LB2yj4HSptc)
 
-使用[多重身份验证推出材料](https://www.microsoft.com/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all)中的可自定义海报和电子邮件模板向组织推出多重身份验证。
+可以使用此 [PowerShell 脚本](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)来分析用户的 MFA 配置并建议适当的 MFA 身份验证方法。 
 
-## <a name="enable-multi-factor-authentication-with-conditional-access"></a>结合条件访问启用多重身份验证
+为获得最佳灵活性和易用性，请使用 Microsoft Authenticator 应用。 此身份验证方法提供最佳用户体验和多种模式，如无密码、MFA 推送通知和 OATH 代码。 Microsoft Authenticator 应用还符合美国国家标准和技术研究所 (NIST) 的[验证器确定性 2 级要求](../standards/nist-authenticator-assurance-level-2.md)。
 
-条件访问策略强制执行注册，要求未注册的用户在首次登录时完成注册，这是一个重要的安全注意事项。
+你可以控制租户中可用的身份验证方法。 例如，你可能想要阻止一些安全性最低的方法，例如 SMS。
 
-[Azure AD 标识保护](../identity-protection/howto-identity-protection-configure-risk-policies.md)同时为 Azure AD 多重身份验证过程提供自动风险检测的注册策略以及修正策略。 可以创建策略，以便在存在标识泄露威胁时强制更改密码，或者在登录操作被以下[事件](../identity-protection/overview-identity-protection.md)视为有风险时要求使用 MFA：
+| 身份验证方法 | 管理方式 | Scoping |
+|-----------------------|-------------|---------|
+| Microsoft Authenticator（推送通知和无密码手机登录）    | MFA 设置或
+身份验证方法策略 | Authenticator 无密码电话登录的范围可缩小到用户和组 |
+| FIDO2 安全密钥 | 身份验证方法策略 | 可以将范围限定为用户和组 |
+| 软件或硬件 OATH 令牌 | MFA 设置 |     |
+| 短信验证 | MFA 设置 | 管理身份验证策略中主要身份验证的短信登录。 可以短信登录的范围限定为用户和组。 |
+| 语音呼叫 | 身份验证方法策略 |       |
 
-* 已泄漏凭据
-* 从匿名 IP 地址登录
-* 不可能前往异常位置
-* 从不熟悉的位置登录
-* 从受感染的设备登录
-* 从具有可疑活动的 IP 地址登录
 
-Azure Active Directory 标识保护检测到的某些风险检测是实时发生的，某些则需要脱机处理。 管理员可以选择阻止出现风险行为的用户并手动修正、要求更改密码或要求将多重身份验证作为其条件访问策略的一部分。
+## <a name="plan-conditional-access-policies"></a>计划条件访问策略
 
-## <a name="define-network-locations"></a>定义网络位置
+Azure AD MFA 强制实施条件访问策略。 通过这些策略，你可以在有安全需要时提示用户进行多重身份验证，并在不需要时避免用户进入。
 
-建议组织使用条件访问来定义使用[命名位置](../conditional-access/location-condition.md#named-locations)的网络。 如果你的组织使用标识保护，请考虑使用基于风险的策略，而不是命名位置。
+![概念性条件访问的流程](media/howto-mfa-getstarted/conditional-access-overview-how-it-works.png)
 
-### <a name="configuring-a-named-location"></a>配置命名位置
+在 Azure 门户中，你将在“Azure Active Directory” > “安全性” > “条件访问”下配置条件访问策略。
 
-1. 打开 Azure 门户中的“Azure Active Directory”
-2. 选择“安全性”
-3. 在“管理”下，选择“命名位置” 
-4. 选择“新建位置”
-5. 在“名称”字段中提供有意义的名称
-6. 选择是使用 IP 范围还是使用国家/地区来定义位置 
-   1. 如果使用 IP 范围
-      1. 确定是否标记为受信任的位置。 从受信任的位置登录可降低用户的登录风险。 如果知道输入的 IP 范围已建立且在组织中可信，则仅将此位置标记为受信任的位置。
-      2. 指定 IP 范围
-   2. 如果使用国家/地区
-      1. 展开下拉菜单，然后选择要为此命名位置定义的国家或地区。
-      2. 确定是否包含未知区域。 未知区域是指无法映射到某国家/地区的 IP 地址。
-7. 选择“创建”
+若要详细了解如何创建条件访问策略，请参阅[在用户登录 Azure 门户时用于提示 Azure AD MFA 的条件访问策略](tutorial-enable-azure-mfa.md)。 这有助于：
 
-## <a name="plan-authentication-methods"></a>计划身份验证方法
+- 熟悉用户界面
+- 初步认识条件访问的工作原理
 
-管理员可以选择要为用户提供的[身份验证方法](../authentication/concept-authentication-methods.md)。 请务必允许多种身份验证方法，以便用户在其主要方法不可用时具有可用的备用方法。 管理员可以使用以下方法：
+有关 Azure AD 条件访问部署的端到端指南，请参阅[条件访问部署计划](../conditional-access/plan-conditional-access.md)。
 
-> [!TIP]
-> Microsoft 建议使用 Microsoft Authenticator（移动应用）作为 Azure AD 多重身份验证的主要方法，以实现更安全且更优的用户体验。 Microsoft Authenticator 应用还[符合](https://azure.microsoft.com/resources/microsoft-nist/)美国国家标准和技术研究所验证器确定性级别。 
+### <a name="common-policies-for-azure-ad-mfa"></a>Azure AD MFA 的常见策略
 
-### <a name="notification-through-mobile-app"></a>通过移动应用发送通知
+需要 Azure AD MFA 的常见用例包括：
 
-向移动设备上的 Microsoft Authenticator 应用发送推送通知。 用户将查看通知并选择“批准”来完成验证。 通过移动应用发送的推送通知是为用户提供的侵扰性最低的一种选项。 它们也是最可靠和最安全的选项，因为它们使用数据连接而不是电话服务。
+- 对于[管理员](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
+- 到[特定应用程序](tutorial-enable-azure-mfa.md)
+- 对于[所有用户](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
+- 对于 [Azure 管理](../conditional-access/howto-conditional-access-policy-azure-management.md)
+- 从[你不信任的网络位置](../conditional-access/untrusted-networks.md)
 
-> [!NOTE]
-> 如果你的组织有员工在中国工作或要前往中国，则 Android 设备上的移动应用通知方法在该国家/地区不起作用 。 应向这些用户提供备用方法。
+### <a name="named-locations"></a>命名位置
 
-### <a name="verification-code-from-mobile-app"></a>通过移动应用发送验证码
+要管理条件访问策略，使用条件访问策略的位置条件可将访问控制设置绑定到用户的网络位置。 我们建议使用[命名位置](../conditional-access/location-condition.md)，这样就可以创建 IP 地址范围、国家和地区的逻辑分组。 这将为所有应用创建一条策略：阻止从命名位置中登录。 请确保从此策略中排除你的管理员。
 
-移动应用（如 Microsoft Authenticator 应用）每隔 30 秒会生成一个新的 OATH 验证码。 用户将此验证码输入到登录界面中。 无论手机是否有数据或网络信号，都可以使用移动应用选项。
+### <a name="risk-based-policies"></a>基于风险的政策
 
-### <a name="call-to-phone"></a>拨打电话
+如果你的组织使用 [Azure AD 标识保护](../identity-protection/overview-identity-protection.md)来检测风险信号，请考虑使用[基于风险的策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)，而不是命名位置。 可以创建策略以在存在身份泄露威胁时强制更改密码，或者当登录[根据事件被视为风险](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation)时（如凭据泄露、从匿名 IP 地址登录等等）要求多重身份验证。 
 
-向用户拨打自动语音呼叫。 用户接听电话，并按电话键盘上的 # 以批准其身份验证。 拨打电话是通过移动应用发送通知或验证码的一种不错的备用方法。
+风险策略包括：
 
-### <a name="text-message-to-phone"></a>向手机发送短信
-
-将向用户发送包含验证码的短信，系统将提示用户在登录界面中输入验证码。
-
-### <a name="choose-verification-options"></a>选择验证选项
-
-1. 浏览至“Azure Active Directory”、“用户”、“多重身份验证”。
-
-   ![从 Azure 门户中的“Azure AD 用户”边栏选项卡访问“多重身份验证”门户](media/howto-mfa-getstarted/users-mfa.png)
-
-1. 在打开的新选项卡中，浏览至“服务设置”。
-1. 在“验证选项”下，选中可供用户使用的方法旁的所有框。
-
-   ![在多重身份验证服务设置选项卡中配置验证方法](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
-
-1. 单击“保存” 。
-1. 关闭“服务设置”选项卡。
-
-> [!WARNING]
-> 如果使用的是[安全默认设置](../fundamentals/concept-fundamentals-security-defaults.md)，请不要为你的组织禁用方法。 禁用方法可能会导致自行锁定租户。 在 MFA 服务设置门户中启用所有可供用户使用的方法。
-
-## <a name="plan-registration-policy"></a>计划注册策略
-
-管理员必须确定用户注册其方法的方式。 组织应为 Azure AD MFA 和自助式服务密码重置 (SSPR) [启用新的组合注册体验](howto-registration-mfa-sspr-combined.md)。 SSPR 允许用户使用用于多重身份验证的相同方法，以安全的方式重置密码。 建议使用这种组合注册，因为这对于用户来说是一种很棒的体验，可以同时注册这两项服务。 为 SSPR 和 Azure AD MFA 启用相同的方法将允许要注册的用户使用这两种功能。
-
-### <a name="registration-with-identity-protection"></a>使用标识保护进行注册
-
-如果你的组织使用 Azure Active Directory 标识保护，请[配置 MFA 注册策略](../identity-protection/howto-identity-protection-configure-mfa-policy.md)，以提示用户在下次以交互方式登录时进行注册。
-
-### <a name="registration-without-identity-protection"></a>不使用标识保护进行注册
-
-如果组织不具有启用标识保护的许可证，则在下一次需要使用 MFA 进行登录时，会提示用户进行注册。 如果用户未使用受 MFA 保护的应用程序，则可能未注册 MFA。 请务必让所有用户都注册，这样恶意攻击者就无法猜测用户的密码并代表用户注册 MFA，从而有效控制帐户。
-
-#### <a name="enforcing-registration"></a>强制注册
-
-使用以下步骤，条件访问策略可以强制用户注册多重身份验证
-
-1. 创建组，添加当前未注册的所有用户。
-2. 使用条件访问，对此组强制执行多重身份验证以访问所有资源。
-3. 定期重新评估组成员身份，并从组中删除已注册的用户。
-
-可以通过依赖于 [MSOnline PowerShell 模块](/powershell/azure/active-directory/install-msonlinev1)的 PowerShell 命令标识已注册和未注册的 Azure AD MFA 用户。
-
-#### <a name="identify-registered-users"></a>标识已注册用户
-
-```PowerShell
-Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
-```
-
-#### <a name="identify-non-registered-users"></a>标识未注册用户
-
-```PowerShell
-Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName | Sort-Object userprincipalname 
-```
+- [要求所有用户注册 Azure AD MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md)
+- [要求高风险用户更改密码](../identity-protection/howto-identity-protection-configure-risk-policies.md#enable-policies)
+- [要求具有中等或高登录风险的用户执行 MFA](../identity-protection/howto-identity-protection-configure-risk-policies.md#enable-policies)
 
 ### <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>将用户从每用户 MFA 转换为基于条件访问的 MFA
 
 如果使用每用户启用和强制执行的 Azure AD 多重身份验证启用用户，则以下 PowerShell 可帮助你转换为基于条件访问的 Azure AD 多重身份验证。
 
-在 ISE 窗口中运行此 PowerShell，或另存为要在本地运行的 `.PS1` 文件。
+在 ISE 窗口中运行此 PowerShell，或另存为要在本地运行的 `.PS1` 文件。 操作只能使用 [MSOnline 模块](/powershell/module/msonline/?view=azureadps-1.0#msonline)完成。 
 
 ```PowerShell
 # Sets the MFA requirement state
 function Set-MfaState {
-
     [CmdletBinding()]
     param(
         [Parameter(ValueFromPipelineByPropertyName=$True)]
@@ -201,7 +131,6 @@ function Set-MfaState {
         [ValidateSet("Disabled","Enabled","Enforced")]
         $State
     )
-
     Process {
         Write-Verbose ("Setting MFA state for user '{0}' to '{1}'." -f $ObjectId, $State)
         $Requirements = @()
@@ -212,165 +141,112 @@ function Set-MfaState {
             $Requirement.State = $State
             $Requirements += $Requirement
         }
-
         Set-MsolUser -ObjectId $ObjectId -UserPrincipalName $UserPrincipalName `
                      -StrongAuthenticationRequirements $Requirements
     }
 }
-
 # Disable MFA for all users
 Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
-> [!NOTE]
-> 我们最近对上述行为和 PowerShell 脚本进行了相应的更改。 以前，该脚本保存了 MFA 方法、禁用了 MFA 并还原了这些方法。 现在不再需要此操作，因为默认的禁用行为不会清除方法。
+## <a name="plan-user-session-lifetime"></a>规划用户会话生存期
 
-## <a name="plan-conditional-access-policies"></a>计划条件访问策略
+规划 MFA 部署时，必须考虑提示用户的频率。 经常要求用户提供凭据看似很明智，但有时会适得其反。 如果用户习惯于不加思索地输入凭据，可能会无意中将凭据提供给恶意的凭据提示。
+Azure AD 包含多个设置，用于确定用户需要重新执行身份验证的频率。 了解业务和用户的需求，并配置可为你的环境提供最佳平衡的设置。
 
-若要计划条件访问策略（该策略将确定何时需要 MFA 和其他控件），请参阅[常用条件访问策略](../conditional-access/concept-conditional-access-policy-common.md)。
+我们建议使用带有主刷新令牌 (PRT) 的设备以改善最终用户体验，并且仅针对特定业务用例采取登录频率策略，以缩短会话生存期。
 
-要防止被无意锁定在 Azure AD 租户之外，这一点很重要。 可[在租户中创建两个或更多紧急访问帐户](../roles/security-emergency-access.md)并将其从条件访问策略中排除，从而降低不经意丧失管理访问权限造成的影响。
+有关更多信息，请参阅[优化重新身份验证提示并了解 Azure AD MFA 的会话生存期](concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)。
 
-### <a name="create-conditional-access-policy"></a>创建条件访问策略
+## <a name="plan-user-registration"></a>规划用户注册
 
-1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
-1. 选择“新策略”。
-   ![创建条件访问策略，为试点组中的 Azure 门户用户启用 MFA](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
-1. 为策略提供一个有意义的名称。
-1. 在“用户和组”下：
-   * 在“包括”选项卡上，选中“所有用户”单选按钮 
-   * 在“排除”选项卡上，选中“用户和组”复选框，并选择紧急访问帐户 。
-   * 单击“完成”。
-1. 在“云应用”下，选中“所有云应用”单选按钮 。
-   * 可选：在“排除”选项卡上，选择组织不需要对其执行 MFA 的云应用。
-   * 单击“完成”。
-1. 在“条件”部分下：
-   * 可选：如果已启用 Azure 标识保护，则可以选择在实施该策略的过程中评估登录风险。
-   * 可选：如果已配置受信任的位置或命名的位置，则可以指定在策略中包括或排除这些位置。
-1. 在“授予”下，确保选中“授权访问”单选按钮 。
-    * 选中“要求多重身份验证”复选框。
-    * 单击“选择”。
-1. 跳过“会话”部分。
-1. 将“启用策略”开关设置为“开”。
-1. 单击“创建”。
+每个 MFA 部署中的一个主要步骤是让用户注册以使用 MFA。 身份验证方法（如语音和短信）允许预先注册，而其他身份验证方法（如 Authenticator 应用）则需要用户交互。 管理员必须确定用户注册其方法的方式。 
+
+### <a name="combined-registration-for-sspr-and-azure-ad-mfa"></a>SSPR 和 Azure AD MFA 的组合注册
+我们建议使用 Azure AD MFA 和 [Azure AD 自助密码重置 (SSPR)](concept-sspr-howitworks.md) 的[组合注册体验](howto-registration-mfa-sspr-combined.md)。 SSPR 允许用户使用用于 Azure AD MFA 的相同方法，以安全的方式重置密码。 合并注册是最终用户需要完成的一个步骤。
+
+### <a name="registration-with-identity-protection"></a>使用标识保护进行注册
+Azure AD 标识保护同时为 Azure AD MFA 过程提供自动风险检测的注册策略以及修正策略。 可以创建策略，以便在存在标识泄露威胁时强制更改密码，或者在登录操作被视为有风险时要求使用 MFA。
+如果你使用 Azure Active Directory 标识保护，请[配置 Azure AD MFA 注册策略](../identity-protection/howto-identity-protection-configure-mfa-policy.md)，以提示用户在下次以交互方式登录时进行注册。
+
+### <a name="registration-without-identity-protection"></a>不使用标识保护进行注册
+如果你没有用于启用 Azure Active Directory 标识保护的许可证，则在下一次需要使用 MFA 进行登录时，会提示用户进行注册。 要要求用户使用 MFA，你可以使用条件访问策略并针对 HR 系统等常用应用程序实施策略。 如果用户的密码被泄露，则泄露的密码可用于注册 MFA，从而控制用户的帐户。 因此，我们[建议使用条件访问策略来保护安全注册过程](../conditional-access/howto-conditional-access-policy-registration.md)，因为条件访问策略要求可信设备和位置。 还可以通过要求[临时访问密码](howto-authentication-temporary-access-pass.md)来进一步确保该过程的安全。 由管理员颁发的一种有时间限制的密码，可满足强身份验证要求，并可用于载入其他身份验证方法（包括无密码方法）。
+
+### <a name="increase-the-security-of-registered-users"></a>提高已注册用户的安全性
+如果你的用户使用短信或语音呼叫注册了 MFA，可能需要将其切换为更安全的方法，例如 Microsoft Authenticator 应用。 Microsoft 现在提供功能的公共预览版，可在用户登录过程中提示用户设置 Microsoft Authenticator 应用。 可以按组设置这些提示，控制要提示的用户，从而通过针对性的宣传活动将用户切换为更安全的方法。 
+
+### <a name="plan-recovery-scenarios"></a>规划恢复方案 
+如前所述，确保用户注册了多种 MFA 方法，这样在某种 MFA 方法不可用时，用户可以采用备用方法。 如果用户没有可用的备用方法，你可以进行以下操作： 
+
+- 为用户提供一个临时访问密码，以便用户能够管理自己的身份验证方法。 还可以提供一个临时访问密码以便能够临时访问资源。 
+- 以管理员角色更新用户的方法。 为此，请在 Azure 门户中选择用户，然后选择“身份验证方法”并更新其方法。
+用户通信
+
+通知用户即将进行的更改、Azure AD MFA 注册要求以及任何必要的用户操作至关重要。 我们提供[通信模板](https://aka.ms/mfatemplates)和[最终用户文档](../user-help/security-info-setup-signin.md)来帮助草拟通信。 在该页上选择“安全信息”链接，将用户导航到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 以注册。
 
 ## <a name="plan-integration-with-on-premises-systems"></a>计划与本地系统进行集成
 
-某些不会直接对 Azure AD 进行身份验证的旧版应用程序和本地应用程序需要额外的步骤才能使用 MFA，其中包括：
+直接向 Azure AD 进行身份验证和具有新式身份验证（WS-Fed、SAML、OAuth 和 OpenID Connect）的应用程序可以使用条件访问策略。
+某些旧版应用程序和本地应用程序不会直接对 Azure AD 进行身份验证，需要额外的步骤才能使用 Azure AD MFA。 可以使用 Azure AD 应用程序代理或[网络策略服务](/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures)来集成这些应用程序。
 
-* 旧版本地应用程序，需要使用应用程序代理。
-* 本地 RADIUS 应用程序，需要将 MFA 适配器与 NPS 服务器配合使用。
-* 本地 AD FS 应用程序，需要将 MFA 适配器与 AD FS 2016 或更高版本配合使用。
+### <a name="integrate-with-ad-fs-resources"></a>与 AD FS 资源集成
 
-直接向 Azure AD 进行身份验证和具有新式身份验证（WS-Fed、SAML、OAuth 和 OpenID Connect）的应用程序可以直接使用条件访问策略。
+我们建议将使用 Active Directory 联合身份验证服务 (AD FS) 保护的应用程序迁移到 Azure AD。 但是，如果尚未准备好将这些应用程序迁移到 Azure AD，则可以将 Azure MFA 适配器与 AD FS 2016 或更高版本一起使用。
+如果你的组织与 Azure AD 联合，可以在本地和云中[将 Azure AD MFA 配置为基于 AD FS 资源的身份验证提供程序](/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa)。  
 
-### <a name="use-azure-ad-mfa-with-azure-ad-application-proxy"></a>将 Azure AD MFA 与 Azure AD 应用程序代理配合使用
+### <a name="radius-clients-and-azure-ad-mfa"></a>RADIUS 客户端和 Azure AD MFA
 
-可以通过 [Azure AD 应用程序代理](../app-proxy/application-proxy.md)将驻留在本地的应用程序发布到 Azure AD 租户，并且如果将这些应用程序配置为使用 Azure AD 预身份验证，则可以利用 Azure AD 多重身份验证。
+对于使用 RADIUS 身份验证的应用程序，我们建议将客户端应用程序迁移到新式协议，例如 SAML、Open ID Connect，或 Azure AD 上的 OAuth。 如果无法更新应用程序，可以[使用 Azure MFA 扩展部署网络策略服务器 (NPS)](howto-mfa-nps-extension.md)。 网络策略服务器 (NPS) 扩展充当基于 RADIUS 的应用程序与 Azure AD MFA 之间的适配器，提供身份验证的第二因素。
 
-这些应用程序遵循强制执行 Azure AD 多重身份验证的条件访问策略，就像任何其他与 Azure AD 集成的应用程序一样。
+#### <a name="common-integrations"></a>常见集成
 
-同样，如果对所有用户登录强制实施 Azure AD 多重身份验证，则使用 Azure AD 应用程序代理发布的本地应用程序将受到保护。
+许多供应商现在支持其应用程序的 SAML 身份验证。 如果可能，我们建议将这些应用程序与 Azure AD 联合并通过条件访问强制实施 MFA。 如果供应商不支持新式身份验证，你可以使用 NPS 扩展。
+常见的 RADIUS 客户端集成包括[远程桌面网关](howto-mfa-nps-extension-rdg.md)和 [VPN 服务器](howto-mfa-nps-extension-vpn.md)等应用程序。 
 
-### <a name="integrating-azure-ad-multi-factor-authentication-with-network-policy-server"></a>将 Azure AD 多重身份验证与网络策略服务器集成
+其他应用程序可能包括：
 
-适用于 Azure AD MFA 的网络策略服务器 (NPS) 扩展使用现有的服务器将基于云的 MFA 功能添加到身份验证基础结构。 使用 NPS 扩展，可将电话呼叫、短信或电话应用验证添加到现有的身份验证流。 此集成具有以下限制：
+- Citrix Gateway
 
-* 使用 CHAPv2 协议，仅支持验证器应用推送通知和语音呼叫。
-* 不能应用条件访问策略。
+  [Citrix Gateway](https://docs.citrix.com/en-us/advanced-concepts/implementation-guides/citrix-gateway-microsoft-azure.html#microsoft-azure-mfa-deployment-methods) 支持 RADIUS 和 NPS 扩展集成，以及 SAML 集成。
 
-NPS 扩展在 RADIUS 与基于云的 Azure AD MFA 之间充当适配器，以提供第二因素身份验证来保护 [VPN](howto-mfa-nps-extension-vpn.md)、[远程桌面网关连接](howto-mfa-nps-extension-rdg.md)或其他支持 RADIUS 的应用程序。 在此环境中注册 Azure AD MFA 的用户将被要求进行所有身份验证尝试，缺少条件访问策略意味着始终需要进行 MFA。
+- Cisco VPN
+  - Cisco VPN 支持 RADIUS 以及[用于 SSO 的 SAML 身份验证](../saas-apps/cisco-anyconnect.md)。
+  - 从 RADIUS 身份验证迁移到 SAML 后，无需部署 NPS 扩展即可集成 Cisco VPN。
 
-#### <a name="implementing-your-nps-server"></a>实现 NPS 服务器
+- 所有 VPN
 
-如果已部署并且正在使用 NPS 实例，请参阅[将现有 NPS 基础结构与 Azure AD 多重身份验证集成](howto-mfa-nps-extension.md)。 如果是第一次设置 NPS，请参阅[网络策略服务器 (NPS)](/windows-server/networking/technologies/nps/nps-top) 以查看说明。 可在[解决 Azure AD 多重身份验证的 NPS 扩展出现的错误消息](howto-mfa-nps-extension-errors.md)一文中找到故障排除指南。
+## <a name="deploy-azure-ad-mfa"></a>部署 Azure AD MFA
 
-#### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>为未注册 MFA 的用户准备 NPS
+MFA 推出计划应包括一个试点部署，随后在支持的容量范围内进行后续部署。 通过将条件访问策略应用于一小组试点用户来开始推出。 在评估对试点用户、使用的进程和注册行为的影响后，可以向策略添加更多的组，也可以向现有组添加更多用户。
 
-选择未注册 MFA 的用户尝试进行身份验证时发生的情况。 使用注册表路径 `HKLM\Software\Microsoft\AzureMFA` 中的注册表设置 `REQUIRE_USER_MATCH` 来控制功能行为。 此设置提供单个配置选项。
+请遵循以下步骤进行配置：
 
-| 密钥 | 值 | 默认 |
-| --- | --- | --- |
-| `REQUIRE_USER_MATCH` | TRUE/FALSE | 未设置（相当于 TRUE） |
+1. 满足必需的先决条件
+1. 配置所选的身份验证方法
+1. 配置条件访问策略
+1. 配置会话生存期设置
+1. 配置 Azure AD MFA 注册策略 
 
-此项设置的目的是确定当某个用户未注册 MFA 时要执行哪个操作。 下表列出了更改此设置所产生的影响。
+## <a name="manage-azure-ad-mfa"></a>管理 Azure AD MFA
+本节提供有关 Azure AD MFA 的报告和故障诊断信息。
 
-| 设置 | 用户 MFA 状态 | 影响 |
-| --- | --- | --- |
-| 密钥不存在 | 未注册 | MFA 质询失败 |
-| 值设置为 True/未设置 | 未注册 | MFA 质询失败 |
-| 密钥设置为 False | 未注册 | 不使用 MFA 进行身份验证 |
-| 密钥设置为 False 或 True | 已注册 | 必须使用 MFA 进行身份验证 |
+### <a name="reporting-and-monitoring"></a>报告和监视
 
-### <a name="integrate-with-active-directory-federation-services"></a>与 Active Directory 联合身份验证服务集成
+Azure AD 具有提供技术和业务见解的报告，请跟踪部署进度并检查用户是否成功使用 MFA 登录。 根据贵组织的要求，让业务负责人和技术应用程序所有者拥有和使用这些报告。
 
-如果你的组织与 Azure AD 联合，你可以使用 [Azure AD 多重身份验证保护 AD FS 资源](multi-factor-authentication-get-started-adfs.md)（包括本地和云中的资源）。 通过 Azure AD MFA，你能够减少密码使用次数，并使用更安全的身份验证方式。 从 Windows Server 2016 开始，你现在可以配置 Azure AD MFA 以进行主要身份验证。
+可以使用[身份验证方法活动仪​​表板](howto-authentication-methods-activity.md)监控整个组织中的身份验证方法注册和使用情况。 这有助于了解正在注册哪些方法以及这些方法的使用情况。
 
-与 Windows Server 2012 R2 中的 AD FS 不同，AD FS 2016 Azure AD MFA 适配器与 Azure AD 直接集成，无需本地 Azure MFA 服务器。 Azure AD MFA 适配器内置于 Windows Server 2016 中，无需额外安装。
+#### <a name="sign-in-report-to-review-mfa-events"></a>登录报告以查看 MFA 事件
 
-将 Azure AD MFA 与 AD FS 2016 配合使用，并且目标应用程序遵循条件访问策略时，需要考虑其他事项：
+Azure AD 报告包括提示用户进行多重身份验证时事件的身份验证详细信息，以及是否正在使用任何条件访问策略。 还可以使用 PowerShell 报告注册了 MFA 的用户。 
 
-* 当应用程序是 Azure AD 的信赖方，并与 AD FS 2016 或更高版本联合时，条件访问可用。
-* 当应用程序是 AD FS 2016 或 AD FS 2019 的信赖方，并使用 AD FS 2016 或 AD FS 2019 进行管理或与之联合时，条件访问不可用。
-* 当 AD FS 2016 或 AD FS 2019 配置为使用 Azure AD MFA 作为主要身份验证方法时，条件访问也不可用。
+可以从“安全性” > “MFA” > “活动报告”中查看 NPS 扩展和 AD FS 日志。
 
-#### <a name="ad-fs-logging"></a>AD FS 日志记录
+有关详细信息和其他 MFA 报告，请参阅[查看 Azure AD 多重身份验证事件](howto-mfa-reporting.md#view-the-azure-ad-sign-ins-report)。
 
-Windows 安全日志和 AD FS 管理员日志中的标准 AD FS 2016 和 2019 日志记录包含有关身份验证请求及其成功或失败的信息。 这些事件中的事件日志数据将指示是否使用了 Azure AD MFA。 例如，AD FS 审核事件 ID 1200 可能包含：
-
-```
-<MfaPerformed>true</MfaPerformed>
-<MfaMethod>MFA</MfaMethod>
-```
-
-#### <a name="renew-and-manage-certificates"></a>续订和管理证书
-
-在每个 AD FS 服务器上，本地计算机的“我的应用商店”中有一个名为“OU=Microsoft AD FS Azure MFA”的自签名 Azure AD MFA 证书，其中包含证书到期日期。 检查每个 AD FS 服务器上此证书的有效期，以确定到期日期。
-
-如果证书的有效期接近到期时间，[在每个 AD FS 服务器上生成并验证新的 MFA 证书](/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)。
-
-以下指南详细介绍了如何管理 AD FS 服务器上的 Azure AD MFA 证书。 使用 Azure AD MFA 配置 AD FS 时，通过 `New-AdfsAzureMfaTenantCertificate` PowerShell cmdlet 生成的证书的有效期为两年。 在到期之前续订并安装续订的证书，以避免 MFA 服务中断。
-
-## <a name="implement-your-plan"></a>实施计划
-
-现在你已计划了解决方案，可以通过以下步骤来实施：
-
-1. 满足任何必需的先决条件
-   1. 为任意混合方案部署 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)
-   1. 在为云访问发布的任意本地应用上部署 [Azure AD 应用程序代理](../app-proxy/application-proxy.md)
-   1. 为任意 RADIUS 身份验证部署 [NPS](/windows-server/networking/technologies/nps/nps-top)
-   1. 确保用户已升级到支持的 Microsoft Office 版本，并启用新式身份验证
-1. 配置所选的[身份验证方法](#choose-verification-options)
-1. 定义[命名网络位置](../conditional-access/location-condition.md#named-locations)
-1. 选择组以开始推出 MFA。
-1. 配置[条件访问策略](#create-conditional-access-policy)
-1. 配置 MFA 注册策略
-   1. [已合并 MFA 和 SSPR](howto-registration-mfa-sspr-combined.md)
-   1. 使用[标识保护](../identity-protection/howto-identity-protection-configure-mfa-policy.md)
-1. 发送用户通信并使用户在 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) 上注册
-1. [跟踪注册者](#identify-non-registered-users)
-
-> [!TIP]
-> 政府云用户可以在 [https://aka.ms/GovtMFASetup](https://aka.ms/GovtMFASetup) 上注册
-
-## <a name="manage-your-solution"></a>管理解决方案
-
-Azure AD MFA 的报告
-
-Azure AD 多重身份验证通过 Azure 门户提供报告：
-
-| 报表 | 位置 | 说明 |
-| --- | --- | --- |
-| 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
-
-## <a name="troubleshoot-mfa-issues"></a>排查 MFA 问题
-
-有关 Azure AD MFA 常见问题的解决方案，请参阅 Microsoft 支持中心的[排查 Azure AD 多重身份验证问题文章](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues)。
+### <a name="troubleshoot-azure-ad-mfa"></a>对 Azure AD MFA 进行故障排除
+有关常见问题，请参阅 [Azure AD MFA 故障排除](https://support.microsoft.com/help/2937344/troubleshooting-azure-multi-factor-authentication-issues)。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看正在使用的 Azure AD 多重身份验证，请完成以下教程：
-
-> [!div class="nextstepaction"]
-> [启用 Azure AD 多重身份验证](tutorial-enable-azure-mfa.md)
+[部署其他标识功能](../fundamentals/active-directory-deployment-plans.md)

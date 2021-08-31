@@ -1,24 +1,31 @@
 ---
 title: 控制用户可以在文件级别执行的操作 - Azure 文件共享
-description: 了解如何配置 Windows ACL 权限以向 Azure 文件共享进行本地 AD DS 身份验证。 允许利用粒度访问控制。
+description: 了解如何配置 Windows ACL 权限以向 Azure 文件共享进行本地 AD DS 身份验证。 允许利用精细访问控制。
 author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: 698b4ebedfc9b41e8c5732a0a81226a971d65585
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e88a8df21d1161351a97434b3bf70656a09ea2ae
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470760"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731037"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>第三部分：通过 SMB 配置目录和文件级别权限 
 
 在开始本文之前，请确保已完成上一篇文章：[向标识分配共享级别权限](storage-files-identity-ad-ds-assign-permissions.md)，以确保共享级别权限已就位。
 
-使用 Azure RBAC 分配共享级别权限后，必须在根、目录或文件级别配置适当的 Windows ACL 才能利用粒度访问控制。 将 Azure RBAC 共享级别权限视为确定用户是否可以访问共享的高级网关守卫。 而 Windows ACL 则更精细地运行，确定用户可以在目录或文件级别执行的操作。 当用户尝试访问文件/目录时，会强制执行共享级别和文件/目录级别权限，因此，如果两者之间存在差异，则只会应用限制最严格的权限。 例如，如果用户在文件级别具有读取/写入访问权限，但在共享级别只具有读取权限，则该用户只能读取该文件。 反过来也是这样，如果用户在共享级别具有读取/写入访问权限，但在文件级别只具有读取权限，则该用户仍然只能读取文件。
+使用 Azure RBAC 分配共享级别权限后，必须在根、目录或文件级别配置适当的 Windows ACL 才能利用精细访问控制。 将 Azure RBAC 共享级别权限视为确定用户是否可以访问共享的高级守卫。 而 Windows ACL 则在粒度更细的级别运行，确定用户可以在目录或文件级别执行哪些操作。 当用户尝试访问文件/目录时，会强制执行共享级别和文件/目录级别权限，因此，如果两者之间存在差异，则只会应用限制最严格的权限。 例如，如果用户在文件级别具有读取/写入访问权限，但在共享级别只具有读取权限，则该用户只能读取该文件。 反过来也是这样，如果用户在共享级别具有读取/写入访问权限，但在文件级别只具有读取权限，则该用户仍然只能读取文件。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="azure-rbac-permissions"></a>Azure RBAC 权限
 
@@ -34,7 +41,7 @@ ms.locfileid: "103470760"
 |     |  读取并执行 |  读取并执行 |
 |     |  读取           |  读取    |
 |     |  写入          |  写入   |
-|存储文件数据 SMB 共享特权参与者 | 完全控制  |  修改、读取、写入、编辑、执行 |
+|存储文件数据 SMB 共享特权参与者 | 完全控制  |  修改、读取、写入、编辑（更改权限）、执行 |
 |     |  修改          |  修改 |
 |     |  读取并执行  |  读取并执行 |
 |     |  读取            |  读取   |
@@ -109,7 +116,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 1. 打开 Windows 文件资源管理器，右键单击文件/目录，然后选择“属性”。
 1. 选择“安全”选项卡。
-1. 选择“编辑...” 更改权限。
+1. 选择“编辑…” 更改权限。
 1. 可以更改现有用户的权限，也可以选择“添加...”向新用户授予权限。
 1. 在添加新用户的提示窗口中，在“输入要选择的对象名称”框中输入要向其授予权限的目标用户名，然后选择“检查名称”以查找目标用户的完整 UPN 名称 。
 1.    选择“确定”。
@@ -121,4 +128,4 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 启用并配置此功能后，请继续阅读下一篇文章，从已加入域的 VM 装载 Azure 文件共享。
 
-[第 4 部分：从加入域的 VM 装载文件共享](storage-files-identity-ad-ds-mount-file-share.md)
+[第四部分：从加入域的 VM 装载文件共享](storage-files-identity-ad-ds-mount-file-share.md)

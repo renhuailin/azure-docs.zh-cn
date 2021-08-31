@@ -5,14 +5,14 @@ services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 07/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 4839f8211e678f5fc2fb3572c7eaa545fbee6c6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 715af9d5bb67c74c91dc89a667cd9b4187b86f0d
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94961186"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221364"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>用于从 StorSimple 8000 系列迁移数据的选项
 
@@ -43,9 +43,16 @@ Panzura 支持此迁移，客户可以通过在 [Panzura 网站](https://panzura
 
 #### <a name="migrate-to-nasuni"></a>迁移到 Nasuni
 
-使用 Nasuni 可以轻松地将整个 StorSimple 环境迁移到稳定安全的高性能文件服务平台。 Nasuni 可提供本地文件存储的安全性和性能，同时又结合了与 Azure 的可伸缩性和持续性。  作为领先的 Azure 独立软件供应商 (ISV)，Nasuni 提供了用于将 StorSimple 数据迁移到新式平台所需的所有工具，使你能够在多个位置共享和协作处理文件。
+使用 Nasuni 可以轻松地将整个 StorSimple 环境迁移到稳定安全的高性能文件服务平台。 Nasuni 可提供本地文件存储的安全性和性能，同时又结合了与 Azure 的可伸缩性和持续性。 作为领先的 Azure 独立软件供应商 (ISV)，Nasuni 提供了用于将 StorSimple 数据迁移到新式平台所需的所有工具，使你能够在多个位置共享和协作处理文件。
 
 立即开始使用：[Nasuni 网站](https://info.nasuni.com/storsimple8000-webinar)。
+
+#### <a name="migrate-to-netapp"></a>迁移到 NetApp
+
+StorSimple 8000 系列客户可以迁移到 Azure NetApp 文件（与 NetApp 全局文件缓存(GFC) 配合使用），以继续在 Azure 中存储重要数据，同时保留远程站点的内容。 客户可以使用 Azure NetApp 文件将非结构化数据集中在 Microsoft Azure 中，从而通过 NetApp 全局文件缓存提供快速的本地和地理分布式访问，最终能够精简和简化 IT 存储和基础设施。
+
+有关功能、部署方法和迁移的概述，请参阅 NetApp 中的[参考体系结构：使用 Azure NetApp 文件和 NetApp 全局文件缓存进行全局分布式 Enterprise 文件共享](https://f.hubspotusercontent20.net/hubfs/525875/r3_NA-581-0521-Ref-Arch-ANF-GFC-StorSimple%20(1)%20(1)%20(2).pdf)。<!--Not included: 1) Partnership with MS; 2) How to initiate migration with NetApp (other providers point people to their site).-->
+
 
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity

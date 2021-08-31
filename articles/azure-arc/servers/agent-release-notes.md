@@ -2,13 +2,13 @@
 title: 已启用 Azure Arc 的服务器代理的新增功能
 description: 本文提供了已启用 Azure Arc 的服务器代理的发行说明。 对于许多汇总问题，提供了指向更多详细信息的链接。
 ms.topic: conceptual
-ms.date: 05/24/2021
-ms.openlocfilehash: 35822fb47add5c355ad9461b09e8e910f0a5a1fd
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 07/16/2021
+ms.openlocfilehash: d53ebd32c870ce8ec26bca7bcb811fbdd45c58b2
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480367"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114392367"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理的新增功能
 
@@ -17,6 +17,34 @@ ms.locfileid: "110480367"
 - 最新版本
 - 已知问题
 - Bug 修复
+
+## <a name="july-2021"></a>2021 年 7 月
+
+版本 1.8
+
+### <a name="new-features"></a>新增功能
+
+- 提高了在 Red Hat 和 CentOS 系统上安装 Azure Monitor 代理扩展时的可靠性
+- 添加了最大资源名称长度（54 个字符）的代理端强制执行
+- 来宾配置策略改进：
+  - 在 Linux 操作系统上添加了对基于 PowerShell 的来宾配置策略的支持
+  - 添加了对同一服务器上同一来宾配置策略的多个分配的支持
+  - 在 Windows 操作系统上将 PowerShell Core 升级到版本7.1
+
+### <a name="fixed"></a>固定
+
+- 如果代理无法将服务开始/停止事件写入 Windows 应用程序事件日志，代理将继续运行
+
+## <a name="june-2021"></a>2021 年 6 月
+
+版本 1.7
+
+### <a name="new-features"></a>新增功能
+
+- 提高了加入期间的可靠性：
+  - 改进了 HIMDS 不可用时的重试逻辑
+  - 如果无法获取 OS 信息，加入将继续，而不是中止
+- 提高了在 Red Hat 和 CentOS 系统上安装 OMS 代理扩展时的可靠性
 
 ## <a name="may-2021"></a>2021 年 5 月
 
@@ -35,22 +63,23 @@ ms.locfileid: "110480367"
 
 1.5 版
 
-### <a name="new-feature"></a>新功能
+### <a name="new-features"></a>新增功能
 
 - 添加了对 Red Hat Enterprise Linux 8 和 CentOS Linux 8 的支持。
 - 用于将错误和详细输出定向到 stderr 的新 `-useStderr` 参数。
 - 用于以 JSON 格式定向输出结果的新 `-json` 参数（与 -useStderr 一起使用时）。
-- 收集其他实例元数据 - 制造商、模型，如果安装了 SQL Server（布尔值），以及群集资源 ID（Azure Stack HCI 节点的）。
+- 收集其他实例元数据 - 制造商、模型和群集资源 ID（Azure Stack HCI 节点的）。
  
 ## <a name="march-2021"></a>2021 年 3 月
 
 版本 1.4
 
-### <a name="new-feature"></a>新功能
+### <a name="new-features"></a>新增功能
 
 - 添加了对专用终结点的支持（目前为受限预览版）。
 - 展开了 azcmagent 的退出代码列表。
 - 现在，可以使用 `--config` 参数从文件中读取代理配置参数。
+- 收集新的实例元数据以确定服务器上是否安装了 Microsoft SQL Server
 
 ### <a name="fixed"></a>固定
 
@@ -60,7 +89,7 @@ ms.locfileid: "110480367"
 
 版本：1.3
 
-### <a name="new-feature"></a>新功能
+### <a name="new-features"></a>新增功能
 
 添加了对 Windows Server 2008 R2 SP1 的支持。
 
@@ -98,7 +127,7 @@ ms.locfileid: "110480367"
 - 如果在 Azure 中托管的虚拟机上安装了 Connected Machine 代理，则无法从已启用 Arc 的服务器资源安装和修改 VM 扩展。 这是为了避免从虚拟机的 Microsoft.Compute 和 Microsoft.HybridCompute 资源进行冲突的扩展操作 。 请使用计算机的 Microsoft.Compute 资源进行所有扩展操作。
 - “来宾配置”进程的名称已更改，在 Linux 上从 gcd 更改为 gcad，在 Windows 上从 gcservice 更改为 gcarcservice   。
 
-### <a name="new-feature"></a>新功能
+### <a name="new-features"></a>新增功能
 
 - 添加了 `azcmagent logs` 选项以收集支持信息。
 - 添加了 `azcmagent license` 选项以显示 EULA。
@@ -129,4 +158,6 @@ ms.locfileid: "110480367"
 
 ## <a name="next-steps"></a>后续步骤
 
-在为多台混合计算机评估或启用已启用 Arc 的服务器之前，请查看[连接的计算机代理概述](agent-overview.md)，了解要求、有关代理的技术详细信息以及部署方法。
+- 在多台混合计算机中评估或启用已启用了 Arc 的服务器之前，请先查看[连接的计算机代理概述](agent-overview.md)，以了解要求、有关代理的技术详细信息以及部署方法。
+
+- 查看[规划和部署指南](plan-at-scale-deployment.md)，以便对按任意规模部署启用了 Azure Arc 的服务器进行规划，并实现集中管理和监视。

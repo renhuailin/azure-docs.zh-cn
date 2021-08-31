@@ -430,6 +430,8 @@
           displayName: 'account, accounts, msgraph, ms graph, graph'
         - name: 使用 Azure Pipelines 进行部署
           href: deploy-custom-policies-devops.md
+        - name: 使用 GitHub 操作进行部署
+          href: deploy-custom-policies-github-action.md
           displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
         - name: 使用 PowerShell 管理策略
           href: manage-custom-policies-powershell.md

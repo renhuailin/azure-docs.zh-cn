@@ -7,18 +7,17 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 05/05/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 85a5c9f08304c98b544fef2ccb7818d96613b3d4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 74c41ed89a3980967532955e46d4dade9eaacdb1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748126"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728046"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>创建 Azure Arc 数据控制器
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="overview-of-creating-the-azure-arc-data-controller"></a>创建 Azure Arc 数据控制器的概述
 
@@ -27,7 +26,6 @@ ms.locfileid: "108748126"
 目前，支持的 Kubernetes 服务和发行版列表如下：
 
 - Azure Kubernetes 服务 (AKS)
-- Azure Stack 上的 Azure Kubernetes 服务引擎（AKS 引擎）
 - Azure Stack HCI 上的 Azure Kubernetes 服务
 - Azure RedHat OpenShift (ARO)
 - OpenShift Container Platform (OCP)
@@ -54,7 +52,7 @@ ms.locfileid: "108748126"
 - 数据控制器用户名 - 数据控制器管理员用户的任意用户名。
 - 数据控制器密码 - 数据控制器管理员用户的密码。
 - Kubernetes 命名空间的名称 - 要在其中创建数据控制器的 Kubernetes 命名空间的名称。
-- 连接模式 - 连接模式确定从已启用 Azure Arc 的数据服务环境到 Azure 的连接度。 预览版目前仅支持间接连接和直接连接模式。  有关详细信息，请参阅[连接模式](./connectivity.md)。 
+- 连接模式 - 连接模式确定从已启用 Azure Arc 的数据服务环境到 Azure 的连接度。 间接连接模式已正式发布。 直接连接模式为预览版。  有关详细信息，请参阅[连接模式](./connectivity.md)。 
 - Azure 订阅 ID - 要在其中创建 Azure 数据控制器资源的 Azure 订阅 GUID。
 - Azure 资源组名称 - 要在其中创建 Azure 数据控制器资源的资源组的名称。
 - Azure 位置 - 要将数据控制器资源元数据存储到的 Azure 位置。 有关可用区域的列表，请参阅 [Azure 全球基础结构/各区域的产品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)。 有关要部署的数据控制器管理的 Azure 资源的元数据和计费信息将仅存储在 Azure 中指定为位置参数的位置。 如果要在直接连接模式下部署，则数据控制器的位置参数将与目标自定义位置资源的位置相同。
@@ -66,8 +64,9 @@ ms.locfileid: "108748126"
 > 想尝试一下吗？  
 > 在 Azure Kubernetes 服务 (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中使用 [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) 快速开始！
 > 
-- [使用 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 创建数据控制器](create-data-controller-using-azdata.md)
-- [使用 Azure Data Studio 创建数据控制器](create-data-controller-azure-data-studio.md)
-- [在 Azure Data Studio 中通过 Jupyter 笔记本从 Azure 门户创建数据控制器](create-data-controller-resource-in-azure-portal.md)
-- [使用 kubectl 或 oc 等 Kubernetes 工具创建数据控制器](create-data-controller-using-kubernetes-native-tools.md)
+- [使用 CLI 在间接连接模式下创建数据控制器](create-data-controller-indirect-cli.md)
+- [使用 Azure Data Studio 在间接连接模式下创建数据控制器](create-data-controller-indirect-azure-data-studio.md)
+- [使用 Azure Data Studio 通过 Jupyter 笔记本从 Azure 门户在间接连接模式下创建数据控制器](create-data-controller-indirect-azure-portal.md)
+- [使用 Kubernetes 工具（如 kubectl 或 oc）在间接连接模式下创建数据控制器](create-data-controller-using-kubernetes-native-tools.md)
+- [在间接连接模式下创建数据控制器](create-data-controller-direct-prerequisites.md)
 - [使用用于加速体验测试部署的 Azure Arc Jumpstart 创建数据控制器](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)

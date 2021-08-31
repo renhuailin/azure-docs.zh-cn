@@ -5,23 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 06/30/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb1504e406e5edb25cea01fa2add5751257802e8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b1bb9c2ad21469ad6b658795f29361760d4bcf13
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744442"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737351"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory 中的身份验证方法 - 电话选项
 
 对于使用短信的直接身份验证，可以[为用户配置和启用基于 SMS 的身份验证](howto-authentication-sms-signin.md)。 基于 SMS 的登录方式对于一线工作人员来说非常适合。 使用基于 SMS 的登录，用户无需知道用户名和密码即可访问应用程序和服务。 用户的验证方式改为：输入其注册的手机号码，收到带有验证码的短信，并在登录界面中输入该验证码。
 
-用户还可以在 Azure AD 多重身份验证或自助服务密码重置 (SSPR) 期间使用移动电话或办公室电话号码作为辅助的身份验证形式进行身份验证。
+用户还可以在 Azure AD 多重身份验证或自助服务密码重置 (SSPR) 期间使用移动电话或办公室电话号码作为辅助的身份验证形式进行身份验证。 
+
+> [!NOTE]
+> 具有试用订阅的 Azure AD 租户无法使用电话验证。  例如，如果注册一个试用 EMS 许可证，那么将不提供电话呼叫验证功能。
 
 若要正常工作，电话号码必须采用“+国家/地区代码 电话号码”格式，例如 +1 4251234567 。
 
@@ -50,7 +53,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的 Azure AD 多重
 
 ## <a name="office-phone-verification"></a>办公电话验证
 
-如果在 SSPR 或 Azure AD 多重身份验证期间使用电话呼叫验证方法，用户注册的电话号码会接收到一个自动语音呼叫。 为了完成登录过程，系统会提示用户在其键盘上按 # 键。
+如果在 SSPR 或 Azure AD 多重身份验证期间使用电话呼叫验证方法，用户注册的电话号码会接收到一个自动语音呼叫。 为了完成登录过程，系统会提示用户在其键盘上按 # 键。 
 
 ## <a name="troubleshooting-phone-options"></a>排查电话选项问题
 

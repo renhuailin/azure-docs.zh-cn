@@ -1,45 +1,53 @@
 ---
 title: 将认知服务附加到技能组
 titleSuffix: Azure Cognitive Search
-description: 了解如何将认知服务一体化订阅附加到 Azure 认知搜索中的 AI 扩充管道。
-author: LuisCabrer
-ms.author: luisca
+description: 了解如何将多服务认知服务资源附加到 Azure 认知搜索中的 AI 扩充管道。
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: c1ba8ce3e84439a3f9419e0c038b93fb298370b9
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 08/12/2021
+ms.openlocfilehash: 0fe9a87e82ab391fc0e1ccfca95ad48a0ef5dc61
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591325"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772463"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>将认知服务资源附加到 Azure 认知搜索中的技能组
 
-在 Azure 认知搜索中配置 [AI 扩充管道](cognitive-search-concept-intro.md)时，可以免费扩充有限数量的文档。 对于更大、更频繁的工作负载，应附加一个可计费的“一体化”认知服务资源。 “一体化”订阅将“认知服务”引用为产品/服务而不是单独的服务，并通过单个 API 密钥授予访问权限。
+在 Azure 认知搜索中配置 [AI 扩充管道](cognitive-search-concept-intro.md)时，可以免费扩充有限数量的文档。 对于更大、更频繁的工作负载，应附加一个可计费的[多服务认知服务资源](../cognitive-services/cognitive-services-apis-create-account.md)。 多服务资源将“认知服务”引用为产品/服务而不是单独的服务，并通过单个 API 密钥授予访问权限。
 
-“一体化”认知服务资源可促进提升一系列可添加到技能组中的[预定义技能](cognitive-search-predefined-skills.md)：
+资源密钥在技能组中指定，并允许 Microsoft 向你收取使用这些 API 的费用：
 
 + 用于图像分析和光学字符识别 (OCR) 的[计算机视觉](https://azure.microsoft.com/services/cognitive-services/computer-vision/)
 + 用于语言检测、实体识别、情绪分析和关键短语提取的[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/)
 + [文本翻译](https://azure.microsoft.com/services/cognitive-services/translator-text-api/)
 
-技能组定义中有一个可选的“一体化”认知服务密钥。 当每日事务数小于 20 时，会吸收成本。 但是，当事务数超出该数字时，需要有效的资源密钥才能继续进行处理。
+密钥用于计费，而非用于连接。 在内部，搜索服务连接到位于[同一物理区域](https://azure.microsoft.com/global-infrastructure/services/?products=search)的认知服务资源。
 
-任何“一体化”资源密钥都有效。 在内部，搜索服务将使用位于同一物理区域中的资源，即使“一体化”密钥用于不同区域中的资源也是如此。 [产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=search)页并排显示区域可用性。
+## <a name="key-requirements"></a>关键要求
 
-> [!NOTE]
-> 如果在技能组中省略预定义的技能，则不会访问认知服务，也不会向你收费，即使该技能组指定了密钥也是如此。
+每天在同一索引器上使用 20 次以上的可计费[内置技能](cognitive-search-predefined-skills.md)需要资源键。 向认知服务进行后端调用的技能包括实体链接、实体识别、图像分析、关键短语提取、语言检测、OCR、PII 检测、情感或文本翻译。
+
+[自定义实体查找](cognitive-search-skill-custom-entity-lookup.md)由 Azure 认知搜索计量，而非由认知服务计量，但需要认知服务资源密钥才能解锁每个索引器每天超过 20 个的事务。 仅针对此技能，资源键解锁事务数量，但与计费无关。
+
+如果技能组仅包含自定义技能或实用技能（条件、文档提取、整形、文本合并、文本拆分），可以省略键和认知服务部分。 如果你的计费技能的使用时间每天每个索引器不到 20 个事务，也可以省略此部分。
 
 ## <a name="how-billing-works"></a>计费原理
 
 + Azure 认知搜索使用技能组上提供的认知服务资源密钥来对图像和文本扩充进行计费。 可计费技能的执行将按[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)进行计费。
 
-+ 图像提取是一种 Azure 认知搜索操作，该操作在文档扩充前被破解时发生。 图像提取可计费。 有关图像提取的定价信息，请参阅 [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)。
++ 图像提取是一种 Azure 认知搜索操作，该操作在文档扩充前被破解时发生。 图像提取对所有层都是收费的，免费层每日 20 次免费提取除外。 图像提取成本适用于 blob 中的图像文件、其他文件（PDF 和其他应用程序文件）中的嵌入图像以及使用 [Document Extraction](cognitive-search-skill-document-extraction.md) 提取的图像。 有关图像提取的定价信息，请参阅 [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)。
 
-+ 文本提取也发生在文档破解阶段。 文本提取不可计费。
++ [文档破解](search-indexer-overview.md#document-cracking)阶段也会进行文本提取。 文本提取不可计费。
 
-+ 不调用认知服务的技能（包括条件、整形、文本合并和文本拆分技能）不可计费。
++ 不调用认知服务的技能（包括条件、整形、文本合并和文本拆分技能）不可计费。 
+
+  如前所述，[自定义实体查找](cognitive-search-skill-custom-entity-lookup.md)是一种特殊情况，此时需要一个键，但[由认知搜索计量](https://azure.microsoft.com/pricing/details/search/#pricing)。
+
+> [!TIP]
+> 为了降低技能集处理的成本，启用[增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)以缓存和重复使用任何不受技能集更改影响的扩充。 缓存需要 Azure 存储（请参阅[定价](https://azure.microsoft.com/pricing/details/storage/blobs/)），但如果可以重复使用现有的扩充，则技能组执行的累积成本会降低，尤其是对于使用图像提取和分析的技能组。
 
 ## <a name="same-region-requirement"></a>相同区域要求
 
@@ -62,9 +70,7 @@ ms.locfileid: "111591325"
 
 ## <a name="use-billable-resources"></a>使用付费资源
 
-对于每天创建超过 20 个扩充的工作负荷，请确保附加可计费的认知服务资源。 我们建议你始终附加可计费的认知服务资源，即使你从未打算调用认知服务 API 也是如此。 附加资源会重写每日限制。
-
-只有调用认知服务 API 的技能才收费。 [自定义技能](cognitive-search-create-custom-skill-example.md)，或者不是基于 API 的技能（例如[文本合并器](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[整形程序](cognitive-search-skill-shaper.md)）不收费。
+对于每天创建超过 20 个可计费扩充的工作负荷，请确保附加认知服务资源。 
 
 如果使用“导入数据”向导，可以从“添加 AI 扩充(可选)”页配置可计费资源 。
 
@@ -119,7 +125,7 @@ Content-Type: application/json
     "skills": 
     [
       {
-        "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+        "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
         "categories": [ "Organization" ],
         "defaultLanguageCode": "en",
         "inputs": [

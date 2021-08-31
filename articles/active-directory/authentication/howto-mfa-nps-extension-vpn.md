@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 08/04/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c4c5c4e632943ebbe68003f663aebbeaab9ebaf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fd16df2d8f1dfff4f5a7bd1075a63cf9b0ec78b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96743439"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732387"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-ad-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure AD MFA
 
@@ -218,6 +218,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 在本部分中，你将配置 VPN 服务器以使用 RADIUS 身份验证。 本说明假设你有 VPN 服务器的工作配置，但没有配置它来使用 RADIUS 身份验证。 在配置 VPN 服务器之后，请确认配置可如期工作。
 
+
 > [!NOTE]
 > 如果你已经有使用 RADIUS 身份验证的工作 VPN 服务器配置，则可以跳过本节。
 >
@@ -244,10 +245,8 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
     b. 对于“共享密钥”，选择“更改”，然后输入之前创建和记录的共享密钥密码。 
 
-    c. 在“超时(秒)”框中，输入值 30 。  
-    需要超时值以提供足够的时间来完成二次身份验证因素。 某些 VPN 或区域需要超过 30 秒的超时设置，以防止用户收到多个电话呼叫。 如果用户遇到此问题，请按 30 秒的增量增加“超时(秒)”值，直到问题不再发生。
-
-    ![配置超时的“添加 RADIUS 服务器”窗口](./media/howto-mfa-nps-extension-vpn/image16.png) 
+    c. 在“超时(秒)”框中，输入值 60 。  
+    为了最大限度地减少丢弃的请求，建议将 VPN 服务器的超时配置为至少 60 秒。 可以根据需要将 VPN 服务器超时值增加到 90 或 120 秒，也可以为了减少事件日志中的丢弃的请求而这样做。
 
 8. 选择“确定”。
 
@@ -302,7 +301,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 ## <a name="configure-multi-factor-authentication"></a>配置多重身份验证
 
-如需针对多重身份验证配置用户的帮助，请参阅文章[规划基于云的 Azure AD 多重身份验证部署](howto-mfa-getstarted.md#create-conditional-access-policy)和[为双重验证设置帐户](../user-help/multi-factor-authentication-end-user-first-time.md)
+如需针对多重身份验证配置用户的帮助，请参阅文章[规划基于云的 Azure AD 多重身份验证部署](howto-mfa-getstarted.md#plan-conditional-access-policies)和[为双重验证设置帐户](../user-help/multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="install-and-configure-the-nps-extension"></a>安装和配置 NPS 扩展
 

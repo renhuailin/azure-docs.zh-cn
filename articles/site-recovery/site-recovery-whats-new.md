@@ -2,13 +2,13 @@
 title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新的摘要。
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 23cc7c98b4d45adf9507ef857bda1c605eb6d558
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.date: 07/28/2021
+ms.openlocfilehash: a9e0d9c462c494fdc1d0c50bc4faf3694f3b4cd7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026770"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721847"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -22,6 +22,7 @@ ms.locfileid: "112026770"
 
 **更新** |  **统一安装程序** | **配置服务器 ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
 --- | --- | --- | --- | --- | ---
+[汇总 56](https://support.microsoft.com/en-us/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6)  | 9.43.6040.1  | 5.1.6853.0 | 9.43.6040.1| 5.1.6853.0 | 2.0.9226.0
 [汇总 55](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | 9.42.5941.1 | 5.1.6692.0 | 9.42.5941.1 | 5.1.6692.0  | 2.0.9208.0
 [汇总 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 9.41.5888.1 | 5.1.6620.0 | 9.41.5888.1 | 5.1.6620.0  | 2.0.9202.0
 [汇总 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
@@ -33,6 +34,21 @@ ms.locfileid: "112026770"
 
 [详细了解](service-updates-how-to.md)更新安装和支持。
 
+## <a name="updates-july-2021"></a>更新（2021 年 7 月）
+
+### <a name="update-rollup-56"></a>更新汇总 56
+
+[更新汇总 56](https://support.microsoft.com/en-us/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6) 提供以下更新：
+
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总知识库文章中的详述）。
+**问题修复/改进** | 汇总知识库文章中详细说明的一些修复和改进。
+
+“Azure Site Recovery 服务” | 进行了改进，使启用复制和重新保护操作的速度提高 46%。
+“Azure Site Recovery 门户” | 现在可以在世界各地的任何两个 Azure 区域之间启用复制。 不再局限于在所在洲内进行复制。
+
+
 ## <a name="updates-april-2021"></a>更新（2021 年 4 月）
 
 ### <a name="update-rollup-55"></a>更新汇总 55
@@ -42,7 +58,7 @@ ms.locfileid: "112026770"
 **更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
-**问题修复/改进** | 汇总中详细说明的一些修复和改进。 
+**问题修复/改进** | 汇总中详细说明的一些修复和改进。
 **Azure VM 灾难恢复** | 添加了对 Azure VM 的跨大陆灾难恢复的支持。<br/><br/> 用于保护 VMSS Flex 的 Rest API 支持。<br/><br/> 现支持运行 Oracle Linux 8.2 和 8.3 的 VM。
 **VMware VM/物理计算机到 Azure 的灾难恢复** | 添加了在设置主目标服务器时使用 Ubuntu-20.04 的支持。<br/><br/> 现支持运行 Oracle Linux 8.2 和 8.3 的 VM。
 
@@ -56,7 +72,7 @@ ms.locfileid: "112026770"
 **更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
-**问题修复/改进** | 汇总中详细说明的一些修复和改进。 
+**问题修复/改进** | 汇总中详细说明的一些修复和改进。
 **Azure VM 灾难恢复** | 使用 Azure Site Recovery 的区域到区域灾难恢复现已在 4 个新增区域（欧洲北部、美国东部、美国中部和美国西部 2）公开发布。<br/>
 **VMware VM/物理计算机到 Azure 的灾难恢复** | 此更新包括在启用复制后，为 VMware/物理计算机选择邻近放置组的门户支持。<br/><br/> 现支持保护数据磁盘大小最高为 32 TB 的 VMware 计算机。
 **Hyper-V 灾难恢复到 Azure** | 此更新包括在启用复制后，为 Hyper-V 计算机选择邻近放置组的门户支持。
@@ -71,7 +87,7 @@ ms.locfileid: "112026770"
 **更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
-**问题修复/改进** | 汇总中详细说明的一些修复和改进。 
+**问题修复/改进** | 汇总中详细说明的一些修复和改进。
 **Azure VM 灾难恢复** | 现在支持标记复制。 为源区域中的 Azure VM、磁盘和 NIC 添加的所有标记都将复制到目标区域中的计算机。<br/><br/> 运行 Debian 10 的 Azure VM 现在支持复制。
 **VMware VM/物理计算机到 Azure 的灾难恢复** | 此更新包括用于将 VMware VM 复制到 Azure 的日志记录增强功能，以及改进的错误消息传递。<br/><br/> 运行 Debian 10 的 VMware VM 和物理计算机现在支持复制。
 

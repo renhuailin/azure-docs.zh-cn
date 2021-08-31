@@ -4,15 +4,15 @@ description: 了解如何为 Azure Cosmos DB 帐户启用 Synapse Link，创建�
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: references_regions, synapse-cosmos-db, devx-track-azurepowershell
-ms.openlocfilehash: bba594a6b0482457acad8bead382099a1e8e3a5b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 86f27f08bd7495e558cd81b122f1daa243dbe313
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968033"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727911"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>配置和使用 Azure Synapse Link for Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -29,7 +29,15 @@ Azure Synapse Link 可用于 Azure Cosmos DB SQL API 容器或 Azure Cosmos DB A
 * [使用无服务器 SQL 池查询分析存储](#query-analytical-store-sql-on-demand)
 * [使用无服务器 SQL 池在 Power BI 中分析和可视化数据](#analyze-with-powerbi)
 
+你还可以查看 Learn 模块，了解如何[为 Azure Cosmos DB 配置 Azure Synapse Link](/learn/modules/configure-azure-synapse-link-with-azure-cosmos-db/)。
+
 ## <a name="enable-azure-synapse-link-for-azure-cosmos-db-accounts"></a><a id="enable-synapse-link"></a>启用 Azure Synapse Link for Azure Cosmos DB 帐户
+
+> [!NOTE]
+> 如果要将客户管理的密钥用于 Azure Synapse Link，必须在 Azure Key Vault 访问策略中配置帐户的托管标识，然后才能在你的帐户上启用 Synapse Link。 若要了解详细信息，请参阅如何[使用 Azure Cosmos DB 帐户的托管标识配置客户管理的密钥](how-to-setup-cmk.md#using-managed-identity)一文。
+
+> [!NOTE]
+> 如果要对 SQL (CORE) API 帐户使用完全保真架构，则无法使用 Azure 门户来启用 Synapse Link。 在你的帐户中启用 Synapse Link 后便无法更改此选项，必须使用 Azure CLI 或 PowerShell 进行设置。 有关详细信息，请查看[分析存储架构表示文档](analytical-store-introduction.md#schema-representation)。 
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -200,15 +208,13 @@ except exceptions.CosmosResourceExistsError:
 如果通过 Azure 门户创建了已启用分析存储的容器，则它将包含默认为 -1 的分析 TTL。 使用以下步骤来更新此值：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)或 [Azure Cosmos DB 资源管理器](https://cosmos.azure.com/)。
-
 1. 导航到你的 Azure Cosmos DB 帐户，打开“数据资源管理器”选项卡。
-
 1. 选择已启用分析存储的现有容器。 展开容器并修改以下值：
+   1. 打开“规模和设置”窗口。
+   1. 在“设置”下，找到“分析存储生存时间” 。
+   1. 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值。 
+   1. 单击“保存”  以保存更改。
 
-  * 打开“规模和设置”窗口。
-  * 在“设置”下，找到“分析存储生存时间”。
-  * 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值 
-  * 单击“保存”  以保存更改。
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -285,7 +291,7 @@ container.replace(containerProperties).block();
 
 若要了解更多信息，请参阅下列文档：
 
-* [Azure Synapse Link for Azure Cosmos DB。](synapse-link.md)
+* 查看 Learn 模块，了解如何[为 Azure Cosmos DB 配置 Azure Synapse Link](/learn/modules/configure-azure-synapse-link-with-azure-cosmos-db/)。
 
 * [Azure Cosmos DB 分析存储概述。](analytical-store-introduction.md)
 

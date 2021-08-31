@@ -3,16 +3,16 @@ title: 使用 Azure 安全中心强化 Docker 主机并保护容器
 description: 如何保护 Docker 主机，并验证它们是否符合 CIS Docker 基准
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 07/18/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b30e08a2739000d2a7ec14a95742f2654e1d2ea1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e421815fd962a62760c4d16106daa7f85fb1599
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98916228"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732552"
 ---
 # <a name="harden-your-docker-hosts"></a>强化 Docker 主机
 
@@ -32,7 +32,7 @@ Azure 安全中心会识别在 IaaS Linux VM 上或其他运行 Docker 容器的
 |发布状态：|正式发布版 (GA)|
 |定价：|需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
 |所需角色和权限：|主机连接到的工作区上的读取器|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国家/地区/主权（Azure 政府，Azure 中国世纪互联）|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>识别和修正 Docker 配置中的安全漏洞
@@ -43,18 +43,21 @@ Azure 安全中心会识别在 IaaS Linux VM 上或其他运行 Docker 容器的
 
     建议页显示受影响的资源（Docker 主机）。 
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-found.png" alt-text="修复容器安全配置中的漏洞的建议":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-found.png" alt-text="修复容器安全配置中的漏洞的建议。":::
+
+    > [!NOTE]
+    > 未运行 Docker 的计算机将显示在“不适用的资源”选项卡中。它们将在 Azure Policy 中显示为“符合”。 
 
 1. 若要查看和修正特定的故障主机的 CIS 控件，请选择要调查的主机。 
 
     > [!TIP]
     > 如果是从“资产清单”页开始并在那里获得此建议，请选择“建议”页上的“执行操作”按钮。
     >
-    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="用于启动 Log Analytics 的“执行操作”按钮":::
+    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="用于启动 Log Analytics 的“执行操作”按钮。":::
 
     Log Analytics 随即打开，其中包含可运行的自定义操作。 默认自定义查询包括评估的所有失败规则的列表，以及有助于你解决问题的指南。
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="带有查询的 Log Analytics 页，其中显示所有故障的 CIS 控件":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="带有查询的 Log Analytics 页，其中显示所有故障的 CIS 控件。":::
 
 1. 如有必要，请调整查询参数。
 

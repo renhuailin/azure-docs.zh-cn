@@ -2,13 +2,13 @@
 title: 排查与注册表相关的网络问题
 description: 访问位于虚拟网络中或防火墙后面的 Azure 容器注册表时的常见问题的症状、原因和解决方法
 ms.topic: article
-ms.date: 03/30/2021
-ms.openlocfilehash: d9cfa0aa902fca1afd1033d40b33ccdf5baa56d7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 05/10/2021
+ms.openlocfilehash: 7ea4eb698f855a98df22e2e0426a0004c890290c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066669"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722440"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>排查与注册表相关的网络问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "110066669"
 
 * 客户端防火墙或代理阻止访问 - [解决方案](#configure-client-firewall-access)
 * 注册表上的公用网络访问规则阻止访问 - [解决方案](#configure-public-access-to-registry)
-* 虚拟网络配置阻止访问 - [解决方案](#configure-vnet-access)
+* 虚拟网络或专用终结点配置阻止访问 - [解决方案](#configure-vnet-access)
 * 你尝试将 Azure 安全中心或某些其他的 Azure 服务与具有专用终结点、服务终结点或公共 IP 访问规则的注册表集成 - [解决方案](#configure-service-access)
 
 ## <a name="further-diagnosis"></a>进一步诊断 
@@ -87,7 +87,11 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 
 确认虚拟网络为专用链接配置了专用终结点，或者配置了服务终结点（预览版）。 当前不支持 Azure Bastion 终结点。
 
-如果配置了专用终结点，请确认 DNS 已将注册表的公共 FQDN（例如，myregistry.azurecr.io）解析为注册表的专用 IP 地址。 使用网络实用工具（如 `dig` 或 `nslookup`）进行 DNS 查找。 确保为注册表 FQDN 和每个数据终结点 FQDN [配置 DNS 记录](container-registry-private-link.md#dns-configuration-options)。
+如果配置了专用终结点，请确认 DNS 已将注册表的公共 FQDN（例如，myregistry.azurecr.io）解析为注册表的专用 IP 地址。
+
+  * 使用 `--vnet` 参数运行 [az acr check-health](/cli/azure/acr#az_acr_check_health) 命令，以确认虚拟网络中到专用终结点的 DNS 路由。
+  * 使用网络实用工具（如 `dig` 或 `nslookup`）进行 DNS 查找。 
+  * 确保为注册表 FQDN 和每个数据终结点 FQDN [配置 DNS 记录](container-registry-private-link.md#dns-configuration-options)。 
 
 查看用于限制从网络中的其他资源发往注册表的流量的 NSG 规则和服务标记。 
 
@@ -130,8 +134,8 @@ ContainerRegistryLoginEvents 表中的注册表资源日志可能有助于诊断
 
 相关链接：
 
-* [监视 Azure 容器注册表](monitor-service.md)
-* [容器注册表常见问题解答](container-registry-faq.md)
+* [用于诊断评估和审核的日志](./monitor-service.md)
+* [容器注册表常见问题解答](container-registry-faq.yml)
 * [Azure 容器注册表的 Azure 安全基线](security-baseline.md)
 * [Azure 容器注册表的最佳做法](container-registry-best-practices.md)
 

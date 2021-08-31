@@ -11,14 +11,66 @@ ms.topic: conceptual
 ms.date: 05/15/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: ed268a601afd9ad7c4bcd48752e9c1840f5b3dc8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a3991645c747bf229acd5f320282663c41b03fe3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950999"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724525"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
+
+## <a name="text-to-speech-2021-july-release"></a>文本转语音 2021 年 7 月发行版
+
+神经 TTS 更新
+- 希伯来语减少了 20% 的发音错误。
+
+Speech Studio 更新
+- 自定义神经语音：将训练管道更新为 UniTTSv3，通过此次更新，模型质量得到了改进，同时，声学模型的训练时间减少了 50%。 
+- 音频内容创建：修复了“导出”性能问题和自定义语音选择方面的 bug。  
+
+## <a name="speech-sdk-1180-2021-july-release"></a>语音 SDK 1.18.0：2021 年 7 月发行版
+
+请注意：在[此处](speech-sdk.md#get-the-speech-sdk)开始使用语音 SDK。
+
+**突出显示摘要**
+- Ubuntu 16.04 在 2021 年 4 月结束生命周期。 我们将在 2021 年 9 月与 Azure DevOps 和 Github 一起取消对 16.04 的支持。  请在此之前将 ubuntu-16.04 工作流迁移到 ubuntu-18.04 或更高版本。 
+
+#### <a name="new-features"></a>新增功能
+
+- C++：现在，利用与意向识别器匹配的简单语言模式，可以更轻松地[实现简单意向识别方案](./get-started-intent-recognition.md?pivots=programming-language-cpp)。
+- C++/C#/Java：我们为 `VoiceProfileClient` 类添加了新 API `GetActivationPhrasesAsync()`，用于为独立识别场景接收说话人识别注册阶段中有效激活短语的列表。 
+    - 重要说明：说话人识别功能处于预览版阶段。 在说话人识别功能从预览版中移出到正式发布版中 90 天后，所有在预览版中创建的语音配置文件都将会终止。 届时，预览版语音配置文件将停止运行。
+- Python：在现有的 `SpeechRecognizer` 和 `TranslationRecognizer` 对象上添加了[对连续语言标识 (LID) 的支持](./how-to-automatic-language-detection.md?pivots=programming-language-python)。 
+- Python：添加了名为 `SourceLanguageRecognizer` 的[新 Python 对象](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.sourcelanguagerecognizer?view=azure-python)，以执行一次性或连续的 LID（不进行识别或翻译）。 
+- JavaScript：为 `VoiceProfileClient` 类添加了 `getActivationPhrasesAsync` API，用于为独立识别场景接收说话人识别注册阶段中有效激活短语的列表。 
+- JavaScript `VoiceProfileClient` 的 `enrollProfileAsync` API 现在为异步可等待。 有关示例用法，请参阅[此独立标识代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/javascript/node/speaker-recognition/identification/independent-identification.js)。
+
+#### <a name="improvements"></a>改进
+
+- Java：许多 Java 对象都添加了 AutoCloseable 支持 。 现在支持 try-with-resources 模型释放资源。 请参阅[使用 try-with-resources 的这个示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java#L28)。 若要了解此模式，另请参阅 [try-with-resources 语句](https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html)的 Oracle Java 文档教程。
+- 许多平台和体系结构的磁盘占用量已显著降低。 例如，对于 `Microsoft.CognitiveServices.Speech.core` 二进制：x64 Linux 小了 475KB（减少了 8.0%）；ARM64 Windows UWP 小了 464KB（减少了 11.5%）；x86 Windows 小了 343KB（减少了 17.5%）；x64 Windows 小了 451KB（减少了 19.4%）。
+
+#### <a name="bug-fixes"></a>Bug 修复
+
+- Java：修复了在合成文本包含代理项字符时出现的合成错误。 有关详细信息，请参阅[此文](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1118)。 
+- JavaScript：浏览器麦克风音频处理现在使用 `AudioWorkletNode` 而不是已弃用的 `ScriptProcessorNode`。 有关详细信息，请参阅[此文](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/391)。
+- JavaScript：在长期运行的对话翻译场景中，正确保持对话处于活动状态。 有关详细信息，请参阅[此文](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/389)。
+- JavaScript：修复了识别器在连续识别时重新连接到 mediastream 的问题。 有关详细信息，请参阅[此文](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/385)。
+- JavaScript：修复了识别器在连续识别时重新连接到 pushStream 的问题。 有关详细信息，请参阅[此文](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/399)。
+- JavaScript：更正了详细识别结果中的单词级别偏移计算。 有关详细信息，请参阅[此文](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/394)。
+
+#### <a name="samples"></a>示例
+
+- Java 快速入门示例已[在此](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java)更新。
+- JavaScript 说话人识别示例已更新为显示 `enrollProfileAsync()` 的新用法。 请参阅[此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/js/node)的示例。
+
+## <a name="text-to-speech-2021-june-release"></a>文本转语音 2021 年 6 月发行版
+
+Speech Studio 更新
+
+- 自定义神经语音：扩展了自定义神经语音训练以支持东南亚。 发布了支持检查数据上传状态的新功能。 
+- 音频内容创建：发布了支持自定义词典的新功能。 利用此功能，用户可以轻松地创建其词典文件，并为其音频输出定义自定义发音。 
 
 ## <a name="text-to-speech-2021-may-release"></a>文本转语音 2021 年 5 月发行版
 
@@ -51,9 +103,9 @@ ms.locfileid: "111950999"
 - Go：我们在 Go 编程语言中添加了对语音合成/文本转语音的支持，以便在更多用例中使用语音合成。 请参阅[快速入门](get-started-text-to-speech.md?tabs=windowsinstall&pivots=programming-language-go)或[参考文档](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go)。
 - C++/C#/Java/Python/Objective-C/Go：语音合成器现在支持 `connection` 对象。 这有助于管理和监视与语音服务的连接，尤其有助于进行预连接以减少延迟。 参阅[此处](how-to-lower-speech-synthesis-latency.md)的文档。
 - C++/C#/Java/Python/Objective-C/Go：我们现在在 `SpeechSynthesisResult` 中公开了延迟和欠载运行时间，以帮助你监视和诊断语音合成延迟问题。 请分别参阅 [C++](/cpp/cognitive-services/speech/speechsynthesisresult)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisresult)、[Java](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisresult)、[Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisresult)、[Objective-C](/objectivec/cognitive-services/speech/spxspeechsynthesisresult) 和 [Go](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go#readme-reference) 的详细信息。
-- **C++/C#/Java/Python/Objective-C**：未指定要使用的语音时，文本转语音[现默认使用神经语音](text-to-speech.md#core-features)。 默认情况下，这会为你提供更高保真输出，但也会[增加默认价格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/#pricing)。 可指定[超过 70 种标准语音](language-support.md#standard-voices)或[超过 130 种神经语音](language-support.md#neural-voices)中的任何一种来更改默认设置。
+- **C++/C#/Java/Python/Objective-C**：未指定要使用的语音时，文本转语音 [现默认使用神经语音](text-to-speech.md#core-features)。 默认情况下，这会为你提供更高保真输出，但也会[增加默认价格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/#pricing)。 可指定[超过 70 种标准语音](language-support.md#standard-voices)或[超过 130 种神经语音](language-support.md#neural-voices)中的任何一种来更改默认设置。
 - C++/C#/Java/Python/Objective-C/Go：我们为合成语音信息添加了“性别”属性，以便更轻松地根据性别选择语音。 这解决了 [GitHub 问题 #1055](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/1055)。
-- C++、C#、Java、JavaScript：说话人识别现在支持 `retrieveEnrollmentResultAsync`、`getAuthorizationPhrasesAsync` 和 `getAllProfilesAsync()`，以方便用户管理给定帐户的所有语音配置文件。 请分别参阅 [C++](/cpp/cognitive-services/speech/voiceprofileclient)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.voiceprofileclient)、[Java](/java/api/com.microsoft.cognitiveservices.speech.voiceprofileclient)、[JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient) 的文档。 这解决了 [GitHub 问题 #338](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/338)。
+- C++、C#、Java、JavaScript：说话人识别现在支持 `retrieveEnrollmentResultAsync`、`getAuthorizationPhrasesAsync` 和 `getAllProfilesAsync()`，以方便用户管理给定帐户的所有语音配置文件。 请分别参阅 [C++](/cpp/cognitive-services/speech/speaker-voiceprofileclient)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.speaker.voiceprofileclient)、[Java](/java/api/com.microsoft.cognitiveservices.speech.voiceprofileclient)、[JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/voiceprofileclient) 的文档。 这解决了 [GitHub 问题 #338](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/338)。
 - JavaScript：我们添加了连接失败重试功能，使基于 JavaScript 的语音应用程序更加可靠。
 
 #### <a name="improvements"></a>改进
@@ -144,7 +196,7 @@ ms.locfileid: "111950999"
 - **C++/C#/Java/JavaScript/Objective-C/Python**：为 TTS 添加了 `BookmarkReached` 事件。 你可以在输入 SSML 中设置书签，并获取每个书签的音频偏移量。 参阅[此处](./speech-synthesis-markup.md#bookmark-element)的文档。
 - Java：添加了对说话人辨识 API 的支持。 有关详细信息，请参阅[此文](/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer)。
 - **C++/C#/Java/JavaScript/Objective-C/Python**：通过 WebM 容器为 TTS 添加了两种新的输出音频格式（Webm16Khz16BitMonoOpus 和 Webm24Khz16BitMonoOpus）。 这些格式是用于通过 Opus 编解码器流式传输音频的更好格式。 有关 [C++](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#speechsynthesisoutputformat)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat)、[Java](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat)、[JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat)、[Objective-C](/objectivec/cognitive-services/speech/spxspeechsynthesisoutputformat)、[Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesisoutputformat) 的详细信息。
-- C++/C#/Java：添加了为说话人辨识方案检索语音配置文件的支持。 有关 [C++](/cpp/cognitive-services/speech/speakerrecognizer)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.speakerrecognizer) 和 [Java](/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer) 的详细信息。
+- C++/C#/Java：添加了为说话人辨识方案检索语音配置文件的支持。 有关 [C++](/cpp/cognitive-services/speech/speaker-speakerrecognizer)、[C#](/en-us/dotnet/api/microsoft.cognitiveservices.speech.speaker.speakerrecognizer) 和 [Java](/java/api/com.microsoft.cognitiveservices.speech.speakerrecognizer) 的详细信息。
 - C++/C#/Java/Objective-C/Python：添加了对用于控制音频麦克风和扬声器的单独共享库的支持。 这样就可以在没有所需音频库依赖项的环境中使用 SDK。
 - **Objective-C/Swift**：添加了对具有伞式标头的模块框架的支持。 这允许在 iOS/Mac Objective-C/Swift 应用中将语音 SDK 作为模块导入。 这解决了 [GitHub 问题 #452](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/452)。
 - **Python**：添加了对 [Python 3.9](./quickstarts/setup-platform.md?pivots=programming-language-python) 的支持，根据 Python 的 [3.5 生命周期终止](https://devguide.python.org/devcycle/#end-of-life-branches)删除了对 Python 3.5 的支持。

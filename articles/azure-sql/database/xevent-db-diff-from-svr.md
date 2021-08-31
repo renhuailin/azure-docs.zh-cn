@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: reference
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
-ms.date: 12/19/2018
-ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: ''
+ms.date: 07/23/2021
+ms.openlocfilehash: 79226ed8fa4d4e78120a0c91b672d4cfa23712fc
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96501203"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114675101"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Azure SQL 数据库中的扩展事件 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Azure SQL 数据库中扩展事件的功能集是 SQL Server 和 Azure SQL 托�
 
 ## <a name="prerequisites"></a>先决条件
 
-本主题假设读者了解以下内容：
+本文假设读者有以下方面的经验：
 
 - [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)
 - [扩展的事件](/sql/relational-databases/extended-events/extended-events)
@@ -49,12 +49,12 @@ Azure SQL 数据库中扩展事件的功能集是 SQL Server 和 Azure SQL 托�
 
 ## <a name="code-samples"></a>代码示例
 
-相关主题提供了两个代码示例：
+相关文章提供了两个代码示例：
 
 - [Azure SQL 数据库中扩展事件的环形缓冲区目标代码](xevent-code-ring-buffer.md)
 
   - 简短的 Transact-SQL 脚本。
-  - 代码示例主题中强调，用完环形缓冲区目标时，应通过执行 alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` 语句释放其资源。 然后可以通过 `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`添加环形缓冲区的另一个实例。
+  - 代码示例文章中强调，当完成环形缓冲区目标时，应该通过执行 alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` 语句释放其资源。 然后可以通过 `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`添加环形缓冲区的另一个实例。
 
 - [Azure SQL 数据库中扩展事件的事件文件目标代码](xevent-code-event-file.md)
 
@@ -75,13 +75,13 @@ Azure SQL 数据库中扩展事件的功能集是 SQL Server 和 Azure SQL 托�
 
 | 目录<br/>视图的名称 | 说明 |
 |:--- |:--- |
-| **sys.database_event_session_actions** |返回针对事件会话的每个事件执行的每个操作所对应的行。 |
-| **sys.database_event_session_events** |返回事件会话中每个事件所对应的行。 |
-| **sys.database_event_session_fields** |返回针对事件和目标上显式设置的每个可自定义列所对应的行。 |
-| **sys.database_event_session_targets** |返回事件会话的每个事件目标所对应的行。 |
-| **sys.database_event_sessions** |返回数据库中每个事件会话所对应的行。 |
+| `sys.database_event_session_actions` |返回针对事件会话的每个事件执行的每个操作所对应的行。 |
+| `sys.database_event_session_events` |返回事件会话中每个事件所对应的行。 |
+| `sys.database_event_session_fields` |返回针对事件和目标上显式设置的每个可自定义列所对应的行。 |
+| `sys.database_event_session_targets` |返回事件会话的每个事件目标所对应的行。 |
+| `sys.database_event_sessions` |返回数据库中每个事件会话所对应的行。 |
 
-在 Microsoft SQL Server 中，类似目录视图的名称包含 *.server\_* 而不是 *.database\_* 。 名称模式类似于 **sys.server_event_%** 。
+在 Microsoft SQL Server 中，类似目录视图的名称包含 *.server\_* 而不是 *.database\_* 。 名称模式类似于 `sys.server_event_%`。
 
 ## <a name="new-dynamic-management-views-dmvs"></a>新的动态管理视图 [(DMV)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
@@ -89,30 +89,30 @@ Azure SQL 数据库具有支持扩展事件的[动态管理视图 (DMV)](/sql/re
 
 | DMV 的名称 | 说明 |
 |:--- |:--- |
-| **sys.dm_xe_database_session_event_actions** |返回有关事件会话操作的信息。 |
-| **sys.dm_xe_database_session_events** |返回有关会话事件的信息。 |
-| **sys.dm_xe_database_session_object_columns** |显示绑定到会话的对象的配置值。 |
-| **sys.dm_xe_database_session_targets** |返回有关会话目标的信息。 |
-| **sys.dm_xe_database_sessions** |返回划归到当前数据库的每个事件会话所对应的行。 |
+| `sys.dm_xe_database_session_event_actions` |返回有关事件会话操作的信息。 |
+| `sys.dm_xe_database_session_events` |返回有关会话事件的信息。 |
+| `sys.dm_xe_database_session_object_columns` |显示绑定到会话的对象的配置值。 |
+| `sys.dm_xe_database_session_targets` |返回有关会话目标的信息。 |
+| `sys.dm_xe_database_sessions` |返回划归到当前数据库的每个事件会话所对应的行。 |
 
 在 Microsoft SQL Server 中，类似目录视图的名称不包含 *\_database* 部分，例如：
 
-- **sys.dm_xe_sessions** 而不是名称<br/>**sys.dm_xe_database_sessions**。
+- `sys.dm_xe_sessions`，而不是 `sys.dm_xe_database_sessions`。
 
 ### <a name="dmvs-common-to-both"></a>两者通用的 DMV
 
 对于扩展的事件，有通用于 Azure SQL 数据库、Azure SQL 托管实例和 Microsoft SQL Server 的其他 DMV：
 
-- **sys.dm_xe_map_values**
-- **sys.dm_xe_object_columns**
-- **sys.dm_xe_objects**
-- **sys.dm_xe_packages**
+- `sys.dm_xe_map_values`
+- `sys.dm_xe_object_columns`
+- `sys.dm_xe_objects`
+- `sys.dm_xe_packages`
 
 <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
 ## <a name="find-the-available-extended-events-actions-and-targets"></a>查找可用的扩展事件、操作和目标
 
-可运行简单的 SQL **SELECT** 来获取可用事件、操作和目标的列表。
+若要获取可用事件、操作和目标的列表，请使用示例查询：
 
 ```sql
 SELECT
@@ -140,9 +140,9 @@ SELECT
 
 可从 Azure SQL 数据库上的事件会话捕获结果的目标如下：
 
-- [环形缓冲区目标](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130)) - 在内存中短暂保存事件数据。
-- [事件计数器目标](/previous-versions/sql/sql-server-2016/ff878025(v=sql.130)) - 统计在扩展事件会话期间发生的所有事件。
-- [事件文件目标](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) - 将完整缓冲区写入 Azure 存储容器。
+- [环形缓冲区目标](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#ring_buffer-target) - 在内存中短暂保存事件数据。
+- [事件计数器目标](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_counter-target) - 统计在扩展事件会话期间发生的所有事件。
+- [事件文件目标](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target) - 将完整缓冲区写入 Azure 存储容器。
 
 [Windows 事件跟踪 (ETW)](/dotnet/framework/wcf/samples/etw-tracing) API 不适用于 Azure SQL 数据库上的扩展事件。
 
@@ -151,11 +151,11 @@ SELECT
 有几个安全相关的差异适用于 Azure SQL 数据库的云环境：
 
 - 扩展事件在单租户隔离模型中构建。 一个数据库中的事件会话无法访问另一个数据库中的数据或事件。
-- 无法在 **master** 数据库的上下文中发出 **CREATE EVENT SESSION** 语句。
-
+- 无法在 `master` 数据库的上下文中发出 `CREATE EVENT SESSION` 语句。
+    
 ## <a name="permission-model"></a>权限模型
 
-必须拥有数据库的 **控制** 权限才能发出 **CREATE EVENT SESSION** 语句。 数据库所有者 (dbo) 拥有 **控制** 权限。
+必须拥有数据库的“控制”权限才能发出 `CREATE EVENT SESSION` 语句。 数据库所有者 (dbo) 拥有 **控制** 权限。
 
 ### <a name="storage-container-authorizations"></a>存储容器授权
 
@@ -168,6 +168,11 @@ SELECT
 ## <a name="performance-considerations"></a>性能注意事项
 
 在某些情况下，大量使用扩展事件可能累积过多的活动内存，使整个系统无法正常运行。 因此，Azure SQL 数据库会动态设置和调整事件会话可以累积的活动内存量限制。 动态计算会考虑许多因素。
+
+在 Azure SQL 数据库中，XEvent 会话的可用内存有一个上限：
+  - 在 DTU 购买模型的单一 Azure SQL 数据库中，每个数据库最多可使用 128 MB。 仅在高级层中，会提高到 256 MB。
+  - 在 vCore 购买模型的单一 Azure SQL 数据库中，每个数据库最多可使用 128 MB。
+  - 在弹性池中，单个数据库受单一数据库限制的限制，并且其总体大小不能超过 512 MB。
 
 如果收到错误消息，指出已强制实施内存最大值，可采取以下纠正措施：
 
@@ -182,13 +187,11 @@ SELECT
 
 ## <a name="related-links"></a>相关链接
 
-- [对 Azure 存储使用 Azure PowerShell](/powershell/module/az.storage/)。
 - [Azure 存储 Cmdlet](/powershell/module/Azure.Storage)
 - [对 Azure 存储使用 Azure PowerShell](/powershell/module/az.storage/)
 - [如何通过 .NET 使用 Blob 存储](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
 - [CREATE CREDENTIAL (Transact-SQL)](/sql/t-sql/statements/create-credential-transact-sql)
 - [CREATE EVENT SESSION (Transact-SQL)](/sql/t-sql/statements/create-event-session-transact-sql)
-- [Jonathan Kehayias 撰写的有关 Microsoft SQL Server 中扩展事件的博客文章](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 - Azure *服务更新* 网页，使用参数将范围缩小到 Azure SQL 数据库：
   - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
 

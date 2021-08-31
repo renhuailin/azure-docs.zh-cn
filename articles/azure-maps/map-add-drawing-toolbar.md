@@ -7,14 +7,13 @@ ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: b00628ec5a9f41b027bf90b93421f3aa1404e97a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a548d516213b65406a2f47c27c9a1a82cfb6f4b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896389"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751424"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>在地图中添加绘图工具的工具栏
 
@@ -69,7 +68,7 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 
 ## <a name="change-drawing-rendering-style"></a>更改绘图渲染样式
 
-通过使用 `drawingManager.getLayers()` 函数检索绘图管理器的基础图层，然后在各个图层上设置选项，可以自定义绘制的形状样式。 编辑形状时，针对坐标显示的拖动手柄为 HTML 标记。 可以通过将 HTML 标记选项传递给绘图管理器的 `dragHandleStyle` 和 `secondaryDragHandleStyle` 选项来自定义拖动手柄的样式。  
+通过使用 `drawingManager.getLayers()` 和 `drawingManager.getPreviewLayers()` 函数检索绘图管理器的基础图层，然后在各个图层上设置选项，可以自定义绘制的形状样式。 编辑形状时，针对坐标显示的拖动手柄为 HTML 标记。 可以通过将 HTML 标记选项传递给绘图管理器的 `dragHandleStyle` 和 `secondaryDragHandleStyle` 选项来自定义拖动手柄的样式。  
 
 下面的代码从绘图管理器中获取渲染层，并修改它们的选项以更改绘图的渲染样式。 在这种情况下，将用蓝色标记图标渲染点。 线条将为红色，四像素宽。 多边形将具有绿色填充色和橙色勾边。 然后将拖动手柄的样式更改为方形图标。 
 
@@ -100,6 +99,12 @@ layers.polygonOutlineLayer.setOptions({
     strokeColor: 'orange'
 });
 
+
+//Get preview rendering layers from the drawing manager and modify line styles to be dashed.
+var previewLayers = drawingManager.getPreviewLayers();
+previewLayers.lineLayer.setOptions({ strokeColor: 'red', strokeWidth: 4, strokeDashArray: [3,3] });
+previewLayers.polygonOutlineLayer.setOptions({ strokeColor: 'orange', strokeDashArray: [3, 3] });
+
 //Update the style of the drag handles that appear when editting.
 drawingManager.setOptions({
     //Primary drag handle that represents coordinates in the shape.
@@ -126,6 +131,8 @@ drawingManager.setOptions({
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>Change drawing rendering style</a>。
 </iframe>
 
+> [!NOTE]
+> 在编辑模式下，可以旋转形状。 支持从 MultiPoint、LineString、MultiLineString、Polygon、MultiPolygon 和 Rectangle 几何图形进行旋转。 不能旋 Point 和 Circle 几何图形。 
 
 ## <a name="next-steps"></a>后续步骤
 

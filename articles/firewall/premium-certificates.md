@@ -1,28 +1,24 @@
 ---
-title: Azure 防火墙高级预览版证书
-description: 若要在 Azure 防火墙高级预览版中正确配置 TLS 检查，必须配置并安装中间 CA 证书。
+title: Azure 防火墙高级版证书
+description: 若要在 Azure 防火墙高级版中正确配置 TLS 检查，必须配置并安装中间 CA 证书。
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 08/02/2021
 ms.author: victorh
-ms.openlocfilehash: 47ebc752dedd72bbdedc02908911f1686584acda
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0826e58f4b61e0a99064226a8488f1c3fb499cd7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102615493"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738082"
 ---
-# <a name="azure-firewall-premium-preview-certificates"></a>Azure 防火墙高级预览版证书 
+# <a name="azure-firewall-premium-certificates"></a>Azure 防火墙高级版证书 
 
-> [!IMPORTANT]
-> Azure 防火墙高级版目前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+若要正确配置 Azure 防火墙高级版 TLS 检查，必须提供有效的中间 CA 证书，并将其存放在 Azure Key Vault 中。
 
- 若要正确配置 Azure 防火墙高级预览版 TLS 检查，必须提供有效的中间 CA 证书，并将其存放在 Azure Key Vault 中。
-
-## <a name="certificates-used-by-azure-firewall-premium-preview"></a>Azure 防火墙高级预览版使用的证书
+## <a name="certificates-used-by-azure-firewall-premium"></a>Azure 防火墙高级版使用的证书
 
 典型部署中使用的证书有三种类型：
 
@@ -42,7 +38,7 @@ ms.locfileid: "102615493"
 
    证书颁发机构可以树结构形式颁发多个证书。 根证书是这颗树的最顶层证书。
 
-Azure 防火墙高级预览版可以拦截出站 HTTP/S 流量并自动为 `www.website.com` 生成服务器证书。 此证书是使用你提供的中间 CA 证书生成的。 最终用户浏览器和客户端应用程序必须信任你的组织根 CA 证书或中间 CA 证书，此过程才会生效。 
+Azure 防火墙高级版可以拦截出站 HTTP/S 流量并自动为 `www.website.com` 生成服务器证书。 此证书是使用你提供的中间 CA 证书生成的。 最终用户浏览器和客户端应用程序必须信任你的组织根 CA 证书或中间 CA 证书，此过程才会生效。 
 
 :::image type="content" source="media/premium-certificates/certificate-process.png" alt-text="证书过程":::
 
@@ -82,7 +78,7 @@ Azure 防火墙高级预览版可以拦截出站 HTTP/S 流量并自动为 `www.
 
 ## <a name="configure-a-certificate-in-your-policy"></a>在策略中配置证书
 
-若要在防火墙高级策略中配置 CA 证书，请选择你的策略，然后选择“TLS 检查(预览版)”。 在“TLS 检查”页上选择“已启用” 。 然后在 Azure Key Vault 中选择 CA 证书，如下图所示：
+若要在防火墙高级策略中配置 CA 证书，请选择你的策略，然后选择“TLS 检查”。 在“TLS 检查”页上选择“已启用” 。 然后在 Azure Key Vault 中选择 CA 证书，如下图所示：
 
 :::image type="content" source="media/premium-certificates/tls-inspection.png" alt-text="Azure 防火墙高级版概览图":::
  
@@ -90,13 +86,12 @@ Azure 防火墙高级预览版可以拦截出站 HTTP/S 流量并自动为 `www.
 > 若要从 Azure 门户查看和配置证书，必须将 Azure 用户帐户添加到 Key Vault 访问策略。 在“机密权限”下授予用户帐户“获取”和“列出”权限  。
    :::image type="content" source="media/premium-certificates/secret-permissions.png" alt-text="Azure Key Vault 访问策略":::
 
-
 ## <a name="create-your-own-self-signed-ca-certificate"></a>创建你自己的自签名 CA 证书
 
-为了帮助你测试和验证 TLS 检查，你可以使用以下脚本创建自己的自签名根 CA 和中间 CA。
+如果要创建自己的证书来帮助测试和验证 TLS 检查，可以使用以下脚本创建自己的自签名根 CA 和中间 CA。
 
 > [!IMPORTANT]
-> 在生产环境中，你应使用企业 PKI 创建中间 CA 证书。 企业 PKI 利用现有的基础结构并处理向所有终结点计算机分发根 CA 的事宜。 有关详细信息，请参阅[部署和配置 Azure 防火墙预览版的企业 CA 证书](premium-deploy-certificates-enterprise-ca.md)。
+> 在生产环境中，你应使用企业 PKI 创建中间 CA 证书。 企业 PKI 利用现有的基础结构并处理向所有终结点计算机分发根 CA 的事宜。 有关详细信息，请参阅[部署和配置 Azure 防火墙的企业 CA 证书](premium-deploy-certificates-enterprise-ca.md)。
 
 此脚本有两种版本：
 - bash 脚本 `cert.sh` 
@@ -202,6 +197,18 @@ Write-Host "   - interCA.pfx - Intermediate CA pkcs12 package which could be upl
 Write-Host "================"
 
 ```
+
+## <a name="certificate-auto-generation-preview"></a>证书自动生成（预览版）
+
+对于非生产部署，可以使用 Azure 防火墙高级版证书自动生成机制，该机制会自动创建以下三种资源：
+
+- 托管标识
+- Key Vault
+- 自签名根 CA 证书
+
+只需选择新的预览版托管标识，它会在高级策略中将这三种资源捆绑在一起并设置 TLS 检查。 
+
+:::image type="content" source="media/premium-certificates/auto-gen-certs.png" alt-text="自动生成的证书":::
 
 ## <a name="troubleshooting"></a>故障排除
 

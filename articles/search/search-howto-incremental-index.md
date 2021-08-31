@@ -2,25 +2,22 @@
 title: 配置缓存和增量扩充（预览版）
 titleSuffix: Azure Cognitive Search
 description: 在认知技能集中启用缓存并保留扩充内容的状态以进行受控处理。 此功能目前处于公开预览状态。
-author: vkurpad
-manager: eladz
-ms.author: vikurpad
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
-ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: e8164a6ee56a332528cdce8e81cd85460af0c1db
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 4165768837f590690a39226b983b4d32361957e3
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752380"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730552"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为增量扩充配置缓存
 
 > [!IMPORTANT] 
-> 增量扩充目前以公共预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
-> [REST API 预览版](search-api-preview.md)提供此功能。 目前不支持门户或 .NET SDK。
+> 此功能根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公开预览状态。 [预览版 REST API](/rest/api/searchservice/index-preview) 支持此功能
 
 本文介绍如何将缓存添加到扩充管道，以便能够以增量方式修改步骤，而无需每次更改后都要重新生成。 默认情况下，技能集是无状态的，更改其任何构成部分都要从头到尾地重新运行索引器。 使用增量扩充时，索引器可以根据技能集或索引器定义中检测到的更改，确定需要刷新文档树的哪些组成部分。 现有的已处理输出将会保留，在可能的情况下可供重复使用。 
 

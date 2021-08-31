@@ -8,18 +8,18 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f279ea2011b37c01b1ef9ec67a2b5642f7e640b8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9d8a72f4457c6759dc93fcdeae03abd1d4c8b168
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078087"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729824"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生孪生图
 
-本文提供了查询示例和说明来介绍如何使用 Azure 数字孪生查询语言查询[孪生图](concepts-twins-graph.md)以获取信息。 （如需获取查询语言简介，请参阅[概念：查询语言](concepts-query-language.md)。）
+本文提供了查询示例和说明来介绍如何使用 Azure 数字孪生查询语言查询[孪生图](concepts-twins-graph.md)以获取信息。 （如需查询语言简介，请参阅[查询语言](concepts-query-language.md)。）
 
-本文包含示例查询，说明数字孪生的查询语言结构和常见查询操作。 本文还介绍了在编写查询后如何使用 Azure 数字孪生[查询 API](/rest/api/digital-twins/dataplane/query) 或 [SDK](concepts-apis-sdks.md#overview-data-plane-apis) 运行查询。
+本文包含示例查询，它们说明了数字孪生体的查询语言结构和常见查询操作。 本文还介绍了在编写查询后如何使用 Azure 数字孪生[查询 API](/rest/api/digital-twins/dataplane/query) 或 [SDK](concepts-apis-sdks.md#overview-data-plane-apis) 运行查询。
 
 > [!NOTE]
 > 如果通过 API 或 SDK 调用运行以下示例查询，则需将查询文本压缩为一行。
@@ -28,7 +28,7 @@ ms.locfileid: "110078087"
 
 ## <a name="show-all-digital-twins"></a>显示所有数字孪生
 
-下方是一个基本查询，它将返回实例中所有数字孪生的列表：
+下面是基本查询，它将会返回该实例中所有数字孪生体的列表：
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="GetAllTwins":::
 
@@ -43,15 +43,15 @@ ms.locfileid: "110078087"
 >[!TIP]
 > 如果使用 Cloud Shell 针对以 `$` 开头的元数据字段运行查询时，应使用反撇号将 `$` 转义，让 Cloud Shell 知道它不是变量，应将其作为查询文本中的文本来使用。
 
-还可以根据是否定义了某个属性来获取孪生。 以下查询可获取定义了 Location 属性的孪生：
+还可以根据是否定义了某个属性来获取孪生。 下面的查询获取定义了 Location 属性的孪生体：
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByProperty2":::
 
-如[向数字孪生添加标签](how-to-use-tags.md)中所述，这有助于按孪生的 tag 属性获取该孪生。 以下查询可获取标记为 red 的所有孪生：
+此查询有助于按孪生体的“tag”属性来获取孪生体，如[为数字孪生体添加标记](how-to-use-tags.md)中所述。 下面的查询获取所有标记为“red”的孪生体：
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryMarkerTags1":::
 
-还可以根据属性类型获取孪生。 以下查询可获取 Temperature 属性为数字的孪生：
+还可以根据属性类型获取孪生。 下面的查询获取 Temperature 属性为数字的孪生体：
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByProperty3":::
 
@@ -73,22 +73,22 @@ ms.locfileid: "110078087"
 `IS_OF_MODEL` 可以采用多个不同的参数，因此本节的其余部分将专门介绍其各种重载选项。
 
 `IS_OF_MODEL` 的最简单用法仅使用 `twinTypeName` 参数：`IS_OF_MODEL(twinTypeName)`。
-以下查询示例将值传入此参数：
+下面的查询示例将值传入此参数：
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByModel1":::
 
-若要在存在多个孪生集合时（例如使用 `JOIN` 时）指定搜索某一孪生集合，请添加 `twinCollection` 参数：`IS_OF_MODEL(twinCollection, twinTypeName)`。
-以下查询示例将为此参数添加值：
+若要在存在多个孪生集合时（例如在使用 `JOIN` 时）指定搜索某个孪生集合，请添加 `twinCollection` 参数：`IS_OF_MODEL(twinCollection, twinTypeName)`。
+下面的查询示例为此参数添加值：
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByModel2":::
 
 若要进行完全匹配，请添加 `exact` 参数：`IS_OF_MODEL(twinTypeName, exact)`。
-以下查询示例将为此参数添加值：
+下面的查询示例为此参数添加值：
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByModel3":::
 
 你也可以同时传递所有三个参数：`IS_OF_MODEL(twinCollection, twinTypeName, exact)`。
-以下查询示例为所有三个参数指定值：
+下面的查询示例为所有三个参数指定值：
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByModel4":::
 
@@ -96,18 +96,20 @@ ms.locfileid: "110078087"
 
 当基于数字孪生体的关系进行查询时，Azure 数字孪生查询语言有一个特殊的语法。
 
-关系将被拉取到 `FROM` 子句中的查询范围内。 与“经典”SQL 类型语言的区别如下：此 `FROM` 子句中的每个表达式均不是表；确切地说，`FROM` 子句表示跨实体关系遍历。 为了跨关系遍历，Azure 数字孪生使用自定义版本的 `JOIN`。
+关系将被拉取到 `FROM` 子句中的查询范围内。 与“经典”SQL 类型语言不同，`FROM` 子句中的每个表达式都不是表；更确切地说，`FROM` 子句表达的是跨实体关系遍历。 为了跨关系遍历，Azure 数字孪生使用自定义版本的 `JOIN`。
 
-回想一下，由于 Azure 数字孪生[模型](concepts-models.md)功能，关系并不独立于孪生存在。 这表示此处的关系不能独立查询，必须绑定到孪生体。
-为处理这种情况，在 `JOIN` 子句中使用关键字 `RELATED`，以从孪生体集合中拉取某种类型的关系集。 然后，该查询必须在 `WHERE` 子句中筛选要在关系查询中使用哪些特定孪生体（使用孪生体的 `$dtId` 值）。
+请回忆一下，在使用 Azure 数字孪生[模型](concepts-models.md)功能时，关系不是独立于孪生而存在的，这就意味着此处的关系不能单独被查询，而是必须绑定到某个孪生体。
+为了反映这个事实，在 `JOIN` 子句中使用了关键字 `RELATED`，以便在来自孪生体集合的某种特定类型关系的集中拉取。 然后，该查询必须在 `WHERE` 子句中筛选，以指明要在关系查询中使用哪个（些）特定孪生体（使用孪生体的 `$dtId` 值）。
 
 下节提供了示例进行介绍。
 
 ### <a name="basic-relationship-query"></a>基本关系查询
 
-下方是基于示例关系的查询。 此代码片段选择 ID 属性为“ABC”的所有数字孪生体，以及所有通过“包含”关系与这些数字孪生体相关的数字孪生体 。
+下面是基于示例关系的查询。 此代码片段选择 ID 属性为“ABC”的所有数字孪生体，以及所有通过“包含”关系与这些数字孪生体相关的数字孪生体 。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationship1":::
+
+关系的类型（上述示例中的 `contains`）是通过使用来自关系的 [DTDL 定义](concepts-models.md#basic-relationship-example)的“name”字段来指明的。
 
 > [!NOTE]
 > 开发人员无需将此 `JOIN` 与 `WHERE` 子句中的键值相关联（也不需要使用 `JOIN` 定义以内联方式指定键值）。 此关联由系统自动计算，因为关系属性本身标识目标实体。
@@ -116,7 +118,7 @@ ms.locfileid: "110078087"
 
 可使用关系查询结构来标识作为关系的源或目标的数字孪生体。
 
-例如，你可从源孪生体开始，然后按照其关系查找关系的目标孪生体。 下面是一个查询示例，该查询查找来自孪生体 source-twin 的源关系的目标孪生体。
+例如，你可从源孪生体开始，然后按照其关系查找关系的目标孪生体。 下面的查询示例查找来自孪生体 source-twin 的源关系的目标孪生体。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationshipSource":::
 
@@ -129,7 +131,7 @@ ms.locfileid: "110078087"
 与数字孪生体通过 DTDL 描述属性的方式类似，关系也可以具有属性。 可根据孪生体关系的属性查询孪生体。
 使用 Azure 数字孪生查询语言，可以通过在 `JOIN` 子句中将别名分配给关系来筛选和投影关系。
 
-例如，考虑具有 reportedCondition 属性的 servicedBy 关系 。 在以下查询中，将为此关系提供一个别名“R”，以便引用其属性。
+例如，考虑具有 reportedCondition 属性的 servicedBy 关系 。 在下面的查询中，将为此关系提供一个别名“R”，以便引用其属性。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationship2":::
 
@@ -137,11 +139,11 @@ ms.locfileid: "110078087"
 
 ### <a name="query-with-multiple-joins"></a>使用多个 JOIN 查询
 
-单个查询最多支持五个 `JOIN`。 这使你可以一次遍历多个级别的关系。 
+在一个查询中，最多支持五个 `JOIN`，这样你就可以一次穿越多个级别的关系。 
 
 要查询多种级别的关系，请使用单个 `FROM` 语句，然后使用多个 `JOIN` 语句，其中 `JOIN` 语句表示与先前 `FROM` 或 `JOIN` 语句的结果相关的关系。
 
-以下示例说明多联接查询如何获取房间 1 和 2 中照明配电盘所包含的所有灯泡数。
+下面是多联接查询的示例，它获取房间 1 和 2 中照明面板中包含的所有灯泡数。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="QueryByRelationship3":::
 
@@ -155,7 +157,7 @@ ms.locfileid: "110078087"
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="SelectCount2":::
 
-还可以将 `COUNT` 与 `JOIN` 子句结合使用。 以下查询可计算房间 1 和 2 中照明配电盘所包含的所有灯泡的数量：
+还可以将 `COUNT` 与 `JOIN` 子句结合使用。 下面的查询统计房间 1 和 2 中照明面板中包含的所有灯泡的数量：
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="SelectCount3":::
 
@@ -169,7 +171,7 @@ ms.locfileid: "110078087"
 
 通过在 `SELECT` 语句中使用投影，可以选择查询将返回的列。 基元属性和复杂属性现在都支持投影。 有关 Azure 数字孪生投影的详细信息，请参阅 [SELECT 子句参考文档](reference-query-clause-select.md#select-columns-with-projections)。
 
-以下示例说明查询如何使用投影返回孪生和关系。 以下查询对方案中的客户、工厂和边缘进行了投影，其中 ID 为 ABC 的工厂通过 Factory.customer 关系与客户相关联，而该关系则表示为边缘  。
+下面的查询示例使用投影来返回孪生体和关系。 以下查询对方案中的客户、工厂和边缘进行了投影，其中 ID 为 ABC 的工厂通过 Factory.customer 关系与客户相关联，而该关系则表示为边缘  。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections1":::
 
@@ -187,7 +189,7 @@ ms.locfileid: "110078087"
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections4":::
 
-以下类似查询可查询上述集合，但仅将 Consumer.name 属性投影为 `consumerName`，并将整个工厂投影为孪生。
+下面的类似查询对上面的同一个集进行查询，但只将 Consumer.name 属性投影为 `consumerName`，并将整个工厂投影为孪生体。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="Projections5":::
 
@@ -215,7 +217,7 @@ ms.locfileid: "110078087"
 
 ## <a name="other-compound-query-examples"></a>其他复合查询示例
 
-可以使用合并运算符合并所有上述类型的查询，从而在单个查询中加入更多详细信息。 以下是复合查询的其他部分示例，这些查询一次可查询多种类型的孪生描述符。
+可以使用合并运算符合并所有上述类型的查询，从而在单个查询中加入更多详细信息。 下面是一些复合查询的其他示例，它们一次查询多种类型的孪生体描述符。
 
 * 从房间 123 拥有的设备中，返回充当操作员角色的 MxChip 设备
     :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="OtherExamples1":::
@@ -226,7 +228,7 @@ ms.locfileid: "110078087"
 
 ## <a name="run-queries-with-the-api"></a>使用 API 运行查询
 
-确定查询字符串后，可以调用查询 API 来执行它。
+在针对查询字符串做出决定后，通过发起对[查询 API](/rest/api/digital-twins/dataplane/query) 的调用来执行该查询。
 
 可以直接调用 API，也可以使用适用于 Azure 数字孪生的其中一个 [SDK](concepts-apis-sdks.md#overview-data-plane-apis)。
 
@@ -237,11 +239,11 @@ ms.locfileid: "110078087"
 此调用中使用的查询返回数字孪生的列表，上述示例中使用 [BasicDigitalTwin](/dotnet/api/azure.digitaltwins.core.basicdigitaltwin?view=azure-dotnet&preserve-view=true) 对象来表示它。 每个查询的数据返回类型取决于使用 `SELECT` 语句指定的术语：
 * 以 `SELECT * FROM ...` 开头的查询将返回数字孪生的列表（可以将其序列化为 `BasicDigitalTwin` 对象或已创建的其他自定义数字孪生类型）。
 * 以格式 `SELECT <A>, <B>, <C> FROM ...` 开头的查询将返回包含键 `<A>`、`<B>` 和 `<C>` 的字典。
-* 可以设计其他格式的 `SELECT` 语句，以返回自定义数据。 可以考虑创建自己的类来处理自定义程度非常高的结果集。 
+* 可以设计其他格式的 `SELECT` 语句，以返回自定义数据。 可以考虑创建自己的类来处理自定义结果集。 
 
 ### <a name="query-with-paging"></a>使用分页查询
 
-查询调用支持分页。 以下完整示例使用 `BasicDigitalTwin` 作为使用错误处理和分页后的查询结果类型：
+查询调用支持分页。 下面的完整示例使用 `BasicDigitalTwin` 作为具有错误处理和分页的查询结果类型：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="FullQuerySample":::
 

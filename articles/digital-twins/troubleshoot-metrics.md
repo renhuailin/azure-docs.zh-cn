@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ae3c214cb1e1d58098dddd29a31d6403aa2e42c6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 7e581925928276ebaddb6b3af9d5f549067a29c0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475614"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457546"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>排查 Azure 数字孪生指标问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "110475614"
 
 ## <a name="how-to-view-azure-digital-twins-metrics"></a>如何查看 Azure 数字孪生指标
 
-1. 创建一个 Azure 数字孪生实例。 有关如何设置 Azure 数字孪生实例的说明，可查看如何：设置实例和身份验证。
+1. 创建一个 Azure 数字孪生实例。 有关如何设置 Azure 数字孪生实例的说明，可查看[设置实例和身份验证](how-to-set-up-instance-portal.md)。
 
 2. 在 [Azure 门户](https://portal.azure.com)中找到你的 Azure 数字孪生实例（可将其名称输入门户搜索栏打开其页面）。 
 

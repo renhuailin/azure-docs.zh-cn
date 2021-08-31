@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to, devx-track-azurecli
-ms.openlocfilehash: 7f83171733abc07de5997503560c6cc7278f3f39
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: fd6ebf1534869fa96fe6249d302406583fe55e59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752372"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733594"
 ---
 # <a name="use-the-secrets-store-csi-driver-for-kubernetes-in-an-azure-kubernetes-service-aks-cluster-preview"></a>在 Azure Kubernetes 服务 (AKS) 群集中使用适用于 Kubernetes 的机密存储 CSI 驱动程序（预览）
 
@@ -72,25 +72,33 @@ az extension update --name aks-preview
 
 ## <a name="create-an-aks-cluster-with-secrets-store-csi-driver-support"></a>使用机密存储 CSI 驱动程序支持创建 AKS 群集
 
-> [!NOTE]
-> 如果计划通过用户分配或系统分配的托管标识提供对群集的访问权限，请在群集上使用 `enable-managed-identity` 标志启用 Azure Active Directory。 有关详细信息，请参阅[在 Azure Kubernetes 服务中使用托管标识][aks-managed-identity]。
-
 首先，创建 Azure 资源组：
 
 ```azurecli-interactive
-az group create -n myResourceGroup -l westus
+az group create -n myResourceGroup -l eastus2
 ```
 
-若要使用机密存储 CSI 驱动程序功能创建 AKS 群集，请搭配使用 [az aks create][az-aks-create] 命令与加载项 `azure-keyvault-secrets-provider`：
+若要使用机密存储 CSI 驱动程序功能创建 AKS 群集，请将 [az aks create][az-aks-create] 命令与加载项 `azure-keyvault-secrets-provider` 配合使用。
 
 ```azurecli-interactive
-az aks create -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-secrets-provider
+az aks create -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-secrets-provider --enable-managed-identity
+```
+
+该加载项会创建一个用户分配的托管标识，名为 `azurekeyvaultsecretsprovider-*`，以用于访问 Azure 资源。 我们可以使用此标识来连接到将会存储机密的 Azure Key Vault。 请记下输出中该标识的 `clientId`：
+
+```json
+...,
+ "addonProfiles": {
+    "azureKeyvaultSecretsProvider": {
+      ...,
+      "identity": {
+        "clientId": "<client-id>",
+        ...
+      }
+    }
 ```
 
 ## <a name="upgrade-an-existing-aks-cluster-with-secrets-store-csi-driver-support"></a>使用机密存储 CSI 驱动程序支持升级现有的 AKS 群集
-
-> [!NOTE]
-> 如果计划通过用户分配或系统分配的托管标识提供对群集的访问权限，请在群集上使用 `enable-managed-identity` 标志启用 Azure Active Directory。 有关详细信息，请参阅[在 Azure Kubernetes 服务中使用托管标识][aks-managed-identity]。
 
 若要使用机密存储 CSI 驱动程序功能升级现有的 AKS 群集，请搭配使用 [az aks enable-addons][az-aks-enable-addons] 命令与加载项 `azure-keyvault-secrets-provider`：
 
@@ -98,9 +106,11 @@ az aks create -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-
 az aks enable-addons --addons azure-keyvault-secrets-provider --name myAKSCluster --resource-group myResourceGroup
 ```
 
+如上所述，该加载项会创建一个用户分配的托管标识，该标识可用于对 Azure Key Vault 进行身份验证。
+
 ## <a name="verify-secrets-store-csi-driver-installation"></a>验证机密存储 CSI 驱动程序安装
 
-这些命令将在节点上安装机密存储 CSI 驱动程序和 Azure Key Vault 提供程序。 通过列出 kube-system 命名空间中包含 secrets-store-csi-driver 和 secrets-store-provider-azure 标签的所有 pod 并确保输出如下所示来进行验证：
+上述命令将会在节点上安装机密存储 CSI 驱动程序和 Azure Key Vault 提供程序。 通过列出 kube-system 命名空间中所有带有 secrets-store-csi-driver 和 secrets-store-provider-azure 标签的 Pod 来验证完成情况，并确保输出如下所示：
 
 ```bash
 kubectl get pods -n kube-system -l 'app in (secrets-store-csi-driver, secrets-store-provider-azure)'
@@ -113,7 +123,6 @@ kube-system   aks-secrets-store-provider-azure-5p4nb   1/1     Running   0      
 kube-system   aks-secrets-store-provider-azure-6pqmv   1/1     Running   0          4m24s
 kube-system   aks-secrets-store-provider-azure-f5qlm   1/1     Running   0          4m25s
 ```
-
 
 ## <a name="enabling-and-disabling-autorotation"></a>启用和禁用自动旋转
 
@@ -140,55 +149,56 @@ az aks update -g myResourceGroup -n myAKSCluster2 --disable-secret-rotation
 
 ## <a name="create-or-use-an-existing-azure-key-vault"></a>创建或使用现有的 Azure Key Vault
 
-除 AKS 群集外，还需要包含机密内容的 Azure Key Vault 资源。 若要部署 Azure Key Vault 实例，请执行以下步骤：
+除 AKS 群集外，还需要包含机密内容的 Azure Key Vault 资源。 请记住，Key Vault 的名称必须是全局唯一的。
 
-1. [创建密钥保管库][create-key-vault]
-2. [设置密钥保管库中的机密][set-secret-key-vault]
+```azurecli
+az keyvault create -n <keyvault-name> -g myResourceGroup -l eastus2
+```
+
+Azure Key Vault 可以存储密钥、机密和证书。 在此示例中，我们将会设置名为 `ExampleSecret` 的纯文本机密：
+
+```azurecli
+az keyvault secret set --vault-name <keyvault-name> -n ExampleSecret --value MyAKSExampleSecret
+```
 
 请注意下一节中使用的下列属性：
 
 - 密钥保管库中机密对象的名称
-- 机密内容类型（机密、密钥、证书）
-- 密钥保管库资源的名称
+- 对象类型（机密、密钥或证书）
+- Azure Key Vault 资源的名称
 - 订阅所属的 Azure 租户 ID
 
 ## <a name="provide-identity-to-access-azure-key-vault"></a>提供标识以访问 Azure Key Vault
 
-本文中的示例使用服务主体，但 Azure Key Vault 提供程序提供了四种访问方法。 查看这些方法，并选择最适合你的用例的方法。 请注意，根据所选方法的不同，可能还需要执行其他步骤，如授予服务主体权限以从密钥保管库获取机密。
+使用前面步骤中的值来设置权限，允许加载项创建的托管标识访问 keyvault 对象：
 
-- [Service Principal][service-principal-access]
-- [Pod 标识][pod-identity-access]
-- [用户分配的托管标识][ua-mi-access]
-- [系统分配的托管标识][sa-mi-access]
+```azurecli
+az keyvault set-policy -n <keyvault-name> --<object-type>-permissions get --spn <client-id>
+```
 
 ## <a name="create-and-apply-your-own-secretproviderclass-object"></a>创建与应用个人的 SecretProviderClass 对象
 
-若要为 AKS 群集使用和配置机密存储 CSI 驱动程序，请创建 SecretProviderClass 自定义资源。
-
-下方是使用服务主体访问密钥保管库的一则示例：
+若要为 AKS 群集使用和配置机密存储 CSI 驱动程序，请创建 SecretProviderClass 自定义资源。 确保 `objects` 数组与 Azure Key Vault 实例中存储的对象匹配：
 
 ```yml
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
 kind: SecretProviderClass
 metadata:
-  name: azure-kvname
+  name: <keyvault-name>
 spec:
   provider: azure
   parameters:
-    usePodIdentity: "false"         # [OPTIONAL] if not provided, will default to "false"
-    keyvaultName: "kvname"          # the name of the KeyVault
-    cloudName: ""                   # [OPTIONAL for Azure] if not provided, azure environment will default to AzurePublicCloud 
+    keyvaultName: "<keyvault-name>"       # The name of the Azure Key Vault
+    useVMManagedIdentity: "true"         
+    userAssignedIdentityID: "<client-id>" # The clientId of the addon-created managed identity
+    cloudName: ""                         # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud 
     objects:  |
       array:
         - |
-          objectName: secret1
-          objectType: secret        # object types: secret, key or cert
-          objectVersion: ""         # [OPTIONAL] object versions, default to latest if empty
-        - |
-          objectName: key1
-          objectType: key
-          objectVersion: ""
-    tenantId: "<tenant-id>"                 # the tenant ID of the KeyVault
+          objectName: <secret-name>       # In this example, 'ExampleSecret'   
+          objectType: secret              # Object types: secret, key or cert
+          objectVersion: ""               # [OPTIONAL] object versions, default to latest if empty
+    tenantId: "<tenant-id>"               # the tenant ID containing the Azure Key Vault instance
 ```
 
 有关详细信息，请参阅[创建 SecretProviderClass 对象][sample-secret-provider-class]。 请确保使用你在上文中记下的值。
@@ -203,7 +213,7 @@ kubectl apply -f ./new-secretproviderclass.yaml
 
 ## <a name="update-and-apply-your-clusters-deployment-yaml"></a>更新与应用群集的部署 YAML
 
-若要确保群集使用新的自定义资源，请更新部署 YAML。 如需查看内容更全面的示例，请参阅使用服务主体访问 Azure Key Vault 的[示例部署][sample-deployment]。 请务必遵循所选密钥保管库访问方法中的任何其他操作步骤。
+若要确保群集使用新的自定义资源，请更新部署 YAML。 例如：
 
 ```yml
 kind: Pod
@@ -227,9 +237,7 @@ spec:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
-          secretProviderClass: "azure-kvname"
-        nodePublishSecretRef:                       # Only required when using service principal mode
-          name: secrets-store-creds                 # Only required when using service principal mode. The name of the Kubernetes secret that contains the service principal credentials to access keyvault.
+          secretProviderClass: "<keyvault-name>"
 ```
 
 将更新的部署应用到群集：
@@ -246,8 +254,8 @@ Pod 启动后，在部署 YAML 中指定的卷路径上装载的内容便可用�
 ## show secrets held in secrets-store
 kubectl exec busybox-secrets-store-inline -- ls /mnt/secrets-store/
 
-## print a test secret 'secret1' held in secrets-store
-kubectl exec busybox-secrets-store-inline -- cat /mnt/secrets-store/secret1
+## print a test secret 'ExampleSecret' held in secrets-store
+kubectl exec busybox-secrets-store-inline -- cat /mnt/secrets-store/ExampleSecret
 ```
 
 ## <a name="disable-secrets-store-csi-driver-on-an-existing-aks-cluster"></a>在现有 AKS 群集上禁用机密存储 CSI 驱动程序
@@ -284,8 +292,3 @@ az aks disable-addons --addons azure-keyvault-secrets-provider -g myResourceGrou
 [kube-csi]: https://kubernetes-csi.github.io/docs/
 [key-vault-provider-install]: https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/installation
 [sample-secret-provider-class]: https://azure.github.io/secrets-store-csi-driver-provider-azure/getting-started/usage/#create-your-own-secretproviderclass-object
-[service-principal-access]: https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/identity-access-modes/service-principal-mode/
-[pod-identity-access]: https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/identity-access-modes/pod-identity-mode/
-[ua-mi-access]: https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/identity-access-modes/user-assigned-msi-mode/
-[sa-mi-access]: https://azure.github.io/secrets-store-csi-driver-provider-azure/configurations/identity-access-modes/system-assigned-msi-mode/
-[sample-deployment]: https://raw.githubusercontent.com/Azure/secrets-store-csi-driver-provider-azure/master/examples/service-principal/pod-inline-volume-service-principal.yaml

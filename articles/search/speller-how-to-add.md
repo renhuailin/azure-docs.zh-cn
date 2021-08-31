@@ -7,23 +7,27 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 05/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 28dc63729a946e7b14b950f5082752d78c5992f4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3da9051a1f089d487be7021bf9341a95bae62b08
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110452677"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614364"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>在认知搜索中向查询添加拼写检查
 
 > [!IMPORTANT]
-> 拼写更正以公共预览版提供，只能通过预览版 REST API 使用。 根据[使用条款补充](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览功能按原样提供。 在初始预览版推出期间，拼写检查器不收取任何费用。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
+> 拼写更正根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公开预览状态。 仅可通过 Azure 门户和预览版 REST API 获得。
 
 在单个搜索查询字词进入搜索引擎之前，可以通过对其进行拼写更正来改善召回率。 所有查询类型都支持 **拼写检查器** 参数：[简单](query-simple-syntax.md)、[完整](query-lucene-syntax.md)和新的 [语义](semantic-how-to-query-request.md)选项当前为公共预览版。
 
 ## <a name="prerequisites"></a>先决条件
+
+拼写检查器与[语义搜索预览版](semantic-search-overview.md)是一起发布的。 同样，需要[注册](https://aka.ms/SemanticSearchPreviewSignup)，但无需支付使用费用，也不存在层级限制。 拼写检查器与语义搜索在[同一区域](semantic-search-overview.md#availability-and-pricing)提供。
+
+完成注册后，你将需要以下各项：
 
 + 现有搜索索引，其中包含使用[支持的语言](#supported-languages)的内容。 目前，拼写校正不能用于[同义词](search-synonyms.md)。 避免在任何字段定义中指定同义词映射的索引上使用它。
 
@@ -32,9 +36,6 @@ ms.locfileid: "110452677"
   搜索客户端必须支持查询请求的预览版 REST API。 你可以使用 [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md) 或已修改的代码对预览版 API 发出 REST 调用。
 
 + 调用拼写更正的[查询请求](/rest/api/searchservice/preview-api/search-documents)必须将“api-version=2020-06-30-Preview”、“speller=lexicon”和“queryLanguage”设为[支持的语言](#supported-languages)。
-
-> [!Note]
-> 拼写检查器参数在提供语义搜索的同一区域中的所有层上都可用。 需要注册，但无需付费，也不存在层级限制。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
 
 ## <a name="spell-correction-with-simple-search"></a>对简单搜索的拼写更正
 

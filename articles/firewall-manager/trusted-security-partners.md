@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 08/03/2021
 ms.author: victorh
-ms.openlocfilehash: 622fde49a31105b2f66a678d3e55d48fabea9487
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 2e3dbc292108507793de0dd095e30ea2f63a7dab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966905"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727901"
 ---
 # <a name="what-are-security-partner-providers"></a>什么是安全合作伙伴提供程序？
 
@@ -25,6 +25,10 @@ ms.locfileid: "105966905"
 受支持的安全合作伙伴有 Zscaler、[Check Point](check-point-overview.md) 和 iboss   。
 
 ![安全合作伙伴提供程序](media/trusted-security-partners/trusted-security-partners.png)
+
+有关 Zscaler 概述，请参阅 Jack Tracey 发布的以下视频：
+
+ > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWI4n8]
 
 ## <a name="key-scenarios"></a>关键方案
 

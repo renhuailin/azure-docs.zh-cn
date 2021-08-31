@@ -165,7 +165,7 @@
             - name: 从 Azure VM 备份恢复文件
               href: backup-azure-restore-files-from-vm.md
             - name: 还原加密 VM
-              href: backup-azure-vms-encryption.md
+              href: restore-azure-encrypted-virtual-machines.md
             - name: 还原已加密 VM 的密钥和机密
               href: backup-azure-restore-key-secret.md
         - name: 管理

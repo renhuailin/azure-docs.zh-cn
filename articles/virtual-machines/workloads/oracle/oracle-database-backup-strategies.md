@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 8a1eb1c21663e0294cd384daa0ba644adf78007a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbe0fe6d0dadea6e99b406f2de6e16ed4d667741
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673212"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461531"
 ---
 # <a name="oracle-database-in-azure-linux-vm-backup-strategies"></a>Azure Linux VM 备份策略中的 Oracle Database
 
@@ -103,7 +103,7 @@ Azure 文件存储在云中提供完全托管的跨平台文件共享，这些�
 
 #### <a name="azure-files-nfs-v41-preview"></a>Azure 文件存储 NFS v4.1（预览版）
 
-可以使用网络文件系统 (NFS) v4.1 协议，将 Azure 文件共享装载到 Linux 分发版中。 在预览版中，支持的功能有很多限制，如[此处](../../../storage/files/storage-files-how-to-mount-nfs-shares.md)所述。 
+可以使用网络文件系统 (NFS) v4.1 协议，将 Azure 文件共享装载到 Linux 分发版中。 在预览版中，支持的功能有很多限制。 有关详细信息，请参阅[装入 AZURE NFS 文件共享（预览版）](../../../storage/files/storage-files-how-to-mount-nfs-shares.md)。 
 
 另外在预览版中，Azure 文件存储 NFS v4.1 也限制在以下[区域](../../../storage/files/storage-files-how-to-mount-nfs-shares.md)：
 - 美国东部（LRS 和 ZRS）
@@ -120,7 +120,7 @@ Azure 文件存储在云中提供完全托管的跨平台文件共享，这些�
 
 Azure 文件存储 SMB 广泛应用于所有 Azure 区域，显示出的性能特征与 NFS v3.0 和 v4.1 协议不相上下，因此是目前向 Azure Linux VM 提供备份存储介质的推荐方法。  
 
-现有两种版本的 SMB 受支持，即 SMB 2.1 和 SMB 3.0，其中后者支持传输中加密，因而更受推荐。 但是，不同的 Linux 内核版本对于 SMB 2.1 和 3.0 的支持也会有所不同，请对照[此处](../../../storage/files/storage-how-to-use-files-linux.md)表格检查，以确保应用程序支持 SMB 3.0。 
+现有两种版本的 SMB 受支持，即 SMB 2.1 和 SMB 3.0，其中后者支持传输中加密，因而更受推荐。 但是，不同的 Linux 内核版本对 SMB 2.1 和 3.0 的支持程度也不同。 有关详细信息，请参阅[在 Linux 上装载 SMB Azure 文件共享](../../../storage/files/storage-how-to-use-files-linux.md)，确保你的应用程序支持 SMB 3.0。 
 
 因为 Azure 文件存储的设计用途就是作为多用户文件共享服务，所以应对某些特性进行优化调整，使其更适合用作备份存储介质。 建议关闭缓存并设置所创建文件的用户和组 ID。
 
@@ -152,5 +152,3 @@ Azure 备份现在提供[增强型前脚本和后脚本框架](https://github.co
 - [创建 Oracle Database 快速入门](oracle-database-quick-create.md)
 - [将 Oracle Database 备份到 Azure 文件存储](oracle-database-backup-azure-storage.md)
 - [使用 Azure 备份服务备份 Oracle Database](oracle-database-backup-azure-backup.md)
-
-

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 01/27/2020
+ms.date: 07/12/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4c8e18979ff1575e1a050244a96e7858cdce46b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 9afabe40426a5e86fdd3c6ef76969e1392a9b051
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530240"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113649583"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用条款
 
@@ -52,12 +52,12 @@ Azure AD 使用条款策略具备以下功能：
 - 显示使用条款策略活动的日志，以了解合规性和进行审核。
 - 使用 [Microsoft Graph API](/graph/api/resources/agreement)（目前提供预览版）创建和管理使用条款策略。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要使用和配置 Azure AD 使用条款策略，必须具备以下先决条件：
 
 - Azure AD Premium P1、P2、EMS E3 或 EMS E5 订阅。
-   - 如果没有这其中的某个订阅，可以[获取 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) 或[启用 Azure AD Premium 试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
+   - 如果你没有这些订阅中的任何一个，可以获取 [Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) 或[启用 Azure AD Premium 试用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
 - 下述适用于需配置目录的管理员帐户之一：
    - 全局管理员
    - 安全管理员
@@ -201,16 +201,10 @@ Azure AD 使用条款策略包括审核日志，方便你查看其他活动。 �
 
 用户可按以下过程查看已接受的使用条款策略。
 
-1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)。
-1. 在右上角单击自己的姓名，然后选择“个人资料”。
-
-    ![“我的应用”站点，其中已打开用户的窗格](./media/terms-of-use/tou14.png)
-
-1. 在“个人资料”页中单击“查看使用条款”。
-
-    ![用户的个人资料页，其中显示了“查看使用条款”链接](./media/terms-of-use/tou13a.png)
-
-1. 可以在其中查看已接受的使用条款策略。
+1. 登录到 [https://myaccount.microsoft.com/](https://myaccount.microsoft.com/)。
+1. 选择“设置和隐私”。
+1. 选择“隐私”。
+1. 在“组织的通知”下，选择要查看的使用条款声明旁边的“查看” 。
 
 ## <a name="edit-terms-of-use-details"></a>编辑使用条款详细信息
 
@@ -222,7 +216,7 @@ Azure AD 使用条款策略包括审核日志，方便你查看其他活动。 �
 1. 在“编辑使用条款”窗格中，可以更改以下各项：
     - **名称** - 这是不与最终用户共享的 ToU 的内部名称
     - **显示名称** - 这是最终用户查看 ToU 时可以看到的名称
-    - 要求用户展开使用条款 – 如果将此项设置为“开启”，则会强制最终用户在接受使用条款策略文档之前先将其展开。
+    - 要求用户展开使用条款 – 将此项设置为“开启”会强制最终用户在接受使用条款政策之前先展开该文档 。
     - （预览版）可以更新现有的使用条款文档
     - 可以将语言添加到现有使用条款
 
@@ -242,7 +236,7 @@ Azure AD 使用条款策略包括审核日志，方便你查看其他活动。 �
     ![“编辑使用条款”窗格，其中显示了名称和展开选项](./media/terms-of-use/edit-terms-use.png)
 
 5.  在右侧窗格中，上传新版本的 pdf
-6.  如果希望要求用户在下次登录时接受这一新版本，这里也有一个“需要重新接受”开关选项。 如果你需要用户重新接受，则在用户下次尝试访问你的条件访问策略中定义的资源时，系统将提示他们接受这一新版本。 如果你不要求用户重新接受，则用户之前的同意仍将有效，并且尚未同意的新用户或者同意已经过期的旧用户才会看到新版本。
+6.  如果希望要求用户在下次登录时接受这一新版本，这里也有一个“需要重新接受”开关选项。 如果你需要用户重新接受，则在用户下次尝试访问你的条件访问策略中定义的资源时，系统将提示他们接受这一新版本。 如果你不要求用户重新接受，则用户之前的同意仍将有效，并且尚未同意的新用户或者同意已经过期的旧用户才会看到新版本。 在会话过期前，“要求重新接受”不会要求用户接受新 TOU。 对于这种情况，如果要确保重新接受，请删除并重新创建或创建新的 TOU。
 
     ![突出显示“编辑使用条款重新接受”选项](./media/terms-of-use/re-accept.png)
 
@@ -403,17 +397,11 @@ Azure AD 使用条款策略包括审核日志，方便你查看其他活动。 �
 问：为什么我在使用条款报告与 Azure AD 审核日志中看到的同意数量不同？<br />
 答：使用条款报告的存储时间为该使用条款策略的有效期，而 Azure AD 审核日志的存储时间为 30 天。 此外，使用条款报告仅显示用户当前的同意状态。 例如，如果用户拒绝然后接受，则使用条款报告仅显示该用户的接受。 如果需要查看历史记录，可以使用 Azure AD 审核日志。
 
-问：如果我编辑了使用条款策略的详细信息，用户是否必须重新接受？<br />
-答：不是。如果管理员编辑了使用条款策略的详细信息（名称、显示名称、要求用户展开，或添加语言），用户不需要重新接受新条款。
-
-问：是否可以更新现有的使用条款策略文档？<br />
-答：目前无法更新现有的使用条款策略文档。 若要更改使用条款策略文档，必须创建新的使用条款策略实例。
-
 问：如果使用条款策略 PDF 文档中有超链接，最终用户能否单击这些超链接？<br />
 答：是的，最终用户可以选择指向其他页面的超链接，但不支持指向文档内各节的链接。 此外，在从 Azure AD MyApps/MyAccount 门户进行访问时，使用条款策略 PDF 中的超链接不起作用。
 
 问：使用条款策略是否支持多种语言？<br />
-答：可以。 目前，管理员可以为单个使用条款策略配置 108 种不同的语言。 管理员可以上传多个 PDF 文档，并使用相应的语言（最多 108 种）标记这些文档。 当最终用户登录时，我们会查看其浏览器语言首选项，并显示匹配的文档。 如果没有匹配项，我们将显示默认文档，即上传的第一个文档。
+答：是的。 目前，管理员可以为单个使用条款策略配置 108 种不同的语言。 管理员可以上传多个 PDF 文档，并使用相应的语言（最多 108 种）标记这些文档。 当最终用户登录时，我们会查看其浏览器语言首选项，并显示匹配的文档。 如果没有匹配项，我们将显示默认文档，即上传的第一个文档。
 
 问：什么时候会触发使用条款策略？<br />
 答：在登录体验期间触发使用条款策略。
@@ -434,7 +422,7 @@ Azure AD 使用条款策略包括审核日志，方便你查看其他活动。 �
 答：如果你已配置了 Azure AD 使用条款和 [Intune 条款和条件](/intune/terms-and-conditions-create)，则用户将被要求同时接受这两者。 有关详细信息，请参阅[为组织博客文章选择合适的条款解决方案](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)。
 
 问：使用条款服务使用哪些终结点进行身份验证？<br />
-答：使用条款利用以下用于身份验证的终结点： https://tokenprovider.termsofuse.identitygovernance.azure.com 和 https://account.activedirectory.windowsazure.com 。 如果你的组织有用于注册的 URL 允许列表，则需要将这些终结点添加到允许列表以及用于登录的 Azure AD 终结点。
+答：使用条款利用以下用于身份验证的终结点： https://tokenprovider.termsofuse.identitygovernance.azure.com 和 https://account.activedirectory.windowsazure.com 。 如果组织有用于注册的 URL 允许列表，则需要将这些终结点连同用于登录的 Azure AD 终结点一起添加到允许列表。
 
 ## <a name="next-steps"></a>后续步骤
 

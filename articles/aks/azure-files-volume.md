@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 文件手动创建用于多个并发 Pod 的卷
 services: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: 7f3c8ae63e908f440740277084293a011b80b9d7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/08/2021
+ms.openlocfilehash: c68783cd614ca5dc1a569f17365992a378d225b9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776081"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732216"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 文件共享手动创建并使用卷
 
@@ -68,7 +68,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 ```
 
 ## <a name="mount-file-share-as-an-inline-volume"></a>装载文件共享作为内联卷
-> 注意：从 1.18.15、1.19.7、1.20.2、1.21.0 开始，内联 `azureFile` 卷中的机密命名空间只能设置为 `default` 命名空间，以指定不同的机密命名空间，请改用下面的永久卷示例。
+> 注意：内联 `azureFile` 卷只能以 Pod 的形式访问相同命名空间中的机密，若要指定其他机密命名空间，请改用下面的永久卷示例。
 
 若要将 Azure 文件共享装载到 Pod 中，请在容器规范中配置卷。使用以下内容创建名为 `azure-files-pod.yaml` 的新文件。 如果更改了文件共享名称或机密名称，请更新 *shareName* 和 *secretName*。 如果需要，请更新 `mountPath`，这是文件共享在 Pod 中的装载路径。 对于 Windows Server 容器，请使用 Windows 路径约定指定 mountPath，例如“D:”。
 
@@ -226,6 +226,14 @@ azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
   - name: azure
     persistentVolumeClaim:
       claimName: azurefile
+```
+
+由于无法就地更新 Pod 规范，请使用 `kubectl` 命令进行删除，然后重新创建 Pod：
+
+```console
+kubectl delete pod mypod
+
+kubectl apply -f azure-files-pod.yaml
 ```
 
 ## <a name="next-steps"></a>后续步骤

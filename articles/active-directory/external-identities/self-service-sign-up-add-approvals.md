@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: article
-ms.date: 03/02/2021
+ms.date: 07/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203ea5bb372c3afc77eb62508d1c95dc5f00bb4b
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: c5d12c45554897a9acfef1d32a2216d1eb410133
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315716"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459551"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>将自定义审批工作流添加到自助注册
 
@@ -28,7 +28,9 @@ ms.locfileid: "108315716"
 - 触发手动评审。 如果请求得到批准，则审批系统将使用 Microsoft Graph 来预配用户帐户。 审批系统还可以通知用户已创建其帐户。
 
 > [!IMPORTANT]
-> 从 2021 年下半年开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果正在对 B2B 邀请或 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 使用 Google 联合身份验证，或者正在将自助注册与 Gmail 一起使用，那么当你的应用通过嵌入的 Web 视图对用户进行身份验证时，Google Gmail 用户将无法登录。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+>
+> - 从 2021 年 7 月 12 日开始，如果 Azure AD B2B 客户设置了新的 Google 集成，将其用于自定义应用程序或业务线应用程序的自助注册，则在身份验证转移到系统 Web 视图之前，无法使用 Google 标识进行身份验证。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+> - 从 2021 年 9 月 30 日开始，Google 将[弃用嵌入式 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果你的应用使用嵌入式 Web 视图对用户进行身份验证，而你将 Google 联合身份验证与 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 或 Azure AD B2B 配合使用来进行[外部用户邀请](google-federation.md)或[自助注册](identity-providers.md)，则 Google Gmail 用户将无法进行身份验证。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
 
 ## <a name="register-an-application-for-your-approval-system"></a>为审批系统注册应用程序
 
@@ -84,7 +86,7 @@ ms.locfileid: "108315716"
 4. 选择“用户流”，然后选择要为其启用 API 连接器的用户流。
 5. 选择“API 连接器”，然后选择要在执行用户流中的以下步骤时调用的 API 终结点：
 
-   - **使用标识提供者登录之后**：选择审批状态 API 连接器，例如“检查审批状态”。
+   - 在登录期间使用标识提供者进行联合身份验证之后：选择审批状态 API 连接器，例如“检查审批状态”。
    - **创建用户之前**：选择审批请求 API 连接器，例如“请求审批”。
 
    ![将 API 添加到用户流](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)

@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3474d14b84e41fdf808b5a5b5c612b3a872f2c6
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 5e35f88ef38367a9c25da6a77b556f4009880af0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753496"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737314"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>使用分阶段推出迁移到云身份验证
 
@@ -87,7 +87,7 @@ ms.locfileid: "111753496"
 
 - 首次为分阶段推出添加安全组时，限制于 200 个用户，以避免 UX 超时。添加组后，可以根据需要直接向其添加更多用户。
 
-- 当用户处于分阶段推出时，如果已启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，则密码过期策略将设置为 90 天，且没有任何选项可以自定义该设置。 
+- 当用户处于“分阶段推出”过程时，密码过期策略设置为 90 天，无法自定义。 
 
 - 对于低于 1903 的 Windows 10 版本，将获取 Windows 10 混合加入或 Azure AD 加入主刷新令牌。 此方案将回退到联合服务器的 WS-Trust 终结点，即使用户登录在分阶段推出的范围内发生。
 
@@ -98,7 +98,7 @@ ms.locfileid: "111753496"
 - 如果使用 Windows Hello 企业版混合证书信任，且证书是通过联合服务器以注册机构或智能卡用户身份颁发的，则分阶段推出不支持该方案。 
 
   >[!NOTE]
-  >仍需要使用 Azure AD Connect 或 PowerShell 进行从联合身份验证到云身份验证的最终转换。 分阶段部署不会将域从联合域切换到托管域。  有关域切换的详细信息，请参阅[从联合迁移到密码哈希同步](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)和[从联合迁移到传递身份验证](plan-migrate-adfs-pass-through-authentication.md#step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso)。
+  >仍需要使用 Azure AD Connect 或 PowerShell 进行从联合身份验证到云身份验证的最终转换。 分阶段部署不会将域从联合域切换到托管域。  有关域切换的详细信息，请参阅[从联合迁移到密码哈希同步](./migrate-from-federation-to-cloud-authentication.md)和[从联合迁移到传递身份验证](./migrate-from-federation-to-cloud-authentication.md)。
   
 ## <a name="get-started-with-staged-rollout"></a>分阶段推出入门
 
@@ -266,7 +266,6 @@ A:是的。 若要了解如何使用 PowerShell 执行分阶段推出，请参�
 
 ## <a name="next-steps"></a>后续步骤
 - [Azure AD 2.0 预览版](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout )
-- [将登录方法更改为密码哈希同步](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
-- [将登录方法更改为直通身份验证](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+- [将登录方法更改为密码哈希同步](./migrate-from-federation-to-cloud-authentication.md)
+- [将登录方法更改为直通身份验证](./migrate-from-federation-to-cloud-authentication.md)
 - [分阶段推出交互式指南](https://mslearn.cloudguides.com/en-us/guides/Test%20migration%20to%20cloud%20authentication%20using%20staged%20rollout%20in%20Azure%20AD)
-

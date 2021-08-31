@@ -3,15 +3,15 @@ title: 使用 ISE 连接到 Azure 虚拟网络
 description: 创建集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络 (VNET)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 04/21/2021
-ms.openlocfilehash: 37cbcae47db9c44a39484edfde5e56d916bcaf36
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 08/11/2021
+ms.openlocfilehash: 3b715c15eb889d04c87a654fd68b802a53e7af01
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985717"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721943"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -24,7 +24,16 @@ ms.locfileid: "111985717"
 > [!IMPORTANT]
 > 要使逻辑应用和集成帐户在 ISE 中协同工作，两者都必须使用相同的 ISE 作为其位置。
 
-ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和响应超时、消息大小和自定义连接器请求的限制。 有关详细信息，请参阅 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md)。 若要详细了解 ISE，请参阅[从独立 Azure 逻辑应用访问 Azure 虚拟网络资源](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。
+ISE 已在以下几方面提高限制：
+
+* 运行持续时间
+* 存储保留期
+* 吞吐量
+* HTTP 请求和响应超时
+* 消息大小
+* 自定义连接器请求
+
+有关详细信息，请参阅 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md)。 若要详细了解 ISE，请参阅[从独立 Azure 逻辑应用访问 Azure 虚拟网络资源](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。
 
 本文介绍如何使用 Azure 门户完成以下任务：
 
@@ -32,7 +41,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 * 创建 ISE。
 * 向 ISE 添加额外的容量。
 
-你还可以使用[示例 Azure 资源管理器快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)或者使用逻辑应用 REST API（包括设置客户管理密钥）创建 ISE：
+你还可以使用[示例 Azure 资源管理器快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/integration-service-environment)或者使用逻辑应用 REST API（包括设置客户管理密钥）创建 ISE：
 
 * [使用逻辑应用 REST API 创建集成服务环境 (ISE)](../logic-apps/create-integration-service-environment-rest-api.md)
 * [设置客户管理密钥，以便为 ISE 加密静态数据](../logic-apps/customer-managed-keys-integration-service-environment.md)
@@ -42,7 +51,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 * Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
   > [!IMPORTANT]
-  > 在 ISE 中运行的逻辑应用、内置触发器、内置操作和连接器使用与基于消费的定价计划不同的定价计划。 要了解 ISE 的定价和计费原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
+  > 在 ISE 中运行的逻辑应用、内置触发器、内置操作和连接器使用与基于消费的定价计划不同的定价计划。 要了解 ISE 的定价和计费原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#ise-pricing)。 有关定价费率，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
 
 * 一个 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)，其中包含四个空子网，在 ISE 中创建和部署资源时需要这些子网，并且以下内部组件和隐藏的组件也会使用这些子网：
 
@@ -55,19 +64,9 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
   * 确保你的虚拟网络[为 ISE 启用访问权限](#enable-access)，以便 ISE 能够正常运行并保持可访问性。
 
-  * 如果随[强制隧道](../firewall/forced-tunneling.md)一起使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或者想要这样做，必须使用以下特定路由[创建一个路由表](../virtual-network/manage-route-table.md)，并将该路由表链接到 ISE 使用的每个子网：
-
-    **名称**：<*route-name*><br>
-    **地址前缀**：0.0.0.0/0<br>
-    **下一跃点**：Internet
-    
-    逻辑应用组件需要此特定路由表才能与其他依赖的 Azure 服务（例如 Azure 存储和 Azure SQL DB）通信。 有关此路由的详细信息，请参阅 [0.0.0.0/0 地址前缀](../virtual-network/virtual-networks-udr-overview.md#default-route)。 如果不将强制隧道与 ExpressRoute 一起使用，则不需要此特定路由表。
-    
-    ExpressRoute 可让你将本地网络扩展到 Microsoft 云，并通过连接提供商所支持的专用连接连接到 Microsoft 云服务。 具体而言，ExpressRoute 是可以通过专用网络（而不是公共 Internet）路由流量的虚拟专用网络。 通过 ExpressRoute 或虚拟专用网络连接时，逻辑应用可以连接到同一虚拟网络中的本地资源。
-   
   * 如果使用[网络虚拟设备 (NVA)](../virtual-network/virtual-networks-udr-overview.md#user-defined)，请确保不要启用 TLS/SSL 终止或更改出站 TLS/SSL 流量。 此外，请确保不要对源自 ISE 子网的流量启用检查。 有关详细信息，请参阅[虚拟网络流量路由](../virtual-network/virtual-networks-udr-overview.md)。
 
-  * 如果要为 Azure 虚拟网络使用自定义 DNS 服务器，请[按照以下步骤设置这些服务器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)，然后将 ISE 部署到虚拟网络。 有关管理 DNS 服务器设置的详细信息，请参阅[创建、更改或删除虚拟网络](../virtual-network/manage-virtual-network.md#change-dns-servers)。
+  * 如果要为 Azure 虚拟网络使用自定义域名系统 (DNS) 服务器，请[按照以下步骤设置这些服务器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)，然后将 ISE 部署到虚拟网络。 有关管理 DNS 服务器设置的详细信息，请参阅[创建、更改或删除虚拟网络](../virtual-network/manage-virtual-network.md#change-dns-servers)。
 
     > [!NOTE]
     > 如果更改 DNS 服务器或 DNS 服务器设置，则必须重启 ISE，使 ISE 可以应用这些更改。 有关详细信息，请参阅[重启 ISE](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE)。
@@ -122,7 +121,8 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 | 目的 | 源服务标记或 IP 地址 | 源端口 | 目标服务标记或 IP 地址 | 目标端口 | 说明 |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | 在虚拟网络中进行子网间通信 | 具有 ISE 子网的虚拟网络的地址空间 | * | 具有 ISE 子网的虚拟网络的地址空间 | * | 虚拟网络中子网之间流量流动所必需。 <p><p>**重要说明**：为了使流量在每个子网的组件之间流动，请确保打开每个子网中的所有端口。 |
-| 来自逻辑应用的通信 | **VirtualNetwork** | * | 取决于目标 | 取决于目标 | 目标端口因逻辑应用需要与之通信的外部服务的终结点而异。 <p><p>例如，Web 服务的目标端口是 443，SMTP 服务的目标端口是 25，SFTP 服务的目标端口是 22。 |
+| 来自逻辑应用的通信 | **VirtualNetwork** | * | Internet | 443, 80 | 安全套接字层 (SSL) 证书验证需要此规则。 此检查适用于各种内部和外部网站，这是需要 Internet 作为目标的原因。 |
+| 来自逻辑应用的通信 | **VirtualNetwork** | * | 取决于目标 | 取决于目标 | 目标端口因逻辑应用需要与之通信的外部服务的终结点而异。 <p><p>例如，SMTP 服务的目标端口是 25，SFTP 服务的目标端口是 22 等。 |
 | Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80、443 ||
 | Azure 存储依赖项 | **VirtualNetwork** | * | **存储** | 80、443、445 ||
 | 连接管理 | **VirtualNetwork** | * | **AppService** | 443 ||
@@ -151,12 +151,12 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 * 用户定义路由
 
   若要防止非对称路由，必须使用“Internet”作为下一个跃点，为下面列出的每个 IP 地址定义一个路由。
-  
-  * [应用服务环境管理地址](../app-service/environment/management-addresses.md)
+
+  * [ISE 区域的逻辑应用入站和出站地址](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)  
   * [ISE 区域中连接器的 Azure IP 地址，已在此下载文件中提供](https://www.microsoft.com/download/details.aspx?id=56519)
+  * [应用服务环境管理地址](../app-service/environment/management-addresses.md)  
   * [Azure 流量管理器管理地址](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
-  * [ISE 区域的逻辑应用入站和出站地址](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
-  * [ISE 区域中连接器的 Azure IP 地址，已在此下载文件中提供](https://www.microsoft.com/download/details.aspx?id=56519)
+  * [Azure API 管理控制平面 IP 地址](../api-management/api-management-using-with-vnet.md#control-plane-ips)
 
 * 服务终结点
 
@@ -186,7 +186,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | properties | 必须 | Value | 说明 |
+   | properties | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的新的或现有的 Azure 资源组 |
@@ -276,7 +276,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 1. 如果部署完成后 Azure 未自动转到你的环境，可以选择“转到资源”来查看该环境。
 
-1. 对于拥有外部终结点访问权限的 ISE，需要创建一个网络安全组（如果没有的话），并添加一个入站安全规则以允许来自托管连接器出站 IP 地址的流量。 若要设置此规则，请执行以下步骤：
+1. 对于拥有外部终结点访问权限的 ISE，需要创建一个网络安全组 (NSG)（如果还没有）。 需要添加一个入站安全规则以允许来自托管连接器出站 IP 地址的流量。 若要设置此规则，请执行以下步骤：
 
    1. 在 ISE 菜单中的“设置”下，选择“属性” 。
 

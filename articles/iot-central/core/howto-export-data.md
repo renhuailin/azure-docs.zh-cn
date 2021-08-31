@@ -4,16 +4,16 @@ description: 如何使用新的数据导出功能将 IoT 数据导出到 Azure �
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 05/03/2021
+ms.date: 06/04/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: cdfe633e8a1a081e088dc696c67ed7da8c50e61b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 0435fece7394c0a1494e51581bce263cbf1e068a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061203"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461172"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用数据导出功能将 IoT 数据导出到云目标
 
@@ -31,7 +31,7 @@ ms.locfileid: "110061203"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要使用数据导出功能，则必须有 [V3 应用程序](howto-get-app-info.md)，且必须拥有[数据导出](howto-manage-users-roles.md)权限。
+若要使用数据导出功能，则必须有 [V3 应用程序](howto-faq.yml#how-do-i-get-information-about-my-application-)，且必须拥有[数据导出](howto-manage-users-roles.md)权限。
 
 如果有 V2 应用程序，请参阅[将 V2 IoT Central 应用程序迁移到 V3](howto-migrate.md)。
 
@@ -138,15 +138,17 @@ ms.locfileid: "110061203"
     
     | 数据类型 | 可用的过滤器| 
     |--------------|------------------|
-    |遥测|<ul><li>按设备名称、设备 ID 和设备模板进行筛选</li><li>筛选流以仅包含符合筛选条件的遥测数据</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的遥测数据</li><li>筛选流以仅包含消息属性符合筛选条件的遥测数据。 消息属性（也称为应用程序属性）将在每个遥测消息上的键值对包中发送，该消息由使用设备 SDK 的设备选择性发送 。 若要创建消息属性筛选器，请输入要查找的消息属性键，并指定条件。 只导出属性与指定筛选条件匹配的遥测消息。 [从 IoT 中心文档中详细了解应用程序属性](../../iot-hub/iot-hub-devguide-messages-construct.md) </li></ul>|
-    |属性更改|<ul><li>按设备名称、设备 ID 和设备模板进行筛选</li><li>筛选流以仅包含符合筛选条件的属性更改</li></ul>|
-    |设备连接|<ul><li>按设备名称、设备 ID 和设备模板进行筛选</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的更改</li></ul>|
-    |设备生命周期|<ul><li>按设备名称、设备 ID 和设备模板进行筛选</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的更改</li></ul>|
+    |遥测|<ul><li>按设备名称、设备 ID、设备模板以及设备是否模拟进行筛选</li><li>筛选流以仅包含符合筛选条件的遥测数据</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的遥测数据</li><li>筛选流以仅包含消息属性符合筛选条件的遥测数据。 消息属性（也称为应用程序属性）将在每个遥测消息上的键值对包中发送，该消息由使用设备 SDK 的设备选择性发送 。 若要创建消息属性筛选器，请输入要查找的消息属性键，并指定条件。 只导出属性与指定筛选条件匹配的遥测消息。 [从 IoT 中心文档中详细了解应用程序属性](../../iot-hub/iot-hub-devguide-messages-construct.md) </li></ul>|
+    |属性更改|<ul><li>按设备名称、设备 ID、设备模板以及设备是否模拟进行筛选</li><li>筛选流以仅包含符合筛选条件的属性更改</li></ul>|
+    |设备连接|<ul><li>按设备名称、设备 ID、设备模板以及设备是否模拟进行筛选</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的更改</li></ul>|
+    |设备生命周期|<ul><li>按设备名称、设备 ID、设备模板以及设备是否预配、启用或模拟进行筛选</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的更改</li></ul>|
     |设备模板生命周期|<ul><li>按设备模板进行筛选</li></ul>|
     
-1. （可选）使用额外的键值对元数据来扩充导出的消息。 以下扩充适用于遥测和属性更改数据导出类型：<a name="DataExportEnrichmnents"></a>
+1. （可选）使用额外的键值对元数据来扩充导出的消息。 以下扩充可用于遥测、属性更改、设备连接和设备生命周期数据导出类型：<a name="DataExportEnrichmnents"></a>
     - 自定义字符串：向每条消息添加一个自定义静态字符串。 输入任意键，并输入任意字符串值。
-    - 属性：将当前设备报告的属性或云属性值添加到每条消息中。 输入任意键，并选择设备或云属性。 如果导出的消息来自没有指定属性的设备，则导出的消息不会得到扩充。
+    - 属性，将添加到每条消息中：
+       - 设备元数据，例如设备名称、设备模板名称、是否启用、预配和模拟
+       - 将当前设备报告的属性或云属性值添加到每条消息中。 如果导出的消息来自没有指定属性的设备，则导出的消息不会得到扩充。
 
 1. 添加新目标或你已经创建的目标。 选择“新建一个”链接，然后添加以下信息：
 
@@ -172,7 +174,7 @@ ms.locfileid: "110061203"
 - 已成功导出到目标的消息数。
 - 遇到的错误数。
 
-若要了解详细信息，请参阅[监视 IoT Central 应用程序的总体运行状况](howto-monitor-application-health.md)。
+若要了解详细信息，请参阅[监视应用程序运行状况](howto-manage-iot-central-from-portal.md#monitor-application-health)。
 
 ## <a name="destinations"></a>Destinations
 
@@ -206,6 +208,8 @@ ms.locfileid: "110061203"
 - `templateId`：与设备关联的设备模板的 ID。
 - `enqueuedTime`：IoT Central 收到此消息的时间。
 - `enrichments`：在导出中设置的任何扩充。
+- `module`：发送此消息的 IoT Edge 模块。 仅当消息来自 IoT Edge 模块时才会显示此字段。
+- `component`：发送此消息的组件。 仅当在消息中发送的功能在设备模板中建模为组件时，才会显示此字段
 - `messageProperties`：设备随消息一起发送的附加属性。 这些属性有时亦称为“应用程序属性”。 [从 IoT 中心文档中了解详细信息](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
 对于事件中心和服务总线，IoT Central 在从设备接收到消息后迅速导出新消息。 在每个消息的用户属性（亦称为“应用程序属性”）中，自动包含了 `iotcentral-device-id`、`iotcentral-application-id` 和 `iotcentral-message-source`。
@@ -237,6 +241,8 @@ ms.locfileid: "110061203"
     "enrichments": {
       "userSpecifiedKey": "sampleValue"
     },
+    "module": "VitalsModule",
+    "component": "DeviceComponent",
     "messageProperties": {
       "messageProp": "value"
     }
@@ -343,7 +349,7 @@ async def send_telemetry_from_thermostat(device_client, telemetry_msg):
 
 ## <a name="property-changes-format"></a>属性更改格式
 
-每个消息或记录都表示对设备或云属性的一次更改。 对于设备属性，只有报告值中的更改被导出为单独的消息。 导出的消息中的信息包括：
+每个消息或记录都表示对设备或云属性的更改。 导出的消息中的信息包括：
 
 - `applicationId`：IoT Central 应用程序的 ID。
 - `messageSource`：消息源 - `properties`。
@@ -352,8 +358,9 @@ async def send_telemetry_from_thermostat(device_client, telemetry_msg):
 - `schema`：有效负载架构的名称和版本。
 - `enqueuedTime`：IoT Central 检测到此更改的时间。
 - `templateId`：与设备关联的设备模板的 ID。
+- `properties`：已更改的属性的数组，包括已更改的属性和值的名称。 如果属性在组件或 IoT Edge 模块内建模，则包含组件和模块信息。
 - `enrichments`：在导出中设置的任何扩充。
-
+- 
 对于事件中心和服务总线，IoT Central 将新消息数据准实时地导出到事件中心或服务总线队列/主题。 在每个消息的用户属性（亦称为“应用程序属性”）中，自动包含了 `iotcentral-device-id`、`iotcentral-application-id`、`iotcentral-message-source` 和 `iotcentral-message-type`。
 
 对于 Blob 存储，消息被批处理并每分钟导出一次。
@@ -371,7 +378,9 @@ async def send_telemetry_from_thermostat(device_client, telemetry_msg):
     "enqueuedTime": "2020-08-05T22:37:32.942Z",
     "properties": [{
         "name": "MachineSerialNumber",
-        "value": "abc"
+        "value": "abc",
+        "module": "VitalsModule",
+        "component": "DeviceComponent"
     }],
     "enrichments": {
         "userSpecifiedKey" : "sampleValue"

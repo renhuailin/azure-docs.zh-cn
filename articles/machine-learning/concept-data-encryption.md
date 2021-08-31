@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 04/21/2021
-ms.openlocfilehash: ab71dc6f02c87997a680722e3553f2739c378dc4
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 08/02/2021
+ms.openlocfilehash: 2a838d2c1206cbc1a73e00d3ff41337400a08676
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371281"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742075"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>使用 Azure 机器学习进行数据加密
 
@@ -36,6 +36,9 @@ Azure 机器学习在训练模型和执行推理时使用各种 Azure 数据存�
 * 开始加密 Azure 机器学习计算群集中的本地暂存磁盘，前提是尚未在该订阅中创建任何以前的群集。 否则，需要提供支持票证来启用对计算群集的暂存磁盘的加密 
 * 在不同运行之间清理本地暂存磁盘
 * 使用密钥保管库，将存储帐户、容器注册表和 SSH 帐户的凭据从执行层安全地传递到计算群集
+
+> [!TIP]
+> `hbi_workspace` 标志不会影响传输中的加密，只会影响静态加密。
 
 ### <a name="azure-blob-storage"></a>Azure Blob 存储
 
@@ -59,7 +62,7 @@ Azure 机器学习在 Azure Cosmos DB 实例中存储元数据。 此实例与 A
 
 * 在订阅中注册 Microsoft.MachineLearning 和 Microsoft.DocumentDB 资源提供程序（如果尚未注册）。
 
-* 创建 Azure 机器学习工作区时，请使用以下参数。 这两个参数都是必需的，并且在 SDK、CLI、REST API 和资源管理器模板中受支持。
+* 创建 Azure 机器学习工作区时，请使用以下参数。 这两个参数都是必需的，并且在 SDK、Azure CLI、REST API 和资源管理器模板中受支持。
 
     * `resource_cmk_uri`：此参数是密钥保管库中客户管理的密钥的完整资源 URI，其中包括[密钥的版本信息](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)。 
 
@@ -120,11 +123,11 @@ Azure 机器学习在 Azure Cosmos DB 实例中存储元数据。 此实例与 A
 
 ### <a name="machine-learning-compute"></a>机器学习计算
 
-Azure 存储中存储的每个计算节点的 OS 磁盘，已通过 Azure 机器学习存储帐户中由 Microsoft 管理的密钥进行加密。 此计算目标是暂时的；没有排队的运行时，群集通常会缩减。 底层虚拟机将解除预配，OS 磁盘将被删除。 OS 磁盘不支持 Azure 磁盘加密。 
+计算群集：存储在 Azure 存储中的每个计算节点的 OS 磁盘都使用 Azure 机器学习存储帐户中的 Microsoft 托管密钥进行加密。 此计算目标是暂时的；没有排队的运行时，群集通常会缩减。 底层虚拟机将解除预配，OS 磁盘将被删除。 OS 磁盘不支持 Azure 磁盘加密。 
 
-每个虚拟机还包含一个本地临时磁盘用于 OS 操作。 如果需要，可以使用该磁盘来暂存训练数据。 对于其 `hbi_workspace` 参数设置为 `TRUE` 的工作区，默认会加密磁盘。 此环境仅在运行期间短暂存在，加密支持仅限于系统管理的密钥。
+每个虚拟机还包含一个本地临时磁盘用于 OS 操作。 如果需要，可以使用该磁盘来暂存训练数据。 如果创建工作区时将 `hbi_workspace` 参数设置为 `TRUE`，则将对临时磁盘进行加密。 此环境短暂存在（仅在运行期间），加密支持仅限于系统管理的密钥。
 
-存储计算实例的 OS 磁盘使用 Azure 机器学习存储帐户中的 Microsoft 托管密钥进行加密。 计算实例上的本地临时磁盘已用适用于工作区的 Microsoft 托管密钥进行了加密（`hbi_workspace` 参数设置为 `TRUE`）。
+计算实例：存储计算实例的 OS 磁盘使用 Azure 机器学习存储帐户中的 Microsoft 托管密钥进行加密。 如果创建工作区时将 `hbi_workspace` 参数设置为 `TRUE`，则将使用 Microsoft 托管密钥对计算实例上的本地临时磁盘加密。 OS 和临时磁盘不支持客户管理的密钥加密。
 
 ### <a name="azure-databricks"></a>Azure Databricks
 
@@ -146,11 +149,11 @@ Azure 机器学习使用 TLS 来保护对评分终结点的外部调用。 有�
 
 ### <a name="microsoft-collected-data"></a>Microsoft 收集的数据
 
-Microsoft 可能会收集非用户标识信息，如资源名称（例如数据集名称或机器学习试验名称）或用于诊断的作业环境变量。 所有此类数据都使用 Microsoft 托管密钥存储在 Microsoft 拥有的订阅中托管的存储中，并遵循 [Microsoft 的标准隐私策略和数据处理标准](https://privacy.microsoft.com/privacystatement)。
+Microsoft 可能会收集非用户标识信息，如资源名称（例如数据集名称或机器学习试验名称）或用于诊断的作业环境变量。 所有此类数据都使用 Microsoft 托管密钥存储在 Microsoft 拥有的订阅中托管的存储中，并遵循 [Microsoft 的标准隐私策略和数据处理标准](https://privacy.microsoft.com/privacystatement)。 此数据与你的工作区保存在同一区域内。
 
 Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥机密）。 我们会记录、加密和存储环境变量。 同样，为 [run_id](/python/api/azureml-core/azureml.core.run%28class%29) 命名时，请避免包含用户名或机密项目名称等敏感信息。 此信息可能会出现在可供 Microsoft 支持部门工程师访问的遥测日志中。
 
-预配工作区时，可以通过将 `hbi_workspace` 参数设置为 `TRUE` 来选择退出收集诊断数据。 使用 AzureML Python SDK、CLI、REST API 或 Azure 资源管理器模板时支持此功能。
+预配工作区时，可以通过将 `hbi_workspace` 参数设置为 `TRUE` 来选择退出收集诊断数据。 使用 AzureML Python SDK、Azure CLI、REST API 或 Azure 资源管理器模板时支持此功能。
 
 ## <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 

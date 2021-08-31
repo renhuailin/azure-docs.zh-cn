@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/11/2021
+ms.date: 07/29/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3cd910cac906af54e039e38c9ccdd9d563cd9b8c
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 9736bee99483a7e4fbb5a5f02a3f415a74c9f76f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570308"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727740"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>有关在 Azure Active Directory 中编写特性映射表达式的参考
 
@@ -38,7 +38,7 @@ ms.locfileid: "111570308"
 
 ## <a name="list-of-functions"></a>函数列表
 
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>附加
@@ -55,7 +55,7 @@ ms.locfileid: "111570308"
 | **suffix** |必须 |String |要附加到源值末尾的字符串。 |
 
 
-### <a name="append-constant-suffix-to-user-name"></a>将常量后缀附加到用户名
+#### <a name="append-constant-suffix-to-user-name"></a>将常量后缀附加到用户名
 示例：如果使用 Salesforce 沙盒，则可能需要先向你的所有用户名追加额外后缀，然后才对其进行同步。
 
 表达式： 
@@ -66,6 +66,18 @@ ms.locfileid: "111570308"
 * **输入**：(userPrincipalName)：“John.Doe@contoso.com”
 * **输出**：“John.Doe@contoso.com.test”
 
+---
+### <a name="approleassignmentscomplex"></a>AppRoleAssignmentsComplex
+
+函数：AppRoleAssignmentsComplex([appRoleAssignments])
+
+说明：用于为一个用户预配多个角色。 有关详细使用情况，请参阅[教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射](customize-application-attributes.md#provisioning-a-role-to-a-scim-app)。
+
+**参数：** 
+
+| 名称 | 必选/重复 | 类型 | 说明 |
+| --- | --- | --- | --- |
+| **[appRoleAssignments]** |必须 |String |**[appRoleAssignments]** 对象。 |
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -109,6 +121,44 @@ ms.locfileid: "111570308"
 如果两个属性具有相同的值，则返回 True。
 
 ---
+### <a name="cdate"></a>CDate
+**函数：**  
+`CDate(expression)`
+
+**说明：**  
+CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是本机属性类型，但可用在 [FormatDateTime](#formatdatetime) 和 [DateAdd](#dateadd) 等日期函数内。
+
+**参数：** 
+
+| 名称 | 必选/重复 | 类型 | 注释 |
+| --- | --- | --- | --- |
+| **expression** |必需 | 表达式 | 表示日期/时间的任何有效字符串。 有关支持的格式，请参阅 [.NET 自定义日期和时间格式字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+
+**备注：**  
+返回的字符串始终采用 UTC 形式，采用 M/d/yyyy h:mm:ss tt 格式。
+
+**示例 1：** <br> 
+`CDate([StatusHireDate])`  
+**示例输入/输出：** 
+
+* 输入 (StatusHireDate)：“2020-03-16-07:00”
+* 输出：“3/16/2020 7:00:00 AM”<-- 注意，返回上述 DateTime 的 UTC 等同格式
+
+**示例 2：** <br> 
+`CDate("2021-06-30+08:00")`  
+**示例输入/输出：** 
+
+* 输入：“2021-06-30+08:00”
+* 输出：“6/29/2021 4:00:00 PM”<-- 注意，返回上述 DateTime 的 UTC 等同格式
+
+示例 3： <br> 
+`CDate("2009-06-15T01:45:30-07:00")`  
+**示例输入/输出：** 
+
+* 输入：“2009-06-15T01:45:30-07:00”
+* 输出：“6/15/2009 8:45:30 AM”<-- 注意，返回上述 DateTime 的 UTC 等同格式
+
+---
 ### <a name="coalesce"></a>Coalesce
 函数：Coalesce(source1, source2, ..., defaultValue)
 
@@ -121,7 +171,7 @@ ms.locfileid: "111570308"
 | **source1  … sourceN** | 必须 | String |必需，次数可变。 通常是来自源对象的属性的名称。 |
 | **defaultValue** | 可选 | String | 当所有源值为 NULL 时要使用的默认值。 可以是空字符串 ("")。
 
-### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>如果不为 NULL，则传送 mail 值，否则传送 userPrincipalName
+#### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>如果不为 NULL，则传送 mail 值，否则传送 userPrincipalName
 示例：你希望当 mail 特性存在时传送该特性。 如果该特性不存在，则你希望改为传送 userPrincipalName 的值。
 
 表达式： 
@@ -198,6 +248,60 @@ ms.locfileid: "111570308"
 返回“cn=Joe,dc=contoso,dc=com”
 
 ---
+### <a name="dateadd"></a>DateAdd
+**函数：**  
+`DateAdd(interval, value, dateTime)`
+
+**描述：**  
+返回一个日期/时间字符串，表示某个已添加指定时间间隔的日期。 返回的日期采用以下格式：M/d/yyyy h:mm:ss tt。
+
+**参数：** 
+
+| 名称 | 必选/重复 | 类型 | 说明 |
+| --- | --- | --- | --- |
+| **interval** |必须 | 字符串 | 要添加的时间间隔。 请参阅此表下方的可接受值。 |
+| value  |必须 | Number | 要添加的单位数。 它可以是正值（以获取将来的日期）或负值（以获取过去的日期）。 |
+| **dateTime** |必需 | DateTime | 表示间隔添加到其中的日期的 DateTime。 |
+
+间隔字符串必须具有下列值之一： 
+ * yyyy Year 
+ * q Quarter
+ * m Month
+ * y Day of year
+ * d Day
+ * w Weekday
+ * ww Week
+ * h Hour
+ * n Minute
+ * s Second
+
+示例 1：向雇用日期添加 7 天  
+`DateAdd("d", 7, CDate([StatusHireDate]))`
+* 输入 (StatusHireDate)：2012-03-16-07:00
+* 输出：3/23/2012 7:00:00 AM
+
+示例 2：获取雇用日期前 10 天的日期  
+`DateAdd("d", -10, CDate([StatusHireDate]))`
+* 输入 (StatusHireDate)：2012-03-16-07:00
+* 输出：3/6/2012 7:00:00 AM
+
+示例 3：向雇用日期添加 2 周  
+`DateAdd("ww", 2, CDate([StatusHireDate]))`
+* 输入 (StatusHireDate)：2012-03-16-07:00
+* 输出：3/30/2012 7:00:00 AM
+
+示例 4：向雇用日期添加 10 个月  
+`DateAdd("m", 10, CDate([StatusHireDate]))`
+* 输入 (StatusHireDate)：2012-03-16-07:00
+* 输出：1/16/2013 7:00:00 AM
+
+示例 5：向雇用日期添加 2 年  
+`DateAdd("yyyy", 2, CDate([StatusHireDate]))`
+* 输入 (StatusHireDate)：2012-03-16-07:00
+* 输出：3/16/2014 7:00:00 AM
+
+---
+
 ### <a name="datefromnum"></a>DateFromNum
 函数：DateFromNum(value)
 
@@ -228,12 +332,12 @@ ms.locfileid: "111570308"
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是来自源对象的属性的名称。 |
 | dateTimeStyles | 可选 | String | 使用此参数可以指定格式设置选项，这些选项可自定义用于某些日期和时间分析方法的字符串分析。 有关支持的值，请参阅 [DateTimeStyles 文档](/dotnet/api/system.globalization.datetimestyles)。如果留空，则使用的默认值为 DateTimeStyles.RoundtripKind, DateTimeStyles.AllowLeadingWhite, DateTimeStyles.AllowTrailingWhite  |
-| **inputFormat** |必须 |String |源值的预期格式。 有关支持的格式，请参阅 [/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+| **inputFormat** |必须 |String |源值的预期格式。 有关支持的格式，请参阅 [.NET 自定义日期和时间格式字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 | **outputFormat** |必须 |String |输出日期的格式。 |
 
 
 
-### <a name="output-date-as-a-string-in-a-certain-format"></a>输出日期是一种特定格式的字符串
+#### <a name="output-date-as-a-string-in-a-certain-format"></a>输出日期是一种特定格式的字符串
 示例：你想要以特定格式将日期发送到 ServiceNow 等 SaaS 应用程序。 可以考虑使用以下表达式。 
 
 **表达式：** 
@@ -251,6 +355,31 @@ ms.locfileid: "111570308"
 函数：Guid()
 
 说明：函数 Guid 生成新的随机 GUID
+
+**示例：** <br>
+`Guid()`<br>
+示例输出：“1088051a-cd4b-4288-84f8-e02042ca72bc”
+
+---
+### <a name="ignoreflowifnullorempty"></a>IgnoreFlowIfNullOrEmpty
+函数：IgnoreFlowIfNullOrEmpty(expression)
+
+说明：如果包含的函数或属性为 NULL 或为空，则 IgnoreFlowIfNullOrEmpty 函数会指示预配服务忽略属性，并将其从流中删除。
+
+**参数：** 
+
+| 名称 | 必选/重复 | 类型 | 注释 |
+| --- | --- | --- | --- |
+| **expression** | 必需 | 表达式 | 要对其求值的表达式 |
+
+示例 1：如果属性为 null，则不流式传输 <br>
+`IgnoreFlowIfNullOrEmpty([department])` <br>
+如果值为 null 或为空，则上述表达式将从预配流中删除部门属性。 <br>
+
+示例 2：如果表达式映射的计算结果为空字符串或 null，则不流式传输属性 <br>
+假设 SuccessFactors 属性 prefix 通过以下表达式映射映射到本地 Active Directory 属性 personalTitle： <br>
+`IgnoreFlowIfNullOrEmpty(Switch([prefix], "", "3443", "Dr.", "3444", "Prof.", "3445", "Prof. Dr."))` <br>
+上述表达式将首先计算 [Switch](#switch) 函数的结果。 如果 prefix 属性没有 Switch 函数内列出的任何值，则 Switch 将返回一个空字符串，并且 personalTitle 属性不会包括在本地 Active Directory 的预配流中。
 
 ---
 ### <a name="iif"></a>IIF
@@ -434,7 +563,7 @@ ms.locfileid: "111570308"
 | **source** |必须 |String | 通常是名字或姓氏属性。 |
 
 
-### <a name="remove-diacritics-from-a-string"></a>从字符串中删除音调符号
+#### <a name="remove-diacritics-from-a-string"></a>从字符串中删除音调符号
 示例：你需要将包含重音符号的字符替换为不包含重音符号的等效字符。
 
 表达式：NormalizeDiacritics([givenName])
@@ -456,6 +585,17 @@ ms.locfileid: "111570308"
 | 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必需 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
+
+---
+### <a name="now"></a>Now
+函数：Now()
+
+**描述：**  
+Now 函数返回表示当前 UTC DateTime 的字符串，格式为 M/d/yyyy h:mm:ss tt。
+
+**示例：** 
+`Now()` <br>
+返回的示例值：7/2/2021 3:33:38 PM
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
@@ -527,7 +667,7 @@ ms.locfileid: "111570308"
 | **replacementAttributeName** |可选 |字符串 |用于替换值的属性的名称 |
 | **template** |可选 |字符串 |当提供 **template** 值时，会在模板中查找 **oldValue** 并将其替换为 **source** 值。 |
 
-### <a name="replace-characters-using-a-regular-expression"></a>使用正则表达式替换字符
+#### <a name="replace-characters-using-a-regular-expression"></a>使用正则表达式替换字符
 示例：你需要查找与正则表达式值匹配的字符并将其删除。
 
 **表达式：** 
@@ -559,7 +699,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |字符串 | 要评估的唯一值生成规则的列表。 |
 
-### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>为 userPrincipalName (UPN) 属性生成唯一值
+#### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>为 userPrincipalName (UPN) 属性生成唯一值
 示例：你需要根据用户的名字、中间名和姓氏为 UPN 特性生成值，并在将该值分配给 UPN 特性之前在目标 AD 目录中检查其唯一性。
 
 **表达式：** 
@@ -607,7 +747,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 | **source** |必须 |String |要更新的 **source** 值。 |
 | **delimiter** |必须 |String |指定将用来拆分字符串的字符（示例：“,”） |
 
-### <a name="split-a-string-into-a-multi-valued-array"></a>将字符串拆分为多值数组
+#### <a name="split-a-string-into-a-multi-valued-array"></a>将字符串拆分为多值数组
 示例：你需要提取一个以逗号分隔的字符串列表，并将这些字符串拆分为可插入到多值特性（例如 Salesforce 的 PermissionSets 特性）的数组。 在此示例中，Azure AD 中的 extensionAttribute5 中填充了一个权限集列表。
 
 表达式：Split([extensionAttribute5], ",")
@@ -645,7 +785,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 | key  |必须 |String |用来比较 **source** 值的 **key**。 |
 | value  |必须 |String |与该 key 匹配的 **source** 的替换值。 |
 
-### <a name="replace-a-value-based-on-predefined-set-of-options"></a>根据预定义的选项集替换值
+#### <a name="replace-a-value-based-on-predefined-set-of-options"></a>根据预定义的选项集替换值
 示例：你需要根据 Azure AD 中存储的状态代码来定义用户的时区。 如果状态代码与任何预定义选项都不匹配，则使用默认值“澳大利亚/悉尼”。
 
 表达式： 
@@ -663,6 +803,8 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 说明：取源字符串值，并使用指定的区域性规则将其转换为小写。 如果没有指定任何区域性信息，则使用固定区域性。
 
+如果要将目标系统中的现有值设置为小写，请[更新目标应用程序的架构](./customize-application-attributes.md#editing-the-list-of-supported-attributes)，并将所需属性的属性 caseExact 设置为“true”。 
+
 **参数：** 
 
 | 名称 | 必选/重复 | 类型 | 说明 |
@@ -670,7 +812,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 | **source** |必须 |String |通常是来自源对象的属性的名称 |
 | **culture** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>将生成的 userPrincipalName (UPN) 值转换为小写
+#### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>将生成的 userPrincipalName (UPN) 值转换为小写
 示例：你要通过连接 PreferredFirstName 和 PreferredLastName 源字段并将所有字符转换为小写，来生成 UPN 值。 
 
 `ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
@@ -687,6 +829,8 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 函数：ToUpper(source, culture)
 
 说明：取源字符串值，并使用指定的区域性规则将其转换为大写。 如果没有指定任何区域性信息，则使用固定区域性。
+
+如果要将目标系统中的现有值设置为大写，请[更新目标应用程序的架构](./customize-application-attributes.md#editing-the-list-of-supported-attributes)，并将所需属性的属性 caseExact 设置为“true”。 
 
 **参数：** 
 

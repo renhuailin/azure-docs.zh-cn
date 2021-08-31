@@ -2,13 +2,13 @@
 title: 为 Azure Blob 配置操作备份
 description: 了解如何为 Azure Blob 配置和管理操作备份。
 ms.topic: conceptual
-ms.date: 05/05/2021
-ms.openlocfilehash: cb2bc525018b33eb3441a8ed949d3e808c5051d8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 08/06/2021
+ms.openlocfilehash: b437aa0df073267b07b3e74bc3a778e7aa274031
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108767376"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722677"
 ---
 # <a name="configure-operational-backup-for-azure-blobs"></a>为 Azure Blob 配置操作备份
 
@@ -27,6 +27,7 @@ Azure 备份使你可以轻松地配置操作备份，以保护存储帐户中�
 - 此解决方案使你可以将数据保留最多 360 天以用于还原。 不过，较长的保留持续时间可能会导致在还原操作期间花费较长的时间。
 - 该解决方案只能用于对源存储帐户执行还原，可能会导致覆盖数据。
 - 如果通过调用“删除容器”操作从存储帐户中删除了容器，将无法使用还原操作来还原该容器。 如果要在以后还原它们，请删除单个 blob，而不是删除整个容器。 此外，Microsoft 还建议为容器启用软删除，以及执行操作备份，以防止意外删除容器。
+- 请确保已为订阅注册 Microsoft.DataProtection 提供程序。
 - 若要详细了解支持的方案、限制和可用性，请参阅[支持矩阵](blob-backup-support-matrix.md)。
 
 ## <a name="create-a-backup-vault"></a>创建备份保管库

@@ -10,12 +10,12 @@ ms.date: 08/01/2018
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: 296d45fae4d59553b54a1b68923c91be4168d3a5
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 48df3f834601410caf83d818ac75b1b7b7e68dc2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829379"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468236"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>在 Azure 自动化中编辑文本 runbook
 
@@ -26,6 +26,9 @@ ms.locfileid: "107829379"
 Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布版。 先对 Runbook 的草稿版进行编辑，然后将其发布，这样便可以执行了。 无法编辑已发布版本。 有关详细信息，请参阅[发布 runbook](manage-runbooks.md#publish-a-runbook)。
 
 本文提供了使用该编辑器执行不同功能的详细步骤。 它们不适用于[图形 runbook](automation-runbook-types.md#graphical-runbooks)。 若要使用这些 runbook，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)。
+
+> [!IMPORTANT] 
+> 不要在任何专门使用 Az 模块执行的脚本中包含关键字“AzureRm”。 即使在注释中包含关键字，也可能导致加载 AzureRm，然后与 Az 模块冲突。
 
 ## <a name="edit-a-runbook-with-the-azure-portal"></a>使用 Azure 门户编辑 runbook
 

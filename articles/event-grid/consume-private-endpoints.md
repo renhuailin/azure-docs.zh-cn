@@ -2,13 +2,13 @@
 title: 使用专用链接服务来传递事件
 description: 本文介绍如何解决无法使用专用链接服务传递事件的限制。
 ms.topic: how-to
-ms.date: 02/12/2021
-ms.openlocfilehash: 75ae8ff2c341048c39156e43da3615788e9d0f0a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 07/01/2021
+ms.openlocfilehash: 0672b2b93cf7413ac9a3d46e8d824354276ba89f
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309425"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286111"
 ---
 # <a name="deliver-events-using-private-link-service"></a>使用专用链接服务来传递事件
 目前，无法使用[专用终结点](../private-link/private-endpoint-overview.md)传递事件。 也就是说，如果有严格的网络隔离要求，即已传递事件流量不得离开专用 IP 空间，则不支持使用专用终结点传递事件的功能。 
@@ -44,9 +44,9 @@ ms.locfileid: "107309425"
 若要使用托管标识将事件传递到存储队列，请执行以下步骤：
 
 1. 启用系统分配的标识：[系统主题](enable-identity-system-topics.md)、[自定义主题和域](enable-identity-custom-topics-domains.md)。 
-1. [为 Azure 存储队列上的“存储队列数据消息发送方”角色添加标识](../storage/common/storage-auth-aad-rbac-portal.md)。
-1. [将使用服务总线队列或主题的事件订阅配置为终结点](managed-service-identity.md#create-event-subscriptions-that-use-an-identity)，以使用系统分配的标识。
+1. [为 Azure 存储队列上的“存储队列数据消息发送方”角色添加标识](../storage/blobs/assign-azure-role-data-access.md)。
+1. [将使用存储队列的事件订阅配置为终结点](managed-service-identity.md#create-event-subscriptions-that-use-an-identity)，以使用系统分配的标识。
 
 
 ## <a name="next-steps"></a>后续步骤
-若要详细了解如何使用托管标识来传递事件，请参阅[使用托管标识的事件传递](managed-service-identity.md)。 
+若要详细了解如何使用托管标识来传递事件，请参阅[使用托管标识的事件传递](managed-service-identity.md)。

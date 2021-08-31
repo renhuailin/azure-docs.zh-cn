@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 5/03/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 4576cad94cd26f0b2892dca5aeddd8861c5abf09
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 1226a66a68c9ee8163e1a786cba8f1107c84c2b1
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540121"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414622"
 ---
 # <a name="manage-metered-billing-anomalies-in-partner-center"></a>在合作伙伴中心管理按流量计费异常
 
@@ -29,7 +29,7 @@ Microsoft 依赖于你（即合作伙伴）来先向客户报告其 SaaS 或 Azu
 ## <a name="view-and-manage-metered-usage-anomalies"></a>查看和管理定量使用量异常
 
 1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
-1. 在左侧导航菜单中，选择“商业市场” > “分析” 。
+1. 在左侧导航菜单中，选择“商业市场” > “分析” > “使用情况”  。
 1. 选择“定量使用量异常”选项卡。
 
     [![说明“使用情况”页上的“定量使用量异常”选项卡。](./media/anomaly-detection/metered-usage-anomalies.png)](./media/anomaly-detection/metered-usage-anomalies.png#lightbox)<br>

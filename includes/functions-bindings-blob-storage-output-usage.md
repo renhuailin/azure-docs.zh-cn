@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: e375a12be73c280f2778e6e28efb709b9116a4cf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4a25423cbdd5b0efbd037138a3cdf072cb90ebed
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100381642"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121802677"
 ---
 ### <a name="default"></a>默认
 
@@ -55,4 +55,4 @@ ms.locfileid: "100381642"
 
 <sup>2</sup> function.json 中需有 "inout" 绑定 `direction` 或 C# 类库中需有 `FileAccess.ReadWrite`。
 
-有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Blobs#examples)。
+有关使用这些类型的示例，请参阅[扩展的 GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Blobs#examples)。 详细了解这些新类型的不同之处以及如何迁移到它们，请参阅 [Azure.Storage.Blobs 迁移指南](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/storage/Azure.Storage.Blobs/AzureStorageNetMigrationV12.md)。

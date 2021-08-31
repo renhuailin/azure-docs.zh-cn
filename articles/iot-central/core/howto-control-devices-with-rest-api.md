@@ -7,12 +7,12 @@ ms.date: 06/01/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 56ee24985da57c6da76638b659e5a07e68d0f516
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2e808ee2d36237a830877e7f043656ce9189bd89
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110788940"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461260"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-control-devices"></a>如何使用设备 IoT Central REST API 控制设备
 
@@ -33,9 +33,9 @@ ms.locfileid: "110788940"
 
 ## <a name="components-and-modules"></a>组件和模块
 
-可以通过组件对设备功能进行分组和重用。 若要详细了解组件和设备模型，请参阅 [IoT 即插即用建模指南](../../iot-pnp/concepts-modeling-guide.md)。
+可以通过组件对设备功能进行分组和重用。 若要详细了解组件和设备模型，请参阅 [IoT 即插即用建模指南](../../iot-develop/concepts-modeling-guide.md)。
 
-并非所有设备模板都会使用组件。 下方屏幕截图显示了简单[恒温器](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-2.json)的设备模板，其中所有功能都在名为“默认组件”的单一界面中定义：
+并非所有设备模板都会使用组件。 下方屏幕截图显示了简单[恒温器](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-2.json)的设备模板，其中所有功能都在名为“根组件”的单一界面中定义：
 
 :::image type="content" source="media/howto-control-devices-with-rest-api/thermostat-device.png" alt-text="显示简单的无组件恒温器设备的屏幕截图。":::
 
@@ -485,4 +485,4 @@ GET https://{your app subdomain}.azureiotcentral.com/api/devices/temperature-con
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已经了解如何使用 REST API 控制设备，我们建议你接下来[使用 REST API 管理 IoT Central 应用程序](/learn/modules/manage-iot-central-apps-with-rest-api/)。
+现在你已经了解了如何使用 REST API 控制设备，建议的下一步是学习[如何使用 IoT Central REST API 创建和管理作业](howto-manage-jobs-with-rest-api.md)。

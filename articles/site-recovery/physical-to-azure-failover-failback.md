@@ -5,12 +5,12 @@ services: site-recovery
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2019
-ms.openlocfilehash: 68427d264b6d2eea1a38e3b8bc5273409221c126
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 607e7e679d378992bcb25785d2a5fd6c1045a08e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579911"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739028"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>对复制到 Azure 的物理服务器进行故障转移和故障回复
 
@@ -70,7 +70,7 @@ ms.locfileid: "106579911"
 故障转移到 Azure 后，可以通过将 Azure VM 复制到本地站点来重新保护它们。 然后，在复制后，可通过运行从 Azure 到本地站点的故障转移，将它们故障转移回本地站点。
 
 1. 使用 Site Recovery 复制到 Azure 的物理服务器只能作为 VMware VM 故障回复。 必须有 VMware 基础结构，才能进行故障回复。 按照[本文](vmware-azure-prepare-failback.md)的步骤，为重新保护和故障回复做好准备，包括在 Azure 中设置进程服务器，以及在本地主目标服务器中设置站点到站点 VPN 或 ExpressRoute 专用对等互连，以进行故障回复。
-2. 请确保本地配置服务器正在运行并已连接到 Azure。 在故障转移到 Azure 的过程中，本地站点可能无法访问，因此配置服务器可能不可用或关闭。 故障回复期间，VM 必须位于配置服务器数据库中。 否则，故障回复不会成功。
+2. 确保本地配置服务器正在运行并已连接到 Azure。 在故障转移到 Azure 的过程中，本地站点可能无法访问，因此配置服务器可能不可用或关闭。 故障回复期间，VM 必须位于配置服务器数据库中。 否则，故障回复不会成功。
 3. 删除本地主目标服务器上的所有快照。 如果存在快照，则重新保护将不起作用。  在执行重新保护作业期间，VM 上的快照会自动合并。
 4. 如果你正在重新保护为实现多虚拟机一致性而集中到一个复制组中的虚拟机，请确保它们都具有相同的操作系统（Windows 或 Linux），并确保部署的主目标服务器具有相同类型的操作系统。 复制组中的所有 VM 都必须使用相同的主目标服务器。
 5. 打开[故障回复所需的端口](vmware-azure-prepare-failback.md#ports-for-reprotectionfailback)以进行故障回复。

@@ -8,14 +8,14 @@ ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.custom: contperf-fy21q1, automl
+ms.custom: contperf-fy21q1, automl, FY21Q4-aml-seo-hack
 ms.date: 06/11/2021
-ms.openlocfilehash: d2c4f759f6b2f7ef769148c99dfcbfb738b19f5e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 87ee8e4b5d28628ae09eec83d7f72f44e762e34f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030857"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182290"
 ---
 # <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>设置 AutoML，通过 Python 训练时序预测模型
 
@@ -32,6 +32,7 @@ ms.locfileid: "112030857"
 
 与经典的时序方法不同，在自动化 ML 中，将“透视”过去的时序值，使其成为回归器与其他预测器的附加维度。 此方法会在训练过程中，将多个上下文变量及其关系彼此整合。 影响预测的因素有很多，因此该方法将自身与真实的预测场景很好地协调起来。 例如，在预测销售额时，历史趋势、汇率和价格相互作用，共同推动着销售结果。 
 
+
 ## <a name="prerequisites"></a>先决条件
 
 在本文中，你需要： 
@@ -40,6 +41,7 @@ ms.locfileid: "112030857"
 
 * 本文假设你对设置自动化机器学习试验有一定的了解。 遵循[教程](tutorial-auto-train-models.md)或[操作方法](how-to-configure-auto-train.md)，了解主要的自动化机器学习试验设计模式。
 
+    [!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
 ## <a name="preparing-data"></a>准备数据
 
 自动化 ML 中预测回归任务类型与回归任务类型之间最重要的区别是，前者包含数据中一个表示有效时序的特征。 常规时序具有明确定义的一致频率，并且在连续时间范围内的每个采样点上都有一个值。 
@@ -115,7 +117,7 @@ automl_config = AutoMLConfig(task='forecasting',
                              **time_series_settings)
 ```
 
-详细了解 AutoML 如何应用交叉验证来[防止过度拟合模型](concept-manage-ml-pitfalls.md#prevent-over-fitting)。
+详细了解 AutoML 如何应用交叉验证来[防止过度拟合模型](concept-manage-ml-pitfalls.md#prevent-overfitting)。
 
 ## <a name="configure-experiment"></a>配置试验
 
@@ -364,19 +366,28 @@ best_run, fitted_model = local_run.get_output()
 
 使用最佳模型迭代来预测测试数据集的值。
 
-`forecast()` 函数允许指定预测的开始时间，这与通常用于分类和回归任务的 `predict()` 不同。
+[forecast_quantiles()](/python/api/azureml-train-automl-client/azureml.train.automl.model_proxy.modelproxy#forecast-quantiles-x-values--typing-any--y-values--typing-union-typing-any--nonetype----none--forecast-destination--typing-union-typing-any--nonetype----none--ignore-data-errors--bool---false-----azureml-data-abstract-dataset-abstractdataset)函数允许指定预测的开始时间，这与通常用于分类和回归任务的 `predict()` 方法不同。 默认情况下，forecast_quantiles() 方法会生成一个点预测或一个平均值/中值预测，周围没有不确定性锥。 
 
-在下例中，先将 `y_pred` 中的所有值替换为 `NaN`。 在本例中，预测原点将位于训练数据的末尾。 但是，如果只将 `y_pred` 的后半部分替换为 `NaN`，则函数不会修改前半部分的数值，而会在后半部分预测 `NaN` 值。 函数将返回预测值和对齐的特征。
+在下例中，先将 `y_pred` 中的所有值替换为 `NaN`。 在本例中，预测原点位于训练数据的末尾。 但是，如果只将 `y_pred` 的后半部分替换为 `NaN`，则函数不会修改前半部分的数值，而会在后半部分预测 `NaN` 值。 函数将返回预测值和对齐的特征。
 
-还可以在 `forecast()` 函数中使用 `forecast_destination` 参数，预测到指定日期为止的值。
+还可使用 `forecast_quantiles()` 函数中的 `forecast_destination` 参数，预测到指定日期为止的值。
 
 ```python
 label_query = test_labels.copy().astype(np.float)
 label_query.fill(np.nan)
-label_fcst, data_trans = fitted_model.forecast(
+label_fcst, data_trans = fitted_model.forecast_quantiles(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
+通常，客户希望了解分布中特定分位数的预测。 例如，使用预测来控制库存，如杂货店的商品或云服务的虚拟机。 在这种情况下，控制点通常类似于“我们希望该商品有库存，99% 的时间里不会用完”。 下面演示了如何指定想要看到的预测的分位数，例如第 50 或第 95 个百分位。 如果未指定分位数，如前面提到的代码示例中所示，则只生成第 50 个百分位的预测。 
+
+```python
+# specify which quantiles you would like 
+fitted_model.quantiles = [0.05,0.5, 0.9]
+fitted_model.forecast_quantiles(
+    test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
+```
+ 
 计算 `actual_labels` 实际值与 `predict_labels` 中的预测值之间的均方根误差 (RMSE)。
 
 ```python
@@ -386,7 +397,8 @@ from math import sqrt
 rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
-
+ 
+ 
 现在确定了模型的整体准确性，最现实的下一步是使用模型来预测未知的未来值。 
 
 提供与测试集 `test_data` 具有相同格式但具有未来日期时间的数据集，生成的预测集就是每个时序步骤的预测值。 假设数据集中最后的时序记录针对的是 2018/12/31。 若要预测次日的需求（或者小于或等于 `forecast_horizon` 的待预测时间段），请为每个商店创建 2019/01/01 的一条时序记录。
@@ -397,13 +409,13 @@ day_datetime,store,week_of_year
 01/01/2019,A,1
 ```
 
-重复执行必要的步骤，将此未来数据加载到数据帧，然后运行 `best_run.forecast(test_data)` 以预测未来值。
+重复执行必要的步骤，将此未来数据加载到数据帧，然后运行 `best_run.forecast_quantiles(test_data)` 以预测未来值。
 
 > [!NOTE]
 > 启用了 `target_lags` 和/或 `target_rolling_window_size` 后，使用自动化 ML 进行预测时不支持样本中预测。
 
-
 ## <a name="example-notebooks"></a>示例笔记本
+
 请参阅[预测示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)，了解高级预测配置的详细代码示例，其中包括：
 
 * [假日检测和特征化](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/auto-ml-forecasting-bike-share.ipynb)
@@ -416,5 +428,4 @@ day_datetime,store,week_of_year
 
 * 详细了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
 * 了解[可解释性：自动化机器学习中的模型说明（预览版）](how-to-machine-learning-interpretability-automl.md)。 
-* 了解如何在[多模型解决方案加速器](https://aka.ms/many-models)中使用 AutoML 训练多个模型。
 * 按照[教程：训练回归模型](tutorial-auto-train-models.md)获取端到端示例，使用自动化机器学习创建实验。

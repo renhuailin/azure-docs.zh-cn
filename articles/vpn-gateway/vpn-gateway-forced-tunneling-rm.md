@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: c53a59279a8101f29cb9bfb64f4ccd1b4921283e
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 383636d07aa453266be43b33d6f62b93255ac24a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205442"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729536"
 ---
 # <a name="configure-forced-tunneling"></a>配置强制隧道
 
 借助强制隧道，可以通过站点到站点 VPN 隧道，将全部 Internet 绑定流量重定向或“强制”返回到本地位置，以进行检查和审核。 这是很多企业 IT 策略的关键安全要求。 如果未配置强制隧道，来自 Azure 中 VM 的 Internet 绑定流量会始终从 Azure 网络基础结构直接流出到 Internet，而你无法选择对这些流量进行检查或审核。 未经授权的 Internet 访问可能会导致信息泄漏或其他类型的安全漏洞。
 
-可以通过使用 Azure PowerShell 来配置强制隧道。 不能使用 Azure 门户来配置强制隧道。 本文有助于为使用资源管理器部署模型创建的虚拟网络配置强制隧道。 如果需要为经典部署模型配置强制隧道，请参阅[强制隧道 - 经典](vpn-gateway-about-forced-tunneling.md)。
+可以通过使用 Azure PowerShell 来配置强制隧道。 不能使用 Azure 门户来配置强制隧道。 本文有助于为使用[资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)创建的虚拟网络配置强制隧道。 如果需要为经典部署模型配置强制隧道，请参阅[强制隧道 - 经典](vpn-gateway-about-forced-tunneling.md)。
 
 ## <a name="about-forced-tunneling"></a>关于强制隧道
 
@@ -110,7 +110,7 @@ Azure 中的强制隧道是使用虚拟网络自定义用户定义的路由来�
    Set-AzVirtualNetworkSubnetConfig -Name "Backend" -VirtualNetwork $vnet -AddressPrefix "10.1.2.0/24" -RouteTable $rt
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-6. 创建虚拟网络网关。 此步骤需要一些时间才能完成，有时需要 45 分钟或更长时间，你需要创建和配置网关。 如果看到与 GatewaySKU 值相关的 ValidateSet 问题，请验证是否已安装[最新版本的 PowerShell cmdlet](#before)。 最新版本的 PowerShell cmdlet 包含最新网关 SKU 的新验证值。
+6. 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。 如果看到与 GatewaySKU 值相关的 ValidateSet 问题，请验证是否已安装[最新版本的 PowerShell cmdlet](#before)。 最新版本的 PowerShell cmdlet 包含最新网关 SKU 的新验证值。
 
    ```powershell
    $pip = New-AzPublicIpAddress -Name "GatewayIP" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -AllocationMethod Dynamic

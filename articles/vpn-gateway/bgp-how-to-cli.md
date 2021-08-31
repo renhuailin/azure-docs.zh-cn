@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 1b7d1c1928425dca7e1924bca09f2cd21e0ea06a
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 47097be22fc9c75d7c56c8cb4d1f384936f7033a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290265"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746154"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>如何使用 CLI 在 Azure VPN 网关上配置 BGP
 
-本文将帮助用户使用 Azure 资源管理器部署模型和 Azure CLI 在跨界站点到站点 (S2S) VPN 连接和 VNet 到 VNet 连接（即虚拟网络之间的连接）上启用 BGP。
+本文将帮助用户使用 Azure [资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)和 Azure CLI 在跨界站点到站点 (S2S) VPN 连接和 VNet 到 VNet 连接（即虚拟网络之间的连接）上启用 BGP。
 
 ## <a name="about-bgp"></a>关于 BGP
 
@@ -92,7 +92,7 @@ az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2.使用 AS 编号创建 VPN 网关
 
-为 TestVNet1 创建虚拟网络网关。 BGP 需要基于路由的 VPN 网关。 此外，还需要额外的参数 `-Asn`，为 TestVNet1 设置自治系统编号 (ASN)。 创建网关可能需要一点时间（45 分钟或更久）才能完成。 
+为 TestVNet1 创建虚拟网络网关。 BGP 需要基于路由的 VPN 网关。 此外，还需要额外的参数 `-Asn`，为 TestVNet1 设置自治系统编号 (ASN)。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
 如果使用 `--no-wait` 参数运行该命令，则不会显示任何反馈或输出。 `--no-wait` 参数允许在后台创建网关。 但并不意味着 VPN 网关会立即创建。
 

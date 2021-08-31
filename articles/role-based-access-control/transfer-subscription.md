@@ -8,20 +8,22 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/06/2021
+ms.date: 07/14/2021
 ms.author: rolyon
-ms.openlocfilehash: a12f3ca25df2d4473361e0a1ef596384813dc6a8
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 64f164c7d5e60e92e30986f8a39b34e92b1fdce4
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854731"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202472"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到其他 Azure AD 目录
 
 组织可能具有多个 Azure 订阅。 每个订阅都与特定 Azure Active Directory (Azure AD) 目录相关联。 为了简化管理，你可能希望将订阅转移到其他 Azure AD 目录。 将订阅转移到其他 Azure AD 目录时，某些资源不会转移到目标目录。 例如，Azure 基于角色的访问控制 (Azure RBAC) 中的所有角色分配和自定义角色将从源目录中永久删除，不会转移到目标目录。
 
 本文介绍将订阅转移到其他 Azure AD 目录并在转移后重新创建一些资源时可以遵循的基本步骤。
+
+如果要改为阻止将订阅转移到组织中的其他目录，可以配置订阅策略。 有关详细信息，请参阅[管理 Azure 订阅策略](../cost-management-billing/manage/manage-azure-subscription-policy.md)。
 
 > [!NOTE]
 > 对于 Azure 云解决方案提供商 (CSP) 订阅，不支持更改订阅的 Azure AD 目录。
@@ -249,18 +251,19 @@ ms.locfileid: "111854731"
 
 ### <a name="list-other-known-resources"></a>列出其他已知资源
 
-1. 使用 [az account show](/cli/azure/account#az_account_show) 获取订阅 ID。
+1. 使用 [az account show](/cli/azure/account#az_account_show) 获取订阅 ID（在 `bash` 中）。
 
     ```azurecli
-    subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"//')
+    subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"//' -e 's/\r$//')
     ```
-
-1. 使用 [az graph](/cli/azure/graph) 扩展列出具有已知 Azure AD 目录依赖项的其他 Azure 资源。
+    
+1. 使用 [az graph](/cli/azure/graph) 扩展列出具有已知 Azure AD 目录依赖项的其他 Azure 资源（在 `bash` 中）。
 
     ```azurecli
-    az graph query -q \
-    'resources | where type != "microsoft.azureactivedirectory/b2cdirectories" | where  identity <> "" or properties.tenantId <> "" or properties.encryptionSettingsCollection.enabled == true | project name, type, kind, identity, tenantId, properties.tenantId' \
-    --subscriptions $subscriptionId --output table
+    az graph query -q 'resources 
+        | where type != "microsoft.azureactivedirectory/b2cdirectories" 
+        | where  identity <> "" or properties.tenantId <> "" or properties.encryptionSettingsCollection.enabled == true 
+        | project name, type, kind, identity, tenantId, properties.tenantId' --subscriptions $subscriptionId --output yaml
     ```
 
 ## <a name="step-2-transfer-the-subscription"></a>步骤 2：转移订阅

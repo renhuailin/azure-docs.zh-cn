@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b10e1d1c903f306668e051633467ba15079dcaca
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 448a646b4fd615967e63c6d13b16940441478971
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664318"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739042"
 ---
 # <a name="monitoring-azure-table-storage"></a>监视 Azure 表存储
 
@@ -64,7 +64,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 ## <a name="creating-a-diagnostic-setting"></a>创建诊断设置
 
-可以使用 Azure 门户、PowerShell、Azure CLI 或 Azure 资源管理器模板创建诊断设置。 
+可使用 Azure 门户、PowerShell、Azure CLI、Azure 资源管理器模板或 Azure Policy 创建诊断设置。 
 
 有关一般指南，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)。
 
@@ -261,6 +261,10 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 ### <a name="template"></a>[模板](#tab/template)
 
 若要查看创建诊断设置的 Azure 资源管理器模板，请参阅 [Azure 存储的诊断设置](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)。
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
+
+可使用策略定义来创建诊断设置。 这样，就可确保为创建或更新的每个帐户创建一个诊断设置。 请参阅 [Azure 存储的 Azure Policy 内置定义](../common/policy-reference.md)。
 
 ---
 
@@ -477,6 +481,10 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 不适用。
 
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
+
+不适用。
+
 ---
 
 ## <a name="analyzing-logs"></a>分析日志
@@ -597,7 +605,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 **Azure 存储是否支持托管磁盘或非托管磁盘的指标？**
 
-不是。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
+否。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
 ## <a name="next-steps"></a>后续步骤
 

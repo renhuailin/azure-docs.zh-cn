@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/8/2021
-ms.openlocfilehash: a91053f9a21aebf1a99c35a3a982fd3ad5514d04
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ef78f1dd6089201744de19900738ebcc6e5f70db
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475648"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468665"
 ---
 # <a name="authentication-failed"></a>验证失败
 
@@ -29,7 +29,7 @@ ms.locfileid: "110475648"
 
 如果 Azure 帐户没有在 Azure 数字孪生实例上设置所需的 Azure 基于角色的访问控制 (Azure RBAC) 权限，可能会发生此错误。 若要访问实例中的数据，必须分别在你尝试读取或管理的实例上拥有“Azure 数字孪生数据读取者”或“Azure 数字孪生数据所有者”角色。 
 
-有关 Azure 数字孪生中的安全性和角色的详细信息，请参阅概念：Azure 数字孪生安全性解决方案。
+有关 Azure 数字孪生中的安全性和角色的详细信息，请参阅 [Azure 数字孪生安全性解决方案](concepts-security.md)。
 
 ## <a name="solutions"></a>解决方案
 
@@ -66,4 +66,4 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 * [设置实例和身份验证 (CLI)](how-to-set-up-instance-cli.md)
 
 阅读有关 Azure 数字孪生的安全性和权限的详细信息：
-* [概念：Azure 数字孪生解决方案的安全性](concepts-security.md)
+* [Azure 数字孪生解决方案的安全性](concepts-security.md)

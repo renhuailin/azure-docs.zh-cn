@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/10/2021
+ms.date: 08/05/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ff9a6c989446c2cee074485ba02fddd40cbfc83
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a91a5df939ee55b37369b73e02fa0921a9e4688c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953318"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732360"
 ---
 # <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>如何：使用 Azure Monitor 将 Azure Active Directory 日志与 Splunk 集成
 
@@ -42,16 +42,16 @@ ms.locfileid: "111953318"
 
     ![“数据摘要”按钮](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
 
-2. 选择“Sourcetypes”选项卡，然后选择“amal: aadal:audit” 
+2. 选择“Sourcetypes”选项卡，然后选择“mscs:azure:eventhub” 
 
-    ![数据摘要 Sourcetypes 选项卡](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
+    ![数据摘要 Sourcetypes 选项卡](./media/howto-integrate-activity-logs-with-splunk/source-eventhub.png)
 
-    Azure AD 活动日志将如下图中所示：
+将“body.records.category=AuditLogs”追加到搜索中。 Azure AD 活动日志将如下图中所示：
 
-    ![活动日志](./media/howto-integrate-activity-logs-with-splunk/activitylogs.png)
+   ![活动日志](./media/howto-integrate-activity-logs-with-splunk/activity-logs.png)
 
 > [!NOTE]
-> 如果无法在 Splunk 实例中安装加载项（例如，如果使用代理或在 Splunk Cloud 上运行），则可以将这些事件转发到 Splunk HTTP 事件收集器。 为此，请使用此 [Azure 函数](https://github.com/Microsoft/AzureFunctionforSplunkVS)，该函数通过事件中心中的新消息触发。 
+> 如果无法在 Splunk 实例中安装加载项（例如，如果使用代理或在 Splunk Cloud 上运行），则可以将这些事件转发到 Splunk HTTP 事件收集器。 为此，请使用此 [Azure 函数](https://github.com/splunk/azure-functions-splunk)，该函数通过事件中心中的新消息触发。 
 >
 
 ## <a name="next-steps"></a>后续步骤

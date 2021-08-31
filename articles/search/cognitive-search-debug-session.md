@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: f666cc2f9d11b1e05d11ba266897e6fca3cd287e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db4b08b4403345d7926ec07e94f75cc779fce843
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92057614"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737631"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Azure 认知搜索中的调试会话
 
@@ -33,7 +33,7 @@ ms.locfileid: "92057614"
 
 ## <a name="creating-a-debug-session"></a>创建调试会话
 
-要启动调试会话，必须已有 AI 扩充管道，且该管道中包括数据源、技能组、索引器和索引。 要配置调试会话，需要为会话命名，并提供一个用于在索引器运行期间缓存技能执行的常规用途存储帐户。 还需要选择将运行的索引器。 索引器存储了对数据源、技能组和索引的引用。 调试会话默认为数据源中的第一个文档，也可以指定数据源中的一个文档用于逐步执行。
+可以在 Azure 门户中搜索服务的“概述”页上创建调试会话。 要启动调试会话，必须已有 AI 扩充管道，且该管道中包括数据源、技能组、索引器和索引。 要配置调试会话，需要为会话命名，并提供一个用于在索引器运行期间缓存技能执行的常规用途存储帐户。 还需要选择将运行的索引器。 索引器存储了对数据源、技能组和索引的引用。 调试会话默认为数据源中的第一个文档，也可以指定数据源中的一个文档用于逐步执行。
 
 > :::image type="content" source="media/cognitive-search-debug/debug-session-new.png" alt-text="创建调试会话":::
 
@@ -85,7 +85,7 @@ ms.locfileid: "92057614"
 
 ## <a name="limitations"></a>限制
 
-调试会话适用于所有正式发布的数据源和大多数预览数据源。 当前不支持 Cosmos DB 的 MongoDB API（预览版）和 Cassandra API（预览版）。
+调试会话适用于所有正式发布的数据源和大多数预览版数据源。 当前不支持 Cosmos DB 的 MongoDB API（预览版）。
 
 ## <a name="next-steps"></a>后续步骤
 

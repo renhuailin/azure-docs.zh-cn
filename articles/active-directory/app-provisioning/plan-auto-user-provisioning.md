@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2021
+ms.date: 07/13/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8b2378949e0ead4d05651fc28919aceecd4c542
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 9e58650a98539b815173040cf0e47c200045b2bb
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785018"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113728491"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划自动用户预配部署
 
@@ -42,9 +42,9 @@ Azure Active Directory (Azure AD) 自动用户预配可以根据业务规则在 
 
 * **降低成本**。 自动用户预配可以避免与手动预配相关的低效和人为错误，从而降低成本。 它减少了自定义开发的用户预配解决方案、脚本和审核日志的需求。
 
-### <a name="licensing"></a>许可
+### <a name="licensing"></a>授权
 
-Azure AD 使用应用程序库菜单中给出的模板提供任何应用程序的自助式集成。 有关许可证要求的完整列表，请参阅 [Azure AD 许可页](https://azure.microsoft.com/pricing/details/active-directory/)。
+Azure AD 使用应用程序库菜单中给出的模板提供任何应用程序的自助式集成。 有关许可证要求的完整列表，请参阅 [Azure AD 价格页](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 #### <a name="application-licensing"></a>应用程序许可
 
@@ -73,7 +73,7 @@ Azure AD 使用应用程序库菜单中给出的模板提供任何应用程序�
 | 在线课程| SkillUp Online：[Managing Identities](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about)（管理标识） <br> 了解如何将 Azure AD 与多个 SaaS 应用程序集成，并保护用户对这些应用程序的访问。 |
 | 书籍| [Modern Authentication with Azure Active Directory for Web Applications (Developer Reference) 1st Edition](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)（使用 Azure Active Directory 对 Web 应用程序执行新式身份验证（开发人员参考）第 1 版）  <br> ‎这是一部权威性的深入指南，其中介绍了如何为这些新环境构建 Active Directory 身份验证解决方案。 |
 | 教程| 参阅[有关如何将 SaaS 应用与 Azure AD 集成的教程列表](../saas-apps/tutorial-list.md)。 |
-| FAQ| 有关自动用户预配的[常见问题解答](../app-provisioning/user-provisioning.md) |
+| 常见问题解答| 有关自动用户预配的[常见问题解答](../app-provisioning/user-provisioning.md) |
 
 ### <a name="solution-architectures"></a>解决方案体系结构
 
@@ -298,7 +298,7 @@ Azure AD 可以通过审核日志和报告，提供组织中用户预配使用�
 
 * [为 Azure AD 库应用程序配置用户预配时遇到的问题](../app-provisioning/application-provisioning-config-problem.md)
 
-* [将属性从本地 Active Directory 同步到 Azure AD 以便预配到应用程序](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
+* [将特性从本地 Active Directory 同步到 Azure AD 以预配到应用程序](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
 * [配置 Azure Active Directory 库应用程序的用户预配时遇到保存管理员凭据问题](./user-provisioning.md)
 

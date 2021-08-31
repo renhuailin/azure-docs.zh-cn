@@ -2,17 +2,17 @@
 title: 概念 - 标识和访问
 description: 了解 Azure VMware 解决方案的标识和访问概念
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: 832e2906656ef4da6cc9ad054927f17611fbbaf4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/29/2021
+ms.openlocfilehash: 7d6bcfc9426761615d1f9220f36834cc19eb09f8
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953161"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069496"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware 解决方案标识概念
 
-Azure VMware 解决方案私有云是使用 vCenter Server 和 NSX-T Manager 进行预配的。 可以使用 vCenter 管理虚拟机 (VM) 工作负载，并使用 NSX-T Manager 来管理和扩展私有云。 访问和身份管理对 vCenter 使用 CloudAdmin 角色，对 NSX-T Manager 使用受限的管理员权限。 
+Azure VMware 解决方案私有云是使用 vCenter Server 和 NSX-T Manager 进行预配的。 可以使用 vCenter 管理虚拟机 (VM) 工作负载，并使用 NSX-T Manager 来管理和扩展私有云。 CloudAdmin 角色用于 vCenter，受限的管理员权限用于 NSX-T Manager。 
 
 ## <a name="vcenter-access-and-identity"></a>vCenter 访问和标识
 
@@ -22,7 +22,7 @@ Azure VMware 解决方案私有云是使用 vCenter Server 和 NSX-T Manager 进
 
 - 在 Azure VMware 解决方案部署中，管理员无权访问管理员用户帐户。 但是，他们可以将 AD 用户和组分配到 vCenter 上的 CloudAdmin 角色。  
 
-私有云用户无权访问和配置由 Microsoft 支持和管理的特定管理组件。 例如，群集、主机、数据存储和分布式虚拟交换机。
+私有云用户无法访问 Microsoft 支持和管理的特定管理组件，也无法对其进行配置。 例如，群集、主机、数据存储和分布式虚拟交换机。
 
 > [!IMPORTANT]
 > Azure VMware 解决方案在 vCenter 上提供自定义角色，但目前不在 Azure VMware 解决方案门户中提供。 有关详细信息，请参阅本文后面的[在 vCenter 上创建自定义角色](#create-custom-roles-on-vcenter)部分。 
@@ -37,7 +37,7 @@ Azure VMware 解决方案私有云是使用 vCenter Server 和 NSX-T Manager 进
 
 1. 从角色列表中，选择“CloudAdmin”，然后选择“特权” 。 
 
-   :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="如何在 vSphere 客户端中查看 CloudAdmin 角色特权":::
+   :::image type="content" source="media/concepts/role-based-access-control-cloudadmin-privileges.png" alt-text="显示 vSphere 客户端中 CloudAdmin 的角色和特权的屏幕截图。":::
 
 Azure VMware 解决方案中的 CloudAdmin 角色在 vCenter 上具有以下特权。 有关详细信息，请参阅 [VMware 产品文档](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)。
 
@@ -91,27 +91,27 @@ Azure VMware 解决方案支持使用具有与 CloudAdmin 角色相同或更低�
 
 1. 右键单击该对象，然后选择“添加权限”。
 
-1. 在“添加权限”窗口中，在可在其中找到组或用户的“用户”下拉列表中选择标识源 。
+1. 在可在其中找到组或用户的“用户”下拉列表中选择标识源。
 
 1. 在“用户”部分下选择标识源后，搜索用户或组。 
 
-1. 选择将应用于该用户或组的角色。
+1. 选择要应用到用户或组的角色。
 
 1. 根据需要选中“传播到子项”，然后选择“确定” 。 添加的权限显示在“权限”部分。
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Manager 访问和标识
 
 >[!NOTE]
->对于所有新的私有云，当前支持 NSX-T 2.5。
+>对于所有新的私有云，当前支持 NSX-T [!INCLUDE [nsxt-version](includes/nsxt-version.md)]。
 
-使用管理员帐户访问 NSX-T Manager。 它具有完整的特权，可以让你创建和管理第 1 层 (T1) 网关、片段（逻辑交换机）和所有服务。 特权使你能够访问 NSX-T 第 0 层 (T0) 网关。 更改 T0 网关可能导致网络性能下降或没有私有云访问权限。 在 Azure 门户中打开支持请求，请求对你的 NSX-T T0 网关进行任何更改。
+使用管理员帐户访问 NSX-T Manager。 它具有完整的特权，可以让你创建和管理第 1 层 (T1) 网关、片段（逻辑交换机）和所有服务。 此外，特权使你能够访问 NSX-T 第 0 层 (T0) 网关。 更改 T0 网关可能导致网络性能下降或没有私有云访问权限。 在 Azure 门户中打开支持请求，请求对你的 NSX-T T0 网关进行任何更改。
 
  
 ## <a name="next-steps"></a>后续步骤
 
 现在，你已了解 Azure VMware 解决方案访问和标识概念，建议你了解以下内容：
 
-- [如何启用 Azure VMware 解决方案资源](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)
+- [如何启用 Azure VMware 解决方案资源](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider)  
 - [每个特权的详细信息](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
 - [Azure VMware 解决方案如何监视和修复私有云](./concepts-private-clouds-clusters.md#host-monitoring-and-remediation)
 

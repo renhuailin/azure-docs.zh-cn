@@ -1,18 +1,20 @@
 ---
 title: 使用 U-SQL 脚本转换数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure Data Lake Analytics 计算服务上运行 U-SQL 脚本来处理或转换数据。
 ms.author: abnarain
 author: nabhishek
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 08/01/2018
-ms.openlocfilehash: 94b584f0bea01754a4e955d1418a7a9a2e9aeace
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abb3d151e943dd539fe7c2e349b662412ab24f7c
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373906"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271972"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来处理数据 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -31,7 +33,7 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 
 下表介绍了 JSON 定义中使用的一般属性。 
 
-| properties                 | 说明                              | 必选                                 |
+| properties                 | 说明                              | 必须                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | type                 | 类型属性应设置为：AzureDataLakeAnalytics。 | 是                                      |
 | **accountName**          | Azure Data Lake Analytics 帐户名。  | 是                                      |
@@ -46,11 +48,11 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 * 应用程序密钥 
 * 租户 ID
 
-使用[添加用户向导](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#add-a-new-user)向 Azure Data Lake Anatlyics 授予服务主体权限。
+使用[添加用户向导](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#add-a-new-user)向 Azure Data Lake Analytics 授予服务主体权限。
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性                | 说明                              | 必选 |
+| 属性                | 说明                              | 必须 |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | 指定应用程序的客户端 ID。     | 是      |
 | **servicePrincipalKey** | 指定应用程序的密钥。           | 是      |
@@ -193,5 +195,5 @@ OUTPUT @rs1
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [Azure 机器学习工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
+* [ML 工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

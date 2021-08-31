@@ -7,20 +7,19 @@ services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 07/30/2021
 ms.custom: template-concept
-ms.openlocfilehash: 46c2addc8c844e2fe909bccddfa4927feef5a34a
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 189021997362da8508d2e60c23cc3acb1238ca55
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495769"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728031"
 ---
 # <a name="azure-arc-data-services-data-collection-and-reporting"></a>Azure Arc 数据服务数据收集和报告
 
 本文介绍已启用 Azure Arc 的数据服务向 Microsoft 传输的数据。 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="related-products"></a>相关产品
 
@@ -29,6 +28,9 @@ ms.locfileid: "110495769"
 - SQL MI - Azure Arc 
 - 超大规模 PostgreSQL - Azure Arc
 - Azure Data Studio
+
+   [!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
+
 - Azure CLI (az)
 - Azure Data CLI (`azdata`) 
 
@@ -86,12 +88,12 @@ ms.locfileid: "110495769"
 
 - 已启用 Arc 的 SQL 托管实例 
 - 已启用 Arc 的超大规模 PostgreSQL 服务器组 
-- 已启用 Arc 的 SQL Server 
+- 启用了 Azure Arc 的服务器上的 SQL Server 
 - 数据控制器 
 
 以下部分显示了针对每种资源类型收集和存储的属性、类型和说明： 
 
-### <a name="arc-enabled-sql-server"></a>已启用 Arc 的 SQL Server 
+### <a name="sql-server-on-azure-arc-enabled-servers"></a>启用了 Azure Arc 的服务器上的 SQL Server 
 - SQL Server 版本。 
    - `string: Edition` 
 - 容器资源 (Azure Arc for Servers) 的资源 ID。 
@@ -256,10 +258,6 @@ ms.locfileid: "110495769"
 |视图    |视图可能包含客户数据，但这些内容受限制并仅可由用户共享     |
 |故障转储 - 客户数据 | 故障转储可能包含访问控制数据，最多可保留 30 天 <br/><br/> 客户故障转储中可能包含统计信息对象、行内的数据值和查询文本    |
 |故障转储 - 个人数据 | 计算机、登录名/用户名、电子邮件、位置信息、客户标识 - 需要用户同意才可包含这些信息  |
-
-### <a name="customer-experience-improvement-program-ceip-telemetry"></a>客户体验改善计划 (CEIP)（遥测） 
-
-遥测用于跟踪产品使用情况指标和环境信息。 请参阅 [SQL Server 隐私补充](/sql/sql-server/sql-server-privacy/)。 
 
 ## <a name="next-steps"></a>后续步骤
 [将使用情况数据上传到 Azure Monitor](upload-usage-data.md)

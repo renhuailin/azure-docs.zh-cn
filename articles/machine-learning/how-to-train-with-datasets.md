@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 573868d8dc637afcab1970d0e41ed2ed0830808d
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 191c76c6ec67112df71d8d5525b2c5938627b3d6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538852"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458531"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>使用 Azure 机器学习数据集来训练模型 
 
@@ -31,7 +31,7 @@ Azure 机器学习数据集提供了与 Azure 机器学习训练功能（如 [Sc
 
 若要创建数据集并使用数据集进行训练，需要具有以下各项：
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
 * 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -126,7 +126,7 @@ run.wait_for_completion(show_output=True)
 * 将输入数据集装载到计算目标。
 
 > [!Note]
-> 如果使用的是自定义 Docker 基础映像，则需要通过 `apt-get install -y fuse` 安装 fuse，作为让数据集装载正常工作所需的依赖项。 了解如何[生成自定义生成映像](how-to-deploy-custom-docker-image.md#build-a-custom-base-image)。
+> 如果使用的是自定义 Docker 基础映像，则需要通过 `apt-get install -y fuse` 安装 fuse，作为让数据集装载正常工作所需的依赖项。 了解如何[生成自定义生成映像](./how-to-deploy-custom-container.md)。
 
 有关笔记本示例，请参阅[如何使用数据输入和输出配置训练运行](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb)。
 
@@ -228,17 +228,14 @@ with open(mounted_input_path, 'r') as f:
 
 对于从 Azure Blob 存储、Azure 文件存储、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库和 Azure Database for PostgreSQL 创建的数据集，可以装载或下载任何格式的文件。 
 
-装载数据集时，请将数据集引用的文件附加到目录（装入点），并使其在计算目标上可用。 基于 Linux 的计算支持装载，这些计算包括 Azure 机器学习计算、虚拟机和 HDInsight。 
+装载数据集时，请将数据集引用的文件附加到目录（装入点），并使其在计算目标上可用。 基于 Linux 的计算支持装载，这些计算包括 Azure 机器学习计算、虚拟机和 HDInsight。 如果数据大小超出计算磁盘大小，则无法下载。 对于此方案，我们建议装载，因为在处理时只会加载脚本使用的数据文件。
 
-下载数据集时，数据集引用的所有文件都将下载到计算目标。 所有计算类型都支持下载。 
+下载数据集时，数据集引用的所有文件都将下载到计算目标。 所有计算类型都支持下载。 如果脚本处理数据集引用的所有文件，并且计算磁盘可以容纳整个数据集，则建议下载，以避免从存储服务流式传输数据的开销。 有关多节点下载，请参阅[如何避免限制](#troubleshooting)。 
 
 > [!NOTE]
 > 对于 Windows 操作系统，下载路径名称不应超过 255 个字母数字字符。 对于 Linux 操作系统，下载路径名称不应超过 4,096 个字母数字字符。 此外，对于 Linux 操作系统，文件名（是指下载路径 `/path/to/file/{filename}` 中的最后一段）不应超过 255 个字母数字字符。
 
-如果脚本处理数据集引用的所有文件，并且计算磁盘可以容纳整个数据集，则建议下载，以避免从存储服务流式传输数据的开销。 如果数据大小超出计算磁盘大小，则无法下载。 对于此方案，我们建议装载，因为在处理时只会加载脚本使用的数据文件。
-
 以下代码将 `dataset` 装载到 `mounted_path` 的临时目录
-
 
 ```python
 import tempfile
@@ -297,6 +294,18 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
   * 如果你没有任何出站[网络安全组](../virtual-network/network-security-groups-overview.md)规则并且正在使用 `azureml-sdk>=1.12.0`，请将 `azureml-dataset-runtime` 及其依赖项更新为特定次要版本的最新版本，而如果你正在运行中使用该版本，请重新创建环境，以便获得具有修补程序的最新补丁。 
   * 如果使用的是 `azureml-sdk<1.12.0`，请升级到最新版本。
   * 如果具有出站 NSG 规则，请确保存在允许服务标记 `AzureResourceMonitor` 的所有流量的出站规则。
+
+**数据集初始化失败: ThrottlingException 引起 StreamAccessException**
+
+对于多节点文件下载，所有节点可能会尝试从 Azure 存储服务下载文件数据集中的所有文件，这会导致限制错误。 若要避免限制，请将环境变量 `AZUREML_DOWNLOAD_CONCURRENCY` 初始设置为 8 倍 CPU 核心数除以节点数的值。 设置此环境变量的值可能需要一些试验，因此上述指导是起点。
+
+以下示例假定有 32 个核心和 4 个节点。
+
+```python
+from azureml.core.environment import Environment 
+myenv = Environment(name="myenv")
+myenv.environment_variables = {"AZUREML_DOWNLOAD_CONCURRENCY":64}
+```
 
 ### <a name="azurefile-storage"></a>AzureFile 存储
 

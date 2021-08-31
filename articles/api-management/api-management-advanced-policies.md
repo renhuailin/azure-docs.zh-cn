@@ -1,23 +1,17 @@
 ---
 title: Azure API 管理高级策略 | Microsoft 文档
 description: 了解可在 Azure API 管理中使用的高级策略。 请参阅示例，查看其他可用资源。
-services: api-management
-documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
-ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/13/2020
+ms.date: 07/19/2021
+ms.service: api-management
 ms.author: apimpm
-ms.openlocfilehash: 03529fd3c0231617c477f4f16773039a02386683
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 274c4d55955bb3ee7c95fc755660cb67de3bbbd3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562478"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467615"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 
@@ -29,6 +23,7 @@ ms.locfileid: "103562478"
 -   [转发请求](#ForwardRequest) - 将请求转发到后端服务。
 -   [限制并发](#LimitConcurrency) - 阻止括住的策略一次执行超过指定数量的请求。
 -   [记录到事件中心](#log-to-eventhub) - 将指定格式的消息发送到记录器实体定义的事件中心。
+-   [发出指标](#emit-metrics) - 在执行时将自定义指标发送到 Application Insights。
 -   [模拟响应](#mock-response) - 中止管道执行，将模拟的响应直接返回给调用方。
 -   [重试](#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统会按指定的时间间隔重复执行，直到达到指定的重试计数为止。
 -   [返回响应](#ReturnResponse) - 中止管道执行，将指定的响应直接返回给调用方。
@@ -361,6 +356,80 @@ ms.locfileid: "103562478"
 | logger-id     | 注册到 API 管理服务的记录器的 ID。         | 是                                                                  |
 | partition-id  | 指定在其中发送消息的分区的索引。             | 可选。 如果使用 `partition-key`，则不能使用此属性。 |
 | partition-key | 指定在发送消息时用于分区分配的值。 | 可选。 如果使用 `partition-id`，则不能使用此属性。  |
+
+### <a name="usage"></a>使用情况
+
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
+
+-   **策略节：** 入站、出站、后端、错误时
+
+-   **策略范围：** 所有范围
+
+## <a name="emit-metrics"></a>发出指标
+
+`emit-metric` 策略将指定格式的自定义指标发送到 Application Insights。
+
+> [!NOTE]
+> * 自定义指标是 Azure Monitor 的[预览功能](../azure-monitor/essentials/metrics-custom-overview.md)，并受到[限制](../azure-monitor/essentials/metrics-custom-overview.md#design-limitations-and-considerations)。
+> * 有关添加到 Application Insights 的 API 管理数据的详细信息，请参阅[如何将 Azure API 管理与 Azure Application Insights 集成](./api-management-howto-app-insights.md#what-data-is-added-to-application-insights)。
+
+### <a name="policy-statement"></a>策略语句
+
+```xml
+<emit-metric name="name of custom metric" value="value of custom metric" namespace="metric namespace"> 
+    <dimension name="dimension name" value="dimension value" /> 
+</emit-metric> 
+```
+
+### <a name="example"></a>示例
+
+以下示例发送一个自定义指标，用于统计 API 请求数，以及用户 ID、客户端 IP 和 API ID 作为自定义维度。
+
+```xml
+<policies>
+  <inbound>
+    <emit-metric name="Request" value="1" namespace="my-metrics"> 
+        <dimension name="User ID" /> 
+        <dimension name="Client IP" value="@(context.Request.IpAddress)" /> 
+        <dimension name="API ID" /> 
+    </emit-metric> 
+  </inbound>
+  <outbound>
+  </outbound>
+</policies>
+```
+
+### <a name="elements"></a>元素
+
+| 元素     | 说明                                                                       | 必需 |
+| ----------- | --------------------------------------------------------------------------------- | -------- |
+| emit-metric | 根元素。 此元素的值是用于发出自定义指标的字符串。 | 是      |
+| 维度   | 子元素。 为自定义指标中包含的每个维度添加一个或多个此类元素。  | 是      |
+
+### <a name="attributes"></a>属性
+
+#### <a name="emit-metric"></a>emit-metric
+| 属性 | 说明                | 必需 | 类型               | 默认值  |
+| --------- | -------------------------- | -------- | ------------------ | -------------- |
+| name      | 自定义指标的名称。      | 是      | 字符串，表达式 | 空值            |
+| 命名空间 | 自定义指标的命名空间。 | 否       | 字符串，表达式 | API 管理 |
+| value     | 自定义指标的值。    | 否       | int，表达式    | 1              |
+
+#### <a name="dimension"></a>维度
+| 属性 | 说明                | 必需 | 类型               | 默认值  |
+| --------- | -------------------------- | -------- | ------------------ | -------------- |
+| name      | 维度的名称。      | 是      | 字符串，表达式 | 空值            |
+| value     | 维度的值。 如果 `name` 与一个默认维度匹配，则只能省略。 如果是这样，则按维度名称提供值。 | 否       | 字符串，表达式 | 不适用 |
+
+无需值即可使用的默认维度名称：
+
+* API ID
+* Operation ID
+* 产品 ID
+* 用户 ID
+* 订阅 ID
+* 位置 ID
+* 网关 ID
 
 ### <a name="usage"></a>使用情况
 

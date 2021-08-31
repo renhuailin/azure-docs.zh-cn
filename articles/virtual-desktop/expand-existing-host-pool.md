@@ -3,20 +3,20 @@ title: 利用新的会话主机扩展现有的主机池-Azure
 description: 如何使用 Azure 虚拟桌面中的新会话主机扩展现有的主机池。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/09/2020
+ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 446052190df59f6dc53ac6a39cd4bc120752fa41
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f37e7e18fd32c3ad0b06f1189c57f44d72dced7a
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757726"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760854"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>利用新的会话主机扩展现有的主机池
 
 >[!IMPORTANT]
->本内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)。
 
 当你在主机池内提高使用率时，可能需要使用新的会话主机扩展现有的主机池以处理新负载。
 
@@ -60,21 +60,25 @@ ms.locfileid: "111757726"
 
 9. 对于 **虚拟网络信息**，请选择要将虚拟机加入到的虚拟网络和子网。 你可以选择现有计算机当前使用的相同虚拟网络，或选择更适用于在步骤7中选择的区域的其他虚拟网络。
 
-10. 对于 **管理员帐户**，输入与所选虚拟网络关联的 Active Directory 域用户名和密码。 这些凭据将用于将虚拟机加入虚拟网络。
+10. 对于“要加入的域”，选择是要将虚拟机加入 Active Directory 还是 [Azure Active Directory](deploy-azure-ad-joined-vm.md)。 选择“在 Intune 中注册 VM”会自动在 Intune 中注册虚拟机。 主机池中的所有虚拟机都应加入同一个域或 Azure AD 租户。
+
+11. 对于“AD 域加入 UPN”，输入与你选择的域关联的 Active Directory 域用户名和密码。 这些凭据将用于将虚拟机加入 Active Directory 域。
 
       >[!NOTE]
       >确保你的管理员名称符合本文提供的信息。 并且不会对该帐户启用 MFA。
 
-11. 如果你有要将虚拟机分组到其中的任何标记，请选择 " **标记** " 选项卡。 否则，请跳过此选项卡。
+12. 对于“虚拟机管理员帐户”，输入要用于所有虚拟机的本地管理员帐户信息。
 
-12. 选择“查看 + 创建”选项卡。查看你的选择，如果一切正常，请选择“创建” 。
+13. 如果你有要将虚拟机分组到其中的任何标记，请选择“标记”选项卡。 否则，请跳过此选项卡。
+
+14. 选择“查看 + 创建”选项卡。查看你的选择，如果一切正常，请选择“创建” 。
 
 ## <a name="next-steps"></a>后续步骤
 
 在扩展现有主机池后，可以登录到 Azure 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 你可以使用以下任一客户端连接到会话：
 
-- [使用 Windows 桌面客户端进行连接](./connect-windows-7-10.md)
-- [使用 Web 客户端进行连接](./connect-web.md)
-- [使用 Android 客户端进行连接](./connect-android.md)
-- [使用 macOS 客户端进行连接](./connect-macos.md)
-- [使用 iOS 客户端进行连接](./connect-ios.md)
+- [使用 Windows 桌面客户端进行连接](./user-documentation/connect-windows-7-10.md)
+- [使用 Web 客户端进行连接](./user-documentation/connect-web.md)
+- [使用 Android 客户端进行连接](./user-documentation/connect-android.md)
+- [使用 macOS 客户端进行连接](./user-documentation/connect-macos.md)
+- [使用 iOS 客户端进行连接](./user-documentation/connect-ios.md)

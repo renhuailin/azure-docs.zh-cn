@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/25/2021
 ms.author: mayg
-ms.openlocfilehash: 9f9052f51c5bab0ea738e9fd15d8f62f45ff0c9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a0e7696cb631bee8b114cf2277a277b9c81cbd1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93146529"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732499"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>复制其中磁盘启用了客户托管密钥 (CMK) 的计算机
 
@@ -37,7 +37,7 @@ ms.locfileid: "93146529"
 
 4. 在“设置”中，可以配置以下目标站点设置。 
 
-    - **目标位置**：要在其中复制源虚拟机数据的位置。 Site Recovery 根据所选计算机的位置提供合适的目标区域列表。 我们建议使用与恢复服务保管库位置相同的位置。
+    - “目标位置”：要将源虚拟机数据复制到的位置。 我们建议使用与恢复服务保管库位置相同的位置。
     - **目标订阅**：用于灾难恢复的目标订阅。 默认情况下，目标订阅与源订阅相同。
     - **目标资源组**：复制的虚拟机所属的资源组。 默认情况下，Site Recovery 会在目标区域中创建一个新的资源组， 其名称带有 `asr` 后缀。 如果已存在 Azure Site Recovery 创建的资源组，将会重复使用它。 此外，可按以下部分所述，选择对资源组进行自定义。 目标资源组的位置可以是除托管源虚拟机区域以外的任何 Azure 区域。
     - **目标虚拟网络**：默认情况下，Site Recovery 会在目标区域中创建一个新的虚拟网络， 其名称带有 `asr` 后缀。 此虚拟网络会映射到源网络并用于任何将来的保护。 [详细了解](./azure-to-azure-network-mapping.md)网络映射。
@@ -85,4 +85,3 @@ ms.locfileid: "93146529"
 * 我同时启用了平台管理的密钥和客户管理的密钥，如何保护磁盘？
 
     Site Recovery 支持通过平台管理的密钥和客户管理的密钥来启用双重加密。 按照本文中的说明来保护计算机。 需要事先在目标区域中创建一个启用了双重加密的 DES。 为此类 VM 启用复制时，可以向 Site Recovery 提供此 DES。
-

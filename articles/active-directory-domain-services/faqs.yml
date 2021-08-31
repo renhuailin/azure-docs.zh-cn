@@ -10,14 +10,14 @@ metadata:
   ms.subservice: domain-services
   ms.workload: identity
   ms.topic: how-to
-  ms.date: 02/09/2021
+  ms.date: 06/18/2021
   ms.author: justinha
-  ms.openlocfilehash: a431fff476cd79d25c4db0e60ad0bcff361a4a2a
-  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.openlocfilehash: 287613213a565f475515e3034fd3897d29c1fff0
+  ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "111907039"
+  ms.lasthandoff: 07/27/2021
+  ms.locfileid: "114707902"
 title: 有关 Azure Active Directory (AD) 域服务的常见问题 (FAQ)
 summary: 本页面解答了有关 Azure Active Directory 域服务的常见问题。
 sections:
@@ -73,6 +73,9 @@ sections:
       邀请到我的目录中的来宾用户能否使用 Azure AD 域服务？
     answer: >
       否。 使用 [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) 邀请进程邀请到 Azure AD 目录的来宾用户会同步到 Azure Active Directory 域服务托管域。 但这些用户的密码不会存储在 Azure AD 目录中。 因此，Azure AD 域服务无法将这些用户的 NTLM 和 Kerberos 哈希同步到托管域。 这类用户可以登录到或者将计算机加入到托管域。
+  - question: >
+      能否在资源林和本地林之间创建双向林信任？
+    answer: "否。 托管域资源林支持多达五个到本地林的单向出站林信任。 \n"
   - question: >
       是否可将现有 Azure AD 域服务托管域移动到不同的订阅、资源组、区域或虚拟网络？
     answer: >
@@ -158,6 +161,10 @@ sections:
       是否可以从企业移动性套件 (EMS) 获取 Azure AD 域服务？ 是否需要 Azure AD Premium 才能使用 Azure AD 域服务？
     answer: >
       否。 Azure AD 域服务是即用即付的 Azure 服务，未包含在 EMS 中。 Azure AD 域服务可用于所有版本的 Azure AD（免费版和高级版）。 它按小时计费，具体取决于使用量。
+  - question: >
+      能否在托管域下创建子域？
+    answer: >
+      否。 Azure AD 域服务采用单域、单林设计，并且无法创建子域。
   - question: >
       哪些 Azure 区域提供此服务？
     answer: >

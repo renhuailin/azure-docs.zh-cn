@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 06/08/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dc0ea990b9bb41279e5670456c6a81d11a4753c2
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 226377f2a8df895c078d05b58d5ed49c4bba9117
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111761378"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121803380"
 ---
 下表列出了特定于 Azure 服务总线消息的配额信息。 若要了解服务总线的定价和其他配额，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
-| 配额名称 | 作用域 | 说明 | 值 |
+| 配额名称 | 作用域 | 值 | 说明 | 
 | --- | --- | --- | --- |
-| 每个 Azure 订阅的最大命名空间数 |命名空间 | 对更多命名空间的后续请求被拒绝。 | 1000（默认值和最大值） |
-| 队列或主题大小 |实体 |创建/更新队列或主题时定义。 <br/><br/> 后续的传入消息会被拒绝，且调用代码会收到异常。 |1、2、3、4 GB 或 5 GB。<br /><br />在高级 SKU 以及启用了[分区](../articles/service-bus-messaging/service-bus-partitioning.md)的标准 SKU 中，队列或主题的最大大小是 80 GB。 |
-| 命名空间上的并发连接数 |命名空间 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 REST 操作不计入并发 TCP 连接数。 |Net Messaging：1,000。<br /><br />AMQP：5,000。 |
-| 队列、主题或订阅实体上的并发接收请求数 |实体 |后续的接收请求会被拒绝，且调用代码会收到异常。 此配额适用于一个主题上所有订阅的并发接收操作总数。 |5,000 |
-| 每个命名空间的主题或队列数 |命名空间 |系统将拒绝后续的在命名空间中创建新主题或队列的请求。 因此，如果是通过 [Azure 门户][Azure portal]配置的，将生成错误消息。 如果是通过管理 API 调用的，调用代码将收到异常。 |基本层或标准层为 10,000。 命名空间中主题和队列的数目之和必须小于或等于 10,000。 <br/><br/>对于高级层，每个消息传送单元 (MU) 为 1,000。 |
-| 每个命名空间的[分区主题或队列](../articles/service-bus-messaging/service-bus-partitioning.md)数 |命名空间 |系统将拒绝后续的在命名空间中创建新分区主题或队列的请求。 因此，如果是通过 [Azure 门户][Azure portal]配置的，将生成错误消息。 如果是通过管理 API 调用的，调用代码会收到 QuotaExceededException 异常。 |基本层和标准层：100。<br/><br/>[高级](../articles/service-bus-messaging/service-bus-premium-messaging.md)层中不支持分区实体。<br/><br />每个分区的队列或主题都会计入每个命名空间 1,000 个实体的配额。 |
+| 每个 Azure 订阅的最大命名空间数 |命名空间 |  1000（默认值和最大值） |对更多命名空间的后续请求被拒绝。 |
+| 队列或主题大小 |实体 | 1、2、3、4 GB 或 5 GB。<p>在高级 SKU 以及启用了[分区](../articles/service-bus-messaging/service-bus-partitioning.md)的标准 SKU 中，队列或主题的最大大小是 80 GB。</p><p>对于高级命名空间，每个[消息传送单元](../articles/service-bus-messaging/service-bus-premium-messaging.md)的总大小限制为 1 TB。 命名空间中所有实体的总大小不能超过此限制。</p> | 创建/更新队列或主题时定义。 <br/><br/> 后续的传入消息会被拒绝，且调用代码会收到异常。 |
+| 命名空间上的并发连接数 |命名空间 |Net Messaging：1,000。<br /><br />AMQP：5,000。 | 系统会拒绝后续的附加连接请求，且调用代码会收到异常。 REST 操作不计入并发 TCP 连接数。 |
+| 队列、主题或订阅实体上的并发接收请求数 |实体 | 5,000 |后续的接收请求会被拒绝，且调用代码会收到异常。 此配额适用于一个主题上所有订阅的并发接收操作总数。 |
+| 每个命名空间的主题或队列数 |命名空间 | 基本层或标准层为 10,000。 命名空间中主题和队列的数目之和必须小于或等于 10,000。 <br/><br/>对于高级层，每个消息传送单元 (MU) 为 1,000。 | 系统将拒绝后续的在命名空间中创建新主题或队列的请求。 因此，如果是通过 [Azure 门户][Azure portal]配置的，将生成错误消息。 如果是通过管理 API 调用的，调用代码将收到异常。 |
+| 每个命名空间的[分区主题或队列](../articles/service-bus-messaging/service-bus-partitioning.md)数 |命名空间 | 基本层和标准层：100。<br/><br/>[高级](../articles/service-bus-messaging/service-bus-premium-messaging.md)层中不支持分区实体。<br/><br />每个分区的队列或主题都会计入每个命名空间 1,000 个实体的配额。 | 系统将拒绝后续的在命名空间中创建新分区主题或队列的请求。 因此，如果是通过 [Azure 门户][Azure portal]配置的，将生成错误消息。 如果是通过管理 API 调用的，调用代码会收到 QuotaExceededException 异常。 <p>如果要在基本或标准层命名空间中具有更多分区实体，请创建更多命名空间。 </p>|
 | 任一消息实体路径的最大大小：队列或主题 |实体 |- |260 个字符。 |
 | 任一消息实体名称的最大大小：命名空间、订阅或订阅规则 |实体 |- |50 个字符。 |
 | 消息 ID 的最大大小 | 实体 |- | 128 |

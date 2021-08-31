@@ -1,14 +1,14 @@
 ---
 title: 如何使用 Azure VM 评估已启用 Azure Arc 的服务器
 description: 了解如何使用 Azure 虚拟机评估已启用 Azure Arc 的服务器。
-ms.date: 05/06/2021
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1e49b2d29b21f6ded72d1b22e946743f27e7d160
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 2c981bad00d286860c3759e8266011c6685ff994
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109837828"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114392809"
 ---
 # <a name="evaluate-arc-enabled-servers-on-an-azure-virtual-machine"></a>在 Azure 虚拟机上评估已启用 Arc 的服务器
 

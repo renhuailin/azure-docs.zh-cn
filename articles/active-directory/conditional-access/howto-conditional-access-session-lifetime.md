@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6116ab543d6dfc886e44206c2a60e4456b39fbc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50c168bffad24646aad0badcdb849d9d3408725b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558179"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727737"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件访问配置身份验证会话管理
 
@@ -135,6 +135,10 @@ Azure Active Directory (Azure AD) 的默认用户登录频率配置为 90 天滚
 ## <a name="policy-deployment"></a>策略部署
 
 若要确保你的策略按预期工作，建议的最佳做法是在将其推广到生产环境之前对其进行测试。 理想情况下，使用一个测试租户来验证新策略是否按预期方式工作。 有关详细信息，请参阅[计划条件访问部署](plan-conditional-access.md)一文。
+
+## <a name="known-issues"></a>已知问题
+- 如果为移动设备配置登录频率，则在每次登录频率间隔后进行身份验证会很慢（可能平均需要 30 秒）。 而且，各种应用中可能会同时发生该问题。 
+- 在 iOS 设备中，如果应用将证书配置为第一个身份验证因素，并且已应用了登录频率和 [Intune 移动应用管理](/mem/intune/apps/app-lifecycle)策略，则触发策略时将阻止最终用户登录到该应用。
 
 ## <a name="next-steps"></a>后续步骤
 

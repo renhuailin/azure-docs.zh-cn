@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b35706c48ff78e81ef339ee838cc4259090e56c
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 8fb21f3173225d36fcdb2290c74a2c7805455342
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987625"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746151"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 - Exchange Online（计划 2）与 Exchange Online（计划 1）冲突。
 
-若要解决此冲突，需要禁用两个计划。 可以禁用直接分配给用户的 E1 许可证。 或者，需要修改整个组许可证分配并在 E3 许可证中禁用计划。 或者，你可能会决定删除用户的 E1 许可证（如果 E1 许可证在 E3 许可证的上下文中是多余的）。
+若要解决此冲突，需要禁用两个计划之一。 可以禁用直接分配给用户的 E1 许可证。 或者，需要修改整个组许可证分配并在 E3 许可证中禁用计划。 或者，你可能会决定删除用户的 E1 许可证（如果 E1 许可证在 E3 许可证的上下文中是多余的）。
 
 有冲突的产品许可证的解决方法始终由管理员决定。 Azure AD 不会自动解决许可证冲突。
 

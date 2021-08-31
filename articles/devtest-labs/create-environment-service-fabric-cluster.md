@@ -5,18 +5,18 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 530cf3b20820e34913612419d0ffa731a70f6a58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e85e4dd34a63500b569b75bb953a4c6061aefe5e
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85484003"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585998"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建具有自包含 Service Fabric 群集的环境
 本文提供有关如何在 Azure 开发测试实验室中创建具有自包含 Service Fabric 群集的环境的信息。 
 
 ## <a name="overview"></a>概述
-开发测试实验室可以根据 Azure 资源管理模板的定义创建自包含测试环境。 这些环境包含 IaaS 资源，例如虚拟机和 PaaS 资源（如 Service Fabric）。 开发测试实验室通过提供用于控制虚拟机的命令，让你能够管理环境中的虚拟机。 这些命令使你能够按计划启动或停止虚拟机。 同样，开发测试实验室还可以帮助你管理环境中的 Service Fabric 群集。 你可以手动或通过计划启动或停止环境中的 Service Fabric 群集。
+开发测试实验室可以根据 Azure 资源管理器模板的定义创建自包含测试环境。 这些环境包含 IaaS 资源，例如虚拟机和 PaaS 资源（如 Service Fabric）。 开发测试实验室通过提供用于控制虚拟机的命令，让你能够管理环境中的虚拟机。 这些命令使你能够按计划启动或停止虚拟机。 同样，开发测试实验室还可以帮助你管理环境中的 Service Fabric 群集。 你可以手动或通过计划启动或停止环境中的 Service Fabric 群集。
 
 ## <a name="create-a-service-fabric-cluster"></a>创建 Service Fabric 群集
 Service Fabric 群集是使用开发测试实验室中的环境创建的。 每个环境均通过 Git 存储库中的 Azure 资源管理器模板定义。 用于开发测试实验室的[公共 Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Environments/)包含用于在 [ServiceFabric-Cluster](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) 文件夹中创建 Service Fabric 群集的资源管理器模板。 

@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 06/13/2021
-ms.openlocfilehash: 9aad86bc08d7190ae9fca9faab9dbfcfba93f206
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.date: 07/07/2021
+ms.openlocfilehash: 2d145e62392ee95189a212c1cd0b294134ce1109
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062309"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739074"
 ---
 # <a name="create-rich-interactive-reports-of-security-center-data"></a>创建丰富的交互式安全中心数据报表
 
@@ -20,9 +20,9 @@ ms.locfileid: "112062309"
 
 工作簿提供了一组丰富的功能，用于可视化 Azure 数据。 有关每种可视化效果类型的详细示例，请参阅[可视化效果示例和文档](../azure-monitor/visualize/workbooks-text-visualizations.md)。 
 
-在 Azure 安全中心内，可以访问内置报表以跟踪组织的安全状况。 还可以生成自定义报表，以查看安全中心或其他支持的数据源中的各种数据。
+在 Azure 安全中心内，你可以访问内置工作簿来跟踪组织的安全状况。 你还可以生成自定义工作簿，以查看安全中心或其他受支持的数据源中的各种数据。
 
-:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="一段时间内的安全功能分数报告":::
+:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="一段时间内的安全功能分数工作簿。":::
 
 ## <a name="availability"></a>可用性
 
@@ -30,66 +30,66 @@ ms.locfileid: "112062309"
 |---------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
 | 发布状态：                  | 正式发布版 (GA)                                                                                                                    |
 | 定价：                        | 免费                                                                                                                                         |
-| 所需角色和权限： | 若要保存工作簿，必须至少拥有目标资源组的工作簿参与者权限                                      |
-| 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov） |
+| 所需角色和权限： | 若要保存工作簿，必须至少对目标资源组具有[工作簿参与者](../role-based-access-control/built-in-roles.md#workbook-contributor)权限 |
+| 云：                         | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国家/地区/主权云（Azure 政府、Azure 中国世纪互联） |
 |                                 |                                                                                                                                              |
 
 ## <a name="workbooks-gallery-in-azure-security-center"></a>Azure 安全中心中的工作簿库
 
-利用集成的 Azure 工作簿功能，Azure 安全中心可以轻松生成你自己的自定义交互式报表。 安全中心还包括一个工作簿库，其中包含以下可供你自定义的报表：
+利用集成的 Azure 工作簿功能，Azure 安全中心可以轻松构建自定义交互式工作簿。 安全中心还包含一个库，其中有可供自定义的下列工作簿：
 
-- 一段时间内的安全功能分数 - 跟踪订阅的分数以及对资源建议的更改
-- 系统更新 - 按资源、OS 和严重性等查看缺失的系统更新
-- 漏洞评估发现结果 - 查看对 Azure 资源进行漏洞扫描的发现结果
+- [“一段时间内的安全功能分数”工作簿](#use-the-secure-score-over-time-workbook) - 跟踪订阅的分数以及对资源建议的更改
+- [“系统更新”工作簿](#use-the-system-updates-workbook) - 按资源、OS 和严重性等查看缺失的系统更新
+- [“漏洞评估发现结果”工作簿](#use-the-vulnerability-assessment-findings-workbook) - 查看对 Azure 资源进行漏洞扫描的发现结果
+- [一段时间内的合规性"工作簿](#use-the-compliance-over-time-workbook) - 查看订阅是否符合所选法规或行业标准的状态 
 
-:::image type="content" source="media/custom-dashboards-azure-workbooks/workbooks-gallery-security-center.png" alt-text="Azure 安全中心中内置工作簿的库":::
+:::image type="content" source="media/custom-dashboards-azure-workbooks/workbooks-gallery-security-center.png" alt-text="Azure 安全中心中内置工作簿的库。":::
 
-选择一个提供的报表或创建自己的报表。
+选择一个提供的工作簿或创建自己的工作簿。
 
 > [!TIP]
-> 使用“编辑”按钮自定义任何提供的报表以使自己满意。 完成编辑后，选择“保存”，所做的更改将保存到新工作簿中。
+> 使用“编辑”按钮自定义提供的任何工作簿以满足你的需求。 完成编辑后，选择“保存”，所做的更改将保存到新工作簿中。
 > 
-> :::image type="content" source="media/custom-dashboards-azure-workbooks/editing-supplied-workbooks.png" alt-text="编辑提供的工作簿以根据特定需求进行自定义":::
+> :::image type="content" source="media/custom-dashboards-azure-workbooks/editing-supplied-workbooks.png" alt-text="编辑提供的工作簿以根据特定需求进行自定义。":::
 
-### <a name="use-the-secure-score-over-time-report"></a>使用“一段时间内的安全分数”报表
+### <a name="use-the-secure-score-over-time-workbook"></a>使用“一段时间内的安全功能分数”工作簿
 
-此报表使用 Log Analytics 工作区中的安全分数数据。 需要从连续导出工具中导出该数据，如[从 Azure 门户中的安全中心页面配置连续导出](continuous-export.md?tabs=azure-portal)中所述。
+此工作簿使用 Log Analytics 工作区中的安全功能分数数据。 需要从连续导出工具中导出该数据，如[从 Azure 门户中的安全中心页面配置连续导出](continuous-export.md?tabs=azure-portal)中所述。
 
 设置连续导出时，将导出频率设置为“流式处理更新”和“快照”。
 
-:::image type="content" source="media/custom-dashboards-azure-workbooks/export-frequency-both.png" alt-text="对于“一段时间内的安全分数”工作簿，你将需要从连续导出配置中的导出频率设置中选择这两个选项":::
+:::image type="content" source="media/custom-dashboards-azure-workbooks/export-frequency-both.png" alt-text="对于“一段时间内的安全功能分数”工作簿，需要从连续导出配置中的“导出频率”设置中选择这两个选项。":::
 
 > [!NOTE]
-> 快照每周导出一次，因此你需要等待至少一周才能导出第一个快照，然后才能查看此报表中的数据。
+> 快照每周导出一次，因此你需要等待至少一周的时间来导出第一个快照，然后才能查看此工作簿中的数据。
 
 > [!TIP]
 > 若要在组织中配置连续导出，请使用[大规模配置连续导出](continuous-export.md?tabs=azure-policy)中所述的提供的 Azure Policy“DeployIfNotExist”策略。
 
-“一段时间内的安全分数”报表有五个图形，用于向所选工作区报告订阅：
-
+“一段时间内的安全功能分数”工作簿有五个图形，用于向所选工作区报告订阅：
 
 |图形  |示例  |
 |---------|---------|
-|上周和上个月的分数趋势<br>使用此部分监视订阅的当前分数和分数的一般趋势。|:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-table-1.png" alt-text="内置报表的安全分数趋势":::|
-|所有所选订阅的聚合分数<br>将鼠标悬停在趋势线中的任何点上可查看所选时间范围内任何日期的聚合分数。|:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-table-2.png" alt-text="所有所选订阅的聚合分数":::|
-|对大多数运行不正常资源的建议<br>此表可帮助你对所选时间段内大多数资源更改为运行不正常的建议进行会审。|:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-table-3.png" alt-text="对大多数运行不正常资源的建议":::|
-|特定安全控件的分数<br>安全中心的安全控件是建议的逻辑分组。 此图表一目了然地显示了所有控件的每周分数。|:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-table-4.png" alt-text="所选时间段内安全控件的分数":::|
-|资源更改<br>此处列出了在所选时间段内已更改状态（正常、运行不正常或不适用）的大多数资源的建议。 从列表中选择任何建议，以打开列出特定资源的新表。|:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-table-5.png" alt-text="已更改运行状况状态的大多数资源的建议":::|
+|上周和上个月的分数趋势<br>使用此部分监视订阅的当前分数和分数的一般趋势。|:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-table-1.png" alt-text="内置工作簿的安全功能分数趋势。":::|
+|所有所选订阅的聚合分数<br>将鼠标悬停在趋势线中的任何点上可查看所选时间范围内任何日期的聚合分数。|:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-table-2.png" alt-text="所有选择的订阅的聚合分数。":::|
+|对大多数运行不正常资源的建议<br>此表可帮助你对所选时间段内大多数资源更改为运行不正常的建议进行会审。|:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-table-3.png" alt-text="导致运行不正常的资源最多的建议。":::|
+|特定安全控件的分数<br>安全中心的安全控件是建议的逻辑分组。 此图表一目了然地显示了所有控件的每周分数。|:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-table-4.png" alt-text="所选时间段内安全控制措施的分数。":::|
+|资源更改<br>此处列出了在所选时间段内已更改状态（正常、运行不正常或不适用）的大多数资源的建议。 从列表中选择任何建议，以打开列出特定资源的新表。|:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-table-5.png" alt-text="导致运行状况状态发生更改的资源最多的建议。":::|
 
-### <a name="use-the-system-updates-report"></a>使用“系统更新”报表
+### <a name="use-the-system-updates-workbook"></a>使用“系统更新”工作簿
 
-此报表基于安全建议“应在计算机上安装系统更新”。
+此工作簿基于安全建议“应在计算机上安装系统更新”。
 
-该报表有助于识别具有未完成的更新的计算机。
+该工作簿有助于识别具有未完成更新的计算机。
 
 可以根据以下内容查看所选订阅的情况：
 
 - 具有未完成的更新的资源列表
 - 资源中缺少的更新列表
 
-:::image type="content" source="media/custom-dashboards-azure-workbooks/system-updates-report.png" alt-text="安全中心的系统更新报告（基于缺少的更新安全建议）":::
+:::image type="content" source="media/custom-dashboards-azure-workbooks/system-updates-report.png" alt-text="安全中心的系统更新工作簿（基于缺少的更新安全建议）":::
 
-### <a name="use-the-vulnerability-assessment-findings-report"></a>使用“漏洞评估结果”报表
+### <a name="use-the-vulnerability-assessment-findings-workbook"></a>使用“漏洞评估结果”工作簿
 
 安全中心包括计算机的漏洞扫描程序、容器注册表中的容器和 SQL 服务器。
 
@@ -106,9 +106,29 @@ ms.locfileid: "112062309"
 - 应修正关于 SQL 数据库的漏洞评估结果
 - 应修正关于计算机上 SQL 服务器的漏洞评估结果
 
-此报表收集这些结果，并按严重性、资源类型和类别对其进行组织。
+此工作簿收集这些结果，并按严重性、资源类型和类别对其进行整理。
 
-:::image type="content" source="media/custom-dashboards-azure-workbooks/vulnerability-assessment-findings-report.png" alt-text="安全中心的漏洞评估结果报表":::
+:::image type="content" source="media/custom-dashboards-azure-workbooks/vulnerability-assessment-findings-report.png" alt-text="安全中心的漏洞评估结果报表。":::
+
+
+### <a name="use-the-compliance-over-time-workbook"></a>使用“一段时间内的合规性”工作簿
+
+Azure 安全中心会不断将资源的配置与行业标准、法规和基准中的要求进行比较。 内置标准包括 NIST SP 800-53、SWIFT CSP CSCF v2020、加拿大联邦 PBMM、HIPAA HITRUST 等。 可以使用“法规合规性”仪表板选择与组织相关的具体标准。 有关详情，请参阅[在监管合规仪表板中自定义标准集](update-regulatory-compliance-packages.md)。
+
+通过此工作簿，可以使用添加到仪表板的各种标准跟踪一段时间内的合规性状态。
+
+:::image type="content" source="media/custom-dashboards-azure-workbooks/compliance-over-time-select-standards.png" alt-text="为“一段时间内的合规性”报表选择标准。":::
+
+从报表的概述区域选择标准时，下面的窗格将显示更详细的明细：
+
+:::image type="content" source="media/custom-dashboards-azure-workbooks/compliance-over-time-details.png" alt-text="有关具体标准的详细更改明细。":::
+
+可以继续深入，一直到建议级别，以查看已通过或未通过每个控件的资源。 
+
+> [!TIP]
+> 对于报表的每个面板，可以使用“导出到Excel”选项将数据导出 Excel。
+>
+> :::image type="content" source="media/custom-dashboards-azure-workbooks/export-workbook-data.png" alt-text="将合规性工作簿数据导出到 Excel。":::
 
 
 ## <a name="import-workbooks-from-other-workbook-galleries"></a>从其他工作簿库导入工作簿
@@ -119,11 +139,11 @@ ms.locfileid: "112062309"
 
 1. 在工具栏中选择“编辑”。
 
-    :::image type="content" source="media/custom-dashboards-azure-workbooks/editing-workbooks.png" alt-text="编辑 Azure Monitor 工作簿":::
+    :::image type="content" source="media/custom-dashboards-azure-workbooks/editing-workbooks.png" alt-text="编辑 Azure Monitor 工作簿。":::
 
 1. 在工具栏中选择“</>”以进入高级编辑器。
 
-    :::image type="content" source="media/custom-dashboards-azure-workbooks/editing-workbooks-advanced-editor.png" alt-text="启动高级编辑器以获取库模板 JSON 代码":::
+    :::image type="content" source="media/custom-dashboards-azure-workbooks/editing-workbooks-advanced-editor.png" alt-text="启动高级编辑器以获取库模板 JSON 代码。":::
 
 1. 复制工作簿的库模板 JSON。
 
@@ -133,7 +153,7 @@ ms.locfileid: "112062309"
 1. 选择“应用”。
 1. 在工具栏上选择“另存为”。
 
-    :::image type="content" source="media/custom-dashboards-azure-workbooks/editing-workbooks-save-as.png" alt-text="将工作簿保存到安全中心中的库":::
+    :::image type="content" source="media/custom-dashboards-azure-workbooks/editing-workbooks-save-as.png" alt-text="将工作簿保存到安全中心内的库。":::
 
 1. 输入保存工作簿所需的详细信息：
    1. 工作簿的名称
@@ -148,4 +168,4 @@ ms.locfileid: "112062309"
 本文介绍了安全中心的集成的 Azure Monitor 工作簿页面，其中包含内置报表和用于生成你自己的自定义交互式报表的选项。
 
 - 详细了解 [Azure Monitor 工作簿](../azure-monitor/visualize/workbooks-overview.md)
-- 内置报表从安全中心的建议中提取数据。 了解[安全建议 - 参考指南](recommendations-reference.md)中的许多安全建议
+- 内置工作簿从安全中心的建议中提取数据。 了解[安全建议 - 参考指南](recommendations-reference.md)中的许多安全建议

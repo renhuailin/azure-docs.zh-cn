@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 05/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6298c8483c44472fe6f52f3e48b5c529c2d978a5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0a2f1e40b85eea5f02aec93a0cac97acc5dfeaf9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457486"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732411"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies"></a>排查 Azure AD B2C 自定义策略问题
 
@@ -31,7 +31,7 @@ Azure AD B2C 相关 ID 是附加到授权请求的唯一标识符值。 它用�
 - 查找登录请求的 Azure Application Insights 日志。
 - 将相关 ID 传递到 REST API，并使用它来标识登录流。 
 
-每次建立新会话时，相关 ID 都会更改。 调试策略时，请确保关闭现有浏览器选项卡。 或打开一个新的隐私模式浏览器。
+每次建立新会话时，相关 ID 都会更改。 调试策略时，请确保关闭现有浏览器标签页或打开新的私密模式浏览器。
 
 ### <a name="get-the-azure-ad-b2c-correlation-id"></a>获取 Azure AD B2C 相关 ID
 

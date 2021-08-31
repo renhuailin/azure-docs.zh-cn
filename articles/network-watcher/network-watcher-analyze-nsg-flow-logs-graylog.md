@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 8b363d90d05e95b017c3a655b57dbabc3712a155
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88a9a842709d6a70f766f7ced84e144bb9a9861b
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94965538"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288871"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>在 Azure 中使用网络观察程序与 Graylog 来管理和分析网络安全组流日志
 
@@ -53,7 +53,7 @@ ms.locfileid: "94965538"
 
 可根据平台和偏好，以多种方式安装 Graylog。 有关可能的安装方法的完整列表，请参阅 Graylog 的官方[文档](https://docs.graylog.org/en/2.2/pages/installation.html)。 Graylog 服务器应用程序在 Linux 分发版上运行，附带以下先决条件：
 
--  Java SE 8 或更高版本 - [Azul Azure JDK 文档](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+-  Java SE 8 或更高版本 – [JDK 安装文档](/azure/developer/java/fundamentals/java-jdk-install)
 -  Elastic Search 2.x（2.1.0 或更高版本）– [Elasticsearch 安装文档](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  MongoDB 2.4 或更高版本 – [MongoDB 安装文档](https://docs.mongodb.com/manual/administration/install-on-linux/)
 

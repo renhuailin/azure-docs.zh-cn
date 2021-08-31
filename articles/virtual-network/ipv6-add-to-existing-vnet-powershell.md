@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 虚拟网络中将 IPv4 应用程序升级到 IPv6 - PowerShell
+title: 在 Azure 虚拟网络中将 IPv4 应用程序添加到 IPv6 - PowerShell
 titlesuffix: Azure Virtual Network
 description: 本文介绍如何使用 Azure PowerShell 将 IPv6 地址部署到 Azure 虚拟网络中的现有应用程序。
 services: virtual-network
@@ -14,18 +14,18 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 771d108bc3a3262c46ab13127727eddce2abaeb8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5d4982fac67b0d5bde5e0c68f64da634f01a9eab
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675786"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435643"
 ---
-# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>在 Azure 虚拟网络中将 IPv4 应用程序升级到 IPv6 - PowerShell
+# <a name="add-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>在 Azure 虚拟网络中将 IPv4 应用程序添加到 IPv6 - PowerShell
 
 本文介绍如何将 IPv6 连接添加到 Azure 虚拟网络中使用标准负载均衡器和公共 IP 的现有 IPv4 应用程序。 就地升级涉及到：
 - 虚拟网络和子网的 IPv6 地址空间
-- 采用 IPv4 和 IPV6 前端配置的标准负载均衡器
+- 同时具有 IPv4 和 IPv6 前端配置的标准负载均衡器
 - 包含采用 IPv4 + IPv6 配置的 NIC 的 VM
 - IPv6 公共 IP，使负载均衡器能够建立面向 Internet 的 IPv6 连接
 

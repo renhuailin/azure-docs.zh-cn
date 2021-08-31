@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 07/26/2021
 ms.author: justinha
 author: mjsantani
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d8599554918af41ead7c862ee2c84f2afd4b18a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: c83c4c60028c77033227411d68aeb576a9b43a46
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786232"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707867"
 ---
 # <a name="how-to-nudge-users-to-set-up-microsoft-authenticator-preview---microsoft-authenticator-app"></a>如何微移用户以设置 Microsoft Authenticator（预览版）- Microsoft Authenticator 应用
 
@@ -70,7 +70,7 @@ ms.locfileid: "110786232"
 
 ## <a name="enable-the-nudge-policy"></a>启用微移策略
 
-若要启用微移，必须通过图形 API 或 PowerShell 命令使用身份验证方法策略。 全局管理员和身份验证方法策略管理员可以更新策略 。 
+若要启用微移，必须通过图形 API 使用身份验证方法策略。 全局管理员和身份验证方法策略管理员可以更新策略 。 
 
 使用 Graph 浏览器配置策略：
 

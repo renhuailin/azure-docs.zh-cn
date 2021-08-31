@@ -1,21 +1,21 @@
 ---
-title: 如何为托管服务产品/服务添加预览版受众
-description: 了解如何在 Microsoft 合作伙伴中心为托管服务产品/服务添加预览版受众。
+title: 为托管服务产品/服务添加预览版受众
+description: 在 Azure 市场中为托管服务产品/服务添加预览版受众。
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 12/23/2020
-ms.openlocfilehash: a30265f335dd279470e6de421f83e682a304788f
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.date: 7/16/2021
+ms.openlocfilehash: 38fbf04f9e8f961cca99bd3e0b23e05e664f4848
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060500"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113649706"
 ---
-# <a name="how-to-add-a-preview-audience-for-your-managed-service-offer"></a>如何为托管服务产品/服务添加预览版受众
+# <a name="add-a-preview-audience-for-a-managed-service-offer"></a>为托管服务产品/服务添加预览版受众
 
 本文介绍如何使用合作伙伴中心为商业市场中的托管服务产品/服务配置预览版受众。 预览版受众可以在你的产品/服务上线之前查看它们。
 
@@ -43,7 +43,8 @@ ms.locfileid: "112060500"
 5. 将文件另存为 CSV 文件。
 6. 在“预览版受众”页面上，选择“导入受众 (csv)”链接。
 7. 在“确认”对话框中，选择“是”，然后上传 CSV 文件。
-8. 选择“保存草稿”，然后转到下一选项卡。
+
+选择“保存草稿”，然后转到下一选项卡“计划概述”。
 
 ## <a name="next-steps"></a>后续步骤
 

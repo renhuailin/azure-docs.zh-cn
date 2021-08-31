@@ -14,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 6/3/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 214a73e2e23478c98fb646248ba938e35d7b5108
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: a91f2116eb7eb2e6d7908e5c8c4e5171fff8c294
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421771"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114361065"
 ---
-# <a name="additional-network-requirements-for-large-instances"></a>大型实例的其他网络要求
+# <a name="other-network-requirements-for-large-instances"></a>大型实例的其他网络要求
 
 本文介绍在 Azure 上部署 SAP HANA 大型实例时可能具有的其他网络要求。
 
@@ -35,7 +35,7 @@ ms.locfileid: "111421771"
 
 你可能会发现需要添加更多 IP 地址或子网。 可以使用 Azure 门户、PowerShell 或 Azure CLI 添加多个 IP 地址或子网。
 
-将新的 IP 地址范围作为新范围添加到虚拟网络地址空间，而不要生成新的聚合范围。 向 Microsoft 提交此更改。 这样就可以从新的 IP 地址范围连接到客户端中的 HANA 大型实例。 可以发起 Azure 支持请求来添加新的虚拟网络地址空间。 收到确认消息后，执行[将 Azure VM 连接到 HANA 大型实例](hana-connect-azure-vm-large-instances.md)中讨论的步骤。 
+将新的 IP 地址范围作为新范围添加到虚拟网络地址空间。 不要生成新的聚合范围。 向 Microsoft 提交此更改。 这样就可以从新的 IP 地址范围连接到客户端中的 HANA 大型实例。 可以发起 Azure 支持请求来添加新的虚拟网络地址空间。 收到确认消息后，执行[将 Azure VM 连接到 HANA 大型实例](hana-connect-azure-vm-large-instances.md)中讨论的步骤。 
 
 要从 Azure 门户创建其他子网，请参阅[使用 Azure 门户创建虚拟网络](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 要通过 PowerShell 创建子网，请参阅[使用 PowerShell 创建虚拟网络](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)。
 
@@ -55,7 +55,9 @@ ms.locfileid: "111421771"
 
 ## <a name="delete-a-subnet"></a>删除子网
 
-可以使用 Azure 门户、PowerShell 或 Azure CLI 来删除虚拟网络子网。 如果 Azure 虚拟网络 IP 地址范围或地址空间是一个聚合范围，则不需要与 Microsoft 协调。 （不过，需要注意的是，虚拟网络仍会传播包含已删除子网的 BGP 路由地址空间。）可能已经将 Azure 虚拟网络地址范围或地址空间定义为多个 IP 地址范围， 其中一个范围可能已分配给已删除的子网。 请确保从虚拟网络地址空间中删除该子网。 然后通知 Microsoft SAP HANA 服务管理团队，让其将该线路从 Azure SAP HANA（大型实例）能够与之通信的范围中删除。
+可以使用 Azure 门户、PowerShell 或 Azure CLI 来删除虚拟网络子网。 如果 Azure 虚拟网络 IP 地址范围或地址空间是一个聚合范围，则不需要与 Microsoft 协调。 （虚拟网络仍会传播包含已删除子网的 BGP 路由地址空间。） 
+
+可能已经将 Azure 虚拟网络地址范围或地址空间定义为多个 IP 地址范围。 其中一个范围可能已分配给已删除的子网。 请确保从虚拟网络地址空间中删除该子网。 然后通知 Microsoft SAP HANA 服务管理团队，让其将该线路从 Azure SAP HANA（大型实例）能够与之通信的范围中删除。
 
 有关详细信息，请参阅[删除子网](../../../virtual-network/virtual-network-manage-subnet.md#delete-a-subnet)。
 
@@ -67,7 +69,11 @@ Microsoft SAP HANA 服务管理团队会删除对 Azure SAP HANA（大型实例�
 
 删除虚拟网络后，请提出 Azure 支持请求并提供要删除的 IP 地址空间范围。
 
-请确保删除所有内容。 请删除 ExpressRoute 连接、虚拟网络网关、虚拟网络网关公共 IP 和虚拟网络。
+请确保删除所有内容。 删除：
+- ExpressRoute 连接
+- 虚拟网络网关
+- 虚拟网络网关公共 IP
+- 虚拟网络
 
 ## <a name="delete-an-expressroute-circuit"></a>删除 ExpressRoute 线路
 

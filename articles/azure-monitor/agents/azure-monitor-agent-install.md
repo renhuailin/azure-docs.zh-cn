@@ -4,16 +4,16 @@ description: 在 Azure 虚拟机和已启用 Azure Arc 的服务器上安装 Azu
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/17/2020
+ms.date: 07/19/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 2ddbbd94b39429d2403e92fea6ba5cebb808af48
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: f787a01cb4e83b05b30a1e802658ed95a983e6a2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109845611"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461033"
 ---
-# <a name="install-the-azure-monitor-agent-preview"></a>安装 Azure Monitor 代理（预览版）
+# <a name="install-the-azure-monitor-agent"></a>安装 Azure Monitor 代理
 本文提供在 Azure 虚拟机和已启用 Azure Arc 的服务器上安装 [Azure Monitor 代理](azure-monitor-agent-overview.md)当前可采用的不同选项，还提供用于创建[数据收集规则关联](data-collection-rule-azure-monitor-agent.md)的选项，这些规则将定义代理应收集的数据。
 
 ## <a name="prerequisites"></a>先决条件
@@ -21,9 +21,13 @@ ms.locfileid: "109845611"
 
 - 必须在 Azure 虚拟机上启用[托管系统标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)。 对于已启用 Azure Arc 的服务器，这一点不是必需要求。 如果在[使用 Azure 门户创建和分配数据收集规则](#install-with-azure-portal)的过程中安装代理，系统标识将自动启用。
 - 必须在虚拟机的虚拟网络上启用 [AzureResourceManager 服务标记](../../virtual-network/service-tags-overview.md)。
+- 虚拟机必须具有以下 HTTPS 终结点的访问权限：
+  - *.ods.opinsights.azure.com
+  - *.ingest.monitor.azure.com
+  - *.control.monitor.azure.com
 
 > [!IMPORTANT]
-> Azure Monitor 代理当前不支持网络代理。
+> Azure Monitor 代理当前不支持网络代理或专用链接。
 
 ## <a name="virtual-machine-extension-details"></a>虚拟机扩展详细信息
 Azure Monitor 代理以 [Azure VM 扩展](../../virtual-machines/extensions/overview.md)方式实现，详细信息如下表所示。 可以使用任何方法来安装虚拟机扩展，其中包括本文中所述的方法。
@@ -78,11 +82,11 @@ Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publishe
 使用以下 PowerShell 命令在已启用 Azure Arc 的服务器上安装 Azure Monitor 代理。
 # <a name="windows"></a>[Windows](#tab/PowerShellWindowsArc)
 ```powershell
-New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
+New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <arc-server-name> -Location <arc-server-location>
 ```
 # <a name="linux"></a>[Linux](#tab/PowerShellLinuxArc)
 ```powershell
-New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
+New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <arc-server-name> -Location <arc-server-location>
 ```
 ---
 ## <a name="azure-cli"></a>Azure CLI
@@ -104,11 +108,11 @@ az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Mo
 
 # <a name="windows"></a>[Windows](#tab/CLIWindowsArc)
 ```azurecli
-az connectedmachine machine-extension create --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --ids <vm-resource-id>
+az connectedmachine extension create --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --machine-name <arc-server-name> --resource-group <resource-group-name> --location <arc-server-location>
 ```
 # <a name="linux"></a>[Linux](#tab/CLILinuxArc)
 ```azurecli
-az connectedmachine machine-extension create --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids <vm-resource-id>
+az connectedmachine extension create --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --machine-name <arc-server-name> --resource-group <resource-group-name> --location <arc-server-location>
 ```
 ---
 

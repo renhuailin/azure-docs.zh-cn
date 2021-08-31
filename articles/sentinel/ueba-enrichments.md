@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 05/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 1f782228866d73c84409f394a014bad519d988a9
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 3253a399015e533fc299bc7a338ce091769f4c65
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809627"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721692"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Azure Sentinel UEBA 扩充引用
 
@@ -34,38 +34,42 @@ ms.locfileid: "109809627"
 
 <a name="baseline-explained"></a>根据每次使用时都会动态编译的基线来分析用户活动。 每个活动都有其定义的回溯期，动态基线从该回溯期中派生。 此表的[基线](#activityinsights-field)列中指定了该回溯期。
 
-> [!NOTE] 
+> [!NOTE]
 > 所有[实体扩充字段](#entity-enrichments-dynamic-fields)表中的“扩充名称”列都显示两行信息。 
-> 
+>
 > - 第一行以“粗体”显示扩充的“易记名称”。
 > - 第二行（斜体且加括号）是存储在 [**行为分析表**](#behavioranalytics-table)中的扩充的字段名称。
 
+> [!IMPORTANT]
+> 请注意，这些功能目前为预览版。 [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+>
 ## <a name="behavioranalytics-table"></a>BehaviorAnalytics 表
 
 下表说明了 Azure Sentinel 中每个[实体详细信息页](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages)上显示的行为分析数据。
 
 | 字段                     | 类型 | 说明                                                  |
 |---------------------------|------|--------------------------------------------------------------|
-| **TenantId**              | string | 租户的唯一 ID 编号                             |
-| **SourceRecordId**        | 字符串 | EBA 事件的唯一 ID 编号                          |
-| **TimeGenerated**         | datetime | 活动发生时的时间戳                   |
-| **TimeProcessed**         | datetime | EBA 引擎处理活动时的时间戳 |
-| **ActivityType**          | 字符串 | 活动的高级类别                        |
-| **ActionType**            | 字符串 | 活动的规范化名称                            |
-| **UserName**              | 字符串 | 发起活动的用户的用户名           |
-| **UserPrincipalName**     | 字符串 | 发起活动的用户的完整用户名      |
-| **EventSource**           | 字符串 | 提供原始事件的数据源               |
-| **SourceIPAddress**       | 字符串 | 发起活动的 IP 地址               |
-| **SourceIPLocation** | 字符串 | 发起活动的国家/地区，从 IP 地址进行扩充 |
-| **SourceDevice**          | 字符串 | 发起活动的设备的主机名         |
-| **DestinationIPAddress**  | 字符串 | 活动目标的 IP 地址                   |
-| **DestinationIPLocation** | 字符串 | 活动目标所在国家/地区，从 IP 地址进行扩充 |
-| **DestinationDevice**     | 字符串 | 目标设备的名称                                  |
-| **UsersInsights**         | 动态 | 相关用户的上下文扩充（[详细信息如下](#usersinsights-field)） |
-| **DevicesInsights**       | 动态 | 相关设备的上下文扩充（[详细信息如下](#devicesinsights-field)） |
-| **ActivityInsights**      | 动态 | 基于我们的分析的活动的上下文分析（[详细信息如下](#activityinsights-field)） |
-| **InvestigationPriority** | int | 异常分数，介于 0-10（0=良性，10=高度异常）   |
-|
+| **TenantId**              | string | 租户的唯一 ID 编号。                             |
+| **SourceRecordId**        | 字符串 | EBA 事件的唯一 ID 编号。                          |
+| **TimeGenerated**         | datetime | 活动发生时的时间戳。                   |
+| **TimeProcessed**         | datetime | EBA 引擎处理活动时的时间戳。 |
+| **ActivityType**          | 字符串 | 活动的高级类别。                        |
+| **ActionType**            | 字符串 | 活动的规范化名称。                            |
+| **UserName**              | 字符串 | 发起活动的用户的用户名。           |
+| **UserPrincipalName**     | 字符串 | 发起活动的用户的完整用户名。      |
+| **EventSource**           | 字符串 | 提供原始事件的数据源。               |
+| **SourceIPAddress**       | 字符串 | 发起活动的 IP 地址。               |
+| **SourceIPLocation** | 字符串 | 发起活动的国家/地区，从 IP 地址进行扩充。 |
+| **SourceDevice**          | 字符串 | 发起活动的设备的主机名。         |
+| **DestinationIPAddress**  | 字符串 | 活动目标的 IP 地址。                   |
+| **DestinationIPLocation** | 字符串 | 活动目标所在国家/地区，从 IP 地址进行扩充。 |
+| **DestinationDevice**     | 字符串 | 目标设备的名称。                                  |
+| **UsersInsights**         | 动态 | 相关用户的上下文扩充（[详细信息如下](#usersinsights-field)）。 |
+| **DevicesInsights**       | 动态 | 相关设备的上下文扩充（[详细信息如下](#devicesinsights-field)）。 |
+| **ActivityInsights**      | 动态 | 基于我们的分析的活动的上下文分析（[详细信息如下](#activityinsights-field)）。 |
+| **InvestigationPriority** | int | 异常分数，介于 0-10（0=良性，10=高度异常）。   |
+
+
 
 ## <a name="entity-enrichments-dynamic-fields"></a>实体扩充动态字段
 
@@ -204,6 +208,67 @@ ms.locfileid: "109809627"
 | **删除的异常数量的设备**<br>*(UnusualNumberOfDevicesDeleted)* | 5 | 用户删除了异常数量的设备。 | True、False |
 | **添加到组中的异常数量的用户**<br>*(UnusualNumberOfUsersAddedToGroup)* | 5 | 用户向组中添加了异常数量的用户。 | True、False |
 |
+
+
+## <a name="identityinfo-table-public-preview"></a>IdentityInfo 表（公开预览版）
+
+为 Azure Sentinel 工作区[启用 UEBA](enable-entity-behavior-analytics.md) 后，来自 Azure Active Directory 的数据将同步到 Log Analytics 中的 IdentityInfo 表以在 Azure Sentinel 中使用。 可以在分析规则中嵌入从 Azure AD 同步的用户数据，以增强分析来适应你的用例并减少误报。
+
+虽然初始同步可能需要几天时间，但在数据完全同步后，将获得以下优势：
+
+- 对 Azure AD 中的用户配置文件所做的更改会在 15 分钟内更新到 IdentityInfo 表中。
+
+- 组和角色信息每天在 IdentityInfo 表和 Azure AD 之间同步。
+
+- 每 21 天，Azure Sentinel 会与整个 Azure AD 重新同步，以确保过时的记录将完全更新。
+
+- IdentityInfo 表中的默认保留时间为 30 天。
+
+
+> [!NOTE]
+> 目前，仅支持内置角色。
+>
+> 目前不支持有关已删除组（从组中删除了用户）的数据。
+>
+
+下表描述了 Log Analytics 的 IdentityInfo 表中包含的用户身份数据。
+
+| 字段                      | 类型     | 说明                                                                                                             |
+| --------------------------- | -------- | -------------------------------------------------------- |
+| **AccountCloudSID**             | string   | 帐户的 Azure AD 安全标识符。       |
+| **AccountCreationTime**         | datetime | 创建用户帐户的日期 (UTC)。    |
+| **AccountDisplayName**          | string   | 用户帐户的显示名称。           |
+| **AccountDomain**               | string   | 用户帐户的域名。  |
+| **AccountName**                 | string   | 用户帐户的用户名。      |
+| **AccountObjectId**             | string   | 用户帐户的 Azure Active Directory 对象 ID。           |
+| **AccountSID**                  | string   | 用户帐户的本地安全标识符。      |
+| **AccountTenantId**             | string   | 用户帐户的 Azure Active Directory 租户 ID。    |
+| **AccountUPN**                  | string   | 用户帐户的用户主体名称。     |
+| **AdditionalMailAddresses**     | 动态  | 用户的其他电子邮件地址。   |
+| **AssignedRoles**               | 动态  | 为用户帐户分配的 Azure AD 角色。    |
+| **城市**                        | string   | 用户帐户的城市。   |
+| **国家/地区**                     | string   | 用户帐户的国家/地区。   |
+| **DeletedDateTime**             | datetime | 删除用户的日期和时间。       |
+| **部门**                  | string   | 用户帐户的部门。    |
+| **GivenName**                   | string   | 用户帐户的给定名称。     |
+| **GroupMembership**             | 动态  | 用户帐户所归属的 Azure AD 组。      |
+| **IsAccountEnabled**            | bool     | 指示是否在 Azure AD 中启用了用户帐户。    |
+| **JobTitle**                    | string   | 用户帐户的职务。    |
+| **MailAddress**                 | string   | 用户帐户的主要电子邮件地址。    |
+| 管理员                     | string   | 用户帐户的管理员别名。     |
+| **OnPremisesDistinguishedName** | string   | Azure AD 可分辨名称 (DN)。 专有名称是一系列相对专有名称 (RDN)，由逗号连接。 |
+| **电话**                       | string   | 用户帐户的电话号码。       |
+| **SourceSystem**                | string   | 用户数据的来源系统。   |
+| **State**                       | string   | 用户帐户的地理状态。  |
+| **StreetAddress**               | string   | 用户帐户的办公街道地址。    |
+| **Surname**                     | string   | 用户的姓氏。 帐户。      |
+| **TenantId**                    | string   |          用户的租户 ID。   |
+| **TimeGenerated**               | datetime | 生成事件的时间 (UTC)。       |
+| **类型**                        | string   | 表的名称。          |
+| **UserState**                   | string   | Azure AD 中用户帐户的当前状态（活动/禁用/休眠/锁定）。  |
+| **UserStateChangedOn**          | datetime | 上次更改帐户状态的日期 (UTC)。     |
+| **UserType**                    | string   | 用户类型。         |
+
 
 ## <a name="next-steps"></a>后续步骤
 

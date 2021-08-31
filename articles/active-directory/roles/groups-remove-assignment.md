@@ -1,6 +1,6 @@
 ---
-title: 从 Azure Active Directory 的组中删除角色分配 | Microsoft Docs
-description: 预览用于委托标识管理的自定义 Azure AD 角色。 在 Azure 门户、PowerShell 或图形 API 中管理 Azure 角色。
+title: 从 Azure Active Directory 的组中删除角色分配
+description: 使用 Azure 门户、PowerShell 或 Microsoft Graph API 从 Azure Active Directory 的组中删除角色分配。
 services: active-directory
 author: rolyon
 manager: daveba
@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 05/14/2021
+ms.date: 07/30/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c56c6597e7ff2553089b62cabb84b24168b7cabf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: add87a653c977c1378feeaa6d204a7bce0184431
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085719"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732327"
 ---
 # <a name="remove-role-assignments-from-a-group-in-azure-active-directory"></a>从 Azure Active Directory 的组中删除角色分配
 
@@ -28,16 +28,16 @@ ms.locfileid: "110085719"
 
 - Azure AD Premium P1 或 P2 许可证
 - 特权角色管理员或全局管理员
-- 使用 PowerShell 时需要 AzureADPreview 模块
+- 使用 PowerShell 时需要 AzureAD 模块
 - 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
 
 有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
-1. 选择“角色和管理员” > “角色名称”。
+1. 选择“Azure Active Directory” > “角色和管理员” > “角色名称” 。
 
 1. 选择要从中删除角色分配的组，然后选择“删除分配”。
 
@@ -115,5 +115,5 @@ DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用云组来管理角色分配](groups-concept.md)
-- [分配给云组的角色疑难解答](groups-faq-troubleshooting.md)
+- [使用 Azure AD 组来管理角色分配](groups-concept.md)
+- [排查分配给组的 Azure AD 角色的问题](groups-faq-troubleshooting.yml)

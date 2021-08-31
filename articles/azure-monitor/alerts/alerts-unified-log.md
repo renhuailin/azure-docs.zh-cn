@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 2744a1dd36751175e7bd421210bdb5b92b53dfe5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3eb0ab8ac6ca4c0ceddd9e3ebf84b8c2ddd5a9f4
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456914"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301305"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 
@@ -193,7 +193,9 @@ requests
 | 00:15 | TRUE  | 警报触发，操作组被调用。 新警报处于活动状态。
 | 00:20 | FALSE | 警报不会触发。 没有调用任何操作。 以前的警报保持活动状态。
 
-有状态警报会在每次事件后触发一次并解决。 此功能目前在 Azure 公有云中处于预览版阶段。 可以使用警报详细信息部分的“自动解决警报”进行设置。
+有状态警报会在每次事件后触发一次并解决。 如果在特定评估期间出现 30 分钟都不符合警报条件的情况（考虑到日志引入存在延迟），或者出现连续三次评估都不符合警报条件的情况（这是为了减少不稳定情况下出现的干扰），则警报会解除。 例如，如果频率为 5 分钟/次，警报会在 40 分钟后解除；如果频率为 1 分钟/次，警报会在 32 分钟后解除。 通过 Webhook 或电子邮件发出“已解除”通知后，Azure 门户中警报实例的状态（称为“监视状态”）也会设置为“已解除”。
+
+监控状态的警报功能目前在 Azure 公有云中处于预览版阶段。 可以使用警报详细信息部分的“自动解决警报”进行设置。
 
 ## <a name="location-selection-in-log-alerts"></a>日志警报中的位置选择
 

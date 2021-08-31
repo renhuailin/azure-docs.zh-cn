@@ -206,6 +206,8 @@
       items:
         - name: 安全基线
           href: /security/benchmark/azure/baselines/windows-virtual-desktop-security-baseline?context=/azure/virtual-desktop/context/context
+        - name: 屏幕捕获保护
+          href: screen-capture-protection.md
 - name: 疑难解答
   items:
     - name: 故障排除概述、反馈和支持

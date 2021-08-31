@@ -2,14 +2,14 @@
 title: Azure Blob 备份的支持矩阵
 description: 汇总了备份 Azure Blob 时的支持设置和限制
 ms.topic: conceptual
-ms.date: 05/20/2021
+ms.date: 07/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 06e6d193ec929961dd4eeb192045a217aefa4ab2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ba2798ff464720379326ee56098f840a06e2c042
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475094"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722649"
 ---
 # <a name="support-matrix-for-azure-blobs-backup"></a>Azure Blob 备份的支持矩阵
 
@@ -32,6 +32,7 @@ Blob 的操作备份使用 blob 时点恢复、blob 版本控制、blob 的软�
 - 通过 [Put Block](/rest/api/storageservices/put-block) 或 [Put Block from URL](/rest/api/storageservices/put-block-from-url) 上传、但未通过 [Put Block List](/rest/api/storageservices/put-block-list) 提交的块不是 blob 的一部分，因此不会在还原操作过程中还原。
 - 无法还原具有活动租约的 blob。 如果要还原的 blob 范围内包含具有活动租约的 blob，则还原操作将自动失败。 在开始还原操作之前中断任何活动租约。
 - 在还原操作过程中，不会创建或删除快照。 只可将基本 blob 还原到其以前的状态。
+- 如果正在还原的 blob 中存在[不可变 blob](../storage/blobs/immutable-storage-overview.md#about-immutable-storage-for-blobs)，则此类不可变 blob 将不会根据所选恢复点恢复到其状态。 但是，其他未启用不可变性的 Blob 将还原到所选的恢复点，这是预期行为。
 
 ## <a name="next-steps"></a>后续步骤
 

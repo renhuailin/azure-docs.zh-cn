@@ -8,39 +8,41 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 05/14/2021
+ms.date: 07/30/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fb616bce2f169061a6384148e3cbbe463c83be8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c14580790891190f40dd2866aaac25ad2c286137
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085899"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741667"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>在 Azure Active Directory 中创建可分配角色的组
 
-只能将角色分配到在创建时“isAssignableToRole”属性设置为 True 的组，或是在 Azure 门户中创建时打开了“Azure AD 角色可以分配到组”的组。 具有此组属性，组才会成为你可以在 Azure Active Directory (Azure AD) 中为其分配角色的组。 本文介绍如何创建这种特殊类型的组。 注意：isAssignableToRole 属性设置为 true 的组不能是动态成员身份类型。 有关详细信息，请参阅[使用组来管理 Azure AD 角色分配](groups-concept.md)。
+只能将角色分配到在创建时“isAssignableToRole”属性设置为 True 的组，或是在 Azure 门户中创建时打开了“Azure AD 角色可以分配到组”的组。 具有此组属性，组才会成为你可以在 Azure Active Directory (Azure AD) 中为其分配角色的组。 本文介绍如何创建这种特殊类型的组。 注意：isAssignableToRole 属性设置为 true 的组不能是动态成员身份类型。 有关详细信息，请参阅[使用 Azure AD 组来管理角色分配](groups-concept.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure AD Premium P1 或 P2 许可证
 - 特权角色管理员或全局管理员
-- 使用 PowerShell 时需要 AzureADPreview 模块
+- 使用 PowerShell 时需要 AzureAD 模块
 - 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
 
 有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
-1. 选择“组” > “所有组” > “新建组”  。
+1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure AD 管理中心](https://aad.portal.azure.com)。
+
+1. 选择“Azure Active Directory” > “组” > “所有组” > “新建组”。
 
     [![打开 Azure Active Directory 并创建新组。](./media/groups-create-eligible/new-group.png "打开 Azure Active Directory 并创建新组。")](./media/groups-create-eligible/new-group.png#<lightbox>)
 
 1. 在“新建组”选项卡上，提供组的类型、名称和说明。
+
 1. 打开“Azure AD 角色可以分配到组”。 只有特权角色管理员和全局管理员才能看到此开关，因为只有这两个角色可以设置该开关。
 
     [![使新组符合角色分配条件](./media/groups-create-eligible/eligible-switch.png "使新组符合角色分配条件")](./media/groups-create-eligible/eligible-switch.png#<lightbox>)
@@ -69,9 +71,9 @@ $group = New-AzureADMSGroup -DisplayName "Contoso_Helpdesk_Administrators" -Desc
 
 ```powershell
 #Basic set up
-Install-Module -Name AzureADPreview
-Import-Module -Name AzureADPreview
-Get-Module -Name AzureADPreview
+Install-Module -Name AzureAD
+Import-Module -Name AzureAD
+Get-Module -Name AzureAD
 
 #Connect to Azure AD. Sign in as Privileged Role Administrator or Global Administrator. Only these two roles can create a role-assignable group.
 Connect-AzureAD
@@ -123,6 +125,6 @@ POST https://graph.microsoft.com/beta/groups
 
 ## <a name="next-steps"></a>后续步骤
 
-- [向云组分配角色](groups-assign-role.md)
-- [使用云组来管理角色分配](groups-concept.md)
-- [分配给云组的角色疑难解答](groups-faq-troubleshooting.md)
+- [向组分配 Azure AD 角色](groups-assign-role.md)
+- [使用 Azure AD 组来管理角色分配](groups-concept.md)
+- [排查分配给组的 Azure AD 角色的问题](groups-faq-troubleshooting.yml)

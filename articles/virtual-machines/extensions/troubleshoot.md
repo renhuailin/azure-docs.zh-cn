@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 03/29/2016
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d8aad654fce1b62bdc51e6cd15f5836742b772f2
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 49e0edf880efbf07e541d935e9b111b037a1f08d
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669557"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292795"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 扩展故障排除
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -59,6 +59,30 @@ Extensions:  {
 
 ## <a name="troubleshooting-extension-failures"></a>扩展故障排除
 
+### <a name="verify-that-the-vm-agent-is-running-and-ready"></a>验证 VM 代理是否正在运行且已就绪
+VM 代理是管理、安装和执行扩展必需的。 如果 VM 代理未运行或无法向 Azure 平台报告“就绪”状态，则扩展将无法正常工作。
+
+请参阅以下页面进行 VM 代理故障排除：
+- 适用于 Windows VM 的[对 Windows Azure 来宾代理进行故障排除](/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)
+- 适用于 Linux VM 的[对 Azure Linux 代理进行故障排除](/troubleshoot/azure/virtual-machines/linux-azure-guest-agent)
+
+### <a name="check-for-your-specific-extension-troubleshooting-guide"></a>查看特定扩展故障排除指南
+针对某些扩展，提供介绍如何对其进行故障排除的特定页面。 可以在[扩展故障排除](./overview.md#troubleshoot-extensions)中查找这些扩展及其页面的列表。
+
+### <a name="view-the-extensions-status"></a>查看扩展的状态
+如上所述，可以通过运行 PowerShell cmdlet 查找扩展的状态：
+```azurepowershell
+Get-AzVM -ResourceGroupName $RGName -Name $vmName -Status
+```
+
+或 CLI 命令：
+```azurecli
+az vm extension show -g <RG Name> --vm-name <VM Name>  --name <Extension Name>
+```
+
+或在 Azure 门户中浏览到 VM 边栏选项卡/设置/扩展。 然后，可以单击扩展并检查其状态和消息。
+
+
 ### <a name="rerun-the-extension-on-the-vm"></a>在 VM 上重新运行扩展
 如果使用自定义脚本扩展在 VM 上运行脚本，有时可能会遇到错误：VM 已成功创建但脚本却运行失败。 在这些情况下，从此错误中恢复的建议方法是删除该扩展并再次重新运行该模板。
 注意：未来此功能将得到增强，不再需要卸载该扩展。
@@ -99,3 +123,44 @@ az vm reapply -g <RG Name> -n <VM Name>
 ```
 
 如果“VM 重新应用”未起作用，则可从 Azure 管理门户为该 VM 添加新的空数据磁盘，在重新添加回证书后再将该磁盘删除。
+
+
+### <a name="look-at-the-extension-logs-inside-the-vm"></a>查看 VM 中的扩展日志
+
+如果前面的步骤不起作用，并且扩展仍处于失败状态，则下一步是在虚拟机中查看其日志。
+
+在 Windows VM 中，扩展日志通常位于 
+```
+C:\WindowsAzure\Logs\Plugins
+```
+扩展设置和状态文件将位于 
+```
+C:\Packages\Plugins
+```
+<br/>
+
+在 Linux VM 中，扩展日志通常位于 
+```
+/var/log/azure/
+```
+扩展设置和状态文件将位于 
+```
+/var/lib/waagent/
+```
+
+
+扩展各不相同，但它们通常遵循类似的原则：
+
+在 VM 上下载扩展包和二进制文件（例如， Linux 的“/var/lib/waagent/custom-script/download/1”或 Windows 的“C：\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\Downloads\0”）。 
+
+通过 VM 代理将其配置和设置从 Azure 平台传递到扩展处理程序（例如， Linux 的“/var/lib/waagent/Microsoft.Azure.Extensions.CustomScript-2.1.3/config”或 Windows 的“C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\RuntimeSettings”）
+
+VM 中的扩展处理程序正在写入到状态文件（例如， Linux 的“/var/lib/waagent/Microsoft.Azure.Extensions.CustomScript-2.1.3/status/1.status”或 Windows 的“C：\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\Status”），然后将该状态文件报告给 Azure 平台。 该状态是通过 PowerShell、CLI 或在 Azure 门户的 VM 扩展边栏选项卡中报告的状态。
+
+它们还会详细写入其执行日志（例如， Linux 的“/var/log/azure/custom-script/handler.log”或 Windows 的“C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\1.10.12\CustomScriptHandler.log”）。
+
+
+### <a name="if-the-vm-is-recreated-from-an-existing-vm"></a>如果从现有 VM 重新创建 VM
+
+可能会出现要基于另一个 Azure VM 的专用磁盘创建 Azure VM 的情况。 在这种情况下，旧 VM 可能包含扩展，因此会遗留二进制文件、日志和状态文件。 新的 VM 模型不会注意到先前 VM 的扩展状态，可能会报告错误的扩展状态。 强烈建议先删除旧 VM 中的扩展，再创建新 VM，然后在创建新 VM 后重新安装这些扩展。
+从现有 Azure VM 创建通用映像时，也可能发生这种情况。 请删除扩展，避免出现不一致的扩展状态。

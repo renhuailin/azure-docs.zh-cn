@@ -3,12 +3,12 @@ title: Azure Service Fabric 版本
 description: 了解主动支持的 Azure Service Fabric 和平台版本中的群集版本
 ms.topic: troubleshooting
 ms.date: 04/12/2021
-ms.openlocfilehash: f8979d83934234379a61cb8fab606cf5f37cf7e5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4eb08bb2ce94612ee81b9cdf19a1b3cd2e2d6b00
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110080680"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729731"
 ---
 # <a name="service-fabric-supported-versions"></a>受支持的 Service Fabric 版本
 本文中的表概述了主动支持的 Service Fabric 和平台版本。
@@ -17,8 +17,12 @@ ms.locfileid: "110080680"
 
 | Service Fabric 运行时 |可直接从此版本升级|可降级到|兼容的 SDK 或 NuGet 包版本|支持的 .NET 运行时** |OS 版本。 |结束支持 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 8.0 CU1 | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
-| 8.0 RTO | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
+| 8.1 CU1 | 7.2 CU7 | 8.0 | 版本 5.1 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
+| 8.1 RTO | 7.2 CU7 | 8.0 | 版本 5.1 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
+| 8.0 CU3 | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 CU2 | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 CU1 | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 RTO | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
 | 7.2 CU7 | 7.0 CU9 | 7.1 | 版本 4.2 或更低版本 | .NET 5.0（预览版支持）、>= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2021 年 11 月 30 日 |
 | 7.2 CU6 | 7.0 CU4 |7.1 | 版本 4.2 或更低版本 | .NET 5.0（预览版支持）、>= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
 | 7.2 RTO-CU5 | 7.0 CU4 | 7.1 |版本 4.2 或更低版本 | >= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
@@ -47,7 +51,7 @@ ms.locfileid: "110080680"
 
 | OS 版本 | Service Fabric 支持结束日期 | OS 生命周期链接 |
 | --- | --- | --- |
-| Windows 10 2019 LTSC | 2029/1/9 | <a href="/lifecycle/products/windows-10-2019-ltsc">Windows 10 2019 LTSC - Microsoft 生命周期</a> |
+| Windows 10 2019 LTSC | 2029/1/9 | <a href="/lifecycle/products/windows-10-ltsc-2019">Windows 10 2019 LTSC - Microsoft 生命周期</a> |
 | 版本 20H2 | 2023/5/9 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 企业版和教育版 - Microsoft 生命周期</a> |
 | 版本 2004 | 2021/12/14| <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 企业版和教育版 - Microsoft 生命周期</a> |
 | 版本 1909 | 2022/5/10 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 企业版和教育版 - Microsoft 生命周期</a> |
@@ -58,8 +62,11 @@ ms.locfileid: "110080680"
 
 | Service Fabric 运行时 | 可直接从此版本升级 |可降级到 |兼容的 SDK 或 NuGet 包版本 | 支持的 .NET 运行时** | OS 版本 | 结束支持 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 8.0 CU1 | 7.1 CU8 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
-| 8.0 RTO | 7.1 CU8 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
+| 8.1 CU1 | 7.2 CU7 | 8.0 | 版本 5.1 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
+| 8.1 RTO | 7.2 CU7 | 8.0 | 版本 5.1 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
+| 8.0 CU3 | 7.1 CU8 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 CU1 | 7.1 CU8 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
+| 8.0 RTO | 7.1 CU8 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
 | 7.2 CU7 | 7.0 CU9 | 7.1 | 低于或等于版本 4.2 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
 | 7.2 RTO-CU6 | 7.0 CU4 | 7.1 | 低于或等于版本 4.2 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
 | 7.1 | 7.0 CU3 | 不适用 | 低于或等于版本 4.1 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 7 月 31 日 |
@@ -75,20 +82,15 @@ ms.locfileid: "110080680"
 | Ubuntu 18.04 | 2028 年 4 月 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu 生命周期</a>|
 | Ubuntu 16.04 | 2024 年 4 月 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu 生命周期</a>|
 
-## <a name="supported-net-runtimes"></a>支持的 .NET 运行时
-
-下表列出了 Service Fabric 支持的 .NET 运行时：
-
-| Service Fabric 运行时 | Windows 支持的 .NET 运行时 |Linux 支持的 .NET 运行时 |
-| --- | --- | --- |
-| 8.0 CU1 | .NET 5.0、>= .NET Core 2.1、全部 >= .NET Framework 4.5 | >= .NET Core 2.1|
-| 8.0 RTO | .NET 5.0、>= .NET Core 2.1、全部 >= .NET Framework 4.5 | >= .NET Core 2.1|
-
 ## <a name="service-fabric-version-name-and-number-reference"></a>Service Fabric 版本名称和版本号参考
 下表列出了 Service Fabric 的版本名称以及相应的版本号。
 
 | 版本名称 | Windows 版本号 | Linux 版本号 |
 | --- | --- | --- |
+| 8.1 CU1 | 8.1.321.9590 | 8.1.323.1 |
+| 8.1 RTO | 8.1.316.9590 | 8.1.320.1 |
+| 8.0 CU3 | 8.0.536.9590 | 8.0.527.1 |
+| 8.0 CU2 | 8.0.521.9590 | NA |
 | 8.0 CU1 | 8.0.516.9590 | 8.0.515.1 | 
 | 8.0 RTO | 8.0.514.9590 | 8.0.513.1 | 
 | 7.2 CU7 | 7.2.477.9590 | 7.2.476.1 |

@@ -8,15 +8,15 @@ ms.author: sagopal
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 07/23/2020
+ms.date: 08/11/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: d4260b5c981c6b4f199fca88894abafbbb02e4a1
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 1588dedad6778993bc2db6307103e614a8f772ef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577850"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739110"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建和使用软件环境
 
@@ -56,9 +56,9 @@ Environment(name="myenv")
 
 特选环境包含 Python 包的集合，默认情况下可以在你的工作区中使用。 这些环境由缓存的 Docker 映像支持，降低了运行准备成本。 可以先从这些常用的特选环境中选择一个： 
 
-* _AzureML-Minimal_ 环境包含最小的一组包，用于启用运行跟踪和资产上传。 在创建自己的环境时，可以将其作为起点。
+* “AzureML-lightgbm-3.2-ubuntu18.04-py37-cpu”环境包含 Scikit-learn、LightGBM、XGBoost、Dask 以及其他 AzureML Python SDK 和其他包。
 
-* _AzureML-Tutorial_ 环境包含常用的数据科学包。 这些包包括 Scikit-learn、Pandas 和 Matplotlib，以及更大的 azureml-sdk 包集。
+* “AzureML-sklearn-0.24-ubuntu18.04-py37-cpu”环境包含常见的数据科学包。 这些包包括 Scikit-learn、Pandas 和 Matplotlib，以及更大的 azureml-sdk 包集。
 
 如需特选环境的列表，请参阅[特选环境](resource-curated-environments.md)一文。
 
@@ -68,7 +68,7 @@ Environment(name="myenv")
 from azureml.core import Workspace, Environment
 
 ws = Workspace.from_config()
-env = Environment.get(workspace=ws, name="AzureML-Minimal")
+env = Environment.get(workspace=ws, name="AzureML-sklearn-0.24-ubuntu18.04-py37-cpu")
 ```
 
 可以使用以下代码列出特选环境及其包：
@@ -87,7 +87,7 @@ for env in envs:
 
 若要自定义策展环境，请克隆并重命名环境。 
 ```python 
-env = Environment.get(workspace=ws, name="AzureML-Minimal")
+env = Environment.get(workspace=ws, name="AzureML-sklearn-0.24-ubuntu18.04-py37-cpu")
 curated_clone = env.clone("customize_curated")
 ```
 
@@ -120,7 +120,7 @@ myenv.docker.enabled = True
 
 #### <a name="use-a-prebuilt-docker-image"></a>使用预生成的 Docker 映像
 
-默认情况下，服务会自动使用一个基于 Ubuntu Linux 的[基础映像](https://github.com/Azure/AzureML-Containers)，具体来说就是 `azureml.core.environment.DEFAULT_CPU_IMAGE` 定义的映像。 然后，它将安装由提供的 Azure ML 环境定义的任何指定的 Python 包。 其他 Azure ML CPU 和 GPU 基础映像可在容器[存储库](https://github.com/Azure/AzureML-Containers)中找到。 还可以使用[自定义 Docker 基础映像](./how-to-deploy-custom-docker-image.md#create-a-custom-base-image)。
+默认情况下，服务会自动使用一个基于 Ubuntu Linux 的[基础映像](https://github.com/Azure/AzureML-Containers)，具体来说就是 `azureml.core.environment.DEFAULT_CPU_IMAGE` 定义的映像。 然后，它将安装由提供的 Azure ML 环境定义的任何指定的 Python 包。 其他 Azure ML CPU 和 GPU 基础映像可在容器[存储库](https://github.com/Azure/AzureML-Containers)中找到。 还可以使用[自定义 Docker 基础映像](./how-to-deploy-custom-container.md)。
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -130,8 +130,8 @@ myenv.docker.base_image_registry="your_registry_location"
 
 >[!IMPORTANT]
 > Azure 机器学习仅支持提供以下软件的 Docker 映像：
-> * Ubuntu 16.04 或更高版本。
-> * Conda 4.5.# 或更高版本。
+> * Ubuntu 18.04 或更高版本。
+> * Conda 4.7.# 或更高版本。
 > * Python 3.6+。
 > * 在用于训练的任何容器映像中，都需要在 /bin/sh 处有符合 POSIX 标准的 shell。 
 
@@ -144,7 +144,7 @@ myenv.docker.base_image_registry="your_registry_location"
 ```python
 # Specify docker steps as a string. 
 dockerfile = r"""
-FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
 RUN echo "Hello from custom container!"
 """
 
@@ -171,7 +171,7 @@ myenv.docker.base_dockerfile = "./Dockerfile"
 
 ```python
 dockerfile = """
-FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210615.v1
 RUN conda install numpy
 """
 
@@ -343,6 +343,10 @@ build = env.build_local(workspace=ws, useDocker=True, pushImageToWorkspaceAcr=Tr
 > [!WARNING]
 >  更改环境中的依赖项或通道的顺序将产生新的环境，并将需要新的映像生成。 此外，如果存在新版本，则为现有映像调用 `build()` 方法将更新其依赖项。 
 
+### <a name="utilize-adminless-azure-container-registry-acr-with-vnet"></a>将无管理 Azure 容器注册表 (ACR) 与 VNet 结合使用
+
+在 VNet 方案中，用户不再需要在其工作区附加的 ACR 上启用管理模式。 确保计算上的派生映像生成时间小于 1 小时，以便成功生成。 将映像推送到工作区 ACR 后，现在只能使用计算标识访问此映像。 有关设置的详细信息，请参阅[如何将托管标识与 Azure 机器学习结合使用](./how-to-use-managed-identities.md)。
+
 ## <a name="use-environments-for-training"></a>使用环境进行训练
 
 若要提交训练运行，需要将你的环境、[计算目标](concept-compute-target.md)和训练 Python 脚本组合到运行配置中。 此配置是用于提交运行的包装器对象。
@@ -360,7 +364,7 @@ exp = Experiment(name="myexp", workspace = ws)
 myenv = Environment(name="myenv")
 
 # Configure the ScriptRunConfig and specify the environment
-src = ScriptRunConfig(source_directory=".", script="train.py", target="local", environment=myenv)
+src = ScriptRunConfig(source_directory=".", script="train.py", compute_target="local", environment=myenv)
 
 # Submit run 
 run = exp.submit(src)
@@ -368,6 +372,9 @@ run = exp.submit(src)
 
 > [!NOTE]
 > 若要禁用运行历史记录或运行快照，请使用 `src.run_config.history` 下的设置。
+
+>[!IMPORTANT]
+> 为计算上的任何映像生成使用 CPU SKU。 
 
 如果未在运行配置中指定环境，服务将在提交运行时创建一个默认环境。
 
@@ -408,13 +415,15 @@ service = Model.deploy(
 
 本文中的代码示例也包含在[使用环境笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/using-environments/using-environments.ipynb)中。
 
- 若要将 Conda 环境安装为笔记本中的内核，请参阅[添加新的 Jupyter 内核](./how-to-access-terminal.md#add-new-kernels)。
+若要将 Conda 环境安装为笔记本中的内核，请参阅[添加新的 Jupyter 内核](./how-to-access-terminal.md#add-new-kernels)。
 
-[使用自定义 Docker 基础映像部署模型](how-to-deploy-custom-docker-image.md)演示了如何使用自定义的 Docker 基础映像部署模型。
+[使用自定义 Docker 基础映像部署模型](./how-to-deploy-custom-container.md)演示了如何使用自定义的 Docker 基础映像部署模型。
 
 [此示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/spark)演示了如何将 Spark 模型部署为 Web 服务。
 
-## <a name="create-and-manage-environments-with-the-cli"></a>使用 CLI 创建和管理环境
+## <a name="create-and-manage-environments-with-the-azure-cli"></a>使用 Azure CLI 创建和管理环境
+
+[!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
 
 [Azure 机器学习 CLI](reference-azure-machine-learning-cli.md) 具备 Python SDK 的大部分功能。 可以使用它来创建和管理环境。 本部分所讨论的命令演示了基本功能。
 
@@ -441,6 +450,10 @@ az ml environment list
 ```azurecli-interactive
 az ml environment download -n myenv -d downloaddir
 ```
+
+## <a name="create-and-manage-environments-with-visual-studio-code"></a>使用 Visual Studio Code 创建和管理环境
+
+使用 Azure 机器学习扩展，可以在 Visual Studio Code 中创建和管理环境。 有关详细信息，请参阅[使用 VS Code 扩展管理 Azure 机器学习资源](how-to-manage-resources-vscode.md#environments)。
 
 ## <a name="next-steps"></a>后续步骤
 

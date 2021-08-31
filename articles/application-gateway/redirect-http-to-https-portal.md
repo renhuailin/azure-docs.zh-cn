@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 92805b4f6c46a32718d755d19c9053705112fa48
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5192a740667217741b20d6bd335ca5662f3fc6aa
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321332"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690589"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 门户创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
@@ -137,7 +137,7 @@ Export-PfxCertificate `
 3. 在搜索框中，输入“规模集”  ，并按 Enter。
 4. 选择“虚拟机规模集”  ，然后选择“创建”  。
 5. 对于“虚拟机规模集名称”  ，输入 myvmss  。
-6. 对于操作系统磁盘映像，**确保选中“Windows Server 2016 Datacenter”  。
+6. 对于“操作系统磁盘映像”，确保选中“Windows Server 2016 Datacenter” 。
 7. 对于“资源组”  ，选择 myResourceGroupAG  。
 8. 对于“用户名”  ，输入 azureuser  。
 9. 对于“密码”  ，输入 Azure123456!  并确认该密码。
