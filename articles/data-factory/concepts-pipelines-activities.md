@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: 135d9235a94dd22311a804ee8c20046d2608a95c
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 06/19/2021
+ms.openlocfilehash: b86ae322999441fb4411854e8e11879907ed514f
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822218"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272046"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的管道和活动
 
@@ -112,7 +112,7 @@ name | 管道的名称。 指定一个名称，它表示管道要执行的操作
 description | 指定描述管道用途的文本。 | 字符串 | 否
 活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
 parameters | **参数** 部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
-concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则附加管道运行将排队，直到较早的管道完成为止 | 数字 | 否 
+concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则附加管道运行将排队，直到较早的管道完成为止 | Number | 否 
 annotations | 与管道关联的标记的列表 | Array | 否
 
 ## <a name="activity-json"></a>活动 JSON
@@ -141,7 +141,7 @@ annotations | 与管道关联的标记的列表 | Array | 否
 
 下表描述了活动 JSON 定义中的属性：
 
-标记 | 描述 | 必需
+标记 | 说明 | 必需
 --- | ----------- | ---------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\"” | 是</li></ul>
 description | 描述活动用途的文本 | 是
@@ -185,8 +185,8 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 JSON 名称 | 说明 | 允许的值 | 必需
 --------- | ----------- | -------------- | --------
 timeout | 指定活动运行的超时。 | Timespan | 否。 默认超时为 7 天。
-retry | 最大重试次数 | Integer | 否。 默认值为 0
-retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 否。 默认为 30 秒
+retry | 最大重试次数 | 整数 | 否。 默认值为 0
+retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | 整数 | 否。 默认为 30 秒
 secureOutput | 当设置为 true 时，来自活动的输出会被视为安全的，不会记录下来进行监视。 | 布尔 | 否。 默认值为 false。
 
 ### <a name="control-activity"></a>控制活动
@@ -206,7 +206,7 @@ secureOutput | 当设置为 true 时，来自活动的输出会被视为安全�
 }
 ```
 
-标记 | 描述 | 必需
+标记 | 说明 | 必需
 --- | ----------- | --------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\"” | 是</li><ul>
 description | 描述活动用途的文本 | 是

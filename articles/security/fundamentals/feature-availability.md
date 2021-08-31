@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 08/15/2021
-ms.openlocfilehash: f8e860cb93930c8e412fe102cf52fbf0c8b78e41
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 46e97cf7bb2fd3f54988f1643d047cc19e3fa82e
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418340"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195201"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>适用于美国政府客户的云功能可用性
 
@@ -128,7 +128,7 @@ Azure 和 Azure 政府版中 Azure Sentinel 的当前功能可用性如下表所
 
 | 功能 | Azure | Azure Government  |
 | ----- | ----- | ---- |
-|- [自动化规则](../../sentinel/automate-incident-handling-with-automation-rules.md) | 公共预览版 | 公共预览版 |
+|- [自动化规则](../../sentinel/automate-incident-handling-with-automation-rules.md) | 公共预览版 | 不可用 |
 |- [自带 ML (BYO-ML)](../../sentinel/bring-your-own-ml.md) | 公共预览版 | 公共预览版 |
 | - [跨租户/跨工作区事件视图](../../sentinel/multiple-workspace-view.md) |公共预览版 | 公共预览版 |
 | - [实体见解](../../sentinel/enable-entity-behavior-analytics.md) | GA | 公共预览版 |

@@ -11,19 +11,16 @@ ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: f72e9d3365e6b479fbf3a0420f07f4437f12db7d
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: bee4eb52ffab891f1a0f120fca25573a93d25370
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768938"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729402"
 ---
 # <a name="tutorial-configure-akamai-with-azure-active-directory-b2c"></a>教程：为 Azure Active Directory B2C 配置 Akamai
 
 在此示例教程中，可了解如何为使用自定义域的 Azure Active Directory (AD) B2C 租户启用 [Akamai Web 应用程序防火墙 (WAF)](https://www.akamai.com/us/en/resources/web-application-firewall.jsp) 解决方案。 Akamai WAF 可帮助组织防范其 Web 应用程序受到旨在利用安全漏洞进行的恶意攻击，如 SQL 注入和跨站点脚本。
-
->[!NOTE]
->此功能目前以公共预览版提供。
 
 使用 Akamai WAF 解决方案的好处：
 

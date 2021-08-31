@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 06/16/2021
-ms.openlocfilehash: 0669182210714f7840fef18d9c728644dcd96042
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 08/24/2021
+ms.openlocfilehash: f1e9cc3dba7f3ff87295cd184f11728d83c59d03
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272078"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822082"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
 

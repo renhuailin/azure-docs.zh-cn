@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.author: aahi
-ms.openlocfilehash: a55c281899495819ad8a537995867485b02c0af5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f8db386da9890be2a07f201243dbbb4beaf5c499
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778105"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444074"
 ---
 # <a name="how-to-summarize-text-with-text-analytics-preview"></a>操作说明：使用文本分析（预览版）汇总文本
 
@@ -87,7 +87,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 一个请求中的所有文档共享以下参数。 可以在请求的 `tasks` 定义中指定这些参数。
 * `model-version`，用于指定要使用的模型版本，默认值为 `latest`。 有关详细信息，请参阅[模型版本](../concepts/model-versioning.md) 
 * `sentenceCount`，用于指定将返回的句子数，默认值为 `3`。 范围为 1 到 20。
-* `sortyby`，用于指定将返回的提取句子的顺序。 `sortBy` 的接受值为 `Offset` 和 `Rank`，默认值为 `Offset`。 值 `Offset` 是句子在原始文档中的开始位置。    
+* `sortBy`，用于指定将返回的提取句子的顺序。 `sortBy` 的接受值为 `Offset` 和 `Rank`，默认值为 `Offset`。 值 `Offset` 是句子在原始文档中的开始位置。    
 
 ```json
 {
@@ -176,7 +176,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 }
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>“摘要”
 
 本文介绍了使用文本分析提取式摘要 API 进行提取式摘要的概念和工作流。 你可能想要使用提取式摘要来执行以下操作：
 

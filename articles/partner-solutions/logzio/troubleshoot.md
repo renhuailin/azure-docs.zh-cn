@@ -4,14 +4,14 @@ description: 了解如何排查 Azure 与 Logz.io 的集成问题。
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 07/28/2021
+ms.date: 08/17/2021
 ms.author: tomfitz
-ms.openlocfilehash: 7c27b8ffb36b918522adbcf422484b6dffe4d213
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5b1d1eb1a59e40286103d63508c98bcc3ba37b8c
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779667"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428456"
 ---
 # <a name="troubleshoot-logzio-integration-with-azure"></a>排查 Azure 与 Logz.io 的集成问题
 

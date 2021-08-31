@@ -4,21 +4,21 @@ description: 介绍如何在 Azure 中创建 Logz.io 资源的快速入门文章
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 07/28/2021
+ms.date: 08/17/2021
 ms.author: tomfitz
 ms.custom: references_regions
-ms.openlocfilehash: 323508356678da00f75918fcd59244fd5c860bcc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 55b5057542af2812a6d5c21acf3d4a9e1f64c293
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778218"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429327"
 ---
 # <a name="quickstart-create-a-logzio-resource-in-azure-portal"></a>快速入门：在 Azure 门户中创建 Logz.io 资源
 
 本文介绍如何启用 Azure 的 Logz.io 软件即服务 (SaaS) 集成。 使用 Logz.io 监视 Azure 环境的运行状况和性能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 订阅所有者：若要设置 Logz.io，必须在 Azure 订阅中为你分配[所有者角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。 开始此集成之前，请[检查你的访问权限](../../role-based-access-control/check-access.md)。
 - 注册资源提供程序 - 如果尚未为订阅注册 `Microsoft.Insights` ，则注册该资源提供程序。 有关详细信息，请参阅[注册资源提供程序](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
@@ -27,7 +27,7 @@ ms.locfileid: "121778218"
 
 使用 Azure 门户在 Azure Marketplace 中查找 Logz.io。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 如果最近访问过“市场”，请从可用选项中选择该图标。 否则，请搜索“市场”。
 
     :::image type="content" source="./media/create/marketplace.png" alt-text="Azure 市场。":::
@@ -42,7 +42,7 @@ ms.locfileid: "121778218"
 
 在“创建 Logz.io 帐户”屏幕的“基本信息” 选项卡上，输入以下值：
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 | ---- | ---- |
 | **订阅** | 从下拉菜单中，选择你对其具有所有者访问权限的 Azure 订阅。 |
 | **资源组** | 指定是要创建新的资源组还是使用现有资源组。 “资源组”是用于保存 Azure 解决方案相关资源的容器。 |
@@ -89,7 +89,7 @@ ms.locfileid: "121778218"
 | 属性 | 说明 |
 | ---- | ---- |
 | **名称** | 对应于 Azure Logz.io 资源的标记的名称。 |
-| **值** | 对应于 Azure Logz.io 资源的标记的值。 |
+| 值 | 对应于 Azure Logz.io 资源的标记的值。 |
 
 :::image type="content" source="./media/create/tags.png" alt-text="添加自定义标记。":::
 

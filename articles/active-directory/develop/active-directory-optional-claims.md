@@ -12,12 +12,12 @@ ms.date: 7/19/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6dce2e30f5177a26229f6c20d9500bbf5c824c3e
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: b3f92e5b0a526745ca2d9f87e76a0fcf77ed65e7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446384"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450543"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用提供可选声明
 
@@ -412,7 +412,7 @@ v2 令牌格式的一些改进供使用 v1 令牌格式的应用使用，因为�
 
 **清单配置：**
 
-1. 登录到 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
+1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在列表中找到要为其配置可选声明的应用程序并选择它。

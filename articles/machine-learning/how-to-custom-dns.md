@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 08/03/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: 6395f88f4841ef5447b8dfef5310fba6e0440e32
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 3ed8a3623163ef5f596508cd7073a68eec3fe297
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771452"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736529"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何将工作区用于自定义 DNS 服务器
 
@@ -285,17 +285,14 @@ $workspaceDns.CustomDnsConfigs | format-table
     Azure 公共区域：
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
-    - ```instances.ml.azure.us```
     
     Azure 中国区域：
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
-    - ```instances.ml.azure.cn```
     
     Azure 美国政府区域：
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
-    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > 此处不包含 DNS 服务器的配置步骤，因为有许多可用的 DNS 解决方案可以用作自定义 DNS 服务器。 请参阅 DNS 解决方案的文档，了解如何正确配置条件转发。
@@ -418,17 +415,14 @@ $workspaceDns.CustomDnsConfigs | format-table
     Azure 公共区域：
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
-    - ```instances.ml.azure.us```     
     
     Azure 中国区域：
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
-    - ```instances.ml.azure.cn```
-
+    
     Azure 美国政府区域：
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
-    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > 此处不包含 DNS 服务器的配置步骤，因为有许多可用的 DNS 解决方案可以用作自定义 DNS 服务器。 请参阅 DNS 解决方案的文档，了解如何正确配置条件转发。
@@ -442,17 +436,14 @@ $workspaceDns.CustomDnsConfigs | format-table
     Azure 公共区域：
     - ```api.azureml.ms```
     - ```notebooks.azure.net```
-    - ```instances.ml.azure.us```
     
     Azure 中国区域：
     - ```api.ml.azure.cn```
     - ```notebooks.chinacloudapi.cn```
-    - ```instances.ml.azure.cn```
     
     Azure 美国政府区域：
     - ```api.ml.azure.us```
     - ```notebooks.usgovcloudapi.net```
-    - ```instances.ml.azure.us```
 
     > [!IMPORTANT]
     > 此处不包含 DNS 服务器的配置步骤，因为有许多可用的 DNS 解决方案可以用作自定义 DNS 服务器。 请参阅 DNS 解决方案的文档，了解如何正确配置条件转发。
@@ -565,7 +556,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是介绍如何保护 Azure 机器学习工作流系列文章的一部分。 请参阅本系列中的其他文章：
+本文是介绍如何保护 Azure 机器学习工作流的系列文章的一部分。 请参阅本系列中的其他文章：
 
 * [虚拟网络概述](how-to-network-security-overview.md)
 * [保护工作区资源](how-to-secure-workspace-vnet.md)

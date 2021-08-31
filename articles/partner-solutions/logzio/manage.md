@@ -4,14 +4,14 @@ description: 了解如何管理 Azure 与 Logz.io 的集成。
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 07/28/2021
+ms.date: 08/17/2021
 ms.author: tomfitz
-ms.openlocfilehash: 0b00e1b4b5cf868fdd70909a1ce42f0861f2e0b2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e86b42694276c23f4d38809c9b40a7f92e39fa64
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778004"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429384"
 ---
 # <a name="manage-the-logzio-integration-in-azure"></a>管理 Azure 中的 Logz.io 集成
 
@@ -132,12 +132,12 @@ Logz.io 的“概述”屏幕介绍了包含以下项目的资源详细信息：
 
 1. 对于 Logz.io 资源，请选择“Logz 配置”和“Logz 子帐户”。
 1. 选择要删除的子帐户。
-1. 选择“删除” 。
+1. 选择“删除”。
 
     :::image type="content" source="./media/manage/delete-sub-account-1.png" alt-text="从 Logz 配置中删除 Logz.io 子帐户。":::
 
 1. 键入“是”以确认你要删除 Logz.io 资源。
-1. 选择“删除” 。
+1. 选择“删除”。
 
     :::image type="content" source="./media/manage/delete-sub-account-2.png" alt-text="确认删除 Logz.io 子帐户。":::
 
@@ -147,12 +147,12 @@ Logz.io 的“概述”屏幕介绍了包含以下项目的资源详细信息：
 
 1. 在 Logz.io 资源中，选择“概述”和“删除”。 
 1. 确认你要删除 Logz.io 资源。
-1. 选择“删除” 。
+1. 选择“删除”。
 
     :::image type="content" source="./media/manage/delete-resource-1.png" alt-text="从“概述”中删除 Logz.io 资源。":::
 
 1. 键入“是”以确认你要删除 Logz.io 资源。
-1. 选择“删除” 。
+1. 选择“删除”。
 
     :::image type="content" source="./media/manage/delete-resource-2.png" alt-text="确认删除 Logz.io 资源。":::
 

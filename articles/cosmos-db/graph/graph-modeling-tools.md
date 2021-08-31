@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.reviewer: sngun
-ms.openlocfilehash: eacebb55cbf4d6254d6688a95dba8ae638838cf3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d603de7ae8f011ac2ae2ed96d61efb571bdcf64
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121777972"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662353"
 ---
 # <a name="third-party-data-modeling-tools-for-azure-cosmos-db-graph-data"></a>适用于 Azure Cosmos DB 图形数据的第三方数据建模工具
 
@@ -40,7 +40,7 @@ Hackolade 是用于 NoSQL 数据库的数据建模和架构设计工具。 它�
 
 图 2 中的动画提供了一个反向工程的演示，从 RDBMS 中提取实体，然后 Hackolade 将从外键关系中发现关系，并进行修改。
 
-[此处](https://github.com/Azure-Samples/northwind-ddl-sample/nw.sql)提供了源作为 SQL Server 的示例 DDL   
+[此处](https://github.com/Azure-Samples/northwind-ddl-sample/blob/main/nw.sql)提供了源作为 SQL Server 的示例 DDL   
 
 
 :::image type="content" source="./media/graph-modeling-tools/hackolade-screenshot.jpg" alt-text="图形图示":::
@@ -58,4 +58,4 @@ Hackolade 是用于 NoSQL 数据库的数据建模和架构设计工具。 它�
 -  [Hackolade 文档](https://hackolade.com/help/CosmosDBGremlin.html)
 
 ## <a name="next-steps"></a>后续步骤
-- [可视化数据](/graph-visualization)
+- [可视化数据](/azure/cosmos-db/graph/graph-visualization-partners)
