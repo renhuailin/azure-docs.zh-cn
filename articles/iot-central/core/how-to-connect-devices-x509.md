@@ -102,7 +102,7 @@ IoT Central 支持共享的访问签名 (SAS) 和 X.509 证书，以保护设备
 
 ### <a name="run-sample-device-code&quot;></a>运行示例代码
 
-:::zone pivot=&quot;programming-language-csharp&quot;
+:::zone pivot="programming-language-csharp"
 
 如果使用的是 Windows，则 X.509 证书必须位于 Windows 证书存储中，这样才能正常运行该示例。 若要将证书添加到存储中，请执行以下操作：
 
@@ -124,8 +124,8 @@ IoT Central 支持共享的访问签名 (SAS) 和 X.509 证书，以保护设备
     ```csharp
     [Option(
         'x',
-        &quot;CertificatePath&quot;,
-        HelpText = &quot;(Required if DeviceSecurityType is \"dps\"). \nThe device PFX file to use during device provisioning." +
+        "CertificatePath",
+        HelpText = "(Required if DeviceSecurityType is \"dps\"). \nThe device PFX file to use during device provisioning." +
         "\nDefaults to environment variable \"IOTHUB_DEVICE_X509_CERT\".")]
     public string CertificatePath { get; set; } = Environment.GetEnvironmentVariable("IOTHUB_DEVICE_X509_CERT");
 
