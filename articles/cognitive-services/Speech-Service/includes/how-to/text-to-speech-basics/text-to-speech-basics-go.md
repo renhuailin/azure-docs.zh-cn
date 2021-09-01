@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/02/2021
 ms.author: yulili
-ms.openlocfilehash: 54647867ab0a0d2c1333f80121aeab49a2efc959
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: 7c64db9a503caff0bb2cda3e7dc576bb3e72884d
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113280214"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122423392"
 ---
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。
 
@@ -279,7 +279,7 @@ go run quickstart
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-  <voice name="en-US-AriaNeural">
+  <voice name="en-US-ChristopherNeural">
     When you're on the freeway, it's a good idea to use a GPS.
   </voice>
 </speak>
@@ -289,7 +289,7 @@ go run quickstart
 该请求基本上保持不变，只不过需要使用 `SpeakSsmlAsync()` 而不是 `SpeakTextAsync()` 函数。 此函数需要 XML 字符串，因此，请先加载字符串形式的 SSML 配置。 在此处，结果对象与前面的示例完全相同。
 
 > [!NOTE]
-> 若要在不使用 SSML 的情况下更改语音，可使用 `speechConfig.SetSpeechSynthesisVoiceName("en-US-AriaNeural")` 在 `SpeechConfig` 上设置属性
+> 若要在不使用 SSML 的情况下更改语音，可使用 `speechConfig.SetSpeechSynthesisVoiceName("en-US-ChristopherNeural")` 在 `SpeechConfig` 上设置属性
 
 ## <a name="get-facial-pose-events"></a>获取人脸姿态事件
 

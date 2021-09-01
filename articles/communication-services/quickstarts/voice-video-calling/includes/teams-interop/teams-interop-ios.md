@@ -2,16 +2,16 @@
 title: 快速入门 - 从 iOS 应用加入 Teams 会议
 description: 本教程介绍如何使用适用于 iOS 的 Azure 通信服务通话 SDK 加入 Teams 会议
 author: chpalm
-ms.author: mikben
+ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c23512eeb044d07e845de2a24ab6afd3bd190101
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 1b277dcca381cd621fac6011ad47f30e2744ee68
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112536053"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "123078572"
 ---
 本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务通话 SDK 加入 Teams 会议。
 

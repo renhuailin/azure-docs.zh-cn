@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: a9166131ce288b63de7e73b7a793c187a366908e
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 6e816919d41dbae62c33028c5d35c996654d7f26
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213932"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258313"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>可将用户登录的 Web 应用：代码配置
 
@@ -247,7 +247,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 > [!NOTE]
 > 如果想直接从利用 Microsoft.Identity.Web 的 Microsoft 标识平台的新 ASP.NET Core 模板开始，则可下载一个包含 .NET Core 3.1 和 .NET 5.0 项目模板的 NuGet 预览包。 然后，在安装后，可以直接实例化 ASP.NET Core Web 应用程序（MVC 或 Blazor）。 有关详细信息，请参阅 [Microsoft.Identity.Web Web 应用项目模板](https://aka.ms/ms-id-web/webapp-project-templates)。 这是最简单的方法，因为它将执行以下所有步骤。
 >
-> 如果你想使用 Visual Studio 中的当前默认 ASP.NET Core Web 项目来启动项目，或者使用 `dotnet new mvc --auth SingleAuth` 或 `dotnet new webapp --auth SingleAuth` 来启动项目，则会看到如下所示的代码：
+> 如果你想使用 Visual Studio 中的当前默认 ASP.NET Core Web 项目来启动项目，或者使用 `dotnet new mvc --auth SingleOrg` 或 `dotnet new webapp --auth SingleOrg` 来启动项目，则会看到如下所示的代码：
 >
 >```c#
 >  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)

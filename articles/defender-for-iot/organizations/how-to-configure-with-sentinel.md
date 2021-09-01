@@ -3,12 +3,12 @@ title: 使用适用于组织的 Defender for IoT 配置 Azure Sentinel
 description: 介绍如何配置 Azure Sentinel 以从 Defender for IoT 解决方案接收数据。
 ms.topic: how-to
 ms.date: 06/14/2021
-ms.openlocfilehash: f747f5c2d32e0f0485677bdd1f1b878b4dc1e6d3
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 7cc0e738158e173e8741504cabcfdbf831403544
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179554"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187048"
 ---
 # <a name="connect-your-data-from-defender-for-iot-for-organizations-to-azure-sentinel-public-preview"></a>将适用于组织的 Defender for IoT 中的数据连接到 Azure Sentinel（公共预览版）
 
@@ -56,4 +56,4 @@ SecurityAlert | where ProductName == "Azure Security Center for IoT"
 
 本文档介绍了如何将 Defender for IoT 连接到 Azure Sentinel。 若要了解有关威胁检测和安全数据访问的详细信息，请参阅以下文章：
 
-- 了解如何使用 Azure Sentinel，请参阅[快速入门：Azure Sentinel 入门](/azure/defender-for-iot/organizations/articles/sentinel/get-visibility.md)。
+- 了解如何使用 Azure Sentinel，请参阅[快速入门：Azure Sentinel 入门](/azure/sentinel/get-visibility)。

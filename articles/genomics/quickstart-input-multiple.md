@@ -4,17 +4,17 @@ titleSuffix: Microsoft Genomics
 description: 本文演示了在输入文件为多个来自同一示例的 FASTQ 或 BAM 文件的情况下，如何将工作流提交到 Microsoft 基因组学服务。
 services: genomics
 ms.service: genomics
-author: grhuynh
+author: vigunase
 manager: cgronlund
-ms.author: grhuynh
+ms.author: vigunase
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 1c7a65a2ff58d3191e7b21ecd40a8aa1bc1f4086
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: c87cd34231c3d9b54b4f4973f64761171605b560
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551841"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259818"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>使用来自同一示例的多个输入提交工作流
 

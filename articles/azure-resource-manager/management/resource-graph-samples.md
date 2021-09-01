@@ -1,15 +1,15 @@
 ---
 title: 针对 Azure 资源管理器的 Azure Resource Graph 示例查询
 description: 针对 Azure 资源管理器的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与 Azure 资源管理器相关的资源和属性。
-ms.date: 08/09/2021
+ms.date: 08/31/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 6fe86b1c3d0aef2ce9666ce88af455e82185f5eb
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 60341850e76c589f17b9b3d3c2561a94f1f3958f
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860669"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123315598"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-resource-manager"></a>针对 Azure 资源管理器的 Azure Resource Graph 示例查询
 

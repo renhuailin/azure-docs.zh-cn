@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: e239b6b00c5a5e993834a10fca30de02b9f715ff
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8a41832fdcc53820a9f7fe6436ec608b69f84126
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065508"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652297"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Azure Database for MySQL 的专用链接
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 使用专用链接可以通过专用终结点连接到 Azure 中的各种 PaaS 服务。 Azure 专用链接实质上是将 Azure 服务引入专用虚拟网络 (VNet) 中。 就像 VNet 中的任何其他资源一样，可以使用专用 IP 地址访问 PaaS 资源。
 
@@ -78,7 +80,7 @@ Azure Database for MySQL 中的数据渗透是指已获授权的用户（例如�
 
 :::image type="content" source="media/concepts-data-access-and-security-private-link/select-private-link-message.png" alt-text="选择专用终结点消息":::
 
-* 批准或拒绝后，该列表会反映相应的状态以及响应文本
+* 批准或拒绝后，该列表将反映相应的状态以及回复文本
 
 :::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-approved-connection.png" alt-text="选择专用终结点最终状态":::
 

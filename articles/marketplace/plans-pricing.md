@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 07/05/2021
-ms.openlocfilehash: 4ab56d50bbe6eed3763540e7b993ecc4f403b09c
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: f222245af177380a59f4c2adc9987b144a1c9b6f
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113598263"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864666"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>商业市场产品/服务计划和定价
 
@@ -42,7 +42,7 @@ ms.locfileid: "113598263"
 
 - 咨询服务
 - Dynamics 365 Business Central
-- Dynamics 365 Customer Engagement 和 PowerApps
+- Dynamics 365 Customer Engagement 和 Power Apps
 - Dynamics 365 for Operations
 - Power BI 应用
 
@@ -146,7 +146,7 @@ ms.locfileid: "113598263"
 > - Azure 虚拟机 
 > - SaaS 
 > - Dynamics 365 Business Central
-> - Dynamics 365 for Customer Engagement 和 PowerApps
+> - 适用于客户参与和 Power Apps 的 Dynamics 365
 > - Dynamics 365 for Operations
 >
 > 有关列表选项的详细信息，请参阅[确定发布选项](determine-your-listing-type.md)。

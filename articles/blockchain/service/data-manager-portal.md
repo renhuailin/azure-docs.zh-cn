@@ -4,16 +4,18 @@ description: 使用 Azure 门户创建和管理 Azure 区块链服务的区块�
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b80bbc1b302579f0145e7b5cb6c5e3e0561d2ef7
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85200675"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122651672"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>使用 Azure 门户配置区块链数据管理器
 
 配置 Azure 区块链服务的区块链数据管理器以捕获区块链数据并将此数据发送到 Azure 事件网格主题。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 若要配置区块链数据管理器实例，需要：
 
@@ -57,7 +59,7 @@ ms.locfileid: "85200675"
 
 ## <a name="add-blockchain-application"></a>添加区块链应用程序
 
-如果添加区块链应用程序，区块链数据管理器将对应用程序的事件和属性状态进行解码。 否则，只会发送原始块和原始事务数据。 区块链数据管理器还会在部署协定时发现协定地址。 可以将多个区块链应用程序添加到区块链数据管理器实例中。
+如果添加区块链应用程序，区块链数据管理器将对应用程序的事件和属性状态进行解码。 否则，只会发送原始块和原始事务数据。 区块链数据管理器还会在部署合约时发现合约地址。 可以将多个区块链应用程序添加到区块链数据管理器实例中。
 
 > [!IMPORTANT]
 > 目前，不完全支持声明 Solidity [数组类型](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays)或[映射类型](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types)的区块链应用程序。 声明为数组或映射类型的属性将不会在“ContractPropertiesMsg”或“DecodedContractEventsMsg”消息中进行解码。

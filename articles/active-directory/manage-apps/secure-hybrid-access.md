@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 8/17/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 321b7ed1ee6cfc2d37547a88f3aef5be6d594e10
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: e2dcba2b9435cb20cc112da1355cc31cbcb8dff2
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397125"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029806"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>安全混合访问：使用 Azure Active Directory 保护旧应用
 
@@ -40,9 +40,11 @@ ms.locfileid: "122397125"
 
 下列合作伙伴提供预建的解决方案来支持按应用程序实施的条件访问策略，并提供有关 Azure AD 集成的详细指南。 
 
+- [Akamai 企业应用程序访问](https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial)
+
 - [Citrix 应用程序传送控制器 (ADC)](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial)  
 
-- [Datawiza Access Broker](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)
+- [Datawiza Access Broker](datawiza-with-azure-ad.md)
 
 - [F5 Big-IP APM ADC](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
 
@@ -57,8 +59,6 @@ ms.locfileid: "122397125"
 - [Strata](https://docs.microsoft.com/azure/active-directory/saas-apps/maverics-identity-orchestrator-saml-connector-tutorial)
 
 下列合作伙伴提供预建解决方案和有关 Azure AD 集成的详细指南。 
-
-- [Akamai 企业应用程序访问](https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial)
 
 - [Cisco AnyConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect)
 

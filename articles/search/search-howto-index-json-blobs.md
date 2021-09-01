@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: c0abbf8dc928dc20778d748e16eea5ae8b775282
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ba6df6b29c9d7b9b388b34dab163a132272c6200
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557083"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223906"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的 Blob 索引器为 JSON Blob 编制索引
 
@@ -75,7 +75,7 @@ api-key: [admin key]
 
 ### <a name="json-example-single-hotel-json-files"></a>json 示例(单hotel JSON 文件)
 
-GitHub 上的 [hotel JSON 文档数据集](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotel-json-documents)对于测试 JSON 分析非常有用，其中每个 blob 表示一个结构化的 JSON 文件。 您可以将数据文件上传到 Blob 存储，然后使用“**导入数据**”向导快速评估如何将此内容分析为单个搜索文档。 
+GitHub 上的 [hotel JSON 文档数据集](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels/hotel-json-documents)对于测试 JSON 分析非常有用，其中每个 blob 表示一个结构化的 JSON 文件。 您可以将数据文件上传到 Blob 存储，然后使用“**导入数据**”向导快速评估如何将此内容分析为单个搜索文档。 
 
 数据集由五个 blob 组成，每个 blob 都包含具有一个地址集合和一个聊天室集合的 hotel 文档。 Blob 索引器会检测两个集合，并反映索引架构中输入文档的结构。
 
@@ -110,7 +110,7 @@ api-key: [admin key]
 
 ### <a name="jsonarrays-example-clinical-trials-sample-data"></a>jsonArrays 示例（临床试验示例数据）
 
-GitHub 上的[临床试验 JSON 数据集](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-json)对于测试 JSON 数组分析非常有用。 您可以将数据文件上传到 Blob 存储，然后使用“**导入数据**”向导快速评估如何将此内容分析为单个搜索文档。 
+GitHub 上的[临床试验 JSON 数据集](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials/clinical-trials-json)对于测试 JSON 数组分析非常有用。 您可以将数据文件上传到 Blob 存储，然后使用“**导入数据**”向导快速评估如何将此内容分析为单个搜索文档。 
 
 数据集由八个 blob 组成，每个 blob 包含一个 JSON 实体数组，共100个实体。 根据填充的字段，实体会有所不同，但最终结果是所有 blob 中的每个实体（来自所有数组）会有一个搜索文档。
 
@@ -166,12 +166,6 @@ api-key: [admin key]
     "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
 }
 ```
-
-### <a name="jsonlines-example-caselaw-sample-data"></a>jsonLines 示例（caselaw 示例数据）
-
-GitHub 上的[caselaw JSON 数据集](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/caselaw)对于测试 JSON 换行分析非常有用。 与其他示例一样，你可以将此数据上传到 Blob 存储，并使用“**导入数据**”向导快速评估分析模式对各个 blob 的影响。
-
-数据集由一个 blob 组成，其中包含10个由新行分隔的 JSON 实体，每个实体描述单个合法事例。 最终结果为每个实体一个搜索文档。
 
 ## <a name="map-json-fields-to-search-fields"></a>将 JSON 字段映射到搜索字段
 

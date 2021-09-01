@@ -2,19 +2,19 @@
 title: Azure 通信服务参考文档概述
 titleSuffix: An Azure Communication Services concept document
 description: 了解通信服务的参考文档。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: e8c551ef2c1ccc76347f3d89c452cb93af49da6c
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 3cb5c51c87e0db38c70fd9e09a0b2858408d281c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105824"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256920"
 ---
 # <a name="reference-documentation-overview"></a>参考文档概述
 
