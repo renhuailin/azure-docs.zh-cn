@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 3509185baa3a9d7be90c1fa4bd8000da4a8a6fe5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c33ad42eeb710edbffdf6448fc138eb6d6aae86
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95554950"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123078441"
 ---
 ## <a name="prepare-for-akv-integration"></a>准备 AKV 集成
 若要使用 Azure Key Vault 集成来配置 SQL Server VM，有以下几个先决条件： 
@@ -60,7 +60,7 @@ ms.locfileid: "95554950"
 New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 ```
 
-进行创建密钥保管库的步骤时，请注意返回的 vaultUri 属性，它是密钥保管库 URL  。 下面显示了该步骤中提供的示例，其中的密钥保管库名称是 ContosoKeyVault，因此密钥保管库 URL 为 https://contosokeyvault.vault.azure.net/ 。
+进行创建密钥保管库的步骤时，请注意返回的 vaultUri 属性，它是密钥保管库 URL  。 下面显示了该步骤中提供的示例，其中的密钥保管库名称是 ContosoKeyVault，因此密钥保管库 URL 为 `https://contosokeyvault.vault.azure.net/` 。
 
 稍后会将该密钥保管库 URL 分配给 PowerShell 脚本中的 $akvURL 参数，以启用 Azure Key Vault 集成  。
 

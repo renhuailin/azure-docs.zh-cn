@@ -3,16 +3,16 @@ title: 使用 Azure Data Box 进行脱机备份
 description: 了解如何使用 Azure Data Box 以脱机方式将较大初始备份数据从 MARS 代理植入到恢复服务保管库。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 78adc479ce5733e208d2334d30d7b88e4edf8d6b
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 7793259797a47eb0353de7ecb27686ea2eafa24c
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576085"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123185896"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure Data Box 进行 Azure 备份脱机备份
 
-可以使用 [Azure Data Box](../databox/data-box-overview.md) 将大量初始 Microsoft Azure 恢复服务 (MARS) 备份以脱机方式（不使用网络）植入到恢复服务保管库。 此过程可节省通过高延迟网络联机移动大量备份数据所需的时间和网络带宽。 此增强功能目前为预览版。 与[基于 Azure 导入/导出服务的脱机备份](./backup-azure-backup-import-export.md)相比，基于 Azure Data Box 的脱机备份具有两个明显优势：
+可以使用 [Azure Data Box](../databox/data-box-overview.md) 将大量初始 Microsoft Azure 恢复服务 (MARS) 备份以脱机方式（不使用网络）植入到恢复服务保管库。 此过程可节省通过高延迟网络联机移动大量备份数据所需的时间和网络带宽。  与[基于 Azure 导入/导出服务的脱机备份](./backup-azure-backup-import-export.md)相比，基于 Azure Data Box 的脱机备份具有两个明显优势：
 
 - 无需购买你自己的与 Azure 兼容的磁盘和连接器。 Azure Data Box 随附与选定 [Data Box SKU](https://azure.microsoft.com/services/databox/data/) 关联的磁盘。
 - Azure 备份（MARS 代理）可以直接将备份数据写入支持的 Azure Data Box SKU。 此功能使你无需为初始备份数据预配暂存位置。 也不需要使用实用工具来格式化数据并将其复制到磁盘上。

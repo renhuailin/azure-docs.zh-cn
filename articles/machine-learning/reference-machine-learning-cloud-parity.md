@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 07/16/2021
+ms.date: 08/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1c26761fe23fb1a7558100dea3cb74d7b078550d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eef2a1eb5f17864074ac346ac7a89a59d1d59778
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749498"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037285"
 ---
 # <a name="azure-machine-learning-feature-availability-across-clouds-regions"></a>Azure 机器学习跨云区域的功能可用性
 
@@ -62,7 +62,7 @@ ms.locfileid: "121749498"
 | 虚拟网络 (VNet) 训练支持                                | GA                   | YES                | YES         |
 | 虚拟网络 (VNet) 推理支持                               | GA                   | YES                | YES         |
 | 对终结点身份验证评分                                            | 公共预览版       | YES                | YES         |
-| 工作区专用终结点                                                 | GA  |  公共预览版  |  公共预览版 |
+| 工作区专用终结点                                                 | GA  |  GA  |  GA |
 | VNet 后的 ACI                                                            | 公共预览版       | 是                 | 是          |
 | VNet 后的 ACR                                                            | GA       | YES                 | YES          |
 | AKS 群集的专用 IP                                                  | 公共预览版       | 是                 | 是          |

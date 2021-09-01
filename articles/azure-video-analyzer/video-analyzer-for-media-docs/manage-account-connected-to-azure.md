@@ -9,12 +9,12 @@ ms.topic: article
 ms.subservice: azure-video-analyzer-media
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 25d4b5a918fbb307698910f0184231689cb84a75
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 836cff6a8b55378089a6215b9d0c25e3fcac76c4
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119401"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305168"
 ---
 # <a name="manage-a-video-analyzer-for-media-account-connected-to-azure"></a>管理连接至 Azure 的视频分析器媒体版帐户
 
@@ -59,14 +59,6 @@ ms.locfileid: "112119401"
 |Azure 媒体服务资源组名称|资源组（你在其中创建了媒体服务帐户）的名称。|
 |应用程序 ID|你为此视频分析器媒体版帐户创建的 Azure AD 应用程序 ID（具有指定媒体服务帐户的权限）。 <br/><br/>若要获取应用 ID，请导航到 Azure 门户。 在“媒体服务帐户”下，选择你的帐户，然后转到“API 访问权限”。 选择“使用服务主体连接到媒体服务 API” -> “Azure AD 应用”。 复制相关参数。|
 |应用程序密钥|与上面指定的媒体服务帐户关联的 Azure AD 应用程序密钥。 <br/><br/>若要获取应用密钥，请导航到 Azure 门户。 在“媒体服务帐户”下，选择你的帐户，然后转到“API 访问权限”。 选择“使用服务主体连接到媒体服务 API” -> “管理应用程序” -> “证书和机密”。 复制相关参数。|
-
-## <a name="autoscale-reserved-units"></a>自动缩放预留单位
-
-在“设置”页中，可以设置媒体保留单位 (RU) 的自动缩放。 如果该选项设置为“打开”，则你可以分配最多的 RU，并可以确保视频分析器媒体版自动停止/启动 RU。 使用此选项，你不必为空闲时间支付额外费用，也不必在索引负载较高时长时间等待索引作业完成。
-
-自动缩放不会缩减到 1 个 RU 以下，也不会扩展到超过媒体服务帐户的默认限制。 若要提高此限制，请创建服务请求。 有关配额和限制以及如何开具支持票证的信息，请参阅[配额和限制](../../media-services/previous/media-services-quotas-and-limitations.md)。
-
-![自动缩放预留单位 - 视频分析器媒体版](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>错误和警告
 

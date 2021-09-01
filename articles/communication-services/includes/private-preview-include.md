@@ -1,16 +1,16 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
 ms.date: 06/30/2021
-ms.author: mikben
+ms.author: rifox
 ms.custom: private_preview
-ms.openlocfilehash: d1ea647ce1fdceb9afacc0d608162a9aafa9010e
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: d32d701b706d50db54f704f5ca88cb62df769ea6
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113106510"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "123078159"
 ---
 > [!IMPORTANT]
 > 本文档中所述的功能目前提供个人预览版。 个人预览版包括对测试用 SDK 和文档的访问权限，这些资源尚未公开提供。

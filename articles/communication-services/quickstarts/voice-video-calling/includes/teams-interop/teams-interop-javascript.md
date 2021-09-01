@@ -2,16 +2,16 @@
 title: 快速入门 - 从 Web 应用加入 Teams 会议
 description: 本教程介绍如何使用适用于 JavaScript 的 Azure 通信服务通话 SDK 加入 Teams 会议
 author: chpalm
-ms.author: mikben
+ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 5cc27cd600d8e8717a70deefc801b3f500792e11
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 2f828583f8c1a51f97ffffe98c9345bd79eb7c68
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112535901"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "123078526"
 ---
 本快速入门介绍如何使用适用于 JavaScript 的 Azure 通信服务通话 SDK 加入 Teams 会议。
 

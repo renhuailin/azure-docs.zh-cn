@@ -13,14 +13,14 @@ ms.date: 02/03/2020
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94174eeb943f4016fde8baf329fa6ba27768e486
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80881242"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039928"
 ---
-# <a name="how-to-configure-sso-on-macos-and-ios"></a>操作说明：在 macOS 和 iOS 上配置 SSO
+# <a name="configure-sso-on-macos-and-ios"></a>在 macOS 和 iOS 上配置 SSO
 
 适用于 macOS 和 iOS 的 Microsoft 身份验证库 (MSAL) 支持 macOS/iOS 应用与浏览器之间的单一登录 (SSO)。 本文介绍以下 SSO 方案：
 
@@ -104,7 +104,7 @@ App3 重定向 URI：`msauth.com.contoso.mytestapp3://auth`
 
 有关详细信息，请参阅[密钥链组](howto-v2-keychain-objc.md)。
 
-## <a name="configure-the-application-object&quot;></a>配置应用程序对象
+## <a name="configure-the-application-object"></a>配置应用程序对象
 
 在每个应用程序中启用密钥链权利并准备好使用 SSO 后，请按以下示例所示在 `MSALPublicClientApplication` 中配置密钥链访问组：
 
@@ -112,8 +112,8 @@ Objective-C：
 
 ```objc
 NSError *error = nil;
-MSALPublicClientApplicationConfig *configuration = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@&quot;<my-client-id>&quot;];
-configuration.cacheConfig.keychainSharingGroup = @&quot;my.keychain.group&quot;;
+MSALPublicClientApplicationConfig *configuration = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<my-client-id>"];
+configuration.cacheConfig.keychainSharingGroup = @"my.keychain.group";
     
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:configuration error:&error];
 ```
@@ -121,7 +121,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 Swift：
 
 ```swift
-let config = MSALPublicClientApplicationConfig(clientId: &quot;<my-client-id>")
+let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
 config.cacheConfig.keychainSharingGroup = "my.keychain.group"
 
 do {

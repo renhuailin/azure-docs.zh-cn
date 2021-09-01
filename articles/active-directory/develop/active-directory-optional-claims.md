@@ -12,14 +12,14 @@ ms.date: 7/19/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: b3f92e5b0a526745ca2d9f87e76a0fcf77ed65e7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 91dfb7c7a4a25ba741d7b2dc21b42705a9b79c34
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450543"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123034266"
 ---
-# <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用提供可选声明
+# <a name="provide-optional-claims-to-your-app"></a>向应用提供可选声明
 
 应用程序开发人员可以在其 Azure AD 应用程序中使用可选声明来指定他们希望在发送到其应用程序的令牌中使用哪些声明。
 

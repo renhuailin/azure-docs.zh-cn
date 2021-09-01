@@ -7,12 +7,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: 8713cd25f30ed4a09a92dffacc5ec3e8d1cb424a
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 9395f0446680135bde99193609bde82385f64b0b
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862020"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038776"
 ---
 # <a name="shaper-cognitive-skill"></a>整形程序认知技能
 
@@ -35,7 +35,6 @@ Microsoft.Skills.Util.ShaperSkill
 但是，创建复杂类型的另一种方法是通过“整形程序”技能。 通过在技能集中包含此技能，在技能集处理期间执行的内存中操作可以输出采用嵌套结构的数据形状，而此形状随后可映射到索引中的复杂类型。 
 
 以下示例技能定义提供成员名称作为输入。 
-
 
 ```json
 {
@@ -65,26 +64,26 @@ Microsoft.Skills.Util.ShaperSkill
 技能集由索引器调用，索引器需要索引。 索引中的复杂字段表示形式可能如以下示例所示。 
 
 ```json
-
-    "name": "my-index",
-    "fields": [
-        {   "name": "myId", "type": "Edm.String", "key": true, "filterable": true   },
-        {   "name": "analyzedText", "type": "Edm.ComplexType",
-            "fields": [{
-                    "name": "text",
-                    "type": "Edm.String",
-                    "filterable": false,
-                    "sortable": false,
-                    "facetable": false,
-                    "searchable": true  },
-          {
-                    "name": "sentiment",
-                    "type": "Edm.Double",
-                    "searchable": true,
-                    "filterable": true,
-                    "sortable": true,
-                    "facetable": true
-                },
+"name":"my-index",
+"fields":[
+   { "name":"myId", "type":"Edm.String", "key":true, "filterable":true  },
+   { "name":"analyzedText", "type":"Edm.ComplexType",
+      "fields":[
+         {
+            "name":"text",
+            "type":"Edm.String",
+            "facetable":false,
+            "filterable":false,
+            "searchable":true,
+            "sortable":false  },
+         {
+            "name":"sentiment",
+            "type":"Edm.Double",
+            "facetable":true,
+            "filterable":true,
+            "searchable":true,
+            "sortable":true }
+      }
 ```
 
 ### <a name="skill-input"></a>技能输入

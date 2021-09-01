@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 04/29/2021
+ms.date: 08/26/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b509bde062a8df059b2ff3f9e48fbbf9be9f97c5
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 2f863c9fc5bad369813ee37c51ded73e96980a54
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108280843"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123034199"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-policy-dnat-using-the-azure-portal"></a>教程：在 Azure 门户中通过 Azure 防火墙策略 DNAT 筛选入站 Internet 流量
 
@@ -227,7 +227,5 @@ ms.locfileid: "108280843"
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，可以监视 Azure 防火墙日志。
-
 > [!div class="nextstepaction"]
-> [教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)
+> [部署和配置 Azure 防火墙高级版](premium-deploy.md)

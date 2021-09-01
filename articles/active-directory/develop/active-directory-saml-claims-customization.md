@@ -13,14 +13,14 @@ ms.date: 07/20/2021
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f0f943475fc397acf61c51fc3dc34cc9efdb1cfb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f7d3b52f5f2cac470c8833a22a67f2324f7be705
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450560"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123033856"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
+# <a name="customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>为企业应用程序自定义 SAML 令牌中颁发的声明
 
 目前，Microsoft 标识平台支持使用大多数企业应用程序（包括 Azure AD 应用库中预集成的两个应用程序以及自定义应用程序）进行单一登录 (SSO)。 当用户使用 SAML 2.0 协议通过 Microsoft 标识平台向应用程序进行身份验证时，Microsoft 标识平台会将令牌发送到该应用程序（通过 HTTP POST）。 然后，应用程序验证并使用该令牌将用户登录，而不是提示输入用户名和密码。 这些 SAML 令牌包含有关用户已知的“声明”的信息片段。
 

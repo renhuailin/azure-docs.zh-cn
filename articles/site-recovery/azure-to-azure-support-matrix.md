@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 进行 Azure VM 灾难恢复的支持矩阵
 description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次要区域时的支持情况。
 ms.topic: article
 ms.date: 11/29/2020
-ms.openlocfilehash: a6b8177ea0abc3a2406937373fc6569b42ffd053
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d33658d62ed08db98f3bce0a84bda8a3056cb12a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960959"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740172"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -19,9 +19,9 @@ ms.locfileid: "111960959"
 
 **部署** |  **支持**
 --- | ---
-**Azure 门户** | 支持。
-**PowerShell** | 支持。 [了解详细信息](azure-to-azure-powershell.md)
-**REST API** | 支持。
+**Azure 门户** | 。
+**PowerShell** | 。 [了解详细信息](azure-to-azure-powershell.md)
+**REST API** | 。
 **CLI** | 目前不支持
 
 
@@ -38,13 +38,12 @@ ms.locfileid: "111960959"
 
 ## <a name="region-support"></a>区域支持
 
-可以在同一地理群集中的任意两个区域之间复制和恢复 VM。 在定义地理群集时请注意数据延迟和主权。
-
+Azure Site Recovery 允许你执行全局灾难恢复。 你可以在同一地理群集中的任意两个 Azure 区域之间复制和恢复 VM。 若对数据主权存有疑虑，可以选择限制特定地理群集中的复制。 各类地理群集如下所示：
 
 **地理群集** | **Azure 区域**
 -- | --
-美洲 | 加拿大东部、加拿大中部、美国中南部、美国中西部、美国东部、美国东部 2、美国西部、美国西部 2、美国中部、美国中北部
-欧洲 | 英国西部、英国南部、北欧、西欧、南非西部、南非北部、挪威东部、法国中部、瑞士北部、德国中西部
+美洲 | 加拿大东部、加拿大中部、美国中南部、美国中西部、美国东部、美国东部 2、美国西部、美国西部 2、美国西部 3、美国中部、美国中北部
+欧洲 | 英国西部、英国南部、北欧、西欧、南非西部、南非北部、挪威东部、法国中部、瑞士北部、德国中西部、阿联酋北部、阿联酋中部（阿联酋可视为欧洲地区群集的一部分）
 亚洲 | 印度南部、印度中部、印度西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部
 JIO | JIO 印度西部
 澳大利亚    | 澳大利亚东部、澳大利亚东南部、澳大利亚中部、澳大利亚中部 2
@@ -52,19 +51,12 @@ Azure Government    | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚�
 德国    | 德国中部、德国东北部
 中国 | 中国东部、中国北部、中国北部 2、中国东部 2
 巴西 | 巴西南部
-受限区域是为国家/地区内部的灾难恢复保留的 |瑞士西部是为瑞士北部保留的，法国南部是为法国中部保留的，阿联酋中部仅限阿联酋北部客户使用，挪威西部供挪威东部客户使用，JIO 印度中部供 JIO 印度西部客户使用，巴西东南部是为巴西南部客户保留的，南非西部是为南非北部客户保留的，德国北部是为德国中西部客户保留的。
-
-在位于不同洲的两个区域之间复制和恢复 VM 仅限于以下区域对：
-
-* 东南亚和澳大利亚东部
-* 东南亚和澳大利亚东南部
-* 欧洲西部和美国中南部。
+受限区域是为国家/地区内部的灾难恢复保留的 |瑞士西部是为瑞士北部保留的，法国南部是为法国中部保留的，挪威西部供挪威东部客户使用，JIO 印度中部供 JIO 印度西部客户使用，巴西东南部是为巴西南部客户保留的，南非西部是为南非北部客户保留的，德国北部是为德国中西部客户保留的。
 
 >[!NOTE]
 >
 > - 对于巴西南部，可以复制和故障转移到以下区域：巴西东南部、美国中南部、美国中西部、美国东部、美国东部 2、美国西部、美国西部 2 和美国中北部。
-> - 巴西南部只能用作可从中使用 Site Recovery 复制 VM 的源区域。 它不能充当目标区域。 这是因为地理距离导致的延迟问题。 请注意，如果从用作源区域的巴西南部故障转移到目标，则支持从目标区域故障回复到巴西南部。 巴西东南部只能用作目标区域。
-> - 可以在你对其拥有相应访问权限的区域中操作。
+> - 巴西南部只能用作可从中使用 Site Recovery 复制 VM 的源区域。 它不能充当目标区域。 请注意，如果从用作源区域的巴西南部故障转移到目标，则支持从目标区域故障回复到巴西南部。 巴西东南部只能用作目标区域。
 > - 如果你要在其中创建保管库的区域未显示，请确保你的订阅有权在该区域中创建资源。
 > - 如果在启用复制时无法在地理群集中看到某个区域，请确保你的订阅有权在该区域中创建 VM。
 
@@ -76,6 +68,8 @@ Azure Government    | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚�
 --- | --- | ---
 常规用途 V2 存储帐户（热存储层和冷存储层） | 支持 | 建议不要使用 GPv2，因为 V2 的事务成本远高于 V1 存储帐户。
 高级存储 | 不支持 | 标准存储帐户用于缓存存储，有助于优化成本。
+区域 |  与虚拟机相同的区域  | 缓存存储帐户应与受保护的虚拟机位于同一区域。
+订阅  | 可不同于源虚拟机 | 缓存存储帐户需要与源虚拟机不在同一订阅中。
 虚拟网络的 Azure 存储防火墙  | 支持 | 如果你使用的是启用了防火墙的缓存存储帐户或目标存储帐户，请确保“[允许受信任的 Microsoft 服务](../storage/common/storage-network-security.md#exceptions)”。<br></br>同时，确保允许访问至少一个源 Vnet 子网。<br></br>注意：请勿限制虚拟网络对 ASR 使用的存储帐户的访问。 应允许来自“所有网络”的访问。 
 
 下表列出了可以复制到单个存储帐户的磁盘数量的限制。
@@ -100,9 +94,9 @@ Site Recovery 支持复制那些运行本节中所列操作系统的 Azure VM。
 --- | ---
 Windows Server 2019 | 支持 Server Core、带桌面体验的服务器。
 Windows Server 2016  | 支持 Server Core、带桌面体验的服务器。
-Windows Server 2012 R2 | 支持。
-Windows Server 2012 | 支持。
-Windows Server 2008 R2 SP1/SP2 | 支持。<br/><br/> 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
+Windows Server 2012 R2 | 。
+Windows Server 2012 | 。
+Windows Server 2008 R2 SP1/SP2 | 。<br/><br/> 从适用于 Azure VM 的移动服务扩展版本 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 开始，需要在运行 Windows Server 2008 R2 SP1/SP2 的计算机上安装 Windows [服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。  从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
 Windows 10 (x64) | 支持。
 Windows 8.1 (x64) | 支持。
 Windows 8 (x64) | 支持。
@@ -128,10 +122,10 @@ SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4、SP5[（受支持的内
 SUSE Linux Enterprise Server 15 | 15、SP1、SP2[（受支持的内核版本）](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> 不支持将复制计算机从 SP3 升级到 SP4。 如果已升级复制的计算机，则需要禁用复制并在升级后重新启用复制。
 SUSE Linux Enterprise Server 11 | SP4
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、[7.8](https://support.microsoft.com/help/4573888/)、[7.9](https://support.microsoft.com/help/4597409)、[8.0](https://support.microsoft.com/help/4573888/)、[8.1](https://support.microsoft.com/help/4573888/)、[8.2](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)、[8.3](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3、4 和 5（UEK3、UEK4、UEK5））<br/><br/>8.1（[9.35](https://support.microsoft.com/help/4573888/) 支持在所有 UEK 内核和版本 <= 3.10.0-1062* 的 RedHat 内核上运行。 [9.36](https://support.microsoft.com/help/4578241/) 提供对其余 RedHat 内核的支持）
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、[7.8](https://support.microsoft.com/help/4573888/)、[7.9](https://support.microsoft.com/help/4597409)、[8.0](https://support.microsoft.com/help/4573888/)、[8.1](https://support.microsoft.com/help/4573888/)、[8.2](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)、[8.3](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)（运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3、4、5 和 6（UEK3、UEK4、UEK5、UEK6）<br/><br/>8.1（[9.35](https://support.microsoft.com/help/4573888/) 支持在所有 UEK 内核和版本 <= 3.10.0-1062* 的 RedHat 内核上运行。 [9.36](https://support.microsoft.com/help/4578241/) 提供对其余 RedHat 内核的支持）
 
 > [!NOTE]
-> 对于 Linux 版本，Azure Site Recovery 不支持自定义 OS 映像。 仅支持属于次要分发版本/更新的原版内核。
+> 对于 Linux 版本，Azure Site Recovery 不支持自定义 OS 内核。 仅支持属于次要分发版本/更新的原版内核。
 
 **注意：为支持 15 天内发布的最新 Linux 内核，Azure Site Recovery 推出了基于最新移动代理版本的热修补程序。 此修补程序是在两个主要版本之间推出的。 若要更新到移动代理的最新版本（包括热修补程序），请按照[本文](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)中提及的步骤进行操作。 此修补程序当前是针对 Azure 到 Azure DR 方案中使用的移动代理推出的。
 
@@ -147,20 +141,21 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 16.04 LTS | [9.39](https://support.microsoft.com/help/4597409/) | 4.4.0-21-generic 到 4.4.0-194-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-123-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1098-azure </br> 4.4.0-197-generic、4.15.0-126-generic、4.15.0-128-generic、4.15.0-1100-azure、4.15.0-1102-azure 到 9.39 热修补程序**|
 16.04 LTS | [9.38](https://support.microsoft.com/help/4590304/) | 4.4.0-21-generic 到 4.4.0-190-generic，<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-118-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1096-azure </br> 4.4.0-193-generic、4.15.0-120-generic、4.15.0-122-generic 和 4.15.0-1098-azure 到 9.38 热修补程序**|
 |||
-18.04 LTS |[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 4.15.0-20-generic 到 4.15.0-140-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-65-generic </br> 5.3.0-19-generic 到 5.3.0-72-generic </br> 5.4.0-37-generic 到 5.4.0-70-generic </br> 4.15.0-1009-azure 到 4.15.0-1111-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1035-azure </br> 5.4.0-1020-azure 到 5.4.0-1043-azure|
+18.04 LTS |[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 4.15.0-20-generic 到 4.15.0-140-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-65-generic </br> 5.3.0-19-generic 到 5.3.0-72-generic </br> 5.4.0-37-generic 到 5.4.0-70-generic </br> 4.15.0-1009-azure 到 4.15.0-1111-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1035-azure </br> 5.4.0-1020-azure 到 5.4.0-1043-azure </br> 4.15.0-1114-azure </br> 4.15.0-143-generic </br> 5.4.0-1047-azure </br> 5.4.0-73-generic </br> 4.15.0-1115-azure </br> 4.15.0-144-generic </br> 5.4.0-1048-azure </br> 5.4.0-74-generic |
 18.04 LTS | [9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) | 4.15.0-20-generic 到 4.15.0-135-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-65-generic </br> 5.3.0-19-generic 到 5.3.0-70-generic </br> 5.4.0-37-generic 到 5.4.0-59-generic</br> 5.4.0-60-generic 到 5.4.0-65-generic </br> 4.15.0-1009-azure 到 4.15.0-1106-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1035-azure </br> 5.4.0-1020-azure 到 5.4.0-1039-azure </br> 通过 9.41 热修补程序修复 4.15.0-136-generic、4.15.0-137-generic、4.15.0-139-generic、4.15.0-140-generic、5.3.0-72-generic、5.4.0-66-generic、5.4.0-67-generic、5.4.0-70-generic、4.15.0-1108-azure、4.15.0-1111-azure、5.4.0-1040-azure、5.4.0-1041-azure、5.4.0-1043-azure、4.15.0-1109-azure、4.15.0-1110-azure**|
 18.04 LTS | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.15.0-20-generic 到 4.15.0-129-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-63-generic </br> 5.3.0-19-generic 到 5.3.0-69-generic </br> 5.4.0-37-generic 到 5.4.0-59-generic</br> 4.15.0-1009-azure 到 4.15.0-1103-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1035-azure </br> 5.4.0-1020-azure 到 5.4.0-1035-azure </br> 4.15.0-1104-azure、4.15.0-130-generic、4.15.0-132-generic、5.4.0-1036-azure、5.4.0-60-generic、5.4.0-62-generic、4.15.0-1106-azure、4.15.0-134-generic、4.15.0-135-generic、5.4.0-1039-azure、5.4.0-64-generic、5.4.0-65-generic 到 9.40 热修补程序**|
 18.04 LTS | [9.39](https://support.microsoft.com/help/4597409/) | 4.15.0-20-generic 到 4.15.0-123-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-63-generic </br> 5.3.0-19-generic 到 5.3.0-69-generic </br> 5.4.0-37-generic 到 5.4.0-53-generic</br> 4.15.0-1009-azure 到 4.15.0-1099-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1035-azure </br> 5.4.0-1020-azure 到 5.4.0-1031-azure </br> 4.15.0-124-generic、5.4.0-54-generic、5.4.0-1032-azure、5.4.0-56-generic、4.15.0-1100-azure、4.15.0-126-generic、4.15.0-128-generic、5.4.0-58-generic、4.15.0-1102-azure、5.4.0-1034-azure 到 9.39 热修补程序**|
 18.04 LTS | [9.38](https://support.microsoft.com/help/4590304/) | 4.15.0-20-generic 到 4.15.0-118-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-61-generic </br> 5.3.0-19-generic 到 5.3.0-67-generic </br> 5.4.0-37-generic 到 5.4.0-48-generic</br> 4.15.0-1009-azure 到 4.15.0-1096-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1036-azure </br> 5.3.0-1007-azure 到 5.3.0-1035-azure </br> 5.4.0-1020-azure 到 5.4.0-1026-azure </br> 4.15.0-121-generic、4.15.0-122-generic、5.0.0-62-generic、5.3.0-68-generic、5.4.0-51-generic、5.4.0-52-generic、4.15.0-1099-azure、5.4.0-1031-azure 到 9.38 热修补程序**|
 |||
-20.04 LTS |[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)| 5.4.0-26-generic 到 5.4.0-60-generic </br> -generic 5.4.0-1010-azure 到 5.4.0-1043-azure </br> 5.8.0-29-generic 到 5.8.0-48-generic|
-20.04 LTS |[9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)| 5.4.0-26-generic 到 5.4.0-65-generic </br> 5.4.0-1010-azure 到 5.4.0-1039-azure </br> 5.8.0-29-generic 到 5.8.0-43-generic </br> 通过 9.41 热修补程序修复 5.4.0-66-generic、5.4.0-67-generic、5.4.0-70-generic、5.8.0-44-generic、5.8.0-45-generic、5.8.0-48-generic、5.4.0-1040-azure、5.4.0-1041-azure、5.4.0-1043-azure**|
-20.04 LTS |[9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)| 5.4.0-26-generic 到 5.4.0-59 </br> -generic 5.4.0-1010-azure 到 5.4.0-1035-azure </br> 5.8.0-29-generic 到 5.8.0-34-generic </br> 5.4.0-1036-azure、5.4.0-60-generic、5.4.0-62-generic、5.8.0-36-generic、5.8.0-38-generic、5.4.0-1039-azure、5.4.0-64-generic、5.4.0-65-generic、5.8.0-40-generic、5.8.0-41-generic 到 9.40 热修补程序**|
-20.04 LTS |[9.39](https://support.microsoft.com/help/4597409/) | 5.4.0-26-generic 到 5.4.0-53 </br> -generic 5.4.0-1010-azure 到 5.4.0-1031-azure </br> 5.4.0-54-generic、5.8.0-29-generic、5.4.0-1032-azure、5.4.0-56-generic、5.8.0-31-generic、5.8.0-33-generic、5.4.0-58-generic、5.4.0-1034-azure 到 9.39 热修补程序**
-20.04 LTS |[9.39](https://support.microsoft.com/help/4597409/) | 5.4.0-26-generic 到 5.4.0-53 </br> -generic 5.4.0-1010-azure 到 5.4.0-1031-azure </br> 5.4.0-54-generic、5.8.0-29-generic、5.4.0-1032-azure、5.4.0-56-generic、5.8.0-31-generic、5.8.0-33-generic、5.4.0-58-generic、5.4.0-1034-azure 到 9.39 热修补程序**
-20.04 LTS |[9.38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic 到 5.4.0-48 </br> -generic 5.4.0-1010-azure 到 5.4.0-1026-azure </br> 5.4.0-51-generic、5.4.0-52-generic、5.8.0-23-generic、5.8.0-25-generic、5.4.0-1031-azure 到 9.38 热修补程序**
+20.04 LTS |[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)| 5.4.0-26-generic 到 5.4.0-60-generic </br> 5.4.0-1010-azure 到 5.4.0-1043-azure </br> 5.4.0-1047-azure </br> 5.4.0-73-generic </br> 5.4.0-1048-azure </br> 5.4.0-74-generic |
+20.04 LTS |[9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)| 5.4.0-26-generic 到 5.4.0-65-generic </br> 5.4.0-1010-azure 到 5.4.0-1039-azure </br> 通过 9.41 热修补程序修复 5.4.0-66-generic、5.4.0-67-generic、5.4.0-70-generic、5.4.0-1040-azure、5.4.0-1041-azure、5.4.0-1043-azure**|
+20.04 LTS |[9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)| 5.4.0-26-generic 到 5.4.0-59-generic </br> 5.4.0-1010-azure 到 5.4.0-1035-azure </br> 5.4.0-1036-azure、5.4.0-60-generic、5.4.0-62-generic、5.4.0-1039-azure、5.4.0-64-generic、5.4.0-65-generic |
+20.04 LTS |[9.39](https://support.microsoft.com/help/4597409/) | 5.4.0-26-generic 到 5.4.0-53-generic </br> 5.4.0-1010-azure 到 5.4.0-1031-azure </br> 通过 9.39 热修补程序修复 5.4.0-54-generic、5.4.0-1032-azure、5.4.0-56-generic、5.4.0-58-generic、5.4.0-1034-azure** |
+20.04 LTS |[9.38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic 到 5.4.0-48-generic </br> 5.4.0-1010-azure 到 5.4.0-1026-azure </br> 通过 9.38 热修补程序修复 5.4.0-51-generic、5.4.0-52-generic、5.4.0-1031-azure** |
 
 **注意：为支持 15 天内发布的最新 Linux 内核，Azure Site Recovery 推出了基于最新移动代理版本的热修补程序。 此修补程序是在两个主要版本之间推出的。 若要更新到移动代理的最新版本（包括热修补程序），请按照[本文](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)中提及的步骤进行操作。 此修补程序当前是针对 Azure 到 Azure DR 方案中使用的移动代理推出的。
+
+**注意：对于 Ubuntu 20.04，我们最初推出了适用于内核 5.8 的支持。* 但此后我们发现了对该内核的支持存在问题，因此暂时在我们的支持声明中修订了这些内核。 
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 Debian 内核版本
 
@@ -186,7 +181,7 @@ Debian 10 | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-fo
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4、SP5） | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4、SP5 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.47-azure |
+SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4、SP5） | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4、SP5 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.56-azure |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4、SP5） | [9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4、SP5 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.44-azure </br> 通过 9.41 热修补程序修复 4.12.14-16.47-azure**|
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4、SP5） | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4、SP5 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.38-azure </br> 4.12.14-16.41-azure 到 9.40 热修补程序**|
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4、SP5） | [9.39](https://support.microsoft.com/help/4597409/) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4、SP5 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.34-azure </br> 4.12.14-16.38-azure 到 9.39 热修补程序**|
@@ -197,7 +192,7 @@ SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4、SP5） | [9.37](https:
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15、SP1、SP2 | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | 默认支持所有[库存 SUSE 15、SP1、SP2 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.12.14-5.5-azure 到 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure 到 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure 到 5.3.18-18.38-azure
+SUSE Linux Enterprise Server 15、SP1、SP2 | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | 默认支持所有[库存 SUSE 15、SP1、SP2 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.12.14-5.5-azure 到 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure 到 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure 到 5.3.18-18.47-azure
 SUSE Linux Enterprise Server 15、SP1、SP2 | [9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 默认支持所有[库存 SUSE 15、SP1、SP2 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.12.14-5.5-azure 到 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure 到 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure 到 5.3.18-18.35-azure </br> 通过 9.41 热修补程序修复 5.3.18-18.38-azure**
 SUSE Linux Enterprise Server 15、SP1、SP2 | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 默认支持所有[库存 SUSE 15、SP1、SP2 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.12.14-5.5-azure 到 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure 到 4.12.14-8.58-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure 到 5.3.18-18.29-azure </br> 5.3.18-18.32-azure、4.12.14-8.58-azure 到 9.40 热修补程序**
 SUSE Linux Enterprise Server 15、SP1、SP2 | [9.39](https://support.microsoft.com/help/4597409/)  | 默认支持所有[库存 SUSE 15、SP1、SP2 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.12.14-5.5-azure 到 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure 到 4.12.14-8.47-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure 到 5.3.18-18.21-azure </br> 4.12.14-8.52-azure、5.3.18-18.24-azure、4.12.14-8.55-azure、5.3.18-18.29-azure 到 9.39 热修补程序**
@@ -219,6 +214,7 @@ SUSE Linux Enterprise Server 15、SP1、SP2 | [9.38](https://support.microsoft.c
 **设置** | **支持** | **详细信息**
 --- | --- | ---
 大小 | 具有至少 2 个 CPU 内核和 1 GB RAM 的任意 Azure VM 大小 | 验证 [Azure 虚拟机大小](../virtual-machines/sizes.md)。
+RAM | ASR 驱动程序占用 6% 的 RAM。
 可用性集 | 支持 | 对于 Azure VM，如果启用使用默认选项进行复制的功能，则会根据源区域设置来自动创建可用性集。 可以修改这些设置。
 可用性区域 | 支持 |
 混合使用权益 (HUB) | 支持 | 如果源 VM 启用了 HUB 许可证，则测试故障转移或故障转移 VM 也使用 HUB 许可证。
@@ -249,7 +245,7 @@ Tags  | 支持 | 应用于源虚拟机上的用户生成的标签会在测试故
 - 如果使用默认设置进行部署，Site Recovery 会根据源设置自动创建磁盘和存储帐户。
 - 如果自定义，请确保遵循指南。
 
-组件 | **支持** | **详细信息**
+**组件** | **支持** | **详细信息**
 --- | --- | ---
 OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/managed-disks-overview.md)VM 磁盘相关信息。
 临时磁盘 | 不支持 | 始终从复制中排除临时磁盘。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](../virtual-machines/managed-disks-overview.md)。
@@ -261,6 +257,7 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/managed
 数据磁盘 - 高级存储帐户 | 支持 | 如果 VM 将磁盘分散在高级和标准存储帐户上，则可以为每个磁盘选择不同的目标存储帐户，以确保在目标区域中具有相同的存储配置。
 托管磁盘 - 标准 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 |
 托管磁盘 - 高级 | 在支持 Azure Site Recovery 的 Azure 区域中受支持。 |
+磁盘订阅限制 | 每个订阅最多 3,000 个受保护磁盘 | 确保源订阅或目标订阅的 ASR 受保护磁盘（包括数据和操作系统）不超过 3,000 个。 
 标准 SSD | 支持 |
 冗余 | LRS 和 GRS 受支持。<br/><br/> ZRS 不受支持。
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持 VM 磁盘

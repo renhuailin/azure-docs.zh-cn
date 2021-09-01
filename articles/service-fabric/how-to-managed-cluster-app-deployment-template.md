@@ -4,12 +4,12 @@ description: 使用 Azure 资源管理器模板将应用程序部署到 Azure Se
 ms.topic: how-to
 ms.date: 5/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f2561b182689467598f2c939589295d9af72e4d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6a40dc23b0eeda4c680d0151b08cb1c8f1a84053
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671213"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290141"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-application-using-arm-template"></a>使用 ARM 模板部署 Service Fabric 托管群集应用程序
 
@@ -55,7 +55,7 @@ ms.locfileid: "110671213"
 可以通过将公共访问级别设置为“专用”来保护群集中的资源。 可以通过多种方式授予访问权限：
 
 * 使用 [Azure Active Directory](../storage/common/storage-auth-aad-app.md) 授予对 Blob 和队列的访问权限。
-* [在 Azure 门户中使用 Azure RBAC](../storage/common/storage-auth-aad-rbac-portal.md) 授予对 Azure Blob 和队列数据的访问权限。
+* [在 Azure 门户中使用 Azure RBAC](../storage/blobs/assign-azure-role-data-access.md) 授予对 Azure Blob 和队列数据的访问权限。
 * 使用[共享访问签名](/rest/api/storageservices/delegate-access-with-shared-access-signature)委派访问权限。
 
 以下屏幕截图中的示例使用对 Blob 的匿名读取访问。
@@ -179,6 +179,17 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
     ```
+
+
+## <a name="migration-from-classic-to-managed-clusters"></a>从经典群集迁移到托管群集
+
+如果要将应用程序从经典群集迁移到托管群集，则需要确保正确指定验证类型，否则会遇到错误。 
+
+以下各项因使用频率而被特别调用，但这并不是一个完整的差异列表。 
+
+* upgradeReplicaSetCheckTimeout 对于托管现在是一个整数，但在典型 SFRP 上是一个字符串。 
+
+有关完整的属性和类型列表，请参阅[托管群集应用程序资源类型](/azure/templates/microsoft.servicefabric/managedclusters/applications?tabs=json)
 
 ## <a name="next-steps"></a>后续步骤
 
