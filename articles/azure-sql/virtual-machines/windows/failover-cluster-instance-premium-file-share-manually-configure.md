@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 7ca6fdf685da74b8b0e10875a2bd16d66a7b4c60
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: fa70dce0e245f706e5278e7274ac17855b50622f
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020290"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396897"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>使用高级文件共享创建 FCI（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -213,7 +213,9 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 - Windows Server 2016 及更低版本不支持 Microsoft 分布式事务处理协调器 (MSDTC)。 
 - 使用高级文件共享的故障转移群集不支持文件流。 若要使用文件流，请改用[存储空间直通](failover-cluster-instance-storage-spaces-direct-manually-configure.md)或 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)部署你的群集。
 - 仅支持在[轻型管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)下注册到 SQL IaaS 代理扩展。 
-- [由于稀疏文件限制，Azure 文件存储](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)当前不支持数据库快照。  
+- [由于稀疏文件限制，Azure 文件存储](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)当前不支持数据库快照。
+- 当前不支持运行 DBCC CHECKDB，因为无法创建数据库快照。 
+- 使用高级文件共享部署的故障转移群集实例不支持使用内存中 OLTP 功能的数据库。 如果你的业务需要内存中 OLTP，请考虑改用 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)或[存储空间直通](failover-cluster-instance-storage-spaces-direct-manually-configure.md)来部署 FCI。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -224,8 +226,8 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 若要了解更多信息，请参阅以下文章：
 
-- [Azure VM 上的 SQL Server 的 Windows Server 故障转移群集](hadr-windows-server-failover-cluster-overview.md)
-- [Azure VM 上的 SQL Server 的故障转移群集实例](failover-cluster-instance-overview.md)
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [故障转移群集实例与 Azure VM 上的 SQL Server](failover-cluster-instance-overview.md)
 - [故障转移群集实例概述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 - [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)
 

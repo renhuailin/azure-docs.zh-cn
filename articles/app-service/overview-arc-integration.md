@@ -2,13 +2,13 @@
 title: Azure Arc 上的应用服务
 description: 为 Azure 操作员介绍如何将应用服务与 Azure Arc 集成。
 ms.topic: article
-ms.date: 05/03/2021
-ms.openlocfilehash: bbdb7fb1426a5c63e579929806caa1b2008f11eb
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 08/17/2021
+ms.openlocfilehash: bd5e257d48ec009ccb79696f4c299fd93568f1c9
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590083"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397331"
 ---
 # <a name="app-service-functions-and-logic-apps-on-azure-arc-preview"></a>Azure Arc 上的应用服务、Functions 和逻辑应用（预览）
 
@@ -73,8 +73,10 @@ ms.locfileid: "111590083"
 - [支持哪些应用服务功能？](#which-app-service-features-are-supported)
 - [是否支持网络功能？](#are-networking-features-supported)
 - [是否支持托管标识？](#are-managed-identities-supported)
+- [是否存在任何缩放限制？](#are-there-any-scaling-limits)
 - [收集哪些日志？](#what-logs-are-collected)
 - [如果看到提供程序注册错误，该怎么办？](#what-do-i-do-if-i-see-a-provider-registration-error)
+- [能否在基于 ARM64 的群集上部署应用程序服务扩展？](#can-i-deploy-the-application-services-extension-on-an-arm64-based-cluster)
 
 ### <a name="how-much-does-it-cost"></a>费用是多少？
 
@@ -104,6 +106,10 @@ ms.locfileid: "111590083"
 
 不是。 应用在 Azure Arc 中运行时，无法为其分配托管标识。如果应用需要一个标识以便能使用另一个 Azure 资源，请考虑改用[应用程序服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。
 
+### <a name="are-there-any-scaling-limits"></a>是否存在任何缩放限制？
+
+使用 Azure 应用服务在具有 Azure Arc 的 Kubernetes 上部署的所有应用程序都可以在基础 Kubernetes 群集的限制范围内进行缩放。  如果基础 Kubernetes 群集用尽了可用计算资源（主要是 CPU 和内存），则应用程序将只能缩放到 Kubernetes 可使用可用资源进行计划的应用程序实例数。
+
 ### <a name="what-logs-are-collected"></a>收集哪些日志？
 
 系统组件和应用程序的日志均写入标准输出。 可以使用标准 Kubernetes 工具收集这两类日志以进行分析。 还可以使用 [Log Analytics 工作区](../azure-monitor/logs/log-analytics-overview.md)配置应用服务群集扩展，它会将所有日志发送到该工作区。
@@ -113,6 +119,10 @@ ms.locfileid: "111590083"
 ### <a name="what-do-i-do-if-i-see-a-provider-registration-error"></a>如果看到提供程序注册错误，该怎么办？
 
 创建 Kubernetes 环境资源时，一些订阅可能会看到“找不到已注册的资源提供程序”错误。 错误详细信息可能包括一组被视为有效的位置和 API 版本。 如果发生这种情况，可能是需要向 Microsoft.Web 提供程序重新注册订阅，此操作对现有应用程序或 API 没有影响。 若要重新注册，请使用 Azure CLI 运行 `az provider register --namespace Microsoft.Web --wait`。 然后重新尝试运行 Kubernetes 环境命令。
+
+### <a name="can-i-deploy-the-application-services-extension-on-an-arm64-based-cluster"></a>能否在基于 ARM64 的群集上部署应用程序服务扩展？
+
+目前不支持基于 ARM64 的群集。  
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,65 +2,44 @@
 title: 在 vWAN 中为 Azure VMware 解决方案配置站点到站点 VPN
 description: 了解如何在 Azure VMware 解决方案中建立 VPN（IPsec IKEv1 和 IKEv2）站点到站点隧道。
 ms.topic: how-to
-ms.date: 06/11/2021
-ms.openlocfilehash: f3fbd3d9507e0203bc58494c2c1a748f1be7e585
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.custom: contperf-fy22q1
+ms.date: 06/30/2021
+ms.openlocfilehash: fc2f62549a9a06122b77e0e8864c029cb6af8029
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112021389"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515169"
 ---
 # <a name="configure-a-site-to-site-vpn-in-vwan-for-azure-vmware-solution"></a>在 vWAN 中为 Azure VMware 解决方案配置站点到站点 VPN
 
-在本文中，我们将逐步建立一个在 Microsoft Azure 虚拟 WAN 中心终止的 VPN（IPsec IKEv1 和 IKEv2）站点到站点隧道。 中心包含 Azure VMware 解决方案 ExpressRoute 网关和站点到站点 VPN 网关。 该中心将本地 VPN 设备与 Azure VMware 解决方案终结点相连接。
+在本文中，你会建立一个在 Microsoft Azure 虚拟 WAN 中心终止的 VPN（IPsec IKEv1 和 IKEv2）站点到站点隧道。 中心包含 Azure VMware 解决方案 ExpressRoute 网关和站点到站点 VPN 网关。 该中心将本地 VPN 设备与 Azure VMware 解决方案终结点相连接。
 
 :::image type="content" source="media/create-ipsec-tunnel/vpn-s2s-tunnel-architecture.png" alt-text=" 为 VPN 站点到站点隧道体系结构示意图" border="false":::
-
-在操作方法部分，你将：
-
-- 使用附加公共 IP 地址创建 Azure 虚拟 WAN 中心和 VPN 网关。 
-
-- 创建 Azure ExpressRoute 网关并建立 Azure VMware 解决方案终结点。 
-
-- 启用基于策略的 VPN 本地设置。 
 
 ## <a name="prerequisites"></a>先决条件
 必须在本地 VPN 设备上终止面向公众的 IP 地址。
 
-## <a name="step-1-create-an-azure-virtual-wan"></a>步骤 1。 创建 Azure 虚拟 WAN
+## <a name="create-an-azure-virtual-wan"></a>创建 Azure 虚拟 WAN
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-create-vwan-include.md)]
 
-## <a name="step-2-create-a-virtual-wan-hub-and-gateway"></a>步骤 2。 创建虚拟 WAN 中心和网关
+## <a name="create-a-virtual-hub"></a>创建虚拟中心
+
+虚拟中心是虚拟 WAN 创建和使用的虚拟网络。 这是区域中虚拟 WAN 网络的核心。  它可以包含站点到站点和 ExpressRoute 的网关。 
 
 >[!TIP]
 >还可以[在现有中心创建网关](../virtual-wan/virtual-wan-expressroute-portal.md#existinghub)。
 
-1. 选择上一步创建的虚拟 WAN。
 
-1. 选择“创建虚拟中心”，输入必填字段，然后选择“下一步：站点到站点”。 
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-   输入使用 `/24`（最小）的子网。
+## <a name="create-a-vpn-gateway"></a>创建 VPN 网关 
 
-   :::image type="content" source="media/create-ipsec-tunnel/create-virtual-hub.png" alt-text="显示“创建虚拟中心”页的屏幕截图。":::
+[!INCLUDE [Create a gateway](../../includes/virtual-wan-tutorial-s2s-gateway-include.md)]
 
-4. 选择“站点到站点”选项卡，在“网关缩放单元”下拉菜单设置聚合吞吐量，以此定义站点到站点网关。 
 
-   >[!TIP]
-   >缩放单元成对冗余，每个单元均支持 500 Mbps（一个缩放单元=500 Mbps)。 
-  
-   :::image type="content" source="../../includes/media/virtual-wan-tutorial-hub-include/site-to-site.png" alt-text="屏幕截图为站点到站点的详细信息。":::
-
-5. 选择 "ExpressRoute"选项卡并创建 ExpressRoute 网关。 
-
-   :::image type="content" source="../../includes/media/virtual-wan-tutorial-er-hub-include/hub2.png" alt-text="ExpressRoute 设置屏幕截图。":::
-
-   >[!TIP]
-   >缩放单元值为 2 Gbps。 
-
-    创建每个中心大约需要 30 分钟。 
-
-## <a name="step-3-create-a-site-to-site-vpn"></a>步骤 3. 创建站点到站点 VPN
+## <a name="create-a-site-to-site-vpn"></a>创建站点到站点 VPN
 
 1. 在 Azure 门户选择先前创建的虚拟 WAN。
 
@@ -70,52 +49,62 @@ ms.locfileid: "112021389"
  
 3. 在“基本信息”选项卡输入必填字段。 
 
-   :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-basics2.png" alt-text="新 VPN 站点的“基本信息”选项卡屏幕截图。" lightbox="media/create-ipsec-tunnel/create-vpn-site-basics2.png":::  
+   :::image type="content" source="../../includes/media/virtual-wan-tutorial-site-include/site-basics.png" alt-text="显示“创建 VPN 站点”页的屏幕截图，其中“基本信息”选项卡已打开。" lightbox="../../includes/media/virtual-wan-tutorial-site-include/site-basics.png":::
 
-   1. 在列表中选择 **区域**。
-
-   1. 提供站点到站点 VPN 的 **名称**。
-
-   1. 提供本地 VPN 设备的 **设备供应商**，例如 Cisco。
+   * **区域** - 之前称为位置。 这是要在其中创建此站点资源的位置。
    
-   1. 提供 **专用地址空间**。 使用本地 CIDR 块，通过隧道路由所有发往本地的流量。 只有当你无需[在 Azure VPN 网关上配置边界网关协议 (BGP)](../vpn-gateway/bgp-howto.md) 时才需要配置 CIDR 块
+   * **名称** - 本地站点的名称。
+   
+   * 设备供应商 - VPN 设备供应商的名称（例如 Citrix、Cisco 或 Barracuda）. 这有助于 Azure 团队更好地了解你的环境，以便将来添加更多的可用优化选项，或帮助你进行故障排除。
 
-1. 选择“下一步：链接”并填写必填字段。 指定链接和提供程序名称可以区分最终可作为中心一部分创建的任意数量的网关。  [BGP](../vpn-gateway/vpn-gateway-bgp-overview.md) 和自治系统编号 (ASN) 在组织中必须唯一。 BGP 可确保 Azure VMware 解决方案和本地服务器在隧道中播发路由。 如果禁用，则必须手动维护需要播发的子网。 如果缺少子网，HCX 将无法形成服务网格。 
+   * 专用地址空间 - 位于本地站点的 CIDR IP 地址空间。 发往此地址空间的流量将路由到本地站点。 仅当没有为站点启用 [BGP](../vpn-gateway/bgp-howto.md) 时，才需要 CIDR 块。
+    
+   >[!NOTE]
+   >如果在创建站点后编辑地址空间（例如，添加额外的地址空间），则在重新创建组件时，可能需要 8-10 分钟来更新有效路由。
+
+
+1. 选择“链路”以在分支添加物理链路的信息。 如果有虚拟 WAN 合作伙伴 CPE 设备，请检查该设备，查看是否将此信息作为从其系统设置的分支信息上传的一部分与 Azure 进行交换。
+
+   指定链接和提供程序名称可以区分最终可作为中心一部分创建的任意数量的网关。  [BGP](../vpn-gateway/vpn-gateway-bgp-overview.md) 和自治系统编号 (ASN) 在组织中必须唯一。 BGP 可确保 Azure VMware 解决方案和本地服务器在隧道中播发路由。 如果禁用，则必须手动维护需要播发的子网。 如果缺少子网，HCX 将无法形成服务网格。 
  
    >[!IMPORTANT]
    >默认情况下，Azure 会将 GatewaySubnet 前缀范围内的一个专用 IP 地址自动分配为 Azure VPN 网关上的 Azure BGP IP 地址。 如果本地 VPN 设备使用 APIPA 地址（169.254.0.1 到169.254.255.254）作为 BGP IP，则需要一个自定义 Azure APIPA BGP 地址。 Azure VPN 网关会选择自定义 APIPA 地址的前提是，相应的本地网络网关资源（本地网络）将 APIPA 地址作为 BGP 对等节点 IP。 如果本地网络网关使用常规 IP 地址（而不是 APIPA），则 Azure VPN 网关会恢复使用 GatewaySubnet 范围内的专用 IP 地址。
 
-   :::image type="content" source="media/create-ipsec-tunnel/create-vpn-site-links.png" alt-text="屏幕截图为链接的详细信息。" lightbox="media/create-ipsec-tunnel/create-vpn-site-links.png":::
+   :::image type="content" source="../../includes/media/virtual-wan-tutorial-site-include/site-links.png" alt-text="显示“创建 VPN 站点”页的屏幕截图，其中“链接”选项卡已打开。" lightbox="../../includes/media/virtual-wan-tutorial-site-include/site-links.png":::
 
 1. 选择“查看 + 创建”。 
 
 1. 导航到所需的虚拟中心，然后取消选择“中心关联”，将 VPN 站点连接到中心。
  
-   :::image type="content" source="../../includes/media/virtual-wan-tutorial-site-include/connect.png" alt-text="屏幕截图为已准备好预共享密钥和相关设置的“虚拟中心”“连接站点”窗格。":::   
+   :::image type="content" source="../../includes/media/virtual-wan-tutorial-site-include/connect.png" alt-text="屏幕截图显示“连接到此中心”。" lightbox="../../includes/media/virtual-wan-tutorial-site-include/connect.png":::   
 
-## <a name="step-4-optional-create-policy-based-vpn-site-to-site-tunnels"></a>步骤 4. （可选）创建基于策略的 VPN 站点到站点隧道
+## <a name="optional-create-policy-based-vpn-site-to-site-tunnels"></a>（可选）创建基于策略的 VPN 站点到站点隧道
 
 >[!IMPORTANT]
 >该步骤为可选项，仅适用于基于策略的 VPN。 
 
-基于策略的 VPN 设置需要指定本地和 Azure VMware 解决方案网络，包括中心范围。  中心范围指定基于策略的 VPN 隧道本地终结点的加密域。  Azure VMware 解决方案端只要求启用基于策略的流量选择器指示器。 
+[基于策略的 VPN 设置](../virtual-wan/virtual-wan-custom-ipsec-portal.md)需要指定本地和 Azure VMware 解决方案网络，包括中心范围。  这些范围指定基于策略的 VPN 隧道本地终结点的加密域。  Azure VMware 解决方案端只要求启用基于策略的流量选择器指示器。 
 
-1. 在 Azure 门户中转到你的虚拟 WAN 中心站点。 在“连接”下，选择“VPN (站点到站点)”。 
+1. 在 Azure 门户中转到你的虚拟 WAN 中心站点，然后在“连接”下，选择“VPN (站点到站点)” 。
 
-2. 选择你的 VPN 站点名称，选择最右侧的省略号图标 (...)，然后选择“编辑与此中心的 VPN 连接”。
- 
-   :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png" alt-text="Azure 中虚拟 WAN 中心站点页的屏幕截图，其中显示已选择用于访问“编辑与此中心的 VPN 连接”的省略号图标。" lightbox="media/create-ipsec-tunnel/edit-vpn-section-to-this-hub.png":::
+2. 选择要为其设置自定义 IPsec 策略的 VPN 站点。
 
-3. 编辑 VPN 站点与中心之间的连接，然后选择“保存”。
+   :::image type="content" source="../virtual-wan/media/virtual-wan-custom-ipsec-portal/locate.png" alt-text="显示现有 VPN 站点以设置客户 IPsec 策略的屏幕截图。" lightbox="../virtual-wan/media/virtual-wan-custom-ipsec-portal/locate.png":::
+
+3. 选择你的 VPN 站点名称，选择最右侧的“更多”(...)，然后选择“编辑 VPN 连接” 。
+
+   :::image type="content" source="../virtual-wan/media/virtual-wan-custom-ipsec-portal/contextmenu.png" alt-text="显示现有 VPN 站点的上下文菜单的屏幕截图。" lightbox="../virtual-wan/media/virtual-wan-custom-ipsec-portal/contextmenu.png":::
 
    - 对于“Internet 协议安全性”(IPSec)，请选择“自定义”。
 
    - 对于“使用基于策略的流量选择器”，请选择“启用”。
 
    - 指定“IKE 阶段 1”和“IKE 阶段 2 (ipsec)”的详细信息。  
- 
-   :::image type="content" source="media/create-ipsec-tunnel/edit-vpn-connection.png" alt-text="“编辑 VPN 连接”页的屏幕截图。"::: 
- 
+
+4. 将 IPsec 设置从默认设置更改为自定义设置，然后自定义 IPsec 策略。 再选择“保存”。
+
+   :::image type="content" source="../virtual-wan/media/virtual-wan-custom-ipsec-portal/edit.png" alt-text="显示现有 VPN 站点的屏幕截图。" lightbox="../virtual-wan/media/virtual-wan-custom-ipsec-portal/edit.png":::
+
    流量选择器或属于基于策略的加密域的子网应是：
     
    - 虚拟 WAN 中心`/24`
@@ -124,7 +113,7 @@ ms.locfileid: "112021389"
 
    - 已连接的 Azure 虚拟网络（如果存在）
 
-## <a name="step-5-connect-your-vpn-site-to-the-hub"></a>步骤 5。 将 VPN 站点连接到中心
+## <a name="connect-your-vpn-site-to-the-hub"></a>将 VPN 站点连接到中心
 
 1. 选择你的 VPN 站点名称，然后选择“连接 VPN 站点”。 
 
@@ -143,16 +132,36 @@ ms.locfileid: "112021389"
 
    :::image type="content" source="../../includes/media/virtual-wan-tutorial-connect-vpn-site-include/status.png" alt-text="屏幕截图为站点到站点连接和连接状态。" lightbox="../../includes/media/virtual-wan-tutorial-connect-vpn-site-include/status.png":::
 
-1. [下载本地终结点的 VPN 配置文件](../virtual-wan/virtual-wan-site-to-site-portal.md#device)。  
+   连接状态：将 VPN 站点连接到 Azure 中心 VPN 网关的连接的 Azure 资源的状态。 控制平面操作成功后，Azure VPN 网关和本地 VPN 设备会建立连接。
 
-3. 在虚拟 WAN 中心修补 Azure VMware 解决方案 ExpressRoute。 
+   连接状态：中心和 VPN 站点中 Azure VPN 网关之间的实际连接（数据路径）状态。 可以显示以下任一状态：
+
+    * 未知：如果后端系统正在转换到另一状态，则通常会显示此状态。
+    * **连接**：Azure VPN 网关正在尝试连接实际的本地 VPN 站点。
+    * 已连接：Azure VPN 网关和本地 VPN 站点之间已建立连接。
+    * 已断开连接：如果出于任何原因断开连接（在本地或 Azure 中），则通常会显示此状态
+
+
+
+1. 下载 VPN 配置文件，并将其应用于本地终结点。  
+   
+   1. 在“VPN (站点到站点)”页上顶部附近，选择“下载 VPN 配置”。Azure 会在资源组“microsoft-network-\[location\]”中创建一个存储帐户，其中，location 是 WAN 的位置。 将配置应用到 VPN 设备后，可以删除此存储帐户。
+
+   1. 创建后，选择相应的链接下载该文件。 
+
+   1. 将配置应用到本地 VPN 设备。
+
+   有关服务配置文件的详细信息，请参阅[关于 VPN 设备服务配置文件](../virtual-wan/virtual-wan-site-to-site-portal.md#config-file)。
+
+1. 在虚拟 WAN 中心修补 Azure VMware 解决方案 ExpressRoute。 
 
    >[!IMPORTANT]
    >必须先创建私有云才能修补平台。 
 
+
    [!INCLUDE [request-authorization-key](includes/request-authorization-key.md)]
 
-4. 将 Azure VMware 解决方案和 VPN 网关一起链接到虚拟 WAN 中心内。 使用上一步的授权密钥和 ExpressRoute ID（对等线路 URI）。
+1. 将 Azure VMware 解决方案和 VPN 网关一起链接到虚拟 WAN 中心内。 使用上一步的授权密钥和 ExpressRoute ID（对等线路 URI）。
 
    1. 选择 ExpressRoute 网关，然后选择“兑换授权密钥”。
 
@@ -166,4 +175,7 @@ ms.locfileid: "112021389"
 
    1. 选择“添加”以建立链接。 
 
-5. 通过[创建一个 NSX-T 段](./tutorial-nsx-t-network-segment.md)并在网络中预配一个 VM 来测试连接。 对本地终结点和 Azure VMware 解决方案终结点执行 Ping。
+1. 通过[创建一个 NSX-T 段](./tutorial-nsx-t-network-segment.md)并在网络中预配一个 VM 来测试连接。 对本地终结点和 Azure VMware 解决方案终结点执行 Ping。
+
+   >[!NOTE]
+   >等待大约 5 分钟，然后再测试 ExpressRoute 线路后面的客户端（例如，先前创建的 VNet 中的 VM）的连接性。

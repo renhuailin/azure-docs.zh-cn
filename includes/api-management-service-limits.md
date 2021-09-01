@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 06/09/2021
+ms.date: 07/07/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 0c01e797d74cd058bed94ee3bf8d52b927fd36cc
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 053f1372067284e2b2d10bac508156b6ef38e4af
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889791"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014612"
 ---
 | 资源 | 限制 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -31,6 +31,7 @@ ms.locfileid: "111889791"
 | 每个服务实例的最大 API 数<sup>8</sup> | 50 |
 | 每个服务实例的最大 API 管理操作数<sup>8</sup> | 1,000 |
 | 最大总请求持续时间<sup>8</sup> | 30 秒 |
+| 请求有效负载最大大小<sup>8</sup> | 1 GiB |
 | 最大缓冲有效负载大小<sup>8</sup> | 2 MiB |
 | 最大请求 URL 大小<sup>9</sup> | 4096 字节 |
 | URL 路径段的最大长度<sup>10</sup> | 260 个字符 |
@@ -48,4 +49,4 @@ ms.locfileid: "111889791"
 <sup>8</sup>此限制仅适用于消耗层。 对于其他层，这些类别没有限制。<br/>
 <sup>9</sup>仅适用于消耗层。 包含最长 2048 字节的查询字符串。<br/>
 <sup>10</sup> 若要提高此限制，请联系[客户支持](https://azure.microsoft.com/support/options/)。<br/>
-<sup>11</sup>仅开发人员层和高级层中支持自托管网关。 [自托管网关资源](/rest/api/apimanagement/2019-12-01/gateway)数量受此限制约束。 若要增大此限额，请联系[支持人员](https://azure.microsoft.com/support/options/)。 请注意，与自托管网关资源相关联的节点（或副本）的数量在高级层中是不受限的，而在开发人员层中则限为单个节点。
+<sup>11</sup>仅开发人员层和高级层中支持自托管网关。 [自托管网关资源](/rest/api/apimanagement/2020-06-01-preview/gateway)数量受此限制约束。 若要增大此限额，请联系[支持人员](https://azure.microsoft.com/support/options/)。 请注意，与自托管网关资源相关联的节点（或副本）的数量在高级层中是不受限的，而在开发人员层中则限为单个节点。

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: 9f998115b2fb0b787af38e8cce660fd7d32f3527
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: c83e8a93d41cde3c7a3debbbcfa9d3522ffe2939
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765573"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396959"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL 灵活服务器中的只读副本
 
@@ -119,9 +119,10 @@ Azure Database for MySQL 灵活服务器在 Azure Monitor 中提供“复制滞�
 
 |**服务器参数**|**说明**|**默认值**|**值**|
 |--|--|--|--|
-|`gtid_mode`|指示是否使用 GTID 标识事务。 若要在两个模式之间进行更改，只能按升序顺序一次完成一个步骤（例如 `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`：新事务和复制事务都必须是匿名事务 <br> `OFF_PERMISSIVE`：新事务是匿名事务。 复制的事务可以是匿名事务，也可以是 GTID 事务。 <br> `ON_PERMISSIVE`：新事务是 GTID 事务。 复制的事务可以是匿名事务，也可以是 GTID 事务。 <br> `ON`：新事务和复制事务都必须是 GTID 事务。|
-|`enforce_gtid_consistency`|通过仅允许执行能够以事务性安全方式记录的语句来强制实施 GTID 一致性。 在启用 GTID 复制之前，必须将此值设置为 `ON`。 |`OFF`|`OFF`：允许所有事务违反 GTID 一致性。  <br> `ON`：不允许任何事务违反 GTID 一致性。 <br> `WARN`：允许所有事务违反 GTID 一致性，但系统会生成警告。 | 
+|`gtid_mode`|指示是否使用 GTID 标识事务。 若要在两个模式之间进行更改，只能按升序顺序一次完成一个步骤（例如 `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF*`|`OFF`：新事务和复制事务都必须是匿名事务 <br> `OFF_PERMISSIVE`：新事务是匿名事务。 复制的事务可以是匿名事务，也可以是 GTID 事务。 <br> `ON_PERMISSIVE`：新事务是 GTID 事务。 复制的事务可以是匿名事务，也可以是 GTID 事务。 <br> `ON`：新事务和复制事务都必须是 GTID 事务。|
+|`enforce_gtid_consistency`|通过仅允许执行能够以事务性安全方式记录的语句来强制实施 GTID 一致性。 在启用 GTID 复制之前，必须将此值设置为 `ON`。 |`OFF*`|`OFF`：允许所有事务违反 GTID 一致性。  <br> `ON`：不允许任何事务违反 GTID 一致性。 <br> `WARN`：允许所有事务违反 GTID 一致性，但系统会生成警告。 | 
 
+*对于启用了高可用性功能的 Azure Database for MySQL 灵活服务器，默认值设置为 `ON`
 > [!NOTE]
 >
 > * 在启用 GTID 后，无法再将其关闭。 如果需要关闭 GTID，请与支持人员联系。 
