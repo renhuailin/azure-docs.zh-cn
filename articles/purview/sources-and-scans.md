@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 15ade6fca3885bfabba7a23e2c3d8e561a9e6a0c
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: e5b2c5eaca13b26504c4229ef990abc4adce23c9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738457"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724184"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure Purview 中支持的数据源和文件类型
 
@@ -32,7 +32,7 @@ Purview 支持[此处](purview-connector-overview.md)列出的所有数据源。
 - Purview 还支持自定义文件扩展名和自定义分析程序。
  
 > [!Note]
-> 每个 Gzip 文件必须映射到其中的单个 csv 文件。 Gzip 文件受系统和自定义分类规则的限制。 我们目前不支持扫描映射到其中的多个文件的 gzip 文件，或者除 csv 以外的任何文件类型。 此外，Purview 扫描程序支持为架构提取和分类扫描对齐压缩的 PARQUET 和 AVRO 文件类型。
+> 每个 Gzip 文件必须映射到其中的单个 csv 文件。 Gzip 文件受系统和自定义分类规则的限制。 我们目前不支持扫描映射到其中的多个文件的 gzip 文件，或者除 csv 以外的任何文件类型。 此外，Purview 扫描程序支持为架构提取和分类扫描对齐压缩的 PARQUET 文件类型。 
 
 > [!Note]
 > Purview 扫描程序不支持为架构提取扫描 AVRO、ORC 和 PARQUET 文件类型中的复杂数据类型。   
@@ -46,9 +46,10 @@ Purview 支持[此处](purview-connector-overview.md)列出的所有数据源。
 
 对于所有结构化文件格式，Purview 扫描程序按以下方式对文件进行采样：
 
-- 对于结构化文件类型，它抽取每个列中 128 行的内容或 1 MB 的内容作为样本（以较低者为准）。
-- 对于文档文件格式，它抽取每个文件的 20 MB 内容作为样本。
+- 对于结构化文件类型，它抽取每个列中前 128 行的内容或前 1 MB 的内容作为样本（以较低者为准）。
+- 对于文档文件格式，它抽取每个文件前 20 MB 的内容作为样本。
     - 如果文档文件大于 20 MB，则不受深度扫描的限制（受分类限制）。 在这种情况下，Purview 仅捕获基本元数据，例如文件名和完全限定的名称。
+- 对于表格数据源（SQL、CosmosDB），它抽取前 128 行的内容作为样本。 
 
 ## <a name="resource-set-file-sampling"></a>资源集文件采样
 
@@ -64,7 +65,7 @@ Purview 支持[此处](purview-connector-overview.md)列出的所有数据源。
 
 ## <a name="classification"></a>分类
 
-所有 105 条系统分类规则都适用于结构化文件格式。 只有 MCE 分类规则适用于文档文件类型（不是数据扫描本机 regex 模式，基于布隆筛选器的检测）。 有关受支持的分类的详细信息，请参阅 [Azure Purview 中受支持的分类](supported-classifications.md)。
+所有 206 条系统分类规则都适用于结构化文件格式。 只有 MCE 分类规则适用于文档文件类型（不是数据扫描本机 regex 模式，基于布隆筛选器的检测）。 有关受支持的分类的详细信息，请参阅 [Azure Purview 中受支持的分类](supported-classifications.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

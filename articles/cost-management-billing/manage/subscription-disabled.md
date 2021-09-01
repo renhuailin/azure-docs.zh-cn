@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 07/15/2021
 ms.author: banders
-ms.openlocfilehash: aad194babdf539584f3e349e8050105ed801bbf0
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 1e669a794abe848d326a6d08156621dcf3883ec5
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331729"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292235"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>重新激活已禁用的 Azure 订阅
 
@@ -60,6 +60,10 @@ Azure 订阅被禁用可能是因为额度已过期、达到了支出限制、�
 ## <a name="after-reactivation"></a>重新激活后
 
 重新激活订阅后，创建或管理资源可能存在延迟。 如果延迟超过 30 分钟，请联系 [Azure 计费支持人员](https://go.microsoft.com/fwlink/?linkid=2083458)来获取帮助。 大多数 Azure 资源可自动恢复，无需任何操作。 但建议检查 Azure 服务资源，并重启所有无法自动恢复的资源。
+
+## <a name="upgrade-a-disabled-free-account"></a>升级禁用的免费帐户
+
+如果你使用的不是免费的资源，且由于额度用完订阅被禁用，那么升级订阅后，这些资源将被重新启用。 这种情况将导致你需要为使用的资源付费。 有关升级免费帐户的详细信息，请参阅[升级 Azure 帐户](upgrade-azure-subscription.md)。
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 

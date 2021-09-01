@@ -6,14 +6,17 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 45447a26c0455fc5945af8b8e9f7442af7facfbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73517b616ae9cf126826f034c4b90babc32518d6
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99830679"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652315"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Azure Database for MySQL 应用程序开发概述 
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 本文介绍开发人员为连接 Azure Database for MySQL 而编写应用程序代码时应遵循的设计注意事项。 
 
 > [!TIP]

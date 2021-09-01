@@ -2,25 +2,24 @@
 title: 文本合并认知技能
 titleSuffix: Azure Cognitive Search
 description: 将字段集合中的文本合并到合并字段中。 在 Azure 认知搜索中的 AI 扩充管道中使用此认知技能。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: b364655f26c6ac29c14d387d69d7b4277d6aeb86
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: 4ea7681a28cf8f17c53e42e9ad05ddf12b5d2f9b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88924633"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860547"
 ---
 #   <a name="text-merge-cognitive-skill"></a>文本合并认知技能
 
 文本合并  技能会将字段集合中的文本合并到单个字段中。 
 
 > [!NOTE]
-> 此技能未绑定到认知服务 API，你使用它无需付费。 但是，你仍然应该 [附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以覆盖 **免费** 资源选项，该选项限制你每天进行少量的每日扩充。
+> 此技能不限于认知服务。 它不可计费，并且没有认知服务密钥要求。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill

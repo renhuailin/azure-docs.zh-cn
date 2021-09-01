@@ -4,16 +4,20 @@ description: 将 Ethereum 区块链连接器与 Azure 逻辑应用配合使用�
 ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
-ms.openlocfilehash: 411337908553e58c252a0ed1a42d17f76195c720
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0eb4056567692ddb221f3207ac92b3373f6bdff2
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96763785"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122652907"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>将 Ethereum 区块链连接器与 Azure 逻辑应用配合使用
 
-将 [Ethereum 区块链连接器](/connectors/blockchainethereum/)与 [Azure 逻辑应用](../../logic-apps/index.yml)配合使用可以执行智能合同操作和响应智能合同事件。 本文介绍如何使用以太坊区块链连接器将区块链信息发送到其他服务或调用区块链函数。 例如，假设要创建一个基于 REST 的微服务，用于从区块链账本返回信息。 使用逻辑应用可以接受查询区块链账本中存储的信息的 HTTP 请求。
+将 [Ethereum 区块链连接器](/connectors/blockchainethereum/)与 [Azure 逻辑应用](../../logic-apps/index.yml)配合使用可以执行智能合同操作和响应智能合同事件。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
+
+本文介绍如何使用以太坊区块链连接器将区块链信息发送到其他服务或调用区块链函数。 例如，假设要创建一个基于 REST 的微服务，用于从区块链账本返回信息。 使用逻辑应用可以接受查询区块链账本中存储的信息的 HTTP 请求。
 
 ## <a name="prerequisites"></a>先决条件
 

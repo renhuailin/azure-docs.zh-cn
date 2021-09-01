@@ -6,15 +6,15 @@ author: ddematheu2
 manager: chrispalm
 services: azure-communication-services
 ms.author: dademath
-ms.date: 05/11/2021
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 4176bdf61cafdf50aef71e76b832a0e669f1535c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 86ef660c5d4b0f0132218df1df37c8934f27ec08
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468797"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653115"
 ---
 # <a name="ui-library-overview"></a>UI 库概述
 
@@ -53,8 +53,8 @@ npm i --save @azure/communication-react
 
 | 合成    | 用例  | 
 | ------------ | ---------- |
-| [CallComposite](https://azure.github.io/communication-ui-library/?path=/docs/composites-callcomposite--basic-example) | 允许用户发起或加入通话的通话体验。 在体验中，用户可以配置自己的设备，通过视频参与通话，以及查看其他参与者，其中包括打开视频的参与者。 Teams 互操作性包括大厅功能，供用户等待获准进入。 |
-| [ChatComposite](https://azure.github.io/communication-ui-library/?path=/docs/composites-chatcomposite--basic-example)    | 用户可以发送和接收消息的聊天体验。 如输入、读取、参与者进入和离开等线程事件将作为聊天线程的一部分显示给用户。                                                                                                                          |
+| [CallComposite](https://azure.github.io/communication-ui-library/?path=/story/composites-call--basic-example) | 允许用户发起或加入通话的通话体验。 在体验中，用户可以配置自己的设备，通过视频参与通话，以及查看其他参与者，其中包括打开视频的参与者。 Teams 互操作性包括大厅功能，供用户等待获准进入。 |
+| [ChatComposite](https://azure.github.io/communication-ui-library/?path=/story/composites-chat--basic-example)    | 用户可以发送和接收消息的聊天体验。 如输入、读取、参与者进入和离开等线程事件将作为聊天线程的一部分显示给用户。                                                                                                                          |
 
 ## <a name="ui-component-overview"></a>UI 组件概述
 
@@ -63,17 +63,16 @@ UI 组件支持自定义，为组件提供适当的感观，以匹配应用程�
 
 | 区域    | 组件    | 说明       |
 | ------- | ------------ | ----------------- |
-| 调用 | [网格布局](https://azure.github.io/communication-ui-library/?path=/story/ui-components-gridlayout--grid-layout-component)                | 将视频磁贴组织成 NxN 网格的网格组件                                            |
-|         | [视频磁贴](https://azure.github.io/communication-ui-library/?path=/story/ui-components-videotile--video-tile-component)                   | 在可用时显示视频流，在不可用时显示默认静态组件的组件        |
-|         | [控件条](https://azure.github.io/communication-ui-library/?path=/story/ui-components-controlbar--control-bar-component)                | 组织 DefaultButton 以连接到静音或共享屏幕等特定通话操作的容器 |
+| 调用 | [网格布局](https://azure.github.io/communication-ui-library/?path=/story/ui-components-gridlayout--grid-layout)                | 将视频磁贴组织成 NxN 网格的网格组件                                            |
+|         | [视频磁贴](https://azure.github.io/communication-ui-library/?path=/story/ui-components-videotile--video-tile)                   | 在可用时显示视频流，在不可用时显示默认静态组件的组件        |
+|         | [控件条](https://azure.github.io/communication-ui-library/?path=/story/ui-components-controlbar--control-bar)                | 组织 DefaultButton 以连接到静音或共享屏幕等特定通话操作的容器 |
 |         | [VideoGallery](https://azure.github.io/communication-ui-library/?path=/story/ui-components-video-gallery--video-gallery)                                           | 随着参与者的加入而动态变化的统包视频库组件               |
-| 聊天    | [消息线程](https://azure.github.io/communication-ui-library/?path=/story/ui-components-messagethread--message-thread-component)       | 呈现聊天消息、系统消息和自定义消息的容器                          |
-|         | [发送框](https://azure.github.io/communication-ui-library/?path=/story/ui-components-sendbox--send-box-component)                         | 具有离散发送按钮的文本输入组件                                                   |
-|         | [消息状态指示器](https://azure.github.io/communication-ui-library/?path=/story/ui-components-message-status-indicator--message-status-indicator)        | 显示已发送消息的状态的多状态阅读回执组件                                   |
-|         | [键入指示符](https://azure.github.io/communication-ui-library/?path=/story/ui-components-typingindicator--typing-indicator-component) | 用于呈现正在线程上主动键入的参与者的文本组件                      |
-| 通用  | [参与者项](https://azure.github.io/communication-ui-library/?path=/story/ui-components-participantitem--participant-item-component) | 用于呈现通话或聊天参与者（包括头像和显示名称）的常用组件            |
-|         | [参与者列表](https://azure.github.io/communication-ui-library/?path=/story/ui-components-participant-list--participant-list)                                 | 用于呈现通话或聊天参与者列表（包括头像和显示名称）的常用组件       |
-
+| 聊天    | [消息线程](https://azure.github.io/communication-ui-library/?path=/story/ui-components-messagethread--message-thread)       | 呈现聊天消息、系统消息和自定义消息的容器                          |
+|         | [发送框](https://azure.github.io/communication-ui-library/?path=/story/ui-components-sendbox--send-box)                         | 具有离散发送按钮的文本输入组件                                                   |
+|         | [消息状态指示器](https://azure.github.io/communication-ui-library/?path=/story/ui-components-messagestatusindicator--message-status-indicator)        | 显示已发送消息的状态的多状态阅读回执组件                                   |
+|         | [键入指示符](https://azure.github.io/communication-ui-library/?path=/story/ui-components-typingindicator--typing-indicator) | 用于呈现正在线程上主动键入的参与者的文本组件                      |
+| 通用  | [参与者项](https://azure.github.io/communication-ui-library/?path=/story/ui-components-participantitem--participant-item) | 用于呈现通话或聊天参与者（包括头像和显示名称）的常用组件            |
+|         | [参与者列表](https://azure.github.io/communication-ui-library/?path=/story/ui-components-participantlist--participant-list)                                 | 用于呈现通话或聊天参与者列表（包括头像和显示名称）的常用组件       |
 
 ## <a name="what-ui-artifact-is-best-for-my-project"></a>哪些 UI 项目最适合我的项目？
 

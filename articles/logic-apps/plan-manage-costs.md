@@ -6,12 +6,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
 ms.date: 05/25/2021
-ms.openlocfilehash: 5bbdcd8032fbb4d20af2e681bf703c3d62985fe0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b6e23d008a0171e8b71c032349943b809b4bfc92
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971613"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113667088"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>计划和管理 Azure 逻辑应用的成本
 
@@ -45,13 +45,13 @@ Azure 逻辑应用服务基于创建和使用的资源应用不同的定价模�
 
 * 在单租户 Azure 逻辑应用中创建和运行的逻辑应用资源使用[托管计划定价模型](../logic-apps/logic-apps-pricing.md#standard-pricing)。
 
-* 在[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中创建和运行的逻辑应用资源使用[固定定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。
+* 在[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中创建和运行的逻辑应用资源使用 [ISE 定价模型](../logic-apps/logic-apps-pricing.md#ise-pricing)。
 
 下面是在创建以用于逻辑应用时产生成本的其他资源：
 
 * [集成帐户](../logic-apps/logic-apps-pricing.md#integration-accounts)是一种单独的资源，可创建并链接到逻辑应用以便构建 B2B 集成。 集成帐户使用[固定定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts)，其中的费率基于使用的集成帐户类型或层级。
 
-* [ISE](../logic-apps/logic-apps-pricing.md#fixed-pricing) 是一种单独的资源，可以创建它作为需要直接访问虚拟网络中资源的逻辑应用的部署位置。 ISE 使用[固定定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)，其中的费率基于创建的 ISE SKU 和其他设置。 但是，数据保留和存储消耗不会产生成本。
+* [ISE](../logic-apps/logic-apps-pricing.md#ise-pricing) 是一种单独的资源，可以创建它作为需要直接访问虚拟网络中资源的逻辑应用的部署位置。 ISE 使用 [ISE 定价模型](../logic-apps/logic-apps-pricing.md#ise-pricing)，其中的费率基于创建的 ISE SKU 和其他设置。 但是，数据保留和存储消耗不会产生成本。
 
 * [自定义连接器](../logic-apps/logic-apps-pricing.md#consumption-pricing)是一种为没有预生成连接器的 REST API 创建的单独资源，可在逻辑应用中使用。 自定义连接器执行使用[消耗量定价模型](../logic-apps/logic-apps-pricing.md#consumption-pricing)，但在 ISE 中使用它们时除外。
 
@@ -59,7 +59,7 @@ Azure 逻辑应用服务基于创建和使用的资源应用不同的定价模�
 
 #### <a name="storage-operations-and-costs"></a>存储操作和成本
 
-Azure 逻辑应用使用 [Azure 存储](../storage/index.yml)进行任何存储操作。 使用多租户 Azure 逻辑应用时，任何存储使用情况和成本都将附加到该逻辑应用。 [数据保留和存储消耗](../logic-apps/logic-apps-pricing.md#data-retention)使用[固定定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)来产生成本。 例如，来自运行历史记录的输入和输出保留在后台存储中，这与从逻辑应用独立创建、管理和访问的存储资源不同。
+Azure 逻辑应用使用 [Azure 存储](../storage/index.yml)进行任何存储操作。 使用多租户 Azure 逻辑应用时，任何存储使用情况和成本都将附加到该逻辑应用。 [数据保留和存储消耗](../logic-apps/logic-apps-pricing.md#storage-operations)使用[固定定价模型](../logic-apps/logic-apps-pricing.md#storage-operations)来产生成本。 例如，来自运行历史记录的输入和输出保留在后台存储中，这与从逻辑应用独立创建、管理和访问的存储资源不同。
 
 使用单租户 Azure 逻辑应用时，可以使用自己的 Azure [存储帐户](../azure-functions/storage-considerations.md#storage-account-requirements)。 借助此功能，可以更灵活、更好地控制逻辑应用数据。 有状态工作流运行其操作时，Azure 逻辑应用运行时会执行存储事务。 例如，使用队列来进行计划，而使用表和 Blob 来存储工作流状态。 存储成本根据工作流的内容而变化。 不同的触发器、操作和有效负载会导致不同的存储操作和需求。 存储事务遵循 [Azure 存储定价模型](https://azure.microsoft.com/pricing/details/storage/)。 存储成本在 Azure 计费发票中单独列出。
 

@@ -8,18 +8,21 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7addfc3a0d91b85c4d63afa4ee6a55b5202c3855
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0e5b5a2fb64c803c76f663d506dec8d750a4af29
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770230"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643097"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure Database for MySQL 灵活服务器
 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+
 本快速入门教程介绍如何使用 [Azure Cloud Shell](https://shell.azure.com) 中的 [Azure CLI](/cli/azure/get-started-with-azure-cli) 在大约 5 分钟内创建 Azure Database for MySQL 灵活服务器。 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
@@ -218,7 +221,7 @@ wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 > [!IMPORTANT]
-> 使用 Azure Cloud Shell 连接到灵活服务器时，你需要使用 --ssl=true 参数，而非 --ssl-mode=REQUIRED。
+>使用 Azure Cloud Shell 连接到灵活服务器时，你需要使用 --ssl=true 参数，而非 --ssl-mode=REQUIRED。
 > 主要原因是 MariaDB 分发中预安装的 mysql.exe 客户端 Azure Cloud Shell，它需要 --ssl  参数，而来自 Oracle 分发的 mysql 客户端需要 --ssl 模式参数。
 
 如果按照之前的命令连接到灵活服务器时看到以下错误消息，则说明未使用前面提到过的“允许从 Azure 中的任何 Azure 服务公共访问此服务器”设置防火墙规则，或该选项未保存。 请尝试重新设置防火墙，然后重试。

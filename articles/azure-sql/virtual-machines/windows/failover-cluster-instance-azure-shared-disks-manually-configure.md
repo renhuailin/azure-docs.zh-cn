@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 49a369c439465a7a93cba1aea983d23a54da206e
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: f58b3ea4a3d6a7fd1607410b1b9d521f57cb26bb
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569491"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219655"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>使用 Azure 共享磁盘创建 FCI（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -196,7 +196,7 @@ FCI 数据目录需位于 Azure 共享磁盘上。
 
 ## <a name="register-with-the-sql-vm-rp"></a>注册到 SQL VM RP
 
-若要从门户管理 SQL Server VM，请在[轻型管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)下将其注册到 SQL IaaS 代理扩展 (RP)，目前，这是 Azure VM 上的 FCI 和 SQL Server 唯一支持的模式。 
+若要从门户管理 SQL Server VM，请在[轻型管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-mode)下将其注册到 SQL IaaS 代理扩展 (RP)，目前，这是 Azure VM 上的 FCI 和 SQL Server 唯一支持的模式。 
 
 使用 PowerShell 在轻型模式下注册 SQL Server VM：  
 

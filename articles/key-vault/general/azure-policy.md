@@ -7,12 +7,12 @@ ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: cddc7b931bf59412d4a7ec8e6b0eecfe148f3d5e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: dcbbe63754bdcfc4ded249720b58940e0c219bf9
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749269"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861557"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>将 Azure Key Vault 与 Azure Policy 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "107749269"
 
 ## <a name="available-built-in-policy-definitions"></a>可用的“内置”策略定义
 
-Key Vault 已创建一组策略，可用于管理密钥、证书和机密对象。 这些策略是“内置的”，这意味着不需要你编写任何自定义 JSON 来启用它们，它们在 Azure 门户中可供给你分配。 你仍可以自定义某些参数以满足你组织的需求。
+Key Vault 已创建可用于管理密钥保管库及其密钥、证书和机密对象的一组策略。 这些策略是“内置的”，这意味着不需要你编写任何自定义 JSON 来启用它们，它们在 Azure 门户中可供给你分配。 你仍可以自定义某些参数以满足你组织的需求。
 
 # <a name="certificate-policies"></a>[证书策略](#tab/certificates)
 
@@ -58,7 +58,7 @@ Key Vault 已创建一组策略，可用于管理密钥、证书和机密对象�
 
 ### <a name="certificates-should-be-issued-by-the-specified-integrated-certificate-authority-preview"></a>证书应由指定的集成证书颁发机构颁发（预览版）
 
-如果你使用 Key Vault 集成证书颁发机构（Digicert 或 GlobalSign），并且希望用户使用其中一个提供程序，则可以使用此策略审核或强制执行你的选择。 此策略还可用于审核或拒绝在 Key Vault 中创建自签名证书。
+如果你使用 Key Vault 集成证书颁发机构（Digicert 或 GlobalSign），并且希望用户使用其中一个提供程序，则可以使用此策略审核或强制执行你的选择。 此策略将评估在证书颁发策略中选择的 CA 及密钥保管库中定义的 CA 提供程序。 此策略还可用于审核或拒绝在 Key Vault 中创建自签名证书。
 
 ### <a name="certificates-should-be-issued-by-the-specified-non-integrated-certificate-authority-preview"></a>证书应由指定的非集成证书颁发机构颁发（预览版）
 
@@ -159,6 +159,20 @@ HSM 是存储密钥的硬件安全模块。 HSM 为加密密钥提供物理保�
 
 通过指定机密在密钥保管库中的最长有效期（以天为单位），管理组织的合规性要求。 有效期超出你设置的阈值的机密将被标记为不合规。 还可使用此策略阻止创建设置了超过你所指定最长有效期的到期日期的新机密。
 
+# <a name="key-vault-policies"></a>[密钥保管库策略](#tab/keyvault)
+
+### <a name="key-vault-should-use-a-virtual-network-service-endpoint"></a>Key Vault 应使用虚拟网络服务终结点
+
+此策略审核任何未配置为使用虚拟网络服务终结点的 Key Vault。
+
+### <a name="resource-logs-in-key-vault-should-be-enabled"></a>应启用 Key Vault 中的资源日志
+
+对启用资源日志进行审核。 使用此策略可在发生安全事件或网络受到安全威胁时重新创建用于调查的活动线索
+
+### <a name="key-vaults-should-have-purge-protection-enabled"></a>密钥保管库应启用清除保护
+
+恶意删除密钥保管库可能会导致永久丢失数据。 你组织中的恶意内部人员可能会删除和清除密钥保管库。 清除保护通过强制实施软删除密钥保管库的强制保留期来保护你免受内部攻击。 你的组织内的任何人都无法在软删除保留期内清除你的密钥保管库。
+
 ---
 
 ## <a name="example-scenario"></a>示例方案
@@ -240,3 +254,4 @@ HSM 是存储密钥的硬件安全模块。 HSM 为加密密钥提供物理保�
 
 - 了解有关 [Azure Policy 服务](../../governance/policy/overview.md)的详细信息
 - 请参阅 Key Vault 示例：[Key Vault 内置策略定义](../../governance/policy/samples/built-in-policies.md#key-vault)
+- 了解有关[密钥保管库的 Azure 安全基准指南](/security/benchmark/azure/baselines/key-vault-security-baseline?source=docs#network-security)

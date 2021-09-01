@@ -1,15 +1,15 @@
 ---
 title: 按类别列出的示例 Azure Resource Graph 查询列表
 description: 列出 Azure Resource Graph 的示例查询。 类别包括“标记”、“Azure 顾问”、“Key Vault”、“Kubernetes”、“来宾配置”等。
-ms.date: 08/13/2021
+ms.date: 08/31/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 88843e10de8edc1235c007ab1709eb9c7285e3a2
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: fe756f62dee2a576ddeff23955de800fb50fe46e
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122068341"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309540"
 ---
 # <a name="azure-resource-graph-sample-queries-by-category"></a>按类别列出的 Azure Resource Graph 示例查询
 

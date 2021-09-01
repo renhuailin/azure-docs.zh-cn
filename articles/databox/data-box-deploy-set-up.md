@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 08/23/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ac87d5040cd572635d81be51308f48a57ddd38e3
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: a82dc471e8b92fb936750a05c515b4701a135344
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335462"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221333"
 ---
 ::: zone target="docs"
 
@@ -116,20 +116,17 @@ ms.locfileid: "94335462"
 执行以下步骤来使用本地 Web UI 和门户 UI 设置设备。
 
 1. 在使用的笔记本上配置以太网适配器以通过静态 IP 地址 192.168.100.5 和子网 255.255.255.0 连接到设备。 
-2. 连接到设备的 MGMT 端口并访问其位于 https\://192.168.100.10 的本地 Web UI。 从打开设备算起，进行此连接可能需要长达 5 分钟的时间。
-3. 单击“详细信息”，然后单击“转到网页”。
+1. 连接到设备的 MGMT 端口并访问其位于 https\://192.168.100.10 的本地 Web UI。 从打开设备算起，进行此连接可能需要长达 5 分钟的时间。
+1. 单击“详细信息”，然后单击“转到网页”。
 
    ![连接到本地 Web UI](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png)
 
-4. 此时将显示本地 Web UI 的“登录”页面。 确保设备序列号在门户 UI 和本地 Web UI 中匹配。 设备此时处于锁定状态。
-5. 登录到 [Azure 门户](https://portal.azure.com)。
-6. 从门户下载设备凭据。 转到“常规”>“设备详细信息”。 复制 **设备密码** 。 设备密码绑定到门户中的特定订单。 
+1. 此时将显示本地 Web UI 的“登录”页面。 确保设备序列号在门户 UI 和本地 Web UI 中匹配。 设备此时处于锁定状态。
 
-    ![获取设备凭据](media/data-box-deploy-set-up/data-box-device-credentials.png)
+1. [!INCLUDE [data-box-get-device-password](../../includes/data-box-get-device-password.md)]
     
-    
-7. 提供你在上一步骤中从 Azure 门户获取的设备密码来登录到设备的本地 Web UI。 单击 **登录** 。
-8. 在“仪表板”上，确保已配置了网络接口。 
+1. 提供你在上一步骤中从 Azure 门户获取的设备密码来登录到设备的本地 Web UI。 单击 **登录**。
+1. 在“仪表板”上，确保已配置了网络接口。 
    - 如果你的环境中启用了 DHCP，则会自动配置网络接口。 
    - 如果未启用 DHCP，请转到“设置网络接口”，并根据需要分配静态 IP。
 
@@ -146,9 +143,9 @@ ms.locfileid: "94335462"
 ## <a name="connect-your-device"></a>连接设备
 
 1. 若要获取设备密码，请在 [Azure 门户](https://portal.azure.com)中转到“常规”>“设备详细信息”。
-2. 在用于连接到 Data Box 的计算机上，将静态 IP 地址 192.168.100.5 和子网 255.255.255.0 分配给以太网适配器。 通过 `https://192.168.100.10` 访问设备的本地 Web UI。 打开设备后，进行连接可能需要长达 5 分钟的时间。 
-3. 从 Azure 门户使用密码登录。 此时会出现一个错误，指出网站的安全证书有问题。 按照特定于浏览器的说明转到该网页。
-4. 默认情况下，10 Gbps（或 1 Gbps）数据接口的网络设置被配置为 DHCP。 如果需要，可以将该接口配置为静态，并提供一个 IP 地址。 
+1. 在用于连接到 Data Box 的计算机上，将静态 IP 地址 192.168.100.5 和子网 255.255.255.0 分配给以太网适配器。 通过 `https://192.168.100.10` 访问设备的本地 Web UI。 打开设备后，进行连接可能需要长达 5 分钟的时间。 
+1. 从 Azure 门户使用密码登录。 此时会出现一个错误，指出网站的安全证书有问题。 按照特定于浏览器的说明转到该网页。
+1. 默认情况下，10 Gbps（或 1 Gbps）数据接口的网络设置被配置为 DHCP。 如果需要，可以将该接口配置为静态，并提供一个 IP 地址。 
 
 ::: zone-end
 

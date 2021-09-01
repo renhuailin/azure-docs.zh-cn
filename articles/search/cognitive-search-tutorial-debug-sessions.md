@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/02/2021
-ms.openlocfilehash: 0560c7e1f8770dd27d8ad462d10a2668d69d5865
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ab1be78570ef784da6a51eb27d9d18d5c902f092
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559239"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221659"
 ---
 # <a name="tutorial-debug-a-skillset-using-debug-sessions"></a>Tutorial:使用调试会话调试技能组
 
@@ -39,7 +39,7 @@ Azure 门户中的调试会话可提供技能组的整体可视化效果。 借�
 
 + [Postman 桌面应用](https://www.getpostman.com/)和 [Postman 集合](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Debug-sessions)，用于通过 REST API 创建对象。
 
-+ [示例数据（临床试验）](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19)。
++ [示例数据（临床试验）](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials/clinical-trials-pdf-19)。
 
 > [!NOTE]
 > 此快速入门还将 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)用于 AI。 由于工作负荷很小，因此，认知服务在幕后会抽调一部分算力来免费处理事务（最多 20 个）。 这意味着，无需创建其他认知服务资源即可完成此练习。
@@ -48,7 +48,7 @@ Azure 门户中的调试会话可提供技能组的整体可视化效果。 借�
 
 本部分在 Azure Blob 存储中创建示例数据集，让索引器和技能组有内容可使用。
 
-1. [下载包含 19 个文件的示例数据 (clinical-trials-pdf-19)](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19)。
+1. [下载包含 19 个文件的示例数据 (clinical-trials-pdf-19)](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials/clinical-trials-pdf-19)。
 
 1. [创建 Azure 存储帐户](../storage/common/storage-account-create.md?tabs=azure-portal)或[查找现有帐户](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)。 
 

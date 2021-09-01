@@ -7,14 +7,16 @@ ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/22/2020
-ms.openlocfilehash: 0414aaad5a1cf6edb9c2152eed70f8753946cca1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: def4794d091155cbf10a854d304d4390659626bf
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92546426"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652098"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-mysql--single-server"></a>Azure Database for MySQL（单一服务器）连接和查询概述
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 以下文档包含指向示例的链接，这些示例显示了如何连接和查询 Azure Database for MySQL 单一服务器。 本指南还包括 TLS 建议和库，你可以利用它们以下述受支持的语言连接到服务器。
 

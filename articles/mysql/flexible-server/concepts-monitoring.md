@@ -6,16 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 660e87e0c09d1bf052b20f60276a30e572ab825b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 778c5e99c91cede0e67ee4250abeeb4b73e49965
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110468"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652272"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>利用内置的指标监视 Azure Database for MySQL 灵活服务器
 
-> [!IMPORTANT] 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
 Azure Database for MySQL 灵活服务器通过 Azure Monitor 提供服务器监视。 指标是数字值，用于描述某方面的服务器资源在特定时间的状况。 通过允许你监视对你最重要的内容，对服务器的资源进行监视可帮助你排查工作负荷问题并优化工作负荷。 监视适当的指标有助于保持服务器和应用程序的性能、可靠性与可用性。

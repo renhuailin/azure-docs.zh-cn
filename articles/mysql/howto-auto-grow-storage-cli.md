@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9ae22a80829ecaaff84c308ec9059d398b1ccbfb
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: a296a4e74e445a067e6b308eeffea126312d1b5d
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365053"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652190"
 ---
 # <a name="auto-grow-azure-database-for-mysql-storage-using-the-azure-cli"></a>使用 Azure CLI 自动增长 Azure Database for MySQL 存储
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 本文介绍如何将 Azure Database for MySQL 服务器存储配置为在不影响工作负荷的情况下增长。
 
 [达到存储限制](./concepts-pricing-tiers.md#reaching-the-storage-limit)的服务器将设置为只读。 如果启用了存储自动增长，则对于预配的存储大小小于 100 GB 的服务器，可用存储空间一旦小于 1 GB 或预配存储的 10%（以这二者中的较大值为准），预配的存储大小就会立即增加 5 GB。 对于预配存储大小大于 100 GB 的服务器，可用存储空间小于预配存储大小 10GB 时，预配存储大小会增加 5%。 [此处](./concepts-pricing-tiers.md#storage)所指定的最大存储限制适用。

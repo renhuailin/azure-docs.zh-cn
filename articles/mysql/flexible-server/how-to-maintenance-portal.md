@@ -6,22 +6,26 @@ ms.author: nlarin
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: c8251eb2a89a7481ebc981f2b89668c363651b39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4ff27243643a5c0fbb833a05a07e9e117196a6f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91315008"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653174"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-mysql--flexible-server"></a>管理 Azure Database for MySQL 灵活服务器中的计划性维护设置
- 
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
 可为 Azure 订阅中的每个灵活服务器指定维护选项。 选项包括即将进行的和已完成的维护事件的维护计划和通知设置。
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器处于预览状态。
- 
+
 ## <a name="prerequisites"></a>先决条件
+
 若要完成本操作指南，需要：
+
 - [Azure Database for MySQL 灵活服务器](quickstart-create-server-portal.md)
  
 ## <a name="specify-maintenance-schedule-options"></a>指定维护计划选项

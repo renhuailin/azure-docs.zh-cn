@@ -9,22 +9,24 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 06/25/2021
 ms.author: hirsin
-ms.reviewer: hirsin
+ms.reviewer: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 053f56f56c28560b700122a99fc2d97f4c8e0279
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88272444"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "122653223"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft 标识平台和 OAuth 2.0 设备权限授予流
 
 Microsoft 标识平台支持[设备权限授予](https://tools.ietf.org/html/rfc8628)，可让用户登录到智能电视、IoT 设备或打印机等输入受限设备。  若要启用此流，设备会让用户在另一台设备上的浏览器中访问一个网页，以进行登录。  用户登录后，设备可以获取所需的访问令牌和刷新令牌。
 
-本文介绍如何在应用程序中直接针对协议进行编程。  如果可能，建议你改用受支持的 Microsoft 身份验证库 (MSAL) 来[获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
+本文介绍如何在应用程序中直接针对协议进行编程。  如果可能，建议改为使用受支持的 Microsoft 身份验证库 (MSAL) 来[获取令牌并调用受保护的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另请参阅[使用 MSAL 的示例应用](sample-v2-code.md)。
+
+[!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
 ## <a name="protocol-diagram"></a>协议图
 
@@ -36,10 +38,6 @@ Microsoft 标识平台支持[设备权限授予](https://tools.ietf.org/html/rfc
 
 客户端必须先在身份验证服务器中检查用于发起身份验证的设备代码和用户代码。 客户端从 `/devicecode` 终结点收集此请求。 在此请求中，客户端应包含需要从用户获取的权限。 从发送此请求的那一刻起，用户只有 15 分钟的时间（通常是 `expires_in` 的值）完成登录，因此，仅在用户指出他们已准备好登录时才发出此请求。
 
-> [!TIP]
-> 尝试在 Postman 中执行此请求！
-> [![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-
 ```HTTP
 // Line breaks are for legibility only.
 
@@ -47,7 +45,7 @@ POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/devicecode
 Content-Type: application/x-www-form-urlencoded
 
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-scope=user.read%20openid%20profile
+&scope=user.read%20openid%20profile
 
 ```
 
@@ -85,9 +83,9 @@ scope=user.read%20openid%20profile
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 
-grant_type: urn:ietf:params:oauth:grant-type:device_code
-client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
-device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
+grant_type=urn:ietf:params:oauth:grant-type:device_code
+&client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&device_code=GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
 | 参数 | 必需 | 说明|
@@ -133,3 +131,5 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | `refresh_token` | 不透明字符串 | 如果原始 `scope` 参数包含 `offline_access`，则颁发。  |
 
 可以运行 [OAuth 代码流文档](v2-oauth2-auth-code-flow.md#refresh-the-access-token)中所述的同一个流，使用刷新令牌来获取新的访问令牌和刷新令牌。
+
+[!INCLUDE [remind-not-to-validate-access-tokens](includes/remind-not-to-validate-access-tokens.md)]

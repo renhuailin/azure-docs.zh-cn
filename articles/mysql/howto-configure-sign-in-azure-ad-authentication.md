@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 27a6c07fd43fc167efb32369e6269206c9462e51
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 152dfc877ad96d2b002fed43eea92a0b607e8bd2
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570495"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653270"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>使用 Azure Active Directory 进行 MySQL 的身份验证
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 本文将分步介绍如何使用 Azure Database for MySQL 配置 Azure Active Directory 访问权限以及如何使用 Azure AD 令牌进行连接。
 

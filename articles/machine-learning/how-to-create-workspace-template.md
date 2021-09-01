@@ -10,12 +10,12 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 04/21/2021
-ms.openlocfilehash: 7714adf00a40953301cf3f13eb8d6e403cd8c7a3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9a8272d6b21130f253046ef3ffe05db8b00d4b79
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736558"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038665"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
@@ -276,9 +276,6 @@ New-AzResourceGroupDeployment `
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>仅将工作区部署到专用终结点后面
 
 如果关联的资源不在虚拟网络后面，则可以将 **privateEndpointType** 参数设置为 `AutoAproval` 或 `ManualApproval`，以将工作区部署到专用终结点后面。 对于新的和现有的工作区，都可以这样做。 更新现有工作区时，请使用现有工作区中的信息填写模板参数。
-
-> [!IMPORTANT]
-> Azure 政府区域不支持使用具有专用终结点的 Azure 机器学习工作区。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

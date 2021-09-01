@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d986106337eb1ede2f6d61303d8a4c487bbed276
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7926994766646f89a2ea853df3cc60715005b814
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93088465"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123097783"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>了解 NoSQL 数据库与关系数据库之间的差别
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -65,7 +65,7 @@ Azure Cosmos DB 是一个多模型数据库服务，它为所有主要 NoSQL 模
 近年来，[微服务](https://en.wikipedia.org/wiki/Microservices)模式已得到长足发展。 此模式根植于[面向服务的体系结构](https://en.wikipedia.org/wiki/Service-oriented_architecture)。 在这些新式微服务体系结构中，数据传输的事实标准是 [JSON](https://en.wikipedia.org/wiki/JSON)，而 JSON 也正好是绝大多数面向文档的 NoSQL 数据库的存储媒介。 JSON 大大提高了 NoSQL 文档存储的无缝吻合性，可在复杂的微服务实施方案中实现持久性和同步（通过[事件寻源模式](https://en.wikipedia.org/wiki/Event-driven_architecture)）。 在这些体系结构中维护较传统的关系数据库可能要复杂得多。 这是因为，在 API 之间维护状态和同步需要更多的转换。 具体而言，相比 NoSQL 数据库，Azure Cosmos DB 提供许多功能来进一步提高基于 JSON 的微服务体系结构的无缝吻合度：
 
 * 丰富的纯 JSON 数据类型
-* 内置于数据库中的 JavaScript 引擎和[查询 API](./javascript-query-api.md)。
+* 内置于数据库中的 JavaScript 引擎和[查询 API](sql/javascript-query-api.md)。
 * 可供客户端订阅的先进[更改源](./change-feed.md)，对容器进行修改后可以发出通知。
 
 ## <a name="some-challenges-with-nosql-databases"></a>NoSQL 数据库存在的一些难题

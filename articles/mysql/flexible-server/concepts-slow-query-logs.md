@@ -6,16 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: d311ea3158e1f9d53c51fe239103039849597d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7550fafa0a1fdf67baca4f9c777a4a064f522728
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579187"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122651677"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL 灵活服务器中的慢查询日志（预览版）
 
-> [!IMPORTANT] 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
 在 Azure Database for MySQL 灵活服务器中，用户可配置和访问慢查询日志。 慢查询日志默认禁用，你可启用它来在故障排除期间帮助识别性能性能瓶颈。
@@ -33,7 +35,7 @@ ms.locfileid: "100579187"
 - **log_throttle_queries_not_using_indexes**：限制可写入慢查询日志的非索引查询的数目。 当 `log_queries_not_using_indexes` 设置为 ON 时，此参数生效
 
 > [!IMPORTANT]
-> 如果表未编制索引，则将 `log_queries_not_using_indexes` 和 `log_throttle_queries_not_using_indexes` 参数设置为 ON 可能会影响 MySQL 性能，因为对这些非索引表运行的所有查询都将写入到慢查询日志。
+>如果表未编制索引，则将 `log_queries_not_using_indexes` 和 `log_throttle_queries_not_using_indexes` 参数设置为 ON 可能会影响 MySQL 性能，因为对这些非索引表运行的所有查询都将写入到慢查询日志。
 
 有关慢查询日志参数的完整说明，请参阅 MySQL [慢查询日志文档](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)。
 

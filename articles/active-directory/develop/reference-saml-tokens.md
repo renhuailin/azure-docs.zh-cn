@@ -13,12 +13,12 @@ ms.date: 03/29/2021
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: c23028e4cbbeb7e92fd8b0a7fb6b6b81a54a0806
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2d49a112413c482751f51d67f2fb3990dcfe52c2
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132226"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219982"
 ---
 # <a name="saml-token-claims-reference"></a>SAML 令牌声明参考
 
@@ -154,7 +154,7 @@ Microsoft 标识平台在每个身份验证流的处理中发出多种安全令�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解如何使用 Microsoft Graph API 管理令牌生存期策略，请参阅 [Azure AD 策略资源概述](/graph/api/resources/policy)。
+* 若要详细了解如何使用 Microsoft Graph API 管理令牌生存期策略，请参阅 [Azure AD 策略资源概述](/graph/api/resources/policy-overview)。
 * 将[自定义和可选声明](active-directory-optional-claims.md)添加到应用程序的令牌。
 * 使用 [SAML 的单一登录 (SSO)](single-sign-on-saml-protocol.md)。
 * 使用 [Azure 单一注销 SAML 协议](single-sign-out-saml-protocol.md)

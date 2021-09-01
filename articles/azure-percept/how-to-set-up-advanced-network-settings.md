@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Percept DK 上设置高级网络设置
 description: 本文将为用户逐步介绍 Azure Percept DK 安装体验中的高级网络设置
-author: mimcco
-ms.author: mimcco
+author: WendyAnn0079
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 7/19/2021
 ms.custom: template-how-to
-ms.openlocfilehash: bc680025e37ded3fd91b840d00ba075772cbb656
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ac06d331bcd587c1294c21388faac75cc6f8cfd6
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727202"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219638"
 ---
 # <a name="set-up-advanced-network-settings-on-the-azure-percept-dk"></a>在 Azure Percept DK 上设置高级网络设置
 

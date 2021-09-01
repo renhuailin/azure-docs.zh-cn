@@ -1,5 +1,5 @@
 ---
-title: 获取加密密钥信息
+title: 查找加密密钥信息
 titleSuffix: Azure Cognitive Search
 description: 检索索引或同义词映射中使用的加密密钥名称和版本，以便可以在 Azure Key Vault 中管理密钥。
 manager: nitinme
@@ -7,34 +7,50 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/01/2020
+ms.date: 06/21/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 22eefcde250057fae142142ed91c6e339849b0ba
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 2f34d653a698a7ef2ee3dee21d46345ed9a7301a
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689282"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003811"
 ---
-# <a name="get-customer-managed-key-information-from-indexes-and-synonym-maps"></a>从索引和同义词映射获取客户管理的密钥信息
+# <a name="find-encrypted-objects-and-information"></a>查找加密的对象和信息
 
-在 Azure 认知搜索中，需在 Azure Key Vault 中创建、存储和管理客户管理的加密密钥。 如果需要确定对象是否加密，或者要确定使用的密钥名称或版本，请使用 REST API 或 SDK 从索引或同义词映射定义中检索 encryptionKey 属性。 
+在 Azure 认知搜索中，需在 Azure Key Vault 中创建、存储和管理客户管理的加密密钥。 如需确定对象是否经过加密或者 Azure Key Vault 中使用的密钥名称或版本，可以使用 REST API 或 Azure SDK 从搜索服务的对象定义中检索 encryptionKey 属性。
 
-建议在 Key Vault 上[启用日志记录](../key-vault/general/logging.md)，以便监视密钥使用情况。
+未使用客户管理的密钥加密的对象将具有空的 encryptionKey 属性。 否则，你可能会看到类似于以下示例的定义。
+
+```json
+"encryptionKey": {
+"keyVaultUri": "https://demokeyvault.vault.azure.net",
+"keyVaultKeyName": "myEncryptionKey",
+"keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+"accessCredentials": {
+    "applicationId": "00000000-0000-0000-0000-000000000000",
+    "applicationSecret": "myApplicationSecret"
+    }
+}
+```
+
+所有加密对象的 encryptionKey 构造都是相同的。 这是第一级属性，与对象名称和说明属于同一级别。
 
 ## <a name="get-the-admin-api-key"></a>获取管理 API 密钥
 
-若要从搜索服务获取对象定义，你需要使用管理员权限进行身份验证。 获取管理 API 密钥的最简单的方法是通过门户获取。
+你需要先提供管理员 API 密钥，才能从搜索服务中检索对象定义。 查询对象定义和元数据的请求需要用到管理员 API 密钥。 获取管理 API 密钥的最简单的方法是通过门户获取。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，然后打开搜索服务概览页面。
 
 1. 在左侧，单击“密钥”并复制管理 API。 索引和同义词映射检索需要使用管理密钥。
 
-为完成剩余步骤，请切换到 PowerShell 和 REST API。 门户不显示同义词映射，也不显示索引的加密密钥属性。
+为完成剩余步骤，请切换到 PowerShell 和 REST API。 门户不会显示任何对象的加密密钥信息。
 
-## <a name="use-powershell-and-rest"></a>使用 PowerShell 和 REST
+## <a name="retrieve-object-properties"></a>检索对象属性
 
-运行以下命令以设置变量和获取对象定义。
+使用 PowerShell 和 REST 运行以下命令来设置变量及获取对象定义。 
+
+或者，你也可以使用适用于 [.NET](/dotnet/api/azure.search.documents.indexes.searchindexclient.getindexes)、[Python](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient)、[JavaScript](/javascript/api/@azure/search-documents/searchindexclient) 和 [Java](/java/api/com.azure.search.documents.indexes.searchindexclient.getindex) 的 Azure SDK。
 
 ```powershell
 <# Connect to Azure #>
@@ -65,7 +81,9 @@ Invoke-RestMethod -Uri $uri -Headers $headers | ConvertTo-Json
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你了解了所使用的加密密钥和版本，可以在 Azure Key Vault 中管理密钥，或查看其他配置设置。
+建议在 Azure Key Vault 上[启用日志记录](../key-vault/general/logging.md)，以便监视密钥的使用情况。
+
+若要详细了解如何使用 Azure 密钥或配置客户托管的加密：
 
 + [快速入门：使用 PowerShell 在 Azure Key Vault 中设置和检索机密](../key-vault/secrets/quick-create-powershell.md)
 

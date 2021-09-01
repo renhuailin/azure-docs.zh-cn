@@ -6,16 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 1232a0753c988f5a28ebba28f9819aa67ce28603
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af4356a4f432572920bd07fd8d7ea8c7e5f6663e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101718737"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653118"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>使用 Azure Database for MySQL 灵活服务器中的审核日志跟踪数据库活动
 
-> [!IMPORTANT] 
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供
 
 用户可在 Azure Database for MySQL 灵活服务器中配置审核日志。 还可使用审核日志来跟踪数据库级活动，包括连接、管理、DDL 和 DML 事件。 这些类型的日志通常用于符合性目的。

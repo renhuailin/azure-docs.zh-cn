@@ -7,13 +7,13 @@ author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 0953d750ee8b59e9889512bb64cfd276a0bbeb53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: c55d0e9c7897fdf2e34016bd0f2657db123cee69
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97654857"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860975"
 ---
 #   <a name="text-translation-cognitive-skill"></a>文本翻译认知技能
 
@@ -24,9 +24,8 @@ ms.locfileid: "97654857"
 [文本翻译 API 3.0](../cognitive-services/translator/reference/v3-0-reference.md) 是一种非区域认知服务，这意味着你的数据不一定与 Azure 认知搜索或附加的认知服务资源位于同一区域。
 
 > [!NOTE]
-> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 此技能绑定到认知服务，对于超过每个索引器每天 20 个文档的事务，需要[一个计费资源](cognitive-search-attach-cognitive-services.md)。 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)所述。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.TranslationSkill

@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: ebb980aa257fc09c3d6a407febbf60f2d1a26a4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68ee7528eb7b8d91d4346b5cf7fa2f92841255b7
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94536466"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652099"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户配置和访问 Azure Database for MySQL（灵活服务器）的审核日志
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
@@ -21,6 +23,7 @@ ms.locfileid: "94536466"
 可以从 Azure 门户配置 Azure Database for MySQL 灵活服务器[审核日志](concepts-audit-logs.md)和诊断设置。
 
 ## <a name="prerequisites"></a>先决条件
+
 本文中的步骤要求具备[灵活服务器](quickstart-create-server-portal.md)。
 
 ## <a name="configure-audit-logging"></a>配置审核日志记录

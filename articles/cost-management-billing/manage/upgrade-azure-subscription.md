@@ -8,15 +8,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 03/11/2021
+ms.date: 07/15/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56d0116217f8db76131ccecc884312fb5296d1ed
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: ad09c97b784dcfabfe0dfa3e531fc789ba6fc956
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331711"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297351"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>升级 Azure 免费帐户或面向学生的 Azure 入门版帐户
 
@@ -25,6 +25,9 @@ ms.locfileid: "108331711"
 如果有[面向学生的 Azure 入门版帐户](https://azure.microsoft.com/offers/ms-azr-0144p/)，并且有资格使用 [Azure 免费帐户](https://azure.microsoft.com/free/)，可以将其升级到 [Azure 免费帐户](https://azure.microsoft.com/free/)。 升级时，你将获得 200 美元的 Azure 额度（以计费货币表示）和 12 个月的免费升级服务。 如果你不具备获取免费帐户的资格，则可以使用[支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)升级到[即用即付费率](https://azure.microsoft.com/offers/ms-azr-0003p/)。
 
 如果有[面向学生的 Azure](https://azure.microsoft.com/offers/ms-azr-0170p/) 帐户，可以使用[支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)升级到[即用即付费率](https://azure.microsoft.com/offers/ms-azr-0003p/)
+
+>[!NOTE]
+>如果你使用的不是免费的资源，且由于额度用完订阅被禁用，那么升级订阅后，这些资源将被重新启用。 这种情况将导致你需要为使用的资源付费。
 
 <a id="freetrial"></a>
 

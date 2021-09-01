@@ -1,18 +1,18 @@
 ---
 title: Azure Percept 示例 AI 模型
 description: 详细了解可用于原型和部署的 AI 模型
-author: mimcco
-ms.author: mimcco
+author: tsampige
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 0db18be3e075df6e5566bd622f956839f23769c6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 78eb20b0229faef9c067b4bab475759badccd19e
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743728"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221275"
 ---
 # <a name="azure-percept-sample-ai-models"></a>Azure Percept 示例 AI 模型
 

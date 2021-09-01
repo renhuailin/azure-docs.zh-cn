@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/21/2021
-ms.openlocfilehash: 18697f2150cdb8a6ab4eeb12334553d32b2f984d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: c744517dfab088fa4edb104b2c5aebda2818ab8f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471965"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653076"
 ---
 # <a name="migrate-amazon-rds-for-mysql-to-azure-database-for-mysql-using-mysql-workbench"></a>使用 MySQL Workbench 将 Amazon RDS for MySQL 迁移到 Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 可以使用 MySQL Workbench 导出/导入、Azure 数据库迁移服务 (DMS) 和 MySQL 转储和还原等各种实用工具，将 Amazon RDS for MySQL 迁移到 Azure Database for MySQL。 但是，使用 MySQL Workbench 迁移向导可以方便地将 Amazon RDS for MySQL 数据库移到 Azure Database for MySQL。
 

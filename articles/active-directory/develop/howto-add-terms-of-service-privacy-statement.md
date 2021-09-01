@@ -12,14 +12,14 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 8ca10c54cff14bd9301e06a891bcb1f7013959f9
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: ff363550b44286cb7140f533981229565fdf795f
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176461"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032230"
 ---
-# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：配置应用的服务条款和隐私声明
+# <a name="configure-terms-of-service-and-privacy-statement-for-an-app"></a>配置应用的服务条款和隐私声明
 
 构建和管理与 Azure Active Directory (Azure AD) 和 Microsoft 帐户集成的多租户应用的开发人员应随附指向应用服务条款和隐私声明的链接。 服务条款和隐私声明通过用户同意体验展示给用户。 它们可以帮助用户认识到他们可以信任你的应用。 对于面向用户的多租户应用（由多个目录使用的应用或面向所有 Microsoft 帐户提供的应用）来说，服务条款和隐私声明至关重要。
 

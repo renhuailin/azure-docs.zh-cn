@@ -6,21 +6,23 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 361af28932226640db077bf4949f7bd472ceb986
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 9ddf3885931e527e4fd82037d9e82693fb6afa5f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166570"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653043"
 ---
 # <a name="restore-a-deleted-azure-database-for-mysql-server"></a>还原已删除的 Azure Database for MySQL 服务器
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 删除服务器后，数据库服务器备份最多可在服务中保留五天。 只能从服务器最初所在的 Azure 订阅访问和还原数据库备份。 可通过以下建议步骤在服务器删除后的 5 天内恢复已删除的 MySQL 服务器资源。 仅当服务器的备份仍可用且未从系统中删除时，建议的步骤才适用。 
 
 ## <a name="pre-requisites"></a>先决条件
 要还原已删除的 Azure Database for MySQL 服务器，需要执行以下操作：
 - 托管原始服务器的 Azure 订阅名称
-- 之前创建服务器的位置
+- 服务器创建位置
 
 ## <a name="steps-to-restore"></a>还原步骤
 
@@ -62,11 +64,11 @@ ms.locfileid: "108166570"
    
 8. 如果看到响应代码 201 或 202，则表示已成功提交还原请求。 
 
-9. 服务器创建可能需要一些时间，具体取决于原始服务器上预配的数据库大小和计算资源。 通过在活动日志中筛选以下信息可监视还原状态 
+9. 服务器创建可能需要一些时间，具体取决于原始服务器上预配的数据库大小和计算资源。 通过在活动日志中筛选以下信息，可以监视还原状态 
    - **订阅** = 你的订阅
    - 资源类型 = Azure Database for MySQL 服务器 (Microsoft.DBforMySQL/servers) 
    - 操作 = 更新 MySQL 服务器创建
 
 ## <a name="next-steps"></a>后续步骤
-- 如果在五天内尝试还原服务器，但在准确执行前述步骤后仍收到错误，请开启帮助支持事件。 如果在五天后尝试还原已删除的服务器，则会因为找不到备份文件而出错。 在这种情况下，请勿开启支持票证。 如果已从系统中删除备份，则支持团队也无法提供任何帮助。 
-- 为防止意外删除服务器，强烈建议使用[资源锁](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/preventing-the-disaster-of-accidental-deletion-for-your-mysql/ba-p/825222)。
+- 如果在五天内尝试还原服务器，但在准确执行前述步骤后仍收到错误，请开启帮助支持事件。 如果在五天后尝试还原已删除的服务器，则会因为找不到备份文件而出错。 在这种情况下，请勿开启支持票证。 如果备份已从系统中删除，则支持团队无法提供任何帮助。 
+- 为了防止意外删除服务器，强烈建议使用[资源锁](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/preventing-the-disaster-of-accidental-deletion-for-your-mysql/ba-p/825222)。

@@ -1,18 +1,18 @@
 ---
 title: 通过 Micrometer 收集 Spring Cloud Resilience4J 断路器指标
 description: 如何在 Azure Spring Cloud 中通过 Micrometer 收集 Spring Cloud Resilience4J 断路器指标。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: be67e2fb1bafaecd538f6fc671c006ac013cc849
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dae08798aa7b3bc1937295e0cd7701446bd7259e
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135268"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015555"
 ---
 # <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-with-micrometer-preview"></a>通过 Micrometer 收集 Spring Cloud Resilience4J 断路器指标（预览版）
 
@@ -22,10 +22,8 @@ ms.locfileid: "108135268"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 根据 [Application Insights 的 Java 进程内代理指南](./how-to-application-insights.md#enable-java-in-process-agent-for-application-insights)启用 Java 进程内代理。 
-
+* 根据 [Application Insights 的 Java 进程内代理指南](./how-to-application-insights.md#enable-java-in-process-agent-for-application-insights)启用 Java 进程内代理。
 * 根据 [Application Insights 指南](../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)启用 resilience4j 指标的维度收集。
-
 * 安装 git、Maven 和 Java（如果开发计算机尚未使用这些程序）。
 
 ## <a name="build-and-deploy-apps"></a>构建和部署应用
@@ -73,6 +71,7 @@ az spring-cloud app deploy -n reactive-resilience4j \
 >       <artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 >   </dependency>
 >   ```
+>
 > * 客户代码必须使用 `CircuitBreakerFactory` 的 API，该 API 是在你包括 Spring Cloud 断路器入门版时作为自动创建的 `bean` 实现的。 有关详细信息，请参阅 [Spring Cloud 断路器](https://spring.io/projects/spring-cloud-circuitbreaker#overview)。
 >
 > * 以下 2 个依赖项与上述 resilient4j 包冲突。  请确保客户不要包括这些依赖项。
@@ -99,7 +98,7 @@ az spring-cloud app deploy -n reactive-resilience4j \
 
 ## <a name="locate-resilence4j-metrics-from-portal"></a>从门户查找 Resilence4j 指标
 
-1. 从 Azure Spring Cloud 门户中选择“Application Insights”边栏选项卡，然后单击“Application Insights”。
+1. 从 Azure Spring Cloud 门户中选择“Application Insights”边栏选项卡，然后选择“Application Insights”。 
 
    [ ![resilience4J 0](media/spring-cloud-resilience4j/resilience4J-0.png)](media/spring-cloud-resilience4j/resilience4J-0.PNG)
 
@@ -111,11 +110,11 @@ az spring-cloud app deploy -n reactive-resilience4j \
 
    [ ![resilience4J 2](media/spring-cloud-resilience4j/resilience4J-2.png)](media/spring-cloud-resilience4j/resilience4J-2.PNG)
 
-4. 选择采用“平均值”的“resilience4j_circuitbreaker_calls”指标。   单击“添加筛选器”，然后选择“createNewAccount”作为名称。
+4. 选择采用“平均值”的“resilience4j_circuitbreaker_calls”指标。  选择“添加筛选器”，然后选择“createNewAccount”作为名称。 
 
    [ ![resilience4J 3](media/spring-cloud-resilience4j/resilience4J-3.png)](media/spring-cloud-resilience4j/resilience4J-3.PNG)
 
-5. 选择采用“平均值”的“resilience4j_circuitbreaker_calls”指标。   接着单击“应用拆分”，然后选择“种类”。
+5. 选择采用“平均值”的“resilience4j_circuitbreaker_calls”指标。   选择“应用拆分”，然后选择“种类”。
 
    [ ![resilience4J 4](media/spring-cloud-resilience4j/resilience4J-4.png)](media/spring-cloud-resilience4j/resilience4J-4.PNG)
 

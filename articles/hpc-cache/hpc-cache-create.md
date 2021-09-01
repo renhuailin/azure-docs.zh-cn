@@ -4,15 +4,15 @@ description: 如何创建 Azure HPC 缓存实例
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 07/15/2021
 ms.author: v-erkel
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 72c9590cca805d0a6e22d42f482ad80935e842d3
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 26272090d3ec18328df2ac553b15e53abc824708
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706790"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294918"
 ---
 # <a name="create-an-azure-hpc-cache"></a>创建 Azure HPC 缓存
 
@@ -28,7 +28,7 @@ ms.locfileid: "110706790"
 
 ## <a name="define-basic-details"></a>定义基本详细信息
 
-![Azure 门户中的“项目详细信息”页的屏幕截图](media/hpc-cache-create-basics.png)
+![Azure 门户中项目详细信息页的屏幕截图。](media/hpc-cache-create-basics.png)
 
 在“项目详细信息”中，选择将托管缓存的订阅和资源组。
 
@@ -39,49 +39,92 @@ ms.locfileid: "110706790"
 * 子网 - 选择或创建具有至少 64 个 IP 地址 (/24) 的子网。 此子网必须仅用于此 Azure HPC 缓存实例。
 
 ## <a name="set-cache-capacity"></a>设置缓存容量
-<!-- referenced from GUI - update aka.ms link if you change this header text -->
+<!-- referenced from GUI - update aka.ms/hpc-cache-iops link if you change this header text -->
 
-在“缓存”页上，必须设置缓存的容量。 此处设置的值确定缓存可以容纳多少数据，以及为客户端请求提供服务的速度。
+在“缓存”页上，必须设置缓存的容量。 此处设置的值决定了服务于客户端的缓存速度及其可容纳的数据大小。
 
 容量还会影响缓存的成本，以及它可以支持的存储目标数。
 
-通过设置以下两个值选择容量：
+缓存容量是两个值的组合：
 
 * 缓存的最大数据传输速率（吞吐量）（GB/秒）
 * 为缓存数据分配的存储量 (TB)
 
-选择可用吞吐量值和缓存存储大小之一。
+![Azure 门户中缓存大小调整页的屏幕截图。](media/hpc-cache-create-capacity.png)
 
-> [!TIP]
-> 如果要对缓存使用 10 个以上存储目标，则必须为吞吐量大小选择最高的可用缓存存储大小值。 有关详细信息，请参阅[添加存储目标](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)。
+### <a name="understand-throughput-and-cache-size"></a>理解吞吐量和缓存大小
 
-请记住，实际的数据传输速率取决于工作负荷、网络速度和存储目标的类型。 你选择的值设置整个缓存系统的最大吞吐量，但其中一些用于开销任务。 例如，如果客户端请求尚未存储在缓存中的文件，或者该文件被标记为过期，则缓存将使用其部分吞吐量从后端存储中提取该文件。
+有几个因素可能会影响 Azure HPC 缓存的效率，但其中一个最重要的因素是选择适当的吞吐量值和缓存存储大小。
 
-Azure HPC 缓存会管理缓存和预加载哪些文件，以最大限度地提高缓存命中率。 将持续评估缓存内容，且不经常访问的文件将移动到长期存储。 选择一种缓存存储大小，该大小可以轻松保留活动的工作文件集，并具有额外的空间来存储元数据和其他开销。
+请记住，选择吞吐量值时，实际的数据传输速率取决于工作负荷、网络速度和存储目标的类型。
 
-![缓存大小调整页的屏幕截图](media/hpc-cache-create-capacity.png)
+你选择的值设置整个缓存系统的最大吞吐量，但其中一些用于开销任务。 例如，如果客户端请求尚未存储在缓存中的文件，或者该文件被标记为过期，则缓存将使用其部分吞吐量从后端存储中提取该文件。
+
+Azure HPC 缓存决定缓存和预加载哪些文件，以最大限度提高缓存命中率。 将持续评估缓存内容，且不经常访问的文件将移动到长期存储。
+
+选择一种缓存存储大小，该大小可以轻松保留活动的工作文件集，并具有额外的空间来存储元数据和其他开销。
+
+吞吐量和缓存大小也会影响特定缓存支持的存储目标数。 若要使用 10 个以上缓存存储目标，必须为吞吐量大小选择最高的可用缓存存储大小值，或选择一种高吞吐量只读配置。 有关详细信息，请参阅[添加存储目标](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)。
+
+若在正确调整缓存大小方面需要帮助，请联系 Microsoft 服务和支持部门。
+
+### <a name="choose-the-cache-type-for-your-needs"></a>根据需求选择缓存类型
+
+选择缓存容量时，你可能会注意到某些吞吐量值具有固定的缓存大小，而其他吞吐量值允许从多个缓存大小选项中进行选择。 这是因为缓存基础结构有两种不同的样式：
+
+* 标准缓存：列于在吞吐量菜单中的“读写缓存”下
+
+  使用标准缓存时，可从多个缓存大小值中选择。 可以将这些缓存配置为“只读缓存”或“读写缓存”。
+
+* 高吞吐量缓存：列于吞吐量菜单中的“只读缓存”下
+
+  高吞吐量配置设置了缓存大小，因为它们已预配 NVME 磁盘。 它们旨在优化文件只读访问。
+
+![门户中最大吞吐量菜单的屏幕截图。 “读写缓存”标题下有几个大小选项，“只读缓存”标题下也有几个。](media/rw-ro-cache-sizing.png)
+
+下表说明了这两个选项之间的一些重要差异。
+
+| 属性 | 标准缓存 | 高吞吐量缓存 |
+|--|--|--|
+| 吞吐量菜单类别 |“读写缓存”| “只读缓存”|
+| 吞吐量大小 | 2、4 或 8 GB/秒 | 4.5、9 或 16 GB/秒 |
+| 缓存大小 | 3、6 或 12 TB（2 GB/秒）<br/> 6、12 或 24 TB（4 GB/秒）<br/> 12、24 或 48 TB（8 GB/秒）| 21 TB（4.5 GB/秒） <br/> 42 TB（9 GB/秒） <br/> 84 TB（16 GB/秒） |
+| 最大存储帐户数 | [10 或 20](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)，具体取决于所选缓存大小 | 20 |
+| 兼容的存储目标类型 | Azure Blob、本地 NFS 存储、已启用 NFS 的 blob | 本地 NFS 存储 <br/>处于此组合预览状态下的已启用 NFS 的 blob |
+| 缓存样式 | 读取缓存或读写缓存 | 只读缓存 |
+| 不需要时，可终止缓存以节省成本 | 是 | 否 |
+
+若要了解有关这些选项的详细信息，请参阅下列信息：
+
+* [最大存储帐户数](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)
+* [“读写缓存”模式](cache-usage-models.md#basic-file-caching-concepts)
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>启用 Azure Key Vault 加密（可选）
-
-“磁盘加密密钥”页出现在“缓存”和“标记”选项卡之间。<!-- Read [Regional availability](hpc-cache-overview.md#region-availability) to learn more about region support. -->
 
 如果要管理用于缓存存储的加密密钥，请在“磁盘加密密钥”页上提供 Azure Key Vault 信息。 密钥保管库必须位于与缓存相同的区域和订阅中。
 
 如果你不需要客户托管的密钥，可以跳过此部分。 默认情况下，Azure 使用 Microsoft 托管的密钥加密数据。 有关详细信息，请阅读 [Azure 存储加密](../storage/common/storage-service-encryption.md)。
 
 > [!NOTE]
->
-> * 创建缓存后，不能在 Microsoft 托管的密钥和客户托管的密钥之间进行更改。
-> * 创建缓存后，必须授权其访问密钥保管库。 在缓存“概述”页中单击“启用加密”按钮，以启用加密。 请在创建缓存后的 90 分钟内执行此步骤。
-> * 在此授权之后创建缓存磁盘。 这意味着，初始缓存创建时间较短，但在授权访问后十分钟或更长时间内，缓存尚不可使用。
+> 创建缓存后，不能在 Microsoft 托管的密钥和客户托管的密钥之间进行更改。
 
 有关客户托管的密钥加密过程的完整说明，请参阅[将客户托管的加密密钥用于 Azure HPC 缓存](customer-keys.md)。
 
-![“加密密钥”页的屏幕截图，其中选中了“客户托管”并显示密钥保管库字段](media/create-encryption.png)
+![“加密密钥”页的屏幕截图，其中选择了“客户托管”，并显示“客户密钥设置”和“托管标识”配置窗体。](media/create-encryption.png)
 
 选择“客户托管”以选择客户托管的密钥加密。 将显示密钥保管库规范字段。 选择要使用的 Azure Key Vault，然后选择要用于此缓存的密钥和版本。 密钥必须是 2048 位的 RSA 密钥。 你可以从此页面创建新的密钥保管库、密钥或密钥版本。
 
-创建缓存后，你必须授权其使用密钥保管库服务。 有关详细信息，请阅读[通过缓存授权 Azure Key Vault 加密](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)。
+若要使用[自动密钥轮换](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys-preview)，请选中“始终使用当前密钥版本”复选框。
+
+若要对此缓存使用特定的托管标识，请在“托管标识”部分进行配置。 更多详细信息，请参阅[“什么是 Azure 资源托管标识？”](../active-directory/managed-identities-azure-resources/overview.md)。
+
+> [!NOTE]
+> 创建缓存后，无法更改分配标识。
+
+若使用系统分配的托管标识或用户分配的标识，而该标识尚未有权访问密钥保管库，则创建缓存后必须执行额外的步骤。 此手动步骤会授权缓存的托管标识使用密钥保管库。
+
+* 阅读[“为缓存选择托管标识选项”](customer-keys.md#choose-a-managed-identity-option-for-the-cache)，理解托管标识设置之间的差异。
+* 关于手动步骤的详细信息，请阅读[“通过缓存授权 Azure Key Vault 加密”](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache-if-needed)。
 
 ## <a name="add-resource-tags-optional"></a>添加资源标记（可选）
 
@@ -100,7 +143,7 @@ Azure HPC 缓存会管理缓存和预加载哪些文件，以最大限度地提�
 ![Azure 门户中的 Azure HPC 缓存实例的屏幕截图](media/hpc-cache-new-overview.png)
 
 > [!NOTE]
-> 如果缓存使用客户托管的加密密钥，则在部署状态更改为“完成”之前，缓存可能会出现在“资源”列表中。 缓存状态为“正在等待密钥”时，即可[授权它](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)使用密钥保管库。
+> 若缓存使用客户托管的加密密钥，且在创建后需要手动授权步骤，在部署状态更改为“完成”之前，缓存可能会出现在“资源”列表中。 缓存状态为“正在等待密钥”时，即可[授权它](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache-if-needed)使用密钥保管库。
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -120,8 +163,7 @@ Azure HPC 缓存会管理缓存和预加载哪些文件，以最大限度地提�
 * Azure 区域
 * 缓存子网，格式如下：
 
-  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
-nets/<cache_subnet_name>"``
+  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/subnets/<cache_subnet_name>"``
 
   缓存子网需要至少 64 个 IP 地址 (/24)，并且不能容纳其他任何资源。
 
@@ -225,8 +267,7 @@ Install-Module -Name Az.HPCCache
 * Azure 区域
 * 缓存子网，格式如下：
 
-  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
-nets/<cache_subnet_name>"`
+  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/subnets/<cache_subnet_name>"`
 
   缓存子网需要至少 64 个 IP 地址 (/24)，并且不能容纳其他任何资源。
 
@@ -293,4 +334,4 @@ upgradeStatus     : @{currentFirmwareVersion=5.3.42; firmwareUpdateDeadline=1/1/
 缓存出现在“资源”列表中后，即可转到下一步。
 
 * [定义存储目标](hpc-cache-add-storage.md)，以使缓存可以访问数据源。
-* 如果使用客户托管的加密密钥，则需要从缓存的“概述”页[授权 Azure Key Vault 加密](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)，以完成缓存设置。 在可以添加存储之前，必须执行此步骤。 有关详细信息，请阅读[使用客户托管的加密密钥](customer-keys.md)。
+* 若使用客户托管的加密密钥，且需从缓存的概述页授权 [Azure Key Vault ](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache-if-needed)加密，以完成缓存设置，请参照[“使用客户托管的加密密钥”](customer-keys.md)部分的指导。 在可以添加存储之前，必须执行此步骤。

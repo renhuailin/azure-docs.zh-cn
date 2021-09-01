@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 4b218a9481fdd5970fd6fc8fa6a1d071161e5b58
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 468244b786d418117f12b445d86b67580db913da
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313358"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122651811"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql-single-server"></a>了解 Azure Database for MySQL 单一服务器的根 CA 更改中的更改
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 作为标准维护和安全最佳做法的一部分，Azure Database for MySQL 单一服务器已于 2021 年 2 月 15 日 (2021/02/15) 成功完成根证书更改。 本文提供了有关更改、受影响的资源的更多详细信息，以及确保应用程序始终与数据库服务器连接所需执行的步骤。
 

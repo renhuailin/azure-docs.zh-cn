@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
-ms.openlocfilehash: 87c44e5d56e59b0bf003e8e7d25f3351f58a8984
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4f7bb09b193da84b4d3f613fdd9c96790976f128
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065474"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652039"
 ---
 # <a name="move-an-azure-database-for-mysql-server-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将 Azure Database for MySQL 服务器移到另一个区域
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 将现有 Azure Database for MySQL 服务器从一个区域移到另一个区域的方案有多种。 例如，可以按照灾难恢复计划将生产服务器移到另一个区域。
 

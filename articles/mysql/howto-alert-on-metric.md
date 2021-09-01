@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5b9e7938f404a37672fe8d13725b1e64d665bf18
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b3fc0ae52e297921573a38b9c8394bb24fc613d
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576273"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122651967"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>使用 Azure 门户设置针对 Azure Database for MySQL 指标的警报 
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 本文介绍了如何使用 Azure 门户设置 Azure Database for MySQL 警报。 可根据监视指标接收 Azure 服务的警报。
 

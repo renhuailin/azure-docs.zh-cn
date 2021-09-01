@@ -4,16 +4,16 @@ description: 了解如何使用工作站中的 Azure PowerShell 在 Hadoop 群�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 62ac9d5243c719af73cfd30b3a5190a2e7344668
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ac2bbac1f920bd4cb3a6042de58993f15c0ccdbd
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559279"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122651608"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用
 
-[!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
+[!INCLUDE [sqoop-selector](../includes/hdinsight-selector-use-sqoop.md)]
 
 了解如何使用 HDInsight 中的 Apache Sqoop 在 HDInsight 群集与 Azure SQL 数据库之间导入和导出数据。
 
@@ -75,7 +75,7 @@ HDInsight 群集附带了某些示例数据。 可使用以下两个示例：
 
 2. 输入以下属性：
 
-    |字段 |Value |
+    |字段 |值 |
     |---|---|
     |订阅 |从下拉列表中选择你的 Azure 订阅。|
     |资源组 |从下拉列表中选择你的资源组，或新建一个资源组|

@@ -6,15 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 7a01863b3a0c29e94550be67ca957655cff32660
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5500a197b7cb2566b3ea78b6c2acba9403a7a8ae
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90933393"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652729"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>使用 Azure 门户管理 Azure Database for MySQL 灵活服务器（预览版）
 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
@@ -22,6 +23,7 @@ ms.locfileid: "90933393"
 本文介绍如何管理 Azure Database for MySQL 灵活服务器（预览版）。 管理任务包括计算和存储缩放、重置服务器管理员密码和删除服务器。
 
 ## <a name="sign-in"></a>登录
+
 登录 [Azure 门户](https://portal.azure.com)。 请在 Azure 门户中转到灵活服务器资源。
 
 ## <a name="scale-compute-and-storage"></a>缩放计算和存储
@@ -35,7 +37,8 @@ ms.locfileid: "90933393"
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/howto-manage-server-portal/scale-server.png" alt-text="缩放存储灵活服务器":::
 
-   > [!Important]
+   
+> [!IMPORTANT]
    > - 存储无法纵向缩减。
    > - 缩放 vCore 会导致服务器重启。
 

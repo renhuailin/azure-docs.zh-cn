@@ -6,16 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: be52bbe58f6c2ff6ee21703860e8d8e00ec30072
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c257941079c3a43639337dd1b010002ddac4672e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110145"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652855"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>使用 Azure 门户设置针对 Azure Database for MySQL 灵活服务器指标的警报 
 
-> [!IMPORTANT] 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
 本文介绍了如何使用 Azure 门户设置 Azure Database for MySQL 警报。 可根据监视指标接收 Azure 服务的警报。
@@ -23,16 +25,19 @@ ms.locfileid: "105110145"
 当指定的指标值越过了分配的阈值时，就会触发此警报。 首次满足条件时，以及之后不再满足条件时，都会触发此警报。 指标警报是有状态的，即，它们只会在状态有更改时才发出通知。
 
 可配置警报，使警报触发时执行以下操作：
+
 * 向服务管理员和共同管理员发送电子邮件通知
 * 将电子邮件发送到指定的其他电子邮件地址。
 * 调用 Webhook
 
 可使用以下项配置并获取预警规则相关信息：
+
 * [Azure 门户](../../azure-monitor/alerts/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../../azure-monitor/alerts/alerts-metric.md#with-azure-cli)
 * [Azure 监视器 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>通过 Azure 门户针对指标创建警报规则
+
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择要监视的 Azure Database for MySQL 灵活服务器。
 2. 在边栏的“监视”部分，选择“警报” 。
 3. 选择“+ 新建警报规则”。

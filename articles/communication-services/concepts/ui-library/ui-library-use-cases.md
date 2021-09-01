@@ -6,15 +6,15 @@ author: ddematheu2
 manager: chrispalm
 services: azure-communication-services
 ms.author: dademath
-ms.date: 05/11/2021
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 143cdce2cd177c73fb4da76dca3be71f2730bbd9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: dd338cd0f7d8e39f7f2d72445477991219e8d91c
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468746"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122651573"
 ---
 # <a name="ui-library-use-cases"></a>UI 库用例
 

@@ -1,19 +1,21 @@
 ---
 title: 配置 Azure 区块链服务事务节点
 description: 如何配置 Azure 区块链服务事务节点
-ms.date: 11/20/2019
+ms.date: 05/11/2021
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 0b659fa9f15cd41e9e55de526747d470046cafa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 436c7721bac29e8a18a333e385f12a70e0701ba5
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101091265"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122652585"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>配置 Azure 区块链服务事务节点
 
 事务节点用于通过公共终结点向 Azure 区块链服务发送区块链事务。 默认事务节点包含在区块链上注册的 Ethereum 帐户的私钥，因此无法删除。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 查看默认事务节点详细信息：
 
@@ -40,7 +42,7 @@ ms.locfileid: "101091265"
     | 名称 | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`newnode-myblockchainmember.blockchain.azure.com`。 节点名称一旦创建便无法再进行更改。 |
     | 密码 | 设置强密码。 使用密码通过基本身份验证访问事务节点终结点。
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
     预配新的事务节点大约需要 10 分钟时间。 附加事务节点会产生费用。 有关费用的详细信息，请参阅 [Azure 定价](https://aka.ms/ABSPricing)。
 
@@ -71,7 +73,7 @@ Azure 区块链服务事务节点终结点支持 Azure Active Directory (Azure A
     |---------|-------------|
     | 角色 | 选择“所有者”、“参与者”或“读者”。
     | 将访问权限分配到 | 选择“Azure AD 用户、组或服务主体”。
-    | 选择 | 搜索要添加的用户、组或服务主体。
+    | Select | 搜索要添加的用户、组或服务主体。
 
 1. 选择“保存”以添加角色分配。
 
@@ -99,7 +101,7 @@ Azure 区块链服务事务节点终结点支持 Azure Active Directory (Azure A
 
 ### <a name="firewall-rules"></a>防火墙规则
 
-使用防火墙规则，可以限制能够尝试对事务节点进行身份验证的 IP 地址。  如果没有对事务节点配置防火墙规则，则任何参与方都不能访问它。  
+使用防火墙规则，可以限制能够尝试对事务节点进行身份验证的 IP 地址。  如果没有对事务节点配置防火墙规则，则任何参与方都不能访问它。
 
 要查看事务节点的防火墙规则，请导航到其中一个 Azure 区块链服务成员事务节点，并在设置中选择“防火墙规则”。
 

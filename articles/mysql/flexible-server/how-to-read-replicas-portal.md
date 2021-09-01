@@ -5,15 +5,17 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/26/2020
-ms.openlocfilehash: fd303804706f9ae210e6714cc8698c94c39ebef6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/17/2021
+ms.openlocfilehash: 61e2f33511e6a200258ed16b5ef191e153553db8
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106847"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653158"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 灵活服务器中创建和管理只读副本
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器中的只读副本现处于预览状态。
@@ -21,7 +23,10 @@ ms.locfileid: "105106847"
 本文介绍如何使用 Azure 门户在 Azure Database for MySQL 灵活服务器中创建和管理只读副本。
 
 > [!Note]
-> 启用高可用性的服务器不支持副本。 
+>
+> * 启用高可用性的服务器不支持副本。 
+>
+> * 如果在主服务器上启用了 GTID (`gtid_mode` = ON)，则新创建的副本也会启用 GTID 并使用基于 GTID 的复制。 若要了解详细信息，请参阅[全局事务标识符 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,7 +35,7 @@ ms.locfileid: "105106847"
 ## <a name="create-a-read-replica"></a>创建只读副本
 
 > [!IMPORTANT]
-> 如果为没有现有副本的源服务器创建副本，源服务器将首先重启，以便为复制做好准备。 请考虑这一点并在非高峰期执行这些操作。
+>如果为没有现有副本的源服务器创建副本，源服务器将首先重启，以便为复制做好准备。 请考虑这一点并在非高峰期执行这些操作。
 
 可以使用以下步骤创建只读副本服务器：
 
@@ -60,7 +65,7 @@ ms.locfileid: "105106847"
 ## <a name="stop-replication-to-a-replica-server"></a>停止复制到副本服务器
 
 > [!IMPORTANT]
-> 停止复制到服务器操作不可逆。 一旦源服务器和副本服务器之间的复制停止，将无法撤消它。 然后，副本服务器将成为独立服务器，并且现在支持读取和写入。 此服务器不能再次成为副本服务器。
+>停止复制到服务器操作不可逆。 一旦源服务器和副本服务器之间的复制停止，将无法撤消它。 然后，副本服务器将成为独立服务器，并且现在支持读取和写入。 此服务器不能再次成为副本服务器。
 
 若要从 Azure 门户停止源服务器和副本服务器之间的复制，请使用以下步骤：
 
@@ -103,7 +108,7 @@ ms.locfileid: "105106847"
 ## <a name="delete-a-source-server"></a>删除源服务器
 
 > [!IMPORTANT]
-> 删除源服务器会停止复制到所有副本服务器，并删除源服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
+>删除源服务器会停止复制到所有副本服务器，并删除源服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
 
 若要从 Azure 门户删除源服务器，请使用以下步骤：
 

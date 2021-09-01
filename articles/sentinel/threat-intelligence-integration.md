@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2021
 ms.author: yelevin
-ms.openlocfilehash: 8c9206404294557f3f4a50d03ae550e407b92ed3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c231840b6255ef693353d83323710cb3243efaef
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751793"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214296"
 ---
 # <a name="threat-intelligence-integration-in-azure-sentinel"></a>Azure Sentinel 中的威胁情报集成
 
@@ -112,7 +112,7 @@ Azure Sentinel 可让你通过几种不同的方式[使用威胁情报源](work-
 
 ### <a name="threatquotient-threat-intelligence-platform"></a>ThreatQuotient Threat Intelligence Platform
 
-- 有关支持信息以及将 [ThreatQuotient TIP](https://www.threatq.com/) 连接到 Azure Sentinel 的说明，请参阅[用于 ThreatQ 集成的 Microsoft Sentinel 连接器](https://appsource.microsoft.com/product/web-apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?src=health&tab=DetailsAndSupport)。
+- 有关支持信息以及将 [ThreatQuotient TIP](https://www.threatq.com/) 连接到 Azure Sentinel 的说明，请参阅[用于 ThreatQ 集成的 Microsoft Sentinel 连接器](https://azuremarketplace.microsoft.com/marketplace/apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?tab=overview)。
 
 ## <a name="incident-enrichment-sources"></a>事件扩充源
 

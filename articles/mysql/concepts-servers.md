@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: cb8394de49c2c5daeae156a9316466928eded148
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a359c71ab3882c810b8594f4e4e6d73f8124e70
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628469"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652554"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器概念
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 本文提供使用 Azure Database for MySQL 服务器的注意事项和指南。
 
@@ -68,7 +70,7 @@ Azure Database for MySQL 服务器：
 |-----|-----|-----|-----|
 |*mysql.az_kill*|processlist_id|不适用|等效于 [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) 命令。 在终止连接正在执行的任何语句之后，将终止与提供的 process list_id 关联的连接。|
 |*mysql.az_kill_query*|processlist_id|不适用|等效于 [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) 命令。 将终止连接当前正在执行的语句。 使连接本身保持活动状态。|
-|*mysql.az_load_timezone*|不适用|不适用|加载[时区表](howto-server-parameters.md#working-with-the-time-zone-parameter)以允许将 `time_zone` 参数设置为命名值（例如， “US/Pacific”）。|
+|*mysql.az_load_timezone*|空值|不适用|加载[时区表](howto-server-parameters.md#working-with-the-time-zone-parameter)以允许将 `time_zone` 参数设置为命名值（例如， “US/Pacific”）。|
 
 ## <a name="next-steps"></a>后续步骤
 

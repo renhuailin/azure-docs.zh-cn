@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1c458508dbf8d98349ec8549af32e3dd48bbd09b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78be49efd75db5a0bbff7f01734b418c9a0a7685
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966422"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290757"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Azure 网络观察程序中的可变数据包捕获简介
 
 使用网络观察程序可变数据包捕获，可以创建数据包捕获会话以跟踪进出虚拟机的流量。 数据包捕获有助于以主动和被动方式诊断网络异常。 其他用途包括收集网络统计信息，获得网络入侵信息，调试客户端与服务器之间的通信，等等。
 
-数据包捕获是通过网络观察程序远程启动的虚拟机扩展。 此功能可减轻手动在所需虚拟机上运行数据包捕获的负担，从而可节省宝贵的时间。 可以通过门户、PowerShell、CLI 或 REST API 触发数据包捕获。 触发数据包捕获方式的一个示例是使用虚拟机警报。 为捕获会话提供了筛选器以确保捕获要监视的流量。 筛选器基于 5 元组（协议、本地 IP 地址、远程 IP 地址、本地端口和远程端口）信息。 捕获的数据存储在本地磁盘或存储 blob 中。 每个区域每个订阅限制为 10 个数据包捕获会话。 此限制仅适用于会话，不适用于本地 VM 或存储帐户中已保存的数据包捕获文件。
+数据包捕获是通过网络观察程序远程启动的虚拟机扩展。 此功能可减轻手动在所需虚拟机上运行数据包捕获的负担，从而可节省宝贵的时间。 可以通过门户、PowerShell、CLI 或 REST API 触发数据包捕获。 触发数据包捕获方式的一个示例是使用虚拟机警报。 为捕获会话提供了筛选器以确保捕获要监视的流量。 筛选器基于 5 元组（协议、本地 IP 地址、远程 IP 地址、本地端口和远程端口）信息。 捕获的数据存储在本地磁盘或存储 blob 中。 
 
 > [!IMPORTANT]
 > 数据包捕获需要虚拟机扩展 `AzureNetworkWatcherExtension`。 有关在 Windows VM 上安装扩展的信息，请访问[适用于 Windows 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/extensions/network-watcher-windows.md)；有关 Linux VM 的信息，请访问[适用于 Linux 的 Azure 网络观察程序代理虚拟机扩展](../virtual-machines/extensions/network-watcher-linux.md)。
@@ -46,6 +46,10 @@ ms.locfileid: "94966422"
 |**本地端口** | 此值将数据包捕获筛选为本地端口与此筛选器值匹配的数据包。|
 |**远程 IP 地址** | 此值将数据包捕获筛选为远程 IP 与此筛选器值匹配的数据包。|
 |**远程端口** | 此值将数据包捕获筛选为远程端口与此筛选器值匹配的数据包。|
+
+
+## <a name="considerations"></a>注意事项
+每个区域每个订阅限制为 10,000 个并行数据包捕获会话。 此限制仅适用于会话，不适用于本地 VM 或存储帐户中已保存的数据包捕获文件。 有关限制的完整列表，请参阅[网络观察程序服务限制页](../azure-resource-manager/management/azure-subscription-service-limits.md#network-watcher-limits)。 
 
 ### <a name="next-steps"></a>后续步骤
 

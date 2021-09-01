@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: a61c8e3451d661dae2e5ad56a0d4a947252ec873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e28e11c8addc83cfe913a28cb91d3bc0d4580a8e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94540057"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652771"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户配置和访问 Azure Database for MySQL（灵活服务器）的慢查询日志
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
@@ -21,9 +23,11 @@ ms.locfileid: "94540057"
 可以从 Azure 门户配置、列出并下载 Azure Database for MySQL 灵活服务器[慢查询日志](concepts-slow-query-logs.md)。
 
 ## <a name="prerequisites"></a>先决条件
+
 本文中的步骤要求具备[灵活服务器](quickstart-create-server-portal.md)。
 
 ## <a name="configure-logging"></a>配置日志记录
+
 配置 MySQL 慢查询日志的访问权限。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。

@@ -2,18 +2,17 @@
 title: 条件认知技能
 titleSuffix: Azure Cognitive Search
 description: Azure 认知搜索中的条件性技能可以启用筛选、创建默认值以及合并技能组定义中的值。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: f47ca56fa1b40422edeb0d4e11c24be6f60e49e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/12/2021
+ms.openlocfilehash: acd3a42051fa42821013424ab0410814968b6131
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666369"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860566"
 ---
 # <a name="conditional-cognitive-skill"></a>条件认知技能
 
@@ -29,7 +28,7 @@ else
 ```
 
 > [!NOTE]
-> 此技能未绑定到 Azure 认知服务 API，使用它无需付费。 但是，仍需[附加认知服务资源](cognitive-search-attach-cognitive-services.md)，以替代局限于每日只能进行少量扩充的“免费”资源选项。
+> 此技能不限于认知服务。 它不可计费，并且没有认知服务密钥要求。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ConditionalSkill
