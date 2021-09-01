@@ -68,10 +68,10 @@ Azure Data Lake Storage Gen1 数据源支持以下功能：
 
 3. 单击顶部导航栏上的“访问”
 
-   :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="单击“访问”":::
+   :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="单击 访问":::
 
 4. 单击“添加”。 在“选择用户或组”选项中添加“Purview 目录”。 选择“读取”和“执行”权限 。 确保选择“此文件夹和所有子文件夹和“添加到”选项中的“访问权限项和默认权限项”，如下面的屏幕截图所示。 单击“确定”
-   “MSI 身份验证详细信息”:::image type="content" source="./media/register-scan-adls-gen1/gen1-managed-service-identity-authentication.png" alt-text="":::
+   “MSI 身份验证详细信息”:::image type="content" source="./media/register-scan-adls-gen1/gen1-managed-service-identity-authentication.png" alt-text="_":::
    
 > [!Tip]
 > “访问权限项”是针对当前文件和文件夹的权限项。
