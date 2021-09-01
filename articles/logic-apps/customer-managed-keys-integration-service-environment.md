@@ -3,15 +3,15 @@ title: 设置客户管理的密钥以加密 ISE 中的静态数据
 description: 在 Azure 逻辑应用中创建并管理自己的加密密钥，以保护集成服务环境 (ISE) 中的静态数据
 services: logic-apps
 ms.suite: integration
-ms.reviewer: mijos, rarayudu, logicappspm
+ms.reviewer: mijos, rarayudu, azla
 ms.topic: conceptual
 ms.date: 01/20/2021
-ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3ea6476173e7be1a6239e97ef2e5fbb5257aead
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98629668"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322214"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>在 Azure 逻辑应用中设置客户管理的密钥以加密集成服务环境 (ISE) 的静态数据
 
@@ -23,7 +23,11 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 ## <a name="considerations"></a>注意事项
 
-* 目前，只有以下 Azure 区域为 ISE 提供客户管理的密钥支持：美国西部 2、美国东部和美国中南部
+* 目前，只有以下区域为 ISE 提供客户管理的密钥支持：
+
+  * Azure：美国西部 2、美国东部和美国中南部。
+
+  * Azure 政府：亚利桑那州、弗吉尼亚州和德克萨斯州。
 
 * 只能在创建 ISE 时指定客户管理的密钥，事后无法指定。 创建 ISE 之后无法禁用此密钥。 目前不支持为 ISE 轮换客户管理的密钥。
 
@@ -82,7 +86,7 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 ### <a name="request-header"></a>请求标头
 
-在请求头中包含以下属性：
+在请求标头中，添加以下属性：
 
 * `Content-type`：将此属性值设置为 `application/json`。
 

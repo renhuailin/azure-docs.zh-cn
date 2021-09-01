@@ -3,12 +3,12 @@ title: 概念 - 私有云和群集
 description: 了解 Azure VMware 解决方案软件定义的数据中心和 vSphere 群集的主要功能。
 ms.topic: conceptual
 ms.date: 05/13/2021
-ms.openlocfilehash: 7b32752e368f9aac003a45f96f7c0477e9221481
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 97f31c18fd753c89f2201fddfff4d31c8501bae2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089607"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122324310"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware 解决方案私有云和群集概念
 
@@ -16,7 +16,7 @@ Azure VMware 解决方案可在 Azure 中提供基于 VMware 的私有云。 私
 
 私有云包括具有以下内容的群集：
 
-- 使用 VMware ESXi 虚拟机监控程序预配的专用裸机服务器节点 
+- 使用 VMware ESXi 虚拟机监控程序预配的专用裸机服务器主机 
 - 用于管理 ESXi 和 vSAN 的 vCenter Server 
 - 软件定义的 VMware NSX-T 网络，适用于 vSphere 工作负载 VM  
 - VMware vSAN 数据存储，适用于 vSphere 工作负荷 VM  
@@ -27,7 +27,7 @@ Azure VMware 解决方案可在 Azure 中提供基于 VMware 的私有云。 私
 
 此关系图显示的是一项 Azure 订阅，其中包含两个分别代表开发和生产环境的私有云。 其中每个私有云都是两个群集。 
 
-:::image type="content" source="media/hosts-clusters-private-clouds-final.png" alt-text="显示某一客户订阅中两个私有云的图像。":::
+:::image type="content" source="media/concepts/hosts-clusters-private-clouds-final.png" alt-text="显示的图显示的是一项 Azure 订阅，其中包含两个分别代表开发和生产环境的私有云。" border="false":::
 
 ## <a name="hosts"></a>主机
 
@@ -85,7 +85,7 @@ Azure VMware 解决方案可持续监视底层和 VMware 组件的运行状况�
 
 - [Azure VMware 解决方案网络和互连概念](concepts-networking.md)
 - [Azure VMware 解决方案存储概念](concepts-storage.md)
-- [如何启用 Azure VMware 解决方案资源](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)
+- [如何启用 Azure VMware 解决方案资源](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider)
 
 <!-- LINKS - internal -->
 [concepts-networking]: ./concepts-networking.md

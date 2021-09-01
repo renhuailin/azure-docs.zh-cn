@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: article
 ms.date: 06/07/2021
 ms.author: duau
-ms.openlocfilehash: 848134fec184febcdc5cde722fbec8e55d149d14
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 8deecdc043a7a39f77e96e8be5eb8bb8ef4f6191
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747988"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322929"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure 路由服务器（预览版）常见问题解答
 
@@ -25,17 +25,21 @@ ms.locfileid: "111747988"
 
 Azure 路由服务器是一项完全托管的服务，可让你轻松管理网络虚拟设备 (NVA) 和虚拟网络之间的路由。
 
+## <a name="why-does-azure-route-server-require-a-public-ip-address"></a>为什么 Azure 路由服务器需要公共 IP 地址？
+
+Azure 路由器服务器需要确保与管理路由服务器配置的后端服务的连接，因此需要公共 IP 地址。 
+
 ### <a name="is-azure-route-server-just-a-vm"></a>Azure 路由服务器是否只是一个 VM？
 
 不是。 Azure 路由服务器是一项旨在提供高可用性的服务。 如果将它部署在支持[可用性区域](../availability-zones/az-overview.md)的 Azure 区域中，它将具有区域级别冗余。
 
 ### <a name="how-many-route-servers-can-i-create-in-a-virtual-network"></a>可以在虚拟网络中创建多少个路由服务器？
 
-只能在 VNet 中创建一个路由服务器。 必须将其部署在名为 RouteServerSubnet 的指定子网中。
+只能在虚拟网络中创建一个路由服务器。 必须将其部署在名为 RouteServerSubnet 的专用子网中。
 
-### <a name="does-azure-route-server-support-vnet-peering"></a>Azure 路由服务器是否支持 VNet 对等互连？
+### <a name="does-azure-route-server-support-virtual-network-peering"></a>Azure 路由服务器是否支持虚拟网络对等互连？
 
-是。 如果将托管 Azure 路由服务器的 VNet 对等互连到另一个 VNet，并在该 VNet 上启用“使用远程网关”，则 Azure 路由服务器将获知该 VNet 的地址空间，并将其发送到所有已对等互连的 NVA。 它还会将来自 NVA 的路由编入已对等互连的 VNet 中 VM 的路由表。 
+支持，如果将托管 Azure 路由服务器的虚拟网络对等互连到另一个虚拟网络，并在第二个虚拟网络上启用“使用远程网关”，则 Azure 路由服务器将获知该虚拟网络的地址空间，并将其发送到所有已对等互连的 NVA。 它还会将来自 NVA 的路由编入已对等互连的虚拟网络中 VM 的路由表。 
 
 
 ### <a name="what-routing-protocols-does-azure-route-server-support"></a><a name = "protocol"></a>Azure 路由服务器支持哪些路由协议？
@@ -72,11 +76,15 @@ Azure 或 IANA 保留的 ASN 如下所示：
 
 不能，Azure 路由服务器仅支持 16 位（2 字节）ASN。
 
+### <a name="can-i-configure-a-user-defined-route-udr-in-the-azurerouteserver-subnet"></a>是否可以在 AzureRouteServer 子网中配置用户定义的路由 (UDR)？
+
+不行，Azure 路由服务器不支持在 AzureRouteServer 子网中配置 UDR。
+
 ### <a name="can-i-peer-two-route-servers-in-two-peered-virtual-networks-and-enable-the-nvas-connected-to-the-route-servers-to-talk-to-each-other"></a>能否在两个对等互连的虚拟网络中将两个路由服务器对等互连，使连接到路由服务器的 NVA 能够相互通信？ 
 
 ***拓扑：NVA1 -> RouteServer1 ->（通过 VNet 对等互连）-> RouteServer2 -> NVA2***
 
-不能，Azure 路由服务器不会转发数据流量。 若要通过 NVA 启用传输连接，请在 NVA 之间设置直接连接（例如，IPsec 隧道），并利用路由服务器进行动态路由传播。 
+不能，Azure 路由服务器不会转发数据流量。 若要通过 NVA 启用传输连接，请在 NVA 之间设置直接连接（例如，IPsec 隧道），并使用路由服务器进行动态路由传播。 
 
 ## <a name="route-server-limits"></a><a name = "limitations"></a>路由服务器限制
 
@@ -87,9 +95,9 @@ Azure 路由服务器具有以下限制（对于每个部署）。
 | 支持的 BGP 对等节点数量 | 8 |
 | 每个 BGP 对等节点可以播发到 Azure 路由服务器的路由数 | 200 |
 | Azure 路由服务器可以播发到 ExpressRoute 或 VPN 网关的路由数 | 200 |
-| Azure 路由服务器可支持的虚拟网络（包括对等互连 Vnet）中的 VM 数量 | 6000 |
+| Azure 路由服务器可支持的虚拟网络（包括对等互连虚拟网络）中的 VM 数量 | 6000 |
 
-如果 NVA 播发的路由数超出了限制，则会删除 BGP 会话。 如果网关和 Azure 路由服务器发生这种情况，你将丢失从本地网络到 Azure 的连接。 有关详细信息，请参阅[诊断 Azure 虚拟机路由问题](../virtual-network/diagnose-network-routing-problem.md)。
+如果 NVA 播发的路由数超出了限制，则会删除 BGP 会话。 如果网关与 Azure 路由服务器之间删除了 BGP 会话，则会失去从本地网络到 Azure 的连接。 有关详细信息，请参阅[诊断 Azure 虚拟机路由问题](../virtual-network/diagnose-network-routing-problem.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

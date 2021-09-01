@@ -1,21 +1,21 @@
 ---
 title: Azure 服务的推荐策略
 description: 介绍如何查找和应用 Azure 服务（例如 Azure 虚拟机）的推荐策略。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
 ms.custom: generated
-ms.openlocfilehash: a505a94e580b24c19a96ea86b1237870e49a6442
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 06f68dec2c2a1ec8fa717dc721916c070a653b10
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752608"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323072"
 ---
 # <a name="recommended-policies-for-azure-services"></a>Azure 服务的推荐策略
 
 不熟悉 Azure Policy 的客户通常会寻找常见的策略定义来管理和治理其资源。 Azure Policy 的推荐策略提供了重要的常见策略定义列表以帮助你开始使用。 支持资源的门户体验中嵌入了该资源的推荐策略体验。
 
-有关其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../samples/built-in-policies.md)。
+有关更多 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../samples/built-in-policies.md)。
 
 ## <a name="azure-virtual-machines"></a>Azure 虚拟机
 

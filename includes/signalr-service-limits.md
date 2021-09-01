@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/11/2020
 ms.author: zhshang
-ms.openlocfilehash: 496d98c5faebfcef511152476b58dd6257dbbedc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 328a3d088ea21ec55f5e06cfbfc307fca2b03afa
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83673537"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113644360"
 ---
 | 资源 | 默认限制 | 最大限制 | 
 | --- | --- | --- |
@@ -35,3 +35,4 @@ ms.locfileid: "83673537"
 
 若要请求更新订阅的默认限制，请开具支持票证。
 
+有关如何对连接和消息进行计数的详细信息，请参阅 [Azure SignalR 服务中的消息和连接](../articles/azure-signalr/signalr-concept-messages-and-connections.md)。

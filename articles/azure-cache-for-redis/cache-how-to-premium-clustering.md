@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 9947233aac33c2fe2162145fbc4568436fc06ce6
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: c4812bb6b352ad57fa07ad766329644ef6af9c57
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616404"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323575"
 ---
 # <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>为高级 Azure Cache for Redis 实例配置 Redis 群集功能
 
@@ -48,7 +48,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
    | **位置** | 单击下拉箭头并选择一个位置。 | 选择与要使用该缓存的其他服务靠近的[区域](https://azure.microsoft.com/regions/)。 |
    | **缓存类型** | 单击下拉箭头并选择高级缓存来配置高级功能。 有关详细信息，请参阅 [Azure Cache for Redis 定价](https://azure.microsoft.com/pricing/details/cache/)。 |  定价层决定可用于缓存的大小、性能和功能。 有关详细信息，请参阅[用于 Redis 的 Azure 缓存概述](cache-overview.md)。 |
 
-4. 选择“网络”选项卡，或选择页面底部的“网络”按钮。
+4. 选择“网络”选项卡，或选择页面底部的“网络”按钮 。
 
 5. 在“网络”选项卡中，选择你的连接方法。 对于高级缓存实例，可以通过公共 IP 地址或服务终结点进行公开连接，也可以通过专用终结点进行私密连接。
 
@@ -92,7 +92,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 
 ![Redis 群集大小][redis-cache-redis-cluster-size]
 
-要更改群集大小，请使用滑块，或在“分片计数”文本框中键入 1 到 10 之间的数字。 然后选择“确定”进行保存。
+若要更改群集大小，请使用滑块，或在“分片计数”文本框中键入 1 到 10 之间的数字。 然后选择“确定”以保存。
 
 增加群集大小会增加最大吞吐量和缓存大小。 增加群集大小不会增加用于客户端的最大连接数据。
 
@@ -142,7 +142,7 @@ Azure Redis 缓存提供的 Redis 群集与 [在 Redis 中实施](https://redis.
 
 ### <a name="what-is-the-largest-cache-size-i-can-create"></a>可以创建的最大缓存大小是多大？
 
-高级缓存的最大大小为 120 GB。 可以创建多达 10 个分片，因此最大大小为 1.2 TB。 如果需要的大小更大，则可[请求更多](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)。 有关详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。
+可以具有的最大缓存大小为 1.2 TB。 这会是包含 10 个分片的群集 P5 缓存。 有关详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。
 
 ### <a name="do-all-redis-clients-support-clustering"></a>是否所有 Redis 客户端都支持群集功能？
 

@@ -9,59 +9,97 @@ ms.workload: media
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: c2ffda7400109e16cf1110a4e14ecbc3604a7ecf
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: acc993f5690fbc250659830b52099f8d3d966421
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492301"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322166"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒体服务 v3 中的动态打包
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码。 它通过不同的流式处理协议（无论是否提供内容保护）来提供它们，以覆盖所有主要设备（如 iOS 和 Android 设备）。 这些客户端可理解不同的协议。 例如，iOS 要求以 HTTP Live Streaming (HLS) 格式传送流，Android 设备支持 HLS 以及 MPEG DASH。
+Azure 媒体服务提供内置源服务器和打包功能，以 HLS 和 MPEG DASH 流式处理协议格式交付内容。 在 AMS 中，[流式处理终结点](stream-streaming-endpoint-concept.md)充当“源”服务器，向支持使用这些常用格式的自适应比特率流式处理的客户端播放器发送格式化 HLS 和 DASH 内容。 流式处理终结点还支持许多功能（例如具有或没有内容保护的即时动态打包），以访问所有主要设备（如 iOS 和 Android 设备）。 
+
+当今市场上大多数浏览器和移动设备都支持并理解 HLS 或 DASH 流式处理协议。 例如，iOS 要求以 HTTP Live Streaming (HLS) 格式传送流，Android 设备在特定型号上支持 HLS 以及 MPEG DASH（或者通过使用适用于 Android 设备的应用程序级别播放器 [Exoplayer](https://exoplayer.dev/)）。
 
 在媒体服务中，[流式处理终结点](stream-streaming-endpoint-concept.md)（源）表示动态（即时）打包和源服务，该服务可直接将你的实时和按需内容发送到客户端播放器应用。 它使用下一部分中所述的一种常见流式处理媒体协议。 动态打包是所有流式处理终结点的标准功能。
 
+即时打包的好处如下：
+
+* 可以使用标准 MP4 文件格式存储所有文件
+* 无需在 blob 存储中存储静态打包的 HLS 和 DASH 格式的多个副本，从而减少存储的视频内容量并降低总体存储成本
+* 可以在协议和规范随时间而发展时，立即利用新的协议更新和规范更改，无需在目录中重新打包静态内容
+* 可以使用存储中的相同 MP4 文件，通过我们交付内容，而无需加密和 DRM
+* 可以使用简单的资产级别或全局筛选器动态筛选或更改清单，以删除特定曲目、分辨率、语言，或者提供来自相同 MP4 文件的较短精彩内容剪辑，而无需重新编码或重新呈现内容。 
+
 ## <a name="to-prepare-your-source-files-for-delivery"></a>准备源文件供传输
 
-若要利用动态打包，需将夹层（源）文件[编码](encode-concept.md)为一组自适应比特率 MP4（ISO 基本媒体 14496-12）文件。 你需要具备包含媒体服务动态打包所需的编码 MP4 和流式处理配置文件的[资产](assets-concept.md)。 通过此组 MP4 文件，可以使用动态打包通过下述流媒体协议传送视频。
+若要利用动态打包，需将夹层（源）文件[编码](encode-concept.md)为一组单个或多个自适应比特率 MP4（ISO 基本媒体 14496-12）文件。 你需要具备包含媒体服务动态打包所需的编码 MP4 和流式处理配置文件的[资产](assets-concept.md)。 通过此组 MP4 文件，可以使用动态打包通过下述流媒体协议传送视频。
+
+通常，你会使用 Azure 媒体服务标准编码器通过内容感知型编码预设或自适应比特率预设来生成此内容。  两者都会生成一组可供流式处理和动态打包的 MP4 文件。  或者，可以选择在外部服务、本地或是自己的 VM 或无服务器函数应用中进行编码。 外部编码的内容可以上传到资产进行流式处理，前提是它满足自适应比特率流式处理格式的编码要求。 .NET SDK 示例中提供了上传预编码 MP4 进行流式传输的示例项目 - 请参阅[对现有 Mp4 文件进行流式处理](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamExistingMp4)。
+
 
 Azure 媒体服务动态打包仅支持 MP4 容器格式的视频和音频文件。 如果使用的是备用编解码器（如 Dolby），则必须将音频文件编码为 MP4 容器。  
 
 > [!TIP]
-> 获取 MP4 和流式处理配置文件的一种方式是[使用媒体服务对夹层文件进行编码](#encode-to-adaptive-bitrate-mp4s)。 
+> 获取 MP4 和流式处理配置文件的一种方式是[使用媒体服务对夹层文件进行编码](#encode-to-adaptive-bitrate-mp4s)。  建议使用[内容感知型编码预设](encode-content-aware-concept.md)为内容生成最佳自适应流式处理层和设置。 请参阅代码示例以了解使用 [VideoEncoding 文件夹中的 .NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding) 进行编码 
 
-要使编码资产中的视频可供客户端播放，必须创建[流式处理定位符](stream-streaming-locators-concept.md)，然后生成流式处理 URL。 然后，根据流式处理客户端清单中指定的格式（HLS、MPEG DASH 或平滑流式处理），使用你选择的协议接收流。
+若要使编码资产中的视频可供客户端播放，必须使用[流式处理定位符](stream-streaming-locators-concept.md)发布资产，然后生成相应的 HLS 和 DASH 流式处理 URL。 通过更改 URL 格式查询中使用的协议，服务会交付相应的流式处理清单（HLS、MPEG DASH）。
 
-因此，用户只需以单一存储格式存储文件并为其付费，媒体服务服务就会基于客户端的请求构建并提供相应响应。
+因此，只需以单一存储格式 (MP4) 存储文件并为其付费，媒体服务便会基于客户端播放器的请求生成并提供相应的 HLS 或 DASH 清单。
 
 如果计划使用媒体服务动态加密来保护内容，请参阅[流式处理协议和加密类型](drm-content-protection-concept.md#streaming-protocols-and-encryption-types)。
 
-### <a name="hls-protocol"></a>HLS 协议
+## <a name="deliver-hls"></a>交付 HLS
+### <a name="hls-dynamic-packaging"></a>HLS 动态打包
 
-流式处理客户端可以指定以下 HLS 格式：
+流式处理客户端可以指定以下 HLS 格式。 建议使用 CMAF 格式，以便与最新播放器和 iOS 设备兼容。  对于旧设备，只需通过更改格式查询字符串，也可使用 v4 和 v3 格式。
 
-|协议|示例|
-|---|---|
-|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
-|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
-|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
+|协议| 格式字符串| 示例|
+|---|---|---|
+|HLS CMAF（建议）| format=m3u8-cmaf | `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
+|HLS V4 |  format=m3u8-aapl | `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
+|HLS V3 | format=m3u8-aapl-v3 | `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
+
 
 > [!NOTE]
 > Apple 以前的准则建议低带宽网络的回退提供仅限音频的流。  目前，媒体服务编码器自动生成仅限音频的曲目。现在，Apple 准则表明不应包含仅限音频的曲目，特别是对于 Apple TV 发行版。  为了防止播放机默认设置为仅限音频的曲目，我们建议在 URL 中使用“audio-only=false”标记（这将在 HLS 中删除仅音频呈现形式），或使用 HLS-V3。 例如，`http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`。
 
-### <a name="mpeg-dash-protocol"></a>MPEG-DASH 协议
+
+### <a name="hls-packing-ratio-for-vod"></a>VOD 的 HLS 打包比例
+
+若要控制较旧 HLS 格式的 VOD 内容打包比例，可以在 .ism 文件中设置 fragmentsPerHLSSegment 元数据标记，以控制从较旧 v3 和 v4 HLS 格式清单交付的 TS 段的默认 3:1 打包比例。 此设置更改要求直接修改存储中的 .ism 文件以调整打包比例。
+
+fragmentsPerHLSSegment 设置为 1 的示例 .ism 服务器清单。 
+``` xml
+   <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+   <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
+      <head>
+         <meta name="formats" content="mp4" />
+         <meta name="fragmentsPerHLSSegment" content="1"/>
+      </head>
+      <body>
+         <switch>
+         ...
+         </switch>
+      </body>
+   </smil>
+```
+
+## <a name="deliver-dash"></a>交付 DASH
+### <a name="dash-dynamic-packaging"></a>DASH 动态打包
 
 流式处理客户端可以指定以下 MPEG-DASH 格式：
 
-|协议|示例|
-|---|---|
-|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
-|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
+|协议| 格式字符串| 示例|
+|---|---|---|
+|MPEG-DASH CMAF（建议）| format=mpd-time-cmaf | `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
+|MPEG-DASH CSF（旧版）| format=mpd-time-csf | `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
 
-### <a name="smooth-streaming-protocol"></a>平滑流式处理协议
+## <a name="deliver-smooth-streaming-manifests"></a>交付平滑流式处理清单
+### <a name="smooth-streaming-dynamic-packaging"></a>平滑流式处理动态打包
 
 流式处理客户端可以指定以下平滑流式处理格式：
 
@@ -81,6 +119,11 @@ Azure 媒体服务动态打包仅支持 MP4 容器格式的视频和音频文件
 1. 将夹层文件[编码](#encode-to-adaptive-bitrate-mp4s)为 H.264/AAC MP4 自适应比特率集。
 
     如果已经有编码文件，只是想要复制并流式传输文件，请使用：[CopyVideo](/rest/api/media/transforms/createorupdate#copyvideo) 和 [CopyAudio](/rest/api/media/transforms/createorupdate#copyaudio) API。 将创建一个带有流式处理清单（.ism 文件）的新 MP4 文件。
+
+    此外，可以仅在预编码文件上生成 .ism 和 .ismc 文件，只要使用自适应比特率流式处理的正确设置进行编码（这通常是 2 秒 GOP、最小和最大值为 2 秒的关键帧距离以及恒定比特率 (CBR) 模式编码）。  
+
+    请参阅[对现有 Mp4 .NET SDK 示例进行流式处理](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamExistingMp4)，以详细了解如何生成 .ism（服务器清单）和 .ismc（客户端清单）以便从现有预编码 MP4 文件进行流式处理。
+
 1. 发布包含自适应比特率 MP4 集的输出资产。 通过创建[流式处理定位符](stream-streaming-locators-concept.md)进行发布。
 1. 生成针对不同格式（HLS、MPEG-DASH 和平滑流式处理）的 URL。 流式处理终结点将负责为所有这些不同格式提供正确的清单和请求。
     
@@ -94,11 +137,13 @@ Azure 媒体服务动态打包仅支持 MP4 容器格式的视频和音频文件
 
 以下文章介绍[如何使用媒体服务对视频进行编码](encode-concept.md)的示例：
 
+* [使用内容感知型编码](encode-content-aware-concept.md)。
 * [使用内置预设从 HTTPS URL 进行编码](job-input-from-http-how-to.md)。
 * [使用内置预设对本地文件进行编码](job-input-from-local-file-how-to.md)。
 * [构建自定义预设，以确定特定方案或设备要求](transform-custom-presets-how-to.md)。
+* [使用 .NET 通过标准编码器进行编码的代码示例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding)
 
-请参阅标准编码器[格式和编解码器](encode-media-encoder-standard-formats-reference.md)的列表。
+请参阅支持的标准编码器输入[格式和编解码器](encode-media-encoder-standard-formats-reference.md)的列表。
 
 ## <a name="live-streaming-workflow"></a>实时传送视频流工作流
 
@@ -169,7 +214,7 @@ Apple iOS 设备不支持 5.1 AAC 音频编解码器。 必须使用 Dolby Digit
 
 ## <a name="manifests"></a>清单
 
-在媒体服务动态打包中，HLS、MPEG-DASH 和平滑流式处理的流式处理客户端清单是基于 URL 中的格式选择器动态生成的。  
+在媒体服务动态打包中，HLS、MPEG-DASH 和平滑流式处理的流式处理客户端清单是基于 URL 中的格式查询动态生成的。  
 
 清单文件包含流元数据，例如轨迹类型（音频、视频或文本）、轨迹名称、开始和结束时间、比特率（质量）、轨迹语言、演播窗口（持续时间固定的滑动窗口）和视频编解码器 (FourCC)。 此文件还会通过提供有关下一个可播放视频片段及其位置的信息，来指示播放器检索下一个片段。 片段（或段）实际上是视频内容的“区块”。
 
@@ -298,15 +343,17 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 对于 HLS v7 及更高版本 `(format=m3u8-cmaf)`，当音频描述跟踪收到信号时，其播放列表将携带 `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"`。
 
+
+
 #### <a name="example"></a>示例
 
 有关详细信息，请参阅[如何发出音频描述轨道信号](signal-descriptive-audio-howto.md)。
 
-## <a name="dynamic-manifest"></a>动态清单
+## <a name="dynamic-manifest-filtering"></a>动态清单筛选
 
 若要控制发送到播放器的曲目数目、格式、比特率和呈现时间范围，可以将动态筛选与媒体服务动态包生成工具配合使用。 有关详细信息，请参阅[预筛选清单与动态包生成工具配合使用](filters-dynamic-manifest-concept.md)。
 
-## <a name="dynamic-encryption"></a>动态加密
+## <a name="dynamic-encryption-for-drm"></a>DRM 的动态加密
 
 可以使用动态加密借助 AES-128 或三种主要数字版权管理 (DRM) 系统中的任何一种对实时或按需内容进行动态加密：内容。 媒体服务还提供用于向已授权客户端传送 AES 密钥和 DRM 许可证的服务。 有关详细信息，请参阅[动态加密](drm-content-protection-concept.md)。
 

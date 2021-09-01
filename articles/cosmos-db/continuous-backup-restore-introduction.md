@@ -4,26 +4,21 @@ description: Azure Cosmos DB 的时间点还原功能可帮助用户在执行意
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 07/29/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8862f0b71a6b3f8bba21bdd4ab40290a00d0959
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393133"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323020"
 ---
-# <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的时间点还原（预览版）功能进行连续备份
+# <a name="continuous-backup-with-point-in-time-restore-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的时间点还原功能进行连续备份
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-> [!IMPORTANT]
-> Azure Cosmos DB 的时间点还原功能（连续备份模式）目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-Azure Cosmos DB 的时间点还原功能（预览版）可在多种方案中发挥作用，例如：
+Azure Cosmos DB 的时间点还原功能可在多种方案中发挥作用，例如：
 
 * 在容器中执行意外的写入或删除操作后进行恢复。
 * 还原已删除的帐户、数据库或容器。
@@ -35,7 +30,11 @@ Azure Cosmos DB 在后台执行数据备份，不会消耗任何额外的预配�
 
 可用的还原时间范围（也称为保留期）为以下两者中的较小值：从现在起的过去 30 天，或直到资源创建时间 。 还原时间点可以是保留期内的任一时间戳。
 
-在公共预览版中，可以使用 [Azure 门户](continuous-backup-restore-portal.md)、[Azure 命令行接口](continuous-backup-restore-command-line.md) (az CLI)、[Azure PowerShell](continuous-backup-restore-powershell.md) 或者 [Azure 资源管理器](continuous-backup-restore-template.md)将 SQL API 或 MongoDB 内容时间点的 Azure Cosmos DB 帐户还原到另一个帐户。
+当前，可以使用 [Azure 门户](restore-account-continuous-backup.md#restore-account-portal)、[Azure 命令行接口](restore-account-continuous-backup.md#restore-account-cli) (az CLI)、[Azure PowerShell](restore-account-continuous-backup.md#restore-account-powershell) 或者 [Azure 资源管理器](restore-account-continuous-backup.md#restore-arm-template)将 SQL API 或 MongoDB 内容时间点的 Azure Cosmos DB 帐户还原到另一个帐户。
+
+## <a name="backup-storage-redundancy"></a>备份存储冗余
+
+默认情况下，Azure Cosmos DB 将连续模式备份数据存储在本地冗余存储 Blob 中。 对于配置了区域冗余的区域，备份存储在区域冗余存储 Blob 中。 在连续备份模式下，你无法更新备份存储冗余。
 
 ## <a name="what-is-restored"></a>还原哪些内容？
 
@@ -64,17 +63,17 @@ Azure Cosmos DB 在后台执行数据备份，不会消耗任何额外的预配�
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" alt-text="具有可还原帐户时间戳的生命周期事件。" lightbox="./media/continuous-backup-restore-introduction/restorable-account-scenario.png" border="false":::
 
-a. 还原已删除的帐户 -“还原”窗格中显示了所有可还原的已删除帐户 。 例如，如果在时间戳 T3 处删除了帐户 A。 在这种情况下，使用紧靠在 T3、位置、目标帐户名称、资源组和目标帐户名称前面的时间戳就足以能够从 [Azure 门户](continuous-backup-restore-portal.md#restore-deleted-account)、[PowerShell](continuous-backup-restore-powershell.md#trigger-restore) 或 [CLI](continuous-backup-restore-command-line.md#trigger-restore) 还原。  
+1. 还原已删除的帐户 -“还原”窗格中显示了所有可还原的已删除帐户 。 例如，如果在时间戳 T3 处删除了帐户 A。 在这种情况下，使用紧靠在 T3、位置、目标帐户名称、资源组和目标帐户名称前面的时间戳就足以能够从 [Azure 门户](restore-account-continuous-backup.md#restore-deleted-account)、[PowerShell](restore-account-continuous-backup.md#trigger-restore-ps) 或 [CLI](restore-account-continuous-backup.md#trigger-restore-cli) 还原。  
 
 :::image type="content" source="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" alt-text="具有可还原数据库和容器时间戳的生命周期事件。" lightbox="./media/continuous-backup-restore-introduction/restorable-container-database-scenario.png" border="false":::
 
-b. 还原特定区域中的帐户数据 - 例如，如果帐户 A 位于“美国东部”和“美国西部”这两个区域中的时间戳 T3 处  。 如果你需要“美国西部”中帐户 A 的副本，可以使用“美国西部”作为目标位置，从 [Azure 门户](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md#trigger-restore) 或 [CLI](continuous-backup-restore-command-line.md#trigger-restore) 执行时间点还原。
+2. 还原特定区域中的帐户数据 - 例如，如果帐户 A 位于“美国东部”和“美国西部”这两个区域中的时间戳 T3 处  。 如果你需要“美国西部”中帐户 A 的副本，可以使用“美国西部”作为目标位置，从 [Azure 门户](restore-account-continuous-backup.md#restore-deleted-account)、[PowerShell](restore-account-continuous-backup.md#trigger-restore-ps) 或 [CLI](restore-account-continuous-backup.md#trigger-restore-cli) 执行时间点还原。
 
-c. 执行意外的写入或删除操作后在具有已知还原时间戳的容器中恢复 - 例如，如果你知道数据库 1 中容器 1 的内容在时间戳 T3 处发生意外的修改  。 可以在 [Azure 门户](continuous-backup-restore-portal.md#restore-live-account)、[PowerShell](continuous-backup-restore-powershell.md#trigger-restore) 或 [CLI](continuous-backup-restore-command-line.md#trigger-restore) 中从时间戳 T3 处执行到另一个帐户的时间点还原，以恢复容器的所需状态。
+3. 执行意外的写入或删除操作后在具有已知还原时间戳的容器中恢复 - 例如，如果你知道数据库 1 中容器 1 的内容在时间戳 T3 处发生意外的修改  。 可以在 [Azure 门户](restore-account-continuous-backup.md#restore-live-account)、[PowerShell](restore-account-continuous-backup.md#trigger-restore-ps) 或 [CLI](restore-account-continuous-backup.md#trigger-restore-cli) 中从时间戳 T3 处执行到另一个帐户的时间点还原，以恢复容器的所需状态。
 
-d. 将帐户还原到在意外删除数据库之前的某个时间点 - 在 [Azure 门户](continuous-backup-restore-portal.md#restore-live-account)中，可以使用事件源窗格确定数据库的删除时间并查找还原时间。 同样，在 [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) 和 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) 中，可以通过枚举数据库事件源来发现数据库删除事件，然后结合所需的参数触发 restore 命令。
+4. 将帐户还原到在意外删除数据库之前的某个时间点 - 在 [Azure 门户](restore-account-continuous-backup.md#restore-live-account)中，可以使用事件源窗格确定数据库的删除时间并查找还原时间。 同样，在 [Azure CLI](restore-account-continuous-backup.md#trigger-restore-cli) 和 [PowerShell](restore-account-continuous-backup.md#trigger-restore-ps) 中，可以通过枚举数据库事件源来发现数据库删除事件，然后结合所需的参数触发 restore 命令。
 
-e. 将帐户还原到在意外删除或修改容器属性之前的某个时间点。 - 在 [Azure 门户](continuous-backup-restore-portal.md#restore-live-account)中，可以使用事件源窗格确定容器的创建、修改或删除时间，以找到还原时间。 同样，在 [Azure CLI](continuous-backup-restore-command-line.md#trigger-restore) 和 [PowerShell](continuous-backup-restore-powershell.md#trigger-restore) 中，可以通过枚举容器事件源来发现所有容器事件，然后结合所需的参数触发 restore 命令。
+5. 将帐户还原到在意外删除或修改容器属性之前的某个时间点。 - 在 [Azure 门户](restore-account-continuous-backup.md#restore-live-account)中，可以使用事件源窗格确定容器的创建、修改或删除时间，以找到还原时间。 同样，在 [Azure CLI](restore-account-continuous-backup.md#trigger-restore-cli) 和 [PowerShell](restore-account-continuous-backup.md#trigger-restore-ps) 中，可以通过枚举容器事件源来发现所有容器事件，然后结合所需的参数触发 restore 命令。
 
 ## <a name="permissions"></a>权限
 
@@ -100,13 +99,11 @@ Azure Cosmos DB 允许隔离和限制将连续备份帐户还原为特定角色�
 
 * 每次还原的还原费用计算方式为 (1000 * 0.15) = $150
 
-## <a name="current-limitations-public-preview"></a>当前限制（公共预览版）
+## <a name="current-limitations"></a>当前限制
 
-时间点还原功能目前为公共预览版，存在以下限制：
+目前，时间点还原功能具有以下限制：
 
 * 仅用于 SQL 和 MongoDB 的 Azure Cosmos DB API 支持连续备份。 Cassandra、表和 Gremlin API 尚不支持连续备份。
-
-* 不能将使用默认定期备份策略的现有帐户转换为使用连续备份模式的帐户。
 
 * Azure 主权云和 Azure 政府云区域尚不支持连续备份。
 
@@ -114,7 +111,7 @@ Azure Cosmos DB 允许隔离和限制将连续备份帐户还原为特定角色�
 
 * 不支持多区域写入帐户。
 
-* 不支持已启用 Synapse Link 的帐户。
+* 对于已启用 Azure Synapse Link 的帐户，分析存储数据不包含在备份和还原中。 启用 Synapse Link 后，Azure Cosmos DB 将继续按计划的备份间隔自动对事务性存储中的数据执行备份。 目前不支持自动备份和还原分析存储中的数据。
 
 * 还原的帐户是在源帐户所在的区域中创建的。 如果源帐户未存在于某个区域中，则无法将该帐户还原到该区域。
 
@@ -124,18 +121,20 @@ Azure Cosmos DB 允许隔离和限制将连续备份帐户还原为特定角色�
 
 * 当还原正在进行时，请不要修改或删除为帐户授予权限的标识和访问管理 (IAM) 策略，也不要更改任何 VNET、防火墙配置。
 
-* 如果用于 SQL 或 MongoDB 的 Azure Cosmos DB API 帐户在创建容器后创建了唯一索引，则不支持使用该帐户进行连续备份。 只有在最初创建容器的过程中创建了唯一索引的容器才受支持。 对于 MongoDB 帐户，可以使用[扩展命令](mongodb-custom-commands.md)创建唯一索引。
+* 如果用于 SQL 或 MongoDB 的 Azure Cosmos DB API 帐户在创建容器后创建了唯一索引，则不支持使用该帐户进行连续备份。 只有在最初创建容器的过程中创建了唯一索引的容器才受支持。 对于 MongoDB 帐户，可以使用[扩展命令](mongodb/custom-commands.md)创建唯一索引。
 
-* 时间点还原功能始终会还原到新的 Azure Cosmos 帐户。 当前不支持还原到现有帐户。 如果你有意提供有关就地还原的反馈，请通过客户代表或 [UserVoice](https://feedback.azure.com/forums/263030-azure-cosmos-db) 联系 Azure Cosmos DB 团队。
-
-* 当功能为预览版时，为列出 `RestorableDatabaseAccount`、`RestorableSqlDatabases`、`RestorableSqlContainer`、`RestorableMongodbDatabase` 和 `RestorableMongodbCollection` 而公开的所有新 API 都可能会更改。
+* 时间点还原功能始终会还原到新的 Azure Cosmos 帐户。 当前不支持还原到现有帐户。 如果你有意提供有关就地还原的反馈，请通过客户代表联系 Azure Cosmos DB 团队。
 
 * 还原后，对于某些集合，可能会重新生成一致的索引。 可以通过 [IndexTransformationProgress](how-to-manage-indexing-policy.md) 属性检查重新生成操作的状态。
 
 * 还原过程会还原容器的所有属性，包括其 TTL 配置。 因此，还原的数据可能会被立即删除（如果你进行了这样的配置）。 为了防止出现这种情况，在，还原时间戳必须是将 TTL 属性添加到容器之前的某个时间。
 
+* 创建连续备份模式帐户或将帐户从定期模式迁移到连续模式时，无法添加或更新适用于 MongoDB 的 API 中的唯一索引。
+
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 [Azure 门户](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md)、[CLI](continuous-backup-restore-command-line.md) 或 [Azure 资源管理器](continuous-backup-restore-template.md)配置和管理连续备份。
+* 使用 [Azure 门户](provision-account-continuous-backup.md#provision-portal)、[PowerShell](provision-account-continuous-backup.md#provision-powershell)、[CLI](provision-account-continuous-backup.md#provision-cli) 或 [Azure 资源管理器](provision-account-continuous-backup.md#provision-arm-template)预配连续备份。
+* 使用 [Azure 门户](restore-account-continuous-backup.md#restore-account-portal)、[PowerShell](restore-account-continuous-backup.md#restore-account-powershell)、[CLI](restore-account-continuous-backup.md#restore-account-cli) 或 [Azure 资源管理器](restore-account-continuous-backup.md#restore-arm-template)还原连续备份帐户。
+* [将帐户从定期备份迁移到连续备份](migrate-continuous-backup.md)。
 * [管理](continuous-backup-restore-permissions.md)以连续备份模式还原数据所需的权限。
 * [连续备份模式的资源模型](continuous-backup-restore-resource-model.md)

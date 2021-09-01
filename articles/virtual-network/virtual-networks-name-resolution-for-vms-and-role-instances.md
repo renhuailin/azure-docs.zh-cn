@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbbb1ab30a9f49157951b95a7b33769c3cb2347e
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 4fe0354f3d8e4d2b3ac2938f1cd03baa2ca2ce4d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111810259"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324038"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -149,8 +149,8 @@ resolv.conf 文件通常是自动生成的，不应进行编辑。 添加 *optio
   1. 将“timeout:1 attempts:5”添加到“/etc/sysconfig/network/config”中的 NETCONFIG_DNS_RESOLVER_OPTIONS="" 参数 。
   2. 运行 `netconfig update` 以进行更新。
 * **CentOS**（使用 NetworkManager）：
-  1. 将“echo "options timeout:1 attempts:5"”添加到“/etc/NetworkManager/dispatcher.d/11-dhclient”。
-  2. 使用 `service network restart` 进行更新。
+  1. 将行 RES_OPTIONS="options timeout:1 attempts:5" 添加到文件 /etc/sysconfig/network-scripts/ifcfg-eth0。
+  2. 使用 `systemctl restart NetworkManager.service` 进行更新。
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>使用自己的 DNS 服务器的名称解析
 

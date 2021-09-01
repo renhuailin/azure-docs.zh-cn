@@ -1,14 +1,14 @@
 ---
 title: 大规模管理 Azure Sentinel 工作区
 description: Azure Lighthouse 有助于跨委派的客户资源有效地使用 Azure Sentinel。
-ms.date: 03/02/2021
+ms.date: 08/16/2021
 ms.topic: how-to
-ms.openlocfilehash: c72dcdd190acfaf3db0b5c9feb1a30b00c63a94d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 44efc4afeb3ea238b5a8a29d8f12a7bfb4f6d621
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077819"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324024"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大规模管理 Azure Sentinel 工作区
 
@@ -38,6 +38,9 @@ Azure Sentinel 提供安全分析和威胁智能，为警报检测、威胁可�
 
 > [!NOTE]
 > 你可以管理位于不同[区域](../../availability-zones/az-overview.md#regions)的委托资源。 但是，不支持跨[国家云](../../active-directory/develop/authentication-national-cloud.md)和 Azure 公有云或跨两个不同的国家云进行订阅委托。
+
+> [!IMPORTANT]
+> 如果在客户租户中创建了所有工作区，也必须在管理租户的订阅中[注册](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) Microsoft.SecurityInsights 和 Microsoft.OperationalInsights 资源提供程序。
 
 ## <a name="granular-azure-role-based-access-control-azure-rbac"></a>精细化 Azure 基于角色的访问控制 (Azure RBAC)
 
@@ -92,5 +95,5 @@ MSSP 将管理的每个客户订阅都必须[载入 Azure Lighthouse](onboard-cu
 
 - 了解 [Azure Sentinel](../../sentinel/overview.md)。
 - 查看 [Azure Sentinel 定价页](https://azure.microsoft.com/pricing/details/azure-sentinel/)。
+- 探索[一体化 Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Tools/Sentinel-All-In-One)，这是用于加速 Azure Sentinel 环境的部署和初始配置任务的项目。
 - 了解[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。
-

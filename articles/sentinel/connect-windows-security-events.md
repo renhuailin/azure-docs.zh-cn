@@ -15,28 +15,39 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2021
 ms.author: yelevin
-ms.openlocfilehash: 364426e5b89915f51ec61e7c878e885045964554
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: d83672894f511696cfc2520aaee3e7932508b6c2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063443"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322886"
 ---
 # <a name="connect-to-windows-servers-to-collect-security-events"></a>连接到 Windows 服务器以收集安全事件
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Windows 安全事件连接器可以流式传输来自连接到 Azure Sentinel 工作区的任何 Windows 服务器（物理或虚拟、本地或任何云中）的安全事件。 这使你可以在仪表板中查看 Windows 安全事件、在创建自定义警报时使用它们以及依靠它们改进调查，使你能够更深入地了解组织的网络并扩展安全操作功能。 
+Windows 安全事件连接器可以流式传输来自连接到 Azure Sentinel 工作区的任何 Windows 服务器（物理或虚拟、本地或任何云中）的安全事件。 这使你可以在仪表板中查看 Windows 安全事件、在创建自定义警报时使用它们以及依靠它们改进调查，使你能够更深入地了解组织的网络并扩展安全操作功能。
 
-此连接器现有两个版本：安全事件是旧版本，采用的是 Log Analytics 代理（有时称为 MMA 或 OMS 代理），而 Windows 安全事件是新版本，目前为预览版，采用的是新的 Azure Monitor 代理 (AMA)。 本文档介绍了有关这两个连接器的信息。 你可从以下选项卡中选择，查看与所选连接器有关的信息。
+## <a name="connector-options"></a>连接器选项
+
+Windows 安全事件连接器支持以下版本：
+
+|连接器版本  |说明  |
+|---------|---------|
+|**安全性事件**     |旧版本，基于 Log Analytics 代理，有时称为 Microsoft Monitoring Agent (MMA) 或 OMS 代理。 <br><br>限制为每秒 10,000 个事件。 为了保证最佳性能，请确保每秒保持 8,500 个或更少事件。       |
+|**Windows 安全事件**     |较新版本，目前为预览版，基于 Azure Monitor 代理 (AMA)。   <br><br>支持其他功能，例如引入前的日志筛选和某些计算机组的单个数据收集规则。      |
+|     |         |
+
 
 > [!NOTE]
-> 若要从不是 Azure 虚拟机的任何系统收集安全事件，此系统必须已安装并启用 [Azure Arc](../azure-monitor/agents/azure-monitor-agent-install.md)，然后才能启用其中的任意连接器。
+> 适用于 Linux 的 MMA 不支持多个工作区发送日志的多宿主。 如果需要多宿主，建议使用 Windows 安全事件连接器。
+
+> [!TIP]
+> 如果需要多个代理，建议使用设置为运行多个代理的虚拟机规模集来进行日志引入，或者使用多台计算机。 然后，安全事件和 Windows 安全事件连接器均可与负载均衡器一起使用，以确保计算机不会过载，并防止数据重复。
 >
-> 这包括：
-> - 安装在物理计算机上的 Windows 服务器
-> - 安装在本地虚拟机上的 Windows 服务器
-> - 安装在非 Azure 云中虚拟机上的 Windows 服务器
+
+本文将介绍这两个版本的连接器。 从以下选项卡中选择，查看与所选连接器有关的信息。
+
 
 # <a name="log-analytics-agent-legacy"></a>[Log Analytics 代理（旧版本）](#tab/LAA)
 
@@ -70,9 +81,19 @@ Windows 安全事件连接器可以流式传输来自连接到 Azure Sentinel �
 本文档演示了如何创建数据收集规则。
 
 > [!NOTE]
-> **与其他代理共存**
+> - **与其他代理共存**
 > 
-> Azure Monitor 代理可以与现有代理共存，因此你可以在计算或迁移期间继续使用旧连接器。 由于对现有解决方案的支持有限，当新连接器为预览版时，请格外注意这一点。 但在收集重复数据时应该小心，因为这可能会使查询结果扭曲，并导致数据提取和保留的额外费用。
+>   Azure Monitor 代理可以与现有代理共存，因此你可以在计算或迁移期间继续使用旧连接器。 由于对现有解决方案的支持有限，当新连接器为预览版时，请格外注意这一点。 但在收集重复数据时应该小心，因为这可能会使查询结果扭曲，并导致数据提取和保留的额外费用。
+> 
+> - **从非 Azure 计算机收集安全事件**
+> 
+>   若要从不是 Azure 虚拟机的任何系统收集安全事件，该系统必须已安装并启用 [Azure Arc](../azure-monitor/agents/azure-monitor-agent-install.md)，然后才能启用基于 Azure Monitor 代理的连接器。
+>   
+>   这包括：
+>   
+>    - 安装在物理计算机上的 Windows 服务器
+>    - 安装在本地虚拟机上的 Windows 服务器
+>    - 安装在非 Azure 云中虚拟机上的 Windows 服务器
 
 ---
 
@@ -156,7 +177,7 @@ Windows 安全事件连接器可以流式传输来自连接到 Azure Sentinel �
 
 ### <a name="create-data-collection-rules-using-the-api"></a>使用 API 创建数据收集规则
 
-你还可使用 API 创建数据收集规则（[请参阅架构](/rest/api/monitor/data-collection-rules)），在需要创建大量规则（例如你是 MSSP）的情况下，这将提供极大的便利。 以下示例可用作创建规则的模板：
+还可使用 API 创建数据收集规则（[请参阅架构](/rest/api/monitor/data-collection-rules)），在需要创建大量规则（例如你是 MSSP）的情况下，这将提供极大的便利。 以下示例可用作创建规则的模板：
 
 **请求 URL 和标头**
 
@@ -248,6 +269,6 @@ Azure Sentinel 可以将机器学习 (ML) 应用于安全事件数据，以确�
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Windows 安全事件连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 使用[内置](tutorial-detect-threats-built-in.md)或[自定义](tutorial-detect-threats-custom.md)规则开始通过 Azure Sentinel 检测威胁。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 使用[内置](detect-threats-built-in.md)或[自定义](detect-threats-custom.md)规则开始通过 Azure Sentinel 检测威胁。
 

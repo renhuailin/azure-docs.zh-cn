@@ -11,12 +11,12 @@ ms.reviewer: sgilley
 ms.date: 04/19/2021
 ms.topic: how-to
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 564b193a355ecc7bc11bef874c80ddc881c362cb
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: e51e537beb44271d5a1c63e8bc1952455f9a35d9
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111895923"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323855"
 ---
 # <a name="start-monitor-and-track-run-history"></a>启动、监视和跟踪运行历史记录
 
@@ -25,6 +25,7 @@ ms.locfileid: "111895923"
 本文演示如何完成以下任务：
 
 * 监视运行性能。
+* 添加运行显示名称。 
 * 创建自定义视图。 
 * 添加运行说明。 
 * 标记和查找运行。
@@ -36,13 +37,13 @@ ms.locfileid: "111895923"
 
 > [!TIP]
 > 如果要了解如何监视 Azure 机器学习服务及关联的 Azure 服务，请参阅[如何监视 Azure 机器学习](monitor-azure-machine-learning.md)。
-> 如果要了解如何监视部署为 Web 服务或 IoT Edge 模块的模型，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。
+> 如果要查找有关监视部署为 Web 服务的模型的信息，请参阅[收集模型数据](how-to-enable-data-collection.md)和[使用 Application Insights 进行监视](how-to-enable-app-insights.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 需要准备好以下各项：
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
 * 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -101,7 +102,7 @@ ms.locfileid: "111895923"
     
         此命令创建包含示例 runconfig 和 conda 环境文件的 `.azureml` 子目录。 此子目录还包含用来与 Azure 机器学习工作区通信的 `config.json` 文件。
     
-        有关详细信息，请参阅 [az ml folder attach](/cli/azure/ml/folder?preserve-view=true&view=azure-cli-latest#az_ml_folder_attach)。
+        有关详细信息，请参阅 [az ml folder attach](/cli/azure/ml(v1)/folder#az_ml_folder_attach)。
     
     2. 若要启动运行，请使用以下命令。 使用此命令时，请针对 -c 参数指定 runconfig 文件的名称（如果查看的是文件系统，此名称为 \*.runconfig 前面的文本）。
     
@@ -116,7 +117,7 @@ ms.locfileid: "111895923"
         >
         > 有关更多示例 runconfig 文件，请参阅 [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/)。
     
-        有关详细信息，请参阅 [az ml run submit-script](/cli/azure/ml/run?preserve-view=true&view=azure-cli-latest#az_ml_run_submit-script)。
+        有关详细信息，请参阅 [az ml run submit-script](/cli/azure/ml(v1)/run#az_ml_run_submit-script)。
 
     # <a name="studio"></a>[工作室](#tab/azure-studio)
 
@@ -167,7 +168,7 @@ ms.locfileid: "111895923"
     
         此命令返回一个 JSON 文档，其中列出了有关此试验的运行的信息。
     
-        有关详细信息，请参阅 [az ml experiment list](/cli/azure/ml/experiment?preserve-view=true&view=azure-cli-latest#az_ml_experiment_list)。
+        有关详细信息，请参阅 [az ml experiment list](/cli/azure/ml(v1)/experiment#az_ml_experiment_list)。
     
     * 若要查看有关特定运行的信息，请使用以下命令。 请将 `runid` 替换为运行的 ID：
     
@@ -177,13 +178,24 @@ ms.locfileid: "111895923"
     
         此命令返回一个 JSON 文档，其中列出了有关运行的信息。
     
-        有关详细信息，请参阅 [az ml run show](/cli/azure/ml/run?preserve-view=true&view=azure-cli-latest#az_ml_run_show)。
+        有关详细信息，请参阅 [az ml run show](/cli/azure/ml(v1)/run#az_ml_run_show)。
     
     
     # <a name="studio"></a>[工作室](#tab/azure-studio)
     
     ---    
    
+## <a name="run-display-name"></a>运行显示名称 
+运行显示名称是可为运行提供的可自定义可选名称。 若要编辑运行显示名称，请执行以下操作：
+
+1. 导航到运行列表。 
+
+2. 选择运行以在运行详细信息页面中编辑显示名称。
+
+3. 选择“编辑”按钮以编辑运行显示名称。 
+
+:::image type="content" source="media/how-to-track-monitor-analyze-runs/display-name.gif" alt-text="屏幕截图：编辑显示名称":::
+
 ## <a name="custom-view"></a>自定义视图 
     
 若要查看工作室中的运行，请执行以下操作： 
@@ -261,7 +273,7 @@ ms.locfileid: "111895923"
     az ml run update -r runid --add-tag quality='fantastic run'
     ```
     
-    有关详细信息，请参阅 [az ml run update](/cli/azure/ml/run?preserve-view=true&view=azure-cli-latest#az_ml_run_update)。
+    有关详细信息，请参阅 [az ml run update](/cli/azure/ml(v1)/run#az_ml_run_update)。
     
     # <a name="studio"></a>[工作室](#tab/azure-studio)
     
@@ -339,7 +351,7 @@ print(local_run.get_status())
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-有关详细信息，请参阅 [az ml run cancel](/cli/azure/ml/run?preserve-view=true&view=azure-cli-latest#az_ml_run_cancel)。
+有关详细信息，请参阅 [az ml run cancel](/cli/azure/ml(v1)/run#az_ml_run_cancel)。
 
 # <a name="studio"></a>[工作室](#tab/azure-studio)
 

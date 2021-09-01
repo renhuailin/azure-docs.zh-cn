@@ -4,12 +4,12 @@ description: 本文介绍如何将 Azure VMware 解决方案订阅移动到另�
 ms.custom: subject-moving-resources
 ms.topic: how-to
 ms.date: 04/26/2021
-ms.openlocfilehash: 02f35efe90d4670c4ab38155f129ec0d61c1b03d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b4541bf1cf13a8b4c090365c31c2403685a69c7f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966709"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322228"
 ---
 # <a name="move-azure-vmware-solution-subscription-to-another-subscription"></a>将 Azure VMware 解决方案订阅移动到另一个订阅
 
@@ -39,7 +39,7 @@ ms.locfileid: "111966709"
 
    :::image type="content" source="media/move-subscriptions/move-resources-subscription-target.png" alt-text="目标资源的屏幕截图。":::
 
-1. 确认要移动的选定资源的有效性。  这会验证所有要移动的选定资源。 在验证选定资源的过程中，你将看到验证状态为“待验证”。 
+1. 确认要移动的选定资源的有效性。 在验证过程中，你将看到状态为“待验证”。 
 
    :::image type="content" source="media/move-subscriptions/pending-move-resources-subscription-target.png" alt-text="此屏幕截图显示了要移动的资源。":::
 

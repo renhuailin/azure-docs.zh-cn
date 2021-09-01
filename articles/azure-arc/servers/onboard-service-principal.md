@@ -1,15 +1,15 @@
 ---
 title: 将混合计算机大规模连接到 Azure
 description: 本文介绍如何使用已启用 Azure Arc 的服务器通过服务主体将计算机连接到 Azure。
-ms.date: 03/04/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4aad01fd6991c059b2cf891fd4f06ae83a78a0e4
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: fb78440bf03970616d3d608dcea2de1dc86681bd
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831593"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323304"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>将混合计算机大规模连接到 Azure
 
@@ -89,7 +89,7 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
     1. 在“资源组”下拉列表中，选择要从中管理计算机的资源组。
     1. 在“区域”下拉列表中，选择用于存储服务器元数据的 Azure 区域。
     1. 在“操作系统”下拉列表中，选择脚本配置为要在其上运行的操作系统。
-    1. 如果计算机是通过代理服务器连接到 Internet 进行通信的，请指定计算机用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。 按格式 `http://<proxyURL>:<proxyport>` 输入值。
+    1. 如果计算机是通过代理服务器连接到 Internet 进行通信的，请指定计算机用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。 使用此配置，代理使用 HTTP 协议通过代理服务器进行通信。 按格式 `http://<proxyURL>:<proxyport>` 输入值。
     1. 选择“下一步: 身份验证”。
 
 1. 在“身份验证”页上的“服务主体”下拉列表下，选择“Arc-for-servers”。    然后，选择“下一步: 标签”。
@@ -128,8 +128,8 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在《[Connected Machine 代理故障排除指南](troubleshoot-agent-onboard.md)》中可以找到故障排除信息。
+- 在 [Connected Machine 代理故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
 
-- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否向预期的 Log Analytics 工作区报告、使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 启用监视，等等。
+- 查看[规划和部署指南](plan-at-scale-deployment.md)，以便对按任意规模部署启用了 Azure Arc 的服务器进行规划，并实现集中管理和监视。
 
-- 详细了解 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 如果你想要使用用于 VM 的 Azure Monitor 收集操作系统和工作负载监视数据、使用自动化 Runbook 或“更新管理”等功能管理这些数据，或使用 [Azure 安全中心](../../security-center/security-center-introduction.md)等其他 Azure 服务，则需要适用于 Windows 和 Linux 的 Log Analytics 代理。
+- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否向预期的 Log Analytics 工作区报告、使用 [VM 见解](../../azure-monitor/vm/vminsights-enable-policy.md)启用监视，等等。

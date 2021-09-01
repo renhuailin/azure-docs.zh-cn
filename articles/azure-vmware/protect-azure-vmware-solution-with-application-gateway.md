@@ -3,12 +3,12 @@ title: 使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 Web
 description: 将 Azure 应用程序网关配置为安全地公开在 Azure VMware 解决方案上运行的 Web 应用。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 1b9f55386c2900660ddee209d0aea95e7bac610a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 407dd74b708006ffe2fb125a16cff4e220efc1fe
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739618"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322994"
 ---
 # <a name="protect-web-apps-on-azure-vmware-solution-with-azure-application-gateway"></a>使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 Web 应用
 
@@ -35,9 +35,9 @@ ms.locfileid: "121739618"
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="显示用于通过 Azure VMware 解决方案 Web 应用程序验证应用程序网关的测试方案的示意图。" border="false":::
 
-应用程序网关实例部署在中心的专用子网中。 它具有 Azure 公共 IP 地址。 建议为虚拟网络激活 [Azure DDoS 保护标准](../ddos-protection/ddos-protection-overview.md)。 Web 服务器托管在 NSX T0 和 T1 网关后面的 Azure VMware 解决方案私有云上。 Azure VMware 解决方案使用 [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) 来实现与中心和本地系统的通信。
+应用程序网关实例部署在具有 Azure 公共 IP 地址的专用子网的中心上。 建议为虚拟网络激活 [Azure DDoS 保护标准](../ddos-protection/ddos-protection-overview.md)。 Web 服务器托管在 NSX T0 和 T1 网关后面的 Azure VMware 解决方案私有云上。 此外，Azure VMware 解决方案使用 [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) 来实现与中心和本地系统的通信。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。
 - Azure VMware 解决方案私有云已部署且正在运行。
@@ -73,11 +73,11 @@ ms.locfileid: "121739618"
 
 12. 添加标记，然后选择“下一步: 查看 + 创建>”。
 
-13. 验证将在应用程序网关上运行；如果成功，请选择“创建”以进行部署。
+13. 验证在应用程序网关上运行。 如果成功，请选择“创建”进行部署。
 
 ## <a name="configuration-examples"></a>配置示例
 
-现在，我们会使用 Azure VMware 解决方案 VM 将应用程序网关配置为以下用例的后端池： 
+现在会使用 Azure VMware 解决方案 VM 将应用程序网关配置为以下用例的后端池： 
 
 - [托管多个站点](#hosting-multiple-sites)
 - [按 URL 路由](#routing-by-url)
@@ -129,14 +129,14 @@ ms.locfileid: "121739618"
 
     已使用安装了 IIS 角色的 Windows Server 2016 来说明此教程。 安装 VM 后，运行以下 PowerShell 命令，为每个 VM 教程配置 IIS。 
 
-    第一个虚拟机 contoso-web-01 将托管主网站。
+    第一个虚拟机 contoso-web-01 会托管主网站。
 
     ```powershell
     Install-WindowsFeature -Name Web-Server
     Add-Content -Path C:\inetpub\wwwroot\Default.htm -Value $($env:computername)
     ```
 
-    第二个虚拟机 contoso-web-02 将托管图像站点。
+    第二个虚拟机 contoso-web-02 会托管图像站点。
  
     ```powershell
     Install-WindowsFeature -Name Web-Server
@@ -144,7 +144,7 @@ ms.locfileid: "121739618"
     Add-Content -Path C:\inetpub\wwwroot\images\test.htm -Value $($env:computername)
     ```
 
-    第三个虚拟机 contoso-web-03 将托管视频站点。
+    第三个虚拟机 contoso-web-03 会托管视频站点。
 
     ```powershell
     Install-WindowsFeature -Name Web-Server
@@ -168,7 +168,7 @@ ms.locfileid: "121739618"
 
     :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-04.png" alt-text="显示 HTTP 设置配置的“添加 HTTP 设置”页的屏幕截图。":::
 
-5. 在左侧菜单的“规则”部分中创建规则。 将每个规则与以前创建的侦听器相关联。 然后配置主后端池和 HTTP 设置。 选择 **添加** 。
+5. 在左侧菜单的“规则”部分中创建规则，并将每个规则与以前创建的侦听器关联。 然后配置主后端池和 HTTP 设置，随后选择“添加”。
 
     :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-07.png" alt-text="用于配置到后端目标的路由规则的“添加路由规则”页的屏幕截图。":::
 

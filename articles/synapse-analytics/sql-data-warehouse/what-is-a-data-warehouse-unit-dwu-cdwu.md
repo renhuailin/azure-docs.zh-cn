@@ -11,16 +11,16 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 4335c861656af3a626fdbf0c92af7b2ee62a46a7
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 749d122ead1d2458b59fc0277a74a96bb6d29ce6
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112539153"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324010"
 ---
 # <a name="data-warehouse-units-dwus-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的专用 SQL 池（以前称为 SQL DW）的数据仓库单位 (DWU)
 
-针对选择理想数目的数据仓库单位 (DWU) 来优化价格和性能以及如何更改单位数提供了建议。
+本文档包含的建议涉及如何选择理想数目的数据仓库单位 (DWU) 来优化价格和性能，以及如何更改单位数。
 
 ## <a name="what-are-data-warehouse-units"></a>什么是数据仓库单位？
 

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: 3bc7909f38e63256d7d708ec189c628662cf8837
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f0edc024a8266704f3a45a48f50adb32b2616d95
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101667323"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321777"
 ---
-# <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>使用门户将 VM 和规模集部署到专用主机 
+# <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>使用门户将 VM 和规模集部署到专用主机
 
-本文介绍了如何创建 Azure [专用主机](dedicated-hosts.md)来托管虚拟机 (VM)。 
+本文介绍了如何创建 Azure [专用主机](dedicated-hosts.md)来托管虚拟机 (VM)。
 
 
 ## <a name="limitations"></a>限制
@@ -26,18 +26,18 @@ ms.locfileid: "101667323"
 
 ## <a name="create-a-host-group"></a>创建主机组
 
-主机组是表示专用主机集合的资源。 可在区域和可用性区域中创建主机组，并向其添加主机。 规划高可用性时，有其他选项可供选择。 你可以将以下一个或两个选项与专用主机一起使用： 
+主机组是表示专用主机集合的资源。 可在区域和可用性区域中创建主机组，并向其添加主机。 规划高可用性时，有其他选项可供选择。 你可以将以下一个或两个选项与专用主机一起使用：
 - 跨多个可用性区域。 在这种情况下，你需要在要使用的每个区域中都有一个主机组。
-- 跨映射到物理机架的多个容错域。 
- 
-在任一情况下，都需要为主机组提供容错域计数。 如果你不希望跨组中的容错域，请使用容错域计数 1。 
+- 跨映射到物理机架的多个容错域。
 
-还可以决定使用可用性区域和容错域。 
+在任一情况下，都需要为主机组提供容错域计数。 如果你不希望跨组中的容错域，请使用容错域计数 1。
 
-在此示例中，我们将创建使用 1 个可用性区域和 2 个容错域的主机组。 
+还可以决定使用可用性区域和容错域。
+
+在此示例中，我们将创建使用 1 个可用性区域和 2 个容错域的主机组。
 
 
-1. 打开 [Azure 门户](https://portal.azure.com)。 
+1. 打开 [Azure 门户](https://portal.azure.com)。
 1. 选择左上角的“创建资源”。
 1. 搜索“主机组”，然后从结果中选择“主机组”。
 1. 在“主机组”页中，选择“创建”。
@@ -60,7 +60,7 @@ ms.locfileid: "101667323"
 
 有关主机 SKU 和定价的详细信息，请参阅 [Azure 专用主机定价](https://aka.ms/ADHPricing)。
 
-如果为主机组设置了容错域计数，则系统会要求你为主机指定容错域。  
+如果为主机组设置了容错域计数，则系统会要求你为主机指定容错域。
 
 1. 选择左上角的“创建资源”。
 1. 搜索“专用主机”，然后从结果中选择“专用主机”。
@@ -76,7 +76,7 @@ ms.locfileid: "101667323"
 
 1. 在 Azure 门户的左上角，选择“创建资源”。
 1. 在 Azure 市场资源列表上方的搜索框中，搜索并选择要使用的映像，然后选择“创建”。
-1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择 myDedicatedHostsRG 作为“资源组” 。 
+1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择 myDedicatedHostsRG 作为“资源组” 。
 1. 在“实例详细信息”下，对于“虚拟机名称”键入 *myVM*，对于“位置”选择“美国东部”。
 1. 在“可用性选项”中，选择“可用性区域”，然后从下拉列表中选择 1 。
 1. 对于大小，选择“更改大小”。 在可用大小列表中，选择 Esv3 系列其中一个，例如“标准 E2s v3”。 可能需要清除筛选器才能查看所有可用大小。
@@ -88,21 +88,21 @@ ms.locfileid: "101667323"
 
 部署 VM 需要数分钟。
 
-## <a name="create-a-scale-set"></a>创建规模集 
+## <a name="create-a-scale-set"></a>创建规模集
 
 部署规模集时，需要指定主机组。
 
-1. 搜索“规模集”，并从列表中选择“虚拟机规模集”。
-1. 选择“添加”以创建新的规模集。
-1. 像往常一样填写“基本信息”选项卡上的字段，但请确保选择的 VM 大小来自你为专用主机选择的系列，如“标准 E2s v3” 。
-1. 在“高级”选项卡上，为分配算法选择“最大分配”  。
-1. 在“主机组”中，从下拉列表中选择主机组。 如果最近已创建组，可能只需一分钟即可将其添加到列表中。
+1. 搜索“规模集”，然后从列表中选择“虚拟机规模集”。
+1. 选择“添加”，创建新的规模集。
+1. 如同往常一样完成“基本信息”选项卡上的字段，但请确保选择的 VM 大小来自为专用主机选择的系列，如“标准 E2s v3” 。
+1. 在“高级”选项卡上，选择“最大传播”作为“传播算法”  。
+1. 在“主机组”中，从下拉菜单中选择主机组。 如果最近创建了组，则该组可能需要一分钟才能添加到列表中。
 
-## <a name="add-an-existing-vm"></a>添加现有 VM 
+## <a name="add-an-existing-vm"></a>添加现有 VM
 
 可将现有 VM 添加到专用主机，但必须先停止/解除分配该 VM。 在将 VM 移动到专用主机之前，请确保 VM 配置受支持：
 
-- VM 大小必须属于专用主机所用的同一大小系列。 例如，如果专用主机是 DSv3，则 VM 大小可以是 Standard_D4s_v3，但不能是 Standard_A4_v2。 
+- VM 大小必须属于专用主机所用的同一大小系列。 例如，如果专用主机是 DSv3，则 VM 大小可以是 Standard_D4s_v3，但不能是 Standard_A4_v2。
 - VM 需要位于专用主机所在的同一区域。
 - VM 不能是邻近放置组的一部分。 在将 VM 移动到专用主机之前，请先从邻近放置组中删除该 VM。 有关详细信息，请参阅[将 VM 移出邻近放置组](./windows/proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group)
 - VM 不能位于可用性集中。
@@ -122,6 +122,6 @@ ms.locfileid: "101667323"
 
 - 有关详细信息，请参阅[专用主机](dedicated-hosts.md)概述。
 
-- [此处](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有一个示例模板，该模板使用区域和容错域来最大限度地提高在某个地区的复原能力。
+- [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)提供了示例模板，该模板同时使用区域和容错域以实现区域中的最大复原能力。
 
 - 还可以使用 [Azure CLI](./linux/dedicated-hosts-cli.md) 或 [PowerShell](./windows/dedicated-hosts-powershell.md) 部署专用主机。
