@@ -1,19 +1,19 @@
 ---
 title: Synapse Studio 中的源代码管理
 description: 了解如何在 Azure Synapse Studio 中配置源代码管理
-author: liud
+author: liudan66
 ms.service: synapse-analytics
 ms.subservice: cicd
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7371bc023cc13278c0d1382ac1ac60ee42a39f0b
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 10df7f8db2a787300787f8995ac0ea3a33736e68
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809133"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745053"
 ---
 # <a name="source-control-in-synapse-studio"></a>Synapse Studio 中的源代码管理
 
@@ -100,7 +100,10 @@ GitHub 与 Synapse Studio 的集成支持公共 GitHub（即 [https://github.com
 
 ### <a name="github-settings"></a>GitHub 设置
 
-连接到 git 存储库时，请先选择“GitHub”作为存储库类型，接着提供 GitHub 帐户或 GitHub Enterprise Server URL（如果使用 GitHub Enterprise Server），然后单击“继续”。
+连接到 git 存储库时，首先在存储库类型中选择“GitHub”，然后提供 GitHub 帐户、GitHub Enterprise Server URL（如果使用 GitHub Enterprise Server）或 GitHub Enterprise 组织名称（如果使用 GitHub Enterprise Cloud）。 选择“继续”。
+
+> [!NOTE]
+> 如果使用的是 GitHub Enterprise Cloud，请清除“GitHub Enterprise Server”复选框。 
 
 ![GitHub 存储库设置](media/connect-with-github-repo-1.png)
 
@@ -128,7 +131,7 @@ GitHub 与 Synapse Studio 的集成支持公共 GitHub（即 [https://github.com
 
 1. 在“Git 配置”窗格的“GitHub 帐户”字段中，输入组织名称。 此时会显示一个登录 GitHub 的提示。 
 
-1. 使用用户凭据登录。
+1. 使用用户凭据登录。 
 
 1. 系统会要求你授权 Synapse 作为名为“Azure Synapse”的应用程序。 在此屏幕上，你会看到一个授予 Synapse 访问组织的权限的选项。 如果看不到授予权限的选项，请要求管理员通过 GitHub 手动授予权限。
 
@@ -190,7 +193,7 @@ Synapse Studio 一次只能有一个发布分支。 指定新的发布分支时�
 ![确认正确的发布分支](media/publish-change.png)
 
 > [!IMPORTANT]
-> 协作分支不代表服务中部署的内容。 必须将协作分支中的更改手动发布到服务。
+> 协作分支不代表服务中部署的内容。 必须手动发布协作分支中的更改。
 
 ## <a name="switch-to-a-different-git-repository"></a>切换到不同 Git 存储库
 

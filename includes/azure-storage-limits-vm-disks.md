@@ -2,14 +2,14 @@
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/18/2019
+ms.date: 08/13/2021
 ms.author: rogarana
-ms.openlocfilehash: ffb07220267a2c192b4aad2405185c80bd9abbc0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f22094b86018f318e82b2e0a7e31ef6854562734
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94523698"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122263322"
 ---
 可以将多个数据磁盘附加到 Azure 虚拟机。 根据 VM 数据磁盘的可伸缩性和性能目标，可以确定满足性能和容量要求所需的磁盘数量和类型。
 
@@ -25,8 +25,8 @@ ms.locfileid: "94523698"
 > | 标准托管磁盘 | 50,000 |
 > | 标准 SSD 托管磁盘 | 50,000 |
 > | 高级托管磁盘 | 50,000 |
-> | 标准 LRS 快照 | 50,000 |
-> | Standard_ZRS snapshots | 50,000 |
+> | 标准 LRS 快照 | 75,000 |
+> | Standard_ZRS snapshots | 75,000 |
 > | 托管映像 | 50,000 |
 
 **对于标准存储帐户：** 标准存储帐户的总请求率上限为 20,000 IOPS。 在标准存储帐户中，所有虚拟机磁盘的 IOPS 总数不应超过此限制。

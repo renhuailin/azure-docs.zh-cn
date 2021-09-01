@@ -7,22 +7,21 @@ ms.subservice: azure-arc-data
 author: uc-msft
 ms.author: umajay
 ms.reviewer: mikeray
-ms.date: 10/12/2020
+ms.date: 07/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7b683029b7fd05078755d4e8cd027f55c805f991
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 503bfec47621e5663e6626e1285840625e92c46c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97107254"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732161"
 ---
 # <a name="storage-configuration"></a>存储配置
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="kubernetes-storage-concepts"></a>Kubernetes 存储概念
 
-Kubernetes 在基础虚拟化技术堆栈（可选）和硬件之上提供基础结构抽象层。 Kubernetes 通过[存储类](https://kubernetes.io/docs/concepts/storage/storage-classes/)的方式来抽象掉存储。 预配 Pod 时，可以指定用于每个卷的存储类。 预配 Pod 时，调用存储类[配置程序](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/)来预配存储，然后在该预配的存储上创建[永久性卷](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)，再使用[永久性卷声明](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)将 Pod 装载到永久性卷上  。
+Kubernetes 在基础虚拟化技术堆栈（可选）和硬件之上提供基础结构抽象层。 Kubernetes 通过[存储类](https://kubernetes.io/docs/concepts/storage/storage-classes/)的方式来抽象掉存储。 预配 Pod 时，可以为每个卷指定存储类。 预配 Pod 之后，调用存储类[配置器](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/)来预配存储，然后在该预配的存储上创建[永久性卷](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)，再使用[永久性卷声明](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)将 Pod 装载到永久性卷上。
 
 Kubernetes 提供了一种方法使存储基础结构提供程序能插入扩展 Kubernetes 的驱动程序（也称为“加载项”）。 存储加载项必须符合[容器存储接口标准](https://kubernetes.io/blog/2019/01/15/container-storage-interface-ga/)。 可在这个非最终的 [CSI 驱动程序列表](https://kubernetes-csi.github.io/docs/drivers.html)中找到数十个加载项。 使用哪个 CSI 驱动程序将取决于多种因素，例如是否在云托管的托管 Kubernetes 服务中运行，或者对硬件使用哪个 OEM 提供程序。
 
@@ -127,8 +126,17 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 - **本地存储** - 给定节点的本地硬盘驱动器上预配的存储。 这种类型的存储在性能方面可能是理想的选择，但需要通过在多个节点间复制数据来进行专门设计以实现数据冗余。
 - **远程共享存储** - 在某些远程存储设备上预配的存储，例如 SAN、NAS 或者 EBS 或 Azure 文件存储等云存储服务。 这种类型的存储通常自动提供数据冗余，但不如本地存储那样快。
 
-> [!NOTE]
-> 现在如果你使用的是 NFS，则需要在部署 Azure Arc 数据控制器之前在部署配置文件中将 allowRunAsRoot 设置为 true。
+## <a name="nfs-based-storage-classes"></a>基于 NFS 的存储类
+
+根据 NFS 服务器和存储类配置程序的配置，可能需要在数据库实例的 Pod 配置中设置 `supplementalGroups`，并将 NFS 服务器配置更改为使用客户端传入的组 ID（而不是使用传入的用户 ID 在服务器上查找）。 请咨询 NFS 管理员，确定是否为这种情况。
+
+`supplementalGroups` 属性采用值的数组，其可被设置为 Azure Arc 数据控制器部署的一部分，并将由 Azure Arc 数据控制器配置的所有数据库实例使用。
+
+为设置此属性，请运行以下命令：
+
+```azurecli
+az arcdata dc config add --path custom/control.json --json-values 'spec.security.supplementalGroups="1234556"'
+```
 
 ### <a name="data-controller-storage-configuration"></a>数据控制器存储配置
 
@@ -141,7 +149,7 @@ Azure Arc 中用于数据服务的某些服务需要配置为使用远程共享�
 |**控制器 SQL 实例**|`<namespace>/logs-controldb`, `<namespace>/data-controldb`|
 |**控制器 API 服务**|`<namespace>/data-controller`|
 
-预配数据控制器时，用于其中每个永久性卷的存储类通过以下方式之一进行指定：将 --storage-class | -sc 参数传递到 `azdata arc dc create` 命令，或者在所用的 control.json 部署模板文件中设置存储类。
+预配数据控制器时，用于其中每个永久性卷的存储类通过以下方式之一进行指定：将 --storage-class | -sc 参数传递到 `az arcdata dc create` 命令，或者在所用的 control.json 部署模板文件中设置存储类。  如果使用 Azure 门户在直接连接模式下创建数据控制器，则所选的部署模板将在模板中预定义存储类，或者如果选择的模板没有预定义的存储类，则系统会提示你输入一个。  如果使用自定义部署模板，则可以指定存储类。
 
 部署模板是现成可用的，为其指定的默认存储类适用于目标环境，但可以在部署过程中重写该默认存储类。 若要在部署时更改数据控制器 Pod 的存储类配置，请参阅[部署配置文件](create-data-controller.md)中的详细步骤。
 
@@ -161,31 +169,28 @@ Azure Arc 中用于数据服务的某些服务需要配置为使用远程共享�
 
 每个数据库实例都包含数据、日志和备份永久性卷。 可以在部署时指定这些永久性卷的存储类。 如果未指定存储类，将使用默认的存储类。
 
-使用 `azdata arc sql mi create` 或 `azdata arc postgres server create` 创建实例时，可以使用两个参数来设置存储类：
+使用 `az sql mi-arc create` 或 `az postgres arc-server create` 创建实例时，可以使用四个参数来设置存储类：
 
-> [!NOTE]
-> 其中一些参数正在开发中，在即将发布的版本中它们将可用于 `azdata arc sql mi create` 和 `azdata arc postgres server create`。
-
-|参数名称，简短名称|用途|
+|参数名称，简短名称|用于|
 |---|---|
-|`--storage-class-data`, `-scd`|用于指定所有数据文件（包括事务日志文件）的存储类|
-|`--storage-class-logs`, `-scl`|用于指定所有日志文件的存储类|
-|`--storage-class-data-logs`, `-scdl`|用于指定数据库事务日志文件的存储类。 **请注意：尚不可用。**|
-|`--storage-class-backups`, `-scb`|用于指定所有备份文件的存储类。 **请注意：尚不可用。**|
+|`--storage-class-data`, `-d`|用于指定所有数据文件（包括事务日志文件）的存储类|
+|`--storage-class-logs`, `-g`|用于指定所有日志文件的存储类|
+|`--storage-class-data-logs`|用于指定数据库事务日志文件的存储类。|
+|`--storage-class-backups`|用于指定所有备份文件的存储类。|
 
 下表列出了映射到数据和日志永久性卷的 Azure SQL 托管实例容器内的路径：
 
 |参数名称，简短名称|mssql-miaa 容器内的路径|说明|
 |---|---|---|
-|`--storage-class-data`, `-scd`|/var/opt|包含 mssql 安装和其他系统进程的目录。 mssql 目录包含默认数据（包括事务日志）、错误日志和备份目录|
-|`--storage-class-logs`, `-scl`|/var/log|包含存储控制台输出（stderr、stdout）、容器内进程的其他日志记录信息的目录|
+|`--storage-class-data`, `-d`|/var/opt|包含 mssql 安装和其他系统进程的目录。 mssql 目录包含默认数据（包括事务日志）、错误日志和备份目录|
+|`--storage-class-logs`, `-g`|/var/log|包含存储控制台输出（stderr、stdout）、容器内进程的其他日志记录信息的目录|
 
 下表列出了映射到数据和日志永久性卷的 PostgreSQL 实例容器内的路径：
 
 |参数名称，简短名称|postgres 容器内的路径|说明|
 |---|---|---|
-|`--storage-class-data`, `-scd`|/var/opt/postgresql|包含 postgres 安装的数据和日志目录|
-|`--storage-class-logs`, `-scl`|/var/log|包含存储控制台输出（stderr、stdout）、容器内进程的其他日志记录信息的目录|
+|`--storage-class-data`, `-d`|/var/opt/postgresql|包含 postgres 安装的数据和日志目录|
+|`--storage-class-logs`, `-g`|/var/log|包含存储控制台输出（stderr、stdout）、容器内进程的其他日志记录信息的目录|
 
 对于数据文件、日志和备份，每个数据库实例都有一个单独的永久性卷。 这意味着根据卷配置程序预配存储的方式，将为每种文件类型分离 I/O。 每个数据库实例都有其自己的永久性卷声明和永久性卷。
 
@@ -199,13 +204,13 @@ Azure Arc 中用于数据服务的某些服务需要配置为使用远程共享�
 
 为数据库实例 Pod 选择存储类时要考虑的重要因素：
 
-- 可以在单个 Pod 模式或多个 Pod 模式下部署数据库实例。 单个 Pod 模式的示例是 Azure SQL 托管实例的开发人员实例或常规用途定价层 Azure SQL 托管实例。 多个 Pod 模式的示例是高度可用的业务关键型定价层 Azure SQL 托管实例。 （注意：定价层正在开发中，尚未向客户提供。）使用单个 Pod 模式部署的数据库实例必须使用远程的共享存储类才能确保数据持续性，这样如果 Pod 或节点出现故障并且重启 Pod 后，它就可再次连接到永久性卷。 与此相反，高度可用 Azure SQL 托管实例使用 Always On 可用性组，以同步或异步方式将数据从一个实例复制到另一个实例。 尤其是在同步复制数据的情况下，始终有多个数据副本（通常为三个 (3) 副本）。 因此可以为数据和日志文件使用本地存储或远程共享存储类。 如果利用本地存储，即使 Pod、节点或存储硬件发生故障，仍会保留数据。 由于这种灵活性，你可以选择使用本地存储来提高性能。
+- 可以在单个 Pod 模式或多个 Pod 模式下部署数据库实例。 单个 Pod 模式的示例是常规用途定价层 Azure SQL 托管实例。 多个 Pod 模式的示例是高度可用的业务关键型定价层 Azure SQL 托管实例。 使用单个 Pod 模式部署的数据库实例必须使用远程的共享存储类才能确保数据持续性，这样如果 Pod 或节点出现故障并且重启 Pod 后，它就可以再次连接到永久性卷。 与此相反，高度可用 Azure SQL 托管实例使用 Always On 可用性组，以同步或异步方式将数据从一个实例复制到另一个实例。 尤其是在同步复制数据的情况下，更是如此，届时始终会存在多个数据副本（通常为三个副本）。 因此可以为数据和日志文件使用本地存储或远程共享存储类。 如果利用本地存储，即使 Pod、节点或存储硬件发生故障，仍会保留数据，因为有多个数据副本。 由于这种灵活性，你可以选择使用本地存储来提高性能。
 - 数据库性能很大程度上取决于给定存储设备的 I/O 吞吐量。 如果数据库进行大量读取或大量写入，则选择的存储类应具有为该类型工作负荷设计的硬件。 例如，如果数据库主要用于写入，建议选择使用 RAID 0 的本地存储。 如果数据库主要用于读取少量“热数据”，但总体上冷数据存储量很大，则可以选择支持分层存储的 SAN 设备。 选择适当的存储类与选择用于任何数据库的存储类型的差别不大。
 - 如果使用本地存储卷配置程序，请确保为数据、日志和备份预配的本地卷各自登录到不同的基础存储设备，以避免磁盘 I/O 争用。 OS 还应位于装载到单独磁盘的卷上。 这实质上是物理硬件上数据库实例应遵循的相同指导原则。
 - 由于给定实例上的所有数据库共享永久性卷声明和永久性卷，因此请确保不要将繁忙数据库实例同时放在同一数据库实例上。 如果可能，请将繁忙数据库单独置于其自己的数据库实例中以避免 I/O 争用。 此外，使用节点标签以将数据库实例置于不同节点上，以便在多个节点之间分配总体 I/O 流量。 如果使用虚拟化，则务必要考虑不只是在节点级别分配 I/O 流量，还要在给定物理主机上所有节点 VM 所产生的组合 I/O 活动级别进行分配。
 
 ## <a name="estimating-storage-requirements"></a>预估存储要求
-每个包含有状态数据的 Pod 在此版本中都使用两个永久性卷 - 一个永久性卷用于数据，另一个永久性卷用于日志。 下表列出了单个数据控制器、Azure SQL 托管实例、Azure Database for PostgreSQL 实例和 Azure PostgreSQL 超大规模实例所需的永久性卷数量：
+每个包含有状态数据的 Pod 都使用至少两个永久性卷：一个永久性卷用于数据，另一个永久性卷用于日志。 下表列出了单个数据控制器、Azure SQL 托管实例、Azure Database for PostgreSQL 实例和 Azure PostgreSQL 超大规模实例所需的永久性卷数量：
 
 |资源类型|有状态 Pod 数量|所需的永久性卷数量|
 |---|---|---|
@@ -230,7 +235,7 @@ Azure Arc 中用于数据服务的某些服务需要配置为使用远程共享�
 
 ### <a name="on-premises-and-edge-sites"></a>本地和边缘站点
 
-Microsoft 及其 OEM、OS 和 Kubernetes 合作伙伴正致力于为 Azure Arc 数据服务提供认证计划。 此计划将向客户提供与认证测试工具包的结果相似的测试结果。 这些测试将评估功能兼容性、压力测试结果以及性能和可伸缩性。 其中每个测试结果将指出已使用的 OS、已使用的 Kubernetes 分发、已使用的 HW、已使用的 CSI 附加产品以及已使用的存储类。 这将帮助客户选择最佳的存储类、OS、Kubernetes 分发和 HW 以满足其要求。 有关此计划和初始测试结果的详细信息将在快要公开发布 Azure Arc 数据服务时提供。
+Microsoft 及其 OEM、OS 和 Kubernetes 合作伙伴为 Azure Arc 数据服务提供认证计划。 此计划将向客户提供与认证测试工具包的结果相似的测试结果。 这些测试将评估功能兼容性、压力测试结果以及性能和可伸缩性。 其中每个测试结果将指出已使用的 OS、已使用的 Kubernetes 分发、已使用的 HW、已使用的 CSI 附加产品以及已使用的存储类。 这将帮助客户选择符合其要求的最佳存储类、OS、Kubernetes 分发软件和硬件。 点击[此处](validation-program.md)，了解有关此计划和测试结果的详细信息。
 
 #### <a name="public-cloud-managed-kubernetes-services"></a>公有云，托管 Kubernetes 服务
 
@@ -238,6 +243,6 @@ Microsoft 及其 OEM、OS 和 Kubernetes 合作伙伴正致力于为 Azure Arc �
 
 |公有云服务|建议|
 |---|---|
-|**Azure Kubernetes 服务 (AKS)**|Azure Kubernetes 服务 (AKS) 有两种类型的存储 - Azure 文件存储和 Azure 托管磁盘。 每种类型的存储有两个定价/性能层 - 标准 (HDD) 和高级 (SSD)。 因此，在 AKS 中提供四个存储类：`azurefile`（Azure 文件存储标准层）、`azurefile-premium`（Azure 文件存储高级层）、`default`（Azure 磁盘标准层）和 `managed-premium`（Azure 磁盘高级层）。 默认存储类是 `default`（Azure 磁盘标准层）。 类型和层之间存在重大的[定价差异](https://azure.microsoft.com/en-us/pricing/details/storage/)，决策时应考虑这些差异。 对于具有高性能要求的生产工作负荷，我们建议对所有存储类使用 `managed-premium`。 对于需要考虑成本的开发/测试工作负荷、概念证明等，`azurefile` 是成本最低的选项。 所有这四种选项都可用于需要远程共享存储的情况，因为它们都是 Azure 中网络附加存储设备。 详细了解 [AKS 存储](../../aks/concepts-storage.md)。|
+|**Azure Kubernetes 服务 (AKS)**|Azure Kubernetes 服务 (AKS) 有两种类型的存储 - Azure 文件存储和 Azure 托管磁盘。 每种类型的存储有两个定价/性能层 - 标准 (HDD) 和高级 (SSD)。 因此，在 AKS 中提供四个存储类：`azurefile`（Azure 文件存储标准层）、`azurefile-premium`（Azure 文件存储高级层）、`default`（Azure 磁盘标准层）和 `managed-premium`（Azure 磁盘高级层）。 默认存储类是 `default`（Azure 磁盘标准层）。 类型和层之间存在重大的[定价差异](https://azure.microsoft.com/pricing/details/storage/)，决策时应考虑这些差异。 对于具有高性能要求的生产工作负荷，我们建议对所有存储类使用 `managed-premium`。 对于需要考虑成本的开发/测试工作负荷、概念证明等，`azurefile` 是成本最低的选项。 所有这四种选项都可用于需要远程共享存储的情况，因为它们都是 Azure 中网络附加存储设备。 详细了解 [AKS 存储](../../aks/concepts-storage.md)。|
 |**AWS 弹性 Kubernetes 服务 (EKS)**| 亚马逊的 Elastic Kubernetes Service 有一个基于 [EBS CSI 存储驱动程序](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)的主存储类。 建议对于生产工作负荷使用该存储类。 可将新的存储驱动程序 - [EFS CSI 存储驱动程序](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html)添加到 EKS 群集，但它目前处于 beta 阶段，可能会有所更改。 尽管 AWS 指出此存储驱动程序支持用于生产，但我们不建议使用它，因为它仍处于 beta 阶段并且可能有所更改。 EBS 存储类为默认值，它称为 `gp2`。 详细了解 [EKS 存储](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html)。|
 |**Google Kubernetes 引擎 (GKE)**|Google Kubernetes Engine (GKE) 只包含一个名为 `standard` 的存储类，它用于 [GCE 永久性磁盘](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk)。 它是唯一的，也是默认的。 虽然为 GKE 提供了一个可用于直连式 SSD 的[本地静态卷配置程序](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner)，但我们不建议使用它，因为它不是由 Google 维护或提供支持的。 详细了解 [GKE 存储](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)。

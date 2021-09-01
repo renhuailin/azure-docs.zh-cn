@@ -3,16 +3,17 @@ title: 数据工厂的托管标识
 description: 了解 Azure 数据工厂的托管标识。
 author: nabhishek
 ms.service: data-factory
+ms.subservice: security
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 07/19/2021
 ms.author: abnarain
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d175bf7123cc8fdab336594c0ef05f13562a5622
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a350553659ea6028e3fb2079f790d14ae1653a86
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681047"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746566"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
 
@@ -24,16 +25,29 @@ ms.locfileid: "110681047"
 
 ## <a name="overview"></a>概述
 
-创建数据工厂时，可在创建工厂的同时创建托管标识。 托管标识是注册到 Azure Active Directory 的托管应用程序，表示此特定数据工厂。
+数据工厂中的托管标识使数据工程师无需管理凭据。 托管标识为数据工厂实例提供一个标识，可以在连接到支持 Azure Active Directory (Azure AD) 身份验证的资源时使用。 例如，数据工厂可以使用托管标识来访问 [Azure 密钥保管库](../key-vault/general/overview.md)等资源，开发人员可以采用安全的方式存储凭据或访问存储帐户。 数据工厂可以使用托管标识来获取 Azure AD 令牌。
 
-数据工厂的托管标识对以下功能有益：
+数据工厂支持两种类型的托管标识： 
+
+- 系统分配：数据工厂允许你直接在服务实例上启用托管标识。 如果在创建数据工厂期间允许系统分配的托管标识，则会在与该服务实例的生命周期相关联的 Azure AD 中创建标识。 按照设计，只有该 Azure 资源可以使用此标识从 Azure AD 请求令牌。 因此，资源被删除时，Azure 会自动删除标识。
+- 用户分配：你也可以将托管标识创建为独立的 Azure 资源。 你可以[创建用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，并将其分配给一个或多个数据工厂实例。 对于用户分配的托管标识，标识与使用它的资源分开管理。
+
+
+
+数据工厂的托管标识具有以下优势：
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)，在这种情况下，数据工厂托管标识用于 Azure Key Vault 身份验证。
 - 使用托管标识身份验证访问数据存储或计算，包括 Azure Blob 存储、Azure 数据资源管理器、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库、Azure SQL 托管实例、Azure Synapse Analytics、REST、Databricks 活动、Web 活动等。 有关详细信息，请查看连接器和活动文章。
+- 用户分配的托管标识还用于使用存储在 Azure 密钥保管库中的客户托管密钥对数据工厂元数据进行加密/解密，从而提供双重加密。 
 
-## <a name="generate-managed-identity"></a>生成托管标识
+## <a name="system-assigned-managed-identity"></a>系统分配的托管标识 
 
-数据工厂的托管标识是如下所述生成的：
+>[!NOTE]
+> 系统分配的托管标识在数据工厂文档和数据工厂 UI 中也称为“托管标识”，以实现向后兼容目的。 在引用时，我们会明确提及“用户分配的托管标识”。 
+
+#### <a name="generate-system-assigned-managed-identity"></a><a name="generate-managed-identity"></a> 生成系统分配的托管标识
+
+系统分配的数据工厂托管标识按如下方式生成：
 
 - 通过 **Azure 门户或 PowerShell** 创建数据工厂时，始终会自动创建托管标识。
 - 通过 **SDK** 创建数据工厂时，仅当在要创建的工厂对象中指定了“Identity = new FactoryIdentity()”时，才会创建托管标识。 请参阅 [.NET 快速入门 - 创建数据工厂](quickstart-create-data-factory-dot-net.md#create-a-data-factory)中的示例。
@@ -41,17 +55,18 @@ ms.locfileid: "110681047"
 
 如果发现数据工厂没有与以下[检索托管标识](#retrieve-managed-identity)说明相关的托管标识，可以使用标识发起程序以编程方式更新数据工厂，从而显式生成一个服务标识：
 
-- [使用 PowerShell 生成托管标识](#generate-managed-identity-using-powershell)
-- [使用 REST API 生成托管标识](#generate-managed-identity-using-rest-api)
-- [使用 Azure 资源管理器模板生成托管标识](#generate-managed-identity-using-an-azure-resource-manager-template)
-- [使用 SDK 生成托管标识](#generate-managed-identity-using-sdk)
+- [使用 PowerShell 生成托管标识](#generate-system-assigned-managed-identity-using-powershell)
+- [使用 REST API 生成托管标识](#generate-system-assigned-managed-identity-using-rest-api)
+- [使用 Azure 资源管理器模板生成托管标识](#generate-system-assigned-managed-identity-using-an-azure-resource-manager-template)
+- [使用 SDK 生成托管标识](#generate-system-assigned-managed-identity-using-sdk)
 
 >[!NOTE]
+>
 >- 无法修改托管标识。 更新已带有托管标识的数据工厂不会产生任何影响，托管标识将保持不变。
 >- 如果更新已带有托管标识的数据工厂，但未在工厂对象中指定 "identity" 参数，或者未在 REST 请求正文中指定 "identity" 节，将会收到错误。
 >- 删除某个数据工厂时，会一并删除关联的托管标识。
 
-### <a name="generate-managed-identity-using-powershell"></a>使用 PowerShell 生成托管标识
+##### <a name="generate-system-assigned-managed-identity-using-powershell"></a>使用 PowerShell 生成系统分配的托管标识
 
 调用 Set-AzDataFactoryV2 命令，然后你会看到正在生成新的“标识”字段：
 
@@ -67,7 +82,7 @@ Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentit
 ProvisioningState : Succeeded
 ```
 
-### <a name="generate-managed-identity-using-rest-api"></a>使用 REST API 生成托管标识
+##### <a name="generate-system-assigned-managed-identity-using-rest-api"></a>使用 REST API 生成系统分配的托管标识
 
 调用以下 API 并在请求正文中包含 "identity" 节：
 
@@ -111,7 +126,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板生成托管标识
+##### <a name="generate-system-assigned-managed-identity-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板生成系统分配的托管标识
 
 **模版**：添加 "identity": { "type": "SystemAssigned" }。
 
@@ -131,7 +146,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 }
 ```
 
-### <a name="generate-managed-identity-using-sdk"></a>使用 SDK 生成托管标识
+##### <a name="generate-system-assigned-managed-identity-using-sdk"></a>使用 SDK 生成系统分配的托管标识
 
 结合 Identity=new FactoryIdentity() 调用数据工厂 create_or_update 函数。 使用 .NET 的示例代码：
 
@@ -144,14 +159,14 @@ Factory dataFactory = new Factory
 client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 ```
 
-## <a name="retrieve-managed-identity"></a>检索托管标识
+#### <a name="retrieve-system-assigned-managed-identity"></a><a name="retrieve-managed-identity"></a> 检索系统分配的托管标识
 
 可以通过 Azure 门户或以编程方式检索托管标识。 以下部分演示了一些示例。
 
 >[!TIP]
 > 如果看不到托管标识，请通过更新工厂来[生成托管标识](#generate-managed-identity)。
 
-### <a name="retrieve-managed-identity-using-azure-portal"></a>使用 Azure 门户检索托管标识
+#### <a name="retrieve-system-assigned-managed-identity-using-azure-portal"></a>使用 Azure 门户检索系统分配的托管标识
 
 可以从 Azure 门户 -> 数据工厂 ->“属性”找到托管标识信息。
 
@@ -162,7 +177,7 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 
 授予权限时，在 Azure 资源的访问控制 (IAM) 选项卡 -> 添加角色分配 -> 将访问权限分配到 -> 在“系统分配的托管标识”下选择“数据工厂”-> 按工厂名称选择；或是一般而言，可以使用对象 ID 或数据工厂名称（作为托管标识名称）查找此标识。 如果需要获取托管标识的应用程序 ID，可以使用 PowerShell。
 
-### <a name="retrieve-managed-identity-using-powershell"></a>使用 PowerShell 检索托管标识
+#### <a name="retrieve-system-assigned-managed-identity-using-powershell"></a>使用 PowerShell 检索系统分配的托管标识
 
 获取特定的数据工厂时，会返回托管标识主体 ID 和租户 ID，如下所示。 使用 **PrincipalId** 授予访问权限：
 
@@ -186,7 +201,7 @@ Id                    : 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
 Type                  : ServicePrincipal
 ```
 
-### <a name="retrieve-managed-identity-using-rest-api"></a>使用 REST API 检索托管标识
+#### <a name="retrieve-managed-identity-using-rest-api"></a>使用 REST API 检索托管标识
 
 获取特定的数据工厂时，会返回托管标识主体 ID 和租户 ID，如下所示。
 
@@ -241,7 +256,36 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
+## <a name="user-assigned-managed-identity"></a>用户分配的托管标识
+
+可以在 Azure Active Directory 中创建、删除、管理用户分配的托管标识。 有关详细信息，请参阅[使用 Azure 门户创建、列出、删除用户分配的托管标识或为其分配角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 
+
+### <a name="credentials"></a>凭据
+
+我们会引入凭据，这些凭据可以包含用户分配的托管标识、服务主体，还列出系统分配的托管标识，你可以在支持 Azure Active Directory (AAD) 身份验证的链接服务中使用该标识。 它可帮助你合并和管理所有基于 AAD 的凭据。  
+
+下面是在链接服务中使用用户分配的托管标识进行身份验证的一般步骤。 
+
+1. 使用 Azure 门户、SDK、PowerShell、REST API 将用户分配的托管标识关联到数据工厂实例。 
+   下面的屏幕截图使用 Azure 门户（数据工厂边栏选项卡）关联用户分配的托管标识。 
+
+   :::image type="content" source="media/managed-identities/uami-azure-portal.jpg" alt-text="显示如何使用 Azure 门户关联用户分配的托管标识的屏幕截图。" lightbox="media/managed-identities/uami-azure-portal.jpg":::
+
+2. 以交互方式在数据工厂用户界面中创建“凭据”。 你可以在步骤 1 中选择与数据工厂关联的用户分配的托管标识。 
+
+   :::image type="content" source="media/managed-identities/credential-adf-ui-create-new-1.png" alt-text="显示创建新凭据的第一步的屏幕截图。" lightbox="media/managed-identities/credential-adf-ui-create-new-1.png":::
+
+   :::image type="content" source="media/managed-identities/credential-adf-ui-create-new-2a.png" alt-text="显示创建新凭据的第二步的屏幕截图。" lightbox="media/managed-identities/credential-adf-ui-create-new-2a.png":::
+
+3. 创建新的链接服务，并选择“身份验证”下的“用户分配的托管标识”
+
+   :::image type="content" source="media/managed-identities/credential-adf-ui-create-new-linked-service.png" alt-text="显示具有用户分配的托管标识身份验证的新链接服务的屏幕截图。" lightbox="media/managed-identities/credential-adf-ui-create-new-linked-service.png":::
+
+> [!NOTE] 
+> 你可以使用 SDK/PowerShell/REST API 来执行上述操作。
+
 ## <a name="next-steps"></a>后续步骤
+
 请参阅以下主题，其中介绍了何时以及如何使用数据工厂托管标识：
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)

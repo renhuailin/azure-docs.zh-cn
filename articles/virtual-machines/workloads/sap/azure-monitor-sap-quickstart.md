@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.subservice: baremetal-sap
 ms.date: 07/08/2021
-ms.openlocfilehash: 33965b51895e38df67ac3a542e8b40d71cbc2912
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3acbef6c8521022ae847925e48d3cd42e13dc56e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737395"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965393"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-by-using-the-azure-portal"></a>使用 Azure 门户部署 Azure Monitor for SAP Solutions
 
@@ -219,4 +219,4 @@ SDEFAULT -GetQueueStatistic -ABAPGetWPTable -EnqGetStatistic -GetProcessList
 详细了解 Azure Monitor for SAP Solutions。
 
 > [!div class="nextstepaction"]
-> [Azure Monitor for SAP Solutions](azure-monitor-overview.md)
+> [监视 Azure 上的 SAP](monitor-sap-on-azure.md)

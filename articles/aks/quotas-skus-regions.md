@@ -5,12 +5,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的默认配额、受限制
 services: container-service
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: 3e1e74834153584525d2093d2a1bb8ba8e991e5a
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: ea32c0e58894fe57a51cd22fccce8b2fb2fb0489
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011458"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762299"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和适用地区
 
@@ -38,16 +38,34 @@ AKS 群集中的每个节点都包含固定数量的计算资源，例如 vCPU �
 - Standard_A0
 - Standard_A1
 - Standard_A1_v2
+- Standard_B1ls
 - Standard_B1s
 - Standard_B1ms
 - Standard_F1
 - Standard_F1s
+- Standard_A2
+- Standard_D1
+- Standard_D1_v2
+- Standard_DS1
+- Standard_DS1_v2
 
 有关 VM 类型及其计算资源的详细信息，请参阅 [Azure 中的虚拟机的大小][vm-skus]。
 
 ## <a name="region-availability"></a>上市区域
 
 有关可以在其中部署和运行群集的地点的最新列表，请参阅 [AKS 适用地区][region-availability]。
+
+## <a name="cluster-configuration-presets-in-the-azure-portal"></a>Azure 门户中的群集配置预设
+
+使用 Azure 门户创建群集时，你可以选择预设配置，以便根据方案快速自定义。 你随时都可以修改任何预设值。
+
+| 预设           | 说明                                                            |
+|------------------|------------------------------------------------------------------------|
+| Standard         | 如果不确定要选择什么，这是最佳选择。 适用于大多数应用程序。 |
+| 开发/测试         | 最适合试验 AKS 或部署测试应用程序。 |
+| 成本优化   | 最适合降低可容忍中断的生产工作负载的成本。 |
+| 批处理 | 最适合机器学习、计算密集型和图形密集型工作负载。 适用于需要快速纵向扩展和横向扩展群集的应用程序。 |
+| 强化访问  | 最适合需要完全控制安全性和稳定性的大型企业。 |
 
 ## <a name="next-steps"></a>后续步骤
 

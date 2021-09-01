@@ -6,12 +6,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 05/21/2021
 ms.author: chrande
-ms.openlocfilehash: 8c66657832000d1d0f9e1e9d842f16ce149e314a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 7b9e7463811d4bd5cd092828759487557bab50b0
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955979"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122177933"
 ---
 # <a name="required-outbound-network-rules"></a>必需出站网络规则
 
@@ -22,13 +22,30 @@ ms.locfileid: "111955979"
 
 Azure Managed Instance for Apache Cassandra 服务需要某些网络规则才能正确管理服务。 通过确保公开适当的规则，可以保持服务的安全性并防止出现操作问题。
 
+## <a name="virtual-network-service-tags"></a>虚拟网络服务标记
+
+如果使用 Azure 防火墙限制出站访问，我们强烈建议使用[虚拟网络服务标记](../virtual-network/service-tags-overview.md)。 下面是使 Apache Cassandra 的 Azure Managed Instance 正常运行所需的标记。
+
+| 目标服务标记                                                             | 协议 | 端口    | 用途  |
+|----------------------------------------------------------------------------------|----------|---------|------|
+| 存储 | HTTPS | 443 | 对于在控制平面通信和配置的节点与 Azure 存储之间进行安全通信是必需的。|
+| AzureKeyVault | HTTPS | 443 | 对于在节点和 Azure Key Vault 之间进行安全通信是必需的。 证书和密钥用于保护群集内部的通信安全。|
+| EventHub | HTTPS | 443 | 对于将日志转发到 Azure 是必需的 |
+| AzureMonitor | HTTPS | 443 | 对于向 Azure 转发指标是必需的 |
+| AzureActiveDirectory| HTTPS | 443 | 对于 Azure Active Directory 身份验证是必需的。|
+| GuestandHybridManagement | HTTPS | 443 |  对于收集有关 Cassandra 节点（例如，reboot）的信息并管理这些节点是必需的 |
+| ApiManagement  | HTTPS | 443 | 对于收集有关 Cassandra 节点（例如，reboot）的信息并管理这些节点是必需的 |
+| `Storage.<Region>`  | HTTPS | 443 | 对于在控制平面通信和配置的节点与 Azure 存储之间进行安全通信是必需的。 对于已部署数据中心的每个区域，你都需要一个条目。 |
+
+
 ## <a name="azure-global-required-network-rules"></a>Azure 全球的必需网络规则
 
-必需的网络规则和 IP 地址依赖项如下：
+如果不使用 Azure 防火墙，则所需的网络规则和 IP 地址依赖关系如下：
 
 | 目标终结点                                                             | 协议 | 端口    | 用途  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 |snovap`<region>`.blob.core.windows.net:443</br> 或</br> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  Azure 存储 | HTTPS | 443 | 对于在控制平面通信和配置的节点与 Azure 存储之间进行安全通信是必需的。|
+|*.store.core.windows.net:443</br> 或</br> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  Azure 存储 | HTTPS | 443 | 对于在控制平面通信和配置的节点与 Azure 存储之间进行安全通信是必需的。|
 |*.blob.core.windows.net:443</br> 或</br> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) -  Azure 存储 | HTTPS | 443 | 对于在节点与 Azure 存储之间进行安全通信以存储备份是必需的。 正在修订备份功能，并且存储名称将遵循正式发布的模式|
 |vmc-p-`<region>`.vault.azure.net:443</br> 或</br> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - Azure KeyVault | HTTPS | 443 | 对于在节点和 Azure Key Vault 之间进行安全通信是必需的。 证书和密钥用于保护群集内部的通信安全。|
 |management.azure.com:443</br> 或</br> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - Azure 虚拟机规模集/Azure 管理 API | HTTPS | 443 | 对于收集有关 Cassandra 节点（例如，reboot）的信息并管理这些节点是必需的|
@@ -48,6 +65,8 @@ Azure Managed Instance for Apache Cassandra 服务需要某些网络规则才能
 | 7001 | Gossip - 供 Cassandra 节点用于相互通信 |
 | 9042 | Cassandra -供客户端用于连接到 Cassandra |
 | 7199 | 内部 |
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

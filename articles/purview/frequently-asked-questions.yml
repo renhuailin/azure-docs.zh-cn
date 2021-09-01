@@ -1,0 +1,131 @@
+### YamlMime:FAQ
+metadata:
+  title: 常见问题 (FAQ)
+  description: 本文解答了有关 Azure Purview 的常见问题。
+  author: SunetraVirdi
+  ms.author: suvirdi
+  ms.service: purview
+  ms.subservice: purview-data-catalog
+  ms.topic: conceptual
+  ms.date: 05/08/2021
+  ms.openlocfilehash: 14a269e84f3b1241cda85c1849a9478ab8701071
+  ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/16/2021
+  ms.locfileid: "122228697"
+title: 有关 Azure Purview 的常见问题 (FAQ)
+summary: ''
+sections:
+- name: 忽略
+  questions:
+  - question: >
+      概述
+    answer: >
+      许多组织对其数据缺乏全面的了解。 了解存在什么数据、数据位于何处以及如何查找和访问相关数据是一个难题。 如果数据缺少上下文（例如世系、分类和全面的元数据），则业务用户很难搜索正确的数据和恰当地使用这些数据。 因此，收集的数据只有一小部分被用来为业务决策提供信息。 最后要指出的是，查明数据安全问题和保护敏感数据是矛盾的。 这需要持续付出时间和精力，尤其是在需要保持数据敏捷性的情况下。
+
+
+      Azure Purview 是一个数据治理解决方案。 它可帮助客户深入了解其所有数据，同时保持对数据使用情况的控制。 使用 Azure Purview，组织可以发现和策展数据。 组织可以深入了解自己的数据资产，并集中管控对数据的访问。
+  - question: >
+      本 FAQ 的用途
+    answer: >
+      本 FAQ 解答了客户和一线团队经常询问的常见问题。 它旨在阐明有关 Azure Purview 和相关解决方案的问题，例如 Azure 数据目录 (ADC) 第 2 代（已弃用）和 Azure 信息保护的问题。
+  - question: >
+      可用于元数据扫描和分类的源类型有哪些？
+    answer: >
+      |Azure|非 Azure|
+
+      |---------|---------|
+
+      |Azure Blob 存储|Power BI|
+
+      |Azure Synapse Analytics (SQL DW)|SQL Server |
+
+      |Azure Cosmos DB|Teradata（2020 年底前推出）|
+
+      |Azure SQL 托管实例|SAP ECC（2020 年底前推出）|
+
+      |Azure 数据资源管理器|SAP S/4 HANA（2020 年底前推出）|
+
+      |Azure Data Lake Storage Gen1|Hive 元存储（2020 年底前推出）|
+
+      |Azure Data Lake Storage Gen2|Amazon S3|
+
+      |Azure 文件|--|
+
+      |Azure SQL 数据库|--|
+  - question: >
+      我们可以连接什么数据系统/处理器并获取其世系？
+    answer: "|数据系统/处理器 \n|---------\n|Azure 数据工厂：复制活动、数据流活动 \n|自定义世系   \n|Azure Data Share   \n|Power BI    |\n|SQL Server Integration Services  \n"
+  - question: >
+      ADC 第 2 代、Azure 信息保护和 Azure Purview 之间有何关系？
+    answer: >
+      Azure Purview 最初是作为 ADC 第 2 代开始的，但后来扩展了范围。 它现在包含 ADC 第 2 代的高级目录功能，以及 Azure 信息保护的数据分类、标记和合规性策略实施功能。 目前，它更贴合更宽泛的数据治理行业定义。
+  - question: >
+      使用 ADC 第 1 代的客户会发生什么情况？
+    answer: >
+      Azure Purview 是 Microsoft 的目录解决方案空间中所有产品创新的重点。 ADC 第 1 代会继续受支持。
+  - question: >
+      客户是否可以在同一订阅中拥有多个 Azure Purview 帐户？
+    answer: >
+      是的，我们支持每个订阅和每个租户中存在许多 Azure Purview 帐户的情况。
+  - question: >
+      是否能够并行运行 ADC 第 1 代和 Azure Purview？
+    answer: >
+      是的。 两者都是独立的服务。
+  - question: >
+      如何将现有的 ADC 第 1 代数据资产迁移到 Azure Purview？
+    answer: >
+      可使用 Azure Purview API 从 ADC 第 1 代中提取数据并将其引入到 Azure Purview 中。 对于术语表，我们支持基于 CSV 的批量工具。
+  - question: >
+      如何使用 Azure Purview 对 SQL 表的敏感数据进行加密？
+    answer: >
+      数据加密是在数据源级别进行的。 Azure Purview 仅存储元数据。 它不会预览数据。
+  - question: >
+      是否 ADC 第 2 代的所有功能都将存在于 Azure Purview 中？
+    answer: >
+      是的。
+  - question: >
+      术语表和分类有何区别？
+    answer: >
+      术语表使用数据的非技术/业务用户（也称数据使用者）遵循的命名约定。 这些类型的人员是业务分析师或数据科学家，他们根据业务使用情况使用 Azure Purview 搜索特定类型的数据。 例如，供应链分析师可能需要搜索字词“SKU 类型”和“发货详细信息”。 他们在术语表中搜索这些字词来查找相关数据。
+
+      分类是在表、列或文件级别应用于数据资产的标记，用于标识资产中存在的数据。 可以根据找到的数据类型自动或手动应用分类。 通常，你使用分类标记来标识资产是否包含敏感数据，以及可能是哪种类型的敏感数据。
+  - question: >
+      Azure Purview 是否对我的 SharePoint 和 OneDrive 中的电子邮件和 PDF 等内容进行扫描和分类？
+    answer: >
+      对本地 SharePoint 站点和库进行扫描这一功能是通过 Azure 信息保护扫描程序提供的。 可以在客户的 Microsoft 365 订阅中通过以下 SKU 使用此扫描程序：AIP P1、EMS E3 和 M365 E3。 如果你有这些 SKU 中的任何一个，你应该有权开始使用 Azure 信息保护扫描程序。
+  - question: >
+      什么是用于扫描的计算？
+    answer: >
+      有一个 Microsoft 管理的扫描基础结构。 对于我们支持的大多数 Azure/AWS 资源，你不需要部署扫描基础结构。
+  - question: >
+      是否有方法通过 Azure 资源管理器 (ARM) 模板/CLI/ PowerShell 来预配 Azure Purview？
+    answer: >
+      是的，可以使用 ARM 模板
+  - question: >
+      我已经在使用 Atlas，是否可以轻松迁移到 Azure Purview？
+    answer: >
+      Azure Purview 与 Atlas API 兼容。 如果要从 Atlas 进行迁移，建议首先使用 Azure Purview 扫描你的数据源。 当资产在你的帐户中可用后，你可以使用类似的 Atlas API 进行集成，例如更新资产或添加自定义世系。 Azure Purview 将“搜索 API”修改为使用“Azure 搜索”，因此你应当能够使用“高级搜索”。
+  - question: >
+      是否可以在我的租户中创建多个目录？
+    answer: >
+      是的，你可以按订阅和按租户创建多个 Azure Purview 帐户。 你可以查看限制页面：[管理和增加 Azure Purview 资源的配额](how-to-manage-quotas.md)。
+
+
+      我们的 [Azure Purview 部署最佳做法](deployment-best-practices.md)中记录了有关何时应当或何时不应当拥有多个帐户的其他建议。
+  - question: >
+      是否可以在单个 Azure Purview 帐户中注册多个租户？
+    answer: >
+      否。当前，若要扫描另一个租户的数据源，你需要在该租户中创建一个单独的 Azure Purview 帐户。
+  - question: >
+      Azure Purview 是否支持列级世系？
+    answer: >
+      是，Azure Purview 支持列级世系。
+  - question: >
+      Azure Purview 是否支持软删除？
+    answer: >
+      是的，从 Azure 订阅状态管理角度来看，Azure Purview 支持软删除。 Purview 可以读取订阅状态（已禁用/已警告等）并将帐户置于软删除状态，直到帐户被还原/删除。 当帐户进入软删除状态时，系统会阻止所有数据平面 API 调用，仅允许 GET/DELETE 控制平面 API 调用。 你可以在 Azure 订阅状态页“[Azure 订阅状态](../cost-management-billing/manage/subscription-states.md)”中查找其他信息
+  - question: >
+      Azure Purview 目前是否支持数据丢失防护功能？
+    answer: "否，Azure Purview 目前不提供数据丢失防护功能。 \n\n如果你对 Microsoft 365 中的数据丢失防护功能感兴趣，请参阅 [Microsoft 信息保护中的数据丢失防护](/microsoft-365/compliance/information-protection#prevent-data-loss)。"

@@ -1,14 +1,14 @@
 ---
 title: 计划定义结构的详细信息
 description: 描述如何使用策略计划定义对策略定义进行分组，以便部署到组织中的 Azure 资源。
-ms.date: 03/16/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7efe34c76df46bb4499def5b92521eedecaee22d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9ef2d5a77d9ae957a81517b635d923cd80519b76
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744940"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324834"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Policy 计划定义结构
 
@@ -223,7 +223,7 @@ strongType 的非资源类型允许值有：
 - `parameters`：（可选）用于将计划参数作为该策略定义中的属性传递到包含的策略定义的名称/值对。 有关详细信息，请参阅[参数](#parameters)。
 - `groupNames`（字符串数组）：（可选）策略定义所属的组。 有关详细信息，请参阅[策略组](#policy-definition-groups)。
 
-下面是 `policyDefinitions` 的一个示例，，它有两个包含的策略定义，会向这两个策略定义分别传递相同的计划参数：
+下面是 `policyDefinitions` 的一个示例，它有两个包含的策略定义，会向这两个策略定义分别传递相同的计划参数：
 
 ```json
 "policyDefinitions": [
@@ -250,7 +250,7 @@ strongType 的非资源类型允许值有：
 
 ## <a name="policy-definition-groups"></a>策略定义组
 
-可对计划定义中的策略定义进行分组和分类。 Azure Policy 的[法规符合性](./regulatory-compliance.md)（预览版）功能使用此属性将定义分组到“控件”和“符合性域”中。 此信息在 `policyDefinitionGroups`“数组”属性中定义。 可以在 Microsoft 创建的“policyMetadata”对象中找到其他分组详细信息。 有关信息，请参阅[元数据对象](#metadata-objects)。
+可对计划定义中的策略定义进行分组和分类。 Azure Policy 的[法规符合性](./regulatory-compliance.md)（预览版）功能使用此属性将定义分组到“控件”和“符合性域”中。 此信息在 `policyDefinitionGroups`“数组”属性中定义。 可以在 Microsoft 创建的“policyMetadata”对象中找到更多分组详细信息。 有关信息，请参阅[元数据对象](#metadata-objects)。
 
 ### <a name="policy-definition-groups-parameters"></a>策略定义组参数
 

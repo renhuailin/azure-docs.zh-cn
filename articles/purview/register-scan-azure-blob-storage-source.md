@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: a691c242cbe91ea4a3e76bd0b1a93f11a6dd7c8b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 7b295fd67052d91c229977571056b3ea95d56773
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750516"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122177852"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>注册和扫描 Azure Blob 存储
 
@@ -21,6 +21,12 @@ ms.locfileid: "111750516"
 ## <a name="supported-capabilities"></a>支持的功能
 
 Azure Blob 存储支持通过完整扫描和增量扫描来捕获元数据和架构。 它还可以根据系统和自定义的分类规则对数据进行自动分类。
+
+对于 csv、tsv、psv、ssv 等文件类型，当满足以下逻辑时，系统将提取架构：
+
+1. 第一行值非空
+2. 第一行值是唯一的
+3. 第一行值既不是日期也不是数字
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +51,7 @@ Azure Blob 存储支持通过完整扫描和增量扫描来捕获元数据和架
 1. 将“角色”设置为“存储 Blob 数据读取者”，然后在“选择”输入框下输入 Azure Purview 帐户名。 然后，选择“保存”，将此角色分配给 Purview 帐户。
 
 > [!Note]
-> 有关更多详情，请参阅[使用 Azure Active Directory 授予对 Blob 和队列的访问权限](../storage/common/storage-auth-aad.md)中的步骤
+> 有关更多详情，请参阅[使用 Azure Active Directory 授予对 Blob 和队列的访问权限](../storage/blobs/authorize-access-azure-active-directory.md)中的步骤
 
 ### <a name="account-key"></a>帐户密钥
 
@@ -144,7 +150,7 @@ Azure Blob 存储支持通过完整扫描和增量扫描来捕获元数据和架
 
    :::image type="content" source="media/register-scan-azure-blob-storage-source/blob-scope-your-scan.png" alt-text="限定扫描范围":::
 
-1. 选择扫描规则集。 可以选择系统默认项、现有的自定义规则集，或以内联方式创建新规则集。
+1. 然后选择扫描规则集。 可以在系统默认项和现有的自定义规则集之间选择，或者可以以内联方式创建新规则集。
 
    :::image type="content" source="media/register-scan-azure-blob-storage-source/blob-scan-rule-set.png" alt-text="扫描规则集":::
 

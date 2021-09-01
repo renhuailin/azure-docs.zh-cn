@@ -7,12 +7,12 @@ metadata:
   ms.topic: article
   ms.date: 07/08/2020
   ms.author: radeltch
-  ms.openlocfilehash: ac0646f0fca867402477acac9bca62753f275fdd
-  ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+  ms.openlocfilehash: 903d2e2b2413f4ad92a6f0fb88871f4410e464b4
+  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/16/2021
-  ms.locfileid: "114393485"
+  ms.lasthandoff: 08/26/2021
+  ms.locfileid: "122967142"
 title: Azure Monitor for SAP Solutions 常见问题解答（预览版）
 summary: "## <a name=\"frequently-asked-questions\"></a>常见问题解答\n\n本文提供有关 Azure Monitor for SAP Solutions 的常见问题解答 (FAQ)。  \n"
 sections:
@@ -82,4 +82,4 @@ sections:
   - question: >
       执行系统配置以设置 SAP NetWeaver 提供程序后，是否需要重启 SAP 实例？
     answer: "是的，通过 SAP 配置更改而出现未受保护的方法后，将需要重启相应的 SAP 系统以确保更新配置更改。  \n"
-additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n详细了解 Azure Monitor for SAP Solutions。\n\n> [!div class=\"nextstepaction\"]\n> [Azure Monitor for SAP Solutions](azure-monitor-overview.md)"
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n详细了解 Azure Monitor for SAP Solutions。\n\n> [!div class=\"nextstepaction\"]\n> [监视 Azure 上的 SAP](monitor-sap-on-azure.md)"

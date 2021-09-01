@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 10/02/2020
+ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 9388a6e01885e4a3a0c5aa95c254910c96a4e36a
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 8d9910755162ea1da593f2e9ee50183c0a3eaa60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902350"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745293"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>设置模型训练和部署的计算目标
 
@@ -29,13 +29,12 @@ ms.locfileid: "111902350"
 * Apache Spark 池（由 Azure Synapse Analytics 提供支持）
 * Azure HDInsight
 * Azure Batch
-* Azure Databricks
+* Azure Databricks - 仅在[机器学习管道](how-to-create-machine-learning-pipelines.md)中用作训练计算目标
 * Azure Data Lake Analytics
 * Azure 容器实例
-
+* Azure Kubernetes 服务和启用了 Azure Arc 的 Kubernetes（预览版）
 
 若要使用 Azure 机器学习管理的计算目标，请参阅：
-
 
 * [Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)
 * [Azure 机器学习计算群集](how-to-create-attach-compute-cluster.md)
@@ -346,9 +345,23 @@ except ComputeTargetException:
 
 Azure 容器实例 (ACI) 是在部署模型时动态创建的。 不能以任何其他方式创建 ACI 和将其附加到工作区。 有关详细信息，请参阅[将模型部署到 Azure 容器实例](how-to-deploy-azure-container-instance.md)。
 
-## <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
+## <a name="kubernetes-preview"></a><a id="kubernetes"></a>Kubernetes（预览版）
 
-与 Azure 机器学习一起使用时，Azure Kubernetes 服务 (AKS) 支持多种配置选项。 有关详细信息，请参阅[如何创建和附加 Azure Kubernetes 服务](how-to-create-attach-kubernetes.md)。
+Azure 机器学习提供了以下选项，用于为训练附加你自己的 Kubernetes 群集：
+
+* [Azure Kubernetes 服务](../aks/intro-kubernetes.md)。 Azure Kubernetes 服务提供在 Azure 中受托管的群集。
+* [Azure Arc Kubernetes](../azure-arc/kubernetes/overview.md)。 如果群集托管在 Azure 外部，请使用已启用 Azure Arc 的 Kubernetes 群集。
+
+[!INCLUDE [arc-enabled-machine-learning-create-training-compute](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
+
+若要从工作区拆离 Kubernetes 群集，请使用以下方法：
+
+```python
+compute_target.detach()
+```
+
+> [!WARNING]
+> 拆离群集不会删除群集。 若要删除 Azure Kubernetes 服务群集，请参阅[将 Azure CLI 与 AKS 配合使用](../aks/kubernetes-walkthrough.md#delete-the-cluster)。 若要删除已启用 Azure Arc 的 Kubernetes 群集，请参阅 [Azure Arc 快速入门](../azure-arc/kubernetes/quickstart-connect-cluster.md#7-clean-up-resources)。
 
 ## <a name="notebook-examples"></a>Notebook 示例
 

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 04/27/2021
+ms.date: 08/26/2021
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: b396da87089351859cb5f0c38d72e39da5d7f7d3
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 25ec41f3c3d191c0ff13eb4301396b78100b3ef7
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108077621"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123028467"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-and-policy-in-a-hybrid-network-using-the-azure-portal"></a>教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙和策略
 
@@ -52,7 +52,7 @@ ms.locfileid: "108077621"
 
    此外，通往网关连接的虚拟网络或本地网络的路由会通过网关传输自动传播到对等互连的虚拟网络的路由表。 有关详细信息，请参阅[针对虚拟网络对等互连配置 VPN 网关传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md)。
 
-- 将 VNet-Spoke 对等互连到 VNet-Hub 时，应设置“使用远程虚拟网络的网关或路由服务器”。 如果设置了“使用远程虚拟网络的网关或路由服务器”，同时在远程对等端上设置了“使用此虚拟网络的网关或路由服务器”，则辐射虚拟网络将使用远程虚拟网络的网关进行传输。
+- 将 VNet-Spoke 对等互连到 VNet-Hub 时，应设置“使用远程虚拟网络的网关或路由服务器”。 如果设置了“使用远程虚拟网络的网关或路由服务器”，同时在远程对等端上设置了“使用此虚拟网络的网关或路由服务器”，则辐射虚拟网络将使用远程虚拟网络的网关进行传输 。
 - 若要通过中心防火墙路由分支子网流量，则可使用一个用户定义的路由 (UDR) 指向禁用了“虚拟网关路由传播”选项的防火墙。 禁用了“虚拟网关路由传播”选项可防止将路由分配到分支子网。 这可以防止获知的路由与你的 UDR 冲突。 如果要保持“虚拟网关路由传播”处于启用状态，请确保定义到防火墙的特定路由，以替代通过 BGP 从本地发布的路由。
 - 请在中心网关子网上配置一个指向防火墙 IP 地址的 UDR，将其作为通向辐射网络的下一跃点。 无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
 
@@ -78,7 +78,7 @@ ms.locfileid: "108077621"
 1. 对于“资源组名称”，请键入 **FW-Hybrid-Test**。
 2. 对于“区域”，请选择“(US)美国东部”。 以后创建的所有资源必须位于同一位置。
 3. 选择“查看 + 创建”  。
-4. 选择“创建”  。
+4. 选择“创建”。
 
 现在创建 VNet：
 
@@ -194,7 +194,7 @@ ms.locfileid: "108077621"
 2. 对于“协议”，请选择“TCP”。 
 1. 对于“目标端口”，请键入 **3389**。
 1. 对于“目标类型”，请选择“IP 地址” 。
-1. 为“目标”键入 10.6.0.0/16 
+1. 对于“目标”，键入 10.6.0.0/16 
 1. 选择 **添加** 。
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>创建并连接 VPN 网关
@@ -316,7 +316,7 @@ ms.locfileid: "108077621"
 8. 对于“区域”，请选择以前使用的同一位置。 
 1. 对于“名称”，请键入 **UDR-Hub-Spoke**。
 9. 选择“查看 + 创建”  。
-10. 选择“创建”  。
+10. 选择“创建”。
 11. 创建路由表后，请选择它以打开路由表页。
 12. 在左栏中选择“路由”。
 13. 选择 **添加** 。
@@ -345,7 +345,7 @@ ms.locfileid: "108077621"
 1. 键入 **UDR-DG** 作为名称。
 4. 对于“传播网关路由”，请选择“否” 。
 5. 选择“查看 + 创建”  。
-6. 选择“创建”  。
+6. 选择“创建”。
 7. 创建路由表后，请选择它以打开路由表页。
 8. 在左栏中选择“路由”。
 9. 选择 **添加** 。
@@ -465,7 +465,5 @@ ms.locfileid: "108077621"
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，可以监视 Azure 防火墙日志。
-
 > [!div class="nextstepaction"]
-> [教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)
+> [部署和配置 Azure 防火墙高级版](premium-deploy.md)

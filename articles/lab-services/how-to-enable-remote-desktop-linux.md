@@ -3,12 +3,12 @@ title: 在 Azure 实验室服务中启用适用于 Linux 的图形远程桌面 |
 description: 了解如何在 Azure 实验室服务的实验室中启用适用于 Linux 虚拟机的远程桌面。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 34c940fec388bb0e79ab5e1db9be6d52fb223873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 604cde661fb566851d3eacdb42dd41f4effded7a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94647947"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737681"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>在 Azure 实验室服务中启用适用于 Linux 虚拟机的图形远程桌面
 本文演示如何完成以下任务：
@@ -25,12 +25,15 @@ ms.locfileid: "94647947"
 若要使用 RDP，讲师必须：
   - 启用远程桌面连接；这是打开用于 RDP 的 VM 端口所特别需要的。
   - 安装 RDP 远程桌面服务器。
-  - 安装 Linux 图形桌面环境（例如 MATE、XFCE 等）。
+  - 安装 Linux 图形桌面环境（例如 XFCE、MATE 等）。
+
+> [!WARNING]
+>  建议使用不同于 [GNOME](https://www.gnome.org/) 的图形桌面环境。  应避免在实验室虚拟机上安装 GNOME，因为 GNOME 与 Azure Linux 代理冲突，后者为虚拟机在 Azure 实验室服务中正常运行所必需。  如上所述，建议使用图形桌面环境，例如 XFCE 或 MATE。
 
 ### <a name="x2go-setup"></a>X2Go 设置
 若要使用 X2Go，讲师必须：
 - 安装 X2Go 远程桌面服务器。
-- 安装 Linux 图形桌面环境（例如 MATE、XFCE 等）。
+- 安装 Linux 图形桌面环境（例如 XFCE、MATE 等）。
 
 X2Go 使用已为 SSH 启用的相同端口。  因此，无需进行额外配置即可在 VM 上为 X2Go 打开端口。
 

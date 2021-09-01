@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 08/10/2021
-ms.openlocfilehash: 4708cdc0a7937749e0df9a65267067f5dc31198d
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.date: 08/25/2021
+ms.openlocfilehash: 38f150a99b2145968569e986ea158b1aa552593a
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201693"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968597"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview 数据目录世系用户指南
 
@@ -31,7 +31,7 @@ Azure Purview 的其中一个平台功能是能够显示数据进程创建的数
 | 数据处理系统 | 支持的范围 |
 | ---------------------- | ------------|
 | Azure 数据工厂 | [Copy 活动](how-to-link-azure-data-factory.md#copy-activity-support) <br> [数据流活动](how-to-link-azure-data-factory.md#data-flow-support) <br> [执行 SSIS 包活动](how-to-link-azure-data-factory.md#execute-ssis-package-support) |
-| Azure Synapse Analytics | [Copy 活动](how-to-lineage-azure-synapse-analytics.md#copy-activity-support) |
+| Azure Synapse Analytics | [Copy 活动](how-to-lineage-azure-synapse-analytics.md#copy-activity-support) <br> [数据流活动](how-to-lineage-azure-synapse-analytics.md#data-flow-support) |
 | Azure Data Share | [共享快照](how-to-link-azure-data-share.md) |
  
 ### <a name="data-storage-systems"></a>数据存储系统

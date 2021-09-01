@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 07/14/2021
 ms.author: duau
-ms.openlocfilehash: 2bc056620ff964747dfd83e7525cb5bfd2eb8e52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c692c814bf3ae71b34f1c31c8ab29a4cda968f1f
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449148"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203806"
 ---
 # <a name="front-door-routing-methods"></a>Front Door 路由方法
 
@@ -26,7 +26,7 @@ Front Door 中提供四种流量路由方法：
 
 * **[延迟](#latency)：** 基于延迟的路由确保将请求发送到在敏感度范围内可接受的最低延迟的后端。 简单而言，将在考虑到网络延迟的情况下，将用户请求发送到“最靠近的”后端集。
 * [优先级](#priority)：如果想要配置主后端来处理所有流量，可为后端分配优先级。 辅助后端可以作为备份，以防主后端变得不可用。
-* [权重](#weighted)：想要在一组后端中分布流量时，可为后端分配权重。 可以平均分配，也可以根据权重系数分配。
+* [权重](#weighted)：如果希望在一组后端中均匀分配流量或根据权重系数分配流量，则可向后端分配权重。 如果后端的延迟在后端池中可接受的延迟敏感度范围内，则流量按权重分布。
 * [会话亲和性](#affinity)：可为前端主机或域配置会话亲和性，以确保来自同一最终用户的请求发送到同一后端。
 
 所有 Front Door 配置包括后端运行状况的监视，以及自动化的即时全局故障转移。 有关详细信息，请参阅 [Front Door 后端监视](front-door-health-probes.md)。 Front Door 可以基于单一的路由方法运行。 但根据应用程序的需要，你还可结合多种路由方法来构建最佳路由拓扑。
@@ -44,7 +44,7 @@ Front Door 中提供四种流量路由方法：
 | 首先，选择已启用的且运行状况探测对其返回了正常状态 (200 OK) 的所有后端。 如果有 6 个后端 A、B、C、D、E 和 F，其中 C 的状态不正常，E 已禁用。 那么，可用后端的列表是 A、B、D 和 F。  | 接下来，在可用后端中选择优先级最高的后端。 如果后端 A、B 和 D 的优先级为 1，后端 F 的优先级为 2。 那么，选择的后端将是 A、B 和 D。| 选择在延迟范围内的后端（最小延迟，根据以毫秒为单位指定的延迟敏感度确定）。 如果后端 A、B 和 D 与请求抵达的 Front Door 环境之间的通信延迟分别是 15 毫秒、30 毫秒和 60 毫秒，延迟敏感度为 30 毫秒，那么，最低延迟池由后端 A 和 B 构成，因为 D 与最靠近的后端（即 A）之间的延迟差超过了 30 毫秒。 | 最后，Front Door 将会根据指定的权重比，在最终选择的后端池之间轮循流量。 假设后端 A 的权重为 5，后端 B 的权重为 8，则流量将按 5:8 的比在后端 A 与 B 之间分配。 |
 
 >[!NOTE]
-> 默认情况下，延迟敏感度属性设置为 0 毫秒，即，始终将请求转发到最快的可用后端。
+> 默认情况下，延迟敏感度属性设置为 0 毫秒，即始终将请求转发到最快的可用后端，并且后端上的权重不会生效，除非两个后端具有相同的网络延迟。
 
 ## <a name="priority-based-traffic-routing"></a><a name = "priority"></a>基于优先级的流量路由
 

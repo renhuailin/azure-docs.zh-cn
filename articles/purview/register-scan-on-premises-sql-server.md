@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 43a71f6260f688a1e9cc5e39e0c61f81d2265eb3
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 2f07ed4ca7bdb722a2563c5e81f7e30a57c79aeb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559590"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721938"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>注册和扫描本地 SQL Server
 
@@ -31,10 +31,6 @@ SQL Server 本地数据源支持：
 - 从 SQL Server 2000 到 SQL Server 2019 之间的每个版本
 
 - 身份验证方法：SQL 身份验证
-
-### <a name="known-limitations"></a>已知的限制
-
-Azure Purview 不支持扫描 SQL Server 中的[视图](/sql/relational-databases/views/views)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -99,7 +95,7 @@ SQL 帐户必须拥有访问 master 数据库的权限。 这是因为 `sys.data
 
 1. 在左侧导航栏的“源”和“扫描”下，选择“集成运行时”。 确保设置了自承载集成运行时。 如果未设置，请按照[此处](manage-integration-runtimes.md)所述的步骤创建自承载集成运行时，以扫描可以访问本地网络的本地或 Azure VM。
 
-1. 在左侧导航区域中选择“源”
+1. 在左侧导航区域中选择“源”。
 
 1. 选择“注册”
 
@@ -127,7 +123,7 @@ SQL 帐户必须拥有访问 master 数据库的权限。 这是因为 `sys.data
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-scope-your-scan.png" alt-text="限定扫描范围":::
 
-1. 然后选择一个扫描规则集。 可以选择系统默认项、现有的自定义规则集，或以内联方式创建新规则集。
+1. 然后选择扫描规则集。 可以在系统默认项和现有的自定义规则集之间选择，或者可以以内联方式创建新规则集。
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-scan-rule-set.png" alt-text="扫描规则集":::
 

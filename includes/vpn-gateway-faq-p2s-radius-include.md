@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/28/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: d0d0bbd1cea6d1af016aa46569171bd2bcd8ac4f
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6bead4346bdb23dd725fa474ef1bd8a982d2b61a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110722073"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122336266"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -24,6 +24,9 @@ VpnGw1、VpnGw2 和 VpnGw3 SKU 支持 RADIUS 身份验证。 如果使用的是�
 ### <a name="is-radius-authentication-supported-for-the-classic-deployment-model"></a>经典部署模型是否支持 RADIUS 身份验证？
  
 否。 经典部署模型不支持 RADIUS 身份验证。
+
+### <a name="what-is-the-timeout-period-for-radius-requests-sent-to-the-radius-server"></a>发送到 RADIUS 服务器的 RADIUS 请求的超时期限是多少？
+RADIUS 请求设置为在 30 秒后超时。 目前不支持用户定义的超时值。
  
 ### <a name="are-3rd-party-radius-servers-supported"></a>是否支持第三方 RADIUS 服务器？
 

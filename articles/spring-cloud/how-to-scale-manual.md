@@ -3,16 +3,16 @@ title: 在 Azure Spring Cloud 中缩放应用程序 | Microsoft Docs
 description: 了解如何在 Azure 门户中通过 Azure Spring Cloud 缩放应用程序
 ms.service: spring-cloud
 ms.topic: how-to
-ms.author: brendm
-author: bmitchell287
+ms.author: karler
+author: karlerickson
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 97261755f55f9193d0169e91597318928bb45b97
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 22bae9cd5a626f6a90427bd7522f2b99fa08ca0c
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134692"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015360"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中缩放应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "108134692"
 
 若要遵循这些过程进行操作，需要：
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 部署的 Azure Spring Cloud 服务实例。  按[有关如何通过 Azure CLI 来部署应用的快速入门](./quickstart.md)中的说明开始操作。
 * 至少已在该服务实例中创建一个应用程序。
 
@@ -63,7 +63,8 @@ ms.locfileid: "108134692"
 数秒钟后，所做的更改会显示在“概览”页上，更多详细信息在“应用程序实例”选项卡中提供。 缩放不需任何代码更改或重新部署。
 
 ## <a name="upgrade-to-the-standard-tier"></a>升级到标准层
-如果在使用基本层，且受其中一项或多项[限制](./quotas.md)约束，则可升级到标准层。 若要执行此操作，请先选择“标准层”列，然后单击“升级”按钮，转到“定价层”菜单。
+
+如果在使用基本层，且受其中一项或多项[限制](./quotas.md)约束，则可升级到标准层。 若要执行此操作，请先选择“标准层”列，然后选择“升级”按钮，转到“定价层”菜单。 
 
 ## <a name="next-steps"></a>后续步骤
 

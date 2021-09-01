@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 40657ad2f3b69d62e0e0d9c7d9e0f0be7343547b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mathoma
+ms.date: 07/26/2021
+ms.openlocfilehash: 6446470baf321fa46eab4a68a13cc6e09fdd2e59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96490595"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739642"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>在 Azure SQL 数据库和 Azure SQL 托管实例中优化应用程序和数据库以提高性能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -264,6 +264,12 @@ ORDER BY start_time DESC
 ### <a name="application-tier-caching"></a>应用程序层缓存
 
 某些数据库应用程序的工作负荷包含大量的读取操作。 缓存层可减少数据库上的负载，还有可能通过使用 Azure SQL 数据库和 Azure SQL 托管实例降低支持数据库所需的计算大小。 通过 [Azure Cache for Redis](https://azure.microsoft.com/services/cache/)，如果你有一个读取作业繁重的工作负载，可以读取数据一次（或者也许可以按应用层计算机读取一次，具体取决于其配置方式），然后将该数据存储在数据库外部。 这样可降低数据库负载（CPU 和读取 IO），但对于事务一致性有影响，因为从缓存读取的数据可能与数据库中数据不同步。 虽然许多应用程序可接受一定程度的不一致，但并非所有工作负荷都是这样。 应该先完全了解任何应用程序要求，再实施应用程序层缓存策略。
+
+## <a name="get-configuration-and-design-tips"></a>获取配置和设计提示
+
+如果使用 Azure SQL 数据库，则可以执行开源 T-SQL [脚本](https://aka.ms/sqldbtips)，按需分析数据库，并提供改进数据库性能和运行状况的提示。 一些提示建议根据最佳做法进行配置和操作更改，而其他提示则建议针对工作负荷进行设计更改，例如启用高级数据库引擎功能。
+
+若要了解有关该脚本的详细信息并开始使用，请访问 [wiki](https://aka.ms/sqldbtipswiki) 页。
 
 ## <a name="next-steps"></a>后续步骤
 

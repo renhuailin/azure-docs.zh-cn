@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/17/2021
+ms.date: 07/28/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e08f9090682a62ffe209122e88adca9e9710b96
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 3b1d7d8b658e0a0ac01789ca8a13ce0a2f779767
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064028"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734532"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -119,13 +119,13 @@ ms.locfileid: "108064028"
 | AADSTS50048 | SubjectMismatchesIssuer - 使用者与客户端断言中的颁发者声明不匹配。 请联系租户管理员。 |
 | AADSTS50049 | NoSuchInstanceForDiscovery - 未知或无效的实例。 |
 | AADSTS50050 | MalformedDiscoveryRequest - 请求格式不正确。 |
-| AADSTS50053 | IdsLocked - 帐户已锁定，因为用户尝试使用不正确的用户 ID 或密码登录的次数过多。 |
-| AADSTS50055 | InvalidPasswordExpiredPassword - 密码已过期。 |
-| AADSTS50056 | 密码无效或为 null - 密码在此用户的存储中不存在。 |
-| AADSTS50057 | UserDisabled - 用户帐户处于禁用状态。 帐户已被管理员禁用。 |
-| AADSTS50058 | UserInformationNotProvided - 表示用户未登录。 这是一个常见的错误，如果用户未经过身份验证并且尚未登录，则预期会出现此错误。</br>如果在用户之前已登录的 SSO 上下文中遇到此错误，这表示 SSO 会话未找到或无效。</br>如果指定了 prompt=none，则可能会在应用程序中返回此错误。 |
+| AADSTS50053 | 此错误可能由 2 种不同的原因造成： <br><ul><li>IdsLocked - 帐户已锁定，因为用户尝试使用不正确的用户 ID 或密码登录的次数过多。 用户因反复登录尝试而被阻止。 请参阅[修正风险并对用户解除阻止](../identity-protection/howto-identity-protection-remediate-unblock.md)。</li><li>也有可能是由于其来自涉及恶意活动的 IP 地址而导致登录遭到阻止。</li></ul> <br>如要确定导致此错误的失败原因，请登录到 [Azure 门户](https://portal.azure.com)。  导航到 Azure AD 租户，然后单击“监视” -> “登录”。查找登录错误代码为 50053 的失败用户登录，并检查“失败原因”。|
+| AADSTS50055 | InvalidPasswordExpiredPassword - 密码已过期。 用户的密码已过期，因此其登录名或会话已结束。 他们有机会重置密码，或者可能要求管理员通过[使用 Azure Active Directory 重置用户密码](../fundamentals/active-directory-users-reset-password-azure-portal.md)来重置密码。 |
+| AADSTS50056 | 密码无效或为 null：密码在此用户的目录中不存在。 应要求用户再次输入其密码。 |
+| AADSTS50057 | UserDisabled - 用户帐户处于禁用状态。 Active Directory 中支持此帐户的用户对象已禁用。 管理员可以通过 [Powershell](/powershell/module/activedirectory/enable-adaccount) 重新启用此帐户 |
+| AADSTS50058 | UserInformationNotProvided - 会话信息不足，无法进行单一登录。 这意味着用户未登录。 这是一个常见的错误，如果用户未经过身份验证并且尚未登录，则预期会出现此错误。</br>如果在用户之前已登录的 SSO 上下文中遇到此错误，这表示 SSO 会话未找到或无效。</br>如果指定了 prompt=none，则可能会在应用程序中返回此错误。 |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided - 在请求中未找到租户标识信息，或者任何提供的凭据未隐式指定此信息。 用户可以联系租户管理员来帮助解决此问题。 |
-| AADSTS50061 | SignoutInvalidRequest - 注销请求无效。 |
+| AADSTS50061 | SignoutInvalidRequest - 无法完成注销。 请求无效。 |
 | AADSTS50064 | CredentialAuthenticationError - 用户名或密码凭据验证失败。 |
 | AADSTS50068 | SignoutInitiatorNotParticipant - 注销失败。 发起注销的应用不是当前会话中的参与者。 |
 | AADSTS50070 | SignoutUnknownSessionIdentifier - 注销失败。 注销请求指定了与现有会话不匹配的名称标识符。 |
@@ -136,14 +136,16 @@ ms.locfileid: "108064028"
 | AADSTS50079 | UserStrongAuthEnrollmentRequired - 由于管理员做了配置更改，或者用户已移到新位置，该用户需要使用多重身份验证。 |
 | AADSTS50085 | 刷新令牌需要社交 IDP 登录。 请让用户尝试使用用户名和密码再次登录 |
 | AADSTS50086 | SasNonRetryableError |
-| AADSTS50087 | SasRetryableError - 服务暂时不可用。 重试。 |
-| AADSTS50089 | 流令牌过期 - 身份验证失败。 请让用户尝试使用用户名和密码再次登录 |
+| AADSTS50087 | SasRetryableError - 强身份验证期间出现暂时性错误。 请重试。 |
+| AADSTS50088 | 已达到电信 MFA 呼叫限制。 请过几分钟重试。 |
+| AADSTS50089 | 由于流令牌过期，身份验证失败。 预期 - 身份验证代码、刷新令牌和会话会随着时间的推移而过期，或者由用户或管理员撤销。应用将请求用户进行新登录。 |
 | AADSTS50097 | DeviceAuthenticationRequired - 必须使用设备身份验证。 |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized - JWT 签名无效。 |
 | AADSTS50105 | EntitlementGrantsNotFound - 未向已登录用户分配已登录应用的角色。 请将该用户分配到该应用。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS50105](/troubleshoot/azure/active-directory/error-code-aadsts50105-user-not-assigned-role)。 |
 | AADSTS50107 | InvalidRealmUri - 请求的联合领域对象不存在。 请联系租户管理员。 |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat - JWT 标头有问题。 请联系租户管理员。 |
 | AADSTS50124 | ClaimsTransformationInvalidInputParameter - 声明转换包含无效的输入参数。 请联系租户管理员来更新策略。 |
+| AADSTS501241 | 转换 ID“{transformId}”中缺少必填的输入“{paramName}”。 Azure AD 尝试向应用程序生成 SAML 响应时，将返回此错误。 NameID 声明或 NameIdentifier 在 SAML 响应中是必填内容，如果 Azure AD 无法获取 NameID 声明的源属性，它将返回此错误。 对于解决方案，确保在“Azure 门户”>“Azure Active Directory”>“企业应用程序”>“选择应用程序”>“单一登录”>“用户标识符和声明”>“唯一用户标识符(Name ID)”中添加声明规则。  |
 | AADSTS50125 | PasswordResetRegistrationRequiredInterrupt - 密码重置或密码注册条目导致登录中断。 |
 | AADSTS50126 | InvalidUserNameOrPassword - 无效的用户名或密码导致验证凭据时出错。 |
 | AADSTS50127 | BrokerAppNotInstalled - 用户需要安装中转站应用才能访问此内容。 |
@@ -156,7 +158,7 @@ ms.locfileid: "108064028"
 | AADSTS50135 | PasswordChangeCompromisedPassword - 由于帐户风险，需要更改密码。 |
 | AADSTS50136 | RedirectMsaSessionToApp - 检测到单个 MSA 会话。 |
 | AADSTS50139 | SessionMissingMsaOAuth2RefreshToken - 由于缺少外部刷新令牌，会话无效。 |
-| AADSTS50140 | KmsiInterrupt - 此错误是由于用户登录时出现“使我保持登录状态”中断而发生的。 [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)并提供相关性 ID、请求 ID 和错误代码，以获取更多详细信息。 |
+| AADSTS50140 | KmsiInterrupt - 此错误是由于用户登录时出现“使我保持登录状态”中断而发生的。 这是登录流的预期部分，其中会询问用户是否希望保持登录到当前浏览器，以便以后更轻松地登录。 有关详细信息，请参阅[现已推出新的 Azure AD 登录和“使我保持登录状态”体验！](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/the-new-azure-ad-sign-in-and-keep-me-signed-in-experiences/m-p/128267)。 你可以[开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)并提供相关性 ID、请求 ID 和错误代码，以获取更多详细信息。|
 | AADSTS50143 | 会话不匹配 - 会话无效，因为不同的资源导致用户租户与域提示不匹配。 [开具支持票证](../fundamentals/active-directory-troubleshooting-support-howto.md)并提供相关性 ID、请求 ID 和错误代码，以获取更多详细信息。 |
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword - 用户的 Active Directory 密码已过期。 为用户生成新密码，或者让用户使用自助重置工具重置其密码。 |
 | AADSTS50146 | MissingCustomSigningKey - 需要为此应用配置特定于应用的签名密钥。 没有为此应用程序配置签名密钥，或者密钥已过期或尚未生效。 |
@@ -193,6 +195,7 @@ ms.locfileid: "108064028"
 | AADSTS65004 | UserDeclinedConsent - 用户已拒绝许可访问该应用。 让用户重试登录并许可应用|
 | AADSTS65005 | MisconfiguredApplication - 应用所需的资源访问列表不包含可以通过资源来发现的应用，或者客户端应用请求访问的资源未在其必需的资源访问列表中指定，或者 Graph 服务返回了错误的请求，或者资源找不到。 如果应用支持 SAML，则原因可能是使用错误的标识符（实体）配置了应用。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS650056](/troubleshoot/azure/active-directory/error-code-aadsts650056-misconfigured-app)。 |
 | AADSTS650052 | 应用需要访问你的组织 `\"{organization}\"` 尚未订阅或启用的服务 `(\"{name}\")`。 若要查看服务订阅的配置，请与 IT 管理员联系。 |
+| AADSTS650054 |  应用程序请求访问已删除或不再可用的资源的权限。 确保应用调用的所有资源都存在于你正在操作中的租户中。 |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 身份验证失败。 刷新令牌无效。 该错误的可能原因如下：<ul><li>令牌绑定标头为空</li><li>令牌绑定哈希不匹配</li></ul> |
 | AADSTS70001 | UnauthorizedClient - 应用程序处于禁用状态。 若要了解详细信息，请参阅“故障排除”一文以了解错误 [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory)。 |
@@ -200,6 +203,7 @@ ms.locfileid: "108064028"
 | AADSTS70003 | UnsupportedGrantType - 应用返回了不受支持的授权类型。 |
 | AADSTS70004 | InvalidRedirectUri - 应用返回了无效的重定向 URI。 客户端指定的重定向地址与配置的任何地址或者 OIDC 批准列表中的任何地址都不匹配。 |
 | AADSTS70005 | UnsupportedResponseType - 由于以下原因，应用返回了不受支持的响应类型：<ul><li>没有为应用启用响应类型“token”</li><li>响应类型“id_token”需要“OpenID”作用域 - 编码的 wctx 中包含不支持的 OAuth 参数值</li></ul> |
+| AADSTS700054 | 没有为应用程序启用响应类型“id_token”。  应用程序从授权终结点请求了 ID 令牌，但未启用 ID 令牌隐式授权。  转到“Azure 门户”>“Azure Active Directory”>“应用注册”>“选择你的应用程序”>“身份验证”>在“隐式授权和混合流”下，确保“ID 令牌”处于选中状态。|
 | AADSTS70007 | UnsupportedResponseMode - 请求令牌时，应用返回了不受支持的 `response_mode` 值。  |
 | AADSTS70008 | ExpiredOrRevokedGrant - 刷新令牌由于非活动状态而过期。 该令牌是在 XXX 颁发的，并在特定的时间内处于非活动状态。 |
 | AADSTS70011 | InvalidScope - 应用请求的范围无效。 |

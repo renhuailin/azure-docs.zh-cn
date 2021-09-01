@@ -1,14 +1,14 @@
 ---
 title: 策略例外结构的详细信息
 description: 介绍 Azure Policy 使用的策略豁免定义，以免除资源对计划或定义的评估。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: ecf956d7507dfa2168e4f2591e4b661423801365
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 4c38f872a17869b957bce415204042582454dfd9
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091729"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324837"
 ---
 # <a name="azure-policy-exemption-structure"></a>Azure Policy 豁免结构
 
@@ -108,7 +108,7 @@ Azure Policy 例外（预览版）功能用于免除资源层次结构或单个�
 
 ## <a name="expiration"></a>过期时间
 
-若要设置资源层次结构或单个资源不再在分配中豁免的时间，请设置 `expiresOn` 属性。 此可选属性必须采用通用 ISO 8601 日期/时间格式 `yyyy-MM-ddTHH:mm:ss.fffffffZ`。
+若要设置不再从分配中豁免资源层次结构或单个资源的时间，请设置 `expiresOn` 属性。 此可选属性必须采用通用 ISO 8601 日期/时间格式 `yyyy-MM-ddTHH:mm:ss.fffffffZ`。
 
 > [!NOTE]
 > 达到 `expiresOn` 日期后，策略例外不会被删除。 该对象会保留用于记录，但不再受到免除。
@@ -117,7 +117,7 @@ Azure Policy 例外（预览版）功能用于免除资源层次结构或单个�
 
 管理策略例外对象所需的 Azure RBAC 权限位于 `Microsoft.Authorization/policyExemptions` 操作组中。 内置角色[资源策略参与者](../../../role-based-access-control/built-in-roles.md#resource-policy-contributor)和[安全管理员](../../../role-based-access-control/built-in-roles.md#security-admin)都具有 `read` 和 `write` 权限，[策略见解数据编写者（预览版）](../../../role-based-access-control/built-in-roles.md#policy-insights-data-writer-preview)具有 `read` 权限。
 
-鉴于授予免除的影响，免除具有附加的安全措施。 除了要求对资源层次结构或单个资源进行 `Microsoft.Authorization/policyExemptions/write` 操作外，例外的创建者还必须在目标分配上具有 `exempt/Action` 谓词。
+鉴于授予免除的影响，免除具有额外的安全措施。 除了要求对资源层次结构或单个资源进行 `Microsoft.Authorization/policyExemptions/write` 操作外，例外的创建者还必须在目标分配上具有 `exempt/Action` 谓词。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 08/17/2021
 ms.author: b-juche
-ms.openlocfilehash: 46db9181657e5271f5aee567365e1f616caddc3f
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: dccf4f7bb39b296fdbcf9b7fbce2f86019397deb
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061499"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323646"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -101,6 +101,10 @@ Azure NetApp 文件是 Azure 原生的服务。 将会记录针对 Azure NetApp 
 是的，可以创建[自定义 Azure 策略](../governance/policy/tutorials/create-custom-policy-definition.md)。 
 
 但是，不能在 Azure NetApp 文件界面上创建 Azure 策略（自定义命名策略）。 请参阅 [Azure NetApp 文件网络规划指导原则](azure-netapp-files-network-topologies.md#considerations)。
+
+### <a name="when-i-delete-an-azure-netapp-files-volume-is-the-data-deleted-safely"></a>删除 Azure NetApp 文件卷时，是否会安全地删除数据？ 
+
+Azure NetApp 文件卷的删除在后端（物理基础结构层）中以编程方式执行，会立即生效。 删除操作包括删除用于加密静态数据的密钥。 成功执行删除操作（通过 Azure 门户 和 API 等接口）后，任何情形下都无法恢复已删除的卷。
 
 ## <a name="performance-faqs"></a>性能常见问题解答
 
@@ -224,8 +228,12 @@ Azure NetApp 文件支持 Windows Server 2008r2SP1-2019 版本的 Active Directo
 
 ### <a name="can-an-azure-netapp-files-smb-share-act-as-an-dfs-namespace-dfs-n-root"></a>Azure NetApp 文件 SMB 共享是否可以充当 DFS 命名空间 (DFS-N) 根？
 
-否。 但是，Azure NetApp 文件 SMB 共享可以充当 DFS 命名空间 (DFS-N) 文件夹目标。   
+不是。 但是，Azure NetApp 文件 SMB 共享可以充当 DFS 命名空间 (DFS-N) 文件夹目标。   
 若要使用 Azure NetApp 文件 SMB 共享作为 DFS-N 文件夹目标，请使用 [DFS 添加文件夹目标](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target)过程提供 Azure NETAPP 文件 SMB 共享的通用命名约定 (UNC) 装载路径。  
+
+### <a name="can-the-smb-share-permissions-be-changed"></a>是否可以更改 SMB 共享权限？   
+
+不行，无法更改共享权限。 但是，可以使用 [NTFS 文件和文件夹权限](azure-netapp-files-create-volumes-smb.md#ntfs-file-and-folder-permissions)过程更改 `root` 卷的 NTFS 权限。 
 
 ## <a name="capacity-management-faqs"></a>容量管理常见问题解答
 
@@ -338,6 +346,12 @@ NetApp 提供基于 SaaS 的解决方案，即 [NetApp 云同步](https://cloud.
 ### <a name="does-azure-netapp-files-work-with-azure-policy"></a>Azure NetApp 文件是否适用于 Azure Policy？
 
 是的。 Azure NetApp 文件是第一方服务。 其完全遵循 Azure 资源提供程序标准。 因此，可以通过自定义策略定义将 Azure NetApp 文件集成到 Azure Policy 中。 有关如何为 Azure NetApp 文件实现自定义策略的信息，请参阅 Microsoft 技术社区中的 [Azure Netapp 文件现可使用的 Azure Policy](https://techcommunity.microsoft.com/t5/azure/azure-policy-now-available-for-azure-netapp-files/m-p/2282258)。 
+
+### <a name="which-unicode-character-encoding-is-supported-by-azure-netapp-files-for-the-creation-and-display-of-file-and-directory-names"></a>Azure NetApp 文件支持哪种 Unicode 字符编码来创建和显示文件和目录名称？   
+
+Azure NetApp 文件仅支持使用 UTF-8 Unicode 字符编码格式对 NFS 和 SMB 卷进行编码的文件和目录名称。
+
+如果尝试创建的文件或目录的名称使用补充字符或代理项对（如 UTF-8 不支持的非常规字符和表情符号），则操作会失败。 在这种情况下，来自 Windows 客户端的错误可能会显示“指定的文件名无效或太长。 请指定另一文件名。” 
 
 ## <a name="next-steps"></a>后续步骤  
 

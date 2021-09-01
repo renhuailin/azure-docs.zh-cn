@@ -2,13 +2,13 @@
 title: 概念 - 私有云和群集
 description: 了解 Azure VMware 解决方案软件定义的数据中心和 vSphere 群集的主要功能。
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: 97f31c18fd753c89f2201fddfff4d31c8501bae2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/25/2021
+ms.openlocfilehash: 6e068462cada0a324d646766574e05414ad92772
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122324310"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968504"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware 解决方案私有云和群集概念
 
@@ -45,7 +45,7 @@ Azure VMware 解决方案可在 Azure 中提供基于 VMware 的私有云。 私
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>主机维护和生命周期管理
 
-Azure VMware 解决方案私有云的一个优点是可以为你维护平台。  Microsoft 负责管理 VMware 软件（ESXi、vCenter 和 vSAN）的生命周期。 Microsoft 还负责管理 NSX-T 设备的生命周期及启动网络配置，如创建第 0 层网关和启用北-南路由。 你负责配置 NSX-T SDN：网段、分布式防火墙规则、第 1 层网关和负载均衡器。 
+
 
 [!INCLUDE [vmware-software-update-frequency](includes/vmware-software-update-frequency.md)]
 

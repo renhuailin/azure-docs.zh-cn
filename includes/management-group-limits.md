@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 53e3f37d14153f3a2d7b5886a49b08ca9052b128
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ee564accd0eaf53f0089e0dba3bb00e3eb1665e1
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107799873"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112575618"
 ---
 | 资源 | 限制 |
 | --- | --- |
@@ -21,6 +21,7 @@ ms.locfileid: "107799873"
 | 管理组层次结构的级别数 | 根级别加上 6 个级别<sup>1</sup> |
 | 每个管理组的直接父管理组数 | 一种 |
 | 每个位置的[管理组级别部署数](../articles/azure-resource-manager/templates/deploy-to-management-group.md) | 800<sup>2</sup> |
+| [管理组级别部署](../articles/azure-resource-manager/templates/deploy-to-management-group.md)的位置 | 10 |
 
 <sup>1</sup>6 个级别不包括订阅级别。
 

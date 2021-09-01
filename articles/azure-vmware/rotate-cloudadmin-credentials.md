@@ -2,25 +2,25 @@
 title: 为 Azure VMware 解决方案轮换 cloudadmin 凭据
 description: 了解如何为 Azure VMware 解决方案私有云轮换 vCenter Server 和 NSX-T Manager 凭据。
 ms.topic: how-to
-ms.date: 05/11/2021
-ms.openlocfilehash: fbfed495fd904b67ce283934791cee516349dfa6
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.date: 06/01/2021
+ms.openlocfilehash: 884e3f09e429fff39c0dfafcb5d0c9a7b4915e03
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814940"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324775"
 ---
 # <a name="rotate-the-cloudadmin-credentials-for-azure-vmware-solution"></a>为 Azure VMware 解决方案轮换 cloudadmin 凭据
 
-本文将指导你完成为 Azure VMware 解决方案私有云轮换 cloudadmin 凭据的步骤。  虽然你的 vCenter Server CloudAdmin 和 NSX-T Manager 管理员凭据不会过期，但你还是可以为这些帐户生成新密码。 在轮换凭据后，你将验证 HCX 连接器是否有最新的 vCenter Server 凭据。
+在本文中，你会为 Azure VMware 解决方案私有云轮换 cloudadmin 凭据（vCenter 和 NSX-T 凭据）。  尽管这些帐户的密码不会过期，但你可以生成新密码。 生成新密码后，必须在应用最新凭据的情况下更新 VMware HCX 连接器。
 
 还可以观看有关如何[重置 vCenter CloudAdmin 和 NSX-T 管理员密码](https://youtu.be/cK1qY3knj88)的视频。 
 
 ## <a name="prerequisites"></a>先决条件
 
-如果将 cloudadmin 凭据用于连接服务（如 HCX、vRealize Orchestrator、vRealize Operations Manager 或 VMware Horizon），你的连接会在更新密码后停止工作。  请在启动密码轮换之前先停止这些服务。 否则会出现 vCenter CloudAdmin 和 NSX-T 管理员帐户临时锁定的情况，因为这些服务会使用旧凭据继续进行调用。  有关为连接服务设置单独帐户的详细信息，请参阅[访问和标识的概念](./concepts-identity.md)。
+如果将 cloudadmin 凭据用于连接服务（如 HCX、vRealize Orchestrator、vRealize Operations Manager 或 VMware Horizon），你的连接会在更新密码后停止工作。  因此请在启动密码轮换之前先停止这些服务。 否则会出现 vCenter CloudAdmin 和 NSX-T 管理员帐户临时锁定的情况，因为这些服务会使用旧凭据继续进行调用。  有关为连接服务设置单独帐户的详细信息，请参阅[访问和标识的概念](./concepts-identity.md)。
 
-## <a name="reset-your-azure-vmware-solution-credentials"></a>重置 Azure VMware 解决方案凭据
+## <a name="reset-your-azure-vmware-solution-cloudadmin-credentials"></a>重置 Azure VMware 解决方案 cloudadmin 凭据
 
 在这一步中，你将轮换 Azure VMware 解决方案组件的 cloudadmin 凭据。 
 
@@ -41,9 +41,9 @@ ms.locfileid: "109814940"
    az resource invoke-action --action rotateNSXTPassword --ids "/subscriptions/{SubscriptionID}/resourceGroups/{ResourceGroup}/providers/Microsoft.AVS/privateClouds/{PrivateCloudName}" --api-version "2020-07-17-preview"
    ```
 
-## <a name="verify-hcx-connector-has-the-latest-credentials"></a>验证 HCX 连接器是否有最新凭据
+## <a name="update-hcx-connector-with-the-latest-cloudadmin-credentials"></a>使用最新 cloudadmin 凭据更新 HCX 连接器
 
-在这一步中，你将验证 HCX 连接器是否有更新后的凭据。
+在此步骤中，你会使用更新的凭据更新 HCX 连接器。
 
 1. 转到本地 HCX 连接器（其地址为 https://{HCX 连接器设备的 IP}:443），然后使用新凭据登录。
 
@@ -61,6 +61,5 @@ ms.locfileid: "109814940"
 
 了解如何重置 Azure VMware 解决方案的 vCenter Server 和 NSX-T Manager 凭据后，接下来你可能需要了解以下操作：
 
-- [在 Azure VMware 解决方案中配置 NSX 网络组件](configure-nsx-network-components-azure-portal.md)
-- [监视和管理 Azure VMware 解决方案 VM](lifecycle-management-of-azure-vmware-solution-vms.md)
-- [使用 Azure VMware 解决方案部署虚拟机的灾难恢复](disaster-recovery-for-virtual-machines.md)
+- [在 Azure VMware 解决方案中集成 Azure 原生服务](integrate-azure-native-services.md)
+- [使用 VMware HCX 为 Azure VMware 解决方案工作负载部署灾难恢复](deploy-disaster-recovery-using-vmware-hcx.md)

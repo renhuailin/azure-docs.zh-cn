@@ -2,13 +2,13 @@
 title: Azure 事件网格 - 对已传递事件设置自定义标头
 description: 介绍如何对已传递事件设置自定义标头（或传递属性）。
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: 515f2687781329d0f9f9648460663a0a30f7c637
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.date: 08/13/2021
+ms.openlocfilehash: de16c3b4981dc02a54a68269d4eef743d9f48c4b
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887437"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069499"
 ---
 # <a name="custom-delivery-properties"></a>自定义传递属性
 通过事件订阅，可以设置已传递事件中包含的 HTTP 头。 使用此功能，可设置目标所需的自定义标头。 创建事件订阅时，最多可以设置 10 个标头。 每个标头值不应大于 4096 (4K) 字节。
@@ -33,6 +33,20 @@ ms.locfileid: "107887437"
 可根据传入事件中的属性设置标头的值。 使用 JsonPath 语法来引用传入事件的属性值，以用作传出请求中的标头的值。 例如，若要使用事件数据中的传入事件属性 system 的值设置名为“Channel”的标头的值，请按以下方式配置事件订阅 ：
 
 :::image type="content" source="./media/delivery-properties/dynamic-header-property.png" alt-text="传递属性 - 动态":::
+
+## <a name="use-azure-cli"></a>使用 Azure CLI
+在使用 `az eventgrid event-subscription create` 命令创建订阅时请使用 `--delivery-attribute-mapping` 参数。 下面是一个示例：
+
+```azurecli
+az eventgrid event-subscription create -n es1 \
+    --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1
+    --endpoint-type storagequeue \
+    --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/sa1/queueservices/default/queues/q1 \
+    --enable-advanced-filtering-on-arrays true
+    --delivery-attribute-mapping staticproperty1 static somestaticvalue2 true 
+    --delivery-attribute-mapping staticproperty2 static somestaticvalue3 false 
+    --delivery-attribute-mapping dynamicproperty1 dynamic data.key1
+```
 
 ## <a name="examples"></a>示例
 本节提供几个使用传递属性的示例。
@@ -61,7 +75,7 @@ Authorization: BEARER SlAV32hkKG...
 > 如果目标是 Webhook，定义授权标头是一个明智的选择。 它不应用于[使用资源 ID 订阅的函数](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate#azurefunctioneventsubscriptiondestination)、服务总线、事件中心和混合连接，因为这些目标在与事件网格一起使用时支持它们自己的身份验证方案。
 
 ### <a name="service-bus-example"></a>服务总线示例
-Azure 服务总线支持使用 [BrokerProperties HTTP 头](/rest/api/servicebus/message-headers-and-properties#message-headers)在发送单个消息时定义消息属性。 `BrokerProperties` 标头的值应以 JSON 格式提供。 例如，如果在将单个消息发送到服务总线时需要设置消息属性，请按以下方式设置标头：
+Azure 服务总线支持使用 [BrokerProperties HTTP 标头](/rest/api/servicebus/message-headers-and-properties#message-headers)在发送单个消息时定义消息属性。 `BrokerProperties` 标头的值应以 JSON 格式提供。 例如，如果在将单个消息发送到服务总线时需要设置消息属性，请按以下方式设置标头：
 
 | 标头名称 | 标头类型 | 标头值 |
 | :-- | :-- | :-- |
@@ -70,7 +84,7 @@ Azure 服务总线支持使用 [BrokerProperties HTTP 头](/rest/api/servicebus/
 
 ### <a name="event-hubs-example"></a>事件中心示例
 
-如果需要将事件发布到某个事件中心内的特定分区，请在事件订阅上定义 [BrokerProperties HTTP 头](/rest/api/eventhub/event-hubs-runtime-rest#common-headers)，以指定用于标识目标事件中心分区的分区键。
+如果需要将事件发布到某个事件中心内的特定分区，请在事件订阅上定义 [BrokerProperties HTTP 标头](/rest/api/eventhub/event-hubs-runtime-rest#common-headers)，以指定用于标识目标事件中心分区的分区键。
 
 | 标头名称 | 标头类型 | 标头值                                  |
 | :-- | :-- | :-- |

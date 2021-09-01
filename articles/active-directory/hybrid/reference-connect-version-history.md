@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6093413fb2f82a009288903ced191dcd56cfc44
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: a37ceb9c25fbd9483d14962ed30b871938af9274
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984889"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324653"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -57,13 +57,133 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 >
 >有关已停用版本的版本历史记录信息，请参阅 [Azure AD Connect 版本发行历史记录存档](reference-connect-version-history-archive.md)
 
+## <a name="2090"></a>2.0.9.0
+
+### <a name="release-status"></a>版本状态
+8/17/2021：发布仅供下载的版本，不可用于自动升级。
+
+### <a name="bug-fixes"></a>Bug 修复
+>[!NOTE] 
+>这是 Azure AD Connect 的修补程序更新版本。 此功能需要 Windows Server 2016 或更高版本。 此版本解决了版本 2.0.8.0 中存在的一个问题，Azure AD Connect 版本 1.6 中不存在此问题
+
+ - 我们修复了一个 bug，即在同步大量密码哈希同步事务时，事件日志条目长度会超出密码哈希同步事件条目允许的最大长度。 现在我们将较长的日志条目拆分为多个条目。
+
+## <a name="2080"></a>2.0.8.0
+>[!NOTE] 
+>这是 Azure AD Connect 的安全更新版本。 此功能需要 Windows Server 2016 或更高版本。 如果使用较旧版本的 Windows Server，请使用[版本 1.6.11.3](#16113)。
+>此版本解决了[此 CVE](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) 中所述的漏洞。 有关此漏洞的详细信息，请参阅 CVE。
+>可以使用[此链接](https://www.microsoft.com/en-us/download/details.aspx?id=47594)下载该版本。
+
+### <a name="release-status"></a>版本状态
+8/10/2021：发布仅供下载的版本，不可用于自动升级。 
+
+### <a name="functional-changes"></a>功能性更改
+该版本中没有功能性更改
+
+## <a name="16113"></a>1.6.11.3 
+>[!NOTE] 
+>这是 Azure AD Connect 的安全更新版本。 此版本旨在供客户运行较旧版本的 Windows Server，并且目前无法将其服务器升级到 Windows Server 2016 或更高版本的客户使用。 不能使用此版本更新 Azure AD Connect V2.0 服务器。
+>此版本解决了[此 CVE](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) 中所述的漏洞。 有关此漏洞的详细信息，请参阅 CVE。
+>可以使用[此链接](https://www.microsoft.com/download/details.aspx?id=103336)下载该版本
+
+### <a name="release-status"></a>版本状态
+8/10/2021：发布仅供下载的版本，不可用于自动升级。
+
+### <a name="functional-changes"></a>功能性更改
+该版本中没有功能性更改
+
+## <a name="2030"></a>2.0.3.0
+>[!NOTE] 
+>这是 Azure AD Connect 的主要版本。 有关更多详细信息，请参阅 [Azure Active Directory V2.0 一文](whatis-azure-ad-connect-v2.md)。
+
+### <a name="release-status"></a>版本状态
+7/20/2021：发布仅供下载的版本，不可用于自动升级
+### <a name="functional-changes"></a>功能性更改
+ - 我们已将 SQL Server 的 LocalDB 组件升级到 SQL 2019。 
+ - 此版本需要 Windows Server 2016 或更高版本，这是 SQL Server 2019 的要求。 请注意，不支持在 Azure AD Connect 服务器上就地升级 Windows 服务器，因此可能需要使用[交叉迁移](how-to-upgrade-previous-version.md#swing-migration)。
+ -  在此版本中，我们强制使用 TLS 1.2。 如果对 Windows Server 启用了 TLS 1.2，则 AADConnect 会使用此协议。 如果在服务器上未启用 TLS 1.2，则你会在尝试安装 AADConnect 时看到错误消息，并且在启用 TLS 1.2 之前，安装不会继续。 请注意，你可以使用新的“Set-ADSyncToolsTls12”cmdlet 在服务器上启用 TLS 1.2。
+ -  在此版本中，可以在安装 Azure AD Connect 时使用具有用户角色“混合标识管理员”的用户进行身份验证。 不再需要对此使用全局管理员角色。
+ - 我们已将 Visual C++ 运行时库升级到版本 14（这是 SQL Server 2019 的先决条件）  
+ -  此版本使用 MSAL 库进行身份验证，我们已删除较旧的 ADAL 库（将在 2022 年停用）。   
+ -  按照 Windows 安全指南，我们不再对 AdminSDHolders 应用权限。 在 ADSyncConfig.psm1 模块中，我们已将参数“SkipAdminSdHolders”更改为“IncludeAdminSdHolders”。
+ -  当过期密码为“未过期”时，现在会重新评估密码，无论密码本身是否已更改。 如果对于用户，密码设置为“下次登录时必须更改密码”，并清除了此标志（因而使密码“未过期”），则“未过期”状态和密码哈希会同步到 Azure AD，当用户尝试在 Azure AD 中登录时，他们可以使用未过期的密码。
+若要将过期密码从 Active Directory 同步到 Azure Active Directory，请使用 Azure AD Connect 中的[同步临时密码](how-to-connect-password-hash-synchronization.md#synchronizing-temporary-passwords-and-force-password-change-on-next-logon)功能。 请注意，你需要启用密码写回才能使用此功能，因此，用户更新的密码也会写回到 Active Directory。
+ - 我们已将两个新 cmdlet 添加到 ADSyncTools 模块，以便从 Windows Server 启用或检索 TLS 1.2 设置。 
+   - Get-ADSyncToolsTls12
+   - Set-ADSyncToolsTls12
+   
+可以使用这些 cmdlet 检索 TLS 1.2 启用状态，或根据需要进行设置。 请注意，必须在服务器上启用 TLS 1.2，AADConnect 的安装才能成功。
+
+ -  我们通过几个新的和改进的 cmdlet 改造了 ADSyncTools。 [ADSyncTools 一文](reference-connect-adsynctools.md)包含有关这些 cmdlet 的更多详细信息。 
+  新增或更新了以下 cmdlet 
+    - Clear-ADSyncToolsMsDsConsistencyGuid  
+    - ConvertFrom-ADSyncToolsAadDistinguishedName   
+    - ConvertFrom-ADSyncToolsImmutableID    
+    - ConvertTo-ADSyncToolsAadDistinguishedName 
+    - ConvertTo-ADSyncToolsCloudAnchor  
+    - ConvertTo-ADSyncToolsImmutableID  
+    - Export-ADSyncToolsAadDisconnectors    
+    - Export-ADSyncToolsObjects 
+    - Export-ADSyncToolsRunHistory  
+    - Get-ADSyncToolsAadObject  
+    - Get-ADSyncToolsMsDsConsistencyGuid    
+    - Import-ADSyncToolsObjects 
+    - Import-ADSyncToolsRunHistory  
+    - Remove-ADSyncToolsAadObject   
+    - Search-ADSyncToolsADobject    
+    - Set-ADSyncToolsMsDsConsistencyGuid    
+    - Trace-ADSyncToolsADImport 
+    - Trace-ADSyncToolsLdapQuery    
+-   现在，我们使用 V2 终结点进行导入和导出，并修复了 Get-ADSyncAADConnectorExportApiVersion cmdlet 中的问题。 可在 [Azure AD Connect 同步 V2 终结点一文](how-to-connect-sync-endpoint-api-v2.md)中了解有关 V2 终结点的详细信息。
+-   我们添加了以下新用户属性，以从本地 AD 同步到 Azure AD 
+    - employeeType  
+    - employeeHireDate  
+-   此版本需要在 Windows Server 上安装 PowerShell 版本 5.0 或更高版本。 请注意，此版本是 Windows Server 2016 和更高版本的一部分。   
+-   我们通过新 V2 终结点将组同步成员身份限制增加到了 250k。
+-   我们将泛型 LDAP 连接器和泛型 SQL 连接器更新到了最新版本。 在下面阅读有关这些连接器的详细信息：
+    - [泛型 LDAP 连接器参考文档](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap)
+    - [泛型 SQL 连接器参考文档](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql)
+-   在 M365 管理中心，每当对 Azure AD 进行导出活动时，我们现在都会报告 AADConnect 客户端版本。 这可确保 M365 管理中心始终具有最新 AADConnect 客户端版本，并且在使用过时版本时可以检测到
+
+### <a name="bug-fixes"></a>Bug 修复
+- 我们修复了一个辅助功能 bug，其中屏幕阅读器宣布“了解详细信息”链接的角色不正确。
+-   我们修复了一个 bug，其中具有大优先级值（例如 387163089）的同步规则会导致升级失败。 我们更新了存储过程“mms_UpdateSyncRulePrecedence”，以便在递增值之前将优先级数字强制转换为整数。
+-   我们修复了一个 bug，其中如果导入组写回配置，则不会在同步帐户上设置组写回权限。 如果对导入的配置启用了组写回，我们现在会设置组写回权限。
+-   我们将 Azure AD Connect Health 代理版本更新到 3.1.110.0 以修复安装失败。
+-   在配置目录扩展属性的导出配置中，我们遇到了非默认属性的问题。 在将这些配置导入新的服务器/安装时，属性包含列表会被目录扩展配置步骤所替代，因此在同步服务管理器中选择仅导入默认值和目录扩展属性后，安装中不会包含非默认属性，因此，如果用户希望导入的同步规则正常工作，则必须从同步服务管理器手动重新启用这些属性。 现在，我们会在配置目录扩展之前刷新 AAD 连接器，以保留属性包含列表中的现有属性。
+-   我们修复了一个辅助功能问题，其中页眉的字体粗细设置为“细”。 对于页面标题，字体粗细现在设置为“粗体”，这适用于所有页面的页眉。
+-   ADSyncSingleObjectSync.ps1 中的 Get-AdObject 函数重命名为 Get-AdDirectoryObject，以防止 AD cmdlet 出现歧义。
+-   SQL 函数“mms_CheckSynchronizationRuleHasUniquePrecedence”允许不同连接器上的出站同步规则具有重复的优先级。 我们删除了允许存在重复规则优先级的条件。
+-   我们修复了一个 bug，其中如果属性流数据为空（例如在导出删除操作中），则单对象同步 cmdlet 会失败  
+-   我们修复了一个 bug，其中因为无法启动 ADSync 启动服务，安装会失败。 现在，我们先将同步服务帐户添加到本地内置用户组，然后再开始启动服务。
+-   我们修复了一个辅助功能问题，其中 AAD Connect 向导上的活动选项卡在高对比度主题中未显示正确的颜色。 由于常规颜色代码配置中缺少条件，因此覆盖了选定颜色代码。
+-   我们解决了一个问题，其中允许用户使用 UI 和 PowerShell 取消选择同步规则中使用的对象和属性。 如果尝试取消选择任何同步规则中使用的任何属性或对象，我们现在会显示友好的错误消息。
+-   我们对“迁移设置代码”进行了一些更新，以便在较旧版本的 Azure AD Connect 上运行脚本时检查并修复后向兼容性问题。  
+-   修复了一个 bug，其中当 PHS 尝试查找不完整的对象时，它用于解析 DC 的算法与最初用于提取密码的算法不同。 具体而言，它会忽略关联 DC 信息。 不完整的对象查找应使用相同逻辑来查找两个实例中的 DC。
+-   我们修复了一个 bug，其中 AADConnect 无法使用 Microsoft Graph 读取应用程序代理项，因为直接基于 AAD 连接客户端 id 调用 Microsoft Graph 发生权限问题。为了修复此问题，我们删除了 Microsoft Graph 的依赖项，改为使用 AAD PowerShell 处理应用代理应用程序对象。
+-   我们从“Out to AD - Group SOAInAAD Exchange”同步规则中删除了写回成员限制  
+-   我们修复了一个 bug，其中在更改连接器帐户权限时，如果某个对象在自上次增量导入以来未更改的范围内，则增量导入不会导入它。 现在，我们会显示警告，提醒用户注意该问题。
+-   我们修复了屏幕阅读器未阅读单选钮位置的辅助功能问题。 我们将位置文本添加到单选按钮辅助功能文本字段。
+-   我们更新了直通身份验证代理捆绑包。 在 US Gov 中，较旧的捆绑包没有适用于 HIP 第一方应用程序的正确答复 URL。  
+-   我们修复了一个 bug，其中在使用现有数据库全新安装 AADConnect 版本 1.6.X.X（默认为使用 DirSyncWebServices API V2）后，AAD 连接器导出上会出现“stopped-extension-dll-exception”。 以前将导出版本设置为 v2 只是为了进行升级，我们进行了更改，以便在全新安装时也进行设置。
+-   “ADSyncPrep.psm1”模块不再进行使用，已从安装中删除。
+
+### <a name="known-issues"></a>已知问题
+-   AADConnect 向导将“导入同步设置”选项显示为“预览版”，而此功能已正式发布。
+-   使用迁移设置脚本的输出安装产品时，某些 Active Directory 连接器可能会按不同顺序进行安装。 
+-   Azure AD Connect 向导中的“用户登录”选项页提到“公司管理员”。 此术语不再使用，需要替换为“全局管理员”。
+-   当“登录”选项已配置为使用 PingFederate 时，“导出设置”选项会受损。
+-   尽管 Azure AD Connect 现在可以使用混合标识管理员角色进行部署，但配置自助服务密码重置仍需要具有全局管理员角色的用户。
+-   在部署期间导入 AADConnect 配置以便与原始 AADConnect 配置之外的不同租户进行连接时，目录扩展属性配置不正确。
+
 ## <a name="1640"></a>1.6.4.0
 
 >[!NOTE]
 > Azure AD Connect 同步 V2 终结点 API 目前适用于以下 Azure 环境：
 > - Azure 商业版
 > - Azure 中国云
-> - Azure 美国政府云 此 API 在 Azure 德国云中不可用
+> - Azure 美国政府云
+> - 此版本会在 Azure 德国云中不可用
 
 ### <a name="release-status"></a>版本状态
 3/31/2021：发布仅供下载的版本，不可用于自动升级
@@ -302,7 +422,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 >我们正在调查一个事件：某些客户在升级到这一版本的 Azure AD Connect 后，遇到了现有已建立混合 Azure AD 联接的设备方面的问题。 我们建议已部署混合 Azure AD 联接的客户推迟升级为这一版本，一直到完全了解这些问题的根本原因并缓解这些问题为止。 我们将尽快提供详细信息。
 
 >[!IMPORTANT]
->对于这一版本的 Azure AD Connect，某些客户可能会看到其部分或所有 Windows 设备从 Azure AD 中消失。 不必担心，因为在条件访问授权期间 Azure AD 不会使用这些设备标识。 有关详细信息，请参阅[了解 Azure AD Connect 1.4.xx.x 设备消失](reference-connect-device-disappearance.md)
+>对于这一版本的 Azure AD Connect，某些客户可能会看到其部分或所有 Windows 设备从 Azure AD 中消失。 不必担心，因为在条件访问授权期间 Azure AD 不会使用这些设备标识。 有关详细信息，请参阅[了解 Azure AD Connect 1.4.xx.x 设备消失](/troubleshoot/azure/active-directory/reference-connect-device-disappearance)
 
 
 ### <a name="release-status"></a>版本状态

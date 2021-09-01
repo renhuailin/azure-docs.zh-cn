@@ -3,12 +3,12 @@ title: 配置 Azure VMware 解决方案 vSAN 上的 Windows Server 故障转移�
 description: 了解如何使用本机共享磁盘配置 Azure VMware 解决方案 vSAN 上的 Windows Server 故障转移群集 (WSFC)。
 ms.topic: how-to
 ms.date: 05/04/2021
-ms.openlocfilehash: f2fc9e712d3f56aeddc6e66c12837794dceb9abe
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: fcde65b98b3774ee1ef9b15bfa6da3836aaa8a1b
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954487"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323186"
 ---
 # <a name="configure-windows-server-failover-cluster-on-azure-vmware-solution-vsan"></a>配置 Azure VMware 解决方案 vSAN 上的 Windows Server 故障转移群集
 
@@ -17,7 +17,7 @@ ms.locfileid: "111954487"
 >[!IMPORTANT]
 >本文中的实现用于进行概念证明和试验。 我们建议使用 Cluster-in-a-Box (CIB) 配置，直到放置策略可用。
 
-Windows Server 故障转移群集（以前称为 Microsoft 服务群集服务 (MSCS)）是 Windows Server 操作系统 (OS) 的一项功能。 WSFC 是一项业务关键型功能，许多应用程序都需要此功能。 例如，以下配置都需要 WSFC：
+Windows Server 故障转移群集（以前称为 Microsoft 服务群集服务 (MSCS)）是一种 Windows Server 操作系统 (OS) 功能。 WSFC 是一项业务关键型功能，许多应用程序都需要此功能。 例如，以下配置都需要 WSFC：
 
 - SQL Server 的如下配置：
   - Always On 故障转移群集实例，用于实现实例级高可用性。
@@ -31,9 +31,9 @@ Windows Server 故障转移群集（以前称为 Microsoft 服务群集服务 (M
 
 一定要部署受支持的 WSFC 配置。 你的解决方案需要在 vSphere 和 Azure VMware 解决方案中受支持。 有关 vSphere 6.7 上的 WSFC 的详细信息，请参阅 VMware 提供的文档[设置故障转移群集和 Microsoft 群集服务](https://docs.vmware.com/en/VMware-vSphere/6.7/vsphere-esxi-vcenter-server-67-setup-mscs.pdf)。
 
-本文重点介绍了 Windows Server 2016 和 Windows Server 2019 上的 WSFC。 较早的 Windows Server 版本不在[主要支持](https://support.microsoft.com/lifecycle/search?alpha=windows%20server)范围内，因此本文中不探讨这些版本。
+本文重点介绍了 Windows Server 2016 和 Windows Server 2019 上的 WSFC。 遗憾的是，较早的 Windows Server 版本不在[主要支持](https://support.microsoft.com/lifecycle/search?alpha=windows%20server)范围内，因此本文中不探讨这些版本。
 
-首先需要[创建一个 WSFC](/windows-server/failover-clustering/create-failover-cluster)。 若要详细了解如何在 Azure VMware 解决方案上部署 WSFC，请参阅本文中的信息。
+首先需要[创建一个 WSFC](/windows-server/failover-clustering/create-failover-cluster)。 随后使用本文中的信息在 Azure VMware 解决方案上指定 WSFC 部署。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,7 +46,7 @@ Azure VMware 解决方案为虚拟化 WSFC 提供本机支持。 它在虚拟磁
 
 下图说明了 Azure VMware 解决方案私有云上 WSFC 虚拟节点的体系结构。 它显示了 Azure VMware 解决方案的驻留位置（就更广泛的 Azure 平台而言），其中包括 WSFC 虚拟服务器（红框）。 此图展示了一个典型的中心辐射型体系结构，但使用 Azure 虚拟 WAN 也可以实现类似设置。 两种设置都可以提供其他 Azure 服务能带给你的所有价值。
 
-:::image type="content" source="media/windows-server-failover-cluster/windows-server-failover-architecture.svg" alt-text="Azure VMware 解决方案私有云上 Windows Server 故障转移群集虚拟节点的体系结构关系图。" border="false" lightbox="media/windows-server-failover-cluster/windows-server-failover-architecture.svg":::
+:::image type="content" source="media/windows-server-failover-cluster/windows-server-failover-architecture.svg" alt-text="Azure VMware 解决方案私有云上 Windows Server 故障转移群集虚拟节点的关系图。" border="false" lightbox="media/windows-server-failover-cluster/windows-server-failover-architecture.svg":::
 
 ## <a name="supported-configurations"></a>支持的配置
 
@@ -126,13 +126,13 @@ Azure VMware 解决方案上的 WSFC 不支持以下功能：
 
 1. 确保 Active Directory 环境可用。
 2. 在 vSAN 数据存储上创建虚拟机 (VM)。
-3. 开启所有 VM，配置主机名、IP 地址，将所有 VM 加入 Active Directory 域，并安装最新的操作系统更新。
+3. 开启所有 VM，配置主机名和 IP 地址，将所有 VM 加入 Active Directory 域，并安装最新的操作系统更新。
 4. 安装最新的 VMware 工具。
 5. 在每个 VM 上启用并配置 Windows Server 故障转移群集功能。
 6. 配置群集仲裁见证（可以使用文件共享见证）。
 7. 关闭 WSFC 群集所有节点的电源。
 8. 将一个或多个半虚拟 SCSI 控制器（最多四个）添加到 WSFC 的每个 VM 中。 使用前面段落中的设置。
-9. 在第一个群集节点上，通过“添加新设备” > “硬盘”添加所需的所有共享磁盘。 磁盘共享应保留为“未指定(默认)”，磁盘模式应保留为“独立 - 永久性” 。 将共享磁盘附加到在前面步骤中创建的控制器。
+9. 在第一个群集节点上，通过“添加新设备” > “硬盘”添加所需的所有共享磁盘。 将磁盘共享保留为“未指定”（默认），磁盘模式应保留为“独立 - 永久性” 。 然后将共享磁盘附加到在前面步骤中创建的控制器。
 10. 在剩余的 WSFC 节点上继续操作。 通过选择“添加新设备” > “现有硬盘”，添加在上一个步骤中创建的磁盘。 请务必在所有 WSFC 节点上保留相同的磁盘 SCSI ID。
 11. 开启第一个 WSFC 节点；登录并打开磁盘管理控制台 (MMC)。 确保已添加的共享磁盘可以由操作系统进行管理并已初始化。 设置磁盘的格式并分配一个驱动器号。
 12. 开启其他 WSFC 节点。
@@ -144,7 +144,7 @@ Azure VMware 解决方案上的 WSFC 不支持以下功能：
 
        - 验证存储空间永久保留。 如果你的集群没有使用存储空间（以 Azure VMware 解决方案 vSAN 为例），则此测试不适用。 可以忽略“验证存储空间永久保留”测试的任何结果，包括此警告。 若要避免出现警告，可以排除此测试。
         
-      - 验证网络通信。 群集验证测试将引发一条警告，指出每个群集节点都只有一个网络接口可用。 你可以忽略此警告。 Azure VMware 解决方案会提供所需的可用性和性能，因为节点连接到其中一个 NSX-T 段。 但是，请将此项保留为群集验证测试的一部分，因为它将验证网络通信的其他方面。
+      - 验证网络通信。 群集验证测试会显示一条警告，指出每个群集节点都只有一个网络接口可用。 你可以忽略此警告。 Azure VMware 解决方案会提供所需的可用性和性能，因为节点连接到其中一个 NSX-T 段。 但是，请将此项保留为群集验证测试的一部分，因为它会验证网络通信的其他方面。
 
 16. 创建一个 DRS 规则，以将 WSFC VM 放置在同一个 Azure VMware 解决方案节点上。 为此，你需要创建一个主机到 VM 的关联规则。 这样，群集节点将在同一个 Azure VMware 解决方案主机上运行。 同样，此操作用于试验目的，直到放置策略可用。
 
@@ -165,5 +165,5 @@ Azure VMware 解决方案上的 WSFC 不支持以下功能：
 
 - 通过添加需要 WSFC 功能的更多应用程序来设置新的 WSFC。 例如，SQL Server 和 SAP ASCS。
 - 设置备份解决方案。
-  - [为 Azure VMware 解决方案设置 Azure 备份服务器](../backup/backup-azure-microsoft-azure-backup.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext)
-  - [适用于 Azure VMware 解决方案虚拟机的备份解决方案](../backup/backup-azure-backup-server-vmware.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext)
+  - [为 Azure VMware 解决方案设置 Azure 备份服务器](set-up-backup-server-for-azure-vmware-solution.md)
+  - [适用于 Azure VMware 解决方案虚拟机的备份解决方案](backup-azure-vmware-solution-virtual-machines.md)

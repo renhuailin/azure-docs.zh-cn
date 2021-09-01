@@ -2,13 +2,13 @@
 title: 没有 800 计数限制的资源
 description: 列出可以在一个资源组中有 800 多个实例的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 04/12/2021
-ms.openlocfilehash: f77bd964003638ca33e1f30e352b1f35a866ac6a
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.date: 07/13/2021
+ms.openlocfilehash: e9145500ade55aa8cb9061b6da125e2bd8a0f5c5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060239"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769240"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
 
@@ -28,7 +28,6 @@ ms.locfileid: "112060239"
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
-* edgeSubscriptions
 * linkedSubscriptions
 * registrations
 * registrations/customerSubscriptions
@@ -119,7 +118,7 @@ ms.locfileid: "112060239"
 ## <a name="microsoftinsights"></a>microsoft.insights
 
 * metricalerts
-* scheduledQueryRules
+* scheduledqueryrules
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -137,6 +136,7 @@ ms.locfileid: "112060239"
 * netAppAccounts/capacityPools/volumes
 * netAppAccounts/capacityPools/volumes/mountTargets
 * netAppAccounts/capacityPools/volumes/snapshots
+* netAppAccounts/snapshotPolicies
 * netAppAccounts/volumeGroups
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
@@ -173,7 +173,7 @@ ms.locfileid: "112060239"
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* publicIPAddresses - 默认情况下，限制为 800 个实例。 可以通过联系支持人员来提高该限制。
+* publicIPAddresses
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
@@ -209,20 +209,20 @@ ms.locfileid: "112060239"
 * accounts/accountQuotaPolicies
 * accounts/groupPolicies
 * accounts/jobs
+* accounts/models
 * accounts/storageContainers
-
-## <a name="microsoftstorage"></a>Microsoft.Storage
-
-* storageAccounts
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 * servers/databases
 
-## <a name="microsoftweb"></a>Microsoft.Web
+## <a name="microsoftstorage"></a>Microsoft.Storage
 
-* apiManagementAccounts/apis
-* sites
+* storageAccounts
+
+## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
+
+* streamingjobs - 默认情况下，限制为 800 个实例。 可以通过联系支持人员来提高该限制。
 
 ## <a name="next-steps"></a>后续步骤
 

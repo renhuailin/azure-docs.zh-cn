@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 08aad681160a4f0d369fd312ba58c3ea6c7e8780
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 31dd21a7c525bd1e5dc659b611f72c2c33c6f043
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454116"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725779"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
@@ -42,7 +42,7 @@ ms.locfileid: "110454116"
 | 已为出站流量筛选或禁用 TLS 检查。 | 如果在网络层针对出站流量设置了 TLS 检查或终止，则代理注册步骤或数据加载操作可能会失败。 有关详细信息，请参阅[设置 TLS 检查](/previous-versions/tn-archive/ee796230(v=technet.10))。 |
 | 服务器上的防火墙端口正在运行代理。 |代理要求打开以下防火墙端口，以便代理可以与 Azure AD Connect Health 服务终结点通信： <br /><li>TCP 端口 443</li><li>TCP 端口 5671</li> <br />最新版本的代理不需要端口 5671。 升级到最新版本，以便只需要端口 443。 有关详细信息，请参阅[混合标识所需的端口和协议](./reference-connect-ports.md)。 |
 | 如果启用了 Internet Explorer 增强的安全性，则允许指定的网站。  |如果启用了 Internet Explorer 增强的安全性，则允许在安装代理的服务器上访问以下网站：<br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https:\//aadcdn.msftauth.net</li><li>受 Azure AD 信任的组织的联合服务器（例如 https:\//sts.contoso.com）</li> <br />有关详细信息，请参阅[如何配置 Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)。 如果网络中有代理，请参阅此表末尾的注释。|
-| 已安装 PowerShell 版本 4.0 或更高版本。 | Windows Server 2012 包括 PowerShell 版本 3.0。 此版本对于代理来说是不够的。</br></br> Windows Server 2012 R2 和更高版本包括足够使用的 PowerShell 最新版本。|
+| 已安装 PowerShell 版本 5.0 或更高版本。 | Windows Server 2016 包括 PowerShell 版本 5.0。 
 |已禁用 FIPS（美国联邦信息处理标准）。|Azure AD Connect Health 代理不支持 FIPS。|
 
 > [!IMPORTANT]
@@ -174,7 +174,7 @@ ms.locfileid: "110454116"
 3. 在右侧选择“筛选当前日志”。
 4. 对于“事件源”，请选择“AD FS 审核” 。
 
-    有关审核日志的详细信息，请参阅[操作问题](reference-connect-health-faq.md#operations-questions)。
+    有关审核日志的详细信息，请参阅[操作问题](/azure/active-directory/hybrid/reference-connect-health-faq#operations-questions)。
 
     ![该屏幕截图显示了“筛选当前日志”窗口。 在“事件源”字段，已选中“AD FS 审核”。](./media/how-to-connect-health-agent-install/adfsaudit.png)
 
@@ -407,5 +407,5 @@ role 参数目前可接受以下值：
 * [在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md)
 * [使用用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md)
 * [结合使用 Azure AD Connect Health 和 Azure AD DS](how-to-connect-health-adds.md)
-* [Azure AD Connect Health 常见问题](reference-connect-health-faq.md)
+* [Azure AD Connect Health 常见问题](reference-connect-health-faq.yml)
 * [Azure AD Connect Health 版本历史记录](reference-connect-health-version-history.md)

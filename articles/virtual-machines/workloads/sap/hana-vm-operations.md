@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 667995b505339ae4db500964c1ce81bef6d9d0fa
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: e83b7b8fd3e1667dbf6f402be2f7dd52a6381340
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467683"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965714"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
 本文档提供有关配置 Azure 基础结构以及操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档还包含有关 M128s VM SKU 的 SAP HANA 横向扩展的配置信息。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
@@ -143,7 +143,7 @@ SAP HANA 横向扩展的 VM 节点基本配置如下所示：
 - 其他所有磁盘卷不会在不同的节点之间共享，并且不是基于 NFS。 此文档后面部分进一步提供了有关包含非共享 /hana/data 和 /hana/log 的横向扩展 HANA 安装的安装配置与步骤 。 对于可以使用的 HANA 认证存储，请查看 [SAP HANA Azure 虚拟机存储配置](./hana-vm-operations-storage.md)。
 
 
-要调整卷或磁盘的大小，需要查看文档 [SAP HANA TDI 存储要求](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)以了解所需的大小，具体取决于工作器节点数。 该文档发布了一个公式，需要应用该公式才能获得卷所需的容量。
+要调整卷或磁盘的大小，需要查看文档 [SAP HANA TDI 存储要求](https://blogs.saphana.com/wp-content/uploads/2015/02/Storage-Whitepaper-2-54.pdf)以了解所需的大小，具体取决于工作器节点数。 该文档发布了一个公式，需要应用该公式才能获得卷所需的容量。
 
 横向扩展 SAP HANA VM 的单节点配置示意图中显示的另一项设计条件是 VNet，最好采用子网配置。 SAP 强烈建议将面向客户端/应用程序的流量与 HANA 节点之间的通信进行隔离。 如图所示，可以通过将两个不同的 vNIC 附加到 VM 来实现此目的。 这两个 vNIC 位于不同的子网中，并使用两个不同的 IP 地址。 然后，使用 NSG 或用户定义的路由通过路由规则控制流量流。
 

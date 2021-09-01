@@ -4,12 +4,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: ef6b23cf7564cff57f398c76162f9c25efac7075
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 19e10b43fbf0dac05da531570376b77d22840312
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081273"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324573"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -134,7 +134,7 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 * 如果在创建群集后扩展 VNET，则必须更新群集（执行任意托管群集操作，但节点池操作不算），然后添加到原始 cidr 之外的子网。 尽管我们最初允许，但 AKS 会在现在添加的代理池上出错。 如果你不知道如何协调群集文件，请提交支持票证。 
 * 不支持 Calico 网络策略。 
 * 不支持 Azure 网络策略。
-* Kube-proxy 应有单个连续 CIDR，并将其用于三个优化。 有关详细信息，请参阅此 [K.E.P.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) 和[此处](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)的 --cluster-cidr。 在 azure cni 中，第一个节点池的子网将被提供给 kube-proxy。 
+* Kube-proxy 应有单个连续 CIDR，并将其用于三个优化。 有关详细信息，请参阅此 [K.E.P.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) 和[此处](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)的 --cluster-cidr。 在 Azure CNI 中，第一个节点池的子网将提供给 kube-proxy。 
 
 若要创建具有专用子网的节点池，请在创建节点池时将子网资源 ID 作为附加参数传递。
 
@@ -959,7 +959,7 @@ az group delete --name myResourceGroup2 --yes --no-wait
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
 [az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md
-[public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md#why-create-a-public-ip-address-prefix
+[public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md
 [az-public-ip-prefix-create]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest&preserve-view=true#az_network_public_ip_prefix_create
 [node-image-upgrade]: node-image-upgrade.md
 [fips]: /azure/compliance/offerings/offering-fips-140-2

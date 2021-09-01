@@ -1,21 +1,21 @@
 ---
-title: Azure ExpressRoute：面向网络工程师的 Azure
+title: 面向网络工程师的 Azure
 description: 本页向传统网络工程师介绍了 Azure 中的网络如何工作。
 documentationcenter: na
 services: networking
-author: osamaz
+author: osamazia
 manager: tracsman
 ms.service: virtual-network
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: 9a22e58e4407897fb9418cae0ba9f32408cda8e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c73ea7c9e2f399e479f7d3f8bef5797feabb83ec
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98234199"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228811"
 ---
 # <a name="azure-for-network-engineers"></a>面向网络工程师的 Azure
 作为传统网络工程师，你之前负责通过物理资产（例如路由器、交换机、电缆、防火墙）来构建基础设施。 在逻辑层上，你曾经配置过虚拟 LAN (VLAN)、跨树协议 (STP)、路由协议（RIP、OSPF、BGP）。 你曾经使用管理工具和 CLI 来管理你的网络。 云中的网络有所不同，其中的网络终结点是逻辑终结点，很少使用路由协议。 你将使用 Azure 资源管理器 API、Azure CLI 和 PowerShell 来配置和管理 Azure 中的资产。 你将首先了解 Azure 网络的基本租户，从而开始你在云中的网络探索旅程。 

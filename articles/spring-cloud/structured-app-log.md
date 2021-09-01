@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud 的结构化应用程序日志 | Microsoft Docs
 description: 本文介绍了如何在 Azure Spring Cloud 中生成和收集结构化应用程序日志数据。
-author: MikeDodaro
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 02/05/2021
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: ef51fc0c67c938a2d0933b6032072acc24e42dd3
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 8d84462d38c00e3788e424bd7cac6742d8b0e408
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110494622"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015578"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Azure Spring Cloud 的结构化应用程序日志
 
@@ -43,11 +43,11 @@ ms.locfileid: "110494622"
 
 * “timestamp”字段是必需的，并且应当采用 UTC 格式，所有其他字段都是可选的。
 * “mdc”字段中的“traceId”和“spanId”用于跟踪。
-* 在单个行中记录每条 JSON 记录。 
+* 在单个行中记录每条 JSON 记录。
 
-**日志记录示例** 
+**日志记录示例**
 
- ```
+```log
 {"timestamp":"2021-01-08T09:23:51.280Z","logger":"com.example.demo.HelloController","level":"ERROR","thread":"http-nio-1456-exec-4","mdc":{"traceId":"c84f8a897041f634","spanId":"c84f8a897041f634"},"stackTrace":"java.lang.RuntimeException: get an exception\r\n\tat com.example.demo.HelloController.throwEx(HelloController.java:54)\r\n\","message":"Got an exception","exceptionClass":"RuntimeException"}
 ```
 
@@ -57,17 +57,17 @@ ms.locfileid: "110494622"
 
 通常，这种情况发生在使用深度 stacktrace 的异常日志记录上（特别是已启用 [AppInsights 进程内代理](./how-to-application-insights.md)时）。  将限制设置应用到 stacktrace 输出（请参阅下面的配置示例）以确保正确分析最终输出。
 
-## <a name="generate-schema-compliant-json-log"></a>生成遵循架构的 JSON 日志  
+## <a name="generate-schema-compliant-json-log"></a>生成遵循架构的 JSON 日志
 
-对于 Spring 应用程序，你可以使用常用的[日志记录框架](https://docs.spring.io/spring-boot/docs/2.1.13.RELEASE/reference/html/boot-features-logging.html#boot-features-custom-log-configuration)（例如 [logback](http://logback.qos.ch/) 和 [log4j2](https://logging.apache.org/log4j/2.x/)）生成预期的 JSON 日志格式。 
+对于 Spring 应用程序，你可以使用常用的[日志记录框架](https://docs.spring.io/spring-boot/docs/2.1.13.RELEASE/reference/html/boot-features-logging.html#boot-features-custom-log-configuration)（例如 [logback](http://logback.qos.ch/) 和 [log4j2](https://logging.apache.org/log4j/2.x/)）生成预期的 JSON 日志格式。
 
-### <a name="log-with-logback"></a>使用 logback 进行记录 
+### <a name="log-with-logback"></a>使用 logback 进行记录
 
-使用 Spring Boot 入门版时，默认情况下将使用 logback。 对于 logback 应用，请使用 [logstash-encoder](https://github.com/logstash/logstash-logback-encoder) 生成 JSON 格式的日志。 Spring Boot 2.1+ 版支持此方法。 
+使用 Spring Boot 入门版时，默认情况下将使用 logback。 对于 logback 应用，请使用 [logstash-encoder](https://github.com/logstash/logstash-logback-encoder) 生成 JSON 格式的日志。 Spring Boot 2.1+ 版支持此方法。
 
 此过程：
 
-1. 在 `pom.xml` 文件中添加 logstash 依赖项。 
+1. 在 `pom.xml` 文件中添加 logstash 依赖项。
 
     ```xml
     <dependency>
@@ -76,7 +76,9 @@ ms.locfileid: "110494622"
         <version>6.5</version>
     </dependency>
     ```
+
 1. 更新 `logback-spring.xml` 配置文件以设置 JSON 格式。
+
     ```xml
     <configuration>
         <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
@@ -122,6 +124,7 @@ ms.locfileid: "110494622"
         </root>
     </configuration>
     ```
+
 1. 使用带 `-spring` 后缀（如 `logback-spring.xml`）的日志记录配置文件时，可基于 Spring 活动配置文件设置日志记录配置。
 
     ```xml
@@ -141,10 +144,10 @@ ms.locfileid: "110494622"
         </springProfile>
     </configuration>
     ```
-    
+
     对于本地开发，请使用 JVM 参数 `-Dspring.profiles.active=dev` 运行 Spring Cloud 应用程序，然后可看到人工可读的日志，而不是 JSON 格式的行。
 
-### <a name="log-with-log4j2"></a>使用 log4j2 进行记录 
+### <a name="log-with-log4j2"></a>使用 log4j2 进行记录
 
 对于 log4j2 应用，请使用 [json-template-layout](https://logging.apache.org/log4j/2.x/manual/json-template-layout.html) 生成 JSON 格式的日志。 Spring Boot 2.1+ 版支持此方法。
 
@@ -216,7 +219,7 @@ ms.locfileid: "110494622"
     }
     ```
 
-3. 在 `log4j2-spring.xml` 配置文件中使用此 JSON 布局模板。 
+3. 在 `log4j2-spring.xml` 配置文件中使用此 JSON 布局模板。
 
     ```xml
     <configuration>
@@ -243,10 +246,10 @@ ms.locfileid: "110494622"
 请按以下过程操作：
 
 1. 转到你的服务实例的服务概述页。
-2. 单击 `Monitoring` 部分下的 `Logs` 条目。
+2. 选择“正在监视”部分的“日志”项。 
 3. 运行此查询。
 
-   ```
+   ```query
    AppPlatformLogsforSpring
    | where TimeGenerated > ago(1h)
    | project AppTimestamp, Logger, CustomLevel, Thread, Message, ExceptionClass, StackTrace, TraceId, SpanId
@@ -256,29 +259,28 @@ ms.locfileid: "110494622"
 
    ![Json 日志显示](media/spring-cloud-structured-app-log/json-log-query.png)
 
-
 ### <a name="show-log-entries-containing-errors"></a>显示包含错误的日志条目
 
 若要查看包含错误的日志条目，请运行以下查询：
 
-```
+```query
 AppPlatformLogsforSpring
-| where TimeGenerated > ago(1h) and CustomLevel == "ERROR" 
-| project AppTimestamp, Logger, ExceptionClass, StackTrace, Message, AppName 
+| where TimeGenerated > ago(1h) and CustomLevel == "ERROR"
+| project AppTimestamp, Logger, ExceptionClass, StackTrace, Message, AppName
 | sort by AppTimestamp
 ```
 
-使用此查询查找错误，或修改查询词以查找特定的异常类或错误代码。 
+使用此查询查找错误，或修改查询词以查找特定的异常类或错误代码。
 
 ### <a name="show-log-entries-for-a-specific-traceid"></a>显示特定 traceId 的日志条目
 
 若要查看特定跟踪 ID“trace_id”的日志条目，请运行以下查询：
 
-```
+```query
 AppPlatformLogsforSpring
 | where TimeGenerated > ago(1h)
-| where TraceId == "trace_id" 
-| project AppTimestamp, Logger, TraceId, SpanId, StackTrace, Message, AppName 
+| where TraceId == "trace_id"
+| project AppTimestamp, Logger, TraceId, SpanId, StackTrace, Message, AppName
 | sort by AppTimestamp
 ```
 

@@ -1,14 +1,14 @@
 ---
 title: 大规模监视委托资源
 description: Azure Lighthouse 可帮助你在客户租户间以可缩放的方式来使用 Azure Monitor 日志。
-ms.date: 05/10/2021
+ms.date: 08/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 29f78eb677b17193876ec45250e639cb9086cf6b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 3424078b00aef569f054d6d3c02382f4bd071a91
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082300"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122325069"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大规模监视委托资源
 
@@ -31,7 +31,7 @@ ms.locfileid: "112082300"
 您可以通过使用 [Azure 门户](../../azure-monitor/logs/quick-create-workspace.md)、[Azure CLI](../../azure-monitor/logs/quick-create-workspace-cli.md) 或 [Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) 来创建 Log Analytics 工作区。
 
 > [!IMPORTANT]
-> 即使在客户租户中创建了所有工作区，也必须在管理租户的订阅中注册 Microsoft Insights 资源提供程序。 如果你的管理租户没有现有的 Azure 订阅，可以使用以下 PowerShell 命令手动注册资源提供程序：
+> 如果在客户租户中创建了所有工作区，也必须在管理租户的订阅中[注册](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) Microsoft Insights 资源提供程序。 如果你的管理租户没有现有的 Azure 订阅，可以使用以下 PowerShell 命令手动注册资源提供程序：
 >
 > ```powershell
 > $ManagingTenantId = "your-managing-Azure-AD-tenant-id"
@@ -43,7 +43,6 @@ ms.locfileid: "112082300"
 > New-AzADServicePrincipal -ApplicationId 1215fb39-1d15-4c05-b2e3-d519ac3feab4
 > New-AzADServicePrincipal -ApplicationId 6da94f3c-0d67-4092-a408-bb5d1cb08d2d 
 > ```
->
 
 ## <a name="deploy-policies-that-log-data"></a>部署记录数据的策略
 
@@ -56,6 +55,24 @@ ms.locfileid: "112082300"
 ## <a name="analyze-the-gathered-data"></a>分析收集的数据
 
 部署策略后，会将数据记录在每个客户租户中创建的 Log Analytics 工作区中。 若要深入了解所有受管理客户，可以使用 [Azure Monitor 工作簿](../../azure-monitor/visualize/workbooks-overview.md)之类的工具从多个数据源收集和分析信息。
+
+## <a name="query-data-across-customer-workspaces"></a>跨客户工作区查询数据
+
+可以通过创建包含多个工作区的并集，运行[日志查询](../../azure-monitor/logs/log-query-overview.md)以在不同客户租户的 Log Analytics 工作区中检索数据。 通过包含 TenantID 列，可以查看哪些结果属于哪些租户。
+
+以下示例查询在 AzureDiagnostics 表上跨两个单独客户租户中的工作区创建并集。 结果会显示 Category、ResourceGroup 和 TenantID 列。
+
+``` Kusto
+union AzureDiagnostics,
+workspace("WS-customer-tenant-1").AzureDiagnostics,
+workspace("WS-customer-tenant-2").AzureDiagnostics
+| project Category, ResourceGroup, TenantId
+```
+
+有关跨多个 Log Analytics 工作区的查询的更多示例，请参阅[使用 Azure Monitor 跨资源进行查询](../../azure-monitor/logs/cross-workspace-query.md)。
+
+> [!IMPORTANT]
+> 如果使用用于从 Log Analytics 工作区查询数据的自动化帐户，则该自动化帐户必须在与工作区相同的租户中进行创建。
 
 ## <a name="view-alerts-across-customers"></a>跨客户查看警报
 
@@ -78,5 +95,5 @@ alertsmanagementresources
 ## <a name="next-steps"></a>后续步骤
 
 - 尝试使用 GitHub 中的[按域分类的活动日志](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain)工作簿。
-- 探索[已构建 MVP 的示例工作簿](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)，该工作簿通过在多个 Log Analytics 工作区中[查询更新管理日志](../../automation/update-management/query-logs.md)来跟踪补丁合规性报表。 
+- 探索[已构建 MVP 的示例工作簿](https://github.com/scautomation/Azure-Automation-Update-Management-Workbooks)，该工作簿通过在多个 Log Analytics 工作区中[查询更新管理日志](../../automation/update-management/query-logs.md)来跟踪补丁合规性报表。
 - 了解其他[跨租户管理体验](../concepts/cross-tenant-management-experience.md)。

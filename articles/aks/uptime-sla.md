@@ -5,20 +5,20 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 288e1b9e361bd8c0cf41e4bb86fcfce15dda8ac9
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 77bdfb4ed75b9287b911a6b0d2742c235b37e297
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166390"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122325070"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
-运行时间 SLA 是一个可选功能，用于为群集启用具有财务支持的更高 SLA。 对于使用[可用性区域][availability-zones]的群集，运行时间 SLA 可保证 Kubernetes API 服务器终结点 99.95% 的可用性，对于不使用可用性区域的群集，可保证 99.9% 的可用性。 AKS 跨更新域和容错域使用主节点副本，以确保满足 SLA 要求。
+运行时间 SLA 是一个层，用于为 AKS 群集启用具有财务支持的更高 SLA。 具有运行时间 SLA（也被视为 AKS REST API 中的付费层）的群集附带更多控制平面资源，并自动缩放以满足群集的负载。 对于使用[可用性区域][availability-zones]的群集，运行时间 SLA 可保证 Kubernetes API 服务器终结点 99.95% 的可用性，对于不使用可用性区域的群集，可保证 99.9% 的可用性。 AKS 跨更新域和容错域使用主节点副本，以确保满足 SLA 要求。
 
-客户如果需要 SLA 以满足合规性要求或需要将 SLA 扩展到其最终用户，则应启用此功能。 具有将从更高的运行时间 SLA 中受益的关键工作负载的客户也可能受益。 将运行时间 SLA 功能与可用性区域结合使用可以提高 Kubernetes API 服务器运行时间的可用性。
+AKS 建议在生产工作负载中使用运行时间 SLA，以确保控制平面组件的可用性。 相比之下，免费层上的群集的副本较少且控制平面资源有限，不适用于生产工作负载。
 
-客户仍可以创建服务级别目标 (SLO) 为 99.5% 的无限制免费群集，并根据需要选择首选 SLO 或 SLA 运行时间。
+客户仍可以创建服务级别目标 (SLO) 为 99.5% 的无限数量的免费群集，并选择首选 SLO。 
 
 > [!IMPORTANT]
 > 对于出口锁定的群集，请参阅[限制出口流量](limit-egress-traffic.md)以打开适当的端口。

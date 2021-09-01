@@ -1,5 +1,5 @@
 ---
-title: 已启用 Azure Arc 的 Kubernetes 验证计划
+title: 已启用 Azure Arc 的 Kubernetes 验证
 services: azure-arc
 ms.service: azure-arc
 ms.date: 03/03/2021
@@ -8,14 +8,14 @@ author: shashankbarsin
 ms.author: shasb
 description: 描述用于 Kubernetes 分发的 Arc 验证计划
 keywords: Kubernetes, Arc, Azure, K8s, 验证
-ms.openlocfilehash: 819df906add6275997e01fab310fe8dd57a87b51
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d8e48a6e9dc5d8d95dacb649fb0748e4ae4daa5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121365"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742677"
 ---
-# <a name="azure-arc-validation-program"></a>Azure Arc 验证计划
+# <a name="azure-arc-enabled-kubernetes-validation"></a>已启用 Azure Arc 的 Kubernetes 验证
 
 已启用 Azure Arc 的 Kubernetes 适用于任何经云原生计算基础 (CNCF) 认证的 Kubernetes 群集。 Azure Arc 团队还与关键行业 Kubernetes 产品/服务提供商合作，通过其 Kubernetes 分发来验证已启用 Azure Arc 的 Kubernetes。 将验证这些提供商发布的 Kubernetes 分发的未来主要和次要版本是否兼容已启用 Azure Arc 的 Kubernetes。
 
@@ -32,7 +32,7 @@ ms.locfileid: "102121365"
 
 | 提供程序名称 | 分发名称 | 版本 |
 | ------------ | ----------------- | ------- |
-| RedHat       | [OpenShift 容器平台](https://www.openshift.com/products/container-platform) | [4.5](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html)、[4.6](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html)、[4.7](https://docs.openshift.com/container-platform/4.7/release_notes/ocp-4-7-release-notes.html) |
+| RedHat       | [OpenShift 容器平台](https://www.openshift.com/products/container-platform) | [4.5.41+](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html)、[4.6.35+](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html)、[4.7.18+](https://docs.openshift.com/container-platform/4.7/release_notes/ocp-4-7-release-notes.html) |
 | VMware       | [Tanzu Kubernetes 网格](https://tanzu.vmware.com/kubernetes-grid) | Kubernetes 版本：v1.17.5 |
 | Canonical    | [Charmed Kubernetes](https://ubuntu.com/kubernetes) | [1.19](https://ubuntu.com/kubernetes/docs/1.19/components) |
 | SUSE Rancher      | [Rancher Kubernetes 引擎](https://rancher.com/products/rke/) | RKE CLI 版本：[v1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4)Kubernetes 版本：[1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6))、[1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14))、[1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |

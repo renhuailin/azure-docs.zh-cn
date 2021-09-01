@@ -9,12 +9,12 @@ ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1e85974968e523903282cdd8a577dee13ab32bf4
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 485968e6fa9a68781de85648f0ad008586c2c15b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668122"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734588"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
 
@@ -84,6 +84,12 @@ az vm create \
 ```bash
 ssh -i ~/.ssh/id_rsa azureuser@10.111.12.123
 ```
+
+如果你以前从未连接到此 VM，系统会要求你验证主机指纹。 简单接受提供的指纹很容易，但这种方法将使你暴露于可能正在进行攻击的人。 你应始终验证主机指纹。 仅在第一次从客户端进行连接时，你才需要执行此操作。 若要通过门户获取主机指纹，请使用以下脚本“运行命令”：`ssh-keygen -lf /etc/ssh/ssh_host_ecdsa_key.pub | awk '{print $2}'`。
+
+:::image type="content" source="media/ssh-from-windows/run-command-validate-host-fingerprint.png" alt-text="显示使用“运行命令”验证主机指纹的屏幕截图。":::
+
+若要使用 CLI 运行命令，请使用 [`az vm run-command invoke` 命令](/cli/azure/vm/run-command)。
 
 如果创建密钥对时配置了密码，请在出现提示时输入该密码。
 

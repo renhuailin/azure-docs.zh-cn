@@ -1,22 +1,22 @@
 ---
 title: Azure Spring Cloud 的指标
 description: 了解如何查看 Azure Spring Cloud 中的指标
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d7b9f068eef38a7567e5b595277ee92493a6c16
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d09b2aff00d32dc3865c13e2aaab94a0a86464e3
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129254"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181574"
 ---
 # <a name="metrics-for-azure-spring-cloud"></a>Azure Spring Cloud 的指标
 
-Azure 指标资源管理器是 Microsoft Azure 门户的一个组件，可用于绘制图表、以直观的形式关联趋势以及研究指标的上升和下降。 使用指标资源管理器调查资源的运行状况和利用率。 
+Azure 指标资源管理器是 Microsoft Azure 门户的一个组件，可用于绘制图表、以直观的形式关联趋势以及研究指标的上升和下降。 使用指标资源管理器调查资源的运行状况和利用率。
 
 Azure Spring Cloud 中有两个指标视点。
 * 每个应用程序概览页中的图表
@@ -27,13 +27,14 @@ Azure Spring Cloud 中有两个指标视点。
 应用程序“概览”中的图表为每个应用程序提供快速的状态检查。 常用“指标”页包含可供参考的所有指标。 可以在常用指标页中构建你自己的图表，然后在“仪表板”中固定它们。
 
 ## <a name="application-overview-page"></a>应用程序概览页
-在“应用”中选择一个应用，以在概览页中查找图表。  
 
- ![应用程序指标管理](media/metrics/metrics-2.png)
+在“应用”中选择一个应用，以在概览页中查找图表。
 
-每个应用程序的“应用程序概览”页都会提供一个指标图表，用于对应用程序进行快速状态检查。  
+![应用程序指标管理](media/metrics/metrics-2.png)
 
- ![应用程序指标概览](media/metrics/metrics-3.png)
+每个应用程序的“应用程序概览”页都会提供一个指标图表，用于对应用程序进行快速状态检查。
+
+![应用程序指标概览](media/metrics/metrics-3.png)
 
 Azure Spring Cloud 提供以下五个图表，其中的指标每分钟更新一次：
 
@@ -60,6 +61,7 @@ Azure Spring Cloud 提供以下五个图表，其中的指标每分钟更新一�
 ![指标聚合](media/metrics/metrics-5.png)
 
 聚合类型指示如何按时间对图表中的指标点进行聚合。 每分钟有一个原始指标点，一分钟内的预聚合类型由指标类型预定义。
+
 * 总和：将所有值的和显示为目标输出。
 * 平均值：将时段中的“平均”值用作目标输出。
 * 最大值/最小值：将时段中的“最大/最小”值用作目标输出。
@@ -68,9 +70,10 @@ Azure Spring Cloud 提供以下五个图表，其中的指标每分钟更新一�
 
 ![指标修改](media/metrics/metrics-6.png)
 
-默认视图包括某个 Azure Spring Cloud 服务的应用程序的所有指标。 可以在显示中筛选一个应用或实例的指标。  单击“添加筛选器”，将属性设置为“应用”，然后在“值”文本框中选择要监视的目标应用程序。   
+默认视图包括某个 Azure Spring Cloud 服务的应用程序的所有指标。 可以在显示中筛选一个应用或实例的指标。 选择“添加筛选器”，将属性设置为“应用”，然后在“值”文本框中选择要监视的目标应用程序。
 
 你可以使用两种类型的筛选器（属性）：
+
 * 应用：按应用名称筛选
 * 实例：按应用实例筛选
 
@@ -88,18 +91,22 @@ Azure Spring Cloud 提供以下五个图表，其中的指标每分钟更新一�
 下表显示了可用的指标和详细信息。
 
 ### <a name="error"></a>错误
+
 >[!div class="mx-tdCol2BreakAll"]
 >| 名称 | Spring Actuator 指标名称 | 计价单位 | 详细信息 |
 >|----|----|----|------------|
 >| tomcat.global.error | tomcat.global.error | 计数 | 已处理的请求中发生的错误数 |
 
 ### <a name="performance"></a>性能
+
 >[!div class="mx-tdCol2BreakAll"]
 >| 名称 | Spring Actuator 指标名称 | 计价单位 | 详细信息 |
 >|----|----|----|------------|
 >| system.cpu.usage | system.cpu.usage | 百分比 | 整个系统最近的 CPU 使用率（已过时，不建议使用）。 此值为 [0.0,1.0] 区间中的一个双精度值。 如果值为 0.0，则表示在所观察的最近一段时间内所有 CPU 都处于空闲状态，而如果值为 1.0，则表示在所观察的最近一段时间内所有 CPU 都一直在主动运行。|
 >| process.cpu.usage | 应用 CPU 使用率百分比 | 百分比 | Java 虚拟机进程最近的 CPU 使用率（已过时，不建议使用）。 此值为 [0.0,1.0] 区间中的一个双精度值。 如果值为 0.0，则表示在所观察的最近一段时间内，任何 CPU 都未运行 JVM 进程中的线程，而如果值为 1.0，则表示在所观察的最近一段时间内，所有 CPU 都一直在主动运行 JVM 中的线程。 JVM 中的线程包括应用程序线程以及 JVM 内部线程。|
->| AppCpuUsage | 应用 CPU 使用情况 | 百分比 | 针对分配给此应用的 CPU 的 JVM 进程的最近 CPU 使用率，在此值为 [0.0,1.0] 区间中的双精度类型值。 如果值为 0.0，则表示在所观察的最近一段时间内，任何 CPU 都未运行 JVM 进程中的线程，而如果值为 1.0，则表示在所观察的最近一段时间内，所有 CPU 都一直在主动运行 JVM 中的线程。 JVM 中的线程包括应用程序线程以及 JVM 内部线程。|
+>| 应用 CPU 使用情况 | | 百分比 | JVM 进程的最近 CPU 使用情况（针对分配给此应用的 CPU）。 此值为 [0.0,1.0] 区间中的一个双精度值。 如果值为 0.0，则表示在所观察的最近一段时间内，任何 CPU 都未运行 JVM 进程中的线程，而如果值为 1.0，则表示在所观察的最近一段时间内，所有 CPU 都一直在主动运行 JVM 中的线程。 JVM 中的线程包括应用程序线程以及 JVM 内部线程。|
+>| 应用 CPU 使用情况（已弃用） | | 百分比 | 已弃用的应用 CPU 使用情况指标。 改为使用新的应用 CPU 使用情况指标。|
+>| 应用内存使用情况 | | 百分比 | JVM 进程的最近内存使用情况（针对分配给此应用的内存）。 此值为 [0.0,1.0] 区间中的一个双精度值。 如果值为 0.0，则表示在最近的观察时段内，JVM 进程中的线程没有分配任何内存，如果值为 1.0，则表示在最近的观察时段内，所有内存都由 JVM 进程中的线程分配。 JVM 中的线程包括应用程序线程以及 JVM 内部线程。|
 >| jvm.memory.committed | jvm.memory.committed | 字节 | 表示保证可供 JVM 使用的内存量。 JVM 可能会向系统释放内存，其提交的值可能小于初始值。 提交的值将始终大于或等于使用的值。 |
 >| jvm.memory.used | jvm.memory.used | 字节 | 表示当前使用的内存量（字节）。 |
 >| jvm.memory.max | jvm.memory.max | 字节 | 表示可用于内存管理的最大内存量。 使用的和提交的内存量将始终少于或等于最大内存量（如果已定义最大内存量）。 如果在进行内存分配时尝试提高使用的内存，使得使用的内存 > 提交的内存，则即使使用的内存 <= 最大内存（例如，当系统的虚拟内存较低时），内存分配也可能会失败。 |
@@ -138,6 +145,7 @@ Azure Spring Cloud 提供以下五个图表，其中的指标每分钟更新一�
 有关详细信息，请参阅 [dotnet 计数器](/dotnet/core/diagnostics/dotnet-counters)。
 
 ### <a name="request"></a>请求
+
 >[!div class="mx-tdCol2BreakAll"]
 >| 名称 | Spring Actuator 指标名称 | 计价单位 | 详细信息 |
 >|----|----|----|------------|
@@ -159,6 +167,7 @@ Azure Spring Cloud 提供以下五个图表，其中的指标每分钟更新一�
 有关详细信息，请参阅 [dotnet 计数器](/dotnet/core/diagnostics/dotnet-counters)。
 
 ### <a name="session"></a>会话
+
 >[!div class="mx-tdCol2BreakAll"]
 >| 名称 | Spring Actuator 指标名称 | 计价单位 | 详细信息 |
 >|----|----|----|------------|
@@ -169,16 +178,10 @@ Azure Spring Cloud 提供以下五个图表，其中的指标每分钟更新一�
 >| tomcat.sessions.rejected | tomcat.sessions.rejected | 计数 | 由于达到了最大活动会话数而未创建的会话数。 |
 >| tomcat.sessions.active.current | tomcat.sessions.active.current | 计数 | Tomcat 会话活动计数 |
 
-## <a name="see-also"></a>请参阅
-
-* [快速入门：通过日志、指标和跟踪来监视 Azure Spring Cloud 应用](./quickstart-logs-metrics-tracing.md)
-
-* [Azure 指标资源管理器入门](../azure-monitor/essentials/metrics-getting-started.md)
-
-* [通过诊断设置分析日志和指标](./diagnostic-services.md)
-
 ## <a name="next-steps"></a>后续步骤
 
+* [快速入门：通过日志、指标和跟踪来监视 Azure Spring Cloud 应用](./quickstart-logs-metrics-tracing.md)
+* [Azure 指标资源管理器入门](../azure-monitor/essentials/metrics-getting-started.md)
+* [通过诊断设置分析日志和指标](./diagnostic-services.md)
 * [教程：使用警报和操作组监视 Spring Cloud 资源](./tutorial-alerts-action-groups.md)
-
 * [Azure Spring Cloud 的配额和服务计划](./quotas.md)

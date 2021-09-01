@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 08/17/2021
 ms.author: b-juche
-ms.openlocfilehash: dab6415e27239e9140cce7c03bae9a2e3a95ca7d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 824f2c9d8259e04790d89428c4a4f7384d02ec9a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072120"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322231"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
-Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协议（NFSv3 和 SMB）创建卷。 卷的容量消耗是依据其池的预配容量计数的。 
+Azure NetApp 文件支持使用 NFS（NFSv3 或 NFSv4.1）、SMB3 或双重协议（NFSv3 和 SMB，或 NFSv4.1 和 SMB）创建卷。 卷的容量消耗是依据其池的预配容量计数的。 
 
 本文介绍如何创建 SMB3 卷。 对于 NFS 卷，请参阅[创建 NFS 卷](azure-netapp-files-create-volumes.md)。 对于双重协议卷，请参阅[创建双重协议卷](create-volumes-dual-protocol.md)。
 
@@ -49,7 +49,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协�
     * **卷名称**      
         指定要创建的卷的名称。   
 
-        卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 你可以使用任何字母数字字符。   
+        卷名称在每个容量池中必须是唯一的。 它的长度必须至少为三个字符。 名称必须以字母开头。 只能包含字母、数字、下划线（“_”）和连字符（“-”）。 
 
         不能将 `default` 或 `bin` 用作卷名称。
 
@@ -98,7 +98,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协�
         - 只能包含字母、数字或短划线 (`-`)。 
         - 长度不得超过 80 个字符。   
         
-    * 如果要为 SMB3 启用加密，请选择“启用 SMB3 加密协议”。   
+    * <a name="smb3-encryption"></a>如果要为 SMB3 启用加密，请选择“启用 SMB3 加密协议”。   
         此功能对使用中的 SMB3 数据启用加密。 未使用 SMB3 加密的 SMB 客户端无法访问此卷。  无论此设置如何，静态数据都会加密。  
         有关其他信息，请参阅 [SMB 加密](azure-netapp-files-smb-performance.md#smb-encryption)。 
 
@@ -118,7 +118,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协�
         ```
         
         此外，[Azure CLI 命令](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` 和 `az feature show` 分别可用于注册功能和显示注册状态。  
-    * 如果要为 SMB 卷启用连续可用性，请选择“启用连续可用性”。    
+    * <a name="continuous-availability"></a>如果要为 SMB 卷启用连续可用性，请选择“启用连续可用性”。    
 
         > [!IMPORTANT]   
         > SMB 连续可用性功能目前为公共预览版。 你需要通过 [Azure NetApp 文件 SMB 连续可用性共享公共预览版候补名单提交页面](https://aka.ms/anfsmbcasharespreviewsignup)提交访问该功能的候补名单请求。 等待来自 Azure NetApp 文件团队的官方确认电子邮件，然后才能使用连续可用性功能。   
@@ -153,16 +153,7 @@ Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协�
 
 ## <a name="control-access-to-an-smb-volume"></a>控制对 SMB 卷的访问  
 
-通过权限管理对 SMB 卷的访问。  
-
-### <a name="share-permissions"></a>共享权限  
-
-默认情况下，新卷具有“所有人/完全控制”共享权限。 “域管理员”组的成员可以按以下步骤更改共享权限：  
-
-1. 将共享映射到驱动器。  
-2. 右键单击驱动器，选择“属性”，然后转到“安全性”选项卡。
-
-[ ![NFS 共享权限](../media/azure-netapp-files/set-share-permissions.png)](../media/azure-netapp-files/set-share-permissions.png#lightbox)
+通过权限管理对 SMB 卷的访问。 
 
 ### <a name="ntfs-file-and-folder-permissions"></a>NTFS 文件和文件夹权限  
 

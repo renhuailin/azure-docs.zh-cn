@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据资源管理器查询从 Azure Monitor 中导出的数据（预览版）
+title: 使用 Azure 数据资源管理器查询从 Azure Monitor 中导出的数据
 description: 使用 Azure 数据资源管理器可查询从 Log Analytics 工作区导出到 Azure 存储帐户的数据。
 author: osalzberg
 ms.author: bwren
@@ -7,14 +7,14 @@ ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ad938d15f8e21ed34014c0a743b5ba891f5476e0
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e3ab2a3bfc6e42e1cba479ee8dacb97d8f46305a
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316832"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324750"
 ---
-# <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器查询从 Azure Monitor 中导出的数据（预览版）
+# <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer"></a>使用 Azure 数据资源管理器查询从 Azure Monitor 中导出的数据
 将数据从 Azure Monitor 导出到 Azure 存储帐户可以实现低成本保留，并能够将日志重新分配到不同的区域。 使用 Azure 数据资源管理器可查询从 Log Analytics 工作区导出的数据。 配置后，从你的工作区发送到 Azure 存储帐户的受支持的表将可用作 Azure 数据资源管理器的数据源。
 
 处理流如下： 
@@ -30,7 +30,7 @@ ms.locfileid: "108316832"
 ## <a name="send-data-to-azure-storage"></a>将数据发送到 Azure 存储
 可以使用以下任一选项将 Azure Monitor 日志导出到 Azure 存储帐户。
 
-- 若要将所有数据从 Log Analytics 工作区导出到 Azure 存储帐户或事件中心，请使用 Azure Monitor 日志的 Log Analytics 工作区数据导出功能。 请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）](./logs-data-export.md)
+- 若要将所有数据从 Log Analytics 工作区导出到 Azure 存储帐户或事件中心，请使用 Azure Monitor 日志的 Log Analytics 工作区数据导出功能。 请参阅 [Azure Monitor 中的 Log Analytics 工作区数据导出功能](./logs-data-export.md)
 - 使用逻辑应用从日志查询进行计划性导出。 这类似于数据导出功能，但你可向 Azure 存储发送经过筛选或聚合的数据。 不过，此方法受限于[日志查询限制](../service-limits.md#log-analytics-workspaces)。请参阅[使用逻辑应用将 Log Analytics 工作区中的数据存档到 Azure 存储](./logs-export-logic-app.md)。
 - 使用逻辑应用一次性导出。 请参阅[适用于逻辑应用和 Power Automate 的 Azure Monitor 日志连接器](./logicapp-flow-connector.md)。
 - 使用 PowerShell 脚本一次性导出到本地计算机。 请参阅 [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport)。
@@ -80,6 +80,10 @@ $SecondCommand = @()
 foreach ($record in $output) {
     if ($record.DataType -eq 'System.DateTime') {
         $dataType = 'datetime'
+    } elseif ($record.DataType -eq 'System.Int32') {
+        $dataType = 'int32'
+    } elseif ($record.DataType -eq 'System.Double') {
+        $dataType = 'double'
     } else {
         $dataType = 'string'
     }

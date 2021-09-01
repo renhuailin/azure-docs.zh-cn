@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
 ms.author: chuye
-ms.openlocfilehash: 26ce15bfe474f96aaef17f186f56e36ce42b7239
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 7ef07280d65f3533e1def6475e40a65b16f0f6c3
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950525"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324658"
 ---
 # <a name="sign-in-to-storage-explorer"></a>登录到存储资源管理器
 
@@ -50,7 +50,7 @@ ms.locfileid: "107950525"
 
 在“设置”（左侧的齿轮图标） > “应用程序” > “登录”下，查找“登录方式”设置   。 有三个选项：
 - 默认 Web 浏览器：登录会在操作系统的默认 Web 浏览器中进行。 建议使用此选项。
-- 集成登录：登录会在存储资源管理器窗口中进行。 如果尝试同时使用多个 Microsoft 帐户登录 (MSA)，则此选项可能会很有用。 如果选择此选项，则可能会遇到与某些 CA 策略有关的问题。
+- 集成登录：登录会在存储资源管理器窗口中进行。 如果使用 **默认 Web 浏览器** 登录时出现问题，此选项可能非常有用。
 - 设备代码流：存储资源管理器会向你提供用于进入浏览器窗口的代码。 不建议使用此选项。 设备代码流与许多 CA 策略不兼容。
 
 ## <a name="troubleshooting-sign-in-issues"></a>排查登录问题

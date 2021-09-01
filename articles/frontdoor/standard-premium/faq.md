@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/18/2021
 ms.author: duau
-ms.openlocfilehash: ca91e7298486cc92ae8a4444869f0b71c91ae2ab
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: be1ffdecb727426f914a74970a720f4f19e51824
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034222"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322380"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Azure Front Door 标准版/高级版（预览版）常见问题解答
 
@@ -63,9 +63,12 @@ Azure Front Door 支持 HTTP、HTTPS 和 HTTP/2。
 
 HTTP/2 协议支持仅适用于连接到 Azure Front Door 的客户端。 与后端池中后端的通信是通过 HTTP/1.1 进行的。 默认已启用 HTTP/2 支持。
 
-### <a name="what-resources-are-supported-today-as-part-of-origin-group"></a>目前支持将哪些资源用作源组的一部分？
+### <a name="what-resources-are-supported-today-as-part-of-an-origin-group"></a>目前支持将哪些资源用作源组的一部分？
 
-源组可以由存储、Web 应用、Kubernetes 实例或者已建立公共连接的任何其他自定义主机名组成。 Azure Front Door 要求通过公共 IP 或可公开解析的 DNS 主机名定义源。 源组的成员可以跨局部区域、地理区域，甚至在 Azure 外部，前提是它们已建立公共连接。
+源组可以包含两种类型的源：
+
+- 公共源包括存储帐户、应用服务应用、Kubernetes 实例或已建立公共连接的任何其他自定义主机名。 必须通过公共 IP 地址或可公开解析的 DNS 主机名来定义这些源。 源组的成员可以跨可用性区域、地理区域，甚至在 Azure 外部进行部署，前提是它们已建立公共连接。 Azure Front Door 标准和高级层支持公共源。
+- 使用 Azure Front Door（高级）时，可以使用[专用链接](concept-private-link.md)源。
 
 ### <a name="what-regions-is-the-service-available-in"></a>该服务已在哪些区域推出？
 
@@ -141,7 +144,7 @@ Front Door 的前端任意播 IP 通常不会更改，在 Front Door 的生存�
 大多数规则引擎配置更新在 20 分钟内完成。 更新完成后，规则应该就会立即生效。 
 
  > [!Note]  
-  > 大多数自定义 TLS/SSL 证书更新需要大约 30 分钟才能全局部署。
+  > 全局部署大多数自定义 TLS/SSL 证书更新需要数分钟到一小时。
 
 对路由或后端池的任何更新是无缝的，完全不会导致停机（如果新配置正确）。 除非你从“Azure Front Door 托管”切换到“使用自己的证书”或采用其他方法，否则证书更新不会导致任何服务中断。
 
@@ -150,7 +153,9 @@ Front Door 的前端任意播 IP 通常不会更改，在 Front Door 的生存�
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure Front Door 是否可以对虚拟网络内部的流量进行负载均衡或路由？
 
-Azure Front Door (AFD) 需要通过一个公共 IP 或可公开解析的 DNS 名称来路由流量。 Azure Front Door 无法直接路由到虚拟网络中的资源。 可以使用具有公共 IP 的应用程序网关或 Azure 负载均衡器来解决此问题。
+Azure Front Door（标准）需要通过一个公共 IP 或可公开解析的 DNS 名称来路由流量。 Azure Front Door 无法直接路由到虚拟网络中的资源。 可以使用具有公共 IP 的应用程序网关或 Azure 负载均衡器来解决此问题。
+
+Azure Front Door（高级）支持将流量路由到[专用链接源](concept-private-link.md)。
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure Front Door 有哪些超时设置和限制？
 

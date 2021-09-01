@@ -2,19 +2,19 @@
 title: 适用于 Azure 通信服务的 SDK 和 REST API
 titleSuffix: An Azure Communication Services concept document
 description: 详细了解 Azure 通信服务 SDK 和 REST API。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: cdc9ae8f89c13a528ff31855f731821b39e5a048
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: baba53d797d3d530b7f71b7f87e01dd673e6a6cc
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742539"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966398"
 ---
 # <a name="sdks-and-rest-apis"></a>SDK 和 REST API
 

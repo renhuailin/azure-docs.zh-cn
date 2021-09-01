@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 04/28/2021
+ms.date: 08/26/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: df84d765a735f1b8b4ce4cf6d36deb3235d9bc31
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 4c9472b419fd796ae53383f73c168e6ac43342bb
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108210056"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965858"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-and-policy-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙和策略
 
@@ -46,6 +46,7 @@ ms.locfileid: "108210056"
 > * 将 NAT 规则配置为允许远程桌面连接到测试服务器
 > * 测试防火墙
 
+如果需要，可以使用 [Azure PowerShell](deploy-ps-policy.md) 完成此过程。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -65,7 +66,7 @@ ms.locfileid: "108210056"
 1. 对于“资源组名称”，请输入“Test-FW-RG”。
 1. 对于“区域”，选择一个区域。 你创建的所有其他资源必须位于同一区域中。
 1. 选择“查看 + 创建”。
-1. 选择“创建”  。
+1. 选择“创建”。
 
 ### <a name="create-a-vnet"></a>创建 VNet
 
@@ -172,7 +173,7 @@ ms.locfileid: "108210056"
 1. 选择“虚拟网络” > “Test-FW-VN”。
 1. 对于“子网”，请选择“Workload-SN”。 请确保仅为此路由选择“Workload-SN” 子网，否则防火墙将无法正常工作
 
-13. 选择“确定”  。
+13. 选择“确定”。
 14. 依次选择“路由”、“添加” 。
 15. 对于“路由名称”，请键入 **fw-dg**。
 16. 对于“地址前缀”，请键入 **0.0.0.0/0**。 
@@ -180,7 +181,7 @@ ms.locfileid: "108210056"
 
     Azure 防火墙实际上是一个托管服务，但虚拟设备可在此场合下正常工作。
 18. 对于“下一跃点地址”，请键入前面记下的防火墙专用 IP 地址。 
-19. 选择“确定”  。
+19. 选择“确定”。
 
 ## <a name="configure-an-application-rule"></a>配置应用程序规则
 
@@ -251,7 +252,7 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 3. 在“设置”下，选择“DNS 服务器”。 
 4. 在“DNS 服务器”下，选择“自定义”。
 5. 在“添加 DNS 服务器”文本框中键入 **209.244.0.3**，在下一个文本框中键入 **209.244.0.4**。
-6. 选择“保存”。
+6. 选择“保存”  。
 7. 重启 **Srv-Work** 虚拟机。
 
 ## <a name="test-the-firewall"></a>测试防火墙
@@ -280,4 +281,4 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)
+> [部署和配置 Azure 防火墙高级版](premium-deploy.md)
