@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/22/2021
+ms.date: 07/28/2021
 ms.author: b-juche
-ms.openlocfilehash: b5abb26a5a96b73f06f25661c62061f664069ee3
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 06be68fb1de224bbbcad13e71e7f4069e44f8309
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903481"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725554"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -31,6 +31,7 @@ ms.locfileid: "107903481"
 
 |  资源  |  默认限制  |  可通过支持请求进行调整  |
 |----------------|---------------------|--------------------------------------|
+|  [每个订阅的区域容量配额](#regional-capacity-quota)   |  25 TiB  |  是  |
 |  每个 Azure 区域每个订阅的 NetApp 帐户数  |  10    |  是   |
 |  每个 NetApp 帐户的容量池数   |    25     |   是   |
 |  每个订阅的卷数   |    500     |   是   |
@@ -93,9 +94,39 @@ Azure NetApp 文件卷有一个名为 maxfiles 的限制。 Maxfiles 限制是�
 
 如果卷配额至少为 20 TiB，则可以将 maxfiles 限制增加到 5 亿。 <!-- ANF-11854 --> 
 
+## <a name="regional-capacity-quota"></a>区域容量配额
+
+Azure NetApp 文件具有基于容量的区域限制。 每个订阅的标准容量限制为每个区域 25 TiB，涵盖所有服务级别。   
+
+可以通过提交特定服务和订阅限制（配额）支持票证来请求增加容量，如下所示：
+
+1. 请在门户中的“支持 + 故障排除”中启动支持请求过程：  
+
+    ![显示“支持 + 故障排除”菜单的屏幕截图。](../media/azure-netapp-files/support-troubleshoot-menu.png)   
+
+2.  选择服务和订阅限制（配额）问题类型，并输入所有相关的详细信息：
+
+    ![显示“服务和订阅限制”菜单的屏幕截图。](../media/azure-netapp-files/service-subscription-limits-menu.png)   
+
+3. 单击“详细信息”选项卡中的“输入详细信息”链接，然后选择“每个订阅的 TiB”配额类型：   
+
+    ![显示“详细信息”选项卡中“输入详细信息”链接的屏幕截图。](../media/azure-netapp-files/support-details.png)   
+
+    ![显示“配额详细信息”窗口的屏幕截图。](../media/azure-netapp-files/support-quota-details.png)   
+
+4.  一定要在“支持方法”页上选择“严重级别 B - 中等影响”：  
+
+    ![显示“支持方法”窗口的屏幕截图。](../media/azure-netapp-files/support-method-severity.png)   
+
+5. 完成请求过程以发出请求。 
+ 
+提交票证后，请求将发送到 Azure 容量管理团队进行处理。 你通常会在 2 个工作日内收到回复。 Azure 容量管理团队可能会与你联系，以处理大容量请求。
+ 
+区域容量配额增加不会导致计费增加。 计费依据依旧为预配的容量池。
+
 ## <a name="request-limit-increase"></a>请求调高限制 <a name="limit_increase"></a> 
 
-可创建 Azure 支持请求以调高上表中的可调整限制。 
+可创建 Azure 支持请求以上调[资源限制](#resource-limits)表中的可调整限制。 
 
 从 Azure 门户导航平面： 
 
@@ -113,7 +144,7 @@ Azure NetApp 文件卷有一个名为 maxfiles 的限制。 Maxfiles 限制是�
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  帐户 |  *订阅 ID*   |  请求的新的最大帐户数    |  哪个方案或用例提示了请求？  |
         |  池    |  订阅 ID、NetApp 帐户 URI  |  请求的新的最大池数   |  哪个方案或用例提示了请求？  |
-        |  音量  |  订阅 ID、NetApp 帐户 URI、容量池 URI   |  请求的新的最大卷数     |  哪个方案或用例提示了请求？  |
+        |  Volume  |  订阅 ID、NetApp 帐户 URI、容量池 URI   |  请求的新的最大卷数     |  哪个方案或用例提示了请求？  |
         |  Maxfiles  |  订阅 ID、NetApp 帐户 URI、容量池 URI、卷 URI   |  请求的新的最大 maxfiles 数     |  哪个方案或用例提示了请求？  |    
         |  跨区域复制数据保护卷  |  订阅 ID、目标 NetApp 帐户 URI、目标容量池 URI、源 NetApp 帐户 URI、源容量池 URI、源卷 URI   |  请求的跨区域复制数据保护卷（目标卷）的新的最大数量     |  哪个方案或用例提示了请求？  |    
 

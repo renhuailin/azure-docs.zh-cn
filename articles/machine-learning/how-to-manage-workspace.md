@@ -9,23 +9,23 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
-ms.custom: fasttrack-edit
-ms.openlocfilehash: e84f0d45666e158805a9290d2e446672a6867fb2
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 2d0d0f70f5a610e77169685a716282bcc0456cab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030838"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729823"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>在门户中或者使用 Python SDK 来管理 Azure 机器学习工作区
 
-在本文中，你将使用 Azure 门户或 [SDK for Python](/python/api/overview/azure/ml/) 为 [Azure 机器学习](overview-what-is-azure-ml.md)创建、查看和删除 [Azure 机器学习工作区](concept-workspace.md)
+在本文中，你将使用 Azure 门户或 [SDK for Python](/python/api/overview/azure/ml/) 为 [Azure 机器学习](overview-what-is-azure-machine-learning.md)创建、查看和删除 [Azure 机器学习工作区](concept-workspace.md)
 
 随着需求的变化或自动化要求的增加，还可使用 [CLI](reference-azure-machine-learning-cli.md) 或通过 [VS Code 扩展](how-to-setup-vs-code.md)来管理工作区。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 * 如果使用 Python SDK，请[安装 SDK](/python/api/overview/azure/ml/install)。
 
 ## <a name="limitations"></a>限制
@@ -396,3 +396,5 @@ Azure 机器学习工作区使用 Azure 容器注册表 (ACR) 执行某些操作
 ## <a name="next-steps"></a>后续步骤
 
 有了工作区后，请了解如何[训练和部署模型](tutorial-train-models-with-aml.md)。
+
+若要详细了解如何根据组织要求规划工作区，请参阅[组织和设置 Azure 机器学习](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-resource-organization)。

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 28827a8ea666e9cd0fdda8914228c0d0bf1d5076
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: eedcf70c12155c1c5a97b231f7eb2ab69ecaf3b0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795197"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739057"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 
@@ -49,8 +49,8 @@ Service Fabric 工具是 Visual Studio 2019 和 2017 中 Azure 开发工作负�
 
 当前版本包括：
 
-* Service Fabric SDK 和工具 5.0.516
-* Service Fabric 运行时 8.0.516
+* Service Fabric SDK and Tools 5.1.321
+* Service Fabric runtime 8.1.321
 
 有关支持版本的列表，请参阅 [Service Fabric 版本](service-fabric-versions.md)
 

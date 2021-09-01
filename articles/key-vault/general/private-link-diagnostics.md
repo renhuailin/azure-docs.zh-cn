@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 03abe4e4e098d46060e33ba114872905e54a443f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85760971b8f4eb8bfbb431193636532a498d7236
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96317055"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113665594"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>诊断 Azure Key Vault 上的专用链接配置问题
 
@@ -279,7 +279,7 @@ Azure 订阅必须有[专用 DNS 区域](../../dns/private-dns-privatednszone.md
 此外，`A` 记录（IP 地址）的值必须是[密钥保管库专用 IP 地址](#find-the-key-vault-private-ip-address-in-the-virtual-network)。 如果找到 `A` 记录，但其中包含错误的 IP 地址，则必须删除错误的 IP 地址并添加新的 IP 地址。 建议删除整个 `A` 记录并添加一个新记录。
 
 >[!NOTE]
-> 删除或修改 `A` 记录时，计算机仍可能会解析为旧 IP 地址，因为 TTL（生存时间）值可能尚未过期。 建议你始终将 TTL 值指定为不小于 60 秒（一分钟）且不大于 600 秒（10 分钟）。 如果指定的值太大，则客户端可能需要很长时间才能从中断中恢复。
+> 删除或修改 `A` 记录时，计算机仍可能会解析为旧 IP 地址，因为 TTL（生存时间）值可能尚未过期。 建议你始终将 TTL 值指定为不小于 10 秒且不大于 600 秒（10 分钟）。 如果指定的值太大，则客户端可能需要很长时间才能从中断中恢复。
 
 ### <a name="dns-resolution-for-more-than-one-virtual-network"></a>针对多个虚拟网络的 DNS 解析
 

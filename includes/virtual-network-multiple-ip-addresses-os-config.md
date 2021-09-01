@@ -2,24 +2,25 @@
 title: include 文件
 description: include 文件
 services: virtual-network
-author: jimdial
+author: asudbring
 ms.service: virtual-network
 ms.topic: include
 ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 93caf39216ef0479ec2799267a9ba8181f37f802
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b2d619db998a2339387cb6e2a4c80271fcf6b76
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84194202"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122336070"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>将 IP 地址添加到 VM 操作系统
 
 连接并登录到使用多个专用 IP 地址创建的 VM。 必须手动添加 VM 中的所有专用 IP 地址（包括主要地址）。 根据 VM 操作系统完成后面的步骤。
 
 ### <a name="windows-server"></a>Windows Server
+
 <details>
   <summary>展开</summary>
 
@@ -43,20 +44,24 @@ ms.locfileid: "84194202"
 6. 在命令提示符下，键入 *ipconfig /all*。 验证是否已显示添加的所有 IP 地址，以及是否已关闭 DHCP。
 7. 将 Windows 配置为使用 Azure 中主 IP 配置的专用 IP 地址作为 Windows 的主 IP 地址。 有关详细信息，请参阅[无法通过具有多个 IP 地址的 Azure Windows VM 访问 Internet](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse)。 
 
-### <a name="validation-windows-server"></a>验证 (Windows Server)
+#### <a name="validation-windows-server"></a>验证 (Windows Server)
 
 要确保能够从辅助 IP 配置通过与之关联的公共 IP 连接到 Internet，请在通过上述步骤将其正确添加以后，使用以下命令（使用辅助专用 IP 地址替换 10.0.0.7）：
 
 ```bash
 ping -S 10.0.0.7 outlook.com
 ```
->[!NOTE]
->对于辅助 IP 配置，仅当该配置存在关联的公共 IP 地址的情况下，才能 ping Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping Internet。
+ 
+> [!NOTE]
+> 对于辅助 IP 配置，仅当该配置存在关联的公共 IP 地址的情况下，才能 ping Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping Internet。
+
 </details>
 
 ### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
+
 <details>
   <summary>展开</summary>
+
 我们建议你查看 Linux 分发版的最新文档。 
 
 1. 打开终端窗口。
@@ -116,15 +121,16 @@ ping -S 10.0.0.7 outlook.com
 
    应会在列表中看到添加的 IP 地址。
 
-### <a name="validation-ubuntu-1416"></a>验证 (Ubuntu 14/16)
+#### <a name="validation-ubuntu-1416"></a>验证 (Ubuntu 14/16)
 
 要确保能够从辅助 IP 配置通过与之关联的公共 IP 连接到 Internet，请使用以下命令：
 
 ```bash
 ping -I 10.0.0.5 outlook.com
 ```
->[!NOTE]
->对于辅助 IP 配置，仅当该配置存在关联的公共 IP 地址的情况下，才能 ping Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping Internet。
+
+> [!NOTE]
+> 对于辅助 IP 配置，仅当该配置存在关联的公共 IP 地址的情况下，才能 ping Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping Internet。
 
 对于 Linux VM，在尝试验证来自辅助 NIC 的出站连接时，可能需要添加适当的路由。 可通过多种方式来执行此操作。 请参阅针对 Linux 分发的相应文档。 下面是实现此目的的一种方法：
 
@@ -133,16 +139,20 @@ echo 150 custom >> /etc/iproute2/rt_tables
 
 ip rule add from 10.0.0.5 lookup custom
 ip route add default via 10.0.0.1 dev eth2 table custom
-
 ```
+
 - 确保将
     - **10.0.0.5** 替换为专用 IP 地址，该地址有一个与之关联的公共 IP 地址。
     - **10.0.0.1** 替换为默认网关
-    - **eth2** 替换为辅助 NIC 的名称</details>
+    - **eth2** 替换为辅助 NIC 的名称
+
+</details>
 
 ### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04+)
+
 <details>
   <summary>展开</summary>
+
 Ubuntu 18.04 及更高版本已更改为用于 OS 网络管理的 `netplan`。 我们建议你查看 Linux 分发版的最新文档。 
 
 1. 打开终端窗口。
@@ -181,8 +191,8 @@ Ubuntu 18.04 及更高版本已更改为用于 OS 网络管理的 `netplan`。 �
     netplan try
     ```
 
-> [!NOTE]
-> `netplan try` 将暂时应用更改，并在 120 秒后回退更改。 如果连接中断，请等待 120 秒，然后重新连接。 此时更改已回退。
+    > [!NOTE]
+    > `netplan try` 将暂时应用更改，并在 120 秒后回退更改。 如果连接中断，请等待 120 秒，然后重新连接。 此时更改已回退。
 
 7. 假设 `netplan try` 没有问题，请应用配置更改：
 
@@ -214,13 +224,15 @@ Ubuntu 18.04 及更高版本已更改为用于 OS 网络管理的 `netplan`。 �
         inet6 fe80::20d:3aff:fe8c:14a5/64 scope link
         valid_lft forever preferred_lft forever
     ```
-### <a name="validation-ubuntu-1804"></a>验证 (Ubuntu 18.04+)
+
+#### <a name="validation-ubuntu-1804"></a>验证 (Ubuntu 18.04+)
 
 要确保能够从辅助 IP 配置通过与之关联的公共 IP 连接到 Internet，请使用以下命令：
 
 ```bash
 ping -I 10.0.0.5 outlook.com
 ```
+
 >[!NOTE]
 >对于辅助 IP 配置，仅当该配置存在关联的公共 IP 地址的情况下，才能 ping Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping Internet。
 
@@ -231,14 +243,17 @@ echo 150 custom >> /etc/iproute2/rt_tables
 
 ip rule add from 10.0.0.5 lookup custom
 ip route add default via 10.0.0.1 dev eth2 table custom
-
 ```
+
 - 确保将
     - **10.0.0.5** 替换为专用 IP 地址，该地址有一个与之关联的公共 IP 地址。
     - **10.0.0.1** 替换为默认网关
-    - **eth2** 替换为辅助 NIC 的名称</details>
+    - **eth2** 替换为辅助 NIC 的名称
+
+</details>
 
 ### <a name="linux-red-hat-centos-and-others"></a>Linux（Red Hat、CentOS 和其他操作系统）
+
 <details>
   <summary>展开</summary>
 
@@ -300,7 +315,7 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 
     应会在返回的列表中看到添加的 IP 地址 *eth0:0*。
 
-### <a name="validation-red-hat-centos-and-others"></a>验证（Red Hat、CentOS 和其他操作系统）
+#### <a name="validation-red-hat-centos-and-others"></a>验证（Red Hat、CentOS 和其他操作系统）
 
 要确保能够从辅助 IP 配置通过与之关联的公共 IP 连接到 Internet，请使用以下命令：
 
@@ -317,9 +332,92 @@ echo 150 custom >> /etc/iproute2/rt_tables
 
 ip rule add from 10.0.0.5 lookup custom
 ip route add default via 10.0.0.1 dev eth2 table custom
-
 ```
+
 - 确保将
     - **10.0.0.5** 替换为专用 IP 地址，该地址有一个与之关联的公共 IP 地址。
     - **10.0.0.1** 替换为默认网关
-    - **eth2** 替换为辅助 NIC 的名称</details>
+    - **eth2** 替换为辅助 NIC 的名称
+
+
+</details>
+
+### <a name="debian-gnulinux"></a>Debian GNU/Linux
+
+<details>
+  <summary>展开</summary>
+
+1. 打开终端窗口。
+1. 请确保以 root 用户身份操作。 否则，请输入以下命令：
+
+   ```bash
+   sudo -i
+   ```
+
+1. 更新网络接口（假设为“eth0”）的配置文件。
+
+   * 使用以下命令打开网络接口文件：
+     
+     ```bash
+     vi /etc/network/interfaces
+     ```
+    
+   * 该文件的末尾应会显示以下命令行：
+    
+      ```bash
+      auth eth0
+      iface eth0 inet dhcp
+      ```
+    
+   * 按原样保留 dhcp 的现有行项。 主要 IP 地址将保留以前的配置。
+   * 在此文件包含的命令行后面添加以下命令行：
+
+     ```bash
+     iface eth0 inet static
+     address <your private IP address here> 
+     netmask <your subnet mask> 
+     ```
+
+1. 使用以下命令保存该文件：
+
+   ```bash
+   :wq! 
+   ```
+
+1. 重启网络服务以使更改生效。 对于 Debian 8 及更高版本，可以使用以下命令完成此操作：
+
+   ```bash
+   systemctl restart networking
+   ```
+   对于早期版本的 Debian，可以使用以下命令：
+    
+   ```bash
+   service networking restart
+   ```
+
+1. 使用以下命令验证 IP 地址是否已添加到网络接口：
+
+   ```bash
+   ip addr list eth0
+    ```
+
+应会在列表中看到添加的 IP 地址。 示例：
+
+```bash
+ 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+  link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+  inet 127.0.0.1/8 scope host lo
+     valid_lft forever preferred_lft forever
+  inet6 ::1/128 scope host
+     valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+  link/ether 00:0d:3a:1d:1d:64 brd ff:ff:ff:ff:ff:ff
+  inet 10.2.0.5/24 brd 10.2.0.255 scope global eth0
+     valid_lft forever preferred_lft forever
+  inet 10.2.0.6/24 brd 10.2.0.255 scope global secondary eth0
+     valid_lft forever preferred_lft forever
+  inet6 fe80::20d:3aff:fe1d:1d64/64 scope link
+     valid_lft forever preferred_lft forever
+ ```
+
+</details>

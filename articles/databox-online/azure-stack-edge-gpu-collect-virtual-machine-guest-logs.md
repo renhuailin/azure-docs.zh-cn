@@ -6,20 +6,24 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/03/2021
+ms.date: 07/30/2021
 ms.author: alkohli
-ms.openlocfilehash: 7ffb96cdc3fbb561009b7f545a3b9a1da9eef729
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: 1c25ea8c35b81169119b0f10025b36319d4dc2c9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111420997"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744616"
 ---
 # <a name="collect-vm-guest-logs-on-an-azure-stack-edge-pro-gpu-device"></a>收集 Azure Stack Edge Pro GPU 设备上的 VM 来宾日志
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 若要诊断 Azure Stack Edge Pro GPU 设备上的任何 VM 预配失败，请查看故障虚拟机的来宾日志。 本文介绍如何收集支持包中的 VM 来宾日志。
+
+> [!NOTE]
+> 你还可以在 Azure 门户中监视虚拟机的活动日志。 有关详细信息，请参阅[在设备上监视 VM 活动](azure-stack-edge-gpu-monitor-virtual-machine-activity.md)。
+
 
 ## <a name="collect-vm-guest-logs-in-support-package"></a>在支持包中收集 VM 来宾日志
 
@@ -48,4 +52,5 @@ ms.locfileid: "111420997"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [排查 Azure Stack Edge Pro GPU 上的 VM 预配问题](azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md)
+- [监视 VM 活动日志](azure-stack-edge-gpu-monitor-virtual-machine-activity.md)。
+- [排查 Azure Stack Edge Pro GPU 上的 VM 预配问题](azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning.md)。

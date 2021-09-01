@@ -1,61 +1,51 @@
 ---
-title: 使用托管标识进行身份验证
-description: 访问 Azure Active Directory 保护的资源，而无需使用托管标识通过凭据或机密登录
+title: 使用托管标识验证工作流
+description: 使用托管标识验证受 Azure AD 保护的资源的触发器和操作，而无需使用凭据或机密
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: article
-ms.date: 03/30/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: aa408d0ae548e9d532f0e26562070847c0cc38c8
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 06/25/2021
+ms.custom: devx-track-azurepowershell, subject-rbac-steps
+ms.openlocfilehash: 76edcac6b77b70928cb2d6cd378b421b68b3d3ef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695644"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731314"
 ---
-# <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识对 Azure 资源的访问进行身份验证
+# <a name="authenticate-access-to-azure-resources-using-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识验证对 Azure 资源的访问权限
 
-若要轻松访问受 Azure Active Directory (Azure AD) 保护的其他资源并对你的标识进行身份验证，逻辑应用可以使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（以前称为托管服务标识或 MSI），而非使用凭据、机密或 Azure AD 令牌。 你无需管理机密或直接使用 Azure AD 令牌，Azure 会为你管理此标识，并且会帮助保护凭据。
+逻辑应用工作流中的某些触发器和操作支持使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（以前称为“托管服务标识 (MSI)”），在连接到受 Azure Active Directory (Azure AD) 保护的资源时进行身份验证。 如果逻辑应用资源启用并设置了托管标识，则不必使用你自己的凭据、机密或 Azure AD 令牌。 由于无需管理机密或令牌，因此 Azure 会管理此标识并帮助你保留身份验证信息。
 
-Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities-azure-resources/overview.md)和[用户分配](../active-directory/managed-identities-azure-resources/overview.md)托管标识。 逻辑应用或各个连接可以使用系统分配的标识，也可以使用单个用户分配的标识，可在一组逻辑应用之间共享，但不能同时使用两者。
-
-<a name="triggers-actions-managed-identity"></a>
-
-## <a name="where-can-logic-apps-use-managed-identities"></a>逻辑应用可以在何处使用托管标识？
-
-目前，只有[特定的内置触发器和操作](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)以及支持 Azure AD OAuth 的[特定托管连接器](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)可以使用托管标识进行身份验证。 例如，下面是可用选择：
-
-<a name="built-in-managed-identity"></a>
-
-**内置触发器和操作**
-
-* Azure API 管理
-* Azure 应用服务
-* Azure Functions
-* HTTP
-* HTTP + Webhook
-
-> [!NOTE]
-> 尽管 HTTP 触发器和操作可以使用系统分配的托管标识对与 Azure 防火墙后面的 Azure 存储帐户的连接进行身份验证，但它们不能使用用户分配的托管标识对相同的连接进行身份验证。
-
-<a name="managed-connectors-managed-identity"></a>
-
-**托管的连接器**
-
-* Azure 自动化
-* Azure 事件网格
-* Azure Key Vault
-* Azure Resource Manager
-* HTTP with Azure AD
-
-对托管连接器的支持当前处于预览阶段。 有关当前列表，请参阅[支持身份验证的触发器和操作的身份验证类型](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)。
-
-本文介绍如何为逻辑应用设置这两种类型的托管标识。 有关详细信息，请参阅以下主题：
+本文介绍如何为逻辑应用设置这两种类型的托管标识。 有关详细信息，请查看以下文档：
 
 * [支持托管标识的触发器和操作](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)
 * [逻辑应用的托管标识限制](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [支持通过托管标识进行 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
+
+<a name="triggers-actions-managed-identity"></a>
+
+## <a name="where-to-use-managed-identities"></a>何处使用托管标识
+
+Azure 逻辑应用同时支持[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)和[用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)，你可以根据逻辑应用工作流的运行位置，在一组逻辑应用中共享这些标识：
+
+* 基于多租户（消耗计划）的逻辑应用同时支持系统分配的标识和单个用户分配的标识。 但是，在逻辑应用级别或连接级别，只能使用一种托管标识类型，因为无法同时启用这两种类型的标识。
+
+  基于单租户（标准计划）的逻辑应用目前仅支持系统分配的标识。
+
+  有关多租户（消耗计划）和单租户（标准计划）的更多信息，请参阅文档[单租户与多租户和集成服务环境](single-tenant-overview-compare.md)。
+
+<a name="built-in-managed-identity"></a>
+<a name="managed-connectors-managed-identity"></a>
+
+* 只有支持 Azure AD 开放身份验证的特定内置和托管连接器操作才能使用托管标识进行身份验证。 下表提供的仅为示例选择。 有关更完整的列表，请参阅[支持身份验证的触发器和操作的身份验证类型](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)。
+
+  | 操作类型 | 支持的操作 |
+  |----------------|----------------------|
+  | 内置 | - Azure API 管理 <br>- Azure 应用服务 <br>- Azure Functions <br>- HTTP <br>- HTTP + Webhook <p><p> 注意：尽管 HTTP 操作可以使用系统分配的托管标识对与 Azure 防火墙后面的 Azure 存储帐户的连接进行身份验证，但它们不能使用用户分配的托管标识对相同的连接进行身份验证。 |
+  | 托管连接器（预览版） | - Azure 自动化 <br>- Azure 事件网格 <br>- Azure 密钥保管库 <br>- Azure 资源管理器 <br>- 使用 Azure AD 的 HTTP |
+  |||
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -81,13 +71,13 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 不同于用户分配的标识，无需手动创建系统分配的标识。 若要为逻辑应用设置系统分配的标识，可以使用以下选项：
 
 * [Azure 门户](#azure-portal-system-logic-app)
-* [Azure 资源管理器模板](#template-system-logic-app)
+* [Azure 资源管理器模板（ARM 模板）](#template-system-logic-app)
 
 <a name="azure-portal-system-logic-app"></a>
 
 #### <a name="enable-system-assigned-identity-in-azure-portal"></a>在 Azure 门户中启用系统分配的标识
 
-1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
+1. 在 [Azure 门户](https://portal.azure.com)的设计器视图中打开逻辑应用。
 
 1. 在逻辑应用菜单的“设置”下，选择“标识” 。 选择“系统分配” > “开启” > “保存”。   当 Azure 提示你进行确认时，选择“是”。
 
@@ -100,7 +90,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
    ![系统分配的标识的对象 ID](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
-   | properties | Value | 说明 |
+   | properties | 值 | 说明 |
    |----------|-------|-------------|
    | **对象 ID** | <*identity-resource-ID*> | 全局唯一标识符 (GUID)，表示 Azure AD 租户中逻辑应用的系统分配的标识 |
    ||||
@@ -109,9 +99,9 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
 <a name="template-system-logic-app"></a>
 
-#### <a name="enable-system-assigned-identity-in-azure-resource-manager-template"></a>在 Azure 资源管理器模板中启用系统分配的标识
+#### <a name="enable-system-assigned-identity-in-an-arm-template"></a>在 ARM 模版中启用系统分配的标识
 
-若要自动创建和部署 Azure 资源（如逻辑应用），可以使用 [Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。 若要在模板中为逻辑应用启用系统分配的托管标识，请在模板中将 `identity` 对象和 `type` 子属性添加到逻辑应用的资源定义中，例如：
+要自动创建并部署 Azure 资源（如逻辑应用），可以使用 [ARM 模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。 若要在模板中为逻辑应用启用系统分配的托管标识，请在模板中将 `identity` 对象和 `type` 子属性添加到逻辑应用的资源定义中，例如：
 
 ```json
 {
@@ -136,7 +126,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 }
 ```
 
-当 Azure 创建逻辑应用资源定义时，`identity` 对象获取这些附加属性：
+当 Azure 创建逻辑应用资源定义时，`identity` 对象会获取这些其他属性：
 
 ```json
 "identity": {
@@ -156,10 +146,10 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
 ### <a name="enable-user-assigned-identity"></a>启用用户分配的标识
 
-若要为逻辑应用设置用户分配的托管标识，必须首先将该标识创建为独立的 Azure 资源。 以下是可使用的选项：
+若要为逻辑应用设置用户分配的托管标识，必须首先将该标识创建为各自独立的 Azure 资源。 以下是可使用的选项：
 
 * [Azure 门户](#azure-portal-user-identity)
-* [Azure 资源管理器模板](#template-user-identity)
+* [ARM 模板](#template-user-identity)
 * Azure PowerShell
   * [创建用户分配的标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
   * [添加角色分配](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
@@ -176,7 +166,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
 1. 在 [Azure 门户](https://portal.azure.com)的任意页面上的搜索框中，输入 `managed identities`，然后选择“托管标识”。
 
-   ![查找并选择“托管标识”](./media/create-managed-service-identity/find-select-managed-identities.png)
+   ![屏幕截图：显示已选择“托管标识”的门户。](./media/create-managed-service-identity/find-select-managed-identities.png)
 
 1. 在“托管标识”下，选择“添加”。 
 
@@ -186,7 +176,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
    ![创建用户分配的托管标识](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
-   | properties | 必须 | Value | 说明 |
+   | properties | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 要使用的 Azure 订阅的名称 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要使用的资源组的名称。 创建新组或选择现有组。 此示例创建一个名为 `fabrikam-managed-identities-RG` 的新资源组。 |
@@ -196,13 +186,13 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
    验证这些详细信息后，Azure 将创建托管标识。 现在，你可以将用户分配的标识添加到逻辑应用。 不能将多个用户分配的标识添加到逻辑应用。
 
-1. 在 Azure 门户中的“逻辑应用设计器”中查找并打开逻辑应用。
+1. 在 Azure 门户的设计器视图中打开逻辑应用。
 
 1. 在逻辑应用菜单的“设置”下选择“标识”，然后选择“用户分配” > “添加”。   
 
    ![添加用户分配的托管标识](./media/create-managed-service-identity/add-user-assigned-identity-logic-app.png)
 
-1. 在“添加用户分配的托管标识”窗格的“订阅”列表中，选择你的 Azure 订阅（如果尚未选择）。  从显示该订阅中的所有托管标识的列表中，查找并选择所需的用户分配的标识。 若要筛选列表，请在“用户分配的托管标识”搜索框中输入标识或资源组的名称。 完成后，选择“添加”。
+1. 在“添加用户分配的托管标识”窗格的“订阅”列表中，选择你的 Azure 订阅（如果尚未选择）。  从显示该订阅中所有托管标识的列表中，选择所需的用户分配的标识。 若要筛选列表，请在“用户分配的托管标识”搜索框中输入标识或资源组的名称。 完成后，选择“添加”。
 
    ![选择要使用的用户分配的标识](./media/create-managed-service-identity/select-user-assigned-identity.png)
 
@@ -217,9 +207,9 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
 <a name="template-user-identity"></a>
 
-#### <a name="create-user-assigned-identity-in-an-azure-resource-manager-template"></a>在 Azure 资源管理器模板中创建用户分配的标识
+#### <a name="create-user-assigned-identity-in-an-arm-template"></a>在 ARM 模板中创建用户分配的标识
 
-若要自动创建和部署 Azure 资源（如逻辑应用），可以使用 [Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，该模板支持[用户分配的标识用于身份验证](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)。 在模板的 `resources` 部分中，逻辑应用的资源定义需要以下各项：
+若要自动创建和部署 Azure 资源（如逻辑应用），可以使用 [ARM 模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，该模板支持[使用用户分配的标识进行身份验证](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)。 在模板的 `resources` 部分中，逻辑应用的资源定义需要以下各项：
 
 * 一个 `type` 属性设置为 `UserAssigned` 的 `identity` 对象
 
@@ -308,66 +298,46 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
 ## <a name="give-identity-access-to-resources"></a>授予标识对资源的访问权限
 
-使用逻辑应用的托管标识进行身份验证之前，请在计划使用该标识的 Azure 资源上为该标识设置访问权限。 若要完成此任务，请在目标 Azure 资源上向该标识分配适当的角色。 以下是可使用的选项：
+在使用逻辑应用的托管标识进行身份验证之前，必须在要使用该标识的 Azure 资源上，使用 Azure 基于角色的访问控制 (Azure RBAC) 设置对该标识的访问权限。
+
+若要完成此任务，请通过以下任意选项在 Azure 资源上向该标识分配适当的角色：
 
 * [Azure 门户](#azure-portal-assign-access)
-* [Azure Resource Manager 模板](../role-based-access-control/role-assignments-template.md)
-* Azure PowerShell ([New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)) - 有关详细信息，请参阅[使用 Azure RBAC 和 Azure PowerShell 添加角色分配](../role-based-access-control/role-assignments-powershell.md)。
-* Azure CLI ([az role assignment create](/cli/azure/role/assignment#az_role_assignment_create)) - 有关详细信息，请参阅[使用 Azure RBAC 和 Azure CLI 添加角色分配](../role-based-access-control/role-assignments-cli.md)。
+* [ARM 模板](../role-based-access-control/role-assignments-template.md)
+* [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
+* [Azure CLI](../role-based-access-control/role-assignments-cli.md)
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-assign-access"></a>
 
-### <a name="assign-access-in-the-azure-portal"></a>在 Azure 门户中分配访问权限
+### <a name="assign-managed-identity-role-based-access-in-the-azure-portal"></a>在 Azure 门户中分配托管标识基于角色的访问权限
 
-在希望托管标识可以访问的目标 Azure 资源上，向该标识授予对目标资源的基于角色的访问权限。
+在要使用托管标识的 Azure 资源上，必须将标识分配给可访问目标资源的角色。 有关此任务的更多常规信息，请参阅[使用 Azure RBAC 向另一资源分配托管标识访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，访问希望托管标识具有访问权限的 Azure 资源。
+1. 在 [Azure 门户](https://portal.azure.com)中，打开要使用标识的资源。
 
-1. 在资源的菜单中，选择“访问控制 (IAM)” > “角色分配”，你可以在其中查看该资源的当前角色分配。  在工具栏上，选择“添加” > “添加角色分配”。
+1. 从该资源的菜单中，选择“访问控制 (IAM)” > “添加” > “添加角色分配”。  
 
-   ![选择“添加”>“添加角色分配”](./media/create-managed-service-identity/add-role-to-resource.png)
+   > [!NOTE]
+   > 如果已禁用“添加角色分配”选项，那么你没有权限分配角色。 有关更多信息，请参阅 [Azure AD 内置角色](../active-directory/roles/permissions-reference.md)。
 
-   > [!TIP]
-   > 如果“添加角色分配”选项处于禁用状态，那么你很可能没有权限。 有关可用于管理资源角色的权限的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/roles/permissions-reference.md)。
+1. 现在，将必要的角色分配给托管标识。 在“角色”选项卡上，分配一个角色，该角色将为你的标识提供访问当前资源所需的权限。
 
-1. 在“添加角色分配”下，选择一个“角色”，该角色授予标识对目标资源的所需访问权限。 
+   对于本示例，请分配名为“Storage Blob Data Contributor”的角色（包括 Azure 存储容器中 blob 的写入访问权限）。 有关特定存储容器角色的更多信息，请参阅[可访问 Azure 存储容器中 blob 的角色](../storage/blobs/authorize-access-azure-active-directory.md#assign-azure-roles-for-access-rights)。
 
-   在本主题的示例中，标识需要[可以访问 Azure 存储容器中 Blob 的角色](../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)，因此，请为托管标识选择“存储 Blob 数据参与者”角色。
+1. 接下来，选择要在其中分配角色的托管标识。 在“将访问权限分配到”下，选择“托管标识” > “添加成员”。
 
-   ![选择“存储 Blob 数据参与者”角色](./media/create-managed-service-identity/select-role-for-identity.png)
+1. 根据托管标识的类型，选择或提供以下值：
 
-1. 针对托管标识执行以下步骤：
+   | 类型 | Azure 服务实例 | 订阅 | 成员 |
+   |------|------------------------|--------------|--------|
+   | **系统分配** | **逻辑应用** | <*Azure-subscription-name*> | <*your-logic-app-name*> |
+   | **用户分配** | 不适用 | <*Azure-subscription-name*> | <*your-user-assigned-identity-name*> |
+   |||||
 
-   * **系统分配的标识**
+   有关分配角色的详细信息，请查看文档[使用 Azure 门户分配角色](../role-based-access-control/role-assignments-portal.md)。
 
-     1. 在“将访问权限分配到”框中，选择“逻辑应用”。  出现“订阅”属性时，选择与你的标识关联的 Azure 订阅。
-
-        ![为系统分配的标识选择访问权限](./media/create-managed-service-identity/assign-access-system.png)
-
-     1. 在“选择”框下，从列表中选择逻辑应用。 如果列表太长，请使用“选择”框筛选列表。
-
-        ![为系统分配的标识选择逻辑应用](./media/create-managed-service-identity/add-permissions-select-logic-app.png)
-
-   * **用户分配的标识**
-
-     1. 在“将访问权限分配到”框中，选择“用户分配的托管标识”。  出现“订阅”属性时，选择与你的标识关联的 Azure 订阅。
-
-        ![为用户分配的标识选择访问权限](./media/create-managed-service-identity/assign-access-user.png)
-
-     1. 在“选择”框下，从列表中选择标识。 如果列表太长，请使用“选择”框筛选列表。
-
-        ![选择用户分配的标识](./media/create-managed-service-identity/add-permissions-select-user-assigned-identity.png)
-
-1. 完成后，选择“保存”。
-
-   目标资源的角色分配列表现在显示所选的托管标识和角色。 此示例演示如何对一个逻辑应用使用系统分配的标识，以及如何对一组其他逻辑应用使用用户分配的标识。
-
-   ![向目标资源添加了托管标识和角色](./media/create-managed-service-identity/added-roles-for-identities.png)
-
-   有关详细信息，请参阅[通过使用 Azure 门户为托管标识分配对资源的访问权限](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)。
-
-1. 现在，按照支持托管标识的触发器或操作中[使用标识对访问权限进行身份验证的步骤](#authenticate-access-with-identity)进行操作。
+1. 完成标识访问权限设置后，可以使用该标识[验证支持托管标识的触发器和操作的访问权限](#authenticate-access-with-identity)。
 
 <a name="authenticate-access-with-identity"></a>
 
@@ -380,7 +350,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
 以下步骤演示了如何通过 Azure 门户将托管标识与触发器或操作一起使用。 若要在触发器或操作的基础 JSON 定义中指定托管标识，请参阅[托管标识身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#managed-identity-authentication)。
 
-1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
+1. 在 [Azure 门户](https://portal.azure.com)的设计器视图中打开逻辑应用。
 
 1. 如果尚未这样做，请添加[支持托管标识的触发器或操作](logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)。
 
@@ -427,7 +397,7 @@ HTTP 触发器或操作可使用为逻辑应用启用的系统分配的标识。
 作为特定示例，假设要在之前为标识设置访问权限的 Azure 存储帐户中的 Blob 上运行[快照 Blob 操作](/rest/api/storageservices/snapshot-blob)。 但是，[Azure Blob 存储连接器](/connectors/azureblob/)当前不提供此操作。 相反，你可以使用 [HTTP 操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)或另一个 [Blob 服务 REST API 操作](/rest/api/storageservices/operations-on-blobs)来运行此操作。
 
 > [!IMPORTANT]
-> 若要通过使用 HTTP 请求和托管标识访问防火墙后面的 Azure 存储帐户，请确保你还设置了[允许受信任的 Microsoft 服务访问的例外](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service)存储帐户。
+> 若要通过使用 HTTP 请求和托管标识访问防火墙后面的 Azure 存储帐户，请确保你还设置了[允许受信任的 Microsoft 服务访问的例外](../connectors/connectors-create-api-azureblobstorage.md#access-blob-storage-with-managed-identities)存储帐户。
 
 若要运行[快照 Blob 操作](/rest/api/storageservices/snapshot-blob)，HTTP 操作将指定以下属性：
 
@@ -467,6 +437,8 @@ HTTP 触发器或操作可使用为逻辑应用启用的系统分配的标识。
    此示例将继续处理“系统分配的托管标识”。
 
 1. 在某些触发器和操作上，还会显示“受众”属性，以便设置目标资源 ID。 将“受众”属性设置为[目标资源或服务的资源 ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 否则，默认情况下，“受众”属性使用 `https://management.azure.com/` 资源 ID，该 ID 是 Azure 资源管理器的资源 ID。
+  
+    例如，要验证对[全局 Azure 云中 Key Vault 资源](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-key-vault)的访问权限，则必须将“受众”属性具体设置为以下资源 ID：`https://vault.azure.net`。 请注意，此特定资源 ID 中不包含任何尾部斜杠。 事实上，包含尾部斜杠可能会导致 `400 Bad Request` 错误或 `401 Unauthorized` 错误。
 
    > [!IMPORTANT]
    > 请确保此目标资源 ID 完全匹配 Azure Active Directory (AD) 所需的值，包括任何必需的尾部反斜杠。 例如，所有 Azure Blob 存储帐户的资源 ID 都需要尾部反斜杠。 但是，特定存储帐户的资源 ID 不需要尾部反斜杠。 检查[支持 Azure AD 的 Azure 服务的资源 ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
@@ -477,7 +449,7 @@ HTTP 触发器或操作可使用为逻辑应用启用的系统分配的标识。
 
    有关使用 Azure AD 为 Azure 存储授予访问权限的详细信息，请参阅以下主题：
 
-   * [使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限](../storage/common/storage-auth-aad.md)
+   * [使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限](../storage/blobs/authorize-access-azure-active-directory.md)
    * [使用 Azure Active Directory 授予对 Azure 存储的访问权限](/rest/api/storageservices/authorize-with-azure-active-directory#use-oauth-access-tokens-for-authentication)
 
 1. 继续按照所需方式生成逻辑应用。
@@ -592,7 +564,7 @@ Azure 资源管理器的操作“读取资源”可使用为逻辑应用启用�
 若要停止对逻辑应用使用托管标识，可以使用以下选项：
 
 * [Azure 门户](#azure-portal-disable)
-* [Azure 资源管理器模板](#template-disable)
+* [ARM 模板](#template-disable)
 * Azure PowerShell
   * [删除角色分配](../role-based-access-control/role-assignments-powershell.md)
   * [删除用户分配的标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
@@ -630,7 +602,7 @@ Azure 资源管理器的操作“读取资源”可使用为逻辑应用启用�
 
 #### <a name="disable-managed-identity-on-logic-app"></a>在逻辑应用上禁用托管标识
 
-1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
+1. 在 [Azure 门户](https://portal.azure.com)的设计器视图中打开逻辑应用。
 
 1. 在“逻辑应用”菜单上的“设置”下选择“标识”，然后按照标识的步骤进行操作： 
 
@@ -646,9 +618,9 @@ Azure 资源管理器的操作“读取资源”可使用为逻辑应用启用�
 
 <a name="template-disable"></a>
 
-### <a name="disable-managed-identity-in-azure-resource-manager-template"></a>在 Azure 资源管理器模板中禁用托管标识
+### <a name="disable-managed-identity-in-an-arm-template"></a>在 ARM 模板中禁用托管标识
 
-如果使用 Azure 资源管理器模板创建了逻辑应用的托管标识，请将 `identity` 对象的 `type` 子属性设置为 `None`。
+如果使用 ARM 模板创建了逻辑应用的托管标识，请将 `identity` 对象的 `type` 子属性设置为 `None`。
 
 ```json
 "identity": {

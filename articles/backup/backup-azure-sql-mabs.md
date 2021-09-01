@@ -2,17 +2,31 @@
 title: 使用 Azure 备份服务器备份 SQL Server
 description: 本文介绍使用 Microsoft Azure 备份服务器 (MABS) 备份 SQL Server 数据库所需的配置。
 ms.topic: conceptual
-ms.date: 03/24/2017
-ms.openlocfilehash: e79b5263b248312b7170288be24ab5fc196042a7
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 07/28/2021
+ms.openlocfilehash: f97fc81b051b8c7d76ee1769b82ad4a2d489357b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518654"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722762"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
 
-本文帮助你使用 Microsoft Azure 备份服务器 (MABS) 设置 SQL Server 数据库的备份。
+Microsoft Azure 备份服务器 (MABS) 为 SQL Server 数据库提供备份和恢复。 除了备份 SQL Server 数据库，还可以运行 SQL Server 计算机的系统备份或完整裸机备份。 MABS 可以在以下方面提供保护：
+
+- 独立 SQL Server 实例
+- SQL Server 故障转移群集实例 (FCI)
+
+>[!Note]
+>MABS v3 UR2 支持使用群集共享卷 (CSV) 的 SQL Server 故障转移群集实例 (FCI)。
+>
+>此功能支持保护在 Azure 上带存储空间直通的 SQL Server FCI 和带 Azure 共享磁盘的 SQL Server FCI。 必须在 Azure 虚拟机中部署 DPM 服务器，以保护部署在 Azure VM 上的 SQL FCI 实例。
+>
+>具有以下首选项的 SQL Server AlwaysOn 可用性组：
+>- 优先辅助
+>- 仅辅助
+>- 基本
+>- 任何副本
 
 若要备份 SQL Server 数据库并从 Azure 恢复该数据库：
 

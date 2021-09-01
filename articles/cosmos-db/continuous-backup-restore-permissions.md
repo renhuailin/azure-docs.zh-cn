@@ -4,25 +4,20 @@ description: 了解如何隔离和限制将连续备份帐户还原为特定角�
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 07/29/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 8b3ce2c195dc2fa3dd703306e731aa5b807b78b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d566a2ee66df4adb810cb5908da3c47657fab418
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100648597"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733185"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>管理 Azure Cosmos DB 帐户的还原权限
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-> [!IMPORTANT]
-> Azure Cosmos DB 的时间点还原功能（连续备份模式）目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-Azure Cosmos DB 允许你隔离和限制将连续备份（预览版）帐户还原为特定角色或主体的权限。 帐户所有者可以触发还原，并将角色分配给其他主体以执行还原操作。 可以在订阅范围或源帐户范围（更精细的层面）内应用这些权限，如下图所示：
+Azure Cosmos DB 允许隔离和限制将连续备份帐户还原为特定角色或主体的权限。 帐户所有者可以触发还原，并将角色分配给其他主体以执行还原操作。 可以在订阅范围或源帐户范围（更精细的层面）内应用这些权限，如下图所示：
 
 :::image type="content" source="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" alt-text="执行还原操作所需的角色的列表。" lightbox="./media/continuous-backup-restore-permissions/restore-roles-permissions.png" border="false":::
 
@@ -52,19 +47,22 @@ Azure Cosmos DB 允许你隔离和限制将连续备份（预览版）帐户还�
 |资源组 | /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-cosmosdb-rg |
 |CosmosDB 可还原帐户资源 | /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.DocumentDB/locations/West US/restorableDatabaseAccounts/23e99a35-cd36-4df4-9614-f767a03b9995|
 
-可从 CLI 中 `az cosmosdb restorable-database-account list --name <accountname>` 命令的输出或 PowerShell 中的 `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` cmdlet 提取可还原帐户资源。 输出中的名称属性表示可还原帐户的 `instanceID`。 若要了解详细信息，请参阅 [PowerShell](continuous-backup-restore-powershell.md) 或 [CLI](continuous-backup-restore-command-line.md) 文章。
+可从 CLI 中 `az cosmosdb restorable-database-account list --name <accountname>` 命令的输出或 PowerShell 中的 `Get-AzCosmosDBRestorableDatabaseAccount -DatabaseAccountName <accountname>` cmdlet 提取可还原帐户资源。 输出中的名称属性表示可还原帐户的 `instanceID`。 
 
 ## <a name="permissions"></a>权限
 
 需要以下权限才能执行与还原连续备份模式帐户相关的不同活动：
 
+> [!NOTE]
+> 权限可以分配给帐户范围或订阅范围的可还原数据库帐户。 不支持在资源组范围内分配权限。
+
 |权限  |影响  |最小范围  |最大范围  |
 |---------|---------|---------|---------|
 |`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | ARM 模板部署需要这些权限才能创建已还原帐户。 有关如何设置此角色的信息，请参阅下面的示例权限 [RestorableAction](#custom-restorable-action)。 | 不适用 | 不适用  |
 |`Microsoft.DocumentDB/databaseAccounts/write` | 需要此权限才能将帐户还原到资源组 | 在其下创建已还原帐户的资源组。 | 在其下创建已还原帐户的订阅 |
-|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |在源可还原数据库帐户范围内需要此权限，以允许对其执行还原操作。  | 属于正在还原的源帐户的 RestorableDatabaseAccount 资源。 此值还由可还原数据库帐户资源的 `ID` 属性指定。 可还原帐户的示例是 /subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid> | 包含可还原数据库帐户的订阅。 无法将资源组选择为范围。  |
-|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |在源可还原数据库帐户范围内需要此权限，以列出可还原的数据库帐户。  | 属于正在还原的源帐户的 RestorableDatabaseAccount 资源。 此值还由可还原数据库帐户资源的 `ID` 属性指定。 可还原帐户的示例是 /subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>| 包含可还原数据库帐户的订阅。 无法将资源组选择为范围。  |
-|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` | 在源可还原帐户范围内需要此权限，以允许读取可还原资源，例如可还原帐户的数据库和容器的列表。  | 属于正在还原的源帐户的 RestorableDatabaseAccount 资源。 此值还由可还原数据库帐户资源的 `ID` 属性指定。 可还原帐户的示例是 /subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>| 包含可还原数据库帐户的订阅。 无法将资源组选择为范围。 |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` </br> 不能选择资源组作为权限范围。 |在源可还原数据库帐户范围内需要此权限，以允许对其执行还原操作。  | 属于正在还原的源帐户的 RestorableDatabaseAccount 资源。 此值还由可还原数据库帐户资源的 `ID` 属性指定。 可还原帐户的示例是 /subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/ *\<guid-instanceid\>* | 包含可还原数据库帐户的订阅。  |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` </br> 不能选择资源组作为权限范围。 |在源可还原数据库帐户范围内需要此权限，以列出可还原的数据库帐户。  | 属于正在还原的源帐户的 RestorableDatabaseAccount 资源。 此值还由可还原数据库帐户资源的 `ID` 属性指定。 可还原帐户的示例是 /subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/ *\<guid-instanceid\>*| 包含可还原数据库帐户的订阅。 |
+|`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/*/read` </br> 不能选择资源组作为权限范围。 | 在源可还原帐户范围内需要此权限，以允许读取可还原资源，例如可还原帐户的数据库和容器的列表。  | 属于正在还原的源帐户的 RestorableDatabaseAccount 资源。 此值还由可还原数据库帐户资源的 `ID` 属性指定。 可还原帐户的示例是 /subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/ *\<guid-instanceid\>*| 包含可还原数据库帐户的订阅。 |
 
 ## <a name="azure-cli-role-assignment-scenarios-to-restore-at-different-scopes"></a>要在不同范围中还原的 Azure CLI 角色分配方案
 
@@ -131,5 +129,7 @@ az role definition create --role-definition <JSON_Role_Definition_Path>
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 [Azure 门户](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md)、[CLI](continuous-backup-restore-command-line.md) 或 [Azure 资源管理器](continuous-backup-restore-template.md)配置和管理连续备份。
+* 使用 [Azure 门户](provision-account-continuous-backup.md#provision-portal)、[PowerShell](provision-account-continuous-backup.md#provision-powershell)、[CLI](provision-account-continuous-backup.md#provision-cli) 或 [Azure 资源管理器](provision-account-continuous-backup.md#provision-arm-template)预配连续备份。
+* 使用 [Azure 门户](restore-account-continuous-backup.md#restore-account-portal)、[PowerShell](restore-account-continuous-backup.md#restore-account-powershell)、[CLI](restore-account-continuous-backup.md#restore-account-cli) 或 [Azure 资源管理器](restore-account-continuous-backup.md#restore-arm-template)还原帐户。
+* [将帐户从定期备份迁移到连续备份](migrate-continuous-backup.md)。
 * [连续备份模式的资源模型](continuous-backup-restore-resource-model.md)

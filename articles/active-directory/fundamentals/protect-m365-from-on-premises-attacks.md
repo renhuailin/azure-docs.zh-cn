@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cee69fbd2cb829a7ec90179e94098e307e5a094
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 456f635e3cd7be91064a15b87c0da627678fdc45
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968533"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732973"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>防范 Microsoft 365 遭受本地攻击
 
@@ -172,7 +172,7 @@ Microsoft 365 云环境受益于功能丰富的监视和安全基础结构。 Mi
 
     -   使用 [Microsoft Intune](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/microsoft-intune) 作为所有设备管理工作负载的授权来源。
 
--   [**部署特权访问设备**](/security/compass/privileged-access-devices#device-roles-and-profiles)：使用特权访问来管理 Microsoft 365 和 Azure AD。
+-   [部署特权访问设备](/security/compass/privileged-access-devices#device-roles-and-profiles)：使用特权访问来管理 Microsoft 365 和 Azure AD 作为[保护特权访问](/security/compass/overview)的完整方法的一部分。
 
 ## <a name="workloads-applications-and-resources"></a>工作负载、应用程序和资源 
 
@@ -209,7 +209,7 @@ Microsoft 365 云环境受益于功能丰富的监视和安全基础结构。 Mi
 
 * 如果使用的 Azure AD 版本不包含条件访问，请确保使用 [Azure AD 安全默认值](../fundamentals/concept-fundamentals-security-defaults.md)。
 
-   有关 Azure AD 功能许可的详细信息，请参阅 [Azure AD 定价指南](https://azure.microsoft.com/pricing/details/active-directory/)。
+   有关 Azure AD 功能许可的详细信息，请参阅 [Azure AD 定价指南](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 ## <a name="monitor"></a>监视 
 

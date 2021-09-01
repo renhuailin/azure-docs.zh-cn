@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 3d7ba65e6965ff488ead6094376bea7142eb5ec9
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 354bc77283949f46ce5f1f1e972e7917855634b1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590587"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742135"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -22,11 +22,80 @@ ms.locfileid: "111590587"
 
 __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在页面更新时收到通知：`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
-## <a name="2021-05-25"></a>2021-05-25
+## <a name="2021-08-02"></a>2021-08-02
 
-### <a name="announcing-the-20-cli-preview-for-azure-machine-learning"></a>宣布推出适用于 Azure 机器学习的 2.0 CLI（预览版）
+### <a name="azure-machine-learning-sdk-for-python-v1330"></a>适用于 Python v1.33.0 的 Azure 机器学习 SDK
+  + **azureml-automl-core**
+    + 改进了围绕 XGBoost 模型检索的错误处理。
+    + 增加了将预测从浮点数转换为整数的可能性，以便预测和回归任务。
+    + 将 AutoMLConfig 中 enable_early_stopping 的默认值更新为 True。
+  + **azureml-automl-runtime**
+    + 增加了将预测从浮点数转换为整数的可能性，以便预测和回归任务。
+    + 将 AutoMLConfig 中 enable_early_stopping 的默认值更新为 True。
+  + azureml-contrib-automl-pipeline-steps
+    + 针对通过管道预测任务启用了层次结构时间 (HTS)。
+    + 添加适用于推断的表格数据集支持
+    + 可以针对推理数据指定自定义路径
+  + **azureml-contrib-reinforcementlearning**
+    + `azureml.core.environment.DockerSection` 中的某些属性已弃用，例如 Ray 工作人员在强化学习作业中使用的 `shm_size` 属性。 现在可以改为在 `azureml.contrib.train.rl.WorkerConfiguration` 中指定此属性。
+  + **azureml-core**
+    + 修复了 `ScriptRunConfig.distributed_job_config` 文档中的超链接
+    + 现在可以在不同于工作区位置的位置创建 Azure 机器学习计算群集。 这可用于最大程度地提高空闲容量分配并跨不同位置管理配额利用率，而无需创建更多工作区，只需使用配额，并在特定位置创建计算群集。 有关详细信息，请参阅[创建 Azure 机器学习计算群集](how-to-create-attach-compute-cluster.md?tabs=python)。
+    + 添加了 display_name 作为 Run 对象的可变名称字段。
+    + 数据集 from_files 现在支持跳过大型输入数据的数据扩展
+  + **azureml-dataprep**
+    + 修复了 to_dask_dataframe 因竞争条件而出现故障的 bug。
+    + 数据集 from_files 现在支持跳过大型输入数据的数据扩展
+  + **azureml-defaults**
+    + 我们将从 azureml-defaults 中删除依赖项 azureml-model-management-sdk==1.0.1b6.post1。
+  + **azureml-interpret**
+    + 已将 azureml-interpret 更新为 interpret-community 0.19。*
+  + **azureml-pipeline-core**
+    + 针对通过管道预测任务启用了层次结构时间 (HTS)。
+  + **azureml-train-automl-client**
+    + 切换到使用 Blob 存储在自动化 ML 中进行缓存。
+    + 针对通过管道预测任务启用了层次结构时间 (HTS)。
+    + 改进了围绕 XGBoost 模型检索的错误处理。
+    + 将 AutoMLConfig 中 enable_early_stopping 的默认值更新为 True。
+  + **azureml-train-automl-runtime**
+    + 切换到使用 Blob 存储在自动化 ML 中进行缓存。
+    + 针对通过管道预测任务启用了层次结构时间 (HTS)。
+    + 将 AutoMLConfig 中 enable_early_stopping 的默认值更新为 True。
 
-Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 该扩展可让你从命令行训练和部署模型，并提供了在跟踪模型生命周期时加快数据科学纵向和横向扩展的功能。 [安装并开始使用](how-to-configure-cli.md)。
+
+## <a name="2021-07-06"></a>2021-07-06
+
+### <a name="azure-machine-learning-sdk-for-python-v1320"></a>适用于 Python v1.32.0 的 Azure 机器学习 SDK
++ **Bug 修复与改进**
+  + **azureml-core**
+    + 在 SDK/CLI 中公开诊断工作区运行状况
+  + **azureml-defaults**
+    + 向 azureml-defaults 添加了 `opencensus-ext-azure==1.0.8` 依赖项
+  + **azureml-pipeline-core**
+    + 更新了 AutoMLStep，以在作业提交环境与默认环境匹配时使用预生成的映像
+  + **azureml-responsibleai**
+    + 添加了新的错误分析客户端，以上传、下载和列出错误分析报告
+    + 确保 `raiwidgets` 和 `responsibleai` 包的版本同步
+  + **azureml-train-automl-runtime**
+    + 将分配给跨各种功能化策略动态搜索的时间最大设置为总试验超时的四分之一
+
+
+## <a name="2021-06-21"></a>2021-06-21
+
+### <a name="azure-machine-learning-sdk-for-python-v1310"></a>适用于 Python v1.31.0 的 Azure 机器学习 SDK
++ **Bug 修复与改进**
+  + **azureml-core**
+    + 改进了环境类上平台属性的文档
+    + 将默认 AML 计算节点缩减时间从 120 秒更改为 1800 秒
+    + 更新了门户上显示的默认故障排除链接，用于对失败的运行进行故障排除： https://aka.ms/azureml-run-troubleshooting
+  + **azureml-automl-runtime**
+    + 数据清理：在进行功能化和/或模型训练之前，删除在 [None, "", "nan", np.nan] 中具有目标值的示例
+  + **azureml-interpret**
+    + 通过增加超时，防止使用 ExplanationClient 的远程 AzureML 运行时出现刷新任务队列错误
+  + **azureml-pipeline-core**
+    + 将 jar 参数添加到 synapse 步骤
+  + **azureml-train-automl-runtime**
+    + 修复高基数护栏，使其与文档更加一致
 
 ## <a name="2021-06-07"></a>2021-06-07
 
@@ -49,6 +118,11 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
     + 在 MM 推理期间支持自定义的分位数
     + 在批量推理期间支持 forecast_quantiles。
 
+## <a name="2021-05-25"></a>2021-05-25
+
+### <a name="announcing-the-20-cli-preview-for-azure-machine-learning"></a>宣布推出适用于 Azure 机器学习的 2.0 CLI（预览版）
+
+Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 该扩展可让你从命令行训练和部署模型，并提供了在跟踪模型生命周期时加快数据科学纵向和横向扩展的功能。 [安装并开始使用](how-to-configure-cli.md)。
 
 ### <a name="azure-machine-learning-sdk-for-python-v1290"></a>适用于 Python v1.29.0 的 Azure 机器学习 SDK
 + **Bug 修复与改进**
@@ -211,7 +285,7 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
 
 + **Bug 修复与改进**
   + 改进了页面加载时间。
-  + 改进的性能。
+  + 提高了性能。
   + 提高了速度和内核可靠性。
   + 通过永久将“笔记本文件”窗格向上移动来获取垂直空间
   + 现在可以在终端中单击链接
@@ -634,7 +708,7 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
   + **azure-cli-ml**
     + 网格分析已从 SDK 中删除，不再受支持。
   + **azureml-accel-models**
-    + azureml-accel-models 包现在支持 Tensorflow 2.x
+    + azureml-accel-models 包现在支持 TensorFlow 2.x
   + **azureml-automl-core**
     + 在 get_output 中添加了错误处理，用于 pandas/sklearn 的本地版本与训练期间使用的版本不匹配的情况
   + **azureml-automl-runtime**
@@ -716,7 +790,7 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
   + **azureml-train-core**
     + 现在，用户必须在创建 HyperDriveConfig 时提供有效的 hyperparameter_sampling 参数。 此外，还对 HyperDriveRunConfig 的文档进行了编辑，以通知用户已弃用 HyperDriveRunConfig。
     + 将 PyTorch 默认版本恢复为 1.4。
-    + 添加了 PyTorch 1.6 和 Tensorflow 2.2 映像和特选环境。
+    + 添加了 PyTorch 1.6 和 TensorFlow 2.2 映像和特选环境。
 
 ### <a name="azure-machine-learning-studio-notebooks-experience-august-update"></a>Azure 机器学习工作室笔记本体验（8 月更新）
 + **新功能**
@@ -1074,7 +1148,7 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
     + 为预测缺失值插补启用护栏。
     + 改进了 AutoML 中的日志记录
     + 为数据准备异常添加了精细的错误处理
-    + 在远程计算上训练时，删除了对 phrophet 和 xgboost 模型的限制。
+    + 在远程计算上训练时，删除了对 prophet 和 xgboost 模型的限制。
     + `azureml-train-automl-runtime` 和 `azureml-automl-runtime` 已更新了 `pytorch`、`scipy` 和 `cudatoolkit` 的依赖项。 我们现在支持 `pytorch==1.4.0`、`scipy>=1.0.0,<=1.3.1` 和 `cudatoolkit==10.1.243`。
     + 改进了预测任务中自定义特征化的错误处理。
     + 改进了预测数据集频率检测机制。
@@ -1129,13 +1203,13 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
     + 支持将 cv_split_column_names 与 training_data 一起使用
     + 弃用了 azureml.dprep.Dataflow，它不再是输入数据的有效类型。
     + 已将 Mac 更新为依赖于 cudatoolkit=9.0，因为它在版本 10 上尚不可用。
-    + 在远程计算上训练时，删除了对 phrophet 和 xgboost 模型的限制。
+    + 在远程计算上训练时，删除了对 prophet 和 xgboost 模型的限制。
     + `azureml-train-automl-runtime` 和 `azureml-automl-runtime` 已更新了 `pytorch`、`scipy` 和 `cudatoolkit` 的依赖项。 我们现在支持 `pytorch==1.4.0`、`scipy>=1.0.0,<=1.3.1` 和 `cudatoolkit==10.1.243`。
     + 添加了允许用户包含滞后功能来生成预测的功能。
   + **azureml-train-automl-runtime**
     + 改进了 AutoML 中的日志记录
     + 为数据准备异常添加了精细的错误处理
-    + 在远程计算上训练时，删除了对 phrophet 和 xgboost 模型的限制。
+    + 在远程计算上训练时，删除了对 prophet 和 xgboost 模型的限制。
     + `azureml-train-automl-runtime` 和 `azureml-automl-runtime` 已更新了 `pytorch`、`scipy` 和 `cudatoolkit` 的依赖项。 我们现在支持 `pytorch==1.4.0`、`scipy>=1.0.0,<=1.3.1` 和 `cudatoolkit==10.1.243`。
     + 更新了错误消息以正确显示用户错误。
     + 支持将 cv_split_column_names 与 training_data 一起使用
@@ -1162,7 +1236,7 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
     + 当数据集具有多个时序时，通过为时序启用并行拟合，加快 AutoML 预测中的 Prophet/AutoArima 模型。 为了从此新功能中获益，建议你在 AutoMLConfig 中设置 "max_cores_per_iteration = -1"（即使用所有可用的 CPU 核心）。
     + 修复了控制台界面中有关输出护栏的 KeyError
     + 修复了有关 experimentation_timeout_hours 的错误消息
-    + 弃用了 AutoML 的 Tensorflow 模型。
+    + 弃用了 AutoML 的 TensorFlow 模型。
   + **azureml-automl-runtime**
     + 修复了有关 experimentation_timeout_hours 的错误消息
     + 修复了尝试从缓存存储进行反序列化操作时的未分类异常
@@ -1210,7 +1284,7 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
   + **azureml-pipeline-core**
     + 当使用一个嵌入到 ModuleStep 中的模块时，允许使用 regenerate_outputs 选项。
   + **azureml-train-automl-client**
-    + 弃用了 AutoML 的 Tensorflow 模型。
+    + 弃用了 AutoML 的 TensorFlow 模型。
     + 修复了用户在本地模式下将不受支持的算法列入允许列表的问题
     + 修复了 AutoMLConfig 的文档。
     + 在 AutoMLConfig 中对 cv_split_indices 输入强制执行数据类型检查。
@@ -1434,8 +1508,8 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
     + 已将 `AutoMLStep` 移到 `azureml-pipeline-steps` 包。 弃用了 `azureml-train-automl-runtime` 中的 `AutoMLStep`。
     + 添加了将数据集用作 PythonScriptStep 输入的文档示例
   + **azureml-tensorboard**
-    + 更新了 azureml-tensorboard 以支持 tensorflow 2.0
-    + 在计算实例上使用自定义 Tensorboard 端口时显示正确的端口号
+    + 更新了 azureml-tensorBoard 以支持 TensorFlow 2.0
+    + 在计算实例上使用自定义 TensorBoard 端口时显示正确的端口号
   + **azureml-train-automl-client**
     + 修复了可能在错误的远程运行版本中安装某些包的问题。
     + 修复了筛选自定义特征化配置的 FeaturizationConfig 重写问题。
@@ -1514,7 +1588,7 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
   + **azureml-contrib-pipeline-steps**
     + 已将可选参数 side_inputs 添加到 ParallelRunStep。 此参数可用于在容器中装载文件夹。 当前支持的类型为 DataReference 和 PipelineData。
   + **azureml-tensorboard**
-    + 更新了 azureml-tensorboard 以支持 tensorflow 2.0
+    + 更新了 azureml-tensorBoard 以支持 TensorFlow 2.0
   + **azureml-train-automl-client**
     + 修复了筛选自定义特征化配置的 FeaturizationConfig 重写问题。
   + **azureml-train-automl-runtime**
@@ -1829,7 +1903,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 添加了数据集 CLI。 详细信息：`az ml dataset --help`
     + 添加了对部署和打包受支持模型（ONNX、scikit-learn 和 TensorFlow）的支持，无需 InferenceConfig 实例。
     + 在 SDK 和 CLI 中为服务部署（ACI 和 AKS）添加了覆盖标志。 如果提供此标志，将覆盖现有服务（如果存在同名的服务）。 如果服务不存在，将创建新服务。
-    + 可将模型注册到 Onnx 和 Tensorflow 这两个新框架。 - 模型注册接受模型的示例输入数据、示例输出数据和资源配置。
+    + 可将模型注册到 Onnx 和 TensorFlow 这两个新框架。 - 模型注册接受模型的示例输入数据、示例输出数据和资源配置。
   + **azureml-automl-core**
     + 仅当设置运行时约束时，才会在子进程中运行迭代。
     + 为预测任务添加了准则，用于检查指定的 max_horizon 是否导致给定的计算机上出现内存问题。 如果是，将显示一条准则消息。
@@ -1842,7 +1916,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 更新了交叉验证所需的最小数据大小，以保证每个验证折叠中至少有两个样本。
   + **azureml-cli-common**
     + CLI 现在支持模型打包。
-    + 可将模型注册到 Onnx 和 Tensorflow 这两个新框架。
+    + 可将模型注册到 Onnx 和 TensorFlow 这两个新框架。
     + 模型注册接受模型的示例输入数据、示例输出数据和资源配置。
   + **azureml-contrib-gbdt**
     + 修复了笔记本的发布通道
@@ -1857,7 +1931,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 允许将 Azure 机器学习管道中的中间数据转换为表格数据集，并在 [`AutoMLStep`](/python/api/azureml-train-automl-runtime/azureml.train.automl.runtime.automlstep) 中使用。
     + 添加了对部署和打包受支持模型（ONNX、scikit-learn 和 TensorFlow）的支持，无需 InferenceConfig 实例。
     + 在 SDK 和 CLI 中为服务部署（ACI 和 AKS）添加了覆盖标志。 如果提供此标志，将覆盖现有服务（如果存在同名的服务）。 如果服务不存在，将创建新服务。
-    +  可将模型注册到 Onnx 和 Tensorflow 这两个新框架。 模型注册接受模型的示例输入数据、示例输出数据和资源配置。
+    +  可将模型注册到 Onnx 和 TensorFlow 这两个新框架。 模型注册接受模型的示例输入数据、示例输出数据和资源配置。
     + 为 Azure Database for MySQL 添加了新的数据存储。 添加了有关在 Azure 机器学习管道的 DataTransferStep 中使用 Azure Database for MySQL 的示例。
     + 添加了在试验中添加和删除标记的功能；添加了从运行中删除标记的功能
     + 在 SDK 和 CLI 中为服务部署（ACI 和 AKS）添加了覆盖标志。 如果提供此标志，将覆盖现有服务（如果存在同名的服务）。 如果服务不存在，将创建新服务。
@@ -2415,7 +2489,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 修复了对 mlflow tracking_uri 使用 InteractiveLoginAuthentication 时出现的 bug
     + 使用 azureml.mlflow 改进了远程运行的资源利用率。
     + 改进了 azureml-mlflow 包的文档
-    + 修补了以下 bug：mlflow.log_artifacts("my_dir") 将项目保存在“my_dir/<artifact-paths>”而不是“<artifact-paths>”下
+    + 修补 bug，即 mlflow.log_artifacts（“my_dir”）将项目保存在 `my_dir/<artifact-paths>` 而不是 `<artifact-paths>` 下
   + **azureml-opendatasets**
     + 由于最近出现的内存问题，已将 `opendatasets` 的 `pyarrow` 关联到旧版本 (<0.14.0)。
     + 已将 azureml-contrib-opendatasets 移到 azureml-opendatasets。
@@ -2423,7 +2497,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
     + 显著改进了非 SPARK 版本中的 NoaaIsdWeather 扩充性能。
   + **azureml-pipeline-steps**
     + DatabricksStep 中的输入和输出现在支持 DBFS 数据存储。
-    + 更新了 Azure Batch 步骤的输入/输出相关文档。
+    + 更新了有关输入/输出的 Azure Batch 步骤文档。
     + 在 AzureBatchStep 中，已将 *delete_batch_job_after_finish* 默认值更改为 *true*。
   + **azureml-telemetry**
     +  已将 azureml-contrib-opendatasets 移到 azureml-opendatasets。
@@ -2630,4 +2704,4 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读 [Azure 机器学习](overview-what-is-azure-ml.md)的概述。
+阅读 [Azure 机器学习](overview-what-is-azure-machine-learning.md)的概述。

@@ -4,25 +4,20 @@ description: 本文介绍了 Azure Cosmos DB 时间点还原功能的资源模�
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 07/29/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 4cb6d818713bb083451bc11257f21a6f6146472a
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e4fffd12b72b41c45b2718e96c34a03e28eeca29
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753460"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733177"
 ---
-# <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature-preview"></a>Azure Cosmos DB 时间点还原功能（预览版）的资源模型
+# <a name="resource-model-for-the-azure-cosmos-db-point-in-time-restore-feature"></a>Azure Cosmos DB 时间点还原功能的资源模型
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-> [!IMPORTANT]
-> Azure Cosmos DB 的时间点还原功能（连续备份模式）目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-本文介绍了 Azure Cosmos DB 时间点还原功能（预览版）的资源模型。 它介绍了用于支持连续备份的参数，以及可以在用于 SQL 和 MongoDB 的 Azure Cosmos DB API 帐户中还原的资源。
+本文介绍了 Azure Cosmos DB 时间点还原功能的资源模型。 它介绍了用于支持连续备份的参数，以及可以在用于 SQL 和 MongoDB 的 Azure Cosmos DB API 帐户中还原的资源。
 
 ## <a name="database-accounts-resource-model"></a>数据库帐户的资源模型
 
@@ -30,10 +25,10 @@ ms.locfileid: "111753460"
 
 ### <a name="backuppolicy"></a>BackupPolicy
 
-帐户级别备份策略中 `backuppolicy` 参数下一个名为 `Type` 的新属性，可启用连续备份和时间点还原功能。 此模式称为“连续备份”。 在公共预览版中，仅可在创建帐户时设置此模式。 启用后，在此帐户中创建的所有容器和数据库都将默认启用连续备份和时间点还原功能。
+帐户级别备份策略中 `backuppolicy` 参数下一个名为 `Type` 的新属性，可启用连续备份和时间点还原功能。 此模式称为“连续备份”。 可以在创建帐户时或在[将帐户从定期模式迁移到连续模式](migrate-continuous-backup.md)时设置此模式。 启用连续模式后，在此帐户中创建的所有容器和数据库都将默认启用连续备份和时间点还原功能。
 
 > [!NOTE]
-> 时间点还原功能现为公共预览版，适用于 Azure Cosmos DB API for MongoDB 和 SQL 帐户。 使用连续模式创建帐户后，无法将其切换为定期模式。
+> 时间点还原功能现适用于 Azure Cosmos DB API for MongoDB 和 SQL 帐户。 使用连续模式创建帐户后，无法将其切换为定期模式。
 
 ### <a name="createmode"></a>CreateMode
 
@@ -48,14 +43,7 @@ ms.locfileid: "111753460"
 |restoreMode  | 还原模式应为 PointInTime |
 |restoreSource   |  将从中启动还原的源帐户的 instanceId。       |
 |restoreTimestampInUtc  | 应将帐户还原到的时间点 (UTC)。 |
-|databasesToRestore   | `DatabaseRestoreSource` 对象的列表，用于指定应还原的数据库和容器。 如果此值为空，则还原整个帐户。   |
-
-**DatabaseRestoreResource** - 每个资源都表示单一数据库及其包含的所有集合。
-
-|属性名称 |说明  |
-|---------|---------|
-|databaseName | 数据库的名称 |
-| collectionNames| 此数据库下的容器列表 |
+|databasesToRestore   | `DatabaseRestoreResource` 对象的列表，用于指定应还原的数据库和容器。 每个资源都表示单个数据库以及该数据库下的所有集合，有关更多信息，请参阅[可还原 SQL 资源](#restorable-sql-resources)部分。 如果此值为空，则还原整个帐户。   |
 
 ### <a name="sample-resource"></a>示例资源
 
@@ -97,8 +85,7 @@ ms.locfileid: "111753460"
     },
     "backupPolicy": {
       "type": "Continuous"
-    },
-}
+    }
 }
 ```
 
@@ -119,16 +106,16 @@ ms.locfileid: "111753460"
 |---------|---------|
 | ID | 资源的唯一标识符。 |
 | accountName | 全局数据库帐户名称。 |
-| creationTime | 创建帐户的时间 (UTC)。  |
+| creationTime | 创建或迁移帐户的时间 (UTC)。  |
 | deletionTime | 删除帐户的时间 (UTC)。  如果帐户是实时的，则此值为空。 |
 | apiType | Azure Cosmos DB 帐户的 API 类型。 |
 | restorableLocations | 帐户所在的位置列表。 |
 | restorableLocations: locationName | 区域帐户的区域名称。 |
-| restorableLocations: regionalDatabaseAccountInstanceI | 区域帐户的 GUID。 |
-| restorableLocations: creationTime | 创建区域帐户的时间 (UTC)。|
+| restorableLocations: regionalDatabaseAccountInstanceId | 区域帐户的 GUID。 |
+| restorableLocations: creationTime | 创建或迁移区域帐户的时间 (UTC)。|
 | restorableLocations: deletionTime | 删除区域帐户的时间 (UTC)。 如果区域帐户是实时的，则此值为空。|
 
-若要获取所有可还原帐户的列表，请查看[可还原的数据库帐户 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorabledatabaseaccounts/list)或[可还原的数据库帐户 - 按位置列出](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorabledatabaseaccounts/listbylocation)文章。
+若要获取所有可还原帐户的列表，请查看[可还原的数据库帐户 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-database-accounts/list)或[可还原的数据库帐户 - 按位置列出](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-database-accounts/list-by-location)文章。
 
 ### <a name="restorable-sql-database"></a>可还原的 SQL 数据库
 
@@ -142,7 +129,7 @@ ms.locfileid: "111753460"
 | operationType | 此数据库事件的操作类型。 下面是可能的值：<br/><ul><li>Create：数据库创建事件</li><li>Delete：数据库删除事件</li><li>Replace：数据库修改事件</li><li>SystemOperation：系统触发的数据库修改事件。 此事件并非由用户发起</li></ul> |
 | database |事件发生时 SQL 数据库的属性|
 
-若要获取所有数据库突变的列表，请查看[可还原的 SQL 数据库 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablesqldatabases/list)一文。
+若要获取所有数据库突变的列表，请查看[可还原的 SQL 数据库 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-sql-databases/list)一文。
 
 ### <a name="restorable-sql-container"></a>可还原的 SQL 容器
 
@@ -156,7 +143,7 @@ ms.locfileid: "111753460"
 | operationType | 此容器事件的操作类型。 下面是可能的值： <br/><ul><li>Create：容器创建事件</li><li>Delete：容器删除事件</li><li>Replace：容器修改事件</li><li>SystemOperation：系统触发的容器修改事件。 此事件并非由用户发起</li></ul> |
 | container | 事件发生时 SQL 容器的属性。|
 
-若要获取同一数据库下所有容器突变的列表，请查看[可还原的 SQL 容器 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablesqlcontainers/list)一文。
+若要获取同一数据库下所有容器突变的列表，请查看[可还原的 SQL 容器 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-sql-containers/list)一文。
 
 ### <a name="restorable-sql-resources"></a>可还原的 SQL 资源
 
@@ -167,7 +154,7 @@ ms.locfileid: "111753460"
 | databaseName  | SQL 数据库的名称。
 | collectionNames   | 此数据库下的 SQL 容器列表。|
 
-若要获取在给定时间戳和位置的帐户上存在的 SQL 数据库和容器组合的列表，请查看[可还原的 SQL 资源 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablesqlresources/list)一文。
+若要获取在给定时间戳和位置的帐户上存在的 SQL 数据库和容器组合的列表，请查看[可还原的 SQL 资源 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-sql-resources/list)一文。
 
 ### <a name="restorable-mongodb-database"></a>可还原的 MongoDB 数据库
 
@@ -180,7 +167,7 @@ ms.locfileid: "111753460"
 | ownerResourceId   | MongoDB 数据库的资源 ID。 |
 | operationType |   此数据库事件的操作类型。 下面是可能的值：<br/><ul><li> Create：数据库创建事件</li><li> Delete：数据库删除事件</li><li> Replace：数据库修改事件</li><li> SystemOperation：系统触发的数据库修改事件。 此事件并非由用户发起 </li></ul> |
 
-若要获取所有数据库突变的列表，请查看[可还原的 Mongodb 数据库 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablemongodbdatabases/list)一文。
+若要获取所有数据库突变的列表，请查看[可还原的 Mongodb 数据库 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-mongodb-databases/list)一文。
 
 ### <a name="restorable-mongodb-collection"></a>可还原的 MongoDB 集合
 
@@ -193,7 +180,7 @@ ms.locfileid: "111753460"
 | ownerResourceId   | MongoDB 集合的资源 ID。 |
 | operationType |此集合事件的操作类型。 下面是可能的值：<br/><ul><li>Create：集合创建事件</li><li>Delete：集合删除事件</li><li>Replace：集合修改事件</li><li>SystemOperation：系统触发的集合修改事件。 此事件并非由用户发起</li></ul> |
 
-若要获取同一数据库下所有容器突变的列表，请查看[可还原的 Mongodb 集合 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablemongodbcollections/list)一文。
+若要获取同一数据库下所有容器突变的列表，请查看[可还原的 Mongodb 集合 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-mongodb-collections/list)一文。
 
 ### <a name="restorable-mongodb-resources"></a>可还原的 MongoDB 资源
 
@@ -204,9 +191,11 @@ ms.locfileid: "111753460"
 | databaseName  |MongoDB 数据库的名称。 |
 | collectionNames | 此数据库下的 MongoDB 集合列表。 |
 
-若要获取在给定时间戳和位置的帐户上存在的所有 MongoDB 数据库和集合组合的列表，请查看[可还原的 Mongodb 资源 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorablemongodbresources/list)一文。
+若要获取在给定时间戳和位置的帐户上存在的所有 MongoDB 数据库和集合组合的列表，请查看[可还原的 Mongodb 资源 - 列表](/rest/api/cosmos-db-resource-provider/2021-04-01-preview/restorable-mongodb-resources/list)一文。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 [Azure 门户](continuous-backup-restore-portal.md)、[PowerShell](continuous-backup-restore-powershell.md)、[CLI](continuous-backup-restore-command-line.md) 或 [Azure 资源管理器](continuous-backup-restore-template.md)配置和管理连续备份。
+* 使用 [Azure 门户](provision-account-continuous-backup.md#provision-portal)、[PowerShell](provision-account-continuous-backup.md#provision-powershell)、[CLI](provision-account-continuous-backup.md#provision-cli) 或 [Azure 资源管理器](provision-account-continuous-backup.md#provision-arm-template)预配连续备份。
+* 使用 [Azure 门户](restore-account-continuous-backup.md#restore-account-portal)、[PowerShell](restore-account-continuous-backup.md#restore-account-powershell)、[CLI](restore-account-continuous-backup.md#restore-account-cli) 或 [Azure 资源管理器](restore-account-continuous-backup.md#restore-arm-template)还原帐户。
+* [将帐户从定期备份迁移到连续备份](migrate-continuous-backup.md)。
 * [管理](continuous-backup-restore-permissions.md)以连续备份模式还原数据所需的权限。

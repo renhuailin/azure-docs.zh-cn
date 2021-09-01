@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/19/2021
+ms.date: 06/30/2021
 ms.author: alkohli
-ms.openlocfilehash: d7dd4a3920e947469c85df0d9ab440d95ab7712d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: has-adal-ref
+ms.openlocfilehash: 453d42adca16593dfdc567d114b8dc7eb7e34143
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466918"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429693"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge Pro GPU 设备上部署 VM
 
@@ -49,7 +50,7 @@ ms.locfileid: "110466918"
 
 在开始使用 Azure CLI 和 Python 在 Azure Stack Edge Pro 设备上创建和管理 VM 之前，你需要确保已完成以下步骤中列出的先决条件：
 
-1. 已完成 Azure Stack Edge Pro 设备上的网络设置，如[步骤 1：配置 Azure Stack Edge Pro 设备](azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)中所述。
+1. 已完成 Azure Stack Edge Pro 设备上的网络设置，如[步骤 1：配置 Azure Stack Edge Pro 设备](azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-device)中所述。
 
 2. 已启用计算网络接口。 此网络接口 IP 用于为 VM 部署创建虚拟交换机。 下列步骤将为你演示此过程：
 
@@ -283,7 +284,7 @@ ms.locfileid: "110466918"
 
 3. 注册环境。 在运行 [az cloud register](/cli/azure/cloud?view=azure-cli-latest&preserve-view=true#az_cloud_register) 时使用以下参数：
 
-    | 值 | 说明 | 示例 |
+    | 值 | 描述 | 示例 |
     | --- | --- | --- |
     | 环境名称 | 要尝试连接到的环境的名称 | 提供一个名称，例如 `aze-environ` |
     | 资源管理器终结点 | 该 URL 为 `https://Management.<appliancename><dnsdomain>`。 <br> 若要获取此 URL，请转到设备的本地 Web UI 中的“设备”页。 |例如，`https://management.team3device.teatraining1.com`。  |
@@ -355,7 +356,7 @@ ms.locfileid: "110466918"
    $ENV:ARM_TENANT_ID = "c0257de7-538f-415c-993a-1b87a031879d"
    $ENV:ARM_CLIENT_ID = "cbd868c5-7207-431f-8d16-1cb144b50971"
    $ENV:ARM_CLIENT_SECRET - "<Your Azure Resource Manager password>"
-   $ENV:ARM_SUBSCRIPTION_ID = "A4257FDE-B946-4E01-ADE7-674760B8D1A3"
+   $ENV:ARM_SUBSCRIPTION_ID = "<Your subscription ID>"
    ```
 
    Azure 资源管理器客户端 ID 是硬编码的。 Azure 资源管理器租户 ID 和 Azure 资源管理器订阅 ID 均存在于你先前运行的 `az login` 命令的输出中。 Azure 资源管理器客户端密码是你设置的 Azure 资源管理器密码。
@@ -404,7 +405,7 @@ ms.locfileid: "110466918"
             ubuntu13.vhd
     
     VM image resource id:
-                /subscriptions/a4257fde-b946-4e01-ade7-674760b8d1a3/resourceGroups/azure-sample-group-virtual-machines118/providers/Microsoft.Compute/images/UbuntuImage
+                /subscriptions/.../resourceGroups/azure-sample-group-virtual-machines118/providers/Microsoft.Compute/images/UbuntuImage
     
     Create Vnet
     Create Subnet

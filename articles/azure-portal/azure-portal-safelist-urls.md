@@ -1,24 +1,27 @@
 ---
-title: 在防火墙或代理服务器上将 Azure 门户 URL 加入安全列表
-description: 将这些 URL 添加到代理服务器旁路，以便与 Azure 门户及其服务通信
-ms.date: 04/10/2020
+title: 在防火墙或代理服务器上允许 Azure 门户 URL
+description: 为了优化你的网络与 Azure 门户及其服务之间的连接，建议将这些 URL 添加到允许列表。
+ms.date: 06/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7d9c8222ee85c0c16ec1e1926335ac06e0389797
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70e2f55a381c38b0a4244f742b7b2c51e6ca81f6
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745870"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112516354"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>在防火墙或代理服务器上将 Azure 门户 URL 加入安全列表
+# <a name="allow-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>在防火墙或代理服务器上允许 Azure 门户 URL
 
-可以配置本地安全设备，绕过针对 Azure 门户 URL 的安全限制。 此配置可以改进局域网或广域网和 Azure 云之间的性能和连接性。
+为了优化你的网络与 Azure 门户及其服务之间的连接，建议将特定的 Azure 门户 URL 添加到允许列表。 此操作可改进局域网或广域网和 Azure 云之间的性能和连接性。
 
-网络管理员经常会部署代理服务器、防火墙或其他设备。 这些设备有助于确保用户访问 Internet 时的安全性并控制其访问方式。 旨在保护用户的规则有时候可能会阻止合法的与业务相关的 Internet 流量或降低其速度。 该流量包括你与 Azure 之间的通信。 为了优化你的网络与 Azure 门户及其服务之间的连接，建议将 Azure 门户 URL 添加到安全列表。
+网络管理员会经常部署代理服务器、防火墙或其他设备，这样有助于确保用户访问 Internet 时的安全性并控制其访问方式。 旨在保护用户的规则有时候可能会阻止合法的与业务相关的 Internet 流量或降低其速度。 此流量包括你与 Azure 之间通过此处列出的 URL 进行的通信。
+
+> [!TIP]
+> 若要帮助诊断这些域的网络连接问题，请检查 https://portal.azure.com/selfhelp 。
 
 ## <a name="azure-portal-urls-for-proxy-bypass"></a>用于跳过代理的 Azure 门户 URL
 
-Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Azure 云。 若要让发往这些终结点的网络流量绕过限制，请选择你的云。 然后，将 URL 列表添加到代理服务器或防火墙。
+可用于 Azure 门户的 URL 终结点特定于部署组织的 Azure 云。 若要允许发送到这些终结点的网络流量绕过限制，请选择你的云，然后将 URL 列表添加到代理服务器或防火墙。 除了列表里列出的，建议不要再添加任何其他与门户相关的 URL，不过你可能想要添加与其他 Microsoft 产品和服务相关的 URL。
 
 #### <a name="public-cloud"></a>[公有云](#tab/public-cloud)
 
@@ -28,7 +31,6 @@ Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Az
 *.applicationinsights.io
 *.azure.com
 *.azure.net
-*.azurefd.net
 *.azure-api.net
 *.azuredatalakestore.net
 *.azureedge.net
@@ -73,5 +75,3 @@ Azure 门户的安全列表的 URL 终结点特定于部署组织时所在的 Az
 
 > [!NOTE]
 > 发往这些终结点的流量使用标准的 TCP 端口：80 (HTTP) 和 443 (HTTPS)。
->
->

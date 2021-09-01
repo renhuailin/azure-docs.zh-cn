@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/09/2021
+ms.date: 08/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2761262950c2a10709ccfa37b35a2d3e4c556359
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: f219825a7d0ec47125c5518da76ad014f809c3ef
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903480"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322290"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -80,6 +80,20 @@ SAP 应用程序层和 DBMS 的高可用性记录在从文档 [Sap NetWeaver 的
 在本节中，可以找到有关 Microsoft Power BI 集成到 SAP 数据源中以及 Azure 数据工厂集成到 SAP BW 中的文档。
 
 ## <a name="change-log"></a>更改日志
+- 2021 年 8 月 17 日：更改了[适用于 SAP 工作负载的 IBM Db2 Azure 虚拟机 DBMS 部署](./dbms_guide_ibm.md)、[适用于 SAP 工作负载的 Azure 存储类型](./planning-guide-storage.md)和 [Azure 虚拟机支持的方案中的 SAP 工作负载](./sap-planning-supported-configurations.md)中的内容，以引入使用 ANF 上托管的 NFS 卷的 IBM Db2 支持
+- 2021 年 8 月 2 日：更改了 [SLES for SAP Applications 上 Azure VM 中的 SAP NW 的 HA](./high-availability-guide-suse.md)、[SLES 上 Azure VM 中通过 ANF 实现 SAP NW 的 HA](./high-availability-guide-suse-netapp-files.md)、[RHEL for SAP Applications 上 Azure VM 中的 SAP NW 的 HA](./high-availability-guide-rhel.md) 和 [RHEL 上 Azure VM 中通过 ANF 实现 SAP NW 的 HA](./high-availability-guide-rhel-netapp-files.md) 中的内容，以阐明模拟排队服务器故障的测试方案的行为 (ENSA1/ENSA2)     
+- 2021 年 8 月 2 日：更改了 [RHEL for SAP Applications 上 Azure VM 中的 SAP NW 的 HA](./high-availability-guide-rhel.md)、[RHEL 上 Azure VM 中通过 ANF 实现 SAP NW 的 HA](./high-availability-guide-rhel-netapp-files.md) 和 [RHEL 上 Azure VM 中的 SAP NW 的 HA 多 SID 指南](./high-availability-guide-rhel-multi-sid.md)中的内容，以调整群集资源粘性、迁移阈值和顺序约束  
+- 2021 年 8 月 2 日：发布了[使用 Azure 上的 SAP IQ 的 SAP BW 近线存储 (NLS) 实施指南](./sap-iq-deployment-guide.md) 
+- 2021 年 7 月 26 日：更改了[在 Azure 中的 RHEL 上设置 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 和[在 Azure 中的 SLES 上设置 Pacemaker](./high-availability-guide-suse-pacemaker.md) 中的内容，以便在介绍 Azure Fence 代理设置的部分中将角色分配说明替换为 RBAC 文档的链接
+- 2021 年 8 月 2 日：更改了 [RHEL for SAP Applications 上 Azure VM 中的 SAP NW 的 HA](./high-availability-guide-rhel.md)、[RHEL 上 Azure VM 中通过 ANF 实现 SAP NW 的 HA](./high-availability-guide-rhel-netapp-files.md) 和 [RHEL 上 Azure VM 中的 SAP NW 的 HA 多 SID 指南](./high-availability-guide-rhel-multi-sid.md)中的内容，以便为 ASCS 群集资源（仅限 ENSA2）删除 `failure-timeout`
+- 2021 年 7 月 16 日：重构了 Azure 上的 SAP 文档目录 (TOC) 以简化导航
+- 2021 年 7 月 2 日：更改了[在 HANA 大型实例上备份和还原 SAP HANA](./hana-backup-restore.md) 中的内容，以删除 azacsnap 工具的重复内容，以及备份和还原 HANA 大型实例
+- 2021 年 7 月 2 日：更改了[在 Azure 中的 RHEL 上设置 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 中的内容，以添加如何在两节点 Pacemaker 群集中避免隔离竞争的信息，以及说明如何在将可选 STONITH 配置与 `fence_kdump` 结合使用时减少故障转移延迟的 KB 链接
+- 2020 年 12 月 21 日：在[对 HLI 可用的 SKU](./hana-available-skus.md) 中添加了新认证的 HANA 大型实例 SKU 
+- 2021 年 6 月 30 日：更改了[使用 WSFC 和 Azure NetApp 文件 (SMB) 的 SAP ASCS/SCS 的 HA 指南](./high-availability-guide-windows-netapp-files-smb.md)中的内容，以便为建议的 SAP 配置文件参数添加节 
+- 2020 年 6 月 29 日：更改了[在 Azure 中的 RHEL 上设置 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 中的内容，以添加带有 fence_kdump 的可选 stonith 配置
+- 2021 年 6 月 28 日：更改了[使用 WSFC 和 Azure NetApp 文件 (SMB) 的 SAP ASCS/SCS 的 HA 指南](./high-availability-guide-windows-netapp-files-smb.md)中的内容，以添加一个声明，指出 SMB 服务器（计算机帐户）前缀不应超过 8 个字符，以避免遇到 SAP 主机名长度限制
+- 2020 年 6 月 17 日：更改了 [RHEL 上 Azure VM 上的 SAP HANA 的高可用性](./sap-hana-high-availability-rhel.md)中的内容，以从 HANA 资源创建命令 (RHEL 8.x) 中删除元关键字
 - 2021 年 6 月 9 日：在 [SAP HANA Azure 虚拟机存储配置](./hana-vm-operations-storage.md)中更正了 VM SKU 的名称，M192---_v2
 - 2021 年 5 月 26 日：更改了[在 SLES 上的 Azure VM 中通过 Pacemaker 使用 HSR 进行 SAP HANA 横向扩展](./sap-hana-high-availability-scale-out-hsr-suse.md)、[在 RHEL 上通过 ANF 纵向扩展 SAP HANA 的 HA](./sap-hana-high-availability-netapp-files-red-hat.md) 和[在 RHEL 上的 Azure VM 中通过 Pacemaker 使用 HSR 横向扩展 SAP HANA](./sap-hana-high-availability-scale-out-hsr-rhel.md) 中的内容，添加配置以准备 OS，以便在 ANF 上运行 HANA  
 - 2021 年 5 月 13 日，更改了[在 Azure 中的 SLES 上设置 Pacemaker](./high-availability-guide-suse-pacemaker.md) 中的内容，以阐明资源代理 azure-events 的运作方式 

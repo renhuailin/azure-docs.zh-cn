@@ -7,18 +7,17 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bbd778eabf150b734b04e004006dfeea2254ec4
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 6ac2397823dffd2c31cbe534c8fea1886e84558d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077460"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733496"
 ---
 # <a name="sizing-guidance"></a>调整大小指南
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="overview-of-sizing-guidance"></a>调整大小指南概述
 
@@ -31,7 +30,7 @@ ms.locfileid: "106077460"
 
 内核数必须是大于或等于一的整数值。
 
-使用 azdata 进行部署时，应使用 2 的幂数的形式来指定内存值，即使用后缀：Ki、Mi 或 Gi。
+使用 Azure CLI (az) 进行部署时，应使用 2 的幂数的形式来指定内存值，即使用后缀：Ki、Mi 或 Gi。
 
 限制值必须始终大于请求值（如果指定）。
 
@@ -52,13 +51,11 @@ ms.locfileid: "106077460"
 |bootstrapper|100m|100Mi|200m|200Mi||
 |**control**|400m|2Gi|1800m|2Gi||
 |controldb|200m|3Gi|800m|6Gi||
-|controlwd|10m|100Mi|100m|200Mi||
 |logsdb|200m|1600Mi|2|1600Mi||
 |logsui|100m|500Mi|2|2Gi||
 |metricsdb|200m|800Mi|400m|2Gi||
 |metricsdc|100m|200Mi|200m|300Mi|Metricsdc 是在群集中每个 Kubernetes 节点上创建的守护程序集。  表中的数字按节点列出。 如果创建数据控制器之前在部署配置文件中设置了 allowNodeMetricsCollection = false，则不会创建 metricsdc 守护程序集。|
 |metricsui|20m|200Mi|500m|200Mi||
-|mgmtproxy|200m|250Mi|500m|500Mi||
 
 可以在部署配置文件或 datacontroller YAML 文件中替代 controldb 和 control Pod 的默认设置。  示例：
 
@@ -84,9 +81,14 @@ ms.locfileid: "106077460"
 
 ## <a name="sql-managed-instance-sizing-details"></a>SQL 托管实例调整大小详细信息
 
-每个 SQL 托管实例都必须具有以下最低资源请求：
-- 内存：2Gi
-- 内核数：1 个
+每个 SQL 托管实例都必须具有以下最低资源请求和限制：
+
+|服务层级|常规用途|业务关键（预览版）|
+|---|---|---|
+|CPU 请求|最小值：1；最大值：24；默认值：2|最小值：1；最大值：无限制；默认值：4|
+|CPU 限制|最小值：1；最大值：24；默认值：2|最小值：1；最大值：无限制；默认值：4|
+|内存请求|最小值：2Gi；最大值：128Gi；默认值：4Gi|最小值：2Gi；最大值：无限制；默认值：4Gi|
+|内存限制|最小值：2Gi；最大值：128Gi；默认值：4Gi|最小值：2Gi；最大值：无限制；默认值：4Gi|
 
 创建的每个 SQL 托管实例 Pod 都有三个容器：
 
@@ -146,7 +148,7 @@ ms.locfileid: "106077460"
 
 切记，对于内核或 RAM 指定的数据库实例请求大小不能超过群集中 Kubernetes 节点的可用容量。  例如，如果 Kubernetes 群集中的最大 Kubernetes 节点为 256 GB RAM 和 24 个内核，则无法创建请求 512 GB RAM 和 48 个内核的数据库实例。  
 
-最好在 Kubernetes 节点中至少保留 25% 的可用容量，以便 Kubernetes 高效地安排要创建的 Pod，并能够弹性缩放，按需规划长期发展。  
+最好在 Kubernetes 节点中至少保留 25% 的可用容量，以便 Kubernetes 高效地安排要创建的 Pod，实现弹性缩放和 Kubernetes 节点的滚动升级，以及按需规划长期发展。
 
 在计算大小时，不要忘记添加 Kubernetes 系统 Pod 和任何其他工作负载的资源需求，它们可能与同一 Kubernetes 群集中已启用 Azure Arc 的数据服务共享容量。
 

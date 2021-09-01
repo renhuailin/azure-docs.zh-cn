@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 1fad1bca18d16ac3b6a654a3c289d0a14e3cd2e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f5b3cc109d3583defce78c3ae52848188fca900
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92204786"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284546"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute 先决条件和清单
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需确认是否符合以下部分中所列的要求。
@@ -29,7 +29,7 @@ ms.locfileid: "92204786"
 * 即使提供商不是 ExpressRoute 连接合作伙伴，也可以通过 [云交换提供商](expressroute-locations.md#connectivity-through-exchange-providers)连接到 Microsoft 云。
 
 ## <a name="network-requirements"></a>网络要求
-* **每个对等互连位置存在冗余**：Microsoft 要求在 Microsoft 的路由器和每条 ExpressRoute 线路上的对等互连路由器之间建立冗余性的 BGP 会话（即使只有[一个与云交换器的物理连接](expressroute-faqs.md#onep2plink)）。
+* **每个对等互连位置存在冗余**：Microsoft 要求在 Microsoft 的路由器和每条 ExpressRoute 线路上的对等互连路由器之间建立冗余性的 BGP 会话（即使只有 [一个与云交换器的物理连接](expressroute-faqs.md#onep2plink)）。
 * **灾难恢复冗余**：Microsoft 强烈建议在不同的对等互连位置中至少设置两条 ExpressRoute 线路，以免出现单点故障。
 * **路由**：你或提供商需设置和管理针对 [路由域](expressroute-circuit-peerings.md)的 BGP 会话，具体取决于连接到 Microsoft 云的方式。 某些以太网连接服务提供商或云交换服务提供商可能会以增值服务的形式提供 BGP 管理。
 * **NAT**：Microsoft 只能通过 Microsoft 对等互连方式接受公共 IP 地址。 如果使用的是本地网络中的专用 IP 地址，你或提供商需[使用 NAT](expressroute-nat.md)将专用 IP 地址转换为公共 IP 地址。
@@ -46,6 +46,7 @@ ms.locfileid: "92204786"
 * [针对 Microsoft 365 的网络规划和性能优化](/microsoft-365/enterprise/network-planning-and-performance)
 * [Microsoft 365 的网络和迁移规划](/microsoft-365/enterprise/network-and-migration-planning)
 * [Microsoft 365 与本地环境的集成](/microsoft-365/enterprise/microsoft-365-integration)
+* [随时了解 Office 365 IP 地址更改的最新动态](/microsoft-365/enterprise/microsoft-365-ip-web-service?view=o365-worldwide)
 * [Office 365 中的 ExpressRoute 高级培训视频](https://channel9.msdn.com/series/aer/)
 
 ## <a name="next-steps"></a>后续步骤

@@ -3,12 +3,12 @@ title: 在 Azure VMware 解决方案中部署 Horizon
 description: 了解如何在 Azure VMware 解决方案中部署 VMware Horizon。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: c34d0ac7806f8284e893cf3ad4f3c82dd404ff41
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d99c8dc76dcab1866d0c536be7fc505c2eec0cb6
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181391"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323643"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>在 Azure VMware 解决方案中部署 Horizon 
 
@@ -27,9 +27,9 @@ ms.locfileid: "102181391"
 
 随着 Horizon 在 Azure VMware 解决方案中的引入，现在 Azure 平台上有两款虚拟桌面基础结构 (VDI) 解决方案。 下图概要汇总了主要差异。
 
-:::image type="content" source="media/horizon/difference-horizon-azure-vmware-solution-horizon-cloud-azure.png" alt-text="Azure VMware 解决方案中的 Horizon 和 Horizon Cloud on Azure" border="false":::
+:::image type="content" source="media/vmware-horizon/difference-horizon-azure-vmware-solution-horizon-cloud-azure.png" alt-text="显示 Azure VMware 解决方案中的 Horizon 与 Horizon Cloud on Azure 之间的差异的图。" border="false":::
 
-Horizon 8 发行系列中的 Horizon 2006 及更高版本支持本地部署和 Azure VMware 解决方案部署。 有少量的 Horizon 功能在本地受支持，但在 Azure VMware 解决方案中不受支持。 Horizon 生态系统中的其他产品也受支持。 有关信息，请参阅[功能奇偶一致性和互操作性](https://kb.vmware.com/s/article/80850)。
+Horizon 8 发行系列中的 Horizon 2006 及更高版本支持本地部署和 Azure VMware 解决方案部署。 有少量的 Horizon 功能在本地受支持，但在 Azure VMware 解决方案中不受支持。 Horizon 生态系统中的其他产品也受支持。 有关详细信息，请参阅[功能奇偶一致性和互操作性](https://kb.vmware.com/s/article/80850)。
 
 ## <a name="deploy-horizon-in-a-hybrid-cloud"></a>在混合云中部署 Horizon
 
@@ -40,7 +40,7 @@ Horizon 8 发行系列中的 Horizon 2006 及更高版本支持本地部署和 A
 
 与本地数据中心或专用数据中心一样，可以在 Azure VMware 解决方案私有云中部署 Horizon。 以下部分将讨论在本地部署 Horizon 与在 Azure VMware 解决方案中部署 Horizon 的主要差异。
 
-Azure 私有云在概念上与 VMware SDDC 相同，后者是 Horizon 文档中常用的术语。 本文档的余下内容使用了“Azure 私有云”和“VMware SDDC”这两个可换用的术语。
+Azure 私有云在概念上与 VMware SDDC 相同，后者是 Horizon 文档中常用的术语 。 本文档的其余部分交换使用这两个术语。
 
 Azure VMware 解决方案中的 Horizon 必须使用 Horizon Cloud Connector 来管理订阅许可证。 可将 Cloud Connector 连同 Horizon Connection Server 一起部署在 Azure 虚拟网络中。
 
@@ -86,7 +86,7 @@ Azure VMware 解决方案中的 Horizon 必须使用 Horizon Cloud Connector 来
 
 从 Azure 虚拟网络到 Azure 私有云/SDDC 的连接应该配置有 ExpressRoute FastPath。 下图显示了基本的 Horizon Pod 部署。
 
-:::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="使用 ExpressPath Fast Path 的典型 Horizon Pod 部署" border="false":::
+:::image type="content" source="media/vmware-horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="显示使用 ExpressPath Fast Path 的典型 Horizon Pod 部署的图。" border="false":::
 
 ## <a name="network-connectivity-to-scale-horizon-on-azure-vmware-solution"></a>用于缩放 Azure VMware 解决方案中的 Horizon 的网络连接
 
@@ -94,7 +94,7 @@ Azure VMware 解决方案中的 Horizon 必须使用 Horizon Cloud Connector 来
 
 ### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Azure VMware 解决方案中的单个 Horizon Pod
 
-:::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Azure VMware 解决方案中的单个 Horizon Pod" border="false":::
+:::image type="content" source="media/vmware-horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="显示 Azure VMware 解决方案中的单个 Horizon Pod 的图。" border="false":::
 
 单个 Horizon Pod 是最直接的部署方案，因为只需在“美国东部”区域部署一个 Horizon Pod。  由于每个私有云和 SDDC 预计可处理 4,000 个桌面会话，因此可以部署最大的 Horizon Pod 大小。  可以规划最多包含三个私有云/SDDC 的部署。
 
@@ -112,17 +112,17 @@ Azure VMware 解决方案中的 Horizon 必须使用 Horizon Cloud Connector 来
 
 下图显示了如何支持本地资源的连接。 若要将企业网络连接到 Azure 虚拟网络，需要使用 ExpressRoute 线路。  此外，还需要使用 ExpressRoute Global Reach 将企业网络连接到每个私有云和 SDDC。  这样，便可以从 SDDC 连接到 ExpressRoute 线路和本地资源。 
 
-:::image type="content" source="media/horizon/connect-corporate-network-azure-virtual-network.png" alt-text="将企业网络连接到 Azure 虚拟网络" border="false":::
+:::image type="content" source="media/vmware-horizon/connect-corporate-network-azure-virtual-network.png" alt-text="显示企业网络到 Azure 虚拟网络的连接的图。" border="false":::
 
 ### <a name="multiple-horizon-pods-on-azure-vmware-solution-across-multiple-regions"></a>Azure VMware 解决方案中跨多个区域的多个 Horizon Pod
 
 另一种方案是跨多个 Pod 扩展 Horizon。  在此方案中，你将在两个不同的区域中部署两个 Horizon Pod，并使用 CPA 将它们相联合。 此方案的网络配置与前一个示例类似，不过需要额外添加一些跨区域链接。 
 
-将每个区域中的 Azure 虚拟网络连接到另一区域中的私有云/SDDC。 这样，属于 CPA 联合的 Horizon 连接服务器便可以连接到受管理的所有桌面。 将更多私有云/SDDC 添加到此配置总共可以扩展到 24,000 个会话。 
+将每个区域中的 Azure 虚拟网络连接到另一区域中的私有云/SDDC。 这样，属于 CPA 联合的 Horizon 连接服务器便可以连接到受管理的所有桌面。 将额外私有云/SDDC 添加到此配置总共可以扩展到 24,000 个会话。 
 
 如果在同一区域中部署两个 Horizon Pod，上述原则同样适用。  请务必在单独的 Azure 虚拟网络中部署第二个 Horizon Pod。 与单个 Pod 示例一样，可以使用 ExpressRoute 和 Global Reach 将企业网络与本地 Pod 连接到此多 Pod/区域示例。 
 
-:::image type="content" source="media/horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="Azure VMware 解决方案中跨多个区域的多个 Horizon Pod" border="false":::
+:::image type="content" source="media/vmware-horizon/multiple-horizon-pod-azure-vmware-solution.png" alt-text="显示 Azure VMware 解决方案中跨多个区域的多个 Horizon Pod 的图。" border="false":::
 
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>调整 Horizon 部署的 Azure VMware 解决方案主机大小 
 
@@ -205,13 +205,13 @@ Horizon 虚拟桌面的具体 vCPU/vRAM 要求取决于客户的具体工作负�
 
 如果只是要在将来可预见的一段时间在 Azure VMware 解决方案中部署 Horizon，请使用 Horizon 订阅许可证，因为它的成本更低。
 
-如果要在 Azure VMware 解决方案中和本地部署（就像在灾难恢复用例中一样），请选择 Horizon 通用订阅许可证。 此许可证包括用于本地部署的 vSphere 许可证，因此成本更高。
+如果要在 Azure VMware 解决方案中和本地部署，请选择 Horizon 通用订阅许可证（就像在灾难恢复用例中一样）。 但是，此许可证包括用于本地部署的 vSphere 许可证，因此成本更高。
 
 与 VMware EUC 销售团队协作，根据需求确定 Horizon 许可成本。
 
 ### <a name="azure-instance-types"></a>Azure 实例类型
 
-若要了解 Horizon 基础结构所需的 Azure 虚拟机大小，请参阅[此处](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution)的 VMware 指导原则。
+若要了解 Horizon 基础结构所需的 Azure 虚拟机大小，请参阅 [Azure VMware 解决方案中的 Horizon 安装](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution)。
 
 ## <a name="references"></a>参考
 [Horizon Agent for Linux 系统要求](https://docs.vmware.com/en/VMware-Horizon/2012/linux-desktops-setup/GUID-E268BDBF-1D89-492B-8563-88936FD6607A.html)

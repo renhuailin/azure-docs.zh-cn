@@ -1,14 +1,14 @@
 ---
 title: 将托管服务产品发布到 Azure 市场
 description: 了解如何发布可将客户添加到 Azure Lighthouse 的托管服务产品。
-ms.date: 03/31/2021
+ms.date: 08/10/2021
 ms.topic: how-to
-ms.openlocfilehash: 014386c6c4676abbc441cc2e23bdfcf90f3adc09
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: af5ca37d312f5bdfcfae179997b920a466f01462
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965113"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742189"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>将托管服务产品发布到 Azure 市场
 
@@ -63,6 +63,9 @@ ms.locfileid: "111965113"
 > 委托必须由客户租户中的非来宾帐户完成，该帐户对于正在加入的订阅（或包含正在加入的资源组的订阅）拥有具备 `Microsoft.Authorization/roleAssignments/write` 权限的角色，如 [所有者](../../role-based-access-control/built-in-roles.md#owner)。 若要查看所有可以委托订阅的用户，客户租户中的用户可在 Azure 门户中选择订阅，打开“访问控制（标识和访问管理）”，然后[查看具有‘所有者’角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
 
 客户委托订阅（或订阅中的一个或多个资源组）后，将为该订阅注册“Microsoft.ManagedServices”资源提供程序，此后，租户中的用户可根据产品/服务中的授权访问委托的资源。
+
+> [!NOTE]
+> 若要以后将其他订阅或资源组委托给相同的产品/服务，客户需要在委托之前在每个订阅上 [手动注册 **Microsoft.ManagedServices** 资源提供程序](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
 
 如果你发布了产品/服务的更新版本，客户可以在 [Azure 门户中查看更改并接受新版本](view-manage-service-providers.md#update-service-provider-offers)。
 

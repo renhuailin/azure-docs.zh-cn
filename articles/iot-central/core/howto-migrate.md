@@ -7,18 +7,18 @@ ms.date: 01/18/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0868720668f5db09748e6976327f1500bc8a4781
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8d85f5f18ad21b5a27a7fdb48e9ee14ab751f5d5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733348"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113757899"
 ---
 # <a name="migrate-your-v2-iot-central-application-to-v3"></a>将 V2 IoT Central 应用程序迁移到 V3
 
 现在新创建的 IoT Central 应用程序都是 V3 应用程序。 如果是以前创建的应用程序，则根据具体创建时间，可能是 V2 应用程序。 本文介绍了如何将 V2 迁移到 V3 应用程序，以确保使用最新的 IoT Central 功能。
 
-若要了解如何识别 IoT Central 应用程序的版本，请参阅[关于应用程序](howto-get-app-info.md)。
+若要了解如何识别 IoT Central 应用程序的版本，请参阅[如何获取有关应用程序的信息？](howto-faq.yml#how-do-i-get-information-about-my-application-)。
 
 将应用程序从 V2 迁移到 V3 的步骤如下：
 
@@ -72,7 +72,7 @@ IoT Central 不支持迁移到现有的 V3 应用程序。 若要自动移动现
 
 下面是一些建议考虑的配置步骤：
 
-- [配置仪表板](howto-add-tiles-to-your-dashboard.md)
+- [配置仪表板](howto-manage-dashboards.md)
 - [配置数据导出](howto-export-data.md)
 - [配置规则和操作](quick-configure-rules.md)
 - [自定义应用程序 UI](howto-customize-ui.md)

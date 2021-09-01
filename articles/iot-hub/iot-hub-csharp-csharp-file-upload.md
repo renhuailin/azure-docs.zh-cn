@@ -2,20 +2,19 @@
 title: 使用 .NET 将文件从设备上传到 Azure IoT 中心 | Microsoft Docs
 description: 如何使用用于 .NET 的 Azure IoT 设备 SDK 从设备将文件上传到云中。 上传的文件存储在 Azure 存储 Blob 容器中。
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 07/04/2017
+ms.date: 07/18/2021
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: 65945e81d258b115e4761aff0868bb1f2781c210
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 41cf392fb4b50c06e6af1f20e0c53570589b4090
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083595"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778423"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>通过 IoT 中心将设备中的文件上传到云 (.NET)
 
@@ -23,7 +22,7 @@ ms.locfileid: "110083595"
 
 本教程通过 .NET 文件上传示例介绍了如何使用 IoT 中心的文件上传功能。 
 
-[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)快速入门和[使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)教程介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Microsoft Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+[将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)快速入门和[使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)教程介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Microsoft Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 
@@ -46,9 +45,17 @@ ms.locfileid: "110083595"
 
 * 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* 从 [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) 下载 Azure IoT C# 示例，并提取 ZIP 存档。
+* 本文中运行的示例应用程序是使用 C# 编写的。 对于 Azure IoT C# 示例，建议在开发计算机上使用 .NET Core SDK 3.1 或更高版本。
 
-* 在 Visual Studio Code 中打开 FileUploadSample 文件夹，然后打开 FileUploadSample.cs 文件。
+    可以从 [.NET](https://dotnet.microsoft.com/download) 为多个平台下载 .NET Core SDK。
+
+    可以使用以下命令验证开发计算机上 .NET Core SDK 当前的版本：
+
+    ```cmd/sh
+    dotnet --version
+    ```
+
+* 从 [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) 下载 Azure IoT C# 示例，并提取 ZIP 存档。
 
 * 确保已在防火墙中打开端口 8883。 本文中的示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
@@ -56,27 +63,15 @@ ms.locfileid: "110083595"
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="associate-an-azure-storage-account-to-your-iot-hub"></a>将 Azure 存储帐户关联到 IoT 中心
+## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中心内注册新设备
 
-你需要拥有与 IoT 中心关联的 Azure 存储帐户。 若要了解如何创建 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)。 将 Azure 存储帐户与 IoT 中心相关联时，IoT 中心会生成一个 SAS URI。 设备可以使用此 SAS URI 安全地将文件上传到 Blob 容器。
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="create-a-container"></a>创建容器
-
-按照以下步骤为存储帐户创建 Blob 容器：
-
-1. 在存储帐户左侧窗格中的“数据存储”下，选择“容器”。
-1. 在“容器”边栏选项卡中，选择“+ 容器”。
-1. 在随即打开的“新建容器”窗格中，为容器提供一个名称，然后选择“创建”。
-
-创建容器后，按照[使用 Azure 门户配置文件上传](iot-hub-configure-file-upload.md)中的说明操作。 确保有一个 Blob 容器与你的 IoT 中心关联并且文件通知已启用。
-
-## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
-
-[!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
+[!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-include-associate-storage.md)]
 
 ## <a name="examine-the-application"></a>检查应用程序
 
-导航到 .NET 示例下载中的 FileUploadSample 文件夹。 在 Visual Studio Code 中打开文件夹。 文件夹包含一个名为 parameters.cs 的文件。 如果打开该文件，你会看到参数 p 是必需的，并且包含连接字符串。 如果要更改传输协议，可以指定参数 t。 默认协议是 MQTT。 文件 program.cs 包含 main 函数。 FileUploadSample.cs 文件包含主要示例逻辑。 TestPayload.txt 是要上传到 Blob 容器中的文件。
+在 Visual Studio Code 的 .NET 示例下载中打开 *azure-iot-samples-csharp-master\iot-hub\Samples\device\FileUploadSample* 文件夹。 该文件夹包含一个名为 parameters.cs 的文件。 如果打开该文件，你会看到参数 p 是必需的并且包含设备连接字符串。 注册设备时复制并保存了此连接字符串。 如果要更改传输协议，可以指定参数 t。 默认协议是 MQTT。 文件 program.cs 包含 main 函数。 FileUploadSample.cs 文件包含主要示例逻辑。 TestPayload.txt 是要上传到 Blob 容器中的文件。
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -86,7 +81,7 @@ ms.locfileid: "110083595"
 1. 键入以下命令：
     ```cmd/sh
     dotnet restore
-    dotnet run --p "{Your connection string}"
+    dotnet run --p "{Your device connection string}"
     ```
 
 输出应如下所示：

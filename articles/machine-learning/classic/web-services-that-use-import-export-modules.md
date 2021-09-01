@@ -10,14 +10,14 @@ ms.subservice: studio-classic
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4824b7a4233bc65d521e1c6ded7d1ea276b2a929
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bd35487bcd11aeacae019acf0b87e4e1e716a66
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100520555"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583295"
 ---
-# <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的 Azure 机器学习工作室（经典）Web 服务
+# <a name="deploy-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的机器学习工作室（经典）Web 服务
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
@@ -77,7 +77,7 @@ ms.locfileid: "100520555"
 9. 在“数据表名称”字段中，键入 dbo.ScoredLabels。 如果表不存在，则在运行实验或调用 Web 服务时创建它。
 10. 在“数据表列的逗号分隔列表”字段中，键入 ScoredLabels。
 
-编写调用最终 Web 服务的应用程序时，可能要在运行时指定不同的输入查询或目标表。 若要配置这些输入和输出，可使用 Web 服务参数功能设置 *导入数据* 模块 *数据源* 属性和 *导出数据* 模式数据目标属性。  有关 Web 服务参数的详细信息，请参阅 Cortana Intelligence 和机器学习博客上的 [Azure 机器学习工作室 Web 服务参数条目](/archive/blogs/machinelearning/azureml-web-service-parameters)。
+编写调用最终 Web 服务的应用程序时，可能要在运行时指定不同的输入查询或目标表。 若要配置这些输入和输出，可使用 Web 服务参数功能设置 *导入数据* 模块 *数据源* 属性和 *导出数据* 模式数据目标属性。  有关 Web 服务参数的详细信息，请参阅 Cortana Intelligence 和机器学习博客上的[机器学习工作室（经典）Web 服务参数条目](/archive/blogs/machinelearning/azureml-web-service-parameters)。
 
 若要为导入查询和目标表配置 Web 服务参数：
 
@@ -124,7 +124,7 @@ ms.locfileid: "100520555"
 ### <a name="deploy-a-new-web-service"></a>部署新的 Web 服务
 
 > [!NOTE]
-> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。
+> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。
 
 若要部署为新的 Web 服务并创建一个应用程序来使用它：
 

@@ -1,14 +1,14 @@
 ---
 title: 从 Windows Admin Center 将混合计算机连接到 Azure
 description: 本文介绍如何从 Windows Admin Center 中安装代理并通过使用已启用 Azure Arc 的服务器将计算机连接到 Azure。
-ms.date: 10/12/2020
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5fa7a61b1e3b22503377cbcbe308a82be89dac72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1abfe2e69a8f3e7b2ab1abcc2d34c79877b750d3
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100584776"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323268"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>从 Windows Admin Center 将混合计算机连接到 Azure
 
@@ -49,7 +49,7 @@ ms.locfileid: "100584776"
     1. 在“Azue 订阅”下拉列表框中，选择 Azure 订阅。
     1. 对于“资源组”，请选择“新建”以创建新资源组，或者在“资源组”下拉列表下选择要从中注册和管理计算机的现有资源组  。
     1. 在“区域”下拉列表中，选择用于存储服务器元数据的 Azure 区域。
-    1. 如果计算机或服务器通过代理服务器进行通信以连接到 Internet，请选择“使用代理服务器”选项。 指定计算机要用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。
+    1. 如果计算机或服务器通过代理服务器进行通信以连接到 Internet，请选择“使用代理服务器”选项。 使用此配置，代理使用 HTTP 协议通过代理服务器进行通信。 指定计算机要用来与代理服务器通信的代理服务器 IP 地址或名称以及端口号。
 
 1. 选择“设置”，以继续配置具有已启用 Azure Arc 的服务器的 Windows 服务器。
 
@@ -65,8 +65,8 @@ ms.locfileid: "100584776"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在 [Connected Machine 代理问题故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
+* 在 [Connected Machine 代理故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
 
-* 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 启用监视等。
+* 查看[规划和部署指南](plan-at-scale-deployment.md)，以便对按任意规模部署启用了 Azure Arc 的服务器进行规划，并实现集中管理和监视。
 
-* 详细了解 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 如果需要收集操作系统和工作负载监视数据，使用自动化 runbook 或更新管理等功能管理这些数据，或使用 [Azure 安全中心](../../security-center/security-center-introduction.md)等其他 Azure 服务，则需要适用于 Windows 和 Linux 的 Log Analytics 代理。
+* 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否向预期的 Log Analytics 工作区报告、使用 [VM 见解](../../azure-monitor/vm/vminsights-enable-policy.md)启用监视，等等。

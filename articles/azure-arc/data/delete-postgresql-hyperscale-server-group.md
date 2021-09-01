@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 7932ad3b30910e539acfbff2329a03f80a4d1a0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00387e190df3bcc6f654868d078a068e9196a635
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104670352"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750314"
 ---
 # <a name="delete-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>删除已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 
@@ -26,31 +26,31 @@ ms.locfileid: "104670352"
 
 例如，我们考虑从下面的设置中删除 postgres01 实例：
 
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 Name        State    Workers
 ----------  -------  ---------
 postgres01  Ready    3
 ```
 
 删除命令的一般格式为：
-```console
-azdata arc postgres server delete -n <server group name>
+```azurecli
+az postgres arc-server delete -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 执行此命令时，系统将请求你确认删除服务器组。 如果使用脚本自动执行删除操作，则需要使用 --force 参数绕过确认请求。 例如，你将运行如下命令： 
-```console
-azdata arc postgres server delete -n <server group name> --force
+```azurecli
+az postgres arc-server delete -n <server group name> --force --k8s-namespace <namespace> --use-k8s
 ```
 
 有关删除命令的详细信息，请运行：
-```console
-azdata arc postgres server delete --help
+```azurecli
+az postgres arc-server delete --help 
 ```
 
 ### <a name="delete-the-server-group-used-in-this-example"></a>删除本示例中使用的服务器组
 
-```console
-azdata arc postgres server delete -n postgres01
+```azurecli
+az postgres arc-server delete -n postgres01 --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="reclaim-the-kubernetes-persistent-volume-claims-pvcs"></a>回收 Kubernetes 永久性卷声明 (PVC)
@@ -112,7 +112,7 @@ persistentvolumeclaim "data-postgres01-0" deleted
   
 
 >[!NOTE]
-> 如前所述，不删除这些 PVC 可能最终导致 Kubernetes 群集引发错误。 其中的一些错误可能包括无法通过 azdata 登录 Kubernetes 群集，因为由于此存储问题，Pod 可能会被逐出集群（正常的 Kubernetes 行为）。
+> 如前所述，不删除这些 PVC 可能最终导致 Kubernetes 群集引发错误。 其中一些错误可能包括无法从 Kubernetes API 创建、读取、更新、删除资源，或者无法运行 `az arcdata dc export` 等命令，因为控制器 Pod 可能会因该存储问题（正常 Kubernetes 行为）而被逐出 Kubernetes 节点。
 >
 > 例如，你可能会在日志中看到类似于以下内容的消息：  
 > ```output

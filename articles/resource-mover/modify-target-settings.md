@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: 936a667948c888f3ca7c53eaa5be9cc97facf5f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7044414d47f685062331bc4aceb1b538d6f9a062
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375351"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461580"
 ---
 # <a name="modify-destination-settings"></a>修改目标设置
 
@@ -21,36 +21,34 @@ ms.locfileid: "100375351"
 
 ## <a name="modify-vm-settings"></a>修改 VM 设置
 
-在移动 Azure VM 和关联资源时，可以修改目标设置。 
+移动 Azure VM 和关联资源时，可以修改目标设置。 我们建议：
 
-- 建议仅在验证移动集合后更改目标设置。
-- 建议在准备资源之前修改设置，因为有些目标属性在准备完成后可能无法编辑。
-
-但是：
-- 如果要移动源资源，则通常在启动初始移动过程之前一直可以修改目标设置。
-- 如果分配源区域中的现有资源，在移动提交完成之前一直可以修改目标设置。
+- 仅在验证移动集合后更改目标设置。 但是：
+    - 如果要移动源资源，则通常可以在启动初始移动过程之前修改这些设置。
+    - 如果分配源区域中的现有资源，在移动提交完成之前一直可以修改目标设置。
+- 在准备资源之前修改设置，因为在准备完成后，某些目标属性可能无法编辑。
 
 ### <a name="settings-you-can-modify"></a>你可以修改的设置
 
 下表中汇总了你可以修改的配置设置。
 
 **资源** | **选项** 
---- | --- | --- 
-**VM 名称** | 选项：<br/><br/> - 在目标区域中创建一个名称相同的新 VM。<br/><br/> - 在目标区域中创建一个名称不同的新 VM。<br/><br/> - 使用目标区域中现有的 VM。<br/><br/> 如果创建新 VM，则除修改的设置之外，将为新的目标 VM 分配与源相同的设置。
+--- | --- 
+**VM 名称** | 目标选项：<br/><br/> - 在目标区域中创建一个名称相同的新 VM。<br/><br/> - 在目标区域中创建一个名称不同的新 VM。<br/><br/> - 使用目标区域中现有的 VM。<br/><br/> 如果创建新 VM，则除修改的设置之外，将为新的目标 VM 分配与源相同的设置。
 VM 可用性区域 | 将在其中放置目标 VM 的可用性区域。 如果不想更改源设置，或者不想将 VM 放到可用性区域，请选择“不适用”。
 **VM SKU** | 将用于目标 VM 的 [VM 类型](https://azure.microsoft.com/pricing/details/virtual-machines/series/)（在目标区域中可用）。<br/><br/> 所选的目标 VM 不应小于源 VM。
-**VM 可用性集 | 将在其中放置目标 VM 的可用性集。 如果不想更改源设置，或者不想将 VM 放到可用性集，请选择“不适用”。
+VM 可用性集 | 将在其中放置目标 VM 的可用性集。 如果不想更改源设置，或者不想将 VM 放到可用性集，请选择“不适用”。
 VM 密钥保管库 | 在 VM 上启用 Azure 磁盘加密时，关联的密钥保管库。
 磁盘加密集 | VM 使用客户管理的密钥进行服务器端加密时，关联的磁盘加密集。
 **资源组** | 将在其中放置目标 VM 的资源组。
 网络资源 | 适用于网络接口、虚拟网络 (Vnet/) 和网络安全组/网络接口选项：<br/><br/> - 在目标区域中创建一个名称相同的新资源。<br/><br/> - 在目标区域中创建一个名称不同的新资源。<br/><br/> - 使用目标区域中的现有网络资源。<br/><br/> 如果创建新目标资源，则除修改的设置之外，将为新的目标资源分配与源资源相同的设置。
 公共 IP 地址名称、SKU 和区域 | 指定标准公共 IP 地址的名称、[SKU](../virtual-network/public-ip-addresses.md#sku) 和[区域](../virtual-network/public-ip-addresses.md#standard)。<br/><br/> 如果希望它实现区域冗余，请以“区域冗余”形式输入。
-**负载均衡器名称、SKU 和区域** | 指定负载均衡器的名称、SKU（基本或标准）以及区域。<br/><br/> 建议使用“标准 sKU”。<br/><br/> 如果希望它实现区域冗余，请将其指定为“区域冗余”。
+负载均衡器名称、SKU 和区域 | 指定负载均衡器的名称、SKU（基本或标准）以及区域。<br/><br/> 建议使用“标准 SKU”。<br/><br/> 如果希望它实现区域冗余，请将其指定为“区域冗余”。
 **资源依赖关系** | 适用于每个依赖项的选项：<br/><br/>- 资源使用将移动到目标区域的源依赖资源。<br/><br/> - 资源使用位于目标区域的不同依赖资源。 在这种情况下，可以从目标区域的任何类似资源中进行选择。
 
 ### <a name="edit-vm-destination-settings"></a>编辑 VM 目标设置
 
-如果不想将依赖资源从源区域移动到目标区域，则可以使用多个其他选项：
+如果不想将依赖资源从源区域移动到目标区域，可以从多个其他选项中选择：
 
 - 在目标区域中创建一个新资源。 除非你指定不同的设置，否则新资源将具有与源资源相同的设置。
 - 使用目标区域中的现有资源。
@@ -92,6 +90,37 @@ VM 密钥保管库 | 在 VM 上启用 Azure 磁盘加密时，关联的密钥保
 
 1. 在“跨区域”中，对于要修改的资源，单击“目标配置”条目 。
 2. 在“配置设置”中，指定上表中汇总的目标设置。
+
+
+## <a name="modify-settings-in-powershell"></a>修改 PowerShell 中的设置
+
+可以修改 PowerShell 中的设置。
+
+1)  检索要编辑其属性的移动资源。 例如检索 VM 运行：
+
+    ```azurepowershell
+    $moveResourceObj = Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS1" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"
+    ```
+2)  将资源设置复制到目标资源设置对象。
+
+    ```azurepowershell
+    $TargetResourceSettingObj = $moveResourceObj.ResourceSetting
+    ```
+
+3)  设置目标资源设置对象中的参数。 例如更改目标 VM 的名称：
+
+    ```azurepowershell
+    $TargetResourceSettingObj.TargetResourceName="PSDemoVM-target"
+    ```
+
+4)  更新“移动资源目标”设置。 在此示例中，我们将 VM 的名称“PSDemoVM”更改为“PSDemoVMTarget” 。
+
+    ```azurepowershell
+    Update-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -SourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM" -Name "PSDemoVM" -ResourceSetting $TargetResourceSettingObj
+    ```
+    “输出”
+    “修改目标设置后的输出文本”![](./media/modify-target-settings/update-settings.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 

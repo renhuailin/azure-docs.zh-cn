@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8edf540c3f67a3a8bee075569f0a2588cae18a62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d43753084f79184b338b16223ed45cb00a2dfb33
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390005"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732451"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>什么是已启用 Azure Arc 的超大规模 PostgreSQL？
 
@@ -31,9 +31,12 @@ ms.locfileid: "100390005"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+若要详细了解这些功能，还可以观看此“公开的数据”剧集。
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/What-is-Azure-Arc-Enabled-PostgreSQL-Hyperscale--Data-Exposed/player?format=ny]
+
 ## <a name="compare-solutions"></a>比较解决方案
 
-本部分介绍已启用 Azure Arc 的超大规模 PostgreSQL 与 Azure Database for PostgreSQL 超大规模 (Citus) 有哪些不同之处？
+本部分介绍了已启用 Azure Arc 的超大规模 PostgreSQL 与 Azure Database for PostgreSQL 超大规模 (Citus) 有哪些不同之处？
 
 ## <a name="azure-database-for-postgresql-hyperscale-citus"></a>Azure Database for PostgreSQL 超大规模 (Citus)
 

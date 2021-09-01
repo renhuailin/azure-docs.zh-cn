@@ -9,14 +9,17 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: a41dce28427db40dfd19879e4ada95add64009c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a82c13d0ad64f100f2fb8b826b1786afa81abac
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104772427"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253370"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高性能计算 VM 大小
+
+> [!TIP]
+> 请尝试使用[虚拟机选择器工具](https://aka.ms/vm-selector)查找最适合你的工作负载的其他尺寸。
 
 Azure H 系列虚拟机 (VM) 旨在为各种实际 HPC 工作负载提供一流的性能、可伸缩性与成本效益。
 

@@ -4,12 +4,12 @@ description: 了解如何有效地将巨量的任务提交到单个 Azure Batch 
 ms.topic: how-to
 ms.date: 12/30/2020
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 08cf92507a4556afbf56c9cb7e2c9c1b3a6c9479
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 825bee374ec006708b4b0b38e7d101554b3a9c25
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97831510"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014936"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>将大量的任务提交到 Batch 作业
 
@@ -141,7 +141,7 @@ pip install azure-batch
 pip install azure-batch-extensions
 ```
 
-设置使用该 SDK 扩展的 `BatchExtensionsClient`：
+使用 `import azext.batch as batch` 导入包后，设置一个使用 SDK 扩展的 `BatchExtensionsClient`：
 
 ```python
 

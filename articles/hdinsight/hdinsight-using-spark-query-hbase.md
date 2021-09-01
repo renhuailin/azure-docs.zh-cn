@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
-ms.openlocfilehash: 344caf4080380f5d9dfdaf452798ada6d1dc9f1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6e639f49844aeb39b9fc51629f798e16015fa42
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98931221"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748461"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
@@ -160,11 +160,11 @@ __注意：__ 每当其中一个群集经历缩放活动时，都需要执行这
     |Spark 版本| HDI HBase 版本  | SHC 版本    |  Command  |
     | :-----------:| :----------: | :-----------: |:----------- |
     |      2.1    | HDI 3.6 (HBase 1.1) | 1.1.1-2.1-s_2.11    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
-    |      2.4    | HDI 4.0 (HBase 2.0) | 1.1.0.3.1.2.2-1  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+    
 
 2. 保持此 Spark shell 实例处于打开状态，并继续[定义目录和查询](#define-a-catalog-and-query)。 如果在 SHC Core 存储库中找不到与版本相对应的 jar，请继续阅读。 
 
-可以直接从 [spark-hbase-connector](https://github.com/hortonworks-spark/shc) GitHub 分支生成 jar。 例如，如果运行的是 Spark 2.3 和 HBase 1.1，请完成以下步骤：
+对于 Spark 和 HBase 版本的后续组合，这些项目不再发布在以上存储库中。 可以直接从 [spark-hbase-connector](https://github.com/hortonworks-spark/shc) GitHub 分支生成 jar。 例如，如果运行的是 Spark 2.4 和 HBase 2.1，请完成以下步骤：
 
 1. 克隆存储库：
 
@@ -172,10 +172,10 @@ __注意：__ 每当其中一个群集经历缩放活动时，都需要执行这
     git clone https://github.com/hortonworks-spark/shc
     ```
     
-2. 转到分支-2.3：
+2. 转到分支-2.4：
 
     ```bash
-    git checkout branch-2.3
+    git checkout branch-2.4
     ```
 
 3. 从分支生成（创建 .jar 文件）：
@@ -187,7 +187,7 @@ __注意：__ 每当其中一个群集经历缩放活动时，都需要执行这
 3. 运行以下命令（请确保更改与所生成的 .jar 文件相对应的 .jar 名称）：
 
     ```bash
-    spark-shell --jars <path to your jar>,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar,/usr/hdp/current/hbase-client/lib/hbase-client.jar,/usr/hdp/current/hbase-client/lib/hbase-common.jar,/usr/hdp/current/hbase-client/lib/hbase-server.jar,/usr/hdp/current/hbase-client/lib/hbase-protocol.jar,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar
+    spark-shell --jars <path to your jar>,/usr/hdp/current/hbase-client/lib/shaded-clients/*
     ```
     
 4. 保持此 Spark shell 实例处于打开状态，并继续执行下一部分。 

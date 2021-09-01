@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 43cb88f42ff0d61cb3f3e5f4e5475bf51e737457
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 1b2e61c2e23a8257829c3109c3d6a9dcf62ea176
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664335"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728494"
 ---
 # <a name="monitoring-azure-queue-storage"></a>监视 Azure 队列存储
 
@@ -66,7 +66,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 ## <a name="creating-a-diagnostic-setting"></a>创建诊断设置
 
-可以使用 Azure 门户、PowerShell、Azure CLI 或 Azure 资源管理器模板创建诊断设置。
+可以使用 Azure 门户、PowerShell、Azure CLI、Azure 资源管理器模板或 Azure Policy 创建诊断设置。
 
 有关一般指南，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)。
 
@@ -267,6 +267,10 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 # <a name="template"></a>[模板](#tab/template)
 
 若要查看创建诊断设置的 Azure 资源管理器模板，请参阅 [Azure 存储的诊断设置](../../azure-monitor/essentials/resource-manager-diagnostic-settings.md#diagnostic-setting-for-azure-storage)。
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
+
+可以使用策略定义创建诊断设置。 这样，就可以确保为创建或更新的每一个帐户创建诊断设置。 请参阅 [Azure 存储的 Azure Policy 内置定义](../common/policy-reference.md)。
 
 ---
 
@@ -478,6 +482,10 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/microsoft.azure.m
 ```
 
 ### <a name="template"></a>[模板](#tab/template)
+
+不适用。
+
+### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
 
 不适用。
 

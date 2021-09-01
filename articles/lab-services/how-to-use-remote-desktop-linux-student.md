@@ -3,12 +3,12 @@ title: 在 Azure 实验室服务中连接到 Linux VM | Microsoft Docs
 description: 了解如何在 Azure 实验室服务的实验室中使用适用于 Linux 虚拟机的远程桌面。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d13868477ff2e3378d87d7785789a7498ed17e59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04a86ba98df3e1600ac95d19e690815515eb4c6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85443411"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729816"
 ---
 # <a name="connect-to-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>在 Azure 实验室服务的课堂实验室中连接到 Linux 虚拟机
 本文说明了学生如何使用以下方式连接到实验室中的 Linux 虚拟机 (VM)：
@@ -41,8 +41,11 @@ ms.locfileid: "85443411"
 ## <a name="connect-to-the-student-vm-using-gui-remote-desktop"></a>使用 GUI 远程桌面连接到学生 VM
 讲师可以选择配置 VM，以便学生还可以使用 GUI 远程桌面建立连接。  在这种情况下，学生需要从讲师那里了解是使用 Microsoft 远程桌面 (RDP) 还是 X2Go  客户端应用程序连接到其 VM。  这两个应用程序都允许学生远程连接到其 VM，并允许他们在本地计算机上显示 Linux 图形桌面。
 
+> [!WARNING]
+>  建议使用不同于 [GNOME](https://www.gnome.org/) 的图形桌面环境。  应避免在实验室 VM 上安装 GNOME，因为 GNOME 与 Azure Linux 代理冲突，后者为 VM 在 Azure 实验室服务中正常运行所必需。  例如，建议使用图形桌面环境，例如 XFCE。
+
 ### <a name="connect-to-the-student-vm-using-microsoft-remote-desktop-rdp"></a>使用 Microsoft 远程桌面 (RDP) 连接到学生 VM
-在讲师使用适用于 Linux 图形桌面环境（如 MATE、XFCE 等）的 RDP 和 GUI 包设置实验室之后，学生可以使用 Microsoft 远程桌面 (RDP) 连接到他们的 Linux VM。 请使用以下步骤进行连接： 
+在讲师使用适用于 Linux 图形桌面环境（如 XFCE、MATE 等）的 RDP 和 GUI 包设置实验室之后，学生可以使用 Microsoft 远程桌面 (RDP) 连接到他们的 Linux VM。 请使用以下步骤进行连接： 
 
 1. 在 VM 的磁贴上，确保 VM 正在运行，并单击“连接”。 你会看到两个用于连接到 VM 的选项：SSH 和 RDP。
 
@@ -53,10 +56,10 @@ ms.locfileid: "85443411"
 
     如果要从 Mac 或 Chromebook 进行连接，请参阅以下步骤：
    - [在 Mac 上使用 RDP 连接到 VM](connect-virtual-machine-mac-remote-desktop.md)。
-   - [在 Chromebook 上使用 RDP 连接到 VM](connect-virtual-machine-chromebook-remote-desktop.md)。  
+   - [在 Chromebook 上使用 RDP 连接到 VM](connect-virtual-machine-chromebook-remote-desktop.md)。
 
 ### <a name="connect-to-the-student-vm-using-x2go"></a>使用 X2Go 连接到学生 VM
-在讲师使用适用于 Linux 图形桌面环境（如 MATE、XFCE 等）的 X2Go 和 GUI 包设置实验室之后，学生可以使用 X2Go 连接到他们的 Linux VM。
+在讲师使用适用于 Linux 图形桌面环境（如 XFCE、MATE 等）的 X2Go 和 GUI 包设置实验室之后，学生可以使用 X2Go 连接到他们的 Linux VM。
 
 学生需要询问讲师他们安装了哪些 Linux 图形桌面环境。  在使用 X2Go 客户端进行连接的后续步骤中需要用到此信息。
 

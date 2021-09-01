@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: f218d87fe1f91e206c3b8873c9af0dddddd45b42
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: adf9f3da66908dc473388f9b3da14439de86ddcb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656482"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740277"
 ---
 # <a name="register-and-scan-azure-data-explorer"></a>注册并扫描 Azure 数据资源管理器
 
@@ -72,7 +72,7 @@ Azure 数据资源管理器支持完整和增量扫描以捕获元数据和架�
 要在数据目录中注册新的 Azure 数据资源管理器 (Kusto) 帐户，请执行以下操作：
 
 1. 导航到你的 Purview 帐户
-1. 在左侧导航区域中选择“源”
+1. 在左侧导航区域中选择“源”。
 1. 选择“注册”
 1. 在“注册源”上选择“Azure 数据资源管理器” 
 1. 选择“继续”
@@ -89,7 +89,35 @@ Azure 数据资源管理器支持完整和增量扫描以捕获元数据和架�
 
 :::image type="content" source="media/register-scan-azure-data-explorer/register-sources.png" alt-text="注册源选项" border="true":::
 
-[!INCLUDE [create and manage scans](includes/manage-scans-azure-data-explorer.md)]
+## <a name="creating-and-running-a-scan"></a>创建和运行扫描
+
+若要创建并运行新扫描，请执行以下操作：
+
+1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+
+1. 选择你已注册的 Azure 数据资源管理器数据源。
+
+1. 选择“新建扫描”
+
+1. 选择要连接到数据源的凭据。 
+
+   :::image type="content" source="media/register-scan-azure-data-explorer/set-up-scan-data-explorer.png" alt-text="设置扫描":::
+
+1. 可以通过选择列表中相应的项，将扫描范围限定到特定的数据库。
+
+   :::image type="content" source="media/register-scan-azure-data-explorer/scope-your-scan-data-explorer.png" alt-text="限定扫描范围":::
+
+1. 然后选择扫描规则集。 可以在系统默认项和现有的自定义规则集之间选择，或者可以以内联方式创建新规则集。
+
+   :::image type="content" source="media/register-scan-azure-data-explorer/scan-rule-set-data-explorer.png" alt-text="扫描规则集":::
+
+1. 选择扫描触发器。 可以设置一个计划或运行一次扫描。
+
+   :::image type="content" source="media/register-scan-azure-data-explorer/trigger-scan.png" alt-text="trigger":::
+
+1. 查看扫描并选择“保存并运行”。
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

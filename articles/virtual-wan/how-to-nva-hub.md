@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/02/2021
+ms.date: 07/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: 0119d9b1938698ed27d9c1539c1366859d0fc7f9
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 0252305167f0f77d310810af0a147106fae9e0c6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411946"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730884"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub"></a>如何在 Azure 虚拟 WAN 中心创建网络虚拟设备
 
@@ -93,6 +93,8 @@ ms.locfileid: "111411946"
 1. 在此页上，系统将要求你接受共同管理员访问协议的条款。 这是托管应用程序的标准配置，其中发布服务器可以访问此部署中的某些资源。 勾选“我同意上述条款和条件”框，然后选择“创建” 。
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>将 VNet 连接到中心
+
+在本部分中，将创建中心和 VNet 之间的连接。
 
 [!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 

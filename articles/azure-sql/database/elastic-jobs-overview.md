@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: 35e13b483141e841d9cca5a2e5d3aa3c77ee7b4a
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: aacb8863fcb26f5551459e0fe7ad2d4faeede4e0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017606"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744882"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>创建、配置和管理弹性作业（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -85,18 +85,18 @@ ms.locfileid: "112017606"
 ### <a name="idempotent-scripts"></a>幂等脚本
 作业的 T-SQL 脚本必须[幂等](https://en.wikipedia.org/wiki/Idempotence)。 “幂等”是指如果脚本成功，则再次运行时，会出现相同的结果。 脚本可能由于暂时性网络问题而失败。 在此情况下，作业会自动重试运行脚本，达到默认的次数才停止。 即使幂等脚本已成功运行两次（或更多次），也仍会返回相同的结果。
 
-一个简单的策略是在创建对象之前测试其是否存在。
-
+一个简单的策略是在创建对象之前测试其是否存在。 下面显示了假设示例：
 
 ```sql
-IF NOT EXISTS (some_object)
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE [name] = N'some_object')
+    print 'Object does not exist'
     -- Create the object
+ELSE
+    print 'Object exists'
     -- If it exists, drop the object before recreating it.
 ```
 
 同样地，脚本必须以逻辑方式测试并反驳它所找到的任何条件，才能成功执行。
-
-
 
 ## <a name="next-steps"></a>后续步骤
 

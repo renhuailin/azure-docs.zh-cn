@@ -2,7 +2,6 @@
 title: 连接下游 IoT Edge 设备 - Azure IoT Edge | Microsoft Docs
 description: 如何将 IoT Edge 设备配置为连接到 Azure IoT Edge 网关设备。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/01/2021
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: cdc7ce9fbb24dc593ebd4dedc7c2c4ce82afa3f0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2fbb03ae08d1146b51a4a73f1b2260443c1609d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094811"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722123"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>将下游 IoT Edge 设备连接到 Azure IoT Edge 网关
 
@@ -148,7 +147,11 @@ Azure CLI 的 [azure-iot](/cli/azure/iot) 扩展提供管理 IoT 资源的命令
    ```
 
    >[!TIP]
-   >如果设备上尚不存在配置文件，请使用 `/etc/aziot/config.toml.edge.template` 作为模板来创建一个。
+   >如果设备上尚不存在配置文件，请使用以下命令基于模板文件创建该文件：
+   >
+   >```bash
+   >sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   >```
 
 1. 在该配置文件中找到 Hostname 节。 将包含 `hostname` 参数的行取消注释，并将值更新为 IoT Edge 设备的完全限定的域名 (FQDN) 或 IP 地址。
 
@@ -385,7 +388,7 @@ API 代理模块已经过设计，可以通过自定义来处理最常见的网�
                        "edgeAgent": {
                            "settings": {
                                "image": "mcr.microsoft.com/azureiotedge-agent:1.2",
-                               "createOptions": ""
+                               "createOptions": "{}"
                            },
                            "type": "docker"
                        },

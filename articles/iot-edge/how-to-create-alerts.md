@@ -2,19 +2,18 @@
 title: 使用警报获取有关问题的通知 - Azure IoT Edge
 description: 使用 Azure Monitor 警报规则进行大规模监视
 author: veyalla
-manager: philmea
 ms.author: veyalla
 ms.date: 06/08/2021
 ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 14deb9a8a8ecaf67306ab8e29b2dfea7fa130c00
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 1de507f113f5bf457a4394be9e5fb86c37291e95
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904353"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015485"
 ---
 # <a name="get-notified-about-issues-using-alerts-preview"></a>使用警报获取有关问题的通知（预览版）
 
@@ -22,11 +21,14 @@ ms.locfileid: "111904353"
 
 使用 [Azure Monitor 日志警报](../azure-monitor/alerts/alerts-unified-log.md)可以大规模监视 IoT Edge 设备。 [解决方案体系结构](how-to-collect-and-transport-metrics.md#architecture)中强调过，Azure Monitor Log Analytics 用作指标数据库。 这种集成利用以资源为中心的日志警报，解锁功能强大且灵活的警报功能。
 
+> [!IMPORTANT]
+> 此功能目前仅适用于 IoT 中心，不适用于 IoT Central。
+
 ## <a name="create-an-alert-rule"></a>创建警报规则
 
 可以[创建日志警报规则](../azure-monitor/alerts/alerts-log.md)，用于监视整个设备组中的各种状况。
 
-IoT 中心资源下提供了示例 [KQL](https://aka.ms/kql) 警报查询。 对来自边缘设备的指标数据进行操作的查询，在其标题中以“IoT Edge:”为前缀。 请按原样使用这些示例，或根据需要对其进行修改，以创建可满足你确切需求的查询。
+IoT 中心资源下提供了示例 [KQL](/azure/data-explorer/kusto/query/) 警报查询。 对来自边缘设备的指标数据进行操作的查询，在其标题中以“IoT Edge:”为前缀。 请按原样使用这些示例，或根据需要对其进行修改，以创建可满足你确切需求的查询。
 
 若要访问示例警报查询，请使用以下步骤：
 
@@ -66,4 +68,4 @@ IoT 中心资源下提供了示例 [KQL](https://aka.ms/kql) 警报查询。 对
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[自定义模块中的指标](how-to-add-custom-metrics.md)增强监视解决方案。 
+使用[自定义模块中的指标](how-to-add-custom-metrics.md)增强监视解决方案。

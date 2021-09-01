@@ -1,14 +1,14 @@
 ---
 title: 对 Azure Policy 状态更改事件做出响应
 description: 使用 Azure 事件网格订阅应用程序策略事件，无需复杂的代码即可使应用程序对状态更改做出响应。
-ms.date: 03/29/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 197dfbe410874541c38334b169c526bac63a614e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4cd443882b3d1f9ffdcf0c317b6012654e0780c2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752896"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324880"
 ---
 # <a name="reacting-to-azure-policy-state-change-events"></a>对 Azure Policy 状态更改事件做出响应
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 9975533e00b0ca184e7cc16c5d8ea51d4eafa0a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a176b971d830fcabf3eba1767b9ac198a4418f0b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361700"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751979"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
 
@@ -46,9 +46,10 @@ ms.locfileid: "100361700"
 
 - 不要直接将数据复制到磁盘中。 请将数据复制到预先创建的 *BlockBlob*、*PageBlob* 和 *AzureFile* 文件夹中。
 - *BlockBlob* 和 *PageBlob* 下的文件夹是容器。 例如，容器创建为 *BlockBlob/container* 和 *PageBlob/container*。
-- 如果云中存在与正在复制的对象同名的现有 Azure 对象（例如 Blob），Data Box Disk 会在云中将文件重命名为 file(1)。
+- 如果文件夹与现有容器同名，则文件夹的内容将与容器的内容合并。 云中尚未有的文件或 Blob 将添加到容器中。 如果某个文件或 Blob 与容器中已有的文件或 Blob 同名，则会覆盖现有文件或 Blob。
 - 写入到 *BlockBlob* 和 *PageBlob* 共享中的每个文件将分别上传为块 blob 和页 blob。
 - 在 *BlockBlob* 和 *PageBlob* 文件夹下创建的任何空目录层次结构（没有任何文件）都不会上传。
+- 为了在数据上传期间提高性能，建议[在存储帐户上启用大型文件共享，并将共享容量增大到 100 TiB](../../articles/storage/files/storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account)。 只有具有本地冗余存储 (LRS) 的存储帐户才支持大型文件共享。
 - 如果将数据上传到 Azure 时发生任何错误，则会在目标存储帐户中创建一个错误日志。 当上传完成时，可以在门户中找到此错误日志的路径，你可以查看此日志来采取纠正措施。 在验证上传的数据之前，不要删除源中的数据。
 - 将数据上传到 Azure 文件存储时，不会保留文件元数据和 NTFS 权限。 例如，复制数据时，不会保留文件的“上次修改时间”属性  。
 - 如果在订单中指定了托管磁盘，请查看以下其他注意事项：

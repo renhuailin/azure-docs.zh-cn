@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e51cb6faf51484944fc3f8fa739b76d50411feac
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 92e9c22712fdbfae5ab13a23cf72e282a225288a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745336"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733241"
 ---
 # <a name="specify-a-face-recognition-model"></a>指定人脸识别模型
 
@@ -39,7 +39,7 @@ recognition_04 模型（2021 年发布）是当前可用的最准确的模型。
 
 * [人脸检测的概念](../concepts/face-detection.md)
 * [人脸识别的概念](../concepts/face-recognition.md)
-* [如何检测图像中的人脸](HowtoDetectFacesinImage.md)
+* [调用检测 API](HowtoDetectFacesinImage.md)
 
 ## <a name="detect-faces-with-specified-model"></a>使用指定的模型检测人脸
 
@@ -116,7 +116,7 @@ await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognit
 
 ## <a name="next-steps"></a>后续步骤
 
-本文已介绍如何指定要与不同人脸服务 API 配合使用的识别模型。 接下来，请遵循相应的快速入门开始使用人脸识别。
+本文已介绍如何指定要与不同人脸服务 API 配合使用的识别模型。 接下来，请按照快速入门开始使用人脸检测。
 
 * [人脸 .NET SDK](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
 * [人脸 Python SDK](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)

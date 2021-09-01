@@ -1,20 +1,21 @@
 ---
 title: 结合使用 Azure 映像生成器和 Windows VM 的映像库
 description: 使用 Azure 映像生成器和 Azure PowerShell 创建 Azure 共享库映像版本。
-author: cynthn
-ms.author: cynthn
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dd821ac9f5722047ec5c233feaaf2a48d4de3b41
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 03ae984a5950a026fc9bc5c30ee1951e1c17b909
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031144"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734578"
 ---
 # <a name="create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>创建 Windows 映像并将其分发到共享映像库 
 
@@ -26,7 +27,7 @@ ms.locfileid: "112031144"
 
 Azure 映像生成器会自动运行 sysprep 来将映像通用化，这是一个通用的 sysprep 命令，如有必要你可以[重写](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully)它。 
 
-请注意层自定义的次数。 最多可以对单个 Windows 映像运行 Sysprep 命令 8 次。 运行 Sysprep 8 次后，必须重新创建 Windows 映像。 有关详细信息，请参阅[有关 Sysprep 可运行次数的限制](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)。 
+请注意层自定义的次数。 可以对单个 Windows 映像运行有限次数的 Sysprep 命令。 达到 Sysprep 限制后，必须重新创建 Windows 映像。 有关详细信息，请参阅[有关 Sysprep 可运行次数的限制](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)。 
 
 
 ## <a name="register-the-features"></a>注册功能

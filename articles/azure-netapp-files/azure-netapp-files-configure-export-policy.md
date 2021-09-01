@@ -7,17 +7,17 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 05/07/2021
-ms.openlocfilehash: 35bcff2615ab9b31f077a13c1cae7fbe38518575
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.date: 08/06/2021
+ms.openlocfilehash: f930c52c4b913e9411c6f619231fb50d0bb6cc5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109628241"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733399"
 ---
 # <a name="configure-export-policy-for-nfs-or-dual-protocol-volumes"></a>为 NFS 或双重协议卷配置导出策略
 
-可以配置导出策略来控制对某个使用 NFS 协议（NFSv3 和 NFSv4.1）或双协重议（NFSv3 和 SMB）的 Azure NetApp 文件卷的访问。 
+可以配置导出策略来控制对某个使用 NFS 协议（NFSv3 和 NFSv4.1）或双协重议（NFSv3 和 SMB 或 NFSv4.1 和 SMB）的 Azure NetApp 文件卷的访问。 
 
 最多可创建 5 个导出策略规则。
 
@@ -48,6 +48,16 @@ ms.locfileid: "109628241"
 
       ![导出策略](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
+    * Chown 模式：根据需要修改更改所有权模式，以设置文件和目录的所有权管理功能。  有两个  选项可供选择：   
+
+      * `Restricted`（默认）：只有根用户可以更改文件和目录的所有权。
+      * `Unrestricted`：非根用户可以更改他们拥有的文件和目录的所有权。  
+
+        注册要求和注意事项适用于设置 **`Chown Mode`** 。 请按照[配置 Unix 权限和更改所有权模式](configure-unix-permissions-change-ownership-mode.md)中的说明操作。  
+
+      ![“更改所有权模式”选项的屏幕截图。](../media/azure-netapp-files/chown-mode-export-policy.png) 
+
 ## <a name="next-steps"></a>后续步骤 
 * [装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [配置 Unix 权限并更改所有权模式](configure-unix-permissions-change-ownership-mode.md) 
 * [管理快照](azure-netapp-files-manage-snapshots.md)

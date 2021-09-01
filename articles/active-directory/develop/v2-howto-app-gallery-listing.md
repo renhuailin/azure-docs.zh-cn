@@ -1,6 +1,6 @@
 ---
 title: 将应用发布到 Azure Active Directory 应用库
-description: 了解如何将支持单一登录的应用程序列入 Azure Active Directory 应用库中。
+description: 了解如何将支持单一登录的应用程序列入 Azure Active Directory 应用库中。 通过将应用发布到应用库，可使客户更轻松地查找应用并将应用添加到其租户。
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -8,20 +8,34 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/10/2021
+ms.date: 06/23/2021
 ms.author: kenwith
 ms.reviewer: jeedes
-ms.custom: aaddev
-ms.openlocfilehash: ade77d05e209d65a9d7aa40451362bd66718cf75
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.custom: aaddev, contperf-fy21q4
+ms.openlocfilehash: 7938e8ffbaca3f069016a445775d9c669f1ad144
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033315"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228061"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>将应用发布到 Azure AD 应用库
 
-可将应用发布到 Azure AD 应用库中。 应用在发布后，将显示为一个选项，客户在将其应用添加到其租户时可以选择该选项。 
+你可以将应用发布到 Azure Active Directory (Azure AD) 应用库中。 应用发布后将显示为一个选项，客户在[将应用添加到其租户](../manage-apps/add-application-portal.md)时可以选择该选项。 
+
+在 Azure AD 应用库中发布应用的步骤如下：
+1. 先决条件
+1. 为应用选择适当的单一登录标准。
+1. 在应用中实现单一登录。
+1. 在应用中实现 SCIM 用户预配（可选）
+1. 创建 Azure 租户并测试应用。
+1. 创建并发布文档。
+1. 提交应用。
+1. 加入 Microsoft 合作伙伴网络。
+
+## <a name="what-is-the-azure-ad-application-gallery"></a>什么是 Azure AD 应用程序库？
+
+[Azure AD 应用库](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1)是一个包含数千应用的目录，在库中可轻松部署和配置单一登录 (SSO) 并自动化用户预配。
 
 将应用添加到 Azure AD 库可带来的一些好处包括：
 
@@ -30,6 +44,7 @@ ms.locfileid: "112033315"
 - 在库中快速搜索应用程序。
 - 免费、基本和高级 Azure AD 客户都可以使用此集成。
 - 共同客户可以获得分步配置教程。
+- 使用跨域身份管理系统 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 的客户可对同一应用使用预配。
 
 此外，当客户使用 Azure AD 作为你的应用的标识提供者时也能获得许多好处。 其中包括：
 
@@ -47,39 +62,18 @@ ms.locfileid: "112033315"
 - 通过使用 Azure AD SSO 而不需要单独的凭据，提高了用户登录应用程序时的安全性和便利性。
 
 > [!TIP]
-> 让其他公司通过购买或订阅使用你的应用程序时，你的应用程序可供这些公司自己的 Azure 租户内部的客户使用。 这称为创建多租户应用程序。 有关此概念的概述，请参阅 [Azure 中的多租户应用程序](../../dotnet-develop-multitenant-applications.md)和 [Azure Active Directory 中的租户](single-and-multi-tenant-apps.md)。
-
-> [!IMPORTANT]
-> 若要在 Azure AD 库中发布应用，必须同意具体的条款和条件。 在开始之前，请确保阅读并同意这些[条款和条件](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)。
-
-在 Azure AD 应用库中发布应用的步骤如下：
-1. 为应用选择适当的单一登录标准。
-2. 在应用中实现单一登录。
-3. 创建 Azure 租户并测试应用。
-4. 创建并发布文档。
-5. 提交应用。
-6. 加入 Microsoft 合作伙伴网络。
-
-## <a name="what-is-the-azure-ad-application-gallery"></a>什么是 Azure AD 应用程序库？
-
-- 可以为客户提供尽可能最佳的单一登录体验。
-- 简化并最小化了应用程序的配置。
-- 在库中快速搜索应用程序。
-- 免费、基本和高级 Azure AD 客户都可以使用此集成。
-- 共同客户可以获得分步配置教程。
-- 使用跨域身份管理系统 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 的客户可对同一应用使用预配。
+> 让其他公司通过购买或订阅使用你的应用程序时，你的应用程序可供这些公司自己的 Azure 租户内部的客户使用。 这称为创建多租户应用程序。 有关此概念的概述，请参阅 [Azure Active Directory 中的租户](single-and-multi-tenant-apps.md)。
 
 ## <a name="prerequisites"></a>先决条件
+若要在 Azure AD 库中发布应用，必须首先阅读并同意具体的[条款和条件](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)。
 
 需要一个用于测试的永久性帐户，其中至少注册了两个用户。
 
 - 对于联合应用程序（Open ID 和 SAML/WS-Fed），应用程序必须支持软件即服务 (SaaS) 模型才能列入 Azure AD 应用库中。 企业库应用程序必须支持多个客户配置，而不能仅支持某个特定客户。
-- 对于 Open ID Connect，应用程序必须是多租户的，并且必须为应用程序正确实现 [Azure AD 同意框架](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 用户可将登录请求发送到公用终结点，以便任何客户都可以向应用程序提供同意。 你可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户访问。
+- 对于 Open ID Connect，应用程序必须是多租户的，并且必须为应用程序正确实现 [Azure AD 同意框架](../develop/consent-framework.md)。 用户可将登录请求发送到公用终结点，以便任何客户都可以向应用程序提供同意。 你可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户访问。
 - 对于 SAML 2.0/WS-Fed，应用程序必须能够以 SP 或 IDP 模式执行 SAML/WS-Fed SSO 集成。 在提交请求之前，请确保此功能正常工作。
 - 对于密码 SSO，请确保你的应用程序支持窗体身份验证，以便可以进行密码保管，从而让单一登录按预期方式工作。
 - 需要一个用于测试的永久性帐户，其中至少注册了两个用户。
-
-**如何获取面向开发人员的 Azure AD？**
 
 可以获取一个具有所有高级 Azure AD 功能的免费测试帐户 - 该帐户可免费使用 90 天，并且只要将其用于开发工作，就还能延长其免费使用期限：[加入 Microsoft 365 开发者计划](/office/developer-program/microsoft-365-developer-program)。
 
@@ -139,7 +133,7 @@ Web Services 联合身份验证 (WS-Fed) 是一种[行业标准](https://docs.oa
 
 对于 SAML 和 WS-Fed，应用程序必须能够以 SP 或 IDP 模式执行 SSO 集成。 在提交请求之前，请确保此功能正常工作。
 
-若要详细了解身份验证，请参阅[什么是身份验证？](../azuread-dev/v1-authentication-scenarios.md)。
+若要详细了解身份验证，请参阅[什么是身份验证？](authentication-vs-authorization.md)。
 
 > [!IMPORTANT]
 > 对于联合应用程序（OpenID 和 SAML/WS-Fed），应用必须支持软件即服务 (SaaS) 模型。 Azure AD 库应用程序必须支持多个客户配置，且不应特定于任何单个客户。
@@ -296,6 +290,8 @@ Azure AD 提供了[参考代码](https://aka.ms/scimoverview)来帮助你生成 
 将 OpenID Connect 应用程序列入库中这一过程的时间线为 2 到 5 个工作日。
 
 ![将 OpenID Connect 应用程序列入库中的时间线](./media/howto-app-gallery-listing/timeline2.png)
+
+将 SCIM 预配应用程序列入库中这一过程的时间线各不相同，取决于许多因素。 
 
 ### <a name="escalations"></a>升级
 

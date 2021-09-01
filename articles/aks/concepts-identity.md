@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/24/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 77b35d776b8fcd71f26278a6fda8a102113bd570
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 13fe269431a84a00a8af073849cbd17d188c5175
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109844963"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724759"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的访问和标识选项
 
@@ -78,6 +78,16 @@ Kubernetes RBAC 和 AKS 有助于保护群集访问，并仅向开发人员和�
 | `Microsoft.Network/routeTables/routes/read` <br/> `Microsoft.Network/routeTables/routes/write` | 如果使用的子网与另一资源组（例如采用自定义路由表的自定义 VNET）中的路由表相关联，则需要此权限。 若要验证是否已存在一个对应于另一资源组中的子网的子网，则需要此权限。 |
 | `Microsoft.Network/virtualNetworks/subnets/read` | 如果使用另一资源组中的内部负载均衡器，则需要此权限。 验证资源组中是否已存在内部负载均衡器的子网时必需。 |
 | `Microsoft.Network/privatednszones/*` | 使用另一资源组（例如自定义 privateDNSZone）中的专用 DNS 区域时必需。 |
+
+## <a name="aks-node-access"></a>AKS 节点访问权限
+
+默认情况下，AKS 不需要节点访问权限。  如果利用特定组件，则节点需要以下访问权限。
+
+| Access | 原因 |
+|---|---|
+| `kubelet` | 客户需要向 MSI 授予对 ACR 的访问权限。 |
+| `http app routing` | 需要对 "random name".aksapp.io 的写入权限。 |
+| `container insights` | 客户需要向 Log Analytics 工作区授予权限。 |
 
 ## <a name="kubernetes-rbac"></a>Kubernetes RBAC
 

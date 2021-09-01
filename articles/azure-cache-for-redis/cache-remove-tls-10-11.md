@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 4fb4025d10990c0f499a16bbb6bc308eb74c00cf
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: f9c6f8cc3c973d3172166514815018979f744173
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110655163"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744926"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>删除与 Azure Cache for Redis 配合使用的 TLS 1.0 和 1.1
 
@@ -23,7 +23,7 @@ ms.locfileid: "110655163"
 * **阶段 2：** 我们将停止支持 TLS 1.1 和 TLS 1.0。 在此更改之后，应用程序必须使用 TLS 1.2 或更高版本才能与缓存通信。 如果我们迁移 Azure Cache for Redis 服务以仅支持 TLS 1.2 或更高版本，则该服务应可用。
 
   > [!NOTE]
-  > 阶段 2 暂时计划 2020 年 12 月 31 日之后开始。 但是，我们强烈建议你立即开始规划此更改，并主动更新客户端以支持 TLS 1.2 或更高版本。 
+  > 阶段 2 由于 COVID-19 而推迟。 我们强烈建议你立即开始规划此更改，并主动更新客户端以支持 TLS 1.2 或更高版本。 
   >
 
 在此更改中，我们还将删除对不安全的较早加密套件的支持。 如果为缓存配置最低的版本 TLS 1.2，则受支持的加密套件只有以下套件：
@@ -43,7 +43,7 @@ ms.locfileid: "110655163"
 | Azure 中国世纪互联 |  2020 年 3 月 13 日    | 由于 COVID-19 而推迟  |
 
 > [!NOTE]
-> 阶段 2 暂时计划 2020 年 12 月 31 日之后开始。 确定具体日期后，本文将更新。
+> 阶段 2 由于 COVID-19 而推迟。 确定具体日期后，本文将更新。
 >
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>检查应用程序是否已合规
@@ -54,7 +54,7 @@ ms.locfileid: "110655163"
 
 大多数应用程序使用 Redis 客户端库来处理与缓存的通信。 这里说明了如何将以各种编程语言和框架编写的某些流行客户端库配置为使用 TLS 1.2。
 
-### <a name="net-framework"></a>.NET framework
+### <a name="net-framework"></a>.NET Framework
 
 在 .NET Framework 4.5.2 或更低版本上，Redis .NET 客户端默认使用最低的 TLS 版本；在 .NET Framework 4.6 或更高版本上，则使用最新的 TLS 版本。 如果使用的是较旧版本的 .NET Framework，请手动启用 TLS 1.2：
 

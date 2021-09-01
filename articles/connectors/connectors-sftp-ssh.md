@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 08/05/2021
 tags: connectors
-ms.openlocfilehash: a19253e117f748b4d4045bfd2a29552018bba91e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 32638d71f2c700700be5eb1b2ad63f18969d82a0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781552"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750020"
 ---
 # <a name="create-and-manage-sftp-files-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -91,13 +91,14 @@ ms.locfileid: "107781552"
 
 * SFTP 服务器地址和帐户凭据，便于工作流访问 SFTP 帐户。 还需要有权访问 SSH 私钥和 SSH 私钥密码。 若要在上传大文件时使用分块，你需要对 SFTP 服务器上的根文件夹具有读写权限。 否则，你将收到“401 未授权”错误。
 
-  SFTP-SSH 连接器支持私钥身份验证和密码身份验证。 然而，SFTP-SSH 连接器仅支持以下私钥、格式、算法和指纹：
+  SFTP-SSH 连接器支持私钥身份验证和密码身份验证。 然而，SFTP-SSH 连接器仅支持以下私钥格式、加密算法、指纹和密钥交换算法：
 
   * **私钥格式**：采用 OpenSSH 和 ssh.com 格式的 RSA (Rivest Shamir Adleman) 和 DSA（数字签名算法）密钥。 如果私钥为 PuTTY (.ppk) 文件格式，请先[将密钥转换为 OpenSSH (.pem) 文件格式](#convert-to-openssh)。
   * **加密算法**：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
   * **指纹**：MD5
+  * 密钥交换算法：curve25519-sha256、curve25519-sha256@libssh.org、ecdh-sha2-nistp256、ecdh-sha2-nistp384、ecdh-sha2-nistp521、diffie-hellman-group-exchange-sha256、diffie-hellman-group-exchange-sha1、diffie-hellman-group16-sha512、diffie-hellman-group14-sha256、diffie-hellman-group14-sha1 和 diffie-hellman-group1-sha1
 
-  在向工作流添加所需的 SFTP-SSH 触发器或操作之后，必须提供 SFTP 服务器的连接信息。 为此连接提供 SSH 密钥时，请勿手动输入或编辑密钥*_，否则可能导致连接失败。 请确保从 SSH 私钥文件中复制密钥，并将该密钥粘贴_*到连接详细信息中。 有关详细信息，请参阅本文后面的[使用 SSH 连接到 SFTP](#connect) 部分。
+  在向工作流添加所需的 SFTP-SSH 触发器或操作之后，必须提供 SFTP 服务器的连接信息。 为此连接提供 SSH 密钥时，请勿手动输入或编辑密钥，否则可能导致连接失败。 而是确保从 SSH 私钥文件中复制密钥，并将该密钥粘贴到连接详细信息中。 有关详细信息，请参阅本文后面的[使用 SSH 连接到 SFTP](#connect) 部分。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
@@ -129,7 +130,7 @@ SFTP-SSH 触发器会轮询 SFTP 文件系统并查找自上次轮询以来已�
 
 ## <a name="convert-putty-based-key-to-openssh"></a>将基于 PuTTY 的密钥转换为 OpenSSH
 
-PuTTY 格式和 OpenSSH 格式使用不同的文件扩展名。 PuTTY 格式使用 .ppk 或 PuTTY 私钥，文件扩展名。 OpenSSH 格式使用 pem 或隐私增强邮件的文件扩展名。 如果你的私钥采用 PuTTY 格式，并且你必须使用 OpenSSH 格式，请先按照以下步骤将密钥转换为 OpenSSH 格式：
+PuTTY 格式和 OpenSSH 格式使用不同的文件扩展名。 PuTTY 格式使用 .ppk 或 PuTTY 私钥，文件扩展名。 OpenSSH 格式使用 pem 或隐私增强邮件的文件扩展名。 如果你的私钥采用 PuTTY 格式，并且必须使用 OpenSSH 格式，请先按照以下步骤将密钥转换为 OpenSSH 格式：
 
 ### <a name="unix-based-os"></a>基于 Unix 的 OS
 
@@ -259,9 +260,9 @@ PuTTY 格式和 OpenSSH 格式使用不同的文件扩展名。 PuTTY 格式使�
 
 在逻辑应用无法成功建立与 SFTP 服务器的连接时，可能会发生此错误。 此问题可能会有其他不同原因，因此请尝试以下故障排除选项：
 
-* 连接超时为 20 秒。 请检查 SFTP 服务器的性能是否良好，并且中间设备（如防火墙）是否并未增加开销。 
+* 连接超时为 20 秒。 请检查 SFTP 服务器的性能是否良好，并且中间设备（如防火墙）是否并未增加开销。
 
-* 如果设置了防火墙，请确保将 **托管连接器 IP** 地址添加到已批准的列表。 若要查找逻辑应用所在区域的 IP 地址，请参阅 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md#multi-tenant-azure---outbound-ip-addresses)。
+* 如果设置了防火墙，请确保将所在区域的托管连接器 IP 地址添加到已批准的列表中。 若要查找逻辑应用所在区域的 IP 地址，请参阅[托管连接器出站 IP - Azure 逻辑应用](/connectors/common/outbound-ip-addresses)。
 
 * 如果间歇性地发生此错误，请将 SFTP-SSH 操作上的“重试策略”设置更改为一个高于默认重试次数 (4) 的重试次数。
 

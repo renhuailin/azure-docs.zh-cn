@@ -10,12 +10,12 @@ ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 6e728eaf8335a102e38a3b4b07ab5e504d452294
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e38fb4068b695eebe78c7e9b8709862aca07531
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91996461"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724404"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>在 IoT 中心内了解并使用模块孪生
 
@@ -225,13 +225,13 @@ ms.locfileid: "91996461"
 
 模块应用使用以下原子操作对模块孪生执行操作：
 
-* **检索模块孪生**。 此操作返回当前连接的模块的模块孪生文档（包括标记、所需的系统属性和报告的系统属性）。
+* **检索模块孪生**。 此操作返回当前连接的模块的模块孪生文档（包括所需和报告的系统属性）。
 
 * **部分更新报告属性**。 使用此操作可以部分更新当前连接的模块的报告属性。 此操作使用的 JSON 更新格式与解决方案后端用于部分更新所需属性的格式相同。
 
 * **观察所需属性**。 当前连接的模块可以选择在所需属性发生更新时接收通知。 模块收到的更新格式与解决方案后端执行的更新格式相同（部分或完全替换）。
 
-上述所有操作都需要 [控制对 IoT 中心的访问](iot-hub-devguide-security.md)一文中定义的 **ModuleConnect** 权限。
+上述所有操作都需要[控制对 IoT 中心的访问](iot-hub-devguide-security.md)一文中定义的 DeviceConnect 权限。
 
 借助 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md)，可通过多种语言和平台轻松使用上述操作。
 

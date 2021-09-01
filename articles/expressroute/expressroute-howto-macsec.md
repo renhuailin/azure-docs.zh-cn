@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 923113610f7ea7c9a898e2a8c5481047893f5c54
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 445010e345e92913f32705fc801a6521703ba84f
+ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110702462"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228749"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>在 ExpressRoute Direct 端口上配置 MACsec
 
@@ -73,6 +73,16 @@ ms.locfileid: "110702462"
     $MACsecCAKSecret = Set-AzKeyVaultSecret -VaultName "your_key_vault_name" -Name "CAK_name" -SecretValue $CAK
     $MACsecCKNSecret = Set-AzKeyVaultSecret -VaultName "your_key_vault_name" -Name "CKN_name" -SecretValue $CKN
     ```
+   > [!NOTE]
+   > CKN 必须是长度为 64 的十六进制数字的均匀字符串（0-9，A-F）。
+   >
+   > CAK 长度取决于指定的密码套件：
+   >
+   > * 对于 GcmAes128，CAK 必须是长度为 32 的十六进制数字的均匀字符串（0-9，A-F）。
+   >
+   > * 对于 GcmAes256，CAK 必须是长度为 64 的十六进制数字的均匀字符串（0-9，A-F）。
+   >
+
 4. 将 GET 权限分配给用户标识。
 
     ```azurepowershell-interactive

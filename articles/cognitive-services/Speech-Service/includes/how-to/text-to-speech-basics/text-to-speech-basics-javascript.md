@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/02/2021
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-js
-ms.openlocfilehash: 69c4d1fa56c6ff98989b4f9a5ae54209eb76be13
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 2a300a2bdffec7c376206f62d1b6fc8791aad01b
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113659543"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122423270"
 ---
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。 首先，请进行基本的配置和合成，然后通过更高级的示例来了解自定义应用程序开发，其中包括：
 
@@ -267,7 +267,7 @@ function synthesizeSpeech() {
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-  <voice name="en-US-AriaNeural">
+  <voice name="en-US-ChristopherNeural">
     When you're on the freeway, it's a good idea to use a GPS.
   </voice>
 </speak>
@@ -309,7 +309,7 @@ function synthesizeSpeech() {
 ```
 
 > [!NOTE]
-> 若要在不使用 SSML 的情况下更改语音，可使用 `SpeechConfig.speechSynthesisVoiceName = "en-US-AriaNeural";` 在 `SpeechConfig` 上设置属性
+> 若要在不使用 SSML 的情况下更改语音，可使用 `SpeechConfig.speechSynthesisVoiceName = "en-US-ChristopherNeural";` 在 `SpeechConfig` 上设置属性
 
 ## <a name="get-facial-pose-events"></a>获取人脸姿态事件
 

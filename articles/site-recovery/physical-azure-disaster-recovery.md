@@ -3,13 +3,13 @@ title: 使用 Azure Site Recovery 设置物理本地服务器的灾难恢复
 description: 了解如何使用 Azure Site Recovery 服务针对本地 Windows 和 Linux 服务器设置到 Azure 的灾难恢复。
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/12/2019
-ms.openlocfilehash: 0197d3f505edef0890ed076e15f89d14ad5ab5d4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/14/2021
+ms.openlocfilehash: 6811511cf45d342691a76ddb14b631601db56c36
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968707"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290263"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
@@ -19,7 +19,7 @@ ms.locfileid: "111968707"
 
 > [!div class="checklist"]
 > * 设置 Azure 和本地先决条件
-> * 为 Site Recovery 创建恢复服务保管库 
+> * 为 Site Recovery 创建恢复服务保管库
 > * 设置源和目标复制环境
 > * 创建复制策略
 > * 为服务器启用复制
@@ -36,7 +36,7 @@ ms.locfileid: "111968707"
 
 在开始之前，请注意：
 
-- 故障转移到 Azure 后，物理服务器将不能故障回复到本地物理计算机。 只能故障回复到 VMware VM。 
+- 故障转移到 Azure 后，物理服务器将不能故障回复到本地物理计算机。 只能故障回复到 VMware VM。
 - 本教程使用最简单的设置设置到 Azure 的物理服务器灾难恢复。 如果想要了解其他选项，请通读我们的操作方法指南：
     - 设置[复制源](physical-azure-set-up-source.md)，包括 Site Recovery 配置服务器。
     - 设置[复制目标](physical-azure-set-up-target.md)。
@@ -48,7 +48,7 @@ ms.locfileid: "111968707"
 获取 Microsoft [Azure 帐户](https://azure.microsoft.com/)。
 
 - 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。
-- 了解 [Site Recovery 定价](/azure/site-recovery/site-recovery-faq.yml#pricing)，并获取[定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。
+- 了解 [Site Recovery 定价](/azure/site-recovery/site-recovery-faq#pricing)，并获取[定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)。
 - 了解 Site Recovery [支持的区域](https://azure.microsoft.com/pricing/details/site-recovery/)。
 
 ### <a name="verify-azure-account-permissions"></a>验证 Azure 帐户权限
@@ -56,7 +56,7 @@ ms.locfileid: "111968707"
 请确保 Azure 帐户具有将 VM 复制到 Azure 的权限。
 
 - 查看将计算机复制到 Azure 所需的[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
-- 验证和修改 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。 
+- 验证和修改 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 权限。
 
 
 
@@ -102,24 +102,25 @@ ms.locfileid: "111968707"
 
 设置配置服务器，将它注册到保管库中，并且发现 VM。
 
-1. 单击“Site Recovery”   > “准备基础结构”   > “源”  。
-2. 如果没有配置服务器，请单击“+ 配置服务器”  。
-3. 在“添加服务器”中，检查“配置服务器”是否已显示在“服务器类型”中。   
-4. 下载站点恢复统一安装程序安装文件。
-5. 下载保管库注册密钥。 运行统一安装程序时需要用到此密钥。 生成的密钥有效期为 5 天。
+1. 单击“Site Recovery” > “准备基础结构”。
+2. 确保已完成部署计划，运行部署计划器以估算各种要求。 单击“下一步”。
+3. 在“计算机是否已虚拟化”选项中，选择计算机是虚拟机还是物理机。
+4. 如果没有配置服务器，请单击“+ 配置服务器”  。
+5. 如果要为虚拟机启用保护，请下载配置服务器虚拟机模板。
+6. 如果要为物理计算机启用保护，请下载 Site Recovery 统一安装程序安装文件。 还需要下载保管库注册密钥。 运行统一安装程序时需要用到此密钥。 生成的密钥有效期为 5 天。
 
    ![屏幕截图，显示用于下载安装文件和注册密钥的选项。](./media/physical-azure-disaster-recovery/source-environment.png)
 
 
 ### <a name="register-the-configuration-server-in-the-vault"></a>在保管库中注册配置服务器
 
-开始之前，请执行以下操作： 
+开始之前，请执行以下操作：
 
 #### <a name="verify-time-accuracy"></a>验证时间准确性
 在配置服务器计算机上，确保将系统时钟与[时间服务器](/windows-server/networking/windows-time-service/windows-time-service-top)进行同步。 它应与之匹配。 如果它提前或落后 15 分钟，安装程序可能会失败。
 
 #### <a name="verify-connectivity"></a>验证连接性
-确保计算机可以根据你的环境访问这些 URL： 
+确保计算机可以根据你的环境访问这些 URL：
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
@@ -170,12 +171,12 @@ ms.locfileid: "111968707"
 3. 在“计算机类型”中，选择“物理计算机”   。
 4. 选择进程服务器（配置服务器）。 然后单击“确定”  。
 5. 在“目标”中，选择故障转移后要在其中创建 Azure VM 的订阅和资源组。  选择要在 Azure 中使用的部署模型（经典或资源管理）。
-6. 选择要用于复制数据的 Azure 存储帐户。 
+6. 选择要用于复制数据的 Azure 存储帐户。
 7. 选择 Azure VM 在故障转移后创建时所要连接的 Azure 网络和子网。
-8. 选择“立即为选定的计算机配置”  ，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。  
-9. 在“物理计算机”中，单击“+物理计算机”   。 指定名称和 IP 地址。 选择要复制的计算机的操作系统。 发现和列出服务器需要几分钟的时间。 
+8. 选择“立即为选定的计算机配置”  ，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。 
+9. 在“物理计算机”中，单击“+物理计算机”   。 指定名称和 IP 地址。 选择要复制的计算机的操作系统。 发现和列出服务器需要几分钟的时间。
 10. 在“属性” > “配置属性”中，选择进程服务器在计算机上自动安装移动服务时使用的帐户。
-11. 在“复制设置” > “配置复制设置”中，检查是否选择了正确的复制策略。 
+11. 在“复制设置” > “配置复制设置”中，检查是否选择了正确的复制策略。
 12. 单击“启用复制”。  可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。 
 
 

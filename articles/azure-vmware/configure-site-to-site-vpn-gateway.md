@@ -4,12 +4,12 @@ description: 了解如何在 Azure VMware 解决方案中建立 VPN（IPsec IKEv
 ms.topic: how-to
 ms.custom: contperf-fy22q1
 ms.date: 06/30/2021
-ms.openlocfilehash: fc2f62549a9a06122b77e0e8864c029cb6af8029
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: f3ed10e2a67e40fe8f1124a88fd8e11b24b71986
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515169"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324998"
 ---
 # <a name="configure-a-site-to-site-vpn-in-vwan-for-azure-vmware-solution"></a>在 vWAN 中为 Azure VMware 解决方案配置站点到站点 VPN
 
@@ -151,7 +151,7 @@ ms.locfileid: "122515169"
 
    1. 将配置应用到本地 VPN 设备。
 
-   有关服务配置文件的详细信息，请参阅[关于 VPN 设备服务配置文件](../virtual-wan/virtual-wan-site-to-site-portal.md#config-file)。
+   有关服务配置文件的详细信息，请参阅[关于 VPN 设备服务配置文件](../virtual-wan/virtual-wan-site-to-site-portal.md#about-the-vpn-device-configuration-file)。
 
 1. 在虚拟 WAN 中心修补 Azure VMware 解决方案 ExpressRoute。 
 

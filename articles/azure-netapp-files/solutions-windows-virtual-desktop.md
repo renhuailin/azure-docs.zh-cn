@@ -1,6 +1,6 @@
 ---
-title: 将 Azure NetApp 文件与 Windows 虚拟桌面配合使用 | Microsoft Docs
-description: 提供了有关使用 Azure NetApp 文件部署 Windows 虚拟桌面的最佳实践指南和示例蓝图。
+title: 将 Azure NetApp 文件与 Azure 虚拟桌面配合使用 | Microsoft Docs
+description: 提供了有关使用 Azure NetApp 文件部署 Azure 虚拟桌面的最佳实践指南和示例蓝图。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: a765d689307b7f56e5100e75d9f7121e944cea14
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: dba2c43f0b146816fcbb07419efa7ff4cd926ebe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168274"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733360"
 ---
-# <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>将 Azure NetApp 文件与 Windows 虚拟桌面配合使用的好处 
+# <a name="benefits-of-using-azure-netapp-files-with-azure-virtual-desktop"></a>将 Azure NetApp 文件与 Azure 虚拟桌面配合使用的好处 
 
-本文提供了有关使用 Azure NetApp 文件部署 Windows 虚拟桌面 (WVD) 的最佳实践指南。
+本文提供了有关使用 Azure NetApp 文件部署 Azure 虚拟桌面的最佳实践指南。
 
-Azure NetApp 文件是 Azure 的一项高性能文件存储服务。 它可以提供高达 450,000 的 IOPS 和亚毫秒级的延迟，支持超大规模的 Windows 虚拟桌面部署。 你可以几乎立即按需调整带宽并更改 Azure NetApp 文件卷的服务级别，而不会暂停 IO，同时保留数据平面访问权限。 此功能可让你根据成本轻松优化 WVD 部署规模。 你还可以创建节省空间的时间点卷快照，而不会影响卷性能。 借助此功能，你可以通过 `~snapshot` 目录中的副本回滚单个 [FSLogix 用户配置文件容器](../virtual-desktop/store-fslogix-profile.md)，或通过卷还原功能立即回滚整个卷。  拥有多达 255 个（旋转）快照，可保护卷免遭数据丢失或损坏，管理员有很多机会撤消已完成的操作。
+Azure NetApp 文件是 Azure 的一项高性能文件存储服务。 它可以提供高达 450,000 的 IOPS 和亚毫秒级的延迟，支持超大规模的 Azure 虚拟桌面部署。 你可以几乎立即按需调整带宽并更改 Azure NetApp 文件卷的服务级别，而不会暂停 IO，同时保留数据平面访问权限。 此功能可让你根据成本轻松优化 Azure 虚拟桌面部署规模。 你还可以创建节省空间的时间点卷快照，而不会影响卷性能。 借助此功能，你可以通过 `~snapshot` 目录中的副本回滚单个 [FSLogix 用户配置文件容器](../virtual-desktop/store-fslogix-profile.md)，或通过卷还原功能立即回滚整个卷。  拥有多达 255 个（旋转）快照，可保护卷免遭数据丢失或损坏，管理员有很多机会撤消已完成的操作。
 
 ## <a name="sample-blueprints"></a>示例蓝图
 
-以下示例蓝图显示了 Windows 虚拟桌面与 Azure NetApp 文件的集成。 在共用桌面场景中，使用[多会话虚拟机](../virtual-desktop/windows-10-multisession-faq.yml#what-is-windows-10-enterprise-multi-session)将用户定向到池中可用的最佳会话（[广度优先模式](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method)）主机。 另一方面，在每个用户都有自己的虚拟机的场景中，将保留个人桌面。
+以下示例蓝图显示了 Azure 虚拟桌面与 Azure NetApp 文件的集成。 在共用桌面场景中，使用[多会话虚拟机](../virtual-desktop/windows-10-multisession-faq.yml#what-is-windows-10-enterprise-multi-session)将用户定向到池中可用的最佳会话（[广度优先模式](../virtual-desktop/host-pool-load-balancing.md#breadth-first-load-balancing-method)）主机。 另一方面，在每个用户都有自己的虚拟机的场景中，将保留个人桌面。
 
 ### <a name="pooled-desktop-scenario"></a>共用桌面场景
 
-对于共用场景，Windows 虚拟桌面团队按用户计数向 vCPU [建议](/windows-server/remote/remote-desktop-services/virtual-machine-recs#multi-session-recommendations)以下指导。 请注意，在此建议中未指定虚拟机大小。
+对于共用场景，Azure 虚拟桌面团队按用户计数向 vCPU [建议](/windows-server/remote/remote-desktop-services/virtual-machine-recs#multi-session-recommendations)以下指导。 请注意，在此建议中未指定虚拟机大小。
 
 |     工作负荷类型     |     亮    |     中型    |     重型    |
 |-----------------------|--------------|---------------|--------------|
@@ -42,9 +42,9 @@ Azure NetApp 文件是 Azure 的一项高性能文件存储服务。 它可以�
 
 此建议已通过 500 个用户的 LoginVSI 测试得到证实，该测试将大约 62 个“知识/中等用户”登录到每个 D16as_V4 虚拟机上。 
 
-例如，每个 D16as_V4 虚拟机 62 个用户，Azure NetApp 文件可以轻松地为每个环境中的 60,000 个用户提供支持。 用于评估 D32as_v4 虚拟机的上限的测试正在进行中。 如果 WVD 用户/vCPU 建议适用于 D32as_v4，那么在提出 [1,000 个 IP VNet 限制](./azure-netapp-files-network-topologies.md)之前，将有超过 120,000 个用户容纳在 1,000 个虚拟机中，如下图所示。  
+例如，每个 D16as_V4 虚拟机 62 个用户，Azure NetApp 文件可以轻松地为每个环境中的 60,000 个用户提供支持。 用于评估 D32as_v4 虚拟机的上限的测试正在进行中。 如果 Azure 虚拟桌面用户/vCPU 建议适用于 D32as_v4，那么在提出 [1,000 个 IP VNet 限制](./azure-netapp-files-network-topologies.md)之前，将有超过 120,000 个用户容纳在 1,000 个虚拟机中，如下图所示。  
 
-![Windows 虚拟桌面共用桌面场景](../media/azure-netapp-files/solutions-pooled-desktop-scenario.png)   
+![Azure 虚拟桌面共用桌面场景](../media/azure-netapp-files/solutions-pooled-desktop-scenario.png)   
 
 ### <a name="personal-desktop-scenario"></a>个人桌面场景 
 

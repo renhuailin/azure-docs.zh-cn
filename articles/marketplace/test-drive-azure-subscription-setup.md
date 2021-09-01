@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 03/16/2020
-ms.openlocfilehash: c82f68ee35ae95a424c0847be9a9cc770185af43
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 3fe1862f951b83c6514bda061650b912e9230e46
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005728"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071569"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>为托管体验版设置 Azure 市场订阅
 
@@ -58,7 +58,7 @@ ms.locfileid: "112005728"
         1. 在“管理应用程序”中，选择“证书和机密”。
         2. 在“客户端机密”下，选择“新建客户端机密”。
         3. 输入描述，例如“体验版”，然后选择相应的持续时间。 此密钥过期后，体验版将中断，此时需要生成并为 AppSource 提供新的密钥。
-        4. 选择“添加”以生成 Azure 应用机密。 复制此值，因为收起此边栏选项卡后会立即将其隐藏。 稍后配置体验版时将需要此值。
+        4. 选择“添加”以生成 Azure 应用机密。 复制此值，因为此值会在收起此边栏选项卡后立即隐藏。 稍后配置体验版时将需要此值。
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="添加客户端机密。":::
 
@@ -72,7 +72,33 @@ ms.locfileid: "112005728"
 
         :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="登录你的帐户。":::
 
-6. 将上面创建的 Azure 应用作为应用程序用户添加到体验版 CRM 实例。
+6. 新建安全组，并将其添加到画布应用 (Power Apps)。 此步骤仅适用于画布应用 (Power Apps) 产品/服务。
+    1. 新建安全组。
+        1. 转到 Azure Active Directory。
+        1. 在“管理”下，选择“组” 。
+        1. 选择“+ 新作用域”。
+        1. 选择“安全组”类型。 
+        1. 对于“组名称”，请输入“TestDriveSecurityGroup”。
+        1. 添加描述，例如“体验版安全组”。
+        1. 其余字段保留默认值，然后选择“创建”。
+
+            :::image type="content" source="./media/test-drive/create-new-group.png" alt-text="显示如何新建安全组。":::
+
+    1. 将刚刚创建的安全组添加到画布应用 (Power Apps)。
+        1. 打开“PowerApps 门户”页并登录。
+        1. 选择“应用”，然后选择应用中的省略号。
+        1. 选择 **共享**。
+        1. 搜索在上一步中创建的 TestDriveSecurityGroup 安全组。
+        1. 向安全组授予数据权限。
+        1. 取消选中“发送电子邮件”邀请复选框。
+        1. 选择 **共享**。
+    
+            > [!NOTE]
+            > 使用 CE/Dataverse for Canvas App (Power Apps) 以外的后端数据源时：
+            > - 允许上面创建的安全组访问数据源。 例如，SharePoint 数据源。
+            > - 打开 SharePoint 并与安全组共享数据表。
+
+7. 将刚刚创建的 Azure 应用作为应用程序用户添加到体验版 CRM 实例。 此步骤仅适用于 Dynamics 365 客户参与产品/服务。
     1. 在 Azure Active Directory 中添加新用户。 创建此用户只需提供“名称”和“用户名”值（属于同一租户） ，将其他字段保留为默认值。 复制用户名值。
     2. 登录 CRM 实例，并选择“设置” > “安全” > “用户”。
     3. 将视图更改为“应用程序用户”。
@@ -128,7 +154,7 @@ ms.locfileid: "112005728"
         1. 在“管理应用程序”中，选择“证书和机密”。
         2. 在“客户端机密”下，选择“新建客户端机密”。
         3. 输入描述，例如“体验版”，然后选择相应的持续时间。 此密钥过期后，体验版将中断，此时需要生成并为 AppSource 提供新的密钥。
-        4. 选择“添加”以生成 Azure 应用机密。 复制此值，因为收起此边栏选项卡后会立即将其隐藏。 稍后配置体验版时将需要此值。
+        4. 选择“添加”以生成 Azure 应用机密。 复制此值，因为此值会在收起此边栏选项卡后立即隐藏。 稍后配置体验版时将需要此值。
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="添加客户端机密。":::
 

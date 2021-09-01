@@ -4,18 +4,17 @@ description: 了解如何自动修补 Azure 中的虚拟机。
 author: mayanknayar
 ms.service: virtual-machines
 ms.subservice: automatic-guest-patching
-ms.collection: windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 02/17/2021
+ms.date: 07/29/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f59d43dfa4d952b29dbe16b6679a527c4fc0d50c
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: f3ff46312c7836d90aeb8e3281e760d2ab163186
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565385"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724926"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>预览：Azure VM 的自动 VM 来宾修补
 
@@ -24,12 +23,12 @@ ms.locfileid: "111565385"
 自动 VM 来宾修补具有以下特征：
 - 在 VM 上自动下载并应用已分类为“关键”或“安全”的补丁。 
 - 在 VM 所在时区的非高峰期应用补丁。
-- 由 Azure 管理补丁业务流程，遵循[可用性优先原则](#availability-first-patching)应用补丁。
+- 由 Azure 管理补丁业务流程，遵循[可用性优先原则](#availability-first-updates)应用补丁。
 - 监视虚拟机运行状况（通过平台运行状况信号来确定），以检测修补失败的情况。
 - 适用于所有大小的 VM。
 
 > [!IMPORTANT]
-> 自动 VM 来宾修补目前为公共预览版。 需要执行一个选用过程才能使用下述公共预览版功能。
+> 自动 VM 来宾修补目前为公共预览版。
 > 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -43,7 +42,7 @@ VM 每隔数天定期评估，并在任意 30 天周期内多次评估，以确�
 
 定义更新以及未分类为“关键”或“安全”的其他补丁不会通过自动 VM 来宾修补予以安装 。 若要安装属于其他分类的补丁或者要计划在你自己的自定义维护时段内安装补丁，可以使用[更新管理](./windows/tutorial-config-management.md#manage-windows-updates)。
 
-### <a name="availability-first-patching"></a>可用性优先修补
+### <a name="availability-first-updates"></a>可用性优先更新
 
 Azure 将为启用了自动 VM 来宾修补功能的所有 VM 全局协调补丁安装过程。 此业务流程根据 Azure 提供的不同可用性级别遵循可用性优先原则。
 
@@ -56,8 +55,8 @@ Azure 将为启用了自动 VM 来宾修补功能的所有 VM 全局协调补丁
 - 更新是否成功是通过跟踪 VM 在更新后的运行状况来衡量的。 VM 运行状况是通过 VM 的平台运行状况指示器跟踪的。
 
 在区域内部：
-- 位于不同可用性区域中的 VM 不会并发更新。
-- 不在可用性集中的 VM 将按照尽力而为的原则进行批处理，以避免对订阅中的所有 VM 进行并发更新。
+- 位于不同 Azure 可用性区域中的 VM 不会使用同一更新并发更新。
+- 不在可用性集内的 VM 将按照尽力运行的原则进行批处理，以避免对订阅中的所有 VM 进行并发更新。
 
 在可用性集内部：
 - 公用可用性集中的所有 VM 不会并发更新。
@@ -84,12 +83,25 @@ Azure 将为启用了自动 VM 来宾修补功能的所有 VM 全局协调补丁
 | 发布者               | OS 产品/服务      |  SKU               |
 |-------------------------|---------------|--------------------|
 | Canonical  | UbuntuServer | 18.04-LTS |
-| Redhat  | RHEL | 7.x |
+| Canonical  | 0001-com-ubuntu-pro-bionic | pro-18_04-lts |
+| Canonical  | 0001-com-ubuntu-server-focal | 20_04-lts |
+| Canonical  | 0001-com-ubuntu-pro-focal | pro-20_04-lts |
+| Redhat  | RHEL | 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7_9, 7-RAW, 7-LVM |
+| Redhat  | RHEL | 8, 8.1, 8.2, 8_3, 8_4, 8-LVM |
+| Redhat  | RHEL-RAW | 8-raw |
+| OpenLogic  | CentOS | 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7_8, 7_9, 7-LVM |
+| OpenLogic  | CentOS | 8.0, 8_1, 8_2, 8_3, 8-lvm |
+| SUSE  | sles-12-sp5 | gen1,gen2 |
+| SUSE  | sles-15-sp2 | gen1,gen2 |
+| MicrosoftWindowsServer  | WindowsServer | 2008-R2-SP1 |
 | MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
 | MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    |
 | MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Server-Core |
 | MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter |
 | MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Core |
+
+> [!NOTE]
+>自动 VM 来宾修补、按需修补程序评估和按需修补程序安装仅在从图像创建的 VM 上受支持，此类图像具有受支持操作系统图像列表中发布者、报价和 SKU 的确切组合。 不支持自定义图像或任何其他发布者、报价以及 SKU 组合。
 
 ## <a name="patch-orchestration-modes"></a>补丁业务流程模式
 Azure 上的 VM 现在支持以下补丁业务流程模式：
@@ -101,7 +113,7 @@ AutomaticByPlatform：
 - 只有使用上述受支持 OS 平台映像创建的 VM 才支持此模式。
 - 对于 Windows VM，设置此模式还会禁用 Windows 虚拟机上的本机自动更新，以避免重复。
 - 若要在 Linux VM 上使用此模式，请在 VM 模板中设置属性 `osProfile.linuxConfiguration.patchSettings.patchMode=AutomaticByPlatform`。
-- 若要在 Windows VM 上使用此模式，请设置属性 `osProfile.windowsConfiguration.enableAutomaticUpdates=true`，并在 VM 模板中设置属性 `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform`。
+- 若要在 Windows VM 上使用此模式，请在 VM 模板中设置属性 `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform`。
 
 AutomaticByOS：
 - 只有 Windows VM 支持此模式。
@@ -125,7 +137,7 @@ ImageDefault：
 - 若要在 Linux VM 上使用此模式，请在 VM 模板中设置属性 `osProfile.linuxConfiguration.patchSettings.patchMode=ImageDefault`。
 
 > [!NOTE]
->对于 Windows VM，目前只能在首次创建 VM 时设置属性 `osProfile.windowsConfiguration.enableAutomaticUpdates`。 目前不支持从手动模式切换为自动模式，或者从自动模式切换为手动模式。 支持从 AutomaticByOS 模式切换为 AutomaticByPlatfom 模式。
+>对于 Windows VM，只能在首次创建 VM 时设置属性 `osProfile.windowsConfiguration.enableAutomaticUpdates`。 这会影响某些修补模式转换。 若 VM 具备 `osProfile.windowsConfiguration.enableAutomaticUpdates=false`，则支持在 AutomaticByPlatform 模式和手动模式之间进行切换。 若 VM 具备 `osProfile.windowsConfiguration.enableAutomaticUpdates=true`，则支持在 AutomaticByPlatform 模式和 AutomaticByOS 模式之间进行类似切换。 不支持在 AutomaticByOS 模式和手动模式之间进行切换。
 
 ## <a name="requirements-for-enabling-automatic-vm-guest-patching"></a>启用自动 VM 来宾修补的要求
 
@@ -133,78 +145,11 @@ ImageDefault：
 - 对于 Linux VM，Azure Linux 代理的版本必须是 2.2.53.1 或更高。 如果当前版本低于所需的版本，请[更新 Linux 代理](./extensions/update-linux-agent.md)。
 - 对于 Windows VM，Windows 更新服务必须在虚拟机上运行。
 - 虚拟机必须能够访问配置的更新终结点。 如果虚拟机配置为使用适用于 Linux 的专用存储库或适用于 Windows VM 的 Windows Server Update Services (WSUS)，则相关的更新终结点必须可访问。
-- 使用计算 API 版本 2020-12-01 或更高版本。 计算 API 版本 2020-06-01 可用于 Windows VM，但其功能受限。
-
-启用预览版功能需要为每个订阅一次性选用 InGuestAutoPatchVMPreview 和 InGuestPatchVMPreview 功能，如下一部分中所述 。
-
-### <a name="rest-api"></a>REST API
-以下示例说明如何为订阅启用预览版：
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/InGuestAutoPatchVMPreview/register?api-version=2015-12-01`
-```
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/InGuestPatchVMPreview/register?api-version=2015-12-01`
-```
-
-功能注册最多可能需要 15 分钟。 若要检查注册状态，请使用以下命令：
-
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/InGuestAutoPatchVMPreview?api-version=2015-12-01`
-```
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/InGuestPatchVMPreview?api-version=2015-12-01`
-```
-为订阅注册该功能后，通过将更改传播到计算资源提供程序来完成选用过程。
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2020-06-01`
-```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-使用 [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) cmdlet 为订阅启用预览版。
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName InGuestAutoPatchVMPreview -ProviderNamespace Microsoft.Compute
-Register-AzProviderFeature -FeatureName InGuestPatchVMPreview -ProviderNamespace Microsoft.Compute
-```
-
-功能注册最多可能需要 15 分钟。 若要检查注册状态，请使用以下命令：
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName InGuestAutoPatchVMPreview -ProviderNamespace Microsoft.Compute
-Get-AzProviderFeature -FeatureName InGuestPatchVMPreview -ProviderNamespace Microsoft.Compute
-```
-
-为订阅注册该功能后，通过将更改传播到计算资源提供程序来完成选用过程。
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用 [az feature register](/cli/azure/feature#az_feature_register) 为订阅启用预览版。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview
-az feature register --namespace Microsoft.Compute --name InGuestPatchVMPreview
-```
-
-功能注册最多可能需要 15 分钟。 若要检查注册状态，请使用以下命令：
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview
-az feature show --namespace Microsoft.Compute --name InGuestPatchVMPreview
-```
-
-为订阅注册该功能后，通过将更改传播到计算资源提供程序来完成选用过程。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+- 使用计算 API 版本 2021-03-01 或更高版本来访问包括按需评估和按需修补在内的所有功能。
+- 目前不支持自定义图像。
 
 ## <a name="enable-automatic-vm-guest-patching"></a>启用自动 VM 来宾修补
-若要在 Windows VM 上启用自动 VM 来宾修补，请确保在 VM 模板定义中将属性 osProfile.windowsConfiguration.enableAutomaticUpdates 设置为 true 。 只能在创建 VM 时设置此属性。 此附加属性不适用于 Linux VM。
+在由可支持的平台映像创建的任何 Windows 或 Linux VM 上，可启用自动 VM 来宾修补。 若要在 Windows VM 上启用自动 VM 来宾修补，请确保在 VM 模板定义中将属性 osProfile.windowsConfiguration.enableAutomaticUpdates 设置为 true 。 只能在创建 VM 时设置此属性。 此附加属性不适用于 Linux VM。
 
 ### <a name="rest-api-for-linux-vms"></a>适用于 Linux VM 的 REST API
 以下示例说明如何启用自动 VM 来宾修补：
@@ -215,6 +160,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 
 ```json
 {
+  "location": "<location>",
   "properties": {
     "osProfile": {
       "linuxConfiguration": {
@@ -232,11 +178,12 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 以下示例说明如何启用自动 VM 来宾修补：
 
 ```
-PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVirtualMachine?api-version=2020-06-01`
+PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVirtualMachine?api-version=2020-12-01`
 ```
 
 ```json
 {
+  "location": "<location>",
   "properties": {
     "osProfile": {
       "windowsConfiguration": {
@@ -283,7 +230,7 @@ az vm update --resource-group myResourceGroup --name myVM --set osProfile.window
 自动更新在大多数情况下已禁用，补丁安装将通过今后的扩展安装来完成。 以下条件适用。
 - 如果先前已通过 AutomaticByOS 修补模式在 Windows VM 上启用了自动 Windows 更新，则安装扩展时，将为 VM 禁用自动 Windows 更新。
 - 对于 Ubuntu VM，当自动 VM 来宾修补完成启用时，会自动禁用默认的自动更新。
-- 对于 RHEL，需要手动禁用自动更新（这是预览版中的一项限制）。 执行：
+- 对于 RHEL，需在预览模式中手动禁用自动更新。 执行：
 
 ```
 systemctl stop packagekit
@@ -324,15 +271,26 @@ az vm get-instance-view --resource-group myResourceGroup --name myVM
 
 可在 `lastPatchInstallationSummary` 节下查看 VM 的补丁安装结果。 此节提供有关上次在 VM 上尝试的补丁安装的详细信息，包括已安装的、挂起的、失败的或已跳过的补丁数量。 只会在 VM 的非高峰期维护时段安装补丁。 在下一个非高峰维护时段，将自动重试挂起的和失败的补丁。
 
+## <a name="disable-automatic-vm-guest-patching"></a>禁用自动 VM 来宾修补
+可通过更改 VM 的[修补业务流程模式](#patch-orchestration-modes)来禁用自动 VM 来宾修补。
+
+若要在 Linux VM 上禁用自动 VM 来宾修补，请将修补模式更改为 `ImageDefault`。
+
+若要在 Windows VM 上启用自动 VM 来宾修补，属性 `osProfile.windowsConfiguration.enableAutomaticUpdates` 将确定可在 VM 上设置哪些修补模式，以及此属性只能在首次创建 VM 时进行设置。 这会影响某些修补模式转换：
+- 若 VM 具备 `osProfile.windowsConfiguration.enableAutomaticUpdates=false`，通过将修补模式更改为 `Manual` 来禁用自动 VM 访问修补。
+- 若 VM 显示`osProfile.windowsConfiguration.enableAutomaticUpdates=true`，可将修补模式更改为 `AutomaticByOS`　来禁用自动 VM 来宾修补。
+- 不支持在 AutomaticByOS 模式和手动模式之间进行切换。
+
+若要设置所需的修补模式，请使用本文上述[启用](#enable-automatic-vm-guest-patching)部分中的　API、PowerShell 和 CLI 使用情况示例。
+
 ## <a name="on-demand-patch-assessment"></a>按需补丁评估
 如果已经为 VM 启用了自动 VM 来宾修补，则会在 VM 的非高峰期在 VM 上定期执行补丁评估。 此过程是自动完成的，可以按照本文档前面所述，通过 VM 的实例视图查看最新评估的结果。 此外，可以随时为 VM 触发按需补丁评估。 补丁评估可能需要几分钟才能完成，最新评估的状态将在 VM 的实例视图上更新。
-
-启用预览版功能需要为每个订阅一次性选用 InGuestPatchVMPreview 功能。 此功能预览版不同于以前针对 InGuestAutoPatchVMPreview 执行的自动 VM 来宾修补功能注册。 启用额外的功能预览版是单独的一项附加要求。 可按照前面所述的适用于自动 VM 来宾修补的[预览版启用过程](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching)来启用按需补丁评估功能预览版。
 
 > [!NOTE]
 >按需补丁评估不会自动触发补丁安装。 如果你已启用自动 VM 来宾修补，则会遵循本文档前面所述的可用性优先修补过程，在 VM 的非高峰期安装 VM 的已评估补丁和适用补丁。
 
 ### <a name="rest-api"></a>REST API
+使用 [Assess Patches](/rest/api/compute/virtual-machines/assess-patches) API 评估虚拟机的可用补丁。
 ```
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVirtualMachine/assessPatches?api-version=2020-12-01`
 ```
@@ -349,6 +307,79 @@ Invoke-AzVmPatchAssessment -ResourceGroupName "myResourceGroup" -VMName "myVM"
 
 ```azurecli-interactive
 az vm assess-patches --resource-group myResourceGroup --name myVM
+```
+
+## <a name="on-demand-patch-installation"></a>安装按需修补程序
+若你已为 VM 启用了自动 VM 来宾修补，系统会于 VM 非高峰期，在 VM 上定期安装安全修补程序和关键补丁。 此过程是自动完成的，如本文档前面部分所述，你可通过 VM 实例视图查看最新安装结果。
+
+此外，你还可随时为 VM 触发按需修补评估。 安装补丁可能需要几分钟才能完成，最新安装状态将在 VM 实例视图上更新。
+
+你可以使用按需修补程序安装一种或多种修补程序的所有补丁。 你还可选择包含或排除 Linux 的特定包或 Windows 特定知识库 ID。 触发按需修补安装程序时，请确保在包含列表中至少指定一个补丁分类或至少一个补丁（Linux 特定包，Windows 知识库 ID）。
+
+### <a name="rest-api"></a>REST API
+使用 [Install Patches](/rest/api/compute/virtual-machines/install-patches) API 在虚拟机上安装补丁。
+
+```
+POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVirtualMachine/installPatches?api-version=2020-12-01`
+```
+
+Linux 请求正文示例：
+```json
+{
+  "maximumDuration": "PT1H",
+  "rebootSetting": "IfRequired",
+  "linuxParameters": {
+    "classificationsToInclude": [
+      "Critical",
+      "Security"
+    ]
+  }
+}
+```
+
+Windows 请求正文示例：
+```json
+{
+  "maximumDuration": "PT1H",
+  "rebootSetting": "IfRequired",
+  "windowsParameters": {
+    "classificationsToInclude": [
+      "Critical",
+      "Security"
+    ]
+  }
+}
+```
+
+### <a name="azure-powershell"></a>Azure PowerShell
+使用 [Invoke-AzVMInstallPatch](/powershell/module/az.compute/invoke-azvminstallpatch) cmdlet 在虚拟机上安装补丁。
+
+在 Linux VM 上安装某些包的示例：
+```azurepowershell-interactive
+Invoke-AzVmInstallPatch -ResourceGroupName "myResourceGroup" -VMName "myVM" -MaximumDuration "PT90M" -RebootSetting "Always" -Linux -ClassificationToIncludeForLinux "Security" -PackageNameMaskToInclude ["package123"] -PackageNameMaskToExclude ["package567"]
+```
+
+在 Windows VM 上安装所有关键补丁的示例：
+```azurepowershell-interactive
+Invoke-AzVmInstallPatch -ResourceGroupName "myResourceGroup" -VMName "myVM" -MaximumDuration "PT2H" -RebootSetting "Never" -Windows   -ClassificationToIncludeForWindows Critical
+```
+
+在 Windows VM 上安装所有安全修补程序，同时包含和排除具有特定知识库 ID 的补丁，并排除需要重新启动的任何补丁，具体示例如下：
+```azurepowershell-interactive
+Invoke-AzVmInstallPatch -ResourceGroupName "myResourceGroup" -VMName "myVM" -MaximumDuration "PT90M" -RebootSetting "Always" -Windows -ClassificationToIncludeForWindows "Security" -KBNumberToInclude ["KB1234567", "KB123567"] -KBNumberToExclude ["KB1234702", "KB1234802"] -ExcludeKBsRequiringReboot
+```
+
+### <a name="azure-cli"></a>Azure CLI
+使用 [az vm install-patches](/cli/azure/vm#az_vm_install_patches)　在虚拟机上安装补丁。
+
+在 Linux VM 上安装所有关键补丁的示例：
+```azurecli-interactive
+az vm install-patches --resource-group myResourceGroup --name myVM --maximum-duration PT2H --reboot-setting IfRequired --classifications-to-include-linux Critical
+```
+
+在 Windows VM 上安装所有关键补丁和安全修补程序，同时排除需要重新启动的任何补丁，示例如下：
+```azurecli-interactive
+az vm install-patches --resource-group myResourceGroup --name myVM --maximum-duration PT2H --reboot-setting IfRequired --classifications-to-include-win Critical Security --exclude-kbs-requiring-reboot true
 ```
 
 ## <a name="next-steps"></a>后续步骤

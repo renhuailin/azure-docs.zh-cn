@@ -1,14 +1,14 @@
 ---
 title: 使用 Windows PowerShell DSC 安装 Connected Machine Agent
 description: 本文介绍如何使用 Windows PowerShell DSC 通过已启用 Azure Arc 的服务器将计算机连接到 Azure。
-ms.date: 09/24/2020
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: c0ae9c97afe14559aa36c1b8387f07897aa4c43b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a6e955df43e3589c97091cb111699ce402723d0
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587641"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323797"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>如何使用 Windows PowerShell DSC 安装 Connected Machine Agent
 
@@ -44,7 +44,7 @@ ms.locfileid: "100587641"
 
 此模块中的资源旨在管理 Azure Connected Machine Agent 配置。 还包括一个 PowerShell 脚本 `AzureConnectedMachineAgent.ps1`，位于 `AzureConnectedMachineDsc\examples` 文件夹中。 它使用社区资源自动执行下载和安装，并建立与 Azure Arc 的连接。此脚本执行[从 Azure 门户将混合计算机连接到 Azure](onboard-portal.md) 一文中所述的类似步骤。
 
-如果计算机需要通过代理服务器来与服务进行通信，则在安装代理后，需要运行[此处](manage-agent.md#update-or-remove-proxy-settings)所述的某个命令。 此命令将设置代理服务器系统环境变量 `https_proxy`。 可以使用 [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc) 模块通过 DSC 执行此步骤，而不是手动运行该命令。
+如果计算机需要通过代理服务器来与服务进行通信，则在安装代理后，需要运行[此处](manage-agent.md#update-or-remove-proxy-settings)所述的某个命令。 此命令将设置代理服务器系统环境变量 `https_proxy`。 可以使用 [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc) 模块通过 DSC 执行此步骤，而不是手动运行该命令。 使用此配置，代理使用 HTTP 协议通过代理服务器进行通信。
 
 >[!NOTE]
 >即使在运行 localhost 配置的情况下，也需要将 Windows 配置为接收 PowerShell 远程命令，以允许 DSC 运行。 在提升的 PowerShell 终端中运行 `Set-WsManQuickConfig -Force`，即可轻松地正确配置环境。
@@ -86,8 +86,8 @@ PowerShell 库中的 [CompositeResource](https://www.powershellgallery.com/packa
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在 [Connected Machine Agent 故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
+* 在 [Connected Machine 代理故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
 
-* 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 启用监视等。
+* 查看[规划和部署指南](plan-at-scale-deployment.md)，以便对按任意规模部署启用了 Azure Arc 的服务器进行规划，并实现集中管理和监视。
 
-* 详细了解 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-introduction.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。
+* 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否向预期的 Log Analytics 工作区报告、使用 [VM 见解](../../azure-monitor/vm/vminsights-enable-policy.md)启用监视，等等。

@@ -7,17 +7,17 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: c96a70ff3a89c09f625f4c478f55690a3203f17c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b3e7df998d32317763c6a0de7c0e7c1cc2f2420b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414751"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733508"
 ---
 # <a name="scale-out-and-in-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>通过增加更多的工作器节点，横向扩展和横向缩减已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
-本文档介绍如何横向扩展和横向缩减已启用 Azure Arc 的超大规模 PostgreSQL 服务器组。 本文档通过讲解一种方案来实现此目的。 **如果不想浏览方案，只是希望阅读如何横向扩展，请跳转到“[横向扩展](#scale-out)** ”或“[横向缩减]()”段落。
+本文档介绍了如何横向扩展和横向缩减已启用 Azure Arc 的超大规模 PostgreSQL 服务器组。 本文档通过讲解一种方案来实现此目的。 **如果不想浏览方案，只是希望阅读如何横向扩展，请跳转到“[横向扩展](#scale-out)** ”或“[横向缩减]()”段落。
 
 当你将 Postgres 实例（超大规模 Postgres 工作器节点）添加到已启用 Azure Arc 的超大规模 PostgreSQL 服务器组时，便可以横向扩展。
 
@@ -38,8 +38,8 @@ ms.locfileid: "111414751"
 
 > 在上述文档中，跳过“登录到 Azure 门户”和“创建 Azure Database for PostgreSQL - 超大规模 (Citus)”部分\* 。 在 Azure Arc 部署中执行剩余步骤。 这些部分特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus)，但文档的其他部分直接适用于已启用 Azure Arc 的超大规模 PostgreSQL。
 
-## <a name="scenario"></a>方案
-此方案是指在“[创建已启用 Azure Arc 的超大规模 PostgreSQL 服务器组](create-postgresql-hyperscale-server-group.md)”文档中作为示例而创建的超大规模 PostgreSQL 服务器组。
+## <a name="scenario"></a>场景
+此方案是指在[创建已启用 Azure Arc 的超大规模 PostgreSQL 服务器组](create-postgresql-hyperscale-server-group.md)文档中作为示例而创建的超大规模 PostgreSQL 服务器组。
 
 ### <a name="load-test-data"></a>加载测试数据
 该方案使用了公开可用 GitHub 数据示例，可从 [Citus Data 网站](https://www.citusdata.com/)获取（Citus Data 隶属于 Microsoft）。
@@ -48,12 +48,12 @@ ms.locfileid: "111414751"
 
 ##### <a name="list-the-connection-information"></a>列出连接信息
 首先获取连接信息，以此连接到已启用 Azure Arc 的超大规模 PostgreSQL 服务器组：此命令的常规格式为
-```console
-azdata arc postgres endpoint list -n <server name>
+```azurecli
+az postgres arc-server endpoint list -n <server name>  --k8s-namespace <namespace> --use-k8s
 ```
 例如： 。
-```console
-azdata arc postgres endpoint list -n postgres01
+```azurecli
+az postgres arc-server endpoint list -n postgres01  --k8s-namespace <namespace> --use-k8s
 ```
 
 示例输出：
@@ -152,20 +152,20 @@ SELECT COUNT(*) FROM github_events;
 
 ## <a name="scale-out"></a>向外扩展
 横向扩展命令的一般格式为：
-```console
-azdata arc postgres server edit -n <server group name> -w <target number of worker nodes>
+```azurecli
+az postgres arc-server edit -n <server group name> -w <target number of worker nodes> --k8s-namespace <namespace> --use-k8s
 ```
 
 
 在此示例中，我们将运行以下命令以将工作器节点数从 2 个增加到 4 个：
 
-```console
-azdata arc postgres server edit -n postgres01 -w 4
+```azurecli
+az postgres arc-server edit -n postgres01 -w 4 --k8s-namespace <namespace> --use-k8s 
 ```
 
 添加节点后，你将看到该服务器组的“挂起”状态。 例如：
-```console
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 ```console
@@ -179,10 +179,12 @@ postgres01  Pending 4/5    4
 ### <a name="verify-the-new-shape-of-the-server-group-optional"></a>验证服务器组的新形状（可选）
 使用以下任一方法来验证服务器组现在是否正在使用添加的附加工作器节点。
 
-#### <a name="with-azdata"></a>使用 azdata：
+#### <a name="with-azure-cli-az"></a>使用 Azure CLI (az)：
+
 运行以下命令：
-```console
-azdata arc postgres server list
+
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 这条命令将退回命名空间中创建的服务器组的列表，并指示其工作器节点数。 例如：
@@ -232,7 +234,7 @@ SELECT COUNT(*) FROM github_events;
 
 
 > [!NOTE]
-> 根据你的环境（例如，如果已将包含 `kubeadm` 的测试服务器组部署在单个节点 VM 上），可能会看到执行时间的适度改善。 要更好地了解使用已启用 Azure Arc 的超大规模 PostgreSQL 可以实现的性能提升类型，请观看以下短视频：
+> 根据你的环境（例如，如果已将包含 `kubeadm` 的测试服务器组部署在单个节点 VM 上），可能会看到执行时间的适度改善。 若要更好地了解使用已启用 Azure Arc 的超大规模 PostgreSQL 可以实现的性能提升类型，请观看以下短视频：
 >* [使用 Azure PostgreSQL 超大规模 (Citus) 实现高性能 HTAP](https://www.youtube.com/watch?v=W_3e07nGFxY)
 >* [使用 Python 和 Azure PostgreSQL 超大规模 (Citus) 构建 HTAP 应用程序](https://www.youtube.com/watch?v=YDT8_riLLs0)
 
@@ -240,8 +242,8 @@ SELECT COUNT(*) FROM github_events;
 要横向缩减（减少服务器组中工作器节点的数量），可以使用与横向扩展相同的命令，但需要指定较少的工作器节点数量。 删除的工作器节点是最新添加到服务器组的工作器节点。 当你运行此命令时，系统会将数据移出已删除的节点，并自动将其重新分发（重新平衡）到其余节点。 
 
 横向缩减命令的一般格式为：
-```console
-azdata arc postgres server edit -n <server group name> -w <target number of worker nodes>
+```azurecli
+az postgres arc-server edit -n <server group name> -w <target number of worker nodes> --k8s-namespace <namespace> --use-k8s
 ```
 
 
@@ -249,9 +251,9 @@ azdata arc postgres server edit -n <server group name> -w <target number of work
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[纵向扩展和缩减（内存、vCore）启用了 Azure Arc 的超大规模 PostgreSQL 服务器组](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)
+- 了解如何[纵向扩展和缩减（内存、vCore）已启用 Azure Arc 的超大规模 PostgreSQL 服务器组](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)
 - 了解如何在已启用 Azure Arc 的超大规模 PostgreSQL 服务器组中设置服务器参数
-- 阅读 Azure Database for PostgreSQL 超大规模的概念和操作指南，以将数据分布到多个超大规模 PostgreSQL 节点，并受益于 Azure Database for PostgreSQL 超大规模的所有强大功能。 :
+- 阅读 Azure Database for PostgreSQL 超大规模的概念和操作指南，以将数据分布到多个超大规模 PostgreSQL 节点，并受益于 Azure Database for Postgres 超大规模的所有强大功能。 :
     * [节点和表](../../postgresql/concepts-hyperscale-nodes.md)
     * [确定应用程序类型](../../postgresql/concepts-hyperscale-app-type.md)
     * [选择分布列](../../postgresql/concepts-hyperscale-choose-distribution-column.md)

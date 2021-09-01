@@ -6,15 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 08/02/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 7aa57fa20c3a043cdb210ccd8a5ddbf61323716d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cc8d65ec4b714bbb98036c5ed3deabd4b75d3c98
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943691"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751984"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise 传输
 
@@ -59,6 +59,9 @@ ms.locfileid: "98943691"
 
 请求将整个企业注册转移到某个注册时，将发生以下操作：
 
+- 转移的使用情况最多可能需要 72 小时，才能反映在新注册中。
+- 如果在转移的注册上启用了 DA 或 AO 视图费用，则必须在新注册中启用这些费用。
+- 如果使用 API 报表或 Power BI，请在新注册下生成新的 API 密钥。
 - 所有 Azure 服务、订阅、帐户、部门和整个注册结构（包括所有 EA 部门管理员）将转移到新的目标注册。
 - 注册状态将设置为“已转移”。 转移的注册仅可用于历史使用情况报告。
 - 无法将角色或订阅添加到处于已转移状态的注册。 “已转移”状态可防止注册进一步产生使用费。
@@ -85,6 +88,17 @@ ms.locfileid: "98943691"
 - 需要经过目标和源注册 EA 管理员的批准。
 - 如果注册转移不符合要求，请考虑进行帐户转移。
 - 源注册状态将更新为“已转移”，并仅用于历史使用情况报告。
+- 注册转移期间不会发生停机。
+- 使用情况最多可能需要 24 - 48 小时，才能反映在目标注册中。
+- 部门管理员或帐户所有者的成本视图设置不会存续。
+  - 如果之前已经启用，则必须为目标注册也启用设置。
+- 必须为目标注册重新生成源注册中使用的任何 API 密钥。
+- 如果源注册和目标注册位于不同的云实例上，转移将会失败。 Azure 支持只能在同一云实例中转移。
+- 适用于预留情形（已预留示例）：
+  - 不同货币之间的注册或帐户转移会影响每月购买预留项。
+  - 每当在注册转移期间或之后更改货币时，为源注册设置的每月已购预留项将取消。 此为有意操作，但仅会影响每月购买预留项。
+  - 可能需要使用本地或新货币的新注册重新购买源注册中取消的每月预留项。
+
 
 ### <a name="auto-enrollment-transfer"></a>自动注册转移
 
