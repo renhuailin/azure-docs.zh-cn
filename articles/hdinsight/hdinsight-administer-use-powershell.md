@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive, devx-track-azurepowershell
 ms.date: 02/13/2020
-ms.openlocfilehash: bfd0c54e2f824973a8a0c5ff023cc8bcaa3ecc68
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 8855c1004406d8db3b34fe442c9c764293df5119
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696885"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122653112"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 HDInsight 中的 Apache Hadoop 群集
 
-[!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
+[!INCLUDE [selector](includes/hdinsight-portal-management-selector.md)]
 
 Azure PowerShell 可用于在 Azure 中控制和自动执行工作负荷的部署和管理。 本文介绍了如何使用 Azure PowerShell Az 模块管理 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集。 有关 HDInsight PowerShell cmdlet 的列表，请查看 [Az.HDInsight 参考](/powershell/module/az.hdinsight)。
 

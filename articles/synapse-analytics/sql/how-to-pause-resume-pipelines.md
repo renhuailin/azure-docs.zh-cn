@@ -4,15 +4,17 @@ description: 了解如何使用 Azure Synapse Analytics 中的 Synapse Pipelines
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
+ms.reviewer: wiassaf
+ms.subservice: sql
 ms.topic: how-to
-ms.date: 02/05/2021
+ms.date: 08/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 454c25891759d99b3f622d66920f20d2ec0f1a6c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 01fd517be7e60a5ab16e7844d8c149ddac2dcb3e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081633"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862443"
 ---
 # <a name="pause-and-resume-dedicated-sql-pools-with-synapse-pipelines"></a>使用 Synapse Pipelines 暂停和恢复专用 SQL 池
 
@@ -22,21 +24,21 @@ ms.locfileid: "110081633"
 
 1. 创建管道。
 1. 在管道中设置参数。
-1. 确定 Synapse 工作区中的专用 SQL 池列表。
+1. 确定 Azure Synapse 工作区中的专用 SQL 池列表。
 1. 从列表中筛选出你不想要暂停或恢复的任何专用 SQL 池。 
 1. 循环访问每个专用 SQL 池，然后执行以下操作：
     1. 检查专用 SQL 池的状态。
     1. 评估专用 SQL 池的状态。
     1. 暂停或恢复专用 SQL 池。
 
-这些步骤将在 Synapse 中的某个简单管道内进行：
+这些步骤将在 Azure Synapse 中的某个简单管道内执行：
 
 ![简单的 Synapse 管道](./media/how-to-pause-resume-pipelines/simple-pipeline.png)
 
 
 根据环境的性质，此处所述的整个过程不一定适用，你只需选择适当的步骤即可。 此处所述的过程可用于暂停或恢复开发、测试或 PoC 环境中的所有实例。 对于生产环境，你很有可能会根据各个实例计划暂停或恢复，因此只需执行步骤 5a 至 5c。
 
-上述步骤使用适用于 Synapse 和 Azure SQL 的 REST API：
+上述步骤使用适用于 Azure Synapse 和 Azure SQL 的 REST API：
 
 - [专用 SQL 池操作](/rest/api/synapse/sqlpools)
  
@@ -65,7 +67,7 @@ Synapse Pipelines 允许自动暂停和恢复，但你可以通过所选的工�
 |名称  |类型  |默认值  |说明|
 |---------|---------|---------|-----------|
 |ResourceGroup    |字符串        |Synapse          |专用 SQL 池的资源组名称|
-|订阅 ID   |字符串        |<SubscriptionID> |资源组的订阅 ID|
+|订阅 ID   |字符串        |`<SubscriptionID>` |资源组的订阅 ID|
 |WorkspaceName    |字符串        |Synapse          |工作区的名称|
 |SQLPoolName      |字符串        |SQLPool1         |专用 SQL 池的名称|
 |PauseorResume    |字符串        |暂停            |管道运行结束时所需的状态|
@@ -77,7 +79,7 @@ Synapse Pipelines 允许自动暂停和恢复，但你可以通过所选的工�
  设置一个 Web 活动，你将使用此活动通过调用专用 SQL 池的“按服务器列出”REST API 请求来创建专用 SQL 池列表。 输出是一个 JSON 字符串，其中包含工作区中专用 SQL 池的列表。 该 JSON 字符串将传递到下一个活动。
 1. 在“活动” > “常规”下，将某个 Web 活动作为管道的第一阶段拖放到管道画布中  。  
 1. 在“常规”选项卡中，将此阶段命名为“GET 列表”。 
-1. 选择“设置”选项卡，在“URL”输入空间中单击，然后选择“添加动态内容”  。 将以下使用 @concat 字符串函数参数化的 GET 请求复制并粘贴到动态内容框中。 选择“完成”。
+1. 选择“设置”选项卡，在“URL”输入空间中单击，然后选择“添加动态内容”  。 将以下使用 @concat 字符串函数参数化的 GET 请求复制并粘贴到动态内容框中。 选择“完成”  。
 以下代码是一个简单的 Get 请求：
 
     ```HTTP
@@ -120,7 +122,7 @@ Synapse Pipelines 允许自动暂停和恢复，但你可以通过所选的工�
 1. 在“常规”下选择一个 Web 活动并将其拖放到管道画布中 。    
 2. 在“常规”选项卡中，将此阶段命名为 CheckState。 
 3. 选择“设置”选项卡。     
-4. 在“URL”输入空间中单击，然后选择“添加动态内容” 。 将以下使用 @concat 字符串函数参数化的 GET 请求复制并粘贴到动态内容框中。 选择“完成”。 再次检查状态时，会使用一个通过以下调用发出的 Get 请求：
+4. 在“URL”输入空间中单击，然后选择“添加动态内容” 。 将以下使用 @concat 字符串函数参数化的 GET 请求复制并粘贴到动态内容框中。 选择“完成”  。 再次检查状态时，会使用一个通过以下调用发出的 Get 请求：
 
     ```HTTP
     GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Synapse/workspaces/{workspace-name}/sqlPools/{database-name}?api-version=2019-06-01-preview HTTP/1.1
@@ -166,7 +168,7 @@ Synapse Pipelines 允许自动暂停和恢复，但你可以通过所选的工�
 
 对于某些要求而言，最终且唯一相关的步骤是启动专用 SQL 池的暂停或恢复。 此步骤同样使用 Web 活动，并调用 [Azure Synapse 的“暂停或恢复计算”REST API](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md#pause-compute)。 
 1. 选择活动编辑（铅笔）图标，将某个 Web 活动添加到 State-PauseorResume 画布中。 
-1. 选择“设置”选项卡，在“URL”输入空间中单击，然后选择“添加动态内容”  。 将以下使用 @concat 字符串函数参数化的 POST 请求复制并粘贴到动态内容框中。 选择“完成”。 
+1. 选择“设置”选项卡，在“URL”输入空间中单击，然后选择“添加动态内容”  。 将以下使用 @concat 字符串函数参数化的 POST 请求复制并粘贴到动态内容框中。 选择“完成”  。 
 1. 选择“方法”对应的下拉列表，然后选择“POST” 。
 1. 在“正文”部分中键入“暂停和恢复”
 1. 选择“高级”展开内容。 选择“MSI”作为身份验证类型。 对于“资源”，请输入 `https://management.azure.com/` 
@@ -225,5 +227,5 @@ Synapse Pipelines 允许自动暂停和恢复，但你可以通过所选的工�
 
 [向工作区托管标识授予权限](../security/how-to-grant-workspace-managed-identity-permissions.md)
 
-[Synapse 管道运行的 SQL 访问控制](../security/how-to-set-up-access-control.md#step-73-sql-access-control-for-synapse-pipeline-runs)
+[Synapse 管道运行的 SQL 访问控制](../security/how-to-set-up-access-control.md#step-73-sql-access-control-for-azure-synapse-pipeline-runs)
 

@@ -7,12 +7,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6cfa74ea6b92597734158cb2de0bad24b0336b16
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: eb7309f067c350eac0d9455767b137377caf588b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890539"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736306"
 ---
 # <a name="identify-vulnerable-container-images-in-your-cicd-workflows"></a>识别 CI/CD 工作流中有漏洞的容器映像
 
@@ -33,7 +33,7 @@ CI/CD 扫描的发现是对 Qualys 的现有注册表扫描结果的扩充。 Az
 |----|:----|
 |发布状态：| **此 CI/CD 集成处于预览状态。**<br>建议仅在非生产工作流上试验此集成。<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
 |定价：|适用于容器注册表的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中的定价计费|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/no-icon.png"::: 国家/地区/主权云（Azure 政府、Azure 中国世纪互联）|
 |||
 
 ## <a name="prerequisites"></a>先决条件
@@ -56,7 +56,7 @@ CI/CD 扫描的发现是对 Qualys 的现有注册表扫描结果的扩充。 Az
 1. 在出现的窗格中，选择一个要从你的工作流中推送 CI/CD 扫描结果的 Application Insights 帐户。
 1. 将身份验证令牌和连接字符串复制到 GitHub 工作流中。
 
-    :::image type="content" source="./media/defender-for-container-registries-cicd/enable-cicd-integration.png" alt-text="启用 CI/CD 集成以对 GitHub 工作流中的容器映像进行漏洞扫描" lightbox="./media/defender-for-container-registries-cicd/enable-cicd-integration.png":::
+    :::image type="content" source="./media/defender-for-container-registries-cicd/enable-cicd-integration.png" alt-text="启用 CI/CD 集成以对 GitHub 工作流中的容器映像进行漏洞扫描。" lightbox="./media/defender-for-container-registries-cicd/enable-cicd-integration.png":::
 
     > [!IMPORTANT]
     > 身份验证令牌和连接字符串用于将所获取的安全遥测与订阅中的资源相关联。 如果你对这些参数使用无效值，将导致遥测丢失。
@@ -101,7 +101,7 @@ CI/CD 扫描的发现是对 Qualys 的现有注册表扫描结果的扩充。 Az
 
 1. 若要查看发现结果，请访问“建议”页面。 如果发现问题，你将看到“应修正 Azure 容器注册表映像中的漏洞”的建议。
 
-    ![解决问题的建议 ](media/monitor-container-security/acr-finding.png)
+    ![修正问题的建议。](media/monitor-container-security/acr-finding.png)
 
 1. 选择建议。 
 
@@ -109,27 +109,27 @@ CI/CD 扫描的发现是对 Qualys 的现有注册表扫描结果的扩充。 Az
 
 1. 打开“受影响的资源”列表并选择不正常的注册表，以查看其中具有易受攻击映像的存储库。
 
-    :::image type="content" source="media/defender-for-container-registries-cicd/select-registry.png" alt-text="选择不正常的注册表":::
+    :::image type="content" source="media/defender-for-container-registries-cicd/select-registry.png" alt-text="选择不正常的注册表。":::
 
     “注册表详细信息”页随即打开，并列出受影响的存储库。
 
 1. 选择特定的存储库以查看其中具有易受攻击映像的存储库。
 
-    :::image type="content" source="media/defender-for-container-registries-cicd/select-repository.png" alt-text="选择不正常的存储库":::
+    :::image type="content" source="media/defender-for-container-registries-cicd/select-repository.png" alt-text="选择不正常的存储库。":::
 
     “存储库详细信息”页随即打开。 它列出了易受攻击的映像以及对发现结果严重性的评估。
 
 1. 选择特定映像以查看漏洞。
 
-    :::image type="content" source="media/defender-for-container-registries-cicd/select-image.png" alt-text="选择不正常的映像":::
+    :::image type="content" source="media/defender-for-container-registries-cicd/select-image.png" alt-text="选择不正常的映像。":::
 
     所选映像的发现结果列表随即打开。
 
-    :::image type="content" source="media/defender-for-container-registries-cicd/cicd-scan-results.png" alt-text="映像扫描结果":::
+    :::image type="content" source="media/defender-for-container-registries-cicd/cicd-scan-results.png" alt-text="映像扫描结果。":::
 
 1. 若要详细了解哪些 GitHub 工作流正在推送这些易受攻击的映像，请选择信息气泡：
 
-    :::image type="content" source="media/defender-for-container-registries-cicd/cicd-findings.png" alt-text="有关特定 GitHub 分支和提交项的 CI/CD 发现":::
+    :::image type="content" source="media/defender-for-container-registries-cicd/cicd-findings.png" alt-text="有关特定 GitHub 分支和提交项的 CI/CD 发现。":::
 
 
 

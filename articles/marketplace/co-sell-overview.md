@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 07/13/2021
-ms.openlocfilehash: 8e705c95f875428c5089416ed3f49d90a474def9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c50db3a7127959539d4a03f7f9a04cb2943dec79
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731204"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866948"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>与 Microsoft 销售团队和合作伙伴联合销售概述
 
@@ -72,7 +72,7 @@ Azure 的联合销售状态：
 
 “业务应用程序联合销售激励（标准和高级）”状态可应用于以下产品/服务类型：
 
-- Dynamics 365 for Customer Engagement 和 PowerApps
+- 适用于客户参与和 Power Apps 的 Dynamics 365
 - Dynamics 365 for Operations
 
 达到“Azure IP 联合销售激励”状态的产品/服务可获得以下商业市场优势：

@@ -4,25 +4,25 @@ description: 了解如何实现 Azure Functions 的 Durable Functions 扩展中�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d96afbad061071bfc80a69764b577032fdcb95c0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 4fcaf265af6eea6d9bef47858742192103777682
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375734"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862682"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions 中的计时器 (Azure Functions)
 
 [Durable Functions](durable-functions-overview.md) 提供了供在业务流程协调程序函数中使用的“持久计时器”，这些计时器用来为异步操作实现延迟或设置超时。  在业务流程协调程序函数中应当使用持久计时器，而不是使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript) 或 `time.sleep()` (Python)。
 
-创建持久计时器的方法是：调用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的 `CreateTimer` (.NET) 方法或 `createTimer` (JavaScript) 方法。 该方法返回一个将在指定的日期和时间完成的任务。
+可以调用[业务流程触发器绑定的](durable-functions-bindings.md#orchestration-trigger)[`CreateTimer` (.NET)](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.createtimer)、[`createTimer` (JavaScript)](/javascript/api/durable-functions/durableorchestrationcontext#createTimer_Date_)或[`create_timer` (Python)](/python/api/azure-functions-durable/azure.durable_functions.durableorchestrationcontext#create-timer-fire-at--datetime-datetime-----azure-durable-functions-models-task-task) 方法来创建持久计时器。 该方法返回一个将在指定的日期和时间完成的任务。
 
 ## <a name="timer-limitations"></a>计时器限制
 
 创建在下午 4:30 过期的计时器时，基础 Durable Task Framework 会将一条仅在下午 4:30 才变得可见的消息排入队列。 当在 Azure Functions 消耗计划中运行时，新近可见的计时器消息将确保在合适的 VM 上激活函数应用。
 
 > [!NOTE]
-> * 从 Durable Extension 的[版本 2.3.0](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) 开始，Durable 计时器不再受限制。 在该扩展的较早版本中，Durable 计时器限制为 7 天。 如果使用的是较早版本，且需要延迟时间超过 7 天，请在 `while` 循环中使用计时器 API 来模拟此延迟。
+> * 从持久性扩展的[版本 2.3.0](https://github.com/Azure/azure-functions-durable-extension/releases/tag/v2.3.0) 开始，.NET 应用的持久计时器便不再受限。 对于 JavaScript、Python 和 PowerShell 应用以及使用早期版本扩展的 .NET 应用，持久计时器的时限为七天。 如果使用的是较旧的扩展版本或非 .NET 语言运行时，并且需要超过七天的延迟时间，请在 `while` 循环中使用计时器 API 来模拟更长的延迟。
 > * 计算持久计时器的触发时间时，请始终在 .NET 中使用 `CurrentUtcDateTime` 而非 `DateTime.UtcNow`，在 JavaScript 中使用 `currentUtcDateTime` 而非 `Date.now` 或 `Date.UTC`。 有关详细信息，请参阅[业务流程协调程序函数代码约束](durable-functions-code-constraints.md)一文。
 
 ## <a name="usage-for-delay"></a>延迟的用法
@@ -52,12 +52,12 @@ public static async Task Run(
 
 ```js
 const df = require("durable-functions");
-const moment = require("moment");
+const { DateTime } = require("luxon");
 
 module.exports = df.orchestrator(function*(context) {
     for (let i = 0; i < 10; i++) {
-        const deadline = moment.utc(context.df.currentUtcDateTime).add(1, 'd');
-        yield context.df.createTimer(deadline.toDate());
+        const deadline = DateTime.fromJSDate(context.df.currentUtcDateTime, {zone: 'utc'}).plus({ days: 1 });
+        yield context.df.createTimer(deadline.toJSDate());
         yield context.df.callActivity("SendBillingEvent");
     }
 });
@@ -136,13 +136,13 @@ public static async Task<bool> Run(
 
 ```js
 const df = require("durable-functions");
-const moment = require("moment");
+const { DateTime } = require("luxon");
 
 module.exports = df.orchestrator(function*(context) {
-    const deadline = moment.utc(context.df.currentUtcDateTime).add(30, "s");
+    const deadline = DateTime.fromJSDate(context.df.currentUtcDateTime, {zone: 'utc'}).plus({ seconds: 30 });
 
     const activityTask = context.df.callActivity("GetQuote");
-    const timeoutTask = context.df.createTimer(deadline.toDate());
+    const timeoutTask = context.df.createTimer(deadline.toJSDate());
 
     const winner = yield context.df.Task.any([activityTask, timeoutTask]);
     if (winner === activityTask) {

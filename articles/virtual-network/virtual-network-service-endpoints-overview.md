@@ -13,18 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 7b3db4e47a73cf7b7ad4e4645546d103c1a3c4fc
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: bbd27f7457b01386ddb1b207c10dcab87ffd4cd6
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111812867"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180364"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
 通过在 Azure 主干网络上实现经过优化的路由，虚拟网络 (VNet) 服务终结点可为 Azure 服务提供安全的直接连接。 使用终结点可以保护关键的 Azure 服务资源，只允许在客户自己的虚拟网络中对其进行访问。 服务终结点使 VNet 中的专用 IP 地址能够到达 Azure 服务的终结点，且无需在 VNet 中使用公共 IP 地址。
 
-此功能适用于以下 Azure 服务和区域。 括号中是 Microsoft.\* 资源。 在为服务配置服务终结点时，请从子网端启用此资源：
+   >[!NOTE]
+   > Microsoft 建议使用 Azure 专用链接，以安全私密地访问 Azure 平台上托管的服务。 有关详细信息，请参阅 [Azure 专用链接](../private-link/private-link-overview.md)。  
+
+服务终结点针对以下 Azure 服务和区域提供。 括号中是 Microsoft.\* 资源。 在为服务配置服务终结点时，请从子网端启用此资源：
 
 **正式发布版**
 
@@ -150,6 +153,6 @@ ms.locfileid: "111812867"
 - [在虚拟网络中保护 Azure 存储帐户](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [在虚拟网络中保护 Azure SQL 数据库](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [在虚拟网络中保护 Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
-- [虚拟网络中的 Azure 服务集成](virtual-network-for-azure-services.md)
+- [比较专用终结点和服务终结点](./vnet-integration-for-azure-services.md#compare-private-endpoints-and-service-endpoints)
 - [虚拟网络服务终结点策略](./virtual-network-service-endpoint-policies-overview.md)
 - [Azure Resource Manager 模板](https://azure.microsoft.com/resources/templates/vnet-2subnets-service-endpoints-storage-integration)

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 04/22/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 637da84073d014effc05a25104c3233ff385b432
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 332866c49470ed47f3c3de65b03ffd07003f6d13
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752582"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253254"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -56,8 +56,10 @@ az aks create --name myAKSCluster --resource-group myResourceGroup
 New-AzAksCluster -Name myAKSCluster -ResourceGroupName myResourceGroup
 ```
 
----
+> [!NOTE]
+> 有关错误“服务主体 clientID：00000000-0000-0000-0000-000000000000 在 Active Directory 租户 00000000-0000-0000-0000-000000000000 中未找到”的详细信息，[请参阅其他注意事项](#additional-considerations)以删除 `acsServicePrincipal.json` 文件。
 
+---
 ## <a name="manually-create-a-service-principal"></a>手动创建服务主体
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -189,6 +191,7 @@ New-AzRoleAssignment -ApplicationId <ApplicationId> -Scope <resourceScope> -Role
 
 > [!NOTE]
 > 如果从节点资源组删除了参与者角色分配，则以下操作可能会失败。
+> 使用系统托管标识向群集授予的权限可能需要 60 分钟才能填充完毕。
 
 以下各部分详述了可能需要使用的常见委托。
 
@@ -251,9 +254,9 @@ New-AzRoleAssignment -ApplicationId <ApplicationId> -Scope <resourceScope> -Role
 - 每个服务主体都与一个 Azure AD 应用程序相关联。 Kubernetes 群集的服务主体可以与任何有效的 Azure AD 应用程序名称（例如 *https://www.contoso.org/example* ）相关联。 应用程序的 URL 不一定是实际的终结点。
 - 指定服务主体 **客户端 ID** 时，请使用 `ApplicationId` 的值。
 - 在 Kubernetes 群集的代理节点 VM 中，服务主体凭据存储在 `/etc/kubernetes/azure.json` 文件中
-- 使用[New-AzAksCluster][new-azakscluster]命令自动生成服务主体时，系统会将服务主体凭据写入用于运行该命令的计算机上的 `~/.azure/aksServicePrincipal.json` 文件中。
-- 如果未在其他 AKS PowerShell 命令中专门传递服务主体，则使用位于 `~/.azure/aksServicePrincipal.json` 的默认服务主体。
-- 也可以选择删除 aksServicePrincipal.json 文件，AKS 将创建新的服务主体。
+- 使用[New-AzAksCluster][new-azakscluster]命令自动生成服务主体时，系统会将服务主体凭据写入用于运行该命令的计算机上的 `~/.azure/acsServicePrincipal.json` 文件中。
+- 如果未在其他 AKS PowerShell 命令中专门传递服务主体，则使用位于 `~/.azure/acsServicePrincipal.json` 的默认服务主体。
+- 还可以选择删除 acsServicePrincipal.json 文件，AKS 将创建新的服务主体。
 - 删除通过[New-AzAksCluster][new-azakscluster]创建的 AKS 群集时，不会删除自动创建的服务主体。
     - 若要删除服务主体，请查询群集 ServicePrincipalProfile.ClientId，然后使用 [Remove-AzADServicePrincipal][remove-azadserviceprincipal] 进行删除。 将以下资源组和群集名称替换为你自己的值：
 

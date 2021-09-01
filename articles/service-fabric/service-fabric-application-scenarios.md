@@ -3,12 +3,12 @@ title: 应用程序方案和设计
 description: Service Fabric 中云应用程序的类别概述。 介绍使用有状态服务和无状态服务的应用程序设计。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 7d9459e6e0168657cf8e9062331fec0237f58c70
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 703adde38d195395ae07dea022da873754e1d2f1
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045750"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867136"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric 应用程序方案
 
@@ -46,7 +46,7 @@ Service Fabric 的独特体系结构使你可以在应用程序中执行近实�
 
 ## <a name="application-design-case-studies"></a>应用程序设计案例研究
 
-[客户案例](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc)和 [Azure 中的微服务](https://azure.microsoft.com/solutions/microservice-applications/)站点上发布了介绍如何使用 Service Fabric 设计应用程序的案例研究。
+[客户案例](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc)和 [Azure 中的微服务](https://azure.microsoft.com/solutions/microservice-applications/)站点上发布了介绍如何使用 Service Fabric 设计应用程序的案例研究。
 
 ## <a name="designing-applications-composed-of-stateless-and-stateful-microservices"></a>设计由无状态和有状态微服务组成的应用程序
 

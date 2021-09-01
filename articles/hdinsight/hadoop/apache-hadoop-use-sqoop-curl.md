@@ -4,16 +4,16 @@ description: 了解如何使用 Curl 向 Azure HDInsight 远程提交 Apache Sqo
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/06/2020
-ms.openlocfilehash: 4de42bf30824fd71228aa27cc478a54ec3741da9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2a097e18f6e1f285335a89574efd720fd251e92
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98928355"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122652340"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>使用 Curl 在 HDInsight 中运行 Apache Sqoop 作业
 
-[!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
+[!INCLUDE [sqoop-selector](../includes/hdinsight-selector-use-sqoop.md)]
 
 了解如何使用 Curl 在 HDInsight 中的 Apache Hadoop 群集上运行 Apache Sqoop 作业。 本文演示如何使用 Curl 从 Azure 存储导出数据并将其导入到 SQL Server 数据库中。 本文是[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)的续篇。
 

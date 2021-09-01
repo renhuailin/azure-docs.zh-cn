@@ -5,14 +5,14 @@ author: miag
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/11/2021
+ms.date: 08/24/2021
 ms.author: miag
-ms.openlocfilehash: 34b83376a555b5fd06947049f959badc9a1aed67
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 4d5a518bc517b950f5366ba53eadb7284121a5e3
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114731071"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866406"
 ---
 # <a name="iot-hub-support-for-managed-identities"></a>IoT 中心对托管标识的支持 
 
@@ -273,7 +273,7 @@ IoT 中心的[文件上传](iot-hub-devguide-file-upload.md)功能允许设备�
     > 在使用托管标识在 IoT 中心保存存储帐户以供文件上传之前，需要完成上述步骤来为托管标识分配正确的访问权限。 请等待角色分配传播完成。 
  
 5. 在 IoT 中心的“资源”页上，导航到“文件上传”选项卡。
-6. 在显示的页面上，选择要在 blob 存储中使用的容器，根据需要配置“文件通知设置、SAS TTL、默认 TT 和最大传送计数”。 选择首选的身份验证类型，然后单击“保存”。
+6. 在显示的页面上，选择要在 blob 存储中使用的容器，根据需要配置“文件通知设置、SAS TTL、默认 TT 和最大传送计数”。 选择首选的身份验证类型，然后单击“保存”。 如果在此步骤中遇到错误，请暂时将存储帐户设置为允许从所有网络访问，然后重试。 文件上传配置完成后，可以在存储帐户上配置防火墙。
 
     :::image type="content" source="./media/iot-hub-managed-identity/file-upload.png" alt-text="具有 MSI 的 IoT 中心文件上传":::
 

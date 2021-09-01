@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 05/20/2021
+ms.date: 08/04/2021
 ms.custom: generated
-ms.openlocfilehash: 989724452f57b5b44954f739eae6bff1da61263f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 39eb5b5787cb26fffa168479d34bac58ba5f9b3d
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470123"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195625"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -37,7 +37,7 @@ ms.locfileid: "110470123"
 > | **计算** |  |  |
 > | [经典虚拟机参与者](#classic-virtual-machine-contributor) | 允许管理经典虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 > | [虚拟机管理员登录](#virtual-machine-administrator-login) | 在门户中查看虚拟机并以管理员身份登录 | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
-> | [虚拟机参与者](#virtual-machine-contributor) | 创建并管理虚拟机、管理磁盘和磁盘快照、安装并运行软件、使用 VM 扩展重置虚拟机根用户的密码，以及使用 VM 扩展管理本地用户帐户。 此角色不授予对虚拟机连接到的虚拟网络或存储帐户的管理访问权限。 此角色不允许在 Azure RBAC 中分配角色。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
+> | [虚拟机参与者](#virtual-machine-contributor) | 创建和管理虚拟机，管理磁盘和磁盘快照，安装和运行软件，使用 VM 扩展重置虚拟机的根用户密码，以及使用 VM 扩展管理本地用户帐户。 此角色不会授予你对虚拟机连接到的虚拟网络或存储帐户的管理访问权限。 此角色不支持在 Azure RBAC 中分配角色。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [虚拟机用户登录](#virtual-machine-user-login) | 在门户中查看虚拟机并以普通用户身份登录。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | **联网** |  |  |
 > | [CDN 终结点参与者](#cdn-endpoint-contributor) | 可以管理 CDN 终结点，但不能向其他用户授予访问权限。 | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
@@ -74,21 +74,25 @@ ms.locfileid: "110470123"
 > | [存储队列数据消息处理器](#storage-queue-data-message-processor) | 速览、检索和删除 Azure 存储队列中的消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | [存储队列数据消息发送方](#storage-queue-data-message-sender) | 将消息添加到 Azure 存储队列。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | [存储队列数据读取者](#storage-queue-data-reader) | 读取并列出 Azure 存储队列和队列消息。 若要了解需要对给定的数据执行哪些操作，请参阅[用于调用 Blob 和队列数据操作的权限](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 19e7f393-937e-4f77-808e-94535e297925 |
+> | [存储表数据参与者](#storage-table-data-contributor) | 用于对 Azure 存储表和实体进行读取、写入和删除访问 | 0a9a7e1f-b9d0-4cc4-a60d-0319b160aaa3 |
+> | [存储表数据读取者](#storage-table-data-reader) | 用于对 Azure 存储表和实体进行读取访问 | 76199698-9eea-4c19-bc75-cec21354c6b6 |
 > | **Web** |  |  |
 > | [Azure Maps 数据参与者](#azure-maps-data-contributor) | 从 Azure Maps 帐户中授予地图相关数据的读取、写入和删除权限。 | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
 > | [Azure Maps 数据读取器](#azure-maps-data-reader) | 授予从 Azure Maps 帐户中读取地图相关数据的权限。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Azure Spring Cloud 数据读取者](#azure-spring-cloud-data-reader) | 允许对 Azure Spring Cloud 进行读取访问 | b5537268-8956-4941-a8f0-646150406f0c |
 > | [媒体服务帐户管理员](#media-services-account-administrator) | 创建、读取、修改和删除媒体服务帐户；对其他媒体服务资源的只读访问权限。 | 054126f8-9a2b-4f1c-a9ad-eca461f08466 |
-> | [媒体服务直播活动管理员](#media-services-live-events-administrator) | 创建、读取和修改直播活动、资产、资产筛选器和流式处理定位符；对其他媒体服务资源的只读访问权限。 | 532bc159-b25e-42c0-969e-a1d439f60d77 |
+> | [媒体服务实时事件管理员](#media-services-live-events-administrator) | 创建、读取、修改和删除实时事件、资产、资产筛选器和流式处理定位符；对其他媒体服务资源的只读访问权限。 | 532bc159-b25e-42c0-969e-a1d439f60d77 |
 > | [媒体服务媒体操作员](#media-services-media-operator) | 创建、读取、修改和删除资产、资产筛选器、流式处理定位符和作业；对其他媒体服务资源的只读访问权限。 | e4395492-1534-4db2-bedf-88c14621589c |
-> | [媒体服务策略管理员](#media-services-policy-administrator) | 创建、读取、修改和删除帐户筛选器、流式处理策略、内容密钥策略和转换；对其他媒体服务资源的只读访问权限。 无法创建作业、资产或流式处理资源。 | c4bba371-dacd-4a26-b320-7250bca963ae |
+> | [媒体服务策略管理员](#media-services-policy-administrator) | 创建、读取、修改和删除帐户筛选器、流式处理策略、内容密钥策略和转换；对其他媒体服务资源的只读访问权限。 不能创建作业、资产或流式处理资源。 | c4bba371-dacd-4a26-b320-7250bca963ae |
 > | [媒体服务流式处理终结点管理员](#media-services-streaming-endpoints-administrator) | 创建、读取、修改和删除流式处理终结点；对其他媒体服务资源的只读访问权限。 | 99dba123-b5fe-44d5-874c-ced7199a5804 |
+> | [搜索索引数据参与者](#search-index-data-contributor) | 授予对 Azure 认知搜索索引数据的完全访问权限。 | 8ebe5a00-799e-43f5-93ac-243d3dce84a7 |
+> | [搜索索引数据读取者](#search-index-data-reader) | 授予对 Azure 认知搜索索引数据的读取访问权限。 | 1407120a-92aa-4202-b7e9-c0e197c71c8f |
 > | [搜索服务参与者](#search-service-contributor) | 允许管理搜索服务，但不允许访问这些服务。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [SignalR AccessKey 读取者](#signalr-accesskey-reader) | 读取 SignalR 服务访问密钥 | 04165923-9d83-45d5-8227-78b77b0a687e |
 > | [SignalR 应用服务器（预览版）](#signalr-app-server-preview) | 允许应用服务器使用 AAD 身份验证选项访问 SignalR 服务。 | 420fcaa2-552c-430f-98ca-3264be4806c7 |
 > | [SignalR 参与者](#signalr-contributor) | 创建、读取、更新和删除 SignalR 服务资源 | 8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761 |
 > | [SignalR 无服务器参与者（预览版）](#signalr-serverless-contributor-preview) | 允许应用在无服务器模式下使用 AAD 身份验证选项来访问服务。 | fd53cd77-2268-407a-8f46-7e7863d0f521 |
-> | [SignalR 服务所有者（预览版）](#signalr-service-owner-preview) | 完全访问 Azure Signal 服务 REST API | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
+> | [SignalR 服务所有者](#signalr-service-owner) | 完全访问 Azure Signal 服务 REST API | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
 > | [SignalR 服务读取者（预览版）](#signalr-service-reader-preview) | 以只读方式访问 Azure Signal 服务 REST API | ddde6b66-c0df-4114-a159-3618637b3035 |
 > | [Web 计划参与者](#web-plan-contributor) | 允许管理网站的 Web 计划，但不允许访问这些计划。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [网站参与者](#website-contributor) | 允许管理网站（而非 Web 计划），但不允许访问这些网站。 | de139f84-1756-47ae-9be6-808fbbe84772 |
@@ -96,9 +100,9 @@ ms.locfileid: "110470123"
 > | [AcrDelete](#acrdelete) | 从容器注册表中删除存储库、标记或清单。 | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | [AcrImageSigner](#acrimagesigner) | 将受信任的映像推送到为内容信任启用的容器注册表中或从中拉取受信任的映像。 | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | [AcrPull](#acrpull) | 从容器注册表中拉取项目。 | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
-> | [AcrPush](#acrpush) | 将项目推送到容器注册表或从容器注册表中拉取项目。 | 8311e382-0749-4cb8-b61a-304f252e45ec |
-> | [AcrQuarantineReader](#acrquarantinereader) | 从容器注册表中拉取隔离的映像。 | cdda3590-29a3-44f6-95f2-9f980659eb04 |
-> | [AcrQuarantineWriter](#acrquarantinewriter) | 将隔离的映像推送到容器注册表或从中拉取隔离的映像。 | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
+> | [AcrPush](#acrpush) | 将项目推送到容器注册表或从中拉取项目。 | 8311e382-0749-4cb8-b61a-304f252e45ec |
+> | [AcrQuarantineReader](#acrquarantinereader) | 从容器注册表中拉取已隔离的映像。 | cdda3590-29a3-44f6-95f2-9f980659eb04 |
+> | [AcrQuarantineWriter](#acrquarantinewriter) | 将已隔离的映像推送到容器注册表或从中拉取已隔离的映像。 | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | [Azure Kubernetes 服务群集管理员角色](#azure-kubernetes-service-cluster-admin-role) | 列出群集管理员凭据操作。 | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | [Azure Kubernetes 服务群集用户角色](#azure-kubernetes-service-cluster-user-role) | 列出群集用户凭据操作。 | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | [Azure Kubernetes 服务参与者角色](#azure-kubernetes-service-contributor-role) | 授予对 Azure Kubernetes 服务群集的读写访问权限 | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
@@ -135,6 +139,7 @@ ms.locfileid: "110470123"
 > | 区块链 |  |  |
 > | [区块链成员节点访问（预览版）](#blockchain-member-node-access-preview) | 允许对区块链成员节点的访问 | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | AI + 机器学习 |  |  |
+> | [AzureML 数据科学家](#azureml-data-scientist) | 可以在 Azure 机器学习工作区中执行所有操作，但创建或删除计算资源及修改工作区本身除外。 | f6c7c914-8db3-469d-8ca1-694a8f32e121 |
 > | [认知服务参与者](#cognitive-services-contributor) | 允许创建、读取、更新、删除和管理认知服务的密钥。 | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [认知服务自定义视觉参与者](#cognitive-services-custom-vision-contributor) | 对项目的完全访问权限，包括可以查看、创建、编辑或删除项目。 | c1ff6cc2-c111-46fe-8896-e0ef812ad9f3 |
 > | [认知服务自定义视觉部署](#cognitive-services-custom-vision-deployment) | 发布、取消发布或导出模型。 部署可以查看项目，但不能更新项目。 | 5c4089e1-6d96-4d2f-b296-c1bc7137275f |
@@ -148,16 +153,16 @@ ms.locfileid: "110470123"
 > | [认知服务 QnA Maker 读取者](#cognitive-services-qna-maker-reader) | 只能读取和测试知识库。 | 466ccd10-b268-4a11-b098-b4849f024126 |
 > | [认知服务用户](#cognitive-services-user) | 允许读取和列出认知服务的密钥。 | a97b65f3-24c7-4388-baec-2e87135dc908 |
 > | **物联网** |  |  |
-> | [IoT 中心数据参与者](#iot-hub-data-contributor) | 允许对 IoT 中心数据平面操作进行完全访问。 | 4fc6c259-987e-4a07-842e-c321cc9d413f |
-> | [IoT 中心数据读取者](#iot-hub-data-reader) | 允许对 IoT 中心数据平面属性进行完全读取访问 | b447c946-2db7-41ec-983d-d8bf3b1c77e3 |
-> | [IoT 中心注册表参与者](#iot-hub-registry-contributor) | 允许对 IoT 中心设备注册表进行完全访问。 | 4ea46cd5-c1b2-4a8e-910b-273211f9ce47 |
-> | [IoT 中心数字孪生体参与者](#iot-hub-twin-contributor) | 允许对所有 IoT 中心设备和模块孪生进行读写访问。 | 494bdba2-168f-4f31-a0a1-191d2f7c028c |
-> | [设备更新管理员](#device-update-administrator) | 授予你对管理和内容操作的完全访问权限 | 02ca0879-e8e4-47a5-a61e-5c618b76e64a |
+> | [设备更新管理员](#device-update-administrator) | 授予你对管理操作和内容操作的完全访问权限 | 02ca0879-e8e4-47a5-a61e-5c618b76e64a |
 > | [设备更新内容管理员](#device-update-content-administrator) | 授予你对内容操作的完全访问权限 | 0378884a-3af5-44ab-8323-f5b22f9f3c98 |
 > | [设备更新内容读取者](#device-update-content-reader) | 授予你对内容操作的读取访问权限，但不允许进行更改 | d1ee9a80-8b14-47f0-bdc2-f4a351625a7b |
 > | [设备更新部署管理员](#device-update-deployments-administrator) | 授予你对管理操作的完全访问权限 | e4237640-0e3d-4a46-8fda-70bc94856432 |
 > | [设备更新部署读取者](#device-update-deployments-reader) | 授予你对管理操作的读取访问权限，但不允许进行更改 | 49e2f5d2-7741-4835-8efa-19e1fe35e47f |
-> | [设备更新读取者](#device-update-reader) | 授予你对管理和内容操作的读取访问权限，但不允许进行更改 | e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f |
+> | [设备更新读取者](#device-update-reader) | 授予你对管理操作和内容操作的读取访问权限，但不允许进行更改 | e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f |
+> | [IoT 中心数据参与者](#iot-hub-data-contributor) | 具有 IoT 中心数据平面操作的完全访问权限。 | 4fc6c259-987e-4a07-842e-c321cc9d413f |
+> | [IoT 中心数据读取者](#iot-hub-data-reader) | 具有 IoT 中心数据平面属性的完全读取访问权限 | b447c946-2db7-41ec-983d-d8bf3b1c77e3 |
+> | [IoT 中心注册表参与者](#iot-hub-registry-contributor) | 具有 IoT 中心设备注册表的完全访问权限。 | 4ea46cd5-c1b2-4a8e-910b-273211f9ce47 |
+> | [IoT 中心孪生参与者](#iot-hub-twin-contributor) | 具有所有 IoT 中心设备和模块孪生的读写访问权限。 | 494bdba2-168f-4f31-a0a1-191d2f7c028c |
 > | 混合现实 |  |  |
 > | [远程渲染管理员](#remote-rendering-administrator) | 为用户提供 Azure 远程渲染的转换、管理会话、渲染和诊断功能 | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [远程渲染客户端](#remote-rendering-client) | 为用户提供 Azure 远程渲染的管理会话、渲染和诊断功能。 | d39065c4-c120-43c9-ab0a-63eed9795f0a |
@@ -170,11 +175,15 @@ ms.locfileid: "110470123"
 > | [API 管理服务读者角色](#api-management-service-reader-role) | 对服务和 API 的只读访问权限 | 71522526-b88f-4d52-b57f-d31fc3546d0d |
 > | [应用程序配置数据所有者](#app-configuration-data-owner) | 允许对应用程序配置数据进行完全访问。 | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
 > | [应用程序配置数据读取者](#app-configuration-data-reader) | 允许对应用程序配置数据进行读取访问。 | 516239f1-63e1-4d78-a4de-a74fb236a071 |
+> | [Azure 中继侦听器](#azure-relay-listener) | 允许侦听对 Azure 中继资源的访问。 | 26e0b698-aa6d-4085-9386-aadae190014d |
+> | [Azure 中继所有者](#azure-relay-owner) | 允许完全访问 Azure 中继资源。 | 2787bf04-f1f5-4bfe-8383-c8a24483ee38 |
+> | [Azure 中继发送方](#azure-relay-sender) | 允许发送对 Azure 中继资源的访问权限。 | 26baccc8-eea7-41f1-98f4-1762cc7f685d |
 > | [Azure 服务总线数据所有者](#azure-service-bus-data-owner) | 允许完全访问 Azure 服务总线资源。 | 090c5cfd-751d-490a-894a-3ce6f1109419 |
 > | [Azure 服务总线数据接收方](#azure-service-bus-data-receiver) | 允许对 Azure 服务总线资源进行接收访问。 | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
 > | [Azure 服务总线数据发送方](#azure-service-bus-data-sender) | 允许对 Azure 服务总线资源进行发送访问。 | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
 > | [Azure Stack 注册所有者](#azure-stack-registration-owner) | 允许管理 Azure Stack 注册。 | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | [EventGrid 参与者](#eventgrid-contributor) | 可以管理 EventGrid 操作。 | 1e241071-0855-49ea-94dc-649edcd759de |
+> | [EventGrid 数据发送方](#eventgrid-data-sender) | 允许发送对事件网格事件的访问权限。 | d5a91429-5739-47e2-a06b-3470a27159e7 |
 > | [EventGrid EventSubscription 参与者](#eventgrid-eventsubscription-contributor) | 可以管理 EventGrid 事件订阅操作。 | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | [EventGrid EventSubscription 读者](#eventgrid-eventsubscription-reader) | 可以读取 EventGrid 事件订阅。 | 2414bbcf-6497-4faf-8c65-045460748405 |
 > | [FHIR 数据参与者](#fhir-data-contributor) | 角色允许用户或主体完全访问 FHIR 数据 | 5a1fc7df-4bf1-4951-a576-89034ee01acd |
@@ -538,11 +547,14 @@ ms.locfileid: "110470123"
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | 获取负载均衡器定义 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | 获取网络接口定义。  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read |  |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/*/read |  |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | 以普通用户身份登录虚拟机 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/loginAsAdmin/action | 以 Windows 管理员身份或 Linux 根用户权限登录虚拟机 |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/login/action | 以普通用户身份登录 Azure Arc 计算机 |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/loginAsAdmin/action | 使用 Windows 管理员或 Linux 根用户权限登录 Azure Arc 计算机 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -561,12 +573,15 @@ ms.locfileid: "110470123"
         "Microsoft.Network/virtualNetworks/read",
         "Microsoft.Network/loadBalancers/read",
         "Microsoft.Network/networkInterfaces/read",
-        "Microsoft.Compute/virtualMachines/*/read"
+        "Microsoft.Compute/virtualMachines/*/read",
+        "Microsoft.HybridCompute/machines/*/read"
       ],
       "notActions": [],
       "dataActions": [
         "Microsoft.Compute/virtualMachines/login/action",
-        "Microsoft.Compute/virtualMachines/loginAsAdmin/action"
+        "Microsoft.Compute/virtualMachines/loginAsAdmin/action",
+        "Microsoft.HybridCompute/machines/login/action",
+        "Microsoft.HybridCompute/machines/loginAsAdmin/action"
       ],
       "notDataActions": []
     }
@@ -579,7 +594,7 @@ ms.locfileid: "110470123"
 
 ### <a name="virtual-machine-contributor"></a>虚拟机参与者
 
-创建并管理虚拟机、管理磁盘和磁盘快照、安装并运行软件、使用 VM 扩展重置虚拟机根用户的密码，以及使用 VM 扩展管理本地用户帐户。 此角色不授予对虚拟机连接到的虚拟网络或存储帐户的管理访问权限。 此角色不允许在 Azure RBAC 中分配角色。 [了解详细信息](/azure/architecture/reference-architectures/n-tier/linux-vm)
+创建和管理虚拟机，管理磁盘和磁盘快照，安装和运行软件，使用 VM 扩展重置虚拟机的根用户密码，以及使用 VM 扩展管理本地用户帐户。 此角色不会授予你对虚拟机连接到的虚拟网络或存储帐户的管理访问权限。 此角色不允许在 Azure RBAC 中分配角色。 [了解详细信息](/azure/architecture/reference-architectures/n-tier/linux-vm)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -708,10 +723,12 @@ ms.locfileid: "110470123"
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | 获取负载均衡器定义 |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | 获取网络接口定义。  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read |  |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/*/read |  |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | 以普通用户身份登录虚拟机 |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/login/action | 以普通用户身份登录 Azure Arc 计算机 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -730,11 +747,13 @@ ms.locfileid: "110470123"
         "Microsoft.Network/virtualNetworks/read",
         "Microsoft.Network/loadBalancers/read",
         "Microsoft.Network/networkInterfaces/read",
-        "Microsoft.Compute/virtualMachines/*/read"
+        "Microsoft.Compute/virtualMachines/*/read",
+        "Microsoft.HybridCompute/machines/*/read"
       ],
       "notActions": [],
       "dataActions": [
-        "Microsoft.Compute/virtualMachines/login/action"
+        "Microsoft.Compute/virtualMachines/login/action",
+        "Microsoft.HybridCompute/machines/login/action"
       ],
       "notDataActions": []
     }
@@ -1420,6 +1439,31 @@ ms.locfileid: "110470123"
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | 获取给定操作的操作状态 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | 列出所有备份保护意向 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/getBackupStatus/action | 检查恢复服务保管库的备份状态 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/write | 创建备份实例 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/delete | 删除备份实例 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | 返回所有备份实例 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | 返回所有备份实例 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/backup/action | 对备份实例执行备份 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/validateRestore/action | 验证是否已对备份实例执行还原 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/restore/action | 触发对备份实例的还原操作 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/write | 创建备份策略 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/delete | 删除备份策略 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | 返回所有备份策略 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | 返回所有备份策略 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | 返回全部恢复点 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | 返回全部恢复点 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/findRestorableTimeRanges/action | 查找可还原的时间范围 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/write | “创建 BackupVault 操作”创建类型为“备份保管库”的 Azure 资源 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | 获取订阅中的备份保管库的列表 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/operationResults/read | 获取备份保管库的修补操作的操作结果 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/checkNameAvailability/action | 检查请求获取的 BackupVault 名称是否可用 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | 获取订阅中的备份保管库的列表 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | 获取订阅中的备份保管库的列表 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationStatus/read | 返回备份保管库的备份操作状态。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationResults/read | 返回备份保管库的备份操作结果。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/validateForBackup/action | 验证是否已对备份实例执行备份 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/providers/operations/read | 操作返回资源提供程序的操作列表 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1478,7 +1522,32 @@ ms.locfileid: "110470123"
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.Support/*"
+        "Microsoft.Support/*",
+        "Microsoft.DataProtection/locations/getBackupStatus/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/write",
+        "Microsoft.DataProtection/backupVaults/backupInstances/delete",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/backup/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/validateRestore/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/restore/action",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/write",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/delete",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges/action",
+        "Microsoft.DataProtection/backupVaults/write",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/operationResults/read",
+        "Microsoft.DataProtection/locations/checkNameAvailability/action",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/locations/operationStatus/read",
+        "Microsoft.DataProtection/locations/operationResults/read",
+        "Microsoft.DataProtection/backupVaults/validateForBackup/action",
+        "Microsoft.DataProtection/providers/operations/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -1561,6 +1630,20 @@ ms.locfileid: "110470123"
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | 获取给定操作的操作状态 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | 列出所有备份保护意向 |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | 返回所有备份实例 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | 返回所有备份实例 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | 返回所有备份策略 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | 返回所有备份策略 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | 返回全部恢复点 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | 返回全部恢复点 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/findRestorableTimeRanges/action | 查找可还原的时间范围 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | 获取订阅中的备份保管库的列表 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/operationResults/read | 获取备份保管库的修补操作的操作结果 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | 获取订阅中的备份保管库的列表 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | 获取订阅中的备份保管库的列表 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationStatus/read | 返回备份保管库的备份操作状态。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationResults/read | 返回备份保管库的备份操作结果。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/providers/operations/read | 操作返回资源提供程序的操作列表 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1641,7 +1724,21 @@ ms.locfileid: "110470123"
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.Support/*"
+        "Microsoft.Support/*",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges/action",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/operationResults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/locations/operationStatus/read",
+        "Microsoft.DataProtection/locations/operationResults/read",
+        "Microsoft.DataProtection/providers/operations/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -1699,6 +1796,30 @@ ms.locfileid: "110470123"
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | 列出所有备份保护意向 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | 验证功能 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrJobs/action | 列出恢复服务保管库的次要区域中的跨区域还原作业。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrJob/action | 获取恢复服务保管库的次要区域中的跨区域还原作业详细信息。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrOperationResults/read | 返回恢复服务保管库的 CRR 操作结果。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupCrrOperationsStatus/read | 返回恢复服务保管库的 CRR 操作状态。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/getBackupStatus/action | 检查恢复服务保管库的备份状态 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/write | 创建备份实例 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | 返回所有备份实例 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/read | 返回所有备份实例 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/backup/action | 对备份实例执行备份 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/validateRestore/action | 验证是否已对备份实例执行还原 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/restore/action | 触发对备份实例的还原操作 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | 返回所有备份策略 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupPolicies/read | 返回所有备份策略 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | 返回全部恢复点 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/recoveryPoints/read | 返回全部恢复点 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/backupInstances/findRestorableTimeRanges/action | 查找可还原的时间范围 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | 获取订阅中的备份保管库的列表 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/operationResults/read | 获取备份保管库的修补操作的操作结果 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | 获取订阅中的备份保管库的列表 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/read | 获取订阅中的备份保管库的列表 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationStatus/read | 返回备份保管库的备份操作状态。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/locations/operationResults/read | 返回备份保管库的备份操作结果。 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/backupVaults/validateForBackup/action | 验证是否已对备份实例执行备份 |
+> | [Microsoft.DataProtection](resource-provider-operations.md#microsoftdataprotection)/providers/operations/read | 操作返回资源提供程序的操作列表 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1754,7 +1875,31 @@ ms.locfileid: "110470123"
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
         "Microsoft.RecoveryServices/Vaults/usages/read",
-        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action"
+        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action",
+        "Microsoft.RecoveryServices/locations/backupCrrJobs/action",
+        "Microsoft.RecoveryServices/locations/backupCrrJob/action",
+        "Microsoft.RecoveryServices/locations/backupCrrOperationResults/read",
+        "Microsoft.RecoveryServices/locations/backupCrrOperationsStatus/read",
+        "Microsoft.DataProtection/locations/getBackupStatus/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/write",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/backup/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/validateRestore/action",
+        "Microsoft.DataProtection/backupVaults/backupInstances/restore/action",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupPolicies/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/recoveryPoints/read",
+        "Microsoft.DataProtection/backupVaults/backupInstances/findRestorableTimeRanges/action",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/operationResults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/backupVaults/read",
+        "Microsoft.DataProtection/locations/operationStatus/read",
+        "Microsoft.DataProtection/locations/operationResults/read",
+        "Microsoft.DataProtection/backupVaults/validateForBackup/action",
+        "Microsoft.DataProtection/providers/operations/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -2664,6 +2809,100 @@ ms.locfileid: "110470123"
 }
 ```
 
+### <a name="storage-table-data-contributor"></a>存储表数据参与者
+
+用于对 Azure 存储表和实体进行读取、写入和删除访问
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/read | 查询表 |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/write | 创建表 |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/delete | 删除表 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/read | 查询表实体 |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/write | 插入、合并或替换表实体 |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/delete | 删除表实体 |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/add/action | 插入表实体 |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/update/action | 合并或更新表实体 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read, write and delete access to Azure Storage tables and entities",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/0a9a7e1f-b9d0-4cc4-a60d-0319b160aaa3",
+  "name": "0a9a7e1f-b9d0-4cc4-a60d-0319b160aaa3",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Storage/storageAccounts/tableServices/tables/read",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/write",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/delete"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/read",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/write",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/delete",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/add/action",
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/update/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Storage Table Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="storage-table-data-reader"></a>存储表数据读取者
+
+用于对 Azure 存储表和实体进行读取访问
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/read | 查询表 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/tableServices/tables/entities/read | 查询表实体 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read access to Azure Storage tables and entities",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/76199698-9eea-4c19-bc75-cec21354c6b6",
+  "name": "76199698-9eea-4c19-bc75-cec21354c6b6",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Storage/storageAccounts/tableServices/tables/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Storage/storageAccounts/tableServices/tables/entities/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Storage Table Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ## <a name="web"></a>Web
 
 
@@ -2821,7 +3060,7 @@ ms.locfileid: "110470123"
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read, modify and delete Media Services accounts; read-only access to other Media Services resources.",
+  "description": "Create, read, modify, and delete Media Services accounts; read-only access to other Media Services resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/054126f8-9a2b-4f1c-a9ad-eca461f08466",
   "name": "054126f8-9a2b-4f1c-a9ad-eca461f08466",
   "permissions": [
@@ -2853,9 +3092,9 @@ ms.locfileid: "110470123"
 }
 ```
 
-### <a name="media-services-live-events-administrator"></a>媒体服务直播活动管理员
+### <a name="media-services-live-events-administrator"></a>媒体服务实时事件管理员
 
-创建、读取和修改直播活动、资产、资产筛选器和流式处理定位符；对其他媒体服务资源的只读访问权限。
+创建、读取、修改和删除实时事件、资产、资产筛选器和流式处理定位符；对其他媒体服务资源的只读访问权限。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -2885,7 +3124,7 @@ ms.locfileid: "110470123"
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read and modify Live Events, Assets, Asset Filters and Streaming Locators; read-only access to other Media Services resources.",
+  "description": "Create, read, modify, and delete Live Events, Assets, Asset Filters, and Streaming Locators; read-only access to other Media Services resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/532bc159-b25e-42c0-969e-a1d439f60d77",
   "name": "532bc159-b25e-42c0-969e-a1d439f60d77",
   "permissions": [
@@ -2950,7 +3189,7 @@ ms.locfileid: "110470123"
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read, modify, and delete of Assets, Asset Filters, Streaming Locators and Jobs; read-only access to other Media Services resources.",
+  "description": "Create, read, modify, and delete Assets, Asset Filters, Streaming Locators, and Jobs; read-only access to other Media Services resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e4395492-1534-4db2-bedf-88c14621589c",
   "name": "e4395492-1534-4db2-bedf-88c14621589c",
   "permissions": [
@@ -2985,7 +3224,7 @@ ms.locfileid: "110470123"
 
 ### <a name="media-services-policy-administrator"></a>媒体服务策略管理员
 
-创建、读取、修改和删除帐户筛选器、流式处理策略、内容密钥策略和转换；对其他媒体服务资源的只读访问权限。 无法创建作业、资产或流式处理资源。
+创建、读取、修改和删除帐户筛选器、流式处理策略、内容密钥策略和转换；对其他媒体服务资源的只读访问权限。 不能创建作业、资产或流式处理资源。
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -3016,7 +3255,7 @@ ms.locfileid: "110470123"
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read, modify, and delete Account Filters, Streaming Policies, Content Key Policies and Transforms; read-only access to other Media Services resources. Cannot create Jobs, Assets or Streaming resources.",
+  "description": "Create, read, modify, and delete Account Filters, Streaming Policies, Content Key Policies, and Transforms; read-only access to other Media Services resources. Cannot create Jobs, Assets or Streaming resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/c4bba371-dacd-4a26-b320-7250bca963ae",
   "name": "c4bba371-dacd-4a26-b320-7250bca963ae",
   "permissions": [
@@ -3080,7 +3319,7 @@ ms.locfileid: "110470123"
   "assignableScopes": [
     "/"
   ],
-  "description": "Create, read, modify and delete Streaming Endpoints; read-only access to other Media Services resources.",
+  "description": "Create, read, modify, and delete Streaming Endpoints; read-only access to other Media Services resources.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/99dba123-b5fe-44d5-874c-ced7199a5804",
   "name": "99dba123-b5fe-44d5-874c-ced7199a5804",
   "permissions": [
@@ -3104,6 +3343,84 @@ ms.locfileid: "110470123"
     }
   ],
   "roleName": "Media Services Streaming Endpoints Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="search-index-data-contributor"></a>搜索索引数据参与者
+
+授予对 Azure 认知搜索索引数据的完全访问权限。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Search](resource-provider-operations.md#microsoftsearch)/searchServices/indexes/documents/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Grants full access to Azure Cognitive Search index data.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8ebe5a00-799e-43f5-93ac-243d3dce84a7",
+  "name": "8ebe5a00-799e-43f5-93ac-243d3dce84a7",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Search/searchServices/indexes/documents/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Search Index Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="search-index-data-reader"></a>搜索索引数据读取者
+
+授予对 Azure 认知搜索索引数据的读取访问权限。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Search](resource-provider-operations.md#microsoftsearch)/searchServices/indexes/documents/read | 从索引中读取文档或建议的查询词。 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Grants read access to Azure Cognitive Search index data.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/1407120a-92aa-4202-b7e9-c0e197c71c8f",
+  "name": "1407120a-92aa-4202-b7e9-c0e197c71c8f",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Search/searchServices/indexes/documents/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Search Index Data Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -3336,7 +3653,7 @@ ms.locfileid: "110470123"
 }
 ```
 
-### <a name="signalr-service-owner-preview"></a>SignalR 服务所有者（预览版）
+### <a name="signalr-service-owner"></a>SignalR 服务所有者
 
 完全访问 Azure Signal 服务 REST API
 
@@ -3356,6 +3673,7 @@ ms.locfileid: "110470123"
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/send/action | 将消息直接发送到客户端连接。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | 检查客户端连接是否存在。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/write | 关闭客户端连接。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/serverConnection/write | 启动服务器连接。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/send/action | 将消息发送给可能有多个客户端连接的用户。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | 检查用户是否存在。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/write | 修改用户。 |
@@ -3384,6 +3702,7 @@ ms.locfileid: "110470123"
         "Microsoft.SignalRService/SignalR/clientConnection/send/action",
         "Microsoft.SignalRService/SignalR/clientConnection/read",
         "Microsoft.SignalRService/SignalR/clientConnection/write",
+        "Microsoft.SignalRService/SignalR/serverConnection/write",
         "Microsoft.SignalRService/SignalR/user/send/action",
         "Microsoft.SignalRService/SignalR/user/read",
         "Microsoft.SignalRService/SignalR/user/write"
@@ -3391,7 +3710,7 @@ ms.locfileid: "110470123"
       "notDataActions": []
     }
   ],
-  "roleName": "SignalR Service Owner (Preview)",
+  "roleName": "SignalR Service Owner",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -3607,7 +3926,7 @@ ms.locfileid: "110470123"
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | *无* |  |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/trustedCollections/write | 允许推送或发布受信任的容器注册表内容集合。 这类似于 Microsoft.ContainerRegistry/registries/sign/write 操作，只是这是一个数据操作 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -3625,7 +3944,9 @@ ms.locfileid: "110470123"
         "Microsoft.ContainerRegistry/registries/sign/write"
       ],
       "notActions": [],
-      "dataActions": [],
+      "dataActions": [
+        "Microsoft.ContainerRegistry/registries/trustedCollections/write"
+      ],
       "notDataActions": []
     }
   ],
@@ -3676,7 +3997,7 @@ ms.locfileid: "110470123"
 
 ### <a name="acrpush"></a>AcrPush
 
-将项目推送到容器注册表或从容器注册表中拉取项目。 [了解详细信息](../container-registry/container-registry-roles.md)
+将项目推送到容器注册表或从中拉取项目。 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -3717,7 +4038,7 @@ ms.locfileid: "110470123"
 
 ### <a name="acrquarantinereader"></a>AcrQuarantineReader
 
-从容器注册表中拉取隔离的映像。 [了解详细信息](../container-registry/container-registry-roles.md)
+从容器注册表中拉取已隔离的映像。 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -3726,7 +4047,7 @@ ms.locfileid: "110470123"
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | *无* |  |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantinedArtifacts/read | 允许从容器注册表拉取或获取已隔离的项目。 这类似于 Microsoft.ContainerRegistry/registries/quarantine/read，只不过这是一个数据操作 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -3744,7 +4065,9 @@ ms.locfileid: "110470123"
         "Microsoft.ContainerRegistry/registries/quarantine/read"
       ],
       "notActions": [],
-      "dataActions": [],
+      "dataActions": [
+        "Microsoft.ContainerRegistry/registries/quarantinedArtifacts/read"
+      ],
       "notDataActions": []
     }
   ],
@@ -3756,7 +4079,7 @@ ms.locfileid: "110470123"
 
 ### <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 
-将隔离的映像推送到容器注册表或从中拉取隔离的映像。 [了解详细信息](../container-registry/container-registry-roles.md)
+将已隔离的映像推送到容器注册表或从中拉取已隔离的映像。 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -3766,7 +4089,8 @@ ms.locfileid: "110470123"
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
-> | *无* |  |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantinedArtifacts/read | 允许从容器注册表拉取或获取已隔离的项目。 这类似于 Microsoft.ContainerRegistry/registries/quarantine/read，只不过这是一个数据操作 |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantinedArtifacts/write | 允许写入或更新隔离项目的隔离状态。 这类似于 Microsoft.ContainerRegistry/registries/quarantine/write 操作，只不过这是一个数据操作 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -3785,7 +4109,10 @@ ms.locfileid: "110470123"
         "Microsoft.ContainerRegistry/registries/quarantine/write"
       ],
       "notActions": [],
-      "dataActions": [],
+      "dataActions": [
+        "Microsoft.ContainerRegistry/registries/quarantinedArtifacts/read",
+        "Microsoft.ContainerRegistry/registries/quarantinedArtifacts/write"
+      ],
       "notDataActions": []
     }
   ],
@@ -4592,6 +4919,8 @@ ms.locfileid: "110470123"
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | 添加指标 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | 读取指标定义 |
 > | **不操作** |  |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/ledgerDigestUploads/write | 启用上传账本摘要  |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/ledgerDigestUploads/disable/action | 禁用上传账本摘要 |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/currentSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/recommendedSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/schemas/tables/columns/sensitivityLabels/* |  |
@@ -4643,6 +4972,8 @@ ms.locfileid: "110470123"
         "Microsoft.Insights/metricDefinitions/read"
       ],
       "notActions": [
+        "Microsoft.Sql/servers/databases/ledgerDigestUploads/write",
+        "Microsoft.Sql/servers/databases/ledgerDigestUploads/disable/action",
         "Microsoft.Sql/managedInstances/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/*",
         "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/*",
@@ -4993,7 +5324,7 @@ ms.locfileid: "110470123"
 }
 ```
 
-## <a name="analytics"></a>Analytics
+## <a name="analytics"></a>分析
 
 
 ### <a name="azure-event-hubs-data-owner"></a>Azure 事件中心数据所有者
@@ -5685,6 +6016,63 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 ## <a name="ai--machine-learning"></a>AI + 机器学习
 
 
+### <a name="azureml-data-scientist"></a>AzureML 数据科学家
+
+可以在 Azure 机器学习工作区中执行所有操作，但创建或删除计算资源及修改工作区本身除外。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/*/read |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/*/action |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/*/delete |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/*/write |  |
+> | **不操作** |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/delete | 删除机器学习服务工作区 |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/write | 创建或更新机器学习服务工作区 |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/computes/*/write |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/computes/*/delete |  |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/computes/listKeys/action | 列出机器学习服务工作区中的计算资源的机密 |
+> | [Microsoft.MachineLearningServices](resource-provider-operations.md#microsoftmachinelearningservices)/workspaces/listKeys/action | 列出机器学习服务工作区的机密 |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Can perform all actions within an Azure Machine Learning workspace, except for creating or deleting compute resources and modifying the workspace itself.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f6c7c914-8db3-469d-8ca1-694a8f32e121",
+  "name": "f6c7c914-8db3-469d-8ca1-694a8f32e121",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.MachineLearningServices/workspaces/*/read",
+        "Microsoft.MachineLearningServices/workspaces/*/action",
+        "Microsoft.MachineLearningServices/workspaces/*/delete",
+        "Microsoft.MachineLearningServices/workspaces/*/write"
+      ],
+      "notActions": [
+        "Microsoft.MachineLearningServices/workspaces/delete",
+        "Microsoft.MachineLearningServices/workspaces/write",
+        "Microsoft.MachineLearningServices/workspaces/computes/*/write",
+        "Microsoft.MachineLearningServices/workspaces/computes/*/delete",
+        "Microsoft.MachineLearningServices/workspaces/computes/listKeys/action",
+        "Microsoft.MachineLearningServices/workspaces/listKeys/action"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "AzureML Data Scientist",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="cognitive-services-contributor"></a>认知服务参与者
 
 允许创建、读取、更新、删除和管理认知服务的密钥。 [了解详细信息](../cognitive-services/cognitive-services-virtual-networks.md)
@@ -5696,6 +6084,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/* |  |
 > | [Microsoft.Features](resource-provider-operations.md#microsoftfeatures)/features/read | 获取订阅的功能。 |
 > | [Microsoft.Features](resource-provider-operations.md#microsoftfeatures)/providers/features/read | 获取给定资源提供程序中某个订阅的功能。 |
+> | [Microsoft.Features](resource-provider-operations.md#microsoftfeatures)/providers/features/register/action | 在给定的资源提供程序中注册某个订阅的功能。 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | 创建、更新或读取 Analysis Server 的诊断设置 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/logDefinitions/read | 读取日志定义 |
@@ -5731,6 +6120,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
         "Microsoft.CognitiveServices/*",
         "Microsoft.Features/features/read",
         "Microsoft.Features/providers/features/read",
+        "Microsoft.Features/providers/features/register/action",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Insights/diagnosticSettings/*",
         "Microsoft.Insights/logDefinitions/read",
@@ -6087,7 +6477,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="cognitive-services-metrics-advisor-administrator"></a>认知服务指标顾问管理员
 
-拥有对项目的完全访问权限，包括系统级配置。 [了解详细信息](../cognitive-services/metrics-advisor/how-tos/alerts.md)
+拥有对项目的完全访问权限，包括系统级配置。 [了解详细信息](../applied-ai-services/metrics-advisor/how-tos/alerts.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6393,163 +6783,6 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ## <a name="internet-of-things"></a>物联网
 
-### <a name="iot-hub-data-contributor"></a>IoT 中心数据参与者
-
-允许对 IoT 中心数据平面操作进行完全访问。
-
-> [!div class="mx-tableFixed"]
-> | 操作 | 描述 |
-> | --- | --- |
-> | *无* |  |
-> | **不操作** |  |
-> | *无* |  |
-> | **DataActions** |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/* |  |
-> | **NotDataActions** |  |
-> | *无* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Allows for full access to IoT Hub data plane operations.",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4fc6c259-987e-4a07-842e-c321cc9d413f",
-  "name": "4fc6c259-987e-4a07-842e-c321cc9d413f",
-  "permissions": [
-    {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.Devices/IotHubs/*"
-      ],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "IoT Hub Data Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="iot-hub-data-reader"></a>IoT 中心数据读取者
-
-允许对 IoT 中心数据平面属性进行完全读取访问
-
-> [!div class="mx-tableFixed"]
-> | 操作 | 描述 |
-> | --- | --- |
-> | *无* |  |
-> | **不操作** |  |
-> | *无* |  |
-> | **DataActions** |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/*/read |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/fileUpload/notifications/action | 接收、完成或放弃文件上传通知 |
-> | **NotDataActions** |  |
-> | *无* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Allows for full read access to IoT Hub data-plane properties",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b447c946-2db7-41ec-983d-d8bf3b1c77e3",
-  "name": "b447c946-2db7-41ec-983d-d8bf3b1c77e3",
-  "permissions": [
-    {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.Devices/IotHubs/*/read",
-        "Microsoft.Devices/IotHubs/fileUpload/notifications/action"
-      ],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "IoT Hub Data Reader",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="iot-hub-registry-contributor"></a>IoT 中心注册表参与者
-
-允许对 IoT 中心设备注册表进行完全访问。
-
-> [!div class="mx-tableFixed"]
-> | 操作 | 描述 |
-> | --- | --- |
-> | *无* |  |
-> | **不操作** |  |
-> | *无* |  |
-> | **DataActions** |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/devices/* |  |
-> | **NotDataActions** |  |
-> | *无* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Allows for full access to IoT Hub device registry.",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
-  "name": "4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
-  "permissions": [
-    {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.Devices/IotHubs/devices/*"
-      ],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "IoT Hub Registry Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="iot-hub-twin-contributor"></a>IoT 中心数字孪生体参与者
-
-允许对所有 IoT 中心设备和模块孪生进行读写访问。
-
-> [!div class="mx-tableFixed"]
-> | 操作 | 描述 |
-> | --- | --- |
-> | *无* |  |
-> | **不操作** |  |
-> | *无* |  |
-> | **DataActions** |  |
-> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/twins/* |  |
-> | **NotDataActions** |  |
-> | *无* |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Allows for read and write access to all IoT Hub device and module twins.",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/494bdba2-168f-4f31-a0a1-191d2f7c028c",
-  "name": "494bdba2-168f-4f31-a0a1-191d2f7c028c",
-  "permissions": [
-    {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.Devices/IotHubs/twins/*"
-      ],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "IoT Hub Twin Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
 
 ### <a name="device-update-administrator"></a>设备更新管理员
 
@@ -6860,6 +7093,164 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
     }
   ],
   "roleName": "Device Update Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-data-contributor"></a>IoT 中心数据参与者
+
+具有 IoT 中心数据平面操作的完全访问权限。 [了解详细信息](../iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to IoT Hub data plane operations.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4fc6c259-987e-4a07-842e-c321cc9d413f",
+  "name": "4fc6c259-987e-4a07-842e-c321cc9d413f",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-data-reader"></a>IoT 中心数据读取者
+
+具有 IoT 中心数据平面属性的完全读取访问权限。[了解详细信息](../iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/*/read |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/fileUpload/notifications/action | 接收、完成或放弃文件上传通知 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full read access to IoT Hub data-plane properties",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b447c946-2db7-41ec-983d-d8bf3b1c77e3",
+  "name": "b447c946-2db7-41ec-983d-d8bf3b1c77e3",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/*/read",
+        "Microsoft.Devices/IotHubs/fileUpload/notifications/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-registry-contributor"></a>IoT 中心注册表参与者
+
+具有 IoT 中心设备注册表的完全访问权限。 [了解详细信息](../iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/devices/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to IoT Hub device registry.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
+  "name": "4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/devices/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Registry Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-twin-contributor"></a>IoT 中心孪生参与者
+
+具有所有 IoT 中心设备和模块孪生的读写访问权限。 [了解详细信息](../iot-hub/iot-hub-dev-guide-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/twins/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read and write access to all IoT Hub device and module twins.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/494bdba2-168f-4f31-a0a1-191d2f7c028c",
+  "name": "494bdba2-168f-4f31-a0a1-191d2f7c028c",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/twins/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Twin Contributor",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7373,6 +7764,133 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 }
 ```
 
+### <a name="azure-relay-listener"></a>Azure 中继侦听器
+
+允许侦听对 Azure 中继资源的访问。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/wcfRelays/read |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/hybridConnections/read |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/listen/action |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for listen access to Azure Relay resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/26e0b698-aa6d-4085-9386-aadae190014d",
+  "name": "26e0b698-aa6d-4085-9386-aadae190014d",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Relay/*/wcfRelays/read",
+        "Microsoft.Relay/*/hybridConnections/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Relay/*/listen/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Relay Listener",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-relay-owner"></a>Azure 中继所有者
+
+允许完全访问 Azure 中继资源。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to Azure Relay resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2787bf04-f1f5-4bfe-8383-c8a24483ee38",
+  "name": "2787bf04-f1f5-4bfe-8383-c8a24483ee38",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Relay/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Relay/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Relay Owner",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-relay-sender"></a>Azure 中继发送方
+
+允许发送对 Azure 中继资源的访问权限。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 说明 |
+> | --- | --- |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/wcfRelays/read |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/hybridConnections/read |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Relay](resource-provider-operations.md#microsoftrelay)/*/send/action |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for send access to Azure Relay resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/26baccc8-eea7-41f1-98f4-1762cc7f685d",
+  "name": "26baccc8-eea7-41f1-98f4-1762cc7f685d",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Relay/*/wcfRelays/read",
+        "Microsoft.Relay/*/hybridConnections/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Relay/*/send/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Relay Sender",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="azure-service-bus-data-owner"></a>Azure 服务总线数据所有者
 
 允许完全访问 Azure 服务总线资源。 [了解详细信息](../service-bus-messaging/authenticate-application.md)
@@ -7598,6 +8116,55 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 }
 ```
 
+### <a name="eventgrid-data-sender"></a>EventGrid 数据发送方
+
+允许发送对事件网格事件的访问权限。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/topics/read | 读取主题 |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/domains/read | 读取域 |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/partnerNamespaces/read | 读取合作伙伴命名空间 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/events/send/action | 将事件发送到主题 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows send access to event grid events.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d5a91429-5739-47e2-a06b-3470a27159e7",
+  "name": "d5a91429-5739-47e2-a06b-3470a27159e7",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.EventGrid/topics/read",
+        "Microsoft.EventGrid/domains/read",
+        "Microsoft.EventGrid/partnerNamespaces/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.EventGrid/events/send/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "EventGrid Data Sender",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription 参与者
 
 可以管理 EventGrid 事件订阅操作。 [了解详细信息](../event-grid/security-authorization.md)
@@ -7704,7 +8271,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="fhir-data-contributor"></a>FHIR 数据参与者
 
-角色允许用户或主体完全访问 FHIR 数据 [了解详细信息](../healthcare-apis/fhir/configure-azure-rbac.md)
+角色允许用户或主体完全访问 FHIR 数据 [了解详细信息](../healthcare-apis/azure-api-for-fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -7714,6 +8281,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > | *无* |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/* |  |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/* |  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -7730,7 +8298,8 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.HealthcareApis/services/fhir/resources/*"
+        "Microsoft.HealthcareApis/services/fhir/resources/*",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/*"
       ],
       "notDataActions": []
     }
@@ -7743,7 +8312,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="fhir-data-exporter"></a>FHIR 数据导出者
 
-角色允许用户或主体读取和导出 FHIR 数据 [了解详细信息](../healthcare-apis/fhir/configure-azure-rbac.md)
+角色允许用户或主体读取和导出 FHIR 数据 [了解详细信息](../healthcare-apis/azure-api-for-fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -7754,6 +8323,8 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/read | 读取 FHIR 资源（包括搜索任何带有版本的历史记录）。  |
 > | Microsoft.HealthcareApis/services/fhir/resources/export/action | 导出操作 ($export)。 |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/read | 读取 FHIR 资源（包括搜索任何带有版本的历史记录）。  |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/export/action | 导出操作 ($export)。 |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -7771,7 +8342,9 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
       "notActions": [],
       "dataActions": [
         "Microsoft.HealthcareApis/services/fhir/resources/read",
-        "Microsoft.HealthcareApis/services/fhir/resources/export/action"
+        "Microsoft.HealthcareApis/services/fhir/resources/export/action",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/read",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/export/action"
       ],
       "notDataActions": []
     }
@@ -7784,7 +8357,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="fhir-data-reader"></a>FHIR 数据读取者
 
-角色允许用户或主体读取 FHIR 数据 [了解详细信息](../healthcare-apis/fhir/configure-azure-rbac.md)
+角色允许用户或主体读取 FHIR 数据 [了解详细信息](../healthcare-apis/azure-api-for-fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -7794,6 +8367,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > | *无* |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/read | 读取 FHIR 资源（包括搜索任何带有版本的历史记录）。  |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/read | 读取 FHIR 资源（包括搜索任何带有版本的历史记录）。  |
 > | **NotDataActions** |  |
 > | *无* |  |
 
@@ -7810,7 +8384,8 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.HealthcareApis/services/fhir/resources/read"
+        "Microsoft.HealthcareApis/services/fhir/resources/read",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/read"
       ],
       "notDataActions": []
     }
@@ -7823,7 +8398,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ### <a name="fhir-data-writer"></a>FHIR 数据写入者
 
-角色允许用户或主体读取和写入 FHIR 数据 [了解详细信息](../healthcare-apis/fhir/configure-azure-rbac.md)
+角色允许用户或主体读取和写入 FHIR 数据 [了解详细信息](../healthcare-apis/azure-api-for-fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -7833,8 +8408,10 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > | *无* |  |
 > | **DataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/* |  |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/* |  |
 > | **NotDataActions** |  |
 > | Microsoft.HealthcareApis/services/fhir/resources/hardDelete/action | 硬删除（包括版本历史记录）。 |
+> | Microsoft.HealthcareApis/workspaces/fhirservices/resources/hardDelete/action | 硬删除（包括版本历史记录）。 |
 
 ```json
 {
@@ -7849,10 +8426,12 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.HealthcareApis/services/fhir/resources/*"
+        "Microsoft.HealthcareApis/services/fhir/resources/*",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/*"
       ],
       "notDataActions": [
-        "Microsoft.HealthcareApis/services/fhir/resources/hardDelete/action"
+        "Microsoft.HealthcareApis/services/fhir/resources/hardDelete/action",
+        "Microsoft.HealthcareApis/workspaces/fhirservices/resources/hardDelete/action"
       ]
     }
   ],
@@ -8625,7 +9204,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="key-vault-administrator"></a>Key Vault 管理员
 
-对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理密钥保管库资源或管理角色分配。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
+对密钥保管库以及其中的所有对象（包括证书、密钥和机密）执行所有数据平面操作。 无法管理密钥保管库资源或管理角色分配。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 [了解详细信息](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -8684,7 +9263,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="key-vault-certificates-officer"></a>Key Vault 证书管理人员
 
-对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
+对密钥保管库的证书执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 [了解详细信息](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -8800,7 +9379,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="key-vault-crypto-officer"></a>Key Vault 加密管理人员
 
-对密钥保管库的密钥执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
+对密钥保管库的密钥执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 [了解详细信息](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -8859,7 +9438,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="key-vault-crypto-service-encryption-user"></a>密钥保管库加密服务加密用户
 
-读取密钥的元数据并执行包装/展开操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
+读取密钥的元数据并执行包装/展开操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 [了解详细信息](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 说明 |
@@ -8908,7 +9487,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="key-vault-crypto-user"></a>Key Vault 加密用户
 
-使用密钥执行加密操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
+使用密钥执行加密操作。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 [了解详细信息](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -8963,7 +9542,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="key-vault-reader"></a>Key Vault 读取者
 
-读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料等敏感值。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
+读取密钥保管库及其证书、密钥和机密的元数据。 无法读取机密内容或密钥材料等敏感值。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 [了解详细信息](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -9024,7 +9603,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="key-vault-secrets-officer"></a>Key Vault 机密管理人员
 
-对密钥保管库的机密执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
+对密钥保管库的机密执行任何操作（管理权限除外）。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 [了解详细信息](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -9083,7 +9662,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 
 ### <a name="key-vault-secrets-user"></a>Key Vault 机密用户
 
-读取机密内容。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。
+读取机密内容。 仅适用于使用“Azure 基于角色的访问控制”权限模型的密钥保管库。 [了解详细信息](../key-vault/general/rbac-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -9179,6 +9758,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/* | 创建和管理安全组件和策略 |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | 创建和更新支持票证 |
 > | **不操作** |  |
 > | *无* |  |
@@ -9209,6 +9789,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*",
+        "Microsoft.IoTSecurity/*",
         "Microsoft.Support/*"
       ],
       "notActions": [],
@@ -9331,10 +9912,15 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/*/read |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/*/read | 读取安全组件和策略 |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/*/read |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/*/read |  |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/packageDownloads/action | 获取可下载的 IoT Defender 包信息 |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/downloadManagerActivation/action | 下载包含订阅配额数据的管理器激活文件 |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/iotSensors/downloadResetPassword/action | 下载 IoT 传感器的重置密码文件 |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/defenderSettings/packageDownloads/action | 获取可下载的 IoT Defender 包信息 |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/defenderSettings/downloadManagerActivation/action | 下载管理器激活文件 |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/sensors/* |  |
+> | [Microsoft.IoTSecurity](resource-provider-operations.md#microsoftiotsecurity)/onPremiseSensors/* |  |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已通过身份验证的用户的管理组。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -9360,10 +9946,15 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
         "Microsoft.Resources/deployments/*/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
+        "Microsoft.IoTSecurity/*/read",
         "Microsoft.Support/*/read",
         "Microsoft.Security/iotDefenderSettings/packageDownloads/action",
         "Microsoft.Security/iotDefenderSettings/downloadManagerActivation/action",
         "Microsoft.Security/iotSensors/downloadResetPassword/action",
+        "Microsoft.IoTSecurity/defenderSettings/packageDownloads/action",
+        "Microsoft.IoTSecurity/defenderSettings/downloadManagerActivation/action",
+        "Microsoft.IoTSecurity/sensors/*",
+        "Microsoft.IoTSecurity/onPremiseSensors/*",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -10612,6 +11203,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | 读取任何 Azure Arc 计算机 |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | 写入 Azure Arc 计算机 |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | 删除 Azure Arc 计算机 |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/UpgradeExtensions/action | 升级 Azure Arc 计算机上的扩展 |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/read | 读取任何 Azure Arc 扩展 |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | 安装或更新 Azure Arc 扩展 |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/delete | 删除 Azure Arc 扩展 |
@@ -10638,6 +11230,7 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
         "Microsoft.HybridCompute/machines/read",
         "Microsoft.HybridCompute/machines/write",
         "Microsoft.HybridCompute/machines/delete",
+        "Microsoft.HybridCompute/machines/UpgradeExtensions/action",
         "Microsoft.HybridCompute/machines/extensions/read",
         "Microsoft.HybridCompute/machines/extensions/write",
         "Microsoft.HybridCompute/machines/extensions/delete",

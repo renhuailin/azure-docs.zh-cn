@@ -10,18 +10,18 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: 95c9880eb8c61b5a057cf2573aad7871c3c37bb3
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 5bba667b70099e3f88e1ff62ae3472144556a0d1
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613605"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862219"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
 为了给改进后的[体系结构](concept-azure-machine-learning-architecture.md)让路，“2018 年 9 月”版本弃用并替换了 Azure Machine Learning Workbench 应用程序和其他一些早期功能  。
 
-为改善用户体验，此版本包含许多重大更新，这些更新由客户反馈促成。 从实验运行到模型部署的核心功能没有变化。 但现在，可以使用可靠的 <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a>、R SDK 和 [Azure CLI](reference-azure-machine-learning-cli.md) 来完成机器学习任务和管道。
+为改善用户体验，此版本包含许多重大更新，这些更新由客户反馈促成。 从实验运行到模型部署的核心功能没有变化。 但现在，可以使用可靠的 <a href="/python/api/overview/azure/ml/intro" target="_blank">Python SDK</a> 和 [Azure CLI](reference-azure-machine-learning-cli.md) 来完成机器学习任务和管道。
 
 在旧版 Azure 机器学习中创建的大多数项目，都存储在自己的本地存储或云存储中。 这些项目永远不会消失。
 
@@ -85,7 +85,7 @@ run = exp.submit(source_directory=script_folder,
 
 现在，对旧 CLI 的支持已经结束，你无法再重新部署模型或管理最初使用模型管理帐户部署的 Web 服务。 但是，只要仍支持 Azure 容器服务 (ACS)，这些 Web 服务就将继续有效。
 
-在最新版本中，模型作为 Web 服务部署到 Azure 容器实例 (ACI) 或 Azure Kubernetes 服务 (AKS) 群集。 还可以部署到 FPGA 和 Azure IoT Edge。
+在最新版本中，模型作为 Web 服务部署到 Azure 容器实例 (ACI) 或 Azure Kubernetes 服务 (AKS) 群集。 此外，还可以部署到 FPGA。
 
 通过以下文章，了解详细信息：
 + [在何处以及如何部署模型](how-to-deploy-and-where.md)
@@ -95,9 +95,9 @@ run = exp.submit(source_directory=script_folder,
 
 了解 [Azure 机器学习的最新体系结构](concept-azure-machine-learning-architecture.md)。
 
-有关该服务的概述，请阅读[什么是 Azure 机器学习？](overview-what-is-azure-ml.md)。
+有关该服务的概述，请阅读[什么是 Azure 机器学习？](overview-what-is-azure-machine-learning.md)。
 
-开始使用[快速入门：Azure 机器学习入门](quickstart-create-resources.md)。  然后，使用以下资源通过首选方法创建第一个试验：
+开始使用[快速入门：Azure 机器学习入门](quickstart-create-resources.md)。  然后使用这些资源以你喜欢的方法创建你的第一个试验：
 
   + [运行“Hello world!”Python 脚本（第 1 部分，共 3 部分）](tutorial-1st-experiment-hello-world.md)
   + [使用 Jupyter 笔记本训练图像分类模型](tutorial-train-models-with-aml.md)

@@ -3,20 +3,20 @@ title: Azure 媒体服务中的配额和限制
 description: 本主题介绍 Microsoft Azure 媒体服务中的配额和限制。
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali-ms
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/23/2020
+ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9b1e43968569fb7c185043e1dd249c65fcadddfb
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 4c0cb8241f6eb284acecfcb5921db616af336da8
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278654"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866929"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure 媒体服务的配额和限制
@@ -48,14 +48,6 @@ ms.locfileid: "106278654"
 | [存储帐户](storage-account-concept.md) | 100<sup>(2)</sup>（固定） |
 
 <sup>1</sup> 在 Azure Blob 存储中，单个 Blob 目前支持的最大大小为 5 TB。 媒体服务会根据服务使用的 VM 大小应用其他限制。 大小限制适用于你上传的文件，也适用于由于媒体服务处理（编码或分析）而生成的文件。 如果源文件大于 260 GB，作业可能会失败。 
-
-下表显示了媒体保留单位（S1、S2 和 S3）的限制。 如果源文件大于表中定义的限制，则编码作业将失败。 编码持续时间较长的 4K 分辨率源时，需要使用 S3 媒体保留单位才能达到所需的性能。 如果 S3 媒体保留单位上的 4K 内容大于 260-GB 限制，请开具支持票证。
-
-|媒体保留单位类型|最大输入大小 (GB)|
-|---|---|
-|S1 |    26|
-|S2    | 60|
-|S3    |260|
 
 <sup>2</sup> 存储帐户必须来自同一 Azure 订阅。
 

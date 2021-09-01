@@ -4,13 +4,13 @@ description: Azure Monitor 指标警报的常见问题和可能的解决方案�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 06/03/2021
-ms.openlocfilehash: cbbecb49acf556dc7a8ce6285d4b1b3581c39b3d
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 08/15/2021
+ms.openlocfilehash: 5aa39240b87f86dfaa1fbd44de8b6889939ec64f
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412893"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195065"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -286,7 +286,22 @@ ms.locfileid: "111412893"
 2. 中值接近零
 3. 指标出现无规律的行为，且变化较大（数据中存在峰值或最小值）
 
-当下限具有负值时，这意味着在指标出现无规律行为的情况下，指标可能会达到零值。 可以考虑选择更高的敏感度或更大的聚合粒度（时间范围），以降低模型的敏感度，或者使用“之前忽略数据”选项从用于构建模型的历史数据中排除最近的不规则行为 。
+当下限具有负值时，这意味着在指标出现无规律行为的情况下，指标可能会达到零值。 你可能会考虑选择更高的敏感度或更大的“聚合粒度（时间范围）”，以便降低模型的敏感度；或使用“忽略之前数据”选项，以便从用于生成模型的历史数据中排除最近的无规律行为。
+
+## <a name="the-dynamic-thresholds-alert-rule-is-too-noisy-fires-too-much"></a>动态阈值警报规则噪声太大（触发次数过多）
+若要降低动态阈值警报规则的敏感度，请使用以下选项之一：
+1. 阈值敏感度 - 将敏感度设置为“低”，以便降低对偏差的敏感度。
+2. 冲突数（位于“高级设置”下）- 将警报规则配置为仅在某个时间段内出现一定数量的偏差时才触发。 这将使规则不易受到暂时性偏差的影响。
+
+
+## <a name="the-dynamic-thresholds-alert-rule-is-too-insensitive-doesnt-fire"></a>动态阈值警报规则的敏感度过低（不触发）
+即使有时已将警报规则配置为高敏感度，其仍不会触发。 这种情况通常是因为指标分布过于不规律。
+请考虑以下选项之一：
+* 前往监视适用于你方案的互补指标（如果适用）。 例如，检查成功率的变化情况，而非失败率。
+* 尝试选择不同的聚合粒度（时间范围）。 
+* 检查过去 10 天内指标行为是否发生过重大更改（例如中断情况）。 突然的更改会影响系统计算指标时的上限和下限，并扩大阈值范围。 请等待几天，直到中断情况不再计入阈值计算中；或使用“忽略之前数据”选项（位于“高级设置”下）。
+* 如果数据每周都会出现季节性变动，但没有适用于指标的充足历史记录，则计算出的阈值可能会导致上限较高及下限较低。 例如，系统在计算时会以相同的方式处理工作日和周末，并生成不会总适合数据的宽阈值范围。 当有充足的指标历史记录可用后，系统将自行解决此问题，同时亦能检测到正确的季节性，从而相应地更新已计算完成的阈值。
+
 
 ## <a name="next-steps"></a>后续步骤
 

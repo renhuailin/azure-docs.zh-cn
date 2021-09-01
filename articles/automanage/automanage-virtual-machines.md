@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 00ee1b6e9772100cbc4abf9c79260a231bbd27af
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 73fb4adaf1c14256beef23cc9ce7ec53bd020937
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755134"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723023"
 ---
 # <a name="preview-azure-automanage-for-virtual-machines"></a>预览版：适用于虚拟机的 Azure Automanage
 
@@ -35,6 +35,9 @@ Azure Automanage 也会自动监视偏移情况，并在检测到偏移时予以
 
 Automanage 只存储/处理 VM 所在的地理位置中的客户数据。 在东南亚地区，Automanage 只存储/处理东南亚地区范围的数据。
 
+> [!NOTE]
+> 可以在 Azure 虚拟机和已启用 Arc 的服务器上启用 Automanage。 Automanage 目前在美国政府云中不可用。
+
 ## <a name="prerequisites"></a>先决条件
 
 尝试在虚拟机上启用 Azure Automanage 之前，需要考虑以下几个先决条件。
@@ -43,6 +46,7 @@ Automanage 只存储/处理 VM 所在的地理位置中的客户数据。 在东
 - VM 必须位于受支持的区域（如下所示）
 - 用户必须拥有正确的权限（如下所示）
 - Automanage 目前不支持沙盒订阅
+- Automanage 目前不支持 Windows 10
 
 ### <a name="supported-regions"></a>支持的区域
 Automanage 仅支持位于以下区域的 VM：

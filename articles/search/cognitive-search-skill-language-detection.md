@@ -2,18 +2,17 @@
 title: 语言检测认知技能
 titleSuffix: Azure Cognitive Search
 description: 在 Azure 认知搜索中的 AI 扩充管道中，计算非结构化的文本，并针对每个文本，返回语言标识符和表示分析强度的得分。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: fbe2c9a66015886c96a7c4414eb3b425b8180a18
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 08/12/2021
+ms.openlocfilehash: 01b6449baa7c5d13b041f886074425d78e037579
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539785"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862104"
 ---
 #   <a name="language-detection-cognitive-skill"></a>语言检测认知技能
 
@@ -24,10 +23,8 @@ ms.locfileid: "111539785"
 语言检测利用必应的自然语言处理库，此类库超出为文本分析列出的[受支持的语言和区域](../cognitive-services/text-analytics/language-support.md)的数目。 语言的具体列表未发布，但包含所有广泛传播的语言，以及变体、方言和某些区域性的和文化性的语言。 如果你的内容是采用不常用的语言表达的，可以[尝试语言检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)，看是否会返回一个代码。 无法检测到的语言的响应为 `(Unknown)`。
 
 > [!NOTE]
-> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 此技能与 Azure 认知服务绑定，对于超过每个索引器每天 20 个文档的事务，需要[一个计费资源](cognitive-search-attach-cognitive-services.md)。 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)所述。
-
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.LanguageDetectionSkill

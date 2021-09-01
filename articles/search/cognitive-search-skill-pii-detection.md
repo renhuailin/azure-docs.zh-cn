@@ -1,31 +1,27 @@
 ---
-title: PII 检测认知技能（预览版）
+title: PII 检测认知技能
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 认知搜索中从扩充管道中的文本提取和屏蔽个人信息。 此技能目前为公共预览版。
+description: 在 Azure 认知搜索中从扩充管道中的文本提取和屏蔽个人信息。
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 448784987f3304303a1bd47c2038440db5cdd194
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.date: 08/12/2021
+ms.openlocfilehash: 71bd45fae729efed6d76ab65fc4ea45944998f45
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063227"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862694"
 ---
 # <a name="pii-detection-cognitive-skill"></a>PII 检测认知技能
-
-> [!IMPORTANT] 
-> 此技能目前为公共预览版。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前不支持门户或 .NET SDK。
 
 “PII 检测”技能从输入文本中提取个人信息，并提供屏蔽该信息的选项。 此技能使用认知服务中的[文本分析](../cognitive-services/text-analytics/overview.md)提供的机器学习模型。
 
 > [!NOTE]
-> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 此技能与 Azure 认知服务绑定，对于超过每个索引器每天 20 个文档的事务，需要[一个计费资源](cognitive-search-attach-cognitive-services.md)。 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)所述。
 
 ## <a name="odatatype"></a>@odata.type
 
@@ -41,17 +37,19 @@ Microsoft.Skills.Text.PIIDetectionSkill
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| `defaultLanguageCode` | （可选）要应用到未显式指定语言的文档的语言代码。  如果未指定默认语言代码，会将英语 (en) 用作默认语言代码。 <br/> 请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/language-support.md)。 |
+| `defaultLanguageCode` | （可选）要应用到未显式指定语言的文档的语言代码。  如果未指定默认语言代码，会将英语 (en) 用作默认语言代码。 <br/> 请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/language-support.md?tabs=pii)。 |
 | `minimumPrecision` | 一个介于 0.0 和 1.0 之间的值。 如果置信度分数（在 `piiEntities` 输出中）低于所设置的 `minimumPrecision` 值，则不会返回或屏蔽该实体。 默认值为 0.0。 |
 | `maskingMode` | 一个参数，提供各种方法来屏蔽在输入文本中检测到的个人信息。 可以使用以下选项： <ul><li>`none`（默认值）：不会发生屏蔽，并且不会返回 `maskedText` 输出。 </li><li> `replace`：使用 `maskingCharacter` 参数中给定的字符替换检测到的实体。 将重复该字符，直至达到检测到的实体的长度，以便偏移量与输入文本和输出 `maskedText` 都正确对应。</li></ul> <br/> 在 PIIDetectionSkill 预览版中，还支持 `maskingMode` 的 `redact` 选项，这允许完全删除检测到的实体，不进行替换。 `redact` 选项已被弃用，以后的技能中将不再支持此选项。 |
 | `maskingCharacter` | 当 `maskingMode` 参数设置为 `replace` 时用来屏蔽文本的字符。 支持以下选项：`*`（默认）。 如果 `maskingMode` 未设置为 `replace`，则此参数只能为 `null`。 <br/><br/> 在 PIIDetectionSkill 预览版中，还支持 `maskingCharacter` 选项 `X` 和 `#`。 `X` 和 `#` 选项已被弃用，以后的技能中将不再支持此选项。 |
+| `domain`   | （可选）字符串值（如果指定）将 PII 域设置为仅包含实体类别的子集。 可能的值包括：`phi`（仅检测机密运行状况信息）、`none`。 |
+| `piiCategories`   | （可选）如要指定将检测并返回哪些实体，请使用可选的 `piiCategories` 参数（定义为字符串列表）指定相应的实体类别。 此参数还可以检测默认情况下未为文档语言启用的实体。 有关可用的类别列表，请参阅 [TextAnalytics 文档](../cognitive-services/text-analytics/named-entity-types.md?tabs=personal)。  |
 | `modelVersion`   | （可选）调用文本分析服务时要使用的模型版本。 如果未指定，将默认为最新版本。 建议不要指定此值，除非绝对必要。 有关详细信息，请参阅[文本分析 API 中的模型版本控制](../cognitive-services/text-analytics/concepts/model-versioning.md)。 |
 
 ## <a name="skill-inputs"></a>技能输入
 
 | 输入名称      | 说明                   |
 |---------------|-------------------------------|
-| `languageCode`    | 表示记录的语言的字符串。 如果未指定此参数，将使用默认语言代码分析记录。 <br/>请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/language-support.md)  |
+| `languageCode`    | 表示记录的语言的字符串。 如果未指定此参数，将使用默认语言代码分析记录。 <br/>请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/language-support.md?tabs=pii)  |
 | `text`          | 要分析的文本。          |
 
 ## <a name="skill-outputs"></a>技能输出

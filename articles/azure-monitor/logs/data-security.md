@@ -1,23 +1,23 @@
 ---
-title: Log Analytics 数据安全 | Microsoft 文档
-description: 了解 Log Analytics 如何保护隐私和数据安全。
+title: Azure Monitor 日志数据安全 | Microsoft Docs
+description: 了解 Azure Monitor 日志如何保护隐私与数据安全。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 00d3c2a73e6e6cd569143d9a26eda672e9ff99b2
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: c6b4f6b9ce5486efcba4a7cb291a1720e25adf62
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751264"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178011"
 ---
-# <a name="log-analytics-data-security"></a>Log Analytics 数据安全
-本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](https://www.microsoft.com/en-us/trust-center?rtc=1)的信息。  
+# <a name="azure-monitor-logs-data-security"></a>Azure Monitor 日志数据安全
+本文档旨在提供特定于 [Azure Monitor 日志](../logs/data-platform-logs.md) 的信息来补充有关 [Azure 信任中心](https://www.microsoft.com/en-us/trust-center?rtc=1)的信息。  
 
-本文介绍 Log Analytics 如何收集、处理和保护数据。 可以使用代理连接到 Web 服务、使用 System Center Operations Manager 收集操作数据或从 Azure 诊断中检索数据供 Log Analytics 使用。 
+本文介绍 Azure Monitor 如何收集、处理和保护日志数据。 可以使用代理连接到 Web 服务、使用 System Center Operations Manager 收集操作数据或从 Azure 诊断中检索数据供 Azure Monitor 使用。 
 
-Log Analytics 服务使用以下方法安全地管理你基于云的数据：
+Azure Monitor 日志使用以下方法安全地管理你基于云的数据：
 
 * 数据隔离
 * 数据保留
@@ -26,7 +26,7 @@ Log Analytics 服务使用以下方法安全地管理你基于云的数据：
 * 合规性
 * 安全标准认证
 
-还可以使用 Azure Monitor 和 Log Analytics 中内置的附加安全功能。 这些功能需要更多的管理员管理工作。 
+还可以使用 Azure Monitor 中内置的附加安全功能。 这些功能需要更多的管理员管理工作。 
 * 客户管理的（安全）密钥
 * Azure 专用存储
 * 专用链接网络 
@@ -36,11 +36,11 @@ Log Analytics 服务使用以下方法安全地管理你基于云的数据：
 
 ## <a name="sending-data-securely-using-tls-12"></a>使用 TLS 1.2 安全地发送数据 
 
-为了确保传输到 Log Analytics 的数据的安全性，强烈建议你将代理配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**，并且行业即将放弃对这些旧协议的支持。 
+为确保传输到 Azure Monitor 的数据的安全性，我们强烈建议你将代理配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**，并且行业即将放弃对这些旧协议的支持。 
 
-[PCI 安全标准委员会](https://www.pcisecuritystandards.org/)规定 [2018 年 6 月 30 日](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf)是停用旧版 TLS/SSL 并升级到更安全协议的截止时间。 在 Azure 放弃旧版支持后，如果代理无法通过最低版本 TLS 1.2 进行通信，则你无法将数据发送到 Log Analytics。 
+[PCI 安全标准委员会](https://www.pcisecuritystandards.org/)规定 [2018 年 6 月 30 日](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf)是停用旧版 TLS/SSL 并升级到更安全协议的截止时间。 在 Azure 放弃旧版支持后，如果代理无法通过最低版本 TLS 1.2 进行通信，则你无法将数据发送到 Azure Monitor 日志。 
 
-除非绝对必要，否则我们不建议将代理显式设置为仅使用 TLS 1.2，因为这可能会破坏平台级安全功能，导致无法自动检测并利用推出的更新且更安全的协议，例如 TLS 1.3。 
+建议不要将代理显式设置为仅使用 TLS 1.2，除非绝对必要。 最好允许代理自动检测、协商和利用未来的安全标准。 否则，你可能会错过新标准的增强安全性，并且若在支持这些较新的标准之前弃用 TLS 1.2，则可能会遇到问题。    
 
 ### <a name="platform-specific-guidance"></a>特定于平台的指南
 
@@ -52,7 +52,7 @@ Log Analytics 服务使用以下方法安全地管理你基于云的数据：
 | Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 受支持，但默认未启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](/windows-server/security/tls/tls-registry-settings)页。  |
 
 ## <a name="data-segregation"></a>数据隔离
-Log Analytics 服务引入数据后，数据将在该服务的每个组件上都保持逻辑隔离。 所有数据按工作区进行标记。 此标记方式贯穿数据的整个生命周期，在服务的每个层强制实施。 数据存储在所选区域的群集存储中的专用数据库内。
+Azure Monitor 引入数据后，数据将在该服务的每个组件上都保持逻辑隔离。 所有数据按工作区进行标记。 此标记方式贯穿数据的整个生命周期，在服务的每个层强制实施。 数据存储在所选区域的群集存储中的专用数据库内。
 
 ## <a name="data-retention"></a>数据保留
 编入索引的日志搜索数据基于定价计划进行存储和保留。 有关详细信息，请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)。
@@ -81,10 +81,10 @@ Log Analytics 服务引入数据后，数据将在该服务的每个组件上都
 | 状态 |StateChangeEventId、StateId、NewHealthState、OldHealthState、Context、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
 ## <a name="physical-security"></a>物理安全性
-Log Analytics 服务由 Microsoft 人员负责操控，将记录所有活动并且可进行审核。 Log Analytics 作为 Azure 服务运行，满足所有 Azure 符合性与安全要求。 可以在 [Microsoft Azure 安全性概述](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)的第 18 页上找到有关 Azure 资产的物理安全性的详细信息。 对于不再负责 Log Analytics 服务的任何人员，会在一个工作日内更改该人员对安全区域的物理访问权限，包括传输和终止。 可在 [Microsoft 数据中心](https://azure.microsoft.com/global-infrastructure/)阅读有关我们使用的全球物理基础设施的信息。
+Azure Monitor 由 Microsoft 人员负责操控，将记录所有活动并且可进行审核。 Azure Monitor 作为 Azure 服务运行，满足所有 Azure 符合性与安全要求。 可以在 [Microsoft Azure 安全性概述](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)的第 18 页上找到有关 Azure 资产的物理安全性的详细信息。 对于不再负责 Azure Monitor 的任何人员，系统会在一个工作日内更改该人员对安全区域的物理访问权限，包括传输和终止。 可在 [Microsoft 数据中心](https://azure.microsoft.com/global-infrastructure/)阅读有关我们使用的全球物理基础设施的信息。
 
 ## <a name="incident-management"></a>事件管理
-Log Analytics 具有所有 Microsoft 服务都遵循的事件管理过程。 总而言之，我们：
+Azure Monitor 具有所有 Microsoft 服务都遵循的事件管理过程。 总而言之，我们：
 
 * 使用共担责任模型，其中一部分安全职责归于 Microsoft，一部分安全职责归于客户
 * 管理 Azure 安全事件：
@@ -108,7 +108,7 @@ Log Analytics 具有所有 Microsoft 服务都遵循的事件管理过程。 总
 有关 Microsoft 如何响应安全事件的详细信息，请参阅[在云中进行 Microsoft Azure 安全响应](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf)。
 
 ## <a name="compliance"></a>合规性
-Log Analytics 软件开发和服务团队的信息安全和监管计划支持其业务需求，并遵循 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)和 [Microsoft 信任中心符合性](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)中所述的法律和法规。 其中还介绍了 Log Analytics 如何建立安全要求、识别安全控制、管理和监控风险。 每年，我们都会对策略、标准、过程和指导原则进行评审。
+Azure Monitor 软件开发和服务团队的信息安全和监管计划支持其业务需求，并遵循 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)和 [Microsoft 信任中心符合性](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)中所述的法律和法规。 其中还介绍了 Azure Monitor 日志如何建立安全要求、识别安全控制、管理和监控风险。 每年，我们都会对策略、标准、过程和指导原则进行评审。
 
 每个开发团队成员都会接受正式的应用程序安全培训。 在内部，我们将版本控制系统用于软件开发。 每个软件项目都受版本控制系统保护。
 
@@ -129,65 +129,63 @@ Azure Log Analytics 满足以下要求：
 * [HIPAA 和 HITECH](/compliance/regulatory/offering-hipaa-hitech)（对于具有 HIPAA 业务合作协议的公司）
 * Windows 通用工程标准
 * Microsoft 可信计算
-* 作为一项 Azure 服务，Log Analytics 使用的组件满足 Azure 符合性要求。 可以通过阅读 [Microsoft 信任中心合规性](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)了解详细信息。
+* 作为一项 Azure 服务，Azure Monitor 使用的组件满足 Azure 符合性要求。 可以通过阅读 [Microsoft 信任中心合规性](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)了解详细信息。
 
 > [!NOTE]
-> 在某些认证/证明中，Log Analytics 使用其以前的名称 *Operational Insights* 列出。
+> 在部分认证/证明中，Azure Monitor 日志使用其以前的名称 *Operational Insights* 列出。
 >
 >
 
 ## <a name="cloud-computing-security-data-flow"></a>云计算安全数据流
-下图将云安全体系结构显示为公司的信息流以及信息移动到 Log Analytics 服务（最终在 Azure 门户中呈现）时如何确保它的安全。 有关每一步的详细信息，请遵循该图所示。
+下图将云安全体系结构显示为公司的信息流以及信息移动到 Azure Monitor（最终在 Azure 门户中呈现）时如何确保它的安全。 有关每一步的详细信息，请遵循该图所示。
 
-![Log Analytics 数据收集和安全性的图像](./media/data-security/log-analytics-data-security-diagram.png)
+![Azure Monitor 日志数据收集和安全性的图像](./media/data-security/log-analytics-data-security-diagram.png)
 
-## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1.注册 Log Analytics 并收集数据
-要使组织能够将数据发送到 Log Analytics，请配置在 Azure 虚拟机中运行的，或者在自己环境或其他云提供程序中的虚拟机或物理机上运行的 Windows/Linux 代理。  如果使用 Operations Manager，请通过管理组配置 Operations Manager 代理。 用户（可能是你、其他个别用户，也可能是一组用户）会创建一个或多个 Log Analytics 工作区，并使用以下帐户之一注册代理：
+## <a name="1-sign-up-for-azure-monitor-and-collect-data"></a>1. 注册 Azure Monitor 并收集数据
+要使组织能够将数据发送到 Azure Monitor，请配置在 Azure 虚拟机中运行的，或者在自己环境或其他云提供程序中的虚拟机或物理机上运行的 Windows/Linux 代理。  如果使用 Operations Manager，请通过管理组配置 Operations Manager 代理。 用户（可能是你、其他个别用户，也可能是一组用户）会创建一个或多个 Log Analytics 工作区，并使用以下帐户之一注册代理：
 
 * [组织 ID](../../active-directory/fundamentals/sign-up-organization.md)
 * [Microsoft 帐户 - Outlook、Office Live、MSN](https://account.microsoft.com/account)
 
 在 Log Analytics 工作区中对数据进行收集、聚合、分析和呈现。 工作区主要用作划分数据的一种方式，每个工作区都是唯一的。 例如，可能希望生产数据受一个工作区管理，测试数据受另一个工作区管理。 工作区还有助于管理员控制用户对数据的访问。 每个工作区可以有多个与它关联的用户帐户，每个用户帐户可以访问多个 Log Analytics 工作区。 基于数据中心区域创建工作区。
 
-对于 Operations Manager，Manager 管理组会与 Log Analytics 服务建立连接。 然后，可以配置允许管理组中的哪些代理托管系统收集数据以及向服务发送数据。 根据已启用的解决方案，这些解决方案的数据可直接从 Operations Manager 管理服务器发送到 Log Analytics 服务，或者出于在代理管理系统上收集的数据量，直接从代理发送到服务。 对于不受 Operations Manager 监视的系统，每个系统可以安全地直接连接到 Log Analytics 服务。
+对于 Operations Manager，Manager 管理组会与 Azure Monitor 服务建立连接。 然后，可以配置允许管理组中的哪些代理托管系统收集数据以及向服务发送数据。 根据已启用的解决方案，这些解决方案的数据可直接从 Operations Manager 管理服务器发送到 Azure Monitor 服务，或者出于在代理管理系统上收集的数据量，直接从代理发送到服务。 对于不受 Operations Manager 监视的系统，每个系统可以安全地直接连接到 Azure Monitor 服务。
 
-会对已连接系统与 Log Analytics 服务之间的所有通信进行加密。 TLS (HTTPS) 协议用于加密。  遵循 Microsoft SDL 过程，已确保 Log Analytics 是最新的，加密协议也是最新的。
+会对已连接系统与 Azure Monitor 服务之间的所有通信进行加密。 TLS (HTTPS) 协议用于加密。  遵循 Microsoft SDL 过程，已确保 Log Analytics 是最新的，加密协议也是最新的。
 
-每种类型的代理都会收集 Log Analytics 的数据。 收集的数据类型取决于所用解决方案的类型。 可以查看[从解决方案库中添加 Log Analytics 解决方案](../insights/solutions.md)中的数据收集的摘要。 此外，会针对大多数解决方案提供更详细的收集信息。 解决方案包含一组预定义的视图、日志搜索查询、数据收集规则和处理逻辑。 只有管理员可以使用 Log Analytics 导入解决方案。 解决方案完成导入后，会将它移到 Operations Manager 管理服务器（如果使用），再移到你选定的任何代理。 然后，该代理收集数据。
+每种类型的代理都会收集 Azure Monitor 的日志数据。 收集的数据类型取决于工作区的配置及 Azure Monitor 的其他功能。 
 
 ## <a name="2-send-data-from-agents"></a>2.从代理发送数据
-将所有代理类型注册到加密密钥，会在代理和 Log Analytics 之间使用基于证书的身份验证和 TLS 以及端口 443 建立安全连接。 Log Analytics 使用机密存储生成和维护密钥。 私钥每隔 90 天会进行轮换、存储在 Azure 中，并受遵循严格的法规和合规性操作的 Azure Operations 管理。
+将所有代理类型注册到加密密钥，会在代理和 Azure Monitor 之间使用基于证书的身份验证和 TLS 以及端口 443 建立安全连接。 Azure Monitor 使用机密存储生成和维护密钥。 私钥每隔 90 天会进行轮换、存储在 Azure 中，并受遵循严格的法规和合规性操作的 Azure Operations 管理。
 
 借助 Operations Manager，注册到 Log Analytics 工作区的管理组可与 Operations Manager 管理服务器建立安全 HTTPS 连接。
 
 对于在 Azure 虚拟机上运行的 Windows 或 Linux 代理，只读存储密钥用于读取 Azure 表中的诊断事件。  
 
-由于任何代理会向与 Log Analytics 集成的 Operations Manager 管理组报告，因此，如果管理服务器出于任何原因无法与该服务通信，收集的数据将存储在管理服务器本地的临时缓存中。   管理服务器尝试在两小时内每隔八分钟重新发送数据。  对于绕过管理服务器直接发送到 Log Analytics 的数据，行为与 Windows 代理一致。  
+由于任何代理会向与 Azure Monitor 集成的 Operations Manager 管理组报告，因此，如果管理服务器出于任何原因无法与该服务通信，收集的数据将存储在管理服务器本地的临时缓存中。   管理服务器尝试在两小时内每隔八分钟重新发送数据。  对于绕过管理服务器直接发送到 Azure Monitor 的数据，行为与 Windows 代理一致。  
 
 Windows 或管理服务器代理缓存的数据受操作系统的凭据存储的保护。 如果服务在两小时后无法处理数据，代理会将该数据加入队列。 如果队列已满，代理会开始丢弃数据类型，从性能数据开始。 代理队列限制是一个注册表项，因此必要时可以对它进行修改。 向服务发送（绕过 Operations Manager 管理组数据库）已收集的数据时会先对数据进行压缩，因此不会向数据库添加任何负载。 已收集的数据完成发送后，会从缓存中删除它。
 
 如上所述，来自管理服务器或直连代理的数据通过 TLS 发送到 Microsoft Azure 数据中心。 可以选择使用 ExpressRoute 为数据提供额外的安全性。 借助 ExpressRoute，可以从网络服务提供商提供的现有 WAN 网络（例如多协议标签交换 (MPLS) VPN）直接连接到 Azure。 有关详细信息，请参阅 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)。
 
-## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3.Log Analytics 服务接收并处理数据
-Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性进行验证，来确保传入数据来自受信任的源。 然后，将未处理的原始数据存储在区域中的 Azure 事件中心，并最终存储静态数据。 存储的数据类型取决于导入的并用于收集数据的解决方案的类型。 然后，Log Analytics 服务处理原始数据并将其引入数据库。
+## <a name="3-the-azure-monitor-service-receives-and-processes-data"></a>3. Azure Monitor 服务接收并处理数据
+Azure Monitor 服务通过使用 Azure 身份验证对证书和数据完整性进行验证，来确保传入数据来自受信任的源。 然后，将未处理的原始数据存储在区域中的 Azure 事件中心，并最终存储静态数据。 存储的数据类型取决于导入的并用于收集数据的解决方案的类型。 然后，Azure Monitor 服务处理原始数据并将其引入数据库。
 
 存储在数据库中的已收集数据的保留期取决于所选的定价计划。 对于“免费”层，收集的数据可以使用 7 天。 对于 *付费* 层，收集的数据默认情况下可以使用 31 天，但可以延长到 730 天。 数据在 Azure 存储中采用静态加密存储，以确保数据机密性，并且数据通过本地冗余存储 (LRS) 在本地区域内进行复制。 过去两周的数据也存储在基于 SSD 的缓存中，此缓存未加密。
 
-数据库存储中的数据在引入后将无法更改，但可以通过[清除 API 路径](personal-data-mgmt.md#delete)将其删除。 尽管该数据无法更改，但某些认证要求数据保持不可变且不能在存储中更改或删除。 可以通过使用[数据导出](logs-data-export.md)将数据导出到配置为[不可变存储](../../storage/blobs/storage-blob-immutability-policies-manage.md)的存储帐户来实现数据不可变性。
+数据库存储中的数据在引入后将无法更改，但可以通过[清除 API 路径](personal-data-mgmt.md#delete)将其删除。 尽管该数据无法更改，但某些认证要求数据保持不可变且不能在存储中更改或删除。 可以通过使用[数据导出](logs-data-export.md)将数据导出到配置为[不可变存储](../../storage/blobs/immutable-policy-configure-version-scope.md)的存储帐户来实现数据不可变性。
 
-## <a name="4-use-log-analytics-to-access-the-data"></a>4.使用 Log Analytics 访问数据
-若要访问 Log Analytics 工作区，请使用组织帐户或先前设置的 Microsoft 帐户登录到 Azure 门户。 门户与 Log Analytics 服务之间的所有流量通过安全 HTTPS 通道发送。 使用门户时，会在用户客户端（Web 浏览器）上生成会话 ID，会将数据存储在本地缓存中，直到该会话终止。 终止后，会删除该缓存。 不会自动删除不包含个人身份信息的客户端 Cookie。 会话 Cookie 标记为 HTTPOnly，并且受到保护。 在预先确定的空闲期过后，会终止 Azure 门户会话。
+## <a name="4-use-azure-monitor-to-access-the-data"></a>4. 使用 Azure Monitor 访问数据
+若要访问 Log Analytics 工作区，请使用组织帐户或先前设置的 Microsoft 帐户登录到 Azure 门户。 门户与 Azure Monitor 服务之间的所有流量通过安全 HTTPS 通道发送。 使用门户时，会在用户客户端（Web 浏览器）上生成会话 ID，会将数据存储在本地缓存中，直到该会话终止。 终止后，会删除该缓存。 不会自动删除不包含个人身份信息的客户端 Cookie。 会话 Cookie 标记为 HTTPOnly，并且受到保护。 在预先确定的空闲期过后，会终止 Azure 门户会话。
 
 
 ## <a name="additional-security-features"></a>附加安全功能
-可以使用这些附加安全功能来进一步保护 Azure Monitor/Log Analytics 环境。 这些功能需要更多的管理员管理工作。 
+可以使用这些附加安全功能来进一步保护 Azure Monitor 环境。 这些功能需要更多的管理员管理工作。 
 - [客户管理的（安全）密钥](../logs/customer-managed-keys.md) - 可以使用客户管理的密钥来加密发送到 Log Analytics 工作区的数据。 它需要使用 Azure Key Vault。 
-- [专用/客户管理的存储](./private-storage.md) - 管理个人加密存储帐户，并指示 Log Analytics 使用它来存储监视数据 
+- [专用/客户管理的存储](./private-storage.md) - 管理个人加密存储帐户，并指示 Azure Monitor 使用它来存储监视数据 
 - [专用链接网络](./private-link-security.md) - 通过 Azure 专用链接，可使用专用终结点将 Azure PaaS 服务（包括 Azure Monitor）安全地链接到你的虚拟网络。 
 - [Azure 客户密码箱](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview) - Microsoft Azure 客户密码箱提供了一个界面，供客户查看和批准/拒绝客户数据访问请求。 当 Microsoft 工程师需要在支持请求期间访问客户数据时，可以使用此功能。
 
 
 ## <a name="next-steps"></a>后续步骤
-* 遵循 [Azure VM 快速入门](../vm/quick-collect-azurevm.md)，了解如何使用 Log Analytics 收集 Azure VM 的数据。  
-
-*  如果想要从环境中的 Windows 或 Linux 物理机或虚拟机收集数据，请参阅[适用于 Linux 计算机的快速入门](../vm/quick-collect-linux-computer.md)或[适用于 Windows 计算机的快速入门](../vm/quick-collect-windows-computer.md)
+* [请参阅 Azure Monitor 中可收集的不同类型的数据](../monitor-reference.md)。

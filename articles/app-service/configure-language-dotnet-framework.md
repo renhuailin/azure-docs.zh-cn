@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: b56313183ba3bf39313ec06ddb9cdb36ac445aee
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 5fc4e858dbc39f13b3f07405c262086b2b789830
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204506"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732203"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>为 Azure 应用服务配置 ASP.NET 应用
 
@@ -75,7 +75,7 @@ ConfigurationManager.ConnectionStrings["MyConnection"];
 
 ## <a name="deploy-multi-project-solutions"></a>部署多项目解决方案
 
-如果 Visual Studio 解决方案包含多个项目，则说明 Visual Studio 发布过程已包括选择要部署的项目的操作。 当你部署到应用服务部署引擎（例如，使用 Git 或 ZIP 部署）时，如果启用了“生成自动化”，则应用服务部署引擎会选取它发现的第一个网站或 Web 应用程序项目作为应用服务应用。 你可以通过指定 `PROJECT` 应用设置来指定应用服务应当使用哪个项目。 例如，在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
+如果 Visual Studio 解决方案包含多个项目，则说明 Visual Studio 发布过程已包括选择要部署的项目的操作。 当你使用 Git 或[启用了生成自动化](deploy-zip.md#enable-build-automation)的 ZIP 部署等部署到应用服务部署引擎时，则应用服务部署引擎会选取它发现的第一个网站或 Web 应用项目作为应用服务应用。 你可以通过指定 `PROJECT` 应用设置来指定应用服务应当使用哪个项目。 例如，在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -105,7 +105,7 @@ Trace.TraceInformation("GET /Home/Index"); // Information trace
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="next-steps"></a>后续步骤
+## <a name="more-resources"></a>更多资源
 
-> [!div class="nextstepaction"]
-> [教程：使用 SQL 数据库在 Azure 中生成 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)
+- [教程：使用 SQL 数据库在 Azure 中构建 ASP.NET 应用](app-service-web-tutorial-dotnet-sqldatabase.md)
+- [环境变量和应用设置参考](reference-app-settings.md)

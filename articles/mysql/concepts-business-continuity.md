@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: e58508e561a33a73e6f6752fc12bc5938b8d7488
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a02457c177e509280a93d7e6939143da3f7e9a84
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309775"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653600"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---single-server"></a>有关使用 Azure Database for MySQL - 单一服务器确保业务连续性的概述
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 本文介绍了 Azure Database for MySQL 针对业务连续性和灾难恢复所提供的功能。 了解在发生破坏性事件后用于进行恢复的选项，破坏性事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域发生服务中断，或者应用程序需要维护。
 
@@ -21,7 +23,7 @@ ms.locfileid: "107309775"
 
 制定业务连续性计划时，需了解应用程序在破坏性事件发生后完全恢复前的最大可接受时间，即恢复时间目标 (RTO)。 此外，还需要了解从破坏性事件恢复时，应用程序可忍受丢失的最近数据更新（时间间隔）最大数量，即恢复点目标 (RPO)。
 
-Azure Database for MySQL 单一服务器提供了业务连续性和灾难恢复功能，其中包括能够启动异地还原的异地冗余备份，以及将只读副本部署到不同区域中的功能。 每种功能在恢复时间和可能丢失数据方面都有不同的特性。 启用[异地还原](concepts-backup.md)功能时，可以使用从另一个区域复制的备份数据创建新的服务器。 还原和恢复所需的总时间取决于数据库的大小和要恢复的日志数量。 建立服务器的总时间从几分钟到几小时不等。 使用[只读副本](concepts-read-replicas.md)，来自主数据库的事务日志会以异步方式流式传输到副本。 如果由于地区级或区域级故障导致主数据库中断，则故障转移到副本可提供较短的 RTO，并会减少数据丢失的情况。
+Azure Database for MySQL 单一服务器提供了业务连续性和灾难恢复功能，其中包括能够启动异地还原的异地冗余备份，以及将只读副本部署到不同区域中的功能。 每种功能在恢复时间和可能丢失数据方面都有不同的特性。 启用[异地还原](concepts-backup.md)功能时，可以使用从另一个区域复制的备份数据创建新的服务器。 还原和恢复所需的总时间取决于数据库的大小和要恢复的日志数量。 建立服务器的总时间从几分钟到几小时不等。 使用[只读副本](concepts-read-replicas.md)，来自主数据库的事务日志会以异步方式流式传输到副本。 如果由于地区或区域级别故障导致主数据库中断，则故障转移到副本可提供较短的 RTO，并减少数据丢失的情况。
 
 > [!NOTE]
 > 主数据库和副本之间的延迟取决于站点之间的延迟以及要传输的数据量，最重要的是取决于主服务器的写入工作负载。 大量写入工作负载可能会产生明显的延迟。 

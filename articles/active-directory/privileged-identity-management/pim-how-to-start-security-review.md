@@ -14,12 +14,12 @@ ms.date: 7/14/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76c18626f54f1862e01140b374e5fd185d1fe814
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: e8c7ac04450f8c9434b8a6c674792d777c53b149
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122196016"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864990"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中创建对 Azure AD 角色的访问评审
 
@@ -49,8 +49,6 @@ ms.locfileid: "122196016"
 4. 在“管理”下再次选择“Azure AD 角色” 。
 
 5. 在“管理”下，选择“访问评审”，然后选择“新建”来新建访问评审 。
-
-    <kbd> ![Azure AD 角色 - 访问评审列表，其中显示所有评审的状态](./media/pim-how-to-start-security-review/access-reviews.png) </kbd>
 
 6. 命名访问评审。 可选择为评审提供说明。 名称和说明向评审者显示。
 

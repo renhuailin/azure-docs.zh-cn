@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: 41cc4c174028ff23cdcc248c6b10d746e5669349
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 08/11/2021
+ms.openlocfilehash: 010fbfc3b6a2df9c8cdca1221fb4f25a5d288d70
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751228"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742186"
 ---
 # <a name="set-up-devops-deployment-for-single-tenant-azure-logic-apps"></a>设置面向单租户 Azure 逻辑应用的 DevOps 部署
 
@@ -47,7 +47,7 @@ ms.locfileid: "111751228"
 |---------------|----------|-------------|
 | 逻辑应用（标准版） | 是 | 此 Azure 资源包含在单租户 Azure 逻辑应用中运行的工作流。 |
 | Functions 高级托管计划或应用服务托管计划 | 是 | 此 Azure 资源可指定用于运行逻辑应用的托管资源，如计算、处理、存储、网络等。 <p><p>重要提示：在当前体验中，逻辑应用（标准版）资源需要[工作流标准托管计划](logic-apps-pricing.md#standard-pricing)（基于 Functions 高级托管计划）。   |
-| Azure 存储帐户 | 是，适用于无状态工作流 | 此 Azure 资源可存储与工作流相关的元数据、状态、输入、输出、运行历史记录和其他信息。 |
+| Azure 存储帐户 | 是，同时适用于监控状态和无状态的工作流 | 此 Azure 资源可存储有关工作流的元数据、访问控制密钥、状态、输入、输出、运行历史记录和其他信息。 |
 | Application Insights | 可选 | 此 Azure 资源可为工作流提供监视功能。 |
 | API 连接 | 可选（如果不存在任何连接） | 这些 Azure 资源可定义工作流用于运行托管连接器操作（如 Office 365、SharePoint 等）的任何托管 API 连接。 <p><p>重要提示：在逻辑应用项目中，connections.js 文件包含任何托管 API 连接的元数据、终结点和密钥，以及工作流使用的 Azure 函数。  若要在各种环境中使用不同的连接和函数，请确保实现 connections.js 文件参数化并更新终结点。 <p><p>有关详细信息，请查看 [API 连接资源和访问策略](#api-connection-resources)。 |
 | Azure 资源管理器 (ARM) 模板 | 可选 | 此 Azure 资源定义可以重复使用或[导出](../azure-resource-manager/templates/template-tutorial-export-template.md)的基线基础结构部署。 该模板还包括必需的访问策略，如使用托管 API 连接的访问策略。 <p><p>重要提示：ARM 模板导出操作将不会导出工作流使用的任何 API 连接资源的所有相关参数。 有关详细信息，请查看[查找 API 连接参数](#find-api-connection-parameters)。 |
@@ -81,7 +81,7 @@ ms.locfileid: "111751228"
 
 若要查找需要在 `properties` 对象中使用以便完成连接资源定义的值，可以针对特定连接器使用以下 API：
 
-`PUT https://management.azure.com/subscriptions/{subscription-ID}/providers/Microsoft.Web/locations/{location}/managedApis/{connector-name}?api-version=2018–07–01-preview`
+`GET https://management.azure.com/subscriptions/{subscription-ID}/providers/Microsoft.Web/locations/{location}/managedApis/{connector-name}?api-version=2016-06-01`
 
 在响应中查找 `connectionParameters` 对象，该对象包含完成该特定连接器的资源定义所需的所有信息。 以下示例演示了 SQL 托管连接的示例资源定义：
 
@@ -217,9 +217,16 @@ ms.locfileid: "111751228"
 
 ##### <a name="install-azure-logic-apps-standard-extension-for-azure-cli"></a>安装 Azure CLI Azure 逻辑应用（标准）扩展
 
-通过运行 `az extension add` 命令，并使用以下必需参数，安装 Azure CLI 的预览版单租户 Azure 逻辑应用（标准）扩展：
+目前，只有此扩展的预览版本可用。 如果以前尚未安装此扩展，请运行命令 `az extension add`，并带有以下必需参数：
 
 ```azurecli-interactive
+az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
+```
+
+若要获取版本 0.1.1 的最新扩展，请运行以下命令以删除现有扩展，然后从源安装最新版本：
+
+```azurecli-interactive
+az extension remove --name logicapp
 az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
 ```
 

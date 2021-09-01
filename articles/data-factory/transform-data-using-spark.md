@@ -1,18 +1,20 @@
 ---
 title: 使用 Spark 活动转换数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何使用 Spark 活动从 Azure 数据工厂管道运行 Spark 程序来转换数据。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 06/09/2021
-ms.openlocfilehash: 3f9b330e4e0cadd073a60293991066f74d8521c3
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 702c1a5208fae42e3704e345713f540b0e05d900
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903160"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271978"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -56,7 +58,7 @@ ms.locfileid: "111903160"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-| 属性              | 说明                              | 必须 |
+| 属性              | 说明                              | 必需 |
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | 管道中活动的名称。    | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -76,7 +78,7 @@ ms.locfileid: "111903160"
 
 在 HDInsight 链接服务引用的 Azure Blob 存储中创建以下文件夹结构。 然后，将依赖文件上传到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 python 文件上传到根文件夹的 pyFiles 子文件夹，将 jar 文件上传到根文件夹的 jars 子文件夹。 在运行时，数据工厂服务需要 Azure Blob 存储中的以下文件夹结构：     
 
-| 路径                  | 说明                              | 必须 | 类型   |
+| 路径                  | 说明                              | 必需 | 类型   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.`（根）            | Spark 作业在存储链接服务中的根路径 | 是      | 文件夹 |
 | &lt;用户定义&gt; | 指向 Spark 作业入口文件的路径 | 是      | 文件   |
@@ -127,5 +129,5 @@ SparkJob2
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [Azure 机器学习工作室（经典）批处理执行活动](transform-data-using-machine-learning.md)
+* [机器学习工作室（经典版）批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

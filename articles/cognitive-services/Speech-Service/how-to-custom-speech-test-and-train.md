@@ -3,19 +3,19 @@ title: 为自定义语音识别准备数据 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在测试 Microsoft 语音识别的准确性或训练自定义模型时，需要音频和文本数据。 本页介绍数据的类型、用法及其管理方式。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: trbye
-ms.openlocfilehash: 991268aff1b74f8e1990c106fa40b3f3fadd4145
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.author: lajanuar
+ms.openlocfilehash: e4c5efc165c864576191b6d74030d1dc2f5dc2a5
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769266"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324570"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音识别的数据
 
@@ -48,10 +48,10 @@ ms.locfileid: "108769266"
 
 | 数据类型 | 用于测试 | 建议的数量 | 用于训练 | 建议的数量 |
 |-----------|-----------------|----------|-------------------|----------|
-| [音频：](#audio-data-for-testing) | 是<br>用于视觉检测 | 5 个以上的音频文件 | 否 | 空值 |
-| [音频和人为标记的听录内容](#audio-and-human-labeled-transcript-data) | 是<br>用于评估准确度 | 0.5-5 小时的音频 | 是 | 1-20 小时的音频 |
+| [音频：](#audio-data-for-testing) | 是<br>用于视觉检测 | 5 个以上的音频文件 | 否 | 不适用 |
 | [纯文本](#plain-text-data-for-training) | 否 | 不适用 | 是 | 1-200 MB 的相关文本 |
 | [发音](#pronunciation-data-for-training) | 否 | 不适用 | 是 | 1 KB - 1 MB 的发音文本 |
+| [音频和人为标记的听录内容](#audio-and-human-labeled-transcript-data) | 是<br>用于评估准确度 | 0.5-5 小时的音频 | 是 | 1-20 小时的音频 |
 
 文件应按类型分组成数据集，并作为 .zip 文件上传。 每个数据集只能包含一种数据类型。
 
@@ -78,53 +78,6 @@ ms.locfileid: "108769266"
 * 可以导航到“训练自定义模型”选项卡来训练自定义模型。
 * 可以导航到“测试模型”选项卡，以直观地检查仅含音频数据的质量，或者通过音频 + 人为标记的听录内容来评估准确性。
 
-
-## <a name="audio-and-human-labeled-transcript-data"></a>音频 + 人为标记的听录内容
-
-音频 + 人为标记的听录内容可用于训练和测试目的。 若要从轻微口音、说话风格、背景噪音等方面优化声音，或在处理音频文件时度量 Microsoft 语音转文本的准确性，则必须提供人为标记的听录内容（逐字逐句）进行比较。 尽管人为标记的听录往往很耗时，但有必要评估准确度并根据用例训练模型。 请记住，识别能力的改善程度以提供的数据质量为界限。 出于此原因，只能上传优质的听录内容，这一点非常重要。
-
-音频文件在录音开始和结束时可以保持静音。 如果可能，请在每个示例文件中的语音前后包含至少半秒的静音。 录音音量小或具有干扰性背景噪音的音频没什么用，但不应损害你的自定义模型。 收集音频示例之前，请务必考虑升级麦克风和信号处理硬件。
-
-| 属性                 | 值                               |
-|--------------------------|-------------------------------------|
-| 文件格式              | RIFF (WAV)                          |
-| 采样速率              | 8,000 Hz 或 16,000 Hz               |
-| 声道                 | 1（单音）                            |
-| 每个音频的最大长度 | 2 小时（测试）/ 60 秒（训练） |
-| 示例格式            | PCM，16 位                         |
-| 存档格式           | .zip                                |
-| 最大 zip 大小         | 2 GB                                |
-
-[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
-
-> [!NOTE]
-> 上传训练和测试数据时，.zip 文件大小不能超过 2 GB。 只能从单个数据集进行测试，请确保将其保持在适当的文件大小内。 另外，每个训练文件不能超过 60 秒，否则将出错。
-
-若要解决字词删除或替换等问题，需要提供大量的数据来改善识别能力。 通常，我们建议为大约 1 到 20 小时的音频提供逐字对照的听录。 不过，即使是短至 30 分钟的音频，也可以帮助改善识别结果。 应在单个纯文本文件中包含所有 WAV 文件的听录。 听录文件的每一行应包含一个音频文件的名称，后接相应的听录。 文件名和听录应以制表符 (\t) 分隔。
-
-例如：
-
-<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
-
-```input
-speech01.wav    speech recognition is awesome
-speech02.wav    the quick brown fox jumped all over the place
-speech03.wav    the lazy dog was not amused
-```
-
-> [!IMPORTANT]
-> 听录应编码为 UTF-8 字节顺序标记 (BOM)。
-
-听录内容应经过文本规范化，以便可由系统处理。 但是，将数据上传到 Speech Studio 之前，必须完成一些重要的规范化操作。 有关在准备听录内容时可用的适当语言，请参阅[如何创建人为标记的听录内容](how-to-custom-speech-human-labeled-transcriptions.md)
-
-收集音频文件和相应的听录内容后，请先将其打包成单个 .zip 文件，然后再上传到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a>。 下面是一个示例数据集，其中包含三个音频文件和一个人为标记的听录文件：
-
-> [!div class="mx-imgBorder"]
-> ![从语音门户选择音频](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
-
-有关语音服务订阅的建议区域列表，请参阅[设置 Azure 帐户](custom-speech-overview.md#set-up-your-azure-account)。 在这些区域之一中设置语音订阅将减少训练模型所需的时间。 在这些区域中，训练每日可以处理大约 10 小时的音频，而在其他区域中，每日只能处理 1 小时。 如果无法在一周内完成模型训练，则该模型将标记为“失败”。
-
-并非所有基础模型都支持使用音频数据进行训练。 如果基础模型不支持它，则服务将忽略音频，并仅使用听录内容的文本进行训练。 在这种情况下，训练将与使用相关文本进行的训练相同。 有关支持使用音频数据进行训练的基础模型的列表，请参阅[语言支持](language-support.md#speech-to-text)。
 
 ## <a name="plain-text-data-for-training"></a>用于训练的纯文本数据
 
@@ -180,6 +133,60 @@ speech03.wav    the lazy dog was not amused
 | 文本编码 | UTF-8 BOM（英语还支持 ANSI） |
 | 每行的发音数目 | 1 |
 | 文件大小上限 | 1 MB（在免费层中为 1 KB） |
+
+## <a name="audio-and-human-labeled-transcript-data"></a>音频 + 人为标记的听录内容
+
+音频 + 人为标记的听录内容可用于训练和测试目的。 若要从轻微口音、说话风格、背景噪音等方面优化声音，或在处理音频文件时度量 Microsoft 语音转文本的准确性，则必须提供人为标记的听录内容（逐字逐句）进行比较。 尽管人为标记的听录往往很耗时，但有必要评估准确度并根据用例训练模型。 请记住，识别能力的改善程度以提供的数据质量为界限。 出于此原因，只能上传优质的听录内容，这一点非常重要。
+
+音频文件在录音开始和结束时可以保持静音。 如果可能，请在每个示例文件中的语音前后包含至少半秒的静音。 录音音量小或具有干扰性背景噪音的音频没什么用，但不应损害你的自定义模型。 收集音频示例之前，请务必考虑升级麦克风和信号处理硬件。
+
+| 属性                 | 值                               |
+|--------------------------|-------------------------------------|
+| 文件格式              | RIFF (WAV)                          |
+| 采样速率              | 8,000 Hz 或 16,000 Hz               |
+| 声道                 | 1（单音）                            |
+| 每个音频的最大长度 | 2 小时（测试）/ 60 秒（训练） |
+| 示例格式            | PCM，16 位                         |
+| 存档格式           | .zip                                |
+| 最大 zip 大小         | 2 GB                                |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
+
+> [!TIP]
+> 甚至没有任何真实的音频？ 还可以通过选择类型“脚本(自动音频合成)”作为“测试”数据来上传文本 (.txt) 文件 以获得当前准确度级别的基本感知，每个口述话语的音频对会自动使用[文本转语音](text-to-speech.md)进行合成。 
+> 
+> 请注意，通常不建议将合成音频用作训练数据 。
+> 
+> 最大文件大小为 500KB。 我们会为每行合成一个音频，每行的最大大小为 65535 字节。
+
+> [!NOTE]
+> 上传训练和测试数据时，.zip 文件大小不能超过 2 GB。 只能从单个数据集进行测试，请确保将其保持在适当的文件大小内。 另外，每个训练文件不能超过 60 秒，否则将出错。
+
+若要解决字词删除或替换等问题，需要提供大量的数据来改善识别能力。 通常，我们建议为大约 1 到 20 小时的音频提供逐字对照的听录。 不过，即使是短至 30 分钟的音频，也可以帮助改善识别结果。 应在单个纯文本文件中包含所有 WAV 文件的听录。 听录文件的每一行应包含一个音频文件的名称，后接相应的听录。 文件名和听录应以制表符 (\t) 分隔。
+
+例如：
+
+<!-- The following example contains tabs. Don't accidentally convert these into spaces. -->
+
+```input
+speech01.wav    speech recognition is awesome
+speech02.wav    the quick brown fox jumped all over the place
+speech03.wav    the lazy dog was not amused
+```
+
+> [!IMPORTANT]
+> 听录应编码为 UTF-8 字节顺序标记 (BOM)。
+
+听录内容应经过文本规范化，以便可由系统处理。 但是，将数据上传到 Speech Studio 之前，必须完成一些重要的规范化操作。 有关在准备听录内容时可用的适当语言，请参阅[如何创建人为标记的听录内容](how-to-custom-speech-human-labeled-transcriptions.md)
+
+收集音频文件和相应的听录内容后，请先将其打包成单个 .zip 文件，然后再上传到 <a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a>。 下面是一个示例数据集，其中包含三个音频文件和一个人为标记的听录文件：
+
+> [!div class="mx-imgBorder"]
+> ![从语音门户选择音频](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
+
+有关语音服务订阅的建议区域列表，请参阅[设置 Azure 帐户](custom-speech-overview.md#set-up-your-azure-account)。 在这些区域之一中设置语音订阅将减少训练模型所需的时间。 在这些区域中，训练每日可以处理大约 10 小时的音频，而在其他区域中，每日只能处理 1 小时。 如果无法在一周内完成模型训练，则该模型将标记为“失败”。
+
+并非所有基础模型都支持使用音频数据进行训练。 如果基础模型不支持它，则服务将忽略音频，并仅使用听录内容的文本进行训练。 在这种情况下，训练将与使用相关文本进行的训练相同。 有关支持使用音频数据进行训练的基础模型的列表，请参阅[语言支持](language-support.md#speech-to-text)。
 
 ## <a name="audio-data-for-testing"></a>用于测试的音频数据
 

@@ -7,14 +7,14 @@ author: mikebudzynski
 ms.service: api-management
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/25/2021
+ms.date: 08/04/2021
 ms.author: apimpm
-ms.openlocfilehash: 97f4eb34b88b3454d65b65d236833e1256c98671
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f67da2c2090dd99730324512248854d5e2fee259
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103564233"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182079"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>如何将 Azure API 管理与 Azure Application Insights 集成
 
@@ -31,15 +31,18 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 
 1. 在 **Azure 门户** 中导航到自己的 **Azure API 管理服务实例**。
 1. 在左侧菜单中选择“Application Insights”。 
-1. 单击“+ 添加”。   
+1. 选择“+ 添加”。  
     :::image type="content" source="media/api-management-howto-app-insights/apim-app-insights-logger-1.png" alt-text="显示在何处添加新连接的屏幕截图":::
 1. 选择前面创建的 **Application Insights** 实例并提供简短说明。
-1. 单击 **创建**。
+1. 如要启用 Application Insights 中的 API 管理实例的[可用性监视](../azure-monitor/app/monitor-web-app-availability.md)，请选择“添加可用性监视”复选框。
+
+    此设置会定期验证 API 管理服务终结点是否正在响应。 结果显示在 Application Insights 实例的“可用性”窗格中。
+1. 选择“创建”。
 1. 你刚刚创建了一个具有检测密钥的 Application Insights 记录器。 该记录器现在应已显示在列表中。  
     :::image type="content" source="media/api-management-howto-app-insights/apim-app-insights-logger-2.png" alt-text="此屏幕截图显示了在何处使用检测密钥查看新建的 Application Insights 记录器":::
 
 > [!NOTE]
-> 在后台，将在 API 管理实例中创建了一个 [Logger](/rest/api/apimanagement/2019-12-01/logger/createorupdate) 实体，其中包含 Application Insights 实例的检测密钥。
+> 在后台，将在 API 管理实例中创建一个 [Logger](/rest/api/apimanagement/2019-12-01/logger/createorupdate) 实体，其中包含 Application Insights 实例的检测密钥。
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>为 API 启用 Application Insights 日志记录
 
@@ -87,13 +90,18 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 
 Application Insights 接收：
 
-+ 每个传入请求（前端请求、前端响应）的请求遥测项；   
-+ 转发到后端服务的每个请求（后端请求、后端响应）的依赖项遥测项；   
++ 针对每个传入请求的请求遥测项：
+    + 前端请求，前端响应
++ 针对转发到后端服务的每个请求的依赖项遥测项：
+    + 后端请求，后端响应
 + 每个失败的请求的异常遥测项：
     + 由于客户端连接关闭而失败
     + 触发了 API 策略的 *on-error* 节
-    + 具有与 4xx 或 5xx 匹配的响应 HTTP 状态代码。
-+ 跟踪遥测项（如果配置[跟踪](api-management-advanced-policies.md#Trace)策略）。 `trace` 策略中的设置 `severity` 必须等于或大于 Application Insights 日志记录中的 `verbosity` 设置。
+    + 具有匹配 4xx 或 5xx 的响应 HTTP 状态代码
++ 跟踪遥测项（如果配置[跟踪](api-management-advanced-policies.md#Trace)策略）。 
+    + `trace` 策略中的设置 `severity` 必须等于或大于 Application Insights 日志记录中的 `verbosity` 设置。
+
+还可通过配置 [`emit-metric`](api-management-advanced-policies.md#emit-metrics) 策略来发出自定义指标。
 
 > [!NOTE]
 > 有关每个 Application Insights 实例的指标和事件的最大大小与数量的信息，请参阅 [Application Insights 限制](../azure-monitor/service-limits.md#application-insights)。

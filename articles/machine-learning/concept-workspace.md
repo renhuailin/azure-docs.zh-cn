@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 09/22/2020
-ms.openlocfilehash: fcf222573ac16be54ae98777749306fee0847109
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 07/27/2021
+ms.openlocfilehash: d5d2d3a844d417b12ae2899cd5ce3d998731aab6
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749584"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860821"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
 工作区是 Azure 机器学习的顶级资源，为使用 Azure 机器学习时创建的所有项目提供了一个集中的处理位置。  工作区保留所有训练运行的历史记录，包括日志、指标、输出和脚本快照。 使用此信息可以确定哪个训练运行产生最佳模型。  
 
-拥有了所需的模型后，可将其注册到工作区。 然后，使用已注册的模型和评分脚本，将其部署到 Azure 容器实例、Azure Kubernetes 服务中或部署到现场可编程门阵列 (FPGA) 作为基于 REST 的 HTTP 终结点。 还可以将模型作为模块部署到 Azure IoT Edge 设备。
+拥有了所需的模型后，可将其注册到工作区。 然后，使用已注册的模型和评分脚本，将其部署到 Azure 容器实例、Azure Kubernetes 服务中或部署到现场可编程门阵列 (FPGA) 作为基于 REST 的 HTTP 终结点。
 
 ## <a name="taxonomy"></a>分类 
 
@@ -53,7 +53,6 @@ ms.locfileid: "108749584"
     + [Azure 机器学习工作室](https://ml.azure.com) 
     + [Azure 机器学习设计器](concept-designer.md) 
 + 在任何 Python 环境中使用[适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro)。
-+ 在任何 R 环境中使用[适用于 R 的 Azure 机器学习 SDK（预览版）](https://azure.github.io/azureml-sdk-for-r/reference/index.html)。
 + 在命令行上使用 Azure 机器学习 [CLI 扩展](./reference-azure-machine-learning-cli.md)
 + [Azure 机器学习 VS Code 扩展](how-to-manage-resources-vscode.md#workspaces)
 
@@ -74,7 +73,7 @@ ms.locfileid: "108749584"
 
 还可以执行以下工作区管理任务：
 
-| 工作区管理任务   | 门户              | 工作室 | Python SDK / R SDK       | CLI        | VS Code
+| 工作区管理任务   | 门户              | 工作室 | Python SDK      | Azure CLI        | VS Code
 |---------------------------|---------|---------|------------|------------|------------|
 | 创建工作区        | **&check;**     | | **&check;** | **&check;** | **&check;** |
 | 管理工作区访问权限    | **&check;**   || |  **&check;**    ||
@@ -96,6 +95,15 @@ ms.locfileid: "108749584"
 > [!NOTE]
 > 工作区名称不区分大小写。
 
+## <a name="sub-resources"></a><a name="sub-resources"></a> 子资源
+
+这些子资源是 AML 工作区中生成的主要资源。
+
+* VM：为 AML 工作区提供计算能力，是部署和训练模型中不可或缺的一部分。
+* 负载均衡器：网络负载均衡器可为每个计算实例和计算群集管理流量，即使在计算实例/群集停止时也可以工作。
+* 虚拟网络：这些网络可帮助 Azure 资源与其他 Azure 资源、互联网以及其他本地网络相互通信。
+* 带宽：封装跨区域的所有出站数据传输。
+
 ## <a name="associated-resources"></a><a name="resources"></a> 关联的资源
 
 创建新工作区时，它会自动创建工作区使用的几个 Azure 资源：
@@ -114,7 +122,7 @@ ms.locfileid: "108749584"
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：存储计算目标使用的机密和工作区所需的其他敏感信息。
 
 > [!NOTE]
-> 使用 [Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace)、[R SDK](https://azure.github.io/azureml-sdk-for-r/reference/create_workspace.html) 或 Azure 机器学习 CLI [通过 ARM 模板](how-to-create-workspace-template.md)创建工作区时，可以改用现有的 Azure 资源实例。
+> 使用 [Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace) 或 Azure 机器学习 CLI [通过 ARM 模板](how-to-create-workspace-template.md)创建工作区时，可以改用现有的 Azure 资源实例。
 
 <a name="wheres-enterprise"></a>
 
@@ -128,9 +136,11 @@ ms.locfileid: "108749584"
 
 ## <a name="next-steps"></a>后续步骤
 
+若要详细了解如何根据组织要求规划工作区，请参阅[组织和设置 Azure 机器学习](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-resource-organization)。
+
 若要开始使用 Azure 机器学习，请参阅：
 
-+ [Azure 机器学习概述](overview-what-is-azure-ml.md)
++ [什么是 Azure 机器学习？](overview-what-is-azure-machine-learning.md)
 + [创建和管理工作区](how-to-manage-workspace.md)
 + [教程：Azure 机器学习入门](quickstart-create-resources.md)
 + [教程：使用自动化机器学习创建第一个分类模型](tutorial-first-experiment-automated-ml.md) 

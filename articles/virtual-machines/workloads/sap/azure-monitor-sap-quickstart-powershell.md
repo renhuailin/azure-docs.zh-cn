@@ -9,12 +9,12 @@ ms.subservice: baremetal-sap
 ms.date: 07/08/2021
 ms.devlang: azurepowershell
 ms.custom: devx-track-azurepowershell - devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 62f1cdcc51779351d743c5e3be5b8405a0bee2d1
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 572c2f76e315baf916adaab8cc31d154bce32ff0
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113567643"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969743"
 ---
 # <a name="quickstart-deploy-azure-monitor-for-sap-solutions-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 部署 Azure Monitor for SAP Solutions
 
@@ -144,4 +144,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 详细了解 Azure Monitor for SAP Solutions。
 
 > [!div class="nextstepaction"]
-> [Azure Monitor for SAP Solutions](azure-monitor-overview.md)
+> [监视 Azure 上的 SAP](monitor-sap-on-azure.md)
