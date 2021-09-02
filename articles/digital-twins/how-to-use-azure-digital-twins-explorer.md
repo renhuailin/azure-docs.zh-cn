@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/20/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9d029c3392ad5b5472173d17db17a113526d4f3a
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 22ad40dadf36b711bde4b7af7e8b24b09610ab89
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111811499"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459497"
 ---
 # <a name="use-azure-digital-twins-explorer-preview"></a>使用 Azure Digital Twins Explorer（预览版）
 
@@ -485,7 +485,7 @@ Azure 数字孪生将打开一个“导入”面板，显示要导入的图形�
 
 `https://explorer.digitaltwins.azure.net/?tid=00a000aa-00a0-00aa-0a0aa000aa00&eid=ADT-instance.api.wcus.digitaltwins.azure.net`
 
-对于要在生成的 Azure Digital Twins Explorer 窗口中查看实例的收件人，必须登录 Azure 帐户，并拥有对实例的“Azure 数字孪生数据读取者”访问权限（有关 Azure 数字孪生角色的详细信息，可参阅[概念：安全](concepts-security.md)）。 对于要对图形和数据进行更改的收件人，他们必须对实例拥有“Azure 数字孪生数据所有者”角色。
+对于要在生成的 Azure Digital Twins Explorer 窗口中查看实例的收件人，必须登录 Azure 帐户，并拥有对实例的“Azure 数字孪生数据读取者”访问权限（有关 Azure 数字孪生角色的详细信息，可参阅[安全](concepts-security.md)）。 对于要对图形和数据进行更改的收件人，他们必须对实例拥有“Azure 数字孪生数据所有者”角色。
 
 ### <a name="link-with-a-query"></a>与查询链接
 
@@ -524,5 +524,5 @@ Azure 数字孪生将打开一个“导入”面板，显示要导入的图形�
 ## <a name="next-steps"></a>后续步骤 
 
 了解如何为 Azure 数字孪生的孪生体图编写查询： 
-* [概念：查询语言](concepts-query-language.md)
-* [操作指南：查询孪生图](how-to-query-graph.md)
+* [查询语言](concepts-query-language.md)
+* [查询孪生图](how-to-query-graph.md)

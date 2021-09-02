@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 5b888ca7655f4de267ed89229559e4b0b1785f6c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 1fc3f423c1ca02c6acb995ab4469d7d33607000f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113798900"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255535"
 ---
 # <a name="migrate-data-offline-to-azure-file-sync-with-azure-data-box"></a>使用 Azure Data Box 将数据脱机迁移到 Azure 文件同步
 

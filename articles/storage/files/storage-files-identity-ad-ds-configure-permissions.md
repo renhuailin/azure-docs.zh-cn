@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: e88a8df21d1161351a97434b3bf70656a09ea2ae
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: efa2ec8873374604e252677e436e6883867f982a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114731037"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255485"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>第三部分：通过 SMB 配置目录和文件级别权限 
 
@@ -68,10 +68,10 @@ Azure 文件存储支持全套基本和高级 Windows ACL。 可以通过装载�
 |用户|定义|
 |---|---|
 |BUILTIN\Administrators|作为本地 AD DS 环境的域管理员的所有用户。
-|BUILTIN\Users|AD 中的内置安全组。 默认情况下，它包括 NT AUTHORITY\Authenticated Users。 对于传统的文件服务器，可以为每个服务器配置成员身份定义。 对于 Azure 文件存储，没有托管服务器，因此 BUILTIN\Users 包含与 NT AUTHORITY\Authenticated Users 相同的用户组。|
+|BUILTIN\Users|AD 中的内置安全组。 默认情况下，它包括 NT AUTHORITY\Authenticated Users。 对于传统的文件服务器，可以为每个服务器配置成员身份定义。 对于 Azure 文件存储，没有托管服务器，因此 BUILTIN\Users 包含与 NT AUTHORITY\Authenticated Users 相同的一组用户。|
 |NT AUTHORITY\SYSTEM|文件服务器操作系统的服务帐户。 此类服务帐户在 Azure 文件存储上下文中不适用。 它包含在根目录中，以便在混合方案中与 Windows 文件服务器体验保持一致。|
 |NT AUTHORITY\Authenticated Users|AD 中可获取有效 Kerberos 令牌的所有用户。|
-|CREATOR OWNER|每个对象（目录或文件）都具有对应的所有者。 如果在该对象上有分配给“CREATOR OWNE”的 ACL，则作为此对象所有者的用户具有对 ACL 定义的对象的权限。|
+|CREATOR OWNER|每个对象（目录或文件）都具有对应的所有者。 如果在该对象上有分配给“CREATOR OWNER”的 ACL，则作为此对象所有者的用户具有对 ACL 定义的对象的权限。|
 
 
 

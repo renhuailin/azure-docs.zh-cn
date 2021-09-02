@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: c11a151876677e06a32364b050538f233cc2b9c4
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: ec09ac444999be23fa0caed741e1e1534117fa0c
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228691"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105613"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性？
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -129,7 +129,7 @@ Azure Cosmos DB 提供综合性的 SLA，涵盖了吞吐量、99% 的情况下�
 
 * [Azure PowerShell](manage-with-powershell.md#create-account)
 
-* [Azure CLI](manage-with-cli.md#add-or-remove-regions)
+* [Azure CLI](sql/manage-with-cli.md#add-or-remove-regions)
 
 * [Azure Resource Manager 模板](./manage-with-templates.md)
 

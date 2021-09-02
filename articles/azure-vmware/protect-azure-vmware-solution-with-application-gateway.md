@@ -3,12 +3,12 @@ title: 使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 Web
 description: 将 Azure 应用程序网关配置为安全地公开在 Azure VMware 解决方案上运行的 Web 应用。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 407dd74b708006ffe2fb125a16cff4e220efc1fe
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 897b5788d3bb4cb76fee44cb29e8c73d5f7f34c7
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322994"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257010"
 ---
 # <a name="protect-web-apps-on-azure-vmware-solution-with-azure-application-gateway"></a>使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 Web 应用
 
@@ -37,9 +37,9 @@ ms.locfileid: "122322994"
 
 应用程序网关实例部署在具有 Azure 公共 IP 地址的专用子网的中心上。 建议为虚拟网络激活 [Azure DDoS 保护标准](../ddos-protection/ddos-protection-overview.md)。 Web 服务器托管在 NSX T0 和 T1 网关后面的 Azure VMware 解决方案私有云上。 此外，Azure VMware 解决方案使用 [ExpressRoute Global Reach](../expressroute/expressroute-global-reach.md) 来实现与中心和本地系统的通信。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- 具有活动订阅的 Azure 帐户。
+- 具有活动订阅的 Azure 帐户。    
 - Azure VMware 解决方案私有云已部署且正在运行。
 
 ## <a name="deployment-and-configuration"></a>部署和配置

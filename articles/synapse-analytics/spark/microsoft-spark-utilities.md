@@ -11,12 +11,12 @@ ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 9923a2bd2e36975fe1af77fddb4bb484a4eb87c6
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 5e0590dd524c516b2c6b909184de1f2d65f0074c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217766"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257040"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 实用工具简介
 
@@ -51,7 +51,7 @@ Synapse 管道使用工作区的托管服务标识 (MSI) 访问存储帐户。 �
 
 可以通过以下 URL 使用 Synapse Spark 访问 ADLS Gen2 上的数据：
 
-<code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
+`abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path>`
 
 ### <a name="configure-access-to-azure-blob-storage"></a>配置对 Azure Blob 存储的访问  
 
@@ -69,7 +69,7 @@ Synapse 使用[共享访问签名 (SAS)](../../storage/common/storage-sas-overvi
 
 可以通过以下 URL 使用 Synapse Spark 访问 Azure Blob 存储上的数据：
 
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
+`wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path>`
 
 下面是代码示例：
 

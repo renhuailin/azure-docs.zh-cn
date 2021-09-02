@@ -5,13 +5,13 @@ metadata:
   ms.reviewer: vijayts
   ms.topic: article
   ms.service: backup
-  ms.date: 05/07/2021
-  ms.openlocfilehash: b9d0efe909cd82cec1b3ade53882b3a3935b0353
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 08/20/2021
+  ms.openlocfilehash: d8c04eead12e3c0e96cf72e7492c52ccdb49686e
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253193"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123108913"
 title: 有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 summary: >
   本文将会解答有关备份 Azure 虚拟机 (VM) 上运行的 SQL Server 数据库以及使用 [Azure 备份](backup-overview.md)服务的常见问题。
@@ -76,21 +76,9 @@ sections:
 
       > 在 UX 中，仍然可以继续操作并在任何给定时间计划尽可能多的备份。 但是，根据上述示例，它们将在某个滑动窗口（例如 5）中进行处理。
   - question: >
-      是否可以从次要副本运行完整备份？
-    answer: >
-      根据 SQL 限制，可以针对次要副本运行“仅限复制的完整备份”。 但不能运行“完整备份”。
-  - question: >
-      是否可以保护本地的可用性组？
-    answer: >
-      否。 Azure 备份可以保护 Azure 中运行的 SQL Server 数据库。 如果可用性组 (AG) 分散在 Azure 与本地计算机之间，则仅当主要副本在 Azure 中运行时，才可以保护 AG。 此外，Azure 备份只能保护恢复服务保管库所在的同一 Azure 区域中运行的节点。
-  - question: >
-      是否可跨区域保护可用性组？
-    answer: >
-      Azure 备份恢复服务保管库可以检测并保护保管库所在的同一区域中的所有节点。 如果 SQL Server Always On 可用性组跨多个 Azure 区域，请从包含主要节点的区域设置备份。 Azure 备份可根据备份首选项检测并保护可用性组中的所有数据库。 如果不符合备份优先顺序，备份将会失败，并出现失败警报。
-  - question: >
       成功的备份作业是否会创建警报？
     answer: >
-      否。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果希望在作业成功的情况下也收到警报，可以[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
+      不是。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果希望在作业成功的情况下也收到警报，可以[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
   - question: >
       “备份作业”菜单中是否会显示计划的备份作业？
     answer: >

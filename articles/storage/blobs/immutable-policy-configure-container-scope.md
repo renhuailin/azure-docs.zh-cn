@@ -6,20 +6,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/22/2021
+ms.date: 08/16/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9accd34601ed900ff7600485b1b3007054c4202a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1cdc40b8aebe2d80553a23deec3990d4349ebd79
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778065"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255610"
 ---
 # <a name="configure-immutability-policies-for-containers"></a>为容器配置不可变性策略
 
-Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次读取）状态存储业务关键型数据。 在 WORM 状态下，在用户指定的间隔内无法修改或删除数据。 为 blob 数据配置不可变性策略可防止数据被覆盖和删除。 不可变性策略包括基于时间的保留策略和法定保留。 有关 Blob 存储的不可变性策略的详细信息，请参阅[使用不可变存储来存储业务关键型 blob 数据](immutable-storage-overview.md)。
+Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次读取）状态存储业务关键型数据。 在 WORM 状态下，在用户指定的间隔内无法修改或删除数据。 为 Blob 数据配置不可变性策略可以防范数据被覆盖和删除。 不可变性策略包括基于时间的保留策略和法定保留。 有关 Blob 存储的不可变性策略的详细信息，请参阅[使用不可变存储来存储业务关键型 Blob 数据](immutable-storage-overview.md)。
 
 不可变性策略的范围可以限定为单个 blob 版本（预览版）或容器。 本文介绍如何配置容器级不可变性策略。 若要了解如何配置版本级不可变性策略，请参阅[为 blob 版本配置不可变性策略（预览版）](immutable-policy-configure-version-scope.md)。
 
@@ -142,9 +142,9 @@ az storage container immutability-policy \
 
 ## <a name="lock-a-time-based-retention-policy"></a>锁定基于时间的保留策略
 
-测试完基于时间的保留策略后，可以锁定该策略。 已锁定的策略符合 SEC 17a-4(f) 和其他法规合规性。 最多可将已锁定策略的保留间隔延长五倍，但不能缩短保留间隔。
+测试完基于时间的保留策略后，可以锁定该策略。 已锁定的策略符合 SEC 17a-4(f) 和其他法规标准。 最多可将已锁定策略的保留间隔延长五倍，但不能缩短保留间隔。
 
-锁定策略后，无法删除该策略。 但是，可以在保留间隔过期后删除 blob。
+锁定策略后无法删除该策略。 但是，可以在保留间隔过期后删除 blob。
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 

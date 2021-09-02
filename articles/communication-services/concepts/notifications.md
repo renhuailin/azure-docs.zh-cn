@@ -2,19 +2,19 @@
 title: Azure 通信服务中的通知
 titleSuffix: An Azure Communication Services concept document
 description: 向在 Azure 通信服务上构建的应用的用户发送通知。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: efb74a654990c45dbb0bf4358a01f335fe118e15
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 831aa049d6426eeb23e4f227321a79359ed852af
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110756"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255363"
 ---
 # <a name="communication-services-notifications"></a>通信服务通知
 

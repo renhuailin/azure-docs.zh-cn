@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 更新保管库配置。
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6dfa05a3bc26c21da95d60374582f10a1a0b84d2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91567819"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458840"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 恢复服务保管库配置
 
@@ -25,7 +25,7 @@ ms.locfileid: "91567819"
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>使用 REST API 获取软删除状态
 
-默认情况下，将为任何新建的恢复服务保管库启用软删除状态。 若要获取/更新保管库的软删除状态，请查看与备份保管库的配置相关的 [REST API 文档](/rest/api/backup/backupresourcevaultconfigs)
+默认情况下，将为任何新建的恢复服务保管库启用软删除状态。 若要获取/更新保管库的软删除状态，请查看与备份保管库的配置相关的 [REST API 文档](/rest/api/backup/backup-resource-vault-configs)
 
 若要获取保管库的当前软删除状态，请使用以下 GET 操作
 
@@ -45,7 +45,7 @@ GET 操作的成功响应如下所示：
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 正常     |   [BackupResourceVaultConfig](/rest/api/backup/backup-resource-vault-configs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>示例响应
 
@@ -81,12 +81,12 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 以下通用定义用于创建请求正文
 
-有关详细信息，请参阅 [REST API 文档](/rest/api/backup/backupresourcevaultconfigs/update#request-body)
+有关详细信息，请参阅 [REST API 文档](/rest/api/backup/backup-resource-vault-configs/update#request-body)
 
-|名称  |必选  |类型  |说明  |
+|名称  |必须  |类型  |说明  |
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  可选的 eTag       |
-|location     |  true       |String         |   资源位置      |
+|location     |  是       |String         |   资源位置      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保管库的属性       |
 |tags     |         | Object        |     资源标记    |
 
@@ -109,7 +109,7 @@ PATCH 操作的成功响应如下所示：
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 正常     |   [BackupResourceVaultConfig](/rest/api/backup/backup-resource-vault-configs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response-for-the-patch-operation"></a>PATCH 操作的响应示例
 

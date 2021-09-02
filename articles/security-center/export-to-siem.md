@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 3ddc385b9d489e0c2ab4abf35a6ade011970342b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2014d2ecea91ae650ec1fb1d730ee9b64c66c98
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572957"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195910"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>将警报流式传输到 SIEM、SOAR 或 IT 服务管理解决方案
 
@@ -41,6 +41,15 @@ Azure Sentinel 包括 Azure 安全中心在订阅和租户级别的内置连接�
 
 - [在订阅级别将警报流式传输到 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 - [将租户中的所有订阅连接到 Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-security-center-auto-connect-to-sentinel/ba-p/1387539) 
+
+将 Azure Defender 连接到 Azure Sentinel 时，系统会在这两项服务之间同步已引入到 Azure Sentinel 中的 Azure Defender 警报的状态。 例如，当某个警报在 Azure Defender 中处于已关闭状态时，该警报在 Azure Sentinel 中也会显示为已关闭。 在 Azure Defender 中更改警报的状态不会影响包含同步 Azure Sentinel 警报的任何 Azure Sentinel 事件的状态，只会影响同步警报自身的状态。
+
+启用此预览功能（即“双向警报同步”）后，系统会自动将原始 Azure Defender 警报的状态与包含这些 Azure Defender 警报副本的 Azure Sentinel 事件的状态同步。 例如，当包含 Azure Defender 警报的 Azure Sentinel 事件被关闭时，Azure Defender 将自动关闭相应的原始警报。
+
+若要了解详细信息，请参阅[从 Azure 安全中心连接 Azure Defender 警报](../sentinel/connect-azure-security-center.md)。
+
+> [!NOTE]
+> 双向警报同步功能在云中 Azure 政府不可用。 
 
 ### <a name="configure-ingestion-of-all-audit-logs-into-azure-sentinel"></a>配置将所有审核日志引入 Azure Sentinel 
 

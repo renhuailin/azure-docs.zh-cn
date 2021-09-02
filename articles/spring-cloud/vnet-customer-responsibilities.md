@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 525f5930f82c0a595c4f1070a7714c45445a9f14
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: fbcf185aa48e7fc4333b128f21b4664106043064
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015363"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256424"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>在 VNET 中运行 Azure Spring Cloud 的客户责任
 
@@ -42,7 +42,7 @@ ms.locfileid: "122015363"
 | *:9000 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureCloud:9000 | TCP:9000         | 基础 Kubernetes 群集管理。 |                                                              |
 | *:123 *或* ntp.ubuntu.com:123                                | UDP:123          | Linux 节点上的 NTP 时间同步。  |                                                              |
 | *.azure.io:443 *或* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureContainerRegistry:443 | TCP:443          | Azure 容器注册表。                 | 可以通过[在虚拟网络中启用 Azure 容器注册表服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)来进行替换。 |
-| *.core.windows.net:443 和 *.core.windows.net:445 或 [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - Storage:443 和 Storage:445 | TCP:443、TCP:445 | Azure 文件存储                        | 可以通过[在虚拟网络中启用 Azure 存储服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)来进行替换。 |
+| *.core.windows.net:443 和 *.core.windows.net:445 或 [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - Storage:443 和 Storage:445 | TCP:443、TCP:445 | Azure 文件                        | 可以通过[在虚拟网络中启用 Azure 存储服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)来进行替换。 |
 | *.servicebus.windows.net:443 或 [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - EventHub:443 | TCP:443          | Azure 事件中心。                          | 可以通过[在虚拟网络中启用 Azure 事件中心服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)来进行替换。 |
 
 

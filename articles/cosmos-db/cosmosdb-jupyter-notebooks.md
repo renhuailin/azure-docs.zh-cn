@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 4f57d2793a28f4bbb201764c67af82f31d0b9333
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 450a00a4ddfe7bfcae7d6c265addab5dd672ee64
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100369792"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105001"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Azure Cosmos DB（预览版）中的内置 Jupyter Notebook 支持
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -64,4 +64,4 @@ Jupyter Notebook 可能包括多种类型的组件，每一种都组织成不同
 * [浏览笔记本示例库](https://cosmos.azure.com/gallery.html)
 * [使用 Python 笔记本功能和命令](use-python-notebook-features-and-commands.md)
 * [使用 C# 笔记本功能和命令](use-csharp-notebook-features-and-commands.md)
-* [从 GitHub 存储库导入笔记本](import-github-notebooks.md)
+* [从 GitHub 存储库导入笔记本](sql/import-github-notebooks.md)
