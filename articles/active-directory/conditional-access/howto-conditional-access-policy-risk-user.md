@@ -11,24 +11,24 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a6509c7b47a0f8c3f36df72e1d3aa16c834594f
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: f2de6916a3845e0e51e810d12199d41b3cfd9319
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110612811"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225589"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>条件访问：基于用户风险的条件访问
 
-Microsoft 会与研究人员、执法机构、Microsoft 安全团队以及其他受信任的源合作，以查找已泄露的用户名和密码对。 使用 Azure AD Premium P2 许可证的组织可以创建包含 [Azure AD 标识保护用户风险检测](../identity-protection/concept-identity-protection-risks.md#user-risk)的条件访问策略。 
+Microsoft 会与研究人员、执法机构、Microsoft 安全团队以及其他受信任的源合作，以查找已泄露的用户名和密码对。 使用 Azure AD Premium P2 许可证的组织可以创建包含 [Azure AD 标识保护用户风险检测](../identity-protection/concept-identity-protection-risks.md#user-linked-detections)的条件访问策略。 
 
 可以在两个位置配置此策略：条件访问和标识保护。 使用条件访问策略的配置是提供更多上下文的首选方法，包括增强的诊断数据、仅报告模式集成、图形 API 支持，以及利用策略中其他条件访问属性的能力。
 
 ## <a name="enable-with-conditional-access-policy"></a>通过条件访问策略进行启用
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
-1. 选择“新策略”  。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
+1. 选择“新策略”。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。 有关详细信息，请参阅[为策略设置命名标准](./plan-conditional-access.md#set-naming-standards-for-your-policies)。
 1. 在“分配”  下，选择“用户和组”  。
    1. 在“包括”下，选择“所有用户”。  

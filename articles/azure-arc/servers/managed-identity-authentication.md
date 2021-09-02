@@ -1,14 +1,14 @@
 ---
 title: 针对已启用 Arc 的服务器对 Azure 资源进行身份验证
-description: 本文介绍对于已启用 Arc 的服务器的 Azure 实例元数据服务支持，以及如何使用机密对 Azure 资源和本地资源进行身份验证。
+description: 本文介绍了对于已启用 Arc 的服务器的 Azure 实例元数据服务支持，以及如何使用机密对 Azure 资源和本地资源进行身份验证。
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: 49b70928ae972da8e0a0d14d711e4b6f246cca6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/16/2021
+ms.openlocfilehash: 76f7174792f751322545b1d30bb51476c5339e26
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96939079"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389903"
 ---
 # <a name="authenticate-against-azure-resources-with-arc-enabled-servers"></a>针对已启用 Arc 的服务器对 Azure 资源进行身份验证
 
@@ -30,7 +30,7 @@ ms.locfileid: "96939079"
 
 在已启用 Windows Arc 的服务器上使用以下变量来配置启用了托管标识的服务器的环境：
 
-- **IMDS_ENDPOINT**：已启用 Arc 的服务器的 IMDS 终结点 IP 地址 `http://localhost:40342`。
+- IMDS_ENDPOINT：已启用 Arc 的服务器的 IMDS 终结点 IP 地址 `http://localhost:40342`。
 
 - **IDENTITY_ENDPOINT**：与服务的托管标识 `http://localhost:40342/metadata/identity/oauth2/token` 对应的 localhost 终结点。
 

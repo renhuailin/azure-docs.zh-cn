@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0a04c6c58f8bfa5370a6529b81a5a85090413a2a
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 6dc086aae55f3b35dbb7dc787df6a65b7ade108f
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107527"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674194"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>查看和配置 DDoS 防护遥测
 
@@ -30,6 +30,12 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 > * 验证和测试 DDoS 防护遥测
 
 ### <a name="metrics"></a>指标
+
+指标名称提供不同的数据包类型和字节数与数据包数，每个指标都有如下所示的标记名称基本构造：
+
+- **丢弃的标记名称（例如，丢弃的入站数据包 DDoS）**：由 DDoS 防护系统丢弃/清理的数据包数。
+- **转发的标记名称（例如，转发的入站数据包 DDoS）**：由 DDoS 系统转发到目标 VIP 的数据包数 - 未筛选的流量。
+- **无标记名称（例如，入站数据包 DDoS）**：进入到清理系统的总数据包数 – 表示丢弃的和转发的数据包的和。
 
 > [!NOTE]
 > 尽管“聚合”的多个选项显示在 Azure 门户上，但每个指标仅支持下表中列出的聚合类型。 我们对于这给你造成的困惑表示歉意，我们正在努力解决此问题。
@@ -70,26 +76,35 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ## <a name="view-ddos-protection-telemetry"></a>查看 DDoS 防护遥测
 
-对攻击的遥测是通过 Azure Monitor 实时提供的。 只有在公共 IP 地址处于缓解状态时，遥测才可用。 
+对攻击的遥测是通过 Azure Monitor 实时提供的。 虽然 TCP SYN、TCP 和 UDP 的[缓解触发器](#view-ddos-mitigation-policies)在和平期内可用，但其他遥测只能在公共 IP 地址被缓解后可用。 
 
+可以通过以下三种不同的资源类型查看受保护的公共 IP 地址的 DDoS 遥测：DDoS 防护计划、虚拟网络和公共 IP 地址。
+
+### <a name="ddos-protection-plan"></a>DDoS 防护计划
 1. 登录到 [Azure 门户](https://portal.azure.com/)，然后浏览到 DDoS 防护计划。
 2. 在“监视”下，选择“指标”。
 3. 选择“范围”。 选择包含要记录的公共 IP 地址的“订阅”，为“资源类型”选择“公共 IP 地址”，然后选择要记录指标的特定公共 IP 地址，最后选择“应用”   。
+4. 选择“最大值”作为“聚合”类型 。 
+
+### <a name="virtual-network"></a>虚拟网络
+1. 登录到 [Azure 门户](https://portal.azure.com/)，然后浏览到已启用 DDoS 防护功能的虚拟网络。
+2. 在“监视”下，选择“指标”。
+3. 选择“范围”。 选择包含要记录的公共 IP 地址的“订阅”，为“资源类型”选择“公共 IP 地址”，然后选择要记录指标的特定公共 IP 地址，最后选择“应用”   。
 4. 选择“最大值”作为“聚合”类型 。
+5. 选择“添加筛选器”。 在“属性”下，选择“受保护的 IP 地址”，运算符应设置为 =。 你将在“值”下看到一个下拉列表，其中包含已启用 DDoS 防护保护功能的公共 IP 地址，且这些地址与虚拟网络关联。 
 
-指标名称提供不同的数据包类型和字节数与数据包数，每个指标都有如下所示的标记名称基本构造：
+![DDoS 诊断设置](./media/ddos-attack-telemetry/vnet-ddos-metrics.png)
 
-- **丢弃的标记名称（例如，丢弃的入站数据包 DDoS）**：由 DDoS 防护系统丢弃/清理的数据包数。
-- **转发的标记名称（例如，转发的入站数据包 DDoS）**：由 DDoS 系统转发到目标 VIP 的数据包数 - 未筛选的流量。
-- **无标记名称（例如，入站数据包 DDoS）**：进入到清理系统的总数据包数 – 表示丢弃的和转发的数据包的和。
+### <a name="public-ip-address"></a>公共 IP 地址
+1. 登录到 [Azure 门户](https://portal.azure.com/)，并浏览到公共 IP 地址。
+2. 在“监视”下，选择“指标”。 
+3. 选择“最大值”作为“聚合”类型 。
 
 ## <a name="view-ddos-mitigation-policies"></a>查看 DDoS 缓解策略
 
-标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP 地址，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 通过选择“聚合”类型为“最大值”的“触发 DDoS 缓解的入站 TCP 数据包”和“触发 DDoS 缓解的入站 UDP 数据包”指标，可查看策略阈值，如下图中所示  ：
+标准 DDoS 防护针对已启用 DDoS 防护功能的虚拟网络中受保护资源的每个公共 IP 地址，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 通过选择“聚合”类型为“最大值”的“触发 DDoS 缓解的入站 TCP 数据包”和“触发 DDoS 缓解的入站 UDP 数据包”指标，可查看策略阈值，如下图中所示  ：
 
 ![查看缓解策略](./media/manage-ddos-protection/view-mitigation-policies.png)
-
-策略阈值是通过基于 Azure 机器学习的网络流量探查自动配置的。 仅当超过策略阈值时，才会对受攻击的 IP 地址进行 DDoS 缓解。
 
 ## <a name="validate-and-test"></a>验证并测试
 

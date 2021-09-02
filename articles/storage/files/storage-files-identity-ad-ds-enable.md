@@ -5,15 +5,15 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 09/13/2020
+ms.date: 07/20/2021
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 624f97e8d2ed7a5bfe2564e64eb787671ac10ca5
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: cb66ed6c1a00c049c2fff6d9fccb22acbcb9fbee
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527453"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462499"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>第一部分：为 Azure 文件共享启用 AD DS 身份验证 
 
@@ -23,15 +23,23 @@ ms.locfileid: "111527453"
 
 要向 AD DS 注册存储帐户，请在 AD DS 中创建一个帐户来代表它。 可以将此过程视为类似于在 AD DS 中创建一个表示本地 Windows 文件服务器的帐户。 在存储帐户上启用此功能后，它将适用于帐户中的所有新的和现有文件共享。
 
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+
 ## <a name="option-one-recommended-use-azfileshybrid-powershell-module"></a>选项 1（推荐）：使用 AzFilesHybrid PowerShell 模块
 
 AzFilesHybrid PowerShell 模块中的 cmdlet 为你进行必要的修改并启用此功能。 由于 cmdlet 的某些部分与你的本地 AD DS 交互，我们将介绍 cmdlet 的作用，方便你确定这些更改是否符合你的合规性与安全性策略，并确保你具有执行 cmdlet 的适当权限。 虽然我们建议使用 AzFilesHybrid 模块，但如果你无法执行此操作，我们还提供了以下步骤，可供你手动执行。
 
 ### <a name="download-azfileshybrid-module"></a>下载 AzFilesHybrid 模块
 
-- [下载并解压缩 AzFilesHybrid 模块（GA 模块：v0.2.0+）](https://github.com/Azure-Samples/azure-files-samples/releases)请注意，v0.2.2 或更高版本支持 AES 256 Kerberos 加密。 如果你已在低于 v0.2.2 的 AzFilesHybrid 版本中启用此功能，并且需要更新以支持 AES 256 Kerberos 加密，请参阅[这篇文章](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)。 
+- 如果未安装 [.Net Framework 4.7.2](https://dotnet.microsoft.com/download/dotnet-framework/net472)，请立即安装。 该模块需要它才能成功导入。
+- [下载并解压缩 AzFilesHybrid 模块（GA 模块：v0.2.0+）](https://github.com/Azure-Samples/azure-files-samples/releases)请注意，v0.2.2 或更高版本支持 AES 256 Kerberos 加密。 如果你已在低于 v0.2.2 的 AzFilesHybrid 版本中启用此功能，并且需要更新以支持 AES 256 Kerberos 加密，请参阅[这篇文章](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)。
 - 使用有权在目标 AD 中创建服务登录帐户或计算机帐户的 AD DS 凭据在加入本地 AD DS 域的设备中安装和执行此模块。
--  使用同步到 Azure AD 的本地 AD DS 凭据运行脚本。 本地 AD DS 凭据必须具有存储帐户所有者或参与者 Azure 角色权限。
+-  使用同步到 Azure AD 的本地 AD DS 凭据运行脚本。 本地 AD DS 凭据必须在存储帐户上具有“所有者”或“参与者”Azure 角色。
 
 ### <a name="run-join-azstorageaccountforauth"></a>运行 Join-AzStorageAccountForAuth
 
@@ -92,13 +100,13 @@ Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -Stor
 Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
 ```
 
-## <a name="option-2-manually-perform-the-enablement-actions"></a>选项 2：手动执行启用操作
+## <a name="option-two-manually-perform-the-enablement-actions"></a>选项 2：手动执行启用操作
 
 如果你在前面已成功执行 `Join-AzStorageAccountForAuth` 脚本，请转到[确认已启用此功能](#confirm-the-feature-is-enabled)部分。 不需要执行以下手动步骤。
 
 ### <a name="checking-environment"></a>检查环境
 
-首先，必须检查你的环境状态。 具体来说，必须检查是否安装了 [Active Directory PowerShell](/powershell/module/activedirectory/)，以及是否正在以管理员权限执行 shell。 然后查看是否已安装 [Az.Storage 2.0 module](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果未安装，请立即安装。 完成这些检查后，请检查 AD DS，查看是否有一个已使用 SPN/UPN 创建为“cifs/your-storage-account-name-here.file.core.windows.net”的[计算机帐户](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认）或[服务登录帐户](/windows/win32/ad/about-service-logon-accounts)。 如果帐户不存在，请按照下一节的说明创建一个帐户。
+首先，必须检查你的环境状态。 具体来说，必须检查是否安装了 [Active Directory PowerShell](/powershell/module/activedirectory/)，以及是否正在以管理员权限执行 shell。 然后查看是否已安装 [Az.Storage 2.0 模块（或更新版本）](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果未安装，请立即安装。 完成这些检查后，请检查 AD DS，查看是否有一个已使用 SPN/UPN 创建为“cifs/your-storage-account-name-here.file.core.windows.net”的[计算机帐户](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认）或[服务登录帐户](/windows/win32/ad/about-service-logon-accounts)。 如果帐户不存在，请按照下一节的说明创建一个帐户。
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>在 AD 中手动创建可代表存储帐户的标识
 

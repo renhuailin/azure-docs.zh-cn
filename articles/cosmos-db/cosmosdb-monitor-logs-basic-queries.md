@@ -8,20 +8,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/12/2021
 ms.author: esarroyo
-ms.openlocfilehash: 51ab68d77e6d5f7e69701b7bc36eaf58f51bf48d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9f863760130b0748405cb30d4257864482b679f0
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966368"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123106234"
 ---
 # <a name="troubleshoot-issues-with-diagnostics-queries"></a>使用诊断查询排查问题
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 本文介绍如何使用发送到 AzureDiagnostics（旧版）和特定于资源（预览版）的表的诊断日志编写简单的查询，以帮助排查 Azure Cosmos DB 帐户的问题 。
 
-对于 Azure 诊断表，所有数据都写入一个表中，用户需要指定要查询的类别。
+就 Azure 诊断表来说，所有数据都写入到一个表中，用户需要指定要查询的类别。
 
-对于特定于资源的表（当前为 SQL API 预览版），数据被写入每个资源类别的单个表中。 我们推荐这种模式，因为它可以更轻松地处理数据，提供更好的架构可发现性，并同时缩短引入延迟和查询时间。
+对于特定于资源的表，数据将写入每个资源类别的各个表中（不适用于表 API）。 我们推荐这种模式，因为它可以更轻松地处理数据，提供更好的架构可发现性，并同时缩短引入延迟和查询时间。
 
 ## <a name="azurediagnostics-queries"></a><a id="azure-diagnostics-queries"></a> AzureDiagnostics 查询
 
@@ -328,7 +329,7 @@ ms.locfileid: "111966368"
    | summarize by OperationName 
    ```
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤 
 * 有关如何为 Cosmos DB 创建诊断设置的详细信息，请参阅[创建诊断设置](cosmosdb-monitor-resource-logs.md)一文。
 
-* 若要详细了解如何通过使用 Azure 门户、CLI 或 PowerShell 来创建诊断设置，请参阅[创建诊断设置以在 Azure 中收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)一文。
+* 若要详细了解如何使用 Azure 门户、CLI 或 PowerShell 创建诊断设置，请参阅[创建诊断设置以在 Azure 中收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)一文。

@@ -2,21 +2,22 @@
 title: 使用 Microsoft Cloud App Security 实现应用可见性和控制
 description: 了解如何识别应用风险级别、实时阻止违规和透露，以及使用应用连接器通过提供程序 API 来实现可见性和监管。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/03/2020
-ms.author: mtillman
+ms.date: 07/29/2021
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb26310861df38ba743bf39c42344278da288ef3
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.reviewer: bokacevi, dacurwin
+ms.openlocfilehash: ffc4a35aef2304a650f5673a26f0e4fd532e23be
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078053"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738854"
 ---
 # <a name="cloud-app-visibility-and-control"></a>云应用可见性和控制
 
@@ -33,33 +34,35 @@ ms.locfileid: "112078053"
 - 管理应用
 - 高级影子 IT 发现报告
 - 控制批准的应用
- 
+
 ### <a name="learn-more"></a>了解详细信息
 
 - [发现和管理网络中的影子 IT](/cloud-app-security/tutorial-shadow-it)
 - [使用 Cloud App Security 发现的应用](/cloud-app-security/discovered-apps)
- 
-## <a name="user-session-visibility-and-control"></a>用户会话可见性和控制 
 
-在当今的工作区中，知道云环境中幕后发生的情况往往并不足够。 需要实时阻止违规和信息透露，避免员工有意或无意中使数据和组织面临风险。 Microsoft Cloud App Security 与 Azure Active Directory (Azure AD) 相结合，可以在一体式的集成体验中通过条件访问应用控制提供这些功能。 
+## <a name="user-session-visibility-and-control"></a>用户会话可见性和控制
+
+在当今的工作区中，知道云环境中幕后发生的情况往往并不足够。 需要实时阻止违规和信息透露，避免员工有意或无意中使数据和组织面临风险。 Microsoft Cloud App Security 与 Azure Active Directory (Azure AD) 相结合，可以在一体式的集成体验中通过条件访问应用控制提供这些功能。
 
 会话控制使用反向代理体系结构，并以独特的方式与 Azure AD 条件访问相集成。 使用 Azure AD 条件访问可以根据某些条件在组织的应用中强制实施访问控制。 条件定义了要向谁（用户或用户组）、什么（哪些云应用）和哪里（哪些位置和网络）应用条件访问策略。 确定条件后，可将用户路由到 Cloud App Security，在其中可以实时保护数据。  
 
-通过这种控制，可以：  
+通过这种控制，可以：
+
 - 控制文件下载
 - 监视 B2B 方案  
 - 控制对文件的访问  
 - 下载时保护文档  
- 
+
 ### <a name="learn-more"></a>了解详细信息
 
 - [在 Cloud App Security 中使用会话控制保护应用](/cloud-app-security/proxy-intro-aad)
- 
-## <a name="advanced-app-visibility-and-controls"></a>高级应用可见性和控制 
 
-应用连接器使用应用提供商的 API 通过 Microsoft Cloud App Security 对连接到的应用实现更高的可见性和控制力度。 Cloud App Security 利用云提供商提供的 API。 每个服务具有自身的框架和 API 限制，例如带宽限制、API 限制、动态时移 API 窗口，等等。 Cloud App Security 产品团队已通过这些服务优化 API 的使用并提供最佳性能。 考虑到服务对其 API 施加的不同限制，Cloud App Security 引擎将使用允许的最大容量。 某些操作（例如，扫描租户中的所有文件）需要大量的 API 调用，因此它们的执行阶段分散在更长的时段。 某些策略预期需要运行几个小时甚至几天。 
- 
-### <a name="learn-more"></a>了解详细信息  
+## <a name="advanced-app-visibility-and-controls"></a>高级应用可见性和控制
+
+应用连接器使用应用提供商的 API 通过 Microsoft Cloud App Security 对连接到的应用实现更高的可见性和控制力度。
+Cloud App Security 利用云提供商提供的 API。 每个服务具有自身的框架和 API 限制，例如带宽限制、API 限制、动态时移 API 窗口，等等。 Cloud App Security 产品团队已通过这些服务优化 API 的使用并提供最佳性能。 考虑到服务对其 API 施加的不同限制，Cloud App Security 引擎将使用允许的最大容量。 某些操作（例如，扫描租户中的所有文件）需要大量的 API 调用，因此它们的执行阶段分散在更长的时段。 某些策略预期需要运行几个小时甚至几天。
+
+### <a name="learn-more"></a>了解详细信息
 
 - [在 Cloud App Security 中连接应用](/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 

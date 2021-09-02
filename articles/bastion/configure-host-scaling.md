@@ -6,14 +6,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 07/13/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9b9315705896dcec4e7a3baa2ad962ca04036a48
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: d5087994a72b52ce091dac98987b8e0bc60e287e
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113732074"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224741"
 ---
 # <a name="configure-host-scaling-preview"></a>配置主机缩放（预览版）
 
@@ -21,8 +21,7 @@ ms.locfileid: "113732074"
 
 ## <a name="configuration-steps"></a>配置步骤
 
-[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
-
+1. 登录 [Azure 门户](https://ms.portal.azure.com)。
 1. 在 Azure 门户中，导航到你的 Bastion 主机。
 1. 主机缩放实例计数需要标准层。 在“配置”页上，验证“层”中为“标准”层  。 如果为“基本”层，请从下拉列表中选择“标准”。 
 

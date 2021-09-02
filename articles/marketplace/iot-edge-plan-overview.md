@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: aarathin
 ms.author: aarathin
-ms.date: 05/21/2021
-ms.openlocfilehash: 65284852a0e52c79339e31a54b829d63bb78adbf
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/08/2021
+ms.openlocfilehash: 238be0168be689b9bfa179a4e13e08c2c427b8a2
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955634"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113598056"
 ---
 # <a name="create-and-edit-plans-for-an-iot-edge-module-offer"></a>为 IoT Edge 模块产品/服务创建和编辑计划
 

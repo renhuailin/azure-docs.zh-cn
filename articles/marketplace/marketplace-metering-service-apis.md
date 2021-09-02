@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2a95821b615c934a2bf22f52406f2c257b9be91b
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 8a8f6052ba2ce66e22208972fa84b7af1f48dd3e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542159"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739104"
 ---
 # <a name="marketplace-metered-billing-apis"></a>市场按流量计费 API
 
@@ -255,6 +255,7 @@ ms.locfileid: "111542159"
 | `Error` | 错误代码。 |
 | `ResourceNotFound` | 提供的使用资源无效。 |
 | `ResourceNotAuthorized` | 你无权提供此资源的使用情况。 |
+| `ResourceNotActive` | 资源已挂起或从未激活。 |
 | `InvalidDimension` | 用于传递使用情况的维度对于此产品/服务或计划无效。 |
 | `InvalidQuantity` | 传递的数量小于或等于 0。 |
 | `BadArgument` | 缺少输入，或输入格式不正确。 |
@@ -277,4 +278,4 @@ ms.locfileid: "111542159"
 
 ## <a name="next-steps"></a>后续步骤
 
-要详细了解计量服务 API，请参阅[市场计量服务 API 常见问题解答](marketplace-metering-service-apis-faq.md)。
+要详细了解计量服务 API，请参阅[市场计量服务 API 常见问题解答](marketplace-metering-service-apis-faq.yml)。
