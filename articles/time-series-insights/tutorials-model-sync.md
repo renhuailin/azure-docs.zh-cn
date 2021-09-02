@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/19/2021
 ms.custom: dpalled
-ms.openlocfilehash: 5e8e5367daa532fa0cc36a18cd28b382e7cd8f78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e7c38001578caa5e23b6c0458f70171d8dcf630
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98682896"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113564493"
 ---
 # <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure 数字孪生与时序见解第 2 代之间的模型同步
 
@@ -31,7 +31,7 @@ ms.locfileid: "98682896"
 
 时序见解中的数据情景化（大部分本质上为空间）通过资产层次结构实现，且使用同一方法通过时序见解资源管理器的树状视图对数据轻松导航。 时序类型和层次结构使用时序见解中的时序模型 (TSM) 定义。 TSM 中的类型有助于定义变量，而层次结构级别和实例字段值用于在时序见解资源管理器中构造树状视图。 有关 TSM 的详细信息，请参阅[联机时序见解文档](./concepts-model-overview.md)。
 
-在 Azure 数字孪生中，资产间的连接使用孪生关系表示。 孪生关系只是连接的资产关系图。 但在时序见解中，资产之间的关系在本质上是分层的。 也就是说，资产共享父子类型 OD 关系，使用树状结构表示。 若要将关系信息从 Azure 数字孪生转换为时序见解层次结构，需要从 Azure 数字孪生中选择相关层次结构关系。 Azure 数字孪生使用开放标准建模语言：数字孪生定义语言 (DTDL)。 在 DTDL 中，模型使用名为 JSON-LD 的 JSON 变体进行描述。 有关规范的完整详细信息，请参阅 [DTDL 文档](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
+在 Azure 数字孪生中，资产间的连接使用孪生关系表示。 孪生关系只是连接的资产关系图。 但在时序见解中，资产之间的关系在本质上是分层的。 也就是说，资产共享父子类型关系，使用树状结构表示。 若要将关系信息从 Azure 数字孪生转换为时序见解层次结构，需要从 Azure 数字孪生中选择相关层次结构关系。 Azure 数字孪生使用开放标准建模语言：数字孪生定义语言 (DTDL)。 在 DTDL 中，模型使用名为 JSON-LD 的 JSON 变体进行描述。 有关规范的完整详细信息，请参阅 [DTDL 文档](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
 
 [![资产间的连接](media/tutorials-model-sync/asset-connection.png)](media/tutorials-model-sync/asset-connection.png#lightbox)
 

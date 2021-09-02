@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: aahi
-ms.openlocfilehash: 36f05d2803d4ac347ef9dc8bf8e840e3f4a63cac
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e12a4226357160e2269034136a2df9c671b66313
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111761188"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734078"
 ---
 文本分析的 NER 特性返回以下常规（非标识）实体类别。 例如，向 `/entities/recognition/general` 终结点发送请求时。
 
@@ -32,7 +32,7 @@ ms.locfileid: "111761188"
 | [电话号码](#category-phonenumber) | 电话号码。 |
 | [Email](#category-email) | 电子邮件地址。 |
 | [URL](#category-url) | 指向网站的 URL。 |
-| [IP](#category-ip) | 网络 IP 地址。 |
+| [IPAddress](#category-ipaddress) | 网络 IP 地址。 |
 | [DateTime](#category-datetime) | 某天的日期和时间。 |
 | [数量](#category-quantity) | 数值度量和单位。 |
 
@@ -515,7 +515,7 @@ ms.locfileid: "111761188"
    :::column-end:::
 :::row-end:::
 
-### <a name="category-ip"></a>类别：IP
+### <a name="category-ipaddress"></a>类别：IPAddress
 
 此类别包含以下实体：
 
@@ -523,7 +523,7 @@ ms.locfileid: "111761188"
     :::column span="":::
         **实体**
 
-        IP
+        IPAddress
 
     :::column-end:::
     :::column span="2":::

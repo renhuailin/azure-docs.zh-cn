@@ -1,76 +1,119 @@
 ---
-title: 启用不允许的 H 系列和 N 系列 Azure 虚拟机的配置和优化
-description: 了解如何配置和优化启用了 "不支持" 的 H 系列和 N 系列虚拟机。
+title: 启用了 InfiniBand 的 H 系列和 N 系列 Azure 虚拟机的配置和优化
+description: 了解如何针对 HPC 配置和优化启用了 InfiniBand 的 H 系列和 N 系列 VM。
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 10/23/2020
+ms.date: 06/02/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 94334e54865b3a3b603cbd0b3943899a375d894e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 0ef3b00fe3ae68ddecc7ab93ee612e0698329c43
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675655"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460481"
 ---
 # <a name="configure-and-optimize-vms"></a>配置和优化 VM
 
-本文介绍了如何配置和优化已启用未支持的 [H 系列的 H 系列](../../sizes-hpc.md) 和 [N 系列](../../sizes-gpu.md) vm，并对其进行了优化。
+本文分享了有关如何针对 HPC 配置和优化启用了 InfiniBand 的 [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md) VM 的指导。
 
 ## <a name="vm-images"></a>VM 映像
-在启用了支持的 Vm 上，启用 RDMA 需要相应的驱动程序。 在 Linux 上，Marketplace 中的 CentOS-HPC VM 映像已预先配置了适当的驱动程序。 可以使用 [此处的说明](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用正确的驱动程序配置 Ubuntu VM 映像。 还建议使用适当的驱动程序和配置创建 [自定义 VM 映像](../../linux/tutorial-custom-images.md) ，并重复使用这些 recurringly。
+在启用了 InfiniBand (IB) 的 VM 上，需要安装适当的驱动程序才能启用 RDMA。
+- Azure 市场中的 [CentOS-HPC VM 映像](#centos-hpc-vm-images)预先配置了适当的 IB 驱动程序。
+  - 另外，CentOS-HPC 版本 7.9 VM 映像还预配置了 Nvidia GPU 驱动程序。 
+- Azure 市场中的 [Ubuntu-HPC VM 映像](#ubuntu-hpc-vm-images)预先配置了适当的 IB 驱动程序和 GPU 驱动程序。
 
-> [!NOTE]
-> 在启用 GPU 的 [N 系列](../../sizes-gpu.md) vm 上，另外还需要提供相应的 GPU 驱动程序，这些驱动程序可以通过 [VM 扩展](../../extensions/hpccompute-gpu-linux.md) 或 [手动](../../linux/n-series-driver-setup.md)添加。 Marketplace 中的某些 VM 映像还随 Nvidia GPU 驱动程序预装。
+这些 VM 映像 (VMI) 基于基础 CentOS 和 Ubuntu 市场 VM 映像。 用于从基础 CentOS 市场映像创建这些 VM 映像的脚本位于 [azhpc-images 存储库](https://github.com/Azure/azhpc-images/tree/master/centos)中。
+
+在启用了 GPU 的 [N 系列](../../sizes-gpu.md) VM 上，需要额外安装适当的 GPU 驱动程序。 可通过以下方法安装这些驱动程序：
+- 使用预先配置了 Nvidia GPU 驱动程序和 GPU 计算软件堆栈（CUDA、NCCL）的 [Ubuntu-HPC VM 映像](#ubuntu-hpc-vm-images)和 [CentOS-HPC VM 映像](#centos-hpc-vm-images)版本 7.9。
+- 通过 [VM 扩展](../../extensions/hpccompute-gpu-linux.md)添加 GPU 驱动程序。
+- [手动](../../linux/n-series-driver-setup.md)安装 GPU 驱动程序。
+- Azure 市场中的其他一些 VM 映像也预装了 Nvidia GPU 驱动程序，包括来自 Nvidia 的一些 VM 映像。
+
+根据工作负载的 Linux 发行版和版本需求，可以十分方便地通过 Azure 市场中的 [CentOS-HPC VM 映像](#centos-hpc-vm-images)和 [Ubuntu-HPC VM 映像](#ubuntu-hpc-vm-images)在 Azure 上开始使用 HPC 和 AI 工作负载。
+此外，建议使用特定于工作负载的自定义和配置创建[自定义 VM 映像](../../linux/tutorial-custom-images.md)，并重复使用这些映像。
+
+### <a name="vm-sizes-supported-by-the-hpc-vm-images"></a>HPC VM 映像支持的 VM 大小
+
+#### <a name="infiniband-ofed-support"></a>InfiniBand OFED 支持
+最新的 Azure HPC 市场映像随附 Mellanox OFED 5.1 和更高版本，它们不支持 ConnectX3-Pro InfiniBand 卡。 这些 VM 映像仅支持 ConnextX-5 和更高版本的 InfiniBand 卡。 这意味着，这些 HPC VM 映像中 InfiniBand OFED 的 VM 大小支持矩阵如下：
+- [H 系列](../../sizes-hpc.md)：HB、HC、HBv2、HBv3
+- [N 系列](../../sizes-gpu.md)：NDv2、NDv4
+
+#### <a name="gpu-driver-support"></a>GPU 驱动程序支持
+目前只有 [Ubuntu-HPC VM 映像](#ubuntu-hpc-vm-images)和 [CentOS-HPC VM 映像](#centos-hpc-vm-images)版本 7.9 预先配置了 Nvidia GPU 驱动程序和 GPU 计算软件堆栈（CUDA、NCCL）。
+
+受支持 HPC VM 映像中 GPU 驱动程序的 VM 大小支持矩阵如下：
+- [N 系列](../../sizes-gpu.md)：Nvidia GPU 驱动程序和 GPU 计算软件堆栈（CUDA、NCCL）支持 NDv2、NDv4 VM 大小。
+- Nvidia GPU 驱动程序支持 [N 系列](../../sizes-gpu.md)中的其他“NC”和“ND”VM 大小。
+
+另请注意，上述所有 VM 大小都支持“第 2 代”VM，不过，某些早期大小也支持“第 1 代”VM。 VMI URN 或版本的末尾还会以“01”来指示支持“第 2 代”。
 
 ### <a name="centos-hpc-vm-images"></a>CentOS-HPC VM 映像
 
-#### <a name="non-sr-iov-enabled-vms"></a>未启用 SR-IOV 的 Vm
-对于不支持 SR-IOV 的支持 [RDMA 的 vm](../../sizes-hpc.md#rdma-capable-instances)，CentOS 版本6.5 或更高版本，适用于 Marketplace 中的最大为7.5。 例如，对于 [H16 系列 vm](../../h-series.md)，建议使用版本7.1 至7.5。 这些 VM 映像已预先加载到 RDMA 和 Intel MPI 版本5.1 的网络直接驱动程序中。
+#### <a name="sr-iov-enabled-vms"></a>启用了 SR-IOV 的 VM
+对于启用了 SR-IOV 的[支持 RDMA 的 VM](../../sizes-hpc.md#rdma-capable-instances)，适合使用 CentOS-HPC VM 映像版本 7.6 和更高版本。 这些 VM 映像已经过优化，并预先加载了用于 RDMA 的 Mellanox OFED 驱动程序以及各种常用的 MPI 库和科学计算包。 请参阅上面的 [VM 大小支持矩阵](#vm-sizes-supported-by-the-hpc-vm-images)。
+- 可以使用 [CLI](/cli/azure/vm/image#az_vm_image_list) 或 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview)将 VM 映像的可用版本或最新版本随以下信息一起列出。
+   ```bash
+   "publisher": "OpenLogic",
+   "offer": "CentOS-HPC",
+   ```
+- 从基础 CentOS 市场映像创建 CentOS-HPC 7.6 版本及更高版本的 VM 映像时所用的脚本位于 [azhpc-images 存储库](https://github.com/Azure/azhpc-images/tree/master/centos)中。
+- 此外，此 [TechCommunity 文章](https://techcommunity.microsoft.com/t5/azure-compute/azure-hpc-vm-images/ba-p/977094)中详细介绍了 CentOS-HPC 版本 7.6 和更高版本的 VM 映像中包含的内容，以及如何部署这些映像。
+
+> [!NOTE] 
+> 在 CentOS-HPC VM 映像中，目前仅版本 7.9 VM 映像额外预配置了 Nvidia GPU 驱动程序和 GPU 计算软件堆栈（CUDA、NCCL）。
+
+> [!NOTE] 
+> 采用 FDR InfiniBand 的启用了 SR-IOV 的 N 系列 VM 大小（例如 NCv3 及更低版本）将能够使用市场中的以下 CentOS-HPC VM 映像或更低版本：
+>- OpenLogic:CentOS-HPC:7.6:7.6.2020062900
+>- OpenLogic:CentOS-HPC:7_6gen2:7.6.2020062901
+>- OpenLogic:CentOS-HPC:7.7:7.7.2020062600
+>- OpenLogic:CentOS-HPC:7_7-gen2:7.7.2020062601
+>- OpenLogic:CentOS-HPC:8_1:8.1.2020062400
+>- OpenLogic:CentOS-HPC:8_1-gen2:8.1.2020062401
+
+#### <a name="non-sr-iov-enabled-vms"></a>未启用 SR-IOV 的 VM
+对于未启用 SR-IOV 的[支持 RDMA 的 VM](../../sizes-hpc.md#rdma-capable-instances)，适合使用 CentOS-HPC 6.5 版本或更高版本（市场中的最高版本为 7.4）。 例如，对于 [H16 系列 VM](../../h-series.md)，建议使用 7.1-7.4 版本。 这些 VM 映像预先加载了用于 RDMA 和 Intel MPI 5.1 版本的 Network Direct 驱动程序。
 
 > [!NOTE]
-> 对于启用了非 SR-IOV 的虚拟机的这些基于 CentOS 的 HPC 映像，将在 **yum** 配置文件中禁用内核更新。 这是因为 NetworkDirect Linux RDMA 驱动程序以 RPM 包的形式分发，如果更新了内核，驱动程序更新可能不起作用。
+> 在这些基于 CentOS 的 HPC 映像（适用于未启用 SR-IOV 的 VM）中，内核更新已在 yum 配置文件中禁用。 这是因为 NetworkDirect Linux RDMA 驱动程序以 RPM 包的形式分发，如果更新了内核，驱动程序更新可能无法正常工作。
 
-#### <a name="sr-iov-enabled-vms"></a>启用 SR-IOV 的 Vm
-  对于启用了 SR-IOV 的支持 [RDMA 的 vm](../../sizes-hpc.md#rdma-capable-instances)，适用于 Marketplace 中的 [CentOS 版本7.6 或更高](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) 版本 VM 映像。 这些 VM 映像经过优化，并预先加载了 RDMA 的 OFED 驱动程序和各种常用的 MPI 库和科学计算包，并且是开始使用的最简单的方法。
-
-  在 [azhpc](https://github.com/Azure/azhpc-images/tree/master/centos)存储库中创建 CENTOS-HPC 7.6 版和更高版本的 VM 映像时使用的脚本示例。
-  
-  > [!NOTE] 
-  > 最新的 Azure HPC marketplace 映像具有 OFED 5.1 及更高版本，不支持 ConnectX3-Pro 的智能卡。 SR-IOV 启用了具有 FDR 的 N 系列 VM 大小 (例如，NCv3) 将能够使用以下 CentOS HPC VM 映像版本或更早版本：
-  >- OpenLogic:CentOS-HPC:7.6:7.6.2020062900
-  >- OpenLogic:CentOS-HPC:7_6gen2:7.6.2020062901
-  >- OpenLogic:CentOS-HPC:7.7:7.7.2020062600
-  >- OpenLogic:CentOS-HPC:7_7-gen2:7.7.2020062601
-  >- OpenLogic:CentOS-HPC:8_1:8.1.2020062400
-  >- OpenLogic:CentOS-HPC:8_1-gen2:8.1.2020062401
-
+### <a name="ubuntu-hpc-vm-images"></a>Ubuntu-HPC VM 映像
+对于启用了 SR-IOV 的[支持 RDMA 的 VM](../../sizes-hpc.md#rdma-capable-instances)，适合使用 Ubuntu-HPC VM 映像版本 18.04 和 20.04。 这些 VM 映像已经过优化，并预先加载了用于 RDMA 的 Mellanox OFED 驱动程序、Nvidia GPU 驱动程序、GPU 计算软件堆栈（CUDA、NCCL），以及各种常用的 MPI 库和科学计算包。 请参阅上面的 [VM 大小支持矩阵](#vm-sizes-supported-by-the-hpc-vm-images)。
+- 可以使用 [CLI](/cli/azure/vm/image#az_vm_image_list) 或 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-hpc?tab=overview)将 VM 映像的可用版本或最新版本随以下信息一起列出。
+   ```bash
+   "publisher": "Microsoft-DSVM",
+   "offer": "Ubuntu-HPC",
+   ```
+- 用于从基础 Ubuntu 市场映像创建 Ubuntu-HPC VM 映像的脚本位于 [azhpc-images 存储库](https://github.com/Azure/azhpc-images/tree/master/ubuntu)中。
+- 此外，此 [TechCommunity 文章](https://techcommunity.microsoft.com/t5/azure-compute/azure-hpc-vm-images/ba-p/977094)中详细介绍了 Ubuntu-HPC VM 映像中包含的内容，以及如何部署这些映像。
 
 ### <a name="rhelcentos-vm-images"></a>RHEL/CentOS VM 映像
-可以配置 Marketplace 上基于 RHEL 或 CentOS 的非 HPC VM 映像，以便在支持支持 [RDMA 的虚拟机](../../sizes-hpc.md#rdma-capable-instances)上使用。 详细了解如何在 Vm 上 [启用无限](enable-infiniband.md) 和 [设置 MPI](setup-mpi.md) 。
-
-  在 [azhpc](https://github.com/Azure/azhpc-images/tree/master/centos)存储库中创建 CENTOS-HPC 7.6 版和更高版本的 VM 映像时使用的脚本示例。
-  
-  > [!NOTE]
-  > Mellanox OFED 5.1 及更高版本不 ConnectX3-Pro 支持在启用了 SR-IOV 的 N 系列 VM 大小的 N 系列 VM 大小 (NCv3) 的。 请在 N 系列 VM 的 ConnectX3-Pro 卡上使用 LTS Mellanox OFED 版本 4.9-0.1.7.0 或更低版本。 请 [在此处](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)查看更多详细信息。
-
+可以对 Azure 市场中基于基础 RHEL 或 CentOS 的非 HPC VM 映像进行配置，以便在启用了 SR-IOV 的[支持 RDMA 的 VM](../../sizes-hpc.md#rdma-capable-instances) 上使用。 详细了解如何在 VM 上[启用 InfiniBand](enable-infiniband.md) 和[设置 MPI](setup-mpi.md)。
+- 也可使用 [azhpc-images 存储库](https://github.com/Azure/azhpc-images/tree/master/centos)中用于从基础 CentOS 市场映像创建 CentOS-HPC 7.6 版本及更高版本的 VM 映像的脚本。
+ 
 ### <a name="ubuntu-vm-images"></a>Ubuntu VM 映像
-支持在 Marketplace 中推出的 Ubuntu Server 16.04 LTS、18.04 LTS 和 20.04 LTS VM 映像，适用于 SR-IOV 和非 SR-IOV RDMA 支持的 [vm](../../sizes-hpc.md#rdma-capable-instances)。 详细了解如何在 Vm 上 [启用无限](enable-infiniband.md) 和 [设置 MPI](setup-mpi.md) 。
+启用和未启用 SR-IOV 的[支持 RDMA 的 VM](../../sizes-hpc.md#rdma-capable-instances) 都支持 Azure 市场中的基础 Ubuntu Server 16.04 LTS、18.04 LTS 和 20.04 LTS VM 映像。 详细了解如何在 VM 上[启用 InfiniBand](enable-infiniband.md) 和[设置 MPI](setup-mpi.md)。
+- [TechCommunity 一文](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)提供有关如何在 Ubuntu VM 映像中启用 InfiniBand 的说明。
+- 从基础 Ubuntu 市场映像创建基于 Ubuntu 18.04 和 20.04 LTS 的 HPC VM 映像时所用的脚本位于 [azhpc-images 存储库](https://github.com/Azure/azhpc-images/tree/master/ubuntu)中。
 
-  在 [azhpc](https://github.com/Azure/azhpc-images/tree/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc)存储库中，可用于创建基于 UBUNTU 18.04 LTS 的 HPC VM 映像的脚本示例。
+> [!NOTE]
+> Mellanox OFED 5.1 及更高版本在采用 FDR InfiniBand 的启用了 SR-IOV 的 N 系列 VM 大小（例如 NCv3）中不支持 ConnectX3-Pro InfiniBand 卡。 请在带有 ConnectX3-Pro 卡的 N 系列 VM 上使用 LTS Mellanox OFED 4.9-0.1.7.0 版本或更低版本。 有关详细信息，请参阅 [Linux InfiniBand 驱动程序](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)。
 
 ### <a name="suse-linux-enterprise-server-vm-images"></a>SUSE Linux Enterprise Server VM 映像
-SLES 12 SP3 for HPC、SLES 12 SP3 for hpc (Premium) 、SLES 12 SP1 for HPC、SLES 12 SP1 for HPC (Premium) 、SLES 12 SP4 以及 Marketplace 中的 SLES 15 VM 映像均受支持。 这些 VM 映像已预先加载到 RDMA 和 Intel MPI 版本5.1 的网络直接驱动程序中。 了解有关在 Vm 上 [设置 MPI](setup-mpi.md) 的详细信息。
+支持市场中的 SLES 12 SP3 for HPC、SLES 12 SP3 for HPC（高级版）、SLES 12 SP1 for HPC、SLES 12 SP1 for HPC（高级版）、SLES 12 SP4 和 SLES 15 VM 映像。 这些 VM 映像预先加载了用于 RDMA 的 Network Direct 驱动程序（适用于非 SR-IOV VM 大小）和 Intel MPI 版本 5.1。 详细了解如何在 VM 上[设置 MPI](setup-mpi.md)。
 
-## <a name="optimize-vms"></a>优化 Vm
+## <a name="optimize-vms"></a>优化 VM
 
-下面是一些可选的优化设置，可提高 VM 的性能。
+下面是一些可选的优化设置，可用于改进 VM 的性能。
 
-### <a name="update-lis"></a>更新 .LIS
+### <a name="update-lis"></a>更新 LIS
 
-如果功能或性能需要， [Linux Integration Services (.lis) 驱动程序](../../linux/endorsed-distros.md) 可以在受支持的 OS 发行版上安装或更新，尤其是使用自定义映像或更早版本的 CENTOS/RHEL 1.x 或早期版本的来部署。
+如果出于功能或性能考虑必需更新 LIS，可在支持的 OS 发行版上安装或更新 [Linux Integration Services (LIS) 驱动程序](../../linux/endorsed-distros.md)，特别是使用自定义映像或较低的 OS 版本（如 CentOS/RHEL 6.x 或较低的 7.x 版本）部署时。
 
 ```bash
 wget https://aka.ms/lis
@@ -81,13 +124,13 @@ pushd LISISO
 
 ### <a name="reclaim-memory"></a>回收内存
 
-通过自动回收内存来提高性能，以避免远程内存访问。
+通过自动回收内存避免远程内存访问，从而提高性能。
 
 ```bash
 echo 1 >/proc/sys/vm/zone_reclaim_mode
 ```
 
-要使其在 VM 重新启动后保持不变：
+在 VM 重启后保持回收模式：
 
 ```bash
 echo "vm.zone_reclaim_mode = 1" >> /etc/sysctl.conf sysctl -p
@@ -119,13 +162,13 @@ sudo systemctl disable cpupower
 ```bash
 sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
 ```
-（可选）可以将 WALinuxAgent 作为预作业步骤禁用，并将其恢复后作业，以便将最大 VM 资源可用性恢复到 HPC 工作负荷。
+（可选）请在作业前禁用 WALinuxAgent，然后在作业后重新将其启用，为 HPC 工作负载最大限度提高 VM 资源的可用性。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何对启用了未支持的[H 系列](../../sizes-hpc.md)和[N 系列](../../sizes-gpu.md)vm[启用允许](enable-infiniband.md)。
-- 详细了解如何在 Vm 上安装各种 [受支持的 MPI 库](setup-mpi.md) 及其最佳配置。
-- 查看 [HB 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)，以了解如何对工作负载进行优化配置以提高性能和可伸缩性。
-- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告以及一些 HPC 示例和结果。
+- 详细了解如何在启用了 InfiniBand 的 [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md) VM 上[启用 InfiniBand](enable-infiniband.md)。
+- 详细了解如何在 VM 上安装和运行各种[受支持的 MPI 库](setup-mpi.md)。
+- 查看 [HBv3 系列概述](hbv3-series-overview.md)和 [HC 系列概述](hc-series-overview.md)。
+- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
 - 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

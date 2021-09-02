@@ -1,26 +1,26 @@
 ---
-title: 存档层中的 Blob 解除冻结概述
+title: 从存档层中解除冻结 Blob 的概述
 description: 当 Blob 位于存档访问层时，它被视为处于脱机状态，并且无法读取或修改。 若要读取或修改存档 Blob 中的数据，必须先将 Blob 解除冻结到联机层，即热存储层或冷存储层。
 services: storage
 author: tamram
 ms.author: tamram
-ms.date: 08/11/2021
+ms.date: 08/24/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: 916e51a78cdaef96517ac5b17ba11000367756ad
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 33f29c44e32f1deed0c21e3695e61457a31c7f65
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206115"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829674"
 ---
-# <a name="overview-of-blob-rehydration-from-the-archive-tier"></a>存档层中的 Blob 解除冻结概述
+# <a name="overview-of-blob-rehydration-from-the-archive-tier"></a>从存档层中解除冻结 Blob 的概述
 
 当 Blob 位于存档访问层时，它被视为处于脱机状态，并且无法读取或修改。 若要读取或修改存档 Blob 中的数据，必须先将 Blob 解除冻结到联机层，即热存储层或冷存储层。 提供两个选项解除冻结存储在存档层中的 Blob：
 
-- [将存档的 Blob 复制到联机层](#copy-an-archived-blob-to-an-online-tier)：可以使用[复制 Blob](/rest/api/storageservices/copy-blob) 或[从 URL 复制 Blob](/rest/api/storageservices/copy-blob-from-url) 操作将存档的 Blob 复制到热或冷存储层中的新 Blob，从而解除冻结存档的 Blob。 Microsoft 建议在大多数方案中使用此选项。
+- [将存档的 Blob 复制到联机层](#copy-an-archived-blob-to-an-online-tier)：可以使用[复制 Blob](/rest/api/storageservices/copy-blob) 或[从 URL 复制 Blob](/rest/api/storageservices/copy-blob-from-url) 操作将存档的 Blob 复制到热或冷存储层中的新 Blob，从而解除冻结存档的 Blob。 Microsoft 建议在大多数情况下使用此种方式。
 
 - [将 Blob 的访问层更改为联机层](#change-a-blobs-access-tier-to-an-online-tier)：可以使用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作来更改 Blob 的访问层，从而将存档的 Blob 解除冻结到热或冷存储层。
 
@@ -88,7 +88,7 @@ ms.locfileid: "122206115"
 
 在 Blob 解除冻结操作期间，可以调用[获取 Blob 属性](/rest/api/storageservices/get-blob-properties)操作来检查其状态。 若要了解如何检查解除冻结操作的状态，请参阅[检查解除冻结操作的状态](archive-rehydrate-to-online-tier.md#check-the-status-of-a-rehydration-operation)。
 
-## <a name="handle-an-event-on-blob-rehydration"></a>处理 Blob 解除冻结事件
+## <a name="handle-an-event-on-blob-rehydration"></a>处理 blob 解除冻结事件
 
 解除冻结存档的 Blob 最多可能需要 15 小时，若反复轮询 **获取 Blob 属性** 来确定解除冻结是否完成，效率很低。 使用 [Azure 事件网格](../../event-grid/overview.md)捕获在解除冻结完成时触发的事件，能够提高性能并优化成本。
 
@@ -113,7 +113,7 @@ Azure 事件网格引发以下两个 Blob 解除冻结事件之一，具体取�
 
 ## <a name="see-also"></a>另请参阅
 
-- [Azure Blob 存储：热、冷以及存档访问层](storage-blob-storage-tiers.md)。
+- [Azure Blob 存储：热访问层、冷访问层和存档访问层](storage-blob-storage-tiers.md)。
 - [将存档的 Blob 解冻到联机层](archive-rehydrate-to-online-tier.md)
 - [运行 Azure 函数以响应 Blob 解除冻结事件](archive-rehydrate-handle-event.md)
 - [响应 Blob 存储事件](storage-blob-event-overview.md)

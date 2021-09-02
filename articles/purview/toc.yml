@@ -239,19 +239,19 @@ items:
         items:
           - name: 专用终结点
             items:
-              - name: Azure Purview 专用终结点概述
+              - name: 专用终结点概述
                 href: catalog-private-link.md
-              - name: 私密且安全地连接到你的 Purview 帐户
+              - name: 隔离用于 Purview 帐户和门户的网络
                 href: catalog-private-link-account-portal.md
-              - name: 私密且安全地扫描数据源
+              - name: 隔离网络以进行扫描
                 href: catalog-private-link-ingestion.md
-              - name: 私密且安全地连接到你的 Azure Purview 并扫描数据源
+              - name: 端到端网络隔离
                 href: catalog-private-link-end-to-end.md
-              - name: Azure Purview 专用终结点 DNS 配置
+              - name: 为专用终结点配置 DNS
                 href: catalog-private-link-name-resolution.md
-              - name: Azure Purview 专用终结点故障排除指南
+              - name: 对专用终结点进行故障排除
                 href: catalog-private-link-troubleshoot.md
-              - name: Azure Purview 专用终结点常见问题解答
+              - name: 专用终结点常见问题解答
                 href: catalog-private-link-faqs.md
           - name: Azure 策略异常
             href: create-purview-portal-faq.md

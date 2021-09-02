@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/20/2021
-ms.openlocfilehash: ccb3c715cf598a72eff490d4a177063898110c69
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 155b8deb614aa2c2a85ce9b81625e3d6972ff09b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820079"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566221"
 ---
 # <a name="configure-dynamics-365-for-customer-engagement--power-apps-offer-properties"></a>配置 Dynamics 365 for Customer Engagement 和 Power Apps 产品/服务属性
 
@@ -26,13 +26,13 @@ ms.locfileid: "107820079"
 - 若要添加第二个可选类别（辅助），请选择“+ 类别”链接。
 - 主类别和/或辅助类别下最多可选择两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择“不适用”。 按住 Ctrl 并单击可选择另一个子类别。
 
-请在[产品/服务列表最佳做法](gtm-offer-listing-best-practices.md)中查看类别和子类别的完整列表。
+请参阅[产品/服务列表最佳做法](gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
 ## <a name="industries"></a>行业
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
-选择此产品/服务适用的 Dynamics 365 产品。
+选择应用于产品/服务的适用产品：客户服务、客户之声、项目操作、现场服务、市场营销、混合现实、Power Apps、Power Automate、Power Virtual Agents、Project Service Automation 和/或销售。 客户可以通过这些选择，根据下面显示的 AppSource Dynamics 365 产品筛选器查找所需的产品/服务。
 
 输入产品/服务的应用版本。 客户将看到产品/服务的详细信息页上列出了此版本号。
 

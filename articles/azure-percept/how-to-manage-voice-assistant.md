@@ -1,20 +1,20 @@
 ---
-title: 在 Azure Percept Studio 中配置语音助理应用程序
+title: 管理 Azure Percept 语音助理应用程序
 description: 在 Azure Percept Studio 中配置语音助理应用程序
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 764ca28ec6e66d63ffeb98399f654b14eb9b6715
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d66ee6e8e277585061448ecc23e4195c72c04bb6
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754282"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225242"
 ---
-# <a name="managing-your-voice-assistant"></a>管理语音助理
+# <a name="manage-your-azure-percept-voice-assistant-application"></a>管理 Azure Percept 语音助理应用程序
 
 本文介绍如何在 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 中配置语音助理应用程序的关键字和命令。 有关在 Azure IoT 中心而不是门户中配置关键字的指导，请参阅本[操作指南文章](./how-to-configure-voice-assistant.md)。
 

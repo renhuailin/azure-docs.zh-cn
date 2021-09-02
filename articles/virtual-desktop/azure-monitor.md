@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a1ce4dcb4f180d952004d592e35bc64c5ba93dfa
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b985ec9e88f4285da326fcf41e19141e61a0dd10
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754576"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113564187"
 ---
 # <a name="use-azure-monitor-for-azure-virtual-desktop-to-monitor-your-deployment"></a>使用 Azure Monitor for Azure Virtual Desktop 监视部署
 
@@ -195,3 +195,4 @@ Microsoft 使用 Azure Monitor 服务自动收集使用情况和性能数据。 
 - 查看[词汇表](azure-monitor-glossary.md)，详细了解与 Azure Monitor for Azure Virtual Desktop 相关的术语和概念。
 - 若要估计、度量和管控数据存储成本，请参阅[估计 Azure Monitor 成本](azure-monitor-costs.md)。
 - 如果遇到问题，请查看[故障排除指南](troubleshoot-azure-monitor.md)，获取帮助并了解已知问题。
+- 若要查看每个版本更新的新增功能，请参阅 [Azure 虚拟桌面 Azure Monitor 的新增功能](whats-new-azure-monitor.md)。

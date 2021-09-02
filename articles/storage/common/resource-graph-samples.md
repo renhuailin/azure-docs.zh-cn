@@ -1,18 +1,18 @@
 ---
 title: 针对 Azure 存储的 Azure Resource Graph 示例查询
 description: 针对 Azure 存储的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与 Azure 存储相关的资源和属性。
-ms.date: 08/09/2021
+ms.date: 08/31/2021
 ms.topic: sample
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 081158350909e7dbf63cb2e6827eca4726331b5a
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: bbe1bf5d4a0896435f9292756af2ff2a55ed673a
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862077"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303158"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-storage"></a>针对 Azure 存储的 Azure Resource Graph 示例查询
 

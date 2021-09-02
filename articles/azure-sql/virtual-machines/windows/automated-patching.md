@@ -16,12 +16,12 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd1d81362534f4de7357ebbbc6877aa7c3f72f2e
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 44dae9d8c8bc5ee3896bfc65340dfeee7679d54e
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113434743"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223177"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure 虚拟机（资源管理器）上 SQL Server 的自动修补
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -110,9 +110,6 @@ $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -Mainte
 s
 Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
-
-> [!IMPORTANT]
-> 如果尚未安装该扩展，安装该扩展将会重新启动 SQL Server。
 
 下表根据此示例描述了对目标 Azure VM 产生的实际效果：
 

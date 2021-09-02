@@ -3,12 +3,12 @@ title: 使用 Azure Policy 在创建 VM 时自动启用备份
 description: 本文介绍如何使用 Azure Policy 为在给定范围内创建的所有 VM 自动启用备份
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: dfa4364eeaa9f5b60af3f5d6a19aaeb188d4f65e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe70ba544bb75cee7faf3a4eb3aa2f5ef440909e
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101707296"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113300603"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>使用 Azure Policy 在创建 VM 时自动启用备份
 
@@ -20,13 +20,13 @@ ms.locfileid: "101707296"
 
 如果你的组织有一个中心备份团队，负责管理跨应用程序团队的备份，则可以使用该策略将备份配置为与受管辖 VM 相同的订阅和位置中的现有中央恢复服务保管库。 你可以选择从该策略的作用域中排除包含特定标记的 VM。
 
-## <a name="policy-2---preview-configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>策略 2 - [预览] 将具有给定标记的 VM 上的备份配置到同一位置的现有恢复服务保管库
+## <a name="policy-2---configure-backup-on-vms-with-a-given-tag-to-an-existing-recovery-services-vault-in-the-same-location"></a>策略 2 - 将具有给定标记的 VM 上的备份配置到同一位置的现有恢复服务保管库
 该策略的工作方式与上面的策略 1 相同，唯一的区别在于，您可以使用该策略将包含特定标记的 VM 包含在该策略的作用域内。 
 
-## <a name="policy-3---preview-configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>策略 3 - [预览] 使用默认策略将不带给定标记的 VM 上的备份配置到新的恢复服务保管库
+## <a name="policy-3---configure-backup-on-vms-without-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>策略 3 - 使用默认策略将不带给定标记的 VM 上的备份配置到新的恢复服务保管库
 如果你通过专用资源组来组织应用程序，并且想要通过同一保管库来备份这些应用程序，则可以使用此策略来自动管理此操作。 你可以选择从该策略的作用域中排除包含特定标记的 VM。
 
-## <a name="policy-4---preview-configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>策略 4：[预览] 使用默认策略将具有给定标记的 VM 上的备份配置到新的恢复服务保管库
+## <a name="policy-4---configure-backup-on-vms-with-a-given-tag-to-a-new-recovery-services-vault-with-a-default-policy"></a>策略 4 - 使用默认策略将具有给定标记的 VM 上的备份配置到新的恢复服务保管库
 该策略的工作方式与上面的策略 3 相同，唯一的区别在于，您可以使用该策略将包含特定标记的 VM 包含在该策略的作用域内。 
 
 除此之外，Azure 备份还提供[“仅审核”](../governance/policy/concepts/effects.md#audit)策略“应为虚拟机启用 Azure 备份”。 该策略只是标识哪些虚拟机未启用备份，但不会为这些 VM 自动配置备份。 如果只是想评估 VM 的总体合规性，但不希望立即采取措施时，该策略非常有用。
@@ -40,8 +40,6 @@ ms.locfileid: "101707296"
 * 对于策略 1 和 2，当前不支持管理组作用域。
 
 * 对于策略 1 和 2，指定的保管库和为备份配置的 VM 可以位于不同的资源组下。
-
-* 策略 1、2、3 和 4 目前在国家云中不可用。
 
 * 可以将策略 3 和 4一次分配到单个订阅（或订阅中的资源组）。
 

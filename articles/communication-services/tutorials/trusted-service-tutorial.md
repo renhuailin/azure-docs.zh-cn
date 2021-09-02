@@ -7,14 +7,14 @@ manager: chpalm
 services: azure-communication-services
 ms.author: dademath
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: tutorial
 ms.service: azure-communication-services
-ms.openlocfilehash: fc1c53a747ca87bcfdac1f742e6235492731e0af
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: a2598d56d74c159c2db00aaa26b9bde04a7d2bcb
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114291355"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258971"
 ---
 # <a name="build-a-trusted-user-access-service-using-azure-functions"></a>使用 Azure Functions 生成受信任的用户访问服务
 

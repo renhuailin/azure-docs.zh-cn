@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/02/2021
+ms.date: 06/25/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom:
 - aaddev
 - identityplatformtop40
 - fasttrack-edit
-ms.openlocfilehash: 920589c3c0582387a83d5f7d85c660f0692a761b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: c1e125127cf4376eb96e267c11e35085a4a27f18
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471272"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458892"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 标识平台 ID 令牌
 
@@ -36,7 +36,7 @@ ms.locfileid: "110471272"
 
 ## <a name="claims-in-an-id-token"></a>ID 令牌中的声明
 
-ID 令牌是 [JSON Web 令牌 (JWT)](https://jwt.io/introduction/)。 这些 ID 令牌由标头、有效负载和签名组成。 可以使用标头和签名来验证令牌的真实性，而有效负载则包含客户端请求的用户信息。 v1.0 和 v2.0 ID 令牌所携带的信息有所不同。 版本基于终结点，从该终结点处其接受请求。 尽管现有应用程序可能使用 Azure AD 终结点 (v1.0)，但新应用程序应使用“Microsoft 标识平台”终结点 (v2.0)。
+ID 令牌是 [JSON Web 令牌 (JWT)](https://wikipedia.org/wiki/JSON_Web_Token)。 这些 ID 令牌由标头、有效负载和签名组成。 可以使用标头和签名来验证令牌的真实性，而有效负载则包含客户端请求的用户信息。 v1.0 和 v2.0 ID 令牌所携带的信息有所不同。 版本基于终结点，从该终结点处其接受请求。 尽管现有应用程序可能使用 Azure AD 终结点 (v1.0)，但新应用程序应使用“Microsoft 标识平台”终结点 (v2.0)。
 
 * v1.0：Azure AD 终结点：`https://login.microsoftonline.com/common/oauth2/authorize`
 * v2.0：Microsoft 标识平台终结点：`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
@@ -67,8 +67,8 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |-----|--------|-------------|
 |`typ` | 字符串 - 始终为“JWT” | 指示令牌是 JWT 令牌。|
 |`alg` | String | 指示用于对令牌签名的算法。 示例：“RS256” |
-|`kid` | String | 用于对此令牌进行验证的公钥的指纹。 已在 v1.0 和 v2.0 `id_tokens` 中发出。 |
-|`x5t` | String | 与 `kid` 相同（在用法和值方面）。 但是，这是在 v1.0 `id_tokens` 中仅出于兼容目的而发出的旧式声明。 |
+| `kid` | String | 指定可用于验证此令牌签名的公钥的指纹。 在 v1.0 和 v2.0 ID 令牌中已发出。 |
+| `x5t` | 字符串 | 功能与 `kid` 相同（在用法和值方面）。 `x5t` 是在 v1.0 ID 令牌中仅出于兼容目的而发出的旧式声明。 |
 
 ### <a name="payload-claims"></a>有效负载声明
 
@@ -93,7 +93,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`roles`| 字符串数组 | 分配给已登录用户的角色集。 |
 |`rh` | 不透明字符串 |Azure 用来重新验证令牌的内部声明。 应忽略。 |
 |`sub` | String | 令牌针对其断言信息的主体，例如应用的用户。 此值固定不变，无法重新分配或重复使用。 使用者是成对标识符 - 它对特定应用程序 ID 是唯一的。 如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。 这不一定是所需的，具体取决于体系结构和隐私要求。 |
-|`tid` | 字符串，GUID | 表示用户所属的 Azure AD 租户的 GUID。 对于工作和学校帐户，该 GUID 就是用户所属组织的不可变租户 ID。 对于个人帐户，该值为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 需要 `profile` 作用域才能接收此声明。 |
+|`tid` | 字符串，GUID | 表示用户登录到的租户。 对于工作和学校帐户，该 GUID 就是用户登录到的组织的不可变租户 ID。 对于登录个人 Microsoft 帐户租户（Xbox、Teams for Life 或 Outlook 等服务）的情况，值为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 若要接收此声明，你的应用必须请求 `profile` 范围。 |
 |`unique_name` | String | 提供一个用户可读值，用于标识令牌使用者。 此值在任何给定时间点都是唯一的，但由于电子邮件和其他标识符可以重用，因此该值可以重新显示在其他帐户上。 因此，该值应仅用于显示目的。 仅在 v1.0 `id_tokens` 中颁发。 |
 |`uti` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 应忽略。 |
 |`ver` | 字符串，1.0 或 2.0 | 指示 id_token 的版本。 |
@@ -104,12 +104,12 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 标识用户（例如在数据库中查找用户，或确定其拥有的权限）时，使用在整个时间范围内保持不变且唯一的信息至关重要。 旧版应用程序有时使用电子邮件地址、电话号码或 UPN 等字段。  所有这些内容都可能随着时间的推移而变化，也可以随着时间的推移重复使用。 例如，当员工更改其姓名时，或者为员工提供的电子邮件地址与以前的、已不在职的员工的电子邮件地址相匹配时。 因此，应用程序不应使用可人为阅读的数据来标识用户，这一点非常重要 - 可人为阅读通常意味着有人会阅读它，并希望对其进行更改。 请改为使用由 OIDC 标准提供的声明，或使用由 Microsoft 提供的扩展声明 - `sub` 和 `oid` 声明。
 
-若要正确地按用户存储信息，请仅使用 `sub` 或 `oid`（作为 GUID 是唯一的），并根据需要使用 `tid` 进行路由或分片。  如果需要跨服务共享数据，则 `oid`+`tid` 最适用，因为所有应用对于给定用户均获取相同的 `oid` 和 `tid` 声明。  Microsoft 标识平台中的 `sub` 声明是“成对的”- 其基于令牌收件人、租户和用户的组合，并且是唯一的。  因此，为给定用户请求 ID 令牌的两个应用将收到不同的 `sub` 声明，但对于该用户而言，`oid` 声明相同。
+若要正确地按用户存储信息，请仅使用 `sub` 或 `oid`（作为 GUID 是唯一的），并根据需要使用 `tid` 进行路由或分片。  如需跨服务共享数据，最好使用 `oid`+`tid`，因为所有应用都将获取在给定租户中操作的给定用户提供的相同 `oid` 和 `tid` 声明。  Microsoft 标识平台中的 `sub` 声明是“成对的”- 其基于令牌收件人、租户和用户的组合，并且是唯一的。  因此，为给定用户请求 ID 令牌的两个应用将收到不同的 `sub` 声明，但对于该用户而言，`oid` 声明相同。
 
 >[!NOTE]
 > 请不要为了尝试跨租户关联用户而使用 `idp` 声明来存储有关用户的信息。  它不会起作用，因为按设计，用户的 `oid` 和 `sub` 声明会跨租户更改，以确保应用程序无法跨租户跟踪用户。  
 >
-> 来宾方案（用户托管在一个租户中，在另一个租户中进行身份验证）应将用户视为服务的全新用户。  Contoso 租户中的文档和权限不适用于 Fabrikam 租户。 这对于防止跨租户的意外数据泄漏非常重要。
+> 来宾方案（用户托管在一个租户中，在另一个租户中进行身份验证）应将用户视为服务的全新用户。  Contoso 租户中的文档和权限不适用于 Fabrikam 租户。 这一点对于防止跨租户意外泄露数据以及强制执行数据生命周期非常重要。  从租户中逐出来宾还应删除其对租户中所创建数据的访问权限。 
 
 ### <a name="groups-overage-claim"></a>组超额声明
 为确保令牌大小不超过 HTTP 标头的大小限制，Azure AD 会限制它在 `groups` 声明中包含的对象 ID 的数量。 如果某用户所属的组超过超额限制（对于 SAML 令牌，为 150；对于 JWT 令牌，为 200），则 Azure AD 不会在令牌中发出组声明。 但是，它会在令牌中包含超额声明，该声明指示应用程序查询 Microsoft Graph API 以检索用户的组成员身份。
@@ -149,5 +149,6 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 ## <a name="next-steps"></a>后续步骤
 
+* 查看 [OpenID Connect](v2-protocols-oidc.md) 流（定义发出 ID 令牌的协议）。 
 * 了解[访问令牌](access-tokens.md)
 * 使用[可选声明](active-directory-optional-claims.md)自定义 ID 令牌中的 JWT 声明。

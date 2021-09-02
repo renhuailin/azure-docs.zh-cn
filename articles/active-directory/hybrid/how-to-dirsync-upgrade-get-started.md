@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3278e210daf1995366ff4d18cf5a3d3d8f7b344d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: a9193b71f2634e2cf9ac5970fb6f9fe2a965dc93
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538924"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458250"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect：从 DirSync 升级
 Azure AD Connect 是 DirSync 的后继产品。 将在本主题中了解可从 DirSync 升级的方式。 这些步骤不适用于从另一个版本的 Azure AD Connect 或从 Azure AD Sync 升级。
@@ -158,7 +158,7 @@ DirSync 和 Azure AD Sync 不受支持，将不再起作用。 如果仍在使�
 5. 选择从 DirSync 安装中导出的设置文件。
 6. 配置任何高级选项，包括：
    * Azure AD Connect 的自定义安装位置。
-   * 现有 SQL Server 实例（默认值：Azure AD Connect 将安装 SQL Server 2012 Express）。 请不要使用与 DirSync 服务器相同的数据库实例。
+   * 现有 SQL Server 实例（Azure AD Connect 默认安装 SQL Server 2019 Express）。 请不要使用与 DirSync 服务器相同的数据库实例。
    * 用于连接 SQL Server 的服务帐户（如果 SQL Server 数据库位于远程，则此帐户必须是域服务帐户）。
      可以在此屏幕上看到以下选项：  
      ![此屏幕截图显示了用于从 DirSync 升级的高级配置选项。](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)

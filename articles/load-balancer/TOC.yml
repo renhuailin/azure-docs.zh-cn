@@ -33,6 +33,8 @@
       href: tutorial-multi-availability-sets-portal.md
     - name: 在负载均衡器中配置端口转发
       href: tutorial-load-balancer-port-forwarding-portal.md
+    - name: 对多个 IP 配置进行负载均衡
+      href: load-balancer-multiple-ip.md
     - name: 跨区域负载均衡器
       items:
         - name: 创建跨区域负载均衡器 - 门户
@@ -141,7 +143,7 @@
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
           href: ../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           href: ../virtual-network/ipv6-configure-standard-load-balancer-template-json.md
           displayName: ARM
     - name: 配置 TCP 重置和空闲超时
@@ -150,8 +152,6 @@
       href: load-balancer-distribution-mode.md
     - name: 使用多个 IP 配置
       items:
-        - name: 门户
-          href: load-balancer-multiple-ip.md
         - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell

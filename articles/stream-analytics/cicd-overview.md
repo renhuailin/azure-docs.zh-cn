@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: 940813f12d542715db47781731144a75e854a98e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aede2f01b7a38637767c6278e913b9bb2cf1a950
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019561"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586124"
 ---
 # <a name="continuous-integration-and-deployment-cicd-for-azure-stream-analytics"></a>Azure 流分析的持续集成和部署 (CI/CD)
 
@@ -30,7 +30,7 @@ ms.locfileid: "98019561"
 
 2. 将 Azure 流分析项目提交到源代码管理系统，如 Git 存储库。
 
-3. 使用 [Azure 流分析 CI/CD 工具](cicd-tools.md)生成项目并生成用于部署的 Azure 资源管理模板。
+3. 使用 [Azure 流分析 CI/CD 工具](cicd-tools.md)生成项目并生成用于部署的 Azure 资源管理器模板。
 
 4. 运行用于质量回归的[自动化脚本测试](cicd-tools.md#automated-test)。
 

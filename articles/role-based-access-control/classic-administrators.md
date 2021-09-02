@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/20/2021
+ms.date: 07/17/2021
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d1f997ff34703e95c498a0f3c1646bf3acb0129e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8a9ef41dcb85ddd8478078a927759190a6475840
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469971"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114652091"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 
@@ -32,7 +32,7 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 > [!TIP]
 > 如果用户需要使用 [Azure 服务管理 PowerShell 模块](/powershell/module/servicemanagement/azure.service)管理 Azure 经典部署，则你只需添加共同管理员。 如果用户只使用 Azure 门户管理经典资源，则无需为该用户添加经典管理员。
 
-1. 以服务管理员或共同管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
+1. 以“服务管理员”或“共同管理员”角色登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
 
@@ -64,7 +64,7 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 与具有“共同管理员”角色的成员用户相比，已分配“共同管理员”角色的来宾用户可能会看到一些差异。 假设出现了下面这种情景：
 
-- 具有 Azure AD 帐户（工作或学校帐户）的用户 A 是 Azure 订阅的服务管理员。
+- 用户 A 拥有一个 Azure AD 帐户（工作或学校帐户），该用户是 Azure 订阅的服务管理员。
 - 用户 B 是 Microsoft 帐户。
 - 用户 A 向用户 B 分配共同管理员角色。
 - 用户 B 几乎可以执行所有操作，但无法注册应用程序或查找 Azure AD 目录中的用户。
@@ -79,7 +79,7 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 ## <a name="remove-a-co-administrator"></a>删除共同管理员
 
-1. 以服务管理员或共同管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
+1. 以“服务管理员”或“共同管理员”角色登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
 
@@ -87,7 +87,7 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 1. 单击“经典管理员”选项卡。
 
-1. 勾选要删除的共同管理员。
+1. 在要删除的共同管理员旁边添加复选标记。
 
 1. 单击“删除”。
 
@@ -133,6 +133,26 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 如果帐户管理员是 Azure AD 帐户，可以将服务管理员更改为同一目录中的 Azure AD 帐户，但不能更改为不同目录中的 Azure AD 帐户。 例如，abby@contoso.com 可以将服务管理员更改为 bob@contoso.com，但不能将服务管理员更改为 john@notcontoso.com，除非 john@notcontoso.com 在 contoso.com 目录中存在。
 
 有关 Microsoft 帐户和 Azure AD 帐户的详细信息，请参阅[什么是 Azure Active Directory？](../active-directory/fundamentals/active-directory-whatis.md)。
+
+## <a name="remove-the-service-administrator"></a>删除服务管理员
+
+你可能想要删除服务管理员，例如，当他们不再与公司有关时。 如果删除了服务管理员，则必须在订阅范围内将一个用户分配为[“所有者”](built-in-roles.md#owner)角色，以避免孤立该订阅。 订阅所有者与服务管理员具有相同的访问权限。
+
+1. 以订阅“所有者”或“共同管理员”角色登录到 [Azure 门户](https://portal.azure.com)。
+
+1. 打开[订阅](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)并选择一个订阅。
+
+1. 单击“访问控制(IAM)”。
+
+1. 单击“经典管理员”选项卡。
+
+1. 在服务管理员旁边添加复选标记。
+
+1. 单击“删除”。
+
+1. 在出现的消息框中单击“是”。
+
+    ![删除服务管理员的屏幕截图。](./media/classic-administrators/service-admin-remove.png)
 
 ## <a name="view-the-account-administrator"></a>查看帐户管理员
 

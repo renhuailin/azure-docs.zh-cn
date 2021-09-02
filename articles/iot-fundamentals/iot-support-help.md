@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 6/10/2020
-ms.openlocfilehash: 6f4c4bd62fa1e3dbad7e5dbc6bea8e2b396b968a
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: b17d8408f7c0cb456a2eed5ab49f36d259cf5ecd
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444543"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254828"
 ---
 # <a name="what-are-the-azure-iot-support-and-help-options"></a>Azure IoT 支持和帮助选项有哪些？
 
@@ -68,26 +68,6 @@ ms.locfileid: "122444543"
  - [Azure 时序见解](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)
  - [Azure Maps](https://stackoverflow.com/questions/tagged/azure-maps)
  - [Azure Percept](https://stackoverflow.com/questions/tagged/azure-percept)
-
-## <a name="submit-feedback-on-azure-feedback"></a>在 Azure 反馈中提交反馈
-
-<div class='icon is-large'>
-    <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
-</div>
-
-若要请求新功能，请在 Azure 反馈中发布请求。 分享看法，使 Azure IoT 服务能够为你开发的应用程序发挥更大的作用：
-
-| 服务                       | Azure 反馈 URL |
-|-------------------------------|---------------|
-| Azure IoT（中心、DPS、SDK）                    | https://feedback.azure.com/forums/321918-azure-iot |
-| Azure IoT Central             | https://feedback.azure.com/forums/911455-azure-iot-central |
-| Azure IoT 设备目录      | https://feedback.azure.com/forums/916948-azure-iot-device-catalog |
-| Azure IoT Edge                | https://feedback.azure.com/forums/907045-azure-iot-edge |
-| Azure IoT 解决方案加速器 | https://feedback.azure.com/forums/916438-azure-iot-solution-accelerators |
-| Azure Maps                 | https://feedback.azure.com/forums/909172-azure-maps |
-| Azure 时序见解 | https://feedback.azure.com/forums/906859-azure-time-series-insights |
-| Azure 数字孪生 | https://feedback.azure.com/forums/916621-azure-digital-twins |
-| Azure Sphere | https://feedback.azure.com/forums/915433-azure-sphere |
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>随时了解更新和新的版本
 

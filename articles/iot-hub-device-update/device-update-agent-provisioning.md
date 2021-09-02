@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: fbd4c595fd2e54f7f1a01595e4e359adc04b0ac1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e0df727c93e5307e9b66ad5755c8218954a7ff7b
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970108"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113552543"
 ---
 # <a name="device-update-agent-provisioning"></a>Device Update 代理预配
 
@@ -53,16 +53,19 @@ Device Update 当前支持以下 IoT 设备类型：
 1. 打开终端窗口。
 
 1. 安装与设备操作系统匹配的存储库配置。
+
     ```shell
     curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
     ```
     
 1. 将生成的列表复制到 sources.list.d 目录。
+
     ```shell
     sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
     ```
     
 1. 安装 Microsoft GPG 公钥。
+
     ```shell
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     ```
@@ -73,8 +76,12 @@ Device Update 当前支持以下 IoT 设备类型：
 
 ## <a name="how-to-provision-the-device-update-agent-as-a-module-identity"></a>如何将 Device Update 代理预配为模块标识
 
-本部分介绍如何在启用了 IoT Edge 的设备、非 Edge IoT 设备和其他 IoT 设备上将 Device Update 代理预配为模块标识。
-
+本部分介绍如何将 Device Update 代理预配为 
+* 启用了 IoT Edge 的设备，或 
+* 非 Edge IoT 设备，或
+* 其他 IoT 设备上的模块标识。 
+ 
+根据所管理的 IoT 设备的类型，按照以下全部或任一部分来添加 Device Update 代理。 
 
 ### <a name="on-iot-edge-enabled-devices"></a>在启用了 IoT Edge 的设备上
 
@@ -82,11 +89,14 @@ Device Update 当前支持以下 IoT 设备类型：
 
 1. 遵循有关[安装和预配 Azure IoT Edge 运行时](../iot-edge/how-to-install-iot-edge.md?preserve-view=true&view=iotedge-2020-11)的说明。
 
-1. 安装 Device Update 映像更新代理
-    - 我们在[项目](https://github.com/Azure/iot-hub-device-update/releases)中提供示例映像，swUpdate 文件是可刷写到 Raspberry Pi B3+ 板上的基础映像，.gz 文件是要通过 Device Update for IoT Hub 导入的更新。 请参阅有关[如何将映像刷写到 IoT 中心设备](./device-update-raspberry-pi.md#flash-sd-card-with-image)的这一示例。  
+1. 安装 Device Update 映像更新代理。
 
-1. 安装 Device Update 包更新代理  
+    我们在[项目](https://github.com/Azure/iot-hub-device-update/releases)存储库中提供示例图像。 swUpdate 文件是可刷写到 Raspberry Pi B3+ 板上的基础映像。 .gz 文件是要通过 Device Update for IoT Hub 导入的更新。 有关示例，请参阅[如何将映像刷写到 Azure IoT 中心设备](./device-update-raspberry-pi.md#flash-sd-card-with-image)。  
+
+1. 安装 Device Update 包更新代理。
+
     - 如需从 packages.miscrosoft.com 获取最新代理版本：更新设备上的包列表，然后使用以下方法安装 Device Update 代理包及其依赖项：   
+
         ```shell
         sudo apt-get update
         ```
@@ -96,6 +106,7 @@ Device Update 当前支持以下 IoT 设备类型：
         ```
     
     - 对于任何 'rc'（即从[项目](https://github.com/Azure/iot-hub-device-update/releases)发布候选代理版本）：将 .dep 文件下载到要安装 Device Update 代理的计算机上，然后：
+   
         ```shell
         sudo apt-get install -y ./"<PATH TO FILE>"/"<.DEP FILE NAME>"
         ```
@@ -110,17 +121,20 @@ Device Update 当前支持以下 IoT 设备类型：
     1. 登录到计算机或 IoT 设备。
     1. 打开终端窗口。
     1.  使用此命令在 IoT 设备上安装最新的 [IoT 标识服务](https://github.com/Azure/iot-identity-service/blob/main/docs-dev/packaging.md#installing-and-configuring-the-package)：
-    
-        ```shell
-        sudo apt-get install aziot-identity-service
-        ```
+    > [!Note]
+    > IoT 标识服务当前使用对称密钥向 IoT 中心注册模块标识。
+
+    ```shell
+    sudo apt-get install aziot-identity-service
+    ```
         
 1. 预配 IoT 标识服务以获取 IoT 设备信息。
-    1. 创建配置模板的自定义副本，以便可以添加预配信息。 在终端中，输入以下命令。
+
+    创建配置模板的自定义副本，以便可以添加预配信息。 在终端中输入以下命令：
       
-        ```shell
-        sudo cp /etc/aziot/config.toml.template /etc/aziot/config.toml 
-        ```
+    ```shell
+    sudo cp /etc/aziot/config.toml.template /etc/aziot/config.toml 
+    ```
    
 1. 接下来，编辑配置文件以包含要充当此设备或计算机的预配程序的设备的连接字符串。 在终端中，输入以下命令。
 
@@ -139,7 +153,7 @@ Device Update 当前支持以下 IoT 设备类型：
     1. 在窗口中，删除“connection_string”右侧的引号内的字符串，然后将连接字符串添加到其中 
     1. 使用“Ctrl+X”保存对文件所做的更改，然后使用“Y”并点击“enter”键保存更改。 
     
-1.  现在，使用以下命令应用并重新启动 IoT 标识服务。 现在应看到“Done!” 输出，表示已成功配置 IoT 标识服务。
+1. 现在，使用以下命令应用并重新启动 IoT 标识服务。 现在应看到“Done!” 输出，表示已成功配置 IoT 标识服务。
 
     > [!Note]
     > IoT 标识服务当前使用对称密钥向 IoT 中心注册模块标识。
@@ -148,60 +162,62 @@ Device Update 当前支持以下 IoT 设备类型：
     sudo aziotctl config apply
     ```
     
-1.  最终安装 Device Update 代理。 我们在[项目](https://github.com/Azure/iot-hub-device-update/releases)中提供示例映像，swUpdate 文件是可刷写到 Raspberry Pi B3+ 板上的基础映像，.gz 文件是要通过 Device Update for IoT Hub 导入的更新。 请参阅有关[如何将映像刷写到 IoT 中心设备](./device-update-raspberry-pi.md#flash-sd-card-with-image)的这一示例。
+1. 最终安装 Device Update 代理。 我们在[项目](https://github.com/Azure/iot-hub-device-update/releases)中提供示例映像，swUpdate 文件是可刷写到 Raspberry Pi B3+ 板上的基础映像，.gz 文件是要通过 Device Update for IoT Hub 导入的更新。 请参阅有关[如何将映像刷写到 IoT 中心设备](./device-update-raspberry-pi.md#flash-sd-card-with-image)的这一示例。
 
-1.  你现在已准备好在 IoT 设备上启动 Device Update 代理。 
+1. 你现在已准备好在 IoT 设备上启动 Device Update 代理。 
 
 ### <a name="other-iot-devices"></a>其他 IoT 设备
 
 无需 IoT 标识服务即可在受约束设备上配置 Device Update 代理以进行测试。 按照以下步骤使用连接字符串预配 Device Update 代理（从模块或设备）。
 
+1. 我们在[项目](https://github.com/Azure/iot-hub-device-update/releases)存储库中提供示例图像。 swUpdate 文件是可刷写到 Raspberry Pi B3+ 板上的基础映像。 .gz 文件是要通过 Device Update for IoT Hub 导入的更新。 有关示例，请参阅[如何将映像刷写到 Azure IoT 中心设备](./device-update-raspberry-pi.md#flash-sd-card-with-image)。
 
-1.  我们在[项目](https://github.com/Azure/iot-hub-device-update/releases)中提供示例映像，swUpdate 文件是可刷写到 Raspberry Pi B3+ 板上的基础映像，.gz 文件是要通过 Device Update for IoT Hub 导入的更新。 请参阅有关[如何将映像刷写到 IoT 中心设备](./device-update-raspberry-pi.md#flash-sd-card-with-image)的这一示例。
-
-1.  登录到计算机或 IoT Edge 设备/IoT 设备。
+1. 登录到计算机或 IoT Edge 设备/IoT 设备。
     
-1.  打开终端窗口。
+1. 打开终端窗口。
 
-1.  将连接字符串添加到[设备更新配置文件](device-update-configuration-file.md)：
+1. 将连接字符串添加到[设备更新配置文件](device-update-configuration-file.md)：
+
     1. 在终端窗口中输入以下内容：
+   
         - [对于包更新](device-update-ubuntu-agent.md)，请使用：sudo nano /etc/adu/adu-conf.txt
         - [对于映像更新](device-update-raspberry-pi.md)，请使用：sudo nano /adu/adu-conf.txt
        
     1. 应会看到一个窗口打开，其中包含一些文本。 首次在 IoT 设备上预配 Device Update 代理时，删除“connection_String=”后的整个字符串。 它只是占位符文本。
     
-    1. 在终端中，将“<your-connection-string>”替换为 Device Update 代理实例的设备的连接字符串。
+    1. 在终端中，将 <your-connection-string> 替换为 Device Update 代理实例的设备的连接字符串。 选择“输入”并“保存”。 应如此示例所示：
     
-        > [!Important]
-        > 请勿在连接字符串周围添加引号。
-        ```shell
+        ```text
         connection_string=<ADD CONNECTION STRING HERE>
-        ```
-       
-    1. 输入并保存。
+        ```   
+        
+    > [!Important]
+    > 请勿在连接字符串周围添加引号。
     
-1.  你现在已准备好在 IoT 设备上启动 Device Update 代理。 
+1. 你现在已准备好在 IoT 设备上启动 Device Update 代理。 
 
 
 ## <a name="how-to-start-the-device-update-agent"></a>如何启动 Device Update 代理
 
 本部分介绍如何启动 Device Update 代理并验证它是否作为模块标识在 IoT 设备上成功运行。
 
-1.  登录到安装了 Device Update 代理的计算机或设备。
+1. 登录到安装了 Device Update 代理的计算机或设备。
 
-1.  打开终端窗口，然后输入以下命令。
+1. 打开终端窗口，然后输入以下命令。
+
     ```shell
     sudo systemctl restart adu-agent
     ```
     
-1.  可以使用以下命令检查代理的状态。 如果遇到任何问题，请参阅此[故障排除指南](troubleshoot-device-update.md)。
+1. 可以使用以下命令检查代理的状态。 如果遇到任何问题，请参阅此[故障排除指南](troubleshoot-device-update.md)。
+    
     ```shell
     sudo systemctl status adu-agent
     ```
     
     应会看到状态“正常”。
 
-1.  在 IoT 中心门户中，转到 IoT 设备或 IoT Edge 设备以查找使用 Device Update 代理配置的设备。 你将看到作为模块运行的 Device Update 代理。 例如：
+1. 在 IoT 中心门户中，转到 IoT 设备或 IoT Edge 设备以查找使用 Device Update 代理配置的设备。 你将看到作为模块运行的 Device Update 代理。 例如：
 
     :::image type="content" source="media/understand-device-update/device-update-module.png " alt-text="设备更新模块名称关系图。" lightbox="media/understand-device-update/device-update-module.png":::
 

@@ -7,12 +7,12 @@ ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: aa17d83dcc14675db5ff6aa4597314baffbffdbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c67d6895fe4dde54992c7a79067a45dcdff18305
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98015413"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586412"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>导出 Azure 流分析作业 Azure 资源管理器模板
 
@@ -42,11 +42,11 @@ ms.locfileid: "98015413"
 
 1. 请注意，“部署”文件夹会显示在流分析作业工作区中。
 
-1. 浏览 JobTemplate.json 文件，这是用于部署的 Azure 资源管理模板。
+1. 浏览 JobTemplate.json 文件，这是用于部署的 Azure 资源管理器模板。
 
 ## <a name="complete-the-parameters-file"></a>完成参数文件
 
-接下来，完成 Azure 资源管理模板参数文件。
+接下来，完成 Azure 资源管理器模板参数文件。
 
 1. 在 Visual Studio Code 中打开流分析作业工作区的“部署”文件夹中的“JobTemplate.parameters.json”文件。
 

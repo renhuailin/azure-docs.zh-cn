@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2eb87704d8cb967bb58a0fd1302b6f0f8225af72
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: db5cb2f6bc8b4ca3eed802552fe86830b9f1723f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112117655"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259570"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>在 Linux 中排查 Azure 文件存储问题 (SMB)
 
@@ -235,7 +235,7 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 ## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>无法创建符号链接 - ln: failed to create symbolic link 't':Operation not supported
 
 ### <a name="cause"></a>原因
-默认情况下，使用 CIFS 在 Linux 上装载 Azure 文件共享不会启用符号链接的支持。 出现如下错误：
+默认情况下，使用 CIFS 在 Linux 上装载 Azure 文件共享不会启用对符号链接 (symlink) 的支持。 出现如下错误：
 ```
 ln -s linked -n t
 ln: failed to create symbolic link 't': Operation not supported
