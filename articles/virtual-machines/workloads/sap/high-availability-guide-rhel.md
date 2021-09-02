@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/11/2021
 ms.author: radeltch
-ms.openlocfilehash: c2fc3d5a4bdc11cbee2d394248c886bc561c9057
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2bbc8ccf445a9fb45e2dc91041287d6ca47653a2
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746201"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966875"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性
 
@@ -66,7 +66,7 @@ ms.locfileid: "121746201"
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
-* [Product Documentation for Red Hat Gluster Storage](https://access.redhat.com/documentation/red_hat_gluster_storage/)（Red Hat Gluster Storage 产品文档）
+* [Product Documentation for Red Hat Gluster Storage](https://access.redhat.com/documentation/en-us/red_hat_gluster_storage/3.5)（Red Hat Gluster Storage 产品文档）
 * [SAP Netweaver in pacemaker cluster](https://access.redhat.com/articles/3150081)（Pacemaker 群集中的 SAP NetWeaver）
 * 通用 RHEL 文档
   * [High Availability Add-On Overview](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)（高可用性附加产品概述）
@@ -192,7 +192,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
          1. 单击“确定”
       1. ASCS ERS 的端口 621 **02**
          * 重复上述步骤，为 ERS 创建运行状况探测（例如 621 **02** 和 **nw1-aers-hp**）
-   1. 负载均衡算法
+   1. 负载均衡规则
       1. ASCS 的负载均衡规则
          1. 打开负载均衡器、选择负载均衡规则，然后单击“添加”
          1. 输入新的负载均衡器规则的名称（例如“nw1-lb-ascs”）

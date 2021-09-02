@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 47902f17662dea8205d02e6a49e447b8467c9870
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 9c8aa6aa30cae55d4a317eea7acad475b8e70b97
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673713"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324656"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -371,7 +371,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 如果使用 Azure 平台映像，可以通过修改 *imageReference* 来更新映像（有关详细信息，请参阅 [REST API 文档](/rest/api/compute/virtualmachinescalesets/createorupdate)）。
 
 >[!NOTE]
-> 使用平台映像时，通常指定 "latest" 作为映像引用版本。 在你执行创建、横向扩展和重置映像操作时，将使用最新发布的脚本创建 VM。 但是，这 **并不** 意味着 OS 映像会随新映像版本的发布自动进行更新。 当前处于预览版状态的一个独立功能提供了自动 OS 升级功能。 有关详细信息，请参阅[自动 OS 升级文档](virtual-machine-scale-sets-automatic-upgrade.md)。
+> 使用平台映像时，通常指定 "latest" 作为映像引用版本。 在你执行创建、横向扩展和重置映像操作时，将使用最新发布的脚本创建 VM。 但是，这 **并不** 意味着 OS 映像会随新映像版本的发布自动进行更新。 一个独立功能提供了自动 OS 升级功能。 有关详细信息，请参阅[自动 OS 升级文档](virtual-machine-scale-sets-automatic-upgrade.md)。
 
 如果使用自定义映像，可以通过更新 *imageReference* ID 来更新映像（有关详细信息，请参阅 [REST API 文档](/rest/api/compute/virtualmachinescalesets/createorupdate)）。
 

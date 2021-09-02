@@ -13,18 +13,21 @@ ms.devlang: ne
 ms.topic: how-to
 ms.date: 06/10/2019
 ms.author: inhenkel
-ms.openlocfilehash: 094c7affb5b285db4e3311fb1eac9b36afdb6458
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 3f8712709f1160150275ee55d84522746bbe8a3a
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490885"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "122653198"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>使用媒体服务编码时对视频进行子剪辑 - REST
 
 在使用[作业](/rest/api/media/jobs)对视频进行编码时，可以对其进行剪裁或子剪辑。 此功能适用于使用 [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设或 [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) 预设生成的任何[转换](/rest/api/media/transforms)。 
 
 本主题中的 REST 示例创建了一个作业，该作业会在提交编码作业时剪裁视频。 
+
+[!INCLUDE [warning-rest-api-retry-policy.md](./includes/warning-rest-api-retry-policy.md)]
+
 
 ## <a name="prerequisites"></a>必备条件
 

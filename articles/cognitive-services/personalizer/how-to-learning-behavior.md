@@ -1,16 +1,19 @@
 ---
 title: 配置学习行为
 description: 学徒模式为你提供了个性化体验创建服务及其机器学习功能的置信度，并在不造成在线流量风险的情况下提供向服务发送可从其获知的信息的指标。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 05/01/2020
-ms.openlocfilehash: 57a03b107678f83200b11f408784f6455cbceffd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: caa3a0d8d9619ee65dbd9d71ae2ff4f56a128c8d
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94579285"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831546"
 ---
 # <a name="configure-the-personalizer-learning-behavior"></a>配置个性化体验创建服务学习行为
 

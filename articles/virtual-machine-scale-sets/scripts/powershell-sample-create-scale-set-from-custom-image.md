@@ -1,20 +1,20 @@
 ---
 title: Azure PowerShell 示例 - 使用自定义 VM 映像
 description: 此脚本创建使用自定义 VM 映像作为 VM 实例源的虚拟机规模集。
-author: axayjo
-ms.author: akjosh
+author: mamccrea
+ms.author: mamccrea
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.date: 03/27/2018
 ms.reviewer: cynthn
 ms.custom: akjosh, devx-track-azurepowershell
-ms.openlocfilehash: 34a786c133d38e40cfa614ddceed53a6cf52b617
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2adc24bb6c00854ef44511d73d441d02949de945
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89078922"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221181"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>使用 Azure PowerShell 从自定义 VM 映像创建虚拟机规模集
 此脚本创建使用自定义 VM 映像作为 VM 实例源的虚拟机规模集。

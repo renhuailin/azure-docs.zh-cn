@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2478ec3f0e8608e1dd868745fca2c323677fadce
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: bef6439ae51c6e15f7be997758acbbd3722ae4ff
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729841"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223250"
 ---
 # <a name="troubleshoot"></a>疑难解答
 
@@ -253,7 +253,7 @@ ARR 提供了一项功能用于确定表面是否可能发生 Z 冲突：[棋盘
 
 ## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>在本机 C++ 应用中使用多通道立体渲染时出现图形伪影
 
-在某些情况下，调用 [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) 后，对本地内容使用多通道立体渲染模式（在独立的通道中向左眼和右眼渲染）的自定义本机 C++ 应用可能会触发驱动程序 bug。 该 bug 导致不确定性光栅化的问题，进而导致本地内容的各个三角形或部分三角形随机消失。 出于性能原因，建议始终使用更新式的单通道立体渲染技术（例如，使用 **SV_RenderTargetArrayIndex**）来渲染本地内容。
+在某些情况下，调用 [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image-openxr) 后，对本地内容使用多通道立体渲染模式（在独立的通道中向左眼和右眼渲染）的自定义本机 C++ 应用可能会触发驱动程序 bug。 该 bug 导致不确定性光栅化的问题，进而导致本地内容的各个三角形或部分三角形随机消失。 出于性能原因，建议始终使用更新式的单通道立体渲染技术（例如，使用 **SV_RenderTargetArrayIndex**）来渲染本地内容。
 
 ## <a name="conversion-file-download-errors"></a>转换文件下载错误
 

@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: e3342b38f782b718cefd63295ef4d4d26b525058
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: d2ba1c751f2ed61ea583f1a1b6478bd0451bbea5
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259041"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653323"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的慢查询日志
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 在 Azure Database for MySQL 中，慢查询日志可供用户使用。 不支持访问事务日志。 可以使用慢查询日志来查明性能瓶颈以进行故障排除。
 
 有关 MySQL 慢查询日志的详细信息，请参阅 MySQL 参考手册中的[慢查询日志部分](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)。

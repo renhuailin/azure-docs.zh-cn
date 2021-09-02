@@ -8,12 +8,12 @@ ms.date: 2/11/2020
 ms.author: amgowda
 ms.service: container-service
 ms.subservice: confidential-computing
-ms.openlocfilehash: 35bf2fc96f93d1eed2b15c4ea87aa1f2a3aaa0a5
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 7b225fa68b9a280ef4a1c7145ab691b82168202a
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113002881"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967406"
 ---
 # <a name="confidential-containers"></a>机密容器
 
@@ -97,7 +97,7 @@ Occlum 支持 AKS 部署。 按照[此处](https://github.com/occlum/occlum/blob
 
 简而言之，Marblerun 可将单个 enclave 的机密性、完整性和可验证性属性扩展到 Kubernetes 群集。 
 
-Marblerun 支持使用 Graphene、Occlum 和 EGo 创建的机密容器。 [此处](https://www.marblerun.sh/docs/examples/)提供了每个 SDK 的示例。 Marblerun 构建为在 Kubernetes 上与现有的云原生工具一起运行。 它附带了易用的 CLI 和 helm chart。 它为 AKS 上的机密计算节点提供一流支持。 可在[此处](https://www.marblerun.sh/docs/deployment/cloud/)找到有关如何在 AKS 上部署 Marblerun 的信息。
+Marblerun 支持使用 Graphene、Occlum 和 EGo 创建的机密容器。 [此处](https://docs.edgeless.systems/marblerun/#/examples?id=examples)提供了每个 SDK 的示例。 Marblerun 构建为在 Kubernetes 上与现有的云原生工具一起运行。 它附带了易用的 CLI 和 helm chart。 它为 AKS 上的机密计算节点提供一流支持。 可在[此处](https://docs.edgeless.systems/marblerun/#/deployment/cloud?id=cloud-deployment)找到有关如何在 AKS 上部署 Marblerun 的信息。
 
 ## <a name="confidential-containers-demo"></a>机密容器演示
 观看有关机密容器的机密医疗保健演示。 [此处](/azure/architecture/example-scenario/confidential/healthcare-inference)提供示例。 

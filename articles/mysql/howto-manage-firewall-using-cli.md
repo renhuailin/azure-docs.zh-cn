@@ -8,19 +8,21 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41c5c856953c4c45b38a69ba4695df489aaf5270
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 12635480ad5334fadc39bdb49b921c12a8a1622b
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774694"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653371"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 可以使用服务器级防火墙规则，管理从特定 IP 地址或某个范围的 IP 地址对 Azure Database for MySQL 服务器的访问。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 Azure Database for MySQL 防火墙的概述，请参阅 [Azure Database for MySQL 服务器防火墙规则](./concepts-firewall-rules.md)。
 
 也可使用虚拟网络 (VNet) 规则来保护对服务器进行的访问。 详细了解如何[使用 Azure CLI 创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-using-cli.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * [安装 Azure CLI](/cli/azure/install-azure-cli)。
 * [Azure Database for MySQL 服务器和数据库](quickstart-create-mysql-server-database-using-azure-cli.md)。
 

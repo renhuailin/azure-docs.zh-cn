@@ -9,12 +9,12 @@ metadata:
   author: yjin81
   ms.author: yajin1
   ms.date: 01/27/2021
-  ms.openlocfilehash: e983c957135f247276d87de749dc13a6a05ed9a7
-  ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+  ms.openlocfilehash: b04fedf6e0eb1840ea6b86956fe979e675c6b927
+  ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/02/2021
-  ms.locfileid: "113217010"
+  ms.lasthandoff: 08/30/2021
+  ms.locfileid: "123185518"
 landingContent:
 - title: 关于 Azure Web PubSub 服务
   linkLists:
@@ -22,21 +22,33 @@ landingContent:
     links:
     - text: 什么是 Azure Web PubSub 服务？
       url: overview.md
+    - text: Azure Web PubSub 服务中的关键概念
+      url: key-concepts.md
 - title: 入门
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 通过聊天室实时演示入门
-      url: quickstart-live-demo.md
+    - text: 连接到实例
+      url: quickstart-cli-try.md
     - text: 从简单的聊天室无服务器应用程序开始
       url: quickstart-serverless.md
+    - text: 使用 Azure Functions 进行无服务器开发
+      url: tutorial-serverless-notification.md
   - linkListType: how-to-guide
     links:
-    - text: 如何创建 Web PubSub 实例
-      url: howto-develop-create-instance.md
-    - text: 发布和订阅消息
-      url: https://azure.github.io/azure-webpubsub/getting-started/publish-messages/js-publish-message
-    - text: 使用子协议
-      url: https://azure.github.io/azure-webpubsub/getting-started/using-pubsub-subprotocol/js-work-with-subprotocols
+    - text: 构建聊天应用
+      url: tutorial-build-chat.md
+    - text: 使用服务支持的子协议进行客户端流式传输
+      url: tutorial-subprotocol.md
     - text: 身份验证和权限
-      url: https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions
+      url: tutorial-permission.md
+- title: 实时演示
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 白板
+      url: https://azure.github.io/azure-webpubsub/demos/whiteboard
+    - text: 简单聊天
+      url: https://azure.github.io/azure-webpubsub/demos/chat
+    - text: 代码流式处理
+      url: https://azure.github.io/azure-webpubsub/demos/code-streaming

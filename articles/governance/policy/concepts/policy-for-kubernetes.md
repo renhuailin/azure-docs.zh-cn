@@ -1,15 +1,15 @@
 ---
 title: 了解适用于 Kubernetes 的 Azure Policy
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。
-ms.date: 05/13/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5319504a0e25531ce77ebc06748bb360c0cbc171
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 20b3362823644ab478e2069fbc610079820302c3
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112202771"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323078"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
@@ -69,10 +69,10 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
 下面是有关如何使用 Azure Policy 加载项的常规建议：
 
-- Azure Policy 附加产品需要三个 Gatekeeper 组件才能运行：1 个审核 Pod 和 2 个 Webhook Pod 副本。 随着集群中 Kubernetes 资源和策略分配计数的增加，这些组件会消耗更多的资源，这就需要执行审核和强制操作。
+- Azure Policy 附加产品需要三个 Gatekeeper 组件才能运行：一个审核 Pod 和两个 Webhook Pod 副本。 随着集群中 Kubernetes 资源和策略分配计数的增加，这些组件会消耗更多的资源，这就需要执行审核和强制操作。
 
-  - 对于少于 500 个 Pod、最多 20 个约束的单个群集：每个组件 2 个 vCPU，350MB 内存。
-  - 对于最多具有 40 个约束的单个群集中 500 个以上的 Pod：每个组件 3 个 vCPU 和 600 MB 内存。
+  - 对于少于 500 个 Pod、最多 20 个约束的单个群集：每个组件 2 个 vCPU，350 MB 内存。
+  - 对于超过 500 个 Pod、最多 40 个约束的单个群集：每个组件 3 个 vCPU，600 MB 内存。
 
 - Windows Pod [不支持安全上下文](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods)。
   因此，某些 Azure Policy 定义（例如禁用根权限）不能在 Windows Pod 中升级，仅适用于 Linux Pod。

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 08/09/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9a31fe8046e6bb0a933ade78ee2c7f4b208767a7
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 7a213198421597e444a55c53d85cdb6e427425a3
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028337"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178052"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织
 
@@ -35,6 +35,14 @@ ms.locfileid: "107028337"
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+### <a name="verify-the-applications-publisher-domain"></a>验证应用程序的发布者域
+从 2020 年 11 月开始，新的应用程序注册在用户同意提示中会显示为未验证，除非[应用程序的发布者域已经过验证](../active-directory/develop/howto-configure-publisher-domain.md)，并且公司标识已使用 Microsoft 合作伙伴网络进行验证并且与应用程序相关联。 （[详细了解](../active-directory/develop/publisher-verification-overview.md)此更改。）请注意，对于 Azure AD B2C 用户流，发布者域仅在使用 [Microsoft 帐户](../active-directory-b2c/identity-provider-microsoft-account.md)或其他 Azure AD 租户作为标识提供者时才会显示。 为了满足这些新要求，请执行以下操作：
+
+1. [使用 Microsoft 合作伙伴网络 (MPN) 帐户验证公司标识](/partner-center/verification-responses)。 此过程会验证有关贵公司和贵公司主要联系人的信息。
+1. 使用以下选项之一完成发布者验证过程，以便将 MPN 帐户与应用注册相关联：
+   - 如果 Microsoft 帐户标识提供者的应用注册在 Azure AD 租户中，请[在应用注册门户中验证应用](../active-directory/develop/mark-app-as-publisher-verified.md)。
+   - 如果 Microsoft 帐户标识提供者的应用注册在 Azure AD B2C 租户中，请[使用 Microsoft Graph API（例如，使用 Graph 浏览器）将应用标记为已验证的发布者](../active-directory/develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls)。 用于设置应用的已验证发布者的 UI 当前已对 Azure AD B2C 租户禁用。
 
 ## <a name="register-an-azure-ad-app"></a>注册 Azure AD 应用
 
@@ -64,7 +72,7 @@ ms.locfileid: "107028337"
 
 如果要从 Azure AD 获取 `family_name` 和 `given_name` 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](../active-directory/develop/active-directory-optional-claims.md)。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
+1. 使用组织 Azure AD 租户登录到 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
 1. 从“管理”部分中选择“应用注册” 。
 1. 在列表中选择要为其配置可选声明的应用程序。
 1. 在“管理”部分中，选择“令牌配置”。 
@@ -72,6 +80,10 @@ ms.locfileid: "107028337"
 1. 对于“令牌类型”，选择“ID”。
 1. 选择要添加的可选声明：`family_name` 和 `given_name`。
 1. 单击“添加” 。
+
+## <a name="optional-verify-your-app-authenticity"></a>[可选] 验证应用真实性
+
+[发布者验证](../active-directory/develop/publisher-verification-overview.md)可帮助用户了解[已注册](#register-an-azure-ad-app)应用的真实性。 已验证应用意味着应用的发布者已使用其 Microsoft 合作伙伴网络 (MPN) [验证](/partner-center/verification-responses)其标识。 了解如何[将应用标记为“发布者已验证”](../active-directory/develop/mark-app-as-publisher-verified.md)。 
 
 ::: zone pivot="b2c-user-flow"
 
@@ -114,11 +126,11 @@ ms.locfileid: "107028337"
 1. 在“社交标识提供者”下，选择“Contoso Azure AD”。
 1. 选择“保存”。
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。 
 1. 选择“运行用户流”按钮。
 1. 在注册或登录页面上，选择“Contoso Azure AD”以使用 Azure AD Contoso 帐户登录。
 
-如果登录过程是成功的，则你的浏览器会被重定向到 `https://jwt.ms`，其中显示 Azure AD B2C 返回的令牌内容。
+如果登录过程成功，则浏览器将重定向到 `https://jwt.ms`，其中显示了 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end
 
@@ -200,7 +212,7 @@ ms.locfileid: "107028337"
 1. 更新 DisplayName 的值。 此值会显示在登录屏幕中的登录按钮上。
 1. 更新 Description 的值。
 1. Azure AD 使用 OpenID Connect 协议，因此请确保 Protocol 的值是 `OpenIdConnect`。
-1. 将 METADATA 的值设置为 `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration`，其中 `tenant-name` 为你的 Azure AD 租户名称。 例如 `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`
+1. 将 METADATA 的值设置为 `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration`，其中 `tenant-name` 为你的 Azure AD 租户名称。 例如： `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 1. 将 **client_id** 设置为应用程序注册中的应用程序 ID。
 1. 在“CryptographicKeys”下，将“StorageReferenceId”的值更新为之前创建的策略密钥的名称。 例如，`B2C_1A_ContosoAppSecret`。
 
@@ -236,10 +248,8 @@ ms.locfileid: "107028337"
 
 如果登录过程是成功的，则你的浏览器会被重定向到 `https://jwt.ms`，其中显示 Azure AD B2C 返回的令牌内容。
 
+::: zone-end
+
 ## <a name="next-steps"></a>后续步骤
 
-当使用自定义策略时，在开发策略期间对策略进行故障排除时，有时可能需要提供其他信息。
-
-若要帮助诊断问题，可暂时将策略置入“开发人员模式”并通过 Azure Application Insights 收集日志。 在 [Azure Active Directory B2C：收集日志](troubleshoot-with-application-insights.md)中了解操作方式。
-
-::: zone-end
+了解如何[将 Azure AD 令牌传递给应用程序](idp-pass-through-user-flow.md)。

@@ -8,15 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: a8e968d05a1f844a79d2e42d10c323ed4c392424
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4fd96c9112d3ae9d1e2590d1ca99275c7eead07
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521214"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123102475"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB 附件
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-mongodb-api.md)]
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Azure Cosmos DB 附件是特殊项，它们包含对与外部 blob 或媒体文件关联的元数据的引用。
 

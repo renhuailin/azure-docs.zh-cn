@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: 419d8d0cd20c13bffdd192060d81975ee94b47fe
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 95143e78947cd44faec6ed48bea1fb44cc0011e2
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106125744"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122868015"
 ---
 > [!NOTE]
 > 对于不固定的资源，请开具支持票证，要求增加配额。 请不要尝试通过创建更多 Azure 媒体服务帐户来提高配额限制。
@@ -34,14 +34,6 @@ ms.locfileid: "106125744"
 | 存储帐户 | 100<sup>(2)</sup>（固定） |
 
 <sup>1</sup> 在 Azure Blob 存储中，单个 Blob 目前支持的最大大小为 5 TB。 媒体服务会根据服务使用的 VM 大小应用其他限制。 大小限制适用于你上传的文件，也适用于由于媒体服务处理（编码或分析）而生成的文件。 如果源文件大于 260 GB，作业可能会失败。
-
-下表显示了媒体保留单位（S1、S2 和 S3）的限制。 如果源文件大于表中定义的限制，则编码作业将失败。 编码持续时间较长的 4K 分辨率源时，需要使用 S3 媒体保留单位才能达到所需的性能。 如果 S3 媒体保留单位上的 4K 内容大于 260-GB 限制，请开具支持票证。
-
-|媒体保留单位类型|最大输入大小 (GB)|
-|---|---|
-|S1 |    26|
-|S2    | 60|
-|S3    |260|
 
 <sup>2</sup> 存储帐户必须来自同一 Azure 订阅。
 

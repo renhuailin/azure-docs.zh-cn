@@ -7,14 +7,15 @@ ms.topic: how-to
 author: StefArroyo
 ms.author: esarroyo
 ms.date: 04/20/2021
-ms.openlocfilehash: 0e38f39edeb68577470868e0bd68a37cb7fe0516
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bda82b51661ccd615e26c7abcc8002db3bb5d24f
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384601"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111478"
 ---
 # <a name="use-the-emulator-on-docker-for-windows"></a><a id="run-on-windows-docker"></a>在用于 Windows 的 Docker 上使用模拟器
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 可以在 Windows Docker 容器中运行 Azure Cosmos DB 模拟器。 有关 docker pull 命令，请参阅 [Docker 中心](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)；有关 `Dockerfile` 和详细信息，请参阅 [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker)。 当前，该模拟器不适合于用于 Oracle Linux 的 Docker。 根据以下说明在用于 Windows 的 Docker 上运行模拟器：
 

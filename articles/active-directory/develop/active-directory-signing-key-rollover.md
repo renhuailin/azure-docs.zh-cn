@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 8/11/2020
+ms.date: 8/16/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ce4917f968ef1664a1d41f4eaff162df116bda4f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7277f3751abd528862021a72e77a631f4bb0d5da
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035078"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253074"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中的签名密钥滚动更新
 本文介绍了你需要了解的有关 Microsoft 标识平台用来为安全令牌签名的公钥的信息。 请务必注意，这些密钥会定期滚动更新，紧急情况下可立即滚动更新。 所有使用 Microsoft 标识平台的应用程序都应该能以编程方式处理密钥滚动更新过程。 继续阅读，了解密钥工作方式、如何评估应用程序的滚动更新的影响以及如何更新应用程序，或者在必要时建立定期手动滚动更新过程来处理密钥滚动更新。
@@ -25,11 +25,11 @@ ms.locfileid: "102035078"
 ## <a name="overview-of-signing-keys-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中签名密钥的概述
 Microsoft 标识平台使用基于行业标准构建的公钥加密，在它自己和使用它的应用程序之间建立信任关系。 实际上，它的工作原理如下所述：Microsoft 标识平台使用签名密钥，该密钥由公钥和私钥对组成。 当用户登录到使用 Microsoft 标识平台进行身份验证的应用程序时，Microsoft 标识平台会创建一个包含用户相关信息的安全令牌。 此令牌由 Microsoft 标识平台使用其私钥进行签名，并会发送回应用程序。 若要验证该令牌是否有效且来自 Microsoft 标识平台，应用程序必须使用由 Microsoft 标识平台公开的公钥（包含在租户的 [OpenID Connect 发现文档](https://openid.net/specs/openid-connect-discovery-1_0.html)或 SAML/WS-Fed [联合元数据文档](../azuread-dev/azure-ad-federation-metadata.md)中）来验证令牌的签名。
 
-出于安全考虑，Microsoft 标识平台的签名密钥会定期更新，且紧急情况下，可立即滚动更新。 这些密钥滚动更新之间并没有已设置的或确定的时间，所以任何与 Microsoft 标识平台集成的应用程序都应该做好处理密钥滚动更新事件的准备，无论该事件可能发生的频率如何。 如果未准备就绪，且应用程序尝试使用过期密钥验证令牌上的签名，则登录请求会失败。  最佳做法是每 24 小时检查一次更新，如果遇到带有未知密钥标识符的令牌，密钥文档会进行受限制（最多每五分钟一次）的即时刷新。 
+出于安全考虑，Microsoft 标识平台的签名密钥会定期更新，且紧急情况下，可立即滚动更新。 这些密钥滚动更新之间并没有已设置的或确定的时间，所以任何与 Microsoft 标识平台集成的应用程序都应该做好处理密钥滚动更新事件的准备，无论该事件可能发生的频率如何。 如果应用程序不处理突然刷新，并且尝试使用过期的密钥验证令牌上的签名，则应用程序将错误地拒绝令牌。  最佳做法是每 24 小时检查一次更新，如果遇到未使用应用程序缓存中的秘钥进行验证的令牌，密钥文档会进行受限制（最多每五分钟一次）的即时刷新。 
 
-OpenID Connect 发现文档和联合元数据文档中始终有多个有效密钥可用。 应用程序应该做好使用文档中指定的任何以及所有密钥的准备，因为一个密钥可能很快会滚动更新，另一个密钥可能就会取而代之，依此类推。  由于我们支持新平台、新云或新的身份验证协议，目前的密钥数量随时间的推移，可能会根据 Microsoft 标识平台的内部体系结构发生变化。 JSON 响应中的密钥顺序和公开它们的顺序均不应被视为对你的应用有意义。 
+OpenID Connect 发现文档和联合元数据文档中始终有多个有效密钥可用。 应用程序应该做好使用文档中指定的任何以及所有密钥的准备，因为一个密钥可能很快会滚动更新，另一个密钥可能就会取而代之，依此类推。  由于我们支持新平台、新云或新的身份验证协议，目前的密钥数量随时间的推移，可能会根据 Microsoft 标识平台的内部体系结构发生变化。 JSON 响应中的密钥顺序和它们的公开顺序均不应被视为对应用有意义。 
 
-只支持一个签名密钥的应用程序或需要手动更新签名密钥的应用程序在本质上不太安全可靠。  应将它们更新为使用[标准库](reference-v2-libraries.md)，以确保它们始终使用最新的签名密钥，这是应采取的最佳做法之一。 
+只支持一个签名密钥或需要手动更新签名密钥的应用程序，在本质上不太安全可靠。  应将它们更新为使用[标准库](reference-v2-libraries.md)，以确保它们始终使用最新的签名密钥，这是应采取的最佳做法之一。 
 
 ## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>如何评估应用程序是否会受到影响以及如何应对
 应用程序如何处理密钥滚动更新取决于各种变量，例如应用程序类型或所使用的标识协议和库。 以下部分评估了最常见类型的应用程序是否受密钥滚动更新的影响，并提供有关如何更新应用程序以支持自动滚动更新或手动更新密钥的指南。
@@ -152,7 +152,7 @@ passport.use(new OIDCStrategy({
 
 如果是手动配置的身份验证，请参阅下面的说明，了解如何将 Web API 配置为自动更新其密钥信息。
 
-以下代码片段演示如何从联合元数据文档获取最新密钥，并使用 [JWT 令牌处理程序](/previous-versions/dotnet/framework/security/json-web-token-handler) 来验证令牌。 该代码片段假设你使用自己的缓存机制来持久保存密钥（以便验证将来从 Microsoft 标识平台获取的令牌），无论是将它保存在数据库中、配置文件中，还是保存在其他位置。
+以下代码片段演示如何从联合元数据文档获取最新密钥，并使用 [JWT 令牌处理程序](/previous-versions/dotnet/framework/windows-identity-foundation/json-web-token-handler) 来验证令牌。 该代码片段假设你使用自己的缓存机制来持久保存密钥（以便验证将来从 Microsoft 标识平台获取的令牌），无论是将它保存在数据库中、配置文件中，还是保存在其他位置。
 
 ```
 using System;
@@ -243,7 +243,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>保护资源的和使用 Visual Studio 2012 创建的 Web 应用程序
-如果应用程序是在 Visual Studio 2012 中生成的，则你可能已使用标识和访问工具配置了应用程序。 还可能会用到[验证颁发者名称注册表 (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry)。 VINR 负责维护受信任标识提供程序（Microsoft 标识平台）的相关信息以及用于验证其颁发的令牌的密钥。 使用 VINR 还可轻松地自动更新存储在 Web.config 文件中的密钥信息，具体方法是：下载与用户的目录关联的最新联合元数据文档，使用最新文档检查配置是否过期，并根据需要更新应用程序以使用新密钥。
+如果应用程序是在 Visual Studio 2012 中生成的，则你可能已使用标识和访问工具配置了应用程序。 还可能会用到[验证颁发者名称注册表 (VINR)](/previous-versions/dotnet/framework/windows-identity-foundation/validating-issuer-name-registry)。 VINR 负责维护受信任标识提供程序（Microsoft 标识平台）的相关信息以及用于验证其颁发的令牌的密钥。 使用 VINR 还可轻松地自动更新存储在 Web.config 文件中的密钥信息，具体方法是：下载与用户的目录关联的最新联合元数据文档，使用最新文档检查配置是否过期，并根据需要更新应用程序以使用新密钥。
 
 如果是使用 Microsoft 提供的代码示例或演练文档创建的应用程序，则密钥滚动更新逻辑已包含在项目中。 你会注意到下面的代码已存在于项目中。 如果应用程序尚未包含该逻辑，请按照下面的步骤添加该逻辑，并验证该逻辑是否正常工作。
 
@@ -292,7 +292,7 @@ namespace JWTValidation
 如果在 WIF v1.0 中构建应用程序，则系统未提供相应的机制来自动刷新应用程序的配置以使用新密钥。
 
 * 最简单的方法  使用 WIF SDK 中包含的 FedUtil 工具，该工具可以检索最新的元数据文档并更新配置。
-* 将应用程序更新到 .NET 4.5，该版本包括位于系统命名空间中的 WIF 的最新版本。 然后，可使用[验证颁发者名称注册表 (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry) 来执行应用程序配置的自动更新。
+* 将应用程序更新到 .NET 4.5，该版本包括位于系统命名空间中的 WIF 的最新版本。 然后，可使用[验证颁发者名称注册表 (VINR)](/previous-versions/dotnet/framework/windows-identity-foundation/validating-issuer-name-registry) 来执行应用程序配置的自动更新。
 * 按照本指南文档末尾的说明执行手动滚动更新。
 
 使用 FedUtil 更新配置的说明：

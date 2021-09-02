@@ -1,21 +1,22 @@
 ---
-title: 使用 Azure 映像生成器创建 Windows VM（预览版）
+title: 使用 Azure 映像生成器创建 Windows VM
 description: 使用 Azure 映像生成器创建 Windows VM。
 author: kof-f
 ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 04/23/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: 5c76161620f9f9b3dd46a5757d36a8c8a8423a1a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2a847d44f1c178aa5756b81e54ebdf6e961ab1d8
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455482"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594672"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>预览版：使用 Azure 映像生成器创建 Windows VM
+# <a name="create-a-windows-vm-with-azure-image-builder"></a>使用 Azure 映像生成器创建 Windows VM
 
 本文介绍如何使用 Azure VM 映像生成器创建自定义的 Windows 映像。 本文中的示例使用[自定义程序](../linux/image-builder-json.md#properties-customize)来自定义映像：
 - PowerShell (ScriptUri) - 下载并运行 [PowerShell 脚本](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)。
@@ -33,10 +34,6 @@ ms.locfileid: "110455482"
 我们将使用一个示例 .json 模板来配置映像。 我们将使用的 .json 文件位于：[helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json)。 
 
 
-> [!IMPORTANT]
-> Azure 映像生成器目前提供公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 
 > [!NOTE]
 > 对于 Windows 用户，可使用 Bash 在 [Azure Cloud Shell](https://shell.azure.com) 上运行以下 Azure CLI 示例。
@@ -44,17 +41,7 @@ ms.locfileid: "110455482"
 
 ## <a name="register-the-features"></a>注册功能
 
-若要在预览期间使用 Azure 映像生成器，需要注册新功能。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
-```
-
-检查功能注册的状态。
-
-```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
-```
+若要使用 Azure 映像生成器，则需要注册此功能。
 
 检查注册。
 
@@ -139,7 +126,7 @@ az role definition create --role-definition ./aibRoleImageCreation.json
 # grant role definition to the user assigned identity
 az role assignment create \
     --assignee $imgBuilderCliId \
-    --role $imageRoleDefName \
+    --role "$imageRoleDefName" \
     --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
 ```
 
@@ -169,7 +156,7 @@ vi helloImageTemplateWin.json
 
 > [!NOTE]
 > 对于源映像，始终必须[指定一个版本](../linux/image-builder-troubleshoot.md#build--step-failed-for-image-version)，而不能使用 `latest`。
-> 如果添加或更改映像所分发到的资源组，则必须[设置对资源组的权限](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group)。
+> 如果添加或更改映像所分发到的资源组，则确保必须对资源组[设置权限](#create-a-user-assigned-identity-and-set-permissions-on-the-resource-group)。
  
 ## <a name="create-the-image"></a>创建映像
 

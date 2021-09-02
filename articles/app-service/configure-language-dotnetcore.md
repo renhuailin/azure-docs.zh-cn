@@ -6,12 +6,12 @@ ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: ee726074de4e4c8163c741ebd549636afaaef752
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2e02e49b781d19e115ca2c39eead3aa7c693aef7
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750381"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223046"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>为 Azure 应用服务配置 ASP.NET Core 应用
 
@@ -74,7 +74,7 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="customize-build-automation"></a>自定义生成自动化
 
-如果在[启用了生成自动化](deploy-zip.md#enable-build-automation)的情况下使用 Git 或 zip 包部署应用，应用服务生成自动化将按以下顺序完成各个步骤：
+如果在[启用了生成自动化](deploy-zip.md#enable-build-automation-for-zip-deploy)的情况下使用 Git 或 zip 包部署应用，应用服务生成自动化将按以下顺序完成各个步骤：
 
 1. 运行 `PRE_BUILD_SCRIPT_PATH` 指定的自定义脚本。
 1. 运行 `dotnet restore` 来还原 NuGet 依赖项。
@@ -136,7 +136,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="deploy-multi-project-solutions"></a>部署多项目解决方案
 
-如果 Visual Studio 解决方案包含多个项目，则说明 Visual Studio 发布过程已包括选择要部署的项目的操作。 当你使用 Git 或[启用了生成自动化](deploy-zip.md#enable-build-automation)的 ZIP 部署等部署到应用服务部署引擎时，则应用服务部署引擎会选取它发现的第一个网站或 Web 应用项目作为应用服务应用。 你可以通过指定 `PROJECT` 应用设置来指定应用服务应当使用哪个项目。 例如，在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
+如果 Visual Studio 解决方案包含多个项目，则说明 Visual Studio 发布过程已包括选择要部署的项目的操作。 当你使用 Git 或[启用了生成自动化](deploy-zip.md#enable-build-automation-for-zip-deploy)的 ZIP 部署等部署到应用服务部署引擎时，则应用服务部署引擎会选取它发现的第一个网站或 Web 应用项目作为应用服务应用。 你可以通过指定 `PROJECT` 应用设置来指定应用服务应当使用哪个项目。 例如，在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings PROJECT="<project-name>/<project-name>.csproj"
@@ -175,7 +175,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="detect-https-session"></a>检测 HTTPS 会话
 
-在应用服务中，[TLS/SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此所有 HTTPS 请求均将以未加密的 HTTP 请求形式访问你的应用。 如果你的应用逻辑需要知道用户请求是否已加密，请在 *Startup.cs* 中配置 Forwarded Headers 中间件：
+在应用服务中，[TLS/SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果你的应用逻辑需要知道用户请求是否已加密，请在 *Startup.cs* 中配置 Forwarded Headers 中间件：
 
 - 使用 [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) 配置中间件，以转接 `Startup.ConfigureServices` 中的 `X-Forwarded-For` 和 `X-Forwarded-Proto` 标头。
 - 添加已知网络的专用 IP 地址范围，以便该中间件可以信任应用服务负载均衡器。

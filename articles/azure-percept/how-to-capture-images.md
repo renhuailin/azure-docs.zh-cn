@@ -1,20 +1,20 @@
 ---
-title: 在 Azure Percept Studio 中捕获无代码视觉解决方案的图像
+title: 在 Azure Percept Studio 中捕获图像
 description: 如何在 Azure Percept Studio 中使用 Azure Percept DK 捕获图像
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 2c7116d7e62afe6a59ad48bbb28dabf3c05bc311
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: b724e18d8f9119ac33d878cfbf4393c4712d003f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754390"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219673"
 ---
-# <a name="capture-images-for-a-vision-project-in-azure-percept-studio"></a>在 Azure Percept Studio 中捕获视觉项目的图像
+# <a name="capture-images-in-azure-percept-studio"></a>在 Azure Percept Studio 中捕获图像
 
 按照本指南的说明，使用 Azure Percept DK 捕获现有视觉项目的图像。 如果你还没有创建视觉项目，请参阅[无代码视觉教程](./tutorial-nocode-vision.md)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "108754390"
 
     :::image type="content" source="./media/how-to-capture-images/overview-devices-inline.png" alt-text="Azure Percept Studio 概述屏幕。" lightbox="./media/how-to-capture-images/overview-devices.png":::
 
-1. 从列表中选择你的开发工具包。
+1. 从列表中选择 devkit。
 
     :::image type="content" source="./media/how-to-capture-images/select-device.png" alt-text="Percept 设备列表。":::
 

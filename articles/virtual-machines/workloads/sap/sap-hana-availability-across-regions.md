@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f925e72493a94bcdbde64bdfbcef6acf83977f52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bf4f1fbb5d984b052a9fdb84ed9d26da18db2f9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669729"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445806"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>跨 Azure 区域的 SAP HANA 可用性
 
@@ -67,7 +67,7 @@ Azure 虚拟网络使用不同的 IP 地址范围。 IP 地址部署在第二个
 
 ![跨两个区域的三个 VM 示意图](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
 
-SAP 使用 HANA 2.0 SPS3 引入了[多目标系统复制](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html)。 多目标系统复制在更新方案中带来一些优势。 例如，当辅助 HA 站点关闭以进行维护或更新时，DR 站点（区域 2）不会受到影响。 可以在[此处](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html)找到有关 HANA 多目标系统复制的更多信息。
+SAP 使用 HANA 2.0 SPS3 引入了[多目标系统复制](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html)。 多目标系统复制在更新方案中带来一些优势。 例如，当辅助 HA 站点关闭以进行维护或更新时，DR 站点（区域 2）不会受到影响。 可以在 [SAP 帮助门户](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html)找到有关 HANA 多目标系统复制的更多信息。
 使用多目标复制的可能体系结构如下所示：
 
 ![三个 VM 在两个区域上的多目标图](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_3VMs.PNG)

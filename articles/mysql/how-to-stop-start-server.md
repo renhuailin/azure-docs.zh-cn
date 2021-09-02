@@ -6,17 +6,19 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: d297d215d4b0edfdd67b603ba4707bf02057ad78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed784f38c5c297e06c62c2bb7f801a4f0aac0799
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100516866"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652701"
 ---
 # <a name="stopstart-an-azure-database-for-mysql"></a>停止/启动 Azure Database for MySQL
 
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 > [!IMPORTANT]
->  当你停止服务器时，它将在接下来的 7 天中一直保持该状态。 如果在此期间未手动启动服务器，则服务器将在 7 天结束时自动启动。 如果不使用服务器，则可以选择再次停止它。
+> 当你停止服务器时，它将在接下来的 7 天中一直保持该状态。 如果在此期间未手动启动服务器，则服务器将在 7 天结束时自动启动。 如果不使用服务器，则可以选择再次停止它。
 
 本文逐步介绍了停止和启动单一服务器的过程。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/07/2021
+ms.date: 06/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 8a4a9834b35055fbd5be4fd50f1d5413d5e54a35
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 13d020ed0ea6310f49cbe37555fc2a9048b9f042
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111758067"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465378"
 ---
 # <a name="use-azure-marketplace-image-to-create-vm-image-for-your-azure-stack-edge-pro-gpu"></a>使用 Azure 市场映像为 Azure Stack Edge Pro GPU 创建 VM 映像
 
@@ -45,7 +45,7 @@ ms.locfileid: "111758067"
 
 现在将确定想要使用的特定 Azure 市场映像。 Azure 市场托管数以千计的 VM 映像。 
 
-要查找与搜索条件匹配的一些最常见市场映像，请运行以下命令。  
+若要查找与搜索条件匹配的一些最常用市场映像，请运行以下命令。  
 
 ```azurecli
 az vm image list --all [--publisher <Publisher>] [--offer <Offer>] [--sku <SKU>]
@@ -137,7 +137,9 @@ PS /home/user>
  
 :::image type="content" source="media/azure-stack-edge-create-virtual-machine-marketplace-image/marketplace-image-1.png" alt-text="市场映像列表":::
 
-下面是一些最常见映像的 URN 列表。 如果只需要特定 OS 的最新版本，则可以在 URN 中将版本号替换为“latest”。 例如，“MicrosoftWindowsServer:WindowsServer:2019-Datacenter:Latest”。 
+### <a name="commonly-used-marketplace-images"></a>常用市场映像
+
+下面是一些最常用映像的 URN 列表。 如果只需要特定 OS 的最新版本，则可以在 URN 中将版本号替换为“latest”。 例如，“MicrosoftWindowsServer:WindowsServer:2019-Datacenter:Latest”。 
 
 
 | (OS)              | SKU                                     | 版本               | URN                                                                                       |

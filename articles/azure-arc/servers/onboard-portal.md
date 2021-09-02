@@ -1,14 +1,14 @@
 ---
 title: 从 Azure 门户将混合计算机连接到 Azure
 description: 本文介绍如何安装代理，并通过 Azure 门户使用已启用 Azure Arc 的服务器将计算机连接到 Azure。
-ms.date: 11/05/2020
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: d7a89db7b8a42476a312a8f9a96c5ad230b140a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bcccb9bbc4db14c2bc5553b1c88099f7b0d7f5d1
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183142"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322304"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>从 Azure 门户将混合计算机连接到 Azure
 
@@ -58,7 +58,7 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 >* 若要安装或卸载代理，必须拥有“管理员”权限。
 >* 必须先下载 Installer 包并将其复制到目标服务器上的某个文件夹，或者从共享网络文件夹下载。 如果在不指定任何选项的情况下运行该 Installer 包，它将启动一个安装向导，以交互方式指导用户安装代理。
 
-如果计算机需要通过代理服务器来与服务通信，则在安装代理后，需要运行以下步骤中所述的某个命令。 此命令将设置代理服务器系统环境变量 `https_proxy`。
+如果计算机需要通过代理服务器来与服务通信，则在安装代理后，需要运行以下步骤中所述的某个命令。 此命令将设置代理服务器系统环境变量 `https_proxy`。 使用此配置，代理使用 HTTP 协议通过代理服务器进行通信。
 
 如果不熟悉 Windows Installer 包的命令行选项，请查看 [Msiexec 标准命令行选项](/windows/win32/msi/standard-installer-command-line-options)和 [Msiexec 命令行选项](/windows/win32/msi/command-line-options)。
 
@@ -86,7 +86,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
     ```
 
     >[!NOTE]
-    >此预览版中的代理程序不支持设置代理身份验证。
+    >代理程序不支持设置代理身份验证。
     >
 
 3. 安装代理后，需要通过运行以下命令将其配置为与 Azure Arc 服务通信：
@@ -117,7 +117,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 
 * 安装混合资源提供程序包。
 
-（可选）可以通过包含 `--proxy "{proxy-url}:{proxy-port}"` 参数使用代理信息来配置代理。
+（可选）可以通过包含 `--proxy "{proxy-url}:{proxy-port}"` 参数使用代理信息来配置代理。 使用此配置，代理使用 HTTP 协议通过代理服务器进行通信。
 
 该脚本还包含用于识别受支持和不受支持分发包的逻辑，并可验证执行安装所需的权限。
 
@@ -131,7 +131,7 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh
 ```
 
-1. 若要下载并安装代理，请结合 `--proxy` 参数（用于将代理配置为通过代理服务器通信）运行以下命令：
+1. 若要下载并安装代理，请运行以下命令。 如果计算机需要通过代理服务器进行通信以连接到 Internet，请包含 `--proxy` 参数。 
 
     ```bash
     # Download the installation package.
@@ -164,8 +164,8 @@ bash ~/Install_linux_azcmagent.sh
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 [Connected Machine Agent 故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
+- 在 [Connected Machine 代理故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
 
-- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否向预期的 Log Analytics 工作区报告、使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 启用监视，等等。
+- 查看[规划和部署指南](plan-at-scale-deployment.md)，以便对按任意规模部署启用了 Azure Arc 的服务器进行规划，并实现集中管理和监视。
 
-- 详细了解 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 如果你想要使用用于 VM 的 Azure Monitor 收集操作系统和工作负载监视数据、使用自动化 Runbook 或“更新管理”等功能管理这些数据，或使用 [Azure 安全中心](../../security-center/security-center-introduction.md)等其他 Azure 服务，则需要适用于 Windows 和 Linux 的 Log Analytics 代理。
+- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)、验证计算机是否向预期的 Log Analytics 工作区报告、使用 [VM 见解](../../azure-monitor/vm/vminsights-enable-policy.md)启用监视，等等。

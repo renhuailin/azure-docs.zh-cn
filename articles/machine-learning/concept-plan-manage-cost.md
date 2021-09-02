@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: 01c985b0554fe5955010c1c8c286f81f8de6d3ee
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: e48cdb3792a314166a29ced4d3828ba77de46621
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005998"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742063"
 ---
 # <a name="plan-to-manage-costs-for-azure-machine-learning"></a>计划管理 Azure 机器学习的成本
 
@@ -51,10 +51,6 @@ ms.locfileid: "112005998"
 Azure 机器学习在 Azure 基础结构上运行，部署新资源时，Azure 基础结构会随 Azure 机器学习的使用产生成本。 需要了解的是，其他基础结构可能会产生成本。 对已部署的资源进行更改时需要管理该成本。 
 
 
-
-
-
-
 ### <a name="costs-that-typically-accrue-with-azure-machine-learning"></a>会随 Azure 机器学习的使用而产生的成本
 
 为 Azure 机器学习工作区创建资源时，会同时创建其他 Azure 服务的资源。 它们是：
@@ -62,8 +58,21 @@ Azure 机器学习在 Azure 基础结构上运行，部署新资源时，Azure �
 * [Azure 容器注册表](https://azure.microsoft.com/pricing/details/container-registry?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)基本帐户
 * [Azure 块 Blob 存储](https://azure.microsoft.com/pricing/details/storage/blobs?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)（常规用途 v1）
 * [密钥保管库](https://azure.microsoft.com/pricing/details/key-vault?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
-* [Application Insights](https://azure.microsoft.com/en-us/pricing/details/monitor?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+* [Application Insights](https://azure.microsoft.com/pricing/details/monitor?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+
+创建[计算实例](concept-compute-instance.md)时，VM 将保持打开状态，以供你操作。  [设置计划](how-to-create-manage-compute-instance.md#schedule)以自动启动和停止计算实例（预览版），以节省非计划使用成本。
  
+### <a name="costs-might-accrue-before-resource-deletion"></a>删除资源后可能会产生成本
+
+在 Azure 门户中或使用 Azure CLI 删除 Azure 机器学习工作区之前，以下子资源均是累计的常见成本，即使你在工作区中未处于活动状态亦会如此。 如果你计划稍后返回 Azure 机器学习工作区，这些资源可能会持续产生成本。
+
+* VM
+* 负载均衡器
+* 虚拟网络
+* 带宽
+
+每个 VM 在运行时均按小时计费。 成本取决于 VM 规范。 仍可通过负载均衡器对正在运行但未主动处理数据集的 VM 进行计费。 对于每个计算实例，系统将每天计费一个负载均衡器。 计算群集的每个 50 节点都将有一个计费的标准负载均衡器。 每个负载均衡器每天计费约 0.33 美元。 若要避免计算已停止计算实例和计算群集上的负载均衡器成本，请删除计算资源。 每个订阅和每个区域将按一个虚拟网络计费。 虚拟网络不能跨区域或订阅。 在 vNet 设置中设置专用终结点可能还会产生费用。 带宽按使用情况收；传输的数据越多，收取的费用就越多。
+
 ### <a name="costs-might-accrue-after-resource-deletion"></a>删除资源后可能会产生成本
 
 在 Azure 门户中或使用 Azure CLI 删除某个 Azure 机器学习工作区后，以下资源会继续存在。 它们会持续产生成本，直到将其删除。
@@ -153,11 +162,13 @@ For example, you might start with the following (modify for your service):
 - 设置订阅和工作区上的配额
 - 针对“训练运行”设置终止策略
 - 使用低优先级虚拟机 (VM)
+- 将计算实例计划为自动关闭并启动
 - 使用 Azure 虚拟机预留实例
 - 本地训练
 - 并行化训练
 - 设置数据保留和删除策略
 - 将资源部署到同一区域
+- 如果你不打算在不久的将来使用这些实例和群集，请将其删除。
 
 有关详细信息，请参阅[管理和优化 Azure 机器学习成本](how-to-manage-optimize-cost.md)。
 

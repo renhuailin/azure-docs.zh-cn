@@ -15,12 +15,12 @@ ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cad63eaa8e548e48e76bba63e5ba70358b34cd99
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ff04f3595cbcba7a5bfc1c5c5e9564a862cb32de
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731981"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223717"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 虚拟机（资源管理器）的自动备份
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -100,28 +100,6 @@ ms.locfileid: "121731981"
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
-### <a name="install-the-sql-server-iaas-extension"></a>安装 SQL Server IaaS 扩展
-如果通过 Azure 门户预配了 SQL Server VM，应已安装 SQL Server IaaS 扩展。 可通过调用 Get-AzVM 命令并检查 Extensions 属性，确定是否为 VM 安装了该扩展 。
-
-```powershell
-$vmname = "vmname"
-$resourcegroupname = "resourcegroupname"
-
-(Get-AzVM -Name $vmname -ResourceGroupName $resourcegroupname).Extensions
-```
-
-如果已安装 SQL Server IaaS 代理扩展，应会看到其列为“SqlIaaSAgent”或“SQLIaaSExtension”。 此外，该扩展的“ProvisioningState”应显示“成功”。
-
-如果未安装或未能预配该扩展，可使用以下命令进行安装。 除了 VM 名称和资源组以外，还必须指定 VM 所在的区域 ( **$region**)。 指定 SQL Server VM 的许可类型，通过 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)在即用即付或自带许可之间进行选择。 有关许可的详细信息，请参阅[许可模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
-
-```powershell
-New-AzSqlVM  -Name $vmname `
-    -ResourceGroupName $resourcegroupname `
-    -Location $region -LicenseType <PAYG/AHUB>
-```
-
-> [!IMPORTANT]
-> 如果尚未安装该扩展，安装该扩展将会重启 SQL Server。
 
 ### <a name="verify-current-settings"></a><a id="verifysettings"></a> 验证当前设置
 

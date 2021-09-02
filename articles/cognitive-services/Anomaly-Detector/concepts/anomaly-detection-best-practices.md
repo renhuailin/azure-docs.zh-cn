@@ -1,5 +1,5 @@
 ---
-title: 使用异常检测器 API 时的最佳做法
+title: 使用异常检测器单变量 API 时的最佳做法
 titleSuffix: Azure Cognitive Services
 description: 了解通过异常检测器 API 检测异常时的最佳做法。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: 43ccde054a9630b251aa6c206028d29c7c699316
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de1662fd39030082dfbfef4d38d1803b3d6f82e5
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98936198"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113297291"
 ---
-# <a name="best-practices-for-using-the-anomaly-detector-api"></a>使用异常检测器 API 时的最佳做法
+# <a name="best-practices-for-using-the-anomaly-detector-univariate-api"></a>使用异常检测器单变量 API 的最佳做法
 
 异常检测器 API 是一项无状态异常情况检测服务。 其结果的准确度和表现可能受以下因素影响：
 

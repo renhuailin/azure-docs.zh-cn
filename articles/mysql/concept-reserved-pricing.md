@@ -6,22 +6,24 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: b1f51cd9e9f310c68834c16f83c182250a1a4eaf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e64acd29e8b1e2e60b3ae1b855f8552e277e824
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98598019"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122651996"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>为具有预留容量的 Azure Database for MySQL 计算资源预付费用
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL 现在可以让你通过预付计算资源费用来节省资金（与即用即付价格相比）。 使用 Azure Database for MySQL 预留容量，你可以提前承诺为期一年或三年的 MySQL 服务器使用量，以获得可观的计算资源价格折扣。 若要购买 Azure Database for MySQL 预留容量，需要指定 Azure 区域、部署类型、性能层和期限。 </br>
 
 不需要将预留容量分配到特定 Azure Database for MySQL 服务器。 已在运行的或新部署的 Azure Database for MySQL 会自动获得预留定价的权益。 购买预留容量便会预付为期一年或三年的计算资源费用。 购买预留容量后，与预留属性匹配的 Azure Database for MySQL 计算资源费用不再按照即用即付的费率计收。 预留容量不包括与 MySQL 数据库服务器关联的软件、网络或存储费用。 预留期限结束时，计费权益随即过期，Azure Database for MySQL 将按即用即付价格计费。 虚拟机预留实例不自动续订。 有关定价信息，请参阅 [Azure Database for MySQL 预留容量产品/服务](https://azure.microsoft.com/pricing/details/mysql/)。 </br>
 
-可在 [Azure 门户](https://portal.azure.com/)中购买 Azure Database for MySQL 预留容量。 通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 若要购买预留容量：
+可在 [Azure 门户](https://portal.azure.com/)中购买 Azure Database for MySQL 预留容量。 通过[提前付款或按月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)的方式为预留付款。 购买预留容量：
 
-* 你必须是至少一个采用即用即付费率的企业或个人订阅的所有者角色。
+* 必须具有至少一个采用即用即付费率的企业或个人订阅的所有者角色。
 * 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”  。 或者，如果禁用了该设置，则必须是订阅的 EA 管理员。
 * 对于云解决方案提供商 (CSP) 计划，只有管理员代理或销售代理可以购买 Azure Database for MySQL 预留容量。 </br>
 
@@ -50,7 +52,7 @@ Azure Database for MySQL 现在可以让你通过预付计算资源费用来节�
 
 | 字段 | 说明 |
 | :------------ | :------- |
-| 订阅   | 用于支付 Azure Database for MySQL 预留容量预订费用的订阅。 订阅付款方式是收取 Azure Database for MySQL 预留容量的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）或采用即用即付定价的个人协议（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的 Azure 预付款（以前称为货币承诺）余额中扣除费用或按超额收取费用。 对于采用即用即付定价的个人订阅，将从订阅上的信用卡或发票付款方式收取费用。
+| 订阅   | 用于支付 Azure Database for MySQL 预留容量预订费用的订阅。 订阅付款方式是收取 Azure Database for MySQL 预留容量的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）或采用即用即付定价的个人协议（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的 Azure 预付款（以前称为货币承诺）余额中扣除费用或按超额收取费用。 对于采用即用即付定价的个人订阅，将按订阅上的信用卡或发票付款方式收取费用。
 | 范围 | vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： </br></br> “共享”，vCore 预留折扣将应用到计费上下文中任何订阅中运行的 Azure Database for MySQL 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> “单个订阅”，vCore 预留折扣将应用到此订阅中的 Azure Database for MySQL 服务器。 </br></br> “单个资源组”，预留折扣将应用到所选订阅中的 Azure Database for MySQL 服务器，以及该订阅内的所选资源组。
 | 区域 | 预订的 Azure Database for MySQL 预留容量涵盖的 Azure 区域。
 | 部署类型 | 要为其购买预留容量的 Azure Database for MySQL 资源类型。

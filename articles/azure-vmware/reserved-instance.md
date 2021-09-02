@@ -3,16 +3,16 @@ title: Azure VMware 解决方案的预留实例
 description: 了解如何购买 Azure VMware 解决方案的预留实例。 预留实例仅涵盖使用情况的计算部分，并包括软件许可成本。
 ms.topic: how-to
 ms.date: 05/13/2021
-ms.openlocfilehash: 8407d4e85718660bfcf17b3597710ed5237b41e1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6204e7cade66ee60885db20226981980f4741a76
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745810"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323669"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>利用 Azure VMware 解决方案节省成本
 
-当你提交到 [Azure VMware 解决方案](introduction.md)的预留实例时，可以节省资金。  预留折扣会自动应用到与预留范围和属性相匹配的正在运行的 Azure VMware 解决方案主机。 购买的预留实例仅涵盖使用情况的计算部分，并包括软件许可成本。 
+当你提交到 [Azure VMware 解决方案](introduction.md)的预留实例时，可以节省资金。 预留折扣会自动应用到与预留范围和属性相匹配的正在运行的 Azure VMware 解决方案主机。 此外，购买的预留实例仅涵盖使用情况的计算部分，并包括软件许可成本。 
 
 ## <a name="purchase-restriction-considerations"></a>购买限制注意事项
 
@@ -38,7 +38,7 @@ ms.locfileid: "111745810"
 
 -   对于 EA 订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项。 如果禁用了该选项，则你必须是订阅的 EA 管理员才能启用它。
 
--   对于云解决方案提供商 (CSP) Azure 计划下的订阅，合作伙伴必须在 Azure 门户为客户购买预留实例。 
+-   对于云解决方案提供商 (CSP) Azure 计划下的订阅，合作伙伴必须在 Azure 门户购买客户的预留实例。 
 
 ### <a name="buy-reserved-instances-for-an-ea-subscription"></a>为 EA 订阅购买预留实例
 
@@ -55,7 +55,7 @@ ms.locfileid: "111745810"
    | 字段        |  说明 |
    | ------------ | ------------ |
    | 订阅 | 用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须为企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）、Microsoft 客户协议或采用即用即付费率的个人订阅（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 从 Azure 预付款（以前称为货币承诺）余额中扣除费用（如果可用）或按超额收取费用。 对于采用即用即付费率的订阅，将向订阅的信用卡或发票付款方式收取费用。 |
-   | 范围        | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：<br><ul><li><b>单个资源组范围</b> - 仅将预留折扣应用到所选资源组中匹配的资源。</li><li><b>单个订阅范围</b> - 将预留折扣应用到所选订阅中匹配的资源。</li><li><b>共享范围</b> - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文是“注册”。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>       |
+   | 范围        | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：<br><ul><li><b>单个资源组范围</b> - 仅将预留折扣应用到所选资源组中匹配的资源。</li><li><b>单个订阅范围</b> - 将预留折扣应用到所选订阅中匹配的资源。</li><li><b>共享范围</b> - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文是“注册”。 因此，对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>       |
    | 区域       | 预订涵盖的 Azure 区域。   |
    | 主机大小    | AV36    |
    | 术语         | 一年或三年。  |
@@ -71,26 +71,26 @@ ms.locfileid: "111745810"
 
 3. 展开客户详细信息并选择“Microsoft Azure 管理门户”。 
 
-   :::image type="content" source="media/reserved-instances/csp-partner-center-aobo.png" alt-text="Microsoft 合作伙伴中心客户区域" lightbox="media/reserved-instances/csp-partner-center-aobo.png":::
+   :::image type="content" source="media/reserved-instances/csp-partner-center-aobo.png" alt-text="显示 Microsoft 合作伙伴中心客户区域的屏幕截图，其中选中了 Microsoft Azure 管理门户。" lightbox="media/reserved-instances/csp-partner-center-aobo.png":::
 
 4. 在 Azure 门户中，选择“所有服务” > “预留”。
 
 5. 选择“立即购买”，然后选择“Azure VMware 解决方案”。
 
-   :::image type="content" source="media/reserved-instances/csp-buy-reserved-instance-azure-portal.png" alt-text="Microsoft Azure 门户预留" lightbox="media/reserved-instances/csp-buy-reserved-instance-azure-portal.png":::
+   :::image type="content" source="media/reserved-instances/csp-buy-reserved-instance-azure-portal.png" alt-text="显示在 Microsoft Azure 门户中购买 Azure VMware 解决方案预留的屏幕截图。" lightbox="media/reserved-instances/csp-buy-reserved-instance-azure-portal.png":::
 
 6. 输入必填字段。 与正在运行的 Azure VMware 解决方案主机相匹配的所选属性可享受预留折扣。  属性包括 SKU、区域（如果适用）和范围。 预留范围选择预留节省的应用场合。
 
    | 字段        |  说明 |
    | ------------ | ------------ |
-   | 订阅 | 用于支付预订费用的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须是符合条件的类型，在本例中为 CSP 订阅|
-   | 范围        | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：<br><ul><li><b>单个资源组范围</b> - 仅将预留折扣应用到所选资源组中匹配的资源。</li><li><b>单个订阅范围</b> - 将预留折扣应用到所选订阅中匹配的资源。</li><li><b>共享范围</b> - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文是“注册”。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>       |
+   | 订阅 | 为预留提供资金的订阅。 将向订阅的付款方式收取预留的费用。 订阅类型必须是符合条件的类型，在本例中为 CSP 订阅|
+   | 范围        | 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择：<br><ul><li><b>单个资源组范围</b> - 仅将预留折扣应用到所选资源组中匹配的资源。</li><li><b>单个订阅范围</b> - 将预留折扣应用到所选订阅中匹配的资源。</li><li><b>共享范围</b> - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于 EA 客户，计费上下文是“注册”。 因此，对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。</li></ul>       |
    | 区域       | 预订涵盖的 Azure 区域。   |
    | 主机大小    | AV36    |
    | 术语         | 一年或三年。  |
    | 数量     | 预留中购买的实例数。 数量是可以获得计费折扣的正在运行的 Azure VMware 解决方案主机数。     |
 
-要详细了解如何查看为客户购买的预留，请参阅[以云解决方案提供商 (CSP) 的身份查看 Azure 预留](../cost-management-billing/reservations/how-to-view-csp-reservations.md)一文。
+若要详细了解如何查看为客户购买的预留，请参阅[以云解决方案提供商 (CSP) 的身份查看 Azure 预留](../cost-management-billing/reservations/how-to-view-csp-reservations.md)一文。
 
 ## <a name="usage-data-and-reservation-usage"></a>使用情况数据和预留使用情况
 

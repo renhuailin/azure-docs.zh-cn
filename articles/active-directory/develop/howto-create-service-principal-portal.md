@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 06/16/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, subject-rbac-steps
-ms.openlocfilehash: b4589f451894e328a27b67ac19be4ea91374bee5
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 2b8e8c73286eb058f5fcd183ac43998801a0ebe8
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579947"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038425"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
+# <a name="use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
 本文介绍如何创建新的 Azure Active Directory (Azure AD) 应用程序和服务主体，后者可以与基于角色的访问控制配合使用。 如果有需要访问或修改资源的应用程序、托管服务或者自动工具，则可以为应用创建标识。 此标识称为服务主体。 资源访问权限受分配给服务主体的角色限制，可用于控制哪些资源可以访问以及在哪个级别进行访问。 出于安全原因，始终建议将服务主体与自动化工具配合使用，而不是允许它们使用用户标识进行登录。
 

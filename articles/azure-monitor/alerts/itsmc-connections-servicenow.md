@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 51d16ae53e34dacfc41e3d31b01115f9c55ca9f7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 441ed0072eee17ee6250bb7de39442ecfd669cf3
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039540"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687778"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>通过 IT 服务管理连接器连接 ServiceNow
 
@@ -28,20 +28,15 @@ ms.locfileid: "102039540"
 
 ### <a name="oauth-setup"></a>OAuth 设置
 
-ServiceNow 支持的版本包括巴黎、奥兰多、纽约、马德里、伦敦、金斯敦、雅加达、伊斯坦布尔、赫尔辛基和日内瓦。
+ServiceNow 支持的版本包括魁北克、巴黎、奥兰多、纽约、马德里、伦敦、金斯敦、雅加达、伊斯坦布尔、赫尔辛基和日内瓦。
 
 ServiceNow 管理员必须为其 ServiceNow 实例生成客户端 ID 和客户端机密。 请根据需要参阅以下信息：
 
+- [为魁北克设置 OAuth](https://docs.servicenow.com/bundle/quebec-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [为巴黎设置 OAuth](https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [为奥兰多设置 OAuth](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [为纽约设置 OAuth](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [为马德里设置 OAuth](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [为伦敦设置 OAuth](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [为金斯顿设置 OAuth](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [为雅加达设置 OAuth](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [为伊斯坦布尔设置 OAuth](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [为赫尔辛基设置 OAuth](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [为日内瓦设置 OAuth](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
 
 在设置 OAuth 时，我们建议：
 

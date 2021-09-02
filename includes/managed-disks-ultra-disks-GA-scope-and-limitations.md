@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/12/2021
+ms.date: 08/17/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a95f83dbfa0574aa88b964538f329c7d9075a50b
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: d0bed89f56d41c6613080e84d743d245243bb507
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111593633"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322011"
 ---
 目前，超级磁盘有其他限制，如下所示：
 
@@ -82,6 +82,6 @@ ms.locfileid: "111593633"
 - 当前不支持磁盘快照、磁盘导出、更改磁盘类型、VM 映像、可用性集、Azure 专用主机或 Azure 磁盘加密。
 - 当前不支持与 Azure 备份或 Azure Site Recovery 的集成。
 - 仅支持未缓存的读取和未缓存的写入。
-- GA VM 上 IOPS 的当前最大限制为 80,000。
+- 采用正式发布大小的单个 VM 的 IOPS 当前最大限制为 80,000。 具有更高 IOPS 的超级磁盘可以用作共享磁盘，以支持多个 VM。
 
 默认情况下，Azure 超级磁盘在每个区域的每个订阅中提供高达 32 TiB 的容量，但超级磁盘支持更高的容量请求。 若要请求增加容量，可请求配额增加或联系 Azure 支持。

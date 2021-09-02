@@ -1,20 +1,20 @@
 ---
 title: 设置 Azure IoT 中心以部署无线更新
 description: 了解如何配置 Azure IoT 中心以通过无线方式将更新部署到 Azure Percept DK
-author: mimcco
-ms.author: mimcco
+author: EthanChangAED
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 81697efc7832adf62d26c751d1e6e93070c2579b
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 26e53511cfab9444a9d5a9c4dcd868be07b40e16
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684066"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224353"
 ---
-# <a name="how-to-set-up-azure-iot-hub-to-deploy-over-the-air-updates-to-your-azure-percept-dk"></a>如何将 Azure IoT 中心设置为将无线更新部署到 Azure Percept DK
+# <a name="set-up-azure-iot-hub-to-deploy-over-the-air-updates"></a>设置 Azure IoT 中心以部署无线更新
 
 使用无线更新使 Azure Percept DK 保持安全和最新状态。 只需简单几步，即可使用 Device Update for IoT Hub 设置 Azure 环境，并将最新更新部署到 Azure Percept DK。
 

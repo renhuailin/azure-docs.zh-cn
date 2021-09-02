@@ -1,18 +1,18 @@
 ---
 title: Azure API 管理的 Azure Policy 法规合规性控制措施
 description: 列出可用于 Azure API 管理的 Azure Policy 法规合规性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: sample
 author: dlepow
 ms.author: apimpm
 ms.service: api-management
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1c504f9a0b6f70db6abd867a1f15a3645315039e
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: e3308359ffb130bbf52248fbebee64ed302d1472
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608929"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111558"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-api-management"></a>Azure API 管理的 Azure Policy 法规合规性控制措施
 

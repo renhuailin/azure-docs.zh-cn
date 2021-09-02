@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 07/19/2021
 ms.author: justinha
 author: rhicock
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d25ed1e46823ec6d820addf3944c96c97fcabcb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c92095449132b790c80cf6396a3608f802d7e9a7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101689022"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458497"
 ---
 # <a name="two-way-sms-unsupported"></a>不支持双向短信
 
-Azure AD 多重身份验证 (MFA) 服务器的双向短信 (MFA) 于 2018 年开始弃用，在 2021 年 2 月 24 日之后不再受到支持。 管理员应为仍然使用双向短信的用户启用另一种方法。
+Azure AD 多重身份验证 (MFA) 服务器的双向短信服务于 2018 年开始弃用，在 2021 年 2 月 24 日之后不再受到支持，但 2021 年 8 月 2 日前收到支持扩展的组织除外。 管理员应为仍然使用双向短信的用户启用另一种方法。
 
 电子邮件通知和 Azure 门户服务运行状况通知（门户 toast）已于 2020 年 12 月 8 日和 2021 年 1 月 28 日发送给受影响的管理员。 警报已发送到与订阅绑定的所有者、共同所有者、管理员和服务管理员 RBAC 角色。 如果已完成以下步骤，则无需执行任何操作。
 

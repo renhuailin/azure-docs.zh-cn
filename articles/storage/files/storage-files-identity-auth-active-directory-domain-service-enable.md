@@ -4,16 +4,16 @@ description: 了解如何借助 Azure Active Directory 域服务，通过服务�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/03/2021
+ms.date: 07/22/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 05a92cd9f2ce7d5e23896f3dd8109abde5be69ca
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f995b4b17330f6469f05c5399c2129fa7abc33bf
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669904"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462537"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>在 Azure 文件存储上启用 Azure Active Directory 域服务身份验证
 
@@ -22,8 +22,16 @@ ms.locfileid: "110669904"
 如果你不熟悉 Azure 文件共享，建议在阅读以下系列文章之前阅读我们的[规划指南](storage-files-planning.md)。
 
 > [!NOTE]
-> Azure 文件存储仅支持通过具有 RC4-HMAC 的 Azure AD DS 进行 Kerberos 身份验证。 尚不支持 AES Kerberos 加密。
+> Azure 文件存储支持通过具有 RC4-HMAC 和 AES-256 加密的 Azure AD DS 进行 Kerberos 身份验证。
+>
 > Azure 文件存储支持通过与 Azure AD 完全同步对 Azure AD DS 进行身份验证。 如果已在 Azure AD DS 中启用仅同步 Azure AD 的一组有限标识的作用域内同步，则不支持身份验证和授权。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -87,13 +95,14 @@ ms.locfileid: "110669904"
 若要使用 [Azure 门户](https://portal.azure.com)通过 SMB 启用 Azure AD DS 身份验证，请执行以下步骤：
 
 1. 在 Azure 门户中，转到现有的存储帐户或[创建存储帐户](../common/storage-account-create.md)。
-1. 在“设置”部分选择“配置”。
-1. 在“对文件共享的基于标识的访问”下，将“Azure Active Directory 域服务 (AAD DS)”的开关切换到“已启用”。
+1. 在“文件共享”部分中，选择“Active Directory：未配置”。
+
+    :::image type="content" source="media/storage-files-active-directory-enable/files-azure-ad-enable-storage-account-identity.png" alt-text="屏幕截图：存储帐户中的“文件共享”窗格，其中突出显示了“Active Directory”。" lightbox="media/storage-files-active-directory-enable/files-azure-ad-enable-storage-account-identity.png":::
+
+1. 选择“Azure Active Directory 域服务”，然后切换到“已启用”。
 1. 选择“保存”。
 
-下图显示了如何通过 SMB 为存储帐户启用 Azure AD DS 身份验证。
-
-:::image type="content" source="media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png" alt-text="存储帐户中的配置边栏选项卡的屏幕截图，显示 Azure Active Directory 域服务已启用。" lightbox="media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png":::
+    :::image type="content" source="media/storage-files-active-directory-enable/files-azure-ad-highlight.png" alt-text="屏幕截图：“Active Directory”窗格，其中 Azure Active Directory 域服务已启用。" lightbox="media/storage-files-active-directory-enable/files-azure-ad-highlight.png":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 07/30/2021
 ms.custom: monitoring
-ms.openlocfilehash: 1d09538b9ada9a355ed956640d13a10ad544b348
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 37a916ca07a1767855b32b79ccb35722cc389f65
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180406"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830988"
 ---
 # <a name="best-practices-for-monitoring-azure-blob-storage"></a>有关监视 Azure Blob 存储的最佳做法
 
@@ -155,8 +155,6 @@ StorageBlobLogs
 
 ## <a name="optimize-cost-for-infrequent-queries"></a>优化不经常使用的查询的成本
 
-如果你保留了大量日志数据，但只是偶尔查询这些数据（例如，为了履行合规与安全责任），请考虑将日志存档至存储帐户，而不要使用 Log Analytics。 事务量很大时，使用 Log Analytics 所产生的成本相较于只存档至存储并使用其他查询技术而言可能更高。 在你想要利用 Log Analytics 的丰富功能的情况下，Log Analytics 才有意义。 可以通过将日志存档至存储帐户，然后在 Synapse 工作区中查询这些日志，来降低数据查询成本。
-
 可将日志导出到 Log Analytics 以使用丰富的本机查询功能。 如果存储帐户中有大量的事务，在 Log Analytics 中使用日志所产生的成本可能很高。 参阅 [Azure Log Analytics 定价](https://azure.microsoft.com/pricing/details/monitor/)。 如果你仅打算偶尔查询日志（例如，出于合规性审核目的查询日志），可以考虑将日志导出到存储帐户，然后基于日志数据使用某种无服务器查询解决方案（例如 Azure Synapse），从而降低总体成本。
 
 借助 Azure Synapse，可以创建无服务器 SQL 池以按需查询日志数据。 这可以大幅节省成本。 
@@ -190,6 +188,7 @@ StorageBlobLogs
 ## <a name="see-also"></a>另请参阅
 
 - [监视 Azure Blob 存储](monitor-blob-storage.md)。
+- [Azure Blob 存储监视数据参考](monitor-blob-storage-reference.md)
 - [教程：在 Azure 数据资源管理器和 Azure Monitor 中使用 Kusto 查询](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)。
 - [Azure Monitor 中的日志查询入门](../../azure-monitor/logs/get-started-queries.md)。
 

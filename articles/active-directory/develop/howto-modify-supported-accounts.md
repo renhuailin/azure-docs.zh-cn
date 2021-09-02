@@ -13,14 +13,14 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 3ae6616263de605d5910f244423b9e7ffc036c5d
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c89cb9c43ae274170e0cedb01b1908a874b7317e
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079694"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039943"
 ---
-# <a name="how-to-modify-the-accounts-supported-by-an-application"></a>如何修改应用程序支持的帐户
+# <a name="modify-the-accounts-supported-by-an-application"></a>修改应用程序支持的帐户
 
 在 Microsoft 标识平台上注册应用程序时，你指定了可以访问该应用程序的人员或帐户类型。 例如，你可能只在你的组织中指定了帐户，该组织是一个单租户应用。 或者，你可能在任何组织（包括你的组织）中指定了帐户，该组织是一个多租户应用。
 

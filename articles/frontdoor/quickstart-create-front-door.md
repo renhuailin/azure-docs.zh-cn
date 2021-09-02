@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 74b7c16904c86751076d40056027999fe44cb868
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 30bcdce70ce15e7f960d8d04b3796a04f59b1ec2
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727860"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039265"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>快速入门：创建 Front Door，以实现高度可用的全局 Web 应用程序
 
@@ -135,7 +135,7 @@ ms.locfileid: "107727860"
     :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="将规则添加到 Front Door":::
 
    >[!WARNING]
-   > 必须确保 Front Door 中的每个前端主机都具有传递规则，且其中包含与之关联的默认路径 (`\*`)。 也就是说，在所有传递规则中，默认路径 (`\*`) 中定义的每个前端主机必须至少有一个路由规则。 如果不这样做，可能会导致最终用户流量无法正确路由。
+   > 必须确保 Front Door 中的每个前端主机都具有传递规则，且其中包含与之关联的默认路径 (`/*`)。 也就是说，在所有传递规则中，默认路径 (`/*`) 中定义的每个前端主机必须至少有一个路由规则。 如果不这样做，可能会导致最终用户流量无法正确路由。
 
 1. 选择“查看 + 创建”，然后选择“创建” 。
 

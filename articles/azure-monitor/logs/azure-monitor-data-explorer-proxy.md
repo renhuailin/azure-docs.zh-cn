@@ -6,12 +6,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: a800f78df26ce76144994bb9da2cac6271323eb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 498fc101f257b05d24826cead8906b513ec34ccd
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419416"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324532"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>使用 Azure Monitor 跨资源查询 Azure 数据资源管理器
 Azure Monitor 支持在 Azure 数据资源管理器、[Application Insights](../app/app-insights-overview.md) 和 [Log Analytics](../logs/data-platform-logs.md) 之间跨服务查询。 然后，可使用 Log Analytics/Application Insights 工具来查询 Azure 数据资源管理器群集，并在跨服务查询中引用它。 本文介绍如何进行跨服务查询。
@@ -55,6 +55,15 @@ union customEvents, CL1 | take 10
 
 > [!Tip]
 > 允许使用速记格式：ClusterName/InitialCatalog 。 例如 `adx('help/Samples')` 转换为 `adx('help.kusto.windows.net/Samples')`。
+
+>[!Note]
+> 
+>* 使用[`join` 运算符](/azure/data-explorer/kusto/query/joinoperator)（而不是联合）时，需要使用 [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) 将 Azure 数据资源管理器群集中的数据与 Log Analytics 工作区合并。
+>* 使用 Hint.remote={Log Analytics 工作区的方向} - 例如：
+>```kusto
+>AzureDiagnostics
+>| join hint.remote=left adx("cluster=ClusterURI").AzureDiagnostics on (ColumnName)
+>```
 
 ## <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>将一个租户的 Azure 数据资源管理器群集中的数据与另一个租户的 Azure Monitor 资源联接
 

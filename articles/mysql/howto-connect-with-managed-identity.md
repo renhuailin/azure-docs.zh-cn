@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e00bfd3e5597683c99df69a3fb8140d00847e4f6
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 85708face2696ebacb199c37725ce8fd9a166dc4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572423"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652980"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>使用托管标识连接到 Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 本文介绍如何使用 Azure 虚拟机 (VM) 的用户分配标识来访问 Azure Database for MySQL 服务器。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 
 
@@ -48,9 +50,12 @@ az identity create --resource-group myResourceGroup --name myManagedIdentity
 
 ```azurecli
 # Get resource ID of the user-assigned identity
+
 resourceID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query id --output tsv)
 
 # Get client ID of the user-assigned identity
+
+
 clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
 ```
 
@@ -83,9 +88,9 @@ CREATE AADUSER 'myuser' IDENTIFIED BY 'CLIENT_ID';
 
 此令牌检索是通过向 `http://169.254.169.254/metadata/identity/oauth2/token` 发出 HTTP 请求并传递以下参数来完成的：
 
-* `api-version` = `2018-02-01`
-* `resource` = `https://ossrdbms-aad.database.windows.net`
-* `client_id` = `CLIENT_ID`（之前检索到的）
+- `api-version` = `2018-02-01`
+- `resource` = `https://ossrdbms-aad.database.windows.net`
+- `client_id` = `CLIENT_ID`（之前检索到的）
 
 将返回包含 `access_token` 字段的 JSON 结果 - 此长文本值是托管标识访问令牌，在连接到数据库时应将其用作密码。
 
@@ -93,9 +98,13 @@ CREATE AADUSER 'myuser' IDENTIFIED BY 'CLIENT_ID';
 
 ```bash
 # Retrieve the access token
+
+
 accessToken=$(curl -s 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fossrdbms-aad.database.windows.net&client_id=CLIENT_ID' -H Metadata:true | jq -r .access_token)
 
 # Connect to the database
+
+
 mysql -h SERVER --user USER@SERVER --enable-cleartext-plugin --password=$accessToken
 ```
 
@@ -207,4 +216,4 @@ MySQL version: 5.7.27
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[使用 Azure Active Directory 向 Azure Database for MySQL 进行身份验证](concepts-azure-ad-authentication.md)的总体概念
+- 查看[使用 Azure Active Directory 向 Azure Database for MySQL 进行身份验证](concepts-azure-ad-authentication.md)的总体概念

@@ -6,14 +6,14 @@ manager: nmurav
 services: azure-communication-services
 ms.author: bobazile
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 27b1b08196ef76bba92bf1f2ff518585c896178a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 079ef0c70641100e0b2efe7d08d79dc218a83abc
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743531"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259038"
 ---
 # <a name="session-border-controllers-and-voice-routing"></a>会话边界控制器和语音路由
 使用 Azure 通信服务直接路由可将现有电话服务基础结构连接到 Azure。 本文列出了将支持的会话边界控制器 (SBC) 连接到直接路由所要执行的概要步骤，并介绍了如何对已启用的通信资源运行语音路由。 

@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 07/26/2021
 ms.author: banders
-ms.openlocfilehash: 1e9e5582c95183a5e832950c5ac0b154cdef8362
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6654098b7fe2b212ac87d4ae52feaed128579dc5
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088113"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711351"
 ---
 # <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>转让 Microsoft 客户协议的 Azure 订阅计费所有权
 
@@ -181,7 +181,7 @@ Azure 市场产品将连同各自的订阅一起转移。
 
 ### <a name="azure-reservations-transfer"></a>Azure 预留项转移
 
-如果正在转移企业协议 (EA) 订阅或Microsoft 客户协议，则 Azure 预留不会自动与订阅一起移动。 请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)移动预留项。
+如果正在转移企业协议 (EA) 订阅或 Microsoft 客户协议，则 Azure 预留会自动与订阅一起移动。
 
 ### <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 

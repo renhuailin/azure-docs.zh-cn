@@ -5,40 +5,43 @@ services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: ae5ca6ac822dabd32b6463c3a742901f32b34323
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 4df6a84cd3402a934dc64ca8b8ac1a79ef7f0c22
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862248"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666134"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>创建和管理 Azure 逻辑应用中用于 B2B 企业集成的集成帐户
 
-你需先创建一个集成帐户，然后才能使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)构建[企业集成和 B2B 解决方案](../logic-apps/logic-apps-enterprise-integration-overview.md)。该集成帐户是一个单独的 Azure 资源，该资源为你定义并用于逻辑应用工作流的集成项目提供安全、可缩放和可管理的容器。
+你需先创建一个集成帐户，然后才能使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)构建[企业集成和 B2B 解决方案](../logic-apps/logic-apps-enterprise-integration-overview.md)。该集成帐户是一个单独的 Azure 资源，该资源为你定义并用于逻辑应用工作流的集成项目提供安全、可缩放和可管理的容器。 例如，可以创建、存储和管理 B2B 项目，包括贸易合作伙伴、协议、映射、架构、证书和批配置。
 
-例如，可以创建、存储和管理 B2B 项目，包括贸易合作伙伴、协议、映射、架构、证书和批配置。 此外，只有在[将集成帐户链接](#link-account)到逻辑应用之后，逻辑应用才可以处理这些项目和使用逻辑应用 B2B 连接器。 集成帐户和逻辑应用必须位于同一位置或区域。 
+下表描述了[定价各异](https://azure.microsoft.com/pricing/details/logic-apps/)的可用集成帐户级别或层：
+
+| 层 | 说明 |
+|------|-------------|
+| **基本** | 适用于只需处理消息或充当与大型企业实体有贸易合作关系的小型企业合作伙伴的情况。 <p><p>受逻辑应用 SLA 支持。 |
+| **标准** | 适用于 B2B 关系更复杂且需要管理的实体数增加的情况。 <p><p>受逻辑应用 SLA 支持。 |
+| **免费** | 适用于探索场景，不适用于生产场景。 此层对区域可用性、吞吐量和使用情况有限制。 例如，此免费层仅适用于 Azure 中的公共区域（如“美国西部”或“东南亚”），但不适用于 [Azure 中国世纪互联](/azure/china/overview-operations)或 [Azure 政府](../azure-government/documentation-government-welcome.md)。 <p><p>注意：不受逻辑应用 SLA 支持。 |
+|||
 
 > [!IMPORTANT]
-> 基于你选择的集成帐户类型，创建集成帐户会产生成本。 有关详细信息，请参阅[逻辑应用定价和计费模型](logic-apps-pricing.md#integration-accounts)和[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
+> 根据集成帐户的层级，创建集成帐户会产生成本。 有关更多信息，请参阅[逻辑应用定价和计费模型](logic-apps-pricing.md#integration-accounts)和[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。 此外，必须先[将集成帐户关联到](#link-account)逻辑应用，逻辑应用工作流才可以使用集成帐户、B2B 项目及 B2B 连接器。 集成帐户和逻辑应用必须位于同一位置或区域。 
 
-本主题介绍如何执行以下任务：
+本主题演示如何完成以下任务：
 
 * 创建集成帐户。
 
   > [!TIP]
-  > 若要在[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)内创建集成帐户，请参阅[在 ISE 中创建集成帐户](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。
+  > 若要在[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中创建集成帐户，请参阅[在 ISE 中创建集成帐户](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。
 
 * 将集成帐户链接到逻辑应用。
-
 * 更改集成帐户的定价层。
-
 * 从逻辑应用取消链接集成帐户。
-
 * 将集成帐户移到另一个 Azure 资源组或订阅。
-
 * 删除集成帐户。
 
 ## <a name="prerequisites"></a>先决条件
@@ -47,7 +50,7 @@ ms.locfileid: "107862248"
 
 ## <a name="create-integration-account"></a>创建集成帐户
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 对于此任务，可以使用 Azure 门户并执行本部分中所述的步骤，也可以使用 [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount) 或 [Azure CLI](/cli/azure/resource#az_resource_create)。
 
@@ -197,7 +200,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 可以使用 Azure 门户或 Azure CLI 进行更改。
 
-#### <a name="portal"></a>[门户](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 

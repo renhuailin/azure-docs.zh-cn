@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/23/2021
+ms.date: 08/21/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: 8c1b7ea859bb3f8819fbffc9568da4c9289979f5
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 40d82ea916a647dc927e4420058d208c3fd18973
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669450"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111004"
 ---
 # <a name="quickstart-add-an-application-to-your-tenant"></a>快速入门：将应用程序添加到租户
 
@@ -47,10 +47,9 @@ Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的�
 1. 在 [Azure 门户](https://portal.azure.com)的“Azure 服务”窗格中，选择“企业应用程序”。 此时会打开“所有应用程序”窗格，其中显示了 Azure AD 租户中应用程序的随机示例。
 2. 在“企业应用程序”窗格中，选择“新建应用程序” 。
 3. “浏览 Azure AD 库”窗格随即将打开并显示云平台、本地应用程序和特别推荐应用程序的磁贴。 “特别推荐应用程序”部分中列出的应用程序带有指示其是否支持联合单一登录 (SSO) 和预配的图标。
-4. 切换回旧版应用库体验的方法是：在“添加应用程序”页顶部的横幅中，选择“你正在体验已改进的新版应用库。单击此处可切换回旧版应用库体验”的链接。
     ![按名称或类别搜索应用](media/add-application-portal/browse-gallery.png)
-5. 你可以在库中浏览要添加的应用程序，或通过在搜索框中输入其名称来搜索该应用程序。 然后，从结果中选择应用程序。
-6. 下一步取决于应用程序开发人员实现单一登录 (SSO) 的方式。 应用开发人员可以通过四种方式实现单一登录。 这四种方式分别为 SAML、OpenID Connect、密码和链接。 添加应用时，可以选择筛选并仅查看使用特定 SSO 实现的应用，如屏幕截图所示。 例如，用于实现 SSO 的一种常用标准称为安全断言标记语言 (SAML)。 另一种常用标准称为 OpenId Connect (OIDC)。 使用这些标准配置 SSO 的方式有所不同，因此请注意要添加的应用实现的 SSO 类型。
+4. 你可以在库中浏览要添加的应用程序，或通过在搜索框中输入其名称来搜索该应用程序。 然后，从结果中选择应用程序。
+5. 下一步取决于应用程序开发人员实现单一登录 (SSO) 的方式。 应用开发人员可以通过四种方式实现单一登录。 这四种方式分别为 SAML、OpenID Connect、密码和链接。 添加应用时，可以选择筛选并仅查看使用特定 SSO 实现的应用，如屏幕截图所示。 例如，用于实现 SSO 的一种常用标准称为安全断言标记语言 (SAML)。 另一种常用标准称为 OpenId Connect (OIDC)。 使用这些标准配置 SSO 的方式有所不同，因此请注意要添加的应用实现的 SSO 类型。
 
     - 如果应用开发人员使用 OIDC 标准实现 SSO，则选择“注册”。 系统会显示一个设置页面。 接下来，请参阅介绍如何设置基于 OIDC 的单一登录的快速入门。
     :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="屏幕截图显示添加基于 OIDC 的 SSO 应用。":::

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 18cff69a1b32d8573aacdc644e29743cc7dbb8c0
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 0aed8ed171c1a2408a2345df2db43e97ed32e254
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297256"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252156"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>使用 Azure CLI 在多个 IP 配置上进行负载均衡
 
@@ -28,8 +28,6 @@ ms.locfileid: "114297256"
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
 本文介绍如何将 Azure 负载均衡器用于辅助网络接口 (NIC) 的多个 IP 地址。 在此方案中，有两个运行 Windows 的 VM，每个 VM 有一个主 NIC 和一个辅助 NIC。 每个辅助 NIC 都有两个 IP 配置。 每个 VM 托管网站 contoso.com 和 fabrikam.com。 每个网站都绑定到辅助 NIC 的一个 IP 配置。 我们使用 Azure 负载均衡器公开两个前端 IP 地址，每个地址分别对应于一个网站，从而将流量分发到网站的各个 IP 配置。 此场景中两个前端以及两个后端池 IP 地址都使用相同的端口号。
-
-![负载均衡应用场景图像](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
 ## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>在多个 IP 配置上进行负载均衡的步骤
 
