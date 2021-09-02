@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aadf4cb638c1b9c16df934a9ee3c0a992a3e8a7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 14a2dea0445a866f7c352eedf64d631d83b1b0f0
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748666"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864405"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>关闭非托管 Azure AD 组织中的工作或学校帐户
 
@@ -32,7 +32,7 @@ ms.locfileid: "108748666"
 
 在关闭帐户之前，应确认以下事项：
 
-* 确保你是非托管 Azure AD 组织的用户。 如果你属于托管组织，则无法关闭你的帐户。 如果你属于托管组织，但想要关闭你的帐户，则必须与你的管理员联系。 若要了解如何确定你是否属于非托管组织，请参阅[从非托管租户中删除用户](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)。
+* 确保你是非托管 Azure AD 组织的用户。 如果你属于托管组织，则无法关闭你的帐户。 如果你属于托管组织，但想要关闭你的帐户，则必须与你的管理员联系。 若要了解如何确定你是否属于非托管组织，请参阅[从非托管租户中删除用户](/power-automate/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)。
 
 * 保存想要保留的任何数据。 若要了解如何提交导出请求，请参阅[访问和导出非托管租户的系统生成日志](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)。
 
@@ -56,5 +56,5 @@ ms.locfileid: "108748666"
 ## <a name="next-steps"></a>后续步骤
 
 - [什么是 Azure Active Directory 的自助注册？](directory-self-service-signup.md)
-- [从非托管租户删除用户](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
+- [从非托管租户删除用户](/power-automate/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
 - [访问和导出非托管租户的系统生成日志](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)

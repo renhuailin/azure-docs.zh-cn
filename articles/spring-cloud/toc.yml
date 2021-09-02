@@ -132,6 +132,8 @@
           href: how-to-circuit-breaker-metrics.md
         - name: 结构化应用程序日志
           href: structured-app-log.md
+        - name: 使用 Dynatrace Java OneAgent
+          href: how-to-dynatrace-one-agent-monitor.md
         - name: New Relic Java 进程内代理
           href: how-to-new-relic-monitor.md
         - name: 监视应用生命周期事件

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 29fb96dc83ada329910844506838dee461321343
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 21f815af73b264f7be6ffaf1e59909a7139ea022
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866329"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113297543"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序
 
@@ -30,7 +30,7 @@ ms.locfileid: "104866329"
 
 ## <a name="prerequisites"></a>先决条件
 
-* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
+* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。 仅支持公有云中的 HDinsight 群集，而不支持其他安全云类型（例如政府云）。
 
 * [Oracle Java 开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。  本文使用 Java 版本 8.0.202。
 
@@ -463,7 +463,7 @@ ms.locfileid: "104866329"
 
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的群集：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 在顶部的“搜索”框中，键入 **HDInsight**。
 

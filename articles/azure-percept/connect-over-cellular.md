@@ -1,20 +1,20 @@
 ---
 title: 通过 5G 或 LTE 网络连接 Azure Percept
 description: 本文介绍如何通过 5G 或 LTE 网络连接 Azure Percept DK。
-author: mimcco
-ms.author: mimcco
+author: juhaluoto
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 07/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7388a50951137b45821bc80f2290900a00550395
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 202bec8182cc2ae04e9fadffe01977150ea93dda
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071533"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222317"
 ---
-# <a name="connect-the-azure-percept-dk-over-5g-or-lte-networks"></a>通过 5G 或 LTE 网络连接 Azure Percept DK
+# <a name="connect-azure-percept-over-5g-or-lte-networks"></a>通过 5G 或 LTE 网络连接 Azure Percept
 
 通过 5G 或 LTE 网络连接 Edge AI 设备的优点有很多。 在 Wi-Fi 和 LAN 连接受限的场景中，边缘 AI 可以发挥最大作用，如智能城市、自动驾驶汽车和农业。 此外，5G/LTE 网络提供比 Wi-Fi 更高的安全性。 最后，使用在 Edge 上运行 AI 的 IoT 设备可以优化 5G/LTE 网络的带宽。 其中只有必要的信息被发送到云，而大部分的数据是在设备上处理的。 目前，Azure Percept DK 并不能直接连接到 5G/LTE 网络， 但可以使用内置的以太网和 Wi-Fi 功能连接到 5G/LTE 网关。 本文介绍了它的工作原理。
 

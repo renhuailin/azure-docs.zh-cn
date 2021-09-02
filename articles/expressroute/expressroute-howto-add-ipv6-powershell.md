@@ -7,42 +7,22 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 7a9ac98a9566986767016720fda245712197b27f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f1af7fd0dc4b1e790a120c8fb9086d886487c34d
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566534"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302781"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>使用 Azure PowerShell 添加对专用对等互连的 IPv6 支持（预览版）
 
 本文介绍如何使用 Azure PowerShell 添加 IPv6 支持，以通过 ExpressRoute 连接到 Azure 中的资源。
-
-> [!Note]
-> 此功能目前在[具有可用性区域的 Azure 区域](../availability-zones/az-region.md#azure-regions-with-availability-zones)中为预览版。 因此，可以使用任何对等互连位置创建 ExpressRoute 线路，但它所连接到的基于 IPv6 的部署必须位于具有可用性区域的区域中。
 
 ## <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
-
-## <a name="register-for-public-preview"></a>注册公共预览版
-在添加 IPv6 支持之前，必须先注册订阅。 若要注册，请通过 Azure PowerShell 执行以下操作：
-1.  登录到 Azure 并选择订阅。 必须为包含 ExpressRoute 线路的订阅和包含 Azure 部署的订阅（如果它们不同）执行以下操作。
-
-    ```azurepowershell-interactive
-    Connect-AzAccount 
-
-    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
-    ```
-
-2. 使用以下命令请求注册公共预览版订阅：
-    ```azurepowershell-interactive
-    Register-AzProviderFeature -FeatureName AllowIpv6PrivatePeering -ProviderNamespace Microsoft.Network
-    ```
-
-然后，ExpressRoute 团队将在 2-3 个工作日内批准你的请求。
 
 ## <a name="add-ipv6-private-peering-to-your-expressroute-circuit"></a>将 IPv6 专用对等互连添加到 ExpressRoute 线路
 
@@ -128,7 +108,7 @@ ms.locfileid: "105566534"
 
 ## <a name="update-your-connection-to-an-existing-virtual-network"></a>更新与现有虚拟网络的连接
 
-如果现有一个 Azure 资源环境，并且你想要将 IPv6 专用对等互连用于该环境所在区域中的可用性区域，那么请按照以下步骤操作。
+如果你有想要在其中使用 IPv6 专用对等互连的 Azure 资源的现有环境，请按照以下步骤操作。
 
 1. 检索 ExpressRoute 线路连接到的虚拟网络。
 
@@ -150,7 +130,7 @@ ms.locfileid: "105566534"
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
 
-4. 如果已有区域冗余的网关，请运行以下各项来启用 IPv6 连接。 否则，请使用区域冗余 SKU（ErGw1AZ、ErGw2AZ、ErGw3AZ）[创建虚拟网络网关](./expressroute-howto-add-gateway-resource-manager.md)。
+4. 如果已有区域冗余网关，请运行以下命令以启用 IPv6 连接（请注意，最多可能需要 1 小时才能反映更改）。 否则，请使用任一 SKU [创建虚拟网络网关](./expressroute-howto-add-gateway-resource-manager.md)。 如果计划使用 FastPath，请使用 UltraPerformance 或 ErGw3AZ（请注意，此选项仅适用于使用 ExpressRoute Direct 的线路）。
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name "GatewayName" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -159,21 +139,20 @@ ms.locfileid: "105566534"
 
 ## <a name="create-a-connection-to-a-new-virtual-network"></a>创建与新虚拟网络的连接
 
-如果计划使用 IPv6 专用对等互连在具有可用性区域的区域中连接到一组新的 Azure 资源，请执行以下步骤。
+如果计划使用 IPv6 专用对等互连连接到一组新的 Azure 资源，请按照以下步骤操作。
 
 1. 创建包含 IPv4 和 IPv6 地址空间的双堆栈虚拟网络。 有关详细信息，请参阅[创建虚拟网络](../virtual-network/quick-create-portal.md#create-a-virtual-network)。
 
 2. [创建双堆栈网关子网](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway)。
 
-3. 使用区域冗余 SKU（ErGw1AZ、ErGw2AZ、ErGw3AZ）[创建虚拟网络网关](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway)。 如果计划使用 FastPath，请使用 ErGw3AZ（请注意，此选项仅适用于使用 ExpressRoute Direct 的线路）。
+3. 请使用任何 SKU [创建虚拟网络网关](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway)。 如果计划使用 FastPath，请使用 UltraPerformance 或 ErGw3AZ（请注意，此选项仅适用于使用 ExpressRoute Direct 的线路）。
 
 4. [将虚拟网络链接到 ExpressRoute 线路](./expressroute-howto-linkvnet-arm.md)。
 
 ## <a name="limitations"></a>限制
-虽然 IPv6 支持可用于连接到具有可用性区域的区域中的部署，但它不支持以下用例：
+虽然 IPv6 支持可用于连接到公共 Azure 区域中的部署，但它不支持以下用例：
 
-* 通过非 AZ ExpressRoute 网关 SKU 连接到 Azure 中的部署
-* 连接到非 AZ 区域中的部署
+* 连接到“非”区域冗余的现有 ExpressRoute 网关
 * ExpressRoute 线路之间的 Global Reach 连接
 * 将 ExpressRoute 用于虚拟 WAN
 * FastPath 与非 ExpressRoute Direct 线路

@@ -10,12 +10,12 @@ ms.date: 05/19/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d103e52ec4a2ba105c6eb5c756ac450a15d7538e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9c021b8b0aec025458179ffb4859c351572762ee
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745028"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186976"
 ---
 # <a name="transform-data-by-running-a-synapse-notebook"></a>通过运行 Synapse 笔记本转换数据
 
@@ -57,7 +57,7 @@ ms.locfileid: "121745028"
 
 ---
 
-Azure 数据工厂查找参数单元格，并将这些值作为执行时传入的参数的默认值。 执行引擎将使用输入参数在参数单元格下面添加新的单元格，以覆盖默认值。 如果未指定参数单元格，则插入的单元格将插入笔记本的顶部。
+Azure 数据工厂查找参数单元格，并将这些值作为执行时传入的参数的默认值。 执行引擎将使用输入参数在参数单元格下面添加新的单元格，以覆盖默认值。 
 
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>从管道分配参数值

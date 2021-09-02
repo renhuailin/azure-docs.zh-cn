@@ -1,16 +1,19 @@
 ---
 title: 配置个性化体验创建服务
 description: 服务配置包括服务处理奖励的方式、服务的探索频率、重新训练模型的频率，以及存储的数据量。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 9b7347cb98bcbf2e1d92f115d404197083acef4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c868004bcf8ec23eb6607d791f4e9762ad20eca0
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91292602"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829935"
 ---
 # <a name="configure-personalizer-learning-loop"></a>配置个性化体验创建服务学习循环
 

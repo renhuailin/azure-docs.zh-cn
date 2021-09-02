@@ -3,12 +3,12 @@ title: Application Insights 的版本批注 | Microsoft 文档
 description: 了解如何通过 Application Insights 创建注释以跟踪部署或其他重要事件。
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.openlocfilehash: 230d02c26b29bb38ec4c8260109f75f1a8eca468
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a92e659353f6500a6e40e9704af73cae08e95fbf
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741337"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830151"
 ---
 # <a name="release-annotations-for-application-insights"></a>Application Insights 的版本注释
 
@@ -102,8 +102,10 @@ ms.locfileid: "121741337"
     }
     
     $body = (ConvertTo-Json $annotation -Compress) -replace '(\\+)"', '$1$1"' -replace "`"", "`"`""
-
     az rest --method put --uri "$($aiResourceId)/Annotations?api-version=2015-05-01" --body "$($body) "
+
+    # Use the following command for Linux Azure DevOps Hosts or other PowerShell scenarios
+    # Invoke-AzRestMethod -Path "$aiResourceId/Annotations?api-version=2015-05-01" -Method PUT -Payload $body
     ```
 
 3. 使用以下代码调用 PowerShell 脚本（请将带尖括号的占位符替换为你自己的值）。 -releaseProperties 是可选的。

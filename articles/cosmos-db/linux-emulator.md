@@ -6,14 +6,15 @@ ms.topic: how-to
 author: StefArroyo
 ms.author: esarroyo
 ms.date: 06/04/2021
-ms.openlocfilehash: 5c6ddce8d50da1660bfcba8b29bb032b56197bb8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c0b7dff4ac6f19b4abcf27ccf98cd8d57b270e21
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725451"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111483"
 ---
 # <a name="run-the-emulator-on-docker-for-linux-preview"></a>在用于 Linux 的 Docker（预览版）上运行仿真器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 为方便进行开发，Azure Cosmos DB Linux 仿真器提供了一个模拟 Azure Cosmos DB 服务的本地环境。 目前，Linux 仿真器仅支持 SQL API。 使用 Azure Cosmos DB 模拟器可在本地开发和测试应用程序，无需创建 Azure 订阅且不会产生任何费用。 如果对应用程序在 Azure Cosmos DB Linux 仿真器中的工作情况感到满意，可以转为在云中切换到使用 Azure Cosmos DB 帐户。 本文介绍了如何在 macOS 和 Linux 环境中安装和使用仿真器。
 

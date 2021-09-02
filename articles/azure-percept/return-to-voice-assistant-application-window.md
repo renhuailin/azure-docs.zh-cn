@@ -1,20 +1,20 @@
 ---
-title: 返回到 Azure Percept Audio 语音助理应用程序窗口
+title: 在 Azure Percept Studio 中查找语音助理应用程序
 description: 本文介绍如何返回到之前创建的语音助理应用程序窗口。
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: c106c7f892ab003380288eb8c2d5e0a62ac8da93
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9c639c7d6f50b4d0396423c2e49274436d6e0308
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779802"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222895"
 ---
-# <a name="return-to-your-voice-assistant-application-window-in-azure-percept-studio"></a>返回到 Azure Percept Studio 中的语音助理应用程序窗口
+# <a name="find-your-voice-assistant-application-in-azure-percept-studio"></a>在 Azure Percept Studio 中查找语音助理应用程序
 
 本操作指南介绍如何返回到之前创建的语音助理应用程序。
 

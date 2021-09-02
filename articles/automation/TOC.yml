@@ -187,6 +187,8 @@
           items:
             - name: 概述
               href: automation-dsc-overview.md
+            - name: 配置 Linux 所需状态 - PowerShell
+              href: dsc-linux-powershell.md
             - name: 状态配置入门
               href: automation-dsc-getting-started.md
             - name: 启用状态配置

@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 07/13/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: bdaad591effc2ef9e5d682dd9a80d994a9e1c34d
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: cd6f2de9d440309662ef47a950f6c1331e30d5fb
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733387"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221093"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm"></a>教程：配置 Bastion 并连接到 Windows VM
 
@@ -72,16 +72,11 @@ ms.locfileid: "113733387"
 | 公用 IP 地址 SKU |  Standard  |
 | 分配  | 静态 |
 
-## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
-
-[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
-
-登录到 Azure 门户。
-
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>创建 Bastion 主机
 
 本部分可帮助你在 VNet 中创建 Bastion 对象。 为了与 VNet 中的 VM 建立安全连接，这是必需的。
 
+1. 登录 [Azure 门户](https://ms.portal.azure.com)。
 1. 在搜索框中键入“Bastion”。
 1. 在“服务”下方，单击“Bastions”。
 1. 在“Bastion”页面上单击“创建”，打开“创建 Bastion”页面 。

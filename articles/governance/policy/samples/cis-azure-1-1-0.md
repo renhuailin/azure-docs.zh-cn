@@ -1,15 +1,15 @@
 ---
 title: CIS Microsoft Azure 基础基准 1.1.0 的法规符合性详细信息
 description: CIS Microsoft Azure 基础基准 1.1.0 法规符合性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 16ac3cd8724645e440e1758d1e08d237cbcfc42d
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 4eca33f77a4415e13773a51057bb7495857df043
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122604777"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112180"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-110-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure 基础基准 1.1.0 法规符合性内置计划的详细信息
 

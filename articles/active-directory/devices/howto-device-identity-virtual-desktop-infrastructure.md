@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4eac73f756268af21cbb97c8c5c2bf53c2322bc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4973dabe12f56105ab0eefdac485311d8f4df10b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733688"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864288"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>设备标识和桌面虚拟化
 
@@ -61,6 +61,7 @@ ms.locfileid: "121733688"
 | 已注册 Azure AD | 联合/托管 | Windows 当前设备/Windows 下层设备 | 永久/非永久 | 不适用 |
 
 <sup>1</sup> Windows 当前设备表示 Windows 10、Windows Server 2016 1803 版或更高版本，以及 Windows Server 2019。
+
 <sup>2</sup> Windows 下层设备表示 Windows 7、Windows 8.1、Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2。 有关 Windows 7 的支持信息，请参阅[对 Windows 7 的支持即将终止](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)。 有关 Windows Server 2008 R2 的支持信息，请参阅[为 Windows Server 2008 支持终止做准备](https://www.microsoft.com/cloud-platform/windows-server-2008)。
 
 <sup>3</sup> 联合标识基础结构环境表示具有标识提供者（如 AD FS 或其他第三方 IDP）的环境。

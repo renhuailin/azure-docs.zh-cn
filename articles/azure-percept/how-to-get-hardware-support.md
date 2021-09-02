@@ -1,20 +1,20 @@
 ---
-title: 如何从 ASUS 获取针对 Azure Percept DK 硬件的硬件支持
+title: 从 ASUS 获取 Azure Percept 硬件支持
 description: 本指南介绍如何联系 ASUS 以获得 Azure Percept DK 硬件的技术支持。
-author: mimcco
-ms.author: mimcco
+author: juniem
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 07/13/2021
 ms.custom: template-how-to
-ms.openlocfilehash: b93063660ea9be76cd862498506bef586018d3cd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: de5d55ebceb5ede8a33e73584631048ba30f27fc
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727201"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223361"
 ---
-# <a name="get-support-for-your-azure-percept-dk-hardware-from-asus"></a>从 ASUS 获取针对 Azure Percept DK 硬件的支持
+# <a name="get-azure-percept-hardware-support-from-asus"></a>从 ASUS 获取 Azure Percept 硬件支持
 
 作为 Azure Percept DK 的 OEM，ASUS 为所有购买设备的客户提供技术支持，并为有兴趣购买设备的客户提供业务支持。 本文介绍如何联系 ASUS 以获取支持。
 

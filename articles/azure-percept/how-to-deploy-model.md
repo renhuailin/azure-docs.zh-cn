@@ -1,20 +1,20 @@
 ---
 title: 将视觉 AI 模型部署到 Azure Percept DK
 description: 了解如何将视觉 AI 模型从 Azure Percept Studio 部署到 Azure Percept DK
-author: elqu20
-ms.author: v-elqu
+author: tsampige
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 01bd3709050d8a2b57c1bf51920308188546fb31
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 56e41e180600b9a50a79ac2c2ae49a9678642e25
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035477"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221205"
 ---
-# <a name="deploy-a-vision-ai-model-to-your-azure-percept-dk"></a>将视觉 AI 模型部署到 Azure Percept DK
+# <a name="deploy-a-vision-ai-model-to-azure-percept-dk"></a>将视觉 AI 模型部署到 Azure Percept DK
 
 按照本指南将视觉 AI 模型从 Azure Percept Studio 内部署到 Azure Percept DK。
 
@@ -30,11 +30,11 @@ ms.locfileid: "102035477"
 
 1. 转到 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)。
 
-1. 在概述页面的左侧，单击“设备”。
+1. 在“概述”页的左侧，单击“设备”。
 
     :::image type="content" source="./media/how-to-deploy-model/overview-devices-inline.png" alt-text="Azure Percept Studio 概述屏幕。" lightbox="./media/how-to-deploy-model/overview-devices.png":::
 
-1. 从列表中选择你的开发工具包。
+1. 从列表中选择 devkit。
 
     :::image type="content" source="./media/how-to-deploy-model/select-device.png" alt-text="Percept 设备列表。":::
 

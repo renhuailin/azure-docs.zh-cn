@@ -2,19 +2,19 @@
 title: 个性化体验创建服务静态数据加密
 titleSuffix: Azure Cognitive Services
 description: Microsoft 提供了 Microsoft 托管的加密密钥，还可让你使用自己的密钥（称为客户管理的密钥 (CMK)）管理你的认知服务订阅。 本文介绍个性化体验创建服务的静态数据加密，以及如何启用和管理 CMK。
-author: erindormier
+author: jeffmend
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.author: egeaney
-ms.openlocfilehash: 1a27199930587c1a096dd99462ebd0c9d65054ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jeffme
+ms.openlocfilehash: d6d4aaa9b6a04614fdae4f794da9153a03031727
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100524388"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829755"
 ---
 # <a name="personalizer-service-encryption-of-data-at-rest"></a>个性化体验创建服务静态数据加密
 

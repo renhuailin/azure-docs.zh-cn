@@ -1,17 +1,17 @@
 ---
 title: Azure Percept Vision 数据表
 description: 有关详细设备规格，请查看 Azure Percept Vision 数据表
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
-ms.openlocfilehash: 3621b40bdce131e7677731daabedc80a6b0ef0c0
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: cc15e8986058e01116341e970bfcf90799a5d416
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451186"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222393"
 ---
 # <a name="azure-percept-vision-datasheet"></a>Azure Percept Vision 数据表
 

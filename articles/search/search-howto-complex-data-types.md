@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2021
-ms.openlocfilehash: 0a9b1a746a5228ba958b9c1c0cca38b088ca1176
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: bcd0819ce2720597c6e9f2435d37fe9276d595cd
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222226"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222264"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为复杂数据类型建模
 
@@ -24,7 +24,7 @@ ms.locfileid: "106222226"
 
 Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎可为 Azure 认知搜索索引中的任何 JSON 结构建模。 在旧版的 Azure 认知搜索 API 中，只能导入平展的行集。 在最新版本中，索引可以更密切地对应于源数据。 换言之，如果源数据使用复杂类型，则索引也可以使用复杂类型。
 
-若要开始，我们建议使用 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)，可以在 Azure 门户上“导入数据”向导中加载该数据集。 该向导会检测源中的复杂类型，并根据检测到的结构建议一个索引架构。
+若要开始，我们建议使用 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels)，可以在 Azure 门户上“导入数据”向导中加载该数据集。 该向导会检测源中的复杂类型，并根据检测到的结构建议一个索引架构。
 
 > [!Note]
 > 从 `api-version=2019-05-06` 开始正式提供对复杂类型的支持。 
@@ -162,7 +162,7 @@ Azure 认知搜索原生支持复杂类型和集合。 使用这些类型几乎�
 
 ## <a name="next-steps"></a>后续步骤
 
-尝试在“导入数据”向导中练习 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md)。 需要使用自述文件中提供的 Cosmos DB 连接信息来访问这些数据。
+尝试在“导入数据”向导中练习 [Hotels 数据集](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels)。 需要使用自述文件中提供的 Cosmos DB 连接信息来访问这些数据。
 
 获取该信息后，向导中的第一步是创建新的 Azure Cosmos DB 数据源。 然后，在向导中进入目标索引页后，会看到使用复杂类型的索引。 请创建并加载此索引，然后执行查询来了解新结构。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/02/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: c0c170fefe85393fb3c8b443a96aaddbb98eb65e
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 0ae0fa18c2d3d223435656d871bd0d5be00627e4
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528306"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113356935"
 ---
 ### <a name="on-demand-bursting-preview"></a>按需突发（预览版）
 
@@ -69,9 +69,17 @@ ms.locfileid: "111528306"
 VM 级突发只使用基于额度的突发模型，默认情况下，将为所有支持该模型的 VM 启用该模型。
 
 在 Azure 公有云的所有区域中，已为以下大小的 VM 启用 VM 级突发： 
+- [Dsv4 系列](../articles/virtual-machines/dv4-dsv4-series.md)
+- [Dasv4 系列](../articles/virtual-machines/dav4-dasv4-series.md)
+- [Ddsv4 系列](../articles/virtual-machines/ddv4-ddsv4-series.md)
+- [Esv4 系列](../articles/virtual-machines/ev4-esv4-series.md)
+- [Easv4 系列](../articles/virtual-machines/eav4-easv4-series.md)
+- [Edsv4 系列](../articles/virtual-machines/edv4-edsv4-series.md)
+- [B 系列](../articles/virtual-machines/sizes-b-series-burstable.md)
+- [Fsv2 系列](../articles/virtual-machines/fsv2-series.md)
+- [Dsv3 系列](../articles/virtual-machines/dv3-dsv3-series.md)
+- [Esv3 系列](../articles/virtual-machines/ev3-esv3-series.md)
 - [Lsv2 系列](../articles/virtual-machines/lsv2-series.md)
-- [Dv3 和 Dsv3 系列](../articles/virtual-machines/dv3-dsv3-series.md)
-- [Ev3 和 Esv3 系列](../articles/virtual-machines/ev3-esv3-series.md)
 
 ## <a name="bursting-flow"></a>突发流
 
@@ -121,7 +129,7 @@ VM 级突发只使用基于额度的突发模型，默认情况下，将为所�
     - 最大突发 MB/s：1280
 - P50 OS 磁盘
     - 预配的 MB/s：250 
-- 2 个 P10 数据磁盘 
+- 2 个 P50 数据磁盘 
     - 预配的 MB/s：250
 
  初始启动后，应用程序将在 VM 上运行，并且具有非关键工作负荷。 此工作负荷需要 30 MB/s（在所有磁盘上均匀分布）。

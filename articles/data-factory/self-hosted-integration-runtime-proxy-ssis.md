@@ -8,12 +8,12 @@ author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/19/2021
-ms.openlocfilehash: ff0dc37b70861dae8cddb77ef984c27109eefc15
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d015c5182b51c655d45365a2f45a9f9d08db582b
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747417"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835626"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>自承载 IR 配置为 Azure 数据工厂中 Azure-SSIS IR 的代理
 
@@ -51,7 +51,7 @@ ms.locfileid: "121747417"
   
   如果使用用于其他数据库系统（例如 PostgreSQL、MySQL、Oracle 等）的 OLEDB/ODBC/ADO.NET 驱动程序，可以从其网站下载 64 位版本。
 - 如果在包中使用 Azure 功能包中的数据流组件，请在安装了自承载 IR 的同一台计算机上[下载并安装适用于 SQL Server 2017 的 Azure 功能包](https://www.microsoft.com/download/details.aspx?id=54798)（如果尚未这样做）。
-- 如果尚未这样做，请在安装了自承载 IR 的同一台计算机上[下载并安装 64 位版本的 Visual C++ (VC) 运行时](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0)。
+- 如果尚未这样做，请在安装了自承载 IR 的同一台计算机上[下载并安装 64 位版本的 Visual C++ (VC) 运行时](https://www.microsoft.com/en-us/download/details.aspx?id=40784)。
 
 ### <a name="enable-windows-authentication-for-on-premises-tasks"></a>为本地任务启用 Windows 身份验证
 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 5/3/2021
+ms.date: 07/07/2021
 ms.author: justinha
-author: justinha
+author: calui
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: ed77dcad9e9e6568cc38fd3510d9b5a9a0624c11
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 0a4ad5d9aaa9bb851a651ddc77bd1acb773b6019
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963652"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113485700"
 ---
 # <a name="sign-in-to-azure-ad-with-email-as-an-alternate-login-id-preview"></a>使用电子邮件作为备用登录 ID 登录到 Azure AD（预览版）
 
@@ -40,7 +40,8 @@ ms.locfileid: "111963652"
 
 * Azure AD Free 版及更高版本提供该项功能。
 * 此功能允许通过云身份验证的 Azure AD 用户使用已验证的域 ProxyAddresses 进行登录。
-* 当用户使用非 UPN 电子邮件登录时，[ID 令牌](../develop/id-tokens.md)中的 `unique_name` 和 `preferred_username` 声明（若存在）将包含非 UPN 电子邮件的值。
+* 当用户使用非 UPN 电子邮件登录时，[ID 令牌](../develop/id-tokens.md)中的 `unique_name` 和 `preferred_username` 声明（若存在）将返回非 UPN 电子邮件的值。
+* 此功能支持通过密码哈希同步 (PHS) 或直通身份验证 (PTA) 进行托管身份验证。
 * 有两个选项可用于配置该项功能：
     * [主领域发现 (HRD) 策略](#enable-user-sign-in-with-an-email-address) - 使用此选项可为整个租户启用该功能。 需要全局管理员特权。
     * [分阶段推出策略](#enable-staged-rollout-to-test-user-sign-in-with-an-email-address) - 使用此选项可在特定 Azure AD 组测试该功能。 需要全局管理员特权。
@@ -49,31 +50,42 @@ ms.locfileid: "111963652"
 
 在当前预览状态下，用作备用登录 ID 的电子邮件包含以下限制：
 
-* 即使通过非 UPN 电子邮件登录，用户也可能会看到其 UPN。 可能会出现以下示例行为：
+* 用户体验 - 即使通过非 UPN 电子邮件登录，用户也可能会看到其 UPN。 可能会出现以下示例行为：
     * 当定向到使用 `login_hint=<non-UPN email>` 的 Azure AD 登录时，系统将提示用户使用 UPN 登录。
     * 当用户使用非 UPN 电子邮件登录并输入错误密码时，“输入密码”页将改为显示 UPN。
     * 在某些 Microsoft 网站和应用（例如 Microsoft Office）上，通常显示在右上角的“帐户管理器”控件可能会显示用户的 UPN，而不是用于登录的非 UPN 电子邮件。
 
-* 有些流当前与非 UPN 电子邮件尚不兼容，如下所示：
+* 支持的流 - 有些流当前与非 UPN 电子邮件尚不兼容，如下所示：
     * 标识保护不匹配可检测 *泄露凭据* 风险的非 UPN 电子邮件。 此风险检测使用 UPN 来匹配已泄漏的凭据。 有关详细信息，请参阅 [Azure AD 标识保护风险检测和修正][identity-protection]。
     * 不完全支持发送到非 UPN 电子邮件的 B2B 邀请。 接受发送到非 UPN 电子邮件的邀请后，资源租户终结点上的来宾用户可能无法使用非 UPN 电子邮件顺利登录。
     * 使用非 UPN 电子邮件登录的用户无法更改其密码。 Azure AD 自助式密码重置 (SSPR) 应会按预期执行。 在 SSPR 期间，如果用户通过备用电子邮件验证其身份，则用户可能会看到其 UPN。
 
-* 不支持以下方案。 使用非 UPN 电子邮件登录到：
-    * 已加入混合 Azure AD 的设备
-    * 已加入 Azure AD 的设备
+* 不支持的方案 - 不支持以下场景。 使用非 UPN 电子邮件登录到：
+    * [混合 Azure AD 加入设备](../devices/concept-azure-ad-join-hybrid.md)
+    * [已加入 Azure AD 的设备](../devices/concept-azure-ad-join.md)
+    * [Azure AD 注册设备](../devices/concept-azure-ad-register.md)
+    * [无缝 SSO](../hybrid/how-to-connect-sso.md)
+    * [使用资源所有者密码凭据 (ROPC) 的应用程序](../develop/v2-oauth-ropc.md)
+    * 使用旧身份验证的应用程序，如 POP3 和 SMTP
     * Skype for Business
     * macOS 版 Microsoft Office
-    * OneDrive（登录流不涉及多重身份验证时）
     * Web 上的 Microsoft Teams
-    * 资源所有者密码凭据 (ROPC) 流
+    * OneDrive（登录流不涉及多重身份验证时）
 
-* 对 HRD 策略中的功能配置所做的更改不会显式显示在审核日志中。
-* 对于包含在多个分阶段推出策略中的用户，分阶段推出策略未按预期工作。
-* 在租户中，仅云用户的 UPN 可能与另一个用户从本地目录同步的代理地址相同。 在此方案中，启用此功能后，仅云用户将无法使用其 UPN 登录。 有关此问题的更多内容，请参阅[故障排除](#troubleshoot)部分。
+* 不支持的应用 - 如果某些第三方应用程序假定 `unique_name` 或 `preferred_username` 声明不变或将始终匹配特定的用户属性（如 UPN），则这些应用程序可能无法按预期正常运作。
+
+* 登录 - 对 HRD 策略中的功能配置所做的更改不会显式显示在审核日志中。 此外，登录日志中的“登录标识符类型”字段有时可能不正确，因此不应将其用于确定该功能是否已用于登录。
+
+* 分阶段推出策略 - 仅当使用分阶段推出策略启用此功能时，以下限制才适用：
+    * 对于包含在其他分阶段推出策略中的用户，该功能未按预期工作。
+    * 分阶段推出策略的每项功能最多支持 10 个组使用。
+    * 分阶段推出策略不支持嵌套组。
+    * 分阶段推出策略不支持动态组。
+    * 组内的联系人对象会阻止向分阶段推出策略添加组。
+
+* 重复值 - 在租户中，仅云用户的 UPN 可能与另一个用户从本地目录同步的代理地址相同。 在此方案中，启用此功能后，仅云用户将无法使用其 UPN 登录。 有关此问题的更多内容，请参阅[故障排除](#troubleshoot)部分。
 
 ## <a name="overview-of-alternate-login-id-options"></a>备用登录 ID 选项概述
-
 若要登录到 Azure AD，用户需输入唯一标识其帐户的名称。 以前只能使用 Azure AD UPN 作为登录标识符。
 
 对于本地 UPN 是用户首选登录电子邮件的组织而言，此方法非常有用。 这些组织会将 Azure AD UPN 设置为与本地 UPN 完全相同的值，并且用户将具有一致的登录体验。
@@ -101,7 +113,7 @@ ms.locfileid: "111963652"
 
 传统 Active Directory 域服务 (AD DS) 或 Active Directory 联合身份验证服务 (AD FS) 的身份验证直接在网络上进行，并且由 AD DS 基础结构处理。 通过混合身份验证，用户可以改为直接登录到 Azure AD。
 
-若要支持这种混合身份验证方法，请使用 [Azure AD Connect][azure-ad-connect] 将本地 AD DS 环境同步到 Azure AD，并将其配置为使用密码哈希同步 (PHS) 或传递身份验证 (PTA)。 有关详细信息，请参阅[为 Azure AD 混合标识解决方案选择正确的身份验证方法][hybrid-auth-methods]。
+若要支持这种混合身份验证方法，请使用 [Azure AD Connect][azure-ad-connect] 将本地 AD DS 环境同步到 Azure AD，并将其配置为使用 PHS 或 PTA。 有关详细信息，请参阅[为 Azure AD 混合标识解决方案选择正确的身份验证方法][hybrid-auth-methods]。
 
 在这两个配置选项中，用户将其用户名和密码提交到 Azure AD，Azure AD 验证凭据并颁发票证。 当用户登录到 Azure AD 时，组织无需再托管和管理 AD FS 基础结构。
 

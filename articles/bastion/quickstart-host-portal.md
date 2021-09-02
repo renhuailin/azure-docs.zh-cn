@@ -6,14 +6,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
-ms.date: 07/13/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: 7598b2908365061ae789ce2ffafb6088dc5c2a68
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: f6319369a03de754b1ce016fb20aa99e5ab466e1
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733351"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223425"
 ---
 # <a name="quickstart-configure-azure-bastion-from-vm-settings"></a>快速入门：从 VM 设置配置 Azure Bastion
 
@@ -73,9 +73,7 @@ ms.locfileid: "113733351"
 
 可以通过几种不同的方式来配置堡垒主机。 可按照以下步骤在 Azure 门户中直接从 VM 创建堡垒主机。 从 VM 创建主机时，多个设置可根据虚拟机和/或虚拟网络自动填充。
 
-[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
-
-1. 登录到 Azure 门户。
+1. 登录到 [Azure 门户](https://ms.portal.azure.com)。
 1. 导航到要连接的 VM，然后选择“连接”。
 
    :::image type="content" source="./media/quickstart-host-portal/vm-connect.png" alt-text="虚拟机设置的屏幕截图。" lightbox="./media/quickstart-host-portal/vm-connect.png":::

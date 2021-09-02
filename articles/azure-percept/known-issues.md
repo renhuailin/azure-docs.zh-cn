@@ -1,17 +1,17 @@
 ---
 title: Azure Percept 已知问题
 description: 详细了解 Azure Percept 已知问题及其解决方法
-author: mimcco
-ms.author: mimcco
+author: juniem
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: reference
 ms.date: 03/25/2021
-ms.openlocfilehash: bf1e6f1297e73811e4ce7044319b13dc4c5b149f
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 4d6bbc2396819b1eea7ac17f5c0da87055450927
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114295864"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223959"
 ---
 # <a name="azure-percept-known-issues"></a>Azure Percept 已知问题
 

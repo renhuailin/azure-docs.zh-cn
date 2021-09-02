@@ -1,15 +1,15 @@
 ---
 title: Azure 安全基准 v1 的法规合规性详细信息
 description: Azure 安全基准 v1 法规合规性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 7316fb059eb1fef8a7fcc44fe670e6cbb2c32cd5
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 8fd470306d5eb5b3b7538bc422f2a3e703637630
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122606533"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111430"
 ---
 # <a name="details-of-the-azure-security-benchmark-v1-regulatory-compliance-built-in-initiative"></a>Azure 安全基准 v1 法规合规性内置计划的详细信息
 
@@ -302,7 +302,7 @@ ms.locfileid: "122606533"
 |[SQL Server 应使用客户管理的密钥进行静态数据加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0d134df8-db83-46fb-ad72-fe0c9428c8dd) |使用你自己的密钥实现透明数据加密 (TDE) 可增加透明度和对 TDE 保护器的控制，增强由 HSM 提供支持的外部服务的安全性，并促进职责划分。 此建议适用于具有相关合规性要求的组织。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_EnsureServerTDEisEncryptedWithYourOwnKey_Audit.json) |
 |[应在 SQL 数据库上启用透明数据加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |应启用透明数据加密以保护静态数据并满足符合性要求 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 |[应当加密未附加的磁盘](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fb2) |此策略会审核未启用加密的所有未附加磁盘。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/UnattachedDisk_Encryption_Audit.json) |
-|[虚拟机应该加密计算和存储资源之间的临时磁盘、缓存和数据流](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[虚拟机应加密临时磁盘、缓存以及计算资源和存储资源之间的数据流](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="log-and-alert-on-changes-to-critical-azure-resources"></a>记录对关键 Azure 资源的更改并发出警报
 

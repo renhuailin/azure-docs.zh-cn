@@ -2,18 +2,19 @@
 title: 探索 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 有了探索功能，个性化体验创建服务就能够在用户行为变化的情况下也持续提供良好的结果。 选择探索设置是一项业务决策，涉及到探索时要使用的用户交互的比例，目的是改进模型。
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 00b9cc881d9414e957d7503bb6156095bb821c06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c2d09d259133e8881da6b9a4383f5ada7a85c9e
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "87128142"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830997"
 ---
 # <a name="exploration-and-exploitation"></a>探索和开发利用
 

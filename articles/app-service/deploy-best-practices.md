@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 10fe758bf11f0452ef07d30329d7d48914fbb4bf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c70cf1ca07e5fff58a14aa6b5b6c2f18b9e0e775
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737220"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222528"
 ---
 # <a name="deployment-best-practices"></a>部署最佳做法
 
@@ -127,7 +127,7 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
 
 ### <a name="java"></a>Java
 
-使用 Kudu [zipdeploy/](deploy-zip.md) API 部署 JAR 应用程序，并使用 [wardeploy/](deploy-zip.md#deploy-war-file) 部署 WAR 应用。 如果使用的是 Jenkins，则可以在部署阶段直接使用这些 API。 有关详细信息，请参阅[此文章](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli)。
+使用 Kudu [zipdeploy/](deploy-zip.md) API 部署 JAR 应用程序，并使用 [wardeploy/](deploy-zip.md#deploy-warjarear-packages) 部署 WAR 应用。 如果使用的是 Jenkins，则可以在部署阶段直接使用这些 API。 有关详细信息，请参阅[此文章](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli)。
 
 ### <a name="node"></a>节点
 

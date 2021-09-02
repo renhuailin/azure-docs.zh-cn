@@ -15,12 +15,12 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eb8d0150bafe795f2b23fa18581adc60d091aaf2
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 8428f9ce69bc58a206eb5c60b3602ffbb17f7c19
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078826"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225662"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM 上 SQL Server 版本的就地更改
 
@@ -108,7 +108,7 @@ ms.locfileid: "112078826"
 :::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="验证版本":::
 
 > [!NOTE]
-> 如果已注册 SQL IaaS 代理扩展，请[从 RP 注销](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)，然后重新[注册 SQL VM 资源](sql-agent-extension-manually-register-single-vm.md#register-with-extension)，以便它可以检测到 VM 上安装的 SQL Server 的正确版本和版次。 这将更新与此 VM 关联的元数据和计费信息。
+> 如果已注册 SQL IaaS 代理扩展，请[从 RP 注销](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension)，然后重新[注册 SQL VM 资源](sql-agent-extension-manually-register-single-vm.md#full-mode)，以便它可以检测到 VM 上安装的 SQL Server 的正确版本和版次。 这将更新与此 VM 关联的元数据和计费信息。
 
 ## <a name="remarks"></a>备注
 

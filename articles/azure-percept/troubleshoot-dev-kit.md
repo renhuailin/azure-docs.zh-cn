@@ -1,20 +1,20 @@
 ---
-title: 排查 Azure Percept DK 问题
+title: Azure Percept DK 设备故障排除
 description: 获取 Azure Percept DK 和 IoT Edge 中某些较常见问题的故障排除技巧
-author: mimcco
-ms.author: mimcco
+author: juniem
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/10/2021
 ms.custom: template-how-to
-ms.openlocfilehash: caea6bbd8ebcf3dbe2d6f8b45174326a5ba4f169
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: e644732a90652b1672dc77bfc6db86d7a6b7295a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066738"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221087"
 ---
-# <a name="azure-percept-dk-troubleshooting"></a>Azure Percept DK 故障排除
+# <a name="troubleshoot-the-azure-percept-dk-device"></a>Azure Percept DK 设备故障排除
 
 此故障排除文章的目的是帮助 Azure Percept DK 用户快速解决其开发工具包的常见问题。 它还提供了有关如何在需要额外支持时收集日志的指导。
 
@@ -47,7 +47,6 @@ ms.locfileid: "122066738"
 |OOBE 日志 - 记录关于安装体验的详细信息。|在安装体验过程中发现问题时收集。|```sudo journalctl -u oobe -b```|
 |edgeAgent 日志 - 记录设备上运行的所有模块的版本号。|当一个或多个模块不工作时收集。|```sudo iotedge logs edgeAgent```|
 |模块容器日志 - 记录有关特定 IoT Edge 模块容器的详细信息|发现模块出现问题时收集|```sudo iotedge logs [container name]```|
-|Wi-Fi 接入点日志 - 记录到开发工具包的 Wi-Fi 接入点的连接的相关详细信息。|在连接到开发工具包的 Wi-Fi 接入点的过程中发现问题时收集。|```sudo journalctl -u hostapd.service```|
 |网络日志 - 一组涵盖 Wi-Fi 服务和网络堆栈的日志。|在发现 Wi-Fi 或网络问题时收集。|```sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd > network_log.txt```<br><br>```cat /etc/os-release && cat /etc/os-subrelease && cat /etc/adu-version && rpm -q ztpd > system_ver.txt```<br><br>同时运行这两个命令。 每个命令收集多个日志，并将这些日志置于单个输出中。|
 
 ## <a name="troubleshooting-commands"></a>命令疑难解答
@@ -57,7 +56,7 @@ ms.locfileid: "122066738"
 
 |函数         |何时使用                    |Command                 |
 |------------------|----------------------------|---------------------------|
-|检查开发工具包上的软件版本。|在需要确认开发工具包上的软件版本时使用。|```cat /etc/adu-version```|
+|检查开发工具包上的软件版本。|在需要确认开发工具包上的软件版本时使用。|```cat /etc/os-release && cat /etc/os-subrelease && cat /etc/adu-version```|
 |检查开发工具包的温度|在你认为开发工具包可能过热的情况下使用。|```cat /sys/class/thermal/thermal_zone0/temp```|
 |检查开发工具包的遥测 ID|在需要了解开发工具包的唯一遥测标识符的情况下使用。|```sudo azure-device-health-id```|
 |检查 IoT Edge 的状态|在连接到云的 IoT Edge 模块出现问题时使用。|```sudo iotedge check```|

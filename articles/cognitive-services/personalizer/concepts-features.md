@@ -2,18 +2,19 @@
 title: 特征：操作和上下文 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 个性化体验创建服务使用特征（有关操作和上下文的信息）来做出更好的排名建议。 特征可能非常宽泛，也可能特定于某个项。
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: f49abd4ca1cc1ccdcb7ba2b0fab3bad953dede5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ef7d0146d1636a863941f4deb317149aeb48faf
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100380536"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830934"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>特征是指有关操作和上下文的信息
 

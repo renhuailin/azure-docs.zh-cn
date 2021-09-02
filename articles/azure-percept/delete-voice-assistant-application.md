@@ -1,20 +1,20 @@
 ---
 title: 删除 Azure Percept Audio 语音助理应用程序
 description: 本文介绍如何删除之前创建的语音助理应用程序。
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 0b62ba69695606e04e7044109818c18d30ca21c1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e7f9f9dd0bf1caead19151eb8081e967963fae9a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778378"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224952"
 ---
-# <a name="delete-your-voice-assistant-application"></a>删除语音助理应用程序
+# <a name="delete-your-azure-percept-audio-voice-assistant-application"></a>删除 Azure Percept Audio 语音助理应用程序
 
 这些说明将演示如何从 Azure Percept Audio 设备中删除语音助理应用程序。
 

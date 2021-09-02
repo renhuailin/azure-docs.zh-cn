@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: d733e42d6a415ec6ccbe5ee85f66dd11a87591d4
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 9cef8babd11ea6a0ed4ffc965ed52164c9abe43d
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770141"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866983"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>如何将 Java 应用程序迁移到 Azure VM 和虚拟机规模集上的 JBoss EAP
 
@@ -110,8 +110,6 @@ MTA 支持从第三方企业应用程序服务器（例如 Oracle WebLogic Serve
 | Java 应用程序 | - | - | &#x2714; | &#x2714; | - | - | - |
 
 <sup>1</sup> 虽然 MTA 目前并不提供此迁移路径的规则，但是 Red Hat 咨询可以帮助从任何源平台迁移到 JBoss EAP 7。
-
-:::image type="content" source="./media/jboss-cli-image.png" alt-text="显示 CLI 窗口中的输出的图像。":::
 
 你还可以检查 MTA 的[系统要求](https://access.redhat.com/documentation/en/migration_toolkit_for_applications/5.0/html-single/introduction_to_the_migration_toolkit_for_applications/index#system_requirements_getting-started-guide)。
 

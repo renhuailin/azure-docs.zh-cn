@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 323e6960a111d8227c14cf38046807ad6c1cada6
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: 29f5e96c18220f0bbdec5f91107c9220fc2fba0b
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122263700"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123355255"
 ---
 Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息。 可以使用它来管理和配置虚拟机。
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关可用数据的完整列表，请参阅[终结点类别摘要](#endpoint-categories)。
@@ -259,7 +259,7 @@ IMDS 进行了版本控制，在 HTTP 请求中指定 API 版本是必需的。 
 
 ### <a name="swagger"></a>Swagger
 
-可在以下位置找到 IMDS 的完整 Swagger 定义： https://github.com/Azure/azure-rest-api-specs/blob/master/specification/imds/data-plane/readme.md
+可在以下位置找到 IMDS 的完整 Swagger 定义： https://github.com/Azure/azure-rest-api-specs/blob/main/specification/imds/data-plane/readme.md
 
 ## <a name="regional-availability"></a>区域可用性
 

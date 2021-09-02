@@ -1,19 +1,19 @@
 ---
-title: 设置 Azure Percept Audio
+title: 设置 Azure Percept Audio 设备
 description: 了解如何将 Azure Percept 音频设备连接到 Azure Percept DK
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/25/2021
-ms.openlocfilehash: 03cab112681536708496c35e4440e463d1522406
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 8b6ec3ba8473be8e924d3c4b8ae17ccbdcf6568f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113108182"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221839"
 ---
-# <a name="azure-percept-audio-setup"></a>Azure Percept 音频设置
+# <a name="set-up-the-azure-percept-audio-device"></a>设置 Azure Percept Audio 设备
 
 Azure Percept 音频可直接与 Azure Percept DK 一起使用。 无需进行任何特殊设置。
 

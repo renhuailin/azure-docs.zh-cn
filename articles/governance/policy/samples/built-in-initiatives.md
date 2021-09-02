@@ -1,15 +1,15 @@
 ---
 title: 内置策略计划列表
 description: 列出 Azure Policy 的内置策略计划。 类别包括“合规性”、“来宾配置”等。
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 36fe2923155e92d08224ef10a17366296236082d
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 33ad32f430170c7bfc22f4a438a15b58413a434f
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122605127"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123109628"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy 内置计划定义
 

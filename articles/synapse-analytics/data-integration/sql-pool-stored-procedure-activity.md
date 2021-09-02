@@ -8,16 +8,16 @@ author: linda33wj
 ms.author: jingwang
 ms.reviewer: jrasnick
 ms.date: 05/13/2021
-ms.openlocfilehash: f7f697b9df78c44efb7a266d1a92bdd9ffe31753
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: 4c1f12d4e61f254f753f3feb59ca46997f88b751
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112967684"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257077"
 ---
 # <a name="transform-data-by-using-sql-pool-stored-procedure-activity-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 池存储过程活动来转换数据
 
-<Token>适用范围：![不支持](../media/applies-to/no.png)Azure 数据工厂 ![支持](../media/applies-to/yes.png)Azure Synapse Analytics</Token> 
+[!INCLUDE[appliesto-xxx-asa-md](../../data-factory/includes/appliesto-xxx-asa-md.md)]
 
 可以使用[管道](../../data-factory/concepts-pipelines-activities.md)中的数据转换活动将原始数据转换并处理为预测和见解。 本文基于[转换数据](../../data-factory/transform-data.md)一文编写，它概述了数据转换和支持的转换活动。
 

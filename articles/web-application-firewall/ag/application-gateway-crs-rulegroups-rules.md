@@ -5,15 +5,15 @@ description: 本页提供有关 Web 应用程序防火墙 CRS 规则组和规则
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 07/06/2021
+ms.date: 08/23/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 9aa4277c3d13419a4083193c07d807decea21c59
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4a5f1dba6e0e1411a4268b07f6d66788f3aa8c0f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729431"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772715"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
@@ -427,12 +427,6 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |920340|请求包含内容但缺少 Content-Type 标头|
 |920341|请求包含内容，但需要 Content-Type 标头|
 |920350|Host 标头是数字 IP 地址|
-|920360|参数名称太长|
-|920370|参数值太长|
-|920380|请求中的参数太多|
-|920390|超出了总参数大小|
-|920400|上传的文件太大|
-|920410|上传的文件总大小太大|
 |920420|请求内容类型不受策略允许|
 |920430|HTTP 协议版本不受策略允许|
 |920440|策略限制了 URL 文件扩展名|

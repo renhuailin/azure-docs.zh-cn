@@ -123,6 +123,14 @@
           href: tag-support.md
         - name: Azure Resource Graph 查询
           href: ./resource-graph-samples.md
+    - name: 专用链接访问
+      items:
+        - name: 创建 - 门户
+          href: create-private-link-access-portal.md
+        - name: 创建 - REST
+          href: create-private-link-access-rest.md
+        - name: 管理 - REST
+          href: manage-private-link-access-rest.md
     - name: 管理资源组
       items:
         - name: Azure 门户

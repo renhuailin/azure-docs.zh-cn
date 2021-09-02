@@ -1,19 +1,19 @@
 ---
 title: 针对 Azure SQL 数据库的 Azure Resource Graph 示例查询
 description: 针对 Azure SQL 数据库的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与 Azure SQL 数据库相关的资源和属性。
-ms.date: 08/09/2021
+ms.date: 08/31/2021
 ms.topic: sample
 author: MashaMSFT
 ms.author: mathoma
 ms.service: sql-database
 ms.subservice: service-overview
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: e98a7b8c6b50a45b8b715c88035ffa09384a3b11
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 9e346873c7a593eddd2725033dd17bd43b98e22e
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862715"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318289"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-sql-database"></a>针对 Azure SQL 数据库的 Azure Resource Graph 示例查询
 
