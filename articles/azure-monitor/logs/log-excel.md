@@ -4,24 +4,24 @@ description: 将 Log Analytics 查询获取到 Excel 中并在 Excel 中刷新�
 ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
-ms.date: 11/03/2020
-ms.openlocfilehash: f2834e9bd91ecbbf32e0321179c2359862a5b605
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 06/10/2021
+ms.openlocfilehash: 7cfe8ac2badd292b73b77dd13d7e7ca4bf24a428
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041104"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114474118"
 ---
 # <a name="integrate-log-analytics-and-excel"></a>集成 Log Analytics 和 Excel
 
-可以使用 M 查询和 Log Analytics API 来集成 Azure Monitor Log Analytics 和 Microsoft Excel。 只要结果的总量不超过 61MiB，此集成便可以将多达 500,000 条记录发送到 Excel。
+可以使用 M 查询和 Log Analytics API 来集成 Azure Monitor Log Analytics 和 Microsoft Excel。 该集成可用于发送一定数量的记录和一定 MB 的数据。 这些限制记录在 Azure 门户部分的 [Azure Monitor Log Analytics 工作区限制](../service-limits.md#log-analytics-workspaces)中。 
 
 > [!NOTE]
 > 由于 Excel 是本地客户端应用程序，因此本地硬件和软件限制会影响其性能以及其处理大型数据集的能力。
 
 ## <a name="create-your-m-query-in-log-analytics"></a>在 Log Analytics 中创建 M 查询 
 
-1. 像往常一样，在 Log analytics 中创建和运行查询。 如果在用户界面中遇到 10000 条记录的限制，请不要担心。  建议使用相对日期（如“ago”函数或 UI 时间选取器），以便 Excel 刷新正确的数据集。
+1. 像往常一样，在 Log analytics 中创建和运行查询。 如果在用户界面中达到记录数限制，请不要担心。  建议使用相对日期（如“ago”函数或 UI 时间选取器），以便 Excel 刷新正确的数据集。
   
 2. 导出查询 - 对查询及其结果感到满意后，使用 Log Analytics 的“导出”菜单下的“导出到 Power BI (M 查询)”菜单选项，将查询导出到 M：
 

@@ -1,16 +1,19 @@
 ---
 title: 学习策略 - 个性化体验创建服务
 description: 学习设置决定了模型训练的超参数。 相同数据基于不同的学习设置训练的两个模型会产生不同的结果。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 1d2038e3796df843736eb80f7e5645f4141c82f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aad256981001d3b115570ddac0c3cf4993bc2da1
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91253626"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830736"
 ---
 # <a name="learning-policy-and-settings"></a>学习策略和设置
 

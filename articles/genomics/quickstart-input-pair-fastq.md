@@ -3,18 +3,18 @@ title: 使用 FASTQ 文件输入提交工作流
 titleSuffix: Microsoft Genomics
 description: 本文演示了在输入文件为一对 FASTQ 文件的情况下，如何将工作流提交到 Microsoft 基因组学服务。
 services: genomics
-author: grhuynh
+author: vigunase
 manager: cgronlun
-ms.author: grhuynh
+ms.author: vigunase
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: 19c22f835f14fff880817c0452e6c0245b24be41
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 8b151632e2fb33b7bb984258a6efae54261bf419
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551877"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255730"
 ---
 # <a name="submit-a-workflow-using-fastq-file-inputs-in-microsoft-genomics"></a>使用 Microsoft 基因组学中的 FASTQ 文件输入提交工作流
 

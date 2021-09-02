@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5038bde01a6b183a25a47f3b4e206c1ce80e6b6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de315722641248a2a577c97403da400a6de67e6c
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98127832"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867073"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory 中的用户管理增强功能（预览版）
 
@@ -70,7 +70,6 @@ ms.locfileid: "98127832"
 - 公司名称：与用户关联的公司名称。
 - 邀请状态：来宾用户的邀请状态。
 - 邮件：用户的电子邮件。
-- 上次登录时间：用户上次登录的日期。 此属性仅对有权阅读审核日志 (Reporting_ApplicationAuditLogs_Read) 的用户可见
 
 ![“所有用户”和“已删除的用户”页上显示的新用户属性](./media/users-search-enhanced/user-properties.png)
 

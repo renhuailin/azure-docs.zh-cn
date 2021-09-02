@@ -1,20 +1,21 @@
 ---
 title: 针对 Azure Cosmos DB 的 Azure Resource Graph 示例查询
 description: 针对 Azure Cosmos DB 的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与 Azure Cosmos DB 相关的资源和属性。
-ms.date: 08/09/2021
+ms.date: 08/31/2021
 ms.topic: sample
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: d455f9f6ad7ee63710a110471d6e65e4f5d3200a
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 23e03bdbde7b21d2167e49a51f774466ca73d2ca
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861787"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318331"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-cosmos-db"></a>针对 Azure Cosmos DB 的 Azure Resource Graph 示例查询
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 此页面是针对 Azure Cosmos DB 的 [Azure Resource Graph](../governance/resource-graph/overview.md) 示例查询的集合。 有关 Azure Resource Graph 示例的完整列表，请参阅 [Resource Graph 示例（按类别）](../governance/resource-graph/samples/samples-by-category.md)和 [Resource Graph 示例（按表）](../governance/resource-graph/samples/samples-by-table.md)。
 

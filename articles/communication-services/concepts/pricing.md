@@ -7,14 +7,14 @@ manager: nmurav
 services: azure-communication-services
 ms.author: nmurav
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: ba47fd528882e1d7de45470f00316c57b966ddb5
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: d8938a437db42a2d1cb5dd88f6102ce7f5facb3a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762888"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259068"
 ---
 # <a name="pricing-scenarios"></a>定价方案
 
@@ -77,10 +77,6 @@ Alice 在 Azure 通信服务应用中通过 Azure 通信服务直接路由向某
 - 通信服务直接路由呼出端有 1 名参与者 (Bob) 从通信服务服务器向 SBC 发起呼叫 x 10 分钟 x 每个参与者端每分钟 0.004 美元 = 0.04 美元。
 
 此次呼叫的总费用：0.04 美元 + 0.04 美元 = 0.08 美元
-
-> [!Note]
-> Azure 通信服务直接路由端在 2021 年 8 月 1 日之前不收费。
-
 
 ### <a name="pricing-example-group-audio-call-using-js-sdk-and-one-pstn-leg"></a>定价示例：使用 JS SDK 和一个 PSTN 端发起音频群呼
 

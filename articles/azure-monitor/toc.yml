@@ -233,10 +233,10 @@
               items:
                 - name: Azure 门户
                   href: logs/quick-create-workspace.md
+                - name: Azure CLI
+                  href: logs/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: logs/powershell-workspace-configuration.md
-                - name: 资源管理器模板
-                  href: logs/resource-manager-workspace.md
             - name: 设计工作区部署
               href: logs/design-logs-deployment.md
             - name: 监视工作区
@@ -490,7 +490,7 @@
           href: autoscale/autoscale-get-started.md
         - name: 配置设置
           href: autoscale/autoscale-understanding-settings.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: autoscale/autoscale-best-practices.md
         - name: 常见指标
           href: autoscale/autoscale-common-metrics.md

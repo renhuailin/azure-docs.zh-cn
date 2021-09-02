@@ -1,27 +1,23 @@
 ---
-title: Azure Blob 存储中的 NFS 3.0 性能注意事项（预览版）| Microsoft Docs
+title: Azure Blob 存储中的 NFS 3.0 性能注意事项 | Microsoft Docs
 description: 使用本文中的建议优化网络文件系统 (NFS) 3.0 存储请求的性能。
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
-ms.custom: references_regions
-ms.openlocfilehash: 6a5ebed9f6b8bf5ed40829e13bbbcc43b7ebbc8a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e8d024832bf74873fb56a9d41d6d27544aa701f1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069537"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725051"
 ---
-# <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Azure Blob 存储中的网络文件系统 (NFS) 3.0 性能注意事项（预览版）
+# <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage"></a>Azure Blob 存储中的网络文件系统 (NFS) 3.0 性能注意事项
 
-Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 本文包含有助于优化存储请求性能的建议。 若要了解有关 Azure Blob 存储中 NFS 3.0 支持的详细信息，请参阅 [Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持（预览版）](network-file-system-protocol-support.md)。
-
-> [!NOTE]
-> Azure Blob 存储中的 NFS 3.0 协议支持目前处于公共预览版状态。 它支持所有公共区域中具有标准层性能的 GPV2 存储帐户和具有高级性能层的块 blob 存储帐户。
+Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 本文包含有助于优化存储请求性能的建议。 若要了解有关 Azure Blob 存储中 NFS 3.0 支持的详细信息，请参阅 [Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持](network-file-system-protocol-support.md)。
 
 ## <a name="add-clients-to-increase-throughput"></a>添加客户端以增加吞吐量 
 
@@ -46,11 +42,20 @@ Azure Blob 存储可线性扩展，直至达到最大存储帐户流出量和流
 > [!div class="mx-imgBorder"]
 > ![相对性能](./media/network-file-system-protocol-support-performance/relative-performance.png)
 
+## <a name="improve-read-ahead-size-to-increase-large-file-read-throughput"></a>提高预读大小以提高大型文件读取吞吐量 
+read_ahead_kb 内核参数表示满足给定读取请求后应读取的其他数据量。 可以将此参数增大到 16MB，以提高大型文件读取吞吐量。 
+
+```
+export AZMNT=/your/container/mountpoint
+
+echo 15728640 > /sys/class/bdi/0:$(stat -c "%d" $AZMNT)/read_ahead_kb
+```
+
 ## <a name="avoid-frequent-overwrites-on-data"></a>避免频繁执行日期覆盖操作
 
 完成覆盖操作比完成新的写入操作需要更长的时间。 这是因为 NFS 覆盖操作（特别是部分就地文件编辑）是多个基础 blob 操作的组合：读取、修改和写入操作。 因此，需要频繁进行就地编辑的应用程序并不适合启用了 NFS 的 blob 存储帐户。 
 
-## <a name="deploy-azure-hpc-cache-for-latency-senstive-applications"></a>为延迟敏感型应用程序部署 Azure HPC 缓存
+## <a name="deploy-azure-hpc-cache-for-latency-sensitive-applications"></a>为延迟敏感型应用程序部署 Azure HPC 缓存
 
 除了高吞吐量之外，某些应用程序可能还需要低延迟。 可以部署 [Azure HPC 缓存](../../hpc-cache/nfs-blob-considerations.md)来显著改善延迟。 详细了解 [Blob 存储中的延迟](storage-blobs-latency.md)。 
 
@@ -68,6 +73,6 @@ Azure Blob 存储可线性扩展，直至达到最大存储帐户流出量和流
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关 Azure Blob 存储中 NFS 3.0 支持的详细信息，请参阅 [Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持（预览版）](network-file-system-protocol-support.md)。
+- 若要了解有关 Azure Blob 存储中 NFS 3.0 支持的详细信息，请参阅 [Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持](network-file-system-protocol-support.md)。
 
-- 若要开始操作，请参阅[使用网络文件系统 (NFS) 3.0 协议装载 Blob 存储（预览版）](network-file-system-protocol-support-how-to.md)。
+- 若要开始操作，请参阅[使用网络文件系统 (NFS) 3.0 协议装载 Blob 存储](network-file-system-protocol-support-how-to.md)。

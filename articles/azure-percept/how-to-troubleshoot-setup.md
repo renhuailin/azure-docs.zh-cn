@@ -1,20 +1,20 @@
 ---
-title: 排查 Azure Percept DK 安装体验过程中的问题
+title: Azure Percept DK 设置体验疑难解答
 description: 获取在安装体验过程中发现的一些较常见问题的故障排除技巧
-author: mimcco
-ms.author: mimcco
+author: SillyKeith
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: troubleshooting
 ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: df99c356ad82704f7fbd5e40ef6c382e429ad5b4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 40b7289b3c6fd841a0af9b9a61f66906e0dfa028
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725524"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226839"
 ---
-# <a name="azure-percept-dk-setup-experience-troubleshooting-guide"></a>Azure Percept DK 安装体验故障排除指南
+# <a name="troubleshoot-the-azure-percept-dk-setup-experience"></a>Azure Percept DK 设置体验疑难解答
 
 请参阅下表，了解 [Azure Percept DK 安装体验](./quickstart-percept-dk-set-up.md)过程中发现的常见问题的暂时解决方法。 如果问题仍然存在，请联系 Azure 客户支持。
 

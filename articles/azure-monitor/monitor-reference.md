@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: b04cacb1d2767e152e62bc3fd5902798204f3f60
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1e43944b803f798c3bd741903f1ee0732bcb93d4
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734280"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864531"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -126,7 +126,7 @@ ms.locfileid: "121734280"
 |地图  | 否 | 否 | 否 |  |
 |媒体服务 | 是 | 是 | 否 |  |
 |Microsoft 托管桌面 | 否 | 否 | 否 |  |
-|Microsoft PowerApps | 否 | 否 | 否 |  |
+|Microsoft Power Apps | 否 | 否 | 否 |  |
 |Microsoft 社交参与 | 否 | 否 | 否 |  |
 |Microsoft Stream | 是 | 是 | 否 |  |
 |迁移 | 否 | 否 | 否 |  |

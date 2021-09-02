@@ -5,12 +5,12 @@ ms.subservice: pod
 ms.topic: include
 ms.date: 05/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 6ccf37d96da5b52111fd08a51de4949185891193
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: c8a749a1b0e14859b0eb2c81b4bfeafd1dba0913
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736075"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122868093"
 ---
 若要查看不可重试的错误并继续处理订单，请执行以下操作：
 
@@ -21,6 +21,9 @@ ms.locfileid: "109736075"
    ![Azure 门户中的上传过程中的复制错误通知](media/data-box-review-nonretryable-errors/copy-errors-in-upload-01.png)
 
    记下“数据复制详细信息”中的“复制日志路径” 。 你需要查看数据复制日志中的错误。
+
+   > [!NOTE]
+   > [!INCLUDE [data-box-copy-logs-behind-firewall](data-box-copy-logs-behind-firewall.md)]
 
 2. 选择“确认设备删除”以打开查看面板。
 

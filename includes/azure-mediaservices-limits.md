@@ -4,20 +4,19 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: f4bdd5332b3c10cf375c7c04ede25137328714a2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0c60b111483d896ad2beb008d165b9fb84160b35
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106072865"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835556"
 ---
 >[!NOTE]
 >对于不固定的资源，请开具支持票证，要求增加配额。 请不要尝试通过创建更多 Azure 媒体服务帐户来提高配额限制。
 
 | 资源 | 限制 | 
 | --- | --- | 
-| 单个订阅中的 Azure 媒体服务帐户数 | 25（固定） |
-| 每个媒体服务帐户的媒体保留单位数 |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
+| 单个订阅中的 Azure 媒体服务帐户数 | 25（固定） | 
 | 每个媒体服务帐户的作业数 | 50,000<sup>2</sup> |
 | 每个作业的链接任务数 | 30（固定） |
 | 每个媒体服务帐户的资产数 | 1,000,000|

@@ -1,37 +1,37 @@
 ---
-title: 使用 Visual Studio Code 在单租户 Azure 逻辑应用中创建工作流
-description: 使用单租户 Azure 逻辑应用和 Visual Studio Code 创建集成应用、数据、服务和系统的自动化工作流。
+title: 在 Visual Studio Code 中使用单租户 Azure 逻辑应用（标准版）创建工作流
+description: 在 Visual Studio Code 中使用单租户 Azure 逻辑应用（标准版）创建集成应用、数据、服务和系统的自动化工作流。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: 9507f8877be033772acb34fbbbe7996c38fca6ad
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 07/13/2021
+ms.openlocfilehash: 776068748b9cd7e90b9d9418bdf9a31fe36ff180
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369652"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733747"
 ---
-# <a name="create-an-integration-workflow-using-single-tenant-azure-logic-apps-and-visual-studio-code"></a>使用单租户 Azure 逻辑应用和 Visual Studio Code 创建集成工作流
+# <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-visual-studio-code"></a>在 Visual Studio Code 中使用单租户 Azure 逻辑应用（标准版）创建集成工作流
 
-本文介绍如何使用逻辑应用（标准版）资源类型、Visual Studio Code 和 Azure 逻辑应用（标准版）扩展创建一个自动化集成工作流示例 。 在 Visual Studio Code 中创建此逻辑应用工作流时，可以在本地开发环境中运行和测试工作流。
+本文介绍如何使用 Visual Studio Code 和 Azure 逻辑应用（标准版）扩展创建在单租户 Azure 逻辑应用环境中运行的自动化集成工作流示例。 通过此扩展创建的逻辑应用基于逻辑应用（标准版）资源类型，其提供以下功能：
 
-准备就绪后，可部署到单租户 Azure 逻辑应用环境或 Azure Functions 可以运行的任何位置，因为重新设计了 Azure 逻辑应用容器化运行时。 与多租户 Azure 逻辑应用（消耗版）扩展（适用于多租户 Azure 逻辑应用环境）相比，使用单租户 Azure 逻辑应用（标准版）扩展可通过以下属性创建逻辑应用 ：
+* 可在 Visual Studio Code 开发环境中本地运行和测试逻辑应用工作流。
 
-* 逻辑应用（标准版）资源类型可托管多个[有状态和无状态工作流](single-tenant-overview-compare.md#stateful-stateless)，这些工作流在开发环境中、单租户 Azure 逻辑应用环境中或 Azure Functions 可以运行的任何位置（如容器）中本地运行。 此属性为工作流提供灵活性和可迁移性。
+* 逻辑应用可以有多个[有状态和无状态](single-tenant-overview-compare.md#stateful-stateless)工作流。
 
-* 在逻辑应用（标准版）资源中，同一逻辑应用和租户中的工作流在与重新设计的 Azure 逻辑应用运行时相同的过程中运行，因此它们共享相同的资源并提供更好的性能。
+* 同一逻辑应用和租户中的工作流的运行过程与 Azure 逻辑应用运行时相同，因此它们共享相同的资源并提供更好的性能。
 
-* 可以将逻辑应用（标准版）资源直接部署到 Azure，也可以直接部署 Azure Functions 可以运行的任何位置，包括容器。
+* 由于 Azure 逻辑应用容器化运行时，可直接将逻辑应用（标准版）资源类型部署到单租户 Azure 逻辑应用环境或 Azure Functions 可以运行的任何位置（包括容器）。
 
-有关逻辑应用（标准版）资源类型和单租户模型的详细信息，请查看[单租户与多租户以及集成服务环境](single-tenant-overview-compare.md)。
+有关单租户 Azure 逻辑应用产品/服务的详细信息，请查看[单租户与多租户以及集成服务环境](single-tenant-overview-compare.md)。
 
 虽然示例工作流是基于云的工作流，并且只有两个步骤，但可以从数百个操作创建工作流，这些操作可以跨云、本地和混合环境连接各种应用、数据、服务和系统。 示例工作流从内置的“请求”触发器开始，然后执行 Office 365 Outlook 操作。 触发器为工作流创建可调用终结点，并等待来自任何调用方的入站 HTTPS 请求。 当触发器收到请求并触发时，会向指定电子邮件地址发送电子邮件以及触发器中所选的输出来运行下一个操作。
 
 > [!TIP]
 > 如果没有 Office 365 帐户，可以使用任何其他可从电子邮件帐户发送消息的可用操作，例如使用 Outlook.com。
-> 
+>
 > 若要改为使用 Azure 门户创建此示例工作流，请按照[使用单租户 Azure 逻辑应用和 Azure 门户创建集成工作流](create-single-tenant-workflows-azure-portal.md)中的步骤进行操作。 
 > 可使用这两个选项在相同类型的环境中开发、运行和部署逻辑应用工作流。 
 > 但是借助 Visual Studio Code，你可以在开发环境中本地开发、测试和运行工作流。
@@ -114,7 +114,7 @@ ms.locfileid: "110369652"
 
 * 若要在 Visual Studio Code 本地运行基于 Webhook 的触发器和操作（例如[内置的 HTTP Webhook 触发器](../connectors/connectors-native-webhook.md)），则你需要[为回调 URL 设置转发](#webhook-setup)。
 
-* 若要测试本文中的示例工作流，则需要一个可以向“请求”触发器创建的终结点发送调用的工具。 如果没有此类工具，你可以下载、安装并使用 [Postman](https://www.postman.com/downloads/)。
+* 若要测试本文中的示例工作流，则需要一个可以向“请求”触发器创建的终结点发送调用的工具。 如果没有此类工具，你可以下载、安装并使用 [Postman](https://www.postman.com/downloads/) 应用。
 
 * 如果你通过支持使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 的设置创建逻辑应用资源，则可以选择为你的逻辑应用启用诊断日志记录和跟踪。 你可以在创建逻辑应用时或在部署后执行此操作。 你需要有一个 Application Insights 实例，但你可以在创建逻辑应用时[提前](../azure-monitor/app/create-workspace-resource.md)创建此资源，或在部署后创建此资源。
 
@@ -214,43 +214,6 @@ ms.locfileid: "110369652"
 
    ![屏幕截图显示了“资源管理器”窗格，其中包含项目文件夹、工作流文件夹和“workflow.json”文件。](./media/create-single-tenant-workflows-visual-studio-code/local-project-created.png)
 
-1. 如果你使用的是 macOS 或 Linux，请按照以下步骤设置对你的存储帐户的访问权限，这些步骤是在本地运行项目所必需的：
-
-   1. 在你的项目的根文件夹中，打开 **local.settings.json** 文件。
-
-      ![屏幕截图显示了“资源管理器”窗格和你的项目中的“local.settings.json”文件。](./media/create-single-tenant-workflows-visual-studio-code/local-settings-json-files.png)
-
-   1. 将 `AzureWebJobsStorage` 属性值替换为之前保存的存储帐户连接字符串，例如：
-
-      早于:
-
-      ```json
-      {
-         "IsEncrypted": false,
-         "Values": {
-            "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-            "FUNCTIONS_WORKER_RUNTIME": "dotnet"
-          }
-      }
-      ```
-
-      晚于：
-
-      ```json
-      {
-         "IsEncrypted": false,
-         "Values": {
-            "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net",
-           "FUNCTIONS_WORKER_RUNTIME": "dotnet"
-         }
-      }
-      ```
-
-      > [!IMPORTANT]
-      > 对于生产方案，请确保护此类机密和敏感信息安全，例如，可以使用密钥保管库。
-
-   1. 完成时，请务必保存所做的更改。
-
 <a name="enable-built-in-connector-authoring"></a>
 
 ## <a name="enable-built-in-connector-authoring"></a>启用内置的连接器创作
@@ -315,7 +278,7 @@ ms.locfileid: "110369652"
 
    ![屏幕截图显示了“资源管理器”窗格和资源组名称框。](./media/create-single-tenant-workflows-visual-studio-code/enter-name-for-resource-group.png)
 
-1. 从位置列表中，找到并选择在创建资源组和资源时要使用的 Azure 区域。 此示例使用“美国中西部”。
+1. 从位置列表中，选择在创建资源组和资源时要使用的 Azure 区域。 此示例使用“美国中西部”。
 
    ![屏幕截图显示了“资源管理器”窗格，其中显示了位置列表，并且“美国中西部”处于选中状态。](./media/create-single-tenant-workflows-visual-studio-code/select-azure-region.png)
 
@@ -369,7 +332,7 @@ ms.locfileid: "110369652"
 
    设计器上将显示“选择操作”提示，并且“添加操作”窗格将重新打开，以便你可以选择下一个操作。
 
-1. 在“添加操作”窗格中的“选择操作”搜索框下选择“Azure”，以便查找并选择在 Azure 中部署的托管连接器的操作。
+1. 在“添加操作”窗格中的“选择操作”搜索框下选择“Azure”，以便选择用于在 Azure 中部署的托管连接器的操作。
 
    此示例选择并使用 Office 365 Outlook 操作“发送电子邮件(V2)”。
 
@@ -468,8 +431,8 @@ ms.locfileid: "110369652"
    >
    > 若要使提示再次显示，请在项目的根级别打开 **local.settings.json** 文件的快捷菜单，然后选择“配置 Webhook 重定向终结点”。 现在，提示将会再次显示，以便你可以提供转发 URL。
 
-   Visual Studio Code 将转发 URL 添加到项目根文件夹中的 **local.settings.json** 文件。 在 `Values` 对象中，现在会出现名为 `Workflows.WebhookRedirectHostUri` 的属性并且它设置为转发 URL，例如：
-   
+   Visual Studio Code 将转发 URL 添加到项目根文件夹中的 **local.settings.json** 文件。 在 `Values` 对象中，现在会出现名为 `Workflows.WebhookRedirectHostUri` 的属性并且其会设置为转发 URL，例如：
+
    ```json
    {
       "IsEncrypted": false,
@@ -707,7 +670,7 @@ ms.locfileid: "110369652"
 
 <a name="firewall-setup"></a>
 
-##  <a name="find-domain-names-for-firewall-access"></a>查找用于防火墙访问的域名
+## <a name="find-domain-names-for-firewall-access"></a>查找用于防火墙访问的域名
 
 在 Azure 门户中部署并运行你的逻辑应用工作流之前，如果你的环境具有限制流量的严格网络要求或防火墙，则必须为工作流中存在的任何触发器或操作连接设置权限。
 
@@ -715,7 +678,7 @@ ms.locfileid: "110369652"
 
 1. 在你的逻辑应用项目中，打开 **connections.json** 文件（该文件是在你将第一个基于连接的触发器或操作添加到工作流后创建的）并查找 `managedApiConnections` 对象。
 
-1. 针对你创建的每个连接，查找、复制 `connectionRuntimeUrl` 属性值并将其保存到一个安全的位置，以便可以使用此信息设置防火墙。
+1. 针对你创建的每个连接，复制 `connectionRuntimeUrl` 属性值并将其保存到一个安全的位置，以便可以使用此信息设置防火墙。
 
    此示例 **connections.json** 文件包含两个连接（一个 AS2 连接和一个 Office 365 连接），这些连接具有以下 `connectionRuntimeUrl` 值：
 
@@ -796,7 +759,7 @@ ms.locfileid: "110369652"
 
       有关详细信息，请查看[托管计划和定价层](logic-apps-pricing.md#standard-pricing)。
 
-   1. 为了获得最佳性能，请为部署查找并选择与你的项目相同的资源组。
+   1. 为了获得最佳性能，请为部署选择与你的项目相同的资源组。
 
       > [!NOTE]
       > 尽管可以创建或使用其他资源组，但这样做可能会影响性能。 如果你创建或选择其他资源组，但在出现确认提示后取消，则还会取消你的部署。
@@ -955,7 +918,7 @@ ms.locfileid: "110369652"
 
    ![屏幕截图显示了 Visual Studio Code，其中包含打开的“Azure 逻辑应用(标准版)”扩展窗格以及已部署的工作流。](./media/create-single-tenant-workflows-visual-studio-code/find-deployed-workflow-visual-studio-code.png)
 
-1. 若要查看逻辑应用中的所有工作流，请展开你的逻辑应用，然后展开“工作流”节点。
+1. 若要查看逻辑应用中的所有工作流，请展开你的逻辑应用，然后展开名为“工作流”的节点。
 
 1. 若要查看某个特定工作流，请打开该工作流的快捷菜单，然后选择“在设计器中打开”，这将以只读模式打开工作流。
 
@@ -963,7 +926,7 @@ ms.locfileid: "110369652"
 
    * 在 Visual Studio Code 中，在工作流设计器中打开项目的 **workflow.json** 文件，进行编辑，并将逻辑应用重新部署到 Azure。
 
-   * 在 Azure 门户中，[找到并打开你的逻辑应用](#manage-deployed-apps-portal)。 查找、编辑和保存工作流。
+   * 在 Azure 门户中，[打开逻辑应用](#manage-deployed-apps-portal)。 然后，可以打开、编辑和保存工作流。
 
 1. 若要在 Azure 门户中打开已部署的逻辑应用，请打开逻辑应用的快捷菜单，然后选择“在门户中打开”。
 
@@ -991,7 +954,7 @@ ms.locfileid: "110369652"
 
   1. 在 Visual Studio Code 左侧工具栏中，选择 Azure 图标。 
   1. 在“Azure: 逻辑应用(标准版)”窗格中，展开你的订阅，其中显示了该订阅的所有已部署逻辑应用。
-  1. 展开逻辑应用，然后展开“工作流”节点。
+  1. 展开逻辑应用，然后展开名为“工作流”的节点。
   1. 打开工作流，然后编辑该工作流触发器的任何部分。
   1. 保存所做更改。 此步骤会重置触发器的当前状态。
   1. 对每个工作流重复此操作。
@@ -1007,7 +970,7 @@ ms.locfileid: "110369652"
 
 * 逻辑应用服务不会创建或运行新的工作流实例。
 
-* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用已删除工作流的工作流。 这样，调用方就会获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将会失败，并出现 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
+* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 要刷新元数据，必须重新保存调用已删除工作流的所有工作流。 这样，调用方就可获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将失败并显示 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
 
 <a name="manage-deployed-apps-portal"></a>
 
@@ -1019,7 +982,7 @@ ms.locfileid: "110369652"
 
    ![屏幕截图显示了 Azure 门户搜索框，其中包含“逻辑应用”搜索文本。](./media/create-single-tenant-workflows-visual-studio-code/portal-find-logic-app-resource.png)
 
-1. 在“逻辑应用(标准版)”窗格中，查找并选择你从 Visual Studio Code 部署的逻辑应用。
+1. 在“逻辑应用（标准版）”窗格中，选择你从 Visual Studio Code 部署的逻辑应用。
 
    ![屏幕截图显示了 Azure 门户和 Azure 中部署的“逻辑应用(标准版)”资源。](./media/create-single-tenant-workflows-visual-studio-code/logic-app-resources-pane.png)
 
@@ -1051,7 +1014,7 @@ ms.locfileid: "110369652"
 
 通过 Azure 门户，你可以将空白工作流添加到从 Visual Studio Code 部署的逻辑应用（标准版）资源中并在 Azure 门户中构建这些工作流。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择已部署的“逻辑应用(标准版)”资源。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择已部署的“逻辑应用（标准版）”资源。
 
 1. 在逻辑应用菜单中，选择“工作流”。 在“工作流”窗格上，选择“添加”。
 
@@ -1073,7 +1036,7 @@ ms.locfileid: "110369652"
 
 若要更轻松地调试某个无状态工作流，可以为该工作流启用运行历史记录，并在完成后禁用运行历史记录。 对于 Visual Studio Code，请按照下面的步骤操作；如果使用的是 Azure 门户，请参阅[在 Azure 门户中创建基于单租户的工作流](create-single-tenant-workflows-azure-portal.md#enable-run-history-stateless)。
 
-1. 在你的 Visual Studio Code 项目中，展开“workflow-designtime”文件夹，然后打开“local.settings.json”文件。
+1. 在你的 Visual Studio Code 项目中，展开名为“workflow-designtime”的文件夹，然后打开“local.settings.json”文件。
 
 1. 添加 `Workflows.{yourWorkflowName}.operationOptions` 属性，并将值设置为 `WithStatelessRunHistory`，例如：
 
@@ -1112,7 +1075,7 @@ ms.locfileid: "110369652"
 
 将逻辑应用（标准版）资源从 Visual Studio Code 部署到 Azure 后，可使用 Azure 门户和该工作流的“监视器”体验来查看该资源中工作流的所有可用的运行历史记录和详细信息 。 但是，必须先对该逻辑应用资源启用“监视器”视图功能。
 
-1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择已部署的“逻辑应用(标准版)”资源。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择已部署的“逻辑应用（标准版）”资源。
 
 1. 在该资源的菜单上，在“API”下选择“CORS”。
 
@@ -1268,7 +1231,7 @@ ms.locfileid: "110369652"
 
 尝试启动调试会话时，你收到错误 **运行 preLaunchTask“generateDebugSymbols”后存在错误**。 若要解决此问题，请编辑项目中的 **tasks.json** 文件以跳过符号生成。
 
-1. 在你的项目中，展开“.vscode”文件夹，然后打开“tasks.json”文件。
+1. 在你的项目中，展开名为“.vscode”的文件夹，然后打开“tasks.json”文件。
 
 1. 在下面的任务中，删除 `"dependsOn: "generateDebugSymbols"` 行以及上一行末尾的逗号，例如：
 

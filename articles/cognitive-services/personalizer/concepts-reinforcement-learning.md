@@ -2,18 +2,19 @@
 title: 强化学习 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 个性化体验创建服务使用有关操作和上下文的信息来做出更好的排名建议。 有关这些操作和上下文的信息是称作“特征”的特性或属性。
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ad6414060bc744a85aaecfc8b9ceeac8dd57d30
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "87132732"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830754"
 ---
 # <a name="what-is-reinforcement-learning"></a>什么是强化学习？
 

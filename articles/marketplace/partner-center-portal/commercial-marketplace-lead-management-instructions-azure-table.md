@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: c136f0f2a946eca0d89c04734c9f351d4e6c79d6
-ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+ms.openlocfilehash: 8a66e42466f6b7ed85a330bb3bf3f1dda422e0d5
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2021
-ms.locfileid: "113601130"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867541"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 表存储管理商业市场潜在顾客
 
@@ -59,7 +59,7 @@ ms.locfileid: "113601130"
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>（可选）使用 Power Automate 获取潜在顾客通知
 
-每次将潜在顾客添加到 Azure 存储表时，都可使用 [Power Automate](/flow/) 自动获取通知。 如果没有帐户，可以[注册免费帐户](https://flow.microsoft.com/)。
+每次将潜在顾客添加到 Azure 存储表时，都可使用 [Power Automate](/power-automate/) 自动获取通知。 如果没有帐户，可以[注册免费帐户](https://flow.microsoft.com/)。
 
 ### <a name="lead-notification-example"></a>潜在顾客通知示例
 

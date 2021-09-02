@@ -8,19 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/30/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 21f31a21921953148ae0438cee04d846706161cc
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 51639df9115032beefd04e6eb114c0d62e61ed88
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382923"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "122652247"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 OpenID Connect 注册与登录
 
-[OpenID Connect](openid-connect.md) 是构建在 OAuth 2.0 基础之上的身份验证协议，可用于安全的用户登录。 Azure AD B2C 支持大多数使用此协议的标识提供者。 本文介绍如何将自定义 OpenID Connect 标识提供者添加到用户流。
+[OpenID Connect](openid-connect.md) 是构建在 OAuth 2.0 基础之上的身份验证协议，可用于安全的用户登录。 Azure AD B2C 支持大多数使用此协议的标识提供者。 
+
+本文介绍如何将自定义 OpenID Connect 标识提供者添加到用户流。
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
 
 ## <a name="add-the-identity-provider"></a>添加标识提供者
 
@@ -80,7 +84,7 @@ ms.locfileid: "106382923"
 1. 在“社交标识提供者”下，选择已添加的标识提供者。 例如，Contoso。
 1. 选择“保存”。
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“运行用户流”按钮。
 1. 在注册或登录页中，选择要登录的标识提供者。 例如，Contoso。
 

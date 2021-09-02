@@ -1,20 +1,20 @@
 ---
-title: 使用无线方式 (OTA) 更新 Azure Percept DK
+title: 以无线方式更新 Azure Percept DK
 description: 了解如何以无线方式 (OTA) 接收 Azure Percept DK 更新
-author: mimcco
-ms.author: mimcco
+author: EthanChangAED
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: c5045aed59be4c8903672691241b68f69e353e13
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0b3dd8e10379e28a7bd988ec37dcd1943fcac2d3
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733351"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222257"
 ---
-# <a name="update-your-azure-percept-dk-using-over-the-air-ota-updates"></a>使用无线方式 (OTA) 更新 Azure Percept DK
+# <a name="update-azure-percept-dk-over-the-air"></a>以无线方式更新 Azure Percept DK
 
 按照本指南学习如何使用 Device Update for IoT Hub 以无线方式 (OTA) 更新 Azure Percept DK 的载板的 OS 和固件。
 
@@ -68,12 +68,10 @@ ms.locfileid: "121733351"
 - 一个设备只能属于一个组。
 
 1. 将标记添加到设备：
-
     1. 从左侧导航窗格上的“IoT Edge”，找到你的 Azure Percept DK 并导航到其“设备孪生”。
-
     1. 添加新的 Device Update for IoT Hub 标记值，如下所示（```<CustomTagValue>``` 表示标记值/名称，例如 AzurePerceptGroup1）。 详细了解设备孪生 [JSON 文档标记](../iot-hub/iot-hub-devguide-device-twins.md#device-twins)。
 
-        ```
+        ```json
         "tags": {
         "ADUGroup": "<CustomTagValue>"
         },
@@ -84,15 +82,10 @@ ms.locfileid: "121733351"
 1. 通过选择一个现有 Azure IoT 中心标记来创建组：
 
     1. 导航回你的 Azure IoT 中心页面。
-
     1. 在左侧菜单面板中的“自动设备管理”下选择“设备更新”。 
-
     1. 选择“组”选项卡。此页面会显示已连接到“设备更新”的未分组设备数。
-
     1. 选择“+ 添加”以创建一个新组。
-
     1. 从列表中选择一个 IoT 中心标记并单击“提交”。
-
     1. 创建组后，更新符合性图表和组列表也会更新。 该图表显示了处于下述各种符合性状态的设备的计数：“应用了最新更新”、“有新的更新可用”、“正在进行更新”和“尚未分组”。   
 
 ## <a name="deploy-an-update"></a>部署更新

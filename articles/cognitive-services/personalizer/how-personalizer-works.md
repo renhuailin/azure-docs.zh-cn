@@ -1,16 +1,19 @@
 ---
 title: 个性化体验创建服务的工作原理 - 个性化体验创建服务
 description: 个性化体验创建服务循环使用机器学习来生成模型，以预测针对你的内容的最常见操作。 该模型是专门使用通过排名和奖励调用发送的数据训练的。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: cfbe5cf8c19bfafb38f6149391e09350785ebf9c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c9d9f2b06a34feca2974bf97fb5d494c6105471
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91303601"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829926"
 ---
 # <a name="how-personalizer-works"></a>个性化体验创建服务的工作原理
 

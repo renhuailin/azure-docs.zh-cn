@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23f88a783ca257090fc607cc9a16ec457c7e9c8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d4fb6c1dbeca8c2073a0a493e67b05d46d36738
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90016582"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223221"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>什么是与 Azure AD 的密码哈希同步？
 密码哈希同步是用来实现混合标识的登录方法之一。 Azure AD Connect 将用户密码的哈希从本地 Active Directory 实例同步到基于云的 Azure AD 实例。
@@ -30,7 +30,7 @@ ms.locfileid: "90016582"
 * 提升用户的生产力。
 * 减少技术支持成本。  
 
-密码哈希同步还为混合帐户启用了[泄露凭据监测](../identity-protection/concept-identity-protection-risks.md#user-risk)。 Microsoft 与暗网研究人员和执法机构合作，查找公开提供的用户名/密码对。 如果这些对中的任何一对与我们的用户匹配，则关联的帐户将被移动到高风险区域。 
+密码哈希同步还为混合帐户启用了[泄露凭据监测](../identity-protection/concept-identity-protection-risks.md#user-linked-detections)。 Microsoft 与暗网研究人员和执法机构合作，查找公开提供的用户名/密码对。 如果这些对中的任何一对与我们的用户匹配，则关联的帐户将被移动到高风险区域。 
 
 >[!NOTE]
 > 只有在启用 PHS 后找到的新泄漏凭据将针对你的租户进行处理。 不会对先前找到的凭据对执行验证。
