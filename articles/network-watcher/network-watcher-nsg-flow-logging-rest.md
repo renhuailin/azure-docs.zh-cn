@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 0c2725ff58e40bc56aac528a17fe4d66a128d475
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cede3018f8922c6771f81470a714eed430cd5cdf
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146934"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291876"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>使用 REST API 配置网络安全组流日志
 
@@ -115,6 +115,9 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
   }
 }
 ```
+> [!NOTE]
+> - 以上使用的[网络观察程序 - 设置 Flow 日志配置](/rest/api/network-watcher/network-watchers/set-flow-log-configuration)为旧 API，可能很快就会弃用。
+> - 建议改为使用新的 [Flow 日志 - 创建或更新](/rest/api/network-watcher/flow-logs/create-or-update) REST API。
 
 ## <a name="disable-network-security-group-flow-logs"></a>禁用网络安全组流日志
 
@@ -167,6 +170,10 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 }
 ```
 
+> [!NOTE]
+> - 以上使用的[网络观察程序 - 设置 Flow 日志配置](/rest/api/network-watcher/network-watchers/set-flow-log-configuration)为旧 API，可能很快就会弃用。
+> - 建议使用新的 [Flow 日志 - 创建或更新](/rest/api/network-watcher/flow-logs/create-or-update) REST API 来禁用流日志，并使用 [Flow 日志 - 删除](/rest/api/network-watcher/flow-logs/delete)来删除流日志资源。
+
 ## <a name="query-flow-logs"></a>查询流日志
 
 以下 REST 调用查询有关网络安全组的流日志的状态。
@@ -204,6 +211,10 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
   }
 }
 ```
+
+> [!NOTE]
+> - 上面使用的 API [网络观察程序 - 获取 Flow 日志状态](/rest/api/network-watcher/network-watchers/get-flow-log-status)需要在网络观察程序的资源组中使用额外的“读取”权限。 此外，此 API 为旧版，可能很快就会弃用。
+> - 建议改为使用新的 [Flow 日志 - 获取](/rest/api/network-watcher/flow-logs/get) REST API。
 
 ## <a name="download-a-flow-log"></a>下载流日志
 

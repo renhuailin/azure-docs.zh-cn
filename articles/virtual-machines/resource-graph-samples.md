@@ -1,18 +1,18 @@
 ---
 title: 针对 Azure 虚拟机的 Azure Resource Graph 示例查询
 description: 适用于 Azure 虚拟机 的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与 Azure 虚拟机相关的资源和属性。
-ms.date: 08/09/2021
+ms.date: 08/31/2021
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 0c8e0a8b9663380dc68f82ba5dda8b28f0ebb4cb
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: ed4642289e744cc4f7344188943e22705c077fa7
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860388"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304086"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-virtual-machines"></a>针对 Azure 虚拟机的 Azure Resource Graph 示例查询
 

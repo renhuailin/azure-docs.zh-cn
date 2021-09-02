@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/07/2021
+ms.date: 07/26/2021
 ms.author: yushwang
-ms.openlocfilehash: 56f10ec6178281deaa529e5c94f1cd4b565a381c
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0551cf435b732b621ad5493914251afd67f18882
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746602"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707131"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题
 
@@ -60,7 +60,7 @@ ms.locfileid: "111746602"
 
 ## <a name="privacy"></a><a name="privacy"></a>隐私
 
-### <a name="does-the-vpn-service-store-customer-data"></a>VPN 服务是否存储客户数据？
+### <a name="does-the-vpn-service-store-or-process-customer-data"></a>VPN 服务是否存储或处理客户数据？
 
 不是。
 
@@ -77,6 +77,10 @@ VPN 网关是一种虚拟网络网关。 VPN 网关通过公共连接在虚拟�
 ### <a name="what-is-a-route-based-dynamic-routing-gateway"></a>什么是基于路由的（动态路由）网关？
 
 基于路由的网关可实施基于路由的 VPN。 基于路由的 VPN 使用 IP 转发或路由表中的“路由”将数据包定向到相应的隧道接口中。 然后，隧道接口会加密或解密出入隧道的数据包。 基于路由的 VPN 的策略或流量选择器配置为任意到任意（或通配符）。
+
+### <a name="can-i-specify-my-own-policy-based-traffic-selectors"></a>能否指定自己的基于策略的流量选择器？
+
+是的，可以通过 [New-AzIpsecTrafficSelectorPolicy](/powershell/module/az.network/new-azipsectrafficselectorpolicy) PowerShell 命令，通过连接上的 trafficSelectorPolicies 属性来定义流量选择器。 要使指定的流量选择器生效，请确保已启用[使用基于策略的流量选择器](vpn-gateway-connect-multiple-policybased-rm-ps.md#enablepolicybased)选项。
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>能否将基于策略的 VPN 网关更新为基于路由？
 
@@ -222,9 +226,9 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 隧
 
 是，但必须在两个通向同一位置的隧道上配置 BGP。
 
-### <a name="does-azure-vpn-gateway-honor-as-path-prepending-to-influence-routing-decisions-between-multiple-connections-to-my-on-premises-sites"></a>Azure VPN 网关是否遵循 AS Path 追加，以影响本地站点的多个连接之间的路由决策？
+### <a name="does-azure-vpn-gateway-honor-as-path-prepending-to-influence-routing-decisions-between-multiple-connections-to-my-on-premises-sites"></a>Azure VPN 网关是否采用会影响到本地站点多个连接之间的路由决策的 AS Path 预置？
 
-是的，Azure VPN 网关将遵循 AS 路径追加，以帮助在启用 BGP 时做出路由决策。 在 BGP 路径选择中将首选较短的 AS 路径。
+是的，当启用 BGP 时，Azure VPN 网关会采用 AS Path 预置来帮助做出路由决策。 在 BGP 路径选择中，首选较短的 AS Path。
 
 ### <a name="can-i-use-point-to-site-vpns-with-my-virtual-network-with-multiple-vpn-tunnels"></a>是否可以将点到站点 VPN 用于具有多个 VPN 隧道的虚拟网络？
 
@@ -245,6 +249,10 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 隧
 ### <a name="can-i-configure-forced-tunneling"></a>是否可以配置强制隧道？
 
 是的。 请参阅 [配置强制隧道](vpn-gateway-about-forced-tunneling.md)。
+
+## <a name="nat"></a><a name="nat"></a>NAT
+
+[!INCLUDE [vpn-gateway-faq-nat-include](../../includes/vpn-gateway-faq-nat-include.md)]
 
 ## <a name="cross-premises-connectivity-and-vms"></a><a name="vms"></a>跨界连接和 VM
 

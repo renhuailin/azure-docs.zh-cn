@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
-ms.date: 11/06/2020
-ms.openlocfilehash: 61f169c447b61c6c072971fb5913b37a3752e09e
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 06/25/2021
+ms.openlocfilehash: 9d1ae8214467d38958597136877baca0309b2ffc
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790255"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114675258"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-managed-instance"></a>迁移指南：将 SQL Server 到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -59,13 +59,26 @@ ms.locfileid: "110790255"
 
 若要详细了解可用于“发现”阶段的工具，请参阅[可用于数据迁移方案的服务和工具](../../../dms/dms-tools-matrix.md)。 
 
+发现数据源后，评估可迁移到 Azure SQL 托管实例的任何本地 SQL Server 实例，以确定迁移阻碍或兼容性问题。
+继续执行以下步骤，以评估并迁移数据库到 Azure SQL 托管实例：
+
+:::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-sql-managed-instance-steps.png" alt-text="迁移到 Azure SQL 托管实例的步骤":::
+
+- [评估 SQL 托管实例兼容性](#assess)，应确保不存在可能阻止迁移的阻塞性问题。
+  此步骤还包括创建[性能基线](sql-server-to-managed-instance-performance-baseline.md#create-a-baseline)来确定源 SQL Server 实例上的资源用量。 如需部署大小合适的托管实例并验证迁移之后的性能是否未受影响，则需要执行此步骤。
+- [选择应用连接选项](../../managed-instance/connect-application-instance.md)。
+- [部署到大小最适合的托管实例](#deploy-to-an-optimally-sized-managed-instance)，选择托管实例的技术特征（vCore 数目、内存量）和性能层（“业务关键”、“常规用途”）。
+- [选择迁移方法](sql-server-to-managed-instance-overview.md#compare-migration-options)，然后使用脱机迁移或联机迁移选项在迁移数据库的地方进行迁移。
+- [监视并修正应用程序](#monitor-and-remediate-applications)，以确保性能符合预期。
+
+
 ### <a name="assess"></a>评估 
 
 [!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
-发现数据源后，评估可迁移到 Azure SQL 托管实例的任何本地 SQL Server 实例，以确定迁移阻碍或兼容性问题。 
+首先，确定 SQL 托管实例是否与应用程序的数据库要求相符。 SQL 托管实例旨在轻松地直接迁移大多数使用 SQL Server 的现有应用程序。 但是，有时可能需要用到一些目前尚不支持的功能，而实现某种解决方法的成本过高。 
 
-你可以使用数据迁移助手（版本 4.1 及更高版本）来评估要获取的数据库： 
+你可以使用数据迁移助手（4.1 及更高版本）来评估要获取的数据库： 
 
 - [Azure 目标建议](/sql/dma/dma-assess-sql-data-estate-to-sqldb)
 - [Azure SKU 建议](/sql/dma/dma-sku-recommend-sql-db)
@@ -86,7 +99,7 @@ ms.locfileid: "110790255"
 
 若要了解详细信息，请参阅[使用数据迁移助手进行 SQL Server 迁移评估](/sql/dma/dma-assesssqlonprem)。
 
-如果 SQL 托管实例不适合你的工作负载，则 Azure VM 上的 SQL Server 可能是适用于你的业务的可行替代目标。 
+如果 SQL 托管实例不适合你的工作负载，则 Azure VM 上的 SQL Server 可能是适用于你的业务的可行替代目标。
 
 #### <a name="scaled-assessments-and-analysis"></a>规模化评估和分析
 
@@ -98,22 +111,47 @@ ms.locfileid: "110790255"
 > [!IMPORTANT]
 >还可以使用 [DMA 命令行实用程序](/sql/dma/dma-commandline)自动对多个数据库运行大规模评估，并将结果上传到 [Azure Migrate](/sql/dma/dma-assess-sql-data-estate-to-sqldb#view-target-readiness-assessment-results) 以进一步进行分析和目标准备。
 
-### <a name="create-a-performance-baseline"></a>创建性能基线
+### <a name="deploy-to-an-optimally-sized-managed-instance"></a>部署到大小最适合的托管实例
 
-如果需要将 SQL 托管实例上工作负载的性能与 SQL Server 上运行的原始工作负载的性能进行比较，请创建用于比较的性能基线。 请参阅[性能基线](sql-server-to-managed-instance-performance-baseline.md)以了解详细信息。 
+根据发现和评估阶段中的信息，创建适当大小的目标 SQL 托管实例。 为此，你可以使用 [Azure 门户](../../managed-instance/instance-create-quickstart.md)、[PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md) 或 [Azure 资源管理器 (ARM) 模板](../../managed-instance/create-template-quickstart.md)。
 
-### <a name="create-sql-managed-instance"></a>创建 SQL 托管实例 
+SQL 托管实例是为要迁移到云中的本地工作负载量身定制的。 它引入了一个[购买模型](../../database/service-tiers-vcore.md)，在为工作负载选择适当的资源级别时可提供更高的灵活性。 在本地环境中，你可能习惯于使用物理核心和 IO 带宽来调整这些工作负荷的大小。 托管实例的购买模型以虚拟核心 (vCore) 为依据，同时单独提供更多存储和 IO 资源。 借助 vCore 模型可以更方便地根据当前在本地使用的计算资源，来了解云中的计算要求。 使用此新模型可以适当地调整云中目标环境的大小。 下面介绍了一些可帮助你选择适当服务层级和特征的常规指导：
 
-根据发现和评估阶段中的信息，创建适当大小的目标 SQL 托管实例。 为此，你可以使用 [Azure 门户](../../managed-instance/instance-create-quickstart.md)、[PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md) 或 [Azure 资源管理器 (ARM) 模板](../../managed-instance/create-template-quickstart.md)。 
+- 根据基线 CPU 使用率，可以预配一个与 SQL Server 上使用的核心数匹配的托管实例，但请注意，可能需要缩放 CPU 特征才能匹配[安装了托管实例的 VM 的特征](../../managed-instance/resource-limits.md#hardware-generation-characteristics)。
+- 根据基线内存使用率选择[具有匹配内存的服务层级](../../managed-instance/resource-limits.md#hardware-generation-characteristics)。 无法直接选择内存量，因此，需要选择 vCore 数目与内存匹配（例如，在 Gen5 中为 5.1 GB/vCore）的托管实例。
+- 根据文件子系统的基线 IO 延迟，在“常规用途”（延迟大于 5 毫秒）与“业务关键”（延迟小于 3 毫秒）服务层级之间进行选择。
+- 根据基线吞吐量预先分配数据或日志文件的大小，以获得预期的 IO 性能。
 
+可在部署时选择计算和存储资源，稍后再使用 [Azure 门户](../../database/scale-resources.md)对其进行更改，而不必让应用程序关闭：
+
+:::image type="content" source="media/sql-server-to-managed-instance-overview/managed-instance-sizing.png" alt-text="托管实例大小调整":::
+
+若要了解如何创建 VNet 基础结构和托管实例，请参阅[创建托管实例](../../managed-instance/instance-create-quickstart.md)。
+
+> [!IMPORTANT]
+> 请务必根据[托管实例 VNet 要求](../../managed-instance/connectivity-architecture-overview.md#network-requirements)保留目标 VNet 和子网。 任何不兼容性问题都可能导致无法创建新实例或使用已创建的实例。 详细了解如何[新建](../../managed-instance/virtual-network-subnet-create-arm-template.md)网络和[配置现有](../../managed-instance/vnet-existing-add-subnet.md)网络。
 
 ## <a name="migrate"></a>迁移
 
 完成与预迁移阶段相关的任务后，便可以执行架构和数据迁移。 
 
-使用所选的[迁移方法](sql-server-to-managed-instance-overview.md#compare-migration-options)迁移你的数据。 
+使用所选的[迁移方法](sql-server-to-managed-instance-overview.md#compare-migration-options)迁移你的数据。
 
-本指南介绍了两个最常用的选项 - Azure 数据库迁移服务 (DMS) 以及本机备份和还原。 
+SQL 托管实例面向需要从本地或 Azure VM 数据库实现迁移大量数据库的用户方案。 如果需要直接迁移定期使用实例级功能和/或跨数据库功能的应用程序的后端，则托管实例是最佳选择。 若采用此方案，可将整个实例转移到 Azure 中对应的环境，而无需重新构建应用程序。
+
+若要转移 SQL 实例，需要认真规划：
+
+- 迁移需要并置的所有数据库（在同一个实例上运行的数据库）。
+- 迁移应用程序依赖的实例级对象，包括登录名、凭据、SQL 代理作业和操作员，以及服务器级触发器。
+
+SQL 托管实例是一项托管服务，可便于将一些常规 DBA 活动委托给平台，就像平台中已内置这些活动一样。 因此，不需要迁移某些实例级数据，例如日常备份的维护作业或 Always On 配置，因为系统中内置了[高可用性](../../database/high-availability-sla.md)。
+
+SQL 托管实例支持以下数据库迁移选项（目前仅支持这些迁移方法）：
+
+- Azure 数据库迁移服务 - 几乎无需停机即可实现迁移。
+- 本机 `RESTORE DATABASE FROM URL` - 使用来自 SQL Server 的本机备份，且需要停机一段时间。
+
+本指南介绍了两个最常用的选项 - Azure 数据库迁移服务 (DMS) 以及本机备份和还原。
 
 ### <a name="database-migration-service"></a>数据库迁移服务
 
@@ -132,7 +170,6 @@ ms.locfileid: "110790255"
 有关此迁移选项的详细分步教程，请参阅[使用 DMS 在线将 SQL Server 迁移到 Azure SQL 托管实例](../../../dms/tutorial-sql-server-managed-instance-online.md)。 
    
 
-
 ### <a name="backup-and-restore"></a>备份和还原 
 
 可让 Azure SQL 托管实例实现快速轻松的数据库迁移的关键功能之一是对存储在 [Azure 存储](https://azure.microsoft.com/services/storage/)上的数据库备份 (`.bak`) 文件进行本机还原。 备份和还原是基于数据库大小的异步操作。 
@@ -144,6 +181,19 @@ ms.locfileid: "110790255"
 > [!NOTE]
 > 进行备份、将其上传到 Azure 存储以及对 Azure SQL 托管实例执行本机还原操作所花的时间取决于数据库的大小。 请为针对大数据库的操作预留足够的停机时间。 
 
+下表提供了可以根据所运行的源 SQL Server 版本使用的方法的详细信息：
+
+|步骤|SQL 引擎和版本|备份/还原方法|
+|---|---|---|
+|将备份放入 Azure 存储|早于 2012 SP1 CU2|将 .bak 文件直接上传到 Azure 存储|
+| |2012 SP1 CU2 - 2016|使用已弃用的 [WITH CREDENTIAL](/sql/t-sql/statements/restore-statements-transact-sql) 语法直接备份|
+| |2016 和更高版本|使用 [WITH SAS CREDENTIAL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) 直接备份|
+|从 Azure 存储还原到托管实例| |[使用 SAS CREDENTIAL 执行 RESTORE FROM URL](../../managed-instance/restore-sample-database-quickstart.md)|
+
+> [!IMPORTANT]
+>
+> - 使用本机还原选项将[透明数据加密](../../database/transparent-data-encryption-tde-overview.md)保护的数据库迁移到托管实例时，需要先迁移本地或 Azure VM SQL Server 中的相应证书，再还原数据库。 有关详细步骤，请参阅[将 TDE 证书迁移到托管实例](../../managed-instance/tde-certificate-migrate.md)。
+> - 不支持还原系统数据库。 要迁移实例级对象（存储在 master 或 msdb 数据库中），我们建议编写 T-SQL 脚本，并在目标实例上运行这些脚本。
 
 要使用备份和还原进行迁移，请执行以下步骤： 
 
@@ -171,7 +221,6 @@ ms.locfileid: "110790255"
 > 数据库还原操作是异步且可重试的。 如果连接中断或某些超时过期，SQL Server Management Studio 中可能会显示错误。 Azure SQL 数据库将在后台继续尝试还原数据库，可以使用 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 视图来跟踪还原进度。
 
 
-
 ## <a name="data-sync-and-cutover"></a>数据同步和直接转换
 
 当使用将数据更改持续从源复制/同步到目标的迁移选项时，源数据和架构可能会变化并偏离目标。 在数据同步过程中，请确保在迁移过程中捕获对源的所有更改并将其应用到目标。 
@@ -188,9 +237,11 @@ ms.locfileid: "110790255"
 
 迁移后阶段对于协调任何数据准确性问题、验证完整性以及解决工作负载的性能问题至关重要。 
 
-### <a name="remediate-applications"></a>修正应用程序 
+### <a name="monitor-and-remediate-applications"></a>监视并修正应用程序 
+迁移到托管实例后，应跟踪应用程序的行为和工作负载的性能。 此过程包括以下活动：
 
-将数据迁移到目标环境后，以前使用源的所有应用程序都需要开始使用目标。 在某些情况下，实现这一点需要对应用程序进行更改。
+- 将[托管实例上运行的工作负载的性能](sql-server-to-managed-instance-performance-baseline.md#compare-performance)与[在源 SQL Server 实例上创建的性能基线](sql-server-to-managed-instance-performance-baseline.md#create-a-baseline)进行比较。
+- 持续[监视工作负荷的性能](sql-server-to-managed-instance-performance-baseline.md#monitor-performance)，以识别潜在问题并做出改善。
 
 ### <a name="perform-tests"></a>执行测试
 
@@ -206,7 +257,7 @@ ms.locfileid: "110790255"
 
 请确保充分利用 SQL 托管实例提供的基于云的高级功能，例如[内置高可用性](../../database/high-availability-sla.md)、[威胁检测](../../database/azure-defender-for-sql.md)以及[监视和优化工作负载](../../database/monitor-tune-overview.md)。 
 
-使用 [Azure SQL Analytics](../../../azure-monitor/insights/azure-sql.md) 可以集中监视大量托管实例。
+使用 [Azure SQL Analytics](../../../azure-sql/database/monitor-tune-overview.md) 可以集中监视大量托管实例。
 
 只有将[数据库兼容性级别](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)更改为最新的兼容性级别 (150) 后，某些 SQL Server 功能才可用。 
 

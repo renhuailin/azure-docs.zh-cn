@@ -1,17 +1,15 @@
 ---
 title: 适用于 Eclipse 的 Azure Service Fabric 插件
 description: 了解如何使用 Eclipse 和 Service Fabric 提供的插件在 Java 中开始使用 Azure Service Fabric。
-author: rapatchi
 ms.topic: conceptual
 ms.date: 04/06/2018
-ms.author: rapatchi
-ms.custom: devx-track-java
-ms.openlocfilehash: b85206f9b1e92607bba7b6f141b700922c129b65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-java, contperf-fy21q4
+ms.openlocfilehash: 19aba75dc314f9804931675702f1420aff0415e6
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656914"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113214292"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>使用适用于 Eclipse 的 Service Fabric 插件开发 Java 应用程序
 Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一。 本文介绍如何设置适用于 Azure Service Fabric 的 Eclipse 开发环境。 了解如何安装 Service Fabric 插件、创建 Service Fabric 应用程序，以及将 Service Fabric 应用程序部署到 Eclipse 中的本地或远程 Service Fabric 群集。 
@@ -36,7 +34,7 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 -   若要检查并安装 Eclipse 的更新，请转到“帮助” > “检查更新”。 
 
 若要安装 Service Fabric 插件，请在 Eclipse 中转到“帮助” > “安装新软件”。 
-1. 在“使用”框中，输入“https:\//dl.microsoft.com/eclipse”。
+1. 在“使用”框中，输入 `https://servicefabricdownloads.blob.core.windows.net/eclipse/`。
 2. 单击“添加” 。
 
    ![适用于 Eclipse 的 Service Fabric 插件][sf-eclipse-plugin-install]
@@ -49,7 +47,7 @@ Eclipse 是面向 Java 开发人员的最常用集成开发环境 (IDE) 之一�
 3. 更新 Service Fabric 插件后，还需刷新 Gradle 项目。  右键单击 **build.gradle**，然后选择“刷新”。
 
 > [!NOTE]
-> 如果安装或更新 Service Fabric 插件时运行缓慢，原因可能是 Eclipse 设置有问题。 Eclipse 将收集有关所有更改的元数据，以更新已注册到 Eclipse 实例的站点。 若要加速 Service Fabric 插件更新的检查和安装过程，请转到“可用软件站点”。 清除所有站点对应的复选框，但指向 Service Fabric 插件位置 (https:\//dl.microsoft.com/eclipse/azure/servicefabric) 的站点除外。
+> 如果安装或更新 Service Fabric 插件时运行缓慢，原因可能是 Eclipse 设置有问题。 Eclipse 将收集有关所有更改的元数据，以更新已注册到 Eclipse 实例的站点。 若要加速 Service Fabric 插件更新的检查和安装过程，请转到“可用软件站点”。 清除所有站点的复选框，但指向 Service Fabric 插件位置 (https://servicefabricdownloads.blob.core.windows.net/eclipse/ ) 的站点除外。
 
 > [!NOTE]
 >如果 Eclipse 在 Mac 上未按预期方式工作，或者需要你以超级用户身份运行，请转到 ECLIPSE_INSTALLATION_PATH 文件夹，然后导航到子文件夹 Eclipse.app/Contents/MacOS。 运行 `./eclipse` 启动 Eclipse。

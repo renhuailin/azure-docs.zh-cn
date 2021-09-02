@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0fe61e5ef36064234b65da4d059f02beed18f9a6
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ec462d04402f20d801c43cebd7f4561eb6177f1c
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745702"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707117"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>通过 Azure 门户设置 MSIX 应用附加
 
@@ -222,4 +222,4 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 下面是一些可能有用的其他文章：
 
 - [MSIX 应用附加术语表](app-attach-glossary.md)
-- [MSIX 应用附加常见问题解答](app-attach-faq.md)
+- [MSIX 应用附加常见问题解答](app-attach-faq.yml)

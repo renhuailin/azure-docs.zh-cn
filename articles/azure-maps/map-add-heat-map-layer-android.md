@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: fce2c2d007f92c43e763826f9345f773324e885e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ffbda69d91a709ff5a9af66f7abe2b7734efe177
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100179"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666382"
 ---
 # <a name="add-a-heat-map-layer-android-sdk"></a>添加热度地图层 (Android SDK)
 
-热度地图也称为点密度地图，是一种数据可视化效果。 它们用于通过一系列颜色表示数据的密度，并在地图上显示数据“热点”。 热度地图是呈现包含大量点的数据集的极佳方式。 
+热度地图也称为点密度地图，是一种数据可视化效果。 它们用于通过一系列颜色表示数据密度，并在地图上显示数据“热点”。 热度地图是呈现包含大量点的数据集的极佳方式。
 
-以符号形式呈现数万个点可能会覆盖大部分地图区域。 而这种情况可能会导致许多符号相互叠加， 因而难以更好地了解数据。 但是，将此数据集可视化为热度地图可以轻松观察密度，以及每个数据点的相对密度。
+以符号形式呈现数以万计的点可能会覆盖大部分地图区域。 而这种情况可能会导致许多符号相互叠加， 因而难以更好地了解数据。 但是，将此数据集可视化为热度地图可以轻松观察密度，以及每个数据点的相对密度。
 
 可以在许多不同的方案中使用热度地图，其中包括：
 
 - 温度数据：提供两个数据点之间的温度近似值。
-- 噪声传感器数据：不仅显示传感器所在位置的噪声强度，而且还可提供一段距离内的消散情况见解。 任何一个场地的噪声级别可能不高。 如果多个传感器的噪声覆盖区域重叠，则此重叠区域可能会出现更高的噪声级别。 因此，重叠区域将显示在热度地图中。
+- 噪声传感器数据：不仅显示传感器所在位置的噪声强度，而且还可提供一段距离内的消散情况见解。 任何一个场地的噪声级别可能不高。 如果多个传感器的噪声覆盖区域重叠，则此重叠区域可能会出现更高的噪声级别。 因此，重叠区域将在热度地图中可见。
 - GPS 轨迹：将速度包含为加权高度地图，其中每个数据点的强度基于速度。 例如，使用此功能可以查看车辆的加速位置。
 
 > [!TIP]
@@ -50,6 +50,11 @@ ms.locfileid: "102100179"
 ```java
 //Create a data source and add it to the map.
 DataSource source = new DataSource();
+
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson");
+
+//Add data source to the map.
 map.sources.add(source);
 
 //Create a heat map layer.
@@ -60,27 +65,6 @@ HeatMapLayer layer = new HeatMapLayer(source,
 
 //Add the layer to the map, below the labels.
 map.layers.add(layer, "labels");
-
-//Import the geojson data and add it to the data source.
-Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
-    this,
-    (String result) -> {
-        //Parse the data as a GeoJSON Feature Collection.
-        FeatureCollection fc = FeatureCollection.fromJson(result);
-
-        //Add the feature collection to the data source.
-        source.add(fc);
-
-        //Optionally, update the maps camera to focus in on the data.
-
-        //Calculate the bounding box of all the data in the Feature Collection.
-        BoundingBox bbox = MapMath.fromData(fc);
-
-        //Update the maps camera so it is focused on the data.
-        map.setCamera(
-            bounds(bbox),
-            padding(20));
-    });
 ```
 
 ::: zone-end
@@ -90,6 +74,11 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
 ```kotlin
 //Create a data source and add it to the map.
 val source = DataSource()
+
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson")
+
+//Add data source to the map.
 map.sources.add(source)
 
 //Create a heat map layer.
@@ -101,27 +90,6 @@ val layer = HeatMapLayer(
 
 //Add the layer to the map, below the labels.
 map.layers.add(layer, "labels")
-
-//Import the geojson data and add it to the data source.
-Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson",
-    this
-) { result: String? ->
-    //Parse the data as a GeoJSON Feature Collection.
-    val fc = FeatureCollection.fromJson(result!!)
-
-    //Add the feature collection to the data source.
-    source.add(fc)
-
-    //Optionally, update the maps camera to focus in on the data.
-    //Calculate the bounding box of all the data in the Feature Collection.
-    val bbox = MapMath.fromData(fc)
-
-    //Update the maps camera so it is focused on the data.
-    map.setCamera(
-        bounds(bbox),
-        padding(20)
-    )
-}
 ```
 
 ::: zone-end
@@ -132,12 +100,12 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
 
 ## <a name="customize-the-heat-map-layer"></a>自定义热度地图层
 
-前面的示例通过设置半径和不透明度选项来自定义热度地图。 热度地图层提供多个用于自定义的选项，其中包括：
+前面的示例通过设置半径和不透明度选项来自定义热度地图。 热度地图层提供多个选项用于自定义，其中包括：
 
-- `heatmapRadius`：定义呈现每个数据点的像素半径。 可将半径设置为固定数字或表达式。 使用表达式可以根据缩放级别来缩放半径，并在地图上表示一个一致的空间区域（例如，5 英里半径）。
-- `heatmapColor`：指定如何为热度地图赋色。 颜色渐变是热度地图的常用功能。 可以使用 `interpolate` 表达式来实现该效果。 还可以使用 `step` 表达式为热度地图赋色，并直观地将密度分解为类似于等高线或雷达式地图的范围。 这些调色板定义了从最小到最大密度值的颜色。
+- `heatmapRadius`：定义要呈现每个数据点的像素半径。 可将半径设置为固定数字或表达式。 使用表达式可以根据缩放级别来缩放半径，并在地图上表示一个一致的空间区域（例如，5 英里半径）。
+- `heatmapColor`：指定如何为热度地图赋色。 颜色渐变是热度地图的常用功能。 可以使用 `interpolate` 表达式来实现该效果。 还可以使用 `step` 表达式为热度地图赋色，直观地将密度分解到类似于等高线或雷达式地图的范围中。 这些调色板定义了从最小到最大密度值的颜色。
 
-  将热度地图的颜色值指定为基于 `heatmapDensity` 值的表达式。 “内插”表达式的索引 0 处定义了没有数据的颜色区域，或“递阶”表达式的默认颜色。 可以使用此值来定义背景色。 通常此值设置为透明，或半透明的黑色。 
+  将热度地图的颜色值指定为基于 `heatmapDensity` 值的表达式。 “内插”表达式的索引 0 处定义了没有数据的颜色区域，或“递阶”表达式的默认颜色。 可以使用此值来定义背景色。 通常此值设置为“透明”，或“半透明的黑色”。
 
   下面是颜色表达式示例：
 
@@ -147,9 +115,9 @@ Utils.importData("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_
 
 - `heatmapOpacity`：指定热度图层的不透明或透明程度。
 - `heatmapIntensity`：对每个数据点的权重应用乘数，以增加热度地图的整体强度。 这会导致数据点的权重出现差异，使其更易于可视化。
-- `heatmapWeight`：默认情况下，所有数据点的权重均为 1，且是平均加权的。 权重选项充当乘数，可以设置为数字或表达式。 如果将某个数字设置为权重，则这相当于将每个数据点置于地图上两次。 例如，如果权重为 `2`，则密度会加倍。 将权重选项设置为一个数字，以类似于使用强度选项的方式来呈现热度地图。
+- `heatmapWeight`：默认情况下，所有数据点的权重均为 1，并且是平均加权的。 权重选项充当乘数，可以设置为数字或表达式。 如果将某个数字设置为权重，则这相当于将每个数据点置于地图上两次。 例如，如果权重为 `2`，则密度会加倍。 将权重选项设置为一个数字，以类似于使用强度选项的方式来呈现热度地图。
 
-  但是，如果使用表达式，则每个数据点的权重可以基于每个数据点的属性。 例如，假设每个数据点表示地震。 震级值是每个地震数据点的重要指标。 地震时时刻刻都在发生，但大多数震级都很低，以致感觉不到。 在表达式中使用震级值可将权重分配到每个数据点。 使用震级值分配权重可以更好地在热度地图中表示地震的严重程度。
+  但是，如果使用表达式，则每个数据点的权重可以基于每个数据点的属性。 例如，假设每个数据点表示地震。 震级值是每个地震数据点的重要指标。 地震时时刻刻都在发生，但大多数震级都很低，以致于感觉不到。 在表达式中使用震级值可将权重分配到每个数据点。 使用震级值分配权重可以更好地在热度地图中表示地震的严重程度。
 - `minZoom` 和 `maxZoom`：应显示层的缩放级别范围。
 - `filter`：用于限制从源检索并在层中呈现的筛选器表达式。
 - `sourceLayer`如果连接到层的数据源是矢量图块源，那么必须指定矢量图块中的源层。
@@ -241,7 +209,7 @@ val layer = HeatMapLayer(source,
 
 使用 `zoom` 表达式缩放每个缩放级别的半径，使每个数据点涵盖相同的地图物理区域。 此表达式使热度地图层显得更为静态且一致。 地图的每个缩放级别的垂直和水平像素是前一个缩放级别的两倍。
 
-调整半径使其在每个缩放级别中翻倍，会创建一个在所有缩放级别下均保持一致外观的热度地图。 若要应用这种缩放，请将 `zoom` 与以 2 为底的 `exponential interpolation` 表达式配合使用，并为最小缩放级别设置像素半径，为最大缩放级别设置标度半径（计算方式为 `2 * Math.pow(2, minZoom - maxZoom)`，如以下示例中所示）。 缩放地图，观看热度地图如何根据缩放级别而缩放。
+调整半径使其在每个缩放级别中翻倍，会创建一个在所有缩放级别下均保持一致外观的热度地图。 若要应用这种调整，请将 `zoom` 与以 2 为底的 `exponential interpolation` 表达式配合使用，并为最小缩放级别设置像素半径，为最大缩放级别设置标度半径（计算方式为 `2 * Math.pow(2, minZoom - maxZoom)`，如以下示例中所示）。 缩放地图，观看热度地图如何根据缩放级别而缩放。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -290,6 +258,56 @@ val layer = HeatMapLayer(source,
 以下视频展示了运行以上代码的地图，它能在地图缩放的同时缩放半径，从而创建在缩放级别下保持一致外观的热度地图。
 
 ![动画说明通过热度地图层缩放的地图显示的地理空间一致](media/map-add-heat-map-layer-android/android-consistent-zoomable-heat-map-layer.gif)
+
+`zoom` 表达式只能在 `step` 和 `interpolate` 表达式中使用。 以下表达式可用于估算以米为单位的半径。 此表达式使用占位符 `radiusMeters`，应将其替换为所需的半径。 此表达式针对缩放级别 0 和 24 计算赤道处缩放级别的近似像素半径，并使用 `exponential interpolation` 表达式在这些值之间进行缩放，工作方式与地图中的平铺系统相同。
+
+::: zone pivot="programming-language-java-android"
+
+```java
+interpolate(
+    exponential(2),
+    zoom(),
+    stop(1, product(radiusMeters, 0.000012776039596366526)),
+    stop(24, product(radiusMeters, 214.34637593279402))
+)
+```
+
+> [!TIP]
+> 在数据源上启用聚类分析时，相邻的点可以作为一个聚类点组合在一起。 可以使用每个聚类的点计数作为热度地图的权重表达式。 这可以大幅减少要呈现的点数。 聚类点计数存储在点特征的 `point_count` 属性中：
+>
+> ```java
+> HeatMapLayer layer = new HeatMapLayer(dataSource,
+>    heatmapWeight(get("point_count"))
+> );
+> ```
+>
+> 如果聚类分析半径只有几个像素，那么呈现的视觉差异就很小。 更大的半径可将更多的点分组到每个聚类，从而改善热度地图的性能。
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+interpolate(
+    exponential(2),
+    zoom(),
+    stop(1, product(radiusMeters, 0.000012776039596366526)),
+    stop(24, product(radiusMeters, 214.34637593279402))
+)
+```
+
+> [!TIP]
+> 在数据源上启用聚类分析时，相邻的点可以作为一个聚类点组合在一起。 可以使用每个聚类的点计数作为热度地图的权重表达式。 这可以大幅减少要呈现的点数。 聚类点计数存储在点特征的 `point_count` 属性中：
+>
+> ```kotlin
+> var layer = new HeatMapLayer(dataSource,
+>    heatmapWeight(get("point_count"))
+> )
+> ```
+>
+> 如果聚类分析半径只有几个像素，那么呈现的视觉差异就很小。 更大的半径可将更多的点分组到每个聚类，从而改善热度地图的性能。
+
+::: zone-end
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.topic: guide
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 04/16/2019
-ms.openlocfilehash: 155c87c1f5343e583beb226c2eb5416d782fcfb9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: dafe702121934a1267f01a861932dc49361e5258
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963187"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688562"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL 托管实例内容参考信息
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "111963187"
 
 ## <a name="load-data"></a>加载数据
 
-- [迁移到 Azure SQL 托管实例](migrate-to-instance-from-sql-server.md)：了解迁移到 Azure SQL 托管实例时建议使用的迁移流程和工具。
+- [SQL Server 到 Azure SQL 托管实例指南](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)：了解迁移到 Azure SQL 托管实例时建议使用的迁移流程和工具。
 - [将 TDE 证书迁移到 Azure SQL 托管实例](tde-certificate-migrate.md)：如果 SQL Server 数据库受透明数据加密 (TDE) 保护，则需迁移证书，以便 SQL 托管实例能够使用该证书来解密需要在 Azure 中还原的备份。
 - [从 BACPAC 导入 DB](../database/database-import.md)
 - [将 DB 导出到 BACPAC](../database/database-export.md)

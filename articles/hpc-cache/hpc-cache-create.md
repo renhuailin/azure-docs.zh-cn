@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: v-erkel
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 26272090d3ec18328df2ac553b15e53abc824708
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: eb7d88424a04754612f981d58e8e1d6cb85ce0fb
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294918"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770588"
 ---
 # <a name="create-an-azure-hpc-cache"></a>创建 Azure HPC 缓存
 
@@ -114,7 +114,7 @@ Azure HPC 缓存决定缓存和预加载哪些文件，以最大限度提高缓�
 
 选择“客户托管”以选择客户托管的密钥加密。 将显示密钥保管库规范字段。 选择要使用的 Azure Key Vault，然后选择要用于此缓存的密钥和版本。 密钥必须是 2048 位的 RSA 密钥。 你可以从此页面创建新的密钥保管库、密钥或密钥版本。
 
-若要使用[自动密钥轮换](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys-preview)，请选中“始终使用当前密钥版本”复选框。
+若要使用[自动密钥轮换](../virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys)，请选中“始终使用当前密钥版本”复选框。
 
 若要对此缓存使用特定的托管标识，请在“托管标识”部分进行配置。 更多详细信息，请参阅[“什么是 Azure 资源托管标识？”](../active-directory/managed-identities-azure-resources/overview.md)。
 

@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: d8e40cf9dac496266f67ad94e1e65db01e42f9d2
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 6d2fca3ed64711133f1701446ebea61c28a3dcab
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816829"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674307"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>使用客户托管密钥进行 Azure Database for MySQL 数据加密
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 针对 Azure Database for MySQL 使用客户托管密钥进行数据加密，可创建自己的密钥 (BYOK) 来保护静态数据。 它还允许组织在管理密钥和数据时实现职责分离。 通过客户托管的加密，密钥的生命周期、密钥使用权限以及对密钥操作的审核都由你负责和完全控制。
 
@@ -22,7 +24,7 @@ ms.locfileid: "107816829"
 Key Vault 是一种基于云的外部密钥管理系统。 它具有高可用性，并为 RSA 加密密钥提供可扩展的安全存储，根据需要由 FIPS 140-2 级别 2 验证的硬件安全模块 (HSM) 提供支持。 它不允许直接访问存储的密钥，但为授权实体提供加密和解密服务。 Key Vault 可以生成密钥，并将其导入，或者[从本地 HSM 设备传输密钥](../key-vault/keys/hsm-protected-keys.md)。
 
 > [!NOTE]
-> 此功能适用于所有 Azure 区域，其中 Azure Database for MySQL 支持“常规用途”和“内存优化”定价层。 有关其他限制，请参阅[限制](concepts-data-encryption-mysql.md#limitations)部分。
+> 仅在“通用”和“内存优化”定价层中可用的“通用存储 v2（支持高达 16TB）”存储上支持此功能。 有关更多详细信息，请参阅[存储概念](concepts-pricing-tiers.md#storage)。 有关其他限制，请参阅[限制](concepts-data-encryption-mysql.md#limitations)部分。
 
 ## <a name="benefits"></a>优点
 
@@ -105,7 +107,7 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 
 可能会发生这样的情况：对 Key Vault 具有足够访问权限的人员通过下列方式意外禁用了服务器对密钥的访问：
 
-* 从服务器中撤消 Key Vault 的 get、wrapKey 和 unwrapKey 权限。
+* 从服务器撤消密钥保管库的 `get`、`wrapKey` 和 `unwrapKey` 权限。
 * 删除密钥。
 * 删除 Key Vault。
 * 更改 Key Vault 的防火墙规则。
@@ -135,14 +137,15 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 对于 Azure Database for MySQL，对使用客户管理的密钥 (CMK) 加密静态数据的支持有少数限制 -
 
 * 对此功能的支持仅限“常规用途”和“内存优化”定价层。
-* 此功能仅在支持高达 16 TB 的存储的区域和服务器上受支持。 有关支持存储最多 16 TB 的 Azure 区域的列表，请参阅[此处](concepts-pricing-tiers.md#storage)文档中的“存储”部分
+* 此功能仅在支持通用存储 v2（最高 16 TB）的区域和服务器上受支持。 有关支持存储最多 16 TB 的 Azure 区域的列表，请参阅[此处](concepts-pricing-tiers.md#storage)文档中的“存储”部分
 
     > [!NOTE]
-    > - 在上面列出的区域中创建的所有新 MySQL 服务器都提供对使用客户管理的密钥进行加密的支持。 时间点还原 (PITR) 服务器或只读副本不符合条件，尽管其在理论上是“新的”。
-    > - 若要验证预配的服务器是否最多支持 16 TB，可以转到门户中的“定价层”边栏选项卡，并查看预配服务器支持的最大存储大小。 如果可以将滑块向上移动到 4 TB，则服务器可能不支持使用客户管理的密钥进行加密。 但是，始终使用服务托管密钥对数据进行加密。 如果有任何疑问，请联系 AskAzureDBforMySQL@service.microsoft.com。
+    > - [Azure 区域](concepts-pricing-tiers.md#storage)中创建的所有新 MySQL 服务器都支持通用存储 v2，因此也支持使用客户管理器密钥的加密。 时间点还原 (PITR) 服务器或只读副本不符合条件，尽管其在理论上是“新的”。
+    > - 要验证预配的服务器是否支持通用存储 v2，可以在门户中访问“定价层”边栏选项卡，并查看预配服务器支持的最大存储大小。 如果可以将滑块向上移动到 4TB，则服务器是通用存储 v1，不支持通过客户管理的密钥进行加密。 但是，始终使用服务托管密钥对数据进行加密。 如果有任何疑问，请联系 AskAzureDBforMySQL@service.microsoft.com。
 
 * 仅支持使用 RSA 2048 加密密钥进行加密。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何通过 [Azure 门户](howto-data-encryption-portal.md)和 [Azure CLI](howto-data-encryption-cli.md) 使用客户管理的密钥为 Azure Database for MySQL 设置数据加密。
+* 了解如何通过 [Azure 门户](howto-data-encryption-portal.md)和 [Azure CLI](howto-data-encryption-cli.md) 使用客户管理的密钥为 Azure Database for MySQL 设置数据加密。
+* 了解 [Azure Database for MySQL - 单服务器](concepts-pricing-tiers.md#storage)的存储类型支持

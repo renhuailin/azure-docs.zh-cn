@@ -4,12 +4,12 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 01/20/2020
 ms.author: ilayr
-ms.openlocfilehash: d9e23e74cd980ecf44cd04ad2b6f89dc6a4cf868
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9143f3220ad5f90345436c3c1f97419e4d26fc4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76548183"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593415"
 ---
 下表介绍了 Azure 数据资源管理器群集的最大限制。
 
@@ -18,7 +18,7 @@ ms.locfileid: "76548183"
 | 每个订阅每个区域的群集数 | 20 |
 | 每个群集的实例数 | 1000 | 
 | 一个群集中的数据库数 | 10,000 |
-| 一个群集中的已连接数据库配置数 | 70 |
+| 每个领导群集（数据共享生产者）的关注者群集（数据共享使用者）数 | 70 |
 
 下表介绍了对在 Azure 数据资源管理器群集上执行的管理操作的限制。
 

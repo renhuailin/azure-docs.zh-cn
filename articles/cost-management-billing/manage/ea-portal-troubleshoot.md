@@ -3,23 +3,23 @@ title: 排查 Azure EA 门户访问问题
 description: 本文介绍 Azure EA 门户中 Azure 企业协议 (EA) 可能会发生的一些常见问题。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/26/2021
+ms.date: 07/26/2021
 ms.topic: troubleshooting
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 852fb85607318772870a8b6826c934997b84ff6d
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: e18c4707a0de97c696aa4ca93ce4c3ca818eb929
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726459"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707526"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>排查 Azure EA 门户访问问题
 
 本文介绍 Azure 企业协议 (EA) 可能会发生的一些常见问题。 Azure EA 门户用于管理企业协议用户和成本。 你可能会在配置或更新 Azure EA 门户访问权限时遇到这些问题。
 
-## <a name="issues-adding-an-admin-to-an-enrollment"></a>将管理员添加到许可登记表时的问题
+## <a name="issues-adding-a-user-to-an-enrollment"></a>将用户添加到许可登记表时遇到的问题
 
 企业许可登记表有不同类型的身份验证级别。 如果身份验证级别应用不正确，则当你尝试登录到 Azure EA 门户时，可能会出现问题。
 

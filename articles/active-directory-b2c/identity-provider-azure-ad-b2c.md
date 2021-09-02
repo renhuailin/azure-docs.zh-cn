@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 08/09/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4b357213f4e552fd791fb575d8b7a287b924c7f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ad2014b8fce21eada9ced1e63a3511daa5e1891
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489064"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178057"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>从另一个 Azure AD B2C 租户设置 Azure AD B2C 帐户的注册和登录
 
@@ -41,11 +41,19 @@ ms.locfileid: "103489064"
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
+### <a name="verify-the-applications-publisher-domain"></a>验证应用程序的发布者域
+从 2020 年 11 月开始，新的应用程序注册在用户同意提示中会显示为未验证，除非[应用程序的发布者域已经过验证](../active-directory/develop/howto-configure-publisher-domain.md)，并且公司标识已使用 Microsoft 合作伙伴网络进行验证并且与应用程序相关联。 （[详细了解](../active-directory/develop/publisher-verification-overview.md)此更改。）请注意，对于 Azure AD B2C 用户流，发布者域仅在使用 [Microsoft 帐户](../active-directory-b2c/identity-provider-microsoft-account.md)或其他 Azure AD 租户作为标识提供者时才会显示。 为了满足这些新要求，请执行下列操作：
+
+1. [使用 Microsoft 合作伙伴网络 (MPN) 帐户验证公司标识](/partner-center/verification-responses)。 此过程会验证有关贵公司和贵公司主要联系人的信息。
+1. 使用以下选项之一完成发布者验证过程，以便将 MPN 帐户与应用注册相关联：
+   - 如果 Microsoft 帐户标识提供者的应用注册在 Azure AD 租户中，请[在应用注册门户中验证应用](../active-directory/develop/mark-app-as-publisher-verified.md)。
+   - 如果 Microsoft 帐户标识提供者的应用注册在 Azure AD B2C 租户中，请[使用 Microsoft Graph API（例如，使用 Graph 浏览器）将应用标记为已验证的发布者](../active-directory/develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls)。 用于设置应用的已验证发布者的 UI 当前已对 Azure AD B2C 租户禁用。
+
 ## <a name="create-an-azure-ad-b2c-application"></a>创建 Azure AD B2C 应用程序
 
 若要在 Azure AD B2C（例如，Contoso）中为用户启用使用另一个 Azure AD B2C 租户（例如，Fabrikam）中的帐户登录的功能，请执行以下操作：
 
-1. 创建[用户流](tutorial-create-user-flows.md)或[自定义策略](custom-policy-get-started.md)。
+1. 创建[用户流](tutorial-create-user-flows.md?pivots=b2c-user-flow)或[自定义策略](tutorial-create-user-flows.md?pivots=b2c-custom-policy)。
 1. 然后，在 Azure AD B2C 中创建应用程序，如本部分中所述。 
 
 创建应用程序。
@@ -116,7 +124,7 @@ ms.locfileid: "103489064"
 1. 在“社交标识提供者”下，选择“Fabrikam”。
 1. 选择“保存”。
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“运行用户流”按钮。
 1. 在注册或登录页面上，选择“Fabrikam”以使用其他 Azure AD B2C 租户登录。
 
@@ -229,7 +237,7 @@ ms.locfileid: "103489064"
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-1. 对于“应用程序”，请选择[前面注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
 1. 在注册或登录页面上，选择“Fabrikam”以使用其他 Azure AD B2C 租户登录。
 

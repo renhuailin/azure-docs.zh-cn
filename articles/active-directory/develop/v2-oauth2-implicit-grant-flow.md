@@ -8,22 +8,24 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 07/19/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f3598c6f072d09d7e427db66dcfbf8721b92a3a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62bb4c7e0b8417b497795530065bb8a42865d837
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99226482"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464175"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft 标识平台和隐式授权流
 
 Microsoft 标识平台支持 [OAuth 2.0 规范](https://tools.ietf.org/html/rfc6749#section-4.2)中所述的 OAuth 2.0 隐式授权流。 隐式授权的定义特征是令牌（ID 令牌或访问令牌）直接从 /authorize 终结点返回，而不是从 /token 终结点返回。 这通常在所谓的“混合流”中用作[授权代码流](v2-oauth2-auth-code-flow.md)的一部分 - 在 /authorize 请求中检索 ID 令牌以及授权代码。
 
 [!INCLUDE [suggest-msal-from-protocols](includes/suggest-msal-from-protocols.md)]
+
+[!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
 ## <a name="prefer-the-auth-code-flow"></a>首选授权代码流
 
@@ -65,16 +67,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| `tenant` | 必需 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
+| `tenant` | 必需 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基本信息](active-directory-v2-protocols.md#endpoints)。至关重要的是，对于从一个租户登录到另一个租户的来宾方案，必须提供租户标识符才能让他们正确登录到资源租户。|
 | `client_id` | 必需 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
 | `response_type` | 必填 |必须包含 OpenID Connect 登录的 `id_token` 。 也可以包含 response_type `token`。 此处使用 `token` ，让应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` response_type，`scope` 参数必须包含范围，以指出要对哪个资源（例如，Microsoft Graph 上的 user.read）发出令牌。 它还可以包含可提供授权代码的 `code`（取代 `token`），该授权代码在[授权代码流](v2-oauth2-auth-code-flow.md)中使用。 此“id_token+代码”响应有时称为混合流。  |
 | `redirect_uri` | 建议 |应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 它必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 |
 | `scope` | 必填 |[范围](v2-permissions-and-consent.md)的空格分隔列表。 对于 OpenID Connect (id_token)，它必须包含范围 `openid`，该范围在许可 UI 中会转换为“将你登录”权限。 或者，也可以包含 `email` 和 `profile` 范围，以获取对其他用户数据的访问权限。 也可以在此请求中包含其他范围，以请求对各种资源的许可（如果请求了访问令牌）。 |
 | `response_mode` | 可选 |指定将生成的令牌送回到应用程序时应该使用的方法。 默认为仅查询访问令牌，但如果请求包括 id_token，则会进行分段。 |
 | `state` | 建议 |同样随令牌响应返回的请求中所包含的值。 可以是想要的任何内容的字符串。 随机生成的唯一值通常用于 [防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该 state 也用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的网页或视图。 |
-| `nonce` | 必填 |包含在请求中的值，由应用生成，这些值将作为声明包含在生成的 id_token 中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 该值通常是随机的唯一字符串，可用于标识请求的来源。 只有请求 id_token 时才是必需的。 |
+| `nonce` | 必填 |包含在请求中的值，由应用生成，这些值将作为声明包含在生成的 id_token 中。 然后，应用可以验证此值，以减少令牌重播攻击。 该值通常是随机的唯一字符串，可用于标识请求的来源。 只有请求 id_token 时才是必需的。 |
 | `prompt` | 可选 |表示需要的用户交互类型。 目前的有效值为“login”、“none”、“select_account”和“consent”。 `prompt=login` 将强制用户在该请求上输入凭据，取消单一登录。 `prompt=none` 则相反 - 它确保不对用户显示任何交互式提示。 如果请求无法通过单一登录静默完成，则 Microsoft 标识平台将返回错误。 `prompt=select_account` 将用户发送到一个帐户选取器，其中将显示在会话中记住的所有帐户。 `prompt=consent` 会在用户登录之后触发 OAuth 同意对话框，要求用户向应用授予权限。 |
-| `login_hint`  |可选 |如果事先知道用户的用户名，可用于预先填充用户登录页面的用户名/电子邮件地址字段。 通常，应用会在重新进行身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。|
+| `login_hint` | 可选 | 如果事先知道用户名，可以使用此参数预先填充用户登录页的用户名/电子邮件地址字段。 通常，应用在已经从前次登录提取 `login_hint` [可选声明](active-directory-optional-claims.md)后，会在重新身份验证时使用此参数。 |
 | `domain_hint` | 可选 |如果包含，它跳过用户在登录页上经历的基于电子邮件的发现过程，导致稍微更加流畅的用户体验。 此参数通常用于在单个租户中运行的业务线应用，它们会提供给定租户中的域名，将用户转发给该租户的联合身份验证提供程序。  请注意，此提示会阻止来宾登录到此应用程序，并限制 FIDO 之类的云凭据的使用。  |
 
 此时，将请求用户输入凭据并完成身份验证。 Microsoft 标识平台还会确保用户已许可 `scope` 查询参数中指定的权限。 如果用户未曾同意这些权限的任何一项，就请求用户同意请求的权限。 有关详细信息，请参阅[权限、同意和多租户应用](v2-permissions-and-consent.md)。
@@ -101,6 +103,8 @@ code=0.AgAAktYV-sfpYESnQynylW_UKZmH-C9y_G1A
 | `scope` |如果 `response_type` 包含 `token`，则包含该参数。 表示 access_token 的有效范围。 如果某些范围不适用于用户，则可能未包括所请求的所有范围（例如，当使用个人帐户登录时，将仅包括所请求的仅限 Azure AD 的范围）。 |
 | `id_token` | 有符号 JSON Web 令牌 (JWT)。 应用可以解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值来获取任何授权或安全边界。 有关 id_tokens 的详细信息，请参阅 [`id_token reference`](id-tokens.md)。 <br> **注意：** 仅当请求了 `openid` 作用域且 `response_type` 包括 `id_tokens` 时才提供。 |
 | `state` |如果请求中包含 state 参数，响应中就应该出现相同的值。 应用应该验证请求和响应中的 state 值是否完全相同。 |
+
+[!INCLUDE [remind-not-to-validate-access-tokens](includes/remind-not-to-validate-access-tokens.md)]
 
 #### <a name="error-response"></a>错误响应
 

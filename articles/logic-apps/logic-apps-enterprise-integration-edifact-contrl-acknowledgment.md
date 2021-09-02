@@ -8,12 +8,12 @@ ms.author: psrivas
 ms.reviewer: estfan, divswa, azla
 ms.topic: reference
 ms.date: 07/25/2021
-ms.openlocfilehash: 3d17edf35b8da5a2d8b158fdbf1bd6e5d13e627b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 056538b5a6b52fcae646f5f03c6e39c8fce6429f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778144"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768074"
 ---
 # <a name="contrl-acknowledgments-and-error-codes-for-edifact-messages-in-azure-logic-apps"></a>Azure 逻辑应用中 EDIFACT 消息的 CONTRL 确认和错误代码
 
@@ -138,7 +138,7 @@ CONTRL 技术确认包括以下数据元素：
 
 根据行业用法，默认情况下接受的事务集不需要 SG1/SG4 循环。 但是，若要符合标准，可以按照以下步骤强制生成 SG1/SG4 循环：
  
-1. 在 [Azure 门户](https://portal.azurecom)中，打开集成帐户。
+1. 在 [Azure 门户](https://portal.azure.com)中，打开集成帐户。
 1. 在集成帐户菜单的“设置”下，选择“协议”。
 1. 打开 EDIFACT 协议，然后选择“发送设置”。
 1. 在“确认”下，选择“确认 (CONTRL)”。 现在可以选择“为已接受的事务集生成 SG1/SG4 循环”。

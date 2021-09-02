@@ -7,15 +7,15 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/11/2021
-ms.openlocfilehash: a0d28be0bc9754ab678792f2dca294b4fb185bf0
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 08/12/2021
+ms.openlocfilehash: 1e46601858ece67efa2bca9543083da8a0e2cc79
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018632"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861986"
 ---
-# <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>如何估计和管理 Azure 认知搜索服务的成本
+# <a name="estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>估计和管理 Azure 认知搜索服务的成本
 
 本文介绍定价模型、可计费事件以及用于管理运行 Azure 认知搜索服务的成本的提示。
 
@@ -48,13 +48,14 @@ Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活�
 
 + 带宽费用（出站数据传输）
 
-+ 特定功能或特性所需的附加服务：
++ 特定功能或高级特性所需的附加服务：
 
-  + AI 扩充（需要[认知服务](https://azure.microsoft.com/pricing/details/cognitive-services/)）
+  + AI 扩充使用计费技能（需要[认知服务](https://azure.microsoft.com/pricing/details/cognitive-services/)）。 图像提取也可计费。
   + 知识存储（需要 [Azure 存储](https://azure.microsoft.com/pricing/details/storage/)）
   + 增量扩充（需要 [Azure 存储](https://azure.microsoft.com/pricing/details/storage/)，适用于 AI 扩充）
-  + 客户管理的密钥和双加密（需要 [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)）
+  + 客户管理的密钥和双重加密（需要 [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/)）
   + 无 Internet 访问模型的专用终结点（需要 [Azure 专用链接](https://azure.microsoft.com/pricing/details/private-link/)）
+  + 语义搜索是标准层上的一项高级功能（参阅[认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)以了解成本）。 可以[禁用语义搜索](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#searchsemanticsearch)以防止意外使用。
 
 ### <a name="service-costs"></a>服务成本
 
@@ -80,16 +81,19 @@ Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活�
 
 ### <a name="ai-enrichment-with-cognitive-services"></a>使用认知服务的 AI 扩充
 
-对于 [AI 扩充](cognitive-search-concept-intro.md)，应该计划在 S0 定价层上的 Azure 认知搜索所在的同一区域中[附加一个计费的认知服务资源](cognitive-search-attach-cognitive-services.md)，用于即用即付处理。 附加认知服务不会产生固定的费用。 只需支付所需的处理费。
+对于使用计费技能的 [AI 扩充](cognitive-search-concept-intro.md)，应当计划[将可计费的 Azure 认知服务资源附加到](cognitive-search-attach-cognitive-services.md) Azure 认知搜索所在的同一区域，以在 S0 定价层实现即用即付处理。 附加认知服务不会产生固定的费用。 只需支付所需的处理费。
 
 | 操作 | 计费影响 |
 |-----------|----------------|
 | 文档破解、文本提取 | 免费 |
-| 文档破解、图像提取 | 根据从文档中提取的图像数计费。 在 [索引器配置](/rest/api/searchservice/create-indexer#indexer-parameters)中，**imageAction** 是触发图像提取的参数。 如果 **imageAction** 设置为“none”（默认值），则不收取图像提取费用。 Azure 认知搜索的[定价详细信息](https://azure.microsoft.com/pricing/details/search/)页上阐述了图像提取费率。|
-| [内置认知技能](cognitive-search-predefined-skills.md) | 计费费率与直接使用认知服务执行任务的费率相同。 |
-| 自定义技能 | 自定义技能是你提供的功能。 使用自定义技能的费用完全取决于自定义代码是否调用其他计量的服务。 |
+| 文档破解、图像提取 | 根据从文档中提取的图像数计费。 在 [索引器配置](/rest/api/searchservice/create-indexer#indexer-parameters)中，**imageAction** 是触发图像提取的参数。 如果 **imageAction** 设置为“none”（默认值），则不收取图像提取费用。 参阅[定价页](https://azure.microsoft.com/pricing/details/search/)，了解图像提取费用。 |
+| 基于认知服务的[内置技能](cognitive-search-predefined-skills.md) | 计费费率与直接使用认知服务执行任务的费率相同。 每个索引器每天可以免费处理 20 份文档。 更大或更频繁的工作负荷需要使用密钥。 |
+| 不添加扩充的[内置技能](cognitive-search-predefined-skills.md) | 无。 非计费实用工具技能包括条件逻辑、整形程序、文本合并和文本拆分。 不会影响计费，无需认知服务密钥，也不会限制处理 20 份文档。 |
+| 自定义技能 | 自定义技能是你提供的功能。 使用自定义技能的费用完全取决于自定义代码是否调用其他计量的服务。  无认知服务关键要求，也未针对自定义技能设定 20 份文档限制。|
+| [自定义实体查找](cognitive-search-skill-custom-entity-lookup.md) | 按 Azure 认知搜索计量。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/search/#pricing)页。 |
 
-可以利用[增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)功能来提供缓存，使得在未来修改技能组后只需运行必要的认知技能，从而使索引器更高效，为你节省时间和金钱。
+> [!TIP]
+> [增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)通过缓存和重用不受对技能组合的更改影响的扩充，来降低技能组合处理成本。 缓存需要 Azure 存储（请参阅[定价](/pricing/details/storage/blobs/)），但如果可以重复使用现有的扩充，则技能组执行的累积成本会降低。
 
 ## <a name="tips-for-managing-costs"></a>管理成本的提示
 

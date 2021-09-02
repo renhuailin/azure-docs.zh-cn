@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 00670746c1686bca354adc989ddce6c9dd336491
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5522f07ce9543af330b3526c4021a5916a3c80df
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96519053"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674445"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>使用 Azure 门户为 Azure Database for MySQL 进行数据加密
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 了解如何使用 Azure 门户为 Azure Database for MySQL 设置和管理数据加密。
 
@@ -52,7 +54,7 @@ ms.locfileid: "96519053"
 ```azurecli-interactive
 az keyvault key show --vault-name <key_vault_name> -n <key_name>
 ```
-
+* “Azure Database for MySQL - 单一服务器”应位于常规用途或内存优化定价层和常规用途存储 v2 上。 在继续操作之前，请参阅[使用客户管理的密钥进行数据加密](concepts-data-encryption-mysql.md#limitations)的限制。
 ## <a name="set-the-right-permissions-for-key-operations"></a>为密钥操作设置正确的权限
 
 1. 在 Key Vault 中，选择“访问策略” > “添加访问策略”。 
@@ -98,7 +100,7 @@ az keyvault key show --vault-name <key_vault_name> -n <key_name>
 3. 要使服务器可访问，请重新验证已还原服务器上的密钥。 选择“数据加密” > “重新验证密钥”。 
 
    > [!NOTE]
-   > 第一次尝试重新验证时将失败，因为需要为新服务器的服务主体授予密钥保管库的访问权限。 要生成服务主体，请选择“重新验证密钥”，虽然将显示错误，但会生成服务主体。 之后，请参阅本文前面的[步骤](#set-the-right-permissions-for-key-operations)。
+   > 第一次尝试重新验证时将失败，因为需要为新服务器的服务主体授予密钥保管库的访问权限。 要生成服务主体，请选择“重新验证密钥”，虽然将显示错误，但会生成服务主体。 之后，请参阅本文前面的[这些步骤](#set-the-right-permissions-for-key-operations)。
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png" alt-text="Azure Database for MySQL 的屏幕截图，其中突出显示了重新验证步骤":::
 
@@ -110,4 +112,6 @@ az keyvault key show --vault-name <key_vault_name> -n <key_name>
 
 ## <a name="next-steps"></a>后续步骤
 
- 要了解有关数据加密的详细信息，请参阅[使用客户托管密钥进行 Azure Database for MySQL 数据加密](concepts-data-encryption-mysql.md)。
+* [验证 Azure Database for MySQL 的数据加密](howto-data-encryption-validation.md)
+* [对 Azure Database for MySQL 中的数据加密进行故障排除](howto-data-encryption-troubleshoot.md)
+* [使用客户管理的密钥进行加密的概念](concepts-data-encryption-mysql.md)。

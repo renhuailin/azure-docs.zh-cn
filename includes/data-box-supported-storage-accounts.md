@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 02/21/2021
+ms.date: 08/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 112c30fdd242c20f11c43f42ba54e3717e074bbb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 092484b09af008770260c64cd6b7e0ea15265811
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706023"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121801344"
 ---
 下面是 Data Box 设备支持的存储帐户和存储类型的列表。 有关所有类型存储帐户的完整功能的完整列表，请参阅[存储帐户类型](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts)。
 
@@ -49,3 +49,4 @@ ms.locfileid: "101706023"
 > - 上传到页 blob 的数据必须是 512 字节对齐，例如 VHD。
 > - 最多可导出 80 TB。
 > - 不会导出文件历史记录和 blob 快照。
+> - 不支持导出存档 Blob。 在导出之前，将存档层中的 blob 解除冻结。 有关详细信息，请参阅[将存档 blob 解除冻结到联机层](../articles/storage/blobs/storage-blob-rehydration.md#rehydrate-an-archived-blob-to-an-online-tier)。

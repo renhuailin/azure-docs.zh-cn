@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3bba1155ec57db67968aec95d1d3386fc6cda006
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78be2edacdcf72a6274755413810fe1308510a79
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634441"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669117"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为使用虚拟节点
 
@@ -23,7 +23,7 @@ AKS 的虚拟节点加载项基于开源项目[虚拟 Kubelet][virtual-kubelet-r
 
 ## <a name="regional-availability"></a>区域可用性
 
-ACI 支持 VNET SKU 的所有区域都支持虚拟节点部署。
+ACI 支持 VNET SKU 的所有区域都支持虚拟节点部署。 请参阅 [Azure 容器实例在 Azure 区域的资源可用性](../container-instances/container-instances-region-availability.md)。
 
 有关每个区域中可用的 CPU 和内存 SKU，请查看 [Azure 容器实例在 Azure 区域的 Azure 容器实例资源可用性 - Linux 容器组](../container-instances/container-instances-region-availability.md#linux-container-groups)
 

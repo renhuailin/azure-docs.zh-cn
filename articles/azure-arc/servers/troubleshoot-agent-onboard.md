@@ -1,14 +1,14 @@
 ---
 title: 排查已启用 Azure Arc 的服务器代理连接问题
-description: 本文介绍如何在尝试连接到服务时，排查已启用 Azure Arc 的服务器的已连接计算机代理的问题并解决这些问题。
-ms.date: 04/12/2021
+description: 本文介绍了如何在尝试连接到服务时，排查已启用 Azure Arc 的服务器的已连接计算机代理的问题并解决这些问题。
+ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: ae26b599a72129b5ed7f47d76d10353be5c0e8ac
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 8547e66ee8915c356b345bceb3cc52bde63713b0
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497993"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114390160"
 ---
 # <a name="troubleshoot-azure-arc-enabled-servers-agent-connection-issues"></a>排查已启用 Azure Arc 的服务器代理连接问题
 

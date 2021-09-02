@@ -5,15 +5,15 @@ services: automation
 author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 07/22/2021
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 1949fe7e795d7f671462f8c2a78204690dfa0595
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 938a5858efe79affe904d8d07a05270f3071ab72
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108807456"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114659726"
 ---
 #### <a name="process-automation"></a>流程自动化
 
@@ -32,13 +32,15 @@ ms.locfileid: "108807456"
 | 每个沙盒允许的最大网络套接字数量<sup>1</sup> |1,000 |仅适用于 Azure 沙盒。|
 | 每个 runbook 允许的最大运行时<sup>1</sup> |3 小时 |仅适用于 Azure 沙盒。|
 | 订阅中自动化帐户的最大数目 |无限制 ||
-| 每个自动化帐户的混合辅助角色组的最大数量|4,000||
+| 每个自动化帐户的最大系统混合 runbook 辅助角色数|4,000||
+| 每个自动化帐户的最大用户混合 runbook 辅助角色数|4,000||
 |单个混合 Runbook 辅助角色上可运行的最大并发作业数|50 ||
 | Runbook 作业参数大小上限   | 512 KB||
 | Runbook 参数数量上限   | 50|如果达到 50 个参数的限制，则可将 JSON 或 XML 字符串传递给参数，并使用 Runbook 对其进行分析。|
 | Webhook 有效负载大小上限 |  512 KB|
 | 保留作业数据的最大天数|30 天|
 | PowerShell 工作流状态大小上限 |5 MB| 执行检查点工作流时适用于 PowerShell 工作流 runbook。|
+| 自动化帐户支持的最大标记数|15||
 
 <sup>1</sup>沙盒是可以由多个作业使用的共享环境。 使用同一沙盒的作业受沙盒的资源限制约束。
 

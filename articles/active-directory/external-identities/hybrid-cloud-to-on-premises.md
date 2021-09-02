@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8ac1d8d10407347dac5889e9270e623e0abbeb9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: efe7a8d1969f457a70326edb99652eb8f25d27b8
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968501"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213878"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>向 Azure AD 中的 B2B 用户授予对本地应用程序的访问权限
 
@@ -24,16 +24,17 @@ ms.locfileid: "111968501"
 
 ## <a name="access-to-saml-apps"></a>对 SAML 应用的访问权限
 
-如果本地应用使用基于 SAML 的身份验证，则你可以通过 Azure 门户轻松向 Azure AD B2B 协作用户提供这些应用。
+如果本地应用使用基于 SAML 的身份验证，则你可以使用 Azure AD 应用程序代理通过 Microsoft Azure 门户轻松向 Azure AD B2B 协作用户提供这些应用。
 
-必须执行以下两个操作：
+必须执行以下操作：
 
-- 按照“[配置基于 SAML 的单一登录](../manage-apps/configure-saml-single-sign-on.md)”中所述，使用 SAML 来集成应用。 请务必记下所用的“登录 URL”值。
--  在将 **Azure Active Directory** 配置为身份验证源的情况下，使用 Azure AD 应用程序代理发布本地应用。 有关说明，请参阅[使用 Azure AD 应用程序代理发布应用程序](../app-proxy/application-proxy-add-on-premises-application.md)。 
+- 启用应用程序代理并安装连接器。 有关说明，请参阅[使用 Azure AD 应用程序代理发布应用程序](../app-proxy/application-proxy-add-on-premises-application.md)。
+- 如要通过 Azure AD 应用程序代理发布本地基于 SAML 的应用程序，请按照[通过应用程序代理进行本地应用程序 SAML 单一登录](../app-proxy/application-proxy-configure-single-sign-on-on-premises-apps.md)中的说明操作。
+- 将 Azure AD B2B 用户分配到 SAML 应用程序。
 
-   配置“内部 URL”设置时，请使用非库应用程序模板中指定的登录 URL。 这样，用户便可以从组织边界以外访问该应用。 应用程序代理对本地应用执行 SAML 单一登录。
- 
-   ![显示本地应用设置 - 内部 URL 和身份验证](media/hybrid-cloud-to-on-premises/OnPremAppSettings.PNG)
+完成这些步骤后，应用应会启动并运行。 如要测试 Azure AD B2B 访问：
+1.  打开浏览器并导航到发布应用时创建的外部 URL。
+2.  使用分配给应用的 Azure AD B2B 帐户登录。 应能打开应用并通过单一登录进行访问。
 
 ## <a name="access-to-iwa-and-kcd-apps"></a>访问 IWA 和 KCD 应用
 

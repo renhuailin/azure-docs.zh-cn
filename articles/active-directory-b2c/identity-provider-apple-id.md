@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 08/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f5e4ff93b90c7644c1d1498a14c8b9954041cb34
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: c150fdae1820dee3ae440f4d4acdacff04e14e66
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028360"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271085"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>使用 Azure Active Directory B2C 设置通过 Apple ID 注册与登录（预览）
 
@@ -46,19 +46,19 @@ ms.locfileid: "107028360"
     1. 输入“说明” 
     1. 输入“捆绑包 ID”，如 `com.contoso.azure-ad-b2c`。 
     1. 对于“功能”，从功能列表中选择“通过 Apple 登录”。 
-    1. 记下此步骤中的应用 ID 前缀（团队 ID）。 稍后需要用到此信息。
+    1. 记下这一步当中的团队 ID（应用 ID 前缀）。 稍后需要用到此信息。
     1. 选择“继续”  ，然后选择“注册”  。
 1. 从菜单中，选择“证书、ID 和配置文件”，然后选择“(+)”。
 1. 对于“注册新标识符”，选择“服务 ID”，然后选择“继续”。
 1. 对于“注册服务 ID”：
     1. 输入“说明”。 说明内容将在同意屏幕上显示给用户。
-    1. 输入“标识符”，如 `com.consoto.azure-ad-b2c-service`。 标识符是 OpenID Connect 流的客户端 ID。
+    1. 输入“标识符”，如 `com.consoto.azure-ad-b2c-service`。 记下服务 ID 标识符。 标识符是 OpenID Connect 流的客户端 ID。
     1. 选择“继续”，然后选择“注册”。
 1. 从“标识符”中选择你创建的标识符。
 1. 选择“通过 Apple 登录”，然后选择“配置”。
     1. 选择配置“通过 Apple 登录”所用的“主应用 ID”。
     1. 在“域和子域”中，输入 `your-tenant-name.b2clogin.com`。 将 your-tenant-name 替换为租户的名称。 如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name`。
-    1. 在“返回 URL”中，输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称，将 `your-domain-name` 替换为你的自定义域。
+    1. 在“返回 URL”中，输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称，将 `your-domain-name` 替换为你的自定义域。 回调 URL 需采用全小写形式。
     1. 选择“下一步”，然后选择“完成”。
     1. 当弹出窗口关闭时，选择“继续”，然后选择“保存”。
 
@@ -69,7 +69,7 @@ ms.locfileid: "107028360"
     1. 键入“密钥名称”。
     1. 选择“通过 Apple 登录”，然后选择“配置”。
     1. 对于“主应用 ID”，选择先前创建的应用，然后选择“保存”。
-    1. 选择“配置”，然后选择“注册”以完成密钥注册过程。
+    1. 选择“配置”，然后选择“注册”以完成密钥注册过程。 记下密钥 ID。 配置用户流时需要此密钥。
 1. 对于“下载密钥”，选择“下载”以下载包含密钥的 .p8 文件。
 
 
@@ -81,10 +81,10 @@ ms.locfileid: "107028360"
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含 Azure AD B2C 租户的目录。
 1. 在“Azure 服务”下，选择“Azure AD B2C”。 或者，使用搜索框查找并选择“Azure AD B2C”。
 1. 依次选择“标识提供程序”和“Apple (预览)”。
-1. 输入“名称”。 例如 Apple。
+1. 对于名称，输入“使用 Apple 帐户登录”。 
 1. 输入“Apple 开发者 ID (团队 ID)”。
-1. 输入“Apple 服务 ID (客户端 ID)”。
-1. 输入“Apple 密钥 ID”。
+1. 输入“Apple 服务 ID（客户端 ID）”。
+1. 输入[创建 Apple 客户端密码](#creating-an-apple-client-secret)这一步当中的 Apple 密钥 ID。
 1. 选择并上传“Apple 证书数据”。
 1. 选择“保存”。
 
@@ -93,6 +93,7 @@ ms.locfileid: "107028360"
 > - 通过 Apple 登录要求管理员每 6 个月更新一次其客户端密码。 
 > - 在此功能的公共预览阶段，如果 Apple 客户端密码过期，需要手动更新密码。 Apple 标识提供程序配置社交 IDP 页面会提前出现提醒消息，但建议你自行设置提醒。 
 > - 如果需要更新密码，请在 Azure 门户中打开 Azure AD B2C，转到“标识提供程序” > “Apple”，并选择“更新密码”。
+> - 遵循指南，了解如何[提供“使用 Apple ID 登录”按钮](#customize-your-user-interface)。
 
 ## <a name="add-the-apple-identity-provider-to-a-user-flow"></a>将 Apple 标识提供程序添加到用户流
 
@@ -124,7 +125,7 @@ ms.locfileid: "107028360"
 1. 发出 HTTP `POST` 请求，并提供以下信息：
 
     - appleTeamId：你的 Apple 开发者团队 ID
-    - appleServiceId：Apple 服务 ID（同时也是客户端 ID）
+    - appleServiceId：Apple 服务 ID（客户端 ID）
     - p8key：PEM 格式密钥。 获取此密钥的方式如下：在文本编辑器中打开 .p8 文件，复制 `-----BEGIN PRIVATE KEY-----` 和 `-----END PRIVATE KEY-----` 之间的所有内容（无换行符）。
  
 以下 JSON 是调用 Azure 函数的一个示例：
@@ -132,7 +133,6 @@ ms.locfileid: "107028360"
 ```json
 {
     "appleTeamId": "ABC123DEFG",
-    "appleKeyId": "URKEYID001",
     "appleServiceId": "com.yourcompany.app1",
     "p8key": "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg+s07NiAcuGEu8rxsJBG7ttupF6FRe3bXdHxEipuyK82gCgYIKoZIzj0DAQehRANCAAQnR1W/KbbaihTQayXH3tuAXA8Aei7u7Ij5OdRy6clOgBeRBPy1miObKYVx3ki1msjjG2uGqRbrc1LvjLHINWRD"
 }
@@ -165,6 +165,7 @@ Azure 函数在响应中使用格式正确且已签名的客户端密码 JWT 做
 > - 通过 Apple 登录要求管理员每 6 个月更新一次其客户端密码。
 > - 如果 Apple 客户端密码过期，需要手动更新密码，并将新值存储在策略密钥中。
 > - 建议在 6 个月内自行设置提醒以生成新的客户端密码。 
+> - 遵循指南，了解如何[提供“使用 Apple ID 登录”按钮](#customize-your-user-interface)。
 
 ## <a name="configure-apple-as-an-identity-provider"></a>将 Apple 配置为标识提供程序
 
@@ -182,7 +183,7 @@ Azure 函数在响应中使用格式正确且已签名的客户端密码 JWT 做
       <DisplayName>Apple</DisplayName>
       <TechnicalProfiles>
         <TechnicalProfile Id="Apple-OIDC">
-          <DisplayName>Apple</DisplayName>
+          <DisplayName>Sign in with Apple</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
             <Item Key="ProviderName">apple</Item>
@@ -208,7 +209,7 @@ Azure 函数在响应中使用格式正确且已签名的客户端密码 JWT 做
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" AlwaysUseDefaultValue="true" />
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="user.name.firstName"/>
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="user.name.lastName"/>
-            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="user.email"/>
+            <OutputClaim ClaimTypeReferenceId="email" />
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName"/>
@@ -257,3 +258,13 @@ Azure 函数在响应中使用格式正确且已签名的客户端密码 JWT 做
 如果登录过程成功，浏览器将重定向到 `https://jwt.ms`，后者显示 Azure AD B2C 返回的令牌内容。
 
 ::: zone-end
+
+## <a name="customize-your-user-interface"></a>自定义用户界面
+
+遵循指南，了解如何[提供“使用 Apple ID 登录”](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple/overview/introduction/)。 Apple 提供几个“使用 Apple ID 登录”按钮，你可以使用这些按钮让用户设置帐户并登录。 如有必要，可以创建自定义按钮来提供“使用 Apple ID 登录”选项。 了解如何[显示“使用 Apple ID 登录”按钮](https://developer.apple.com/design/human-interface-guidelines/sign-in-with-apple/overview/buttons/)。
+
+与 Apple 用户界面准则一致：
+
+- [利用 HTML 模板自定义用户界面](customize-ui-with-html.md)
+- [本地化](language-customization.md)标识提供者的名称。
+

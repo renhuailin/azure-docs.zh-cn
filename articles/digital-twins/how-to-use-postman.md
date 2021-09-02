@@ -1,19 +1,20 @@
 ---
-title: 通过 Postman 发出请求
+title: 通过 Postman 发出 API 请求
 titleSuffix: Azure Digital Twins
-description: 了解如何配置和使用 Postman 来测试 Azure 数字孪生 API。
+description: 了解如何配置和使用 Postman 来调用 Azure 数字孪生 API。
 ms.author: baanders
 author: baanders
 ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
-ms.date: 11/10/2020
-ms.openlocfilehash: 839ce4df4a79b34890a19d3beb470b77fef1f19d
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.date: 6/16/2021
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: 3974b080c2a763db4ffa0f344ef18ce129959a53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110617649"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459446"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>如何使用 Postman 将请求发送到 Azure 数字孪生 API
 
@@ -27,7 +28,7 @@ ms.locfileid: "110617649"
     1. [从头开始创建自己的集合](#create-your-own-collection)。
 1. [将请求添加到已配置的集合](#add-an-individual-request)，并将其发送到 Azure 数字孪生 API。
 
-Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面 。 如需详细了解这些 API 集之间的差异，请参阅[概念：Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)。 本文包含这两个 API 集的信息。
+Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面 。 如需详细了解这些 API 集之间的差异，请参阅 [Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)。 本文包含这两个 API 集的信息。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -78,7 +79,7 @@ Azure 数字孪生提供了两个可用的 API 集：数据平面和控制平面
     ---
 
     >[!NOTE]
-    > 如果需要使用属于不同于实例的 Azure Active Directory 租户的服务主体或用户帐户来访问 Azure 数字孪生实例，则需要从 Azure 数字孪生实例的“主”租户请求令牌。 有关此过程的详细信息，请参阅操作指南：编写应用身份验证代码。
+    > 如果需要使用属于不同于实例的 Azure Active Directory 租户的服务主体或用户帐户来访问 Azure 数字孪生实例，则需要从 Azure 数字孪生实例的“主”租户请求令牌。 有关此过程的详细信息，请参阅[编写应用身份验证代码](how-to-authenticate-client.md#authenticate-across-tenants)。
 
 3. 复制结果中 `accessToken` 的值并将其保存，以便在下一部分中使用。 这就是你将提供给 Postman 用于授权请求的令牌值。
 
@@ -288,7 +289,7 @@ Postman 中的请求保存在集合（请求组）中。 创建集合以对请�
 
    :::image type="content" source="media/how-to-use-postman/postman-request-body.png" alt-text="Postman 中新请求的详细信息的屏幕截图，其中显示了“Body”选项卡。它包含带有“SELECT * FROM DIGITALTWINS”查询的原始 JSON 正文。" lightbox="media/how-to-use-postman/postman-request-body.png":::
 
-   有关创建 Azure 数字孪生查询的详细信息，请参阅如何：查询孪生体图形。
+   有关创建 Azure 数字孪生查询的详细信息，请参阅[查询孪生体图形](how-to-query-graph.md)。
 
 1. 检查参考文档中是否存在请求类型可能需要的任何其他字段。 对于查询 API，现已满足 Postman 请求中的所有要求，因此已完成此步骤。
 1. 使用“发送”按钮发送已完成的请求。
@@ -302,4 +303,4 @@ Postman 中的请求保存在集合（请求组）中。 创建集合以对请�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解数字孪生 API，请阅读[概念：Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)，或查看 [REST API 的参考文档](/rest/api/azure-digitaltwins/)。
+若要详细了解数字孪生 API，请阅读 [Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)，或查看 [REST API 的参考文档](/rest/api/azure-digitaltwins/)。

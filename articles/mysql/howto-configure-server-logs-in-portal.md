@@ -6,14 +6,16 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/15/2021
-ms.openlocfilehash: 91569780aa71861e07c7e96bec5eac879642760d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ac29b34600f03b7270bd717ad9f5147cc41c7cb
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103496212"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122651776"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问慢查询日志
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 可以从 Azure 门户配置、列出并下载 [Azure Database for MySQL 慢查询日志](concepts-server-logs.md)。
 
@@ -36,7 +38,7 @@ ms.locfileid: "103496212"
 
 6. 使用 log_output  选择要将日志输出到的位置。 若要将日志同时发送到本地存储和 Azure Monitor 诊断日志，请选择“File”  。
 
-7. 请考虑设置“long_query_time”，它表示将在慢速查询日志文件中收集的查询的查询时间阈值，long_query_time 的最小值和默认值分别为 0 和 10。
+7. 请考虑设置“long_query_time”，它表示将在慢速查询日志文件中收集的查询的查询时间阈值。long_query_time 的最小值和默认值分别为 0 和 10。
 
 8. 调整其他参数（例如 log_slow_admin_statements）来记录管理语句。 默认情况下，不会记录管理语句，也不会记录不使用索引进行查找的查询。 
 

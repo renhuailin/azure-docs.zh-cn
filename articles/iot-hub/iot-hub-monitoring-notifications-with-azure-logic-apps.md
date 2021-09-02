@@ -6,15 +6,14 @@ keywords: IoT 监视, IoT 通知, IoT 温度监视
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 74724357dea9cd6c8c89a11a9eeb3d1b2933b790
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: a3a4aa719f4a9c2c7ebc527e0da3eb81307cbe1c
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564926"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "122652598"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知
 
@@ -46,9 +45,9 @@ ms.locfileid: "107564926"
 
 在本主题中，你将在 IoT 中心上设置路由，以将 `temperatureAlert` 属性为 `true` 的消息发送到服务总线终结点。 然后设置一个逻辑应用，该应用在到达服务总线终结点的消息上触发并向你发送电子邮件通知。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>必备条件
 
-* 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](quickstart-send-telemetry-dotnet.md)快速入门中的一个教程。 这些文章阐述下列要求：
+* 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)快速入门中的一个教程。 这些文章阐述下列要求：
 
   * 一个有效的 Azure 订阅。
   * 已在订阅中创建一个 Azure IoT 中心。
