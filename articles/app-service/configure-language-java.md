@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: 75ee1ca92fb687975dabe0011ce8a95b8c03172b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1e62937a4240448f85cc7ab147d642b29bb0a2a9
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723086"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226060"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Java 应用
 
@@ -66,20 +66,20 @@ az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
 
 ### <a name="java-se"></a>Java SE
 
-若要将 .jar 文件部署到 Java SE，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#rest)。 
+若要将 .jar 文件部署到 Java SE，请使用 Kudu 站点的 `/api/publish/` 终结点。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-warjarear-packages)。 
 
 > [!NOTE]
 >  必须将 .jar 应用程序命名为 `app.jar`，应用服务才能识别并运行该应用程序。 在部署过程中，（上述）Maven 插件会自动重命名应用程序。 如果不希望将 JAR 重命名为 app.jar，可使用命令上传 shell 脚本来运行 .jar 应用。 将此脚本的绝对路径粘贴到门户的“配置”部分的[启动文件](/azure/app-service/faq-app-service-linux#built-in-images)文本框中。 启动脚本不从放置它的目录运行。 因此，请始终使用绝对路径在启动脚本中引用文件（例如：`java -jar /home/myapp/myapp.jar`）。
 
 ### <a name="tomcat"></a>Tomcat
 
-若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-war-file)。
+若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-warjarear-packages)。
 
 ::: zone pivot="platform-linux"
 
 ### <a name="jboss-eap"></a>JBoss EAP
 
-若要将 .war 文件部署到 JBoss，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-war-file)。
+若要将 .war 文件部署到 JBoss，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-warjarear-packages)。
 
 若要部署 .ear 文件，请[使用 FTP](deploy-ftp.md)。 .ear 应用程序将部署到应用程序配置中定义的上下文根。 例如，如果应用的上下文根是 `<context-root>myapp</context-root>`，则可以在 `/myapp` 路径中浏览该站点：`http://my-app-name.azurewebsites.net/myapp`。 如果希望在根路径中为 Web 应用提供服务，请确保应用将上下文根设置为根路径：`<context-root>/</context-root>`。 有关详细信息，请参阅[设置 Web 应用程序的上下文根](https://docs.jboss.org/jbossas/guides/webguide/r2/en/html/ch06.html)。
 

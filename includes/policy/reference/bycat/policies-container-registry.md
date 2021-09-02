@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/16/2021
+ms.date: 08/27/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 767e72d3867da6af7fbbdcf9108db8377e7bba0d
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 44a3c5943ebf96509551b5d24f782a4ead340361
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388229"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123103001"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -19,6 +19,7 @@ ms.locfileid: "114388229"
 |[将容器注册表配置为使用专用 DNS 区域](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe9585a95-5b8c-4d03-b193-dc7eb5ac4c32) |使用专用 DNS 区域来替代专用终结点的 DNS 解析。 专用 DNS 区域会链接到虚拟网络，以解析到容器注册表。 请访问 [https://aka.ms/privatednszone](../../../../articles/private-link/private-endpoint-dns.md) 和 [https://aka.ms/acr/private-link](../../../../articles/container-registry/container-registry-private-link.md) 了解详细信息。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PrivateDNSZone_DeployIfNotExists.json) |
 |[为容器注册表配置专用终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd85c6833-7d33-4cf5-a915-aaa2de84405f) |专用终结点可在源或目标位置没有公共 IP 地址的情况下将虚拟网络连接到 Azure 服务。 将专用终结点映射到高级容器注册表资源可以降低数据泄露的风险。 请访问 [https://aka.ms/privateendpoints](../../../../articles/event-grid/configure-private-endpoints.md) 和 [https://aka.ms/acr/private-link](../../../../articles/container-registry/container-registry-private-link.md) 了解详细信息。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PrivateEndpoint_DeployIfNotExists.json) |
 |[应使用客户管理的密钥对容器注册表进行加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5b9159ae-1701-4a6f-9a7a-aa9c8ddd0580) |使用客户管理的密钥来管理注册表内容的静态加密。 默认情况下，使用服务管理的密钥对数据进行静态加密，但为了满足法规符合性标准，通常需要使用客户管理的密钥。 客户管理的密钥允许使用由你创建并拥有的 Azure Key Vault 密钥对数据进行加密。 你可以完全控制并负责关键生命周期，包括轮换和管理。 更多信息请访问 [https://aka.ms/acr/CMK](../../../../articles/container-registry/container-registry-customer-managed-keys.md)。 |Audit、Deny、Disabled |[1.1.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_CMKEncryptionEnabled_Audit.json) |
+|[容器注册表应禁用导出功能](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F524b0254-c285-4903-bee6-bb8126cde579) |禁用导出功能可确保注册表中的数据仅通过数据平面 (docker pull) 访问，从而提高安全性。 无法通过“acr import”或“acr transfer”将数据移出注册表。 若要禁用导出功能，必须禁用公用网络访问。 有关详细信息，请访问：[https://aka.ms/acr/export-policy](../../../../articles/container-registry/data-loss-prevention.md)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_ExportPolicy_AuditDeny.json) |
 |[容器注册表应禁用本地身份验证方法。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdc921057-6b28-4fbe-9b83-f7bec05db6c2) |禁用本地身份验证方法可确保容器注册表仅将 Azure Active Directory 标识作为身份验证方法，从而提高安全性。 有关详细信息，请访问：[https://aka.ms/acr/authentication](../../../../articles/container-registry/container-registry-authentication.md)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_AdminAccountDisabled_AuditDeny.json) |
 |[容器注册表应包含支持专用链接的 SKU](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbd560fc0-3c69-498a-ae9f-aa8eb7de0e13) |通过 Azure 专用链接，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 将专用终结点映射到容器注册表（而不是整个服务）可以降低数据泄露的风险。 有关详细信息，请访问：[https://aka.ms/acr/private-link](../../../../articles/container-registry/container-registry-private-link.md)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_SkuSupportsPrivateEndpoints_AuditDeny.json) |
 |[容器注册表不得允许无限制的网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd0793b48-0edc-4296-a390-4c75d1bdfd71) |默认情况下，Azure 容器注册表接受来自任何网络上的主机的 Internet 连接。 为了防止注册表受到潜在的威胁，只允许来自特定的公共 IP 地址或地址范围的访问。 如果注册表没有 IP/防火墙规则或配置的虚拟网络，它将出现在不正常资源中。 有关容器注册表网络规则的详细信息，请访问 [https://aka.ms/acr/portal/public-network](../../../../articles/container-registry/container-registry-access-selected-networks.md) 和 [https://aka.ms/acr/vnet](../../../../articles/container-registry/container-registry-vnet.md)。 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_NetworkRulesExist_AuditDeny.json) |

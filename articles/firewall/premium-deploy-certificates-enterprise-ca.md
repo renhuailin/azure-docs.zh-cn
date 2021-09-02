@@ -1,35 +1,31 @@
 ---
-title: 部署和配置 Azure 防火墙高级预览版的企业 CA 证书
-description: 了解如何部署和配置 Azure 防火墙高级预览版的企业 CA 证书。
+title: 部署和配置 Azure 防火墙高级版的企业 CA 证书
+description: 了解如何部署和配置 Azure 防火墙高级版的企业 CA 证书。
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 03/18/2021
+ms.date: 07/15/2021
 ms.author: victorh
-ms.openlocfilehash: 38d83186c06eac0fc3a49834172c2a4b8542caff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 067daef5782697357d08edc0a6c09bea8af085f6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590460"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441057"
 ---
-# <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall-preview"></a>部署和配置 Azure 防火墙预览版的企业 CA 证书
-
-> [!IMPORTANT]
-> Azure 防火墙高级版目前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall"></a>部署和配置 Azure 防火墙的企业 CA 证书
 
 
-Azure 防火墙高级预览版包含一项 TLS 检查功能，此功能需要证书身份验证链。 对于生产部署，应使用企业 PKI 生成用于 Azure 防火墙高级版的证书。 本文介绍如何创建和管理 Azure 防火墙高级预览版的中间 CA 证书。
+Azure 防火墙高级版包含一项 TLS 检查功能，此功能需要证书身份验证链。 对于生产部署，应使用企业 PKI 生成用于 Azure 防火墙高级版的证书。 本文介绍如何创建和管理 Azure 防火墙高级版的中间 CA 证书。
 
-有关 Azure 防火墙高级预览版使用的证书的详细信息，请参阅 [Azure 防火墙高级预览版证书](premium-certificates.md)。
+有关 Azure 防火墙高级版使用的证书的详细信息，请参阅 [Azure 防火墙高级版证书](premium-certificates.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-若要使用企业 CA 生成用于 Azure 防火墙高级预览版的证书，必须具有以下资源： 
+若要使用企业 CA 生成用于 Azure 防火墙高级版的证书，必须具有以下资源： 
 
 - 一个 Active Directory 林 
 - 一个启用了 Web 注册的 Active Directory 证书服务根 CA 
@@ -57,7 +53,7 @@ Azure 防火墙高级预览版包含一项 TLS 检查功能，此功能需要证
 
 1. 在 Azure 门户中，导航到密钥保管库的“证书”页，然后选择“生成/导入”。
 1. 选择“导入”作为创建方法，为证书命名，选择导出的 .pfx 文件，输入密码，然后选择“创建” 。
-1. 导航到防火墙策略的“TLS 检查(预览)”页，并选择托管标识、密钥保管库和证书。 
+1. 导航到防火墙策略的“TLS 检查”页，并选择托管标识、Key Vault 和证书。 
 1. 选择“保存”。
    :::image type="content" source="media/premium-deploy-certificates-enterprise-ca/tls-inspection.png" alt-text="TLS 检查":::
 
@@ -79,4 +75,4 @@ Azure 防火墙高级预览版包含一项 TLS 检查功能，此功能需要证
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure 门户中的 Azure 防火墙高级预览版](premium-portal.md)
+[Azure 门户中的 Azure 防火墙高级版](premium-portal.md)

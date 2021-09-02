@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/09/2021
+ms.date: 07/16/2021
 ms.author: alkohli
-ms.openlocfilehash: a1f6b51c8ab36d779ad2771c1e12de78673e6fc1
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 94ffb38c71437c8f5902866620b5ac0c2467edfd
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902376"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462908"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-gpu-device"></a>为 Azure Stack Edge Pro GPU 设备创建自定义 VM 映像
 
@@ -27,7 +27,7 @@ ms.locfileid: "111902376"
 
 创建 VM 映像之前，请先完成以下先决条件：
 
-- [下载 AzCopy](/azure/storage/common/storage-use-azcopy-v10#download-azcopy)。 AzCopy 提供了一种将 OS 磁盘复制到 Azure 存储帐户的快速方法。
+- [下载 AzCopy](../storage/common/storage-use-azcopy-v10.md#download-azcopy)。 AzCopy 提供了一种将 OS 磁盘复制到 Azure 存储帐户的快速方法。
 
 ---
 
@@ -40,9 +40,11 @@ ms.locfileid: "111902376"
 
 执行以下步骤以创建 Windows VM 映像：
 
-1. 在 Azure 中创建 Windows 虚拟机。 有关门户说明，请参阅[在 Azure 门户中创建 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal)。 有关 PowerShell 说明，请参阅[教程：使用 Azure PowerShell 创建和管理 Windows VM](../virtual-machines/windows/tutorial-manage-vm.md)。
+1. 在 Azure 中创建 Windows 虚拟机。 有关门户说明，请参阅[在 Azure 门户中创建 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md)。 有关 PowerShell 说明，请参阅[教程：使用 Azure PowerShell 创建和管理 Windows VM](../virtual-machines/windows/tutorial-manage-vm.md)。  
 
-   虚拟机必须是第 1 代 VM。 用于创建 VM 映像的 OS 磁盘必须是 Azure 支持的任意大小的固定大小的 VHD。 有关 VM 大小选项，请参阅[支持的 VM 大小](azure-stack-edge-gpu-virtual-machine-sizes.md#supported-vm-sizes)。  
+   虚拟机必须是第 1 代 VM。 用于创建 VM 映像的 OS 磁盘必须是 Azure 支持的任意大小的固定大小的 VHD。 有关 VM 大小选项，请参阅[支持的 VM 大小](azure-stack-edge-gpu-virtual-machine-sizes.md#supported-vm-sizes)。
+
+   可以在 Azure 市场中使用具有固定大小的 VHD 的任何 Windows Gen1 虚拟机。 有关可用的 Azure 市场映像列表，请参阅 [Azure Stack Edge 的常用 Azure 市场映像](azure-stack-edge-gpu-create-virtual-machine-marketplace-image.md#commonly-used-marketplace-images)。
 
 2. 通用化虚拟机。 若要通用化 VM，请[连接到虚拟机](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#connect-to-a-windows-vm)，打开命令提示符，并运行以下 `sysprep` 命令：
 
@@ -60,7 +62,7 @@ ms.locfileid: "111902376"
 
 1. 在 Azure 中创建 Linux 虚拟机。 有关门户说明，请参阅[快速入门：在 Azure 门户中创建 Linux VM](../virtual-machines/linux/quick-create-portal.md)。  有关 PowerShell 说明，请参阅[快速入门：使用 PowerShell 在 Azure 中创建 Linux VM](../virtual-machines/linux/quick-create-powershell.md)。
 
-   可以在 Azure 市场中使用具有固定大小 VHD 的任意 Gen1 VM 来创建 Linux 自定义映像，但 Red Hat Enterprise Linux (RHEL) 映像除外，这需要执行额外的步骤。 有关有效 Azure 市场映像的列表，请参阅[可用于 Azure Stack Hub 的 Azure 市场项](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910&preserve-view=true)。 有关 RHEL 映像的指导，请参阅下面的[使用 RHEL BYOS 映像](#using-rhel-byos-images)。 
+   可以在 Azure 市场中使用具有固定大小 VHD 的任意 Gen1 VM 来创建 Linux 自定义映像，但 Red Hat Enterprise Linux (RHEL) 映像除外，这需要执行额外的步骤。 有关可用的 Azure 市场映像列表，请参阅 [Azure Stack Edge 的常用 Azure 市场映像](azure-stack-edge-gpu-create-virtual-machine-marketplace-image.md#commonly-used-marketplace-images)。 有关 RHEL 映像的指导，请参阅下面的[使用 RHEL BYOS 映像](#using-rhel-byos-images)。
 
 1. 取消预配 VM。 使用 Azure VM 代理删除计算机特定文件和数据。 在源 Linux VM 上，使用带 `-deprovision+user` 参数的 `waagent` 命令。 有关详细信息，请参阅[了解和使用 Azure Linux 代理](../virtual-machines/extensions/agent-linux.md)。
 
@@ -98,9 +100,9 @@ ms.locfileid: "111902376"
 
 若要将 VM 的 OS 磁盘下载到 Azure 存储帐户，请执行以下步骤：
 
-1. [在门户中停止 VM](/azure/virtual-machines/windows/download-vhd#stop-the-vm)。 即使 Windows VM 在你运行 `sysprep` 进行通用化后关闭，你也需要执行此操作来解除分配 OS 磁盘。
+1. [在门户中停止 VM](../virtual-machines/windows/download-vhd.md#stop-the-vm)。 即使 Windows VM 在你运行 `sysprep` 进行通用化后关闭，你也需要执行此操作来解除分配 OS 磁盘。
 
-1. [为 OS 磁盘生成下载 URL](/azure/virtual-machines/windows/download-vhd#generate-download-url)，并记下 URL。 默认情况下，URL 在 3600 秒（1 小时）后过期。 如果需要，可以增加该时间。
+1. [为 OS 磁盘生成下载 URL](../virtual-machines/windows/download-vhd.md#generate-download-url)，并记下 URL。 默认情况下，URL 在 3600 秒（1 小时）后过期。 如果需要，可以增加该时间。
       
 1. 使用以下方法之一将 VHD 下载到 Azure 存储帐户：
    
@@ -112,7 +114,7 @@ ms.locfileid: "111902376"
 
 ## <a name="copy-vhd-to-storage-account-using-azcopy"></a>使用 AzCopy 将 VHD 复制到存储帐户
 
-以下过程介绍如何使用 AzCopy 将自定义 VM 映像复制到 Azure 存储帐户，以便可以使用该映像在 Azure Stack Edge Pro GPU 设备上部署 VM。 建议将自定义 VM 映像存储在用于 Azure Stack Edge Pro GPU 设备的同一存储帐户中。 
+以下过程介绍如何使用 AzCopy 将自定义 VM 映像复制到 Azure 存储帐户，以便可以使用该映像在 Azure Stack Edge Pro GPU 设备上部署 VM。 建议将自定义虚拟机映像存储在你所使用的任一现有存储帐户中，该帐户应与 Azure Stack Edge 位于同一区域/订阅中。
 
 
 ### <a name="create-target-uri-for-a-container"></a>为容器创建目标 URI
@@ -152,7 +154,7 @@ AzCopy 需要一个目标 URI，该 URI 告诉你将新映像复制到存储帐�
 
 若要使用 AzCopy 将 VHD 复制到 blob 容器，请执行以下步骤：
 
- 1. [下载 AZCopy](/azure/storage/common/storage-use-azcopy-v10#download-azcopy)（如果尚未这样做）。
+ 1. [下载 AZCopy](../storage/common/storage-use-azcopy-v10.md#download-azcopy)（如果尚未这样做）。
  
  1. 在 PowerShell 中，导航到存储 azcopy.exe 的目录，并运行以下命令：
 

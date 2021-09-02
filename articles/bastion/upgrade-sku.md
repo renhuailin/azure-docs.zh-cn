@@ -6,14 +6,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 07/13/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8a2c35f2ef4dafe9024deab1c26116c0ca20e01e
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 5ed0dd6ad86b5f7758f0e1972867876eedc3b51a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733297"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225944"
 ---
 # <a name="upgrade-a-sku-preview"></a>升级 SKU（预览）
 
@@ -21,8 +21,7 @@ ms.locfileid: "113733297"
 
 ## <a name="configuration-steps"></a>配置步骤
 
-[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
-
+1. 登录 [Azure 门户](https://ms.portal.azure.com)。
 1. 在 Azure 门户中，导航到你的 Bastion 主机。
 1. 在“配置”页上，对于“层”，从下拉列表中选择“标准”  。
 

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2020
+ms.date: 07/18/2021
 ms.author: memildin
-ms.openlocfilehash: 55f8d37d435aa8adeb4d97246ce7b2c7811140be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e65fd5a0c672e500a0a4bc08f45e9ced32d89047
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557992"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463497"
 ---
 # <a name="security-alerts-schemas"></a>安全警报架构
 
@@ -37,27 +37,9 @@ ms.locfileid: "102557992"
 ## <a name="the-schemas"></a>架构 
 
 
-### <a name="workflow-automation-and-continuous-export-to-event-hub"></a>[工作流自动化和连续导出到事件中心](#tab/schema-continuousexport)
+### <a name="azure-sentinel"></a>[Azure Sentinel](#tab/schema-sentinel)
 
-### <a name="sample-json-for-alerts-sent-to-logic-apps-event-hub-and-third-party-siems"></a>发送到逻辑应用、事件中心和第三方 SIEM 的警报的示例 JSON
-
-下面是传递到以下项的警报事件的架构：
-
-- 在安全中心的工作流自动化中配置的 Azure 逻辑应用实例
-- 使用安全中心的连续导出功能的 Azure 事件中心
-
-有关工作流自动化功能的详细信息，请参阅[自动执行对安全中心触发器的响应](workflow-automation.md)。
-
-有关连续导出的详细信息，请参阅[连续导出安全中心数据](continuous-export.md)。
-
-[!INCLUDE [Workflow schema](../../includes/security-center-alerts-schema-workflow-automation.md)]
-
-
-
-
-### <a name="azure-sentinel-and-log-analytics-workspaces"></a>[Azure Sentinel 和 Log Analytics 工作区](#tab/schema-sentinel)
-
-Sentinel 连接器从 Azure 安全中心获取警报，并将它们发送到 Azure Sentinel 的 Log Analytics 工作区。 
+Sentinel 连接器从 Azure 安全中心获取警报，并将它们发送到 Azure Sentinel 的 Log Analytics 工作区。
 
 若要创建使用安全中心警报的 Sentinel 案例或事件，你需要以下所示警报的架构。 
 
@@ -66,15 +48,13 @@ Sentinel 连接器从 Azure 安全中心获取警报，并将它们发送到 Azu
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
 
-
-
 ### <a name="azure-activity-log"></a>[Azure 活动日志](#tab/schema-activitylog)
 
 Azure 安全中心将 Azure 活动日志中生成的安全警报作为事件进行审核。
 
 可以通过按如下所示方式搜索“激活警报”事件来查看活动日志中的安全警报事件：
 
-[![在活动日志中搜索“激活警报”事件](media/alerts-schemas/sample-activity-log-alert.png)](media/alerts-schemas/sample-activity-log-alert.png#lightbox)
+[![在活动日志中搜索“激活警报”事件。](media/alerts-schemas/sample-activity-log-alert.png)](media/alerts-schemas/sample-activity-log-alert.png#lightbox)
 
 
 ### <a name="sample-json-for-alerts-sent-to-azure-activity-log"></a>发送到 Azure 活动日志的警报的示例 JSON
@@ -165,6 +145,18 @@ Azure 安全中心将 Azure 活动日志中生成的安全警报作为事件进�
 |**relatedEvents**|常量 - 空数组|
 |||
 
+
+### <a name="workflow-automation"></a>[工作流自动化](#tab/schema-workflow-automation)
+
+有关使用工作流自动化时警报架构的信息，请参阅[连接器文档](/connectors/ascalert/)。
+
+
+### <a name="continuous-export"></a>[连续导出](#tab/schema-continuousexport)
+
+安全中心的连续导出功能将警报数据传递给：
+
+- Azure 事件中心使用与[警报 API](/rest/api/securitycenter/alerts) 相同的架构。
+- Log Analytics 工作区，根据 Azure Monitor 数据参考文档中的 [SecurityAlert 架构](/azure/azure-monitor/reference/tables/SecurityAlert)。
 
 
 

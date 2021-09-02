@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f14ae211e13c299807c6f1c43e8be11752fce008
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 6dc1b5ae3e885231a0d80ade2b8477a66e85d62d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418334"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456233"
 ---
 # <a name="troubleshoot-azure-disk-pools-preview"></a>排除 Azure 磁盘池（预览）故障
 
@@ -29,6 +29,12 @@ ms.locfileid: "122418334"
 更新状态表示资源正在进行更新。 这通常在部署期间或更新应用（如添加磁盘或 LUN）时发生。
 
 已停止状态（已解除分配）表示资源已停止，且其基础资源已解除分配。 可重启资源以恢复磁盘池或 iSCSI 目标。
+
+## <a name="recover-a-disk-pool-or-an-iscsi-target"></a>恢复磁盘池或 iSCSI 目标
+
+首先，停止磁盘池并重启。 然后，检查磁盘池的状态和 iSCSI 目标。 如已恢复，连接到磁盘池的任何 Azure VMware 群集也将自动恢复，除非磁盘池已无法访问逾 24 小时。 如已逾 24 小时，需联系 Azure 支持，以强制断开与磁盘池关联的不可访问数据存储。 之后，可将 VS 群集重新连接到磁盘池，并配置数据存储。
+
+若磁盘池在此过程后未恢复，请联系 Azure 支持，并提供你收到的任何错误消息的跟踪 ID。
 
 ## <a name="common-failure-codes-when-deploying-a-disk-pool"></a>部署磁盘池时常见的故障代码
  

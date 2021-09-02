@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/04/2021
 ms.author: apimpm
-ms.openlocfilehash: f67da2c2090dd99730324512248854d5e2fee259
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: c3c3647831e871e886f44c74d91f1f2827ac26f4
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182079"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662207"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>如何将 Azure API 管理与 Azure Application Insights 集成
 
@@ -42,7 +42,7 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
     :::image type="content" source="media/api-management-howto-app-insights/apim-app-insights-logger-2.png" alt-text="此屏幕截图显示了在何处使用检测密钥查看新建的 Application Insights 记录器":::
 
 > [!NOTE]
-> 在后台，将在 API 管理实例中创建一个 [Logger](/rest/api/apimanagement/2019-12-01/logger/createorupdate) 实体，其中包含 Application Insights 实例的检测密钥。
+> 在后台，将在 API 管理实例中创建一个 [Logger](/rest/api/apimanagement/2020-12-01/logger/create-or-update) 实体，其中包含 Application Insights 实例的检测密钥。
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>为 API 启用 Application Insights 日志记录
 
@@ -61,7 +61,7 @@ Azure API 管理可以轻松地与 Azure Application Insights 集成（一个可
 > 替代“要记录的有效负载字节数”设置中的默认值 **0** 可能会显著降低 API 的性能。
 
 > [!NOTE]
-> 在后台，将在 API 级别创建一个名为“applicationinsights”的 [Diagnostic](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) 实体。
+> 在后台，将在 API 级别创建一个名为“applicationinsights”的 [Diagnostic](/rest/api/apimanagement/2020-12-01/diagnostic/create-or-update) 实体。
 
 | 设置名称                        | 值类型                        | 说明                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

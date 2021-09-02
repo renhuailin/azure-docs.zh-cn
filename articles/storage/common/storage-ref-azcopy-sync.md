@@ -8,16 +8,16 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 83d10a7a6e9eb14379d32cc88800a2c443feac60
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c08d0f561e743b33720258ce5d6886411f3859f0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503042"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462516"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
-将源位置复制到目标位置。 本文提供有关 azcopy sync 命令的详细参考。 若要详细了解如何在源位置与目标位置之间同步 Blob，请参阅[使用 AzCopy v10 与 Azure Blob 存储同步](storage-use-azcopy-blobs-synchronize.md)。 对于 Azure 文件存储，请参阅[同步文件](storage-use-azcopy-files.md#synchronize-files)。
+将源位置复制到目标位置。 本文提供有关 azcopy sync 命令的详细参考。 若要详细了解如何在源位置和目标位置之间同步 blob，请参阅[使用 AzCopy v10 与 Azure Blob 存储同步](storage-use-azcopy-blobs-synchronize.md)。 对于 Azure 文件存储，请参阅[同步文件](storage-use-azcopy-files.md#synchronize-files)。
 
 ## <a name="synopsis"></a>摘要
 
@@ -150,6 +150,8 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 **--include-pattern** 字符串   仅包括名称与模式列表相匹配的文件。 例如：`*.jpg;*.pdf;exactName`
 
 **--log-level** 字符串 - 定义日志文件的日志详细程度，可用级别：`INFO`（所有请求和响应）、`WARNING`（缓慢响的应）、`ERROR`（仅限失败的请求）和 `NONE`（无输出日志）。 （默认值为 `INFO`）。 
+
+--镜像模式 - 如果此标志设置为 `true`，则禁用上次修改时间比较，并覆盖目标上的冲突文件和 blob。 默认值为 `false`。
 
 **--preserve-smb-info** - 默认值为 False。 保留 SMB 感知资源（Windows 和 Azure 文件存储）之间的 SMB 属性信息（上次写入时间、创建时间、属性位）。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如包含模式）。 为文件夹传输的信息与为文件传输的信息几乎相同，只是“上次写入时间”除外，不会为文件夹保留该信息。
 

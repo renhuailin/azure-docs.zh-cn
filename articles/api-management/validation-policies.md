@@ -6,14 +6,14 @@ documentationcenter: ''
 author: dlepow
 ms.service: api-management
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 07/12/2021
 ms.author: apimpm
-ms.openlocfilehash: 1a835d26b4c41c92b9849856a2f31b3550947bd8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 26f1f9449a4e02f25e44e55d578f0194615b0be5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801887"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114437066"
 ---
 # <a name="api-management-policies-to-validate-requests-and-responses"></a>用于验证请求和响应的 API 管理策略
 
@@ -40,8 +40,8 @@ ms.locfileid: "104801887"
 | 操作         | 说明          |                                                                                                                         
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | ignore | 跳过验证。 |
-| prevent | 阻止请求或响应处理，记录详细验证错误，并返回错误。 检测到第一组错误时便中断处理。 |
-| 检测 (detect) | 记录验证错误，但不中断请求或响应处理。 |
+| prevent | 阻止请求或响应处理，记录详细的[验证错误](#validation-errors)，并返回错误。 检测到第一组错误时便中断处理。 
+| 检测 (detect) | 记录[验证错误](#validation-errors)，但不中断请求或响应处理。 |
 
 ## <a name="logs"></a>日志
 
@@ -97,8 +97,8 @@ ms.locfileid: "104801887"
 | unspecified-content-type-action | 针对其内容类型未在 API 架构中指定的请求或响应执行的[操作](#actions)。 |  是     | 空值   |
 | max_size | 请求或响应正文的最大长度（以字节为单位），根据 `Content-Length` 标头进行检查。 如果请求正文或响应正文经过压缩，则此值是解压缩后的长度。 最大允许值：102,400 字节 (100 KB)。  | 是       | 空值   |
 | size-exceeded-action | 针对其正文超过 `max-size` 中指定大小的请求或响应执行的[操作](#actions)。 |  是     | 空值   |
-| errors-variable-name | `context.Variables` 中的要将验证错误记录到的变量的名称。  |   是    | 空值   |
-| 类型 | 要对其执行正文验证的内容类型，根据 `Content-Type` 头检查。 此值不区分大小写。 如果为空，此值将应用到 API 架构中指定的每个内容类型。 |   否    |  空值  |
+| errors-variable-name | `context.Variables` 中的要将验证错误记录到的变量的名称。  |   否    | 空值   |
+| type | 要对其执行正文验证的内容类型，根据 `Content-Type` 头检查。 此值不区分大小写。 如果为空，此值将应用到 API 架构中指定的每个内容类型。 |   否    |  空值  |
 | validate-as | 用于验证具有匹配内容类型的请求或响应正文的验证引擎。 目前唯一支持的值是“json”。   |  是     |  空值  |
 | action | 要对其正文与指定内容类型不匹配的请求或响应执行的[操作](#actions)。  |  是      | 空值   |
 
@@ -165,7 +165,7 @@ ms.locfileid: "104801887"
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | specified-parameter-action | 针对 API 架构中指定的请求参数执行的[操作](#actions)。 <br/><br/> 在 `headers`、`query` 或 `path` 元素中提供时，该值将替代 `specified-parameter-action` 元素中的 `validate-parameters` 值。  |  是     | 空值   |
 | unspecified-parameter-action | 针对未在 API 架构中指定的请求参数执行的[操作](#actions)。 <br/><br/>在 `headers` 或 `query` 元素中提供时，该值将替代 `validate-parameters` 元素中的 `unspecified-parameter-action` 值。 |  是     | 空值   |
-| errors-variable-name | `context.Variables` 中的要将验证错误记录到的变量的名称。  |   是    | 空值   |
+| errors-variable-name | `context.Variables` 中的要将验证错误记录到的变量的名称。  |   否    | 空值   |
 | name | 要替代其验证操作的参数的名称。 此值不区分大小写。  | 是 | 空值 |
 | action | 针对具有匹配名称的参数执行的[操作](#actions)。 如果该参数已在 API 架构中指定，此值将替代更高级别的 `specified-parameter-action` 配置。 如果该参数未在 API 架构中指定，此值将替代更高级别的 `unspecified-parameter-action` 配置。| 是 | 空值 | 
 
@@ -210,7 +210,7 @@ ms.locfileid: "104801887"
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | specified-header-action | 针对 API 架构中指定的响应头执行的[操作](#actions)。  |  是     | 空值   |
 | unspecified-header-action | 针对未在 API 架构中指定的响应头执行的[操作](#actions)。  |  是     | 空值   |
-| errors-variable-name | `context.Variables` 中的要将验证错误记录到的变量的名称。  |   是    | 空值   |
+| errors-variable-name | `context.Variables` 中的要将验证错误记录到的变量的名称。  |   否    | 空值   |
 | name | 要替代其验证操作的头的名称。 此值不区分大小写。 | 是 | 空值 |
 | action | 针对具有匹配名称的头执行的[操作](#actions)。 如果该头已在 API 架构中指定，此值将替代 `specified-header-action` 元素中的 `validate-headers` 值。 否则，它将替代 validate-headers 元素中的 `unspecified-header-action` 值。 | 是 | 空值 | 
 
@@ -252,7 +252,7 @@ ms.locfileid: "104801887"
 | 名称                       | 说明                                                                                                                                                            | 必须 | 默认 |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | unspecified-status-code-action | 要对 API 架构中未指定的响应中的 HTTP 状态代码执行的[操作](#actions)。  |  是     | 空值   |
-| errors-variable-name | `context.Variables` 中的要将验证错误记录到的变量的名称。  |   是    | 空值   |
+| errors-variable-name | `context.Variables` 中的要将验证错误记录到的变量的名称。  |   否    | 空值   |
 | code | 要替代其验证操作的 HTTP 状态代码。 | 是 | 空值 |
 | action | 要对 API 架构中未指定的匹配状态代码执行的[操作](#actions)。 如果该状态代码已在 API 架构中指定，此替代将不会生效。 | 是 | 空值 | 
 
@@ -271,7 +271,10 @@ ms.locfileid: "104801887"
 * **详细信息** - 可用于调查错误。 不应公开共享。
 * **公共响应** - 返回到客户端的错误。 不会泄漏实现详细信息。
 
-| **名称**                             | **类型**                                                        | **验证规则** | **详细信息**                                                                                                                                       | **公共响应**                                                                                                                       | **操作**           |
+当验证策略指定 `prevent` 操作并产生错误时，API 管理的响应将包括 HTTP 状态代码：在入站部分中应用该策略时为 400，在出站部分应用该策略时为 502。
+
+
+| **名称**   | 类型                                                        | **验证规则** | **详细信息**                                                                                                                                       | **公共响应**                                                                                                                       | **操作**           |
 |----|----|---|---|---|----|
 | **validate-content** |                                                                 |                     |                                                                                                                                                   |                                                                                                                                           |                      |
 | |RequestBody                                                     | SizeLimit           | 请求正文的长度为 {size} 个字节，超过了配置的限制({maxSize} 字节)。                                                       | 请求正文的长度为 {size} 个字节，超过了限制({maxSize} 字节)。                                                          | detect / prevent |
@@ -285,7 +288,7 @@ ms.locfileid: "104801887"
 | {messageContentType}                 | ResponseBody                                                    | IncorrectMessage    | 响应正文不符合与内容类型 {messageContentType} 关联的定义 {definitionName}。<br/><br/>{valError.Message} 行: {valError.LineNumber}，位置: {valError.LinePosition}                                       | 由于发生内部错误，无法处理请求。 请与 API 所有者联系。                                                       | detect / prevent |
 |                                      | RequestBody                                                     | ValidationException | 无法验证 {messageContentType} 内容类型的请求正文。<br/><br/>{exception details}                                                                | 由于发生内部错误，无法处理请求。 请与 API 所有者联系。                                                       | detect / prevent |
 |                                      | ResponseBody                                                    | ValidationException | 无法验证 {messageContentType} 内容类型的响应正文。<br/><br/>{exception details}                                                                | 由于发生内部错误，无法处理请求。 请与 API 所有者联系。                                                       | detect / prevent |
-| **validate-parameter / validate-headers** |                                                                 |                     |                                                                                                                                                   |                                                                                                                                           |                      |
+| **validate-parameters / validate-headers** |                                                                 |                     |                                                                                                                                                   |                                                                                                                                           |                      |
 | {paramName} / {headerName}           | QueryParameter / PathParameter / RequestHeader                  | 未指定         | 不允许未指定的 {path parameter / query parameter / header} {paramName}。                                                               | 不允许未指定的 {path parameter / query parameter / header} {paramName}。                                                       | detect / prevent |
 | {headerName}                         | ResponseHeader                                                  | 未指定         | 不允许未指定的头 {headerName}。                                                                                                   | 由于发生内部错误，无法处理请求。 请与 API 所有者联系。                                                       | detect / prevent |
 |                                      |ApiSchema                                                       |                     | API 的架构不存在或无法解析。                                                                                            | 由于发生内部错误，无法处理请求。 请与 API 所有者联系。                                                       | detect / prevent |

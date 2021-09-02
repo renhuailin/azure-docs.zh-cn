@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/30/2021
 ms.author: alkohli
-ms.custom: has-adal-ref
-ms.openlocfilehash: 453d42adca16593dfdc567d114b8dc7eb7e34143
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 9dfafd76751672d391ecfcc1fd2fd811c0912fe9
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429693"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105878"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge Pro GPU 设备上部署 VM
 
@@ -284,7 +283,7 @@ ms.locfileid: "122429693"
 
 3. 注册环境。 在运行 [az cloud register](/cli/azure/cloud?view=azure-cli-latest&preserve-view=true#az_cloud_register) 时使用以下参数：
 
-    | 值 | 描述 | 示例 |
+    | 值 | 说明 | 示例 |
     | --- | --- | --- |
     | 环境名称 | 要尝试连接到的环境的名称 | 提供一个名称，例如 `aze-environ` |
     | 资源管理器终结点 | 该 URL 为 `https://Management.<appliancename><dnsdomain>`。 <br> 若要获取此 URL，请转到设备的本地 Web UI 中的“设备”页。 |例如，`https://management.team3device.teatraining1.com`。  |

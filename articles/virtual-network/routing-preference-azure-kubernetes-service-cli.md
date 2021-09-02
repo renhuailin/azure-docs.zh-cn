@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 9eaad12e254150109498be0fac2f285f33a5965c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 491572ceaac3e4bc401d5bd6c3a5401966d0c528
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776566"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463602"
 ---
 # <a name="configure-routing-preference-for-a-kubernetes-cluster-using-azure-cli"></a>使用 Azure CLI 为 Kubernetes 群集配置路由首选项
 
-本文介绍如何使用 Azure CLI 通过 ISP 网络（“Internet”选项）为 Kubernetes 群集配置路由首选项。 设置路由首选项的方法是：创建路由首选项类型为“Internet”的公共 IP 地址，然后在创建 AKS 群集时使用该 IP 地址。
+本文介绍如何使用 Azure CLI 通过 ISP 网络（“Internet”选项）为 Kubernetes 群集配置路由首选项。 设置路由的首选项方法是：创建路由首选项类型为“Internet”的公共 IP，然后在创建 AKS 群集时使用该 IP 地址。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

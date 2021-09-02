@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.openlocfilehash: 6bce6f011086d9855c4da2739addbb34e661e2d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70d2401545c49bfb8bb1870f4881e51b7134ae59
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507477"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450888"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>适用于 Azure 上的 Oracle Database Enterprise Edition 的参考体系结构
 
@@ -207,12 +207,12 @@ Oracle Data Guard 可用于通过系统托管分片、用户定义的分片和�
 
 将 Oracle 工作负载部署到 Azure 时，Microsoft 会负责所有主机 OS 级修补。 任何计划 OS 级维护都将提前传达给客户，以便客户进行此计划内维护。 两个不同可用性区域的两个服务器绝不会同时修补。 请参阅[管理虚拟机的可用性](../../availability.md)，获取有关 VM 维护和修补的详细信息。 
 
-可以使用 [Azure 自动化更新管理](../../../automation/update-management/overview.md)来自动修补虚拟机操作系统。 可以使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) 或 [Azure 自动化更新管理](../../../automation/update-management/overview.md)来自动执行和安排 Oracle 数据库的修补和维护，以最大程度减少故障时间。 请参阅[持续交付和蓝/绿部署](/azure/devops/learn/what-is-continuous-delivery)，了解其在 Oracle 数据库上下文中使用方法。
+可以使用 [Azure 自动化更新管理](../../../automation/update-management/overview.md)来自动修补虚拟机操作系统。 可以使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) 或 [Azure 自动化更新管理](../../../automation/update-management/overview.md)来自动执行和安排 Oracle 数据库的修补和维护，以最大程度减少故障时间。 请参阅[持续交付和蓝/绿部署](/devops/deliver/what-is-continuous-delivery)，了解其在 Oracle 数据库上下文中使用方法。
 
 ## <a name="architecture-and-design-considerations"></a>体系结构和设计注意事项
 
 - 请考虑对 Oracle Database VM 使用超线程[内存优化虚拟机](../../sizes-memory.md)（具有[受约束的核心 vCPU](../../../virtual-machines/constrained-vcpu.md)），以节省许可成本并最大限度地提高性能。 使用多个高级或超级磁盘（托管磁盘）来实现性能和可用性。
-- 使用托管磁盘时，磁盘/设备名可能会在重启时更改。 建议使用设备 UUID（而不是名称）来确保重启后可保留你的装载内容。 可在[此处](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab)找到详细信息。
+- 使用托管磁盘时，磁盘/设备名可能会在重启时更改。 建议使用设备 UUID（而不是名称）来确保重启后可保留你的装载内容。 有关详细信息，请参阅[在 Linux VM 上配置软件 RAID](/previous-versions/azure/virtual-machines/linux/configure-raid#add-the-new-file-system-to-etcfstab)。
 - 使用可用性区域实现区域内的高可用性。
 - 考虑为 Oracle 数据库使用超级磁盘（如果可用）或高级磁盘。
 - 请考虑使用 Oracle Data Guard 在另一个 Azure 区域中设置备用 Oracle 数据库。

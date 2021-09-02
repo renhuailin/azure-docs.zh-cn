@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: e9fbafa9f3c33d10496e84f61e1f2b97f6328d3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fc565a886698466fce8eaa6ac5ff47ae44be4c9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100581802"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458823"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>使用 Azure 逻辑应用计划和运行重复性自动任务、过程与工作流
 
 逻辑应用可帮助你创建自动化的重复性任务与过程并按计划运行。 创建使用内置重复触发器或滑动窗口触发器（计划类型的触发器）启动的逻辑应用工作流，以后可以立即运行或者按重复间隔运行任务。 可以调用 Azure 内部和外部的服务（例如 HTTP 或 HTTPS 终结点）、将消息发送到 Azure 存储和 Azure 服务总线等 Azure 服务，或者将文件上传到文件共享。 使用重复触发器，还可以设置复杂的计划，以及运行任务的详细重复周期。 若要详细了解内置计划触发器和操作，请参阅[计划触发器](#schedule-triggers)和[计划操作](#schedule-actions)。 
 
 > [!TIP]
-> 无需为每个计划的作业单独创建逻辑应用，也无需占用[每个区域和订阅的工作流限制配额](../logic-apps/logic-apps-limits-and-config.md#definition-limits)，即可计划和运行重复性工作负荷。 可以使用 [Azure 快速入门模板：逻辑应用作业计划程序](https://github.com/Azure/azure-quickstart-templates/tree/master/301-logicapps-jobscheduler/)创建的逻辑应用模式。
+> 无需为每个计划的作业单独创建逻辑应用，也无需占用[每个区域和订阅的工作流限制配额](../logic-apps/logic-apps-limits-and-config.md#definition-limits)，即可计划和运行重复性工作负荷。 可以使用 [Azure 快速入门模板：逻辑应用作业计划程序](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/logicapps-jobscheduler/)创建的逻辑应用模式。
 >
 > 逻辑应用作业计划程序模板会创建一个调用 TimerJob 逻辑应用的 CreateTimerJob 逻辑应用。 然后，你可以通过发出 HTTP 请求并传递一个计划作为请求的输入，以 API 的形式调用 CreateTimerJob 逻辑应用。 每次调用 CreateTimerJob 逻辑应用时，都会调用 TimerJob 逻辑应用，这会创建一个根据指定计划持续运行的、或者一直运行到达到指定限制的新 TimerJob 实例。 这样，便可以运行任意数目的 TimerJob 实例，而无需担心工作流限制，因为实例不是单独的逻辑应用工作流定义或资源。
 
@@ -199,6 +199,27 @@ ms.locfileid: "100581802"
 ![选择“计划程序:运行一次作业”模板](./media/concepts-schedule-automated-recurring-tasks-workflows/choose-run-once-template.png)
 
 或者，可以使用“收到 HTTP 请求时 - 请求”触发器启动逻辑应用，并将开始时间作为触发器的参数传递。 对于第一个操作，请使用“延迟截止时间 - 计划”操作，并提供开始运行下一操作的时间。
+
+<a name="run-once-last-day-of-the-month"></a>
+
+## <a name="run-once-at-last-day-of-the-month"></a>每月的最后一天运行一次
+
+若要在每月的最后一天运行一次定期触发器，必须使用代码视图（而不是设计器）在工作流的基础 JSON 定义中编辑触发器。 但是，可以使用以下示例：
+
+```json
+"triggers": {
+    "Recurrence": {
+        "recurrence": {
+            "frequency": "Month",
+            "interval": 1,
+            "schedule": {
+                "monthDays": [-1]
+            }
+        },
+        "type": "Recurrence"
+    }
+}
+```
 
 <a name="example-recurrences"></a>
 

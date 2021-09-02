@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a91ca96e69ae5408a3232513eea3ba1443c97064
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462633"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253594"
 ---
 # <a name="query-folders-and-multiple-files"></a>查询文件夹和多个文件  
 
@@ -26,7 +26,7 @@ ms.locfileid: "96462633"
 
 第一步是创建将在其中执行查询的数据库。 然后通过对该数据库执行[安装脚本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)来初始化这些对象。 此安装脚本将创建数据源、数据库范围的凭据以及在这些示例中使用的外部文件格式。
 
-将使用文件夹 csv/taxi 执行示例查询。 它包含 2016 年 7 月到 2018 年 6 月的 NYC Taxi - Yellow Taxi Trip Records 数据。 csv/taxi 中的文件采用以下格式按年份和月份命名：yellow_tripdata_<year>-<month>.csv
+将使用文件夹 csv/taxi 执行示例查询。 它包含 2016 年 7 月到 2018 年 6 月的 NYC Taxi - Yellow Taxi Trip Records 数据。 csv/taxi 中的文件采用以下格式按年份和月份命名：yellow_tripdata_\<year>-\<month>.csv
 
 ## <a name="read-all-files-in-folder"></a>读取文件夹中的所有文件
 

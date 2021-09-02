@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 24cc2cc59a3e1f9c681731e03b9b4568d3593f4e
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 5581763e474599b683f0ac8818136d366b05a2b6
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122605419"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123102999"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -23,7 +23,7 @@ ms.locfileid: "122605419"
 |[将托管磁盘配置为禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8426280e-b5be-43d9-979e-653d12a08638) |禁用对托管磁盘资源的公用网络访问，确保无法通过公共 Internet 对其进行访问。 这样可以减少数据泄露风险。 有关详细信息，请访问：[https://aka.ms/disksprivatelinksdoc](../../../../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/AddDiskAccessToDisk_Modify.json) |
 |[为 Windows Server 部署默认 Microsoft IaaSAntimalware 扩展](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2835b622-407b-4114-9198-6f7064cbe0dc) |如果 VM 未配置反恶意软件扩展，则此策略部署使用默认配置的 Microsoft IaaSAntimalware 扩展。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMAntimalwareExtension_Deploy.json) |
 |[磁盘访问资源应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff39f5f49-4abf-44de-8c70-0756997bfb51) |通过 Azure 专用链接，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 通过将专用终结点映射到 diskAccesses，可以降低数据泄露风险。 有关专用链接的详细信息，请访问：[https://aka.ms/disksprivatelinksdoc](../../../../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。  |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/DiskAccesses_PrivateEndpoints_Audit.json) |
-|[应使用平台管理的密钥和客户管理的密钥双重加密托管磁盘](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fca91455f-eace-4f96-be59-e6e2c35b4816) |对安全性高度敏感的客户如果担心出现与任何特定加密算法、实现或密钥泄露相关的风险，可以选择在使用平台管理的加密密钥的基础结构层上使用其他加密算法/模式的额外加密层。 需要提供磁盘加密集才能使用双重加密。 更多信息请访问 [https://aka.ms/disks-doubleEncryption](../../../../articles/virtual-machines/disk-encryption.md)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/DoubleEncryptionRequired_Deny.json) |
+|[应使用平台管理的密钥和客户管理的密钥双重加密托管磁盘](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fca91455f-eace-4f96-be59-e6e2c35b4816) |对安全性高度敏感的客户如果担心出现与任何特定加密算法、实现或密钥泄露相关的风险，可以选择在使用平台管理的加密密钥的基础结构层上使用其他加密算法/模式的额外加密层。 需要提供磁盘加密集才能使用双重加密。 更多信息请访问 [https://aka.ms/disks-doubleEncryption](/azure/virtual-machines/disk-encryption#double-encryption-at-rest)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/DoubleEncryptionRequired_Deny.json) |
 |[托管磁盘应禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8405fdab-1faf-48aa-b702-999c9c172094) |禁用公用网络访问可确保托管磁盘不会在公共 Internet 上公开，从而提高了安全性。 创建专用终结点可以限制托管磁盘的公开。 有关详细信息，请访问：[https://aka.ms/disksprivatelinksdoc](../../../../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/Disks_ExportLimitNetworkAccess_Audit.json) |
 |[托管磁盘应使用一组特定的磁盘加密集来进行客户管理的密钥加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd461a302-a187-421a-89ac-84acdb4edc04) |要求对托管磁盘使用一组特定的磁盘加密集可以控制用于静态加密的密钥。 可以选择允许的加密集，所有其他加密集在附加到磁盘时将被拒绝。 更多信息请访问 [https://aka.ms/disks-cmk](../../../../articles/virtual-machines/disk-encryption.md)。 |Audit、Deny、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ManagedDiskEncryptionSetsAllowed_Deny.json) |
 |[Microsoft Antimalware for Azure 应配置为自动更新保护签名](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc43e4a30-77cb-48ab-a4dd-93f175c63b57) |此策略会审核所有未配置自动更新 Microsoft Antimalware 保护签名的 Windows 虚拟机。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VirtualMachines_AntiMalwareAutoUpdate_AuditIfNotExists.json) |

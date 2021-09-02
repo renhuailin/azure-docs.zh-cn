@@ -2,20 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/16/2021
+ms.date: 08/27/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5562b5b22caf39fe60e733140a4c0932adc50f95
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 3dcd09e0651ff30b72974924e7f4444e28f768fd
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388249"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123103106"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure 认知搜索服务应使用支持专用链接的 SKU](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa049bf77-880b-470f-ba6d-9f21c530cf83) |使用 Azure 认知搜索的受支持的 SKU，可以通过 Azure 专用链接在源位置或目标位置没有公共 IP 地址的情况下将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 通过将专用终结点映射到搜索服务，可以降低数据泄露风险。 有关详细信息，请访问：[https://aka.ms/azure-cognitive-search/inbound-private-endpoints](../../../../articles/search/service-create-private-endpoint.md)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_RequirePrivateLinkSupportedResource_Deny.json) |
 |[Azure 认知搜索服务应禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fee980b6d-0eca-4501-8d54-f6290fd512c3) |禁用公用网络访问可确保 Azure 认知搜索服务不会在公共 Internet 上公开，从而提高安全性。 创建专用终结点可以限制搜索服务的公开。 有关详细信息，请访问：[https://aka.ms/azure-cognitive-search/inbound-private-endpoints](../../../../articles/search/service-create-private-endpoint.md)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_RequirePublicNetworkAccessDisabled_Deny.json) |
+|[Azure 认知搜索服务应使用客户管理的密钥来加密静态数据](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F76a56461-9dc0-40f0-82f5-2453283afa2f) |对 Azure 认知搜索使用客户管理的密钥启用静态加密，可对用于静态加密数据的密钥进行额外控制。 此功能通常适用于具有特殊合规性要求的客户，即要求使用密钥保管库来管理数据加密密钥。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_CMK_Audit.json) |
 |[Azure 认知搜索服务应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0fda3595-9f2b-4592-8675-4231d6fa82fe) |通过 Azure 专用链接，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 将专用终结点映射到 Azure 认知搜索可以降低数据泄露的风险。 有关专用链接的详细信息，请访问：[https://aka.ms/azure-cognitive-search/inbound-private-endpoints](../../../../articles/search/service-create-private-endpoint.md)。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_PrivateEndpoints_Audit.json) |
 |[将 Azure 认知搜索服务配置为禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9cee519f-d9c1-4fd9-9f79-24ec3449ed30) |禁用 Azure 认知搜索服务的公用网络访问，确保无法通过公共 Internet 访问该服务。 这样可以减少数据泄露风险。 有关详细信息，请访问：[https://aka.ms/azure-cognitive-search/inbound-private-endpoints](../../../../articles/search/service-create-private-endpoint.md)。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_PublicNetworkAccessDisabled_Modify.json) |
 |[将 Azure 认知搜索服务配置为使用专用 DNS 区域](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbc14a67-53e4-4932-abcc-2049c6706009) |使用专用 DNS 区域来替代专用终结点的 DNS 解析。 专用 DNS 区域会链接到虚拟网络，以解析到 Azure 认知搜索服务。 有关详细信息，请访问：[https://aka.ms/azure-cognitive-search/inbound-private-endpoints](../../../../articles/search/service-create-private-endpoint.md)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_PrivateDNSZone_DeployIfNotExists.json) |
