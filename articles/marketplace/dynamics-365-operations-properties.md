@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 05/19/2021
-ms.openlocfilehash: 8dd5dc8223314894e04b060f7080ab5f3b0fdfba
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 07/08/2021
+ms.openlocfilehash: f390f6126ce2e4e780fe98f9aa038b98893b341a
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482203"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566203"
 ---
 # <a name="configure-dynamics-365-for-operations-offer-properties"></a>配置 Dynamics 365 for Operations 产品/服务属性
 
@@ -30,9 +30,9 @@ ms.locfileid: "110482203"
 
 ### <a name="industries"></a>行业
 
-[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)].
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
-选择此产品/服务适用的 Dynamics 365 产品。
+选择适用于产品/服务的“适用产品”：商业、财务、人力资源、项目操作和/或供应链管理。 客户可以通过这些选择，根据下面显示的 AppSource Dynamics 365 产品筛选器查找所需的产品/服务。
 
 输入产品/服务的应用版本。 客户将看到产品/服务的详细信息页上列出了此版本号。
 

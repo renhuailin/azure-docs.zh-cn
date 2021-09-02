@@ -1,18 +1,18 @@
 ---
 title: Azure 机器学习的 Azure Policy 法规合规性控制措施
 description: 列出可用于 Azure 机器学习的 Azure Policy 法规合规性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: sample
 author: BlackMist
 ms.author: larryfr
 ms.service: machine-learning
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: ce00432d03d3c2cdf349fb355af54da9e47cac6e
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 234a7a38e9877900cb862043c928b1a41f7dd1fb
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609226"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123113052"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-machine-learning"></a>Azure 机器学习的 Azure Policy 法规合规性控制措施
 

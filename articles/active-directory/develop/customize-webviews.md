@@ -13,14 +13,14 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 5c10490437fb12b3f1bf5cc105a3a6e8fcf00430
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: a4523634daee427fb86ef288ab68cdc158cfeb0f
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419094"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039958"
 ---
-# <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>如何：自定义 iOS/macOS 的浏览器和 WebView
+# <a name="customize-browsers-and-webviews-for-iosmacos"></a>自定义 iOS/macOS 的浏览器和 WebView
 
 完成交互式身份验证需要使用 Web 浏览器。 在 iOS 和 macOS 10.15+ 上，Microsoft 身份验证库 (MSAL) 默认使用系统 Web 浏览器（可能显示在应用的顶部）执行交互式身份验证，以将用户登录。 使用系统浏览器的好处是可与其他应用程序和 Web 应用程序共享单一登录 (SSO) 状态。
 
@@ -76,7 +76,7 @@ MSAL for macOS 仅在较早的 OS 版本上支持 `WKWebView`。 仅在 macOS 10
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
 | [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | 系统 | iOS12 和更高版本 | macOS 10.15 和更高版本 | 是 | iOS 和 macOS 10.15+ | 具有 Safari 实例
 | [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | 系统 | iOS11 和更高版本 | 不适用 | 是 | 仅限 iOS |  具有 Safari 实例
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | 系统 | iOS11 和更高版本 | 空值 | 否 | 仅限 iOS | 否**
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | 系统 | iOS11 和更高版本 | 不适用 | 否 | 仅限 iOS | 否**
 | **SFSafariViewController** | 系统 | iOS10 | 空值 | 是 | 仅限 iOS |  具有 Safari 实例
 | **WKWebView**  | 应用中 | iOS8 和更高版本 | macOS 10.10 和更高版本 | 否 | iOS 和 macOS | 否**
 

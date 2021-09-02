@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a332b43da59c3e7c766d8fd911f0426fa346d8b
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 1725c88ec2275d4b20303161680020512c13bc4a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113564979"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226757"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
@@ -34,7 +34,7 @@ ms.locfileid: "113564979"
 
 ## <a name="user-risk"></a>用户风险 
 
-对于有权访问[标识保护](../identity-protection/overview-identity-protection.md)的客户，可以将用户风险作为条件访问策略的一部分进行评估。 用户风险表示给定标识或帐户遭入侵的概率。 有关用户风险的详细信息，请参阅以下文章：[什么是风险](../identity-protection/concept-identity-protection-risks.md#user-risk)和[操作说明：配置和启用风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
+对于有权访问[标识保护](../identity-protection/overview-identity-protection.md)的客户，可以将用户风险作为条件访问策略的一部分进行评估。 用户风险表示给定标识或帐户遭入侵的概率。 有关用户风险的详细信息，请参阅以下文章：[什么是风险](../identity-protection/concept-identity-protection-risks.md#user-linked-detections)和[操作说明：配置和启用风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
 
 ## <a name="device-platforms"></a>设备平台
 
@@ -199,7 +199,7 @@ Azure AD 条件访问支持以下设备平台：
 > [!IMPORTANT]
 > 设备状态和设备筛选器不能在条件访问策略中一起使用。 设备筛选器提供更精细的目标控制，包括支持通过 `trustType` 和 `isCompliant` 属性将设备状态信息指定为目标。
 
-## <a name="filters-for-devices-preview"></a>设备筛选器（预览版）
+## <a name="filters-for-devices-preview"></a>适用于设备的筛选器（预览版）
 
 条件访问中有一个新的可选条件，称为“设备筛选器”。 将设备筛选器配置为条件时，组织可以使用设备属性上的规则表达式，根据筛选器选择包括或排除设备。 设备筛选器的规则表达式可以使用规则生成器或规则语法来创作。 这种体验类似于用于组的动态成员身份规则的体验。 有关详细信息，请参阅[条件访问：设备筛选器（预览版）](concept-condition-filters-for-devices.md)一文。
 

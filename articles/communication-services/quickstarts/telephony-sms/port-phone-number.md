@@ -1,20 +1,20 @@
 ---
 title: 快速入门 - 将电话号码移植到 Azure 通信服务中
 description: 了解如何将电话号码移植到通信服务资源中
-author: mikben
+author: probableprime
 manager: mikben
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: f138e0ee79e0d8adf03ba51c1197813402920a19
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 4bc923d2d6c9c0fc88f40ed6dd3d6290723a7a1e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113112034"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969518"
 ---
 # <a name="quickstart-port-a-phone-number"></a>快速入门：移植电话号码
 

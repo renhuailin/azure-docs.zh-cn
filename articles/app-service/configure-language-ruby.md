@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 2998d6deaa2a070d0811d1e0f2438c2afe0ead08
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 58e4fb69f5c2567c6d4b4ddc5329d83dd37ee878
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734444"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225821"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Ruby 应用
 
@@ -63,7 +63,7 @@ ENV['WEBSITE_SITE_NAME']
 
 ## <a name="customize-deployment"></a>自定义部署
 
-部署 [Git 存储库](deploy-local-git.md)或者部署[启用了生成自动化](deploy-zip.md#enable-build-automation)的 [Zip 包](deploy-zip.md)时，部署引擎 (Kudu) 会默认运行以下后期部署步骤：
+部署 [Git 存储库](deploy-local-git.md)或者部署[启用了生成自动化](deploy-zip.md#enable-build-automation-for-zip-deploy)的 [Zip 包](deploy-zip.md)时，部署引擎 (Kudu) 会默认运行以下后期部署步骤：
 
 1. 检查 Gemfile 是否存在。
 1. 运行 `bundle clean`。 

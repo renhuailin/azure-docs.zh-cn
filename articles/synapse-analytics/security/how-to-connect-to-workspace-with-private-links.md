@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8a1205647f4895407bff9301415249a055990f6e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c1ab7e4f30fbd297bc5aad79a8d250ec55684ddb
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737445"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215319"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>使用专用链接连接到 Azure Synapse 工作区
 
@@ -44,6 +44,9 @@ ms.locfileid: "121737445"
 在“资源”选项卡中选择“连接到目录中的 Azure 资源” 。选择包含 Azure Synapse 工作区的“订阅”。 用于创建 Azure Synapse 工作空间的专用终结点的“资源类型”为 Microsoft.Synapse/workspaces。
 
 选择 Azure Synapse 工作区作为“资源”。 每个 Azure Synapse 工作区都具有三个可以在其中创建专用终结点的“目标子资源”：Sql、SqlOnDemand 和 Dev。
+- Sql，用于在 SQL 池中执行 SQL 查询。
+- SqlOnDemand，用于执行 SQL 内置查询。
+- Dev，用于访问 Azure Synapse Analytics Studio 工作区中的其他所有内容。
 
 在完成时选择“下一步:配置”以进入设置的下一部分。
 ![选择订阅和区域详细信息 2](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-3.png)

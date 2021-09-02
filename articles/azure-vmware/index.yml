@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 08/02/2021
-  ms.openlocfilehash: 0c9e3b78cac6bce3fb4a928faa76d7613d22a2dc
-  ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+  ms.date: 08/31/2021
+  ms.openlocfilehash: e0bf4719596ea64c5b80f66a48861d080a9e0d58
+  ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/16/2021
-  ms.locfileid: "122228603"
+  ms.lasthandoff: 08/31/2021
+  ms.locfileid: "123258386"
 landingContent:
 - title: 关于 Azure VMware 解决方案
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
       url: introduction.md
     - text: 平台更新
       url: azure-vmware-solution-platform-updates.md
+    - text: 常见问题解答
+      url: ./faq.yml
   - linkListType: concept
     links:
     - text: 访问和标识
@@ -36,32 +38,10 @@ landingContent:
       url: concepts-networking.md
     - text: 私有云和群集
       url: concepts-private-clouds-clusters.md
+    - text: 运行命令
+      url: concepts-run-command.md
     - text: 存储
       url: concepts-storage.md
-- title: 常见问题解答
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: 常规
-      url: ./faq.yml
-    - text: 客户通信
-      url: /azure/azure-vmware/faq#customer-communication
-    - text: 配置和设置
-      url: /azure/azure-vmware/faq#configuration-and-setup
-    - text: VMware 软件
-      url: /azure/azure-vmware/faq#vmware-software
-    - text: 计算
-      url: /azure/azure-vmware/faq#compute
-    - text: 网络和互连
-      url: /azure/azure-vmware/faq#networking-and-interconnectivity
-    - text: 存储
-      url: /azure/azure-vmware/faq#storage
-    - text: 主机、群集和私有云
-      url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
-    - text: 身份管理
-      url: /azure/azure-vmware/faq#identity-management
-    - text: 计费和支持
-      url: /azure/azure-vmware/faq#billing-and-support
 - title: 入门
   linkLists:
   - linkListType: deploy
@@ -94,12 +74,24 @@ landingContent:
       url: tutorial-scale-private-cloud.md
     - text: 8 - 删除私有云
       url: tutorial-delete-private-cloud.md
+- title: 灾难恢复
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 部署 JetStream DR
+      url: deploy-disaster-recovery-using-jetstream.md
+    - text: 部署 VMware HCX 以进行灾难恢复
+      url: deploy-disaster-recovery-using-vmware-hcx.md
+    - text: 部署 VMware SRM 以进行灾难恢复
+      url: disaster-recovery-using-vmware-site-recovery-manager.md
 - title: 身份管理
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 私有云的访问权限和标识
+    - text: 访问和标识
       url: concepts-identity.md
+    - text: 为 vCenter 配置标识源
+      url: configure-identity-source-vcenter.md
     - text: 轮换 cloudadmin 凭据
       url: rotate-cloudadmin-credentials.md
 - title: 扩展 Azure VMware 解决方案
@@ -122,8 +114,6 @@ landingContent:
       url: configure-dns-azure-vmware-solution.md
     - text: 配置端口镜像
       url: configure-port-mirroring-azure-vmware-solution.md
-    - text: 配置 GitHub Enterprise 服务器
-      url: configure-github-enterprise-server.md
     - text: 启用公共 Internet 访问
       url: enable-public-internet-access.md
     - text: 在 vWAN 中配置站点到站点 VPN
@@ -132,6 +122,10 @@ landingContent:
       url: configure-windows-server-failover-cluster.md
     - text: 连接同一区域内的多个私有云
       url: connect-multiple-private-clouds-same-region.md
+    - text: 配置存储策略
+      url: configure-storage-policy.md
+    - text: 创建位置策略
+      url: create-placement-policy.md
 - title: Azure 本机集成
   linkLists:
   - linkListType: how-to-guide
@@ -204,8 +198,6 @@ landingContent:
       url: https://youtu.be/BoQYvqzb6Y8
     - text: 迁移和容量计划
       url: https://youtu.be/NoNG-hkksrA
-    - text: 使用 Azure 逻辑应用轮换 vCenter 和 NSX-T 密码
-      url: https://youtu.be/cK1qY3knj88
 - title: 移动 Azure VMware 解决方案资源
   linkLists:
   - linkListType: reference

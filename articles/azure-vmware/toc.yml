@@ -48,46 +48,12 @@
       href: concepts-networking.md
     - name: 私有云和群集
       href: concepts-private-clouds-clusters.md
+    - name: 运行命令
+      href: concepts-run-command.md
     - name: 存储
       href: concepts-storage.md
 - name: 操作指南
   items:
-    - name: 创建 Azure VMware 解决方案评估
-      href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
-    - name: 为 Azure VMware 解决方案请求主机配额
-      href: request-host-quota-azure-vmware-solution.md
-    - name: 通过预留实例节约成本
-      href: reserved-instance.md
-    - name: 创建放置策略
-      href: create-placement-policy.md
-    - name: 配置网络
-      items:
-        - name: 配置 DHCP 服务器或中继
-          href: configure-dhcp-azure-vmware-solution.md
-        - name: 在 L2 延伸网络上配置 DHCP
-          href: configure-l2-stretched-vmware-hcx-networks.md
-        - name: 配置 DNS 转发器
-          href: configure-dns-azure-vmware-solution.md
-        - name: 配置端口镜像
-          href: configure-port-mirroring-azure-vmware-solution.md
-        - name: 启用公共 Internet 访问
-          href: enable-public-internet-access.md
-        - name: 在 vWAN 中配置站点到站点 VPN
-          href: configure-site-to-site-vpn-gateway.md
-    - name: 连接同一区域内的多个私有云
-      href: connect-multiple-private-clouds-same-region.md
-    - name: 配置 GitHub Enterprise 服务器
-      href: configure-github-enterprise-server.md
-    - name: 配置 Windows Server 故障转移群集
-      href: configure-windows-server-failover-cluster.md
-    - name: 轮换 cloudadmin 凭据
-      href: rotate-cloudadmin-credentials.md
-    - name: 移动资源
-      items:
-        - name: 移动 Azure VMware 解决方案订阅
-          href: move-ea-csp-subscriptions.md
-        - name: 跨区域移动 Azure VMware 解决方案资源
-          href: move-azure-vmware-solution-across-regions.md
     - name: Azure 本机集成
       items:
         - name: 保护、监视和管理 VM
@@ -126,6 +92,60 @@
               href: ../site-recovery/avs-tutorial-reprotect.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
             - name: 从 Azure 进行故障回复
               href: ../site-recovery/avs-tutorial-failback.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
+    - name: 创建 Azure VMware 解决方案评估
+      href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=%2fazure%2fazure-vmware%2fcontext%2fcontext
+    - name: 创建放置策略
+      href: create-placement-policy.md
+    - name: 为 vCenter 配置外部标识源
+      href: configure-identity-source-vcenter.md
+    - name: 配置 GitHub Enterprise 服务器
+      href: configure-github-enterprise-server.md
+    - name: 配置网络
+      items:
+        - name: 配置 DHCP 服务器或中继
+          href: configure-dhcp-azure-vmware-solution.md
+        - name: 在 L2 延伸网络上配置 DHCP
+          href: configure-l2-stretched-vmware-hcx-networks.md
+        - name: 配置 DNS 转发器
+          href: configure-dns-azure-vmware-solution.md
+        - name: 配置端口镜像
+          href: configure-port-mirroring-azure-vmware-solution.md
+        - name: 启用公共 Internet 访问
+          href: enable-public-internet-access.md
+        - name: 在 vWAN 中配置站点到站点 VPN
+          href: configure-site-to-site-vpn-gateway.md
+    - name: 配置存储策略
+      href: configure-storage-policy.md
+    - name: 配置 Windows Server 故障转移群集
+      href: configure-windows-server-failover-cluster.md
+    - name: 连接同一区域内的多个私有云
+      href: connect-multiple-private-clouds-same-region.md
+    - name: 部署灾难恢复
+      items:
+        - name: 部署 JetStream DR
+          href: deploy-disaster-recovery-using-jetstream.md
+        - name: 部署 VMware HCX 以进行灾难恢复
+          href: deploy-disaster-recovery-using-vmware-hcx.md
+        - name: 部署 VMware SRM 以进行灾难恢复
+          href: disaster-recovery-using-vmware-site-recovery-manager.md
+    - name: 移动资源
+      items:
+        - name: 移动 Azure VMware 解决方案订阅
+          href: move-ea-csp-subscriptions.md
+        - name: 跨区域移动 Azure VMware 解决方案资源
+          href: move-azure-vmware-solution-across-regions.md
+    - name: 为 Azure VMware 解决方案请求主机配额
+      href: request-host-quota-azure-vmware-solution.md
+    - name: 轮换 cloudadmin 凭据
+      href: rotate-cloudadmin-credentials.md
+    - name: 通过预留实例节约成本
+      href: reserved-instance.md
+    - name: VMware 生态系统
+      items:
+        - name: VM 的备份解决方案
+          href: ecosystem-back-up-vms.md
+        - name: VM 的迁移解决方案
+          href: ecosystem-migration-vms.md
     - name: VMware 解决方案
       items:
         - name: 配置 vRealize Operations
@@ -142,12 +162,6 @@
               href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: 升级 VMware HCX 设备
           href: 'https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html'
-    - name: VMware 生态系统
-      items:
-        - name: VM 的备份解决方案
-          href: ecosystem-back-up-vms.md
-        - name: VM 的迁移解决方案
-          href: ecosystem-migration-vms.md
 - name: 资源
   items:
     - name: 学习路径
@@ -164,6 +178,8 @@
       items:
         - name: 常规
           href: ./faq.yml
+        - name: 计费
+          href: /azure/azure-vmware/faq#billing
         - name: 客户通信
           href: /azure/azure-vmware/faq#customer-communication
         - name: 配置和设置
@@ -184,8 +200,6 @@
           href: /azure/azure-vmware/faq#identity-management
         - name: CSP 和多租户
           href: /azure/azure-vmware/faq#csp-and-multi-tenancy
-        - name: 计费和支持
-          href: /azure/azure-vmware/faq#billing-and-support
     - name: 视频
       items:
         - name: 播放列表
@@ -196,8 +210,6 @@
           href: 'https://youtu.be/BoQYvqzb6Y8'
         - name: 迁移和容量计划
           href: 'https://youtu.be/NoNG-hkksrA'
-        - name: 使用 Azure 逻辑应用轮换 vCenter 和 NSX-T 密码
-          href: 'https://youtu.be/cK1qY3knj88'
 - name: 参考
   items:
     - name: REST API

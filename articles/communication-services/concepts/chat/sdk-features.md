@@ -3,23 +3,23 @@ title: Azure 通信服务的聊天 SDK 概述
 titleSuffix: An Azure Communication Services concept document
 description: 了解 Azure 通信服务聊天 SDK。
 author: knvsl
-manager: jken
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 540457d554ad2124b3fdd9557833bce8319df8d7
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 2279761beffa9724a56fe9a4af54787d15a3705a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252400"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258262"
 ---
 # <a name="chat-sdk-overview"></a>聊天 SDK 概述 
 
 Azure 通信服务聊天 SDK 可用于向应用程序添加丰富的实时聊天。
-    
+
 ## <a name="chat-sdk-capabilities"></a>聊天 SDK 功能    
 
 下表列出了通信服务聊天 SDK 中当前可用的一组功能。  

@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: migration, aro, openshift, red hat
-ms.openlocfilehash: 371672de83a6d745d7b367f8327a64e11059923e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f166b393350971a48b23420daa9917b6ba7bbe1
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653272"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038035"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>从 Azure Red Hat OpenShift 3.11 迁移到 Azure Red Hat OpenShift 4
 
@@ -25,7 +25,7 @@ OpenShift 4 上的 Azure Red Hat OpenShift 引入了 Red Hat Core OS 上的 Kube
 > [!NOTE]
 > Red Hat OpenShift 迁移工具（如控制平面迁移帮助工具和群集应用程序迁移工具 (CAM)）无法与 Azure Red Hat OpenShift 3.11 群集一起使用。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你有一个现有的 Azure Red Hat OpenShift 3.11 群集。
 
@@ -94,7 +94,7 @@ Azure Red Hat OpenShift 4 支持以下 PersistentVolume 插件：
 - NFS
 - Red Hat OpenShift 容器存储
 
-有关如何配置这些存储类型的信息，请参阅[配置永久性存储](https://access.redhat.com/documentation/azure_red_hat_openshift/4/html/storage/configuring-persistent-storage)。
+有关如何配置这些存储类型的信息，请参阅[配置永久性存储](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.7/html/storage/configuring-persistent-storage)。
 
 ### <a name="registry"></a>注册表
 

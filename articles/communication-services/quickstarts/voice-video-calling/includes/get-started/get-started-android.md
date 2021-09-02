@@ -2,16 +2,16 @@
 title: 快速入门 - 使用 Azure 通信服务向 Android 应用添加 VOIP 呼叫
 description: 本教程会介绍如何使用适用于 Android 的 Azure 通信服务通话 SDK
 author: chpalm
-ms.author: mikben
+ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 18ac7ba882f82e1c5de29367e3cd27f0f5a260c0
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3953bdeaed6a20417b321ce89cd6b72ee052058a
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339901"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122970217"
 ---
 本快速入门将介绍如何使用适用于 Android 的 Azure 通信服务通话 SDK 开始通话。
 
@@ -19,7 +19,7 @@ ms.locfileid: "114339901"
 
 可以从 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add%20Voice%20Calling) 下载示例应用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Android Studio](https://developer.android.com/studio)，用于创建 Android 应用程序。

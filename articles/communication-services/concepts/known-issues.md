@@ -2,18 +2,18 @@
 title: Azure 通信服务 - 已知问题
 description: 详细了解 Azure 通信服务
 author: rinarish
-manager: jken
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b2115cbe4f77342010330b247821b705e08c6c95
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: 73a30e7052faaaa644511fec65796a4575e5ab4a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113233035"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259141"
 ---
 # <a name="known-issues"></a>已知问题
 本文介绍了与 Azure 通信服务通话 SDK 和 Azure 通信服务通话自动化 API 相关的限制和已知问题

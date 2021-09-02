@@ -1,20 +1,20 @@
 ---
 title: Azure CLI 示例 - 使用自定义 VM 映像
 description: 此 Azure CLI 脚本创建使用自定义 VM 映像作为 VM 实例源的虚拟机规模集。
-author: axayjo
-ms.author: akjosh
+author: mamccrea
+ms.author: mamccrea
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.date: 03/27/2018
 ms.reviewer: cynthn
 ms.custom: akjosh, devx-track-azurecli
-ms.openlocfilehash: d5b7c2814bd6b4be5c0a2243cc61af3405054db4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aaf58fafa757f0d601609682b70a5aa9946d6362
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90526725"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223553"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-the-azure-cli"></a>使用 Azure CLI 基于自定义 VM 映像创建虚拟机规模集
 此脚本创建使用自定义 VM 映像作为 VM 实例源的虚拟机规模集。
