@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 883bef7f38765d45bab0f505e4ce0184dfa59356
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100369639"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110450"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：深入技术探究
 
@@ -44,10 +44,10 @@ ms.locfileid: "100369639"
 - 与 Azure AD 安全共享计算机帐户的 Kerberos 解密密钥。 如果有多个 AD 林，则每个计算机帐户都将拥有自己的唯一 Kerberos 解密密钥。
 
 >[!IMPORTANT]
-> 出于安全原因，需要对 `AZUREADSSOACC` 计算机帐户进行严格保护。 只有域管理员才能管理计算机帐户。 请确保计算机帐户上的 Kerberos 委派处于禁用状态，并且 Active Directory 中的其他帐户没有对 `AZUREADSSOACC` 计算机帐户的委派权限。 将计算机帐户存储在组织单位 (OU) 中，在这里，它们不会被意外删除，并且只有域管理员具有访问权限。 计算机帐户上的 Kerberos 解密密钥也应该视为敏感内容。 我们强烈建议至少每隔 30 天滚动更新一次 `AZUREADSSOACC` 计算机帐户的 [Kerberos 解密密钥](how-to-connect-sso-faq.md)。
+> 出于安全原因，需要对 `AZUREADSSOACC` 计算机帐户进行严格保护。 只有域管理员才能管理计算机帐户。 请确保计算机帐户上的 Kerberos 委派处于禁用状态，并且 Active Directory 中的其他帐户没有对 `AZUREADSSOACC` 计算机帐户的委派权限。 将计算机帐户存储在组织单位 (OU) 中，在这里，它们不会被意外删除，并且只有域管理员具有访问权限。 计算机帐户上的 Kerberos 解密密钥也应该视为敏感内容。 我们强烈建议至少每隔 30 天滚动更新一次 `AZUREADSSOACC` 计算机帐户的 [Kerberos 解密密钥](how-to-connect-sso-faq.yml)。
 
 >[!IMPORTANT]
-> 无缝 SSO 支持的 Kerberos 加密类型为 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5。 建议将 AzureADSSOAcc$ 帐户的加密类型设置为 AES256_HMAC_SHA1 或 AES 类型与 RC4 之一，以提高安全性。 加密类型存储在 Active Directory 帐户的 msDS-SupportedEncryptionTypes 属性中。  如果 AzureADSSOAcc$ 帐户加密类型设置为 RC4_HMAC_MD5，并且你要将其更改为 AES 加密类型之一，请确保先滚动更新 AzureADSSOAcc$ 帐户的 Kerberos 解密密钥（如[常见问题解答文档](how-to-connect-sso-faq.md)中的相关问题下所述），否则无缝 SSO 不会运行。
+> 无缝 SSO 支持 Kerberos 的 `AES256_HMAC_SHA1`、`AES128_HMAC_SHA1` 及 `RC4_HMAC_MD5` 加密类型。 建议将 `AzureADSSOAcc$` 帐户的加密类型设置为 `AES256_HMAC_SHA1` 或 AES 与 RC4 类型之一，以提高安全性。 加密类型存储在 Active Directory 中的 `msDS-SupportedEncryptionTypes` 帐户属性上。  如果 `AzureADSSOAcc$` 帐户加密类型设置为 `RC4_HMAC_MD5`，并且你要将其更改为 AES 加密类型之一，请确保先滚动更新 `AzureADSSOAcc$` 帐户的 Kerberos 解密密钥（如 [FAQ 文档](how-to-connect-sso-faq.yml)中的相关问题下所述），否则无缝 SSO 不会运行。
 
 完成此设置后，无缝 SSO 的工作方式与使用集成 Windows 身份验证 (IWA) 的任何其他登录方式相同。
 
@@ -60,7 +60,7 @@ ms.locfileid: "100369639"
 3. 用户在 Azure AD 登录页键入其用户名。
 
    >[!NOTE]
-   >对于[某些应用程序](./how-to-connect-sso-faq.md)，可跳过步骤 2 和 3。
+   >对于[某些应用程序](./how-to-connect-sso-faq.yml)，可跳过步骤 2 和 3。
 
 4. Azure AD 在后台使用 JavaScript，通过“401 未授权”响应质询浏览器，以提供 Kerberos 票证。
 5. 然后，浏览器请求从 Active Directory 获取用于 `AZUREADSSOACC` 计算机帐户（表示 Azure AD）的票证。
@@ -99,6 +99,6 @@ ms.locfileid: "100369639"
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
-- [**常见问题**](how-to-connect-sso-faq.md) - 常见问题解答。
+- [**常见问题**](how-to-connect-sso-faq.yml) - 常见问题解答。
 - [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

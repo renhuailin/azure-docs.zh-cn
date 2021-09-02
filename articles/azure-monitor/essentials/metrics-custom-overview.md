@@ -5,13 +5,13 @@ author: anirudhcavale
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/13/2021
-ms.openlocfilehash: e6db49d34c39df2e1863dfa51914e30e9f1e1636
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.date: 06/01/2021
+ms.openlocfilehash: a456db938d1607565525aea7ab2e9b43bc368aeb
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897084"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195198"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的自定义指标（预览版）
 
@@ -192,10 +192,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 |Azure 区域 |区域终结点前缀|
 |---|---|
 | 所有公有云区域 | https://<azure_region_code>.monitoring.azure.com |
-| **Azure Government** | |
-| US Gov 亚利桑那州 | https:\//usgovarizona.monitoring.azure.us |
-| **中国** | |
-| 中国东部 2 | https:\//chinaeast2.monitoring.azure.cn |
+
 
 ## <a name="latency-and-storage-retention"></a>延迟和存储保留期
 
@@ -236,7 +233,7 @@ Azure Monitor 针对自定义指标实施以下用量限制：
 - 由于进行限制，指标变得不可靠
 - 指标资源管理器无法正常工作
 - 警报和通知变得不可预测
-- 成本可能会意外增加 - 当包含维度的自定义指标为公共预览版时，Microsoft 不收费。 但是，一旦将来开始收费，就会产生意外的费用。 该套餐会根据所监视的时序数以及所执行的 API 调用数，对指标消耗进行收费。  
+- 成本可能会意外增加 - 当包含维度的自定义指标为公共预览版时，Microsoft 不收费。 但是，一旦将来开始收费，就会产生意外的费用。 该套餐会根据所监视的时序数以及所执行的 API 调用数，对指标消耗进行收费。
 
 ## <a name="next-steps"></a>后续步骤
 在不同的服务中使用自定义指标： 

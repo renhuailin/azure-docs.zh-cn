@@ -7,13 +7,12 @@ ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
-ms.openlocfilehash: bcda4ca252101ed1505f71a1b5f9fe9a0d8d16b9
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 46b8cdc7fa33c8ddd382decb49eaa148093c99fe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728385"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742263"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
 
@@ -52,7 +51,8 @@ IoT Central 为 IoT Edge 设备启用以下功能：
   - 每个模块响应的命令。
   - IoT Edge 网关设备与下游设备之间的关系。
   - 不存储在 IoT Edge 设备上的云属性。
-  - 属于 IoT Central 应用程序的自定义、仪表板和窗体。
+  - 更改 UI 如何显示设备功能的自定义项。
+  - 设备视图和窗体。
 
   有关详细信息，请参阅[将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序](./concepts-iot-edge.md)一文。
 
@@ -69,6 +69,9 @@ IoT Central 将 IoT Edge 设备类型分类为：
 - 包含下游设备的网关设备。 网关设备和下游设备均在 IoT Central 中进行预配
 
 ![包含 IoT Edge 的 IoT Central 概述](./media/concepts-architecture/gatewayedge.png)
+
+> [!NOTE]
+> IoT Central 目前不支持将 IoT Edge 设备作为下游设备连接到 IoT Edge 网关。 这是因为连接到 IoT Central 的所有设备均使用设备预配服务 (DPS) 进行预配，而 DPS 不支持嵌套的 IoT Edge 方案。
 
 ### <a name="iot-edge-patterns"></a>IoT Edge 模式
 
@@ -121,7 +124,7 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ## <a name="batch-device-updates"></a>设备批量更新
 
-在 Azure IoT Central 应用程序中，可以[创建并运行作业](howto-run-a-job.md)来管理连接的设备。 使用这些作业可对设备属性或设置进行批量更新，或运行命令。 例如，可以创建一个作业来提高多个冷冻食品自动售货机的风扇速度。
+在 Azure IoT Central 应用程序中，可以[创建并运行作业](howto-manage-devices-in-bulk.md)来管理连接的设备。 使用这些作业可对设备属性或设置进行批量更新，或运行命令。 例如，可以创建一个作业来提高多个冷冻食品自动售货机的风扇速度。
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 

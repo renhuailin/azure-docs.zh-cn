@@ -13,16 +13,16 @@ ms.date: 05/25/2021
 ms.author: shermanouko
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 8b8bda71c637419dbd5b2bf7b181288abd9b965c
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e4d2721905d1e344cd0825466e0b0eb08578ef47
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075234"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688122"
 ---
 # <a name="microsoft-identity-platform-refresh-tokens"></a>Microsoft 标识平台刷新令牌
 
-当客户端获取访问令牌来访问受保护资源时，它同时还会收到一个刷新令牌。 当前访问令牌过期时，可以使用刷新令牌获取新的访问/刷新令牌对。 刷新令牌还用于获取其他资源的额外访问令牌。 刷新令牌绑定到用户和客户端的组合，但不绑定到资源或租户。 这使客户端可以使用刷新令牌来获取任何资源和租户组合的访问令牌，前提是客户端有权这样做。 刷新令牌是经过加密的，只有 Microsoft 标识平台可以读取它们。
+当客户端获取访问令牌来访问受保护资源时，它同时还会收到一个刷新令牌。 当前访问令牌过期时，可以使用刷新令牌获取新的访问/刷新令牌对。 刷新令牌还用于获取其他资源的额外访问令牌。 刷新令牌绑定到用户和客户端的组合，但不绑定到资源或租户。 这样，客户端就可以使用刷新令牌来获取任何资源和租户组合的访问令牌，但前提是客户端有权这样做。 刷新令牌是经过加密的，只有 Microsoft 标识平台可以读取它们。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +33,7 @@ ms.locfileid: "112075234"
 
 ## <a name="refresh-token-lifetime"></a>刷新令牌生存期
 
-刷新令牌的生存期比访问令牌要长得多。 该令牌的默认生存期为 90 天，每次使用后都会用新的刷新令牌替换。 这意味着，每当使用刷新令牌获取新的访问令牌时，也会发出一个新的刷新令牌。 Microsoft 标识平台不会在使用旧刷新令牌提取新的访问令牌时将旧刷新令牌撤销。 获取新的刷新令牌后，才会安全地将旧的刷新令牌删除。 刷新令牌需要像访问令牌或应用程序凭据一样安全地存储。 
+刷新令牌的生存期比访问令牌更长。 该令牌的默认生存期为 90 天，每次使用后都会用新的刷新令牌替换。 这意味着，每当使用刷新令牌获取新的访问令牌时，都会发出一个新的刷新令牌。 Microsoft 标识平台不会在使用旧刷新令牌提取新的访问令牌时将旧刷新令牌撤销。 获取新的刷新令牌后，才会安全地将旧的刷新令牌删除。 刷新令牌需要像访问令牌或应用程序凭据一样安全地存储。 
 
 ## <a name="refresh-token-expiration"></a>刷新令牌过期
 
@@ -41,15 +41,9 @@ ms.locfileid: "112075234"
 
 ### <a name="token-timeouts"></a>令牌超时
 
-使用[令牌生存期配置](active-directory-configurable-token-lifetimes.md#refresh-and-session-token-lifetime-policy-properties)，可以缩短或延长刷新令牌的生存期。 此设置可更改刷新令牌在未使用的情况下可以存留的时长。 例如，假设用户超过 90 天没有打开应用。 当应用尝试使用 90 天以上的旧刷新令牌时，它会发现该令牌已过期。 此外，管理员还可以要求定期使用第二个因素，强制用户按特定的时间间隔手动登录。 这些方案包括：
+无法配置刷新令牌的生存期。 不能缩短或延长生存期。 配置“条件访问”中的登录频率，以定义要求用户重新登录之前的时间段。 详细了解[使用条件访问配置身份验证会话管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
 
-* 非活动：刷新令牌仅在 `MaxInactiveTime` 所指示的时间段有效。  如果令牌在该时间段内未使用（并且未替换为新令牌），则它将不再可用。
-* 会话到期：如果 `MaxAgeSessionMultiFactor` 或 `MaxAgeSessionSingleFactor` 已设置为其默认值（“Until-revoked”）以外的值，则在经过 MaxAgeSession* 中设置的时间后，需要重新进行身份验证。  这用于强制用户定期使用第一个或第二个因素重新进行身份验证。 
-* 示例:
-  * 租户的 MaxInactiveTime 为 5 天，用户去度假一周， 因此 Azure AD 在 7 天内未看到用户发出新令牌请求。 下次用户请求新令牌时，他们将看到其刷新令牌已被吊销，他们必须重新输入其凭据。
-  * 敏感应用程序的 `MaxAgeSessionMultiFactor` 为 1 天。 如果用户在一天的某个时段后再次登录，则需要通过交互式提示再次完成 MFA。 例如，如果用户在星期一登录，并在经过 25 小时后的星期二再次登录。 
-
-并非所有刷新令牌都遵循令牌生存期策略中设置的规则。 具体而言，在[单页应用](reference-third-party-cookies-spas.md)中使用的刷新令牌的活动期上限始终为 24 小时，就好像它们应用的 `MaxAgeSessionSingleFactor` 策略为 24 小时。 
+并非所有刷新令牌都遵循令牌生存期策略中设置的规则。 具体而言，[单页应用](reference-third-party-cookies-spas.md)中使用的刷新令牌的活动时间固定为 24 小时，就像已应用 24 小时的 `MaxAgeSessionSingleFactor` 策略一样。 
 
 ### <a name="revocation"></a>撤销
 

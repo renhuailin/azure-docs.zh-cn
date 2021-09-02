@@ -8,12 +8,12 @@ author: ejarvi
 ms.author: ejarvi
 ms.collection: windows
 ms.date: 03/19/2020
-ms.openlocfilehash: 62ad5ca5d3b150aef5a83eaa4d5231e7bb5a6a62
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 679682ed0a268306bfb6c7afcf9abbd94a4d45b7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100173"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738977"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>适用于 Windows 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -134,6 +134,8 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
 
 ### <a name="property-values"></a>属性值
 
+注意：所有值均区分大小写。
+
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
@@ -156,7 +158,7 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
 
 有关基于架构 v2.2 的模板部署的示例，请参阅 Azure 快速入门模板 [encrypt-running-windows-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-windows-vm-without-aad)。
 
-有关基于架构 v1.1 的模板部署的示例，请参阅 Azure 快速入门模板 [201-encrypt-running-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)。
+有关基于架构 v1.1 的模板部署示例，请参阅 Azure 快速启动模板 [encrypt-running-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-windows-vm)。
 
 >[!NOTE]
 > 此外，如果 `VolumeType` 参数设置为 All，则仅当数据磁盘采用正确格式时才会对其进行加密。

@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a7978410dbe28a5da5dae81cb380d118fe13a159
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a0ce6658168bd86188875d9d89f218ee26ef7941
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869372"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652677"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）中的服务器概念
+
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT] 
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
@@ -59,9 +61,9 @@ Azure Database for MySQL 灵活服务器：
 
 |**存储过程名称**|**输入参数**|**输出参数**|**用法说明**|
 |-----|-----|-----|-----|
-|*mysql.az_kill*|processlist_id|空值|等效于 [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) 命令。 在终止连接正在执行的任何语句之后，将终止与提供的 process list_id 关联的连接。|
+|*mysql.az_kill*|processlist_id|不适用|等效于 [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) 命令。 在终止连接正在执行的任何语句之后，将终止与提供的 process list_id 关联的连接。|
 |*mysql.az_kill_query*|processlist_id|空值|等效于 [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) 命令。 将终止连接当前正在执行的语句。 使连接本身保持活动状态。|
-|*mysql.az_load_timezone*|空值|不可用|加载[时区表](../howto-server-parameters.md#working-with-the-time-zone-parameter)以允许将 `time_zone` 参数设置为命名值（例如， “US/Pacific”）。|
+|*mysql.az_load_timezone*|空值|不适用|加载[时区表](../howto-server-parameters.md#working-with-the-time-zone-parameter)以允许将 `time_zone` 参数设置为命名值（例如， “US/Pacific”）。|
 
 
 ## <a name="next-steps"></a>后续步骤

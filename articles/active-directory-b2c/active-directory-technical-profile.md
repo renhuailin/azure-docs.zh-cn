@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f92bfe98a45117264c957481a75493de652abc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62a1894fe63bcf24e19671a146cd16bb6fe59b0b
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97508095"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "122652659"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 Azure Active Directory 技术配置文件
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 
 “Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含协议处理程序程序集 `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` 的完全限定名称。
 
-以下[自定义策略初学者包](custom-policy-get-started.md#custom-policy-starter-pack) Azure AD 技术配置文件包含 AAD-Common 技术配置文件。 Azure AD 技术配置文件不会指定协议，因为协议在 **AAD-Common** 技术配置文件中进行配置：
+以下[自定义策略初学者包](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack) Azure AD 技术配置文件包含 AAD-Common 技术配置文件。 Azure AD 技术配置文件不会指定协议，因为协议在 **AAD-Common** 技术配置文件中进行配置：
  
 - **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserReadUsingAlternativeSecurityId-NoError** - 在目录中查找社交帐户。
 - **AAD-UserWriteUsingAlternativeSecurityId** - 创建新的社交帐户。

@@ -4,16 +4,20 @@ description: 了解如何使用 Azure PowerShell 管理 Azure 区块链服务联
 ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: zeyadr
-ms.openlocfilehash: d40e55f177bda9edb40383b6e2c61c32633cd005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72f8e1fc5de0b48b23627f8590a08e06865cac12
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85211334"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122653209"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>使用 PowerShell 管理 Azure 区块链服务中的联盟成员
 
-可以使用 PowerShell 来管理 Azure 区块链服务的区块链联盟成员。 具有管理员权限的成员可以邀请、添加、删除和更改区块链联盟中所有参与者的角色。 具有用户权限的成员可以查看区块链联盟中的所有参与者并更改其成员显示名称。
+可以使用 PowerShell 来管理 Azure 区块链服务的区块链联盟成员。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
+
+具有管理员权限的成员可以邀请、添加、删除和更改区块链联盟中所有参与者的角色。 具有用户权限的成员可以查看区块链联盟中的所有参与者并更改其成员显示名称。
 
 ## <a name="prerequisites"></a>先决条件
 

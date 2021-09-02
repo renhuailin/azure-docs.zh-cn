@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 4119d64dcadd23415cc750e88d560057bda6af8e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7e9cdb80f1423076fb222e1d1521117e65bca9bc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138010"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460565"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>HBv3 系列虚拟机概述 
 
@@ -123,14 +123,14 @@ HBv3 VM 具有 3 台物理本地 SSD 设备。 一台设备已预先格式化以
 |--------------------------------|-----------------------------------------------------------|
 | 最大 MPI 作业大小               | 36,000 个内核（单个虚拟机规模中的 300 个虚拟机，且 singlePlacementGroup = true） |
 | MPI 支持                    | HPC-X、Intel MPI、OpenMPI、MVAPICH2、MPICH  |
-| 其他框架          | UCX, libfabric, PGAS                  |
+| 其他框架          | UCX、libfabric、PGAS                  |
 | Azure 存储支持          | 标准磁盘和高级磁盘（最多 32 个磁盘）              |
 | SRIOV RDMA 的操作系统支持      | CentOS/RHEL 7.6+, Ubuntu 18.04+, SLES 12 SP4+, WinServer 2016+           |
 | 推荐的性能操作系统 | CentOS 8.1、Windows Server 2019+
 | Orchestrator 支持           | Azure CycleCloud、Azure Batch、AKS；[群集配置选项](../../sizes-hpc.md#cluster-configuration-options)                      | 
 
 > [!NOTE] 
-> 在 HBv3 和大于 64（虚拟或物理）核的其他 VM 上，不支持 Windows Server 2012 R2。 请参阅[此处](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)了解详细信息。
+> 在 HBv3 和大于 64（虚拟或物理）核的其他 VM 上，不支持 Windows Server 2012 R2。 有关详细信息，请参阅 [Windows Server 上 Hyper-V 支持的 Windows 来宾操作系统](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 460176dd8c86abc59d2f82948a6a35655b9eef84
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: fae919afc12afd5a6169dd119b57ae72ae7c14f0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530574"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472862"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -58,4 +58,4 @@ ms.locfileid: "111530574"
 
 有关 Azure 数字孪生模型的 DTDL 文档中数据类型和字段的限制，可参阅 GitHub 中的相应规范文档：数字孪生定义语言 (DTDL) - 版本 2。
  
-有关查询延迟的详细信息，请参阅[概念：查询语言](../articles/digital-twins/concepts-query-language.md#considerations-for-querying)。 可以在[查询引用文档](../articles/digital-twins/concepts-query-language.md#reference-documentation)中找到特定查询语言功能的限制。
+有关查询延迟的详细信息，请参阅[查询语言](../articles/digital-twins/concepts-query-language.md#considerations-for-querying)。 可以在[查询引用文档](../articles/digital-twins/concepts-query-language.md#reference-documentation)中找到特定查询语言功能的限制。

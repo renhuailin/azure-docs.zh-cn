@@ -1,15 +1,15 @@
 ---
 title: 使用 PowerShell 将混合计算机连接到 Azure
 description: 本文介绍如何安装代理，并使用已启用 Azure Arc 的服务器将计算机连接到 Azure。 可以使用 PowerShell 执行此操作。
-ms.date: 10/28/2020
+ms.date: 07/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d6963a53ac14c9d6727a8d53e781bc8b8389b76e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: e1ca9528af5b529dd844e566905b6aa7f92429d2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831610"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324568"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>使用 PowerShell 将混合计算机连接到 Azure
 
@@ -54,6 +54,8 @@ Install-Module -Name Az.ConnectedMachine
         ```azurepowershell
         Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -Proxy http://<proxyURL>:<proxyport>
         ```
+
+      使用此配置，代理使用 HTTP 协议通过代理服务器进行通信。
 
 如果完成安装后代理无法启动，请检查日志以获取详细的错误信息。 在 Windows 上检查以下文件： *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log*。 在 Linux 上检查以下文件： */var/opt/azcmagent/log/himds.log*。
 
@@ -104,6 +106,6 @@ Install-Module -Name Az.ConnectedMachine
 
 * 如有必要，请参阅[排查 Connected Machine Agent 问题的指南](troubleshoot-agent-onboard.md)。
 
-* 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机。 可以使用 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，并使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 来启用监视。
+* 查看[规划和部署指南](plan-at-scale-deployment.md)，以便对按任意规模部署启用了 Azure Arc 的服务器进行规划，并实现集中管理和监视。
 
-* 详细了解 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)。 需要收集操作系统和工作负载监视数据，或者要使用 Azure 自动化 Runbook 或“更新管理”等功能管理这些数据时，必须安装适用于 Windows 和 Linux 的 Log Analytics 代理。 使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-introduction.md)）时，也需要此代理。
+* 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机。 可以使用 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，并使用 [VM 见解](../../azure-monitor/vm/vminsights-enable-policy.md)来启用监视。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bf4598166250eb6ad7b65621e67184bfdeb839e
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92172997"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465018"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用指标管理资源消耗和负载
 指标是服务关切的、由群集中的节点提供的资源  。 指标是要进行管理以提升或监视服务性能的任何信息。 例如，可能需要监视内存消耗量以了解服务是否过载。 另一个用途是确定服务是否可以移动到内存较少受限的其他位置，以便获得更佳性能。
@@ -178,7 +178,7 @@ this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnecti
 服务可在创建时报告为其定义的任何指标。 如果服务针对未配置为要使用的指标报告负载，则 Service Fabric 会忽略该报告。 如果同时报告了其他有效指标，则接受这些报告。 服务代码可以测量和报告其了解并知道如何操作的所有指标，并且操作者可以指定要使用的指标配置，而不必更改服务代码。 
 
 ## <a name="reporting-load-for-a-partition"></a>报告分区负载
-上一部分介绍了服务副本或实例如何报告负载。 还可以使用 FabricClient 动态报告负载。 报告分区负载时，可以同时报告多个分区。
+上一部分介绍了服务副本或实例如何报告负载。 还有一个附加选项，用于通过 Service Fabric API 动态报告分区副本或实例的负载。 报告分区负载时，可以同时报告多个分区。
 
 将采用来自副本或实例本身的负载报表的使用方式来使用这些报表。 在通过副本或实例或通过报告分区的新负载值来报告新的负载值之前，已报告的值将一直有效。
 
@@ -188,7 +188,11 @@ this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnecti
   - 无状态服务和有状态服务均可更新其所有辅助副本或实例的负载。
   - 无状态服务和有状态服务均可更新节点上特定副本或实例的负载。
 
-此外，还可以同时合并每个分区的任意个更新。
+此外，还可以同时合并每个分区的任意个更新。 应通过对象 PartitionMetricLoadDescription 指定特定分区的负载更新组合，该对象可包含相应的负载更新列表，如以下示例所示。 负载更新通过对象 MetricLoadDescription 表示，该对象可包含指标的当前负载值或预测负载值，指标则通过指标名称指定。
+
+> [!NOTE]
+> 预测指标负载值目前为预览功能。 它允许在 Service Fabric 端报告并使用预测负载值，但该功能当前未启用。
+>
 
 可以使用单个 API 更新多个分区的负载，在这种情况下，输出将包含每个分区的响应。 如果由于某种原因未能成功应用分区更新，则将跳过该分区的更新，并提供相应的目标分区的错误代码：
 
@@ -198,7 +202,7 @@ this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnecti
   - ReplicaDoesNotExist - 指定的节点上不存在辅助副本或实例。
   - InvalidOperation - 在以下两种情况下可能会出现：更新属于系统应用程序的分区的负载，或未启用更新预测负载。
 
-如果返回了其中一些错误，则可以更新特定分区的输入，然后重试特定分区的更新。
+如果返回了其中一些错误，你可以更新特定分区的输入，然后重试特定分区的更新。
 
 代码：
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: b609a21348222150faf5fb828f2cc38ca6658f5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42b756e96829a19ddd25258087a8537c9a747b10
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92895811"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668850"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>绘图工具模块中的交互类型和键盘快捷方式
 
@@ -140,6 +140,7 @@ ms.locfileid: "92895811"
 | `C` | 完成正在进行的任何绘图，并将绘图模式设置为空闲。 焦点将移到顶级地图元素。  |
 | `Escape` | 取消正在进行的任何绘图，并将绘图模式设置为空闲。 焦点将移到顶级地图元素。  |
 | `F` | 如果鼠标指针位于地图上，则会将坐标添加到点、线条或多边形。 处于单击或混合模式时，这是与单击地图等效的操作。 此快捷方式可用来更精确、更快速地绘图。 你可以使用一只手来定位鼠标，使用另一只手按下按钮，不需要通过按压手势移动鼠标。 |
+| `Delete` 或 `Backspace` | 如果在编辑模式下选择了形状，请将这些形状删除。  |
 
 ## <a name="next-steps"></a>后续步骤
 

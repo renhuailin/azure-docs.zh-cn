@@ -2,19 +2,22 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 07/16/2021
+ms.date: 08/27/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cc0b4f9875200711f58d9f095e60b7e13b9ce5a7
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: b093545636185f15c613f33958b451455db4c0d1
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388219"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123102995"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure Batch 帐户应使用客户管理的密钥来加密数据](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F99e9ccd8-3db9-4592-b0d1-14b1715a4d8a) |使用客户管理的密钥来管理 Batch 帐户数据的静态加密。 默认情况下，使用服务管理的密钥对客户数据进行加密，但为了满足法规符合性标准，通常需要使用客户管理的密钥。 客户管理的密钥允许使用由你创建并拥有的 Azure Key Vault 密钥对数据进行加密。 你可以完全控制并负责关键生命周期，包括轮换和管理。 更多信息请访问 [https://aka.ms/Batch-CMK](https://aka.ms/Batch-CMK)。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_CustomerManagedKey_Audit.json) |
+|[Azure Batch 池应启用磁盘加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1760f9d4-7206-436e-a28f-d9f3a5c8a227) |启用 Azure Batch 磁盘加密可确保始终在 Azure Batch 计算节点上对数据进行静态加密。 有关 Batch 中的磁盘加密的详细信息，请访问 [https://docs.microsoft.com/azure/batch/disk-encryption](../../../../articles/batch/disk-encryption.md)。 |审核、已禁用、拒绝 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_DiskEncryption_Audit.json) |
+|[Batch 帐户应禁用本地身份验证方法](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6f68b69f-05fe-49cd-b361-777ee9ca7e35) |禁用本地身份验证方法可确保 Batch 帐户需要专用于身份验证的 Azure Active Directory 标识，从而提高安全性。 有关详细信息，请访问：[https://aka.ms/batch/auth](/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_DisableLocalAuth_Audit.json) |
+|[配置 Batch 帐户以禁用本地身份验证](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4dbc2f5c-51cf-4e38-9179-c7028eed2274) |禁用本地身份验证方法，使 Batch 帐户需要专门针对身份验证的 Azure Active Directory 标识。 有关详细信息，请访问：[https://aka.ms/batch/auth](/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service)。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_DisableLocalAuth_Modify.json) |
 |[为 Batch 帐户配置专用终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ef5aac7-c064-427a-b87b-d47b3ddcaf73) |专用终结点可在源或目标位置没有公共 IP 地址的情况下将虚拟网络连接到 Azure 服务。 通过将专用终结点映射到 Batch 帐户，可以降低数据泄露风险。 有关专用链接的详细信息，请访问：[https://docs.microsoft.com/azure/batch/private-connectivity](../../../../articles/batch/private-connectivity.md)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_PrivateEndpoints_DeployIfNotExists.json) |
 |[部署 - 为连接到 Batch 帐户的专用终结点配置专用 DNS 区域](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4ec38ebc-381f-45ee-81a4-acbc4be878f8) |可以通过专用 DNS 记录建立到专用终结点的专用连接。 利用专用终结点连接，无需源或目标的公共 IP 地址，即可与 Batch 帐户建立专用连接，从而实现安全通信。 有关 Batch 中专用终结点和 DNS 区域的详细信息，请参阅 [https://docs.microsoft.com/azure/batch/private-connectivity](../../../../articles/batch/private-connectivity.md)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_PrivateDnsZones_DeployIfNotExists.json) |
 |[应针对 Batch 帐户配置指标警报规则](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26ee67a2-f81a-4ba8-b9ce-8550bd5ee1a7) |审核是否已针对 Batch 帐户配置指标警报规则，以启用所需指标 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Batch/Batch_AuditMetricAlerts_Audit.json) |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 06/01/2021
 ms.custom: template-concept
 recommendations: false
-ms.openlocfilehash: 5f8d78f7080c1505db4a82d9393801ad8418beed
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b427d0b4d94497039f5949115246b7920b0e0116
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751478"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829395"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>有关在 Azure 中的 .NET 5.0 上运行函数的指南
 
@@ -19,7 +19,7 @@ ms.locfileid: "121751478"
 
 | 入门 | 概念| 示例 |
 |--|--|--| 
-| <ul><li>[使用 Visual Studio Code](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vscode)</li><li>[使用命令行工具](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-cli)</li><li>[使用 Visual Studio](dotnet-isolated-process-developer-howtos.md?pivots=development-environment-vs)</li></ul> | <ul><li>[托管选项](functions-scale.md)</li><li>[监视](functions-monitoring.md)</li> | <ul><li>[参考示例](https://github.com/Azure/azure-functions-dotnet-worker/tree/main/samples)</li></ul> |
+| <ul><li>[使用 Visual Studio Code](create-first-function-vs-code-csharp.md?tabs=isolated-process)</li><li>[使用命令行工具](create-first-function-cli-csharp.md?tabs=isolated-process)</li><li>[使用 Visual Studio](functions-create-your-first-function-visual-studio.md?tabs=isolated-process)</li></ul> | <ul><li>[托管选项](functions-scale.md)</li><li>[监视](functions-monitoring.md)</li> | <ul><li>[参考示例](https://github.com/Azure/azure-functions-dotnet-worker/tree/main/samples)</li></ul> |
 
 如果你不需要支持 .NET 5.0 或者在进程外运行函数，可以改而[开发 C# 类库函数](functions-dotnet-class-library.md)。
 

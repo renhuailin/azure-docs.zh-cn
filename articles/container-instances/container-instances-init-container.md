@@ -3,12 +3,12 @@ title: 运行 Init 容器
 description: 在 Azure 容器实例中运行 Init 容器，以便在应用程序容器运行之前在容器组中执行设置任务。
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 9ccaf1a67d6ca3bcff422acb591b528cc72a9608
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a108e76f76fb773d0f982a38b6415f9cd9937001
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763930"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181341"
 ---
 # <a name="run-an-init-container-for-setup-tasks-in-a-container-group"></a>运行 Init 容器以在容器组中执行设置任务
 
@@ -36,7 +36,7 @@ Azure 容器实例支持容器组中的 Init 容器。 Init 容器会在单个�
 
 首先将以下 JSON 复制到一个名为 `azuredeploy.json` 的新文件中。 该模板将设置一个包含一个 Init 容器和两个应用程序容器的容器组：
 
-* init1 容器从 Docker Hub 运行 [busybox](https://hub.docker.com/_/busybox) 映像。 它会休眠 60 秒，然后将命令行字符串写入 [emptyDir 卷](container-instances-volume-emptydir.md)中的文件。
+* init1 容器运行 [busybox](https://hub.docker.com/_/busybox) 图像。 它会休眠 60 秒，然后将命令行字符串写入 [emptyDir 卷](container-instances-volume-emptydir.md)中的文件。
 * 两个应用程序容器均运行 Microsoft `aci-wordcount` 容器映像：
     * hamlet 容器以默认配置运行 wordcount 应用，计算莎士比亚戏剧“哈姆雷特”中的单词频率。
     * juliet  应用容器将从 emptDir 卷读取命令行字符串，这样就可以改为对莎士比亚的“罗密欧和朱丽叶”运行 wordcount 应用。
@@ -68,7 +68,7 @@ Azure 容器实例支持容器组中的 Init 容器。 Init 容器会在单个�
                 {
                     "name": "init1",
                     "properties": {
-                        "image": "busybox",
+                        "image": "mcr.microsoft.com/aks/e2e/library-busybox:master.210714.1",
                         "environmentVariables": [],
                         "volumeMounts": [
                             {

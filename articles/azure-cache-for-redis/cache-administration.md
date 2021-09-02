@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7654e3a405d8baeb2e8fc598d49cc7fff014efed
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: c2006c71a9ba9ff24662f27a9f2e4015786197e7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653913"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742682"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Redis 缓存
 
@@ -24,15 +24,15 @@ ms.locfileid: "110653913"
 
 左侧的“重新启动”可重新启动缓存的一个或多个节点。 如果有缓存节点发生故障，此重新启动功能可用于测试应用程序的复原能力。
 
-![突出显示“重启”菜单选项的屏幕截图。](./media/cache-administration/redis-cache-administration-reboot.png)
+:::image type="content" source="media/cache-administration/cache-administration-reboot-2.png" alt-text="屏幕截图：突出显示“重启”菜单选项":::
 
 选择要重新启动的节点，并选择“重新启动”。
 
-![显示可以重启的节点的屏幕截图。](./media/cache-administration/redis-cache-reboot.png)
+:::image type="content" source="media/cache-administration/redis-cache-reboot-2.png" alt-text="屏幕截图：显示可以重启的节点":::
 
 如果高级缓存启用了群集功能，则可选择要重新启动的缓存分片。
 
-![重新启动](./media/cache-administration/redis-cache-reboot-cluster.png)
+:::image type="content" source="media/cache-administration/redis-cache-reboot-cluster-2.png" alt-text="屏幕截图：分片选项":::
 
 要重新启动缓存的一个或多个节点，请选择所需节点，并单击“重新启动”。 如果高级缓存启用了群集功能，请选择要重新启动的分片，并选择“重新启动”。 几分钟后，所选节点将重新启动，再过几分钟后，又会回到联机状态。
 
@@ -75,7 +75,7 @@ ms.locfileid: "110653913"
 
 ## <a name="schedule-updates"></a>计划更新
 
-左侧的“计划更新”允许你为缓存实例选择一个维护时段。 借助维护时段，可以控制在一周中的哪一天和哪个时间点更新托管缓存的 VM。 Azure Cache for Redis 将尽最大努力在定义的指定时间范围内启动和完成 Redis 服务器软件的更新。
+使用左侧的“计划更新”可为缓存实例选择一个维护时段。 借助维护时段，可以控制在一周中的哪一天和哪个时间点更新托管缓存的 VM。 Azure Cache for Redis 将尽最大努力在定义的指定时间范围内启动和完成 Redis 服务器软件的更新。
 
 > [!NOTE]
 > 维护时段适用于 Redis 服务器更新以及托管缓存的 VM 的操作系统更新。 维护时段不适用于承载缓存 VM 或其他 Azure 网络组件的主机的主机 OS 更新。 在极少数情况下，缓存托管在较旧的模型上（如果缓存的 DNS 名称解析为后缀“cloudapp.net”、“chinacloudapp.cn”、“usgovcloudapi.net”或“cloudapi.de”，则可判断缓存是否位于较旧的模型上），此时维护时段也不适用于来宾 OS 更新。
@@ -83,11 +83,11 @@ ms.locfileid: "110653913"
 > 目前，没有可用于为企业层缓存配置重新启动或计划更新的选项。
 >
 
-![计划更新](./media/cache-administration/redis-schedule-updates.png)
+:::image type="content" source="media/cache-administration/redis-schedule-updates-2.png" alt-text="屏幕截图：显示计划更新":::
 
 要指定维护时段，请选中需要的日期，并指定每天的维护时段开始时间。 选择“确定”。  维护时段使用 UTC 时间。
 
-更新的默认最小维护时段为 5 小时。 此值不可以在 Azure 门户中配置，但可以在 PowerShell 中使用 [New-AzRmRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) cmdlet 的 `MaintenanceWindow` 参数进行配置。 有关详细信息，请参阅是否可以使用 PowerShell、CLI 或其他管理工具管理计划的更新？
+更新的默认最小维护时段为 5 小时。 此值不可以在 Azure 门户中配置，但可以在 PowerShell 中使用 [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) cmdlet 的 `MaintenanceWindow` 参数进行配置。 有关详细信息，请参阅 [能否使用 PowerShell、CLI 或其他管理工具管理计划的更新？](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
 
 ## <a name="schedule-updates-faq"></a>计划更新常见问题解答
 

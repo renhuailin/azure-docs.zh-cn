@@ -2,14 +2,14 @@
 title: Microsoft Azure 备份服务器 v3 发行说明
 description: 本文介绍 Microsoft Azure 备份服务器 (MABS) v3 的已知问题和解决方法。
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 07/27/2021
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 87bc415c125a387d98ac88255d77fb1867564acf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b570442fb439c73886b23b07b39ecefb553c0ecf
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91254255"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720741"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器发行说明
 
@@ -74,6 +74,9 @@ ms.locfileid: "91254255"
 ## <a name="after-installing-ur1-the-mabs-reports-arent-updated-with-new-rdl-files"></a>安装 UR1 后，未使用新的 RDL 文件更新 MABS 报表
 
 **说明**：通过 UR1，已使用更新的 RDL 文件修复了 MABS 报表格式设置问题。 这些新 RDL 文件不会自动替换为现有文件。
+
+>[!NOTE]
+>MABS v3 UR2 已修复此问题。
 
 **解决方法**：若要替换这些 RDL 文件，请按照以下步骤操作：
 

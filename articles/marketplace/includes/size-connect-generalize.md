@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: 7d94bd0a4a9fb50cb211fd227c3022a46beef502
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: b1eb954626570d7feb2af7fe0980e4f7a10e70c6
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527527"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280126"
 ---
 ## <a name="generalize-the-image"></a>通用化映像
 
@@ -23,11 +23,9 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 若要�
 Windows OS 磁盘已使用 [sysprep](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) 通用化。 如果后来更新或重新配置了 OS，则必须再次运行 sysprep。
 
 > [!WARNING]
-> 运行 sysprep 后，由于更新可能自动运行，因此，请在部署 VM 之前将其关闭。 此关闭操作可避免后续更新对操作系统或安装的服务做出特定于实例的更改。 有关运行 sysprep 的详细信息，请参阅[通用化 VHD 的步骤](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)。
+> 运行 sysprep 后，由于更新可能自动运行，因此，请在部署 VM 之前将其关闭。 此关闭操作可避免后续更新对操作系统或安装的服务做出特定于实例的更改。 有关运行 sysprep 的详细信息，请参阅[通用化 Windows VM](../../virtual-machines/generalize.md#windows)。
 
 ### <a name="for-linux"></a>对于 Linux
-
-以下过程将通用化 Linux VM，并将其重新部署为单独的 VM。 有关详细信息，请参阅[如何创建虚拟机或 VHD 的映像](../../virtual-machines/linux/capture-image.md)。 当到达“从捕获的映像创建 VM”部分时，可以停止。
 
 1. 删除 Azure Linux 代理。
     1. 使用 SSH 客户端连接到 Linux VM。
@@ -72,7 +70,7 @@ VM 准备就绪后，即可在 Azure 共享映像库中捕获映像。 请按照
 1. 对于“角色”，请选择“所有者”。 
 1. 对于“将访问权限分配给”，请选择“用户、组或服务主体”。 
 1. 对于“选择”，输入映像发布者的 Azure 电子邮件。
-1. 选择“保存”。 
+1. 选择“保存”。
 
 ### <a name="option-two--run-a-command"></a>选项 2 - 运行命令
 

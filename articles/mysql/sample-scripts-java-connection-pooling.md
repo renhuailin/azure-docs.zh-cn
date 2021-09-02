@@ -7,14 +7,16 @@ ms.custom: devx-track-java
 ms.service: mysql
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: 3d7977bc0943317cb52ba0bf98e2d1240a9031d2
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 3ea9c8c6f351007c6944fed9fe7a33310ffb6d97
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226466"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643085"
 ---
 # <a name="java-sample-to-illustrate-connection-pooling"></a>演示连接池的 Java 示例
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 以下示例代码演示了使用 java 的连接池。
 

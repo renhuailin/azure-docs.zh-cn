@@ -6,14 +6,17 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: f71084e9c13bd1a30f5d5f01a04172671074db03
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 5ba7559cdcfbb4f02ee99be6dce7997d7451f3e1
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525203"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674411"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
 
 ## <a name="server-parameters"></a>服务器参数
@@ -58,7 +61,8 @@ MySQL 服务不允许直接访问基础文件系统。 不支持某些数据操�
 - `LOAD_FILE(file_name)`：在该服务中不受支持。
 
 ### <a name="supported"></a>支持
-- 支持 `LOAD DATA INFILE`，但必须指定 `[LOCAL]` 参数，并将其定向到 UNC 路径（通过 SMB 装载的 Azure 存储空间）。
+- 支持 `LOAD DATA INFILE`，但必须指定 `[LOCAL]` 参数，并将其定向到 UNC 路径（通过 SMB 装载的 Azure 存储空间）。 此外，如果使用 MySQL 客户端版本 >= 8.0，则需要在连接字符串中包含 `-–local-infile=1` 参数。
+
 
 ## <a name="functional-limitations"></a>功能限制
 
@@ -66,8 +70,8 @@ MySQL 服务不允许直接访问基础文件系统。 不支持某些数据操�
 - 目前不支持动态缩放到“基本”定价层或从该层动态缩放。
 - 不支持减小服务器存储大小。
 
-### <a name="server-version-upgrades"></a>服务器版本升级
-- 目前不支持在主要数据库引擎版本之间进行自动迁移。 如果要升级到下一个主版本，请进行[转储并将其还原](./concepts-migrate-dump-restore.md)到使用新引擎版本创建的服务器。
+### <a name="major-version-upgrades"></a>主版本升级
+- [仅限 v5.6 到 v5.7 升级的主要版本升级](how-to-major-version-upgrade.md)。 尚不支持升级到 v8.0。
 
 ### <a name="point-in-time-restore"></a>时间点还原
 - 使用 PITR 功能时，将使用与新服务器所基于的服务器相同的配置创建新服务器。
@@ -77,7 +81,7 @@ MySQL 服务不允许直接访问基础文件系统。 不支持某些数据操�
 - 只有常规用途和内存优化服务器才支持 VNet 服务终结点。
 
 ### <a name="storage-size"></a>存储大小
-- 有关每个定价层的存储大小限制，请参阅[定价层](concepts-pricing-tiers.md)。
+- 有关每个定价层的存储大小限制，请参阅[定价层](concepts-pricing-tiers.md#storage)。
 
 ## <a name="current-known-issues"></a>当前已知的问题
 - 建立连接后，MySQL 服务器实例显示错误的服务器版本。 若要获取正确的服务器实例引擎版本，请使用 `select version();` 命令。

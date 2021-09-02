@@ -7,17 +7,16 @@ ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
 ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: fb9c9f460b46f8dec741f4c22460cbe9d44c6a0e
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: aebee9b2511e3616a9170d5ed84be3acf391b6ad
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791073"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071962"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -30,7 +29,7 @@ ms.locfileid: "110791073"
 IoT Central 支持以下两种设备注册方案：
 
 - 自动注册。 设备首次连接时自动注册。 该方案可让 OEM 大规模制造出可在不事先注册的情况下实现连接的设备。 OEM 生成合适的设备凭据，并在工厂中配置设备。 或者，可以要求操作员在设备开始发送数据之前对其进行批准。 该方案要求在应用程序中配置 X.509 或 SAS 组注册。
-- 手动注册。 操作员可以在“设备”页上注册单个设备，也可以[导入 CSV 文件](howto-manage-devices.md#import-devices)以批量注册设备。 在该方案中，可以使用 X.509 或 SAS 组注册，或使用 X.509 或 SAS 单个注册。
+- 手动注册。 操作员可以在“设备”页上注册单个设备，也可以[导入 CSV 文件](howto-manage-devices-in-bulk.md#import-devices)以批量注册设备。 在该方案中，可以使用 X.509 或 SAS 组注册，或使用 X.509 或 SAS 单个注册。
 
 连接到 IoT Central 的设备应遵循 IoT 即插即用约定。 其中一项约定是设备在连接时应发送它所实现的设备模型的模型 ID。 模型 ID 使 IoT Central 应用程序能够将设备与正确的设备模板关联。
 
@@ -157,9 +156,9 @@ IoT Central 应用程序使用设备发送的模型 ID [将注册的设备与设
 
 ### <a name="bulk-register-devices-in-advance"></a>提前批量注册设备
 
-若要将大量设备注册到 IoT Central 应用程序，请使用 CSV 文件[导入设备 ID 和设备名称](howto-manage-devices.md#import-devices)。
+若要将大量设备注册到 IoT Central 应用程序，请使用 CSV 文件[导入设备 ID 和设备名称](howto-manage-devices-in-bulk.md#import-devices)。
 
-如果设备使用 SAS 令牌进行身份验证，请[从 IoT Central 应用程序导出 CSV 文件](howto-manage-devices.md#export-devices)。 导出的 CSV 文件包括设备 ID 和 SAS 密钥。
+如果设备使用 SAS 令牌进行身份验证，请[从 IoT Central 应用程序导出 CSV 文件](howto-manage-devices-in-bulk.md#export-devices)。 导出的 CSV 文件包括设备 ID 和 SAS 密钥。
 
 如果设备使用 X.509 证书进行身份验证，请使用上载到 X.509 注册组的根证书或中间证书，为设备生成 X.509 叶证书。 使用导入的设备 ID 作为叶证书中的 `CNAME` 值。
 
@@ -180,7 +179,7 @@ IoT Central 应用程序使用设备发送的模型 ID [将注册的设备与设
 
 1. 如果设备模板已在 IoT Central 应用程序中发布，则设备将与设备模板关联。
 1. 如果设备模板未在 IoT Central 应用程序中发布，IoT Central 会在[公共模型存储库](https://github.com/Azure/iot-plugandplay-models)中查找设备模型。 如果 IoT Central 找到模型，它将使用该模型生成基本设备模板。
-1. 如果 IoT Central 在公共模型存储库中找不到模型，则设备将被标记为“未关联”。 操作员可以为设备创建设备模板，然后将未关联的设备迁移到新的设备模板。
+1. 如果 IoT Central 在公共模型存储库中找不到模型，则设备将被标记为“未关联”。 操作员可以为设备创建设备模板，然后将未关联的设备迁移到新设备模板，或基于设备发送的数据[自动生成设备模板](howto-set-up-template.md#autogenerate-a-device-template)。
 
 以下屏幕截图演示了如何在 IoT Central 中查看设备模板的模型 ID。 在设备模板中，选择一个组件，然后选择“编辑标识”：
 
@@ -214,11 +213,14 @@ IoT Central 应用程序使用设备发送的模型 ID [将注册的设备与设
     操作员可以在“设备”页上使用“迁移”按钮将设备关联到设备模板。
 
 ## <a name="device-connection-status"></a>设备连接状态
-当设备或边缘设备使用 MQTT 协议进行连接时，显示设备的已连接和断开连接事件。  这些事件不是由设备发送的，它们是由 IoT Central 在内部生成的。
+
+当设备或边缘设备使用 MQTT 协议进行连接时，生成设备的已连接和已断开连接事件 。 这些事件不是由设备发送的，它们是由 IoT Central 在内部生成的。
 
 下图显示了当设备连接时，如何在一个时间窗口结束时注册连接。 如果发生多个连接和断开连接事件，IoT Central 会注册最接近时间窗口结束的那个事件。 例如，如果设备在时间窗口内断开连接并重新连接，IoT Central 将注册连接事件。 目前，时间窗口大约为一分钟。
 
 :::image type="content" source="media/concepts-get-connected/device-connectivity-diagram.png" alt-text="显示已连接和已断开连接事件的事件时间窗口的示意图。" border="false":::
+
+可以在设备的“原始数据”视图中查看已连接和已断开连接的事件：:::image type="content" source="media/concepts-get-connected/device-connectivity-events.png" alt-text="屏幕截图，显示已筛选的原始数据视图以显示设备连接事件。":::
 
 可以在[从 IoT Central 导出](howto-export-data.md#set-up-data-export)中包含连接和断开连接事件。 若要了解详细信息，请参阅[响应 IoT 中心事件 > 设备已连接和设备已断开连接事件的限制](../../iot-hub/iot-hub-event-grid.md#limitations-for-device-connected-and-device-disconnected-events)。
 
@@ -248,7 +250,7 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 | 脱机命令 | 云到设备的消息传送 |
 | 属性 | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
-| 命令 | 直接方法 |
+| Command | 直接方法 |
 
 ### <a name="protocols"></a>协议
 

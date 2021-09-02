@@ -4,16 +4,18 @@ description: 使用 Azure CLI 创建和管理 Azure 区块链服务的区块链�
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 867a51b60afa56005bbb297b345f8a9260160ab8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4742e4ed71c5d7e53d810f1c59e8f465f566d7e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101722630"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122652821"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>使用 Azure CLI 配置区块链数据管理器
 
 配置 Azure 区块链服务的区块链数据管理器，以捕获区块链数据并将此数据发送到 Azure 事件网格主题。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 若要配置区块链数据管理器实例，需要执行以下操作：
 

@@ -6,16 +6,16 @@ keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux �
 services: machine-learning
 ms.service: data-science-vm
 ms.custom: devx-track-python
-author: timoklimmer
-ms.author: tklimmer
+author: michalmar
+ms.author: mimarusa
 ms.topic: conceptual
-ms.date: 05/12/2021
-ms.openlocfilehash: 3272c2584d03c6f13d2ffb85eb0b37bf3c29000a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/27/2021
+ms.openlocfilehash: a757151d17456c7ee9646bc0730a51f34088b255
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081615"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729182"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>适用于 Azure Data Science VM 的深度学习和人工智能框架
 下面列出了 DSVM 上的深度学习框架。
@@ -53,16 +53,16 @@ ms.locfileid: "110081615"
 
 | 类别 | 值 |
 |--|--|
-| 支持的版本 | 1.8.1 (Ubuntu 18.04, Windows 2019) |
+| 支持的版本 | 1.9.0（Ubuntu 18.04、Windows 2019） |
 | 支持的 DSVM 版本 | Windows Server 2019<br>Ubuntu 18.04 |
-| 如何在 DSVM 上配置/安装它？ | 在 conda 环境 'py38_pytorch' 下的 Python 中安装 |
+| 如何在 DSVM 上配置/安装它？ | 在 conda 环境 'py38_default', 'py38_pytorch' 下的 Python 中安装 |
 | 运行方式 | 终端：激活正确的环境，然后运行 Python。<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)：进行连接，然后打开 PyTorch 目录获取示例。 |
 
 ## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
 | 类别 | 值 |
 |--|--|
-| 支持的版本 | 2.4 |
+| 支持的版本 | 2.5 |
 | 支持的 DSVM 版本 | Windows Server 2019<br>Ubuntu 18.04 |
-| 如何在 DSVM 上配置/安装它？ | 在 conda 环境 'py38_tensorflow' 下的 Python 中安装 |
+| 如何在 DSVM 上配置/安装它？ | 在 conda 环境 'py38_default', 'py38_tensorflow' 下的 Python 中安装 |
 | 运行方式 | 终端：激活正确的环境，然后运行 Python。 <br/> * Jupyter：连接到 [Jupyter](provision-vm.md) 或 [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然后打开 TensorFlow 目录获取示例。 |

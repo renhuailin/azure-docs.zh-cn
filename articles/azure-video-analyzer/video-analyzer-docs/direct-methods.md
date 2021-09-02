@@ -2,19 +2,19 @@
 title: 在 Azure 视频分析器中使用直接方法 - Azure
 description: Azure 视频分析器公开多个直接方法。 直接方法基于本主题中描述的约定。
 ms.topic: conceptual
-ms.date: 05/06/2021
-ms.openlocfilehash: 06d19047ae20fc752a09a28b2508cfdd2b08eb8d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 7b56404a371b0e50fe129d0fc5c2edb46b0c0f06
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385076"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724545"
 ---
 # <a name="azure-video-analyzer-direct-methods"></a>Azure 视频分析器直接方法
 
 Azure 视频分析器 IoT Edge 模块 `avaedge` 公开多个可从 IoT 中心调用的直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 此方法用于即时操作过程不同的情况，即时操作的不同取决于设备能否响应。 有关详细信息，请参阅[了解直接方法并从 IoT 中心进行调用](../../iot-hub/iot-hub-devguide-direct-methods.md)。
 
-本主题介绍这些方法和约定。
+本主题介绍了这些方法、约定和方法的架构。
 
 ## <a name="conventions"></a>约定
 
@@ -107,7 +107,7 @@ Azure 视频分析器 IoT Edge 模块 `avaedge` 公开多个可从 IoT 中心调
 |409|   ResourceValidationError|    引用的资源（例如视频资源）不处于有效状态。|
 
 ## <a name="supported-direct-methods"></a>支持的直接方法  
-下面是视频分析器边缘模块公开的直接方法。
+下面是视频分析器边缘模块公开的直接方法。 可在[此处](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/videoanalyzer/data-plane/VideoAnalyzer.Edge/preview/1.0.0/AzureVideoAnalyzerSdkDefinitions.json)找到直接方法的架构。
 
 ### <a name="pipelinetopologylist"></a>pipelineTopologyList
 

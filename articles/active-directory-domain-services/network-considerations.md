@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 08/12/2021
 ms.author: justinha
-ms.openlocfilehash: d1a3ab5face03754bf84f442ac0fa73768b0fc80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 533d663b478ddd362ef18f81528afbe1b9393095
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97615811"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015641"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的虚拟网络设计注意事项和配置选项
 
@@ -96,7 +96,7 @@ Azure Active Directory 域服务 (Azure AD DS) 为其他应用程序和工作负
 | 网络接口卡                  | Azure AD DS 将托管域托管在 Windows Server 中作为 Azure VM 运行的两个域控制器 (DC) 上。 每个 VM 都有一个连接到虚拟网络子网的虚拟网络接口。 |
 | 动态标准公共 IP 地址      | Azure AD DS 使用标准 SKU 公共 IP 地址与同步和管理服务进行通信。 有关公共 IP 地址的详细信息，请参阅 [Azure 中的 IP 地址类型和分配方法](../virtual-network/public-ip-addresses.md)。 |
 | Azure 标准负载均衡器            | Azure AD DS 使用标准 SKU 负载均衡器进行网络地址转换 (NAT) 和负载均衡（与安全 LDAP 一起使用时）。 有关 Azure 负载均衡器的详细信息，请参阅[什么是 Azure 负载均衡器？](../load-balancer/load-balancer-overview.md) |
-| 网络地址转换 (NAT) 规则 | Azure AD DS 在负载均衡器上创建并使用三项 NAT 规则 - 一项面向安全 HTTP 流量，另外两项面向安全 PowerShell 远程处理。 |
+| 网络地址转换 (NAT) 规则 | Azure AD DS 在负载均衡器上创建和使用两个入站 NAT 规则，以实现安全的 PowerShell 远程处理。 如果使用标准 SKU 负载均衡器，则它还会具有出站 NAT 规则。 对于基本 SKU 负载均衡器，不需要出站 NAT 规则。 |
 | 负载均衡器规则                     | 在 TCP 端口 636 上为安全 LDAP 配置托管域时，将在负载均衡器上创建并使用三项规则来分配流量。 |
 
 > [!WARNING]
@@ -104,11 +104,15 @@ Azure Active Directory 域服务 (Azure AD DS) 为其他应用程序和工作负
 
 ## <a name="network-security-groups-and-required-ports"></a>网络安全组和必需端口
 
-[网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md) 包含一系列规则，这些规则可以允许或拒绝网络流量在 Azure 虚拟网络中流动。 部署托管域时会创建网络安全组，其中包含一系列规则，服务按照些规则提供身份验证和管理功能。 此默认网络安全组与托管域部署到的虚拟网络子网相关联。
+[网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md) 包含允许或拒绝 Azure 虚拟网络中网络流量的规则列表。 部署托管域时，系统会创建网络安全组，其中包含一系列规则，而服务则按照这些规则提供身份验证和管理功能。 此默认网络安全组与托管域部署到的虚拟网络子网相关联。
 
-需要以下网络安全组规则，托管域才能提供身份验证服务和管理服务。 请勿编辑或删除托管域所部署到的虚拟网络子网中的这些网络安全组规则。
+以下部分介绍网络安全组以及入站和出站端口要求。
 
-| 端口号 | 协议 | 源                             | 目标 | 操作 | 必须 | 目的 |
+### <a name="inbound-connectivity"></a>入站连接
+
+需要以下网络安全组入站规则，托管域才能提供身份验证服务和管理服务。 请勿编辑或删除托管域所部署到的虚拟网络子网中的这些网络安全组规则。
+
+| 入站端口号 | 协议 | 源                             | 目标 | 操作 | 必须 | 目的 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允许  | 是      | 用于管理域。 |
 | 3389        | TCP      | CorpNetSaw                         | 任意         | 允许  | 可选      | 调试以获得支持。 |
@@ -118,13 +122,29 @@ Azure Active Directory 域服务 (Azure AD DS) 为其他应用程序和工作负
 如有需要，可使用 [Azure PowerShell 创建所需的网络安全组和规则](powershell-create-instance.md#create-a-network-security-group)。
 
 > [!WARNING]
-> 请勿手动编辑这些网络资源和配置。 将配置错误的网络安全组或用户定义的路由表与部署了托管域的子网相关联时，Microsoft 可能无法为域提供服务和对其进行管理。 Azure AD 租户与托管域之间的同步也会中断。
+> 将配置错误的网络安全组或用户定义的路由表与部署了托管域的子网相关联时，Microsoft 可能无法为域提供服务和对其进行管理。 Azure AD 租户与托管域之间的同步也会中断。 遵循列出的所有要求，以避免将会导致同步、修补或管理进程中断的不受支持的配置。
 >
 > 如果使用安全 LDAP，可以添加所需的 TCP 端口 636 规则，以便在需要时允许外部流量。 添加此规则不会导致网络安全组规则不受支持。 有关详细信息，请参阅[通过 Internet 锁定安全 LDAP 访问](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 >
-> 网络安全组还有默认的 AllowVnetInBound、AllowAzureLoadBalancerInBound、DenyAllInBound、AllowVnetOutBound、AllowInternetOutBound 和 DenyAllOutBound 规则     。 请勿编辑或删除这些默认规则。
->
-> Azure SLA 不适用于这样的部署：应用了配置不当的网络安全组和/或用户定义的路由表，使得 Azure AD DS 无法更新和管理域。
+> Azure SLA 不适用于被配置不当的网络安全组或用户定义的路由表阻止更新或管理的部署。 损坏的网络配置还会阻止应用安全修补程序。
+
+### <a name="outbound-connectivity"></a>出站连接
+
+对于出站连接，可以使用下表中列出的 ServiceTags 保留 AllowVnetOutbound 和 AllowInternetOutBound 或限制出站流量。 必须通过 [PowerShell](powershell-create-instance.md) 添加适用于 AzureUpdateDelivery 的 ServiceTag。
+
+经典部署不支持使用筛选后的出站流量。
+
+
+| 出站端口号 | 协议 | 源 | 目标   | 操作 | 必须 | 目的 |
+|:--------------------:|:--------:|:------:|:-------------:|:------:|:--------:|:-------:|
+| 443 | TCP   | 任意    | AzureActiveDirectoryDomainServices| 允许  | 是      | 与 Azure AD 域服务管理服务通信。 |
+| 443 | TCP   | 任意    | AzureMonitor                      | Allow  | 是      | 监视虚拟机。 |
+| 443 | TCP   | 任意    | 存储                           | Allow  | 是      | 与 Azure 存储通信。   | 
+| 443 | TCP   | 任意    | AzureActiveDirectory              | 允许  | 是      | 使用 Azure Active Directory 进行通信。  |
+| 443 | TCP   | 任意    | AzureUpdateDelivery               | 允许  | 是      | 与 Windows 更新进行通信。  | 
+| 80  | TCP   | 任意    | AzureFrontDoor.FirstParty         | 允许  | 是      | 从 Windows 更新下载修补程序。    |
+| 443 | TCP   | 任意    | GuestAndHybridManagement          | 允许  | 是      | 自动管理安全修补程序。   |
+
 
 ### <a name="port-5986---management-using-powershell-remoting"></a>端口 5986 - 使用 PowerShell 远程处理进行管理
 
@@ -146,12 +166,14 @@ Azure Active Directory 域服务 (Azure AD DS) 为其他应用程序和工作负
     * 只能基于业务理由允许访问，例如管理方案或对其进行故障排除。
 * 可将此规则设置为“拒绝”，仅在需要时才设置为“允许” 。 大多数管理和监视任务都使用 PowerShell 远程处理执行。 只有在极少数情况下，当 Microsoft 需要远程连接到你的托管域来进行高级故障排除时，才会使用 RDP。
 
-> [!NOTE]
-> 如果尝试编辑此网络安全组规则，则不能从门户中手动选择 CorpNetSaw 服务标记。 必须使用 Azure PowerShell 或 Azure CLI 手动配置使用 CorpNetSaw 服务标记的规则。
->
-> 例如，可以使用以下脚本创建允许 RDP 的规则： 
->
-> `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
+
+如果尝试编辑此网络安全组规则，则不能从门户中手动选择 CorpNetSaw 服务标记。 必须使用 Azure PowerShell 或 Azure CLI 手动配置使用 CorpNetSaw 服务标记的规则。
+
+例如，可以使用以下脚本创建允许 RDP 的规则： 
+
+```powershell
+Get-AzNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "*" -DestinationPortRange "3389" -DestinationAddressPrefix "*" | Set-AzNetworkSecurityGroup
+```
 
 ## <a name="user-defined-routes"></a>用户定义路由
 

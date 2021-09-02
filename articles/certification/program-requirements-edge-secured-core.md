@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Edge Secured-core Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 6a4e969c592e844164d2f031914740e24fdc8f99
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 81e9bc60a7749cdc155fc6997c198e834476dbf0
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540259"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031924"
 ---
 # <a name="edge-secured-core-certification-requirements-preview"></a>Edge Secured-Core 认证要求（预览版） #
 
@@ -49,7 +49,7 @@ Edge Secured-core 是 Azure 认证设备计划中的增量认证，面向运行�
 |适用于|任何设备|
 |(OS)|不可知|
 |验证类型|手动/工具|
-|验证|通过工具集验证设备，以确保启用存储加密，默认算法为 XTS-AES，密钥长度为 128 位或更长。|
+|验证|通过工具集验证设备，以确保启用存储加密，默认算法为 XTS-AES，密钥长度为 128 位或更长。 </br></br>注意：2021 年 6 月预览版仅验证设备是否已安装 DM-Crypt 且具有一个加密分区。|
 |资源||
 
 ---
@@ -85,7 +85,7 @@ Edge Secured-core 是 Azure 认证设备计划中的增量认证，面向运行�
 |适用于|任何设备|
 |(OS)|不可知|
 |验证类型|手动/工具|
-|验证|合作伙伴确认他们是否能够通过 Microsoft 更新、Azure 设备更新或其他许可的服务将更新发送到设备。|
+|验证|合作伙伴确认他们能够通过 Microsoft 更新、[Device Update for IoT Hub (ADU)](../iot-hub-device-update/understand-device-update.md) 向设备发送更新。 对于使用 Device Update for IoT Hub 的 Linux 设备，认证需要在 Secured Core 测试过程中提供 .swu 更新文件，并为 Certification Service 提供特定于设备的信息来生成[更新清单](../iot-hub-device-update/update-manifest.md)文件。|
 |资源|[IoT 中心的设备更新文档](../iot-hub-device-update/index.yml)|
 
 ---
@@ -182,7 +182,7 @@ Edge Secured-core 是 Azure 认证设备计划中的增量认证，面向运行�
 |适用于|任何设备|
 |(OS)|不可知|
 |验证类型|手动/工具|
-|验证|通过工具集验证设备，以确保每次设备启动时均验证固件和内核签名。 <ul><li>UEFI：已启用安全启动</li><li>Uboot：已启用验证启动</li></ul>|
+|验证|通过工具集验证设备，以确保每次设备启动时均验证固件和内核签名。 <ul><li>UEFI：已启用安全启动</li><li>Uboot：已启用验证启动</li></ul> </br> </br>注意：2021 年 6 月预览版仅验证 UEFI 是否存在。|
 |资源||
 
 ---

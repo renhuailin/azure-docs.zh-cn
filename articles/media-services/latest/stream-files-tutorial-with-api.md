@@ -2,7 +2,7 @@
 title:使用媒体服务 v3 进行上传、编码和流式传输:Azure 媒体服务说明:介绍如何使用 Azure 媒体服务 v3 上载文件、对视频编码和流式传输内容的教程。
 services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
 
-ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.date: 05/25/2021 ms.author: inhenkel
+ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.date: 07/23/2021 ms.author: inhenkel
 ---
 
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>教程：使用媒体服务 v3 对视频进行上载、编码和流式传输
@@ -29,11 +29,12 @@ ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.dat
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果没有安装 Visual Studio，可下载 [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
-- [创建媒体服务帐户](./account-create-how-to.md)。<br/>请务必记住用于资源组名称和媒体服务帐户名称的值。
-- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤并保存凭据。 你将需要使用这些凭据来访问 API。
+- 安装[适用于 Windows/macOS/Linux 的 Visual Studio Code](https://code.visualstudio.com/) 或[适用于 Windows 或 Mac 的 Visual Studio 2019](https://visualstudio.microsoft.com/)。
+- 安装 [.NET 5.0 SDK](https://dotnet.microsoft.com/download)
+- [创建媒体服务帐户](./account-create-how-to.md)。 请务必以 JSON 格式复制 API 访问详细信息，或以此示例中使用的 .env 文件格式存储连接到媒体服务帐户所需的值。
+- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤并保存凭据。 你需要使用它们来访问此示例中的 API，或将它们输入为 .env 文件格式。
 
-## <a name="download-and-set-up-the-sample"></a>下载和设置示例
+## <a name="download-and-configure-the-sample"></a>下载并配置示例
 
 使用以下命令将具有流式处理 .NET 示例的 GitHub 存储库克隆到计算机：  
 
@@ -43,7 +44,7 @@ ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.dat
 
 该示例位于 [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/main/AMSV3Tutorials/UploadEncodeAndStreamFiles) 文件夹。
 
-打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/UploadEncodeAndStreamFiles/appsettings.json)。 将值替换为在[访问 API](./access-api-howto.md) 中获取的凭据。
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 ## <a name="examine-the-code-that-uploads-encodes-and-streams"></a>检查用于上传、编码和流式传输的代码
 
