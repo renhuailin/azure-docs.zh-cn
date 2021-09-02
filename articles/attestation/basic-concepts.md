@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 47231ecab14ab9d1705d1015c0de4a035a10a02e
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 5ac431f489f279ea09407e1a34c234911d71f12f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112417300"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259739"
 ---
 # <a name="basic-concepts"></a>基本概念
 
@@ -21,7 +21,7 @@ ms.locfileid: "112417300"
 
 ## <a name="json-web-token-jwt"></a>JSON Web 令牌 (JWT)
 
-[JSON Web 令牌](https://jwt.io/) (JWT) 是一个开放的标准 [RFC7519](https://tools.ietf.org/html/rfc7519) 方法，用于在各方之间作为 JavaScript 对象标记 (JSON) 对象安全地传输信息。 可以验证和信任此信息，因为该信息已进行数字签名。 可以使用机密或公钥/私钥对对 JWT 进行签名。
+[JSON Web 令牌](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims) (JWT) 是一个开放的标准 [RFC7519](https://tools.ietf.org/html/rfc7519) 方法，用于在各方之间作为 JavaScript 对象标记 (JSON) 对象安全地传输信息。 可以验证和信任此信息，因为该信息已进行数字签名。 可以使用机密或公钥/私钥对对 JWT 进行签名。
 
 ## <a name="json-web-key-jwk"></a>JSON Web 密钥 (JWK)
 

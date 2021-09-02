@@ -2,19 +2,20 @@
 title: 教程：Azure Notebook - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 本教程模拟 Azure Notebook 中的个性化体验创建服务循环系统，并为客户建议要订购哪种类型的咖啡。 用户及其偏好存储在用户数据集中。 此外还会提供有关咖啡的信息并将其存储在咖啡数据集中。
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66d32a61a3c8f3b88562bdff0c541ec5d88e65d8
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88509903"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830970"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>教程：在 Azure Notebook 中使用个性化体验创建服务
 
@@ -39,7 +40,7 @@ ms.locfileid: "88509903"
 |加冰摩卡|冷|埃塞俄比亚|浅色|非有机|
 |拿铁|热|巴西|深色|非有机|
 
-个性化体验创建服务循环的**作用**是尽量在用户与咖啡之间找到最佳匹配。
+个性化体验创建服务循环的 **作用** 是尽量在用户与咖啡之间找到最佳匹配。
 
 本教程的代码已在[个性化体验创建服务示例 GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook)中提供。
 
@@ -57,7 +58,7 @@ ms.locfileid: "88509903"
 * 上下文特征 - 用户、天气和当日时间的随机选择 - 模拟网站或移动设备上的用户
 * 带特征的操作 - 所有咖啡数据 - 个性化体验创建服务基于这些数据提供建议 
 
-系统接收请求，然后将该预测结果与用户在相同的当日时间和天气状况下所做的已知选择进行比较。 如果已知的选择与预测的选择相同，则向个性化体验创建服务发回**奖励**评分 1。 否则，发送回的奖励评分为 0。
+系统接收请求，然后将该预测结果与用户在相同的当日时间和天气状况下所做的已知选择进行比较。 如果已知的选择与预测的选择相同，则向个性化体验创建服务发回 **奖励** 评分 1。 否则，发送回的奖励评分为 0。
 
 > [!Note]
 > 这只是一种模拟，因此奖励算法非常简单。 在真实场景中，该算法应使用业务逻辑，并可能需要权衡客户体验的各个方面来确定奖励评分。

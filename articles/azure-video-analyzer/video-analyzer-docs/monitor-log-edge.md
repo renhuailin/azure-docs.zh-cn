@@ -2,13 +2,13 @@
 title: 监视和日志记录 - Azure
 description: 本文概述 Azure 视频分析器中的监视和日志记录。
 ms.topic: how-to
-ms.date: 04/27/2020
-ms.openlocfilehash: d7f048aecd89d75ad7bff728bc8a4ddebc8f515a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 7938a68272378cf592fff17be0c4dfef2ca0e3f3
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385235"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604870"
 ---
 # <a name="monitor-and-log-on-iot-edge"></a>IoT Edge 上的监视和日志
 
@@ -392,31 +392,38 @@ ms.locfileid: "110385235"
    * `MediaPipeline`：低级别的日志，可在你排查问题（例如，与支持 RTSP 的相机建立连接时遇到困难）时提供见解。
    
 ### <a name="generating-debug-logs"></a>生成调试日志
+在某些情况下，可能需要生成比上述日志更详细的日志才能帮助 Azure 支持解决问题。 若要生成这些日志，请执行以下操作：  
 
-在某些情况下，可能需要生成比上述日志更详细的日志才能帮助 Azure 支持解决问题。 若要生成这些日志，请执行以下操作：
+1. 登录到 [Azure 门户](https://portal.azure.com)，并转到 IoT 中心。
+1. 在左窗格中，选择“IoT Edge”。
+1. 在设备列表中，选择目标设备的 ID。
+1. 在窗格顶部，选择“设置模块”。
 
-1. 通过 `createOptions` [将模块存储链接到设备存储](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage)。 如果你查看快速入门中的[部署清单模板](https://github.com/Azure-Samples/azure-video-analyzer-iot-edge-csharp/blob/master/src/edge/deployment.template.json)，则会看到以下代码：
+   ![Azure 门户中“设置模块”按钮的屏幕截图。](media/troubleshoot/set-modules.png)
 
-   ```json
-   "createOptions": {
-     …
-     "Binds": [
-       "/var/local/videoAnalyzer/:/var/lib/videoAnalyzer/"
-     ]
-    }
-   ```
+1. 在“IoT Edge 模块”部分中，查找并选择“avaedge”。 
+1. 选择“模块标识孪生体”。 此时将打开一个可编辑窗格。
+1. 在“所需的密钥”下，添加以下键/值对：
 
-   此代码让 Edge 模块将日志写入设备存储路径 `/var/local/videoAnalyzer/`。 
+   `"DebugLogsDirectory": "/var/lib/videoanalyzer/logs"`
 
- 1. 将以下 `desired` 属性添加到模块：
+   > [!NOTE]
+   > 此命令将绑定边缘设备和容器之间的日志文件夹。 如果要在设备上的其他位置收集日志：
+   >
+   > 1. 在“绑定”部分中，为调试日志位置创建一个绑定，将 $DEBUG_LOG_LOCATION_ON_EDGE_DEVICE 和 $DEBUG_LOG_LOCATION 替换为想要使用的位置：`/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE:/var/$DEBUG_LOG_LOCATION`  
+   > 2. 使用以下命令，将 $DEBUG_LOG_LOCATION 替换为上一步中使用的位置：`"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`
 
-    `"debugLogsDirectory": "/var/lib/videoAnalyzer/debuglogs/"`
+1. 选择“保存”
 
-现在，该模块会以二进制格式将调试日志写入到设备存储路径 `/var/local/videoAnalyzer/debuglogs/`。 你可以与 Azure 支持共享这些日志。
+现在，该模块会以二进制格式将调试日志写入到设备存储路径 `/var/local/videoAnalyzer/debuglogs/`。 你可以与 Azure 支持共享这些日志。  
+
+可以通过将“模块标识孪生”中的值设置为 NULL 来停止日志收集。 返回“模块标识孪生”页，并将以下参数更新为：
+
+   `"DebugLogsDirectory": ""`
 
 ## <a name="faq"></a>常见问题解答
 
-如有问题，请参阅[监视和指标常见问题解答](faq-edge.md#monitoring-and-metrics)。
+如有问题，请参阅[监视和指标常见问题解答](faq-edge.yml#monitoring-and-metrics)。
 
 ## <a name="next-steps"></a>后续步骤
 

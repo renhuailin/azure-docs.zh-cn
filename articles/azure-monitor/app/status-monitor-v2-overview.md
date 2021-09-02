@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 69f80856150e461c6edfafdf0aa89de77c4ab0fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fcdca5aaedb9d3b0e86e02e931eb7e38c16cc25
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100583812"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731849"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>为本地服务器部署 Azure Monitor Application Insights 代理
 
@@ -18,11 +18,11 @@ ms.locfileid: "100583812"
 > 对于 Application Insights 代理的本地和非 Azure 云部署，建议使用本指南。 下面是建议用于 [Azure 虚拟机和虚拟机规模集部署](./azure-vm-vmss-apps.md)的方法。
 
 Application Insights 代理（以前称为状态监视器 V2）是发布到 [PowerShell 库](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)的 PowerShell 模块。
-它将替换[状态监视器](./monitor-performance-live-website-now.md)。
+它将替换状态监视器。
 遥测数据将发送到 Azure 门户，你可以在其中[监视](./app-insights-overview.md)应用。
 
 > [!NOTE]
-> 目前，该模块仅支持使用 IIS 托管的 .NET Web 应用的无代码检测。 使用 SDK 检测 ASP.NET Core、Java 和 Node.js 应用程序。
+> 本模块当前支持通过 IIS 托管的 .NET 和 .NET Core web 应用的无代码检测。 使用 SDK 检测 Java 和 Node.js 应用程序。
 
 ## <a name="powershell-gallery"></a>PowerShell 库
 
@@ -60,7 +60,7 @@ Application Insights 代理位于此处：https://www.powershellgallery.com/pack
 
 - 状态监视器 v2 是否支持 ASP.NET Core 应用程序？
 
-  “否”。 有关启用对 ASP.NET Core 应用程序的监视的说明，请参阅[适用于 ASP.NET Core 应用程序的 Application Insights](./asp-net-core.md)。 无需为 ASP.NET Core 应用程序安装 StatusMonitor。 即使 ASP.NET Core 应用程序托管在 IIS 中，也是如此。
+  *是* 从 [Application Insights Agent 2.0.0-beta1](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/2.0.0-beta1) 开始，支持在 IIS 中托管的 ASP.NET Core 应用程序。
 
 - 如何验证启用是否成功？
 

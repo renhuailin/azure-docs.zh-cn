@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/16/2021
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 3196233728bb7f6493bbc06234c62d261ac99254
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 90acf43471e0213b801e4d147fe4e8a8abbd0394
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832331"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723074"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
 
@@ -121,7 +121,7 @@ Set-AzResource -PropertyObject $PropertiesObject -ResourceGroupName <group-name>
     > [!NOTE]
     > 如果[在 PowerShell 中使用 New-AzWebApp 创建了启用 Git 的应用](#create-a-git-enabled-app)，则已为你创建了远程 Git。
    
-1. 使用 `git push azure master` 推送到 Azure 远程实例。 
+1. 使用 `git push azure master` 远程推送到 Azure（参阅[更改部署分支](#change-deployment-branch)）。 
    
 1. 在“Git 凭据管理器”窗口中，输入[用户范围凭据或应用程序范围凭据](#configure-a-deployment-user)，而不是 Azure 登录凭据。
 
@@ -130,6 +130,23 @@ Set-AzResource -PropertyObject $PropertiesObject -ResourceGroupName <group-name>
 1. 查看输出。 你可能会看到特定于运行时的自动化，例如 MSBuild for ASP.NET、`npm install` for Node.js 和 `pip install` for Python。 
    
 1. 在 Azure 门户中浏览到你的应用以检查内容是否已部署。
+
+## <a name="change-deployment-branch"></a>更改部署分支
+
+将提交推送到应用服务存储库时，默认情况下，应用服务会在 `master` 分支中部署这些文件。 由于很多 Git 存储库正在从 `master` 迁移到 `main`，因此请确保按以下两种方式之一推送到应用服务存储库中的正确分支：
+
+- 使用命令显式部署到 `master`，如下所示：
+
+    ```bash
+    git push azure main:master
+    ```
+
+- 通过设置 `DEPLOYMENT_BRANCH` 应用设置来更改部署分支，然后将提交推送到自定义分支。 请通过 Azure CLI 使用此方式：
+
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group <group-name> --settings DEPLOYMENT_BRANCH='main'
+    git push azure main
+    ```
 
 ## <a name="troubleshoot-deployment"></a>排查部署问题
 
@@ -140,7 +157,7 @@ Set-AzResource -PropertyObject $PropertiesObject -ResourceGroupName <group-name>
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|应用未正常运行。|在 Azure 门户中启动应用。 如果 Web 应用已停止，Git 部署将不可用。|
 |`Couldn't resolve host 'hostname'`|“azure”远程实例的地址信息不正确。|使用 `git remote -v` 命令列出所有远程网站以及关联的 URL。 确认“azure”远程网站的 URL 正确。 如果需要，请删除此远程网站并使用正确的 URL 重新创建它。|
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|在运行 `git push` 期间未指定分支，或者未在 `.gitconfig` 中设置 `push.default` 值。|再次运行 `git push`，并指定主分支：`git push azure main`。|
-|`Error - Changes committed to remote repository but deployment to website failed.`|你已推送与“azure”上的应用部署分支不匹配的本地分支。|请确认当前分支为 `master`。 若要更改默认分支，请使用 `DEPLOYMENT_BRANCH` 应用程序设置。|
+|`Error - Changes committed to remote repository but deployment to website failed.`|你已推送与“azure”上的应用部署分支不匹配的本地分支。|请确认当前分支为 `master`。 若要更改默认分支，请使用 `DEPLOYMENT_BRANCH` 应用程序设置（参阅[更改部署分支](#change-deployment-branch)）。 |
 |`src refspec [branchname] does not match any.`|你已尝试推送到“azure”远程实例上除主节点以外的分支。|再次运行 `git push`，并指定主分支：`git push azure main`。|
 |`RPC failed; result=22, HTTP code = 5xx.`|如果尝试通过 HTTPS 推送大型 Git 存储库，则可能出现此错误。|在本地计算机上更改 Git 配置，以增大 `postBuffer`。 例如：`git config --global http.postBuffer 524288000`。|
 |`Error - Changes committed to remote repository but your web app not updated.`|你已使用一个指定了其他所需模块的 _package.json_ 文件部署了 Node.js 应用。|检查发生此错误之前出现的 `npm ERR!` 错误消息，以了解有关失败的更多上下文。 下面是此错误的已知原因，以及相应的 `npm ERR!` 消息：<br /><br />**package.json 文件格式不当**：`npm ERR! Couldn't read dependencies.`<br /><br />**本机模块没有适用于 Windows 的二进制分发版**：<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />或 <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|

@@ -3,13 +3,13 @@ title: 轮换 Azure Kubernetes 服务 (AKS) 中的证书
 description: 了解如何轮换 Azure Kubernetes 服务 (AKS) 群集中的证书。
 services: container-service
 ms.topic: article
-ms.date: 11/15/2019
-ms.openlocfilehash: b3ab6074dcbf79df8b2b0ff3369b94006343a2a6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 7/13/2021
+ms.openlocfilehash: ea488e281e52949eeb53fdeffb1dc26afb5a9b5e
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089859"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122066224"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>轮换 Azure Kubernetes 服务 (AKS) 中的证书
 
@@ -33,17 +33,32 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 * `kubectl` 客户端具有用于与 AKS 群集通信的证书。
 
 > [!NOTE]
-> 对于 2019 年 3 月之前创建的 AKS 群集，其证书将在两年后到期。 任何在 2019 年 3 月之后创建的群集或其证书已轮换的群集都具有 30 年后过期的群集 CA 证书。 其他所有证书均两年后过期。 若要验证群集的创建时间，请使用 `kubectl get nodes` 查看节点池的 *存在时间*。
+> 对于 2019 年 5 月之前创建的 AKS 群集，其证书将在两年后到期。 任何在 2019 年 5 月之后创建的群集或其证书已轮换的任何群集都具有 30 年后过期的群集 CA 证书。 使用群集 CA 进行签名的其他所有 AKS 证书将在两年后过期，并在 AKS 版本升级期间自动轮换。 若要验证群集的创建时间，请使用 `kubectl get nodes` 查看节点池的 *存在时间*。
 > 
-> 此外，还可以检查群集证书的到期日期。 例如，以下 Bash 命令会显示 myAKSCluster 群集的证书详细信息。
+> 此外，还可以检查群集证书的到期日期。 例如，以下 Bash 命令会显示资源组 rg 中的 myAKSCluster 群集的证书详细信息 
 > ```console
-> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
+> kubectl config view --raw -o jsonpath="{.users[?(@.name == 'clusterUser_rg_myAKSCluster')].user.client-certificate-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```
+
+* 检查 apiserver 证书的到期日期
+```console
+curl https://{apiserver-fqdn} -k -v 2>&1 |grep expire
+```
+
+* 检查 VMAS 代理节点上证书的到期日期
+```console
+az vm run-command invoke -g MC_rg_myAKSCluster_region -n vm-name --command-id RunShellScript --query 'value[0].message' -otsv --scripts "openssl x509 -in /etc/kubernetes/certs/apiserver.crt -noout -enddate"
+```
+
+* 检查一个 VMSS 代理节点上证书的到期日期
+```console
+az vmss run-command invoke -g MC_rg_myAKSCluster_region -n vmss-name --instance-id 0 --command-id RunShellScript --query 'value[0].message' -otsv --scripts "openssl x509 -in /etc/kubernetes/certs/apiserver.crt -noout -enddate"
+```
 
 ## <a name="rotate-your-cluster-certificates"></a>轮换群集证书
 
 > [!WARNING]
-> 使用 `az aks rotate-certs` 轮换证书可能会导致 AKS 群集最多停机 30 分钟。
+> 使用 `az aks rotate-certs` 轮换证书将重新创建所有节点，并可能导致 AKS 群集故障长达 30 分钟。
 
 使用 [az aks get-credentials][az-aks-get-credentials] 登录到 AKS 群集。 此命令还会在本地计算机上下载并配置 `kubectl` 客户端证书。
 

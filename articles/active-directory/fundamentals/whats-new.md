@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d723423fdb57ad60f5665be2d5fa0a760c9d770d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3c9b954776c33fedc3a770bc0aab0185ad595aff
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742907"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219752"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -584,7 +584,7 @@ B2C 现在支持对企业到消费者 (B2C) 应用和用户的条件访问和标
 **服务类别：** 标识保护  
 **产品功能：** 标识安全和保护
  
-这项新检测作为一种临时方法，使安全团队能够在检测到攻击时，通过将会话风险提升为高风险来通知你并保护你的用户。 该检测还会将关联的登录标记为“有风险”。 此检测遵循现有 Azure Active Directory 威胁智能进行用户风险检测，以全面了解 Microsoft 安全团队检测到的各种攻击。 [了解详细信息](../identity-protection/concept-identity-protection-risks.md#user-risk)。
+这项新检测作为一种临时方法，使安全团队能够在检测到攻击时，通过将会话风险提升为高风险来通知你并保护你的用户。 该检测还会将关联的登录标记为“有风险”。 此检测遵循现有 Azure Active Directory 威胁智能进行用户风险检测，以全面了解 Microsoft 安全团队检测到的各种攻击。 [了解详细信息](../identity-protection/concept-identity-protection-risks.md#user-linked-detections)。
  
 ---
 

@@ -4,15 +4,16 @@ description: 使用这些示例查询以编程方式访问 Microsoft 商业市�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
-ms.date: 3/08/2021
-ms.openlocfilehash: 7d788448fb3f8a849f79e43fcb0737898f4c9e15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
+ms.date: 8/06/2021
+ms.openlocfilehash: ac276f495ac2a5eb3bee6ac0f682185cf8424611
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583437"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748232"
 ---
 # <a name="sample-queries-for-programmatic-analytics"></a>编程式分析的示例查询
 
@@ -62,6 +63,8 @@ ms.locfileid: "102583437"
 | 过去 6 个月特定产品/服务名称的“订单”报表 | `SELECT OrderId, OrderPurchaseDate FROM ISVOrder WHERE OfferName = ‘Example Offer Name’ TIMESPAN LAST_6_MONTHS` |
 | 过去 6 个月有效订单的“订单”报表 | `SELECT OrderId, OrderPurchaseDate FROM ISVOrder WHERE OrderStatus = ‘Active’ TIMESPAN LAST_6_MONTHS` |
 | 过去 6 个月已取消的订单的“订单”报表 | `SELECT OrderId, OrderPurchaseDate FROM ISVOrder WHERE OrderStatus = ‘Cancelled’ TIMESPAN LAST_6_MONTHS` |
+| 带有条款开始日期、条款结束日期、估计费用和货币的“订单”报表 | `SELECT OrderId, TermStartId, TermEndId, estimatedcharges from ISVOrderV2 WHERE OrderStatus = ‘Active’ TIMESPAN LAST_6_MONTHS` |
+| 过去 6 个月活动的试用订单的“订单”报表 | `SELECT OrderId from ISVOrderV2 WHERE OrderStatus = ‘Active’ and HasTrial = ‘True’ TIMESPAN LAST_6_MONTHS` |
 |||
 
 ## <a name="next-steps"></a>后续步骤

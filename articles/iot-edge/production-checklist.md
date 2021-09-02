@@ -2,7 +2,6 @@
 title: 准备在生产环境中部署解决方案 - Azure IoT Edge
 description: 了解如何将 Azure IoT Edge 解决方案从开发环境转移到生产环境，包括使用适当的证书设置设备以及为将来的代码更新制定部署计划。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/01/2021
 ms.topic: conceptual
@@ -11,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 711b4f6577b17e84a5d30774fa7be4c9033d4340
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 964c3f0bb346b3c2606af1227b558d06071bfe20
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031118"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728821"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -40,7 +39,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 
 ### <a name="install-production-certificates"></a>安装生产证书
 
-生产环境中的每个 IoT Edge 设备上需要安装设备证书颁发机构 (CA) 证书。 然后，在配置文件中向 IoT Edge 运行时声明该 CA 证书。 对于开发和测试方案，如果在配置文件中没有声明证书，则 IoT Edge 运行时会创建临时证书。 但是，这些临时证书将在三个月后过期，并且对于生产方案而言并不安全。 对于生产方案，你应该提供自己的设备 CA 证书，不管是自签名证书颁发机构颁发的证书，还是从商业证书颁发机构购买的证书。
+生产环境中的每个 IoT Edge 设备上需要安装设备证书颁发机构 (CA) 证书。 然后，在配置文件中向 IoT Edge 运行时声明该 CA 证书。 对于开发和测试场景，如果配置文件中没有声明证书，则 IoT Edge 运行时会创建临时证书。 但是，这些临时证书将在三个月后过期，并且对于生产方案而言并不安全。 对于生产方案，你应该提供自己的设备 CA 证书，不管是自签名证书颁发机构颁发的证书，还是从商业证书颁发机构购买的证书。
 
 <!--1.1-->
 :::moniker range="iotedge-2018-06"
@@ -64,7 +63,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 * IoT Edge
 * CA 证书
 
-有关详细信息，请参阅[更新 IoT Edge 运行时](how-to-update-iot-edge.md)。 当前的用于更新 IoT Edge 的方法需要通过物理方式或通过 SSH 来访问 IoT Edge 设备。 若要更新许多设备，请考虑在脚本中添加更新步骤，或使用 Ansible 等自动化工具。
+有关详细信息，请参阅[更新 IoT Edge 运行时](how-to-update-iot-edge.md)。 更新 IoT Edge 的当前方法需要通过物理方式或 SSH 方式访问 IoT Edge 设备。 若要更新许多设备，请考虑在脚本中添加更新步骤，或使用 Ansible 等自动化工具。
 
 ### <a name="use-moby-as-the-container-engine"></a>使用 Moby 作为容器引擎
 
@@ -81,7 +80,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 * MQTTWS
 * AMQPWS
 
-请在设备本身的配置文件中为 IoT Edge 代理配置 UpstreamProtocol 变量。 例如，如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面，则可能需要将 IoT Edge 代理配置为使用基于 WebSocket 的 AMQP (AMQPWS)，这样才能与 IoT 中心建立初始连接。
+请在设备本身的配置文件中配置 IoT Edge 代理的 UpstreamProtocol 变量。 例如，如果 IoT Edge 设备位于阻止 AMQP 端口的代理服务器后面，则可能需要将 IoT Edge 代理配置为使用基于 WebSocket 的 AMQP (AMQPWS)，这样才能与 IoT 中心建立初始连接。
 
 IoT Edge 设备建立连接后，请务必在将来的部署中继续为两个运行时模块配置 UpstreamProtocol 变量。 [将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)中提供了此过程的示例。
 
@@ -144,33 +143,9 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 ## <a name="container-management"></a>容器管理
 
 * 重要说明
-  * 管理对容器注册表的访问
   * 使用标记管理版本
 * **有用提示**
   * 将运行时容器存储在专用注册表中
-
-### <a name="manage-access-to-your-container-registry"></a>管理对容器注册表的访问
-
-在将模块部署到生产 IoT Edge 设备之前，请务必控制对容器注册表的访问，使外部用户无法访问容器映像或对其进行更改。 使用专用（而不是公共）容器注册表来管理容器映像。
-
-教程和其他文档会指导你在 IoT Edge 设备上使用开发计算机上所用的相同容器注册表凭据。 这些说明旨在帮助你更轻松地设置测试和开发环境，在生产方案中请勿遵照这些说明。
-
-为了更安全地访问注册表，可以使用[身份验证选项](../container-registry/container-registry-authentication.md)。 一种建议使用的常用身份验证方法是使用 Active Directory 服务主体，该方法非常适用于应用程序或服务，它以自动或无人值守（无头）方式拉取容器映像，就像 IoT Edge 设备所做的那样。
-
-若要创建服务主体，请按[创建服务主体](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)中所述运行两个脚本。 这些脚本执行以下任务：
-
-* 第一个脚本创建服务主体。 它输出服务主体 ID 和服务主体密码。 将这些值安全地存储在记录中。
-
-* 第二个脚本创建要向服务主体授予的角色分配，以后可以根据需要运行这些角色分配。 对于 `role` 参数，建议应用 acrPull 用户角色。 有关角色列表，请参阅 [Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)。
-
-若要使用服务主体进行身份验证，请提供你通过第一个脚本获取的服务主体 ID 和密码。 在部署清单中指定这些凭据。
-
-* 对于用户名或客户端 ID，请指定服务主体 ID。
-
-* 对于密码或客户端机密，请指定服务主体密码。
-
-> [!NOTE]
-> 实现增强的安全身份验证后，请禁用“管理员用户”设置，以便不再提供默认的用户名/密码访问权限。 在 Azure 门户的容器注册表中，从左窗格菜单的“设置”下选择“访问密钥”。
 
 ### <a name="use-tags-to-manage-versions"></a>使用标记管理版本
 
@@ -216,7 +191,7 @@ IoT Edge 代理和 IoT Edge 中心映像使用与之关联的 IoT Edge 版本进
 
 ### <a name="review-outboundinbound-configuration"></a>检查出站/入站配置
 
-Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大多数 IoT Edge 方案，只需建立三个连接。 容器引擎需要连接到保存模块映像的一个或多个容器注册表。 IoT Edge 运行时需要连接到 IoT 中心，以检索设备配置信息，以及发送消息和遥测数据。 而如果使用自动预配，则 IoT Edge 需要连接到设备预配服务。 有关详细信息，请参阅[防火墙和端口配置规则](troubleshoot.md#check-your-firewall-and-port-configuration-rules)。
+Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大多数 IoT Edge 方案，只需建立三个连接。 容器引擎需要连接到保存模块映像的一个或多个容器注册表。 IoT Edge 运行时需要连接到 IoT 中心，以检索设备配置信息，以及发送消息和遥测数据。 如果使用自动预配，则 IoT Edge 需要连接到设备预配服务。 有关详细信息，请参阅[防火墙和端口配置规则](troubleshoot.md#check-your-firewall-and-port-configuration-rules)。
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>允许从 IoT Edge 设备进行连接
 
@@ -241,13 +216,13 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
    | \*.azure-devices.net | 5671、8883、443 | IoT 中心访问 |
    | \*.docker.io  | 443 | Docker 中心访问（可选） |
 
-这些防火墙规则中有一些是从 Azure 容器注册表继承的。 有关详细信息，请参阅[配置规则以访问防火墙后的 Azure 容器注册表](../container-registry/container-registry-firewall-access-rules.md)。
+其中一些防火墙规则继承自 Azure 容器注册表。 有关详细信息，请参阅[配置规则以访问防火墙后的 Azure 容器注册表](../container-registry/container-registry-firewall-access-rules.md)。
 
 > [!NOTE]
-> 为了在 REST 和数据终结点之间提供一致的 FQDN，从 2020 年 6 月 15 日开始，Microsoft 容器注册表数据终结点从 `*.cdn.mscr.io` 更改为 `*.data.mcr.microsoft.com`  
-> 有关详细信息，请参阅 [Microsoft 容器注册表客户端防火墙规则配置](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)
+> 为了在 REST 和数据终结点之间提供一致的 FQDN，从 2020 年 6 月 15 日开始，Microsoft Container Registry 数据终结点将从 `*.cdn.mscr.io` 更改为 `*.data.mcr.microsoft.com`  
+> 有关详细信息，请参阅 [Microsoft Container Registry 客户端防火墙规则配置](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)
 
-如果不需要将防火墙配置为允许访问公共容器注册表，则可在专用容器注册表中存储映像，如[将运行时容器存储在专用注册表中](#store-runtime-containers-in-your-private-registry)中所述。
+如果你不想将防火墙配置为允许访问公共容器注册表，则可以在专用容器注册表中存储映像，如[在专用注册表中存储运行时容器](#store-runtime-containers-in-your-private-registry)中所述。
 
 ### <a name="configure-communication-through-a-proxy"></a>配置为通过代理进行通信
 
@@ -257,6 +232,7 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 * **有用提示**
   * 设置日志和诊断
+  * 施加日志大小限制
   * 考虑测试和 CI/CD 管道
 
 ### <a name="set-up-logs-and-diagnostics"></a>设置日志和诊断
@@ -277,7 +253,7 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 <!--1.2-->
 :::moniker range=">=iotedge-2020-11"
 
-IoT Edge 从版本 1.2 开始依赖于多个守护程序。 虽然可以通过 `journalctl` 单独查询每个守护程序的日志，但若要查询合并的日志，可使用 `iotedge system` 命令，后者提供的方法很方便。
+从 1.2 版开始，IoT Edge 依赖于多个守护程序。 虽然可以使用 `journalctl` 单独查询每个守护程序的日志，但若要以便捷方式查询组合日志，则应使用 `iotedge system` 命令。
 
 * 合并的 `iotedge` 命令：
 
@@ -285,7 +261,7 @@ IoT Edge 从版本 1.2 开始依赖于多个守护程序。 虽然可以通过 `
   sudo iotedge system logs
   ```
 
-* 等效的 `journalctl` 命令：
+* 等效 `journalctl` 命令：
 
   ```bash
   journalctl -u aziot-edge -u aziot-identityd -u aziot-keyd -u aziot-certd -u aziot-tpmd
@@ -373,6 +349,43 @@ IoT Edge 从版本 1.2 开始依赖于多个守护程序。 虽然可以通过 `
 ### <a name="consider-tests-and-cicd-pipelines"></a>考虑测试和 CI/CD 管道
 
 为使 IoT Edge 部署方案获得最大的效率，请考虑将生产部署集成到测试和 CI/CD 管道中。 Azure IoT Edge 支持多个 CI/CD 平台，包括 Azure DevOps。 有关详细信息，请参阅[向 Azure IoT Edge 进行持续集成和持续部署](how-to-continuous-integration-continuous-deployment.md)。
+
+## <a name="security-considerations"></a>安全注意事项
+
+* 重要说明
+  * 管理对容器注册表的访问
+  * 限制容器对主机资源的访问
+
+### <a name="manage-access-to-your-container-registry"></a>管理对容器注册表的访问
+
+在将模块部署到生产 IoT Edge 设备之前，请务必控制对容器注册表的访问，使外部用户无法访问容器映像或对其进行更改。 使用专用容器注册表管理容器映像。
+
+教程和其他文档会指导你在 IoT Edge 设备上使用开发计算机上所用的相同容器注册表凭据。 这些说明旨在帮助你更轻松地设置测试和开发环境，在生产方案中请勿遵照这些说明。
+
+为了更安全地访问注册表，可以使用[身份验证选项](../container-registry/container-registry-authentication.md)。 一种建议使用的常用身份验证方法是使用 Active Directory 服务主体，该方法非常适用于应用程序或服务，它以自动或无人值守（无头）方式拉取容器映像，就像 IoT Edge 设备所做的那样。
+
+若要创建服务主体，请按[创建服务主体](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)中所述运行两个脚本。 这些脚本执行以下任务：
+
+* 第一个脚本创建服务主体。 它输出服务主体 ID 和服务主体密码。 将这些值安全地存储在记录中。
+
+* 第二个脚本创建要向服务主体授予的角色分配，以后可以根据需要运行这些角色分配。 对于 `role` 参数，建议应用 acrPull 用户角色。 有关角色列表，请参阅 [Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)。
+
+若要使用服务主体进行身份验证，请提供你通过第一个脚本获取的服务主体 ID 和密码。 在部署清单中指定这些凭据。
+
+* 对于用户名或客户端 ID，请指定服务主体 ID。
+
+* 对于密码或客户端机密，请指定服务主体密码。
+
+> [!NOTE]
+> 实现增强的安全身份验证后，请禁用“管理员用户”设置，以便不再提供默认的用户名/密码访问权限。 在 Azure 门户的容器注册表中，从左窗格菜单的“设置”下选择“访问密钥”。
+
+### <a name="limit-container-access-to-host-resources"></a>限制容器对主机资源的访问
+
+若要平衡模块间的共享主机资源，建议限制每个模块的资源消耗。 这种限制可确保一个模块不能使用过多的内存或 CPU，并防止其他进程在设备上运行。 IoT Edge 平台默认不限制模块的资源，因为如要知道以最佳方式运行给定模块的资源需求量，则需要进行测试。
+
+Docker 提供了一些约束，可用于限制内存和 CPU 使用率等资源。 有关详细信息，请参阅[内存、CPU 和 GPU 的运行时选项](https://docs.docker.com/config/containers/resource_constraints/)。
+
+这些约束可以通过使用部署清单中的创建选项应用于各个模块。 若要了解详细信息，请参阅[如何配置 IoT Edge 模块的容器创建选项](how-to-use-create-options.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

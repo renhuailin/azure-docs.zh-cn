@@ -13,14 +13,14 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: d8a176fff0da932d0fafd40b9ab895b635acc5f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af729767467d2dc950fb7a559fec4d0a81d07cab
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96169437"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029178"
 ---
-# <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>如何：将适用于 iOS 和 macOS 的 MSAL 配置为使用不同的标识提供者
+# <a name="configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>将适用于 iOS 和 macOS 的 MSAL 配置为使用不同的标识提供者
 
 本文介绍如何在适用于 iOS 和 macOS 的 Microsoft 身份验证库 (MSAL) 应用中配置不同的颁发机构，例如 Azure Active Directory (Azure AD)、企业到消费者 (B2C)、主权云和来宾用户。  在整篇文章中，基本上可将颁发机构看作是标识提供者。
 

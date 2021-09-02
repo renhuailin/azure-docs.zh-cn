@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure Percept DK 和 Azure Percept 音频创建语音助理
+title: 在 Azure Percept Studio 中创建无代码语音助理
 description: 了解如何创建无代码语音解决方案并将其部署到 Azure Percept DK
-author: philmea
-ms.author: philmea
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 441d0b4b76e0c543bd82c5546e0ca89250e418e7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0ceb71b5caaf17c485d4f4bd649e6b68d7c72a5d
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748162"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224052"
 ---
-# <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>使用 Azure Percept DK 和 Azure Percept 音频创建语音助理
+# <a name="create-a-no-code-voice-assistant-in-azure-percept-studio"></a>在 Azure Percept Studio 中创建无代码语音助理
 
 在本教程中，你将从模板创建一个语音助理，以便通过 Azure Percept DK 和 Azure Percept 音频使用。 语音助理演示在 [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 中运行，该演示包含一系列由语音控制的虚拟对象。 若要控制对象，请先说关键字（即用于唤醒设备的单词或短语），然后再说命令。 每个模板都响应一组特定命令。
 

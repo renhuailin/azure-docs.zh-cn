@@ -2,18 +2,18 @@
 title: 通过主机加密启用端到端加密 - Azure CLI - 托管磁盘
 description: 通过主机加密在 Azure 托管磁盘上启用端到端加密。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 10fe02b0deb505fcedc6fc3119150709b6613b04
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 752fef23b0acd2fe4722fb89720d6312699e49cf
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673016"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358338"
 ---
 # <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure CLI 通过主机加密来启用端到端加密
 
@@ -124,6 +124,20 @@ az vm show -n $vmName \
 --query [securityProfile.encryptionAtHost] -o tsv
 ```
 
+
+### <a name="update-a-vm-to-disable-encryption-at-host"></a>更新虚拟机以禁用主机加密。 
+
+必须先解除分配虚拟机，然后才能在主机上禁用加密。
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm update -n $vmName \
+-g $rgName \
+--set securityProfile.encryptionAtHost=false
+```
+
 ### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>使用客户管理的密钥创建虚拟机规模集，并启用主机加密。 
 
 使用之前创建的 DiskEncryptionSet 的资源 URI 创建包含托管磁盘的虚拟机规模集，以便使用客户管理的密钥加密 OS 和数据磁盘的缓存。 临时磁盘通过平台管理的密钥加密。 
@@ -191,6 +205,19 @@ vmssName=yourVMName
 az vmss show -n $vmssName \
 -g $rgName \
 --query [virtualMachineProfile.securityProfile.encryptionAtHost] -o tsv
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-disable-encryption-at-host"></a>更新虚拟机规模集以禁用主机加密。 
+
+你可以在虚拟机规模集上禁用主机上的加密，但这只会影响在主机上禁用加密之后创建的虚拟机。 对于现有虚拟机，必须先将虚拟机解除分配，[在该虚拟机上禁用主机上的加密](#update-a-vm-to-disable-encryption-at-host)，然后才能重新分配虚拟机。
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss update -n $vmssName \
+-g $rgName \
+--set virtualMachineProfile.securityProfile.encryptionAtHost=false
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>找到支持的 VM 大小

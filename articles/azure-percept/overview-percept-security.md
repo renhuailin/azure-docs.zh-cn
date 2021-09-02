@@ -1,20 +1,20 @@
 ---
-title: Azure Percept 安全概述
+title: Azure Percept 安全性
 description: 了解有关 Azure Percept 安全的详细信息
 author: mimcco
-ms.author: mimcco
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: template-concept
-ms.openlocfilehash: 93884fb87f87651054ffff0a04c4910de634a5eb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cfee4f14b5e7f135c7bbe609b5f3453b5fce8589
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567638"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221941"
 ---
-# <a name="azure-percept-security-overview"></a>Azure Percept 安全概述
+# <a name="azure-percept-security"></a>Azure Percept 安全性
 
 Azure Percept 设备采用硬件根信任设计。 这一内置安全机制可帮助保护推理数据以及在隐私方面具有敏感性的传感器（如相机和麦克风），并可以启用 Azure Percept Studio 服务的设备身份验证和授权。
 

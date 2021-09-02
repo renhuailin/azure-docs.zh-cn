@@ -1,16 +1,19 @@
 ---
 title: 管理模型和学习设置 - 个性化体验创建服务
 description: 机器学习模型和学习设置可以导出到自己的源代码管理系统中进行备份。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 48e954eab9da5dfc638f93a7c4e55c675c4f2ac9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e1e5dd9c21b89aba4c905656dd79c7934f8b061
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97797241"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831600"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>如何管理模型和学习设置
 

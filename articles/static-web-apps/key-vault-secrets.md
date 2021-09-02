@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/17/2021
 ms.author: cshoe
-ms.openlocfilehash: cc0ced1a6c91bf2e7960e638c295d33a45db135e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3f373122d6d68e6435cfe7083115c91718e05a09
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073335"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737471"
 ---
 # <a name="securing-authentication-secrets-in-azure-key-vault"></a>保护 Azure Key Vault 中的身份验证机密
 
@@ -24,11 +24,16 @@ ms.locfileid: "110073335"
 - 将访问 Key Vault 机密的权限授予标识。
 - 从 Static Web Apps 应用程序设置引用 Key Vault 机密。
 
-本文演示了如何在应用程序中设置每个项。
+本文演示如何在生产中为[自带函数应用程序](./functions-bring-your-own.md)设置每一项。
+
+Key Vault 集成不适用于：
+
+- [静态 Web 应用的过渡版本](./review-publish-pull-requests.md)。 Key Vault 集成仅在生产环境中受支持。
+- [使用托管函数的静态 Web 应用](./apis.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 
-- 现有 Azure Static Web Apps 站点。
+- 使用[自带函数](./functions-bring-your-own.md)的现有 Azure Static Web Apps 站点。
 - 现有带机密值的 Key Vault 资源。
 
 ## <a name="create-identity"></a>创建标识

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 6/01/2021
 ms.author: mtalasila
 ms.subservice: files
-ms.openlocfilehash: 597a3dfce5d647359b23e732f74dc6949078c000
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: b608100ab9ec1706e65cd4930b00ef163218f64d
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113798732"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258688"
 ---
 # <a name="deprovision-your-azure-file-sync-server-endpoint"></a>取消预配 Azure 文件同步服务器终结点
 
@@ -57,13 +57,13 @@ Azure 文件同步每天都会在服务器上创建临时 VSS 快照，以同步
 
 若要确保云中有最新数据，需要等待最终同步上传会话完成。 
 
-若要检查同步会话的状态，请在本地服务器上打开“事件查看器”。 导航到遥测事件日志（应用程序和服务\Microsoft\FileSync\代理）。 确保在手动启动 VSS 上传会话后，出现包含以下内容的 9102 事件：‘sync direction’ = upload, ‘HResult’ = 0 and ‘PerItemErrorCount’ = 0。
+若要检查同步会话的状态，请在本地服务器上打开“事件查看器”。 导航到遥测事件日志（应用程序和服务\Microsoft\FileSync\代理）。 确保在手动启动 VSS 上传会话后，出现包含以下内容的 9102 事件：'sync direction' = upload，'HResult' = 0 和 'PerItemErrorCount' = 0。
 
 ![查看最终同步会话是否完成的屏幕截图。](media/file-sync-server-endpoint-delete/event-viewer.png)
 
-如果 ‘PerItemErrorCount’ 大于 0，则文件将无法同步。使用 FileSyncErrorsReport.ps1 查看未能同步的文件。此 PowerShell 脚本通常位于已安装 Azure 文件同步代理的服务器上的此路径：C:\Program Files\Azure\StorageSyncAgent\FileSyncErrorsReport.ps1
+如果 'PerItemErrorCount' 大于 0，则文件将无法同步。使用 FileSyncErrorsReport.ps1 查看未能同步的文件。此 PowerShell 脚本通常位于已安装 Azure 文件同步代理的服务器上的此路径：C:\Program Files\Azure\StorageSyncAgent\FileSyncErrorsReport.ps1 
 
-如果这些文件不重要，则可以删除服务器终结点。 如果这些文件很重要，请修复相关错误，并等待包含以下内容的另一个 9102 事件出现，再删除服务器终结点：‘sync direction’ = upload, ‘HResult’ = 0 and ‘PerItemErrorCount’ = 0。
+如果这些文件不重要，则可以删除服务器终结点。 如果这些文件很重要，请修复相关错误，并等待包含以下内容的另一个 9102 事件出现，再删除服务器终结点：'sync direction' = upload，'HResult' = 0 和 'PerItemErrorCount' = 0。
 
 ## <a name="scenario-2-you-intend-to-delete-your-server-endpoint-and-stop-using-this-specific-azure-file-share"></a>方案 2：打算删除服务器终结点，并停止使用此特定的 Azure 文件共享
 
@@ -81,7 +81,7 @@ Azure 文件同步每天都会在服务器上创建临时 VSS 快照，以同步
 
 使用 Invoke-StorageSyncFileRecall PowerShell cmdlet，并指定 SyncGroupName 参数以撤回所有文件。 
 ```powershell
-Invoke-StorageSyncFileRecall  -SyncGroupName “samplesyncgroupname”
+Invoke-StorageSyncFileRecall -SyncGroupName "samplesyncgroupname"
 ```
 此 cmdlet 运行完毕后，便可以转到下一节。
 
@@ -102,13 +102,13 @@ Invoke-AzStorageSyncChangeDetection -ResourceGroupName "myResourceGroup" -Storag
 ### <a name="wait-for-a-final-sync-session-to-complete"></a>等待最终同步会话完成
 若要确保数据在本地服务器上保持最新，需要等待最终同步上传会话完成。 
 
-若要检查会话是否完成，请打开本地服务器上的“事件查看器”。 导航到遥测事件日志（应用程序和服务\Microsoft\FileSync\代理）。 确保在日期/时间云更改检测完成后，出现包含以下内容的 9102 事件：‘sync direction’ = download, ‘HResult’ = 0 and ‘PerItemErrorCount’ = 0。
+若要检查会话是否完成，请打开本地服务器上的“事件查看器”。 导航到遥测事件日志（应用程序和服务\Microsoft\FileSync\代理）。 确保在日期/时间云更改检测完成后，出现包含以下内容的 9102 事件：'sync direction' = download，'HResult' = 0 和 'PerItemErrorCount' = 0。
 
 ![查看最终同步会话是否完成的屏幕截图。](media/file-sync-server-endpoint-delete/event-viewer.png)
 
-如果 ‘PerItemErrorCount’ 大于 0，则文件将无法同步。使用 FileSyncErrorsReport.ps1 查看未能同步的文件。此 PowerShell 脚本通常位于已安装 Azure 文件同步代理的服务器上的此路径：C:\Program Files\Azure\StorageSyncAgent\FileSyncErrorsReport.ps1
+如果 'PerItemErrorCount' 大于 0，则文件将无法同步。使用 FileSyncErrorsReport.ps1 查看未能同步的文件。此 PowerShell 脚本通常位于已安装 Azure 文件同步代理的服务器上的此路径：C:\Program Files\Azure\StorageSyncAgent\FileSyncErrorsReport.ps1 
 
-如果这些文件不重要，则可以删除服务器终结点。 如果这些文件很重要，请修复相关错误，并等待包含以下内容的另一个 9102 事件出现，再删除服务器终结点：‘sync direction’ = download, ‘HResult’ = 0 and ‘PerItemErrorCount’ = 0。
+如果这些文件不重要，则可以删除服务器终结点。 如果这些文件很重要，请修复相关错误，并等待包含以下内容的另一个 9102 事件出现，再删除服务器终结点：'sync direction' = download，'HResult' = 0 和 'PerItemErrorCount' = 0。
 
 ## <a name="next-steps"></a>后续步骤
 * [修改 Azure 文件同步拓扑](./file-sync-modify-sync-topology.md)

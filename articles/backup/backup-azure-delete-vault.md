@@ -3,12 +3,12 @@ title: 删除 Microsoft Azure 恢复服务保管库
 description: 本文介绍了如何先删除依赖项，然后删除 Azure 备份恢复服务保管库。
 ms.topic: conceptual
 ms.date: 06/07/2021
-ms.openlocfilehash: 022297407200f6045cd0cf4c0922a83c41333a04
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0eb5e7c48bf15583e96a5bf30149ba01ee7c2e33
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752727"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747648"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 
@@ -52,7 +52,7 @@ ms.locfileid: "111752727"
 
 完成这些步骤后，你可以继续[删除保管库](#delete-the-recovery-services-vault)。
 
-如果你在本地或云上没有任何受保护的项，但仍收到保管库删除错误，请执行[使用 Azure 资源管理器删除恢复服务保管库](#delete-the-recovery-services-vault-by-using-azure-resource-manager)中的步骤
+如果仍无法删除不包含依赖项的保管库，请按照[使用 ARM 客户端删除保管库](#delete-the-recovery-services-vault-by-using-azure-resource-manager)中列出的步骤进行操作。 
 
 ## <a name="delete-protected-items-in-the-cloud"></a>删除云中的受保护项
 

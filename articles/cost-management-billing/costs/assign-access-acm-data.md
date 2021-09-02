@@ -3,18 +3,18 @@ title: 分配对 Azure 成本管理数据的访问权限
 description: 本文介绍如何分配不同访问范围的 Azure 成本管理数据访问权限。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 06/27/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: cb54c5f7334120f6cd01ed1704939c5c1a55e7c6
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 9ee0f7f854363389f3e6594946411f05b1b8b790
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105645284"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988690"
 ---
 # <a name="assign-access-to-cost-management-data"></a>分配对成本管理数据的访问权限
 
@@ -140,45 +140,24 @@ ms.locfileid: "105645284"
 
 若要查看管理组范围，至少需要成本管理读取者（或读取者）权限。 可以在 Azure 门户中配置对管理组的访问权限。 你必须至少对管理组具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外对于 Azure EA 帐户，还必须在 EA 门户中启用“AO 视图费用”设置  。
 
-1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 在侧栏中选择“所有服务”，搜索“管理组”，然后选择“管理组”    。
-3. 在层次结构中选择管理组。
-4. 选择管理组名称旁边的“详细信息”。 
-5. 从左窗格中选择“访问控制(标识和访问管理)”  。
-6. 选择 **添加** 。
-7. 在“角色”下选择“成本管理读取者”   。
-8. 在“分配访问权限至”下选择“Azure AD 用户、组或应用程序”   。
-9. 若要分配访问权限，请搜索用户并选择用户。
-10. 选择“保存”。   
-    ![管理组中的“添加权限”框中的示例信息](./media/assign-access-acm-data/add-permissions.png)
+
+- 向管理组范围内的用户分配成本管理读取器（或读取者）角色。  
+     有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="assign-subscription-scope-access"></a>分配订阅范围的访问权限
 
 若要访问订阅，至少需要成本管理读取者（或读取者）权限。 可以在 Azure 门户中配置对订阅的访问权限。 你必须至少对订阅具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外对于 Azure EA 帐户，还必须在 EA 门户中启用“AO 视图费用”设置  。
 
-1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 在侧栏中选择“所有服务”，搜索“订阅”，然后选择“订阅”    。
-3. 选择订阅。
-4. 从左窗格中选择“访问控制(标识和访问管理)”  。
-5. 选择 **添加** 。
-6. 在“角色”下选择“成本管理读取者”   。
-7. 在“分配访问权限至”下选择“Azure AD 用户、组或应用程序”   。
-8. 若要分配访问权限，请搜索用户并选择用户。
-9. 选择“保存”。 
+- 向订阅范围内的用户分配成本管理读取器（或读取者）角色。  
+     有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="assign-resource-group-scope-access"></a>分配资源组范围的访问权限
 
 若要访问资源组，至少需要成本管理读取者（或读取者）权限。 可以在 Azure 门户中配置对资源组的访问权限。 你必须至少对资源组具有“用户访问权限管理员”（或“所有者”）权限才能为其他人启用访问权限。 此外对于 Azure EA 帐户，还必须在 EA 门户中启用“AO 视图费用”设置  。
 
-1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 在侧栏中选择“所有服务”，搜索“资源组”，然后选择“资源组”    。
-3. 选择你的资源组。
-4. 从左窗格中选择“访问控制(标识和访问管理)”  。
-5. 选择 **添加** 。
-6. 在“角色”下选择“成本管理读取者”   。
-7. 在“分配访问权限至”下选择“Azure AD 用户、组或应用程序”   。
-8. 若要分配访问权限，请搜索用户并选择用户。
-9. 选择“保存”。 
+
+- 向资源组范围内的用户分配成本管理读取器（或读取者）角色。  
+     有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="cross-tenant-authentication-issues"></a>跨租户身份验证问题
 

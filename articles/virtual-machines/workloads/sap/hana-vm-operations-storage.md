@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/09/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 818d39417689fd5fad80b69b2ee63af9114dc239
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 5eb1ecce79e8b98478eb1957086f23d49c7c5b14
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004630"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968210"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -263,7 +263,7 @@ SAP /hana/data 卷的配置：
 > 超级磁盘并非在所有 Azure 区域都提供，并且还尚不完全支持下面列出的 VM 类型。 有关超级磁盘的可用区域以及受支持的 VM 系列的详细信息，请参阅文章 [Azure 中提供哪些可用磁盘类型？](../../disks-types.md#ultra-disk)。
 
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>生产推荐的使用纯超级磁盘配置的存储解决方案
-在此配置中，可以单独保留 /hana/data 和 /hana/log 卷 。 建议的值派生自 KPI，即 SAP 必须根据 [SAP TDI 存储白皮书](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)中建议的对 SAP HANA 和存储配置的 VM 类型进行认证。
+在此配置中，可以单独保留 /hana/data 和 /hana/log 卷 。 建议的值派生自 KPI，即 SAP 必须根据 [SAP TDI 存储白皮书](https://blogs.saphana.com/wp-content/uploads/2015/02/Storage-Whitepaper-2-54.pdf)中建议的对 SAP HANA 和存储配置的 VM 类型进行认证。
 
 这些建议通常超出了本文前面所述的 SAP 最低要求。 列出的建议是 SAP 提供的大小建议与不同 VM 类型提供的最大存储吞吐量之间的折衷方案。
 

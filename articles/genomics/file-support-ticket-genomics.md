@@ -4,18 +4,18 @@ titleSuffix: Microsoft Genomics
 description: 本文介绍如何提出支持请求以联系 Microsoft 基因组学（如果使用故障排除指南或 FAQ 无法解决你的问题）。
 keywords: 故障排除, 错误, 调试, 支持
 services: genomics
-author: grhuynh
+author: vigunase
 manager: cgronlun
-ms.author: grhuynh
+ms.author: vigunase
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ab85dbc95a8f7432afba3eaa082f6490d1ba8dba
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 4fd18dd1f8f15a99a7de32038798a925d369ed1a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113552453"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259456"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>如何与 Microsoft 基因组学联系以获取支持
 本概述介绍如何创建支持请求以与 Microsoft 基因组学联系。 这可能在无法使用[故障排除指南](troubleshooting-guide-genomics.md)或[常见问题](frequently-asked-questions-genomics.yml)解决问题时十分有用。 

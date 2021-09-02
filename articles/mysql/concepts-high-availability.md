@@ -6,14 +6,17 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 74d6981c0465a1960e920313c1f960f0d781692b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 921e4cd8885dcbad5cd477e7f2283c9b11c445fc
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092970"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653300"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的高可用性
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 Azure Database for MySQL 服务提供有保证的高级别可用性，即，提供正常运行时间占比为 [99.99%](https://azure.microsoft.com/support/legal/sla/mysql) 且具有财务支持的服务级别协议 (SLA)。 Azure Database for MySQL 在发生计划内事件（例如用户发起的缩放计算操作）期间提供高可用性，并且还在发生基础硬件、软件或网络故障等计划外事件时提供高可用性。 Azure Database for MySQL 在发生大多数严重状况时都可以快速恢复，确保用户在使用此服务时应用程序几乎不会停机。
 
 Azure Database for MySQL 适合运行对正常运行时间要求很高的关键数据库。 该服务基于 Azure 体系结构构建，具有固有的高可用性、冗余性和复原能力，可以缓解计划内和计划外中断造成的数据库停机，不需要你配置任何其他组件。 

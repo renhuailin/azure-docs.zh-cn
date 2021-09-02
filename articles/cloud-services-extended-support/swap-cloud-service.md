@@ -8,12 +8,12 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/01/2021
 ms.custom: ''
-ms.openlocfilehash: f5e01075ffb460c7ddd70b40a6b19f7ea70dd776
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d9e30d77708ad5ae8c5249a15d28685a56fd0216
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748803"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114462977"
 ---
 # <a name="swap-or-switch-deployments-in-azure-cloud-services-extended-support"></a>在 Azure 云服务（外延支持）中交换或切换部署
 
@@ -24,9 +24,14 @@ ms.locfileid: "107748803"
 > [!NOTE]
 > 无法在 Azure 云服务（经典）部署与 Azure 云服务（外延支持）部署之间进行交换。
 
-部署一对云服务中的第二个时，必须将该云服务设置为可与另一个云服务交换。
+首次部署一对云服务中的第二个时，必须将该云服务设置为可与另一个云服务交换。 部署第二对云服务后，不可在后续更新中使用现有的云服务与其进行交换。
 
 可以通过使用 Azure 资源管理器模板（ARM 模板）、Azure 门户或 REST API 交换部署。
+
+部署第二个云服务时，两个云服务都会将其 SwappableCloudService 属性设置为指向彼此。 对这些云服务进行的任何后续更新都需要指定此属性失败，即系统将返回错误，指示无法删除或更新 SwappableCloudService 属性。
+
+设置后的 SwappableCloudService 属性将被视为只读。 不得将该属性删除或更改为其他值。 删除（可交换云服务对的）其中一个云服务将导致其余云服务的 SwappableCloudService 属性遭到清除。
+
 
 ## <a name="arm-template"></a>ARM 模板
 
@@ -114,7 +119,7 @@ POST https://management.azure.com/subscriptions/subId/providers/Microsoft.Networ
 ## <a name="next-steps"></a>后续步骤 
 
 * 查看部署 Azure 云服务（外延支持）的[先决条件](deploy-prerequisite.md)。
-* 查看 Azure 云服务（外延支持）的[常见问题解答](faq.md)。
+* 查看 Azure 云服务（外延支持）的[常见问题解答](faq.yml)。
 * 使用以下选项之一部署 Azure 云服务（外延支持）云服务：
   * [Azure 门户](deploy-portal.md)
   * [PowerShell](deploy-powershell.md)

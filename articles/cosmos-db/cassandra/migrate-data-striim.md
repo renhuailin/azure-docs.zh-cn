@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 82d4fae022d2d97bb2285e556c4050fcb3cca562
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5c567e5bf64fdfcda9d6600fdcf5aa15c1a34f25
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778289"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112821"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>使用 Striim 将数据迁移到 Azure Cosmos DB Cassandra API 帐户
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -34,11 +34,11 @@ Azure 商城中的 Striim 映像提供从数据仓库和数据库到 Azure 的�
 
 1. 选择“创建资源”，并在 Azure 商城中搜索“Striim” 。 选择第一个选项，然后选择“创建”。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="查找 Striim 商城项":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="查找 Striim 商城项":::
 
 1. 接下来，输入 Striim 实例的配置属性。 Striim 环境部署在虚拟机中。 在“基本信息”窗格中，输入“VM 用户名”、“VM 密码”（此密码用于通过 SSH 连接到 VM）  。 选择要在其中部署 Striim 的“订阅”、“资源组”和“位置详细信息”  。 在完成后，选择“确定”。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="配置 Striim 的基本设置":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="配置 Striim 的基本设置":::
 
 
 1. 在“Striim 群集设置”窗格中，选择 Striim 部署的类型和虚拟机大小。
@@ -53,7 +53,7 @@ Azure 商城中的 Striim 映像提供从数据仓库和数据库到 Azure 的�
 
 1. 在“Striim 访问设置”窗格中，配置要用于登录到 Striim UI 的“公共 IP 地址”（选择默认值）、“Striim 的域名”、“管理员密码”   。 配置 VNET 和子网（选择默认值）。 在填写详细信息后，选择“确定”以继续。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Striim 访问设置":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Striim 访问设置":::
 
 1. Azure 将会验证部署并确保一切正常；完成验证需要几分钟时间。 在完成验证后，选择“确定”。
   
@@ -81,11 +81,11 @@ Azure 商城中的 Striim 映像提供从数据仓库和数据库到 Azure 的�
 
 1. 导航到在 Azure 门户中部署的 Striim 实例。 选择上部菜单栏中的“连接”按钮，然后从“SSH”选项卡中，复制“使用 VM 本地帐户登录”字段中的 URL  。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/get-ssh-url.png" alt-text="获取 SSH URL":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/get-ssh-url.png" alt-text="获取 SSH URL":::
 
 1. 打开一个新终端窗口，并运行从 Azure 门户复制的 SSH 命令。 本文使用 MacOS 中的终端，你可以在 Windows 计算机上使用 PuTTY 或其他 SSH 客户端，遵循类似的说明操作。 在出现提示时，键入“yes”以继续，并输入在上一步中为虚拟机设置的密码 。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/striim-vm-connect.png" alt-text="连接到 Striim VM":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/striim-vm-connect.png" alt-text="连接到 Striim VM":::
 
 1. 现在，请打开一个新终端选项卡，复制先前下载的 ojdbc8.jar 文件。 使用以下 SCP 命令将该 jar 文件从本地计算机复制到 Azure 中运行的 Striim 实例的 tmp 文件夹：
 
@@ -94,7 +94,7 @@ Azure 商城中的 Striim 映像提供从数据仓库和数据库到 Azure 的�
    scp ojdbc8.jar striimdemo@striimdemo.westus.cloudapp.azure.com:/tmp
    ```
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png" alt-text="将 Jar 文件从本地计算机复制到 Striim":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/copy-jar-file.png" alt-text="将 Jar 文件从本地计算机复制到 Striim":::
 
 1. 接下来，返回到已在其中通过 SSH 连接到 Striim 实例的窗口，并以 sudo 身份登录。 使用以下命令将 ojdbc8.jar 文件从 /tmp 目录移到 Striim 实例的 lib 目录  ：
 
@@ -105,7 +105,7 @@ Azure 商城中的 Striim 映像提供从数据仓库和数据库到 Azure 的�
    chmod +x ojdbc8.jar
    ```
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/move-jar-file.png" alt-text="将 Jar 文件移动到 lib 文件夹":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/move-jar-file.png" alt-text="将 Jar 文件移动到 lib 文件夹":::
 
 
 1. 从同一终端窗口中，通过执行以下命令来重启 Striim 服务器：
@@ -125,17 +125,17 @@ Azure 商城中的 Striim 映像提供从数据仓库和数据库到 Azure 的�
 
 1. 现在，返回到 Azure 并复制 Striim VM 的公共 IP 地址。 
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/copy-public-ip-address.png" alt-text="复制 Striim VM IP 地址":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/copy-public-ip-address.png" alt-text="复制 Striim VM IP 地址":::
 
 1. 若要导航到 Striim 的 Web UI，请在浏览器中打开新标签页，然后复制公共 IP，后面加上：9080。 使用用户名“admin”和在 Azure 门户中指定的管理员密码进行登录。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="登录到 Striim":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="登录到 Striim":::
 
 1. 现在，将打开 Striim 的主页。 主页有三个不同的窗格-“仪表板”、“应用”和“SourcePreview”  。 “仪表板”窗格用于实时移动数据并将数据可视化。 “应用”窗格包含流式处理数据的管道，也叫数据流。 页面右侧是“SourcePreview”，用于在移动数据之前先预览数据。
 
 1. 请选择“应用”窗格，目前我们将重点介绍此窗格。 这里有多种示例应用，可用于了解 Striim，但在本文中将创建自己的应用。 选择右上角的“添加应用”按钮。
 
-   :::image type="content" source="../media/cosmosdb-sql-api-migrate-data-striim/add-striim-app.png" alt-text="添加 Striim 应用":::
+   :::image type="content" source="../sql/media/cosmosdb-sql-api-migrate-data-striim/add-striim-app.png" alt-text="添加 Striim 应用":::
 
 1. 创建 Striim 应用程序有几种不同方法。 对于此方案，请选择“从头开始”。
 

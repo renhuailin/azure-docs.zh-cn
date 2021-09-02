@@ -8,12 +8,12 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 07/13/2021
-ms.openlocfilehash: d010d079aaeded441fa7b846435cdaef0dfedd74
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 74bc41fb84f63f4705da95f80d6f27dea009ea43
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114389111"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866733"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>配置商业市场产品/服务的联合销售
 
@@ -25,7 +25,7 @@ ms.locfileid: "114389111"
 - Azure 容器
 - Azure 虚拟机
 - 咨询服务
-- Dynamics 365 for Customer Engagement 和 PowerApps
+- 适用于客户参与和 Power Apps 的 Dynamics 365
 - Dynamics 365 for Operations
 - Dynamics 365 Business Central
 - IoT Edge 模块

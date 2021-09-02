@@ -8,19 +8,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/21/2021
+ms.date: 08/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: bed0b1e887fd5735077ef66725b267f42be9bbc1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7874224304f5466c8b166c1e5bd709b915a5d325
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114445361"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322359"
 ---
-# <a name="embedded-sign-in-experience"></a>嵌入的登录体验
+# <a name="embedded-sing-up-or-sign-in-experience"></a>嵌入式注册或登录体验
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
@@ -32,7 +32,10 @@ ms.locfileid: "114445361"
 
 ::: zone pivot="b2c-custom-policy"
 
-为了获得更简单的登录体验，可以避免将用户重定向到单独的登录页或生成弹出窗口。 通过使用内联框架元素 `<iframe>`，可以将 Azure AD B2C 登录用户界面直接嵌入 Web 应用程序。
+为了获得更简单的注册或登录体验，可以避免将用户重定向到单独的注册或登录页或生成弹出窗口。 通过使用内联框架 &lt;iframe&gt; HTML 元素，可以将 Azure AD B2C 登录用户界面直接嵌入 Web 应用程序。 
+
+> [!TIP]
+> 使用 &lt; iframe &gt; HTML 元素将[注册或登录](add-sign-up-and-sign-in-policy.md)、[编辑配置文件](add-profile-editing-policy.md)或[更改密码](add-password-change-policy.md)自定义策略嵌入 Web 页面或单页应用中。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -44,7 +47,7 @@ ms.locfileid: "114445361"
 
 使用 iframe 时，请考虑以下内容：
 
-- 嵌入的登录仅支持本地帐户。 大多数社交标识提供者（例如 Google 和 Facebook）阻止其登录页在内联框架中呈现。
+- 嵌入式注册或登录仅支持本地帐户。 大多数社交标识提供者（例如 Google 和 Facebook）阻止其登录页在内联框架中呈现。
 - 由于 iframe 中的 Azure AD B2C 会话 cookie 被视为第三方 cookie，因此某些浏览器（例如 incognito 模式下的 Safari 或 Chrome）会阻止或清除这些 cookie，从而导致不期望的用户体验。 若要避免此问题，请确保应用程序域名和 Azure AD B2C 域具有相同的源。 若要使用同一源，请为 Azure AD B2C 租户[启用自定义域](custom-domain.md)，然后使用相同的源配置 Web 应用。 例如，在“https://app.contoso.com”上托管的应用程序具有的源与在“https://login.contoso.com”上运行的 Azure AD B2C 的源相同。
 
 ## <a name="prerequisites"></a>先决条件

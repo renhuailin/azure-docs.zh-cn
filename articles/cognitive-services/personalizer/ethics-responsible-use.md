@@ -2,18 +2,19 @@
 title: 道德和负责任的使用 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
 description: 这些指南旨在帮助你以特定方式实现个性化，而该方式有助于你培养他人对你的公司和服务的信任。 此时请务必留出时间，研究、了解并仔细考虑一下个性化对人们生活的影响。 如有疑问，请寻求指导。
-services: cognitive-services
-manager: nitinme
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fb950fb0a589d4ac9dc6554b95a8f72fa8ca7b3
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96005973"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831564"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>有关如何以负责任的方式实现个性化体验创建服务的指南
 

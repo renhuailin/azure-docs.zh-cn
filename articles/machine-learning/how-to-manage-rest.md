@@ -7,15 +7,15 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 01/31/2020
+ms.date: 08/10/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: dcab70d75ca5a46242b1d43d28e148dc5f54b2d2
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: e17f5e53a2ab58ec7fe8edbe1d2b7e64953cf689
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888955"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729813"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 创建、运行和删除 Azure ML 资源
 
@@ -35,7 +35,7 @@ ms.locfileid: "107888955"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 你对其拥有管理权限的 **Azure 订阅**。 如果没有此类订阅，请尝试注册[免费或付费的个人订阅](https://aka.ms/AMLFree)
+- 你对其拥有管理权限的 **Azure 订阅**。 如果没有此类订阅，请尝试注册[免费或付费的个人订阅](https://azure.microsoft.com/free/)
 - 一个 [Azure 机器学习工作区](./how-to-manage-workspace.md)
 - 管理 REST 请求使用服务主体身份验证。 遵循[为 Azure 机器学习资源和工作流设置身份验证](./how-to-setup-authentication.md#service-principal-authentication)中的步骤在工作区中创建服务主体
 - **curl** 实用工具。 在 [适用于 Linux 的 Windows 子系统](/windows/wsl/install-win10)或任何 UNIX 分发版中均已提供了 **curl** 程序。 在 PowerShell 中，**curl** 是 **Invoke-WebRequest** 的别名，并且 `curl -d "key=val" -X POST uri` 变成了 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`。 
@@ -48,18 +48,18 @@ ms.locfileid: "107888955"
 - 客户端 ID（将与创建的令牌相关联）
 - 客户端机密（应予以保护）
 
-应从创建服务主体的响应中获取这些值。 [为 Azure 机器学习资源和工作流设置身份验证](./how-to-setup-authentication.md#service-principal-authentication)一文介绍了如何获取这些值。 如果使用公司订阅，则可能无权创建服务主体。 在这种情况下，应使用[免费或付费的个人订阅](https://aka.ms/AMLFree)。
+应从创建服务主体的响应中获取这些值。 [为 Azure 机器学习资源和工作流设置身份验证](./how-to-setup-authentication.md#service-principal-authentication)一文介绍了如何获取这些值。 如果使用公司订阅，则可能无权创建服务主体。 在这种情况下，应使用[免费或付费的个人订阅](https://azure.microsoft.com/free/)。
 
 若要检索令牌，请执行以下操作：
 
 1. 打开终端窗口
 1. 在命令行中输入以下代码
-1. 请将 `{your-tenant-id}`、`{your-client-id}` 和 `{your-client-secret}` 替换为自己的值。 在整篇文章中，以大括号括住的字符串是变量，必须将其替换为自己的适当值。
+1. 请将 `<YOUR-TENANT-ID>`、`<YOUR-CLIENT-ID>` 和 `<YOUR-CLIENT-SECRET>` 替换为自己的值。 在整篇文章中，用尖括号括住的字符串是变量，你必须将其替换为自己的适当值。
 1. 运行命令
 
 ```bash
-curl -X POST https://login.microsoftonline.com/{your-tenant-id}/oauth2/token \
--d "grant_type=client_credentials&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id={your-client-id}&client_secret={your-client-secret}" \
+curl -X POST https://login.microsoftonline.com/<YOUR-TENANT-ID>/oauth2/token \
+-d "grant_type=client_credentials&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=<YOUR-CLIENT-ID>&client_secret=<YOUR-CLIENT-SECRET>" \
 ```
 
 响应中应会提供有效期为一小时的访问令牌：
@@ -72,27 +72,28 @@ curl -X POST https://login.microsoftonline.com/{your-tenant-id}/oauth2/token \
     "expires_on": "1578523094",
     "not_before": "1578519194",
     "resource": "https://management.azure.com/",
-    "access_token": "your-access-token"
+    "access_token": "YOUR-ACCESS-TOKEN"
 }
 ```
 
-请记下该令牌，因为以后需要用它来对所有后续管理请求进行身份验证。 为此，可在所有请求中设置一个授权标头：
+请记下该令牌，因为你以后需要用它来对所有其他管理请求进行身份验证。 为此，可在所有请求中设置一个授权标头：
 
 ```bash
-curl -h "Authorization:Bearer {your-access-token}" ...more args...
+curl -h "Authorization:Bearer <YOUR-ACCESS-TOKEN>" ...more args...
 ```
 
-请注意，该值以字符串“Bearer ”开头（其中包含一个空格，你需要在该空格后添加令牌）。
+> [!NOTE]
+> 该值以字符串“Bearer ”开头，其中包含一个空格，你需要在空格后添加该令牌。
 
 ## <a name="get-a-list-of-resource-groups-associated-with-your-subscription"></a>获取与订阅关联的资源组列表
 
 若要检索与订阅关联的资源组列表，请运行：
 
 ```bash
-curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups?api-version=2019-11-01 -H "Authorization:Bearer {your-access-token}"
+curl https://management.azure.com/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups?api-version=2021-03-01-preview -H "Authorization:Bearer <YOUR-ACCESS-TOKEN>"
 ```
 
-整个 Azure 上发布了许多的 REST API。 每家服务提供商会按照自己的步调更新其 API，但这样做不会破坏现有的程序。 服务提供商使用 `api-version` 参数来确保兼容性。 `api-version` 参数因服务而异。 例如，对于机器学习服务，当前的 API 版本是 `2019-11-01`。 对于存储帐户，当前版本是 `2019-06-01`。 对于 Key Vault，当前版本是 `2019-09-01`。 所有 REST 调用应将 `api-version` 参数设置为预期值。 尽管 API 在持续演进，但你仍可以依赖于指定版本的语法和语义。 如果在不使用 `api-version` 参数的情况下向提供商发送请求，则响应将包含可人工读取的受支持值列表。 
+整个 Azure 上发布了许多的 REST API。 每家服务提供商会按照自己的步调更新其 API，但这样做不会破坏现有的程序。 服务提供商使用 `api-version` 参数来确保兼容性。 `api-version` 参数因服务而异。 例如，对于机器学习服务，当前的 API 版本是 `2021-03-01-preview`。 对于存储帐户，当前版本是 `2019-08-01`。 对于 Key Vault，当前版本是 `2019-09-01`。 所有 REST 调用应将 `api-version` 参数设置为预期值。 尽管 API 在持续演进，但你仍可以依赖于指定版本的语法和语义。 如果在不使用 `api-version` 参数的情况下向提供商发送请求，则响应将包含可人工读取的受支持值列表。 
 
 上述调用将生成以下格式的压缩 JSON 响应： 
 
@@ -124,11 +125,11 @@ curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceG
 
 ## <a name="drill-down-into-workspaces-and-their-resources"></a>向下钻取到工作区及其资源
 
-若要检索资源组中的工作区集，请运行以下命令（请替换 `{your-subscription-id}`、`{your-resource-group}` 和 `{your-access-token}`）： 
+若要检索资源组中工作区集，请替换以下代码中的 `<YOUR-SUBSCRIPTION-ID>`、`<YOUR-RESOURCE-GROUP>` 和 `<YOUR-ACCESS-TOKEN>`，然后运行代码： 
 
 ```
-curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/?api-version=2019-11-01 \
--H "Authorization:Bearer {your-access-token}"
+curl https://management.azure.com/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/providers/Microsoft.MachineLearningServices/workspaces/?api-version=2021-03-01-preview \
+-H "Authorization:Bearer <YOUR-ACCESS-TOKEN>"
 ```
 
 同样，你会收到一个 JSON 列表，这次，该 JSON 列表包含一个列表，其中的每个项详细提供了有关工作区的信息：
@@ -184,20 +185,20 @@ curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceG
 }
 ```
 
-`api` 响应的值是要用于其他请求的服务器的 URL。 例如，若要列出试验，请发送以下命令。 请将 `regional-api-server` 替换为 `api` 响应的值（例如 `centralus.api.azureml.ms`）。 还像往常一样替换 `your-subscription-id`、`your-resource-group`、`your-workspace-name` 和 `your-access-token`：
+`api` 响应值是服务器 URL，你可将其用于其他请求。 例如，若要列出试验，请发送以下命令。 请将 `REGIONAL-API-SERVER` 替换为 `api` 响应的值（例如 `centralus.api.azureml.ms`）。 还像往常一样替换 `YOUR-SUBSCRIPTION-ID`、`YOUR-RESOURCE-GROUP`、`YOUR-WORKSPACE-NAME` 和 `YOUR-ACCESS-TOKEN`：
 
 ```bash
-curl https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
-providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/experiments?api-version=2019-11-01 \
--H "Authorization:Bearer {your-access-token}"
+curl https://<REGIONAL-API-SERVER>/history/v1.0/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.MachineLearningServices/workspaces/<YOUR-WORKSPACE-NAME>/experiments?api-version=2021-03-01-preview \
+-H "Authorization:Bearer <YOUR-ACCESS-TOKEN>"
 ```
 
 同样，若要检索工作区中已注册的模型，请发送：
 
 ```bash
-curl https://{regional-api-server}/modelmanagement/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
-providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/models?api-version=2019-11-01 \
--H "Authorization:Bearer {your-access-token}"
+curl https://<REGIONAL-API-SERVER>/modelmanagement/v1.0/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.MachineLearningServices/workspaces/<YOUR-WORKSPACE-NAME>/models?api-version=2021-03-01-preview \
+-H "Authorization:Bearer <YOUR-ACCESS-TOKEN>"
 ```
 
 请注意，若要列出试验，路径需以 `history/v1.0` 开头；若要列出模型，路径需以 `modelmanagement/v1.0` 开头。 REST API 划分为多个操作组，每个操作组具有不同的路径。 
@@ -215,10 +216,10 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 |URL 组成部分|示例|
 |-|-|
 | https://| |
-| regional-api-server/ | centralus.api.azureml.ms/ |
+| REGIONAL-API-SERVER/ | centralus.api.azureml.ms/ |
 | operations-path/ | history/v1.0/ |
-| subscriptions/{your-subscription-id}/ | subscriptions/abcde123-abab-abab-1234-0123456789abc/ |
-| resourceGroups/{your-resource-group}/ | resourceGroups/MyResourceGroup/ |
+| subscriptions/YOUR-SUBSCRIPTION-ID/ | subscriptions/abcde123-abab-abab-1234-0123456789abc/ |
+| resourceGroups/YOUR-RESOURCE-GROUP/ | resourceGroups/MyResourceGroup/ |
 | providers/operation-provider/ | providers/Microsoft.MachineLearningServices/ |
 | provider-resource-path/ | workspaces/MLWorkspace/MyWorkspace/FirstExperiment/runs/1/ |
 | operations-endpoint/ | artifacts/metadata/ |
@@ -231,20 +232,20 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 训练和运行 ML 模型需要计算资源。 可使用以下代码列出工作区的计算资源： 
 
 ```bash
-curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
-providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/computes?api-version=2019-11-01 \
--H "Authorization:Bearer {your-access-token}"
+curl https://management.azure.com/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.MachineLearningServices/workspaces/<YOUR-WORKSPACE-NAME>/computes?api-version=2021-03-01-preview \
+-H "Authorization:Bearer <YOUR-ACCESS-TOKEN>"
 ```
 
-若要创建或覆盖命名计算资源，需使用 PUT 请求。 在以下代码中，除了像平时一样替换 `your-subscription-id`、`your-resource-group`、`your-workspace-name` 和 `your-access-token` 以外，还需要替换 `your-compute-name`，以及 `location`、`vmSize`、`vmPriority`、`scaleSettings`、`adminUserName` 和 `adminUserPassword` 的值。 根据[机器学习计算 - 创建或更新 SDK 参考](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)中的明确说明，以下命令将创建一个专用的单节点 Standard_D1（基本 CPU 计算资源），该资源在 30 分钟后将会纵向缩减：
+若要创建或覆盖命名计算资源，需使用 PUT 请求。 在以下代码中，除了替换已熟悉的 `YOUR-SUBSCRIPTION-ID`、`YOUR-RESOURCE-GROUP`、`YOUR-WORKSPACE-NAME` 和 `YOUR-ACCESS-TOKEN` 之外，还需替换 `YOUR-COMPUTE-NAME` 以及 `location`、`vmSize`、`vmPriority`、`scaleSettings`、`adminUserName` 和 `adminUserPassword` 的值。 根据[机器学习计算 - 创建或更新 SDK 参考](/rest/api/azureml/workspaces/createorupdate)中的明确说明，以下命令将创建一个专用的单节点 Standard_D1（基本 CPU 计算资源），该资源在 30 分钟后将会纵向缩减：
 
 ```bash
 curl -X PUT \
-  'https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/computes/{your-compute-name}?api-version=2019-11-01' \
-  -H 'Authorization:Bearer {your-access-token}' \
+  'https://management.azure.com/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/providers/Microsoft.MachineLearningServices/workspaces/<YOUR-WORKSPACE-NAME>/computes/<YOUR-COMPUTE-NAME>?api-version=2021-03-01-preview' \
+  -H 'Authorization:Bearer <YOUR-ACCESS-TOKEN>' \
   -H 'Content-Type: application/json' \
   -d '{
-    "location": "{your-azure-location}",
+    "location": "eastus",
     "properties": {
         "computeType": "AmlCompute",
         "properties": {
@@ -258,8 +259,8 @@ curl -X PUT \
         }
     },
     "userAccountCredentials": {
-        "adminUserName": "{adminUserName}",
-        "adminUserPassword": "{adminUserPassword}"
+        "adminUserName": "<ADMIN_USERNAME>",
+        "adminUserPassword": "<ADMIN_PASSWORD>"
     }
 }'
 ```
@@ -269,83 +270,9 @@ curl -X PUT \
 
 成功的请求将获取 `201 Created` 响应，但请注意，此响应仅表示预配过程已开始。 需要通过轮询（或使用门户）来确认它是否成功完成。
 
-### <a name="create-an-experimental-run"></a>创建试验运行
+### <a name="train-a-model"></a>训练模型
 
-若要在试验中启动运行，需要一个包含训练脚本和相关文件的 zip 文件夹，以及一个运行定义 JSON 文件。 该 zip 文件夹必须在其根目录中包含 Python 入口文件。 例如，将如下所示的普通 Python 程序压缩到名为 **train.zip** 的文件夹中。
-
-```python
-# hello.py
-# Entry file for run
-print("Hello, REST!")
-```
-
-将下一个代码片段保存为 **definition.json**。 确认“Script”值与刚刚压缩的 Python 文件的名称相匹配。 确认“Target”值与可用计算资源的名称相匹配。 
-
-```json
-{
-    "Configuration":{  
-       "Script":"hello.py",
-       "Arguments":[  
-          "234"
-       ],
-       "SourceDirectoryDataStore":null,
-       "Framework":"Python",
-       "Communicator":"None",
-       "Target":"cpu-compute",
-       "MaxRunDurationSeconds":1200,
-       "NodeCount":1,
-       "Environment":{  
-          "Python":{  
-             "InterpreterPath":"python",
-             "UserManagedDependencies":false,
-             "CondaDependencies":{  
-                "name":"project_environment",
-                "dependencies":[  
-                   "python=3.6.2",
-                   {  
-                      "pip":[  
-                         "azureml-defaults"
-                      ]
-                   }
-                ]
-             }
-          },
-          "Docker":{  
-             "BaseImage":"mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04"
-          }
-      },
-       "History":{  
-          "OutputCollection":true
-       }
-    }
-}
-```
-
-使用 `multipart/form-data` 内容将这些文件发布到服务器：
-
-```bash
-curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/experiments/{your-experiment-name}/startrun?api-version=2019-11-01 \
-  -X POST \
-  -H "Content-Type: multipart/form-data" \
-  -H "Authorization:Bearer {your-access-token}" \
-  -F projectZipFile=@train.zip \
-  -F runDefinitionFile=@runDefinition.json
-```
-
-成功的 POST 请求将生成 `200 OK` 状态，以及包含所创建运行的标识符的响应正文：
-
-```json
-{
-  "runId": "my-first-experiment_1579642222877"
-}
-```
-
-可以使用现在应很熟悉的 RESTful 模式监视运行：
-
-```bash
-curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/experiments/{your-experiment-names}/runs/{your-run-id}?api-version=2019-11-01' \
-  -H 'Authorization:Bearer {your-access-token}'
-```
+若要使用 REST 训练模型，请参阅[使用 REST（预览版）训练模型](how-to-train-with-rest.md)。 
 
 ### <a name="delete-resources-you-no-longer-need"></a>删除不再需要的资源
 
@@ -354,20 +281,13 @@ curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscriptio
 ```bash
 curl
   -X DELETE \
-'https://{regional-api-server}/modelmanagement/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/models/{your-model-id}?api-version=2019-11-01' \
-  -H 'Authorization:Bearer {your-access-token}' 
+'https://<REGIONAL-API-SERVER>/modelmanagement/v1.0/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/providers/Microsoft.MachineLearningServices/workspaces/<YOUR-WORKSPACE-NAME>/models/<YOUR-MODEL-ID>?api-version=2021-03-01-preview' \
+  -H 'Authorization:Bearer <YOUR-ACCESS-TOKEN>' 
 ```
 
 ## <a name="use-rest-to-score-a-deployed-model"></a>使用 REST 为部署的模型评分
 
-尽管可以部署一个模型以使其使用服务主体进行身份验证，但大多数面向客户端的部署使用基于密钥的身份验证。 可以在工作室的部署页中的“终结点”选项卡上找到相应的密钥。 同一位置会显示终结点的评分 URI。 必须将模型的输入建模为名为 `data` 的 JSON 数组：
-
-```bash
-curl 'https://{scoring-uri}' \
- -H 'Authorization:Bearer {your-key}' \
- -H 'Content-Type: application/json' \
-  -d '{ "data" : [ {model-specific-data-structure} ] }
-```
+若要使用 REST 为部署的模型评分，请参阅[使用部署为 Web 服务的 Azure 机器学习模型](how-to-consume-web-service.md)。
 
 ## <a name="create-a-workspace-using-rest"></a>使用 REST 创建工作区 
 
@@ -377,23 +297,23 @@ curl 'https://{scoring-uri}' \
 
 ```bash
 curl -X PUT \
-  'https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}\
-/providers/Microsoft.MachineLearningServices/workspaces/{your-new-workspace-name}?api-version=2019-11-01' \
-  -H 'Authorization: Bearer {your-access-token}' \
+  'https://management.azure.com/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>\
+/providers/Microsoft.MachineLearningServices/workspaces/<YOUR-NEW-WORKSPACE-NAME>?api-version=2021-03-01-preview' \
+  -H 'Authorization: Bearer <YOUR-ACCESS-TOKEN>' \
   -H 'Content-Type: application/json' \
   -d '{
-    "location": "{desired-region}",
+    "location": "AZURE-LOCATION>",
     "properties": {
-        "friendlyName" : "{your-workspace-friendly-name}",
-        "description" : "{your-workspace-description}",
-        "containerRegistry" : "/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
-providers/Microsoft.ContainerRegistry/registries/{your-registry-name}",
-        keyVault" : "/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}\
-/providers/Microsoft.Keyvault/vaults/{your-keyvault-name}",
-        "applicationInsights" : "subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
-providers/Microsoft.insights/components/{your-application-insights-name}",
-        "storageAccount" : "/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
-providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
+        "friendlyName" : "<YOUR-WORKSPACE-FRIENDLY-NAME>",
+        "description" : "<YOUR-WORKSPACE-DESCRIPTION>",
+        "containerRegistry" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.ContainerRegistry/registries/<YOUR-REGISTRY-NAME>",
+        keyVault" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>\
+/providers/Microsoft.Keyvault/vaults/<YOUR-KEYVAULT-NAME>",
+        "applicationInsights" : "subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.insights/components/<YOUR-APPLICATION-INSIGHTS-NAME>",
+        "storageAccount" : "/subscriptions/<YOUR-SUBSCRIPTION-ID>/resourceGroups/<YOUR-RESOURCE-GROUP>/\
+providers/Microsoft.Storage/storageAccounts/<YOUR-STORAGE-ACCOUNT-NAME>"
     },
     "identity" : {
         "type" : "systemAssigned"
@@ -401,7 +321,7 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 }'
 ```
 
-应会收到 `202 Accepted` 响应，并在返回的标头中收到 `Location` URI。 可以获取 (GET) 此 URI 以获取有关部署的信息，包括某个依赖资源出现问题（例如，你忘记了在容器注册表中启用管理员访问权限）时提供的有用调试信息。 
+应会收到 `202 Accepted` 响应，并在返回的标头中收到 `Location` URI。 你可以使用 GET 请求获取此 URI 以获得有关部署信息，包括在某个依赖资源出现问题时（例如，忘记在容器注册表中启用管理员访问权限）提供的有用调试信息。 
 
 ## <a name="troubleshooting"></a>故障排除
 

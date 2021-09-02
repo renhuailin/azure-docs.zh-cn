@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 3ad91e8a275fca61dfc70cdf98c84984ac08f754
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: e2cdcf3b42fbb71751644efbaa394c51d2f861fc
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862656"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258315"
 ---
 # <a name="troubleshoot-azure-nfs-file-share-problems"></a>排查 Azure NFS 文件共享问题
 
@@ -40,7 +40,7 @@ Azure 文件存储不允许使用字母数字 UID/GID。 因此必须禁用 idma
 - 卸载共享
 - 使用 # echo Y > /sys/module/nfs/parameters/nfs4_disable_idmapping 禁用 id-mapping
 - 将共享装载回去
-- 如果正在运行 rsync，请从目录使用“—numeric-ids”参数，目录中没有任何错误的目录/文件名。
+- 如果运行 rsync，请使用“—numeric-ids”参数在没有任何错误目录/文件名目录中运行 rsync。
 
 ## <a name="unable-to-create-an-nfs-share"></a>无法创建 NFS 共享
 

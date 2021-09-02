@@ -4,15 +4,15 @@ description: 了解如何解释针对 Azure 文件共享的预配和即用即付
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9d0079ac85980f97a0241780b23e639e2359c65d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 7f133600f800881f462583ca5bee2972a5c914fa
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787211"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323726"
 ---
 # <a name="understand-azure-files-billing"></a>了解 Azure 文件存储计费
 Azure 文件存储提供了两种不同的计费模型：预配和即用即付。 预配模型只适用于高级文件共享，即部署在 FileStorage 存储帐户类型中的文件共享。 即用即付模型只适用于标准文件共享，即部署在常规用途版本 2 (GPv2) 存储帐户类型中的文件共享。 本文介绍了这两种模型的工作原理，以帮助你理解每月的 Azure 文件存储帐单。
@@ -27,6 +27,13 @@ Azure 文件存储提供了两种不同的计费模型：预配和即用即付�
 :::row-end:::
 
 有关 Azure 文件存储的定价信息，请参阅 [Azure 文件存储定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
 
 ## <a name="storage-units"></a>存储单元    
 Azure 文件存储使用 base-2 度量单位来表示存储容量：KiB、MiB、GiB 和 TiB。 你的操作系统不一定会使用相同的度量单位或计算系统。
@@ -52,7 +59,7 @@ Azure 文件存储支持存储产能预留，让你可以通过预先承诺存�
 
 - 产能大小：产能预留可以是 10 TiB 或 100 TiB，购买更高的产能预留可以获得更多折扣。 可以购买多个预留，包括不同产能大小的预留，以满足工作负载要求。 例如，如果生产部署具有 120 TiB 的文件共享，可以购买一个 100 TiB 预留和两个 10 TiB 预留，以满足总产能要求。
 - 期限：预留的购买期限为一年或三年，购买更长的预留期可以获得更多折扣。 
-- 层：产能预留的 Azure 文件存储层。 目前，Azure 文件存储的热存储层和冷存储层支持预留。
+- 层：产能预留的 Azure 文件存储层。 目前，Azure 文件存储的高级、热存储层和冷存储层支持预留。
 - 位置：产能预留的 Azure 区域。 产能预留在 Azure 区域的一个子集提供。
 - 冗余：产能预留的存储冗余。 可以对所有冗余 Azure 文件存储支持（包括 LRS、ZRS、GRS 和 GZRS）进行预留。
 
@@ -63,29 +70,34 @@ Azure 文件存储支持存储产能预留，让你可以通过预先承诺存�
 ## <a name="provisioned-model"></a>预配模型
 Azure 文件存储将预配模型用于高级文件共享。 在预配业务模型中，可以主动向 Azure 文件存储服务指定存储需求，而不是根据使用的资源进行计费。 这类似于在本地购买硬件，因为当你预配具有一定存储量的 Azure 文件共享时，无论是否使用该存储，都需要为其付费，就像在开始使用空间时，你不会支付本地物理媒体的费用一样。 与在本地购买物理媒体不同，可以根据存储和 IO 性能特征来灵活地纵向扩展或纵向缩放预配的文件共享。
 
-预配高级文件共享时，可以指定工作负载所需的 GiB。 预配的每个 GiB 均可提供固定比率的附加 IOPS 和吞吐量。 除得到保证的基线 IOPS 之外，每个高级文件共享还支持最大程度的突发限制。 IOPS 和吞吐量的公式如下所示：
-
-- 基线 IOPS = 400 + 1 * 预配的 GiB。 （最大可为 100,000 IOPS）。
-- 突发限制 = MAX（4,000，3 * 基线 IOPS）。
-- 出口速率 = 60 MiB/秒 + 0.06 * 预配的 GiB。
-- 入口速率 = 40 MiB/秒 + 0.04 * 预配的 GiB。
-
 文件共享的预配大小可以随时增加，但只能在自上次增加后的 24 小时之后减小。 等待 24 小时且不要提高配额，然后，可将共享配额降低任意次数，直到再次提高配额为止。 IOPS/吞吐量规模更改将在预配大小更改后的数分钟内生效。
 
 可将预配共享的大小减至所用 GiB 以下。 这样做不会丢失数据，但仍会根据所用大小计费，并且性能（基线 IOPS、吞吐量和突发 IOPS）与预配的共享（而不是所用大小）相符。
 
+### <a name="provisioning-method"></a>设置方法
+预配高级文件共享时，可以指定工作负载所需的 GiB。 预配的每个 GiB 均可提供固定比率的附加 IOPS 和吞吐量。 除得到保证的基线 IOPS 之外，每个高级文件共享还支持最大程度的突发限制。 IOPS 和吞吐量的公式如下所示：
+
+| 项目 | “值” |
+|-|-|
+| 文件共享的最小大小 | 100 GiB |
+| 预配单元 | 1 GiB |
+| 基线 IOPS 公式 | `MIN(400 + 1 * ProvisionedGiB, 100000)` |
+| 突增限制 | `MIN(MAX(4000, 3 * BaselineIOPS), 100000)` |
+| 入口速率 | `40 MiB/sec + 0.04 * ProvisionedGiB` |
+| 出口速率 | `60 MiB/sec + 0.06 * ProvisionedGiB` |
+
 下表演示了这些预配共享大小公式的几个示例：
 
-|容量 (GiB) | 基线 IOPS | 突发 IOPS | 出口速率（MiB/秒） | 入口速率（MiB/秒） |
-|---------|---------|---------|---------|---------|
-|100         | 500     | 最大 4,000     | 66   | 44   |
-|500         | 900     | 最大 4,000  | 90   | 60   |
-|1,024       | 1,424   | 最大 4,000   | 122   | 81   |
-|5,120       | 5,520   | 最大 15,360  | 368   | 245   |
-|10,240      | 10,640  | 最大 30,720  | 675   | 450   |
-|33,792      | 34,192  | 最大 100,000 | 2,088 | 1,392   |
-|51,200      | 51,600  | 最大 100,000 | 3,132 | 2,088   |
-|102,400     | 100,000 | 最大 100,000 | 6,204 | 4,136   |
+| 容量 (GiB) | 基线 IOPS | 突发 IOPS | 出口速率（MiB/秒） | 入口速率（MiB/秒） |
+|-|-|-|-|-|
+| 100 | 500 | 最大 4,000 | 66 | 44 |
+| 500 | 900 | 最大 4,000 | 90 | 60 |
+| 1,024 | 1,424 | 最大 4,000 | 122 | 81 |
+| 5,120 | 5,520 | 最大 15,360 | 368 | 245 |
+| 10,240 | 10,640 | 最大 30,720 | 675 | 450 |
+| 33,792 | 34,192 | 最大 100,000 | 2,088 | 1,392 |
+| 51,200 | 51,600 | 最大 100,000 | 3,132 | 2,088 |
+| 102,400 | 100,000 | 最大 100,000 | 6,204 | 4,136 |
 
 有效的文件共享性能与计算机网络限制、可用网络带宽、IO 大小、并行度和其他许多因素相关。 例如，根据使用 8 KiB 读/写 IO 大小的内部测试，一个通过 SMB 连接到高级文件共享的未启用 SMB 多通道的 Windows 虚拟机（即标准 F16s_v2）可以实现 20K 读取 IOPS 和 15K 写入 IOPS。 读/写 IO 大小为 512 MiB 时，同一 VM 可以实现 1.1 GiB/秒的出口吞吐量和 370 MiB/秒的入口吞吐量。 如果对高级共享启用了 SMB 多通道，则同一客户端可以实现最高 \~3 倍的性能。 为了实现最大性能规模，请[启用 SMB 多通道](storage-files-enable-smb-multichannel.md)，并将负载分散到多个 VM。 有关一些常见性能问题和解决方法，请参阅 [SMB 多通道性能](storage-files-smb-multichannel-performance.md)和[故障排除指南](storage-troubleshooting-files-performance.md)。
 
@@ -127,20 +139,20 @@ Azure 文件存储对标准文件共享使用即用即付业务模型。 在即�
 
 | 操作类型 | 写入事务 | 列出事务 | 读取事务 | 其他事务 | 删除事务 |
 |-|-|-|-|-|-|
-| 管理操作 | <ul><li>`CreateShare`</li><li>`SetFileServiceProperties`</li><li>`SetShareMetadata`</li><li>`SetShareProperties`</li></ul> | <ul><li>`ListShares`</li></ul> | <ul><li>`GetFileServiceProperties`</li><li>`GetShareAcl`</li><li>`GetShareMetadata`</li><li>`GetShareProperties`</li><li>`GetShareStats`</li></ul> | | <ul><li>`DeleteShare`</li></ul> |
-| 数据操作 | <ul><li>`CopyFile`</li><li>`Create`</li><li>`CreateDirectory`</li><li>`CreateFile`</li><li>`PutRange`</li><li>`PutRangeFromURL`</li><li>`SetDirectoryMetadata`</li><li>`SetFileMetadata`</li><li>`SetFileProperties`</li><li>`SetInfo`</li><li>`SetShareACL`</li><li>`Write`</li><li>`PutFilePermission`</li></ul> | <ul><li>`ListFileRanges`</li><li>`ListFiles`</li><li>`ListHandles`</li></ul>  | <ul><li>`FilePreflightRequest`</li><li>`GetDirectoryMetadata`</li><li>`GetDirectoryProperties`</li><li>`GetFile`</li><li>`GetFileCopyInformation`</li><li>`GetFileMetadata`</li><li>`GetFileProperties`</li><li>`QueryDirectory`</li><li>`QueryInfo`</li><li>`Read`</li><li>`GetFilePermission`</li></ul> | <ul><li>`AbortCopyFile`</li><li>`Cancel`</li><li>`ChangeNotify`</li><li>`Close`</li><li>`Echo`</li><li>`Ioctl`</li><li>`Lock`</li><li>`Logoff`</li><li>`Negotiate`</li><li>`OplockBreak`</li><li>`SessionSetup`</li><li>`TreeConnect`</li><li>`TreeDisconnect`</li><li>`CloseHandles`</li><li>`AcquireFileLease`</li><li>`BreakFileLease`</li><li>`ChangeFileLease`</li><li>`ReleaseFileLease`</li></ul> | <ul><li>`ClearRange`</li><li>`DeleteDirectory`</li></li>`DeleteFile`</li></ul> |
+| 管理操作 | <ul><li>`CreateShare`</li><li>`SetFileServiceProperties`</li><li>`SetShareMetadata`</li><li>`SetShareProperties`</li><li>`SetShareACL`</li></ul> | <ul><li>`ListShares`</li></ul> | <ul><li>`GetFileServiceProperties`</li><li>`GetShareAcl`</li><li>`GetShareMetadata`</li><li>`GetShareProperties`</li><li>`GetShareStats`</li></ul> | | <ul><li>`DeleteShare`</li></ul> |
+| 数据操作 | <ul><li>`CopyFile`</li><li>`Create`</li><li>`CreateDirectory`</li><li>`CreateFile`</li><li>`PutRange`</li><li>`PutRangeFromURL`</li><li>`SetDirectoryMetadata`</li><li>`SetFileMetadata`</li><li>`SetFileProperties`</li><li>`SetInfo`</li><li>`Write`</li><li>`PutFilePermission`</li></ul> | <ul><li>`ListFileRanges`</li><li>`ListFiles`</li><li>`ListHandles`</li></ul>  | <ul><li>`FilePreflightRequest`</li><li>`GetDirectoryMetadata`</li><li>`GetDirectoryProperties`</li><li>`GetFile`</li><li>`GetFileCopyInformation`</li><li>`GetFileMetadata`</li><li>`GetFileProperties`</li><li>`QueryDirectory`</li><li>`QueryInfo`</li><li>`Read`</li><li>`GetFilePermission`</li></ul> | <ul><li>`AbortCopyFile`</li><li>`Cancel`</li><li>`ChangeNotify`</li><li>`Close`</li><li>`Echo`</li><li>`Ioctl`</li><li>`Lock`</li><li>`Logoff`</li><li>`Negotiate`</li><li>`OplockBreak`</li><li>`SessionSetup`</li><li>`TreeConnect`</li><li>`TreeDisconnect`</li><li>`CloseHandles`</li><li>`AcquireFileLease`</li><li>`BreakFileLease`</li><li>`ChangeFileLease`</li><li>`ReleaseFileLease`</li></ul> | <ul><li>`ClearRange`</li><li>`DeleteDirectory`</li></li>`DeleteFile`</li></ul> |
 
 > [!Note]  
-> NFS 4.1 仅适用于使用预配计费模型的高级文件共享，事务不会影响高级文件共享的计费。
+> NFS 4.1 只适用于使用预配计费模型的高级文件共享，事务不会影响高级文件共享的计费。
 
 ## <a name="file-storage-comparison-checklist"></a>文件存储比较清单
-若要正确评估 Azure 文件存储相比其他文件存储选项的成本，请考虑以下问题：
+若要正确评估 Azure 文件存储的成本（与其他文件存储选项相比），请考虑以下问题：
 
 - 如何为存储、IOPS 和带宽付费？  
-    使用 Azure 文件存储的计费模型取决于是部署[高级](#provisioned-model)还是[标准](#pay-as-you-go-model)文件共享。 大多数云解决方案的模型都符合预配存储（价格确定、简单）或即用即付存储（仅为实际使用付款）的原则。 预配模型最吸引人的优点是预配共享大小极小、预配单元以及增加和减少预配的能力。 
+    对于 Azure 文件存储，所使用的计费模型取决于是部署[高级](#provisioned-model)还是[标准](#pay-as-you-go-model)文件共享。 大多数云解决方案的模型都符合预配存储（价格固定且简单）或即用即付存储（只为实际使用量付费）的原则。 对于预配的模型，值得特别关注的是最小预配份额大小、预配单位以及增加和减少预配的功能。 
 
-- 如何实现存储的复原能力和冗余？  
-    借助 Azure 文件存储，可以将存储的复原能力和冗余融入到产品中。 所有层和冗余级别可确保数据高度可用，且至少有三个数据副本可供访问。 考虑其他文件存储选项时，请考虑存储的复原能力和冗余是内置的还是必须自行组装。 
+- 如何实现存储复原和冗余？  
+    使用 Azure 文件存储时，存储复原和冗余已融入到产品中。 所有层和冗余级别都可确保数据高度可用，你的数据至少有三个可供访问的副本。 考虑其他文件存储选项时，请考虑存储复原和冗余是内置的功能还是必须自行组装的功能。 
 
 - 需要管理什么？  
     使用 Azure 文件存储时，管理的基本单位是存储帐户。 其他解决方案可能需要额外的管理，例如操作系统更新或虚拟资源管理（VM、磁盘、网络 IP 地址等）。
@@ -150,5 +162,5 @@ Azure 文件存储对标准文件共享使用即用即付业务模型。 在即�
 
 ## <a name="see-also"></a>另请参阅
 - [Azure 文件存储定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
-- [规划 Azure 文件存储部署](storage-files-planning.md)和[规划 Azure 文件同步部署](../file-sync/file-sync-planning.md)。
+- [计划 Azure 文件存储部署](storage-files-planning.md)和[计划 Azure 文件同步部署](../file-sync/file-sync-planning.md)。
 - [创建文件共享](storage-how-to-create-file-share.md)和[部署 Azure 文件同步](../file-sync/file-sync-deployment-guide.md)。

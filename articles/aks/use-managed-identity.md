@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用托管标识
 services: container-service
 ms.topic: article
 ms.date: 05/12/2021
-ms.openlocfilehash: a5bf71a654afd122aad682df732e5a6c9dcd9538
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: dbc02f8b65235a47fc523665ea6337774a6eb557
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476187"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321982"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
 
@@ -35,8 +35,8 @@ AKS 对内置服务和加载项使用多个托管标识。
 
 | 标识                       | 名称    | 使用案例 | 默认权限 | 自带标识
 |----------------------------|-----------|----------|
-| 控制面板 | 不可见 | 由 AKS 控制平面组件用于管理群集资源，包括入口负载均衡器和 AKS 管理的公共 IP，以及群集自动缩放程序操作 | 节点资源组的参与者角色 | 支持
-| Kubelet | AKS Cluster Name-agentpool | 向 Azure 容器注册表 (ACR) 进行身份验证 | NA（对于 kubernetes v1.15+） | 支持（预览）
+| 控制面板 | AKS 群集名称 | 由 AKS 控制平面组件用于管理群集资源，包括入口负载均衡器和 AKS 管理的公共 IP、群集自动缩放程序、Azure 磁盘和文件 CSI 驱动程序 | 节点资源组的参与者角色 | 支持
+| Kubelet | AKS Cluster Name-agentpool | 向 Azure 容器注册表 (ACR) 进行身份验证 | NA（对于 kubernetes v1.15+） | 支持
 | 加载项 | AzureNPM | 无需标识 | 不可用 | 否
 | 加载项 | AzureCNI 网络监视 | 无需标识 | 不可用 | 否
 | 加载项 | azure-policy (gatekeeper) | 无需标识 | 不可用 | 否
@@ -82,7 +82,8 @@ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 > [!NOTE]
-> 将系统分配的标识或用户分配的标识更新为托管标识后，请在节点上执行 `az aks nodepool upgrade --node-image-only` 以完成对托管标识的更新。
+> 更新后，群集的控制平面和加载项 Pod 会切换为使用托管标识，但 kubelet 会保持使用服务主体，直到升级代理池。 请在节点上执行 `az aks nodepool upgrade --node-image-only` 以完成对托管标识的更新。 
+
 
 ## <a name="obtain-and-use-the-system-assigned-managed-identity-for-your-aks-cluster"></a>获取系统分配的托管标识并将其用于 AKS 群集
 
@@ -127,8 +128,7 @@ az aks show -g <RGName> -n <ClusterName> --query "identity"
 必须安装 Azure CLI 2.15.1 或更高版本。
 
 ### <a name="limitations"></a>限制
-* 当前不支持 Azure 政府。
-* 当前不支持 Azure 中国世纪互联。
+* 目前不支持 Azure 政府中的 USDOD 中部、USDOD 东部、USGov 爱荷华州。
 
 如果还没有托管标识，应创建一个，例如使用 [az IDENTITY CLI][az-identity-create] 来创建。
 
@@ -170,7 +170,7 @@ az aks create \
     --dns-service-ip 10.2.0.10 \
     --service-cidr 10.2.0.0/24 \
     --enable-managed-identity \
-    --assign-identity <identity-id> \
+    --assign-identity <identity-id>
 ```
 
 若成功使用自己的托管标识创建了群集，则其中包含 userAssignedIdentities 配置文件信息：
@@ -189,39 +189,18 @@ az aks create \
  },
 ```
 
-## <a name="bring-your-own-kubelet-mi-preview"></a>自带 kubelet MI（预览版）
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+## <a name="bring-your-own-kubelet-mi"></a>自带 kubelet MI
 
 凭借 Kubelet 标识，即可在创建群集之前将访问权限授予现有标识。 此功能可以实现使用预先创建的托管标识连接到 ACR 等方案。
 
 ### <a name="prerequisites"></a>先决条件
 
-- 必须安装 Azure CLI 2.21.1 或更高版本。
-- 必须安装 Azure CLI 0.5.10 或更高版本。
+- 必须安装 Azure CLI 2.26.0 或更高版本。
 
 ### <a name="limitations"></a>限制
 
 - 仅适用于用户分配的托管群集。
-- 当前不支持 Azure 中国世纪互联。
-
-首先，为 Kubelet 标识注册功能标志：
-
-```azurecli-interactive
-az feature register --namespace Microsoft.ContainerService -n CustomKubeletIdentityPreview
-```
-
-状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/CustomKubeletIdentityPreview')].{Name:name,State:properties.state}"
-```
-
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+- 目前不支持 Azure 中国世纪互联中的中国东部、中国北部。
 
 ### <a name="create-or-obtain-managed-identities"></a>创建或获取托管标识
 
@@ -292,7 +271,7 @@ az aks create \
     --service-cidr 10.2.0.0/24 \
     --enable-managed-identity \
     --assign-identity <identity-id> \
-    --assign-kubelet-identity <kubelet-identity-id> \
+    --assign-kubelet-identity <kubelet-identity-id>
 ```
 
 使用自己的 kubelet 托管标识成功创建的群集应包含以下输出：

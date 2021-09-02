@@ -5,23 +5,28 @@ description: 本页提供有关 Web 应用程序防火墙 CRS 规则组和规则
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 07/06/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e2c88091072921f1ca674868e401c34d354418de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9aa4277c3d13419a4083193c07d807decea21c59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98746503"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729431"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
-出现常见的漏洞和攻击时，应用程序网关 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序。 这种保护是由根据 OWASP 核心规则集 3.1、3.0 或 2.2.9 定义的规则实现的。 可以逐个禁用这些规则。 本文包含当前提供的规则和规则集。
+出现常见的漏洞和攻击时，应用程序网关 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序。 这种保护是由根据 OWASP 核心规则集 3.2、3.1、3.0 或 CRS 2.2.9 定义的规则实现的。 可以逐个禁用这些规则。 本文包含当前提供的规则和规则集。
 
 ## <a name="core-rule-sets"></a>核心规则集
 
-应用程序网关 WAF 中默认已预先配置 CRS 3.0。 但你可以选择改用 CRS 3.1 或 CRS 2.2.9。 CRS 3.1 提供防范 Java 感染的新规则集、一套初始的文件上传检查、已纠正的误报，等等。 与 CRS 2.2.9 相比，CRS 3.0 的误报数更少。 还可以[根据需求自定义规则](application-gateway-customize-waf-rules-portal.md)。
+应用程序网关 WAF 中默认已预先配置 CRS 3.0。 但你可以选择改用 CRS 3.2、3.1 或 CRS 2.2.9。
+ 
+
+CRS 3.2（公共预览版）提供防范 Java 感染的新引擎和新规则集、一套初始的文件上传检查、已纠正的误报等等。 
+
+CRS 3.1 提供的误报数量少于 CRS 3.0 和 2.2.9。 还可以[根据需求自定义规则](application-gateway-customize-waf-rules-portal.md)。
 
 > [!div class="mx-imgBorder"]
 > ![管理规则](../media/application-gateway-crs-rulegroups-rules/managed-rules-01.png)
@@ -36,6 +41,30 @@ WAF 可针对以下 Web 漏洞提供保护：
 - 自动程序、爬网程序和扫描程序
 - 常见应用程序错误配置（例如 Apache 和 IIS）
 
+### <a name="owasp-crs-32-public-preview"></a>OWASP CRS 3.2（公开预览版）
+
+CRS 3.2 包含下表所示的 13 个规则组。 每个组包含多个可以禁用的规则。
+
+> [!NOTE]
+> CRS 3.2 仅在 WAF_v2 SKU 上可用。
+
+|规则组|说明|
+|---|---|
+|**[常规](#general-32)**|常规组|
+|**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-32)**|锁定方法（PUT、PATCH）|
+|**[REQUEST-913-SCANNER-DETECTION](#crs913-32)**|防范端口和环境扫描程序|
+|**[REQUEST-920-PROTOCOL-ENFORCEMENT](#crs920-32)**|防范协议和编码问题|
+|**[REQUEST-921-PROTOCOL-ATTACK](#crs921-32)**|防范标头注入、请求走私和响应拆分|
+|**[REQUEST-930-APPLICATION-ATTACK-LFI](#crs930-32)**|防范文件和路径攻击|
+|**[REQUEST-931-APPLICATION-ATTACK-RFI](#crs931-32)**|防范远程文件包含 (RFI) 攻击|
+|**[REQUEST-932-APPLICATION-ATTACK-RCE](#crs932-32)**|防范远程代码执行攻击|
+|**[REQUEST-933-APPLICATION-ATTACK-PHP](#crs933-32)**|防范 PHP 注入攻击|
+|**[REQUEST-941-APPLICATION-ATTACK-XSS](#crs941-32)**|防范跨站点脚本攻击|
+|**[REQUEST-942-APPLICATION-ATTACK-SQLI](#crs942-32)**|防范 SQL 注入攻击|
+|**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](#crs943-32)**|防范会话固定攻击|
+|**[REQUEST-944-APPLICATION-ATTACK-SESSION-JAVA](#crs944-32)**|防范 JAVA 攻击|
+
+
 ### <a name="owasp-crs-31"></a>OWASP CRS 3.1
 
 CRS 3.1 包含下表中所示的 13 个规则组。 每个组包含多个可以禁用的规则。
@@ -48,7 +77,7 @@ CRS 3.1 包含下表中所示的 13 个规则组。 每个组包含多个可以�
 |**[常规](#general-31)**|常规组|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|锁定方法（PUT、PATCH）|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-31)**|防范端口和环境扫描程序|
-|**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-31)**|防范协议和编码问题|
+|**[REQUEST-920-PROTOCOL-ENFORCEMENT](#crs920-31)**|防范协议和编码问题|
 |**[REQUEST-921-PROTOCOL-ATTACK](#crs921-31)**|防范标头注入、请求走私和响应拆分|
 |**[REQUEST-930-APPLICATION-ATTACK-LFI](#crs930-31)**|防范文件和路径攻击|
 |**[REQUEST-931-APPLICATION-ATTACK-RFI](#crs931-31)**|防范远程文件包含 (RFI) 攻击|
@@ -68,7 +97,7 @@ CRS 3.0 包含下表中所示的 12 个规则组。 每个组包含多个可以�
 |**[常规](#general-30)**|常规组|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|锁定方法（PUT、PATCH）|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-30)**|防范端口和环境扫描程序|
-|**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-30)**|防范协议和编码问题|
+|**[REQUEST-920-PROTOCOL-ENFORCEMENT](#crs920-30)**|防范协议和编码问题|
 |**[REQUEST-921-PROTOCOL-ATTACK](#crs921-30)**|防范标头注入、请求走私和响应拆分|
 |**[REQUEST-930-APPLICATION-ATTACK-LFI](#crs930-30)**|防范文件和路径攻击|
 |**[REQUEST-931-APPLICATION-ATTACK-RFI](#crs931-30)**|防范远程文件包含 (RFI) 攻击|
@@ -97,9 +126,244 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 在应用程序网关上使用 Web 应用程序防火墙时可以使用以下规则组和规则。
 
+# <a name="owasp-32-public-preview"></a>[OWASP 3.2（公开预览版）](#tab/owasp32)
+
+## <a name="32-rule-sets"></a><a name="owasp32"></a>3.2 规则集
+
+### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-32"></a> <p x-ms-format-detection="none">常规</p>
+|RuleId|说明|
+|---|---|
+|200004|可能的多部分不匹配边界。|
+
+### <a name="p-x-ms-format-detectionnonerequest-911-method-enforcementp"></a><a name="crs911-32"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
+|RuleId|说明|
+|---|---|
+|911100|方法不受策略允许|
+
+### <a name="p-x-ms-format-detectionnonerequest-913-scanner-detectionp"></a><a name="crs913-32"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
+|RuleId|说明|
+|---|---|
+|913100|找到了与安全扫描程序关联的用户代理|
+|913101|找到了与脚本/通用 HTTP 客户端关联的用户代理|
+|913102|找到了与 Web 爬网程序/bot 关联的用户代理|
+|913110|找到了与安全扫描程序关联的请求标头|
+|913120|找到了与安全扫描程序关联的请求文件名/参数|
+
+### <a name="p-x-ms-format-detectionnonerequest-920-protocol-enforcementp"></a><a name="crs920-32"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
+|RuleId|说明|
+|---|---|
+|920100|无效的 HTTP 请求行|
+|920120|尝试了多部分/表单数据绕过|
+|920121|尝试了多部分/表单数据绕过|
+|920160|Content-Length HTTP 标头不是数字。|
+|920170|包含正文内容的 GET 或 HEAD 请求。|
+|920171|包含 Transfer-Encoding 的 GET 或 HEAD 请求。|
+|920180|POST 请求缺少 Content-Length 标头。|
+|920190|范围：最后一个字节值无效。|
+|920200|范围：字段太多（6 个或以上）|
+|920201|范围：pdf 请求的字段太多（35 个或以上）|
+|920202|范围：pdf 请求的字段太多（6 个或以上）|
+|920210|找到了多个/有冲突的连接标头数据。|
+|920220|URL 编码滥用攻击尝试|
+|920230|检测到多个 URL 编码|
+|920240|URL 编码滥用攻击尝试|
+|920250|UTF8 编码滥用攻击企图|
+|920260|Unicode 全角/半角滥用攻击企图|
+|920270|请求中的字符无效（null 字符）|
+|920271|请求中的字符无效（不可列显的字符）|
+|920272|请求中的字符无效（不属于 ascii 127 下面的可列显字符）|
+|920273|请求中的字符无效（不属于极严格集）|
+|920274|请求标头中的字符无效（不属于极严格集）|
+|920280|请求缺少 Host 标头|
+|920290|Host 标头为空|
+|920310|请求包含空的 Accept 标头|
+|920311|请求包含空的 Accept 标头|
+|920320|缺少用户代理标头|
+|920330|用户代理标头为空|
+|920340|请求包含内容但缺少 Content-Type 标头|
+|920341|请求包含内容，但需要 Content-Type 标头|
+|920350|Host 标头是数字 IP 地址|
+|920420|请求内容类型不受策略允许|
+|920430|HTTP 协议版本不受策略允许|
+|920440|策略限制了 URL 文件扩展名|
+|920450|策略限制了 HTTP 标头 (%@{MATCHED_VAR})|
+|920460|转义字符异常|
+|920470|Content-Type 标头非法|
+|920480|在 content-type 标头中限制字符集参数|
+
+### <a name="p-x-ms-format-detectionnonerequest-921-protocol-attackp"></a><a name="crs921-32"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
+
+|RuleId|说明|
+|---|---|
+|921110|HTTP 请求走私攻击|
+|921120|HTTP 响应拆分攻击|
+|921130|HTTP 响应拆分攻击|
+|921140|通过标头展开的 HTTP 标头注入攻击|
+|921150|通过有效负载展开的 HTTP 标头注入攻击（检测到 CR/LF）|
+|921151|通过有效负载展开的 HTTP 标头注入攻击（检测到 CR/LF）|
+|921160|通过有效负载展开的 HTTP 标头注入攻击（检测到 CR/LF 和标头名称）|
+|921170|HTTP 参数污染|
+|921180|HTTP 参数污染 (%{TX.1})|
+
+### <a name="p-x-ms-format-detectionnonerequest-930-application-attack-lfip"></a><a name="crs930-32"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
+|RuleId|说明|
+|---|---|
+|930100|路径遍历攻击 (/../)|
+|930110|路径遍历攻击 (/../)|
+|930120|OS 文件访问企图|
+|930130|受限文件访问企图|
+
+### <a name="p-x-ms-format-detectionnonerequest-931-application-attack-rfip"></a><a name="crs931-32"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
+|RuleId|说明|
+|---|---|
+|931100|可能的远程文件包含 (RFI) 攻击：使用 IP 地址的 URL 参数|
+|931110|可能的远程文件包含 (RFI) 攻击：对 URL 有效负载使用常见 RFI 漏洞参数名使用|
+|931120|可能的远程文件包含 (RFI) 攻击：在 URL 有效负载中使用尾随问号 (?)|
+|931130|可能的远程文件包含 (RFI) 攻击：域外引用/链接|
+
+### <a name="p-x-ms-format-detectionnonerequest-932-application-attack-rcep"></a><a name="crs932-32"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
+|RuleId|说明|
+|---|---|
+|932100|远程命令执行：Unix 命令注入|
+|932105|远程命令执行：Unix 命令注入|
+|932106|远程命令执行：Unix 命令注入|
+|932110|远程命令执行：Windows 命令注入|
+|932115|远程命令执行：Windows 命令注入|
+|932120|远程命令执行：找到 Windows PowerShell 命令|
+|932130|远程命令执行：找到 Unix Shell 表达式|
+|932140|远程命令执行：找到 Windows FOR/IF 命令|
+|932150|远程命令执行：直接 Unix 命令执行|
+|932160|远程命令执行：找到 Unix Shell 代码|
+|932170|远程命令执行：Shellshock (CVE-2014-6271)|
+|932171|远程命令执行：Shellshock (CVE-2014-6271)|
+|932180|受限文件上传企图|
+|932190|远程命令执行：通配符绕过方法尝试|
+
+### <a name="p-x-ms-format-detectionnonerequest-933-application-attack-phpp"></a><a name="crs933-32"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
+|RuleId|说明|
+|---|---|
+|933100|PHP 注入攻击：找到开始/结束标记|
+|933110|PHP 注入攻击：找到 PHP 脚本文件上传|
+|933111|PHP 注入攻击：找到 PHP 脚本文件上传|
+|933120|PHP 注入攻击：找到配置指令|
+|933130|PHP 注入攻击：找到变量|
+|933131|PHP 注入攻击：找到变量|
+|933140|PHP 注入攻击：找到 I/O 流|
+|933150|PHP 注入攻击：找到高风险的 PHP 函数名称|
+|933151|PHP 注入攻击：找到中等风险的 PHP 函数名称|
+|933160|PHP 注入攻击：找到高风险的 PHP 函数调用|
+|933161|PHP 注入攻击：找到低值 PHP 函数调用|
+|933170|PHP 注入攻击：序列化对象注入|
+|933180|PHP 注入攻击：找到可变函数调用|
+|933190|PHP 注入攻击：找到 PHP 结束标记|
+|933200|PHP 注入攻击：检测到包装器方案|
+|933210|PHP 注入攻击：找到可变函数调用|
+
+### <a name="p-x-ms-format-detectionnonerequest-941-application-attack-xssp"></a><a name="crs941-32"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
+|RuleId|说明|
+|---|---|
+|941100|检测到通过 libinjection 展开的 XSS 攻击|
+|941101|检测到通过 libinjection 展开的 XSS 攻击。|
+|941110|XSS 筛选器 - 类别 1：脚本标记向量|
+|941120|XSS 筛选器 - 类别 2：事件处理程序向量|
+|941130|XSS 筛选器 - 类别 3：属性向量|
+|941140|XSS 筛选器 - 类别 4：JavaScript URI 向量|
+|941150|XSS 筛选器 - 类别 5：不允许的 HTML 属性|
+|941160|NoScript XSS InjectionChecker：HTML 注入|
+|941170|NoScript XSS InjectionChecker：属性注入|
+|941180|节点验证器方块列表关键字|
+|941190|使用样式表的 XSS|
+|941200|使用 VML 帧的 XSS|
+|941210|使用经过模糊处理的 JavaScript 的 XSS|
+|941220|使用经过模糊处理的 VB Script 的 XSS|
+|941230|使用“embed”标记的 XSS|
+|941240|使用“import”或“implementation”属性的 XSS|
+|941250|IE XSS 筛选器 - 检测到攻击。|
+|941260|使用“meta”标记的 XSS|
+|941270|使用“link”href 的 XSS|
+|941280|使用“base”标记的 XSS|
+|941290|使用“applet”标记的 XSS|
+|941300|使用“object”标记的 XSS|
+|941310|US-ASCII 格式错误编码 XSS 筛选器 - 检测到攻击。|
+|941320|检测到可能的 XSS 攻击 - HTML 标记处理程序|
+|941330|IE XSS 筛选器 - 检测到攻击。|
+|941340|IE XSS 筛选器 - 检测到攻击。|
+|941350|UTF-7 编码 IE XSS - 检测到攻击。|
+|941360|检测到 JavaScript 混淆。|
+
+### <a name="p-x-ms-format-detectionnonerequest-942-application-attack-sqlip"></a><a name="crs942-32"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
+|RuleId|说明|
+|---|---|
+|942100|检测到通过 libinjection 展开的 SQL 注入攻击|
+|942110|SQL 注入攻击：检测到常见注入测试|
+|942120|SQL 注入攻击：检测到 SQL 运算符|
+|942130|SQL 注入攻击：检测到 SQL 同义反复。|
+|942140|SQL 注入攻击：检测到常用 DB 名称|
+|942150|SQL 注入攻击|
+|942160|检测到使用 sleep() 或 benchmark() 的盲注 sqli 测试。|
+|942170|检测到包含条件查询的 SQL 基准和休眠注入企图|
+|942180|检测到基本 SQL 身份验证绕过尝试 1/3|
+|942190|检测到 MSSQL 代码执行和信息收集尝试|
+|942200|检测到 MySQL 注释/空间经过模糊处理的注入和反引号终止|
+|942210|检测链式 SQL 注入尝试次数 1/2|
+|942220|查找整数溢出攻击，这些攻击来自 skipfish，但 3.0.00738585072007e-308 是“幻数”故障|
+|942230|检测到条件 SQL 注入企图|
+|942240|检测 MySQL 字符集开关和 MSSQL DoS 尝试|
+|942250|检测 MATCH AGAINST、MERGE 和 EXECUTE IMMEDIATE 注入|
+|942251|检测 HAVING 注入|
+|942260|检测到基本 SQL 身份验证绕过尝试 2/3|
+|942270|正在查找基本 sql 注入。 针对 mysql oracle 和其他系统的常见攻击字符串。|
+|942280|检测 Postgres pg_sleep 注入、waitfor 延迟攻击和数据库关闭尝试|
+|942290|查找基本 MongoDB SQL 注入企图|
+|942300|检测到 MySQL 注释、条件和 ch(a)r 注入|
+|942310|检测链式 SQL 注入尝试次数 2/2|
+|942320|检测 MySQL 和 PostgreSQL 存储过程/函数注入|
+|942330|检测到经典 SQL 注入探测 1/2|
+|942340|检测到基本 SQL 身份验证绕过尝试 3/3|
+|942350|检测 MySQL UDF 注入和其他数据/结构操作企图|
+|942360|检测到连接的基本 SQL 注入和 SQLLFI 尝试|
+|942361|检测基于关键字 alter 或 union 的基本 SQL 注入|
+|942370|检测到经典 SQL 注入探测 2/2|
+|942380|SQL 注入攻击|
+|942390|SQL 注入攻击|
+|942400|SQL 注入攻击|
+|942410|SQL 注入攻击|
+|942420|受限 SQL 字符异常情况检测 (cookie)：已超出特殊字符数 (8)|
+|942421|受限 SQL 字符异常情况检测 (cookie)：已超出特殊字符数 (3)|
+|942430|受限 SQL 字符异常情况检测 (args)：已超出特殊字符数 (12)|
+|942431|受限 SQL 字符异常情况检测 (args)：已超出特殊字符数 (6)|
+|942432|受限 SQL 字符异常情况检测 (args)：已超出特殊字符数 (2)|
+|942440|检测到 SQL 注释序列。|
+|942450|识别到 SQL 十六进制编码|
+|942460|元字符异常检测警报 - 重复的非单词字符|
+|942470|SQL 注入攻击|
+|942480|SQL 注入攻击|
+|942490|检测经典 SQL 注入探测 3/3|
+|942500|检测到 MySQL 内联注释。|
+
+### <a name="p-x-ms-format-detectionnonerequest-943-application-attack-session-fixationp"></a><a name="crs943-32"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
+|RuleId|说明|
+|---|---|
+|943100|可能的会话固定攻击：在 HTML 中设置 Cookie 值|
+|943110|可能的会话固定攻击：包含域外引用方的 SessionID 参数名称|
+|943120|可能的会话固定攻击：不包含引用方的 SessionID 参数名称|
+
+### <a name="p-x-ms-format-detectionnonerequest-944-application-attack-javap"></a><a name="crs944-32"></a> <p x-ms-format-detection="none">REQUEST-944-APPLICATION-ATTACK-JAVA</p>
+|RuleId|说明|
+|---|---|
+|944100|远程命令执行：Apache Struts、Oracle WebLogic|
+|944110|检测潜在的有效负载执行|
+|944120|可能的有效负载执行和远程命令执行|
+|944130|可疑的 Java 类|
+|944200|利用 Java 反序列化 Apache Commons|
+|944210|可能使用 Java 序列化|
+|944240|远程命令执行：Java 序列化|
+|944250|远程命令执行：检测到可疑的 Java 方法|
+|944300|Base64 编码的字符串与可疑关键字匹配|
+
 # <a name="owasp-31"></a>[OWASP 3.1](#tab/owasp31)
 
-## <a name="rule-sets"></a><a name="owasp31"></a> 规则集
+## <a name="31-rule-sets"></a><a name="owasp31"></a>3.1 规则集
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-31"></a> <p x-ms-format-detection="none">常规</p>
 
@@ -255,14 +519,14 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |941101|检测到通过 libinjection 展开的 XSS 攻击|
 |941110|XSS 筛选器 - 类别 1 = 脚本标记向量|
 |941130|XSS 筛选器 - 类别 3 = 属性向量|
-|941140|XSS 筛选器 - 类别 4 = Javascript URI 向量|
+|941140|XSS 筛选器 - 类别 4：JavaScript URI 向量|
 |941150|XSS 筛选器 - 类别 5 = 不允许的 HTML 属性|
 |941160|NoScript XSS InjectionChecker：HTML 注入|
 |941170|NoScript XSS InjectionChecker：属性注入|
 |941180|节点验证器阻止列表关键字|
 |941190|使用样式表的 XSS|
 |941200|使用 VML 帧的 XSS|
-|941210|使用经过模糊处理的 Javascript 的 XSS|
+|941210|使用经过模糊处理的 JavaScript 的 XSS|
 |941220|使用经过模糊处理的 VB Script 的 XSS|
 |941230|使用“embed”标记的 XSS|
 |941240|使用“import”或“implementation”属性的 XSS|
@@ -347,7 +611,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 # <a name="owasp-30"></a>[OWASP 3.0](#tab/owasp30)
 
-## <a name="rule-sets"></a><a name="owasp30"></a> 规则集
+## <a name="30-rule-sets"></a><a name="owasp30"></a>3.0 规则集
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-30"></a> <p x-ms-format-detection="none">常规</p>
 
@@ -485,12 +749,12 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |941100|检测到通过 libinjection 展开的 XSS 攻击|
 |941110|XSS 筛选器 - 类别 1 = 脚本标记向量|
 |941130|XSS 筛选器 - 类别 3 = 属性向量|
-|941140|XSS 筛选器 - 类别 4 = Javascript URI 向量|
+|941140|XSS 筛选器 - 类别 4：JavaScript URI 向量|
 |941150|XSS 筛选器 - 类别 5 = 不允许的 HTML 属性|
 |941180|节点验证器阻止列表关键字|
 |941190|使用样式表的 XSS|
 |941200|使用 VML 帧的 XSS|
-|941210|使用经过模糊处理的 Javascript 的 XSS|
+|941210|使用经过模糊处理的 JavaScript 的 XSS|
 |941220|使用经过模糊处理的 VB Script 的 XSS|
 |941230|使用“embed”标记的 XSS|
 |941240|使用“import”或“implementation”属性的 XSS|
@@ -547,7 +811,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 # <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="rule-sets"></a><a name="owasp229"></a> 规则集
+## <a name="29-rule-sets"></a><a name="owasp229"></a>2.9 规则集
 
 ### <a name="crs_20_protocol_violations"></a><a name="crs20"></a> crs_20_protocol_violations
 
@@ -689,7 +953,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |RuleId|说明|
 |---|---|
 |973336|XSS 筛选器 - 类别 1 = 脚本标记向量|
-|973338|XSS 筛选器 - 类别 3 = Javascript URI 向量|
+|973338|XSS 筛选器 - 类别 3：JavaScript URI 向量|
 |981136|规则 981136|
 |981018|规则 981018|
 |958016|跨站点脚本 (XSS) 攻击|

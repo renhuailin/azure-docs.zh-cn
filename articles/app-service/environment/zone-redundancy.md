@@ -4,17 +4,21 @@ description: 了解如何部署应用服务环境，使你的应用实现区域�
 author: ccompy
 ms.assetid: 24e3e7eb-c160-49ff-8d46-e947818ef186
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 07/05/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 383b5bb5c7295fe54efda883e47b9b2338286de5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 117fe7d8c624c0776c6ec6f61296101a2f844f1b
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624719"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432799"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>应用服务环境的可用性区域支持
+
+> [!NOTE]
+> 本文介绍用于独立应用服务计划的应用服务环境 v2
+> 
 
 可以将应用服务环境 (ASE) 部署到可用性区域 (AZ) 中。  客户可将内部负载均衡器 (ILB) ASE 部署到 Azure 区域中的特定 AZ。 如果你将 ILB ASE 固定到特定 AZ，则 ILB ASE 使用的资源会固定到指定的 AZ，或以区域冗余方式进行部署。  
 

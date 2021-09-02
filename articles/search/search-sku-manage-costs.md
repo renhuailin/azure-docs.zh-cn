@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: 1e46601858ece67efa2bca9543083da8a0e2cc79
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 6a371d3a9edf537e78f5a889139a053cb925518f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861986"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770831"
 ---
 # <a name="estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>估计和管理 Azure 认知搜索服务的成本
 
@@ -93,7 +93,7 @@ Azure 认知搜索中的可伸缩性体系结构基于副本和分区的灵活�
 | [自定义实体查找](cognitive-search-skill-custom-entity-lookup.md) | 按 Azure 认知搜索计量。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/search/#pricing)页。 |
 
 > [!TIP]
-> [增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)通过缓存和重用不受对技能组合的更改影响的扩充，来降低技能组合处理成本。 缓存需要 Azure 存储（请参阅[定价](/pricing/details/storage/blobs/)），但如果可以重复使用现有的扩充，则技能组执行的累积成本会降低。
+> [增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)通过缓存和重用不受对技能组合的更改影响的扩充，来降低技能组合处理成本。 缓存需要 Azure 存储（请参阅[定价](https://azure.microsoft.com/pricing/details/storage/blobs/)），但如果可以重复使用现有的扩充，则技能组执行的累积成本会降低。
 
 ## <a name="tips-for-managing-costs"></a>管理成本的提示
 

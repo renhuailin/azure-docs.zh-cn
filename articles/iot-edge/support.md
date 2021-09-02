@@ -2,18 +2,17 @@
 title: 支持的操作系统、容器引擎 - Azure IoT Edge
 description: 了解可以运行 Azure IoT Edge 守护程序和运行时的操作系统以及生产设备支持的容器引擎
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 06/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e2701a04c1e8ea631bdbf37470608cf66b8d242e
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 7dd2a6a064b039ebcfe7f17dec9c4a4a915b4c20
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985357"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732863"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
@@ -87,16 +86,16 @@ Azure IoT Edge 版本 1.2 仅支持构建为 Linux 容器的模块。
 :::moniker range="iotedge-2018-06"
 构建为 Linux 容器的模块可以部署到 Linux 或 Windows 设备。 对于 Linux 设备，IoT Edge 运行时会直接安装在主机设备上。 对于 Windows 设备，使用 IoT Edge 运行时预生成的 Linux 虚拟机会在主机设备上运行。
 
-[IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) 目前为公共预览版，但我们建议通过它在 Windows 设备上运行 IoT Edge。
+[Windows 上的 IoT Edge for Linux](iot-edge-for-linux-on-windows.md) 是在 Windows 设备上运行 IoT Edge 的建议方法。
 
 | 操作系统 | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
-| Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公共预览版 |
-| Windows 10 专业版 | 公共预览版 |  |  |
-| Windows 10 企业版 | 公共预览版 |  |  |
-| Windows 10 IoT 企业版 | 公共预览版 |  |  |
-| Windows Server 2019 | 公共预览版 |  |  |
+| Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/support/green-check.png) |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/support/green-check.png) |  | 公共预览版 |
+| Windows 10 专业版 | ![Windows 10 Pro + AMD64](./media/support/green-check.png) |  |  |
+| Windows 10 企业版 | ![Windows 10 Enterprise + AMD64](./media/support/green-check.png) |  |  |
+| Windows 10 IoT 企业版 | ![Windows 10 IoT Enterprise + AMD64](./media/support/green-check.png) |  |  |
+| Windows Server 2019 | ![Windows Server 2019 + AMD64](./media/support/green-check.png) |  |  |
 
 所有 Windows 操作系统都必须是 1809 版（内部版本 17763）或更高版本。
 :::moniker-end
@@ -107,8 +106,8 @@ Azure IoT Edge 版本 1.2 仅支持构建为 Linux 容器的模块。
 
 | 操作系统 | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
-| Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公共预览版 |
+| Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/support/green-check.png) |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/support/green-check.png) |  | 公共预览版 |
 
 :::moniker-end
 <!-- end 1.2 -->
@@ -127,9 +126,9 @@ Azure IoT Edge 版本 1.2 仅支持构建为 Linux 容器的模块。
 
 | 操作系统 | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
-| Windows 10 IoT 企业版 | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-| Windows Server 2019  | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
-| Windows Server IoT 2019 | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT 企业版 | ![check1](./media/support/green-check.png) |  |  |
+| Windows Server 2019  | ![check1](./media/support/green-check.png) |  |  |
+| Windows Server IoT 2019 | ![check1](./media/support/green-check.png) |  |  |
 
 所有 Windows 操作系统都必须是 1809 版（内部版本 17763）。 Windows 的这一特定内部版本是 Windows 上的 IoT Edge 所必需的，因为 Windows 容器的版本必须与主机 Windows 设备的版本完全匹配。 Windows 容器当前只使用内部版本 17763。
 
@@ -153,17 +152,17 @@ IoT Edge 1.1 LTS 是最后一个支持 Windows 容器的发布通道。 从版�
 
 | 操作系统 | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
-| [CentOS-7](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7) | ![CentOS + AMD64](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Ubuntu 20.04 <sup>1</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20.04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20.04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20.04 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Debian 9](https://www.debian.org/releases/stretch/) | ![Debian 9 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 9 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Debian 10](https://www.debian.org/releases/buster/) | ![Debian 10 + AMD64](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Debian 10 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Mentor Embedded Linux Flex OS](https://www.mentor.com/embedded-software/linux/mel-flex-os/) | ![Mentor Embedded Linux Flex OS + AMD64](./media/tutorial-c-module/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Mentor Embedded Linux Omni OS](https://www.mentor.com/embedded-software/linux/mel-omni-os/) | ![Mentor Embedded Linux Omni OS + AMD64](./media/tutorial-c-module/green-check.png) |  | ![Mentor Embedded Linux Omni OS + ARM64](./media/tutorial-c-module/green-check.png) |
-| [RHEL 7](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7) | ![RHEL 7 + AMD64](./media/tutorial-c-module/green-check.png) | ![RHEL 7 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![RHEL 7 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Ubuntu 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu 18.04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18.04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18.04 + ARM64](./media/tutorial-c-module/green-check.png) |
-| [Wind River 8](https://docs.windriver.com/category/os-wind_river_linux) | ![Wind River 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
-| Raspberry Pi OS Buster |  | ![Raspberry Pi OS Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspberry Pi OS Buster + ARM64](./media/tutorial-c-module/green-check.png) |
+| [CentOS-7](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7) | ![CentOS + AMD64](./media/support/green-check.png) | ![CentOS + ARM32v7](./media/support/green-check.png) | ![CentOS + ARM64](./media/support/green-check.png) |
+| [Ubuntu 20.04 <sup>1</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20.04 + AMD64](./media/support/green-check.png) | ![Ubuntu 20.04 + ARM32v7](./media/support/green-check.png) | ![Ubuntu 20.04 + ARM64](./media/support/green-check.png) |
+| [Debian 9](https://www.debian.org/releases/stretch/) | ![Debian 9 + AMD64](./media/support/green-check.png) | ![Debian 9 + ARM32v7](./media/support/green-check.png) | ![Debian 9 + ARM64](./media/support/green-check.png) |
+| [Debian 10](https://www.debian.org/releases/buster/) | ![Debian 10 + AMD64](./media/support/green-check.png) | ![Debian 10 + ARM32v7](./media/support/green-check.png) | ![Debian 10 + ARM64](./media/support/green-check.png) |
+| [Mentor Embedded Linux Flex OS](https://www.mentor.com/embedded-software/linux/mel-flex-os/) | ![Mentor Embedded Linux Flex OS + AMD64](./media/support/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM32v7](./media/support/green-check.png) | ![Mentor Embedded Linux Flex OS + ARM64](./media/support/green-check.png) |
+| [Mentor Embedded Linux Omni OS](https://www.mentor.com/embedded-software/linux/mel-omni-os/) | ![Mentor Embedded Linux Omni OS + AMD64](./media/support/green-check.png) |  | ![Mentor Embedded Linux Omni OS + ARM64](./media/support/green-check.png) |
+| [RHEL 7](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7) | ![RHEL 7 + AMD64](./media/support/green-check.png) | ![RHEL 7 + ARM32v7](./media/support/green-check.png) | ![RHEL 7 + ARM64](./media/support/green-check.png) |
+| [Ubuntu 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu 18.04 + AMD64](./media/support/green-check.png) | ![Ubuntu 18.04 + ARM32v7](./media/support/green-check.png) | ![Ubuntu 18.04 + ARM64](./media/support/green-check.png) |
+| [Wind River 8](https://docs.windriver.com/category/os-wind_river_linux) | ![Wind River 8 + AMD64](./media/support/green-check.png) |  |  |
+| [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/support/green-check.png) | ![Yocto + ARM32v7](./media/support/green-check.png) | ![Yocto + ARM64](./media/support/green-check.png) |
+| Raspberry Pi OS Buster |  | ![Raspberry Pi OS Buster + ARM32v7](./media/support/green-check.png) | ![Raspberry Pi OS Buster + ARM64](./media/support/green-check.png) |
 
 <sup>1</sup> [安装或卸载 Azure IoT Edge for Linux](how-to-install-iot-edge.md) 中的 Ubuntu Server 18.04 安装步骤应在 Ubuntu 20.04 上无任何更改的情况下有效。
 
@@ -173,13 +172,13 @@ IoT Edge 发行资产和发行说明在 [azure-iotedge 版本](https://github.co
 
 下表列出了每个版本（以 1.2.0 开始）中包含的组件。 可以单独安装或更新此表中列出的组件，并且它们与旧版本中的组件向后兼容。
 
-| Release | aziot-edge | edgeHub<br>edgeAgent | aziot-identity-service |
+| 发布 | aziot-edge | edgeHub<br>edgeAgent | aziot-identity-service |
 | ------- | ---------- | -------------------- | ---------------------- |
 | **1.2** | 1.2.0<br>1.2.1 | 1.2.0<br>1.2.1   | 1.2.0<br><br> |
 
 下表列出了每个版本（最高为 1.1 LTS 版本）中包含的组件。 可以单独安装或更新此表中列出的组件，并且它们与旧版本中的组件向后兼容。
 
-| Release | iotedge | edgeHub<br>edgeAgent | libiothsm | moby |
+| 发布 | iotedge | edgeHub<br>edgeAgent | libiothsm | moby |
 |--|--|--|--|--|
 | **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1<br><br>1.1.3 | 1.1.0<br>1.1.1<br>1.1.2<br>1.1.3 | 1.1.0<br>1.1.1<br><br>1.1.3 |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |

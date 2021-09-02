@@ -2,7 +2,6 @@
 title: 使用 Azure IoT 中心安排作业 (Node) | Microsoft Docs
 description: 如何安排 Azure IoT 中心作业实现多台设备上的直接方法调用。 使用 Azure IoT SDK for Node.js 实现模拟设备应用以及用于运行作业的服务应用。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -10,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 7812e06b445bba77d8ebd4ff5bf86662ef81ddc9
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 591e7c43b26bbd8668bbe50bc78965f04f194c36
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887425"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729847"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>计划和广播作业 (Node.js)
 
@@ -33,7 +32,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 * 设备孪生和属性：[设备孪生入门](iot-hub-node-node-twin-getstarted.md)和[教程：如何使用设备孪生属性](tutorial-device-twins.md)
 
-* 直接方法：[IoT 中心开发人员指南 - 直接方法](iot-hub-devguide-direct-methods.md)和[教程：直接方法](quickstart-control-device-node.md)
+* 直接方法：[IoT 中心开发人员指南 - 直接方法](iot-hub-devguide-direct-methods.md)和[快速入门：直接方法和教程：直接方法](./quickstart-control-device.md?pivots=programming-language-nodejs)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

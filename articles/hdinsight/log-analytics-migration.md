@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.author: ali
 author: AliciaLiMicrosoft
 ms.date: 04/19/2021
-ms.openlocfilehash: 5e312941e02c5605132971a55041a0b4f7d6dbc9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 823fb43afbd7ac51cafeff7e9e18472fe32c9aec
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139086"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742266"
 ---
 # <a name="log-analytics-migration-guide-for-azure-hdinsight-clusters"></a>适用于 Azure HDInsight 群集的 Log Analytics 迁移指南
 
@@ -34,6 +34,12 @@ Azure HDInsight 在 2017 年实现了与 Log Analytics 的集成。 HDInsight �
 - 更高的可靠性
 - 更快的日志传送
 - 基于资源的表分组和默认查询
+
+
+
+> [!NOTE]  
+> 新的 Azure Montitor 集成是公开预览版。 仅在美国东部和西欧区域可用。
+
 
 ## <a name="benefits-of-the-new-azure-monitor-integration"></a>新 Azure Monitor 集成的优点
 

@@ -1,16 +1,19 @@
 ---
 title: 在何处以及如何使用 - 个性化体验创建服务
 description: 在应用程序能够选择要显示的正确项、操作或产品的任何场合下，都可以应用个性化体验创建服务，以改善体验，实现更好的业务成果，或提高工作效率。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 87179950c33a6facb59ce499aa0ae393e53fb37f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc8b0a09212c54ae1e0328e5d1dbfd6d8f213981
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91777218"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830187"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>在何处以及如何使用个性化体验创建服务
 
