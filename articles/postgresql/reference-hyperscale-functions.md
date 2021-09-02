@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 04/07/2021
-ms.openlocfilehash: b0aa9d5dec25d8d600ecbcde59a57e67917c6411
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 65288730cafaa39507eeab4ed2e3d29267080262
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011139"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123310474"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>超大规模 (Citus) SQL API 中的函数
 
@@ -46,7 +46,7 @@ colocate\_with：（可选）将当前表包含在另一个表的并置组中。
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -70,7 +70,7 @@ table\_name：需要分布的小型维度表或引用表的名称。
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -90,7 +90,7 @@ table\_name：包含分片计数为 1 的分布式表的名称，将以引用表
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -126,7 +126,7 @@ DETAIL:  Distribution column types don't match for apples and oranges.
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -152,7 +152,7 @@ colocate\_with：（可选）当分布式函数向分布式表（或更普遍的
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -401,7 +401,7 @@ pg_size_pretty
 
 #### <a name="arguments"></a>参数
 
-空值
+不适用
 
 #### <a name="return-value"></a>返回值
 
@@ -429,7 +429,7 @@ target\_node\_port：数据库服务器正在侦听的目标工作器节点上�
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -469,7 +469,7 @@ shard\_transfer\_mode：（可选）指定复制方法，是使用 PostgreSQL �
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -519,7 +519,7 @@ rebalance\_strategy：（可选）[pg_dist_rebalance_strategy](reference-hypersc
 
 #### <a name="return-value"></a>返回值
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -562,7 +562,7 @@ SELECT rebalance_table_shards('github_events', excluded_shard_list:='{1,2}');
 
 #### <a name="arguments"></a>参数
 
-空值
+不适用
 
 #### <a name="return-value"></a>返回值
 
@@ -643,7 +643,7 @@ citus\_remote\_connection\_stats() 函数显示每个远程节点的活动连接
 
 #### <a name="arguments"></a>参数
 
-空值
+不适用
 
 #### <a name="example"></a>示例
 
@@ -657,61 +657,6 @@ SELECT * from citus_remote_connection_stats();
  citus_worker_1 | 5432 | postgres      |                        3
 (1 row)
 ```
-
-### <a name="master_drain_node"></a>master\_drain\_node
-
-master\_drain\_node() 函数将分片移出指定节点，并移到在 [pg_dist_node](reference-hyperscale-metadata.md#worker-node-table)中将 `shouldhaveshards` 设置为 true 的其他节点上。 在从服务器组删除节点并关闭节点的物理服务器之前调用函数。
-
-#### <a name="arguments"></a>参数
-
-nodename：要排出的节点的主机名名称。
-
-nodeport：要排出的节点的端口号。
-
-shard\_transfer\_mode:（可选）指定复制方法，是使用 PostgreSQL 逻辑复制还是使用跨工作器 COPY 命令。 可能的值包括：
-
-> -   `auto`：如果可以进行逻辑复制，则需要副本标识，否则使用旧行为（例如，对于分片修复，使用 PostgreSQL 9.6）。 这是默认值。
-> -   `force_logical`：使用逻辑复制，即使该表没有副本标识。 在复制过程中对表的任何并发更新/删除语句都将失败。
-> -   `block_writes`：对缺少主键或副本标识的表使用 COPY 命令（阻止写入）。
-
-rebalance\_strategy：（可选）[pg_dist_rebalance_strategy](reference-hyperscale-metadata.md#rebalancer-strategy-table) 中策略的名称。
-如果省略此参数，则函数将选择默认策略，如表中所示。
-
-#### <a name="return-value"></a>返回值
-
-空值
-
-#### <a name="example"></a>示例
-
-以下步骤用于删除单个节点（例如，标准 PostgreSQL 端口上的 '10.0.0.1'）：
-
-1.  排出节点。
-
-    ```postgresql
-    SELECT * from master_drain_node('10.0.0.1', 5432);
-    ```
-
-2.  等待命令完成
-
-3.  删除节点
-
-当排出多个节点时，建议改为使用 [rebalance_table_shards](#rebalance_table_shards)。 通过这种操作，超大规模 (Citus) 可提前计划并以最少次数移动分片。
-
-1.  为要删除的每个节点运行：
-
-    ```postgresql
-    SELECT * FROM master_set_node_property(node_hostname, node_port, 'shouldhaveshards', false);
-    ```
-
-2.  通过 [rebalance_table_shards](#rebalance_table_shards) 一次排出所有节点
-
-    ```postgresql
-    SELECT * FROM rebalance_table_shards(drain_only := true);
-    ```
-
-3.  等待排出再平衡完成
-
-4.  删除节点
 
 ### <a name="replicate_table_shards"></a>replicate\_table\_shards
 

@@ -11,18 +11,18 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 77a01a270f47ddacb71962188e7fedd0a0a9f6d0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7377f0e296f571640aba35639972e66a60c6dd0f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790430"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444642"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>使用存储在 Azure Key Vault 中的客户管理的密钥配置加密
 
-Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了更进一步控制加密密钥，你可以管理自己的密钥。 客户管理的密钥必须存储在 Azure Key Vault 或 Key Vault 托管硬件安全模型 (HSM)（预览）中。
+Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，数据使用 Microsoft 管理的密钥进行加密。 为了更进一步控制加密密钥，你可以管理自己的密钥。 客户管理的密钥必须存储在 Azure Key Vault 或 Key Vault 托管硬件安全模型 (HSM) 中。
 
-本文介绍了如何使用 Azure 门户、PowerShell 或 Azure CLI，通过存储在密钥保管库中的客户管理的密钥配置加密。 若要了解如何配置使用托管 HSM 中存储的客户管理的密钥进行加密，请参阅[配置使用 Azure Key Vault 托管 HSM（预览）中存储的客户管理的密钥进行加密](customer-managed-keys-configure-key-vault-hsm.md)。
+本文介绍了如何使用 Azure 门户、PowerShell 或 Azure CLI，通过存储在密钥保管库中的客户管理的密钥配置加密。 若要了解如何配置使用托管 HSM 中存储的客户管理的密钥进行加密，请参阅[配置使用 Azure Key Vault 托管 HSM 中存储的客户管理的密钥进行加密](customer-managed-keys-configure-key-vault-hsm.md)。
 
 > [!NOTE]
 > Azure 密钥保管库和 Azure 密钥保管库托管 HSM 支持使用相同的 API 和管理界面进行配置。
@@ -390,4 +390,4 @@ az storage account update
 
 - [静态数据的 Azure 存储加密](storage-service-encryption.md)
 - [用于 Azure 存储加密的客户管理的密钥](customer-managed-keys-overview.md)
-- [使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥配置加密（预览版）](customer-managed-keys-configure-key-vault-hsm.md)
+- [使用 Azure Key Vault 托管 HSM 中存储的客户管理的密钥配置加密](customer-managed-keys-configure-key-vault-hsm.md)

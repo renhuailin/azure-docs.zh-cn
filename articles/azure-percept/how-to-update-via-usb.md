@@ -1,22 +1,23 @@
 ---
-title: 通过 USB-C 数据线连接更新 Azure Percept DK
+title: 通过 USB-C 连接更新 Azure Percept DK
 description: 了解如何通过 USB-C 数据线连接更新 Azure Percept DK
-author: mimcco
-ms.author: mimcco
+author: EthanChangAED
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: e40a75f91ebf371d27b541b74ba427f42bc518f3
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: eef23597e6cb8f215fd7ce2374d66ff104cc00bc
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652899"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226018"
 ---
-# <a name="update-the-azure-percept-dk-over-a-usb-c-cable-connection"></a>通过 USB-C 数据线连接更新 Azure Percept DK
+# <a name="update-azure-percept-dk-over-a-usb-c-connection"></a>通过 USB-C 连接更新 Azure Percept DK
 
 本指南将介绍如何通过 USB 连接成功更新开发工具包的操作系统和固件。 下面概述了此过程期间要执行的操作。
+
 1. 将更新包下载到主机
 1. 运行将更新包转移到开发工具包的命令
 1. 使用 SSH 或 DIP 开关将开发工具包设置为 USB 模式
@@ -27,7 +28,6 @@ ms.locfileid: "114652899"
 > 通过 USB 更新开发工具包会删除设备上的所有现有数据（包括 AI 模型和容器）。
 >
 > 请按顺序遵循所有说明操作。 跳过某些步骤可能导致开发工具包不可用。
-
 
 ## <a name="prerequisites"></a>必备条件
 

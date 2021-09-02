@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 7a1aa061bb8c8be3a676e0e5bb690b2a9749b6c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 589c0a4ab358bb1b25fa58c2083dd82b13315d64
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94536126"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122651645"
 ---
 # <a name="azure-database-for-mysql-management-stored-procedures"></a>Azure Database for MySQL 管理存储过程
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL 服务器上提供了可帮助管理 MySQL 服务器的存储过程。 这包括管理服务器的连接、查询和设置数据传入复制。  
 
@@ -25,7 +27,7 @@ Azure Database for MySQL 服务器上提供了可帮助管理 MySQL 服务器的
 
 |**存储过程名称**|**输入参数**|**输出参数**|**用法说明**|
 |-----|-----|-----|-----|
-|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|空值|若要使用 SSL 模式传输数据，请将 CA 证书的上下文传入 master_ssl_ca 参数。 </br><br>若要不使用 SSL 模式传输数据，请将空字符串传递到 master_ssl_ca 参数中。|
+|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|不适用|若要使用 SSL 模式传输数据，请将 CA 证书的上下文传入 master_ssl_ca 参数。 </br><br>若要不使用 SSL 模式传输数据，请将空字符串传递到 master_ssl_ca 参数中。|
 |mysql.az_replication _start|空值|空值|开始复制。|
 |mysql.az_replication _stop|空值|空值|停止复制。|
 |*mysql.az_replication _remove_master*|空值|空值|删除源和副本之间的复制关系。|
@@ -41,7 +43,7 @@ Azure Database for MySQL 中提供了以下用于管理服务器的存储过程�
 |-----|-----|-----|-----|
 |*mysql.az_kill*|processlist_id|空值|等效于 [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) 命令。 在终止连接正在执行的任何语句之后，将终止与提供的 process list_id 关联的连接。|
 |*mysql.az_kill_query*|processlist_id|空值|等效于 [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) 命令。 将终止连接当前正在执行的语句。 使连接本身保持活动状态。|
-|*mysql.az_load_timezone*|空值|空值|加载时区表以允许将 `time_zone` 参数设置为命名值（例如， “US/Pacific”）。|
+|*mysql.az_load_timezone*|不适用|不适用|加载时区表以允许将 `time_zone` 参数设置为命名值（例如， “US/Pacific”）。|
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何设置[数据传入复制](howto-data-in-replication.md)

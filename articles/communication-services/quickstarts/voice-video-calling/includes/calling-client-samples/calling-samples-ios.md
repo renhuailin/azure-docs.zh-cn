@@ -1,15 +1,15 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
 ms.date: 06/30/2021
-ms.author: mikben
-ms.openlocfilehash: 45123517d1f2a53a6bf023d1af6fafc528cde856
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.author: rifox
+ms.openlocfilehash: aaf99113e3d7fd1190266976e9475e33272d338c
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339846"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "123078198"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -580,7 +580,7 @@ localRenderer.dispose()
 
 ## <a name="record-calls"></a>录制通话
 > [!WARNING]
-> 1\.1.0 和 1.1.0-beta.1（beta 版）之前版本的 ACS Calling iOS SDK 使用 `isRecordingActive` 作为 `Call` 对象的一部分，并且 `didChangeRecordingState` 属于 `CallDelegate` 委托的一部分。 对于新的 beta 版本，这些 API 已作为 `Call` 的扩展功能移动，如下所述。
+> 1\.1.0 和 1.1.0-beta.1（beta 版）之前版本的 ACS Calling iOS SDK 使用 `isRecordingActive` 作为 `Call` 对象的一部分，并且 `didChangeRecordingState` 属于 `CallDelegate` 委托的一部分。 对于新的 Beta 版本，这些 API 已作为 `Call` 的扩展功能移动，如下所述。
 > [!NOTE]
 > 此 API 以预览状态提供给开发者，可能根据我们收到的反馈更改。 请勿在生产环境中使用此 API。 若要使用此 API，请使用 ACS Calling iOS SDK 的 beta 版本
 
@@ -607,33 +607,33 @@ public func recordingFeature(_ recordingFeature: RecordingFeature, didChangeReco
 }
 ```
 
-若要从应用程序开始录制，请先按照[通话录制概述](../../../../concepts/voice-video-calling/call-recording.md)中的步骤来设置通话录制。
+如果要从应用程序开始录制，请先按照[通话记录概述](../../../../concepts/voice-video-calling/call-recording.md)的步骤设置通话记录。
 
-在服务器上设置通话录制后，需要使用 iOS 应用程序从通话中调用 `ServerCallId` 值，然后将该值发送到服务器以启动录制过程。 可以使用 `CallInfo` 类（可使用 `getInfo()` 在类对象中找到该类）中的 `getServerCallId()` 来找到 `ServerCallId` 值。
+在服务器上设置通话录制后，需要使用 iOS 应用程序从通话中调用 `ServerCallId` 值，然后将该值发送到服务器以启动录制过程。 可以使用 `CallInfo` 类（可使用 `getInfo()` 在类对象中找到）中的 `getServerCallId()` 查找 `ServerCallId` 值。
 
 ```swift
 let serverCallId = call.info.getServerCallId(){ (serverId, error) in }
 // Send serverCallId to your recording server to start the call recording.
 ```
 
-从服务器启动录制时，系统将触发事件 `didChangeRecordingState`，并且 `recordingFeature.isRecordingActive` 的值将为 `true`。
+当从服务器开始录制时，将触发事件 `didChangeRecordingState`，并且 `recordingFeature.isRecordingActive` 的值为 `true`。
 
-与启动通话录制一样，如果想要关闭通话录制，需要获取 `ServerCallId` 并将其发送到录制服务器，这样服务器便会停止录制通话了。
+与启动通话记录一样，如果想要停止通话记录，需要获取 `ServerCallId` 并将其发送到录制服务器，这样服务器就能停止通话记录了。
 
 ```swift
 let serverCallId = call.info.getServerCallId(){ (serverId, error) in }
 // Send serverCallId to your recording server to stop the call recording.
 ```
 
-当服务器停止录制时，系统将触发事件 `didChangeRecordingState`，并且 `recordingFeature.isRecordingActive` 的值为 `false`。
+当服务器停止录制时，将触发事件 `didChangeRecordingState`，并且 `recordingFeature.isRecordingActive` 的值为 `false`。
 
 ## <a name="call-transcription"></a>通话听录
 > [!WARNING]
-> 1\.1.0 和 1.1.0-beta.1（beta 版）之前版本的 ACS Calling iOS SDK 使用 `isTranscriptionActive` 作为 `Call` 对象的一部分，并且 `didChangeTranscriptionState` 属于 `CallDelegate` 委托的一部分。 对于新的 beta 版本，这些 API 已作为 `Call` 的扩展功能移动，如下所述。
+> 1\.1.0 和 1.1.0-beta.1（beta 版）之前版本的 ACS Calling iOS SDK 使用 `isTranscriptionActive` 作为 `Call` 对象的一部分，并且 `didChangeTranscriptionState` 属于 `CallDelegate` 委托的一部分。 对于新的 Beta 版本，这些 API 已作为 `Call` 的扩展功能移动，如下所述。
 > [!NOTE]
 > 此 API 以预览状态提供给开发者，可能根据我们收到的反馈更改。 请勿在生产环境中使用此 API。 若要使用此 API，请使用 ACS Calling iOS SDK 的 beta 版本
 
-通话听录是核心 `Call` API 的扩展功能。 首先，需要获取听录功能 API 对象：
+通话听录是核心 `Call` API 的扩展功能。 首先需要获取听录功能 API 对象：
 
 ```swift
 let callTranscriptionFeature = call.api(TranscriptionFeature.self)

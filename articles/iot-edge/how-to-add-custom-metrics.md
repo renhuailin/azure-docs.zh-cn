@@ -2,19 +2,18 @@
 title: 如何添加自定义指标 - Azure IoT Edge
 description: 使用自定义模块中特定于场景的指标来增强内置指标
 author: veyalla
-manager: philmea
 ms.author: veyalla
-ms.date: 06/08/2021
+ms.date: 08/11/2021
 ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12defc783be6fb1a87b815284b1fbf019d8c8817
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 8e9c5b74b19af00228f03b26450b987d87283376
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904352"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015488"
 ---
 # <a name="add-custom-metrics-preview"></a>添加自定义指标（预览）
 
@@ -32,7 +31,7 @@ ms.locfileid: "111904352"
 
 * 在指标名称的开头包含模块名称，以确定哪个模块发出了指标。
 
-* 在每个指标中以标签（也称为标记/维度）形式添加 IoT 中心名称、IoT Edge 设备 ID 和模块 ID 。 此信息可用作 IoT Edge 代理启动的每个模块的环境变量。 示例存储库中的示例[演示了](https://github.com/Azure-Samples/iotedge-module-prom-custom-metrics/blob/b6b8501adb484521b76e6f317fefee57128834a6/csharp/Program.cs#L49)该方法。 如果没有此上下文，则不可能将给定的指标值与特定设备相关联。
+* 在每个指标中以标签（也称为标记/维度）形式添加 IoT 中心名称或 IoT Central 应用程序名称、IoT Edge 设备 ID 和模块 ID。/ 此信息可用作 IoT Edge 代理启动的每个模块的环境变量。 示例存储库中的示例[演示了](https://github.com/Azure-Samples/iotedge-module-prom-custom-metrics/blob/b6b8501adb484521b76e6f317fefee57128834a6/csharp/Program.cs#L49)该方法。 如果没有此上下文，则不可能将给定的指标值与特定设备相关联。
 
 * 在标签中包含实例 ID。 实例 ID 可以是任何唯一 ID，例如在模块启动过程中生成的 [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 在后端处理模块的指标时，实例 ID 信息可以帮助协调模块重启。
 
@@ -57,7 +56,7 @@ sudo docker exec replace-with-metrics-collector-module-name curl http://replace-
 
 在 Log Analytics 中收到自定义指标后，可以创建自定义可视化效果和警报。 可以扩充监视工作簿以添加查询支持的可视化效果。
 
-每个指标都与 IoT 中心的资源 ID 相关联。 因此，可以检查自定义指标是否从关联的 IoT 中心的“日志”页（而不是支持的 Log Analytics 工作区）正确引入。 使用这个基本的 KQL 查询来验证：
+每个指标都与 IoT 中心或 IoT Central 应用程序的资源 ID 相关联。 因此，可以检查自定义指标是否从关联的 IoT 中心或 IoT Central 应用程序的“日志”页（而不是支持的 Log Analytics 工作区）正确引入。 使用这个基本的 KQL 查询来验证：
 
 ```KQL
 InsightsMetrics

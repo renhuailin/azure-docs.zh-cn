@@ -6,14 +6,14 @@ author: nmurav
 services: azure-communication-services
 ms.author: nmurav
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b2a9f53dd2513baaa60ba39b2eaae7b11fe9f4b8
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 332af91806da4514aad9ccc320a5498539682879
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113112700"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252257"
 ---
 # <a name="call-flow-topologies"></a>调用流拓扑
 本文介绍 Azure 通信服务呼叫流拓扑。 如果你是一名企业客户，且你将通信服务集成到你管理的某个网络中，那么请查看本文。 若要简要了解通信服务呼叫流，请访问[呼叫流概念文档](./call-flows.md)。

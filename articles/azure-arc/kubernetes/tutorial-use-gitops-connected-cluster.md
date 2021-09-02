@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial , devx-track-azurecli
-ms.openlocfilehash: 1c639c323fcd0dd0ed9f417070d679defeb4cf1e
-ms.sourcegitcommit: 20abee54e48f9b40b83d39c5b970bd0193812cb6
+ms.openlocfilehash: c98a912394bf660f7a2f09c25c10629fd9810434
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113632423"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098296"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>教程：在已启用 Azure Arc 的 Kubernetes 群集上使用 GitOps 部署配置 
 
@@ -95,7 +95,8 @@ ms.locfileid: "113632423"
         "lastModifiedByType": null
       },
       "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
-      ```
+    }
+    ```
 
 ### <a name="use-a-public-git-repository"></a>使用公共 Git 存储库
 
@@ -151,7 +152,7 @@ ms.locfileid: "113632423"
 >[!NOTE]
 >* Helm 运算符图表版本 1.2.0 + 支持 HTTPS Helm 版本的专用身份验证。
 >* AKS 托管群集不支持 HTTPS Helm 版本。
->* 如果需要 Flux 通过代理访问 Git 存储库，则需要使用代理设置更新 Azure Arc 代理。 有关详细信息，请参阅[使用出站代理服务器进行连接](./quickstart-connect-cluster.md#5-connect-using-an-outbound-proxy-server)。
+>* 如果需要 Flux 通过代理访问 Git 存储库，则需要使用代理设置更新 Azure Arc 代理。 有关详细信息，请参阅[使用出站代理服务器进行连接](./quickstart-connect-cluster.md#4a-connect-using-an-outbound-proxy-server)。
 
 
 ## <a name="additional-parameters"></a>附加参数

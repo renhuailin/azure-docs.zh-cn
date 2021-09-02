@@ -1,20 +1,20 @@
 ---
 title: Azure Percept 音频设备概述
 description: 了解有关 Azure Percept 音频的详细信息
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 23fae249cfceec75af0b7c49a3875ab447ecbafd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6afe4da59b837d4901bfb7243d5e0734b4c8df28
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564256"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226896"
 ---
-# <a name="introduction-to-azure-percept-audio"></a>Azure Percept 音频简介
+# <a name="azure-percept-audio-device-overview"></a>Azure Percept 音频设备概述
 
 Azure Percept Audio 是一个附件设备，可将语音 AI 功能添加到 [Azure Percept DK](./overview-azure-percept-dk.md)。 它包含预配置的音频处理器和四麦克风线性阵列，使你能够在 Azure 认知服务的帮助下使用语音命令、关键字辨识和远场语音。 它与 Azure Percept DK、[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) 和其他 Azure Edge 管理服务现成集成。 Azure Percept Audio 可在 [Microsoft 在线商店](https://go.microsoft.com/fwlink/p/?LinkId=2155270)购买。
 

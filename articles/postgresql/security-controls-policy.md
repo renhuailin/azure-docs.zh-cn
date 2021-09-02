@@ -1,18 +1,18 @@
 ---
 title: Azure Database for PostgreSQL 的 Azure Policy 法规合规性控制措施
 description: 列出可用于 Azure Database for PostgreSQL 的 Azure Policy 法规合规性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: sample
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 4a610ad48bdc3419f56bb429aba24d1a06592a1d
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: e3b61c9b425a75744f7a42864e68b465d4b50e22
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122607923"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123097961"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 的 Azure Policy 法规合规性控制措施
 

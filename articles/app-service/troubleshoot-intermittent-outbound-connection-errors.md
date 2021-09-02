@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 2b4719561ad94d54267410d0af28db6ee8d82b00
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dc6a56cff3492011a4717d867f08a580cf5a198c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799099"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738692"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>排查 Azure 应用服务中的间歇性出站连接错误
 
@@ -49,7 +49,7 @@ ms.locfileid: "104799099"
 
 如果你的目标是一个支持服务终结点的 Azure 服务，则可通过使用[区域 VNet 集成](./web-sites-integrate-with-vnet.md)和服务终结点或专用终结点来避免 SNAT 端口耗尽问题。 使用区域 VNet 集成并将服务终结点置于集成子网中时，发往这些服务的应用出站流量不会有出站 SNAT 端口限制。 同样，如果使用区域 VNet 集成和专用终结点，则不会有将流量发往该目标的出站 SNAT 端口的问题。 
 
-如果目标是 Azure 外部的外部终结点，则使用 NAT 网关可获得 64,000 个出站 SNAT 端口。 它还提供了一个专用出站地址，可以不与任何人共享。 
+如果目标是 Azure 外部的外部终结点，则[使用 NAT 网关](./networking/nat-gateway-integration.md)可获得 64,000 个出站 SNAT 端口。 它还提供了一个专用出站地址，可以不与任何人共享。 
 
 如果可能，请对代码进行改进，以使用连接池并避免整个情况。 但更改代理并不是总能那么快，以致于无法及时缓解这种情况。 如果无法及时更改代码，可以利用其他解决方案。 该问题的最佳解决方法是尽量结合使用所有解决方案。 尝试对 Azure 服务使用服务终结点和专用终结点，并对其他服务使用 NAT 网关。 
 

@@ -1,20 +1,20 @@
 ---
-title: 排查 Azure Percept Vision 和视觉模块的问题
+title: Azure Percept Vision 和视觉模块疑难解答
 description: 获取视觉 AI 原型设计体验中一些更常见问题的故障排除技巧。
-author: mimcco
-ms.author: mimcco
+author: NabilaBabar
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 79a9147fde164a672d310a7dea6fb6166ed3a1f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6bc06ed6850c247641423ef365a86dd9d8aec90a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751372"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225971"
 ---
-# <a name="vision-solution-troubleshooting"></a>视觉解决方案故障排除
+# <a name="troubleshoot-azure-percept-vision-and-vision-modules"></a>Azure Percept Vision 和视觉模块疑难解答
 
 本文提供了有关如何在 Azure Percept Studio 中排查无代码视觉解决方案问题的信息。
 

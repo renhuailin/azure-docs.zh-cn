@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 159b44c4002c838a22656e8a8ddc5f5f6efd69b7
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c6e630444fce484c02cd6707673d96a83360b801
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971953"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100887"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB 批量执行程序库概述
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,6 +53,6 @@ Azure Cosmos DB 是一种快速且灵活的全局分布式数据库服务，旨�
 ## <a name="next-steps"></a>后续步骤 
   
 * 若要进行详细了解，请试用那些在 [.NET](bulk-executor-dot-net.md) 和 [Java](bulk-executor-java.md) 中使用批量执行程序库的示例应用程序。  
-* 在 [.NET](sql-api-sdk-bulk-executor-dot-net.md) 和 [Java](sql-api-sdk-bulk-executor-java.md) 中查看批量执行程序 SDK 信息和发行说明。
+* 在 [.NET](sql-api-sdk-bulk-executor-dot-net.md) 和 [Java](sql/sql-api-sdk-bulk-executor-java.md) 中查看批量执行程序 SDK 信息和发行说明。
 * 批量执行程序库已集成到 Cosmos DB Spark 连接器中。若要进行详细的了解，请参阅 [Azure Cosmos DB Spark 连接器](./create-sql-api-spark.md)一文。  
 * 批量执行程序库也已集成到新版 [Azure Cosmos DB 连接器](../data-factory/connector-azure-cosmos-db.md)中，可供 Azure 数据工厂复制数据。

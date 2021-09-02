@@ -5,19 +5,18 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 4f2f0678b421ac6965b2848cc25564b4e95c7c6b
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: df82f61559a2ede3da477118f090f664e3389437
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567041"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "122652639"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心的实时传感器数据
 
@@ -29,11 +28,13 @@ ms.locfileid: "107567041"
 
 ## <a name="prerequisites"></a>必备条件
 
-* 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](quickstart-send-telemetry-dotnet.md)快速入门中的一个教程。 这些文章阐述下列要求：
+* 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)快速入门中的一个教程。 这些文章阐述下列要求：
 
   * 一个有效的 Azure 订阅
   * 已在订阅中创建一个 IoT 中心
   * 一个可向 IoT 中心发送消息的客户端应用程序
+
+* [Node.js](https://nodejs.org) 10.6 或更高版本。 若要检查节点版本，请运行 `node --version`。
 
 * [下载 Git](https://www.git-scm.com/downloads)
 
@@ -58,7 +59,7 @@ az iot hub consumer-group create --hub-name YourIoTHubName --name YourConsumerGr
 创建的 IoT 中心具有多个默认访问策略。 其中的一个策略是服务策略，该策略为某个服务提供足够的权限，使其能够读取和写入 IoT 中心的终结点。 运行以下命令，获取符合服务策略的 IoT 中心的连接字符串：
 
 ```azurecli-interactive
-az iot hub show-connection-string --hub-name YourIotHub --policy-name service
+az iot hub connection-string show --hub-name YourIotHub --policy-name service
 ```
 
 该连接字符串应如下所示：

@@ -4,14 +4,14 @@ description: 了解如何使用 Azure Active Directory 为 Azure Cosmos DB 帐�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/08/2021
+ms.date: 07/21/2021
 ms.author: thweiss
-ms.openlocfilehash: 246f21bb0cd4718b08c8d8a872b1707a1fea5994
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b1b4b9fbb3914ca3389f57d680d2298c00d64a9b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958927"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444762"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account"></a>使用 Azure Active Directory 为 Azure Cosmos DB 帐户配置基于角色的访问控制
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,7 +45,7 @@ Azure Cosmos DB 数据平面 RBAC 建立在其他 RBAC 系统（如 [Azure RBAC]
 > - [Azure PowerShell 脚本](manage-with-powershell.md)，
 > - [Azure CLI 脚本](manage-with-cli.md)，
 > - 以下版本的 Azure 管理库
->   - [.NET](https://www.nuget.org/packages/Azure.ResourceManager.CosmosDB)
+>   - [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.CosmosDB/)
 >   - [Java](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos)
 >   - [Python](https://pypi.org/project/azure-mgmt-cosmosdb/)
 
@@ -113,7 +113,7 @@ Azure Cosmos DB 公开 2 个内置角色定义：
     - `/dbs/<database-name>/colls/<container-name>`（容器级别）。
 
 > [!NOTE]
-> 下面所述的操作可用于：
+> 下面所述的操作在以下环境中可用：
 > - Azure PowerShell：[Az.CosmosDB 版本 1.2.0](https://www.powershellgallery.com/packages/Az.CosmosDB/1.2.0) 或更高版本
 > - [Azure CLI](/cli/azure/install-azure-cli)：版本 2.24.0 或更高版本
 
@@ -278,7 +278,7 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
-有关使用 Azure 资源管理器模板创建角色定义的参考和示例，请参阅[此页](/rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources2/createupdatesqlroledefinition)。
+有关使用 Azure 资源管理器模板创建角色定义的参考和示例，请参阅[此页](/rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources2/create-update-sql-role-definition)。
 
 ## <a name="create-role-assignments"></a><a id="role-assignments"></a> 创建角色分配
 
@@ -299,7 +299,7 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 > 若要创建服务主体的角色分配，请确保使用“Azure Active Directory”门户边栏选项卡的“企业应用程序”部分中找到的“对象 ID”。
 
 > [!NOTE]
-> 下面所述的操作可用于：
+> 下面所述的操作在以下环境中可用：
 > - Azure PowerShell：[Az.CosmosDB 版本 1.2.0](https://www.powershellgallery.com/packages/Az.CosmosDB/1.2.0) 或更高版本
 > - [Azure CLI](/cli/azure/install-azure-cli)：版本 2.24.0 或更高版本
 
@@ -333,7 +333,7 @@ az cosmosdb sql role assignment create --account-name $accountName --resource-gr
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
-有关使用 Azure 资源管理器模板创建角色分配的参考和示例，请参阅[此页](/rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources2/createupdatesqlroleassignment)。
+有关使用 Azure 资源管理器模板创建角色分配的参考和示例，请参阅[此页](/rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources2/create-update-sql-role-assignment)。
 
 ## <a name="initialize-the-sdk-with-azure-ad"></a>用 Azure AD 初始化 SDK
 
@@ -349,7 +349,7 @@ az cosmosdb sql role assignment create --account-name $accountName --resource-gr
 
 ### <a name="in-net"></a>在 .NET 中
 
-[.NET SDK V3](sql-api-sdk-dotnet-standard.md) 的 `preview` 版本当前支持 Azure Cosmos DB RBAC。
+[.NET SDK V3](sql-api-sdk-dotnet-standard.md) 中当前支持 Azure Cosmos DB RBAC。
 
 ```csharp
 TokenCredential servicePrincipal = new ClientSecretCredential(
@@ -393,7 +393,7 @@ const client = new CosmosClient({
 
 ## <a name="authenticate-requests-on-the-rest-api"></a>对 REST API 上的请求进行身份验证
 
-REST API 的 `2021-03-15` 版本当前支持 Azure Cosmos DB RBAC。 构造[授权标头](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)时，请将 type 参数设置为 aad，并将哈希签名 (sig) 设置为 oauth 令牌，如以下示例所示   ：
+在构造 [REST API 授权标头](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)时，请将 type 参数设置为 aad，并将哈希签名 (sig) 设置为 oauth 令牌，如以下示例所示   ：
 
 `type=aad&ver=1.0&sig=<token-from-oauth>`
 
@@ -415,6 +415,28 @@ REST API 的 `2021-03-15` 版本当前支持 Azure Cosmos DB RBAC。 构造[授�
 
 - `aadPrincipalId_g` 显示用于对请求进行身份验证的 AAD 标识的主体 ID。
 - `aadAppliedRoleAssignmentId_g` 显示在授权请求时接受的[角色分配](#role-assignments)。
+
+## <a name="enforcing-rbac-as-the-only-authentication-method"></a><a id="disable-local-auth"></a> 强制将 RBAC 用作唯一的身份验证方法
+
+在需要强制客户端以独占方式通过 RBAC 连接到 Azure Cosmos DB 的情况下，可以选择禁用该帐户的主/辅助密钥。 执行此操作时，系统会主动拒绝任何使用主/辅助密钥或资源令牌的传入请求。
+
+### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
+
+在使用 Azure 资源管理器模板创建或更新 Azure Cosmos DB 帐户时，请将 `disableLocalAuth` 属性设置为 `true`：
+
+```json
+"resources": [
+    {
+        "type": " Microsoft.DocumentDB/databaseAccounts",
+        "properties": {
+            "disableLocalAuth": true,
+            // ...
+        },
+        // ...
+    },
+    // ...
+ ]
+```
 
 ## <a name="limits"></a>限制
 
@@ -443,7 +465,7 @@ REST API 的 `2021-03-15` 版本当前支持 Azure Cosmos DB RBAC。 构造[授�
 
 ### <a name="is-it-possible-to-disable-the-usage-of-the-account-primarysecondary-keys-when-using-rbac"></a>使用 RBAC 时，是否可以禁用帐户主/辅助密钥的使用？
 
-目前不能禁用帐户主/辅助密钥。
+可以，详见[强制将 RBAC 用作唯一的身份验证方法](#disable-local-auth)。
 
 ## <a name="next-steps"></a>后续步骤
 

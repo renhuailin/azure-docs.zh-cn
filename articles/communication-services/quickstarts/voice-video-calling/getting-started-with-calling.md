@@ -2,18 +2,18 @@
 title: 快速入门 - 在应用中添加语音呼叫
 titleSuffix: An Azure Communication Services quickstart
 description: 在本快速入门中，你将了解如何使用 Azure 通信服务将呼叫功能添加到应用中。
-author: mikben
-ms.author: mikben
+author: probableprime
+ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android-windows
-ms.openlocfilehash: e902e88596c24b991da1b17b85b18a96546d5773
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 980cb592ea9e338f7919d0da74606f35af507b0a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107788"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251522"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>快速入门：在应用中添加语音呼叫
 

@@ -6,14 +6,17 @@ ms.author: alau
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 4b3d750c930defbfcb7db6d4d67210e001e3ce8b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 97f4e55b1d1888de00502d70c911f0bf24d31782
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315185"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122653447"
 ---
 # <a name="azure-advisor-for-mysql"></a>用于 MySQL 的 Azure 顾问
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
+
 了解如何将 Azure 顾问应用于 Azure Database for MySQL，并获得常见问题的解答。
 ## <a name="what-is-azure-advisor-for-mysql"></a>什么是用于 MySQL 的 Azure 顾问？
 Azure 顾问系统使用遥测为 MySQL 数据库发布性能和可靠性建议。 顾问建议在 MySQL 数据库产品/服务中进行拆分：

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: f2797af01dad10c04c8a56cf52a584ea0f04af31
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 09dc3c20ca95f32ee4c8f01d6b4986adfcd3703e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656734"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751916"
 ---
 # <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>注册并扫描专用 SQL 池（以前称为 SQL DW）
 
@@ -27,7 +27,6 @@ Azure Synapse Analytics（以前称为 SQL DW）支持完整和增量扫描，�
 
 ### <a name="known-limitations"></a>已知的限制
 
-> * Azure Purview 不支持扫描 Azure Synapse Analytics 数据库中的[视图](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true)。
 > * Azure Purview 在“架构”选项卡中不支持超过 300 列，并将显示“Additional-Columns-Truncated”。 
 
 ## <a name="prerequisites"></a>先决条件
@@ -57,11 +56,11 @@ Purview 帐户具有其自己的托管标识，这基本上就是创建它时所
 CREATE USER [PurviewManagedIdentity] FROM EXTERNAL PROVIDER
 GO
 
-EXEC sp_addrolemember 'db_owner', [PurviewManagedIdentity]
+EXEC sp_addrolemember 'db_datareader', [PurviewManagedIdentity]
 GO
 ```
 
-身份验证必须具有充分权限，以获取数据库、架构和表的元数据。 它还必须能够查询表以进行采样分类。 建议向标识分配 `db_owner` 权限。
+身份验证必须具有充分权限，以获取数据库、架构和表的元数据。 它还必须能够查询表以进行采样分类。 建议向标识分配 `db_datareader` 权限。
 
 ### <a name="service-principal"></a>Service Principal
 
@@ -97,7 +96,7 @@ GO
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
 GO
 
-ALTER ROLE db_owner ADD MEMBER [ServicePrincipalName]
+ALTER ROLE db_datareader ADD MEMBER [ServicePrincipalName]
 GO
 ```
 
@@ -120,13 +119,13 @@ GO
 
 ## <a name="register-a-sql-dedicated-pool-formerly-sql-dw"></a>注册 SQL 专用池（之前称为 SQL DW）
 
-若要在数据目录中注册新的 Azure Synapse Analytics 服务器，请执行以下操作：
+若要在 Purview 中注册新的 SQL 专用池，请执行以下操作：
 
 1. 导航到你的 Purview 帐户。
-1. 在左侧导航区域中选择“源”。
-1. 选择“注册”。
+1. 在左侧导航区域中选择“数据映射”。
+1. 选择“注册”
 1. 在“注册源”中，选择“SQL dedicated pool（SQL 专用池）”（之前称为 SQL DW）。
-1. 选择“继续”。
+1. 选择“继续”
 
 在“注册源(Azure Synapse Analytics)”屏幕上，执行以下操作：
 
@@ -138,7 +137,35 @@ GO
 
 :::image type="content" source="media/register-scan-azure-synapse-analytics/register-sources.png" alt-text="注册源选项" border="true":::
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>创建和运行扫描
+
+若要创建并运行新扫描，请执行以下操作：
+
+1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+
+1. 选择已注册的 SQL 专用池源。
+
+1. 选择“新建扫描”
+
+1. 选择要连接到数据源的凭据。
+
+   :::image type="content" source="media/register-scan-azure-synapse-analytics/sql-dedicated-pool-set-up-scan.png" alt-text="设置扫描":::
+
+1. 通过在列表中选择适当的项，可以将扫描范围限定到特定的表。
+
+   :::image type="content" source="media/register-scan-azure-synapse-analytics/scope-scan.png" alt-text="限定扫描范围":::
+
+1. 然后选择扫描规则集。 可以在系统默认项和现有的自定义规则集之间选择，或者可以以内联方式创建新规则集。
+
+   :::image type="content" source="media/register-scan-azure-synapse-analytics/select-scan-rule-set.png" alt-text="扫描规则集":::
+
+1. 选择扫描触发器。 可以设置一个计划或运行一次扫描。
+
+   :::image type="content" source="media/register-scan-azure-synapse-analytics/trigger-scan.png" alt-text="trigger":::
+
+1. 查看扫描并选择“保存并运行”。
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

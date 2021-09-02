@@ -13,18 +13,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8688f0a477f3fa0a5fced64c288e14132f041299
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 1b3a60f93ce225a85bedfb78a71defff1a830c93
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492437"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "122653641"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-rest"></a>如何使用 Encoder Standard 通过 REST 来生成缩略图
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 可以使用 Media Encoder Standard 以 [JPEG](https://en.wikipedia.org/wiki/JPEG)、[PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) 或 [BMP](https://en.wikipedia.org/wiki/BMP_file_format) 图像文件格式从输入视频生成一个或多个缩略图。
+
+[!INCLUDE [warning-rest-api-retry-policy.md](./includes/warning-rest-api-retry-policy.md)]
+
 
 ## <a name="recommended-reading-and-practice"></a>推荐阅读内容及演练
 

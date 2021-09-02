@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 435cc7c94b3445e22b6890f326bbead504c67826
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98745727"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226806"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
 本文说明在 Centos 6.6 主机服务器上配置多路径 IO (MPIO) 所要执行的步骤。 主机服务器已连接到 Microsoft Azure StorSimple 设备，以通过 iSCSI 发起程序获得高可用性。 本文详细描述多路径设备的自动发现，以及仅适用于 StorSimple 卷的特定设置。
@@ -298,7 +298,7 @@ StorSimple 设备应该：
     Login to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] successful.
     ```
 
-    如果此处只显示了一个主机接口和两个路径，则需要在主机上为这两个接口启用 iSCSI。 可以遵循 [Linux 文档中的详细说明](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)。
+    如果此处只显示了一个主机接口和两个路径，则需要在主机上为这两个接口启用 iSCSI。 可以遵循 [Linux 文档中的详细说明](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/online_storage_reconfiguration_guide/ifacesetup-iscsioffload)。
 
 1. 卷通过 StorSimple 设备向 CentOS 服务器公开。 有关详细信息，请参阅[步骤 6：创建卷](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)（通过 StorSimple 设备上的 Azure 门户）。
 

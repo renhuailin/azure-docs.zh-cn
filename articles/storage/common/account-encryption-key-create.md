@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: cf646fe61e3fa00407cf2ff3f47f872167c00aa9
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 9ab311c8e348c6e0cbb703a73562770a2f4f963f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903882"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251740"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>为表和队列创建一个支持客户管理密钥的帐户
 
@@ -160,8 +160,8 @@ $account.Encryption.Services.Table
 若要通过 Azure CLI 验证存储帐户中的服务是否正在使用帐户加密密钥，请调用 [az storage account show](/cli/azure/storage/account#az_storage_account_show) 命令。 此命令可返回一组存储帐户属性及其值。 在加密属性中查找每个服务的 `keyType` 字段，并验证其是否设置为 `Account`。
 
 ```azurecli
-az storage account show /
-    --name <storage-account> /
+az storage account show \
+    --name <storage-account> \
     --resource-group <resource-group>
 ```
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Monitor 的 Azure Policy 法规符合性控制
 description: 列出可用于 Azure Monitor 的 Azure Policy 法规符合性控制。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 08/20/2021
+ms.date: 08/27/2021
 ms.topic: sample
 author: rboucher
 ms.author: robb
 ms.service: azure-monitor
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: e541028d5eccbd753347f2360bb8cfb86b155892
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 647c27b8b8ed963308f7e71628b797727417f01f
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122607640"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099575"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-monitor"></a>Azure Monitor 的 Azure Policy 法规符合性控制
 

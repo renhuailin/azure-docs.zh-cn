@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: bb2e12082b80c397eec27409b1177379a92fdd7d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fa656b974a89924a2ce029a7c5e38b4d9f68f6b7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102634152"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440082"
 ---
 # <a name="enable-vm-insights-overview"></a>启用 VM 见解概述
 
@@ -37,6 +37,8 @@ VM 见解支持以下虚拟机：
 - Azure 虚拟机规模集
 - 与 Azure Arc 连接的混合虚拟机
 
+> [!IMPORTANT]
+> 如果虚拟机的以太网设备拥有 9 个以上字符，则不会被 VM insights 识别，也不会将数据发送到 InsightsMetrics 表。 代理将从[其他源](../agents/agent-data-sources.md)收集数据。
 
 ## <a name="supported-azure-arc-machines"></a>支持的 Azure Arc 计算机
 VM insights 见解可在提供 Arc 扩展服务的区域中用于启用了 Azure Arc 的服务器。 必须运行 0.9 版或更高版本的 Arc 代理。

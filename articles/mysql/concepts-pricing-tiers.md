@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: be7f15b5221be8b3acb7f64c4435e40f40f21f8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9e726e53d40ac90aec6bbbaaf41399698b11209
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720913"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748206"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 在“基本”、“常规用途”和“内存优化”这三个不同的定价层中，Azure Database for MySQL 服务器可以在其中的一个定价层中创建。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 MySQL 服务器级别预配。 一个服务器可以有一个或多个数据库。
 
@@ -43,27 +45,94 @@ ms.locfileid: "101720913"
 
 预配的存储是指可供 Azure Database for MySQL 服务器使用的存储容量。 此存储用于数据库文件、临时文件、事务日志和 MySQL 服务器日志。 预配的总存储量也定义了可供服务器使用的 I/O 容量。
 
-| 存储属性   | 基本 | 常规用途 | 内存优化 |
+Azure Database for MySQL – 单一服务器支持服务器的以下后端存储。 
+
+| 存储类型   | 基本 | 常规用途 v1 | 常规用途 v2 |
 |:---|:----------|:--------------------|:---------------------|
-| 存储类型 | 基本存储 | 常规用途存储 | 常规用途存储 |
-| 存储大小 | 5 GB 到 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
+| 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5 GB 到 16 TB |
 | 存储增量大小 | 1 GB | 1 GB | 1 GB |
-| IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS |
-
-> [!NOTE]
-> 在以下区域支持最大 16 TB 的存储和 20,000 IOPS：美国东部、美国东部 2、美国中部、巴西南部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东南部、美国西部 2、美国中西部、加拿大东部和加拿大中部。
->
-> 其他所有区域支持最大 4TB 的存储，最高可达 6000 IOPS。
->
-
-在创建服务器的过程中和之后，可以添加更多的存储容量，这样系统就可以根据工作负荷的存储使用情况自动增加存储。 
+| IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS |
 
 >[!NOTE]
+> 基本存储不提供 IOPS 保证。 在“常规用途”存储中，IOPS 使用已预配的存储大小，按 3:1 的比例进行缩放。
+
+### <a name="basic-storage"></a>基本存储 
+基本存储是支持基本定价层服务器的后端存储。 基本存储利用的是后端中的 Azure 标准存储，而后端中不提供预配 iops 保证，且延迟可变。 基本层最适用于需要轻量计算、低成本与 I/O 性能（用于开发或小规模低频使用的应用程序）的工作负载。
+
+### <a name="general-purpose-storage"></a>常规用途存储 
+常规用途存储是支持“常规用途”与“内存优化”层服务器的后端存储。 在“常规用途”存储中，IOPS 使用已预配的存储大小，按 3:1 的比例进行缩放。 有两代常规用途存储，如下所述：
+
+#### <a name="general-purpose-storage-v1-supports-up-to-4-tb"></a>常规用途存储 v1（最高支持 4 TB）
+常规用途存储 v1 基于传统存储技术，最高可支持每个服务器 4 TB 存储及 6000 IOP。 优化后的常规用途存储 v1，可利用运行 MySQL 引擎的计算节点中的内存，进行本地高速缓存及备份。 常规用途存储 v1 上的备份过程，是从计算节点内存中的数据和日志文件中读取数据，再将其复制到目标备份存储中，最多可保留 35 天。 因此在备份期间，存储的内存及 io 消耗都相对较高。 
+
+所有 Azure 区域都支持常规用途存储 v1
+
+对于常规用途存储 v1 上的“常规用途”或“内存优化”服务器，建议考虑
+
+*   规划计算 SKU 层，令存储高速缓存和备份缓冲区的多余内存占比达 10-30% 
+*   预配比数据库工作负载所需还高 10% 的 IOP，以考虑备份 IO 
+*   或者，如果下方共享的首选 Azure 区域中的基础存储基础结构可用，则可迁移到下述最高支持 16 TB 存储的常规用途存储 v2。 
+
+#### <a name="general-purpose-storage-v2-supports-up-to-16-tb-storage"></a>常规用途存储 v2（最高支持 16 TB 存储）
+常规用途存储 v2 基于最新的存储基础结构，最高可支持 16 TB 及 20000 IOP。 在基础结构可用的 Azure 区域的子集中，所有新预配的服务器默认都位于常规用途存储 v2 上。 与常规用途 v1 存储相比，常规用途存储 v2 不占用 MySQL 计算节点的任何内存，并且可提供更好的可预测 IO 延迟。 常规用途 v2 存储服务器上的备份基于快照机制，无需额外的 IO 开销。 对于存储及预配 iops 相同的 MySQL 服务器，其在常规用途 v2 存储上的预期性能，比在常规用途存储 v1 上的预期性能要高。最高支持 16 TB 存储的常规用途存储无需额外的成本支出。 若要获得有关迁移到 16 TB 存储的帮助，请从 Azure 门户创建支持工单。
+
+以下 Azure 区域支持常规用途存储 v2： 
+
+| 区域 | 常规用途存储 v2 的可用性 | 
+| --- | --- | 
+| 澳大利亚东部 | :heavy_check_mark: | 
+| 澳大利亚东南部 | :heavy_check_mark: | 
+| 巴西南部 | :heavy_check_mark: | 
+| 加拿大中部 | :heavy_check_mark: |
+| 加拿大东部 | :heavy_check_mark: |
+| 美国中部 | :heavy_check_mark: | 
+| 美国东部 | :heavy_check_mark: | 
+| 美国东部 2 | :heavy_check_mark: |
+| 东亚 | :heavy_check_mark: | 
+| Japan East | :heavy_check_mark: | 
+| 日本西部 | :heavy_check_mark: | 
+| 韩国中部 | :heavy_check_mark: |
+| 韩国南部 | :heavy_check_mark: |
+| 北欧 | :heavy_check_mark: | 
+| 美国中北部 | :heavy_check_mark: | 
+| 美国中南部 | :heavy_check_mark: | 
+| Southeast Asia | :heavy_check_mark: | 
+| 英国南部 | :heavy_check_mark: | 
+| 英国西部 | :heavy_check_mark: | 
+| 美国中西部 | :heavy_check_mark: | 
+| 美国西部 | :heavy_check_mark: | 
+| 美国西部 2 | :heavy_check_mark: | 
+| 西欧 | :heavy_check_mark: | 
+| 印度中部* | :heavy_check_mark: | 
+| 法国中部* | :heavy_check_mark: | 
+| 阿拉伯联合酋长国北部* | :heavy_check_mark: | 
+| 南非北部* | :heavy_check_mark: |
+
+> [!Note] 
+> *在这些区域中，Azure Database for MySQL 公共预览版中拥有常规用途存储 v2 <br /> *对于这些 Azure 区域，你可以选择在常规用途存储 v1 和 v2 中创建服务器。 对于在公共预览版中使用常规用途存储 v2 创建的服务器，存在以下限制： <br /> 
+> * 不支持异地冗余备份<br /> 
+> * 副本服务器应处于支持常规用途存储 v2 的区域。 <br /> 
+    
+
+### <a name="how-can-i-determine-which-storage-type-my-server-is-running-on"></a>如何确定我的服务器正在运行的是哪类存储？
+
+你可以在门户的“定价层”边栏选项卡中找到服务器的存储类型。 
+* 如果使用基本 SKU 预配服务器，则存储类型为基本存储。
+* 如果使用常规用途或内存优化 SKU 预配服务器，则存储类型为常规用途存储
+   *  如果服务器上可预配的最大存储为 4 TB，则存储类型为常规用途存储 v1。
+   *  如果服务器上可预配的最大存储为 16 TB，则存储类型为常规用途存储 v2。
+
+### <a name="can-i-move-from-general-purpose-storage-v1-to-general-purpose-storage-v2-if-yes-how-and-is-there-any-additional-cost"></a>能否从常规用途存储 v1 移动到常规用途存储 v2？如果可以，如何操作，是否有额外的成本？
+可以，如果基础存储基础结构在源服务器的 Azure 区域可用，则支持从常规用途存储 v1 迁移到常规用途存储 v2。 迁移和 v2 存储无需额外成本。
+
+### <a name="can-i-grow-storage-size-after-server-is-provisioned"></a>预配服务器后，能否增加存储大小？
+在创建服务器的过程中和之后，可以添加更多的存储容量，这样系统就可以根据工作负荷的存储使用情况自动增加存储。 
+
+>[!IMPORTANT]
 > 存储只能增加，不能减少。
 
-“基本”层不提供 IOPS 保证。 在“常规用途”和“内存优化”定价层中，IOPS 与预配的存储大小按 3:1 的比例缩放。
-
-可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是[存储上限、存储百分比、已用存储和 IO 百分比](concepts-monitoring.md)。
+### <a name="monitoring-io-consumption"></a>监视 IO 消耗
+可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标包括存储限制、[存储百分比、已用存储和 IO 百分比](concepts-monitoring.md)。具有常规用途存储 v1 的 MySQL 服务器的监视指标负责报告 MySQL 引擎所占用的内存和 IO，但限制在于，其可能无法捕获存储层的内存和 IO 消耗。
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 

@@ -7,12 +7,13 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 115c083a75adab96e416fc200bf7db287a99ff4e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b1541acc9ab6871418d1cb750d74d285f3228f92
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788414"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014862"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>在 Windows 中排查 Azure 文件存储问题 (SMB)
 
@@ -20,6 +21,13 @@ ms.locfileid: "107788414"
 
 > [!IMPORTANT]
 > 本文内容仅适用于 SMB 共享。 有关 NFS 共享的详细信息，请参阅[排查 Azure NFS 文件共享问题](storage-troubleshooting-files-nfs.md)。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>装载 Azure 文件共享时出现错误 5
@@ -32,7 +40,7 @@ ms.locfileid: "107788414"
 
 出于安全原因，如果信道未加密，且未从 Azure 文件共享所在的数据中心尝试连接，则到 Azure 文件共享的连接将受阻。 如果在存储帐户中启用[需要安全传输](../common/storage-require-secure-transfer.md)设置，则还可以阻止同一数据中心中未加密的连接。 仅当用户的客户端 OS 支持 SMB 加密时，才提供加密的信道。
 
-Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持加密的 SMB 3.0 的请求。
+Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持加密的 SMB 3.x 的请求。
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
@@ -174,6 +182,49 @@ Azure 文件同步可将本地 Windows Server 转换为 Azure 文件共享的快
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
 浏览到Azure文件共享所在的存储帐户，单击“访问控制(IAM)”，确保你的用户帐户有权访问该存储帐户。 若要了解详细信息，请参阅[如何使用 Azure 基于角色的访问控制 (Azure RBAC) 来保护存储帐户](../blobs/security-recommendations.md#data-protection)。
+
+## <a name="unable-to-modify-or-delete-an-azure-file-share-or-share-snapshots-because-of-locks-or-leases"></a>由于锁或租约无法修改或删除 Azure 文件共享（或共享快照）
+Azure 文件存储提供两种方法来防止意外修改或删除 Azure 文件共享和共享快照： 
+
+- 存储帐户资源锁：所有 Azure 资源（包括存储帐户）都支持[资源锁](../../azure-resource-manager/management/lock-resources.md)。 管理员或增值服务（如 Azure 备份）可能会将锁置于存储帐户。 存在两种资源锁变体：修改（防止对存储帐户及其资源进行所有修改）和删除（仅阻止删除存储帐户及其资源）。 通过 `Microsoft.Storage` 资源提供程序修改或删除共享时，将在 Azure 文件共享和共享快照上强制实施资源锁。 大多数门户操作、名称中带有 `Rm` 的 Azure 文件存储的 Azure PowerShell cmdlet（如 `Get-AzRmStorageShare`）以及 `share-rm` 命令组中的 Azure CLI 命令（如 `az storage share-rm list`）都使用 `Microsoft.Storage` 资源提供程序。 某些工具和实用程序（例如存储资源管理器、名称中不带 `Rm` 的旧 Azure 文件存储 PowerShell 管理 cmdlet（如 `Get-AzStorageShare`）以及 `share` 命令组下的旧 Azure 文件存储 CLI 命令（如 `az storage share list`）使用 FileREST API 中绕过 `Microsoft.Storage` 资源提供程序和资源锁的旧 API。 有关 FileREST API 中公开的旧管理 API 的详细信息，请参阅 [Azure 文件存储中的控制平面](/rest/api/storageservices/file-service-rest-api#control-plane)。
+
+- 共享/共享快照租约：共享租约是用于 Azure 文件共享和文件共享快照的一种专有锁。 管理员可以通过使用脚本调用 API 或者通过附加服务（如 Azure 备份）将租约置于单个 Azure 文件共享或文件共享快照。 将租约置于 Azure 文件共享或文件共享快照上时，可以使用租约 ID 修改或删除文件共享/共享快照。 用户还可以在修改操作之前释放租约（需要租约 ID）或中断租约（不需要租约 ID）。 有关共享租约的详细信息，请参阅[租用共享](/rest/api/storageservices/lease-share)。
+
+由于资源锁和租约可能会干扰对存储帐户/Azure 文件共享的预期的管理员操作，因此，你可能想删除可能由 Azure 备份等增值服务手动或自动置于资源上的任何资源锁/租约。 以下脚本会删除所有资源锁和租约。 请记得将 `<resource-group>` 和 `<storage-account>` 替换为适合环境的值。
+
+若要运行以下脚本，必须安装 Azure 存储 PowerShell 模块的 [3.10.1 预览版](https://www.powershellgallery.com/packages/Az.Storage/3.10.1-preview)。
+
+> [!Important]  
+> 在 Azure 文件存储资源上获取资源锁和共享/共享快照租约的增值服务可能会定期重新应用锁和租约。 通过增值服务修改或删除锁定的资源可能会影响这些服务的常规操作，例如删除由 Azure 备份管理的共享快照。
+
+```PowerShell
+# Parameters for storage account resource
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
+
+# Get reference to storage account
+$storageAccount = Get-AzStorageAccount `
+    -ResourceGroupName $resourceGroupName `
+    -Name $storageAccountName
+
+# Remove resource locks
+Get-AzResourceLock `
+        -ResourceType "Microsoft.Storage/storageAccounts" `
+        -ResourceGroupName $storageAccount.ResourceGroupName `
+        -ResourceName $storageAccount.StorageAccountName | `
+    Remove-AzResourceLock -Force | `
+    Out-Null
+
+# Remove share and share snapshot leases
+Get-AzStorageShare -Context $storageAccount.Context | `
+    Where-Object { $_.Name -eq $fileShareName } | `
+    ForEach-Object {
+        try {
+            $leaseClient = [Azure.Storage.Files.Shares.Specialized.ShareLeaseClient]::new($_.ShareClient)
+            $leaseClient.Break() | Out-Null
+        } catch { }
+    }
+```
 
 <a id="open-handles"></a>
 ## <a name="unable-to-modify-moverename-or-delete-a-file-or-directory"></a>无法修改、移动/重命名或删除文件或目录
@@ -441,7 +492,6 @@ $StorageAccountName = "<storage-account-name-here>"
 
 Update-AzStorageAccountAuthForAES256 -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
 ```
-
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 请联系支持人员。
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，以快速解决问题。

@@ -5,18 +5,18 @@ ms.topic: quickstart
 ms.date: 06/11/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 99985e3ff0f6c856b04fff4a0b4d31d2c5b7af2a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6023ea4178e451a0b5807c4561ea9810e7bbbc66
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752451"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225802"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
 本文介绍了 [Azure 应用服务](overview.md)如何运行 Python 应用、你如何将现有应用迁移到 Azure 以及如何按需自定义应用服务的行为。 必须连同所有必需的 [pip](https://pypi.org/project/pip/) 模块一起部署 Python 应用。
 
-部署 [Git 存储库](deploy-local-git.md)或部署[启用了生成自动化](deploy-zip.md#enable-build-automation)的 [zip 包](deploy-zip.md)时，应用服务部署引擎会自动激活虚拟环境并运行 `pip install -r requirements.txt`。
+部署 [Git 存储库](deploy-local-git.md)或部署[启用了生成自动化](deploy-zip.md#enable-build-automation-for-zip-deploy)的 [zip 包](deploy-zip.md)时，应用服务部署引擎会自动激活虚拟环境并运行 `pip install -r requirements.txt`。
 
 对于在应用服务中使用内置 Linux 容器的 Python 开发人员，本指南为其提供了关键概念和说明。 若从未使用过 Azure 应用服务，请先按照 [Python 快速入门](quickstart-python.md)以及[将 Python 与 PostgreSQL 配合使用教程](tutorial-python-postgresql-app.md)进行操作。
 

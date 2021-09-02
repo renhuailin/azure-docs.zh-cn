@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 05/13/2021
+ms.date: 07/16/2021
 ms.author: v-miegge
-ms.openlocfilehash: 009a29a4e296c8aa03163dd954cd242eec040027
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 57e9f35acc482c1d2d6d08dd1adce9780d706778
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470739"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114392997"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>排查 Azure 订阅登录问题
 
@@ -80,4 +80,4 @@ Azure 计费和订阅的其他疑难解答文章
 
 ## <a name="contact-us-for-help"></a>联系我们以获取帮助
 
-如有任何疑问或需要帮助，请[创建支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+如果有疑问或需要帮助，但无法登录到 Azure 门户，[请创建支持请求](https://support.microsoft.com/oas/?prid=15470)。

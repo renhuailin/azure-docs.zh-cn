@@ -6,15 +6,15 @@ author: prakulka
 manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
-ms.date: 03/26/2021
-ms.topic: reference
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: cd35ccc7399580c0bc83d8668ea932c3a800f700
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: fcbff4d8f6122681e9947f83b02dff1ae6d60835
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290553"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251169"
 ---
 # <a name="sms-faq"></a>SMS 常见问题解答
 
@@ -57,3 +57,7 @@ Azure 通信服务支持通过短信发送和接收长短信。 但是，某些�
 
 
 是的，可以通过一个请求向多个收件人发送短信。 按照此[快速入门](../../quickstarts/telephony-sms/send.md?pivots=programming-language-csharp)中的操作将短信发送给多个收件人。
+
+##  <a name="i-received-a-http-status-202-from-the-send-sms-api-but-the-sms-didnt-reach-my-phone-what-do-i-do-now"></a>我收到了来自发送短信 API 的 HTTP 状态 202，但短信并未发送至我的手机，我该怎么办？
+
+服务返回的 202 表示消息已排队等候发送且未送达。 使用此[快速入门](../../quickstarts/telephony-sms/handle-sms-events.md)订阅发送报告事件及排除故障。 配置事件后，检查发送报告的“deliveryStatus”字段以验证发送是否成功。
