@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: reference
 ms.date: 08/16/2021
-ms.openlocfilehash: 78267781c552f46952babea9704eca8d62b3b5ea
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 74bfdabbbd145e7409d070e9bb432ad4f62759d5
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253952"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866578"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>有关在 Azure 逻辑应用和 Power Automate 的表达式中使用函数的参考指南
 
-对于 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Power Automate](/flow/getting-started) 中的工作流定义，某些[表达式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)获取的值来自运行时操作，而这些运行时操作在工作流开始运行时可能尚不存在。 若要引用这些值或处理这些表达式中的值，可以使用[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)提供的函数。
+对于 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Power Automate](/power-automate/getting-started) 中的工作流定义，某些[表达式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)获取的值来自运行时操作，而这些运行时操作在工作流开始运行时可能尚不存在。 若要引用这些值或处理这些表达式中的值，可以使用[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)提供的函数。
 
 > [!NOTE]
-> 本参考页适用于 Azure 逻辑应用和 Power Automate，但显示在 Azure 逻辑应用文档中。 虽然此页面提供的是逻辑应用工作流的相关参考，但这些函数也适用于流应用和逻辑应用工作流。 有关 Power Automate 中的函数和表达式的详细信息，请参阅[在条件中使用表达式](/flow/use-expressions-in-conditions)。
+> 本参考页适用于 Azure 逻辑应用和 Power Automate，但显示在 Azure 逻辑应用文档中。 虽然此页面提供的是逻辑应用工作流的相关参考，但这些函数也适用于流应用和逻辑应用工作流。 有关 Power Automate 中的函数和表达式的详细信息，请参阅[在条件中使用表达式](/power-automate/use-expressions-in-conditions)。
 
 例如，如果想要对整数或浮点数进行求和，可以使用数学函数（如 [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) 函数）来计算值。 下面是可以使用函数执行的一些其他示例任务：
 
@@ -870,12 +870,12 @@ and(<expression1>, <expression2>, ...)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要检查的表达式 |
+| <*expression1*>, <*expression2*>, ... | 是 | 布尔 | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | -----| ----------- |
-| true 或 false | Boolean | 当所有表达式均为 true 时返回 true。 当至少一个表达式为 false 时返回 false。 |
+| true 或 false | 布尔 | 当所有表达式均为 true 时返回 true。 当至少一个表达式为 false 时返回 false。 |
 ||||
 
 *示例 1*
@@ -1249,7 +1249,7 @@ contains([<collection>], '<value>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当找到该项时返回 true。 找不到时返回 false。 |
+| true 或 false | 布尔 | 当找到该项时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -1778,7 +1778,7 @@ empty([<collection>])
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当集合为空时返回 true。 不为空时返回 false。 |
+| true 或 false | 布尔 | 当集合为空时返回 true。 不为空时返回 false。 |
 ||||
 
 *示例*
@@ -1815,7 +1815,7 @@ endsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | Boolean | 当找到结尾子字符串时返回 true。 找不到时返回 false。 |
+| true 或 false  | 布尔 | 当找到结尾子字符串时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -1856,7 +1856,7 @@ equals('<object1>', '<object2>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当两者相等时返回 true。 不相等时返回 false。 |
+| true 或 false | 布尔 | 当两者相等时返回 true。 不相等时返回 false。 |
 ||||
 
 *示例*
@@ -2195,7 +2195,7 @@ greater('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 |
+| true 或 false | 布尔 | 当第一个值大于第二个值时返回 true。 当第一个值等于或小于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2232,7 +2232,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 |
+| true 或 false | 布尔 | 当第一个值大于或等于第二个值时返回 true。 当第一个值小于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2297,7 +2297,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | Boolean | 要检查的表达式 |
+| <*expression*> | 是 | 布尔 | 要检查的表达式 |
 | <*valueIfTrue*> | 是 | 任意 | 当表达式为 true 时要返回的值 |
 | <*valueIfFalse*> | 是 | 任意 | 当表达式为 false 时要返回的值 |
 |||||
@@ -2834,7 +2834,7 @@ less('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 |
+| true 或 false | 布尔 | 当第一个值小于第二个值时返回 true。 当第一个值等于或大于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -2871,7 +2871,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | Boolean | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |
+| true 或 false  | 布尔 | 当第一个值小于或等于第二个值时返回 true。 当第一个值大于第二个值时返回 false。 |
 ||||
 
 *示例*
@@ -3077,12 +3077,12 @@ not(<expression>)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | Boolean | 要检查的表达式 |
+| <*expression*> | 是 | 布尔 | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |
+| true 或 false | 布尔 | 当表达式为 false 时返回 true。 当表达式为 true 时返回 false。 |
 ||||
 
 *示例 1*
@@ -3126,12 +3126,12 @@ or(<expression1>, <expression2>, ...)
 
 | 参数 | 必需 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要检查的表达式 |
+| <*expression1*>, <*expression2*>, ... | 是 | 布尔 | 要检查的表达式 |
 |||||
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false | Boolean | 当至少一个表达式为 true 时返回 true。 当所有表达式均为 false 时返回 false。 |
+| true 或 false | 布尔 | 当至少一个表达式为 true 时返回 true。 当所有表达式均为 false 时返回 false。 |
 ||||
 
 *示例 1*
@@ -3860,7 +3860,7 @@ startsWith('<text>', '<searchText>')
 
 | 返回值 | 类型 | 说明 |
 | ------------ | ---- | ----------- |
-| true 或 false  | Boolean | 当找到起始子字符串时返回 true。 找不到时返回 false。 |
+| true 或 false  | 布尔 | 当找到起始子字符串时返回 true。 找不到时返回 false。 |
 ||||
 
 *示例 1*
@@ -3885,7 +3885,7 @@ startsWith('hello world', 'greetings')
 
 <a name="string"></a>
 
-### <a name="string"></a>string
+### <a name="string"></a>字符串
 
 返回值的字符串版本。
 

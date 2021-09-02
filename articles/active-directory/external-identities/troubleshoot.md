@@ -5,28 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 05/27/2021
+ms.date: 07/13/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
-ms.reviewer: mal
 ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c971c93d873bb8326b986cfd771ef96b615f2131
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 7068ff38338e92843a957f50f63309412b63b31c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110612759"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759795"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B 协作故障排除
 
 以下是 Azure Active Directory (Azure AD) B2B 协作的常见问题的一些补救措施。
 
    > [!IMPORTANT]
-   > - 从 2021 年下半年开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果正在对 B2B 邀请或 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 使用 Google 联合身份验证，或者正在将自助注册与 Gmail 一起使用，那么当你的应用通过嵌入的 Web 视图对用户进行身份验证时，Google Gmail 用户将无法登录。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   >
+   > - 从 2021 年 7 月 12 日开始，如果 Azure AD B2B 客户设置了新的 Google 集成，将其用于自定义应用程序或业务线应用程序的自助注册，则在身份验证转移到系统 Web 视图之前，无法使用 Google 标识进行身份验证。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   > - 从 2021 年 9 月 30 日开始，Google 将[弃用嵌入式 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果你的应用使用嵌入式 Web 视图对用户进行身份验证，而你将 Google 联合身份验证与 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 或 Azure AD B2B 配合使用来进行[外部用户邀请](google-federation.md)或[自助注册](identity-providers.md)，则 Google Gmail 用户将无法进行身份验证。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
    > - 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择加入现已正式发布的[电子邮件一次性密码身份验证](one-time-passcode.md)。
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>我已添加外部用户，但在全局通讯簿或人员选取器中看不到这些用户
@@ -66,6 +67,10 @@ ms.locfileid: "110612759"
 
 要解决此问题，外部用户的管理员必须将该用户的帐户同步到 Azure Active Directory。
 
+### <a name="external-user-has-a-proxyaddress-that-conflicts-with-a-proxyaddress-of-an-existing-local-user"></a>外部用户拥有的 proxyAddress 与现有本地用户的 proxyAddress 存在冲突
+
+当我们检查用户能否受邀加入你的租户时，我们检查的其中一项便是 proxyAddress 是否存在冲突。 其中包括用户在其主租户中的任何 proxyAddresses，以及你的租户中本地用户的任何 proxyAddress。 对于外部用户，我们会将电子邮件添加到现有 B2B 用户的 proxyAddress。 对于本地用户，可以要求他们使用其既有帐户进行登录。
+
 ## <a name="i-cant-invite-an-email-address-because-of-a-conflict-in-proxyaddresses"></a>由于 proxyAddresses 中的冲突，无法邀请电子邮件地址
 
 当目录中的其他对象具有与它的某个 proxyAddresses 相同的受邀电子邮件地址时，就会发生这种情况。 若要解决此冲突，请从[用户](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true)对象中删除电子邮件，并删除关联的[联系人](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)对象，然后再次尝试邀请此电子邮件。
@@ -87,7 +92,9 @@ ms.locfileid: "110612759"
 被邀请者应该向其 ISP 或垃圾邮件筛选器查询，以确保允许以下地址：Invites@microsoft.com
 
 > [!NOTE]
-> 对于中国世纪互联运营的 Azure 服务，发送方地址是 Invites@oe.21vianet.com。
+>
+> - 对于中国世纪互联运营的 Azure 服务，发送方地址是 Invites@oe.21vianet.com。
+> - 对于 Azure AD 政府云，发送方地址为 invites@azuread.us。
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>我发现邀请消息有时不包含自定义消息
 
@@ -135,6 +142,15 @@ ms.locfileid: "110612759"
 1. 运行 PowerShell 命令 `Restore-AzureADDeletedApplication -ObjectId {id}`。 将此命令的 `{id}` 部分替换为之前步骤中的 `ObjectId`。
 
 现在应在 Azure 门户中看到恢复的应用。
+
+## <a name="a-guest-user-was-invited-successfully-but-the-email-attribute-is-not-populating"></a>已成功邀请来宾用户，但电子邮件属性未填充
+
+假设你无意中邀请了一位电子邮件地址与目录中已有的用户对象匹配的来宾用户。 系统将创建来宾用户对象，但电子邮件地址将添加到 `otherMail` 属性，而不是添加到 `mail` 或 `proxyAddresses` 属性。 若要避免此问题，可以使用以下 PowerShell 步骤在 Azure AD 目录中搜索存在冲突的用户对象：
+
+1. 打开 Azure AD PowerShell 模块并运行 `Connect-AzureAD`。
+1. 以要在其中检查重复联系人对象的 Azure AD 租户的全局管理员身份登录。
+1. 运行 PowerShell 命令 `Get-AzureADContact -All $true | ? {$_.ProxyAddresses -match 'user@domain.com'}`。
+1. 运行 PowerShell 命令 `Get-AzureADContact -All $true | ? {$_.Mail -match 'user@domain.com'}`。
 
 ## <a name="next-steps"></a>后续步骤
 

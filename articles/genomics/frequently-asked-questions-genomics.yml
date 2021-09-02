@@ -4,18 +4,18 @@ metadata:
   titleSuffix: Microsoft Genomics
   description: 获取与使用 Microsoft 基因组学服务相关的常见问题的解答，包括技术信息、SLA 和计费。
   services: genomics
-  author: grhuynh
+  author: vigunase
   manager: cgronlun
-  ms.author: grhuynh
+  ms.author: vigunase
   ms.service: genomics
   ms.topic: troubleshooting
   ms.date: 12/07/2017
-  ms.openlocfilehash: 0060ebfc207c6f0027e1387f859c71a917bf7b1b
-  ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+  ms.openlocfilehash: 053835683a94f20a8d91cce969fe94f7e66e5556
+  ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/09/2021
-  ms.locfileid: "113559058"
+  ms.lasthandoff: 08/31/2021
+  ms.locfileid: "123258606"
 title: Microsoft 基因组学：常见问题
 summary: "本文列出了用户可能会遇到的与 Microsoft 基因组学相关的几大疑问。 有关 Microsoft 基因组学服务的详细信息，请参阅[什么是 Microsoft 基因组学？](overview-what-is-genomics.md)。 有关故障排除的详细信息，请参阅我们的[故障排除指南](troubleshooting-guide-genomics.md)。 \n"
 sections:

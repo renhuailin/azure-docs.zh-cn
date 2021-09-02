@@ -6,97 +6,97 @@ metadata:
   ms.subservice: personalizer
   ms.topic: troubleshooting
   ms.date: 02/26/2020
-  ms.author: erhopf
-  author: erhopf
+  ms.author: jeffme
+  author: jeffmend
   ms.manager: nitinme
-  ms.openlocfilehash: c7c95f69a794a2266c16cb2cb15a1e300d9ac54d
-  ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+  ms.openlocfilehash: 13e935fabd4b80148ef27f19bf4173ff722a6db6
+  ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/14/2021
-  ms.locfileid: "122206323"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122831420"
 title: 个性化体验创建服务常见问题解答
 summary: 本文包含有关个性化体验创建服务故障排除常见问题的解答。
 sections:
 - name: 配置问题
   questions:
   - question: >
-      I changed a configuration setting and now my loop isn't performing at the same learning level. What happened?
+      我更改了某个配置设置，但现在我的循环没有在同一学习级别上执行。 发生了什么情况？
     answer: >
-      Some configuration settings [reset your model](how-to-settings.md#settings-that-include-resetting-the-model). Configuration changes should be carefully planned.
+      某些配置设置会[重置你的模型](how-to-settings.md#settings-that-include-resetting-the-model)。 在计划配置更改时，应小心谨慎。
   - question: >
-      When configuring Personalizer with the API, I received an error. What happened?
+      我在使用 API 配置个性化体验创建服务时，收到错误消息。 发生了什么情况？
     answer: >
-      If you use a single API request to configure your service and change your learning behavior, you will get an error. You need to make two separate API calls: first, to configure your service, then to switch learning behavior.
+      如果你使用单个 API 请求来配置服务并更改学习行为，就会收到错误。 需要进行两个单独的 API 调用：首先配置服务，然后切换学习行为。
 - name: 事务错误
   questions:
   - question: >
-      I get an HTTP 429 (Too many requests) response from the service. What can I do?
+      我收到了来自服务的 HTTP 429 响应（请求数过多）。 我该怎么办？
     answer: >
-      If you picked a free price tier when you created the Personalizer instance, there is a quota limit on the number of Rank requests that are allowed. Review your API call rate for the Rank API (in the Metrics pane in the Azure portal for your Personalizer resource) and adjust the pricing tier (in the Pricing Tier pane) if your call volume is expected to increase beyond the threshold for chosen pricing tier.
+      如果你在创建个性化体验创建服务实例时选择了免费价格层，则允许的排名请求数存在配额限制。 请（针对你的个性化体验创建服务资源，在 Azure 门户的“指标”窗格中）查看你的排名 API 的 API 调用率，如果调用量预计会增加到超过所选定价层的阈值，则（在“定价层”窗格中）调整定价层。
   - question: >
-      I'm getting a 5xx error on Rank or Reward APIs. What should I do?
+      我收到有关排名 API 或奖励 API 的 5xx 错误。 应采取何种操作？
     answer: >
-      These issues should be transparent. If they continue, contact support by selecting **New support request** in the **Support + troubleshooting** section, in the Azure portal for your Personalizer resource.
+      这些问题应该是透明的。 如果问题持续出现，请与支持部门联系，具体步骤是，在个性化体验创建服务资源的 Azure 门户中，在“支持 + 故障排除”部分中选择“新建支持请求”。
 - name: 学习循环
   questions:
   - question: >
-      The learning loop doesn't attain a 100% match to the system without Personalizer. How do I fix this?
+      在没有个性化体验创建服务的情况下，学习循环与系统之间的匹配率不会达到 100%。 如何修复此问题？
     answer: >
-      The reasons you don't attain your goal with the learning loop:
+      学习循环达不到目标的原因如下：
 
-      * Not enough features sent with Rank API call
+      * 通过排名 API 调用发送的特征数量不足
 
-      * Bugs in the features sent - such as sending non-aggregated feature data such as timestamps to Rank API
+      * 发送的特征中存在 bug，例如，将非聚合特征数据（如时间戳）发送到排名 API
 
-      * Bugs with loop processing - such as not sending reward data to Reward API for events
+      * 循环处理过程存在 bug，例如，没有为事件将奖励数据发送到奖励 API
 
 
-      To fix, you need to change the processing by either changing the features sent to the loop, or make sure the reward is a correct evaluation of the quality of the Rank's response.
+      若要解决此问题，需要更改处理方式：要么更改发送到循环的特征，要么确保奖励是排名响应质量的正确评估。
   - question: >
-      The learning loop doesn't seem to learn. How do I fix this?
+      学习循环似乎没有学习。 如何修复此问题？
     answer: >
-      The learning loop needs a few thousand Reward calls before Rank calls prioritize effectively.
+      学习循环需要几千个奖励调用才能使排名调用有效地确定优先级。
 
 
-      If you are unsure about how your learning loop is currently behaving, run an [offline evaluation](concepts-offline-evaluation.md), and apply the corrected learning policy.
+      如果你不确定学习循环当前的行为方式，请运行[脱机评估](concepts-offline-evaluation.md)，并应用已更正的学习策略。
   - question: >
-      I keep getting rank results with all the same probabilities for all items. How do I know Personalizer is learning?
+      我一直获得排名结果，所有项目的概率都相同。 我如何实现知道个性化体验创建服务在学习？
     answer: >
-      Personalizer returns the same probabilities in a Rank API result when it has just started and has an _empty_ model, or when you reset the Personalizer Loop, and your model is still within your **Model update frequency** period.
+      当个性化体验创建服务刚刚启动并且具有空模型，或者当你重置个性化体验创建服务循环，并且模型仍处于模型更新频率期间内时，它将在排名 API 结果中返回相同的概率。
 
 
-      When the new update period begins, the updated model is used, and you'll see the probabilities change.
+      新的更新周期开始时，将使用更新的模型，你会看到概率发生变化。
   - question: >
-      The learning loop was learning but seems to not learn anymore, and the quality of the Rank results isn't that good. What should I do?
+      学习循环在学习，但似乎没有更多学习内容，排名结果的质量并不理想。 应采取何种操作？
     answer: >
-      * Make sure you've completed and applied one evaluation in the Azure portal for that Personalizer resource (learning loop).
+      * 确保已在该个性化体验创建服务资源（学习循环）的 Azure 门户中完成和应用了一个评估。
 
-      * Make sure all rewards are sent, via the Reward API, and processed.
+      * 确保所有奖励都通过奖励 API 发送并进行处理。
   - question: >
-      How do I know that the learning loop is getting updated regularly and is used to score my data?
+      如何知道学习循环会定期更新，并用于对我的数据评分？
     answer: >
-      You can find the time when the model was last updated in the **Model and Learning Settings** page of the Azure portal. If you see an old timestamp, it is likely because you are not sending the Rank and Reward calls. If the service has no incoming data, it does not update the learning. If you see the learning loop is not updating frequently enough, you can edit the loop's **Model Update frequency**.
+      你可以在 Azure 门户的“模型和学习设置”页中找到模型的上次更新时间。 如果你看到旧时间戳，很可能是因为你没有发送排名和奖励调用。 如果服务没有传入数据，则不会更新学习。 如果你发现循环的更新频率不够，可以编辑该循环的模型更新频率。
 - name: 脱机评估
   questions:
   - question: >
-      An offline evaluation's feature importance returns a long list with hundreds or thousands of items. What happened?
+      脱机评估的特征重要性会返回包含数百个或数千个项目的长列表。 发生了什么情况？
     answer: >
-      This is typically due to timestamps, user IDs or some other fine grained features sent in.
+      这通常是由于发送了时间戳、用户 ID 或一些其他细微的特征。
   - question: >
-      I created an offline evaluation and it succeeded almost instantly. Why is that? I don't see any results?
+      我创建了一个脱机评估，几乎瞬间就成功了。 为什么会这样？ 我怎么看不到任何结果？
     answer: >
-      The offline evaluation uses the trained model data from the events in that time period. If you did not send any data in the time period between start and end time of the evaluation, it will complete without any results. Submit a new offline evaluation by selecting a time range with events you know were sent to Personalizer.
+      脱机评估使用该时间段内事件的定型模型数据。 如果你在评估的开始时间和结束时间之间未发送任何数据，则评估完成后不会提供何结果。 通过选择你确定已发送到个性化体验创建服务的事件的时间范围来提交新的脱机评估。
 - name: 学习策略
   questions:
   - question: >
-      How do I import a learning policy?
+      如何导入学习策略？
     answer: >
-      Learn more about [learning policy concepts](concept-active-learning.md#understand-learning-policy-settings) and [how to apply](how-to-manage-model.md) a new learning policy. If you do not want to select a learning policy, you can use the [offline evaluation](how-to-offline-evaluation.md) to suggest a learning policy, based on your current events.
+      详细了解如何[学习策略概念](concept-active-learning.md#understand-learning-policy-settings)以及[如何应用](how-to-manage-model.md)新学习策略。 如果你不想选择学习策略，可以根据当前事件，使用[脱机评估](how-to-offline-evaluation.md)来建议学习策略。
 - name: 安全性
   questions:
   - question: >
-      The API key for my loop has been compromised. What can I do?
+      我的循环的 API 密钥已被入侵。 我该怎么办？
     answer: >
-      You can regenerate one key after swapping your clients to use the other key. Having two keys allows you to propagate the key in a lazy manner without having to have any downtime. We recommend doing this on a regular cycle as a security measure.
-additionalContent: "\n## Next steps\n\n[Configure the model update frequency](how-to-settings.md#model-update-frequency)"
+      在交换客户端以使用另一个密钥后，你可以重新生成一个密钥。 通过使用两个密钥，可以延迟传播密钥，而无需任何停机时间。 建议定期执行此操作，将它作为一种安全措施。
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n[配置模型更新频率](how-to-settings.md#model-update-frequency)"

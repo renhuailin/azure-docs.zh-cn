@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/23/2021
 ms.author: jocorte
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6fc065c0e20e1560bebad1743fb889886cb07213
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6afce8903c5fe821e080983ab50a444f9f508554
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694916"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736675"
 ---
 # <a name="scale-snat-ports-with-azure-nat-gateway"></a>利用 Azure NAT 网关缩放 SNAT 端口
 
@@ -21,11 +21,14 @@ Azure 防火墙为每个已配置的公共 IP 地址提供 2048 个 SNAT 端口�
 
 使用大量公共 IP 地址的另一个难题是存在下游 IP 地址筛选要求。 Azure 防火墙会随机选择用于建立连接的源公共 IP 地址，因此需要允许与防火墙关联的所有公共 IP 地址。 即使使用[公共 IP 地址前缀](../virtual-network/public-ip-address-prefix.md)，并需要关联 250 个公共 IP 地址以满足出站 SNAT 端口要求，也仍需要创建并允许 16 个公共 IP 地址前缀。
 
-最好使用 [NAT 网关资源](../virtual-network/nat-overview.md)来缩放出站 SNAT 端口。 它为每个公共 IP 地址提供 64,000 个 SNAT 端口，并且最多支持 16 个公共 IP 地址，最多可提供 1,024,000 个出站 SNAT 端口。
+最好使用 [NAT 网关资源](../virtual-network/nat-gateway/nat-overview.md)来缩放出站 SNAT 端口。 它为每个公共 IP 地址提供 64,000 个 SNAT 端口，并且最多支持 16 个公共 IP 地址，最多可提供 1,024,000 个出站 SNAT 端口。
 
 NAT 网关资源与 Azure 防火墙子网关联时，所有出站 Internet 流量会自动使用 NAT 网关的公共 IP 地址。 无需配置[用户定义的路由](../virtual-network/tutorial-create-route-table-portal.md)。 响应流量使用 Azure 防火墙公共 IP 地址来维护流对称。 如果有多个 IP 地址与 NAT 网关相关联，则会随机选择 IP 地址。 无法指定要使用的地址。
 
 此体系结构没有双重 NAT。 Azure 防火墙实例使用其专用 IP 地址（而不是 Azure 防火墙公共 IP 地址）将流量发送到 NAT 网关。
+
+> [!NOTE]
+> 如果已[跨多个可用性区域部署 Azure 防火墙](deploy-availability-zone-powershell.md)，那么，使用 Azure NAT 网关目前将不兼容 Azure 防火墙。 详细了解 [Azure NAT 网关和可用性区域](../virtual-network/nat-gateway/nat-gateway-resource.md#cross-zone-outbound-scenarios-not-supported)。
 
 ## <a name="associate-nat-gateway-with-azure-firewall-subnet---azure-powershell"></a>将 NAT 网关与 Azure 防火墙子网关联 - Azure PowerShell
 
@@ -67,4 +70,4 @@ az network vnet subnet update --name AzureFirewallSubnet --vnet-name nat-vnet --
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 NAT 网关资源设计虚拟网络](../virtual-network/nat-gateway-resource.md)
+- [使用 NAT 网关资源设计虚拟网络](../virtual-network/nat-gateway/nat-gateway-resource.md)

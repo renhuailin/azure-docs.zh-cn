@@ -10,12 +10,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9556e805b666359546d766c4f761467a0987a540
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b89405a4ef513bd9f4aa9b0983044cbeec1826b1
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114451009"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866650"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics 数据管理合作伙伴
 
@@ -30,7 +30,7 @@ ms.locfileid: "114451009"
 | ![Coffing Data Warehousing](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing Data Warehousing**<br>Coffing Data Warehousing 提供 Nexus Chameleon（专门用于查询系统的工具），已有 10 多年的历史。 Nexus 可用作 Azure Synapse Analytics 中专用 SQL 池的查询工具。 使用 Nexus 可以查询本地和云计算机，并联接不同平台的数据。 点击式报告！ |[产品页面](https://coffingdw.com/software/nexus/)<br> |
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |Inbrein MicroERD<br>Inbrein MicroERD 提供创建准确的数据模型、减少数据冗余、提升产能及遵守标准所必需的工具。 根据广泛的用户体验所开发的 UI，可让模型塑造者轻松又方便地处理 DB 模型。 通过及时的功能改进和更新，可以持续享有 MicroERD 最新改善的功能。 |产品页<br> |
 | ![Infolibrarian](./media/sql-data-warehouse-partner-data-management/infolibrarian-logo.png) |Infolibrarian（元数据管理服务器）<br>InfoLibrarian 能够归类、存储和管理元数据，有助于解决数据管理的主要难题。 Infolibrarian 提供元数据管理、数据控制和资产管理解决方案，让用户管理和发布各种不同工具和技术的元数据。 |[产品页面](http://www.infolibcorp.com/metadata-management/software-tools)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/infolibrarian.infolibrarian-metadata-management-server)<br> |
-| ![Kyligence](./media/sql-data-warehouse-partner-data-management/kyligence-logo.png) |Kyligence<br>Kyligence 由 Apache Kylin 的创始人建立，其使命是通过将数据管理、发现、交互和见解生成进行自动化（让一切均无障碍），来提高其客户的生产效率。 Kyligence Cloud 可实现群集部署、增强数据访问，并大大加快数据分析的速度。 使用 Kyligence 的 AI 增强式大数据分析管理平台，可以快速、轻松地完成难度通常较大的企业级数据湖构建任务。|[产品页面](https://kyligence.io/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence)<br> |
+| ![Kyligence](./media/sql-data-warehouse-partner-data-management/kyligence-logo.png) |Kyligence<br>Kyligence 由 Apache Kylin 的创始人建立，其使命是通过将数据管理、发现、交互和见解生成进行自动化（让一切均无障碍），来提高其客户的生产效率。 Kyligence Cloud 可实现群集部署、增强数据访问，并大大加快数据分析的速度。 使用 Kyligence 的 AI 增强式大数据分析管理平台，可以快速、轻松地完成难度通常较大的企业级数据湖构建任务。|[产品页面](https://kyligence.io/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence-cloud-saas)<br> |
 | ![Redpoint Global](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**RedPoint Data Management**<br>RedPoint Data Management 可让营销人员在执行结构化和非结构化数据管理的同时，应用其所有数据来促进跨渠道客户的参与。 借助 RedPoint，可以让其所有的结构化和非结构化数据发挥最大的价值，从而提供现今全渠道客户所需的高度个性化和情境交互式内容。 拖放式界面使设计和运行数据管理过程变得轻松。 |[产品页面](https://www.redpointglobal.com/customer-data-management)<br> [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/redpoint-global.redpoint-rpdm)<br> |
 | ![Sentry One](./media/sql-data-warehouse-partner-data-management/sql-sentry-logo.png) |SentryOne (DW Sentry)<br>借助智能数据移动仪表板和事件日历，可以始终知道什么在影响工作负荷。 旨在可视化运行的查询和加载、备份或还原数据等作业，永远无需担心是否充分利用 Azure 资源。 |[产品页面](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br>[Azure 市场](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br> |
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |SqlDBM<br>SqlDBM 是一个基于云的数据建模工具，可让你随时随地轻松、方便地在任何浏览器中开发数据库。 该工具整合了所需的任何数据库规则和对象，例如数据库键、架构、索引、列约束和关系。 |[产品页面](http://sqldbm.com/)<br> [Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: adb0073ca5d8bfb822d7ac47d7e7f770d18423ca
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 6ec4457eeb60029783981824b93d2eadfaa1271b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514801"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866317"
 ---
 # <a name="conditional-access-cloud-apps-actions-and-authentication-context"></a>条件访问：云应用、操作和身份验证上下文
 
@@ -40,7 +40,7 @@ ms.locfileid: "122514801"
 - Azure 事件中心
 - Azure 服务总线
 - [Azure SQL 数据库和 Azure Synapse Analytics](../../azure-sql/database/conditional-access-configure.md)
-- Dynamics CRM Online
+- Common Data Service
 - Microsoft Application Insights Analytics
 - [Microsoft Azure 信息保护](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - [Microsoft Azure 管理](#microsoft-azure-management)
@@ -48,12 +48,12 @@ ms.locfileid: "122514801"
 - Microsoft Cloud App Security
 - Microsoft Commerce Tools 访问控制门户
 - Microsoft Commerce Tools 身份验证服务
-- Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
 - [Microsoft Intune 注册](/intune/enrollment/multi-factor-authentication)
 - Microsoft Planner
-- Microsoft PowerApps
+- Microsoft Power Apps
+- Microsoft Power Automate
 - Microsoft 必应搜索
 - Microsoft StaffHub
 - Microsoft Stream
@@ -85,7 +85,6 @@ Microsoft 365 提供基于云的高效生产和协作服务，如 Exchange、Sha
 
 Office 365 客户端应用中包含以下关键应用程序：
 
-   - Microsoft Flow
    - Microsoft Forms
    - Microsoft Stream
    - 微软待办
@@ -98,7 +97,8 @@ Office 365 客户端应用中包含以下关键应用程序：
    - Office Online
    - Office.com
    - OneDrive
-   - PowerApps
+   - Power Automate
+   - Power Apps
    - Skype for Business Online
    - Sway
 
@@ -137,7 +137,7 @@ Microsoft Azure 管理应用程序包括多个服务。
 
 - **注册安全信息**：使用此用户操作，可以在启用了组合注册的用户尝试注册其安全信息时强制实施条件访问策略。 在[组合安全信息注册](../authentication/concept-registration-mfa-sspr-combined.md)一文中可以找到详细信息。
 
-- **注册或加入设备**：使用此用户操作，管理员可以在用户向 Azure AD [注册](../devices/concept-azure-ad-register.md)或[加入](../devices/concept-azure-ad-join.md)设备时强制实施条件访问策略。 使用此操作可以精细针对注册或加入设备的操作配置多重身份验证方面，而无需配置当前存在的租户范围的策略。 对于此用户操作，需要注意三个重要事项： 
+- **注册或加入设备**：使用此用户操作，管理员可以在用户向 Azure AD [注册](../devices/concept-azure-ad-register.md)或 [加入](../devices/concept-azure-ad-join.md)设备时强制实施条件访问策略。 使用此操作可以精细针对注册或加入设备的操作配置多重身份验证方面，而无需配置当前存在的租户范围的策略。 对于此用户操作，需要注意三个重要事项： 
    - `Require multi-factor authentication` 是此用户操作唯一可用的访问控制，所有其他访问控制均处于禁用状态。 此限制可防止与依赖于 Azure AD 设备注册或不适用于 Azure AD 设备注册的访问控制发生冲突。 
    - `Client apps`、`Filters for devices` 和 `Device state` 条件在此用户操作中不可用，因为它们依赖于使用 Azure AD 设备注册来强制实施条件访问策略。
    - 对此用户操作启用条件访问策略时，必须将“Azure Active Directory” > “设备” > “设备设置” - `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` 设置为“否”   。 否则，将无法正确地强制实施此用户操作的条件访问策略。 在[配置设备设置](../devices/device-management-azure-portal.md#configure-device-settings)中可以找到有关此设备设置的详细信息。 
@@ -182,5 +182,5 @@ Microsoft Azure 管理应用程序包括多个服务。
 ## <a name="next-steps"></a>后续步骤
 
 - [条件访问：条件](concept-conditional-access-conditions.md)
-- [条件访问常见策略](concept-conditional-access-policy-common.md)
+- [常用条件访问策略](concept-conditional-access-policy-common.md)
 - [客户端应用程序依赖关系](service-dependencies.md)

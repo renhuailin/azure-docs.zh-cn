@@ -8,14 +8,16 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 94dd7f72f6411934587c76850a05d6885e9f6862
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 08a8a26cd0420f5c856eebf2063b0ae4f14beb7d
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763210"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652745"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Database for MySQL 中配置服务器参数
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 可以使用 Azure CLI、Azure 命令行实用工具来列出、显示和更新 Azure Database for MySQL 服务器的配置参数。 在服务器级别会公开引擎配置的一个子集，并可以进行修改。 
 
 >[!Note]

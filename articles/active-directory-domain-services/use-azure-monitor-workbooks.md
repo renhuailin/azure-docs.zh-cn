@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 9a126fe4676f340fb45677382a3aeeed79291f0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5aab12a0d3c24ef7bef9eee6c02b244e33c11e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100574212"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727754"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿查看 Azure Active Directory 域服务中的安全审核事件
 
@@ -54,7 +54,7 @@ Azure AD DS 包含以下两个工作簿模板：
 
 若要访问安全概述报表的工作簿模板，请完成以下步骤：
 
-1. 在 Azure 门户中，搜索并选择“Azure Active Directory 域服务”。
+1. 在 Azure 门户中，搜索并选择“Azure AD 域服务”。
 1. 选择你的托管域，例如 aaddscontoso.com
 1. 从左侧的菜单中选项“监视”>“工作簿”
 
@@ -83,7 +83,7 @@ Azure AD DS 包含以下两个工作簿模板：
 
 若要访问帐户活动报表的工作簿模板，请完成以下步骤：
 
-1. 在 Azure 门户中，搜索并选择“Azure Active Directory 域服务”。
+1. 在 Azure 门户中，搜索并选择“Azure AD 域服务”。
 1. 选择你的托管域，例如 aaddscontoso.com
 1. 从左侧的菜单中选项“监视”>“工作簿”
 1. 选择“帐户活动报表”。

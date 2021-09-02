@@ -3,18 +3,18 @@ title: Azure 通信服务中的聊天概念
 titleSuffix: An Azure Communication Services concept document
 description: 了解通信服务聊天概念。
 author: knvsl
-manager: jken
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: dc3647d82eff225eacdd56826639629b9d0aa838
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9370539d981838589e0b113083504da33948050b
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731965"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256951"
 ---
 # <a name="chat-concepts"></a>聊天概念 
 

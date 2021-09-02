@@ -1,16 +1,19 @@
 ---
 title: 活动和非活动事件 - 个性化体验创建服务
 description: 本文介绍如何在个性化体验创建服务中使用活动和非活动事件。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 7d1044d02ceba1f3d0996b1fe1c8a9a44b31049b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba95c22a773a382a3c03aab18f8f885e6a2791d8
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91253643"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831006"
 ---
 # <a name="active-and-inactive-events"></a>活动和非活动事件
 

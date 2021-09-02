@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/06/2021
+ms.date: 07/15/2021
 ms.author: b-juche
-ms.openlocfilehash: 2b920b7a5794e1ee56b8ccc2c1d3aef45a1b5fe2
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a12df50ac6fe2e1dc2bf793316538a90ba0f901d
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483814"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114361328"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>为 Azure NetApp 文件配置 NFSv4.1 Kerberos 加密
 
@@ -31,10 +31,11 @@ NFSv4.1 客户端加密有以下要求：
 
 * 连接 Active Directory 域服务 (AD DS) 或 Azure Active Directory 域服务 (AADDS)，以便使用 Kerberos 票证 
 * 同时为客户端和 Azure NetApp 文件 NFS 服务器 IP 地址创建 DNS A/PTR 记录
-* Linux 客户端  
-    本文为 RHEL 和 Ubuntu 客户端提供相关指导。  其他客户端的配置步骤与此类似。 
-* NTP 服务器访问  
-    可以使用常用 Active Directory Domain Controller (AD DC) 域控制器中的一个。
+* Linux 客户端：本文针对 RHEL 和 Ubuntu 客户端提供相关指导。  其他客户端的配置步骤与此类似。 
+* NTP 服务器访问：可以使用其中一个常用的 Active Directory 域控制器 (AD DC)。
+* 确保用户帐户的用户主体名称不以 `$` 符号结尾（例如，user$@REALM.COM）。 <!-- Not using 'contoso.com' in this example; per Mark, A customers REALM namespace may be different from their AD domain name space. -->   
+    对于[组托管服务帐户](/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts) (gMSA)，需要先删除用户主体名称中的 `$` 后缀，帐户才能与 Azure NetApp 文件 Kerberos 功能一起使用。
+
 
 ## <a name="create-an-nfs-kerberos-volume"></a>创建 NFS Kerberos 卷
 

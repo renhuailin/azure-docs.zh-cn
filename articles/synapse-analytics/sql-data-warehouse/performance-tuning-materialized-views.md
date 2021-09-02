@@ -7,15 +7,15 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 09/05/2019
+ms.date: 08/17/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick; azure-synapse
-ms.openlocfilehash: 7500490115ed360e838dc30038e3e8e602b33449
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 1eb42cc923ea5acd23165e9dfa778e35748e4d2e
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081634"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323592"
 ---
 # <a name="performance-tune-with-materialized-views"></a>使用具体化视图优化性能
 
@@ -31,7 +31,7 @@ Azure Synapse 中的专用 SQL 池支持标准视图和具体化视图。  两�
 
 标准视图上的大多数要求仍然适用于具体化视图。 有关具体化视图语法和其他要求的详细信息，请参阅 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
-| 比较                     | 查看                                         | 具体化视图
+| 比较                     | 视图                                         | 具体化视图
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |查看定义                 | 存储在专用 SQL 池中。              | 存储在专用 SQL 池中。
 |查看内容                    | 在每次使用视图时生成。   | 在创建视图期间进行预处理并存储在专用 SQL 池中。 随着数据添加到基础表中而更新。
@@ -46,7 +46,7 @@ Azure Synapse 中的专用 SQL 池支持标准视图和具体化视图。  两�
 
 - 使用联接和聚合函数减少复杂查询的执行时间。 查询越复杂，就越有可能节省执行时间。 当查询的计算成本很高而生成的数据集很小时，可以获得最大的优势。  
 - 专用 SQL 池中的优化器可以自动使用部署的具体化视图来改善查询执行计划。  此过程对提供更快查询性能的用户是透明的，并且不需要查询直接引用具体化视图。
-- 需要对视图进行低维护。  所有来自基表的增量数据更改将以同步方式自动添加到具体化视图中。  这种设计可以使查询具体化视图后返回的数据与直接查询基表后返回的数据相同。
+- 需要对视图进行低维护。  所有来自基表的增量数据更改将以同步方式自动添加到具体化视图中，这意味着基表和具体化视图在相同事务中进行更新。  这种设计可以使查询具体化视图后返回的数据与直接查询基表后返回的数据相同。  
 - 具体化视图中的数据可以采用与基表不同的方式分发。  
 - 具体化视图中的数据与常规表中的数据具有相同的高可用性和复原优势。  
 
@@ -56,7 +56,7 @@ Azure Synapse 中的专用 SQL 池支持标准视图和具体化视图。  两�
 
 - 根据基表中的数据更改，自动、同步刷新数据。 不需要任何用户操作。
 - 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)。
-- 支持查询特定的具体化视图建议。  请参阅 [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
+- 支持查询特定的具体化视图建议。  请参阅 [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest)。
 
 ## <a name="common-scenarios"></a>常见方案  
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/11/2021
+ms.date: 08/06/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc67b0b038abda37c591162caad9b3b94e6c440
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 58884d2905feda1f3827ae72866c1c69384178ff
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027472"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750550"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中对 Microsoft 365 组强制执行命名策略
 
@@ -28,9 +28,9 @@ ms.locfileid: "112027472"
 > [!IMPORTANT]
 > 若要将 Azure AD 命名策略用于 Microsoft 365 组，你需要拥有 Azure Active Directory Premium P1 许可证或 Azure AD Basic EDU 许可证，但不一定要为每名唯一用户（一个或多个 Microsoft 365 组的成员）都分配该许可证。
 
-命名策略应用于创建组或编辑跨工作负荷（例如 Outlook、Microsoft Teams、SharePoint、Exchange 或 Planner）创建的组。 它应用于组名和组别名。 如果在 Azure AD 中设置了命名策略，并且有现成的 Exchange 组命名策略，组织中会强制执行 Azure AD 命名策略。
+命名策略用于创建组或编辑跨工作负载（例如 Outlook、Microsoft Teams、SharePoint、Exchange 或 Planner）创建的组，即使未作出任何编辑更改。 它应用于组名和组别名。 如果在 Azure AD 中设置了命名策略，并且有现成的 Exchange 组命名策略，组织中会强制执行 Azure AD 命名策略。
 
-如果配置了组命名策略，该策略将应用于最终用户创建的新 Microsoft 365 组。 命名策略不会应用于某些目录角色，如全局管理员或用户管理员（请参阅下文以查看免受组命名策略约束的角色的完整列表）。 对于现有的 Microsoft 365 组，该策略不会在配置时立即应用。 组所有者编辑这些组的组名称后，命名策略将会被强制执行。
+如果配置了组命名策略，该策略将应用于最终用户创建的新 Microsoft 365 组。 命名策略不会应用于某些目录角色，如全局管理员或用户管理员（请参阅下文以查看免受组命名策略约束的角色的完整列表）。 对于现有的 Microsoft 365 组，该策略不会在配置时立即应用。 组所有者编辑完这些组的组名称后，即使未作出任何更改，命名策略也会被强制执行。
 
 ## <a name="naming-policy-features"></a>命名策略功能
 
@@ -42,9 +42,9 @@ ms.locfileid: "112027472"
 
 ### <a name="prefix-suffix-naming-policy"></a>前后缀命名策略
 
-命名约定的一般结构是“前缀[GroupName]后缀”。 虽然可以定义多个前缀和后缀，但设置中仅可包含一个 [GroupName] 实例。 前缀或后缀可以是固定字符串，也可以是根据创建组的用户替换的用户属性（如 \[Department\]）。 包括组名称在内的前缀和后缀字符串允许的总字符数为 53 个字符。 
+命名约定的一般结构是“前缀[GroupName]后缀”。 虽然可以定义多个前缀和后缀，但设置中仅可包含一个 [GroupName] 实例。 前缀或后缀可以是固定字符串，也可以是根据创建组的用户替换的用户属性（如 \[Department\]）。 包括组名称在内的前缀和后缀字符串允许的总字符数为 53 个字符。
 
-前缀和后缀可包含组名和组别名中支持的特殊字符。 如果前缀或后缀中有任何组别名不支持的字符，这些字符仍可应用于组名，但会从组别名中删除。 由于存在此限制，应用于组名的前缀和后缀与应用于组别名的前缀和后缀可能有所不同。 
+前缀和后缀可包含组名和组别名中支持的特殊字符。 如果前缀或后缀中有任何组别名不支持的字符，这些字符仍可应用于组名，但会从组别名中删除。 由于存在此限制，应用于组名的前缀和后缀与应用于组别名的前缀和后缀可能有所不同。
 
 #### <a name="fixed-strings"></a>固定字符串
 
@@ -100,7 +100,7 @@ ms.locfileid: "112027472"
 
     ![编辑并上传命名策略的阻止字词列表](./media/groups-naming-policy/blockedwords.png)
 
-1. 查看或编辑自定义阻止字词的当前列表，方法是选择“下载”。
+1. 查看或编辑自定义阻止字词的当前列表，方法是选择“下载”。 必须将新条目添加到现有条目中。
 1. 上传自定义阻止字词的新列表，方法是选择文件图标。
 1. 通过选择“保存”，保存对新策略的更改以使其生效。
 
@@ -248,7 +248,7 @@ Planner | Planner 遵循命名策略。 输入计划名称时，Planner 显示�
 Dynamics 365 for Customer Engagement | Dynamics 365 for Customer Engagement 遵循命名策略。 当用户键入组名或组电子邮件别名时，Dynamics 365 显示命名策略强制使用的名称。 当用户输入自定义阻止字词时，会显示一条错误消息以及阻止字词，以便用户删除它。
 学校数据同步 (SDS) | 通过 SDS 创建的组遵循命名策略，但不会自动应用命名策略。 SDS 管理员必须将前缀和后缀追加需要为其创建组的类名，然后上传到 SDS。 否则，组创建或编辑会失败。
 Classroom 应用 | 在 Classroom 应用中创建的组遵循命名策略，但不会自动应用命名策略，并且在输入教室组名时不会向用户显示命名策略预览。 用户必须输入强制使用的教室组名称（包含前缀和后缀）。 否则，教室组创建或编辑会失败，并出现错误。
-Power BI | Power BI 工作区遵循命名策略。    
+Power BI | Power BI 工作区遵循命名策略。
 Yammer | 当使用其 Azure Active Directory 帐户登录到 Yammer 的用户创建一个组或编辑组名时，组名将符合命名策略。 这适用于 Microsoft 365 连接组以及所有其他 Yammer 组。<br>如果在命名策略到位之前已创建 Microsoft 365 连接组，则组名将不会自动遵循命名策略。 当用户编辑组名，系统将提示他们添加前缀和后缀。
 StaffHub  | StaffHub 团队不遵循该命名策略，但基础 Microsoft 365 组遵循。 StaffHub 团队名不应用前缀和后缀，也不检查自定义阻止字词。 但对于基础 Microsoft 365 组，StaffHub 却会应用前缀和后缀并从该组中删除阻止字词。
 Exchange PowerShell | Exchange PowerShell cmdlet 遵循命名策略。 如果用户不遵循组名和组别名 (mailNickname) 的命名策略，则会收到相应的错误消息，以及建议的前后缀和自定义阻止字词。

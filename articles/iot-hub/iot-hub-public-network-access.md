@@ -6,21 +6,21 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: ece547ac7032e4629a2df48c34b0412ecdc15f54
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/07/2021
+ms.openlocfilehash: a729cd14c2f65b7ff4ab478f9efd25e13a1170b4
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072111"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113515594"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>管理 IoT 中心的公用网络访问
 
-若要[仅允许专用终结点访问 VNet 中的 IoT 中心](virtual-network-support.md)，请禁用公用网络访问。 为此，请使用 Azure 门户或 `publicNetworkAccess` API。 还可使用门户或 `publicNetworkAccess` API 来允许公共访问。
+若要仅允许[专用终结点访问 VNet 中的 IoT 中心](virtual-network-support.md)，请禁用公用网络访问。 为此，请使用 Azure 门户或 `publicNetworkAccess` API。 你还可使用门户或 `publicNetworkAccess` API 允许公共访问。
 
-## <a name="turn-off-public-network-access-using-azure-portal"></a>使用 Azure 门户禁用公用网络访问
+## <a name="turn-off-public-network-access-using-the-azure-portal"></a>使用 Azure 门户禁用公用网络访问
 
-1. 访问 [Azure 门户](https://portal.azure.com)
+1. 转到 [Azure 门户](https://portal.azure.com)
 2. 导航到 IoT 中心。 转到“资源组”，选择相应的组，然后选择你的 IoT 中心。
 3. 从左侧菜单中选择“网络”。
 4. 在“允许公用网络访问”下，选择“已禁用”
@@ -30,7 +30,7 @@ ms.locfileid: "110072111"
 
 若要启用公用网络访问，请选择“所有网络”，然后选择“保存” 。
 
-### <a name="accessing-the-iot-hub-after-disabling-public-network-access"></a>禁用公共网络访问后访问 IoT 中心
+### <a name="accessing-the-iot-hub-after-disabling-the-public-network-access"></a>禁用公共网络访问后访问 IoT 中心
 
 禁用公共网络访问后，只能[使用 Azure 专用链接通过其 VNet 专用终结点](virtual-network-support.md)访问 IoT 中心。 此限制包括通过 Azure 门户进行访问，因为对 IoT 中心服务的 API 调用是使用你的浏览器和凭据直接进行的。
 
@@ -50,7 +50,7 @@ IoT 中心有一个 bug，即，禁用对 IoT 中心的公用网络访问后，�
 
 ## <a name="turn-on-network-access-using-azure-portal"></a>使用 Azure 门户启用网络访问
 
-1. 访问 [Azure 门户](https://portal.azure.com)
+1. 转到 [Azure 门户](https://portal.azure.com)。
 2. 导航到 IoT 中心。 转到“资源组”，选择相应的组，然后选择你的 IoT 中心。
 3. 从左侧菜单中选择“网络”。
 4. 在“允许公用网络访问”下，选择“所选 IP 范围”。
@@ -87,6 +87,6 @@ IoT 中心有一个 bug，即，禁用对 IoT 中心的公用网络访问后，�
   Unable to retrieve devices. Please ensure that your network connection is online and network settings allow connections from your IP address.
 ```
 
-若要获取对 IoT 中心的访问权限，请从 IT 管理员处请求权限，让其在 IP 地址范围内添加你的 IP 地址，或者让其启用对所有网络的公用网络访问权限。 如果这样无法解决问题，请检查本地网络设置或联系本地网络管理员，以修复与 IoT 中心的连接。 例如，有时本地网络中的代理可能会干扰对 IoT 中心的访问。
+若要访问 IoT 中心，请向 IT 管理员请求权限，将你的 IP 地址添加到 IP 地址范围或启用对所有网络的公共网络访问权限。 如果这无法解决问题，请检查本地网络设置或联系本地网络管理员，修复与 IoT 中心的连接。 例如，有时本地网络中的代理会干扰对 IoT 中心的访问。
 
 如果上述命令不起作用，或者你无法打开所有网络范围，请联系 Microsoft 支持部门。

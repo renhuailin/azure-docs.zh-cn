@@ -3,13 +3,13 @@ title: 使用视频记录并流式传输推理元数据 - Azure 视频分析器
 description: 本教程介绍如何使用 Azure 视频分析器将视频和推理元数据录制到云中，并随视觉推理元数据一起播放录制内容。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 05/12/2021
-ms.openlocfilehash: 89aef5db89110ee7e12a313820f8f62d0b010faf
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 06/01/2021
+ms.openlocfilehash: 3122ea07fdab20c93ed4720d0c43f180cce5306d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755153"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778306"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>教程：使用视频记录并流式传输推理元数据
   
@@ -132,7 +132,7 @@ ms.locfileid: "111755153"
 1. 接下来，在 livePipelineSet 和 pipelineTopologyDelete 节点下，确保 topologyName 的值与上述管道拓扑中的 name 属性的值匹配   ：
 
     `"pipelineTopologyName" : "CVRHttpExtensionObjectTracking"`
-1. 在浏览器中打开[管道拓扑](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-objTracking/topology.json)，查看 videoName（硬编码为 `sample-cvr-with-inference-metadata`）。 对于教程来说，这是可以接受的。 在生产环境中，应注意确保每个唯一的 RTSP 相机都会录制到一个具有唯一名称的视频资源中。  
+1. 在浏览器中打开[管道拓扑](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-with-httpExtension-and-objectTracking/topology.json)，查看 videoName（硬编码为 `sample-cvr-with-inference-metadata`）。 对于教程来说，这是可以接受的。 在生产环境中，应注意确保每个唯一的 RTSP 相机都会录制到一个具有唯一名称的视频资源中。  
 
 1. 检查 HTTP 扩展节点的设置。
 
@@ -143,7 +143,8 @@ ms.locfileid: "111755153"
     }
   ```
 
-这里，`skipSamplesWithoutAnnotation` 设置为 `false`，因为扩展节点需要将所有帧（无论它们是否具有推理结果）传递到下游对象跟踪器节点。 对象跟踪器能够跟踪大约超过 15 帧的对象。 如果实时视频的帧速率为 30 帧/秒，这意味着每秒至少应向 HTTP 服务器发送两帧进行推理；因此 `maximumSamplesPerSecond` 设置为 2。
+这里，`skipSamplesWithoutAnnotation` 设置为 `false`，因为扩展节点需要将所有帧（无论它们是否具有推理结果）传递到下游对象跟踪器节点。 对象跟踪器能够跟踪大约超过 15 帧的对象。 AI 模型具有用于处理的最大 FPS，这是 `maximumSamplesPerSecond` 应设置为的最大值。
+
 
 ## <a name="run-the-sample-program"></a>运行示例程序
 
@@ -384,12 +385,11 @@ body 部分包含有关输出位置的信息，在本例中是视频录制到的
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/record-stream-inference-data-with-video/video-playback.png" alt-text="视频播放的屏幕截图":::
 
-> [!NOTE]
-> 由于视频源是模拟相机源的容器，因此视频中的时间戳与启用和停用实时管道的时间有关。
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果想学习其他教程，请保留创建的资源。 如果不想，请转到 Azure 门户，浏览到资源组，选择运行本教程时所用的资源组，然后删除该资源组。
+[!INCLUDE [prerequisites](./includes/common-includes/clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

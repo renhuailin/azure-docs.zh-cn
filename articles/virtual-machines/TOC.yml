@@ -407,6 +407,32 @@
         - name: VM 实例大小灵活性
           displayName: 'Reserved Instances, RI, prepay'
           href: reserved-vm-instance-size-flexibility.md
+    - name: 产能预留（预览版）
+      items:
+        - name: 概述（预览版）
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-overview.md
+        - name: 创建产能预留（预览版）
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-create.md
+        - name: 超量分配产能预留（预览版）
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-overallocate.md
+        - name: 修改产能预留（预览版）
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-modify.md
+        - name: 关联 VM（预览版）
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-associate-vm.md
+        - name: 删除 VM（预览版）
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-remove-vm.md
+        - name: 关联 VM 规模集（预览版）
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-associate-virtual-machine-scale-set.md
+        - name: 删除 VM 规模集（预览版）
+          displayName: on-demand capacity reservation
+          href: capacity-reservation-remove-virtual-machine-scale-set.md
     - name: 创建虚拟机
       items:
         - name: Linux

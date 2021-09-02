@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: aebcf680fec069fdb28114ef8a1a0f6fd8547e63
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: f1e995e558b902b9b1210b87f319748d731228b6
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112458571"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967823"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>从 Azure 资源管理器模板部署 NSG 流日志
 
@@ -40,7 +40,7 @@ ms.locfileid: "112458571"
 ## <a name="nsg-flow-logs-object"></a>NSG 流日志对象
 
 下面显示了包含所有参数的 NSG 流日志对象。
-有关属性的完整概述，可以阅读 [NSG 流日志模板参考](/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters)。
+有关属性的完整概述，可以阅读 [NSG 流日志模板参考](/azure/templates/microsoft.network/networkwatchers/flowlogs#retentionpolicyparameters)。
 
 ```json
 {

@@ -4,18 +4,18 @@ titleSuffix: Microsoft Genomics
 description: 本概述介绍 Microsoft 基因组学针对业务连续性和灾难恢复所提供的功能。
 keywords: 业务连续性, 灾难恢复
 services: genomics
-author: grhuynh
+author: vigunase
 manager: cgronlun
-ms.author: grhuynh
+ms.author: vigunase
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 04/06/2018
-ms.openlocfilehash: 3097041c96f70dda384f0b116bbbc9bc9130be4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0684f8ed53c850ea3fe8adda33aa06e3a90b184c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93395744"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255798"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>使用 Microsoft 基因组学实现业务连续性的概述
 本概述介绍 Microsoft 基因组学针对业务连续性和灾难恢复所提供的功能。 了解在发生可能导致数据丢失的中断事件（如 Azure 区域中断）后进行恢复的选项。 

@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/02/2020
-ms.openlocfilehash: 714197288708691cb35e887975d1fabbe27cb406
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 07/05/2021
+ms.openlocfilehash: ce68d4161762d47b8754cb69633a3918848085d0
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555373"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113593826"
 ---
 # <a name="create-plans-for-a-saas-offer"></a>为 SaaS 产品/服务创建计划
 
@@ -144,7 +144,7 @@ ms.locfileid: "111555373"
 “计划概述”选项卡的“操作”列中可用的操作根据你的计划状态而有所不同，并且可能包括以下内容：
 
 - 如果计划状态为“草稿”，则“操作”列中的链接将显示“删除草稿”。
-- 如果计划状态为“实时”，则“操作”列中的链接将为“停止销售计划”或“同步私有受众”。 “同步私有受众”链接将仅向你的私有受众发布更改，而不会发布你可能对产品/服务进行的任何其他更新。
+- 如果计划状态为“实时”，则“操作”列中的链接将为“停止销售计划”或“同步私有受众”。    “同步私有受众”链接将仅向你的私有受众发布更改，而不会发布你可能对产品/服务进行的任何其他更新。
 
 ## <a name="before-you-publish-your-offer"></a>发布产品/服务的准备工作
 

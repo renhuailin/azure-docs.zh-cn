@@ -5,12 +5,12 @@ description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理群集
 services: container-service
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 5cb103d843aafbb7f72c03d65b45fe3a84f8d1cd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7560e9aaabf8b21729e1e9d8e008c0b6a0e8cefb
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782974"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453315"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
@@ -279,38 +279,19 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 
 有关 AKS 中的升级的详细信息，请参阅 [AKS 中支持的 Kubernetes 版本][aks-supported-versions]和[升级 AKS 群集][aks-upgrade]。
 
-## <a name="process-linux-node-updates-and-reboots-using-kured"></a>使用 kured 处理 Linux 节点更新和重启
+## <a name="process-linux-node-updates"></a>处理 Linux 节点更新
 
-> **最佳实践指南** 
-> 
-> 虽然 AKS 会自动在每个 Linux 节点上下载并安装安全修补程序，但不会自动重启。 
-> 1. 使用 `kured` 监视等待的重启。
-> 1. 安全地隔离和排出节点，使节点重新启动。
-> 1. 应用更新。
-> 1. 尽可能确保 OS 的安全。 
+每天晚上，AKS 中的 Linux 节点都会通过其发行版更新通道获得安全补丁。 当在 AKS 群集中部署节点时，会​​自动配置此行为。 为了尽量减少对正在运行的工作负荷的中断和潜在影响，AKS 不会在安全修补程序或内核更新需要进行重启时自动重启节点。 有关如何处理节点重启的详细信息，请参阅[将安全更新和内核更新应用于 AKS 中的节点][aks-kured]。
 
-对于 Windows Server 节点，定期执行 AKS 升级操作，以安全隔离和清空 Pod 并部署更新的节点。
+### <a name="node-image-upgrades"></a>节点映像升级
 
-每天晚上，AKS 中的 Linux 节点都会通过其发行版更新通道获得安全补丁。 当在 AKS 群集中部署节点时，会​​自动配置此行为。 为了尽量减少对正在运行的工作负荷的中断和潜在影响，AKS 不会在安全修补程序或内核更新需要进行重启时自动重启节点。
+无人参与的升级会将更新应用于 Linux 节点 OS，但用于为群集创建节点的节点映像将保持不变。 如果将新的 Linux 节点添加到你的群集，则原始映像将用于创建节点。 这个新节点将在每晚自动检查期间接收所有可用的安全更新和内核更新，但在所有检查和重启完成之前将保持未修补状态。 可以使用节点映像升级来检查和更新群集使用的节点映像。 有关节点映像升级的更多详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 节点映像升级][node-image-upgrade]。
 
-Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可监视挂起的节点重启操作。 当 Linux 节点应用需要进行重启的更新时，系统会安全地封锁并排空该节点，以便将 Pod 移至群集中的其他节点上并在这些节点上计划 Pod。 重启节点后，会将其重新添加到群集中，Kubernetes 将继续 pod 计划。 为了尽量减少中断，`kured` 一次只允许重启一个节点。
+## <a name="process-windows-server-node-updates"></a>处理 Windows 服务器节点更新
 
-![使用 kured 的 AKS 节点重启过程](media/operator-best-practices-cluster-security/node-reboot-process.png)
-
-如果希望更密切地控制重启，`kured` 可以与 Prometheus 集成，以防止在出现其他维护事件或群集问题时进行重启。 此集成可在你主动排查其他问题时，减少因重启节点而导致的复杂情况。
-
-有关如何处理节点重启的详细信息，请参阅[将安全更新和内核更新应用于 AKS 中的节点][aks-kured]。
-
-## <a name="next-steps"></a>后续步骤
-
-本文重点介绍了如何保护 AKS 群集。 若要实施其中某些做法，请参阅以下文章：
-
-* [将 Azure Active Directory 与 AKS 集成][aks-aad]
-* [将 AKS 群集升级到最新的 Kubernetes 版本][aks-upgrade]
-* [使用 kured 处理安全更新和节点重启][aks-kured]
+对于 Windows 服务器节点，定期执行节点映像升级操作，以安全隔离和排空 Pod 并部署更新后的节点。
 
 <!-- EXTERNAL LINKS -->
-[kured]: https://github.com/weaveworks/kured
 [k8s-apparmor]: https://kubernetes.io/docs/tutorials/clusters/apparmor/
 [seccomp]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#seccomp
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -330,3 +311,4 @@ Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可�
 [pod-security-contexts]: developer-best-practices-pod-security.md#secure-pod-access-to-resources
 [aks-ssh]: ssh.md
 [security-center-aks]: ../security-center/defender-for-kubernetes-introduction.md
+[node-image-upgrade]: node-image-upgrade.md

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f43fc94174ebdcfdf447d3635a696193959849fa
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 7e468b246534fef1fab4e710d0449e785280e16a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600280"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460514"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>设置适用于 HPC 的消息传递接口
 
@@ -51,7 +51,7 @@ make -j 8 && make install
 ```
 
 > [!NOTE]
-> UCX 的最新版本解决了一项[问题](https://github.com/openucx/ucx/pull/5965)，因此现在多个 NIC 接口存在时会选择正确的 InfiniBand 接口。 若要更详细地了解如何在 VM 上启用了加速网络的情况下通过 InfiniBand 运行 MPI，请查看[此处](hb-hc-known-issues.md#accelerated-networking-on-hb-hc-hbv2-and-ndv2)。
+> UCX 的最新版本解决了一项[问题](https://github.com/openucx/ucx/pull/5965)，因此现在多个 NIC 接口存在时会选择正确的 InfiniBand 接口。 有关更多信息，请参阅[排查在 VM 上启用加速网络时通过 InfiniBand 运行 MPI 时 HPC 和 GPU VM 的已知问题](hb-hc-known-issues.md#accelerated-networking-on-hb-hc-hbv2-and-ndv2)。
 
 ## <a name="hpc-x"></a>HPC-X
 
@@ -329,5 +329,6 @@ chmod 644 /home/$USER/.ssh/config
 
 - 了解[已启用 InfiniBand](../../sizes-hpc.md#rdma-capable-instances) 的 [H 系列](../../sizes-hpc.md)和 [N 系列](../../sizes-gpu.md) VM
 - 查看 [HBv3 系列概述](hbv3-series-overview.md)和 [HC 系列概述](hc-series-overview.md)。
+- 读取 [HB 系列 VM 的最佳 MPI 进程位置](https://techcommunity.microsoft.com/t5/azure-global/optimal-mpi-process-placement-for-azure-hb-series-vms/ba-p/2450663)。
 - 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
 - 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

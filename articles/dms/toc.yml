@@ -18,6 +18,8 @@
           href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: 概念
   items:
+    - name: 使用 Azure Data Studio 进行迁移
+      href: migration-using-azure-data-studio.md
     - name: 先决条件
       href: pre-reqs.md
     - name: 数据库迁移方案状态

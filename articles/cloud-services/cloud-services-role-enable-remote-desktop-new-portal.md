@@ -4,16 +4,16 @@ description: 如何配置 Azure 云服务应用程序以允许远程桌面连接
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 8fa0d3c0e29c53e6fe9cb32ddf02168686be1efe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f66b962224a756947637a5a291825e1c2b0987ae
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743247"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122270994"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic"></a>为 Azure 云服务（经典）中的角色启用远程桌面连接
 
@@ -63,7 +63,7 @@ Azure 门户使用远程桌面扩展方法，即使在部署应用程序之后�
 4. 依次单击“**打开**”和“**连接**”，以启动远程桌面连接。
 
 >[!NOTE]
-> 如果云服务位于 NSG 后，可能需要创建允许端口 **3389** 和 **20000** 上的流量的规则。  远程桌面使用端口 **3389**。  云服务实例经过负载均衡，因此无法直接控制要连接到哪个实例。  RemoteForwarder  和 RemoteAccess  代理管理 RDP 流量，允许客户端发送 RDP cookie 和指定要连接到的单个实例。  RemoteForwarder 和 RemoteAccess 代理要求打开端口 20000*（如果具有 NSG，此端口可能已被阻止）    。
+> 如果云服务位于 NSG 后，可能需要创建允许端口 **3389** 和 **20000** 上的流量的规则。  远程桌面使用端口 **3389**。  云服务实例经过负载均衡，因此无法直接控制要连接到哪个实例。  RemoteForwarder  和 RemoteAccess  代理管理 RDP 流量，允许客户端发送 RDP cookie 和指定要连接到的单个实例。  RemoteForwarder 和 RemoteAccess 代理要求打开端口 20000（如果具有 NSG，此端口可能遭阻止）。 
 
 ## <a name="additional-resources"></a>其他资源
 

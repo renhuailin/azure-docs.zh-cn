@@ -1,31 +1,28 @@
 ---
 title: 在 Azure 中的 Windows VM 中运行 PowerShell 脚本
 description: 本主题介绍了如何使用“运行命令”功能在 Azure Windows 虚拟机中运行 PowerShell 脚本
-services: automation
 ms.service: virtual-machines
 ms.collection: windows
 author: bobbytreed
 ms.author: robreed
-ms.date: 04/26/2019
+ms.date: 06/22/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-manager: carmonm
-ms.openlocfilehash: de84372a6d9e6aa2c506427cd601859bf1ac00f0
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 81ffce59b1f99628580418836d690d650ea94a1c
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672659"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566239"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
 
 “运行命令”功能使用虚拟机 (VM) 代理在 Azure Windows VM 中运行 PowerShell 脚本。 可以使用这些脚本进行常规计算机或应用程序管理。 它们可以帮助你快速诊断和修正 VM 访问与网络问题，使 VM 恢复正常状态。
 
 
-
 ## <a name="benefits"></a>优点
 
-可通过多种方式访问虚拟机。 “运行命令”可以使用 VM 代理在虚拟机上以远程方式运行脚本。 通过 Windows VM 的 Azure 门户、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) 或 [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) 使用“运行命令”。
+可通过多种方式访问虚拟机。 “运行命令”可以使用 VM 代理在虚拟机上以远程方式运行脚本。 通过 Windows VM 的 Azure 门户、[REST API](/rest/api/compute/virtual-machines-run-commands/run-command) 或 [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) 使用“运行命令”。
 
 在需要在虚拟机中运行脚本的所有方案中，此功能都很有用。 它是排查和修正因网络或管理用户配置错误而未打开 RDP 或 SSH 端口的虚拟机的唯一方法。
 
@@ -45,6 +42,8 @@ ms.locfileid: "110672659"
 
 > [!NOTE]
 > 若要正常工作，“运行命令”需要连接（通过端口 443）到 Azure 公共 IP 地址。 如果扩展无法访问这些终结点，则脚本可能会成功运行，但不会返回结果。 如果要阻止虚拟机上的流量，可以使用[服务标记](../../virtual-network/network-security-groups-overview.md#service-tags)以通过 `AzureCloud` 标记允许流量发往 Azure 公共 IP 地址。
+> 
+> 如果 VM 代理状态为“未就绪”，则“运行命令”功能不起作用。 在 Azure 门户的 VM 属性中检查代理状态。
 
 ## <a name="available-commands"></a>可用的命令
 
@@ -53,16 +52,21 @@ ms.locfileid: "110672659"
 ```error
 The entity was not found in this Azure location
 ```
+<br>
 
-|**名称**|**说明**|
+| **名称** | **说明** |
 |---|---|
-|**RunPowerShellScript**|运行 PowerShell 脚本。|
-|**EnableRemotePS**|配置计算机以启用远程 PowerShell。|
-|**EnableAdminAccount**|检查本地管理员帐户是否被禁用，如果是，则启用它。|
-|**IPConfig**| 显示绑定到 TCP/IP 的每个适配器的 IP 地址、子网掩码和默认网关的详细信息。|
-|**RDPSettings**|检查注册表设置和域策略设置。 提供策略操作建议（如果计算机属于某个域），或者将设置修改为默认值。|
-|**ResetRDPCert**|删除绑定到 RDP 侦听器的 TLS/SSL 证书，并将 RDP 侦听器安全性还原为默认值。 如果看到与证书有关的任何问题，请使用此脚本。|
-|**SetRDPPort**|为远程桌面连接设置默认的或用户指定的端口号。 为端口的入站访问启用防火墙规则。|
+| **RunPowerShellScript** | 运行 PowerShell 脚本 |
+| **DisableNLA** | 禁用网络级身份验证 |
+| **DisableWindowsUpdate** | 禁用 Windows 更新自动更新 |
+| **EnableAdminAccount** | 检查本地管理员帐户是否被禁用，如果是，则启用它。 |
+| **EnableEMS** | 启用 EMS |
+| **EnableRemotePS** | 配置计算机以启用远程 PowerShell。 |
+| **EnableWindowsUpdate** | 启用 Windows 更新自动更新 |
+| **IPConfig** | 显示绑定到 TCP/IP 的每个适配器的 IP 地址、子网掩码和默认网关的详细信息。 |
+| **RDPSetting** | 检查注册表设置和域策略设置。 提供策略操作建议（如果计算机属于某个域），或者将设置修改为默认值。 |
+| **ResetRDPCert** | 删除绑定到 RDP 侦听器的 TLS/SSL 证书，并将 RDP 侦听器安全性还原为默认值。 如果看到与证书有关的任何问题，请使用此脚本。 |
+| **SetRDPPort** | 为远程桌面连接设置默认的或用户指定的端口号。 为端口的入站访问启用防火墙规则。 |
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -82,7 +86,7 @@ az vm run-command invoke  --command-id RunPowerShellScript --name win-vm -g my-r
 
 ## <a name="azure-portal"></a>Azure 门户
 
-转到 [Azure 门户](https://portal.azure.com) 中的某个 VM，然后在“操作”下选择“运行命令”。  你将看到可以在 VM 上运行的可用命令的列表。
+转到 [Azure 门户](https://portal.azure.com) 中的某个 VM，然后在“操作”下的左侧菜单中选择“运行命令”。  你将看到可以在 VM 上运行的可用命令的列表。
 
 ![命令列表](./media/run-command/run-command-list.png)
 

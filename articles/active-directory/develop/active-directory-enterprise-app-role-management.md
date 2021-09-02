@@ -12,14 +12,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c1b4b3d57bdce4a66adb35717f46d8989ee2453
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 002304f06e97aa04b3c15548e524c931c69ec6d6
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648809"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031729"
 ---
-# <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
+# <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>为企业应用程序配置 SAML 令牌中颁发的角色声明
 
 可以使用 Azure Active Directory (Azure AD) 为完成应用授权后收到的响应令牌中的角色声明自定义声明类型。
 

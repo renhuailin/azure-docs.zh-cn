@@ -5,21 +5,22 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 06/18/2020
+ms.date: 08/12/2021
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: b4701260a7d8da030f9f3019060aaa83e7a3a483
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e633bc71da050f3d580a6f0d0a4db25102ac360
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803591"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014614"
 ---
 | 资源 | 基本 | Standard | Premium |
 |---|---|---|---|
 | 包括的存储<sup>1</sup> (GiB) | 10 | 100 | 500 |
 | 存储限制 (TiB) | 20| 20 | 20 |
 | 最大映像层大小 (GiB) | 200 | 200 | 200 |
+| 最大清单大小 (MiB) | 4 | 4 | 4 |
 | 每分钟读取操作数<sup>2、3</sup> | 1,000 | 3,000 | 10,000 |
 | 每分钟写入操作数<sup>2、4</sup> | 100 | 500 | 2,000 |
 | 下载带宽<sup>2</sup> (Mbps) | 30 | 60 | 100 |

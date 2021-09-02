@@ -5,16 +5,18 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/23/2020
+ms.date: 06/17/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bc95cd3ab471826538a551687c38d1422e4b7163
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: adffb4edf7f689002cab7eae86388ff18ac04027
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108649"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652875"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MySQL 灵活服务器中创建和管理只读副本
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器中的只读副本现处于预览状态。
@@ -22,9 +24,13 @@ ms.locfileid: "105108649"
 本文介绍如何使用 Azure CLI 在 Azure Database for MySQL 灵活服务中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
 > [!Note]
-> 启用高可用性的服务器不支持副本。 
+>
+> * 启用高可用性的服务器不支持副本。 
+>
+> * 如果在主服务器上启用了 GTID (`gtid_mode` = ON)，则新创建的副本也会启用 GTID 并使用基于 GTID 的复制。 若要了解详细信息，请参阅[全局事务标识符 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
 
 ## <a name="azure-cli"></a>Azure CLI
+
 可以使用 Azure CLI 创建和管理只读副本。
 
 ### <a name="prerequisites"></a>先决条件
@@ -35,7 +41,7 @@ ms.locfileid: "105108649"
 ### <a name="create-a-read-replica"></a>创建只读副本
 
 > [!IMPORTANT]
-> 如果为没有现有副本的源服务器创建副本，源服务器将首先重启，以便为复制做好准备。 请考虑这一点并在非高峰期执行这些操作。
+>如果为没有现有副本的源服务器创建副本，源服务器将首先重启，以便为复制做好准备。 请考虑这一点并在非高峰期执行这些操作。
 
 可以使用以下命令创建只读副本服务器：
 
@@ -58,7 +64,7 @@ az mysql flexible-server replica list --server-name mydemoserver --resource-grou
 ### <a name="stop-replication-to-a-replica-server"></a>停止复制到副本服务器
 
 > [!IMPORTANT]
-> 停止复制到服务器操作不可逆。 一旦源服务器和副本服务器之间的复制停止，将无法撤消它。 然后，副本服务器将成为独立服务器，并且现在支持读取和写入。 此服务器不能再次成为副本服务器。
+>停止复制到服务器操作不可逆。 一旦源服务器和副本服务器之间的复制停止，将无法撤消它。 然后，副本服务器将成为独立服务器，并且现在支持读取和写入。 此服务器不能再次成为副本服务器。
 
 可以使用以下命令停止复制到只读副本服务器：
 
@@ -77,7 +83,7 @@ az mysql flexible-server delete --resource-group myresourcegroup --name mydemore
 ### <a name="delete-a-source-server"></a>删除源服务器
 
 > [!IMPORTANT]
-> 删除源服务器会停止复制到所有副本服务器，并删除源服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
+>删除源服务器会停止复制到所有副本服务器，并删除源服务器本身。 副本服务器成为现在支持读取和写入的独立服务器。
 
 若要删除源服务器，可以运行 [az mysql flexible-server delete](/cli/azure/mysql/flexible-server) 命令。
 

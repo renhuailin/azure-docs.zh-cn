@@ -1,20 +1,20 @@
 ---
-title: 如何通过以太网启动 Azure Percept DK 设置体验
+title: 通过以太网连接到 Azure Percept DK
 description: 本指南向用户介绍如何在通过以太网连接的情况下连接到 Azure Percept DK 设置体验。
-author: mimcco
-ms.author: mimcco
+author: WendyAnn0079
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 06/01/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 01a1c2fcb5981681c504e3e61fc68a10922e15d5
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 6ffc2a2d55bdad670c8323dfc57efad17dec1930
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441878"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227083"
 ---
-# <a name="how-to-launch-the-azure-percept-dk-setup-experience-over-ethernet"></a>如何通过以太网启动 Azure Percept DK 设置体验
+# <a name="connect-to-azure-percept-dk-over-ethernet"></a>通过以太网连接到 Azure Percept DK
 
 本操作指南将讲解如何通过以太网连接启动 Azure Percept DK 设置体验。 它是[快速入门：设置 Azure Percept DK 并部署第一个 AI 模型](./quickstart-percept-dk-set-up.md)指南的姊妹篇。 请查看下面概述的每个选项，并选择最适合你的环境的选项。
 

@@ -9,16 +9,16 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 06/04/2021
 ms.author: aahi
-ms.openlocfilehash: d54824a29f84159f4d26ba20c5b50d9c1edae4c6
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 1477e81d3809a0712913c95f54d4c073f08bb362
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111761220"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113550729"
 ---
 [健康状况文本分析](../../how-tos/text-analytics-for-health.md)处理非结构化医疗数据并从中提取见解。 此服务会检测医疗概念并让这些概念浮现出来，为概念分配断言，推断概念之间的语义关系，并将这些概念链接到常用的医疗本体论。
 
-健康状况文本分析检测到以下类别的医疗概念。 此预览版只支持英文文本，并且只提供一个模型版本。
+健康状况文本分析检测到以下类别的医疗概念。 目前仅支持英语文本。
 
 | 类别  | 说明  |
 |---------|---------|

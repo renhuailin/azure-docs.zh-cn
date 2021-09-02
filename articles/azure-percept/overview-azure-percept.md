@@ -1,20 +1,20 @@
 ---
 title: Azure Percept 概述
 description: 了解 Azure Percept 平台的详细信息
-author: mimcco
-ms.author: mimcco
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: overview
 ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: 09ee8346b62f868be3811ebfb6b3dc36ff9d0f83
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e0a5dfd39fd6047256d951fe33c10167e4f4c21b
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567655"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221266"
 ---
-# <a name="introduction-to-azure-percept"></a>Azure Percept 简介
+# <a name="azure-percept-overview"></a>Azure Percept 概述
 
 Azure Percept 是一系列硬件、软件和服务，旨在使用 IoT 和 AI 在边缘加速业务转型。 Azure Percept 涵盖了从硅到服务的完整堆栈，以大规模解决边缘 AI 的集成挑战。  
 

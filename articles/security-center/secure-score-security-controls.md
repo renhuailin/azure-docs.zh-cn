@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: article
-ms.date: 05/05/2021
+ms.date: 08/17/2021
 ms.author: memildin
-ms.openlocfilehash: e6582aedbc8357715f4e49cc8d5a780859ef3929
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: a3dc221ff4fa1caebad9dea601e208280b928558
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062059"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322910"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 安全中心的安全评分
 
@@ -29,7 +29,7 @@ Azure 安全中心有两个主要目标：
 
 Azure 门户页面显示的安全功能分数为百分比值，但原值也一目了然：
 
-:::image type="content" source="./media/secure-score-security-controls/single-secure-score-via-ui.png" alt-text="门户中显示的总体安全功能分数":::
+:::image type="content" source="./media/secure-score-security-controls/single-secure-score-via-ui.png" alt-text="门户中显示的总体安全分数。":::
 
 若要提高安全性，请查看安全中心的建议页面，了解提高分数需要采取的有效措施。 每项建议都包含有助于你修正特定问题的说明。
 
@@ -47,7 +47,7 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 
 ### <a name="example-scores-for-a-control"></a>控制的示例分数
 
-:::image type="content" source="./media/secure-score-security-controls/remediate-vulnerabilities-control.png" alt-text="应用系统更新安全控制" lightbox="./media/secure-score-security-controls/remediate-vulnerabilities-control.png":::
+:::image type="content" source="./media/secure-score-security-controls/remediate-vulnerabilities-control.png" alt-text="应用系统更新安全控制。" lightbox="./media/secure-score-security-controls/remediate-vulnerabilities-control.png":::
 
 
 在此示例中：
@@ -67,9 +67,9 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 
 |指标|公式和示例|
 |-|-|
-|**安全控制的当前分数**|<br>![用于计算安全控件分数的公式](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>每一个安全控制都计入安全评分。 受控制中的建议影响的每个资源都计入控制的当前分数。 各个控制的当前分数是对该控制中资源状态的度量。<br>![工具提示显示了计算安全控制的当前分数时使用的值](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>在此示例中，最高分 6 将除以 78，因为这是正常运行的资源和运行不正常的资源的总和。<br>6/78 = 0.0769<br>将其乘以正常运行的资源数量 (4) 可得出当前分数：<br>0.0769 * 4 = 0.31<br><br>|
+|**安全控制的当前分数**|<br>![用于计算安全控件分数的公式。](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>每一个安全控制都计入安全评分。 受控制中的建议影响的每个资源都计入控制的当前分数。 各个控制的当前分数是对该控制中资源状态的度量。<br>![工具提示显示了计算安全控制的当前分数时使用的值](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>在此示例中，最高分 6 将除以 78，因为这是正常运行的资源和运行不正常的资源的总和。<br>6/78 = 0.0769<br>将其乘以正常运行的资源数量 (4) 可得出当前分数：<br>0.0769 * 4 = 0.31<br><br>|
 |**安全评分**<br>一个订阅|<br>![用于计算订阅的安全评分的公式](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![启用了所有控制的单个订阅的安全评分](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>在此示例中，单个订阅启用了所有安全控制（可能的最高分为 60 分）。 该分数显示了可能的最高分 60 分中的 28 分，其余 32 分反映在安全控制的“可能增加的分数”数字中。<br>![控制和可能增加的分数的列表](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
-|**安全评分**<br>多个订阅|<br>![用于计算多个订阅的安全评分的公式](media/secure-score-security-controls/secure-score-equation-multiple-subs.png)<br><br>在计算多个订阅的综合得分时，安全中心将加入每个订阅的“权重”。 订阅的相对权重由安全中心基于资源数量等因素来决定。<br>每个订阅的当前分数的计算方式与单个订阅的计算方式相同，但会按公式所示应用权重。<br>查看多个订阅时，安全评分会计算所有已启用策略中的所有资源，并将其对每个安全控制的最高分的综合影响进行分组。<br>![启用了所有控制的多个订阅的安全评分](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>综合得分不是平均值，而是指所有订阅中所有资源状态的计算状况。<br>同样，在这里，如果转到建议页面并将可能得到的分数相加，你会发现结果是当前分数 (24) 与最高得分 (60) 之差。|
+|**安全评分**<br>多个订阅|<br>![用于计算多个订阅的安全评分的公式。](media/secure-score-security-controls/secure-score-equation-multiple-subs.png)<br><br>在计算多个订阅的综合得分时，安全中心将加入每个订阅的“权重”。 订阅的相对权重由安全中心基于资源数量等因素来决定。<br>每个订阅的当前分数的计算方式与单个订阅的计算方式相同，但会按公式所示应用权重。<br>查看多个订阅时，安全评分会计算所有已启用策略中的所有资源，并将其对每个安全控制的最高分的综合影响进行分组。<br>![启用了所有控制的多个订阅的安全评分](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>综合得分不是平均值，而是指所有订阅中所有资源状态的计算状况。<br>同样，在这里，如果转到建议页面并将可能得到的分数相加，你会发现结果是当前分数 (24) 与最高得分 (60) 之差。|
 
 
 ### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>安全功能分数计算中包括哪些建议？
@@ -80,7 +80,7 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 
 预览建议示例如下：
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="带有预览标志的建议":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="带有预览标志的建议。":::
 
 ## <a name="improve-your-secure-score"></a>提高安全分数
 
@@ -114,7 +114,7 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 ## <a name="faq---secure-score"></a>常见问题解答 - 安全分数
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>如果仅处理某个安全控制四分之三的建议，安全评分是否会变化？
-否。 为单个资源修正所有建议后，安全评分才会变化。 若要获得某个控制的最高分，必须为所有资源修正所有建议。
+不是。 为单个资源修正所有建议后，安全评分才会变化。 若要获得某个控制的最高分，必须为所有资源修正所有建议。
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果某个建议对我不适用，我在策略中禁用它，我能否达到安全控制的要求，我的安全评分是否会更新？
 是的。 如果建议不适用于你的环境，建议禁用它们。 有关如何禁用特定建议的说明，请参阅[禁用安全策略](./tutorial-security-policy.md#disable-security-policies-and-disable-recommendations)。
@@ -124,12 +124,13 @@ Azure 门户页面显示的安全功能分数为百分比值，但原值也一�
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了安全评分及其引入的安全控制。 如需相关材料，请参阅以下文章：
+本文介绍安全评分及包含的安全控制。 
+
+> [!div class="nextstepaction"]
+> [访问和跟踪安全分数](secure-score-access-and-track.md)
+
+如需相关材料，请参阅以下文章：
 
 - [了解建议的不同元素](security-center-recommendations.md)
 - [了解如何修正建议](security-center-remediate-recommendations.md)
 - [查看基于 GitHub 的工具以便以编程方式使用安全评分](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)
-
-
-> [!div class="nextstepaction"]
-> [访问和跟踪安全分数](secure-score-access-and-track.md)

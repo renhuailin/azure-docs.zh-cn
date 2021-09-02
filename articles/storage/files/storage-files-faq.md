@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 47400f8e359f8f5f7a05119eb91106b318a0e798
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 34a8d0d732863f5fe40056f25460269f131fbf7c
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729571"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866497"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件存储](storage-files-introduction.md)会在云中提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)或[网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System)（预览）进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -352,7 +352,7 @@ ms.locfileid: "113729571"
 * <a id="expressroute-not-required"></a>
 **必须使用 Azure ExpressRoute 才能在本地连接到 Azure 文件或使用 Azure 文件同步吗？**  
 
-    否。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
+    不是。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
 
 * <a id="mount-locally"></a>
 **如何才能在本地计算机上装载 Azure 文件共享？**  
@@ -440,9 +440,7 @@ ms.locfileid: "113729571"
 
 * <a id="share-snapshot-price"></a>
 **共享快照的费用是多少？**  
-     在预览版期间，共享快照容量可免费使用， 但会收取标准存储出口和事务费用。 公开发布后，共享快照的容量和事务均将收费。
-     
-     共享快照在本质上是递增的。 基本共享快照即是共享本身。 所有的后续共享快照均是递增的，并且只会存储与之前共享快照的不同之处。 你只需为更改的内容付费。 如果你的共享包含 100 GiB 数据，但自执行上次共享快照以来只更改了 5 GiB 数据，则共享快照只额外使用了 5 GiB 数据，而你要为 105 GiB 付费。 有关事务和标准出口费用的更多信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
+    共享快照在本质上是递增的。 基本共享快照即是共享本身。 所有的后续共享快照均是递增的，并且只会存储与之前共享快照的不同之处。 你只需为更改的内容付费。 如果你的共享包含 100 GiB 数据，但自执行上次共享快照以来只更改了 5 GiB 数据，则共享快照只额外使用了 5 GiB 数据，而你要为 105 GiB 付费。 有关事务和标准出口费用的更多信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
 
 ## <a name="scale-and-performance"></a>缩放和性能
 * <a id="files-scale-limits"></a>
@@ -485,7 +483,7 @@ ms.locfileid: "113729571"
 
 * <a id="nested-shares"></a>
 **是否可以设置嵌套共享？也就是说，能否在共享下使用共享？**  
-    否。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
+    不是。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
 
 * <a id="ibm-mq"></a>
 **如何将 Azure 文件与 IBM MQ 配合使用？**  

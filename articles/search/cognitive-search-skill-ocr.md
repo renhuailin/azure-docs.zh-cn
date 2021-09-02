@@ -2,18 +2,17 @@
 title: OCR 认知技能
 titleSuffix: Azure Cognitive Search
 description: 在 Azure 认知搜索中的扩充管道中，使用光学字符识别 (OCR) 从图像文件中提取文本。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 12b6c8e71052d8d821d4b253d5f921bbff82e02d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/12/2021
+ms.openlocfilehash: b0ed1860abe3d8a85e87e2bf2746812e1ca67d2e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473871"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860302"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
@@ -32,10 +31,10 @@ OCR  技能可以从图像文件中提取文本。 支持的文件格式包括�
 + .TIFF
 
 > [!NOTE]
-> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+> 此技能绑定到认知服务，对于超过每个索引器每天 20 个文档的事务，需要[一个计费资源](cognitive-search-attach-cognitive-services.md)。 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。
+> 
+> 此外，[Azure 认知搜索还可计费](https://azure.microsoft.com/pricing/details/search/)图像提取。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)所述。
-
 
 ## <a name="skill-parameters"></a>技能参数
 
@@ -209,6 +208,8 @@ OCR  技能可以从图像文件中提取文本。 支持的文件格式包括�
 ```
 
 ## <a name="see-also"></a>另请参阅
+
++ [什么是光学字符识别](../cognitive-services/computer-vision/overview-ocr.md)
 + [内置技能](cognitive-search-predefined-skills.md)
 + [TextMerger 技能](cognitive-search-skill-textmerger.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)

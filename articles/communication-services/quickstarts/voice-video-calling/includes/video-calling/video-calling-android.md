@@ -1,15 +1,15 @@
 ---
-author: mikben
+author: probableprime
 ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
-ms.author: mikben
-ms.openlocfilehash: be7eee7c8de5cae201660b4d165ca51bb40b3c19
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.author: rifox
+ms.openlocfilehash: 927fcadc97ec689e477198e87b690a50e3c9e28f
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339867"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965975"
 ---
 通过使用通信服务呼叫客户端库向应用添加一对一视频呼叫，开启 Azure 通信服务使用旅程。 你将了解如何使用适用于 Android 的 Azure 通信服务呼叫 SDK 发起和应答视频呼叫。
 

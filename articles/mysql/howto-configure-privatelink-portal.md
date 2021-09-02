@@ -6,14 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 8c1f9d565cd6e3bafd5caa36d8da9266a3f1edb6
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 26b2bc1d2ba1d31aaa7269b3fdb861b69ce70eac
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076323"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122652668"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>使用门户创建和管理用于 Azure Database for MySQL 的专用链接
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 本文介绍如何使用 Azure 门户在 Azure 虚拟网络和带有 Azure 专用终结点的 Azure Database for MySQL 服务器中创建 VM。
 
@@ -35,7 +37,7 @@ ms.locfileid: "112076323"
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”  。
 2. 在“创建虚拟网络”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16。 |
@@ -53,7 +55,7 @@ ms.locfileid: "112076323"
 
 2. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -80,7 +82,7 @@ ms.locfileid: "112076323"
 
 1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。|
@@ -91,7 +93,7 @@ ms.locfileid: "112076323"
     |||
 
 
-1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 1. 看到“验证通过”消息时，选择“创建” 。
 
@@ -103,7 +105,7 @@ ms.locfileid: "112076323"
 
 1. 在“Azure Database for MySQL”中，提供以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -118,7 +120,7 @@ ms.locfileid: "112076323"
     |||
  
 7. 选择“确定” 。 
-8. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
+8. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
 9. 当看到 验证通过的 消息时，选择“创建”。 
 10. 看到“验证通过”消息时选择“创建”。 
 
@@ -138,7 +140,7 @@ ms.locfileid: "112076323"
 
 1. 在“创建专用终结点 - 基本信息”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -151,7 +153,7 @@ ms.locfileid: "112076323"
 5. 在完成时选择“下一步:资源”。
 6. 在“创建专用终结点 - 资源”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | 订阅| 选择订阅。 |
@@ -162,7 +164,7 @@ ms.locfileid: "112076323"
 7. 在完成时选择“下一步:配置”。
 8. 在“创建专用终结点 - 配置”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     |**网络**| |
     | 虚拟网络| 选择“MyVirtualNetwork”。 |
@@ -230,7 +232,7 @@ ms.locfileid: "112076323"
 
 4. 在“新建连接”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 服务器类型| 选择“MySQL”。|
     | 服务器名称| 选择“myServer.privatelink.mysql.database.azure.com” |

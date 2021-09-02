@@ -4,12 +4,12 @@ description: 在本教程中，你将连接到 Service Fabric 托管群集并通
 ms.topic: tutorial
 ms.date: 5/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f9ee801bdddd43563794aee7420ee8ba54f4d1d7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2b1228deaf5627c8a367a9b0927320f93d98a50e
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672402"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867433"
 ---
 # <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster"></a>教程：将应用部署到 Service Fabric 托管群集
 
@@ -96,9 +96,10 @@ Remove-ServiceFabricApplication fabric:/Voting
 
 在这一步中，我们将应用程序部署到 Service Fabric 托管群集。 若要详细了解应用程序部署选项，请参阅：
 
-* [部署托管群集应用程序机密](how-to-managed-cluster-application-secrets.md)
-* [使用 ARM 模板部署托管群集应用程序](how-to-managed-cluster-app-deployment-template.md)
-* [使用托管标识部署托管群集应用程序](how-to-managed-cluster-application-managed-identity.md)
+* [将应用程序机密部署到托管群集](how-to-managed-cluster-application-secrets.md)
+* [使用 Azure 资源管理器将应用程序部署到托管群集](how-to-managed-cluster-app-deployment-template.md)
+* [将具有托管标识的应用程序部署到托管群集](how-to-managed-cluster-application-managed-identity.md)
+
 
 若要详细了解托管群集配置选项，请参阅：
 

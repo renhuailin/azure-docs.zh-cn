@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: c99ad16e119c4262aa6d9d645b2457cdd46061b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7e5690e95bdc3f55a108fdc7c09e4d6e21b9c2b
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101700671"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968063"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
 
@@ -23,6 +23,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
 
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
+
 使用以下信息安装和配置解决方案。
 
 ### <a name="prerequisites"></a>先决条件
@@ -33,9 +34,11 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 
 
 ### <a name="install-agents-on-domain-controllers"></a>在域控制器上安装代理
+
 你必须将代理安装在属于要评估的域成员的域控制器上。 或者，你必须在成员服务器上安装代理，并配置代理以将 AD 复制数据发送到 Azure Monitor。 若要了解如何将 Windows 计算机连接到 Azure Monitor，请参阅[将 Windows 计算机连接到 Azure Monitor](../agents/agent-windows.md)。 如果域控制器已经是你要连接到 Azure Monitor 的现有 System Center Operations Manager 环境的一部分，请参阅[将 Operations Manager 连接到 Azure Monitor](../agents/om-agents.md)。
 
 ### <a name="enable-non-domain-controller"></a>启用非域控制器
+
 如果不需要将任何域控制器直接连接到 Azure Monitor，则可以使用域中任何其他与 Azure Monitor 连接的计算机来收集 AD 复制状态解决方案包的数据，并让它发送数据。
 
 1. 确认计算机是你要使用 AD 复制状态解决方案监视的域成员。

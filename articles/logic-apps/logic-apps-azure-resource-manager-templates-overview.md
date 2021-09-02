@@ -3,15 +3,15 @@ title: 概述 - 自动化 Azure 逻辑应用的部署
 description: 了解用于将 Azure 逻辑应用部署自动化的 Azure 资源管理器模板
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
+ms.reviewer: estfan, azla
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: ac2746c963c00ffd12a272b0c41322b0f9b9b24e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 538ee3d5dec64e2558297005a600cfd1662a322a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961624"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223883"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
 
@@ -328,7 +328,7 @@ ms.locfileid: "111961624"
 
 下面是特定于逻辑应用资源定义的属性：
 
-| 属性 | 必须 | 类型 | 说明 |
+| 属性 | 必需 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | `state` | 是 | String | 逻辑应用在部署时的状态，`Enabled` 表示逻辑应用处于活动状态，`Disabled` 表示逻辑应用处于非活动状态。 例如，如果你尚未准备好推出逻辑应用，而是想要部署草稿版本，则可以使用 `Disabled` 选项。 |
 | `integrationAccount` | 否 | Object | 如果逻辑应用使用集成帐户（用于存储企业到企业 (B2B) 方案的项目），则此对象包含用于指定集成帐户 ID 的 `id` 属性。 |
@@ -534,9 +534,15 @@ ms.locfileid: "111961624"
             // End workflow definition
             // Start workflow definition parameter values
             "parameters": {
-               "authenticationType": "[parameters('TemplateAuthenticationType')]", // Template parameter reference
-               "fabrikamPassword": "[parameters('TemplateFabrikamPassword')]", // Template parameter reference
-               "fabrikamUserName": "[parameters('TemplateFabrikamUserName')]" // Template parameter reference
+               "authenticationType": {
+                  "value": "[parameters('TemplateAuthenticationType')]" // Template parameter reference
+               },
+               "fabrikamPassword": {                  
+                  "value": "[parameters('TemplateFabrikamPassword')]" // Template parameter reference
+               },
+               "fabrikamUserName": {
+                  "value": "[parameters('TemplateFabrikamUserName')]" // Template parameter reference
+               }
             },
             "accessControl": {}
          },
