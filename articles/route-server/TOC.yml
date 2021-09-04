@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Azure 路由服务器（预览版）？
+    - name: 什么是 Azure 路由服务器？
       href: overview.md
 - name: 快速入门
   items:
@@ -50,10 +50,10 @@
     - name: 网络博客
       href: 'https://azure.microsoft.com/blog/topics/networking/'
     - name: 定价
-      href: 'https://azure.microsoft.com/pricing/'
+      href: 'https://azure.microsoft.com/pricing/route-server'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=routeserver'
     - name: SLA
-      href: 'https://azure.microsoft.com/support/legal/sla/'
+      href: 'https://azure.microsoft.com/support/legal/sla/route-server/v1_0/'

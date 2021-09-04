@@ -57,12 +57,11 @@
         - name: 配置容器
           href: containers/form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
+        - name: 容器映像标记
+          href: containers/form-recognizer-container-image-tags.md
         - name: 使用容器实例
           maintainContext: true
           href: ../../cognitive-services/containers/azure-container-instance-recipe.md
-        - name: 所有认知服务容器文档
-          href: ../../cognitive-services/containers/index.yml
-          maintainContext: true
     - name: 备份和恢复模型
       href: disaster-recovery.md
     - name: 企业就绪情况
