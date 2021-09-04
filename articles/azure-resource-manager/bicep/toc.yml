@@ -22,13 +22,10 @@
     - name: Microsoft Learn - Bicep
       href: learn-bicep.md
 - name: 如何
-  expanded: true
   items:
     - name: 作者
-      expanded: true
       items:
         - name: 资源
-          expanded: true
           items:
             - name: 资源声明
               href: resource-declaration.md
