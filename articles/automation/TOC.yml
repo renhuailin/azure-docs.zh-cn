@@ -12,26 +12,18 @@
       href: whats-new-archive.md
 - name: 快速入门
   items:
-    - name: 创建自动化帐户 - 门户
-      href: automation-quickstart-create-account.md
-    - name: 创建 PowerShell Runbook
-      href: automation-quickstart-create-runbook.md
+    - name: 创建自动化帐户 - Azure 门户
+      href: quickstarts/create-account-portal.md
     - name: 为计算机启用 Desired State Configuration
-      href: automation-quickstart-dsc-configuration.md
+      href: quickstarts/dsc-configuration.md
 - name: 教程
   items:
-    - name: 创建图形 Runbook
-      href: learn/automation-tutorial-runbook-graphical.md
-    - name: 创建 PowerShell Runbook
-      href: learn/automation-tutorial-runbook-textual-powershell.md
-    - name: 创建 PowerShell 工作流 Runbook
-      href: learn/automation-tutorial-runbook-textual.md
-    - name: 创建 Python Runbook
-      href: learn/automation-tutorial-runbook-textual-python2.md
-    - name: 创建 Python 3 Runbook
-      href: learn/automation-tutorial-runbook-textual-python-3.md
     - name: 将托管标识用于 PowerShell runbook
       href: learn/powershell-runbook-managed-identity.md
+    - name: 创建 PowerShell 工作流 Runbook
+      href: learn/automation-tutorial-runbook-textual.md
+    - name: 创建 Python 3 Runbook
+      href: learn/automation-tutorial-runbook-textual-python-3.md
 - name: 概念
   items:
     - name: 自动化帐户身份验证概述
