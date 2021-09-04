@@ -503,8 +503,8 @@
           tocHref: /azure/cosmos-db/graph/
           topicHref: /azure/cosmos-db/graph/
         - name: SQL API
-          tocHref: /azure/cosmos-db/sql/sql-query-getting-started
-          topicHref: /azure/cosmos-db/sql/sql-query-getting-started
+          tocHref: /azure/cosmos-db/sql/
+          topicHref: /azure/cosmos-db/sql/
     - name: 适用于 Apache Cassandra 的 Azure 托管实例
       tocHref: /azure/managed-instance-apache-cassandra/
       topicHref: /azure/managed-instance-apache-cassandra/
@@ -751,7 +751,7 @@
         - name: 对等互连服务
           tocHref: /azure/peering-service/
           topicHref: /azure/peering-service/
-        - name: Azure 路由服务器（预览版）
+        - name: 路由服务器
           tocHref: /azure/route-server/
           topicHref: /azure/route-server/
         - name: 流量管理器

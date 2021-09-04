@@ -39,6 +39,8 @@
           href: concept-rule-set-actions.md
         - name: URL 重定向和 URL 重写
           href: concept-rule-set-url-redirect-and-rewrite.md
+    - name: 地区筛选
+      href: geo-filtering.md
     - name: 运行状况探测
       href: concept-health-probes.md
     - name: 专用链接
