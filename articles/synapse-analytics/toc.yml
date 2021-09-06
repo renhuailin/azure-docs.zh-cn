@@ -76,6 +76,8 @@ items:
           - name: 连接到 Azure 数据资源管理器
             href: quickstart-connect-azure-data-explorer.md
             displayName: quickstart
+          - name: 合作伙伴解决方案
+            href: ./partner/browse-partners.md
         '-name': null
       - name: 概念
         items:
@@ -279,7 +281,7 @@ items:
             items:
               - name: 概述
                 href: ./sql-data-warehouse/design-elt-data-loading.md?context=/azure/synapse-analytics/context/context
-              - name: 最佳做法
+              - name: 最佳实践
                 href: sql/data-loading-best-practices.md
               - name: 列存储压缩
                 href: sql/data-load-columnstore-compression.md
@@ -813,7 +815,7 @@ items:
                 href: ../data-factory/connector-azure-databricks-delta-lake.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Azure 文件存储
                 href: ../data-factory/connector-azure-file-storage.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
-              - name: Azure SQL Database
+              - name: Azure SQL 数据库
                 href: ../data-factory/connector-azure-sql-database.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Azure SQL 托管实例
                 href: ../data-factory/connector-azure-sql-managed-instance.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json
@@ -1194,7 +1196,7 @@ items:
         items:
           - name: 数据访问和准备
             items:
-              - name: 具有文件系统规范的读/写 ADLS
+              - name: 使用文件系统规范读/写 ADLS
                 displayName: 'data prep, data preparation'
                 href: ./machine-learning/tutorial-spark-pool-filesystem-spec.md
               - name: 使用 Apache Spark 实现数据可视化
@@ -1210,7 +1212,7 @@ items:
                   - name: 无代码
                     displayName: 'train model, automated machine learning, automated ml, automl'
                     href: ./machine-learning/tutorial-automl.md
-                  - name: 使用 Python
+                  - name: 在 Python 中
                     displayName: 'train model, automated machine learning, automated ml, automl'
                     href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           - name: 对模型进行评分
@@ -1240,6 +1242,8 @@ items:
             href: ./catalog-and-governance/quickstart-connect-azure-purview.md
       - name: 操作指南
         items:
+          - name: 访问安全的 Azure Purview 帐户
+            href: ./catalog-and-governance/how-to-access-secured-purview-account.md
           - name: 使用 Azure Purview 发现、连接和浏览 Synapse 中的数据
             href: ./catalog-and-governance/how-to-discover-connect-analyze-azure-purview.md
   - name: 操作说明
@@ -1304,14 +1308,14 @@ items:
       - name: 合作伙伴
         items:
           - name: 商业智能
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-business-intelligence.md?context=/azure/synapse-analytics/context/context
+            href: ./partner/business-intelligence.md
           - name: 数据集成
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-data-integration.md?context=/azure/synapse-analytics/context/context
+            href: ./partner/data-integration.md
           - name: 数据管理
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-data-management.md?context=/azure/synapse-analytics/context/context
+            href: ./partner/data-management.md
           - name: 机器学习和 AI
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-machine-learning-ai.md?context=/azure/synapse-analytics/context/context
+            href: ./partner/machine-learning-ai.md
           - name: 系统集成
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-system-integration.md?context=/azure/synapse-analytics/context/context
+            href: ./partner/system-integration.md
           - name: 第三方应用程序的兼容性问题
-            href: ./sql-data-warehouse/sql-data-warehouse-partner-compatibility-issues.md?context=/azure/synapse-analytics/context/context
+            href: ./partner/compatibility-issues.md

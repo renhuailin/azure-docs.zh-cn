@@ -4,8 +4,10 @@
   items:
     - name: 关于已启用 Azure Arc 的服务器
       href: overview.md
-    - name: Connected Machine 代理的新增功能
+    - name: Connected Machine 代理有哪些新增功能？
       href: agent-release-notes.md
+    - name: Connected Machine 代理发行说明的存档
+      href: agent-release-notes-archive.md
 - name: 快速入门
   items:
     - name: 启用支持 Arc 的服务器代理

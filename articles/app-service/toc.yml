@@ -315,6 +315,10 @@
           href: webjobs-sdk-get-started.md
         - name: 使用 WebJobs SDK
           href: webjobs-sdk-how-to.md
+    - name: 高可用性
+      items:
+        - name: 配置高可用性
+          href: how-to-zone-redundancy.md
 - name: 参考
   items:
     - name: 监视数据
@@ -362,7 +366,7 @@
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: 部署脚本
           href: 'https://azure.microsoft.com/documentation/scripts/'
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 排查间歇性出站连接错误
           href: troubleshoot-intermittent-outbound-connection-errors.md
@@ -376,16 +380,18 @@
           href: troubleshoot-performance-degradation.md
         - name: 排查域和证书问题
           href: troubleshoot-domain-ssl-certificates.md
-        - name: 常见问题解答
-          items:
-            - name: 可用性、性能和应用程序常见问题解答
-              href: faq-availability-performance-application-issues.yml
-            - name: 部署常见问题解答
-              href: faq-deployment.yml
-            - name: 开放源代码技术常见问题解答
-              href: faq-open-source-technologies.yml
-            - name: 配置和管理常见问题解答
-              href: faq-configuration-and-management.yml
+    - name: 常见问题解答
+      items:
+        - name: 可用性、性能和应用程序常见问题解答
+          href: faq-availability-performance-application-issues.yml
+        - name: 部署常见问题解答
+          href: faq-deployment.yml
+        - name: 开放源代码技术常见问题解答
+          href: faq-open-source-technologies.yml
+        - name: 配置和管理常见问题解答
+          href: faq-configuration-and-management.yml
+        - name: Linux 上的应用服务
+          href: faq-app-service-linux.yml
     - name: IP 地址更改
       items:
         - name: 入站 IP 地址

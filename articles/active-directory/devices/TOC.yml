@@ -4,8 +4,6 @@
   items:
     - name: 什么是设备标识？
       href: overview.md
-    - name: 什么是企业状态漫游？
-      href: enterprise-state-roaming-overview.md
 - name: 教程
   expanded: false
   items:
@@ -49,42 +47,44 @@
       href: device-management-azure-portal.md
     - name: 管理过时设备
       href: manage-stale-devices.md
-    - name: 启用企业状态漫游
-      href: enterprise-state-roaming-enable.md
     - name: Azure Linux VM 和 Azure AD
       href: howto-vm-sign-in-azure-ad-linux.md
     - name: Azure Windows VM 和 Azure AD
       href: howto-vm-sign-in-azure-ad-windows.md
     - name: 虚拟桌面基础结构
       href: howto-device-identity-virtual-desktop-infrastructure.md
+    - name: 常见问题
+      href: faq.yml
     - name: 排查设备标识问题
       items:
         - name: 排查加入混合 Azure AD 的 Windows 当前设备问题
           href: troubleshoot-hybrid-join-windows-current.md
+        - name: 排查挂起的设备状态问题
+          href: /troubleshoot/azure/active-directory/pending-devices
         - name: 使用 dsregcmd 排除故障
           href: troubleshoot-device-dsregcmd.md
         - name: 排查加入混合 Azure AD 的下层 Windows 设备问题
           href: troubleshoot-hybrid-join-windows-legacy.md
-        - name: 排查企业状态漫游问题
-          href: enterprise-state-roaming-troubleshooting.md
-    - name: 常见问题
+    - name: 企业状态漫游
       items:
-        - name: 常见问题解答
-          href: faq.yml
+        - name: 什么是企业状态漫游？
+          href: enterprise-state-roaming-overview.md
+        - name: 启用企业状态漫游
+          href: enterprise-state-roaming-enable.md
         - name: 启用企业状态漫游常见问题解答
           href: enterprise-state-roaming-faqs.yml
+        - name: 排查企业状态漫游问题
+          href: enterprise-state-roaming-troubleshooting.md
+        - name: 企业状态漫游 GPO 设置
+          href: enterprise-state-roaming-group-policy-settings.md
+        - name: 企业状态漫游 Windows 设置
+          href: enterprise-state-roaming-windows-settings-reference.md
 - name: 参考
   items:
     - name: 执行 TLS 1.2
       href: reference-device-registration-tls-1-2.md
-    - name: 企业状态漫游 GPO 设置
-      href: enterprise-state-roaming-group-policy-settings.md
-    - name: 企业状态漫游 Windows 设置
-      href: enterprise-state-roaming-windows-settings-reference.md
     - name: 图形 API
-      items:
-        - name: 设备标识 API
-          href: /graph/api/resources/device
+      href: /graph/api/resources/device
 - name: 资源
   items:
     - name: Azure 反馈论坛

@@ -588,6 +588,8 @@
           items:
             - name: 排查连接错误
               href: flexible-server/how-to-troubleshoot-common-connection-issues.md
+            - name: 排查 CLI 错误
+              href: flexible-server/how-to-troubleshoot-cli-errors.md
 - name: 迁移
   items:
     - name: 将数据从本地 MySQL 迁移到 Azure Database for MySQL >
@@ -642,7 +644,7 @@
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
-    - name: 资源管理器模板
+    - name: Resource Manager 模板
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: 管理存储过程
       href: reference-stored-procedures.md

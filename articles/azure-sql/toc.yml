@@ -153,8 +153,6 @@
                   href: database/xevent-code-ring-buffer.md
     - name: 共享操作说明
       items:
-        - name: 请求增加配额
-          href: database/quota-increase-request.md
         - name: 使用弹性作业的作业自动化
           href: database/job-automation-overview.md
         - name: 使用 SQL 代理的作业自动化
@@ -479,6 +477,8 @@
               href: database/private-endpoint-overview.md
             - name: VNet 终结点
               href: database/vnet-service-endpoint-rule-overview.md
+            - name: 服务器角色
+              href: database/security-server-roles.md
         - name: 数据库分片
           items:
             - name: 数据库分片
@@ -1015,7 +1015,7 @@
                       href: /sql/machine-learning/security/user-permission?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
         - name: 功能
           items:
-            - name: 链接服务器
+            - name: 链接的服务器
               href: /sql/relational-databases/linked-servers/linked-servers-database-engine?toc=%2fazure%2fazure-sql%2ftoc.json
             - name: Service Broker
               href: /sql/database-engine/configure-windows/sql-server-service-broker?toc=%2fazure%2fazure-sql%2ftoc.json
@@ -1420,8 +1420,10 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 疑难解答
+    - name: 故障排除
       items:
+        - name: 部署期间的容量错误
+          href: capacity-errors-troubleshoot.md
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md
         - name: 常见连接问题
@@ -1430,6 +1432,8 @@
           href: database/database-import-export-hang.md
         - name: 事务日志错误
           href: database/troubleshoot-transaction-log-errors-issues.md
+        - name: 请求增加配额
+          href: database/quota-increase-request.md
     - name: 服务更新
       items:
         - name: SSL 根证书即将过期

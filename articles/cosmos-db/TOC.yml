@@ -52,6 +52,8 @@
           href: how-to-choose-offer.md
         - name: 在预配吞吐量和无服务器之间进行选择
           href: throughput-serverless.md
+        - name: 缩放预配吞吐量的最佳做法
+          href: scaling-provisioned-throughput-best-practices.md
     - name: 安全性
       items:
         - name: 安全概述
