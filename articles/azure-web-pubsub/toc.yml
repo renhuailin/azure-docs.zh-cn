@@ -34,7 +34,7 @@
       items:
         - name: 使用 Azure 函数构建通知应用
           href: tutorial-serverless-notification.md
-        - name: 使用 Azure 函数构建聊天应用
+        - name: 使用客户端身份验证生成实时聊天应用
           href: quickstart-serverless.md
     - name: 发布和订阅消息
       href: tutorial-pub-sub-messages.md
@@ -85,6 +85,8 @@
       items:
         - name: JSON WebSocket 子协议
           href: reference-json-webpubsub-subprotocol.md
+        - name: Protobuf WebSocket 子协议
+          href: reference-protobuf-webpubsub-subprotocol.md
     - name: 适用于 Azure Web PubSub 的 CloudEvents 扩展
       href: reference-cloud-events.md
     - name: 函数触发器和绑定

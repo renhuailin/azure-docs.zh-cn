@@ -76,6 +76,8 @@ items:
         href: concept-asset-normalization.md
       - name: 常见问题
         href: ./frequently-asked-questions.yml
+      - name: 已升级 Purview 帐户
+        href: concept-account-upgrade.md
   - name: 操作指南
     items:
       - name: 创建和管理集合
@@ -127,7 +129,7 @@ items:
               - name: Azure Data Lake Storage Gen 2
                 href: register-scan-adls-gen2.md
                 displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
-              - name: Azure SQL Database
+              - name: Azure SQL 数据库
                 href: register-scan-azure-sql-database.md
                 displayName: Register and scan Azure SQL DB
               - name: Azure SQL 数据库托管实例

@@ -1,10 +1,10 @@
 ### YamlMime:Hub
 title: Azure 媒体服务文档
-summary: Azure 媒体服务使你能够使用低延迟实时传送视频流、批量编码、内容保护/DRM 来构建媒体应用程序，并交付流式传输内容供数百万人在任何设备上观看。
+summary: Azure 媒体服务使你能够使用低延迟实时传送视频流、批量编码、内容保护/DRM 来构建媒体应用程序，并将流式传输内容提供给数百万人在任何设备上观看。
 brand: azure
 metadata:
   title: Azure 媒体服务文档
-  description: Azure 媒体服务使你能够使用低延迟实时传送视频流、批量编码、内容保护/DRM 来构建媒体应用程序，并交付流式传输内容供数百万人在任何设备上观看。
+  description: Azure 媒体服务使你能够使用低延迟实时传送视频流、批量编码、内容保护/DRM 来构建媒体应用程序，并将流式传输内容提供给数百万人在任何设备上观看。
   services: media-services
   ms.service: media-services
   ms.subservice: null
@@ -18,6 +18,9 @@ highlightedContent:
     - title: 关于 Azure 媒体服务 (v3)
       itemType: overview
       url: ./latest/media-services-overview.md
+    - title: 关于 Azure 媒体服务 (v2)
+      itemType: overview
+      url: ./previous/media-services-overview.md
     - title: Azure 媒体服务 (v3) 概念
       itemType: concept
       url: ./latest/concepts-overview.md
@@ -112,13 +115,13 @@ conceptualContent:
           text: 面部检测和人脸编辑
     - title: 协议和规格
       links:
-        - url: media-services-specifications-live-timed-metadata.md
+        - url: ./previous/media-services-specifications-live-timed-metadata.md
           itemType: concept
           text: “实时传送视频流”中的超时元数据（RTMP 和平滑流式处理）
-        - url: media-services-specifications-ms-sstr-amendment-hevc.md
+        - url: ./previous/media-services-specifications-ms-sstr-amendment-hevc.md
           itemType: concept
           text: HEVC 的平滑流式处理协议 (MS-SSTR) 修正
-        - url: media-services-fmp4-live-ingest-overview.md
+        - url: ./previous/media-services-fmp4-live-ingest-overview.md
           itemType: concept
           text: 平滑流式处理引入协议
     - title: 从 v2 API 迁移

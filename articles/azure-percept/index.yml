@@ -10,12 +10,12 @@ metadata:
   author: mimcco
   ms.author: amiyouss
   ms.date: 03/25/2021
-  ms.openlocfilehash: 62ddbb2c5d64e634a534956714b6d2703a61f828
-  ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+  ms.openlocfilehash: 5d5e559b5374f0e635138e8189ff9a0259ef40e4
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/30/2021
-  ms.locfileid: "123223312"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123424359"
 landingContent:
 - title: 什么是 Azure Percept？
   linkLists:
@@ -45,12 +45,8 @@ landingContent:
       url: quickstart-percept-dk-unboxing.md
     - text: 设置 Azure Percept DK 设备
       url: quickstart-percept-dk-set-up.md
-    - text: 设置 Azure Percept Audio 设备
-      url: quickstart-percept-audio-setup.md
   - linkListType: how-to-guide
     links:
-    - text: 通过以太网连接到 Azure Percept DK
-      url: how-to-connect-over-ethernet.md
     - text: 通过 5G 或 LTE 网络连接 Azure Percept
       url: connect-over-cellular.md
     - text: 通过 SSH 连接到 Azure Percept DK
@@ -59,10 +55,20 @@ landingContent:
       url: troubleshoot-dev-kit.md
     - text: Azure Percept DK 设置体验疑难解答
       url: how-to-troubleshoot-setup.md
-    - text: Azure Percept Audio 按钮和 LED 状态
-      url: audio-button-led-behavior.md
     - text: 从 ASUS 获取 Azure Percept 硬件支持
       url: how-to-get-hardware-support.md
+- title: 设置 Azure Percept Audio 设备
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 设置 Azure Percept Audio 设备
+      url: quickstart-percept-audio-setup.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Percept Audio 按钮和 LED 状态
+      url: audio-button-led-behavior.md
+    - text: Azure Percept Audio 和语音模块疑难解答
+      url: troubleshoot-audio-accessory-speech-module.md
 - title: 管理 Azure Percept DK
   linkLists:
   - linkListType: how-to-guide
@@ -77,11 +83,9 @@ landingContent:
       url: how-to-update-via-usb.md
   - linkListType: download
     links:
-    - text: 选择 Azure Percept DK 更新包
-      url: how-to-select-update-package.md
     - text: OTA 更新的软件版本
       url: software-releases-over-the-air-updates.md
-    - text: 针对通过 USB 线缆进行更新的 Azure Percept DK 软件版本
+    - text: USB 电缆更新的软件版本
       url: software-releases-usb-cable-updates.md
     - text: Azure Percept DK 软件发行说明
       url: azure-percept-devkit-software-release-notes.md
@@ -105,7 +109,7 @@ landingContent:
       url: how-to-view-telemetry.md
     - text: Azure Percept Vision 和视觉模块疑难解答
       url: vision-solution-troubleshooting.md
-- title: 创建无代码语音助理
+- title: 使用 Azure Percept Studio 创建无代码语音助理
   linkLists:
   - linkListType: tutorial
     links:

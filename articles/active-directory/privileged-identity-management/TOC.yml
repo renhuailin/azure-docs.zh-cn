@@ -93,22 +93,14 @@
           href: groups-audit.md
     - name: 评审访问权限
       items:
-        - name: Azure AD 角色
+        - name: Azure AD 角色与 Azure 资源角色
           items:
             - name: 创建访问评审
-              href: pim-how-to-start-security-review.md
-            - name: 评审访问权限
-              href: pim-how-to-perform-security-review.md
+              href: pim-create-azure-ad-roles-and-resource-roles-review.md
+            - name: 执行访问评审
+              href: pim-perform-azure-ad-roles-and-resource-roles-review.md
             - name: 完成访问评审
-              href: pim-how-to-complete-review.md
-        - name: Azure 角色
-          items:
-            - name: 创建访问评审
-              href: pim-resource-roles-start-access-review.md
-            - name: 评审访问权限
-              href: pim-resource-roles-perform-access-review.md
-            - name: 完成访问评审
-              href: pim-resource-roles-complete-access-review.md
+              href: pim-complete-azure-ad-roles-and-resource-roles-review.md
     - name: Azure AD 角色的发现和见解
       href: pim-security-wizard.md
     - name: 提升访问权限来管理 Azure 订阅

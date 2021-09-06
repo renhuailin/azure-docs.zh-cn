@@ -67,7 +67,7 @@
       href: concepts-scale.md
     - name: 节点自动修复
       href: node-auto-repair.md
-    - name: 最佳做法
+    - name: 最佳实践
       items:
         - name: 概述
           href: best-practices.md
@@ -144,6 +144,8 @@
       items:
         - name: 缩放 AKS 群集
           href: scale-cluster.md
+        - name: 使用纵向缩减模式停止/解除分配节点（预览）
+          href: scale-down-mode.md
         - name: 停止 AKS 群集
           href: start-stop-cluster.md
         - name: 使用计划内维护（预览版）
@@ -359,7 +361,31 @@
         - name: 关于服务网格
           href: servicemesh-about.md
         - name: Open Service Mesh AKS 附加产品（预览版）
-          href: servicemesh-osm-about.md
+          items:
+            - name: OSM 概述
+              href: open-service-mesh-about.md
+            - name: 部署 OSM AKS 加载项
+              href: open-service-mesh-deploy-add-on.md
+            - name: 下载 OSM 客户端库
+              href: open-service-mesh-binary.md
+            - name: OSM 教程
+              items:
+                - name: 管理新的应用程序部署
+                  href: open-service-mesh-deploy-new-application.md
+                - name: 管理现有的应用程序部署
+                  href: open-service-mesh-deploy-existing-application.md
+                - name: 使用 Azure 应用程序网关入口
+                  href: open-service-mesh-azure-application-gateway-ingress.md
+                - name: 使用 NGINX 入口
+                  href: open-service-mesh-nginx-ingress.md
+                - name: 使用 Prometheus、Grafana 和 Jaeger 配置可观测性
+                  href: open-service-mesh-open-source-observability.md
+            - name: 配置 Azure Monitor
+              href: open-service-mesh-azure-monitor.md
+            - name: 排查 OSM 问题
+              href: open-service-mesh-troubleshoot.md
+            - name: 禁用 OSM
+              href: open-service-mesh-disable-add-on.md
     - name: DevOps
       items:
         - name: 使用 Ansible 创建 AKS 群集
@@ -374,7 +400,7 @@
           href: deployment-center-launcher.md
         - name: 适用于 Kubernetes 的 GitHub 操作
           href: ../aks/kubernetes-action.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 常见问题
           href: troubleshooting.md

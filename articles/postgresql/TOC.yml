@@ -341,7 +341,7 @@
             - name: 针对指标创建警报
               href: howto-alert-on-metric.md
               displayName: 'alerts, metrics, monitor'
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 排查连接错误
               href: howto-troubleshoot-common-connection-issues.md
@@ -515,7 +515,10 @@
                   href: flexible-server/concepts-intelligent-tuning.md
         - name: 复制
           href: flexible-server/concepts-logical.md
-          displayName: logical decoding
+    - name: 故障排除
+      items:
+        - name: 排查 CLI 错误
+          href: flexible-server/how-to-troubleshoot-cli-errors.md
     - name: 操作指南
       items:
         - name: 管理服务器

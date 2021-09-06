@@ -356,15 +356,9 @@
         - name: 概述
           displayName: 'Dedicated hosts, ADH'
           href: dedicated-hosts.md
-        - name: CLI
-          displayName: 'Dedicated hosts, ADH'
-          href: ./linux/dedicated-hosts-cli.md
-        - name: 门户
-          displayName: 'Dedicated hosts, ADH'
-          href: dedicated-hosts-portal.md
-        - name: PowerShell
-          displayName: 'Dedicated hosts, ADH'
-          href: ./windows/dedicated-hosts-powershell.md
+        - name: 操作说明
+          displayName: dedicated adh
+          href: dedicated-hosts-how-to.md
     - name: Azure 现成虚拟机
       items:
         - name: 概述
@@ -776,8 +770,6 @@
           href: ./linux/no-agent.md
         - name: 禁用 Linux 代理预配
           href: ./linux/disable-provisioning.md
-        - name: 将 VM 捕获到托管映像
-          href: ./linux/capture-image.md
     - name: Windows 自定义映像
       items:
         - name: 准备要上传的 VHD
@@ -801,89 +793,35 @@
         - name: 概述
           displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
           href: ./shared-image-galleries.md
-        - name: CLI
+        - name: 创建库
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: create-gallery.md
+        - name: 共享库
+          href: share-gallery.md
+        - name: 在门户中捕获 VM
+          href: capture-image-portal.md
+        - name: 创建映像
+          displayName: 'VM, image, VHD, storage account'
+          href: image-version.md
+        - name: 创建 VM
           items:
-            - name: 创建库
+            - name: 通用
               displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: shared-images-cli.md
-            - name: 创建映像
-              items:
-                - name: 从 VM
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: image-version-vm-cli.md
-                - name: 从托管磁盘或快照
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: image-version-snapshot-cli.md
-                - name: 克隆托管映像
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: image-version-managed-image-cli.md
-                - name: 从另一个库复制
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: image-version-another-gallery-cli.md
-            - name: 创建 VM
-              items:
-                - name: 通用
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: vm-generalized-image-version-cli.md
-                - name: 专用
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: vm-specialized-image-version-cli.md
-            - name: 更新映像资源
+              href: vm-generalized-image-version.md
+            - name: 专用
               displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: update-image-resources-cli.md
-            - name: 用于共享的应用注册
-              items:
-                - name: Linux
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
-                  href: ./linux/share-images-across-tenants.md
-                - name: Windows
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
-                  href: ./windows/share-images-across-tenants.md
-        - name: PowerShell
+              href: vm-specialized-image-version.md
+        - name: 更新映像资源
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: update-image-resources.md
+        - name: 用于共享的应用注册
           items:
-            - name: 创建库
-              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: shared-images-powershell.md
-            - name: 创建映像版本
-              items:
-                - name: 从 VM
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, version'
-                  href: image-version-vm-powershell.md
-                - name: 从托管磁盘或快照
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, managed disk, snapshot'
-                  href: image-version-snapshot-powershell.md
-                - name: 克隆托管映像
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, clone, copy'
-                  href: image-version-managed-image-powershell.md
-                - name: 从另一个库复制
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, copy, clone'
-                  href: image-version-another-gallery-powershell.md
-            - name: 创建 VM
-              items:
-                - name: 通用
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, generalized'
-                  href: vm-generalized-image-version-powershell.md
-                - name: 专用
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, specialized'
-                  href: vm-specialized-image-version-powershell.md
-                - name: 更新映像资源
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: update-image-resources-powershell.md
-                - name: 用于共享的应用注册
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-                  href: windows/share-images-across-tenants.md
-        - name: 门户
-          items:
-            - name: 创建库、映像和 VM
-              items:
-                - name: Linux
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, create'
-                  href: ./linux/shared-images-portal.md
-                - name: Windows
-                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, create'
-                  href: ./windows/shared-images-portal.md
-            - name: 在门户中捕获 VM
-              href: capture-image-portal.md
+            - name: Linux
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
+              href: ./linux/share-images-across-tenants.md
+            - name: Windows
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
+              href: ./windows/share-images-across-tenants.md
         - name: 资源管理器模板
           items:
             - name: 创建共享映像库
@@ -1821,7 +1759,7 @@
                 - name: 自定义字段
                   displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/logs/custom-fields.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: Log Analytics VM 扩展
               href: ../azure-monitor/visualize/vmext-troubleshoot.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext

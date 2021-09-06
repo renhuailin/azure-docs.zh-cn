@@ -238,58 +238,44 @@
           href: virtual-machine-scale-sets-design-overview.md
         - name: 了解实例 ID
           href: virtual-machine-scale-sets-instance-ids.md
-    - name: 使用映像
-      displayName: 'SIG, AMI, image'
+    - name: 共享映像库
       items:
-        - name: 共享映像库
+        - name: 概述
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: ../virtual-machines/shared-image-galleries.md
+        - name: 创建库
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: ../virtual-machines/create-gallery.md
+        - name: 共享库
+          href: ../virtual-machines/share-gallery.md
+        - name: 创建映像
+          displayName: 'VM, image, VHD, storage account'
+          href: ../virtual-machines/image-version.md
+        - name: 在门户中捕获 VM
+          href: ../virtual-machines/capture-image-portal.md
+        - name: 创建规模集
           items:
             - name: PowerShell
               items:
-                - name: 创建库
-                  href: ../virtual-machines/shared-images-powershell.md
-                - name: 创建映像
-                  items:
-                    - name: 从 VM
-                      href: ../virtual-machines/image-version-vm-powershell.md
-                    - name: 从托管映像迁移
-                      href: ../virtual-machines/image-version-managed-image-powershell.md
-                    - name: 从另一个库复制
-                      href: ../virtual-machines/image-version-another-gallery-powershell.md
-                - name: 创建规模集
-                  items:
-                    - name: 专用
-                      href: instance-specialized-image-version-powershell.md
-                    - name: 通用
-                      href: instance-generalized-image-version-powershell.md
-                - name: 更新映像资源
-                  href: ../virtual-machines/update-image-resources-powershell.md
+                - name: 专用
+                  href: instance-specialized-image-version-powershell.md
+                - name: 通用
+                  href: instance-generalized-image-version-powershell.md
             - name: CLI
               items:
-                - name: 创建库
-                  href: ../virtual-machines/shared-images-cli.md
-                - name: 创建映像
-                  items:
-                    - name: 从 VM
-                      href: ../virtual-machines/image-version-vm-cli.md
-                    - name: 从托管映像迁移
-                      href: ../virtual-machines/image-version-managed-image-cli.md
-                    - name: 从另一个库复制
-                      href: ../virtual-machines/image-version-another-gallery-cli.md
-                - name: 创建规模集
-                  items:
-                    - name: 专用
-                      href: instance-specialized-image-version-cli.md
-                    - name: 通用
-                      href: instance-generalized-image-version-cli.md
-                - name: 更新映像资源
-                  href: ../virtual-machines/update-image-resources-cli.md
-            - name: 排查共享映像问题
-              href: ../virtual-machines/troubleshooting-shared-images.md
-            - name: 使用客户管理的密钥
-              displayName: 'SSE, CMK, encrypt'
-              href: ../virtual-machines/image-version-encryption.md
-            - name: 用于共享的应用注册
-              href: share-images-across-tenants.md
+                - name: 专用
+                  href: instance-specialized-image-version-cli.md
+                - name: 通用
+                  href: instance-generalized-image-version-cli.md
+        - name: 更新映像资源
+          href: ../virtual-machines/update-image-resources.md
+        - name: 排查共享映像问题
+          href: ../virtual-machines/troubleshooting-shared-images.md
+        - name: 使用客户管理的密钥
+          displayName: 'SSE, CMK, encrypt'
+          href: ../virtual-machines/image-version-encryption.md
+        - name: 用于共享的应用注册
+          href: share-images-across-tenants.md
     - name: 创建模板
       items:
         - name: 了解规模集模板
@@ -343,15 +329,12 @@
         - name: 将规模集模板转换为使用托管磁盘
           href: virtual-machine-scale-sets-convert-template-to-md.md
         - name: 使用专用主机
+          displayName: 'sole-tenant, sole tenant, isolated, isolation'
           items:
             - name: 概述
               href: ../virtual-machines/dedicated-hosts.md
-            - name: CLI
-              href: ../virtual-machines/linux/dedicated-hosts-cli.md
-            - name: PowerShell
-              href: ../virtual-machines/windows/dedicated-hosts-powershell.md
-            - name: 门户
-              href: ../virtual-machines/dedicated-hosts-portal.md
+            - name: 操作说明
+              href: ../virtual-machines/dedicated-hosts.md
         - name: Azure 现成虚拟机
           href: use-spot.md
         - name: 适用于 Linux 的 Azure 混合权益

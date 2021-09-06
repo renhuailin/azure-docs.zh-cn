@@ -2,8 +2,11 @@
   href: ./index.yml
 - name: 概述
   items:
-    - name: 关于媒体服务
+    - name: 关于媒体服务 v3
       href: media-services-overview.md
+    - name: 媒体服务 v2 文档
+      href: ../previous/media-services-overview.md
+      displayName: 'media services v2, v2, version 2'
     - name: 发行说明
       href: release-notes.md
       displayName: 'Release Notes, notes, updates, announcements, deprecations'

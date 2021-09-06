@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure 文件文档
-summary: Azure 文件存储在云中提供完全托管的跨平台文件共享，这些共享项可通过服务器消息块 (SMB) 协议进行访问。
+summary: 简单、安全且无服务器的企业级云文件共享。
 metadata:
   title: Azure 文件文档
   description: 在 Windows、Linux 和 macOS 的云或本地装载文件共享。 使用 Azure 文件同步缓存 Windows Server 上的 Azure 文件共享，以便进行本地访问。
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: roygara
   ms.author: rogarana
-  ms.date: 04/19/2021
-  ms.openlocfilehash: 56879a2b6efc0ae5e7278828a474d0197f37f255
-  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+  ms.date: 08/31/2021
+  ms.openlocfilehash: b5fb9f3419c4aa54fc7c614da84c62d31d760641
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/20/2021
-  ms.locfileid: "107761702"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123427581"
 landingContent:
 - title: 关于 Azure 文件
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
     links:
     - text: Azure 文件存储规划指南
       url: storage-files-planning.md
-    - text: 什么是 Azure 文件存储？
+    - text: 什么是 Azure 文件？
       url: storage-files-introduction.md
     - text: 基于标识的身份验证
       url: storage-files-active-directory-overview.md

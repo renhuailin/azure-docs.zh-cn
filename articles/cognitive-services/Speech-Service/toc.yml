@@ -330,6 +330,8 @@
       href: keyword-recognition-guidelines.md
     - name: 区域支持
       href: keyword-recognition-region-support.md
+- name: 语言识别
+  href: language-identification.md
 - name: 场景深入介绍
   items:
     - name: 对话方案
@@ -531,6 +533,8 @@
           href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/speech-service/context/context
         - name: 使用客户管理的密钥
           href: speech-encryption-of-data-at-rest.md
+        - name: 如何备份和恢复语音自定义资源
+          href: resiliency-and-recovery-plan.md
 - name: 设备
   items:
     - name: 语音设备文档

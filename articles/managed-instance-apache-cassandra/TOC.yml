@@ -17,14 +17,7 @@
       href: configure-hybrid-cluster.md
     - name: 通过 Databricks 部署 Spark 群集
       href: deploy-cluster-databricks.md
-- name: 概念
-  items:
-    - name: 常见问题
-      displayName: 'cost, region, monitor, backup'
-      href: faq.md
-    - name: 托管实例与 Azure Cosmos DB Cassandra API
-      href: compare-cosmosdb-managed-instance.md
-- name: 操作指南
+- name: 教程
   items:
     - name: 迁移
       items:
@@ -36,6 +29,15 @@
           items:
             - name: 使用 Apache Spark
               href: spark-migration.md
+- name: 概念
+  items:
+    - name: 常见问题
+      displayName: 'cost, region, monitor, backup'
+      href: faq.md
+    - name: 托管实例与 Azure Cosmos DB Cassandra API
+      href: compare-cosmosdb-managed-instance.md
+- name: 操作指南
+  items:
     - name: 使用 Azure CLI 进行管理
       displayName: 'az managed-cassandra, cluster, datacenter'
       href: manage-resources-cli.md

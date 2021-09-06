@@ -161,8 +161,8 @@
       href: visual-studio-code-extension.md
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/updates/?category=media'
+    - name: Azure 服务更新
+      href: 'https://azure.microsoft.com/updates/'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/video-analyzer/'
     - name: 可用区域

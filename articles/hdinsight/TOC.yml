@@ -691,7 +691,7 @@
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
             - name: SSL 加密和身份验证
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 容错域不足
               href: ./kafka/kafka-troubleshoot-insufficient-domains.md
@@ -853,7 +853,7 @@
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: 优化 Apache Hive 查询
               href: ./hdinsight-hadoop-optimize-hive-query.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: 通过 Apache Hive 设置解决内存不足错误
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
@@ -974,7 +974,7 @@
           items:
             - name: 监视拓扑
               href: ./storm/apache-storm-deploy-monitor-topology-linux.md
-        - name: 疑难解答
+        - name: 故障排除
           items:
             - name: Apache STORM 故障排除
               href: ./storm/apache-troubleshoot-storm.md
@@ -1020,6 +1020,8 @@
           href: ./domain-joined/ldap-sync.md
         - name: 传输中的双重加密
           href: ./domain-joined/encryption-in-transit.md
+        - name: 使用可用性区域
+          href: ./hdinsight-use-availability-zones.md
     - name: 操作指南
       items:
         - name: 使用 ID 代理进行凭据管理
@@ -1054,3 +1056,7 @@
               href: ./domain-joined/domain-joined-authentication-issues.md
             - name: 群集创建失败，出现 DomainNotFound
               href: ./domain-joined/troubleshoot-domainnotfound.md
+- name: Azure Synapse 集成
+  items:
+    - name: 使用 Synapse Spark 共享 Hive 元存储
+      href: share-hive-metastore-with-synapse.md

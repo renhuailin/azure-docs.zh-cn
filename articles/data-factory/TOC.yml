@@ -290,7 +290,7 @@ items:
             href: connector-azure-databricks-delta-lake.md
           - name: Azure 文件存储
             href: connector-azure-file-storage.md
-          - name: Azure SQL Database
+          - name: Azure SQL 数据库
             href: connector-azure-sql-database.md
             displayName: upsert
           - name: Azure SQL 托管实例
@@ -794,6 +794,8 @@ items:
         items:
           - name: 将数据工厂连接到 Azure Purview
             href: connect-data-factory-to-azure-purview.md
+          - name: 访问安全的 Azure Purview 帐户
+            href: ./how-to-access-secured-purview-account.md
           - name: 使用 Purview 发现和探索 ADF 中的数据
             href: how-to-discover-explore-purview-data.md
       - name: 方案
@@ -908,7 +910,7 @@ items:
         href: /powershell/module/az.datafactory/
       - name: REST API
         href: /rest/api/datafactory
-      - name: 资源管理器模板
+      - name: Resource Manager 模板
         href: /azure/templates/microsoft.datafactory/allversions
       - name: Python
         href: /python/api/overview/azure/datafactory
