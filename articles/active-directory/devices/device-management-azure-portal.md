@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11182b8331f218b970d867764f575ba5b7854d62
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 4042ce416b2af83447af283d21c059050b9a144c
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550687"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866587"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 门户管理设备标识
 
@@ -33,7 +33,7 @@ Azure AD 提供了用于管理设备标识的集中场所。
 - 配置设备标识设置。
 - 启用或禁用企业状态漫游。
 - 查看与设备相关的审核日志
-- 下载设备（预览版）
+- 下载设备（预览）
 
 [![Azure 门户中的“所有设备”视图](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
@@ -82,7 +82,7 @@ Intune 管理员可以管理 MDM 标记为“Microsoft Intune”的设备。 如
 - 向下钻取到特定设备后使用工具栏。
 
 > [!IMPORTANT]
-> - 只有 Azure AD 中的全局管理员或云设备管理员才能启用或禁用设备。 
+> - 必须是 Azure AD 中的全局管理员、Intune 管理员或云设备管理员才能启用或禁用设备。 
 > - 禁用设备会阻止设备使用 Azure AD 成功进行身份验证，从而阻止设备访问由基于设备的条件访问或 Windows Hello 企业版凭据保护的 Azure AD 资源。
 > - 禁用设备将同时撤销设备上的主刷新令牌 (PRT) 和任何刷新令牌 (RT)。
 > - 无法在 Azure AD 中启用或禁用打印机。
@@ -146,9 +146,9 @@ Intune 管理员可以管理 MDM 标记为“Microsoft Intune”的设备。 如
 
 现在可以向“所有设备”视图“添加筛选器” 。
 
-### <a name="download-devices-preview"></a>下载设备（预览版）
+### <a name="download-devices-preview"></a>下载设备（预览）
 
-云设备管理员、Intune 管理员和全局管理员可以使用“下载设备(预览版)”选项，根据任何已应用的筛选器导出设备的 CSV 文件。 如果没有对列表应用筛选器，则会导出所有设备。 导出最多可能会运行一小时，具体取决于实际情况。 
+云设备管理员、Intune 管理员和全局管理员可以使用“下载设备(预览)”选项，根据任何已应用的筛选器导出设备的 CSV 文件。 如果没有对列表应用筛选器，则会导出所有设备。 导出最多可能会运行一小时，具体取决于 
 
 导出的列表包含以下设备标识属性：
 
@@ -170,7 +170,7 @@ Intune 管理员可以管理 MDM 标记为“Microsoft Intune”的设备。 如
 - 用户可将设备加入 Azure AD - 可通过此设置选择可以将其设备注册为已加入 Azure AD 的设备的用户。 默认值是 **All**。
 
 > [!NOTE]
-> “用户可将设备加入 Azure AD”设置仅适用于 Windows 10 上的 Azure AD 加入。 此设置不适用于加入混合 Azure AD 的设备、[Azure 中已加入 Azure AD 的 VM](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) 和使用 [Windows Autopilot 自部署模式](/mem/autopilot/self-deploying)的已加入 Azure AD 的设备，因为这些方法在无用户上下文中起作用。
+> “用户可将设备加入 Azure AD”设置仅适用于 Windows 10 上的 Azure AD 加入。 此设置不适用于加入混合 Azure AD 的设备、[Azure 中已加入 Azure AD 的 VM](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) 和使用 [Windows Autopilot 自部署模式](/mem/autopilot/self-deploying)的已加入 Azure AD 的设备因为这些方法都是在无用户环境下工作的。
 
 - **已加入 Azure AD 设备上的其他本地管理员** - 可选择具有此设备的本地管理员权限的用户。 这些用户将添加到 Azure AD 中的设备管理员角色。 默认情况下，Azure AD 中的全局管理员和设备所有者均具有本地管理员权限。 此选项属于高级版功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。
 - 用户可向 Azure AD 注册其设备 - 需要配置此设置，以允许向 Azure AD 注册 Windows 10 个人、iOS、Android 和 macOS 设备。 如果选择“无”，则不允许向 Azure AD 注册设备。 登记到 Microsoft Intune 或 Microsoft 365 移动设备管理 (MDM) 需要进行注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用。

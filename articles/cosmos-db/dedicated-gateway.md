@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 08/30/2021
 ms.author: tisande
-ms.openlocfilehash: 7cc6acc29cf8019bf65d3495cfd8a00a87da11bc
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 8c253abdfc8ded8ab5507d482640d78e6d4469c8
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112914240"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226604"
 ---
 # <a name="azure-cosmos-db-dedicated-gateway---overview-preview"></a>Azure Cosmos DB 专用网关 - 概述（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -67,7 +67,7 @@ ms.locfileid: "112914240"
 
 可以在 Core (SQL) API 帐户中预配专用网关群集。 一个专用网关群集最多可以有五个节点，你可以随时添加或删除节点。 帐户中的所有专用网关节点[共享同一个连接字符串](how-to-configure-integrated-cache.md#configuring-the-integrated-cache)。
 
-专用网关节点彼此独立。 预配多个专用网关节点时，任一节点都可以路由任一给定请求。 此外，每个节点的缓存都独立于其他节点的缓存。 每个节点中缓存的数据取决于最近通过该特定节点[写入或读取](integrated-cache.md#item-cache)的数据。 换句话说，如果在一个节点上缓存了某个项或查询，不一定会在其他节点上缓存该项或查询。
+专用网关节点彼此独立。 预配多个专用网关节点时，任一节点都可以路由任一给定请求。 此外，每个节点都有一个独立于其他节点的集成缓存。 每个节点中缓存的数据取决于最近通过该特定节点[写入或读取](integrated-cache.md#item-cache)的数据。 换句话说，如果在一个节点上缓存了某个项或查询，不一定会在其他节点上缓存该项或查询。
 
 对于开发，我们建议从一个节点开始，但对于生产，应预配三个或更多个节点以实现高可用性。 [了解如何预配具有集成式缓存的专用网关群集](how-to-configure-integrated-cache.md)。 预配多个专用网关节点可使专用网关群集持续路由请求并提供缓存的数据，即使某个专用网关节点不可用，也是如此。
 
@@ -100,6 +100,28 @@ ms.locfileid: "112914240"
 - 专用网关仅在 SQL API 帐户中受支持。
 - 无法在配置了 [IP 防火墙](how-to-configure-firewall.md)或[专用链接](how-to-configure-private-endpoints.md)的 Azure Cosmos DB 帐户中预配专用网关。
 - 无法在启用了[可用性区域](high-availability.md#availability-zone-support)的 Azure Cosmos DB 帐户中预配专用网关。
+- 不能使用[基于角色的访问控制 (RBAC)](how-to-setup-rbac.md) 对通过专用网关路由的数据平面请求进行身份验证
+
+## <a name="supported-regions"></a>支持的区域
+
+专用网关目前为公共预览版，并非在每个 Azure 区域都受支持。 在整个公共预览期间，我们将添加新容量。 当专用网关正式发布时，我们将没有区域限制。
+
+支持的 Azure 区域的最新列表：
+
+| **美洲** | 欧洲和非洲  | **亚太区**  |
+| ------------ | -------- | ----------- | 
+| 巴西南部      | 法国中部    | 澳大利亚中部 |
+| 加拿大中部  | 法国南部    | 澳大利亚中部 2 |
+| 加拿大东部     | 德国北部   | 澳大利亚东南部 |
+| 美国中部     | 德国中西部   | 印度中部 |
+| 美国东部     | 北欧   | 东亚 |
+| 美国东部 2     | 瑞士北部   | 日本西部 |
+| 美国中北部     | 英国南部   | 韩国中部 |
+| 美国中南部     | 英国西部   | 韩国南部 |
+| 美国中西部     | 西欧   | Southeast Asia |
+| 美国西部     |   | 阿联酋中部 |
+| 美国西部 2     |    | 印度西部 |
+
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -108,3 +130,6 @@ ms.locfileid: "112914240"
 - [集成式缓存](integrated-cache.md)
 - [配置集成式缓存](how-to-configure-integrated-cache.md)
 - [集成式缓存常见问题解答](integrated-cache-faq.md)
+- 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以根据有关现有数据库群集的信息进行容量计划。
+    - 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    - 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

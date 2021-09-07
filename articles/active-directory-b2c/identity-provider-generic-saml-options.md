@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 08/25/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 32f9df410dabf1902e9a7d9aadbf47288bfa90f5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c245fef005be5937887a3b8af1a5264e6520a6e8
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798232"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967778"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 配置 SAML 标识提供者选项
 
@@ -219,6 +219,32 @@ SAML 授权请求 `<NameID>` 元素指示 SAML 名称标识符格式。 本部�
 </samlp:AuthnRequest>
 ```
 
+### <a name="force-authentication"></a>强制身份验证
+
+可以通过在 SAML 身份验证请求中传递 `ForceAuthN` 属性来强制外部 SAML IDP 提示用户进行身份验证。 标识提供者也必须支持此属性。
+
+`ForceAuthN` 属性是布尔值 `true` 或 `false`。 默认情况下，Azure AD B2C 将 ForceAuthN 值设置为 `false`。 如果随后重置会话（例如，通过在 OIDC 中使用 `prompt=login` 来这样做），则 ForceAuthN 值将设置为 `true`。 如下所示设置元数据项会强制设置向外部 IDP 发出的所有请求的值。
+
+以下示例显示了设置为 `true` 的 `ForceAuthN` 属性：
+
+```xml
+<Metadata>
+  ...
+  <Item Key="ForceAuthN">true</Item>
+  ...
+</Metadata>
+```
+
+以下示例显示了授权请求中的 `ForceAuthN` 属性：
+
+
+```xml
+<samlp:AuthnRequest AssertionConsumerServiceURL="https://..."  ...
+                    ForceAuthN="true">
+  ...
+</samlp:AuthnRequest>
+```
+
 ### <a name="include-authentication-context-class-references"></a>包含身份验证上下文类引用
 
 SAML 授权请求可能包含 AuthnContext 元素，该元素指定授权请求的上下文。 元素可以包含身份验证上下文类引用，该引用告知 SAML 标识提供者向用户提供何种身份验证机制。
@@ -248,7 +274,7 @@ SAML 授权请求可能包含 AuthnContext 元素，该元素指定授权请求�
 
 ## <a name="include-custom-data-in-the-authorization-request"></a>在授权请求中包含自定义数据
 
-可以选择包含 Azure AD BC 和标识提供者都同意的协议消息扩展元素。 此扩展以 XML 格式呈现。 可以通过将 XML 数据添加到 CDATA 元素 `<![CDATA[Your IDP metadata]]>` 中来包含扩展元素。 检查标识提供者的文档，看扩展元素是否受支持。
+可以选择包含 Azure AD BC 和标识提供者都同意的协议消息扩展元素。 此扩展以 XML 格式呈现。 可以通过将 XML 数据添加到 CDATA 元素 `<![CDATA[Your Custom XML]]>` 中来包含扩展元素。 检查标识提供者的文档，看扩展元素是否受支持。
 
 以下示例说明了扩展数据的用法：
 
@@ -262,6 +288,9 @@ SAML 授权请求可能包含 AuthnContext 元素，该元素指定授权请求�
             </ext:MyCustom>]]></Item>
 </Metadata>
 ```
+
+> [!NOTE]
+> 根据 SAML 规范，扩展数据必须是命名空间限定的 XML（例如，上面示例所示的“urn:ext:custom”），并且不能是特定于 SAML 的命名空间之一。
 
 使用 SAML 协议消息扩展时，SAML 响应将如以下示例所示：
 

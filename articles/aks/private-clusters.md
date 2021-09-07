@@ -3,13 +3,13 @@ title: 创建专用 Azure Kubernetes 服务群集
 description: 了解如何创建专用 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
 ms.topic: article
-ms.date: 6/14/2021
-ms.openlocfilehash: 0e6e825f448ae97f211d9dace03254651012cadd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 8/30/2021
+ms.openlocfilehash: 39090732df8543fc28d1324882f3817402ad587a
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747847"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214320"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
 
@@ -72,7 +72,7 @@ az aks create \
 
 - “System”也是默认值。 如果省略 --private-dns-zone argument，AKS 将在节点资源组中创建专用 DNS 区域。
 - “None”默认为公共 DNS，这意味着 AKS 将不会创建专用 DNS 区域（预览版）。  
-- “CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID”要求你以此格式为 Azure 全球云创建专用 DNS 区域：`privatelink.<region>.azmk8s.io`。 你以后将需要该专用 DNS 区域的资源 ID。  此外，你将需要一个用户分配的标识或服务主体，其中至少有 `private dns zone contributor` 和 `vnet contributor` 角色。
+- “CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID”，这要求你以此格式为 Azure 全球云创建专用 DNS 区域：`privatelink.<region>.azmk8s.io`。 你以后将需要该专用 DNS 区域的资源 ID。  此外，你将需要一个用户分配的标识或服务主体，其中至少有 `private dns zone contributor` 和 `vnet contributor` 角色。
   - 如果专用 DNS 区域与 AKS 群集位于不同的订阅中，则需要在这两个订阅中注册 Microsoft.ContainerServices。
   - “fqdn-subdomain”可以与“CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID”一起使用，仅限向 `privatelink.<region>.azmk8s.io` 提供子域功能
 
@@ -80,26 +80,6 @@ az aks create \
 
 * AKS 预览版 0.5.19 或更高版本
 * API 版本 2021-05-01 或更高版本
-
-若要使用 fqdn-subdomain 功能，还必须在订阅上启用 `EnablePrivateClusterFQDNSubdomain` 功能标志。 
-
-使用 [az feature register][az-feature-register] 命令注册 `EnablePrivateClusterFQDNSubdomain` 功能标志，如以下示例所示：
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "EnablePrivateClusterFQDNSubdomain"
-```
-
-可使用 [az feature list][az-feature-list] 命令来检查注册状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnablePrivateClusterFQDNSubdomain')].{Name:name,State:properties.state}"
-```
-
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>创建具有专用 DNS 区域的专用 AKS 群集
 
@@ -122,30 +102,6 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 1. 在预配专用 AKS 群集时指定 `--enable-public-fqdn`，AKS 会在 Azure 公共 DNS 中为其 FQDN 创建其他 A 记录。 代理节点仍使用专用 DNS 区域中的 A 记录来解析专用终结点的专用 IP 地址，以便与 API 服务器通信。
 
 2. 如果同时使用 `--enable-public-fqdn` 和 `--private-dns-zone none`，则群集将只有公共 FQDN。 使用此选项时，不会创建专用 DNS 区域，也不会将其用于 API 服务器 FQDN 的名称解析。 该 API 的 IP 仍是专用 IP，不可公开路由。
-
-### <a name="register-the-enableprivateclusterpublicfqdn-preview-feature"></a>注册 `EnablePrivateClusterPublicFQDN` 预览版功能
-
-若要使用新的启用专用群集公共 FQDN API，必须在订阅中启用 `EnablePrivateClusterPublicFQDN` 功能标志。
-
-使用 [az feature register][az-feature-register] 命令注册 `EnablePrivateClusterPublicFQDN` 功能标志，如以下示例所示：
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "EnablePrivateClusterPublicFQDN"
-```
-
-状态显示为“已注册”需要几分钟时间。 使用 [az feature list][az-feature-list] 命令验证注册状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnablePrivateClusterPublicFQDN')].{Name:name,State:properties.state}"
-```
-
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-### <a name="create-a-private-aks-cluster-with-a-public-dns-address"></a>创建具有公共 DNS 地址的专用 AKS 群集
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <private-dns-zone-mode> --enable-public-fqdn
@@ -251,8 +207,6 @@ az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitn
 * 对于需要使 Azure 容器注册表能够与专用 AKS 配合使用的客户，容器注册表虚拟网络必须与代理群集虚拟网络对等互连。
 * 不支持将现有 AKS 群集转换为专用群集
 * 删除或修改客户子网中的专用终结点将导致群集停止运行。 
-* 客户在自己的 DNS 服务器上更新 A 记录后，这些 Pod 仍会在迁移后将 apiserver FQDN 解析到较旧的 IP，直到重启这些 Pod。 客户需要在控制平面迁移之后重启 hostNetwork Pod 和 default-DNSPolicy Pod。
-* 如果对控制平面进行维护，[AKS IP](./limit-egress-traffic.md) 可能会更改。 在这种情况下，你必须在自定义 DNS 服务器上更新指向 API 服务器专用 IP 的 A 记录，并重启使用 hostNetwork 的任何自定义 Pod 或部署。
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider#az_provider_register

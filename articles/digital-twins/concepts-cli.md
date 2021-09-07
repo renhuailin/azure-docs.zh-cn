@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: 了解 Azure 数字孪生 CLI 命令集。
 author: baanders
 ms.author: baanders
-ms.date: 04/30/2021
+ms.date: 8/25/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d3e081d4a60b5e4f26e5163d55f2df682b042bca
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 087a7bc7fda1c54e0a9e2c7f896b06dda78fa11e
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066514"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221148"
 ---
 # <a name="azure-digital-twins-cli-command-set"></a>Azure 数字孪生 CLI 命令集
 
-除了在 Azure 门户中管理 Azure 数字孪生实例外，还可以使用 Azure 数字孪生为 [Azure CLI](/cli/azure/what-is-azure-cli) 提供的一个命令集对服务执行大多数主要操作，包括：
+除了在 Azure 门户中管理 Azure 数字孪生实例外，还可以使用 Azure 数字孪生为 [Azure CLI](/cli/azure/what-is-azure-cli) 提供的命令集对服务执行大多数主要操作，包括：
 * 管理 Azure 数字孪生实例
 * 管理模型
 * 管理数字孪生体
@@ -29,7 +29,7 @@ ms.locfileid: "110066514"
 
 ## <a name="uses-deploy-and-validate"></a>使用（部署和验证）
 
-CLI 是一种有用的工具，通常用于实例管理，此外还用于部署和验证。
+除了通常情况下对实例进行管理外，CLI 还是一个用于部署和验证的有用工具。
 * 可使用控制平面命令重复部署或自动部署新的实例。
 * 可使用数据平面命令快速检查实例中的值，并验证操作是否按预期完成。
 
@@ -39,7 +39,7 @@ Azure 数字孪生命令是[适用于 Azure CLI 的 Azure IoT 扩展 (azure-iot)
 
 ### <a name="cli-version-requirements"></a>CLI 版本要求
 
-如果将 Azure CLI 与 PowerShell 配合使用，则扩展包要求 Azure CLI 版本为“2.3.1”或更高版本。
+如果要将 Azure CLI 与 PowerShell 配合使用，则扩展包的要求是，Azure CLI 版本应为 2.3.1 或更高版本。
 
 可以使用以下 CLI 命令检查 Azure CLI 的版本：
 ```azurecli
@@ -52,7 +52,7 @@ az --version
 
 首次使用需要扩展的命令时，Azure CLI 会自动提示你安装该扩展。
 
-另外，可以使用以下命令随时自行安装扩展（如果发现你已有较旧的版本，则会对其进行更新）。 命令可以在 [Azure Cloud Shell](../cloud-shell/overview.md) 或[本地 Azure CLI](/cli/azure/install-azure-cli) 中运行。
+否则，可以使用以下命令随时自行安装扩展（或在你已有较旧版本的情况下对其进行更新）。 命令可以在 [Azure Cloud Shell](../cloud-shell/overview.md) 或[本地 Azure CLI](/cli/azure/install-azure-cli) 中运行。
 
 ```azurecli-interactive
 az extension add --upgrade --name azure-iot

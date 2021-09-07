@@ -5,17 +5,21 @@ author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 08/26/2021
 ms.author: dech
-ms.openlocfilehash: 10f03ce5d2171b28fa195f7f5c2b0f34a939eef0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: a6c430462185ebac38c196d5aa80fc0d676f4911
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202796"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123030351"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner---azure-cosmos-db-api-for-mongodb"></a>使用 Azure Cosmos DB 容量规划器估算 RU/秒 - 适用于 MongoDB 的 Azure Cosmos DB API
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-mongodb-api.md)]
+
+> [!NOTE]
+> 如果你计划将数据迁移到 Azure Cosmos DB，但只知道现有分片和复制数据库群集中的 vCore 和服务器数量，则还请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+>
 
 针对工作负载为数据库和集合配置适当数量的预配吞吐量（也称为[请求单位 [RU/秒]](../request-units.md)）对于优化成本和性能非常重要。 本文介绍如何使用 Azure Cosmos DB [容量规划器](https://cosmos.azure.com/capacitycalculator/)来估算使用适用于 MongoDB 的 Azure Cosmos DB API 时工作负载所需的 RU/秒和成本。 如果使用的是 SQL API，请参阅如何[配合使用容量计算器与 SQL API](../estimate-ru-with-capacity-planner.md) 一文。
 
@@ -45,7 +49,7 @@ ms.locfileid: "108202796"
 
 高级模式允许你提供会影响 RU/秒估计值的更多设置。 若要使用此选项，请导航到 [Capacity Planner](https://cosmos.azure.com/capacitycalculator/) 并使用你用于 Azure 的帐户登录该工具。 登录选项位于右侧边角。
 
-登录后，与基本模式中的字段相比，你可以看到更多字段。 根据工作负载输入其他参数。
+登录后，与基本模式中的字段相比，你可以看到更多字段。 根据你的工作负载输入其他参数。
 
 |**输入**  |**说明**  |
 |---------|---------|
@@ -70,7 +74,9 @@ ms.locfileid: "108202796"
 
 ## <a name="next-steps"></a>后续步骤
 
+* 若只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
 * 详细了解 [Azure Cosmos DB 的定价模型](../how-pricing-works.md)。
 * 创建新的 [Cosmos 帐户、数据库和容器](../create-cosmosdb-resources-portal.md)。
 * 了解如何[优化预配吞吐量成本](../optimize-cost-throughput.md)。
 * 了解如何[借助保留容量优化成本](../cosmos-db-reserved-capacity.md)。
+* 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以根据有关现有数据库群集的信息进行容量计划。

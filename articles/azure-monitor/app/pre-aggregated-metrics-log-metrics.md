@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4ce337c97aa7eca601e72122568c3205ca21457f
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 3b26cd01c125b18727ec3176b6c1ea932083be86
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372377"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318534"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中基于日志的指标和预先聚合的指标
 
@@ -77,6 +77,13 @@ ms.locfileid: "111372377"
 
 ![用量和预估成本](./media/pre-aggregated-metrics-log-metrics/001-cost.png)
 
+## <a name="quotas"></a>配额
+
+预先聚合的指标以时序的形式存储在 Azure Monitor 中，[自定义指标上的 Azure Monitor 配额](../essentials/metrics-custom-overview.md#quotas-and-limits)适用。
+
+> [!NOTE]
+> 超出配额可能会产生意外后果。 Azure Monitor 在你的订阅或区域中可能变得不可靠。 若要了解如何避免超出配额，请参阅[设计限制和注意事项](../essentials/metrics-custom-overview.md#design-limitations-and-considerations)。
+  
 ## <a name="why-is-collection-of-custom-metrics-dimensions-turned-off-by-default"></a>为何默认禁用了自定义指标维度的收集？
 
 之所以默认禁用自定义指标维度的收集，是因为存储包含维度的自定义指标将来会在 Application Insights 中单独计费，而存储无维度自定义指标会保持免费（但不能超过配额限制）。 可以在官方[定价页](https://azure.microsoft.com/pricing/details/monitor/)中了解我们即将做出的定价模式变化。

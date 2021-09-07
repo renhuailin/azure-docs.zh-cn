@@ -11,18 +11,25 @@ ms.subservice: service-overview
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/21/2021
-ms.openlocfilehash: c8f8699d58d26c745be8cb1207a88cdad6857f1a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/01/2021
+ms.openlocfilehash: e891ab3812c78e8878a0e4341b8fa6b671a7af14
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752182"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223706"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上 SQL Server 的文档更改
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Azure 允许你使用内置的 SQL Server 映像部署虚拟机 (VM)。 本文汇总了 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 的最新版本中与新功能和改进相关的文档更改。 
+
+## <a name="september-2021"></a>2021 年 9 月
+
+| 更改 | 详细信息 |
+| --- | --- |
+| **SQL IaaS 扩展完整模式不再需要重启** | 在[完整模式](sql-agent-extension-manually-register-single-vm.md#full-mode)下使用 [SQL IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)注册 SQL Server VM 时，不再需要重启 SQL Server 服务！ | 
+
 
 ## <a name="july-2021"></a>2021 年 7 月
 

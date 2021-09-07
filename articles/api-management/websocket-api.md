@@ -3,17 +3,17 @@ title: 使用 Azure 门户导入 WebSocket API | Microsoft Docs
 titleSuffix: ''
 description: 了解 API 管理如何支持 WebSocket，了解如何添加 WebSocket API，并了解 WebSocket 限制。
 ms.service: api-management
-author: v-hhunter
-ms.author: v-hhunter
+author: dlepow
+ms.author: danlep
 ms.topic: how-to
-ms.date: 06/02/2021
+ms.date: 08/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 887e1257ef5585e99da1922aa840761ebcb7aa05
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: b3eb368184eceeabc6af46bac8ca08254560e252
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111439758"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123097851"
 ---
 # <a name="import-a-websocket-api-preview"></a>导入 WebSocket API（预览版）
 
@@ -36,7 +36,7 @@ ms.locfileid: "111439758"
 ## <a name="prerequisites"></a>先决条件
 
 - 现有的 API 管理实例。 [如果还没有实例，请创建一个](get-started-create-service-instance.md)。
-- [WebSocket API](https://www.websocket.org/echo.html)。
+- WebSocket API。 
 
 ## <a name="websocket-passthrough"></a>WebSocket 传递
 
@@ -77,7 +77,9 @@ API 管理支持 WebSocket 传递。
     |----------------|-------|
     | 显示名称 | WebSocket API 的显示名称。 |
     | 名称 | WebSocket API 的原始名称。 键入显示名称时自动填充。 |
-    | WebSocket URL | 包含 WebSocket 名称的基 URL。 例如 ws://example.com/your-socket-name |
+    | WebSocket URL | 包含 WebSocket 名称的基 URL。 例如：ws://example.com/your-socket-name |
+    | URL 方案 | 接受默认值 |
+    | API URL 后缀| 添加 URL 后缀以在该 API 管理实例中标识此特定 API。 它在此 APIM 实例中必须唯一。 |
     | 产品 | 将 WebSocket API 与产品关联来发布它。 |
     | 网关 | 将 WebSocket API 与现有网关相关联。 |
  
@@ -99,6 +101,17 @@ API 管理支持 WebSocket 传递。
 1. 在“输出”中查看收到的消息。
 1. 重复上述步骤以测试不同的有效负载。
 1. 测试完成时，选择“断开连接”。
+
+## <a name="view-metrics-and-logs"></a>查看指标和日志
+
+使用标准 API 管理和 Azure Monitor 功能来[监视](api-management-howto-use-azure-monitor.md) WebSocket API：
+
+* 查看 Azure Monitor 中的 API 指标
+* （可选）启用诊断设置以收集和查看 API 管理网关日志，其中包括 WebSocket API 操作
+
+例如，下面的屏幕截图显示了来自 ApiManagementGatewayLogs 表的代码为 `101` 的最近 WebSocket API 响应。 这些结果表明成功将请求从 TCP 协议切换到 WebSocket 协议。
+
+:::image type="content" source="./media/websocket-api/query-gateway-logs.png" alt-text="WebSocket API 请求的查询日志":::
 
 ## <a name="limitations"></a>限制
 

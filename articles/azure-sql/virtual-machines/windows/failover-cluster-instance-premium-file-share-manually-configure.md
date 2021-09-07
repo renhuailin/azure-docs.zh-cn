@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: fa70dce0e245f706e5278e7274ac17855b50622f
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: e757dac8cb7b81c5a1a24a7008f3eb453a7f977d
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396897"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221557"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>使用高级文件共享创建 FCI（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -191,7 +191,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="register-with-the-sql-vm-rp"></a>注册到 SQL VM RP
 
-若要从门户管理 SQL Server VM，请在[轻型管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)下将其注册到 SQL IaaS 代理扩展 (RP)。目前，这是 Azure VM 上的 FCI 和 SQL Server 唯一支持的模式。 
+若要从门户管理 SQL Server VM，请在[轻型管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-mode)下将其注册到 SQL IaaS 代理扩展 (RP)。目前，这是 Azure VM 上的 FCI 和 SQL Server 唯一支持的模式。 
 
 使用 PowerShell 在轻型模式下注册 SQL Server VM（-LicenseType 可以是 `PAYG` 或 `AHUB`）：
 
@@ -214,7 +214,8 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 - 使用高级文件共享的故障转移群集不支持文件流。 若要使用文件流，请改用[存储空间直通](failover-cluster-instance-storage-spaces-direct-manually-configure.md)或 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)部署你的群集。
 - 仅支持在[轻型管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)下注册到 SQL IaaS 代理扩展。 
 - [由于稀疏文件限制，Azure 文件存储](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)当前不支持数据库快照。
-- 当前不支持运行 DBCC CHECKDB，因为无法创建数据库快照。 
+- 由于不支持数据库快照，用户数据库的 CHECKDB 会回退到 CHECKDB WITH TABLOCK。 TABLOCK 会限制所执行的检查 - DBCC CHECKCATALOG 不会在数据库上运行，Service Broker 数据也不会被验证。
+- 不支持在 MASTER 数据库和 MSDB 数据库上进行 CHECKDB。 
 - 使用高级文件共享部署的故障转移群集实例不支持使用内存中 OLTP 功能的数据库。 如果你的业务需要内存中 OLTP，请考虑改用 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)或[存储空间直通](failover-cluster-instance-storage-spaces-direct-manually-configure.md)来部署 FCI。
 
 ## <a name="next-steps"></a>后续步骤

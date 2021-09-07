@@ -2,14 +2,14 @@
 title: 在 Azure 门户中创建帐户
 description: 了解如何在 Azure 门户中创建 Azure Batch 帐户，以便在云中运行大规模并行工作负荷。
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 08/31/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 745a2fc2e1279d05fa380b7bc053171d20a3fa4c
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 037ada644f60eabf498c59047513f4ad8292f239
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213266"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308688"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -85,7 +85,7 @@ ms.locfileid: "113213266"
 
 1. 返回“订阅”页，然后选择“访问控制(IAM)”。
 
-1. 将“参与者”或“所有者”角色分配给 Batch API。 可以通过搜索“Microsoft Azure Batch”或“MicrosoftAzureBatch”来找到此帐户。 （Batch API 的对象 ID 为“f520d84c-3fd3-4cc8-88d4-2ed25b00d27a”，应用程序 ID 为“ddbf3205-c6bd-46ae-8127-60eb93363864”。）
+1. 将“参与者”或“所有者”角色分配给 Batch API。 可以通过搜索“Microsoft Azure Batch”来找到此帐户。 （此帐户的应用程序 ID 为“ddbf3205-c6bd-46ae-8127-60eb93363864”。）
 
    有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 

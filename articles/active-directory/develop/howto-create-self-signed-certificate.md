@@ -13,14 +13,14 @@ ms.date: 08/10/2021
 ms.author: ombongifaith
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: scenarios:getting-started
-ms.openlocfilehash: 55076f382b24c8bcf994b452e8c26e5bb6cc23b9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3cc084fe1b9df8a4ab4db5b926bb7b44646f17c2
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779772"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123030319"
 ---
-# <a name="how-to-create-a-self-signed-public-certificate-to-authenticate-your-application"></a>如何：创建自签名公用证书来对应用程序进行身份验证
+# <a name="create-a-self-signed-public-certificate-to-authenticate-your-application"></a>创建自签名公用证书来对应用程序进行身份验证
 
 对于服务主体，Azure Active Directory (Azure AD) 支持两种类型的身份验证：基于密码的身份验证（应用机密）和基于证书的身份验证。  尽管你可以轻松地在 Azure 门户中创建应用机密，但建议你让你的应用程序使用证书。
 

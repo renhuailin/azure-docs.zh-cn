@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 09b4e6ebe14f5650be5bc92302acc51b1c6e99a5
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 457182e2f8bf24e911fa2b5e0514b0dba48d6ae0
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985753"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111964"
 ---
 # <a name="configure-azure-private-link-for-azure-cosmos-db-analytical-store"></a>为 Azure Cosmos DB 分析存储配置 Azure 专用链接
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -131,5 +131,6 @@ Synapse 无服务器 SQL 池使用未部署到托管虚拟网络中的多租户�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Azure Synapse Spark 查询分析存储](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)入门
+* [使用 Azure Synapse Spark 3 查询分析存储](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)入门
+* [使用 Azure Synapse Spark 2 查询分析存储](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)入门
 * [使用 Azure Synapse 无服务器 SQL 池查询分析存储](../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)入门

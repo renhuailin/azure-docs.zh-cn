@@ -1,14 +1,14 @@
 ---
 title: 如何规划和部署已启用 Azure Arc 的服务器
 description: 了解如何在已启用 Azure Arc 的服务器中启用大量计算机，以简化 Azure 中不可或缺的安全、管理和监视功能的配置。
-ms.date: 07/16/2021
+ms.date: 08/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: c37b6dbe4233afd691c0da7743973b5956f2f720
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 0a31a886d4eb687c92d73c39617a6993e4b3f835
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114391737"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123104914"
 ---
 # <a name="plan-and-deploy-arc-enabled-servers"></a>规划和部署已启用 Arc 的服务器
 
@@ -26,6 +26,10 @@ ms.locfileid: "114391737"
 * 出现重大问题时的事务升级路径是什么？
 
 本文旨在确保你充分准备好在环境中的多个生产物理服务器或虚拟机上成功部署已启用 Azure Arc 的服务器。
+
+若要详细了解我们的大规模部署建议，还可以参考此视频。
+
+> [!VIDEO https://www.youtube.com/embed/Cf1jUPOB_vs]
 
 ## <a name="prerequisites"></a>先决条件
 

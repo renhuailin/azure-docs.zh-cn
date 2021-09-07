@@ -2,15 +2,15 @@
 title: Azure Application Insights 中的遥测采样 | Microsoft 文档
 description: 如何使受控制的遥测数据的卷。
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 08/26/2021
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 27aff24abddbca3317e252a76ac11c062f57213a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9db589de9bd62a00b7de89b2b558a3bac1e1785a
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071589"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039973"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -23,6 +23,7 @@ ms.locfileid: "110071589"
 * 有三种不同类型的采样：自适应采样、固定速率采样和引入采样。
 * 默认情况下，已在所有最新版本的 Application Insights ASP.NET 和 ASP.NET Core 软件开发工具包 (SDK) 中启用自适应采样。 [Azure Functions](../../azure-functions/functions-overview.md) 也使用自适应采样。
 * 固定速率采样可在最新版本的适用于 ASP.NET、ASP.NET Core、Java（代理和 SDK）和 Python 的 Application Insights SDK 中使用。
+* 在 Java 中，采样替代功能可用，并且在需要将不同采样率应用于所选依赖项、请求和运行状况检查时非常有用。 [采样替代](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-sampling-overrides)功能可用于在实现某个目的（例如，让所有重要错误都保持在 100%）的同时排除一些干扰性依赖项。 这是一种固定采样形式，可让你对遥测进行精细控制。
 * 引入采样适用于 Application Insights 服务终结点。 仅当没有其他采样生效时，才能应用引入采样。 如果 SDK 为遥测数据采样，则会禁用引入采样。
 * 对于 Web 应用程序，如果记录自定义事件，并需要确保事件集一同保留或一同丢弃，则事件必须具有相同的 `OperationId` 值。
 * 如果要编写分析查询，应[考虑采样](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)。 特别是，应使用 `summarize sum(itemCount)`，而不是仅对记录进行计数。
@@ -35,7 +36,7 @@ ms.locfileid: "110071589"
 | ASP.NET | [是（默认已启用）](#configuring-adaptive-sampling-for-aspnet-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-applications) | 仅当没有其他采样生效时 |
 | ASP.NET Core | [是（默认已启用）](#configuring-adaptive-sampling-for-aspnet-core-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | 仅当没有其他采样生效时 |
 | Azure Functions | [是（默认已启用）](#configuring-adaptive-sampling-for-azure-functions) | 否 | 仅当没有其他采样生效时 |
-| Java | 否 | [是](#configuring-fixed-rate-sampling-for-java-applications) | 仅当没有其他采样生效时 |
+| Java | 否 | [是](#configuring-sampling-overrides-and-fixed-rate-sampling-for-java-applications) | 仅当没有其他采样生效时 |
 | Node.JS | 否 | [是](./nodejs.md#sampling) | 仅当没有其他采样生效时
 | Python | 否 | [是](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | 仅当没有其他采样生效时 |
 | 所有其他 | 否 | 否 | [是](#ingestion-sampling) |
@@ -307,23 +308,14 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
     }
     ```
 
-### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>为 Java 应用程序配置固定速率采样
+### <a name="configuring-sampling-overrides-and-fixed-rate-sampling-for-java-applications"></a>为 Java 应用程序配置采样替代和固定速率采样
 
-默认情况下，Java 代理和 SDK 中不启用任何采样。 目前，它仅支持固定速率采样。 Java 不支持自适应采样。
+默认情况下，在 Java 自动检测和 SDK 中不启用任何采样。 目前支持 Java 自动检测、[采样替代](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-sampling-overrides)和固定速率采样。 Java 不支持自适应采样。
 
-#### <a name="configuring-java-agent"></a>配置 Java 代理
+#### <a name="configuring-java-auto-instrumentation"></a>配置 Java 自动检测
 
-1. 下载 [applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
-
-1. 若要启用采样，请将以下内容添加到 `applicationinsights.json` 文件：
-
-```json
-{
-  "sampling": {
-    "percentage": 10 //this is just an example that shows you how to enable only 10% of transaction 
-  }
-}
-```
+* 若要配置替代默认采样率并将不同采样率应用于选定请求和依赖项的采样替代，请使用[采样替代指南](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-sampling-overrides#getting-started)。
+* 若要配置适用于所有遥测的固定速率采样，请使用[固定速率采样指南](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config#sampling)。
 
 #### <a name="configuring-java-2x-sdk"></a>配置 Java 2.x SDK
 

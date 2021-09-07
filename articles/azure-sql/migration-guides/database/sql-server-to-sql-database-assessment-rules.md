@@ -10,12 +10,12 @@ author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: 011420abfbd6bf5994aa65024651f2bbd34e1bf4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab030e8e4b86fc669325099e13650f8e1c178986
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743689"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835329"
 ---
 # <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>SQL Server 到 Azure SQL 数据库迁移的评估规则
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -317,7 +317,7 @@ Azure SQL 数据库不支持服务器审核功能。
 
 
 建议   
-请考虑使用 Azure SQL 数据库审核功能替代服务器审核。  Azure SQL 支持审核功能，并且该功能比 SQL Server 的功能更强大。 Azure SQL 数据库可以审核各种数据库操作和事件，包括：对数据的访问、架构更改 (DDL)、数据更改 (DML)、帐户、角色和权限 (DCL)、安全异常。 Azure SQL 数据库审核功能可提高组织深入了解数据库中发生的事件和更改（包括针对数据的更新和查询）的能力。 或者，迁移到 Azure SQL 托管实例或 Azure 虚拟机上的 SQL Server。
+请考虑使用 Azure SQL 数据库审核功能替代服务器审核。  Azure SQL 支持审核功能，并且该功能比 SQL Server 的功能更强大。 Azure SQL 数据库可以审核各种数据库操作和事件，包括：访问数据、架构更改 (DDL)、数据更改 (DML)、帐户、角色、权限 (DCL) 和安全异常。 Azure SQL 数据库审核功能可提高组织深入了解数据库中发生的事件和更改（包括针对数据的更新和查询）的能力。 或者，迁移到 Azure SQL 托管实例或 Azure 虚拟机上的 SQL Server。
 
 有关详细信息，请参阅 [Azure SQL 数据库的审核功能](../../database/auditing-overview.md)
 
@@ -409,7 +409,7 @@ Azure SQL 数据库已弃用 SQL Mail 并已将其删除。
 **类别**：警告   
 
 **描述**   
-今后不能在 Azure SQL 数据库中使用不受支持的系统存储过程和扩展存储过程 - `sp_dboption`、`sp_addserver`、`sp_dropalias`、`sp_activedirectory_obj`、`sp_activedirectory_scp` 和 `sp_activedirectory_start`。
+无法在 Azure SQL 数据库中使用以下不受支持的系统存储过程和扩展存储过程：`sp_dboption`、`sp_addserver`、`sp_dropalias`、`sp_activedirectory_obj`、`sp_activedirectory_scp`、`sp_activedirectory_start`。
 
 
 建议    

@@ -1,19 +1,19 @@
 ---
-title: 使用 PowerShell 管理 Azure 虚拟桌面的应用组 - Azure
-description: 如何使用 PowerShell 管理 Azure 虚拟桌面应用组。
+title: 管理 Azure 虚拟桌面的应用组 - Azure
+description: 如何使用 PowerShell 或 Azure CLI 管理 Azure 虚拟桌面应用组。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 07/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a900d1d92509fab7b777ca5864a51c7699cb294e
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f323819492fe89f7742c6b218afa4d2e1bf1b6c0
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749068"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123103924"
 ---
-# <a name="manage-app-groups-using-powershell"></a>使用 PowerShell 管理应用组
+# <a name="manage-app-groups-using-powershell-or-the-azure-cli"></a>使用 PowerShell 或 Azure CLI 管理应用组
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/manage-app-groups-2019.md)。
@@ -28,9 +28,21 @@ ms.locfileid: "111749068"
 
 ## <a name="prerequisites"></a>先决条件
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
 本文假定你已按照[设置 PowerShell 模块](powershell-module.md)中的说明设置 PowerShell 模块并登录到 Azure 帐户。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+本文假设你已经为 Azure CLI 设置了环境，并且已经登录到 Azure 帐户。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+---
+
 ## <a name="create-a-remoteapp-group"></a>创建 RemoteApp 组
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 若要使用 PowerShell 创建 RemoteApp 组，请执行以下操作：
 
@@ -100,6 +112,34 @@ ms.locfileid: "111749068"
    ```powershell
    New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
    ```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+> [!NOTE]
+> Azure CLI 目前不提供用于获取开始菜单应用的命令，也不提供用于创建新的 RemoteApp 程序或将其发布到应用程序组的命令。 使用 Azure PowerShell。
+
+若要使用 Azure CLI 创建 RemoteApp 组，请执行以下操作：
+
+1. 使用 [az desktopvirtualization applicationgroup create](/cli/azure/desktopvirtualization##az_desktopvirtualization_applicationgroup_create) 命令创建新的远程应用程序组：
+
+   ```azurecli
+   az desktopvirtualization applicationgroup create --name "MyApplicationGroup" \
+      --resource-group "MyResourceGroup" \
+      --location "MyLocation" \
+      --application-group-type "RemoteApp" \
+      --host-pool-arm-path "/subscriptions/MySubscriptionGUID/resourceGroups/MyResourceGroup/providers/Microsoft.DesktopVirtualization/hostpools/MyHostPool"
+      --tags tag1="value1" tag2="value2" \
+      --friendly-name "Friendly name of this application group" \
+      --description "Description of this application group" 
+   ```
+    
+2. （可选）若要验证是否已创建应用组，可运行以下命令，以查看主机池的所有应用组的列表。
+
+   ```azurecli
+   az desktopvirtualization applicationgroup list \
+      --resource-group "MyResourceGroup"
+   ```
+---
 
 ## <a name="next-steps"></a>后续步骤
 

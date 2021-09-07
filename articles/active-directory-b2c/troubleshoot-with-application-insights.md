@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/05/2021
+ms.date: 08/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 074bffb8614be1f71ba1956fd5a238bc19354c58
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: b8ceea26ed7a5e58e890c4e313b00f1f4f37f4e7
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028720"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967793"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>使用 Application Insights 收集 Azure Active Directory B2C 日志
 
@@ -164,7 +164,7 @@ ms.locfileid: "107028720"
 
 ## <a name="configure-application-insights-in-production"></a>在生产环境中配置 Application Insights
 
-为了提高生产环境性能和用户体验，有必要配置策略来使其忽略不重要的消息。 使用以下配置来仅向 Application Insights 发送严重错误消息。 
+为了提高生产环境性能和用户体验，有必要配置策略来使其忽略不重要的消息。 在生产环境中使用以下配置。 
 
 1. 将 [TrustFrameworkPolicy](trustframeworkpolicy.md) 的 `DeploymentMode` 属性设置为 `Production`。 
 

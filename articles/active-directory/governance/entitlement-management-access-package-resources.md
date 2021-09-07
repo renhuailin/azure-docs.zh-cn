@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 389bf4438fa31b0c1174441cd62f814f18b271d2
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 5c7439263f15a99a7b717bac1dc48e06a77bb66b
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729509"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257129"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的资源角色
 
@@ -49,7 +49,7 @@ ms.locfileid: "114729509"
 
 ## <a name="add-resource-roles"></a>添加资源角色
 
-资源角色是与资源关联的权限集合。 为用户提供可请求的资源的方式是将资源角色添加到访问包。 可为组、团队、应用程序和 SharePoint 站点添加资源角色。
+资源角色是与资源关联的权限集合。 使资源可供用户请求的方法是，将目录的每个资源的资源角色添加到访问包中。 你可以添加由组、团队、应用程序和 SharePoint 站点提供的资源角色。
 
 **必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
 
@@ -121,6 +121,8 @@ ms.locfileid: "114729509"
 选择应用程序时，请注意以下事项：
 
 - 应用程序还可能已将组分配到其角色。  可以选择添加组来取代访问包中的应用程序角色，但是，用户在“我的访问权限”门户中看不到作为访问包的一部分的应用程序。
+- Azure 门户可能还会显示不能作为应用程序进行选择的服务的服务主体。  具体而言，**Exchange Online** 和 **SharePoint Online** 是服务，而不是在目录中具有资源角色的应用程序，因此，不能将它们包含在访问包中。  相反，使用基于组的许可为需要访问这些服务的用户建立适当的许可。
+- 以下应用程序没有应用程序角色，不能添加到访问包目录：仅支持个人 Microsoft 帐户用户进行身份验证但不支持目录中的组织帐户的应用程序。
 
 1. 在“将资源角色添加到访问包”页上，单击“应用程序”打开“选择应用程序”窗格。
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 08/25/2021
 ms.author: b-juche
-ms.openlocfilehash: 326a0a43d8571c0acecbbffadf1ab21b267798a2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fc5d979c0c89c6f331e6b48fa1ffba30b5a91eb2
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743788"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122970316"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文提供了使用 Azure NetApp 文件的解决方案体系结构最佳做法的参考，帮助你更好地理解这个体系结构。  
@@ -53,7 +53,7 @@ ms.locfileid: "121743788"
 ### <a name="file-sharing-and-global-file-caching"></a>文件共享和全局文件缓存
 
 * [生成自己的 Azure NFS？将 Linux 文件共享迁移到云](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares)
-* [全局文件缓存 / Azure NetApp 文件部署](https://youtu.be/91LKb1qsLIM)
+* [使用 Azure NetApp 文件和 NetApp 全局文件缓存进行全局分布式 Enterprise 文件共享](https://f.hubspotusercontent20.net/hubfs/525875/NA-580-0521-Architecture-Doc-R3.pdf)
 * [Azure NetApp 文件的云合规性](https://cloud.netapp.com/hubfs/Cloud%20Compliance%20for%20Azure%20NetApp%20Files%20-%20November%202020.pdf)
 
 ### <a name="sql-server"></a>SQL Server
@@ -90,6 +90,7 @@ ms.locfileid: "121743788"
 
 * [适用于 SAP 工作负载的 Oracle Azure 虚拟机 DBMS 部署 - Azure 虚拟机](../virtual-machines/workloads/sap/dbms_guide_oracle.md#oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux)
 * [使用 Azure NetApp 文件部署 SAP AnyDB (Oracle 19c)](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)
+* [使用 Azure NetApp 文件针对 SAP 工作负荷进行 IBM Db2 Azure 虚拟机 DBMS 部署](../virtual-machines/workloads/sap/dbms_guide_ibm.md#using-azure-netapp-files)
 
 ### <a name="sap-iq-nls"></a>SAP IQ-NLS
 

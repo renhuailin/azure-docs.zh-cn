@@ -1,31 +1,31 @@
 ---
-title: 使用 PowerShell 创建 Azure 虚拟桌面主机池 - Azure
-description: 如何使用 PowerShell cmdlet 在 Azure 虚拟桌面中创建主机池。
+title: 创建 Azure 虚拟桌面主机池 - Azure
+description: 如何使用 PowerShell 或 Azure CLI 在 Azure 虚拟桌面中创建主机池。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/02/2020
+ms.date: 07/23/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 0b0822bf7653a076e579a0bec1cbfcc926d4c7b9
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: dbd48f8ff2b3da5cec432f6b1fba7d272621535c
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113651128"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100787"
 ---
-# <a name="create-a-azure-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 创建 Azure 虚拟桌面主机池
+# <a name="create-an-azure-virtual-desktop-host-pool-with-powershell-or-the-azure-cli"></a>使用 PowerShell 或 Azure CLI 创建 Azure 虚拟桌面主机池
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[本文](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md)。
 
 主机池是 Azure 虚拟桌面租户环境中一个或多个相同虚拟机的集合。 每个主机池可以与多个 RemoteApp 组、一个桌面应用组和多个会话主机关联。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="create-a-host-pool"></a>创建主机池
 
-本文假设你已按照[设置 PowerShell 模块](powershell-module.md)中的说明进行设置。
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-## <a name="use-your-powershell-client-to-create-a-host-pool"></a>使用 PowerShell 客户端创建主机池
+按照[设置 PowerShell 模块](powershell-module.md)中的说明进行操作（如果尚未这样做）。
 
 运行以下 cmdlet 以登录到 Azure 虚拟桌面环境：
 
@@ -35,7 +35,7 @@ New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -W
 
 此 cmdlet 将创建主机池、工作区和桌面应用组。 此外，它还会将桌面应用组注册到工作区。 可以使用此 cmdlet 创建工作区，也可以使用现有的工作区。
 
-运行下一个 cmdlet，创建注册令牌以授权会话主机加入主机池，并将其保存到本地计算机上的新文件。 可以使用 -ExpirationHours 参数指定注册令牌的有效时间。
+运行下一个 cmdlet，创建注册令牌以授权会话主机加入主机池，并将其保存到本地计算机上的新文件。 可以使用 -ExpirationTime 参数指定注册令牌的有效时间。
 
 >[!NOTE]
 >令牌的到期日期不能少于 1 小时，也不能超过 1 个月。 如果所设置的 -ExpirationTime 超出该限制，该 cmdlet 不会创建令牌。
@@ -68,6 +68,31 @@ New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop 
 $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname>
 ```
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+为 Azure CLI 准备环境（如果尚未这样做）：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+登录后，使用 [az desktopvirtualization hostpool create](/cli/azure/desktopvirtualization#az_desktopvirtualization_hostpool_create) 命令创建新的主机池，可以选择为会话主机创建注册令牌以加入主机池：
+
+```azurecli
+az desktopvirtualization hostpool create --name "MyHostPool" \
+   --resource-group "MyResourceGroup" \
+   --location "MyLocation" \
+   --host-pool-type "Pooled" \
+   --load-balancer-type "BreadthFirst" \
+   --max-session-limit 999 \
+   --personal-desktop-assignment-type "Automatic" \
+   --registration-info expiration-time="2022-03-22T14:01:54.9571247Z" registration-token-operation="Update" \
+   --sso-context "KeyVaultPath" \
+   --description "Description of this host pool" \
+   --friendly-name "Friendly name of this host pool" \
+   --tags tag1="value1" tag2="value2"
+```
+
+---
+
 ## <a name="create-virtual-machines-for-the-host-pool"></a>为主机池创建虚拟机
 
 现在，你可以创建可加入 Azure 虚拟桌面主机池的 Azure 虚拟机。
@@ -76,6 +101,7 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 
 - [从 Azure Gallery 映像创建虚拟机](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
 - [从托管映像创建虚拟机](../virtual-machines/windows/create-vm-generalized-managed.md)
+- [从非托管映像创建虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image)
 
 >[!NOTE]
 >如果使用 Windows 7 作为主机操作系统来部署虚拟机，创建和部署过程会稍有不同。 有关详细信息，请参阅[在 Azure 虚拟桌面上部署 Windows 7 虚拟机](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)。

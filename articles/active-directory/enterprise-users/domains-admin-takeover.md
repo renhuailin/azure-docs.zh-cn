@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f036f96b4747fb6b712bf032d6f2ec3cb38e6a
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: e84c19bfe003d094df1c78204e312149d7b51328
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113288025"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864594"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>在 Azure Active Directory 中以管理员身份接管非托管目录
 
@@ -95,13 +95,16 @@ ms.locfileid: "113288025"
 
 支持的服务计划包括：
 
-- PowerApps 免费版
-- PowerFlow 免费版
+- Power Apps 免费版
+- Power Automate 免费版
 - 个人版 RMS
 - Microsoft Stream
 - Dynamics 365 免费试用版
 
 设有含 SharePoint、OneDrive 或 Skype For Business 的服务计划的任何服务都不支持外部管理员接管；例如，使用 Office 免费订阅时。 
+
+> [!NOTE]
+> 不支持跨云边界（例如， Azure 商业版到 Azure 政府）的外部管理员接管。  在这些情况下，建议在执行外部管理员接管时将其接管到另一个 Azure 商业租户中，然后从此租户中删除该域，以便可以在目标 Azure 政府租户中成功进行验证。
 
 可以选择使用 [**ForceTakeover** 选项](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)，从非托管组织中删除域名并在所需组织上对其进行验证。 
 

@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 854931273ffebd653615a44dbfa9ce1b846655c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 852a842c9b58a76742d0b482e62c49cd91d34f1b
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91333420"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099640"
 ---
 # <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD 直通身份验证代理：版本发布历史记录 
  
@@ -27,6 +27,14 @@ ms.locfileid: "91333420"
 
 - [使用 Azure AD 直通身份验证的用户登录](how-to-connect-pta.md) 
 - [Azure AD 直通身份验证代理安装](how-to-connect-pta-quick-start.md) 
+
+## <a name="1524820"></a>1.5.2482.0
+### <a name="release-status"></a>版本状态： 
+2021/07/07：已发布供下载
+
+### <a name="new-features-and-improvements"></a>新增功能和改进
+
+- 已将包/库升级到使用 SHA-256RSA 进行签名的较新版本。
 
 ## <a name="1517420"></a>1.5.1742.0
 ### <a name="release-status"></a>版本状态： 

@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aceddf008979453383a1460da4342fd2a066d6b1
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80881071"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039828"
 ---
-# <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>如何：排查 iOS 和 macOS TLS/SSL 的 MSAL 问题
+# <a name="troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>排查 iOS 和 macOS TLS/SSL 的 MSAL 问题
 
 本文介绍如何排查使用[用于 iOS 和 macOS 的 Microsoft Authentication 库 (MSAL)](reference-v2-libraries.md) 时可能会遇到的问题
 
