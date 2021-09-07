@@ -13,14 +13,14 @@ metadata:
   ms.topic: troubleshooting
   ms.tgt_pltfrm: vm-windows-sql-server
   ms.workload: iaas-sql-server
-  ms.date: 08/05/2019
+  ms.date: 9/01/2021
   ms.author: mathoma
-  ms.openlocfilehash: afc126a44fec520f4451787c0e8b350a292c2fca
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: 6b6b6ae343e5ac641e1fb855c7ca7d466fd91ba8
+  ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114440689"
+  ms.lasthandoff: 08/30/2021
+  ms.locfileid: "123221428"
 title: Azure VM 上的 SQL Server 常见问题解答
 summary: >
   [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -92,7 +92,7 @@ sections:
       是的。 通过启用 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)，可以轻松将即用即付 (PAYG) 库映像切换为自带许可 (BYOL)。  有关详细信息，请参阅[如何更改 SQL Server VM 的许可模型](licensing-model-azure-hybrid-benefit-ahb-change.md)。 目前，此功能仅适用于公共和 Azure 政府云客户。
   - question: >
       切换许可模型是否需要将 SQL Server 停机？
-    answer: "不是。 [更改许可模型](licensing-model-azure-hybrid-benefit-ahb-change.md)不需将 SQL Server 停机，因为更改会立即生效，不需重启 VM。 但是，若要将 SQL Server VM 注册到 SQL IaaS 代理扩展，[SQL IaaS 扩展](sql-server-iaas-agent-extension-automate-management.md)是必备组件，并且在完全模式下安装 SQL IaaS 扩展会重启 SQL Server 服务。 因此，如果需要安装 SQL IaaS 扩展，可采用一种轻型模式来安装它，获取有限的功能，也可在维护时段期间采用完全模式安装 。 采用轻型模式安装的 SQL IaaS 扩展可以在任何时候升级到完全模式，但需要重启 SQL Server 服务 。 \n"
+    answer: "不是。 [更改许可模型](licensing-model-azure-hybrid-benefit-ahb-change.md)不需将 SQL Server 停机，因为更改会立即生效，不需重启 VM。  \n"
   - question: >
       是否可以在使用经典模型部署的 SQL Server VM 上切换许可模型？
     answer: 否。 不支持在经典 VM 上更改许可模型。 可将 VM 迁移到 Azure 资源管理器模型并注册到 SQL IaaS 代理扩展。 将 VM 注册到 SQL IaaS 代理扩展后，即可在 VM 上更改许可模型。
@@ -191,17 +191,16 @@ sections:
     answer: 是的。 如果客户未使用 Azure 市场中的 SQL Server 映像，而是自行安装的 SQL Server，或者如果他们提供自定义 VHD，则应该将其 SQL Server VM 注册到该扩展。 所有类型的订阅（“直接”、“企业协议”和“云解决方案提供商”）拥有的 VM 都可以注册到 SQL IaaS 代理扩展。
   - question: >
       注册到 SQL IaaS 代理扩展时默认管理模式是什么？
-    answer: >
-      注册到 SQL IaaS 代理扩展时，默认管理模式为“轻型”。 如果在注册到该扩展时未设置 SQL Server 管理属性，则模式将设置为“轻型”，并且 SQL Server 服务不会重启。 建议先在轻型模式下注册到 SQL IaaS 代理扩展，然后在维护时段升级到完全模式。 同样，使用[自动注册功能](sql-agent-extension-automatic-registration-all-vms.md)时，默认管理模式也是“轻型”。
+    answer: "注册到 SQL IaaS 代理扩展时，默认管理模式为“轻型”。 如果在注册到该扩展时未设置 SQL Server 管理属性，则模式将设置为“轻型”。  使用[自动注册功能](sql-agent-extension-automatic-registration-all-vms.md)时，默认管理模式也是“轻型”。 \n"
   - question: >
       注册到 SQL IaaS 代理扩展的先决条件是什么？
-    answer: 除了需要在 VM 上安装 SQL Server 之外，注册到 SQL IaaS 代理扩展无需满足其他先决条件。 请注意，如果在完全模式下安装 SQL IaaS 代理扩展，则 SQL Server 服务将会重启，因此建议在维护时段进行安装。
+    answer: 除了需要在 VM 上安装 SQL Server 之外，注册到 SQL IaaS 代理扩展无需满足其他先决条件。
   - question: >
       注册到 SQL IaaS 代理扩展是否会在 VM 上安装一个代理？
     answer: "是的，在完全可管理性模式下注册到 SQL IaaS 代理扩展会在 VM 上安装一个代理。 在轻型或无代理模式下注册则不会安装代理。 \n\n在轻型模式下注册到 SQL IaaS 代理扩展只会将 SQL IaaS 代理扩展二进制文件复制到 VM，而不会安装代理。 然后，在管理模式升级为“完全”后，将使用这些二进制文件来安装代理。\n"
   - question: >
       注册到 SQL IaaS 代理扩展是否会重启 VM 上的 SQL Server？
-    answer: 这取决于在注册期间指定的模式。 如果指定了轻型模式或无代理模式，则 SQL Server 服务不会重启。 但是，将管理模式指定为“安全”会导致 SQL Server 服务重启。 自动注册功能将以轻型模式注册 SQL Server VM，除非 Windows Server 版本为 2008，在这种情况下，将以无代理模式注册 SQL Server VM。
+    answer: 从 2021 年 9 月开始，在[完全管理模式](sql-agent-extension-manually-register-single-vm.md)下注册 [SQL IaaS 扩展](sql-server-iaas-agent-extension-automate-management.md)时，不再需要重启 SQL Server 服务。
   - question: "注册到 SQL IaaS 代理扩展时，使用轻型与使用无代理管理模式有什么区别？ \n"
     answer: "无代理管理模式是唯一适用于 Windows Server 2008 上的 SQL Server 2008 和 SQL Server 2008 R2 的管理模式。 对于所有更高版本的 Windows Server，两种可用的可管理性模式是“轻型”和“完全”。 \n\n无代理模式要求客户设置 SQL Server 版本属性。 轻型模式会查询 VM 以查找 SQL Server 实例的版本。\n"
   - question: >
@@ -215,7 +214,7 @@ sections:
     answer: 不是。 对于无代理模式，无法将可管理性模式升级为“完全”或“轻型”。 这是 Windows Server 2008 的技术限制。 需要首先将 OS 升级到 Windows Server 2008 R2 或更高版本，然后才能升级到完整管理模式。
   - question: >
       是否可以将 SQL Server IaaS 扩展从轻型模式升级到完整模式？
-    answer: 是的。 支持通过 Azure PowerShell 或 Azure 门户将可管理性模式从“轻型”升级为“完全”。 这会触发 SQL Server 服务重启。
+    answer: 是的。 支持通过 Azure PowerShell 或 Azure 门户将可管理性模式从“轻型”升级为“完全”。
   - question: >
       是否可将 SQL Server IaaS 扩展从完全模式降级为无代理或轻型管理模式？
     answer: "不是。 不支持降级 SQL Server IaaS 扩展可管理性模式。 可管理性模式无法从完全模式降级为轻型或无代理模式，且无法从轻型模式降级为无代理模式。 \n\n若要将完全可管理性模式更改为其他模式，请删除 SQL 虚拟机资源以从 SQL IaaS 代理扩展中[取消注册](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension) SQL Server VM，然后在其他管理模式下将 SQL Server VM 重新注册到 SQL IaaS 代理扩展。\n"

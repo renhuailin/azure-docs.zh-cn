@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-nov-2020
 ms.topic: tutorial
-ms.date: 05/19/2021
-ms.openlocfilehash: d469f44277b31209c012f7d28649692cfa7e89cc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: 4531246124c8ccf75c5af7b364b7079dd687badf
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638530"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039529"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>教程：使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
 [!INCLUDE[appliesto-mongodb-api](../cosmos-db/includes/appliesto-mongodb-api.md)]
@@ -265,6 +265,9 @@ ms.locfileid: "122638530"
 ## <a name="additional-resources"></a>其他资源
 
 * [Cosmos DB 服务信息](https://azure.microsoft.com/services/cosmos-db/)
+* 尝试为迁移到 Azure Cosmos DB 进行容量规划？
+    * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../cosmos-db/convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](../cosmos-db/mongodb/estimate-ru-capacity-planner.md)
 
 ## <a name="next-steps"></a>后续步骤
 

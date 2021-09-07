@@ -3,17 +3,17 @@ title: Azure 虚拟桌面中有哪些新增功能？ - Azure
 description: Azure 虚拟桌面的新增功能和产品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 07/07/2021
+ms.date: 07/30/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: d597e4c33652cb5a7106943ebd9f4e8b23b496ef
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 88c94a3f1b6329c80cddcec49c7ebb445a21d8e0
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730219"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318134"
 ---
 # <a name="whats-new-in-azure-virtual-desktop"></a>Azure 虚拟桌面中有哪些新增功能？
 
@@ -42,11 +42,12 @@ Azure 虚拟桌面代理每月至少更新一次。
 
 请参阅 Azure 虚拟桌面代理的更改：
 
-- 版本 1.0.3130.1200：此更新针对验证池，发布于 2021 年 5 月，包含以下更改：
+- 版本 1.0.3130.2900：此更新发布于 2021 年 7 月，包含以下更改：
     - 一般改进和 bug 修复。
     - 修复了获取 Intune 注册的主机池路径时出现的问题。
     - 添加了日志记录，以便更好地诊断代理问题。
-- 版本 1.0.3050.1200：此更新针对验证池，发布于 2021 年 5 月，包含以下更改：
+    - 修复了业务流程超时问题。
+- 版本 1.0.3050.2500：此更新发布于 2021 年 7 月，包含以下更改：
     - 更新了代理运行状况的内部监视器。
     - 更新了堆栈运行状况的重试逻辑。
 - 版本 1.0.2990.1500：此更新发布于 2021 年 4 月，包含以下更改：
@@ -65,6 +66,77 @@ Azure 虚拟桌面代理每月至少更新一次。
 ## <a name="fslogix-updates"></a>FSLogix 更新
 
 想知道 FSLogix 的最新更新吗？ 请查看 [FSLogix 的新增功能](/fslogix/whats-new)。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+以下是 2021 年 8 月的更改：
+
+### <a name="windows-11-preview-on-avd"></a>AVD 上的 Windows 11（预览版）
+
+Windows 11（预览版）映像现已在 Azure 市场中提供，供客户使用 Azure 虚拟桌面进行测试和验证。 有关详细信息，请参阅[我们的公告](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/windows-11-preview-is-now-available-on-azure-virtual-desktop/ba-p/2666468)。
+
+### <a name="multimedia-redirection-mmr-is-now-in-public-preview"></a>多媒体重定向 (MMR) 现在提供公共预览版
+
+多媒体重定向 (MMR) 可让你在 Azure 虚拟桌面 Web 浏览器中观看视频时流畅地播放视频，并且可与 Microsoft Edge 和 Google Chrome 配合使用。 有关详细信息，请参阅[我们的博客文章](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/public-preview-announcing-public-preview-of-multimedia/m-p/2663244#M7692)。
+
+### <a name="ip-virtualization-support-for-windows-server-2019"></a>对 Windows Server 2019 的 IP 虚拟化支持
+
+Windows Server 2008 R2 及更高版本支持 IP 虚拟化。 若要将 IP 虚拟化用于 Windows Server 2019，则需要执行额外的步骤。 有关详细信息，请参阅[我们的公告](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/ip-virtualization-support-for-windows-server-2019/m-p/2658650)。
+
+### <a name="windows-defender-application-control-and-azure-disk-encryption-is-now-supported"></a>现在支持 Windows Defender 应用程序控制和 Azure 磁盘加密
+
+Azure 虚拟桌面现在支持使用 Windows Defender 应用程序控制来控制哪些驱动程序和应用程序可在 Windows VM 上运行，并支持通过使用 Windows BitLocker 的 Azure 磁盘加密为 VM 的操作系统和数据磁盘提供卷加密。 有关详细信息，请参阅[我们的公告](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/support-for-windows-defender-application-control-and-azure-disk/m-p/2658633#M7685)。
+ 
+### <a name="signing-into-azure-ad-using-smart-cards-are-now-supported-in-azure-virtual-desktop"></a>Azure 虚拟桌面现在支持使用智能卡登录 Azure AD
+
+虽然这不是 Azure AD 的新功能，但 Azure 虚拟桌面现在支持将 Active Directory 联合身份验证服务配置为使用智能卡登录。 有关详细信息，请参阅[我们的公告](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/signing-in-to-azure-ad-using-smart-cards-now-supported-in-azure/m-p/2654209#M7671)。
+
+### <a name="screen-capture-protection-is-now-generally-available"></a>屏幕捕获保护功能现已正式发布
+
+使用 AVD 中的屏幕捕获保护功能，防止客户端终结点上运行的软件从屏幕捕获敏感信息。 有关详细信息，请参阅我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-screen-capture-protection-for/m-p/2699684)。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+以下是 2021 年 7 月的更改：
+
+### <a name="azure-virtual-desktop-images-now-include-optimized-teams"></a>Azure 虚拟桌面映像现在包含优化的 Teams
+
+Azure 虚拟桌面映像库中的所有可用映像（包括 Microsoft 365 企业应用版）现在都预安装了适用于 Azure 虚拟桌面的 Teams 媒体优化版本。 有关详细信息，请参阅[我们的公告](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/media-optimization-for-microsoft-teams-now-part-of-win10/m-p/2550054#M7442)。
+
+### <a name="azure-active-directory-domain-join-for-session-hosts-is-in-public-preview"></a>适用于会话主机的 Azure Active Directory 域加入功能提供公共预览版
+
+现在可以将 Azure 虚拟桌面虚拟机 (VM) 直接加入 Azure Active Directory (Azure AD)。 此功能允许你使用基本凭据从任何设备连接到 VM。 你还可以向 Microsoft Endpoint Manager 自动注册 VM。 在某些情况下，这有助于消除对域控制器的需求、降低成本和简化部署。 若要了解详细信息，请参阅[在 Azure 虚拟桌面中部署加入 Azure AD 的虚拟机](deploy-azure-ad-joined-vm.md)。
+
+### <a name="fslogix-version-2105-is-now-available"></a>FSLogix 2105 版现已推出
+
+FSLogix 2105 版现已正式发布。 此版本包括改进的登录次数以及公共预览版（2105 版）未提供的 bug 修复。 有关更多详细信息，可以参阅 [FSLogix 发行说明](/fslogix/whats-new)和[我们的博客文章](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-fslogix-2105-2-9-7838-44263/m-p/2539491#M7412)。
+
+### <a name="azure-virtual-desktop-in-china-has-entered-public-preview"></a>Azure 虚拟桌面已在中国推出公共预览版
+
+随着 Azure 虚拟桌面在中国的推出，我们的全球覆盖率进一步扩大，从而可以帮助组织通过改进的性能和延迟为该区域的客户提供支持。 若要了解详细信息，请参阅[我们的公告页](https://azure.microsoft.com/updates/azure-virtual-desktop-is-now-available-in-the-azure-china-cloud-in-preview/)。
+ 
+### <a name="the-getting-started-feature-for-azure-virtual-desktop"></a>Azure 虚拟桌面的入门功能
+
+此功能在 Azure 门户中提供简化的载入体验，以设置 Azure 虚拟桌面环境。 你可以使用此功能，以简单轻松的方式创建满足自动化 Azure Active Directory 域服务系统需求的部署。 有关详细信息，请查看我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/getting-started-wizard-in-azure-virtual-desktop/m-p/2451385)。
+
+### <a name="start-vm-on-connect-is-now-generally-available"></a>“连接时启动 VM”现已正式发布
+
+“连接时启动 VM”功能现已正式发布。 此功能允许你关闭已解除分配或停止的 VM，让部署能够灵活满足用户需求，从而帮助你优化成本。 有关详细信息，请参阅[连接时启动虚拟机](start-virtual-machine-connect.md)。
+
+### <a name="remote-app-streaming-documentation"></a>远程应用流式传输文档
+
+针对使用 Azure 虚拟桌面将应用作为服务交付给客户和业务合作伙伴，我们最近推出了一个新的远程应用流式传输定价选项。 例如，软件供应商可以使用远程应用流式传输，将应用作为客户可访问的软件即服务 (SaaS) 解决方案交付。 若要详细了解远程应用流式传输，请查看[我们的文档](./remote-app-streaming/overview.md)。
+
+从 2021 年 7 月 14 日到 2021 年 12 月 31 日，我们将为使用远程应用流式传输的客户提供促销优惠，允许其业务合作伙伴和客户免费访问 Azure 虚拟桌面。 此优惠仅适用于外部用户访问权限。 常规计费将于 2022 年 1 月 1 日恢复。 同时，你可以继续使用 Microsoft 365 E3 或 Windows E3 等许可证中现有的 Windows 许可证权利。 若要详细了解此优惠，请参阅 [Azure 虚拟桌面定价页](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
+
+### <a name="new-azure-virtual-desktop-handbooks"></a>新的 Azure 虚拟桌面手册
+
+我们最近发布了四本新手册，可帮助你在不同场景中设计和部署 Azure 虚拟桌面： 
+
+- [应用程序管理](https://azure.microsoft.com/resources/azure-virtual-desktop-handbook-application-management/)介绍如何使应用程序交付现代化并简化 IT 管理。  
+- [灾难恢复](https://azure.microsoft.com/resources/azure-virtual-desktop-handbook-disaster-recovery/)介绍如何通过制定灾难恢复策略来增强业务复原能力。  
+- 借助[结合使用 Citrix Cloud 和 Azure 虚拟桌面](https://azure.microsoft.com/resources/migration-guide-citrix-cloud-with-azure-virtual-desktop/)迁移指南，从 Citrix 投资中获得更多价值。
+- 借助[结合使用 VMware Horizo​​n 和 Azure 虚拟桌面](https://azure.microsoft.com/resources/migration-guide-vmware-horizon-cloud-and-azure-virtual-desktop/)迁移指南，从现有的 VMware 投资中获得更多价值。
 
 ## <a name="june-2021"></a>2021 年 6 月
 

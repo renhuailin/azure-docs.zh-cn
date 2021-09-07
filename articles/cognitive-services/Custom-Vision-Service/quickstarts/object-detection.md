@@ -1,7 +1,7 @@
 ---
 title: 快速入门：使用自定义视觉客户端库进行对象检测
 titleSuffix: Azure Cognitive Services
-description: 快速入门：使用自定义视觉客户端库创建对象检测项目、添加标记、上传图像、训练项目以及检测对象。
+description: 快速入门：使用自定义视觉客户端库创建对象检测项目、添加自定义标记、上传图像、训练模型以及检测图像中的对象。
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
@@ -11,12 +11,12 @@ ms.date: 04/19/2021
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 自定义视觉
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 45ac9fb96a6b8c0d5e20b616cf99b27e599f99fe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 7aa148919cd4c30fb14c81db3a0f7e37ee7860a3
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725113"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309939"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-client-library"></a>快速入门：使用自定义视觉客户端库创建对象检测项目
 

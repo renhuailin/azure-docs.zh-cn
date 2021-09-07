@@ -2,19 +2,18 @@
 title: 快速入门：在 Linux 上创建 Azure IoT Edge 设备 | Microsoft Docs
 description: 本快速入门介绍如何在 Linux 上创建 IoT Edge 设备，然后从 Azure 门户远程部署预生成的代码。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 04/07/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cdc5dd2df0dc6ac682d37aea3328545fcb7e5ad2
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: d06a4af7d9280eb3bab076ff103968d94fd38839
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728601"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215403"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Linux 设备
 
@@ -279,6 +278,8 @@ Azure IoT Edge 的主要功能之一是从云中将代码部署到 IoT Edge 设�
 
 1. 选择设备列表中目标设备的设备 ID。
 
+   创建新的 IoT Edge 设备时，它将在 Azure 门户中显示状态代码 `417 -- The device's deployment configuration is not set`。 此状态正常，表示设备已准备好接收模块部署。
+
 1. 在上方栏中，选择“设置模块”。
 
    ![显示正在选择“设置模块”的屏幕截图。](./media/quickstart/select-set-modules.png)
@@ -394,7 +395,7 @@ az group list
 
 在本快速入门中，你创建了一个 IoT Edge 设备并使用 Azure IoT Edge 云接口将代码部署到该设备上。 现在，你有了一个可以生成其环境的原始数据的测试设备。
 
-下一步是设置本地开发环境，使你可以开始创建运行业务逻辑的 IoT Edge 模块。
+下一教程将介绍如何从 Azure 门户监视设备的活动和运行状况。
 
 > [!div class="nextstepaction"]
-> [开始为 Linux 设备开发 IoT Edge 模块](tutorial-develop-for-linux.md)
+> [监视 IoT Edge 设备](tutorial-monitor-with-workbooks.md)

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/26/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 475d7d25bf0d4a373fd2cb630ee7f2a643581b04
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 4b5244766769255a74becaa7c8893db45532dc4f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090666"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227123"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -65,19 +65,28 @@ ms.locfileid: "113090666"
 
 ### <a name="clone-and-run-the-sample-application"></a>克隆和运行示例应用程序
 
-运行下列命令，以便克隆并运行示例存储库。
+1. 运行下列命令，以便克隆并运行示例存储库。
 
-```bash
-git clone https://github.com/Azure-Samples/dotnet-core-api
-cd dotnet-core-api
-dotnet run
-```
+    ```bash
+    git clone https://github.com/Azure-Samples/dotnet-core-api
+    cd dotnet-core-api
+    dotnet run
+    ```
+    
+1. 导航到 `http://localhost:5000`，尝试添加、编辑和删除代办事项。 
 
-导航到 `http://localhost:5000`，尝试添加、编辑和删除代办事项。 
+    ![在本地运行的 ASP.NET Core API](./media/tutorial-auth-aad/local-run.png)
 
-![在本地运行的 ASP.NET Core API](./media/tutorial-auth-aad/local-run.png)
+1. 在终端按 `Ctrl+C` 可停止 ASP.NET Core。
 
-在终端按 `Ctrl+C` 可随时停止 ASP.NET Core。
+1. 确保默认分支为 `main`。
+
+    ```bash
+    git branch -m main
+    ```
+    
+    > [!TIP]
+    > 应用服务不需要更改分支名称。 但是，由于许多存储库正在将默认分支更改为 `main`，因此本教程还介绍如何从 `main` 部署存储库。 有关详细信息，请参阅[更改部署分支](deploy-local-git.md#change-deployment-branch)。
 
 ## <a name="deploy-apps-to-azure"></a>将应用部署到 Azure
 
@@ -121,19 +130,26 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 
 ### <a name="push-to-azure-from-git"></a>从 Git 推送到 Azure
 
-回到本地终端窗口，运行以下 Git 命令，以便部署到后端应用。 将 \<deploymentLocalGitUrl-of-back-end-app> 替换为在[创建 Azure 资源](#create-azure-resources)中保存的 Git 远程 URL。 当 Git 凭据管理器提示输入凭据时，请确保输入[部署凭据](deploy-configure-credentials.md)，而不是用于登录到 Azure 门户的凭据。
+1. 由于要部署 `main` 分支，因此需要将两个应用服务应用的默认部署分支设置为 `main`（请参阅[更改部署分支](deploy-local-git.md#change-deployment-branch)）。 在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令设置 `DEPLOYMENT_BRANCH` 应用设置。 
 
-```bash
-git remote add backend <deploymentLocalGitUrl-of-back-end-app>
-git push backend master
-```
+    ```azurecli-interactive
+    az webapp config appsettings set --name <front-end-app-name> --resource-group myAuthResourceGroup --settings DEPLOYMENT_BRANCH='main'
+    az webapp config appsettings set --name <back-end-app-name> --resource-group myAuthResourceGroup --settings DEPLOYMENT_BRANCH='main'
+    ```
 
-在本地终端窗口中运行以下 Git 命令，以便将相同的代码部署到前端应用。 将 \<deploymentLocalGitUrl-of-front-end-app> 替换为在[创建 Azure 资源](#create-azure-resources)中保存的 Git 远程 URL。
+1. 回到本地终端窗口，运行以下 Git 命令，以便部署到后端应用。 将 \<deploymentLocalGitUrl-of-back-end-app> 替换为在[创建 Azure 资源](#create-azure-resources)中保存的 Git 远程 URL。 当 Git 凭据管理器提示输入凭据时，请确保输入[部署凭据](deploy-configure-credentials.md)，而不是用于登录到 Azure 门户的凭据。
 
-```bash
-git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
-git push frontend master
-```
+    ```bash
+    git remote add backend <deploymentLocalGitUrl-of-back-end-app>
+    git push backend main
+    ```
+
+1. 在本地终端窗口中运行以下 Git 命令，以便将相同的代码部署到前端应用。 将 \<deploymentLocalGitUrl-of-front-end-app> 替换为在[创建 Azure 资源](#create-azure-resources)中保存的 Git 远程 URL。
+
+    ```bash
+    git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
+    git push frontend main
+    ```
 
 ### <a name="browse-to-the-apps"></a>浏览到应用
 
@@ -157,74 +173,74 @@ http://<front-end-app-name>.azurewebsites.net
 
 ### <a name="modify-front-end-code"></a>修改前端代码
 
-在本地存储库中，请打开 _Controllers/TodoController.cs_。 在 `TodoController` 类的开头添加以下行，并将 \<back-end-app-name> 替换为后端应用的名称：
+1. 在本地存储库中，请打开 _Controllers/TodoController.cs_。 在 `TodoController` 类的开头添加以下行，并将 \<back-end-app-name> 替换为后端应用的名称：
 
-```cs
-private static readonly HttpClient _client = new HttpClient();
-private static readonly string _remoteUrl = "https://<back-end-app-name>.azurewebsites.net";
-```
+    ```cs
+    private static readonly HttpClient _client = new HttpClient();
+    private static readonly string _remoteUrl = "https://<back-end-app-name>.azurewebsites.net";
+    ```
 
-找到用 `[HttpGet]` 修饰的方法，并将大括号中的代码替换为：
+1. 找到用 `[HttpGet]` 修饰的方法，并将大括号中的代码替换为：
 
-```cs
-var data = await _client.GetStringAsync($"{_remoteUrl}/api/Todo");
-return JsonConvert.DeserializeObject<List<TodoItem>>(data);
-```
+    ```cs
+    var data = await _client.GetStringAsync($"{_remoteUrl}/api/Todo");
+    return JsonConvert.DeserializeObject<List<TodoItem>>(data);
+    ```
 
-第一行向后端 API 应用进行 `GET /api/Todo` 调用。
+    第一行向后端 API 应用进行 `GET /api/Todo` 调用。
 
-接下来，找到用 `[HttpGet("{id}")]` 修饰的方法，并将大括号中的代码替换为：
+1. 接下来，找到用 `[HttpGet("{id}")]` 修饰的方法，并将大括号中的代码替换为：
 
-```cs
-var data = await _client.GetStringAsync($"{_remoteUrl}/api/Todo/{id}");
-return Content(data, "application/json");
-```
+    ```cs
+    var data = await _client.GetStringAsync($"{_remoteUrl}/api/Todo/{id}");
+    return Content(data, "application/json");
+    ```
 
-第一行向后端 API 应用进行 `GET /api/Todo/{id}` 调用。
+    第一行向后端 API 应用进行 `GET /api/Todo/{id}` 调用。
 
-接下来，找到用 `[HttpPost]` 修饰的方法，并将大括号中的代码替换为：
+1. 接下来，找到用 `[HttpPost]` 修饰的方法，并将大括号中的代码替换为：
 
-```cs
-var response = await _client.PostAsJsonAsync($"{_remoteUrl}/api/Todo", todoItem);
-var data = await response.Content.ReadAsStringAsync();
-return Content(data, "application/json");
-```
+    ```cs
+    var response = await _client.PostAsJsonAsync($"{_remoteUrl}/api/Todo", todoItem);
+    var data = await response.Content.ReadAsStringAsync();
+    return Content(data, "application/json");
+    ```
 
-第一行向后端 API 应用进行 `POST /api/Todo` 调用。
+    第一行向后端 API 应用进行 `POST /api/Todo` 调用。
 
-接下来，找到用 `[HttpPut("{id}")]` 修饰的方法，并将大括号中的代码替换为：
+1. 接下来，找到用 `[HttpPut("{id}")]` 修饰的方法，并将大括号中的代码替换为：
 
-```cs
-var res = await _client.PutAsJsonAsync($"{_remoteUrl}/api/Todo/{id}", todoItem);
-return new NoContentResult();
-```
+    ```cs
+    var res = await _client.PutAsJsonAsync($"{_remoteUrl}/api/Todo/{id}", todoItem);
+    return new NoContentResult();
+    ```
 
-第一行向后端 API 应用进行 `PUT /api/Todo/{id}` 调用。
+    第一行向后端 API 应用进行 `PUT /api/Todo/{id}` 调用。
 
-接下来，找到用 `[HttpDelete("{id}")]` 修饰的方法，并将大括号中的代码替换为：
+1. 接下来，找到用 `[HttpDelete("{id}")]` 修饰的方法，并将大括号中的代码替换为：
 
-```cs
-var res = await _client.DeleteAsync($"{_remoteUrl}/api/Todo/{id}");
-return new NoContentResult();
-```
+    ```cs
+    var res = await _client.DeleteAsync($"{_remoteUrl}/api/Todo/{id}");
+    return new NoContentResult();
+    ```
 
-第一行向后端 API 应用进行 `DELETE /api/Todo/{id}` 调用。
+    第一行向后端 API 应用进行 `DELETE /api/Todo/{id}` 调用。
 
-保存所有更改。 在本地终端窗口中，使用以下 Git 命令将所做的更改部署到前端应用：
+1. 保存所有更改。 在本地终端窗口中，使用以下 Git 命令将所做的更改部署到前端应用：
 
-```bash
-git add .
-git commit -m "call back-end API"
-git push frontend master
-```
+    ```bash
+    git add .
+    git commit -m "call back-end API"
+    git push frontend main
+    ```
 
 ### <a name="check-your-changes"></a>检查所做的更改
 
-导航到 `http://<front-end-app-name>.azurewebsites.net` 并添加一些项目，例如 `from front end 1` 和 `from front end 2`。
+1. 导航到 `http://<front-end-app-name>.azurewebsites.net` 并添加一些项目，例如 `from front end 1` 和 `from front end 2`。
 
-导航到 `http://<back-end-app-name>.azurewebsites.net`，此时会看到从前端应用添加的项目。 另请添加一些项目（例如 `from back end 1` 和 `from back end 2`），然后刷新前端应用，看其是否反映了所做的更改。
+1. 导航到 `http://<back-end-app-name>.azurewebsites.net`，此时会看到从前端应用添加的项目。 另请添加一些项目（例如 `from back end 1` 和 `from back end 2`），然后刷新前端应用，看其是否反映了所做的更改。
 
-:::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了包含从前端应用添加的项的“待办事项列表”应用。":::
+    :::image type="content" source="./media/tutorial-auth-aad/remote-api-call-run.png" alt-text="浏览器窗口中 Azure 应用服务 Rest API 示例的屏幕截图，其中显示了包含从前端应用添加的项的“待办事项列表”应用。":::
 
 ## <a name="configure-auth"></a>配置身份验证
 
@@ -234,29 +250,29 @@ git push frontend master
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>启用针对后端应用的身份验证和授权
 
-在 [Azure 门户](https://portal.azure.com)菜单上，选择“资源组”，或在任意页面中搜索并选择“资源组”。
+1. 在 [Azure 门户](https://portal.azure.com)菜单上，选择“资源组”，或在任意页面中搜索并选择“资源组”。
 
-在“资源组”中，查找并选择资源组。 在“概述”中，选择后端应用的管理页。
+1. 在“资源组”中，查找并选择资源组。 在“概述”中，选择后端应用的管理页。
 
-:::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="“资源组”窗口的屏幕截图，其中显示了示例资源组的概述和选中的后端应用的管理页。":::
+    :::image type="content" source="./media/tutorial-auth-aad/portal-navigate-back-end.png" alt-text="“资源组”窗口的屏幕截图，其中显示了示例资源组的概述和选中的后端应用的管理页。":::
 
-在后端应用的左侧菜单中，选择“身份验证”，然后单击“添加标识提供者”。
+1. 在后端应用的左侧菜单中，选择“身份验证”，然后单击“添加标识提供者”。
 
-在“添加标识提供者”页上，选择“Microsoft”作为“标识提供者”以登录 Microsoft 和 Azure AD 标识。
+1. 在“添加标识提供者”页上，选择“Microsoft”作为“标识提供者”以登录 Microsoft 和 Azure AD 标识。
 
-对于“应用程序注册” > “应用程序注册类型”，请选择“新建应用程序注册”。
+1. 对于“应用程序注册” > “应用程序注册类型”，请选择“新建应用程序注册”。
 
-对于“应用程序注册” > “支持的帐户类型”，请选择“当前租户-单租户”。
+1. 对于“应用程序注册” > “支持的帐户类型”，请选择“当前租户-单租户”。
 
-在“应用服务身份验证设置”部分中，将“身份验证”设置为“要求身份验证”，并将“未验证请求”设置为“HTTP 302 Found 重定向：建议网站选用”。
+1. 在“应用服务身份验证设置”部分中，将“身份验证”设置为“要求身份验证”，并将“未验证请求”设置为“HTTP 302 Found 重定向：建议网站选用”。
 
-在“添加标识提供者”页的底部，单击“添加”为 Web 应用启用身份验证。
+1. 在“添加标识提供者”页的底部，单击“添加”为 Web 应用启用身份验证。
 
-:::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="后端应用左侧菜单的屏幕截图，其中显示了选中的身份验证/授权和在右菜单中选中的设置。":::
+    :::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="后端应用左侧菜单的屏幕截图，其中显示了选中的身份验证/授权和在右菜单中选中的设置。":::
 
-这时会显示“身份验证”页。 将 Azure AD 应用程序的 **客户端 ID** 复制到记事本。 稍后需要用到此值。
+1. 这时会显示“身份验证”页。 将 Azure AD 应用程序的 **客户端 ID** 复制到记事本。 稍后需要用到此值。
 
-:::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="显示 Azure AD 应用的“Azure Active Directory 设置”窗口和显示要复制的客户端 ID 的“Azure AD 应用程序”窗口的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-auth-aad/get-application-id-back-end.png" alt-text="显示 Azure AD 应用的“Azure Active Directory 设置”窗口和显示要复制的客户端 ID 的“Azure AD 应用程序”窗口的屏幕截图。":::
 
 如果到此为止，你将拥有一个已受应用服务身份验证和授权保护的独立应用。 其余部分介绍如何将经过身份验证的用户从前端“流式传输”到后端，以便保护多应用解决方案。 
 
@@ -277,41 +293,41 @@ git push frontend master
 
 启用对两种应用的身份验证和授权以后，即可通过 AD 应用程序对每种应用提供支持。 在此步骤中，请为前端应用授予代表用户访问后端的权限。 （严格说来就是，请为前端的 AD 应用程序授予代表用户访问后端的 AD 应用程序的权限。）
 
-在 [Azure 门户](https://portal.azure.com)菜单中，选择“Azure Active Directory”，或在任意页面中搜索并选择“Azure Active Directory”。
+1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“Azure Active Directory”，或在任意页面中搜索并选择“Azure Active Directory”。
 
-选择“应用注册” > “拥有的应用程序” > “查看此目录中的所有应用程序”。 选择前端应用名称，然后选择“API 权限”。
+1. 选择“应用注册” > “拥有的应用程序” > “查看此目录中的所有应用程序”。 选择前端应用名称，然后选择“API 权限”。
 
-:::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="“Microsoft - 应用注册”窗口的屏幕截图，其中包含拥有的应用程序、前端应用名称和选中的 API 权限。":::
+    :::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="“Microsoft - 应用注册”窗口的屏幕截图，其中包含拥有的应用程序、前端应用名称和选中的 API 权限。":::
 
-选择“添加权限”，然后选择“我的组织使用的 API” > “\<back-end-app-name>”。
+1. 选择“添加权限”，然后选择“我的组织使用的 API” > “\<back-end-app-name>”。
 
-在后端应用的“请求 API 权限”页中，选择“委托的权限”和“user_impersonation”，然后选择“添加权限”。
+1. 在后端应用的“请求 API 权限”页中，选择“委托的权限”和“user_impersonation”，然后选择“添加权限”。
 
-:::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="“请求 API 权限”页的屏幕截图，其中显示了委托的权限、user_impersonation 和选中的“添加权限”按钮。":::
+    :::image type="content" source="./media/tutorial-auth-aad/select-permission-front-end.png" alt-text="“请求 API 权限”页的屏幕截图，其中显示了委托的权限、user_impersonation 和选中的“添加权限”按钮。":::
 
 ### <a name="configure-app-service-to-return-a-usable-access-token"></a>对应用服务进行配置，使之返回可用的访问令牌
 
 现在，前端应用具有以登录用户身份访问后端应用所需的权限。 在此步骤中，请配置应用服务身份验证和授权，以便获取可以用来访问后端的访问令牌。 执行此步骤时，需要后端的客户端 ID，该 ID 是从[为后端应用启用身份验证和授权](#enable-authentication-and-authorization-for-back-end-app)复制的。
 
-导航到 [Azure 资源浏览器](https://resources.azure.com)并使用资源树找到前端 Web 应用。
+1. 导航到 [Azure 资源浏览器](https://resources.azure.com)并使用资源树找到前端 Web 应用。
 
-此时会打开 [Azure 资源浏览器](https://resources.azure.com)，前端应用在资源树中处于选中状态。 在页面顶部单击“读/写”，以便启用编辑 Azure 资源的功能。
+1. 此时会打开 [Azure 资源浏览器](https://resources.azure.com)，前端应用在资源树中处于选中状态。 在页面顶部单击“读/写”，以便启用编辑 Azure 资源的功能。
 
-:::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="“Azure 资源浏览器”页面顶部的“只读”和“读/写”按钮的屏幕截图，其中“读/写”按钮已选中。":::
+    :::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="“Azure 资源浏览器”页面顶部的“只读”和“读/写”按钮的屏幕截图，其中“读/写”按钮已选中。":::
 
-在左侧浏览器中，向下钻取到“config” > “authsettings”。
+1. 在左侧浏览器中，向下钻取到“config” > “authsettings”。
 
-在“authsettings”视图中，单击“编辑”。 使用复制的客户端 ID 将 `additionalLoginParams` 设置为以下 JSON 字符串。 
+1. 在“authsettings”视图中，单击“编辑”。 使用复制的客户端 ID 将 `additionalLoginParams` 设置为以下 JSON 字符串。 
 
-```json
-"additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
-```
+    ```json
+    "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
+    ```
 
-:::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="authsettings 视图中代码示例的屏幕截图，其中显示了包含客户端 ID 示例的 additionalLoginParams 字符串。":::
+    :::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="authsettings 视图中代码示例的屏幕截图，其中显示了包含客户端 ID 示例的 additionalLoginParams 字符串。":::
 
-单击“PUT”，对设置进行保存。
+1. 单击“PUT”，对设置进行保存。
 
-现在已配置好了应用。 前端现在可以通过适当的访问令牌访问后端了。
+    现在已配置好了应用。 前端现在可以通过适当的访问令牌访问后端了。
 
 若要了解如何为其他提供程序配置访问令牌，请参阅[刷新标识提供者令牌](configure-authentication-oauth-tokens.md#refresh-auth-tokens)。
 
@@ -324,32 +340,32 @@ git push frontend master
 > [!NOTE]
 > 所有支持的语言都可以注入这些标头。 对于每种相应的语言，可以使用标准模式来访问它们。
 
-在本地存储库中，请再次打开 _Controllers/TodoController.cs_。 在 `TodoController(TodoContext context)` 构造函数中添加以下代码：
+1. 在本地存储库中，请再次打开 _Controllers/TodoController.cs_。 在 `TodoController(TodoContext context)` 构造函数中添加以下代码：
 
-```cs
-public override void OnActionExecuting(ActionExecutingContext context)
-{
-    base.OnActionExecuting(context);
+    ```cs
+    public override void OnActionExecuting(ActionExecutingContext context)
+    {
+        base.OnActionExecuting(context);
+    
+        _client.DefaultRequestHeaders.Accept.Clear();
+        _client.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue("Bearer", Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"]);
+    }
+    ```
 
-    _client.DefaultRequestHeaders.Accept.Clear();
-    _client.DefaultRequestHeaders.Authorization =
-        new AuthenticationHeaderValue("Bearer", Request.Headers["X-MS-TOKEN-AAD-ACCESS-TOKEN"]);
-}
-```
+    此代码将标准的 HTTP 标头 `Authorization: Bearer <access-token>` 添加到所有远程 API 调用。 在 ASP.NET Core MVC 请求执行管道中，`OnActionExecuting` 就在相应的操作执行之前执行，因此每个传出 API 调用现在都提供访问令牌。
 
-此代码将标准的 HTTP 标头 `Authorization: Bearer <access-token>` 添加到所有远程 API 调用。 在 ASP.NET Core MVC 请求执行管道中，`OnActionExecuting` 就在相应的操作执行之前执行，因此每个传出 API 调用现在都提供访问令牌。
+1. 保存所有更改。 在本地终端窗口中，使用以下 Git 命令将所做的更改部署到前端应用：
 
-保存所有更改。 在本地终端窗口中，使用以下 Git 命令将所做的更改部署到前端应用：
+    ```bash
+    git add .
+    git commit -m "add authorization header for server code"
+    git push frontend main
+    ```
 
-```bash
-git add .
-git commit -m "add authorization header for server code"
-git push frontend master
-```
+1. 再次登录到 `https://<front-end-app-name>.azurewebsites.net`。 在用户数据使用协议页上，单击“接受”。
 
-再次登录到 `https://<front-end-app-name>.azurewebsites.net`。 在用户数据使用协议页上，单击“接受”。
-
-现在应该可以像以前一样通过后端应用创建、读取、更新和删除数据了。 唯一区别是，两种应用现在都受应用服务身份验证和授权的保护，包括在进行服务间调用时受到保护。
+    现在应该可以像以前一样通过后端应用创建、读取、更新和删除数据了。 唯一区别是，两种应用现在都受应用服务身份验证和授权的保护，包括在进行服务间调用时受到保护。
 
 祝贺你！ 服务器代码现在可以代表经身份验证的用户访问后端数据了。
 
@@ -375,63 +391,63 @@ az webapp cors add --resource-group myAuthResourceGroup --name <back-end-app-nam
 
 ### <a name="point-angularjs-app-to-back-end-api"></a>将 Angular.js 应用指向后端 API
 
-在本地存储库中，打开 _wwwroot/index.html_。
+1. 在本地存储库中，打开 _wwwroot/index.html_。
 
-在第 51 行中，将 `apiEndpoint` 变量设置为后端应用的 HTTPS URL (`https://<back-end-app-name>.azurewebsites.net`)。 在应用服务中将 \<back-end-app-name> 替换为你的应用名称。
+1. 在第 51 行中，将 `apiEndpoint` 变量设置为后端应用的 HTTPS URL (`https://<back-end-app-name>.azurewebsites.net`)。 在应用服务中将 \<back-end-app-name> 替换为你的应用名称。
 
-在本地存储库中打开 _wwwroot/app/scripts/todoListSvc.js_，然后就会看到 `apiEndpoint` 已前置到所有 API 调用。 Angular.js 应用现在可以调用后端 API 了。 
+1. 在本地存储库中打开 _wwwroot/app/scripts/todoListSvc.js_，然后就会看到 `apiEndpoint` 已前置到所有 API 调用。 Angular.js 应用现在可以调用后端 API 了。 
 
 ### <a name="add-access-token-to-api-calls"></a>向 API 调用添加访问令牌
 
-在 _wwwroot/app/scripts/todoListSvc.js_ 的 API 调用列表上方（`getItems : function(){` 行上方），向列表添加以下函数：
+1. 在 _wwwroot/app/scripts/todoListSvc.js_ 的 API 调用列表上方（`getItems : function(){` 行上方），向列表添加以下函数：
 
-```javascript
-setAuth: function (token) {
-    $http.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-},
-```
-
-调用此函数是为了使用访问令牌设置默认的 `Authorization` 标头。 将在下一步调用此函数。
-
-在本地存储库中，打开 _wwwroot/app/scripts/app.js_ 并查找以下代码：
-
-```javascript
-$routeProvider.when("/Home", {
-    controller: "todoListCtrl",
-    templateUrl: "/App/Views/TodoList.html",
-}).otherwise({ redirectTo: "/Home" });
-```
-
-请将整个代码块替换为以下代码：
-
-```javascript
-$routeProvider.when("/Home", {
-    controller: "todoListCtrl",
-    templateUrl: "/App/Views/TodoList.html",
-    resolve: {
-        token: ['$http', 'todoListSvc', function ($http, todoListSvc) {
-            return $http.get('/.auth/me').then(function (response) {
-                todoListSvc.setAuth(response.data[0].access_token);
-                return response.data[0].access_token;
-            });
-        }]
+    ```javascript
+    setAuth: function (token) {
+        $http.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     },
-}).otherwise({ redirectTo: "/Home" });
-```
+    ```
 
-新更改添加 `resolve` 映射来调用 `/.auth/me` 并设置访问令牌。 这样可以确保在实例化 `todoListCtrl` 控制器之前为你提供访问令牌。 因此，由该控制器进行的所有 API 调用都包括此令牌。
+    调用此函数是为了使用访问令牌设置默认的 `Authorization` 标头。 将在下一步调用此函数。
+
+1. 在本地存储库中，打开 _wwwroot/app/scripts/app.js_ 并查找以下代码：
+
+    ```javascript
+    $routeProvider.when("/Home", {
+        controller: "todoListCtrl",
+        templateUrl: "/App/Views/TodoList.html",
+    }).otherwise({ redirectTo: "/Home" });
+    ```
+
+1. 请将整个代码块替换为以下代码：
+
+    ```javascript
+    $routeProvider.when("/Home", {
+        controller: "todoListCtrl",
+        templateUrl: "/App/Views/TodoList.html",
+        resolve: {
+            token: ['$http', 'todoListSvc', function ($http, todoListSvc) {
+                return $http.get('/.auth/me').then(function (response) {
+                    todoListSvc.setAuth(response.data[0].access_token);
+                    return response.data[0].access_token;
+                });
+            }]
+        },
+    }).otherwise({ redirectTo: "/Home" });
+    ```
+
+    新更改添加 `resolve` 映射来调用 `/.auth/me` 并设置访问令牌。 这样可以确保在实例化 `todoListCtrl` 控制器之前为你提供访问令牌。 因此，由该控制器进行的所有 API 调用都包括此令牌。
 
 ### <a name="deploy-updates-and-test"></a>部署更新并进行测试
 
-保存所有更改。 在本地终端窗口中，使用以下 Git 命令将所做的更改部署到前端应用：
+1. 保存所有更改。 在本地终端窗口中，使用以下 Git 命令将所做的更改部署到前端应用：
 
-```bash
-git add .
-git commit -m "add authorization header for Angular"
-git push frontend master
-```
+    ```bash
+    git add .
+    git commit -m "add authorization header for Angular"
+    git push frontend main
+    ```
 
-再次导航到 `https://<front-end-app-name>.azurewebsites.net`。 现在应该可以直接在 Angular.js 应用中通过后端应用创建、读取、更新和删除数据了。
+1. 再次导航到 `https://<front-end-app-name>.azurewebsites.net`。 现在应该可以直接在 Angular.js 应用中通过后端应用创建、读取、更新和删除数据了。
 
 祝贺你！ 客户端代码现在可以代表经身份验证的用户访问后端数据了。
 

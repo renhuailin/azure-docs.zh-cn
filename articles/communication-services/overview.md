@@ -1,23 +1,25 @@
 ---
 title: 什么是 Azure 通信服务？
 description: 了解 Azure 通信服务如何通过实时通信帮助你开发丰富的用户体验。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 12e0c9c277bbf162797d52692add208ce921569b
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 4e8ec31fc28014e404ae69f2746eb02099e83842
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360912"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967838"
 ---
 # <a name="what-is-azure-communication-services"></a>什么是 Azure 通信服务？
 
-Azure 通信服务是具有 REST API 和客户端库 SDK 的基于云的服务，可用于帮助你将通信集成到应用程序中。 你可以在自己的应用程序中添加通信功能（如媒体编码和实时网络），而不需要是通信技术的专家。 Azure 通信服务支持各种通信格式：
+Azure 通信服务是具有 REST API 和客户端库 SDK 的基于云的服务，可用于帮助你将通信集成到应用程序中。 你可以在自己的应用程序中添加通信功能（如媒体编码和实时网络），而不需要是通信技术的专家。 Azure 政府版也支持此功能。
+
+Azure 通信服务支持各种通信格式：
 
 1. 语音和视频通话
 1. 格式文本聊天

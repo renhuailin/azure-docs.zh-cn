@@ -9,18 +9,18 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 12/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 87871be12310782abe172fe308782825ba8e09d0
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 6520c9514ee8fbf950437026c1d2712683e58151
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109858128"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442390"
 ---
 开始使用人脸 REST API 进行人脸识别。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
 使用人脸 REST API 执行以下操作：
 
-* [检测图像中的人脸](#detect-faces-in-an-image)
+* [检测和分析人脸](#detect-and-analyze-faces)
 * [查找相似人脸](#find-similar-faces)
 
 > [!NOTE]
@@ -29,13 +29,14 @@ ms.locfileid: "109858128"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 </a>，获取密钥和终结点。 部署后，单击“转到资源”。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 * [PowerShell 6.0 及以上版本](/powershell/scripting/install/installing-powershell-core-on-windows)，或类似的命令行应用程序。
 
 
-## <a name="detect-faces-in-an-image"></a>在图像中检测人脸
+## <a name="detect-and-analyze-faces"></a>检测和分析人脸
 
 将使用如下所示的命令来调用人脸 API 并获取图像中的人脸属性数据。 首先，将代码复制到文本编辑器中&mdash;在运行它之前，需对命令的某些部分进行更改。
 
@@ -175,7 +176,7 @@ ms.locfileid: "109858128"
 
 ### <a name="detect-faces-for-comparison"></a>检测人脸以进行比较
 
-首先，需要先检测图像中的人脸，然后再进行比较。 如在[检测人脸](#detect-faces-in-an-image)部分中所做的那样，运行此命令。 此检测方法针对比较操作进行了优化。 它不会如以上部分所示提取详细人脸属性，而是使用另一个检测模型。
+首先，需要先检测图像中的人脸，然后再进行比较。 如在[检测和分析](#detect-and-analyze-faces)部分中所做的那样，运行此命令。 此检测方法针对比较操作进行了优化。 它不会如以上部分所示提取详细人脸属性，而是使用另一个检测模型。
 
 :::code language="shell" source="~/cognitive-services-quickstart-code/curl/face/detect.sh" ID="detect_for_similar":::
 

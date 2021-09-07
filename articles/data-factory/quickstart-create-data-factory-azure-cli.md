@@ -6,14 +6,14 @@ ms.author: jingwang
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: quickstart
-ms.date: 03/24/2021
+ms.date: 08/27/2021
 ms.custom: template-quickstart, devx-track-azurecli
-ms.openlocfilehash: f12b9f785063b8fa6fec4bc8cd4011d65110b7fe
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 30f521567f06eab04aceee462ffc44b817b63333
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749876"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187696"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 数据工厂
 
@@ -72,20 +72,20 @@ ms.locfileid: "121749876"
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-若要创建 Azure 数据工厂，请运行 [az datafactory factory create](/cli/azure/datafactory#az_datafactory_create) 命令：
+若要创建 Azure 数据工厂，请运行 [az datafactory create](/cli/azure/datafactory#az_datafactory_create) 命令：
 
 ```azurecli
-az datafactory factory create --resource-group ADFQuickStartRG \
+az datafactory create --resource-group ADFQuickStartRG \
     --factory-name ADFTutorialFactory
 ```
 
 > [!IMPORTANT]
 > 请将 `ADFTutorialFactory` 替换为全局唯一的数据工厂名称，例如 ADFTutorialFactorySP1127。
 
-可以使用 [az datafactory factory show](/cli/azure/datafactory#az_datafactory_factory_show) 命令查看创建的数据工厂：
+可以使用 [az datafactory show](/cli/azure/datafactory#az_datafactory_factory_show) 命令查看创建的数据工厂：
 
 ```azurecli
-az datafactory factory show --resource-group ADFQuickStartRG \
+az datafactory show --resource-group ADFQuickStartRG \
     --factory-name ADFTutorialFactory
 ```
 
@@ -102,17 +102,14 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 1. 在工作目录中，创建包含以下内容的 JSON 文件，这些内容包括上一步骤中获取的你自己的连接字符串。 将文件命名为 `AzureStorageLinkedService.json`：
 
-   ```json
-   {
-       "type":"AzureStorage",
-           "typeProperties":{
-           "connectionString":{
-           "type": "SecureString",
-           "value":"DefaultEndpointsProtocol=https;AccountName=adfquickstartstorage;AccountKey=K9F4Xk/EhYrMBIR98rtgJ0HRSIDU4eWQILLh2iXo05Xnr145+syIKNczQfORkQ3QIOZAd/eSDsvED19dAwW/tw==;EndpointSuffix=core.windows.net"
-           }
-       }
-   }
-   ```
+    ```json
+    {
+        "type": "AzureBlobStorage",
+        "typeProperties": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountName>;AccountKey=<accountKey>;EndpointSuffix=core.windows.net"
+        }
+    }
+    ```
 
 1. 使用 [az datafactory linked-service create](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_create) 命令创建名为 `AzureStorageLinkedService` 的链接服务：
 
@@ -124,26 +121,24 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 1. 在工作目录中，创建包含以下内容的名为 `InputDataset.json` 的 JSON 文件：
 
-   ```json
-   {
-       "type": 
-           "AzureBlob",
-           "linkedServiceName": {
-               "type":"LinkedServiceReference",
-               "referenceName":"AzureStorageLinkedService"
-               },
-           "annotations": [],
-           "type": "Binary",
-           "typeProperties": {
-               "location": {
-                   "type": "AzureBlobStorageLocation",
-                   "fileName": "emp.txt",
-                   "folderPath": "input",
-                   "container": "adftutorial"
-           }
-       }
-   }
-   ```
+    ```json
+    {
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": "emp.txt",
+                "folderPath": "input",
+                "container": "adftutorial"
+            }
+        }
+    }
+    ```
 
 1. 使用 [az datafactory dataset create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) 命令创建名为 `InputDataset` 的输入数据集：
 
@@ -155,26 +150,23 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 1. 在工作目录中，创建包含以下内容的名为 `OutputDataset.json` 的 JSON 文件：
 
-   ```json
-   {
-       "type": 
-           "AzureBlob",
-           "linkedServiceName": {
-               "type":"LinkedServiceReference",
-               "referenceName":"AzureStorageLinkedService"
-               },
-           "annotations": [],
-           "type": "Binary",
-           "typeProperties": {
-               "location": {
-                   "type": "AzureBlobStorageLocation",
-                   "fileName": "emp.txt",
-                   "folderPath": "output",
-                   "container": "adftutorial"
-           }
-       }
-   }
-   ```
+    ```json
+    {
+        "linkedServiceName": {
+            "referenceName": "AzureStorageLinkedService",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "Binary",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "folderPath": "output",
+                "container": "adftutorial"
+            }
+        }
+    }
+    ```
 
 1. 使用 [az datafactory dataset create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) 命令创建名为 `OutputDataset` 的输出数据集：
 
@@ -190,57 +182,57 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 1. 在工作目录中，创建包含以下内容的名为 `Adfv2QuickStartPipeline.json` 的 JSON 文件：
 
-   ```json
-   {
-       "name": "Adfv2QuickStartPipeline",
-       "properties": {
-           "activities": [
-               {
-                   "name": "CopyFromBlobToBlob",
-                   "type": "Copy",
-                   "dependsOn": [],
-                   "policy": {
-                       "timeout": "7.00:00:00",
-                       "retry": 0,
-                       "retryIntervalInSeconds": 30,
-                       "secureOutput": false,
-                       "secureInput": false
-                   },
-                   "userProperties": [],
-                   "typeProperties": {
-                          "source": {
-                           "type": "BinarySource",
-                           "storeSettings": {
-                               "type": "AzureBlobStorageReadSettings",
-                               "recursive": true
-                           }
-                       },
-                       "sink": {
-                           "type": "BinarySink",
-                           "storeSettings": {
-                               "type": "AzureBlobStorageWriteSettings"
-                           }
-                       },
-                       "enableStaging": false
-                   },
-                   "inputs": [
-                       {
-                           "referenceName": "InputDataset",
-                           "type": "DatasetReference"
-                       }
-                   ],
-                   "outputs": [
-                       {
-                           "referenceName": "OutputDataset",
-                           "type": "DatasetReference"
-                       }
-                   ]
-               }
-           ],
-           "annotations": []
-       }
-   }
-   ```
+    ```json
+    {
+        "name": "Adfv2QuickStartPipeline",
+        "properties": {
+            "activities": [
+                {
+                    "name": "CopyFromBlobToBlob",
+                    "type": "Copy",
+                    "dependsOn": [],
+                    "policy": {
+                        "timeout": "7.00:00:00",
+                        "retry": 0,
+                        "retryIntervalInSeconds": 30,
+                        "secureOutput": false,
+                        "secureInput": false
+                    },
+                    "userProperties": [],
+                    "typeProperties": {
+                        "source": {
+                            "type": "BinarySource",
+                            "storeSettings": {
+                                "type": "AzureBlobStorageReadSettings",
+                                "recursive": true
+                            }
+                        },
+                        "sink": {
+                            "type": "BinarySink",
+                            "storeSettings": {
+                                "type": "AzureBlobStorageWriteSettings"
+                            }
+                        },
+                        "enableStaging": false
+                    },
+                    "inputs": [
+                        {
+                            "referenceName": "InputDataset",
+                            "type": "DatasetReference"
+                        }
+                    ],
+                    "outputs": [
+                        {
+                            "referenceName": "OutputDataset",
+                            "type": "DatasetReference"
+                        }
+                    ]
+                }
+            ],
+            "annotations": []
+        }
+    }
+    ```
 
 1. 使用 [az datafactory pipeline create](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create) 命令创建名为 `Adfv2QuickStartPipeline` 的管道：
 

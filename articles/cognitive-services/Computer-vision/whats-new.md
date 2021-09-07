@@ -10,16 +10,22 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: ce04187cb513712998b6c4ba26d5210bb56ca5df
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b7292206aacbbca5c8e76ce573dc6fd0b3e32578
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453749"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835749"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
 了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="image-tagging-language-expansion"></a>图像标记语言扩展
+
+图像标记器的[最新版本 (v3.2)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) 现支持 50 种语言的标记。 有关详细信息，请参阅[语言支持](language-support.md)页。
 
 ## <a name="may-2021"></a>2021 年 5 月
 

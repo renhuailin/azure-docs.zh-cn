@@ -9,12 +9,12 @@ ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 2f92733fd440ebe9b9c6bc1c22de7c2bc8412599
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: aa745b9a5c19f45563b6fe30b80f67a776660d39
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464947"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272414"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure
 
@@ -266,8 +266,8 @@ ms.locfileid: "114464947"
     - 停止本地计算机的复制。
     - 从 Azure Migrate 的“复制服务器”计数中删除该计算机：服务器迁移。
     - 清除 VM 的复制状态信息。
-1. 在已迁移的计算机上安装 Azure VM [Windows](../virtual-machines/extensions/agent-windows.md) 或 [Linux](../virtual-machines/extensions/agent-linux.md) 代理。
-1. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
+1. 验证并[排查 Azure VM 上的所有 Windows 激活问题。](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)
+1. 执行任何迁移后的应用调整，例如更新主机名、数据库连接字符串和 Web 服务器配置。
 1. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
 1. 将流量交接到已迁移的 Azure VM 实例。
 1. 从本地 VM 清单中删除本地 VM。

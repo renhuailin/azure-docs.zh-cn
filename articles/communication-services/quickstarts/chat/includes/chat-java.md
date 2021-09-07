@@ -1,26 +1,26 @@
 ---
-title: 包含文件
+title: include 文件
 description: 包含文件
 services: azure-communication-services
-author: mikben
+author: probableprime
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: 63824148e25465034ed7bed49f1931514c10a35a
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.author: rifox
+ms.openlocfilehash: b5ea5a90a6ad39404208bb9c353bb33e86201299
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113113321"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967867"
 ---
 ## <a name="sample-code"></a>代码示例
 在 [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/chat-quickstart-java) 上查找此快速入门的最终代码。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Java 开发工具包 (JDK)](/azure/developer/java/fundamentals/java-jdk-install) 8 或更高版本。
@@ -58,7 +58,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-chat</artifactId>
-    <version>1.0.0</version>
+    <version><!-- Please refer to https://search.maven.org/artifact/com.azure/azure-communication-chat for the latest version --></version>
 </dependency>
 ```
 
@@ -68,7 +68,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0</version>
+    <version><!-- Please refer to https://search.maven.org/artifact/com.azure/azure-communication-common for the latest version --></version>
 </dependency>
 ```
 
@@ -184,14 +184,20 @@ ChatThreadClient chatThreadClient = chatClient.getChatThreadClient(chatThreadId)
 - 使用 `content` 提供聊天消息内容。
 - 使用 `type` 指定聊天消息内容类型（文本或 HTML）。
 - 使用 `senderDisplayName` 指定发送方的显示名称。
+- 可以选择使用 `metadata` 来包含想随消息一起发送的任何附加数据。 此字段为开发人员提供了一种机制，可用于扩展聊天消息功能并为用例添加自定义信息。 例如，在消息中共享文件链接时，你可能希望在元数据中添加“hasAttachment:true”，以便收件人的应用程序可分析并相应显示。
 
 响应 `sendChatMessageResult` 包含 `id`（消息的唯一 ID）。
 
 ```Java
+Map<String, String> metadata = new HashMap<String, String>();
+metadata.put("hasAttachment", "true");
+metadata.put("attachmentUrl", "https://contoso.com/files/attachment.docx");
+
 SendChatMessageOptions sendChatMessageOptions = new SendChatMessageOptions()
-    .setContent("Message content")
+    .setContent("Please take a look at the attachment")
     .setType(ChatMessageType.TEXT)
-    .setSenderDisplayName("Sender Display Name");
+    .setSenderDisplayName("Sender Display Name")
+    .setMetadata(metadata);
 
 SendChatMessageResult sendChatMessageResult = chatThreadClient.sendMessage(sendChatMessageOptions);
 String chatMessageId = sendChatMessageResult.getId();

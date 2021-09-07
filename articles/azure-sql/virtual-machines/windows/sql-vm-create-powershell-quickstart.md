@@ -14,12 +14,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f3a9090ace9fce69b0b9a1a445b498fc662f7ba3
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 8bfcd62558fd7e10bd4e4d80d3f0e8c04f5ba233
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079510"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220645"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Windows 虚拟机上创建 SQL Server
 
@@ -153,29 +153,7 @@ ms.locfileid: "112079510"
 
 若要获取门户集成和 SQL VM 功能，必须向 [SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md)注册。
 
-若要获取完整的功能，需要在完整模式下注册扩展。 不过，这样做会重新启动 SQL Server 服务，因此建议的方法是在轻型模式下注册，然后在维护时段内升级到完整模式。 
-
-首先，在轻型模式下注册 SQL Server VM： 
-
-```powershell-interactive
-# Get the existing compute VM
-$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-        
-# Register SQL VM with 'Lightweight' SQL IaaS agent
-New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-  -LicenseType PAYG -SqlManagementType LightWeight
-```
-
-然后，在维护时段内升级到完整模式： 
-
-```powershell-interactive
-# Get the existing Compute VM
-$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-      
-# Register with SQL IaaS Agent extension in full mode
-Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
-```
-
+若要获取完整的功能，需要在[完整模式](sql-agent-extension-manually-register-single-vm.md#full-mode)下注册扩展。 否则，在轻型模式下注册。 
 
 
 ## <a name="remote-desktop-into-the-vm"></a>通过远程桌面连接到 VM
@@ -198,7 +176,7 @@ Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManag
 
 1. 登录到远程桌面会话以后，从开始菜单启动 **SQL Server Management Studio 2017**。
 
-1. 在“连接到服务器”对话框中，保留默认设置。 服务器名称是 VM 的名称。 身份验证设置为“Windows 身份验证”。 选择“连接” 。
+1. 在“连接到服务器”对话框中，保留默认设置。 服务器名称是 VM 的名称。 身份验证设置为“Windows 身份验证”。 选择“连接”。
 
 你现在已通过本地方式连接到 SQL Server。 若要进行远程连接，必须通过 Azure 门户或手动[配置连接性](ways-to-connect-to-sql.md)。
 

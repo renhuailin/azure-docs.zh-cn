@@ -2,27 +2,27 @@
 title: Azure 通信服务通话录制概述
 titleSuffix: An Azure Communication Services concept document
 description: 提供通话录制功能和 API 的概述。
-author: joseys
+author: GrantMeStrength
 manager: anvalent
 services: azure-communication-services
-ms.author: joseys
+ms.author: jken
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 898346d69b656656c93889002109bae0f15b2dbc
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: fef4972271046f7435140fd2d9ba3d18c7c3b11c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464330"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254742"
 ---
 # <a name="calling-recording-overview"></a>通话录制概述
 
 [!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
 
 > [!NOTE]
-> 通话记录当前仅适用于在美国境内创建的通信服务资源。
+> 通话记录仅适用于在美国、英国、欧洲、亚洲和澳大利亚境内创建的通信服务资源。
 
 通话录制提供一组 API，用于启动、停止、暂停和继续录制。 这些 API 可通过服务器端业务逻辑访问，也可通过用户操作触发的事件访问。 录制的媒体输出采用 MP4 音频+视频格式，Teams 也使用这种格式录制媒体。 通过事件网格发出与媒体和元数据相关的通知。 录制在内置临时存储中存储 48 小时，以便检索以及移动到所选的长期存储解决方案。 
 

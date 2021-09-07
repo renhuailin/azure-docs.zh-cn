@@ -1,30 +1,31 @@
 ---
-title: Tutorial:在 Azure Synapse Analytics 中使用认知服务的先决条件
+title: 快速入门：在 Azure Synapse Analytics 中使用认知服务的先决条件
 description: 了解如何配置在 Azure Synapse 中使用认知服务的先决条件。
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
-ms.topic: tutorial
+ms.topic: quickstart
 ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: da1760def8f2c036854839787b1051e8f52358d0
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: e10a31b2156cce03dcef40a88f5cb380f12dd03c
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809645"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835518"
 ---
-# <a name="tutorial-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>Tutorial:在 Azure Synapse Analytics 中使用认知服务的先决条件
+# <a name="quickstart-configure-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>快速入门：配置在 Azure Synapse Analytics 中使用认知服务的先决条件
 
-本教程介绍如何设置在 Azure Synapse Analytics 中安全使用 Azure 认知服务的先决条件。
+本快速入门介绍如何设置在 Azure Synapse Analytics 中安全使用 Azure 认知服务的先决条件。 通过链接这些 Azure 认知服务，可以利用来自 Synapse 中各种体验的 Azure 认知服务。
 
-本教程涉及：
+本快速入门涵盖：
 > [!div class="checklist"]
 > - 创建文本分析或异常检测器等认知服务资源。
 > - 将认知服务资源的身份验证密钥存储为 Azure Key Vault 中的机密，并配置 Azure Synapse Analytics 工作区的访问权限。
 > - 在 Azure Synapse Analytics 工作区中创建 Azure Key Vault 链接服务。
+> - 在 Azure Synapse Analytics 工作区中创建 Azure 认知服务链接服务。
 
 如果没有 Azure 订阅，请[在开始之前创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -65,7 +66,7 @@ ms.locfileid: "109809645"
    ![显示用于创建机密的选项的屏幕截图。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00d.png)
 
    > [!IMPORTANT]
-   > 请确保记住或记下此密钥名称。 稍后从 Synapse Studio 连接到认知服务时，会用到它。
+   > 请确保记住或记下此密钥名称。 稍后在创建 Azure 认知服务链接服务时将用到它。
 
 ## <a name="create-an-azure-key-vault-linked-service-in-azure-synapse"></a>在 Azure Synapse 中创建 Azure Key Vault 链接服务
 
@@ -74,6 +75,15 @@ ms.locfileid: "109809645"
 3. 选择“测试连接”按钮，对连接进行验证。 如果连接为绿色，请选择“创建”，然后选择“全部发布”，以保存所做的更改 。
 
 ![显示 Azure Key Vault 作为新链接服务的屏幕截图。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-00e.png)
+
+
+## <a name="create-an-azure-cognitive-service-linked-service-in-azure-synapse"></a>在 Azure Synapse 中创建 Azure 认知服务链接服务
+
+1. 在 Synapse Studio 中打开工作区。
+2. 转到“管理” > “链接服务” 。 通过指向刚刚创建的认知服务来创建 Azure 认知服务链接服务。 
+3. 选择“测试连接”按钮，对连接进行验证。 如果连接为绿色，请选择“创建”，然后选择“全部发布”，以保存所做的更改 。
+
+![显示 Azure 认知服务作为新链接服务的屏幕截图。](media/tutorial-configure-cognitive-services/tutorial-configure-cognitive-services-linked-service.png)
 
 现在，可以继续学习关于在 Synapse Studio 中使用 Azure 认知服务体验的教程之一。
 

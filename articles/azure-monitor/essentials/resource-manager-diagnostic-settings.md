@@ -5,12 +5,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: 5b6e83909d3a8ccd224169e1571def422c7456c4
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: b422bbad06b419f35e8f4a1107c60e4312abba4d
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006322"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304023"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Azure Monitor 中的诊断设置的资源管理器模板示例
 本文包含用于为 Azure 资源创建诊断设置的 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)示例。 每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
@@ -127,6 +127,9 @@ ms.locfileid: "112006322"
 
 ## <a name="diagnostic-setting-for-azure-key-vault"></a>Azure Key Vault 的诊断设置 
 下面的示例将 `Microsoft.KeyVault/vaults/providers/diagnosticSettings` 类型的资源添加到模板，从而为 Azure Key Vault 创建诊断设置。
+
+> [!IMPORTANT]
+> 对于 Azure Key Vault，事件中心必须与密钥保管库位于同一区域。
 
 ### <a name="template-file"></a>模板文件
 

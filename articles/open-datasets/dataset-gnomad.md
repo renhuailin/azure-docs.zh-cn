@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: fe194101c42974e4822c088f7255bfcec5e7a65d
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 779f39afa7ac9b9890013db546223274cdf37ad6
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982629"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867658"
 ---
 # <a name="genome-aggregation-database-gnomad"></a>基因组聚合数据库 (gnomAD)
 
@@ -34,18 +34,32 @@ ms.locfileid: "112982629"
 
 ## <a name="data-access"></a>数据访问
 
-存储帐户： https://azureopendatastorage.blob.core.windows.net/gnomad
+存储帐户： https://datasetgnomad.blob.core.windows.net/dataset/
 
-这些数据是公开提供的，没有任何限制，建议使用 azcopy 工具进行批量操作。 例如，查看 gnomAD 3.0 版中的 VCF：
+这些数据是公开提供的，没有任何限制，建议使用 AzCopy 工具进行批量操作。 例如，查看 gnomAD 3.0 版中的 VCF：
 
 ```powershell
-$ azcopy ls https://azureopendatastorage.blob.core.windows.net/gnomad/release/3.0/vcf/genomes
+$ azcopy ls https://datasetgnomad.blob.core.windows.net/dataset/release/3.0/vcf/genomes
 ```
 
 以递归方式下载所有 VCF：
 
 ```powershell
-$ azcopy cp --recursive=true https://azureopendatastorage.blob.core.windows.net/gnomad/release/3.0/vcf/genomes .
+$ azcopy cp --recursive=true https://datasetgnomad.blob.core.windows.net/dataset/release/3.0/vcf/genomes .
+```
+
+新：gnomAD v2.1.1 VCF 文件的 Parquet 格式（外显子组和基因组）
+
+查看 parquet 文件：
+
+```powershell
+$ azcopy ls https://datasetgnomadparquet.blob.core.windows.net/dataset
+```
+
+以递归方式下载所有 parquet 文件：
+
+```powershell
+$ cp --recursive=true https://datasetgnomadparquet.blob.core.windows.net/dataset
 ```
 
 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)也是一个浏览 gnomAD 版本中的文件列表的有用工具。

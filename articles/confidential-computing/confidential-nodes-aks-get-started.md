@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/08/2021
 ms.author: amgowda
 ms.custom: contentperf-fy21q3, devx-track-azurecli
-ms.openlocfilehash: e7ff59c3c6ba75321c63db81d34ea4c7d46a841a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: db2eb3bf906ffebe67489ab83cb7e13595b601d5
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748632"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112747"
 ---
 # <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署具有机密计算节点的 AKS 群集
 
@@ -145,6 +145,9 @@ kube-system     sgx-device-plugin-xxxx     1/1     Running
 现在可以开始部署测试应用程序了。 
 
 创建一个名为 hello-world-enclave.yaml 的文件，并粘贴以下 YAML 清单。 你可在 [Open Enclave 项目](https://github.com/openenclave/openenclave/tree/master/samples/helloworld)中找到此示例应用程序代码。 此部署假设你已部署 confcom 加载项。
+
+> [!NOTE]
+> 以下示例从 Docker Hub 拉取公共容器映像。 建议设置一个拉取密钥，以使用 Docker Hub 帐户进行身份验证，而不是发出匿名拉取请求。 若要在使用公共内容时提高可靠性，请在专用 Azure 容器注册表中导入和管理映像。 [详细了解如何使用公共映像](../container-registry/buffer-gate-public-content.md)。
 
 ```yaml
 apiVersion: batch/v1

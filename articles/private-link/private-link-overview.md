@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/15/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 0b420b55800d1ef17f3b01d291bec3073b236e3c
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 3fc3dbbe453ebddd03f70082ff6974fd830b380c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112200125"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305817"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
@@ -78,3 +78,4 @@ Azure 专用链接可与 Azure Monitor 集成。 通过这种组合可以：
 
 - [快速入门：使用 Azure 门户创建专用终结点](create-private-endpoint-portal.md)
 - [快速入门：使用 Azure 门户创建专用链接服务](create-private-link-service-portal.md)
+- [Learn 模块：Azure 专用链接简介](/learn/modules/introduction-azure-private-link/)

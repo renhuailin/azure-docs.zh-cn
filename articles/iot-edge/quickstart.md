@@ -11,12 +11,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: dc0e8b0affcb89058e95bc7ce1c3cafb5882921f
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: 3f0e2baa7ac30e0e75167dc603de73fdd1df8d73
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112552781"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215355"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device"></a>快速入门：将第一个 IoT Edge 模块部署到 Windows 设备
 
@@ -185,6 +185,9 @@ Azure IoT Edge 的主要功能之一是从云中将代码部署到 IoT Edge 设�
 
 1. 选择设备列表中目标设备的设备 ID。
 
+   创建新的 IoT Edge 设备时，它将在 Azure 门户中显示状态代码 `417 -- The device's deployment configuration is not set`。 此状态正常，表示设备已准备好接收模块部署。
+
+
 1. 在上方栏中，选择“设置模块”。
 
    ![显示正在选择“设置模块”的屏幕截图。](./media/quickstart/select-set-modules.png)
@@ -291,7 +294,7 @@ az group list
 
 在本快速入门中，你创建了一个 IoT Edge 设备并使用 Azure IoT Edge 云接口将代码部署到该设备上。 现在，你有了一个测试设备，可以生成与环境相关的原始数据。
 
-下一步是设置本地开发环境，以便开始创建运行业务逻辑的 IoT Edge 模块。
+下一教程将介绍如何从 Azure 门户监视设备的活动和运行状况。
 
 > [!div class="nextstepaction"]
-> [开始开发 IoT Edge 模块](tutorial-develop-for-linux.md)
+> [监视 IoT Edge 设备](tutorial-monitor-with-workbooks.md)

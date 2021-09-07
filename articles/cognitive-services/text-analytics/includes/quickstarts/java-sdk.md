@@ -6,26 +6,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 07/15/2021
+ms.date: 08/17/2021
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 58503476a3c17fdaff3c33585210dc762812b539
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3284cef03ce899a096816ba23736d29fdc228eb5
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114594149"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864817"
 ---
 <a name="HOLTop"></a>
 
+# <a name="version-32-preview1"></a>[Version 3.2-preview.1](#tab/version-3-2)
+
+[v3.2-preview.1 参考文档](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/textanalytics/azure-ai-textanalytics) | [v3.2-preview 包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.2.0-beta.1) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/textanalytics/azure-ai-textanalytics/src/samples)
+
 # <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
-[参考文档](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/textanalytics/azure-ai-textanalytics) | [包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/textanalytics/azure-ai-textanalytics/src/samples)
-
-# <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-[参考文档](/java/api/overview/azure/ai-textanalytics-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics) | [包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[参考文档](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-stable) | [库源代码](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics) | [v3.1 包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ---
 
@@ -33,6 +33,7 @@ ms.locfileid: "114594149"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * [Java 开发工具包](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) 版本 8 或更高版本
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 </a>，以获取你的密钥和终结点。  部署后，单击“转到资源”。
     * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
@@ -42,9 +43,36 @@ ms.locfileid: "114594149"
 
 ### <a name="add-the-client-library"></a>添加客户端库
 
+# <a name="version-32-preview"></a>[版本 3.2-preview](#tab/version-3-2)
+
+在首选 IDE 或开发环境中创建 Maven 项目。 然后在项目的 pom.xml 文件中，添加以下依赖项。 可联机找到[用于其他生成工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.2.0-beta.1)的实现语法。
+
+```xml
+<dependencies>
+     <dependency>
+        <groupId>com.azure</groupId>
+        <artifactId>azure-ai-textanalytics</artifactId>
+        <version>5.2.0-beta.1</version>
+    </dependency>
+</dependencies>
+```
+
+此版本的文本分析 API 中包含的功能：
+
+* 情绪分析
+* 观点挖掘
+* 语言检测
+* 实体识别
+* 实体链接
+* 个人身份信息识别
+* 关键短语提取
+* 异步方法
+* 运行状况文本分析
+* 文本摘要
+
 # <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
-在首选 IDE 或开发环境中创建 Maven 项目。 然后在项目的 pom.xml 文件中，添加以下依赖项。 可联机找到[用于其他生成工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.7)的实现语法。
+在首选 IDE 或开发环境中创建 Maven 项目。 然后在项目的 pom.xml 文件中，添加以下依赖项。 可联机找到[用于其他生成工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0)的实现语法。
 
 ```xml
 <dependencies>
@@ -56,32 +84,23 @@ ms.locfileid: "114594149"
 </dependencies>
 ```
 
-# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+此版本的文本分析 API 中包含的功能：
 
-在首选 IDE 或开发环境中创建 Maven 项目。 然后在项目的 pom.xml 文件中，添加以下依赖项。 可联机找到[用于其他生成工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)的实现语法。
-
-```xml
-<dependencies>
-     <dependency>
-        <groupId>com.azure</groupId>
-        <artifactId>azure-ai-textanalytics</artifactId>
-        <version>5.0.0</version>
-    </dependency>
-</dependencies>
-```
-
-> [!TIP]
-> 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/TextAnalytics/TextAnalyticsSamples.java)找到它，其中包含此快速入门中的代码示例。 
+* 情绪分析
+* 观点挖掘
+* 语言检测
+* 实体识别
+* 实体链接
+* 个人身份信息识别
+* 关键短语提取
+* 异步方法
+* 运行状况文本分析
 
 ---
 
 创建名为 `TextAnalyticsSamples.java` 的 Java 文件。 打开 文件并添加以下 `import` 语句：
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
-
-
 ```java
-
 import com.azure.ai.textanalytics.TextAnalyticsAsyncClient;
 import com.azure.core.credential.AzureKeyCredential;
 import com.azure.ai.textanalytics.models.*;
@@ -95,23 +114,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.Arrays;
 import com.azure.core.util.Context;
 import com.azure.core.util.polling.SyncPoller;
-import com.azure.ai.textanalytics.util.AnalyzeHealthcareEntitiesResultCollection;
-import com.azure.ai.textanalytics.util.AnalyzeHealthcareEntitiesPagedIterable;
+
+import com.azure.core.util.polling.LongRunningOperationStatus;
+import com.azure.ai.textanalytics.util.*;
+import com.azure.core.http.rest.PagedResponse;
 ```
-
-# <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-```java
-import com.azure.core.credential.AzureKeyCredential;
-import com.azure.ai.textanalytics.models.*;
-import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
-import com.azure.ai.textanalytics.TextAnalyticsClient;
-```
-
----
-
-
-
 
 在 java 文件中，添加一个新类并添加你的 Azure 资源的密钥和终结点，如下所示。
 
@@ -126,54 +133,27 @@ public class TextAnalyticsSamples {
 
 将以下 main 方法添加到该类。 稍后将定义此处调用的方法。
 
-# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
-
 ```java
 public static void main(String[] args) {
     //You will create these methods later in the quickstart.
     TextAnalyticsClient client = authenticateClient(KEY, ENDPOINT);
-
-    sentimentAnalysisWithOpinionMiningExample(client)
-    detectLanguageExample(client);
-    recognizeEntitiesExample(client);
-    recognizeLinkedEntitiesExample(client);
-    recognizePiiEntitiesExample(client);
-    extractKeyPhrasesExample(client);
-}
-```
-
-# <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-```java
-public static void main(String[] args) {
-    //You will create these methods later in the quickstart.
-    TextAnalyticsClient client = authenticateClient(KEY, ENDPOINT);
-
     sentimentAnalysisExample(client);
+    sentimentAnalysisWithOpinionMiningExample(client);
     detectLanguageExample(client);
     recognizeEntitiesExample(client);
+    recognizePiiEntitiesExample(client);
     recognizeLinkedEntitiesExample(client);
     extractKeyPhrasesExample(client);
-        AnalyzeOperationExample(client)
+    analyzeOperationExample(client);
 }
 ```
-
----
 
 
 ## <a name="object-model"></a>对象模型
 
 文本分析客户端是一个 `TextAnalyticsClient` 对象，该对象使用你的密钥在 Azure 中进行身份验证，并提供用于接受文本（单个字符串或批）的函数。 可以同步方式或异步方式将文本发送到 API。 响应对象包含发送的每个文档的分析信息。 
 
-## <a name="code-examples"></a>代码示例
-
-* [对客户端进行身份验证](#authenticate-the-client)
-* [情绪分析](#sentiment-analysis) 
-* [观点挖掘](#opinion-mining)
-* [语言检测](#language-detection)
-* [命名实体识别](#named-entity-recognition-ner)
-* [实体链接](#entity-linking)
-* [关键短语提取](#key-phrase-extraction)
+[!INCLUDE [text-analytics-character-limits](../character-limits.md)]
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -193,14 +173,9 @@ static TextAnalyticsClient authenticateClient(String key, String endpoint) {
 
 ## <a name="sentiment-analysis"></a>情绪分析
 
-# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
-
-> [!NOTE]
-> 在版本 `3.1` 中：
-> * 情绪分析包括“观点挖掘分析”（可选标志）。 
-> * “观点挖掘”包含角度和观点级情绪。 
-
 创建一个名为 `sentimentAnalysisExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `analyzeSentiment()` 函数。 如果成功，则返回的 `AnalyzeSentimentResult` 对象将包含 `documentSentiment` 和 `sentenceSentiments`，否则将包含 `errorMessage`。 
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```java
 static void sentimentAnalysisExample(TextAnalyticsClient client)
@@ -240,38 +215,40 @@ Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.7
 
 若要使用观点挖掘执行情绪分析，请创建一个名为 `sentimentAnalysisWithOpinionMiningExample()` 的新函数（该函数接受之前创建的客户端），并通过设置选项对象 `AnalyzeSentimentOptions` 调用其 `analyzeSentiment()` 函数。 如果成功，则返回的 `AnalyzeSentimentResult` 对象将包含 `documentSentiment` 和 `sentenceSentiments`，否则将包含 `errorMessage`。 
 
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
+
 
 ```java
- static void sentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client)
- {
-     // The document that needs be analyzed.
-     String document = "Bad atmosphere. Not close to plenty of restaurants, hotels, and transit! Staff are not friendly and helpful.";
+static void sentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client)
+{
+    // The document that needs be analyzed.
+    String document = "Bad atmosphere. Not close to plenty of restaurants, hotels, and transit! Staff are not friendly and helpful.";
 
-     System.out.printf("Document = %s%n", document);
+    System.out.printf("Document = %s%n", document);
 
-     AnalyzeSentimentOptions options = new AnalyzeSentimentOptions().setIncludeOpinionMining(true);
-     final DocumentSentiment documentSentiment = client.analyzeSentiment(document, "en", options);
-     SentimentConfidenceScores scores = documentSentiment.getConfidenceScores();
-     System.out.printf(
-             "Recognized document sentiment: %s, positive score: %f, neutral score: %f, negative score: %f.%n",
-             documentSentiment.getSentiment(), scores.getPositive(), scores.getNeutral(), scores.getNegative());
+    AnalyzeSentimentOptions options = new AnalyzeSentimentOptions().setIncludeOpinionMining(true);
+    final DocumentSentiment documentSentiment = client.analyzeSentiment(document, "en", options);
+    SentimentConfidenceScores scores = documentSentiment.getConfidenceScores();
+    System.out.printf(
+            "Recognized document sentiment: %s, positive score: %f, neutral score: %f, negative score: %f.%n",
+            documentSentiment.getSentiment(), scores.getPositive(), scores.getNeutral(), scores.getNegative());
 
 
-     documentSentiment.getSentences().forEach(sentenceSentiment -> {
-         SentimentConfidenceScores sentenceScores = sentenceSentiment.getConfidenceScores();
-         System.out.printf("\tSentence sentiment: %s, positive score: %f, neutral score: %f, negative score: %f.%n",
-                 sentenceSentiment.getSentiment(), sentenceScores.getPositive(), sentenceScores.getNeutral(), sentenceScores.getNegative());
-         sentenceSentiment.getOpinions().forEach(opinion -> {
-             TargetSentiment targetSentiment = opinion.getTarget();
-             System.out.printf("\t\tTarget sentiment: %s, target text: %s%n", targetSentiment.getSentiment(),
-                     targetSentiment.getText());
-             for (AssessmentSentiment assessmentSentiment : opinion.getAssessments()) {
-                 System.out.printf("\t\t\t'%s' assessment sentiment because of \"%s\". Is the assessment negated: %s.%n",
-                         assessmentSentiment.getSentiment(), assessmentSentiment.getText(), assessmentSentiment.isNegated());
-             }
-         });
-     });
- }
+    documentSentiment.getSentences().forEach(sentenceSentiment -> {
+        SentimentConfidenceScores sentenceScores = sentenceSentiment.getConfidenceScores();
+        System.out.printf("\tSentence sentiment: %s, positive score: %f, neutral score: %f, negative score: %f.%n",
+                sentenceSentiment.getSentiment(), sentenceScores.getPositive(), sentenceScores.getNeutral(), sentenceScores.getNegative());
+        sentenceSentiment.getOpinions().forEach(opinion -> {
+            TargetSentiment targetSentiment = opinion.getTarget();
+            System.out.printf("\t\tTarget sentiment: %s, target text: %s%n", targetSentiment.getSentiment(),
+                    targetSentiment.getText());
+            for (AssessmentSentiment assessmentSentiment : opinion.getAssessments()) {
+                System.out.printf("\t\t\t'%s' assessment sentiment because of \"%s\". Is the assessment negated: %s.%n",
+                        assessmentSentiment.getSentiment(), assessmentSentiment.getText(), assessmentSentiment.isNegated());
+            }
+        });
+    });
+}
 ```
 
 ### <a name="output"></a>输出
@@ -289,52 +266,14 @@ Recognized document sentiment: negative, positive score: 0.010000, neutral score
             'negative' assessment sentiment because of "helpful". Is the assessment negated: true.
 ```
 
-# <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-创建一个名为 `sentimentAnalysisExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `analyzeSentiment()` 函数。 如果成功，则返回的 `AnalyzeSentimentResult` 对象将包含 `documentSentiment` 和 `sentenceSentiments`，否则将包含 `errorMessage`。 
-
-```java
-static void sentimentAnalysisExample(TextAnalyticsClient client)
-{
-    // The text that need be analyzed.
-    String text = "I had the best day of my life. I wish you were there with me.";
-
-    DocumentSentiment documentSentiment = client.analyzeSentiment(text);
-    System.out.printf(
-        "Recognized document sentiment: %s, positive score: %s, neutral score: %s, negative score: %s.%n",
-        documentSentiment.getSentiment(),
-        documentSentiment.getConfidenceScores().getPositive(),
-        documentSentiment.getConfidenceScores().getNeutral(),
-        documentSentiment.getConfidenceScores().getNegative());
-
-    for (SentenceSentiment sentenceSentiment : documentSentiment.getSentences()) {
-        System.out.printf(
-            "Recognized sentence sentiment: %s, positive score: %s, neutral score: %s, negative score: %s.%n",
-            sentenceSentiment.getSentiment(),
-            sentenceSentiment.getConfidenceScores().getPositive(),
-            sentenceSentiment.getConfidenceScores().getNeutral(),
-            sentenceSentiment.getConfidenceScores().getNegative());
-        }
-    }
-}
-```
-
-### <a name="output"></a>输出
-
-```console
-Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
-Recognized sentence sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
-Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
-```
-
----
-
 ## <a name="language-detection"></a>语言检测
 
 创建一个名为 `detectLanguageExample()` 的新函数，该函数接受你之前创建的客户端并调用其 `detectLanguage()` 函数。 如果成功，则返回的 `DetectLanguageResult` 对象将包含检测到的主要语言和检测到的其他语言的列表，如果失败，则将包含 `errorMessage`。 此示例同样适用于该 API 的版本 3.0 和 3.1。
 
 > [!Tip]
 > 在某些情况下，可能很难根据输入区分语言。 可以使用 `countryHint` 参数指定 2 个字母的国家/地区代码。 默认情况下，API 使用“US”作为默认的 countryHint，要删除此行为，可以通过将此值设置为空字符串 `countryHint = ""` 来重置此参数。 若要设置不同的默认值，请设置 `TextAnalyticsClientOptions.DefaultCountryHint` 属性，然后在客户端初始化期间传递它。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```java
 static void detectLanguageExample(TextAnalyticsClient client)
@@ -358,14 +297,9 @@ Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 
 ## <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
-# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
-
-> [!NOTE]
-> 在版本 `3.1` 中：
-> * NER 包含单独用于检测个人信息的方法。 
-> * 实体链接是一个独立于 NER 的请求。
-
 创建一个名为 `recognizeEntitiesExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `recognizeEntities()` 函数。 如果成功，则返回的 `CategorizedEntityCollection` 对象将包含 `CategorizedEntity` 的列表，否则将包含 `errorMessage`。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```java
 static void recognizeEntitiesExample(TextAnalyticsClient client)
@@ -399,6 +333,8 @@ Recognized entity: last week, entity category: DateTime, entity sub-category: Da
 
 创建一个名为 `recognizePiiEntitiesExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `recognizePiiEntities()` 函数。 如果成功，则返回的 `PiiEntityCollection` 对象将包含 `PiiEntity` 的列表，否则将包含 `errorMessage`。 它还将包含已修订的文本，该文本由输入文本组成，其中所有可识别实体均替换为 `*****`。
 
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
+
 ```java
 static void recognizePiiEntitiesExample(TextAnalyticsClient client)
 {
@@ -420,45 +356,7 @@ Redacted Text: My SSN is ***********
 Recognized Personally Identifiable Information entity: 859-98-0987, entity category: U.S. Social Security Number (SSN), entity subcategory: null, confidence score: 0.650000.
 ```
 
-# <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-> [!NOTE]
-> 在版本 `3.0` 中：
-> * NER 包含单独用于检测个人信息的方法。 
-> * 实体链接是一个独立于 NER 的请求。
-
-创建一个名为 `recognizeEntitiesExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `recognizeEntities()` 函数。 如果成功，则返回的 `CategorizedEntityCollection` 对象将包含 `CategorizedEntity` 的列表，否则将包含 `errorMessage`。
-
-```java
-static void recognizeEntitiesExample(TextAnalyticsClient client)
-{
-    // The text that need be analyzed.
-    String text = "I had a wonderful trip to Seattle last week.";
-
-    for (CategorizedEntity entity : client.recognizeEntities(text)) {
-        System.out.printf(
-            "Recognized entity: %s, entity category: %s, entity sub-category: %s, score: %s.%n",
-            entity.getText(),
-            entity.getCategory(),
-            entity.getSubcategory(),
-            entity.getConfidenceScore());
-    }
-}
-```
-
-### <a name="output"></a>输出
-
-```console
-Recognized entity: trip, entity category: Event, entity sub-category: null, score: 0.61.
-Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, score: 0.82.
-Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
-```
-
----
-
 ## <a name="entity-linking"></a>实体链接
-
-# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个名为 `recognizeLinkedEntitiesExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `recognizeLinkedEntities()` 函数。 如果成功，则返回的 `LinkedEntityCollection` 对象将包含 `LinkedEntity` 的列表，否则将包含 `errorMessage`。 由于链接实体是唯一标识的，因此同一实体的实例将以分组形式出现在 `LinkedEntity` 对象下，显示为 `LinkedEntityMatch` 对象的列表。
 
@@ -518,68 +416,11 @@ Matches:
 Text: Altair 8800, Score: 0.88, Offset: 11, Length: 116
 ```
 
-# <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-创建一个名为 `recognizeLinkedEntitiesExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `recognizeLinkedEntities()` 函数。 如果成功，则返回的 `LinkedEntityCollection` 对象将包含 `LinkedEntity` 的列表，否则将包含 `errorMessage`。 由于链接实体是唯一标识的，因此同一实体的实例将以分组形式出现在 `LinkedEntity` 对象下，显示为 `LinkedEntityMatch` 对象的列表。
-
-```java
-static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
-{
-    // The text that need be analyzed.
-    String text = "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, " +
-        "to develop and sell BASIC interpreters for the Altair 8800. " +
-        "During his career at Microsoft, Gates held the positions of chairman, " +
-        "chief executive officer, president and chief software architect, " +
-        "while also being the largest individual shareholder until May 2014.";
-
-    System.out.printf("Linked Entities:%n");
-    for (LinkedEntity linkedEntity : client.recognizeLinkedEntities(text)) {
-        System.out.printf("Name: %s, ID: %s, URL: %s, Data Source: %s.%n",
-            linkedEntity.getName(),
-            linkedEntity.getDataSourceEntityId(),
-            linkedEntity.getUrl(),
-            linkedEntity.getDataSource());
-        System.out.printf("Matches:%n");
-        for (LinkedEntityMatch linkedEntityMatch : linkedEntity.getMatches()) {
-            System.out.printf("Text: %s, Score: %.2f%n",
-            linkedEntityMatch.getText(),
-            linkedEntityMatch.getConfidenceScore());
-        }
-    }
-}
-```
-
-### <a name="output"></a>输出
-
-```console
-Linked Entities:
-Name: Altair 8800, ID: Altair 8800, URL: https://en.wikipedia.org/wiki/Altair_8800, Data Source: Wikipedia.
-Matches:
-Text: Altair 8800, Score: 0.88
-Name: Bill Gates, ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates, Data Source: Wikipedia.
-Matches:
-Text: Bill Gates, Score: 0.63
-Text: Gates, Score: 0.63
-Name: Paul Allen, ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen, Data Source: Wikipedia.
-Matches:
-Text: Paul Allen, Score: 0.60
-Name: Microsoft, ID: Microsoft, URL: https://en.wikipedia.org/wiki/Microsoft, Data Source: Wikipedia.
-Matches:
-Text: Microsoft, Score: 0.55
-Text: Microsoft, Score: 0.55
-Name: April 4, ID: April 4, URL: https://en.wikipedia.org/wiki/April_4, Data Source: Wikipedia.
-Matches:
-Text: April 4, Score: 0.32
-Name: BASIC, ID: BASIC, URL: https://en.wikipedia.org/wiki/BASIC, Data Source: Wikipedia.
-Matches:
-Text: BASIC, Score: 0.33
-```
-
----
-
 ## <a name="key-phrase-extraction"></a>关键短语提取
 
 创建一个名为 `extractKeyPhrasesExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `extractKeyPhrases()` 函数。 如果成功，则返回的 `ExtractKeyPhraseResult` 对象将包含关键短语的列表，否则将包含 `errorMessage`。 此示例同样适用于该 API 的版本 3.0 和 3.1。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 ```java
 static void extractKeyPhrasesExample(TextAnalyticsClient client)
@@ -605,9 +446,11 @@ veterinarian
 
 ## <a name="extract-health-entities"></a>提取健康状况实体
 
-# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
+[!INCLUDE [health operation pricing](../health-operation-pricing-caution.md)]
 
 可以使用文本分析来执行异步请求，以从文本中提取健康状况实体。 下面的示例演示了基本示例。 可以[在 GitHub 上](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeHealthcareEntities.java)找到更高级的示例。
+
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
 
 
 ```java
@@ -660,6 +503,15 @@ static void healthExample(TextAnalyticsClient client){
 }
 ```
 
+在方法 `main()` 中，调用上述代码示例。 
+
+```java
+public static void main(String[] args) {
+    TextAnalyticsClient client = authenticateClient(KEY, ENDPOINT);
+    healthExample(client);
+}
+```
+
 ### <a name="output"></a>output
 
 ```console
@@ -680,15 +532,7 @@ Relation type: FrequencyOfMedication.
     Entity text: twice daily, category: Frequency, role: Frequency.
 ```
 
-# <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-此功能在版本 3.0 中不可用。
-
----
-
 ## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>使用“分析”操作异步使用 API
-
-# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 可以使用“分析”操作执行异步批处理请求实现以下目的：NER、关键短语提取、情绪分析和 PII 检测。 下面的示例演示了有关一个操作的基本示例。 可以[在 GitHub 上](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeActions.md)找到更高级的示例
 
@@ -696,81 +540,83 @@ Relation type: FrequencyOfMedication.
 
 创建名为 `analyzeBatchActionsExample()` 的新函数，它将调用 `beginAnalyzeBatchActions()` 函数。 结果将是一个长期操作，将轮询该操作以获得结果。
 
+[!INCLUDE [The following method applies to both v3.1 and v3.2-preview](../method-applies-both-versions.md)]
+
 ```java
 static void analyzeActionsExample(TextAnalyticsClient client){
-        List<TextDocumentInput> documents = new ArrayList<>();
-        documents.add(new TextDocumentInput("0", "Microsoft was founded by Bill Gates and Paul Allen."));
+    List<TextDocumentInput> documents = new ArrayList<>();
+    documents.add(new TextDocumentInput("0", "Microsoft was founded by Bill Gates and Paul Allen."));
 
 
-        SyncPoller<AnalyzeActionsOperationDetail, AnalyzeActionsResultPagedIterable> syncPoller =
-                client.beginAnalyzeActions(documents,
-                        new TextAnalyticsActions().setDisplayName("Example analyze task")
-                                .setRecognizeEntitiesActions(new RecognizeEntitiesAction())
-                                .setExtractKeyPhrasesActions(
-                                        new ExtractKeyPhrasesAction().setModelVersion("latest")),
-                        new AnalyzeActionsOptions().setIncludeStatistics(false),
-                        Context.NONE);
+    SyncPoller<AnalyzeActionsOperationDetail, AnalyzeActionsResultPagedIterable> syncPoller =
+            client.beginAnalyzeActions(documents,
+                    new TextAnalyticsActions().setDisplayName("Example analyze task")
+                            .setRecognizeEntitiesActions(new RecognizeEntitiesAction())
+                            .setExtractKeyPhrasesActions(
+                                    new ExtractKeyPhrasesAction().setModelVersion("latest")),
+                    new AnalyzeActionsOptions().setIncludeStatistics(false),
+                    Context.NONE);
 
-        // Task operation statistics details
-        while (syncPoller.poll().getStatus() == LongRunningOperationStatus.IN_PROGRESS) {
-            final AnalyzeActionsOperationDetail operationDetail = syncPoller.poll().getValue();
-            System.out.printf("Action display name: %s, Successfully completed actions: %d, in-process actions: %d,"
-                            + " failed actions: %d, total actions: %d%n",
-                    operationDetail.getDisplayName(), operationDetail.getSucceededCount(),
-                    operationDetail.getInProgressCount(), operationDetail.getFailedCount(),
-                    operationDetail.getTotalCount());
-        }
+    // Task operation statistics details
+    while (syncPoller.poll().getStatus() == LongRunningOperationStatus.IN_PROGRESS) {
+        final AnalyzeActionsOperationDetail operationDetail = syncPoller.poll().getValue();
+        System.out.printf("Action display name: %s, Successfully completed actions: %d, in-process actions: %d,"
+                        + " failed actions: %d, total actions: %d%n",
+                operationDetail.getDisplayName(), operationDetail.getSucceededCount(),
+                operationDetail.getInProgressCount(), operationDetail.getFailedCount(),
+                operationDetail.getTotalCount());
+    }
 
-        syncPoller.waitForCompletion();
+    syncPoller.waitForCompletion();
 
-        Iterable<PagedResponse<AnalyzeActionsResult>> pagedResults = syncPoller.getFinalResult().iterableByPage();
-        for (PagedResponse<AnalyzeActionsResult> perPage : pagedResults) {
-            System.out.printf("Response code: %d, Continuation Token: %s.%n", perPage.getStatusCode(),
-                    perPage.getContinuationToken());
-            for (AnalyzeActionsResult actionsResult : perPage.getElements()) {
-                System.out.println("Entities recognition action results:");
-                for (RecognizeEntitiesActionResult actionResult : actionsResult.getRecognizeEntitiesResults()) {
-                    if (!actionResult.isError()) {
-                        for (RecognizeEntitiesResult documentResult : actionResult.getDocumentsResults()) {
-                            if (!documentResult.isError()) {
-                                for (CategorizedEntity entity : documentResult.getEntities()) {
-                                    System.out.printf(
-                                            "\tText: %s, category: %s, confidence score: %f.%n",
-                                            entity.getText(), entity.getCategory(), entity.getConfidenceScore());
-                                }
-                            } else {
-                                System.out.printf("\tCannot recognize entities. Error: %s%n",
-                                        documentResult.getError().getMessage());
+    Iterable<PagedResponse<AnalyzeActionsResult>> pagedResults = syncPoller.getFinalResult().iterableByPage();
+    for (PagedResponse<AnalyzeActionsResult> perPage : pagedResults) {
+        System.out.printf("Response code: %d, Continuation Token: %s.%n", perPage.getStatusCode(),
+                perPage.getContinuationToken());
+        for (AnalyzeActionsResult actionsResult : perPage.getElements()) {
+            System.out.println("Entities recognition action results:");
+            for (RecognizeEntitiesActionResult actionResult : actionsResult.getRecognizeEntitiesResults()) {
+                if (!actionResult.isError()) {
+                    for (RecognizeEntitiesResult documentResult : actionResult.getDocumentsResults()) {
+                        if (!documentResult.isError()) {
+                            for (CategorizedEntity entity : documentResult.getEntities()) {
+                                System.out.printf(
+                                        "\tText: %s, category: %s, confidence score: %f.%n",
+                                        entity.getText(), entity.getCategory(), entity.getConfidenceScore());
                             }
+                        } else {
+                            System.out.printf("\tCannot recognize entities. Error: %s%n",
+                                    documentResult.getError().getMessage());
                         }
-                    } else {
-                        System.out.printf("\tCannot execute Entities Recognition action. Error: %s%n",
-                                actionResult.getError().getMessage());
                     }
+                } else {
+                    System.out.printf("\tCannot execute Entities Recognition action. Error: %s%n",
+                            actionResult.getError().getMessage());
                 }
+            }
 
-                System.out.println("Key phrases extraction action results:");
-                for (ExtractKeyPhrasesActionResult actionResult : actionsResult.getExtractKeyPhrasesResults()) {
-                    if (!actionResult.isError()) {
-                        for (ExtractKeyPhraseResult documentResult : actionResult.getDocumentsResults()) {
-                            if (!documentResult.isError()) {
-                                System.out.println("\tExtracted phrases:");
-                                for (String keyPhrases : documentResult.getKeyPhrases()) {
-                                    System.out.printf("\t\t%s.%n", keyPhrases);
-                                }
-                            } else {
-                                System.out.printf("\tCannot extract key phrases. Error: %s%n",
-                                        documentResult.getError().getMessage());
+            System.out.println("Key phrases extraction action results:");
+            for (ExtractKeyPhrasesActionResult actionResult : actionsResult.getExtractKeyPhrasesResults()) {
+                if (!actionResult.isError()) {
+                    for (ExtractKeyPhraseResult documentResult : actionResult.getDocumentsResults()) {
+                        if (!documentResult.isError()) {
+                            System.out.println("\tExtracted phrases:");
+                            for (String keyPhrases : documentResult.getKeyPhrases()) {
+                                System.out.printf("\t\t%s.%n", keyPhrases);
                             }
+                        } else {
+                            System.out.printf("\tCannot extract key phrases. Error: %s%n",
+                                    documentResult.getError().getMessage());
                         }
-                    } else {
-                        System.out.printf("\tCannot execute Key Phrases Extraction action. Error: %s%n",
-                                actionResult.getError().getMessage());
                     }
+                } else {
+                    System.out.printf("\tCannot execute Key Phrases Extraction action. Error: %s%n",
+                            actionResult.getError().getMessage());
                 }
             }
         }
     }
+}
 ```
 
 将此示例添加到应用程序后，请在 `main()` 方法中调用它。
@@ -797,8 +643,70 @@ Key phrases extraction action results:
 
 还可以使用“分析”操作来执行 NER、关键短语提取、情绪分析和检测 PII。 请参阅 GitHub 上的[分析示例](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeActionsAsync.java)。
 
-# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+## <a name="text-summarization"></a>文本摘要
 
-此功能在版本 3.0 中不可用。
+# <a name="version-32-preview1"></a>[Version 3.2-preview.1](#tab/version-3-2)
+
+可以使用文本分析来汇总大型文本区块。 该方法是异步的，当长时间运行的操作完成时将返回最上面的句子。
+
+```java
+static void summarizationExample(TextAnalyticsClient client) {
+    List<String> documents = new ArrayList<>();
+    documents.add(
+            "The extractive summarization feature in Text Analytics uses natural language processing techniques "
+            + "to locate key sentences in an unstructured text document. "
+            + "These sentences collectively convey the main idea of the document. This feature is provided as an API for developers. "
+            + "They can use it to build intelligent solutions based on the relevant information extracted to support various use cases. "
+            + "In the public preview, extractive summarization supports several languages. "
+            + "It is based on pretrained multilingual transformer models, part of our quest for holistic representations. "
+            + "It draws its strength from transfer learning across monolingual and harness the shared nature of languages "
+            + "to produce models of improved quality and efficiency.");
+
+    SyncPoller<AnalyzeActionsOperationDetail, AnalyzeActionsResultPagedIterable> syncPoller =
+            client.beginAnalyzeActions(documents,
+                    new TextAnalyticsActions().setDisplayName("{tasks_display_name}")
+                            .setExtractSummaryActions(
+                                    new ExtractSummaryAction()),
+                    "en",
+                    new AnalyzeActionsOptions());
+
+    syncPoller.waitForCompletion();
+
+    syncPoller.getFinalResult().forEach(actionsResult -> {
+        System.out.println("Extractive Summarization action results:");
+        for (ExtractSummaryActionResult actionResult : actionsResult.getExtractSummaryResults()) {
+            if (!actionResult.isError()) {
+                for (ExtractSummaryResult documentResult : actionResult.getDocumentsResults()) {
+                    if (!documentResult.isError()) {
+                        System.out.println("\tExtracted summary sentences:");
+                        for (SummarySentence summarySentence : documentResult.getSentences()) {
+                            System.out.printf(
+                                    "\t\t Sentence text: %s, length: %d, offset: %d, rank score: %f.%n",
+                                    summarySentence.getText(), summarySentence.getLength(),
+                                    summarySentence.getOffset(), summarySentence.getRankScore());
+                        }
+                    } else {
+                        System.out.printf("\tCannot extract summary sentences. Error: %s%n",
+                                documentResult.getError().getMessage());
+                    }
+                }
+            } else {
+                System.out.printf("\tCannot execute Extractive Summarization action. Error: %s%n",
+                        actionResult.getError().getMessage());
+            }
+        }
+    });
+}
+```
+
+将此示例添加到应用程序后，请在 `main()` 方法中调用它。
+
+```java
+summarizationExample(client);
+```
+
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
+
+此功能在版本 3.1 中不可用。
 
 ---

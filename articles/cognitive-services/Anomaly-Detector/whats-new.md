@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 06/23/2021
-ms.openlocfilehash: fdeaf2f16dc2b1b6d6beb75544160ac03ce025e9
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 2aa4fe3e7e2f7637060996b53748391da03879ec
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588356"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032275"
 ---
 # <a name="whats-new-in-anomaly-detector"></a>异常检测器中的新增功能
 
@@ -20,9 +20,15 @@ ms.locfileid: "113588356"
 
 ## <a name="release-notes"></a>发行说明
 
+### <a name="august-2021"></a>2021 年 8 月
+
+* 多变量异常情况检测 API 部署在另外五个区域：美国西部 3、日本东部、巴西南部、美国中部、挪威东部。 目前总共支持 15 个区域。
+
 ### <a name="july-2021"></a>2021 年 7 月
 
 * 在另外四个区域中部署了多变量异常情况检测 API：澳大利亚东部、加拿大中部、北欧和东南亚。 现在总共支持 10 个区域。
+* 异常探测器（单变量）在美国西部 3 和挪威东部可用。
+
 
 ### <a name="june-2021"></a>2021 年 6 月
 

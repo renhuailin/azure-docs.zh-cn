@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/13/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 300bde794afbd3c2db4e9049e28979933b19ac79
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a5d3e8aa303527e7baaa465e911d3b869a975cf5
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099922"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224250"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Contentful 集成
 
@@ -39,6 +39,7 @@ ms.locfileid: "110099922"
 
 * Contentful 支持 SP 和 IDP 发起的 SSO。
 * Contentful 支持即时用户预配。
+* Contentful 支持[自动用户预配](contentful-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -146,6 +147,8 @@ ms.locfileid: "110099922"
 ### <a name="create-contentful-test-user"></a>创建 Contentful 测试用户
 
 在本部分，我们将在 Contentful 中创建名为 B.Simon 的用户。 Contentful 支持默认启用的恰时用户预配。 此部分不存在任何操作项。 如果 Contentful 中不存在用户，则会在身份验证后创建一个新用户。
+
+Contentful 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./contentful-provisioning-tutorial.md)。
 
 ## <a name="test-sso"></a>测试 SSO
 

@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 3db33f994c70d2c471ec8147672be5704406157d
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 8f653f8e41d45310cf6d90aebf0484b2a0ea7360
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765380"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272972"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -193,13 +193,14 @@ Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备，该设备用�
 ## <a name="complete-the-migration"></a>完成迁移
 
 1. 完成迁移后，右键单击该 VM 并选择“停止复制”。 这会停止本地计算机的复制，并清理 VM 的复制状态信息。
-2. 在迁移期间，我们会自动为 Windows VM 和 Linux VM 安装 VM 代理。 如果迁移的计算机有 Linux 操作系统，请检查该计算机上的 Azure VM Linux 代理[要求](../virtual-machines/extensions/agent-linux.md#requirements)，以确保 Linux VM 代理安装正确完成。
-3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
-4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
-5. 将流量交接到已迁移的 Azure VM 实例。
-6. 从本地 VM 清单中删除本地 VM。
-7. 从本地备份中删除本地 VM。
-8. 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。
+1. 在迁移期间，我们会自动为 Windows VM 和 Linux VM 安装 VM 代理。
+1. 验证并[排查 Azure VM 上的所有 Windows 激活问题。](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)
+1. 执行任何迁移后的应用调整，例如更新主机名、数据库连接字符串和 Web 服务器配置。
+1. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
+1. 将流量交接到已迁移的 Azure VM 实例。
+1. 从本地 VM 清单中删除本地 VM。
+1. 从本地备份中删除本地 VM。
+1. 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。
 
 ## <a name="post-migration-best-practices"></a>迁移后的最佳做法
 

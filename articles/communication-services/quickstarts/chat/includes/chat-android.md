@@ -1,21 +1,21 @@
 ---
-title: 包含文件
+title: include 文件
 description: 包含文件
 services: azure-communication-services
-author: mikben
+author: probableprime
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: 41a25c5b92bfc91379ecf9c869a6c1dbbb7c9680
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.author: rifox
+ms.openlocfilehash: 9f9c85a7674dfee99a3db41fdcf8b14d1ac8b96b
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "114201378"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967868"
 ---
 ## <a name="sample-code"></a>代码示例
 在 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add-chat) 上查找此快速入门的最终代码。
@@ -42,14 +42,16 @@ ms.locfileid: "114201378"
 
 我们将使用 Gradle 来安装所需的通信服务依赖项。 在命令行中，导航到 `ChatQuickstart` 项目的根目录。 打开应用的 build.gradle 文件，并将以下依赖项添加到 `ChatQuickstart` 目标中：
 
-```
-implementation 'com.azure.android:azure-communication-common:1.0.1'
-implementation 'com.azure.android:azure-communication-chat:1.0.0'
+```groovy
+implementation 'com.azure.android:azure-communication-common:' + $azureCommunicationCommonVersion
+implementation 'com.azure.android:azure-communication-chat:' + $azureCommunicationChatVersion
 implementation 'org.slf4j:slf4j-log4j12:1.7.29'
 ```
 
+有关最新版本号，请参阅 https://search.maven.org/artifact/com.azure.android/azure-communication-common 和 https://search.maven.org/artifact/com.azure.android/azure-communication-chat 。
+
 #### <a name="exclude-meta-files-in-packaging-options-in-root-buildgradle"></a>在 root build.gradle 的打包选项中排除元文件
-```
+```groovy
 android {
    ...
     packagingOptions {
@@ -73,7 +75,7 @@ android {
 <dependency>
   <groupId>com.azure.android</groupId>
   <artifactId>azure-communication-chat</artifactId>
-  <version>1.0.0</version>
+  <version><!-- Please refer to https://search.maven.org/artifact/com.azure.android/azure-communication-chat for the latest version --></version>
 </dependency>
 ```
 
@@ -106,7 +108,7 @@ import java.util.List;
     private String firstUserAccessToken = "<first_user_access_token>";
     private String threadId = "<thread_id>";
     private String chatMessageId = "<chat_message_id>";
-    private final String sdkVersion = "1.0.0";
+    private final String sdkVersion = "<chat_sdk_version>";
     private static final String APPLICATION_ID = "Chat Quickstart App";
     private static final String SDK_NAME = "azure-communication-com.azure.android.communication.chat";
     private static final String TAG = "Chat Quickstart App";
@@ -152,6 +154,7 @@ import java.util.List;
 1. 将 `<resource>` 替换为通信服务资源。
 2. 将 `<first_user_id>` 和 `<second_user_id>` 替换为在必要步骤中生成的有效通信服务用户 ID。
 3. 将 `<first_user_access_token>` 替换为在必要步骤中生成的 `<first_user_id>` 的通信服务访问令牌。
+4. 将 `<chat_sdk_version>` 替换为 Azure 通信聊天 SDK 的版本。
 
 在以下步骤中，我们将使用 Azure 通信服务聊天库将占位符替换为示例代码。
 
@@ -233,15 +236,28 @@ ChatThreadAsyncClient chatThreadAsyncClient = new ChatThreadClientBuilder()
 
 ```java
 // The chat message content, required.
-final String content = "Test message 1";
+final String content = "Please take a look at the attachment";
+
 // The display name of the sender, if null (i.e. not specified), an empty name will be set.
 final String senderDisplayName = "An important person";
+
+// Use metadata optionally to include any additional data you want to send along with the message.
+// This field provides a mechanism for developers to extend chat message functionality and add
+// custom information for your use case. For example, when sharing a file link in the message, you
+// might want to add 'hasAttachment:true' in metadata so that recipient's application can parse
+// that and display accordingly.
+final Map<String, String> metadata = new HashMap<String, String>();
+metadata.put("hasAttachment", "true");
+metadata.put("attachmentUrl", "https://contoso.com/files/attachment.docx");
+
 SendChatMessageOptions chatMessageOptions = new SendChatMessageOptions()
     .setType(ChatMessageType.TEXT)
     .setContent(content)
-    .setSenderDisplayName(senderDisplayName);
+    .setSenderDisplayName(senderDisplayName)
+    .setMetadata(metadata);
 
-// A string is the response returned from sending a message, it is an id, which is the unique ID of the message.
+// A string is the response returned from sending a message, it is an id, which is the unique ID
+// of the message.
 chatMessageId = chatThreadAsyncClient.sendMessage(chatMessageOptions).get().getId();
 
 ```

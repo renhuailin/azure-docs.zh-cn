@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 990dfd3a2cf86f77310e51cb29fa65e181b37a9f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab16bfe708589b6f89dd5b9a37512d4f2148992f
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638467"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214918"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>教程：使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库
 
-可以使用 Azure 数据库迁移服务将数据库从 SQL Server 实例迁移到 [Azure SQL 数据库](/azure/sql-database/)。 在本教程中，将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）本地实例的 [Adventureworks2016](/sql/samples/adventureworks-install-configure#download-backup-files) 数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库。
+可以使用 Azure 数据库迁移服务将数据库从 SQL Server 实例迁移到 [Azure SQL 数据库](/azure/sql-database/)。 在本教程中，将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）本地实例的 [AdventureWorks2016](/sql/samples/adventureworks-install-configure#download-backup-files) 数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库。
 
 将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -41,6 +41,7 @@ ms.locfileid: "122638467"
 
 - 下载并安装 [SQL Server 2016 或更高版本](https://www.microsoft.com/sql-server/sql-server-downloads)。
 - 按照[启用或禁用服务器网络协议](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文中的说明启用 TCP/IP 协议（在安装 SQL Server Express 时，会默认禁用它）。
+- [将 AdventureWorks2016 数据库恢复到 SQL Server 实例。](/sql/samples/adventureworks-install-configure#restore-to-sql-server)
 - 遵循[使用 Azure 门户在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)一文中的详细信息，在 Azure SQL 数据库中创建数据库。 出于本教程的目的，假设 Azure SQL 数据库的名称是“AdventureWorksAzure”，但是你可按照自己意愿使用任意名称命名。
 
     > [!NOTE]
@@ -60,7 +61,7 @@ ms.locfileid: "122638467"
     >
     >如果在本地网络与 Azure 之间没有站点到站点连接，或者站点到站点连接带宽有限，请考虑在混合模式下使用 Azure 数据库迁移服务（预览版）。 混合模式利用本地迁移工作线程以及云中运行的 Azure 数据库迁移服务的实例。 若要在混合模式下创建 Azure 数据库迁移服务的实例，请参阅[使用 Azure 门户在混合模式下创建 Azure 数据库迁移服务的实例](./quickstart-create-data-migration-service-hybrid-portal.md)一文。
 
-- 请确保虚拟网络的网络安全组出站安全规则不阻止 ServiceBus、存储服务和 AzureMonitor 的 ServiceTag 出站端口 443。 有关 Azure 虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+- 请确保虚拟网络的网络安全组出站安全规则不会阻止 ServiceBus、存储和 AzureMonitor 的 ServiceTag 出站端口 443。 有关 Azure 虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
 - 配置[针对数据库引擎访问的 Windows 防火墙](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 - 打开 Windows 防火墙，使 Azure 数据库迁移服务能够访问源 SQL Server（默认情况下为 TCP 端口 1433）。 如果默认实例正在侦听其他端口，请将该端口添加到防火墙。
 - 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
@@ -158,7 +159,7 @@ ms.locfileid: "122638467"
 
 3. 在数据迁移助手的“选项”屏幕上，选择“下一步”。
 4. 在“选择源”屏幕上的“连接到服务器”对话框中，向 SQL Server 提供连接详细信息，然后选择“连接”。
-5. 在“添加源”对话框中，依次选择“Adventureworks2016”、“添加”和“开始评估”   。
+5. 在“添加源”对话框中，依次选择“AdventureWorks2016”、“添加”和“开始评估”   。
 
     > [!NOTE]
     > 如果你使用 SSIS，则 DMA 目前不支持对源 SSISDB 进行评估。 但是，将 SSIS 项目/包重新部署到由 Azure SQL 数据库托管的目标 SSISDB 时，会对其进行评估/验证。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](./how-to-migrate-ssis-packages.md)。
@@ -184,7 +185,7 @@ ms.locfileid: "122638467"
 > [!IMPORTANT]
 > 如果你使用 SSIS，则 DMA 目前不支持迁移源 SSISDB，但你可以将 SSIS 项目/包重新部署到由 Azure SQL 数据库托管的目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](./how-to-migrate-ssis-packages.md)。
 
-要将 Adventureworks2016 架构迁移到 Azure SQL 数据库中的单一数据库或共用数据库，请执行以下步骤：
+要将 AdventureWorks2016 架构迁移到 Azure SQL 数据库中的单一数据库或共用数据库，请执行以下步骤：
 
 1. 在数据迁移助手中，选择“新建 (+)”图标，然后在“项目类型”下选择“迁移” 。
 2. 指定项目名称，在“源服务器类型”文本框中，选择“SQL Server”，然后在“目标服务器类型”文本框中，选择“Azure SQL 数据库”。
@@ -195,7 +196,7 @@ ms.locfileid: "122638467"
     ![创建数据迁移助手项目](media/tutorial-sql-server-to-azure-sql/dma-create-project.png)
 
 4. 选择“创建”来创建项目。
-5. 在数据迁移助手中，指定 SQL Server 的源连接详细信息，依次选择“连接”和“Adventureworks2016”数据库。
+5. 在数据迁移助手中，指定 SQL Server 的源连接详细信息，依次选择“连接”和“AdventureWorks2016”数据库。
 
     ![数据迁移助手源连接详细信息](media/tutorial-sql-server-to-azure-sql/dma-source-connect.png)
 
@@ -203,7 +204,7 @@ ms.locfileid: "122638467"
 
     ![数据迁移助手目标连接详细信息](media/tutorial-sql-server-to-azure-sql/dma-target-connect.png)
 
-7. 选择“下一步”，以转到“选择对象”屏幕，可以在其中指定需要部署到 Azure SQL 数据库的“Adventureworks2016”中的架构对象  。
+7. 选择“下一步”，以转到“选择对象”屏幕，可以在其中指定需要部署到 Azure SQL 数据库的“AdventureWorks2016”中的架构对象  。
 
     默认情况下，选择所有对象。
 
@@ -219,7 +220,7 @@ ms.locfileid: "122638467"
 
 [!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]   
 
-## <a name="create-an-instance"></a>创建实例
+## <a name="create-an-azure-database-migration-service-instance"></a>创建 Azure 数据库迁移服务实例
 
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。 搜索并选择“Azure 数据库迁移服务”。
 
@@ -248,7 +249,7 @@ ms.locfileid: "122638467"
 
     ![配置 Azure 数据库迁移服务实例网络设置](media/tutorial-sql-server-to-azure-sql/dms-settings-3.png)
 
-    - 选择“查看 + 创建”以创建服务。
+    - 选择“查看 + 创建”，查看详细信息，然后选择“创建”以创建服务 。
 
 ## <a name="create-a-migration-project"></a>创建迁移项目
 

@@ -8,12 +8,12 @@ metadata:
   author: mathapli
   ms.author: mathapli
   ms.date: 01/18/2021
-  ms.openlocfilehash: 96e8f93f38d7ba84b93fdfb4101371f426a14f37
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: dcb526fe2e7946e9ffd77d319107d150f04ad06d
+  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114456569"
+  ms.lasthandoff: 08/26/2021
+  ms.locfileid: "122968420"
 title: 对虚拟机认证进行故障排除
 summary: >
   当你将虚拟机 (VM) 映像发布到 Azure 市场时，Azure 团队会对映像进行验证，以确保它可启动、与 Azure 兼容并且是安全的。 如果 VM 映像未通过任何高质量测试，则不会发布该映像。 你将收到一条说明此问题的错误消息。
@@ -46,7 +46,7 @@ sections:
 
       |1|虚拟硬盘 (VHD) 无效|如果 VHD 页脚中指定的 cookie 值不正确，VHD 将被视为无效。|重新创建映像并提交请求。|
 
-      |2|Blob 类型无效|VM 预配失败，原因是使用的块是 Blob 类型而不是页类型。|将映像重新创建为页类型并提交请求。|
+      |2|Blob 类型无效|VM 预配失败，原因是使用的 blob 是块类型而不是页类型。|将映像重新创建为页类型并提交请求。|
 
       |3|预配超时或未正确泛化|VM 泛化出现问题。|重新创建泛化映像并提交请求。|
 
@@ -196,7 +196,7 @@ sections:
 
       | 1 | Linux 代理版本测试用例 | 最低 Linux 代理版本为 2.2.41 或更高版本。 此要求自 2020 年 5 月 1 日起成为强制性要求。 | 更新 Linux 代理版本。 应为 2.241 或更高版本。 有关详细信息，请访问 [Linux 代理版本更新页](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。 |
 
-      | 2 | Bash 历史记录测试用例 | 如果提交的映像中的 Bash 历史记录大小超过 1 KB，则会发生错误。 大小限制为 1 KB，以确保 Bash 历史记录文件不包含任何可能敏感的信息。 | 解决方法是将 VHD 装载到另一台工作 VM，并进行更改以将大小减小到 1 KB 或更少。 例如，删除 `.bash` 历史记录文件。 |
+      | 2 | Bash 历史记录测试用例 | 如果提交的映像中的 Bash 历史记录大小超过 1 KB，则会发生错误。 大小限制为 1 KB，以确保 Bash 历史记录文件不包含任何可能敏感的信息。 | 解决方法是将 VHD 装载到另一台工作 VM，并进行更改以将大小减小到 1 KB 或更少。 例如，删除 `.bash_history` 文件。 |
 
       | 3 | 必需的内核参数测试用例 | 当 `console` 的值未设置为 `ttyS0` 时，会收到此错误。 运行以下命令进行检查： <br /> `cat /proc/cmdline` | 将 `console` 的值设置为 `ttyS0`，然后重新提交请求。 |
 

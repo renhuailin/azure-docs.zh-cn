@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: dde83e48fe25e1f7e4d23462574e80c75323dde3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3cff113ffd6a37406a88eb5ad5a4e3d5e85e10c5
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740588"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039415"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>教程：使用 Linux 容器开发 IoT Edge 模块
 
@@ -80,6 +80,7 @@ Azure IoT Edge 设备：
 >[公共预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)中提供对 Linux ARM64 设备的支持。 有关详细信息，请参阅[在 Visual Studio Code（预览版）中开发和调试 ARM64 IoT Edge 模块](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
 
 本教程讲解适用于 Visual Studio Code 的开发步骤。 如果想要使用 Visual Studio，请参阅[使用 Visual Studio 2019 为 Azure IoT Edge 开发和调试模块](how-to-visual-studio-develop-module.md)中的说明。
+
 ## <a name="install-container-engine"></a>安装容器引擎
 
 IoT Edge 模块被打包为容器，因此，需要在开发计算机上安装容器引擎来生成和管理容器。 Docker Desktop 提供广泛的功能支持且非常流行，因此我们建议使用它进行开发。 使用 Windows 上的 Docker Desktop 可在 Linux 容器和 Windows 容器之间切换，以便轻松地为不同类型的 IoT Edge 设备开发模块。
@@ -150,6 +151,18 @@ Azure IoT Edge Tools 扩展为 Visual Studio Code 中支持的所有 IoT Edge �
 
   * 在“注册表凭据”部分中，将根据创建解决方案时提供的信息自动填充地址。 但是，用户名和密码引用 .env 文件中存储的变量。 此配置是出于安全考量，因为 .env 文件被 Git 忽略，但部署模板未被忽略。
   * 在“SampleModule”部分中，即使在创建解决方案时提供了映像存储库，也未填充容器映像。 此占位符指向 SampleModule 文件夹中的 **module.json** 文件。 如果转到该文件，将看到“映像”字段确实包含存储库，但也包含由容器的版本和平台组成的标记值。 可以在开发周期中手动迭代版本，并使用我们在本部分稍后介绍的开关选择容器平台。
+
+### <a name="set-iot-edge-runtime-version"></a>设置 IoT Edge 运行时版本
+
+在创建部署资产时，IoT Edge 扩展默认为 IoT Edge 运行时的最新稳定版本。 目前，最新稳定版本是 1.2 版。 如果要为运行 1.1 长期支持版本或 1.0 早期版本的设备开发模块，请更新 Visual Studio Code 中的 IoT Edge 运行时版本以进行匹配。
+
+1. 选择“查看” > “命令面板”   。
+
+1. 在命令面板中，输入并运行“Azure IoT Edge: Set default IoT Edge runtime version”命令。
+
+1. 从列表中选择 IoT Edge 设备正在运行的运行时版本。
+
+选择新的运行时版本后，部署清单会动态更新以反映对运行时模块映像所做的更改。
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>向 IoT Edge 代理提供注册表凭据
 
@@ -272,7 +285,7 @@ Visual Studio Code 现在有权访问容器注册表，因此可以将解决方�
 
 <!--Alternative steps: Use VS Code Docker tools to view ACR images with tags-->
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 如果在生成并推送模块映像时遇到错误，这通常与开发计算机上的 Docker 配置有关。 使用以下检查来检查配置：
 

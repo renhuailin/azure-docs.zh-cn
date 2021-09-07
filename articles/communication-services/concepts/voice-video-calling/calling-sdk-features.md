@@ -2,19 +2,19 @@
 title: Azure 通信服务呼叫 SDK 概述
 titleSuffix: An Azure Communication Services concept document
 description: 提供呼叫 SDK 的概述。
-author: mikben
-manager: jken
+author: probableprime
+manager: chpalm
 services: azure-communication-services
-ms.author: mikben
+ms.author: rifox
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 320ef1b523615894910d277fcc155104b4b297bc
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 7069d5089142f4fc5a6fff6492726b6f949c8f18
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113766547"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259014"
 ---
 # <a name="calling-sdk-overview"></a>呼叫 SDK 概述
 
@@ -90,6 +90,8 @@ ms.locfileid: "113766547"
 | **# 个可同时发送的传出数据流**     | 1 个视频或 1 个屏幕共享 | 1 个视频 + 1 个屏幕共享 |
 | **# 个可同时呈现的传入数据流** | 1 个视频或 1 个屏幕共享 | 6 个视频 + 1 个屏幕共享 |
 
+虽然“呼叫 SDK”不会强制执行这些限制，但如果超出这些限制，用户可能会遇到性能降低的情况。
+
 ## <a name="calling-sdk-timeouts"></a>呼叫 SDK 超时
 
 以下超时适用于通信服务呼叫 SDK：
@@ -108,16 +110,17 @@ ms.locfileid: "113766547"
 
 下表显示了当前可用的一组受支持的浏览器。 除非另有说明，否则我们支持浏览器最新的三个版本。
 
-| 平台     | Chrome | Safari | Microsoft Microsoft Edge (Chromium) | 说明                                                                                                                                                                                                       |
-| ------------ | ------ | ------ | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Android      | ✔️      | ❌      | ❌               | 不支持传出屏幕共享。                                                                                                                                                                   |
-| iOS          | ❌      | ✔️      | ❌               | [Safari 上的 iOS 应用无法枚举/选择麦克风和扬声器设备](https://docs.microsoft.com/azure/communication-services/concepts/known-issues#enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados)（例如，蓝牙）；这是 OS 的限制，且始终只有一个设备，OS 控制默认设备选择。 不支持传出屏幕共享。 |
-| macOS        | ✔️      | ✔️      | ❌               | Safari 14+/macOS 11+ 需要传出视频支持。                                                                                                                                                     |
-| Windows      | ✔️      | ❌      | ✔️               |                                                                                                                                                                                                             |
-| Ubuntu/Linux | ✔️      | ❌      | ❌               |                                                                                                                                                                                                             |
+| 平台     | Chrome | Safari | Microsoft Microsoft Edge (Chromium)  |
+| ------------ | ------ | ------ | --------------   |
+| Android      | ✔️      | ❌      | ❌           | 
+| iOS          | ❌      | ✔️      | ❌           |
+| macOS        | ✔️      | ✔️      | ❌           | 
+| Windows      | ✔️      | ❌      | ✔️           |
+| Ubuntu/Linux | ✔️      | ❌      | ❌           |    
 
-* 支持 Safari 版本 13.1+，但 Safari 不支持一对一呼叫。
-* 除非另有说明，否则支持每个浏览器的过去 3 个版本。
+* Safari 不支持 1:1 呼叫。
+* iOS 或 Android 不支持传出屏幕共享。
+* [Safari 上的 iOS 应用无法枚举/选择麦克风和扬声器设备](../known-issues.md#enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados)（例如，蓝牙）；这是 OS 的限制，且始终只有一个设备，OS 控制默认设备选择。
 
 ## <a name="android-calling-sdk-support"></a>Android 调用 SDK 支持
 

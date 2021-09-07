@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 07/02/2021
 ms.author: rahugup
-ms.openlocfilehash: 674fcd1fc7ad6035278448b46528cc939b5e8a6e
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: fd0a7d3e1af6bb0a0dad10f9a92194b495b13b91
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294645"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253113"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-app-service"></a>将 ASP.NET 应用容器化并迁移到 Azure 应用服务
 
@@ -23,13 +23,13 @@ Azure Migrate: 应用容器化工具当前支持 -
 - 容器化 ASP.NET 应用并将其部署到应用服务上的 Windows 容器中。
 - 容器化 ASP.NET 应用并将其部署到 Azure Kubernetes 服务上的 Windows 容器中。 [了解详细信息](./tutorial-app-containerization-aspnet-kubernetes.md)
 - 在 Apache Tomcat（在 Linux 服务器上）上容器化 Java Web 应用，并将其部署到 AKS 上的 Linux 容器中。 [了解详细信息](./tutorial-app-containerization-java-kubernetes.md)
-- 在（Linux 服务器上的）Apache Tomcat 上对 Java Web 应用进行容器化，并将其部署到应用服务上的 Linux 容器中。 [了解详细信息](./tutorial-app-containerization-java-app-service.md)
+- 在（Linux 服务器上的）Apache Tomcat 上容器化 Java Web 应用，并将其部署到应用服务上的 Linux 容器中。 [了解详细信息](./tutorial-app-containerization-java-app-service.md)
 
 Azure Migrate: 应用容器化工具可帮助你 -
 
 - **发现应用程序**：该工具远程连接到运行 ASP.NET 应用程序的应用程序服务器，并发现应用程序组件。 该工具将创建一个可用于为应用程序创建容器映像的 Dockerfile。
 - **生成容器映像**：可以根据应用程序要求检查并进一步自定义 Dockerfile，并使用它来生成应用程序容器映像。 应用程序容器映像会被推送到指定的 Azure 容器注册表。
-- 部署到 Azure 应用服务：然后，该工具会生成所需的部署文件，用于将已容器化的应用程序部署到 Azure 应用服务。
+- 部署到 Azure 应用服务：然后，该工具会生成将已容器化的应用程序部署到 Azure 应用服务所需的部署文件。
 
 > [!NOTE]
 > Azure Migrate: 应用容器化工具可帮助你发现特定应用程序类型（Apache Tomcat 上的 ASP.NET 和 Java Web 应用）以及它们在应用服务器上的组件。 若要发现服务器以及在本地计算机上运行的应用、角色和功能的清单，请使用 Azure Migrate: 发现和评估功能。 [了解详细信息](./tutorial-discover-vmware.md)
@@ -137,7 +137,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
 
 单击“登录”以登录 Azure 帐户。
 
-1. 需要使用设备代码向 Azure 进行身份验证。 单击“登录”将打开一个包含设备代码的窗口。
+1. 需要使用设备代码向 Azure 进行身份验证。 单击“登录”将打开一个包含设备代码的模式。
 2. 单击“复制代码并登录”以复制设备代码，并在新的浏览器选项卡中打开 Azure 登录提示窗口。如果该窗口未显示，请确保已在浏览器中禁用弹出窗口阻止程序。
 
     ![显示设备代码的模式。](./media/tutorial-containerize-apps-aks/login-modal.png)
@@ -199,7 +199,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
     ![应用 ACR 选择的屏幕截图。](./media/tutorial-containerize-apps-aks/build-aspnet-app.png)
 
 > [!NOTE]
-> 仅有启用了管理员用户的 Azure 容器注册表可以显示。 当前需要管理员帐户才能将 Azure 容器注册表中的映像部署到 Azure 应用服务。 [了解详细信息](../container-registry/container-registry-authentication.md#admin-account)
+> 仅显示启用了管理员用户的 Azure 容器注册表。 当前需要管理员帐户才能将 Azure 容器注册表中的映像部署到 Azure 应用服务。 [了解详细信息](../container-registry/container-registry-authentication.md#admin-account)
 
 2. **查看 Dockerfile**：为每个所选应用程序生成容器映像所需的 Dockerfile 是在生成步骤开始时生成的。 单击“查看”以查看 Dockerfile。 还可以在查看步骤中将任何必要的自定义添加到 Dockerfile，并在开始生成过程之前保存更改。
 
@@ -220,11 +220,11 @@ Azure Migrate: 应用容器化工具可帮助你 -
      - 如果没有应用服务计划，或想要创建新的应用服务计划以供使用，则可通过单击“创建新的应用服务计划”从工具中创建。      
      - 选择应用服务计划后，请单击“继续”。
 
-2. 指定密钥存储：如果已选择参数化应用程序配置，请指定要用于应用程序的密钥存储。 你可以选择 Azure 密钥保管库或应用服务应用程序设置来管理你的应用程序密钥。 [了解详细信息](../app-service/configure-common.md#configure-connection-strings)
+2. 指定密钥存储：如果已选择参数化应用程序配置，请指定要用于应用程序的密钥存储。 可以选择 Azure Key Vault 或应用服务应用程序设置来管理你的应用程序机密。 [了解详细信息](../app-service/configure-common.md#configure-connection-strings)
 
-     - 如果已选择用于管理密钥的应用服务应用程序设置，请单击“继续”。
-     - 如果要使用 Azure 密钥保管库来管理应用程序密钥，请指定要使用的 Azure 密钥保管库。     
-         - 如果没有 Azure 密钥保管库，或者想要创建新的密钥保管库，可以通过单击“创建新的 Azure 密钥保管库”从工具中创建。
+     - 如果已选择用于管理机密的应用服务应用程序设置，请单击“继续”。
+     - 如果要使用 Azure Key Vault 来管理应用程序机密，请指定要使用的 Azure Key Vault。     
+         - 如果没有 Azure Key Vault，或者想要创建新的 Key Vault，可以通过单击“创建新的 Azure Key Vault”从工具中创建。
          - 该工具会自动分配必要的权限，以便通过密钥保管库管理密钥。
 
 3. 指定 Azure 文件共享：如果你以添加更多目录/文件夹，并选择了“Azure 文件共享”用于永久性存储，则请使用 Azure Migrate 应用容器化工具在部署过程中指定要使用的 Azure 文件共享。 该工具将复制为 Azure 文件存储而配置的应用程序目录/文件夹，并在部署过程中将它们装载到应用程序容器中。 
@@ -232,7 +232,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
      - 如果没有 Azure 文件共享，或者想要创建新的 Azure 文件共享，则可以选择在工具中单击“新建存储帐户和文件共享”进行创建。  
 
 4. **应用程序部署配置**：完成上述步骤后，需指定应用程序的部署配置。 单击“配置”以自定义应用程序部署。 在配置步骤中，可以提供下列自定义项：
-     - 名称：为应用程序指定唯一的应用名称。 此名称将用于生成应用程序 URL，并用作在此部署中创建的其他资源名称的前缀。
+     - 名称：为应用程序指定唯一的应用名称。 此名称将用于生成应用程序 URL，并用作在此部署中创建的其他资源的前缀。
      - 应用程序配置：对于已参数化的任何应用程序配置，请提供要用于当前部署的值。
      - 存储配置：查看为永久性存储配置的任何应用程序目录/文件夹的信息。
 
@@ -255,5 +255,5 @@ Azure Migrate: 应用容器化工具可帮助你 -
 ## <a name="next-steps"></a>后续步骤
 
 - 容器化 ASP.NET Web 应用并将其部署到 AKS 上的 Windows 容器中。 [了解详细信息](./tutorial-app-containerization-aspnet-kubernetes.md)
-- 在（Linux 服务器上的）Apache Tomcat 上对 Java Web 应用进行容器化，并将其部署到 AKS 上的 Linux 容器中。 [了解详细信息](./tutorial-app-containerization-java-kubernetes.md)
-- 在（Linux 服务器上的）Apache Tomcat 上对 Java Web 应用进行容器化，并将其部署到应用服务上的 Linux 容器中。 [了解详细信息](./tutorial-app-containerization-java-app-service.md)
+- 在（Linux 服务器上的）Apache Tomcat 上容器化 Java Web 应用，并将其部署到 AKS 上的 Linux 容器中。 [了解详细信息](./tutorial-app-containerization-java-kubernetes.md)
+- 在（Linux 服务器上的）Apache Tomcat 上容器化 Java Web 应用，并将其部署到应用服务上的 Linux 容器中。 [了解详细信息](./tutorial-app-containerization-java-app-service.md)

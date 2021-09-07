@@ -7,19 +7,19 @@ manager: chpalm
 services: azure-communication-services
 ms.author: chpalm
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: e884079bc159dbbc76d6443dc0e095c4d8f596ab
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 1bcb97892965cbe978899df4208888a4adb07253
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114668089"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251329"
 ---
 # <a name="teams-interoperability"></a>Teams 互操作性
 
 > [!IMPORTANT]
-> BYOI 互操作性提供公共预览版，可根据要求广泛使用。 若要启用/禁用 [Teams 租户互操作性](../concepts/teams-interop.md)，请填写[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)。
+> BYOI 互操作性处于公共预览阶段，可供所有通信服务应用程序和 Teams 组织使用。
 >
 > Microsoft 365 已验证的互操作性提供个人预览版，并且仅限 Azure 通信服务早期采用者使用服务控制。 若要加入早期访问计划，请完成[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8MfnD7fOYZEompFbYDoD4JUMkdYT0xKUUJLR001ODdQRk1ITTdOMlRZNSQlQCN0PWcu)。
 >
@@ -42,10 +42,24 @@ Azure 通信服务支持两种类型的 Teams 互操作性，具体取决于最�
 
 应用程序可以同时实现这两种身份验证方案，并让最终用户选择身份验证。
 
-## <a name="bring-your-own-identity"></a>自带标识
-自带标识 (BYOI) 是使用 Azure 通信服务和 Teams 互操作性的常见模型。 它支持任何标识提供者和身份验证方案。 你的应用可以加入 Microsoft Teams 会议，Teams 会将这些用户视为匿名外部帐户。 Teams 中显示的通信服务用户的名称可通过通信服务通话 SDK 进行配置。
+## <a name="overview"></a>概述
 
-此功能非常适用于将员工（熟悉 Teams）和外部用户（使用自定义应用程序体验）聚集到会议体验中的企业对使用者应用程序。 需要与应用程序的外部用户共享的会议详细信息可以通过图形 API 或从 Microsoft Teams 的日历中检索。
+用户可以通过两种方式访问 Teams 通话体验：
+
+- 作为 Teams 用户通过 Teams 客户端访问。 这包括桌面、移动设备和 Web Teams 客户端。 
+- 作为 Teams 匿名用户通过应用程序的 Web 体验访问。 
+
+Teams 匿名用户无需是 Teams 用户。 使用 Azure 通信服务，可以为 Teams 用户和 Teams 匿名用户生成和自定义新的 Teams 通话终结点。 可以使用通信服务调用 SDK 和用户界面库进行自定义并集成到任何现有的应用程序或产品。 下图演示了如何通过多个终结点加入 Teams 会议：![Azure 通信服务中的多个互操作性方案概述](./media/teams-identities/teams_interop_overview.png)
+
+当终结点通过 Azure 通信服务客户端库使用 Teams 标识连接到 Teams 会议时，终结点将被视为具有 Teams 客户端的 Teams 用户。 与 Team 匿名用户相比，Team 用户可以访问更多的功能。 Teams 用户可以加入 Teams 会议、向其他 Teams 用户发出呼叫、接收来自电话号码的呼叫，还可以将正在进行的呼叫转移到 Teams 呼叫队列。 下图显示了具有 Teams 标识的通信服务终结点的连接。
+
+![Azure 通信服务中的互操作性方案概述](./media/teams-identities/teams_interop_m365_identity_interop_overview.png)
+
+## <a name="bring-your-own-identity"></a>自带标识
+
+自带标识 (BYOI) 是使用 Azure 通信服务和 Teams 互操作性的常见模型。 它支持任何标识提供者和身份验证方案。 启用的第一个方案允许你的应用程序加入 Microsoft Teams 会议，并且 Teams 会将这些用户视为匿名外部帐户，与使用 Teams 匿名 Web 应用程序加入的用户相同。 这非常适用于将员工（熟悉 Teams）和外部用户（使用自定义应用程序体验）聚集到会议体验中的企业对使用者应用程序。 今后，我们将启用其他方案，包括直接呼叫和聊天，让你的应用程序可以在 Teams 会议的上下文之外发起与 Teams 用户的呼叫和聊天。
+
+通信服务用户以匿名用户身份加入 Teams 会议的功能由现有的“允许匿名会议加入”配置控制，该配置还控制现有 Teams 匿名会议加入。  此设置可在 Teams 管理中心（ https://admin.teams.microsoft.com/meetings/settings) ）或通过 Teams PowerShell cmdlet Set-CsTeamsMeetingConfiguration（ https://docs.microsoft.com/powershell/module/skype/set-csteamsmeetingconfiguration) ）进行更新。 与 Teams 匿名会议加入一样，应用程序必须具有要加入的会议链接，该链接可通过图形 API 或 Microsoft Teams 中的日历来检索。  Teams 中显示的通信服务用户的名称可通过通信服务通话 SDK 进行配置。
 
 外部用户将能够通过 Azure 通信服务 SDK 使用核心音频、视频、屏幕共享和聊天功能。 举手、一起模式和分组讨论室等功能仅适用于 Teams 用户。 通信服务用户只能在参加 Teams 会议并且该会议未计划为频道时发送和接收消息。
 

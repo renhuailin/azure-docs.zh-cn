@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/09/2021
+ms.date: 08/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b31b0a1699d4de01f3f09f7689dec380458ee649
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 06337438a60b0f94c4ee8a77f238b2b16c859126
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861065"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308755"
 ---
 ### <a name="compliance-by-policy-assignment"></a>按策略分配列出的符合性
 
@@ -125,7 +125,7 @@ Search-AzGraph -Query "PolicyResources | where type =~ 'Microsoft.PolicyInsights
 
 ### <a name="list-all-non-compliant-resources"></a>列出所有不合规的资源
 
-为每个资源类型提供符合性状态、符合性百分比和资源计数。
+提供处于 `NonCompliant` 状态的所有资源类型的列表。
 
 ```kusto
 PolicyResources

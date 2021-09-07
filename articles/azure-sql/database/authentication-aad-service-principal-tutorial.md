@@ -9,18 +9,18 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 05/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c1c0754175283dd9087429586e61739c8c779e49
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 8980380fb16aadd2a5f3c8e64190bb7580d40425
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110662429"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252584"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>教程：使用 Azure AD 应用程序创建 Azure AD 用户
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-本文将指导你完成使用 Azure 服务主体（Azure AD 应用程序）在 Azure SQL 数据库中创建 Azure AD 用户的过程。 此功能已存在于 Azure SQL 托管实例中，但现在在 Azure SQL 数据库中引入。 若要支持此方案，必须生成 Azure AD 标识并将其分配给 Azure SQL 逻辑服务器。
+本文将指导你完成使用 Azure 服务主体（Azure AD 应用程序）在 Azure SQL 数据库中创建 Azure AD 用户的过程。 此功能已存在于 Azure SQL 托管实例中，但现在引入到 Azure SQL 数据库中。 若要支持此方案，必须生成 Azure AD 标识并将其分配给 Azure SQL 逻辑服务器。
 
 有关 Azure SQL 的 Azure AD 身份验证的详细信息，请参阅[使用 Azure Active Directory 身份验证](authentication-aad-overview.md)。
 
@@ -92,7 +92,7 @@ ms.locfileid: "110662429"
 > [!NOTE] 
 > 此脚本必须由 Azure AD `Global Administrator` 或 `Privileged Roles Administrator` 执行。
 >
-> 在“公共预览”中，可以在 Azure AD 中将 `Directory Readers` 角色分配给组。 然后，组所有者可以将托管标识添加为此组的成员，这样就不需要 `Global Administrator` 或 `Privileged Roles Administrator` 来授予 `Directory Readers` 角色。 有关此功能的详细信息，请参阅 [Azure SQL 的 Azure Active Directory 中的目录读取者角色](authentication-aad-directory-readers-role.md)。
+> 可以在 Azure AD 中将 `Directory Readers` 角色分配给组。 然后，组所有者可以将托管标识添加为此组的成员，这样就不需要 `Global Administrator` 或 `Privileged Roles Administrator` 来授予 `Directory Readers` 角色。 有关此功能的详细信息，请参阅 [Azure SQL 的 Azure Active Directory 中的目录读取者角色](authentication-aad-directory-readers-role.md)。
 
 - 将 `<TenantId>` 替换为之前收集的 `TenantId`。
 - 将 `<server name>` 替换为你的 SQL 逻辑服务器名称。 如果服务器名称为 `myserver.database.windows.net`，请将 `<server name>` 替换为 `myserver`。

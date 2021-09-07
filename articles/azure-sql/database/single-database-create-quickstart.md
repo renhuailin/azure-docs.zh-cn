@@ -11,22 +11,22 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 01/27/2021
-ms.openlocfilehash: baf181c90b4bc899f682cbfea28d1998f7b2117a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8f9fa57a160871ba88b080ac7599e1781202fb84
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722893"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306239"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>快速入门：创建 Azure SQL 数据库单一数据库
 
 在本快速入门中，你将使用 Azure 门户、PowerShell 脚本或 Azure CLI 脚本在 Azure SQL 数据库中创建[单一数据库](single-database-overview.md)。 然后，在 Azure 门户中使用“查询编辑器”查询该数据库。
 
 
-## <a name="prerequisite"></a>先决条件
+## <a name="prerequisites"></a>先决条件
 
 - 一个有效的 Azure 订阅。 如果没有帐户，请[创建一个免费帐户](https://azure.microsoft.com/free/)。
-- 可能还需要最新版本的 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli-windows)，具体取决于你选择的创建方法。 
+- 最新版本的 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli-windows)。
 
 ## <a name="create-a-single-database"></a>创建单一数据库
 
@@ -34,7 +34,7 @@ ms.locfileid: "121722893"
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
-若要在 Azure 门户中创建单一数据库，本快速入门将从 Azure SQL 页面开始。
+为了在 Azure 门户中创建单一数据库，本快速入门将从 Azure SQL 页面开始。
 
 1. 浏览[选择 SQL 部署选项](https://portal.azure.com/#create/Microsoft.AzureSQL)页。
 1. 在“SQL 数据库”下将“资源类型”设置保留为“单一数据库”，然后选择“创建”   。
@@ -160,6 +160,47 @@ az sql db create \
     --capacity 2
 ```
 
+# <a name="azure-cli-sql-up"></a>[Azure CLI (sql up)](#tab/azure-cli-sql-up)
+
+## <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
+
+Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
+
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com](https://shell.azure.com) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
+
+## <a name="create-a-database-and-resources"></a>创建数据库和资源
+
++[az sql up](/cli/azure/sql#az_sql_up) 命令可以简化数据库创建过程。 借助它，可以使用单个命令创建数据库及其所有关联的资源。 这包括资源组、服务器名称、服务器位置、数据库名称和登录信息。 数据库是使用默认定价层（“常规用途”，已预配、Gen5、2 个 vCore）创建的。 
+
+此命令为 Azure SQL 数据库创建和配置[逻辑服务器](logical-servers.md)以供立即使用。 若要在数据库创建过程中实现更精细的资源控制，请使用本文中的标准 Azure CLI 命令。
+
+> [!NOTE]
+> 首次运行 `az sql up` 命令时，Azure CLI 会提示安装 `db-up` 扩展。 此扩展当前处于预览状态。 接受安装以继续。 有关扩展详细信息，请参阅[使用 Azure CLI 的扩展](/cli/azure/azure-cli-extensions-overview)。
+
+1. 运行 `az sql up` 命令。 如果未使用任何必需的参数（例如 `--server-name`），则使用分配的随机名称和登录信息创建该资源。
+
+    ```azurecli-interactive
+    az sql up \
+        --resource-group $resourceGroupName \
+        --location $location \
+        --server-name $serverName \
+        --database-name mySampleDatabase \
+        --admin-user $adminlogin \
+        --admin-password $password
+    ```
+
+2.  系统会自动创建服务器防火墙规则。 如果服务器拒绝 IP 地址，则使用 `az sql server firewall-rule create` 命令创建新的防火墙规则。
+
+    ```azurecli-interactive
+    az sql server firewall-rule create \
+        --resource-group $resourceGroupName \
+        --server $serverName \
+        -n AllowYourIp \
+        --start-ip-address $startip \
+        --end-ip-address $endip
+    ```
+
+3. 系统将创建所有必需的资源，并且数据库可供查询。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -294,6 +335,14 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 1. 在“键入资源组名称”下输入 *myResourceGroup*，然后选择“删除”。 
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要删除资源组及其包含所有资源，请使用该资源组的名称运行以下 Azure CLI 命令：
+
+```azurecli-interactive
+az group delete --name $resourceGroupName
+```
+
+### <a name="azure-cli-sql-up"></a>[Azure CLI (sql up)](#tab/azure-cli-sql-up)
 
 若要删除资源组及其包含所有资源，请使用该资源组的名称运行以下 Azure CLI 命令：
 

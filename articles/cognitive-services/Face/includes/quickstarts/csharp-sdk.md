@@ -9,21 +9,20 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: ee861896020f41dd841f538f546242a65992b8d3
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 5d795debd6701c2d2d579a5558fc0631b732e66a
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113364866"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442336"
 ---
 开始使用适用于 .NET 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
 使用适用于 .NET 的人脸客户端库可以：
 
-* [检测图像中的人脸](#detect-faces-in-an-image)
-* [查找相似人脸](#find-similar-faces)
-* [创建人员组](#create-a-persongroup)
+* [检测和分析人脸](#detect-and-analyze-faces)
 * [识别人脸](#identify-a-face)
+* [查找相似人脸](#find-similar-faces)
 
 [参考文档](/dotnet/api/overview/azure/cognitiveservices/face-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.7.0-preview.1) | [示例](/samples/browse/?products=azure&term=face)
 
@@ -32,6 +31,7 @@ ms.locfileid: "113364866"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) 或最新版本的 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 </a>，获取密钥和终结点。 部署后，单击“转到资源”。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
@@ -122,10 +122,9 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.7.0
 以下代码片段演示如何使用适用于 .NET 的人脸客户端库执行以下任务：
 
 * [对客户端进行身份验证](#authenticate-the-client)
-* [检测图像中的人脸](#detect-faces-in-an-image)
-* [查找相似人脸](#find-similar-faces)
-* [创建人员组](#create-a-persongroup)
+* [检测和分析人脸](#detect-and-analyze-faces)
 * [识别人脸](#identify-a-face)
+* [查找相似人脸](#find-similar-faces)
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -143,7 +142,8 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.7.0
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_models)]
 
-## <a name="detect-faces-in-an-image"></a>在图像中检测人脸
+## <a name="detect-and-analyze-faces"></a>检测和分析人脸
+在所有其他情况下，需要将人脸检测作为第一步。 本部分介绍如何返回额外的人脸属性数据。 如果只想检测人脸以进行人脸识别或验证，请跳到后面的部分。
 
 ### <a name="get-detected-face-objects"></a>获取检测到的人脸对象
 
@@ -160,31 +160,11 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.7.0
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_parse)]
 
-## <a name="find-similar-faces"></a>查找相似人脸
 
-以下代码采用检测到的单个人脸（源），并搜索其他一组人脸（目标），以找到匹配项（按图像进行人脸搜索）。 找到匹配项后，它会将匹配的人脸的 ID 输出到控制台。
-
-### <a name="detect-faces-for-comparison"></a>检测人脸以进行比较
-
-首先定义另一个人脸检测方法。 需要先检测图像中的人脸，然后才能对其进行比较；此检测方法已针对比较操作进行优化。 它不会提取以上部分所示的详细人脸属性，而是使用另一个识别模型。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_face_detect_recognize)]
-
-### <a name="find-matches"></a>查找匹配项
-
-以下方法检测一组目标图像和单个源图像中的人脸。 然后，它将比较这些人脸，并查找与源图像类似的所有目标图像。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_find_similar)]
-
-### <a name="print-matches"></a>输出匹配项
-
-以下代码将匹配详细信息输出到控制台：
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_find_similar_print)]
 
 ## <a name="identify-a-face"></a>识别人脸
 
-识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。 为了执行“识别”操作，你首先需要创建并训练 PersonGroup
+识别操作获取一个人（或多个人）的图像，并查找与图像中的每个人脸相关联的存储的人员对象（人脸识别搜索）。 它将检测到的每个人脸与某个 PersonGroup（面部数据已知的不同人员对象的数据库）进行比较 。 为了执行“识别”操作，你首先需要创建并训练 PersonGroup
 
 ### <a name="create-a-persongroup"></a>创建人员组
 
@@ -227,6 +207,30 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.7.0
 下一代码片段将调用 IdentifyAsync 操作，并将结果输出到控制台。 此处，服务会尝试将源图像中的每个人脸与给定 **PersonGroup** 中的某个 **Person** 进行匹配。 Identify 方法就此结束。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify)]
+
+
+## <a name="find-similar-faces"></a>查找相似人脸
+
+以下代码采用检测到的单个人脸（源），并搜索其他一组人脸（目标），以找到匹配项（按图像进行人脸搜索）。 找到匹配项后，它会将匹配的人脸的 ID 输出到控制台。
+
+### <a name="detect-faces-for-comparison"></a>检测人脸以进行比较
+
+首先定义另一个人脸检测方法。 需要先检测图像中的人脸，然后才能对其进行比较；此检测方法已针对比较操作进行优化。 它不会提取以上部分所示的详细人脸属性，而是使用另一个识别模型。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_face_detect_recognize)]
+
+### <a name="find-matches"></a>查找匹配项
+
+以下方法检测一组目标图像和单个源图像中的人脸。 然后，它将比较这些人脸，并查找与源图像类似的所有目标图像。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_find_similar)]
+
+### <a name="print-matches"></a>输出匹配项
+
+以下代码将匹配详细信息输出到控制台：
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_find_similar_print)]
+
 
 ## <a name="run-the-application"></a>运行应用程序
 

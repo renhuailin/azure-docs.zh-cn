@@ -9,12 +9,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
-ms.openlocfilehash: 9b5d5d85d8df58a8e8c3e2626abaed75377e6025
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 5a7df784ec30b958eb6924de674e09cbbe21c91e
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "122643075"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830002"
 ---
 # <a name="quickstart-create-your-first-c-function-in-azure-using-visual-studio"></a>快速入门：使用 Visual Studio 在 Azure 中创建第一个 C# 函数
 
@@ -28,9 +28,14 @@ ms.locfileid: "122643075"
 > * 在本地运行代码以验证函数行为。
 > * 将代码项目部署到 Azure Functions。 
  
+本文支持创建两种类型的已编译 C# 函数： 
+
++ [进程内](functions-create-your-first-function-visual-studio.md?tabs=in-process) - 在与 Functions 主机进程相同的进程中运行。 若要了解详细信息，请参阅[使用 Azure Functions 开发 C# 类库函数](functions-dotnet-class-library.md)。
++ [隔离进程](functions-create-your-first-function-visual-studio.md?tabs=isolated-process) - 在单独的 .NET 工作进程中运行。 若要了解详细信息，请参阅[有关在 Azure 中的 .NET 5.0 上运行函数的指南](dotnet-isolated-process-guide.md)。
+
 完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
- 
-创建的项目在 .NET Core 3.1 上运行。 如果想要创建在 .NET 5.0 上运行的项目，请参阅[使用 Azure Functions 开发和发布 .NET 5 函数](dotnet-isolated-process-developer-howtos.md)。
+
+本文还提供了[基于 Visual Studio 代码的版本](create-first-function-vs-code-csharp.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,8 +61,16 @@ Visual Studio 将创建一个项目和一个包含 HTTP 触发器函数类型样
 
 函数定义现在应如以下代码所示：
 
-:::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs" range="13-18"::: 
- 
+# <a name="in-process"></a>[进程内](#tab/in-process) 
+
+:::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs" range="15-18"::: 
+
+# <a name="isolated-process"></a>[隔离进程](#tab/isolated-process)
+
+:::code language="csharp" source="~/functions-docs-csharp/http-trigger-isolated/HttpExample.cs" range="11-13"::: 
+
+---
+
 重命名函数以后，即可在本地计算机上对其进行测试。
 
 ## <a name="run-the-function-locally"></a>在本地运行函数

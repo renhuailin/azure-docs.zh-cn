@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e3eb77d15c288c93298da6dd79a76565e5d67f96
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 4119794663a35c6f29edf42443e57d411376cce5
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749935"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830457"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault 密钥、机密和证书概述
 
@@ -47,7 +47,7 @@ HSM 保护的密钥|/keys|支持|支持
 |||
 - **加密密钥**：支持多种密钥类型和算法，并支持使用受软件保护的密钥和受 HSM 保护的密钥。 有关详细信息，请参阅[关于密钥](../keys/about-keys.md)。
 - **机密**：提供机密（例如密码和数据库连接字符串）的安全存储。 有关详细信息，请参阅[关于机密](../secrets/about-secrets.md)。
-- **证书**：支持基于密钥和机密并且添加了自动续订功能的证书。 有关详细信息，请参阅[关于证书](../certificates/about-certificates.md)。
+- **证书**：支持基于密钥和机密并且添加了自动续订功能的证书。 请记住，创建证书后，还可以创建具有相同名称的可寻址密钥和机密。 有关详细信息，请参阅[关于证书](../certificates/about-certificates.md)。
 - **Azure 存储帐户密钥**：可以管理 Azure 存储帐户的密钥。 在内部，Key Vault 可以使用 Azure 存储帐户列出（同步）密钥，并定期重新生成（轮换）密钥。 有关详细信息，请参阅[使用 Key Vault 管理存储帐户密钥](../secrets/overview-storage-keys.md)。
 
 有关 Key Vault 的更多常规信息，请参阅[关于 Azure Key Vault](overview.md)。 有关托管 HSM 池的详细信息，请参阅什么是 [Azure Key Vault 托管 HSM？](../managed-hsm/overview.md)

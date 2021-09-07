@@ -6,21 +6,19 @@ author: prakulka
 manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
-ms.date: 03/19/2021
-ms.topic: overview
+ms.date: 06/30/2021
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: bb9765c2620f45d67bf888f8bfe8a4dee450cfd6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2281dac86281d01ec6f033062b87236a780d3bc7
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645525"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259761"
 ---
 # <a name="azure-communication-services-messaging-policy"></a>Azure 通信服务消息传递策略
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-Azure 通信服务正在通过构建丰富的自定义通信体验来改变我们的客户与其客户进行沟通的方式，这些体验利用了为 Microsoft Teams 和 Skype 提供支持的相同企业级服务。 将 SMS 消息传递功能集成到你的通信解决方案中之后，你可以在客户需要支持时随时随地与其沟通。 你只需要记住一些消息传递要求就可以开始了。
+Azure 通信服务正在通过构建丰富的自定义通信体验来改变我们的客户与其客户进行沟通的方式，这些体验利用了为 Microsoft Teams 和 Skype 提供支持的相同企业级服务。 将 SMS 消息传递功能集成到你的通信解决方案中之后，你可以在客户需要支持时随时随地与其沟通。 只需要记住一些消息传递要求和行业标准就可以开始了。
 
 消息传递要求似乎很难掌握，但其实也很简单，只需记住“COMS”就行了：
 
@@ -131,9 +129,11 @@ Azure 通信服务部门可能会自行更改要求双重的选择加入同意�
 
 即使这些内容不是非法的，你也应该在选择加入中包含年龄验证机制，以便针对成人内容的预期消息收件人设置年龄门槛。 在美国，针对 13 岁以下儿童的市场营销通信需遵守额外的法律要求。 
 
-### <a name="prohibited-content"></a>禁止的内容：
+### <a name="prohibited-practices"></a>禁止的做法：
 
-不管你是否同意，Azure 通信服务都会禁止某些消息内容。 禁止的内容包括：
+你和你的客户均不得使用 Azure 通信服务来规避合理的选择退出请求。 此外，你和你的客户不得避开 Azure 通信服务或通信服务提供商实施的任何措施，以确保你符合消息传递要求和行业标准。
+
+不管你是否同意，Azure 通信服务还会禁止某些消息内容。 禁止的内容包括：
 - 宣传非法活动的内容（例如，在美国逃税或虐待动物）
 - 仇恨言论、诽谤言论、骚扰或其他被认定为明显具有攻击性的言论
 - 色情内容
@@ -156,7 +156,7 @@ Azure 通信服务部门可能会自行更改要求双重的选择加入同意�
 
 此消息传递政策不属于法律建议，我们保留随时修改此政策的权利。 Azure 通信服务不负责确保客户消息的内容、时间安排或收件人符合所有适用的法律要求。 
 
-我们的客户需要负责满足所有的消息传递要求。 如果你是使用 Azure 通信服务进行消息传递的平台方或软件提供商，你应当要求你的客户也遵守此消息传递政策中所述的所有要求。 若要获得进一步的指导，请参阅 CTIA 提供的有用的[消息传递原则和最佳做法](https://api.ctia.org/wp-content/uploads/2019/07/190719-CTIA-Messaging-Principles-and-Best-Practices-FINAL.pdf)。
+我们的客户需要负责满足所有的消息传递要求。 如果你是使用 Azure 通信服务进行消息传递的平台方或软件提供商，你应当要求你的客户也遵守此消息传递政策中所述的所有要求。 如需进一步指导，CTIA 的[消息传递原则和最佳做法](https://api.ctia.org/wp-content/uploads/2019/07/190719-CTIA-Messaging-Principles-and-Best-Practices-FINAL.pdf)提供了相关行业标准的有用概述。
 
 ### <a name="penalties"></a>处罚：
 

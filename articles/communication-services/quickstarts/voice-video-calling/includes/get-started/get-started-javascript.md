@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: f394448f0b488f468ce09c13d036585db032bda9
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 1f027dd3dfb812e9a700810972d2b019810dc41c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112536019"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251533"
 ---
 本快速入门将介绍如何使用适用于 JavaScript 的 Azure 通信服务通话 SDK 开始通话。
 
@@ -19,7 +19,7 @@ ms.locfileid: "112536019"
 
 可以从 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-voice-calling) 下载示例应用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Node.js](https://nodejs.org/)，活动 LTS 和维护 LTS 版本（建议使用 8.11.1 和 10.14.1）。
@@ -124,8 +124,10 @@ submitToken.addEventListener("click", async () => {
 callButton.addEventListener("click", () => {
     // start a call
     const userToCall = calleeInput.value;
+    // To call an ACS communication user, use {communicationUserId: 'ACS_USER_ID'}.
+    // To call echobot, use {id: '8:echo123'}.
     call = callAgent.startCall(
-        [{ id: userToCall }],
+        [{ communicationUserId: userToCall }],
         {}
     );
     // toggle button states
@@ -164,4 +166,7 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 :::image type="content" source="../../media/javascript/calling-javascript-app-2.png" alt-text="已完成的 JavaScript 应用程序的屏幕截图。":::
 
-可以通过在相应文本字段中提供有效用户访问令牌和用户 ID 并单击“开始呼叫”按钮，启动出站 VOIP 呼叫。 呼叫 `8:echo123` 会将你连接到回显机器人，这对于入门和验证音频设备是否正常运行非常有用。
+可以通过在相应文本字段中提供有效用户访问令牌和用户 ID 并单击“开始呼叫”按钮，启动出站 VOIP 呼叫。
+
+呼叫 `8:echo123` 会将你连接到回显机器人，这对于入门和验证音频设备是否正常运行非常有用。 将 `{id: '8:echo123'}` 传递给 CallAgent.startCall() API 以调用 echobot。
+若要调用 ACS 通信用户，请将 `{communicationUserId: 'ACS_USER_ID'}` 传递给 `CallAgent.startCall()` API。

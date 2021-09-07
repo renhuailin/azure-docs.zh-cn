@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 1b1c91ac00a359b9fc33ebacca26c2e2ebfae5e3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2e2695f2c2b193e77b286b30b5300aa09d099358
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114456751"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308758"
 ---
 ### <a name="count-of-os-update-installation-done"></a>已完成的 OS 更新安装的计数
 
-返回过去 7 天内对计算机完成的 OS 更新安装运行的状态列表
+返回过去 7 天内对计算机完成的 OS 更新安装运行的状态列表。
 
 ```kusto
 PatchAssessmentResources
@@ -50,7 +50,7 @@ Search-AzGraph -Query "PatchAssessmentResources | where type !has 'softwarepatch
 
 ### <a name="list-available-os-updates-for-all-your-machines-grouped-by-update-category"></a>列出按更新类别分组的所有计算机的可用 OS 更新
 
-返回计算机的挂起 OS 的列表
+返回计算机的挂起 OS 的列表。
 
 ```kusto
 PatchAssessmentResources
@@ -85,7 +85,7 @@ Search-AzGraph -Query "PatchAssessmentResources | where type !has 'softwarepatch
 
 ### <a name="list-of-linux-os-update-installation-done"></a>已完成的 Linux OS 更新安装的列表
 
-返回过去 7 天内对计算机完成的 Windows Server - OS 更新安装运行的状态列表
+返回过去 7 天内对计算机完成的 Linux Server - OS 更新安装运行的状态列表。
 
 ```kusto
 PatchAssessmentResources
@@ -122,7 +122,7 @@ Search-AzGraph -Query "PatchAssessmentResources | where type has 'softwarepatche
 
 ### <a name="list-of-windows-server-os-update-installation-done"></a>已完成的 Windows Server OS 更新安装的列表
 
-返回过去 7 天内对计算机完成的 Windows Server - OS 更新安装运行的状态列表
+返回过去 7 天内对计算机完成的 Windows Server - OS 更新安装运行的状态列表。
 
 ```kusto
 PatchAssessmentResources

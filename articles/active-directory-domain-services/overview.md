@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 04/28/2021
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 5854d8cecd1de8121b6129d86a70c1f5ad9518f2
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 8c390593778917bef45b20d27e11e1b642b194c6
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175381"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303561"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什么是 Azure Active Directory 域服务？
 
-Azure Active Directory 域服务 (AD DS) 提供托管域服务，例如域加入、组策略、轻型目录访问协议 (LDAP) 和 Kerberos/NTLM 身份验证。 无需在云中部署、管理和修补域控制器 (DC) 即可使用这些域服务。
+Azure Active Directory 域服务 (Azure AD DS) 提供托管域服务，例如域加入、组策略、轻型目录访问协议 (LDAP) 和 Kerberos/NTLM 身份验证。 无需在云中部署、管理和修补域控制器 (DC) 即可使用这些域服务。
 
 Azure AD DS 托管域使你能够在云中或你不希望目录查找始终返回到本地 AD DS 环境的位置，运行无法使用现代身份验证方法的旧版应用程序。 你可以将这些旧版应用程序从本地环境直接迁移到托管域，而无需在云中管理 AD DS 环境。
 

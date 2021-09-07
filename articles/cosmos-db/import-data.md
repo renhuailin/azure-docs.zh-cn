@@ -1,18 +1,18 @@
 ---
 title: 教程：适用于 Azure Cosmos DB 的数据库迁移工具
 description: 教程：了解如何使用开源 Azure Cosmos DB 数据迁移工具从各种源将数据导入 Azure Cosmos DB 中，这些源包括 MongoDB、SQL Server、表存储、Amazon DynamoDB、CSV 和 JSON 文件。 将 CSV 转换为 JSON。
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 08/26/2021
 ms.author: dech
-ms.openlocfilehash: 82f747f9bc484c0d113b579579bf13c98590e37c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 72843c595c8fe04bbfd82890b8974ae386b065a2
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113766731"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037324"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>教程：使用数据迁移工具将数据迁移到 Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -23,8 +23,8 @@ ms.locfileid: "113766731"
 > Azure Cosmos DB 数据迁移工具是为小规模迁移而设计的开源工具。 对于更大规模的迁移，请查看我们的[引入数据指南](cosmosdb-migrationchoices.md)。
 
 * **[SQL API](./introduction.md)** - 可以使用数据迁移工具中提供的任何源选项来小规模导入数据。 [了解用于大规模导入数据的迁移选项](cosmosdb-migrationchoices.md)。
-* **[表 API](table-introduction.md)** - 可以使用数据迁移工具或 [AzCopy](table-import.md#migrate-data-by-using-azcopy) 导入数据。 有关详细信息，请参阅[导入要在 Azure Cosmos DB 表 API 中使用的数据](table-import.md)。
-* **[Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md)** - 数据迁移工具不支持将 Azure Cosmos DB 的用于 MongoDB 的 API 作为源或目标。 如果想要从 Azure Cosmos DB 的集合中迁入或迁出数据，请参阅[如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 将 MongoDB 数据迁移到 Cosmos 数据库](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)的相关说明。 仍可使用数据迁移工具将数据从 MongoDB 导出到 Azure Cosmos DB SQL API 集合中，以便使用 SQL API。
+* **[表 API](table/introduction.md)** - 可以使用数据迁移工具或 [AzCopy](table/table-import.md#migrate-data-by-using-azcopy) 导入数据。 有关详细信息，请参阅[导入要在 Azure Cosmos DB 表 API 中使用的数据](table/table-import.md)。
+* **[Azure Cosmos DB 的用于 MongoDB 的 API](mongodb/mongodb-introduction.md)** - 数据迁移工具不支持将 Azure Cosmos DB 的用于 MongoDB 的 API 作为源或目标。 如果想要从 Azure Cosmos DB 的集合中迁入或迁出数据，请参阅[如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 将 MongoDB 数据迁移到 Cosmos 数据库](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)的相关说明。 仍可使用数据迁移工具将数据从 MongoDB 导出到 Azure Cosmos DB SQL API 集合中，以便使用 SQL API。
 * **[Cassandra API](graph-introduction.md)** - Cassandra API 帐户不支持将数据迁移工具用作导入工具。 [了解用于将数据导入 Cassandra API 的迁移选项](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api)
 * **[Gremlin API](graph-introduction.md)** - Gremlin API 帐户目前不支持将数据迁移工具用作导入工具。 [了解用于将数据导入 Gremlin API 的迁移选项](cosmosdb-migrationchoices.md#other-apis) 
 
@@ -68,10 +68,17 @@ ms.locfileid: "113766731"
 
 ## <a name="installation"></a><a id="Install"></a>安装
 
-迁移工具源代码可在 GitHub 上的[此存储库](https://github.com/azure/azure-documentdb-datamigrationtool)中获得。 可以在本地下载并编译解决方案，然后运行以下任一项：
+### <a name="download-executable-package"></a>下载可执行包
 
-* **Dtui.exe**：该工具的图形界面版本
-* **Dt.exe**：该工具的命令行版本
+  * 在[此处](https://github.com/Azure/azure-documentdb-datamigrationtool/releases/tag/1.8.3)下载最新签名的 dt.exe 和 dtui.exe Windows 二进制文件的 zip 文件 
+  * 解压缩到计算机上的任意目录并打开提取的目录以查找二进制文件
+
+### <a name="build-from-source"></a>从源构建
+
+  迁移工具源代码可在 GitHub 上的[此存储库](https://github.com/azure/azure-documentdb-datamigrationtool)中获得。 可以在本地下载并编译解决方案，然后运行以下任一项：
+
+  * **Dtui.exe**：该工具的图形界面版本
+  * **Dt.exe**：该工具的命令行版本
 
 ## <a name="select-data-source"></a>选择数据源
 
@@ -237,7 +244,7 @@ dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:DocumentDBBulk /t.ConnectionString
 
 借助 Azure 表存储源导入程序选项，可以从单个 Azure 表存储表导入。 可以选择性地筛选要导入的表实体。
 
-从 Azure 表存储导入的数据可输出到 Azure Cosmos DB 表和实体，以便与表 API 配合使用。 导入的数据还可输出到集合和文档，以便与 SQL API 配合使用。 但是，表 API 只能在命令行实用工具中用作目标。 无法使用数据迁移工具用户界面导出到表 API。 有关详细信息，请参阅[导入要在 Azure Cosmos DB 表 API 中使用的数据](table-import.md)。
+从 Azure 表存储导入的数据可输出到 Azure Cosmos DB 表和实体，以便与表 API 配合使用。 导入的数据还可输出到集合和文档，以便与 SQL API 配合使用。 但是，表 API 只能在命令行实用工具中用作目标。 无法使用数据迁移工具用户界面导出到表 API。 有关详细信息，请参阅[导入要在 Azure Cosmos DB 表 API 中使用的数据](table/table-import.md)。
 
 :::image type="content" source="./media/import-data/azuretablesource.png" alt-text="Azure 表存储源选项的屏幕截图":::
 
@@ -591,6 +598,10 @@ dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<Cos
 > * 已从 Azure Cosmos DB 导出到 JSON
 
 现在可以继续学习下一教程并了解如何使用 Azure Cosmos DB 查询数据。
+
+尝试为迁移到 Azure Cosmos DB 进行容量规划？
+  * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+  * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
 
 > [!div class="nextstepaction"]
 >[如何查询数据？](../cosmos-db/tutorial-query-sql-api.md)

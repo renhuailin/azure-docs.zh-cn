@@ -1,17 +1,20 @@
 ---
 title: 在聊天机器人中使用个性化体验创建服务 - 个性化体验创建服务
 description: 自定义具有个性化体验创建服务循环的 C# .NET 聊天机器人，以根据操作（包含特征）和上下文特征向用户提供正确的内容。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 05/17/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4cc2fcfb73117edf27421dd8c91161d12bab7a7a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 15774ad99391dee3cc89bec6fa09bb808715a4ef
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097905"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830286"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>教程：在 .NET 聊天机器人中使用个性化体验创建服务
 
@@ -33,7 +36,7 @@ ms.locfileid: "110097905"
 
 聊天机器人需要管理对话轮次。 聊天机器人使用[机器人框架](https://github.com/microsoft/botframework-sdk)管理机器人体系结构和会话，并使用认知服务、[语言理解](../LUIS/index.yml) (LUIS) 来理解用户自然语言的意图。
 
-聊天机器人是一个网站，其中包含用于回答请求的特定路由 `http://localhost:3978/api/messages`。 在本地开发机器人时，可以使用机器人模拟器以可视化方式与正在运行的聊天机器人进行交互。
+聊天机器人是一个网站，其中包含用于回答请求的特定路由 `http://localhost:3978/api/messages`。 在本地开发机器人时，可以使用 Bot Framework Emulator 以可视化方式与正在运行的聊天机器人进行交互。
 
 ### <a name="user-interactions-with-the-bot"></a>用户与机器人的交互
 
@@ -174,24 +177,24 @@ git clone https://github.com/Azure-Samples/cognitive-services-personalizer-sampl
 由于本教程对机器人的操作进行了说明，因此请继续运行网站，以便与机器人交互。
 
 
-## <a name="set-up-the-bot-emulator"></a>设置机器人模拟器
+## <a name="set-up-the-bot-framework-emulator"></a>设置 Bot Framework Emulator
 
 1. 打开 Bot Framework Emulator，然后选择“打开机器人”。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="机器人模拟器启动屏幕的屏幕截图。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Bot Framework Emulator 启动屏幕的屏幕截图。":::
 
 
 1. 使用以下机器人 URL 配置机器人，然后选择“连接” ：
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="机器人模拟器打开机器人设置的屏幕截图。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Bot Framework Emulator 打开机器人设置的屏幕截图。":::
 
     模拟器连接到聊天机器人，并显示说明文本以及有助于本地开发的日志记录和调试信息。
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="机器人模拟器第一轮次对话的屏幕截图。":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Bot Framework Emulator 第一轮次对话的屏幕截图。":::
 
-## <a name="use-the-bot-in-the-bot-emulator"></a>在机器人模拟器中使用机器人
+## <a name="use-the-bot-in-the-bot-framework-emulator"></a>使用 Bot Framework Emulator 中的机器人
 
 1. 通过输入 `I would like to see the menu` 要求查看菜单。 聊天机器人显示项。
 1. 输入 `Please suggest a drink for me.`使机器人推荐项。模拟器在聊天窗口中显示排名请求和响应，因此你可以看到完整的 JSON。 机器人会提出推荐，例如 `How about Latte?`

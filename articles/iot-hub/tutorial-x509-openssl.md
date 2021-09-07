@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 7985879b54fe840ec47d72595d95547aa062938b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: adbb2979fc9e097fa0abf2675759ba1f7aad8a0c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724301"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123310571"
 ---
 # <a name="tutorial-using-openssl-to-create-test-certificates"></a>教程：使用 OpenSSL 创建测试证书
 
@@ -238,20 +238,27 @@ subjectKeyIdentifier     = hash
 
 1. 在 Azure 门户中，导航到 IoT 中心，选择“设置”>“证书”。
 
-1. 选择“添加”，以添加新的从属 CA 证书。
+2. 选择“添加”，以添加新的从属 CA 证书。
 
-1. 在“证书名称”字段中输入显示名称，并选择之前创建的 PEM 证书文件。
+3. 在“证书名称”字段中输入显示名称，并选择之前创建的 PEM 证书文件。
 
-1. 选择“保存”。 此时证书显示在证书列表中，状态为“未验证”。 此验证过程将证明你已拥有证书。
+> [!NOTE]
+> 上面创建的 .crt 证书与 .pem 证书相同。 只需在为证明所有权而上传证书时更改扩展，或使用以下 OpenSSL 命令：
+
+```bash
+openssl x509 -in mycert.crt -out mycert.pem -outform PEM
+```
+
+4. 选择“保存”。 此时证书显示在证书列表中，状态为“未验证”。 此验证过程将证明你已拥有证书。
 
    
-1. 选择证书以查看“证书详细信息”对话框。
+5. 选择证书以查看“证书详细信息”对话框。
 
-1. 选择“生成验证码”。 有关详细信息，请参阅[证明对 CA 证书的所有权](tutorial-x509-prove-possession.md)。
+6. 选择“生成验证码”。 有关详细信息，请参阅[证明对 CA 证书的所有权](tutorial-x509-prove-possession.md)。
 
-1. 将验证码复制到剪贴板。 必须将验证码设置为证书使用者。 例如，如果验证码为 BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A，请将其添加为证书使用者，如步骤 9 所示。
+7. 将验证码复制到剪贴板。 必须将验证码设置为证书使用者。 例如，如果验证码为 BB0C656E69AF75E3FB3C8D922C1760C58C1DA5B05AAA9D0A，请将其添加为证书使用者，如步骤 9 所示。
 
-1. 生成私钥。
+8. 生成私钥。
 
   ```bash
     $ openssl genpkey -out pop.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048

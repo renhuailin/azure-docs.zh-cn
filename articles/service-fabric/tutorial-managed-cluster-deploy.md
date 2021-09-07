@@ -2,14 +2,14 @@
 title: 部署 Service Fabric 托管群集
 description: 在本教程中，你将部署一个 Service Fabric 托管群集来进行测试。
 ms.topic: tutorial
-ms.date: 5/10/2021
+ms.date: 8/23/2021
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: f87e45dcaab5e42607f24decc5897471a74e90b5
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 3117c4c248aa073fb961dc031342d8b3d9489bbd
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666922"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867397"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster"></a>教程：部署 Service Fabric 托管群集
 
@@ -52,9 +52,6 @@ Set-AzContext -SubscriptionId <your-subscription>
 ## <a name="create-a-new-resource-group"></a>创建新的资源组
 
 接下来，为托管 Service Fabric 群集创建资源组，创建时请将 `<your-rg>` 和 `<location>` 替换为所需的组名称和位置。
-
-> [!NOTE]
-> 公共预览版支持的区域包括 `centraluseuap`、`eastus2euap`、`eastasia`、`northeurope`、`westcentralus` 和 `eastus2`。
 
 ```powershell
 $resourceGroup = "myResourceGroup"

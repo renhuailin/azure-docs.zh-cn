@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.date: 06/10/2021
 adobe-target: true
 ms.custom: FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 0d4c85ec1075e3925fa5657783ffce618faaa6ea
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: a5bc3ebfb58a41761b4a41439b6482592c58a7b0
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113760154"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037300"
 ---
 # <a name="quickstart-create-workspace-resources-you-need-to-get-started-with-azure-machine-learning"></a>快速入门：创建 Azure 机器学习入门所需的工作区资源
 
@@ -25,7 +25,7 @@ ms.locfileid: "113760154"
 工作区是机器学习活动的顶级资源，为使用 Azure 机器学习时创建的所有项目提供一个集中的查看和管理位置。 计算资源提供预配置的基于云的环境，可用于训练、部署、自动执行、管理和跟踪机器学习模型。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -44,10 +44,10 @@ ms.locfileid: "113760154"
 创建一个计算实例，以便在教程和快速入门的其余部分使用此开发环境。
 
 1. 如果未选择上一部分中的“转到工作区”，请立即登录 [Azure 机器学习工作室](https://ml.azure.com)，并选择你的工作区。
-1. 在左侧的“管理”下，选择“计算” 。
+1. 在左侧选择“计算”。
 1. 选择“+ 新建”以创建新的计算实例。
-1. 保留第一页上的所有默认值，然后选择“下一步”。
-1. 提供名称并选择“创建”。
+1. 提供一个名称，保留第一页上的所有默认值。
+1. 选择“创建”。
  
 大约两分钟后，你将看到计算实例的状态从“正在创建”更改为“正在运行” 。  现已准备就绪。  
 
@@ -77,7 +77,7 @@ ms.locfileid: "113760154"
 
 查看左侧导航栏上的工作室部分：
 
-* 工作室的“创建者”部分包含多个创建机器学习模型的方法。  方法：
+* 工作室的“创建者”部分包含多个创建机器学习模型的方法。  你可以：
 
     * 通过“笔记本”部分，可以创建 Jupyter 笔记本、复制示例笔记本以及运行笔记本和 Python 脚本。
     * 通过“自动化 ML”步骤，可以创建机器学习模型，而无需编写代码。
@@ -86,6 +86,10 @@ ms.locfileid: "113760154"
 * 工作室的“资产”部分可帮助你跟踪在运行作业时创建的资产。  如果你有新的工作区，则这些部分中还没有任何内容。
 
 * 你已经使用工作室的“管理”部分来创建计算资源。  通过此部分，还可以创建和管理链接到工作区的数据和外部服务。  
+
+### <a name="workspace-diagnostics"></a>工作区诊断
+
+[!INCLUDE [machine-learning-workspace-diagnostics](../../includes/machine-learning-workspace-diagnostics.md)]
 
 ## <a name="clean-up-resources"></a><a name="clean-up"></a>清理资源
 

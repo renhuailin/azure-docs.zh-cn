@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 10/13/2020
+ms.date: 08/26/2021
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 06ca17329a5c6888e1f0ce847d2a2f9ae2bd8d35
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 04ac3178b439e755bbcbd33855ff0bab9a566784
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781949"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029193"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-api-for-mongodb"></a>适用于 Azure Cosmos DB API for MongoDB 的 Azure CLI 示例
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -44,3 +44,9 @@ ms.locfileid: "121781949"
 | [吞吐量操作](../scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | 在数据库和集合上的自动缩放和标准吞吐量之间读取、更新和迁移。|
 | [锁定资源以防止将其删除](../scripts/cli/mongodb/lock.md?toc=%2fcli%2fazure%2ftoc.json)| 使用资源锁防止删除资源。|
 |||
+
+## <a name="next-steps"></a>后续步骤
+
+尝试为迁移到 Azure Cosmos DB 进行容量规划？ 可以使用有关现有数据库群集的信息进行容量规划。
+* 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+* 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-capacity-planner.md)

@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 04/24/2020
-ms.openlocfilehash: ca06f5a106da38e724325f3de66d76c1c8f4f4b0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: f474ac853c9196d36af6aa832b0c455db6a08b73
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121783330"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032245"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：将 Go 应用程序连接到 Azure Cosmos DB 的 API for MongoDB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -453,6 +453,10 @@ Azure Cosmos DB 中存储的数据可用于在 Azure 门户中查看和查询。
 ## <a name="next-steps"></a>后续步骤
 
 在本快速入门中，你已了解了如何使用 Azure Cloud Shell 创建 Azure Cosmos DB MongoDB API 帐户，以及如何创建和运行 Go 命令行应用以管理 `todo`。 现在可以将其他数据导入 Azure Cosmos DB 帐户了。
+
+尝试为迁移到 Azure Cosmos DB 进行容量规划？ 可以使用有关现有数据库群集的信息进行容量规划。
+* 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+* 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-capacity-planner.md)
 
 > [!div class="nextstepaction"]
 > [将 MongoDB 数据导入 Azure Cosmos DB](../../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

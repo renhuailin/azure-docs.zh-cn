@@ -3,16 +3,16 @@ title: Azure 虚拟桌面主机池服务更新 - Azure
 description: 如何创建验证主机池以在将更新推广到生产之前监视服务更新。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 12/15/2020
+ms.date: 07/23/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 2c944d1068ae74a97c8a6315e98a1348f9378b8c
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 13d340d427d2478d226b966e17bf98bcf2561004
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749122"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123110155"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教程：创建主机池以验证服务更新
 
@@ -31,17 +31,29 @@ ms.locfileid: "111749122"
 >[!IMPORTANT]
 >集成 Azure 资源管理器的 Azure 虚拟桌面目前在启用和禁用验证环境时会遇到麻烦。 当解决此问题后，我们会更新本文。
 
-## <a name="prerequisites"></a>先决条件
-
-在开始之前，请按照[设置 Azure 虚拟桌面 PowerShell 模块](powershell-module.md)中的说明设置 PowerShell 模块并登录到 Azure。
-
 ## <a name="create-your-host-pool"></a>创建主机池
 
 可以按照以下任何文章中的说明创建主机池：
-- [教程：通过 Azure 市场创建主机池](create-host-pools-azure-marketplace.md)
-- [使用 PowerShell 创建主机池](create-host-pools-powershell.md)
+- [教程：使用 Azure 市场或 Azure CLI 创建主机池](create-host-pools-azure-marketplace.md)
+- [使用 PowerShell 或 Azure CLI 创建主机池](create-host-pools-powershell.md)
 
 ## <a name="define-your-host-pool-as-a-validation-host-pool"></a>将主机池定义为验证主机池
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+使用 Azure 门户配置验证主机池：
+
+1. 通过 <https://portal.azure.com> 登录到 Azure 门户。
+2. 搜索并选择“Azure 虚拟桌面”。
+3. 在“Azure 虚拟桌面”页中，选择“主机池”。
+4. 选择要编辑的主机池的名称。
+5. 选择“属性”。
+6. 在“验证环境”字段中，选择“是”，启用验证环境。
+7. 选择“保存”。 这将应用新设置。
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+如果尚未这样做，请按照[设置 Azure 虚拟桌面 PowerShell 模块](powershell-module.md)中的说明设置 PowerShell 模块并登录到 Azure。
 
 运行以下 PowerShell cmdlet 可将新主机池定义为验证主机池。 将括号中的值替换为与你的会话相关的值：
 
@@ -68,19 +80,27 @@ cmdlet 的结果应类似于以下输出：
     ValidationEnvironment : True
 ```
 
-## <a name="enable-your-validation-environment-with-the-azure-portal"></a>使用 Azure 门户启用验证环境
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-还可以使用 Azure 门户来启用验证环境。
+请为 Azure CLI 准备环境并登录（如果尚未这样做）。
 
-使用 Azure 门户配置验证主机池：
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-1. 通过 <https://portal.azure.com> 登录到 Azure 门户。
-2. 搜索并选择“Azure 虚拟桌面”。
-3. 在“Azure 虚拟桌面”页中，选择“主机池”。
-4. 选择要编辑的主机池的名称。
-5. 选择“属性”。
-6. 在“验证环境”字段中，选择“是”，启用验证环境。
-7. 选择“保存”。 这将应用新设置。
+要将新主机池定义为验证主机池，请使用 [az desktopvirtualization hostpool update](/cli/azure/desktopvirtualization#az_desktopvirtualization_hostpool_update) 命令：
+
+```azurecli
+az desktopvirtualization hostpool update --name "MyHostPool" \
+    --resource-group "MyResourceGroup" \
+    --validation-environment true
+```
+
+使用以下命令可确认是否设置了验证属性。
+
+```azurecli
+az desktopvirtualization hostpool show --name "MyHostPool" \
+    --resource-group "MyResourceGroup" 
+```
+---
 
 ## <a name="update-schedule"></a>更新计划
 

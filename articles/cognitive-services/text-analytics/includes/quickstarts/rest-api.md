@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 06/08/2021
+ms.date: 08/25/2021
 ms.author: aahi
-ms.openlocfilehash: 5f02799cbaf99a8f73d06d6749637d8b1b603255
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 93c71179de0f932a583b481e14bc89dc316f5235
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122442403"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864810"
 ---
-# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
+#### <a name="version-32-preview1"></a>[版本 3.2-preview.1](#tab/version-3-2)
 
-[v3.1 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/)
+[v3.1 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-2-Preview-1)
 
-# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+#### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
-[v3 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0) 
+[v3 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1) 
 
 ---
 
@@ -51,14 +51,23 @@ ms.locfileid: "122442403"
 
 以下 cURL 命令从 BASH shell 中执行。 请使用自己的资源名称、资源密钥和 JSON 值编辑这些命令。
 
-## <a name="sentiment-analysis"></a>情绪分析
+## <a name="sentiment-analysis-and-opinion-mining"></a>情绪分析和观点挖掘
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
-
 > [!NOTE]
 > 以下示例包含使用 `opinionMining=true` 参数对情绪分析的观点挖掘功能发出的请求，它精细地描述了对文本中某些对象（名词）的观点（形容词）。
+
+#### <a name="version-32-preview1"></a>[版本 3.2-preview.1](#tab/version-3-2)
+
+```bash
+curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.2-preview.1/sentiment?opinionMining=true \
+-H "Content-Type: application/json" \
+-H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
+-d '{ documents: [{ id: "1", text: "The customer service here is really good."}]}'
+```
+
+#### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/sentiment?opinionMining=true \
@@ -67,7 +76,11 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/sen
 -d '{ documents: [{ id: "1", text: "The customer service here is really good."}]}'
 ```
 
+---
+
 ### <a name="json-response"></a>JSON 响应
+
+[!INCLUDE [REST API response is the same for both versions](../rest-api-response-same.md)]
 
 ```json
 {
@@ -136,54 +149,18 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/sen
 }
 ``` 
 
-#### <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-```bash
-curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/sentiment/ \
--H "Content-Type: application/json" \
--H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
--d '{ documents: [{ id: "1", text: "I had the best day of my life. I wish you were there with me."}]}'
-```
-
-### <a name="json-response"></a>JSON 响应
-
-```json
-{
-  "documents":[
-    {
-      "id":"1",
-      "sentiment":"positive",
-      "documentScores":{
-        "positive":1.0,
-        "neutral":0.0,
-        "negative":0.0
-      },
-      "sentences":[
-        {
-          "sentiment":"positive",
-          "sentenceScores":{
-            "positive":1.0,
-            "neutral":0.0,
-            "negative":0.0
-          },
-          "offset":0,
-          "length":30
-        }
-      ]
-    }
-  ],
-  "errors":[
-  ],
-  "modelVersion":"2019-10-01"
-}
-```
-
----
-
-
 ## <a name="language-detection"></a>语言检测
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
+
+#### <a name="version-32-preview1"></a>[版本 3.2-preview.1](#tab/version-3-2)
+
+```bash
+curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.2-preview.1/languages/ \
+-H "Content-Type: application/json" \
+-H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
+-d '{ documents: [{ id: "1", text: "This is a document written in English."}]}'
+```
 
 #### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
@@ -194,7 +171,11 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/lan
 -d '{ documents: [{ id: "1", text: "This is a document written in English."}]}'
 ```
 
+---
+
 ### <a name="json-response"></a>JSON 响应
+
+[!INCLUDE [REST API response is the same for both versions](../rest-api-response-same.md)]
 
 ```json
 {
@@ -218,45 +199,18 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/lan
 }
 ```
 
-#### <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-```bash
-curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/languages/ \
--H "Content-Type: application/json" \
--H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
--d '{ documents: [{ id: "1", text: "This is a document written in English."}]}'
-```
-
-### <a name="json-response"></a>JSON 响应
-
-```json
-{
-   "documents":[
-      {
-         "id":"1",
-         "detectedLanguage":{
-            "name":"English",
-            "iso6391Name":"en",
-            "confidenceScore":0.99
-         },
-         "warnings":[
-            
-         ]
-      }
-   ],
-   "errors":[
-      
-   ],
-   "modelVersion":"2020-09-01"
-}
-```
-
----
-
-
 ## <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
+
+#### <a name="version-32-preview1"></a>[版本 3.2-preview.1](#tab/version-3-2)
+
+```bash
+curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.2-preview.1/entities/recognition/general \
+-H "Content-Type: application/json" \
+-H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
+-d '{ documents: [{ id: "1", language:"en", text: "I had a wonderful trip to Seattle last week."}]}'
+```
 
 #### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
@@ -267,8 +221,11 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/ent
 -d '{ documents: [{ id: "1", language:"en", text: "I had a wonderful trip to Seattle last week."}]}'
 ```
 
+---
 
 ### <a name="json-response"></a>JSON 响应
+
+[!INCLUDE [REST API response is the same for both versions](../rest-api-response-same.md)]
 
 ```json
 {
@@ -306,9 +263,20 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/ent
 
 ```
 
-### <a name="detecting-personally-identifying-information"></a>检测个人身份信息
+## <a name="personally-identifiable-information-pii-recognition"></a>个人身份信息识别 (PII) 识别
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
+
+#### <a name="version-32-preview1"></a>[版本 3.2-preview.1](#tab/version-3-2)
+
+```bash
+curl -X POST https://your-text-analytics-endpoint-here>/text/analytics/v3.2-preview.1/entities/recognition/pii \
+-H "Content-Type: application/json" \
+-H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
+-d '{ documents: [{ id: "1", language:"en", text: "Call our office at 312-555-1234, or send an email to support@contoso.com"}]}'
+```
+
+#### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 ```bash
 curl -X POST https://your-text-analytics-endpoint-here>/text/analytics/v3.1/entities/recognition/pii \
@@ -317,7 +285,11 @@ curl -X POST https://your-text-analytics-endpoint-here>/text/analytics/v3.1/enti
 -d '{ documents: [{ id: "1", language:"en", text: "Call our office at 312-555-1234, or send an email to support@contoso.com"}]}'
 ```
 
+---
+
 ### <a name="json-response"></a>JSON 响应
+
+[!INCLUDE [REST API response is the same for both versions](../rest-api-response-same.md)]
 
 ```json
 {
@@ -353,65 +325,18 @@ curl -X POST https://your-text-analytics-endpoint-here>/text/analytics/v3.1/enti
 }
 ```
 
-#### <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-```bash
-curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/entities/recognition/general \
--H "Content-Type: application/json" \
--H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
--d '{ documents: [{ id: "1", language:"en", text: "I had a wonderful trip to Seattle last week."}]}'
-```
-
-
-### <a name="json-response"></a>JSON 响应
-
-```json
-{
-   "documents":[
-      {
-         "id":"1",
-         "entities":[
-            {
-               "text":"trip",
-               "category":"Event",
-               "offset":18,
-               "length":4,
-               "confidenceScore":0.61
-            },
-            {
-               "text":"Seattle",
-               "category":"Location",
-               "subcategory":"GPE",
-               "offset":26,
-               "length":7,
-               "confidenceScore":0.82
-            },
-            {
-               "text":"last week",
-               "category":"DateTime",
-               "subcategory":"DateRange",
-               "offset":34,
-               "length":9,
-               "confidenceScore":0.8
-            }
-         ],
-         "warnings":[
-            
-         ]
-      }
-   ],
-   "errors":[
-      
-   ],
-   "modelVersion":"2020-04-01"
-}
-```
-
----
-
 ## <a name="entity-linking"></a>实体链接
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
+
+#### <a name="version-32-preview1"></a>[版本 3.2-preview.1](#tab/version-3-2)
+
+```bash
+curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.2-preview.1/entities/linking \
+-H "Content-Type: application/json" \
+-H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
+-d '{ documents: [{ id: "1", language:"en", text: "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975."}]}'
+```
 
 #### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
@@ -422,7 +347,11 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/ent
 -d '{ documents: [{ id: "1", language:"en", text: "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975."}]}'
 ```
 
+---
+
 ### <a name="json-response"></a>JSON 响应
+
+[!INCLUDE [REST API response is the same for both versions](../rest-api-response-same.md)]
 
 ```json
 {
@@ -507,105 +436,18 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/ent
 }
 ```
 
-#### <a name="version-30"></a>[版本 3.0](#tab/version-3)
-
-```bash
-curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/entities/linking \
--H "Content-Type: application/json" \
--H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
--d '{ documents: [{ id: "1", language:"en", text: "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975."}]}'
-```
-
-
-### <a name="json-response"></a>JSON 响应
-
-```json
-{
-   "documents":[
-      {
-         "id":"1",
-         "entities":[
-            {
-               "name":"Microsoft",
-               "matches":[
-                  {
-                     "text":"Microsoft",
-                     "offset":0,
-                     "length":9,
-                     "confidenceScore":0.48
-                  }
-               ],
-               "language":"en",
-               "id":"Microsoft",
-               "url":"https://en.wikipedia.org/wiki/Microsoft",
-               "dataSource":"Wikipedia"
-            },
-            {
-               "name":"Bill Gates",
-               "matches":[
-                  {
-                     "text":"Bill Gates",
-                     "offset":25,
-                     "length":10,
-                     "confidenceScore":0.52
-                  }
-               ],
-               "language":"en",
-               "id":"Bill Gates",
-               "url":"https://en.wikipedia.org/wiki/Bill_Gates",
-               "dataSource":"Wikipedia"
-            },
-            {
-               "name":"Paul Allen",
-               "matches":[
-                  {
-                     "text":"Paul Allen",
-                     "offset":40,
-                     "length":10,
-                     "confidenceScore":0.54
-                  }
-               ],
-               "language":"en",
-               "id":"Paul Allen",
-               "url":"https://en.wikipedia.org/wiki/Paul_Allen",
-               "dataSource":"Wikipedia"
-            },
-            {
-               "name":"April 4",
-               "matches":[
-                  {
-                     "text":"April 4",
-                     "offset":54,
-                     "length":7,
-                     "confidenceScore":0.38
-                  }
-               ],
-               "language":"en",
-               "id":"April 4",
-               "url":"https://en.wikipedia.org/wiki/April_4",
-               "dataSource":"Wikipedia"
-            }
-         ],
-         "warnings":[
-            
-         ]
-      }
-   ],
-   "errors":[
-      
-   ],
-   "modelVersion":"2020-02-01"
-}
-```
-
-
----
-
-
 ## <a name="key-phrase-extraction"></a>关键短语提取
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
+#### <a name="version-32-preview1"></a>[版本 3.2-preview.1](#tab/version-3-2)
+
+```bash
+curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.2-preview.1/keyPhrases \
+-H "Content-Type: application/json" \
+-H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
+-d '{ documents: [{ id: "1", language:"en", text: "I had a wonderful trip to Seattle last week."}]}'
+```
 
 #### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
@@ -615,6 +457,13 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/key
 -H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
 -d '{ documents: [{ id: "1", language:"en", text: "I had a wonderful trip to Seattle last week."}]}'
 ```
+
+---
+
+### <a name="json-response"></a>JSON 响应
+
+[!INCLUDE [REST API response is the same for both versions](../rest-api-response-same.md)]
+
 
 ```json
 {
@@ -637,37 +486,332 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1/key
 }
 ```
 
-#### <a name="version-30"></a>[版本 3.0](#tab/version-3)
+## <a name="text-analytics-for-health"></a>运行状况文本分析
+
+
+[!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
+
+#### <a name="version-32-preview1"></a>[版本 3.2-preview.1](#tab/version-3-2)
 
 ```bash
-curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/keyPhrases \
+curl -i -X POST https://your-text-analytics-endpoint-here/text/analytics/v3.2-preview.1/entities/health/jobs \
 -H "Content-Type: application/json" \
--H "Ocp-Apim-Subscription-Key: <your-text-analytics-key-here>" \
--d '{ documents: [{ id: "1", language:"en", text: "I had a wonderful trip to Seattle last week."}]}'
+-H "Ocp-Apim-Subscription-Key: your-text-analytics-key-here" \
+-d '{ documents: [{ id: "1", language:"en", text: "Subject was administered 100mg remdesivir intravenously over a period of 120 min"}]}'
 ```
+
+从响应头获取 `operation-location`。 值将如下 URL 所示：
+
+```rest
+https://your-resource.cognitiveservices.azure.com/text/analytics/v3.2-preview.1/entities/health/jobs/12345678-1234-1234-1234-12345678
+```
+
+要获取请求的结果，请使用以下 cURL 命令。 请务必将 `my-job-id` 替换为从之前的 `operation-location` 响应头中收到的数值 ID 值：
+
+```bash
+curl -X GET  https://your-text-analytics-endpoint-here/text/analytics/v3.2-preview.1/entities/health/jobs/my-job-id \
+-H "Content-Type: application/json" \
+-H "Ocp-Apim-Subscription-Key: your-text-analytics-key-here"
+```
+
+#### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
+
+```bash
+curl -i -X POST https://your-text-analytics-endpoint-here/text/analytics/v3.1/entities/health/jobs \
+-H "Content-Type: application/json" \
+-H "Ocp-Apim-Subscription-Key: your-text-analytics-key-here" \
+-d '{ documents: [{ id: "1", language:"en", text: "Subject was administered 100mg remdesivir intravenously over a period of 120 min"}]}'
+```
+
+从响应头获取 `operation-location`。 值将如下 URL 所示：
+
+```rest
+https://your-resource.cognitiveservices.azure.com/text/analytics/v3.1/entities/health/jobs/12345678-1234-1234-1234-12345678
+```
+
+要获取请求的结果，请使用以下 cURL 命令。 请务必将 `my-job-id` 替换为从之前的 `operation-location` 响应头中收到的数值 ID 值：
+
+```bash
+curl -X GET  https://your-text-analytics-endpoint-here/text/analytics/v3.1/entities/health/jobs/my-job-id \
+-H "Content-Type: application/json" \
+-H "Ocp-Apim-Subscription-Key: your-text-analytics-key-here"
+```
+
+---
 
 ### <a name="json-response"></a>JSON 响应
 
+[!INCLUDE [REST API response is the same for both versions](../rest-api-response-same.md)]
+
 ```json
 {
-   "documents":[
-      {
-         "id":"1",
-         "keyPhrases":[
-            "wonderful trip",
-            "Seattle",
-            "week"
-         ],
-         "warnings":[
-            
-         ]
-      }
-   ],
+   "jobId":"12345678-1234-1234-1234-12345678",
+   "lastUpdateDateTime":"2021-08-02T21:32:43Z",
+   "createdDateTime":"2021-08-02T21:32:04Z",
+   "expirationDateTime":"2021-08-03T21:32:04Z",
+   "status":"succeeded",
    "errors":[
       
    ],
-   "modelVersion":"2020-07-01"
+   "results":{
+      "documents":[
+         {
+            "id":"1",
+            "entities":[
+               {
+                  "offset":25,
+                  "length":5,
+                  "text":"100mg",
+                  "category":"Dosage",
+                  "confidenceScore":1.0
+               },
+               {
+                  "offset":31,
+                  "length":10,
+                  "text":"remdesivir",
+                  "category":"MedicationName",
+                  "confidenceScore":1.0,
+                  "name":"remdesivir",
+                  "links":[
+                     {
+                        "dataSource":"UMLS",
+                        "id":"C4726677"
+                     },
+                     {
+                        "dataSource":"DRUGBANK",
+                        "id":"DB14761"
+                     },
+                     {
+                        "dataSource":"GS",
+                        "id":"6192"
+                     },
+                     {
+                        "dataSource":"MEDCIN",
+                        "id":"398132"
+                     },
+                     {
+                        "dataSource":"MMSL",
+                        "id":"d09540"
+                     },
+                     {
+                        "dataSource":"MSH",
+                        "id":"C000606551"
+                     },
+                     {
+                        "dataSource":"MTHSPL",
+                        "id":"3QKI37EEHE"
+                     },
+                     {
+                        "dataSource":"NCI",
+                        "id":"C152185"
+                     },
+                     {
+                        "dataSource":"NCI_FDA",
+                        "id":"3QKI37EEHE"
+                     },
+                     {
+                        "dataSource":"NDDF",
+                        "id":"018308"
+                     },
+                     {
+                        "dataSource":"RXNORM",
+                        "id":"2284718"
+                     },
+                     {
+                        "dataSource":"SNOMEDCT_US",
+                        "id":"870592005"
+                     },
+                     {
+                        "dataSource":"VANDF",
+                        "id":"4039395"
+                     }
+                  ]
+               },
+               {
+                  "offset":42,
+                  "length":13,
+                  "text":"intravenously",
+                  "category":"MedicationRoute",
+                  "confidenceScore":0.99
+               },
+               {
+                  "offset":73,
+                  "length":7,
+                  "text":"120 min",
+                  "category":"Time",
+                  "confidenceScore":0.98
+               }
+            ],
+            "relations":[
+               {
+                  "relationType":"DosageOfMedication",
+                  "entities":[
+                     {
+                        "ref":"#/results/documents/0/entities/0",
+                        "role":"Dosage"
+                     },
+                     {
+                        "ref":"#/results/documents/0/entities/1",
+                        "role":"Medication"
+                     }
+                  ]
+               },
+               {
+                  "relationType":"RouteOfMedication",
+                  "entities":[
+                     {
+                        "ref":"#/results/documents/0/entities/1",
+                        "role":"Medication"
+                     },
+                     {
+                        "ref":"#/results/documents/0/entities/2",
+                        "role":"Route"
+                     }
+                  ]
+               },
+               {
+                  "relationType":"TimeOfMedication",
+                  "entities":[
+                     {
+                        "ref":"#/results/documents/0/entities/1",
+                        "role":"Medication"
+                     },
+                     {
+                        "ref":"#/results/documents/0/entities/3",
+                        "role":"Time"
+                     }
+                  ]
+               }
+            ],
+            "warnings":[
+               
+            ]
+         }
+      ],
+      "errors":[
+         
+      ],
+      "modelVersion":"2021-05-15"
+   }
 }
 ```
+---
+
+## <a name="text-summarization"></a>文本摘要
+
+#### <a name="version-32-preview1"></a>[版本 3.2-preview.1](#tab/version-3-2)
+
+```bash
+curl -i -X POST https://your-text-analytics-endpoint-here/text/analytics/v3.2-preview.1/analyze \
+-H "Content-Type: application/json" \
+-H "Ocp-Apim-Subscription-Key: your-text-analytics-key-here" \
+-d \
+' 
+{
+  "analysisInput": {
+    "documents": [
+      {
+        "language": "en",
+        "id": "1",
+        "text": "At Microsoft, we have been on a quest to advance AI beyond existing techniques, by taking a more holistic, human-centric approach to learning and understanding. As Chief Technology Officer of Azure AI Cognitive Services, I have been working with a team of amazing scientists and engineers to turn this quest into a reality. In my role, I enjoy a unique perspective in viewing the relationship among three attributes of human cognition: monolingual text (X), audio or visual sensory signals, (Y) and multilingual (Z). At the intersection of all three, there’s magic—what we call XYZ-code as illustrated in Figure 1—a joint representation to create more powerful AI that can speak, hear, see, and understand humans better. We believe XYZ-code will enable us to fulfill our long-term vision: cross-domain transfer learning, spanning modalities and languages. The goal is to have pretrained models that can jointly learn representations to support a broad range of downstream AI tasks, much in the way humans do today. Over the past five years, we have achieved human performance on benchmarks in conversational speech recognition, machine translation, conversational question answering, machine reading comprehension, and image captioning. These five breakthroughs provided us with strong signals toward our more ambitious aspiration to produce a leap in AI capabilities, achieving multisensory and multilingual learning that is closer in line with how humans learn and understand. I believe the joint XYZ-code is a foundational component of this aspiration, if grounded with external knowledge sources in the downstream AI tasks."
+      }
+    ]
+  },
+  "tasks": {
+    "extractiveSummarizationTasks": [
+      {
+        "parameters": {
+          "model-version": "latest",
+          "sentenceCount": 3,
+          "sortBy": "Offset"
+        }
+      }
+    ]
+  }
+}
+'
+```
+
+从响应头获取 `operation-location`。 值将如下 URL 所示：
+
+```rest
+https://your-resource.cognitiveservices.azure.com/text/analytics/v3.2-preview.1/analyze/jobs/12345678-1234-1234-1234-12345678
+```
+
+要获取请求的结果，请使用以下 cURL 命令。 请务必将 `my-job-id` 替换为从之前的 `operation-location` 响应头中收到的数值 ID 值：
+
+```bash
+curl -X GET    https://your-text-analytics-endpoint-here/text/analytics/v3.2-preview.1/analyze/jobs/my-job-id \
+-H "Content-Type: application/json" \
+-H "Ocp-Apim-Subscription-Key: your-text-analytics-key-here"
+```
+
+
+### <a name="output"></a>输出
+
+```json
+{
+   "jobId":"da3a2f68-eb90-4410-b28b-76960d010ec6",
+   "lastUpdateDateTime":"2021-08-24T19:15:47Z",
+   "createdDateTime":"2021-08-24T19:15:28Z",
+   "expirationDateTime":"2021-08-25T19:15:28Z",
+   "status":"succeeded",
+   "errors":[
+      
+   ],
+   "displayName":"NA",
+   "tasks":{
+      "completed":1,
+      "failed":0,
+      "inProgress":0,
+      "total":1,
+      "extractiveSummarizationTasks":[
+         {
+            "lastUpdateDateTime":"2021-08-24T19:15:48.0011189Z",
+            "taskName":"ExtractiveSummarization_latest",
+            "state":"succeeded",
+            "results":{
+               "documents":[
+                  {
+                     "id":"1",
+                     "sentences":[
+                        {
+                           "text":"At Microsoft, we have been on a quest to advance AI beyond existing techniques, by taking a more holistic, human-centric approach to learning and understanding.",
+                           "rankScore":1.0,
+                           "offset":0,
+                           "length":160
+                        },
+                        {
+                           "text":"In my role, I enjoy a unique perspective in viewing the relationship among three attributes of human cognition: monolingual text (X), audio or visual sensory signals, (Y) and multilingual (Z).",
+                           "rankScore":0.9582327572675664,
+                           "offset":324,
+                           "length":192
+                        },
+                        {
+                           "text":"At the intersection of all three, there’s magic—what we call XYZ-code as illustrated in Figure 1—a joint representation to create more powerful AI that can speak, hear, see, and understand humans better.",
+                           "rankScore":0.9294747193132348,
+                           "offset":517,
+                           "length":203
+                        }
+                     ],
+                     "warnings":[
+                        
+                     ]
+                  }
+               ],
+               "errors":[
+                  
+               ],
+               "modelVersion":"2021-08-01"
+            }
+         }
+      ]
+   }
+}
+```
+
+#### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
+
+此功能在版本 3.1 中不可用。
 
 ---

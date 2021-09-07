@@ -6,12 +6,12 @@ ms.author: v-erkel
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: fbbb9837a54d323b568e42c90132c799c3927c30
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 8d349a0faa2cfc97f029e496b9bd92b1e5057018
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414293"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867496"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>教程：配置群集的网络设置
 
@@ -108,8 +108,8 @@ FXT Edge Filer 群集使用 X.509 证书执行以下功能：
 
 左侧显示群集虚拟服务器，IP 地址显示在右侧中间。 如图所示，使用 A 记录和指针配置每个客户端接入点。
 
-![群集轮询 DNS 图 - 图片的详细替换文字说明](media/fxt-cluster-config/fxt-rrdns-diagram.png)
-[详细文字说明](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
+:::image type="complex" source="media/fxt-cluster-config/fxt-rrdns-diagram.png" alt-text="显示群集轮循机制 DNS 配置的关系图。":::
+   <关系图显示了三类元素之间的连接：单个 vserver（左侧）、三个 IP 地址（中间列）和三个客户端接口（右侧列）。 左侧标记为“vserver1”的单个圆圈通过箭头连接，箭头指向标有 IP 地址 10.0.0.10、10.0.0.11 和 10.0.0.12 的三个圆圈。 从 vserver 圆圈到三个 IP 圆圈的箭头具有标题“A”。 每个 IP 地址圆圈都通过两个箭头连接到标记为客户端接口的圆圈 - IP 为 10.0.0.10 的圆圈连接到“vs1-client-IP-10”，IP 为“10.0.0.11”的圆圈连接到“vs1-client-IP-11”，IP 为 10.0.0.12 的圆圈连接到“vs1-client-IP-11”。 IP 地址圆圈和客户端接口圆圈之间的连接是两个箭头：一个箭头标记为“PTR”，从 IP 地址圆圈指向客户端接口圆圈，另一个箭头标记为“A”，从客户端接口圆圈指向 IP 地址圆圈。>:::image-end:::
 
 每个面向客户端的 IP 地址必须具有唯一的名称供群集内部使用。 （在此图中，为了清楚起见，将客户端 IP 命名为 vs1-client-IP- *，但在生产中，应使用更简洁的名称，如 client*。）
 

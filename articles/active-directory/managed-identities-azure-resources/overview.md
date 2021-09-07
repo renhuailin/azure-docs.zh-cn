@@ -12,23 +12,25 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/20/2021
+ms.date: 08/26/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 123b3ab0f438c0577143c3780836a2a2c574412e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 4f79fc66b44de89ba93137b244e22890348ab1c4
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081021"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967196"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
 开发人员面临的一个共同挑战是如何管理密码和凭据，以确保构成解决方案的不同组件之间的通信安全。 托管标识使开发人员无需管理凭据。 托管标识为应用程序提供一个标识，可以在连接到支持 Azure Active Directory (Azure AD) 身份验证的资源时使用。 应用程序可以使用托管标识来获取 Azure AD 令牌。 例如，应用程序可以使用托管标识来访问 [Azure 密钥保管库](../../key-vault/general/overview.md) 等资源，开发人员可以采用安全的方式存储凭据或访问存储帐户。
 
-托管标识有哪些用途？</br>
+看看如何使用托管标识</br>
 
-> [!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
+> [!VIDEO https://channel9.msdn.com/Shows/On-NET/Using-Azure-Managed-identities/player?format=ny]
+
+
 
 下面是使用托管标识的一些好处：
 
@@ -46,7 +48,6 @@ ms.locfileid: "112081021"
 - **系统分配**：某些 Azure 服务允许你直接在服务实例上启用托管标识。 启用系统分配的托管标识后，系统会在 Azure AD 中创建一个与该服务实例的生命周期相关联的标识。 因此，资源被删除时，Azure 会自动删除标识。 按照设计，只有该 Azure 资源可以使用此标识从 Azure AD 请求令牌。
 - **用户分配**：你也可以将托管标识创建为独立的 Azure 资源。 你可以[创建用户分配的托管标识](how-to-manage-ua-identity-portal.md)，并将其分配给一个或多个 Azure 服务实例。 对于用户分配的托管标识，标识与使用它的资源分开管理。 </br></br>
 
-> [!VIDEO https://www.youtube.com/embed/OzqpxeD3fG0]
 
 下表显示了这两种托管标识之间的差异。
 

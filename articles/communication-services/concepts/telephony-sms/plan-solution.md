@@ -7,15 +7,15 @@ manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 150daaa834cefbb3f74e6711fea500138774f2de
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 23be7352c1a9b8ca5e0ec60240cf29c863926a20
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111080"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255070"
 ---
 # <a name="phone-number-types-in-azure-communication-services"></a>Azure 通信服务中的电话号码类型
 
@@ -71,12 +71,12 @@ ms.locfileid: "113111080"
 
 下表显示了你可以在何处获取不同类型的电话号码，以及与这些电话号码类型关联的拨入和拨出通话以及短信功能。
 
-|号码类型| 号码获取地 | 呼叫目的地                                        | 呼叫源                                    |短信发送目的地       | 短信发送源 |
+|号码类型| 号码获取地 | 呼叫目的地                                        | 呼叫源*                                    |短信发送目的地       | 短信发送源 |
 |-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|
-| 本地（地理）  | US                 | 美国、加拿大、英国、德国、法国 等等*| 美国、加拿大、英国、德国、法国 等等* |不可用| 不可用 |
+| 本地（地理）  | US                 | 美国、加拿大、英国、德国、法国 +更多**| 美国、加拿大、英国、德国、法国 +更多** |不可用| 不可用 |
 | 免费电话 | US                 | US                                                   | US                                                    |US                | US |
 
-\* 有关呼叫目的地和定价的更多详细信息，请参阅[定价页](../pricing.md)。
+*目前只能接听对分配给电话通道机器人的 Microsoft 号码的呼叫。 在[此处](/azure/bot-service/bot-service-channel-connect-telephony)详细了解电话通道。**有关呼叫目的地和定价的更多详细信息，请参阅[定价页](../pricing.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

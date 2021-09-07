@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 24a1ed0d3146b695995182f8a9236ca48ee4fe81
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 768bcc39505671c452d99dc1d8d1d50ec3f3b9e5
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290941"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259644"
 ---
 # <a name="java-web-app-containerization-and-migration-to-azure-app-service"></a>容器化 Java Web 应用并将其迁移到 Azure 应用服务
 
@@ -231,7 +231,7 @@ Azure Migrate: 应用容器化工具可帮助你 -
     - 监视工作区：如已选择使用 Application Insights 进行监视，请指定要使用的 Application Insights 资源。 如已禁用监视集成，则此选项将不可见。
          - 如果没有 Application Insights 资源或想创建新的资源，则可以通过单击“新建”从工具创建。
 
-3. 指定 Azure 文件共享：如果你已添加更多目录/文件夹，并选择了“Azure 文件共享”用于永久性存储，则使用“Azure Migrate：应用容器化工具”在部署过程中指定要使用的 Azure 文件共享。 该工具将复制为 Azure 文件存储而配置的应用程序目录/文件夹，并在部署过程中将它们装载到应用程序容器中。 
+3. 指定 Azure 文件共享：如果你已添加更多目录/文件夹，并选择了“Azure 文件共享”用于永久性存储，则使用“Azure Migrate：应用容器化工具”在部署过程中指定要使用的 Azure 文件共享。 该工具将复制为 Azure 文件存储配置的应用程序目录/文件夹，并在部署过程中将它们装载到应用程序容器中。 
 
      - 如果没有 Azure 文件共享，或者想要创建新的 Azure 文件共享，则可以选择在工具中单击“新建存储帐户和文件共享”进行创建。  
 

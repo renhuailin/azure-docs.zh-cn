@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 50544507f9d83c216bb6c18e004c5ce7ad1ca346
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d763931e7baec0fb17cfc127834cbfccec51d7d6
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639841"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256104"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>教程：使用 Azure AD 服务器主体（登录名）确保 Azure SQL 托管实例中的安全性
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -213,8 +213,7 @@ Azure SQL 托管实例几乎提供最新 SQL Server（企业版）数据库引�
       GO
       ```
 
-> [!NOTE]
-> 对于 Azure AD 来宾用户，仅当已将其添加为 Azure AD 组的一部分时，才支持将其用于 SQL 托管实例登录名。 Azure AD 来宾用户是指在另一个 Azure AD 实例中邀请其加入托管实例所属 Azure AD 实例的帐户。 例如，可将 joe@contoso.com（Azure AD 帐户）或 steve@outlook.com（Microsoft 帐户）添加到 Azure AD aadsqlmi 实例中的组。 将用户添加到组后，可以使用 CREATE LOGIN 语法在 SQL 托管实例 master 数据库中为该组创建登录名 。 属于此组的来宾用户可以使用其当前登录名（例如 joe@contoso.com 或 steve@outlook.com）连接到托管实例。
+来宾用户作为个人用户（不属于 AAD 组，但可以加入）受到支持，并且可以使用当前登录语法在主服务器中直接创建登录名（例如 joe@contoso.con）。
 
 ## <a name="create-an-azure-ad-user-from-the-azure-ad-server-principal-login"></a>基于 Azure AD 服务器主体（登录名）创建 Azure AD 用户
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/23/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 0dd136b442f426cc7da547f2fb3ac98c649866ee
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 5d59d2eea57b58188b87ba83112e8e52bdc9660d
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114689344"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039772"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>教程：Azure Active Directory 与 Mixpanel 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "114689344"
 * 让用户使用其 Azure AD 帐户自动登录到 Mixpanel。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -38,6 +38,8 @@ ms.locfileid: "114689344"
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Mixpanel 支持 SP 发起的 SSO。
+
+* Mixpanel 支持[自动用户预配](mixpanel-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -99,7 +101,7 @@ ms.locfileid: "114689344"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -155,6 +157,9 @@ ms.locfileid: "114689344"
 
 > [!Note]
 > 用户将收到一封电子邮件，要求设置配置文件。
+
+> [!NOTE]
+> Mixpanel 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./mixpanel-provisioning-tutorial.md)。
 
 ## <a name="test-sso"></a>测试 SSO
 

@@ -2,18 +2,18 @@
 title: Azure 通信服务中的故障排除
 description: 了解如何收集在对通信服务解决方案进行故障排除时所需的信息。
 author: manoskow
-manager: jken
+manager: chpalm
 services: azure-communication-services
 ms.author: manoskow
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: d8e3dbc012e49b69e766d0551c0a91dcbb92660b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3cd19094b876203569df83cf3bc165968d9051a2
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739589"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257995"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure 通信服务中的故障排除
 
@@ -77,7 +77,28 @@ chat_client = ChatClient(
 ```
 ---
 
-## <a name="access-your-call-id"></a>获取呼叫 ID
+## <a name="access-your-server-call-id"></a>访问服务器呼叫 ID
+排查通话自动化 SDK 相关问题（如通话记录和通话管理问题）时，将需要收集服务器呼叫 ID。 可以使用 ```getServerCallId``` 方法收集此 ID。
+
+#### <a name="javascript"></a>Javascript
+```
+callAgent.on('callsUpdated', (e: { added: Call[]; removed: Call[] }): void => {
+    e.added.forEach((addedCall) => {
+        addedCall.on('stateChanged', (): void => {
+            if (addedCall.state === 'Connected') {
+                addedCall.info.getServerCallId().then(result => {
+                    dispatch(setServerCallId(result));
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
+        });
+    });
+});
+```
+
+
+## <a name="access-your-client-call-id"></a>访问客户端呼叫 ID
 
 排除语音或视频通话故障时，可能会要求提供 `call ID`。 可以通过 `call` 对象的 `id` 属性访问：
 

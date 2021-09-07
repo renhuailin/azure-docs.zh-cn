@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: a89d689dd8c3e6341c270db1c56797a01e4d4170
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: a3ff769b8f879246a47228f03f5a1b9a5b5fb84d
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765444"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272468"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>将计算机作为物理服务器迁移到 Azure
 
@@ -344,13 +344,13 @@ ms.locfileid: "113765444"
     - 停止本地计算机的复制。
     - 从 Azure Migrate 的“复制服务器”计数中删除该计算机：服务器迁移。
     - 清除计算机的复制状态信息。
-2. 在已迁移的计算机上安装 Azure VM [Windows](../virtual-machines/extensions/agent-windows.md) 或 [Linux](../virtual-machines/extensions/agent-linux.md) 代理。
-3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
-4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
-5. 将流量交接到已迁移的 Azure VM 实例。
-6. 从本地 VM 清单中删除本地 VM。
-7. 从本地备份中删除本地 VM。
-8. 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。
+1. 验证并[排查 Azure VM 上的所有 Windows 激活问题。](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems) 
+1. 执行任何迁移后的应用调整，例如更新主机名、数据库连接字符串和 Web 服务器配置。
+1. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
+1. 将流量交接到已迁移的 Azure VM 实例。
+1. 从本地 VM 清单中删除本地 VM。
+1. 从本地备份中删除本地 VM。
+1. 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。
 
 ## <a name="post-migration-best-practices"></a>迁移后的最佳做法
 

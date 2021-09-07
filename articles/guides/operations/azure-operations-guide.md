@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: f362bc76a3361b511b08a3822c01730c200d37b1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: cfbca90fe4c0053816421ff392f0af93938ff5ee
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957037"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254170"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作人员入门
 
@@ -349,45 +349,32 @@ Azure 虚拟机是 Azure 中的一个中心 IaaS 服务。 Azure 虚拟机支持
 最后，与任何计算机系统的管理一样，应使用安全凭据和软件防火墙，在操作系统中保证 Azure 虚拟机的安全性。
 
 ## <a name="azure-storage"></a>Azure 存储
-
-Azure 存储是一款 Microsoft 托管的服务，可提供持久、可缩放的冗余存储。 可通过使用任何资源部署方法将 Azure 存储帐户作为资源添加到任何资源组。 Azure 包括四种存储类型：Blob 存储、文件存储、表存储和队列存储。 部署存储帐户时，可以使用两种帐户类型，即通用存储和 Blob 存储。 通用存储帐户可用于访问所有四种存储类型。 Blob 存储帐户类似于通用帐户，但它包含专门的 blob，其中包括热访问层和冷访问层。 有关 blob 存储的更多信息，请参阅 [Azure Blob 存储](../../storage/blobs/storage-blob-storage-tiers.md)。
-
-Azure 存储帐户可以配置不同级别的冗余：
-
-- **本地冗余存储** 确保所有数据的三个副本同步后才将写入视为成功，提供了高可用性。 这些副本存储在单个区域的单个设施中。 副本驻留在不同的容错域和升级域中。 这意味着即使存放数据的存储节点失败或脱机更新，数据也可用。
-
-- **异地冗余存储** 在主要区域中创建三个数据同步副本，以实现高可用性，然后在配对区域中以异步方式创建三个副本，以实现灾难恢复。
-
-- **读取访问异地冗余存储** 是一种异地冗余存储，能够读取次要区域中的数据。 此能力使其适用于部分灾难恢复。 如果主要区域出现问题，可将应用程序更改为对配对区域具有只读访问权限。
+Azure 提供 Azure Blob 存储、Azure 文件存储、Azure 表存储和 Azure 队列存储来应对各种不同的存储用例，这些存储都具有高耐用性、可伸缩性和冗余保证。 Azure 存储服务通过 Azure 存储帐户进行管理，可以使用任何资源部署方法将该帐户作为资源部署到任何资源组。 
 
 ### <a name="use-cases"></a>用例
-
 每个存储类型具有不同的用例。
 
 #### <a name="blob-storage"></a>Blob 存储
+“Blob”是二进制大型对象的缩写 。 Blob 和计算机上存储的文件一样，是非结构化文件。 Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。
 
-“Blob”是二进制大型对象的缩写 。 Blob 和计算机上存储的文件一样，是非结构化文件。 Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 Blob 存储也称为对象存储。 Azure Blob 存储还可保存 Azure 虚拟机数据磁盘。
+Azure Blob 存储支持三种 blob：
 
-Azure 存储支持三种 blob：
+- 块 blob 用于保存最大为 195 GiB（4 MiB × 50,000 个块）的普通文件。 块 Blob 的主要用例是存储从头到尾读取的文件，例如网站的媒体文件或图像文件。 它们被命名为块 blob 是因为大于 64 MiB 的文件必须作为小块上传。 这些块随后合并（或提交）到最终的 blob 中。
 
-- **块 blob** 用于保存最大 195 GB（4 MB × 50,000 个块）的普通文件。 块 blob 的主要用例是存储从头到尾读取的文件，例如网站的媒体文件或图像文件。 它们被命名为块 blob 的原因是，大于 64 MB 的文件必须作为小块上传。 这些块随后合并（或提交）到最终的 blob 中。
+- 页 Blob 用于保存最大 1 TiB 的随机访问文件。 页 blob 主要用作 VHD 的后备存储，为 Azure 中的 IaaS 计算服务 Azure 虚拟机提供耐用的磁盘。 它们被命名为页 blob 是因为它们提供对 512 字节页的随机读/写访问。
 
-- **页 blob** 用于保存最大 1 TB 的随机访问文件。 页 blob 主要用作 VHD 的后备存储，为 Azure 中的 IaaS 计算服务 Azure 虚拟机提供耐用的磁盘。 它们被命名为页 blob 的原因是，它们提供对 512 字节页的随机读/写访问。
+- **追加 blob** 由块 blob 等块组成，但针对追加操作进行了优化。 它们经常用于将一个或多个源的信息记录到同一 blob。 例如，可将所有跟踪日志记录写入在多个 VM 上运行的应用程序的同一追加 blob。 单个追加 blob 最大大小可达 195 GiB。
 
-- **追加 blob** 由块 blob 等块组成，但针对追加操作进行了优化。 它们经常用于将一个或多个源的信息记录到同一 blob。 例如，可将所有跟踪日志记录写入在多个 VM 上运行的应用程序的同一追加 blob。 单个追加 blob 最大大小可达 195 GB。
+有关详细信息，请参阅[什么是 Azure Blob 存储](../../storage/blobs/storage-blobs-overview.md)。
 
-有关详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](../../storage/blobs/storage-quickstart-blobs-dotnet.md)。
+#### <a name="azure-files"></a>Azure 文件
+Azure 文件存储会在云中提供完全托管的文件共享，这些共享项可通过行业标准的服务器消息块 (SMB) 协议或网络文件系统 (NFS) 协议进行访问。 该服务支持 SMB 3.1.1、SMB 3.0、SMB 2.1 和 NFS 4.1。 使用 Azure 文件存储，可以将依赖文件共享的应用程序快速迁移到 Azure 而无需进行成本高昂的重写。 在 Azure 虚拟机、云服务中或者从本地客户端运行的应用程序可以在云中装载文件共享。
 
-#### <a name="file-storage"></a>文件存储
+由于 Azure 文件存储共享公开标准的 SMB 或 NFS 终结点，在 Azure 中运行的应用程序可以通过文件系统 I/O API 访问共享中的数据。 因此，开发者可以使用其现有代码和技术迁移现有应用程序。 IT 专业人员在管理 Azure 应用程序的过程中，可以使用 PowerShell cmdlet 来创建、装载和管理 Azure 文件存储共享。
 
-Azure 文件存储服务通过使用标准服务器消息块 (SMB) 协议在云中提供文件共享。 该服务支持 SMB 2.1 和 SMB 3.0。 通过 Azure 文件存储，可以将依赖文件共享的应用程序快速迁移到 Azure，且无成本高昂的重写。 在 Azure 虚拟机、云服务中或者从本地客户端运行的应用程序可以在云中装载文件共享。 这与桌面应用程序装载典型 SMB 共享的方式类似。 之后，任意数量的应用程序组件可以装载并同时访问文件存储共享。
-
-由于文件存储共享是标准 SMB 文件共享，在 Azure 中运行的应用程序可以通过文件系统 I/O API 访问共享中的数据。 因此，开发者可以使用其现有代码和技术迁移现有应用程序。 IT 专业人员在管理 Azure 应用程序的过程中，可以使用 PowerShell cmdlet 来创建、装载和管理文件存储共享。
-
-有关详细信息，请参阅[在 Windows 上开始使用 Azure 文件存储](../../storage/files/storage-how-to-use-files-windows.md)或[如何通过 Linux 使用 Azure 文件存储](../../storage/files/storage-how-to-use-files-linux.md)。
+有关详细信息，请参阅[什么是 Azure 文件存储](../../storage/files/storage-files-introduction.md)。
 
 #### <a name="table-storage"></a>表存储
-
 Azure 表存储是一种将结构化的 NoSQL 数据存储在云中的服务。 表存储是采用无架构设计的键/属性存储。 因为表存储无架构，因此可以很容易地随着应用程序需求的发展使数据适应存储。 对于所有类型的应用程序，都可以快速并经济高效地访问数据。 对于相似的数据量，表存储的成本通常显著低于传统的 SQL。
 
 可以使用表存储来存储灵活的数据集，例如 Web 应用程序的用户数据、通讯簿、设备信息，以及服务需要的任何其他类型的元数据。 可以在表中存储任意数量的实体。 存储帐户可以包含任意数量的表，直至达到存储帐户的容量极限。
@@ -395,7 +382,6 @@ Azure 表存储是一种将结构化的 NoSQL 数据存储在云中的服务。 
 有关详细信息，请参阅[开始使用 Azure 表存储](../../cosmos-db/tutorial-develop-table-dotnet.md)。
 
 #### <a name="queue-storage"></a>队列存储
-
 Azure 队列存储用于在应用程序组件之间进行云消息传送。 设计可缩放的应用程序时，应用程序组件通常是分离的，各组件可以独立缩放。 队列存储提供的异步消息传送适用于在应用程序组件之间进行通信，无论这些应用程序组件是运行在云中、桌面上、本地服务器上还是移动设备上。 队列存储还支持管理异步任务以及构建过程工作流。
 
 有关详细信息，请参阅[开始使用 Azure 队列存储](../../storage/queues/storage-dotnet-how-to-use-queues.md)。
@@ -418,17 +404,17 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 #### <a name="command-line-interface-cli"></a>命令行接口 (CLI)
 
-与 PowerShell 模块一样，Azure 命令行接口也可实现部署自动化，并且可用于 Windows、OS X 或 Linux 系统。 可使用 Azure CLI“storage account create”命令创建存储帐户。 有关详细信息，请参阅[将 Azure CLI 用于 Azure 存储。](../../storage/blobs/storage-quickstart-blobs-cli.md)
+与 PowerShell 模块一样，Azure 命令行接口提供部署自动化，并且可用于 Windows、macOS 或 Linux 系统。 可使用 Azure CLI“storage account create”命令创建存储帐户。 有关详细信息，请参阅[将 Azure CLI 用于 Azure 存储。](../../storage/blobs/storage-quickstart-blobs-cli.md)
 
 同样，可以使用 Azure CLI 部署 Azure 资源管理器模板。 有关详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)。
 
-### <a name="access-and-security-for-azure-storage"></a>Azure 存储的访问和安全性
+### <a name="access-and-security-for-azure-storage-services"></a>Azure 存储服务的访问和安全性
 
-可通过多种方式访问 Azure 存储，包括通过 Azure 门户进行访问、在 VM 创建和操作期间访问，以及从存储客户端库访问。
+可通过多种方式访问 Azure 存储服务，其中包括通过 Azure 门户进行访问、在 VM 创建和操作期间访问，以及从存储客户端库访问。
 
 #### <a name="virtual-machine-disks"></a>虚拟机磁盘
 
-部署虚拟机时，还需要创建一个存储帐户来保存虚拟机操作系统磁盘和任何其他数据磁盘。 可选择现有存储帐户，也可以创建一个新存储帐户。 由于 blob 的最大大小为 1,024 GB，因此单个 VM 磁盘的最大大小为 1,023 GB。 若要配置较大的数据磁盘，可以将多个数据磁盘提供给虚拟机，并将它们汇集在一起，组成一个逻辑磁盘。 有关详细信息，请参阅 [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) 和 [Linux](../../virtual-machines/linux/tutorial-manage-disks.md) 的“Azure 磁盘管理”。
+部署虚拟机时，还需要创建一个存储帐户来保存虚拟机操作系统磁盘和任何其他数据磁盘。 可选择现有存储帐户，也可以创建一个新存储帐户。 由于 blob 的最大大小为 1,024 GiB，单个 VM 磁盘的最大大小为 1,023 GiB。 若要配置较大的数据磁盘，可以将多个数据磁盘提供给虚拟机，并将它们汇集在一起，组成一个逻辑磁盘。 有关详细信息，请参阅 [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) 和 [Linux](../../virtual-machines/linux/tutorial-manage-disks.md) 的“Azure 磁盘管理”。
 
 #### <a name="storage-tools"></a>存储工具
 
@@ -436,7 +422,7 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 
 #### <a name="storage-api"></a>存储 API
 
-可以通过任何发出 HTTP/HTTPS 请求的语言来访问存储资源。 另外，Azure 存储还为多种主流语言提供了编程库。 这些库通过对细节进行处理简化了 Azure 存储的使用，这些细节包括同步和异步调用、操作的批处理、异常管理和自动重试。 有关详细信息，请参阅 [Azure 存储服务 REST API 参考](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)。
+可以通过任何发出 HTTP/HTTPS 请求的语言来访问存储资源。 另外，Azure 存储服务还为多种主流语言提供了编程库。 这些库通过对细节（例如同步和异步调用、操作的批处理、异常管理和自动重试）进行处理，简化了 Azure 存储的使用。 有关详细信息，请参阅 [Azure 存储服务 REST API 参考](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)。
 
 #### <a name="storage-access-keys"></a>存储访问密钥
 

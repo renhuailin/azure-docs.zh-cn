@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/05/2020
 ms.author: v-jawe
-ms.openlocfilehash: f77fa7e5c33d8970365f7d35c6ad0460718662b9
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 56f116b8c7b90f74da86a792242866d5a88ebff4
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114593970"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442380"
 ---
 ## <a name="quickstart-face-client-library-for-javascript"></a>快速入门：适用于 JavaScript 的人脸客户端库
 
@@ -22,10 +22,9 @@ ms.locfileid: "114593970"
 
 使用适用于 JavaScript 的人脸客户端库可以：
 
-* [检测图像中的人脸](#detect-faces-in-an-image)
-* [查找相似人脸](#find-similar-faces)
-* [创建人员组](#create-a-persongroup)
+* [检测和分析人脸](#detect-and-analyze-faces)
 * [识别人脸](#identify-a-face)
+* [查找相似人脸](#find-similar-faces)
 
 [参考文档](/javascript/api/overview/azure/cognitive-services/face-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-face) | [包 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-face) | [示例](/samples/browse/?products=azure&term=face&languages=javascript)
 
@@ -33,6 +32,7 @@ ms.locfileid: "114593970"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
 * 最新版本的 [Node.js](https://nodejs.org/en/)
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * 拥有 Azure 订阅后，请在 Azure 门户中[创建人脸资源](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace)，以获取密钥和终结点。 部署后，单击“转到资源”。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
@@ -104,10 +104,9 @@ endpoint = "<paste-your-face-endpoint-here>"
 以下代码片段演示如何使用适用于 .NET 的人脸客户端库执行以下任务：
 
 * [对客户端进行身份验证](#authenticate-the-client)
-* [检测图像中的人脸](#detect-faces-in-an-image)
-* [查找相似人脸](#find-similar-faces)
-* [创建人员组](#create-a-persongroup)
+* [检测和分析人脸](#detect-and-analyze-faces)
 * [识别人脸](#identify-a-face)
+* [查找相似人脸](#find-similar-faces)
 
 > [!TIP]
 > 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/Face/sdk_quickstart.js) 上找到它，其中包含此快速入门中的代码示例。
@@ -130,7 +129,10 @@ endpoint = "<paste-your-face-endpoint-here>"
 
 :::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="helpers":::
 
-## <a name="detect-faces-in-an-image"></a>在图像中检测人脸
+## <a name="detect-and-analyze-faces"></a>检测和分析人脸
+
+人脸检测是进行人脸分析和身份验证的第一步。 本部分介绍如何返回额外的人脸属性数据。 如果只想检测人脸以进行人脸识别或验证，请跳过后面的部分。
+
 
 ### <a name="get-detected-face-objects"></a>获取检测到的人脸对象
 
@@ -143,25 +145,11 @@ endpoint = "<paste-your-face-endpoint-here>"
 > [!TIP]
 > 还可以检测本地图像中的人脸。 请参阅 [Face](/javascript/api/@azure/cognitiveservices-face/face) 方法，如 [DetectWithStreamAsync](/javascript/api/@azure/cognitiveservices-face/face#detectWithStream_msRest_HttpRequestBody__FaceDetectWithStreamOptionalParams__ServiceCallback_DetectedFace____)。
 
-## <a name="find-similar-faces"></a>查找相似人脸
 
-以下代码采用检测到的单个人脸（源），并搜索其他一组人脸（目标），以找到匹配项（按图像进行人脸搜索）。 找到匹配项后，它会将匹配的人脸的 ID 输出到控制台。
-
-### <a name="detect-faces-for-comparison"></a>检测人脸以进行比较
-
-首先定义另一个人脸检测方法。 需要先检测图像中的人脸，然后才能对其进行比较；此检测方法已针对比较操作进行优化。 它不会提取以上部分所示的详细人脸属性，而是使用另一个识别模型。
-
-:::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="recognize":::
-
-### <a name="find-matches"></a>查找匹配项
-
-以下方法检测一组目标图像和单个源图像中的人脸。 然后，它将比较这些人脸，并查找与源图像类似的所有目标图像。 最后，该方法会将匹配项详细信息输出到控制台。
-
-:::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="find_similar":::
 
 ## <a name="identify-a-face"></a>识别人脸
 
-[识别](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____)操作采用一个人（或多个人）的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)（面部特征已知的不同 [Person](/javascript/api/@azure/cognitiveservices-face/person) 对象的数据库）进行比较。 为了执行“识别”操作，你首先需要创建并训练 [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)。
+[识别](/javascript/api/@azure/cognitiveservices-face/face#identify_string____FaceIdentifyOptionalParams__ServiceCallback_IdentifyResult____)操作获取一个人（或多个人）的图像，并查找与图像中的每个人脸相关联的存储的人员对象（人脸识别搜索）。 它将每个检测到的人脸与某个 [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)（面部特征已知的不同 [Person](/javascript/api/@azure/cognitiveservices-face/person) 对象的数据库）进行比较。 为了执行“识别”操作，你首先需要创建并训练 [PersonGroup](/javascript/api/@azure/cognitiveservices-face/persongroup)。
 
 ### <a name="add-faces-to-persongroup"></a>将人脸添加到 PersonGroup
 
@@ -189,6 +177,22 @@ endpoint = "<paste-your-face-endpoint-here>"
 
 > [!TIP]
 > 你还可以从本地图像创建 PersonGroup。 请参阅 [PersonGroupPerson](/javascript/api/@azure/cognitiveservices-face/persongroupperson) 方法，如 [AddFaceFromStream](/javascript/api/@azure/cognitiveservices-face/persongroupperson#addFaceFromStream_string__string__msRest_HttpRequestBody__Models_PersonGroupPersonAddFaceFromStreamOptionalParams_)。
+
+## <a name="find-similar-faces"></a>查找相似人脸
+
+以下代码采用检测到的单个人脸（源），并搜索其他一组人脸（目标），以找到匹配项（按图像进行人脸搜索）。 找到匹配项后，它会将匹配的人脸的 ID 输出到控制台。
+
+### <a name="detect-faces-for-comparison"></a>检测人脸以进行比较
+
+首先定义另一个人脸检测方法。 需要先检测图像中的人脸，然后才能对其进行比较；此检测方法已针对比较操作进行优化。 它不会提取以上部分所示的详细人脸属性，而是使用另一个识别模型。
+
+:::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="recognize":::
+
+### <a name="find-matches"></a>查找匹配项
+
+以下方法检测一组目标图像和单个源图像中的人脸。 然后，它将比较这些人脸，并查找与源图像类似的所有目标图像。 最后，该方法会将匹配项详细信息输出到控制台。
+
+:::code language="js" source="~/cognitive-services-quickstart-code/javascript/Face/sdk_quickstart.js" id="find_similar":::
 
 ## <a name="main"></a>Main
 

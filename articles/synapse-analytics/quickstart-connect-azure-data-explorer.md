@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 10/07/2020
 ms.author: maraheja
 ms.reviewer: jrasnick
-ms.openlocfilehash: ee9d137973bfa4eeb28bc6526437e76e781f3199
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f45bc134c656701ff02beca464ac00fdf222f88
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92172275"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830196"
 ---
 # <a name="connect-to-azure-data-explorer-using-apache-spark-for-azure-synapse-analytics"></a>使用适用于 Azure Synapse Analytics 的 Apache Spark 连接到 Azure 数据资源管理器
 
@@ -57,6 +57,8 @@ ms.locfileid: "92172275"
 1. Azure 数据资源管理器群集和数据库显示在“Azure 数据资源管理器”部分下的“链接”选项卡上 。
 
     ![显示群集浏览的屏幕截图。](./media/quickstart-connect-azure-data-explorer/004-browse-clusters.png)
+
+1. 必须先将链接服务发布到工作区，然后才能在笔记本中与链接服务交互。 单击工具栏中的“发布”，查看挂起的更改，然后单击“确定” 。
 
     > [!NOTE]
     > 在当前版本中，将根据你在 Azure 数据资源管理器数据库上的 Azure AD 帐户权限填充数据库对象。 运行 Apache Spark 笔记本或集成作业时，将使用链接服务中的凭据（例如服务主体）。

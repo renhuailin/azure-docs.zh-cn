@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/26/2021
+ms.date: 08/25/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: ff3c052e2e9e745c59947cda43d12b46786fbd62
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: ff38cf413f6e1812c72d410c31088b965af1b3dd
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707583"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123213926"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教程：启用到本地环境的 Azure Active Directory 自助式密码重置写回
 
@@ -48,11 +48,11 @@ ms.locfileid: "114707583"
     * 如果需要，请[完成上一篇教程来启用 Azure AD SSPR](tutorial-enable-sspr.md)。
 * 配置有最新 Azure AD Connect 版本的现有本地 AD DS 环境。
     * 如果需要，请使用“[快速](../hybrid/how-to-connect-install-express.md)”或“[自定义](../hybrid/how-to-connect-install-custom.md)”设置配置 Azure AD Connect。
-    * 若要使用密码写回，域控制器必须是 Windows Server 2012 或更高版本。
+    * 若要使用密码写回，域控制器必须是 Windows Server 2016 或更高版本。
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>为 Azure AD Connect 配置帐户权限
 
-Azure AD Connect 可用于在本地 AD DS 环境与 Azure AD 之间同步用户、组和凭据。 我们通常会在已加入本地 AD DS 域的 Windows Server 2012 或更高版本的计算机上安装 Azure AD Connect。
+Azure AD Connect 可用于在本地 AD DS 环境与 Azure AD 之间同步用户、组和凭据。 我们通常会在已加入本地 AD DS 域的 Windows Server 2016 或更高版本的计算机上安装 Azure AD Connect。
 
 若要正常使用 SSPR 写回，必须为 Azure AD Connect 中指定的帐户设置适当的权限和选项。 如果不确定当前使用的是哪个帐户，请打开 Azure AD Connect 并选择“查看当前配置”选项。 需要向其添加权限的帐户列在“已同步的目录”下。 必须为该帐户设置以下权限和选项：
 

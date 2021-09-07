@@ -11,30 +11,15 @@ metadata:
   ms.topic: conceptual
   ms.date: 11/05/2020
   ms.author: mbullwin
-  ms.openlocfilehash: 9c09297f587fcac65346abddc1b06a69a8e58e6e
-  ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+  ms.openlocfilehash: fb5659f5432225c6b6e33dd8480377763697190f
+  ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/15/2021
-  ms.locfileid: "114341345"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123029838"
 title: 指标顾问常见问题解答
 summary: ''
 sections:
-- name: 常规
-  questions:
-  - question: >
-      为什么无法创建资源？ “定价层”不可用且显示“已为此订阅创建 1个 S0”？
-    answer: >
-      :::image type="content" source="media/pricing.png" alt-text="F0 资源已存在时显示的消息":::
-
-
-      在公共预览版中，只能在订阅下为每个区域创建一个指标顾问实例。
-
-
-      如果已在同一区域中使用相同的订阅创建了实例，可以尝试在不同的区域中或使用不同的订阅创建新实例。 也可以删除现有实例以创建新实例。
-
-
-      如果已删除现有实例，但仍出现错误，请在资源删除后等待约 20 分钟，然后再创建新实例。
 - name: 基本概念
   questions:
   - question: >
@@ -63,6 +48,9 @@ sections:
       | 1 天以上至 31 天 | 4 年的数据 |
 
       | 大于 31 天 | 48 年的数据 |
+  - question: >
+      指标处理哪些数据以及如何保留数据？
+    answer: "- 指标顾问处理从客户的数据源收集的时序数据，历史数据用于模型选择，并确定所需的数据边界。 \n- 客户的时序数据和推理结果将存储在服务中。 指标顾问不会在客户部署服务实例的区域之外存储或处理客户数据。\n"
   - question: >
       为什么指标顾问无法从历史数据中检测到异常？
     answer: >

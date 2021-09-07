@@ -5,14 +5,14 @@ author: rahulg1190
 ms.author: rahugup
 manager: bsiva
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 08/20/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 018b11d53cf201de41f0f6ff9bc4f1f5c7488d7a
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 8ce9dc354ff4ed3f4ff5246ce761a481f220e263
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765325"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186274"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless---powershell"></a>将 VMware VM 迁移到 Azure（使用无代理方法）- PowerShell
 
@@ -154,6 +154,7 @@ Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName $ResourceGroup.
  磁盘类型 | 必需 | 指定要创建的负载均衡器的名称。 
  基础结构冗余 | 可选 | 指定基础结构冗余选项，如下所示。 <br/><br/> - 可用性区域 - 将迁移的计算机固定到区域中的特定可用性区域。 使用此选项可跨可用性区域分配形成多节点应用程序层的服务器。 仅当为迁移选择的目标区域支持可用性区域时，此选项才可用。 若要使用可用性区域，请为 (`TargetAvailabilityZone`) 参数指定可用性区域值。 <br/> - 可用性集 - 将迁移的计算机放入可用性集。 若要使用此选项，所选的目标资源组必须具有一个或多个可用性集。 若要使用可用性集，请为 (`TargetAvailabilitySet`) 参数指定可用性集 ID。 
  启动诊断存储帐户 | 可选 | 若要使用启动诊断存储帐户，请为 (`TargetBootDiagnosticStorageAccount`) 参数指定 ID。 <br/> - 用于启动诊断的存储帐户应位于要将 VM 迁移到的同一订阅中。 <br/> - 默认情况下，没有为此参数设置值。 
+ Tags | 可选 | 向迁移的虚拟机、磁盘和 NIC 添加标记。 <br/>  使用 (`Tag`) 向虚拟机、磁盘和 NIC 添加标记。 <br/> 或 <br/> 使用 (`VMTag`) 向已迁移的虚拟机添加标记。<br/> 使用 (`DiskTag`) 向磁盘添加标记。 <br/> 使用 (`NicTag`) 向网络接口添加标记。 <br/> 例如，将所需的标记添加到变量 $tags，并在所需的参数中传递变量。  $tags = @{Organization=”Contoso”}
 
 
 
@@ -346,7 +347,9 @@ VM 大小 | 可选 | 使用 [`TargetVMSize`] 参数指定要用于复制 VM 的 
 网络接口 | 可选 | 使用 [`TargetVMName`] 参数指定要创建的 Azure VM 的名称。 
 可用性区域 | 可选 | 若要使用可用性区域，请为 [`TargetAvailabilityZone`] 参数指定可用性区域值。 
 可用性集 | 可选 | 若要使用可用性集，请为 [`TargetAvailabilitySet`] 参数指定可用性集 ID。 
-
+Tags | 可选 | 若要更新标记，请使用以下参数 [`UpdateTag`] 或 [`UpdateVMTag`]、[`UpdateDiskTag`]、[`UpdateNicTag`] 以及更新标记操作类型 [`UpdateTagOperation`] 或 [`UpdateVMTagOperation`]、[`UpdateDiskTagOperation`]、[`UpdateNicTagOperation`]。   更新标记操作采用以下值 - Merge、Delete 和 Replace。 <br/> 使用 `UpdateTag` 跨虚拟机、磁盘和 NIC 更新所有标记。 <br/> 使用 `UpdateVMTag` 更新虚拟机标记。 <br/> 使用 [`UpdateDiskTag`] 更新磁盘标记。 <br/> 使用 [`UpdateNicTag`] 更新 NIC 标记。 <br/> 使用 [`UpdateTagOperation`] 跨虚拟机、磁盘和 NIC 更新所有标记的操作。 <br/>  使用 `UpdateVMTagOperation` 更新虚拟机标记。 <br/> 使用 [`UpdateDiskTagOperation`] 更新磁盘标记。 <br/> 使用 [`UpdateNicTagOperation`] 更新 NIC 标记。 <br/> <br/> “replace”选项将整个现有标记集替换为新的集。 <br/> “merge”选项允许添加具有新名称的标记，以及使用现有名称更新标记的值。 <br/> “delete”选项允许根据给定的名称或名称/值对选择性地删除标记。 
+磁盘 | 可选 | 对于 OS 磁盘： <br/> 使用 [`TargetDiskName`] 参数更新 OS 磁盘的名称。  <br/><br/> 更新多个磁盘： <br/>  使用 [Set-AzMigrateDiskMapping](/powershell/module/az.migrate/set-azmigratediskmapping) 将磁盘名称设置为变量$DiskMapping，然后使用 [`DiskToUpdate`] 参数并沿变量传递。 <br/> <br/> 注意：要在 [Set-AzMigrateDiskMapping](/powershell/module/az.migrate/set-azmigratediskmapping) 中使用的磁盘 ID 是使用  [Get-AzMigrateDiscoveredServer](/powershell/module/az.migrate/get-azmigratediscoveredserver) cmdlet 检索到的磁盘的唯一标识符 (UUID) 属性。 
+NIC 名称 | 可选 | 使用 [New-AzMigrateNicMapping](/powershell/module/az.migrate/new-azmigratenicmapping) 将 NIC 名称设置为变量 $NICMapping，然后使用 [`NICToUpdate`] 参数并传递变量。
 
 [Get-AzMigrateServerReplication](/powershell/module/az.migrate/get-azmigrateserverreplication) cmdlet 将返回一个作业，跟踪该作业可监视操作的状态。
 
@@ -363,13 +366,13 @@ $ReplicatingServer = Get-AzMigrateServerReplication -TargetObjectID $Replicating
 Write-Output $ReplicatingServer.ProviderSpecificDetail.VMNic
 ```
 
-在下面的示例中，我们将更新 NIC 配置，方法是将第一个 NIC 作为主要的 NIC 并为其分配一个静态 IP。 我们将为迁移丢弃第二个 NIC，并更新目标 VM 的名称和大小。
+在下面的示例中，我们将更新 NIC 配置，方法是将第一个 NIC 作为主要的 NIC 并为其分配一个静态 IP。 我们将为迁移丢弃第二个 NIC，更新目标 VM 的名称和大小并自定义 NIC 名称。
 
 ```azurepowershell-interactive
 # Specify the NIC properties to be updated for a replicating VM.
 $NicMapping = @()
-$NicMapping1 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[0].NicId -TargetNicIP ###.###.###.### -TargetNicSelectionType Primary
-$NicMapping2 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[1].NicId -TargetNicSelectionType DoNotCreate
+$NicMapping1 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[0].NicId -TargetNicIP ###.###.###.### -TargetNicSelectionType Primary TargetNicName "ContosoNic_1"
+$NicMapping2 = New-AzMigrateNicMapping -NicId $ReplicatingServer.ProviderSpecificDetail.VMNic[1].NicId -TargetNicSelectionType DoNotCreate - TargetNicName "ContosoNic_2"
 
 $NicMapping += $NicMapping1
 $NicMapping += $NicMapping2
@@ -378,6 +381,32 @@ $NicMapping += $NicMapping2
 # Update the name, size and NIC configuration of a replicating server
 $UpdateJob = Set-AzMigrateServerReplication -InputObject $ReplicatingServer -TargetVMSize Standard_DS13_v2 -TargetVMName MyMigratedVM -NicToUpdate $NicMapping
 ```
+
+在下面的示例中，我们将自定义磁盘名称。
+
+```azurepowershell-interactive
+# Customize the Disk names for a replicating VM
+$OSDisk = Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1" 
+$DataDisk1= Set-AzMigrateDiskMapping -DiskID "6000C292-79b9-bbdc-fb8a-f1fa8dbeff84" -DiskName "ContosoDisk_2" 
+$DiskMapping = $OSDisk, $DataDisk1 
+```
+
+```azurepowershell-interactive
+# Update the disk names for a replicating server
+$UpdateJob = Set-AzMigrateServerReplication InputObject $ReplicatingServer DiskToUpdate $DiskMapping 
+ ```
+
+在下面的示例中，我们将向复制 VM 添加标记。
+
+```azurepowershell-interactive
+# Update all tags across virtual machines, disks, and NICs.
+Set-azmigrateserverreplication UpdateTag $UpdateTag UpdateTagOperation Merge/Replace/Delete
+
+# Update virtual machines tags
+Set-azmigrateserverreplication UpdateVMTag $UpdateVMTag UpdateVMTagOperation Merge/Replace/Delete 
+```
+使用以下示例跟踪作业状态
+
 ```azurepowershell-interactive
 # Track job status to check for completion
 while (($UpdateJob.State -eq 'InProgress') -or ($UpdateJob.State -eq 'NotStarted')){
@@ -388,8 +417,6 @@ while (($UpdateJob.State -eq 'InProgress') -or ($UpdateJob.State -eq 'NotStarted
 # Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded".
 Write-Output $UpdateJob.State
 ```
-
-
 
 ## <a name="11-run-a-test-migration"></a>11.运行测试迁移
 

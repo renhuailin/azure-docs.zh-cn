@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: c19dba659fd88fc17ba89987cdf5245ca365dcbf
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 0b92ff0b8e7bc6421e40e439deb44c8c8454b8db
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018378"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224328"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在基于 Linux 上的 Azure 应用服务中生成 Ruby 和 Postgres 应用
 
@@ -32,7 +32,7 @@ ms.locfileid: "108018378"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 - [安装 Git](https://git-scm.com/)
 - [安装 Ruby 2.6](https://www.ruby-lang.org/en/documentation/installation/)
@@ -47,21 +47,21 @@ ms.locfileid: "108018378"
 
 ### <a name="connect-to-local-postgres-server"></a>连接到本地 Postgres 服务器
 
-打开终端窗口，并运行 `psql` 以连接到本地 Postgres 服务器。
+1. 打开终端窗口，并运行 `psql` 以连接到本地 Postgres 服务器。
 
-```bash
-sudo -u postgres psql
-```
+    ```bash
+    sudo -u postgres psql
+    ```
 
-如果连接成功，则表示 Postgres 数据库已在运行。 否则，应确保按照[下载 - PostgreSQL Core 发行版](https://www.postgresql.org/download/)中的步骤启用本地 Postgres 数据库。
+    如果连接成功，则表示 Postgres 数据库已在运行。 否则，应确保按照[下载 - PostgreSQL Core 发行版](https://www.postgresql.org/download/)中的步骤启用本地 Postgres 数据库。
 
-键入 `\q` 退出 Postgres 客户端。 
+1. 键入 `\q` 退出 Postgres 客户端。 
 
-使用登录的 Linux 用户名，创建一个可以通过运行以下命令来创建数据库的 Postgres 用户。
+1. 使用登录的 Linux 用户名，创建一个可以通过运行以下命令来创建数据库的 Postgres 用户。
 
-```bash
-sudo -u postgres createuser -d <signed-in-user>
-```
+    ```bash
+    sudo -u postgres createuser -d <signed-in-user>
+    ```
 
 <a name="step2"></a>
 
@@ -70,41 +70,50 @@ sudo -u postgres createuser -d <signed-in-user>
 
 ### <a name="clone-the-sample"></a>克隆示例
 
-在终端窗口中，通过 `cd` 转到工作目录。
+1. 在终端窗口中，通过 `cd` 转到工作目录。
 
-运行下列命令，克隆示例存储库。
+1. 克隆示例存储库并将其更改为存储库根路径。
 
-```bash
-git clone https://github.com/Azure-Samples/rubyrails-tasks.git
-```
+    ```bash
+    git clone https://github.com/Azure-Samples/rubyrails-tasks.git
+    cd rubyrails-tasks
+    ```
 
-通过 `cd` 转到克隆目录。 安装所需程序包。
+1. 确保默认分支为 `main`。
 
-```bash
-cd rubyrails-tasks
-bundle install --path vendor/bundle
-```
+    ```bash
+    git branch -m main
+    ```
+    
+    > [!TIP]
+    > 应用服务不需要更改分支名称。 但是，由于许多存储库将其默认分支更改为 `main`，因此本教程还介绍如何从 `main` 部署存储库。 有关详细信息，请参阅[更改部署分支](deploy-local-git.md#change-deployment-branch)。
+
+1. 安装所需程序包。
+
+    ```bash
+    bundle install --path vendor/bundle
+    ```
 
 ### <a name="run-the-sample-locally"></a>在本地运行示例
 
-运行 [Rails 迁移](https://guides.rubyonrails.org/active_record_migrations.html#running-migrations)以创建应用程序所需的表。 若要查看迁移中创建了哪些表，请查看 Git 存储库中的 _db/migrate_ 目录。
+1. 运行 [Rails 迁移](https://guides.rubyonrails.org/active_record_migrations.html#running-migrations)以创建应用程序所需的表。 若要查看迁移中创建了哪些表，请查看 Git 存储库中的 _db/migrate_ 目录。
 
-```bash
-rake db:create
-rake db:migrate
-```
+    ```bash
+    rake db:create
+    rake db:migrate
+    ```
 
-运行应用程序。
+1. 运行应用程序。
 
-```bash
-rails server
-```
+    ```bash
+    rails server
+    ```
 
-在浏览器中导航到 `http://localhost:3000`。 在页面中添加一些任务。
+1. 在浏览器中导航至 `http://localhost:3000` 。 在页面中添加一些任务。
 
-![Ruby on Rails 已成功连接到 Postgres](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
+    ![Ruby on Rails 已成功连接到 Postgres](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
 
-若要停止 Rails 服务器，请在终端中键入 `Ctrl + C`。
+1. 若要停止 Rails 服务器，请在终端中键入 `Ctrl + C`。
 
 ## <a name="create-postgres-in-azure"></a>在 Azure 中创建 Postgres
 
@@ -119,36 +128,36 @@ rails server
 <!-- > [!NOTE]
 > Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
 
-在本部分，你将创建 Azure Database for PostgreSQL 服务器和数据库。 若要开始，请使用以下命令安装 `db-up` 扩展：
+1. 使用以下命令安装 `db-up` 扩展：
 
-```azurecli
-az extension add --name db-up
-```
+    ```azurecli
+    az extension add --name db-up
+    ```
 
-如以下示例所示，使用 [`az postgres up`](/cli/azure/postgres#az_postgres_up) 命令在 Azure 中创建 Postgres 数据库。 将 \<postgresql-name> 替换为唯一名称（服务器终结点为 https://\<postgresql-name>.postgres.database.azure.com）  。 对于 \<admin-username> 和 \<admin-password>，请指定用来为此 Postgres 服务器创建管理员用户的凭据 。
+1. 如以下示例所示，使用 [`az postgres up`](/cli/azure/postgres#az_postgres_up) 命令在 Azure 中创建 Postgres 数据库。 将 \<postgresql-name> 替换为唯一名称（服务器终结点为 https://\<postgresql-name>.postgres.database.azure.com）  。 对于 \<admin-username> 和 \<admin-password>，请指定用来为此 Postgres 服务器创建管理员用户的凭据 。
 
-<!-- Issue: without --location -->
-```azurecli
-az postgres up --resource-group myResourceGroup --location westeurope --server-name <postgresql-name> --database-name sampledb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
-```
+    <!-- Issue: without --location -->
+    ```azurecli
+    az postgres up --resource-group myResourceGroup --location westeurope --server-name <postgresql-name> --database-name sampledb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
+    ```
 
-此命令可能会运行较长时间，因为它要执行以下操作：
-
-- 创建名为 `myResourceGroup` 的[资源组](../azure-resource-manager/management/overview.md#terminology)（如果不存在）。 每个 Azure 资源都需要位于某个资源组中。 `--resource-group` 是可选项。
-- 创建带有管理用户的 Postgres 服务器。
-- 创建 `sampledb` 数据库。
-- 允许从本地 IP 地址进行访问。
-- 允许从 Azure 服务进行访问。
-- 创建有权访问 `sampledb` 数据库的数据库用户。
-
-可以使用其他 `az postgres` 命令和 `psql` 单独执行每个步骤，但 `az postgres up` 可以通过一个步骤完成所有这些操作。
-
-命令完成后，找到以 `Ran Database Query:` 开头的输出行。 这些行显示了系统为你创建的数据库用户（用户名为 `root`，密码为 `Sampledb1`）。 稍后你要使用这些凭据将应用连接到数据库。
-
-<!-- not all locations support az postgres up -->
-> [!TIP]
-> `--location <location-name>` 可以设置为任一个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。 可以使用 [`az account list-locations`](/cli/azure/account#az_account_list_locations) 命令获取可供你的订阅使用的区域。 对于生产应用，请将数据库和应用放置在同一位置。
-
+    此命令可能会运行较长时间，因为它要执行以下操作：
+    
+    - 创建名为 `myResourceGroup` 的[资源组](../azure-resource-manager/management/overview.md#terminology)（如果不存在）。 每个 Azure 资源都需要位于某个资源组中。 `--resource-group` 是可选项。
+    - 创建带有管理用户的 Postgres 服务器。
+    - 创建 `sampledb` 数据库。
+    - 允许从本地 IP 地址进行访问。
+    - 允许从 Azure 服务进行访问。
+    - 创建有权访问 `sampledb` 数据库的数据库用户。
+    
+    可以使用其他 `az postgres` 命令和 `psql` 单独执行每个步骤，但 `az postgres up` 可以通过一个步骤完成所有这些操作。
+    
+    命令完成后，找到以 `Ran Database Query:` 开头的输出行。 这些行显示了系统为你创建的数据库用户（用户名为 `root`，密码为 `Sampledb1`）。 稍后你要使用这些凭据将应用连接到数据库。
+    
+    <!-- not all locations support az postgres up -->
+    > [!TIP]
+    > `--location <location-name>` 可以设置为任一个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。 可以使用 [`az account list-locations`](/cli/azure/account#az_account_list_locations) 命令获取可供你的订阅使用的区域。 对于生产应用，请将数据库和应用放置在同一位置。
+    
 ## <a name="connect-app-to-azure-postgres"></a>将应用连接到 Azure Postgres
 
 此步骤将 Ruby on Rails 应用程序连接到在 Azure Database for PostgreSQL 中创建的 Postgres 数据库。
@@ -172,68 +181,68 @@ production:
 
 ### <a name="test-the-application-locally"></a>在本地测试应用程序
 
-回到本地终端，设置以下环境变量：
+1. 回到本地终端，设置以下环境变量：
 
-```bash
-export DB_HOST=<postgres-server-name>.postgres.database.azure.com
-export DB_DATABASE=sampledb 
-export DB_USERNAME=root@<postgres-server-name>
-export DB_PASSWORD=Sampledb1
-```
+    ```bash
+    export DB_HOST=<postgres-server-name>.postgres.database.azure.com
+    export DB_DATABASE=sampledb 
+    export DB_USERNAME=root@<postgres-server-name>
+    export DB_PASSWORD=Sampledb1
+    ```
 
-使用刚刚配置的生产值运行 Rails 数据库迁移，在 Azure Database for PostgreSQL 中的 Postgres 数据库内创建表。
+1. 使用刚刚配置的生产值运行 Rails 数据库迁移，在 Azure Database for PostgreSQL 中的 Postgres 数据库内创建表。
 
-```bash
-rake db:migrate RAILS_ENV=production
-```
+    ```bash
+    rake db:migrate RAILS_ENV=production
+    ```
 
-在生产环境中运行时，Rails 应用程序需要预编译的资产。 使用以下命令生成所需的资产：
+1. 在生产环境中运行时，Rails 应用程序需要预编译的资产。 使用以下命令生成所需的资产：
 
-```bash
-rake assets:precompile
-```
+    ```bash
+    rake assets:precompile
+    ```
 
-Rails 生产环境还使用机密来管理安全性。 生成机密密钥
+1. Rails 生产环境还使用机密来管理安全性。 生成机密密钥
 
-```bash
-rails secret
-```
+    ```bash
+    rails secret
+    ```
 
-将机密密钥保存到 Rails 生产环境使用的相应变量。 为方便起见，可对两个变量使用相同的密钥。
+1. 将机密密钥保存到 Rails 生产环境使用的相应变量。 为方便起见，可对两个变量使用相同的密钥。
 
-```bash
-export RAILS_MASTER_KEY=<output-of-rails-secret>
-export SECRET_KEY_BASE=<output-of-rails-secret>
-```
+    ```bash
+    export RAILS_MASTER_KEY=<output-of-rails-secret>
+    export SECRET_KEY_BASE=<output-of-rails-secret>
+    ```
 
-启用 Rails 生产环境，以提供 JavaScript 和 CSS 文件。
+1. 启用 Rails 生产环境，以提供 JavaScript 和 CSS 文件。
 
-```bash
-export RAILS_SERVE_STATIC_FILES=true
-```
+    ```bash
+    export RAILS_SERVE_STATIC_FILES=true
+    ```
 
-在生产环境中运行示例应用程序。
+1. 在生产环境中运行示例应用程序。
 
-```bash
-rails server -e production
-```
+    ```bash
+    rails server -e production
+    ```
 
-导航到 `http://localhost:3000`。 如果页面可加载且未出错，则表示 Ruby on Rails 应用程序正在连接到 Azure 中的 Postgres 数据库。
+1. 导航到 `http://localhost:3000`。 如果页面可加载且未出错，则表示 Ruby on Rails 应用程序正在连接到 Azure 中的 Postgres 数据库。
 
-在页面中添加一些任务。
+1. 在页面中添加一些任务。
 
-![Ruby on Rails 已成功连接到 Azure Database for PostgreSQL](./media/tutorial-ruby-postgres-app/azure-postgres-connect-success.png)
+    ![Ruby on Rails 已成功连接到 Azure Database for PostgreSQL](./media/tutorial-ruby-postgres-app/azure-postgres-connect-success.png)
 
-若要停止 Rails 服务器，请在终端中键入 `Ctrl + C`。
+1. 若要停止 Rails 服务器，请在终端中键入 `Ctrl + C`。
 
 ### <a name="commit-your-changes"></a>提交更改
 
-运行以下的 Git 命令，提交更改：
+1. 运行以下的 Git 命令，提交更改：
 
-```bash
-git add .
-git commit -m "database.yml updates"
-```
+    ```bash
+    git add .
+    git commit -m "database.yml updates"
+    ```
 
 应用已可用于部署。
 
@@ -265,53 +274,57 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ### <a name="configure-rails-environment-variables"></a>配置 Rails 环境变量
 
-在本地终端中，为 Azure 中的 Rails 生产环境[生成新的机密](configure-language-ruby.md#set-secret_key_base-manually)。
+1. 在本地终端中，为 Azure 中的 Rails 生产环境[生成新的机密](configure-language-ruby.md#set-secret_key_base-manually)。
 
-```bash
-rails secret
-```
+    ```bash
+    rails secret
+    ```
 
-配置 Rails 生产环境所需的变量。
+1. 在以下 Cloud Shell 命令中，将两个 _&lt;output-of-rails-secret>_ 占位符替换在本地终端中生成的新机密密钥。
 
-在以下 Cloud Shell 命令中，将两个 _&lt;output-of-rails-secret>_ 占位符替换在本地终端中生成的新机密密钥。
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
+    ```
 
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
-```
-
-`ASSETS_PRECOMPILE="true"` 告知默认 Ruby 容器要在每次进行 Git 部署时预编译资产。 有关详细信息，请参阅[预编译资产](configure-language-ruby.md#precompile-assets)和[提供静态资产](configure-language-ruby.md#serve-static-assets)。
+    `ASSETS_PRECOMPILE="true"` 告知默认 Ruby 容器要在每次进行 Git 部署时预编译资产。 有关详细信息，请参阅[预编译资产](configure-language-ruby.md#precompile-assets)和[提供静态资产](configure-language-ruby.md#serve-static-assets)。
 
 ### <a name="push-to-azure-from-git"></a>从 Git 推送到 Azure
 
-在本地终端中，将 Azure 远程功能添加到本地 Git 存储库。
+1. 由于要部署 `main` 分支，因此需要将应用服务应用的默认部署分支设置为 `main`（请参阅[更改部署分支](deploy-local-git.md#change-deployment-branch)）。 在 Cloud Shell 中，使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令设置 `DEPLOYMENT_BRANCH` 应用设置。 
 
-```bash
-git remote add azure <paste-copied-url-here>
-```
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DEPLOYMENT_BRANCH='main'
+    ```
 
-推送到 Azure 远程功能以部署 Ruby on Rails 应用程序。 系统会提示输入前面在创建部署用户期间提供的密码。
+1. 在本地终端中，将 Azure 远程功能添加到本地 Git 存储库。
 
-```bash
-git push azure main
-```
+    ```bash
+    git remote add azure <paste-copied-url-here>
+    ```
 
-在部署期间，Azure 应用服务会向 Git 告知其进度。
+1. 推送到 Azure 远程功能以部署 Ruby on Rails 应用程序。 系统会提示输入前面在创建部署用户期间提供的密码。
 
-<pre>
-Counting objects: 3, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
-Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'main'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'a5e076db9c'.
-remote: Running custom deployment command...
-remote: Running deployment command...
-...
-&lt; Output has been truncated for readability &gt;
-</pre>
+    ```bash
+    git push azure main
+    ```
 
+    在部署期间，Azure 应用服务会向 Git 告知其进度。
+
+    <pre>
+    Counting objects: 3, done.
+    Delta compression using up to 8 threads.
+    Compressing objects: 100% (3/3), done.
+    Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
+    Total 3 (delta 2), reused 0 (delta 0)
+    remote: Updating branch 'main'.
+    remote: Updating submodules.
+    remote: Preparing deployment for commit id 'a5e076db9c'.
+    remote: Running custom deployment command...
+    remote: Running deployment command...
+    ...
+    &lt; Output has been truncated for readability &gt;
+    </pre>
+    
 ### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
 浏览到 `http://<app-name>.azurewebsites.net` 并在列表中添加一些任务。
@@ -328,108 +341,107 @@ remote: Running deployment command...
 
 ### <a name="add-a-column"></a>添加列
 
-在终端中，导航到 Git 存储库中的根路径。
+1. 在终端中，导航到 Git 存储库中的根路径。
 
-生成新的迁移，用于将名为 `Done` 的布尔列添加到 `Tasks` 表：
+1. 生成新的迁移，用于将名为 `Done` 的布尔列添加到 `Tasks` 表：
 
-```bash
-rails generate migration AddDoneToTasks Done:boolean
-```
+    ```bash
+    rails generate migration AddDoneToTasks Done:boolean
+    ```
 
-此命令在 _db/migrate_ 目录中生成新的迁移文件。
+    此命令在 _db/migrate_ 目录中生成新的迁移文件。
 
+1. 在终端中运行 Rails 数据库迁移，以便在本地数据库中进行更改。
 
-在终端中运行 Rails 数据库迁移，以便在本地数据库中进行更改。
-
-```bash
-rake db:migrate
-```
+    ```bash
+    rake db:migrate
+    ```
 
 ### <a name="update-application-logic"></a>更新应用程序逻辑
 
-打开 *app/controllers/tasks_controller.rb* 文件。 在该文件的末尾找到以下行：
+1. 打开 *app/controllers/tasks_controller.rb* 文件。 在该文件的末尾找到以下行：
 
-```rb
-params.require(:task).permit(:Description)
-```
+    ```rb
+    params.require(:task).permit(:Description)
+    ```
 
-修改此行，以包含新的 `Done` 参数。
+1. 修改此行，以包含新的 `Done` 参数。
 
-```rb
-params.require(:task).permit(:Description, :Done)
-```
+    ```rb
+    params.require(:task).permit(:Description, :Done)
+    ```
 
 ### <a name="update-the-views"></a>更新视图
 
-打开 *app/views/tasks/_form.html.erb* 文件，即“编辑”窗体。
+1. 打开 *app/views/tasks/_form.html.erb* 文件，即“编辑”窗体。
 
-找到 `<%=f.error_span(:Description) %>` 行，并紧接在其下方插入以下代码：
+1. 找到 `<%=f.error_span(:Description) %>` 行，并紧接在其下方插入以下代码：
 
-```erb
-<%= f.label :Done, :class => 'control-label col-lg-2' %>
-<div class="col-lg-10">
-  <%= f.check_box :Done, :class => 'form-control' %>
-</div>
-```
+    ```erb
+    <%= f.label :Done, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.check_box :Done, :class => 'form-control' %>
+    </div>
+    ```
 
-打开 *app/views/tasks/show.html.erb* 文件，即单记录“视图”页。 
+1. 打开 *app/views/tasks/show.html.erb* 文件，即单记录“视图”页。 
 
-找到 `<dd><%= @task.Description %></dd>` 行，并紧接在其下方插入以下代码：
+    找到 `<dd><%= @task.Description %></dd>` 行，并紧接在其下方插入以下代码：
 
-```erb
-  <dt><strong><%= model_class.human_attribute_name(:Done) %>:</strong></dt>
-  <dd><%= check_box "task", "Done", {:checked => @task.Done, :disabled => true}%></dd>
-```
+    ```erb
+      <dt><strong><%= model_class.human_attribute_name(:Done) %>:</strong></dt>
+      <dd><%= check_box "task", "Done", {:checked => @task.Done, :disabled => true}%></dd>
+    ```
 
-打开 *app/views/tasks/index.html.erb* 文件，即所有记录的“索引”页。
+    打开 *app/views/tasks/index.html.erb* 文件，即所有记录的“索引”页。
 
-找到 `<th><%= model_class.human_attribute_name(:Description) %></th>` 行，并紧接在其下方插入以下代码：
+    找到 `<th><%= model_class.human_attribute_name(:Description) %></th>` 行，并紧接在其下方插入以下代码：
 
-```erb
-<th><%= model_class.human_attribute_name(:Done) %></th>
-```
+    ```erb
+    <th><%= model_class.human_attribute_name(:Done) %></th>
+    ```
 
-在同一文件中找到 `<td><%= task.Description %></td>` 行，并紧接在其下方插入以下代码：
+1. 在同一文件中找到 `<td><%= task.Description %></td>` 行，并紧接在其下方插入以下代码：
 
-```erb
-<td><%= check_box "task", "Done", {:checked => task.Done, :disabled => true} %></td>
-```
+    ```erb
+    <td><%= check_box "task", "Done", {:checked => task.Done, :disabled => true} %></td>
+    ```
 
 ### <a name="test-the-changes-locally"></a>在本地测试更改
 
-在本地终端中运行 Rails 服务器。
+1. 在本地终端中运行 Rails 服务器。
 
-```bash
-rails server
-```
+    ```bash
+    rails server
+    ```
 
-若要查看任务状态的变化，请导航到 `http://localhost:3000` 并添加或编辑项。
+1. 若要查看任务状态的变化，请导航到 `http://localhost:3000` 并添加或编辑项。
 
-![将复选框添加到任务](./media/tutorial-ruby-postgres-app/complete-checkbox.png)
+    ![将复选框添加到任务](./media/tutorial-ruby-postgres-app/complete-checkbox.png)
 
-若要停止 Rails 服务器，请在终端中键入 `Ctrl + C`。
+1. 若要停止 Rails 服务器，请在终端中键入 `Ctrl + C`。
 
 ### <a name="publish-changes-to-azure"></a>发布对 Azure 所做的更改
 
-在终端中，针对生产环境运行 Rails 数据库迁移，在 Azure 数据库中进行更改。
+1. 在终端中，针对生产环境运行 Rails 数据库迁移，在 Azure 数据库中进行更改。
 
-```bash
-rake db:migrate RAILS_ENV=production
-```
+    ```bash
+    rake db:migrate RAILS_ENV=production
+    ```
 
-提交在 Git 中进行的所有更改，然后将代码更改推送到 Azure。
+1. 提交在 Git 中进行的所有更改，然后将代码更改推送到 Azure。
 
-```bash
-git add .
-git commit -m "added complete checkbox"
-git push azure main
-```
+    ```bash
+    git add .
+    git commit -m "added complete checkbox"
+    git push azure main
+    ```
 
-`git push` 完成后，请导航至 Azure 应用，测试新功能。
+1. `git push` 完成后，请导航至 Azure 应用，测试新功能。
 
-![发布到 Azure 的模型和数据库更改](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
+    ![发布到 Azure 的模型和数据库更改](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
-如果添加任何任务，则它们保留在数据库中。 更新数据架构不会改变现有数据。
+    如果添加任何任务，则它们保留在数据库中。 更新数据架构不会改变现有数据。
 
 ## <a name="stream-diagnostic-logs"></a>流式传输诊断日志
 
@@ -437,17 +449,17 @@ git push azure main
 
 ## <a name="manage-the-azure-app"></a>管理 Azure 应用
 
-转到 [Azure 门户](https://portal.azure.com)管理已创建的应用。
+1. 转到 [Azure 门户](https://portal.azure.com)管理已创建的应用。
 
-在左侧菜单中单击 **应用程序服务**，然后单击 Azure 应用的名称。
+1. 在左侧菜单中单击 **应用程序服务**，然后单击 Azure 应用的名称。
 
-![在门户中导航到 Azure 应用](./media/tutorial-php-mysql-app/access-portal.png)
+    ![在门户中导航到 Azure 应用](./media/tutorial-php-mysql-app/access-portal.png)
 
-这里我们可以看到应用的“概述”页。 在此处可以执行基本的管理任务，例如停止、启动、重启、浏览和删除。
+    这里我们可以看到应用的“概述”页。 在此处可以执行基本的管理任务，例如停止、启动、重启、浏览和删除。
 
-左侧菜单提供用于配置应用的页面。
+    左侧菜单提供用于配置应用的页面。
 
-![Azure 门户中的“应用服务”页](./media/tutorial-php-mysql-app/web-app-blade.png)
+    ![Azure 门户中的“应用服务”页](./media/tutorial-php-mysql-app/web-app-blade.png)
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/06/2020
+ms.date: 08/10/2021
 ms.author: duau
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 7242749958d12b8d93f667b91ed005096d75f1e4
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 0c93edf2d7d017ea857e4e8ac915818a3b7f1d02
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538726"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123311380"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit"></a>教程：将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -199,6 +199,30 @@ $connection = Get-AzVirtualNetworkGatewayConnection -Name "MyConnection" -Resour
 $connection.ExpressRouteGatewayBypass = $True
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ``` 
+
+> [!NOTE]
+> 可以使用[连接监视器](how-to-configure-connection-monitor.md)来验证流量是否使用 FastPath 到达目标位置。
+>
+
+## <a name="enroll-in-expressroute-fastpath-features-preview"></a>注册 ExpressRoute FastPath 功能（预览版）
+
+FastPath 对虚拟网络对等互连的支持现以公共预览版提供。
+
+### <a name="fastpath-and-virtual-network-peering"></a>FastPath 和虚拟网络对等互连
+
+使用 FastPath 和虚拟网络对等互连，可以绕过数据路径中的 ExpressRoute 虚拟网络网关，直接与本地或对等虚拟网络中的 VM 建立 ExpressRoute 连接。
+
+若要在此预览版中注册，请在目标 Azure 订阅中运行以下 Azure PowerShell 命令：
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName ExpressRouteVnetPeeringGatewayBypass -ProviderNamespace Microsoft.Network
+```
+
+> [!NOTE] 
+> 目标订阅中为 FastPath 配置的任何连接都将注册到此预览版中。 建议不要在生产订阅中启用此预览版。
+> 如果已经配置了 FastPath 并且想要注册预览功能，则需要执行以下操作：
+> 1. 使用上述 Azure PowerShell 命令注册 FastPath 预览功能。
+> 1. 在目标连接上禁用 FastPath，然后重新启用它。
 
 ## <a name="clean-up-resources"></a>清理资源
 

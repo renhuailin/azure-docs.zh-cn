@@ -4,17 +4,17 @@ description: 如何使用 Azure 门户创建 Azure 虚拟桌面主机池。
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
-ms.date: 07/20/2021
+ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 34faa055eb14841d1b35d81e62c74fef92c80bac
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 49c453f4ffcb2fac04b42f4956768e06ab8fce8f
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707060"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100788"
 ---
-# <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
+# <a name="tutorial-create-a-host-pool"></a>教程：创建主机池
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)。 无法通过 Azure 门户来管理使用 Azure 虚拟桌面（经典）创建的任何对象。
@@ -50,7 +50,7 @@ ms.locfileid: "114707060"
 
 - 如果你打算向最终用户提供组织的应用，请确保该应用已确实准备就绪。 有关详细信息，请参阅[如何使用 Azure 虚拟桌面托管自定义应用](./remote-app-streaming/custom-apps.md)。
 - 如果现有的 Azure 库映像选项不满足需求，则你还需要为会话主机 VM 创建自己的自定义映像。 若要详细了解如何创建 VM 映像，请参阅[准备要上传到 Azure 的 Windows VHD 或 VHDX](../virtual-machines/windows/prepare-for-upload-vhd-image.md)，以及[为 Azure 中的通用化 VM 创建托管映像](../virtual-machines/windows/capture-image-resource.md)。
-- 你的域加入凭据。 如果你没有与 Azure 虚拟桌面兼容的标识管理系统，则需要为主机池设置标识管理。
+- 你的域加入凭据。 如果你没有与 Azure 虚拟桌面兼容的标识管理系统，则需要为主机池设置标识管理。 有关详细信息，请参阅[设置托管标识](./remote-app-streaming/identities.md)。
 
 ### <a name="final-requirements"></a>最后的要求
 
@@ -61,6 +61,8 @@ ms.locfileid: "114707060"
 最后但同样重要的是，如果你还没有 Azure 订阅，请务必在按照以下说明开始操作之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="begin-the-host-pool-setup-process"></a>开始执行主机池设置过程
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要开始创建新的主机池，请执行以下操作：
 
@@ -110,13 +112,42 @@ ms.locfileid: "114707060"
 
 11. 如果你已创建虚拟机并想要在新主机池中使用它们，请选择“否”，然后选择“下一步: 工作区 >”，并跳转到[工作区信息](#workspace-information)部分。 如果要创建新的虚拟机并将其注册到新主机池，请选择“是”。
 
-现在，第一部分已完成，接下来让我们转到设置过程的下一部分来创建 VM。
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+首先为 Azure CLI 准备环境：
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+登录后，使用 [az desktopvirtualization hostpool create](/cli/azure/desktopvirtualization#az_desktopvirtualization_hostpool_create) 命令创建新的主机池，可以选择为会话主机创建注册令牌以加入主机池：
+
+```azurecli
+az desktopvirtualization hostpool create --name "MyHostPool" \
+    --resource-group "MyResourceGroup" \ 
+    --location "MyLocation" \
+    --host-pool-type "Pooled" \
+    --load-balancer-type "BreadthFirst" \
+    --max-session-limit 999 \
+    --personal-desktop-assignment-type "Automatic"  \
+    --registration-info expiration-time="2022-03-22T14:01:54.9571247Z" registration-token-operation="Update" \
+    --sso-context "KeyVaultPath" \
+    --description "Description of this host pool" \
+    --friendly-name "Friendly name of this host pool" \
+    --tags tag1="value1" tag2="value2" 
+```
+
+如果要创建新的虚拟机并将其注册到新主机池，请继续按照以下部分操作。 如果已创建虚拟机并想要在新主机池中使用它们，请跳转到[工作区信息](#workspace-information)部分。 
+
+---
+
+现在，主机池已创建完成，接下来让我们转到设置过程的下一部分来创建 VM。
 
 ## <a name="virtual-machine-details"></a>虚拟机详细信息
 
 现在，我们已完成第一部分，接下来必须设置 VM。
 
-若要在主机池设置过程中设置虚拟机，请执行以下操作：
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+在 Azure 门户主机池设置过程中设置虚拟机：
 
 1. 在“资源组”下，选择要在其中创建虚拟机的资源组。 此资源组可以与用于主机池的资源组不同。
 
@@ -190,6 +221,26 @@ ms.locfileid: "114707060"
 
 13. 在完成时选择“下一步:工作区 >”。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用 [az vm create](/cli/azure/vm#az_vm_create) 命令创建新的 Azure 虚拟机：
+
+```azurecli
+az vm create --name "MyVMName" \
+    --resource-group "MyResourceGroup" \
+    --image "MyImage" \
+    --generate-ssh-keys
+```
+
+有关使用 Azure CLI 创建 Azure 虚拟机的其他信息，请参阅：
+- Windows
+    - [使用 Azure CLI 创建 Windows VM]( /azure/virtual-machines/windows/quick-create-cli)
+    - [教程：使用 Azure CLI 创建和管理 Windows VM](/cli/azure/azure-cli-vm-tutorial)
+- Linux
+    - [Create a Linux VM using the Azure CLI（使用 Azure CLI 创建 Linux VM）]( /virtual-machines/linux/quick-create-cli)
+    - [教程：使用 Azure CLI 创建和管理 Linux VM]( /azure/virtual-machines/linux/tutorial-manage-vm) 
+---
+
 完成这些操作后，我们便可以开始进行设置主机池的下一阶段：将应用组注册到工作区。
 
 ## <a name="workspace-information"></a>工作区信息
@@ -198,6 +249,8 @@ ms.locfileid: "114707060"
 
 >[!NOTE]
 >如果你是一名想要发布组织应用的应用开发人员，可将 MSIX 应用动态附加到用户会话，或将应用包添加到自定义 VM 映像。 有关详细信息，请参阅“如何使用 Azure 虚拟桌面为自定义应用提供服务”。
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要将桌面应用组注册到工作区，请执行以下操作：
 
@@ -216,14 +269,30 @@ ms.locfileid: "114707060"
      >[!NOTE]
      >“查看 + 创建”过程不会检查你的密码是否符合安全标准，也不会检查你的体系结构是否正确，因此，你需要亲自检查密码和体系结构是否存在任何问题。
 
-5. 检查你的部署的相关信息，确保全部正确。 完成操作后，选择“创建”。 这会启动部署过程，该过程将创建以下对象：
+5. 检查你的部署的相关信息，确保全部正确。 完成操作后，选择“创建”。 
 
-     - 新的主机池。
-     - 桌面应用组。
-     - 工作区（如果已选择创建工作区）。
-     - 如果你选择注册桌面应用组，则注册将会完成。
-     - 已加入域并已注册到新主机池的虚拟机（如果已选择创建虚拟机）。
-     - 基于配置的 Azure 资源管理器模板的下载链接。
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用 [az desktopvirtualization workspace create](/cli/azure/desktopvirtualization#az_desktopvirtualization_workspace_create) 命令创建新工作区：
+
+```azurecli
+az desktopvirtualization workspace create --name "MyWorkspace" \
+    --resource-group "MyResourceGroup" \
+    --location "MyLocation" \
+    --tags tag1="value1" tag2="value2" \
+    --friendly-name "Friendly name of this workspace" \
+    --description "Description of this workspace" 
+```
+---
+
+这会启动部署过程，该过程将创建以下对象：
+
+- 新的主机池。
+- 桌面应用组。
+- 工作区（如果已选择创建工作区）。
+- 如果你选择注册桌面应用组，则注册将会完成。
+- 已加入域并已注册到新主机池的虚拟机（如果已选择创建虚拟机）。
+- 基于配置的 Azure 资源管理模板的下载链接。
 
 所有操作现已全部完成！
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c8a93ce59927144ce02edb8c1193406a29b18530
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 578ff0997375b62b3fd5a90ec44967ead1b9cd63
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112913772"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253800"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
@@ -113,10 +113,10 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 'unstructured_data_path'
 
 用于建立数据路径的 unstructured_data_path 可以是绝对路径，也可以是相对路径：
-- 采用格式“\<prefix>://\<storage_account_path>/\<storage_path>”的绝对路径使用户能够直接读取文件。
-- 相对路径的格式为“<storage_path>”，必须与 `DATA_SOURCE` 参数一起使用，它描述 `EXTERNAL DATA SOURCE` 定义的 <storage_account_path> 位置中的文件模式。 
+- 采用格式 `\<prefix>://\<storage_account_path>/\<storage_path>` 的绝对路径使用户能够直接读取文件。
+- 相对路径的格式为 `<storage_path>`，必须与 `DATA_SOURCE` 参数一起使用，它描述 `EXTERNAL DATA SOURCE` 定义的 <storage_account_path> 位置中的文件模式。 
 
-在下面可以找到相关的 <storage account path> 值，用于链接到特定的外部数据源。 
+在下面可以找到相关的 \<storage account path> 值，用于链接到特定的外部数据源。 
 
 | 外部数据源       | 前缀 | 存储帐户路径                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |

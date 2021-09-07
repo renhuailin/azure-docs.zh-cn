@@ -6,72 +6,72 @@ metadata:
   author: vhorne
   ms.service: firewall
   ms.topic: conceptual
-  ms.date: 08/13/2021
+  ms.date: 08/30/2021
   ms.author: victorh
-  ms.openlocfilehash: b11803889bee47d4f37261dfa7969dc698212e83
-  ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+  ms.openlocfilehash: 8e2a5c8dbdf22cadf68511cc0ced482728f12cf2
+  ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "122072521"
+  ms.lasthandoff: 08/30/2021
+  ms.locfileid: "123213850"
 title: Azure 防火墙常见问题解答
 summary: ''
 sections:
 - name: 忽略
   questions:
-  - question: What is Azure Firewall?
-    answer: Azure Firewall is a managed, cloud-based network security service that protects your Azure Virtual Network resources. It's a fully stateful firewall-as-a-service with built-in high availability and unrestricted cloud scalability. You can centrally create, enforce, and log application and network connectivity policies across subscriptions and virtual networks.
-  - question: What capabilities are supported in Azure Firewall?
+  - question: 什么是 Azure 防火墙？
+    answer: Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。 可以跨订阅和虚拟网络集中创建、实施和记录应用程序与网络连接策略。
+  - question: Azure 防火墙支持哪些功能？
     answer: >
-      To learn about Azure Firewall features, see [Azure Firewall features](features.md).
-  - question: What is the typical deployment model for Azure Firewall?
+      若要了解 Azure 防火墙的功能，请参阅 [Azure 防火墙功能](features.md)。
+  - question: Azure 防火墙的典型部署模型是什么？
     answer: >
-      You can deploy Azure Firewall on any virtual network, but customers typically deploy it on a central virtual network and peer other virtual networks to it in a hub-and-spoke model. You can then set the default route from the peered virtual networks to point to this central firewall virtual network. Global VNet peering is supported, but it isn't recommended because of potential performance and latency issues across regions. For best performance, deploy one firewall per region.
+      可在任何虚拟网络中部署 Azure 防火墙，但客户往往在中心虚拟网络中部署它，并在中心辐射模型中将其对等互连到其他虚拟网络。 然后，可将对等互连的虚拟网络中的默认路由设置为指向此中心防火墙虚拟网络。 支持全局 VNet 对等互连，但不建议使用，因为它可能会在不同的区域中造成性能影响和延迟问题。 为获得最佳性能，请为每个区域部署一个防火墙。
 
 
-      The advantage of this model is the ability to centrally exert control on multiple spoke VNETs across different subscriptions. There are also cost savings as you don't need to deploy a firewall in each VNet separately. The cost savings should be measured versus the associate peering cost based on the customer traffic patterns.
-  - question: How can I install the Azure Firewall?
+      该模型的优点是能够跨不同订阅集中控制多个辐射 VNET。 由于不需要在每个 VNet 中单独部署防火墙，因此还能节约成本。 应根据客户流量模式衡量成本节约与相关对等互连成本。
+  - question: 如何安装 Azure 防火墙？
     answer: >
-      You can set up Azure Firewall by using the Azure portal, PowerShell, REST API, or by using templates. See [Tutorial: Deploy and configure Azure Firewall using the Azure portal](tutorial-firewall-deploy-portal.md) for step-by-step instructions.
-  - question: What are some Azure Firewall concepts?
+      可以使用 Azure 门户、PowerShell、REST API 或使用模板设置 Azure 防火墙。 请参阅[教程：使用 Azure 门户部署和配置 Azure 防火墙](tutorial-firewall-deploy-portal.md)。
+  - question: 有哪些 Azure 防火墙概念？
     answer: >
-      Azure Firewall supports rules and rule collections. A rule collection is a set of rules that share the same order and priority. Rule collections are executed in order of their priority. Network rule collections are higher priority than application rule collections, and all rules are terminating.
+      Azure 防火墙支持规则和规则集合。 规则集合是一组共享相同顺序和优先级的规则。 规则集合按其优先顺序执行。 网络规则集合的优先级高于应用程序规则集合，所有规则都具有终止性。
 
 
-      There are three types of rule collections:
+      有三种类型的规则集合：
 
 
-      * *Application rules*: Configure fully qualified domain names (FQDNs) that can be accessed from a subnet.
+      * *应用程序规则*：配置可从子网访问的完全限定域名 (FQDN)。
 
-      * *Network rules*: Configure rules that contain source addresses, protocols, destination ports, and destination addresses.
+      * *网络规则*：配置包含源地址、协议、目标端口和目标地址的规则。
 
-      * *NAT rules*: Configure DNAT rules to allow incoming Internet connections.
-  - question: Does Azure Firewall support inbound traffic filtering?
+      * *NAT 规则*：将 DNAT 规则配置为允许传入的 Internet 连接。
+  - question: Azure 防火墙是否支持入站流量筛选？
     answer: >
-      Azure Firewall supports inbound and outbound filtering. Inbound protection is typically used for non-HTTP/S protocols. For example RDP, SSH, and FTP protocols. For best inbound HTTP/S protection, use a web application firewall such as [Azure Web Application Firewall (WAF)](../web-application-firewall/overview.md).
-  - question: Which logging and analytics services are supported by the Azure Firewall?
+      Azure 防火墙支持入站和出站筛选。 入站保护通常用于非 HTTP/S 协议。 例如 RDP、SSH 和 FTP 协议。 为了获得最佳的入站 HTTP/S 保护，请使用 Web 应用程序防火墙，如 [Azure Web 应用程序防火墙 (WAF)](../web-application-firewall/overview.md)。
+  - question: Azure 防火墙支持哪些日志记录和分析服务？
     answer: >
-      Azure Firewall is integrated with Azure Monitor for viewing and analyzing firewall logs. Logs can be sent to Log Analytics, Azure Storage, or Event Hubs. They can be analyzed in Log Analytics or by different tools such as Excel and Power BI. For more information, see [Tutorial: Monitor Azure Firewall logs](./firewall-diagnostics.md).
-  - question: How does Azure Firewall work differently from existing services such as NVAs in the marketplace?
-    answer: Azure Firewall is a managed, cloud-based network security service that protects your virtual network resources. It's a fully stateful firewall as a service with built-in high availability and unrestricted cloud scalability. It is pre-integrated with third-party security as a service (SECaaS) providers to provide advanced security for your virtual network and branch Internet connections.
-  - question: What is the difference between Application Gateway WAF and Azure Firewall?
-    answer: The Web Application Firewall (WAF) is a feature of Application Gateway that provides centralized inbound protection of your web applications from common exploits and vulnerabilities. Azure Firewall provides inbound protection for non-HTTP/S protocols (for example, RDP, SSH, FTP), outbound network-level protection for all ports and protocols, and application-level protection for outbound HTTP/S.
-  - question: What is the difference between Network Security Groups (NSGs) and Azure Firewall?
-    answer: The Azure Firewall service complements network security group functionality. Together, they provide better "defense-in-depth" network security. Network security groups provide distributed network layer traffic filtering to limit traffic to resources within virtual networks in each subscription. Azure Firewall is a fully stateful, centralized network firewall as-a-service, which provides network- and application-level protection across different subscriptions and virtual networks.
-  - question: Are Network Security Groups (NSGs) supported on the AzureFirewallSubnet?
-    answer: Azure Firewall is a managed service with multiple protection layers, including platform protection with NIC level NSGs (not viewable).  Subnet level NSGs aren't required on the AzureFirewallSubnet, and are disabled to ensure no service interruption.
-  - question: How do I set up Azure Firewall with my service endpoints?
+      Azure 防火墙与 Azure Monitor 集成，可用于查看和分析防火墙日志。 日志可发送到 Log Analytics、Azure 存储或事件中心。 它们可在 Log Analytics 中进行分析，也可通过 Excel 和 Power BI 等不同工具进行分析。 有关详细信息，请参阅[教程：监视 Azure 防火墙日志](./firewall-diagnostics.md)。
+  - question: Azure 防火墙的工作原理与市场中现有的服务（例如 NVA）有何不同？
+    answer: Azure 防火墙是基于云的托管式网络安全服务，可保护虚拟网络资源。 它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。 它与第三方安全即服务 (SECaaS) 提供程序预先集成，为虚拟网络和分支 Internet 连接提供高级安全性。
+  - question: 应用程序网关 WAF 与 Azure 防火墙之间有何区别？
+    answer: Web 应用程序防火墙 (WAF) 是应用程序网关的一项功能，可在出现常见攻击和漏洞时为 Web 应用程序提供集中的入站保护。 Azure 防火墙防火墙为非 HTTP/S 协议（例如，RDP、SSH、FTP）提供入站保护、为所有端口和协议提供出站网络级别的保护，并为出站 HTTP/S 提供应用程序级别的保护。
+  - question: 网络安全组 (NSG) 和 Azure 防火墙之间有何区别？
+    answer: Azure 防火墙服务为网络安全组功能提供了补充。 两者共同提供了更好的“深层防御”网络安全性。 网络安全组提供分布式网络层流量过滤，以限制每个订阅中虚拟网络内资源的流量。 Azure 防火墙是一个服务形式的完全有状态的集中式网络防火墙，可跨不同的订阅和虚拟网络提供网络和应用程序级别的保护。
+  - question: AzureFirewallSubnet 是否支持网络安全组 (NSG)？
+    answer: Azure 防火墙是具有多个保护层的托管服务，这些层包括使用 NIC 级 NSG（不可查看）进行的平台保护。  不需要在 AzureFirewallSubnet 中配置子网级 NSG，为确保服务不会中断，将禁用此类 NSG。
+  - question: 如何使用服务终结点设置 Azure 防火墙？
     answer: >
-      For secure access to PaaS services, we recommend service endpoints. You can choose to enable service endpoints in the Azure Firewall subnet and disable them on the connected spoke virtual networks. This way you benefit from both features: service endpoint security and central logging for all traffic.
-  - question: What is the pricing for Azure Firewall?
+      若要安全访问 PaaS 服务，我们建议使用服务终结点。 可以选择在 Azure 防火墙子网中启用服务终结点，并在连接的分支虚拟网络中禁用它们。 这样可以受益于以下两个功能：服务终结点安全性和针对所有流量的集中日志记录。
+  - question: Azure 防火墙采用何种定价方式？
     answer: >
-      See [Azure Firewall Pricing](https://azure.microsoft.com/pricing/details/azure-firewall/).
-  - question: How can I stop and start Azure Firewall?
+      请参阅 [Azure 防火墙定价](https://azure.microsoft.com/pricing/details/azure-firewall/)。
+  - question: 如何停止和启动 Azure 防火墙？
     answer: >
-      You can use Azure PowerShell *deallocate* and *allocate* methods. For a firewall configured for forced tunneling, the procedure is slightly different.
+      可以使用 Azure PowerShell 的 *deallocate* 和 *allocate* 方法。 对于为强制隧道配置的防火墙，此过程略有不同。
 
 
-      For example, for a firewall NOT configured for forced tunneling:
+      例如，对于不是为强制隧道配置的防火墙：
 
 
       ```azurepowershell
@@ -109,7 +109,7 @@ sections:
       ```
 
 
-      For a firewall configured for forced tunneling, stopping is the same. But starting requires the management public IP to be re-associated back to the firewall:
+      对于为强制隧道配置的防火墙，停止是相同的。 但时启动需要将管理公共 IP 重新关联回防火墙：
 
 
       ```azurepowershell
@@ -146,69 +146,69 @@ sections:
       ```
 
 
-      When you allocate and deallocate, [firewall billing](https://azure.microsoft.com/pricing/details/azure-firewall) stops and starts accordingly.
+      在分配和解除分配时，[防火墙计费](https://azure.microsoft.com/pricing/details/azure-firewall)会相应地停止和启动。
 
 
       > [!NOTE]
 
-      > You must reallocate a firewall and public IP to the original resource group and subscription.
-  - question: What are the known service limits?
+      > 必须将防火墙和公共 IP 重新分配到原始资源组和订阅。
+  - question: 有哪些已知的服务限制？
     answer: >
-      For Azure Firewall service limits, see [Azure subscription and service limits, quotas, and constraints](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits).
-  - question: Can Azure Firewall in a hub virtual network forward and filter network traffic between two spoke virtual networks?
-    answer: Yes, you can use Azure Firewall in a hub virtual network to route and filter traffic between two spoke virtual network. Subnets in each of the spoke virtual networks must have a UDR pointing to the Azure Firewall as a default gateway for this scenario to work properly.
-  - question: Can Azure Firewall forward and filter network traffic between subnets in the same virtual network or peered virtual networks?
-    answer: Yes. However, configuring the UDRs to redirect traffic between subnets in the same VNET requires additional attention. While using the VNET address range as a target prefix for the UDR is sufficient, this also routes all traffic from one machine to another machine in the same subnet through the Azure Firewall instance. To avoid this, include a route for the subnet in the UDR with a next hop type of **VNET**. Managing these routes might be cumbersome and prone to error. The recommended method for internal network segmentation is to use Network Security Groups, which don't require UDRs.
-  - question: Does Azure Firewall outbound SNAT between private networks?
+      有关 Azure 防火墙服务限制，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)。
+  - question: 中心虚拟网络中的 Azure 防火墙能否转发并筛选两个分支虚拟网络之间的网络流量？
+    answer: 能，可以在中心虚拟网络中使用 Azure 防火墙来路由和筛选两个分支虚拟网络之间的流量。 每个分支虚拟网络中的子网必须具有指向 Azure 防火墙的 UDR，作为此方案生效所需的默认网关。
+  - question: Azure 防火墙能否转发和筛选同一虚拟网络或对等互连虚拟网络中子网之间的网络流量？
+    answer: 是的。 但是，将 UDR 配置为在同一 VNET 中的子网之间重定向流量时需要额外注意。 虽然使用 VNET 地址范围作为 UDR 的目标前缀就足够了，但这也会通过 Azure 防火墙实例将所有流量从一台计算机路由到同一子网中的另一台计算机。 为避免这种情况，请在 UDR 中包含下一跃点类型为 **VNET** 的子网路由。 管理这些路由可能很麻烦并且容易出错。 建议的内部网络分段方法是使用不需要 UDR 的网络安全组。
+  - question: 是否在专用网络之间进行 Azure 防火墙出站 SNAT？
     answer: >
-      Azure Firewall doesn't SNAT when the destination IP address is a private IP range per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). If your organization uses a public IP address range for private networks, Azure Firewall SNATs the traffic to one of the firewall private IP addresses in AzureFirewallSubnet. You can configure Azure Firewall to **not** SNAT your public IP address range. For more information, see [Azure Firewall SNAT private IP address ranges](snat-private-range.md).
+      如果目标 IP 地址是符合 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 的专用 IP 范围，Azure 防火墙不会执行 SNAT。 如果组织对专用网络使用公共 IP 地址范围，Azure 防火墙会通过 SNAT 将流量发送到 AzureFirewallSubnet 中的某个防火墙专用 IP 地址。 可以将 Azure 防火墙配置为 **不** SNAT 公共 IP 地址范围。 有关详细信息，请参阅 [Azure 防火墙 SNAT 专用 IP 地址范围](snat-private-range.md)。
 
 
-      In addition, traffic processed by application rules are always SNAT-ed. If you want to see the original source IP address in your logs for FQDN traffic, you can use network rules with the destination FQDN.
-  - question: Is forced tunneling/chaining to a Network Virtual Appliance supported?
+      此外，应用程序规则处理的流量始终经过 SNAT。 如果要在日志中查看 FQDN 流量的原始源 IP 地址，可将网络规则与目标 FQDN 结合使用。
+  - question: 是否支持强制隧道/链接到网络虚拟设备？
     answer: >
-      Forced tunneling is supported when you create a new firewall. You can't configure an existing firewall for forced tunneling. For more information, see [Azure Firewall forced tunneling](forced-tunneling.md).
+      创建新的防火墙时，支持强制隧道。 不能为强制隧道配置现有的防火墙。 有关详细信息，请参阅 [Azure 防火墙强制隧道](forced-tunneling.md)。
 
 
-      Azure Firewall must have direct Internet connectivity. If your AzureFirewallSubnet learns a default route to your on-premises network via BGP, you must override this with a 0.0.0.0/0 UDR with the **NextHopType** value set as **Internet** to maintain direct Internet connectivity.
+      Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接 。
 
 
-      If your configuration requires forced tunneling to an on-premises network and you can determine the target IP prefixes for your Internet destinations, you can configure these ranges with the on-premises network as the next hop via a user defined route on the AzureFirewallSubnet. Or, you can use BGP to define these routes.
-  - question: Are there any firewall resource group restrictions?
-    answer: Yes. The firewall, VNet, and the public IP address all must be in the same resource group.
-  - question: When configuring DNAT for inbound Internet network traffic, do I also need to configure a corresponding network rule to allow that traffic?
+      如果你的配置需要通过强制隧道连接到本地网络，并且可以确定 Internet 目标的目标 IP 前缀，则可以通过 AzureFirewallSubnet 上用户定义的路由将本地网络的这些范围配置为下一跃点。 或者，可以使用 BGP 来定义这些路由。
+  - question: 是否有任何防火墙资源组限制？
+    answer: 是的。 防火墙、VNet 和公共 IP 地址都必须位于同一资源组中。
+  - question: 为入站 Internet 网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
     answer: >
-      No. NAT rules implicitly add a corresponding network rule to allow the translated traffic. You can override this behavior by explicitly adding a network rule collection with deny rules that match the translated traffic. To learn more about Azure Firewall rule processing logic, see [Azure Firewall rule processing logic](rule-processing.md).
-  - question: How do wildcards work in target URLs (preview) and target FQDNs?
-    answer: "- **URL** (preview) - Asterisks work when placed on the right-most or left-most side. If it is on the left, it can't be part of the FQDN.\n- **FQDN** - Asterisks work when placed on the left-most side.\n\nExamples:\n\n\n  |Type  |Rule  |Supported?  |Positive examples  |\n  |---------|---------|---------|---------|\n  |TargetURL  |`www.contoso.com` |Yes|`www.contoso.com`<br>`www.contoso.com/`|\n  |TargetURL  |`*.contoso.com` |Yes|`www.contoso.com`<br>`any.contoso.com/`|\n  |TargetURL  |`*contoso.com`|Yes         |`example.anycontoso.com`<br>`contoso.com`|\n  |TargetURL  |`www.contoso.com/test`|Yes|`www.contoso.com/test`<br>`www.contoso.com/test/`<br>`www.contoso.com/test?with_query=1`|\n  |TargetURL  |`www.contoso.com/test/*`|Yes|`www.contoso.com/test/anything`<br>Note - `www.contoso.com/test` will **not** match (last slash)|\n  |TargetURL  |`www.contoso.*/test/*`|No|         |\n  |TargetURL  |`www.contoso.com/test?example=1`|No|         |\n  |TargetURL  |`www.contoso.*`|No|         |\n  |TargetURL  |`www.*contoso.com`|No|         |\n  |TargetURL   |`www.contoso.com:8080`|No|         |\n  |TargetURL   |`*.contoso.*`|No|         |\n  |TargetFQDN    |`www.contoso.com`|Yes|`www.contoso.com`|\n  |TargetFQDN    |`*.contoso.com`|Yes|`www.contoso.com`<br>`any.contoso.com`|\n  |TargetFQDN    |`*contoso.com`|Yes|`example.anycontoso.com`<br>`contoso.com`|\n  |TargetFQDN    |`www.contoso.*`|No|         |\n  |TargetFQDN    |`*.contoso.*`|No|         |\n \n"
+      不是。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
+  - question: 通配符在目标 URL 和目标 FQDN 中如何工作？
+    answer: "- **URL** - 在最右边或最左边时，星号起作用。 如果它位于左侧，则不能是 FQDN 的一部分。\n- FQDN - 星号在置于最左侧时起作用。\n\n示例：\n\n\n  |类型  |规则  |是否支持？  |正样本  |\n  |---------|---------|---------|---------|\n  |TargetURL  |`www.contoso.com` |是|`www.contoso.com`<br>`www.contoso.com/`|\n  |TargetURL  |`*.contoso.com` |是|`www.contoso.com`<br>`any.contoso.com/`|\n  |TargetURL  |`*contoso.com`|是         |`example.anycontoso.com`<br>`contoso.com`|\n  |TargetURL  |`www.contoso.com/test`|是|`www.contoso.com/test`<br>`www.contoso.com/test/`<br>`www.contoso.com/test?with_query=1`|\n  |TargetURL  |`www.contoso.com/test/*`|是|`www.contoso.com/test/anything`<br>注意 - `www.contoso.com/test` 不匹配（最后一个斜杠）|\n  |TargetURL  |`www.contoso.*/test/*`|否|         |\n  |TargetURL  |`www.contoso.com/test?example=1`|否|         |\n  |TargetURL  |`www.contoso.*`|否|         |\n  |TargetURL  |`www.*contoso.com`|否|         |\n  |TargetURL   |`www.contoso.com:8080`|否|         |\n  |TargetURL   |`*.contoso.*`|否|         |\n  |TargetFQDN    |`www.contoso.com`|是|`www.contoso.com`|\n  |TargetFQDN    |`*.contoso.com`|是|`www.contoso.com`<br>`any.contoso.com`|\n  |TargetFQDN    |`*contoso.com`|是|`example.anycontoso.com`<br>`contoso.com`|\n  |TargetFQDN    |`www.contoso.*`|否|         |\n  |TargetFQDN    |`*.contoso.*`|否|         |\n \n"
   - question: >
-      What does *Provisioning state: Failed* mean?
-    answer: Whenever a configuration change is applied, Azure Firewall attempts to update all its underlying backend instances. In rare cases, one of these backend instances may fail to update with the new configuration and the update process  stops with a failed provisioning state. Your Azure Firewall is still operational, but the applied configuration may be in an inconsistent state, where some instances have the previous configuration where others have the updated rule set. If this happens, try updating your configuration one more time until the operation succeeds and your Firewall is in a *Succeeded* provisioning state.
-  - question: How does Azure Firewall handle planned maintenance and unplanned failures?
-    answer: Azure Firewall consists of several backend nodes in an active-active configuration.  For any planned maintenance, we have connection draining logic to gracefully update nodes.  Updates are planned during non-business hours for each of the Azure regions to further limit risk of disruption.  For unplanned issues, we instantiate a new node to replace the failed node.  Connectivity to the new node is typically reestablished within 10 seconds from the time of the failure.
-  - question: How does connection draining work?
-    answer: For any planned maintenance, connection draining logic gracefully updates backend nodes. Azure Firewall waits 90 seconds for existing connections to close. If needed, clients can automatically re-establish connectivity to another backend node.
-  - question: Is there a character limit for a firewall name?
-    answer: Yes. There's a 50 character limit for a firewall name.
-  - question: Why does Azure Firewall need a /26 subnet size?
-    answer: Azure Firewall must provision more virtual machine instances as it scales. A /26 address space ensures that the firewall has enough IP addresses available to accommodate the scaling.
-  - question: Does the firewall subnet size need to change as the service scales?
-    answer: No. Azure Firewall doesn't need a subnet bigger than /26.
-  - question: How can I increase my firewall throughput?
-    answer: Azure Firewall's initial throughput capacity is 2.5 - 3 Gbps and it scales out to 30 Gbps. It scales out automatically based on CPU usage and throughput.
-  - question: How long does it take for Azure Firewall to scale out?
-    answer: "Azure Firewall gradually scales when average throughput or CPU consumption is at 60%. A default deployment maximum throughput is approximately 2.5 - 3 Gbps and starts to scale out when it reaches 60% of that number. Scale out takes five to seven minutes. \n\nWhen performance testing, make sure you test for at least 10 to 15 minutes, and start new connections to take advantage of newly created Firewall nodes.\n"
-  - question: How does Azure Firewall handle idle timeouts?
+      “预配状态:失败”意味着什么？
+    answer: 无论何时应用配置更改，Azure 防火墙都会尝试更新其所有基础后端实例。 在极少见的情况下，其中的某个后端实例可能无法使用新配置进行更新，并且更新过程将会停止，并出现预配失败状态。 Azure 防火墙仍可正常运行，但应用的配置可能处于不一致状态，有些实例使用以前的配置，而有些实例则使用更新的规则集。 如果发生这种情况，请尝试再一次更新配置，直到操作成功，并且防火墙处于“成功”预配状态。
+  - question: Azure 防火墙如何处理计划内维护和计划外故障？
+    answer: Azure 防火墙包含多个采用主动-主动配置的后端节点。  对于任何计划内维护，我们都可以通过连接清空逻辑来正常更新节点。  更新安排在每个 Azure 区域的非营业时间，这样可以进一步限制中断风险。  对于计划外问题，我们会实例化一个新节点来代替故障节点。  通常情况下，我们会在发生故障后 10 秒钟内重新建立到新节点的连接。
+  - question: 连接清空的工作原理
+    answer: 对于任何计划内维护，连接清空逻辑会正常更新后端节点。 Azure 防火墙会等待 90 秒，以便关闭现有连接。 如果需要，客户端可以自动重建到另一个后端节点的连接。
+  - question: 防火墙名称是否存在字符限制？
+    answer: 是的。 防火墙名称有 50 个字符的限制。
+  - question: 为何 Azure 防火墙需要 /26 子网大小？
+    answer: Azure 防火墙在缩放时必须预配更多的虚拟机实例。 /26 地址空间确保防火墙有足够的 IP 地址来应对缩放操作。
+  - question: 在服务缩放时，防火墙子网大小是否需要更改？
+    answer: 不是。 Azure 防火墙不需要大于 /26 的子网。
+  - question: 如何提高防火墙吞吐量？
+    answer: Azure 防火墙的初始吞吐容量为 2.5 - 3 Gbps，可以横向扩展到 30 Gbps。 它会根据 CPU 使用率和吞吐量自动进行横向扩展。
+  - question: Azure 防火墙横向扩展需要多长时间？
+    answer: "当平均吞吐量或 CPU 消耗达到 60% 时，Azure 防火墙就会逐渐扩展。 默认部署最大吞吐量约为 2.5 - 3 Gbps，并在达到该数字的 60% 时开始横向扩展。 横向扩展需要 5 到 7 分钟。 \n\n进行性能测试时，请确保至少测试 10 到 15 分钟，并启动新连接以利用新创建的防火墙节点。\n"
+  - question: Azure 防火墙如何处理空闲超时？
     answer: >
-      When a connection has an idle timeout (four minutes of no activity), Azure Firewall gracefully terminates the connection by sending a TCP RST packet.
-  - question: How does Azure Firewall handle VM instance shutdowns during virtual machine scale set scale in (scale down) or fleet software upgrades?
-    answer: "An Azure Firewall VM instance shutdown may occur during virtual machine scale set scale in (scale down) or during fleet software upgrade. In these cases, new incoming connections are load balanced to the remaining firewall instances and are not forwarded to the down firewall instance. After 45 seconds the firewall starts rejecting existing connections by sending TCP RST packets. After an additional 45 seconds the firewall VM shuts down. For more information, see [Load Balancer TCP Reset and Idle Timeout](../load-balancer/load-balancer-tcp-reset.md). \n       \n"
-  - question: Does Azure Firewall allow access to Active Directory by default?
+      在连接出现空闲超时（4 分钟时间无活动）时，Azure 防火墙会通过发送 TCP RST 数据包来正常终止该连接。
+  - question: Azure 防火墙如何处理虚拟机规模集横向缩减（纵向缩减）或群队软件升级过程中的 VM 实例关闭问题？
+    answer: "在虚拟机规模集横向缩减（纵向缩减）过程中，或者在群队软件升级过程中，可能会发生 Azure 防火墙 VM 实例关闭的情况。 在这些情况下，新的传入连接会负载均衡到其余的防火墙实例，而不会转发到已关闭的防火墙实例。 在 45 秒后，防火墙会通过发送 TCP RST 数据包来开始拒绝现有的连接。 再过 45 秒后，防火墙 VM 会关闭。 有关详细信息，请参阅[负载均衡器 TCP 重置和空闲超时](../load-balancer/load-balancer-tcp-reset.md)。 \n       \n"
+  - question: 默认情况下，Azure 防火墙是否允许访问 Active Directory？
     answer: >
-      No. Azure Firewall blocks Active Directory access by default. To allow access, configure the AzureActiveDirectory service tag. For more information, see [Azure Firewall service tags](service-tags.md).
-  - question: Can I exclude an FQDN or an IP address from Azure Firewall Threat Intelligence based filtering?
+      不是。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
+  - question: 能否从基于 Azure 防火墙威胁情报的筛选中排除 FQDN 或 IP 地址？
     answer: >
-      Yes, you can use Azure PowerShell to do it:
+      能。可以使用 Azure PowerShell 执行该操作：
 
 
       ```azurepowershell
@@ -236,20 +236,20 @@ sections:
       Set-AzFirewall -AzureFirewall $fw
 
       ```
-  - question: Why can a TCP ping and similar tools successfully connect to a target FQDN even when no rule on Azure Firewall allows that traffic?
-    answer: "A TCP ping isn't actually connecting  to the target FQDN. This happens because Azure Firewall's transparent proxy listens on port 80/443 for outbound traffic. The TCP ping establishes a connection with the firewall, which then drops the packet. This behavior doesn't have any security impact. However, to avoid confusion we're investigating potential changes to this behavior.\n\nSimilarly for inbound DNAT traffic, Azure Firewall’s listener on port 80/443 allows TCP connections to be established. However, the firewall then drops and denies the packet by design, unless explicitly allowed in rules. \n"
-  - question: Are there limits for the number of IP addresses supported by IP Groups?
+  - question: 为什么 TCP ping 和类似工具可以成功连接到目标 FQDN，即使 Azure 防火墙上没有允许该流量的规则也是如此？
+    answer: "TCP ping 实际上并未连接到目标 FQDN。 这是因为 Azure 防火墙的透明代理侦听端口 80/443 上的出站流量。 TCP ping 与防火墙建立连接后，防火墙删除数据包。 此行为不会对安全性产生任何影响。 但是，为了避免混淆，我们正在调查这种行为的潜在变化。\n\n同样，对于入站 DNAT 流量，位于端口 80/443 上的 Azure 防火墙的侦听器允许建立 TCP 连接。 但是，根据设计，防火墙此后会删除并拒绝该数据包，除非规则中显式允许。 \n"
+  - question: IP 组支持的 IP 地址数量是否有限制？
     answer: >
-      Yes. For more information, see [Azure subscription and service limits, quotas, and constraints](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)
-  - question: Can I move an IP Group to another resource group?
-    answer: No, moving an IP Group to another resource group isn't currently supported.
-  - question: What is the TCP Idle Timeout for Azure Firewall?
+      是的。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)
+  - question: 能否将 IP 组移到其他资源组？
+    answer: 否，目前不支持将 IP 组移动到其他资源组。
+  - question: Azure 防火墙的 TCP 空闲超时是多长时间？
     answer: >
-      A standard behavior of a network firewall is to ensure TCP connections are kept alive and to promptly close them if there's no activity. Azure Firewall TCP Idle Timeout is four minutes. This setting isn't user configurable, but you can contact Azure Support to increase the idle timeout up to 30 minutes.
+      网络防火墙的标准行为是确保 TCP 连接保持活动状态，并在没有活动时迅速将其关闭。 Azure 防火墙 TCP 空闲超时为 4 分钟。 用户不可配置此设置，但你可联系 Azure 支持人员，将空闲超时增加到最长 30 分钟。
 
 
-      If a period of inactivity is longer than the timeout value, there's no guarantee that the TCP or HTTP session is maintained. A common practice is to use a TCP keep-alive. This practice keeps the connection active for a longer period. For more information, see the [.NET examples](/dotnet/api/system.net.servicepoint.settcpkeepalive#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).
-  - question: Can I deploy Azure Firewall without a public IP address?
-    answer: No, currently you must deploy Azure Firewall with a public IP address.
-  - question: Where does Azure Firewall store customer data?
-    answer: Azure Firewall doesn't move or store customer data out of the region it's deployed in.
+      如果处于非活动状态的时间超过超时值，则不能保证维持 TCP 或 HTTP 会话。 常见的做法是使用 TCP 保持连接状态。 这种做法可以使连接状态保持更长时间。 有关详细信息，请参阅 [.NET 示例](/dotnet/api/system.net.servicepoint.settcpkeepalive#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
+  - question: 是否可以在不使用公共 IP 地址的情况下部署 Azure 防火墙？
+    answer: 否。目前，必须使用公共 IP 地址部署 Azure 防火墙。
+  - question: Azure 防火墙将客户数据存储在何处？
+    answer: Azure 防火墙不会将客户数据移动或存储到部署了该防火墙的区域之外。

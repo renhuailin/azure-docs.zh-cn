@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5fa934ea2dc29004057ffbd3bad7c5f7b5afe935
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 91ed308ecbeeb839dfddb78c0151e2c8aafd0d3b
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114593588"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123123605"
 ---
 本快速入门介绍如何使用适用于 Windows 的 Azure 通信服务通话 SDK 开始 1:1 视频通话。
 
@@ -161,8 +161,7 @@ private async void InitCallAgentAndDeviceManager()
     deviceManager = await callClient.GetDeviceManager();
 
     CommunicationTokenCredential token_credential = new CommunicationTokenCredential("<USER_ACCESS_TOKEN>");
-    callClient = new CallClient();
-
+    
     CallAgentOptions callAgentOptions = new CallAgentOptions()
     {
         DisplayName = "<DISPLAY_NAME>"
@@ -334,5 +333,7 @@ private async void HangupButton_Click(object sender, RoutedEventArgs e)
 可在 Visual Studio 中生成并运行代码。 请注意，对于解决方案平台，我们支持 `ARM64`、`x64` 和 `x86`。 
 
 通过在文本字段中提供用户 ID 并单击 `Start Call` 按钮，可以启动出站视频呼叫。 
+
+注意：呼叫 `8:echo123` 将停止视频流，因为回显机器人不支持视频流。 
 
 有关用户 ID（标识）的详细信息，请查看[用户访问令牌](../../../access-tokens.md)指南。 

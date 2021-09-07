@@ -12,12 +12,12 @@ metadata:
   ms.date: 04/17/2019
   ms.author: kefre
   ms.custom: seodec18
-  ms.openlocfilehash: f03dd44b1ea37f5103ca9aa4eff26b3b7b080312
-  ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+  ms.openlocfilehash: 2509338fac06a182864777e2ff5825f1092f758c
+  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/06/2021
-  ms.locfileid: "113311619"
+  ms.lasthandoff: 08/26/2021
+  ms.locfileid: "122968811"
 title: 计算机视觉 API 常见问题解答
 summary: >
   > [!TIP]
@@ -27,9 +27,28 @@ sections:
 - name: 忽略
   questions:
   - question: >
+      如何提高服务允许的每秒事务数 (TPS)？
+    answer: >
+      免费 (S0) 层每分钟只允许 20 个事务。 升级到 S1 层，每秒最多允许 10 个事务。 如果看到错误代码 429 和“请求过多”错误消息，请[提交 Azure 支持票证](https://azure.microsoft.com/support/create-ticket/)，将 TPS 提升为 50 或更高，并简要提供业务理由。 [计算机视觉定价](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/#pricing)。
+  - question: "服务引发错误，因为图片文件太大。 如何解决此问题？ \n"
+    answer: >
+      大多数计算机视觉功能的文件大小限制为 4MB，但客户端库 SDK 可以处理最大 6MB 的文件。 对于处理多页文档的光学字符识别 (OCR) 功能，支持的最大文件大小为 50 MB。 有关详细信息，请参阅图像[分析输入限制](overview-image-analysis.md#image-requirements)和 [OCR 输入限制](overview-ocr.md#input-requirements)。
+  - question: >
+      如何在单个调用中通过 OCR 处理多页文档？
+    answer: >
+      光学字符识别（特别是读取操作）支持将多页文档作为 API 输入。 如果使用 10 页文档调用 API，则将按 10 页计费，每个页面都将计为可计费事务。 请注意，如果使用免费的 (S0) 层，它一次只能处理两页。
+  - question: >
+      能否在单个 API 调用中将多个图像发送到计算机视觉服务？
+    answer: >
+      此功能目前不可用。
+  - question: >
+      图像分析和 OCR 支持多少种语言？
+    answer: >
+      有关图像分析和 OCR 涵盖的语言列表，请参阅[语言支持](language-support.md)页。
+  - question: >
       我能否将计算机视觉 API 定型为使用自定义标记？  例如，我要提供猫品种图片来“定型”AI，然后通过 AI 请求接收品种值。
     answer: >
-      此功能目前不可用。 不过，我们的工程师正在努力将此功能引入计算机视觉。
+      此功能目前不可用。 可以使用[自定义视觉](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/overview)来训练模型，从而检测用户定义的视觉特征。
   - question: >
       我是否可以在本地部署 OCR（读取）功能？
     answer: >

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 02/23/2021
 ms.author: victorh
-ms.openlocfilehash: b0ab3cbd2891ef1677c0d4ba7a00821d67714b6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d42a62c6251456d11dff7b2276936db7df5259af
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708945"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222700"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>教程：通过 Azure 门户使用基于路径的路由规则创建应用程序网关
 
@@ -176,6 +176,9 @@ ms.locfileid: "101708945"
 
 > [!NOTE]
 > 不需要添加自定义 */* * 路径规则来处理默认情况。 这会由默认后端池自动处理。
+
+> [!NOTE]
+> 通配符分隔符 \* 仅在规则末尾使用。 有关详细信息和支持的基于路径的规则示例，请参阅[基于 URL 路径的路由概述](url-route-overview.md#pathpattern)。
 
 ### <a name="review--create-tab"></a>“查看 + 创建”选项卡
 

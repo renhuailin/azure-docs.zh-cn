@@ -3,12 +3,12 @@ title: Service Fabric 托管群集
 description: Service Fabric 托管群集从 Azure Service Fabric 群集资源模型演变而来，该模型可以简化部署和群集管理。
 ms.topic: overview
 ms.date: 5/10/2021
-ms.openlocfilehash: a412899f4aa37ce2257a3351c3e27da4d5d3add2
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 12f5c7bd16e8738aaadfb8ca9aeed491bab5b8e0
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685254"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866911"
 ---
 # <a name="service-fabric-managed-clusters"></a>Service Fabric 托管群集
 
@@ -33,12 +33,15 @@ Service Fabric 托管群集从 Azure Service Fabric 群集资源模型演变而�
 | 存储帐户 | |
 | 虚拟网络 | |
 
-与传统群集相比，Service Fabric 托管群集具有许多优势：
+## <a name="service-fabric-managed-cluster-advantages"></a>Service Fabric 托管群集优势
+与传统群集相比，Service Fabric 托管群集具有许多优势，包括：
 
 **简化的群集部署和管理**
 - 部署和管理单个 Azure 资源
-- 证书管理和自动轮换
+- 群集证书管理和 90 天自动轮换
 - 简化的缩放操作
+- 自动 OS 映像升级支持
+- 就地 OS SKU 更改支持
 
 **防止操作错误**
 - 防止与基础资源的配置不匹配
@@ -47,7 +50,7 @@ Service Fabric 托管群集从 Azure Service Fabric 群集资源模型演变而�
 **默认情况下的最佳做法**
 - 简化的可靠性和持久性设置
 
-除了群集所需的基础资源成本之外，Service Fabric 托管群集不会产生额外的成本，并且它们适用同样的 Service Fabric SLA。
+除了群集所需的基础资源成本，Service Fabric 托管群集不会产生额外的成本，而且同样的 Service Fabric SLA 适用于托管群集。
 
 > [!NOTE]
 > 没有从现有 Service Fabric 群集到托管群集的迁移路径。 需要创建新的 Service Fabric 托管群集才能使用此新资源类型。
@@ -60,7 +63,7 @@ Service Fabric 托管群集从 Azure Service Fabric 群集资源模型演变而�
 | ------- | ----- | -------- |
 | 网络资源（适用于[负载均衡器](../load-balancer/skus.md)、[公共 IP](../virtual-network/public-ip-addresses.md) 的 SKU） | 基本 | Standard |
 | 最小节点（VM 实例）计数 | 3 | 5 |
-| 每个节点类型的最大节点计数 | 100 | 100 |
+| 每个节点类型的最大节点计数 | 100 | 1000 |
 | 节点类型最大计数 | 1 | 20 |
 | 添加/删除节点类型 | 否 | 是 |
 | 区域冗余 | 否 | 是 |
@@ -85,6 +88,8 @@ Service Fabric 托管群集从 Azure Service Fabric 群集资源模型演变而�
 
 > [!div class="nextstepaction"]
 > [创建 Service Fabric 托管群集](quickstart-managed-cluster-template.md)
+
+以及参考[如何配置托管群集](how-to-managed-cluster-configuration.md)
 
 [sf-composition]: ./media/overview-managed-cluster/sfrp-composition-resource.png
 [sf-encapsulation]: ./media/overview-managed-cluster/sfrp-encapsulated-resource.png

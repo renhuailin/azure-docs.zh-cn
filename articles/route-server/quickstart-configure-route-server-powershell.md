@@ -4,20 +4,20 @@ description: 这篇快速入门文章介绍如何使用 Azure PowerShell 来创�
 services: route-server
 author: duongau
 ms.author: duau
-ms.date: 04/23/2021
+ms.date: 8/23/2021
 ms.topic: quickstart
 ms.service: route-server
 ms.custom: devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 2000c30a96f241ff5500552277f16b8b789ba8c9
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a4b4d739f4a45dbce74dfb9eafaacb6c10ff8187
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690798"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215379"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建并配置路由服务器
 
-本文可帮助你使用 PowerShell 将 Azure 路由服务器配置为与虚拟网络中的网络虚拟设备 (NVA) 对等互连。 Azure 路由服务器将会从 NVA 获知路由，并将这些路由配置到虚拟网络中的虚拟机上。 Azure 路由服务器还会将虚拟网络路由播发到 NVA。 有关详细信息，请阅读 [Azure 路由服务器](overview.md)。
+本文可帮助你使用 Azure PowerShell 将 Azure 路由服务器配置为与虚拟网络中的网络虚拟设备 (NVA) 对等互连。 路由服务器将会从 NVA 获知路由，并将这些路由配置到虚拟网络中的虚拟机上。 Azure 路由服务器还会将虚拟网络路由播发到 NVA。 有关详细信息，请参阅 [Azure 路由服务器](overview.md)。
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="使用 Azure PowerShell 的路由服务器部署环境示意图。" border="false":::
 
@@ -31,78 +31,112 @@ ms.locfileid: "110690798"
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 请确保具有最新的 PowerShell 模块，或者可以在门户中使用 Azure Cloud Shell。
 * 查看 [Azure 路由服务器的服务限制](route-server-faq.md#limitations)。
+* 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
-## <a name="create-a-route-server"></a>创建路由服务器
+## <a name="create-resource-group-and-a-virtual-network"></a>创建资源组和虚拟网络
 
-### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>登录到 Azure 帐户，并选择订阅。
+### <a name="create-a-resource-group"></a>创建资源组 
 
-[!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-
-### <a name="create-a-resource-group-and-virtual-network"></a>创建资源组和虚拟网络
-
-你需要先有一个虚拟网络来托管部署，然后才能创建 Azure 路由服务器。 请使用以下命令来创建资源组和虚拟网络。 如果已经有虚拟网络，可以跳转到下一部分。
+必须先创建资源组来托管路由服务器，然后才能创建 Azure 路由服务器。 使用 [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) 创建资源组。 此示例在“美国西部”创建了名为 myRouteServerRG 的资源组 ：
 
 ```azurepowershell-interactive
-New-AzResourceGroup –Name "RouteServerRG” -Location “West US"
-New-AzVirtualNetwork –ResourceGroupName "RouteServerRG" -Location "West US" -Name myVirtualNetwork –AddressPrefix 10.0.0.0/16
+$rg = @{
+    Name = 'myRouteServerRG'
+    Location = 'WestUS'
+}
+New-AzResourceGroup @rg
 ```
 
-### <a name="add-a-subnet"></a>添加子网
+### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 添加名为“RouteServerSubnet”的子网，以便在其中部署 Azure 路由服务器。 此子网为专用子网，仅用于 Azure 路由服务器。 RouteServerSubnet 必须是 /27 或更短的前缀（如 /26、/25），否则你会在添加 Azure 路由服务器时收到错误消息。
+使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 创建虚拟网络。 此示例在“美国西部”创建名为 myVirtualNetwork 的默认虚拟网络：如果已有虚拟网络，可以跳到下一部分 。
 
-    ```azurepowershell-interactive
-    $vnet = Get-AzVirtualNetwork –Name "myVirtualNetwork" - ResourceGroupName "RouteServerRG"
-    Add-AzVirtualNetworkSubnetConfig –Name "RouteServerSubnet" -AddressPrefix 10.0.0.0/24 -VirtualNetwork $vnet
-    $vnet | Set-AzVirtualNetwork
-    ```
+```azurepowershell-interactive
+$vnet = @{
+    Name = 'myVirtualNetwork'
+    ResourceGroupName = 'myRouteServerRG'
+    Location = 'WestUS'
+    AddressPrefix = '10.0.0.0/16'    
+}
+$virtualNetwork = New-AzVirtualNetwork @vnet
+```
 
-1. 获取 RouteServerSubnet ID。 若要查看虚拟网络中所有子网的资源 ID，请使用此命令：
+### <a name="add-a-dedicated-subnet"></a>添加专用子网
 
-    ```azurepowershell-interactive
-    $vnet = Get-AzVirtualNetwork –Name "vnet_name" -ResourceGroupName "RouteServerRG"
-    $vnet.Subnets
-    ```
+Azure 路由服务器需要名为 RouteServerSubnet 的专用子网。 子网大小必须至少为 /27 或为短前缀（例如 /26 或 /25），否则在部署路由服务器时会收到错误消息。 使用 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 创建名为 RouteServerSubnet 的子网配置：
 
-RouteServerSubnet ID 如下所示：
+```azurepowershell-interactive
+$subnet = @{
+    Name = 'RouteServerSubnet'
+    VirtualNetwork = $virtualNetwork
+    AddressPrefix = '10.0.0.0/24'
+}
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig @subnet
 
-`/subscriptions/<subscriptionID>/resourceGroups/RouteServerRG/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/RouteServerSubnet`
+$virtualnetwork | Set-AzVirtualNetwork
+```
 
 ## <a name="create-the-route-server"></a>创建路由服务器
 
-使用此命令来创建路由服务器：
+1. 若要确保与管理路由服务器配置的后端服务的连接，需要分配一个公共 IP 地址。 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建名为 RouteServerIP 标准公共 IP 地址：
 
-```azurepowershell-interactive 
-New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -Location "West US" -HostedSubnet "RouteServerSubnet_ID"
+    ```azurepowershell-interactive
+    $ip = @{
+        Name = 'myRouteServerIP'
+        ResourceGroupName = 'myRouteServerRG'
+        Location = 'WestUS'
+        AllocationMethod = 'Static'
+        IpAddressVersion = 'Ipv4'
+        Sku = 'Standard'
+    }
+    $publicIp = New-AzPublicIpAddress @ip
+    ```
+    
+2. 使用 [New-AzRouteServer](/powershell/module/az.network/new-azrouteserver) 创建 Azure 路由服务器。 以下示例在“美国西部”创建了名为 myRouteServer 的 Azure 路由服务器 。 HostedSubnet 是在前一部分中创建的 RouteServerSubnet 的资源 ID。
+
+    ```azurepowershell-interactive
+    $rs = @{
+        RouteServerName = 'myRouteServer'
+        ResourceGroupName = 'myRouteServerRG'
+        Location = 'WestUS'
+        HostedSubnet = $subnetConfig.Id
+        PublicIP = $publicIp
+    }
+    New-AzRouteServer @rs 
+    ```
+
+## <a name="create-bgp-peering-with-an-nva"></a>创建与 NVA 对等互连的 BGP
+
+若要建立从路由服务器到 NVA 的 BGP 对等互连，请使用 [New-AzRouteServerPeer](/powershell/module/az.network/new-azrouteserverpeer)：
+
+“your_nva_ip”是分配到 NVA 的虚拟网络 IP。 “your_nva_asn”是在 NVA 中配置的自治系统编号 (ASN)。 该 ASN 可以是 65515-65520 范围之外的任意 16 位数字。 此 ASN 范围是 Microsoft 保留的。
+
+```azurepowershell-interactive
+$peer = @{
+    PeerName = 'myNVA"
+    PeerIp = '192.168.0.1'
+    PeerAsn = '65501'
+    RouteServerName = 'myRouteServer'
+    ResourceGroupName = myRouteServerRG'
+}
+Add-AzRouteServerPeer @peer
 ```
 
-该位置需要与虚拟网络的位置匹配。 HostedSubnet 是在前一部分中获取的 RouteServerSubnet ID。
-
-## <a name="create-peering-with-an-nva"></a>创建与 NVA 之间的对等互连
-
-请使用以下命令来建立从路由服务器到 NVA 的 BGP 对等互连：
-
-```azurepowershell-interactive 
-Add-AzRouteServerPeer -PeerName "myNVA" -PeerIp "nva_ip" -PeerAsn "nva_asn" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
-```
-
-“nva_ip”是分配到 NVA 的虚拟网络 IP。 “nva_asn”是在 NVA 中配置的自治系统编号 (ASN)。 该 ASN 可以是 65515-65520 范围之外的任意 16 位数字。 此 ASN 范围是 Microsoft 保留的。
-
-若要设置与不同 NVA 的对等互连或与同一 NVA 的另一实例的对等互连，以便实现冗余，请使用此命令：
-
-```azurepowershell-interactive 
-Add-AzRouteServerPeer -PeerName "NVA2_name" -PeerIp "nva2_ip" -PeerAsn "nva2_asn" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
-```
+若要设置与不同的 NVA 或同一 NVA 的另一个实例的对等互连以实现冗余，请使用与上述相同的命令，但需要使用不同的 PeerName、PeerIp 和 PeerAsn  。
 
 ## <a name="complete-the-configuration-on-the-nva"></a>在 NVA 上完成配置
 
-若要在 NVA 上完成配置并启用 BGP 会话，需要 Azure 路由服务器的 IP 和 ASN。 可以使用以下命令来获取此信息：
+若要在 NVA 上完成配置并启用 BGP 会话，需要 Azure 路由服务器的 IP 和 ASN。 可通过使用 [Get-AzRouteServer](/powershell/module/az.network/get-azrouteserver) 来获取该信息：
 
-```azurepowershell-interactive 
-Get-AzRouteServer -RouterServerName myRouteServer -ResourceGroupName RouteServerRG
+```azurepowershell-interactive
+$routeserver = @{
+    RouteServerName = 'myRouteServer'
+    ResourcGroupName = 'myRouteServerRG'
+} 
+Get-AzRouteServer @routeserver
 ```
 
-输出中会包含以下信息：
+输出将如下所示：
 
 ``` 
 RouteServerAsn : 65515
@@ -111,47 +145,80 @@ RouteServerIps : {10.5.10.4, 10.5.10.5}
 
 ## <a name="configure-route-exchange"></a><a name = "route-exchange"></a>配置路由交换
 
-如果在同一 VNet 中有一个 ExpressRoute 网关和一个 Azure VPN 网关，并且需要让它们交换路由，则可以在 Azure 路由服务器上启用路由交换。
+如果在同一虚拟网络中有一个 ExpressRoute 和 Azure VPN 网关，并且需要让它们交换路由，则可以在 Azure 路由服务器上启用路由交换。
 
-1. 若要在 Azure 路由服务器和网关之间启用路由交换，请使用此命令：
+1. 若要在 Azure 路由服务器和网关之间启用路由交换，请使用带有 -AllowBranchToBranchTraffic 标志的 [Update-AzRouteServer](/powershell/module/az.network/update-azrouteserver)：
 
-```azurepowershell-interactive 
-Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG -AllowBranchToBranchTraffic 
+```azurepowershell-interactive
+$routeserver = @{
+    RouteServerName = 'myRouteServer'
+    ResourcGroupName = 'myRouteServerRG'
+    AllowBranchToBranchTraffic
+}  
+Update-AzRouteServer @routeserver 
 ```
 
-2. 若要在 Azure 路由服务器和网关之间禁用路由交换，请使用此命令：
+2. 若要在 Azure 路由服务器和网关之间禁用路由交换，请使用不带 -AllowBranchToBranchTraffic 标志的 [Update-AzRouteServer](/powershell/module/az.network/update-azrouteserver)：
 
-```azurepowershell-interactive 
-Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
+```azurepowershell-interactive
+$routeserver = @{
+    RouteServerName = 'myRouteServer'
+    ResourcGroupName = 'myRouteServerRG'
+}  
+Update-AzRouteServer @routeserver 
 ```
 
 ## <a name="troubleshooting"></a>疑难解答
 
-可以使用此命令来查看 Azure 路由服务器播发和接收的路由：
+使用 [Get-AzRouteServerPeerAdvertisedRoute](/powershell/module/az.network/get-azrouteserverpeeradvertisedroute) 查看 Azure 路由服务器播发的路由。
 
 ```azurepowershell-interactive
-Get-AzRouteServerPeerAdvertisedRoute
-Get-AzRouteServerPeerLearnedRoute
+$remotepeer = @{
+    RouteServerName = 'myRouteServer'
+    ResourcGroupName = 'myRouteServerRG'
+    PeerName = 'myNVA'
+}
+Get-AzRouteServerPeerAdvertisedRoute @routeserver
+```
+
+使用 [Get-AzRouteServerPeerLearnedRoute](/powershell/module/az.network/get-azrouteserverpeerlearnedroute) 查看 Azure 路由服务器获知的路由。
+
+```azurepowershell-interactive
+$routeserver = @{
+    RouteServerName = 'myRouteServer'
+    ResourcGroupName = 'myRouteServerRG'
+    AllowBranchToBranchTraffic
+}  
+Get-AzRouteServerPeerLearnedRoute @routeserver
 ```
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要 Azure 路由服务器，请使用以下命令来删除 BGP 对等互连，然后删除该路由服务器。 
+如果不再需要 Azure 路由服务器，请使用第一个命令删除 BGP 对等互连，然后使用第二个命令删除路由服务器。 
 
-1. 使用此命令删除 Azure 路由服务器与 NVA 之间的 BGP 对等互连：
+1. 使用 [Remove-AzRouteServerPeer](/powershell/module/az.network/remove-azrouteserverpeer) 命令删除 Azure 路由服务器与 NVA 之间的 BGP 对等互连：
 
-```azurepowershell-interactive 
-Remove-AzRouteServerPeer -PeerName "nva_name" -RouteServerName myRouteServer -ResourceGroupName RouteServerRG 
+```azurepowershell-interactive
+$peer = @{
+    PeerName = 'myNVA'
+    RouteServerName = 'myRouteServer'
+    ResourceGroupName = 'myRouteServerRG'
+} 
+Remove-AzRouteServerPeer @peer
 ```
 
-2. 使用此命令删除路由服务器：
+2. 使用 [Remove-AzRouteServer](/powershell/module/az.network/remove-azrouteserver) 删除 Azure 路由服务器：
 
 ```azurepowershell-interactive 
-Remove-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServerRG
+$routeserver = @{
+    RouteServerName = 'myRouteServer'
+    ResourceGroupName = 'myRouteServerRG'
+} 
+Remove-AzRouteServer @routeserver
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-在创建 Azure 路由服务器后，请继续了解 Azure 路由服务器如何与 ExpressRoute 和 VPN 网关进行交互： 
+在创建 Azure 路由服务器后，请继续了解有关 Azure 路由服务器如何与 ExpressRoute 和 VPN 网关进行交互的详细信息： 
 
 > [!div class="nextstepaction"]
 > [Azure ExpressRoute 和 Azure VPN 支持](expressroute-vpn-support.md)

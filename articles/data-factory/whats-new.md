@@ -1,22 +1,22 @@
 ---
 title: Azure 数据工厂的新增功能
-description: 本“新增功能”页重点介绍了 Azure 数据工厂的新功能和改进。
+description: 本页重点介绍 Azure 数据工厂的新功能和最新改进。 Azure 数据工厂是一项托管云服务，旨在用于复杂的混合提取-转换-加载 (ETL)、提取-加载-转换 (ELT) 和数据集成项目。
 author: pennyzhou-msft
 ms.author: xupzhou
-ms.reviewer: xupzhou
 ms.service: data-factory
+ms.subservice: concepts
 ms.topic: overview
 ms.date: 07/14/2021
-ms.openlocfilehash: fe4c5fb72ce3cd32e14bad211683e01ac6edf3ab
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 7509be190afd0354f730f72dd97c5b5a118f20dd
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114341470"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187336"
 ---
 # <a name="whats-new-in-azure-data-factory"></a>Azure 数据工厂的新增功能
 
-Azure 数据工厂会不断改进。 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
+Azure 数据工厂服务正在持续改进。 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
 - 最新版本
 - 已知问题
@@ -24,7 +24,30 @@ Azure 数据工厂会不断改进。 为了让大家随时了解最新的开发�
 - 已弃用的功能
 - 更改计划
 
-本页每月更新，请不时回来查看。 
+本页面每月更新，请不时回来查看。 
+
+## <a name="august-2021"></a>2021 年 8 月
+<br>
+<table>
+<tr><td>服务类别<b></b></td><td><b>服务改进</b></td><td><b>详细信息</b></td></tr>
+  <tr><td><b>持续集成和交付 (CI/CD)</b></td><td>Azure 政府和 Azure 中国中 GitHub 支持的 CICD 改进</td><td>我们为 Azure 美国政府版和 Azure 中国添加了对 GitHub 的支持。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/cicd-improvements-with-github-support-in-azure-government-and/ba-p/2686918">了解详细信息</a></td></tr>
+<tr><td rowspan=2><b>数据移动</b></td><td>Azure Cosmos DB 的用于 MongoDB 连接器的 API 在 Azure 数据工厂中支持 3.6 和 4.0 版本</td><td>Azure 数据工厂 Cosmos DB 的用于 MongoDB 连接器的 API 现在支持服务器版本 3.6 和 4.0。<br><a href="connector-azure-cosmos-db-mongodb-api.md">了解详细信息</a></td></tr>
+<tr><td>增强通过使用 COPY 语句将数据加载到 Azure Synapse Analytics 的功能</td><td>Azure 数据工厂 Azure Synapse Analytics 连接器现在支持暂存复制功能以及使用 *.* 作为 COPY 语句的 wildcardFilename 来复制源。<br><a href="connector-azure-sql-data-warehouse.md#use-copy-statement">了解详细信息</a></td></tr>
+<tr><td><b>数据流</b></td><td>REST 终结点可用作数据流中的源和接收器</td><td>现在，Azure 数据工厂和 Azure Synapse Analytics 中的数据流支持 REST 终结点作为源和接收器，同时完全支持 JSON 和 XML 有效负载。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/rest-source-and-sink-now-available-for-data-flows/ba-p/2596484">了解详细信息</a></td></tr>
+<tr><td><b>集成运行时</b></td><td>诊断工具可用于自承载集成运行时</td><td>用于自承载集成运行时的诊断工具旨在提供更好的用户体验并帮助用户查找潜在问题。 该工具在自承载集成运行时计算机上运行一系列测试方案，并且每个方案都有针对常见问题的典型运行状况检查案例。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/diagnostic-tool-for-self-hosted-integration-runtime/ba-p/2634905">了解详细信息</a></td></tr>
+<tr><td><b>业务流程</b></td><td>具有高级筛选选项的自定义事件触发器已正式发布</td><td>现在可以创建一个触发器，用于响应发布到事件网格的自定义主题。 此外，可以利用高级筛选对要响应的事件进行精细控制。<br><a href="how-to-create-custom-event-trigger.md">了解详细信息</a></td></tr>
+</table>
+
+## <a name="july-2021"></a>2021 年 7 月
+<br>
+<table>
+<tr><td>服务类别<b></b></td><td><b>服务改进</b></td><td><b>详细信息</b></td></tr>
+<tr><td><b>数据移动</b></td><td>10 分钟内在 ADF 复制数据工具上获取元数据驱动的数据引入管道（公共预览版）</td><td>通过此操作，可以在 10 分钟内在复制数据工具（公共预览版）上使用元数据驱动的方法生成大规模数据复制管道。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/get-metadata-driven-data-ingestion-pipelines-on-adf-within-10/ba-p/2528219">了解详细信息</a></td></tr>
+<tr><td><b>数据流</b></td><td>在数据流转换函数中添加的新映射函数</td><td>添加了一组新的数据流转换函数，使数据工程师能够轻松生成、读取和更新映射数据类型和复杂映射结构。<br><a href="data-flow-expression-functions.md#map-functions">了解详细信息</a></td></tr>
+<tr><td><b>集成运行时</b></td><td>Azure 数据工厂托管 VNET（公共预览版）中提供了 5 个新区域</td><td>这 5 个新区域（中国东部 2、中国北部 2、US Gov 亚利桑那州、US Gov 德克萨斯州、US Gov 弗吉尼亚州）在 Azure 数据工厂托管虚拟网络（公共预览版）中可用。<br><a href="managed-virtual-network-private-endpoint.md#azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions">了解详细信息</a></td></tr>
+<tr><td rowspan=2><b>开发人员工作效率</b></td><td>重新设计了 ADF 主页，添加了一些会话</td><td>重新设计了数据工厂主页，具有更好的对比度和重排功能。 此外，主页上还引入了一些部分，可帮助你提高数据集成过程中的工作效率。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">了解详细信息</a></td></tr>
+<tr><td>Azure 数据工厂工作室的新登陆页面</td><td>Azure 门户中“数据工厂”边栏选项卡的登陆页。<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">了解详细信息</a></td></tr>
+</table>
 
 ## <a name="june-2021"></a>2021 年 6 月
 <br>
@@ -47,8 +70,3 @@ Azure 数据工厂会不断改进。 为了让大家随时了解最新的开发�
 - [Stackoverflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
 - [Twitter](https://twitter.com/AzDataFactory?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)
 - [视频](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/featured)
-
-
-
-
-

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc, references_regions
 ms.topic: overview
 ms.date: 08/10/2021
-ms.openlocfilehash: a215100ebc858d2f6f7e154ea81ed5e006d3d9a4
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: c2cdd4009261306357bc9d840afa83bc1ebf40df
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252230"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111628"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）
 
@@ -36,26 +36,31 @@ Azure Database for MySQL 灵活服务器是一种完全托管的数据库服务�
 - 区域冗余高可用性
 - 托管维护时段
 
+有关灵活服务器的最新资讯，请参阅 [Azure Database for MySQL 灵活服务器中的新增功能](whats-new.md)。
+
 ![灵活服务器概念图](media/overview/1-flexible-server-conceptual-diagram.png) 
+
+## <a name="free-12-month-offer"></a>12 个月免费产品/服务
+
+利用 [Azure 免费帐户](https://azure.microsoft.com/free/)，可以免费使用灵活服务器 12 个月，其中每月的限制如下：
+* 750 小时的可突发 B1MS 实例，时长足以每月连续运行一个数据库实例。
+* 32 GB 存储和 32 GB 备份存储 。 
+
+可以利用此套餐来开发和部署使用 Azure Database for MySQL 灵活服务器的应用程序。 若要了解如何使用 Azure 免费帐户免费创建和使用灵活服务器，请参阅[此教程](how-to-deploy-on-azure-free-account.md)。 
 
 ## <a name="high-availability-within-and-across-availability-zones"></a>可用性区域内和跨可用性区域的高可用性
 
-灵活服务器部署模型旨在支持单个可用性区域内以及跨多个可用性区域的高可用性。 该体系结构将计算和存储分开。 数据库引擎在 Linux 虚拟机上运行，而数据文件驻留在远程 Azure 高级存储上。 该存储维护数据库文件的三个本地冗余同步副本，以确保数据始终具有持续性。
+Azure Database for MySQL 灵活服务器（预览版）支持通过自动故障转移配置高可用性。 高可用性解决方案旨在确保提交的数据永远不会因故障而丢失，并提升应用程序的总体运行时间。配置高可用性后，灵活服务器会自动预配和管理备用副本。 有两种高可用性体系结构模型： 
 
-在单个可用性区域中，如果服务器由于计划内或计划外事件而发生故障，该服务将使用以下自动化过程来维持服务器的高可用性：
+- 区域冗余高可用性 (HA)：此选项是跨多个可用性区域实现基础结构完全隔离和冗余的首选选项。 它提供最高级别的可用性，但需要你配置跨区域的应用程序冗余。 如果希望实现最高级别可用性以防可用性区域中出现任何基础结构故障，并且可接受整个可用性区域中的延迟，则首选区域冗余高可用性。 区域冗余 HA 在 [部分 Azure 区域](overview.md#azure-regions) 中可用，这些地理区域支持多个可用性区域并且提供区域冗余高级文件共享。 
 
-1. 预配新的计算 VM。
-2. 具有数据文件的存储映射到新的虚拟机
-3. MySQL 数据库引擎在新的虚拟机上联机。
-4. 服务器准备好接受连接后，客户端应用程序可以重新连接。
+:::image type="content" source="./media/concepts-high-availability/1-flexible-server-overview-zone-redundant-ha.png" alt-text="区域冗余高可用性":::
 
-:::image type="content" source="media/overview/2-flexible-server-architecture.png" alt-text="单个区域高可用性概念图":::
+- 相同区域高可用性 (HA)：要实现网络延迟较低的基础结构冗余，此选项是首选选项，因为主服务器和备用服务器将位于同一可用性区域中。 它提供高可用性，且无需跨区域配置应用程序冗余。 如果希望在网络延迟最低的单个可用性区域中实现最高级别可用性，则首选相同区域 HA。 相同区域 HA 在[所有 Azure 区域](overview.md#azure-regions)中可用，在这些区域中可以创建 Azure Database for MySQL 灵活服务器。 
 
-如果已配置区域冗余高可用性，则该服务将在同一 Azure 区域内的可用性区域中预配并维护热备用服务器。 源服务器上的数据更改将同步复制到备用服务器，以确保没有数据丢失。 借助区域冗余高可用性，一旦触发了计划内或计划外的故障转移事件，备用服务器将立即联机，并可用于处理传入的事务。 典型的故障转移时间范围为 60 - 120 秒。 这使服务可以支持高可用性，并提供改进的复原能力，可容忍给定 Azure 区域中的单个可用性区域故障。
+:::image type="content" source="./media/concepts-high-availability/flexible-server-overview-same-zone-ha.png" alt-text="相同区域冗余高可用性":::
 
 有关详细信息，请参阅[高可用性概念](concepts-high-availability.md)。
-
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="区域冗余高可用性概念图":::
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>具有托管维护时段的自动修补
 
@@ -87,7 +92,7 @@ Azure Database for MySQL 灵活服务器是一种完全托管的数据库服务�
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>几秒钟内调整性能和规模
 
-灵活服务器服务在三个 SKU 层中提供：“可突增”、“常规用途”和“内存优化”。 可突发层最适合用于低成本开发和不需要持续全计算容量的低并发工作负载。 常规用途和内存优化更适用于需要高并发性、缩放性和可预测性能的生产工作负载。 可以在一个月内花费很少的费用在小型数据库上生成第一个应用，然后无缝调整规模以满足解决方案的需求。 存储缩放是联机的，支持存储自动增长。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需为所使用的资源付费。 
+灵活服务器服务在三个 SKU 层中提供：“可突增”、“常规用途”和“内存优化”。 可突发层最适合用于低成本开发和不需要持续全计算容量的低并发工作负载。 常规用途和内存优化更适用于需要高并发性、缩放性和可预测性能的生产工作负载。 可以在一个月内花费很少的费用在小型数据库上生成第一个应用，然后无缝调整规模以满足解决方案的需求。 存储缩放是联机的，支持存储自动增长。 灵活服务器使你能够在免费的 IOPS 限制之上预配额外的 IOPS，最高可达 20K IOPS，而不依赖于存储。 使用此功能，你可以根据工作负载需求随时增加或减少预配的 IOPS 数。 动态可伸缩性使得数据库能够以透明方式对不断变化的资源需求做出响应。 只需为所使用的资源付费。 
 
 有关详细信息，请参阅[计算和存储概念](concepts-compute-storage.md)。
 
@@ -106,7 +111,7 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 通过数据传入复制可以将数据从外部 MySQL 服务器同步到 Azure Database for MySQL Flexible 服务中。 外部服务器可以处于本地、虚拟机中、Azure Database for MySQL 单台服务器中或是其他云提供商托管的数据库服务。 复制中数据是基于二进制日志 (binlog) 文件位置。 可以考虑使用数据传入复制的主要场景有：
 * 混合数据同步
 * 多云同步
-* 用最短的停机时间迁移到灵活服务器
+* [用最短的停机时间迁移到灵活服务器](../../mysql/howto-migrate-single-flexible-minimum-downtime.md)
 
 有关详细信息，请参阅[数据传入复制概念](concepts-data-in-replication.md)。
 
@@ -121,9 +126,9 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 
 灵活服务器服务使用 FIPS 140-2 验证的加密模块对静态数据进行存储加密。 在运行查询时创建的数据（包括备份）和临时文件都会进行加密。 该服务使用包含在 Azure 存储加密中的 AES 256 位密码，并且密钥可由系统进行管理（默认）。
 
-该服务使用默认实施的传输层安全性对动态数据进行加密。 灵活服务器仅支持使用传输层安全性 (TLS 1.2) 的加密连接，所有使用 TLS 1.0 和 TLS 1.1 的传入连接将被拒绝。
+该服务使用默认实施的传输层安全性对动态数据进行加密。 默认情况下，灵活服务器支持使用传输层安全性 (TLS 1.2) 的加密连接，并且所有使用 TLS 1.0 和 TLS 1.1 的传入连接都将被拒绝。 可以通过设置 require_secure_transport 服务器参数来禁用 SSL 强制，并且可以为服务器设置最低 tls_version。
 
-有关详细信息，请参阅[如何使用与灵活服务器的加密连接](https://docs.mongodb.com/manual/tutorial/configure-ssl)。
+有关详细信息，请参阅[如何使用与灵活服务器的加密连接](how-to-connect-tls-ssl.md)。
 
 灵活服务器允许使用 [Azure 虚拟网络](../../virtual-network/virtual-networks-overview.md) (VNet) 集成对服务器进行完全私密的访问。 只能通过专用 IP 地址才能访问和连接 Azure 虚拟网络中的服务器。 使用 VNet 集成，公共访问遭到拒绝，使用公共终结点无法访问服务器。
 
@@ -131,7 +136,7 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
 
-灵活服务器服务配备了内置的性能监视和警报功能。 所有 Azure 指标的频率都是一分钟，每个指标提供 30 天的历史记录。 可针对指标配置警报。 该服务公开主机服务器指标来监视资源利用率，并允许配置慢查询日志。 使用这些工具，可快速优化工作负载并配置服务器以获得最佳性能。
+灵活服务器服务配备了内置的性能监视和警报功能。 所有 Azure 指标的频率都是一分钟，每个指标提供 30 天的历史记录。 可针对指标配置警报。 该服务公开主机服务器指标来监视资源利用率，并允许配置慢查询日志。 使用这些工具，可快速优化工作负载并配置服务器以获得最佳性能。 此外，还可以[将 Percona Monitoring and Management 等社区监视工具与 MySQL 灵活服务器](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/monitor-azure-database-for-mysql-using-percona-monitoring-and/ba-p/2568545)配合使用和进行集成。 
 
 有关详细信息，请参阅[监视的概念](concepts-monitoring.md)。
 
@@ -146,35 +151,37 @@ MySQL 是一种常用的数据库引擎，用于运行 Internet 规模的 Web �
 ### <a name="online-or-minimal-downtime-migrations"></a>联机迁移或停机时间最短的迁移
 将数据传入复制与 mydumper/myloader 一致备份/还原配合使用，以便进行初始种子设定。 通过分步说明了解详情 - [教程：将 Azure Database for MySQL 单一服务器以最短的停机时间迁移到 Azure Database for MySQL 灵活服务器](../../mysql/howto-migrate-single-flexible-minimum-downtime.md)
 
+若要通过 5 个简单的步骤从 Azure Database for MySQL 单一服务器迁移到灵活服务器，请参阅[此博客](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/migrate-from-azure-database-for-mysql-single-server-to-flexible/ba-p/2674057)。
+
 有关详细信息，请参阅 [Azure Database for MySQL 迁移指南](../../mysql/migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md)
 
 ## <a name="azure-regions"></a>Azure 区域
 
 在 Azure 中运行工作负载的一个优点是，它可覆盖全球范围。 现在，在以下 Azure 区域提供适用于 Azure Database for MySQL 的灵活服务器：
 
-| Region | 可用性 | 区域冗余 HA |
-| --- | --- | --- |
-| 澳大利亚东部 | :heavy_check_mark: | :heavy_check_mark: |
-| 巴西南部 | :heavy_check_mark: | :x: |
-| 加拿大中部 | :heavy_check_mark: | :x: |
-| 美国中部 | :heavy_check_mark: | :x: |
-| 美国东部 | :heavy_check_mark: | :heavy_check_mark: |
-| 美国东部 2 | :heavy_check_mark: | :heavy_check_mark: |
-| 法国中部 | :heavy_check_mark: | :heavy_check_mark:|
-| 德国中西部 | :heavy_check_mark: | :x: |
-| Japan East | :heavy_check_mark: | :heavy_check_mark: |
-| 韩国中部 | :heavy_check_mark: | :x: |
-| 北欧 | :heavy_check_mark: | :heavy_check_mark: |
-| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
-| 瑞士北部 | :heavy_check_mark: | :x: |
-| 英国南部 | :heavy_check_mark: | :heavy_check_mark: |
-| 美国西部 | :heavy_check_mark: | :x: |
-| 美国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
-| 西欧 | :heavy_check_mark: | :heavy_check_mark: |
-| 澳大利亚东南部 | :heavy_check_mark: | :x: |
-| 南非北部 | :heavy_check_mark: | :x: |
-| 东亚（香港） | :heavy_check_mark: | :x: |
-| 印度中部 | :heavy_check_mark: | :x: |
+| Region | 可用性 | 同一区域 HA | 区域冗余 HA |
+| --- | --- | --- | --- |
+| 澳大利亚东部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 巴西南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 加拿大中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 美国中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 美国东部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 美国东部 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 法国中部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:|
+| 德国中西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Japan East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 韩国中部 | :heavy_check_mark: | :x: | :x: |
+| 北欧 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 瑞士北部 | :heavy_check_mark: | :x: | :x: |
+| 英国南部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 美国西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 美国西部 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 西欧 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 澳大利亚东南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 南非北部 | :heavy_check_mark: | :x: | :x: |
+| 东亚（香港） | :heavy_check_mark: | :x: | :x: |
+| 印度中部 | :heavy_check_mark: | :x: | :x: |
 
 ## <a name="contacts"></a>联系人
 

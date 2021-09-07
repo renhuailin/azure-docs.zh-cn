@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: b2ddc56614187d1f2dc6a4a1864d68276eaf54fd
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: a6016ba42fba5a457f2969a1b980a0962605f7a7
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609091"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318326"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>快速入门：使用 Azure CLI 生成你的第一个静态站点
 
@@ -117,7 +117,7 @@ cd my-first-static-web-app
 
     - `<LOCATION>`：将此值替换为离你最近的位置。 选项包括：CentralUS、EastAsia、EastUS2、WestEurope 和 WestUS2    。
 
-    - `<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>`：将此值替换为先前生成的 [GitHub 个人访问令牌](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)。
+    - `<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>`：将此值替换为先前生成的 [GitHub 个人访问令牌](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)。 （最低权限为 `Workflow` 范围）
 
     你现在可以在 Azure 中查看创建的应用。
 

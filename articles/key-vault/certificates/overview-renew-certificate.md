@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 082b0fd4d3324502516dcd2b45b9ad16a919c773
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: ce1d83ddd47553de1efdef80cc33bc5dd4634c81
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749215"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123307587"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>续订 Azure Key Vault 证书
 
@@ -28,7 +28,7 @@ ms.locfileid: "107749215"
 若要获取有关证书生存期事件的通知，需要添加证书联系人。 证书联系人包含联系人信息以发送由证书生存期事件触发的通知。 密钥保管库中的所有证书共享联系人信息。 如果保管库中的任何证书发生事件，所有指定联系人都会收到通知。
 
 ### <a name="steps-to-set-certificate-notifications"></a>证书通知的设置步骤：
-首先，将证书联系人添加到密钥保管库中。 可使用 Azure 门户或 PowerShell cmdlet [`Add-AzureKeyVaultCertificateContact`](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact) 进行添加。
+首先，将证书联系人添加到密钥保管库中。 可以使用 Azure 门户或 PowerShell cmdlet [Add-AzKeyVaultCertificateContact](/powershell/module/az.keyvault/add-azkeyvaultcertificatecontact) 添加。
 
 其次，配置希望收到证书过期通知的时间。 若要配置证书的生命周期属性，请参阅[在 Key Vault 中配置证书自动轮换](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate)。
 

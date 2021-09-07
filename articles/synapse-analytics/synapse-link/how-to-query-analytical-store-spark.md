@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Synapse Link 中的 Apache Spark 与 Azure Cosmos DB 进行交互
+title: 使用 Azure Synapse Link 中的 Apache Spark 2 与 Azure Cosmos DB 进行交互
 description: 如何使用 Azure Synapse Link 中的 Apache Spark 与 Azure Cosmos DB 进行交互
 services: synapse-analytics
 author: Rodrigossz
@@ -10,16 +10,19 @@ ms.date: 09/15/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: e9e211fe3039b85e2807fec159537d32380e9799
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: 9ea9d5d34d69b950e3fa80c350c43f12615660ba
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113664982"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112549"
 ---
-# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>使用 Azure Synapse Link 中的 Apache Spark 与 Azure Cosmos DB 进行交互
+# <a name="interact-with-azure-cosmos-db-using-apache-spark-2-in-azure-synapse-link"></a>使用 Azure Synapse Link 中的 Apache Spark 2 与 Azure Cosmos DB 进行交互
 
-本文将介绍如何使用 Synapse Apache Spark 与 Azure Cosmos DB 进行交互。 由于提供全面的 Scala、Python、SparkSQL 和 C# 支持，Synapse Apache Spark 对于 [Azure Synapse Link for Azure Cosmos DB](../../cosmos-db/synapse-link.md) 中的分析、数据工程、数据科学和数据探索方案至关重要。
+> [!NOTE]
+> 有关使用 Spark 3 的 Synapse Link for Cosmos DB 的信息，请参阅本文 [Spark 3 上的 Azure Synapse Link for Azure Cosmos DB](how-to-query-analytical-store-spark-3.md)
+
+本文将介绍如何使用 Synapse Apache Spark 2 与 Azure Cosmos DB 进行交互。 由于提供全面的 Scala、Python、SparkSQL 和 C# 支持，Synapse Apache Spark 对于 [Azure Synapse Link for Azure Cosmos DB](../../cosmos-db/synapse-link.md) 中的分析、数据工程、数据科学和数据探索方案至关重要。
 
 与 Azure Cosmos DB 进行交互时支持以下功能：
 * 利用 Synapse Apache Spark，可以近乎实时地分析通过 Azure Synapse Link 启用的 Azure Cosmos DB 容器中的数据，而不会影响事务工作负载的性能。 以下两个选项可用于查询 Spark 中的 Azure Cosmos DB [分析存储](../../cosmos-db/analytical-store-introduction.md)：
@@ -48,6 +51,9 @@ ms.locfileid: "113664982"
 
 > [!NOTE]
 > 若要查询 Mongo DB 帐户的 Azure Cosmos DB API，请详细了解分析存储中的[完全保真架构表示形式](../../cosmos-db/analytical-store-introduction.md#analytical-schema)，以及要使用的扩展属性名称。
+
+> [!NOTE]
+> 请注意，以下命令中的所有 `options` 都区分大小写。 例如，必须使用 `Gateway`，而 `gateway` 将返回一个错误。
 
 ### <a name="load-to-spark-dataframe"></a>加载到 Spark 数据帧
 
@@ -182,7 +188,7 @@ streamQuery = dfStream\
         .option("checkpointLocation", "/localWriteCheckpointFolder")\
         .option("spark.synapse.linkedService", "<enter linked service name>")\
         .option("spark.cosmos.container", "<enter container name>")\
-        .option("spark.cosmos.connection.mode", "gateway")\
+        .option("spark.cosmos.connection.mode", "Gateway")\
         .start()
 
 streamQuery.awaitTermination()
@@ -201,7 +207,7 @@ val query = dfStream.
             option("checkpointLocation", "/localWriteCheckpointFolder").
             option("spark.synapse.linkedService", "<enter linked service name>").
             option("spark.cosmos.container", "<enter container name>").
-            option("spark.cosmos.connection.mode", "gateway").
+            option("spark.cosmos.connection.mode", "Gateway").
             start()
 
 query.awaitTermination()

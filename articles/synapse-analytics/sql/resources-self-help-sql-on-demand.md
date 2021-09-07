@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: f6f653478dea84ecb3951b4c313f0f7604733b88
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: c3ade548ae31f7f62014d8f41141374aaa73217a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114292901"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252306"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>无服务器 SQL 池自助服务
 
@@ -507,6 +507,7 @@ WITH ( FORMAT_TYPE = PARQUET)
 - 外部表不支持分区。 使用 Delta Lake 文件夹的[分区视图](create-use-views.md#delta-lake-partitioned-views)来利用分区消除。 请参阅下面的已知问题和解决方法。
 - 无服务器 SQL 池不支持按时间顺序查看的查询。 你可以在 [Azure 反馈网站](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake)上对此功能进行投票。 使用 Azure Synapse Analytics 中的 Apache Spark 池[读取历史数据](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)。
 - 无服务器 SQL 池不支持更新 Delta Lake 文件。 可以使用无服务器 SQL 池来查询最新版本的 Delta Lake。 使用 Azure Synapse Analytics 中的 Apache Spark 池[更新 Delta Lake](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data)。
+- Synapse Analytics 中的无服务器 SQL 池不支持带有 [BLOOM 筛选器](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters)的数据集。
 - 专用 SQL 池中不支持 Delta Lake。 请确保使用无服务器池来查询 Delta Lake 文件。
 
 可以在 [Azure Synapse 反馈网站](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=171048)上提出建议和改进。
@@ -539,46 +540,43 @@ FORMAT='csv', FIELDQUOTE = '0x0b', FIELDTERMINATOR ='0x0b', ROWTERMINATOR = '0x0
 
 ### <a name="partitioning-column-returns-null-values"></a>分区列返回 NULL 值
 
-如果对读取已分区 Delta Lake 文件夹的 `OPENROWSET` 函数使用视图，可能会获得 `NULL` 值，而不是分区列的实际列值。 以下示例中显示了引用 `Year` 和 `Month` 分区列的示例视图：
+状态：已解决
 
-```sql
-create or alter view test as
-select top 10 * 
-from openrowset(bulk 'https://storageaccount.blob.core.windows.net/path/to/delta/lake/folder',
-                format = 'delta') 
-     with (ID int, Year int, Month int, Temperature float) 
-                as rows
-```
-
-由于已知问题，包含 `WITH` 子句的 `OPENROWSET` 函数无法从分区列中读取值。 Delta Lake 上的[分区视图](create-use-views.md#delta-lake-partitioned-views)不得同时包含 `OPENROWSET` 函数和 `WITH` 子句。 需要使用没有显式指定架构的 `OPENROWSET` 函数。
-
-解决方法：从视图中使用的 `OPENROWSET` 函数中删除 `WITH` 子句 - 示例：
-
-```sql
-create or alter view test as
-select top 10 * 
-from openrowset(bulk 'https://storageaccount.blob.core.windows.net/path/to/delta/lake/folder',
-                format = 'delta') 
-   --with (ID int, Year int, Month int, Temperature float) 
-                as rows
-```
+发布日期：2021 年 8 月
 
 ### <a name="query-failed-because-of-a-topology-change-or-compute-container-failure"></a>由于拓扑变更或计算容器故障，查询失败
 
-如果你的数据库排序规则不是 `Latin1_General_100_BIN2_UTF8`，则对分区数据集的某些 Delta Lake 查询可能会失败，并包含以下错误消息。 创建具有 `Latin1_General_100_BIN2_UTF8` 排序规则的数据库，并在该数据库上执行查询，而不是使用默认排序规则的主数据库和其他数据库。
+状态：已解决
 
-```sql
-CREATE DATABASE mydb 
-    COLLATE Latin1_General_100_BIN2_UTF8;
-```
-
-通过 master 数据库执行的查询会受到此问题的影响。 这不适用于读取分区数据的所有查询。 此问题会影响按字符串列分区的数据集。
-
-解决方法：使用 `Latin1_General_100_BIN2_UTF8` 数据库排序规则对自定义数据库执行查询。
+发布日期：2021 年 8 月
 
 ### <a name="column-of-type-varchar-is-not-compatible-with-external-data-type-parquet-column-is-of-nested-type"></a>“VARCHAR”类型的列与外部数据类型不兼容，“Parquet 列不是嵌套类型”
 
-你正在尝试读取包含某些嵌套类型列的 Delta Lake 文件，但未指定 WITH 子句（使用自动架构推理）。 自动架构推理不适用于 Delta Lake 中的嵌套列。
+你正在尝试读取包含某些嵌套类型列的 Delta Lake 文件，但未指定 WITH 子句（使用自动架构推理）。
+
+```sql
+SELECT TOP 10 *
+FROM OPENROWSET(
+    BULK 'https://sqlondemandstorage.blob.core.windows.net/delta-lake/data-set-with-complex-type/',
+    FORMAT = 'delta') as rows;
+```
+
+自动架构推理不适用于 Delta Lake 中的嵌套列。 如果指定 FORMAT='parquet' 并将 ** 追加到路径，请验证查询是否返回一些结果。
+
+解决方法：使用 `WITH` 子句并将 `VARCHAR` 类型显式分配给嵌套列。 请注意，由于另一个已知问题（`WITH` 子句为分区列返回 `NULL`），如果数据集已分区，则此方法不起作用。 目前不支持包含复杂类型列的分区数据集。
+
+### <a name="cannot-parse-field-type-in-json-object"></a>无法分析 JSON 对象中的字段“类型”
+
+你正在尝试读取包含某些嵌套类型列的 Delta Lake 文件，但未指定 WITH 子句（使用自动架构推理）。 
+
+```sql
+SELECT TOP 10 *
+FROM OPENROWSET(
+    BULK 'https://sqlondemandstorage.blob.core.windows.net/delta-lake/data-set-with-complex-type/',
+    FORMAT = 'delta') as rows;
+```
+
+自动架构推理不适用于 Delta Lake 中的嵌套列。 如果指定 FORMAT='parquet' 并将 ** 追加到路径，请验证查询是否返回一些结果。
 
 解决方法：使用 `WITH` 子句并将 `VARCHAR` 类型显式分配给嵌套列。 请注意，由于另一个已知问题（`WITH` 子句为分区列返回 `NULL`），如果数据集已分区，则此方法不起作用。 目前不支持包含复杂类型列的分区数据集。
 
@@ -608,9 +606,19 @@ Error reading external metadata.
 - 验证是否能够使用 Synapse 或 Databricks 群集中的 Apache Spark 池读取 Delta Lake 文件夹的内容。 这可以确保文件 `_delta_log` 未损坏。
 - 通过指定 `FORMAT='PARQUET'` 并在 URI 路径末尾使用递归通配符 `/**`，验证是否可以读取数据文件的内容。 如果可以读取所有 Parquet 文件，则问题与 `_delta_log` 事务日志文件夹有关。
 
-解决方法：如果使用了某种 `_UTF8` 数据库排序规则，则可能会发生此问题。 尝试针对 `master` 数据库或任何其他采用非 UTF8 排序规则的数据库运行查询。 如果这种方法解决了你的问题，请使用不采用 `_UTF8` 排序规则的数据库。
+一些常见错误和变通方法：
 
-如果数据集有效，但该解决方法不起作用，请提交支持票证并向 Azure 支持人员再现遇到的问题：
+- `JSON text is not properly formatted. Unexpected character '.'` - 基础 parquet 文件可能包含无服务器 SQL 池不支持的数据类型。
+
+变通方法：尝试使用 WITH 架构来排除不受支持的类型。
+
+- `JSON text is not properly formatted. Unexpected character '{'` - 你可能正在使用某些 `_UTF8` 数据库排序规则。 
+
+变通方法：尝试对 `master` 数据库或任何具有非 UTF8 排序规则的其他数据库运行查询。 如果这种方法解决了你的问题，请使用不采用 `_UTF8` 排序规则的数据库。 在 `WITH` 子句的列定义中指定 `_UTF8` 排序规则。
+
+常规变通方法 - 尝试使用 Apache Spark 池在 Delta Lake 数据集上创建检查点，然后重新运行查询。 检查点将聚合事务 JSON 日志文件，并可能解决此问题。
+
+如果数据集有效，但该解决方法不起作用，请提交支持工单并向 Azure 支持人员再现遇到的问题：
 - 请不要进行添加/删除列或优化表之类的任何更改，因为这可能会更改 Delta Lake 事务日志文件的状态。
 - 将 `_delta_log` 文件夹的内容复制到新的空文件夹中。 切勿复制 `.parquet data` 文件。
 - 尝试读取已复制到新文件夹中的内容，并验证是否收到相同的错误。
@@ -618,6 +626,61 @@ Error reading external metadata.
 - 将复制的 `_delta_log` 文件的内容发送给 Azure 支持人员。
 
 Azure 团队将调查 `delta_log` 文件的内容，并提供有关可能的错误和解决方法的详细信息。
+
+### <a name="resolving-delta-log-on-path--failed-with-error-cannot-parse-json-object-from-log-file"></a>未能解析路径 ... 上的增量日志，出现以下错误：无法分析日志文件中的 JSON 对象
+
+此错误可能是以下原因/不支持的功能造成的：
+- Delta Lake 数据集上的 [BLOOM 筛选器](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters)。 Synapse Analytics 中的无服务器 SQL 池不支持带有 [BLOOM 筛选器](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters)的数据集。
+- Delta Lake 数据集中的具有统计信息的浮动列。
+- 在浮动列上进行分区的数据集。
+
+变通方法：如果要使用无服务器 SQL 池读取 Delta Lake 文件夹，请[删除 BLOOM 筛选器](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters#drop-a-bloom-filter-index)。 如果有导致此问题的 `float` 列，则需要对数据集重新分区或删除统计信息。
+
+## <a name="security"></a>安全性
+
+### <a name="aad-service-principal-login-failures-when-spi-is-creating-a-role-assignment"></a>当 SPI 创建角色分配时，AAD 服务主体登录失败
+如果要使用另一个 SPI 为服务主体标识符/AAD 应用创建角色分配，或已创建了一个但无法登录，则可能会收到以下错误：
+```
+Login error: Login failed for user '<token-identified principal>'.
+```
+就服务主体登录而言，应使用应用程序 ID 作为 SID（而不是对象 ID）创建。 服务主体存在一个已知限制，即在为另一个 SPI/应用创建角色分配时，它会阻止 Synapse 服务从 Azure AD Graph 提取应用程序 ID。  
+
+#### <a name="solution-1"></a>解决方案 #1
+导航到“Azure 门户”>“Synapse Studio”>“管理”>“访问控制”，然后手动为所需的服务主体添加 Synapse 管理员或 Synapse SQL 管理员。
+
+#### <a name="solution-2"></a>解决方法 #2
+需要使用 SQL 代码手动创建正确的登录名：
+```sql
+use master
+go
+CREATE LOGIN [<service_principal_name>] FROM EXTERNAL PROVIDER;
+go
+ALTER SERVER ROLE sysadmin ADD MEMBER [<service_principal_name>];
+go
+```
+
+#### <a name="solution-3"></a>解决方案 #3
+还可以使用 PowerShell 设置服务主体 Synapse 管理员。 需安装 [Az.Synapse 模块](/powershell/module/az.synapse)。
+解决方案是结合使用 cmdlet New-AzSynapseRoleAssignment 和 `-ObjectId "parameter"`，并在该参数字段中使用工作区管理员 Azure 服务主体凭据提供应用程序ID（而不是对象 ID）。 PowerShell 脚本：
+```azurepowershell
+$spAppId = "<app_id_which_is_already_an_admin_on_the_workspace>"
+$SPPassword = "<application_secret>"
+$tenantId = "<tenant_id>"
+$secpasswd = ConvertTo-SecureString -String $SPPassword -AsPlainText -Force
+$cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $spAppId, $secpasswd
+
+Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant $tenantId
+
+New-AzSynapseRoleAssignment -WorkspaceName "<workspaceName>" -RoleDefinitionName "Synapse Administrator" -ObjectId "<app_id_to_add_as_admin>" [-Debug]
+```
+
+#### <a name="validation"></a>验证
+连接无服务器 SQL 终结点，并验证是否创建了具有 SID `app_id_to_add_as_admin` 的外部登录名：
+```sql
+select name, convert(uniqueidentifier, sid) as sid, create_date
+from sys.server_principals where type in ('E', 'X')
+```
+或者仅尝试使用刚刚设置的管理员应用在无服务器 SQL 终结点登录。
 
 ## <a name="constraints"></a>约束
 

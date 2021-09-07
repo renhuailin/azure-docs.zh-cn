@@ -2,14 +2,14 @@
 title: Azure 资源管理器概述
 description: 介绍如何使用 Azure 资源管理器在 Azure 上部署和管理资源以及对其进行访问控制。
 ms.topic: overview
-ms.date: 03/25/2021
+ms.date: 08/27/2021
 ms.custom: contperf-fy21q1,contperf-fy21q3-portal
-ms.openlocfilehash: 6cd9aa82ad2f8a821ae82a361b3f11b72ca25f7a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ecb9c163728536b56d119ffa5d67aa6650dbc7e7
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608538"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123106492"
 ---
 # <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
 
@@ -62,6 +62,8 @@ Azure 提供四个级别的范围：[管理组](../../governance/management-grou
 ![管理级别](./media/overview/scope-levels.png)
 
 将在上述任何级别的作用域中应用管理设置。 所选的级别确定应用设置的广泛程度。 较低级别继承较高级别的设置。 例如，将[策略](../../governance/policy/overview.md)应用于订阅时，该策略将应用于订阅中的所有资源组和资源。 在资源组上应用策略时，该策略将应用于该资源组及其所有资源。 但是，其他资源组没有该策略分配。
+
+有关管理标识和访问的详细信息，请参阅 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)。
 
 可以将模板部署到租户、管理组、订阅或资源组。
 

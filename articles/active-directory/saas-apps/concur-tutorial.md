@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/26/2020
+ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 006d30839e16ea303b684fb0ee1be7f40dcbdfb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34b18de633d586b6b32bc11b4eb6cb1a65928550
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736945"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222623"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Concur 集成
 
@@ -37,8 +37,9 @@ ms.locfileid: "98736945"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Concur 支持 SP 发起的 SSO 
-* Concur 支持实时用户预配 
+* Concur 支持 SP 发起的 SSO。
+* Concur 支持实时用户预配。
+* Concur 支持[自动用户预配](concur-provisioning-tutorial.md)。
 
 ## <a name="adding-concur-from-the-gallery"></a>从库中添加 Concur
 
@@ -134,6 +135,8 @@ ms.locfileid: "98736945"
 ### <a name="create-concur-test-user"></a>创建 Concur 测试用户
 
 在本部分，你将在 Concur 中创建名为 B.Simon 的用户。 Concur 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Concur 中不存在用户，则会在身份验证后创建一个新用户。
+
+Concur 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./concur-provisioning-tutorial.md)。
 
 ## <a name="test-sso"></a>测试 SSO 
 

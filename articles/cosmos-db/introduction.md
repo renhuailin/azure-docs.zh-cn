@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 06/04/2021
-ms.openlocfilehash: 6c55b2e5fbaadec239c1818d1bbe47443e797ddf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: ffd59ebcac1779c43222ea9a006888edd634bafa
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725459"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035878"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -84,6 +84,9 @@ Azure Cosmos DB 是一种用于新式应用开发的完全托管的 NoSQL 数据
 - [Azure Cosmos DB Gremlin API 入门](create-graph-dotnet.md)
 - [Azure Cosmos DB 表 API 入门](table/create-table-dotnet.md)
 - [有关 Azure Cosmos DB 的下一代应用开发的白皮书](https://azure.microsoft.com/resources/microsoft-azure-cosmos-db-flexible-reliable-cloud-nosql-at-any-scale/)
+- 尝试为迁移到 Azure Cosmos DB 进行容量规划？
+    - 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    - 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
 
 > [!div class="nextstepaction"]
 > [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)

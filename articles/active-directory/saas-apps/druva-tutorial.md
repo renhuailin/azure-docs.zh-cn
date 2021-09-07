@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/02/2021
+ms.date: 08/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 858e63272faea2aaf2572a5e97e24ba5858d5bda
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 69649cf16ecfeca81d730ecfc19c8124fdc25579
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111568410"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224173"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Druva 集成
 
@@ -38,6 +38,7 @@ ms.locfileid: "111568410"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Druva 支持 IDP 发起的 SSO。
+* Druva 支持[自动用户预配](druva-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -155,6 +156,8 @@ ms.locfileid: "111568410"
 ### <a name="create-druva-test-user"></a>创建 Druva 测试用户
 
 本部分将在 Druva 中创建一个名为 B.Simon 的用户。 Druva 支持默认启用的恰时用户预配。 此部分不存在任何操作项。 如果 Druva 中尚不存在用户，身份验证后会创建一个新用户。
+
+Druva 还支持自动用户预配，有关如何配置自动用户预配的更多详细信息，请参见[此处](./druva-provisioning-tutorial.md)。
 
 ## <a name="test-sso"></a>测试 SSO
 

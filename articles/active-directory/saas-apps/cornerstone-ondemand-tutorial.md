@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/24/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 23abb7c3d917084d0cc9989bf19dbb76adf0a266
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: 8740f7e8b02002e4f55a833074cf34057cddc056
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112967276"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226152"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cornerstone 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "112967276"
 * 让用户通过其 Azure AD 帐户自动登录到 Cornerstone。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -41,6 +41,8 @@ ms.locfileid: "112967276"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Cornerstone 支持 SP 发起的 SSO。
+
+* Cornerstone 支持[自动用户预配](cornerstone-ondemand-provisioning-tutorial.md)。
 
 * 如果要集成这个特定的列表中的一个或多个产品，应使用库中的此 Cornerstone 单一登录应用。
 
@@ -116,7 +118,7 @@ ms.locfileid: "112967276"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
     1. 在“名称”字段中，输入 `B.Simon`。  
-    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
     1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
     1. 单击“创建”。
 
@@ -140,6 +142,7 @@ ms.locfileid: "112967276"
 
 本部分需在 Cornerstone 中创建一个名为“Britta Simon”的用户。 请与你的 Cornerstone 实现项目团队合作，将用户添加到 Cornerstone 中。 使用单一登录前，必须先创建并激活用户。
 
+Cornerstone 单一登录还支持自动用户预配，在[此处](./cornerstone-ondemand-provisioning-tutorial.md)可以找到有关如何配置自动用户预配的更多详细信息。
 
 ## <a name="test-sso"></a>测试 SSO 
 

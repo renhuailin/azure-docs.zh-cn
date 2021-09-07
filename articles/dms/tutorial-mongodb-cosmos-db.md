@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
-ms.date: 05/19/2021
-ms.openlocfilehash: 937fcc60e8be144fce10748345b71cc05703c04f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: 87f211976f74fef5ed2c0cef992d82099e141a29
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638519"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038164"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-api-for-mongodb-offline"></a>教程：将 MongoDB 脱机迁移到适用于 MongoDB 的 Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](../cosmos-db/includes/appliesto-mongodb-api.md)]
@@ -232,6 +232,12 @@ ms.locfileid: "122638519"
 ## <a name="post-migration-optimization"></a>迁移后优化
 
 将 MongoDB 数据库中存储的数据迁移到 MongoDB的 Azure Cosmos DB API 后，你可以连接到 Azure Cosmos DB 并管理数据。 还可以执行其他迁移后的优化步骤。 其中可能包括优化索引策略、更新默认一致性级别或者为 Azure Cosmos DB 帐户配置全局分发。 有关详细信息，请参阅[迁移后的优化](../cosmos-db/mongodb-post-migration.md)。
+
+## <a name="additional-resources"></a>其他资源
+
+* 尝试为迁移到 Azure Cosmos DB 进行容量规划？
+    * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../cosmos-db/convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](../cosmos-db/mongodb/estimate-ru-capacity-planner.md)
 
 ## <a name="next-steps"></a>后续步骤
 

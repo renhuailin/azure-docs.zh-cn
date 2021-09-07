@@ -8,12 +8,12 @@ metadata:
   author: keferna
   ms.author: keferna
   ms.date: 07/14/2020
-  ms.openlocfilehash: bf27d686edd4324419a06e696eed27a64c66a32d
-  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+  ms.openlocfilehash: 4015d78469f08450d81495f61800f68f980b9b02
+  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/10/2021
-  ms.locfileid: "113595887"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122866335"
 title: 有关从云合作伙伴门户转换为合作伙伴中心的常见问题解答
 summary: >
   云合作伙伴门户已转换为合作伙伴中心。 合作伙伴中心提供了一种简单、集成的体验，用于在 [Microsoft AppSource](https://appsource.microsoft.com/) 或 [Azure 市场](https://azuremarketplace.microsoft.com/)上发布新产品/服务，以及用于管理从云合作伙伴门户迁移的现有产品/服务。 云合作伙伴门户的所有功能都可在合作伙伴中心获得。 本文介绍有关此问题的常见问题解答。
@@ -120,7 +120,7 @@ sections:
 
       | Dynamics 365 Business Central | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建 Dynamics 365 Business Central 产品/服务](dynamics-365-business-central-offer-setup.md)。 |
 
-      | Dynamics 365 for Customer Engagement 和 PowerApps | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建 Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务](dynamics-365-customer-engage-offer-setup.md)。 |
+      | 适用于客户参与和 Power Apps 的 Dynamics 365 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建 Dynamics 365 for Customer Engagement 和 Power Apps 产品/服务](dynamics-365-customer-engage-offer-setup.md)。 |
 
       | Dynamics 365 for Operations | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 有关详细信息，请访问[创建 Dynamics 365 for Operations 产品/服务](./dynamics-365-operations-offer-setup.md)。 |
 

@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 08/10/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 88674255c98559a06c33bd5030aefba9184ada58
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: bed2f746d0216a120b1f144a410a15d533ae3113
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538732"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866632"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>教程：使用门户将虚拟网络连接到 ExpressRoute 线路
 
@@ -154,6 +154,40 @@ ms.locfileid: "111538732"
 1. 在“摘要”页面中复查信息，并选择“确定” 。
 
     :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/connection-summary.png" alt-text="摘要页面":::
+
+## <a name="configure-expressroute-fastpath"></a>配置 ExpressRoute FastPath
+
+如果虚拟网络网关是超高性能网关或 ErGw3AZ，则可以启用 [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md)。 FastPath 可提高数据路径性能，例如本地网络和虚拟网络之间的每秒数据包数和每秒连接数。
+
+对新的连接配置 FastPath
+
+为 ExpressRoute 网关添加新连接时，请选中“FastPath”的复选框。
+
+:::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/enable-fastpath-portal.png" alt-text="“添加连接”页中“FastPath”复选框的屏幕截图。":::
+
+> [!NOTE]
+> 只有从网关资源创建连接，才能为新连接启用 FastPath。 不支持从 ExpressRoute 线路或“连接资源”页创建的新连接。
+>
+**在现有的连接上配置 FastPath**
+
+1. 从 ExpressRoute 网关、ExpressRoute 线路或“连接资源”页转到现有连接资源。
+
+1.  在“设置”下选择“配置”，然后选中“FastPath”复选框。 选择“保存”以启用该功能。
+
+    :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/enable-fastpath-connection.png" alt-text="连接配置页上“FastPath”复选框的屏幕截图。":::
+
+> [!NOTE]
+> 可以使用[连接监视器](how-to-configure-connection-monitor.md)来验证流量是否使用 FastPath 到达目标位置。
+>
+
+## <a name="enroll-in-expressroute-fastpath-features-preview"></a>注册 ExpressRoute FastPath 功能（预览版）
+
+FastPath 对虚拟网络对等互连的支持现以公共预览版提供。 只能通过 Azure PowerShell 进行注册。 有关如何注册的说明，请参阅 [FastPath 预览功能](expressroute-howto-linkvnet-arm.md#enroll-in-expressroute-fastpath-features-preview)。
+
+> [!NOTE] 
+> 如果已经配置了 FastPath 并且想要注册预览功能，则需要执行以下操作：
+> 1. 使用上述 Azure PowerShell 命令注册 FastPath 预览功能。
+> 1. 在目标连接上禁用 FastPath，然后重新启用它。
 
 ## <a name="clean-up-resources"></a>清理资源
 

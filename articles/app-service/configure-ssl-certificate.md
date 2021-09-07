@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 011461b1ecba9c5ce8cf636980a97d26f2228a98
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: f7c6c46565ce9abb108b59e567d2f66c7a05ab28
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128833"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835425"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -221,7 +221,7 @@ ms.locfileid: "113128833"
 | 设置 | 说明 |
 |-|-|
 | 订阅 | Key Vault 所属的订阅。 |
-| 密钥保管库 | 包含要导入的证书的保管库。 |
+| Key Vault | 包含要导入的证书的保管库。 |
 | 证书 | 从保管库中的 PKCS12 证书列表中进行选择。 保管库中的所有 PKCS12 证书都已通过其指纹列出，但在应用服务中并非支持所有证书。 |
 
 操作完成后，会在“私钥证书”列表中看到该证书。 如果导入失败并出现错误，则证书不满足[应用服务的要求](#private-certificate-requirements)。
@@ -297,7 +297,9 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 > [!IMPORTANT] 
 > 若要使用此证书保护自定义域，仍需要创建证书绑定。 按照[创建绑定](configure-ssl-bindings.md#create-binding)中的步骤操作。
->
+
+> [!NOTE]
+> 若要续订[上传的证书](#upload-a-private-certificate)，请参阅[导出证书绑定](configure-ssl-bindings.md#renew-certificate-binding)。 应用服务不会自动将新上传的证书与绑定同步。 自动证书同步功能仅适用于[导入的 Key Vault 证书](#import-a-certificate-from-key-vault)和[导入的应用服务证书](#import-an-app-service-certificate)。
 
 ## <a name="upload-a-public-certificate"></a>上传公用证书
 
@@ -346,7 +348,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 若要在任何时候启用证书自动续订，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格的“自动续订设置”。 默认情况下，应用服务证书具有一年的有效期。
 
-选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 30 天自动续订。
+选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 31 天自动续订。
 
 ![自动续订应用服务证书](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
 

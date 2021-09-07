@@ -1,21 +1,21 @@
 ---
-title: 包含文件
+title: include 文件
 description: 包含文件
 services: azure-communication-services
-author: mikben
+author: probableprime
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: e0c2deba9bdd69c6a4c9c9c5f0974a181c6c2472
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.author: rifox
+ms.openlocfilehash: b22cee560284a5a185e6b3ba560531d43d37ca67
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113113322"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967865"
 ---
 ## <a name="sample-code"></a>代码示例
 在 [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/add-chat) 上查找此快速入门的最终代码。
@@ -143,6 +143,7 @@ for chat_thread_item_page in chat_threads.by_page():
 - 使用 `content` 提供聊天消息内容。
 - 使用 `chat_message_type` 指定消息内容类型。 可能的值为 `text` 和 `html`。 如果未指定值，则默认值为 `text`。
 - 使用 `sender_display_name` 指定发送方的显示名称。
+- 可以选择使用 `metadata` 来包含你希望随消息一起发送的任何附加数据。 此字段为开发人员提供了一种机制，以扩展聊天消息功能并为用例添加自定义信息。 例如，在消息中共享文件链接时，你可能希望在元数据中添加“hasAttachment:true”，以便收件人的应用程序可进行分析并相应地显示。
 
 `SendChatMessageResult` 是发送消息后返回的响应。 它包含一个 ID，这是消息的唯一 ID。
 
@@ -155,11 +156,15 @@ thread_id = create_chat_thread_result.chat_thread.id
 chat_thread_client = chat_client.get_chat_thread_client(create_chat_thread_result.chat_thread.id)
 
 
-content='hello world'
+content='Please take a look at the attachment'
 sender_display_name='sender name'
+metadata={
+    'hasAttachment': 'true',
+    'attachmentUrl': 'https://contoso.com/files/attachment.docx'
+}
 
 # specify chat message type with pre-built enumerations
-send_message_result_w_enum = chat_thread_client.send_message(content=content, sender_display_name=sender_display_name, chat_message_type=ChatMessageType.TEXT)
+send_message_result_w_enum = chat_thread_client.send_message(content=content, sender_display_name=sender_display_name, chat_message_type=ChatMessageType.TEXT, metadata=metadata)
 print("Message sent: id: ", send_message_result_w_enum.id)
 ```
 

@@ -9,12 +9,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 07cb9d302613c94b72663f7a4b4a46c94dd0209a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e3e4add97b63dc7ed6e375f90eb3d5d48a81ffef
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726483"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038965"
 ---
 # <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>教程：使用 Windows 容器开发 IoT Edge 模块
 
@@ -156,6 +156,20 @@ Azure IoT Edge Tools 扩展为 Visual Studio 中支持的所有 IoT Edge 模块�
   * **program.cs** 文件中包含项目模板附带的默认 C# 模块代码。 默认模块从源获取输入并将其传递到 IoT 中心。
   * **module.json** 文件保存有关模块的详细信息，其中包括完整的映像存储库、映像版本以及用于每个受支持平台的 Dockerfile。
 
+### <a name="set-iot-edge-runtime-version"></a>设置 IoT Edge 运行时版本
+
+在创建部署资产时，IoT Edge 扩展默认为 IoT Edge 运行时的最新稳定版本。 目前，最新稳定版本是 1.2 版。 
+
+Windows 容器仅在 1.1 长期支持版本或较低的 1.0 版本中受支持。 要为使用 Windows 容器的设备开发模块，请在 Visual Studio 中更新 IoT Edge 运行时版本，以便与这些设备上的 IoT Edge 版本保持一致。
+
+1. 在解决方案资源管理器中，右键单击项目名称，然后选择“设置 IoT Edge 运行时版本”。
+
+   :::image type="content" source="./media/how-to-visual-studio-develop-module/set-iot-edge-runtime-version.png" alt-text="右键单击项目名称，然后选择“设置 IoT Edge 运行时版本”。":::
+
+1. 使用下拉菜单选择 IoT Edge 设备正在运行的运行时版本，然后选择“确定”以保存更改。
+
+1. 使用新的运行时版本重新生成部署清单。 右键单击项目名称，然后选择“为 IoT Edge 生成部署”。
+
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>向 IoT Edge 代理提供注册表凭据
 
 IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge 设备中。 IoT Edge 扩展会尝试从 Azure 提取容器注册表信息，并将其填充到部署模板中。
@@ -270,7 +284,7 @@ IoT Edge 运行时需要注册表凭据才能将容器映像拉取到 IoT Edge �
 
     ![在容器注册表中查看两个映像版本](./media/tutorial-develop-for-windows/view-repository-versions.png)
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 如果在生成并推送模块映像时遇到错误，这通常与开发计算机上的 Docker 配置有关。 使用以下检查来检查配置：
 

@@ -5,15 +5,15 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 08/24/2021
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 1d96bb01cde5edbe4bff06de43d66b785da9cd98
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6a5f21153936313a209bb5971c1a7c6bd7a9e973
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748400"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969326"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>教程：使用 Azure 资源管理器模板配置 IoT 中心消息路由
 
@@ -49,7 +49,7 @@ ms.locfileid: "121748400"
 
 **subscriptionId**：此字段用于标识要在其中部署模板的订阅。 此字段不包含在参数文件中，因为它是由系统设置的。
 
-**IoTHubName_in**：此字段是基本 IoT 中心名称，与 randomValue 相连接，使名称全局唯一。
+**IoTHubName_in**：此字段是基本 IoT 中心名称，其中连接了 randomValue，以便使名称全局唯一。
 
 **location**：此字段是要部署到的 Azure 区域，例如“westus”。
 

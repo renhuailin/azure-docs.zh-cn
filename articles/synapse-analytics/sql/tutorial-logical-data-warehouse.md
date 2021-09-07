@@ -6,15 +6,15 @@ author: jovanpop-msft
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: sql
-ms.date: 04/28/2021
+ms.date: 08/20/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: f0f2e63a32c30c807f865a46154123643809de74
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: de0374f2ea26e3fa1dc7d25e7c837187f8914918
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114442838"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254739"
 ---
 # <a name="tutorial-create-logical-data-warehouse-with-serverless-sql-pool"></a>教程：使用无服务器 SQL 池创建逻辑数据仓库
 
@@ -41,7 +41,7 @@ CREATE DATABASE Ldw
 
 数据源表示连接字符串信息，用于描述放置数据的位置以及对数据源进行身份验证的方式。
 
-以下示例演示了一个引用公共 [ECDC COVID 19 Azure 开放式数据集](/azure/open-datasets/dataset-ecdc-covid-cases)的数据源定义示例：
+以下示例演示了一个引用公共 [ECDC COVID 19 Azure 开放式数据集](../../open-datasets/dataset-ecdc-covid-cases.md)的数据源定义示例：
 
 ```sql
 CREATE EXTERNAL DATA SOURCE ecdc_cases WITH (
@@ -80,6 +80,17 @@ CREATE DATABASE SCOPED CREDENTIAL MyCosmosDbAccountCredential
 WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
      SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 ```
+
+任何具有 Synapse 管理员角色的用户都可以使用这些凭据来访问 Azure Data Lake 存储或 Cosmos DB 分析存储。 如果拥有不具有 Synapse 管理员角色的低权限用户，则需要向他们授予引用以下数据库范围凭据的显式权限：
+
+```sql
+GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::WorkspaceIdentity TO <user>
+GO
+GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::MyCosmosDbAccountCredential TO <user>
+GO
+```
+
+有关详细信息，请参阅[授予数据库范围凭据权限](/sql/t-sql/statements/grant-database-scoped-credential-transact-sql)页。
 
 ### <a name="define-external-file-formats"></a>定义外部文件格式
 
@@ -202,7 +213,7 @@ GRANT SELECT ON SCHEMA::ecdc_adls TO [jovan@contoso.com]
 GO
 GRANT SELECT ON OBJECT::ecdc_cosmosDB.cases TO [jovan@contoso.com]
 GO
-GRANT REFERENCES ON CREDENTIAL::MyCosmosDbAccountCredential TO [jovan@contoso.com]
+GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::MyCosmosDbAccountCredential TO [jovan@contoso.com]
 GO
 ```
 

@@ -6,15 +6,15 @@ metadata:
   services: storage
   ms.service: storage
   ms.topic: conceptual
-  ms.date: 01/14/2021
+  ms.date: 08/24/2021
   ms.author: alkohli
   ms.subservice: common
-  ms.openlocfilehash: 51af880897564851750dccd756601d86a1dab889
-  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.openlocfilehash: bfdbb966783e4f95945933c074265d8c45ee1f61
+  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113094762"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122867604"
 title: Azure 导入/导出服务：常见问题解答
 summary: >
   下面是你在使用 Azure 导入/导出服务将数据传输到 Azure 存储时可能会提出的问题及其解答。
@@ -124,6 +124,10 @@ sections:
       寄送我的驱动器时，承运商要求我提供数据中心的联系地址和电话号码。 我该如何提供？
     answer: >
       电话号码和数据中心地址是在创建作业过程中提供的。
+  - question: >
+      为什么我的设备已经交付，我的订单状态仍为“正在寄送”？
+    answer: >
+      运营商交付物理设备后，Azure 导入/导出中需要 1 到 3 个工作日来处理交付。 处理完成后，订单的状态将更改为“已接收”。
 - name: 其他
   questions:
   - question: >

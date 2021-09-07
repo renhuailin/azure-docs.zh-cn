@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: 324e30df7f63f5ca0abf7abd50ab890495e4e7cc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 973d6f9450d0cb58df5b1e8dcd208990806abc54
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721968"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967322"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>教程：使用 Azure Migrate 发现 VMware 环境中运行的服务器
 
@@ -137,7 +137,8 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 “Azure Migrate：发现和评估工具”使用轻型 Azure Migrate 设备。 设备完成服务器发现并将服务器配置和性能元数据发送到 Azure Migrate。 可通过部署一个 OVA 模板来设置设备，该模板可从项目下载。
 
 > [!NOTE]
-> 如果无法使用 OVA 模板设置设备，则可以在现有运行的 Windows Server 2016 服务器上使用 PowerShell 脚本进行设置。 了解如何[使用 PowerShell 设置 Azure Migrate 设备](deploy-appliance-script.md#set-up-the-appliance-for-vmware)。
+> 如果无法使用 OVA 模板设置设备，则可以在现有运行的 Windows Server 2016 服务器上使用 PowerShell 脚本进行设置。 了解如何[使用 PowerShell 设置 Azure Migrate 设备](deploy-appliance-script.md#set-up-the-appliance-for-vmware)。 <br/>
+> Azure 政府云不支持“使用 OVA 模板部署设备”的选项。 [详细了解](/azure/migrate/deploy-appliance-script-government)如何为 Azure 政府云部署设备。
 
 ### <a name="deploy-by-using-an-ova-template"></a>使用 OVA 模板进行部署
 

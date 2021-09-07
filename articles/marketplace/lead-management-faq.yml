@@ -8,12 +8,12 @@ metadata:
   author: keferna
   ms.author: keferna
   ms.date: 10/01/2020
-  ms.openlocfilehash: 49109c47e6c066122ef59ac37193a06562b35ab0
-  ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+  ms.openlocfilehash: 08e196f4cc0e8adf0df67bbfdb7fc8ba18b0f269
+  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/11/2021
-  ms.locfileid: "113603532"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122866416"
 title: 有关潜在客户配置的常见问题和故障排除
 summary: >
   本文解答有关商业市场产品/服务的潜在客户管理的一些常见问题， 还将解决在合作伙伴中心向客户关系管理 (CRM) 系统配置潜在客户时可能遇到的错误。
@@ -74,7 +74,7 @@ sections:
   - question: >
       我已将 Azure 表配置为我的潜在客户目标。 在系统发送新的商业市场潜在客户时，我是否能收到通知？
     answer: >
-      是的。 按照[使用 Azure 表配置潜在客户管理](partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md)中的说明进行操作以设置 Microsoft flow，用于在将潜在客户添加到 Azure 表时发送电子邮件。
+      是的。 按照[使用 Azure 表配置潜在客户管理](partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md)中的说明，使用 Power Automate 设置一个新流，用于在将潜在客户添加到 Azure 表时发送电子邮件。
   - question: >
       我已将 Salesforce 配置为潜在客户目标，但为什么找不到潜在客户？
     answer: >

@@ -7,15 +7,15 @@ metadata:
   ms.service: synapse-analytics
   ms.topic: overview
   ms.subservice: overview
-  ms.date: 10/25/2020
+  ms.date: 07/27/2021
   ms.author: saveenr
-  ms.reviewer: jrasnick
-  ms.openlocfilehash: b1fb4a033e0b501c25e2588e2dce6b7c1bce3d26
-  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.reviewer: jrasnick, wiassaf
+  ms.openlocfilehash: c6e970383611a14694b7e921257a117b09a4da89
+  ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/22/2021
-  ms.locfileid: "112467695"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123029788"
 title: Azure Synapse Analytics 常见问题解答
 summary: 本指南解答有关 Azure Synapse Analytics 的最常见问题。
 sections:
@@ -126,4 +126,10 @@ sections:
       不存在“移动”或“迁移”。 你可以选择在现有池上启用新的工作区功能。 如果这样做，不会有中断性变更，只是你将可以使用 Synapse Studio、Spark 和无服务器 SQL 池等新功能。
   - question: "专用 SQL 池现在的默认部署是什么？ \n"
     answer: "默认情况下，所有新的专用 SQL 池都将部署到工作区；但是如果有需要，仍然可以使用独立的外形规格创建专用 SQL 池（以前称为 SQL DW）。 \n"
+- name: 网络安全性
+  questions:
+  - question: >
+      如何保护对 Azure Synapse 工作区的访问？
+    answer: >
+      无论是否使用[托管虚拟网络](/azure/synapse-analytics/security/synapse-workspace-managed-vnet)，都可以从公共网络连接到工作区。 有关详细信息，请参阅[连接性设置](/azure/azure-sql/database/connectivity-settings)。 通过启用[公用网络访问功能](/azure/azure-sql/database/connectivity-settings#public-network-access)或[工作区防火墙](/bs-cyrl-ba/azure/synapse-analytics/security/synapse-workspace-ip-firewall)，可以控制来自公用网络的访问。 或者，可以使用[托管专用终结点](/azure/synapse-analytics/security/synapse-workspace-managed-private-endpoints)和[专用链接](../azure-sql/database/private-endpoint-overview.md)来连接到工作区。 没有 [Synapse Analytics 托管虚拟网络](/azure/synapse-analytics/security/synapse-workspace-managed-vnet)的 Azure Synapse 工作区无法通过托管专用终结点进行连接。
 additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n   * [Azure Synapse Analytics 入门](get-started.md)\n   * [创建工作区](quickstart-create-workspace.md)\n   * [使用无服务器 SQL 池](quickstart-sql-on-demand.md)"

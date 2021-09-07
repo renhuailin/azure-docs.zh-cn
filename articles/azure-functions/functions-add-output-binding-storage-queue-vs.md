@@ -4,12 +4,12 @@ description: 了解如何使用 Visual Studio 添加输出绑定，以将 C# 类
 ms.date: 05/30/2021
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 28748b7b9d0622d62baeb0de144adcd89c061a72
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 9b5d6e4919db9fcf41eea8704878d10606833658
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790898"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829525"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>使用 Visual Studio 将函数连接到 Azure 存储
 
@@ -49,9 +49,15 @@ ms.locfileid: "110790898"
 
 1. 在控制台中，运行以下 [Install-Package](/nuget/tools/ps-ref-install-package) 命令安装存储扩展：
 
-    ```Command
-    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.6
-    ````
+    # <a name="in-process"></a>[进程内](#tab/in-process) 
+    ```bash
+    Install-Package Microsoft.Azure.WebJobs.Extensions.Storage 
+    ```
+    # <a name="isolated-process"></a>[隔离进程](#tab/isolated-process)
+    ```bash
+    Install-Package Microsoft.Azure.Functions.Worker.Extensions.Storage.Queues -IncludePrerelease
+    ```
+    ---
 
 现在，你可以将存储输出绑定添加到项目。
 

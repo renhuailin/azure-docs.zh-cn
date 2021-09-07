@@ -1,24 +1,24 @@
 ---
-title: 快速入门 - 在 Azure 门户中使用 Azure 逻辑应用创建集成工作流
+title: 快速入门 - 在 Azure 门户中使用 Azure 逻辑应用创建自动化工作流
 description: 在 Azure 门户中使用多租户 Azure 逻辑应用创建第一个自动集成工作流。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: contperf-fy21q4
-ms.date: 05/25/2021
-ms.openlocfilehash: b7419986137632561cae71b91dd55a2af64912a7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 08/24/2021
+ms.openlocfilehash: a2b3533a1af6740b1d847a2a3e452bbe45aacc05
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373274"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831246"
 ---
 # <a name="quickstart-create-an-integration-workflow-with-multi-tenant-azure-logic-apps-and-the-azure-portal"></a>快速入门：使用多租户 Azure 逻辑应用和 Azure 门户创建集成工作流
 
-本快速入门介绍如何在使用多租户 [Azure 逻辑应用](logic-apps-overview.md)时创建集成两种服务（网站的 RSS 源和电子邮件帐户）的示例自动化工作流。 尽管此示例是基于云的，但 Azure 逻辑应用支持跨云、本地和混合环境连接应用、数据、服务和系统的工作流。 有关多租户模型与单租户模型的详细信息，请查看[单租户与多租户以及集成服务环境](single-tenant-overview-compare.md)。
+本快速入门介绍如何在使用[多租户 Azure 逻辑应用](logic-apps-overview.md)时创建集成两种服务（网站的 RSS 源和电子邮件帐户）的示例自动化工作流。 尽管此示例是基于云的，但 Azure 逻辑应用支持跨云、本地和混合环境连接应用、数据、服务和系统的工作流。 有关多租户 Azure 逻辑应用与单租户 Azure 逻辑应用的详细信息，请查看[单租户与多租户以及集成服务环境](single-tenant-overview-compare.md)。
 
-在此示例中，将创建一个使用 RSS 连接器和 Office 365 Outlook 连接器的工作流。 RSS 连接器有一个触发器，可根据计划检查 RSS 源。 通过 Office 365 Outlook 连接器，可以为每个新项发送电子邮件。 本示例中的连接器仅仅是在工作流中可以使用的[数百个连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)中的两个。
+在此示例中，将创建一个使用 RSS 连接器和 Office 365 Outlook 连接器的逻辑应用资源和工作流。 资源在多租户 Azure 逻辑应用中运行，并基于[消耗量定价模型](logic-apps-pricing.md#consumption-pricing)。 RSS 连接器有一个触发器，可根据计划检查 RSS 源。 通过 Office 365 Outlook 连接器，可以为每个新项发送电子邮件。 本示例中的连接器仅仅是在工作流中可以使用的[数百个连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)中的两个。
 
 以下屏幕截图显示了基本示例工作流：
 
@@ -26,13 +26,13 @@ ms.locfileid: "110373274"
 
 完成本快速入门教程后，你将了解以下基本步骤：
 
-* 创建在多租户逻辑应用服务环境中运行的逻辑应用资源。
+* 创建在多租户 Azure 逻辑应用环境中运行的逻辑应用资源。
 * 选择空白逻辑应用模板。
 * 添加一个指定运行工作流的时间的触发器。
 * 添加一个在触发器触发后执行任务的操作。
 * 运行工作流。
 
-要使用其他工具创建并管理逻辑应用，请查看以下其他逻辑应用快速入门：
+要使用其他工具创建并管理逻辑应用资源，请查看以下其他 Azure 逻辑应用快速入门：
 
 * [在 Visual Studio Code 中创建和管理逻辑应用](quickstart-create-logic-apps-visual-studio-code.md)
 * [在 Visual Studio 中创建和管理逻辑应用](quickstart-create-logic-apps-with-visual-studio.md)
@@ -42,16 +42,16 @@ ms.locfileid: "110373274"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果还没有 Azure 订阅，可以在开始前[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Azure 帐户和订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 逻辑应用支持的服务（例如 Office 365 Outlook 或 Outlook.com）提供的电子邮件帐户。 对于其他受支持的电子邮件提供程序，请查看[逻辑应用的连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)。
+* 逻辑应用支持的服务（例如 Office 365 Outlook 或 Outlook.com）提供的电子邮件帐户。 对于其他受支持的电子邮件提供程序，请查看[Azure 逻辑应用的连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)。
 
   > [!NOTE]
   > 如果要使用 [Gmail 连接器](/connectors/gmail/)，则只有 G-Suite 帐户可以在 Azure 逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则除非[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)，否则只能将此连接器与 Google 批准的特定服务一起使用。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
-* 如果具有仅限流量流经特定 IP 地址的防火墙，请将该防火墙设置为允许访问该逻辑应用所在的 Azure 区域中的逻辑应用服务或运行时使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。
+* 如果具有限制流量流经特定 IP 地址的防火墙，将防火墙设置为，允许访问你创建逻辑应用工作流的 Azure 区域内的逻辑应用服务使用的[入站](logic-apps-limits-and-config.md#inbound)和[出站](logic-apps-limits-and-config.md#outbound) IP 地址。
 
-  此示例还使用 RSS 和 Office 365 Outlook 连接器，它们均由 [Microsoft 托管](../connectors/managed.md)。 这些连接器要求将防火墙设置为允许对逻辑应用的 Azure 区域中的所有[托管连接器出站 IP 地址](logic-apps-limits-and-config.md#outbound)进行访问。
+  此示例使用 RSS 和 Office 365 Outlook 连接器，它们均由 [Microsoft 托管](../connectors/managed.md)。 这些连接器要求将防火墙设置为允许访问 Azure 区域中逻辑应用资源的所有[托管连接器出站 IP 地址](/connectors/common/outbound-ip-addresses)。
 
 <a name="create-logic-app-resource"></a>
 
@@ -63,39 +63,37 @@ ms.locfileid: "110373274"
 
    ![显示 Azure 门户搜索框的屏幕截图，其中包含搜索词“逻辑应用”，并且结果中的“逻辑应用”处于选中状态。](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
 
-1. 在“逻辑应用”页上，选择“添加” > “使用量”  。
+1. 在“逻辑应用”页上，选择“添加” 。
 
-   此步骤会创建一个在多租户逻辑应用服务环境中运行并使用[使用量定价模型](logic-apps-pricing.md)的逻辑应用资源。
+   ![显示 Azure 门户和逻辑应用服务页的屏幕截图，其中选中了“添加”选项。](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
-   ![显示 Azure 门户和包含逻辑应用列表的逻辑应用服务页，其中“添加”菜单处于打开状态，并已选中“使用量”。](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
+1. 在“创建逻辑应用”窗格中，选择要使用的 Azure 订阅，为逻辑应用资源创建新的[资源组](../azure-resource-manager/management/overview.md#terminology)，并提供有关逻辑应用资源的基本详细信息。
 
-1. 在“逻辑应用”窗格上，为逻辑应用提供基本的详细信息和设置。 为此示例逻辑应用创建新的[资源组](../azure-resource-manager/management/overview.md#terminology)。
-
-   | 属性 | 值 | 描述 |
+   | 属性 | 值 | 说明 |
    |----------|-------|-------------|
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅的名称。 |
    | **资源组** | <*Azure-resource-group-name*> | [Azure 资源组的名称](../azure-resource-manager/management/overview.md#terminology)必须在区域中是唯一的。 此示例使用“My-First-LA-RG”。 |
-   | **逻辑应用名称** | <*logic-app-name*> | 逻辑应用的名称，该名称必须在区域中是唯一的。 此示例使用“My-First-Logic-App”。 <p><p>**重要说明**：此名称只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号 `(``)` 和句点 (`.`)。  |
-   | **区域** | <*Azure-region*> | 要在其中存储应用信息的 Azure 数据中心区域。 此示例使用“美国西部”。 |
-   | **与集成服务环境关联** | 关 | 仅当要将此逻辑应用部署到[集成服务环境](connect-virtual-network-vnet-isolated-environment-overview.md)时，才选择此选项。 对于本示例，请勿选择此选项。 |
-   | **启用日志分析** | 关 | 只在要启用诊断日志记录时，才选择此选项。 对于本示例，请勿选择此选项。 |
+   | **Type** | **消耗** | 用于资源的逻辑应用资源类型和计费模型： <p><p>- **消耗**：此逻辑应用资源类型在全局多租户 Azure 逻辑应用中运行，并使用[消耗计费模型](logic-apps-pricing.md#consumption-pricing)。 此示例使用“消耗”模型。 <p>- **标准**：此逻辑应用资源类型在单租户 Azure 逻辑应用中运行，并使用[标准计费模型](logic-apps-pricing.md#standard-pricing)。 |
+   | **逻辑应用名称** | <*logic-app-name*> | 逻辑应用资源的名称，该名称必须在区域中是唯一的。 此示例使用“My-First-Logic-App”。 <p><p>**重要说明**：此名称只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号 `(``)` 和句点 (`.`)。  |
+   | **区域** | <*Azure-region*> | 要在其中存储应用信息的 Azure 数据中心区域。 此示例使用“美国西部”。 <p>**注意**：如果订阅与[集成服务环境](connect-virtual-network-vnet-isolated-environment-overview.md)关联，则此列表包括这些环境。 |
+   | **启用日志分析** | **否** | 只在要启用诊断日志记录时，才更改此选项。 对于本示例，请勿选择此选项。 |
    ||||
 
-   ![显示 Azure 门户和逻辑应用创建页的屏幕截图，其中包含新逻辑应用的详细信息。](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
+   ![显示 Azure 门户和逻辑应用资源创建页的屏幕截图，其中包含新逻辑应用的详细信息。](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
 1. 准备就绪后，选择“查看 + 创建”。 在验证页上，确认所提供的详细信息，并选择“创建”。
 
 ## <a name="select-the-blank-template"></a>选择空白模板
 
-1. Azure 成功部署应用后，请选择“转到资源”。 或者通过在搜索框中键入名称来查找并选择逻辑应用。
+1. Azure 成功部署应用后，请选择“转到资源”。 或者通过在 Azure 搜索框中键入名称来查找并选择逻辑应用资源。
 
    ![显示资源部署页和选中的“转到资源”按钮的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
-   逻辑应用设计器打开并显示一个包含简介视频和常用触发器的页面。
+   工作流设计器打开并显示一个包含简介视频和常用触发器的页面。
 
-1. 在“模板”下选择“空白逻辑应用”。
+1. 在“模板”下，选择“空白逻辑应用”。
 
-   ![显示逻辑应用设计器模板库和所选模板“空白逻辑应用”的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
+   ![显示工作流设计器、模板库和所选模板“空白逻辑应用”的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
    选择模板后，设计器会显示一个空白的工作流图面。
 
@@ -103,15 +101,15 @@ ms.locfileid: "110373274"
 
 ## <a name="add-the-trigger"></a>添加触发器
 
-工作流始终以单个[触发器](../logic-apps/logic-apps-overview.md#how-do-logic-apps-work)开始，该触发器指定在工作流中运行任何操作之前要满足的条件。 每当触发器触发时，逻辑应用都会创建并运行工作流实例。 如果触发器没有触发，则不会创建或运行任何实例。 可以通过在不同的触发器中进行选择来启动工作流。
+工作流始终以单个[触发器](../logic-apps/logic-apps-overview.md#how-do-logic-apps-work)开始，该触发器指定在工作流中运行任何操作之前要满足的条件。 每当触发器触发时，Azure 逻辑应用都会创建并运行工作流实例。 如果触发器没有触发，则不会创建或运行任何实例。 可以通过在不同的触发器中进行选择来启动工作流。
 
 此示例使用 RSS 触发器根据计划检查 RSS 源。 如果源中存在新项，触发器会触发，并且新工作流实例会开始运行。 如果在检查之间存在多个新项，则触发器会针对每个项触发，并为每个项运行一个单独的新工作流实例。
 
-1. 在“逻辑应用设计器”的搜索框下，选择“全部” 。
+1. 在工作流设计器的搜索框下，选择“全部”。
 
 1. 要查找 RSS 触发器，请在搜索框中输入 `rss`。 从“触发器”列表中，选择 RSS 触发器“发布源项时” 。
 
-   ![显示逻辑应用设计器的屏幕截图，其中包含搜索框中的“rss”和所选 RSS 触发器“发布源项时”。](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
+   ![显示工作流设计器的屏幕截图，其中包含搜索框中的“rss”和所选 RSS 触发器“发布源项时”。](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
 1. 触发器详细信息包含以下信息：
 
@@ -218,7 +216,7 @@ ms.locfileid: "110373274"
       | `Link:` | 源主链接 | 项的 URL |
       ||||
 
-      ![显示逻辑应用设计器的屏幕截图，其中包含“发送电子邮件”操作和“正文”框中选定的属性。](./media/quickstart-create-first-logic-app-workflow/send-email-body.png)
+      ![显示工作流设计器的屏幕截图，其中包含“发送电子邮件”操作和“正文”框中选定的属性。](./media/quickstart-create-first-logic-app-workflow/send-email-body.png)
 
 1. 保存逻辑应用。 在设计器工具栏上选择“保存”。 
 
@@ -226,11 +224,11 @@ ms.locfileid: "110373274"
 
 ## <a name="run-your-workflow"></a>运行工作流
 
-要检查工作流是否正常运行，可以等待触发器根据设置计划检查 RSS 源的操作完成。 或者通过选择逻辑应用设计器工具栏上的“运行”来手动运行工作流，如以下屏幕截图所示。 
+要检查工作流是否正常运行，可以等待触发器根据设置计划检查 RSS 源的操作完成。 或者通过选择工作流设计器工具栏上的“运行”来手动运行工作流，如以下屏幕截图所示。
 
-![显示逻辑应用设计器和在设计器工具栏上选中的“运行”按钮的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/run-logic-app-test.png)
+![显示工作流设计器和在设计器工具栏上选中的“运行”按钮的屏幕截图。](./media/quickstart-create-first-logic-app-workflow/run-logic-app-test.png)
 
-如果 RSS 源有新项，工作流会为每个新项发送一封电子邮件。 否则，工作流会等到下一个间隔再次检查 RSS 源。 
+如果 RSS 源有新项，工作流会为每个新项发送一封电子邮件。 否则，工作流会等到下一个间隔再次检查 RSS 源。
 
 以下屏幕截图显示由示例工作流发送的示例电子邮件。 电子邮件包括所选的每个触发器输出的详细信息，以及每个项目所包含的说明性文本。
 
@@ -241,11 +239,12 @@ ms.locfileid: "110373274"
 如果未按预期接收到来自工作流的电子邮件：
 
 * 请检查电子邮件帐户的垃圾邮件文件夹，以防错误筛选了邮件。
+
 * 请确保正在使用的 RSS 源自上次计划或手动检查后已发布项目。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成此快速入门后，请通过删除为此示例创建的资源组来清理逻辑应用和所有相关资源。
+完成此快速入门后，请通过删除为此示例创建的资源组来删除示例逻辑应用资源和所有相关资源。
 
 1. 在 Azure 搜索框中，输入 `resource groups`，然后选择“资源组”。
 

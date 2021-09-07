@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 9fdcd8a82b901e00e28f0ddd89ba53d9a2e3fbae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9a51d7266be8c8565ddd84afa0989951896af1b
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952666"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032870"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>教程：Azure Active Directory 单一登录 (SSO) 与 uniFLOW Online 的集成
 
@@ -37,7 +37,7 @@ ms.locfileid: "104952666"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* uniFLOW Online 支持 **SP** 发起的 SSO
+* uniFLOW Online 支持 SP 发起的 SSO。
 
 ## <a name="add-uniflow-online-from-the-gallery"></a>从库中添加“uniFLOW Online”
 
@@ -73,30 +73,34 @@ ms.locfileid: "104952666"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，使用以下模式之一键入 URL：
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式之一键入 URL：
 
-    - `https://<tenant_domain_name>.eu.uniflowonline.com`
-    - `https://<tenant_domain_name>.us.uniflowonline.com`
-    - `https://<tenant_domain_name>.sg.uniflowonline.com`
-    - `https://<tenant_domain_name>.jp.uniflowonline.com`
-    - `https://<tenant_domain_name>.au.uniflowonline.com`
+    | **Identifier** |
+    |---------|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com` |
+    | `https://<tenant_domain_name>.us.uniflowonline.com` |
+    | `https://<tenant_domain_name>.sg.uniflowonline.com` |
+    | `https://<tenant_domain_name>.jp.uniflowonline.com` |
+    | `https://<tenant_domain_name>.au.uniflowonline.com` |
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式之一键入 URL：
+    b. 在“登录 URL”文本框中，使用以下模式之一键入 URL：
 
-    - `https://<tenant_domain_name>.eu.uniflowonline.com`
-    - `https://<tenant_domain_name>.us.uniflowonline.com`
-    - `https://<tenant_domain_name>.sg.uniflowonline.com`
-    - `https://<tenant_domain_name>.jp.uniflowonline.com`
-    - `https://<tenant_domain_name>.au.uniflowonline.com`
+    | **登录 URL** |
+    |---------|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com` |
+    | `https://<tenant_domain_name>.us.uniflowonline.com` |
+    | `https://<tenant_domain_name>.sg.uniflowonline.com` |
+    | `https://<tenant_domain_name>.jp.uniflowonline.com` |
+    | `https://<tenant_domain_name>.au.uniflowonline.com` |
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [uniFLOW Online 客户端支持团队](mailto:support@nt-ware.com)获取这些值。 还可参考 Azure 门户的“基本 SAML 配置”部分中显示的模式，或者参考你的 uniFLOW Online 租户中显示的回复 URL。 
+    > 这些不是实际值。 使用实际标识符和登录 URL 更新这些值。 请联系 [uniFLOW Online 客户端支持团队](mailto:support@nt-ware.com)获取这些值。 还可参考 Azure 门户的“基本 SAML 配置”部分中显示的模式，或者参考你的 uniFLOW Online 租户中显示的回复 URL。 
 
-1. uniFLOW Online 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
+1. uniFLOW Online 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 映射到 **user.userprincipalname**。 uniFLOW Online 应用程序要求通过 user.objectid 对 nameidentifier 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
 
-    ![image](common/default-attributes.png)
+    ![屏幕截图显示“用户属性”窗格，其中突出显示了“编辑”图标。](common/edit-attribute.png)
 
 1. 除上述属性以外，uniFLOW Online 应用程序还要求在 SAML 响应中传回下面所述的其他几个属性。 这些属性也是预先填充的，但可以根据要求查看它们。
 
@@ -145,21 +149,21 @@ ms.locfileid: "104952666"
 
 1. 从左侧导航窗格中，选择“用户”选项卡。 
 
-    ![显示从 uniflow 在线网站选择了“用户”的屏幕截图。](./media/uniflow-online-tutorial/configure-1.png)
+    ![显示从 uniflow 在线网站选择了“用户”的屏幕截图。](./media/uniflow-online-tutorial/user.png)
 
 1. 单击“标识提供者”。 
 
-    ![显示选择了“标识提供者”的屏幕截图。](./media/uniflow-online-tutorial/configure-2.png)
+    ![显示选择了“标识提供者”的屏幕截图。](./media/uniflow-online-tutorial/profile.png)
 
 1. 单击“添加标识提供者”。 
 
-    ![显示选择了“添加标识提供者”的屏幕截图。](./media/uniflow-online-tutorial/configure-3.png)
+    ![显示选择了“添加标识提供者”的屏幕截图。](./media/uniflow-online-tutorial/add-profile.png)
 
 1. 在“添加标识提供者”部分执行以下步骤： 
 
-    ![显示“添加标识提供者”部分的屏幕截图，你可以在其中输入所述值。](./media/uniflow-online-tutorial/configure-4.png)
+    ![显示“添加标识提供者”部分的屏幕截图，你可以在其中输入所述值。](./media/uniflow-online-tutorial/configuration.png)
 
-    a. 输入显示名称，例如：*AzureAD SSO*。
+    a. 输入显示名称，例如：**AzureAD SSO**。
 
     b. 对于“提供者类型”，请从下拉列表中选择“WS 联合身份验证”选项。  
 
@@ -169,13 +173,13 @@ ms.locfileid: "104952666"
 
 1. 在“常规”选项卡上执行以下步骤： 
 
-    ![显示“常规”选项卡的屏幕截图，你可以在其中输入所述值。](./media/uniflow-online-tutorial/configure-5.png)
+    ![显示“常规”选项卡的屏幕截图，你可以在其中输入所述值。](./media/uniflow-online-tutorial/general-tab.png)
 
-    a. 输入显示名称，例如：*AzureAD SSO*。
+    a. 输入显示名称，例如：**AzureAD SSO**。
 
     b. 为“ADFS 联合元数据”选择“从 URL”选项。  
 
-    c. 在“联合元数据 URI”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”值。  
+    c. 在“联合元数据 URL”文本框中，粘贴从 Azure 门户复制的“应用联合元数据 URL”值。 
 
     d. 为“标识提供者”选择“已启用”。  
 

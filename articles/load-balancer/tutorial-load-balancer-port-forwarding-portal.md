@@ -2,345 +2,364 @@
 title: 教程：配置端口转发 - Azure 门户
 titleSuffix: Azure Load Balancer
 description: 本教程介绍了如何使用 Azure 负载均衡器配置端口转发来创建与 Azure 虚拟网络中的 VM 的连接。
-services: load-balancer
-documentationcenter: na
 author: asudbring
-manager: twooley
-ms.service: load-balancer
-ms.devlang: na
-ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/26/2019
 ms.author: allensu
-ms.custom: seodec18
-ms.openlocfilehash: 27851a44dbe3085610fadc8b9bdaf400b4d2876c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.service: load-balancer
+ms.topic: tutorial
+ms.date: 8/26/2021
+ms.custom: template-tutorial
+ms.openlocfilehash: 0d36be9f0ba0fc9e1b29e3fdaf0b3f9857db2204
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056056"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112081"
 ---
-# <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>教程：使用门户在 Azure 负载均衡器中配置端口转发
+# <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-azure-portal"></a>教程：使用 Azure 门户在 Azure 负载均衡器中配置端口转发
 
 端口转发使你可以使用 Azure 负载均衡器公共 IP 地址和端口号连接到 Azure 虚拟网络中的虚拟机 (VM)。 
 
-在本教程中，你将在 Azure 负载均衡器上设置端口转发。 学习如何：
+在本教程中，你将了解如何：
 
 > [!div class="checklist"]
-> * 创建公共标准负载均衡器来均衡 VM 上的网络流量。 
-> * 使用网络安全组 (NSG) 规则创建虚拟网络和 VM。 
-> * 将 VM 添加到负载均衡器后端地址池。
-> * 创建负载均衡器运行状况探测和流量规则。
-> * 创建负载均衡器入站 NAT 端口转发规则。
-> * 在 VM 上安装和配置 IIS，以查看负载均衡和运行中的端口转发。
-
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-
-对于本教程中的所有步骤，请通过 [https://portal.azure.com](https://portal.azure.com) 登录 Azure 门户。
+> * 创建虚拟网络和虚拟机。
+> * 为后端池的出站 Internet 访问创建 NAT 网关。
+> * 创建具有前端 IP、运行状况探测、后端配置、负载均衡规则和入站 NAT 规则的标准 SKU 公共负载均衡器。
+> * 在 VM 上安装和配置 Web 服务器，以演示端口转发和负载均衡规则。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
+## <a name="create-virtual-network-and-virtual-machines"></a>创建虚拟网络和虚拟机
 
-首先，创建公共标准负载均衡器，以便均衡 VM 上的流量负载。 标准负载均衡器仅支持标准公共 IP 地址。 创建标准负载均衡器时，还要创建配置为负载均衡器前端且默认情况下命名为“LoadBalancerFrontEnd”的新的标准公共 IP 地址  。 
+本教程中的资源需要用到虚拟网络和子网。 在本部分中，你将为后续步骤创建虚拟网络和虚拟机。
 
-1. 在屏幕的左上方，单击“创建资源”   > “网络”   > “负载均衡器”  。
-2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”  ：
+1. 登录 [Azure 门户](https://portal.azure.com)。
+
+2. 在门户顶部的搜索框中，输入“虚拟机”。 在搜索结果中，选择“虚拟机”。
+
+3. 在“虚拟机”中，选择“+ 创建” > “虚拟机”。
+   
+4. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    | **项目详细信息** |   |
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“新建”。 </br> 输入“TutorialLBPF-rg”。 </br> 选择“确定”。 |
+    | **实例详细信息** |    |
+    | 虚拟机名称 | 输入“myVM1”。 |
+    | 区域 | 输入“(美国)美国西部 2”。 |
+    | 可用性选项 | 选择“可用性区域”。 |
+    | 可用性区域 | 输入 **1**。 |
+    | 映像 | 选择“Ubuntu Server 20.04 LTS - Gen2”。 |
+    | Azure Spot 实例 | 保留默认值“未选中”。 |
+    | 大小 | 选择 VM 大小。 |
+    | **管理员帐户** |    |
+    | 身份验证类型 | 选择“SSH 公钥”。 |
+    | 用户名 | 输入“azureuser”。 |
+    | SSH 公钥源 | 选择“生成新密钥对”。 |
+    | 密钥对名称 | 输入“myKey”。 |
+    | **入站端口规则** |    |
+    | 公共入站端口 | 选择“无”。 |
+
+    :::image type="content" source="./media/tutorial-load-balancer-port-forwarding-portal/create-vm-portal.png" alt-text="“创建虚拟机”的屏幕截图。":::
+
+5. 选择“网络”选项卡，或选择“下一步: **磁盘”，然后选择“下一步:** 网络”。
+
+6. 在“网络”中，输入或选择以下信息。
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    | **网络接口** |   |
+    | 虚拟网络 | 选择“新建”。 </br> 在“名称”中输入“myVNet” 。 </br> 在“地址空间”的“地址范围”下，输入 10.1.0.0/16 。 </br> 在“子网”的“子网名称”下，输入“myBackendSubnet”  。 </br> 在“地址范围”中，输入 10.1.0.0/24 。 </br> 选择“确定”。 |
+    | 子网 | 选择“myBackendSubnet”。 |
+    | 公共 IP | 选择“无”。 |
+    | NIC 网络安全组 | 选择“高级”。 |
+    | 配置网络安全组 | 选择“新建”。 </br> 在“名称”中，输入“myNSG” 。 </br> 在“入站规则”下，选择“+ 添加入站规则” 。 </br> 在“服务”中，选择“HTTP” 。 </br> 在“优先级”中，输入 100。 </br> 在“名称”中，输入“myNSGRule” 。 </br> 选择 **添加** 。 </br> 选择“确定”。 |
+
+7. 选择“查看 + 创建”选项卡，或选择页面底部的“查看 + 创建”按钮 。
+
+8. 选择“创建”。
+
+9. 在“生成新密钥对”提示下，选择“下载私钥并创建资源” 。 下载的密钥文件名为 myKey.pem。 确保你知道 .pem 文件的下载位置，在后面的步骤中你将用到密钥文件的路径。
+
+8. 按照步骤 1 到 8 操作，使用以下值创建另一个 VM，所有其他设置均与 myVM1 相同：
+
+    | 设置 | VM 2 |
+    | ------- | ----- |
+    | **基础知识** |    |
+    | **实例详细信息** |   |
+    | 虚拟机名称 | **myVM2** |
+    | 可用性区域 | **2** |
+    | **管理员帐户** |   |
+    | 身份验证类型 | **SSH 公钥** |
+    | SSH 公钥源 | 选择“使用 Azure 中存储的现有密钥”。 |
+    | 已存储密钥 | 选择“myKey”。 |
+    | **联网** |   |
+    | **网络接口** |  |
+    | 公共 IP | 选择“无”。 |
+    | NIC 网络安全组 | 选择“高级”。 |
+    | 配置网络安全组 | 选择现有的“myNSG” |
+
+## <a name="create-nat-gateway"></a>创建 NAT 网关
+
+在本部分中，你将为虚拟网络中的资源创建用于出站 Internet 访问的 NAT 网关。 
+
+1. 在门户顶部的搜索框中，输入“NAT 网关”。 在搜索结果中选择“NAT 网关”。
+
+2. 在“NAT 网关”中，选择“+ 创建” 。
+
+3. 在“创建网络地址转换(NAT)网关”中，输入或选择以下信息：
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    | **项目详细信息** |   |
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“TutorialLBPF-rg”。 |
+    | **实例详细信息** |    |
+    | NAT 网关名称 | 输入 myNATGateway。 |
+    | 可用性区域 | 选择“无”。 |
+    | 空闲超时（分钟） | 输入 **15**。 |
+
+4. 选择“出站 IP”选项卡，或者选择页面底部的“下一步: 出站 IP”按钮 。
+
+5. 在“出站 IP”选项卡中，选择“公共 IP 地址”旁边的“创建新的公共 IP 地址”  。
+
+6. 在“添加公共 IP 地址”的“名称”中，输入“myNATGatewayIP”  。
+
+7. 选择“确定”。
+
+8. 选择“子网”选项卡，或者选择页面底部的“下一步: 子网”按钮 。
+
+9. 在“子网”选项卡的“虚拟网络”中，选择“myVNet”  。
+
+10. 在“子网名称”下选择“myBackendSubnet” 。
+
+11. 选择页面底部的“查看 + 创建”蓝色按钮，或选择“查看 + 创建”选项卡 。
+
+12. 选择“创建”。
+
+## <a name="create-load-balancer"></a>创建负载均衡器
+
+在本部分中，你将创建负载均衡器。 创建过程中将配置前端 IP、后端池、负载均衡和入站 NAT 规则。
+
+1. 在门户顶部的搜索框中，输入“负载均衡器”。 在搜索结果中选择“负载均衡器”。
+
+2. 在“负载均衡器”页上，选择“创建” 。
+
+3. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息： 
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
+    | **项目详细信息** |   |
     | 订阅               | 选择订阅。    |    
-    | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLB   。|
-    | 名称                   | *myLoadBalancer*                                   |
-    | 区域         | 选择“西欧”。                                        |
+    | 资源组         | 选择“TutorialLBPF-rg”。 |
+    | **实例详细信息** |   |
+    | 名称                   | 输入“myLoadBalancer”                                   |
+    | 区域         | 选择“(US) 美国西部 2”。                                        |
     | 类型          | 选择“公共”。                                        |
-    | SKU           | 选择“标准”。                          |
-    | 公共 IP 地址 | 选择“新建”。 |
-    | 公共 IP 地址名称              | 在文本框中键入 myPublicIP。   |
-    |可用性区域| 选择“区域冗余”  。    |
-     
-    >[!NOTE]
-     >确保在支持可用性区域的位置为其创建负载均衡器和所有资源。 有关详细信息，请参阅[支持可用性区域的区域](../availability-zones/az-region.md)。 
+    | SKU           | 保留默认值“标准”。 |
+    | 层          | 保留默认值“区域”。 |
 
-3. 在“查看 + 创建”选项卡中，单击“创建”   。  
-  
-## <a name="create-and-configure-back-end-servers"></a>创建并配置后端服务器
 
-使用两台虚拟机创建虚拟网络，并将 VM 添加到负载均衡器的后端池。 
+4. 选择页面底部的“下一步: 前端 IP 配置”。
 
-## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
+5. 在“前端 IP 配置”中，选择“+ 添加前端 IP” 。
 
-在本部分中，你需要将步骤中的以下参数替换为以下信息：
+6. 在“名称”中输入“LoadBalancerFrontend” 。
 
-| 参数                   | 值                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB（选择现有资源组） |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | 西欧      |
-| **\<IPv4-address-space>**   | 10.3.0.0\16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.3.0.0\24          |
+7. 对于“IP 版本”，选择“IPv4”或“IPv6”  。
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+    > [!NOTE]
+    > IPv6 目前不支持路由首选项或跨区域负载平衡（全局层）。
 
-### <a name="create-vms-and-add-them-to-the-load-balancer-back-end-pool"></a>创建 VM 并将其添加到负载均衡器后端池
+8. 对于“IP 类型”，选择“IP 地址” 。
 
-1. 在门户左上角，选择“创建资源” > “计算” > “Windows Server 2016 Datacenter”。 
-   
-1. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择以下值： 
-   - **订阅** > **资源组**：下拉并选择“MyResourceGroupLB”。
-   - **虚拟机名称**：键入“MyVM1”。
-   - **区域**：选择“西欧”。 
-   - **用户名**：键入“azureuser”。
-   - 密码：键入“Azure1234567”。 
-     在“确认密码”字段中，重新键入该密码。
-   
-1. 选择“网络”选项卡，或选择“下一步: **磁盘”，然后选择“下一步:** 网络”。 
-   
-   确保选中以下项：
-   - **虚拟网络**：**MyVNet**
-   - **子网**：**MyBackendSubnet**
-   
-1. 在“公共 IP”下，选择“新建”，在“创建公共 IP 地址”页面上选择“标准”，然后选择“确定”。 
-   
-1. 在“网络安全组”下选择“高级”，以创建新的网络安全组（简称 NSG，一种防火墙）。 
-   1. 在“配置网络安全组”字段中，选择“新建”。  
-   1. 键入 *MyNetworkSecurityGroup*，然后选择“确定”。 
-   
-   >[!NOTE]
-   >请注意，默认情况下，NSG 已有打开端口 3389（远程桌面 (RDP) 端口）的传入规则。
-   
-1. 将 VM 添加到创建的负载均衡器后端池：
-   
-   1. 在“负载均衡” > “将此虚拟机置于现有负载均衡解决方案之后？”下，选择“确定”  。 
-   1. 对于“负载均衡选项”，下拉并选择“Azure 负载均衡器”。 
-   1. 对于“选择负载均衡器”，下拉并选择“MyLoadBalancer”。 
-   1. 在“选择后端池”下，选择“新建”，然后输入“MyBackendPool”，再选择“创建”。 
-   
-   ![创建虚拟网络](./media/tutorial-load-balancer-port-forwarding-portal/create-vm-networking.png)
-   
-1. 选择“管理”选项卡，或者选择“下一步” > “管理”。 在“监视”下，将“启动诊断”设置为“关闭”。
-   
-1. 选择“查看 + 创建”。
-   
-1. 检查设置，验证成功后，选择“创建”。 
+    > [!NOTE]
+    > 有关 IP 前缀的详细信息，请参阅 [Azure 公共 IP 地址前缀](../virtual-network/public-ip-address-prefix.md)。
 
-1. 按步骤创建另一个 VM，其名称为 *MyVM2*，所有其他设置与 MyVM1 相同。 
-   
-   对于“网络安全组”，选择“高级”后，下拉并选择已创建的“MyNetworkSecurityGroup”。 
-   
-   在“选择后端池”，确保选中“MyBackendPool”。 
+9. 在“公共 IP 地址”中选择“新建” 。
 
-### <a name="create-an-nsg-rule-for-the-vms"></a>为 VM 创建 NSG 规则
+10. 在“添加公共 IP 地址”的“名称”中，输入“myPublicIP”  。
 
-为 VM 创建网络安全组 (NSG) 规则，以允许入站 Internet (HTTP) 连接。
+11. 在“可用性区域”中选择“区域冗余” 。
 
->[!NOTE]
->默认情况下，NSG 已有打开端口 3389（远程桌面 (RDP) 端口）的规则。
+    > [!NOTE]
+    > 在提供[可用性区域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)设置的区域中，可以选择无区域（默认选项）、特定区域或区域冗余。 请根据特定的域故障要求做出选择。 在不提供“可用性区域”设置的区域中，不会显示此字段。 </br> 有关可用性区域的详细信息，请参阅[可用性区域概述](../availability-zones/az-overview.md)。
 
-1. 在左侧菜单中选择“所有资源”。 在资源列表中，选择“MyResourceGroupLB”资源组中的“MyNetworkSecurityGroup”。
-   
-1. 在“设置”下，依次选择“入站安全规则”、“添加”。  
-   
-1. 在“添加入站安全规则”对话框中，键入或选择以下内容：
-   
-   - **源**：选择“服务标记”。  
-   - **源服务标记**：选择“Internet”。 
-   - **目标端口范围**：键入 *80*。
-   - **协议**：选择“TCP”。 
-   - **操作**：选择“允许”。  
-   - **优先级**：键入 *100*。 
-   - **名称**：键入 *MyHTTPRule*。 
-   - **说明**：键入“允许 HTTP”。 
-   
-1. 选择“添加”  。 
-   
-   ![创建 NSG 规则](./media/tutorial-load-balancer-port-forwarding-portal/8-load-balancer-nsg-rules.png)
-   
-## <a name="create-load-balancer-resources"></a>创建负载均衡器资源
+12. 保留“路由首选项”的默认值“Microsoft 网络” 。
 
-在本节，检查负载均衡器后端池，并配置负载均衡器运行状况探测和流量规则。
+13. 选择“确定” 。
 
-### <a name="view-the-back-end-address-pool"></a>查看后端地址池
+14. 选择“添加”  。
 
-为了将流量分发到 VM，负载均衡器使用后端地址池，其中包含连接到负载均衡器的虚拟网络接口 (NIC) 的 IP 地址。 
+15. 选择页面底部的“下一步: 后端池”。
 
-创建负载均衡器后端池，并在创建 VM 后将 VM 添加到其中。 还可以创建后端池，并从负载均衡器“后端池”页面添加或删除 VM。 
+16. 在“后端池”选项卡上，选择“+ 添加后端池” 。
 
-1. 在左侧菜单中选择“所有资源”，然后在资源列表中选择“MyLoadBalancer”。
-   
-1. 在“设置”下，选择“后端池”。 
-   
-1. 在“后端池”页上展开 **MyBackendPool**，确保 **VM1** 和 **VM2** 都已列出。
+17. 在“添加后端池”中，输入或选择以下信息。
 
-1. 选择“MyBackendPool”。 
-   
-   在“MyBackendPool”页面上的“虚拟机”和“IP 地址”下，可在池中添加或删除可用的 VM。
+    | 设置 | 值 |
+    | ------- | ----- |
+    | 名称 | 输入“myBackendPool”。 |
+    | 虚拟网络 | 选择“myVNet (TutorialLBPF-rg)”。 |
+    | 后端池配置 | 选择“NIC”。 |
+    | IP 版本 | 选择“IPv4”。 |
 
-可以通过在“后端池”页面上选择“添加”来创建新的后端池。
+18. 在“虚拟机”中，选择“+ 添加”。
 
-### <a name="create-a-health-probe"></a>创建运行状况探测器
+19. 在“向后端池添加虚拟机”中，选中 myVM1 和 myVM2 旁边的复选框  。
 
-若要允许负载均衡器监视 VM 状态，请使用运行状况探测。 运行状况探测器基于其对运行状况检查的响应，从负载均衡器中动态添加或删除 VM。 
+20. 选择 **添加** 。
 
-1. 在左侧菜单中选择“所有资源”，然后在资源列表中选择“MyLoadBalancer”。 
-   
-1. 在“设置”下，依次选择“运行状况探测”、“添加”。  
-   
-1. 在“添加运行状况探测”页上，键入或选择以下值：
-   
-   - **名称**：键入 *MyHealthProbe*。
-   - **协议**：下拉并选择“HTTP”。 
-   - **端口**：键入 *80*。 
-   - **路径**：接受 */* 作为默认 URI。 可以将此值替换为任何其他的 URI。 
-   - **时间间隔**：键入 *15*。 时间间隔是两次探测尝试之间的秒数。
-   - **不正常阈值**：键入 *2*。 此值是将 VM 视为不正常之前发生的连续探测失败次数。
-   
-1. 选择“确定”。
-   
-   ![添加探测](./media/tutorial-load-balancer-port-forwarding-portal/4-load-balancer-probes.png)
+21. 选择 **添加** 。
 
-### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
+22. 选择页面底部的“下一步: 入站规则”按钮。
 
-负载均衡器规则定义如何将流量分配给 VM。 此规则定义传入流量的前端 IP 配置、用于接收流量的后端 IP 池，以及所需的源和目标端口。 
+23. 在“入站规则”选项卡的“负载均衡规则”中，选择“+ 添加负载均衡规则”  。
 
-名为 **MyLoadBalancerRule** 的负载均衡器规则在前端 **LoadBalancerFrontEnd** 中侦听端口 80。 该规则也在端口 80 上将网络流量发送到后端地址池 **MyBackendPool**。 
+24. 在“添加负载均衡规则”中，输入或选择以下信息。
 
-1. 在左侧菜单中选择“所有资源”，然后在资源列表中选择“MyLoadBalancer”。
-   
-1. 在“设置”下，依次选择“负载均衡规则”、“添加”。
-   
-1. 在“添加负载均衡规则”页上，键入或选择以下值：
-   
-   - **名称**：键入 *MyLoadBalancerRule*。
-   - **协议**：选择“TCP”。
-   - **端口**：键入 *80*。
-   - **后端端口**：键入 *80*。
-   - **后端池**：选择“MyBackendPool”。
-   - **运行状况探测**：选择“MyHealthProbe”。 
-   
-1. 选择“确定”。
-   
-   ![添加负载均衡器规则](./media/tutorial-load-balancer-port-forwarding-portal/5-load-balancing-rules.png)
+    | 设置 | 值 |
+    | ------- | ----- |
+    | 名称 | 输入“myHTTPRule” |
+    | IP 版本 | 根据你的要求选择“IPv4”或“IPv6” 。 |
+    | 前端 IP 地址 | 选择“LoadBalancerFrontend”。 |
+    | 协议 | 选择“TCP”。 |
+    | 端口 | 输入 **80**。 |
+    | 后端端口 | 输入 **80**。 |
+    | 后端池 | 选择“myBackendPool”。 |
+    | 运行状况探测 | 选择“新建”。 </br> 在“名称”中，输入“myHealthProbe” 。 </br> 在“协议”中选择“HTTP” 。 </br> 将剩余的字段保留默认设置，然后选择“确定”。 |
+    | 会话暂留 | 选择“无”。 |
+    | 空闲超时（分钟） | 输入或选择 15。 |
+    | TCP 重置 | 选择“启用”。  |
+    | 浮动 IP | 选择“已禁用”。  |
+    | 出站源网络地址转换 (SNAT) | 保留默认值“(建议)使用出站规则为后端池成员提供对 Internet 的访问权限。” |
 
-## <a name="create-an-inbound-nat-port-forwarding-rule"></a>创建入站 NAT 端口转发规则
+25. 选择 **添加** 。
 
-创建负载均衡器入站网络地址转换 (NAT) 规则，以将流量从前端 IP 地址的特定端口转发到后端 VM 的特定端口。
+26. 在“入站规则”选项卡的“入站 NAT 规则”中，选择“+ 添加入站 NAT 规则”。
 
-1. 在左侧菜单中选择“所有资源”，然后在资源列表中选择“MyLoadBalancer”。
-   
-1. 在“设置”下，依次选择“入站 NAT 规则”和“添加”。 
-   
-1. 在“添加入站 NAT 规则”页上，键入或选择以下值：
-   
-   - 名称：键入“MyNATRuleVM1”。
-   - **端口**：键入 4221。
-   - **目标虚拟机**：从下拉列表中选择“MyVM1”。
-   - **网络 IP 配置** ：从下拉列表中选择“ipconfig1”。
-   - **端口映射**：选择“自定义”。
-   - **目标端口**：键入“3389”。
-   
-1. 选择“确定”。
-   
-1. 重复步骤，使用“端口”添加名为 MyNATRuleVM2 的入站 NAT 规则：4222 和 **目标虚拟机**：MyVM2。
+27. 在“添加入站 NAT 规则”中，输入或选择以下信息。
 
-## <a name="test-the-load-balancer"></a>测试负载均衡器
+    | 设置 | 值 |
+    | ------- | ----- |
+    | 名称 | 输入“myNATRuleVM1-221”。 |
+    | 前端 IP 地址 | 选择“LoadBalancerFrontend”。 |
+    | 服务 | 选择“自定义”。 |
+    | 协议 | 保留默认值“TCP”。 |
+    | 空闲超时(分钟) | 输入或选择 15。 |
+    | TCP 重置 | 选择“启用”。 |
+    | 端口 | 输入 221。 |
+    | 目标虚拟机 | 选择 myVM1。 |
+    | 网络 IP 配置 | 选择“ipconfig1 (10.1.0.4)”。 |
+    | 端口映射 | 选择“自定义”。 |
+    | 浮动 IP | 保留默认值“禁用”。 |
+    | 目标端口 | 输入 22。 |
 
-在本节中，将在后端服务器上安装 Internet Information Services (IIS)，并自定义默认网页以显示计算机名称。 然后，将使用负载均衡器的公共 IP 地址测试负载均衡器。 
+28. 选择 **添加** 。
 
-每个后端 VM 提供不同版本的默认 IIS 网页，因此可以看到负载均衡器在两个 VM 之间分发请求。
+29. 选择“+ 添加入站 NAT 规则”。
 
-### <a name="connect-to-the-vms-with-rdp"></a>通过 RDP 连接到 VM
+30. 在“添加入站 NAT 规则”中，输入或选择以下信息。
 
-使用远程桌面 (RDP) 连接到每个 VM。 
+    | 设置 | 值 |
+    | ------- | ----- |
+    | 名称 | 输入“myNATRuleVM2-222”。 |
+    | 前端 IP 地址 | 选择“LoadBalancerFrontend”。 |
+    | 服务 | 选择“自定义”。 |
+    | 协议 | 保留默认值“TCP”。 |
+    | 空闲超时(分钟) | 输入或选择 15。 |
+    | TCP 重置 | 选择“启用”。 |
+    | 端口 | 输入 222。 |
+    | 目标虚拟机 | 选择“myVM2”。 |
+    | 网络 IP 配置 | 选择“ipconfig1 (10.1.0.5)”。 |
+    | 端口映射 | 选择“自定义”。 |
+    | 浮动 IP | 保留默认值“禁用”。 |
+    | 目标端口 | 输入 22。 |
 
-1. 在门户的左侧菜单中选择“所有资源”。 在资源列表中，选择“MyResourceGroupLB”资源组中的每个 VM。
-   
-1. 在“概览”页上选择“连接”，然后选择“下载 RDP 文件”。 
-   
-1. 打开下载的 RDP 文件，然后选择“连接”。
-   
-1. 在“Windows 安全性”屏幕上选择“更多选择” ，然后选择“使用其他帐户”。 
-   
-   输入用户名 *azureuser* 和密码 *Azure1234567*，然后选择“确定”。
-   
-1. 使用“是”对任何证书请求进行响应。 
-   
-   VM 桌面会在新窗口中打开。 
+31. 选择 **添加** 。
 
-### <a name="install-iis-and-replace-the-default-iis-web-page"></a>安装 IIS 并替换默认 IIS 网页 
+32. 选择页面底部的“查看 + 创建”蓝色按钮。
 
-使用 PowerShell 安装 IIS，并将默认 IIS 网页替换为显示 VM 名称的页面。
+33. 选择“创建”。
 
-1. 在 MyVM1 和 MyVM2 上，通过“开始”菜单启动 **Windows PowerShell**。 
+## <a name="install-web-server"></a>安装 Web 服务器
 
-2. 运行以下命令，以便安装 IIS 并替换默认的 IIS 网页：
-   
-   ```powershell-interactive
-    # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
-    
-    # Remove default htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
-    
-    #Add custom htm file that displays server name
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
-    
-   ```
-   
-1. 选择“断开连接”，关闭与 MyVM1 和 MyVM2 的 RDP 连接。 请勿关闭 VM。
+在本部分中，你将根据入站 NAT 规则通过 SSH 连接到虚拟机，并安装 Web 服务器。
 
-### <a name="test-load-balancing"></a>测试负载均衡
+1. 在门户顶部的搜索框中，输入“负载均衡器”。 在搜索结果中选择“负载均衡器”。
 
-1. 在门户的“MyLoadBalancer”的“概览”页上，复制“公共 IP 地址”下的公共 IP 地址。 将鼠标悬停在地址上，选择“复制”图标对其进行复制。 在此示例中，它是 40.67.218.235。 
-   
-1. 将负载均衡器的公共 IP 地址 (40.67.218.235) 粘贴或键入到浏览器的地址栏中。 
-   
-   自定义的 IIS Web 服务器默认页会显示在浏览器中。 会显示 **Hello World from MyVM1** 或 **Hello World from MyVM2** 消息。
-   
-   ![新建 IIS 默认页](./media/tutorial-load-balancer-port-forwarding-portal/9-load-balancer-test.png) 
-   
-1. 刷新浏览器，可以看到负载均衡器在 VM 之间分配流量。 当负载均衡器将请求分配到每个后端 VM 时，有时会显示 **MyVM1** 页，有时会显示 **MyVM2** 页。
-   
-   >[!NOTE]
-   >可能需要在两次尝试之间清除浏览器缓存或打开新的浏览器窗口。
+2. 选择“myLoadBalancer”。
 
-## <a name="test-port-forwarding"></a>测试端口转发
+3. 在 myLoadBalancer 的“概述”页中，记下“公共 IP 地址”。  在本示例中，它为 20.190.2.163。
 
-通过端口转发，可以使用负载均衡器的 IP 地址和 NAT 规则中定义的前端端口值将桌面远程发送到后端 VM。 
+    :::image type="content" source="./media/tutorial-load-balancer-port-forwarding-portal/get-public-ip.png" alt-text="Azure 门户中公共 IP 的屏幕截图。":::
 
-1. 在门户的“MyLoadBalancer”的“概览”页上，复制公共 IP 地址。 将鼠标悬停在地址上，选择“复制”图标对其进行复制。 在此示例中，它是 40.67.218.235。 
-   
-1. 打开命令提示符，运用负载均衡器的公共 IP 地址和在 VM 的 NAT 规则中定义的前端端口，使用下面的命令用 MyVM2 创建远程桌面会话。 
-   
-   ```
-   mstsc /v:40.67.218.235:4222
-   ```
-  
-1. 打开下载的 RDP 文件，然后选择“连接”。
-   
-1. 在“Windows 安全性”屏幕上选择“更多选择” ，然后选择“使用其他帐户”。 
-   
-   输入用户名 *azureuser* 和密码 *Azure1234567*，然后选择“确定”。
-   
-1. 使用“是”对任何证书请求进行响应。 
-   
-   MyVM2 桌面会在新窗口中打开。 
+4. 如果使用的是 Mac 或 Linux 计算机，请打开 Bash 提示符。 如果使用的是 Windows 计算机，请打开 PowerShell 提示符。
 
-RDP 连接成功，因为入站 NAT 规则“MyNATRuleVM2”将流量从负载均衡器的前端端口 4222 定向到 MyVM2 的端口 3389（RDP 端口）。
+5. 在提示符下，通过 SSH 连接到 myVM1。 将 IP 地址替换为前面步骤中检索到的地址以及用于 myVM1 入站 NAT 规则的端口 221。 将 .pem 的路径替换为密钥文件下载位置的路径。
+
+    ```console
+    ssh -i .\Downloads\myKey.pem azureuser@20.190.2.163 -p 221
+    ```
+
+    > [!TIP]
+    > 下次在 Azure 中创建 VM 时，可以使用此次创建的 SSH 密钥。 下次创建 VM 时，只需为“SSH 公钥源”选择“使用存储在 Azure 中的密钥” 。 你的计算机上已有私钥，因此无需下载任何内容。
+
+6. 在 SSH 会话中更新包源，然后安装最新的 NGINX 包。
+
+    ```bash
+    sudo apt-get -y update
+    sudo apt-get -y install nginx
+    ``` 
+
+7. 输入 `Exit` 退出 SSH 会话
+
+8. 在提示符下，通过 SSH 连接到 myVM2。 将 IP 地址替换为前面步骤中检索到的地址以及用于 myVM2 入站 NAT 规则的端口 222。 将 .pem 的路径替换为密钥文件下载位置的路径。
+
+    ```console
+    ssh -i .\Downloads\myKey.pem azureuser@20.190.2.163 -p 222
+    ```
+
+9. 在 SSH 会话中更新包源，然后安装最新的 NGINX 包。
+
+    ```bash
+    sudo apt-get -y update
+    sudo apt-get -y install nginx
+    ``` 
+
+10. 输入 `Exit` 退出 SSH 会话。
+
+## <a name="test-the-web-server"></a>测试 Web 服务器
+
+你将在本部分中打开 Web 浏览器，输入前面步骤中检索到的负载均衡器的 IP 地址。
+
+1. 打开 Web 浏览器。
+
+2. 在地址栏中，输入负载均衡器的 IP 地址。 在本示例中，它为 20.190.2.163。
+
+3. 系统将显示默认的 NGINX 网站。
+
+    :::image type="content" source="./media/tutorial-load-balancer-port-forwarding-portal/web-server-test.png" alt-text="测试 NGINX Web 服务器的屏幕截图。":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要在不再需要的情况下删除负载均衡器和所有相关的资源，请打开 **MyResourceGroupLB** 资源组，然后选择“删除资源组”。
+如果你不打算继续使用此应用程序，请按以下步骤删除虚拟机和负载均衡器：
+
+1. 在门户顶部的搜索框中输入“资源组”。  在搜索结果中选择“资源组”。
+
+2. 在“资源组”中选择“TutorialLBPF-rg”。
+
+3. 选择“删除资源组”  。
+
+4. 在“键入资源组名称:”中输入“TutorialLBPF-rg” 。 选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你创建了一个标准公共负载均衡器。 你创建并配置了网络资源、后端服务器、运行状况探测，以及适用于负载均衡器的规则。 你在后端 VM 上安装了 IIS，并使用了负载均衡器的公共 IP 地址来测试负载均衡器。 你设置并测试了端口转发，即从负载均衡器上的指定端口转发到后端 VM 上的端口。 
-
-要了解有关 Azure 负载均衡器的详细信息，请继续学习其他负载均衡器教程。
+请继续学习下一篇文章，了解如何创建跨区域负载均衡器：
 
 > [!div class="nextstepaction"]
-> [Azure 负载均衡器教程](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [使用 Azure 门户创建跨区域负载均衡器](tutorial-cross-region-portal.md)

@@ -1,6 +1,6 @@
 ---
 title: 教程：门户中的异地复制和故障转移
-description: 使用 Azure 门户为数据库配置异地复制，并启动故障转移。
+description: 了解如何使用 Azure 门户或 Azure CLI 为 SQL 数据库配置异地复制，以及如何启动故障转移。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,19 +10,19 @@ ms.topic: tutorial
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 02/13/2019
-ms.openlocfilehash: 927cc0c4ba6b430c8e3abe22ff7d50e9b8238642
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 08/20/2021
+ms.openlocfilehash: e94b9cb0628fca112f3bb9181035d6d60bbd7b74
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110708936"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866693"
 ---
-# <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>教程：在 Azure 门户中配置活动异地复制和故障转移（Azure SQL 数据库）
+# <a name="tutorial-configure-active-geo-replication-and-failover-azure-sql-database"></a>教程：配置活动异地复制和故障转移（Azure SQL 数据库）
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-本文说明如何使用 [Azure 门户](https://portal.azure.com)为 [Azure SQL 数据库配置活动异地复制](active-geo-replication-overview.md#active-geo-replication-terminology-and-capabilities)，以及如何启动故障转移。
+本文介绍如何使用 [Azure 门户](https://portal.azure.com)或 Azure CLI [为 Azure SQL 数据库配置活动异地复制](active-geo-replication-overview.md#active-geo-replication-terminology-and-capabilities)，以及如何启动故障转移。
 
 有关使用自动故障转移组的最佳做法，请参阅 [Azure SQL 数据库最佳做法](auto-failover-group-overview.md#best-practices-for-sql-database)和 [Azure SQL 托管实例最佳做法](auto-failover-group-overview.md#best-practices-for-sql-managed-instance)。 
 
@@ -30,12 +30,24 @@ ms.locfileid: "110708936"
 
 ## <a name="prerequisites"></a>先决条件
 
+# <a name="portal"></a>[Portal](#tab/portal)
+
 若要使用 Azure 门户配置活动异地复制，需要以下资源：
 
 * Azure SQL 数据库中的数据库：要复制到其他地理区域的主数据库。
 
 > [!Note]
 > 如果使用 Azure 门户，仅可在与主要数据库相同的订阅内创建辅助数据库。 如果辅助数据库需要位于其他订阅中，请使用 [Create Database REST API](/rest/api/sql/databases/createorupdate) 或 [ALTER DATABASE Transact-SQL API](/sql/t-sql/statements/alter-database-transact-sql)。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要配置活动异地复制，需要 Azure SQL 数据库中的数据库。 它是要复制到其他地理区域的主数据库。
+
+为 Azure CLI 准备环境。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+---
 
 ## <a name="add-a-secondary-database"></a>添加辅助数据库
 
@@ -49,51 +61,117 @@ ms.locfileid: "110708936"
 > [!NOTE]
 > 如果合作伙伴数据库已存在（例如，在终止之前的异地复制关系的情况下），命令会失败。
 
+# <a name="portal"></a>[Portal](#tab/portal)
+
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到需要设置以便进行异地复制的数据库。
-2. 在 SQL 数据库页上，选择“异地复制”，并选择要创建辅助数据库的区域。 可以选择除托管主数据库的区域以外的任何区域，但我们建议选择 [配对的区域](../../best-practices-availability-paired-regions.md)。
+2. 在 SQL 数据库页上，选择数据库，滚动到“数据管理”，选择“副本”，然后选择“创建副本”。
 
-    ![配置异地复制](./media/active-geo-replication-configure-portal/configure-geo-replication.png)
-3. 选择或配置辅助数据库的服务器和定价层。
+    :::image type="content" source="./media/active-geo-replication-configure-portal/azure-cli-create-geo-replica.png" alt-text="配置异地复制":::
 
-    ![创建辅助窗体](./media/active-geo-replication-configure-portal/create-secondary.png)
-4. 可以选择性地将辅助数据库添加到弹性池。 如果要在池中创建辅助数据库，请单击“弹性池”  ，并在目标服务器上选择池。 池必须已在目标服务器上存在。 此工作流不会创建池。
-5. 单击“创建”添加辅助数据库。
-6. 此时会创建辅助数据库，种子设定过程开始。
+3. 为辅助数据库选择或创建服务器，并根据需要配置“计算 + 存储”选项。 你可以为辅助服务器选择任何区域，但我们建议使用[配对区域](../../best-practices-availability-paired-regions.md)。
 
-    ![辅助映射](./media/active-geo-replication-configure-portal/seeding0.png)
-7. 完成种子设定过程时，辅助数据库会显示其状态。
+    :::image type="content" source="./media/active-geo-replication-configure-portal/azure-portal-create-and-configure-replica.png" alt-text="{alt-text}":::
 
-    ![种子设定完成](./media/active-geo-replication-configure-portal/seeding-complete.png)
+    可以选择性地将辅助数据库添加到弹性池。 若要在池中创建辅助数据库，请选择“想要使用 SQL 弹性池?”旁边的“是” ，并在目标服务器上选择一个池。 池必须已在目标服务器上存在。 此工作流不会创建池。
+
+4. 单击“查看 + 创建”，查看信息，然后单击“创建” 。
+5. 此时会创建辅助数据库，部署过程开始。
+
+    :::image type="content" source="./media/active-geo-replication-configure-portal/azure-portal-geo-replica-deployment.png" alt-text="屏幕截图显示辅助数据库的部署状态。":::
+
+6. 完成部署时，辅助数据库会显示其状态。
+
+    :::image type="content" source="./media/active-geo-replication-configure-portal/azure-portal-sql-database-secondary-status.png" alt-text="屏幕截图显示部署后的辅助数据库状态。":::
+
+7. 返回主数据库页，然后选择“副本”。 你的辅助数据库列于“异地副本”下。
+
+    :::image type="content" source="./media/active-geo-replication-configure-portal/azure-sql-db-geo-replica-list.png" alt-text="屏幕截图显示 SQL 数据库的主副本和异地副本。":::
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+选择要为异地复制设置的数据库。 你需要以下信息：
+- 原始 Azure SQL 数据库名称。
+- Azure SQL Server 名称。
+- 资源组名称。
+- 要创建新副本的服务器的名称。
+
+> [!NOTE]
+> 辅助数据库的服务层级必须与主数据库相同。
+
+你可以为辅助服务器选择任何区域，但我们建议使用[配对区域](../../best-practices-availability-paired-regions.md)。
+
+运行 [az sql db replica create](/cli/azure/sql/db/replica#az_sql_db_replica_create) 命令。
+
+```azurecli
+az sql db replica create --resource-group ContosoHotel --server contosoeast --name guestlist --partner-server contosowest --family Gen5 --capacity 2 --secondary-type Geo
+```
+
+可以选择性地将辅助数据库添加到弹性池。 若要在池中创建辅助数据库，请使用 `--elastic-pool` 参数。 池必须已在目标服务器上存在。 此工作流不会创建池。
+
+此时会创建辅助数据库，部署过程开始。
+
+部署完成后，可以通过运行 [az sql db replica list-links](/cli/azure/sql/db/replica#az_sql_db_replica_list-links) 命令来检查辅助数据库的状态：
+    
+```azurecli
+az sql db replica list-links --name guestlist --resource-group ContosoHotel --server contosowest
+```
+
+---
 
 ## <a name="initiate-a-failover"></a>启动故障转移
 
-辅助数据库可以通过切换变为主数据库。  
+辅助数据库可以通过切换变为主数据库。
+
+# <a name="portal"></a>[Portal](#tab/portal)  
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到异地复制合作关系中的主数据库。
-2. 在 SQL 数据库边栏选项卡中，选择“所有设置” > “异地复制”。
-3. 在“辅助数据库”列表中，选择想要其成为新的主数据库的数据库并单击“强制故障转移”。
+2. 滚动到“数据管理”，然后选择“副本”。
+3. 在“异地副本”列表中，选择要成为新主数据库的数据库，选择省略号，然后选择“强制故障转移”。
 
-    ![故障转移](./media/active-geo-replication-configure-portal/secondaries.png)
-4. 单击“是”开始故障转移。
+    :::image type="content" source="./media/active-geo-replication-configure-portal/azure-portal-select-forced-failover.png" alt-text="屏幕截图显示从下拉列表中选择“强制故障转移”。":::
+4. 选择“是”开始故障转移。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+运行 [az sql db replica set-primary](/cli/azure/sql/db/replica#az_sql_db_replica_set-primary) 命令。
+
+```azurecli
+az sql db replica set-primary --name guestlist --resource-group ContosoHotel --server contosowest
+```
+
+---
 
 该命令会立即将辅助数据库切换为主数据库角色。 此过程通常会在 30 秒或更短的时间内完成。
 
-切换角色时，有一小段时间无法使用这两个数据库（大约为 0 到 25 秒）。 如果主数据库具有多个辅助数据库，则该命令自动重新配置其他辅助数据库以连接到新的主数据库。 在正常情况下，完成整个操作所需的时间应该少于一分钟。
+切换角色时，有一小段时间无法使用这两个数据库（大约 0 到 25 秒）。 如果主数据库具有多个辅助数据库，则该命令自动重新配置其他辅助数据库以连接到新的主数据库。 在正常情况下，完成整个操作所需的时间应该少于一分钟。
 
 > [!NOTE]
-> 此命令旨在服务中断时快速恢复数据库。 它将触发故障转移但不进行数据同步（强制故障转移）。  如果发出命令时主数据库处于在线状态且正在提交事务，则可能会丢失某些数据。
+> 此命令旨在服务中断时快速恢复数据库。 它将触发故障转移但不进行数据同步，即强制故障转移。  如果发出命令时主数据库处于在线状态且正在提交事务，则可能会丢失某些数据。
 
 ## <a name="remove-secondary-database"></a>删除辅助数据库
 
-此操作会永久终止到辅助数据库的复制，并会将辅助数据库的角色更改为常规的读写数据库。 如果与辅助数据库的连接断开，命令会成功，但辅助数据库必须等到连接恢复后才会变为可读写。  
+此操作会永久停止到辅助数据库的复制，并将辅助数据库的角色更改为常规的读写数据库。 如果与辅助数据库的连接断开，命令会成功，但辅助数据库必须等到连接恢复后才会变为可读写。
+
+# <a name="portal"></a>[Portal](#tab/portal)  
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到异地复制合作关系中的主数据库。
-2. 在 SQL 数据库页上，选择“异地复制”。
-3. 在“辅助数据库”列表中，选择需要从异地复制合作关系中删除的数据库。
-4. 单击“停止复制”。
+2. 选择“副本”。
+3. 在“异地副本”列表中，选择要从异地复制伙伴关系中删除的数据库，选择省略号，然后选择“停止复制”。
 
-    ![删除辅助数据库](./media/active-geo-replication-configure-portal/remove-secondary.png)
+    :::image type="content" source="./media/active-geo-replication-configure-portal/azure-portal-select-stop-replication.png" alt-text="屏幕截图显示从下拉列表中选择“停止复制”。":::
 5. 确认窗口随即打开。 单击“是”从异地复制合作关系中删除数据库。 （将其设置为不属于任何复制的读写数据库。）
+ 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+运行 [az sql db replica delete-link](/cli/azure/sql/db/replica#az_sql_db_replica_delete-link) 命令。
+
+```azurecli
+az sql db replica delete-link --name guestlist --resource-group ContosoHotel --server contosoeast --partner-server contosowest
+```
+
+确认你想执行该操作。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

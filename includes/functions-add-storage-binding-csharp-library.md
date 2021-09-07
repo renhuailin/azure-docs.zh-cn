@@ -2,16 +2,18 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 07/05/2019
+ms.date: 08/15/2021
 ms.author: glenga
-ms.openlocfilehash: 5e1a2622df0038141dd5cb05237f93d5e33e0bfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f2aa82388882c192213b168faedd4f61069ae64
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "78190903"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829523"
 ---
-在 C# 类库项目中，绑定被定义为函数方法上的绑定属性。 然后，基于这些属性自动生成 Functions 所需的 function.json 文件。
+在 C# 项目中，绑定被定义为函数方法上的绑定属性。 具体定义取决于应用是在进程内（C# 类库）还是在隔离进程中运行。  
+
+# <a name="in-process"></a>[进程内](#tab/in-process)
 
 打开 HttpExample.cs 项目文件，并将以下参数添加到 `Run` 方法定义中：
 
@@ -22,3 +24,15 @@ ms.locfileid: "78190903"
 Run 方法定义如下所示：  
 
 :::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="14-18":::
+
+# <a name="isolated-process"></a>[隔离进程](#tab/isolated-process)
+
+打开 HttpExample.cs 项目文件并添加以下 `MultiResponse` 类：
+
+:::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-isolated/HttpExample.cs" range="33-38":::
+
+`MultiResponse` 类允许写入名为 `outqueue` 的存储队列和 HTTP 成功消息。 由于 `QueueOutput` 属性应用于字符串数组，因此可以将多条消息发送到队列。 
+
+存储帐户的连接字符串由 `Connection` 属性设置。 在这种情况下，可以省略 `Connection`，因为你已使用默认存储帐户。
+
+---

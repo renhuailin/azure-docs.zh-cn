@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: f3f4af97309326fe761ea58a7927df19522e4f60
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: a6e3ad07f9ba46bd15fe662f370ae2ffc3deb4a8
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486744"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830491"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自定义容器创建函数
 
@@ -64,31 +64,39 @@ Azure Functions 使用[自定义处理程序](functions-custom-handlers.md)支�
 ## <a name="create-and-test-the-local-functions-project"></a>创建并测试本地 Functions 项目
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-在终端或命令提示符中，根据所选的语言运行以下命令，在名为 `LocalFunctionsProject` 的文件夹中创建一个函数应用项目。  
+在终端或命令提示符中，根据所选的语言运行以下命令，在当前文件夹中创建一个函数应用项目。  
 ::: zone-end  
 ::: zone pivot="programming-language-csharp"  
+
+# <a name="in-process"></a>[进程内](#tab/in-process)
 ```console
-func init LocalFunctionsProject --worker-runtime dotnet --docker
+func init --worker-runtime dotnet --docker
 ```
+
+# <a name="isolated-process"></a>[独立进程](#tab/isolated-process)
+```console
+func init --worker-runtime dotnet-isolated --docker
+```
+---
 ::: zone-end  
 ::: zone pivot="programming-language-javascript"  
 ```console
-func init LocalFunctionsProject --worker-runtime node --language javascript --docker
+func init --worker-runtime node --language javascript --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
 ```console
-func init LocalFunctionsProject --worker-runtime powershell --docker
+func init --worker-runtime powershell --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
 ```console
-func init LocalFunctionsProject --worker-runtime python --docker
+func init --worker-runtime python --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
 ```console
-func init LocalFunctionsProject --worker-runtime node --language typescript --docker
+func init --worker-runtime node --language typescript --docker
 ```
 ::: zone-end
 ::: zone pivot="programming-language-java"  
@@ -130,38 +138,48 @@ Maven 在名为 artifactId 的新文件夹（在此示例中为 `fabrikam-functi
 
 ::: zone pivot="programming-language-other"  
 ```console
-func init LocalFunctionsProject --worker-runtime custom --docker
+func init --worker-runtime custom --docker
 ```
 ::: zone-end
 
 `--docker` 选项生成该项目的 `Dockerfile`，其中定义了适合用于 Azure Functions 和所选运行时的自定义容器。
 
-导航到项目文件夹：
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
-```console
-cd LocalFunctionsProject
-```
-::: zone-end  
 ::: zone pivot="programming-language-java"  
+导航到项目文件夹：
+
 ```console
 cd fabrikam-functions
 ```
 ::: zone-end  
+::: zone pivot="programming-language-csharp"  
+
+# <a name="in-process"></a>[进程内](#tab/in-process)
+无需对 Dockerfile 进行更改。
+# <a name="isolated-process"></a>[独立进程](#tab/isolated-process)
+打开 Dockerfile，并在第一个 `FROM` 语句后面添加以下行（如果尚不存在）：
+
+```docker
+# Build requires 3.1 SDK
+COPY --from=mcr.microsoft.com/dotnet/core/sdk:3.1 /usr/share/dotnet /usr/share/dotnet
+```
+---
+::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-使用以下命令将一个函数添加到项目，其中，`--name` 参数是该函数的唯一名称，`--template` 参数指定该函数的触发器。 `func new` 创建一个与函数名称匹配的、包含项目所选语言适用的代码文件的子文件夹，以及一个名为 *function.json* 的配置文件。
+使用以下命令将一个函数添加到项目，其中，`--name` 参数是该函数的唯一名称，`--template` 参数指定该函数的触发器。 `func new` 将在项目中创建一个 C# 代码文件。
 
 ```console
-func new --name HttpExample --template "HTTP trigger"
+func new --name HttpExample --template "HTTP trigger" --authlevel anonymous
 ```
 ::: zone-end
 
-::: zone pivot="programming-language-other" 
+::: zone pivot="programming-language-other,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
 使用以下命令将一个函数添加到项目，其中，`--name` 参数是该函数的唯一名称，`--template` 参数指定该函数的触发器。 `func new` 创建一个与函数名称匹配的子文件夹，该子文件夹包含一个名为 function.json 的配置文件。
 
 ```console
-func new --name HttpExample --template "HTTP trigger"
+func new --name HttpExample --template "HTTP trigger" --authlevel anonymous
 ```
-
+::: zone-end  
+::: zone pivot="programming-language-other" 
 在文本编辑器中，在名为 handler.R 的项目文件夹中创建一个文件。 添加以下内容作为其内容。
 
 ```r
@@ -316,14 +334,16 @@ docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
 docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
-该映像在本地容器中运行后，请在浏览器中打开 `http://localhost:8080`。浏览器中应会显示如下所示的占位符映像。 该映像之所以在此时显示，是因为函数在本地容器中运行（与在 Azure 中一样），这意味着，该函数由 *function.json* 中定义的访问密钥使用 `"authLevel": "function"` 属性来保护。 但是，容器尚未发布到 Azure 中的函数应用，因此该密钥尚不可用。 若要针对本地容器进行测试，请停止 Docker，将授权属性更改为 `"authLevel": "anonymous"`，重新生成映像，然后重启 Docker。 然后重置 *function.json* 中的 `"authLevel": "function"`。 有关详细信息，请参阅[授权密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)。
+::: zone pivot="programming-language-csharp"
+# <a name="in-process"></a>[进程内](#tab/in-process)
+映像在本地容器中启动后，请浏览到 `http://localhost:8080/api/HttpExample?name=Functions`，其中应该会显示与先前相同的“hello”消息。 由于你创建的 HTTP 触发函数使用匿名授权，因此你无需获取访问密钥即可调用容器中运行的函数。 若要了解详细信息，请参阅[授权密钥]。
+# <a name="isolated-process"></a>[独立进程](#tab/isolated-process)
+映像在本地容器中启动后，请浏览到 `http://localhost:8080/api/HttpExample`，其中应该会显示与先前相同的问候消息。 由于你创建的 HTTP 触发函数使用匿名授权，因此你无需获取访问密钥即可调用容器中运行的函数。 若要了解详细信息，请参阅[授权密钥]。
 
-![指示容器正在本地运行的占位符映像](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
-
+---
 ::: zone-end
-::: zone pivot="programming-language-java"  
-映像在本地容器中运行后，请浏览到 `http://localhost:8080/api/HttpExample?name=Functions`，此时会显示与前面相同的“hello”消息。 由于 Maven 原型会生成一个使用匿名身份验证的 HTTP 触发函数，因此你仍可以调用该函数，即使它在容器中运行。 
+::: zone pivot="programming-language-java,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
+映像在本地容器中启动后，请浏览到 `http://localhost:8080/api/HttpExample?name=Functions`，其中应该会显示与先前相同的“hello”消息。 由于你创建的 HTTP 触发函数使用匿名授权，因此你无需获取访问密钥即可调用容器中运行的函数。 若要了解详细信息，请参阅[授权密钥]。
 ::: zone-end  
 
 验证容器中的函数应用后，按 Ctrl+C 停止 Docker 。
@@ -348,43 +368,85 @@ Docker Hub 是托管映像并提供映像和容器服务的容器注册表。 �
 
 ## <a name="create-supporting-azure-resources-for-your-function"></a>创建函数的支持性 Azure 资源
 
-若要将函数代码部署到 Azure，需要创建三个资源：
+在将函数代码部署到 Azure 之前，需要创建三个资源：
 
-- 一个资源组：相关资源的逻辑容器。
-- 一个 Azure 存储帐户：维护有关项目的状态和其他信息。
+- 一个[资源组](../azure-resource-manager/management/overview.md)：相关资源的逻辑容器。
+- 一个[存储帐户](../storage/common/storage-account-create.md)：用于维护有关函数的状态和其他信息。
 - 一个函数应用：提供用于执行函数代码的环境。 函数应用映射到本地函数项目，可让你将函数分组为一个逻辑单元，以便更轻松地管理、部署和共享资源。
 
-使用 Azure CLI 命令创建这些项。 完成后，每个命令将提供 JSON 输出。
+使用以下命令创建这些项。 支持 Azure CLI 和 PowerShell。
 
-1. 使用 [az login](/cli/azure/reference-index#az_login) 命令登录到 Azure：
+1. 请登录到 Azure（如果尚未这样做）：
 
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
     az login
     ```
-    
-1. 使用“[az group create](/cli/azure/group#az_group_create)”命令创建资源组。 以下示例在 `westeurope` 区域中创建名为 `AzureFunctionsContainers-rg` 的资源组。 （通常，你会在 `az account list-locations` 命令输出的、与你靠近的某个可用区域中创建资源组和资源。）
 
-    ```azurecli
-    az group create --name AzureFunctionsContainers-rg --location westeurope
+    使用 [az login](/cli/azure/reference-index#az_login) 命令登录到 Azure 帐户。
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    ```azurepowershell
+    Connect-AzAccount
     ```
-    
-    > [!NOTE]
-    > 不能在同一资源组中托管 Linux 和 Windows 应用。 如果名为 `AzureFunctionsContainers-rg` 的现有资源组有 Windows 函数应用或 Web 应用，必须使用其他资源组。
-    
-1. 使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令在资源组和区域中创建常规用途存储帐户。 在以下示例中，请将 `<storage_name>` 替换为适合自己的全局唯一名称。 名称只能包含 3 到 24 个数字和小写字母字符。 `Standard_LRS` 指定典型的常规用途帐户。
 
+    使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 登录到 Azure 帐户。
+
+    ---
+
+1. 在所选区域中创建名为 `AzureFunctionsContainers-rg` 的资源组：
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
     ```azurecli
-    az storage account create --name <storage_name> --location westeurope --resource-group AzureFunctionsContainers-rg --sku Standard_LRS
+    az group create --name AzureFunctionsContainers-rg --location <REGION>
     ```
-    
-    在本教程中使用的存储帐户只会产生几美分的费用。
-    
-1. 使用以下命令在“西欧”区域（`-location westeurope`，或使用附近的适当区域）和 Linux 容器 (`--is-linux`) 中的“弹性高级版 1”定价层 (`--sku EP1`) 中为 Azure Functions 创建名为 `myPremiumPlan` 的高级计划。
+ 
+    [az group create](/cli/azure/group#az_group_create) 命令可创建资源组。 在上述命令中，使用从 [az account list-locations](/cli/azure/account#az_account_list_locations) 命令返回的可用区域代码，将 `<REGION>` 替换为附近的区域。
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+    ```azurepowershell
+    New-AzResourceGroup -Name AzureFunctionsContainers-rg -Location <REGION>
+    ```
+
+    [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令可创建资源组。 通常，你会在从 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) cmdlet 返回的、离你近的某个可用区域中创建资源组和资源。
+
+    ---
+
+1. 在资源组和区域中创建常规用途存储帐户：
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
     ```azurecli
-    az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
-    ```   
+    az storage account create --name <STORAGE_NAME> --location <REGION> --resource-group AzureFunctionsContainers-rg --sku Standard_LRS
+    ```
 
+    [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令可创建存储帐户。 
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+    ```azurepowershell
+    New-AzStorageAccount -ResourceGroupName AzureFunctionsContainers-rg -Name <STORAGE_NAME> -SkuName Standard_LRS -Location <REGION>
+    ```
+
+    [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet 可创建存储帐户。
+
+    ---
+
+    在上一个示例中，将 `<STORAGE_NAME>` 替换为适合你且在 Azure 存储中唯一的名称。 名称只能包含 3 到 24 个数字和小写字母字符。 `Standard_LRS` 指定 [Functions 支持](storage-considerations.md#storage-account-requirements)的常规用途帐户。
+    
+1. 使用以下命令在你的 `<REGION>` 和 Linux 容器 (`--is-linux`) 中的“弹性高级版 1”定价层 (`--sku EP1`) 中为 Azure Functions 创建名为 `myPremiumPlan` 的高级计划。
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    ```azurecli
+    az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location <REGION> --number-of-workers 1 --sku EP1 --is-linux
+    ```
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+    ```powershell
+    New-AzFunctionAppPlan -ResourceGroupName AzureFunctionsContainers-rg -Name MyPremiumPlan -Location <REGION> -Sku EP1 -WorkerType Linux
+    ```
+    ---
     此处我们使用了可按需缩放的高级计划。 若要了解有关托管的详细信息，请参阅 [Azure Functions 托管计划比较](functions-scale.md)。 若要计算费用，请参阅 [Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)。
 
     该命令还会在同一资源组中预配关联的 Azure Application Insights 实例，可以使用它来监视函数应用和查看日志。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。 该实例在激活之前不会产生费用。
@@ -393,48 +455,66 @@ Docker Hub 是托管映像并提供映像和容器服务的容器注册表。 �
 
 Azure 上的函数应用管理托管计划中函数的执行。 在本部分，你将使用在上一部分创建的 Azure 资源，基于 Docker Hub 中的某个映像创建一个函数应用，然后使用 Azure 存储的连接字符串对其进行配置。
 
-1. 使用 [az functionapp create](/cli/azure/functionapp#az_functionapp_create) 命令创建 Functions 应用。 在以下示例中，请将 `<storage_name>` 替换为在上一部分中用于存储帐户的名称。 另外，请将 `<app_name>` 替换为适合自己的全局唯一名称，并将 `<docker_id>` 替换为你的 Docker ID。
+1. 使用以下命令创建函数应用：
 
-    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
-    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime <functions runtime stack> --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+    az functionapp create --name <APP_NAME> --storage-account <STORAGE_NAME> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --deployment-container-image-name <DOCKER_ID>/azurefunctionsimage:v1.0.0
     ```
-    ::: zone-end
-    ::: zone pivot="programming-language-other"
-    ```azurecli
-    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime custom --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+
+    在 [az functionapp create](/cli/azure/functionapp#az_functionapp_create) 命令中，deployment-container-image-name 参数指定用于函数应用的映像。 可以使用 [az functionapp config container show](/cli/azure/functionapp/config/container#az_functionapp_config_container_show) 命令查看用于部署的映像的相关信息。 还可以使用 [az functionapp config container set](/cli/azure/functionapp/config/container#az_functionapp_config_container_set) 命令从另一映像进行部署。
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+    ```azurepowershell
+    New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsContainers-rg -PlanName myPremiumPlan -StorageAccount <STORAGE_NAME> -DockerImageName <DOCKER_ID>/azurefunctionsimage:v1.0.0
     ```
-    ::: zone-end
+    ---
     
-    *deployment-container-image-name* 参数指定用于函数应用的映像。 可以使用 [az functionapp config container show](/cli/azure/functionapp/config/container#az_functionapp_config_container_show) 命令查看用于部署的映像的相关信息。 还可以使用 [az functionapp config container set](/cli/azure/functionapp/config/container#az_functionapp_config_container_set) 命令从另一映像进行部署。
+    在本示例中，请将 `<STORAGE_NAME>` 替换为在上一部分中用于存储帐户的名称。 另外，请将 `<APP_NAME>` 替换为适合自己的全局唯一名称，并将 `<DOCKER_ID>` 替换为你的 DockerHub ID。    
     
     > [!TIP]  
     > 可以使用 host.json 文件中的 [`DisableColor` 设置](functions-host-json.md#console)来防止将 ANSI 控制字符写入容器日志。 
 
-1. 使用 [az storage account show-connection-string](/cli/azure/storage/account) 命令显示创建的存储帐户的连接字符串。 将 `<storage-name>` 替换为前面创建的存储帐户的名称：
+1. 使用以下命令获取你创建的存储帐户的连接字符串：
 
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
-    az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
+    az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <STORAGE_NAME> --query connectionString --output tsv
     ```
-    
-1. 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_ppsettings_set) 命令将此设置添加到函数应用。 在下面的命令中，将 `<app_name>` 替换为函数应用的名称，并将 `<connection_string>` 替换为上一步中的连接字符串（以“DefaultEndpointProtocol=”开头的长编码字符串）：
+
+    使用 [az storage account show-connection-string](/cli/azure/storage/account) 命令返回存储帐户的连接字符串。 
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+    ```azurepowershell
+    $storage_name = "glengagtestdockerstorage"
+    $key = (Get-AzStorageAccountKey -ResourceGroupName AzureFunctionsContainers-rg -Name $storage_name)[0].Value
+    $string = "DefaultEndpointsProtocol=https;EndpointSuffix=core.windows.net;AccountName=" + $storage_name + ";AccountKey=" + $key
+    Write-Output($string) 
+    ```
+    [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) cmdlet 返回的密钥用于构造存储帐户的连接字符串。
+
+    ---    
+
+    将 `<STORAGE_NAME>` 替换为之前创建的存储帐户的名称。
+
+1. 使用以下命令将此设置添加到函数应用中： 
  
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
-    az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
+    az functionapp config appsettings set --name <APP_NAME> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<CONNECTION_STRING>
     ```
+    [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_ppsettings_set) 命令将创建该设置。 
 
-    > [!TIP]
-    > 在 Bash 中，可以使用 shell 变量来捕获连接字符串，而无需使用剪贴板。 首先，使用以下命令创建包含连接字符串的变量：
-    > 
-    > ```bash
-    > storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
-    > ```
-    > 
-    > 然后，在第二个命令中引用该变量：
-    > 
-    > ```azurecli
-    > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
-    > ```
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+    ```azurepowershell
+    Update-AzFunctionAppSetting -Name <APP_NAME> -ResourceGroupName AzureFunctionsContainers-rg -AppSetting @{"AzureWebJobsStorage"="<CONNECTION_STRING>"}
+    ```
+    [Update-AzFunctionAppSetting](/powershell/module/az.functions/update-azfunctionappsetting) cmdlet 将创建该设置。
+
+    ---
+
+    在此命令中，将 `<APP_NAME>` 替换为函数应用的名称，将 `<CONNECTION_STRING>` 替换为上一步中的连接字符串。 该连接应该是一个以 `DefaultEndpointProtocol=` 开头的长编码字符串。
+ 
 
 1. 该函数现在可以使用此连接字符串来访问存储帐户。
 
@@ -443,82 +523,47 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
 
 ## <a name="verify-your-functions-on-azure"></a>在 Azure 上验证函数
 
-将映像部署到 Azure 上的函数应用后，以通过 HTTP 请求调用函数。 由于 *function.json* 定义包含 `"authLevel": "function"`属性，因此必须先获取访问密钥（也称为“函数密钥”），并在对终结点发出的任何请求中以 URL 参数的形式包含该密钥。
+将映像部署到 Azure 中的函数应用后，可以像以前一样通过 HTTP 请求调用函数。
+在浏览器中，导航到如下所示的 URL：
 
-1. 使用 Azure 门户或者在 Azure CLI 中使用 `az rest` 命令检索包含访问（函数）密钥的函数 URL。
+::: zone pivot="programming-language-java,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+`https://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`  
+::: zone-end  
+::: zone pivot="programming-language-csharp"  
+# <a name="in-process"></a>[进程内](#tab/in-process) 
+`https://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`
+# <a name="isolated-process"></a>[独立进程](#tab/isolated-process)
+`https://<APP_NAME>.azurewebsites.net/api/HttpExample`
 
-    # <a name="portal"></a>[门户](#tab/portal)
+---
+:::zone-end  
 
-    1. 登录到 Azure 门户，然后搜索并选择“函数应用”。
-
-    1. 选择要验证的函数。
-
-    1. 在左侧导航面板中，选择“函数”，然后选择要验证的函数。
-
-        ![在 Azure 门户中，选择你的函数](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
-
-    
-    1. 选择“获取函数 URL”。
-
-        ![从 Azure 门户获取函数 URL](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
-
-    
-    1. 在弹出窗口中选择“默认(函数密钥)”，然后将 URL 复制到剪贴板。 该密钥是 `?code=` 后面的字符串。
-
-        ![选择默认函数访问密钥](./media/functions-create-function-linux-custom-image/functions-portal-copy-url.png)   
-
-
-    > [!NOTE]  
-    > 由于函数应用将部署为容器，因此无法在门户中对函数代码进行更改。 必须更新本地映像中的项目，再次将该映像推送到注册表，然后重新部署到 Azure。 可以在后面的部分设置持续部署。
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
-
-    1. 构造采用以下格式的 URL 字符串（请将 `<subscription_id>`、`<resource_group>` 和 `<app_name>` 分别替换为你的 Azure 订阅 ID、函数应用的资源组，以及函数应用的名称）：
-
-        ```
-        "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Web/sites/<app_name>/host/default/listKeys?api-version=2018-11-01"
-        ```
-
-        例如，URL 可能类似于以下地址：
-
-        ```
-        "/subscriptions/1234aaf4-1234-abcd-a79a-245ed34eabcd/resourceGroups/AzureFunctionsContainers-rg/providers/Microsoft.Web/sites/msdocsfunctionscontainer/host/default/listKeys?api-version=2018-11-01"
-        ```
-
-        > [!TIP]
-        > 为方便起见，可将 URL 分配到某个环境变量，并在 `az rest` 命令中使用该变量。
-    
-    1. 运行以下 `az rest` 命令（在 Azure CLI 2.0.77 和更高版本中可用）（请将 `<uri>` 替换为在上一步骤中获取的 URI 字符串，包括引号）：
-
-        ```azurecli
-        az rest --method post --uri <uri> --query functionKeys.default --output tsv
-        ```
-
-    1. 该命令的输出即为函数密钥。 那么，完整的函数 URL 是 `https://<app_name>.azurewebsites.net/api/<function_name>?code=<key>`（请将 `<app_name>`、`<function_name>` 和 `<key>` 替换为你的特定值）。
-    
-        > [!NOTE]
-        > 此处检索的密钥是适用于 Functions 应用中所有函数的宿主密钥；为门户显示的方法只检索一个函数的密钥。
-
-    ---
-
-1. 将函数 URL 粘贴到浏览器的地址栏中，并将参数 `&name=Azure` 添加到此 URL 的末尾。 浏览器中会显示类似于“Hello, Azure”的文本。
-
-    ![浏览器中的函数响应。](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
-
-1. 若要测试授权，请从 URL 中删除 `code=` 参数，并验证该函数是否不返回任何响应。
-
+将 `<APP_NAME>` 替换为你的函数应用的名称。 导航到此 URL 时，浏览器显示的输出应与在本地运行函数时显示的输出类似。
 
 ## <a name="enable-continuous-deployment-to-azure"></a>启用到 Azure 的持续部署
 
 可以启用 Azure Functions，以便每次更新注册表中的映像时，都自动更新该映像的部署。
 
-1. 使用 [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_config) 命令启用持续部署（请将 `<app_name>` 替换为你的函数应用的名称）：
+1. 使用以下命令启用持续部署并获取 Webhook URL：
 
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     ```azurecli
-    az functionapp deployment container config --enable-cd --query CI_CD_URL --output tsv --name <app_name> --resource-group AzureFunctionsContainers-rg
+    az functionapp deployment container config --enable-cd --query CI_CD_URL --output tsv --name <APP_NAME> --resource-group AzureFunctionsContainers-rg
     ```
     
-    此命令启用持续部署并返回部署 Webhook URL。 （以后随时可以使用 [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_show_cd_url) 命令检索此 URL。）
+    [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_config) 命令将启用持续部署并返回部署 Webhook URL。 以后随时可以使用 [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_show_cd_url) 命令检索此 URL。
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+    ```azurepowershell
+    Update-AzFunctionAppSetting -Name <APP_NAME> -ResourceGroupName AzureFunctionsContainers-rg -AppSetting @{"DOCKER_ENABLE_CI" = "true"}
+    Get-AzWebAppContainerContinuousDeploymentUrl -Name <APP_NAME> -ResourceGroupName AzureFunctionsContainers-rg
+    ```
+    
+    `DOCKER_ENABLE_CI` 应用程序设置控制是否从容器存储库启用持续部署。  [Get-AzWebAppContainerContinuousDeploymentUrl](/powershell/module/az.websites/get-azwebappcontainercontinuousdeploymenturl) cmdlet 将返回部署 Webhook 的 URL。
+
+    ---    
+
+    如前所述，将 `<APP_NAME>` 替换为函数应用名称。 
 
 1. 将部署 Webhook URL 复制到剪贴板。
 
@@ -588,14 +633,18 @@ SSH 实现容器和客户端之间的安全通信。 启用 SSH 后，可以使�
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 
-## <a name="write-to-an-azure-storage-queue"></a>写入 Azure 存储队列
+## <a name="write-to-azure-queue-storage"></a>写入 Azure 队列存储
 
 借助 Azure Functions，无需自行编写集成代码即可将函数连接到其他 Azure 服务和资源。 这些绑定表示输入和输出，在函数定义中声明。 绑定中的数据作为参数提供给函数。 触发器是一种特殊类型的输入绑定。 尽管一个函数只有一个触发器，但它可以有多个输入和输出绑定。 有关详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)。
 
-本部分介绍如何将函数与 Azure 存储队列集成。 添加到此函数的输出绑定会将 HTTP 请求中的数据写入到队列中的消息。
+本部分介绍如何将函数与 Azure 队列存储集成。 添加到此函数的输出绑定会将 HTTP 请求中的数据写入到队列中的消息。
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 ::: zone-end
+
+::: zone pivot="programming-language-csharp"  
+## <a name="register-binding-extensions"></a>注册绑定扩展
+::: zone-end 
 
 [!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
@@ -612,7 +661,7 @@ SSH 实现容器和客户端之间的安全通信。 启用 SSH 后，可以使�
 
 ## <a name="add-code-to-use-the-output-binding"></a>添加使用输出绑定的代码
 
-定义队列绑定后，可以更新函数，以接收 `msg` 输出参数并将消息写入队列。
+定义队列绑定后，可以更新函数，以使用绑定参数将消息写入队列。
 ::: zone-end
 
 ::: zone pivot="programming-language-python"     
@@ -681,3 +730,5 @@ az group delete --name AzureFunctionsContainer-rg
 + [监视函数](functions-monitoring.md)
 + [缩放和托管选项](functions-scale.md)
 + [基于 Kubernetes 的无服务器托管](functions-kubernetes-keda.md)
+
+[授权密钥]: functions-bindings-http-webhook-trigger.md#authorization-keys

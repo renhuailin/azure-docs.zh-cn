@@ -1,21 +1,21 @@
 ---
-title: 包含文件
+title: include 文件
 description: 包含文件
 services: azure-communication-services
-author: mikben
+author: probableprime
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: 73621e7ef9f68747edde9cfb16289fb6dc82695a
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.author: rifox
+ms.openlocfilehash: e1962ebc42c688adfecd18f7d46ce4957147ac7e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "114201504"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967863"
 ---
 ## <a name="sample-code"></a>代码示例
 在 [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/add-chat) 上查找此快速入门的最终代码。
@@ -49,7 +49,7 @@ dotnet build
 安装适用于 .NET 的 Azure 通信聊天 SDK
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0
+dotnet add package Azure.Communication.Chat
 ```
 
 ## <a name="object-model"></a>对象模型
@@ -136,9 +136,19 @@ await foreach (ChatThreadItem chatThreadItem in chatThreadItems)
 - 使用 `content` 提供消息的内容，它是必需的。
 - 使用 `type` 表示消息的内容类型，例如 'Text' 或 'Html'。 如果未指定，则会将其设置为 'Text'。
 - 使用 `senderDisplayName` 指定发送方的显示名称。 如果未指定，则会将其设置为空字符串。
+- 可以选择使用 `metadata` 来包含想随消息一起发送的任何附加数据。 此字段为开发人员提供了一种机制，可用于扩展聊天消息功能并为用例添加自定义信息。 例如，在消息中共享文件链接时，你可能希望在元数据中添加“hasAttachment:true”，以便收件人的应用程序可分析并相应显示。
 
 ```csharp
-SendChatMessageResult sendChatMessageResult = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
+SendChatMessageOptions sendChatMessageOptions = new SendChatMessageOptions()
+{
+    Content = "Please take a look at the attachment",
+    MessageType = ChatMessageType.Text
+};
+sendChatMessageOptions.Metadata["hasAttachment"] = "true";
+sendChatMessageOptions.Metadata["attachmentUrl"] = "https://contoso.com/files/attachment.docx";
+
+SendChatMessageResult sendChatMessageResult = await chatThreadClient.SendMessageAsync(sendChatMessageOptions);
+
 string messageId = sendChatMessageResult.Id;
 ```
 

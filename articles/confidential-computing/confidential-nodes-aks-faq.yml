@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 06/30/2021
   ms.author: amgowda
-  ms.openlocfilehash: b89afc3890d67af877f7b192173e547236fe2981
-  ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+  ms.openlocfilehash: 21a4b0fdd3a000469339e6ac49df0a43dc56e451
+  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/02/2021
-  ms.locfileid: "113233475"
+  ms.lasthandoff: 08/27/2021
+  ms.locfileid: "123101593"
 title: 有关 Azure Kubernetes 服务 (AKS) 上的机密计算节点的常见问题解答
 summary: >
   本文解决了有关 Azure Kubernetes 服务 (AKS) 上基于 Intel SGX 的机密计算节点的常见问题。 如果你有任何其他问题，请发送电子邮件至 acconaks@microsoft.com。
@@ -69,38 +69,7 @@ sections:
     answer: >
       证明是指演示和验证某个软件是否已在特定硬件平台上正确实例化的过程。 它还可确保其证据是可验证的，从而确保软件在安全平台中运行且未被篡改。 [详细了解](attestation.md)如何对 enclave 应用进行证明。
   - question: 如果容器大小超过可用 EPC 内存，该怎么办？
-    answer: >
-      EPC 内存应用于为了在 enclave 中执行而经过了编程的应用程序部分。 容器的总大小并不是指示最大可用 EPC 内存的指标。 事实上，包含 SGX 的 DCSv2 计算机允许应用程序的不受信任部分可利用的最大 VM 内存为 32 GB。 但是，如果容器使用的内存超出可用的 EPC 内存，则在 enclave 中运行的程序部分的性能可能会受到影响。
-
-
-      若要更好地管理工作器节点中的 EPC 内存，可考虑通过 Kubernetes 实现的基于 EPC 内存的限制管理。 请参考以下示例。
-
-
-      ```yaml
-
-      apiVersion: batch/v1
-
-      kind: Job
-
-      metadata:
-        name: sgx-test
-        labels:
-          app: sgx-test
-      spec:
-        template:
-          metadata:
-            labels:
-              app: sgx-test
-          spec:
-            containers:
-            - name: sgxtest
-              image: oeciteam/sgx-test:1.0
-              resources:
-                limits:
-                  sgx.intel.com/sgx_epc_mem_in_MiB: 10 # This limit will automatically place the job into confidential computing node. Alternatively, you can target deployment to nodepools
-            restartPolicy: Never
-        backoffLimit: 0
-      ```
+    answer: "EPC 内存应用于为了在 enclave 中执行而经过了编程的应用程序部分。 容器的总大小并不是指示最大可用 EPC 内存的指标。 事实上，包含 SGX 的 DCSv2 计算机允许应用程序的不受信任部分可利用的最大 VM 内存为 32 GB。 但是，如果容器使用的内存超出可用的 EPC 内存，则在 enclave 中运行的程序部分的性能可能会受到影响。\n\n若要更好地管理工作器节点中的 EPC 内存，可考虑通过 Kubernetes 实现的基于 EPC 内存的限制管理。 请参考以下示例。\n\n> [!NOTE] \n> 以下示例从 Docker Hub 拉取公共容器映像。 建议设置一个拉取密钥，以使用 Docker Hub 帐户进行身份验证，而不是发出匿名拉取请求。 若要在使用公共内容时提高可靠性，请在专用 Azure 容器注册表中导入和管理映像。 [详细了解如何使用公共映像。](../container-registry/buffer-gate-public-content.md)\n\n```yaml\napiVersion: batch/v1\nkind: Job\nmetadata:\n  name: sgx-test\n  labels:\n    app: sgx-test\nspec:\n  template:\n    metadata:\n      labels:\n        app: sgx-test\n    spec:\n      containers:\n      - name: sgxtest\n        image: oeciteam/sgx-test:1.0\n        resources:\n          limits:\n            sgx.intel.com/sgx_epc_mem_in_MiB: 10 # This limit will automatically place the job into confidential computing node. Alternatively, you can target deployment to nodepools\n      restartPolicy: Never\n  backoffLimit: 0\n```\n"
   - question: 如果 enclave 使用的内存超过最大可用 EPC 内存，会发生什么情况？
     answer: "同一 VM 或工作器节点中的 enclave 应用程序共用全部可用的 EPC 内存。 如果应用程序使用的 EPC 内存超出可用内存，则应用程序性能可能会受到影响。 出于此原因，建议在部署 yaml 文件中设置每个应用程序的容忍度，以更好地管理每个工作器节点的可用 EPC 内存，如以上示例中所示。 或者，始终可以选择提升工作器节点池 VM 大小或添加更多节点。 \n"
   - question: 为什么无法执行 forks () 和 exec 以在 enclave 应用程序中运行多个进程？

@@ -6,14 +6,14 @@ manager: nmurav
 services: azure-communication-services
 ms.author: bobazile
 ms.date: 06/30/2021
-ms.topic: overview
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 7251e97209e9cca1b4c86a6ab8c829c8f0346525
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 8b2468b13f7093129c137019d8ec7f60e4fd5e4f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114674892"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258000"
 ---
 # <a name="list-of-session-border-controllers-certified-for-azure-communication-services-direct-routing"></a>针对 Azure 通信服务直接路由认证的会话边界控制器列表
 本文档包含经认证可用于 Azure 通信服务直接路由的会话边界控制器列表。 此外，它还包含已知限制。
@@ -37,8 +37,8 @@ Azure 通信服务尚不支持媒体旁路。 基于 Web 的客户端不支持�
 
 |Vendor|产品|软件版本|
 |:--- |:--- |:--- 
+|AudioCodes|Mediant SBC|7.40A
 |Metaswitch|Perimeta SBC|4.9|
-
 
 请注意授予主版本的认证。 这意味着支持 SBC 固件中该主版本后面具有任意数字的固件。
 
@@ -47,7 +47,7 @@ Azure 通信服务尚不支持媒体旁路。 基于 Web 的客户端不支持�
 ### <a name="conceptual-documentation"></a>概念文档
 
 - [Azure 通信服务中的电话号码类型](./plan-solution.md)
-- [规划 Azure 直接路由](./sip-interface-infrastructure.md)
+- [规划 Azure 直接路由](./direct-routing-infrastructure.md)
 - [配对会话边界控制器并配置语音路由](./direct-routing-provisioning.md)
 - [定价](../pricing.md)
 

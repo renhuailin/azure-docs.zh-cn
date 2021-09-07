@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 16735c2d8e77c23156e23aade7a1d42bd7504e71
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: aa51a489fd1dc7a3e7188239ea200b6fb95b3ed1
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765627"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123271964"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>发现、评估 Google Cloud Platform (GCP) VM 并将其迁移到 Azure
 
@@ -348,12 +348,11 @@ ms.locfileid: "113765627"
     - 停止复制 GCP VM。
     - 从 Azure Migrate 的“复制服务器”计数中删除 GCP VM：服务器迁移。
     - 清除 VM 的复制状态信息。
-2. 在已迁移的计算机上安装 Azure VM [Windows](../virtual-machines/extensions/agent-windows.md) 或 [Linux](../virtual-machines/extensions/agent-linux.md) 代理。
-3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
-4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
-5. 将流量交接到已迁移的 Azure VM 实例。
-6. 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。
-
+1. 验证并[排查 Azure VM 上的所有 Windows 激活问题。](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)
+1. 执行任何迁移后的应用调整，例如更新主机名、数据库连接字符串和 Web 服务器配置。
+1. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
+1. 将流量交接到已迁移的 Azure VM 实例。
+1. 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。
 
 
 

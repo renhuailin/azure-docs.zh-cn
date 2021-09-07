@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: tutorial
-ms.date: 10/08/2020
+ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: a94821f5254526fa13f9e87e62803581c46127d2
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 892cf772559b445a6ebb7103ff5a65582700b70f
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538676"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864324"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>教程：使用 CLI 将虚拟网络连接到 ExpressRoute 线路
 
@@ -170,6 +170,20 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 ```azurecli-interactive
 az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true
 ```
+
+> [!NOTE]
+> 可以使用[连接监视器](how-to-configure-connection-monitor.md)来验证流量是否使用 FastPath 到达目标。
+>
+
+## <a name="enroll-in-expressroute-fastpath-features-preview"></a>注册 ExpressRoute FastPath 功能（预览版）
+
+FastPath 对虚拟网络对等互连的支持现以公共预览版提供。 只能通过 Azure PowerShell 进行注册。 有关如何注册的说明，请参阅 [FastPath 预览功能](expressroute-howto-linkvnet-arm.md#enroll-in-expressroute-fastpath-features-preview)。
+
+> [!NOTE] 
+> 如果已经配置了 FastPath 并且想要注册预览功能，则需要执行以下操作：
+> 1. 使用上述 Azure PowerShell 命令注册 FastPath 预览功能。
+> 1. 在目标连接上禁用 FastPath，然后重新启用它。
+
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要 ExpressRoute 连接，请使用 `az network vpn-connection delete` 命令，从该网关所在的订阅删除网关和线路之间的链接。

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c71a0ddece95eb7d6a651da9c307912a1a24c800
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 52a1931ec567d03d0beaaf9180532a91ff6bed07
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795496"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259466"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>教程：使用 Azure 文件同步扩展 Windows 文件服务器
 
@@ -30,7 +30,7 @@ ms.locfileid: "107795496"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="prepare-your-environment"></a>准备环境
 
@@ -61,7 +61,7 @@ ms.locfileid: "107795496"
 
     ![选择”添加文件共享”按钮](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
 
-1. 将新文件共享命名为 _afsfileshare_。 输入“1”作为 **配额**，然后选择“创建”。  配额最高可以为 5 TiB，但本教程只需 1 GB。
+1. 将新文件共享命名为 _afsfileshare_。 输入“5120”作为“配额”，然后选择“创建” 。 配额最高可为 100 TiB，但本教程只需 5 GB。
 
     ![为新文件共享提供名称和配额](./media/storage-sync-files-extend-servers/create-file-share-portal3.png)
 
@@ -97,12 +97,12 @@ ms.locfileid: "107795496"
    1. 在“磁盘”选项卡的“磁盘选项”下，保留默认设置。  
    1. 在“数据磁盘”下，选择“创建并附加新磁盘”。  
 
-   1. 使用默认设置，但“大小(GiB)”选项除外，在本教程中，可将该选项更改为“1 GB”。  
+   1. 使用默认设置，但“大小(GiB)”选项除外，在本教程中，可将该选项更改为“1 GiB”。 
 
       ![数据磁盘详细信息](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
    1. 选择“确定”  。
-1. 选择“查看 + 创建”。
+1. 选择“查看 + 创建”  。
 1. 选择“创建”  。
 
    可以选择“通知”图标，观察 **部署进度**。  创建新的 VM 可能需要数分钟才能完成。
@@ -156,7 +156,7 @@ ms.locfileid: "107795496"
 
     ![数据磁盘](media/storage-sync-files-extend-servers/your-disk.png)
 
-1. 右键单击名为“Msft 虚拟磁盘”的 1 GB 磁盘，然后选择“新建卷”。  
+1. 右键单击名为“Msft 虚拟磁盘”的 1 GiB 磁盘，然后选择“新建卷”。 
 1. 完成向导。 使用默认设置并记下分配的驱动器号。
 1. 选择“创建”  。
 1. 选择“关闭”  。

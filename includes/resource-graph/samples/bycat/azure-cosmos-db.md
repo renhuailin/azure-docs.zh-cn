@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/31/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b2facd700fa0bf5943cca679f9dac6616f27b8f8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 176c75922fdeae6f1984330a40cbdc38a4d8404b
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457054"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309581"
 ---
-### <a name="list-cosmos-db-with-specific-write-locations"></a>列出具有特定写入位置的 Cosmos DB
+### <a name="list-azure-cosmos-db-with-specific-write-locations"></a>列出具有特定写入位置的 Azure Cosmos DB
 
-以下查询限制了 Cosmos DB 资源，使用 `mv-expand` 展开 **properties.writeLocations** 的属性包，然后投影特定字段，并将结果进一步限制为与 ‘East US’ 或 ‘West US’ 匹配的 **properties.writeLocations.locationName** 值。
+以下查询限制了 Azure Cosmos DB 资源，使用 `mv-expand` 展开 properties.writeLocations 的属性包，然后投影特定字段，并将结果进一步限制为与“美国东部”或“美国西部”匹配的 properties.writeLocations.locationName 值 。
 
 ```kusto
 Resources

@@ -9,22 +9,21 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: 2fefa04a6ba00d788d39d850431234c490734dd5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: da96179707be6d41c8191b5debff3154fe1e1151
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114593848"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442483"
 ---
 开始使用适用于 Python 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
 使用适用于 Python 的人脸客户端库可以：
 
-* [检测图像中的人脸](#detect-faces-in-an-image)
-* [查找相似人脸](#find-similar-faces)
-* [创建和训练 PersonGroup](#create-and-train-a-persongroup)
+* [检测和分析人脸](#detect-and-analyze-faces)
 * [识别人脸](#identify-a-face)
 * [验证人脸](#verify-faces)
+* [查找相似人脸](#find-similar-faces)
 
 [参考文档](/python/api/overview/azure/cognitiveservices/face-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [包 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [示例](/samples/browse/?products=azure&term=face)
 
@@ -33,6 +32,7 @@ ms.locfileid: "114593848"
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
   * 你的 Python 安装应包含 [pip](https://pip.pypa.io/en/stable/)。 可以通过在命令行上运行 `pip --version` 来检查是否安装了 pip。 通过安装最新版本的 Python 获取 pip。
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * 拥有 Azure 订阅后，请在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 </a>，以获取密钥和终结点。 部署后，单击“转到资源”。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
@@ -84,11 +84,11 @@ pip install --upgrade azure-cognitiveservices-vision-face
 这些代码片段演示如何使用适用于 Python 的人脸客户端库执行以下任务：
 
 * [对客户端进行身份验证](#authenticate-the-client)
-* [检测图像中的人脸](#detect-faces-in-an-image)
-* [查找相似人脸](#find-similar-faces)
-* [创建和训练 PersonGroup](#create-and-train-a-persongroup)
+* [检测和分析人脸](#detect-and-analyze-faces)
 * [识别人脸](#identify-a-face)
 * [验证人脸](#verify-faces)
+* [查找相似人脸](#find-similar-faces)
+
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
@@ -96,7 +96,10 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_auth)]
 
-## <a name="detect-faces-in-an-image"></a>在图像中检测人脸
+## <a name="detect-and-analyze-faces"></a>检测和分析人脸
+
+人脸检测是进行人脸分析和身份验证所必需的。 本部分介绍如何返回额外的人脸属性数据。 如果只想检测人脸以进行人脸识别或验证，请跳过后面的部分。
+
 
 以下代码检测远程图像中的人脸。 它将检测到的人脸 ID 输出到控制台，并将其存储在程序内存中。 然后，它在包含多个人员的图像中检测人脸，并将其 ID 输出到控制台。 更改 [detect_with_url](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations#detect-with-url-url--return-face-id-true--return-face-landmarks-false--return-face-attributes-none--recognition-model--recognition-01---return-recognition-model-false--detection-model--detection-01---custom-headers-none--raw-false----operation-config-) 方法中的参数可以返回包含每个 [DetectedFace](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface) 对象的不同信息。
 
@@ -113,31 +116,16 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 ![一位年轻的妇女，其脸部周围绘制了一个红色矩形](../../images/face-rectangle-result.png)
 
-## <a name="find-similar-faces"></a>查找相似人脸
 
-以下代码采用检测到的单个人脸（源），并搜索其他一组人脸（目标），以找到匹配项（按图像进行人脸搜索）。 找到匹配项后，它会将匹配的人脸的 ID 输出到控制台。
 
-### <a name="find-matches"></a>查找匹配项
 
-首先，运行上一部分（[检测图像中的人脸](#detect-faces-in-an-image)）所示的代码，以保存对单个人脸的引用。 然后运行以下代码，以获取对图像组中多个人脸的引用。
+## <a name="identify-a-face"></a>识别人脸
 
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detectgroup)]
+识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。
 
-然后添加以下代码块，以查找该组中第一个人脸的实例。 若要了解如何修改此行为，请参阅 [find_similar](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations#find-similar-face-id--face-list-id-none--large-face-list-id-none--face-ids-none--max-num-of-candidates-returned-20--mode--matchperson---custom-headers-none--raw-false----operation-config-) 方法。
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar)]
-
-### <a name="print-matches"></a>输出匹配项
-
-使用以下代码将匹配详细信息输出到控制台。
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar_print)]
-
-## <a name="create-and-train-a-persongroup"></a>创建和训练人员组
+### <a name="create-a-persongroup"></a>创建人员组
 
 以下代码创建包含三个不同 **Person** 对象的 **PersonGroup**。 它将每个 **Person** 与一组示例图像相关联，然后进行训练以便能够识别每个人。 
-
-### <a name="create-persongroup"></a>创建 PersonGroup
 
 若要逐步完成此方案，需将以下图像保存到项目的根目录： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
 
@@ -160,7 +148,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 > [!TIP]
 > 还可以从 URL 引用的远程图像创建 PersonGroup。 请参阅 [PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations) 方法，例如 add_face_from_url。
 
-### <a name="train-persongroup"></a>训练 PersonGroup
+### <a name="train-the-persongroup"></a>训练 PersonGroup
 
 分配人脸后，必须训练 **PersonGroup**，使其能够识别与其每个 **Person** 对象关联的视觉特征。 以下代码调用异步 **train** 方法并轮询结果，然后将状态输出到控制台。
 
@@ -169,20 +157,13 @@ pip install --upgrade azure-cognitiveservices-vision-face
 > [!TIP]
 > 人脸 API 在一组预构建的模型呢上运行，这些模型在本质上是静态的（模型的性能不会因为运行服务而提高或降低）。 如果 Microsoft 更新模型的后端，但不迁移整个新模型版本，那么模型生成的结果可能会变化。 若要使用更新的模型版本，可重新训练 PersonGroup，将更新的模型指定为具有相同注册映像的参数。
 
-## <a name="identify-a-face"></a>识别人脸
-
-识别操作采用一个（或多个）人员的图像，并在图像中查找每个人脸的标识（人脸识别搜索）。 它将每个检测到的人脸与某个 **PersonGroup**（面部特征已知的不同 **Person** 对象的数据库）进行比较。
-
-> [!IMPORTANT]
-> 若要运行此示例，必须先运行[创建和训练 PersonGroup](#create-and-train-a-persongroup) 中的代码。
-
 ### <a name="get-a-test-image"></a>获取测试图像
 
 以下代码在项目根目录中查找图像 _test-image-person-group.jpg_，并检测该图像中的人脸。 可以使用用于 **PersonGroup** 管理的图像查找此图像： https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images 。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify_testimage)]
 
-### <a name="identify-faces"></a>标识人脸
+### <a name="output-identified-face-ids"></a>输出识别的人脸 ID
 
 **identify** 方法采用检测到的人脸数组，并将其与 **PersonGroup** 进行比较。 如果检测到的某个人脸与某个人相匹配，则它会保存结果。 此代码将详细的匹配结果输出到控制台。
 
@@ -190,7 +171,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 ## <a name="verify-faces"></a>验证人脸
 
-验证操作采用某个人脸 ID 和其他人脸 ID 或 Person 对象，并确定它们是否属于同一个人。
+验证操作采用某个人脸 ID 和其他人脸 ID 或 Person 对象，并确定它们是否属于同一个人。 验证可用于重复检查识别操作返回的人脸匹配。
 
 以下代码检测两个源图像中的人脸，然后针对从目标图像检测到的人脸来验证它们。
 
@@ -213,6 +194,26 @@ pip install --upgrade azure-cognitiveservices-vision-face
 以下代码将每个源图像与目标图像进行比较并打印出一条消息，指示它们是否属于同一个人。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
+
+## <a name="find-similar-faces"></a>查找相似人脸
+
+以下代码采用检测到的单个人脸（源），并搜索其他一组人脸（目标），以找到匹配项（按图像进行人脸搜索）。 找到匹配项后，它会将匹配的人脸的 ID 输出到控制台。
+
+### <a name="find-matches"></a>查找匹配项
+
+首先，运行上一部分（[检测并分析人脸](#detect-and-analyze-faces)）所示的代码，以保存对单个人脸的引用。 然后运行以下代码，以获取对图像组中多个人脸的引用。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detectgroup)]
+
+然后添加以下代码块，以查找该组中第一个人脸的实例。 若要了解如何修改此行为，请参阅 [find_similar](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations#find-similar-face-id--face-list-id-none--large-face-list-id-none--face-ids-none--max-num-of-candidates-returned-20--mode--matchperson---custom-headers-none--raw-false----operation-config-) 方法。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar)]
+
+### <a name="print-matches"></a>输出匹配项
+
+使用以下代码将匹配详细信息输出到控制台。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar_print)]
 
 ## <a name="run-the-application"></a>运行应用程序
 

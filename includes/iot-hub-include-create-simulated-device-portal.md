@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/26/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 91b6f1ed06fbf1f5575650f96f4622b3df9ca083
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28c3ccbd7dc0aae27cd64c0c213869cf968c0a9f
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98187379"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969323"
 ---
 <!-- This is the instructions for creating a simulated device you can use for testing routing.-->
 
@@ -25,7 +25,7 @@ ms.locfileid: "98187379"
 
 3. 在资源列表中，选择 IoT 中心。 本教程使用 ContosoTestHub  。 从中心窗格选择“IoT 设备”。
 
-4. 选择“+ 新建”  。 在添加设备窗格中，填写设备 ID。 本教程使用 Contoso-Test-Device。 将密钥留空，勾选“自动生成密钥”。 确保已启用“将设备连接到 IoT 中心”。 选择“保存”。
+4. 在“IoT 设备”窗格中选择“+ 添加设备” 。 在添加设备窗格中，填写设备 ID。 本教程使用 Contoso-Test-Device。 将密钥留空，勾选“自动生成密钥”。 确保已启用“将设备连接到 IoT 中心”。 选择“保存”  。
 
    ![“添加设备”屏幕](./media/iot-hub-include-create-simulated-device-portal/add-device.png)
 

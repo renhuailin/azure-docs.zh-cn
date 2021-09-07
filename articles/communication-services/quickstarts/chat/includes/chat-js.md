@@ -1,21 +1,21 @@
 ---
-title: 包含文件
+title: include 文件
 description: 包含文件
 services: azure-communication-services
-author: mikben
+author: probableprime
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: 63653bb72c278a330101503dbaf2959b7e0eb39f
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.author: rifox
+ms.openlocfilehash: e8afed5b318a3a6601d90fcd235476174e40e358
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "114201362"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967864"
 ---
 ## <a name="sample-code"></a>代码示例
 在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-chat) 上查找此快速入门的最终代码。
@@ -243,18 +243,23 @@ for await (const thread of threads) {
 
 - 使用 `senderDisplayName` 指定发送方的显示名称；
 - 使用 `type` 指定消息类型，例如“text”或“html”；
+- 可以选择使用 `metadata` 来包含想随消息一起发送的任何附加数据。 此字段为开发人员提供了一种机制，可用于扩展聊天消息功能并为用例添加自定义信息。 例如，在消息中共享文件链接时，你可能希望在元数据中添加“hasAttachment:true”，以便收件人的应用程序可分析并相应显示。
 
 `SendChatMessageResult` 是发送消息后返回的响应，它包含一个 ID（是消息的唯一 ID）。
 
 ```JavaScript
 const sendMessageRequest =
 {
-  content: 'Hello Geeta! Can you share the deck for the conference?'
+  content: 'Please take a look at the attachment'
 };
 let sendMessageOptions =
 {
   senderDisplayName : 'Jack',
-  type: 'text'
+  type: 'text',
+  metadata: {
+    'hasAttachment': 'true',
+    'attachmentUrl': 'https://contoso.com/files/attachment.docx'
+  }
 };
 const sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
 const messageId = sendChatMessageResult.id;

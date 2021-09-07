@@ -6,14 +6,14 @@ ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
 ms.date: 06/30/2021
-ms.custom: template-quickstart, references_regions, devx-track-azurecli, devx-track-azurepowershell
+ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, 群集
-ms.openlocfilehash: 1464f7f2c9d38b859823ab99e52499642fa4af4b
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 16e271cf6183dce74fad3075a2e8336030960a08
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113595833"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966632"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>快速入门：将现有 Kubernetes 群集连接到 Azure Arc
 
@@ -25,7 +25,13 @@ ms.locfileid: "113595833"
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+* [安装 Azure CLI 或将其升级](/cli/azure/install-azure-cli)到不低于 2.16.0 的版本
+
+* 安装 1.0.0 或更高版本的 connectedk8s Azure CLI 扩展：
+
+  ```console
+  az extension add --name connectedk8s
+  ```
 
 * 已启动并正在运行的 Kubernetes 群集。 如果没有群集，你可以使用以下任意选项创建群集：
     * [Docker 中的 Kubernetes (KIND)](https://kind.sigs.k8s.io/)
@@ -45,25 +51,19 @@ ms.locfileid: "113595833"
 
 * 安装[最新版本的 Helm 3](https://helm.sh/docs/intro/install)。
 
-* [安装 Azure CLI 或将其升级](/cli/azure/install-azure-cli)到不低于 2.16.0 的版本
-* 安装 `connectedk8s` Azure CLI 扩展版本，版本不得低于 1.0.0：
-
-  ```console
-  az extension add --name connectedk8s
-  ```
->[!NOTE]
-> 对于群集上的[自定义位置](./custom-locations.md)，请使用美国东部或欧洲西部区域。 对于所有其他已启用 Azure Arc 的 Kubernetes 功能，请[从此列表中选择任何区域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)。
-
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-[!INCLUDE [azure-powershell-requirements-no-header.md](../../../includes/azure-powershell-requirements-no-header.md)]
 
-> [!IMPORTANT]
-> 在 Az.ConnectedKubernetes PowerShell 模块处于预览版阶段时，必须使用 `Install-Module` cmdlet 来单独安装该模块。
+* [Azure PowerShell 5.9.0 版或更高版本](/powershell/azure/install-az-ps)
 
-```azurepowershell-interactive
-Install-Module -Name Az.ConnectedKubernetes
-```
+* 安装 **Az.ConnectedKubernetes** PowerShell 模块：
+
+    ```azurepowershell-interactive
+    Install-Module -Name Az.ConnectedKubernetes
+    ```
+
+    > [!IMPORTANT]
+    > 在 Az.ConnectedKubernetes PowerShell 模块处于预览版阶段时，必须使用 `Install-Module` cmdlet 来单独安装该模块。
 
 * 已启动并正在运行的 Kubernetes 群集。 如果没有群集，你可以使用以下任意选项创建群集：
     * [Docker 中的 Kubernetes (KIND)](https://kind.sigs.k8s.io/)
@@ -83,12 +83,7 @@ Install-Module -Name Az.ConnectedKubernetes
 
 * 安装[最新版本的 Helm 3](https://helm.sh/docs/intro/install)。
 
-* [Azure PowerShell 5.9.0 版或更高版本](/powershell/azure/install-az-ps)
-
 ---
-
->[!NOTE]
-> 对于群集上的[自定义位置](./custom-locations.md)，请使用美国东部或欧洲西部区域。 对于所有其他已启用 Azure Arc 的 Kubernetes 功能，请[从此列表中选择任何区域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)。
 
 ## <a name="meet-network-requirements"></a>满足网络要求
 
@@ -100,43 +95,47 @@ Install-Module -Name Az.ConnectedKubernetes
 | ----------------- | ------------- |
 | `https://management.azure.com`（针对 Azure 云），`https://management.usgovcloudapi.net`（针对 Azure US Government） | 代理需要该终结点才可连接到 Azure 并注册群集。 |
 | `https://<region>.dp.kubernetesconfiguration.azure.com`（针对 Azure 云），`https://<region>.dp.kubernetesconfiguration.azure.us`（针对 Azure US Government） | 代理的数据平面终结点，用于推送状态和提取配置信息。 |
-| `https://login.microsoftonline.com`（针对 Azure 云），`https://login.microsoftonline.us`（针对 Azure US Government） | 提取和更新 Azure 资源管理器令牌所需的终结点。 |
+| `https://login.microsoftonline.com`、`login.windows.net`（针对 Azure 云），`https://login.microsoftonline.us`（针对 Azure US Government） | 提取和更新 Azure 资源管理器令牌所需的终结点。 |
 | `https://mcr.microsoft.com` | 拉取 Azure Arc 代理的容器映像所需的终结点。                                                                  |
 | `https://gbl.his.arc.azure.com` |  需要用于获取区域终结点，以便拉取系统分配的托管服务标识 (MSI) 证书。 |
-| `https://<region-code>.his.arc.azure.com`（针对 Azure 云），`https://usgv.his.arc.azure.us`（针对 Azure US Government） |  拉取系统分配的托管服务标识 (MSI) 证书所需的终结点。 Azure 云区域的 `<region-code>` 映射：`eus`（美国东部）、`weu`（西欧）、`wcus`（美国中西部）、`scus`（美国中南部）、`sea`（东南亚）、`uks`（英国南部）、`wus2`（美国西部 2）、`ae`（澳大利亚东部）、`eus2`（美国东部 2）、`ne`（北欧）、`fc`（法国中部）。 |
+| `https://*.his.arc.azure.com`（针对 Azure 云），`https://usgv.his.arc.azure.us`（针对 Azure US Government） |  拉取系统分配的托管服务标识 (MSI) 证书所需的终结点。 |
+|`*.servicebus.windows.net`, `guestnotificationservice.azure.com`, `*.guestnotificationservice.azure.com`, `sts.windows.net` | 针对基于[连接](cluster-connect.md)和[位置](custom-locations.md)的场景。 |
 
 ## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. 为已启用 Azure Arc 的 Kubernetes 注册提供程序
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. 输入以下命令：
-    ```console
+    ```azurecli
     az provider register --namespace Microsoft.Kubernetes
     az provider register --namespace Microsoft.KubernetesConfiguration
     az provider register --namespace Microsoft.ExtendedLocation
     ```
 2. 监视注册过程。 注册可能最多需要 10 分钟。
-    ```console
+    ```azurecli
     az provider show -n Microsoft.Kubernetes -o table
     az provider show -n Microsoft.KubernetesConfiguration -o table
     az provider show -n Microsoft.ExtendedLocation -o table
     ```
 
+    注册后，应会看到这些命名空间的 `RegistrationState` 状态更改为 `Registered`。
+
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 1. 输入以下命令：
-    ```azurepowershell-interactive
+    ```azurepowershell
     Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
     Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
     Register-AzResourceProvider -ProviderNamespace Microsoft.ExtendedLocation
     ```
 1. 监视注册过程。 注册可能最多需要 10 分钟。
-    ```azurepowershell-interactive
+    ```azurepowershell
     Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
     Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
     Get-AzResourceProvider -ProviderNamespace Microsoft.ExtendedLocation
     ```
 
+    注册后，应会看到这些命名空间的 `RegistrationState` 状态更改为 `Registered`。
 ---
 
 ## <a name="2-create-a-resource-group"></a>2.创建资源组
@@ -145,7 +144,7 @@ Install-Module -Name Az.ConnectedKubernetes
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```console
+```azurecli
 az group create --name AzureArcTest --location EastUS --output table
 ```
 
@@ -158,7 +157,7 @@ eastus      AzureArcTest
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-```azurepowershell-interactive
+```azurepowershell
 New-AzResourceGroup -Name AzureArcTest -Location EastUS
 ```
 
@@ -179,7 +178,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```console
+```azurecli
 az connectedk8s connect --name AzureArcTest1 --resource-group AzureArcTest
 ```
 
@@ -227,7 +226,7 @@ Helm release deployment succeeded
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-```azurepowershell-interactive
+```azurepowershell
 New-AzConnectedKubernetes -ClusterName AzureArcTest1 -ResourceGroupName AzureArcTest -Location eastus
 ```
 
@@ -240,42 +239,7 @@ eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
 
 ---
 
-## <a name="4-verify-cluster-connection"></a>4. 验证群集连接
-
-运行以下命令：
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```console
-az connectedk8s list --resource-group AzureArcTest --output table
-```
-
-输出：
-<pre>
-Name           Location    ResourceGroup
--------------  ----------  ---------------
-AzureArcTest1  eastus      AzureArcTest
-</pre>
-
-### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
-```azurepowershell-interactive
-Get-AzConnectedKubernetes -ResourceGroupName AzureArcTest
-```
-
-输出：
-<pre>
-Location Name          Type
--------- ----          ----
-eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
-</pre>
-
----
-
-> [!NOTE]
-> 加入群集后，大约需要 5 到 10 分钟，群集元数据（群集版本、代理版本、节点数等）才会出现在 Azure 门户中已启用 Azure Arc 的 Kubernetes 资源的“概述”页上。
-
-## <a name="5-connect-using-an-outbound-proxy-server"></a>5. 使用出站代理服务器进行连接
+## <a name="4a-connect-using-an-outbound-proxy-server"></a>4a. 使用出站代理服务器进行连接
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -301,13 +265,13 @@ eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
 
 2. 使用指定的代理参数运行 connect 命令：
 
-    ```console
+    ```azurecli
     az connectedk8s connect --name <cluster-name> --resource-group <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR> --proxy-cert <path-to-cert-file>
     ```
 
-> [!NOTE]
-> * 在 `--proxy-skip-range` 下指定 `excludedCIDR` 以确保代理的群集内通信不会中断。
-> * 大多数出站代理环境预期使用 `--proxy-http`、`--proxy-https` 和 `--proxy-skip-range`。 仅在需要将代理预期的受信任证书插入代理 Pod 的受信任证书存储中时，才需要 `--proxy-cert`。
+    > [!NOTE]
+    > * 某些网络请求（例如涉及群集内服务间通信的请求）需要与通过代理服务器路由进行出站通信的流量分开。 `--proxy-skip-range` 参数可用于以逗号分隔的方式指定 CIDR 范围和终结点，以便代理与这些终结点之间的任何通信不会通过出站代理进行。 群集中服务的 CIDR 范围至少应指定为此参数的值。 例如，假设 `kubectl get svc -A` 返回一个服务列表，其中所有服务在 `10.0.0.0/16` 范围内都有 ClusterIP 值。 然后，为 `--proxy-skip-range` 指定的值为“10.0.0.0/16,kubernetes.default.svc”。
+    > * 大多数出站代理环境预期使用 `--proxy-http`、`--proxy-https` 和 `--proxy-skip-range`。 仅在需要将代理预期的受信任证书插入代理 Pod 的受信任证书存储中时，才需要 `--proxy-cert`。
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -325,11 +289,46 @@ eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
 
 2. 运行指定了代理参数的连接命令：
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     New-AzConnectedKubernetes -ClusterName <cluster-name> -ResourceGroupName <resource-group> -Location eastus -Proxy 'https://<proxy-server-ip-address>:<port>'
     ```
 
 ---
+
+## <a name="5-verify-cluster-connection"></a>5. 验证群集连接
+
+运行以下命令：
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az connectedk8s list --resource-group AzureArcTest --output table
+```
+
+输出：
+<pre>
+Name           Location    ResourceGroup
+-------------  ----------  ---------------
+AzureArcTest1  eastus      AzureArcTest
+</pre>
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Get-AzConnectedKubernetes -ResourceGroupName AzureArcTest
+```
+
+输出：
+<pre>
+Location Name          Type
+-------- ----          ----
+eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
+</pre>
+
+---
+
+> [!NOTE]
+> 加入群集后，大约需要 5 到 10 分钟，群集元数据（群集版本、代理版本、节点数等）才会出现在 Azure 门户中已启用 Azure Arc 的 Kubernetes 资源的“概述”页上。
 
 ## <a name="6-view-azure-arc-agents-for-kubernetes"></a>6. 查看适用于 Kubernetes 的 Azure Arc 代理
 
@@ -371,7 +370,7 @@ eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
 
 可以使用以下命令删除已启用 Azure Arc 的 Kubernetes 资源、任何关联的配置资源以及使用 Azure CLI 在群集上运行的任何代理：
 
-```console
+```azurecli
 az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
 ```
 
@@ -382,7 +381,7 @@ az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
 
 可以使用 Azure PowerShell 通过以下命令删除启用了 Azure Arc 的 Kubernetes 资源、任何关联的配置资源，以及群集上运行的任何代理：
 
-```azurepowershell-interactive
+```azurepowershell
 Remove-AzConnectedKubernetes -ClusterName AzureArcTest1 -ResourceGroupName AzureArcTest
 ```
 

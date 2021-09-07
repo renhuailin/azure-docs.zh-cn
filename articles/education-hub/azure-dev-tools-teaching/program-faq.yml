@@ -8,12 +8,12 @@ metadata:
   ms.subservice: education-hub
   ms.topic: overview
   ms.date: 06/30/2020
-  ms.openlocfilehash: 7f6d555b1ea72a145c3826ffc1ae9ff7cc8c499a
-  ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+  ms.openlocfilehash: 9953271e12adb0ccd59deabbb7fbf7a7fc846b94
+  ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111907129"
+  ms.lasthandoff: 08/31/2021
+  ms.locfileid: "123271874"
 title: 有关教育中心的常见问题
 summary: 本文解决了有关面向学生的 Azure、面向学生的 Azure 入门版和 Azure Dev Tools for Teaching 的常见问题。
 sections:
@@ -23,6 +23,9 @@ sections:
       用完 100 美元额度或在 12 个月到期后会发生什么情况？
     answer: >
       用完可用额度或在 12 个月到期后，你的 Azure 订阅将被禁用。 若要继续使用 Azure，可以在 Azure 门户中升级为即用即付订阅。 若要获取面向学生的 Azure 的详细使用条款，请访问[套餐条款](https://azure.microsoft.com/offers/ms-azr-0170p/)。
+  - question: >
+      谁有资格使用面向学生的 Azure？
+    answer: "仅满足以下要求的学生可以使用面向学生的 Azure 入门版：\n\n- 你必须申明自己已年满 18 岁，并且就读于经认证的、可授予学位的两年或四年制教育机构，并且是该机构的全日制学生。 \n- 必须通过组织的电子邮件地址验证学业状况。\n- 有关详细使用条款，请参阅[面向学生的 Azure 套餐](https://azure.microsoft.com/offers/ms-azr-0170p/)。\n\n此套餐不适用于大规模开放在线课程 (MOOC) 或盈利组织的其他专业培训。\n\n此套餐仅限每位符合条件的客户获得一份面向学生的 Azure 订阅。 未经 Microsoft 许可，不可转让此套餐，也不能与任何其他套餐结合使用。\n    \n"
   - question: >
       我明年还能获取面向学生的 Azure 吗?
     answer: >
