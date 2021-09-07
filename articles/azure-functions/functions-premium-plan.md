@@ -9,16 +9,19 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: e53089c2287d255fd3dbe6ca7961646e0e3de05a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f2ac7aa7d5078359f747e141971eabeba21eab3e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457417"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968726"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
-Azure Functions 高级计划（有时称为“弹性高级计划”）是函数应用的一个托管选项。 有关其他托管计划选项，请参阅[托管计划文章](functions-scale.md)。
+Azure Functions 弹性高级计划是函数应用的一个动态缩放托管选项。 有关其他托管计划选项，请参阅[托管计划文章](functions-scale.md)。
+
+>[!IMPORTANT]
+>Azure Functions 在 Azure 应用服务平台上运行。 在应用服务平台中，托管高级计划函数应用的计划称为弹性高级计划，其 SKU 名称类似于 `EP1`。 如果选择在高级计划上运行函数应用，请确保创建一个 SKU 名称以“E”开头的计划，例如 `EP1`。 以“P”开头的应用服务计划 SKU 名称，例如 `P1V2`（高级 V2 小型计划），实际上是[专用托管计划](dedicated-plan.md)。 由于它们是专用计划而不是弹性高级计划，因此 SKU 名称以“P”开头的计划不会动态缩放，可能会增加你的成本。 
 
 高级计划托管为函数提供了以下好处：
 
@@ -158,7 +161,7 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 ## <a name="region-max-scale-out"></a>区域最大横向扩展
 
-下面是每个区域和 OS 配置中单个计划当前支持的最大横向扩展值。 若要请求增加，可以创建支持票证。
+下面是每个区域和 OS 配置中单个计划当前支持的最大横向扩展值。
 
 请在 [Azure 网站](https://azure.microsoft.com/global-infrastructure/services/?products=functions)上查看 Functions 的完整的区域可用性。
 

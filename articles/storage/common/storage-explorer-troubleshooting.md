@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 2baf8c99161d000b92aa10f02a26018bdb7264f4
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 9015e3ce69042a2e7d96588956becff889827ab3
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093870"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225178"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -546,7 +546,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 14. 单击“复制到文件...”
 15. 在导出向导中，选择以下选项
     - Base-64 编码的 X.509
-    - 对于文件名，浏览… 到 C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs，然后可以将它保存为任何文件名
+    - 对于文件名，浏览… 到 `C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs`，然后可以将它保存为任何文件名
 16. 关闭证书窗口
 17. 启动存储资源管理器
 18. 转到“编辑”>“配置代理”

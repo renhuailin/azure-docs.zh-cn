@@ -16,12 +16,12 @@ ms.date: 07/01/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fcd11f88cb25ef3afb199b147856d0a0140e44c
-ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+ms.openlocfilehash: 4ea285c078061ed6009aff8dfd1c17b1f0528b9a
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113491976"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967244"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的请求设置
 
@@ -158,6 +158,9 @@ ms.locfileid: "113491976"
     创建访问包后，可以直接将特定的内部和外部用户分配到该访问包。 如果指定外部用户，将在目录中创建来宾用户帐户。 有关直接分配用户的详细信息，请参阅[查看、添加和删除访问包的分配](entitlement-management-access-package-assignments.md)。
 
 1. 跳到[启用请求](#enable-requests)部分。
+
+> [!NOTE]
+> 将用户分配到访问包时，管理员需要根据现有策略要求验证用户是否有资格获得该访问包。 否则，用户将无法成功分配到该访问包。 如果访问包包含要求批准用户请求的策略，则未经指定审批者的必要批准，无法将用户直接分配到该包。
 
 
 ## <a name="open-and-edit-an-existing-policy-of-request-settings"></a>打开和编辑请求设置的现有策略

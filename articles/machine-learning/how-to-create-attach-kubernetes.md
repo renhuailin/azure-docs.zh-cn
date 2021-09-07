@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: f623a5012ebd02ddf55b41541bb66cc34eaa4de8
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 62e7f1b770db05f4dcd5d84cdc5f6a769566a4bd
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461226"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867586"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -86,6 +86,12 @@ Azure Kubernetes 服务允许使用各种 Kubernetes 版本创建群集。 有�
 
 附加现有 AKS 群集时，我们为当前受支持的所有 AKS 版本提供支持。
 
+> [!IMPORTANT]
+> 目前，Azure 机器学习不支持将模型部署到 AKS 版本 1.21.x
+
+> [!IMPORTANT]
+> Azure Kubernetes 服务对 <=1.16 的版本使用 [Blobfuse FlexVolume 驱动程序](https://github.com/Azure/kubernetes-volume-drivers/blob/master/flexvolume/blobfuse/README.md)，对 >=1.17 的版本使用 [Blob CSI 驱动程序](https://github.com/kubernetes-sigs/blob-csi-driver/blob/master/README.md)。 因此，请务必在群集升级后重新部署或[更新 Web 服务](how-to-deploy-update-web-service.md)，以便为群集版本部署正确的 blobfuse 方法。
+
 > [!NOTE]
 > 可能会出现旧群集不再受支持的极端情况。 在这种情况下，附加操作会返回一个错误，并会列出当前受支持的版本。
 >
@@ -128,7 +134,7 @@ Result
 1.16.13
 ```
 
-若要以编程方式检查可用版本，请使用[容器服务客户端 - 列出业务流程协调程序](/rest/api/container-service/container-service-client/list-orchestrators) REST API。 若要查找可用版本，请查看 `orchestratorType` 为 `Kubernetes` 的条目。 关联的 `orchestrationVersion` 条目包含可附加到你的工作区的可用版本。
+若要以编程方式检查可用版本，请使用容器服务客户端 - 列出业务流程协调程序 REST API。 若要查找可用版本，请查看 `orchestratorType` 为 `Kubernetes` 的条目。 关联的 `orchestrationVersion` 条目包含可附加到你的工作区的可用版本。
 
 若要查找通过 Azure 机器学习创建群集时使用的默认版本，请找到其中的 `orchestratorType` 为 `Kubernetes` 且 `default` 为 `true` 的条目。 关联的 `orchestratorVersion` 值为默认版本。 下面的 JSON 代码片段显示了一个示例条目：
 

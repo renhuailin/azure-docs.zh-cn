@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5d6e5f608a79765a0bf6ac46cb8e36e6ba1ed1f3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: b0d0c77ffbf6e8c8493abe2f9356aaa0e171f1f2
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122321828"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967289"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows"></a>为用户流设置电话注册和登录
 
@@ -176,6 +176,25 @@ ms.locfileid: "122321828"
 12. 保存文件。 在“上传新替代”下，浏览到文件并将其选中。 确认你看到“上传替代成功”通知。
 
 13. 选择“电话注册页”，然后重复步骤 10 到 12。 
+
+
+## <a name="get-a-users-phone-number-in-your-directory"></a>获取目录中用户的电话号码
+
+1. 在 Graph 浏览器中运行以下请求：
+
+   `GET https://graph.microsoft.com/v1.0/users/{object_id}?$select=identities`
+
+1. 在返回的响应中查找 `issuerAssignedId` 属性：
+
+   ```json
+       "identities": [
+           {
+               "signInType": "phoneNumber",
+               "issuer": "contoso.onmicrosoft.com",
+               "issuerAssignedId": "+11231231234"
+           }
+       ]
+   ```
 
 ## <a name="next-steps"></a>后续步骤
 

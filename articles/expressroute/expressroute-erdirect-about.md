@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: duau
-ms.openlocfilehash: fd890c8e8d72609d109fa466e260dd7315fd553b
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: c6f06df11e0e17f37d7cfcbba6ed4fb8c224f824
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441215"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029856"
 ---
 # <a name="about-expressroute-direct"></a>关于 ExpressRoute Direct
 
@@ -48,7 +48,7 @@ ExpressRoute Direct 提供的主要功能包括但不限于：
 
 1. 在你的订阅中，对于“资源提供程序”，验证 Microsoft.Network 提供程序是否显示为“已注册”状态。 如果已注册的提供程序列表中不存在 Microsoft.Network 资源提供程序，请添加该提供程序。
 
-如果开始使用 ExpressRoute Direct 后发现所选的对等互连位置没有可用的端口，请发送电子邮件至 ExpressRouteDirect@microsoft.com 请求更多库存。
+如果开始使用 ExpressRoute Direct 后发现所选的对等互连位置没有可用的端口，请记录支持请求以请求更多库存。
 
 ## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>使用服务提供程序的 ExpressRoute，以及 ExpressRoute Direct
 

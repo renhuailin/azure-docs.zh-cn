@@ -2,13 +2,13 @@
 title: Bicep 中的数据类型
 description: 描述 Bicep 中可用的数据类型
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 31f2c6e979acb3b0b622bc63ffb8a2845179491d
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 08/30/2021
+ms.openlocfilehash: f520e314aff783a78e1656c16721f0fb8504215b
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025885"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221687"
 ---
 # <a name="data-types-in-bicep"></a>Bicep 中的数据类型
 
@@ -32,6 +32,23 @@ ms.locfileid: "111025885"
 
 在数组中，每个项都由[任意类型](bicep-functions-any.md)表示。 可具有其每个项的数据类型都相同的数组，也可具有包含不同数据类型的数组。
 
+下面的示例演示一个整数数组和一个不同类型的数组。
+
+```bicep
+var integerArray = [
+  1
+  2
+  3
+]
+
+var mixedArray = [
+  resourceGroup().name
+  1
+  true
+  'example string'
+]
+```
+
 Bicep 中的数组基于 0。 在下面的示例中，表达式 `exampleArray[0]` 的计算结果为 1，`exampleArray[2]` 的计算结果为 3。 索引器的索引本身可能是另一个表达式。 表达式 `exampleArray[index]` 的计算结果为 2。 只允许对数组类型的表达式使用整数索引器。
 
 ```bicep
@@ -41,40 +58,6 @@ var exampleArray = [
   1
   2
   3
-]
-```
-
-Bicep 中允许使用基于字符串的索引器。
-
-```bicep
-param environment string = 'prod'
-
-var environmentSettings = {
-  dev: {
-    name: 'dev'
-  }
-  prod: {
-    name: 'prod'
-  }
-}
-```
-
-表达式 environmentSettings['dev'] 的计算结果为以下对象：
-
-```bicep
-{
-  name: 'dev'
-}
-```
-
-以下示例演示了具有不同类型的数组。
-
-```bicep
-var mixedArray = [
-  resourceGroup().name
-  1
-  true
-  'example string'
 ]
 ```
 
@@ -113,21 +96,38 @@ param exampleObject object = {
 }
 ```
 
-属性访问器用于访问对象的属性。 它们是使用 `.` 运算符构造的。 例如：
+属性访问器用于访问对象的属性。 它们是使用 `.` 运算符构造的。
 
 ```bicep
-var x = {
-  y: {
-    z: 'Hello`
-    a: true
+var a = {
+  b: 'Dev'
+  c: 42
+  d: {
+    e: true
   }
-  q: 42
 }
+
+output result1 string = a.b // returns 'Dev' 
+output result2 int = a.c // returns 42
+output result3 bool = a.d.e // returns true
 ```
 
-根据前面的声明，表达式 x.y.z 的计算结果为文本字符串“Hello”。 同样，表达式 x.q 的计算结果为整数文本 42。
-
 属性访问器可用于任何对象，包括对象类型和对象文字的参数和变量。 对非对象类型的表达式使用属性访问器是错误的。
+
+还可以使用 `[]` 语法来访问属性。 下面的示例将返回 `Development`。
+
+```bicep
+var environmentSettings = {
+  dev: {
+    name: 'Development'
+  }
+  prod: {
+    name: 'Production'
+  }
+}
+
+output accessorResult string = environmentSettings['dev'].name
+```
 
 ## <a name="strings"></a>字符串
 

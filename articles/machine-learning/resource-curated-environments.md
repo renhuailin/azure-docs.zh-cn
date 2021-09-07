@@ -10,39 +10,39 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.date: 07/08/2021
-ms.openlocfilehash: cb78928badb067731f6e4fbed75a01346409b70a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: bf67c2a23bf78960723efa37ea9bdc8f80c0c774
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114451043"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304709"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure 机器学习的特选环境
 
 本文列出了 Azure 机器学习中的特选环境。 特选环境由 Azure 机器学习提供，且默认可用于你的工作区。 它们由使用最新版本的 Azure 机器学习 SDK 的缓存 Docker 映像提供支持，降低了运行准备成本，缩短了部署时间。 使用这些环境可以快速完成各种机器学习框架的入门。
 
 > [!NOTE]
-> 此列表更新至 2021 年 7 月。 使用 [Python SDK](how-to-use-environments.md)、[CLI](/cli/azure/ml/environment?view=azure-cli-latest&preserve-view=true#az_ml_environment_list) 或 Azure 机器学习[工作室](how-to-manage-environments-in-studio.md)获取环境及其依赖项的最新更新列表。 有关详细信息，请参阅[环境](how-to-use-environments.md#use-a-curated-environment)一文。 在此新集发布后，以前的特选环境将隐藏，但仍可使用。 
+> 此列表更新至 2021 年 8 月。 使用 [Python SDK](how-to-use-environments.md)、[CLI](/cli/azure/ml/environment?view=azure-cli-latest&preserve-view=true#az_ml_environment_list) 或 Azure 机器学习[工作室](how-to-manage-environments-in-studio.md)获取环境及其依赖项的最新更新列表。 有关详细信息，请参阅[环境](how-to-use-environments.md#use-a-curated-environment)一文。 在此新集发布后，以前的特选环境将隐藏，但仍可使用。 
 
 ## <a name="pytorch"></a>PyTorch
 
-名称 - AzureML-pytorch-1.7-ubuntu18.04-py37-cuda11-gpu  
+名称 - AzureML-pytorch-1.9-ubuntu18.04-py37-cuda11-gpu  
 说明 - 使用 PyTorch 进行深度学习的环境，其中包含 AzureML Python SDK 和其他 Python 包。  
 Dockerfile 配置 - 可以为个人工作流自定义以下 Dockerfile：
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20210615.v1
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.1-cudnn8-ubuntu18.04:20210806.v1
 
-ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/pytorch-1.7
+ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/pytorch-1.9
 
 # Create conda environment
 RUN conda create -p $AZUREML_CONDA_ENVIRONMENT_PATH \
     python=3.7 \
-    pip=20.2.4 \
-    pytorch=1.7.1 \
-    torchvision=0.8.2 \
-    torchaudio=0.7.2 \
-    cudatoolkit=11.0 \
+    pip=21.2.1 \
+    pytorch=1.9.0 \
+    torchvision=0.10.0 \
+    torchaudio=0.9.0 \
+    cudatoolkit=11.1.1 \
     nvidia-apex=0.1.0 \
     -c anaconda -c pytorch -c conda-forge
 
@@ -57,10 +57,10 @@ RUN HOROVOD_WITH_PYTORCH=1 \
                 'pandas>=1.1,<1.2' \
                 'scipy>=1.5,<1.6' \
                 'numpy>=1.10,<1.20' \
-                'azureml-core==1.30.0' \
-                'azureml-defaults==1.30.0' \
-                'azureml-mlflow==1.30.0' \
-                'azureml-telemetry==1.30.0' \
+                'azureml-core==1.33.0' \
+                'azureml-defaults==1.33.0' \
+                'azureml-mlflow==1.33.0' \
+                'azureml-telemetry==1.33.0' \
                 'tensorboard==2.4.0' \
                 'tensorflow-gpu==2.4.1' \
                 'onnxruntime-gpu>=1.7,<1.8' \
@@ -78,7 +78,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 Dockerfile 配置 - 可以为个人工作流自定义以下 Dockerfile：
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210615.v1
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210806.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/lightgbm
 
@@ -104,10 +104,10 @@ RUN HOROVOD_WITH_TENSORFLOW=1 \
                 'distributed~=2021.6.0' \
                 'dask-ml~=1.9.0' \
                 'adlfs~=0.7.0' \
-                'azureml-core==1.30.0' \
-                'azureml-defaults==1.30.0' \
-                'azureml-mlflow==1.30.0' \
-                'azureml-telemetry==1.30.0'
+                'azureml-core==1.33.0' \
+                'azureml-defaults==1.33.0' \
+                'azureml-mlflow==1.33.0' \
+                'azureml-telemetry==1.33.0'
 
 # This is needed for mpi to locate libpython
 ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
@@ -119,7 +119,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 Dockerfile 配置 - 可以为个人工作流自定义以下 Dockerfile：
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20210615.v1
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210806.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/sklearn-0.24.1
 
@@ -137,10 +137,10 @@ RUN pip install 'matplotlib>=3.3,<3.4' \
                 'pandas>=1.1,<1.2' \
                 'scipy>=1.5,<1.6' \
                 'numpy>=1.10,<1.20' \
-                'azureml-core==1.30.0' \
-                'azureml-defaults==1.30.0' \
-                'azureml-mlflow==1.30.0' \
-                'azureml-telemetry==1.30.0' \
+                'azureml-core==1.33.0' \
+                'azureml-defaults==1.33.0' \
+                'azureml-mlflow==1.33.0' \
+                'azureml-telemetry==1.33.0' \
                 'scikit-learn==0.24.1'
 
 # This is needed for mpi to locate libpython
@@ -154,7 +154,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 Dockerfile 配置 - 可以为个人工作流自定义以下 Dockerfile：
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20210615.v1
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20210806.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/tensorflow-2.4
 
@@ -173,12 +173,13 @@ RUN HOROVOD_WITH_TENSORFLOW=1 \
                 'pandas>=1.1,<1.2' \
                 'scipy>=1.5,<1.6' \
                 'numpy>=1.10,<1.20' \
-                'azureml-core==1.30.0' \
-                'azureml-defaults==1.30.0' \
-                'azureml-mlflow==1.30.0' \
-                'azureml-telemetry==1.30.0' \
+                'azureml-core==1.33.0' \
+                'azureml-defaults==1.33.0' \
+                'azureml-mlflow==1.33.0' \
+                'azureml-telemetry==1.33.0' \
                 'tensorboard==2.4.0' \
                 'tensorflow-gpu==2.4.1' \
+                'tensorflow-datasets==4.3.0' \
                 'onnxruntime-gpu>=1.7,<1.8' \
                 'horovod[tensorflow-gpu]==0.21.3'
 

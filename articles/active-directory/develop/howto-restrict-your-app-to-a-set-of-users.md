@@ -13,14 +13,14 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5ced85c19eb8999c839861eb421ebb9d73ea63a6
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: d36d3dca584499e5bc9508c99485507b198159c6
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112369350"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123036422"
 ---
-# <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>如何：将 Azure AD 应用限制为仅供 Azure AD 租户中的一组用户使用
+# <a name="restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>将 Azure AD 应用限制为仅供 Azure AD 租户中的一组用户使用
 
 默认情况下，在 Azure Active Directory (Azure AD) 租户中注册的应用程序可供租户的所有已成功进行身份验证的用户使用。
 

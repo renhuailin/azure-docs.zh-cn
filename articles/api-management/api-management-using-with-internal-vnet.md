@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b0f67862352f2354dbdb5439542229dbee67ae00
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 84d290558d781b592a114b3f3f5658d1ceebe115
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107462"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221222"
 ---
 # <a name="connect-to-an-internal-virtual-network-using-azure-api-management"></a>利用 Azure API 管理连接至内部虚拟网络 
 借助 Azure 虚拟网络 (VNET)，Azure API 管理可以使用多种 VPN 技术来管理无法访问 Internet 的 API，以建立连接。 你可以通过[外部](./api-management-using-with-vnet.md)或内部模式来部署 API 管理。 通过本文，你将了解如何在内部 VNET 模式中部署 API 管理。
@@ -73,7 +73,7 @@ API 管理在内部 VNET 模式中部署时，你只能在你控制访问权限�
 | 虚拟 IP 地址 | 说明 |
 | ----- | ----- |
 | 专用虚拟 IP 地址 | 负载均衡的 IP 地址来自 API 管理委托的子网中，可通过该地址访问 `gateway`、`portal`、`management` 和 `scm` 终结点。 |  
-| 公共虚拟 IP 地址 | 仅用于控制通过 `port 3443` 到达终结点 `management` 的流量。 可以锁定到 [ApiManagement][ServiceTags] 服务标记。 |  
+| 公共虚拟 IP 地址 | 用于通过 `port 3443` 到达 `management` 终结点的控制平面流量。 可以锁定到 [ApiManagement][ServiceTags] 服务标记。 在“无”和“外部”VNet 配置中，这些 IP 地址用于传入的运行时 API 流量。 在所有 VNet 配置中，这些 IP 地址也用于 Internet 上的传出运行时流量。 |  
 
 ![配置了内部 VNET 的 API 管理仪表板][api-management-internal-vnet-dashboard]
 

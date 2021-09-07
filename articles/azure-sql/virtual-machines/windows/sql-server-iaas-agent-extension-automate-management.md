@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
+ms.date: 9/01/2021
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 619c29b2c28c04e1cbf4d4dcda8fe3048234e7dd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 828f4bc269e5d7ec5b0d46c473d2abbf2c200222
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752178"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220611"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理扩展实现自动管理
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,6 +31,9 @@ ms.locfileid: "121752178"
 SQL Server IaaS 代理扩展 (SqlIaasExtension) 在 Azure 虚拟机 (VM) 上的 SQL Server 中运行，可以自动执行管理任务。 
 
 本文将提供该扩展的概述。 若要将 SQL Server IaaS 扩展安装到 Azure VM 上的 SQL Server，请参阅有关[自动安装](sql-agent-extension-automatic-registration-all-vms.md)、[单一 VM](sql-agent-extension-manually-register-single-vm.md) 或[批量 VM](sql-agent-extension-manually-register-vms-bulk.md) 的文章。 
+
+> [!NOTE]
+> 从 2021 年 9 月开始，在完整模式下通过 SQL IaaS 扩展进行注册不再需要重启 SQL Server 服务。 
 
 ## <a name="overview"></a>概述
 
@@ -85,9 +88,9 @@ SQL Server IaaS 代理扩展可以解锁许多功能权益用于管理 SQL Serve
 
 可以选择以三种管理模式注册 SQL IaaS 扩展： 
 
-- **轻型** 模式将扩展二进制文件复制到 VM，但不安装代理，也不重启 SQL Server 服务。 轻型模式仅支持更改 SQL Server 的许可证类型和产品版本，提供有限的门户管理功能。 对于具有多个实例的 SQL Server VM 或参与故障转移群集实例 (FCI) 的 SQL Server VM，请使用此选项。 使用[自动注册](sql-agent-extension-automatic-registration-all-vms.md)功能时，或者在手动注册期间未指定管理类型时，轻型模式是默认的管理模式。 使用轻型模式时，不会对内存或 CPU 产生任何影响，并且没有关联成本。 建议先在轻型模式下注册 SQL Server VM，然后在计划性维护时段内升级到完整模式。 
+- “轻型”模式将扩展二进制文件复制到 VM，但不安装代理。 轻型模式仅支持更改 SQL Server 的许可证类型和产品版本，提供有限的门户管理功能。 对于具有多个实例的 SQL Server VM 或参与故障转移群集实例 (FCI) 的 SQL Server VM，请使用此选项。 使用[自动注册](sql-agent-extension-automatic-registration-all-vms.md)功能时，或者在手动注册期间未指定管理类型时，轻型模式是默认的管理模式。 使用轻型模式时，不会对内存或 CPU 产生任何影响，并且没有关联成本。 
 
-- **完全** 模式将 SQL IaaS 代理安装到 VM 以提供所有功能，但需要重启 SQL Server 服务并拥有系统管理员权限。 使用它管理具有单个实例的 SQL Server VM。 完整模式安装两个 Windows 服务，它们对内存和 CPU 的影响最小 - 可通过任务管理器进行监视。 使用完整可管理性模式时没有关联成本。 
+- “完整”模式将 SQL IaaS 代理安装到 VM 以提供完整功能。 使用它管理具有单个实例的 SQL Server VM。 完整模式安装两个 Windows 服务，它们对内存和 CPU 的影响最小 - 可通过任务管理器进行监视。 使用完整可管理性模式时没有关联成本。 需要系统管理员权限。 从 2021 年 9 月开始，在完全管理模式下注册 SQL Server VM 时，不再需要重启 SQL Server 服务。 
 
 - 无代理模式专用于在 Windows Server 2008 上安装的 SQL Server 2008 和 SQL Server 2008 R2。 使用无代理模式时，不会对内存或 CPU 产生任何影响。 使用无代理可管理性模式不会产生任何相关费用，SQL Server 不会重启，也不会在 VM 上安装代理。 
 
@@ -102,11 +105,11 @@ SQL Server IaaS 代理扩展可以解锁许多功能权益用于管理 SQL Serve
 
 ## <a name="installation"></a>安装
 
-将 SQL Server VM 注册到 SQL Server IaaS 代理扩展，以在订阅（该资源独立于虚拟机资源）中创建 **SQL 虚拟机** 资源。  从扩展中取消注册 SQL Server VM 会删除 **SQL 虚拟机** 资源，但不会删除实际虚拟机。
+将 SQL Server VM 注册到 SQL Server IaaS 代理扩展，以在订阅（该资源独立于虚拟机资源）中创建 [SQL 虚拟机](manage-sql-vm-portal.md)资源。  从扩展中取消注册 SQL Server VM 会删除 **SQL 虚拟机** 资源，但不会删除实际虚拟机。
 
-通过 Azure 门户部署 SQL Server VM Azure 市场映像会自动将 SQL Server VM 注册到扩展。 但是，如果选择在 Azure 虚拟机上自行安装 SQL Server，或通过自定义 VHD 预配 Azure 虚拟机，则必须将 SQL Server VM 注册到 SQL IaaS 扩展才能解锁功能权益。 
+通过 Azure 门户部署 SQL Server VM Azure 市场映像会自动将 SQL Server VM 完整注册到扩展。 但是，如果选择在 Azure 虚拟机上自行安装 SQL Server，或通过自定义 VHD 预配 Azure 虚拟机，则必须将 SQL Server VM 注册到 SQL IaaS 扩展才能解锁功能权益。 
 
-在轻型模式下注册扩展会复制二进制文件，但不会将代理安装到 VM。 将扩展升级为完全管理模式时，会将代理安装到 VM。 
+在轻型模式下注册扩展会复制二进制文件，但不会将代理安装到 VM。 在完全管理模式下安装扩展时，代理将安装到 VM。 
 
 可通过三种方式注册到扩展： 
 - [对订阅中的所有当前和未来 VM 自动注册](sql-agent-extension-automatic-registration-all-vms.md)
@@ -125,7 +128,7 @@ SQL Server IaaS 代理扩展可以解锁许多功能权益用于管理 SQL Serve
    1. 从 SQL IaaS 代理扩展中[取消注册](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension) SQL Server VM。 
    1. 完全卸载 SQL Server VM 中的 SQL Server。
    1. 使用 SQL Server VM 中的命名实例安装 SQL Server。 
-   1. [将 VM 注册到 SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md#register-with-extension)。 
+   1. [将 VM 注册到 SQL IaaS 代理扩展](sql-agent-extension-manually-register-single-vm.md#full-mode)。 
 
 ## <a name="verify-status-of-extension"></a>验证扩展的状态
 
@@ -166,6 +169,7 @@ SQL IaaS 代理扩展仅支持：
 
 
 ## <a name="in-region-data-residency"></a>区域内数据驻留
+
 Azure SQL 虚拟机和 SQL IaaS 代理扩展不会将客户数据移到或存储到它们已部署到的区域之外。
 
 ## <a name="next-steps"></a>后续步骤

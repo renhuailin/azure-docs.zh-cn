@@ -11,12 +11,12 @@ ms.date: 05/17/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: 894b95b1fb00402f9cfed2614639b29ac5412f4b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 559ef637f6deebaad8cc5c57d7503930cde73c08
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446420"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122967376"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>利用 Triton 推理服务器实现的高性能服务（预览） 
 
@@ -58,7 +58,7 @@ Triton 是针对推理进行了优化的框架。 它提供更好的 GPU 利用�
 
 * 系统将请求直接发送到 Triton 服务器。
 * Triton 对请求进行批处理，以最大程度利用 GPU。
-* 客户端使用 Triton URI 发出请求。 例如 `https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`。
+* 客户端使用 Triton URI 发出请求。 例如，`https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`。
 
 :::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="仅使用 Triton 进行 Inferenceconfig 部署，无 Python 中间件":::
 
@@ -200,6 +200,16 @@ az ml service delete -n triton-densenet-onnx
 [!notebook-python[] (~/Azureml-examples-main/python-sdk/experimental/deploy-triton/1.bidaf-ncd-local.ipynb?name=delete-service)]
 
 ---
+
+## <a name="how-to-use-azure-machine-learning-triton-inference-server-container-image"></a>如何使用 Azure 机器学习 Triton 推理服务器容器映像
+
+了解如何通过新的 [CLI(v2)](https://docs.microsoft.com/cli/azure/ml?view=azure-cli-latest) 使用 Azure 机器学习 Triton 推理服务器容器映像。 下面的示例使用[联机终结点和部署](concept-endpoints.md#what-are-online-endpoints-preview)概念。 
+
+1. [部署单个 Triton 模型](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-managed-online-endpoint.sh)。
+1. [部署多个 Triton 模型](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-multiple-models-online-endpoint.sh)。
+1. [部署 Triton 系综模型](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-ensemble-managed-online-endpoint.sh)。
+1. 查看 [Triton 示例](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/triton)。
+
 ## <a name="troubleshoot"></a>疑难解答
 
 * [对失败的部署进行故障排除](how-to-troubleshoot-deployment.md)，了解如何排查和解决在部署模型时可能遇到的常见错误。

@@ -5,12 +5,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 群集更新或重置
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 128e2d38b002369381c860dbd94dbd93b278682d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 72cc0c6ab369b035df8c4a29c89be74fa9102cc5
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743926"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101512"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或轮换 Azure Kubernetes 服务 (AKS) 的凭据
 
@@ -97,7 +97,7 @@ SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>使用新的服务主体凭据更新 AKS 群集
 
 > [!IMPORTANT]
-> 对于大型群集，使用新服务主体更新 AKS 群集可能需要较长时间才能完成。
+> 对于大型群集，使用新服务主体更新 AKS 群集可能需要较长时间才能完成。 请考虑查看和自定义[节点激增升级设置][node-surge-upgrade]，以最大程度地减少群集更新和升级期间的中断。
 
 无论是选择为现有服务主体更新凭据还是创建服务主体，现在都通过 [az aks update-credentials][az-aks-update-credentials] 命令，使用新凭据更新 AKS 群集。 会使用 --service-principal 和 --client-secret 的变量：
 
@@ -142,3 +142,4 @@ az aks update-credentials \
 [az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az_ad_sp_credential_list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az_ad_sp_credential_reset
 [node-image-upgrade]: ./node-image-upgrade.md
+[node-surge-upgrade]: upgrade-cluster.md#customize-node-surge-upgrade

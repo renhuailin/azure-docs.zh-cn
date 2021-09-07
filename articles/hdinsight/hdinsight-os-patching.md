@@ -4,20 +4,20 @@ description: 了解如何为基于 Linux 的 HDInsight 群集配置 OS 修补计
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 01/21/2020
-ms.openlocfilehash: 636caf592baa4df771f7cc50095911d0337456d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/30/2021
+ms.openlocfilehash: 10ab6462096bbdabee0730e6ef60e07d8d51b438
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98939388"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223560"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>为基于 Linux 的 HDInsight 群集配置 OS 修补计划
 
 > [!IMPORTANT]
 > Ubuntu 映像可在发布后的三 个月内用于创建新的 Azure HDInsight 群集。 系统不会自动修补正在运行的群集。 客户必须使用脚本操作或其他机制来修补正在运行的群集。 可以在创建群集后立即运行这些脚本操作并应用安全更新，这是最佳做法。
 
-HDInsight 为你提供支持，允许你在群集上执行常见任务，例如安装 OS 修补程序、安全更新，以及重启节点。 这些任务使用下述两个脚本来完成，这两个脚本可以作为[脚本操作](hdinsight-hadoop-customize-cluster-linux.md)运行，并且可以配置参数：
+HDInsight 支持你在群集上执行常见任务，例如安装操作系统补丁、操作系统安全更新和重启节点。 这些任务使用下述两个脚本来完成，这两个脚本可以作为[脚本操作](hdinsight-hadoop-customize-cluster-linux.md)运行，并且可以配置参数：
 
 - `schedule-reboots.sh` - 在群集节点上立即重启或计划重启。
 - `install-updates-schedule-reboots.sh` - 安装所有更新、仅安装内核 + 安全更新，或者仅安装内核更新。

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/01/2020
+ms.date: 08/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f16de49518e334f2f5e679ce24e24a262a1e231
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 29e9341427b74c2395288ac85ee98d8ff44bd02e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98674937"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968195"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 SAML 标识提供者技术配置文件
 
@@ -169,6 +169,8 @@ SAML 断言：
 | IncludeKeyInfo | 否 | 指定在将绑定设置为 `HTTP-POST` 时，SAML 身份验证请求是否包含证书的公钥。 可能的值：`true` 或 `false`。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false`（默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 |SingleLogoutEnabled| 否| 指示在登录过程中技术配置文件是否尝试从联合标识提供者注销。 有关详细信息，请参阅 [Azure AD B2C 会话注销](session-behavior.md#sign-out)。可能的值为 `true`（默认）或 `false`。|
+|ForceAuthN| 否| 在 SAML 身份验证请求中传递 ForceAuthN 值，以确定是否会强制外部 SAML IDP 提示用户进行身份验证。 默认情况下，Azure AD B2C 在初始登录时将 ForceAuthN 值设置为 false。 如果随后重置会话（例如，通过在 OIDC 中使用 `prompt=login` 来这样做），则 ForceAuthN 值将设置为 `true`。 如下所示设置元数据项会强制设置向外部 IDP 发出的所有请求的值。  可能的值：`true` 或 `false`。|
+
 
 ## <a name="cryptographic-keys"></a>加密密钥
 

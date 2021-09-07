@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: mathoma
 ms.date: 05/10/2020
-ms.openlocfilehash: 98aa190e85b0c613b4bf2224c0a3cf6637011de4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7ba5da1b452f411966e40d4ff991bbda9fdb88f7
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733328"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867415"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL 托管实例的事务复制（预览）
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -61,7 +61,7 @@ Azure SQL 托管实例可以支持成为以下版本的 SQL Server 的订阅服�
 
 - SQL Server 2016 和更高版本
 - SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) 或 [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
-- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) 或 [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
+- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2)、[SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996) 或 [SP4 (11.0.7001.0)](https://www.microsoft.com/download/details.aspx?id=56040)
 
    > [!NOTE]
    >

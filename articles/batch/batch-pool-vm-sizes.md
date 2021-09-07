@@ -2,18 +2,18 @@
 title: 为池选择 VM 大小和映像
 description: 如何选择 Azure Batch 池中计算节点的可用 VM 大小和 OS 版本
 ms.topic: conceptual
-ms.date: 08/10/2021
+ms.date: 08/27/2021
 ms.custom: seodec18
-ms.openlocfilehash: 8a923c2982a632209e659ad663147bff5ff5c20a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bff6ef88345b280e2c977661814630af38fbe9d5
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735567"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224829"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小和映像
 
-为 Azure Batch 池选择节点大小时，可以在 Azure 中提供的几乎所有 VM 大小中进行选择。 Azure 针对不同工作负荷，为 Linux 和 Windows VM 提供一系列大小。
+为 Azure Batch 池选择节点大小时，可以从 Azure 提供的几乎所有 VM 大小中进行选择。 Azure 针对不同工作负荷，为 Linux 和 Windows VM 提供一系列大小。
 
 ## <a name="supported-vm-series-and-sizes"></a>支持的 VM 系列和大小
 

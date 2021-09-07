@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 0548b309f84f46d7e1a8c904115167d59cc6f10e
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 4851e5cdfc5e50febf7d60ab4d7eaee2c95da5b4
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112417390"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866299"
 ---
 # <a name="prebuilt-docker-images-for-inference-preview"></a>用于推理的预生成 Docker 映像（预览版）
 
@@ -35,6 +35,7 @@ ms.locfileid: "112417390"
 ## <a name="list-of-prebuilt-docker-images-for-inference"></a>用于推理的预生成 Docker 映像列表 
 
 * 所有 docker 映像都以非根用户身份运行。
+* 我们建议对 docker 映像使用 `latest` 标记。 用于推理的预生成 docker 映像会发布到 Microsoft 容器注册表 (MCR)。若要查询可用标记的列表，请按照[其 GitHub 存储库的说明](https://github.com/microsoft/ContainerRegistry#browsing-mcr-content)进行操作。
 
 ### <a name="tensorflow"></a>TensorFlow
 

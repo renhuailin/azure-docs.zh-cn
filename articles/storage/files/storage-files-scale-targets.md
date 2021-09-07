@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 32ec83fb1c8de16f589d6a172a7612e5e5866647
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 871cb72c163472dbe3409738199e710300c5057d
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113768223"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867325"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 [Azure 文件](storage-files-introduction.md)在云中提供可通过 SMB 和 NFS 文件系统协议访问的完全托管的文件共享。 本文讨论了 Azure 文件和 Azure 文件同步的可伸缩性和性能目标。
@@ -78,8 +78,8 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 |-|-|-|
 | 文件大小上限 | 4 TiB | 4 TiB |
 | 最大并发请求速率 | 1,000 IOPS | 最高 8,000<sup>1</sup> |
-| 文件的最大流入量 | 60 MiB/秒 | 200 MiB/秒（使用 SMB 多通道预览版最多 1 GiB/秒）<sup>2</sup>|
-| 文件的最大流出量 | 60 MiB/秒 | 300 MiB/秒（使用 SMB 多通道预览版最多 1 GiB/秒）<sup>2</sup> |
+| 文件的最大流入量 | 60 MiB/秒 | 200 MiB/秒（使用 SMB 多通道最多 1 GiB/秒）<sup>2</sup>|
+| 文件的最大流出量 | 60 MiB/秒 | 300 MiB/秒（使用 SMB 多通道最多 1 GiB/秒）<sup>2</sup> |
 | 最大并发句柄数 | 2,000 个句柄 | 2,000 个句柄  |
 
 <sup>1 适用于读取和写入 IO（通常较小的 IO 大小小于或等于 64 KiB）。除读取和写入之外的元数据操作可能会更低。</sup>
@@ -119,7 +119,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 |-|-|
 | CPU | 64 个带 64 MiB L3 高速缓存的虚拟内核 |
 | 内存 | 128 GiB |
-| 磁盘 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
+| 磁盘和分区 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
 | 网络 | 1 Gbps 网络 |
 | 工作负荷 | 常规用途文件服务器|
 

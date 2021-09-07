@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 3205d4c4c6d8d7d821cb65400a4c1f19d6484005
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: c5f1509a5d037e5866ed86266693e955bdca2d6f
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226527"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186418"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
 
@@ -34,6 +34,7 @@ ms.locfileid: "108226527"
 ### <a name="general"></a><a name="open-api-general"> </a>总则
 
 -   路径和查询所需的参数必须具有唯一名称。 （在 OpenAPI 中，参数名称只需要在一个位置内是唯一的，例如路径、查询、标头。 但是，在 API 管理中，我们允许操作通过路径和查询参数进行区分（OpenAPI 不支持此方法）。 这就是要求参数名称在整个 URL 模板中是唯一的原因。）
+- 以内联方式导入到 API 管理时，OpenAPI 规范最大可以为 4 MB。 通过 URL 将 OpenAPI 文档提供给可从 API 管理服务访问的位置时，大小限制不适用。
 -   `\$ref` 指针不能引用外部文件。
 -   仅支持 `x-ms-paths` 和 `x-servers` 扩展。
 -   自定义扩展在导入时将被忽略，并且不会为导出保存或保留。

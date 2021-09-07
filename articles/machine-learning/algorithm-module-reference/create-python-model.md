@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/18/2020
-ms.openlocfilehash: 03f80ebeb7b30d8c0fe14060335541d77b7523b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/18/2021
+ms.openlocfilehash: 08cf192a650c592d7e5624c556ee8dfc766292fa
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "90898628"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831618"
 ---
 # <a name="create-python-model-module"></a>创建 Python 模型模块
 
@@ -46,6 +46,7 @@ ms.locfileid: "90898628"
 
 > [!NOTE]
 > 请特别注意脚本示例代码中的注释，确保脚本严格遵循对类名、方法以及方法签名等的要求。 违反要求将导致异常。 
+> “创建 Python 模型”仅支持创建基于 sklearn 的模型以使用“训练模型”进行训练。
 
    下面是使用常用 *sklearn* 包的双类 Naive Bayes 分类器的示例代码：
 

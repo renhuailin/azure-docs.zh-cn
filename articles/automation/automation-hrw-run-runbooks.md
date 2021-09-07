@@ -3,15 +3,15 @@ title: 在混合 Runbook 辅助角色上运行 Azure 自动化 Runbook
 description: 本文介绍如何使用混合 Runbook 辅助角色在本地数据中心或其他云提供商的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/27/2021
+ms.date: 08/12/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ef4c688fbe41db046b77d45090d77200d1c782cf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5f27f9366b388c090ca689a2011c777973b8a894
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725682"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968048"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色中运行 Runbook
 
@@ -21,13 +21,18 @@ ms.locfileid: "121725682"
 
 ## <a name="plan-for-azure-services-protected-by-firewall"></a>规划受防火墙保护的 Azure 服务
 
-在 [Azure 存储](../storage/common/storage-network-security.md)、[Azure Key Vault](../key-vault/general/network-security.md) 或 [Azure SQL](../azure-sql/database/firewall-configure.md) 上启用 Azure 防火墙时，会阻止从 Azure 自动化 runbook 进行的针对这些服务的访问。 即使启用了允许受信任的 Microsoft 服务的防火墙例外，访问也会被阻止，因为自动化不是受信任服务列表的一部分。 启用防火墙后，只能使用混合 Runbook 辅助角色和[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)进行访问。
+在 [Azure 存储](../storage/common/storage-network-security.md)、[Azure Key Vault](../key-vault/general/network-security.md) 或 [Azure SQL](../azure-sql/database/firewall-configure.md) 上启用 Azure 防火墙时，会阻止从 Azure 自动化 runbook 进行的针对这些服务的访问。 即使启用了允许受信任 Microsoft 服务的防火墙例外，访问也将被阻止，因为自动化不是受信任服务列表的一部分。 启用防火墙后，只能使用混合 Runbook 辅助角色和[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)进行访问。
 
 ## <a name="plan-runbook-job-behavior"></a>计划 Runbook 作业行为
 
 Azure 自动化处理混合 Runbook 辅助角色上的作业的方式不同于处理 Azure 沙盒中运行的作业的方式。 对于长时间运行的 runbook，请确保它能在重启后复原。 有关作业行为的详细信息，请参阅[混合 Runbook 辅助角色作业](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs)。
 
-混合 Runbook 辅助角色的作业在 Windows 上的本地 System 帐户下运行，或者在 Linux 上的 nxautomation 帐户下运行。 对于 Linux，请确保 nxautomation 帐户有权访问 Runbook 模块的存储位置。 使用 [Install-Module](/powershell/module/powershellget/install-module) cmdlet 时，请确保为 `Scope` 参数指定 AllUsers，以确保 nxautomation 帐户具有访问权限。 有关 Linux 上的 PowerShell 的详细信息，请参阅[非 Windows 平台上的 PowerShell 的已知问题](/powershell/scripting/whats-new/what-s-new-in-powershell-70)。
+混合 Runbook 辅助角色的作业在 Windows 上的本地 System 帐户下运行，或者在 Linux 上的 nxautomation 帐户下运行。 对于 Linux，请确保 nxautomation 帐户有权访问 Runbook 模块的存储位置。 若要确保 nxautomation 帐户访问权限，请执行以下操作：
+
+- 使用 [Install-Module](/powershell/module/powershellget/install-module) cmdlet 时，请务必为 `Scope` 参数指定 `AllUsers`。
+- 在 Linux 上使用 `pip install`、`apt install` 或其他方法安装包时，请确保为所有用户安装该包。 例如，`sudo -H pip install <package_name>`。
+
+有关 Linux 上的 PowerShell 的详细信息，请参阅[非 Windows 平台上的 PowerShell 的已知问题](/powershell/scripting/whats-new/what-s-new-in-powershell-70)。
 
 ## <a name="configure-runbook-permissions"></a>配置 runbook 权限
 
@@ -315,7 +320,7 @@ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/
 gpg --clear-sign <runbook name>
 ```
 
-签名的 Runbook 称为 <runbook name>asc。
+签名的 Runbook 称为 \<runbook name>asc。
 
 已签名 Runbook 现在可上传到 Azure 自动化中，并且可以像常规 Runbook 一样执行。
 

@@ -9,12 +9,12 @@ ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 442eef44f727ce7ef6059fa0bdfbf440c0345a09
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: f1eae19bda4fae0744483a647eed47104e366e52
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114727145"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867046"
 ---
 # <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 若要创建 Azure 文件共享，需要回答有关你将如何使用它的三个问题：
@@ -65,7 +65,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 
 若要创建 FileStorage 存储帐户，请确保将“性能”单选按钮设置为“高级”，并在“高级帐户类型”下拉列表中选择“Fileshares”。
 
-:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="屏幕截图：“性能”单选按钮已选择为“高级”、“帐户类型”已选择为“FileStorage”。":::
+:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="屏幕截图：“性能”单选按钮已选择“高级”、“帐户类型”已选择“FileStorage”。":::
 
 其他基本信息字段与存储帐户的选择无关：
 - **存储帐户名称**：要创建的存储帐户资源的名称。 此名称必须全局唯一，但可以是所需的任何名称。 通过 SMB 装载 Azure 文件共享时，存储帐户名称将用作服务器名称。
@@ -180,7 +180,7 @@ az storage account create \
 1. 依次选择“概述”、“刷新”。 
 1.   选择“共享容量”，然后选择“100 TiB”和“保存”。
 
-    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="Azure 存储帐户和突出显示了 100 TiB 共享的“文件共享”边栏选项卡的屏幕截图。":::
+    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="存储帐户的屏幕截图，突出显示了具有 100 TiB 共享的“文件共享”边栏选项卡。":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 若要在现有帐户中启用大型文件共享，请使用以下命令。 请将 `<yourStorageAccountName>` 和 `<yourResourceGroup>` 替换为自己的信息。
@@ -231,7 +231,7 @@ az storage account update --name <yourStorageAccountName> -g <yourResourceGroup>
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 可以使用 [`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) cmdlet 创建 Azure 文件共享。 以下 PowerShell 命令假设已根据前面有关使用 Azure PowerShell 创建存储帐户的部分中的定义，设置了变量 `$resourceGroupName` 和 `$storageAccountName`。 
 
-以下示例演示如何使用 `-AccessTier` 参数创建具有显式层的文件共享。 这需要使用预览版 Az.Storage 模块，如示例中所示。 如果未指定层，原因可能是使用的是正式版的 Az.Storage 模块，或由于未包含此命令，标准文件共享的默认层是事务优化层。
+以下示例演示如何使用 `-AccessTier` 参数创建具有显式层的文件共享。 如果未指定层，则标准文件共享的默认层是事务优化层。
 
 > [!Important]  
 > 对于高级文件共享，`-QuotaGiB` 参数指的是文件共享的预配大小。 文件共享的预配大小是将要对你计费的数量，与使用情况无关。 标准文件共享按使用情况计费，而不是按预配大小计费。

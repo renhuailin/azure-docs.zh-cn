@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 07/30/2021
-ms.openlocfilehash: 26897f9c4284ad970d2d662ca444324660064a4d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 154cfa6f8fd413c1cef1a22143d7e4d357053760
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731197"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867010"
 ---
 # <a name="introduction-to-listing-options"></a>列表选项简介
 
@@ -27,7 +27,7 @@ ms.locfileid: "121731197"
 | 咨询服务 |  |  | &#10004; |  |
 | Azure 容器 |  |  |  | &#10004; |
 | Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; | &#10004; |
-| Dynamics 365 Customer Engagement 和 PowerApps | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 Customer Engagement 和 Power Apps | &#10004; | &#10004; | &#10004; | &#10004; |
 | Dynamics 365 for Operations | &#10004; | &#10004; | &#10004; | &#10004; |
 | IoT Edge 模块 |  |  |  | &#10004; |
 | 托管服务 |  |  |  | &#10004; |
@@ -74,7 +74,7 @@ ms.locfileid: "121731197"
 | 咨询服务 |   |   |   |   |
 | Azure 容器 | &#10004;<sup>1</sup> | &#10004;<sup>1</sup> |   |   |
 | Dynamics 365 Business Central | &#10004; |   |   |   |
-| Dynamics 365 Customer Engagement 和 PowerApps | &#10004; |   |   |   |
+| Dynamics 365 Customer Engagement 和 Power Apps | &#10004; |   |   |   |
 | Dynamics 365 for Operations | &#10004; |   |   |   |
 | IoT Edge 模块 | &#10004;<sup>1</sup> | &#10004;<sup>1</sup> |   |   |
 | 托管服务 |   | &#10004; |   |   |
@@ -141,7 +141,7 @@ ms.locfileid: "121731197"
 | SaaS  | 两个在线商店 | 两个在线商店 | 两个在线商店 |   | 两个在线商店 &#42; |
 | Microsoft 365 应用 | AppSource | AppSource |   |   | AppSource &#42;&#42; |
 | Dynamics 365 Business Central | AppSource | AppSource |   |   |   |
-| Dynamics 365 for Customer Engagements 和 PowerApps | AppSource | AppSource |   |   |   |
+| Dynamics 365 for Customer Engagements 和 Power Apps | AppSource | AppSource |   |   |   |
 | Dynamics 365 操作 | AppSource | AppSource |   |   |   |
 | Power BI 应用 |   |   | AppSource |   |   |
 |||||||

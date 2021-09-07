@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: e458f98d82c910ec845ebf951b7f6470b6aba10d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c17fceb267018901975f942f7cfc804f450ead9
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95527320"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867640"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>将静态网站与 Azure CDN 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "95527320"
 
 1. 在 Azure 门户中找到存储帐户并显示帐户概览。
 
-1. 在“Blob 服务”菜单下，选择“Azure CDN”打开“Azure CDN”页面  ：
+1. 在“安全性 + 网络”菜单下，选择“Azure CDN”以打开“Azure CDN”页  ：
 
     ![创建 CDN 终结点](media/storage-blob-static-website-custom-domain/cdn-storage-new.png)
 

@@ -1,18 +1,18 @@
 ---
-title: 在 Microsoft AppSource（Azure 市场）上配置 Dynamics 365 for Customer Engagement & PowerApps 产品/服务的可用性。
-description: 在 Microsoft AppSource（Azure 市场）上配置 Dynamics 365 for Customer Engagement & PowerApps 产品/服务的可用性。
+title: 在 Microsoft AppSource（Azure 市场）上配置 Dynamics 365 for Customer Engagement & Power Apps 产品/服务的可用性。
+description: 在 Microsoft AppSource（Azure 市场）上配置 Dynamics 365 for Customer Engagement & Power Apps 产品/服务的可用性。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/20/2021
-ms.openlocfilehash: b79c4e2763715102688214708fec4481fdfe3a00
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 779b580c38152967d7bbe64bca3455ec304be266
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314852"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864657"
 ---
 # <a name="configure-dynamics-365-for-customer-engagement--power-apps-offer-availability"></a>配置 Dynamics 365 for Customer Engagement & Power Apps 产品/服务的可用性
 

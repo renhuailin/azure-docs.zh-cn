@@ -1,18 +1,18 @@
 ---
-title: 在 Service Fabric 托管群集中使用应用程序机密
-description: 了解 Azure Service Fabric 应用程序机密以及如何收集在托管群集中使用所需的信息
+title: 将应用程序机密部署到 Service Fabric 托管群集
+description: 了解 Azure Service Fabric 应用程序机密以及如何将这些机密部署到托管群集
 ms.topic: how-to
-ms.date: 5/10/2021
-ms.openlocfilehash: 820fb2a116ba5343a2f2126950a7f5d5896ddee3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 8/23/2021
+ms.openlocfilehash: 81fbd254f6aee216661e720a73c97e89351a9fad
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950118"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867343"
 ---
-# <a name="use-application-secrets-in-service-fabric-managed-clusters"></a>在 Service Fabric 托管群集中使用应用程序机密
+# <a name="deploy-application-secrets-to-a-service-fabric-managed-cluster"></a>将应用程序机密部署到 Service Fabric 托管群集
 
-机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。 本文使用 Azure Key Vault 来管理密钥和机密，因为它适用于 Service Fabric 托管群集。 但是，在应用程序中 *使用* 机密的方式不区分云平台，因此可让应用程序部署到托管在任何位置的群集。
+机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。 我们建议使用 Azure Key Vault 来管理 Service Fabric 托管群集的密钥和机密，并在本文中利用它。 但是，在应用程序中 *使用* 机密的方式不区分云平台，因此可让应用程序部署到托管在任何位置的群集。
 
 建议通过[服务配置包][config-package]来管理服务配置设置。 可以通过包含运行状况验证和自动回滚的托管滚动升级机制来控制配置包版本以及对其进行更新。 这比全局配置更有优势，因为可以减少全局服务中断的可能性。 加密的机密也不例外。 通过 Service Fabric 的内置功能，可以使用证书加密来加密和解密配置包 Settings.xml 文件中的值。
 
@@ -45,11 +45,11 @@ ms.locfileid: "111950118"
 对于托管群集，你需要三个值，两个来自 Azure Key Vault，还有一个是节点上的本地存储名称（由你决定）。
 
 参数： 
-* 源保管库：这是 
+* `Source Vault`：这是 
     * 例如：/subscriptions/{subscriptionid}/resourceGroups/myrg1/providers/Microsoft.KeyVault/vaults/mykeyvault1
-* 证书 URL：这是完整的对象标识符，不区分大小写且不可变
+* `Certificate URL`：这是完整的对象标识符，不区分大小写且不可变
     * https://mykeyvault1.vault.azure.net/secrets/{secretname}/{secret-version}
-* 证书存储：这是节点上将放置证书的本地证书存储
+* `Certificate Store`：这是节点上将放置证书的本地证书存储
     * 节点上的证书存储名称，例如：“MY”
 
 Service Fabric 托管群集支持两种将特定于版本的机密添加到节点的方法。

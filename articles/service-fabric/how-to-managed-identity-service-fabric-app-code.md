@@ -3,12 +3,12 @@ title: 在应用程序中使用托管标识
 description: 如何使用 Azure Service Fabric 应用程序代码中的托管标识访问 Azure 服务。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: e26a29020f26583f7e4aa16434c7e8647ba9a5a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc7eff8119e6b79ca991543cdc09cfe106989fd3
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98871055"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867055"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务
 
@@ -427,7 +427,8 @@ HTTP 响应标头的“状态代码”字段指示请求的成功状态；“200
 有关支持 Azure AD 的资源的列表及其相应资源 ID，请参阅[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用系统分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [使用用户分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
+* [使用托管标识将 Service Fabric 应用程序部署到托管群集](how-to-managed-cluster-application-managed-identity.md)
+* [使用系统分配的托管标识将 Service Fabric 应用程序部署到经典群集](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [使用用户分配的托管标识将 Service Fabric 应用程序部署到经典群集](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+* [授予 Service Fabric 应用程序的托管标识访问 Azure 资源的权限](./how-to-grant-access-other-resources.md)
 * [探索使用 Service Fabric 托管标识的示例应用程序](https://github.com/Azure-Samples/service-fabric-managed-identity)

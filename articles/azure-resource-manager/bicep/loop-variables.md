@@ -4,23 +4,33 @@ description: 创建变量时使用 Bicep 变量循环进行迭代。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 429a15c222e47bab29b314b0d11f7e077281b635
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 08/30/2021
+ms.openlocfilehash: bf182379c9cc10db11e451f908df552a16520b45
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635000"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225197"
 ---
 # <a name="variable-iteration-in-bicep"></a>Bicep 中的变量迭代
 
-本文展示了如何为 Bicep 文件中的变量创建多个值。 可向 `variables` 部分添加一个循环，并在部署过程中动态设置变量的项数。 还可避免在 Bicep 文件中重复语法。
+本文展示了如何为 Bicep 文件中的变量创建多个值。 可以在 `variables` 声明中添加循环，并动态设置变量的项数。 避免在 Bicep 文件中重复使用语法。
 
-还可以将 copy 用于[资源](loop-resources.md)、[资源中的属性](loop-properties.md)，以及[输出](loop-outputs.md)。
+还可以将复制与 [modules](loop-modules.md)、[resources](loop-resources.md)、[资源中的 properties](loop-properties.md) 和 [outputs](loop-outputs.md) 配合使用。
 
 ## <a name="syntax"></a>语法
 
 可通过以下方式使用循环来声明多个变量：
+
+- 使用循环索引。
+
+  ```bicep
+  var <variable-name> = [for <index> in range(<start>, <stop>): {
+    <properties>
+  }]
+  ```
+
+  有关详细信息，请参阅[循环索引](#loop-index)。
 
 - 循环访问数组。
 
@@ -31,7 +41,9 @@ ms.locfileid: "122635000"
 
   ```
 
-- 循环访问数组的元素。
+  有关详细信息，请参阅[循环数组](#loop-array)。
+
+- 循环访问数组和索引。
 
   ```bicep
   var <variable-name> = [for <item>, <index> in <collection>: {
@@ -39,19 +51,11 @@ ms.locfileid: "122635000"
   }]
   ```
 
-- 使用循环索引。
-
-  ```bicep
-  var <variable-name> = [for <index> in range(<start>, <stop>): {
-    <properties>
-  }]
-  ```
-
 ## <a name="loop-limits"></a>循环限制
 
-Bicep 文件的循环迭代不能为负数，也不能超过 800 次。 若要部署 Bicep 文件，请安装最新版本的 [Bicep 工具](install.md)。
+Bicep 文件的循环迭代不能为负数，也不能超过 800 次。 
 
-## <a name="variable-iteration"></a>变量迭代
+## <a name="loop-index"></a>循环索引
 
 以下示例展示了如何创建字符串值的数组：
 
@@ -121,23 +125,69 @@ output arrayResult array = objectArray
 ]
 ```
 
-## <a name="example-templates"></a>示例模板
+## <a name="loop-array"></a>循环数组
 
-以下示例显示了为一个变量创建多个值的常见方案。
+以下示例循环访问以参数形式传入的数组。 变量根据参数以所需格式构造对象。
 
-|模板  |说明  |
-|---------|---------|
-|[循环变量](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopvariables.bicep) | 演示如何循环访问变量。 |
-|[多项安全规则](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/multiplesecurityrules.bicep) |将多个安全规则部署到网络安全组。 它从参数构造安全规则。 有关参数，请参阅[多个 NSG 参数文件](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/multiplesecurityrules.parameters.json)。 |
+```bicep
+@description('An array that contains objects with properties for the security rules.')
+param securityRules array = [
+  {
+    name: 'RDPAllow'
+    description: 'allow RDP connections'
+    direction: 'Inbound'
+    priority: 100
+    sourceAddressPrefix: '*'
+    destinationAddressPrefix: '10.0.0.0/24'
+    sourcePortRange: '*'
+    destinationPortRange: '3389'
+    access: 'Allow'
+    protocol: 'Tcp'
+  }
+  {
+    name: 'HTTPAllow'
+    description: 'allow HTTP connections'
+    direction: 'Inbound'
+    priority: 200
+    sourceAddressPrefix: '*'
+    destinationAddressPrefix: '10.0.1.0/24'
+    sourcePortRange: '*'
+    destinationPortRange: '80'
+    access: 'Allow'
+    protocol: 'Tcp'
+  }
+]
+
+
+var securityRulesVar = [for rule in securityRules: {
+  name: rule.name
+  properties: {
+    description: rule.description
+    priority: rule.priority
+    protocol: rule.protocol
+    sourcePortRange: rule.sourcePortRange
+    destinationPortRange: rule.destinationPortRange
+    sourceAddressPrefix: rule.sourceAddressPrefix
+    destinationAddressPrefix: rule.destinationAddressPrefix
+    access: rule.access
+    direction: rule.direction
+  }
+}]
+
+resource netSG 'Microsoft.Network/networkSecurityGroups@2020-11-01' = {
+  name: 'NSG1'
+  location: resourceGroup().location
+  properties: {
+    securityRules: securityRulesVar
+  }
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关循环的其他用法，请参阅：
-  - [Bicep 文件中的资源迭代](loop-resources.md)
-  - [Bicep 文件中的属性迭代](loop-properties.md)
-  - [Bicep 文件中的输出迭代](loop-outputs.md)
-- 若要了解 Bicep 文件的各个部分，请参阅[了解 Bicep 文件的结构和语法](file.md)。
-- 若要了解如何部署多个资源，请参阅[使用 Bicep 模块](modules.md)。
+  - [Bicep 中的资源迭代](loop-resources.md)
+  - [Bicep 中的模块迭代](loop-modules.md)
+  - [Bicep 中的属性迭代](loop-properties.md)
+  - [Bicep 中的输出迭代](loop-outputs.md)
 - 若要设置对循环中创建的资源的依赖关系，请参阅[设置资源依赖关系](./resource-declaration.md#set-resource-dependencies)。
-- 若要了解如何使用 PowerShell 进行部署，请参阅[使用 Bicep 和 Azure PowerShell 部署资源](deploy-powershell.md)。
-- 若要了解如何使用 Azure CLI 进行部署，请参阅[使用 Bicep 和 Azure CLI 部署资源](deploy-cli.md)。

@@ -14,14 +14,14 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: f3d4ec8db89e9bebfdcd594e842a6c19d3d66d54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f5e096f5f313f785311c4a6acbaf87fbfe2a38c
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104087"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123034381"
 ---
-# <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>操作指南：使用 MSAL 在 Android 上启用跨应用 SSO
+# <a name="enable-cross-app-sso-on-android-using-msal"></a>使用 MSAL 在 Android 上启用跨应用 SSO
 
 有了单一登录 (SSO)，用户只需输入一次凭据，这些凭据将能自动应用于多个应用程序上。
 

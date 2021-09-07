@@ -3,12 +3,12 @@ title: 使用 Azure Active Directory 对事件网格发布客户端进行身份�
 description: 本文介绍如何使用 Azure Active Directory 对 Azure 事件网格发布客户端进行身份验证。
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: b15febf10316406489d3f5bad7fc1085624ee96a
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 6572c85fd13803372caa2c614a32cdc5f30b055e
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662252"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038086"
 ---
 # <a name="authentication-and-authorization-with-azure-active-directory-preview"></a>使用 Azure Active Directory 进行身份验证和授权（预览版）
 本文介绍如何使用 Azure Active Directory (Azure AD) 对 Azure 事件网格发布客户端进行身份验证。
@@ -30,8 +30,8 @@ ms.locfileid: "122662252"
  
 如果使用的是事件网格 SDK，则无需担心如何实现获取访问令牌以及如何在事件网格的每一个请求中包括访问令牌的详细信息，因为[事件网格数据平面 SDK](#publish-events-using-event-grids-client-sdks) 会执行这些操作。 
 
-### <a name="high-level-steps"></a>大致步骤
-执行以下步骤，使客户端在将事件发送到主题、域或合作伙伴命名空间时能够使用 Azure AD 身份验证。
+### <a name="client-configuration-steps-to-use-azure-ad-authentication"></a>使用 Azure AD 身份验证的客户端配置步骤
+执行以下步骤，将客户端配置为在将事件发送到主题、域或合作伙伴命名空间时使用 Azure AD 身份验证。
 
 1. 创建或使用要用于身份验证的安全主体。 如果可以使用[托管标识](#authenticate-using-a-managed-identity)或[应用程序安全主体](#authenticate-using-a-security-principal-of-a-client-application)。
 2. 通过向安全主体分配“EventGrid 数据发送方”角色，[向安全主体授予发布事件的权限](#assign-permission-to-a-security-principal-to-publish-events)。
@@ -70,7 +70,7 @@ ms.locfileid: "122662252"
 
 使用[事件网格数据平面 SDK](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/) 将事件发布到事件网格。 事件网格的 SDK 支持所有身份验证方法，包括 Azure AD 身份验证。 
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 以下是向事件网格进行身份验证的先决条件。
 

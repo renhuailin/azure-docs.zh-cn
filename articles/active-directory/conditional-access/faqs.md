@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8043e85db1ee1aadc814e98db12cab10ec17e129
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55dffd12f63b5cea3f2728ca36a1038e990d45e8
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92145228"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122865098"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 条件访问常见问题解答
 
@@ -57,7 +57,7 @@ Microsoft Teams 还在条件访问策略中作为云应用单独受到支持。 
 
 ## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>启用条件访问策略后，为什么某些选项卡在 Microsoft Teams 中无法正常运行？
 
-在 Microsoft Teams 中的租户上启用某些条件访问策略后，特定选项卡可能不再按预期在桌面客户端中正常运行。 但是，使用 Microsoft Teams Web 客户端时，受影响的选项卡可正常运行。 受影响的选项卡可能包括 Power BI、Forms、VSTS、PowerApps 和 SharePoint 列表。
+在 Microsoft Teams 中的租户上启用某些条件访问策略后，特定选项卡可能不再按预期在桌面客户端中正常运行。 但是，使用 Microsoft Teams Web 客户端时，受影响的选项卡可正常运行。 受影响的选项卡可能包括 Power BI、Forms、VSTS、Power Apps 和 SharePoint 列表。
 
 若要查看受影响的选项卡，必须在 Microsoft Edge、Internet Explorer 或 Chrome 中使用 Teams Web 客户端并安装 Windows 10 帐户扩展。 某些选项卡依赖于 Web 身份验证，启用条件访问后，该选项在 Microsoft Teams 桌面客户端中无法正常运行。 Microsoft 正在与合作伙伴合作，以实现这些方案。 到目前为止，我们已实现涉及 Planner、OneNote 和 Stream 的方案。
 

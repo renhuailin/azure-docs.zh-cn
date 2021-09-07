@@ -4,12 +4,12 @@ description: 本文介绍 Azure 事件中心中的事件处理程序主机，它
 ms.topic: conceptual
 ms.date: 08/04/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0e10a472c261c14fcdd3debf1caaf9f00fdeb5e0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ea8beeafd7be3f1e586fc0eaf542d4ee946262fe
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733902"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101256"
 ---
 # <a name="event-processor-host"></a>事件处理程序主机
 > [!NOTE]
@@ -86,7 +86,8 @@ public class SimpleEventProcessor : IEventProcessor
 - **storageConnectionString：** 用于内部资源管理的存储帐户。
 
 > [!IMPORTANT]
-> 请勿在用作检查点存储的存储帐户上启用软删除功能。 
+> - 请勿在用作检查点存储的存储帐户上启用软删除功能。 
+> - 请勿使用分层存储 (Azure Data Lake Storage Gen 2) 作为检查点存储。
 
 最后，使用者将 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 实例注册到事件中心服务。 向 EventProcessorHost 实例注册事件处理程序类会启动事件处理。 注册操作告知事件中心服务预期使用者应用会使用其某些分区发送的事件，并且每当推送要使用的事件时，都要调用 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 实现代码。 
 

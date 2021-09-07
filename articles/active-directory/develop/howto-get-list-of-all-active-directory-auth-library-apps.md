@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/22/2021
 ms.author: shermanouko
-ms.custom: aaddev
+ms.custom: aaddev, has-adal-ref
 ms.reviewer: aiwang, marsma
-ms.openlocfilehash: 7f4dfaaaaae39245c54c8ee3fc7879fd58b8ea9e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 07f6c7f481e815e788b22782f01ad9369bd2c9f6
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725759"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039691"
 ---
-# <a name="how-to-get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>操作方法：获取租户中使用 ADAL 的应用的完整列表
+# <a name="get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>获取租户中使用 ADAL 的应用的完整列表
 
 对 Active Directory 身份验证库 (ADAL) 的支持将于 2022 年 6 月 30 日结束。 在现有 OS 版本上使用 ADAL 的应用将继续正常运行，但技术支持或安全更新将结束。 如果没有持续安全更新，使用 ADAL 的应用将变得越来越容易遭受最新安全攻击模式的攻击。 本文介绍如何使用 Azure Monitor 工作簿获取租户中使用 ADAL 的所有应用的列表。
 
@@ -60,7 +60,7 @@ ms.locfileid: "121725759"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 MSAL（包括使用情况信息以及可用于不同编程语言和应用程序类型的库）的详细信息，请参阅：
+若要详细了解 MSAL（包括使用情况信息以及可用于不同编程语言和应用程序类型的库），请参阅：
 
 - [使用 MSAL 获取和缓存令牌](msal-acquire-cache-tokens.md)
 - [应用程序配置选项](msal-client-application-configuration.md)

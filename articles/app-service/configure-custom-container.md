@@ -2,15 +2,15 @@
 title: 配置自定义容器
 description: 了解如何在 Azure App Service 中配置自定义容器。 本文介绍最常见的配置任务。
 ms.topic: article
-ms.date: 02/23/2021
+ms.date: 08/25/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 22a953058084b4f828160cc9ba99c14a5313c9fb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b812495d1046ffc1b9435c0dc2684dd61af89beb
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747783"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122865071"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义容器
 
@@ -34,8 +34,8 @@ ms.locfileid: "121747783"
 
 对于自定义 Windows 映像，必须为所需框架选择适当的[父映像(基础映像)](https://docs.docker.com/develop/develop-images/baseimages/)：
 
-- 若要部署 .NET Framework 应用，请使用基于 Windows Server Core [Long-Term Servicing Channel (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 发行版的父映像。 
-- 若要部署 .NET Core 应用，请使用基于 Windows Server Nano [Semi-Annual Servicing Channel (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) 发行版的父映像。 
+- 若要部署 .NET Framework 应用，请使用基于 Windows Server 2019 Core [长期服务渠道 (LTSC)](/windows-server/get-started/servicing-channels-comparison#long-term-servicing-channel-ltsc) 发行版的父映像。 
+- 若要部署 .NET Core 应用，请使用基于 Windows Server 2019 Nano [半年服务渠道 (SAC)](/windows-server/get-started/servicing-channels-comparison#semi-annual-channel) 发行版的父映像。 
 
 在应用启动期间，下载父映像需要一些时间。 不过，可以使用已缓存在 Azure 应用服务中的下述父映像之一，缩短启动时间：
 

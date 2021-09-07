@@ -2,13 +2,13 @@
 title: 通过无状态节点类型部署 Service Fabric 托管群集
 description: 了解如何在 Service Fabric 托管群集中创建和部署无状态节点类型
 ms.topic: how-to
-ms.date: 5/10/2021
-ms.openlocfilehash: 2e7ebd2ec3098cc90c8fb044472c348c68aed689
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.date: 8/23/2021
+ms.openlocfilehash: 1d6cd328a195e35bd2523fa24aed9153267bd83e
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113033706"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867334"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-with-stateless-node-types"></a>通过无状态节点类型部署 Service Fabric 托管群集
 
@@ -16,7 +16,8 @@ ms.locfileid: "113033706"
 
 * 主节点类型不能配置为无状态
 * 无状态节点类型需使用 2021-05-01 或更高版本的 API
-
+* 这样会自动将“multipleplacementgroup”属性设置为“true”。可[在此处了解详细信息](how-to-managed-cluster-large-virtual-machine-scale-sets.md)
+* 这样，给定节点类型将最多支持 1000 个节点
 
 现提供示例模板：[Service Fabric 无状态节点类型模板](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 

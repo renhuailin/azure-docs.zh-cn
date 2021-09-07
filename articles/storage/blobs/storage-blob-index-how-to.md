@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0814f2896ec429650668a08590ffe7165fb120a3
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 682f855232ef021b10d148b3ede71a35dbaee760
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112282018"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867649"
 ---
 # <a name="use-blob-index-tags-to-manage-and-find-data-on-azure-blob-storage"></a>使用 Blob 索引标记管理和查找 Azure Blob 存储上的数据
 
@@ -191,6 +191,9 @@ static async Task BlobIndexTagsExample()
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>通过 Blob 索引标记筛选和查找数据
 
 此任务可由[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)执行，也可由已通过自定义 Azure 角色获得 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [Azure 资源提供商操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)权限的安全主体来执行。
+
+> [!NOTE]
+> 不能使用索引标记来检索以前的版本。 以前版本的标记不会传递给 blob 索引引擎。 有关详细信息，请参阅[条件和已知问题](storage-manage-find-blobs.md#conditions-and-known-issues)。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

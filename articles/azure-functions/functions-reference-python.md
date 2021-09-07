@@ -4,12 +4,12 @@ description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 601982058a333f23cf5895351db7bc6475617256
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: aa48731248c9e51d680bc0e1b396115c54edbcd7
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741384"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260846"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -267,7 +267,9 @@ def main(req):
 
 ### <a name="log-custom-telemetry"></a>记录自定义遥测数据
 
-默认情况下，Functions 将输出作为跟踪写入到 Application Insights。 为了加强控制，可以改用 [OpenCensus Python 扩展](https://github.com/census-ecosystem/opencensus-python-extensions-azure)将自定义遥测数据发送到 Application Insights 实例。 
+默认通过 Functions 运行时为 Functions 应用收集日志遥测。 此遥测最终会作为 Application Insights 中的跟踪。 默认情况下，某些 Azure 服务的请求和依赖项遥测还通过[函数绑定](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings?tabs=csharp#supported-bindings)进行收集。 若要收集自定义请求/依赖项遥测（不通过绑定），可以使用 [OpenCensus Python 扩展](https://github.com/census-ecosystem/opencensus-python-extensions-azure)将自定义遥测数据发送到 Application Insights 实例。
+
+可以在[此处](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib)找到支持的库的列表。
 
 >[!NOTE]
 > 若要使用 OpenCensus Python 扩展，需要在 `local.settings.json` 和应用程序设置中将 `PYTHON_ENABLE_WORKER_EXTENSIONS` 设置为 `1` 来启用 [Python 扩展](#python-worker-extensions)
@@ -390,9 +392,16 @@ def main(req):
 
 ## <a name="environment-variables"></a>环境变量
 
-在 Functions 中，服务连接字符串等[应用程序设置](functions-app-settings.md)在执行过程中将公开为环境变量。 可以通过声明 `import os` 并使用 `setting = os.environ["setting-name"]` 来访问这些设置。
+在 Functions 中，服务连接字符串等[应用程序设置](functions-app-settings.md)在执行过程中将公开为环境变量。 在代码中访问这些设置有两种主要方法。 
 
-以下示例获取了[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)，其中键名为 `myAppSetting`：
+| 方法 | 说明 |
+| --- | --- |
+| **`os.environ["myAppSetting"]`** | 尝试通过键名获取应用程序设置，失败时引发错误。  |
+| **`os.getenv("myAppSetting")`** | 尝试通过键名获取应用程序设置，失败时返回 NULL。  |
+
+这两种方法都需要声明 `import os`。
+
+以下示例使用名为 `myAppSetting` 的键通过 `os.environ["myAppSetting"]` 获取[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)：
 
 ```python
 import logging
@@ -702,7 +711,7 @@ Functions Python 辅助角色需要一组特定的库。 你也可以在函数�
 > 如果函数应用的 requirements.txt 包含 `azure-functions-worker` 条目，请将其删除。 函数辅助角色由 Azure Functions 平台自动管理，我们会定期更新新功能和 Bug 修补程序。 在 requirements.txt 中手动安装旧版本的辅助角色可能会导致意外问题。
 
 > [!NOTE]
->  如果你的包包含可能与辅助角色的依赖项冲突的某些库（例如 protobuf、tensorflow、grpcio），请在应用设置中将 `PYTHON_ISOLATE_WORKER_DEPENDENCIES` 配置为 `1` 以防止应用程序引用辅助角色的依赖项。
+>  如果你的包包含可能与辅助角色的依赖项冲突的某些库（例如 protobuf、tensorflow、grpcio），请在应用设置中将 [`PYTHON_ISOLATE_WORKER_DEPENDENCIES`](functions-app-settings.md#python_isolate_worker_dependencies-preview) 配置为 `1` 以防止应用程序引用辅助角色的依赖项。 此功能为预览版。
 
 ### <a name="azure-functions-python-library"></a>Azure Functions Python 库
 

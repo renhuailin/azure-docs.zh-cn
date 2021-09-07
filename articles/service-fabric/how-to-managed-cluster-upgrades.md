@@ -2,21 +2,21 @@
 title: 升级 Azure Service Fabric 托管群集
 description: 了解用于更新 Azure Service Fabric 托管群集的选项
 ms.topic: how-to
-ms.date: 06/16/2021
-ms.openlocfilehash: 50af042be1dc69f39e61447901d4d5f07da2a1e7
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 08/23/2021
+ms.openlocfilehash: b30f240325eda83428a19377e63d5a7f37f88169
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112290082"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122865053"
 ---
 # <a name="manage-service-fabric-managed-cluster-upgrades"></a>管理 Service Fabric 托管群集升级
 
-Azure Service Fabric 群集是你拥有的但部分由 Microsoft 管理的资源。 下面介绍如何管理 Microsoft 更新 Azure Service Fabric 托管群集的时间和方式。
+Azure Service Fabric 群集是你拥有的但部分由 Microsoft 管理的资源。 下面介绍如何管理 Microsoft 更新 Azure Service Fabric 托管群集运行时的时间和方式。
 
 ## <a name="set-upgrade-mode"></a>设置升级模式
 
-默认情况下，Azure Service Fabric 托管群集设置为接收自动 Service Fabric 升级，因为它们由 Microsoft 使用[波形部署策略](#wave-deployment-for-automatic-upgrades)发布。 或者，可以设置手动模式升级，以便从当前支持的版本列表中选择。 你可通过 Microsoft Azure 门户中的 *结构升级* 空间或群集部署模板中的 `ClusterUpgradeMode` 设置来完成。
+默认情况下，Azure Service Fabric 托管群集设置为接收自动 Service Fabric 升级，因为它们由 Microsoft 使用[波形部署策略](#wave-deployment-for-automatic-upgrades)发布。 也可以设置手动模式升级，以便从当前支持的版本的列表中进行选择。 你可通过 Microsoft Azure 门户中的 *结构升级* 空间或群集部署模板中的 `ClusterUpgradeMode` 设置来完成。
 
 ## <a name="wave-deployment-for-automatic-upgrades"></a>自动升级的波形部署
 
@@ -28,8 +28,8 @@ Azure Service Fabric 群集是你拥有的但部分由 Microsoft 管理的资源
 要为自动升级启用波形部署，首先请确定要为群集分配的波形：
 
 * 波形 0 (`Wave0`)：发布新的 Service Fabric 版本后，立即更新群集。
-* **波形 1** (`Wave1`)：当波形 0 可用于生产群集后，群集更新。 发生在波形 0 发布至少 7 天后
-* **波形 2** `Wave2` ()：最后更新群集以允许进一步生产群集。 发生在波形 0 发布至少 14 天后
+* **波形 1** (`Wave1`)：当波形 0 可用于生产群集后，群集更新。 波形 1 在波形 0 后至少 7 天后出现。
+* **波形 2** `Wave2` ()：最后更新群集以允许进一步生产群集。 波形 2 在波形 0 后至少 14 天后出现。
 
 ## <a name="set-the-wave-for-your-cluster"></a>为群集设置波形
 
@@ -70,7 +70,7 @@ Azure Service Fabric 群集是你拥有的但部分由 Microsoft 管理的资源
 
 #### <a name="automatic-upgrade-with-wave-deployment"></a>使用波形部署进行自动升级
 
-要配置自动升级和波形部署，只需将添加/验证 `ClusterUpgradeMode` 设置为 `Automatic`，并且使用上面在资源管理器模板中列出的波形值之一定义 `upgradeWave` 属性。
+要配置自动升级和波形部署，只需将添加/验证 `ClusterUpgradeMode` 设置为 `Automatic`，并且使用上面在资源管理器模板中列出的波形值之一定义 `clusterUpgradeCadence` 属性。
 
 ```json
 {
@@ -78,12 +78,12 @@ Azure Service Fabric 群集是你拥有的但部分由 Microsoft 管理的资源
 "type": "Microsoft.ServiceFabric/managedClusters",
 "properties": {
         "ClusterUpgradeMode": "Automatic",
-        "upgradeWave": "Wave1",
+        "clusterUpgradeCadence": "Wave1",
         }  
 }
 ```
 
-部署更新后的模板后，将在为下一升级时段和之后的时段指定的波形中注册群集。
+部署已更新的模板后，群集将注册到指定的波形中进行自动升级。
 
 ## <a name="query-for-supported-cluster-versions"></a>查询支持的群集版本
 

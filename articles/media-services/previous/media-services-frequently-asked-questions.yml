@@ -4,7 +4,7 @@ metadata:
   description: 本文解答 Azure 媒体服务常见问题。
   services: media-services
   documentationcenter: ''
-  author: IngridAtMicrosoft
+  author: jiayali-ms
   manager: femila
   editor: ''
   ms.service: media-services
@@ -12,14 +12,14 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: article
-  ms.date: 03/10/2021
+  ms.date: 08/24/2021
   ms.author: inhenkel
-  ms.openlocfilehash: e8dd8205cc42c4f8ec3946eccdd0f6244e11e7ec
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.openlocfilehash: 79fba437747c2c9039c0bc8189266fc7b044aa38
+  ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112305836"
+  ms.lasthandoff: 08/25/2021
+  ms.locfileid: "122835212"
 title: 媒体服务 v2 常见问题
 summary: >
   [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
@@ -36,8 +36,7 @@ sections:
     answer: >
       向 URL 的“/Manifest”部分添加“(format=m3u8-aapl)”路径，告知流式处理源服务器返回在 Apple iOS 原生设备上使用的 HLS 内容（有关详细信息，请参阅[传送内容](media-services-deliver-content-overview.md)）。
   - question: 如何缩放索引？
-    answer: >
-      编码任务和索引任务的预留单位相同。 请遵循[如何缩放编码预留单位](media-services-scale-media-processing-overview.md)中的说明。 **请注意**，预留单位类型不影响索引器性能。
+    answer: "AMS 过去使用媒体保留单位进行缩放。 不再支持此功能。 \n"
   - question: 我已经上传、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
     answer: 最常见的原因之一是，没有“正在运行”状态下从其播放的流式处理终结点。
   - question: 我是否可以在实时流上进行合成操作？

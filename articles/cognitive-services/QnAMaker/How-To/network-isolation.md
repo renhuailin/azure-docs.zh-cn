@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2021
-ms.openlocfilehash: 91bfa04c9fab179cf3935e703f13004f3aadd170
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: eb00a9fa81b6fadd999c6c824ff7be06f76c8f4a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220007"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221767"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>网络隔离的建议设置
 
@@ -99,7 +99,7 @@ Add-AzWebAppAccessRestrictionRule -ResourceGroupName "<resource group name>" -We
     > [![带有公用/专用切换按钮的网络 UI 的屏幕截图]( ../media/network-isolation/private.png)](  ../media/network-isolation/private.png#lightbox)
 
 4. 将搜索资源切换到私有后，选择添加专用终结点。
-    - “基本”选项卡：确保在搜索资源所在的同一区域中创建终结点。
+    - “基本信息”选项卡：确保在搜索资源所在的区域中创建终结点。
     - “资源”选项卡：选择所需的 `Microsoft.Search/searchServices` 类型的搜索资源。
 
     > [!div class="mx-imgBorder"]
@@ -110,9 +110,9 @@ Add-AzWebAppAccessRestrictionRule -ResourceGroupName "<resource group name>" -We
      > [!div class="mx-imgBorder"]
      > [![填充了子网字段的创建私有终结点 UI 窗口的屏幕截图]( ../media/network-isolation/subnet.png)](  ../media/network-isolation/subnet.png#lightbox)
 
-    5. 为常规应用服务启用 VNET 集成。 对于 ASE，可以跳过此步骤，因为 ASE 已经有权访问 VNET。
-        - 请参阅应用服务的“网络”部分，打开“VNet 集成”。 
-        - 链接到在步骤 2 中创建的专用应用服务 VNet、子网 (appservicevnet)。
+5. 为常规应用服务启用 VNET 集成。 对于 ASE，可以跳过此步骤，因为 ASE 已经有权访问 VNET。
+    - 请参阅应用服务的“网络”部分，打开“VNet 集成”。 
+    - 链接到在步骤 2 中创建的专用应用服务 VNet、子网 (appservicevnet)。
     
      > [!div class="mx-imgBorder"]
      > [![VNET 集成 UI 的屏幕截图]( ../media/network-isolation/integration.png)](  ../media/network-isolation/integration.png#lightbox)

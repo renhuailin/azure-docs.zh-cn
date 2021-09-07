@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/11/2021
+ms.date: 08/25/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: f74e9a4f99523e26feb703f5ed2bedf33366f8d6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9cf7fd49562f83976a10150d953a0afc8b994ed4
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738938"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123102787"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
@@ -43,12 +43,12 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 | 扩展属性在属性名称前使用圆点“.”表示法，而不使用冒号“:”表示法 |  是  | 2018 年 12 月 18 日  | 降级到 customappSSO |
 | 多值属性的批量请求包含无效路径筛选器语法 | 是  |  2018 年 12 月 18 日  | 降级到 customappSSO |
 | 组创建请求包含无效架构 URI | 是  |  2018 年 12 月 18 日  |  降级到 customappSSO |
-| 更新 PATCH 行为以确保合规性（例如，作为布尔值活动并适当删除组成员） | 否 | TBD| 使用预览标志 |
+| 更新 PATCH 行为以确保合规性（例如，作为布尔值活动并适当删除组成员） | 否 | TBD| 使用功能标志 |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>用于更改 SCIM 行为的标志
 在应用程序的租户 URL 中使用以下标志，以更改默认 SCIM 客户端行为。
 
-:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="用于更改行为的 SCIM 标志。":::
+:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.png" alt-text="用于更改行为的 SCIM 标志。":::
 
 使用以下 URL 更新 PATCH 行为，并确保 SCIM 合规性。 标志将更改以下行为：                
 - 请求禁用用户
@@ -56,7 +56,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 - 请求替换多个属性
 - 请求删除组成员        
                                                                                      
-目前此行为仅在使用标志时可用，但在未来几个月内将成为默认行为。 请注意，此预览标志目前不适用于按需预配。 
+目前此行为仅在使用标志时可用，但在未来几个月内将成为默认行为。 请注意，此功能标志目前不适用于按需预配。 
   * URL（符合 SCIM）：aadOptscim062020
   * SCIM RFC 参考： 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2    
@@ -275,7 +275,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 10. 运行以下命令，创建具有最新服务修补程序的新预配作业。
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
- `{   templateId: "scim"   }`
+ `{   "templateId": "scim"   }`
    
 11. 在最后一步的结果中，复制以“scim”开头的完整“ID”字符串。 可选择运行以下命令，将 [new-job-id] 替换为复制的新作业 ID，并输入第七步的 JSON 输出作为请求正文来重新应用旧属性映射。
 

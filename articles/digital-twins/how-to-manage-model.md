@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 了解如何在 Azure 数字孪生中创建、编辑和删除模型。
 author: baanders
 ms.author: baanders
-ms.date: 8/13/2021
+ms.date: 8/30/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c5614ce350a4690aa49268e8598bfc9eb2996d6a
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 2e5c137ceb08bd89dc70026639c6191b1c61f42d
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253196"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223237"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
@@ -53,15 +53,17 @@ Azure 数字孪生的模型用 DTDL 编写，并保存为 .json 文件。 还有
 
 创建模型后，可将它们上传到 Azure 数字孪生实例。
 
-准备好上传模型时，可使用以下代码片段：
+准备好上传模型后，可对 [.NET SDK](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true) 使用以下代码片段：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
-请注意，`CreateModels` 方法在单个事务中可接受多个文件。 下面用一个示例来说明：
+还可以在单个事务中上传多个模型。 
+
+如果使用的是 SDK，则可以使用 `CreateModels` 方法上传多个模型文件，如下所示：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
-模型文件可以包含多个模型。 在这种情况下，需要以 JSON 数组形式放置模型。 例如：
+如果使用的是 [REST API](/rest/api/azure-digitaltwins/) 或 [Azure CLI](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)，还可以通过将多个模型定义放在要一起上传的单个 JSON 文件中来上传多个模型。 在这种情况下，模型应放置在该文件内的一个 JSON 数组中，如以下示例所示：
 
 :::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
 
@@ -254,7 +256,7 @@ Azure 数字孪生不记得旧模型曾经上传过，因此此操作就像上�
 5. 等待几分钟，确保更改已完成
 6. 删除模型 
 
-若要删除模型，可以使用 [DeleteModel]/dotnet/api/azure.digitaltwins.core.digitaltwinsclient.deletemodel?view=azure-dotnet&preserve-view=true) SDK 调用：
+若要删除模型，可以使用 [DeleteModel](/dotnet/api/azure.digitaltwins.core.digitaltwinsclient.deletemodel?view=azure-dotnet&preserve-view=true) SDK 调用：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DeleteModel":::
 

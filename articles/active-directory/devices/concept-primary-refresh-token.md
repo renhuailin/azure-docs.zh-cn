@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87fd2189222828eef2ff03a82125e0b6dcf7111e
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 29b000ee3231361ccdca4c2909e093cdaef6bc04
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179866"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866515"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
 
@@ -76,7 +76,7 @@ PRT 是从 Azure AD 发送的不透明 blob，其内容对于任何客户端组�
 PRT 由 Windows 中的两个关键组件使用：
 
 * **Azure AD CloudAP 插件**：在 Windows 登录过程中，Azure AD CloudAP 插件使用用户提供的凭据从 Azure AD 请求一个 PRT。 当用户无权访问 Internet 连接时，它还会缓存 PRT 以启用缓存的登录。
-* **Azure AD WAM 插件**：当用户尝试访问应用程序时，Azure AD WAM 插件将使用 PRT 在 Windows 10 上启用 SSO。 Azure AD WAM 插件使用 PRT 为依赖 WAM 来请求令牌的应用程序请求刷新和访问令牌。 它还通过将 PRT 注入浏览器请求在浏览器上启用 SSO。 Microsoft Edge（原生）和 Chrome（通过 [Windows 10 帐户](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en)或 [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) 扩展）支持 Windows 10 中的浏览器 SSO。
+* **Azure AD WAM 插件**：当用户尝试访问应用程序时，Azure AD WAM 插件将使用 PRT 在 Windows 10 上启用 SSO。 Azure AD WAM 插件使用 PRT 为依赖 WAM 来请求令牌的应用程序请求刷新和访问令牌。 它还通过将 PRT 注入浏览器请求在浏览器上启用 SSO。 Microsoft Edge（通过原生方式）、Chrome（通过 [Windows 10 帐户](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en)或 [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) 扩展）或 Mozilla Firefox v91+（通过 [Windows SSO 设置](https://support.mozilla.org/en-US/kb/windows-sso)）支持 Windows 10 中的浏览器 SSO
 
 ## <a name="how-is-a-prt-renewed"></a>如何续订 PRT？
 
@@ -109,7 +109,7 @@ PRT 通过两种不同的方法续订：
 
 **应用令牌**：当应用通过 WAM 请求令牌时，Azure AD 会颁发一个刷新令牌和一个访问令牌。 但是，WAM 只会将访问令牌返回到应用，而在缓存中保护刷新令牌，方法是使用用户的数据保护应用程序编程接口 (DPAPI) 密钥来对其进行加密。 WAM 通过使用会话密钥对请求进行签名来安全地使用刷新令牌，以进一步颁发访问令牌。 DPAPI 密钥由 Azure AD 中基于 Azure AD 的对称密钥保护。 当设备需要使用 DPAPI 密钥对用户配置文件进行解密时，Azure AD 提供由会话密钥加密的 DPAPI 密钥，CloudAP 插件会请求 TPM 对其进行解密。 此功能可在保护刷新令牌方面确保一致性，并避免应用程序实现自己的保护机制。  
 
-**浏览器 cookie**：在 Windows 10 中，Azure AD 以原生方式支持 Internet Explorer 和 Microsoft Edge 中的浏览器 SSO，或通过 Windows 10 帐户扩展支持 Google Chrome 中的浏览器 SSO。 建立安全性不仅是为了保护 cookie，还可以保护要将 cookie 发送到的终结点。 浏览器 cookie 的保护方式与 PRT 相同，也是使用会话密钥对 cookie 进行签名和保护。
+浏览器 Cookie：在 Windows 10 中，Azure AD 在 Internet Explorer 和 Microsoft Edge 中通过原生方式支持浏览器 SSO，通过 Windows 10 帐户扩展在 Google Chrome 中支持浏览器 SSO，通过浏览器设置在 Mozilla Firefox v91+ 中支持浏览器 SSO。 建立安全性不仅是为了保护 cookie，还可以保护要将 cookie 发送到的终结点。 浏览器 cookie 的保护方式与 PRT 相同，也是使用会话密钥对 cookie 进行签名和保护。
 
 当用户启动浏览器交互时，浏览器（或扩展）会调用 COM 原生客户端主机。 原生客户端主机确保该页面来自允许的域。 浏览器可以将其他参数发送到原生客户端主机（包括 nonce），但原生客户端主机保证对主机名进行验证。 原生客户端主机从 CloudAP 插件请求 PRT-cookie，此插件使用受 TPM 保护的会话密钥创建 PRT-cookie 并对其进行签名。 由于 PRT-cookie 由会话密钥签名，因此很难被篡改。 此 PRT-cookie 包括在 Azure AD 的请求标头中，用于验证发出请求的设备。 如果使用的是 Chrome 浏览器，则只有在原生客户端主机的清单中显式定义的扩展才能调用它，从而防止任意扩展发出这些请求。 Azure AD 验证 PRT cookie 后，会向浏览器颁发会话 cookie。 此会话 cookie 还包含使用 PRT 颁发的相同会话密钥。 在后续请求中，会验证会话密钥，以将 cookie 绑定到设备，并阻止在其他位置重播。
 
@@ -199,7 +199,7 @@ Windows 10 维护每个凭据的 PRT 分区列表。 Windows Hello 企业版、�
 | F | Azure AD 验证 PRT cookie 上的会话密钥签名，验证 nonce，验证设备在租户中是否有效，然后颁发网页的 ID 令牌和浏览器的已加密会话 cookie。 |
 
 > [!NOTE]
-> 上述步骤中所述的浏览器 SSO 流不适用于隐私模式的会话，例如 Microsoft Edge 中的 InPrivate 或 Google Chrome 中的 Incognito（使用 Microsoft Accounts 扩展时）。
+> 上述步骤所述的浏览器 SSO 流不适用于隐私模式下的会话，例如 Microsoft Edge 中的 InPrivate、Google Chrome 中的隐身模式（使用 Microsoft 帐户扩展时）或 Mozilla Firefox v91+ 中的私密模式
 
 ## <a name="next-steps"></a>后续步骤
 

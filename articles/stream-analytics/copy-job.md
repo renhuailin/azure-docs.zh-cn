@@ -1,19 +1,20 @@
 ---
-title: 复制或备份 Azure 流分析作业
-description: 本文介绍如何复制或备份 Azure 流分析作业。
+title: 在区域之间复制、备份和移动 Azure 流分析作业
+description: 本文介绍如何移动、复制和备份 Azure 流分析作业。
 author: su-jie
 ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
+ms.custom: subject-moving-resources
 ms.date: 09/11/2019
-ms.openlocfilehash: 864c5ffc9ed88f438a5be5a1fcb55d0b78df5e07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b3d203d3d34612b3495fa3eceaf13e357eaa2be
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98016605"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829404"
 ---
-# <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>复制或备份 Azure 流分析作业
+# <a name="copy-back-up-and-move-your-azure-stream-analytics-jobs-between-regions"></a>在区域之间复制、备份和移动 Azure 流分析作业
 
 可以使用 Visual Studio Code 或 Visual Studio 来复制或备份已部署的 Azure 流分析作业。 将作业复制到其他区域时不会复制上次输出时间。 因此，在启动复制的作业时，不能使用 [**上次停止时**](./start-job.md#start-options)选项。
 

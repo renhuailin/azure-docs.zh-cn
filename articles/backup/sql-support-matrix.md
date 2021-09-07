@@ -2,14 +2,14 @@
 title: 适用于 Azure VM 中 SQL Server 备份的 Azure 备份支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 中的 SQL Server 时的支持设置和限制摘要。
 ms.topic: conceptual
-ms.date: 06/07/2021
+ms.date: 08/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: 678a3e63205d986681016fe64971e9bd874f9c71
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 78dace2a60ff566af3485e6be0b7d9efc42d8654
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119930"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123103873"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>适用于 Azure VM 中 SQL Server 备份的支持矩阵
 
@@ -24,6 +24,7 @@ ms.locfileid: "112119930"
 **受支持的操作系统** | Windows Server 2019、Windows Server 2016、Windows Server 2012、Windows Server 2008 R2 SP1 <br/><br/> 目前不支持 Linux。
 **支持的 SQL Server 版本** | SQL Server 2019、SQL Server 2017（详见[“搜索产品生命周期”页](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)）、SQL Server 2016 和 SP（详见[“搜索产品生命周期”页](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)）、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008 <br/><br/> Enterprise、Standard、Web、Developer、Express。<br><br>不支持 Express Local DB 版本。
 **支持的 .NET 版本** | 安装在 VM 上的 .NET Framework 4.5.2 或更高版本
+**支持的部署** | 支持 SQL 市场 Azure VM 和非市场（手动安装的 SQL Server）VM。 [可用性组](backup-sql-server-on-availability-groups.md)始终支持独立实例。
 
 ## <a name="feature-considerations-and-limitations"></a>功能注意事项和限制
 
@@ -43,55 +44,6 @@ ms.locfileid: "112119930"
 * 支持启用了 TDE 的数据库备份。 若要将 TDE 加密的数据库还原到另一个 SQL Server，需先[将证书还原到目标服务器](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)。 在 SQL Server 2016 及更高版本中，启用了 TDE 的数据库可以使用备份压缩功能，但传输大小较小（如[此处](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)所述）。
 * 不支持对镜像数据库和数据库快照执行备份和还原操作。
 * 不支持 SQL Server 故障转移群集实例 (FCI)。
-* 使用多个备份解决方案备份独立的 SQL Server 实例或 SQL Always On 可用性组可能会导致备份失败。 请避免执行此操作。 如果通过相同或不同的解决方案单独备份可用性组的两个节点，可能也会导致备份失败。
-* 配置可用性组时，将基于几个因素从不同节点获取备份。 下面概述了可用性组的备份行为。
-
-### <a name="back-up-behavior-with-always-on-availability-groups"></a>Always On 可用性组的备份行为
-
-建议只在可用性组 (AG) 的一个节点上配置备份。 应该始终在主节点所在的区域配置备份。 换句话说，必须始终确保主节点存在于进行备份配置的区域。 如果 AG 的所有节点位于进行备份配置的区域，则没有任何可担心的事情。
-
-#### <a name="for-cross-region-ag"></a>对于跨区域 AG
-
-* 不管备份首选项如何，备份都仅在那些与备份配置在同一区域的节点中运行。 这是因为跨区域备份不受支持。 如果只有两个节点，而辅助节点位于另一区域，备份会继续在主节点中运行（除非备份首选项为“仅限辅助节点”）。
-* 如果节点故障转移与备份配置不在同一区域，则已故障转移的区域中的节点上的备份会失败。
-
-根据备份首选项和备份类型（完整/差异/日志/仅复制完整），从特定节点（主要/次要）获取备份。
-
-#### <a name="backup-preference-primary"></a>备份首选项：主要
-
-**备份类型** | **Node**
---- | ---
-完整 | 主要
-差异 | 主要
-日志 |  主要
-仅复制完整 |  主要
-
-#### <a name="backup-preference-secondary-only"></a>备份首选项：仅次要节点
-
-**备份类型** | **Node**
---- | ---
-完整 | 主要
-差异 | 主要
-日志 |  次要
-仅复制完整 |  次要
-
-#### <a name="backup-preference-secondary"></a>备份首选项：次要
-
-**备份类型** | **Node**
---- | ---
-完整 | 主要
-差异 | 主要
-日志 |  次要
-仅复制完整 |  次要
-
-#### <a name="no-backup-preference"></a>无备份首选项
-
-**备份类型** | **Node**
---- | ---
-完整 | 主要
-差异 | 主要
-日志 |  次要
-仅复制完整 |  次要
 
 ## <a name="backup-throughput-performance"></a>备份吞吐量性能
 

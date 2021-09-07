@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 05/10/2021
-ms.openlocfilehash: 1bbbf7266fdcac552972f563e0d958bf035de984
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 68c657b7e8e045b8756bc2db8de2b4024b7530b8
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751350"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256498"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -411,7 +411,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - 无法在同一 Azure 区域中的两个服务器或实例之间创建故障转移组。
 - 无法重命名故障转移组。 需要删除该组，并使用不同的名称重新创建它。
 - 故障转移组中的实例不支持数据库重命名。 需要临时删除故障转移组，才能重命名数据库。
-- 系统数据库不会复制到故障转移组中的辅助实例。 因此，除非在辅助实例上手动创建对象，否则依赖于系统数据库中的对象的方案将不可能在辅助实例上出现。
+- 系统数据库不会复制到故障转移组中的辅助实例。 因此，依赖于系统数据库中对象的方案要求在辅助实例上手动创建对象，并在对主实例进行更改后手动保持同步。 唯一的例外是 SQL 托管实例的服务主密钥 (SMK)，它在创建故障转移组期间自动复制到辅助实例。 但是，在主实例上进行的任何后续 SMK 更改都不会复制到辅助实例。
 
 ## <a name="programmatically-managing-failover-groups"></a>以编程方式管理故障转移组
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: 77f30c26b500f98429039710d84f77b87fb6a654
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: f2fb9d2f6221928f093895914b8fc0082573a8b2
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112992200"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866263"
 ---
 # <a name="application-gateway-http-settings-configuration"></a>应用程序网关 HTTP 设置配置
 
@@ -20,9 +20,12 @@ ms.locfileid: "112992200"
 
 ## <a name="cookie-based-affinity"></a>基于 Cookie 的相关性
 
-Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当用户将第一个请求发送到应用程序网关时，它会在响应中使用包含会话详细信息的哈希值来设置关联 Cookie，将具有关联 Cookie 的后续请求路由到同一后端服务器，以便保持粘性。 
+Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当用户将第一个请求发送到应用程序网关时，它会在响应中使用包含会话详细信息的哈希值来设置关联 Cookie，将具有关联 Cookie 的后续请求路由到同一后端服务器，以便保持粘性。
 
 当要在同一台服务器上保存用户会话时，以及在服务器上以本地方式为用户会话保存会话状态时，可以使用此功能。 如果应用程序无法处理基于 Cookie 的相关性，则你无法使用此功能。 若要使用此功能，请确保客户端支持 Cookie。
+> [!NOTE]
+> 由于未设置 Secure 或 HttpOnly 标志，某些漏洞扫描可能会标记应用程序网关相关性 Cookie。 这些扫描没有考虑到 Cookie 中的数据是使用单向哈希生成的。 Cookie 不包含任何用户信息，仅用于路由。 
+
 
 [Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)提出了一个要求：必须将不包含 [SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) 属性的 HTTP Cookie 视为 SameSite=Lax。 对于 CORS（跨源资源共享）请求，如果必须在第三方上下文中发送 Cookie，它必须使用 *SameSite=None; Secure* 属性，并且只应通过 HTTPS 发送它。 否则，在仅限 HTTP 的方案中，浏览器不会在第三方上下文中发送 Cookie。 Chrome 的此更新的目标是增强安全性，避免跨站点请求伪造 (CSRF) 攻击。 
 

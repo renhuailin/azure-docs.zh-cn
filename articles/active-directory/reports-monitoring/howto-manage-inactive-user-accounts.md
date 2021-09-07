@@ -17,12 +17,12 @@ ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 032a8fddb836146a5e902b168ab5aea9763bdc31
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: a5fbc6789fe83f07e0a22239e93a08eb9bd8cf4f
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112376588"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830763"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>如何：管理 Azure AD 中的非活动用户帐户
 
@@ -62,9 +62,12 @@ ms.locfileid: "112376588"
 
 lastSignInDateTime 属性由 [Microsoft Graph REST API](/graph/overview#whats-in-microsoft-graph) 的 [signInActivity 资源类型](/graph/api/resources/signinactivity?view=graph-rest-beta&preserve-view=true)公开。   
 
+> [!NOTE]
+> 美国政府 GCC High 环境尚不支持 signInActivity 图形 API 终结点。
+
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>lastSignInDateTime 属性是否可通过 Get-AzureAdUser cmdlet 获取？
 
-否。
+不是。
 
 ### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>访问属性需要哪些版本的 Azure AD？
 

@@ -2,18 +2,18 @@
 title: 使用证书并通过 Batch 安全地访问 Azure Key Vault
 description: 了解如何使用 Azure Batch 以编程方式从 Key Vault 访问凭据。
 ms.topic: how-to
-ms.date: 10/28/2020
+ms.date: 08/25/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eaaeaa05caca7897eb649b56504b643038f08d53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20af753813ead55a3107b952a56d92b16135b523
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99260123"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098959"
 ---
 # <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>使用证书并通过 Batch 安全地访问 Azure Key Vault
 
-本文介绍如何设置 Batch 节点，以便安全地访问 [Azure Key Vault](../key-vault/general/overview.md) 中存储的凭据。 无需将管理员凭据放入 Key Vault，然后对凭据进行硬编码以从脚本访问 Key Vault。 解决方案是使用授予 Batch 节点对 Key Vault 的访问权限的证书。
+本文介绍如何设置 Batch 节点，以便安全地访问 [Azure Key Vault](../key-vault/general/overview.md) 中存储的凭据。
 
 若要从 Batch 节点向 Azure Key Vault 进行身份验证，需要：
 
@@ -21,6 +21,9 @@ ms.locfileid: "99260123"
 - 一个证书
 - 一个 Batch 帐户
 - 具有至少一个节点的 Batch 池
+
+> [!IMPORTANT]
+> Batch 现在提供了一个改进的选项，用于访问 Azure Key Vault 中存储的凭据。 通过使用一个可访问 Azure Key Vault 中证书的用户分配的托管标识来创建池，你无需将证书内容发送到 Batch 服务，从而增强了安全性。 我们建议使用自动证书轮换，而不使用本主题中介绍的方法。 有关详细信息，请参阅[在 Batch 池中启用自动证书轮换](automatic-certificate-rotation.md)。
 
 ## <a name="obtain-a-certificate"></a>获得证书
 

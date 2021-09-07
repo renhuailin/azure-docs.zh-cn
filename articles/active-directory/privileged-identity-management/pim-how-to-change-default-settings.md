@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2021
+ms.date: 08/25/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f843aebfea4e7c5b956d5e150c4e54dffa764a5c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 558f8b720992f44a747689cb0e69436507b685c4
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749067"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866992"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 角色设置
 
@@ -94,7 +94,7 @@ Privileged Identity Management 提供针对激活以及针对活动分配强制�
 
 ## <a name="require-approval-to-activate"></a>需要批准才能激活
 
-如果设置多个审批者，则审批会在其中一项批准或拒绝后立即完成。 不能要求获得至少两个用户的批准。 若要求批准以激活角色，请按照以下步骤操作。
+如果设置多个审批者，则审批会在其中一项批准或拒绝后立即完成。 不能强制由第二个或后续审批者进行批准。 若要求批准以激活角色，请按照以下步骤操作。
 
 1. 选中“需要批准以激活”复选框。
 
@@ -102,11 +102,9 @@ Privileged Identity Management 提供针对激活以及针对活动分配强制�
 
     ![用于选择审批者的“选择用户或组”窗格](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. 至少选择一个用户，然后单击“选择”。 请至少选择一个审批者。 如果未选择任何特定审批者，则特权角色管理员/全局管理员将成为默认审批者。
+1. 至少选择一个用户，然后单击“选择”。 请至少选择一个审批者。 如果未选择任何特定审批者，则特权角色管理员和全局管理员将成为默认审批者。
 
-    所选项将出现在所选审批者列表中。
-
-1. 在指定所有角色设置后，选择“更新”  以保存更改。
+1. 选择“更新”以保存更改。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,18 +4,21 @@ description: 了解如何将 Azure Policy 资源（例如策略定义和策略�
 ms.date: 08/17/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7eb7cbfcd568eeebcb03979c51d26e8f6231298f
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 170c619d41a416ac337edabcf3d4c0e0b5f24d4e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122325012"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965141"
 ---
 # <a name="export-azure-policy-resources"></a>导出 Azure Policy 资源
 
 本文介绍了如何导出现有的 Azure Policy 资源。 导出资源很有用，建议将其用于备份，而这也是云治理和处理[策略即代码](../concepts/policy-as-code.md)过程中的一个重要步骤。 Azure Policy 资源可以通过 [Azure 门户](#export-with-azure-portal)、[Azure CLI](#export-with-azure-cli)、[Azure PowerShell](#export-with-azure-powershell) 和每个受支持的 SDK 进行导出。
 
 ## <a name="export-with-azure-portal"></a>使用 Azure 门户导出
+
+> [!NOTE]
+> 从 Azure 门户导出 Azure Policy 资源的功能不适用于 Azure 主权云。
 
 要从 Azure 门户导出策略定义，请按照以下步骤操作：
 

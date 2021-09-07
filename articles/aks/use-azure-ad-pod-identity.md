@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 AAD Pod 托
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: 44f4415e09ca9e2942eb1da4c69cf98759f737ce
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 1ecf9b45983dbc34938593424644a646dc3d96cb
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253877"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101224"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>在 Azure Kubernetes 服务中使用 Azure Active Directory Pod 托管标识（预览）
 
@@ -180,6 +180,7 @@ az aks pod-identity add --resource-group myResourceGroup --cluster-name myAKSClu
 
 > [!NOTE]
 > 在 AKS 群集上启用 Pod 托管标识时，会将名为 *aks-addon-exception* 的 AzurePodIdentityException 添加到 *kube-system* 命名空间。 AzurePodIdentityException 允许带有特定标签的 Pod 访问 Azure 实例元数据服务 (IMDS) 终结点，而不会被节点托管标识 (NMI) 服务器拦截。 *aks-addon-exception* 允许 AKS 第一方加载项（例如 AAD Pod 托管标识）正常运行，而无需手动配置 AzurePodIdentityException。 （可选）可以使用 `az aks pod-identity exception add`、`az aks pod-identity exception delete`、`az aks pod-identity exception update` 或 `kubectl` 添加、删除和更新 AzurePodIdentityException。
+> “POD_IDENTITY_NAME”必须是有效的 [DNS 子域名称]，如 [RFC 1123] 中定义的那样。 
 
 > [!NOTE]
 > 使用 `pod-identity add` 分配 pod 标识时，Azure CLI 尝试通过 pod 标识 (IDENTITY_RESOURCE_ID) 向群集标识授予“托管标识操作员”角色。
@@ -383,3 +384,5 @@ az identity delete -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME}
 [az-identity-create]: /cli/azure/identity#az_identity_create
 [az-managed-identities]: ../active-directory/managed-identities-azure-resources/overview.md
 [az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[RFC 1123]: https://tools.ietf.org/html/rfc1123
+[DNS 子域名称]: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-subdomain-names

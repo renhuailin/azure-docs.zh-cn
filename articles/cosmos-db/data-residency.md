@@ -7,20 +7,21 @@ ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 63892e4ed71ec435a7068c9c68b9981a71205fb1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 869b28c8c65c402936dcb7b7641a6e4af8db3f47
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725466"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100882"
 ---
 # <a name="how-to-meet-data-residency-requirements-in-azure-cosmos-db"></a>如何满足 Azure Cosmos DB 的数据驻留要求
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 通过 Azure Cosmos DB 可以将数据和备份配置并保留到单个区域中，满足[驻留要求。](https://azure.microsoft.com/global-infrastructure/data-residency/)
 
 ## <a name="residency-requirements-for-data"></a>数据驻留要求
 
-在 Azure Cosmos DB，必须显式配置跨区域数据复制。 了解如何使用 [Azure 门户](how-to-manage-database-account.md#addremove-regions-from-your-database-account)和 [Azure CLI](scripts/cli/common/regions.md) 配置异地复制数据。 为满足数据驻留要求，可以创建一个 Azure 策略，阻止某些区域向不需要的区域复制数据。
+在 Azure Cosmos DB，必须显式配置跨区域数据复制。 了解如何使用 [Azure 门户](how-to-manage-database-account.md#addremove-regions-from-your-database-account)和 [Azure CLI](scripts/cli/common/regions.md) 配置异地复制数据。 为了满足数据驻留需求，可以创建 Azure Policy 定义，以允许某些区域阻止数据复制到不需要的区域。
 
 ## <a name="residency-requirements-for-backups"></a>备份的驻留要求
 

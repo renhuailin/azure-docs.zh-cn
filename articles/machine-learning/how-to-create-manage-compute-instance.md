@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 08/06/2021
-ms.openlocfilehash: 0f4ed167fc1fd77e4b16b1f06a5beaa3ba9aef14
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.date: 08/30/2021
+ms.openlocfilehash: cad2ac9319eb674cb8022ff5ce3d2df2a57df648
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122202068"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224693"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>创建和管理 Azure 机器学习计算实例
 
@@ -134,7 +134,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 ## <a name="enable-ssh-access"></a><a name="enable-ssh"></a> 启用 SSH 访问
 
-默认情况下会禁用 SSH 访问。  创建后不可更改 SSH 访问。 如果计划使用 [VS Code Remote](how-to-set-up-vs-code-remote.md) 以交互式方式进行调试，请确保启用访问权限。  
+默认情况下会禁用 SSH 访问。  SSH 访问在创建后便不可更改。 如果计划使用 [VS Code Remote](how-to-set-up-vs-code-remote.md) 以交互式方式进行调试，请确保启用访问权限。  
 
 [!INCLUDE [amlinclude-info](../../includes/machine-learning-enable-ssh.md)]
 
@@ -188,54 +188,59 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 1. 如果要创建其他计划，请再次选择“添加计划”。
 
 创建计算实例后，可以从计算实例详细信息部分查看、编辑或添加新计划。
+请注意，时区标签不考虑夏令时。 例如，(UTC+01:00) 阿姆斯特丹、柏林、伯尔尼、罗马、斯德哥尔摩、维也纳在夏令时期间实际上是 UTC+02:00。
 
 ### <a name="create-a-schedule-with-a-resource-manager-template"></a>使用资源管理器模板创建计划
 
-可以使用资源管理器模板计划计算实例的自动启动和停止。  在资源管理器模板中，使用 cron 或 LogicApps 表达式定义启动或停止实例的计划。  
+可以使用资源管理器[模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)来计划计算实例的自动启动和停止。
 
+在资源管理器模板中，添加：
+
+```
+"schedules": "[parameters('schedules')]"
+```
+
+然后，使用 cron 或 LogicApps 表达式在参数文件中定义启动或停止实例的计划：
+ 
 ```json
-"schedules": {
-  "computeStartStop": [
-      {
-      "triggerType": "Cron",
-      "cron": {
-          "startTime": "2021-03-10T21:21:07",
-          "timeZone": "Pacific Standard Time",
-          "expression": "0 18 * * *"
-      },
-      "action": "Stop",
-      "status": "Enabled"
-      },
-      {
-      "triggerType": "Cron",
-      "cron": {
-          "startTime": "2021-03-10T21:21:07",
-          "timeZone": "Pacific Standard Time",
-          "expression": "0 8 * * *"
-      },
-      "action": "Start",
-      "status": "Enabled"
-      },
-      { 
-      "triggerType": "Recurrence", 
-      "recurrence": { 
-          "frequency": "Day", 
-          "interval": 1,
-          "timeZone": "Pacific Standard Time", 
-        "schedule": { 
-          "hours": [18], 
-          "minutes": [0], 
-          "weekDays": [ 
-              "Saturday", 
-              "Sunday"
-          ] 
+        "schedules": {
+        "value": {
+        "computeStartStop": [
+          {
+            "triggerType": "Cron",
+            "cron": {              
+              "timeZone": "UTC",
+              "expression": "0 18 * * *"
+            },
+            "action": "Stop",
+            "status": "Enabled"
+          },
+          {
+            "triggerType": "Cron",
+            "cron": {              
+              "timeZone": "UTC",
+              "expression": "0 8 * * *"
+            },
+            "action": "Start",
+            "status": "Enabled"
+          },
+          { 
+            "triggerType": "Recurrence", 
+            "recurrence": { 
+              "frequency": "Day", 
+              "interval": 1, 
+              "timeZone": "UTC", 
+              "schedule": { 
+                "hours": [17], 
+                "minutes": [0]
+              } 
+            }, 
+            "action": "Stop", 
+            "status": "Enabled" 
           } 
-      }, 
-      "action": "Stop", 
-      "status": "Enabled" 
-      } 
-  ]
-}
+        ]
+      }
+    }
 ```
 
 * “action”的值可以是“Start”或“Stop”。
@@ -261,7 +266,7 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
     // hyphen (meaning an inclusive range). 
     ```
 
-使用 Azure Policy 强制执行订阅中每个计算实例存在的关闭计划，或在不存在任何关闭计划时不执行计划。
+使用 Azure Policy 为订阅中的每个计算实例强制执行已存在的关闭计划；如果不存在任何计划，则强制执行默认设置的某个计划。
 
 ## <a name="customize-the-compute-instance-with-a-script-preview"></a><a name="setup-script"></a> 使用脚本自定义计算实例（预览版）
 
@@ -293,23 +298,11 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 如果脚本执行了特定于 azureuser 的某项操作（例如安装 Conda 环境或 Jupyter 内核），则必须将它放入 sudo -u azureuser 块中，如下所示
 
-```shell
-#!/bin/bash
+:::code language="bash" source="~/azureml-examples-main/setup-ci/install-pip-package.sh":::
 
-set -e
-
-# This script installs a pip package in compute instance azureml_py38 environment
-
-sudo -u azureuser -i <<'EOF'
-# PARAMETERS
-PACKAGE=numpy
-ENVIRONMENT=azureml_py38 
-conda activate "$ENVIRONMENT"
-pip install "$PACKAGE"
-conda deactivate
-EOF
-```
 命令 sudo -u azureuser 将当前工作目录更改为 /home/azureuser 。 此外，无法访问此块中的脚本参数。
+
+有关其他示例脚本，请参阅 [azureml-examples](https://github.com/Azure/azureml-examples/tree/main/setup-ci)。
 
 也可以在脚本中使用以下环境变量：
 
@@ -318,7 +311,8 @@ EOF
 3. CI_NAME
 4. CI_LOCAL_UBUNTU_USER. 这会指向 azureuser
 
-可以将安装脚本与 Azure Policy 结合使用，以在每次创建计算实例时强制执行或不执行安装脚本。
+可以将安装脚本与 Azure Policy 结合使用，以在每次创建计算实例时强制执行或不执行安装脚本。 安装脚本超时的默认值为 15 分钟。 这可以通过 Studio UI 或通过 ARM 模板使用 DURATION 参数进行更改。
+DURATION 是一个带有可选后缀的浮点数：“s”代表秒（默认设置），“m”代表分钟，“h”代表小时，“d”代表天。
 
 ### <a name="use-the-script-in-the-studio"></a>在工作室中使用脚本
 

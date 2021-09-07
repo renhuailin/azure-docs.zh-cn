@@ -13,14 +13,14 @@ ms.date: 04/21/2021
 ms.author: jmprieur
 ms.reviewer: marsma, shermanouko
 ms.custom: aaddev
-ms.openlocfilehash: 8eb9db4d89f6d3c517afb57d6343387343ac5325
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 2c7d4fdbcd27b4b8d7097d7a6978f80f5eb7fca4
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166936"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123033241"
 ---
-# <a name="how-to-build-services-that-are-resilient-to-azure-ads-openid-connect-metadata-refresh"></a>操作说明：生成可复原 Azure AD 的 OpenID Connect 元数据刷新的服务
+# <a name="build-services-that-are-resilient-to-azure-ads-openid-connect-metadata-refresh"></a>生成可复原 Azure AD 的 OpenID Connect 元数据刷新的服务
 
 受保护的 Web API 需要验证访问令牌。 Web 应用还会验证 ID 令牌。 令牌验证包含多个部分：检查令牌是否属于应用程序、是否由受信任的标识提供者 (IDP) 核发以及其生存期是否仍处于有效范围内且未经篡改。 此外还可以执行特殊验证。 例如，应用需要（在嵌入令牌时）验证签名和签名密钥是否受信任，以及令牌是否未经重放。 如果签名密钥未嵌入令牌中，则需向标识提供者提取（发现或元数据）。 有时，还需要在运行时动态获取密钥。
 

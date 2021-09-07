@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: devx-track-python
-ms.openlocfilehash: 7aac4d2fcab192d77c1629e8f53b91f5dadedd86
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 305d3103e9f0f0bdfb3ce49f5c801ca0f2f975ff
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729837"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835239"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>计划和广播作业 (Python)
 
@@ -81,65 +81,75 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
 3. 在 simDevice.py 文件的开头添加以下 `import` 语句和变量。 将 `deviceConnectionString` 替换为上述创建的设备的连接字符串：
 
     ```python
+    import time
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
 
     CONNECTION_STRING = "{deviceConnectionString}"
-    client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
     ```
 
-4. 定义以下处理程序函数，该函数将用于响应 lockDoor 方法：
+4. 定义以下函数，该函数会实例化客户端并将其配置为响应 lockDoor 方法，以及接收设备孪生更新：
 
     ```python
-    def method_request_handler(method_request):
-        if method_request.name == "lockDoor":
-            print("Locking Door!")
+    def create_client():
+        # Instantiate the client
+        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
 
-            resp_status = 200
-            resp_payload = {"Response": "lockDoor called successfully"}
-            method_response = MethodResponse.create_from_method_request(
-                method_request=method_request,
-                status=resp_status,
-                payload=resp_payload
-            )
-            client.send_method_response(method_response)
+        # Define behavior for responding to the lockDoor direct method
+        def method_request_handler(method_request):
+            if method_request.name == "lockDoor":
+                print("Locking Door!")
+
+                resp_status = 200
+                resp_payload = {"Response": "lockDoor called successfully"}
+                method_response = MethodResponse.create_from_method_request(
+                    method_request=method_request,
+                    status=resp_status,
+                    payload=resp_payload
+                )
+                client.send_method_response(method_response)
+
+        # Define behavior for receiving a twin patch
+        def twin_patch_handler(twin_patch):
+            print("")
+            print("Twin desired properties patch received:")
+            print(twin_patch)
+
+        # Set the handlers on the client
+        try:
+            print("Beginning to listen for 'lockDoor' direct method invocations...")
+            client.on_method_request_received = method_request_handler
+            print("Beginning to listen for updates to the Twin desired properties...")
+            client.on_twin_desired_properties_patch_received = twin_patch_handler
+        except:
+            # If something goes wrong while setting the handlers, clean up the client
+            client.shutdown()
+            raise
     ```
 
-5. 再添加一个处理程序函数来接收设备孪生更新：
+5. 添加以下代码以运行该示例：
 
     ```python
-    def twin_patch_handler(twin_patch):
-        print("")
-        print("Twin desired properties patch received:")
-        print(twin_patch)
-    ```
+    def main():
+        print ("Starting the IoT Hub Python jobs sample...")
+        client = create_client()
 
-6. 添加以下代码以注册 lockDoor 方法的处理程序以及孪生修补程序。 此外还包含 `main` 例程：
-
-    ```python
-    def iothub_jobs_sample_run():
-        print("Beginning to listen for 'lockDoor' direct method invocations...")
-        client.on_method_request_received = method_request_handler
-        print("Beginning to listen for updates to the Twin desired properties...")
-        client.on_twin_desired_properties_patch_received = twin_patch_handler
-
-        client.connect()
-
+        print ("IoTHubDeviceClient waiting for commands, press Ctrl-C to exit")
         try:
             while True:
-                import time
                 time.sleep(100)
         except KeyboardInterrupt:
             print("IoTHubDeviceClient sample stopped!")
+        finally:
+            # Graceful exit
+            print("Shutting down IoT Hub Client")
             client.shutdown()
 
-    if __name__ == '__main__':
-        print ( "Starting the IoT Hub Python jobs sample..." )
-        print ( "IoTHubDeviceClient waiting for commands, press Ctrl-C to exit" )
 
-        iothub_jobs_sample_run()
+    if __name__ == '__main__':
+        main()
     ```
 
-7. 保存并关闭 simDevice.py 文件。
+6. 保存并关闭 simDevice.py 文件。
 
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按文章 [Transient Fault Handling](/azure/architecture/best-practices/transient-faults)（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。

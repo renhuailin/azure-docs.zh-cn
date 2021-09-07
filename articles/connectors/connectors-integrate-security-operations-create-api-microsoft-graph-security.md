@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b32d5aee270e3380899a81f49b12a55c468f2bc5
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888532"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122865008"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>通过将安全操作与 Microsoft Graph 安全性和 Azure 逻辑应用集成，提升威胁防护能力
 
@@ -30,7 +30,7 @@ ms.locfileid: "94888532"
 
 逻辑应用的工作流可使用操作，以从 Microsoft Graph 安全性连接器获取响应，并让输出可用于工作流中的其他操作。 另外，还可以让工作流中的其他操作使用 Microsoft Graph 安全性连接器操作的输出。 例如，如果通过 Microsoft Graph 安全性连接器获取非常严重的警报，可使用 Outlook 连接器在电子邮件中发送这些警报。 
 
-若要详细了解 Microsoft Graph 安全性，请参阅 [Microsoft Graph 安全性 API 概述](/graph/security-concept-overview)。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。 如果你正在寻找 Power Automate 或 PowerApps，请参阅[什么是 Power Automate？](https://flow.microsoft.com/)或[什么是 Power Apps？](https://powerapps.microsoft.com/)
+若要详细了解 Microsoft Graph 安全性，请参阅 [Microsoft Graph 安全性 API 概述](/graph/security-concept-overview)。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。 如果正在查找 Power Automate 或 Power Apps，请参阅[什么是 Power Automate？](https://flow.microsoft.com/)或[什么是 Power Apps？](https://powerapps.microsoft.com/)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -91,7 +91,7 @@ ms.locfileid: "94888532"
 
 1.  在触发器中，提供要监视的警报的相关信息。 有关更多属性，请打开“添加新参数”列表，并选择一个参数将该属性添加到触发器。
 
-   | 属性 | 属性 (JSON) | 必选 | 类型 | 说明 |
+   | 属性 | 属性 (JSON) | 必须 | 类型 | 说明 |
    |----------|-----------------|----------|------|-------------|
    | **时间间隔** | `interval` | 是 | Integer | 一个正整数，描述工作流基于频率运行的频繁度。 下面是最小和最大间隔： <p><p>- 月：1-16 个月 <br>- 天：1-500 天 <br>- 小时：1-12,000 小时 <br>- 分钟：1-72,000 分钟 <br>- 秒：1-9,999,999 秒 <p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 |
    | **频率** | `frequency` | 是 | String | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月”      |

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a280a191d25a2d41173b30c56447b1ece7077206
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7d9b3a6d3a5178354cced3cd5e4a49f7113ecdce
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728163"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220016"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>自定义 Azure Kubernetes 服务 (AKS) 节点池的节点配置（预览版）
 
@@ -68,6 +68,8 @@ az extension update --name aks-preview
 | `imageGcLowThreshold` | 0-100，不大于 `imageGcHighThreshold` | 80 | 在此之前从不运行映像垃圾回收的磁盘使用量百分比。 可触发垃圾回收的最低磁盘使用率。 |
 | `topologyManagerPolicy` | 无、最大努力、受限制、单个 numa 节点 | 无 | 有关优化 Numa 节点对齐的信息，请在[此处](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/)详细了解。 仅限 Kubernetes v1.18 以上版本。 |
 | `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | 无 | 允许的不安全 sysctl 或不安全 sysctl 模式的列表。 | 
+| `containerLogMaxSizeMB` | 以兆字节 (MB) 为单位的大小 | 10 MB | 容器日志文件在轮换前的最大大小（例如，10 MB）。 | 
+| `containerLogMaxFiles` | ≥ 2 | 5 | 一个容器可以存在的最大容器日志文件数。 | 
 
 ### <a name="linux-os-custom-configuration"></a>Linux OS 自定义配置
 
@@ -114,7 +116,7 @@ az extension update --name aks-preview
 
 与文件描述符限制一样，进程可以创建的辅助角色或线程的数量受内核设置和用户限制所限制。 AKS 中的用户数不受限制。 
 
-| 设置 | 允许的值/间隔 | 默认 | 说明 |
+| 设置 | 允许的值/间隔 | 默认 | 描述 |
 | ------- | ----------------------- | ------- | ----------- |
 | `kernel.threads-max` | 20 - 513785 | 55601 | 进程可以启动工作线程。 可创建的所有线程的最大数量均使用内核设置 `kernel.threads-max` 进行设置。 | 
 

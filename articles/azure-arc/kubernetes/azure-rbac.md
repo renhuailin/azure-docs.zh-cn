@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 在启用了 Azure Arc 的 Kubernetes 群集上使用 Azure RBAC 进行授权检查。
-ms.openlocfilehash: b4c8d6f4f7abcd9090a0b4aaa69038b75a4aa1b1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2607f82e0935ead0b6013bae963e22616c340b80
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479592"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105034"
 ---
 # <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>将 Azure Active Directory 与已启用 Azure Arc 的 Kubernetes 群集集成
 
@@ -52,27 +52,29 @@ Kubernetes [ClusterRoleBinding 和 RoleBinding](https://kubernetes.io/docs/refer
 1. 创建新的 Azure AD 应用程序并获取其 `appId` 值。 此值在后续步骤中用作 `serverApplicationId`。
 
     ```azurecli
-    az ad app create --display-name "<clusterName>Server" --identifier-uris "https://<clusterName>Server" --query appId -o tsv
+    CLUSTERNAME="<clusterName>"
+    SERVER_APP_ID=$(az ad app create --display-name "${CLUSTERNAME}Server" --identifier-uris "https://${CLUSTERNAME}Server" --query appId -o tsv)
+    echo $SERVER_APP_ID
     ```
 
 1. 更新应用程序的组成员身份声明：
 
     ```azurecli
-    az ad app update --id <serverApplicationId> --set groupMembershipClaims=All
+    az ad app update --id "${SERVER_APP_ID}" --set groupMembershipClaims=All
     ```
 
 1. 创建服务主体并获取其 `password` 字段值。 稍后在群集上启用此功能时，需要将该字段值用作 `serverApplicationSecret`。
 
     ```azurecli
-    az ad sp create --id <serverApplicationId>
-    az ad sp credential reset --name <serverApplicationId> --credential-description "ArcSecret" --query password -o tsv
+    az ad sp create --id "${SERVER_APP_ID}"
+    SERVER_APP_SECRET=$(az ad sp credential reset --name "${SERVER_APP_ID}" --credential-description "ArcSecret" --query password -o tsv)
     ```
 
-1. 向应用程序授予 API 权限：
+1. 向应用程序授予“登录并读取用户配置文件”API 权限：
 
     ```azurecli
-    az ad app permission add --id <serverApplicationId> --api 00000003-0000-0000-c000-000000000000 --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope
-    az ad app permission grant --id <serverApplicationId> --api 00000003-0000-0000-c000-000000000000
+    az ad app permission add --id "${SERVER_APP_ID}" --api 00000003-0000-0000-c000-000000000000 --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope
+    az ad app permission grant --id "${SERVER_APP_ID}" --api 00000003-0000-0000-c000-000000000000
     ```
 
     > [!NOTE]
@@ -85,26 +87,27 @@ Kubernetes [ClusterRoleBinding 和 RoleBinding](https://kubernetes.io/docs/refer
 1. 创建新的 Azure AD 应用程序并获取其 `appId` 值。 此值在后续步骤中用作 `clientApplicationId`。
 
     ```azurecli
-    az ad app create --display-name "<clusterName>Client" --native-app --reply-urls "https://<clusterName>Client" --query appId -o tsv
+    CLIENT_APP_ID=$(az ad app create --display-name "${CLUSTERNAME}Client" --native-app --reply-urls "https://${CLUSTERNAME}Client" --query appId -o tsv)
+    echo $CLIENT_APP_ID
     ```
 
 2. 创建此客户端应用程序的服务主体：
 
     ```azurecli
-    az ad sp create --id <clientApplicationId>
+    az ad sp create --id "${CLIENT_APP_ID}"
     ```
 
 3. 获取服务器应用程序的 `oAuthPermissionId` 值：
 
     ```azurecli
-    az ad app show --id <serverApplicationId> --query "oauth2Permissions[0].id" -o tsv
+    az ad app show --id "${SERVER_APP_ID}" --query "oauth2Permissions[0].id" -o tsv
     ```
 
 4. 授予客户端应用程序所需的权限：
 
     ```azurecli
-    az ad app permission add --id <clientApplicationId> --api <serverApplicationId> --api-permissions <oAuthPermissionId>=Scope
-    az ad app permission grant --id <clientApplicationId> --api <serverApplicationId>
+    az ad app permission add --id "${CLIENT_APP_ID}" --api "${SERVER_APP_ID}" --api-permissions <oAuthPermissionId>=Scope
+    az ad app permission grant --id "${CLIENT_APP_ID}" --api "${SERVER_APP_ID}"
     ```
 
 ## <a name="create-a-role-assignment-for-the-server-application"></a>为服务器应用程序创建角色分配
@@ -133,15 +136,13 @@ Kubernetes [ClusterRoleBinding 和 RoleBinding](https://kubernetes.io/docs/refer
 2. 运行以下命令，创建新的自定义角色：
 
     ```azurecli
-    az role definition create --role-definition ./accessCheck.json
+    ROLE_ID=$(az role definition create --role-definition ./accessCheck.json --query id -o tsv)
     ```
 
-3. 在上述命令的输出中，存储该 `id` 字段的值。 此字段在后续步骤中用作 `roleId`。
-
-4. 使用创建的角色，在服务器应用程序上创建一个角色分配作为 `assignee`：
+3. 使用创建的角色，在服务器应用程序上创建一个角色分配作为 `assignee`：
 
     ```azurecli
-    az role assignment create --role <roleId> --assignee <serverApplicationId> --scope /subscriptions/<subscription-id>
+    az role assignment create --role "${ROLE_ID}" --assignee "${SERVER_APP_ID}" --scope /subscriptions/<subscription-id>
     ```
 
 ## <a name="enable-azure-rbac-on-the-cluster"></a>在群集上启用 Azure RBAC
@@ -149,7 +150,7 @@ Kubernetes [ClusterRoleBinding 和 RoleBinding](https://kubernetes.io/docs/refer
 在启用了 Arc 的 Kubernetes 群集上，通过运行以下命令启用 Azure 基于角色的访问控制 (RBAC)：
 
 ```console
-az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features azure-rbac --app-id <serverApplicationId> --app-secret <serverApplicationSecret>
+az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features azure-rbac --app-id "${SERVER_APP_ID}" --app-secret "${SERVER_APP_SECRET}"
 ```
     
 > [!NOTE]

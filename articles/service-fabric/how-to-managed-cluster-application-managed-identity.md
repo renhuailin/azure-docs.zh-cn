@@ -1,18 +1,18 @@
 ---
-title: 在 Service Fabric 托管群集节点上配置和使用应用程序托管标识
-description: 了解如何在部署了 Azure Service Fabric 托管群集的 ARM 模板上配置和使用应用程序托管标识。
+title: 在 Service Fabric 托管群集上配置和使用具有托管标识的应用程序
+description: 了解如何在 Azure 资源管理器 (ARM) 模板部署的 Azure Service Fabric 托管群集上配置和使用具有托管标识的应用程序。
 ms.topic: how-to
-ms.date: 5/10/2021
-ms.openlocfilehash: 4e488f9ebb78208617ca59fdb88dbec454de10e1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 8/23/2021
+ms.openlocfilehash: 5007f17754572c03ff820ecda1bb09f6e8a8020e
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958273"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864747"
 ---
-# <a name="deploy-a-service-fabric-application-with-managed-identity"></a>使用托管标识部署 Service Fabric 应用程序
+# <a name="deploy-an-application-with-managed-identity-to-a-service-fabric-managed-cluster"></a>将具有托管标识的应用程序部署到 Service Fabric 托管群集
 
-若要使用托管标识部署 Service Fabric 应用程序，需通过 Azure 资源管理器部署应用程序，通常需要使用 Azure 资源管理器模板。 若要详细了解如何通过 Azure 资源管理器部署 Service Fabric 应用程序，请参阅[将应用程序和服务作为 Azure 资源管理器资源进行管理](service-fabric-application-arm-resource.md)。
+若要使用托管标识部署 Service Fabric 应用程序，需通过 Azure 资源管理器部署应用程序，通常需要使用 Azure 资源管理器模板。 若要详细了解如何通过 Azure 资源管理器部署 Service Fabric 应用程序，请参阅[使用 Azure 资源管理器将应用程序部署到托管群集](how-to-managed-cluster-app-deployment-template.md)。
 
 > [!NOTE] 
 > 
@@ -195,6 +195,5 @@ ms.locfileid: "111958273"
     这是一个等效映射，等效于将标识映射到服务（如上所述），但却是从服务定义的角度来看。 在这里，标识按其易记名称 (`WebAdmin`) 引用，如应用程序清单所述。
 
 ## <a name="next-steps"></a>后续步骤
-
-* [从服务代码中利用 Service Fabric 应用程序的托管标识](./how-to-managed-identity-service-fabric-app-code.md)
-* [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
+* [从服务代码中利用 Service Fabric 应用程序的托管标识](how-to-managed-identity-service-fabric-app-code.md)
+* [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](how-to-grant-access-other-resources.md)

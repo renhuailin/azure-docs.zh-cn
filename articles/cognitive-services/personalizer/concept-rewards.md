@@ -1,16 +1,19 @@
 ---
 title: 奖励评分 - 个性化体验创建服务
 description: 奖励评分指示为用户生成的个性化选项 (RewardActionID) 的好坏程度。 奖励评分值由业务逻辑根据用户行为的观察结果来确定。 个性化体验创建服务通过评估奖励来训练其机器学习模型。
+author: jeffmend
+ms.author: jeffme
+ms.manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 69e5aeff345bdf66d1b171738a2fbf14c7f8b15c
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: ec2c9ba7e700a79cffc70cfd4eab7ea780527cff
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112453477"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867037"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>奖励评分表示个性化的成败
 
@@ -97,7 +100,7 @@ ms.locfileid: "112453477"
 
 个性化体验创建服务将排名调用的信息与奖励调用中发送的奖励相关联，以训练模型。 这些事件可能发生在不同的时间。 即使以非活动事件的形式发出了排名调用，然后将其激活，个性化体验创建服务也只会等待有限的时间（从发生排名调用开始算起）。
 
-如果 **奖励等待时间** 已过且未收到奖励信息，则会将默认奖励应用到该事件以进行训练。 最长等待持续时间为 6 天。
+如果 **奖励等待时间** 已过且未收到奖励信息，则会将默认奖励应用到该事件以进行训练。 最长等待持续时间为 2 天。 如果你的方案需要更长的奖励等待时间（例如，在使用营销电子邮件活动的情况下），我们将提供等待时间更长的个人预览版。 在 Azure 门户中开具支持票证以与团队取得联系，看你是否符合条件以及是否可以获得奖励。
 
 ## <a name="best-practices-for-reward-wait-time"></a>奖励等待时间的最佳做法
 

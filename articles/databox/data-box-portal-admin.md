@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/18/2020
+ms.date: 08/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 46a18cb2b6e1682427d5674be28b240f35b120fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 796c9563de794b22d47dacee4c93e7bfde73fb2a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97678640"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221797"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>使用 Azure 门户管理 Azure Data Box 和 Azure Data Box Heavy
 
@@ -255,8 +255,18 @@ Data Box 订单完成以后，会擦除设备磁盘上的数据。 当设备清�
 |可以在 Azure 数据中心接收     |设备已准备就绪，可以在 Azure 数据中心接收。        |
 |Received     |已在 Azure 数据中心接收到设备。      |
 
+## <a name="get-device-password"></a>获取设备密码
 
+订购设备时，可以选择使用系统生成的默认设备密码或你自己的密码。 无论哪种方式，设备密码都是在工厂设置的，不能进行更改。 
 
+可以通过查看 Azure 门户中的订单来找出设备密码。
+
+[!INCLUDE [data-box-get-device-password](../../includes/data-box-get-device-password.md)]
+
+> [!NOTE]
+> 在使用错误密码多次进行登录尝试失败后，你的管理员帐户会被锁定在设备之外。 几分钟后帐户锁定会被解除，你可以重新进行连接。  
+> - Data Box 4.1 及更高版本：在 5 次登录尝试失败后，帐户会被锁定 15 分钟。 
+> - Data Box 4.0 及更低版本：在 3 次登录尝试失败后，帐户会被锁定 30 分钟。
 
 
 ## <a name="next-steps"></a>后续步骤

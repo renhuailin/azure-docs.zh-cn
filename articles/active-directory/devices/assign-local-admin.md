@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a21505fc37ad3b7fb47af8c6b79262ebb654d800
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 15b15b91e08ba404eac0fb2c30df924d2f84731b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228027"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866659"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -62,6 +62,7 @@ ms.locfileid: "114228027"
 
 - 最多 4 个小时，Azure AD 便会发出具有适当特权的新主刷新令牌。 
 - 用户注销并重新登录（而不是锁定/解锁）即可刷新其配置文件。
+- 用户不会在本地管理员组中列出，权限通过主刷新令牌获得。 
 
 > [!NOTE]
 > 上述操作不适用于之前未登录相关设备的用户。 在这种情况下，管理员特权将在他们首次登录设备后立即应用。 

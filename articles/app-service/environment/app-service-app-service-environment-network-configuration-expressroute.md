@@ -1,20 +1,20 @@
 ---
 title: 配置 Azure ExpressRoute v1
-description: 使用 Azure ExpressRoute 的 PowerApps 的应用服务环境的网络配置。 本文档仅供使用旧版 v1 ASE 的用户使用。
+description: 使用 Azure ExpressRoute 对 Power Apps 的应用服务环境进行网络配置。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: stefsch
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a7ea57cf8d76c7a8e1455b561a1a2bc050ec3d7
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88961816"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864792"
 ---
-# <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>使用 Azure ExpressRoute 的 PowerApps 的应用服务环境网络配置详细信息
+# <a name="network-configuration-details-for-app-service-environment-for-power-apps-with-azure-expressroute"></a>使用 Azure ExpressRoute 对 Power Apps 的应用服务环境进行网络配置的详细信息
 
 客户可以将 [Azure ExpressRoute][ExpressRoute] 线路连接到虚拟网络基础结构，以将其本地网络扩展到 Azure。 可以在[虚拟网络][virtualnetwork]基础结构的子网中创建应用服务环境。 然后，应用服务环境中运行的应用可以与只能通过 ExpressRoute 连接访问的后端资源建立安全连接。  
 
@@ -140,7 +140,7 @@ ms.locfileid: "88961816"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用 PowerApps 的应用服务环境，请参阅[应用服务环境简介][IntroToAppServiceEnvironment]。
+若要开始使用 Power Apps 的应用服务环境，请参阅[应用服务环境简介][IntroToAppServiceEnvironment]。
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/ 

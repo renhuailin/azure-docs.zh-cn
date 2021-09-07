@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 04/20/2021
-ms.openlocfilehash: d3458d456793a3853fc2277bc1443c6fdfbc5865
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: c3b2672f8cda046cbd6276ebaa6cf8cf2ceb5e0f
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122068333"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867028"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>托管体验版的详细配置
 
@@ -27,7 +27,7 @@ ms.locfileid: "122068333"
 
     [![选中“启用体验版”复选框。](media/test-drive/enable-test-drive-check-box.png)](media/test-drive/enable-test-drive-check-box.png#lightbox)
 
-    - **体验版类型**：选择“Microsoft 托管(Dynamics 365 for Customer Engagement & PowerApps)”。 这表示 Microsoft 将托管和维护用于执行体验版用户预配和取消预配的服务。
+    - 体验版类型 - 选择“Microsoft 托管(Dynamics 365 for Customer Engagement & Power Apps)”。 这表示 Microsoft 将托管和维护用于执行体验版用户预配和取消预配的服务。
 
 5. 遵照[说明](./test-drive-azure-subscription-setup.md)，授予在租户中预配和取消预配体验版用户的 Microsoft AppSource 权限。 此步骤将生成下面所述的“Azure AD 应用 ID”和“Azure AD 应用密钥”值。 
 6. 请在“体验版技术配置”页中完成这些字段。

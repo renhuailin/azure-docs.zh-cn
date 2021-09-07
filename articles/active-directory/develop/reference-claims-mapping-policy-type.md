@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 07/01/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 567c9172317a15ef2b3bd18e46909fb444d34c65
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 52de257461c796f7a477091801f4bdc52f46f5c8
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113214624"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101527"
 ---
 # <a name="claims-mapping-policy-type"></a>声明映射策略类型
 
@@ -270,6 +270,9 @@ ms.locfileid: "113214624"
 如果 Source 是 transformation，则 **TransformationID** 元素也必须包含在此声明定义中。
 
 ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source 的每个值有效的 ID 值。
+
+> [!WARNING]
+> 目前，用户对象上唯一可用的多值声明源是已从 AADConnect 同步的多值扩展属性。  OtherMail 和 tags 等其他属性是多值属性，但选择作为源时仅发出一个值。
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每个 Source 的有效 ID 值
 

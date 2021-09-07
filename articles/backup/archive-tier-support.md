@@ -2,14 +2,14 @@
 title: 存档层支持
 description: 了解对 Azure 备份的存档层支持
 ms.topic: conceptual
-ms.date: 08/04/2021
+ms.date: 08/31/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ccb85c42685f962da3c9faf098d7847a93f4de74
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 228ab85a0cde5ed37156a5821ad3ac2acd6a7209
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722742"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260776"
 ---
 # <a name="archive-tier-support"></a>存档层支持
 
@@ -37,7 +37,7 @@ ms.locfileid: "121722742"
 - 使用 PowerShell 来提供功能
 
 >[!Note]
->Azure VM 中对 SQL Server 的存档层支持现已在北欧、印度中部、南部东亚和澳大利亚东部正式发布。 有关受支持的区域的详细列表，请参阅[支持矩阵](#support-matrix)。    <br><br>    对于 Azure VM 中提供 SQL Server 的其他区域，存档层支持以有限公共预览版提供。 对 Azure 虚拟机的存档层支持也以有限公共预览版提供。 若要注册有限公共预览版，请使用此[链接](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u)。
+>Azure VM 中对 SQL Server 的存档层支持现在在多个区域正式发布。 有关受支持的区域的详细列表，请参阅[支持矩阵](#support-matrix)。    <br><br>    对于 Azure VM 中提供 SQL Server 的其他区域，存档层支持以有限公共预览版提供。 对 Azure 虚拟机的存档层支持也以有限公共预览版提供。 若要注册有限公共预览版，请使用此[链接](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u)。
 
 ## <a name="get-started-with-powershell"></a>PowerShell 入门
 
@@ -211,8 +211,8 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 | 工作负荷 | 预览 | 正式发布 |
 | --- | --- | --- |
-| Azure VM 中的 SQL Server | 美国东部、美国东部 2、美国中部、美国中南部、美国西部、美国西部 2、美国中西部、美国中北部、巴西南部、加拿大东部、加拿大中部、欧洲西部、英国南部、英国西部、东亚、日本东部、印度南部 | 澳大利亚东部、印度中部、欧洲北部、南东亚 |
-| Azure 虚拟机 | 美国东部、美国东部 2、美国中部、美国中南部、美国西部、美国西部 2、美国中西部、美国中北部、巴西南部、加拿大东部、加拿大中部、欧洲西部、英国南部、英国西部、东亚、日本东部、印度南部、东南亚、澳大利亚东部、印度中部、欧洲北部 | 无 |
+| Azure VM 中的 SQL Server | 美国东部、美国中南部、美国中北部、西欧 | 澳大利亚东部、印度中部、北欧、东南亚、东亚、澳大利亚东南部、加拿大中部、巴西南部、加拿大东部、法国中部、法国南部、日本东部、日本西部、韩国中部、韩国南部、印度南部、英国西部、英国南部、美国中部、美国东部 2、美国西部、美国西部 2、美国中西部 |
+| Azure 虚拟机 | 美国东部、美国东部 2、美国中部、美国中南部、美国西部、美国西部 2、美国中西部、美国中北部、巴西南部、加拿大东部、加拿大中部、西欧、英国南部、英国西部、东亚、日本东部、印度南部、东南亚、澳大利亚东部、印度中部、北欧、澳大利亚东南部、法国中部、法国南部、日本西部、韩国中部、韩国南部 | 无 |
 
 ## <a name="error-codes-and-troubleshooting-steps"></a>错误代码和故障排除步骤
 

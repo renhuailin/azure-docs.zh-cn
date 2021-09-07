@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/27/2021
+ms.date: 08/31/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ee0fbab517a34f6986d20ea3271cb4325bf6aabd
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 2a935e88f1127f27e3f779fb88447466c470fd32
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112981009"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123271910"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -113,11 +113,6 @@ OrchestrationStep 元素可以包含以下元素：
 
 业务流程步骤可基于业务流程步骤中定义的前提条件有条件地执行。 `Preconditions` 元素包含要评估的前提条件列表。 满足前提条件评估要求后，关联的业务流程步骤将跳转到下一个业务流程步骤。 
 
-每个前提条件的评估结果是单个声明。 有两种类型的前置条件：
- 
-- 声明存在 - 如果指定的声明存在于用户的当前声明包中，则指定应执行的操作。
-- 声明等于 - 如果指定的声明存在并且其值等于指定的值，则指定应执行的操作。 该检查执行区分大小写的序号比较。 检查布尔声明类型时，请使用 `True` 或 `False`。
-
 Azure AD B2C 按列表顺序评估前提条件。 基于顺序的前提条件可让你设置前提条件的应用顺序。 满足的第一个前提条件将替代所有后续前提条件。 仅当不满足所有前提条件时，才执行该业务流程步骤。 
 
 Preconditions 元素包含以下元素：
@@ -141,6 +136,31 @@ Precondition 元素包含以下元素：
 | ------- | ----------- | ----------- |
 | 值 | 1:2 | 声明类型的标识符。 已在策略文件或父策略文件的声明架构节中定义声明。 当前置条件为 `ClaimEquals` 类型时，第二个 `Value` 元素包含要检查的值。 |
 | 操作 | 1:1 | 如果满足前提条件评估要求，则应执行该操作。 可能的值：`SkipThisOrchestrationStep`。 关联的业务流程步骤将跳转到下一个步骤。 |
+  
+每个前提条件的评估结果是单个声明。 有两种类型的前置条件：
+ 
+- ClaimsExist - 指定如果用户的当前声明包中存在指定的声明，则应执行操作。
+- ClaimEquals - 指定如果指定的声明存在且其值等于指定的值，则应执行操作。 该检查执行区分大小写的序号比较。 检查布尔声明类型时，请使用 `True` 或 `False`。 
+
+    如果声明为 NULL 或未初始化，则忽略前提条件（无论 `ExecuteActionsIf` 是 `true` 还是 `false`）。 最佳做法是，同时检查声明是否存在，以及是否等于某个值。
+
+一个示例场景是，如果用户将 `MfaPreference` 设置为 `Phone`，则要求用户执行 MFA。 若要执行此条件逻辑，请检查 `MfaPreference` 声明是否存在，并检查声明值是否等于 `Phone`。 以下 XML 演示如何使用前提条件实现此逻辑。 
+  
+```xml
+<Preconditions>
+  <!-- Skip this orchestration step if MfaPreference doesn't exist. -->
+  <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
+    <Value>MfaPreference</Value>
+    <Action>SkipThisOrchestrationStep</Action>
+  </Precondition>
+  <!-- Skip this orchestration step if MfaPreference doesn't equal to Phone. -->
+  <Precondition Type="ClaimEquals" ExecuteActionsIf="false">
+    <Value>MfaPreference</Value>
+    <Value>Phone</Value>
+    <Action>SkipThisOrchestrationStep</Action>
+  </Precondition>
+</Preconditions>
+```
 
 #### <a name="preconditions-examples"></a>Preconditions 示例
 

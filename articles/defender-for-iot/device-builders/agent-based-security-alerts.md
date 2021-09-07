@@ -1,16 +1,16 @@
 ---
-title: 基于代理的安全警报
-description: 了解使用 Defender for IoT 设备的功能和服务的安全警报及建议的修正措施。
+title: 经典的基于代理的安全警报
+description: 了解经典版 Defender for IoT 的安全警报，以及使用 Defender for IoT 设备的功能和服务时建议的修正措施。
 ms.topic: conceptual
-ms.date: 2/16/2021
-ms.openlocfilehash: b586eb4bebfc584e6cec4c27df859dbebb817e2d
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 08/25/2021
+ms.openlocfilehash: 184001243803b64717ac124c116529bab4c4170d
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113014569"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122968258"
 ---
-# <a name="defender-for-iot-devices-security-alerts"></a>Defender for IoT 设备安全警报
+# <a name="classic-defender-for-iot-devices-security-alerts"></a>经典 Defender for IoT 设备安全警报
 
 Defender for IoT 使用高级分析和威胁智能来持续分析 IoT 解决方案，在存在恶意活动时发出警报。
 此外，你可以根据对预期设备行为的了解来创建自定义警报。

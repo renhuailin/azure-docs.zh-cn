@@ -10,14 +10,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 651b4988b5f21ab90d52a19e3534f2de341c07e0
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 24cccbbd1bed0fc4e1fbe357832095455dae7df8
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586052"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219995"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集 
 
 在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 有关自动构建 RHEL 映像的方法，请参阅 [Azure 映像生成器](../image-builder-overview.md)。
 
@@ -1263,7 +1265,7 @@ ms.locfileid: "113586052"
 
 ### <a name="rhel-7-from-a-kickstart-file"></a>RHEL 7（使用 kickstart 文件）
 
-1.  创建包括以下内容的 kickstart 文件，并保存该文件。 有关 kickstart 安装的详细信息，请参阅 [Kickstart 安装指南](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)。
+1.  创建包括以下内容的 kickstart 文件，并保存该文件。 有关 kickstart 安装的详细信息，请参阅 [Kickstart 安装指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/installation_guide/chap-kickstart-installations)。
 
     ```text
     # Kickstart for provisioning a RHEL 7 Azure VM

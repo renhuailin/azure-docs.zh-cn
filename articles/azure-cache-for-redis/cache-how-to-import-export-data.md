@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: a877ee39c2d5a3760df50ebb3575793d1500de96
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 0430217ab8c2f113127c6a2e519d9e394fc3d3e7
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110795525"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318674"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Redis 缓存中导入和导出数据
 
@@ -73,7 +73,12 @@ ms.locfileid: "110795525"
 2. 选择“选择存储容器”并选择所需的存储帐户。 存储帐户必须与缓存在同一订阅和区域中。
 
    > [!IMPORTANT]
-   > 导出操作适用于页 Blob，经典存储帐户和资源管理器存储帐户都支持页 Blob。 Blob 存储帐户目前不支持导出。 有关详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
+   >
+   > - 导出操作适用于页 Blob，经典存储帐户和资源管理器存储帐户都支持页 Blob。
+   > - Azure Cache for Redis 不支持导出到 ADLS Gen2 存储帐户。
+   > - Blob 存储帐户目前不支持导出。
+   >
+   > 有关详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
    >
 
     ![存储帐户](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
@@ -154,7 +159,7 @@ Azure Redis 缓存暂留能够将 Redis 中存储的数据长期保存在 Azure 
 
 如果在启动操作之前停留在左侧“导入数据”或“导出数据”的时间超过 15 分钟，则会收到错误，错误消息类似于以下示例 ：
 
-```output
+```azcopy
 The request to import data into cache 'contoso55' failed with status 'error' and error 'One of the SAS URIs provided could not be used for the following reason: The SAS token end time (se) must be at least 1 hour from now and the start time (st), if given, must be at least 15 minutes in the past.
 ```
 

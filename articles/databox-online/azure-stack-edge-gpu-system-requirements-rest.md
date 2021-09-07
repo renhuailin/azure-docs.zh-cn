@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7deba32eb9d0e098b75f98cc81fac2c01b8bb7f8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4740a4b4aac59ac2e0e57797f39c489c6beaf75c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567247"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252172"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Azure Stack Edge Blob 存储要求
 
@@ -25,12 +25,12 @@ ms.locfileid: "105567247"
 
 |     功能                                             |     Azure 存储                                     |     Azure Stack Edge Blob 存储 |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
-|    Azure 文件存储                                   |    支持基于云的 SMB 文件共享              |    不支持      |
+|    Azure 文件                                   |    支持基于云的 SMB 和 NFS 文件共享              |    不支持      |
 |    存储帐户类型                                 |    常规用途和 Azure Blob 存储帐户    |    仅常规用途 v1|
 |    Blob 名称                                            |    1024 个字符（2048 个字节）                     |    880 个字符（1760 个字节）|
-|    块 blob 最大大小                              |    4.75 TB（100 MB X 50,000 块）                   |    适用于 Azure Stack Edge 的 4.75 TB（100 MB x 50,000 块）|
-|    页 blob 最大大小                               |    8 TB                                               |    1 TB                   |
-|    页 Blob 页面大小                                  |    512 字节                                          |    4 KB                   |
+|    块 blob 最大大小                              |    4.75 TiB（100 MiB X 50,000 块）                   |    适用于 Azure Stack Edge 的 4.75 TiB（100 MiB x 50,000 块）|
+|    页 blob 最大大小                               |    8 TiB                                               |    1 TiB                   |
+|    页 Blob 页面大小                                  |    512 字节                                          |    4 KiB                   |
 
 ## <a name="supported-api-versions"></a>支持的 API 版本
 
