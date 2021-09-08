@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: e86c9afcdb68aa6ad030405a2b5cbe59dc92e6f0
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: f8c20e9da69c9b4a6f1a301e11d73e39853662e1
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112201619"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123467801"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>配置 Azure 认知服务虚拟网络
 
@@ -48,8 +48,6 @@ Azure 认知服务提供了分层的安全模型。 借助此模型，可保护�
 > * 内容审查器
 > * 自定义视觉
 > * 人脸
-> * 表单识别器
-> * 沉浸式阅读器
 > * 语言理解 (LUIS)
 > * 个性化体验创建服务
 > * 语音服务

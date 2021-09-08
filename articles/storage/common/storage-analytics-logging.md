@@ -9,12 +9,12 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: d48ab6223485807400b6749bcf72691261405495
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c536e8749ce41f51f161d9659beca3ab0ccd30ae
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134548"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123032248"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -59,6 +59,9 @@ ms.locfileid: "108134548"
 - 失败的 GET 请求，错误代码为 304（未修改）
 
   不会记录所有其他失败的匿名请求。 [存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)及[存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)主题中提供了所记录数据的完整列表。
+  
+> [!NOTE]
+> 存储分析将所有内部调用记录到数据平面。 还会记录来自 Azure 存储资源提供程序的调用。 若要标识这些请求，请在请求 URL 中查找查询字符串 `<sk=system-1>`。
 
 ## <a name="how-logs-are-stored"></a>如何存储日志
 
@@ -97,7 +100,7 @@ ms.locfileid: "108134548"
 
  下表说明了日志名称中的每个属性：
 
-|Attribute|说明|
+|属性|说明|
 |---------------|-----------------|
 |`<service-name>`|存储服务的名称 例如，`blob`、`table` 或 `queue`|
 |`YYYY`|用四位数表示的日志年份。 例如： `2011`|
@@ -121,7 +124,7 @@ ms.locfileid: "108134548"
 
  所有日志 Blob 与可用于确定 Blob 包含哪些日志记录数据的元数据一起存储。 下表说明了每个元数据属性：
 
-|Attribute|说明|
+|属性|说明|
 |---------------|-----------------|
 |`LogType`|描述日志是否包含与读取、写入或删除操作有关的信息。 该值可能包含一种类型，也可能包含所有三种类型的组合并用逗号隔开。<br /><br /> 示例 1：`write`<br /><br /> 示例 2：`read,write`<br /><br /> 示例 3：`read,write,delete`|
 |`StartTime`|日志中条目的最早时间，采用 `YYYY-MM-DDThh:mm:ssZ` 形式。 例如： `2011-07-31T18:21:46Z`|

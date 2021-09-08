@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 268993dcdd2250037ebcfa1640bc4e54f82c926f
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: f72ac3b3a799b97883586e5c2eebc4a42119ae6f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112575525"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255701"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>更新或删除由虚拟机规模集使用的 Azure 负载均衡器
 
@@ -109,7 +109,7 @@ az network lb inbound-nat-pool update
 1. 在左侧菜单上，选择“所有资源”。 然后从资源列表中选择“MyLoadBalancer”。
 1. 在“设置”下，选择“前端 IP 配置”。  然后选择“添加”  。
 1. 在“添加前端 IP 地址”页上，键入值并选择“确定” 。
-1. 如果需要新负载均衡规则，请按照此教程中的[步骤 5](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) 和[步骤 6](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) 进行操作。
+1. 如果需要新的负载均衡规则，请参阅[管理 Azure 负载均衡器的规则 - Azure 门户](manage-rules-how-to.md)。
 1. 如果需要，请通过使用新创建的前端 IP 配置来创建一组新的入站 NAT 规则。 在上一部分中找到一个示例。
 
 ## <a name="multiple-virtual-machine-scale-sets-behind-a-single-load-balancer"></a>某一个负载均衡器后的多个虚拟机规模集

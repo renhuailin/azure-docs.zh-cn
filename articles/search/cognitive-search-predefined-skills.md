@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/12/2021
-ms.openlocfilehash: ddf7d6bba58d8eb8a7ad8a52a8e9c51098e71dcc
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 161813b7da42a5697fdb595e6a7050923e28fca2
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228902"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038887"
 ---
 # <a name="built-in-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>在编制索引期间用于文本和图像处理的内置技能（Azure 认知搜索）
 
@@ -30,7 +30,7 @@ ms.locfileid: "122228902"
 | [Microsoft.Skills.Text.KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md) | 此技能使用预定型模型来检测基于术语放置、语言规则、与其他术语的接近度以及该术语在源数据内的异常程度的重要短语。 | 认知服务（[定价](https://azure.microsoft.com/pricing/details/cognitive-services/)） | 
 | [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | 该技能使用预定型模型来检测使用语言的语言类型（每个文档一个语言 ID）。 在同一文本段中使用多种语言时，输出是主要使用的语言的 LCID。 | 认知服务（[定价](https://azure.microsoft.com/pricing/details/cognitive-services/)） | 
 | [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md) | 将字段集合中的文本合并到单个字段中。  | 不适用 |
-| [Microsoft.Skills.Text.V3.EntityLinkingSkill](cognitive-search-skill-entity-linking-v3.md) | 此技能使用预先训练的模型来确定给定文本中的链接实体匹配项。 | 认知服务（[定价](https://azure.microsoft.com/pricing/details/cognitive-services/)） | 
+| [Microsoft.Skills.Text.V3.EntityLinkingSkill](cognitive-search-skill-entity-linking-v3.md) | 此技能使用预先训练的模型为已识别的实体生成指向 Wikipedia 文章的链接。 | 认知服务（[定价](https://azure.microsoft.com/pricing/details/cognitive-services/)） | 
 | [Microsoft.Skills.Text.V3.EntityRecognitionSkill](cognitive-search-skill-entity-recognition-v3.md) | 此技能使用预定型模型为一组固定的类别构建实体：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"DateTime"`、`"URL"`、`"Email"`、`"PersonType"`、`"Event"`、`"Product"`、`"Skill"`、`"Address"`、`"Phone Number"` 和 `"IP Address"` 字段。 | 认知服务（[定价](https://azure.microsoft.com/pricing/details/cognitive-services/)） | 
 | [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | 此技能使用预先训练的模型从给定文本中提取个人信息。 此技能还提供了用于过滤文本中检测到的个人信息实体的各种选项。  | 认知服务（[定价](https://azure.microsoft.com/pricing/details/cognitive-services/)） | 
 | [Microsoft.Skills.Text.V3.SentimentSkill](cognitive-search-skill-sentiment-v3.md)  | 此技能使用预先训练的模型，从而根据服务在句子和文档级别逐条记录找到的最高置信度分数来分配情绪标签（例如“消极”、“中立”和“积极”）。 | 认知服务（[定价](https://azure.microsoft.com/pricing/details/cognitive-services/)） | 

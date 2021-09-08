@@ -6,14 +6,13 @@ ms.author: v-stharr
 ms.date: 02/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
 ms.custom: devx-track-js
-ms.openlocfilehash: d58ae0125e37d781075a0df0da65eb8b08241f4d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6f1855474454cc69489b76e03b8ce17dd97ccf32
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750173"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437646"
 ---
 # <a name="add-a-simple-data-layer"></a>添加简单的数据层
 
@@ -56,7 +55,7 @@ map.layers.add(layer);
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="使用简单的数据层" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>使用简单数据层</a>。
+<iframe height="500" scrolling="no" title="使用简单的数据层" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>使用简单数据层</a>。
 </iframe>
 
 简单数据层的真正强大之处在以下情况中得以发挥：
@@ -69,7 +68,7 @@ map.layers.add(layer);
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="简单数据层选项" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> 请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>简单数据层选项</a>文章。
+<iframe height="700" scrolling="no" title="简单数据层选项" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true"> 请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>简单数据层选项</a>文章。
 </iframe>
 
 

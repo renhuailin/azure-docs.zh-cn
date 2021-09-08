@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5c601d81053979108ab7c49dee5b1bccbb33bf53
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d85222c1e64cd3d5d25ec7837a1ce5b512850741
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464003"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864387"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>排查已加入混合 Azure Active Directory 的设备的问题
 
@@ -173,7 +173,7 @@ WamDefaultAuthority: organizations
 - DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT (0x801c001f/-2145648609)
    - 原因:执行发现操作时操作超时。
    - 解决方法：确保可以在 SYSTEM 上下文中访问 `https://enterpriseregistration.windows.net`。 有关详细信息，请参阅[网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)部分。
-- DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED (0x801c0021/-2145648611)
+- DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED (0x801c003d/-2145648579)
    - 原因:一般领域发现失败。 无法从 STS 确定域类型（托管/联合）。
    - 解决方法：查找下面的子错误进行进一步调查。
 
@@ -387,7 +387,7 @@ WamDefaultAuthority: organizations
 
 | 服务器错误代码 | 服务器错误消息 | 可能的原因 | 解决方法 |
 | --- | --- | --- | --- |
-| DirectoryError | AADSTS90002：找不到租户 <UUID>。 如果该租户没有活动订阅，可能会发生此错误。 请向你的订阅管理员确认。 | SCP 对象中的租户 ID 不正确。 | 确保为 SCP 对象配置正确的 Azure AD 租户 ID，并确保租户中存在活动订阅。 |
+| DirectoryError | AADSTS90002：找不到租户 `UUID`。 如果该租户没有活动订阅，可能会发生此错误。 请向你的订阅管理员确认。 | SCP 对象中的租户 ID 不正确。 | 确保为 SCP 对象配置正确的 Azure AD 租户 ID，并确保租户中存在活动订阅。 |
 | DirectoryError | 找不到具有给定 ID 的设备对象。 | 同步加入的预期错误。 设备对象尚未从 AD 同步到 Azure AD | 请等待 Azure AD Connect 同步完成，同步完成后的下一次加入尝试会解决此问题 |
 | AuthenticationError | 目标计算机的 SID 的验证 | Azure AD 设备上的证书与在同步加入期间用于对 blob 进行签名的证书不匹配。 此错误通常表示同步尚未完成。 |  请等待 Azure AD Connect 同步完成，同步完成后的下一次加入尝试会解决此问题 |
 
@@ -616,7 +616,7 @@ AADSTS50155：设备身份验证失败
 
 ---
 
-AADSTS50034：<tenant id> 目录中不存在用户帐户 <Account>
+AADSTS50034：`tenant id` 目录中不存在用户帐户 `Account`
 
 原因: 
 -  AAD 在租户中找不到该用户帐户。
@@ -669,7 +669,7 @@ ERROR_WINHTTP_CONNECTION_ERROR (12030)
 2. 运行该工具并再现你的场景。 完成该过程。
 3. 对于 Fiddler 跟踪，请接受弹出的证书请求。
 4. 向导将提示你输入密码来保护跟踪文件。 提供密码。
-5. 最后，打开收集的所有日志存储到的文件夹。 这通常是一个类似于 %LOCALAPPDATA%\ElevatedDiagnostics\<numbers> 的文件夹
+5. 最后，打开收集的所有日志存储到的文件夹。 这通常是一个类似于 %LOCALAPPDATA%\ElevatedDiagnostics\numbers 的文件夹
 7. 与支持人员联系，并向其提供 latest.cab 的内容，其中包含所有已收集的日志。
 
 **网络跟踪**

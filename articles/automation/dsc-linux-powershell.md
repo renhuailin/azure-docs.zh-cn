@@ -5,17 +5,16 @@ ms.topic: conceptual
 services: automation
 ms.subservice: dsc
 ms.date: 08/31/2021
-ms.openlocfilehash: 600fdfafa64e0827ac023ae01810ec54bdaa95fe
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: e4352c5c2cca0391e4e795b537af16c28ded6f6e
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438491"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123354379"
 ---
 # <a name="configure-linux-desired-state-with-azure-automation-state-configuration-using-powershell"></a>使用 PowerShell 通过 Azure 自动化 State Configuration 配置 Linux 所需状态
 
 在本教程中，你将使用 PowerShell 将 Azure 自动化 State Configuration 应用于 Azure Linux 虚拟机，以检查其是否符合所需状态。 所需状态是确定节点上是否存在 apache2 服务。
-
 使用 Azure 自动化 State Configuration 可以指定计算机配置，并确保这些计算机在一段时间后处于指定状态。 有关 State Configuration 的详细信息，请参阅 [Azure 自动化 State Configuration 概述](./automation-dsc-overview.md)。
 
 在本教程中，你将了解如何：

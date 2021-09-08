@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/08/2021
 ms.author: robinsh
-ms.openlocfilehash: abbef6e0e244f7cfc937f738c7c2d0acd89549dd
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: ccbf43eaf10b68f5d23cae5895324dd095932b5e
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114205193"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830061"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>使用 Azure CLI 进行 IoT 设备和模块的自动管理
 
@@ -63,7 +63,7 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 ## <a name="define-the-target-content-and-metrics"></a>定义目标内容和指标
 
-目标内容和指标查询是作为 JSON 文档指定的，这些文档描述了要设置的设备孪生或模块孪生所需属性和要度量的报告属性。  若要使用 Azure CLI 创建自动配置，请将目标内容和指标在本地保存为 .txt 文件。 在后面的部分中通过运行命令将配置应用到设备时，会用到这些文件路径。
+目标内容和指标查询是作为 JSON 文档指定的，这些文档描述了要设置的设备孪生或模块孪生所需属性和要度量的报告属性。 若要使用 Azure CLI 创建自动配置，请将目标内容和指标在本地保存为 .txt 文件。 在后面的部分中通过运行命令将配置应用到设备时，会用到这些文件路径。
 
 下面是自动设备配置的基本目标内容示例：
 

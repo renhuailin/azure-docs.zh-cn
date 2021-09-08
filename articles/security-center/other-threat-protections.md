@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/29/2021
+ms.date: 09/05/2021
 ms.author: memildin
-ms.openlocfilehash: 8549734a643c97771681f2e90a1dad2e2c7ed7a3
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: dee498ea30bc31fa0193f6bbff3c01261260d03b
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749140"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537753"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure 安全中心的其他威胁防护
 除内置 [Azure Defender 保护](azure-defender.md)外，Azure 安全中心还提供了以下威胁防护功能。
@@ -28,16 +28,6 @@ ms.locfileid: "111749140"
 - 虚拟机的网络出口流量未被外部 IDS 解决方案阻止。
 
 有关 Azure 网络层警报的列表，请参阅[警报参考表](alerts-reference.md#alerts-azurenetlayer)。
-
-
->[!NOTE]
-> 上述几项分析由 Microsoft Cloud App Security 提供支持。 若要从这些分析中获益，必须激活 Cloud App Security 许可证。 如果你有 Cloud App Security 许可证，则默认会启用这些警报。 若要禁用警报：
->
-> 1. 在安全中心的菜单中，选择“定价和设置”。
-> 1. 选择想要更改的订阅。
-> 1. 选择“集成”。
-> 1. 清除“允许 Microsoft Cloud App Security 访问我的数据”，然后选择“保存” 。
-
 
 >[!NOTE]
 > 安全中心将安全相关的客户数据存储在其资源所在的地理区域。 如果 Microsoft 尚未在该资源所在的地理位置部署安全中心，则数据将存储在美国。 启用 Cloud App Security 后，将根据 Cloud App Security 的地理位置规则存储此信息。 有关详细信息，请参阅[非区域性服务的数据存储](https://azuredatacentermap.azurewebsites.net/)。

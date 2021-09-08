@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 05/26/2021
 ms.author: iafinder
-ms.openlocfilehash: 7a129c8b4c03ea4ff71255f18f0637ef57aa060a
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: d323338ba5b323db5ea1a144fe1010962407f3b9
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586358"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123423603"
 ---
 # <a name="nd-a100-v4-series"></a>ND A100 v4 系列
 
@@ -42,17 +42,20 @@ ND A100 v4 系列的起步配置是一个虚拟机 (VM) 和八个 NVIDIA Ampere 
 InfiniBand：受支持，GPUDirect RDMA，8 x 200 千兆位 HDR<br>
 Nvidia NVLink 互连：支持<br>
 <br>
+ND A100 v4 系列支持以下内核版本： <br>
+CentOS 7.9 HPC: 3.10.0-1160.24.1.el7.x86_64 <br>
+Ubuntu 18.04：5.4.0-1043-azure <br>
+Ubuntu 20.04：5.4.0-1046-azure <br>
+<br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD)：GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大网络带宽 | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_ND96asr_v4 | 96 | 900 | 6000 | 8 个 A100 40 GB GPU (NVLink 3.0) | 40 | 32 | 80,000 / 800 | 24000 Mbps | 8 |
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)] <br>
 
-ND A100 v4 系列支持以下内核版本： 
-- CentOS 7.9 HPC: 3.10.0-1160.24.1.el7.x86_64 <br>
-- Ubuntu 18.04：5.4.0-1043-azure <br>
-- Ubuntu 20.04：5.4.0-1046-azure <br>
+
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)] <br>
 
 ## <a name="other-sizes"></a>其他大小
 

@@ -3,16 +3,16 @@ title: 使用 REST API 来管理 Azure IoT Central 中的用户和角色
 description: 如何使用 IoT Central REST API 来管理应用程序中的用户和角色
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: df4476177175fd5aadc57c3d68bedc97531aee0c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 97f97206b5071824f8bde8733d208078ddaf72bb
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448489"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473309"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-manage-users-and-roles"></a>如何使用 IoT Central REST API 管理用户和角色
 

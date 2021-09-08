@@ -1,5 +1,5 @@
 ---
-title: 文档翻译 REST API 引用指南
+title: 文本翻译 REST API 参考指南
 titleSuffix: Azure Cognitive Services
 description: 查看包含指向文本翻译 REST API 链接的列表。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/10/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2b0c4676ca7d085e5fbe042dd2a23fe0ae42db9c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f3188f303d7e2945341267c9ea4598682e4d7964
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121777909"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426240"
 ---
 # <a name="text-translation-rest-api"></a>文本翻译 REST API
 
@@ -27,12 +27,12 @@ ms.locfileid: "121777909"
 |[翻译](v3-0-translate.md) | **POST**| 将指定的源语言文本翻译为目标语言文本。|
 |[直译](v3-0-transliterate.md) |  **POST** | 将源语言脚本或字母映射到目标语言脚本或字母表。
 |[检测](v3-0-detect.md) | **POST** | 标识源语言。 |
-|[**breakSentence**](v3-0-break-sentence.md) | **POST** | 返回表示源文本中的句子长度的整数数组。 |
+|[breakSentence](v3-0-break-sentence.md) | **POST** | 返回表示源文本中的句子长度的整数数组。 |
 | [字典/查找](v3-0-dictionary-lookup.md) | **POST** | 返回单字翻译的替换项。 |
 | [字典/示例](v3-0-dictionary-lookup.md) | **POST** | 返回术语在上下文中的使用方式。 |
 
 > [!div class="nextstepaction"]
-> [在 Azure 门户中创建翻译器资源。](/translator-how-to-signup.md)
+> [在 Azure 门户中创建翻译器资源。](../translator-how-to-signup.md)
 
 > [!div class="nextstepaction"]
 > [快速入门：REST API 和编程语言](../quickstart-translator.md)

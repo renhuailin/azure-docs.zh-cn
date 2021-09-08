@@ -4,12 +4,12 @@ description: 了解如何排查在 Azure 开发测试实验室虚拟机中应用
 ms.topic: article
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6d3f37a942010240835238648c48ad5671ec028d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6258c2e85b708ea9dac1371a40e83a8a6f8e1911
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692438"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031761"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>排查在 Azure 开发测试实验室虚拟机中应用项目时出现的问题。
 由于各种原因，在虚拟机上应用项目可能会失败。 本文将指导你使用一些方法，帮助确定可能的原因。
@@ -53,7 +53,7 @@ $vm.Properties.canApplyArtifacts
 
 在预定义的超时期限到期并且项目标记为“失败”之前，项目似乎停止响应。
 
-当某个项目看似挂起时，首先确定它的停滞位置。 项目可能在执行期间的以下任一步骤中受阻：
+当某个项目似乎停止响应时，首先确定它的停滞位置。 项目可能在执行期间的以下任一步骤中受阻：
 
 - **在初始请求期间**。 开发测试实验室创建 Azure 资源管理器模板，请求使用自定义脚本扩展 (CSE)。 因此，在后台，将触发资源组部署。 发生此级别的错误时，你将获得相关 VM 的资源组的“活动日志”中的详细信息。  
     - 你可以从“实验室 VM”页导航栏访问活动日志。 如果选择此项，你将看到“将项目应用到虚拟机”（如果直接触发了应用项目操作）或“添加或修改虚拟机”（如果应用项目操作是 VM 创建过程的一部分）的条目。

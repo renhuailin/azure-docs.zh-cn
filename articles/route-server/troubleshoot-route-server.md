@@ -5,16 +5,21 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: how-to
-ms.date: 09/01/2021
+ms.date: 08/30/2021
 ms.author: duau
-ms.openlocfilehash: b5b40f4e4dfa72eacdcf178dedbc11c969bf7315
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 96e71dbd8a03e66644f0dc754d448a345978d940
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424665"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255666"
 ---
 # <a name="troubleshooting-azure-route-server-issues"></a>排查 Azure 路由服务器问题
+
+> [!IMPORTANT]
+> Azure 路由服务器（预览版）目前为公共预览版状态。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="connectivity-issues"></a>连接问题
 

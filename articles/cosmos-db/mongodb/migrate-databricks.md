@@ -6,13 +6,13 @@ ms.author: shwetn
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 06/29/2021
-ms.openlocfilehash: 437dd6f1b47694d9abb32d4e72ecc23a175d9337
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: 3af5168a664fe18f9fc57877aee864f89ffa4d03
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778505"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029903"
 ---
 # <a name="migrate-data-from-mongodb-to-an-azure-cosmos-db-api-for-mongodb-account-by-using-azure-databricks"></a>使用 Azure Databricks 将数据从 MongoDB 迁移到适用于 MongoDB 的 Azure Cosmos DB API 帐户
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -171,8 +171,13 @@ df.write.format("mongo").mode("append").option("uri", targetConnectionString).op
 
 迁移数据后，你可以连接到 Azure Cosmos DB 并管理数据。 还可以执行其他迁移后步骤，例如优化索引策略、更新默认的一致性级别或者为你的 Azure Cosmos DB 帐户配置全球分发。 有关详细信息，请参阅[迁移后优化](post-migration-optimization.md)一文。
 
+## <a name="additional-resources"></a>其他资源
+
+* 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？
+    * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-capacity-planner.md)
+
 ## <a name="next-steps"></a>后续步骤
 
 * [管理 Azure Cosmos DB 的用于 MongoDB 的 API 中的索引编制](mongodb-indexing.md)
-
 * [查找操作的请求单位费用](find-request-unit-charge-mongodb.md)

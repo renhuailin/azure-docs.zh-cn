@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e165340dc9856916a8c2ccdcd6609663282d63
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: f4dd89dd22345188c05dd607b4a71ea8ef733f73
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714091"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259962"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>排查 Azure AD 权利管理的问题
 
@@ -29,7 +29,9 @@ ms.locfileid: "109714091"
 
 ## <a name="administration"></a>管理
 
-* 如果你在配置权利管理时收到拒绝访问消息，而你是全局管理员，请确保你的目录具有 [Azure AD Premium P2（或 EMS E5）许可证](entitlement-management-overview.md#license-requirements)。
+* 如果你在配置权利管理时收到拒绝访问消息，而你是全局管理员，请确保你的目录具有 [Azure AD Premium P2（或 EMS E5）许可证](entitlement-management-overview.md#license-requirements)。  如果你最近续订了过期的 Azure AD Premium P2 订阅，则可能需要 8 小时才能看到此许可证续订。
+
+* 如果租户的 Azure AD Premium P2 许可证已过期，则无法处理新的访问请求或执行访问评审。  
 
 * 如果你在创建或查看访问包时收到拒绝访问消息，而你是目录创建者组的成员，则必须在创建第一个访问包之前[创建目录](entitlement-management-catalog-create.md)。
 
@@ -38,6 +40,8 @@ ms.locfileid: "109714091"
 * 应用程序的角色由应用程序自身定义，并在 Azure AD 中进行管理。 如果某个应用程序没有任何资源角色，则权利管理会将用户分配到一个 **默认访问** 角色。
 
     请注意，Azure 门户可能还会显示不能选作应用程序的服务的服务主体。  具体而言，**Exchange Online** 和 **SharePoint Online** 是服务，而不是在目录中具有资源角色的应用程序，因此，不能将它们包含在访问包中。  相反，使用基于组的许可为需要访问这些服务的用户建立适当的许可。
+
+* 仅支持个人 Microsoft 帐户用户进行身份验证且不支持目录中的组织帐户的应用程序没有应用程序角色，也不能添加到访问包目录。
 
 * 要使组成为访问包中的资源，该组必须能够在 Azure AD 中可修改。  源自本地 Active Directory 的组无法分配为资源，因为无法在 Azure AD 中更改其所有者或成员属性。   也无法在 Azure AD 中修改作为通讯组在 Exchange Online 中创建的组。 
 

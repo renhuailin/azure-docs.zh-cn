@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 76832f02f1c1337a705f33d26de97b0b5823c2c1
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 0a3312559ee46b70b97a99a5dae16e4a26cad273
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112981102"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031836"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 HTML 模板自定义用户界面
 
@@ -75,7 +75,8 @@ Azure AD B2C 使用[跨域资源共享 (CORS)](https://www.w3.org/TR/cors/) 在�
 
 - 在 HTML 文件中包含外部资源（如媒体、CSS 和 JavaScript 文件）时，请使用绝对 URL。
 - 使用[页面布局版本](page-layout.md) 1.2.0 和更高版本，你可以在 HTML 标记中添加 `data-preload="true"` 属性，以控制 CSS 和 JavaScript 的加载顺序。 对于 `data-preload="true"`，该页面将在向用户显示之前进行构造。 此属性可通过预加载 CSS 文件来防止页面“闪烁”，而不会向用户显示不带样式的 HTML。 以下 HTML 代码片段演示了如何使用 `data-preload` 标记。
-  ```HTML
+
+  ```html
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
 - 建议你从默认页面内容开始，然后在其上构建。
@@ -90,11 +91,41 @@ Azure AD B2C 使用[跨域资源共享 (CORS)](https://www.w3.org/TR/cors/) 在�
 
 ## <a name="localize-content"></a>本地化内容
 
-可通过在 Azure AD B2C 租户中启用[语言自定义](language-customization.md)来本地化 HTML 内容。 启用此功能可让 Azure AD B2C 将 OpenID Connect 参数 `ui_locales` 转发到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
+可通过在 Azure AD B2C 租户中启用[语言自定义](language-customization.md)来本地化 HTML 内容。 启用此功能后，Azure AD B2C 可设置 HTML 页面语言属性，并将 OpenID Connect 参数 `ui_locales` 传递给终结点。
+
+#### <a name="single-template-approach"></a>单一模板方法
+
+在页面加载过程中，Azure AD B2C 使用当前语言设置 HTML 页面语言属性。 例如，`<html lang="en">`。 若要按当前语言呈现不同的样式，请使用 CSS `:lang` 选择器以及 CSS 定义。
+
+下面的示例定义了以下类：
+
+* `imprint-en` - 在当前语言为英语时使用。
+* `imprint-de` - 在当前语言为德语时使用。
+* `imprint` - 在当前语言既不是英语也不是德语时使用的默认类。
+
+```css
+.imprint-en:lang(en),
+.imprint-de:lang(de) {
+    display: inherit !important;
+}
+.imprint {
+    display: none;
+}
+```
+
+根据页面语言，将显示或隐藏以下 HTML 元素：
+
+```html
+<a class="imprint imprint-en" href="Link EN">Imprint</a>
+<a class="imprint imprint-de" href="Link DE">Impressum</a>
+```
+
+#### <a name="multi-template-approach"></a>多模板方法
+
+利用语言自定义功能，Azure AD B2C 可将 OpenID Connect 参数 `ui_locales` 传递到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
 
 > [!NOTE]
-> Azure AD B2C 不会将 OpenID Connect 参数（例如 `ui_locales`）传递到[异常页](page-layout.md#exception-page-globalexception)。
-
+> Azure AD B2C 不会将 OpenID Connect 参数（例如 `ui_locales`）传递给[异常页面](page-layout.md#exception-page-globalexception)。
 
 可以基于所用的区域设置从不同位置拉取内容。 在已启用 CORS 的终结点中，可以设置文件夹结构以托管特定语言的内容。 如果使用通配符值 `{Culture:RFC5646}`，则会调用正确的语言。
 

@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 07/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 0d348231c28e33b7eaef97a468e7e8a6a8677c32
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 9612b5aaaec10358609abba3878f6f09405ad076
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179390"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260115"
 ---
 # <a name="connect-azure-defender-alerts-from-azure-security-center"></a>从 Azure 安全中心连接 Azure Defender 警报
 
@@ -56,7 +56,7 @@ ms.locfileid: "122179390"
 
 1. 在 Azure Sentinel 导航菜单中，选择“数据连接器”。
 
-1. 从数据连接器库中，选择“Azure Defender”，并在详细信息窗格中单击“打开连接器页面”。
+1. 从数据连接器库中，选择“Azure Defender”，并在详细信息窗格中选择“打开连接器页面”。
 
 1. 在“配置”下，你会看到租户中的订阅的列表，以及这些订阅与 Azure Defender 之间的连接的状态。 选择要将其警报流式传输到 Azure Sentinel 中的每个订阅旁的“状态”开关。 如果要一次连接多个订阅，可选中相关订阅旁边的复选框，然后选择列表上方的栏中的“连接”按钮。
 

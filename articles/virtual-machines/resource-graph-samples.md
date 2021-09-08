@@ -1,20 +1,20 @@
 ---
-title: 针对 Azure 虚拟机的 Azure Resource Graph 示例查询
-description: 适用于 Azure 虚拟机 的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与 Azure 虚拟机相关的资源和属性。
-ms.date: 08/31/2021
+title: 适用于 Azure 虚拟机的 Azure Resource Graph 示例查询
+description: 适用于 Azure 虚拟机的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与 Azure 虚拟机相关的资源和属性。
+ms.date: 09/03/2021
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: ed4642289e744cc4f7344188943e22705c077fa7
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 464f12a7d8e9f0f6f4fceccf948197872c156043
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304086"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541938"
 ---
-# <a name="azure-resource-graph-sample-queries-for-azure-virtual-machines"></a>针对 Azure 虚拟机的 Azure Resource Graph 示例查询
+# <a name="azure-resource-graph-sample-queries-for-azure-virtual-machines"></a>适用于 Azure 虚拟机的 Azure Resource Graph 示例查询
 
 此页面是适用于 Azure 虚拟机的 [Azure Resource Graph](../governance/resource-graph/overview.md) 示例查询的集合。 有关 Azure Resource Graph 示例的完整列表，请参阅 [Resource Graph 示例（按类别）](../governance/resource-graph/samples/samples-by-category.md)和 [Resource Graph 示例（按表）](../governance/resource-graph/samples/samples-by-table.md)。
 

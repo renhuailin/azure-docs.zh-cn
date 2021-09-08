@@ -3,17 +3,17 @@ title: Azure IoT Central 中的客户数据请求功能 | Microsoft Docs
 description: 本文介绍如何在 Azure IoT Central 应用程序中识别、删除和导出客户数据。
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 08/18/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: dabcadea96f4ced5bdf73a35ef533e6d290595c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 704e5a8624f07e7d52729454a8956256208df6fa
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87001870"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436025"
 ---
 # <a name="azure-iot-central-customer-data-request-features"></a>Azure IoT Central 客户数据请求功能
 

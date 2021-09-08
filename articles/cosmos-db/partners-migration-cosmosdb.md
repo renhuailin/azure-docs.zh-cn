@@ -5,13 +5,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 4b2bb3659d68ec5c4a4ed7d21f39542d1329452b
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.date: 08/26/2021
+ms.openlocfilehash: 781fb98b1b71e70f07291f04d89fbfb8fed17759
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331573"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123028565"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 迁移和应用程序开发合作伙伴
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -51,6 +51,10 @@ ms.locfileid: "108331573"
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解 Microsoft 的其他一些合作伙伴，请参阅 [Microsoft 合作伙伴网站](https://partner.microsoft.com/)。
+
+正在尝试为迁移到 Azure Cosmos DB 进行容量计划？
+* 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+* 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
 
 <!--Image references-->
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png

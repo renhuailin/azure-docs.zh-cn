@@ -1,20 +1,20 @@
 ---
 title: Android 地图中的数据驱动样式表达式 | Microsoft Azure Maps
 description: 了解数据驱动样式表达式 了解如何使用 Azure Maps Android SDK 中的这些表达式来调整地图中的样式。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: d26947b48ca64ea5f06f3f9566d05fd110d6e93f
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 7c73c52045504dfeeaccf5292aea7ab07b75d8d8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091836"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438523"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>数据驱动样式表达式 (Android SDK)
 
@@ -222,7 +222,7 @@ val exp = Expression.raw("['get','title']")
 | Expression | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `accumulated()` | 数字 | 获取到目前为止累积的群集属性值。 这只能在聚集的 `DataSource` 源的 `clusterProperties` 选项中使用。 |
-| `at(number | Expression, Expression)` | value | 从数组中检索项。 |
+| `at(number | Expression, Expression)` | 值 | 从数组中检索项。 |
 | `geometryType()` | 字符串 | 获取特征的几何类型：Point、MultiPoint、LineString、MultiLineString、Polygon、MultiPolygon。 |
 | `get(string | Expression)` \| `get(string | Expression, Expression)` | value | 从所提供对象的属性中获取属性值。 如果缺少请求的属性，则返回 null。 |
 | `has(string | Expression)` \| `has(string | Expression, Expression)` | boolean | 确定特征的属性是否具有指定的属性。 |

@@ -3,12 +3,12 @@ title: 部署已启用 GPU 的容器实例
 description: 了解如何使用 GPU 资源部署 Azure 容器实例，以运行计算密集型容器应用。
 ms.topic: article
 ms.date: 07/22/2020
-ms.openlocfilehash: cff887f434230fbc24dfbe27b1f14a463d00cf5d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd9441f0ba92f4753271df4daba88ed690c9ee30
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728911"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123108373"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 资源的容器实例
 
@@ -73,6 +73,9 @@ ms.locfileid: "121728911"
 ## <a name="yaml-example"></a>YAML 示例
 
 添加 GPU 资源的一种方式就是使用 [YAML 文件](container-instances-multi-container-yaml.md)部署容器组。 将以下 YAML 复制到名为 gpu-deploy-aci.yaml 的新文件中，然后保存该文件。 此 YAML 创建名为 gpucontainergroup 的容器组并使用 K80 GPU 指定容器实例。 该实例运行示例 CUDA 矢量添加应用程序。 请求的资源足以运行工作负载。
+
+ > [!NOTE]
+  > 以下示例使用公共容器映像。 若要提高可靠性，请在专用 Azure 容器注册表中导入和管理映像，并将 YAML 更新为使用单独托管的基本映像。 [了解有关使用公共映像的详细信息](../container-registry/buffer-gate-public-content.md)。
 
 ```YAML
 additional_properties: {}

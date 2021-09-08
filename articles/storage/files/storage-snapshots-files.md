@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ada4235539c96fee6969f9731c1b5a63934e825
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: ba229ed81cd5ece4a6013654a11c21740c00c844
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115610"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254060"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure 文件的共享快照概述
 Azure 文件提供了获取文件共享的共享快照的功能。 共享快照可以捕获在某个时间点的共享状态。 本文介绍共享快照提供的功能，以及如何在自定义用例中加以利用。
@@ -67,7 +67,7 @@ http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.
 
 尽管共享快照是增量方式进行保存的，但只需保留最新的共享快照即可还原共享。 删除共享快照时，仅删除该共享快照所独有的数据。 活动快照包含浏览和还原数据（从创建共享快照开始）到原始位置或替代位置所需的所有信息。 可以在项级还原。
 
-快照不计入 5-TB 共享限制。 共享快照占用的总空间没有限制。 存储帐户限制仍然适用。
+快照不计入共享大小限制。 共享快照占用的总空间没有限制。 存储帐户限制仍然适用。
 
 ## <a name="limits"></a>限制
 

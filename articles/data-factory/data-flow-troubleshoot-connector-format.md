@@ -5,13 +5,13 @@ author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 06/24/2021
-ms.openlocfilehash: 055b933834c3cf112742d011a7f34205a07c5e04
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/17/2021
+ms.openlocfilehash: 79a64a7eb1e06fef3c9e534a69324faaf9f23107
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746562"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867532"
 ---
 # <a name="troubleshoot-connector-and-format-issues-in-mapping-data-flows-in-azure-data-factory"></a>排查 Azure 数据工厂中映射数据流中的连接器和格式问题
 
@@ -761,12 +761,62 @@ Azure 数据工厂数据流不支持使用固定 IP 范围，可以参考 [Azure
     
 1. 测试和验证 Snowflake 的 SQL 查询后，可以直接在数据流 Snowflake 源中使用它。
 
+### <a name="the-expression-type-does-not-match-the-column-data-type-expecting-variant-but-got-varchar"></a>表达式类型与列数据类型不匹配，需要 VARIANT，但获得的是 VARCHAR 
+
+#### <a name="symptoms"></a>症状
+
+尝试将数据写入 Snowflake 表时，可能会遇到以下错误：
+
+`java.sql.BatchUpdateException: SQL compilation error: Expression type does not match column data type, expecting VARIANT but got VARCHAR`
+
+#### <a name="cause"></a>原因
+
+输入数据的列类型为字符串，此类型不同于 Snowflake 接收器中相关列的 VARIANT 类型。
+
+在新的 Snowflake 表中通过复杂架构（数组/映射/结构）存储数据时，数据流类型将自动转换为其物理类型 VARIANT。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/physical-type-variant.png" alt-text="显示表中的 VARIANT 类型的屏幕截图。"::: 
+
+相关值以 JSON 字符串的形式存储，如下图所示。
+
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/json-string.png" alt-text="显示存储的 JSON 字符串的屏幕截图。"::: 
+
+#### <a name="recommendation"></a>建议
+
+对于 Snowflake VARIANT，它只能接受类型为结构、映射或数组的数据流值。 如果输入数据列的值为 JSON、XML 或其他字符串，请使用下列选项之一来解决此问题：
+
+- **选项-1**：使用 Snowflake 作为接收器之前，使用[分析转换](./data-flow-parse.md)将输入数据列值转换为结构、映射或数组类型，例如：
+
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/parse-transformation.png" alt-text="显示分析转换的屏幕截图。"::: 
+
+    > [!Note]
+    > 默认情况下，具有 VARIANT 类型的 Snowflake 列的值在 Spark 中以字符串形式读取。
+
+- **选项-2**：登录 Snowflake 服务器（`https://{accountName}.azure.snowflakecomputing.com/`，将 {accountName} 替换为你的帐户名），更改 Snowflake 目标表的架构。 通过在每个步骤下运行查询，应用以下步骤。
+    1. 创建一个具有 VARCHAR 的新列来存储这些值。 <br/>
+        ```SQL
+        alter table tablename add newcolumnname varchar;
+        ```    
+    1. 将 VARIANT 类型的值复制到新列中。 <br/>
+    
+        ```SQL
+        update tablename t1 set newcolumnname = t1."details"
+        ```
+    1. 删除未使用的 VARIANT 列。 <br/>
+        ```SQL
+        alter table tablename drop column "details";
+        ```
+    1. 将新列重命名为旧名称。 <br/>
+        ```SQL
+        alter table tablename rename column newcolumnname to "details";
+        ```
+
 ## <a name="next-steps"></a>后续步骤
 在故障排除时如需更多帮助，请参阅以下资源：
 
 *  [排查 Azure 数据工厂中的映射数据流问题](data-flow-troubleshoot-guide.md)
 *  [数据工厂博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [数据工厂功能请求](https://feedback.azure.com/forums/270578-data-factory)
+*  [数据工厂功能请求](/answers/topics/azure-data-factory.html)
 *  [Azure 视频](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [关于数据工厂的 Twitter 信息](https://twitter.com/hashtag/DataFactory)

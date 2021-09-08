@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: f21dc3251a64a3a432320e1d7a1f64abc124b61e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a97d855730a67111f66d201b6ca177975540d535
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752079"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427878"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>部署 Azure 云服务（外延支持）的先决条件
 
@@ -76,19 +76,19 @@ Azure 资源管理器中已弃用以下大小。 但是，如果要继续使用�
 
 | 以前的大小名称 | 更新的大小名称 | 
 |---|---|
-| 特小型 | Standard_A0 | 
-| 小 | Standard_A1 |
-| 中型 | Standard_A2 | 
-| 大 | Standard_A3 | 
-| 超大型 | Standard_A4 | 
-| A5 | Standard_A5 | 
-| A6 | Standard_A6 | 
-| A7 | Standard_A7 |  
-| A8 | Standard_A8 | 
-| A9 | Standard_A9 |
-| A10 | Standard_A10 | 
-| A11 | Standard_A11 | 
-| MSODSG5 | Standard_MSODSG5 | 
+| 特小型 | Standard_A1_v2 | 
+| 小 | Standard_A1_v2 |
+| 中型 | Standard_A2_v2 | 
+| 大 | Standard_A4_v2 | 
+| 超大型 | Standard_A8_v2 | 
+| A5 | Standard_A2m_v2 | 
+| A6 | Standard_A4m_v2 | 
+| A7 | Standard_A8m_v2 |  
+| A8 | 已放弃 | 
+| A9 | 已放弃 |
+| A10 | 已放弃 | 
+| A11 | 已放弃 | 
+| MSODSG5 | 已放弃 | 
 
  例如，`<WorkerRole name="WorkerRole1" vmsize="Medium"` 将变为 `<WorkerRole name="WorkerRole1" vmsize="Standard_A2"`。
  

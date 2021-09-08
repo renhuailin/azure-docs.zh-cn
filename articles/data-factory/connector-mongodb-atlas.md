@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 06/01/2021
-ms.openlocfilehash: 9e42ff971f2ea0a374fe40815ac8cf7fddb29189
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: b2c174fce6e79b574276d1f95cfc4e1c93c321cd
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638720"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318365"
 ---
 # <a name="copy-data-from-or-to-mongodb-atlas-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB Atlas 复制数据或将数据复制到其中
 
@@ -35,6 +35,32 @@ ms.locfileid: "122638720"
 ## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-mongodb-atlas-using-ui"></a>使用 UI 创建到 MongoDB Atlas 的链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建一个到 MongoDB Atlas 的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新的链接服务。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新的链接服务。":::
+
+2. 搜索 MongoDB 并选择 MongoDB Atlas 连接器。
+
+    :::image type="content" source="media/connector-mongodb-atlas/mongodb-atlas-connector.png" alt-text="选择 MongoDB Atlas 连接器。":::    
+
+1. 配置服务详细信息、测试连接并创建新的链接服务。
+
+    :::image type="content" source="media/connector-mongodb-atlas/configure-mongodb-atlas-linked-service.png" alt-text="配置到 MongoDB Atlas 的链接服务。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
+
+
 
 以下部分详述的属性用于定义特定于 MongoDB Atlas 连接器的数据工厂实体。
 

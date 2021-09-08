@@ -1,20 +1,20 @@
 ---
-title: Azure Percept DK 概述
-description: 详细了解 Azure Percept DK
-author: mimcco
-ms.author: mimcco
+title: Azure Percept DK 和视觉设备概述
+description: 详细了解 Azure Percept DK 和 Azure Percept Vision
+author: MrHamlet
+ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 5c510bbe6717b37664ac67ea7d10c79d1af74d78
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a51f05fe29a4a0d3dda9057ca0eb7c4d3de494fb
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128354"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221992"
 ---
-# <a name="azure-percept-dk-overview"></a>Azure Percept DK 概述
+# <a name="azure-percept-dk-and-vision-device-overview"></a>Azure Percept DK 和视觉设备概述
 
 Azure Percept DK 是一种边缘 AI 开发工具包，旨在通过 [Azure Percept Studio](./overview-azure-percept-studio.md) 开发视觉和音频 AI 解决方案。 Azure Percept DK 可在 [Microsoft 在线商店](https://go.microsoft.com/fwlink/p/?LinkId=2155270)购买。
 

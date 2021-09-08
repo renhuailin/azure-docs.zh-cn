@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: 2a847d44f1c178aa5756b81e54ebdf6e961ab1d8
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 256ae289b86ec2c16b850f16d379700dc69c2f6f
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113594672"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424629"
 ---
 # <a name="create-a-windows-vm-with-azure-image-builder"></a>使用 Azure 映像生成器创建 Windows VM
+
+**适用于：** :heavy_check_mark: Windows VM 
 
 本文介绍如何使用 Azure VM 映像生成器创建自定义的 Windows 映像。 本文中的示例使用[自定义程序](../linux/image-builder-json.md#properties-customize)来自定义映像：
 - PowerShell (ScriptUri) - 下载并运行 [PowerShell 脚本](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1)。
@@ -29,7 +31,7 @@ ms.locfileid: "113594672"
 - identity - 提供在生成过程中要使用的 Azure 映像生成器标识
 
 
-也可以指定 `buildTimeoutInMinutes`。 默认值为 240 分钟，但你可以增大生成时间，使长时间运行的生成能够完成。
+也可以指定 `buildTimeoutInMinutes`。 默认值为 240 分钟，但你可以增大生成时间，使长时间运行的生成能够完成。 允许的最小值为 6 分钟；更短的值会导致错误。
 
 我们将使用一个示例 .json 模板来配置映像。 我们将使用的 .json 文件位于：[helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json)。 
 
@@ -82,10 +84,10 @@ runOutputName=aibWindows
 imageName=aibWinImage
 ```
 
-为你的订阅 ID 创建变量。 可使用 `az account show | grep id` 获取。
+为你的订阅 ID 创建变量。
 
 ```azurecli-interactive
-subscriptionID=<Your subscription ID>
+subscriptionID=$(az account show --query id --output tsv)
 ```
 ## <a name="create-a-resource-group"></a>创建资源组
 此资源组用于存储映像配置模板项目和映像。
@@ -101,14 +103,14 @@ az group create -n $imageResourceGroup -l $location
 ## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>创建用户分配的托管标识并授予权限 
 ```bash
 # create user assigned identity for image builder to access the storage account where the script is located
-idenityName=aibBuiUserId$(date +'%s')
-az identity create -g $imageResourceGroup -n $idenityName
+identityName=aibBuiUserId$(date +'%s')
+az identity create -g $imageResourceGroup -n $identityName
 
 # get identity id
-imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
+imgBuilderCliId=$(az identity show -g $imageResourceGroup -n $identityName --query clientId -o tsv)
 
 # get the user identity URI, needed for the template
-imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName
 
 # download preconfigured role definition example
 curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
@@ -186,7 +188,7 @@ az resource create \
 az resource delete \
     --resource-group $imageResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateLinux01
+    -n helloImageTemplateWin01
 ```
 
 ## <a name="start-the-image-build"></a>启动映像生成

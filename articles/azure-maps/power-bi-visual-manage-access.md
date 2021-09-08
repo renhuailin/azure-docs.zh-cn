@@ -1,20 +1,20 @@
 ---
 title: 在组织中管理 Azure Maps Power BI 视觉对象 |Microsoft Azure 映射
 description: 在本文中，你将了解如何在组织中管理 Microsoft Azure Maps Power BI 视觉对象。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 2f7372d522c02eb86f1cc6470cefa9cb299605a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5578f7297fc60bcbf007f53c1914b565c4ec4355
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86261621"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425115"
 ---
 # <a name="manage-the-azure-maps-visual-within-your-organization"></a>在组织中管理 Azure Maps 视觉对象
 

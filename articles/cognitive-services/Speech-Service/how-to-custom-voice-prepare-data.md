@@ -3,19 +3,19 @@ title: 如何为自定义语音准备数据 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音服务为品牌创建自定义语音。 在你提供工作室录制内容和关联的脚本后，服务将生成针对录制的语音优化的独特语音模型。 使用此语音可以合成产品、工具和应用程序中的语音。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: lajanuar
-ms.openlocfilehash: 74f23dd6a7629e98189f73ebc305755d70f3c7a1
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 3736e0a1200367e3f0e39bffc213cf369d3983b5
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122068991"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536456"
 ---
 # <a name="prepare-training-data"></a>准备训练数据
 

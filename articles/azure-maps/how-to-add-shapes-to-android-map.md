@@ -1,20 +1,20 @@
 ---
 title: 向 Android 地图添加多边形层 | Microsoft Azure Maps
 description: 了解如何向地图添加多边形或圆形。 了解如何使用 Azure Maps Android SDK 自定义几何形状，并使其易于更新和维护。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 68d68424e71bcf60bf504ae174b84b9c361b8637
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5659e366fd5c949ea374768bf848313d747896d2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097255"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425803"
 ---
 # <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>向地图添加多边形层 (Android SDK)
 

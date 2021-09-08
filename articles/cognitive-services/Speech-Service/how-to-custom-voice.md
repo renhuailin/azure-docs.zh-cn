@@ -3,19 +3,19 @@ title: 开始使用自定义神经语音 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 自定义神经语音是一组在线工具，可用于为自有品牌创建可识别的独一无二的语音。 只需准备好几个音频文件和关联的听录内容即可完全入门。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/18/2021
-ms.author: lajanuar
-ms.openlocfilehash: 155c62791426ceafde70c173370d4056a6b8956c
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 32bdd0db2008d9f5b49bab26033f57c9e5e59847
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122068975"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540732"
 ---
 # <a name="get-started-with-custom-neural-voice"></a>自定义神经语音入门
 

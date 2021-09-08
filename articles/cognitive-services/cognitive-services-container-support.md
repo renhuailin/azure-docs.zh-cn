@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 07/02/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器, Kubernetes
-ms.openlocfilehash: adc449be1aa1673540e02269d15823b819bc37c1
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 567e09dfcc47926b8b25fa8c634a11ee339ab2ea
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114285515"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475847"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 认知服务容器
 
@@ -80,8 +80,6 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 | [计算机视觉][cv-containers] | 读取 OCR（[映像](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)） | “读取 OCR”容器用于从图像和文档中提取打印文本和手写文本，并支持 JPEG、PNG、BMP、PDF 和 TIFF 文件格式。 有关详细信息，请参阅[“读取 API”文档](./computer-vision/overview-ocr.md)。 | 门控式预览版。 [请求访问权限][request-access]。 |
 | [空间分析][spa-containers] | 空间分析（[映像](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)） | 分析实时流视频，以理解人员之间的空间关系、他们的动作以及与物理环境中对象的交互。 | 预览 |
 | [人脸][fa-containers] | **人脸** | 检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，“人脸”还可以使用置信评分检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。 | 不可用 |
-| [表单识别器][fr-containers] | **表单识别器** | 表单理解应用机器学习技术从表单中识别和提取键值对和表。 | 门控式预览版。 [请求访问权限][request-access]。 | 
-
 
 <!--
 |[Personalizer](./personalizer/what-is-personalizer.md) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -123,7 +121,6 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 * [异常检测器容器][ad-containers]
 * [计算机视觉容器][cv-containers]
 * [人脸容器][fa-containers]
-* [表单识别器容器][fr-containers]
 * [语言理解 (LUIS) 容器][lu-containers]
 * [语音服务 API 容器][sp-containers]
 * [文本分析容器][ta-containers]
@@ -135,7 +132,6 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 [ad-containers]: anomaly-Detector/anomaly-detector-container-howto.md
 [cv-containers]: computer-vision/computer-vision-how-to-install-containers.md
 [fa-containers]: face/face-how-to-install-containers.md
-[fr-containers]: ./form-recognizer/containers/form-recognizer-container-install-run.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
 [spa-containers]: ./computer-vision/spatial-analysis-container.md

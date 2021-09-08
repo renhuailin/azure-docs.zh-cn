@@ -3,19 +3,19 @@ title: 获取语音设备 SDK
 titleSuffix: Azure Cognitive Services
 description: “语音服务”适用于多种设备和音频源。 现在，可以通过匹配的硬件和软件进一步利用语音应用程序。 本文介绍如何访问语音设备 SDK 并开始开发。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/14/2019
-ms.author: lajanuar
-ms.openlocfilehash: 6d10a08d1b85cf74a7f883ad524f077db533d1f0
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.author: pafarley
+ms.openlocfilehash: e94f2c1b0340507e8cb254b48dd949dab699cd1d
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253047"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543684"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>获取认知服务语音设备 SDK
 

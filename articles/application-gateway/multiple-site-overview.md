@@ -4,19 +4,19 @@ description: 本文概述了 Azure 应用程序网关的多站点支持。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 07/20/2020
+ms.date: 08/31/2021
 ms.author: azhussai
 ms.topic: conceptual
-ms.openlocfilehash: 23544743946c42f36a8b82c23713a0794d3bb2a3
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: b2a8c8054096a8d93a3160a3cb5af935276224b1
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860394"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272810"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
 
-使用多站点托管功能可以在应用程序网关的同一端口上配置多个 Web 应用程序。 它可以将多达 100 多个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 例如，contoso.com、fabrikam.com 和 adatum.com，这三个域指向应用程序网关的 IP 地址。 你将创建三个多站点侦听器，并为每个侦听器配置相应的端口和协议设置。 
+托管多个站点即可在同一应用程序网关实例上使用面向公众的侦听器配置多个 Web 应用程序。 它可以将多达 100 多个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 例如，contoso.com、fabrikam.com 和 adatum.com，这三个域指向应用程序网关的 IP 地址。 你将创建三个多站点侦听器，并为每个侦听器配置相应的端口和协议设置。 
 
 此外，你还可以在多站点侦听器中定义通配符主机名，每个侦听器最多可以定义 5 个主机名。 若要了解详细信息，请参阅[侦听器中的通配符主机名](#wildcard-host-names-in-listener-preview)。
 

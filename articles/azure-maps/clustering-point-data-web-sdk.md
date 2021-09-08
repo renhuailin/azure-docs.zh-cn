@@ -1,20 +1,20 @@
 ---
 title: 在 Web SDK 中聚类点数据 | Microsoft Azure Maps
 description: 了解如何在地图上聚类点数据。 了解如何使用 Azure Maps Web SDK 来聚类数据，响应聚类鼠标事件以及显示聚类聚合。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 70b1ac01c2019b4ce74895b67cb79f5e93226b64
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0510d729f42c0c9c80e228b9da298af70b7fcf21
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091854"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437789"
 ---
 # <a name="clustering-point-data-in-the-web-sdk"></a>在 Web SDK 中聚类点数据
 
@@ -62,7 +62,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="基本气泡层聚类" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="基本气泡层聚类" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>基本气泡层聚类</a>。
 </iframe>
 
@@ -74,7 +74,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="聚类符号层" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="聚类符号层" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>聚类符号层</a>。
 </iframe>
 
@@ -84,7 +84,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="聚类加权热度地图" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="聚类加权热度地图" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>聚类加权热度地图</a>。
 </iframe>
 
@@ -103,7 +103,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="聚类 getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="聚类 getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/moZWeV/'>聚类 getClusterExpansionZoom</a>。
 </iframe>
 
@@ -113,7 +113,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="聚类区域凸包" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+ <iframe height="500" scrolling="no" title="聚类区域凸包" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>聚类区域凸包</a>。
 </iframe>
 
@@ -123,7 +123,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 下面的示例使用聚合表达式。 此代码基于聚类中每个数据点的实体类型属性计算计数。 当用户单击某个聚类时，将显示一个弹出窗口，其中包含有关该聚类的其他信息。
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="聚类聚合" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="聚类聚合" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>聚类聚合</a>。
 </iframe>
 

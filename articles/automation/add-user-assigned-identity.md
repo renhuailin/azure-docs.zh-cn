@@ -3,14 +3,14 @@ title: 为 Azure 自动化帐户使用用户分配的托管标识（预览版）
 description: 本文介绍如何为 Azure 自动化帐户设置用户分配的托管标识。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/09/2021
+ms.date: 08/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: f1e66f63da69a4c8e30db1b7d4bb4f71a4db79d5
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: ce409853cddfd0278692e2c6e233331530296d6b
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665623"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214258"
 ---
 # <a name="using-a-user-assigned-managed-identity-for-an-azure-automation-account-preview"></a>为 Azure 自动化帐户使用用户分配的托管标识（预览版）
 
@@ -303,7 +303,9 @@ https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/
 
 在能够使用用户分配的托管标识进行身份验证之前，需要为该标识设置对你打算在其中使用该标识的 Azure 资源的访问权限。 若要完成此任务，请在目标 Azure 资源上向该标识分配适当的角色。
 
-此示例使用 Azure PowerShell 演示如何将订阅中的参与者角色分配给目标 Azure 资源。 “参与者”角色用作示例，在你的案例中不一定需要用到。 或者，可以使用门户将角色分配给目标 Azure 资源。
+遵循最小权限原则，谨慎分配执行 runbook 仅需的权限。 例如，如果自动化帐户仅需要用于启动或停止 Azure VM，则分配给运行方式帐户或托管标识的权限需仅用于启动或停止 VM。 同样，如果 runbook 要从 Blob 存储读取，则分配只读权限。
+
+此示例使用 Azure PowerShell 演示如何将订阅中的参与者角色分配给目标 Azure 资源。 “参与者”角色用作示例，在你的案例中不一定需要用到。 或者，也可以将角色分配给 [Azure 门户](../role-based-access-control/role-assignments-portal.md)中的目标 Azure 资源。
 
 ```powershell
 New-AzRoleAssignment `

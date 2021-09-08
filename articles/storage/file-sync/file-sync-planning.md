@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: b881b7b87ef704102df7c5d8a9d24542b3d89bb2
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 741f20a19c4bfe842ed2c14cee51c1ae19c1d9da
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112118605"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258470"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -180,6 +180,33 @@ $validation.Results | Select-Object -Property Type, Path, Level, Description, Re
 | \\系统卷信息 | 特定于卷的文件夹 |
 | $RECYCLE.BIN| Folder |
 | \\SyncShareState | 用于同步的文件夹 |
+
+### <a name="consider-how-much-free-space-you-need-on-your-local-disk"></a>考虑本地磁盘需要多少可用空间
+规划使用 Azure 文件同步时，请考虑计划启用服务器终结点的本地磁盘需要多少可用空间。
+
+使用 Azure 文件同步时，需要考虑以下占用本地磁盘空间的情况：
+- 如果启用云分层：
+    - 分层文件的重分析点
+    - Azure 文件同步元数据数据库
+    - Azure 文件同步热存储
+    - 热缓存中完整下载的文件（如果有）
+    - 卷可用空间策略需求
+
+- 如果禁用云分层：  
+    - 完整下载的文件
+    - Azure 文件同步热存储
+    - Azure 文件同步元数据数据库
+
+我们将使用一个示例来说明如何估算所需的本地磁盘可用空间量。 假设你在 Azure Windows VM 上安装了 Azure 文件同步代理，并计划在磁盘 F 上创建服务器终结点。你有 100 万个文件并希望对所有文件进行分层，有 10 万个目录，并且磁盘群集大小为 4 KiB。 磁盘大小为 1000 GiB。 你希望启用云分层并将卷可用空间策略设置为 20%。 
+
+1. NTFS 为每个分层文件分配一个群集大小。 100 万个文件 * 4 KiB 群集大小 = 4,000,000 KiB (4 GiB)
+> [!Note]  
+> 分层文件占用的空间由 NTFS 分配。 因此，它不会显示在任何 UI 中。
+3. 同步元数据的每个项都占用一个群集大小。 （100 万个文件 + 10 万个目录）* 4 KiB 群集大小 = 4,400,000 KiB (4.4 GiB)
+4. Azure 文件同步热存储的每个文件占用 1.1 KiB。 100 万个文件 * 1.1 KiB = 1,100,000 KiB (1.1 GiB)
+5. 卷可用空间策略为 20%。 1000 GiB * 0.2 = 200 GiB
+
+在这种情况下，对于此命名空间，Azure 文件同步大约需要 209,500,000 KiB (209.5 GiB) 空间。 将此大小与所需的任何额外可用空间相加，就可以算出此磁盘需要多少可用空间。
 
 ### <a name="failover-clustering"></a>故障转移群集
 Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般用途文件服务器”部署选项。 不可在“适用于应用程序数据的横向扩展文件服务器”(SOFS) 或群集共享卷 (CSV) 上使用故障转移群集。

@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: aebee9b2511e3616a9170d5ed84be3acf391b6ad
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 0609b2e39576850665937246afa6954f2580d195
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071962"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449596"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -65,7 +65,6 @@ IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](../../iot-dps/abou
 （仅限测试）可以使用以下实用工具来生成根证书、中间证书和设备证书：
 
 - [适用于 Azure IoT 设备预配设备 SDK 的工具](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md)：可用于生成和验证 X.509 证书和密钥的 Node.js 工具的集合。
-- 如果使用 DevKit 设备，则此[命令行工具](https://aka.ms/iotcentral-docs-dicetool)会生成一个 CA 证书，可将其添加到 IoT Central 应用程序来验证证书。
 - [管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)：PowerShell 和 Bash 脚本的集合，用于：
   - 创建证书链。
   - 将证书保存为 .cer 文件，以上传到 IoT Central 应用程序。
@@ -250,7 +249,7 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 | 脱机命令 | 云到设备的消息传送 |
 | 属性 | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
-| Command | 直接方法 |
+| 命令 | 直接方法 |
 
 ### <a name="protocols"></a>协议
 

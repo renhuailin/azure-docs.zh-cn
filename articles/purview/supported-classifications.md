@@ -7,19 +7,19 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: reference
 ms.date: 4/1/2021
-ms.openlocfilehash: f6282d66a6c499e5a8e14cd90e90dc9b6f6ee633
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 9eed079b7beda59f4835bb1263a226e2aa7f74c2
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113768387"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272612"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Azure Purview 中支持的分类
 
 本文列出 Azure Purview（预览版）中支持和定义的系统分类。
 
 
-- **非重复匹配阈值**：在扫描程序运行数据模式前需要在列中找到的非重复数据值的总数。 非重复匹配阈值与模式匹配无关，但它是模式匹配的先决条件。 系统分类规则要求每列至少有 8 个不同的值，以便对它们分类。 系统需要此值来确保每列都包含足够的数据，以便扫描程序可以对其进行精确分类。 例如，不会对多行都包含值 1 的列进行分类。 也不会对一行包含值而其余行包含 null 值的列进行分类。 如果指定多种模式，此值会应用于每个模式。
+- **非重复数据阈值**：在扫描程序运行数据模式前需要在列中找到的非重复数据值的总数。 非重复数据阈值与模式匹配无关，但它是模式匹配的先决条件。 系统分类规则要求每列至少有 8 个不同的值，以便对它们分类。 系统需要此值来确保每列都包含足够的数据，以便扫描程序可以对其进行精确分类。 例如，不会对多行都包含值 1 的列进行分类。 也不会对一行包含值而其余行包含 null 值的列进行分类。 如果指定多种模式，此值会应用于每个模式。
 
 - **最小匹配阈值**：扫描程序必须在列中找到的待应用分类的数据值匹配的最小百分比。 系统分类值设置为 60%。
 

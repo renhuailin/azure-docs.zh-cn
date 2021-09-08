@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 04/07/2021
 ms.topic: include
-ms.openlocfilehash: d14274c43c3241a4c091ee004747c1ad8e12968b
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 24f466e7c9a9e5630510f73652fcf515540bee10
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111897052"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123646567"
 ---
 Azure Defender 为容器化环境提供实时威胁防护，并针对可疑活动发出警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
 
@@ -22,7 +22,7 @@ Azure Defender 可提供不同级别的威胁防护：
     >[!IMPORTANT]
     > 目前，我们不支持在虚拟机规模集上运行的 Azure Kubernetes 服务群集上安装 Log Analytics 代理。
 
-    有关群集级别的警报列表，请参阅[警报参考表](../articles/security-center/alerts-reference.md#alerts-containerhost)。
+    有关主机级别的警报列表，请参阅[警报参考表](../articles/security-center/alerts-reference.md#alerts-containerhost)。
 
 
 * **群集级别（由 Azure Defender for Kubernetes 提供）** - 在群集级别，威胁防护基于对 Kubernetes 审核日志的分析。 要启用此无代理监视，请启用 Azure Defender。 如果群集位于本地或其他云提供商上，请启用[已启用 Arc 的 Kubernetes 和 Azure Defender 扩展](../articles/security-center/defender-for-kubernetes-azure-arc.md)。

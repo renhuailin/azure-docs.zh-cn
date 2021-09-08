@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2021
 ms.author: bagol
-ms.openlocfilehash: 141d26871db37375968e86be9374d41383d0d236
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 18166bc22f34fe8bd4757ffd3a0d468c6a75b23c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430011"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122868280"
 ---
 # <a name="troubleshoot-your-cef-or-syslog-data-connector"></a>排查 CEF 或 Syslog 数据连接器的故障
 
@@ -299,7 +299,7 @@ Syslog 服务器（rsyslog 或 syslog-ng）转发相关配置文件中定义的�
 
 请务必添加想要将其引入 Azure Sentinel 的设施和严重性日志级别的相关详细信息。 配置过程可能需要大约 20 分钟的时间。
 
-有关详细信息，请参阅[部署脚本说明](connect-cef-agent.md#deployment-script-explained)和[在 Azure 门户中配置 Syslog](/azure/azure-monitor/agents/data-sources-syslog)。
+有关详细信息，请参阅[部署脚本说明](connect-cef-agent.md#deployment-script-explained)和[在 Azure 门户中配置 Syslog](/azure/azure-monitor/agents/data-sources-syslog.md)。
 
 
 例如，对于 rsyslog 服务器，运行以下命令以显示 Syslog 转发的当前设置，并查看对配置文件的任何更改：

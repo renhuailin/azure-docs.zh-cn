@@ -1,19 +1,19 @@
 ---
 title: 地图上的绘图工具交互类型和键盘快捷方式 | Microsoft Azure Maps
 description: 如何在 Microsoft Azure Maps Web SDK 中使用鼠标、触摸屏或键盘绘制和编辑形状
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 42b756e96829a19ddd25258087a8537c9a747b10
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 07abbbdfa93bad5a5710e8167c6de67c35175b83
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114668850"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429741"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>绘图工具模块中的交互类型和键盘快捷方式
 

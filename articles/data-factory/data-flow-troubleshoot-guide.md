@@ -5,14 +5,15 @@ ms.author: makromer
 author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: troubleshooting
-ms.date: 04/22/2021
-ms.openlocfilehash: 82f6d69629f397cb5222a82677bf27ed880aa20f
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 08/18/2021
+ms.openlocfilehash: 9925875f45f5715343ef50fff018b436966bb4c0
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987985"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099610"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>排查 Azure 数据工厂中的映射数据流问题
 
@@ -67,7 +68,7 @@ ms.locfileid: "107987985"
 - **建议**：有关此问题的更多详细信息，请与 Microsoft 产品团队联系。
 
 ### <a name="error-code-df-executor-partitiondirectoryerror"></a>错误代码：DF-Executor-PartitionDirectoryError
-- **消息**：指定的源路径要么包含多个分区目录（例如 <Source Path>/<Partition Root Directory 1>/a=10/b=20、<Source Path>/<Partition Root Directory 2>/c=10/d=30）或具有其他文件的分区目录，要么包含非分区目录（例如 <Source Path>/<Partition Root Directory 1>/a=10/b=20, <Source Path>/Directory 2/file1），从源路径中删除分区根目录并通过单独的源转换读取该目录。
+- **消息**：指定的源路径要么包含多个分区目录（例如 &lt;Source Path&gt;/<Partition Root Directory 1>/a=10/b=20、&lt;Source Path&gt;/&lt;Partition Root Directory 2&gt;/c=10/d=30），要么包含具有其他文件的分区目录，要么包含非分区目录（例如 &lt;Source Path&gt;/&lt;Partition Root Directory 1&gt;/a=10/b=20、&lt;Source Path&gt;/Directory 2/file1），请从源路径中删除分区根目录并通过单独的源转换读取该目录。
 - **原因**：源路径要么包含多个分区目录或具有其他文件的分区目录，要么包含非分区目录。
 - **建议**：从源路径中删除分区根目录，并通过单独的源转换读取该目录。
 
@@ -117,7 +118,7 @@ ms.locfileid: "107987985"
  ### <a name="error-code-df-executor-storeisnotdefined"></a>错误代码：DF-Executor-StoreIsNotDefined
 - **消息**：未定义存储配置。 此错误的可能原因是管道中的参数赋值无效。
 - 原因：提供的存储配置无效。
-- **建议**：检查管道或数据流中的参数赋值。 参数表达式可能包含无效字符。
+- 建议：检查管道中的参数赋值。 参数表达式可能包含无效字符。
 
 
 ### <a name="error-code-4502"></a>错误代码：4502
@@ -125,6 +126,10 @@ ms.locfileid: "107987985"
 - **原因**：大量数据流活动运行在集成运行时中并发出现。 有关详细信息，请参阅 [Azure 数据工厂限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)。
 - **建议**：若要并行运行更多的数据流活动，请将其分配到多个集成运行时。
 
+### <a name="error-code-4510"></a>错误代码：4510
+- 消息：在执行过程中意外失败。 
+- 原因：由于调试群集的工作方式不同于作业群集，过多的调试运行可能导致群集在一段时间内经受损耗，从而导致内存问题和突发性重启。
+- 建议：重启调试群集。 如果你在调试会话期间运行多个数据流，请改用活动运行，因为活动级别的运行会创建单独的会话，而不会给主调试群集造成过重的负担。
 
 ### <a name="error-code-invalidtemplate"></a>错误代码：InvalidTemplate
 - **消息**：无法评估管道表达式。
@@ -243,7 +248,7 @@ ms.locfileid: "107987985"
 - 建议：更新 Snowflake 暂存设置，以确保仅使用 Azure Blob 链接服务。
 
 ### <a name="error-code-df-snowflake-invalidstageconfiguration"></a>错误代码：DF-Snowflake-InvalidStageConfiguration
-- **消息**：应通过 azure blob + sas 身份验证指定 snowflake 阶段属性。
+- 消息：应通过 Azure Blob + SAS 身份验证指定 Snowflake 阶段属性。
 - 原因：Snowflake 中提供的暂存配置无效。
 - 建议：确保在 Snowflake 暂存设置中仅指定 Azure Blob + SAS 身份验证。
 
@@ -397,19 +402,19 @@ ms.locfileid: "107987985"
 
 ### <a name="error-code-df-cosmos-deletedatafailed"></a>错误代码：DF-Cosmos-DeleteDataFailed
 - 消息：重试 3 次后，无法从 Cosmos 中删除数据。
-- 原因：Cosmos 集合的吞吐量很小，导致遇到 Cosmos 中不存在的限制或行数据。
+- 原因：Cosmos 集合的吞吐量较小，导致发生限制，或者 Cosmo 中不存在行数据。
 - 建议：请执行以下操作来解决此问题：
     1. 如果错误为 404，请确保 Cosmos 集合中存在相关的行数据。 
     1. 如果错误为限制，请增加 Cosmos 集合吞吐量或将其设置为自动缩放。
+    1. 如果错误是请求超时，请将 Cosmos 接收器中的“批大小”设置为较小值，例如 1000。
 
 ### <a name="error-code-df-sqldw-errorrowsfound"></a>错误代码：DF-SQLDW-ErrorRowsFound
-- 消息：写入 SQL 接收器时发现错误/无效行。 错误/无效行将写入已拒绝的数据存储位置（如果已配置）。
-- 原因：在写入 SQL 接收器时，发现错误或无效行。
+- 原因：写入 Azure Synapse Analytics 接收器时发现了错误/无效行。
 - 建议：请在已拒绝的数据存储位置（如果已配置）中查找错误行。
 
 ### <a name="error-code-df-sqldw-exporterrorrowfailed"></a>错误代码：DF-SQLDW-ExportErrorRowFailed
 - 消息：将错误行写入存储时出现异常。
-- 原因：将错误行写入存储时出现异常。
+- 原因：将错误行写入存储时发生异常。
 - 建议：请检查已拒绝的数据链接服务配置。
 
 ### <a name="error-code-df-executor-fieldnotexist"></a>错误代码：DF-Executor-FieldNotExist
@@ -478,9 +483,93 @@ ms.locfileid: "107987985"
 - 建议：请更新 AdobeIntegration 设置以使分区类型为 RoundRobin。
 
 ### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>错误代码：DF-AdobeIntegration-InvalidPrivacyRegulation
-- **消息**：目前唯一支持的隐私法规是 GDPR。
+- 消息：目前唯一支持的隐私保护规范为“GDPR”。
 - 原因：提供的隐私配置无效。
 - 建议：在仅支持隐私“GDPR”时，请更新 AdobeIntegration 设置。
+
+### <a name="error-code-df-executor-remoterpcclientdisassociated"></a>错误代码：DF-Executor-RemoteRPCClientDisassociated
+- 消息：远程 RPC 客户端已解除关联。 可能是由于容器超过阈值或网络问题。
+- 原因：由于暂时性的网络问题或 Spark 群集中的某个节点内存不足，数据流活动运行失败。
+- 建议：使用以下选项解决此问题：
+  - 选项 1：使用强大的群集（驱动器和执行器节点都有足够的内存，可以处理大数据）来运行数据流管道，并将“计算类型”设置为“内存优化”。 下图显示了设置。
+        
+      :::image type="content" source="media/data-flow-troubleshoot-guide/configure-compute-type.png" alt-text="显示“计算类型”配置的屏幕截图。":::   
+
+  - 选项 2：使用更大的群集（例如 48 个核心）运行数据流管道。 可通过以下文档详细了解群集大小：[群集大小](./concepts-integration-runtime-performance.md#cluster-size)。
+  
+  - 选项 3：将输入数据重新分区。 对于在数据流 Spark 群集上运行的任务，一个分区就是一个任务，并在一个节点上运行。 如果一个分区中的数据太大，则节点上运行的相关任务需要消耗的内存就比节点本身消耗的内存还多，从而导致失败。 因此，可以使用重新分区来避免数据倾斜，确保每个分区的数据大小是均衡的，并且内存消耗量不会过大。
+    
+      :::image type="content" source="media/data-flow-troubleshoot-guide/configure-partition.png" alt-text="显示分区配置的屏幕截图。":::
+
+    > [!NOTE]
+    >  需要评估输入数据的数据大小或分区数，然后在“优化”下设置合理的分区数。 例如，在数据流管道执行中使用的群集为 8 个核心，每个核心的内存为 20GB，但输入数据为 1000GB 并分布在 10 个分区中。 如果你直接运行数据流，则会出现 OOM 问题，因为 1000GB/10 > 20GB，因此最好将重新分区数设置为 100 (1000GB/100 < 20GB)。
+    
+  - 选项 4：调整并优化源/接收器/转换设置。 例如，尝试将所有文件复制到一个容器，且不使用通配符模式。 有关详细信息，请参阅[映射数据流性能和优化指南](./concepts-data-flow-performance.md)。
+
+### <a name="error-code-df-mssql-errorrowsfound"></a>错误代码：DF-MSSQL-ErrorRowsFound
+- 原因：写入 Azure SQL 数据库接收器时发现了错误/无效行。
+- 建议：请在拒绝的数据存储位置（如果已配置）查找错误行。
+
+### <a name="error-code-df-mssql-exporterrorrowfailed"></a>错误代码：DF-MSSQL-ExportErrorRowFailed
+- 消息：将错误行写入存储时出现异常。
+- 原因：将错误行写入存储时发生异常。
+- 建议：检查拒绝的数据链接服务配置。
+
+### <a name="error-code-df-synapse-invaliddatabasetype"></a>错误代码：DF-Synapse-InvalidDatabaseType
+- 消息：数据库类型不受支持。
+- 原因：数据库类型不受支持。
+- 建议：检查数据库类型，将其更改为正确的类型。
+
+### <a name="error-code-df-synapse-invalidformat"></a>错误代码：DF-Synapse-InvalidFormat
+- 消息：格式不受支持。
+- 原因：格式不受支持。 
+- 建议：检查格式，将其更改为正确的格式。
+
+### <a name="error-code-df-synapse-invalidtabledbname"></a>错误代码：DF-Synapse-InvalidTableDBName
+- 原因：表/数据库名称无效。
+- 建议：更改为有效的表/数据库名称。 有效名称仅包含字母字符、数字和 `_`。
+
+### <a name="error-code-df-synapse-invalidoperation"></a>错误代码：DF-Synapse-InvalidOperation
+- 原因：该操作不受支持。
+- 建议：更改无效操作。
+
+### <a name="error-code-df-synapse-dbnotexist"></a>错误代码：DF-Synapse-DBNotExist
+- 原因：数据库不存在。
+- 建议：检查数据库是否存在。
+
+### <a name="error-code-df-synapse-storedprocedurenotsupported"></a>错误代码：DF-Synapse-StoredProcedureNotSupported
+- 消息：对于无服务器（按需）池，不支持使用“存储过程”作为源。
+- 原因：无服务器池存在限制。
+- 建议：重试使用“查询”作为源或将存储过程保存为视图，然后使用“表”作为源以直接从视图读取数据。
+
+### <a name="error-code-df-executor-broadcastfailure"></a>错误代码：DF-Executor-BroadcastFailure
+- 消息：在广播交换期间数据流执行失败。 可能的原因包括源中的连接配置不当，或发生了广播联接超时错误。 为确保正确配置源，请在数据流调试会话中测试连接或运行源数据预览。 若要避免广播联接超时，可以在 Join/Exists/Lookup 转换中选择“关闭”以关闭广播选项。 如果你想要使用广播选项来提高性能，请确保广播流可以在 60 秒（针对调试运行）或 300 秒（针对作业运行）内生成数据。 如果问题仍然存在，请与客户支持部门联系。
+
+- **原因**：  
+    1. 源连接/配置错误可能导致 join/exists/lookup 转换中发生广播失败。
+    2. 广播在调试运行中的默认超时为 60 秒，在作业运行中的默认超时为 300 秒。 在广播联接中，为广播选择的流似乎太大，无法在此限制内生成数据。 如果不使用广播联接，则数据流执行的默认广播可以达到相同的限制。
+
+- **建议**：
+    1. 在源中执行数据预览，以确认是否正确配置了源。 
+    1. 关闭广播选项，或避免广播其处理时间可能超过 60 秒的大型数据流。 相反，应选择更小的流进行广播。 
+    1. 大型 SQL/数据仓库表和源文件通常是不适当的候选项。 
+    1. 缺少广播联接时如果发生该错误，请使用较大的群集。 
+    1. 如果问题仍然存在，请与客户支持部门联系。
+
+### <a name="error-code-df-cosmos-shorttypenotsupport"></a>错误代码：DF-Cosmos-ShortTypeNotSupport
+- 消息：Cosmos DB 不支持短数据类型。
+- 原因：Azure Cosmos DB 不支持短数据类型。
+- 建议：添加派生转换，以先将相关列从短类型转换为整数，然后再在 Cosmos 接收器中使用这些列。
+
+### <a name="error-code-df-blob-functionnotsupport"></a>错误代码：DF-Blob-FunctionNotSupport
+- 消息：此终结点不支持 BlobStorageEvents、SoftDelete 或 AutomaticSnapshot。 若要使用此终结点，请禁用这些帐户功能。
+- 原因：如果 Azure Blob 存储链接服务是使用服务主体或托管标识身份验证创建的，则数据流中不支持 Azure Blob 存储事件、软删除或自动快照。
+- 建议：在 Azure Blob 帐户中禁用 Azure Blob 存储事件、软删除或自动快照功能，或者使用密钥身份验证创建链接服务。
+
+### <a name="error-code-df-cosmos-invalidaccountkey"></a>错误代码：DF-Cosmos-InvalidAccountKey
+- 消息：输入授权令牌无法为请求提供服务。 请检查是否根据协议生成了预期的有效负载，并检查所使用的密钥。
+- 原因：权限不足，无法读取/写入 Azure Cosmos DB 数据。
+- 建议：请使用读写密钥来访问 Azure Cosmos DB。
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>其他故障排除提示
 - **问题**：发生意外的异常，执行失败。
@@ -521,7 +610,7 @@ ms.locfileid: "107987985"
 
  改进之前，由于在多行设置设置为 True 时，行分隔符设置会失效，而且会基于前 128 个字符自动检测行分隔符，因此，默认的行分隔符 `\n` 可能会意外地用于分析分隔文本文件。 如果无法检测到实际的行分隔符，则会返回到 `\n`。  
 
- 改进之后，`\r`、`\n`、`\r\n` 等三个行分隔符中任何一个都应该有效。
+ 改进后，`\r`、`\n` 和 `\r\n` 这三个行分隔符中的任何一个都应有效。
  
  改进后的一项管道行为变更如下例所示：
 
@@ -534,7 +623,7 @@ ms.locfileid: "107987985"
    `C1 C2 {long first row} C128`**`\r`**<br/>
    `V1 V2 {values………………….} V128`**`\r`**<br/> 
 
-   改进之后，分析后的列结果应为：<br/>
+   改进后，分析得到的列结果应为：<br/>
    `C1 C2 {long first row} C128`<br/>
    `V1 V2 {values………………….} V128`<br/>
   
@@ -558,7 +647,7 @@ ms.locfileid: "107987985"
  改进之前，分析后的列结果为：<br/>
   **`A\n`**` B C`<br/>
 
- 改进之后，分析后的列结果应为：<br/>
+ 改进后，分析得到的列结果应为：<br/>
   **`A\r\n`**` B C`<br/>  
 
 #### <a name="scenario-3-encounter-an-issue-of-incorrectly-writing-column-values-containing-n"></a>场景 3：遇到错误地写入包含“\n”的列值的问题
@@ -606,16 +695,37 @@ ms.locfileid: "107987985"
  改进之前，分析后的列结果为：<br/>
   `A null B null`<br/>
 
- 改进之后，分析后的列结果应为：<br/>
+ 改进后，分析得到的列结果应为：<br/>
   `A "" (empty string) B "" (empty string)`<br/>
 
+###  <a name="internal-server-errors"></a>内部服务器错误
+
+可能导致内部服务器错误的特定情况如下所示。
+
+#### <a name="scenario-1-not-choosing-the-appropriate-compute-sizetype-and-other-factors"></a>情况 1：未选择适当的计算大小/类型和其他因素
+
+  数据流的成功执行取决于许多因素，包括计算大小/类型、要处理的源/接收器的数量、分区规范、所涉及的转换、数据集的大小、数据倾斜度等。<br/>
+  
+  有关更多指导，请参阅 [Integration Runtime 性能](concepts-integration-runtime-performance.md)。
+
+#### <a name="scenario-2-using-debug-sessions-with-parallel-activities"></a>情况 2：结合使用调试会话与并行活动
+
+  使用数据流调试会话通过管道中的 ForEach 之类的构造触发运行时，可能会将多个并行运行提交给同一群集。 由于内存不足等资源问题，在运行时，这种情况可能会导致出现群集故障问题。<br/>
+  
+  若要在发布更改后，使用在管道活动中定义的适当集成运行时配置提交运行，请选择“立即触发”或“调试” > “使用活动运行时”  。
+
+#### <a name="scenario-3-transient-issues"></a>情况 3：暂时性问题
+
+  执行中涉及的微服务的暂时性问题可能导致运行失败。<br/>
+  
+  在管道活动中配置重试可解决暂时性问题引起的问题。 有关更多指导，请参阅[活动策略](concepts-pipelines-activities.md#activity-json)。
 
 ## <a name="next-steps"></a>后续步骤
 
 在故障排除时如需更多帮助，请参阅以下资源：
 
 *  [数据工厂博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [数据工厂功能请求](https://feedback.azure.com/forums/270578-data-factory)
+*  [数据工厂功能请求](/answers/topics/azure-data-factory.html)
 *  [Azure 视频](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [关于数据工厂的 Twitter 信息](https://twitter.com/hashtag/DataFactory)

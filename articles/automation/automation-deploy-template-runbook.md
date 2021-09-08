@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
 keywords: powershell, runbook, json, azure 自动化
-ms.openlocfilehash: 7ea0e8209d244ad2b95e201ec7eb1e84f2038887
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: cb075d0ad59af211d80443a5e208509ea60c08ed
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113587762"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251813"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>在 PowerShell Runbook 中部署 Azure 资源管理器模板
 
@@ -87,9 +87,9 @@ ms.locfileid: "113587762"
 
 将该文件在本地保存为 TemplateTest.json。
 
-## <a name="save-the-resource-manager-template-in-azure-storage"></a>在 Azure 存储中保存资源管理器模板
+## <a name="save-the-resource-manager-template-in-azure-files"></a>在 Azure 文件存储中保存资源管理器模板
 
-现在，我们使用 PowerShell 创建 Azure 存储文件共享并上传 TemplateTest.json 文件。 有关如何在 Azure 门户中创建文件共享和上传文件的说明，请参阅[在 Windows 上开始使用 Azure 文件存储](../storage/files/storage-dotnet-how-to-use-files.md)。
+现在，我们使用 PowerShell 创建 Azure 文件共享并上传 TemplateTest.json 文件。 有关如何在 Azure 门户中创建文件共享和上传文件的说明，请参阅[在 Windows 上开始使用 Azure 文件存储](../storage/files/storage-files-quick-create-use-windows.md)。
 
 在本地计算机上启动 PowerShell，运行以下命令创建文件共享并将资源管理器模板上传到该文件共享。
 

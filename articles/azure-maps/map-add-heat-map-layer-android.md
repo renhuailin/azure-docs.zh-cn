@@ -1,20 +1,20 @@
 ---
 title: 向 Android 地图添加热度地图层 | Microsoft Docs
 description: 了解如何创建热度地图。 了解如何使用 Azure MapsAndroid SDK 将热度地图层添加到地图。 了解如何自定义热度地图层。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: ffbda69d91a709ff5a9af66f7abe2b7734efe177
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 5e48be82a2486291d2b7fdecf42d759e2c13eb08
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666382"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425187"
 ---
 # <a name="add-a-heat-map-layer-android-sdk"></a>添加热度地图层 (Android SDK)
 

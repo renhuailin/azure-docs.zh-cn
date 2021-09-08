@@ -1,18 +1,20 @@
 ---
 title: 从/向 Microsoft Access 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动从/向 Microsoft Access 复制数据。
-ms.author: jianleishen
-author: jianleishen
+ms.author: chez
+author: chez-charlie
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: 75159291f383b4d8ed5752cbae0907a6c21c26ec
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: a17d6cf31b94aa2c737335a7c2cc1a746df1d323
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488476"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303192"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Microsoft Access 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -36,11 +38,36 @@ ms.locfileid: "109488476"
 - 在集成运行时计算机上安装数据存储的 Microsoft Access ODBC 驱动程序。
 
 >[!NOTE]
->Microsoft Access 2016 版 ODBC 驱动程序不适用于此连接器。 请改用驱动程序版 2013 或 2010。
+>Microsoft Access 2016 版 ODBC 驱动程序不适用于此连接器。 改为使用 Microsoft Access 2013 或 2010 版的 ODBC 驱动程序。
 
 ## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-microsoft-access-using-ui"></a>使用 UI 创建到 Microsoft Access 的链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建一个到 Microsoft Access 的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新的链接服务。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新的链接服务。":::
+
+2. 搜索 Access，然后选择 Microsoft Access 连接器。
+
+   :::image type="content" source="media/connector-microsoft-access/microsoft-access-connector.png" alt-text="选择 Microsoft Access 连接器。":::    
+
+
+1. 配置服务详细信息、测试连接并创建新的链接服务。
+
+   :::image type="content" source="media/connector-microsoft-access/configure-microsoft-access-linked-service.png" alt-text="配置到 Microsoft Access 的链接服务。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
 
 对于特定于 Microsoft Access 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 

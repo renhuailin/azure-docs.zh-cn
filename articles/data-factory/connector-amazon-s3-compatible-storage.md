@@ -7,13 +7,13 @@ author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 05/11/2021
-ms.openlocfilehash: 12d7080a9f000df1f2e7469defef820cd4231e1b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 98191eb2e958510fe01fc5a02e0490bf7c2d41ae
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638180"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306990"
 ---
 # <a name="copy-data-from-amazon-s3-compatible-storage-by-using-azure-data-factory"></a>通过使用 Azure 数据工厂从 Amazon S3 兼容存储中复制数据
 
@@ -47,7 +47,32 @@ ms.locfileid: "122638180"
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)] 
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-amazon-s3-compatible-storage-using-ui"></a>使用 UI 创建到 Amazon S3 兼容存储的链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建到 Amazon S3 兼容存储的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新的链接服务。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新的链接服务。":::
+
+2. 搜索 Amazon，然后选择 Amazon S3 兼容存储连接器。
+
+   :::image type="content" source="media/connector-amazon-s3-compatible-storage/amazon-s3-compatible-storage-connector.png" alt-text="选择 Amazon S3 兼容存储连接器。":::    
+
+
+1. 配置服务详细信息、测试连接并创建新的链接服务。
+
+   :::image type="content" source="media/connector-amazon-s3-compatible-storage/configure-amazon-s3-compatible-storage-linked-service.png" alt-text="创建到 Amazon S3 兼容存储的链接服务。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息 
 
 以下部分提供了关于一些属性的详细信息，这些属性用于定义特定于 Amazon S3 兼容存储的数据工厂实体。
 

@@ -3,31 +3,31 @@ title: 如何从容器见解查询日志
 description: 容器见解收集指标和日志数据。本文介绍了这些记录并提供了示例查询。
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: 6b5e88e8de1f88a738fdfbb60678909d20e72863
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 07ff7a65f6f4ed0865a45e92288caa362051fd20
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187192"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428013"
 ---
 # <a name="how-to-query-logs-from-container-insights"></a>如何从容器见解查询日志
 
-容器见解从容器主机和容器收集性能指标、清单数据和运行状况状态信息。 系统每三分钟收集一次数据，并将其转发到 Azure Monitor 中的 Log Analytics 工作区；在该工作区，可使用 Azure Monitor 中的 [Log Analytics](../logs/log-analytics-overview.md) 进行[日志查询](../logs/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。 Azure Monitor 日志有助于查找趋势、诊断瓶颈、预测或关联有助于确定是否最优执行当前群集配置的数据。
+容器见解从容器主机和容器收集性能指标、清单数据和运行状况状态信息。 系统每三分钟收集一次数据，并转发到 Azure Monitor 中的 Log Analytics 工作区，在 Azure Monitor 中，可通过使用 [Log Analytics](../logs/log-analytics-overview.md) 将这些数据用于[日志查询](../logs/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。 Azure Monitor 日志有助于查找趋势、诊断瓶颈、预测或关联有助于确定是否最优执行当前群集配置的数据。
 
-若要了解如何使用这些查询，请参阅[在 Azure Monitor 日志分析中使用查询](../logs/queries.md)；如需在完整教程中了解如何使用 Log Analytics 来运行查询并使用其结果，请参阅 [Log Analytics 教程](../logs/log-analytics-tutorial.md)。
+有关如何使用这些查询的信息，请参阅[在 Azure Monitor Log Analytics 中使用查询](../logs/queries.md)，有关如何使用 Log Analytics 运行查询并处理其结果的完整教程，请参阅 [Log Analytics 教程](../logs/log-analytics-tutorial.md)。
 
 ## <a name="open-log-analytics"></a>打开 Log Analytics
-有多个选项可以启动 Log Analytics，你可使用不同的[范围](../logs/scope.md)来开始使用各个选项。 要访问工作区中的所有数据，请从“监视”菜单中选择“日志” 。 若要将数据限制为单个 Kubernetes 群集，请从相应群集的菜单中选择“日志”。 
+有多个选项可启动 Log Analytics，每个选项有不同的作用[范围](../logs/scope.md)。 若要访问工作区中的所有数据，请从“监视器”菜单中选择“日志” 。 若要将数据限制为单个 Kubernetes 群集，请从相关群集的菜单中选择“日志”。 
 
 :::image type="content" source="media/container-insights-log-query/start-log-analytics.png" alt-text="启动 Log Analytics" lightbox="media/container-insights-log-query/start-log-analytics.png":::
 
-## <a name="existing-log-queries"></a>现有日志查询
-你无需了解如何编写日志查询即可使用 Log Analytics。 可以选择多个预生成的查询，然后运行查询而无需进行修改，也可将其用作自定义查询的开始。 单击 Log Analytics 屏幕顶部的“查询”，并查看“资源类型”为“Kubernetes 服务”的查询  。 
+## <a name="existing-log-queries"></a>现有的日志查询
+无需了解如何编写日志查询也能使用 Log Analytics。 有多个预生成的查询可供选择，可直接运行这些查询而不作任何修改，也可以在其基础上创建自定义查询。 单击 Log Analytics 屏幕顶部的“查询”，并查看“资源类型”为“Kubernetes 服务”的查询  。 
 
 :::image type="content" source="media/container-insights-log-query/log-analytics-queries.png" alt-text="针对 Kubernetes 的 Log Analytics 查询" lightbox="media/container-insights-log-query/log-analytics-queries.png":::
 
 ## <a name="container-tables"></a>容器表
-请参阅 [Azure Monitor 表格引用](/azure/azure-monitor/reference/tables/tables-resourcetype#kubernetes-services)，获得容器见解所使用的表列表及其详细说明。 这些表都可用于日志查询。
+请参阅 [Azure Monitor 表格引用](/azure/azure-monitor/reference/tables/tables-resourcetype#kubernetes-services)，查看 Container Insights 所用表格的列表及其详细说明。 所有表均可用于日志查询。
 
 
 ## <a name="example-log-queries"></a>示例日志查询
@@ -44,8 +44,8 @@ ContainerInventory
 ### <a name="kubernetes-events"></a>Kubernetes 事件
 
 ``` kusto
-KubeEvents_CL
-| where not(isempty(Namespace_s))
+KubeEvents
+| where not(isempty(Namespace))
 | sort by TimeGenerated desc
 | render table
 ```
@@ -104,7 +104,7 @@ on ContainerID
 ```
 
 ### <a name="pod-scale-out-hpa"></a>Pod 横向扩展 (HPA)
-返回每个部署中横向扩展的副本数。 使用 HPA 中配置的最大副本数计算横向扩展百分比。
+返回每个部署中横向扩展的副本的数量。 使用 HPA 中配置的最大副本数来计算横向扩展百分比。
 
 
 ```kusto
@@ -132,7 +132,7 @@ KubePodInventory
 ```
 
 ### <a name="nodepool-scale-outs"></a>Nodepool 横向扩展 
-返回每个节点池中的活动节点数。 计算自动缩放程序设置中的可用活动节点数和最大节点配置，以确定横向扩展百分比。 请查看查询中的注释行，将其用于“结果数”警报规则。
+返回每个节点池中的活动节点数。 计算可用的活动节点数和自动缩放器设置中的最大节点配置，以确定横向扩展百分比。 查看查询中的注释行，将其用于“结果数”警报规则。
 
 ```kusto
 let nodepoolMaxnodeCount = 10; // the maximum number of nodes in your auto scale setting goes here.
@@ -155,8 +155,8 @@ KubeNodeInventory
     nodepoolName
 ```
 
-### <a name="system-containers-replicaset-availability"></a>系统容器 (replicaset) 可用性
-返回系统容器 (replicaset) 并报告不可用百分比。 请查看查询中的注释行，将其用于“结果数”警报规则。
+### <a name="system-containers-replicaset-availability"></a>系统容器（副本集）可用性
+返回系统容器（副本集）并报告不可用部分的百分比。 查看查询中的注释行，将其用于“结果数”警报规则。
 
 ```kusto
 let startDateTime = 5m; // the minimum time interval goes here
@@ -197,8 +197,8 @@ KubePodInventory
     ContainerStatus = strcat("Container Status: ", ContainerStatus)
 ```
 
-### <a name="system-containers-daemonsets-availability"></a>系统容器 (daemonset) 可用性
-返回系统容器 (daemonset) 并报告不可用百分比。 请查看查询中的注释行，将其用于“结果数”警报规则。
+### <a name="system-containers-daemonsets-availability"></a>系统容器（守护程序集）可用性
+返回系统容器（守护程序集）并报告不可用部分的百分比。 查看查询中的注释行，将其用于“结果数”警报规则。
 
 ```kusto
 let startDateTime = 5m; // the minimum time interval goes here
@@ -240,7 +240,7 @@ KubePodInventory
 ```
 
 ## <a name="resource-logs"></a>资源日志
-AKS 的资源日志存储在 [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) 表中，你可以使用“类别”列区分不同的日志。 有关每个类别的说明，请参阅 [AKS 参考资源日志](../../aks/monitor-aks-reference.md)。 以下示例需要诊断扩展才能将 AKS 群集的资源日志发送到 Log Analytics 工作区。 有关详细信息，请参阅[配置监视](../../aks/monitor-aks.md#configure-monitoring)。
+AKS 的资源日志存储在 [AzureDiagnostics](/azure/azure-monitor/reference/tables/azurediagnostics) 表中。可以使用“类别”列区分不同的日志。 有关每个类别的说明，请参阅 [AKS 参考资源日志](../../aks/monitor-aks-reference.md)。 以下示例需要诊断扩展，以将 AKS 群集的资源日志发送到 Log Analytics 工作区。 有关详细信息，请参阅[配置监视](../../aks/monitor-aks.md#configure-monitoring)。
 
 ### <a name="api-server-logs"></a>API 服务器日志
 
@@ -249,7 +249,7 @@ AzureDiagnostics
 | where Category == "kube-apiserver"
 ```
 
-### <a name="count-logs-for-each-category"></a>统计每个类别的日志数
+### <a name="count-logs-for-each-category"></a>统计每个类别的日志
 
 ```kusto
 AzureDiagnostics

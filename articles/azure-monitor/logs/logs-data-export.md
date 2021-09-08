@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: c0eea1c7f041899d5c00062de2cbf35f83b9d53b
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 741f2cc4176914417b02bacc9911988a41c5827d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662084"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427293"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -124,7 +124,7 @@ find where TimeGenerated > ago(24h) | distinct Type
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-不可用
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -400,7 +400,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-不可用
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -432,7 +432,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-不可用
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -479,7 +479,7 @@ Content-type: application/json
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-不可用
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -511,7 +511,7 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-不可用
+空值
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -538,11 +538,11 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>不受支持的表
 如果数据导出规则包含不受支持的表，配置不会失败，但不会导出该表的任何数据。 如果该表在之后得到支持，则将在那时导出其数据。
 
-如果数据导出规则包含不存在的表，操作会失败并出现错误“工作区中不存在表 <tableName>”。
+如果数据导出规则包含不存在的表，操作会失败并出现错误“工作区中不存在表 \<tableName\>”。
 
 
 ## <a name="supported-tables"></a>受支持的表
-受支持的表当前仅限于下面指定的那些表。 除非指定限制，否则将导出表中的所有数据。 如果添加了对其他表的支持，此列表将会更新。
+受支持的表当前仅限于下面指定的那些表。 除非指定限制，否则将导出表中的所有数据。 此列表已更新，添加了对其他表的支持。
 
 | 表 | 限制 |
 |:---|:---|

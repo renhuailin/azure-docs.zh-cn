@@ -3,12 +3,12 @@ title: Azure 实验室服务 - 如何从 Azure 虚拟机中引入 Windows 自定
 description: 描述如何从 Azure 虚拟机中引入 Windows 自定义映像。
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: dc946e770f719ad76fd0c46d5fe418a937f17867
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 465d3c128e68e1c8a0d72f51bcf5f354da9d6818
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452260"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831375"
 ---
 # <a name="bring-a-windows-custom-image-from-an-azure-virtual-machine"></a>从 Azure 虚拟机引入 Windows 自定义映像
 
@@ -32,15 +32,15 @@ ms.locfileid: "123452260"
 
 ## <a name="import-the-custom-image-into-a-shared-image-gallery"></a>将自定义映像导入共享映像库
 
-1. 在共享映像库中，[创建映像定义](../virtual-machines/image-version.md)或选择现有映像定义。
+1. 在共享映像库中，[创建映像定义](../virtual-machines/windows/shared-images-portal.md#create-an-image-definition)或选择现有映像定义。
      - 对于“VM 代系”，选择“第 1 代”。
-     - 选择要为“操作系统状态”创建“专用”还是“通用”映像  。
+     - 选择要为操作系统状态创建专用还是通用映像  。
 
     若要详细了解可以为映像定义指定的值，请参阅[映像定义](../virtual-machines/shared-image-galleries.md#image-definitions)。 
     
     还可以选择使用现有映像定义，并创建自定义映像的新版本。
     
-1. [创建映像版本](../virtual-machines/image-version.md)。
+1. [创建映像版本](../virtual-machines/windows/shared-images-portal.md#create-an-image-version)。
     - “版本号”属性采用以下格式：MajorVersion.MinorVersion.Patch。   
     - 对于“源”，从下拉列表中选择“磁盘和/或快照” 。
     - 对于“OS 磁盘”属性，选择在先前步骤中创建的 Azure VM 磁盘。

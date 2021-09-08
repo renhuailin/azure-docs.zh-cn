@@ -1,18 +1,20 @@
 ---
 title: 在 Azure Cosmos DB (SQL API) 中复制和转换数据
-description: 了解如何使用数据工厂向/从 Azure Cosmos DB (SQL API) 复制数据，以及如何在 Azure Cosmos DB (SQL API) 中转换数据。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何向/从 Azure Cosmos DB (SQL API) 复制数据，以及如何使用 Azure 数据工厂和 Azure Synapse Analytics 在 Azure Cosmos DB (SQL API) 中转换数据。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 05/18/2021
-ms.openlocfilehash: 36fae5b71e9aa5c2c6c252ad1aa306bb64d9aecb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: eb222badbd9b2f349f1ae33f1b659b3caadd8b90
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480073"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306901"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制和转换数据
 
@@ -22,9 +24,7 @@ ms.locfileid: "110480073"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-这篇文章概述了如何使用 Azure 数据工厂中的“复制活动”功能从/向 Azure Cosmos DB (SQL API) 复制数据，并使用数据流转换 Azure Cosmos DB (SQL API) 中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
-
-
+这篇文章概述了如何使用 Azure 数据工厂中的“复制活动”功能从/向 Azure Cosmos DB (SQL API) 复制数据，并使用数据流转换 Azure Cosmos DB (SQL API) 中的数据。 有关详细信息，请阅读 [Azure 数据工厂](introduction.md)和 [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) 的简介文章。
 
 >[!NOTE]
 >此连接器仅支持 Cosmos DB SQL API。 有关 MongoDB API，请参阅[适用于 MongoDB 的 Auzre Cosmos DB API 的连接器](connector-azure-cosmos-db-mongodb-api.md)。 目前不支持其他 API 类型。
@@ -43,7 +43,7 @@ ms.locfileid: "110480073"
 - 以 **insert** 或 **upsert** 的形式写入 Azure Cosmos DB。
 - 按原样导入和导出 JSON 文档，或在表格数据集中复制或粘贴数据。 示例包括 SQL 数据库和 CSV 文件。 若要在 JSON 文件或另一个 Azure Cosmos DB 集合中按原样复制或粘贴文档，请参阅[导入和导出 JSON 文档](#import-and-export-json-documents)。
 
-数据工厂与 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)集成，以便在写入 Azure Cosmos DB 时提供最佳性能。
+数据工厂和 Synapse 管道与 [Azure Cosmos DB 批量执行工具库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)集成，以便在写入 Azure Cosmos DB 时提供最佳性能。
 
 > [!TIP]
 > [数据迁移视频](https://youtu.be/5-SRNiC_qOU)将指导你完成将数据从 Azure Blob 存储复制到 Azure Cosmos DB 的步骤。 该视频还介绍了在一般情况下将数据引入 Azure Cosmos DB 的性能优化注意事项。
@@ -51,20 +51,44 @@ ms.locfileid: "110480073"
 ## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+## <a name="create-a-linked-service-to-azure-cosmos-db-using-ui"></a>使用 UI 创建到 Azure Cosmos DB 的链接服务
 
-对于特定于 Azure Cosmos DB (SQL API) 的数据工厂实体，以下部分提供有关可用于定义这些实体的属性的详细信息。
+使用以下步骤在 Azure 门户 UI 中创建一个到 Azure Cosmos DB 的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新链接服务的屏幕截图。":::
+
+2. 搜索“Cosmos”并选择“Azure Cosmos DB (SQL API) 连接器”。
+
+    :::image type="content" source="media/connector-azure-cosmos-db/azure-cosmos-db-connector.png" alt-text="选择“Azure Cosmos DB (SQL API) 连接器”。":::    
+
+1. 配置服务详细信息、测试连接并创建新的链接服务。
+
+    :::image type="content" source="media/connector-azure-cosmos-db/configure-azure-cosmos-db-linked-service.png" alt-text="Azure Cosmos DB 的链接服务配置的屏幕截图。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
+
+
+以下部分提供有关属性的详细信息，这些属性可用于定义特定于 Azure Cosmos DB (SQL API) 的实体的详细信息。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
 Azure Cosmos DB (SQL API) 连接器支持以下身份验证类型。 请参阅相应部分的了解详细信息：
 
 - [密钥身份验证](#key-authentication)
-- [服务主体身份验证（预览版）](#service-principal-authentication)
-- [Azure 资源的托管标识身份验证（预览版）](#managed-identity)
+- [服务主体身份验证](#service-principal-authentication)
+- [Azure 资源的托管标识身份验证](#managed-identity)
 
 ### <a name="key-authentication"></a>密钥身份验证
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **CosmosDb**。 | 是 |
 | connectionString |指定连接 Azure Cosmos DB 数据库所需的信息。<br />**注意**：必须如以下示例所示，在连接字符串中指定数据库信息。 <br/> 还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
@@ -114,7 +138,7 @@ Azure Cosmos DB (SQL API) 连接器支持以下身份验证类型。 请参阅�
 }
 ```
 
-### <a name="service-principal-authentication-preview"></a><a name="service-principal-authentication"></a> 服务主体身份验证（预览版）
+### <a name="service-principal-authentication"></a><a name="service-principal-authentication"></a> 服务主体身份验证
 
 >[!NOTE]
 >目前，不支持在数据流中进行服务主体身份验证。
@@ -131,16 +155,16 @@ Azure Cosmos DB (SQL API) 连接器支持以下身份验证类型。 请参阅�
 
 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **CosmosDb**。 |是 |
 | accountEndpoint | 指定 Azure Cosmos DB 的帐户终结点 URL。 | 是 |
 | database | 指定数据库的名称。 | 是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
 | servicePrincipalCredentialType | 要用于服务主体身份验证的凭据类型。 允许的值为“ServicePrincipalKey”和“ServicePrincipalCert” 。 | 是 |
-| servicePrincipalCredential | 服务主体凭据。 <br/> 使用“ServicePrincipalKey”作为凭据类型时，请指定应用程序的密钥。 将此字段标记为 SecureString 以将其安全地存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 <br/> 使用“ServicePrincipalCert”作为凭据时，请引用 Azure Key Vault 中的证书。 | 是 |
+| servicePrincipalCredential | 服务主体凭据。 <br/> 使用 ServicePrincipalKey 作为凭据类型时，请指定应用程序的密钥。 将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 <br/> 使用“ServicePrincipalCert”作为凭据时，请引用 Azure Key Vault 中的证书。 | 是 |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
-| azureCloudType | 对于服务主体身份验证，请指定 Azure Active Directory 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为“AzurePublic”、“AzureChina”、“AzureUsGovernment”和“AzureGermany”。 默认情况下，使用数据工厂的云环境。 | 否 |
+| azureCloudType | 对于服务主体身份验证，请指定 Azure Active Directory 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为“AzurePublic”、“AzureChina”、“AzureUsGovernment”和“AzureGermany”。 默认情况下，使用服务的云环境。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：使用服务主体密钥身份验证**
@@ -200,22 +224,22 @@ Azure Cosmos DB (SQL API) 连接器支持以下身份验证类型。 请参阅�
 }
 ```
 
-### <a name="managed-identities-for-azure-resources-authentication-preview"></a><a name="managed-identity"></a> Azure 资源的托管标识身份验证（预览版）
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure 资源的托管标识身份验证
 
 >[!NOTE]
 >目前，不支持在数据流中进行托管标识身份验证。
 
-可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可以像使用你自己的服务主体一样，直接使用此托管标识进行 Cosmos DB 身份验证。 此指定工厂可通过此方法访问以及向/从 Cosmos DB 复制数据。
+可将数据工厂或 Synapse 管道与代表此特定服务实例的 [Azure 资源托管标识](data-factory-service-identity.md)关联。 可以像使用你自己的服务主体一样，直接使用此托管标识进行 Cosmos DB 身份验证。 此指定资源可通过此方法访问以及向/从 Cosmos DB 复制数据。
 
 若要使用 Azure 资源托管标识身份验证，请按照以下步骤操作。
 
-1. 通过复制与工厂一起生成的 **托管标识对象 ID** 的值，[检索数据工厂托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
+1. 复制与服务一起生成的“托管标识对象 ID”值，可[检索托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
 
 2. 向托管标识授予适当权限。 有关 Cosmos DB 中的权限工作原理的示例，请参阅[文件和目录上的访问控制列表](../cosmos-db/how-to-setup-rbac.md)。 更具体地说，请先创建角色定义，然后将角色分配给托管标识。
 
 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **CosmosDb**。 |是 |
 | accountEndpoint | 指定 Azure Cosmos DB 的帐户终结点 URL。 | 是 |
@@ -247,7 +271,7 @@ Azure Cosmos DB (SQL API) 连接器支持以下身份验证类型。 请参阅�
 
 Azure Cosmos DB (SQL API) 数据集支持以下属性： 
 
-| properties | 说明 | 必须 |
+| properties | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **CosmosDbSqlApiCollection**。 |是 |
 | collectionName |Azure Cosmos DB 文档集合的名称。 |是 |
@@ -283,7 +307,7 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 复制活动 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **CosmosDbSqlApiSource**。 |是 |
 | query |指定要读取数据的 Azure Cosmos DB 查询。<br/><br/>示例：<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行此 SQL 语句：`select <columns defined in structure> from mycollection` |
@@ -328,7 +352,7 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 ]
 ```
 
-从 Cosmos DB 复制数据时，除非你想[原样导出 JSON 文档](#import-and-export-json-documents)，否则，最佳做法是在复制活动中指定映射。 数据工厂遵循你在活动上指定的映射 - 如果某个行的某个列中未包含值，则会为列值提供 null 值。 如果未指定映射，则数据工厂将使用数据中的第一行来推断架构。 如果第一行不包含完整架构，则活动操作的结果中将丢失部分列。
+从 Cosmos DB 复制数据时，除非你要[按原样导出 JSON 文档](#import-and-export-json-documents)，否则，最佳做法是在复制活动中指定映射。 此服务遵循你在活动上指定的映射 - 如果某个行的某个列中未包含值，则会为列值提供 null 值。 如果未指定映射，则服务将使用数据中的第一行来推断架构。 如果第一行不包含完整架构，则活动操作的结果中将丢失部分列。
 
 ### <a name="azure-cosmos-db-sql-api-as-sink"></a>Azure Cosmos DB (SQL API) 用作接收器
 
@@ -336,12 +360,12 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 复制活动 **sink** 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **CosmosDbSqlApiSink**。 |是 |
-| writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中指定 ID，或未通过列映射指定 ID，则数据工厂会自动为文档生成 ID。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
-| writeBatchSize | 数据工厂使用 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)将数据写入 Azure Cosmos DB。 **writeBatchSize** 属性控制 ADF 提供给库的文档的大小。 可尝试增加 writeBatchSize 的值以提高性能，并在文档大小较大时降低该值 - 请参阅下面的提示。 |否<br />（默认值为 **10,000**） |
-| disableMetricsCollection | 数据工厂收集指标（如 Cosmos DB RU），以获取复制性能优化和建议。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
+| writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。<br /><br />注意：如果未在原始文档中指定 ID，或未通过列映射指定 ID，则服务会自动为文档生成 ID。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
+| writeBatchSize | 服务使用 [Azure Cosmos DB 批量执行根据库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)将数据写入 Azure Cosmos DB。 writeBatchSize 属性控制服务提供给库的文档的大小。 可尝试增加 writeBatchSize 的值以提高性能，并在文档大小较大时降低该值 - 请参阅下面的提示。 |否<br />（默认值为 **10,000**） |
+| disableMetricsCollection | 服务收集 Cosmos DB RU 等指标，用于复制性能优化和建议。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
 | maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接时指定一个值。| 否 |
 
 
@@ -397,7 +421,7 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 特定于 Azure Cosmos DB 的设置可在源转换的“源选项”选项卡中找到。 
 
-包括系统列：如果为 true，则会将 ```id```、```_ts``` 和其他系统列包括在 CosmosDB 的数据流元数据中。 更新集合时，必须包括此项，以便能够获取现有行 ID。
+包括系统列：如果为 true，则会将 ```id```、```_ts``` 和其他系统列包括在 CosmosDB 的数据流元数据中。 更新集合时，必须包括此项，以便获取现有行 ID。
 
 页面大小：查询结果的每页文档数。 默认值为“-1”，表示使用服务动态页，最大为 1000。
 
@@ -407,7 +431,7 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 #### <a name="json-settings"></a>JSON 设置
 
-单个文档：如果 ADF 会将整个文件视为单个 JSON 文档，请选择此选项。
+**单个文档：** 如果服务将整个文件视为单个 JSON 文档，请选择此选项。
 
 不带引号的列名称：如果 JSON 中的列名称未加引号，请选择此选项。
 
@@ -430,7 +454,7 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 **批大小**：一个整数，表示每个批中有多少对象被写入 Cosmos DB 集合。 通常，从默认批大小开始就足够了。 若要进一步调整此值，请注意：
 
 - Cosmos DB 将单个请求的大小限制为 2MB。 公式为“请求大小 = 单个文档大小 * 写入批大小”。 若出现“请求太大”错误，请减少批大小值。
-- 批大小越大，ADF 可以实现的吞吐量就越好，同时请确保分配足够的 RU 来授权工作负载。
+- 批大小越大，服务可以实现的吞吐量就越好，同时请确保分配足够的 RU 来授权工作负载。
 
 **分区键：** 输入表示集合的分区键的字符串。 示例： ```/movies/title```
 
@@ -447,7 +471,7 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 使用此 Azure Cosmos DB(SQL API) 连接器，可以轻松地：
 
 * 在两个 Azure Cosmos DB 集合之间按原样复制文档。
-* 将各种源（包括 Azure Blob 存储、Azure Data Lake Store 或 Azure 数据工厂所支持的其他基于文件的存储）中的 JSON 文档导入 Azure Cosmos DB。
+* 将各种源（包括 Azure Blob 存储、Azure Data Lake Store 或服务所支持的其他基于文件的存储）中的 JSON 文档导入 Azure Cosmos DB。
 * 将 JSON 文档从 Azure Cosmos DB 集合导出到各种基于文件的存储。
 
 若要实现“架构不可知”复制，请执行以下操作：
@@ -457,8 +481,8 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 ## <a name="migrate-from-relational-database-to-cosmos-db"></a>从关系数据库迁移到 Cosmos DB
 
-从关系数据库（例如 SQL Server）迁移到 Azure Cosmos DB 时，复制活动可以轻松地从源映射表格数据，以在 Cosmos DB 中平展 JSON 文档。 某些情况下，你可能希望根据 [Azure Cosmos DB 中的数据建模](../cosmos-db/modeling-data.md)重新设计数据模型，以便来针对 NoSQL 用例对其进行优化，例如，通过将所有相关子项嵌入到一个 JSON 文档中来使数据非规范化。 对于这种情况，请参阅[此文](../cosmos-db/migrate-relational-to-cosmos-db-sql-api.md)，其中演练了如何使用 Azure 数据工厂复制活动实现此目的。
+从关系数据库（例如 SQL Server）迁移到 Azure Cosmos DB 时，复制活动可以轻松地从源映射表格数据，以在 Cosmos DB 中平展 JSON 文档。 某些情况下，你可能希望根据 [Azure Cosmos DB 中的数据建模](../cosmos-db/modeling-data.md)重新设计数据模型，以便针对 NoSQL 用例对其进行优化，例如，通过将所有相关子项嵌入到一个 JSON 文档中来使数据非规范化。 对于这种情况，请参阅[此文](../cosmos-db/migrate-relational-to-cosmos-db-sql-api.md)，其中包含如何使用复制活动实现此目的的演练。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

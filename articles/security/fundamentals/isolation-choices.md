@@ -3,9 +3,8 @@ title: Azure 公有云中的隔离 | Microsoft Docs
 description: 了解 Azure 如何针对恶意和非恶意用户提供隔离，并为架构师提供各种隔离选项。
 services: security
 documentationcenter: na
-author: UnifyCloud
+author: TomSh
 manager: rkarlin
-editor: TomSh
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
-ms.author: TomSh
-ms.openlocfilehash: c06fb0830ae709918b668ed60efbaaf47a63ce84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/30/2021
+ms.author: terrylan
+ms.openlocfilehash: 3ef9f5cb6e0175a501b05da6e79194da76b18dae
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94842832"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257243"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 
@@ -42,9 +41,9 @@ Azure 租户（Azure 订阅）是指 [Azure Active Directory](../../active-direc
 
 该目录中的用户、组和应用程序可以管理 Azure 订阅中的资源。 可以使用 Azure 门户、Azure 命令行工具及 Azure 管理 API 来分配这些访问权限。 从逻辑上讲，Azure AD 租户是使用安全边界隔离的，这样，任何客户都不能访问或入侵联合租户，而无论其行为是恶意的还是偶然的。 在“裸机”服务器上运行的 Azure AD 是在分隔的网络段中隔离的，主机级别数据包筛选和 Windows 防火墙在该网络段中阻止不需要的连接和流量。
 
-- 访问 Azure AD 中的数据需要通过安全令牌服务 (STS) 进行用户身份验证。 授权系统使用有关用户存在性、已启用状态和角色的信息，确定此用户在此会话中对目标租户的访问请求是否已获授权。
+:::image type="content" source="media/isolation-choices/azure-isolation-fig-1.svg" alt-text="显示 Azure 租户的关系图。" border="false":::
 
-![Azure 租户](./media/isolation-choices/azure-isolation-fig1.png)
+- 访问 Azure AD 中的数据需要通过安全令牌服务 (STS) 进行用户身份验证。 授权系统使用有关用户存在性、已启用状态和角色的信息，确定此用户在此会话中对目标租户的访问请求是否已获授权。
 
 - 租户是离散的容器，它们之间没有任何关系。
 
@@ -90,7 +89,7 @@ Azure Active Directory 的其他部分功能包括:
 
 - Azure AD 通过联合身份验证（使用 [Active Directory 联合身份验证服务](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)）、同步以及本地目录复制方式提供标识即服务。
 
-- [Azure AD 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)是多重身份验证服务，它要求用户使用移动应用、手机或短信验证登录。 它可以与 Azure AD 配合使用，帮助通过 Azure 多重身份验证服务器来保护本地资源；它还用于使用 SDK 的自定义应用程序和目录。
+- [Azure 多重身份验证](../../active-directory/authentication/concept-mfa-howitworks.md)要求用户使用移动应用、电话呼叫或短信验证登录。 它可以与 Azure AD 配合使用，帮助通过多重身份验证服务器来保护本地资源，还用于使用 SDK 的自定义应用程序和目录。
 
 - [Azure AD 域服务](https://azure.microsoft.com/services/active-directory-ds/)可让用户将 Azure 虚拟机加入一个 Active Directory 域，且无需部署域控制器。 用户可以使用其公司的 Active Directory 凭据登录到这些虚拟机中，并使用组策略管理已加入域的虚拟机，以便在所有 Azure 虚拟机上强制实施安全基准措施。
 
@@ -131,7 +130,7 @@ Azure 的计算平台以计算机虚拟化为基础，这意味着所有客户�
 
 Azure 平台使用虚拟化的环境。 用户实例作为无法访问物理主机服务器的独立虚拟机运行。
 
-Azure 的虚拟机监控程序相当于微内核，可将所有硬件访问请求从来宾虚拟机传递到主机，以便使用名为 VMBus 的共享内存界面进行处理。 这样可以防止用户获取对系统的原始读取/写入/执行访问权限，减轻共享系统资源的风险。
+Azure 的虚拟机监控程序相当于微内核，可将所有硬件访问请求从来宾虚拟机传递到主机，以便使用名为“VM 总线”的共享内存界面进行处理。 这样可以防止用户获取对系统的原始读取/写入/执行访问权限，减轻共享系统资源的风险。
 
 ### <a name="advanced-vm-placement-algorithm--protection-from-side-channel-attacks"></a>高级 VM 布局算法和侧信道攻击防护
 

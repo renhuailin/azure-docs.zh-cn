@@ -1,18 +1,18 @@
 ---
 title: 针对 Azure 容器注册表的 Azure Resource Graph 示例查询
 description: 针对 Azure 容器注册表的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与 Azure 容器注册表相关的资源和属性。
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: sample
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 9cc8d11861ea00930093a63bc37ee3639f163288
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 2e8d8722ab1c132ccf81507ce1d4e45ed64555b4
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123310324"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540818"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-container-registry"></a>针对 Azure 容器注册表的 Azure Resource Graph 示例查询
 

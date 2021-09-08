@@ -1,20 +1,20 @@
 ---
 title: 向 Android 地图添加控件 | Microsoft Azure Maps
 description: 如何向 Microsoft Azure Maps Android SDK 中的地图添加缩放控件、绕 X 轴旋转控件、旋转控件和样式选取器。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: b84150196467606800df737ba9c9d50c69346e30
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 5599efb61c02c05ea3908d660ca0f1c11bea1ca7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093582"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425295"
 ---
 # <a name="add-controls-to-a-map-android-sdk"></a>向地图添加控件 (Android SDK)
 

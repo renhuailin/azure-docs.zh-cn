@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 2b41342ab7d267c37b8e68fdbcaa9d570034ac17
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: e23d2f82da833c4613a243bdef268d3fd44aa92c
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568431"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538284"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>快速入门：使用 COPY 语句批量加载数据
 
@@ -138,5 +138,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关加载数据的最佳做法，请参阅[加载数据的最佳做法](./guidance-for-loading-data.md)。
+- 有关加载数据的最佳做法，请参阅[加载数据的最佳做法](../sql/data-loading-best-practices.md)。
 - 若要了解如何管理数据加载的资源，请参阅[工作负载隔离](./quickstart-configure-workload-isolation-tsql.md)。

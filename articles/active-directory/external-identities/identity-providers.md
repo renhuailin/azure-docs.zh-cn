@@ -5,23 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 07/26/2021
+ms.date: 08/30/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f867e0091d792ef88b79f1c1bb7f4272a35e928
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: ca0592741018f054640b1d695f643695e4782518
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721376"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222135"
 ---
 # <a name="identity-providers-for-external-identities"></a>外部标识的标识提供者
 
 标识提供程序创建、维护和管理标识信息，同时向应用程序提供身份验证服务。 与外部用户共享应用和资源时，Azure AD 是用于共享的默认标识提供者。 这意味着，当你邀请已有 Azure AD 或 Microsoft 帐户的外部用户时，这些用户可以自动登录，而无需你进行进一步的配置。
 
-除了 Azure AD 帐户外，外部标识还提供各种标识提供者。
+外部标识提供各种标识提供者。
+
+- **Azure Active Directory 帐户**：来宾用户可以使用其 Azure AD 工作或学校帐户兑换 B2B 协作邀请或完成注册用户的流程。 [Azure Active Directory](azure-ad-account.md) 是默认允许的标识提供者之一。 无需其他配置，此标识提供者即可供用户流使用。
 
 - **Microsoft 帐户**：来宾用户可使用自己的个人 Microsoft 帐户 (MSA) 兑换 B2B 协作邀请。 设置自助式注册用户流时，可将 [Microsoft 帐户](microsoft-account.md)添加为允许的标识提供者之一。 无需其他配置，此标识提供者即可供用户流使用。
 
