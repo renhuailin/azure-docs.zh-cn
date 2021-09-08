@@ -1,21 +1,21 @@
 ---
-title: Blob 存储的不可变性存储概述
+title: blob 数据的不可变存储概述
 titleSuffix: Azure Storage
 description: Azure 存储为 Blob 存储提供 WORM（一次写入，多次读取）支持，使用户能够以不可擦除、不可修改的状态存储数据。 基于时间的保留策略在指定的间隔内以 WORM 状态存储 Blob 数据，而法定保留在被显式清除之前会一直保持有效。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/22/2021
+ms.date: 08/31/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 1096b23305a4048f2e6ade860e322fed282711f7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ed7a8fb4420108ea76e21e30f14897e5857c0445
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778716"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123273188"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可变的存储来存储业务关键型 Blob 数据
 
@@ -58,9 +58,9 @@ Microsoft 一直在与一家领先的独立评估机构 Cohasset Associates 保�
 
 可以根据范围来为资源（容器或 Blob 版本）配置基于时间的保留策略和法定保留。 下表汇总了每个资源范围支持的不可变性策略：
 
-| 范围 | 容器配置为支持版本级不可变性策略 | 容器未配置为支持版本级不可变性策略 |
+| 范围 | 容器支持版本级不可变策略 | 容器不支持版本级不可变策略 |
 |--|--|--|
-| 容器 | 支持一个默认的版本级不可变性策略。 不支持法定保留。 | 支持一个容器级不可变性策略和一个法定保留。 |
+| 容器 | 支持一个默认的版本级不可变性策略。 默认策略应用于配置容器后在容器中创建的任何新版本。<br /><br /> 不支持法定保留。 | 支持一个容器级不可变性策略和一个法定保留。 blob 版本上的策略可以替代容器上指定的默认策略。 |
 | Blob 版本 | 支持一个版本级不可变性策略和一个法定保留。 | 不适用 |
 
 ### <a name="about-the-preview"></a>关于此预览版
@@ -165,6 +165,8 @@ Azure 存储 Blob 清单提供存储帐户中的容器以及这些容器中的 B
 
 ## <a name="next-steps"></a>后续步骤
 
+- [数据保护概述](data-protection-overview.md)
 - [不可变 Blob 数据的基于时间的保留策略](immutable-time-based-retention-policy-overview.md)
 - [不可变 Blob 数据的法定保留](immutable-legal-hold-overview.md)
-- [数据保护概述](data-protection-overview.md)
+- [为 Blob 版本配置不可变性策略（预览版）](immutable-policy-configure-version-scope.md)
+- [为容器配置不可变性策略](immutable-policy-configure-container-scope.md)

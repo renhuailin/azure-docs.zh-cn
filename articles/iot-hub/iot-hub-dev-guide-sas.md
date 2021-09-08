@@ -6,7 +6,7 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/21/2021
+ms.date: 08/24/2021
 ms.custom:
 - amqp
 - mqtt
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: aec64f22cf0af9de9b99c914d972f45f3dfefe1d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 032f67427f070818aa6874d33414c857fa6ca39c
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728801"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867176"
 ---
 # <a name="control-access-to-iot-hub-using-shared-access-signatures-and-security-tokens"></a>使用共享访问签名和安全令牌控制对 IoT 中心的访问
 
@@ -282,6 +282,14 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 ### <a name="supported-x509-certificates"></a>支持的 X.509 证书
 
 可以通过将证书指纹或证书颁发机构 (CA) 上传到 Azure IoT 中心，从而借助 IoT 中心使用任何 X.509 证书对设备进行身份验证。 有关详细信息，请参阅[使用 X.509 CA 证书进行设备身份验证](iot-hub-x509ca-overview.md)。 若要了解如何使用 IoT 中心上传和验证证书，请参阅[在 Azure IoT 中心设置 X.509 安全性](./tutorial-x509-scripts.md)。
+
+### <a name="enforcing-x509-authentication"></a>强制执行 X.509 身份验证
+
+为了进一步提高安全性，可以将 IoT 中心配置为不允许对设备和模块进行 SAS 身份验证，而将 x.509 保留为唯一接受的身份验证选项。 目前，此功能在 Azure 门户中不可用。 若要进行配置，请将 IoT 中心资源属性上的 `disableDeviceSAS` 和 `disableModuleSAS` 设置为 `true`：
+
+```azurecli-interactive
+az resource update -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs --set properties.disableDeviceSAS=true properties.disableModuleSAS=true
+```
 
 ### <a name="use-sas-tokens-as-a-device"></a>将 SAS 令牌当做设备使用
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2021
+ms.date: 08/30/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ae74589dbbde2402d3acd916f2c5c1f58a7a5c7c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 15f62d7d0fa05a925878683af1b41ca3421d1765
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464124"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222679"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 标识平台和 OAuth 2.0 代理流
 
@@ -66,7 +66,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 | --- | --- | --- |
 | `grant_type` | 必须 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
 | `client_id` | 必须 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
-| `client_secret` | 必须 | 在“Azure 门户 - 应用注册”页中为应用生成的客户端机密。 |
+| `client_secret` | 必须 | 在“Azure 门户 - 应用注册”页中为应用生成的客户端机密。  还支持根据 [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) 在授权标头中提供凭据的基本身份验证模式。 |
 | `assertion` | 必须 | 已发送到中间层 API 的访问令牌。  此令牌必须包含发出此 OBO 请求的应用（由 `client-id` 字段表示的应用）的受众 (`aud`) 声明。 应用程序无法兑换其他应用的令牌（例如，如果客户端向 API 发送用于 MS Graph 的令牌，则该 API 无法使用 OBO 兑换该令牌。  它应该改为拒绝该令牌）。  |
 | `scope` | 必选 | 空格分隔的令牌请求作用域的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
 | `requested_token_use` | 必须 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
@@ -200,13 +200,13 @@ SAML 断言的服务到服务请求包含以下参数：
 
 | 参数 | 类型 | 说明 |
 | --- | --- | --- |
-| grant_type |必需 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
-| assertion |必需 | 请求中使用的访问令牌值。|
-| client_id |必需 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称。 |
-| client_secret |必需 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
+| grant_type |必填 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
+| assertion |必填 | 请求中使用的访问令牌值。|
+| client_id |必填 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称。 |
+| client_secret |必填 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。  还支持根据 [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) 在授权标头中提供凭据的基本身份验证模式。 |
 | scope |必需 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 例如，“https://testapp.contoso.com/user_impersonation openid” |
-| requested_token_use |必需 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
-| requested_token_type | 必需 | 指定请求令牌的类型。 值可以是 urn:ietf:params:oauth:token-type:saml2 或 urn:ietf:params:oauth:token-type:saml1，具体取决于访问资源的要求 。 |
+| requested_token_use |必填 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
+| requested_token_type | 必填 | 指定请求令牌的类型。 值可以是 urn:ietf:params:oauth:token-type:saml2 或 urn:ietf:params:oauth:token-type:saml1，具体取决于访问资源的要求 。 |
 
 响应包含以 UTF8 和 Base64url 编码的 SAML 令牌。
 

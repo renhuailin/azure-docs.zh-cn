@@ -1,18 +1,18 @@
 ---
 title: Azure 虚拟网络的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure 虚拟网络的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 08d5bb98a68da23fe9fd825380c39254a185e284
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 06eeb07f9c63defb098fe157fde7d42195c6d753
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111830"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468972"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-network"></a>Azure 虚拟网络的 Azure Policy 法规遵从性控制措施
 

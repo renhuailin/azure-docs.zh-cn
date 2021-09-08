@@ -9,16 +9,17 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: d323fd5a3faf5811e88fd924ab767ec20568b917
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: fe7698a0a2a7c0059db6e5f96e3f86445bc5871f
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113435463"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449436"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Windows VM 映像
+适用于：:heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
 
-映像可用于启动部署并确保多个 VM 的一致性。 在本教程中，我们使用 PowerShell 创建自己的 Azure 虚拟机专用化映像，并将其存储在共享映像库中。 你将学习如何执行以下操作：
+映像可用于启动部署并确保多个 VM 的一致性。 在本教程中，我们使用 PowerShell 创建自己的 Azure 虚拟机专用化映像，并将其存储在共享映像库中。 学习如何：
 
 > [!div class="checklist"]
 > * 创建共享映像库
@@ -43,7 +44,7 @@ ms.locfileid: "113435463"
 
 共享映像库功能具有多种资源类型：
 
-[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell

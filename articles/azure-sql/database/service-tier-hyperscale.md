@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
 ms.date: 7/8/2021
-ms.openlocfilehash: ca9bfaa6155c2d0f4600ed56bf5a3cab3880274c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bd5a9d64b237fe8c6591cac841b13f96a9c16f1d
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722907"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864450"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -141,6 +141,11 @@ GO
 ALTER DATABASE [DB2] MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
+
+> [!NOTE]
+> 要将作为[异地复制](active-geo-replication-overview.md)关系的一部分的数据库（作为主数据库或辅助数据库）移动到“超大规模”，必须停止复制。 [故障转移组](auto-failover-group-overview.md)中的数据库必须先从组中删除。
+>
+> 将数据库移动到“超大规模”后，你可以为该数据库创建新的“超大规模”异地副本。 超大规模的异地复制目前为预览版，具有一些[限制](active-geo-replication-overview.md)。
 
 ## <a name="database-high-availability-in-hyperscale"></a>“超大规模”中的数据库高可用性
 

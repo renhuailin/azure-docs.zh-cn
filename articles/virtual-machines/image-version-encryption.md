@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 7/1/2021
 ms.author: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c04dffcad178694f4f2548f38aa4c1d512c6fe60
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 936eb725836b8191aa35045d37882c859c9c058a
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322988"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449164"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>预览版：使用客户管理的密钥加密映像
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 共享映像库中的映像是作为快照存储的，因此会通过服务器端加密来自动对其进行加密。 服务器端加密使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)，这是可用的最强分组加密技术之一。 服务器端加密也符合 FIPS 140-2 规范。 有关加密模块基础 Azure 托管磁盘的详细信息，请参阅[加密 API：下一代](/windows/desktop/seccng/cng-portal)。
 
@@ -28,7 +30,7 @@ ms.locfileid: "122322988"
 
 本文要求你已在要复制映像的每个区域中设置了磁盘加密：
 
-- 若只使用客户管理的密钥，请参阅那些介绍如何使用 [Azure 门户](./disks-enable-customer-managed-keys-portal.md)或 [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-without-automatic-key-rotation) 为客户管理的密钥启用服务器端加密的文章。
+- 若只使用客户管理的密钥，请参阅那些介绍如何使用 [Azure 门户](./disks-enable-customer-managed-keys-portal.md)或 [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-optionally-with-automatic-key-rotation) 为客户管理的密钥启用服务器端加密的文章。
 
 - 若要同时使用平台管理的密钥和客户管理的密钥（进行双重加密），请参阅那些介绍如何通过 [Azure 门户](./disks-enable-double-encryption-at-rest-portal.md)或 [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md) 启用静态双重加密的文章。
 
@@ -98,7 +100,7 @@ New-AzGalleryImageVersion `
 
 ### <a name="create-a-vm"></a>创建 VM
 
-可以从共享映像库创建虚拟机 (VM)，并使用客户管理的密钥来加密磁盘。 语法与从映像创建[通用化](vm-generalized-image-version-powershell.md)或[专用化](vm-specialized-image-version-powershell.md) VM 相同。 请使用扩展的参数集并将 `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` 添加到 VM 配置。
+可以从共享映像库创建虚拟机 (VM)，并使用客户管理的密钥来加密磁盘。 语法与从映像创建[通用化](vm-generalized-image-version.md)或[专用化](vm-specialized-image-version.md) VM 相同。 请使用扩展的参数集并将 `Set-AzVMOSDisk -Name $($vmName +"_OSDisk") -DiskEncryptionSetId $diskEncryptionSet.Id -CreateOption FromImage` 添加到 VM 配置。
 
 对于数据磁盘，使用 [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) 时请添加 `-DiskEncryptionSetId $setID` 参数。
 
@@ -142,7 +144,7 @@ az sig image-version create \
 
 ### <a name="create-the-vm"></a>创建 VM
 
-可以从共享映像库创建 VM，并使用客户管理的密钥来加密磁盘。 语法与从映像创建[通用化](vm-generalized-image-version-cli.md)或[专用化](vm-specialized-image-version-cli.md) VM 相同。 只需添加 `--os-disk-encryption-set` 参数以及加密集的 ID。 对于数据磁盘，请添加 `--data-disk-encryption-sets`，以及数据磁盘的磁盘加密集列表（磁盘加密集以空格分隔）。
+可以从共享映像库创建 VM，并使用客户管理的密钥来加密磁盘。 语法与从映像创建[通用化](vm-generalized-image-version.md)或[专用化](vm-specialized-image-version.md) VM 相同。 只需添加 `--os-disk-encryption-set` 参数以及加密集的 ID。 对于数据磁盘，请添加 `--data-disk-encryption-sets`，以及数据磁盘的磁盘加密集列表（磁盘加密集以空格分隔）。
 
 
 ## <a name="portal"></a>门户

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 97189fd7a232c2467981b23dc20da51ebef08252
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f5059352793adf7cd3e8635d270ba85a3014758
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656336"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434207"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>在 Azure SQL Edge 中创建数据流作业 
 
@@ -104,7 +104,7 @@ Azure SQL Edge 目前仅支持以下数据源作为流输入和输出。
 3. 使用 CREATE EXTERNAL DATA SOURCE 创建外部数据源。 下面的示例：
 
     * 创建名为 LocalSQLOutput 的外部数据源。
-    * 标识外部数据源 (LOCATION = '<vendor>://<server>[:<port>]')。 在示例中，它指向 Azure SQL Edge 的本地实例。
+    * 标识外部数据源 (`LOCATION = '<vendor>://<server>[:<port>]'`)。 在示例中，它指向 Azure SQL Edge 的本地实例。
     * 使用先前创建的凭据。
 
     ```sql

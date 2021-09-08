@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/18/2021
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 55899fc38652462f0f98b4ad2d916cf10f203458
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 628cba9c515b58e23c984c6dcd34fa35ff63c78a
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470964"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123028590"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>创建具有自动缩放吞吐量的 Azure Cosmos 容器和数据库
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -86,5 +86,8 @@ ms.locfileid: "110470964"
 * 了解如何[在手动与自动缩放吞吐量之间进行选择](how-to-choose-offer.md)。
 * 了解[如何对 Azure Cosmos 数据库或容器预配自动缩放吞吐量](how-to-provision-autoscale-throughput.md)。
 * 深入了解 Azure Cosmos DB 中的[分区](partitioning-overview.md)。
+* 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量计划。
+    * 若只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
 
 

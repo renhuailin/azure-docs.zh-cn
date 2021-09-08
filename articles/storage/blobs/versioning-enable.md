@@ -10,20 +10,18 @@ ms.date: 06/07/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: 3437d7711aa2959754fcce84a0bbe30ac384898b
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: bcf69aba20a53e101cf85cf8ad9e249ca72d3a93
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378540"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470483"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>启用和管理 blob 版本控制
 
 可以启用 Blob 存储版本控制，以便在修改或删除 blob 时，自动维护之前版本的 blob。 启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原 blob 的先前版本以恢复数据。
 
 本文介绍如何使用 Azure 门户或 Azure 资源管理器模板启用或禁用存储帐户的 blob 版本控制。 若要详细了解 blob 版本控制，请参阅 [Blob 版本控制](versioning-overview.md)。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="enable-blob-versioning"></a>启用 Blob 版本控制
 

@@ -1,20 +1,20 @@
 ---
 title: 向 Android 地图添加图块层 | Microsoft Docs
 description: 了解如何向地图添加图块层。 请参阅示例了解如何使用 Azure Maps Android SDK 向地图添加天气雷达覆盖。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 3/25/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: ac37a4e6d68decdf6780560963a0c534689e8dbb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d35b1201d0f60c517f419186d01f493efa9fbeba
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608965"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435233"
 ---
 # <a name="add-a-tile-layer-to-a-map-android-sdk"></a>向地图添加图块层 (Android SDK)
 

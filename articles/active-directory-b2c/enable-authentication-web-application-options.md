@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Active Directory B2C 启用 Web 应用程序选项
-description: 通过多种方式启用 Web 应用程序选项。
+title: 使用 Azure Active Directory B2C 启用 Web 应用验证选项
+description: 本文介绍了几种启用 Web 应用验证选项的方法。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,27 +11,33 @@ ms.date: 08/12/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 126bdd850d29d716433b7854c71d02269b95ec2e
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 50cdb5f171614c138427b358f2418b8b81751457
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067966"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220344"
 ---
-# <a name="configure-authentication-options-in-a-web-application-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 在 Web 应用程序中配置身份验证选项 
+# <a name="enable-authentication-options-in-a-web-app-by-using-azure-ad-b2c"></a>使用 Azure AD B2C 在 Web 应用中启用验证选项 
 
-本文介绍如何自定义和增强 Web 应用程序的 Azure Active Directory B2C (Azure AD B2C) 身份验证体验。 在开始之前，务必先熟悉以下文章：[在示例 Web 应用程序中配置身份验证](configure-authentication-sample-web-app.md)或[在你自己的 Web 应用程序中启用身份验证](enable-authentication-web-application.md)。
+本文介绍如何启用、自定义和增强 Web 应用程序的 Azure Active Directory B2C (Azure AD B2C) 身份验证体验。 
+
+在开始之前，请务必先熟悉以下文章： 
+* [在示例 Web 应用中配置身份验证](configure-authentication-sample-web-app.md)
+* [在自己的 Web 应用中启用身份验证](enable-authentication-web-application.md)。
 
 [!INCLUDE [active-directory-b2c-app-integration-custom-domain](../../includes/active-directory-b2c-app-integration-custom-domain.md)]
 
-若要在身份验证 URL 中使用自定义域和租户 ID，请按照[启用自定义域](custom-domain.md)中的指南进行操作。 在项目根文件夹下，打开 `appsettings.json` 文件。 此文件包含有关 Azure AD B2C 标识提供者的信息。 
+若要在身份验证 URL 中使用自定义域和租户 ID，请按照[启用自定义域](custom-domain.md)中的指南进行操作。 在项目根文件夹下，打开 appsettings.json 文件。 此文件包含有关 Azure AD B2C 标识提供者的信息。
+
+在 appsettings.json 文件中，执行以下操作：
 
 - 将 `Instance` 条目更新为你的自定义域。
 - 将 `Domain` 条目更新为你的[租户 ID](tenant-management.md#get-your-tenant-id)。 有关详细信息，请参阅[使用租户 ID](custom-domain.md#optional-use-tenant-id)。
 
 以下 JSON 显示了更改前的应用设置： 
 
-```JSon
+```JSON
 "AzureAdB2C": {
   "Instance": "https://contoso.b2clogin.com",
   "Domain": "tenant-name.onmicrosoft.com",
@@ -41,7 +47,7 @@ ms.locfileid: "122067966"
 
 以下 JSON 显示了更改后的应用设置： 
 
-```JSon
+```JSON
 "AzureAdB2C": {
   "Instance": "https://login.contoso.com",
   "Domain": "00000000-0000-0000-0000-000000000000",
@@ -53,7 +59,7 @@ ms.locfileid: "122067966"
 
 Microsoft 标识平台 API 中的 `AddMicrosoftIdentityWebAppAuthentication` 方法允许开发人员为高级身份验证方案添加代码或订阅 OpenIdConnect 事件。 例如，你可以订阅 OnRedirectToIdentityProvider，它可用于自定义应用发送到 Azure AD B2C 的身份验证请求。
 
-若要支持高级方案，请打开 `Startup.cs`，然后在 `ConfigureServices` 函数中，将 `AddMicrosoftIdentityWebAppAuthentication` 替换为以下代码片段： 
+若要支持高级方案，请打开 Startup.cs 文件，然后在 `ConfigureServices` 函数中，将 `AddMicrosoftIdentityWebAppAuthentication` 替换为以下代码片段： 
 
 ```csharp
 // Configuration to sign-in users with Azure AD B2C
@@ -69,7 +75,7 @@ services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
 });
 ```
 
-上面的代码添加了 OnRedirectToIdentityProvider 事件，并引用了 *OnRedirectToIdentityProviderFunc* 方法。 将以下代码片段添加到 `Startup.cs` 类。
+前面的代码添加了 OnRedirectToIdentityProvider 事件以及对 `OnRedirectToIdentityProviderFunc` 方法的引用。 将以下代码片段添加到 `Startup.cs` 类。
 
 ```csharp
 private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -81,14 +87,13 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 }
 ```
 
-可以使用上下文参数在控制器和 OnRedirectToIdentityProvider 函数之间传递参数。 
-
+可以使用上下文参数在控制器和 `OnRedirectToIdentityProvider` 函数之间传递参数。 
 
 [!INCLUDE [active-directory-b2c-app-integration-login-hint](../../includes/active-directory-b2c-app-integration-login-hint.md)]
 
 1. 如果使用的是自定义策略，请按照[设置直接登录](direct-signin.md#prepopulate-the-sign-in-name)中的说明添加所需的输入声明。 
 1. 完成[支持高级方案](#support-advanced-scenarios)过程。
-1. 将以下代码行添加到 OnRedirectToIdentityProvider 函数：
+1. 将以下代码行添加到 `OnRedirectToIdentityProvider` 函数：
     
     ```csharp
     private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -104,7 +109,7 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 
 1. 检查外部标识提供者的域名。 有关详细信息，请参阅[将登录重定向到社交服务提供商](direct-signin.md#redirect-sign-in-to-a-social-provider)。 
 1. 完成[支持高级方案](#support-advanced-scenarios)过程。
-1. 在 OnRedirectToIdentityProviderFunc 函数中，将以下代码行添加到 OnRedirectToIdentityProvider 函数：
+1. 在 `OnRedirectToIdentityProviderFunc` 函数中，将以下代码行添加到 `OnRedirectToIdentityProvider` 函数：
     
     ```csharp
     private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -121,7 +126,7 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 
 1. [配置语言自定义](language-customization.md)。
 1. 完成[支持高级方案](#support-advanced-scenarios)过程。
-1. 将以下代码行添加到 OnRedirectToIdentityProvider 函数：
+1. 将以下代码行添加到 `OnRedirectToIdentityProvider` 函数：
 
     ```csharp
     private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -137,7 +142,7 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 
 1. 配置 [ContentDefinitionParameters](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri) 元素。
 1. 完成[支持高级方案](#support-advanced-scenarios)过程。
-1. 将以下代码行添加到 OnRedirectToIdentityProvider 函数：
+1. 将以下代码行添加到 `OnRedirectToIdentityProvider` 函数：
     
     ```csharp
     private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -154,7 +159,7 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 
 1. 完成[支持高级方案](#support-advanced-scenarios)过程。
 1. 在自定义策略中，定义 [ID 令牌提示技术配置文件](id-token-hint.md)。
-1. 将以下代码行添加到 OnRedirectToIdentityProvider 函数：
+1. 将以下代码行添加到 `OnRedirectToIdentityProvider` 函数：
     
     ```csharp
     private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -169,11 +174,11 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
     
 ## <a name="account-controller"></a>帐户控制器
 
-如果你想自定义 **登录**、**注册** 或 **注销** 操作，建议你创建自己的控制器。 拥有自己的控制器后，就可以在控制器和身份验证库之间传递参数。 `AccountController` 是 `Microsoft.Identity.Web.UI` NuGet 包的一部分，用于处理登录和注销操作。 你可以在 [Microsoft 标识 Web 库](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs)中找到它的实现。 
+如果想自定义登录、注册或注销操作，建议创建自己的控制器  。 拥有自己的控制器后，就可以在控制器和身份验证库之间传递参数。 `AccountController` 是 `Microsoft.Identity.Web.UI` NuGet 包的一部分，用于处理登录和注销操作。 你可以在 [Microsoft 标识 Web 库](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs)中找到它的实现。 
 
 ### <a name="add-the-account-controller"></a>添加帐户控制器
 
-在 Visual Studio 项目中，右键单击“Controllers”文件夹，然后添加一个新的控制器 。 选择“MVC - 空控制器”，然后提供名称“MyAccountController.cs” 。
+在 Visual Studio 项目中，右键单击“Controllers”文件夹，然后添加一个新的控制器。 选择“MVC - 空控制器”，然后提供名称“MyAccountController.cs” 。
 
 以下代码片段使用 SignIn 操作演示了自定义 `MyAccountController`。
 
@@ -210,7 +215,7 @@ namespace mywebapp.Controllers
 }
 ```
 
-在 `_LoginPartial.cshtml` 视图中，将登录链接更改为你的控制器
+在 _LoginPartial.cshtml 视图中，将登录链接更改为你的控制器。
 
 ```html
 <form method="get" asp-area="MicrosoftIdentity" asp-controller="MyAccount" asp-action="SignIn">
@@ -240,7 +245,7 @@ public IActionResult SignUp([FromRoute] string scheme)
 }
 ```
 
-在 `_LoginPartial.cshtml` 视图中，将任何其他身份验证链接（例如注册或编辑个人资料）的 `asp-controller` 值更改为 `MyAccountController`。
+在 _LoginPartial.cshtml 视图中，将任何其他身份验证链接（例如注册或编辑个人资料）的 `asp-controller` 值更改为 `MyAccountController`。
 
 ### <a name="pass-custom-parameters"></a>传递自定义参数
 
@@ -258,7 +263,7 @@ public IActionResult SignIn([FromRoute] string scheme)
 }
 ```
 
-完成[支持高级方案](#support-advanced-scenarios)过程。 然后，在 `OnRedirectToIdentityProvider` 方法中读取自定义参数：
+完成“[支持高级方案](#support-advanced-scenarios)”过程，然后在 `OnRedirectToIdentityProvider` 方法中读取自定义参数：
 
 ```csharp
 private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
@@ -345,9 +350,12 @@ private async Task OnRedirectToIdentityProviderFunc(RedirectContext context)
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-借助 [ASP.NET Core 中的授权](/aspnet/core/security/authorization/introduction)，你可以使用[基于角色的授权](/aspnet/core/security/authorization/roles)、[基于声明的授权](/aspnet/core/security/authorization/claims)或[基于策略的授权](/aspnet/core/security/authorization/policies)来检查用户是否有权访问受保护的资源。
+借助 [ASP.NET Core 中的授权](/aspnet/core/security/authorization/introduction)，可以使用以下方法之一来检查用户是否有权访问受保护的资源： 
+* [基于角色的授权](/aspnet/core/security/authorization/roles) 
+* [基于声明的授权](/aspnet/core/security/authorization/claims) 
+* [基于策略的授权](/aspnet/core/security/authorization/policies)
 
-在 ConfigureServices 方法中添加 AddAuthorization 方法，以添加授权模型。 以下示例将创建一个名为 `EmployeeOnly` 的策略。 该策略检查 `EmployeeNumber` 声明是否存在。 声明的值必须是以下 ID 之一：1、2、3、4 或 5。
+在 `ConfigureServices` 方法中添加 `AddAuthorization` 方法，以添加授权模型。 以下示例将创建一个名为 `EmployeeOnly` 的策略。 该策略会检查以验证声明 `EmployeeNumber` 是否存在。 声明的值必须是以下 ID 之一：1、2、3、4 或 5。
 
 ```csharp
 services.AddAuthorization(options =>
@@ -357,9 +365,9 @@ services.AddAuthorization(options =>
     });
 ```
 
-ASP.NET Core 中的授权由 [AuthorizeAttribute](/aspnet/core/security/authorization/simple) 及其各种参数控制。 在其最基本的形式中，通过向控制器、操作或 Razor 页面应用 `[Authorize]` 属性，可限制为仅允许该组件的已验证用户访问。
+可以使用 [AuthorizeAttribute](/aspnet/core/security/authorization/simple) 及其各种参数控制 ASP.NET Core 中的授权。 在其最基本的形式中，通过向控制器、操作或 Razor 页面应用 `Authorize` 属性，可限制为仅允许该组件的已验证用户访问。
 
-策略通过具有策略名称的 `[Authorize]` 属性应用到控制器。 以下代码将 `Claims` 操作限制为仅允许由 `EmployeeOnly` 策略授权的用户访问：
+可以使用具有策略名称的 `Authorize` 属性将策略应用到控制器。 以下代码将 `Claims` 操作限制为仅允许由 `EmployeeOnly` 策略授权的用户访问：
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]
@@ -371,4 +379,4 @@ public IActionResult Claims()
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解详细信息：[ASP.NET Core 中的授权简介](/aspnet/core/security/authorization/introduction)
+- 若要详细了解授权，请参阅 [ASP.NET Core 中的授权简介](/aspnet/core/security/authorization/introduction)。

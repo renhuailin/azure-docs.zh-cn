@@ -1,27 +1,22 @@
 ---
-title: 什么是 Azure 路由服务器（预览版）？
+title: 什么是 Azure 路由服务器？
 description: 了解 Azure 路由服务器如何简化网络虚拟设备 (NVA) 与虚拟网络之间的路由。
 services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: d868c064b96f58ab3febc1fd3b7f20b74d507cb0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f2c4a31f4c1c0ec53e76ffaf6f4670d9179e9505
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437155"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436781"
 ---
-# <a name="what-is-azure-route-server-preview"></a>什么是 Azure 路由服务器（预览版）？ 
+# <a name="what-is-azure-route-server"></a>什么是 Azure 路由服务器？ 
 
 Azure 路由服务器简化了网络虚拟设备 (NVA) 与虚拟网络之间的动态路由。 利用此功能，可以在 Azure 虚拟网络 (VNET) 中任何支持 BGP 路由协议的 NVA 与 Azure 软件定义的网络 (SDN) 之间，直接通过“边界网关协议 (BGP)”路由协议交换路由信息，而无需手动配置或维护路由表。 Azure 路由服务器是一项完全托管的服务，并且配置为具有高可用性。
-
-> [!IMPORTANT]
-> Azure 路由服务器（预览版）目前为公共预览版状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="how-does-it-work"></a>它是如何工作的？
 

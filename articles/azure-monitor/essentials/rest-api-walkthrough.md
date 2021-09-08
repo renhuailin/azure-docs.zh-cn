@@ -4,12 +4,12 @@ description: 如何对请求进行身份验证，以及如何使用 Azure Monito
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref, devx-track-azurepowershell
-ms.openlocfilehash: 8c7e40ced81ae71bd9f8688130944144314ec1ab
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 2b7033c86c412e2bebb320952bb8ac94d33cfb69
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320072"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272162"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
 
@@ -729,6 +729,11 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
+
+## <a name="troubleshooting"></a>疑难解答
+
+如果收到 429、503 或 504 错误，请在一分钟内重试 API。
+
 
 ## <a name="next-steps"></a>后续步骤
 

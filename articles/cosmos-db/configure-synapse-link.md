@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: references_regions, synapse-cosmos-db, devx-track-azurepowershell
-ms.openlocfilehash: 86f27f08bd7495e558cd81b122f1daa243dbe313
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 116997c8abbad382dc10014fd76e7933f333c113
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727911"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123109345"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>配置和使用 Azure Synapse Link for Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -268,7 +268,9 @@ container.replace(containerProperties).block();
 
 ## <a name="query-analytical-store-using-apache-spark-for-azure-synapse-analytics"></a><a id="query-analytical-store-spark"></a>使用适用于 Azure Synapse Analytics 的 Apache Spark 查询分析存储
 
-使用[查询 Azure Cosmos DB 分析存储](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md)文章中的说明，了解如何使用 Synapse Spark 进行查询。 这篇文章提供了一些示例，说明如何通过 Synapse 笔势与分析存储交互。 右键单击某个容器时，即可看到这些笔势。 借助笔势，可以快速生成代码，并根据需要进行调整。 它们还适用于只需单击一下即可发现数据的功能。
+参照[使用 Spark 3 查询 Azure Cosmos DB 分析存储](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3.md)一文中的说明，了解如何使用 Synapse Spark 3 进行查询。 这篇文章提供了一些示例，说明如何通过 Synapse 笔势与分析存储交互。 右键单击某个容器时，即可看到这些笔势。 借助笔势，可以快速生成代码，并根据需要进行调整。 它们还适用于只需单击一下即可发现数据的功能。
+
+对于 Spark 2 集成，请参照[使用 Spark 2 查询 Azure Cosmos DB 分析存储](../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md)一文中的说明。
 
 ## <a name="query-the-analytical-store-using-serverless-sql-pool-in-azure-synapse-analytics"></a><a id="query-analytical-store-sql-on-demand"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询分析存储
 

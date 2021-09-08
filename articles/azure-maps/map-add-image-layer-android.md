@@ -1,20 +1,20 @@
 ---
 title: 向 Android 地图添加图像层 | Microsoft Azure Maps
 description: 了解如何向地图添加图像。 了解如何使用 Azure Maps Android SDK 自定义图像层并将图像覆盖在固定坐标集上。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 4c11a1275b94eebba33819ae6c9ffeb313a3ce0b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d90771a639cbd904c3c61412b511d764d2d37ae8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114463097"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432731"
 ---
 # <a name="add-an-image-layer-to-a-map-android-sdk"></a>向地图添加图像层 (Android SDK)
 

@@ -1,19 +1,17 @@
 ---
 title: 使用 Azure Maps 创建易访问的地图应用程序 | Microsoft Azure Maps
 description: 了解 Azure Maps 中的辅助功能注意事项。 了解哪些功能使地图应用程序可供访问，并查看辅助功能提示。
-services: azure-maps
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
-manager: cpendleton
-ms.openlocfilehash: 954dd8ad65d0a9c90e19530d541c19b5034bc175
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 7f0aa739df4b58435f0caebacdab3865dce284e2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208106"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432785"
 ---
 # <a name="building-an-accessible-application"></a>生成可访问的应用程序
 
@@ -127,7 +125,7 @@ map.getMapContainer().classList.contains("high-contrast-light")
 
 <br/>
 
-<iframe height='500' scrolling='no' title='构建可访问的应用程序' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>构建可访问的应用程序</a>。 </iframe>
+<iframe height='500' scrolling='no' title='构建可访问的应用程序' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>构建可访问的应用程序</a>。 </iframe>
 
 <br/>
 

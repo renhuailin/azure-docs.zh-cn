@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5caf348b1865b47521ec9df776fd08cc36db47fd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0151f4de30c3bf96fa8c0dca77c90282115c70d7
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739975"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864369"
 ---
 # <a name="how-to-investigate-risk"></a>如何：调查风险
 
@@ -76,7 +76,7 @@ ms.locfileid: "121739975"
 - 确认登录是否安全
 
 > [!NOTE] 
-> 无论身份验证流是否是交互式的，标识保护服务都会评估所有身份验证流的风险。 但是，登录报表仅显示交互式登录。你可能会看到在非交互式登录时发生的风险登录，但该登录将不在 Azure AD 登录报表中显示。
+> 无论身份验证流是否是交互式的，标识保护服务都会评估所有身份验证流的风险。 风险登录报表现在显示交互式和非交互式登录。使用“登录类型”筛选器来修改此视图。
 
 ## <a name="risk-detections"></a>风险检测
 

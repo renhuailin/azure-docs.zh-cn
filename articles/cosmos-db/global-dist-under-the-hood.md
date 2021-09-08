@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 34a7a987de10ec727db0ed5a4e29c679c4dc1416
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6d18338bcaa36b499ecfd3787848e6269a738c0e
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735444"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031858"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB 全局数据分布 - 揭秘
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -86,3 +86,6 @@ Cosmos DB 的全球分布依赖于两个关键抽象 - 副本集和分区集 。
 
 * [在数据库帐户中添加/删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [如何创建自定义冲突解决策略](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
+* 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

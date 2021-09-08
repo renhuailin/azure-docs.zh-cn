@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/29/2021
+ms.date: 08/30/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9736bee99483a7e4fbb5a5f02a3f415a74c9f76f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c91d4f98928f2d446a15b123a4155b971377159a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727740"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223835"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>有关在 Azure Active Directory 中编写特性映射表达式的参考
 
@@ -38,7 +38,7 @@ ms.locfileid: "121727740"
 
 ## <a name="list-of-functions"></a>函数列表
 
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateDiff](#datediff) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>附加
@@ -265,11 +265,8 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是本机属性类
 
 间隔字符串必须具有下列值之一： 
  * yyyy Year 
- * q Quarter
  * m Month
- * y Day of year
  * d Day
- * w Weekday
  * ww Week
  * h Hour
  * n Minute
@@ -299,6 +296,57 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是本机属性类
 `DateAdd("yyyy", 2, CDate([StatusHireDate]))`
 * 输入 (StatusHireDate)：2012-03-16-07:00
 * 输出：3/16/2014 7:00:00 AM
+---
+### <a name="datediff"></a>DateDiff
+**函数：**  
+`DateDiff(interval, date1, date2)`
+
+**描述：**  
+此函数使用 interval 参数返回一个数字，该数字表示两个输入日期之间的差异。 返回  
+  * 正数（如果 date2 > date1）， 
+  * 负数（如果 date2 < date1）， 
+  * 0（如果 date2 == date1）
+
+**参数：** 
+
+| 名称 | 必需/可选 | 类型 | 说明 |
+| --- | --- | --- | --- |
+| **interval** |必须 | 字符串 | 用于计算差值的时间间隔。 |
+| **date1** |必需 | DateTime | 表示有效日期的日期/时间。 |
+| **date2** |必需 | DateTime | 表示有效日期的日期/时间。 |
+
+间隔字符串必须具有下列值之一： 
+ * yyyy Year 
+ * m Month
+ * d Day
+ * ww Week
+ * h Hour
+ * n Minute
+ * s Second
+
+**示例 1：将当前日期与 Workday 中具有不同间隔的雇佣日期进行比较** <br>
+`DateDiff("d", Now(), CDate([StatusHireDate]))`
+
+| 示例 | interval | date1 | date2 | output |
+| --- | --- | --- | --- | --- |
+| 两个日期之间的正数差（以天为单位） | d | 2021-08-18+08:00 | 2021-08-31+08:00 | 13 |
+| 两个日期之间的负数差（以天为单位） | d | 2021/8/25 晚上 5:41:18 | 2012-03-16-07:00 | -3449 |
+| 两个日期之间的差值（以周为单位） | ww | 2021/8/25 晚上 5:41:18 | 2012-03-16-07:00 | -493 | 
+| 两个日期之间的差值（以月为单位） | m | 2021/8/25 晚上 5:41:18 | 2012-03-16-07:00 | -113 | 
+| 两个日期之间的差值（以年为单位） | yyyy | 2021/8/25 晚上 5:41:18 | 2012-03-16-07:00 | -9 | 
+| 两个日期相同时的差值 | d | 2021-08-31+08:00 | 2021-08-31+08:00 | 0 | 
+| 两个日期之间的差值（以小时为单位） | h | 2021-08-24 | 2021-08-25 | 24 | 
+| 两个日期之间的差值（以分钟为单位） | n | 2021-08-24 | 2021-08-25 | 1440 | 
+| 两个日期之间的差值（以秒为单位） | s | 2021-08-24 | 2021-08-25 | 86400 | 
+
+**示例 2：将 DateDiff 与 IIF 函数合并用于设置属性值** <br>
+如果某个帐户在 Workday 中处于活动状态，则仅当雇用日期的范围在接下来的 5 天内时，才将用户的 accountEnabled 属性设置为 True。 
+
+```
+Switch([Active], , 
+  "1", IIF(DateDiff("d", Now(), CDate([StatusHireDate])) > 5, "False", "True"), 
+  "0", "False")
+```
 
 ---
 
@@ -563,6 +611,28 @@ CDate 函数通过字符串返回 UTC DateTime。 DateTime 不是本机属性类
 | **source** |必须 |String | 通常是名字或姓氏属性。 |
 
 
+| 带有音调符号的字符  | 规范化字符 | 带有音调符号的字符  | 规范化字符 | 
+| --- | --- | --- | --- | 
+| ä, à, â, ã, å, á, ą, ă | a | Ä, À, Â, Ã, Å, Á, Ą, Ă | A | 
+| æ | ae | Æ | AE | 
+| ç, č, ć | c | Ç, Č, Ć | C | 
+| ď | d | Ď | D | 
+| ë, è, é, ê, ę, ě, ė | e | Ë, È, É, Ê, Ę, Ě, Ė | E | 
+| ğ | g | Ğ | G | 
+| Ï, Î, Ì, Í, İ | I | ï, î, ì, í, ı | i | 
+| ľ, ł | l |  Ł, Ľ | L | 
+| ñ, ń, ň | n |  Ñ, Ń, Ň | N | 
+| ö, ò, ő, õ, ô, ó | o |  Ö, Ò, Ő, Õ, Ô, Ó | O | 
+| ø | oe |  Ø | OE | 
+| ř | r |  Ř | R | 
+| ß | ss | | | 
+| š, ś, ș, ş | s |  Š, Ś, Ș, Ş | S | 
+| ť, ț | t | Ť, Ț | T | 
+| ü, ù, û, ú, ů, ű | u |  Ü, Ù, Û, Ú, Ů, Ű | U | 
+| ÿ, ý | y | Ÿ, Ý | Y | 
+| ź, ž, ż | z | Ź, Ž, Ż | Z | 
+
+
 #### <a name="remove-diacritics-from-a-string"></a>从字符串中删除音调符号
 示例：你需要将包含重音符号的字符替换为不包含重音符号的等效字符。
 
@@ -611,10 +681,10 @@ Now 函数返回表示当前 UTC DateTime 的字符串，格式为 M/d/yyyy h:mm
 
 **示例：**
 * Workday 示例：假设你要将 Workday 中采用 2020-12-31-08:00 格式的 ContractEndDate 特性映射到 AD 中的 accountExpires 字段，那么你可以按下面的方式使用此函数并更改时区偏差，使之与你的区域设置相匹配  。 
-  `NumFromDate(Join("", FormatDateTime([ContractEndDate], ,"yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
+  `NumFromDate(Join("", FormatDateTime([ContractEndDate], ,"yyyy-MM-ddzzz", "yyyy-MM-dd"), " 23:59:59-08:00"))`
 
 * SuccessFactors 示例：假设你要将 SuccessFactors 中采用 M/d/yyyy hh:mm:ss tt 格式的 endDate 特性映射到 AD 中的 accountExpires 字段，那么你可以按下面的方式使用此函数并更改时区偏差，使之与你的区域设置相匹配  。
-  `NumFromDate(Join("",FormatDateTime([endDate], ,"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
+  `NumFromDate(Join("",FormatDateTime([endDate], ,"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd")," 23:59:59-08:00"))`
 
 
 ---

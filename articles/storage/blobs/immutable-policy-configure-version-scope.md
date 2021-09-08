@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/22/2021
+ms.date: 08/31/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 45d44df64754234c99571b13059d02372cd26622
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 04e05f67787b285dd1286e0c6b7a6b251262ed0f
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779727"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272234"
 ---
 # <a name="configure-immutability-policies-for-blob-versions-preview"></a>为 Blob 版本配置不可变性策略（预览版）
 
@@ -46,6 +46,8 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
 若要使用版本级不可变性策略，首先必须显式对容器启用版本级 WORM 支持。 可以在创建容器时或者在向现有容器添加版本级不可变性策略时启用版本级 WORM 支持。
 
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
+
 若要在 Azure 门户中创建支持版本级不可变性的容器，请执行以下步骤：
 
 1. 在 Azure 门户中导航到你的存储帐户的“容器”页，然后选择“添加” 。
@@ -54,11 +56,56 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
     :::image type="content" source="media/immutable-policy-configure-version-scope/create-container-version-level-immutability.png" alt-text="该屏幕截图显示如何创建启用了版本级不可变性的容器":::
 
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+要使用 PowerShell 创建支持版本级不可变性的容器，请先安装 [Az.Storage 模块](https://www.powershellgallery.com/packages/Az.Storage/3.10.1-preview) 预览版 3.10.1。
+
+接下来，使用 `-EnableImmutableStorageWithVersioning` 参数调用 New-AzRmStorageContainer 命令，如以下示例所示。 请记得将尖括号中的占位符替换为你自己的值：
+
+```azurepowershell
+# Create a container with version-level immutability support.
+$container = New-AzRmStorageContainer -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account> `
+    -Name <container> `
+    -EnableImmutableStorageWithVersioning
+
+# Verify that version-level immutability support is enabled for the container
+$container.ImmutableStorageWithVersioning
+```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要使用 Azure CLI 创建支持版本级不可变性的容器，请先安装 Azure CLI 2.27 或更高版本。 有关安装 Azure CLI 的详细信息，请参阅[如何安装 Azure CLI](/cli/azure/install-azure-cli)。
+
+接下来，调用 [az storage container-rm create](/cli/azure/storage/container-rm#az_storage_container_rm_create) 命令，指定 `--enable-vlw` 参数。 请记得将尖括号中的占位符替换为你自己的值：
+
+```azurecli
+# Create a container with version-level immutability support.
+az storage container-rm create \
+    --name <container> \
+    --storage-account <storage-account> \
+    --resource-group <resource-group> \
+    --enable-vlw
+
+# Verify that version-level immutability support is enabled for the container
+az storage container-rm show \
+    --storage-account <storage-account> \
+    --name <container> \
+    --query '[immutableStorageWithVersioning.enabled]' \
+    --output tsv
+```
+
+---
+
 ### <a name="migrate-an-existing-container-to-support-version-level-immutability"></a>迁移现有容器以支持版本级不可变性
 
 若要为现有容器配置版本级不可变性策略，必须迁移该容器以支持版本级不可变存储。 容器迁移可能需要一段时间，此操作不可逆。
 
-对于现有的容器，无论是否为其配置了容器级基于时间的保留策略，都必须迁移该容器。 如果容器具有现有的容器级法定保留，则只有在删除法定保留之后才能迁移该容器。
+若要迁移现有容器以支持版本级不可变性策略，容器必须配置容器级基于时间的保留策略。 除非容器具有现有策略，否则迁移将失败。 容器级策略的保留期间隔与容器上默认版本级策略的保留期间隔保持一致。
+
+如果容器具有现有的容器级法定保留，则只有在删除法定保留之后才能迁移该容器。
+
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要在 Azure 门户中迁移容器以支持版本级不可变存储，请执行以下步骤：
 
@@ -67,17 +114,112 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 1. 在“不可变 Blob 存储”下，选择“添加策略” 。
 1. 对于“策略类型”字段，请选择“基于时间的保留”并指定保留间隔。
 1. 选择“启用版本级不可变性”。
-1. 选择“确定”  ，开始迁移。
+1. 选择“确定”以创建具有指定保留期间隔的容器级策略，然后开始迁移到版本级不可变性支持。
 
     :::image type="content" source="media/immutable-policy-configure-version-scope/migrate-existing-container.png" alt-text="该屏幕截图显示如何迁移现有容器以支持版本级不可变性":::
 
+执行迁移操作时，容器上的策略范围显示为容器。
+
+:::image type="content" source="media/immutable-policy-configure-version-scope/container-migration-in-process.png" alt-text="该屏幕截图显示正在迁移容器":::
+
+迁移完成后，容器上的策略范围显示为版本。 显示的策略是容器上的默认策略，该策略自动应用于随后在容器中创建的所有 blob 版本。 通过为该版本指定自定义策略，可以在任何版本上替代默认策略。
+
+:::image type="content" source="media/immutable-policy-configure-version-scope/container-migration-complete.png" alt-text="该屏幕截图显示已完成容器迁移":::
+
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+要使用 PowerShell 迁移容器以支持版本级不可变存储，首先要确保该容器存在容器级基于时间的保留策略。 若要创建一个策略，请调用 [Set-AzRmStorageContainerImmutabilityPolicy](/powershell/module/az.storage/set-azrmstoragecontainerimmutabilitypolicy)。
+
+```azurepowershell
+Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName <resource-group> `
+   -StorageAccountName <storage-account> `
+   -ContainerName <container> `
+   -ImmutabilityPeriod <retention-interval-in-days>
+```
+
+接下来，调用 Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration 命令以迁移容器。 添加 `-AsJob` 参数以异步运行该命令。 建议异步运行该操作，因为迁移可能需要一些时间才能完成。
+
+```azurepowershell
+$migrationOperation = Invoke-AzRmStorageContainerImmutableStorageWithVersioningMigration `
+    -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account> `
+    -Name <container> `
+    -AsJob
+```
+
+若要检查长时间运行的操作的状态，请阅读该操作的 JobStateInfo.State 属性。
+
+```azurepowershell
+$migrationOperation.JobStateInfo.State
+```
+
+在尝试迁移到版本级不可变性时，如果容器尚无基于时间的保留策略，则操作将失败。 如果由于不存在容器级策略而导致操作失败，以下示例将检查 JobStateInfo.State 属性的值并显示错误消息。
+
+```azurepowershell
+if ($migrationOperation.JobStateInfo.State -eq "Failed") {
+Write-Host $migrationOperation.Error
+}
+The container <container-name> must have an immutability policy set as a default policy 
+before initiating container migration to support object level immutability with versioning.
+```
+
+迁移完成后，检查操作的 Output 属性，看看是否启用了版本级不可变性支持。
+
+```azurepowershell
+$migrationOperation.Output
+```
+
+有关 PowerShell 作业的详细信息，请参阅[在 PowerShell 作业中运行 Azure PowerShell cmdlet](/powershell/azure/using-psjobs)。
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+要使用 Azure CLI 迁移容器以支持版本级不可变存储，首先要确保该容器存在容器级基于时间的保留策略。 若要创建一个策略，请调用 [az storage container immutability-policy create](/cli/azure/storage/container/immutability-policy#az_storage_container_immutability_policy_create)。
+
+```azurecli
+az storage container immutability-policy create \
+    --resource-group <resource-group> \
+    --account-name <storage-account> \
+    --container-name <container> \
+    --period <retention-interval-in-days>
+```
+
+接下来，调用 [az storage container-rm migrate-vlw](/cli/azure/storage/container-rm#az_storage_container_rm_migrate_vlw) 命令以迁移容器。 添加 `--no-wait` 参数以异步运行该命令。 建议异步运行该操作，因为迁移可能需要一些时间才能完成。
+
+```azurecli
+az storage container-rm migrate-vlw \
+    --resource-group <resource-group> \
+    --storage-account <storage-account> \
+    --name <container> \
+    --no-wait
+```
+
+若要检查长时间运行的操作的状态，请读取 migrationState 属性的值。
+
+```azurecli
+az storage container-rm show \
+    --storage-account <storage-account> \
+    --name <container> \
+    --query '[immutableStorageWithVersioning.migrationState]' \
+    --output tsv
+```
+
+---
+
 ## <a name="configure-a-time-based-retention-policy-on-a-container"></a>针对容器配置基于时间的保留策略
 
-为容器启用版本级不可变性后，可为容器指定默认的版本级基于时间的保留策略。 除非替代单个版本的策略，否则默认策略将应用于容器中的所有 Blob 版本。
+容器启用版本级不可变性后，可以为容器指定默认的版本级基于时间的保留策略。 为容器指定默认策略后，该策略默认应用于容器中创建的所有新 Blob 版本。 可以替代容器中任何单个 blob 版本的默认策略。
+
+默认策略不会自动应用于配置默认策略之前存在的 blob 版本。
+
+如果迁移了现有容器以支持版本级不变性，则迁移前生效的容器级策略会迁移到容器的默认版本级策略。
 
 ### <a name="configure-a-default-time-based-retention-policy-on-a-container"></a>针对容器配置默认的基于时间的保留策略
 
-若要在 Azure 门户中将默认的版本级不可变性策略应用于容器，请执行以下步骤：
+若要为容器配置默认的版本级不可变性策略，请使用 Azure 门户、PowerShell、Azure CLI 或任一 Azure 存储 SDK。 确保已为容器启用版本级不可变性支持，如[在容器上启用版本级不可变性支持](#enable-support-for-version-level-immutability-on-a-container)中所述。
+
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+若要为 Azure 门户中的容器配置默认的版本级不可变性策略，请执行以下步骤：
 
 1. 在 Azure 门户中导航到“容器”页，找到要对其应用该策略的容器。
 1. 选择容器名称右侧的“更多”按钮，然后选择“访问策略” 。
@@ -87,6 +229,32 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 1. 选择“确定”以将默认策略应用于容器。
 
     :::image type="content" source="media/immutable-policy-configure-version-scope/configure-default-retention-policy-container.png" alt-text="该屏幕截图显示如何为容器配置默认的版本级保留策略":::
+
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+若要使用 PowerShell 为容器配置默认的版本级不可变性策略，请调用 [Set-AzRmStorageContainerImmutabilityPolicy](/powershell/module/az.storage/set-azrmstoragecontainerimmutabilitypolicy) 命令。
+
+```azurepowershell
+Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName <resource-group> `
+   -StorageAccountName <storage-account> `
+   -ContainerName <container> `
+   -ImmutabilityPeriod <retention-interval-in-days> `
+   -AllowProtectedAppendWrite $true
+```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要使用 Azure CLI 为容器配置默认的版本级不可变性策略，请调用 [az storage container immutability-policy create](/cli/azure/storage/container/immutability-policy#az_storage_container_immutability_policy_create) 命令。
+
+```azurecli
+az storage container immutability-policy create \
+    --account-name <storage-account> \
+    --container-name <container> \
+    --period <retention-interval-in-days> \
+    --allow-protected-append-writes true
+```
+
+---
 
 ### <a name="determine-the-scope-of-a-retention-policy-on-a-container"></a>确定针对容器的保留策略的范围
 
@@ -112,9 +280,13 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 - 选项 2：可以针对 Blob 的当前版本配置策略。 此策略可以替代针对容器配置的默认策略（如果默认策略存在且已解锁）。 默认情况下，在配置策略后创建的所有先前版本将继承针对当前 Blob 版本的策略。 有关更多详细信息，请参阅[针对当前 Blob 版本配置保留策略](#configure-a-retention-policy-on-the-current-version-of-a-blob)。
 - 选项 3：可以针对先前的 Blob 版本配置策略。 此策略可以替代针对当前版本配置的默认策略（如果默认策略存在且已解锁）。 有关更多详细信息，请参阅[针对先前的 Blob 版本配置保留策略](#configure-a-retention-policy-on-a-previous-version-of-a-blob)。
 
-### <a name="configure-a-retention-policy-on-the-current-version-of-a-blob"></a>针对当前 Blob 版本配置保留策略
+有关 Blob 版本控制的详细信息，请参阅 [Blob 版本控制](versioning-overview.md)。
 
-导航到某个容器时，Azure 门户会显示 Blob 列表。 显示的每个 Blob 表示当前 Blob 版本。 有关 Blob 版本控制的详细信息，请参阅 [Blob 版本控制](versioning-overview.md)。
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+导航到某个容器时，Azure 门户会显示 Blob 列表。 显示的每个 Blob 表示当前 Blob 版本。 通过选择 blob 的“更多”按钮并选择“查看以前的版本”，可访问以前版本的列表 。  
+
+### <a name="configure-a-retention-policy-on-the-current-version-of-a-blob"></a>针对当前 Blob 版本配置保留策略
 
 若要针对当前 Blob 版本配置基于时间的保留策略，请执行以下步骤：
 
@@ -145,6 +317,29 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
     :::image type="content" source="media/immutable-policy-configure-version-scope/configure-retention-policy-previous-version.png" alt-text="该屏幕截图显示如何在 Azure 门户中为先前的 Blob 版本配置保留策略":::
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+若要使用 PowerShell 在 blob 版本上配置基于时间的保留策略，请调用 Set-AzStorageBlobImmutabilityPolicy 命令。
+
+```azurepowershell
+# Get the storage account context
+$ctx = (Get-AzStorageAccount `
+        -ResourceGroupName <resource-group> `
+        -Name <storage-account>).Context
+
+Set-AzStorageBlobImmutabilityPolicy -Container <container> `
+    -Blob <blob-version> `
+    -Context $ctx `
+    -ExpiresOn "2021-09-01T12:00:00Z" `
+    -PolicyMode Unlocked
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+空值
+
+---
+
 ## <a name="configure-a-time-based-retention-policy-when-uploading-a-blob"></a>上传 Blob 时配置基于时间的保留策略
 
 使用 Azure 门户将 Blob 上传到支持版本级不可变性的容器时，可通过多个选项为新 Blob 配置基于时间的保留策略：
@@ -161,40 +356,105 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
     :::image type="content" source="media/immutable-policy-configure-version-scope/configure-retention-policy-blob-upload.png" alt-text="该屏幕截图显示用于在 Azure 门户中上传 Blob 时配置保留策略的选项":::
 
-## <a name="modify-an-unlocked-retention-policy"></a>修改已解锁的保留策略
+## <a name="modify-or-delete-an-unlocked-retention-policy"></a>修改或删除未锁定的保留策略
 
 可以修改已解锁的基于时间的保留策略以缩短或延长保留间隔。 还可以删除已解锁的策略。 编辑或删除针对某个 Blob 版本的已解锁基于时间的保留策略不影响针对任何其他版本生效的策略。 如果存在针对容器生效的默认基于时间的保留策略，则使用已修改或已删除策略的 Blob 版本将不再从容器继承。
 
-若要修改已解锁的基于时间的保留策略，请执行以下步骤：
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 找到目标版本，这可能是 Blob 的当前版本或先前版本。 依次选择“更多”按钮和“访问策略” 。
-1. 在“不可变 Blob 版本”部分下，找到现有的已解锁策略。 选择“更多”按钮，然后从菜单中选择“编辑” 。
+若要在 Azure 门户中修改已解锁的基于时间的保留策略，请执行以下步骤：
+
+1. 查找目标容器或版本。 依次选择“更多”按钮和“访问策略” 。
+1. 查找现有的未锁定不可变性策略。 选择“更多”按钮，然后从菜单中选择“编辑” 。
 
     :::image type="content" source="media/immutable-policy-configure-version-scope/edit-existing-version-policy.png" alt-text="该屏幕截图显示如何在 Azure 门户中编辑现有版本级基于时间的保留策略":::
 
 1. 提供新的策略过期日期和时间。
 
-若要删除已解除的策略，请执行步骤 1 到 4，然后从菜单中选择“删除”。
+若要删除未锁定策略，请从“更多”菜单中选择“删除” 。
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+若要使用 PowerShell 修改未锁定的基于时间的保留策略，请使用策略到期的新日期和时间对 blob 版本调用 Set-AzStorageBlobImmutabilityPolicy 命令。
+
+```azurepowershell
+$containerName = "<container>"
+$blobName = "<blob>"
+
+# Get the previous blob version.
+$blobVersion = Get-AzStorageBlob -Container $containerName `
+    -Blob $blobName `
+    -VersionId "2021-08-31T00:26:41.2273852Z" `
+    -Context $ctx
+
+# Extend the retention interval by five days.
+$blobVersion = $blobVersion | 
+    Set-AzStorageBlobImmutabilityPolicy -ExpiresOn (Get-Date).AddDays(5) `
+
+# View the new policy parameters.
+$blobVersion.BlobProperties.ImmutabilityPolicy
+```
+
+若要删除未锁定的保留策略，请调用 Remove-AzStorageBlobImmutabilityPolicy 命令。
+
+```azurepowershell
+$blobVersion = $blobVersion | Remove-AzStorageBlobImmutabilityPolicy
+```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+空值
+
+---
 
 ## <a name="lock-a-time-based-retention-policy"></a>锁定基于时间的保留策略
 
 测试完基于时间的保留策略后，可以锁定该策略。 已锁定的策略符合 SEC 17a-4(f) 和其他法规标准。 最多可将已锁定策略的保留间隔延长五倍，但不能缩短保留间隔。
 
-锁定策略后无法删除该策略。 但是，可以在保留间隔过期后删除 Blob。
+锁定策略后无法删除该策略。 但是，可以在保留间隔过期后删除 blob。
 
-若要锁定策略，请执行以下步骤：
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. 找到目标版本，这可能是 Blob 的当前版本或先前版本。 依次选择“更多”按钮和“访问策略” 。
+若要在 Azure 门户中锁定策略，请执行以下步骤：
+
+1. 查找目标容器或版本。 依次选择“更多”按钮和“访问策略” 。
 1. 在“不可变 Blob 版本”部分下，找到现有的已解锁策略。 选择“更多”按钮，然后从菜单中选择“锁定策略” 。
 1. 确认要锁定该策略。
 
     :::image type="content" source="media/immutable-policy-configure-version-scope/lock-policy-portal.png" alt-text="该屏幕截图显示如何在 Azure 门户中锁定基于时间的保留策略":::
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+若要使用 PowerShell 锁定策略，请调用 Set-AzStorageBlobImmutabilityPolicy 命令并将 PolicyMode 参数设置为“Locked” 。
+
+以下示例显示如何通过指定对未锁定策略有效的相同保留期间隔来锁定策略。 也可在锁定策略时更改到期时间。
+
+```azurepowershell
+# Get the previous blob version.
+$blobVersion = Get-AzStorageBlob -Container $containerName `
+    -Blob $blobName `
+    -VersionId "2021-08-31T00:26:41.2273852Z" `
+    -Context $ctx
+
+$blobVersion = $blobVersion | 
+    Set-AzStorageBlobImmutabilityPolicy `
+        -ExpiresOn $blobVersion.BlobProperties.ImmutabilityPolicy.ExpiresOn `
+        -PolicyMode Locked
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+空值
+
+---
+
 ## <a name="configure-or-clear-a-legal-hold"></a>配置或清除法定保留
 
 在显式清除法定保留之前，该法定保留会一直存储不可变数据。 若要详细了解法定保留策略，请参阅[不可变 Blob 数据的法定保留](immutable-legal-hold-overview.md)。
 
-若要对 Blob 版本配置法定保留，请执行以下步骤：
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+若要使用 Azure 门户配置 blob 版本上的法定保留，请执行以下步骤：
 
 1. 找到目标版本，这可能是 Blob 的当前版本或先前版本。 依次选择“更多”按钮和“访问策略” 。
 1. 在“不可变 Blob 版本”部分下，选择“添加策略” 。
@@ -205,6 +465,30 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 :::image type="content" source="media/immutable-policy-configure-version-scope/configure-legal-hold-blob-version.png" alt-text="该屏幕截图显示针对 Blob 版本配置的法定保留":::
 
 若要清除法定保留，请导航到“访问策略”对话框，选择“更多”按钮，然后选择“删除”  。
+
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+要使用 PowerShell 配置或清除 blob 版本上的法定保留，请调用 Set-AzStorageBlobLegalHold 命令。
+
+```azurepowershell
+# Set a legal hold
+Set-AzStorageBlobLegalHold -Container <container> `
+    -Blob <blob-version> `
+    -Context $ctx `
+    -EnableLegalHold
+
+# Clear a legal hold
+Set-AzStorageBlobLegalHold -Container <container> `
+    -Blob <blob-version> `
+    -Context $ctx `
+    -DisableLegalHold
+```
+
+#### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+空值
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

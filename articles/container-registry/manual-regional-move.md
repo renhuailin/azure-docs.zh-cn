@@ -3,12 +3,12 @@ title: 将 Azure 容器注册表移到另一区域
 description: 手动将 Azure 容器注册表设置和数据移到另一个 Azure 区域。
 ms.topic: article
 ms.date: 06/08/2021
-ms.openlocfilehash: 4e0afb418fbb0b33330c3fb82fd04370f0c3ee99
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: e2bc00287923a95e2e4d3698b22c4c2ca65bebc6
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114286318"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835887"
 ---
 # <a name="manually-move-a-container-registry-to-another-region"></a>手动将容器注册表移到另一区域
 
@@ -20,7 +20,6 @@ ms.locfileid: "114286318"
 * 使用模板在不同的 Azure 区域中部署注册表
 * 将源注册表中的注册表内容导入到目标注册表
 
-
 [!INCLUDE [container-registry-geo-replication-include](../../includes/container-registry-geo-replication-include.md)]
 
 ## <a name="prerequisites"></a>先决条件
@@ -31,8 +30,10 @@ Azure CLI
 
 ## <a name="considerations"></a>注意事项
 
-* 使用本文中的步骤将注册表移到同一订阅中的不同区域。 需要进行其他配置才能将注册表移到另一个 Azure 订阅或 Active Directory 租户。 
-* 导出和使用资源管理器模板可帮助重新创建许多注册表设置。 可以编辑模板以配置其他设置，或者在创建后更新目标注册表。
+* 使用本文中的步骤将注册表移到同一订阅中的不同区域。 可能需要进行其他配置才能将注册表移动到同一 Active Directory 租户中的其他 Azure 订阅。
+* 导出和使用资源管理器模板可帮助重新创建许多注册表设置。 可以编辑模板以配置更多设置，或者在创建后更新目标注册表。
+* 目前，Azure 容器注册表不支持将注册表移动到其他 Active Directory 租户。 此限制适用于使用[客户管理的密钥](container-registry-customer-managed-keys.md)加密的注册表和未加密的注册表。
+* 如果无法移动注册表（如本文所述），可以创建新注册表，手动重新创建设置，然后[在目标注册表中导入注册表内容](#import-registry-content-in-target-registry)。
 
 ## <a name="export-template-from-source-registry"></a>从源注册表导出模板 
 
@@ -106,7 +107,7 @@ az deployment group --resource-group myResourceGroup \
 * 使用 Azure CLI 命令 [az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) 和 [az acr repository show-tags](/cli/azure/acr/repository#az_acr_repository_show_tags) 或等效的 Azure PowerShell 命令来帮助枚举源注册表的内容。
 * 针对单个项目运行 import 命令，或编写脚本以针对一系列项目运行该命令。
 
-以下示例 Azure CLI 脚本枚举源存储库和标记，然后将项目导入到目标注册表。 根据需要进行修改，以导入特定的存储库或标记。
+以下示例 Azure CLI 脚本枚举源存储库和标记，然后将项目导入到同一 Azure 订阅中的目标注册表。 根据需要进行修改，以导入特定的存储库或标记。 若要从其他订阅或租户中的注册表导入，请参阅[将容器映像导入容器注册表](container-registry-import-images.md)中的示例。
 
 ```azurecli
 #!/bin/bash
@@ -127,6 +128,8 @@ for repo in $REPO_LIST; do
     done
 done
 ```
+
+
 
 ## <a name="verify-target-registry"></a>验证目标注册表
 

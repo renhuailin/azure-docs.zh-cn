@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 10/05/2020
 ms.author: alkohli
-ms.openlocfilehash: ac5f2de383066d6ee399dac3b0ad8c365b2e72bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c62c1e854e55b8817724c78bc325badc703bc27
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91744080"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250669"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box Blob 存储要求
 
@@ -24,15 +24,15 @@ ms.locfileid: "91744080"
 
 ## <a name="storage-differences"></a>存储差异
 
-|     Feature                                             |     Azure 存储                                     |     Data Box Blob 存储 |
+|     功能                                             |     Azure 存储                                     |     Data Box Blob 存储 |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
-|    Azure 文件存储                                   |    支持基于云的 SMB 文件共享              |    不支持      |
+|    Azure 文件                                   |    支持基于云的 SMB 和 NFS 文件共享               |    不支持      |
 |    静态数据的服务加密                  |    256 位 AES 加密                             |    256 位 AES 加密 |
 |    存储帐户类型                                 |    常规用途和 Azure blob 存储帐户    |    仅常规用途 v1|
 |    Blob 名称                                            |    1024 个字符（2048 个字节）                     |    880 个字符（1760 个字节）|
-|    块 blob 最大大小                              |    4.75 TB（100 MB X 50,000 块）                   |    4.75 TB（100 MB x 50,000 块），用于 Azure Data Box v3.0 及更高版本。|
-|    页 blob 最大大小                               |    8 TB                                               |    1 TB                   |
-|    页 Blob 页面大小                                  |    512 字节                                          |    4 KB                   |
+|    块 blob 最大大小                              |    4.75 TiB（100 MB X 50,000 块）                   |    4.75 TiB（100 MB x 50,000 块），用于 Azure Data Box v3.0 及更高版本。|
+|    页 blob 最大大小                               |    8 TiB                                               |    1 TiB                   |
+|    页 Blob 页面大小                                  |    512 字节                                          |    4 KiB                   |
 
 ## <a name="supported-api-versions"></a>支持的 API 版本
 

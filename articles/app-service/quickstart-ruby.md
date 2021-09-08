@@ -6,12 +6,12 @@ ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 04/27/2021
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: 9cc8f3659633d7029729a006c0fdebd001f2fe46
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: dffb2634b59c54632364d8469244edb6840d7b9d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "109752909"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435413"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>在应用服务中创建 Ruby on Rails 应用
 
@@ -31,31 +31,39 @@ ms.locfileid: "109752909"
 
 ## <a name="download-the-sample"></a>下载示例
 
-在终端窗口中，运行以下命令，将示例应用存储库克隆到本地计算机：
+1. 在终端窗口中，将示例应用程序克隆到本地计算机，并导航到包含示例代码的目录。 
 
-```bash
-git clone https://github.com/Azure-Samples/ruby-docs-hello-world
-```
+    ```bash
+    git clone https://github.com/Azure-Samples/ruby-docs-hello-world
+    cd ruby-docs-hello-world
+    ```
+
+1. 确保默认分支为 `main`。
+
+    ```bash
+    git branch -m main
+    ```
+    
+    > [!TIP]
+    > 应用服务不需要更改分支名称。 但是，由于许多存储库正在将默认分支更改为 `main`，因此本教程还介绍如何从 `main` 部署存储库。 有关详细信息，请参阅[更改部署分支](deploy-local-git.md#change-deployment-branch)。
 
 ## <a name="run-the-application-locally"></a>在本地运行应用程序
 
-在本地运行应用程序，以便你能了解将它部署到 Azure 时它的外观应该是什么样的。 打开终端窗口，转到 `hello-world` 目录，然后使用 `rails server` 命令启动该服务器。
+1. 安装所需的 gem。 示例中包含了 `Gemfile`，因此只需运行以下命令：
 
-第一步是安装必需的 gem。 示例中包含了 `Gemfile`，因此只需运行以下命令：
+    ```bash
+    bundle install
+    ```
 
-```bash
-bundle install
-```
+1. 安装 gem 后，启动应用：
 
-安装 gem 后，我们将使用捆绑程序启动应用：
+    ```bash
+    bundle exec rails server
+    ```
 
-```bash
-bundle exec rails server
-```
+1. 使用 Web 浏览器导航到 `http://localhost:3000` 以在本地测试该应用。
 
-使用 Web 浏览器导航到 `http://localhost:3000` 以在本地测试该应用。
-
-![已配置了 Hello World](./media/quickstart-ruby/hello-world-updated.png)
+    ![已配置了 Hello World](./media/quickstart-ruby/hello-world-updated.png)
 
 [!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
@@ -67,45 +75,70 @@ bundle exec rails server
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
+1. 在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](overview.md#app-service-on-linux)。 
 
-浏览到该应用，查看使用内置映像新建的 Web 应用。 将 _&lt;应用名称>_ 替换为 Web 应用名称。
+    在 Cloud Shell 中可以使用 [`az webapp create`](/cli/azure/webapp) 命令。 在以下示例中，将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。 运行时设置为 `RUBY|2.6`。 若要查看所有受支持的运行时，请运行 [`az webapp list-runtimes --linux`](/cli/azure/webapp)。 
 
-```bash
-http://<app_name>.azurewebsites.net
-```
+    ```azurecli-interactive
+    az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime 'RUBY|2.6' --deployment-local-git
+    ```
 
-新 Web 应用应该如下所示：
+    创建 Web 应用后，Azure CLI 会显示类似于以下示例的输出：
 
-![启动页面](./media/quickstart-ruby/splash-page.png)
+    <pre>
+    Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git'
+    {
+      "availabilityState": "Normal",
+      "clientAffinityEnabled": true,
+      "clientCertEnabled": false,
+      "cloningInfo": null,
+      "containerSize": 0,
+      "dailyMemoryTimeQuota": 0,
+      "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
+      "deploymentLocalGitUrl": "https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git",
+      "enabled": true,
+      &lt; JSON data removed for brevity. &gt;
+    }
+    </pre>
+    
+    现在你已经创建了一个新的空 Web 应用并启用了 Git 部署。
+
+    > [!NOTE]
+    > Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`。 保存此 URL，后续将会用到。
+    >
+
+1. 浏览到该应用，查看使用内置映像新建的 Web 应用。 将 &lt;app-name> 替换为你的 Web 应用名称。
+
+    ```bash
+    http://<app_name>.azurewebsites.net
+    ```
+
+    新 Web 应用应该如下所示：
+
+    ![启动页面](./media/quickstart-ruby/splash-page.png)
 
 ## <a name="deploy-your-application"></a>部署应用程序
 
-运行以下命令将本地应用程序部署到 Azure Web 应用：
+[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure-no-h.md)] 
 
-```bash
-git remote add azure <Git deployment URL from above>
-git push azure main
-```
+   <pre>
+   remote: Using turbolinks 5.2.0
+   remote: Using uglifier 4.1.20
+   remote: Using web-console 3.7.0
+   remote: Bundle complete! 18 Gemfile dependencies, 78 gems now installed.
+   remote: Bundled gems are installed into `/tmp/bundle`
+   remote: Zipping up bundle contents
+   remote: .......
+   remote: ~/site/repository
+   remote: Finished successfully.
+   remote: Running post deployment command(s)...
+   remote: Deployment successful.
+   remote: App container will begin restart within 10 seconds.
+   To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
+      a6e73a2..ae34be9  main -> main
+   </pre>
 
-确认远程部署操作报告了成功消息。 命令生成的输出类似于以下文本：
-
-```bash
-remote: Using turbolinks 5.2.0
-remote: Using uglifier 4.1.20
-remote: Using web-console 3.7.0
-remote: Bundle complete! 18 Gemfile dependencies, 78 gems now installed.
-remote: Bundled gems are installed into `/tmp/bundle`
-remote: Zipping up bundle contents
-remote: .......
-remote: ~/site/repository
-remote: Finished successfully.
-remote: Running post deployment command(s)...
-remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
-To https://<app-name>.scm.azurewebsites.net/<app-name>.git
-   a6e73a2..ae34be9  main -> main
-```
+## <a name="browse-to-the-app"></a>浏览到应用
 
 部署完成后，请等待大约 10 秒，然后重启 Web 应用，再导航到 Web 应用并验证结果。
 

@@ -4,21 +4,21 @@ titleSuffix: Azure Digital Twins
 description: 将 Azure OPC UA 数据引入 Azure 数字孪生的步骤
 author: danhellem
 ms.author: dahellem
-ms.date: 5/20/2021
+ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b191bdb1303ae0210573d295ffb5b371cc81ddfb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b93e9a16e7ea083f5117ebff4883a50db28e134a
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748595"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224592"
 ---
 # <a name="ingesting-opc-ua-data-with-azure-digital-twins"></a>使用 Azure 数字孪生引入 OPC UA 数据
 
 [OPC 统一体系结构 (OPC UA)](https://opcfoundation.org/about/opc-technologies/opc-ua/) 是一种独立于平台的面向服务的体系结构，适用于制造领域。 它用于从设备获取遥测数据。 
 
-使 OPC UA 服务器数据流入 Azure 数字孪生需要在不同设备上安装多个组件，以及一些需要配置的自定义代码和设置。 
+要使 OPC UA 服务器数据流入 Azure 数字孪生，需要在不同设备上安装的多个组件，还需要配置一些自定义代码和设置。 
 
 本文演示了如何将所有这些部分连接在一起，以将 OPC UA 节点加入 Azure 数字孪生中。 可以继续根据本指南构建自己的解决方案。
 
@@ -45,7 +45,7 @@ ms.locfileid: "121748595"
 | --- | --- |
 | OPC UA 服务器 | [ProSys](https://www.prosysopc.com/products/opc-ua-simulation-server/) 或 [Kepware](https://www.kepware.com/en-us/products/#KEPServerEX) 中的 OPC UA 服务器，用于模拟 OPC UA 数据。 |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) | IoT Edge 是安装在本地 Linux 网关设备的 IoT 中心服务。 OPC 发布服务器模块需要运行数据并将其发送到 IoT 中心。 |
-| [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher) | 这是由 Azure 工业 IoT 团队构建的 IoT Edge 模块。 此模块连接到 OPC UA 服务器并将节点数据发送到 Azure IoT 中心。 |
+| [OPC 发布服务器](https://github.com/Azure/iot-edge-opc-publisher) | 此组件是由 Azure 工业 IoT 团队构建的 IoT Edge 模块。 此模块连接到 OPC UA 服务器并将节点数据发送到 Azure IoT 中心。 |
 | [Azure IoT 中心](../iot-hub/about-iot-hub.md) | OPC 发布服务器将 OPC UA 遥测数据发送到 Azure IoT 中心。 从那里，可以通过 Azure 函数处理数据并将数据引入 Azure 数字孪生。 |
 | Azure 数字孪生 | 通过该平台，可以创建真实世界事物、地点、业务流程和人的数字表示形式。 |
 | [Azure 函数](../azure-functions/functions-overview.md) | 自定义 Azure 函数用于处理在 Azure IoT 中心流向 Azure 数字孪生中适当孪生体和属性的遥测数据。 |
@@ -80,7 +80,7 @@ Prosys Software 需要一个简单的虚拟资源。 使用 [Azure 门户](https
 
 :::image type="content" source="media/how-to-ingest-opcua-data/create-windows-virtual-machine-1.png" alt-text="Azure 门户的屏幕截图，显示了 Windows 虚拟机设置的“基本信息”选项卡。" lightbox="media/how-to-ingest-opcua-data/create-windows-virtual-machine-1.png":::
 
-VM 必须可通过 Internet 访问。 为简化本演练，可以打开所有端口并为 VM 分配公共 IP 地址。 此操作在虚拟机设置的“网络”选项卡中完成。
+VM 必须可通过 Internet 访问。 为简化本演练，可以打开所有端口并为 VM 分配公共 IP 地址。 可在虚拟机设置的“网络”选项卡中完成此操作。
 
 :::image type="content" source="media/how-to-ingest-opcua-data/create-windows-virtual-machine-2.png" alt-text="Azure 门户的屏幕截图，显示了 Windows 虚拟机设置的“网络”选项卡。":::
 
@@ -146,7 +146,7 @@ VM 必须可通过 Internet 访问。 为简化本演练，可以打开所有端
 
 ### <a name="set-up-gateway-device"></a>设置网关设备
 
-为了将 OPC UA 服务器数据引入 IoT 中心，需要一个设备来运行带有 OPC 发布服务器模块的 IoT Edge。 然后，OPC 发布服务器会侦听 OPC UA 节点更新，并将遥测数据以 JSON 格式发布到 IoT 中心。
+为了将 OPC UA 服务器数据引入 IoT 中心，需要一台设备来运行带有 OPC 发布服务器模块的 IoT Edge。 然后，OPC 发布服务器会侦听 OPC UA 节点更新，并将遥测数据以 JSON 格式发布到 IoT 中心。
 
 #### <a name="create-ubuntu-server-virtual-machine"></a>创建 Ubuntu Server 虚拟机
 
@@ -209,7 +209,7 @@ admin@gateway:~$ sudo iotedge check
 
 大约 15 秒后，可以在网关设备上运行 `iotedge list` 命令，该命令将列出 IoT Edge 设备上运行的所有模块。 应会看到 OPCPublisher 模块启动并运行。
 
-:::image type="content" source="media/how-to-ingest-opcua-data/iotedge-list.png" alt-text="iotedge 列表结果的屏幕截图。":::
+:::image type="content" source="media/how-to-ingest-opcua-data/iotedge-list.png" alt-text="IoT Edge 列表结果的屏幕截图。":::
 
 最后，转到 `/iiotedge` 目录并创建一个“publishednodes.json”文件。 文件中的 ID 需要与[之前从 OPC 服务器收集](#install-opc-ua-simulation-software)的 `NodeId` 值相匹配。 文件应如下所示：
 
@@ -250,9 +250,9 @@ admin@gateway:~$ sudo iotedge check
 sudo iotedge logs OPCPublisher -f
 ```
 
-命令将生成 OPC 发布服务器日志的输出。 如果所有内容都已正确配置和运行，你将看到如下所示的内容：
+命令将生成 OPC 发布服务器日志的输出。 如果所有内容都已正确配置和运行，你将看到如以下屏幕截图所示的内容：
 
-:::image type="content" source="media/how-to-ingest-opcua-data/iotedge-logs.png" alt-text="终端中 iotedge 日志的屏幕截图。左侧有一列诊断信息字段，右侧有一列值。":::
+:::image type="content" source="media/how-to-ingest-opcua-data/iotedge-logs.png" alt-text="终端中 IoT Edge 日志的屏幕截图。左侧有一列诊断信息字段，右侧有一列值。":::
 
 数据现在应从 OPC UA 服务器流入 IoT 中心。
 
@@ -318,7 +318,7 @@ az iot hub monitor-events -n <iot-hub-instance> -t 0
 
 ### <a name="create-opcua-mappingjson-file"></a>创建 opcua-mapping.json 文件
 
-首先，创建“opcua-mapping.json”文件。 从空白 JSON 文件开始，根据下面的示例和架构填写将 `NodeId` 值映射到 Azure 数字孪生中的 `twinId` 值和属性的条目。 需要为每个 `NodeId` 创建映射条目。
+首先，创建“opcua-mapping.json”文件。 从空白 JSON 文件开始，根据下面的示例和架构填写将 `NodeId` 值映射到 Azure 数字孪生中的 `twinId` 值和属性的条目。 需要为每个 `NodeId` 创建一个映射条目。
 
 ```JSON
 [
@@ -359,7 +359,7 @@ az iot hub monitor-events -n <iot-hub-instance> -t 0
 在本部分中，发布在[先决条件](#prerequisites)中下载的 Azure 函数，该函数将处理 OPC UA 数据并更新 Azure 数字孪生。
 
 1. 导航到本地计算机上下载的 [OPC UA 到 Azure 数字孪生](https://github.com/Azure-Samples/opcua-to-azure-digital-twins) 项目，然后进入“Azure Functions/OPCUAFunctions”文件夹。 在 Visual Studio 中打开“OPCUAFunctions.sln”解决方案。
-2. 将项目发布到 Azure 中的函数应用。 有关如何执行此操作的说明，请参阅[使用 Visual Studio 开发 Azure Functions](../azure-functions/functions-develop-vs.md#publish-to-azure)。
+2. 将项目发布到 Azure 中的函数应用。 若要了解如何执行此操作，请参阅[使用 Visual Studio 开发 Azure Functions](../azure-functions/functions-develop-vs.md#publish-to-azure)。
 
 #### <a name="configure-the-function-app"></a>配置函数应用
 

@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 了解 Azure Digital Twins Explorer 的功能和用途
 author: baanders
 ms.author: baanders
-ms.date: 6/1/2021
+ms.date: 8/24/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 873e1a9fc0fdda5c331112d02a1b6111e336193e
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 8006a98f91434243a94d24f6f7154e5856321744
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253646"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227070"
 ---
 # <a name="azure-digital-twins-explorer-preview"></a>Azure Digital Twins Explorer（预览版）
 
@@ -25,7 +25,7 @@ Azure Digital Twins Explorer 是一种开发人员工具，用于直观呈现 Az
 
 :::image type="content" source="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png" alt-text="Azure Digital Twins Explorer 的屏幕截图，其中显示了示例模型和孪生体。" lightbox="media/concepts-azure-digital-twins-explorer/azure-digital-twins-explorer-demo.png":::
 
-可视化界面是一款强大的工具，可用于浏览和理解图和模型集的形状，以及对各个孪生体和关系进行针对性的临时更改。
+可视化界面是用于探索和了解图形以及模型集的形状的出色工具。 借助该工具，还可以对各孪生体和关系进行有针对性的即时更改。
 
 本文包含有关 Azure Digital Twins Explorer 的详细信息，包括其用例和功能概述。 如需各项功能的详细使用步骤，请参阅[使用 Azure Digital Twins Explorer](how-to-use-azure-digital-twins-explorer.md)。
 
@@ -35,7 +35,7 @@ Azure Digital Twins Explorer 是一种可视化工具，适用于想要浏览其
 
 开发人员可能会发现，此工具在以下情况下特别有用：
 * **探索**：使用 Explorer 了解 Azure 数字孪生及其表示实际环境的方式。 导入可以查看和编辑的样本模型和图形，以熟悉这项服务。 有关 Azure Digital Twins Explorer 的入门指导步骤，请参阅 [Azure Digital Twins Explorer 入门](quickstart-azure-digital-twins-explorer.md)。
-* **开发**：使用 Explorer 查看和验证孪生体图，以及调查模型、孪生体和关系的特定属性。 对图形及其数据进行临时修改。 要详细了解如何使用各项功能，请参阅[使用 Azure Digital Twins Explorer](how-to-use-azure-digital-twins-explorer.md)。 
+* **开发**：使用 Explorer 查看和验证孪生体图。 还可以使用它研究模型、孪生体和关系的特定属性。 对图形及其数据进行即时修改。 要详细了解如何使用各项功能，请参阅[使用 Azure Digital Twins Explorer](how-to-use-azure-digital-twins-explorer.md)。 
 
 Explorer 的主要目的是帮助你直观呈现和理解孪生体图，并根据需要将其更新。 对于大规模解决方案以及重复性或自动化的工作，请考虑改用 [API 和 SDK](./concepts-apis-sdks.md) 通过代码与实例进行交互。
 
@@ -69,7 +69,7 @@ Azure Digital Twins Explorer 是一款开源工具，欢迎你参与相关代码
 
 Azure Digital Twins Explorer 可用于所有[受支持区域](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)中 Azure 数字孪生的所有实例。
 
-但在公共预览期间，可能会通过并未托管实例的区域发送数据进行处理。 为避免出现数据主权问题，可下载[开放源代码](#how-to-contribute)，在你自己的计算机上创建 Explorer 的本地托管版本。
+但在公共预览期间，可能会通过并未托管实例的区域发送数据进行处理。 为避免在出现数据主权问题的情况下以这种方式路由数据，可以下载[开放源代码](#how-to-contribute)，在你自己的计算机上创建 Explorer 的本地托管版本。
 
 ### <a name="billing"></a>计费
 

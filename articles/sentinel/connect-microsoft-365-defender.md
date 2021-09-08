@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: 536a9b0fe4cacdc48f4429e1b85b5a47c4dbd449
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c31ed32e13e8b71b5ad6253d5e157b5adc2096bf
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778324"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260027"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>将 Microsoft 365 Defender 的数据连接到 Azure Sentinel
 
@@ -55,7 +55,7 @@ ms.locfileid: "121778324"
 
 1. 在 Azure Sentinel 中，选择“数据连接器”，从库中选择“Microsoft 365 Defender (预览版)”，然后选择“打开连接器页”  。
 
-1. 在“连接事件和警报”部分的“配置”下，单击“连接事件和警报”按钮  。
+1. 在“连接事件和警报”部分的“配置”下，选择“连接事件和警报”按钮  。
 
 1. 若要避免事件重复，建议选中带有“为这些产品关闭所有 Microsoft 事件创建规则”标签的复选框。
 

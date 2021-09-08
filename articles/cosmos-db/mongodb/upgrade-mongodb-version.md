@@ -4,15 +4,15 @@ description: 如何无缝升级现有 Azure Cosmos DB API for MongoDB 帐户的 
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 751b5546313247b80d6e6701aa6945938cc40a50
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a90a5d7ad7696844f735a1bed2f618846758fff3
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121777865"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035805"
 ---
 # <a name="upgrade-the-api-version-of-your-azure-cosmos-db-api-for-mongodb-account"></a>升级 Azure Cosmos DB API for MongoDB 帐户的 API 版本
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -102,3 +102,6 @@ ms.locfileid: "121777865"
 - 了解 [MongoDB 4.0 版支持和不支持的功能](feature-support-40.md)。
 - 了解 [MongoDB 版本 3.6 支持和不支持的功能](feature-support-36.md)。
 - 有关详细信息，请查看 [Mongo 3.6 版本功能](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
+- 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    - 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+    - 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-capacity-planner.md)

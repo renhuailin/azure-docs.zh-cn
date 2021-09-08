@@ -3,18 +3,18 @@ title: Azure EA 门户管理
 description: 本文介绍管理员可在 Azure EA 门户中完成的常见任务。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/22/2021
+ms.date: 08/25/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a973fc9dc9cf4b4fe514ddf987fd2052c46a6e6b
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: bf887ad515f8c4349fcff54d25be1c70a30d018f
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112519740"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098314"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -146,6 +146,8 @@ ms.locfileid: "112519740"
 本部分仅适用于更改订阅所有者的情况。 更改订阅所有权不需要 Azure 支持工单。 企业管理员可以使用 Azure Enterprise 门户来转移注册中的所选订阅或所有订阅的帐户所有权。 他们还可以选择更改订阅目录（租户）。 
 
 但是，EA 管理员无法将帐户从一个注册转移到另一个注册。 若要将帐户从一个注册转移到另一个注册，需要支持请求。 有关将帐户从一个注册转移到另一个注册的信息，请参阅[将企业帐户转移到新注册](ea-transfers.md#transfer-an-enterprise-account-to-a-new-enrollment)。
+
+即用即付订阅管理员还可以使用相同的流程将其订阅的帐户所有权转移到 EA 注册。
 
 完成订阅或帐户所有权转移后，Microsoft 会更新帐户所有者。
 

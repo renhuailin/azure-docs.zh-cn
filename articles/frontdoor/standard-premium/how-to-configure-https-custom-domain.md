@@ -6,14 +6,14 @@ author: duongau
 ms.service: frontdoor
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 06/10/2021
+ms.date: 08/26/2021
 ms.author: amsriva
-ms.openlocfilehash: 0e8c597037ac769c293a2f04cb2e300658db93b4
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 79674febe7f43f8ae57d8c0420d6c8500506506e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005224"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965669"
 ---
 # <a name="configure-https-on-a-front-door-standardpremium-sku-preview-custom-domain-using-the-azure-portal"></a>使用 Azure 门户在 Front Door 标准/高级版 SKU（预览版）自定义域中配置 HTTPS
 
@@ -86,7 +86,7 @@ Azure Front Door 标准/高级版同时支持 Azure 托管证书和客户管理�
 
 1. 在密钥保管库帐户的“设置”下，选择“访问策略”。 然后选择“新增”以创建新策略。
 
-1. 在“选择主体”中，搜索“205478c0-bd83-4e1b-a9d6-db63a3e1e1c8”，并选择“** Microsoft.AzureFrontDoor-Cdn**” 。 单击“选择”  。
+1. 在“选择主体”中，搜索“205478c0-bd83-4e1b-a9d6-db63a3e1e1c8”，并选择“Microsoft.AzureFrontDoor-Cdn”  。 单击“选择”  。
 
 1. 在“机密权限”  中，选择 **Get** 以允许 Front Door 检索证书。
 

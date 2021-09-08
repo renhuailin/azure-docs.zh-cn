@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.author: susabat
 author: ssabat
 ms.custom: seo-lt-2019
-ms.date: 06/04/2021
-ms.openlocfilehash: bfd63e048d2783d84dbc37710851492134b6d0e1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/24/2021
+ms.openlocfilehash: 5d07ecedbc8fe4ff0670c9e8aa96fdf2a92359d3
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736986"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098944"
 ---
 # <a name="templates"></a>模板
 
@@ -27,15 +27,15 @@ ms.locfileid: "121736986"
 
 1.  在数据工厂主页的“发现更多”部分选择“管道模板”，以打开模板库。 
 
-    ![从“概述”页打开模板库](media/doc-common-process/home-page-pipeline-templates-tile.png)
+    ![显示如何从“数据工厂”主页打开模板库的屏幕截图。](media/doc-common-process/home-page-pipeline-templates-tile.png)
 
-1.  在资源浏览器中的“创作”选项卡上选择 **+** ，然后选择“模板中的管道”打开模板库。
+1.  在资源浏览器中的“创作”选项卡上选择 +，然后选择“模板中的管道”打开模板库 。
 
-    ![从“创作”页打开模板库](media/solution-templates-introduction/templates-intro-image2.png)
+    ![显示如何从“创建者”选项卡打开模板库的屏幕截图。](media/solution-templates-introduction/templates-introduction-image-2.png)
 
 ## <a name="template-gallery"></a>模板库
 
-![模板库](media/solution-templates-introduction/templates-intro-image3.png)
+![显示“模板库”页面的屏幕截图。](media/solution-templates-introduction/templates-introduction-image-3.png)
 
 ### <a name="out-of-the-box-data-factory-templates"></a>现成的数据工厂模板
 
@@ -81,11 +81,11 @@ ms.locfileid: "121736986"
 
 还可以通过在“管道”选项卡上选择“另存为模板”，将管道另存为模板。
 
-![将管道另存为模板](media/solution-templates-introduction/templates-intro-image4.png)
+![显示如何将管道另存为模板的屏幕截图。](media/solution-templates-introduction/templates-introduction-image-4.png)
 
-可以在模板库的“我的模板”部分查看另存为模板的管道。 也可以在资源浏览器的“模板”部分查看这些管道。
+选中“模板库”页面中的“我的模板”框后，可以在此页右侧窗格中查看另存为模板的管道 。 
 
-![我的模板](media/solution-templates-introduction/templates-intro-image5.png)
+![显示“我的模板”窗格的屏幕截图。](media/solution-templates-introduction/templates-introduction-image-5.png)
 
 > [!NOTE]
 > 若要使用“我的模板”功能，必须启用 GIT 集成。 支持 Azure DevOps GIT 和 GitHub。

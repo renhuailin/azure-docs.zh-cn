@@ -4,15 +4,15 @@ description: 如何将数据从 Azure IoT Central 应用程序导出到 Azure �
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 08/30/2021
+ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 8235da7781ec55a90c81fca3a6393e5d1eda5c2f
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: cd4df6157d4b163a6c475b0f627a1d96466f8ae5
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123481193"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835812"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>使用数据导出功能将 IoT 数据导出到云目标（旧版）
 

@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: 描述用于 Kubernetes 分发的 Arc 验证计划
 keywords: Kubernetes, Arc, Azure, K8s, 验证
-ms.openlocfilehash: 5d8e48a6e9dc5d8d95dacb649fb0748e4ae4daa5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6ebce59a16c994c676cfe81df4df4e9433d1fb70
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742677"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966242"
 ---
 # <a name="azure-arc-enabled-kubernetes-validation"></a>已启用 Azure Arc 的 Kubernetes 验证
 
@@ -37,6 +37,7 @@ ms.locfileid: "121742677"
 | Canonical    | [Charmed Kubernetes](https://ubuntu.com/kubernetes) | [1.19](https://ubuntu.com/kubernetes/docs/1.19/components) |
 | SUSE Rancher      | [Rancher Kubernetes 引擎](https://rancher.com/products/rke/) | RKE CLI 版本：[v1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4)Kubernetes 版本：[1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6))、[1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14))、[1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |
 | Nutanix      | [Karbon](https://www.nutanix.com/products/karbon)    | 版本 2.2.1 |
+| Platform9      | [Platform9 托管 Kubernetes (PMK)](https://platform9.com/managed-kubernetes/)    | PMK 版本 [5.3.0](https://platform9.com/docs/kubernetes/release-notes#platform9-managed-kubernetes-version-53-release-notes)；Kubernetes 版本：v1.20.5、v1.19.6、v1.18.10 |
 
 Azure Arc 团队还在以下公有云提供商上运行了符合性测试和经验证的已启用 Azure Arc 的 Kubernetes 场景：
 

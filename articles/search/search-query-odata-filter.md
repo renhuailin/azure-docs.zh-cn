@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be51077c5aad6056cf4e28656c0552bc052a7ead
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88934848"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122829908"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $filter 语法
 
@@ -56,7 +56,7 @@ variable ::= identifier | field_path
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
 
 > [!NOTE]
-> 请参阅 [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以了解完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 布尔表达式的类型包括：
 
@@ -242,6 +242,12 @@ variable ::= identifier | field_path
 
 ```odata-filter-expr
     $filter=search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and not Rooms/any(room: room/SmokingAllowed)
+```
+
+查找在“说明”字段中包含以字母“lux”开头的单词的文档。 此查询结合使用[前缀搜索](query-simple-syntax.md#prefix-queries)和 `search.ismatch`。
+
+```odata-filter-expr
+    $filter=search.ismatch('lux*', 'Description')
 ```
 
 ## <a name="next-steps"></a>后续步骤  

@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 06/11/2021
 ms.author: mimart
-ms.openlocfilehash: 9fb96a0427ecaa3431eddb47ca89458a6dcf5901
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2bab69917caf103cd4e2f0b10e28b46acd8e48c3
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723204"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220298"
 ---
 ## <a name="prepopulate-the-sign-in-name"></a>预填充登录名
 

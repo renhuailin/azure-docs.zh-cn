@@ -6,14 +6,13 @@ ms.author: v-stharr
 ms.date: 05/18/2021
 ms.topic: how-to
 ms.service: azure-maps
-services: azure-maps
 ms.custom: mvc
-ms.openlocfilehash: d9e7595a6f3d84628df0c1d79f7936bbf09ea5ef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c7c9bcfa405abe21b335156862b0ee6d19e0a9ac
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742628"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438437"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service"></a>使用 Azure Maps 高程服务请求高程数据
 
@@ -485,7 +484,7 @@ URL 中的纬度和经度应使用 WGS84（世界大地坐标系统）十进制�
 
 <br/>
 
-<iframe height="500" style="width:100%;" scrolling="no" title="获取位置高程" src="https://codepen.io/azuremaps/embed/c840b510e113ba7cb32809591d5f96a2?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="获取位置高程" src="https://codepen.io/azuremaps/embed/c840b510e113ba7cb32809591d5f96a2?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）提供的触笔<a href='https://codepen.io/azuremaps/pen/c840b510e113ba7cb32809591d5f96a2'>获取位置高程</a>。
 </iframe>
 
@@ -495,7 +494,7 @@ URL 中的纬度和经度应使用 WGS84（世界大地坐标系统）十进制�
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="按边界框获取高程" src="https://codepen.io/azuremaps/embed/619c888c70089c3350a3e95d499f3e48?height=500&theme-id=default&default-tab=js,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="按边界框获取高程" src="https://codepen.io/azuremaps/embed/619c888c70089c3350a3e95d499f3e48?height=500&theme-id=default&default-tab=js,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）提供的触笔<a href='https://codepen.io/azuremaps/pen/619c888c70089c3350a3e95d499f3e48'>按边界框获取高程</a>。
 </iframe>
 
@@ -505,7 +504,7 @@ URL 中的纬度和经度应使用 WGS84（世界大地坐标系统）十进制�
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="高程路径梯度" src="https://codepen.io/azuremaps/embed/7bee08e5cb13d05cb0a11636b60f14ca?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="高程路径梯度" src="https://codepen.io/azuremaps/embed/7bee08e5cb13d05cb0a11636b60f14ca?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的触笔<a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0a11636b60f14ca'>高程路径梯度</a>。
 </iframe>
 

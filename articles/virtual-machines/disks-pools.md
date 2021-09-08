@@ -8,12 +8,12 @@ ms.date: 07/23/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: b0dfb510ecf1722f1b8df9289a864ecd519be055
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: ea06b3c4fdf9be626df99f4a06f4190ce86df4b3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653140"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433271"
 ---
 # <a name="azure-disk-pools-preview"></a>Azure 磁盘池（预览版）
 
@@ -32,7 +32,7 @@ Azure 磁盘池（预览版）是一种 Azure 资源，可让应用程序和工�
 在预览版中，磁盘池有以下限制：
 
 - 只能将高级 SSD 或超级磁盘添加到磁盘池。
-- 当前不支持使用[区域冗余存储 (ZRS)](disks-redundancy.md#zone-redundant-storage-for-managed-disks-preview) 的磁盘。 
+- 当前不支持使用[区域冗余存储 (ZRS)](disks-redundancy.md#zone-redundant-storage-for-managed-disks) 的磁盘。 
 
 ### <a name="regional-availability"></a>区域可用性
 

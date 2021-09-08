@@ -13,14 +13,14 @@ ms.date: 05/06/2021
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 27c56804eeb3b27bfda9f581f13b853edc8e4b4e
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 5f213c6b41a0a34850b35fb24dd4288c00693511
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112453783"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039331"
 ---
-# <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
+# <a name="add-app-roles-to-your-application-and-receive-them-in-the-token"></a>将应用角色添加到应用程序中并在令牌中接收它们
 
 基于角色的访问控制 (RBAC) 是一种常用的机制，用于在应用程序中强制进行授权。 使用 RBAC 时，管理员将权限授予角色而不是单个用户或组。 然后，管理员再将角色分配给不同的用户和组，以便控制用户对特定内容和功能的访问。
 

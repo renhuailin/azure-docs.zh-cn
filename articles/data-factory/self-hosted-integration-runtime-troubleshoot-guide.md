@@ -1,39 +1,50 @@
 ---
-title: 在 Azure 数据工厂中排查自承载集成运行时问题
-description: 了解如何在 Azure 数据工厂中排查自承载集成运行时问题。
+title: 排查自承载集成运行时问题
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何排查 Azure 数据工厂和 Azure Synapse Analytics 管道中的自承载集成运行时问题。
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
+ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 05/31/2021
+ms.date: 08/24/2021
 ms.author: lle
-ms.openlocfilehash: 7abdd532e20a2514fcf96d97973a8fbfdd87d0df
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b833b8b63415a36fb0ee2862c9dfa261cfeb44ef
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796265"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864207"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文探讨 Azure 数据工厂中的自承载集成运行时 (IR) 的常用故障排除方法。
+本文探讨 Azure 数据工厂和 Synapse 工作区中的自承载集成运行时 (IR) 的常用故障排除方法。
 
-## <a name="gather-self-hosted-ir-logs-from-azure-data-factory"></a>从 Azure 数据工厂收集自承载 IR 日志
+## <a name="gather-self-hosted-ir-logs"></a>收集自承载 IR 日志
 
-对于在自承载 IR 或共享 IR 上运行的失败活动，Azure 数据工厂支持查看和上传错误日志。 要获取错误报表 ID，请按照此处的说明操作，然后输入报表 ID 以搜索相关的已知问题。
+对于在自承载 IR 或共享 IR 上运行的失败活动，此服务支持查看和上传错误日志。 要获取错误报表 ID，请按照此处的说明操作，然后输入报表 ID 以搜索相关的已知问题。
 
-1. 在数据工厂中，选择“管道运行”。
+1. 在服务 UI 的“监视”页上，选择“管道运行”。
 
 1. 在“活动运行”下的“错误”列中，选择突出显示的按钮以显示活动日志，如以下屏幕截图所示：
 
-    ![“所有管道运行”窗格上的“活动运行”部分的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
-
-    将显示失败的活动运行的活动日志。
-
-    ![失败活动的活动日志的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png) 
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
     
-1. 要获得进一步的帮助，请选择“发送日志”。
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png" alt-text="“所有管道运行”窗格上的“活动运行”部分的屏幕截图。":::
+    
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+    
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page-synapse.png" alt-text="“所有管道运行”窗格上的“活动运行”部分的屏幕截图。":::
+    
+    ---
+    
+    将显示失败的活动运行的活动日志。
+    
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png" alt-text="失败活动的活动日志的屏幕截图。"::: 
+    
+3. 要获得进一步的帮助，请选择“发送日志”。
  
    将打开“与 Microsoft 共享自承载集成运行时 (IR) 日志”窗口。
 
@@ -71,7 +82,7 @@ ms.locfileid: "110796265"
 
 #### <a name="symptoms"></a>症状
 
-尝试从 Azure 数据工厂接口提高并发作业数限制时，进程以“正在更新”状态挂起。
+尝试增加 UI 的并发作业限制时，相关进程将以“正在更新”状态挂起。
 
 示例场景：并发作业数的最大值当前设置为 24，而你希望增加该值，使作业运行速度更快。 可输入的最小值为 3，可输入的最大值为 32。 将值从 24 增加到 32，然后选择“更新”按钮。 此进程停滞在“正在更新”状态，如下面的屏幕截图所示。 刷新页面，该值仍显示为 24。 它未如你预期的那样更新为 32。
 
@@ -307,7 +318,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 `[14]0460.3404::05/07/21-00:23:32.2107988 [System] A fatal error occurred when attempting to access the TLS server credential private key. The error code returned from the cryptographic module is 0x8009030D. The internal error state is 10001.`
 
-在 ADF 链接服务中使用服务主体身份验证时，同步过程没有问题。 但是，将身份验证类型切换为帐户密钥时，同步问题就出现了。 这是因为自承载集成运行时服务在服务帐户 (NT SERVICE\DIAHostService) 下运行，需要将其添加到私钥权限中。
+在链接服务中使用服务主体身份验证时，同步过程没有问题。 但是，将身份验证类型切换为帐户密钥时，同步问题就出现了。 这是因为自承载集成运行时服务在服务帐户 (NT SERVICE\DIAHostService) 下运行，需要将其添加到私钥权限中。
  
 
 #### <a name="resolution"></a>解决方法
@@ -329,7 +340,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
     1. 在弹出的“证书管理单元”窗格中，选择“计算机帐户”。
     1. 选择“**下一页**”。
     1. 在“选择计算机”窗格中，选择“本地计算机: 运行此控制台的计算机”。
-    1. 选择“完成”  。
+    1. 选择“完成”。
     1. 在“添加或删除管理单元”窗格中选择“确定”。
 
 1. 在 MMC 窗格中，继续执行以下步骤：
@@ -516,9 +527,9 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 ![证书转换后的结果的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
 
 ### <a name="self-hosted-integration-runtime-version-5x"></a>自承载集成运行时版本 5.x
-若要升级为 Azure 数据工厂自承载集成运行时版本 5.x，必须使用 .NET Framework 运行时 4.7.2 或更高版本。 在下载页中，你会发现最新的 4.x 版本和最新的两个 5.x 版本的下载链接。 
+若要升级为自承载集成运行时版本 5.x，我们需要 .NET Framework 运行时 4.7.2 或更高版本。 在下载页中，你会发现最新的 4.x 版本和最新的两个 5.x 版本的下载链接。 
 
-对于 Azure 数据工厂 v2 客户：
+对于 Azure 数据工厂 v2 和 Azure Synapse 客户：
 - 如果自动更新已打开，并且你已将 .NET Framework 运行时升级到 4.7.2 或更高版本，则自承载集成运行时会自动升级到最新的 5.x 版本。
 - 如果自动更新已打开，并且你尚未将 .NET Framework 运行时升级到 4.7.2 或更高版本，则自承载集成运行时不会自动升级到最新的 5.x 版本。 自承载集成运行时仍然保留为当前的 4.x 版本。 你可以在门户和自承载集成运行时客户端中看到有关 .NET Framework 运行时升级的警告。
 - 如果自动更新已关闭，并且你已将 .NET Framework 运行时升级到 4.7.2 或更高版本，则可以手动下载最新的 5.x，并将其安装在计算机上。
@@ -545,7 +556,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 #### <a name="cause"></a>原因 
 
-自承载 IR 无法连接到 Azure 数据工厂服务后端。 此问题通常是防火墙中的网络设置导致的。
+自承载 IR 无法连接到服务后端。 此问题通常是防火墙中的网络设置导致的。
 
 #### <a name="resolution"></a>解决方法
 
@@ -557,10 +568,10 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
     ```powershell
     (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
-    ```
-        
+    ```      
+
    > [!NOTE]     
-   > 服务 URL 可能会有所不同，具体取决于数据工厂实例的位置。 若要查找服务 URL，请选择“ADF UI” > “连接” > “集成运行时” > “编辑自承载 IR” > “节点” > “查看服务 URL”     。
+   > 服务 URL 可能会有所不同，具体取决于数据工厂或 Synapse 工作区实例的位置。 若要查找服务 URL，请使用数据工厂或 Azure Synapse 实例中 UI 的“管理”页查找“集成运行时”，并单击自承载 IR 对其进行编辑。  然后选择“节点”选项卡，并单击“查看服务 URL” 。
             
     下面是预期的响应：
             
@@ -646,13 +657,13 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
     - 将所有节点置于同一域中。
     - 在所有托管 VM 的主机文件中添加 IP 到主机映射。
 
-### <a name="connectivity-issue-between-the-self-hosted-ir-and-your-data-factory-instance-or-the-self-hosted-ir-and-the-data-source-or-sink"></a>自承载 IR 与数据工厂实例或自承载 IR 与数据源/接收器之间的连接问题
+### <a name="connectivity-issue-between-the-self-hosted-ir-and-your-data-factory-or-azure-synapse-instance-or-the-self-hosted-ir-and-the-data-source-or-sink"></a>自承载 IR 与数据工厂/Azure Synapse 实例，或者自承载 IR 与数据源/接收器之间的连接问题
 
 若要排查网络连接问题，应知道如何收集网络跟踪，了解如何使用它，并在通过自承载 IR 在实际案例中应用 Netmon 工具之前[分析 Microsoft 网络监视器 (Netmon) 跟踪](#analyze-the-netmon-trace)。
 
 #### <a name="symptoms"></a>症状
 
-有时可能需要对自承载 IR 和数据工厂实例之间的某些连接问题进行故障排除（如以下屏幕截图所示），或者对自承载 IR 与数据源或接收器之间的连接问题进行故障排除。 
+有时可能需要对自承载 IR 和数据工厂/Azure Synapse 实例之间的某些连接问题进行故障排除（如以下屏幕截图所示），或者对自承载 IR 与数据源或接收器之间的连接问题进行故障排除。 
 
 ![“处理的 HTTP 请求失败”消息的屏幕截图](media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png)
 
@@ -764,9 +775,9 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 如何确定你是否受到影响：
 
-- 如果你使用[设置防火墙配置和 IP 地址的允许列表](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-addresses)中所述的方法基于完全限定的域名 (FQDN) 定义防火墙规则，则不受影响。
+- 如果基于完全限定的域名 (FQDN) 定义防火墙规则，且使用[设置防火墙配置和 IP 地址的允许列表](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-addresses)中所述的方法，则你不受影响。
 
-- 如果你在公司防火墙上显式启用了出站 IP 允许列表，则会受影响。
+- 如果在企业防火墙上显式启用出站 IP 的允许列表，你会受到影响。
 
    如果受到影响，请执行以下操作：在 2020 年 11 月 8 日之前，通知网络基础设施团队更新网络配置，以使用最新的数据工厂 IP 地址。 若要下载最新的 IP 地址，请转到[使用可下载的 JSON 文件发现服务标记](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
 
@@ -780,7 +791,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
   ![显示数据工厂作为目标的目标检查的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
 
-- 不过，如果你在 Azure 虚拟网络上的 NSG 规则设置中显式启用了出站 IP 地址的允许列表，则你会受影响。
+- 如果在 Azure 虚拟网络的 NSG 规则设置上显式启用出站 IP 地址的允许列表，你会受到影响。
 
    如果受到影响，请执行以下操作：在 2020 年 11 月 8 日之前，通知网络基础设施团队更新 Azure 虚拟网络配置上的 NSG 规则，以使用最新的数据工厂 IP 地址。 若要下载最新的 IP 地址，请转到[使用可下载的 JSON 文件发现服务标记](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
 
@@ -792,7 +803,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 - 如果有出站规则限制，请检查是否是在使用服务标记。 如果在使用服务标记，则不会受到影响。 无需更改或添加任何内容，因为新 IP 范围包含在现有服务标记之内。
 
-- 不过，如果你在 Azure 虚拟网络上的 NSG 规则设置中显式启用了出站 IP 地址的允许列表，则你会受影响。
+- 如果在 Azure 虚拟网络的 NSG 规则设置上显式启用出站 IP 地址的允许列表，你会受到影响。
 
   如果受到影响，请执行以下操作：在 2020 年 11 月 8 日之前，通知网络基础设施团队更新 Azure 虚拟网络配置上的 NSG 规则，以使用最新的数据工厂 IP 地址。 若要下载最新的 IP 地址，请转到[使用可下载的 JSON 文件发现服务标记](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
 
@@ -800,13 +811,13 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 #### <a name="symptoms"></a>症状
 
-自承载 IR 无法连接到 Azure 数据工厂服务。
+自承载 IR 无法连接到 Azure 数据工厂或 Azure Synapse 服务。
 
 当你在 CustomLogEvent 表中检查自承载 IR 事件日志或客户端通知日志时，你会发现以下错误消息：
 
 “The underlying connection was closed:无法建立 SSL/TLS 安全通道的信任关系。 根据验证过程，远程证书无效。”
 
-检查数据工厂服务的服务器证书最简单方法是在浏览器中打开数据工厂服务 URL。 例如，在安装了自承载 IR 的计算机上打开[检查服务器证书链接](https://eu.frontend.clouddatahub.net/)，然后查看服务器证书信息。
+检查服务的服务器证书最简单方法是在浏览器中打开服务 URL。 例如，在安装了自承载 IR 的计算机上打开[检查服务器证书链接](https://eu.frontend.clouddatahub.net/)，然后查看服务器证书信息。
 
   ![Azure 数据工厂服务的“检查服务器证书”窗格的屏幕截图。](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
 
@@ -816,13 +827,13 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 
 此问题有两个可能的原因：
 
-- 原因 1：数据工厂服务服务器证书的根 CA 在安装了自承载 IR 的计算机上不受信任。 
-- 原因 2：你在环境中使用了代理，代理替代了数据工厂服务的服务器证书，而安装了自承载 IR 的计算机不信任被替换的服务器证书。
+- 原因 1：服务的服务器证书的根 CA 在安装了自承载 IR 的计算机上不受信任。 
+- 原因 2：你在环境中使用了代理，代理替代了服务的服务器证书，而安装了自承载 IR 的计算机不信任已替换的服务器证书。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解决方案
 
-- 对于原因 1：请确保数据工厂服务器证书及其证书链在安装了自承载 IR 的计算机上受信任。
-- 对于原因 2：请在自承载 IR 计算机上信任被替换的根 CA，或者将代理配置为不替换数据工厂服务器证书。
+- 对于原因 1：请确保服务的服务器证书及其证书链在安装了自承载 IR 的计算机上受信任。
+- 对于原因 2：请在自承载 IR 计算机上信任被替换的根 CA，或者将代理配置为不替换服务的服务器证书。
 
 有关在 Windows 上信任证书的详细信息，请参阅[安装受信任的根证书](/skype-sdk/sdn/articles/installing-the-trusted-root-certificate)。
 
@@ -839,7 +850,7 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 有关故障排除的更多帮助，请尝试以下资源：
 
 *  [数据工厂博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [数据工厂功能请求](https://feedback.azure.com/forums/270578-data-factory)
+*  [数据工厂功能请求](/answers/topics/azure-data-factory.html)
 *  [Azure 视频](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A 页](/answers/topics/azure-data-factory.html)
 *  [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)

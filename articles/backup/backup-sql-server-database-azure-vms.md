@@ -2,13 +2,13 @@
 title: 从保管库备份多个 SQL Server VM
 description: 本文介绍如何使用 Azure 备份从恢复服务保管库备份 Azure 虚拟机上的 SQL Server 数据库
 ms.topic: conceptual
-ms.date: 05/28/2021
-ms.openlocfilehash: 3a6792fe5146df9babc906edec1fc12aa4b3e1cb
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 08/20/2021
+ms.openlocfilehash: 834737c9773b9efead12ef8033852d25ae706062
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672306"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099088"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>从恢复服务保管库备份多个 SQL Server VM
 
@@ -30,6 +30,8 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 1. 在托管 SQL Server 实例的 VM 所在的区域和订阅中标识或创建一个[恢复服务保管库](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)。
 1. 验证 VM 是否已建立[网络连接](backup-sql-server-database-azure-vms.md#establish-network-connectivity)。
+1. 确保在 VM 上安装 [Azure 虚拟机代理](../virtual-machines/extensions/agent-windows.md)。
+1. 请确保已在 VM 上安装 .NET 4.5.2 版本或更高版本。
 1. 确保 SQL Server 数据库遵循 [Azure 备份的数据库命名准则](#database-naming-guidelines-for-azure-backup)。
 1. 对于 Azure 资源管理器 VM，请确保 SQL Server VM 名称和资源组名称的组合长度不超过 84 个字符（对于经典 VM，则不超过 77 个字符）。 此限制是因为某些字符由该服务预留。
 1. 检查是否未为该数据库启用了其他任何备份解决方案。 在备份数据库之前，请禁用其他所有 SQL Server 备份。
@@ -96,18 +98,22 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>适用于 Azure 备份的数据库命名准则
 
-避免在数据库名称中使用以下元素：
+- 避免在数据库名称中使用以下元素：
 
-* 尾部和前导空格
-* 尾部感叹号 (!)
-* 右方括号 (])
-* 分号“;”
-* 正斜杠“/”
+  - 尾部和前导空格
+  - 尾部感叹号 (!)
+  - 右方括号 (])
+  - 分号 (;)
+  - 正斜杠 (/)
 
-可对不支持的字符使用别名，但我们建议避免这样做。 有关详细信息，请参阅 [Understanding the Table Service Data Model](/rest/api/storageservices/understanding-the-table-service-data-model)（了解表服务数据模型）。
+- 可对不支持的字符使用别名，但我们建议避免这样做。 有关详细信息，请参阅 [Understanding the Table Service Data Model](/rest/api/storageservices/understanding-the-table-service-data-model)（了解表服务数据模型）。
+
+- 不支持在相同的 SQL 实例上使用大小写不同的多个数据库。
+
+-   配置保护后，不支持更改 SQL 数据库的大小写。
 
 >[!NOTE]
->不支持对名称中包含“+”或“&”等特殊字符的数据库执行“配置保护”操作。 可以更改数据库名称或启用“自动保护”，这样可以成功保护这些数据库。
+>对于名称中包含特殊字符（如“+”或“&”）的数据库，不支持“配置保护”操作。 可以更改数据库名称，或启用“自动保护”，这样就可以成功保护这些数据库。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

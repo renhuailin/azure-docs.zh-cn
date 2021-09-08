@@ -4,15 +4,15 @@ description: 本文介绍如何使用 Azure 基于角色的访问控制 (Azure R
 keywords: 自动化 rbac, 基于角色的访问控制, azure rbac
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 06/15/2021
+ms.date: 08/26/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4af5a6d105867df7d5c7a00f6fc47bd0032f4336
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 30bc4a306eecf8be3177fb045f9904d775cab9bd
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597409"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215001"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色权限和安全性
 
@@ -27,6 +27,7 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 资源进行�
 | “所有者” |“所有者”角色允许访问自动化帐户中的所有资源和操作，包括访问其他用户、组和应用程序以管理自动化帐户。 |
 | 参与者 |“参与者”角色允许管理所有事项，修改其他用户对自动化帐户的访问权限除外。 |
 | 读取器 |“读取者”角色允许查看自动化帐户中的所有资源，但不能进行任何更改。 |
+| 自动化参与者 | 拥有“自动化参与者”角色后，你可管理自动化帐户中的所有资源，但无法修改其他用户对自动化帐户的访问权限。 |
 | 自动化运算符 |自动化操作员角色允许针对某个自动化帐户中的所有 Runbook 查看 Runbook 名称和属性，以及为其创建和管理作业。 如果想要防止他人查看或修改自动化帐户资源（例如凭据资产和 Runbook），但仍允许所在组织的成员执行这些 Runbook，则可使用此角色。 |
 |自动化作业操作员|自动化作业操作员角色允许针对某个自动化帐户中的所有 Runbook 创建和管理作业。|
 |自动化 Runbook 操作员|自动化 Runbook 操作员角色允许查看某个 Runbook 的名称和属性。|
@@ -67,6 +68,23 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 资源进行�
 |**操作**  |**说明**  |
 |---------|---------|
 |Microsoft.Automation/automationAccounts/read|查看自动化帐户中的所有资源。 |
+
+### <a name="automation-contributor"></a>自动化参与者
+
+自动化参与者可管理自动化帐户中除访问权限之外的所有资源。 下表显示了授予角色的权限：
+
+|**操作**  |**说明**  |
+|---------|---------|
+|Microsoft.Automation/automationAccounts/*|创建和管理自动化帐户下所有类型的资源。|
+|Microsoft.Authorization/*/read|读取角色和角色分配。|
+|Microsoft.Resources/deployments/*|创建和管理资源组部署。|
+|Microsoft.Resources/subscriptions/resourceGroups/read|读取资源组部署。|
+|Microsoft.Support/*|创建和管理支持票证。|
+
+> [!NOTE]
+> 如果针对目标资源设置了适当权限，则可使用“自动化参与者”角色通过托管标识访问任何资源，或者通过运行方式帐户访问。 默认情况下，自动化运行方式帐户配置有订阅的参与者权限。 遵循最小权限原则，仔细分配仅执行 runbook 所需的权限。 例如，如果启动或停止 Azure VM 仅需自动化帐户，则分配给运行方式帐户或托管标识的权限需仅用于启动或停止 VM。 同样，如果 runbook 正在从 Blob 存储读取，则分配只读权限。
+> 
+> 分配权限时，建议使用分配给托管标识的 Azure 基于角色的访问控制 (RBAC)。 查看[最佳方法](../active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations.md)建议，了解如何使用系统或用户分配的托管标识（包括生存期内的管理和治理）。
 
 ### <a name="automation-operator"></a>自动化运算符
 

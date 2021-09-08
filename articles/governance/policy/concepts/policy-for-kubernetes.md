@@ -4,12 +4,12 @@ description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管�
 ms.date: 08/17/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20b3362823644ab478e2069fbc610079820302c3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 615145c7267d580d7a22dd34452e68c9cd905cdc
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323078"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965126"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
@@ -407,10 +407,10 @@ kubectl get pods -n gatekeeper-system
 加载项每 15 分钟使用 Azure Policy 服务签入一次，查看策略分配中的更改。
 在此刷新周期内，加载项将检查更改。 这些更改将触发约束模板和约束的创建、更新或删除。
 
-在 Kubernetes 群集中，如果命名空间具有以下任意一种标签，则不拒绝带有冲突的许可请求。 符合性评估结果仍可用。
+在 Kubernetes 群集中，如果命名空间具有适合群集的标签，则不拒绝带有冲突的许可请求。 符合性评估结果仍可用。
 
-- `control-plane`
-- `admission.policy.azure.com/ignore`
+- 已启用 Azure Arc 的 Kubernetes 群集：`admission.policy.azure.com/ignore`
+- Azure Kubernetes 服务群集：`control-plane`
 
 > [!NOTE]
 > 虽然群集管理员可能有权创建和更新 Azure Policy 加载项安装的约束模板和约束资源，但这些情况不受支持，因为手动更新会被覆盖。 Gatekeeper 会继续评估在安装加载项和分配 Azure Policy 策略定义之前已存在的策略。

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/04/2021
+ms.date: 08/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 524315a0fa07b6c965d473688942c6e69be38494
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 20473d6a5dcbdc826605d46928a7bfbb90792e0e
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778189"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186058"
 ---
 # <a name="enrich-tokens-with-claims-from-external-sources-using-api-connectors"></a>使用 API 连接器通过外部源中的声明扩充令牌
 
@@ -92,7 +92,6 @@ Content-type: application/json
  "objectId": "ab3ec3b2-a435-45e4-b93a-56a005e88bb7",
  "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
  "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
- "objectId": "ab3ec3b2-a435-45e4-b93a-56a005e88bb7",
  "client_id": "231c70e8-8424-48ac-9b5d-5623b9e4ccf3",
  "step": "PreTokenIssuance",
  "ui_locales":"en-US"
@@ -323,7 +322,8 @@ REST API 终结点的设置不在本文的讨论范围内。 我们已创建 [Az
 ## <a name="test-the-custom-policy"></a>测试自定义策略
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 请确保使用包含 Azure AD 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
+1. 在门户工具栏中选择“目录 + 订阅”图标，确保使用包含 Azure AD 租户的目录。
+1. 在“门户设置 | 目录+订阅”页上，在“目录名称”列表中找到你的 Azure AD 目录，然后选择“切换”。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
 1. 选择“标识体验框架”。
 1. 选择“上传自定义策略”，然后上传已更改的策略文件：TrustFrameworkBase.xml、TrustFrameworkExtensions.xml、SignUpOrSignin.xml、ProfileEdit.xml 和 PasswordReset.xml。 

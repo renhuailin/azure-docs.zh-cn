@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: jodowns
 ms.custom: fasttrack-new, devx-track-azurepowershell
-ms.openlocfilehash: bd837faaaa986659ad9b30aa3cf853ea490cec6d
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 16a5dc58a8fddca2cef2c393aaecca61fef61a3c
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812131"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187714"
 ---
 # <a name="revisions-in-azure-api-management"></a>Azure API 管理中的修订
 
@@ -56,6 +56,9 @@ ms.locfileid: "107812131"
 创建修订版时，可以为自己的跟踪目的设置说明。 API 用户无法播放说明。
 
 将修订版设置为“当前版本”时，还可以选择指定公共更改日志说明。 更改日志包含在开发人员门户中，供 API 用户查看。 你可以使用 `Update-AzApiManagementApiRelease` PowerShell cmdlet 修改更改日志说明。
+
+> [!NOTE]
+> 某些 API 属性（例如“显示名称”和“API 后缀”）只能在当前修订版中更新 。
 
 ## <a name="versions-and-revisions"></a>版本和修订版
 

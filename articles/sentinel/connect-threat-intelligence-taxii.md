@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2021
 ms.author: yelevin
-ms.openlocfilehash: ce1d2fafd330848c19dc5386fad11d87bfe2670a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1335d10b1fd46b24326636e7caece4583c84f523
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732529"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253500"
 ---
 # <a name="connect-azure-sentinel-to-stixtaxii-threat-intelligence-feeds"></a>将 Azure Sentinel 连接到 STIX/TAXII 威胁情报源
 
@@ -34,7 +34,7 @@ ms.locfileid: "121732529"
 
 ## <a name="prerequisites"></a>先决条件  
 
-- 必须拥有 Azure Sentinel 工作区的读取和写入权限，才能存储威胁指标。
+- 必须对 Azure Sentinel 工作区具有读取和写入权限，用于存储威胁指标。
 - 必须拥有 TAXII 2.0 或 TAXII 2.1“API 根 URI”和“集合 ID”。
 
 ## <a name="instructions"></a>Instructions
@@ -60,9 +60,9 @@ TAXII 2.x 服务器播发 API 根，这是托管威胁情报集合的 URL。 通
 
 1. 选择要从 TAXII 服务器将威胁指标导入到的工作区。
 
-1. 从菜单中选择“数据连接器”，从连接器库中选择“威胁情报 - TAXII”，然后单击“打开连接器页面”按钮。
+1. 从菜单中选择“数据连接器”，从连接器库中选择“威胁情报 - TAXII”，然后选择“打开连接器页面”按钮。
 
-1. 为此 TAXII 服务器集合输入“易记名称”，以及“API 根 URL”、“集合 ID”、“用户名”（如有需要）和“密码”（如有需要），然后选择指示器组以及所需的轮询频率。 单击 **“添加”** 按钮。
+1. 为此 TAXII 服务器集合输入“易记名称”，以及“API 根 URL”、“集合 ID”、“用户名”（如有需要）和“密码”（如有需要），然后选择指示器组以及所需的轮询频率。 选择“添加”按钮。
 
     :::image type="content" source="media/connect-threat-intelligence-taxii/threat-intel-configure-taxii-servers.png" alt-text="配置 TAXII 服务器":::
  

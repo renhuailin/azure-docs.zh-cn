@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 08/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6b1ee7be04083c887bbd37b799a274f988aaf158
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: ffe0c1ffe4004cc441213d1781a2bb26b54d4d34
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112517068"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029116"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -179,6 +179,9 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 接下来，可通过以下文章详细了解 Azure Cosmos DB 中的成本优化：
 
+* 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
 * 详细了解[开发和测试优化](optimize-dev-test.md)
 * 详细了解[了解 Azure Cosmos DB 帐单](understand-your-bill.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: dd52d74ab4b5be261e6c170d897e15f14a332d9c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0b5d2921a59cc62ec4a58230a76eee33e4347ed0
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638965"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250717"
 ---
 # <a name="data-access-strategies"></a>数据访问策略
 
@@ -52,8 +52,8 @@ ms.locfileid: "122638965"
     |                              | Azure 数据资源管理器                                 | -                | -                   | 是*            | 是*         | -                    |
     |                              | Azure Data Lake Gen1                                | -                | -                   | 是             | -            | 是                  |
     |                              | Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL       | -                | -                   | 是             | -            | 是                  |
-    |                              | Azure 文件存储                                  | 是              | -                   | 是             | -            | .                    |
-    |                              | Azure 存储（Blob、ADLS Gen2）                     | 是              | 是（仅 MSI 身份验证） | 是             | -            | .                    |
+    |                              | Azure 文件                                  | 是              | -                   | 是             | -            | .                    |
+    |                              | Azure Blob 存储和 ADLS Gen2                     | 是              | 是（仅 MSI 身份验证） | 是             | -            | .                    |
     |                              | Azure SQL DB、Azure Synapse Analytics、SQL Ml  | 是（仅 Azure SQL DB/DW）        | -                   | 是             | -            | 是                  |
     |                              | Azure Key Vault（用于提取机密/连接字符串） | 是      | 是                 | 是             | -            | -                    |
     | 其他 PaaS/SaaS 数据存储 | AWS S3、SalesForce、Google Cloud Storage 等。    | -                | -                   | 是             | -            | -                    |
@@ -70,8 +70,8 @@ ms.locfileid: "122638965"
     |                                | Azure 数据资源管理器                                           | -         | -                   |
     |                                | Azure Data Lake Gen1                                          | 是       | -                   |
     |                                | Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL               | 是       | -                   |
-    |                                | Azure 文件存储                                            | 是       | -                   |
-    |                                | Azure 存储（Blob、ADLS Gen2）                             | 是       | 是（仅 MSI 身份验证） |
+    |                                | Azure 文件                                            | 是       | -                   |
+    |                                | Azure Blob 存储和 ADLS Gen2                             | 是       | 是（仅 MSI 身份验证） |
     |                                | Azure SQL DB、Azure Synapse Analytics、SQL Ml          | 是       | -                   |
     |                                | Azure Key Vault（用于提取机密/连接字符串） | 是       | 是                 |
     | 其他 PaaS/SaaS 数据存储 | AWS S3、SalesForce、Google Cloud Storage 等。              | 是       | -                   |

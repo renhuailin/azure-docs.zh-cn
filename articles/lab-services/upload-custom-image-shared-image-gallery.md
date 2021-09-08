@@ -3,12 +3,12 @@ title: Azure 实验室服务 - 如何从物理实验室环境引入 Windows 自�
 description: 介绍如何从物理实验室环境引入 Windows 自定义映像。
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 8c33f9579da2a0b7e3a58bd00b99d392fce07d28
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b838517a82ea0d6fb9437ff52c2b7a16098ee3ad
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748368"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451414"
 ---
 # <a name="bring-a-windows-custom-image-from-a-physical-lab-environment"></a>从物理实验室环境引入 Windows 自定义映像
 
@@ -16,7 +16,7 @@ ms.locfileid: "121748368"
 
 ## <a name="prerequisites"></a>先决条件
 
-需要有权限在学校的 Azure 订阅中创建 [Azure 托管磁盘](../virtual-machines/managed-disks-overview.md)才能完成本文中的步骤。
+你需要有权在学校的 Azure 订阅中创建 [Azure 托管磁盘](../virtual-machines/managed-disks-overview.md)才能完成本文中的步骤。
 
 将映像从物理实验室环境移动到实验室服务时，应重构每个映像，以便仅包含实验室类所需的软件。  有关详细信息，请参阅[从物理实验室迁移到 Azure 实验室服务](https://techcommunity.microsoft.com/t5/azure-lab-services/moving-from-a-physical-lab-to-azure-lab-services/ba-p/1654931)博客文章。
 
@@ -69,7 +69,7 @@ ms.locfileid: "121748368"
     使用 Azure 门户的托管磁盘的“大小和性能”选项卡可以更改磁盘大小。 如前所述，大小不能超过 128 GB。
 
 1. 在共享映像库中，创建映像定义和版本：
-    1. [创建映像定义](../virtual-machines/windows/shared-images-portal.md#create-an-image-definition)。  
+    1. [创建映像定义](../virtual-machines/image-version.md)。  
      - 对于“VM 代系”，选择“第 1 代”。
      - 选择要为操作系统状态创建专用还是通用映像。
      
@@ -77,10 +77,10 @@ ms.locfileid: "121748368"
     
     还可以选择使用现有映像定义，并创建自定义映像的新版本。
     
-1. [创建映像版本](../virtual-machines/windows/shared-images-portal.md#create-an-image-version)。
+1. [创建映像版本](../virtual-machines/image-version.md)。
     - “版本号”属性采用以下格式：MajorVersion.MinorVersion.Patch。   使用实验室服务创建实验室并选择自定义映像时，将自动使用最新版本的映像。  依次根据版本最高的 MajorVersion、MinorVersion 和 Patch 选择最新版本。
     - 对于“源”，从下拉列表中选择“磁盘和/或快照”。
-    - 对于“OS 磁盘”属性，请选择在先前步骤中创建的磁盘。
+    - 对于“OS 磁盘”属性，选择在先前步骤中创建的磁盘。
     
     有关可为映像定义指定的值的详细信息，请参阅[映像定义](../virtual-machines/shared-image-galleries.md#image-versions)。 
 

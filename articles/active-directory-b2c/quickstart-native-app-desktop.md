@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/12/2019
+ms.date: 08/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbdd0dc8914847c5502dc79635293fd685d071f9
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: e2e1ce1e2935f97176e238c899a929019b26ba6d
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613433"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475343"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为桌面应用设置登录
 
@@ -38,7 +38,8 @@ Azure Active Directory B2C (Azure AD B2C) 提供云标识管理来保护应用�
 ## <a name="run-the-application-in-visual-studio"></a>在 Visual Studio 中运行应用程序
 
 1. 在示例应用程序项目文件夹中，打开 Visual Studio 中的 **active-directory-b2c-wpf.sln** 解决方案。
-2. 按 **F5** 调试应用程序。
+2. [还原 NuGet 包](/nuget/consume-packages/package-restore)。
+3. 按 **F5** 调试应用程序。
 
 ## <a name="sign-in-using-your-account"></a>使用帐户登录
 

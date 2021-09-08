@@ -6,14 +6,13 @@ ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
 ms.custom: devx-track-js
-ms.openlocfilehash: f50685a2e25d33f7caa614480817ea0040191cf8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c870767c63c265c13e18f527d20954f8e72abae5
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747706"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437698"
 ---
 # <a name="connect-to-a-wfs-service"></a>连接到 WFS 服务
 
@@ -40,7 +39,7 @@ Web 地理要素服务 (WFS) 是一项 web 服务，用于查询具有由开放�
 
 <br/>
 
-<iframe height='700' scrolling='no' title='简单 WFS 示例' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>简单 WFS 示例</a>。
+<iframe height='700' scrolling='no' title='简单 WFS 示例' src='//codepen.io/azuremaps/embed/MWwvVYY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/MWwvVYY/'>简单 WFS 示例</a>。
 </iframe>
 
 ## <a name="supported-filters"></a>支持的筛选器
@@ -82,7 +81,7 @@ WFS 标准规范使用 OGC 筛选器。 WFS 客户端支持以下筛选器，假
 
 <br/>
 
-<iframe height='500' scrolling='no' title= 'WFS 筛选器示例' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>WFS 筛选器示例</a>。
+<iframe height='500' scrolling='no' title= 'WFS 筛选器示例' src='//codepen.io/azuremaps/embed/NWqvYrV/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/NWqvYrV/'>WFS 筛选器示例</a>。
 </iframe>
 
 ## <a name="wfs-service-explorer"></a>WFS 服务资源管理器
@@ -91,7 +90,7 @@ WFS 标准规范使用 OGC 筛选器。 WFS 客户端支持以下筛选器，假
 
 <br/>
 
-<iframe height='700' style='width: 100%;' scrolling='no' title= 'WFS 服务资源管理器' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS 服务资源管理器</a>。
+<iframe height='700' scrolling='no' title= 'WFS 服务资源管理器' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>WFS 服务资源管理器</a>。
 </iframe>
 
 若要访问在未启用 CORS 的终结点上托管的 WFS 服务，可以将启用 CORS 的代理服务传递到 WFS 客户端的 `proxyService` 选项中，如下所示。 

@@ -6,16 +6,19 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 05/27/2020
+ms.date: 08/27/2021
 ms.author: cynthn
-ms.openlocfilehash: 28b3ee98d44e1567d9e25cf9237015396975ab01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78fce318d07e8603830fe04b41df387e6a25f8d9
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550444"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227237"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>如何使用 Azure 门户打开虚拟机端口
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 
+
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 
@@ -30,7 +33,7 @@ ms.locfileid: "102550444"
 
     此时将打开“创建网络安全组”窗口。
 
-    ![创建网络安全组](./media/nsg-quickstart-portal/create-nsg.png)
+    :::image type="content" source="media/nsg-quickstart-portal/create-nsg.png" alt-text="创建网络安全组。":::
 
 1. 输入网络安全组的名称。 
 
@@ -40,14 +43,14 @@ ms.locfileid: "102550444"
 
 ## <a name="create-an-inbound-security-rule"></a>创建入站安全规则
 
-1. 选择新的网络安全组。 
+1. 选择新的网络安全组。
 
 1. 从左侧菜单中选择“入站安全规则”，并选择“添加”。
 
-    ![切换到“高级”页](./media/nsg-quickstart-portal/advanced.png)
+    :::image type="content" source="media/nsg-quickstart-portal/advanced.png" alt-text="添加入站安全规则。":::
 
-1. 在“添加入站安全规则”页中，切换到页面顶部“基本”中的“高级”。   
-
+1. 可以根据需要限制“源”和“源端口范围”，或保留默认值“任意” 。
+1. 可以根据需要限制“目标”或保留默认值“任意”。
 1. 从下拉菜单中选择常见的“服务”，如 HTTP 。 如果要提供要使用的特定端口，也可以选择“自定义”。 
 
 1. （可选）更改 **优先级** 或 **名称**。 优先级会影响应用规则的顺序：数值越小，越先应用规则。

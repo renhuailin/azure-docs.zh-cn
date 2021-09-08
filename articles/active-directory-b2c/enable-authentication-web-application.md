@@ -11,12 +11,12 @@ ms.date: 06/11/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 0fc28097220918f8d9cde8f44c156a5de82a5e50
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 44f3c777279d6f6b8d2df2600141e7fd66e44214
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469655"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186292"
 ---
 # <a name="enable-authentication-in-your-own-web-app-by-using-azure-ad-b2c"></a>使用 Azure AD B2C 在自己的 Web 应用中启用身份验证
 
@@ -68,7 +68,7 @@ Install-Package Microsoft.Identity.Web.UI
 
 Microsoft 标识 Web 中间件使用在托管进程启动时运行的启动类。 在此步骤中，添加启动身份验证库所需的代码。
 
-打开 Startup.cs，然后在类的开头添加以下 `using` 声明：
+打开 Startup.cs，然后在类开头添加以下 `using` 声明：
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -280,11 +280,12 @@ Azure AD B2C 标识提供者设置存储在 appsettings.json 文件中。 打开
 ## <a name="step-7-run-your-application"></a>步骤 7：运行应用程序
 
 1. 生成并运行该项目。
-1. 转到  `https://localhost:5001` 。 
+1. 转到 [https://localhost:5001](https://localhost:5001)。 
 1. 选择“注册/登录”。
 1. 完成注册或登录过程。
 
 成功进行身份验证后，导航栏中会显示显示名称。 若要查看 Azure AD B2C 令牌返回到应用的声明，请选择“声明”。
 
 ## <a name="next-steps"></a>后续步骤
+
 * 了解如何[自定义和增强 Web 应用的 Azure AD B2C 身份验证体验](enable-authentication-web-application-options.md).

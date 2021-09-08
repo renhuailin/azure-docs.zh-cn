@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure CLI 管理 Azure HDInsight 群集
-description: 了解如何使用 Azure CLI 管理 Azure HDInsight 群集。 群集类型包括 ApacheHadoop、Spark、HBase、Storm、Kafka、交互式查询和 ML Services。
+description: 了解如何使用 Azure CLI 管理 Azure HDInsight 群集。 群集类型包括 Apache Hadoop、Spark、HBase、Storm、Kafka、Interactive Query。
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-azurecli
 ms.date: 02/26/2020
-ms.openlocfilehash: 14b88700f3968e3bfdc788abb2fc9ce90634068e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 74f228c8c1d9ca29e3f9e60062891a90a3a4abf6
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770338"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "122653674"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>使用 Azure CLI 管理 Azure HDInsight 群集
 
-[!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
+[!INCLUDE [selector](includes/hdinsight-portal-management-selector.md)]
 
 了解如何使用 [Azure CLI](/cli/azure/) 管理 Azure HDInsight 群集。 Azure 命令行接口 (CLI) 是用于管理 Azure 资源的 Microsoft 跨平台命令行体验。
 

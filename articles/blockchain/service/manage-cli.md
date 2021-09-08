@@ -4,17 +4,18 @@ description: 如何使用 Azure CLI 管理 Azure 区块链服务
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 55df56274aa5baa946b60c27cf49723d59c928a1
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 6920458795a84e44c19164d1342de1b9a33052d0
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865920"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122652758"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>使用 Azure CLI 管理 Azure 区块链服务
 
 除了 Azure 门户之外，还可以使用 Azure CLI 管理 Azure 区块链服务的区块链成员和事务节点。
 
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。
@@ -64,7 +65,7 @@ az blockchain member create \
 | 参数 | 说明 |
 |---------|-------------|
 | **resource-group** | 在其中创建 Azure 区块链服务资源的资源组名称。 |
-| name | 用于标识 Azure 区块链服务区块链成员的唯一名称。 此名称用于公共终结点地址。 例如，`myblockchainmember.blockchain.azure.com` 。 |
+| name | 用于标识 Azure 区块链服务区块链成员的唯一名称。 此名称用于公共终结点地址。 例如，`myblockchainmember.blockchain.azure.com`。 |
 | **location** | 在其中创建区块链成员的 Azure 区域。 例如，`eastus` 。 选择最靠近用户或其他 Azure 应用程序的位置。 功能在某些地区可能不可用。 |
 | password | 成员的默认事务节点的密码。 连接到区块链成员的默认事务节点公共终结点时，请使用密码进行基本身份验证。 密码必须满足以下四个要求中的三个要求：长度需要介于 12 和 72 个字符之间、1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符，该特殊字符不是数字符号 (#)、百分号 (%)、逗号 (,)、星号 (*)、反引号 (\`)、双引号 (")、单引号 (')、破折号 (-) 和分号 (;)|
 | **protocol** | 区块链协议。 目前支持 Quorum 协议。 |

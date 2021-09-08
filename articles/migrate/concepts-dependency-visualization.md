@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 03/18/2021
-ms.openlocfilehash: 184c8099c0e86d8f8744948137b344c732bbf7b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 240f87a6b3154995340830e1861c8a76e6e3557f
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778366"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259668"
 ---
 # <a name="dependency-analysis"></a>依赖项分析
 
@@ -71,7 +71,7 @@ ms.locfileid: "104778366"
 
 **要求** | **无代理** | **基于代理**
 --- | --- | ---
-**支持** | 仅 VMware 上的服务器的预览版中。 [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支持的操作系统。 | 正式发布版 (GA) 中。
+**支持** | 仅适用于 VMware 上的服务器。 [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支持的操作系统。 | 正式发布版 (GA) 中。
 **代理** | 要分析的服务器上无需代理。 | 要分析的每个本地服务器上需要代理。
 **Log Analytics** | 不需要。 | Azure Migrate 在 [Azure Monitor 日志](../azure-monitor/logs/log-query-overview.md)中使用[服务映射](../azure-monitor/vm/service-map.md)解决方案进行依赖项分析。<br/><br/> 将 Log Analytics 工作区与项目相关联。 工作区必须位于美国东部、东南亚或欧洲西部区域。 工作区必须位于[支持服务映射](../azure-monitor/vm/vminsights-configure-workspace.md#supported-regions)的区域中。
 **处理** | 捕获 TCP 连接数据。 发现后，每隔五分钟收集一次数据。 | 服务器上安装的服务映射代理收集有关 TCP 进程的数据以及每个进程的入站/出站连接。

@@ -2,13 +2,13 @@
 title: 使用 Apache Kafka 应用中的事件中心 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍有关 Azure 事件中心提供的 Apache Kafka 支持的信息。
 ms.topic: article
-ms.date: 09/25/2020
-ms.openlocfilehash: 5402769b00a142551672098829dcf8f3ef6ea670
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.date: 08/30/2021
+ms.openlocfilehash: f0ea6469d17248a0d37a7ababf767d494545fbbb
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122321774"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250651"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>使用 Apache Kafka 应用程序中的 Azure 事件中心
 事件中心提供与 Apache Kafka® 生成者和使用者 API 兼容的终结点，大多数现有 Apache Kafka 客户端应用程序可以使用这些 API 作为运行你自己的 Apache Kafka 群集的替代方法。 事件中心 1.0 及更高版本支持 Apache Kafka 的生成者和使用者 API 客户端。
@@ -51,14 +51,14 @@ Apache Kafka 源自于使用 Apache Kafka 构建应用程序，也有助于理�
 如果需要 Apache Kafka 的特定功能，而 Apache Kafka 接口的事件中心未提供这些功能，或者如果你的实施模式超过了[事件中心配额](event-hubs-quotas.md)，则还可以运行 [Azure HDInsight 中的本机 Apache Kafka 群集](../hdinsight/kafka/apache-kafka-introduction.md)。  
 
 ## <a name="security-and-authentication"></a>安全性和身份验证
-每次你发布或使用来自用于 Kafka 的事件中心的事件时，客户端都会尝试访问事件中心资源。 你希望确保使用已授权的实体来访问资源。 在客户端上使用 Apache Kafka 协议时，可以使用 SASL 机制设置用于身份验证和加密的配置。 使用用于 Kafka 的事件中心时，需要进行 TLS 加密（因为使用事件中心传输的所有数据均经过 TLS 加密）。 可以在配置文件中指定 SASL_SSL 选项来完成此设置。 
+每次你发布或使用来自用于 Kafka 的事件中心的事件时，客户端都会尝试访问事件中心资源。 你希望确保使用已授权的实体来访问资源。 在客户端上使用 Apache Kafka 协议时，可以使用 SASL 机制设置用于身份验证和加密的配置。 如果使用用于 Kafka 的事件中心需要 TLS 加密（因为事件中心传输的所有数据都是经过 TLS 加密的），可以在配置文件中指定 SASL_SSL 选项来完成此操作。 
 
 Azure 事件中心提供了多个选项来授予对安全资源的访问权限。 
 
 - OAuth 2.0
 - 共享访问签名 (SAS)
 
-#### <a name="oauth-20"></a>OAuth 2.0
+### <a name="oauth-20"></a>OAuth 2.0
 事件中心会与 Azure Active Directory (Azure AD) 集成，后者提供了与 OAuth 2.0 兼容的集中式授权服务器。 使用 Azure AD，你可以通过 Azure 基于角色的访问控制 (Azure RBAC) 向客户端标识授予细粒度权限。 可以指定“SASL_SSL”作为协议，并指定“OAUTHBEARER”作为机制，通过这种方式将此功能用于 Kafka 客户端。 有关 Azure 角色和范围访问级别的详细信息，请参阅[使用 Azure AD 授予访问权限](authorize-access-azure-active-directory.md)。
 
 ```properties
@@ -69,7 +69,7 @@ sasl.jaas.config=org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginMo
 sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler
 ```
 
-#### <a name="shared-access-signature-sas"></a>共享访问签名 (SAS)
+### <a name="shared-access-signature-sas"></a>共享访问签名 (SAS)
 事件中心还提供了共享访问签名 (SAS)，方便你对用于 Kafka 的事件中心资源进行委派访问。 与 SAS 相比，使用 OAuth 2.0 基于令牌的机制授予访问权限具有更好的安全性和易用性。 内置角色还可以消除基于 ACL 的授权（用户必须对其进行维护和管理）的需要。 可以指定“SASL_SSL”作为协议，并指定“PLAIN”作为机制，通过这种方式将此功能用于 Kafka 客户端。 
 
 ```properties
@@ -101,7 +101,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 适用于 Kafka 的事件中心的目标是为锁定到 Apache Kafka API 的应用程序提供对 Azure 事件中心功能的访问权限，否则必须由 Apache Kafka 群集提供支持。 
 
-如[上面](#is-apache-kafka-the-right-solution-for-your-workload)所述，Azure 消息传递团队为许多消息传递场景提供了丰富而强大的覆盖范围。尽管当前无法借助事件中心对 Apache Kafka API 的支持来支持以下功能，但我们指出了在何处以何种方式获得所需的功能。
+如[前面](#is-apache-kafka-the-right-solution-for-your-workload)所述，Azure 消息传递队列为众多消息传递方案提供了丰富且可靠的覆盖范围，尽管事件中心对 Apache Kafka API 的支持目前不支持以下功能，但我们指出了所需功能的位置和使用方式。
 
 ### <a name="transactions"></a>事务
 
@@ -117,13 +117,13 @@ Apache Kafka 的客户端[压缩](https://cwiki.apache.org/confluence/display/KA
 
 ### <a name="log-compaction"></a>日志压缩
 
-Apache-Kafka 日志压缩是如下所述的一项功能：它允许从分区中逐出每个键除了最后一条记录之外的所有记录，这实际上会将 Apache Kafka 主题转换为一个键-值存储，其中最后添加的值将替代前一个。 Azure 事件中心目前未实现此功能。 键-值存储模式，即使频繁进行更新，在由 [Azure Cosmos DB](../cosmos-db/introduction.md) 之类的数据库服务提供支持时也比其他支持方式要好得多。 有关更多详细信息，请参阅事件中心联合指南中的[日志投影](event-hubs-federation-overview.md#log-projections)主题。 
+Apache-Kafka 日志压缩是如下所述的一项功能：它允许从分区中逐出每个键除了最后一条记录之外的所有记录，这实际上会将 Apache Kafka 主题转换为一个键-值存储，其中最后添加的值将替代前一个。 Azure 事件中心目前未实现此功能。 键-值存储模式，即使频繁进行更新，在由 [Azure Cosmos DB](../cosmos-db/introduction.md) 之类的数据库服务提供支持时也比其他支持方式要好得多。 有关详细信息，请参阅[日志投影](event-hubs-federation-overview.md#log-projections)。 
 
 ### <a name="kafka-streams"></a>Kafka Stream
 
 Kafka Streams 是用于流分析的一个客户端库，它是 Apache Kafka 开源项目的一部分，但独立于 Apache Kafka 事件流中转站。 
 
-Azure 事件中心客户要求提供 Kafka Streams 支持的最常见原因是，他们对 Confluent 的“ksqlDB”产品感兴趣。 “ksqlDB”是一个具有专利的共享源项目，它的[许可要求](https://github.com/confluentinc/ksql/blob/master/LICENSE)如下：任何“提供软件即服务、平台即服务、基础设施即服务或其他与 Confluent 产品或服务竞争的类似在线服务”的供应商都不允许使用或提供“ksqlDB”支持。 实际上，如果你使用 ksqlDB，你必须亲自运营 Kafka，或者必须使用 Confluent 的云产品/服务。 许可条款还可能会影响为许可证排除的用途提供服务的 Azure 客户。
+Azure 事件中心客户要求提供 Kafka Streams 支持的最常见原因是，他们对 Confluent 的“ksqlDB”产品感兴趣。 “ksqlDB”是经过[许可](https://github.com/confluentinc/ksql/blob/master/LICENSE)的专有共享源项目，因此不允许任何“提供服务型软件、平台即服务、基础结构即服务或其他与 Confluent 产品或服务有竞争关系的类似联机服务”的供应商使用或提供“ksqlDB”支持。 实际上，如果你使用 ksqlDB，你必须亲自运营 Kafka，或者必须使用 Confluent 的云产品/服务。 许可条款还可能会影响为许可证排除的用途提供服务的 Azure 客户。
 
 Kafka Streams 独立且没有 ksqlDB，其功能与许多替代框架和服务相比较少，它们的大多数都具有内置的流式处理 SQL 接口，目前全部与 Azure 事件中心集成：
 

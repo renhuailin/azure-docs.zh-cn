@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/17/2021
+ms.date: 08/26/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f219825a7d0ec47125c5518da76ad014f809c3ef
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 305f7b964bfd084bf1fa245d436c431cde1b9104
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322290"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123110323"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -80,10 +80,12 @@ SAP 应用程序层和 DBMS 的高可用性记录在从文档 [Sap NetWeaver 的
 在本节中，可以找到有关 Microsoft Power BI 集成到 SAP 数据源中以及 Azure 数据工厂集成到 SAP BW 中的文档。
 
 ## <a name="change-log"></a>更改日志
+- 2021 年 8 月 26 日：更改了[在 Azure 中的 RHEL 上设置 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 和[在 Azure 中的 SLES 上设置 Pacemaker](./high-availability-guide-suse-pacemaker.md) 中的内容，以更正 Azure Fence 代理的角色定义 JSON
 - 2021 年 8 月 17 日：更改了[适用于 SAP 工作负载的 IBM Db2 Azure 虚拟机 DBMS 部署](./dbms_guide_ibm.md)、[适用于 SAP 工作负载的 Azure 存储类型](./planning-guide-storage.md)和 [Azure 虚拟机支持的方案中的 SAP 工作负载](./sap-planning-supported-configurations.md)中的内容，以引入使用 ANF 上托管的 NFS 卷的 IBM Db2 支持
 - 2021 年 8 月 2 日：更改了 [SLES for SAP Applications 上 Azure VM 中的 SAP NW 的 HA](./high-availability-guide-suse.md)、[SLES 上 Azure VM 中通过 ANF 实现 SAP NW 的 HA](./high-availability-guide-suse-netapp-files.md)、[RHEL for SAP Applications 上 Azure VM 中的 SAP NW 的 HA](./high-availability-guide-rhel.md) 和 [RHEL 上 Azure VM 中通过 ANF 实现 SAP NW 的 HA](./high-availability-guide-rhel-netapp-files.md) 中的内容，以阐明模拟排队服务器故障的测试方案的行为 (ENSA1/ENSA2)     
-- 2021 年 8 月 2 日：更改了 [RHEL for SAP Applications 上 Azure VM 中的 SAP NW 的 HA](./high-availability-guide-rhel.md)、[RHEL 上 Azure VM 中通过 ANF 实现 SAP NW 的 HA](./high-availability-guide-rhel-netapp-files.md) 和 [RHEL 上 Azure VM 中的 SAP NW 的 HA 多 SID 指南](./high-availability-guide-rhel-multi-sid.md)中的内容，以调整群集资源粘性、迁移阈值和顺序约束  
-- 2021 年 8 月 2 日：发布了[使用 Azure 上的 SAP IQ 的 SAP BW 近线存储 (NLS) 实施指南](./sap-iq-deployment-guide.md) 
+- 2021 年 8 月 11 日：更改了 [RHEL for SAP Applications 上 Azure VM 中的 SAP NW 的 HA](./high-availability-guide-rhel.md)、[RHEL 上 Azure VM 中通过 ANF 实现 SAP NW 的 HA](./high-availability-guide-rhel-netapp-files.md) 和 [RHEL 上 Azure VM 中的 SAP NW 的 HA 多 SID 指南](./high-availability-guide-rhel-multi-sid.md)中的内容，以调整群集资源粘性、迁移阈值和顺序约束  
+- 2021 年 8 月 11 日：发布了[使用 Azure 上的 SAP IQ 的 SAP BW 近线存储 (NLS) 实施指南](./sap-iq-deployment-guide.md) 
+- 2021 年 7 月 29 日：在[使用用于 SAP 应用程序的 Azure NetApp 文件 (SMB) 实现 Windows 上的 Azure VM 上 SAP NetWeaver 的高可用性](./high-availability-guide-windows-netapp-files-smb.md)和[使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上对 SAP ASCS/SCS 实例进行聚类分析](./sap-high-availability-guide-wsfc-shared-disk.md)中为 ASCS/SCS 和 DBMS 引入了合并的双节点 Windows 群集 
 - 2021 年 7 月 26 日：更改了[在 Azure 中的 RHEL 上设置 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 和[在 Azure 中的 SLES 上设置 Pacemaker](./high-availability-guide-suse-pacemaker.md) 中的内容，以便在介绍 Azure Fence 代理设置的部分中将角色分配说明替换为 RBAC 文档的链接
 - 2021 年 8 月 2 日：更改了 [RHEL for SAP Applications 上 Azure VM 中的 SAP NW 的 HA](./high-availability-guide-rhel.md)、[RHEL 上 Azure VM 中通过 ANF 实现 SAP NW 的 HA](./high-availability-guide-rhel-netapp-files.md) 和 [RHEL 上 Azure VM 中的 SAP NW 的 HA 多 SID 指南](./high-availability-guide-rhel-multi-sid.md)中的内容，以便为 ASCS 群集资源（仅限 ENSA2）删除 `failure-timeout`
 - 2021 年 7 月 16 日：重构了 Azure 上的 SAP 文档目录 (TOC) 以简化导航
@@ -158,7 +160,7 @@ SAP 应用程序层和 DBMS 的高可用性记录在从文档 [Sap NetWeaver 的
 - 2020 年 8 月 4 日：更改 [WFCS 上采用文件共享的 SAP NW 的 HA](./sap-high-availability-installation-wsfc-file-share.md)、[WFCS 上采用共享磁盘的 SAP NW 的 HA](./sap-high-availability-installation-wsfc-shared-disk.md)、[Azure VM 中的 SAP NW 的 HA](./high-availability-guide.md)、[SLES 上 Azure VM 中的 SAP NW 的 HA](./high-availability-guide-suse.md)、[SLES 上 Azure VM 中通过 ANF 实现 SAP NW 的 HA](./high-availability-guide-suse-netapp-files.md)、[SLES 上 Azure VM 中的 SAP NW 的 HA 多 SID 指南](./high-availability-guide-suse-multi-sid.md)、[RHEL 上 Azure VM 中的 SAP NetWeaver 的高可用性](./high-availability-guide-rhel.md)、[RHEL 上 Azure VM 中通过 ANF 实现 SAP NW 的 HA](./high-availability-guide-rhel-netapp-files.md) 和 [RHEL 上 Azure VM 中的 SAP NW 的 HA 多 SID 指南](./high-availability-guide-rhel-multi-sid.md)中的内容，以阐明参数 `enque/encni/set_so_keepalive` 的使用
 - 2020 年 7 月 23 日：添加[使用 Azure 预留节省 SAP HANA 大型实例](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)文章，解释购买 SAP HANA 大型实例预留之前需注意的事项以及如何进行购买
 - 2020 年 7 月 16 日：在[部署指南](deployment-guide.md)中介绍如何使用 Azure PowerShell 来安装适用于 SAP 的新 VM 扩展
-- 2020 年 7 月 4 日：发布 [Azure monitor for SAP solutions（预览版）](./azure-monitor-overview.md)
+- 2020 年 7 月 4 日：发布了 [Azure Monitor for SAP Solutions（预览版）](./monitor-sap-on-azure.md)
 - 2020 年 7 月 1 日：在文档 [SAP HANA Azure 虚拟机存储配置](./hana-vm-operations-storage.md)中，根据 Azure 高级存储突发功能建议成本更低的存储配置 
 - 2020 年 6 月 24 日：更改[在 Azure 中的 SLES 上设置 Pacemaker](./high-availability-guide-suse-pacemaker.md) 中的内容，以发布新改进的 Azure 隔离代理，并基于 Azure 隔离代理为设备提供更具弹性的 STONITH 配置 
 - 2020 年 6 月 24 日：更改[在 Azure 中的 RHEL 上设置 Pacemaker](./high-availability-guide-rhel-pacemaker.md) 中的内容，以发布更具弹性的 STONITH 配置

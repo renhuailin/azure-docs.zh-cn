@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 51650ad1a9d72611d694e5514dca1036937a2a13
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e1f6a508e72277fcc596a5217b0c5a061758e131
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730990"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253558"
 ---
 # <a name="connect-your-threat-intelligence-platform-to-azure-sentinel"></a>将威胁情报平台连接到 Azure Sentinel
 
@@ -77,7 +77,7 @@ ms.locfileid: "121730990"
 
 1. 从菜单中选择“应用注册”，然后选择新注册的应用。
 
-1. 从菜单中选择“API 权限”，然后单击“添加权限”按钮。
+1. 从菜单中选择“API 权限”，然后选择“添加权限”按钮 。
 
 1. 在“选择 API”页上，选择“Microsoft Graph”API，然后从 Microsoft Graph 权限列表中进行选择 。
 
@@ -101,11 +101,11 @@ ms.locfileid: "121730990"
 
 1. 从菜单中选择“应用注册”，然后选择新注册的应用。
 
-1. 从菜单中选择“证书和机密”，然后单击“新建客户端密码”按钮以接收应用密码（API 密钥） 。
+1. 从菜单中选择“证书和机密”，然后选择“新建客户端密码”按钮以接收应用密码（API 密钥） 。
 
     :::image type="content" source="media/connect-threat-intelligence-tip/threat-intel-client-secret.png" alt-text="获取客户端密码":::
 
-1. 单击“添加”按钮并复制客户端密码 。
+1. 选择“添加”按钮并复制客户端密码 。
 
     > [!IMPORTANT]
     > 在离开此屏幕之前，必须复制客户端密码。 如果离开此页，则无法再次检索此密码。 配置 TIP 或自定义解决方案时需要此值。
@@ -134,9 +134,9 @@ ms.locfileid: "121730990"
 
 1. 选择要将从 TIP 或自定义解决方案发送的威胁指标导入到的工作区。
 
-1. 从菜单中选择“数据连接器”，从连接器库中选择“威胁情报平台”，然后单击“打开连接器页面”按钮。
+1. 从菜单中选择“数据连接器”，从连接器库中选择“威胁情报平台”，然后选择“打开连接器页面”按钮  。
 
-1. 完成应用注册并将 TIP 或自定义解决方案配置为发送威胁指标后，剩下的唯一步骤就是单击“连接”按钮。
+1. 完成应用注册并将 TIP 或自定义解决方案配置为发送威胁指标后，剩下的唯一步骤就是选择“连接”按钮。
 
 几分钟后，威胁指标应开始流入此 Azure Sentinel 工作区。 可以在“威胁情报”边栏选项卡中找到新指标，该边栏选项卡可从 Azure Sentinel 导航菜单访问。
 

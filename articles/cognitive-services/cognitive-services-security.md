@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: a720eec0c112b54fab0a1651c388b6e0514128c3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b77eadcbd46c4cac442ed26af94d5781d225806a
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094935"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475775"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 认知服务安全性
 
@@ -209,9 +209,6 @@ NSString* value =
 * 人脸
 * 内容审查器
 * 个性化体验创建服务
-
-> [!IMPORTANT]
-> 对于 **表单识别器**，Microsoft 工程师将不会访问 2020 年 7 月 10 日以后创建的资源中的任何客户数据。
 
 若要请求使用 E0 SKU，请填写并提交此 [请求表单](https://aka.ms/cogsvc-cmk)。 你大约需要 3-5 个工作日才能收到关于请求状态的回复。 视情况而定，你可能需要排队，并在空间可用时获批。 在被批准将 E0 SKU 与 LUIS 配合使用后，需要从 Azure 门户创建新资源并选择 E0 作为定价层。 用户将无法从 F0 升级到新的 E0 SKU。
 

@@ -8,23 +8,26 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 7a477122e9a0642233a5bac7a1884818f216d2f3
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 085b9a187ce574c5138867f7a2ce929218717c37
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252324"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253815"
 ---
 # <a name="azure-sentinel-workspace-architecture-best-practices"></a>Azure Sentinel 工作区体系结构最佳做法
 
 在计划 Azure Sentinel 工作区部署时，还必须设计 Log Analytics 工作区体系结构。 工作区体系结构的相关决策通常基于业务和技术需求。 本文介绍关键决策因素，这些因素可帮助你确定适合组织的工作区体系结构，其中包括：
 
 - 是使用单租户还是多个租户
-- 对数据收集和存储的任何合规性要求
+- 你对数据收集和存储的任何合规性要求
 - 如何控制对 Azure Sentinel 数据的访问
 - 不同方案的成本影响
 
 有关详细信息，请参阅[设计 Azure Sentinel 工作区体系结构](design-your-workspace-architecture.md)和常见方案的[示例工作区设计](sample-workspace-designs.md)，以及[有关部署 Azure Sentinel 的部署前活动和先决条件](prerequisites.md)。
+
+请参阅我们的视频：[构造 SecOps 以获得成功：部署 Azure Sentinel 的最佳做法](https://youtu.be/DyL9MEMhqmI)
+
 
 ## <a name="tenancy-considerations"></a>租户注意事项
 
@@ -44,7 +47,7 @@ ms.locfileid: "122252324"
 使用 [Azure Lighthouse](../lighthouse/how-to/onboard-customer.md) 帮助管理不同租户中的多个 Azure Sentinel 实例。
 
 > [!NOTE]
-> [合作伙伴数据连接器](partner-data-connectors.md)通常基于 API 或代理集合，因此不会连接到特定的 Azure AD 租户。
+> [合作伙伴数据连接器](data-connectors-reference.md)通常基于 API 或代理集合，因此不会连接到特定的 Azure AD 租户。
 >
 
 

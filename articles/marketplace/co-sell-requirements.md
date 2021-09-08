@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 07/13/2021
-ms.openlocfilehash: 31ea2d07db013220db97ab9d3b0e7879f83bc3fe
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: c39b86c6417d2cae8d303f7cae0aa523e223edaa
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388055"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866938"
 ---
 # <a name="co-sell-requirements"></a>联合销售要求
 
@@ -49,7 +49,7 @@ ms.locfileid: "114388055"
 
 **Business Applications ISV**：
 
-- Dynamics 365 和 PowerApps（Dynamics 365 Business Central 除外）解决方案需要 ISV Connect 注册。
+- Dynamics 365 和 Power Apps（Dynamics 365 Business Central 除外）解决方案需要 ISV Connect 注册。
 
 ### <a name="complete-the-co-sell-with-microsoft-tab"></a>完成“与 Microsoft 联合销售”选项卡中的操作
 

@@ -9,14 +9,14 @@ ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
+ms.date: 9/01/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f40e3478a10a1a141e02510d88f4564062ff2ce5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 894d16e1a72243bee9aff1fff2778ec75c2af6ec
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752179"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123227146"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>自动注册到 SQL IaaS 代理扩展
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -24,6 +24,9 @@ ms.locfileid: "121752179"
 在 Azure 门户中启用自动注册功能，以轻型模式向 [SQL IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)自动注册 Azure 虚拟机 (VM) 中所有当前和未来 SQL Server。 
 
 本文将指导你启用自动注册功能。 或者，也可以向 SQL IaaS 代理扩展[注册单个 VM](sql-agent-extension-manually-register-single-vm.md) 或[批量注册 VM](sql-agent-extension-manually-register-vms-bulk.md)。 
+
+> [!NOTE]
+> 从 2021 年 9 月开始，在完全模式下注册 SQL IaaS 扩展不再需要重启 SQL Server 服务。 
 
 ## <a name="overview"></a>概述
 

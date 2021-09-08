@@ -1,19 +1,19 @@
 ---
-title: 准备和自定义主 VHD 映像 - Azure
-description: 如何准备、自定义 Azure 虚拟桌面主映像并将其上传到 Azure。
+title: 准备和自定义 Azure 虚拟桌面的 VHD 映像 - Azure
+description: 如何准备、自定义 Azure 虚拟桌面映像并将其上传到 Azure。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8e893a95337801db4ee35cfdc00e2d97f8d12db6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3153fed07575c0eeaf3e062e18e80f08e8269344
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114285855"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835221"
 ---
-# <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
+# <a name="prepare-and-customize-a-vhd-image-for-azure-virtual-desktop"></a>准备和自定义 Azure 虚拟桌面的 VHD 映像
 
 本文介绍如何准备用于上传到 Azure 的主虚拟硬盘 (VHD) 映像，包括如何创建虚拟机 (VM) 并在其中安装软件。 这些说明适用于可与组织的现有过程配合使用的特定于 Azure 虚拟桌面的配置。
 

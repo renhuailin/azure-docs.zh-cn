@@ -1,18 +1,17 @@
 ---
 title: Azure ExpressRoute：监视、指标和警报
 description: 了解使用 Azure Monitor（其中集中了 Azure 的所有指标、警报和诊断日志）的 Azure ExpressRoute 监视、指标和警报。
-services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 04/07/2021
 ms.author: duau
-ms.openlocfilehash: 44ddf54aac61ab00009e7e2cc820b38074c5e8c3
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: abcec496f6bf3fdcd42dcffa66ecfb67533c7052
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725775"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449488"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
 
@@ -42,22 +41,22 @@ ms.locfileid: "107725775"
 
 |**指标**|**类别**|**维度**|**功能**|
 | --- | --- | --- | --- |
-|ARP 可用性|可用性|<ui><li>对等机（主要/辅助 ExpressRoute 路由器）</ui></li><ui><li> 对等互连类型（专用/公共/Microsoft）</ui></li>|ExpressRoute|
-|BGP 可用性|可用性|<ui><li> 对等机（主要/辅助 ExpressRoute 路由器）</ui></li><ui><li> 对等互连类型</ui></li>|ExpressRoute|
-|BitsInPerSecond|交通|<ui><li> 对等互连类型 (ExpressRoute)</ui></li><ui><li>链路 (ExpressRoute Direct)</ui></li>|<li>ExpressRoute</li><li>ExpressRoute Direct</li><ui><li>ExpressRoute 网关连接</ui></li>|
-|BitsOutPerSecond|交通| <ui><li>对等互连类型 (ExpressRoute)</ui></li><ui><li> 链路 (ExpressRoute Direct) |<ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li><ui><li>ExpressRoute 网关连接</ui></li>|
-|CPU 使用率|性能| <ui><li>实例</ui></li>|ExpressRoute 虚拟网络网关|
-|每秒数据包数|性能| <ui><li>实例</ui></li>|ExpressRoute 虚拟网络网关|
-|播发到对等方的路由计数 |可用性| <ui><li>实例</ui></li>|ExpressRoute 虚拟网络网关|
-|从对等方获知的路由计数 |可用性| <ui><li>实例</ui></li>|ExpressRoute 虚拟网络网关|
-|路由更改频率 |可用性| <ui><li>实例</ui></li>|ExpressRoute 虚拟网络网关|
+|ARP 可用性|可用性|<ul><li>对等机（主要/辅助 ExpressRoute 路由器）</li><li> 对等互连类型（专用/公共/Microsoft）</li></ul>|ExpressRoute|
+|BGP 可用性|可用性|<ul><li> 对等机（主要/辅助 ExpressRoute 路由器）</li><li> 对等互连类型</li></ul>|ExpressRoute|
+|BitsInPerSecond|交通|<ul><li> 对等互连类型 (ExpressRoute)</li><li>链路 (ExpressRoute Direct)</li></ul>|<ul><li>ExpressRoute</li><li>ExpressRoute Direct</li><li>ExpressRoute 网关连接</li></ul>|
+|BitsOutPerSecond|交通| <ul><li>对等互连类型 (ExpressRoute)</li><li> 链路 (ExpressRoute Direct)</li></ul> |<ul><li>ExpressRoute</li><li>ExpressRoute Direct</li><li>ExpressRoute 网关连接</li></ul>|
+|CPU 使用率|性能| <ul><li>实例</li></ul>|ExpressRoute 虚拟网络网关|
+|每秒数据包数|性能| <ul><li>实例</li></ul>|ExpressRoute 虚拟网络网关|
+|播发到对等方的路由计数 |可用性| <ul><li>实例</li></ul>|ExpressRoute 虚拟网络网关|
+|从对等方获知的路由计数 |可用性| <ul><li>实例</li></ul>|ExpressRoute 虚拟网络网关|
+|路由更改频率 |可用性| <ul><li>实例</li></ul>|ExpressRoute 虚拟网络网关|
 |虚拟网络中的 VM 数 |可用性| 不可用 |ExpressRoute 虚拟网络网关|
-|GlobalReachBitsInPerSecond|交通|<ui><li>对等互连线路密钥（服务密钥）</ui></li>|Global Reach|
-|GlobalReachBitsOutPerSecond|交通|<ui><li>对等互连线路密钥（服务密钥）</ui></li>|Global Reach|
+|GlobalReachBitsInPerSecond|交通|<ul><li>对等互连线路密钥（服务密钥）</li></ul>|Global Reach|
+|GlobalReachBitsOutPerSecond|交通|<ul><li>对等互连线路密钥（服务密钥）</li></ul>|Global Reach|
 |AdminState|物理连接|链接|ExpressRoute Direct|
 |LineProtocol|物理连接|链接|ExpressRoute Direct|
-|RxLightLevel|物理连接|<ui><li>链路</ui></li><ui><li>通道</ui></li>|ExpressRoute Direct|
-|TxLightLevel|物理连接|<ui><li>链路</ui></li><ui><li>通道</ui></li>|ExpressRoute Direct|
+|RxLightLevel|物理连接|<ul><li>链接</li><li>通道</li></ul>|ExpressRoute Direct|
+|TxLightLevel|物理连接|<ul><li>链接</li><li>通道</li></ul>|ExpressRoute Direct|
 >[!NOTE]
 >只有在至少建立了一个 Global Reach 连接的情况下，才能使用 *GlobalGlobalReachBitsInPerSecond* 和 *GlobalGlobalReachBitsOutPerSecond*。
 >

@@ -2,13 +2,13 @@
 title: 配置 Service Fabric 托管群集
 description: 了解如何为自动 OS 升级、NSG 规则等配置 Service Fabric 托管群集。
 ms.topic: how-to
-ms.date: 5/10/2021
-ms.openlocfilehash: 5fd2736917517f20d3d093492c6011d6fcf716cf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 8/23/2021
+ms.openlocfilehash: 5be6422af6a1611bb8978ff4f0b76122cb146eb7
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067431"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864351"
 ---
 # <a name="service-fabric-managed-cluster-configuration-options"></a>Service Fabric 托管群集配置选项
 
@@ -16,7 +16,8 @@ ms.locfileid: "110067431"
 
 * 将 [虚拟机规模集扩展](how-to-managed-cluster-vmss-extension.md) 添加到节点类型
 * 配置群集 [可用性区域范围](how-to-managed-cluster-availability-zones.md)
-* 配置群集 [NSG 规则和其他网络选项](how-to-managed-cluster-networking.md)
+* 配置群集[网络设置](how-to-managed-cluster-networking.md)
+* 为[大型虚拟机规模集](how-to-managed-cluster-large-virtual-machine-scale-sets.md)配置节点类型
 * 在群集节点类型上配置 [托管标识](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md)
 * 为群集节点启用 [自动 OS 升级](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)
 * 在群集节点上启用 [OS 和数据磁盘加密](how-to-enable-managed-cluster-disk-encryption.md)

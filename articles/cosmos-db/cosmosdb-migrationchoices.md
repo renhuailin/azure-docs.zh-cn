@@ -5,13 +5,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/01/2020
-ms.openlocfilehash: cae8c1564d9ba03d48f5ac8dcc1eb23b36589df4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: 98458a624a9c0d713e518e3fda442b8e45209d25
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733173"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123036501"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>用于将本地或云数据迁移到 Azure Cosmos DB 的选项
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,10 +41,13 @@ ms.locfileid: "121733173"
 
 ## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API
 
+如需容量计划方面的帮助，请参阅[使用 Azure Cosmos DB 容量计划工具来估算 RU/s 的指南](estimate-ru-with-capacity-planner.md)。 
+* 如果是从基于 vCore 或服务器的平台迁移，且需要有关估算请求单位的指导，可考虑阅读[根据 vCore 估算 RU/s 的指南](estimate-ru-with-capacity-planner.md)。
+
 |迁移类型|解决方案|受支持的源|支持的目标|注意事项|
 |---------|---------|---------|---------|---------|
 |Offline|[数据迁移工具](import-data.md)| &bull;JSON/CSV 文件<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;表存储<br/>&bull;AWS DynamoDB<br/>&bull;Azure Blob 存储|&bull;Azure Cosmos DB SQL API<br/>&bull;Azure Cosmos DB 表 API<br/>&bull;JSON 文件 |&bull; 易于设置并支持多个源。 <br/>&bull; 不适合用于大型数据集。|
-|脱机|[Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)| &bull;JSON/CSV 文件<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;用于 MongoDB 的 Azure Cosmos DB API<br/>&bull;MongoDB <br/>&bull;SQL Server<br/>&bull;表存储<br/>&bull;Azure Blob 存储 <br/> <br/>有关其他受支持的源，请参阅 [Azure 数据工厂](../data-factory/connector-overview.md)一文。|&bull;Azure Cosmos DB SQL API<br/>&bull;用于 MongoDB 的 Azure Cosmos DB API<br/>&bull;JSON 文件 <br/><br/> 有关其他受支持的目标，请参阅 [Azure 数据工厂](../data-factory/connector-overview.md)一文。 |&bull; 易于设置并支持多个源。<br/>&bull; 利用 Azure Cosmos DB 批量执行工具库。 <br/>&bull; 适合用于大型数据集。 <br/>&bull; 缺少检查点 - 这意味着，如果在迁移过程中出现问题，需要重启整个迁移过程。<br/>&bull; 缺少死信队列 - 这意味着，出现几个有错误的文件就可能会停止整个迁移过程。|
+|Offline|[Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)| &bull;JSON/CSV 文件<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;用于 MongoDB 的 Azure Cosmos DB API<br/>&bull;MongoDB <br/>&bull;SQL Server<br/>&bull;表存储<br/>&bull;Azure Blob 存储 <br/> <br/>有关其他受支持的源，请参阅 [Azure 数据工厂](../data-factory/connector-overview.md)一文。|&bull;Azure Cosmos DB SQL API<br/>&bull;用于 MongoDB 的 Azure Cosmos DB API<br/>&bull;JSON 文件 <br/><br/> 有关其他受支持的目标，请参阅 [Azure 数据工厂](../data-factory/connector-overview.md)一文。 |&bull; 易于设置并支持多个源。<br/>&bull; 利用 Azure Cosmos DB 批量执行工具库。 <br/>&bull; 适合用于大型数据集。 <br/>&bull; 缺少检查点 - 这意味着，如果在迁移过程中出现问题，需要重启整个迁移过程。<br/>&bull; 缺少死信队列 - 这意味着，出现几个有错误的文件就可能会停止整个迁移过程。|
 |Offline|[Azure Cosmos DB Spark 连接器](./create-sql-api-spark.md)|Azure Cosmos DB SQL API。 <br/><br/>可以将其他源与来自 Spark 生态系统的其他连接器配合使用。| Azure Cosmos DB SQL API。 <br/><br/>可以将其他目标与来自 Spark 生态系统的其他连接器配合使用。| &bull; 利用 Azure Cosmos DB 批量执行工具库。 <br/>&bull; 适合用于大型数据集。 <br/>&bull; 需要自定义的 Spark 设置。 <br/>&bull; Spark 对架构不一致性比较敏感，这可能会在迁移过程中造成问题。 |
 |Offline|[包含 Cosmos DB 批量执行程序库的自定义工具](migrate-cosmosdb-data.md)| 源依赖于自定义代码 | Azure Cosmos DB SQL API| &bull; 提供检查点和死信功能，可提高迁移复原能力。 <br/>&bull; 适合用于极大型数据集 (10 TB+)。  <br/>&bull; 需要对此工具进行自定义设置，使其作为应用服务运行。 |
 |联机|[Cosmos DB Functions + ChangeFeed API](change-feed-functions.md)| Azure Cosmos DB SQL API | Azure Cosmos DB SQL API| &bull; 易于设置。 <br/>&bull; 仅当源是 Azure Cosmos DB 容器时才适用。 <br/>&bull; 不适合用于大型数据集。 <br/>&bull; 不捕获源容器中的删除操作。 |
@@ -52,6 +55,20 @@ ms.locfileid: "121733173"
 |联机|[Striim](cosmosdb-sql-api-migrate-data-striim.md)| &bull;Oracle <br/>&bull;Apache Cassandra<br/><br/> 有关其他受支持的源，请参阅 [Striim 网站](https://www.striim.com/sources-and-targets/)。 |&bull;Azure Cosmos DB SQL API <br/>&bull; Azure Cosmos DB Cassandra API<br/><br/> 有关其他受支持的目标，请参阅 [Striim 网站](https://www.striim.com/sources-and-targets/)。 | &bull; 适用于多种数据源，如 Oracle、DB2、SQL Server。<br/>&bull; 轻松构建 ETL 管道并提供用于监视的仪表板。 <br/>&bull; 支持较大的数据集。 <br/>&bull; 由于这是一个第三方工具，因此需要从市场购买并将其安装在用户环境中。|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo API
+
+请按照[迁移前指南](mongodb/pre-migration-steps.md)计划迁移。 
+* 如需容量计划方面的帮助，请参阅[使用 Azure Cosmos DB 容量计划工具来估算 RU/s 的指南](estimate-ru-with-capacity-planner.md)。 
+* 如果是从基于 vCore 或服务器的平台迁移，且需要有关估算请求单位的指导，可考虑阅读[根据 vCore 估算 RU/s 的指南](convert-vcore-to-request-unit.md)。
+
+准备好迁移时，你可在下方找到有关迁移工具的详细指南
+* [使用 MongoDB 原生工具进行脱机迁移](mongodb/tutorial-mongotools-cosmos-db.md)
+* [使用 Azure 数据库迁移服务 (DMS) 进行脱机迁移](../dms/tutorial-mongodb-cosmos-db.md)
+* [使用 Azure 数据库迁移服务 (DMS) 进行联机迁移](../dms/tutorial-mongodb-cosmos-db-online.md)
+* [使用 Azure Databricks 和 Spark 进行脱机/联机迁移](mongodb/migrate-databricks.md)
+
+然后，在迁移完成后，请遵循[迁移后指南](mongodb/post-migration-optimization.md)来优化 Azure Cosmos DB 数据资产。
+
+下面提供了从当前解决方案到用于 MongoDB 的 Azure Cosmos DB API 的迁移路径摘要：
 
 |迁移类型|解决方案|受支持的源|支持的目标|注意事项|
 |---------|---------|---------|---------|---------|
@@ -61,6 +78,8 @@ ms.locfileid: "121733173"
 |Offline|[现有的 Mongo 工具（mongodump、mongorestore、Studio3T）](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|MongoDB | 用于 MongoDB 的 Azure Cosmos DB API| &bull; 易于设置和集成。 <br/>&bull; 需要对限制进行自定义处理。|
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API
+
+如需容量计划方面的帮助，请参阅[使用 Azure Cosmos DB 容量计划工具来估算 RU/s 的指南](estimate-ru-with-capacity-planner.md)。 
 
 |迁移类型|解决方案|受支持的源|支持的目标|注意事项|
 |---------|---------|---------|---------|---------|
@@ -85,6 +104,9 @@ ms.locfileid: "121733173"
 
 ## <a name="next-steps"></a>后续步骤
 
+* 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？
+    * 若只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
 * 若要进行详细了解，请试用那些在 [.NET](bulk-executor-dot-net.md) 和 [Java](bulk-executor-java.md) 中使用批量执行程序库的示例应用程序。 
 * 批量执行程序库已集成到 Cosmos DB Spark 连接器中。若要进行详细的了解，请参阅 [Azure Cosmos DB Spark 连接器](./create-sql-api-spark.md)一文。  
 * 如需大规模迁移方面的更多帮助，请通过开具支持票证来联系 Azure Cosmos DB 产品团队：选择“常规建议”问题类型，“大规模迁移(TB+)”问题子类型。

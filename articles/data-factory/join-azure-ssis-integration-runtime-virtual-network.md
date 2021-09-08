@@ -8,12 +8,12 @@ ms.date: 07/16/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 55ad870da1b89e24777647613f607038089863e9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dc6175ca771a8be262c9a2d1ba92871a43140367
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739453"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257353"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 
@@ -264,7 +264,7 @@ else
 
 -   目标为 Azure 存储的端口 445（仅当执行 Azure 文件存储中存储的 SSIS 包时，才需要此规则）。
 
-    如果使用 Azure 防火墙，可以使用存储服务标记指定网络规则，否则，可以在防火墙设备中允许将特定的 Azure 文件存储 URL 用作目标。
+    如果使用 Azure 防火墙，可以使用存储服务标记指定网络规则，否则，可以在防火墙设备中允许将特定的 Azure 文件共享 URL 用作目标。
 
 > [!NOTE]
 > 对于 Azure SQL 和存储，如果在子网中配置虚拟网络服务终结点，则同一区域中 Azure-SSIS IR 和 Azure SQL 与同一区域或配对区域中 Azure 存储之间的流量将直接路由到 Microsoft Azure 主干网络，而不会路由到防火墙设备。

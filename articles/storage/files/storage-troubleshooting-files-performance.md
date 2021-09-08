@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 65b703a4f193e6b1197c3c8f2cb03ffbc349471b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 03fb94571e5e41a99688bf912cab36fa10edd2a4
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741857"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867523"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>排查 Azure 文件共享性能问题
 
@@ -118,7 +118,7 @@ ms.locfileid: "121741857"
 
 ### <a name="workaround"></a>解决方法
 
-- 对于高级文件共享，请[在 FileStorage 帐户上启用 SMB 多通道](storage-files-enable-smb-multichannel.md)。
+- 对于高级文件共享，请[启用 SMB 多通道](files-smb-protocol.md#smb-multichannel)。
 - 获取核心更大的 VM 可能有助于提高吞吐量。
 - 从多个 VM 运行客户端应用程序会提高吞吐量。
 - 尽可能地使用 REST API。
@@ -201,16 +201,6 @@ CentOS Linux 或 RHEL 不支持大于 1 的 I/O 深度。
 ### <a name="workaround"></a>解决方法
 
 - 安装可用的[修补程序](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1)。
-
-## <a name="smb-multichannel-option-not-visible-under-file-share-settings"></a>SMB 多通道选项在“文件共享”设置下不可见。 
-
-### <a name="cause"></a>原因
-
-没有为该功能注册订阅，或者不支持该区域和帐户类型。
-
-### <a name="solution"></a>解决方案
-
-确保已为 SMB 多通道功能注册订阅。 请参阅[入门](storage-files-enable-smb-multichannel.md#getting-started)，确保帐户概述页中的帐户类型为 FileStorage（高级文件帐户）。 
 
 ## <a name="smb-multichannel-is-not-being-triggered"></a>SMB 多通道未触发。
 

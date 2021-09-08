@@ -6,18 +6,18 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 08/06/2021
+ms.date: 09/01/2021
 ms.author: victorh
-ms.openlocfilehash: 2f17bb2d89f47f731fde8fb396aa0343716a99d4
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 7e7f05516dd380ec6d0c8f44f887981de77942a3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864459"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439319"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
-![ICSA 认证](media/overview/icsa-cert-firewall-small.png)
+<!--- ![ICSA certification](media/overview/icsa-cert-firewall-small.png) --->
 
 Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。
 

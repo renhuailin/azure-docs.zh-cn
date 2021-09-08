@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 1fbf548436842f16516554558b74391567a761e0
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: fd30e8f7489d320a307e2797f7488da828f32827
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181376"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123472247"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure 认知服务的自然语言支持
 
@@ -31,13 +31,11 @@ ms.locfileid: "122181376"
 ## <a name="vision"></a>影像
 
 * [计算机视觉](./computer-vision/language-support.md)
-* [表单识别器（预览版）](./form-recognizer/language-support.md)
 * [墨迹识别器（预览版）](/previous-versions/azure/cognitive-services/Ink-Recognizer/language-support)
 * [视频索引器](../azure-video-analyzer/video-analyzer-for-media-docs/language-identification-model.md#guidelines-and-limitations)
 
 ## <a name="language"></a>语言
 
-* [沉浸式阅读器](../applied-ai-services/immersive-reader/language-support.md)
 * [语言理解 (LUIS)](./luis/luis-language-support.md)
 * [QnA Maker](./qnamaker/overview/language-support.md)
 * [文本分析](./text-analytics/language-support.md)

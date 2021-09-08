@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新的摘要。
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: a9e0d9c462c494fdc1d0c50bc4faf3694f3b4cd7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2b733f4e525f2f47df7afde0ddc308430ae05d0b
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721847"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215307"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -22,17 +22,45 @@ ms.locfileid: "121721847"
 
 **更新** |  **统一安装程序** | **配置服务器 ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
 --- | --- | --- | --- | --- | ---
-[汇总 56](https://support.microsoft.com/en-us/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6)  | 9.43.6040.1  | 5.1.6853.0 | 9.43.6040.1| 5.1.6853.0 | 2.0.9226.0
+[汇总 57](https://support.microsoft.com/topic/update-rollup-57-for-azure-site-recovery-kb5006172-9fccc879-6e0c-4dc8-9fec-e0600cf94094) | 9.44.6068.1 | 5.1.6899.0 | 9.44.6068.1 | 5.1.6899.0 | 2.0.9236.0
+[汇总 56](https://support.microsoft.com/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6)  | 9.43.6040.1  | 5.1.6853.0 | 9.43.6040.1| 5.1.6853.0 | 2.0.9226.0
 [汇总 55](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | 9.42.5941.1 | 5.1.6692.0 | 9.42.5941.1 | 5.1.6692.0  | 2.0.9208.0
 [汇总 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 9.41.5888.1 | 5.1.6620.0 | 9.41.5888.1 | 5.1.6620.0  | 2.0.9202.0
 [汇总 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
 [汇总 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
-[汇总 51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
-[汇总 50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
-[汇总 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
 
 
 [详细了解](service-updates-how-to.md)更新安装和支持。
+
+## <a name="updates-august-2021"></a>更新（2021 年 8 月）
+
+### <a name="update-rollup-57"></a>更新汇总 57
+
+[更新汇总 57](https://support.microsoft.com/topic/update-rollup-57-for-azure-site-recovery-kb5006172-9fccc879-6e0c-4dc8-9fec-e0600cf94094) 提供以下更新：
+
+> [!NOTE]
+> 更新汇总仅提供 VMware 到 Azure 保护的公共预览版更新。 此版本中未涵盖其他修补程序或改进。
+> 要设置预览版体验，必须进行全新安装并使用新的恢复服务保管库。 不支持从现有体系结构更新到新的体系结构。
+
+此公共预览版涵盖对当前用于保护 VMware 计算机的体系结构的完整更新。
+- [了解](https://docs.microsoft.com/azure/site-recovery/vmware-azure-architecture-preview)新的体系结构和引入的更改。
+- 按照[这些步骤](https://docs.microsoft.com/azure/site-recovery/deploy-vmware-azure-replication-appliance-preview)检查先决条件并设置 ASR 复制设备。
+- [为 VMware 计算机启用复制](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-replication-tutorial-preview)。
+- 查看 ASR 复制设备的[自动升级](https://docs.microsoft.com/azure/site-recovery/upgrade-mobility-service-preview)和[切换](https://docs.microsoft.com/azure/site-recovery/switch-replication-appliance-preview)功能。
+
+
+### <a name="update-rollup-56"></a>更新汇总 56
+
+[更新汇总 56](https://support.microsoft.com/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6) 提供以下更新：
+
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总知识库文章中的详述）。
+**问题修复/改进** | 汇总知识库文章中详细说明的一些修复和改进。
+
+“Azure Site Recovery 服务” | 进行了改进，使启用复制和重新保护操作的速度提高 46%。
+“Azure Site Recovery 门户” | 现在可以在世界各地的任何两个 Azure 区域之间启用复制。 不再局限于在所在洲内进行复制。
+
 
 ## <a name="updates-july-2021"></a>更新（2021 年 7 月）
 
