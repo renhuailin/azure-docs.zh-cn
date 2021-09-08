@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
-ms.author: lajanuar
-ms.openlocfilehash: ecac303da2d9fa6f130b474d805427346ae84bbf
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 9cfaf7b99d4a03f9bb7182435592c13968286a5f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069988"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123544075"
 ---
 本指南介绍如何安装用于 macOS 10.13 及更高版本上的 C++ 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 

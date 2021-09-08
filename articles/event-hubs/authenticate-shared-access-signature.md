@@ -4,12 +4,12 @@ description: 本文介绍如何使用共享访问签名对事件中心资源访�
 ms.topic: conceptual
 ms.date: 07/26/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f647dd21db2920bff01ac5929c527e66f8d7350b
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 18b338f42ecd0f12e361aaf1defcfed22e0aaad7
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114708527"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123307082"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 对事件中心资源访问进行身份验证
 使用共享访问签名 (SAS) 可以精细控制向具有共享访问签名的客户端授予的访问权限类型。 下面是可以在 SAS 中设置的一些控制措施： 
@@ -59,13 +59,13 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 令牌包含非哈希值，使接收方可以使用相同的参数重新计算哈希，并验证颁发者是否拥有有效的签名密钥。
 
-资源 URI 是向其声明访问权限的服务总线资源的完整 URI。 例如， http://<namespace>.servicebus.windows.net/<entityPath> 或 `sb://<namespace>.servicebus.windows.net/<entityPath>;`，即 `http://contoso.servicebus.windows.net/eh1`。
+资源 URI 是向其声明访问权限的服务总线资源的完整 URI。 例如，`http://<namespace>.servicebus.windows.net/<entityPath>` 或 `sb://<namespace>.servicebus.windows.net/<entityPath>`，即 `http://contoso.servicebus.windows.net/eh1`。
 
 URI 必须采用百分比编码格式。
 
 用于签名的共享访问授权规则必须在此 URI 指定的实体上，或由其分层父级之一进行配置。 例如，之前示例中的 `http://contoso.servicebus.windows.net/eh1` 或 `http://contoso.servicebus.windows.net`。
 
-SAS 令牌对于以 signature-string 中使用的 <resourceURI> 为前缀的所有资源有效。
+SAS 令牌对于以 signature-string 中使用的 `<resourceURI>` 为前缀的所有资源有效。
 
 > [!NOTE]
 > 使用共享访问策略为事件中心生成访问令牌。 有关详细信息，请参阅[共享访问授权策略](authorize-access-shared-access-signature.md#shared-access-authorization-policies)。

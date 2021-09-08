@@ -3,19 +3,19 @@ title: 创建自定义语音 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 如果你已准备好上传数据，请转到自定义语音门户。 创建或选择一个自定义语音项目。 该项目必须与你打算用于语音训练的数据共享正确的语言/区域设置和性别属性。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: lajanuar
-ms.openlocfilehash: a380c66159304e8e5fabbc73c8a2c663f7d23c27
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 83c3c4b9d3ab4f2497b919a2a929ad87f3cadbea
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066467"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535556"
 ---
 # <a name="create-and-use-your-voice-model"></a>创建和使用语音模型
 

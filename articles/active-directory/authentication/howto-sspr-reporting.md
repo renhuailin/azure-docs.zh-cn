@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad1b8318e261c7dfef7fc125716736087a84bdc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6b0cb321abdd3aa1221e62a1efc953943d00afa0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579172"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541452"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -174,7 +174,7 @@ ms.locfileid: "104579172"
 * [SSPR 和 MFA 使用情况和见解报告](./howto-authentication-methods-activity.md)
 * [如何成功推出 SSPR？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)。
-* [注册自助服务密码重置](../user-help/active-directory-passwords-reset-register.md)。
+* [注册自助服务密码重置](https://support.microsoft.com/account-billing/register-the-password-reset-verification-method-for-a-work-or-school-account-47a55d4a-05b0-4f67-9a63-f39a43dbe20a)。
 * [是否有许可问题？](concept-sspr-licensing.md)
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
@@ -182,6 +182,6 @@ ms.locfileid: "104579172"
 * [什么是密码写回？我为什么关心它？](./tutorial-enable-sspr-writeback.md)
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](./troubleshoot-sspr.md)
-* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
+* [我有在别处未涵盖的问题](active-directory-passwords-faq.yml)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Azure AD 中的 SSPR 活动审核日志示例"

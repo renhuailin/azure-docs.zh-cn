@@ -3,19 +3,19 @@ title: 语音 CLI 批处理操作 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音 CLI 来将语音批处理为文本（语音识别），以及将文本批处理为语音（语音合成）。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 01/13/2021
-ms.author: lajanuar
-ms.openlocfilehash: c3481edc4b66afc4556ae6d7e957f2dfee9b2e69
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: a64288707e9a9ce7388ca60a0c28e2a01f504d7f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122072329"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543828"
 ---
 # <a name="speech-cli-batch-operations"></a>语音 CLI 批处理操作
 

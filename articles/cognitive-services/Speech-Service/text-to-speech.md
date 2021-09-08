@@ -3,21 +3,20 @@ title: 文本转语音概述 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音服务中的文本转语音功能可让应用程序、工具或设备将文本转换为类似于人类的自然合成语音。 本文概述了文本转语音服务的优势和功能。
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.author: pafarley
-ms.custom: cog-serv-seo-aug-2020
+ms.date: 08/31/2021
+ms.author: lajanuar
 keywords: 文本转语音
-ms.openlocfilehash: a12ceb0226c71e7be8676729d9e2f599768875e7
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 84eb522123e5a77de667231b5f91d96a0e7c6a56
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538248"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272954"
 ---
 # <a name="what-is-neural-text-to-speech"></a>什么是神经文本转语音？
 

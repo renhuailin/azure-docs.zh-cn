@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/26/2021
 ms.author: v-doeris
 ms.custom: has-adal-ref
-ms.openlocfilehash: 55cf58924bca9839225eafaa3e4084d60db5f898
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: f40168f7f95aaad7975fe7f32fa18ef9e4ca488d
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429119"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480941"
 ---
 # <a name="how-to-migrate-a-nodejs-app-from-adal-to-msal"></a>如何将 Node.js 应用从 ADAL 迁移到 MSAL
 
@@ -125,7 +125,7 @@ const msalConfig = {
     auth: {
         clientId: "YOUR_CLIENT_ID",
         authority: "https://login.microsoftonline.com/YOUR_TENANT_ID",
-        clientSecret: "YOUR_TENANT_ID",
+        clientSecret: "YOUR_CLIENT_SECRET",
         knownAuthorities: [], 
     },
     cache: {

@@ -3,20 +3,20 @@ title: 语音转文本 API 参考 (REST) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音转文本 REST API。 本文介绍授权选项、查询选项，以及如何构建请求和接收响应。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2021
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2c97213b9163d6371bcee875d34dfc95cab3badc
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: f9e16037c1fc0b2addc825718e4fecb13a270129
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067078"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541560"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 

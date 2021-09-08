@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: b60fc4b1fc20c455c2c409f544a8af16f1dbf8d1
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 9870ff7f2033372e63de80138b2f37b3896eb4e6
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107508928"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427599"
 ---
 # <a name="optimize-the-performance-of-azcopy-with-azure-storage"></a>通过 Azure 存储优化 AzCopy 的性能
 
@@ -83,7 +83,7 @@ azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myB
 
 可以通过设置 `AZCOPY_CONCURRENCY_VALUE` 环境变量来提高吞吐量。 此变量指定可发生的并发请求数。  
 
-如果计算机中的 CPU 少于 5 个，则此变量的值将设置为 `32`。 否则，默认值等于 16 乘以 CPU 数。 此变量的最大默认值为 `3000`，但可以手动增大或减小此值。 
+如果计算机中的 CPU 少于 5 个，则此变量的值将设置为 `32`。 否则，默认值等于 16 乘以 CPU 数。 此变量的最大默认值为 `300`，但可以手动增大或减小此值。 
 
 | 操作系统 | 命令  |
 |--------|-----------|

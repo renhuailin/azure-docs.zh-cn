@@ -3,19 +3,19 @@ title: 语音设备 SDK Roobo 智能音频开发工具包 v1 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音设备 SDK、Roobo 智能音频开发工具包 v1 入门的先决条件和说明。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: lajanuar
-ms.openlocfilehash: 314dffad0528b968b84c2d2c280eaba13a6edfbd
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 8f4808c7c966a7ef5f18830189d787c6f6a8666e
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067716"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538932"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>设备：Roobo 智能音频开发工具包
 

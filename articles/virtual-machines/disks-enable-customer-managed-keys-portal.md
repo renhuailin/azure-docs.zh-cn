@@ -2,24 +2,23 @@
 title: Azure 门户 - 使用 SSE 启用客户管理的密钥 - 托管磁盘
 description: 通过 Azure 门户为托管磁盘启用客户管理的密钥。
 author: roygara
-ms.date: 06/29/2021
+ms.date: 08/31/2021
 ms.topic: how-to
 ms.author: rogarana
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 99a6a94405978cf183c717f2fed34f7eb24d9299
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 2117fc6d425233ee2de4954173981ad5cfda5f18
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113361362"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123318465"
 ---
 # <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>使用 Azure 门户为托管磁盘启用使用客户管理的密钥的服务器端加密
 
-Azure 磁盘存储使你能在对托管磁盘使用服务器端加密 (SSE) 时管理自己的密钥（如果你选择）。 有关使用客户管理的密钥的 SSE 以及其他托管磁盘加密类型的概念性信息，请参阅磁盘加密文章的 **客户管理的密钥** 部分：
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 
 
-- 对于 Linux：[客户管理的密钥](./disk-encryption.md#customer-managed-keys)
-- 对于 Windows：[客户管理的密钥](./disk-encryption.md#customer-managed-keys)
+Azure 磁盘存储使你能在对托管磁盘使用服务器端加密 (SSE) 时管理自己的密钥（如果你选择）。 有关使用客户管理的密钥的 SSE 以及其他托管磁盘加密类型的概念信息，请参阅磁盘加密文章的[客户管理的密钥](disk-encryption.md#customer-managed-keys)的“客户管理的密钥”部分。
 
 ## <a name="restrictions"></a>限制
 
@@ -79,6 +78,12 @@ VM 部署过程与标准部署过程类似，唯一的差别在于，你需要�
 
 > [!IMPORTANT]
 > 客户托管密钥依赖于 Azure 资源的托管标识（Azure Active Directory (Azure AD) 的一项功能）。 配置客户托管密钥时，实际上会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会转移到新租户，因此，客户托管密钥可能不再有效。 有关详细信息，请参阅[在 Azure AD 目录之间转移订阅](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。
+
+### <a name="enable-automatic-key-rotation-on-an-existing-disk-encryption-set"></a>在现有磁盘加密集上启用自动密钥轮换
+
+1. 导航到要在其上启用[自动密钥轮换](disk-encryption.md#automatic-key-rotation-of-customer-managed-keys)的磁盘加密集。
+1. 在“设置”下，选择“密钥” 。
+1. 选择“自动密钥轮换”，然后选择“保存” 。
 
 ## <a name="next-steps"></a>后续步骤
 

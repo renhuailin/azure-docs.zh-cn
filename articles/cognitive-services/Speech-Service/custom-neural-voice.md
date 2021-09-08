@@ -3,19 +3,19 @@ title: 自定义神经语音概述 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 自定义神经语音是一种文本转语音功能，使你可以通过提供自己的音频数据作为示例，为应用程序创建独一无二的自定义合成声音。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/18/2021
-ms.author: lajanuar
-ms.openlocfilehash: cd0dbb217d095568af0075ca4904d7a1751f5a89
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 9f0af5c38bc41ab6ae3926d41564682257137575
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069046"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541038"
 ---
 # <a name="what-is-custom-neural-voice"></a>什么是自定义神经语音？
 

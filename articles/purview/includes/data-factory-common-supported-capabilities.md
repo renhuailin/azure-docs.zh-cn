@@ -4,13 +4,13 @@ ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
-ms.date: 08/10/2021
-ms.openlocfilehash: 20a9b85c2d68e1c9b3c33362f393eaec0e255ce7
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.date: 08/25/2021
+ms.openlocfilehash: 61f0dc4bf556c992721b5cd7cd2859ef30d8cbb9
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201884"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123355443"
 ---
 ### <a name="copy-activity-support"></a>复制活动支持
 
@@ -26,7 +26,7 @@ ms.locfileid: "122201884"
 | Azure Database for Maria DB \* | 是 | 
 | Azure Database for MySQL \* | 是 | 
 | Azure Database for PostgreSQL \* | 是 |
-| Azure 文件存储 | 是 | 
+| Azure 文件 | 是 | 
 | Azure SQL 数据库 \* | 是 | 
 | Azure SQL 托管实例 \* | 是 | 
 | Azure Synapse Analytics \* | 是 | 
@@ -39,9 +39,6 @@ ms.locfileid: "122201884"
 
 \* Azure Purview 当前不支持针对世系或扫描的查询或存储过程。世系仅限于表和视图源。
 
-> [!Note]
-> 世系功能在复制活动中有一定的性能开销。 对于在 Purview 中设置连接的用户，你可能会发现某些复制作业需要花费更长的时间才能完成。 大多数情况下，该影响是不可忽略的。 如果完成复制作业所需的时间比平时长得多，请联系支持人员并提供时间对比信息。
-
 #### <a name="known-limitations-on-copy-activity-lineage"></a>复制活动世系的已知限制
 
 当前，如果使用以下复制活动功能，则尚不支持世系：
@@ -52,9 +49,24 @@ ms.locfileid: "122201884"
 - 针对 Azure SQL 数据库、Azure SQL 托管实例、Azure Synapse Analytics、SQL Server 和 SAP 表的源分区选项。
 - 针对基于文件的存储的源分区发现选项。
 - 将数据复制到基于文件的接收器，该接收器具有每个文件的最大行数设置。
-- 复制期间添加其他列。
 
 除世系外，还会报告以下连接器的数据资产架构（“资产”->“架构”选项卡中会显示）：
 
 - Azure Blob、Azure 文件存储、ADLS Gen1、ADLS Gen2 和 Amazon S3 上的 CSV 和 Parquet 文件
 - Azure 数据资源管理器、Azure SQL 数据库、Azure SQL 托管实例、Azure Synapse Analytics、SQL Server、Teradata
+
+### <a name="data-flow-support"></a>数据流支持
+
+| 数据存储 | 支持 |
+| ------------------- | ------------------- | 
+| Azure Blob 存储 | 是 |
+| Azure Cosmos DB (SQL API) \* | 是 | 
+| Azure Data Lake Storage Gen1 | 是 |
+| Azure Data Lake Storage Gen2 | 是 |
+| Azure Database for MySQL \* | 是 | 
+| Azure Database for PostgreSQL \* | 是 |
+| Azure SQL 数据库 \* | 是 |
+| Azure SQL 托管实例 \* | 是 | 
+| Azure Synapse Analytics \* | 是 |
+
+\* Azure Purview 当前不支持针对世系或扫描的查询或存储过程。世系仅限于表和视图源。

@@ -1,19 +1,19 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: lajanuar
-ms.openlocfilehash: 342cf69a7ef50b38a50d9d95af50ea60e5c19258
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 7bee3d0902067757fcf143d176ece26e9f1b3336
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067770"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539933"
 ---
 :::row:::
     :::column span="3":::
-        在 Linux 上使用时，语音 SDK 仅支持以下目标体系结构上的 Ubuntu 16.04（截至 9 月）、Ubuntu 18.04/20.04、Debian 9/10、Red Hat Enterprise Linux (RHEL) 7/8 和 CentOS 7/8：    
+        语音 SDK 在 Linux 上使用时，仅支持以下目标体系结构上的 Ubuntu 16.04（直到 9 月）、Ubuntu 18.04/20.04、Debian 9/10、Red Hat Enterprise Linux (RHEL) 7/8 和 CentOS 7/8：
     :::column-end:::
     :::column:::
         <br>

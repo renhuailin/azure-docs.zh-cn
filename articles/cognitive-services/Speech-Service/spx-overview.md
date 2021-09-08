@@ -3,20 +3,20 @@ title: Azure 语音 CLI
 titleSuffix: Azure Cognitive Services
 description: 语音 CLI 是一种命令行工具，用于在不编写任何代码的情况下使用语音服务。 语音 CLI 只需要很少的设置，并且很容易立即开始体验语音服务的关键功能，以确定是否可以满足你的用例。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4a2b1ca8a852f775b61bf378998e46a1e6d580f1
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: f0764a6d9d3cf1539237e552d6a3324c5f6412c3
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071514"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538554"
 ---
 # <a name="what-is-the-speech-cli"></a>什么是语音 CLI？
 
