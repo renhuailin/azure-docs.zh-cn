@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: e1d8e42eaa11aacfc2d05e2f22434b604d3af592
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2128145e0f2efa7a443c7a0c972117f29de73765
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726228"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965408"
 ---
 # <a name="provide-server-credentials-to-discover-software-inventory-dependencies-web-apps-and-sql-server-instances-and-databases"></a>提供服务器凭据以发现软件清单、依赖项、Web 应用以及 SQL Server 实例和数据库
 
@@ -31,7 +31,7 @@ ms.locfileid: "121726228"
 
 凭据类型 | 说明
 --- | ---
-域凭据 | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加“域凭据”。  <br/><br/> 若要提供域凭据，你需要指定域名，该域名必须以 FQDN 格式提供（例如 prod.corp.contoso.com）。 <br/><br/> 你还需要为凭据、用户名和密码指定一个易记名称。 <br/><br/> 添加的域凭据将根据域的 Active Directory 自动验证其真实性。 这是为了防止在设备尝试根据所发现的服务器映射域凭据时发生帐户锁定的情况。 <br/><br/> 设备不会尝试映射验证失败的域凭据。 你需要至少有一个已成功验证的域凭据或至少一个非域凭据才能继续执行软件清单。<br/><br/>针对 Windows 服务器自动映射的域凭据将用来执行软件清单，并且可以用来发现 Web 应用、SQL Server 实例和数据库（如果你已在 SQL Server 上配置了 Windows 身份验证模式）。<br/> [详细了解](/dotnet/framework/data/adonet/sql/authentication-in-sql-server) SQL Server 上支持的身份验证模式的类型。
+域凭据 | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加“域凭据”。  <br/><br/> 若要提供域凭据，你需要指定域名，该域名必须以 FQDN 格式提供（例如 prod.corp.contoso.com）。 <br/><br/> 你还需要为凭据、用户名和密码指定一个易记名称。 <br/><br/> 添加的域凭据将根据域的 Active Directory 自动验证其真实性。 这是为了防止在设备尝试根据所发现的服务器映射域凭据时发生帐户锁定的情况。 <br/><br/>若要让设备通过域控制器验证域凭据，该设备应能够解析域名。 请确保在添加凭据时提供了正确的域名，否则验证将失败。<br/><br/> 设备不会尝试映射验证失败的域凭据。 你需要至少有一个已成功验证的域凭据或至少一个非域凭据才能继续执行软件清单。<br/><br/>针对 Windows 服务器自动映射的域凭据将用来执行软件清单，并且可以用来发现 Web 应用、SQL Server 实例和数据库（如果你已在 SQL Server 上配置了 Windows 身份验证模式）。<br/> [详细了解](/dotnet/framework/data/adonet/sql/authentication-in-sql-server) SQL Server 上支持的身份验证模式的类型。
 非域凭据 (Windows/Linux) | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加 Windows（非域）或 Linux（非域）凭据。   <br/><br/> 你需要为凭据、用户名和密码指定一个易记名称。
 SQL Server 身份验证凭据 | 在“添加凭据”模式下，你可以通过从下拉列表中选择相应选项来添加“SQL Server 身份验证”凭据。  <br/><br/> 你需要为凭据、用户名和密码指定一个易记名称。 <br/><br/> 如果你已在 SQL Server 上配置了 SQL Server 身份验证模式，则可以添加此类型的凭据，以发现在 VMware 环境中运行的 SQL Server 实例和数据库。<br/> [详细了解](/dotnet/framework/data/adonet/sql/authentication-in-sql-server) SQL Server 上支持的身份验证模式的类型。<br/><br/> 你需要提供至少一个已成功验证的域凭据或至少一个 Windows（非域）凭据，以便使设备能够完成软件清单来发现服务器上安装的 SQL，然后再使用 SQL Server 身份验证凭据来发现 SQL Server 实例和数据库。
 

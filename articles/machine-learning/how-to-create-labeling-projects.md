@@ -1,7 +1,7 @@
 ---
 title: 图像标签和文本标签
 titleSuffix: Azure Machine Learning
-description: 了解如何创建和运行项目以标记图像或标记文本。 使用 ML 辅助标记，或“人机共生”标记，以协助完成任务。
+description: 使用数据标签工具来标记图像或标记文本。 使用 ML 辅助标记，或“人机共生”标记，以协助完成任务。
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 04/29/2021
 ms.custom: data4ml
-ms.openlocfilehash: 54ed2504063cc3a0479d37127888ccb727fbd671
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c29e3dbbcb892127fc89963866dab684fe45095f
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736584"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123108529"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签
 
-了解如何创建和运行项目以标记 Azure 机器学习中的图像和文本数据。  使用机器学习辅助数据标记或“人机回圈”标记，以协助完成任务。
+了解如何创建和运行数据标签项目以标记 Azure 机器学习中的图像和文本数据。  使用机器学习辅助数据标记或“人机回圈”标记，以协助完成任务。
 
 
 ## <a name="data-labeling-capabilities"></a>数据标记功能
@@ -108,7 +108,7 @@ Azure 机器学习数据标记是创建、管理和监视标记项目的一个�
     * 将“/**”追加到路径中可以包括所选路径的子文件夹中的所有文件。
     * 追加“* */* .*”可以包括当前容器及其子文件夹中的所有数据。
 1. 提供数据集的说明。
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 确认详细信息。 选择“后退”以修改设置，或选择“创建”以创建数据集。
 
 ### <a name="create-a-dataset-from-uploaded-data"></a>基于上传的数据创建数据集
@@ -123,7 +123,7 @@ Azure 机器学习数据标记是创建、管理和监视标记项目的一个�
 1. *可选：* 选择“高级设置”可以自定义数据存储、容器，以及数据的路径。
 1. 选择“浏览”选择要上传的本地文件。
 1. 提供数据集的说明。
-1. 选择“**下一步**”。
+1. 选择“**下一页**”。
 1. 确认详细信息。 选择“后退”以修改设置，或选择“创建”以创建数据集。
 
 数据将上传到机器学习工作区的默认 Blob 存储（“workspaceblobstore”）。

@@ -10,12 +10,12 @@ ms.subservice: azure-video-analyzer-media
 ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 3be899a7be2d007f52eb895bd26befcbb12e316d
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 9203c666e88ba3f050bf0acda9116c9dd8dd4421
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115247"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429291"
 ---
 # <a name="embed-video-analyzer-for-media-widgets-in-your-apps"></a>在应用中嵌入视频分析器媒体版小组件
 
@@ -58,7 +58,7 @@ ms.locfileid: "112115247"
 
 |名称|定义|说明|
 |---|---|---|
-|`accessToken`<sup>*</sup> | 字符串 | 提供对仅在用于嵌入小组件的帐户中的视频的访问。<br> 编辑器小组件需要 `accessToken` 参数。 |
+|`accessToken`<sup>*</sup> | String | 提供对仅在用于嵌入小组件的帐户中的视频的访问。<br> 编辑器小组件需要 `accessToken` 参数。 |
 |`language` | 语言代码 | 控制播放器语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。 |
 |`locale` | 短语言代码 | 控制见解语言。 默认值为 `en`。<br/>示例：`language=de`。 |
 |`location` ||`location` 参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则位置值必须使用 `trial`。 `trial` 为参数 `location` 的默认值。| 
@@ -227,8 +227,8 @@ ms.locfileid: "112115247"
         function jumpTo(evt) {
           var origin = evt.origin || evt.originalEvent.origin;
         
-          // Validate that the event comes from the videobreakdown domain.
-          if ((origin === "https://www.videobreakdown.com") && evt.data.time !== undefined){
+          // Validate that the event comes from the videoindexer domain.
+          if ((origin === "https://www.videoindexer.ai") && evt.data.time !== undefined){
                 
             // Call your player's "jumpTo" implementation.
             playerInstance.currentTime = evt.data.time;

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/07/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 383757cf20c7ac508aa396b947640c3a1221052d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 29392d17d31926f7ae261bad96b53623b3c5a36a
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749317"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470501"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>灾难恢复和存储帐户故障转移
 
@@ -67,7 +67,8 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 借助客户管理的帐户故障转移，可以在主要区域因任何原因而不可用时，将整个存储帐户故障转移到次要区域。 如果你强制故障转移到次要区域，客户端可以在故障转移完成后开始向辅助终结点写入数据。 故障转移通常需要大约一小时才能完成。
 
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+> [!NOTE]
+> 具有分层命名空间 (Azure Data Lake Storage Gen2) 的帐户尚不支持此功能。 若要了解详细信息，请参阅 [Azure Data Lake Storage Gen2 中提供的 Blob 存储功能](../blobs/data-lake-storage-supported-blob-storage-features.md)。
 
 ### <a name="how-an-account-failover-works"></a>帐户故障转移的工作原理
 
@@ -97,7 +98,7 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 因为数据是从主要区域异步写入次要区域，所以在写入主要区域的数据复制到次要区域前始终存在延迟。 如果主要区域不可用，最新写入数据可能尚未复制到次要区域。
 
-如果强制执行故障转移，主要区域中的所有数据就会在次要区域成为新的主要区域时丢失。 新的主要区域在故障转移后配置为本地冗余。
+如果强制执行故障转移，主要区域中的所有数据就会在次要区域成为新的主要区域时丢失。 故障转移后，新的主要区域配置为本地冗余。
 
 当故障转移发生时，将保留已复制到次要区域的所有数据。 不过，任何写入主要区域、但尚未复制到次要区域的数据会永久丢失。
 
@@ -109,13 +110,13 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>谨慎故障回复到原始主要区域
 
-从主要区域故障转移到次要区域后，存储帐户被配置为在新的主要区域中本地冗余。 然后，你可以在新的主要区域中将帐户配置为异地冗余。 如果帐户在故障转移后配置为异地冗余，新的主要区域会立即开始将数据复制到新的次要区域（在原始故障转移发生前为主要区域）。 不过，将新的主要区域中的现有数据完全复制到新的次要区域可能需要一段时间才能完成。
+从主要区域故障转移到次要区域后，存储帐户被配置为在新的主要区域中本地冗余。 然后，可以在新的主要区域配置帐户以实现异地冗余。 如果帐户在故障转移完成后配置为使用异地冗余，新的主要区域就会立即开始将数据复制到新的次要区域（在原始故障转移发生前为主要区域）。 不过，将新的主要区域中的现有数据完全复制到新的次要区域可能需要一段时间才能完成。
 
 重新将存储帐户配置为异地冗余后，可以启动故障回复，从新的主要区域故障回复到新的次要区域。 在这种情况下，故障转移前的原始主要区域再次成为主要区域，并根据原始主要配置是 GRS/RA-GRS 还是 GZRS/RA-GZRS 配置为本地冗余或区域冗余。 在故障恢复期间，故障转移后主要区域（原始次要区域）中的所有数据都将丢失。 如果在故障回复前存储帐户中的大部分数据都尚未复制到新的次要区域，可能会丢失大量数据。
 
 为了避免大量数据丢失，请在故障回复前检查“上次同步时间”属性的值。 若要评估预期数据丢失，请比较上次同步时间与数据上次写入新的主要区域时间。
 
-执行故障回复操作后，可以将新的主要区域再次配置为异地冗余。 如果原始主要区域配置为 LRS，则可以将其配置为 GRS 或 RA-GRS。 如果原始主要区域配置为 ZRS，则可以将其配置为 GZRS 或 RA-GZRS。 有关其他选项，请参阅[更改存储帐户的复制方式](redundancy-migration.md)。
+故障回复操作后，可再次将新的主要区域配置为异地冗余。 如果原始主要区域配置为 LRS，则可以将其配置为 GRS 或 RA-GRS。 如果原始主要区域配置为 ZRS，则可以将其配置为 GZRS 或 RA-GZRS。 有关其他选项，请参阅[更改存储帐户的复制方式](redundancy-migration.md)。
 
 ## <a name="initiate-an-account-failover"></a>启动帐户故障转移
 

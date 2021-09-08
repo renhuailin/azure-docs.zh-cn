@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 243c3dcf9c76bcedffb6e1f531dfd85ea479edcf
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: fa80ff7a418b0f1d49285aad872cfd411037b721
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114706274"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430156"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>使用媒体服务实时传送视频流概述
 
@@ -163,7 +163,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>相关主题
-[Azure 媒体服务分片 MP4 实时引入规范](../media-services-fmp4-live-ingest-overview.md)
+[Azure 媒体服务分片 MP4 实时引入规范](media-services-fmp4-live-ingest-overview.md)
 
 [使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)
 

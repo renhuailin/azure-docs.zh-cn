@@ -1,22 +1,25 @@
 ---
 title: Azure 数据工厂中的 Excel 格式
-description: 本主题介绍了如何处理 Azure 数据工厂中的 Excel 格式。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 本主题介绍了如何处理 Azure 数据工厂和 Azure Synapse Analytics 中的 Excel 格式。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 12/08/2020
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 73831a22974513cfc8e8a281099fc652fce4176f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 7a1a0331276169bb81dcf86c74aab1a16855b25c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090129"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255843"
 ---
-# <a name="excel-format-in-azure-data-factory"></a>Azure 数据工厂中的 Excel 格式
+# <a name="excel-file-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的 Excel 文件格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-如果要 **分析 Excel 文件**，请按此文的要求操作。 Azure 数据工厂同时支持“.xls”和“.xlsx”。
+如果要 **分析 Excel 文件**，请按此文的要求操作。 该服务支持“.xls”和“.xlsx”。
 
 以下连接器支持 Excel 格式：[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 兼容存储](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle 云存储](connector-oracle-cloud-storage.md)和 [SFTP](connector-sftp.md)。 它可以作为源，但不可作为接收器。 
 
@@ -27,7 +30,7 @@ ms.locfileid: "110090129"
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Excel 数据集支持的属性列表。
 
-| 属性         | 描述                                                  | 必须 |
+| 属性         | 说明                                                  | 必需 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为“Excel”。   | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 | 是      |
@@ -74,7 +77,7 @@ ms.locfileid: "110090129"
 
 复制活动的 ***\*source\**** 节支持以下属性。
 
-| 属性      | 描述                                                  | 必须 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为“ExcelSource”。 | 是      |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 | 否       |
@@ -107,7 +110,7 @@ ms.locfileid: "110090129"
 
 下表列出了 Excel 源支持的属性。 你可以在“源选项”选项卡中编辑这些属性。在使用内联数据集时，你会看到其他文件设置，这些设置与[数据集属性](#dataset-properties)部分描述的属性相同。
 
-| 名称                      | 描述                                                  | 必需 | 允许的值                                            | 数据流脚本属性         |
+| 名称                      | 说明                                                  | 必需 | 允许的值                                            | 数据流脚本属性         |
 | ------------------------- | ------------------------------------------------------------ | -------- | --------------------------------------------------------- | --------------------------------- |
 | 通配符路径           | 将处理与通配符路径匹配的所有文件。 重写数据集中设置的文件夹和文件路径。 | 否       | String[]                                                  | wildcardPaths                     |
 | 分区根路径       | 对于已分区的文件数据，可以输入分区根路径，以便将已分区的文件夹读取为列 | 否       | 字符串                                                    | partitionRootPath                 |

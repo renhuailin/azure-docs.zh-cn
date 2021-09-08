@@ -3,20 +3,20 @@ title: 如何使用适用于 C# 的语音 SDK 从语音中识别意向
 titleSuffix: Azure Cognitive Services
 description: 本指南介绍如何使用适用于 C# 的语音 SDK 从语音中识别意向。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d1a171ee9a95d13e567534340e642e9023fb1e05
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 6dbd19a63ba3439b4219c9a40a885c8aaa2e3027
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122068632"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535610"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>如何使用适用于 C# 的语音 SDK 从语音中识别意向
 
@@ -53,7 +53,7 @@ LUIS 使用三种密钥：
 | --------- | ----------------------------------------------------- |
 | 创作 | 用于以编程方式创建和修改 LUIS 应用 |
 | 初学者   | 仅允许使用纯文本测试 LUIS 应用程序   |
-| 端点  | 授权访问特定的 LUIS 应用            |
+| 终结点  | 授权访问特定的 LUIS 应用            |
 
 对于本指南，需要使用终结点密钥类型。 本指南使用一个示例家庭自动化 LUIS 应用，可以遵循[使用预生成的家庭自动化应用](../luis/luis-get-started-create-app.md)快速入门来创建该应用。 如果你已创建自己的 LUIS 应用，可以改用该应用。
 

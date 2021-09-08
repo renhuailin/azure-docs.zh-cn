@@ -1,20 +1,20 @@
 ---
 title: 在 Android SDK 中聚类点数据 | Microsoft Azure Maps
 description: 了解如何在地图上聚类点数据。 了解如何使用 Azure Maps Android SDK 来聚类数据，响应聚类鼠标事件以及显示聚类聚合。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/23/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 81de84dd517babecf696bd2e4c906074f95f41a4
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: a6b9de675c32c893e872d23835c856a0fe6c49d3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113094914"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429813"
 ---
 # <a name="clustering-point-data-in-the-android-sdk"></a>在 Android SDK 中聚类点数据
 

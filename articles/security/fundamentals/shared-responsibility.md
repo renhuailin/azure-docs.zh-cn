@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/03/2021
+ms.date: 08/31/2021
 ms.author: terrylan
-ms.openlocfilehash: 5d9d3878c34bd203b6c14b45e1196245ef8524f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14d53d3f58c1bbdb03a5ac510f6a2e44157906f9
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99548943"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272092"
 ---
 # <a name="shared-responsibility-in-the-cloud"></a>云中责任分担
 
@@ -29,7 +29,7 @@ ms.locfileid: "99548943"
 ## <a name="division-of-responsibility"></a>责任划分
 在本地数据中心，你拥有整个堆栈。 当你迁移到云时，某些责任将转移到 Microsoft。 下图说明了你和 Microsoft 之间的责任区域，具体取决于你的堆栈的部署类型。
 
-![责任区域](./media/shared-responsibility/shared-responsibility.png)
+:::image type="content" source="media/shared-responsibility/shared-responsibility.svg" alt-text="显示责任区域的示意图。" border="false":::
 
 对于所有云部署类型，拥有数据和标识。 需要负责保护由你控制的数据和标识、本地资源及云组件的安全（保护的项目因服务类型而异）。
 
@@ -45,7 +45,7 @@ ms.locfileid: "99548943"
 
 下图显示了一种传统方法，其中的许多安全责任由于资源有限而无法履行。 在启用云的方法中，你可以将日常安全责任转移到云服务提供商，并重新分配资源。
 
-![云时代的安全优势](./media/shared-responsibility/cloud-enabled-security.png)
+:::image type="content" source="media/shared-responsibility/cloud-enabled-security.svg" alt-text="显示云时代安全优势的示意图。" border="false":::
 
 在启用云的方法中，你还可以利用基于云的安全功能来提高效率，并使用云智能来缩短威胁检测和响应时间。 通过将责任转移到云提供商，组织可以扩大安全覆盖范围，为其他优先业务重新调配安全资源与预算。
 

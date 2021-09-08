@@ -3,12 +3,12 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包括有关如何增加限制以及最大值的信息。
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: 952b5521a16ebc955e71319efe1f0b2bc48e47a9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2d3af7c035518ace6abca01b9e9e3867c49d4330
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014608"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099379"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -335,10 +335,6 @@ ms.locfileid: "122014608"
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
 
-## <a name="purview-limits"></a>Purview 限制
-
-在 [Azure Purview 配额页](../../purview/how-to-manage-quotas.md)中可找到 Azure Purview 配额的最新值
-
 ### <a name="traffic-manager-limits"></a>流量管理器限制
 
 [!INCLUDE [traffic-manager-limits](../../../includes/traffic-manager-limits.md)]
@@ -362,6 +358,10 @@ ms.locfileid: "122014608"
 ## <a name="notification-hubs-limits"></a>通知中心限制
 
 [!INCLUDE [notification-hub-limits](../../../includes/notification-hub-limits.md)]
+
+## <a name="purview-limits"></a>Purview 限制
+
+在 [Azure Purview 配额页](../../purview/how-to-manage-quotas.md)中可找到 Azure Purview 配额的最新值。
 
 ## <a name="service-bus-limits"></a>服务总线限制
 

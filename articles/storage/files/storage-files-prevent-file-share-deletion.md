@@ -8,12 +8,12 @@ ms.date: 03/29/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 023320d29eac767e62e07c58de4f8fa6ac61b61f
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: a7841fcafff49dab43d944cfa6fd84e9b7119080
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112117841"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260004"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>防止意外删除 Azure 文件共享
 Azure 文件存储为文件共享提供软删除。 使用软删除，可在应用程序或其他存储帐户用户错误地删除了文件共享后恢复文件共享。

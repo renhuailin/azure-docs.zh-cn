@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9ee0108e4567199b7bbf1b52222c1ab14e2837be
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: f4ae68478bf1e964fe2539f25e11ed27645f7a62
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113005323"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541920"
 ---
 # <a name="using-identity-to-create-surrogate-keys-using-dedicated-sql-pool-in-azuresynapse-analytics"></a>使用 IDENTITY 通过 AzureSynapse Analytics 中的专用 SQL 池创建代理键
 
@@ -164,7 +164,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 在将数据加载到包含 IDENTITY 列的表时，当前无法使用 `CREATE TABLE AS SELECT`。
 >
 
-若要详细了解如何加载数据，请参阅[为专用 SQL 池设计提取、加载和转换 (ELT)](design-elt-data-loading.md) 和[加载最佳做法](guidance-for-loading-data.md)。
+若要详细了解如何加载数据，请参阅[为专用 SQL 池设计提取、加载和转换 (ELT)](design-elt-data-loading.md) 和[加载最佳做法](../sql/data-loading-best-practices.md)。
 
 ## <a name="system-views"></a>系统视图
 

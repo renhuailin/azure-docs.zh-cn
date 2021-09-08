@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/01/2021
 ms.author: lajanuar
 keywords: 本地, Docker, 容器, 标识
-ms.openlocfilehash: 5f8e0c17fd7f76ddb28072e292bbe4ae39dab64c
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 700e49f1fb635cc93797c5b39463dc3d76018c7e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326353"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480959"
 ---
 # <a name="install-and-run-form-recognizer-v21-preview-containers"></a>安装和运行表单识别器 v2.1 预览版容器
 
@@ -625,5 +625,3 @@ Azure 认知服务容器在未连接到计量/计费终结点的情况下无权�
 ## <a name="next-steps"></a>后续步骤
 
 * [表单识别器容器配置设置](form-recognizer-container-configuration.md) 
-* [表单识别器容器映像标记](../../../cognitive-services/containers/container-image-tags.md?tabs=current#form-recognizer)
-* [认知服务容器支持页和发行说明](../../../cognitive-services/containers/container-image-tags.md?tabs=current#form-recognizer)

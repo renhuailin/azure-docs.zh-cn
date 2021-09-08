@@ -3,18 +3,18 @@ title: 教程 - 在 Azure IoT Central 中定义新的网关设备类型 | Micros
 description: 本教程向构建人员介绍如何在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型。
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 08/18/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 75b818382102642ecc8380b257c9c31382b8283d
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 44a659b5b10e1f97293e2cd2636d5774baaebd40
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588410"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426201"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>教程 - 在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
 
@@ -124,7 +124,7 @@ ms.locfileid: "113588410"
 
     | 显示名称      | 语义类型 | 架构 |
     | ----------------- | ------------- | ------ |
-    | 最后维修日期 | 无          | 日期   |
+    | 最后维修日期 | 无          | Date   |
     | 客户名称     | 无          | 字符串 |
 
 1. 选择“保存”。 

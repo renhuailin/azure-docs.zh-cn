@@ -11,12 +11,12 @@ ms.date: 08/23/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: b05aa59f465eafd65fa111fff811d2f0909f601d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: f8d27d30ace8ac29a59df9b77de4b56b5e138f63
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471851"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123185734"
 ---
 # <a name="configure-authentication-in-a-sample-web-app-by-using-azure-ad-b2c"></a>使用 Azure AD B2C 在示例 Web 应用中配置身份验证
 
@@ -113,10 +113,10 @@ git clone https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-op
 
 在项目根文件夹下，打开 appsettings.json 文件。 此文件包含有关 Azure AD B2C 标识提供者的信息。 更新以下应用设置属性： 
 
-|部分  |密钥  |值  |
+|部分  |键  |值  |
 |---------|---------|---------|
 |AzureAdB2C|实例| Azure AD B2C [租户名称](tenant-management.md#get-your-tenant-name)的第一部分（例如 `https://contoso.b2clogin.com`）。|
-|AzureAdB2C|域| Azure AD B2C 租户的完整[租户名称](tenant-management.md#get-your-tenant-name)（例如 `contoso.onmicrosoft.com`）。|
+|AzureAdB2C|域| Azure AD B2C 租户的完整[租户名称](tenant-management.md#get-your-tenant-name)（例如，`contoso.onmicrosoft.com`）。|
 |AzureAdB2C|ClientId| [步骤 2](#step-2-register-a-web-application) 中的 Web API 应用程序 ID。|
 |AzureAdB2C|SignUpSignInPolicyId|用户流，或在[步骤 1](#step-1-configure-your-user-flow) 中创建的自定义策略。|
 
@@ -135,7 +135,7 @@ git clone https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-op
 ## <a name="step-5-run-the-sample-web-app"></a>步骤 5：运行示例 Web 应用
 
 1. 生成并运行该项目。
-1. 转到  `https://localhost:5001` 。 
+1. 转到 [https://localhost:5001](https://localhost:5001)。 
 1. 选择“注册/登录”。
 
     ![项目欢迎页上“注册/登录”按钮的屏幕截图。](./media/configure-authentication-sample-web-app/web-app-sign-in.png)

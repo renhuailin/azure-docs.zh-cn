@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 08/27/2021
 ms.author: tisande
-ms.openlocfilehash: 95e6c74ad03cae30a2b7b6544a490ef86e92e900
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 490510e3b1a46b21123a7cd519a7bf8cb81021d6
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206194"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123109198"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联接
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -20,7 +20,7 @@ ms.locfileid: "122206194"
 在关系数据库中，跨表联接是设计规范化架构的逻辑定理。 相比之下，SQL API 使用无架构项的反规范化数据模型，这在逻辑上等效于自联接。 
 
 > [!NOTE]
-> 在 Azure Cosmos DB 中，联接的范围限定为单个项。 不支持跨项联接和跨容器联接。 在 NoSQL 数据库（如 Azure Cosmos DB）中，良好的[数据建模](../modeling-data.md)有助于避免对跨项联接和跨容器联接的需求。
+> 在 Azure Cosmos DB 中，联接的范围限定为单个项。 不支持跨项联接和跨容器联接。 在像 Azure Cosmos DB 这样的 NoSQL 数据库中，优质的[数据建模](../modeling-data.md)有助于避免对跨项联接和跨容器联接的需求。
 
 联接可获得参与联接的集的完整叉积。 N 向联接的结果是获得一组 N-元素元组，其中元组中的每个值与参与联接的别名集相关联，并且可以通过引用其他子句中的这些别名来访问。
 
@@ -255,7 +255,40 @@ JOIN 子句真正实用的地方是通过以其他方式难以投影的形式基
     ]
 ```
 
-如果你的查询具有 JOIN 和筛选器，那么你可将查询的一部分重写为[子查询](sql-query-subquery.md#optimize-join-expressions)来提高性能。
+## <a name="subqueries-instead-of-joins"></a>子查询而不是 JOIN
+
+如果你的查询具有 JOIN 和筛选器，那么你可将查询的一部分重写为[子查询](sql-query-subquery.md#optimize-join-expressions)来提高性能。 在某些情况下，可以使用子查询或 [ARRAY_CONTAINS](sql-query-array-contains.md) 来完全避免使用 JOIN 的需要并提高查询性能。
+
+例如，请考虑前面的查询，该查询投影了 familyName、儿童的 givenName、儿童的 firstName 和宠物的 givenName。 如果此查询只需筛选宠物名字而不需要返回该名字，可以使用 `ARRAY_CONTAINS` 或[子查询](sql-query-subquery.md)来查看 `givenName = "Shadow"` 的宠物。
+
+### <a name="query-rewritten-with-array_contains"></a>使用 ARRAY_CONTAINS 重写的查询
+
+```sql
+    SELECT 
+        f.id AS familyName,
+        c.givenName AS childGivenName,
+        c.firstName AS childFirstName
+    FROM Families f
+    JOIN c IN f.children
+    WHERE ARRAY_CONTAINS(c.pets, {givenName: 'Shadow'})
+```
+
+### <a name="query-rewritten-with-subquery"></a>使用子查询重写的查询
+
+```sql
+    SELECT 
+        f.id AS familyName,
+        c.givenName AS childGivenName,
+        c.firstName AS childFirstName
+    FROM Families f
+    JOIN c IN f.children
+    WHERE EXISTS (
+    SELECT VALUE n
+    FROM n IN c.pets
+    WHERE n.givenName = "Shadow"
+    )
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 

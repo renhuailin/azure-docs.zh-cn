@@ -13,12 +13,12 @@ ms.date: 07/23/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: johngarland, mamarxen, ianbe, marsma
-ms.openlocfilehash: cc636c60ee88d69e263ae5a2d9d599e2230184cd
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 4dcdb90daa9bb8cd1df79ec399eb9372fca02c61
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122206099"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037184"
 ---
 # <a name="authorization-basics"></a>授权基础知识
 
@@ -59,6 +59,8 @@ ms.locfileid: "122206099"
 ABAC 的一项优势是，可通过规则和条件评估实现更精细的动态访问控制，而无需创建大量特定的角色和 RBAC 分配。
 
 使用 Azure Active Directory 实现 ABAC 的一种方法是使用[动态组](../enterprise-users/groups-create-rule.md)。 动态组可让管理员基于具有所需值的特定用户属性将用户动态分配到组。  例如，可以创建一个作者组，其中包含职务“作者”的所有用户都被动态分配到作者组。  可将动态组与 RBAC 结合用于授予，在此情况下，将角色映射到组，并将用户动态分配到组。
+
+[Azure ABAC](../../role-based-access-control/conditions-overview.md) 是目前可用的 ABAC 解决方案的一个示例。 Azure ABAC 构建在 Azure RBAC 之上，它在特定操作上下文中根据属性添加角色分配条件。 
 
 ## <a name="implementing-authorization"></a>实现授权
 

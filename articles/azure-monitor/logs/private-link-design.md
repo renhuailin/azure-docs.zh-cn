@@ -5,29 +5,38 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: ccee8017bce3109cc6d47bbeb225ca7c1edf5d66
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: d6d5b5bf1cba2ebb2def30b15f3a70dea91e5ff7
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201943"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272594"
 ---
 # <a name="design-your-private-link-setup"></a>设计专用链接设置
 
 设置 Azure Monitor 专用链接之前，请考虑网络拓扑，特别是 DNS 路由拓扑。
 如[工作原理](./private-link-security.md#how-it-works)中所述，设置专用链接会影响到所有 Azure Monitor 资源的流量。 对 Application Insights 资源尤其如此。 此外，它不仅影响连接到专用终结点的网络，还会影响共享同一 DNS 的所有其他网络。
 
-> [!NOTE]
-> 最简单且最安全的方法是：
-> 1. 创建单个专用链接连接，其中包含单个专用终结点和单个 AMPLS。 如果网络已对等互连，请在共享（或中心）VNet 上创建专用链接连接。
-> 2. 将所有 Azure Monitor 资源（Application Insights 组件和 Log Analytics 工作区）添加到该 AMPLS。
-> 3. 尽可能阻止网络出口流量。
+最简单且最安全的方法是：
+1. 创建单个专用链接连接，其中包含单个专用终结点和单个 AMPLS。 如果网络已对等互连，请在共享（或中心）VNet 上创建专用链接连接。
+2. 将所有 Azure Monitor 资源（Application Insights 组件和 Log Analytics 工作区）添加到该 AMPLS。
+3. 尽可能阻止网络出口流量。
 
-如果由于某种原因不能使用单个专用链接和单个 Azure Monitor 专用链接范围 (AMPLS)，次优建议是为隔离网络创建单独的专用链接连接。 如果你正在使用辐射 VNet（或者可与之保持一致），请按照 [Azure 中的中心辐射型拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)中的指导进行操作。 然后，在相关辐射 VNet 中设置单独的专用链接设置。 请确保也将 DNS 区域分隔开，因为与其他辐射网络共享 DNS 区域将导致 DNS 替代。
 
 ## <a name="plan-by-network-topology"></a>按网络拓扑制定计划
-### <a name="hub-spoke-networks"></a>中心辐射型网络
-中心辐射型拓扑可以通过在中心（主）VNet 上设置专用链接，而不是在每个分支 VNet 上设置，来避免 DNS 替代的问题。 这种设置是有意义的，特别是当辐射 VNet 使用共享 Azure Monitor 资源时很有意义。 
+
+### <a name="guiding-principle-avoid-dns-overrides-by-using-a-single-ampls"></a>指导原则：通过使用单个 AMPLS 避免 DNS 替代
+某些网络由多个 VNet 或其他互连网络组成。 如果这些网络共享同一 DNS，则在其中任一网络中设置专用链接都会更新 DNS，并影响所有网络中的流量。
+
+在下面的关系图中，VNet 10.0.1.x 首先连接到 AMPLS1，并将 Azure Monitor 的全局终结点映射到其范围内的 IP。 稍后，VNet 10.0.2.x 连接到 AMPLS2，并替代具备其范围内 IP 的“相同全局终结点”的 DNS 映射。 由于这些 VNet 不对等互连，因此第一个 VNet 现在无法访问这些终结点。
+
+若要避免此冲突，请为每个 DNS 仅创建一个 AMPLS 对象。
+
+![多个 VNet 中的 DNS 替代示意图](./media/private-link-security/dns-overrides-multiple-vnets.png)
+
+
+### <a name="hub-and-spoke-networks"></a>中心辐射型网络
+中心辐射型网络应使用在中心（主）网络上设置的单个专用链接连接，而不是在每个分支 VNet 上设置的连接。 
 
 ![中心辐射型单一专用终结点](./media/private-link-security/hub-and-spoke-with-single-private-endpoint.png)
 
@@ -35,17 +44,37 @@ ms.locfileid: "122201943"
 > 你可能有意倾向于为辐射 VNet 创建单独的专用链接，例如，允许每个 VNet 访问有限的监视资源组。 在这种情况下，可以为每个 VNet 创建专用的专用终结点和 AMPLS，但也必须验证它们并不共享相同的 DNS 区域，以避免 DNS 替代。
 
 ### <a name="peered-networks"></a>对等互连网络
-网络对等互连用于中心辐射型拓扑以外的各种拓扑。 此类网络可共享连接彼此的 IP 地址，并且很可能共享相同的 DNS。 在这种情况下，建议的方法类似于中心辐射型网络，即选择所有其他（相关）网络访问的单个网络，并在该网络上设置专用链接连接。 不要创建多个专用终结点和 AMPLS 对象，因为最终只会应用 DNS 中设置的最后一个终结点和 AMPLS 对象。
+网络对等互连用于中心辐射型拓扑以外的各种拓扑。 此类网络可共享连接彼此的 IP 地址，并且很可能共享相同的 DNS。 在这种情况下，我们再次建议在网络上创建可供其他网络访问的单个专用链接。 不要创建多个专用终结点和 AMPLS 对象，因为最终只会应用 DNS 中设置的最后一个终结点和 AMPLS 对象。
 
 ### <a name="isolated-networks"></a>隔离网络
-#<a name="if-your-networks-arent-peered-you-must-also-separate-their-dns-in-order-to-use-private-links-once-thats-done-you-can-create-a-private-link-for-one-or-many-network-without-affecting-traffic-of-other-networks-that-means-creating-a-separate-private-endpoint-for-each-network-and-a-separate-ampls-object-your-ampls-objects-can-link-to-the-same-workspacescomponents-or-to-different-ones"></a>如果网络未对等互连，则必须分隔其 DNS 才能使用专用链接。 完成后，你可以为一个（或多个）网络创建专用链接，而不会影响其他网络的流量。 这意味着，需要为每个网络创建一个单独的专用终结点，并创建一个单独的 AMPLS 对象。 AMPLS 对象可以链接到相同的工作区/组件，也可以链接到不同的工作区/组件。
+如果网络未对等互连，则必须分隔其 DNS 才能使用专用链接。 完成后，为每个网络创建一个单独的专用终结点，并创建一个单独的 AMPLS 对象。 AMPLS 对象可以链接到相同的工作区/组件，也可以链接到不同的工作区/组件。
 
 ### <a name="testing-locally-edit-your-machines-hosts-file-instead-of-the-dns"></a>在本地测试：编辑计算机的主机文件，而不是 DNS 
-作为对“全部或无”行为的本地绕过，你可以选择不使用专用链接记录更新 DNS，而是编辑选定计算机上的主机文件，以便只有这些计算机才能将请求发送到专用链接终结点。
+若要在本地测试专用链接而不影响网络上的其他客户端，请确保在创建专用终结点时不要更新 DNS。 相反，请编辑计算机上的主机文件，以便它将请求发送到专用链接终结点：
 * 设置专用链接，但在连接到专用终结点时，选择不与 DNS 自动集成（步骤 5b）。
 * 在计算机的主机文件上配置相关终结点。 若要查看需要映射的 Azure Monitor 终结点，请参阅[查看终结点的 DNS 设置](./private-link-configure.md#reviewing-your-endpoints-dns-settings)。
 
 不建议在生产环境中使用这种方法。
+
+## <a name="control-how-private-links-apply-to-your-networks"></a>控制专用链接如何应用于网络
+专用链接访问模式（于 2021 年 8 月推出）使你能够控制专用链接如何影响网络流量。 这些设置可应用于 AMPLS 对象（以影响所有连接的网络）或连接该对象的特定网络。
+
+选择适当的访问模式会对网络流量产生不利影响。 可以分别为引入和查询设置这些模式中的每一种：
+
+* 仅专用 - 允许 VNet 仅访问专用链接资源（AMPLS 中的资源）。 这是最安全的工作模式，可防止数据外泄。 为实现此目的，阻止了从 AMPLS 传出到 Azure Monitor 资源的流量。
+![AMPLS“仅专用”访问模式示意图](./media/private-link-security/ampls-private-only-access-mode.png)
+* 开放式 - 允许 VNet 访问专用链接资源和不在 AMPLS 中的资源（如果这些资源[接受来自公共网络的流量](./private-link-design.md#control-network-access-to-your-resources)）。 虽然开放式访问模式不能防止数据外泄，但它仍具有专用链接的其他好处：到专用链接资源的流量通过专用终结点发送、经过验证并通过 Microsoft 主干发送。 开放式模式适用于混合工作模式（公开访问某些资源，通过专用链接访问其他资源），或适用于逐步加入的过程。
+![AMPLS“开放式”访问模式的示意图](./media/private-link-security/ampls-open-access-mode.png)为引入和查询分别设置各访问模式。 例如，可以为引入设置“仅专用”模式，为查询设置“开放式”模式。
+
+> [!NOTE]
+> 选择访问模式时请谨慎操作：无论订阅或租户如何，使用“仅专用”访问模式都将阻止共享同一 DNS 的所有网络中访问非 AMPLS 资源的流量。 如果无法将所有 Azure Monitor 资源添加到 AMPLS，我们建议使用“开放式”模式并将精选资源添加到 AMPLS。 只有在将所有 Azure Monitor 资源添加到 AMPLS 后，才能切换到“仅专用”模式以获得最大安全性。
+
+### <a name="setting-access-modes-for-specific-networks"></a>设置特定网络的访问模式
+对 AMPLS 资源设置的访问模式会影响所有网络，但你可以替代特定网络的这些设置。
+
+在下图中，VNet1 使用“开放式”模式，VNet2 使用“仅专用”模式。 因此，来自 VNet1 的请求通过专用链接可以访问 Workspace1 和 Component2，不通过专用链接可以访问 Component3（如果其[接受来自公共网络的流量](./private-link-design.md#control-network-access-to-your-resources)）。 但是，VNet2 请求将无法访问 Component3。 
+![混合访问模式示意图](./media/private-link-security/ampls-mixed-access-modes.png)
+
 
 ## <a name="consider-ampls-limits"></a>考虑 AMPLS 限制
 AMPLS 对象具有以下限制：
@@ -64,9 +93,33 @@ AMPLS 对象具有以下限制：
 
 
 ## <a name="control-network-access-to-your-resources"></a>控制对资源的网络访问
-Log Analytics 工作区或 Application Insights 组件可设置为接受或阻止来自公用网络（未连接到资源的 AMPLS 的网络）的访问。
-根据这一粒度，你可以按需设置每个工作区的访问权限。 例如，你只能通过专用链接连接的网络（即特定 VNet）接受引入，但仍可以选择接受来自所有网络（公用网络和专用网络）的查询。 请注意，阻止来自公用网络的查询意味着连接的 AMPLS 之外的客户端（计算机、SDK 等）无法查询资源中的数据。 该数据包括访问日志、指标和实时指标流、以及根据工作簿、仪表板、基于查询 API 的客户端体验和 Azure 门户中的见解等构建的体验等等。 对于 Azure 门户外部运行的体验，其查询 Log Analytics 数据也会受到该设置的影响。
+Log Analytics 工作区或 Application Insights 组件可以设置为：
+* 接受或阻止来自公共网络（未连接到资源 AMPLS 的网络）的引入。
+* 接受或阻止来自公共网络（未连接到资源 AMPLS 的网络）的查询。
 
+根据这一粒度，你可以按需设置每个工作区的访问权限。 例如，你只能通过专用链接连接的网络（即特定 VNet）接受引入，但仍可以选择接受来自所有网络（公用网络和专用网络）的查询。 
+
+阻止来自公用网络的查询意味着连接的 AMPLS 之外的客户端（计算机、SDK 等）无法查询资源中的数据。 这些数据包括日志、指标和实时指标流。 阻止来自公共网络的查询会影响运行这些查询的所有体验，如工作簿、仪表板、Azure 门户中的见解以及从 Azure 门户外部运行的查询。
+
+### <a name="exceptions"></a>例外
+
+#### <a name="diagnostic-logs"></a>诊断日志
+通过[诊断设置](../essentials/diagnostic-settings.md)上传到工作区的日志和指标会通过安全的专用 Microsoft 通道，且不受这些设置控制。
+
+#### <a name="azure-resource-manager"></a>Azure 资源管理器
+上述访问限制也适用于资源中的数据。 然而，配置更改（例如打开或关闭这些访问设置）由 Azure 资源管理器进行管理。 若要控制这些设置，应使用适当的角色、权限、网络控件和审核来限制对资源的访问。 有关详细信息，请参阅 [Azure Monitor 角色、权限和安全性](../roles-permissions-security.md)
+
+> [!NOTE]
+> 通过 Azure 资源管理 (ARM) API 发送的查询无法使用 Azure Monitor 专用链接。 仅当目标资源允许来自公共网络的查询时（通过“网络隔离”边栏选项卡或[使用 CLI](./private-link-configure.md#set-resource-access-flags) 设置），这些查询才能通过。
+>
+> 以下体验可通过 ARM API 运行查询：
+> * Sentinel
+> * LogicApp 连接器
+> * 更新管理解决方案
+> * 更改跟踪解决方案
+> * VM Insights
+> * 容器见解
+> * Log Analytics 的“工作区摘要”边栏选项卡（其中显示解决方案仪表板）
 
 ## <a name="application-insights-considerations"></a>Application Insights 注意事项
 * 需要将托管受监视工作负载的资源添加到专用链接中。 请参阅[为 Azure Web 应用使用专用终结点](../../app-service/networking/private-endpoint.md)查看示例。
@@ -97,7 +150,7 @@ Log Analytics 代理需要访问全局存储帐户才能下载解决方案包。
 要详细了解如何连接自己的存储帐户，请参阅[使用客户拥有的存储帐户引入日志](private-storage.md)
 
 ### <a name="automation"></a>自动化
-如果使用需要自动化帐户的 Log Analytics 解决方案，如更新管理、更改跟踪或清单，则还应为自动化帐户设置一个单独的专用链接。 有关详细信息，请参阅[使用 Azure 专用链接将网络安全地连接到 Azure 自动化](../../automation/how-to/private-link-security.md)。
+如果使用需要自动化帐户的 Log Analytics 解决方案（如更新管理、更改跟踪或盘存），则还应为自动化帐户创建一个专用链接。 有关详细信息，请参阅[使用 Azure 专用链接将网络安全地连接到 Azure 自动化](../../automation/how-to/private-link-security.md)。
 
 > [!NOTE]
 > 某些产品和 Azure 门户体验通过 Azure 资源管理器查询数据，因此如果不将专用链接设置也应用到资源管理器，便无法通过专用链接查询数据。 若要解决这一问题，可以将资源配置为接受来自公共网络的查询，如[控制对资源的网络访问](./private-link-design.md#control-network-access-to-your-resources)中所述（引入可仍然仅限于专用链接网络）。

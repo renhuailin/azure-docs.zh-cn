@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0ddd3c7e7c0a62b1b378c0a83cb266de8d078f24
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 819878f84b567b6042d2021992f6c8c5e52823fb
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309634"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536117"
 ---
 ### <a name="count-machines-in-scope-of-guest-configuration-policies"></a>统计来宾配置策略范围内的计算机
 
@@ -170,9 +170,9 @@ Search-AzGraph -Query "GuestConfigurationResources | where name in ('WindowsPend
 
 ---
 
-### <a name="list-machines-that-are-not-running-and-the-last-compliance-status"></a>列出未运行的机器和上一个合规性状态
+### <a name="list-machines-that-are-not-running-and-the-last-compliance-status"></a>列出未运行的机器和上一个符合性状态
 
-提供未开机的计算机及其配置分配和上次报告的合规性状态的列表。
+提供未启动的计算机及其配置分配和上次报告的符合性状态的列表。
 
 ```kusto
 Resources

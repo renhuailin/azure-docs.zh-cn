@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 门户更改新的和现有托管磁盘的
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/29/2021
+ms.date: 09/02/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: dd7d024b542feb2e15aefb79f2467e7033c180f9
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 1320ec212a94245e42c63f583d37b33eaa76224e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123106606"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433289"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>使用 Azure 门户更改性能层
 
@@ -66,7 +66,6 @@ ms.locfileid: "123106606"
 
 1. 从以下链接登录到 Azure 门户：[https://aka.ms/diskPerfTiersPreview](https://aka.ms/diskPerfTiersPreview)。
 1. 导航到包含要更改的磁盘的 VM。
-1. 解除分配 VM 或分离磁盘。
 1. 选择磁盘
 1. 选择“大小 + 性能”。
 1. 在“性能层”下拉列表中，选择一个与磁盘的当前性能层不同的层。

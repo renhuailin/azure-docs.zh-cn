@@ -5,25 +5,20 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: 91ad4ce80a8e61b06b3597fe8088a0eb7f002d5e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 1682a1b80f3b2d85e0d263b9ea2648da2b57a561
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968225"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430893"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>快速入门：使用 Azure CLI 创建并配置路由服务器 
 
-本文可帮助你使用 Azure PowerShell 将 Azure 路由服务器配置为与虚拟网络中的网络虚拟设备 (NVA) 对等互连。 路由服务器将从 NVA 获知路由，并将这些路由配置到虚拟网络中的虚拟机上。 Azure 路由服务器还会将虚拟网络路由播发到 NVA。 有关详细信息，请参阅 [Azure 路由服务器](overview.md)。
+本文可帮助你使用 Azure PowerShell 将 Azure 路由服务器配置为与虚拟网络中的网络虚拟设备 (NVA) 对等互连。 路由服务器将会从 NVA 获知路由，并将这些路由配置到虚拟网络中的虚拟机上。 Azure 路由服务器还会将虚拟网络路由播发到 NVA。 有关详细信息，请参阅 [Azure 路由服务器](overview.md)。
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="使用 Azure CLI 的路由服务器部署环境示意图。" border="false":::
-
-> [!IMPORTANT]
-> Azure 路由服务器（预览版）目前为公共预览版状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ##  <a name="prerequisites"></a>先决条件 
 
@@ -138,7 +133,7 @@ az network routeserver peering create \
     --resource-group myRouteServerRG
 ``` 
 
-若要与其他 NVA 或同一 NVA 的另一个实例建立对等互连以实现冗余，请使用与上述相同的命令，但 PeerName、PeerIp 和 PeerAsn 要不同  。
+若要设置与不同的 NVA 或同一 NVA 的另一个实例的对等互连以实现冗余，请使用与上述相同的命令，但需要使用不同的 PeerName、PeerIp 和 PeerAsn  。
 
 ## <a name="complete-the-configuration-on-the-nva"></a>在 NVA 上完成配置 
 
@@ -236,7 +231,7 @@ az network routeserver peering list-learned-routes \
 
 ## <a name="next-steps"></a>后续步骤
 
-创建 Azure 路由服务器后，请继续了解有关 Azure 路由服务器如何与 ExpressRoute 和 VPN 网关交互的详细信息： 
+在创建 Azure 路由服务器后，请继续了解有关 Azure 路由服务器如何与 ExpressRoute 和 VPN 网关进行交互的详细信息： 
 
 > [!div class="nextstepaction"]
 > [Azure ExpressRoute 和 Azure VPN 支持](expressroute-vpn-support.md)

@@ -3,20 +3,20 @@ title: 语音合成标记语言 (SSML) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音合成标记语言来控制文本到语音转换中的发音和韵律。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: b71d0d114388c25f3f14c85d37f0568ceed49337
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: d310b56bf0851c5ef33a05421c731279fedbabbe
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419327"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543999"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -102,7 +102,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必须 |
 
@@ -161,7 +161,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `style` | 指定讲话风格。 目前，讲话风格特定于语音。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用 `mstts:express-as`，则必须提供风格。 如果提供无效的值，将忽略此元素。 |
 | `styledegree` | 指定说话风格的强度。 接受的值：0.01 到 2（含边界值）。 默认值为 1，表示预定义的风格强度。 最小单位为 0.01，表示略倾向于目标风格。 值为 2 表示是默认风格强度的两倍。  | 可选（目前，`styledegree` 仅支持中文（普通话，简体）神经语音。）|
@@ -319,7 +319,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `lang` | 指定讲话语言。 目前，讲不同的语言是特定于语音的。 | 如果调整神经语音的讲话语言，则为必需项。 如果使用 `lang xml:lang`，则必须提供区域设置。 |
 
@@ -377,7 +377,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>无</li><li>x-weak</li><li>weak</li><li>medium（默认值）</li><li>strong</li><li>x-strong</li></ul> | 可选 |
 | `time` | 指定暂停的绝对持续时间，以秒或毫秒为单位；该值应设为小于 5000 毫秒。 例如，`2s` 和 `500ms` 是有效值 | 可选 |
@@ -416,7 +416,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `type` | 指定添加静音的位置： <ul><li>`Leading` - 在文本的开头 </li><li>`Tailing` - 在文本的结尾 </li><li>`Sentenceboundary` - 在相邻句子之间 </li></ul> | 必须 |
 | `Value` | 指定暂停的绝对持续时间，以秒或毫秒为单位；该值应设为小于 5000 毫秒。 例如，`2s` 和 `500ms` 是有效值 | 必须 |
@@ -481,7 +481,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa` &ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际音标 </a></li><li>`sapi` &ndash; [语音服务音标](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank"> 通用音素集</a></li></ul><br>音标仅适用于元素中的 `phoneme`。 | 可选 |
 | `ph` | 一个字符串，包含用于在 `phoneme` 元素中指定单词发音的音素。 如果指定的字符串包含无法识别的音素，则文本转语音 (TTS) 服务将拒绝整个 SSML 文档，并且不会生成文档中指定的任何语音输出。 | 如果使用音素，则此属性是必需的。 |
@@ -531,7 +531,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 描述                               | 必需/可选 |
+| 属性 | 说明                               | 必需/可选 |
 |-----------|-------------------------------------------|---------------------|
 | `uri`     | 外部 PLS 文档的地址。 | 必需。           |
 
@@ -743,7 +743,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `interpret-as` | 指示元素文本的内容类型。 有关类型列表，请参阅下表。 | 必须 |
 | `format` | 为可能具有不明确格式的内容类型提供有关元素文本的精确格式设置的其他信息。 SSML 为使用它们的内容类型定义格式（请参阅下表）。 | 可选 |
@@ -806,7 +806,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 描述                                   | 必需/可选                                        |
+| 属性 | 说明                                   | 必需/可选                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 | `src`     | 指定音频文件的位置/URL。 | 在 SSML 文档中使用音频元素时，此属性是必需的。 |
 
@@ -842,7 +842,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音频文件的位置/URL。 | 如果在 SSML 文档中使用背景音频，则此属性是必需的。 |
 | `volume` | 指定背景音频文件的音量。 **接受的值**：`0` 到 `100`（含）。 默认值为 `1`。 | 可选 |
@@ -877,7 +877,7 @@ bookmark 元素可用于引用文本或标记序列中的特定位置。
 
 **属性**
 
-| 属性 | 描述                                   | 必需/可选                                        |
+| 属性 | 说明                                   | 必需/可选                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 |  `mark`   | 指定 `bookmark` 元素的引用文本。 | 必需。 |
 

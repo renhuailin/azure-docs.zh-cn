@@ -9,18 +9,16 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 88e67711b71ad80b48a7d5c19377847d0dadd296
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 04b1b4b9b9dd859a2f4b4515c2896163b8f9a698
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725945"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038473"
 ---
 # <a name="manage-a-public-ip-address-with-a-load-balancer"></a>使用负载均衡器管理公共 IP 地址
 
-公共负载均衡器是第 4 层解决方案，用于将 TCP 和 UDP 流量分发到后端池。 基本和标准 SKU 可用于负载均衡器。 
-
-这些 SKU 对应于公共 IP 地址的基本和标准 SKU。
+公共负载均衡器是第 4 层解决方案，用于将 TCP 和 UDP 流量分发到后端池。 基本和标准 SKU 可用于负载均衡器。 这些 SKU 对应于公共 IP 地址的基本和标准 SKU。
 
 与负载均衡器关联的公共 IP 充当面向 Internet 的前端 IP 配置。 前端用于访问后端池中的资源。 前端 IP 可用于将后端池成员的出口流量发送到 Internet。 
 
@@ -157,7 +155,7 @@ Azure 负载均衡器必须具有与前端关联的 IP 地址。 可以使用单
 
 ## <a name="caveats"></a>注意事项
 
-* 标准公共负载均衡器可以使用 IPv6 地址作为其前端公共 IP 或公共 IP 前缀。  每个部署都必须是包含 IPv4 和 IPv6 前端的双堆栈。 NAT64 转换不可用。 有关详细信息，请参阅[在 Azure 中部署 IPv6 双堆栈应用程序 - PowerShell](./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)
+* 标准公共负载均衡器可以使用标准 SKU 静态 IPv6 地址作为其前端公共 IP 或公共 IP 前缀。  每个部署都必须是包含 IPv4 和 IPv6 前端的双堆栈。 NAT64 转换不可用。 有关详细信息，请参阅[在 Azure 中部署 IPv6 双堆栈应用程序 - PowerShell](./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)（请注意，基本公共负载均衡器可以使用基本 SKU 动态 IPv6 地址作为其前端公共 IP。）
 
 * 当多个前端分配给一个公共负载均衡器时，没有方法可以将特定后端实例的流分配到特定 IP 上的出口。  有关详细信息，请参阅 [Azure 负载均衡器的多个前端](../load-balancer/load-balancer-multivip-overview.md)
 ## <a name="next-steps"></a>后续步骤

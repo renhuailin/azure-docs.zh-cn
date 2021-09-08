@@ -1,16 +1,16 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/04/2021
-ms.author: lajanuar
-ms.openlocfilehash: da985c405dde8b66e8562abd8689acaba405b60f
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 67fc77b58d484c9fbb85029f0222e0d352e17428
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071730"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543219"
 ---
 若要完成意向识别快速入门，需要使用 LUIS 预览门户创建 LUIS 帐户和项目。 本快速入门要求在[意向识别可用的区域](../../../regions.md#intent-recognition)的 LUIS 订阅。 无需语音服务订阅。
 

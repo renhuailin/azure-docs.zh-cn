@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 08/01/2021
 ms.author: wellee
-ms.openlocfilehash: d61e6c3847d9ce64f9c3f17da1300b32a1a8e643
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 5fb694cd1dab2d53495e2e4b513ce6bfe2ebaff9
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122206092"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101824"
 ---
 # <a name="how-to-configure-virtual-wan-hub-routing-intent-and-routing-policies"></a>如何配置虚拟 WAN 中心路由意向和路由策略
 
@@ -22,7 +22,7 @@ ms.locfileid: "122206092"
 > 
 > 此预览版在提供时未附带服务级别协议，建议不要用于生产工作负载。 部分功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 > 
-> 若要获取对此预览版的访问权限，请向 previewinterhub@microsoft.com 发送邮件并提供你要配置路由意向的虚拟 WAN ID、订阅 ID 和 Azure 区域。 通常你会在 48 个工作小时（周一至周五）内收到确认启用功能的回复。
+> 若要获取对预览版的访问权限，请将两个中心部署在同一 Azure 区域，同时部署任何网关（站点到站点 VPN 网关、点到站点网关和 ExpressRouteGateways），然后使用虚拟 WAN ID、订阅 ID 和要配置路由意图的 Azure 区域联系 previewinterhub@microsoft.com。 通常你会在 48 个工作小时（周一至周五）内收到确认启用功能的回复。 请注意，在功能启用后创建的任何网关都需要由虚拟 WAN 团队升级。
 
 ## <a name="background"></a>背景 
 
@@ -53,7 +53,7 @@ ms.locfileid: "122206092"
 ## <a name="prerequisites"></a>先决条件
 1. 创建虚拟 WAN。 确保在同一区域至少创建两个虚拟中心。 例如，可以在美国东部创建一个包含两个虚拟中心的虚拟 WAN。 
 2. 通过将 Azure 防火墙部署到所选区域中的虚拟中心，将虚拟 WAN 中心转换为安全虚拟 WAN 中心。 有关将虚拟 WAN 中心转换为安全虚拟 WAN 中心的详细信息，请参阅此[文档](howto-firewall.md)。
-3. 向 **previewinterhub@microsoft.com** 发送邮件并提供你要配置路由策略的虚拟 WAN 资源 ID 和 Azure 虚拟中心区域 。 若要查找虚拟 WAN ID，请打开 Azure 门户，导航到虚拟 WAN 资源并选择“设置”>“属性”>“资源 ID”。 例如： 
+3. 部署将用于测试的任何站点到站点 VPN、点到站点 VPN 和 ExpressRoute 网关。 向 **previewinterhub@microsoft.com** 发送邮件并提供你要配置路由策略的虚拟 WAN 资源 ID 和 Azure 虚拟中心区域 。 若要查找虚拟 WAN ID，请打开 Azure 门户，导航到虚拟 WAN 资源并选择“设置”>“属性”>“资源 ID”。 例如： 
 ```
     /subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/virtualWans/<virtualWANname>
 ```
@@ -157,6 +157,7 @@ ms.locfileid: "122206092"
 * 目前，使用 Azure 防火墙检查中心间流量仅适用于部署在同一 Azure 区域中的虚拟 WAN 中心。 
 * 目前，具有加密 ExpressRoute 连接（通过 ExpressRoute 专用连接运行的站点到站点 VPN 隧道）的中心不支持专用流量路由策略。 
 * 可以通过检查 DefaultRouteTable 的有效路由来验证路由策略是否已正确应用。 如果配置了专用路由策略，你应该在 DefaultRouteTable 中看到与专用流量前缀匹配且包含“下一个跃点”Azure 防火墙的路由。 如果配置了 Internet 流量路由策略，你应该在 DefaultRouteTable 中看到包含“下一个跃点”Azure 防火墙的默认 (0.0.0.0/0) 路由。
+* 如果在部署中确认启用已该功能后创建了任何站点到站点 VPN 网关或点到站点 VPN 网关，则必须再次联系 previewinterhub@microsoft.com 才能启用该功能。 
 
 ### <a name="troubleshooting-azure-firewall"></a>排查 Azure 防火墙问题
 

@@ -2,13 +2,13 @@
 title: 模板函数
 description: 介绍在 Azure 资源管理器模板（ARM 模板）中检索值、处理字符串和数字以及检索部署信息时所用的函数。
 ms.topic: conceptual
-ms.date: 10/12/2020
-ms.openlocfilehash: 012e570a769e8ea969d0c527a71053f55ecdf5a9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/31/2021
+ms.openlocfilehash: a094bfca418cfb2ab28fd0c80b19e580cab76024
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959395"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123310377"
 ---
 # <a name="arm-template-functions"></a>ARM 模板函数
 
@@ -176,6 +176,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 * [listSecrets](template-functions-resource.md#list)
 * [list*](template-functions-resource.md#list)
 * [pickZones](template-functions-resource.md#pickzones)
+* [提供程序（已弃用）](template-functions-resource.md#providers)
 * [reference](template-functions-resource.md#reference)
 * [resourceGroup](template-functions-resource.md#resourcegroup) - 只能在部署到资源组时使用。
 * [resourceId](template-functions-resource.md#resourceid) - 可以在任何范围内使用，但有效参数会根据范围而发生变化。

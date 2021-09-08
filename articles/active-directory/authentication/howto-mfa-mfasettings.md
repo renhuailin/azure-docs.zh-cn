@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 340c9f549d1d60a19867ea4de58834d921871854
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: d5aa2a2eba1cf6123d81813cab00d2ac7c5309b4
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015345"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835365"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>配置 Azure AD 多重身份验证设置
 
@@ -151,11 +151,9 @@ Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 
 如果用户接到了 MFA 提示电话，则你可以配置他们的体验，例如来电显示或他们听到的问候语音。
 
-在美国，如果尚未配置 MFA 来电显示，则 Microsoft 语音呼叫的号码如下。 如果正在使用垃圾邮件筛选器，请务必排除这些号码：
+在美国，如果尚未配置 MFA 来电显示，则 Microsoft 语音呼叫的号码如下。 如果正在使用垃圾邮件筛选器，请务必排除该号码：
 
-* *+1 (866) 539 4191*
 * *+1 (855) 330 8653*
-* *+1 (877) 668 6536*
 
 > [!NOTE]
 > 通过公共电话网络拨打 Azure AD 多重身份验证电话时，有时会通过不支持来电显示的运营商路由电话。 因此，尽管 Azure AD 多重身份验证始终会发送呼叫号码，但并不保证会显示该号码。 这一点适用于电话呼叫以及 Azure AD 多重身份验证提供的短信。 如果需要验证短信是否来自 Azure AD 多重身份验证，请参阅[用于发送消息的短信短代码是什么？](multi-factor-authentication-faq.yml#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users-)

@@ -3,20 +3,20 @@ title: 教程：使用语音 SDK 为机器人赋予语音能力 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，你将使用 Microsoft Bot Framework 创建一个复述机器人，将其部署到 Azure，再将其注册到 Bot Framework Direct Line Speech 通道。 然后配置一个适用于 Windows 的示例客户端应用，以便对机器人讲话并收听机器人做出的响应。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: de0653ecae4c46345d961fc9c6b17930ed5b2627
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: c29477a7e9f5ed7ea9f26d4169b092ba8307e30a
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122072355"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539562"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 为机器人赋予语音能力
 

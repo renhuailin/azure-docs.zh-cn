@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 08/15/2021
-ms.openlocfilehash: 46e97cf7bb2fd3f54988f1643d047cc19e3fa82e
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: b2b02e37c07baf51c7dc0405cd1c689ec5fd01e4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195201"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429147"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>适用于美国政府客户的云功能可用性
 
@@ -128,7 +128,7 @@ Azure 和 Azure 政府版中 Azure Sentinel 的当前功能可用性如下表所
 
 | 功能 | Azure | Azure Government  |
 | ----- | ----- | ---- |
-|- [自动化规则](../../sentinel/automate-incident-handling-with-automation-rules.md) | 公共预览版 | 不可用 |
+|- [自动化规则](../../sentinel/automate-incident-handling-with-automation-rules.md) | 公共预览版 | 公共预览版 |
 |- [自带 ML (BYO-ML)](../../sentinel/bring-your-own-ml.md) | 公共预览版 | 公共预览版 |
 | - [跨租户/跨工作区事件视图](../../sentinel/multiple-workspace-view.md) |公共预览版 | 公共预览版 |
 | - [实体见解](../../sentinel/enable-entity-behavior-analytics.md) | GA | 公共预览版 |
@@ -307,7 +307,7 @@ Azure Defender for IoT 使你可以通过在所有 IoT/OT 设备上提供全面�
 | [自动威胁情报更新](../../defender-for-iot/how-to-work-with-threat-intelligence-packages.md) | GA | GA |
 | 通过 SIEM、SOAR 和 XDR 统一 IT 和 OT 安全性 |  |  |
 | - [转发警报信息](../../defender-for-iot/how-to-forward-alert-information-to-partners.md) | GA | GA |
-| - [使用 Azure Defender for IoT 配置 Sentinel](../../defender-for-iot/how-to-configure-with-sentinel.md) | GA | 不可用 |
+| - [使用 Azure Defender for IoT 配置 Sentinel](../../defender-for-iot/how-to-configure-with-sentinel.md) | 公共预览版 | 不可用 |
 | - [SOC 系统](../../defender-for-iot/integration-splunk.md) | GA | GA |
 | - [票证系统和 CMDB（立即服务）](../../defender-for-iot/integration-servicenow.md) | GA | GA |
 | - [传感器预配](../../defender-for-iot/how-to-manage-sensors-on-the-cloud.md) | GA | GA |

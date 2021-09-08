@@ -2,20 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0c9322c0f80020e062939d39aac633d3956562be
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 7f519a8a5defbc79074d5ebd25d88e491304d105
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123108630"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470899"
 ---
 ## <a name="australian-government-ism-protected"></a>澳大利亚政府 ISM PROTECTED
 
 若要查看所有 Azure 服务的可用 Azure Policy 内置项如何映射到此合规性标准，请参阅 [Azure Policy 法规合规性 - 澳大利亚政府 ISM PROTECTED](../../../../articles/governance/policy/samples/australia-ism.md)。
-有关此合规性标准的详细信息，请参阅 [澳大利亚政府 ISM PROTECTED](https://www.cyber.gov.au/acsc/view-all-content/ism)。
+有关此合规性标准的详细信息，请参阅[澳大利亚政府 ISM PROTECTED](https://www.cyber.gov.au/acsc/view-all-content/ism)。
 
 |域 |控制 ID |控制标题 |策略<br /><sub>（Azure 门户）</sub> |策略版本<br /><sub>(GitHub)</sub>  |
 |---|---|---|---|---|

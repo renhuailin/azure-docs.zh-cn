@@ -12,12 +12,12 @@ ms.date: 06/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 36e0b286cc073f5c6843f1bab59af5a811cbf281
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 33389224bcc4abf05ffbb261e23409eb95896781
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112452919"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123220867"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的开发人员说明
 
@@ -74,7 +74,7 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 |Feature  |用户流  |自定义策略  |注释  |
 |---------|:---------:|:---------:|---------|
 [SP 启动的](saml-service-provider.md) | NA | GA | POST 和重定向绑定。 |
-[IDP 启动的](saml-service-provider-options.md#identity-provider-initiated-flow) | NA | GA | 其中发起的标识提供程序为 Azure AD B2C。  |
+[IDP 启动的](saml-service-provider-options.md#configure-idp-initiated-flow) | NA | GA | 其中发起的标识提供程序为 Azure AD B2C。  |
 
 ## <a name="user-experience-customization"></a>用户体验自定义
 
@@ -123,7 +123,7 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 |[OAuth2](oauth2-technical-profile.md) | NA | GA | 例如 [Google](identity-provider-google.md)、[GitHub](identity-provider-github.md) 和 [Facebook](identity-provider-facebook.md)。|
 |[OAuth1](oauth1-technical-profile.md) | NA | GA | 例如 [Twitter](identity-provider-twitter.md)。 |
 |[OpenID Connect](openid-connect-technical-profile.md) | GA | GA | 例如 [Azure AD](identity-provider-azure-ad-single-tenant.md)。  |
-|[SAML2](identity-provider-generic-saml.md) | NA | GA | 例如 [Salesforce](identity-provider-salesforce-saml.md) 和 [AD-FS]。(identity-provider-adfs.md) |
+|[SAML2](identity-provider-generic-saml.md) | NA | GA | 例如 [Salesforce](identity-provider-salesforce-saml.md) 和 [AD-FS](identity-provider-adfs.md)。 |
 | WSFED | NA | NA | |
 
 ### <a name="api-connectors"></a>API 连接器
@@ -185,5 +185,5 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[可用于 Azure AD B2C 的 Microsoft Graph 操作](microsoft-graph-operations.md)
+- 检查[可用于 Azure AD B2C 的 Microsoft Graph 操作](microsoft-graph-operations.md)。
 - 详细了解[自定义策略以及与用户流的区别](custom-policy-overview.md)。

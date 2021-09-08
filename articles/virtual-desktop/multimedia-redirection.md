@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 574a10f6ef79ff3d40f5d62e49db9ebf198d2a79
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: d479dbc34bd8c08ebc471de74be1558f6dccc6e1
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272314"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123273242"
 ---
 # <a name="multimedia-redirection-for-azure-virtual-desktop-preview"></a>Azure 虚拟桌面的多媒体重定向（预览版）
 
@@ -32,11 +32,9 @@ ms.locfileid: "122272314"
 
 1. 在 Windows 10 或 Windows 10 IoT 企业设备上[安装 Windows 桌面客户端](./user-documentation/connect-windows-7-10.md#install-the-windows-desktop-client)，设备需满足 [Windows 电脑上 Teams 的硬件要求](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)。 安装 1.2.2222 或更高版本的客户端时，还将在客户端设备上安装多媒体重定向插件 (MsMmrDVCPlugin.dll)。 若要详细了解更新和新版本，请参阅 [Windows 桌面客户端中的新功能](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew)。
 
-2. [为预览体验组配置客户端计算机](create-host-pools-azure-marketplace.md)。
+2. [为用户创建主机池](create-host-pools-azure-marketplace.md)。
 
-3. 在虚拟机 (VM) 上安装[多媒体重定向程序服务](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWIzIk)和所有必需的浏览器扩展。
-
-4. 配置客户端计算机，以允许用户访问预览体验计划。 若要针对预览体验组来配置客户端，请设置以下注册表信息：
+3. 配置客户端计算机，以允许用户访问预览体验计划。 若要针对预览体验组来配置客户端，请设置以下注册表信息：
 
    - **键**：HKLM\\Software\\Microsoft\\MSRDC\\Policies
    - **类型**：REG_SZ
@@ -45,7 +43,7 @@ ms.locfileid: "122272314"
 
    若要详细了解预览体验计划，请参阅[适用于管理员的 Windows 桌面客户端](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin#configure-user-groups)。
 
-5. 使用 [MSI 安装程序 (MsMmrHostMri)](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWIzIk) 在 Azure VM 上为 Internet 浏览器安装多媒体重定向扩展。 Azure 虚拟桌面的多媒体重定向目前仅支持 Microsoft Edge 和 Google Chrome。
+4. 使用 [MSI 安装程序 (MsMmrHostMri)](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWIzIk) 在 Azure VM 上为 Internet 浏览器安装多媒体重定向扩展。 Azure 虚拟桌面的多媒体重定向目前仅支持 Microsoft Edge 和 Google Chrome。
 
 ## <a name="managing-group-policies-for-the-multimedia-redirection-browser-extension"></a>管理多媒体重定向浏览器扩展的组策略
 
@@ -103,13 +101,14 @@ MMR 使用远程应用以及 Microsoft Edge 和 Google Chrome 浏览器的会话
 
 | 图标状态  | 定义  |
 |-----------------|-----------------|
-| [未应用任何状态的默认 Azure 虚拟桌面程序图标。](/media/icon-default.png) | 未应用任何状态的默认图标外观。 |
-| [Azure 虚拟桌面程序图标有一个带 x 的红色方块，表示多媒体重定向不起作用。](/media/icon-disconnect.png) | 带“X”的红色方块表示客户端无法连接到多媒体重定向。 |
-| [Azure 虚拟桌面程序图标有一个带对勾的绿色方块，表示多媒体重定向正在运行。](/media/icon-connect.png) | 带对勾的绿色方块表示客户端已成功连接到多媒体重定向。 |
+| ![未应用任何状态的默认 Azure 虚拟桌面程序图标。](./media/icon-default.png) | 未应用任何状态的默认图标外观。 |
+| ![Azure 虚拟桌面程序图标有一个带 x 的红色方块，表示多媒体重定向不起作用。](./media/icon-disconnect.png) | 带“X”的红色方块表示客户端无法连接到多媒体重定向。 |
+| ![Azure 虚拟桌面程序图标有一个带对勾的绿色方块，表示多媒体重定向正在运行。](./media/icon-connect.png) | 带对勾的绿色方块表示客户端已成功连接到多媒体重定向。 |
 
 选择该图标将显示一个弹出菜单，其中包含一个复选框，你可以选择在所有网站上启用或禁用多媒体重定向。 它还列出了服务的每个组件的版本号。
 
-## <a name="send-feedback-during-public-preview"></a>在公共预览期间发送反馈
+## <a name="support-during-public-preview"></a>公开预览期间的支持
+Microsoft 支持在公共预览期间不处理多媒体重定向问题。
 
 如果遇到任何问题，可以在客户端和 VM 主机上的反馈中心告诉我们。
 

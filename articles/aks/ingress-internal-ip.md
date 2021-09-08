@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配
 services: container-service
 ms.topic: article
 ms.date: 04/23/2021
-ms.openlocfilehash: 8f500da443489619111200542dfc69a3850a4ed2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b95ae084fa3dd5b2d5308dece2612ab9cbe99a82
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751515"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099073"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建内部虚拟网络的入口控制器
 
@@ -31,11 +31,13 @@ ms.locfileid: "121751515"
 
 本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
-此外，本文假设你有一个包含集成 ACR 的现有 AKS 群集。 有关创建一个包含集成 ACR 的 AKS 群集的更多详细信息，请参阅[使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证][aks-integrated-acr]。
+此外，本文假设你有一个包含[集成 ACR][aks-integrated-acr] 的现有 AKS 群集。
 
 ## <a name="import-the-images-used-by-the-helm-chart-into-your-acr"></a>将 Helm 图表使用的映像导入 ACR
 
-本文使用 [NGINX 入口控制器 Helm 图表][ingress-nginx-helm-chart]，它依赖于三个容器映像。 使用 `az acr import` 将这些映像导入 ACR。
+通常，在结合使用 AKS 群集与专用网络时，需要管理群集内所使用的容器映像源。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 中容器映像管理和安全性的最佳做法][aks-container-best-practices]。  为了支持此要求并确保完整性，本文中的示例依赖于将 [NGINX 入口控制器 Helm 图表][ingress-nginx-helm-chart]所使用的三个容器映像导入 ACR。
+
+使用 `az acr import` 将这些映像导入 ACR。
 
 ```azurecli
 REGISTRY_NAME=<REGISTRY_NAME>
@@ -416,3 +418,4 @@ kubectl delete namespace ingress-basic
 [ingress-nginx-helm-chart]: https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx
 [aks-integrated-acr]: cluster-container-registry-integration.md?tabs=azure-cli#create-a-new-aks-cluster-with-acr-integration
 [acr-helm]: ../container-registry/container-registry-helm-repos.md
+[aks-container-best-practices]: operator-best-practices-container-image-management.md

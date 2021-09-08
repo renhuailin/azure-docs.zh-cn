@@ -6,23 +6,25 @@ ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 01/20/2021
+ms.topic: how-to
+ms.date: 08/27/2021
 ms.author: banders
-ms.openlocfilehash: dd8040effc5972d86e620793e437f5b185e12603
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7388ee42195d93a9b7d9a64567f25be91b0eb38d
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685439"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111949"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>将 Azure 订阅更改为其他套餐
 
-作为具有[即用即付费订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)的客户，你可在 Azure 门户将 Azure 订阅切换到其他套餐。 例如，可以通过此功能充分利用 [Visual Studio 订户的每月信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
+作为具有[即用即付费订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)的客户，你可以在 Azure 门户中将 Azure 订阅切换到其他套餐。 例如，可以通过此功能充分利用 [Visual Studio 订户的每月信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
+
+如果 Visual Studio 订阅已过期，可以切换到[即用即付订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)。
 
 只想从免费试用版升级？ 请参阅[升级订阅](upgrade-azure-subscription.md)。
 
-## <a name="whats-supported"></a>支持的操作：
+## <a name="whats-supported"></a>支持的操作
 
 可从即用即付订阅切换为：
 
@@ -33,31 +35,56 @@ ms.locfileid: "98685439"
 - [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)
 - [Visual Studio Enterprise (BizSpark)](https://azure.microsoft.com/offers/ms-azr-0064p/)
 
+还可以从过期的 [Visual Studio Enterprise 订阅](https://azure.microsoft.com/offers/ms-azr-0063p/)切换到[即用即付订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)。 
+
 > [!NOTE]
 > 有关其他产品/服务更改，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
-## <a name="switch-subscription-offer"></a>切换订阅套餐
+## <a name="switch-from-a-pay-as-you-go-subscription"></a>从即用即付订阅切换
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 导航到“订阅”，然后选择即用即付订阅。
 1. 在页面顶部，选择“切换套餐”。 仅当具有即用即付费订阅并已完成第一个计费周期时，此选项才可用。  
-    :::image type="content" source="./media/switch-azure-offer/switch-offer.png" alt-text="ALT显示订阅详细信息和切换套餐选项的图像TEXT" lightbox="./media/switch-azure-offer/switch-offer.png" :::
+    :::image type="content" source="./media/switch-azure-offer/switch-offer.png" alt-text="显示订阅详细信息和“切换套餐”选项的屏幕截图。" lightbox="./media/switch-azure-offer/switch-offer.png" :::
 1. 从订阅可切换到的套餐的列表中选择所需套餐。 此列表因帐户的关联成员资格而异。 如果没有任何可用的产品/服务，请检查 [可以切换到的可用产品/服务的列表](#whats-supported)，并确保具有合适的成员身份。 然后选择“下一步”。
-    :::image type="content" source="./media/switch-azure-offer/select-offer.png" alt-text="选择要切换到的产品/服务" lightbox="./media/switch-azure-offer/select-offer.png" :::
-    根据要切换到的产品/服务，可能会看到一条有关切换所造成的影响的备注。 继续操作之前，请仔细查看此列表并遵循相关说明。 可能还需要验证电话号码。
+    :::image type="content" source="./media/switch-azure-offer/select-offer.png" alt-text="屏幕截图显示在何处选择要切换到的套餐。" lightbox="./media/switch-azure-offer/select-offer.png" :::
+    根据要切换到的套餐，你可能会看到一条有关切换所造成的后果的备注。 继续操作之前，请仔细查看此列表并遵循相关说明。 可能还需要验证电话号码。
 1. 查看任何说明或验证电话号码后，选择“切换套餐”。
 1. 订阅现在已经切换到新的套餐。
 
-## <a name="frequently-asked-questions"></a>常见问题
-以下部分回答了一些常见问题。
+## <a name="convert-a-visual-studio-enterprise-subscription"></a>转换 Visual Studio Enterprise 订阅
+
+Visual Studio Enterprise 订阅过期时，会禁用该订阅。 若要继续将 Azure 服务与订阅一起使用，必须将订阅转换为即用即付模式。
+
+>[!NOTE]
+> - 升级到即用即付订阅后，将停止向你提供每月额度，并开始根据你的每月使用量按月向你收费（通过你之前的付款方式）。
+> - 切换到即用即付订阅时，会丢失使用情况和计费信息。 建议在切换套餐之前[保存过去所有的发票和使用情况数据](download-azure-invoice-daily-usage-date.md)。
+
+转换订阅：
+
+1. 导航到“订阅”，然后选择你的 Visual Studio Enterprise 订阅。
+1. 页面顶部显示一个横幅，其中指出 `Your Visual Studio subscription is expired and has been disabled. To continue using this subscription, please click here to convert to a pay-as-you-go subscription`。 选择该横幅。  
+    :::image type="content" source="./media/switch-azure-offer/visual-studio-expired-banner.png" alt-text="显示过期订阅的屏幕截图，其中包含提示进行转换的横幅。" lightbox="./media/switch-azure-offer/visual-studio-expired-banner.png" :::
+1. 在“切换套餐”页面上，选择套餐选项卡，选择即用即付选项，然后选择“下一步”。  
+    :::image type="content" source="./media/switch-azure-offer/select-offer-pay-as-you-go.png" alt-text="显示“切换套餐”选项的屏幕截图。" lightbox="./media/switch-azure-offer/select-offer-pay-as-you-go.png" :::
+1. 在“选择付款方式”选项卡上，选择“选择付款方式”，输入付款方式信息，然后选择“下一步 。  
+1. 在“查看和转换”页面上，可以选择更改订阅名称。 查看协议信息，选择“我同意”选项，然后在页面底部选择“切换套餐” 。  
+    :::image type="content" source="./media/switch-azure-offer/switch-offer-visual-studio-agreement.png" alt-text="屏幕截图显示“审核和转换”选项卡，其中含订阅名称和协议接受内容。" lightbox="./media/switch-azure-offer/switch-offer-visual-studio-agreement.png" :::
+
+导航到“订阅”，查看新转换的订阅。
+
+
+## <a name="frequently-asked-questions-for-pay-as-you-go-subscriptions"></a>即用即付订阅的常见问题解答
+
+以下部分回答从即用即付订阅转换为其他模式的常见问题。
 
 ### <a name="what-is-an-azure-offer"></a>什么是 Azure 产品/服务？
 
-Azure 套餐是用户拥有的 Azure 订阅 *类型*。 例如，[采用即用即付费率的订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)、[Azure 开放许可](https://azure.microsoft.com/offers/ms-azr-0111p/)和 [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) 都是 Azure 套餐。 每个产品/服务附带不同的[条款](https://azure.microsoft.com/support/legal/offer-details/)，有些还附带特殊的权益。 订阅详细信息页上显示了订阅的套餐。
+Azure 套餐是用户拥有的 Azure 订阅 *类型*。 例如，[具有即用即付率的订阅](https://azure.microsoft.com/offers/ms-azr-0003p/)、[Azure 开放许可](https://azure.microsoft.com/offers/ms-azr-0111p/)和 [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) 都是 Azure 套餐。 每个产品/服务附带不同的[条款](https://azure.microsoft.com/support/legal/offer-details/)，有些还附带特殊的权益。 订阅详细信息页上显示了订阅的套餐。
 
 :::image type="content" source="./media/switch-azure-offer/subscription-details.png" alt-text="显示套餐类型的订阅详细信息页" lightbox="./media/switch-azure-offer/subscription-details.png" :::
 
-### <a name="why-dont-i-see-the-button"></a>为什么我看不到按钮？
+### <a name="why-dont-i-see-the-switch-offer-option"></a>为什么我看不到“切换套餐”选项？
 
 在以下情况下，可能看不到“切换套餐”选项：
 
@@ -90,7 +117,7 @@ Azure 套餐是用户拥有的 Azure 订阅 *类型*。 例如，[采用即用�
 ### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>能否从采用即用即付费率的订阅迁移到云解决方案提供商 (CSP) 或企业协议 (EA)？
 
 * 若要迁移到 CSP，请参阅[在订阅者与 CSP 之间转移 Azure 订阅](transfer-subscriptions-subscribers-csp.md)。
-* 要迁移到 EA，请让注册管理员将帐户加入 EA。 按照邀请电子邮件中的说明，根据 EA 注册过程来移动订阅。
+* 如果你有即用即付订阅（Azure 套餐 ID MS-AZR-0003P）或采用即用即付费率的 Azure 计划（Azure 套餐 ID MS-AZR-0017G）并且想要迁移到 EA 注册，请让注册管理员将你的帐户添加到 EA。 按照邀请电子邮件中的说明，根据 EA 注册过程来移动订阅。 有关详细信息，请参阅[更改 Azure 订阅或帐户所有权](ea-portal-administration.md#change-azure-subscription-or-account-ownership)。
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>是否可将数据和服务迁移到新订阅？
 
@@ -102,4 +129,5 @@ Azure 套餐是用户拥有的 Azure 订阅 *类型*。 例如，[采用即用�
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
+
 - [开始分析成本](../costs/quick-acm-cost-analysis.md)

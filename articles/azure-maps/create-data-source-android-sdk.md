@@ -1,20 +1,20 @@
 ---
 title: 为 Android 地图创建数据源 | Microsoft Azure Maps
 description: 了解如何为地图创建数据源。 了解 Azure Maps Android SDK 使用的数据源：GeoJSON 源和矢量图块。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 9ea96613425ec3802080277da9ac674af4e87c52
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: e66d1aeaa87ac170cf692360e614335a98802e5a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669082"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430659"
 ---
 # <a name="create-a-data-source-android-sdk"></a>创建数据源 (Android SDK)
 

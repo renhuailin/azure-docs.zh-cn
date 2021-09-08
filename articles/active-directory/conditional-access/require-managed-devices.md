@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c11b58954eefda67f981d618b04ab2bd69fa6b43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e39a6bbde587e543afcb10cb910a675bf4c69fc
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93077755"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867559"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>如何：通过条件访问要求使用受管理设备进行云应用访问
 
@@ -31,6 +31,7 @@ ms.locfileid: "93077755"
 - **[Azure Active Directory 中的条件访问](./overview.md)** - 此文提供了条件访问的概念性概述和相关术语。
 - **[Azure Active Directory 中的设备管理简介](../devices/overview.md)** - 此文章概述了可以用来将设备置于组织控制下的各种选项。 
 - 如需在 Windows 10 创意者更新（版本 1703）或更高版本中获得 Chrome 支持，请安装 [Windows 10 Accounts 扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 当条件访问策略需要特定于设备的详细信息时，此扩展是必需的。
+- 对于 Firefox 支持，请在 Windows 10 版本 1809 或更高版本中启动 Firefox 91，配置 [Windows SSO](https://support.mozilla.org/en-US/kb/windows-sso) 。
 
 >[!NOTE] 
 > 我们建议使用基于 Azure AD 设备的条件访问策略，在初始设备身份验证后获得最佳实施。 这包括在设备不符合合规性和设备代码流时关闭会话。
@@ -103,8 +104,8 @@ ms.locfileid: "93077755"
 组织必须完成以下步骤才能要求使用已注册的移动设备。
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
-1. 选择“新策略”  。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
+1. 选择“新策略”。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组” 
    1. 在“包括”下选择“所有用户”，或选择你希望对其应用此策略的具体“用户和组”。    

@@ -11,12 +11,12 @@ ms.date: 01/12/2021
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: fa2d720d995fdaa76a9aa98659edf4060ea6509b
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: adfaadc211cbe91517bac62e1ec32633821f9f17
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565961"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537699"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教程：将数据加载到 Azure Synapse Analytics SQL 池
 
@@ -87,7 +87,7 @@ ms.locfileid: "107565961"
 
 2. 输入完全限定的服务器名称，并输入 **LoaderRC60** 作为登录名。  输入 LoaderRC60 的密码。
 
-3. 单击“连接”  。
+3. 单击“连接” 。
 
 4. 当连接准备就绪时，对象资源管理器中出现两个服务器连接。 一个是作为 ServerAdmin 连接，另一个是作为 LoaderRC60 连接。
 
@@ -429,7 +429,7 @@ ms.locfileid: "107565961"
 本部分使用已定义的外部表将示例数据从 Azure Blob 加载到 SQL 池。  
 
 > [!NOTE]
-> 本教程直接将数据加载到最终表。 在生产环境中，通常使用 CREATE TABLE AS SELECT 将数据加载到临时表。 数据在临时表中时，可以执行任何必要的转换。 要将临时表中的数据追加到生产表，可以使用 INSERT...SELECT 语句。 有关详细信息，请参阅[将数据插入到生产表](guidance-for-loading-data.md#inserting-data-into-a-production-table)。
+> 本教程直接将数据加载到最终表。 在生产环境中，通常使用 CREATE TABLE AS SELECT 将数据加载到临时表。 数据在临时表中时，可以执行任何必要的转换。 要将临时表中的数据追加到生产表，可以使用 INSERT...SELECT 语句。 有关详细信息，请参阅[将数据插入到生产表](../sql/data-loading-best-practices.md#insert-data-into-a-production-table)。
 
 下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当 select 语句从外部表进行选择时，数据将导入到数据仓库的关系表中。
 

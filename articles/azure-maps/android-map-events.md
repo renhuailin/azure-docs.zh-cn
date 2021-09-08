@@ -1,20 +1,20 @@
 ---
 title: 在 Android 地图中处理地图事件 | Microsoft Azure Maps
 description: 了解用户与地图交互时触发的事件。 查看所有受支持地图事件的列表。 了解如何使用 Azure Maps Android SDK 处理事件。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: ebe61e5956dc0f35794211a336eb7d884ee18d76
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49a06fdd2c8025515fd42124aa7d00f27d8c5978
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608895"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425709"
 ---
 # <a name="interact-with-the-map-android-sdk"></a>与地图交互 (Android SDK)
 

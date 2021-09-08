@@ -8,14 +8,16 @@ ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 6d13f5927e31fc7f8cf412f6bba6088360af610d
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 783299359b1b7b9cbe75fd36f534ac18563c0fee
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356214"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123102915"
 ---
 # <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>使用 Azure PowerShell 模块或 Azure CLI 更改性能层
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 [!INCLUDE [virtual-machines-disks-performance-tiers-intro](../../includes/virtual-machines-disks-performance-tiers-intro.md)]
 
@@ -23,8 +25,16 @@ ms.locfileid: "113356214"
 
 [!INCLUDE [virtual-machines-disks-performance-tiers-restrictions](../../includes/virtual-machines-disks-performance-tiers-restrictions.md)]
 
-## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>创建一个层级高于基线层的空数据磁盘
+## <a name="prerequisites"></a>先决条件
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+安装最新的 [Azure PowerShell 版本](/powershell/azure/install-az-ps)，并使用 `Connect-AzAccount` 登录到 Azure 帐户。
+
+---
+
+## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>创建一个层级高于基线层的空数据磁盘
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
@@ -34,8 +44,6 @@ diskName=<yourDiskNameHere>
 diskSize=<yourDiskSizeHere>
 performanceTier=<yourDesiredPerformanceTier>
 region=westcentralus
-
-az login
 
 az account set --subscription $subscriptionId
 
@@ -73,9 +81,25 @@ New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGro
 ```
 ---
 
-## <a name="update-the-tier-of-a-disk"></a>更新磁盘层级
+## <a name="update-the-tier-of-a-disk-without-downtime"></a>在不停机的情况下更新磁盘的分层
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="prerequisites"></a>先决条件
+
+必须先为订阅启用该功能，然后才能在不停机的情况下更改磁盘的性能层。 以下步骤将为订阅启用该功能：
+
+1.  执行以下命令，为订阅注册此功能
+
+    ```azurecli
+    az feature register --namespace Microsoft.Compute --name LiveTierChange
+    ```
+ 
+1.  在试用该功能之前，请使用以下命令确认注册状态是否为“已注册”（可能需要几分钟）。
+
+    ```azurecli
+    az feature show --namespace Microsoft.Compute --name LiveTierChange
+    ```
 
 ```azurecli
 resourceGroupName=<yourResourceGroupNameHere>
@@ -86,6 +110,20 @@ az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+必须先为订阅启用该功能，然后才能在不停机的情况下更改磁盘的性能层。 以下步骤将为订阅启用该功能：
+
+1.  执行以下命令，为订阅注册此功能
+
+    ```azurepowershell
+     Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
+    ```
+ 
+1.  在试用该功能之前，请使用以下命令确认注册状态是否为“已注册”（可能需要几分钟）。
+
+    ```azurepowershell
+    Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
+    ```
 
 ```azurepowershell
 $resourceGroupName='yourResourceGroupName'
@@ -114,77 +152,6 @@ $disk = Get-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName
 $disk.Tier
 ```
 ---
-
-## <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>在不停机的情况下更改磁盘的性能层（预览版）
-
-你还可以在不停机的情况下更改性能层，因此无需释放 VM 或分离磁盘来更改层。
-
-### <a name="prerequisites"></a>先决条件
-
-磁盘必须满足[在不停机的情况下更改性能层（预览版）](#change-performance-tier-without-downtime-preview)部分中规定的要求，如果不满足，则更改性能层会造成停机。
-
-必须先为订阅启用该功能，然后才能在不停机的情况下更改磁盘的性能层。 请按照以下步骤为订阅启用此功能：
-
-1.  执行以下命令，为订阅注册此功能
-
-    ```azurecli
-    az feature register --namespace Microsoft.Compute --name LiveTierChange
-    ```
- 
-1.  在试用该功能之前，请使用以下命令确认注册状态是否为“已注册”（可能需要几分钟）。
-
-    ```azurecli
-    az feature show --namespace Microsoft.Compute --name LiveTierChange
-    ```
-
-### <a name="update-the-performance-tier-of-a-disk-without-downtime-via-azure-cli"></a>在不停机的情况下通过 Azure CLI 更新磁盘的性能层
-
-以下脚本将更新高于基线层的磁盘层。 替换 `<yourResourceGroupNameHere>`、`<yourDiskNameHere>` 和 `<yourDesiredPerformanceTier>`，然后运行脚本：
-
-```azurecli
-resourceGroupName=<yourResourceGroupNameHere>
-diskName=<yourDiskNameHere>
-performanceTier=<yourDesiredPerformanceTier>
- 
-az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
-```
-
-### <a name="update-the-performance-tier-of-a-disk-without-downtime-via-arm-template"></a>在不停机的情况下通过 ARM 模板更新磁盘的性能层
-
-以下脚本将使用示例模板 [CreateUpdateDataDiskWithTier.json](https://github.com/Azure/azure-managed-disks-performance-tiers/blob/main/CreateUpdateDataDiskWithTier.json) 更新高于基线层的磁盘层。 替换 `<yourSubScriptionID>`、`<yourResourceGroupName>`、`<yourDiskName>`、`<yourDiskSize>` 和 `<yourDesiredPerformanceTier>`，然后运行脚本：
-
- ```cli
-subscriptionId=<yourSubscriptionID>
-resourceGroupName=<yourResourceGroupName>
-diskName=<yourDiskName>
-diskSize=<yourDiskSize>
-performanceTier=<yourDesiredPerformanceTier>
-region=EastUS2EUAP
-
- az login
-
- az account set --subscription $subscriptionId
-
- az group deployment create -g $resourceGroupName \
---template-uri "https://raw.githubusercontent.com/Azure/azure-managed-disks-performance-tiers/main/CreateUpdateDataDiskWithTier.json" \
---parameters "region=$region" "diskName=$diskName" "performanceTier=$performanceTier" "dataDiskSizeInGb=$diskSize"
-```
-
-## <a name="confirm-your-disk-has-changed-tiers"></a>确认磁盘已更改层
-
-性能层更改最长可能需要 15 分钟才能完成。 若要确认磁盘已更改层，请使用以下方法之一：
-
-### <a name="azure-resource-manager"></a>Azure 资源管理器
-
-```cli
-az resource show -n $diskName -g $resourceGroupName --namespace Microsoft.Compute --resource-type disks --api-version 2020-12-01 --query [properties.tier] -o tsv
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli
-az disk show -n $diskName -g $resourceGroupName --query [tier] -o tsv
-```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,15 +3,15 @@ title: 在 Azure 自动化中管理 Python 3 程序包
 description: 本文介绍了如何在 Azure 自动化中管理 Python 3 程序包（预览版）。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/22/2021
+ms.date: 08/13/2021
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 22278efa99e1777267b6ffdf00011ef843a6dfa6
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: b7393f06df77b0057925e20a7cf055fddb0a7bf2
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429230"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965285"
 ---
 # <a name="manage-python-3-packages-preview-in-azure-automation"></a>在 Azure 自动化中管理 Python 3 程序包（预览版）
 
@@ -128,6 +128,9 @@ groups = resource_client.resource_groups.list()
 for group in groups:  
     print(group.name) 
 ```
+
+> [!NOTE]
+> Python `automationassets` 包在 pypi.org 上不可用，因此无法导入到 Windows 计算机上。
 
 ## <a name="next-steps"></a>后续步骤
 

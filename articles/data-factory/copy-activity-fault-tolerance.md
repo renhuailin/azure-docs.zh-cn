@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 55d8c089bd73a3e85666208ed6edc13c654c24bb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 544d298616c8021991fedb1ee47d452cfbc427f3
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637904"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255044"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -134,7 +134,7 @@ path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如
 列 | 说明 
 -------- | -----------  
 时间戳 | ADF 跳过文件时的时间戳。
-Level | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
+级别 | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
 OperationName | 每个文件上的 ADF 复制活动操作行为。 它将为“FileSkip”，以指定要跳过的文件。
 OperationItem | 要跳过的文件名。
 消息 | 说明为何要跳过文件的详细信息。
@@ -230,7 +230,7 @@ path | 包含已跳过行的日志文件的路径。 | 指定要用于记录不�
 列 | 说明 
 -------- | -----------  
 时间戳 | ADF 跳过不兼容行时的时间戳
-Level | 此项的日志级别。 如果此项显示跳过的行，它将处于“警告”级别
+级别 | 此项的日志级别。 如果此项显示跳过的行，它将处于“警告”级别
 OperationName | 每个行上的 ADF 复制活动操作行为。 它将为“TabularRowSkip”以指定已跳过特定不兼容行
 OperationItem | 源数据存储中的已跳过行。
 消息 | 说明此特定行不兼容性的详细信息。

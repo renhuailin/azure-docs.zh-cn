@@ -9,12 +9,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 04/16/2021
-ms.openlocfilehash: 51711cbbd66e52ccf0b47c4e1db5ecc5883ff959
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e37a6dcd6cd536e3702294e45a1aa3ffd2c75a24
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637833"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099364"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>映射数据流调试模式
 
@@ -28,7 +28,7 @@ ms.locfileid: "122637833"
 
 ![屏幕截图显示了“调试”滑块 2 的位置](media/data-flow/debug-button-4.png)
 
-开启滑块后，系统将提示你选择要使用的集成运行时配置。 如果选择“AutoResolveIntegrationRuntime”，则将启动具有八个常规计算内核的群集（默认 60 分钟时间）。 如果要在会话超时之前允许更多空闲团队，可以选择更高的 TTL 设置。 有关数据流集成运行时的详细信息，请参阅[数据流性能](concepts-data-flow-performance.md#ir)。
+开启滑块后，系统将提示你选择要使用的集成运行时配置。 如果选择“AutoResolveIntegrationRuntime”，则将启动具有八个常规计算内核的群集（默认 60 分钟时间）。 如果要在会话超时之前允许更多空闲团队，可以选择更高的 TTL 设置。 有关数据流集成运行时的详细信息，请参阅 [Integration Runtime 性能](concepts-integration-runtime-performance.md)。
 
 ![调试 IR 选择](media/data-flow/debug-new-1.png "调试 IR 选择")
 

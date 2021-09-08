@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/30/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 353ba2f51f93056547cbd9bb21455f277828e5c5
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: dd63a04616848acfb3971a97f8363498e6ba4e55
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253347"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835740"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>在 Azure 数字孪生中管理终结点和路由
 
@@ -428,10 +428,13 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 | 类型 | 流经数字孪生体实例的[事件类型](concepts-route-events.md#types-of-event-messages) | `type = '<event-type>'` | 以下是可能的事件类型值： <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | 源 | Azure 数字孪生实例的名称 | `source = '<host-name>'`| 以下是可能的主机名值： <br> **用于通知**：`<your-Digital-Twins-instance>.api.<your-region>.digitaltwins.azure.net` <br> **用于遥测**：`<your-Digital-Twins-instance>.api.<your-region>.digitaltwins.azure.net/<twin-ID>`|
 | 使用者 | 上述事件源上下文中事件的说明 | `subject = '<subject>'` | 以下是可能的使用者值： <br>**对于通知**：使用者为 `<twin-ID>` <br> 或使用者的 URI 格式（由多个部件或 ID 唯一标识）：<br>`<twin-ID>/relationships/<relationship-ID>`<br> **对于遥测**：使用者是组件路径（如果遥测是从一个孪生体组件发出的），例如 `comp1.comp2`。 如果遥测不是从组件发出的，则其使用者字段为空。 |
-| 数据架构 | DTDL 模型 ID | `dataschema = '<model-dtmi-ID>'` | **对于遥测**：数据架构是孪生体或发出遥测的组件的模型 ID。 例如，`dtmi:example:com:floor4;2` <br>**对于通知（创建/删除）** ：可以通过 `$body.$metadata.$model` 访问通知正文中的数据架构。 <br>**对于通知（更新）** ：可以通过 `$body.modelId` 访问通知正文中的数据架构|
+| 数据架构 | DTDL 模型 ID | `dataschema = '<model-dtmi-ID>'` | **对于遥测**：数据架构是孪生体或发出遥测的组件的模型 ID。 例如： `dtmi:example:com:floor4;2` <br>**对于通知（创建/删除）** ：可以通过 `$body.$metadata.$model` 访问通知正文中的数据架构。 <br>**对于通知（更新）** ：可以通过 `$body.modelId` 访问通知正文中的数据架构|
 | 内容类型 | 数据值的内容类型 | `datacontenttype = '<content-type>'` | 内容类型为 `application/json` |
 | 规范版本 | 所使用的事件架构的版本 | `specversion = '<version>'` | 版本必须为 `1.0`。 这指示 CloudEvents 架构版本 1.0 |
 | 通知正文 | 引用通知的 `data` 字段中的任何属性 | `$body.<property>` | 有关通知示例，请参阅[事件通知](concepts-event-notifications.md)。 `data` 字段中的任何属性都可以使用 `$body` 进行引用
+
+>[!NOTE]
+> Azure 数字孪生目前不支持基于数组中的字段筛选事件。 这包括对[数字孪生更改通知](concepts-event-notifications.md#digital-twin-change-notifications)的 `patch` 部分中的属性进行筛选。
 
 以下数据类型可以用作对上述数据进行引用后返回的值：
 
