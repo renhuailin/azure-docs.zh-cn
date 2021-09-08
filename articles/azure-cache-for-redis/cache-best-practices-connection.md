@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: 999d8f1f4bf5ad1eef2008678f1e46d1586dd40a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: e071298ce1ed191f79e071f18916d8afba10d625
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223685"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478799"
 ---
 # <a name="connection-resilience"></a>连接复原能力
 
@@ -53,7 +53,7 @@ ms.locfileid: "123223685"
 
 ## <a name="advance-maintenance-notification"></a>提前发出维护通知
 
-使用通知来通告即将进行维护。 有关详细信息，请参阅[我是否可以提前收到计划内维护的通知](cache-failover.md#can-i-be-notified-in-advance-of-a-planned-maintenance)。
+使用通知来通告即将进行维护。 有关详细信息，请参阅[我是否可以提前收到计划内维护的通知](cache-failover.md#can-i-be-notified-in-advance-of-planned-maintenance)。
 
 ## <a name="schedule-maintenance-window"></a>计划维护时段
 

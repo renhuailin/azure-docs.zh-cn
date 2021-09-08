@@ -1,14 +1,14 @@
 ---
 title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1f1eef5a70187ed883da9f535cc2f2915e3bf6d6
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 8d537d0816ef4d32d6ce85cf363e08bece28ec84
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123104647"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536078"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -29,13 +29,14 @@ Resource Graph 为其存储的有关 Azure 资源管理器资源类型及其属�
 |Resource Graph 表 |与其他表之间可否执行 `join`？ |说明 |
 |---|---|---|
 |资源 |是 |如果未在查询中定义，则为默认表。 此处显示了大多数资源管理器资源类型和属性。 |
-|ResourceContainers |是 |包括管理组 (`Microsoft.Management/managementGroups`)、订阅 (`Microsoft.Resources/subscriptions`) 和资源组 (`Microsoft.Resources/subscriptions/resourcegroups`) 资源类型和数据。 |
+|ResourceContainers |是 |包含管理组 (`Microsoft.Management/managementGroups`)、订阅 (`Microsoft.Resources/subscriptions`) 和资源组 (`Microsoft.Resources/subscriptions/resourcegroups`) 资源类型和数据。 |
 |AdvisorResources |是（预览版） |包括与 `Microsoft.Advisor` 相关的资源。 |
 |AlertsManagementResources |是（预览版） |包括与 `Microsoft.AlertsManagement` 相关的资源。 |
 |DesktopVirtualizationResources |是 |包括与 `Microsoft.DesktopVirtualization` 相关的资源。 |
 |ExtendedLocationResources |否 |包括与 `Microsoft.ExtendedLocation` 相关的资源。 |
 |GuestConfigurationResources |否 |包括与 `Microsoft.GuestConfiguration` 相关的资源。 |
 |HealthResources|是 |包括与 `Microsoft.ResourceHealth/availabilitystatuses` 相关的资源。 |
+|IoTSecurityResources |否 |包括与 `Microsoft.IoTSecurity` 相关的资源。 |
 |KubernetesConfigurationResources |否 |包括与 `Microsoft.KubernetesConfiguration` 相关的资源。 |
 |MaintenanceResources |部分可以，仅限联接到。 （预览版） |包括与 `Microsoft.Maintenance` 相关的资源。 |
 |PatchAssessmentResources|否 |包括与 Azure 虚拟机补丁评估相关的资源。 |
@@ -139,7 +140,7 @@ Resource Graph 支持部分 KQL [数据类型](/azure/data-explorer/kusto/query/
 |[mvexpand](/azure/data-explorer/kusto/query/mvexpandoperator) | | 旧运算符，请改用 `mv-expand`。 RowLimit 最大值为 400。 默认值为 128。 |
 |[mv-expand](/azure/data-explorer/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |RowLimit 最大值为 400。 默认值为 128。 单个查询中的 `mv-expand` 数量限制为 2 个。|
 |[order](/azure/data-explorer/kusto/query/orderoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`sort` 的同义词 |
-|[parse](/azure/data-explorer/kusto/query/parseoperator) |[获取网络接口的虚拟网络和子网](../samples/advanced.md#parse-subnets) |如果属性存在，最好直接访问它们，而不是使用 `parse` 来访问。 |
+|[parse](/azure/data-explorer/kusto/query/parseoperator) |[获取网络接口的虚拟网络和子网](../samples/advanced.md#parse-subnets) |如果属性存在，则最好直接访问属性，而不是使用 `parse`。 |
 |[project](/azure/data-explorer/kusto/query/projectoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) | |
 |[project-away](/azure/data-explorer/kusto/query/projectawayoperator) |[删除结果中的列](../samples/advanced.md#remove-column) | |
 |[sort](/azure/data-explorer/kusto/query/sortoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`order` 的同义词 |

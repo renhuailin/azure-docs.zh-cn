@@ -3,12 +3,12 @@ title: Azure 实验室服务：为实验室创建自定义映像的建议方法
 description: 介绍为实验室创建自定义映像的各种方法。
 ms.date: 07/27/2021
 ms.topic: article
-ms.openlocfilehash: 94a86ab6668300d736d17e52aaeaa0e615adf637
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 621456c910b5137ed14a77d8d2cfeb9664910fa9
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122829188"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450632"
 ---
 # <a name="recommended-approaches-for-creating-custom-images"></a>创建自定义映像的建议方法
 本文介绍了以下用于创建自定义映像的建议方法：
@@ -52,8 +52,9 @@ ms.locfileid: "122829188"
 
 1. 使用 Windows 和 Linux 市场映像创建 [Azure VM](https://azure.microsoft.com/services/virtual-machines/)。
 1. 连接到 Azure VM 并安装其他软件。 还可以创建实验室所需的其他自定义。
-1. 完成映像设置后，[将 VM 的映像保存到共享映像库](../virtual-machines/image-version-vm-powershell.md)。 在此步骤中，还需要创建映像的定义和版本。
+1. 完成映像设置后，[将 VM 的映像保存到共享映像库](../virtual-machines/image-version.md)。 在此步骤中，还需要创建映像的定义和版本。
 1. 将自定义映像保存到库中后，可以使用你的映像创建新的实验室。 
+
 
 步骤会有所不同，这取决于创建的是自定义 Windows 映像还是自定义 Linux 映像。 有关详细步骤，请阅读以下文章：
 

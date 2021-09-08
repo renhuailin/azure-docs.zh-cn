@@ -2,17 +2,15 @@
 title: Azure Monitor 工作簿资源参数
 description: 了解如何使用资源参数选取工作簿中的资源。 使用资源参数设置从中获取数据的范围。
 services: azure-monitor
-manager: carmonm
-ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: d4a6d04f88544b3a4f9f9c0c0b290d17f5ef148d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dba84320bb753fa162d1c4eced5de5ae79de6f48
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101725571"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436151"
 ---
 # <a name="workbook-resource-parameters"></a>工作簿资源参数
 
@@ -100,9 +98,9 @@ ms.locfileid: "101725571"
 ## <a name="resource-parameter-options"></a>资源参数选项
 | 参数 | 说明 | 示例 |
 | ------------- |:-------------|:-------------|
-| `{Applications}` | 选定的资源 ID | _/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication_ |
+| `{Applications}` | 选定的资源 ID | _/subscriptions/\<sub-id\>/resourceGroups/\<resource-group\>/providers/\<resource-type\>/acmeauthentication_ |
 | `{Applications:label}` | 所选资源的标签 | `acmefrontend` |
-| `{Applications:value}` | 所选资源的值 | _'/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication'_ |
+| `{Applications:value}` | 所选资源的值 | _'/subscriptions/\<sub-id\>/resourceGroups/\<resource-group\>/providers/\<resource-type\>/acmeauthentication'_ |
 | `{Applications:name}` | 所选资源的名称 | `acmefrontend` |
 | `{Applications:resourceGroup}` | 所选资源的资源组 | `acmegroup` |
 | `{Applications:resourceType}` | 所选资源的类型 | _microsoft.insights/components_ |
