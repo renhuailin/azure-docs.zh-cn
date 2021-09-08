@@ -2,14 +2,14 @@
 title: 资源提供程序和资源类型
 description: 介绍支持 Azure 资源管理器的资源提供程序。 它介绍其架构、可用 API 版本，以及可以承载资源的区域。
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 08/26/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d33debc8a7cfd72e919f7e93e1af50a653fa651e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 7e8ebf6217296b4792887dc0af2c40fc66a9dd85
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968268"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038950"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
@@ -32,16 +32,19 @@ ms.locfileid: "111968268"
 
 ## <a name="register-resource-provider"></a>注册资源提供程序
 
-使用资源提供程序之前，必须为资源提供程序注册 Azure 订阅。 注册会配置你的订阅，使之与资源提供程序配合工作。 某些资源提供程序在默认情况下已注册。 有关默认情况下注册的资源提供程序的列表，请参阅 [Azure 服务的资源提供程序](azure-services-resource-providers.md)。
-
-当你执行某些操作时，其他资源提供程序会自动注册。 部署 Azure 资源管理器模板时，会自动注册任何所需的资源提供程序。 当你通过门户创建资源时，系统通常会为你注册资源提供程序。 对于其他方案，你可能需要手动注册资源提供程序。 
-
-本文介绍了如何检查资源提供程序的注册状态，并根据需要将其注册。 你必须具备为资源提供程序执行 `/register/action` 操作的权限。 此权限包含在“参与者”和“所有者”角色中。
+使用资源提供程序之前，必须为资源提供程序注册 Azure 订阅。 注册会配置你的订阅，使之与资源提供程序配合工作。 
 
 > [!IMPORTANT]
 > 仅在准备好使用资源提供程序时注册该程序。 注册步骤使你能够在订阅中保留最小特权。 恶意用户无法使用未注册的资源提供程序。
 
-你的应用程序代码不应阻止为处于“正在注册”状态的资源提供程序创建资源的操作。 注册资源提供程序时，将针对每个受支持的区域单独执行该操作。 若要在某个区域中创建资源，只需在该区域中完成注册即可。 如果不阻止处于正在注册状态的资源提供程序，则你的应用程序可以以快得多的速度继续执行，不需要等待所有区域完成。
+某些资源提供程序在默认情况下已注册。 有关默认情况下注册的资源提供程序的列表，请参阅 [Azure 服务的资源提供程序](azure-services-resource-providers.md)。
+
+当你执行某些操作时，其他资源提供程序会自动注册。 部署 Azure 资源管理器模板时，会自动注册任何所需的资源提供程序。 当你通过门户创建资源时，系统通常会为你注册资源提供程序。 对于其他方案，你可能需要手动注册资源提供程序。 
+
+> [!IMPORTANT]
+> 你的应用程序代码不应阻止为处于“正在注册”状态的资源提供程序创建资源 。 注册资源提供程序时，将针对每个受支持的区域单独执行该操作。 若要在某个区域中创建资源，只需在该区域中完成注册即可。 如果不阻止处于正在注册状态的资源提供程序，则你的应用程序可以以快得多的速度继续执行，无需等待所有区域都完成。
+
+你必须具备为资源提供程序执行 `/register/action` 操作的权限。 此权限包含在“参与者”和“所有者”角色中。
 
 当订阅中仍有某个资源提供程序的资源类型时，不能注销该资源提供程序。
 
@@ -67,6 +70,10 @@ ms.locfileid: "111968268"
 6. 找到要注册的资源提供程序，然后选择“注册”。 若要在订阅中保留最小特权，请仅注册准备好使用的资源提供程序。
 
    :::image type="content" source="./media/resource-providers-and-types/register-resource-provider.png" alt-text="注册资源提供程序":::
+
+> [!IMPORTANT]
+> 如前所述，不要阻止为处于[正在注册](#register-resource-provider)状态的资源提供程序创建资源。  如果不阻止处于正在注册状态的资源提供程序，则你的应用程序可以以快得多的速度继续执行，无需等待所有区域都完成。
+
 
 ### <a name="view-resource-provider"></a>查看资源提供程序
 
@@ -102,7 +109,7 @@ ms.locfileid: "111968268"
 Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
 ```
 
-这会返回类似于以下的结果：
+该命令返回：
 
 ```output
 ProviderNamespace                RegistrationState
@@ -126,7 +133,7 @@ Microsoft.CognitiveServices      Registered
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
-这会返回类似于以下的结果：
+该命令返回：
 
 ```output
 ProviderNamespace : Microsoft.Batch
@@ -135,13 +142,16 @@ ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
 Locations         : {West Europe, East US, East US 2, West US...}
 ```
 
+> [!IMPORTANT]
+> 如前所述，不要阻止为处于[正在注册](#register-resource-provider)状态的资源提供程序创建资源。  如果不阻止处于正在注册状态的资源提供程序，则你的应用程序可以以快得多的速度继续执行，无需等待所有区域都完成。
+
 若要查看特定资源提供程序的信息，请使用：
 
 ```azurepowershell-interactive
 Get-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
-这会返回类似于以下的结果：
+该命令返回：
 
 ```output
 {ProviderNamespace : Microsoft.Batch
@@ -158,7 +168,7 @@ Locations         : {West Europe, East US, East US 2, West US...}
 (Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes.ResourceTypeName
 ```
 
-将返回：
+该命令返回：
 
 ```output
 batchAccounts
@@ -175,7 +185,7 @@ API 版本对应于资源提供程序发布的 REST API 操作版本。 资源�
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).ApiVersions
 ```
 
-将返回：
+该命令返回：
 
 ```output
 2017-05-01
@@ -193,7 +203,7 @@ API 版本对应于资源提供程序发布的 REST API 操作版本。 资源�
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
-将返回：
+该命令返回：
 
 ```output
 West Europe
@@ -211,7 +221,7 @@ West US
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
 ```
 
-这会返回类似于以下的结果：
+该命令返回：
 
 ```output
 Provider                         Status
@@ -235,7 +245,7 @@ az provider list --query "sort_by([?registrationState=='Registered'].{Provider:n
 az provider register --namespace Microsoft.Batch
 ```
 
-这将返回“注册正在进行中”的信息。
+此命令将返回“正在进行注册”的消息。
 
 若要查看特定资源提供程序的信息，请使用：
 
@@ -243,7 +253,7 @@ az provider register --namespace Microsoft.Batch
 az provider show --namespace Microsoft.Batch
 ```
 
-这会返回类似于以下的结果：
+该命令返回：
 
 ```output
 {
@@ -256,13 +266,16 @@ az provider show --namespace Microsoft.Batch
 }
 ```
 
+> [!IMPORTANT]
+> 如前所述，不要阻止为处于[正在注册](#register-resource-provider)状态的资源提供程序创建资源。  如果不阻止处于正在注册状态的资源提供程序，则你的应用程序可以以快得多的速度继续执行，无需等待所有区域都完成。
+
 若要查看资源提供程序的资源类型，请使用：
 
 ```azurecli-interactive
 az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceType" --out table
 ```
 
-将返回：
+该命令返回：
 
 ```output
 Result
@@ -281,7 +294,7 @@ API 版本对应于资源提供程序发布的 REST API 操作版本。 资源�
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].apiVersions | [0]" --out table
 ```
 
-将返回：
+该命令返回：
 
 ```output
 Result
@@ -301,7 +314,7 @@ Result
 az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceType=='batchAccounts'].locations | [0]" --out table
 ```
 
-将返回：
+该命令返回：
 
 ```output
 Result
