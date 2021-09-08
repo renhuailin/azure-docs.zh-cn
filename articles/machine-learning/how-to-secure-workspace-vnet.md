@@ -11,19 +11,19 @@ author: jhirono
 ms.date: 08/04/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, security
-ms.openlocfilehash: 071306d550422f60f8bf8d6e8b442badce221287
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6d7faa793b296259968eb54980fe8ff8e32514f2
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739134"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123105492"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习工作区
 
 本文中介绍如何在虚拟网络中保护 Azure 机器学习工作区及其关联资源。
 
 > [!TIP]
-> 本文是由五部分组成的系列文章的第一部分，介绍如何保护 Azure 机器学习工作流。 请参阅本系列中的其他文章：
+> 本文是介绍如何保护 Azure 机器学习工作流系列文章的一部分。 请参阅本系列中的其他文章：
 >
 > * [虚拟网络概述](how-to-network-security-overview.md)
 > * [保护训练环境](how-to-secure-training-vnet.md)
@@ -67,6 +67,10 @@ ms.locfileid: "121739134"
 * Azure 机器学习工作区必须包含 [Azure 机器学习计算群集](how-to-create-attach-compute-cluster.md)。
 
 ## <a name="limitations"></a>限制
+
+### <a name="azure-storage-account"></a>Azure 存储帐户
+
+如果 Azure 机器学习工作区和 Azure 存储帐户都使用专用终结点连接到 VNet，则两者必须位于同一子网中。
 
 ### <a name="azure-container-registry"></a>Azure 容器注册表
 
@@ -273,9 +277,13 @@ validate=False)
 > [!IMPORTANT]
 > 使用“VPN 网关”或“ExpressRoute”时，需要规划本地资源与 VNet 中资源之间的名称解析工作方式 。 有关详细信息，请参阅[使用自定义 DNS 服务器](how-to-custom-dns.md)。
 
+## <a name="workspace-diagnostics"></a>工作区诊断
+
+[!INCLUDE [machine-learning-workspace-diagnostics](../../includes/machine-learning-workspace-diagnostics.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
-本文是由五部分组成的系列文章的第一部分，介绍如何保护 Azure 机器学习工作流。 请参阅本系列中的其他文章：
+本文是介绍如何保护 Azure 机器学习工作流系列文章的一部分。 请参阅本系列中的其他文章：
 
 * [虚拟网络概述](how-to-network-security-overview.md)
 * [保护训练环境](how-to-secure-training-vnet.md)

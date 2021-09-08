@@ -3,17 +3,17 @@ title: Azure IoT Central 中的遥测、属性和命令有效负载 | Microsoft 
 description: 通过 Azure IoT Central 设备模板，可以指定设备必须实现的遥测、属性和命令。 了解设备可以与 IoT Central 交换的数据格式。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/19/2020
+ms.date: 08/25/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 2f76be3bd5a2688e91f63da5da137492190b2ccb
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 3c30662a9ca85265f43e78ad9dd3f33c70c167a5
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789060"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479933"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遥测、属性和命令有效负载
 

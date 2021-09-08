@@ -4,16 +4,16 @@ description: 排查 Azure 文件同步部署中的常见问题，此服务可用
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 8/16/2021
+ms.date: 8/24/2021
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 15bc06f1f84b01df8d6999147d47e5f5f48ec45f
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: a09af98e613a7e57cc9a8060192e0e54c073cf95
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228995"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256209"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -370,6 +370,7 @@ PerItemErrorCount: 1006.
 | 0x80070017 | -2147024873 | ERROR_CRC | 由于出现 CRC 错误，文件无法同步。 如果在删除服务器终结点之前未撤回该分层文件，或者文件已损坏，则会出现此错误。 | 若要解决此问题，请参阅[删除服务器终结点后无法在服务器上访问分层文件](?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)以删除孤立的分层文件。 如果在删除孤立的分层文件后仍然出现错误，请在卷上运行 [chkdsk](/windows-server/administration/windows-commands/chkdsk)。 |
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | 由于已达到冲突文件最大数量，文件无法同步。 Azure 文件同步支持每文件 100 个冲突文件。 若要了解有关文件冲突的详细信息，请参阅 Azure 文件同步[常见问题解答](../files/storage-files-faq.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json#afs-conflict-resolution)。 | 若要解决此问题，请减少冲突文件数。 冲突文件数小于 100 后，文件将同步。 |
 | 0x80c8027d | -2134375811 | ECS_E_DIRECTORY_RENAME_FAILED | 无法同步重命名的目录，因为目录中的文件或文件夹具有打开的句柄。 | 无需采取措施。 目录中所有打开的文件句柄遭关闭后，目录的重命名将会同步。 |
+| 0x800700de | -2147024674 | ERROR_BAD_FILE_TYPE | 无法访问服务器上的分层文件，因为它引用的文件版本不再存在于 Azure 文件共享中。 | 如果分层文件从 Windows Server 的备份还原，则可能出现此问题。 若要解决此问题，请在 Azure 文件共享中从快照中还原文件。 |
 
 #### <a name="handling-unsupported-characters"></a>处理不受支持的字符
 如果 FileSyncErrorsReport.ps1 PowerShell 脚本显示不受支持的字符导致按项列出的同步错误（错误代码 0x8007007b 或 0x80c80255），请从相关的文件名中删除或重命名错误的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 
@@ -771,7 +772,7 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
 | **所需的补救措施** | 是 |
 
-由于卷没有足够的磁盘空间或已达到磁盘配额限制，同步会话失败，并出现下列其中一项错误。 此错误的常见原因是服务器终结点外部的文件用尽了卷上的空间。 请通过添加更多的服务器终结点、将文件移到其他卷，或增大服务器终结点所在卷的大小，来释放卷上的空间。 若使用[文件服务器资源管理器](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview)或 [NTFS 配额](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-quota)在卷上配置了磁盘配额，会提高配额限制。
+由于卷没有足够的磁盘空间或已达到磁盘配额限制，同步会话失败，并出现下列其中一项错误。 此错误的常见原因是服务器终结点外部的文件用尽了卷上的空间。 请通过添加更多的服务器终结点、将文件移到其他卷，或增大服务器终结点所在卷的大小，来释放卷上的空间。 若使用[文件服务器资源管理器](/windows-server/storage/fsrm/fsrm-overview)或 [NTFS 配额](/windows-server/administration/windows-commands/fsutil-quota)在卷上配置了磁盘配额，会提高配额限制。
 
 <a id="-2134364145"></a><a id="replica-not-ready"></a>**服务尚未准备好与此服务器终结点同步。**  
 
@@ -1206,12 +1207,12 @@ if ($role -eq $null) {
 | 0x80072ee7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | 由于网络问题，文件分层失败。 | 无需采取措施。 如果错误仍然存在，请检查与 Azure 文件共享的网络连接。 |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 由于访问被拒绝，文件分层失败。 如果文件位于一个 DFS-R 只读复制文件夹中，则可能发生此错误。 | Azure 文件同步不支持 DFS-R 只读复制文件夹中的服务器终结点。 请参阅[规划指南](file-sync-planning.md#distributed-file-system-dfs)以获取详细信息。 |
 | 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | 由于网络问题，文件分层失败。 | 无需采取措施。 如果错误仍然存在，请检查与 Azure 文件共享的网络连接。 |
-| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | 由于文件大小小于支持的大小，文件分层失败。 | 如果代理版本低于 9.0，则支持的最小文件大小为 64kb。 如果代理版本为 9.0 和更高版本，则支持的最小文件大小取决于文件系统群集大小（文件系统群集大小的两倍）。 例如，如果文件系统群集大小为 4kb，则最小文件大小为 8kb。 |
+| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | 由于文件大小小于支持的大小，文件分层失败。 | 如果代理版本低于 9.0，则支持的最小文件大小为 64 KiB。 如果代理版本为 9.0 和更高版本，则支持的最小文件大小取决于文件系统群集大小（文件系统群集大小的两倍）。 例如，如果文件系统群集大小为 4 KiB，则最小文件大小为 8 KiB。 |
 | 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | 由于 Azure 存储问题，文件分层失败。 | 如果此错误持续存在，请创建支持请求。 |
 | 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | 由于同时撤回文件，文件分层失败。 | 无需采取措施。 撤回完成且文件不再使用后，将会对文件分层。 |
 | 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | 由于文件尚未同步到 Azure 文件共享，文件分层失败。 | 无需采取措施。 当文件同步到 Azure 文件共享后，文件将进行分层。 |
 | 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | 由于云分层筛选器驱动程序 (storagesync.sys) 未运行，文件分层失败。 | 要解决此问题，请打开提升的命令提示符并运行以下命令：`fltmc load storagesync`<br>如果在运行 fltmc 命令时无法加载 Azure 文件同步筛选器驱动程序，请卸载 Azure 文件同步代理，重启服务器，并重新安装 Azure 文件同步代理。 |
-| 0x80070070 | -2147024784 | ERROR_DISK_FULL | 由于服务器终结点所在的卷上磁盘空间不足，文件分层失败。 | 若要解决此问题，请在服务器终结点所在的卷上腾出至少 100 MB 的磁盘空间。 |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | 由于服务器终结点所在的卷上磁盘空间不足，文件分层失败。 | 若要解决此问题，请在服务器终结点所在的卷上腾出至少 100 MiB 的磁盘空间。 |
 | 0x80070490 | -2147023728 | ERROR_NOT_FOUND | 由于文件尚未同步到 Azure 文件共享，文件分层失败。 | 无需采取措施。 当文件同步到 Azure 文件共享后，文件将进行分层。 |
 | 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | 由于文件是不受支持的的重分析点，文件分层失败。 | 如果文件是重复数据删除重分析点，请按照 [计划指南](file-sync-planning.md#data-deduplication)中的步骤启用重复数据删除支持。 不支持具有除重复数据删除以外的重分析点的文件，也不会对其进行分层。  |
 | 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | 由于已对文件进行了修改，文件分层失败。 | 无需采取措施。 当修改后的文件同步到 Azure 文件共享时，文件将进行分层。 |
@@ -1253,8 +1254,8 @@ if ($role -eq $null) {
 | 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | 由于内存不足，文件撤回失败。 | 如果错误仍然存在，请调查导致内存不足的应用程序或内核模式驱动程序。 |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | 由于磁盘空间不足，文件撤回失败。 | 要解决此问题，请将文件移到其他卷以释放卷的空间、增加卷大小，或使用 Invoke-StorageSyncCloudTiering cmdlet 强制文件分层。 |
 | 0x80072f8f | -2147012721 | WININET_E_DECODING_FAILED | 由于服务器无法解码来自 Azure 文件同步服务的响应，因此未能召回文件。 | 若代理正在修改来自 Azure 文件同步服务的响应，通常会出现此错误。 请检查你的代理配置。 |
-| 0x80090352 | -2146892974 | SEC_E_ISSUING_CA_UNTRUSTED | 若组织使用 TLS 终止代理，或恶意实体正在截获服务器与 Azure 文件同步服务之间的通信，则会出现此错误。 | 若你确定这是正常情况（因为你的组织使用的是 TLS 终止代理)，请按照 [CERT_E_UNTRUSTEDROOT](https://docs.microsoft.com/azure/storage/file-sync/file-sync-troubleshoot?tabs=portal1%2Cazure-portal#-2146762487) 错误中所述的步骤来解决此问题。 |
-| 0x80c86047 | -2134351801 | ECS_E_AZURE_SHARE_SNAPSHOT_NOT_FOUND | 文件无法撤回，因为其引用的文件版本在 Azure 文件共享中不再存在。 | 若分层文件是从备份中还原的，可能出现此问题。 若要解决此问题，请提出支持请求。 |
+| 0x80090352 | -2146892974 | SEC_E_ISSUING_CA_UNTRUSTED | 若组织使用 TLS 终止代理，或恶意实体正在截获服务器与 Azure 文件同步服务之间的通信，则会出现此错误。 | 若你确定这是正常情况（因为你的组织使用的是 TLS 终止代理)，请按照 [CERT_E_UNTRUSTEDROOT](#-2146762487) 错误中所述的步骤来解决此问题。 |
+| 0x80c86047 | -2134351801 | ECS_E_AZURE_SHARE_SNAPSHOT_NOT_FOUND | 文件无法撤回，因为其引用的文件版本在 Azure 文件共享中不再存在。 | 如果分层文件从 Windows Server 的备份还原，则可能出现此问题。 若要解决此问题，请在 Azure 文件共享中从快照中还原文件。 |
 
 ### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>在删除服务器终结点后无法访问服务器上的分层文件
 如果没有在删除服务器终结点之前撤回分层的文件，则服务器上的这些文件会变得不可访问。

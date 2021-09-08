@@ -8,12 +8,12 @@ ms.date: 08/04/2021
 ms.author: prsandhu
 ms.reviewer: cnthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 6271fcb1702d14913578f6cc535b1dd74ba3205b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3973941a5fbceb58ed265f2594661c8365c618d9
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750377"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480229"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支持可用性区域的 Azure 服务
 
@@ -50,11 +50,11 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 | 美洲           | 欧洲               | 非洲              | 亚太区   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| Brazil South       | 法国中部       | 南非北部* | 澳大利亚东部 |
+| 巴西南部       | 法国中部       | 南非北部* | 澳大利亚东部 |
 | 加拿大中部     | 德国中西部 |                     | 印度中部* |
 | 美国中部         | 北欧         |                     | 日本东部     |
 | 美国东部            | 挪威东部*         |                     | 韩国中部* |
-| 美国东部 2          | 英国南部             |                     | 东南亚 |
+| 美国东部 2          | 英国南部             |                     | Southeast Asia |
 | 美国中南部 | 西欧          |                     |                |
 | US Gov 弗吉尼亚州    |                      |                     |                |
 | 美国西部 2        |                      |                     |                |
@@ -78,7 +78,7 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 
 **基础服务**
 
-|     产品                                                    | 复原             |
+|     产品                                                    | 复原能力             |
 |-----------------------------------------------------------------|:----------------------------:|
 |     [应用程序网关 (V2)](../application-gateway/application-gateway-autoscaling-zone-redundant.md)                                  | :large_blue_diamond:  |
 |     [Azure 备份](../backup/backup-create-rs-vault.md#set-storage-redundancy)                                                | :large_blue_diamond:  |
@@ -118,8 +118,9 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 **主流服务**
 
 
-|     产品                                                    | 复原             |
+|     产品                                                    | 复原能力             |
 |-----------------------------------------------------------------|:----------------------------:|
+|     [应用服务](../app-service/how-to-zone-redundancy.md)                                    | :large_blue_diamond:  |
 |     [应用服务环境](../app-service/environment/zone-redundancy.md)                                    | :large_blue_diamond:  |
 |     [Azure Active Directory 域服务](../active-directory-domain-services/overview.md)                      | :large_blue_diamond:  |
 |     [Azure API 管理](../api-management/zone-redundancy.md)                      | :large_blue_diamond:  |
@@ -168,7 +169,7 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 
 **专用服务**
 
-|     产品                                                    | 复原             |
+|     产品                                                    | 复原能力             |
 |-----------------------------------------------------------------|:----------------------------:|
 |     Azure Red Hat OpenShift                                     | :large_blue_diamond:  |
 |     认知服务：异常检测器                        | :large_blue_diamond:  |
@@ -178,7 +179,7 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 
 **非地理区域**
 
-|     产品                                                    | 复原             |
+|     产品                                                    | 复原能力             |
 |-----------------------------------------------------------------|:----------------------------:|
 |     Azure DNS                                                   | :globe_with_meridians: |
 |     Azure Active Directory                                    | :globe_with_meridians: |

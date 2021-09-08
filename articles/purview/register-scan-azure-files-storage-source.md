@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 06/22/2021
-ms.openlocfilehash: 39e720f35a591ac7075b5723f3e577151e698371
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: dbb29fea5253bbd00e66f0ed3d123ddc38533b8e
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605154"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256451"
 ---
 # <a name="register-and-scan-azure-files"></a>注册 Azure 文件并进行扫描
 
@@ -33,7 +33,7 @@ Azure 文件支持完整扫描和增量扫描，以根据系统默认规则和�
 
 ## <a name="setting-up-authentication-for-a-scan"></a>为扫描设置身份验证
 
-目前，只有一种方法可以设置 Azure 文件存储的身份验证：
+目前，只有一种方法可以设置 Azure 文件共享的身份验证：
 
 - 帐户密钥
 
@@ -56,7 +56,7 @@ Azure 文件支持完整扫描和增量扫描，以根据系统默认规则和�
 要在数据目录中注册新的 Azure 文件帐户，请执行以下操作：
 
 1. 导航到 Purview Data Studio。
-1. 在左侧导航区域中选择“数据映射”。
+1. 在左侧导航中选择“数据映射”。
 1. 选择“注册”
 1. 在“注册源”上，选择“Azure 文件” 
 1. 选择“继续”

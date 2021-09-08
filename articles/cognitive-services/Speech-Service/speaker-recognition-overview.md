@@ -3,21 +3,21 @@ title: 说话人识别概述 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 说话人识别提供一些算法，可使用语音生物测量，根据说话人独特的语音特征来验证和识别说话人。 说话人识别用于回答“谁在说话？”的问题。 本文概述了说话人识别服务的优势和功能。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 说话人识别, 语音生物测量
-ms.openlocfilehash: a7a47ec86ec7e59cdc78e997f30bd7d0749e4a86
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: c3f71ab3adc93546b0cd748968a0099743455be8
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122070153"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536988"
 ---
 # <a name="what-is-speaker-recognition-preview"></a>什么是说话人识别（预览版）？
 

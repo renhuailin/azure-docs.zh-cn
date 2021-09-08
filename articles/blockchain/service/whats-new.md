@@ -4,12 +4,12 @@ description: 了解 Azure 区块链服务的新增功能，例如最新发行说
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: 6a3113a2d28e704b188d701da13493ecd8263cab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea44366dd88ae1b98865727c9a3d3e038c924120
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94335020"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122652963"
 ---
 # <a name="whats-new-in-azure-blockchain-service"></a>Azure 区块链服务有哪些新增功能？
 
@@ -22,6 +22,10 @@ Azure 区块链服务会不断改进。 为了让大家随时了解最新的开�
 - 已知问题
 
 ---
+
+## <a name="may-2021"></a>2021 年 5 月
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 ## <a name="june-2020"></a>2020 年 6 月
 
@@ -73,7 +77,7 @@ TrieTimeout 值减少，以便更频繁地将内存状态写入磁盘。 较低�
 
 ### <a name="mining-stops-if-fewer-than-four-validator-nodes"></a>如果验证器节点少于四个，则挖掘停止
 
-生产网络应至少具有四个验证器节点。 Quorum 建议至少需要四个验证器节点，以满足 IBFT 崩溃容错 (3F+1)。 应该至少具备两个 Azure 区块链服务“标准”层节点，才能获取四个验证器节点。 使用两个验证器节点预配标准节点。  
+生产网络应至少具有四个验证器节点。 Quorum 建议至少需要四个验证器节点，以满足 IBFT 崩溃容错 (3F+1)。 应该至少具备两个 Azure 区块链服务“标准”层节点，才能获取四个验证器节点。 使用两个验证器节点预配标准节点。
 
 如果 Azure 区块链服务上的区块链网络没有四个验证器节点，那么挖掘可能会在网络上停止。 可以通过对已处理的块设置警报来检测已停止的挖掘。 在运行状况良好的网络中，每个节点每五分钟可处理 60 块。
 
@@ -97,7 +101,7 @@ Geth 会在不到一分钟的时间内自动重启。 同步可能需要较长�
 
 若要缓解此问题，请发送签名事务而非发送带有解锁账户命令的无签名事务。 对于已进行外部签名的事务，无需解锁帐户。
 
-如果要发送未签名的事务，请将 0 作为解锁命令的时间参数发送，从而将该帐户无限时解锁。 提交所有事务后，可以再次将该帐户锁定。  
+如果要发送未签名的事务，请将 0 作为解锁命令的时间参数发送，从而将该帐户无限时解锁。 提交所有事务后，可以再次将该帐户锁定。
 
 下面是 Azure 区块链服务使用的 geth 参数。 不能调整这些参数。
 
