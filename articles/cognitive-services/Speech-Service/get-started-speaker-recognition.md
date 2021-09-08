@@ -3,22 +3,22 @@ title: 说话人识别快速入门 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音 SDK 中的说话人识别来回答问题“谁正在说话”。 本快速入门介绍适用于说话人验证和标识的常见设计模式，它们均使用语音生物测量来标识唯一声音。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/02/2020
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-five
 keywords: 说话人识别, 语音生物测量
-ms.openlocfilehash: 10994721b0beab520d687d51a7e4b12b9fa75064
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 1f9690427a52aaf8025010ccbbc12899077c6b15
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066622"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543792"
 ---
 # <a name="get-started-with-speaker-recognition"></a>说话人识别入门
 

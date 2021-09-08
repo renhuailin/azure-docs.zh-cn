@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 035399924216434de85865102db8838ea3fa15a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54a29bb1cc92347d9a2578a4f0ec9febb22553ac
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85570181"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225461"
 ---
-## <a name="create-a-project-zip-file"></a>创建一个项目 zip 文件
+## <a name="create-a-project-zip-package"></a>创建一个项目 ZIP 包
 
 >[!NOTE]
-> 如果以 zip 文件的形式下载文件，请首先提取该文件。 例如，如果从 GitHub 下载了 zip 文件，则无法按原样部署该文件。 GitHub 可添加额外的嵌套目录，但这不适用于应用服务。 
+> 如果以 ZIP 包的形式下载文件，请首先提取该文件。 例如，如果从 GitHub 下载了 ZIP 包，则无法按原样部署该文件。 GitHub 可添加额外的嵌套目录，但这不适用于应用服务。 
 >
 
 在本地终端窗口中，导航到应用项目的根目录。 

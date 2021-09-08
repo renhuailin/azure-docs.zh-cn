@@ -8,12 +8,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.devlang: dotnet
 ms.date: 04/15/2021
-ms.openlocfilehash: 60c177c913c78dbcfcbfe1d465044b69b0e6dd2e
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 468c02d9384fb2c8a4723c179fde9a44be76dd50
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589710"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123476279"
 ---
 # <a name="publish-messages-to-and-process-messages-from-azure-purviews-atlas-kafka-topics-via-event-hubs-using-net"></a>使用 .NET 通过事件中心将消息发布到 Azure Purview 的Atlas Kafka 主题并处理来自这些主题的消息 
 本快速入门介绍如何使用 Azure.Messaging.EventHubs .NET 库通过事件中心向 Azure Purview 的 Atlas Kafka 主题发送事件以及由其接收事件。 
@@ -65,7 +65,6 @@ ms.locfileid: "107589710"
     ```cmd
     Install-Package Azure.Messaging.EventHubs.Producer
     ```    
-
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>编写代码以将消息发送到事件中心
 

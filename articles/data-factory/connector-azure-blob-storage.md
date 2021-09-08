@@ -1,20 +1,22 @@
 ---
 title: 在 Azure Blob 存储中复制和转换数据
-description: 了解如何使用数据工厂向/从 Blob 存储复制数据，以及如何在 Blob 存储中转换数据。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何使用 Azure 数据工厂或 Azure Synapse Analytics 向/从 Blob 存储复制数据，以及如何转换 Blob 存储中的数据。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: 7f3880b74fe570410d24b28752f5b3d4068d978d
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: e7d9e4da611bbbf13bacee60ed73248f5b39c14c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481384"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123307034"
 ---
-# <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Blob 存储中复制和转换数据
+# <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory-or-azure-synapse-analytics"></a>使用 Azure 数据工厂或 Azure Synapse Analytics 复制和转换 Azure Blob 存储中的数据
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > - [版本 1](v1/data-factory-azure-blob-connector.md)
@@ -22,10 +24,10 @@ ms.locfileid: "109481384"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure 数据工厂中的复制活动从/向 Azure Blob 存储复制数据。 还介绍了如何使用数据流活动转换 Azure Blob 存储中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述如何使用 Azure 数据工厂和 Azure Synapse 管道中的复制活动向/从 Azure Blob 存储复制数据。 还介绍了如何使用数据流活动转换 Azure Blob 存储中的数据。 要了解详细信息，请阅读 [Azure 数据工厂](introduction.md)和 [Azure Synapse Analytics](..\synapse-analytics\overview-what-is.md) 简介文章。
 
 >[!TIP]
->若要了解数据湖或数据仓库的迁移方案，请参阅[使用 Azure 数据工厂将数据从数据湖或数据仓库迁移到 Azure](data-migration-guidance-overview.md)。
+>要了解针对 Data Lake 或数据仓库的迁移方案，请参阅[将 Data Lake 或数据仓库中的数据迁移到 Azure](data-migration-guidance-overview.md) 一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -49,7 +51,31 @@ ms.locfileid: "109481384"
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-对于特定于 Blob 存储的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
+## <a name="create-an-azure-blob-storage-linked-service-using-ui"></a>使用 UI 创建 Azure Blob 存储链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建 Azure Blob 存储链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新链接服务的屏幕截图。":::
+
+2. 搜索 Blob 并选择 Azure Blob 存储连接器。
+
+    :::image type="content" source="media/connector-azure-blob-storage/azure-blob-storage-connector.png" alt-text="选择 Azure Blob 存储连接器。":::    
+
+1. 配置服务详细信息、测试连接并创建新的链接服务。
+
+    :::image type="content" source="media/connector-azure-blob-storage/configure-azure-blob-storage-linked-service.png" alt-text="Azure Blob 存储链接服务的配置屏幕截图。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
+
+以下部分详细介绍了用于定义特定于 Blob 存储的数据工厂和 Synapse 管道实体的属性。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
@@ -58,18 +84,19 @@ ms.locfileid: "109481384"
 - [帐户密钥身份验证](#account-key-authentication)
 - [共享访问签名身份验证](#shared-access-signature-authentication)
 - [服务主体身份验证](#service-principal-authentication)
-- [Azure 资源托管标识身份验证](#managed-identity)
+- [系统分配的托管标识身份验证](#managed-identity)
+- [用户分配的托管标识身份验证](#user-assigned-managed-identity-authentication)
 
 >[!NOTE]
 >- 如果要利用在 Azure 存储防火墙上启用的“允许受信任的 Microsoft 服务访问此存储帐户”选项来使用公共 Azure 集成运行时连接到 Blob 存储，则必须使用[托管标识身份验证](#managed-identity)。
->- 在使用 PolyBase 或 COPY 语句将数据载入 Azure Synapse Analytics 时，如果为源或暂存 Blob 存储配置了 Azure 虚拟网络终结点，则必须按照 Synapse 的要求使用托管标识身份验证。 请参阅[托管标识身份验证](#managed-identity)部分，了解更多的配置先决条件。
+>- 在使用 PolyBase 或 COPY 语句将数据载入 Azure Synapse Analytics 时，如果为源或暂存 Blob 存储配置了 Azure 虚拟网络终结点，则必须按照 Azure Synapse 的要求使用托管标识身份验证。 请参阅[托管标识身份验证](#managed-identity)部分，了解更多的配置先决条件。
 
 >[!NOTE]
 >Azure HDInsight 和 Azure 机器学习活动只支持使用 Azure Blob 存储帐户密钥的身份验证。
 
 ### <a name="account-key-authentication"></a>帐户密钥身份验证
 
-数据工厂支持使用以下属性进行存储帐户密钥身份验证：
+Azure 数据工厂或 Synapse 管道中的存储帐户密钥身份验证支持以下属性：
 
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
@@ -136,15 +163,15 @@ ms.locfileid: "109481384"
 有关共享访问签名的详细信息，请参阅[共享访问签名：了解共享访问签名模型](../storage/common/storage-sas-overview.md)。
 
 > [!NOTE]
->- 数据工厂现在同时支持 *服务共享访问签名* 和 *帐户共享访问签名*。 有关共享访问签名的详细信息，请参阅[使用共享访问签名授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)。
+>- 该服务现在支持服务共享访问签名和帐户共享访问签名 。 有关共享访问签名的详细信息，请参阅[使用共享访问签名授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)。
 >- 在稍后的数据集配置中，文件夹路径是从容器级别开始的绝对路径。 需要配置与 SAS URI 中的路径一致的路径。
 
-数据工厂支持通过以下属性来使用共享访问签名身份验证：
+以下属性支持使用共享访问签名身份验证：
 
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | `type` 属性必须设置为 `AzureBlobStorage`（建议）或 `AzureStorage`（请查看以下注释）。 | 是 |
-| sasUri | 指定存储资源（例如 Blob 或容器）的共享访问签名 URI。 <br/>将此字段标记为 `SecureString`，以便安全地将其存储在数据工厂中。 还可以将 SAS 令牌放在 Azure Key Vault 中，以使用自动轮换和删除令牌部分。 有关详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
+| sasUri | 指定存储资源（例如 Blob 或容器）的共享访问签名 URI。 <br/>将此字段标记为 `SecureString` 以安全存储它。 还可以将 SAS 令牌放在 Azure Key Vault 中，以使用自动轮换和删除令牌部分。 有关详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 | 否 |
 
 >[!NOTE]
@@ -202,13 +229,13 @@ ms.locfileid: "109481384"
 
 在创建共享访问签名 URI 时，请注意以下几点：
 
-- 根据链接服务（读取、写入、读/写）在数据工厂中的用法，设置针对对象的适当读/写权限。
+- 根据链接服务（读取、写入、读/写）的用法，设置针对对象的适当读/写权限。
 - 根据需要设置“到期时间”。 确保存储对象的访问权限不会在管道的活动期限内过期。
-- 应该根据需要在正确的容器或 Blob 中创建 URI。 数据工厂可以使用 Blob 的共享访问签名 URI 访问该特定 Blob。 数据工厂可以使用 Blob 存储容器的共享访问签名 URI 迭代该容器中的 Blob。 以后若要提供更多/更少对象的访问权限或需要更新共享访问签名 URI，请记得使用新 URI 更新链接服务。
+- 应该根据需要在正确的容器或 Blob 中创建 URI。 数据工厂或 Synapse 管道可以使用 Blob 的共享访问签名 URI 访问该特定 blob。 数据工厂或 Synapse 管道可以使用 Blob 存储容器的共享访问签名 URI 迭代该容器中的 blob。 以后若要提供更多/更少对象的访问权限或需要更新共享访问签名 URI，请记得使用新 URI 更新链接服务。
 
 ### <a name="service-principal-authentication"></a>服务主体身份验证
 
-有关 Azure 存储服务主体身份验证的常规信息，请参阅[使用 Azure Active Directory 验证对 Azure 存储的访问权限](../storage/common/storage-auth-aad.md)。
+有关 Azure 存储服务主体身份验证的常规信息，请参阅[使用 Azure Active Directory 验证对 Azure 存储的访问权限](../storage/blobs/authorize-access-azure-active-directory.md)。
 
 若要使用服务主体身份验证，请执行以下步骤：
 
@@ -218,7 +245,7 @@ ms.locfileid: "109481384"
     - 应用程序密钥
     - 租户 ID
 
-2. 授予服务主体在 Azure Blob 存储中的适当权限。 有关角色的详细信息，请参阅[使用 Azure 门户分配用于访问 Blob 和队列数据的 Azure 角色](../storage/common/storage-auth-aad-rbac-portal.md)。
+2. 授予服务主体在 Azure Blob 存储中的适当权限。 有关角色的详细信息，请参阅[使用 Azure 门户分配用于访问 Blob 和队列数据的 Azure 角色](../storage/blobs/assign-azure-role-data-access.md)。
 
     - 作为源，在“访问控制(标识和访问管理)”中至少授予“存储 Blob 数据读取者”角色。
     - 作为接收器，在“访问控制(标识和访问管理)”中至少授予“存储 Blob 数据参与者”角色。
@@ -231,15 +258,15 @@ Azure Blob 存储链接服务支持以下属性：
 | serviceEndpoint | 使用 `https://<accountName>.blob.core.windows.net/` 模式指定 Azure Blob 存储服务终结点。 | 是 |
 | accountKind | 指定存储帐户的种类。 允许值包括：Storage（常规用途 v1）、StorageV2（常规用途 v2）、BlobStorage 或 BlockBlobStorage   。 <br/><br/>在数据流中使用 Azure Blob 链接服务时，如果帐户类型为空或“存储”，则不支持托管标识或服务主体身份验证。 请指定正确的帐户类型，选择一种不同的身份验证，或者将你的存储帐户升级到常规用途 v2。 | 否 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
-| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString 以将其安全地存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString 以安全地将其存储在工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定应用程序的租户信息（域名或租户 ID）。 通过将鼠标悬停在 Azure 门户右上角来检索租户信息。 | 是 |
-| azureCloudType | 对于服务主体身份验证，请指定 Azure Active Directory 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为“AzurePublic”、“AzureChina”、“AzureUsGovernment”和“AzureGermany”   。 默认情况下，使用数据工厂的云环境。 | 否 |
+| azureCloudType | 对于服务主体身份验证，请指定 Azure Active Directory 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为“AzurePublic”、“AzureChina”、“AzureUsGovernment”和“AzureGermany”   。 默认情况下，使用数据工厂或 Synapse 管道的云环境。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 | 否 |
 
 >[!NOTE]
 >
 >- 如果你的 blob 帐户启用了[软删除](../storage/blobs/soft-delete-blob-overview.md)，则数据流中不支持服务主体身份验证。
->- 如果使用数据流通过专用终结点访问 blob 存储，请注意，使用服务主体身份验证时，数据流会连接到 ADLS Gen2 终结点，而不是 Blob 终结点。 请确保在 ADF 中创建相应的专用终结点以启用访问权限。
+>- 如果使用数据流通过专用终结点访问 blob 存储，请注意，使用服务主体身份验证时，数据流会连接到 ADLS Gen2 终结点，而不是 Blob 终结点。 确保在数据工厂或 Synapse 工作区中创建相应的专用终结点，以启用访问权限。
 
 >[!NOTE]
 >服务主体身份验证仅受“AzureBlobStorage”类型的链接服务支持，而不受以前的“AzureStorage”类型的链接服务支持。
@@ -269,21 +296,18 @@ Azure Blob 存储链接服务支持以下属性：
 }
 ```
 
-### <a name="managed-identities-for-azure-resource-authentication"></a><a name="managed-identity"></a> Azure 资源托管标识身份验证
+### <a name="system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> 系统分配的托管标识身份验证
 
-可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可以像使用自己的服务主体一样，直接使用此托管标识进行 Blob 存储身份验证。 这个指定的工厂可通过此方法访问和复制 Blob 存储中的数据或将数据复制到其中。
+数据工厂或 Synapse 管道可以与[系统分配的 Azure 资源的托管标识](data-factory-service-identity.md#system-assigned-managed-identity)相关联，这表示该资源用于对其他 Azure 服务进行身份验证。 可以像使用自己的服务主体一样，直接使用此系统分配的托管标识进行 Blob 存储身份验证。 这个指定的资源可通过此方法访问和复制 Blob 存储中的数据或将数据复制到其中。 若要详细了解 Azure 资源托管标识，请参阅 [Azure 资源托管标识](../active-directory/managed-identities-azure-resources/overview.md)
 
-有关 Azure 存储身份验证的常规信息，请参阅[使用 Azure Active Directory 验证对 Azure 存储的访问权限](../storage/common/storage-auth-aad.md)。 若要使用 Azure 资源托管标识身份验证，请执行以下步骤：
+有关 Azure 存储身份验证的常规信息，请参阅[使用 Azure Active Directory 验证对 Azure 存储的访问权限](../storage/blobs/authorize-access-azure-active-directory.md)。 若要使用 Azure 资源托管标识身份验证，请执行以下步骤：
 
-1. 通过复制与工厂一起生成的托管标识对象 ID 的值，[检索数据工厂托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
+1. 通过复制随工厂或 Synapse 工作区一起生成的系统分配的托管标识对象 ID 的值，[检索系统分配的托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
 
-2. 授予托管标识在 Azure Blob 存储中的权限。 有关角色的详细信息，请参阅[使用 Azure 门户分配用于访问 Blob 和队列数据的 Azure 角色](../storage/common/storage-auth-aad-rbac-portal.md)。
+2. 授予托管标识在 Azure Blob 存储中的权限。 有关角色的详细信息，请参阅[使用 Azure 门户分配用于访问 Blob 和队列数据的 Azure 角色](../storage/blobs/assign-azure-role-data-access.md)。
 
     - 作为源，在“访问控制(标识和访问管理)”中至少授予“存储 Blob 数据读取者”角色。
     - 作为接收器，在“访问控制(标识和访问管理)”中至少授予“存储 Blob 数据参与者”角色。
-
->[!IMPORTANT]
->如果使用 PolyBase 或 COPY 语句将数据从 Blob 存储（作为源或作为暂存位置）载入到 Azure Synapse Analytics 中，则在对 Blob 存储使用托管标识身份验证时，请确保还按照[此指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)中步骤 1 到步骤 3 的要求进行操作。 这两个步骤将向 Azure AD 注册服务器并将“存储 Blob 数据参与者”角色分配给服务器。 其余事项由数据工厂处理。 如果使用 Azure 虚拟网络终结点配置 Blob 存储，则还需要根据 Synapse 的要求，在 Azure 存储帐户的“防火墙和虚拟网络”设置菜单下启用“允许受信任的 Microsoft 服务访问此存储帐户”。
 
 Azure Blob 存储链接服务支持以下属性：
 
@@ -293,14 +317,6 @@ Azure Blob 存储链接服务支持以下属性：
 | serviceEndpoint | 使用 `https://<accountName>.blob.core.windows.net/` 模式指定 Azure Blob 存储服务终结点。 | 是 |
 | accountKind | 指定存储帐户的种类。 允许值包括：Storage（常规用途 v1）、StorageV2（常规用途 v2）、BlobStorage 或 BlockBlobStorage   。 <br/><br/>在数据流中使用 Azure Blob 链接服务时，如果帐户类型为空或“存储”，则不支持托管标识或服务主体身份验证。 请指定正确的帐户类型，选择一种不同的身份验证，或者将你的存储帐户升级到常规用途 v2。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 | 否 |
-
-> [!NOTE]
->
-> - 如果你的 blob 帐户启用了[软删除](../storage/blobs/soft-delete-blob-overview.md)，则数据流中不支持托管标识身份验证。
-> - 如果使用数据流通过专用终结点访问 blob 存储，请注意，使用托管标识身份验证时，数据流会连接到 ADLS Gen2 终结点，而不是 Blob 终结点。 请确保在 ADF 中创建相应的专用终结点以启用访问权限。
-
-> [!NOTE]
-> Azure 资源托管标识身份验证仅受“AzureBlobStorage”类型的链接服务支持，而不受以前的“AzureStorage”类型的链接服务支持。
 
 **示例：**
 
@@ -321,6 +337,63 @@ Azure Blob 存储链接服务支持以下属性：
 }
 ```
 
+### <a name="user-assigned-managed-identity-authentication"></a>用户分配的托管标识身份验证
+可以为数据工厂分配一个或多个[用户分配的托管标识](data-factory-service-identity.md#user-assigned-managed-identity)。 可以将此用户分配的托管标识用于 Blob 存储身份验证，该身份验证允许访问和复制 Blob 存储中的数据或将数据复制到其中。 若要详细了解 Azure 资源托管标识，请参阅 [Azure 资源托管标识](../active-directory/managed-identities-azure-resources/overview.md)
+
+有关 Azure 存储身份验证的常规信息，请参阅[使用 Azure Active Directory 验证对 Azure 存储的访问权限](../storage/blobs/authorize-access-azure-active-directory.md)。 若要使用用户分配的托管标识身份验证，请按照以下步骤操作：
+
+1. [创建一个或多个用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，并在 Azure Blob 存储中授予权限。 有关角色的详细信息，请参阅[使用 Azure 门户分配用于访问 Blob 和队列数据的 Azure 角色](../storage/blobs/assign-azure-role-data-access.md)。
+
+    - 作为源，在“访问控制(标识和访问管理)”中至少授予“存储 Blob 数据读取者”角色。
+    - 作为接收器，在“访问控制(标识和访问管理)”中至少授予“存储 Blob 数据参与者”角色。
+     
+2. 为数据工厂分配一个或多个用户分配的托管标识，并为每个用户分配的托管标识[创建凭据](data-factory-service-identity.md#credentials)。 
+
+
+Azure Blob 存储链接服务支持以下属性：
+
+| 属性 | 说明 | 必需 |
+|:--- |:--- |:--- |
+| type | **type** 属性必须设置为 **AzureBlobStorage**。 | 是 |
+| serviceEndpoint | 使用 `https://<accountName>.blob.core.windows.net/` 模式指定 Azure Blob 存储服务终结点。 | 是 |
+| accountKind | 指定存储帐户的种类。 允许值包括：Storage（常规用途 v1）、StorageV2（常规用途 v2）、BlobStorage 或 BlockBlobStorage   。 <br/><br/>在数据流中使用 Azure Blob 链接服务时，如果帐户类型为空或“存储”，则不支持托管标识或服务主体身份验证。 请指定正确的帐户类型，选择一种不同的身份验证，或者将你的存储帐户升级到常规用途 v2。 | 否 |
+| 凭据 | 将用户分配的托管标识指定为凭据对象。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络中）。 如果未指定此属性，服务会使用默认的 Azure Integration Runtime。 | 否 |
+
+**示例：**
+
+```json
+{
+    "name": "AzureBlobStorageLinkedService",
+    "properties": {
+        "type": "AzureBlobStorage",
+        "typeProperties": {            
+            "serviceEndpoint": "https://<accountName>.blob.core.windows.net/",
+            "accountKind": "StorageV2",
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+>[!IMPORTANT]
+>如果使用 PolyBase 或 COPY 语句将数据从 Blob 存储（作为源或作为暂存位置）载入到 Azure Synapse Analytics 中，则在对 Blob 存储使用托管标识身份验证时，请确保还按照[此指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)中步骤 1 到步骤 3 的要求进行操作。 这两个步骤将向 Azure AD 注册服务器并将“存储 Blob 数据参与者”角色分配给服务器。 其余事项由数据工厂处理。 如果使用 Azure 虚拟网络终结点配置 Blob 存储，还需要按照 Azure Synapse 的要求，在 Azure 存储帐户“防火墙和虚拟网络”设置菜单下开启“允许受信任的 Microsoft 服务访问此存储帐户” 。
+
+> [!NOTE]
+>
+> - 如果 Blob 帐户启用了[软删除](../storage/blobs/soft-delete-blob-overview.md)，则数据流不支持系统分配的/用户分配的托管标识身份验证。
+> - 如果使用数据流通过专用终结点访问 Blob 存储，请注意，使用系统分配的/用户分配的托管标识身份验证时，数据流会连接到 ADLS Gen2 终结点，而不是 Blob 终结点。 请确保在 ADF 中创建相应的专用终结点以启用访问权限。
+
+> [!NOTE]
+> 仅“AzureBlobStorage”类型的链接服务支持系统分配的/用户分配的托管标识身份验证，而以前的“AzureStorage”类型链接服务并不支持。
+
 ## <a name="dataset-properties"></a>数据集属性
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 
@@ -332,7 +405,7 @@ Azure Blob 存储支持基于格式的数据集中 `location` 设置下的以下
 | 属性   | 说明                                                  | 必需 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中位置的 **type** 属性必须设置为 **AzureBlobStorageLocation**。 | 是      |
-| 容器 (container)  | Blob 容器。                                          | 是      |
+| container  | Blob 容器。                                          | 是      |
 | folderPath | 给定容器下的文件夹的路径。 如果要使用通配符来筛选文件夹，请跳过此设置并在活动源设置中进行相应的指定。 | 否       |
 | fileName   | 给定容器和文件夹路径下的文件名。 如果要使用通配符来筛选文件，请跳过此设置并在活动源设置中进行相应的指定。 | 否       |
 
@@ -392,7 +465,7 @@ Azure Blob 存储支持基于格式的复制源中 `storeSettings` 设置下的�
 | maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接时指定一个值。| 否                                            |
 
 > [!NOTE]
-> 对于 Parquet/带分隔符的文本格式，仍然会按原样支持下一部分中提到的 **BlobSource** 类型复制活动源，以实现后向兼容性。 建议你使用新模型，直到数据工厂创作 UI 已切换到生成这些新类型为止。
+> 对于 Parquet/带分隔符的文本格式，仍然会按原样支持下一部分中提到的 **BlobSource** 类型复制活动源，以实现后向兼容性。 建议使用新模型，直到创作 UI 已切换为生成这些新类型为止。
 
 **示例：**
 
@@ -436,7 +509,7 @@ Azure Blob 存储支持基于格式的复制源中 `storeSettings` 设置下的�
 ```
 
 > [!NOTE]
-> `$logs` 容器（为存储帐户启用存储分析时自动创建的）在通过数据工厂 UI 执行容器列出操作时不会显示。 必须直接提供文件路径，数据工厂才能使用 `$logs` 容器中的文件。
+> `$logs` 容器是在为存储帐户启用“存储分析”时自动创建的，在通过 UI 执行容器列出操作时并不会显示。 必须直接将文件路径提供给​数据工厂或 Synapse 管道，以便于使用 `$logs` 容器中的文件。
 
 ### <a name="blob-storage-as-a-sink-type"></a>用作接收器类型的 Blob 存储
 
@@ -448,8 +521,9 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 `type` 属性必须设置为 `AzureBlobStorageWriteSettings`。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名或 Blob 名称，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
-| blockSizeInMB | 指定用于将数据写入块 Blob 的块大小（以 MB 为单位）。 详细了解[块 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)。 <br/>允许的值介于 4 MB 到 100 MB 之间。 <br/>默认情况下，数据工厂会根据源存储类型和数据自动确定块大小。 以非二进制格式复制到 Blob 存储中时，默认块大小为 100 MB，因此该存储（最多）可容纳 4.95 TB 的数据。 当数据不大时，它可能并非最优，特别是当你在网络连接不佳的情况下使用自承载集成运行时的时候，这会导致操作超时或性能问题。 可以显式指定块大小，同时确保 `blockSizeInMB*50000` 足够大，可以存储数据， 否则复制活动运行会失败。 | 否 |
+| blockSizeInMB | 指定用于将数据写入块 Blob 的块大小（以 MB 为单位）。 详细了解[块 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)。 <br/>允许的值介于 4 MB 到 100 MB 之间。 <br/>默认情况下，该服务会自动根据源存储类型和数据确定块大小。 以非二进制格式复制到 Blob 存储中时，默认块大小为 100 MB，因此该存储（最多）可容纳 4.95 TB 的数据。 当数据不大时，它可能并非最优，特别是当你在网络连接不佳的情况下使用自承载集成运行时的时候，这会导致操作超时或性能问题。 可以显式指定块大小，同时确保 `blockSizeInMB*50000` 足够大，可以存储数据， 否则复制活动运行会失败。 | 否 |
 | maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接时指定一个值。| 否       |
+| metadata |在复制到接收器时设置自定义元数据。 `metadata` 数组下的每个对象都表示一个额外的列。 `name` 定义元数据键名称，`value` 表示该键的数据值。 如果使用了[保留属性功能](./copy-activity-preserve-metadata.md#preserve-metadata)，则指定的元数据会与源文件元数据联合，或者会被其覆盖。<br/><br/>允许的数据值为：<br/>- `$$LASTMODIFIED`：保留变量指示存储源文件的上次修改时间。 仅适用于二进制格式的基于文件的源。<br/><b>- 表达式<b><br/>- <b>静态值<b>| 否       |
 
 **示例：**
 
@@ -478,7 +552,21 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
                 "type": "ParquetSink",
                 "storeSettings":{
                     "type": "AzureBlobStorageWriteSettings",
-                    "copyBehavior": "PreserveHierarchy"
+                    "copyBehavior": "PreserveHierarchy",
+                    "metadata": [
+                        {
+                            "name": "testKey1",
+                            "value": "value1"
+                        },
+                        {
+                            "name": "testKey2",
+                            "value": "value2"
+                        },
+                        {
+                            "name": "lastModifiedKey",
+                            "value": "$$LASTMODIFIED"
+                        }
+                    ]
                 }
             }
         }
@@ -492,10 +580,10 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 
 | folderPath | fileName | recursive | 源文件夹结构和筛选器结果（用 **粗体** 表示的文件已检索）|
 |:--- |:--- |:--- |:--- |
-| `container/Folder*` | （为空，使用默认值） | false | 容器 (container)<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `container/Folder*` | （为空，使用默认值） | true | 容器 (container)<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `container/Folder*` | `*.csv` | false | 容器 (container)<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `container/Folder*` | `*.csv` | true | 容器 (container)<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `container/Folder*` | （为空，使用默认值） | false | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `container/Folder*` | （为空，使用默认值） | 是 | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `container/Folder*` | `*.csv` | false | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `container/Folder*` | `*.csv` | 是 | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
 ### <a name="file-list-examples"></a>文件列表示例
 
@@ -503,7 +591,7 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 
 假设有以下源文件夹结构，并且要复制以粗体显示的文件：
 
-| 示例源结构                                      | FileListToCopy.txt 中的内容                             | 数据工厂配置                                            |
+| 示例源结构                                      | FileListToCopy.txt 中的内容                             | 配置 
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | container<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;元数据<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | 在数据集中：<br>- 容器：`container`<br>- 文件夹路径：`FolderA`<br><br>在复制活动源中：<br>- 文件列表路径：`container/Metadata/FileListToCopy.txt` <br><br>文件列表路径指向同一数据存储中的一个文本文件，该文件包含要复制的文件列表（每行一个文件，带有数据集中所配置路径的相对路径）。 |
 
@@ -513,8 +601,8 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 
 | recursive | copyBehavior | 源文件夹结构 | 生成目标 |
 |:--- |:--- |:--- |:--- |
-| true |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用与源相同的结构创建目标文件夹 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
-| true |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 的自动生成的名称 |
+| 是 |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用与源相同的结构创建目标文件夹 Folder1：<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
+| 是 |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File3 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File4 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File5 的自动生成的名称 |
 | true |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + File3 + File4 + File5 的内容将合并到一个文件中，且自动生成文件名。 |
 | false |preserveHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
 | false |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | 使用以下结构创建目标文件夹 Folder1： <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 的自动生成的名称<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 的自动生成的名称<br/><br/>不会选取带有 File3、File4 和 File5 的 Subfolder1。 |
@@ -543,7 +631,7 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 
 ![源选项](media/data-flow/sourceOptions1.png "源选项")
 
-通配符路径：如果使用通配符模式，则会指示数据工厂在单个源转换中遍历每个匹配的文件夹和文件。 这是在单个流中处理多个文件的有效方法。 使用将鼠标指针悬停在现有通配符模式上时出现的加号来添加多个通配符匹配模式。
+通配符路径：如果使用通配符模式，则会指示服务在单个源转换中循环访问每个匹配的文件夹和文件。 这是在单个流中处理多个文件的有效方法。 使用将鼠标指针悬停在现有通配符模式上时出现的加号来添加多个通配符匹配模式。
 
 从源容器中，选择与模式匹配的一系列文件。 数据集中只能指定容器。 因此，通配符路径必须也包含根文件夹中的文件夹路径。
 
@@ -565,7 +653,7 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 
 ![分区源文件设置](media/data-flow/partfile2.png "分区文件设置")
 
-使用“分区根路径”设置来定义文件夹结构的顶级。 通过数据预览查看数据内容时你会看到，数据工厂会添加在每个文件夹级别找到的已解析分区。
+使用“分区根路径”设置来定义文件夹结构的顶级。 通过数据预览查看数据内容时会看到，该服务会添加在每个文件夹级别中找到的已解析的分区。
 
 ![分区根路径](media/data-flow/partfile1.png "分区根路径预览")
 
@@ -628,7 +716,7 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 ## <a name="legacy-models"></a>旧模型
 
 >[!NOTE]
->仍会按原样支持以下模型，以实现后向兼容性。 建议使用前面提到的新模型。 数据工厂创作 UI 已切换为生成新模型。
+>仍会按原样支持以下模型，以实现后向兼容性。 建议使用前面提到的新模型。 创作 UI 已切换为生成新模型。
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
@@ -757,4 +845,4 @@ Azure Blob 存储支持基于格式的复制接收器中 `storeSettings` 设置�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关数据存储（数据工厂中的复制活动支持将其用作源和接收器）的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -3,16 +3,16 @@ title: 使用 REST API 来管理 Azure IoT Central 中的作业
 description: 如何使用 IoT Central REST API 来创建和管理应用程序中的作业
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/21/2020
+ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9eeb3619697e1b602053cac77fc42ae13663c388
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: 89dd9c60e28db55ad1cab65fd5554d77244ff777
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113516186"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480743"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-create-and-manage-jobs"></a>如何使用 IoT Central REST API 来创建和管理作业
 

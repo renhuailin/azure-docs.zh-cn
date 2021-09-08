@@ -10,15 +10,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2020
+ms.date: 08/31/2021
 ms.author: duau
 ms.reviewer: amsriva
-ms.openlocfilehash: bb7de037f63c8892aa73e357f744b1f25fb0750f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c784232d5c51f4c3a3c81df48ce0c01f7e794fc8
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114441022"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123309924"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door 域中的地区筛选
 
@@ -26,8 +26,10 @@ ms.locfileid: "114441022"
 
 WAF 策略包括一组自定义规则。 规则由匹配条件、操作和优先级组成。 在匹配条件中，请定义匹配变量、运算符和匹配值。 对于地区筛选规则，匹配变量为 REMOTE_ADDR，运算符为 GeoMatch，值为相关的国家/地区代码（两个字母）。 “ZZ”国家/地区代码或“未知”国家/地区捕获尚未映射到数据集中的国家/地区的 IP 地址。 可以将 ZZ 添加到匹配条件，以避免误报。 可以将 GeoMatch 条件与 REQUEST_URI 字符串匹配条件组合在一起，创建一个基于路径的地区筛选规则。
 
-
 可以通过 [Azure PowerShell](front-door-tutorial-geo-filtering.md) 或[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-geo-filtering)为 Front Door 配置地区筛选策略。
+
+> [!IMPORTANT]
+> 无论何时使用地区筛选，都要包含国家/地区代码“ZZ”。 “ZZ”国家/地区代码（或“未知”国家/地区）捕获尚未映射到数据集中的国家/地区的 IP 地址。 这样可以避免假正。
 
 ## <a name="countryregion-code-reference"></a>国家/地区代码参考
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
-ms.openlocfilehash: acd1b6c8e5c1be76b29c93fddc57c799aef0a526
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 282df705e8a98a7c236cfff549447cdd36017df8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046697"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431433"
 ---
 # <a name="how-to-upgrade-the-vm-insights-dependency-agent"></a>如何升级 VM 见解依赖项代理
 
@@ -47,7 +47,7 @@ ms.locfileid: "102046697"
 
 2. 运行以下命令。
 
-    ```dos
+    ```cmd
     InstallDependencyAgent-Windows.exe /S /RebootMode=manual
     ```
 
@@ -63,7 +63,11 @@ ms.locfileid: "102046697"
 
 1. 使用具有管理权限的帐户登录到计算机。
 
-2. 以 root 身份运行命令 `sh InstallDependencyAgent-Linux64.bin -s`。 
+2. 以 root 身份运行以下命令。
+
+    ```bash
+    InstallDependencyAgent-Linux64.bin -s
+    ```
 
 如果 Dependency Agent 无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是 */var/opt/microsoft/dependency-agent/log*。 
 

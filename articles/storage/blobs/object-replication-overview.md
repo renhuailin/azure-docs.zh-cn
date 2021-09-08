@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2021
+ms.date: 08/30/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e65d6097afb6c2b6da1de332304d3b638d2ac081
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dce411e6359a760f50dd4bbbbeba369e2a67f386
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740177"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254206"
 ---
 # <a name="object-replication-for-block-blobs"></a>块 blob 的对象复制
 
@@ -43,7 +43,7 @@ ms.locfileid: "121740177"
 
 启用更改源和 blob 版本控制可能会产生额外的成本。 有关更多详细信息，请参阅 [Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/)。
 
-只有常规用途 v2 存储帐户支持对象复制。 源帐户和目标帐户都必须是常规用途 v2。 
+只有常规用途 v2 存储帐户支持对象复制。 源帐户和目标帐户都必须是常规用途 v2。 对象复制仅支持块 blob；不支持追加 blob 和页 blob。
 
 ## <a name="how-object-replication-works"></a>对象复制的工作原理
 
@@ -68,7 +68,11 @@ ms.locfileid: "121740177"
 
 ### <a name="immutable-blobs"></a>不可变 blob
 
-对象复制不支持不可变 blob。 如果源或目标容器具有基于时间的保留策略或法定保留，则对象复制将失败。 有关不可变 blob 的详细信息，请参阅[使用不可变存储来存储业务关键型 blob 数据](immutable-storage-overview.md)。
+Azure Blob 存储的不可变性策略包括基于时间的保留策略和法定保留。 当不可变性策略对目标帐户生效时，对象复制可能会受到影响。 有关不可变性策略的详细信息，请参阅[使用不可变存储来存储业务关键型 blob 数据](immutable-storage-overview.md)。
+
+如果容器级不可变性策略对目标帐户中的容器有效，并且源容器中的对象被更新或删除，则对源容器执行的操作可能会成功，但对目标容器执行该操作将会失败。 若要详细了解范围设为容器的不可变性策略禁止哪些操作，请参阅[使用容器级范围的方案](immutable-storage-overview.md#scenarios-with-container-level-scope)。
+
+如果版本级不可变性策略对目标帐户中的 blob 版本有效，并且源容器中的 blob 版本被删除或更新，则对源对象执行的操作可能会成功，但对目标对象执行该操作将会失败。 若要详细了解范围设为容器的不可变性策略禁止哪些操作，请参阅[使用版本级范围的方案](immutable-storage-overview.md#scenarios-with-version-level-scope)。
 
 ## <a name="object-replication-policies-and-rules"></a>对象复制策略和规则
 

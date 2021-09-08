@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 7c3b75f4cff6524e872db0fc839bf0f8a6df3d83
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: f8cd48669aa13240eee8a80f890d791eb5d93b21
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123100324"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123467445"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -20,9 +20,9 @@ ms.locfileid: "123100324"
 |[在资源组中添加或替换标记](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd157c373-a6c4-483d-aaad-570756956268) |创建或更新任何资源组时添加或替换指定的标记和值。 可以通过触发修正任务来修正现有资源组。 |modify |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddOrReplaceTag_ResourceGroup_Modify.json) |
 |[在资源中添加或替换标记](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5ffd78d9-436d-4b41-a421-5baa819e3008) |创建或更新任何资源时添加或替换指定的标记和值。 可以通过触发修正任务来修正现有资源。 而不会修改资源组上的标记。 |modify |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddOrReplaceTag_Modify.json) |
 |[在订阅上添加或替换标记](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F61a4d60b-7326-440e-8051-9f94394d4dd1) |通过修正任务在订阅上添加或替换指定的标记和值。 可以通过触发修正任务来修正现有资源组。 有关策略修正的详细信息，请参阅 [https://aka.ms/azurepolicyremediation](../../../../articles/governance/policy/how-to/remediate-resources.md)。 |modify |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddOrReplaceTag_Subscription_Modify.json) |
-|[追加资源组的标记及其值](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9ea02ca2-71db-412d-8b00-7c7ca9fcd32d) |创建或更新任何缺少此标记的资源时，从资源组追加指定的标记及其值。 在更改这些资源之前，请不要修改应用此策略之前创建的资源的标记。 新的“modify”效果策略已可供使用，这些策略支持对现有资源中的标记进行修正（请参阅 [https://aka.ms/modifydoc](/azure/governance/policy/concepts/effects#modify)）。 |append |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Append.json) |
-|[将标记及其值追加到资源组](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F49c88fc8-6fd1-46fd-a676-f12d1d3a4c71) |创建或更新任何缺少此标记的资源组时追加指定的标记和值。 在更改这些资源组之前，请不要修改应用此策略之前创建的资源组的标记。 新的“modify”效果策略已可供使用，这些策略支持对现有资源中的标记进行修正（请参阅 [https://aka.ms/modifydoc](/azure/governance/policy/concepts/effects#modify)）。 |append |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ResourceGroupApplyTag_Append.json) |
-|[将标记及其值追加到资源](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2a0e14a6-b0a6-4fab-991a-187a4f81c498) |创建或更新任何缺少此标记的资源时追加指定的标记和值。 在更改这些资源之前，请不要修改应用此策略之前创建的资源的标记。 不要应用到资源组。 新的“modify”效果策略已可供使用，这些策略支持对现有资源中的标记进行修正（请参阅 [https://aka.ms/modifydoc](/azure/governance/policy/concepts/effects#modify)）。 |append |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ApplyTag_Append.json) |
+|[追加资源组的标记及其值](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9ea02ca2-71db-412d-8b00-7c7ca9fcd32d) |创建或更新任何缺少此标记的资源时，从资源组追加指定的标记及其值。 在更改这些资源之前，请不要修改应用此策略之前创建的资源的标记。 新的“modify”效果策略已可供使用，这些策略支持对现有资源中的标记进行修正（请参阅 [https://aka.ms/modifydoc](../../../../articles/governance/policy/concepts/effects.md)）。 |append |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Append.json) |
+|[将标记及其值追加到资源组](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F49c88fc8-6fd1-46fd-a676-f12d1d3a4c71) |创建或更新任何缺少此标记的资源组时追加指定的标记和值。 在更改这些资源组之前，请不要修改应用此策略之前创建的资源组的标记。 新的“modify”效果策略已可供使用，这些策略支持对现有资源中的标记进行修正（请参阅 [https://aka.ms/modifydoc](../../../../articles/governance/policy/concepts/effects.md)）。 |append |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ResourceGroupApplyTag_Append.json) |
+|[将标记及其值追加到资源](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2a0e14a6-b0a6-4fab-991a-187a4f81c498) |创建或更新任何缺少此标记的资源时追加指定的标记和值。 在更改这些资源之前，请不要修改应用此策略之前创建的资源的标记。 不要应用到资源组。 新的“modify”效果策略已可供使用，这些策略支持对现有资源中的标记进行修正（请参阅 [https://aka.ms/modifydoc](../../../../articles/governance/policy/concepts/effects.md)）。 |append |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ApplyTag_Append.json) |
 |[从资源组继承标记](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcd3aa116-8754-49c9-a813-ad46512ece54) |创建或更新任何资源时，添加或替换父资源组中指定的标记和值。 可以通过触发修正任务来修正现有资源。 |modify |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_AddOrReplace_Modify.json) |
 |[从资源组继承标记（如果缺少此标记）](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea3f2387-9b95-492a-a190-fcdc54f7b070) |创建或更新任何缺少此标记的资源时，从父资源组添加指定的标记及其值。 可以通过触发修正任务来修正现有资源。 如果存在具有不同值的标记，则不会更改该资源组。 |modify |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Add_Modify.json) |
 |[从订阅继承标记](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb27a0cbd-a167-4dfa-ae64-4337be671140) |创建或更新任何资源时，添加或替换包含订阅中指定的标记和值。 可以通过触发修正任务来修正现有资源。 |modify |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_AddOrReplace_FromSubscription.json) |

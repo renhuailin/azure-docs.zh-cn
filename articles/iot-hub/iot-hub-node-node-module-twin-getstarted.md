@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 08/23/2021
 ms.custom: amqp, devx-track-js
-ms.openlocfilehash: f8cf2faac9914b7b9fafd8355c2070c5d3a6f0e9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2028bed00624526c021668076c4d7feaba7aa07c
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751982"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122830106"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT 中心模块标识和模块孪生 (Node.js) 入门
 
@@ -123,7 +123,7 @@ ms.locfileid: "121751982"
 使用节点 add.js 运行它。 它将为设备标识提供一个连接字符串，并为模块标识提供另一个连接字符串。
 
 > [!NOTE]
-> IoT 中心标识注册表只存储设备和模块标识，以启用对 IoT 中心的安全访问。 标识注册表存储用作安全凭据的设备 ID 和密钥。 标识注册表还为每个设备存储启用/禁用标志，该标志可以用于禁用对该设备的访问。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 没有针对模块标识的“已启用/已禁用”标记。 有关详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide-identity-registry.md)。
+> IoT 中心标识注册表只存储设备和模块标识，以启用对 IoT 中心的安全访问。 标识注册表存储用作安全凭据的设备 ID 和密钥。 标识注册表还为每个设备存储启用/禁用标志，该标志可以用于禁用对该设备的访问。 如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。 没有针对模块标识的“已启用/已禁用”标记。 有关详细信息，请参阅[IoT 中心开发人员指南中的了解 IoT 中心的标识注册表](iot-hub-devguide-identity-registry.md)。
 
 ## <a name="update-the-module-twin-using-nodejs-device-sdk"></a>使用 Node.js 设备 SDK 更新模块孪生
 
@@ -133,7 +133,7 @@ ms.locfileid: "121751982"
 
    ![Azure 门户模块详细信息](./media/iot-hub-node-node-module-twin-getstarted/module-detail.png)
 
-2. 与上面步骤中的操作类似，为设备代码创建一个目录，使用 NPM 对它进行初始化并安装设备 SDK (**npm install -S azure-iot-device-amqp\@modules-preview**)。
+2. 与上面步骤中的操作类似，为设备代码创建一个目录，使用 NPM 对它进行初始化并安装设备 SDK (pm install -S azure-iot-device-amqp\@modules-preview)。
 
    > [!NOTE]
    > npm install 命令可能有点慢。 请耐心等待，它正在从包存储库中提取大量代码。

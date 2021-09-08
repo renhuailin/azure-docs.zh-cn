@@ -3,12 +3,12 @@ title: Bicep 函数
 description: 介绍在 Bicep 文件中检索值、处理字符串和数字以及检索部署信息时所用的函数。
 ms.topic: conceptual
 ms.date: 06/16/2021
-ms.openlocfilehash: 827770c449d144e266022ee1b53c3b10078f605f
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: dcc0e71917431ac2a181ae87374499a89a27482c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112292926"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303978"
 ---
 # <a name="bicep-functions"></a>Bicep 函数
 
@@ -89,6 +89,7 @@ Bicep 中提供 [any 函数](./bicep-functions-any.md)可帮助解决有关数�
 * [listSecrets](./bicep-functions-resource.md#list)
 * [list*](./bicep-functions-resource.md#list)
 * [pickZones](./bicep-functions-resource.md#pickzones)
+* [提供程序（已弃用）](./bicep-functions-resource.md#providers)
 * [reference](./bicep-functions-resource.md#reference)
 * [resourceId](./bicep-functions-resource.md#resourceid) - 可以在任何范围内使用，但有效参数会根据范围而发生变化。
 * [subscriptionResourceId](./bicep-functions-resource.md#subscriptionresourceid)

@@ -4,13 +4,13 @@ description: 介绍如何定义 Bicep 文件中的参数。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 8701d437a34d364ff6f6e2d58cbf84dc28a79798
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 09/02/2021
+ms.openlocfilehash: 901e95708be75ebd4415c90dbd51eeb46ba492c4
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634209"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450244"
 ---
 # <a name="parameters-in-bicep"></a>Bicep 中的参数
 
@@ -85,9 +85,7 @@ param demoParam string = 'Contoso'
 param demoParam string = 'Contoso'
 ```
 
-可以使用具有默认值的表达式。 不能在 parameters 节中使用 [reference](bicep-functions-resource.md#reference) 函数或任何 [list](bicep-functions-resource.md#list) 函数。 在解析参数时，这些函数获取资源的运行时状态，并且不能在部署之前执行。
-
-表达式不允许有其他参数属性。
+可以使用具有默认值的表达式。 表达式不允许有其他参数属性。 不能在 parameters 节中使用 [reference](bicep-functions-resource.md#reference) 函数或任何 [list](bicep-functions-resource.md#list) 函数。 在解析参数时，这些函数获取资源的运行时状态，并且不能在部署之前执行。
 
 ```bicep
 param location string = resourceGroup().location
@@ -95,10 +93,7 @@ param location string = resourceGroup().location
 
 可以使用另一个参数值来生成默认值。 以下模板基于站点名称构造主机计划名称。
 
-```bicep
-param siteName string = 'site${uniqueString(resourceGroup().id)}'
-param hostingPlanName string = '${siteName}-plan'
-```
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/parameters/parameterswithfunctions.bicep":::
 
 ## <a name="length-constraints"></a>长度约束
 
@@ -154,62 +149,8 @@ resource keyvault 'Microsoft.KeyVault/vaults@2019-09-01' = {
 
 以下示例显示的参数是一个对象。 默认值显示对象的预期属性。 定义要部署的资源时，将使用这些属性。
 
-```bicep
-param vNetSettings object = {
-  name: 'VNet1'
-  location: 'eastus'
-  addressPrefixes: [
-    {
-      name: 'firstPrefix'
-      addressPrefix: '10.0.0.0/22'
-    }
-  ]
-  subnets: [
-    {
-      name: 'firstSubnet'
-      addressPrefix: '10.0.0.0/24'
-    }
-    {
-      name: 'secondSubnet'
-      addressPrefix: '10.0.1.0/24'
-    }
-  ]
-}
-resource vnet 'Microsoft.Network/virtualNetworks@2020-06-01' = {
-  name: vNetSettings.name
-  location: vNetSettings.location
-  properties: {
-    addressSpace: {
-      addressPrefixes: [
-        vNetSettings.addressPrefixes[0].addressPrefix
-      ]
-    }
-    subnets: [
-      {
-        name: vNetSettings.subnets[0].name
-        properties: {
-          addressPrefix: vNetSettings.subnets[0].addressPrefix
-        }
-      }
-      {
-        name: vNetSettings.subnets[1].name
-        properties: {
-          addressPrefix: vNetSettings.subnets[1].addressPrefix
-        }
-      }
-    ]
-  }
-}
-```
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/parameters/parameterobject.bicep":::
 
-## <a name="example-templates"></a>示例模板
-
-以下示例演示了使用参数的方案。
-
-|模板  |说明  |
-|---------|---------|
-|[包含用于默认值的函数的参数](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/parameterswithfunctions.bicep) | 演示了为参数定义默认值时如何使用 Bicep 函数。 Bicep 文件不部署任何资源。 它构造参数值并返回这些值。 |
-|[参数对象](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/parameterobject.bicep) | 演示了将对象用于参数。 Bicep 文件不部署任何资源。 它构造参数值并返回这些值。 |
 
 ## <a name="next-steps"></a>后续步骤
 

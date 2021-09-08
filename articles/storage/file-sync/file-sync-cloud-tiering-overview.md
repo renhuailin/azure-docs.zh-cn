@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5e1bbd56d3fcfd087e294cb55c66edd2f22bd939
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 06b82bf78c7a4d66e2c4da6d053f8ab77c400e00
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765623"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258718"
 ---
 # <a name="cloud-tiering-overview"></a>云分层概述
 云分层是 Azure 文件同步的一项可选功能，可减少所需的本地存储量，同时保留本地文件服务器的性能。
@@ -29,7 +29,7 @@ ms.locfileid: "113765623"
 #### <a name="volume-free-space-policy"></a>卷可用空间策略
 卷可用空间策略告诉 Azure 文件同步，当本地磁盘上被占用一定量的空间时，将冷文件分层到云。 
 
-例如，如果本地磁盘容量为 200 GB，并且你希望至少 40 GB 的本地磁盘容量始终可用，则应将卷可用空间策略设置为 20%。 卷可用空间适用于卷级别，不适用于各个目录或服务器终结点的级别。 
+例如，如果本地磁盘容量为 200 GiB，并且你希望至少 40 GiB 的本地磁盘容量始终可用，则应将卷可用空间策略设置为 20%。 卷可用空间适用于卷级别，不适用于各个目录或服务器终结点的级别。 
 
 #### <a name="date-policy"></a>日期策略
 对于日期策略，如果在 x 天内没有访问（即读取或写入）冷文件，则将这些文件分层到云。 例如，如果你注意到超过 15 天没有访问的文件通常是归档文件，则应该把日期策略设置为 15 天。 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: dbbd43d07bbb07e13f2e0301e15d73ee727a86fd
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 2b4b509e359976fcf8ff0c47270c814a203fcbdd
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461232"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123108328"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>在 Azure Stack Edge Pro 上启用计算网络
 
@@ -62,7 +62,7 @@ ms.locfileid: "110461232"
 3. 在“IoT Edge 自定义模块”边栏选项卡中：
 
     1. 为要部署的 webserver 应用模块指定一个 **名称**。
-    2. 为模块映像提供“映像 URI”。 将检索与所提供的名称和标记相匹配的模块。 在这种情况下，`nginx:stable` 将从公共 [Docker 存储库](https://hub.docker.com/_/nginx/)拉取稳定的 nginx 映像（标记为稳定）。
+    2. 为模块映像提供“映像 URI”。 将检索与所提供的名称和标记相匹配的模块。 在这种情况下，`mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine` 将从公共 `mcr.microsoft.com` 注册表中拉取 nginx 映像（标记为 1.15.5-alpine）。
     3. 在“容器创建选项”中粘贴以下示例代码：  
 
         ```

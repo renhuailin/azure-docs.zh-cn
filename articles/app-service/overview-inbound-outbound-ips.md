@@ -4,12 +4,12 @@ description: 了解如何在 Azure 应用服务中使用入站和出站 IP 地�
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: ea667fcfe70e109038d74e7c1fa0281bbc2b20bb
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: e4913ad840c847c4ce571f07f971922858e40393
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397794"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123472229"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure 应用服务中的入站和出站 IP 地址
 
@@ -29,7 +29,7 @@ ms.locfileid: "122397794"
 
 - 删除应用，然后在其他资源组中重新创建它（部署单元可能会更改）。
 - 删除资源组和区域组合中的最后一个应用，然后重新创建它（部署单元可能会更改）。
-- 删除现有基于 IP 的 TLS/SSL 绑定，例如在证书续订期间（请参阅[续订证书](configure-ssl-certificate.md#renew-certificate)）。
+- 删除现有基于 IP 的 TLS/SSL 绑定，例如在证书续订期间（请参阅[续订证书](configure-ssl-certificate.md#renew-an-expiring-certificate)）。
 
 ## <a name="find-the-inbound-ip"></a>找到入站 IP
 
@@ -51,7 +51,7 @@ nslookup <app-name>.azurewebsites.net
 
 - 删除应用，然后在其他资源组中重新创建它（部署单元可能会更改）。
 - 删除资源组和区域组合中的最后一个应用，然后重新创建它（部署单元可能会更改）。
-- 在较低层级（“基本”、“标准”和“高级”）与“高级 V2”和“高级 V3”层级之间缩放应用（可以在该集内增减 IP 地址）。    
+- 在较低层级（“基本”、“标准”和“高级”）、“高级 V2”和“高级 V3”层级之间缩放应用（可以在该集内增减 IP 地址）。    
 
 无论是哪个定价层，你都可以通过查找 `possibleOutboundIpAddresses` 属性或者在 Azure 门户的“属性”边栏选项卡中的“其他出站 IP 地址”字段中查找你的应用可以使用的所有可能的出站 IP 地址。 请参阅[查找出站 IP](#find-outbound-ips)。
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: 92ee092f50b334ac1be05ea4d37cf42d3dc91a62
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: 17d6120a951af052c82f06ed62025279011018a6
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114361430"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867550"
 ---
 # <a name="translator-language-support"></a>翻译器语言支持
 
@@ -43,6 +43,7 @@ ms.locfileid: "114361430"
 | 保加利亚语 | `bg` |✔|✔|✔|✔|✔|
 | 粤语(繁体) | `yue` |✔|✔||||
 | 加泰罗尼亚语 | `ca` |✔|✔|✔|✔|✔|
+| 中文（文学） | `lzh` |✔|||||
 | 简体中文 | `zh-Hans` |✔|✔|✔|✔|✔|
 | 中文(繁体) | `zh-Hant` |✔|✔|✔|✔||
 | 克罗地亚语 | `hr` |✔|✔|✔|✔|✔|

@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: dd1a5ff9fbf85fbce4c4ae7a79b745589b3596e1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3fc896daef7e42c1574f8ba92ead76ddb1b7205e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728934"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966056"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -111,7 +111,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 | Debian | 7 及更高版本 |
 | Oracle Linux | 6.4 及更高版本 |
 | SLES | 12 及更高版本 |
-| openSUSE | 42.2 及更高版本 |
+| OpenSUSE | 42.2 及更高版本 |
 
 > [!NOTE]
 > 我们发现，在使用 SLES 12 SP4 OS 的计算机上运行文件恢复脚本时会出现一些问题，我们正在与 SLES 团队一起调查这些问题。
@@ -140,6 +140,9 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us`（适用于 Azure 美国政府）或 NSG 中的 `AzureBackup` 服务标记
   - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de`（适用于 Azure 德国）或 NSG 中的 `AzureBackup` 服务标记
 - 端口 53（出站）上的公共 DNS 解析
+
+> [!NOTE]
+> 代理可能不支持 iSCSI 协议或授予对端口 3260 的访问权限。 因此，强烈建议在具有如上所述的直接访问权限的计算机（而不是将重定向到代理的计算机）中运行此脚本。
 
 > [!NOTE]
 >
@@ -187,10 +190,10 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
     ![注册表项更改](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
-- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
-- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200 secs.
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200 secs.
 - HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\EnableNOPOut – change this from 0 to 1
-- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200 secs.
 ```
 
 ### <a name="for-linux"></a>对于 Linux

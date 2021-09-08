@@ -4,23 +4,97 @@ description: 介绍 Bicep 资源访问运算符和属性访问运算符。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/29/2021
-ms.openlocfilehash: addf6f552d6c409c77a11d666b8b9ade619ca8f2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: b5eebb9b5dd6d39ae790b8fda7133e94ecd0cdb5
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746620"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224275"
 ---
 # <a name="bicep-accessor-operators"></a>Bicep 访问器运算符
 
-访问器运算符用于访问对象上的子资源和属性。 还可以使用属性访问器来使用某些函数。
+访问器运算符用于访问对象上的子资源、属性和数组中的元素。 还可以使用属性访问器来使用某些函数。
 
 | 运算符 | 名称 |
 | ---- | ---- |
+| `[]` | [索引访问器](#index-accessor) |
+| `.`  | [函数访问器](#function-accessor) |
 | `::` | [嵌套资源访问器](#nested-resource-accessor) |
 | `.`  | [属性访问器](#property-accessor) |
-| `.`  | [函数访问器](#function-accessor) |
+
+## <a name="index-accessor"></a>索引访问器
+
+`array[index]`
+
+`object['index']`
+
+要获取数组中的元素，请使用 `[index]` 并为索引提供一个整数。
+
+以下示例获取数组中的元素。
+
+```bicep
+var arrayVar = [
+  'Coho'
+  'Contoso'
+  'Fabrikan'
+]
+
+output accessorResult string = arrayVar[1]
+``` 
+
+示例中的输出：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ---- |
+| accessorResult | 字符串 | 'Contoso' |
+
+也可使用索引访问器按名称获取对象属性。 必须为索引使用字符串，而不是整数。 以下示例获取对象的属性。
+
+```bicep
+var environmentSettings = {
+  dev: {
+    name: 'Development'
+  }
+  prod: {
+    name: 'Production'
+  }
+}
+
+output accessorResult string = environmentSettings['dev'].name
+```
+
+示例中的输出：
+
+| 名称 | 类型 | 值 |
+| ---- | ---- | ---- |
+| accessorResult | 字符串 | 'Development' |
+
+## <a name="function-accessor"></a>函数访问器
+
+`resourceName.functionName()`
+
+两个函数 - [getSecret](bicep-functions-resource.md#getsecret) 和 [list*](bicep-functions-resource.md#list) - 支持用于调用函数的访问器运算符。 只有这两个函数支持访问器运算符。
+
+### <a name="example"></a>示例
+
+以下示例引用现有密钥保管库，然后使用 `getSecret` 将机密传递到模块。
+
+```bicep
+resource kv 'Microsoft.KeyVault/vaults@2019-09-01' existing = {
+  name: kvName
+  scope: resourceGroup(subscriptionId, kvResourceGroup )
+}
+
+module sql './sql.bicep' = {
+  name: 'deploySQL'
+  params: {
+    sqlServerName: sqlServerName
+    adminLogin: adminLogin
+    adminPassword: kv.getSecret('vmAdminPassword')
+  }
+}
+```
 
 ## <a name="nested-resource-accessor"></a>嵌套资源访问器
 
@@ -107,32 +181,6 @@ resource publicIp 'Microsoft.Network/publicIPAddresses@2020-06-01' = {
 
 // Use property accessor to get value
 output ipFqdn string = publicIp.properties.dnsSettings.fqdn
-```
-
-## <a name="function-accessor"></a>函数访问器
-
-`resourceName.functionName()`
-
-两个函数 - [getSecret](bicep-functions-resource.md#getsecret) 和 [list*](bicep-functions-resource.md#list) - 支持用于调用函数的访问器运算符。 只有这两个函数支持访问器运算符。
-
-### <a name="example"></a>示例
-
-以下示例引用现有密钥保管库，然后使用 `getSecret` 将机密传递到模块。
-
-```bicep
-resource kv 'Microsoft.KeyVault/vaults@2019-09-01' existing = {
-  name: kvName
-  scope: resourceGroup(subscriptionId, kvResourceGroup )
-}
-
-module sql './sql.bicep' = {
-  name: 'deploySQL'
-  params: {
-    sqlServerName: sqlServerName
-    adminLogin: adminLogin
-    adminPassword: kv.getSecret('vmAdminPassword')
-  }
-}
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 2c49bfee8f3b694ea635c836e06bfbe99ba9d758
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: bbe2473c570a9b31d0c56e1069d7798dc3475fd6
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112425942"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123078146"
 ---
 [Durable Functions](../articles/azure-functions/durable/durable-functions-overview.md) 的配置设置。
 
@@ -114,7 +114,7 @@ ms.locfileid: "112425942"
 |trackingStoreConnectionStringName||连接字符串的名称，用于“历史记录”和“实例”表。 如果未指定，则使用 `connectionStringName` (Durable 2.x) 或 `azureStorageConnectionStringName` (Durable 1.x) 连接。|
 |trackingStoreNamePrefix||指定 `trackingStoreConnectionStringName` 时用于“历史记录”和“实例”表的前缀。 如果未设置，则默认前缀值为 `DurableTask`。 如果 `trackingStoreConnectionStringName` 未指定，则“历史记录”和“实例”表会使用 `hubName` 值作为其前缀，`trackingStoreNamePrefix` 的任何设置都会被忽略。|
 |traceInputsAndOutputs |false|一个指示是否跟踪函数调用的输入和输出的值。 跟踪函数执行事件时的默认行为是在函数调用的序列化输入和输出中包括字节数。 此行为提供的有关输入和输出情况的信息是最少的，不会导致日志膨胀，也不会无意中将敏感信息公开。 将此属性设置为 true 会导致默认函数日志记录将函数输入和输出的整个内容都记录下来。|
-|logReplayEvents|false|一个值，该值指示是否将业务流程重播事件写入到 Application Insights。|
+|traceReplayEvents|false|一个值，该值指示是否将业务流程重播事件写入到 Application Insights。|
 |eventGridTopicEndpoint ||Azure 事件网格自定义主题终结点的 URL。 设置此属性后，业务流程生命周期通知事件就会发布到此终结点。 此属性支持应用设置解析。|
 |eventGridKeySettingName ||应用设置的名称，该设置包含的密钥用于在 `EventGridTopicEndpoint` 上通过 Azure 事件网格自定义主题进行身份验证。|
 |eventGridPublishRetryCount|0|发布到事件网格主题失败时要重试的次数。|

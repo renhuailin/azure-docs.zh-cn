@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: 9d59e8eab9aff857991a886838cc1063a36de00c
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: dc0f2a4f51fb12c61d0e1e16cb23d030a5dc9cc6
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112120118"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969269"
 ---
 # <a name="use-external-file-storage-in-lab-services"></a>在实验室服务中使用外部文件存储
 
@@ -51,11 +51,11 @@ Azure 实验室服务的使用成本不包括外部存储的使用成本。  有
 按照以下步骤创建连接到 Azure 文件共享的 VM。
 
 1. 创建 [Azure 存储帐户](../storage/files/storage-how-to-create-file-share.md)。 在“连接方法”页上，选择“公共终结点”或“专用终结点”  。
-2. 如果选择专用终结点，请创建[专用终结点](../private-link/tutorial-private-endpoint-storage-portal.md)，以便从虚拟网络访问文件共享。 创建[专用 DNS 区域](../dns/private-dns-privatednszone.md)，或使用现有的 DNS 区域。 专用 Azure DNS 区域在虚拟网络中提供了名称解析。
-3. 创建 [Azure 文件共享](../storage/files/storage-how-to-create-file-share.md)。 使用存储帐户的公共主机名可访问文件共享。
+2. 如果选择专用终结点，请创建[专用终结点](../private-link/tutorial-private-endpoint-storage-portal.md)，以便从虚拟网络访问文件共享。
+3. 创建 [Azure 文件共享](../storage/files/storage-how-to-create-file-share.md)。 如果使用公共终结点，则可通过存储帐户的公共主机名访问文件共享。  如果使用专用终结点，则可通过专用 IP 地址访问文件共享。  
 4. 在模板 VM 中装载 Azure 文件共享：
     - [Windows](../storage/files/storage-how-to-use-files-windows.md)
-    - [Linux](../storage/files/storage-how-to-use-files-linux.md)。 若要避免学生 VM 上的装载问题，请参阅下一部分。
+    - [Linux](../storage/files/storage-how-to-use-files-linux.md)。 请参阅[通过 Linux 使用 Azure 文件](#use-azure-files-with-linux)部分，以避免学生 VM 出现装载问题。
 5. [发布](how-to-create-manage-template.md#publish-the-template-vm)模板 VM。
 
 > [!IMPORTANT]
@@ -65,6 +65,7 @@ Azure 实验室服务的使用成本不包括外部存储的使用成本。  有
 
 如果按照默认说明装载 Azure 文件存储共享，则模板发布后，学生 VM 上似乎不会显示文件共享。 可使用以下修改后的脚本解决此问题。  
 
+对于具有公共终结点的文件共享：
 ```bash
 #!/bin/bash
 
@@ -88,6 +89,34 @@ fi
 sudo chmod 600 /etc/smbcredentials/$storage_account_name.cred
 
 sudo bash -c "echo ""//$storage_account_name.file.core.windows.net/$fileshare_name /$mount_directory/$fileshare_name cifs nofail,vers=3.0,credentials=/etc/smbcredentials/$storage_account_name.cred,dir_mode=0777,file_mode=0777,serverino"" >> /etc/fstab"
+sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name /$mount_directory/$fileshare_name -o vers=3.0,credentials=/etc/smbcredentials/$storage_account_name.cred,dir_mode=0777,file_mode=0777,serverino
+```
+
+对于具有专用终结点的文件共享：
+```bash
+#!/bin/bash
+
+# Assign variables values for your storage account and file share
+storage_account_name=""
+storage_account_ip=""
+storage_account_key=""
+fileshare_name=""
+
+# Do not use 'mnt' for mount directory.
+# Using ‘mnt’ will cause issues on student VMs.
+mount_directory="prm-mnt" 
+
+sudo mkdir /$mount_directory/$fileshare_name
+if [ ! -d "/etc/smbcredentials" ]; then
+    sudo mkdir /etc/smbcredentials
+fi
+if [ ! -f "/etc/smbcredentials/$storage_account_name.cred" ]; then
+    sudo bash -c "echo ""username=$storage_account_name"" >> /etc/smbcredentials/$storage_account_name.cred"
+    sudo bash -c "echo ""password=$storage_account_key"" >> /etc/smbcredentials/$storage_account_name.cred"
+fi
+sudo chmod 600 /etc/smbcredentials/$storage_account_name.cred
+
+sudo bash -c "echo ""//$storage_account_ip/$fileshare_name /$mount_directory/$fileshare_name cifs nofail,vers=3.0,credentials=/etc/smbcredentials/$storage_account_name.cred,dir_mode=0777,file_mode=0777,serverino"" >> /etc/fstab"
 sudo mount -t cifs //$storage_account_name.file.core.windows.net/$fileshare_name /$mount_directory/$fileshare_name -o vers=3.0,credentials=/etc/smbcredentials/$storage_account_name.cred,dir_mode=0777,file_mode=0777,serverino
 ```
 

@@ -3,19 +3,19 @@ title: Azure IoT Edge 和 Azure IoT Central | Microsoft Docs
 description: 了解如何在 IoT Central 应用程序中使用 Azure IoT Edge。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/19/2021
+ms.date: 08/31/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 0b1cf7d0dbf7456d01f6530355e6943c8ead54db
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 15d6da6b5fe458e34847469faf230222f20efb38
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014922"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123273089"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序
 
@@ -23,6 +23,7 @@ Azure IoT Edge 将云分析和自定义业务逻辑移到设备，这样你的�
 
 本文介绍：
 
+* IoT Edge 网关模式与 IoT Central。
 * 如何将 IoT Edge 设备连接到 IoT Central 应用程序。
 * 如何使用 IoT Central 管理 IoT Edge 设备。
 
@@ -30,33 +31,72 @@ Azure IoT Edge 将云分析和自定义业务逻辑移到设备，这样你的�
 
 ## <a name="iot-edge"></a>IoT Edge
 
+![包含 Azure IoT Edge 的 Azure IoT Central](./media/concepts-iot-edge/iotedge.png)
+
 IoT Edge 包含三个组件：
 
 * IoT Edge 模块是容器，可以运行 Azure 服务、合作伙伴服务或者你自己的代码。 这些模块部署到 IoT Edge 设备，在设备上以本地方式运行。 有关详细信息，请参阅[了解 Azure IoT Edge 模块](../../iot-edge/iot-edge-modules.md)。
 * IoT Edge 运行时在每个 IoT Edge 设备上运行，并管理部署到每个设备的模块。 运行时包括两个 IoT Edge 模块：IoT Edge 代理和 IoT Edge 中心。 若要了解详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](../../iot-edge/iot-edge-runtime.md)。
 * 可以通过基于云的界面远程监视和管理 IoT Edge 设备。 IoT Central 是云界面的一个示例。
 
+IoT Central 为 IoT Edge 设备启用以下功能：
+
+* 设备模板，用于描述 IoT Edge 设备的功能，例如：
+  * 部署清单上传功能，可帮助管理设备群的清单。
+  * 在 IoT Edge 设备上运行的模块。
+  * 每个模块发送的遥测数据。
+  * 每个模块报告的属性。
+  * 每个模块响应的命令。
+  * IoT Edge 网关设备与下游设备之间的关系。
+  * 不存储在 IoT Edge 设备上的云属性。
+  * 更改 UI 如何显示设备功能的自定义项。
+  * 设备视图和窗体。
+* 使用 Azure IoT 设备预配服务大规模预配 Azure IoT Edge 设备的功能。
+* 规则和操作。
+* 自定义仪表板和分析。
+* 从 Azure IoT Edge 设备连续导出遥测数据。
+
 IoT Edge 设备可以为：
 
 * 由模块组成的独立设备。
 * 连接了下游设备的网关设备。
 
-## <a name="iot-edge-as-a-gateway"></a>使用 IoT Edge 作为网关
+![包含 IoT Edge 的 IoT Central 概述](./media/concepts-iot-edge/gatewayedge.png)
 
-IoT Edge 设备可以充当网关，提供网络上的其他下游设备与 IoT Central 应用程序之间的连接。
+网关设备可以是：
 
-有两种网关模式：
-
-* 在“透明网关”模式下，IoT Edge 中心模块的行为类似于 IoT Central，并处理在 IoT Central 中注册的设备的连接。 消息从下游设备传递到 IoT Central，就好像它们之间没有任何网关。
+* “透明网关”，在该模式下 IoT Edge 中心模块的行为类似于 IoT Central，并处理在 IoT Central 中注册的设备的连接。 消息从下游设备传递到 IoT Central，就好像它们之间没有任何网关。
 
     > [!NOTE]
     > IoT Central 目前不支持将 IoT Edge 设备作为下游设备连接到 IoT Edge 透明网关。 这是因为连接到 IoT Central 的所有设备均使用设备预配服务 (DPS) 进行预配，而 DPS 不支持嵌套的 IoT Edge 方案。
 
-* 在“转换网关”模式下，无法自行连接到 IoT Central 的设备会改为连接到自定义 IoT Edge 模块。 IoT Edge 设备中的模块处理传入的下游设备消息，然后将其转发到 IoT Central。
+* “转换网关”，在该模式下设备无法自行连接到 IoT Central 的设备会改为连接到自定义 IoT Edge 模块。 IoT Edge 设备中的模块处理传入的下游设备消息，然后将其转发到 IoT Central。
 
-透明和转换网关模式并不相互排斥。 单个 IoT Edge 设备既可以充当透明网关，也可以充当转换网关。
+单个 IoT Edge 设备既可以充当透明网关，也可以充当转换网关。
 
 若要了解有关 IoT Edge 网管模式的详细信息，请参阅[如何将 IoT Edge 设备用作网关](../../iot-edge/iot-edge-as-gateway.md)。
+
+## <a name="iot-edge-patterns"></a>IoT Edge 模式
+
+IoT Central 支持以下 IoT Edge 设备模式：
+
+### <a name="iot-edge-as-leaf-device"></a>用作叶设备的 IoT Edge
+
+![用作叶设备的 IoT Edge](./media/concepts-iot-edge/edgeasleafdevice.png)
+
+IoT Edge 设备在 IoT Central 中预配，任何下游设备及其遥测均表示为来自 IoT Edge 设备。 已连接到 IoT Edge 设备的下游设备不会在 IoT Central 中预配。
+
+### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>已连接到有标识下游设备的 IoT Edge 网关设备
+
+![有下游设备标识的 IoT Edge](./media/concepts-iot-edge/edgewithdownstreamdeviceidentity.png)
+
+IoT Edge 设备连同已连接到该设备的下游设备一起在 IoT Central 中预配。 用于通过网关预配下游设备的运行时支持当前不受支持。
+
+### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>已连接到具有 IoT Edge 网关所提供标识的下游设备的 IoT Edge 网关设备
+
+![包含无标识下游设备的 IoT Edge](./media/concepts-iot-edge/edgewithoutdownstreamdeviceidentity.png)
+
+IoT Edge 设备连同已连接到该设备的下游设备一起在 IoT Central 中预配。 目前 IoT Central 网关没有运行时支持，无法提供标识和预配下游设备。 如果你引入自己的标识转换模块，则 IoT Central 可以支持此模式。
 
 ### <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>下游设备与网关和模块的关系
 

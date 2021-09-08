@@ -3,18 +3,18 @@ title: 通过 Blob 索引标记管理和查找 Azure Blob 数据
 description: 了解如何使用 Blob 索引标记对 Blob 对象进行分类、管理和查询。
 author: normesta
 ms.author: normesta
-ms.date: 06/14/2021
+ms.date: 08/25/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: c4ff918be67d74d536159ebbd3e707c1d7e68e8b
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 95262d66be9300cc1c88ec80e3da4a5367705c76
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730741"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969410"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>通过 Blob 索引标记管理和查找 Azure Blob 数据
 
@@ -23,8 +23,11 @@ ms.locfileid: "113730741"
 借助 Blob 索引标记，你能够：
 
 - 使用键值索引标记对 Blob 进行动态分类
+
 - 在整个存储帐户中快速查找带有标记的特定 Blob
+
 - 根据索引标记的计算来指定 Blob API 的条件行为
+
 - 将索引标记用于功能上的高级控件（例如 [Blob 生命周期管理](storage-lifecycle-management-concepts.md)）
 
 思考这样一种场景：你的存储帐户中有数百万个 Blob，许多不同的应用程序对其进行访问。 你想要从单个项目中查找所有相关数据。 由于数据可分散在具有不同命名约定的多个容器中，因此你不确定哪些在查找范围内。 不过，你的应用程序会基于其项目上传包含标记的所有数据。 你可将 `Project = Contoso` 用作发现条件，而不是搜索数百万个 Blob，再对名称和属性进行比较。 Blob 索引会筛选你的整个存储帐户中的所有容器来快速查找，并且只从 `Project = Contoso` 范围一个包含 50 个 Blob 的集。
@@ -38,9 +41,13 @@ ms.locfileid: "113730741"
 假设你的存储帐户中有以下 5 个 Blob：
 
 - container1/transaction.csv
+
 - container2/campaign.docx
+
 - photos/bannerphoto.png
+
 - archives/completed/2019review.pdf
+
 - logs/2020/01/01/logfile.txt
 
 这些 Blob 使用“容器/虚拟文件夹/Blob 名称”这一前缀进行分隔。 你可在这五个 Blob 上设置索引标记属性 `Project = Contoso`，在将它们分类到一起的同时保留当前的前缀结构。 添加索引标记后，就能使用索引来筛选和查找数据，从而消除了移动数据的需求。
@@ -65,20 +72,30 @@ Blob 索引标记是可应用于存储帐户中的新对象或现有对象的键
 > "Status" = 'Unprocessed'  
 > "Priority" = '01'
 
-若要修改现有索引标记属性，请检索现有标记属性，修改这些属性，然后通过[设置 Blob 标记](/rest/api/storageservices/set-blob-tags)操作替换它们。 若要从 Blob 中删除所有索引标记，请在未指定任何标记属性的情况下调用`Set Blob Tags`操作。 Blob 索引标记是 Blob 数据内容的子资源，因此`Set Blob Tags`不会修改任何基础内容，也不会更改 Blob 的上次修改时间或 eTag。 可创建或修改所有当前基础 Blob 和历史版本的索引标记。 但是，不能修改快照或已软删除的 Blob 上的标记。
+若要修改现有索引标记属性，请检索现有标记属性，修改这些属性，然后通过[设置 Blob 标记](/rest/api/storageservices/set-blob-tags)操作替换它们。 若要从 Blob 中删除所有索引标记，请在未指定任何标记属性的情况下调用`Set Blob Tags`操作。 Blob 索引标记是 Blob 数据内容的子资源，因此`Set Blob Tags`不会修改任何基础内容，也不会更改 Blob 的上次修改时间或 eTag。 可以为所有当前基本 Blob 创建或修改索引标记。 索引标记也会为以前的版本保留，但不会传递给 Blob 索引引擎，因此无法通过查询索引标记来检索以前的版本。 无法修改快照或已软删除的 Blob 上的标记。
 
 Blob 索引标记存在以下限制：
 
 - 每个 Blob 最多可以有 10 个 Blob 索引标记
+
 - 标记键必须介于 1 至 128 个字符之间
+
 - 标记值必须介于 0 至 256 个字符之间
+
 - 标记键和值都区分大小写
+
 - 标记键和值仅支持字符串数据类型。 任何数字、日期、时间或特殊字符均保存为字符串
+
 - 标记键和值必须遵循以下命名规则：
+
   - 字母数字字符：
+
     - **a** 至 **z**（小写字母）
+
     - **A** 至 **Z**（大写字母）
+
     - **0** 至 **9**（数字）
+
   - 有效的特殊字符：空格、加号、减号、句点、冒号、等号、下划线、正斜杠 (` +-.:=_/`)
 
 ## <a name="getting-and-listing-blob-index-tags"></a>获取和列出 Blob 索引标记
@@ -106,11 +123,17 @@ Blob 索引标记作为子资源与 Blob 数据一起存储，可独立于基础
 Blob 索引筛选需遵守以下条件：
 
 - 应使用双引号 (") 将标记键引起来
+
 - 应使用单引号 (') 将标记值和容器名称引起来
+
 - @ 字符仅适用于对指定容器名称进行筛选（例如 `@container = 'ContainerName'`）
+
 - 应用筛选器时对字符串进行字典顺序排序
+
 - 对同一键的同侧范围操作无效（例如 `"Rank" > '10' AND "Rank" >= '15'`）
+
 - 使用 REST 创建筛选器表达式时，应对字符进行 URI 编码
+
 - 针对使用单个标记（例如 StoreID = "100"）的相等匹配优化了标记查询。  使用包含 >、>=、<、<= 的单个标记的范围查询也是高效的。 使用 AND 和多个标记的任何查询都不会有那么高的效率。  例如，Cost > "01" AND Cost <= "100" 是高效的。 Cost > "01 AND StoreID = "2" 的效率没有那么高。
 
 下表显示了 `Find Blobs by Tags` 的所有有效运算符：
@@ -220,7 +243,9 @@ Blob 索引标记不仅有助于对 Blob 数据进行分类、管理和搜索，
 可使用下列方法之一来授予对 Blob 索引标记的访问权限：
 
 - 使用 Azure 基于角色的访问控制 (Azure RBAC) 授予对 Azure Active Directory (Azure AD) 安全主体的权限。 使用 Azure AD 实现更高级别的安全性和易用性。 有关通过 Blob 操作使用 Azure AD 的详细信息，请参阅[授权访问 Azure 存储中的数据](../common/authorize-data-access.md)。
+
 - 使用共享访问签名 (SAS) 委托对 Blob 索引的访问权限。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。
+
 - 使用帐户访问密钥来通过共享密钥授权操作。 有关详细信息，请参阅[通过共享密钥进行授权](/rest/api/storageservices/authorize-with-shared-key)。
 
 Blob 索引标记是 Blob 数据的子资源。 具有读取或写入 Blob 的权限或 SAS 令牌的用户可能无权访问 Blob 索引标记。
@@ -292,19 +317,22 @@ Blob 索引标记目前在所有公共区域提供。
 若要开始，请参阅[使用 Blob 索引标记管理和查找数据](storage-blob-index-how-to.md)。
 
 > [!IMPORTANT]
-> 必须先注册订阅，然后才能在存储帐户上使用 Blob 索引。 请查看本文的[条件和已知问题](#conditions-and-known-issues)部分。
+> 请查看本文的[条件和已知问题](#conditions-and-known-issues)部分。
 
 ## <a name="conditions-and-known-issues"></a>条件和已知问题
 
 本部分介绍已知问题和条件。
 
 - 仅支持常规用途 v2 帐户。 不支持高级块 blob、旧的 blob 和启用了分层命名空间的帐户。 不支持常规用途 v1 帐户。
+
 - 上传带有索引标记的页 blob 不会保留标记。 请在上传页 blob 后设置标记。
-- 当筛选范围限定为单个容器时，只有在筛选表达式中的所有索引标记都是相等性检查 (key=value) 时，才能传递 `@container`。
-- 将范围运算符与 `AND` 条件一起使用时，只能指定同一索引标记键名称 (`"Age" > '013' AND "Age" < '100'`)。
-- 如果启用了版本控制，仍可在当前版本上使用索引标记。 对于以前的版本，会为版本保留索引标记，但不会传递到 Blob 索引引擎。 不能通过查询索引标记来检索以前的版本。
+
+- 如果启用了 Blob 存储版本控制，仍可在当前版本上使用索引标记。 索引标记也会为以前的版本保留，但这些标记不会传递给 Blob 索引引擎，因此无法使用它们来检索以前的版本。 如果将以前的版本升级为当前版本，则该先前版本的标记将成为当前版本的标记。 由于这些标记与当前版本相关联，因此会传递到 Blob 索引引擎，你可以查询它们。 
+
 - 没有 API 用于确定索引标记是否已索引。
+
 - 生命周期管理仅支持带有 Blob 索引匹配的相等性检查。
+
 - `Copy Blob` 不会将 Blob 索引标记从源 Blob 复制到新的目标 Blob。 可指定要在复制操作中应用到目标 Blob 的标记。
 
 ## <a name="faq"></a>常见问题解答

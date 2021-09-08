@@ -1,20 +1,20 @@
 ---
 title: 将参考层添加到 Azure Maps Power BI 视觉对象 | Microsoft Azure Maps
 description: 在本文中，你将了解如何在适用于 Power BI 的 Microsoft Azure Maps 视觉对象中使用参考层。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: eb6c9fed42f263ca6cfaa1ea975d31cb8f4a75cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1488584f025edc9e8b3e098b283efbb56b449d4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86261681"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430425"
 ---
 # <a name="add-a-reference-layer"></a>添加引用层
 

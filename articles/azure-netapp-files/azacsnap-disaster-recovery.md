@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: ad91260eac0f638d339baf64071cad6475ac19a7
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 1fbf8052a3852e010fc002116cab131ea4f371b8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929806"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438095"
 ---
 # <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool"></a>使用 Azure 应用程序一致性快照工具进行灾难恢复
 
@@ -122,7 +122,7 @@ tmpfs 76G 0 76G 0% /run/user/0
 
 如果执行生产工作负载完全故障转移，并且可以连接到主生产站点，请关闭正在故障转移到 DR 的 SAP HANA 实例。
 
-例如，如果以 root 身份登录，下面示例将演示如何关闭 SAP HANA。  将 <sid> 替换为你的 SAP HANA SID。
+例如，如果以 root 身份登录，下面示例将演示如何关闭 SAP HANA。  将 \<sid\> 替换为你的 SAP HANA SID。
 
 ```bash
 su - <sid>adm
@@ -133,7 +133,7 @@ HDB stop
 
 在恢复卷之前，请务必关闭 DR 站点上的 SAP HANA。
 
-例如，如果以 root 身份登录，下面示例将演示如何关闭 SAP HANA。  将 <sid> 替换为你的 SAP HANA SID。
+例如，如果以 root 身份登录，下面示例将演示如何关闭 SAP HANA。  将 \<sid\> 替换为你的 SAP HANA SID。
 
 ```bash
 su - <sid>adm

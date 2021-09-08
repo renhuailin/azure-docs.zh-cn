@@ -9,12 +9,12 @@ ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7173477e01faddb3c8aa3c18dc2781ef21dee012
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 61f57e0ee0f1df5b66526a190e583c72ecde7151
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740160"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965378"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol"></a>使用网络文件系统 (NFS) 3.0 协议装载 Blob 存储
 
@@ -106,6 +106,7 @@ ms.locfileid: "121740160"
 |`EROFS ("Read-only file system"`) |当客户端尝试执行以下操作时，可能会出现此错误：<li>写入 blob 或删除具有活动租约的 blob。<li>写入 blob 或删除具有活动 WORM（一次写入，多次读取）策略的容器中的 blob。 |
 |`NFS3ERR_IO/EIO ("Input/output error"`) |当客户端尝试读取、写入或设置存储在存档访问层中的 blob 的属性时，可能会出现此错误。 |
 |`OperationNotSupportedOnSymLink` 个错误| 在通过 blob 或 Azure Data Lake Storage Gen2 API 执行写入操作时，可能会返回此错误。 不允许使用这些 API 写入或删除使用 NFS 3.0 创建的符号链接。 请确保使用 NFS v3 终结点处理符号链接。 |
+|`mount: /mnt/test: bad option;`| 使用 sudo apt install nfs-common 安装 nfs 帮助程序。|
 
 ## <a name="see-also"></a>另请参阅
 

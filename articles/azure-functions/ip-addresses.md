@@ -3,12 +3,12 @@ title: Azure Functions 中的 IP 地址
 description: 了解如何查找函数应用的入站和出站 IP 地址，以及这些地址发生更改的原因。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: a884edd23fa1538fcc2b00c80190eab6699e1e47
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: b332e979ad310134ce6633dbe3f23efc326ee847
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112414478"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479087"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
 
@@ -101,7 +101,7 @@ az functionapp show --resource-group <GROUP_NAME> --name <APP_NAME> --query poss
 
 - 删除函数应用，然后在不同的资源组中重新创建它。
 - 删除资源组和区域组合中的最后一个函数应用，然后重新创建它。
-- 删除 TLS 绑定（例如，在[证书续订](../app-service/configure-ssl-certificate.md#renew-certificate)期间）。
+- 删除 TLS 绑定（例如，在[证书续订](../app-service/configure-ssl-certificate.md#renew-an-expiring-certificate)期间）。
 
 当函数应用在[消耗计划](consumption-plan.md)或[高级计划](functions-premium-plan.md)中运行时，即使你未执行任何操作（如[上面列出](#inbound-ip-address-changes)的操作），入站 IP 地址也可能会更改。
 

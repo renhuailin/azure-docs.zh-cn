@@ -4,12 +4,12 @@ description: 了解如何将 Apple 登录配置为应用服务或 Azure Function
 ms.topic: article
 ms.date: 11/19/2020
 ms.reviewer: mikarmar
-ms.openlocfilehash: 01216b7527fd6479f43c3bf0b9d4abeb60d06435
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 4b123b0711954e45108b934622f0fabab5be15e0
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093042"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259344"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-sign-in-using-a-sign-in-with-apple-provider-preview"></a>将应用服务或 Azure Functions 应用配置为使用 Apple 登录提供程序（预览版）进行登录
 
@@ -81,7 +81,7 @@ _注意：Apple 不接受创建（或 nbf）日期后到期日期超过 6 个月
 ### <a name="sign-the-client-secret-jwt"></a>对客户端密码 JWT 进行签名
 你将使用之前下载的 `.p8` 文件对客户端密码 JWT 进行签名。 此文件是一个 [PCKS#8 文件](https://en.wikipedia.org/wiki/PKCS_8)，其中包含 PEM 格式的专用签名密钥。 可使用许多库来创建 JWT 并对其进行签名。 
 
-可以联机使用不同种类的开源库来创建 JWT 令牌并对其进行签名。 有关生成 JWT 令牌的详细信息，请参阅 jwt.io。 例如，生成客户端密码的一种方法是导入 [Microsoft.IdentityModel.Tokens NuGet 包](https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/) 并运行如下所示的少量 C# 代码。
+可以联机使用不同种类的开源库来创建 JWT 令牌并对其进行签名。 有关生成 JWT 令牌的详细信息，请参阅 [JSON Web 令牌 (JWT)](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)。 例如，生成客户端密码的一种方法是导入 [Microsoft.IdentityModel.Tokens NuGet 包](https://www.nuget.org/packages/Microsoft.IdentityModel.Tokens/) 并运行如下所示的少量 C# 代码。
 
 ```csharp
 using Microsoft.IdentityModel.Tokens;

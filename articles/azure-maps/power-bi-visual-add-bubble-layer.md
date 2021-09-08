@@ -1,20 +1,20 @@
 ---
 title: 将气泡层添加到 Azure Maps Power BI 视觉对象 | Microsoft Azure Maps
 description: 在本文中，你将了解如何在适用于 Power BI 的 Microsoft Azure Maps 视觉对象中使用气泡层。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ff0d2c8e90995222af79d5be63ca3e9da24b3c45
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc463a69dc0823e14b08e9fd056f3876e1ba9984
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896219"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430443"
 ---
 # <a name="add-a-bubble-layer"></a>添加气泡层
 

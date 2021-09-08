@@ -1,18 +1,20 @@
 ---
 title: 排查复制活动的性能问题
-description: 了解如何排查 Azure 数据工厂中复制活动的性能问题。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何排查 Azure 数据工厂和 Azure Synapse Analytics 中复制活动的性能问题。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 01/07/2021
-ms.openlocfilehash: eee68b8cb533763aff0c1cc6a1ebe19db735461e
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: cea4999752d416f36f435ba88403fd9dc735f689
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488566"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255804"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
@@ -26,7 +28,7 @@ ms.locfileid: "109488566"
 
 ## <a name="performance-tuning-tips"></a>性能优化提示
 
-在某些情况下，当你运行数据工厂中的复制活动时，将在顶部看到“性能优化提示”，如上面的示例中所示。 这些提示告知 ADF 针对此特定复制运行识别到的瓶颈，并建议如何提升复制吞吐量。 请尝试根据建议进行更改，然后再次运行复制。
+在某些情况下，运行复制活动时，顶部会显示“性能优化提示”，如上述示例所示。 这些提示告知服务针对此特定复制运行识别到的瓶颈，并建议如何提高复制吞吐量。 请尝试根据建议进行更改，然后再次运行复制。
 
 作为参考，当前性能优化提示针对以下情况提供了建议：
 
@@ -69,11 +71,11 @@ ms.locfileid: "109488566"
 
     - 检查是否可以[基于按日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这不会在“列出源”端带来负担。
 
-    - 检查是否可以改用数据存储的本机筛选器，具体说来就是 Amazon S3/Azure Blob/Azure 文件存储的“前缀”，以及 ADLS Gen1 的“listAfter/listBefore”。 这些筛选器是一个数据存储服务器端筛选器，其性能要好得多。
+    - 检查是否可以改用数据存储的本机筛选器，具体说来就是 Amazon S3/Azure Blob 存储/Azure 文件存储的“前缀”，以及 ADLS Gen1 的“listAfter/listBefore” 。 这些筛选器是一个数据存储服务器端筛选器，其性能要好得多。
 
     - 考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)或[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 解决方案模板，其中提供了一般性的示例。
 
-  - 检查 ADF 是否报告了源中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
+  - 检查服务是否报告了源中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
 
   - 使用同一源数据存储区域或者与之靠近的区域中的 Azure IR。
 
@@ -81,7 +83,7 @@ ms.locfileid: "109488566"
 
   - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，从 [Amazon Redshift](connector-amazon-redshift.md) 复制数据时，请配置为使用 Redshift UNLOAD。
 
-  - 检查 ADF 是否报告了源中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
+  - 检查服务是否报告了源中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
 
   - 检查复制源和接收器模式： 
 
@@ -95,7 +97,7 @@ ms.locfileid: "109488566"
 
   - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如，将数据复制到 [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) 时，请使用 PolyBase 或 COPY 语句。 
 
-  - 检查 ADF 是否报告了接收器中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
+  - 检查服务是否报告了接收器中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
 
   - 检查复制源和接收器模式： 
 
@@ -123,11 +125,11 @@ ms.locfileid: "109488566"
 
     - 检查是否可以[基于按日期时间分区的文件路径或名称复制文件](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)。 这不会在“列出源”端带来负担。
 
-    - 检查是否可以改用数据存储的本机筛选器，具体说来就是 Amazon S3/Azure Blob/Azure 文件存储的“前缀”，以及 ADLS Gen1 的“listAfter/listBefore”。 这些筛选器是一个数据存储服务器端筛选器，其性能要好得多。
+    - 检查是否可以改用数据存储的本机筛选器，具体说来就是 Amazon S3/Azure Blob 存储/Azure 文件存储的“前缀”，以及 ADLS Gen1 的“listAfter/listBefore” 。 这些筛选器是一个数据存储服务器端筛选器，其性能要好得多。
 
     - 考虑将单个大型数据集拆分为多个小型数据集，并让每个并发运行的复制作业处理一部分数据。 为此，可以使用 Lookup/GetMetadata + ForEach + Copy。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)或[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 解决方案模板，其中提供了一般性的示例。
 
-  - 检查 ADF 是否报告了源中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
+  - 检查服务是否报告了源中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
 
 - **“传输 - 从源读取”的工作持续时间较长：** 
 
@@ -135,7 +137,7 @@ ms.locfileid: "109488566"
 
   - 检查自承载 IR 计算机是否具有足够的入站带宽，可以有效地读取和传输数据。 如果源数据存储位于 Azure 中，你可以使用[此工具](https://www.azurespeed.com/Azure/Download)检查下载速度。
 
-  - 在 Azure 门户 -> 数据工厂 -> 概述页中检查自承载 IR 的 CPU 和内存使用趋势。 如果 CPU 使用率较高或可用内存不足，请考虑[纵向/横向扩展 IR](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
+  - 在 Azure 门户 -> 数据工厂或 Synapse 工作区 -> 概述页面，检查自承载 IR 的 CPU 和内存使用趋势。 如果 CPU 使用率较高或可用内存不足，请考虑[纵向/横向扩展 IR](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
 
   - 采用特定于连接器的数据加载最佳做法（如果适用）。 例如：
 
@@ -145,7 +147,7 @@ ms.locfileid: "109488566"
 
     - 从 [Amazon Redshift](connector-amazon-redshift.md) 复制数据时，请配置为使用 Redshift UNLOAD。
 
-  - 检查 ADF 是否报告了源中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
+  - 检查服务是否报告了源中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
 
   - 检查复制源和接收器模式： 
 
@@ -161,9 +163,9 @@ ms.locfileid: "109488566"
 
   - 检查自承载 IR 计算机是否具有足够的出站带宽，可以有效地传输和写入数据。 如果接收器数据存储位于 Azure 中，你可以使用[此工具](https://www.azurespeed.com/Azure/UploadLargeFile)检查上传速度。
 
-  - 在 Azure 门户 -> 数据工厂 -> 概述页中检查自承载 IR 的 CPU 和内存使用趋势。 如果 CPU 使用率较高或可用内存不足，请考虑[纵向/横向扩展 IR](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
+  - 在 Azure 门户 -> 数据工厂或 Synapse 工作区 -> 概述页面，检查自承载 IR 的 CPU 和内存使用趋势。 如果 CPU 使用率较高或可用内存不足，请考虑[纵向/横向扩展 IR](create-self-hosted-integration-runtime.md#high-availability-and-scalability)。
 
-  - 检查 ADF 是否报告了接收器中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
+  - 检查服务是否报告了接收器中的任何限制错误，或者数据存储是否处于高利用率状态。 如果是，请减少数据存储中的工作负荷，或者尝试联系数据存储管理员来提高限制或增加可用资源。
 
   - 考虑逐步优化[并行复制](copy-activity-performance-features.md)，同时请注意，过多的并行复制可能会进一步损害性能。
 
@@ -178,9 +180,7 @@ ms.locfileid: "109488566"
 
 - **症状**：只需在数据集中切换“链接服务”下拉列表就可以执行相同的管道活动，但运行时间会明显不同。 当数据集基于托管虚拟网络集成运行时时，运行所需的平均时间要比基于默认集成运行时时更长。  
 
-- **原因**：检查管道运行的详细信息，可以看到慢速管道在托管 VNet（虚拟网络）IR 上运行，而正常管道在 Azure IR 上运行。 按照设计，托管 VNet IR 的排队时间比 Azure IR 长，因为我们不会为每个数据工厂保留一个计算节点，因此每次启动复制活动时都需要进行预热，并且它主要在 VNet 联接（而不是 Azure IR）上进行。 
-
-
+- **原因**：检查管道运行的详细信息，可以看到慢速管道在托管 VNet（虚拟网络）IR 上运行，而正常管道在 Azure IR 上运行。 按照设计，托管 VNet IR 的队列时间比 Azure IR 长，因为我们不会为每个服务实例都保留一个计算节点，因此每个复制活动都需要预热后才能启动，并且主要在 VNet 联接而不是在 Azure IR 上发生。 
 
     
 ### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>在将数据加载到 Azure SQL 数据库时性能较低
@@ -212,7 +212,7 @@ ms.locfileid: "109488566"
 
     - 对于导入架构、预览数据以及在 Excel 数据集上列出工作表等操作，超时为 100 秒并且是静态的。 对于大型 Excel 文件，这些操作可能无法在超时值内完成。
 
-    - ADF 复制活动将整个 Excel 文件读入内存，然后查找指定的工作表和单元格来读取数据。 此行为是由 ADF 使用的基础 SDK 导致的。
+    - 复制活动将整个 Excel 文件读入内存，然后查找指定的工作表和单元格来读取数据。 此行为是由服务使用的基础 SDK 导致的。
 
 - **解决方法**： 
 
@@ -240,5 +240,5 @@ ms.locfileid: "109488566"
 - [复制活动概述](copy-activity-overview.md)
 - [复制活动性能和可伸缩性指南](copy-activity-performance.md)
 - [复制活动性能优化功能](copy-activity-performance-features.md)
-- [使用 Azure 数据工厂将数据从 Data Lake 或数据仓库迁移到 Azure](data-migration-guidance-overview.md)
+- [将数据从数据湖或数据仓库迁移到 Azure](data-migration-guidance-overview.md)
 - [将数据从 Amazon S3 迁移到 Azure 存储](data-migration-guidance-s3-azure-storage.md)

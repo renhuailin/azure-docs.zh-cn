@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 7f3f8223699e25b496825383a386e8a76154db3c
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: ff7f10604c818673ad7144ff0952eb7625f77ade
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123103114"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123476805"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -30,7 +30,7 @@ ms.locfileid: "123103114"
 |[将 Azure SQL Server 配置为禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F28b0b1e5-17ba-4963-a7a4-5a1ab4400a0b) |“禁用公用网络访问”属性会关闭公共连接，这样就只能从专用终结点访问 Azure SQL Server。 此配置会禁止通过公用网络访问 Azure SQL Server 下的所有数据库。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_PublicNetworkAccess_Modify.json) |
 |[将 Azure SQL Server 配置为启用专用终结点连接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e8ca470-d980-4831-99e6-dc70d9f6af87) |使用专用终结点连接，可以通过虚拟网络中的专用 IP 地址与 Azure SQL 数据库建立专用连接。 此配置可改善安全态势，并且支持 Azure 网络工具和方案。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_PrivateEndpoint_DeployIfNotExists.json) |
 |[配置 SQL 安装的 Azure Arc 计算机，使其启用已启用 Arc 的 SQL Server 扩展。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffd2d1a6e-6d95-4df2-ad00-504bf0273406) | 若要确保 SQL Server - Azure Arc 资源默认在已启用 Azure Arc 的 Windows Server 上找到 SQL 实例时创建，Arc 计算机应启用 SQL Server 扩展。 有关详细信息，请访问：[https://docs.microsoft.com/en-us/sql/sql-server/azure-arc/overview?view=sql-server-ver15](/sql/sql-server/azure-arc/overview?view=sql-server-ver15) |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/ArcMachineWithSQL_InstallArcEnabledExtension.json) |
-|[将 SQL 服务器配置为启用审核](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4c68484-132f-41f9-9b6d-3e4b1cb55036) |为了确保捕获针对 SQL 资产执行的操作，SQL 服务器应该启用审核。 为了符合监管标准，有时需要这样做。 |DeployIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Deploy.json) |
+|[将 SQL 服务器配置为启用审核](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4c68484-132f-41f9-9b6d-3e4b1cb55036) |为了确保捕获针对 SQL 资产执行的操作，SQL 服务器应该启用审核。 为了符合监管标准，有时需要这样做。 |DeployIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Deploy.json) |
 |[应为 PostgreSQL 数据库服务器启用连接限制](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5345bb39-67dc-4960-a1bf-427e16b9a0bd) |此策略帮助审核环境中任何未启用连接限制的 PostgreSQL 数据库。 无效密码登录失败次数过多时，可以使用此设置来按 IP 限制临时连接。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_ConnectionThrottling_Enabled_Audit.json) |
 |[部署 - 配置 SQL 数据库的诊断设置，以部署到 Log Analytics 工作区](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb79fa14e-238a-4c2d-b376-442ce508fc84) |为 SQL 数据库部署诊断设置，以便在创建或更新缺少此诊断设置的任何 SQL 数据库时，将资源日志流式传输到 Log Analytics 工作区。 |DeployIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/DataConnectosSqlLogs_PolicyAssignment.json) |
 |[在 SQL 服务器上部署高级数据安全](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6134c3db-786f-471e-87bc-8f479dc890f6) |此策略在 SQL 服务器上启用高级数据安全性。 这包括启用威胁检测和漏洞评估。 它自动在 SQL 服务器所在的同一区域和资源组中，创建一个带有“sqlva”前缀存储帐户用于存储扫描结果。 |DeployIfNotExists |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAdvancedDataSecurity_Deploy.json) |

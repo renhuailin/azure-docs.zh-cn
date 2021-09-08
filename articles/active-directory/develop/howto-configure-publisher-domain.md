@@ -13,14 +13,14 @@ ms.date: 06/23/2021
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: contperf-fy21q4, aaddev
-ms.openlocfilehash: 43fef26f3006120cb62676bfd5675c1e79b849d4
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 7cf9918216c70bcbabf9c64c9b0ebf91c02b45fd
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579965"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029236"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain"></a>如何：配置应用程序的发布者域
+# <a name="configure-an-applications-publisher-domain"></a>配置应用程序的发布者域
 
 应用程序的发布者域将在[应用程序的许可提示](application-consent-experience.md)中显示给用户，以告知用户其信息将发送到何处。 在 2019 年 5 月 21 日之后注册的且没有发布者域的多租户应用程序将显示为 **unverified**。 多租户应用程序是指支持单个组织目录以外帐户的应用程序；例如，支持所有 Azure AD 帐户，或支持所有 Azure AD 帐户和 Microsoft 个人帐户。
 
@@ -61,7 +61,7 @@ ms.locfileid: "112579965"
 
 如果应用已在租户中注册，则你会看到两个可供选择的选项卡：“选择已验证的域”和“验证新域”。  
 
-如果应用尚未在租户中注册，则你只会看到用来为应用程序验证新域的选项。
+如果域尚未在租户中注册，则你只会看到用来为应用程序验证新域的选项。
 
 ### <a name="to-verify-a-new-domain-for-your-app"></a>验证应用的新域
 

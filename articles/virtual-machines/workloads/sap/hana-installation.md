@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 7/16/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cfd57400eb50651dd7d908dad4c50ab94760286a
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 37eff4049973c208ebe70ef452f121109f0c92ed
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114404953"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435827"
 ---
 # <a name="install-and-configure-sap-hana-large-instances-on-azure"></a>安装和配置 Azure 上的 SAP HANA（大型实例）
 
@@ -150,7 +150,7 @@ SAP HANA 的安装由你负责。 可以在 Azure 虚拟网络与 HANA 大型实
 
 ## <a name="storage"></a>存储
 
-SAP HANA 使用 SAP 建议的指导原则在 Azure 服务管理中配置 SAP HANA（大型实例）存储布局。 [SAP HANA 存储要求](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)中阐述了这些指导原则。 
+SAP HANA 使用 SAP 建议的指导原则在 Azure 服务管理中配置 SAP HANA（大型实例）存储布局。 [SAP HANA 存储要求](https://blogs.saphana.com/wp-content/uploads/2015/02/Storage-Whitepaper-2-54.pdf)中阐述了这些指导原则。 
 
 有关包含不同 HANA 大型实例 SKU 的各卷的粗略大小，请参阅 [Azure 上的 SAP HANA（大型实例）概述和体系结构](hana-overview-architecture.md)。
 

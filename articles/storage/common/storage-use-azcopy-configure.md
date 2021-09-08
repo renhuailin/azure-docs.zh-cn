@@ -8,19 +8,19 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: d3b956803e9a796c49288f90873e88c3b69f1c7b
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 1f07907d3a4f421fa9f7a03c48d5f74496a1d45a
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502889"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303069"
 ---
 # <a name="find-errors-and-resume-jobs-by-using-log-and-plan-files-in-azcopy"></a>使用 AzCopy 中的日志和计划文件查找错误并恢复作业
 
 AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 或文件。 本文将帮助你使用日志来诊断错误，然后使用计划文件来恢复作业。 本文还介绍了如何通过更改日志和计划文件的详细级别以及默认存储位置来配置日志和计划文件。
 
 > [!NOTE]
-> 如果你正在寻找 AzCopy 入门内容，请参阅 [AzCopy 入门](storage-use-azcopy-v10.md)。
+> 如果你正在寻找 AzCopy 入门内容，请参阅 [AzCopy 入门](storage-use-azcopy-v10.md)。 本文适用于 AzCopy V10，因为这是当前支持的 AzCopy 版本。 如果需要使用旧版 AzCopy，请参阅[使用旧版 AzCopy](storage-use-azcopy-v10.md#previous-version)。
 
 ## <a name="log-and-plan-files"></a>日志和计划文件
 
@@ -74,8 +74,7 @@ azcopy jobs show <job-id> --with-status=Failed
 使用以下命令恢复失败/取消的作业。 此命令使用该作业的标识符以及 SAS 令牌，因为它不是持久性的（出于安全方面的原因）：
 
 ```
-azcopy jobs resume <job-id> --source-sas="<sas-token>"
-azcopy jobs resume <job-id> --destination-sas="<sas-token>"
+azcopy jobs resume <job-id> --source-sas="<sas-token>" --destination-sas="<sas-token>"
 ```
 
 > [!TIP]

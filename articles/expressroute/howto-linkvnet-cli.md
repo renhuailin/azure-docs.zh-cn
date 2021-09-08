@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: 892cf772559b445a6ebb7103ff5a65582700b70f
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: abca04eb60538921191b9c632ef6ef2849f959c5
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864324"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424899"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>教程：使用 CLI 将虚拟网络连接到 ExpressRoute 线路
 
@@ -180,6 +180,7 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 FastPath 对虚拟网络对等互连的支持现以公共预览版提供。 只能通过 Azure PowerShell 进行注册。 有关如何注册的说明，请参阅 [FastPath 预览功能](expressroute-howto-linkvnet-arm.md#enroll-in-expressroute-fastpath-features-preview)。
 
 > [!NOTE] 
+> 目标订阅中为 FastPath 配置的任何连接都将注册到此预览版中。 建议不要在生产订阅中启用此预览版。
 > 如果已经配置了 FastPath 并且想要注册预览功能，则需要执行以下操作：
 > 1. 使用上述 Azure PowerShell 命令注册 FastPath 预览功能。
 > 1. 在目标连接上禁用 FastPath，然后重新启用它。

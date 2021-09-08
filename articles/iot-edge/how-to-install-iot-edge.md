@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/28/2021
 ms.author: kgremban
-ms.openlocfilehash: 0f0cf8f4ce8f82964a69635debacea772c4310da
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5ed9768f8cb1a6279eeb97a73d508a41984ef160
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750762"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214338"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>安装或卸载 Azure IoT Edge for Linux
 
@@ -416,6 +416,8 @@ IoT 标识服务在 IoT Edge 1.2 版中引入。 此服务处理 IoT Edge 以及
    ```bash
    sudo iotedge list
    ```
+
+创建新的 IoT Edge 设备时，它将在 Azure 门户中显示状态代码 `417 -- The device's deployment configuration is not set`。 此状态正常，表示设备已准备好接收模块部署。
 
 ## <a name="offline-or-specific-version-installation-optional"></a>脱机或特定版本安装（可选）
 

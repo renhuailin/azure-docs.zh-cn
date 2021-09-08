@@ -4,32 +4,16 @@ metadata:
   description: 获取 Azure 媒体服务常见问题的解答。
   ms.service: media-services
   ms.custom: contperf-fy21q4
-  ms.openlocfilehash: 79c6e1abd5e7e7f7bdaf70b306387be8012d5098
-  ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+  ms.openlocfilehash: bbe5b0f1ca4536c5ce03803c6e1a5822bcacc78f
+  ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122323803"
+  ms.lasthandoff: 08/31/2021
+  ms.locfileid: "123258351"
 title: 有关 Azure 媒体服务的常见问题
 summary: 本文解答了有关 Azure 媒体的常见问题。
 sections:
-- name: 疑难解答
-  questions:
-  - question: 在哪里可以找到有关媒体服务故障排除的信息？
-    answer: >
-      其他人可能遇到过与你相同的问题。  [故障排除问题集合](./questions-collection.md)中列出了这些问题。 我们根据常见的支持票证问题定期更新这些问题。 如果在该列表找不到你要的答案，请创建支持票证。
-  - question: 如何查明此错误代码的含义？
-    answer: >
-      我们已在以下参考资料中记录了错误代码：[流式处理终结点错误代码](./stream-streaming-endpoint-error-codes-reference.md)、[实时事件错误代码](./live-event-error-codes-reference.md)和[作业错误代码](./job-error-codes-reference.md)。  如果在该列表找不到你要的答案，请创建支持票证。
-  - question: 如何重置帐户凭据？
-    answer: >
-      你可以通过 CLI [重置帐户凭据](./account-reset-account-credentials.md)。
-- name: 常规
-  questions:
-  - question: 什么是 Azure 媒体服务？
-    answer: >
-      Azure 媒体服务是一个基于云的平台，用于生成解决方案，以便实现广播质量的视频流、增强可访问性和分发、分析内容，等等。 无论你是应用开发人员、呼叫中心、政府机构还是娱乐公司，媒体服务都能帮助你创建应用，通过当今最热门的移动设备和浏览器向广大受众提供品质卓越的媒体体验。 要开始使用 Azure 媒体服务，请参阅 [Azure 媒体服务 v3 概述](media-services-overview.md)
-- name: 参考
+- name: 使用 SDK 进行开发
   questions:
   - question: 在哪里可以找到媒体服务 API 和 SDK？
     answer: >
@@ -56,26 +40,25 @@ sections:
   - question: 在哪里可以找到媒体服务示例？
     answer: >
       有关示例列表，请参阅[媒体服务 v3 示例](samples-overview.md)一文。
-  - question: 媒体服务的费用是多少？
+  - question: 大型结果集上的分页（即资产列表）在 API 中是如何工作的？
     answer: >
-      请参阅[媒体服务定价指南](https://azure.microsoft.com/pricing/details/media-services/)
-  - question: 媒体服务配额和限制是多少？
-    answer: >
-      请参阅[媒体服务的配额和限制](limits-quotas-constraints-reference.md)
-- name: 客户数据
+      使用分页时，应始终使用下一链接来枚举集合，而不依赖特定的页面大小。 有关详细信息和示例，请参阅[筛选、排序、分页](filter-order-page-entities-how-to.md)。
+- name: 帐户
   questions:
-  - question: 媒体服务是否在服务区域之外存储任何客户数据？
+  - question: 如何使用托管标识将数据加密到媒体服务？
+    answer: "请参阅[使用 Key Vault 密钥将数据加密到媒体服务帐户的教程](security-encrypt-data-managed-identity-cli-tutorial.md)，了解如何使用 CLI 将媒体服务与 Key Vault 配对，以对数据进行加密。  \n"
+  - question: 如何使用托管标识授权媒体服务访问受限制的存储帐户？
     answer: >
-      - 客户将自己的存储帐户附加到 Azure 媒体服务帐户。  所有资产数据都存储在这些关联的存储帐户中，客户控制此存储的位置和复制类型。
-
-      - 与媒体服务帐户关联的其他数据（包括内容加密密钥、令牌验证密钥、JobInputHttp URL 以及其他实体元数据）存储在 Microsoft 拥有的存储中，而该存储则位于为媒体服务帐户选择的区域中。
-        - 考虑到巴西南部和东南亚的[数据驻留要求](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information)，其他帐户数据以区域冗余方式存储，包含在单个区域中。 东南亚的所有其他帐户数据存储在新加坡，巴西南部的数据存储在巴西。
-        - 在除巴西南部和东南亚之外的区域，其他帐户数据还可以存储在[配对区域](../../best-practices-availability-paired-regions.md)中 Microsoft 拥有的存储中。
-      - Azure 媒体服务是一种区域服务，不提供[高可用性](architecture-high-availability-encoding-concept.md)或数据复制。 如果客户需要这些功能，则强烈建议其使用多个区域中的媒体服务帐户来构建解决方案。  我们以指南的形式提供了一个示例，展示了如何使用媒体服务点播视频构建解决方案以实现高可用性。
-  - question: 媒体服务是否提供高可用性或数据复制？
+      如果你要在存储帐户被配置为阻止来自未知 IP 地址的请求的情况下访问该存储帐户，请按照[使用媒体服务托管标识访问存储](security-access-storage-managed-identity-cli-tutorial.md)中的步骤操作。
+  - question: 如何在订阅之间移动媒体服务帐户？
     answer: >
-      -   Azure 媒体服务是一种区域服务，不提供高可用性或数据复制。 如果客户需要这些功能，则强烈建议其使用多个区域中的媒体服务帐户来构建解决方案。 我们以指南的形式提供了一个示例，展示了[如何使用媒体服务点播视频构建解决方案以实现高可用性](./architecture-high-availability-encoding-concept.md)。
-- name: 使用媒体服务
+      有关详细信息，请参阅[在订阅之间移动媒体服务帐户](account-move-account-how-to.md)。
+- name: 安全性
+  questions:
+  - question: Azure 角色可对 Azure 媒体服务资源执行哪些操作？
+    answer: >
+      请参阅[媒体服务帐户的 Azure 基于角色的访问控制 (Azure RBAC)](security-rbac-concept.md)。
+- name: 资产、上传和存储
   questions:
   - question: 什么是媒体服务资产？
     answer: >
@@ -83,30 +66,29 @@ sections:
   - question: 如何创建媒体服务资产？
     answer: >
       每次你要上传媒体文件并对其执行编码或流式处理等操作时，都会创建资产来存储该媒体文件和与该媒体文件相关联的其他文件。 如果使用 Azure 门户，系统将自动创建资产。 如果不使用门户上传文件，则必须先创建资产。  若要了解如何创建资产，请参阅[创建资产](asset-create-asset-how-to.md)。
-  - question: 什么是媒体服务转换？
-    answer: >
-      转换包含用于编码或分析媒体文件的指令。 将其视为一种方案。 它可以将多个编码指令应用于一个媒体文件。  作业使用它来转换文件。 有关转换的详细信息，请参阅[媒体服务中的转换和作业](transform-jobs-concept.md#transforms)中的转换。
-  - question: 如何创建媒体服务转换？
-    answer: >
-      可以使用 REST、CLI 或适用于媒体服务的 SDK 创建转换。  请参阅[如何创建转换](transform-create-transform-how-to.md)，以使用 REST 或 CLI。  要使用 SDK，请参阅 Azure 示例存储库中提供的[媒体服务示例](https://github.com/Azure-Samples?q=media-services&type=&language=&sort=)。
-  - question: 什么是媒体服务作业？
-    answer: >
-      作业是为开始使用转换对文件进行编码或分析而提出的请求。  你指示该作业转换输入资产中包含的文件。  你还指示它创建新的输出资产或使用现有的输出资产。  作业完成后，转换（编码、分析）的文件以及与这些文件相关联的其他文件将位于输出资产中。 有关作业的详细信息，请参阅[媒体服务中的转换和作业](transform-jobs-concept.md#jobs)。
-  - question: 如何创建媒体服务作业？
-    answer: >
-      可以通过 [CLI](job-create-cli-how-to.md)、REST 或任何 SDK 在 Azure 门户中创建作业。 请参阅[媒体服务示例](https://github.com/Azure-Samples?q=media-services&type=&language=&sort=)，以选择你偏好的语言。
-  - question: 什么是编码？
-    answer: >
-      媒体服务中的术语“编码”适用于将包含数字视频和/或音频的文件从一种标准格式转换为另一种标准格式的过程，其目的是 (a) 减小文件大小，和/或 (b) 生成与各种设备和应用兼容的格式。 此过程也称为视频压缩或转码。 请参阅[使用媒体服务编码视频和音频](./encode-concept.md)
+- name: 编码
+  questions:
   - question: 媒体服务提供哪些编码格式？
     answer: >
       媒体服务提供的常见编码格式是标准编码器。 有关所有格式的列表，请参阅[标准编码器格式和编解码器](encode-media-encoder-standard-formats-reference.md)。
+  - question: 如何创建媒体服务作业？
+    answer: >
+      可以通过 [CLI](job-create-cli-how-to.md)、REST 或任何 SDK 在 Azure 门户中创建作业。 请参阅[媒体服务示例](https://github.com/Azure-Samples?q=media-services&type=&language=&sort=)，以选择你偏好的语言。
   - question: 能否使用媒体服务创建自动生成的比特率阶梯？
     answer: >
       是的。  有关详细信息，请参阅[使用自动生成的比特率阶梯进行编码](./encode-autogen-bitrate-ladder.md)页。
-  - question: 能否分析音频或视频文件？
+  - question: 媒体服务是否支持内容感知编码？
     answer: >
-      可以。 借助 Azure 媒体服务 v3，还可使用 Azure 视频分析器媒体版（从视频和音频文件中提取见解。 媒体服务 v3 分析器预设可用于提取这些见解。 如果需要更详细的见解，请直接使用 [Azure 视频分析器媒体版（以前称为视频分析器）](../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md)。 如需了解何时使用视频分析器媒体版与媒体服务分析器预设，请查看[比较文档](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md)。
+      是。媒体服务可以对视频执行两遍分析，并根据提供的视频内容输出最佳推荐的自适应比特率集、分辨率以及编码设置。 有关详细信息，请参阅[内容感知编码预设](./encode-content-aware-how-to.md)
+  - question: 是否可以在媒体服务中使用外部编码的或现有 Mp4 文件？
+    answer: >
+      可以，请参阅流式处理问题下有关“是否可以流式处理现有 MP4 文件”的部分，了解详细信息和指向示例应用程序（演示如何上传预编码的单比特率 Mp4 文件并生成服务器清单 (.ism) 和客户端清单 (.ismc)）的链接。
+
+      请注意该问题/答案中也指出的源性能影响问题。
+  - question: 媒体服务是否可用于短格式的文件内容编码？
+    answer: "简单地说，不推荐。  持续时间不到一分钟或两分钟的非常短的内容并不真正适用于自适应比特率流式处理。  如果要流式处理非常短格式的文件，建议将内容预编码为可使用单比特率轻松流式处理的格式。 \n\n由于大多数自适应比特率播放器需要时间来缓冲多个视频段，并且需要时间在自适应比特率阶梯向上或向下“移动”之前分析网络带宽，因此，为长度不到 30 秒的内容提供大量比特率通常没什么用。  当播放器根据网络状况将其启发式算法锁定在正确的播放比特率时，文件会以流式处理方式完成。  \n\n此外，某些播放器默认缓冲最多 3 个视频“段”。  每个段的持续时间可以是 2 到 6 秒。  对于非常短格式的视频，播放器可能会缓冲并开始播放 ABR 集的第一个选定比特率。 因此，如果需要生成 HLS 或 DASH 清单，建议使用单比特率 MP4 文件并将其上传到资产。 请参阅上述问题标题“是否可以流式传输现有 Mp4 文件...”，以了解有关如何实现此操作的详细信息。 \n\n仅当要从这些协议的功能中获益时，才需要以 HLS 或 DASH 格式传送文件。  对于单比特率流，它们仍可以提供许多功能，例如更快的寻找速度、DRM 支持、与 blob 存储中的渐进式下载 Mp4 相比更难以通过 URL 下载（但仍然可能！）。 针对 VTT 和 IMSC1 的字幕支持也是另一个好处。  此外，能够后期绑定其他音频再现内容或以备用语言进行配音使之在某些情况下成为一个有价值的选择。 \n"
+- name: 实时传送视频流
+  questions:
   - question: 什么是媒体服务实时事件？
     answer: >
       媒体服务实时事件是引入实时视频源，并通过 RTMPS 协议或平滑流式处理进行广播的过程。 有关媒体服务实时事件的详细信息，请参阅[媒体服务中的实时事件和实时输出](live-event-outputs-concept.md)
@@ -116,6 +98,20 @@ sections:
   - question: 如何使用媒体服务直播活动进行实时听录？
     answer: >
       Azure 媒体服务提供了不同协议的视频、音频和文本。 如果使用 MPEG-DASH 或 HLS/CMAF 发布实时传送流，并包含视频和音频，我们的服务将以 IMSC1.1 兼容的 TTML 格式传递听录文本。 有关实时听录的详细信息，请参阅[实时听录](live-event-live-transcription-how-to.md)
+  - question: 如何监视实时事件的运行状况？
+    answer: >
+      可通过订阅 Azure 事件网格事件来监视实时事件。 有关详细信息，请参阅 [EventGrid 事件架构](monitoring/media-services-event-schemas.md#live-event-types)。
+
+      可以：
+
+      * [订阅](monitoring/reacting-to-media-services-events.md)流式传输级别 [Microsoft.Media.LiveEventEncoderDisconnected](monitoring/media-services-event-schemas.md#liveeventencoderdisconnected) 事件，并监视一段时间内没有重新连接来停止和删除实时事件。
+
+      * [订阅](monitoring/reacting-to-media-services-events.md)跟踪级别[检测信号](monitoring/media-services-event-schemas.md#liveeventingestheartbeat)事件。 如果所有跟踪的传入比特率下降到 0，或者最后时间戳不再增大，则可以安全地关闭实时事件。 每个跟踪每隔 20 秒出现一次检测信号事件，因此可能有点冗长。
+- name: 打包和交付
+  questions:
+  - question: 我已经上传、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
+    answer: >
+      最常见的原因之一是，你播放时使用的流式处理终结点未处于“正在运行”状态。
   - question: 什么是媒体服务流式处理终结点？
     answer: >
       在媒体服务中，流式处理终结点表示动态（实时）打包和源服务，该服务可使用一个常见流式处理媒体协议（HLS 或 DASH）直接将实时和按需内容发送到客户端播放器应用。 此外，流式处理终结点  还为行业领先的 DRM 提供动态（实时）加密。  有关流式处理终结点的详细信息，请参阅 [Azure 媒体服务中的流式处理终结点（原点）](stream-streaming-endpoint-concept.md)
@@ -131,42 +127,126 @@ sections:
   - question: 如何创建媒体服务流式处理策略？
     answer: >
       有关可用于入门的预定义策略列表，请参阅[流式处理策略](./stream-streaming-policy-concept.md)。
+  - question: 如何将 HLS 格式的内容流式传输到 Apple 设备？
+    answer: >
+      确保路径末尾（在 URL 的 /manifest 部分之后）具有 (format=m3u8-cmaf)，以告知流式处理源服务器返回供 Apple iOS 本机设备使用的 HTTP Live Streaming (HLS) 内容。 有关详细信息，请参阅[传送内容](encode-dynamic-packaging-concept.md)。
+  - question: 是否可以流式处理在其他解决方案中预编码或编码的现有 Mp4 文件？
+    answer: "可以，媒体服务源服务器（流式处理终结点）支持将 MP4 文件动态打包为 HLS 或 DASH 流式处理格式。 但是，内容必须采用封闭的 GOP 格式进行编码，并且短 GOP 在 2-6 秒的持续时间范围内。 建议采用以下设置：2 秒 GOP、关键帧最大距离和最小距离为 2 秒以及恒定比特率编码（CBR 模式）。 可以支持使用 H264 或 HEVC 视频编解码器以及 AAC 音频格式进行编码的此格式的大多数内容。 还可以支持预编码的其他音频格式（例如 Dolby DD+）。 \n\n使其正常工作的关键是创建资产，使用 Blob 存储客户端 SDK 将预编码的资产上传到资产的容器中，然后生成所需服务器清单 (.ism) 和客户端清单文件。 以下 .NET 示例项目中提供了一个示例，演示如何执行此操作。  \n请参阅示例项目以了解详细信息 - [流式处理现有 MP4 文件](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamExistingMp4)\n\n请记住，使用此方法时会产生性能影响，因为 AMS 中的内置编码器还会生成二进制索引（.mpi 文件）以改进 MP4 文件的访问时间。  如果没有这些文件，服务器可以在高负载下（通过 HLS 或 Dash 流式处理现有单比特率 MP4 文件](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamExistingMp4)）使用稍多的 CPU。在通过此方法纵向扩展时，应在 Azure Monitor 中监视流式处理终结点 CPU 负载。  如果你计划使用在 AMS 外部预编码的大型 MP4 文件库进行生产，请提交支持票证以查看你的体系结构并询问如何提高预编码 Mp4 内容的源服务器性能。 \n"
+- name: 内容保护
+  questions:
   - question: 如何通过动态加密传送媒体内容？
     answer: >
       动态加密在媒体从计算机离开到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 请参阅[使用媒体服务动态加密保护内容](./drm-content-protection-concept.md)。
+  - question: 应使用 AES-128 明文密钥加密还是 DRM 系统？
+    answer: >
+      客户通常希望知道他们应该使用 AES 加密还是 DRM 系统。 这两个系统之间的主要差别在于，使用 AES 加密时，内容密钥将通过 TLS 传输到客户端，这样，密钥将经过传输中加密，但不会经过任何进一步的加密（“明文加密”）。 因此，用于解密内容的密钥可由客户端播放器访问，并且可以在客户端上的网络跟踪中以纯文本形式显示。 AES-128 明文密钥加密适合查看者是受信任方的用例（例如，加密员工观看的在公司内部分发的公司视频）。
+
+
+      相比 AES-128 明文密钥，PlayReady、Widevine 和 FairPlay 之类的 DRM 系统都可以对用于解密内容的密钥提供额外的加密级别。 内容密钥将会加密成受 DRM 运行时保护的密钥，此外还会进行 TLS 提供的任何传输级加密。 此外，解密是在安全的环境中在操作系统级别处理的，在这样的环境中，恶意用户更难进行攻击。 在观看者可能不是受信任方且需要更高等级的安全性的用例中，建议使用 DRM。
+  - question: 如何在不使用 Azure AD 的情况下仅向具有特定权限的用户显示视频？
+    answer: >
+      无需使用任何特定的令牌提供程序，例如 Azure Active Directory (Azure AD)。 可以使用非对称密钥加密创建自己的 [JWT](https://docs.microsoft.com/azure/active-directory/develop/security-tokens#json-web-tokens-and-claims) 提供程序（所谓的“安全令牌服务”，简称 STS）。 在自定义 STS 中，可以根据业务逻辑添加声明。
+
+
+      确保颁发者、受众和声明在 JWT 中的内容和 `ContentKeyPolicy` 中使用的 `ContentKeyPolicyRestriction` 值之间完全匹配。
+
+
+      有关详细信息，请参阅[使用媒体服务动态加密保护内容](drm-content-protection-concept.md)。
+  - question: 在使用 JWT 令牌请求许可证或密钥之前，如何以及在何处获取 JWT 令牌？
+    answer: >
+      在生产环境中，需要获取安全令牌服务（一个 Web 服务），以便根据 HTTPS 请求颁发 JWT 令牌。 对于测试，可以使用 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs) 定义的 `GetTokenAsync` 方法中所示的代码。
+
+
+      对用户进行身份验证后，播放器会向 STS 发出请求以获取此类令牌，并将其分配为令牌的值。 可以使用 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)。
+
+
+      有关使用对称密钥或非对称密钥运行 STS 的示例，请参阅 [JWT 工具](https://aka.ms/jwt)。 有关使用此类 JWT 令牌的基于 Azure Media Player 的播放器示例，请参阅 [Azure 媒体测试工具](https://aka.ms/amtest)。 （展开“player_settings”链接可查看令牌输入。）
+  - question: 如何授权使用 AES 加密流式传输视频的请求？
+    answer: >
+      正确的方法是使用安全令牌服务。 在 STS 中，根据用户配置文件添加不同的声明（例如“高级用户”、“基本用户”、“免费试用版用户”）。 在 JWT 中添加不同的声明后，用户可以查看不同的内容。 对于不同的内容或资产，`ContentKeyPolicyRestriction` 会包含相应的 `RequiredClaims` 值。
+
+
+      使用 Azure 媒体服务 API 来配置许可证/传送密钥以及加密资产（如[此示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithAES/Program.cs)中所示）。
+
+
+      有关详细信息，请参阅：
+
+
+      - [内容保护概述](drm-content-protection-concept.md)
+
+      - [设计带访问控制的多 DRM 内容保护系统](architecture-design-multi-drm-system.md)
+  - question: 为什么在使用 FairPlay 脱机模式时只播放音频而不播放视频？
+    answer: "此行为似乎是示例应用专门设计的。 存在备用音频曲目时（这适用于 HLS），在脱机模式期间，iOS 10 和 iOS 11 都默认播放备用音频曲目。为了补偿 FPS 脱机模式的此行为，需要从流删除备用音频曲目。 若要在媒体服务中完成此操作，请添加动态清单筛选器 audio-only=false。 换言之，HLS URL 将以 .ism/manifest(format=m3u8-aapl,audio-only=false) 结尾。 \n"
+  - question: 为什么添加 audio-only=false 之后，FairPlay 脱机模式只播放音频而不播放视频？
+    answer: >
+      根据内容分发网络的缓存键设计，可能会缓存该内容。 请清除缓存。
+  - question: iOS 设备上的已下载/脱机文件结构是什么？
+    answer: "iOS 设备上的已下载文件结构如下屏幕截图所示。 `_keys` 文件夹存储已下载的 FPS 许可证，每个许可证服务主机一个存储文件。 `.movpkg` 文件夹存储音频和视频内容。 \n\n第一个文件夹（文件名以破折号加数字结尾）包含视频内容。 数值是峰值带宽视频呈现形式。 第二个文件夹（文件名以破折号加 0 结尾）包含音频内容。 第三个文件夹（文件名为 `Data`）包含 FPS 内容的主播放列表。 最后，boot.xml 提供 `.movpkg` 文件夹内容的完整说明。 \n\n![FairPlay iOS 示例应用的脱机文件结构](media/drm-offline-fairplay-for-ios-concept/offline-fairplay-file-structure.png)\n\n下面是一个示例 boot.xml 文件：\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<HLSMoviePackage xmlns:xsi=\"https://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://apple.com/IMG/Schemas/HLSMoviePackage\" xsi:schemaLocation=\"http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd\">\n  <Version>1.0</Version>\n  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>\n  <Streams>\n    <Stream ID=\"1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0\" Path=\"1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0\" NetworkURL=\"https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)\">\n      <Complete>YES</Complete>\n    </Stream>\n    <Stream ID=\"0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656\" Path=\"0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656\" NetworkURL=\"https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)\">\n      <Complete>YES</Complete>\n    </Stream>\n  </Streams>\n  <MasterPlaylist>\n    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>\n  </MasterPlaylist>\n  <DataItems Directory=\"Data\">\n    <DataItem>\n      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>\n      <Category>Playlist</Category>\n      <Name>master.m3u8</Name>\n      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>\n      <Role>Master</Role>\n    </DataItem>\n  </DataItems>\n</HLSMoviePackage>\n```\n"
+  - question: 如何为某些客户端/用户传送永久许可证（允许脱机）并为其他人传送非永久许可证（禁用脱机）？ 是否必须复制内容并使用单独的内容密钥？
+    answer: >
+      由于媒体服务 v3 允许资产有多个 `StreamingLocator` 实例，因此你可以有：
+
+
+      * 一个 `license_type = "persistent"` 的 `ContentKeyPolicy` 实例，其中的 `ContentKeyPolicyRestriction` 包含对 `"persistent"` 的声明，此外还有 `StreamingLocator`。
+
+      * 另一个 `license_type="nonpersistent"` 的 `ContentKeyPolicy` 实例，其中的 `ContentKeyPolicyRestriction` 包含对 `"nonpersistent`" 的声明，此外还有 `StreamingLocator`。
+
+      * 两个具有不同 `ContentKey` 值的 `StreamingLocator` 实例。
+
+
+      根据自定义 STS 的业务逻辑，在 JWT 令牌中发出不同的声明。 使用该令牌，只能获得相应的许可证，并且只能播放相应的 URL。
+  - question: 在 Widevine 和媒体服务 DRM 安全级别之间进行的映射是什么？
+    answer: "Google 的“Widevine DRM 体系结构概述”定义了三种安全级别。 但是，[Widevine 许可证模板上的 Azure 媒体服务文档](drm-widevine-license-template-concept.md)概述了五种安全级别（播放的客户端稳定性要求）。 此部分介绍如何映射安全级别。\n\n两组安全级别均由 Google Widevine 定义。 不同之处是使用级别：体系结构或 API。 Widevine API 中使用了这五种安全级别。 `content_key_specs` 对象包含 `security_level`，该对象被反序列化，并通过 Azure 媒体服务 Widevine 许可证服务传递给 Widevine 全球传送服务。 下表显示两组安全级别之间的映射。\n\n| **Widevine 体系结构中定义的安全级别** |**Widevine API 中使用的安全级别**|\n|---|---| \n| **安全级别 1**：所有内容处理、加密和控制操作均在受信任的执行环境 (TEE) 中进行。 在某些实现模型中，可在不同的芯片中执行安全处理。|**security_level=5**：加密、解码以及对媒体的所有处理（压缩和解压缩）必须在硬件支持的 TEE 中完成。<br/><br/>**security_level=4**：内容加密和解码必须在硬件支持的 TEE 中执行。|\n**安全级别 2**：在 TEE 中进行加密（而不是视频处理）。 已解密的缓冲区返回到应用程序域，通过单独的视频硬件或软件进行处理。 但是，在级别 2，加密信息仍然只在 TEE 中进行处理。| **security_level=3**：密钥材料和加密操作必须在硬件支持的 TEE 中执行。 |\n| **安全级别 3**：设备上没有 TEE。 可采取相应措施来保护主机操作系统中的加密信息和已解密内容。 级别 3 实现可能还包括硬件加密引擎，但只能增强性能，而不能增强安全性。 | **security_level=2**：需要软件加密和模糊处理解码器。<br/><br/>**security_level=1**：需要基于软件的白盒加密。|\n"
+- name: 监视
+  questions:
   - question: 如何监视媒体服务资源？
     answer: >
       使用 Azure Monitor 跟踪媒体服务资源的动态。  有关详细信息，请参阅[监视媒体服务](./monitoring/monitor-media-services.md)。 操作方法指南包括[监视媒体服务指标](./monitoring/media-services-metrics-howto.md)和[监视媒体诊断日志](./monitoring/media-services-diagnostic-logs-howto.md)。
   - question: 如何监视媒体服务实时事件？
     answer: >
       使用 [Azure 事件网格](./monitoring/reacting-to-media-services-events.md)监视实时事件，而无需轮询服务。 操作方法指南包括[使用 Azure 门户通过事件网格创建并监视媒体服务事件](./monitoring/monitor-events-portal-how-to.md)和[使用 Azure CLI 通过事件网格创建并监视 Azure 媒体服务事件](./monitoring/job-state-events-cli-how-to.md)。
+- name: 播放器
+  questions:
   - question: 我可以在媒体服务中使用哪些视频播放器？
     answer: >
       媒体服务支持 Azure Media Player、Shaka 和 Video.js。 请参阅 [Azure Media Player 文档](../azure-media-player/azure-media-player-overview.md)、[如何将 Shaka Player 用于 Azure 媒体服务](./player-shaka-player-how-to.md)，或[如何将 Video.js 播放器用于 Azure 媒体服务](./player-media-players-concept.md)。
+- name: 高可用性
+  questions:
   - question: 媒体服务是否支持高可用性？
     answer: >
       有关媒体服务和高可用性的详细信息，请参阅[媒体服务和点播视频 (VOD) 的高可用性](./architecture-high-availability-encoding-concept.md)。
-  - question: 在哪里可以找到一些媒体服务体系结构示例？
-    answer: >
-      简单！ 请参阅[媒体服务体系结构](./architecture-concept.md)，或访问 Azure 体系结构中心。
+- name: 从 v2 迁移
+  questions:
   - question: 如何从媒体服务 v2 迁移到媒体服务 v3？
     answer: >
       我们创建了[从 v3 迁移到 v3 的综合性指南](./migrate-v-2-v-3-migration-introduction.md)。  我们非常期待了解你的迁移体验和需求，所以请随时通过 GitHub 问题或支持票证提供反馈。
-  - question: 如何使用托管标识将数据加密到媒体服务？
-    answer: "请参阅[使用 Key Vault 密钥将数据加密到媒体服务帐户的教程](security-encrypt-data-managed-identity-cli-tutorial.md)，了解如何使用 CLI 将媒体服务与 Key Vault 配对，以对数据进行加密。  \n"
-  - question: 如何使用托管标识授权媒体服务访问受限制的存储帐户？
+- name: 疑难解答
+  questions:
+  - question: 如何查明此错误代码的含义？
     answer: >
-      如果你要在存储帐户被配置为阻止来自未知 IP 地址的请求的情况下访问该存储帐户，请按照[使用媒体服务托管标识访问存储](security-access-storage-managed-identity-cli-tutorial.md)中的步骤操作。
-- name: 流式处理
+      我们已在以下参考资料中记录了错误代码：[流式处理终结点错误代码](./stream-streaming-endpoint-error-codes-reference.md)、[实时事件错误代码](./live-event-error-codes-reference.md)和[作业错误代码](./job-error-codes-reference.md)。  如果在该列表找不到你要的答案，请创建支持票证。
+  - question: 如何重置帐户凭据？
+    answer: >
+      你可以通过 CLI [重置帐户凭据](./account-reset-account-credentials.md)。
+- name: 计费和成本估算
   questions:
-  - question: 是否可以流式处理在其他解决方案中预编码或编码的现有 Mp4 文件？
-    answer: "可以，媒体服务源服务器（流式处理终结点）支持将 MP4 文件动态打包为 HLS 或 DASH 流式处理格式。 但是，内容必须采用封闭的 GOP 格式进行编码，并且短 GOP 在 2-6 秒的持续时间范围内。 建议采用以下设置：2 秒 GOP、关键帧最大距离和最小距离为 2 秒以及恒定比特率编码（CBR 模式）。 可以支持使用 H264 或 HEVC 视频编解码器以及 AAC 音频格式进行编码的此格式的大多数内容。 还可以支持预编码的其他音频格式（例如 Dolby DD+）。 \n\n使其正常工作的关键是创建资产，使用 Blob 存储客户端 SDK 将预编码的资产上传到资产的容器中，然后生成所需服务器清单 (.ism) 和客户端清单文件。 以下 .NET 示例项目中提供了一个示例，演示如何执行此操作。  \n请参阅示例项目以了解详细信息 - [流式处理现有 MP4 文件](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamExistingMp4)\n\n请记住，使用此方法时会产生性能影响，因为 AMS 中的内置编码器还会生成二进制索引（.mpi 文件）以改进 MP4 文件的访问时间。  如果没有这些文件，服务器可以在高负载下（通过 HLS 或 Dash 流式处理现有单比特率 MP4 文件](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamExistingMp4)）使用稍多的 CPU。在通过此方法纵向扩展时，应在 Azure Monitor 中监视流式处理终结点 CPU 负载。  如果你计划使用在 AMS 外部预编码的大型 MP4 文件库进行生产，请提交支持票证以查看你的体系结构并询问如何提高预编码 Mp4 内容的源服务器性能。 \n"
-  - question: Azure 媒体服务是否可以用于非常短格式的文件内容（如社交媒体应用程序中的内容）？
-    answer: "简单地说，不推荐。  持续时间不到一分钟或两分钟的非常短格式的内容并不真正适用于自适应比特率流式处理。  如果要流式处理非常短格式的文件，建议将内容预编码为可使用单比特率轻松流式处理的格式。 \n\n由于大多数自适应比特率播放器需要时间来缓冲多个视频段，并且需要时间在自适应比特率阶梯向上或向下“移动”之前分析网络带宽，因此，为长度不到 30 秒的内容提供大量比特率通常没什么用。  当播放器根据网络状况将其启发式算法锁定在正确的播放比特率时，文件会以流式处理方式完成。  \n\n此外，某些播放器默认缓冲最多 3 个视频“段”。  每个段的持续时间可以是 2 到 6 秒。  对于非常短格式的视频，播放器可能会缓冲并开始播放 ABR 集的第一个选定比特率。 因此，如果需要生成 HLS 或 DASH 清单，建议使用单比特率 MP4 文件并将其上传到资产。 请参阅上述问题标题“是否可以流式传输现有 Mp4 文件...”，以了解有关如何实现此操作的详细信息。 \n\n仅当要从这些协议的功能中获益时，才需要以 HLS 或 DASH 格式传送文件。  对于单比特率流，它们仍可以提供许多功能，例如更快的寻找速度、DRM 支持、与 blob 存储中的渐进式下载 Mp4 相比更难以通过 URL 下载（但仍然可能！）。 针对 VTT 和 IMSC1 的字幕支持也是另一个好处。  此外，能够后期绑定其他音频再现内容或以备用语言进行配音使之在某些情况下成为一个有价值的选择。 \n"
-- name: 编码
+  - question: 媒体服务的费用是多少？
+    answer: >
+      请参阅[媒体服务定价指南](https://azure.microsoft.com/pricing/details/media-services/)
+- name: 配额和限制
   questions:
-  - question: 是否可以在媒体服务中使用外部编码的或现有 Mp4 文件？
-    answer: >-
-      可以，请参阅流式处理问题下有关“是否可以流式处理现有 MP4 文件”的部分，了解详细信息和指向示例应用程序（演示如何上传预编码的单比特率 Mp4 文件并生成服务器清单 (.ism) 和客户端清单 (.ismc)）的链接。
+  - question: 媒体服务配额和限制是多少？
+    answer: >
+      请参阅[媒体服务的配额和限制](limits-quotas-constraints-reference.md)
+- name: 合规性和客户数据
+  questions:
+  - question: 媒体服务是否在服务区域之外存储任何客户数据？
+    answer: >
+      - 客户将自己的存储帐户附加到 Azure 媒体服务帐户。  所有资产数据都存储在这些关联的存储帐户中，客户控制此存储的位置和复制类型。
 
-      请注意该问题/答案中也指出的源性能影响问题。
+      - 与媒体服务帐户关联的其他数据（包括内容加密密钥、令牌验证密钥、JobInputHttp URL 以及其他实体元数据）存储在 Microsoft 拥有的存储中，而该存储则位于为媒体服务帐户选择的区域中。
+        - 考虑到巴西南部和东南亚的[数据驻留要求](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information)，其他帐户数据以区域冗余方式存储，包含在单个区域中。 东南亚的所有其他帐户数据存储在新加坡，巴西南部的数据存储在巴西。
+        - 在除巴西南部和东南亚之外的区域，其他帐户数据还可以存储在[配对区域](../../best-practices-availability-paired-regions.md)中 Microsoft 拥有的存储中。
+      - Azure 媒体服务是一种区域服务，不提供[高可用性](architecture-high-availability-encoding-concept.md)或数据复制。 如果客户需要这些功能，则强烈建议其使用多个区域中的媒体服务帐户来构建解决方案。  我们以指南的形式提供了一个示例，展示了如何使用媒体服务点播视频构建解决方案以实现高可用性。
+  - question: 媒体服务是否提供高可用性或数据复制？
+    answer: '-   Azure 媒体服务是一种区域服务，不提供高可用性或数据复制。 如果客户需要这些功能，则强烈建议其使用多个区域中的媒体服务帐户来构建解决方案。 我们以指南的形式提供了一个示例，展示了[如何使用媒体服务点播视频构建解决方案以实现高可用性](./architecture-high-availability-encoding-concept.md)。'

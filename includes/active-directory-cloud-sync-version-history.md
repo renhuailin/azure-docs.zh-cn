@@ -1,14 +1,25 @@
 ---
-ms.openlocfilehash: d7780da3ad23c0c157284839c5063c6c015a42a6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 57d211a7a080cc07d30a5810c4e1660c575acff3
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121801607"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123078485"
 ---
 本文列出了已发布的 Azure Active Directory Connect 预配代理的版本和功能。 Azure AD 团队会定期更新预配代理的新特性和功能。 
 
 Microsoft 为最新代理版本和之前的一个版本提供直接支持。
+
+## <a name="download-link"></a>下载链接
+你可以使用[此链接](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/provisioningAgentInstaller)下载代理的最新版本。
+
+## <a name="115840"></a>1.1.584.0 
+
+2021 年 8 月 20 日 - 已发布供下载
+
+### <a name="fixed-issues"></a>已修复的问题
+
+- 修复了以下 bug：对域进行重命名时，密码哈希同步将失败，错误指示事件日志中的“指定的强制转换无效”。 这是早期版本中的回归。
 
 ## <a name="115820"></a>1.1.582.0
 
@@ -16,7 +27,6 @@ Microsoft 为最新代理版本和之前的一个版本提供直接支持。
 
 >[!NOTE] 
 >这是 Azure AD Connect 的安全更新版本。 此版本解决了[此 CVE](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36949) 中所述的漏洞。 有关此漏洞的详细信息，请参阅 CVE。
->可以使用[此链接](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/provisioningAgentInstaller)下载该版本。
 
 ## <a name="113590"></a>1.1.359.0
 
@@ -49,7 +59,7 @@ Microsoft 为最新代理版本和之前的一个版本提供直接支持。
 ### <a name="fixed-issues"></a>已修复的问题
 -    当范围组超出范围时防止隔离
 -   配置范围筛选器时 - 现在仅对范围内用户执行 PHS 作业
--   代理有时会在升级期间挂起
+-   代理有时会在升级期间停止响应
 -   使用 OU 范围时对嵌套 OU 中的对象进行初始同步
 -   提高了 Repair-AADCloudSyncToolsAccount 的可靠性
 -   减少了 OU 范围筛选器的大内存用量

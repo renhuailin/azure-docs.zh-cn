@@ -1,8 +1,8 @@
 ---
 title: '快速入门：使用 Azure Maps 创建 Android 应用 | Microsoft Azure '
 description: 快速入门：了解如何使用 Azure Maps Android SDK 创建 Android 应用。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2021
 ms.topic: quickstart
 ms.service: azure-maps
@@ -10,12 +10,12 @@ services: azure-maps
 manager: cpendle
 ms.custom: mvc
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 56882d71be8e015cf6f931c1869664ae42d2d0a2
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0f75aea82a6b41605c34685b910699192f1c8a99
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091314"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431579"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-maps"></a>快速入门：使用 Azure Maps 创建 Android 应用
 

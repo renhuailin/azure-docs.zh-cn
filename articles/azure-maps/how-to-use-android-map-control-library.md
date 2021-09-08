@@ -1,20 +1,20 @@
 ---
 title: Android 地图控件入门 | Microsoft Azure Maps
 description: 熟悉 Azure Maps Android SDK。 了解如何在 Android Studio 中创建项目、安装 SDK 和创建交互式地图。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 237888e1ee635a68a4603bfa63f5bfe4618c018a
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 21442101f1cde2717f079aac550a5e8c587451f2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093492"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430641"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK 入门
 

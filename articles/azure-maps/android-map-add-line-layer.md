@@ -1,20 +1,20 @@
 ---
 title: 向 Android 地图添加线条层 | Microsoft Docs
 description: 了解如何向地图添加线条。 请参阅示例，了解如何使用 Azure Maps Android SDK 向地图添加线条层并使用符号和颜色渐变自定义线条。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: ff071d03e00a0380d1ab6642828b0940931d3302
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ce8733fdc6e6fd22414df944e35fa3609668e653
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097442"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438455"
 ---
 # <a name="add-a-line-layer-to-the-map-android-sdk"></a>向地图添加线条层 (Android SDK)
 

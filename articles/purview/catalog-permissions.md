@@ -7,23 +7,25 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 41a2ecde221ab894ca4cd0907fc70ee2bd9952c5
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 06ed84bf63f79087efef33b1061e21b61315e78e
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397739"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969445"
 ---
 # <a name="access-control-in-azure-purview"></a>Azure Purview 中的访问控制
 
-Azure Purview 使用集合来组织和管理对其源、资产和其他项目的访问。 本文介绍 Azure Purview 实例中的集合与访问管理。
+Azure Purview 使用集合来组织和管理对其源、资产和其他项目的访问。 本文介绍 Azure Purview 帐户中的集合与访问管理。
 
 > [!NOTE]
-> 目前，本文中的信息仅适用于在 8 月 18 日当天或之后创建的 Purview 实例。 在 8 月 18 日之前创建的实例可以创建集合，但不会通过这些集合管理权限。 有关对 8 月 18 日之前创建的 Purview 实例进行访问控制的信息，请参阅页面底部的[旧版权限指南](#legacy-permission-guide)。
+> 目前，本文中的信息仅适用于在 2021 年 8 月 18 日当天或之后创建的 Purview 帐户。 在 8 月 18 日之前创建的实例可以创建集合，但不会通过这些集合管理权限。 有关对 8 月 18 日之前创建的 Purview 实例进行访问控制的信息，请参阅页面底部的[旧版权限指南](#legacy-permission-guide)。
+>
+> 所有旧帐户都将在几周内自动升级。 升级 Purview 帐户时，你将收到电子邮件通知。 升级帐户时，所有分配的权限将自动重新部署到根集合。 此时，应通过集合而不是访问控制 (IAM) 来管理权限。 IAM 权限将不再适用于 Purview 项目。
 
 ## <a name="collections"></a>集合
 
-集合是 Azure Purview 用来将资产、源和其他项目分组到层次结构（以使其可供发现）以及用来管理访问控制的一种工具。 对 Purview 资源的所有访问都是从 Purview 实例本身内部的集合进行管理的。
+集合是 Azure Purview 用来将资产、源和其他项目分组到层次结构（以使其可供发现）以及用来管理访问控制的一种工具。 对 Purview 资源的所有访问都是从 Purview 帐户本身内部的集合进行管理的。
 
 ## <a name="roles"></a>角色
 
@@ -46,25 +48,27 @@ Azure Purview 使用一组预定义的角色来控制谁可以访问帐户中的
 |我需要启用服务主体或组，以便在 Azure Purview 中设置和监视扫描，而无需允许它们访问目录信息 |数据源管理员|
 |我需要将用户分配到 Azure Purview 角色中 | 集合管理员 |
 
+:::image type="content" source="./media/catalog-permissions/collection-permissions-roles.png" alt-text="显示 Purview 角色的图表" lightbox="./media/catalog-permissions/collection-permissions-roles.png":::
+
 ## <a name="understand-how-to-use-azure-purviews-roles-and-collections"></a>了解如何使用 Azure Purview 的角色和集合
 
-所有访问控制将在 Purview 的集合中进行管理。 可以在 [Purview Studio](use-purview-studio.md) 中找到 Purview 的集合。 在 Azure 门户中打开你的 Purview 帐户，然后在“概述”页上选择“Purview Studio”磁贴。 从该位置导航到左侧菜单中的“数据映射”，然后选择“集合”选项卡。
+所有访问控制将在 Purview 的集合中进行管理。 可以在 [Purview Studio](use-purview-studio.md) 中找到 Purview 的集合。 在 [Azure 门户](https://portal.azure.com)中打开你的 Purview 帐户，然后在“概述”页上选择“Purview Studio”磁贴。 从该位置导航到左侧菜单中的“数据映射”，然后选择“集合”选项卡。
 
-创建 Azure Purview 实例后，它最初包含一个与 Purview 帐户本身同名的根集合。 Purview 帐户的创建者将自动添加为此根集合的集合管理员、数据源管理员、数据管护者和数据读取者，可以编辑和管理此集合。
+创建 Azure Purview 帐户后，它最初包含一个与 Purview 帐户本身同名的根集合。 Purview 帐户的创建者将自动添加为此根集合的集合管理员、数据源管理员、数据管护者和数据读取者，可以编辑和管理此集合。
 
-源、资产和对象可以直接添加到此根集合，但其他集合也可以添加到此根集合。 添加集合可以更好地控制谁有权访问 Purview 实例中的数据。
+源、资产和对象可以直接添加到此根集合，但其他集合也可以添加到此根集合。 添加集合可以更好地控制谁有权访问 Purview 帐户中的数据。
 
-对于所有其他用户，只有在为他们或者他们所在的组分配了上述角色之一后，他们才能访问 Azure Purview 实例中的信息。 这意味着，如果 Azure Purview 帐户是由你创建的，则在将其他人[添加到集合中上述一个或多个角色](how-to-create-and-manage-collections.md#add-role-assignments)之前，只有创建者（你）才能访问或使用该帐户的 API。
+对于所有其他用户，只有在为他们或者他们所在的组分配了上述角色之一后，他们才能访问 Azure Purview 帐户中的信息。 这意味着，如果 Azure Purview 帐户是由你创建的，则在将其他人[添加到集合中上述一个或多个角色](how-to-create-and-manage-collections.md#add-role-assignments)之前，只有创建者（你）才能访问或使用该帐户的 API。
 
-只能由集合管理员或通过权限继承将用户添加到集合。 父集合的权限由其子集合自动继承。 但是，你可以选择在任一集合上[限制权限继承](how-to-create-and-manage-collections.md#restrict-inheritance)。 如果执行此操作，该集合的子集合将不再从父级继承权限，不过，从父集合自动继承的集合管理员无法删除。
+只能由集合管理员或通过权限继承将用户添加到集合。 父集合的权限由其子集合自动继承。 但是，你可以选择在任一集合上[限制权限继承](how-to-create-and-manage-collections.md#restrict-inheritance)。 如果执行此操作，该集合的子集合将不再从父级继承权限，并且将需要直接添加，不过，无法删除从父集合自动继承的集合管理员。
 
 ## <a name="assign-permissions-to-your-users"></a>为用户分配权限
 
-创建 Azure Purview 实例后，首先要做的事是创建集合，并将用户分配到这些集合中的角色。
+创建 Azure Purview 帐户后，首先要做的事是创建集合，并将用户分配到这些集合中的角色。
 
 ### <a name="create-collections"></a>创建集合
 
-可以根据 Purview 实例中的源结构自定义集合，集合还可以为这些资源充当组织有序的存储箱。 考虑可能需要哪些集合时，请考虑用户访问或发现信息的方式。 源是否按部门细分？ 在这些部门中，是否存在只需发现某些资产的专业组？ 是否有某些源必须可供所有用户发现？
+可以根据 Purview 帐户中的源结构自定义集合，集合还可为这些资源充当组织有序的存储箱。 考虑可能需要哪些集合时，请考虑用户访问或发现信息的方式。 源是否按部门细分？ 在这些部门中，是否存在只需发现某些资产的专业组？ 是否有某些源必须可供所有用户发现？
 
 可以根据这些提示来确定需要使用哪些集合和子集合来最有效地组织数据映射。
 
@@ -94,7 +98,7 @@ Azure Purview 使用一组预定义的角色来控制谁可以访问帐户中的
 ## <a name="legacy-permission-guide"></a>旧版权限指南
 
 > [!NOTE]
-> 本旧版集合指南仅适用于在 8 月 18 日之前创建的 Purview 实例。 在该时间之后创建的实例应遵循前面的指南。
+> 本旧版集合指南仅适用于在 2021 年 8 月 18 日之前创建的 Purview 帐户。 在该时间之后创建的实例应遵循前面的指南。
 
 本文介绍如何在 Azure Purview 的[数据平面](../azure-resource-manager/management/control-plane-and-data-plane.md#data-plane)中为 8 月 18 日之前创建的 Purview 资源实现基于角色的访问控制 (RBAC)。
 
@@ -139,7 +143,7 @@ Azure 中只有两个内置控制平面角色可以分配用户角色 - 所有�
 
 角色定义为操作的集合。 有关如何定义角色的详细信息，请参阅[此处](../role-based-access-control/role-definitions.md)。 若要了解 Azure Purview 角色的角色定义，请参阅[此处](../role-based-access-control/built-in-roles.md)。
 
-### <a name="getting-added-to-a-legacy-data-plane-role-in-an-azure-purview-instance"></a>在 Azure Purview 实例中添加到旧版数据平面角色
+### <a name="getting-added-to-a-legacy-data-plane-role-in-an-azure-purview-account"></a>在 Azure Purview 帐户中添加到旧版数据平面角色
 
 如果你希望获得对 Azure Purview 帐户的访问权限，以便可以使用其工作室或调用其 API，则你需要添加到 Azure Purview 数据平面角色中。 只有 Azure Purview 帐户的所有者或用户访问管理员才能执行此操作。 对于大多数用户来说，下一步是找到一名本地管理员，该管理员可以帮助你找到可以为你提供访问权限的合适人员。
 
@@ -156,6 +160,8 @@ Azure 中只有两个内置控制平面角色可以分配用户角色 - 所有�
 |我需要通过 Purview Studio 设置扫描|Purview 数据源管理员角色以及至少 Purview 数据读取者角色或 Purview 数据策展者角色之一|
 |我需要启用服务主体或其他编程标识，以在不允许编程标识访问目录信息的情况下在 Azure Purview 中设置和监视扫描 |Purview 数据源管理员角色|
 |我需要将用户分配到 Azure Purview 角色中 | 所有者或用户管访问理员 |
+
+:::image type="content" source="./media/catalog-permissions/collection-permissions-roles-legacy.png" alt-text="显示 Purview 旧版角色的图表" lightbox="./media/catalog-permissions/collection-permissions-roles-legacy.png":::
 
 ## <a name="next-steps"></a>后续步骤
 

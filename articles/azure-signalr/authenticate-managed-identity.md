@@ -6,12 +6,12 @@ ms.author: tefa
 ms.date: 08/03/2020
 ms.service: signalr
 ms.topic: conceptual
-ms.openlocfilehash: b2766495c89b9be1a89e0648bcec83c160c1e0a8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e25fa98e2ca43b6697de6290ad122b6585b6a072
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479436"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186022"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-signalr-resources"></a>使用 Azure Active Directory 对托管标识进行身份验证，以访问 Azure SignalR 资源
 Azure SignalR 服务支持使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 Azure 资源的托管标识可以从 Azure 虚拟机 (VM)、函数应用、虚拟机规模集和其他服务中运行的应用程序使用 Azure AD 凭据授权对 Azure SignalR 服务资源的访问权限。 将 Azure 资源的托管标识与 Azure AD 身份验证结合使用，可避免将凭据随在云中运行的应用程序一起存储。
@@ -50,7 +50,7 @@ Azure SignalR 服务支持使用 [Azure 资源的托管标识](../active-directo
     ![工具栏上的“添加”按钮](./media/authenticate/role-assignments-add-button.png)
 
 1. 在“添加角色分配”  页上，执行以下步骤：
-    1. 选择“SignalR 应用服务器”作为角色。 请注意，这也适用于 Azure Functions 应用。
+    1. 选择“SignalR 服务所有者”作为角色。
     1. 通过搜索找到要为其分配该角色的 **安全主体**（用户、组、服务主体）。
     1. 选择“保存”以保存角色分配。 
 

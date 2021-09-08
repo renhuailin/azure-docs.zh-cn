@@ -8,12 +8,12 @@ author: trkeya
 ms.author: trkeya
 ms.date: 07/09/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6931f33c303e1e42af75b34cb7a72d7a37c702cd
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: ae8cdb3b6f470d8dd9f1500d5dd0af51d594b8e8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113598182"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432281"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>更新商业市场中的现有产品/服务
 
@@ -57,6 +57,9 @@ ms.locfileid: "113598182"
 1. 更改计划名称、说明或受众可用性后，选择“保存草稿”。
 1. 准备好发布更新后，选择“查看并发布”。 此时将打开 **[查看并发布](review-publish-offer.md)** ，并提供更新的完成状态。
 1. 选择“发布”以提交更新的计划进行发布。 当更新产品/服务的预览版本可供评审和审批时，我们将向你发送电子邮件。
+
+> [!NOTE]
+> 如果发布专用计划，以后仍可将其设为公用。 但发布公用计划后无法改设为专用。
 
 ## <a name="update-image-versions-for-an-existing-vm-offer"></a>更新现有 VM 产品/服务的映像版本
 

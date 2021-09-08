@@ -11,12 +11,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dc0eed20ee392b668078425946b39ac6c6440c4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2ad99f677cde82f461eee6396d945fb3cd030245
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742890"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306101"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect 云同步先决条件
 本文指导如何选择 Azure Active Directory (Azure AD) Connect 云同步并将其作为标识解决方案。
@@ -33,9 +33,9 @@ ms.locfileid: "121742890"
 组托管服务帐户是一种托管的域帐户，它提供自动密码管理，简化的服务主体名称 (SPN) 管理、将管理委派给其他管理员以及在多个服务器上扩展此功能的能力。  Azure AD Connect 云同步支持并使用 gMSA 运行代理。  在安装过程中，系统会提示你输入管理凭据，以便创建此帐户。  该帐户将显示为 (domain\provAgentgMSA$)。  有关 gMSA 的详细信息，请参阅[组托管服务帐户](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 ### <a name="prerequisites-for-gmsa"></a>gMSA 的先决条件：
-1.  gMSA 域的林中的 Active Directory 架构需要更新到 Windows Server 2016。
+1.  gMSA 域的林中的 Active Directory 架构需要更新到 Windows Server 2012 或更高版本。
 2.  域控制器上的 [PowerShell RSAT 模块](/windows-server/remote/remote-server-administration-tools)
-3.  域中必须至少有一个域控制器运行 Windows Server 2016。
+3.  域中必须至少有一个域控制器运行 Windows Server 2012 或更高版本。
 4.  要安装代理的已加入域的服务器必须是 Windows Server 2016 或更高版本。
 
 ### <a name="custom-gmsa-account"></a>自定义 gMSA 帐户
@@ -133,6 +133,9 @@ ms.locfileid: "121742890"
 使用 OU 范围筛选器时
 - 对于给定的配置，最多只能同步 59 个单独的 OU。 
 - 支持嵌套 OU（即，可以同步具有 130 个嵌套 OU 的 OU，但不能同步相同配置的 60 个单独的 OU）。 
+
+### <a name="password-hash-sync"></a>密码哈希同步
+- 不支持将密码哈希同步与 InetOrgPerson 一起使用。
 
 
 ## <a name="next-steps"></a>后续步骤 

@@ -1,19 +1,22 @@
 ---
-title: Azure 数据工厂中的复制活动
-description: 了解 Azure 数据工厂中的复制活动。 可以使用复制活动将数据从支持的源数据存储复制到支持的接收器数据存储。
+title: 复制活动
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解 Azure 数据工厂和 Azure Synapse Analytics 中的复制活动。 可以使用复制活动将数据从支持的源数据存储复制到支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 6/1/2021
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 944e5fb05298c91e4405088c1179e0720173dde0
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: a5b84673a879c086fe1fc0543da1ab0037d32ac1
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746136"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123255969"
 ---
-# <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
+# <a name="copy-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的复制活动
 
 > [!div class="op_single_selector" title1="选择要使用的数据工厂版本："]
 > * [版本 1](v1/data-factory-data-movement-activities.md)
@@ -21,7 +24,7 @@ ms.locfileid: "111746136"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-在 Azure 数据工厂中，可以使用复制活动在本地与云数据存储之间复制数据。 复制数据后，可以使用其他活动进一步转换和分析数据。 还可使用复制活动发布有关商业智能 (BI) 和应用程序消耗的转换和分析结果。
+在 Azure 数据工厂和 Synapse 管道中，可使用复制活动在本地与云数据存储之间复制数据。 复制数据后，可以使用其他活动进一步转换和分析数据。 还可使用复制活动发布有关商业智能 (BI) 和应用程序消耗的转换和分析结果。
 
 ![复制活动的角色](media/copy-activity-overview/copy-activity.png)
 
@@ -58,13 +61,13 @@ ms.locfileid: "111746136"
 
 ## <a name="supported-regions"></a>支持的区域
 
-支持复制活动的服务已在 [Azure Integration Runtime 位置](concepts-integration-runtime.md#integration-runtime-location)中所列的区域和地理位置全球发布。 全局可用拓扑可确保高效的数据移动，此类移动通常避免跨区域跃点。 请参阅[各区域推出的产品](https://azure.microsoft.com/regions/#services)，检查数据工厂和数据移动是否可在特定的区域中使用。
+支持复制活动的服务已在 [Azure Integration Runtime 位置](concepts-integration-runtime.md#integration-runtime-location)中所列的区域和地理位置全球发布。 全局可用拓扑可确保高效的数据移动，此类移动通常避免跨区域跃点。 请参阅[产品（按区域）](https://azure.microsoft.com/regions/#services)查看特定区域中数据工厂、Synapse 工作区和数据移动的可用性。
 
 ## <a name="configuration"></a>配置
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-通常，若要使用 Azure 数据工厂中的复制活动，需要执行以下操作：
+通常，若要使用 Azure 数据工厂或 Synapse 管道中的复制活动，需要执行以下操作：
 
 1. **创建用于源数据存储和接收器数据存储的链接服务。** 在本文的[支持的数据存储和格式](#supported-data-stores-and-formats)部分可以找到支持的连接器列表。 有关配置信息和支持的属性，请参阅连接器文章的“链接服务属性”部分。 
 2. **为源和接收器创建数据集。** 有关配置信息和支持的属性，请参阅源和接收器连接器文章的“数据集属性”部分。
@@ -139,19 +142,19 @@ ms.locfileid: "111746136"
 
 ## <a name="monitoring"></a>监视
 
-可通过视觉和编程方式监视在 Azure 数据工厂中运行的复制活动。 有关详细信息，请参阅[监视复制活动](copy-activity-monitoring.md)。
+可以编程方式直观地监视在 Azure 数据工厂和 Synapse 管道中运行的复制活动。 有关详细信息，请参阅[监视复制活动](copy-activity-monitoring.md)。
 
 ## <a name="incremental-copy"></a>增量复制
 
-数据工厂可让你以递增方式将增量数据从源数据存储复制到接收器数据存储。 有关详细信息，请参阅[教程：以增量方式复制数据](tutorial-incremental-copy-overview.md)。
+通过数据工厂和 Synapse 管道，可以递增方式将增量数据从源数据存储复制到接收器数据存储。 有关详细信息，请参阅[教程：以增量方式复制数据](tutorial-incremental-copy-overview.md)。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 
-[复制活动监视](copy-activity-monitoring.md)体验向你显示每个活动运行的复制性能统计信息。 [复制活动性能和可伸缩性指南](copy-activity-performance.md)中描述了哪些关键因素会影响通过 Azure 数据工厂中的复制活动移动数据时的性能。 其中还列出了在测试期间观测到的性能值，并介绍了如何优化复制活动的性能。
+[复制活动监视](copy-activity-monitoring.md)体验向你显示每个活动运行的复制性能统计信息。 [复制活动性能和可伸缩性指南](copy-activity-performance.md)介绍通过复制活动影响数据移动性能的关键因素。 其中还列出了在测试期间观测到的性能值，并介绍了如何优化复制活动的性能。
 
 ## <a name="resume-from-last-failed-run"></a>从上次失败的运行恢复
 
-在基于文件的存储之间以二进制格式按原样复制大量文件，并选择将文件夹/文件层次结构从源保存到接收器（例如，将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2）时，复制活动支持从上次失败的运行中恢复。 它适用于以下基于文件的连接器：[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 兼容存储](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[Oracle 云存储](connector-oracle-cloud-storage.md) 和 [SFTP](connector-sftp.md)。
+在基于文件的存储之间以二进制格式按原样复制大量文件，并选择将文件夹/文件层次结构从源保存到接收器（例如，将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2）时，复制活动支持从上次失败的运行中恢复。 它适用于下列基于文件的连接器：[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 兼容存储](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[Oracle 云存储](connector-oracle-cloud-storage.md) 和 [SFTP](connector-sftp.md)。
 
 可以通过下述两种方式利用复制活动恢复功能：
 
@@ -194,7 +197,7 @@ ms.locfileid: "111746136"
 
 若要以编程方式对其进行配置，请在复制活动源中添加 `additionalColumns` 属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | additionalColumns | 添加要复制到接收器的其他数据列。<br><br>`additionalColumns` 数组下的每个对象都表示一个额外的列。 `name` 定义列名称，`value` 表示该列的数据值。<br><br>允许的数据值为：<br>-  **`$$FILEPATH`** - 一个保留变量，指示将源文件的相对路径存储在数据集中指定的文件夹路径。 应用于基于文件的源。<br>-  **`$$COLUMN:<source_column_name>`** - 保留变量模式指示将指定的源列复制为另一个列<br>- **表达式**<br>- **静态值** | 否 |
 
@@ -260,7 +263,7 @@ ms.locfileid: "111746136"
 
 ## <a name="data-consistency-verification"></a>数据一致性验证
 
-当你将数据从源存储移动到目标存储时，Azure 数据工厂复制活动提供了一个选项，供你执行额外的数据一致性验证，以确保数据不仅成功地从源存储复制到目标存储，而且验证了源存储和目标存储之间的一致性。 在数据移动过程中发现不一致的文件后，可以中止复制活动，或者通过启用容错设置跳过不一致的文件来继续复制其余文件。 通过在复制活动中启用会话日志设置，可以获取跳过的文件名称。 有关详细信息，请参阅[复制活动中的数据一致性验证](copy-activity-data-consistency.md)。
+当你将数据从源存储移动到目标存储时，复制活动提供一个选项来供你执行额外的数据一致性验证，以确保数据不仅成功地从源存储复制到目标存储，而且验证了源存储和目标存储之间的一致性。 在数据移动过程中发现不一致的文件后，可以中止复制活动，或者通过启用容错设置跳过不一致的文件来继续复制其余文件。 通过在复制活动中启用会话日志设置，可以获取跳过的文件名称。 有关详细信息，请参阅[复制活动中的数据一致性验证](copy-activity-data-consistency.md)。
 
 ## <a name="session-log"></a>会话日志
 你可以记录复制的文件名，这样就可以通过检查复制活动会话日志来进一步确保数据不仅成功地从源存储复制到目标存储，而且在源存储和目标存储之间一致。 有关详细信息，请参阅[复制活动中的会话日志](copy-activity-log.md)。

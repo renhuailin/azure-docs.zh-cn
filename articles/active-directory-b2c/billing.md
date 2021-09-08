@@ -7,20 +7,29 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 05/28/2021
+ms.date: 08/26/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 623799b894846034dcf3f58a4bd6e53c56d526df
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 7b0b5a35a85a8b0564112d62401c722e65505f2e
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690497"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186220"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的计费模型
 
 Azure Active Directory B2C (Azure AD B2C) 定价基于月度活跃用户 (MAU)，这是对一个日历月内具有身份验证活动的独立用户的计数。 此计费模型同时适用于 Azure AD B2C 租户和 [Azure AD 来宾用户协作 (B2B)](../active-directory/external-identities/external-identities-pricing.md)。 MAU 计费提供免费层和灵活且可预测的定价，有助于降低成本。 在本文中，你将了解 MAU 计费、如何将 Azure AD B2C 租户链接到订阅，以及如何更改你的定价层。
+
+## <a name="mau-overview"></a>MAU 概述
+
+月度活跃用户 (MAU) 是指在给定月份进行身份验证的唯一用户。 在给定月份中进行多次身份验证的用户被计为一位 MAU。 不就某位 MAU 在该月份中的后续身份验证向客户收费，也不就非活跃用户收费。 身份验证可包括：
+
+- 用户的主动、交互式登录，例如通过[注册或登录](add-sign-up-and-sign-in-policy.md)、[自助式密码重置](add-password-reset-policy.md)、[个人资料编辑](add-profile-editing-policy.md)或任何类型的[用户流](user-flow-overview.md)或[自定义策略](custom-policy-overview.md)。
+- 被动的非交互式登录，例如[单一登录 (SSO)](session-behavior.md) 或任何类型的令牌获取（例如授权代码流、令牌刷新或[资源所有者密码凭据 (ROPC)](add-ropc-policy.md)）。
+
+如果你选择使用多重身份验证 (MFA) 对语音和短信提供更高级别的保障，则无论登录成功与否，我们都将继续按全球固定费用对该月的每次 MFA 尝试进行收费。 
 
 > [!IMPORTANT]
 > 本文不包含定价详细信息。 有关用量计费和定价的最新信息，请参阅 [Azure Active Directory B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。 另外请参阅 [Azure AD B2C 区域可用性和数据驻留](data-residency.md)，详细了解 Azure AD B2C 服务的可用位置以及用户数据的存储位置。

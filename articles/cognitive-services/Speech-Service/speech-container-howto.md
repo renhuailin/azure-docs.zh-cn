@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/10/2021
+ms.date: 08/27/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: ccca7f1deeeef49b734313c30d13290e47b6ab57
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a78408759492cdba97bca8b6e4b71411af192f9f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727978"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224114"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 API 安装并运行 Docker 容器 
 
@@ -30,19 +30,18 @@ ms.locfileid: "121727978"
 | 语音转文本 | 使用中间结果分析情绪并听录连续实时语音或批量音频录制内容。  | 2.13.0 | 正式版 |
 | 自定义语音转文本 | 通过[自定义语音识别门户](https://speech.microsoft.com/customspeech)中的自定义模型，使用中间结果将连续实时语音或批量音频录制内容听录成文本。 | 2.13.0 | 正式版 |
 | 文本转语音 | 使用纯文本输入或语音合成标记语言 (SSML) 将文本转换为自然声音。 | 1.14.1 | 正式版 |
-| 语音语言识别 | 检测音频文件中讲述的语言。 | 1.3.0 | 门控式预览版 |
+| 语音语言识别 | 检测音频文件中讲述的语言。 | 1.3.0 | 预览 |
 | 神经文本转语音 | 使用深度神经网络技术将文本转换为自然语音，使合成语音变得更自然。 | 1.8.0 | 正式版 |
-
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 > [!IMPORTANT]
-> 若要使用语音容器，必须提交在线请求并获得批准。 有关详细信息，请参阅下面的“请求批准运行容器”部分。
+> * 若要使用语音容器，必须提交在线请求并获得批准。 有关详细信息，请参阅下面的“请求批准运行容器”部分。 
+> * 正式版容器满足 Microsoft 的稳定性和支持要求。 预览版容器仍在开发中。
 
 使用语音服务容器之前，必须满足以下先决条件。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
-* 在主机上安装的 [Docker](https://docs.docker.com/)。 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 
+* 在主机上安装 [Docker](https://docs.docker.com/)。 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 
     * 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。
     * 应基本了解 [Docker 概念](https://docs.docker.com/get-started/overview/)。 
 * 使用免费 (F0) 或标准 (S) [定价层](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices"  title="创建语音服务资源"  target="_blank">语音服务资源</a>。

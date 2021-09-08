@@ -6,12 +6,12 @@ author: Vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.date: 03/18/2021
-ms.openlocfilehash: bcd455590e804ad337f25afbd38d729f03ef3dc4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5ad806603ea64f643122ebc1f753e52b9d9e4225
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743237"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251444"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>使用脚本设置设备
 
@@ -61,14 +61,17 @@ Hyper-V | Windows Server 2016，含 16 GB 内存，8 个 vCPU，约 80 GB 的磁
 
     **下载** | **哈希值**
     --- | ---
-    [最新版本](https://go.microsoft.com/fwlink/?linkid=2116601) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2116601) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 > [!NOTE]
 > 同样的脚本可用于为 Azure 公有云或 Azure 政府云设置 VMware 设备。
 
 ### <a name="run-the-script"></a>运行脚本
 
-1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
+1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。
+> [!NOTE]
+> 请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。 在 Azure Migrate 设备上运行脚本将删除正在运行的配置并将其替换为新定义的配置。
+
 2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
 4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
@@ -118,14 +121,17 @@ Hyper-V | Windows Server 2016，含 16 GB 内存，8 个 vCPU，约 80 GB 的磁
 
     **下载** | **哈希值**
     --- | ---
-    [最新版本](https://go.microsoft.com/fwlink/?linkid=2116657) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2116657) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 > [!NOTE]
 > 同样的脚本可用于为 Azure 公有云或 Azure 政府云设置 Hyper-V 设备。
 
 ### <a name="run-the-script"></a>运行脚本
 
-1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
+1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。
+> [!NOTE]
+> 请确保不要在现有 Azure Migrate 设备上运行脚本。 在 Azure Migrate 设备上运行脚本将删除正在运行的配置并将其替换为新定义的配置。
+
 2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
 4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：

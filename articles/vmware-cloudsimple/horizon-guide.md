@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 使用私有云站点来托管使用 VMware Horizon 的虚拟桌面基础结构
 description: 了解如何使用 CloudSimple 私有云站点来托管使用 VMware Horizon 的虚拟桌面基础结构
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 513af1ba2e354412278fb88af4ee6527c236fae3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73435cbc7a630e77f7ed2d7804afd314f68c1a87
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97895591"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433217"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>使用 CloudSimple 私有云站点来托管使用 VMware Horizon 的虚拟桌面基础结构
 
@@ -124,7 +124,7 @@ ms.locfileid: "97895591"
 
 2. 按照[安装指南](https://docs.vmware.com/en/VMware-Horizon-7/7.4/horizon-installation/GUID-37D39B4F-5870-4188-8B11-B6C41AE9133C.html)中的说明，在私有云中安装 Horizon 视图。
 
-3. 按照[安装和配置 VMware 应用卷](https://docs.vmware.com/en/VMware-App-Volumes/2.10/com.vmware.appvolumes.user.doc/GUID-5E8BAF8C-F5A6-412C-9424-266BA7109BA4.html)中的说明安装应用卷管理器。
+3. 按照[安装和配置 VMware 应用卷](https://docs.vmware.com/en/VMware-App-Volumes/4/com.vmware.appvolumes.install.doc/GUID-3F92761D-9F83-4610-978C-4DAA55E07D14.html)中的说明安装应用卷管理器。
 
 4. 按照[关于安装和配置 VMware 用户环境管理器](https://docs.vmware.com/en/VMware-User-Environment-Manager/9.4/com.vmware.user.environment.manager-install-config/GUID-DBBC82E4-483F-4B28-9D49-4D28E08715BC.html)中的说明，安装和配置用户环境管理器。
 

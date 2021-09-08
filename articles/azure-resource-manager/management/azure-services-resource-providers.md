@@ -4,12 +4,12 @@ description: 列出 Azure 资源管理器的所有资源提供程序命名空间
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dae2c2c3af6da9b946ce6e81260f4c124c474a42
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dc33b3354f5cd2a4a0e2f03c1e0d46a05c205211
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727190"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540174"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -100,7 +100,7 @@ ms.locfileid: "121727190"
 | Microsoft.HardwareSecurityModules | [Azure 专用 HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Microsoft.HealthcareApis | [适用于 FHIR 的 Azure API](../../healthcare-apis/fhir/index.yml) |
-| Microsoft.HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
+| Microsoft.HybridCompute | [已启用 Azure Arc 的服务器](../../azure-arc/servers/index.yml) |
 | Microsoft.HybridData | [StorSimple](../../storsimple/index.yml) |
 | Microsoft.HybridNetwork  | [网络功能管理器](../../network-function-manager/index.yml) |
 | Microsoft.ImportExport | [Azure 导入/导出](../../import-export/storage-import-export-service.md) |
@@ -109,8 +109,8 @@ ms.locfileid: "121727190"
 | Microsoft.IoTSpaces | [Azure 数字孪生](../../digital-twins/index.yml) |
 | Microsoft.Intune | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.KeyVault | [密钥保管库](../../key-vault/index.yml) |
-| Microsoft.Kubernetes | [Azure Stack HCI 上的 Azure Kubernetes 服务](/azure-stack/aks-hci/) |
-| Microsoft.KubernetesConfiguration | [Azure Stack HCI 上的 Azure Kubernetes 服务](/azure-stack/aks-hci/) |
+| Microsoft.Kubernetes | [已启用 Azure Arc 的 Kubernetes](../../azure-arc/kubernetes/index.yml) |
+| Microsoft.KubernetesConfiguration | [已启用 Azure Arc 的 Kubernetes](../../azure-arc/kubernetes/index.yml) |
 | Microsoft.Kusto | [Azure 数据资源管理器](/azure/data-explorer/) |
 | Microsoft.LabServices | [Azure 实验室服务](../../lab-services/index.yml) |
 | Microsoft.Logic | [逻辑应用](../../logic-apps/index.yml) |

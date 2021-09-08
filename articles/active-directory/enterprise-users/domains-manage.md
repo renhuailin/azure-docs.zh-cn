@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2021
+ms.date: 09/01/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be724b8eea03704c07f00758f37965c844d81299
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 551808586f8e710f5d8e3fd7c905db6dbcfc8963
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738926"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438761"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自定义域名
 
-域名是许多 Azure Active Directory (Azure AD) 资源标识符的重要部分：它可能是用户的用户名或电子邮件地址的一部分、组地址的一部分，有时是应用程序的应用 ID URI 的一部分。 Azure AD 中的资源可包含 Azure AD 组织（包含该资源，有时称为租户）所拥有的域名。 只有全局管理员可以在 Azure AD 中管理域。
+域名是许多 Azure Active Directory (Azure AD) 资源标识符的重要部分：它可能是用户的用户名或电子邮件地址的一部分、组地址的一部分，有时是应用程序的应用 ID URI 的一部分。 Azure AD 中的资源可包含由包含资源的 Azure AD 组织（有时称为租户）所拥有的域名。 只有全局管理员可以在 Azure AD 中管理域。
 
 ## <a name="set-the-primary-domain-name-for-your-azure-ad-organization"></a>设置 Azure AD 组织的主域名
 
@@ -57,7 +57,7 @@ ms.locfileid: "121738926"
 
 ## <a name="delete-a-custom-domain-name"></a>删除自定义域名
 
-如果组织不再使用某个自定义域名，或者需要在另一个 Azure AD 组织中使用该域名，可以从 Azure AD 中删除该域名。
+如果组织不再使用某个自定义域名，或者你需要在另一个 Azure AD 组织中使用该域名，可从 Azure AD 中删除该域名。
 
 要删除自定义域名，则必须先确保组织中没有任何资源依赖域名。 在以下情况下，无法从组织删除域名：
 

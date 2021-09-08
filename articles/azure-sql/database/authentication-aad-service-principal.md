@@ -8,12 +8,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 05/11/2021
-ms.openlocfilehash: 606197b7dbc327c80da9d8a1ed9f3b933dad176a
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 781cce588654ab5babcd74277a3fca97f9f906c1
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810564"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252578"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>使用 Azure SQL 的 Azure Active Directory 服务主体
 
@@ -80,7 +80,7 @@ SQL 数据库现在支持以 Azure AD 应用程序身份运行 T-SQL 命令 `CRE
 > [!IMPORTANT]
 > 必须按上述顺序执行步骤 1 和步骤 2。 首先，创建或分配服务器标识，然后授予 [**目录读取者**](../../active-directory/roles/permissions-reference.md#directory-readers)权限。 省略这两个步骤中的一个或同时忽略这两个都会导致以 Azure AD 应用程序身份在 Azure SQL 中创建 Azure AD 对象时发生执行错误。
 >
-> 在“公共预览”中，可以在 Azure AD 中将“目录读取者”角色分配给组。 然后，组所有者可以将托管标识添加为此组的成员，这样就不需要全局管理员或特权角色管理员来授予目录读取者角色。 有关此功能的详细信息，请参阅 [Azure SQL 的 Azure Active Directory 中的目录读取者角色](authentication-aad-directory-readers-role.md)。
+> 可以在 Azure AD 中将“目录读取者”角色分配给组。 然后，组所有者可以将托管标识添加为此组的成员，这样就不需要全局管理员或特权角色管理员来授予目录读取者角色。 有关此功能的详细信息，请参阅 [Azure SQL 的 Azure Active Directory 中的目录读取者角色](authentication-aad-directory-readers-role.md)。
 
 ## <a name="troubleshooting-and-limitations"></a>故障排除和限制
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 5fbe518e894cf6b1dad1407edcc241dc141ef546
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 6c3e4de61d59841f2856af2194ec22a63b407b5c
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114284165"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123185428"
 ---
 # <a name="authenticate-playbooks-to-azure-sentinel"></a>向 Azure Sentinel 验证 playbook
 
@@ -46,7 +46,7 @@ ms.locfileid: "114284165"
 | 角色\连接器组件 | 触发器 | “获取”操作 | 更新事件，<br>添加注释 |
 | ------------- | :-----------: | :------------: | :-----------: |
 | **[Azure Sentinel 读取者](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)** | &#10003; | &#10003; | &#10007; |
-| **Azure Sentinel [响应者](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)/[参与者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)** | &#10003; | &#10003; | &#10003; |
+| “Azure Sentinel [响应者](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)/[参与者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)” | &#10003; | &#10003; | &#10003; |
 | 
 
 [详细了解 Azure Sentinel 中的权限](./roles.md)。
@@ -55,7 +55,11 @@ ms.locfileid: "114284165"
 
 使用此身份验证方法，可以直接向 playbook（逻辑应用工作流资源）授予权限，这样，playbook 所采取的 Azure Sentinel 连接器操作将代表 playbook 进行操作，就像它是一个独立的对象，对 Azure Sentinel 有自己的权限。 使用此方法可减少必须管理的标识数。 
 
+> [!NOTE]
+> 要授予托管标识对其他资源（如 Azure Sentinel 工作区）的访问权限，登录用户必须拥有有权编写角色分配的角色，例如 Azure Sentinel 工作区的所有者或用户访问管理员。
+
 若要使用托管标识进行身份验证，请执行以下操作：
+
 
 1. 在逻辑应用工作流资源上[启用托管标识](../logic-apps/create-managed-service-identity.md#enable-system-assigned-identity-in-azure-portal)。 总结：
 
@@ -63,10 +67,24 @@ ms.locfileid: "114284165"
 
     - 逻辑应用现在可以使用系统分配的标识，该标识注册到 Azure AD，由对象 ID 表示。
 
-1. [向该标识授权](../logic-apps/create-managed-service-identity.md#give-identity-access-to-resources)访问 Azure Sentinel 工作区，方法是向它分配 [Azure Sentinel 参与者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)角色。
-
-    详细了解 [Azure Sentinel 中的可用角色](./roles.md)。
-
+1. [授予该标识](../logic-apps/create-managed-service-identity.md#give-identity-access-to-resources)对 Azure Sentinel 工作区的访问权限： 
+    1. 在 Azure Sentinel 菜单中，选择“设置”。
+    1. 选择“工作区设置”选项卡。从“工作区”菜单中，选择“访问控制(IAM)” 。
+   1. 在顶部的按钮栏中，依次选择“添加”、“添加角色分配” 。 如果已禁用“添加角色分配”选项，那么你没有权限分配角色。
+    1. 在显示的新面板中，分配适当的角色：
+    
+        | 角色 | 场景 |
+        | --- | --- |
+        | [**Azure Sentinel 响应方**](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) | Playbook 包含用于更新事件或播放列表的步骤 |
+        | [**Azure Sentinel 读取者**](../role-based-access-control/built-in-roles.md#azure-sentinel-reader) | Playbook 仅接收事件 |
+        |
+        
+        详细了解 [Azure Sentinel 中的可用角色](./roles.md)。
+    1. 在“将访问权限分配到”下，选择“逻辑应用” 。
+    1. 选择 Playbook 所属的订阅，然后选择相应的 Playbook 名称。
+    1. 选择“保存”  。
+    
+    
 1. 在 Azure Sentinel 逻辑应用连接器中启用托管标识身份验证方法：
 
     1. 在逻辑应用设计器中，添加 Azure Sentinel 逻辑应用连接器步骤。 如果已为现有连接启用连接器，请单击“更改连接”链接。

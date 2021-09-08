@@ -5,16 +5,16 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 353fdd952ed4b2baa8920f1e15fb0dc0f44264ba
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: 7a5bea7e555bf4f388a06668b2e349045692a941
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122202071"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123106621"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS 托管的 Azure Active Directory 集成
 
-AKS 托管的 Azure AD 集成设计用来简化 Azure AD 集成体验，用户以前需要创建客户端应用和服务器应用，而且还需要由 Azure AD 租户授予目录读取权限。 在新版本中，AKS 资源提供程序为你管理客户端应用和服务器应用。
+AKS 托管 Azure AD 集成简化了 Azure AD 集成过程。 用户以前需要创建客户端应用和服务器应用，而且还需要由 Azure AD 租户授予目录读取权限。 在新版本中，AKS 资源提供程序为你管理客户端应用和服务器应用。
 
 ## <a name="azure-ad-authentication-overview"></a>Azure AD 身份验证概述
 
@@ -50,7 +50,7 @@ kubelogin --version
 
 ## <a name="before-you-begin"></a>开始之前
 
-对于你的群集，你需要一个 Azure AD 组。 此组需要用作群集的管理员组，以便授予群集管理员权限。 你可以使用现有 Azure AD 组，也可以创建一个新组。 记录你的 Azure AD 组的对象 ID。
+对于你的群集，你需要一个 Azure AD 组。 此组将在群集上注册为管理员组，以授予群集管理员权限。 你可以使用现有 Azure AD 组，也可以创建一个新组。 记录你的 Azure AD 组的对象 ID。
 
 ```azurecli-interactive
 # List existing groups in the directory
@@ -100,7 +100,7 @@ az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>访问已启用 Azure AD 的群集
 
-你需要具有 [Azure Kubernetes 服务群集用户](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)内置角色才能执行以下步骤。
+使用 Azure AD 定义组访问群集之前，需要 [Azure Kubernetes 服务群集用户](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)内置角色。
 
 获取用于访问群集的用户凭据：
  
@@ -395,7 +395,7 @@ aks-nodepool1-61156405-vmss000001   Ready    agent   6m42s   v1.18.14
 aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
 ```
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 如果 `kubectl get nodes` 返回类似于下面的错误：
 

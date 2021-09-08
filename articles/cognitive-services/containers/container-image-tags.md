@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 06/25/2021
 ms.author: aahi
-ms.openlocfilehash: bad25e569077a7503be64fffc85501a2550db96c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4d56b29311c7c74d8e331b7730e88aca4e8968a9
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747550"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473436"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure 认知服务容器映像标记和发行说明
 
@@ -105,47 +105,6 @@ Azure 认知服务提供了许多容器映像。 容器注册表和相应的存�
 | `1.1.011580001-amd64-preview` |       |
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |
-
----
-
-## <a name="form-recognizer"></a>表单识别器
-
-表单识别器功能由七个容器支持：
-
-| 容器名称 | 完全限定的映像名称 |
-|---|---|
-| **布局** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout |
-| **名片** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/businesscard |
-| **ID 文档** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/id-document |
-| **回执** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/receipt |
-| **发票** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/invoice |
-| **自定义 API** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/custom-api |
-| **自定义监督** | mcr.microsoft.com/azure-cognitive-services/form-recognizer/custom-supervised |
-
-在 `mcr.microsoft.com` 容器注册表联合项中可以找到[表单识别器][fr-containers]容器映像。 它们驻留在 `azure-cognitive-services/form-recognizer` 存储库中。
-
-容器映像提供以下标记：
-
-# <a name="latest-version"></a>[最新版本](#tab/current)
-
-`v2.1` 发行说明：
-
-表单识别器容器当前处于封闭预览。 若要使用这些容器，必须提交[在线请求](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR7en2Ais5pxKtso_Pz4b1_xUNlpBU1lFSjJUMFhKNzVHUUVLN1NIOEZETiQlQCN0PWcu)并获得批准。
-
-| 容器 | Tags |
-|------------|:------|
-| **布局**| &bullet; `latest` </br> &bullet; `2.1-preview` </br> &bullet; `2.1.0.016140001-08108749-amd64-preview`|
-| **名片** | &bullet; `latest` </br> &bullet; `2.1-preview` </br> &bullet; `2.1.016190001-amd64-preview`  </br> &bullet; `2.1.016320001-amd64-preview`  |
-| **ID 文档** | &bullet; `latest` </br> &bullet; `2.1-preview`</br>&bullet; `2.1.016190001-amd64-preview`</br>&bullet; `2.1.016320001-amd64-preview` |
-| **回执**| &bullet; `latest` </br> &bullet; `2.1-preview`</br>&bullet; `2.1.016190001-amd64-preview`</br>&bullet; `2.1.016320001-amd64-preview` |
-| **发票**| &bullet; `latest` </br> &bullet; `2.1-preview`</br>&bullet; `2.1.016190001-amd64-preview`</br>&bullet; `2.1.016320001-amd64-preview` |
-| **自定义 API** | &bullet; `latest` </br> &bullet;`2.1-distroless-20210622013115034-0cc5fcf6`</br>&bullet; `2.1-preview`|
-| **自定义监督**| &bullet; `latest` </br> &bullet; `2.1-distroless-20210622013149174-0cc5fcf6`</br>&bullet; `2.1-preview`|
-
-# <a name="previous-versions"></a>[旧版](#tab/previous)
-
-> [!IMPORTANT]
-> 表单识别器 v1.0 容器已停用。
 
 ---
 

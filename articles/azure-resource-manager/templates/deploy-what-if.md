@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5e06d8dc5f7a7269cf2bb294663965b3cf2c0094
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 73ff2c609438ead1e1fa42468e97be801a76e7e2
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963430"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450280"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM 模板部署 What-if 操作
 
@@ -151,7 +151,7 @@ what-if 操作列出六种不同的更改类型：
 对于 PowerShell 部署命令，请使用 `-WhatIfResultFormat` 参数。 在编程对象命令中，使用 `ResultFormat` 参数。
 
 对于 Azure CLI，请使用 `--result-format` 参数。
- 
+
 以下结果显示了两种不同的输出格式：
 
 - 完整资源有效负载
@@ -321,7 +321,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 ## <a name="confirm-deletion"></a>确认删除
 
-what-if 操作支持使用[部署模式](deployment-modes.md)。 设置为完整模式时，将删除不在模板中的资源。 以下示例部署一个处于完整模式的[未定义任何资源的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json)。
+what-if 操作支持使用[部署模式](deployment-modes.md)。 设置为完整模式时，将删除不在模板中的资源。 以下示例部署一个处于完整模式的[未定义任何资源的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/azuredeploy.json)。
 
 若要在部署模板之前预览所做的更改，请在部署命令中使用 confirm 开关参数。 如果更改符合预期，请确认你想要完成此部署。
 
@@ -332,7 +332,7 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName ExampleGroup `
   -Mode Complete `
   -Confirm `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/azuredeploy.json"
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -342,7 +342,7 @@ az deployment group create \
   --resource-group ExampleGroup \
   --mode Complete \
   --confirm-with-what-if \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/azuredeploy.json"
 ```
 
 ---

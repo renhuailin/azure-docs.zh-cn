@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 815bef577db7891e742944a9d76679086bba028c
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 85d87666f138338d96d541ac38331e906565aaf1
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289606"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835356"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中心发送云到设备消息 (Python)
 
@@ -61,7 +61,6 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 1. 在 **SimulatedDevice.py** 文件的开头添加以下 `import` 语句和变量：
 
     ```python
-    import threading
     import time
     from azure.iot.device import IoTHubDeviceClient
 
@@ -74,50 +73,51 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-1. 添加以下函数，用以在控制台中输出收到的消息：
+1. 定义以下函数，用以将接收到的消息打印到控制台：
 
     ```python
-    def message_listener(client):
+    def message_handler(message):
         global RECEIVED_MESSAGES
-        while True:
-            message = client.receive_message()
-            RECEIVED_MESSAGES += 1
-            print("\nMessage received:")
+        RECEIVED_MESSAGES += 1
+        print("")
+        print("Message received:")
 
-            #print data and both system and application (custom) properties
-            for property in vars(message).items():
-                print ("    {0}".format(property))
+        # print data from both system and application (custom) properties
+        for property in vars(message).items():
+            print ("    {}".format(property))
 
-            print( "Total calls received: {}".format(RECEIVED_MESSAGES))
-            print()
+        print("Total calls received: {}".format(RECEIVED_MESSAGES))
     ```
 
 1. 添加以下代码，用以初始化客户端并等待接收云到设备消息：
 
     ```python
-    def iothub_client_sample_run():
-        try:
-            client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+    def main():
+        print ("Starting the Python IoT Hub C2D Messaging device sample...")
 
-            message_listener_thread = threading.Thread(target=message_listener, args=(client,))
-            message_listener_thread.daemon = True
-            message_listener_thread.start()
+        # Instantiate the client
+        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+
+        print ("Waiting for C2D messages, press Ctrl-C to exit")
+        try:
+            # Attach the handler to the client
+            client.on_message_received = message_handler
 
             while True:
                 time.sleep(1000)
-
         except KeyboardInterrupt:
-            print ( "IoT Hub C2D Messaging device sample stopped" )
+            print("IoT Hub C2D Messaging device sample stopped")
+        finally:
+            # Graceful exit
+            print("Shutting down IoT Hub Client")
+            client.shutdown()
     ```
 
 1. 添加以下 main 函数：
 
     ```python
     if __name__ == '__main__':
-        print ( "Starting the Python IoT Hub C2D Messaging device sample..." )
-        print ( "Waiting for C2D messages, press Ctrl-C to exit" )
-
-        iothub_client_sample_run()
+        main()
     ```
 
 1. 保存并关闭 SimulatedDevice.py  文件。

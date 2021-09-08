@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Operations'
 - 'Role: Technical Support'
 - contperf-fy21q4
-ms.openlocfilehash: f0c07da859ae34a030058ee2c99d2c7b72378f5d
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: 2e39a2dcdf0f6e3b56665ca7be415c567ca770e8
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113135620"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866290"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -111,6 +111,7 @@ IoT 中心强制实施其他操作限制：
 | IoT Edge 自动部署<sup>1</sup> | 每个部署 50 个模块。 每个付费 SKU 中心 100 个部署（包括分层部署）。 每个免费 SKU 中心 10 个部署。 |
 | 孪生<sup>1</sup> | 所需属性和报告的属性部分的最大大小各为 32 KB。 标记部分的最大大小为 8 KB。 |
 | 共享访问策略 | 共享访问策略的最大数目为 16。 |
+| 限制出站网络访问 | 允许的最大 FQDN 数为 20。 |
 | x509 CA 证书 | 可在 IoT 中心注册的 x509 CA 证书的最大数目为 25。 |
 
 <sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。

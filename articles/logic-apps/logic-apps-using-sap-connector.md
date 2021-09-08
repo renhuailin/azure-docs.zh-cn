@@ -6,15 +6,15 @@ ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, azla
-ms.topic: conceptual
-ms.date: 08/16/2021
+ms.topic: how-to
+ms.date: 08/31/2021
 tags: connectors
-ms.openlocfilehash: 35922d20eda51d2a94748ac3a2b9fb135c993836
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 0266e1fd000640aa4931dcc86f3c91a7ab7cc898
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271751"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123104733"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
@@ -66,7 +66,7 @@ ms.locfileid: "122271751"
 
   * 如果使用“IDOC 格式”参数设置为“FlatFile”的 SAP 触发器和[“平面文件解码”操作](logic-apps-enterprise-integration-flatfile.md)，则必须在平面文件架构中使用 `early_terminate_optional_fields` 属性，并将值设为 `true`。
 
-    因为在 tRFC 调用 `IDOC_INBOUND_ASYNCHRONOUS` 中由 SAP 发送的平面文件 IDOC 数据记录不会填充到完整的 SDATA 字段长度，所以这是必要要求。 Azure 逻辑应用会提供未填充的平面文件 IDOC 原始数据，与接收自 SAP 的格式相同。 此外，将此 SAP 触发器与平面文件解码操作组合使用时，提供给操作的架构必须与之相匹配。
+    因为在 tRFC 调用 `IDOC_INBOUND_ASYNCHRONOUS` 中由 SAP 发送的平面文件 IDoc 数据记录不会填充到完整的 SDATA 字段长度，所以这是必要要求。 Azure 逻辑应用会提供未填充的平面文件 IDoc 原始数据，与接收自 SAP 的格式相同。 此外，将此 SAP 触发器与平面文件解码操作组合使用时，提供给操作的架构必须与之相匹配。
 
   > [!NOTE]
   > 此 SAP 触发器使用同一 URI 位置来续订和取消订阅 Webhook。 续订操作使用 HTTP `PATCH` 方法，而取消订阅操作使用 HTTP `DELETE` 方法。 此行为可能会使续订操作在触发器历史记录中显示为取消订阅操作，但实际上它仍然是续订操作，因为触发器使用 `PATCH` 作为 HTTP 方法，而不是 `DELETE`。
@@ -103,7 +103,7 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
 
 1. 通过新操作重新连接到 SAP 系统。
 
-1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。
+1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。 
 
 ## <a name="multi-tenant-azure-prerequisites"></a>多租户 Azure 先决条件
 
@@ -122,20 +122,20 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
   > 如果网关遇到问题，请尝试[升级到最新版本](https://aka.ms/on-premises-data-gateway-installer)，其中可能包括可解决问题的更新。
 
 1. [下载最新的 SAP 客户端库](#sap-client-library-prerequisites)并将其与本地数据网关安装在同一台本地计算机上。
-   
+
 1. 为安装本地数据网关的主机配置网络主机名称和服务名称解析。
 
   从 Azure 逻辑应用连接时如果要使用主机名或服务名称，则必须设置每个 SAP 应用程序、消息和网关服务器及其服务，以进行名称解析。 网络主机名称解析是在 `%windir%\System32\drivers\etc\hosts` 文件中或在本地数据网关主机可用的 DNS 服务器中配置。 服务名称解析是在 `%windir%\System32\drivers\etc\services` 中配置。 如果你不打算使用网络主机名或服务名称进行连接，则可以改用主机 IP 地址和服务端口号。
-   
+
    如果没有适用 SAP 系统的 DNS 条目，请参阅下例中适合主机文件的条目示例：
-   
+
    ```text
    10.0.1.9           sapserver                   # SAP single-instance system host IP by simple computer name
    10.0.1.9           sapserver.contoso.com       # SAP single-instance system host IP by fully qualified DNS name
    ```
-   
+
    适合服务文件的条目示例集如下：
-   
+
    ```text
    sapdp00            3200/tcp              # SAP system instance 00 dialog (application) service port
    sapgw00            3300/tcp              # SAP system instance 00 gateway service port
@@ -320,9 +320,9 @@ SAP 连接器的 ISE 版本支持 SNC X.509。 可以通过以下步骤为 SAP I
 
    1. 对于“使用 SNC”，选中此复选框。
 
-   1. 对于“SNC 库”，请输入 SNC 库的名称。 例如 `sapcrypto.dll`。
+   1. 对于“SNC 库”，请输入 SNC 库的名称。 例如，`sapcrypto.dll`。
 
-   1. 对于“SNC 合作伙伴名称”，请输入后端的 SNC 名称。 例如 `p:CN=DV3, OU=LA, O=MS, C=US`。
+   1. 对于“SNC 合作伙伴名称”，请输入后端的 SNC 名称。 例如，`p:CN=DV3, OU=LA, O=MS, C=US`。
 
    1. 对于“SNC 证书”，请输入 base64 编码格式的 SNC 客户端公共证书。 请勿包含 PEM 页眉或页脚。
 
@@ -475,7 +475,7 @@ SAP 连接器的 ISE 版本支持 SNC X.509。 可以通过以下步骤为 SAP I
 
 1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。
 
-#### <a name="send-flat-file-idocs"></a>发送平面文件 IDoc
+### <a name="send-flat-file-idocs"></a>发送平面文件 IDoc
 
 如果将 IDoc 包装在 XML 信封中，则可以将其与平面文件架构一起使用。 若要发送平面文件 IDoc，请使用一般说明[创建 SAP 操作，以发送 IDoc 消息](#create-sap-action-to-send-message)，并进行以下更改。
 
@@ -616,7 +616,7 @@ Z2XSK010003000000001017945375000110Z2XSK01000000108030 XR1 13.000 6795.00 CX
 
 1. 保存逻辑应用工作流。
 
-#### <a name="create-rfc-request-response"></a>创建 RFC 请求-响应
+### <a name="create-rfc-request-response"></a>创建 RFC 请求-响应
 
 如果需要通过使用远程函数调用 (RFC) 从 SAP ABAP 接收对 Azure 逻辑应用的响应，则必须创建请求和响应模式。 若要在逻辑应用工作流中接收 IDoc，应将其第一个操作设置为状态代码为 `200 OK` 且没有内容的[响应操作](../connectors/connectors-native-reqres.md#add-a-response-action)。 此建议步骤会立即通过 tRFC 完成 SAP 逻辑工作单元 (LUW) 异步传输，这会使 SAP CPIC 对话再次可用。 然后，你可以在逻辑应用工作流中添加更多操作来处理收到的 IDoc，而不会阻止进一步的传输。
 
@@ -636,7 +636,7 @@ Z2XSK010003000000001017945375000110Z2XSK01000000108030 XR1 13.000 6795.00 CX
   <RESPTEXT>Azure Logic Apps @{utcNow()}</RESPTEXT>
 ```
 
-### <a name="test-your-logic-app-workflow"></a>测试逻辑应用工作流 
+### <a name="test-your-logic-app-workflow"></a>测试逻辑应用工作流
 
 1. 如果尚未启用逻辑应用，请在逻辑应用菜单中选择“概览”。  在工具栏中选择“启用”。 
 
@@ -712,7 +712,7 @@ Z2XSK010003000000001017945375000110Z2XSK01000000108030 XR1 13.000 6795.00 CX
 
    * 若要使用相同的 SAP 触发器接收平面文件格式的 IDoc，请添加“IDOC 格式”参数并将其设置为“FlatFile”。 如果也使用[平面文件解码操作](logic-apps-enterprise-integration-flatfile.md)，则必须在平面文件架构中使用 `early_terminate_optional_fields` 属性，并将值设置为 `true`。
 
-     因为在 tRFC 调用 `IDOC_INBOUND_ASYNCHRONOUS` 中由 SAP 发送的平面文件 IDOC 数据记录不会填充到完整的 SDATA 字段长度，所以这是必要要求。 Azure 逻辑应用会提供未填充的平面文件 IDOC 原始数据，与接收自 SAP 的格式相同。 此外，将此 SAP 触发器与平面文件解码操作组合使用时，提供给操作的架构必须与之相匹配。
+     因为在 tRFC 调用 `IDOC_INBOUND_ASYNCHRONOUS` 中由 SAP 发送的平面文件 IDoc 数据记录不会填充到完整的 SDATA 字段长度，所以这是必要要求。 Azure 逻辑应用会提供未填充的平面文件 IDoc 原始数据，与接收自 SAP 的格式相同。 此外，将此 SAP 触发器与平面文件解码操作组合使用时，提供给操作的架构必须与之相匹配。
 
    * 若要[筛选从 SAP 服务器接收的消息，请指定 SAP 操作列表](#filter-with-sap-actions)。
 
@@ -730,7 +730,7 @@ Z2XSK010003000000001017945375000110Z2XSK01000000108030 XR1 13.000 6795.00 CX
 
      有关 SAP 操作的详细信息，请参阅 [IDoc 操作的消息架构](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
 
-1. 现在请保存逻辑应用工作流，以便可以开始从 SAP 系统接收消息。 在设计器工具栏上选择“保存”。
+1. 现在请保存逻辑应用工作流，以便可以开始从 SAP 系统接收消息。 在设计器工具栏上选择“保存”。 
 
    现在，逻辑应用工作流已准备好从 SAP 系统接收消息。
 
@@ -775,7 +775,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 10.0.1.9 SAPDBSERVER01.someguid.xx.xxxxxxx.cloudapp.net # SAP System Server VPN IP by fully qualified computer name
 ```
 
-#### <a name="parameters"></a>参数
+### <a name="parameters"></a>参数
 
 除了简单的字符串和数字输入，SAP 连接器还接受以下表参数（`Type=ITAB` 输入）：
 
@@ -785,9 +785,9 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 * 分层表参数
 
-#### <a name="filter-with-sap-actions"></a>使用 SAP 操作进行筛选
+### <a name="filter-with-sap-actions"></a>使用 SAP 操作进行筛选
 
-可以选择提供包含单个或多个 SAP 操作的列表或数组，以筛选逻辑应用工作流从 SAP 服务器接收的消息。 默认情况下，此数组为空，这意味着逻辑应用接收来自 SAP 服务器的所有消息，而不进行筛选。 
+可以选择提供包含单个或多个 SAP 操作的列表或数组，以筛选逻辑应用工作流从 SAP 服务器接收的消息。 默认情况下，此数组为空，这意味着逻辑应用接收来自 SAP 服务器的所有消息，而不进行筛选。
 
 设置阵列筛选器时，触发器仅接收来自指定 SAP 操作类型的消息，并拒绝来自 SAP 服务器的所有其他消息。 然而，此筛选器并不影响所接收的有效负载的类型是弱还是强。
 
@@ -795,7 +795,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 如果无法将 IDoc 数据包从 SAP 发送到逻辑应用工作流的触发器，请参阅 SAP tRFC (T-code SM58) 对话框中的事务性 RFC (tRFC) 调用拒绝消息。 在 SAP 接口中，你可能会得到以下错误消息，由于“状态文本”字段上的 substring 限制，这些消息会被剪裁。
 
-##### <a name="the-requestcontext-on-the-ireplychannel-was-closed-without-a-reply-being-sent"></a>IReplyChannel 上的 RequestContext 已关闭，未发送回复
+#### <a name="the-requestcontext-on-the-ireplychannel-was-closed-without-a-reply-being-sent"></a>IReplyChannel 上的 RequestContext 已关闭，未发送回复
 
 此错误消息表示当通道的全方位处理程序由于错误终止通道并重建通道以处理其他消息时，会发生意外故障。
 
@@ -813,7 +813,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 1. 保存所做更改。 重启本地数据网关。
 
-##### <a name="the-segment-or-group-definition-e2edk36001-was-not-found-in-the-idoc-meta"></a>在 IDoc 元数据中找不到段或组定义 E2EDK36001
+#### <a name="the-segment-or-group-definition-e2edk36001-was-not-found-in-the-idoc-meta"></a>在 IDoc 元数据中找不到段或组定义 E2EDK36001
 
 此错误消息表示出现预期故障和其他错误。 例如，由于 IDoc XML 有效负载的片段不是由 SAP 发布的，因此无法生成该有效负载。 因此，缺少转换所需的段类型元数据。
 
@@ -821,7 +821,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 ### <a name="asynchronous-request-reply-for-triggers"></a>触发器的异步请求-响应
 
-针对 Azure 逻辑应用触发器，SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/patterns/async-request-reply)。 可以使用此模式创建成功的请求，如果使用默认的同步请求-响应模式，这些请求将会失败。 
+针对 Azure 逻辑应用触发器，SAP 连接器支持 Azure 的[异步请求-响应模式](/azure/architecture/patterns/async-request-reply)。 可以使用此模式创建成功的请求，如果使用默认的同步请求-响应模式，这些请求将会失败。
 
 > [!TIP]
 > 在具有多个响应操作的逻辑应用工作流中，所有响应操作都必须使用相同的请求-响应模式。 例如，如果你的逻辑应用工作流使用可能具有多个响应操作的 switch 控件，则必须将所有响应操作配置为使用相同的请求-响应模式（同步或异步）。
@@ -844,27 +844,25 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 有关完整的错误消息，请查看 SAP 适配器的扩展日志。 你还可以[为 SAP 连接器启用扩展日志文件](#extended-sap-logging-in-on-premises-data-gateway)。
 
-对于 2020 年 6 月及之后发布的本地数据网关，你可以[在应用设置中启用网关日志](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app)。
+* 对于 2020 年 4 月或更早发布的本地数据网关，默认情况下禁用日志。
 
-* 默认的日志记录级别为“警告”。
+* 对于 2020 年 6 月及之后发布的本地数据网关，你可以[在应用设置中启用网关日志](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app)。
 
-* 如果在本地数据网关应用的“诊断”设置中启用了“附加日志记录”，则日志记录级别将提升至“信息”  。
+  * 默认的日志记录级别为“警告”。
 
-* 要将日志记录级别提升至“详细”，请在配置文件中更新以下设置：
+  * 如果在本地数据网关应用的“诊断”设置中启用了“附加日志记录”，则日志记录级别将提升至“信息”  。
 
-  ```xml
-  <setting name="SapTraceLevel" serializeAs="String">
-     <value>Verbose</value>
-  </setting>
-  ```
+  * 要将日志记录级别提升至“详细”，请在配置文件中更新以下设置。 通常，配置文件位于 `C:\Program Files\On-premises data gateway\Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config`。
 
-  通常，配置文件位于 `C:\Program Files\On-premises data gateway\Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config`。
-
-对于 2020 年 4 月或更早发布的本地数据网关，默认情况下禁用日志。
+    ```xml
+    <setting name="SapTraceLevel" serializeAs="String">
+       <value>"Verbose"</value>
+    </setting>
+    ```
 
 ### <a name="extended-sap-logging-in-on-premises-data-gateway"></a>本地数据网关上的扩展 SAP 日志记录
 
-如果[为 Azure 逻辑应用使用本地数据网关](../logic-apps/logic-apps-gateway-install.md)，则可以为 SAP 连接器配置扩展日志文件。 你可以使用本地数据网关将 Windows 事件跟踪 (ETW) 事件重定向到包含在网关的日志记录 zip 文件中的轮换日志文件中。 
+如果[为 Azure 逻辑应用使用本地数据网关](../logic-apps/logic-apps-gateway-install.md)，则可以为 SAP 连接器配置扩展日志文件。 你可以使用本地数据网关将 Windows 事件跟踪 (ETW) 事件重定向到包含在网关的日志记录 zip 文件中的轮换日志文件中。
 
 你可以[将网关的所有配置和服务日志](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app)从网关应用的设置导出到 .zip 文件中。
 
@@ -885,17 +883,17 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 1. 重现问题或收集足够的分析数据后，请选择“停止收集”。
 
-若要与另一方（如 Azure 支持工程师）共享你的数据，请压缩 ETL 文件。
+1. 若要与另一方（如 Azure 支持工程师）共享你的数据，请压缩 ETL 文件。
 
-查看跟踪的内容：
+1. 查看跟踪的内容：
 
-1. 在 PerfView 中，选择“文件”&gt;“打开”，然后选择刚刚生成的 ETL 文件 。
+   1. 在 PerfView 中，选择“文件”&gt;“打开”，然后选择刚刚生成的 ETL 文件 。
 
-1. 在 PerfView 侧栏中，ETL 文件下的“事件”部分。
+   1. 在 PerfView 侧栏中，ETL 文件下的“事件”部分。
 
-1. 在“筛选器”下，按 `Microsoft-LobAdapter` 筛选以仅查看相关事件和网关进程。
+   1. 在“筛选器”下，按 `Microsoft-LobAdapter` 筛选以仅查看相关事件和网关进程。
 
-### <a name="test-your-logic-app-workflow"></a>测试逻辑应用工作流
+### <a name="test-your-workflow"></a>测试工作流
 
 1. 若要触发逻辑应用工作流，请从 SAP 系统发送一条消息。
 
@@ -931,10 +929,10 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 1. 选择“TCP/IP 连接” > “创建” 。
 
 1. 使用以下设置创建新 RFC 目标：
-    
+
     1. 为“RFC 目标”输入名称。
-    
-    1. 在“技术设置”选项卡上，对于“激活类型”，选择“注册服务器程序”  。 
+
+    1. 在“技术设置”选项卡上，对于“激活类型”，选择“注册服务器程序”  。
 
     1. 为“程序 ID”输入一个值。 在 SAP 中，使用此标识符来注册逻辑应用工作流的触发器。
 
@@ -945,14 +943,14 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
        > * 不支持非 ABAP RFC 客户端（合作伙伴类型）
        >
        > 有关 SAP 的详细信息，请参阅以下说明（需要登录）：
-       > 
+       >
        > * [https://launchpad.support.sap.com/#/notes/2399329](https://launchpad.support.sap.com/#/notes/2399329)
        > * [https://launchpad.support.sap.com/#/notes/353597](https://launchpad.support.sap.com/#/notes/353597)
 
     1. 在“Unicode”选项卡上，对于“与目标系统的通信类型”，选择“Unicode”  。
 
        > [!NOTE]
-       > SAP .NET 客户端库仅支持 Unicode 字符编码。 如果在“将 IDOC 从 SAP 发送到 Azure 逻辑应用时”出现错误 `Non-ABAP RFC client (partner type ) not supported`，请检查“与目标系统的通信类型”值是否设置为“Unicode”。
+       > SAP .NET 客户端库仅支持 Unicode 字符编码。 如果在将 IDoc 从 SAP 发送到 Azure 逻辑应用时出现错误 `Non-ABAP RFC client (partner type ) not supported`，请检查“与目标系统的通信类型”值是否设置为“Unicode” 。
 
 1. 保存所做更改。
 
@@ -990,7 +988,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 #### <a name="create-sender-port"></a>创建发送方端口
 
-1.  若要打开“IDOC 处理中的端口”设置，请在 SAP 界面中使用“we21”事务代码 (T-Code)，前缀为“/n”。
+1. 若要打开“IDOC 处理中的端口”设置，请在 SAP 界面中使用“we21”事务代码 (T-Code)，前缀为“/n”。
 
 1. 选择“端口” > 事务 RFC” > “创建”  。
 
@@ -1058,7 +1056,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 1. 要启动出站 IDoc 处理，请选择“继续”。 处理完成后，将显示“IDoc 已发送到 SAP 系统或外部程序”消息。
 
-1.  要检查是否存在处理错误，请使用前缀为“/n”的“sm58”事务代码 (T-Code)。
+1. 要检查是否存在处理错误，请使用前缀为“/n”的“sm58”事务代码 (T-Code)。
 
 ## <a name="receive-idoc-packets-from-sap"></a>从 SAP 接收 IDoc 数据包
 
@@ -1170,6 +1168,9 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
    </TCPICDAT>
 </STFC_WRITE_TO_TCPIC>
 ```
+
+> [!NOTE]
+> 使用 SAP Logon 的数据浏览器 (T-Code SE16) 查看 STFC_WRITE_TO_TCPIC 的结果。使用表名 TCPIC。
 
 下面的示例是一个 RFC 调用，其中包含具有匿名字段的表参数。 匿名字段是指未分配名称的字段。 复杂类型在单独的命名空间下声明，在该命名空间中，声明为当前节点及其所有子元素设置新的默认值。 此示例将十六进制代码 `x002F` 用作符号 / 的转义字符，因为该符号保留在 SAP 字段名称中。
 
@@ -1422,11 +1423,11 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
    有关 SAP 操作的详细信息，请参阅 [IDoc 操作的消息架构](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)。
 
-1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。
+1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。 
 
 默认会使用强类型化通过针对架构执行 XML 验证来检查无效值。 此行为可帮助提前检测问题。 “安全类型化”选项用于实现后向兼容，它只会检查字符串长度。  详细了解[“安全类型化”选项](#safe-typing)。
 
-### <a name="test-your-logic-app-workflow"></a>测试逻辑应用工作流
+### <a name="test-your-workflow"></a>测试工作流
 
 1. 在设计器工具栏上，选择“运行”以触发逻辑应用工作流的运行。
 
@@ -1467,9 +1468,9 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
    > }
    > ```
 
-1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。
+1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。 
 
-### <a name="test-your-logic-app-workflow"></a>测试逻辑应用工作流
+### <a name="test-your-workflow"></a>测试工作流
 
 1. 在设计器工具栏上，选择“运行”以手动触发逻辑应用工作流。
 
@@ -1547,6 +1548,171 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 <TIME>235959</TIME>
 ```
 
+## <a name="send-sap-telemetry-foron-premises-data-gateway-to-azure-application-insights"></a>将本地数据网关的 SAP 遥测发送到 Azure Application Insights
+
+本地数据网关进行 2021 年 8 月更新之后，SAP 连接器操作可以将来自 SAP 客户端库的遥测数据和来自 Microsoft SAP 适配器的跟踪发送到 Azure Monitor 中的 [Application Insights](../azure-monitor/app/app-insights-overview.md) 功能。 该遥测主要包含以下数据：
+
+* 基于 SAP NCo 指标和监视器的指标和跟踪。
+
+* 来自 Microsoft SAP 适配器的跟踪。
+
+### <a name="metrics-and-traces-from-sap-client-library"></a>来自 SAP 客户端库的指标和跟踪
+
+指标是根据本地数据网关上资源的使用情况和可用性，在一段时间内可能会变化，也可能不会变化的数值。 这些指标可用于更好地了解系统运行状况并创建有关以下活动的警报：
+
+* 系统运行状况是否正在变糟。
+
+* 异常事件。
+
+* 系统上的负荷过重。
+
+此信息将发送到 Application Insights 表 `customMetrics`。 默认情况下，每隔 30 秒发送一次指标。
+
+SAP NCo 指标和跟踪基于 SAP NCo 指标，特别是以下 NCo 类：
+
+* RfcDestinationMonitor。
+
+* RfcConnectionMonitor。
+
+* RfcServerMonitor。
+
+* RfcRepositoryMonitor。
+
+有关每个类提供的指标的详细信息，请查看 [SAP NCo 文档（需要登录）](https://support.sap.com/en/product/connectors/msnet.html#section_512604546)。
+
+跟踪包含与指标一起使用的文本信息。 此信息将发送到名为 `traces` 的 Application Insights 表。 默认情况下，每隔 10 分钟发送一次跟踪。
+
+### <a name="set-up-sap-telemetry-for-application-insights"></a>为 Application Insights 设置 SAP 遥测
+
+需要先创建并设置 Application Insights 资源，然后才能将网关安装的 SAP 遥测发送到 Application Insights。 有关详细信息，请查看以下文档：
+
+* [创建 Application Insights 资源（经典）](../azure-monitor/app/create-new-resource.md)
+
+* [基于工作区的 Application Insights 资源](../azure-monitor/app/create-workspace-resource.md)
+
+若要实现将 SAP 遥测发送到 Application Insights，请执行以下步骤：
+
+1. 从以下位置下载 Microsoft.ApplicationInsights.EventSourceListener.dll 的 NuGet 包：[https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/2.14.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/2.14.0)。
+
+1. 将下载的文件添加到本地数据网关安装目录。
+
+1. 在本地数据网关安装目录中，检查 Microsoft.ApplicationInsights.dll 文件是否与添加的 Microsoft.ApplicationInsights.EventSourceListener.dll 文件具有相同的版本号 。 该网关当前使用版本 2.14.0。
+
+1. 在 ApplicationInsights.config 文件中，通过取消注释带有 `<InstrumentationKey></Instrumentation>` 元素的行来添加 [Application Insights 检测密钥](../azure-monitor/app/app-insights-overview.md#how-does-application-insights-work)。 将占位符 your-Application-Insights-instrumentation-key 替换为你的密钥，例如：
+
+      ```xml
+      <?xml version="1.0" encoding="utf-8"?>
+      <ApplicationInsights schemaVersion="2014-05-30" xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
+         <!-- Uncomment this element and insert your Application Insights key to receive ETW telemetry about your gateway <InstrumentationKey>*your-instrumentation-key-placeholder*</InstrumentationKey> -->
+         <TelemetryModules>
+            <Add Type="Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule, Microsoft.ApplicationInsights">
+               <IsHeartbeatEnabled>false</IsHeartbeatEnabled>
+            </Add>
+            <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
+               <Sources>
+                  <Add Name="Microsoft-LobAdapter" Level="Verbose" />
+               </Sources>
+            </Add>
+         </TelemetryModules>
+      </ApplicationInsights>
+      ```
+
+1. 在 ApplicationInsights.config 文件中，可以根据要求更改 SAP 连接器操作所需的跟踪 `Level` 值，例如：
+
+   ```xml
+   <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
+      <Sources>
+         <Add Name="Microsoft-LobAdapter" Level="Verbose" />
+      </Sources>
+   </Add>
+   ```
+
+   有关详细信息，请查看以下文档：
+
+   * `Level` 值：[EventLevel 枚举](/dotnet/api/system.diagnostics.tracing.eventlevel)
+
+   * [EventSource 跟踪](../azure-monitor/app/configuration-with-applicationinsights-config.md#eventsource-tracking)
+
+   * [EventSource 事件](../azure-monitor/app/asp-net-trace-logs.md#use-eventsource-events)
+
+1. 应用所做的更改后，重启本地数据网关服务。
+
+### <a name="review-metrics-in-application-insights"></a>在 Application Insights 中查看指标
+
+在逻辑应用工作流中运行 SAP 操作后，可以查看发送到 Application Insights 的遥测。
+
+1. 在 Azure 门户中，打开 Application Insights 资源。
+
+1. 在资源菜单的“监视”下，选择“日志” 。
+
+   以下屏幕截图显示 Azure 门户中打开“日志”窗格的 Application Insights：
+
+   [![该屏幕截图显示 Azure 门户中打开“日志”窗格以创建查询的 Application Insights。](./media/logic-apps-using-sap-connector/application-insights-query-panel.png)](./media/logic-apps-using-sap-connector/application-insights-query-panel.png#lightbox)
+
+1. 在“日志”窗格中，可以使用基于特定要求的 [Kusto 查询语言 (KQL)](/data-explorer/kusto/concepts) 创建[查询](/data-explorer/kusto/query)。
+
+   可以使用类似于以下示例查询的查询模式：
+
+   ```Kusto
+   customMetrics
+   | extend DestinationName = tostring(customDimensions["DestinationName"])
+   | extend MetricType = tostring(customDimensions["MetricType"])
+   | where customDimensions contains "RfcDestinationMonitor"
+   | where name contains "MaxUsedCount"
+   ```
+
+1. 运行查询后，查看结果。
+
+   以下屏幕截图显示示例查询的指标结果表：
+
+   [![该屏幕截图显示 Application Insights 中的指标结果表。](./media/logic-apps-using-sap-connector/application-insights-metrics.png)](./media/logic-apps-using-sap-connector/application-insights-metrics.png#lightbox)
+
+   * MaxUsedCount 是“受监视目标同时使用的最大客户端连接数”， 如 [SAP NCo 文档（需要登录）](https://support.sap.com/en/product/connectors/msnet.html#section_512604546)中所述。 可以使用该值来了解同时打开的连接数。
+
+   * “valueCount”列的每个读数显示为 2，因为指标每隔 30 秒生成，而 Application Insights 每分钟聚合一次这些指标 。
+
+   * DestinationName 列包含一个字符串，该字符串是 Microsoft SAP 适配器的内部名称。
+
+     为了更好地了解此远程函数调用 (RFC) 目标，请将该值与 `traces` 配合使用，例如：
+
+     ```Kusto
+     customMetrics
+     | extend DestinationName = tostring(customDimensions["DestinationName"])
+     | join kind=inner (traces
+        | extend DestinationName = tostring(customDimensions["DestinationName"]),
+        AppServerHost = tostring(customDimensions["AppServerHost"]),
+        SncMode = tostring(customDimensions["SncMode"]),
+        SapClient = tostring(customDimensions["Client"])
+        | where customDimensions contains "RfcDestinationMonitor"
+        )
+        on DestinationName , $left.DestinationName == $right.DestinationName
+     | where customDimensions contains "RfcDestinationMonitor"
+     | where name contains "MaxUsedCount"
+     | project AppServerHost, SncMode, SapClient, name, valueCount, valueSum, valueMin, valueMax
+     ```
+
+也可以使用 Application Insights 中的以下功能创建指标图表或警报，例如：
+
+[![该屏幕截图显示 Application Insights 中采用图表格式的结果。](./media/logic-apps-using-sap-connector/application-insights-metrics-chart.png)](./media/logic-apps-using-sap-connector/application-insights-metrics-chart.png#lightbox)
+
+### <a name="traces-from-microsoft-sap-adapter"></a>来自 Microsoft SAP 适配器的跟踪
+
+可以使用从 Microsoft SAP 适配器发送的跟踪来进行问题后分析，并查找任何现有的内部系统错误，这些错误可能会在 SAP 连接器操作中出现，也可能不会出现。 这些跟踪已将 `message` 设置为 `"n\a"`，因为它们来自早于 Application Insights 的早期事件源框架，例如：
+
+```Kusto
+traces
+| where message == "n/a"
+| where severityLevel > 0
+| extend ActivityId = tostring(customDimensions["ActivityId"])
+| extend fullMessage = tostring(customDimensions["fullMessage"])
+| extend shortMessage = tostring(customDimensions["shortMessage"])
+| where ActivityId contains "8ad5952b-371e-4d80-b355-34e28df9b5d1"
+```
+
+以下屏幕截图显示示例查询的跟踪结果表：
+
+[![该屏幕截图显示 Application Insights 中的跟踪结果表。](./media/logic-apps-using-sap-connector/application-insights-traces.png)](./media/logic-apps-using-sap-connector/application-insights-traces.png#lightbox)
+
 ## <a name="advanced-scenarios"></a>高级方案
 
 ### <a name="change-language-headers"></a>更改语言标头
@@ -1598,7 +1764,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 1. 在操作“初始化变量”的编辑器中，配置以下设置。 然后保存更改。
 
-   1. 对于“名称”，请输入变量的名称。 例如 `IDOCtransferID`。
+   1. 对于“名称”，请输入变量的名称。 例如，`IDOCtransferID`。
 
    1. 对于“类型”，请选择“字符串”作为变量类型 。
 
@@ -1632,7 +1798,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 1. 在操作“\[IDOC] 确认事务 ID”的编辑器中，配置以下设置。 然后保存更改。
 
-1. 对于“事务 ID”，请再次输入变量的名称。 例如 `IDOCtransferID`。
+1. 对于“事务 ID”，请再次输入变量的名称。 例如，`IDOCtransferID`。
 
 1. （可选）在测试环境中验证重复数据删除。 使用与上一步相同的事务 ID GUID 重复执行“\[IDOC] 将文档发送到 SAP”操作 。
 
@@ -1640,13 +1806,13 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 ## <a name="known-issues-and-limitations"></a>已知问题和限制
 
-下面是托管（非 ISE）SAP 连接器目前存在的已知问题和限制： 
+下面是托管（非 ISE）SAP 连接器目前存在的已知问题和限制：
 
 * 通常，SAP 触发器不支持数据网关群集。 在某些故障转移案例中，与 SAP 系统通信的数据网关节点可能不同于主动节点，从而导致意外的行为。
 
-  * 对于“发送”方案，支持在故障转移模式下使用数据网关群集。 
+  * 对于“发送”方案，支持在故障转移模式下使用数据网关群集。
 
-  * 监控状态的 [SAP 操作](#actions)不支持在负载均衡模式下使用数据网关群集。 这些操作包括“\[BAPI - RFC] 创建监控状态会话”、“\[BAPI] 提交事务”、“\[BAPI] 回退事务”、“\[BAPI - RFC] 关闭监控状态会话”以及所有指定会话 ID 值的操作    。 监控状态通信必须保留在同一个数据网关群集节点上。 
+  * 监控状态的 [SAP 操作](#actions)不支持在负载均衡模式下使用数据网关群集。 这些操作包括“\[BAPI - RFC] 创建监控状态会话”、“\[BAPI] 提交事务”、“\[BAPI] 回退事务”、“\[BAPI - RFC] 关闭监控状态会话”以及所有指定会话 ID 值的操作    。 监控状态通信必须保留在同一个数据网关群集节点上。
 
   * 对于监控状态 SAP 操作，请在非群集模式或仅为故障转移设置的群集中使用数据网关。
 
@@ -1654,7 +1820,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 * 对于 [ISE 中的逻辑应用](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，此连接器的 ISE 标记版本改用 [ISE 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
-## <a name="connector-reference"></a>连接器参考 
+## <a name="connector-reference"></a>连接器参考
 
 有关 SAP 连接器的详细信息，请参阅[连接器参考](/connectors/sap/)。 你可以找到有关 SAP 连接器、触发器和操作的限制、参数和返回值的详细信息。
 
@@ -1665,7 +1831,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
         [从 SAP 收到消息时](/connectors/sap/#when-a-message-is-received)
     :::column-end:::
     :::column span="3":::
-        从 SAP 收到消息时，执行某些操作。 
+        从 SAP 收到消息时，执行某些操作。
     :::column-end:::
 :::row-end:::
 
@@ -1706,7 +1872,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
         输入 BAPI 参数 (`body`)，在其中调用包含 BAPI 方法输入参数值的 XML 文档，或者包含 BAPI 参数的存储 Blob 的 URI。
         \
         \
-        有关如何使用“[BAPI] 调用 SAP 中的方法”操作的详细示例，请参阅 [BAPI 请求的 XML 示例](#xml-samples-for-bapi-requests)。 
+        有关如何使用“[BAPI] 调用 SAP 中的方法”操作的详细示例，请参阅 [BAPI 请求的 XML 示例](#xml-samples-for-bapi-requests)。
         \
         如果使用工作流设计器编辑 BAPI 请求，则可以使用以下搜索功能：    \
         \
@@ -1769,7 +1935,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
         带有可选扩展的 IDOC 类型 (`idocType`)，这是一个可搜索的下拉菜单。
         \
         \
-        输入 IDOC消息 (`body`)，在其中调用包含 IDoc 有效负载的 XML 文档，或包含 IDoc XML 文档的存储 blob 的 URI。 根据 WE60 IDoc 文档，此文档必须符合 SAP IDOC XML 架构，或符合为匹配的 SAP IDoc 操作 URI 生成的架构。
+        输入 IDOC消息 (`body`)，在其中调用包含 IDoc 有效负载的 XML 文档，或包含 IDoc XML 文档的存储 blob 的 URI。 根据 WE60 IDoc 文档，此文档必须符合 SAP IDoc XML 架构，或符合为匹配的 SAP IDoc 操作 URI 生成的架构。
         \
         \
         选择 IDoc 类型后，可选参数 SAP 发行版 (`releaseVersion`) 会填充值，具体取决于所选的 IDoc 类型。
@@ -1786,7 +1952,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
         [[RFC] 将 RFC 添加到事务](/connectors/sap/#[rfc]-add-rfc-to-transaction-(preview))
     :::column-end:::
     :::column span="3":::
-        添加对事务的 RFC 调用。 
+        添加对事务的 RFC 调用。
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -1810,7 +1976,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
         [[RFC] 创建事务](/connectors/sap/#[rfc]-create-transaction-(preview))
     :::column-end:::
     :::column span="3":::
-        按标识符和/或队列名称创建新事务。 如果事务存在，则获取详细信息。 
+        按标识符和/或队列名称创建新事务。 如果事务存在，则获取详细信息。
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -1848,6 +2014,6 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
 ## <a name="next-steps"></a>后续步骤
 
-* 从 Azure 逻辑应用[连接到本地系统](logic-apps-gateway-connection.md)。
-* 了解如何使用 [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) 执行验证、转换和使用其他消息操作。
-* 了解其他[逻辑应用连接器](../connectors/apis-list.md)。
+* 从 Azure 逻辑应用[连接到本地系统](logic-apps-gateway-connection.md)
+* 了解如何通过 [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) 验证、转换和使用其他消息操作
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

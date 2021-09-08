@@ -5,25 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/13/2021
+ms.date: 08/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37feb36e69277002f124b4a909d5bf8f75a4a3f3
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 687e23c7267991eee171e205a537a45546da73b2
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666884"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864576"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>将 Google 添加为 B2B 来宾用户的标识提供者
 
-通过设置 Google 联合身份验证，可让受邀的用户使用其自己的 Gmail 帐户登录到你的共享应用和资源，而无需创建 Microsoft 帐户。
-
-将 Google 添加为应用程序的登录选项之一后，用户可以在“登录”页上输入他们用于登录 Google 的电子邮件，或者选择“登录选项”，再选择“使用 Google 登录”。 无论哪种情况，都会将他们重定向到 Google 登录页进行身份验证。
+通过设置 Google 联合身份验证，可让受邀的用户使用其自己的 Gmail 帐户登录到你的共享应用和资源，而无需创建 Microsoft 帐户。 将 Google 添加为应用程序的登录选项之一后，在“登录”页面上，用户只需输入他们用于登录 Google 的 Gmail 地址即可。
 
 ![Google 用户的登录选项](media/google-federation/sign-in-with-google-overview.png)
 
@@ -63,7 +61,7 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
 从 2021 年 9 月 30 日开始，Google 将[弃用嵌入式 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果你的应用使用嵌入式 Web 视图对用户进行身份验证，而你将 Google 联合身份验证与 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 或 Azure AD B2B 配合使用来进行[外部用户邀请](google-federation.md)或[自助注册](identity-providers.md)，则 Google Gmail 用户将无法进行身份验证。
 
 以下是将影响 Gmai l用户的已知方案：
-- Windows 上的 Microsoft 应用（例如 Teams 和 PowerApps） 
+- Windows 上的 Microsoft 应用（例如 Teams 和 Power Apps） 
 - 使用 [WebView](/windows/communitytoolkit/controls/wpf-winforms/webview) 控件、[WebView2](/microsoft-edge/webview2/) 或陈旧的 WebBrowser 控件进行身份验证的 Windows 应用。 这些应用应迁移到使用 Web 帐户管理器 (WAM) 流。
 - 使用 WebView UI 元素的 Android 应用程序 
 - 使用 UIWebView/WKWebview 的 iOS 应用程序 
@@ -71,6 +69,7 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
 
 此更改不会影响：
 - Web 应用
+- 通过网站访问的 Microsoft 365 服务（例如 SharePoint Online、Office Web Apps 和 Teams Web 应用）
 - 使用系统 web-view 进行身份验证的移动应用（iOS 上的 [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller)、Android 上的[自定义标签](https://developer.chrome.com/docs/android/custom-tabs/overview/)）。  
 - Google Workspace 标识，例如，将[基于 SAML 的联合](direct-federation.md)与 Google Workspace 结合使用时
 
@@ -141,6 +140,7 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
 11. 在“应用程序类型”下，选择“Web 应用程序”。 为应用程序指定合适的名称，例如 Azure AD B2B。 在“已授权的重定向 URI”下，输入以下 URI：
     - `https://login.microsoftonline.com`
     - `https://login.microsoftonline.com/te/<tenant ID>/oauth2/authresp` <br>（其中 `<tenant ID>` 是租户 ID）
+    - `https://login.microsoftonline.com/te/<tenant name>.onmicrosoft.com/oauth2/authresp` <br>（其中 `<tenant name>` 是租户名）
    
     > [!NOTE]
     > 若要查找租户 ID，请转到 [Azure 门户](https://portal.azure.com)。 在“Azure Active Directory”下，选择“属性”并复制“租户 ID”  。
@@ -150,6 +150,8 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
 12. 选择“创建”  。 复制客户端 ID 和客户端密码。 在 Azure 门户中添加标识提供者时，将使用它们。
 
     ![显示 OAuth 客户端 ID 和客户端密码的屏幕截图。](media/google-federation/google-auth-client-id-secret.png)
+
+13. 可以将项目保留为“测试”的发布状态，并将测试用户添加到 OAuth 同意屏幕。 也可以选择 OAuth 同意屏幕上的“发布应用”按钮，以便让任何拥有 Google 帐户的用户都可以使用该应用。
 
 ## <a name="step-2-configure-google-federation-in-azure-ad"></a>步骤 2：在 Azure AD 中配置 Google 联合 
 
@@ -173,7 +175,7 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
  
    > [!NOTE]
    > 使用在“步骤 1：配置 Google 开发人员项目”中创建的应用客户端 ID 和客户端密码。 有关详细信息，请参阅 [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview&preserve-view=true)。 
- 
+
 ## <a name="how-do-i-remove-google-federation"></a>如何删除 Google 联合？
 
 可以删除 Google 联合设置。 如果这样做，那么已兑现邀请的 Google 来宾用户将无法登录。 但您可以通过[重置这些用户的兑换状态](reset-redemption-status.md)，让这些用户能够再次访问你的资源。

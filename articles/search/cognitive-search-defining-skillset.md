@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/15/2021
-ms.openlocfilehash: 5f47eef6d3aeecd64cb3777b1d0858b4904d137d
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 4425a4b7c29bc0f4bc237c021610087c933631d8
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228858"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224036"
 ---
 # <a name="create-a-skillset-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建技能组
 
@@ -227,6 +227,14 @@ ms.locfileid: "122228858"
 以下示例显示了实体识别技能的结果，该技能在文本块中检测到人员、位置、组织和其他实体。 在搜索资源管理器中查看结果可以帮助你确定技能是否可为你的解决方案增加价值。
 
 :::image type="content" source="media/cognitive-search-defining-skillset/doc-in-search-explorer.png" alt-text="搜索资源管理器中文档的屏幕截图。":::
+
+## <a name="tips-for-a-first-skillset"></a>有关第一个技能组的技巧
+
++ 组装具有代表性的 Blob 存储或其他受支持的索引器数据源内容示例，并运行“导入数据”向导来创建技能组、索引、索引器和数据源对象。 
+
+  该向导自动执行第一次可能不易执行的一些步骤，包括定义索引中的字段、在索引器中定义输出字段映射，以及知识存储（如果使用）中的投影。 对于某些技能（例如 OCR 或图像分析），向导将添加实用工具技能，用于合并在文档破解期间分隔的图像和文本内容。
+
++ 或者，可以导入技能 Postman 集合，这些集合提供评估技能所需的所有对象定义的完整示例，从技能集到可通过查询来查看转换结果的索引。
 
 ## <a name="next-steps"></a>后续步骤
 

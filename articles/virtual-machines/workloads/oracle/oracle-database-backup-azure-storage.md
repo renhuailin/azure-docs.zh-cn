@@ -1,6 +1,6 @@
 ---
-title: 使用 RMAN 和 Azure 存储在 Azure Linux VM 上备份 Oracle Database 19c 数据库
-description: 了解如何将 Oracle Database 19c 数据库备份到 Azure 云存储。
+title: 使用 RMAN 和 Azure 文件存储在 Azure Linux VM 上备份 Oracle Database 19c 数据库
+description: 了解如何将 Oracle Database 19c 数据库备份到 Azure 文件存储。
 author: cro27
 ms.service: virtual-machines
 ms.subservice: oracle
@@ -9,16 +9,18 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 44d1345a8c02c2cde5d0bc34d1b509af321c42c0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f30a7fcbc99f6a47574d101e3792d992dc2c1af8
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952289"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260050"
 ---
-# <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>使用 Azure 存储在 Azure Linux VM 上备份和恢复 Oracle Database 19c 数据库
+# <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-files"></a>使用 Azure 文件存储在 Azure Linux VM 上备份和恢复 Oracle Database 19c 数据库
 
-本文演示如何使用 Azure 存储作为介质来备份和还原在 Azure VM 上运行的 Oracle 数据库。 你将使用 Oracle RMAN 将数据库备份到 Azure 文件存储，该文件存储使用 SMB 协议装载到 VM。 使用 Azure 存储作为备份介质非常经济高效。 但对于非常大的数据库，Azure 备份提供了更好的解决方案。
+**适用于：** :heavy_check_mark: Linux VM 
+
+本文演示如何使用 Azure 文件存储作为介质来备份和还原在 Azure VM 上运行的 Oracle 数据库。 你将使用 Oracle RMAN 将数据库备份到 Azure 文件共享，该文件共享使用 SMB 协议装载到 VM。 使用 Azure 文件存储作为备份介质非常经济高效。 但对于非常大的数据库，Azure 备份提供了更好的解决方案。
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -167,11 +169,11 @@ ms.locfileid: "111952289"
 若要备份到 Azure 文件存储，请完成以下步骤：
 
 1. 设置 Azure 文件存储。
-1. 将 Azure 存储文件共享装载到 VM。
+1. 将 Azure 文件共享装载到 VM。
 1. 备份数据库。
 1. 还原并恢复数据库。
 
-### <a name="set-up-azure-file-storage"></a>设置 Azure 文件存储
+### <a name="set-up-azure-files"></a>设置 Azure 文件存储
 
 在此步骤中，你将使用 Oracle 恢复管理器 (RMAN) 将 Oracle 数据库备份到 Azure 文件存储。 Azure 文件共享是位于云中的完全托管文件共享。 可以使用服务器消息块 (SMB) 协议或网络文件系统 (NFS) 协议来访问它们。 此步骤介绍如何创建使用 SMB 协议装载到 VM 的文件共享。 有关如何使用 NFS 进行装载的信息，请参阅[使用 NFS 3.0 协议装载 Blob 存储](../../../storage/blobs/network-file-system-protocol-support-how-to.md)。
 
@@ -181,9 +183,7 @@ ms.locfileid: "111952289"
 
 首先，设置存储帐户。
 
-1. 在 Azure 门户中配置文件存储
-
-    在 Azure 门户中，选择“+ 创建资源”，然后搜索并选择“存储帐户”*
+1. 在 Azure 门户中，选择“+ 创建资源”，然后搜索并选择“存储帐户”*
     
     ![显示创建资源和选择存储帐户的位置的屏幕截图。](./media/oracle-backup-recovery/storage-1.png)
     
@@ -191,11 +191,9 @@ ms.locfileid: "111952289"
     
     ![显示在何处选择现有资源组的屏幕截图。](./media/oracle-backup-recovery/file-storage-1.png)
    
-   
 3. 单击“高级”选项卡，然后在 Azure 文件存储下，将“大文件共享”设置为“已启用” 。 依次单击“查看 + 创建”、“创建”。
     
     ![显示在何处将大文件共享设置为“已启用”的屏幕截图。](./media/oracle-backup-recovery/file-storage-2.png)
-    
     
 4. 创建存储帐户后，请前往资源并选择“文件共享”
     
@@ -354,9 +352,9 @@ ms.locfileid: "111952289"
     RMAN> backup as compressed backupset database plus archivelog;
     ```
 
-你现在已使用 Oracle RMAN 备份了数据库，并且备份位于 Azure 文件存储中。 此方法的优点是，可以利用 RMAN 的功能，同时将备份存储在可从其他 VM 访问的 Azure 文件存储中，这在需要克隆数据库时很有用。  
+你现在已使用 Oracle RMAN 联机备份了数据库，并且备份位于 Azure 文件存储中。 此方法的优点是，可以利用 RMAN 的功能，同时将备份存储在可从其他 VM 访问的 Azure 文件存储中，这在需要克隆数据库时很有用。  
     
-尽管使用 RMAN 和 Azure 文件存储进行数据库备份具有很多优势，但备份和还原时间与数据库的大小相关，因此对于非常大的数据库，这些操作可能需要相当长的时间。  另一种备份机制是使用 Azure 备份应用程序一致性 VM 备份，它使用快照技术来执行备份，其优点是无论数据库大小如何，都可以进行非常快速的备份。 与恢复服务保管库集成，可以将 Oracle Database 备份安全地存储在可从其他 VM 和 Azure 区域访问的 Azure 云存储中。 
+尽管使用 RMAN 和 Azure 文件存储进行数据库备份具有诸多优势，但备份和还原时间与数据库的大小相关，因此对于非常大的数据库，这些操作可能需要相当长的时间。 另一种备份机制是使用 Azure 备份应用程序一致性 VM 备份，它使用快照技术来执行备份，其优点是无论数据库大小如何，都可以进行非常快速的备份。 与恢复服务保管库集成，可以将 Oracle Database 备份安全地存储在可从其他 VM 和 Azure 区域访问的 Azure 云存储中。 
 
 ### <a name="restore-and-recover-the-database"></a>还原并恢复数据库
 

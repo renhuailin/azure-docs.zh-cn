@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: bagol
-ms.openlocfilehash: 965de895cbe7e030ff009ba11a0947048ce8b4c1
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: f2f99e7c9a901b6e76b3d4bbe87967527f836d1b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252605"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864335"
 ---
 # <a name="recovering-from-systemic-identity-compromise"></a>从系统标识泄露中恢复
 
@@ -157,7 +157,7 @@ Microsoft 的安全服务提供了大量资源以用于详尽调查。 以下部
 |所有云环境    |       - 审查云中的任何特权访问权限，删除任何不必要的权限<br>    - 实施 Privileged Identity Management (PIM)<br>    - 设置条件访问策略以在强化期间限制管理访问权限      |
 |所有本地环境     |       - 审查本地的特权访问权限，删除不必要的权限<br>   - 降低内置组的成员资格<br>    - 验证 Active Directory 委托<br>    - 强化第 0 层环境，限制有权访问第 0 层资产的人员      |
 |所有企业应用程序     | 审查允许执行以下任一操作的委托权限和同意授予： <br><br>  - 修改特权用户和角色 <br>- 读取或访问所有邮箱 <br>- 代表其他用户发送或转发电子邮件 <br>- 访问所有 OneDrive 或 SharePoint 网站内容 <br>- 添加可读取/写入目录的服务主体      |
-|Microsoft 365 环境     |审查 Microsoft 365 环境的访问权限和配置设置，包括： <br>- SharePoint Online 共享 <br>- Microsoft Teams <br>- PowerApps <br>- Microsoft OneDrive for Business          |
+|Microsoft 365 环境     |审查 Microsoft 365 环境的访问权限和配置设置，包括： <br>- SharePoint Online 共享 <br>- Microsoft Teams <br>- Power Apps <br>- Microsoft OneDrive for Business          |
 | 审查环境中的用户帐户   |- 审查并删除不再需要的来宾用户帐户。 <br>- 审查委托的电子邮件配置、邮箱文件夹权限、ActiveSync 移动设备注册、收件箱规则和 Outlook 网页版选项。 <br>- 审查 ApplicationImpersonation 权限，尽量减少旧式身份验证的使用。 <br>- 验证是否强制执行 MFA，以及所有用户的 MFA 和自助式密码重置 (SSPR) 联系信息是否正确。         |
 |     |         |
 
@@ -402,7 +402,7 @@ Azure Active Directory 登录日志可以显示是否正确使用了多重身份
 |---------|---------|
 |**重置密码**     |   重置任何[紧急帐户](../../active-directory/roles/security-emergency-access.md)的密码，并将紧急帐户的数量减少至所需的绝对最小值。    |
 |限制特权访问帐户     |    确保拥有访问特权的服务和用户帐户是仅限云的帐户，而不要使用已同步或联合到 Azure Active Directory 的本地帐户。  |
-|强制执行 MFA     | 强制要求租户中所有已提升权限的用户执行多重身份验证 (MFA)。 建议强制要求租户中的所有用户执行 MFA。       |
+|**强制执行 MFA**     | 强制要求租户中所有已提升权限的用户执行多重身份验证 (MFA)。 建议强制要求租户中的所有用户执行 MFA。       |
 |限制管理访问权限     |    实施 [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) (PIM) 和条件访问以限制管理访问权限。  <br><br>对于 Microsoft 365 用户，请实施 [Privileged Access Management](https://techcommunity.microsoft.com/t5/microsoft-security-and/privileged-access-management-in-office-365-is-now-generally/ba-p/261751) (PAM) 以限制访问敏感功能，例如电子数据展示、全局管理、帐户管理等。    |
 |审查/降低委派权限和同意授予     |  审查并降低所有允许使用以下任何功能的企业应用程序委托权限或[同意授予](/graph/auth-limit-mailbox-access)： <br><br>- 修改特权用户和角色 <br>- 阅读、发送电子邮件或访问所有邮箱 <br>- 访问 OneDrive、Teams 或 SharePoint 内容 <br>- 添加可读取/写入目录的服务主体 <br>- 应用程序权限与委托访问权限       |
 |     |         |

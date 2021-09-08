@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 08/25/2021
 ms.author: b-juche
-ms.openlocfilehash: bb3d1fd49c2623ff6dcbe8a19ae8c8ca3b46425a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdb184d4b96e4cfee2b5450f35c947efb768da9b
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006570"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866974"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>将子网委派给 Azure NetApp 文件 
 
@@ -27,8 +27,8 @@ ms.locfileid: "96006570"
 
 ## <a name="considerations"></a>注意事项
 
-* 用于创建新子网的向导默认设置 /24 网络掩码，这将提供 251 个可用 IP 地址。 对于此服务，使用 /28 网络掩码（可提供 11 个可用 IP 地址）就足够了。
-* 在每个 Azure 虚拟网络 (VNet) 中，只能将一个子网委派给 Azure NetApp 文件。   
+* 用于创建新子网的向导默认设置 /24 网络掩码，这将提供 251 个可用 IP 地址。 对于大多数用例，使用 /28 网络掩码（提供 11 个可用 IP 地址）就足够了。 在预计有许多卷和存储终结点的场景（如 SAP HANA）中，应该考虑使用较大的子网（例如 /26 网络掩码）。 如果不需要在 Azure 虚拟网络 (VNet) 中保留许多客户端或 VM IP 地址，也可以使用向导建议的默认网络掩码 /24。 请注意，初始创建后无法更改委托网络的网络掩码。 
+* 在每个 VNet 中，只能将一个子网委派给 Azure NetApp 文件。   
    Azure 允许你在一个 VNet 中创建多个委托子网。  但是，如果使用多个委托子网，则任何创建新卷的尝试都将失败。  
    一个 VNet 中只能有一个委托子网。 一个 NetApp 帐户可以将卷部署到多个 VNet 中，每个 VNet 都有自己的委托子网。  
 * 不能在委派的子网中指定网络安全组或服务终结点。 这样做会导致子网委派失败。

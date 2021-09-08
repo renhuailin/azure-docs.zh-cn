@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 08/11/2021
-ms.openlocfilehash: 3b715c15eb889d04c87a654fd68b802a53e7af01
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f1a7af136633b096f8bcda08466822549f922b35
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721943"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536952"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -156,7 +156,7 @@ ISE 已在以下几方面提高限制：
   * [ISE 区域中连接器的 Azure IP 地址，已在此下载文件中提供](https://www.microsoft.com/download/details.aspx?id=56519)
   * [应用服务环境管理地址](../app-service/environment/management-addresses.md)  
   * [Azure 流量管理器管理地址](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
-  * [Azure API 管理控制平面 IP 地址](../api-management/api-management-using-with-vnet.md#control-plane-ips)
+  * [Azure API 管理控制平面 IP 地址](../api-management/api-management-using-with-vnet.md#control-plane-ip-addresses)
 
 * 服务终结点
 
@@ -168,7 +168,7 @@ ISE 已在以下几方面提高限制：
    
    * [Azure 应用服务依赖项](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
    * [Azure 缓存服务依赖项](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
-   * [Azure API 管理依赖项](../api-management/api-management-using-with-vnet.md#-common-network-configuration-issues)
+   * [Azure API 管理依赖项](../api-management/api-management-using-with-vnet.md#network-configuration)
 
 <a name="create-environment"></a>
 
@@ -186,7 +186,7 @@ ISE 已在以下几方面提高限制：
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | properties | 必须 | 值 | 说明 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的新的或现有的 Azure 资源组 |

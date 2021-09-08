@@ -3,19 +3,19 @@ title: 评估并提高自定义语音识别准确度 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 本文档介绍如何以定量方式度量和提高我们的语音转文本模型或你的自定义模型的质量。 需要使用音频 + 人为标记的听录数据来测试准确度，并应提供 30 分钟到 5 小时的代表性音频。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: lajanuar
-ms.openlocfilehash: 03fb3e5b5363d57aac7a0e9636dae1dd0fb95141
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: b188ccde91f82a9d03cf83386315d0ee80ac41d0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067505"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538824"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>评估并提升自定义语音识别准确度
 

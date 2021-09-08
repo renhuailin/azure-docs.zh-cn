@@ -1,20 +1,20 @@
 ---
 title: 教程：将 GeoJSON 数据加载到 Azure Maps Android SDK 中 | Microsoft Azure Maps
 description: 关于如何将 GeoJSON 数据文件加载到 Azure Maps Android 地图 SDK 的教程。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/10/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 66214dc3a21389b779cfb5172747be0700e9d0e9
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: b36c82a12b984aa956cc7d9d41cbc13ffb3d083f
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091225"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425205"
 ---
 # <a name="tutorial-load-geojson-data-into-azure-maps-android-sdk"></a>教程：将 GeoJSON 数据加载到 Azure Maps Android SDK 中
 

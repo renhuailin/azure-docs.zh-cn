@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jianleishen
-ms.openlocfilehash: 1883d1192a1908611e3440ea2d39e770b4599bc6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b5bb9cc624f298ae4997b46a5cc7b4cf2a0d21ed
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638618"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250740"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的复制活动保留元数据和 ACL
 
@@ -24,7 +24,7 @@ ms.locfileid: "122638618"
 
 ## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> 保留数据湖迁移的元数据
 
-在将数据从一个数据湖迁移到另一个数据湖（包括 [Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) 和 [Azure文件存储](connector-azure-file-storage.md)）时，可选择保留文件元数据和数据。
+将数据从一个数据湖迁移到另一个数据湖（包括 [Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) 和 [Azure文件存储](connector-azure-file-storage.md)）时，可选择保留文件元数据和数据。
 
 复制活动支持在数据复制期间保留以下属性：
 
@@ -33,7 +33,7 @@ ms.locfileid: "122638618"
 
 **处理元数据的差异：** Amazon S3 和 Azure 存储允许在客户指定的元数据键中使用不同的字符集。 选择使用复制活动保留元数据时，ADF 会自动将无效字符替换为“_”。
 
-按原样将文件从 Amazon S3/Azure Data Lake Storage Gen2/Azure Blob/Azure 文件存储复制到二进制格式的 Azure Data Lake Storage Gen2/Azure Blob/Azure 文件存储时，可在用于活动创作的“复制活动” > “设置”选项卡中或在复制数据工具的“设置”页面上找到“保留”选项   。
+按原样将文件从 Amazon S3/Azure Data Lake Storage Gen2/Azure Blob 存储/Azure 文件存储复制到二进制格式的 Azure Data Lake Storage Gen2/Azure Blob 存储/Azure 文件存储时，可以在用于活动创作的“复制活动” > “设置”选项卡或复制数据工具中的“设置”页上找到“保留”选项   。
 
 ![复制活动保留元数据](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
 

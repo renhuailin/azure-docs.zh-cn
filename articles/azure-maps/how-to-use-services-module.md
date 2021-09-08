@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure Maps 服务模块 | Microsoft Azure Maps
 description: 了解 Azure Maps 服务模块。 请参阅如何加载和使用此帮助程序库，以访问 Web 或 Node.js 应用程序中 Azure Maps REST 服务。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/25/2019
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: devx-track-js
-ms.openlocfilehash: 2e07b614e87ed5dad94cf9bc5994e78071187839
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cd1cd820583a177ec65c9b63066119399e4bba0
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008593"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435143"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure Maps 服务模块
 
@@ -160,7 +160,7 @@ Azure Maps Web SDK 提供了一个服务模块。 此模块是一个帮助程序
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="使用服务模块" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="使用服务模块" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 中的 Pen <a href='https://codepen.io/azuremaps/pen/zbXGMR/'>使用服务模块</a>，由 Azure Maps 发布 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)。
 </iframe>
 
@@ -178,7 +178,7 @@ atlas.setDomain('atlas.azure.us');
 
 对地图和服务进行身份验证时，请确保使用 Azure 政府版云平台中的 Azure Maps 身份验证详细信息。
 
-使用服务模块时，需要在创建 API URL 终结点的实例时设置服务的域。 例如，下面的代码创建 `SearchURL` 类的一个实例，并将该域指向 Azure 政府版云。
+使用服务模块时，需要在创建 API URL 终结点的实例时设置服务的域。 例如，下面的代码创建 `SearchURL` 类的实例，并将该域指向 Azure 政府云。
 
 ```javascript
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');

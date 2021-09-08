@@ -1,20 +1,18 @@
 ---
 title: 将热度地图层添加到地图 | Microsoft Azure Maps
 description: 了解如何创建热度地图。 了解如何使用 Azure Maps Web SDK 将热度地图层添加到地图。 了解如何自定义热度地图层。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0145460746665756f007c50845a279743dc60ae1
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 181cd714f85195157b767062cac99caadd32e817
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666313"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432749"
 ---
 # <a name="add-a-heat-map-layer"></a>添加热度地图层
 
@@ -60,7 +58,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='简单热度地图层' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>简单热度地图层</a>。
+<iframe height='500' scrolling='no' title='简单热度地图层' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>简单热度地图层</a>。
 </iframe>
 
 ## <a name="customize-the-heat-map-layer"></a>自定义热度地图层
@@ -89,7 +87,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='热度地图层选项' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>热度地图层选项</a>。
+<iframe height='700' scrolling='no' title='热度地图层选项' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>热度地图层选项</a>。
 </iframe>
 
 ## <a name="consistent-zoomable-heat-map"></a>可一致缩放的热度地图
@@ -102,11 +100,11 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="可一致缩放的热度地图" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="可一致缩放的热度地图" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>可一致缩放的热度地图</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
 </iframe>
 
-`zoom` 表达式只能在 `step` 和 `interpolate` 表达式中使用。 以下表达式可用于估算半径（以米为单位）。 此表达式使用占位符 `radiusMeters`，你应将其替换为所需的半径。 此表达式针对缩放级别 0 和 24 计算赤道处缩放级别的近似像素半径，并使用 `exponential interpolation` 表达式在这些值之间进行缩放，工作方式与地图中的平铺系统相同。
+`zoom` 表达式只能在 `step` 和 `interpolate` 表达式中使用。 以下表达式可用于估算以米为单位的半径。 此表达式使用占位符 `radiusMeters`，应将其替换为所需的半径。 此表达式针对缩放级别 0 和 24 计算赤道处缩放级别的近似像素半径，并使用 `exponential interpolation` 表达式在这些值之间进行缩放，工作方式与地图中的平铺系统相同。
 
 ```json
 [

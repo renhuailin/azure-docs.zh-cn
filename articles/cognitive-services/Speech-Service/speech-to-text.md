@@ -3,21 +3,21 @@ title: 语音转文本概述 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音转文本软件，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本输入。 本文概述了语音转文本服务的优势和功能。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 语音转文本, 语音转文本软件
-ms.openlocfilehash: 16b3c290967ccec53397b5b321e7438c03dc050f
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 7da34e76d760b8f29a90112c00a1f8f05655d940
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071537"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543965"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音转文本？
 

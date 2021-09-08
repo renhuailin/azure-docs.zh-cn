@@ -10,35 +10,40 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 08/25/2021
 ms.author: apimpm
-ms.openlocfilehash: c87e436fe7fada8b1e16c18a5fad36c4ef3c872a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c4b069d76d795bd8ae830b811c97dfe58c2f842c
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110096393"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123106006"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的策略
 
-在 Azure API 管理 (APIM) 中，策略是一项强大的系统功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或响应 API 时按顺序执行。 常用的语句包括从 XML 到 JSON 的格式转换，并调用速率限制来限制从一名开发人员传入的调用量。 许多策略开箱即用。
+在 Azure API 管理中，API 发布者可以使用策略通过配置来更改 API 行为。 策略是针对 API 的请求或响应按顺序执行的一组语句。 常用的语句包括：
 
-策略在网关内部应用，该网关位于 API 使用者和托管 API 之间。 该网关接收所有请求，并通常将其原封不动地转发到基础 API。 但是策略可以将更改应用于入站的请求和出站响应。
+* 从 XML 格式转换为 JSON。
+* 调用速率限制以限制开发人员的传入调用数。 
 
-在任何 API 管理策略中，策略表达式可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流][Control flow]和[设置变量][Set variable]策略）基于策略表达式。 有关详细信息，请参阅[高级策略][Advanced policies]和[策略表达式][Policy expressions]。
+许多策略开箱即用。
+
+策略在网关内部应用，该网关位于 API 使用者和托管 API 之间。 当网关接收请求并将其原封不动地转发到基础 API 后，策略可以向入站请求和出站响应应用更改。
+
+在任何 API 管理策略中，策略表达式都可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流][Control flow]和[设置变量][Set variable]）基于策略表达式。 有关详细信息，请参阅[高级策略][Advanced policies]和[策略表达式][Policy expressions]文章。
 
 ## <a name="understanding-policy-configuration"></a><a name="sections"> </a>了解策略配置
 
-策略定义是一个简单的 XML 文档，用于描述一个入站和出站语句序列。 可以直接在定义窗口中编辑 XML。 右侧提供语句的列表，同时启用适用于当前范围的语句并突出显示。
+策略定义是简单的 XML 文档，用于描述一个入站和出站语句序列。 可以直接在定义窗口中编辑 XML，该窗口还提供：
+* 右侧的语句列表。
+* 适用于当前范围的语句已启用并已突出显示。
 
 单击启用的语句会在定义视图中的光标位置添加相应的 XML。 
 
 > [!NOTE]
-> 如果无法启用要添加的策略，请确保为该策略设置的范围是正确的。 每个策略语句都设计有特定的使用范围，需在特定的策略部分使用。 若要查看某个策略的策略部分和范围，请参阅[策略参考][Policy Reference]中该策略的“用法”部分。
-> 
-> 
+> 如果无法启用要添加的策略，请确保为该策略设置的范围是正确的。 每个策略语句都设计有特定的使用范围，需在特定的策略部分使用。 若要查看某个策略的策略部分和范围，请参阅[策略参考][Policy Reference]中的“用法”部分。
 
-配置划分为 `inbound`、`backend`、`outbound` 和 `on-error`。 指定的策略语句系列将按请求和响应顺序执行。
+配置划分为 `inbound`、`backend`、`outbound` 和 `on-error`。 指定的策略语句系列将针对请求和响应按顺序执行。
 
 ```xml
 <policies>
@@ -58,7 +63,18 @@ ms.locfileid: "110096393"
 </policies> 
 ```
 
-如果在处理请求的过程中出错，则会忽略 `inbound`、`backend` 或 `outbound` 部分的其余步骤，跳到 `on-error` 部分执行相关语句。 将策略语句置于 `on-error` 部分以后，即可使用 `context.LastError` 属性查看错误、使用 `set-body` 策略检查和自定义错误响应，以及配置发生错误时的应对措施。 错误代码可针对内置步骤，也可针对在处理策略语句的过程中会发生的错误。 有关详细信息，请参阅 [Error handling in API Management policies](./api-management-error-handling-policies.md)（API 管理策略中的错误处理）。
+如果在处理请求的过程中出现错误：
+* 将跳过 `inbound`、`backend` 或 `outbound` 部分中所有的剩余步骤。
+* 执行将跳转到 `on-error` 部分中的语句。
+
+通过将策略语句置于 `on-error` 部分，你可以：
+* 使用 `context.LastError` 属性查看错误。
+* 使用 `set-body` 策略检查和自定义错误响应。
+* 配置发生错误时的应对措施。 
+
+有关详细信息，请参阅 [API 管理策略中的错误处理](./api-management-error-handling-policies.md)，以了解针对以下内容的错误代码：
+* 内置步骤
+* 在处理策略语句的过程中可能发生的错误。 
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>如何配置策略
 
@@ -88,7 +104,12 @@ ms.locfileid: "110096393"
 </policies>
 ```
 
-在上述示例策略定义中，`cross-domain` 语句会在执行任何更高版本的策略前执行，之后是 `find-and-replace` 策略。 
+在上述示例策略定义中：
+* `cross-domain` 语句会在执行任何更高版本的策略前执行。
+* `find-and-replace` 策略会在执行任何更高版本的策略后执行。 
+
+>[!NOTE]
+> 如果删除 API 范围内的 `<base />` 标记，则只会应用 API 范围内配置的策略。 不会应用产品范围策略或全局范围策略。
 
 ### <a name="restrict-incoming-requests"></a>限制传入的请求
 

@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/10/2021
-ms.openlocfilehash: 0a5ab1b8e79c3cfacb2944369b5f9234355ba4c8
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.date: 08/25/2021
+ms.openlocfilehash: 31ac845591387ec0c7061945e3324cd5249d7b23
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122229009"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037792"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure Purview
 
@@ -20,7 +20,7 @@ ms.locfileid: "122229009"
 
 ## <a name="view-existing-data-factory-connections"></a>查看现有的数据工厂连接
 
-多个 Azure 数据工厂可以连接到单个 Azure Purview 数据目录以推送世系信息。 当前限制允许从 Purview 管理中心一次最多连接十个数据工厂帐户。 若要显示已连接到 Purview 数据目录的数据工厂帐户列表，请执行以下操作：
+多个 Azure 数据工厂可连接到单个 Azure Purview 来推送世系信息。 当前限制允许从 Purview 管理中心一次最多连接十个数据工厂帐户。 若要显示已连接到 Purview 帐户的数据工厂帐户列表，请执行以下操作：
 
 1. 在左侧导航窗格中选择“管理”。
 2. 在“世系连接”下，选择“数据工厂” 。
@@ -30,26 +30,25 @@ ms.locfileid: "122229009"
 
 4. 请注意各种连接状态值：
 
-    - **已连接**：数据工厂已连接到数据目录。
+    - **已连接**：数据工厂已连接到 Purview 帐户。
     - **已断开连接**：数据工厂有权访问该目录，但它已连接到其他目录。 因此，不会自动将数据世系报告给该目录。
     - **CannotAccess**：当前用户无法访问数据工厂，因此连接状态未知。
- >[!Note]
- >若要查看数据工厂连接，你需要获分配以下任一 Purview 角色。 不支持从管理组继承角色：
- >- 参与者
- >- 所有者
- >- 读取器
- >- 用户访问管理员
+
+>[!Note]
+>若要查看数据工厂连接，你需要具备以下角色。 不支持从管理组继承角色。
+>- 对于在 2021 年 8 月 18 日或之后创建的 Purview 帐户：根集合的“集合管理员”角色 。
+>- 对于在 2021 年 8 月 18 日之前创建的 Purview 帐户：Azure 内置的“所有者”、“参与者”、“读取者”或“用户访问管理员”角色    。
 
 ## <a name="create-new-data-factory-connection"></a>创建新的数据工厂连接
 
 >[!Note]
->若要添加或删除数据工厂连接，你需要获分配以下任一 Purview 角色。 不支持从管理组继承角色：
->- “所有者”
->- 用户访问管理员
+>若要添加或删除数据工厂连接，你需要具备以下角色。 不支持从管理组继承角色。
+>- 对于在 2021 年 8 月 18 日或之后创建的 Purview 帐户：根集合的“集合管理员”角色 。
+>- 对于在 2021 年 8 月 18 日之前创建的 Purview 帐户：“所有者”或“用户访问管理员”角色  。 
 >
 > 此外，用户还需要是数据工厂的“所有者”或“参与者”。 
 
-按照以下步骤将现有的数据工厂连接到 Purview 数据目录。
+按照以下步骤将现有数据工厂连接到 Purview 帐户。 还可[从 ADF 将数据工厂连接到 Purview 帐户](../data-factory/connect-data-factory-to-azure-purview.md)。
 
 1. 在左侧导航窗格中选择“管理”。
 2. 在“世系连接”下，选择“数据工厂” 。
@@ -68,18 +67,16 @@ ms.locfileid: "122229009"
 >[!Note]
 >现在支持一次最多添加 10 个数据工厂。 如果希望一次添加 10 个以上的数据工厂，请提交支持票证。
 
-### <a name="how-does-the-authentication-work"></a>身份验证的工作原理
+### <a name="how-authentication-works"></a>身份验证的工作原理
 
-当 Purview 用户注册其有权访问的数据工厂时，后端会发生以下情况：
+数据工厂的托管标识用于对从数据工厂到 Purview 的世系数据推送操作进行身份验证。 在将数据工厂连接到 UI 上的 Purview 时，会自动添加角色分配。 
 
-1. 数据工厂托管标识会添加到 Purview RBAC 角色：Purview 数据策划者 。
+- 对于在 2021 年 8 月 18 日或之后创建的 Purview 帐户，向数据工厂的托管标识授予 Purview 根集合的“数据管理者”角色  。 详细了解 [Azure Purview 中的访问控制](../purview/catalog-permissions.md)和[添加角色并限制通过集合的访问](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)。
 
-    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="屏幕截图显示 Azure 数据工厂 MSI。" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
-     
-2. 需再次执行数据工厂管道，以便可以将世系元数据推送回 Purview 中。
-3. 执行后，数据工厂元数据将推送到 Purview 中。
+- 对于在 2021 年 8 月 18 日之前创建的 Purview 帐户，向数据工厂的托管标识授予 Purview 帐户的 Azure 内置 [Purview 数据管理者](../role-based-access-control/built-in-roles.md#purview-data-curator)角色 。 详细了解 [Azure Purview 中的访问控制 - 旧版权限](../purview/catalog-permissions.md#legacy-permission-guide)。
 
 ### <a name="remove-data-factory-connections"></a>删除数据工厂连接
+
 若要删除数据工厂连接，请执行以下操作：
 
 1. 在“数据工厂连接”页上，选择一个或多个数据工厂连接旁边的“删除”按钮 。
@@ -101,22 +98,6 @@ Azure Purview 从以下 Azure 数据工厂活动捕获运行时世系：
 如以下各节部分所述，数据工厂与 Purview 之间的集成仅支持数据工厂支持的部分数据系统。
 
 [!INCLUDE[data-factory-supported-lineage-capabilities](includes/data-factory-common-supported-capabilities.md)]
-
-### <a name="data-flow-support"></a>数据流支持
-
-| 数据存储 | 支持 |
-| ------------------- | ------------------- | 
-| Azure Blob 存储 | 是 |
-| Azure Cosmos DB (SQL API) \* | 是 | 
-| Azure Data Lake Storage Gen1 | 是 |
-| Azure Data Lake Storage Gen2 | 是 |
-| Azure Database for MySQL \* | 是 | 
-| Azure Database for PostgreSQL \* | 是 |
-| Azure SQL 数据库 \* | 是 |
-| Azure SQL 托管实例 \* | 是 | 
-| Azure Synapse Analytics \* | 是 |
-
-\* Azure Purview 当前不支持针对世系或扫描的查询或存储过程。世系仅限于表和视图源。
 
 ### <a name="execute-ssis-package-support"></a>执行 SSIS 包支持
 

@@ -4,12 +4,12 @@ description: 使用 Azure 基于角色的访问控制来管理对恢复服务保
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 0b321a5f33bd75ce8615d6d2a90442a83d9fff67
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdde385ca49a61a8fb2c2bba81311035dca3e324
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102613436"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123215176"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用 Azure 基于角色的访问控制来管理 Azure 备份恢复点
 
@@ -86,10 +86,10 @@ Azure 备份提供三个用于控制备份管理操作的内置角色。 详细�
 | 管理操作 | 所需的角色 | 资源 |
 | --- | --- | --- |
 | 启用 Azure 文件共享的备份 | 备份参与者 |恢复服务保管库 |
-| |存储帐户 | 参与者存储帐户资源 |
+| | 存储帐户备份参与者 | 存储帐户名称 |
 | 按需 VM 备份 | 备份操作员 | 恢复服务保管库 |
 | 还原文件共享 | 备份操作员 | 恢复服务保管库 |
-| | 存储帐户参与者 | 存在还原源和目标文件共享的存储帐户资源 |
+| | 存储帐户备份参与者 | 存在还原源和目标文件共享的存储帐户资源 |
 | 还原单个文件 | 备份操作员 | 恢复服务保管库 |
 | |存储帐户参与者|存在还原源和目标文件共享的存储帐户资源 |
 | 停止保护 |备份参与者 | 恢复服务保管库 |

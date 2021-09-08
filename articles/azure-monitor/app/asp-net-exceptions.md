@@ -4,12 +4,12 @@ description: 从 ASP.NET 应用中捕获异常以及请求遥测。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/19/2021
-ms.openlocfilehash: d81881318f6bbfa5c44b9cd947cf408cefa766ae
-ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
+ms.openlocfilehash: 5ad103890d481db18c3df9633bf3b58186136e93
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113616237"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431543"
 ---
 # <a name="diagnose-exceptions-in-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
 
@@ -77,11 +77,11 @@ Application Insights 附带了精选的应用程序性能管理 (APM) 体验，�
 
 要获取特定于应用的诊断数据，可在插入代码后发送自己的遥测数据。 自定义遥测或日志数据与请求、页面视图和其他自动收集的数据一起显示在诊断搜索中。
 
-使用 <xref:Microsoft.ApplicationInsights.TelemetryClient?displayProperty=fullName>，你可以使用多个 API：
+使用 <xref:Microsoft.VisualStudio.ApplicationInsights.TelemetryClient?displayProperty=fullName>，你可以使用多个 API：
 
-* <xref:Microsoft.ApplicationInsights.TelemetryClient.TrackEvent%2A?displayProperty=nameWithType> 通常用于监视使用模式，但它发送的数据还显示在诊断搜索的“自定义事件”下。 事件可以进行命名，并带有[筛选诊断搜索](./diagnostic-search.md)所依据的字符串属性和数值指标。
-* <xref:Microsoft.ApplicationInsights.TelemetryClient.TrackTrace%2A?displayProperty=nameWithType> 允许发送较长的数据，例如 POST 信息。
-* <xref:Microsoft.ApplicationInsights.TelemetryClient.TrackException%2A?displayProperty=nameWithType> 将异常详细信息（例如堆栈跟踪）发送到 Application Insights。
+* <xref:Microsoft.VisualStudio.ApplicationInsights.TelemetryClient.TrackEvent%2A?displayProperty=nameWithType> 通常用于监视使用模式，但它发送的数据还显示在诊断搜索的“自定义事件”下。 事件可以进行命名，并带有[筛选诊断搜索](./diagnostic-search.md)所依据的字符串属性和数值指标。
+* <xref:Microsoft.VisualStudio.ApplicationInsights.TelemetryClient.TrackTrace%2A?displayProperty=nameWithType> 允许发送较长的数据，例如 POST 信息。
+* <xref:Microsoft.VisualStudio.ApplicationInsights.TelemetryClient.TrackException%2A?displayProperty=nameWithType> 将异常详细信息（例如堆栈跟踪）发送到 Application Insights。
 
 若要查看这些事件，请在左侧菜单中打开[搜索](./diagnostic-search.md)、选择“事件类型”下拉菜单，然后选择“自定义事件”、“跟踪”或“异常”   。
 
@@ -180,7 +180,7 @@ End Try
 > [!NOTE]
 > 建议将 `TelemetryClient` 实例化一次，并在应用程序的整个生命周期内重复使用。
 
-借助 [.NET 中的依赖项注入 (DI)](/dotnet/core/extensions/dependency-injection)、适当的 .NET SDK，并为 DI 正确配置 Application Insights，可以要求将 <xref:Microsoft.ApplicationInsights.TelemetryClient> 作为构造函数参数。
+借助 [.NET 中的依赖项注入 (DI)](/dotnet/core/extensions/dependency-injection)、适当的 .NET SDK，并为 DI 正确配置 Application Insights，可以要求将 <xref:Microsoft.VisualStudio.ApplicationInsights.TelemetryClient> 作为构造函数参数。
 
 ```csharp
 public class ExampleController : ApiController
@@ -211,7 +211,7 @@ void Application_Error(object sender, EventArgs e)
 }
 ```
 
-在前面的示例中，`_telemetryClient` 是类型 <xref:Microsoft.ApplicationInsights.TelemetryClient> 的类范围内变量。
+在前面的示例中，`_telemetryClient` 是类型 <xref:Microsoft.VisualStudio.ApplicationInsights.TelemetryClient> 的类范围内变量。
 
 ## <a name="mvc"></a>MVC
 

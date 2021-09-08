@@ -3,18 +3,38 @@ title: 有关使用 Azure Site Recovery 进行 VMware 灾难恢复的常见问�
 description: 获取使用 Azure Site Recovery 将本地 VMware VM 灾难恢复到 Azure 时出现的常见问题的解答。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 006f0a51da933336a354b275bb882e5538832741
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 0e39cd3b9f06620f2004a2afbc869fe22de04468
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444308"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272849"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
 
 本文解答了将本地 VMware 虚拟机 (VM) 灾难恢复部署到 Azure 时可能出现的常见问题。
 
 ## <a name="general"></a>常规
+
+### <a name="how-do-i-use-the-classic-experience-in-the-recovery-services-vault-rather-than-the-preview-experience"></a>如何在恢复服务保管库中使用经典体验，而不是预览体验？ 
+
+使用 Azure Site Recovery 复制设备保护 VMware 虚拟机的更可靠的新方法现提供[公共预览版](https://support.microsoft.com/topic/update-rollup-57-for-azure-site-recovery-kb5006172-9fccc879-6e0c-4dc8-9fec-e0600cf94094)。 创建新的恢复服务保管库时，默认情况下将选择预览体验。 
+
+更改体验 - 
+
+1. 在 Azure 门户中打开保管库。 
+2. 选择“开始”部分下，单击“Site Recovery” 。 
+3. 单击该页面顶部的横幅。 
+
+    [![修改 VMware 堆栈步骤 1](./media/vmware-azure-common-questions/change-stack-step-1.png)](./media/vmware-azure-common-questions/change-stack-step-1.png#lightbox)
+
+4. 随即将打开体验选择边栏选项卡。 如果要使用配置服务器，请选择经典体验，然后单击“确定”。 如果不想使用，请关闭该窗格。 
+
+    [![修改 VMware 堆栈步骤 2](./media/vmware-azure-common-questions/change-stack-step-2.png)](./media/vmware-azure-common-questions/change-stack-step-2.png#lightbox)
+
+> [!NOTE]
+> 请注意，体验类型从预览版切换到经典后，不能在同一恢复服务保管库中再次切换。 在保存此更改之前，请确保选择所需的体验。
+
 
 ### <a name="what-do-i-need-for-vmware-vm-disaster-recovery"></a>VMware VM 灾难恢复需用到哪些组件？
 

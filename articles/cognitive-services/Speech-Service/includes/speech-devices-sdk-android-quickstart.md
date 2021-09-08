@@ -1,16 +1,16 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
-ms.author: lajanuar
-ms.openlocfilehash: 5942b5048e7969365285d8aacaf372a66964abce
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: f4c86c0aaf9bf5d9c1d66247db91fcf33ee203f4
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067987"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540593"
 ---
 本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription.md)设备。
 
@@ -168,7 +168,7 @@ ms.locfileid: "122067987"
 
 1. 尽情体验吧！
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果无法连接到语音设备。 在命令提示符窗口中键入以下命令。 这会返回设备列表：
 

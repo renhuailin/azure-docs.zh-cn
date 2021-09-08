@@ -1,18 +1,20 @@
 ---
 title: 向/从 Azure 数据资源管理器复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动来向/从 Azure 数据资源管理器复制数据。
-ms.author: orspodek
-author: jianleishen
+ms.author: susabat
+author: ssabat
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 606d10694b6806b62871ddf24afd259d7bc224bc
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: 4f3718699e7438b3b45c84eebebbbbf75126d793
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482968"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123304520"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
 
@@ -48,14 +50,39 @@ ms.locfileid: "109482968"
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-对于特定于 Azure 数据资源管理器连接器的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
+## <a name="create-a-linked-service-to-azure-data-explorer-using-ui"></a>使用 UI 创建指向 Azure 数据资源管理器的链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建指向 Azure 数据资源管理器的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新链接服务的屏幕截图。":::
+
+2. 搜索资源管理器并选择 Azure 数据资源管理器 (Kusto) 连接器。
+
+    :::image type="content" source="media/connector-azure-data-explorer/azure-data-explorer-connector.png" alt-text="Azure 数据资源管理器 (Kusto) 连接器的屏幕截图。":::    
+
+1. 配置服务详细信息、测试连接并创建新的链接服务。
+
+    :::image type="content" source="media/connector-azure-data-explorer/configure-azure-data-explorer-linked-service.png" alt-text="Azure 数据资源管理器的链接服务配置的屏幕截图。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
+
+对于特定于 Azure 数据资源管理器连接器的实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
 Azure 数据资源管理器连接器支持以下身份验证类型。 请参阅相应部分的了解详细信息：
 
 - [服务主体身份验证](#service-principal-authentication)
-- [Azure 资源的托管标识身份验证](#managed-identity)
+- [系统分配的托管标识身份验证](#managed-identity)
+- [用户分配的托管标识身份验证](#user-assigned-managed-identity-authentication)
 
 ### <a name="service-principal-authentication"></a>服务主体身份验证
 
@@ -108,9 +135,11 @@ Azure 数据资源管理器链接服务支持以下属性：
 }
 ```
 
-### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure 资源托管标识身份验证
+### <a name="system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a>系统分配的托管标识身份验证
 
-若要使用 Azure 资源托管标识身份验证，请按照以下步骤授予权限：
+若要详细了解 Azure 资源托管标识，请参阅 [Azure 资源托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
+
+若要使用系统分配的托管标识身份验证，请按照以下步骤授予权限：
 
 1. 通过复制与工厂一起生成的 **托管标识对象 ID** 的值，[检索数据工厂托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
 
@@ -131,7 +160,7 @@ Azure 数据资源管理器链接服务支持以下属性：
 | database | 数据库的名称。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
-**示例：使用托管标识身份验证**
+示例：使用系统分配的托管标识身份验证
 
 ```json
 {
@@ -141,6 +170,46 @@ Azure 数据资源管理器链接服务支持以下属性：
         "typeProperties": {
             "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
             "database": "<database name>",
+        }
+    }
+}
+```
+
+### <a name="user-assigned-managed-identity-authentication"></a>用户分配的托管标识身份验证
+若要详细了解 Azure 资源托管标识，请参阅 [Azure 资源托管标识](../active-directory/managed-identities-azure-resources/overview.md)
+
+若要使用用户分配的托管标识身份验证，请按照以下步骤操作：
+
+1. [创建一个或多个用户分配的托管标识](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，并在 Azure 数据资源管理器中授予权限。 有关角色和权限以及管理权限的详细信息，请参阅[管理 Azure 数据资源管理器数据库权限](/azure/data-explorer/manage-database-permissions)。 一般情况下，必须授予以下权限：
+
+    - **作为源**：至少向数据库授予“数据库查看者”角色 
+    - **作为接收器**：至少向数据库授予“数据库引入者”角色 
+     
+2. 为数据工厂分配一个或多个用户分配的托管标识，并为每个用户分配的托管标识[创建凭据](data-factory-service-identity.md#credentials)。
+
+Azure 数据资源管理器链接服务支持以下属性：
+
+| 属性 | 说明 | 必需 |
+|:--- |:--- |:--- |
+| type | **type** 属性必须设置为 **AzureDataExplorer**。 | 是 |
+| endpoint | Azure 数据资源管理器群集的终结点 URL，格式为 `https://<clusterName>.<regionName>.kusto.windows.net`。 | 是 |
+| database | 数据库的名称。 | 是 |
+| 凭据 | 将用户分配的托管标识指定为凭据对象。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+
+示例：使用用户分配的托管标识身份验证
+```json
+{
+    "name": "AzureDataExplorerLinkedService",
+    "properties": {
+        "type": "AzureDataExplorer",
+        "typeProperties": {
+            "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
+            "database": "<database name>",
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+            }
         }
     }
 }

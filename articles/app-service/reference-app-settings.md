@@ -3,12 +3,12 @@ title: 环境变量和应用设置参考
 description: 描述常用的环境变量，以及可以通过应用设置修改的环境变量。
 ms.topic: article
 ms.date: 06/14/2021
-ms.openlocfilehash: 39cb9b210cb7cff3e8b1b6a58a3ab32e22628833
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5cba4a7d66f5b2bb705df8c685b6c8be05e04a08
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289990"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272342"
 ---
 # <a name="environment-variables-and-app-settings-in-azure-app-service"></a>Azure 应用服务中的环境变量和应用设置
 
@@ -46,8 +46,6 @@ ms.locfileid: "114289990"
 | `REMOTEDEBUGGINGVERSION` | 远程调试版本。 ||
 | `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` | 默认情况下，应用服务会在应用创建中创建共享存储。 若要改为使用自定义存储帐户，请设置为存储帐户的连接字符串。 有关函数的详细信息，请参阅 [Functions 的应用设置参考](../azure-functions/functions-app-settings.md#website_contentazurefileconnectionstring)。 | `DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>` |
 | `WEBSITE_CONTENTSHARE` | 通过 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 指定自定义存储帐户时，应用服务会为应用创建该存储帐户中的文件共享。 若要使用自定义名称，请将此变量设置所需名称。 如果具有指定名称的文件共享不存在，应用服务会为你创建一个。 | `myapp123` |
-| `WEBSITE_AUTH_ENCRYPTION_KEY` | 默认情况下，自动生成的密钥用作加密密钥。 若要替代，请设置为所需的密匙。 如果要在多种应用之间共享令牌或会话，建议使用此密匙。 ||
-| `WEBSITE_AUTH_SIGNING_KEY` | 默认情况下，自动生成的密钥用作签名密钥。 若要替代，请设置为所需的密匙。 如果要在多种应用之间共享令牌或会话，建议使用此密匙。 ||
 | `WEBSITE_SCM_ALWAYS_ON_ENABLED` | 只读。 显示 Always On 是已启用 (`1`) 还是未启用 (`0`)。 ||
 | `WEBSITE_SCM_SEPARATE_STATUS` | 只读。 显示 Kudu 应用是在单独的进程中运行 (`1`) 还是不在单独的进程中运行 (`0`)。 ||
 
@@ -76,7 +74,7 @@ WEBSITE_CLASSIC_MODE
 | `POSTGRESQLCONNSTR_` | 表示应用配置中的 PostgreSQL 连接字符串。 它作为连接字符串注入到 .NET 应用中。 |
 | `CUSTOMCONNSTR_` | 表示应用配置中的自定义连接字符串。 它作为连接字符串注入到 .NET 应用中。 |
 | `MYSQLCONNSTR_` | 表示应用配置中的 Azure SQL 数据库连接字符串。 它作为连接字符串注入到 .NET 应用中。 |
-| `AZUREFILESSTORAGE_` | 容器应用的自定义 Azure 文件存储的连接字符串。 |
+| `AZUREFILESSTORAGE_` | 容器应用的自定义 Azure 文件共享的连接字符串。 |
 | `AZUREBLOBSTORAGE_` | 容器应用的自定义 Azure Blobs 文件存储的连接字符串。 |
 
 ## <a name="deployment"></a>部署
@@ -146,6 +144,10 @@ Oryx 生成配置适用于 Linux 应用，用于控制基于 Git （或基于 ZI
 | `HOME` | 只读。 指向共享存储的目录 (`/home`)。 |
 | `DUMP_DIR` | 只读。 故障转储的目录 (`/home/logs/dumps`)。 |
 | `APP_SVC_RUN_FROM_COPY` | 仅限于 Linux 应用。 默认情况下，应用在 `/home/site/wwwroot` 中运行，这是所有横向扩展实例的共享目录。 将此变量设置为 `true`，以将应用复制到容器中的本地目录并在该目录中运行它。 使用此选项时，请确保不要对 `/home/site/wwwroot` 的任何引用进行硬编码。 请改为使用相对于 `/home/site/wwwroot` 的路径。 |
+| `MACHINEKEY_Decryption` | 对于 Windows 原生应用或 Windows 容器应用，此变量会注入到应用环境或容器中以启用 ASP.NET 加密例程（请参阅 [machineKey 元素](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))）。 若要替代 `decryption` 默认值，请将其配置为应用服务应用设置，或直接在 Web.config 文件的 `machineKey` 元素中设置。 |
+| `MACHINEKEY_DecryptionKey` | 对于 Windows 原生应用或 Windows 容器应用，此变量会注入到应用环境或容器中以启用 ASP.NET 加密例程（请参阅 [machineKey 元素](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))）。 若要替代自动生成的 `decryptionKey` 值，请将其配置为应用服务应用设置，或直接在 Web.config 文件的 `machineKey` 元素中设置。|
+| `MACHINEKEY_Validation` | 对于 Windows 原生应用或 Windows 容器应用，此变量会注入到应用环境或容器中以启用 ASP.NET 加密例程（请参阅 [machineKey 元素](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))）。 若要替代 `validation` 默认值，请将其配置为应用服务应用设置，或直接在 Web.config 文件的 `machineKey` 元素中设置。|
+| `MACHINEKEY_ValidationKey` | 对于 Windows 原生应用或 Windows 容器应用，此变量会注入到应用环境或容器中以启用 ASP.NET 加密例程（请参阅 [machineKey 元素](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))）。 若要替代自动生成的 `validationKey` 值，请将其配置为应用服务应用设置，或直接在 Web.config 文件的 `machineKey` 元素中设置。|
 <!-- | `USE_DOTNET_MONITOR` | if =true then /opt/dotnetcore-tools/dotnet-monitor collect --urls "http://0.0.0.0:50051" --metrics true --metricUrls "http://0.0.0.0:50050" > /dev/null 2>&1 & -->
 
 # <a name="java"></a>[Java](#tab/java)
@@ -269,7 +271,7 @@ APACHE_RUN_GROUP | RUN sed -i 's!User ${APACHE_RUN_GROUP}!Group www-data!g' /etc
 DOMAIN_OWNERSHIP_VERIFICATION_IDENTIFIERS
  -->
 
-## <a name="tslssl"></a>TSL/SSL
+## <a name="tlsssl"></a>TLS/SSL
 
 有关详细信息，请参阅[在 Azure 应用服务的代码中使用 TLS/SSL 证书](configure-ssl-certificate-in-code.md)。
 
@@ -312,13 +314,9 @@ DOMAIN_OWNERSHIP_VERIFICATION_IDENTIFIERS
 | `DOCKER_REGISTRY_SERVER_USERNAME` | 在 `DOCKER_REGISTRY_SERVER_URL` 上通过注册表服务器进行身份验证的用户名。 安全起见，此变量不会传递到容器。 ||
 | `DOCKER_REGISTRY_SERVER_PASSWORD` | 在 `DOCKER_REGISTRY_SERVER_URL` 上通过注册表服务器进行身份验证的密码。 安全起见，此变量不会传递到容器。 ||
 | `WEBSITES_WEB_CONTAINER_NAME` | 在 Docker Compose 应用中，仅有一个容器可以访问 Internet。 设置为配置文件中定义的容器的名称，以替代默认容器选择。 默认情况下，可访问 Internet 的容器是第一个定义端口 80 或 8080 的容器，若未找到此容器，则为配置文件中定义的第一个容器。 |  |
-| `WEBSITES_PORT` | 对于自定义容器，则为将请求路由到容器上的自定义端口号。 默认情况下，应用服务尝试对端口 80 和 8080 进行自动端口检测。 ||
+| `WEBSITES_PORT` | 对于自定义容器，则为将请求路由到应用服务容器上的自定义端口号。 默认情况下，应用服务尝试对端口 80 和 8080 进行自动端口检测。 此设置不会作为环境变量注入到容器中。 ||
 | `WEBSITE_CPU_CORES_LIMIT` | 默认情况下，Windows 容器将运行，其中包含所选定价层的所有可用内核。 若要减少内核的数量，请将其设置为所需的限制数量。 有关详细信息，请参阅[自定义计算内核数量](configure-custom-container.md?pivots=container-windows#customize-the-number-of-compute-cores)。||
 | `WEBSITE_MEMORY_LIMIT_MB` | 默认情况下，部署在 Azure 应用服务中的所有 Windows 容器均限制为 1 GB RAM。 设置为所需的内存限制（单位为 MB）。 在同一计划的各个应用中，此设置的累计总和不得超过所选定价层允许的数额。 有关详细信息，请参阅[自定义容器内存](configure-custom-container.md?pivots=container-windows#customize-container-memory)。 ||
-| `MACHINEKEY_Decryption` | 对于 Windows 容器，此变量会注入到容器中以启用 ASP.NET 加密例程（请参阅 [machineKey Element](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))）。 若要替代默认 `decryption` 值，请将其设置为应用设置。 ||
-| `MACHINEKEY_DecryptionKey` | 对于 Windows 容器，此变量会注入到容器中以启用 ASP.NET 加密例程（请参阅 [machineKey Element](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))）。 若要替代自动生成的 `decryptionKey` 值，请将其设置为应用设置。 ||
-| `MACHINEKEY_Validation` | 对于 Windows 容器，此变量会注入到容器中以启用 ASP.NET 加密例程（请参阅 [machineKey Element](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))）。 若要替代默认 `validation` 值，请将其设置为应用设置。 ||
-| `MACHINEKEY_ValidationKey` | 对于 Windows 容器，此变量会注入到容器中以启用 ASP.NET 加密例程（请参阅 [machineKey Element](/previous-versions/dotnet/netframework-4.0/w8h3skw9(v=vs.100))）。 若要替代自动生成的 `validationKey` 值，请将其设置为应用设置。 ||
 | `CONTAINER_WINRM_ENABLED` | 对于 Windows 容器应用，请将其设置为 `1` 以启用 Windows 远程管理 (WIN-RM)。 ||
 
 <!-- 
@@ -488,6 +486,8 @@ WEBSITE_SOCKET_STATISTICS_ENABLED
 | `WEBSITE_AUTH_VALIDATE_NONCE`| `true` 或 `false`。 默认值是 `true`。 此值决不可设置为 `false`，除非交互式登录过程中临时调试[加密 nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) 验证失败。 此应用程序设置适用于 V1（经典）配置体验。 如果使用 V2 身份验证配置架构，则应改用 `login.nonce.validateNonce` 配置值。 |
 | `WEBSITE_AUTH_V2_CONFIG_JSON` | 此环境变量由 Azure 应用服务平台自动填充，并用于配置集成身份验证模块。 此环境变量的值对应于 Azure 资源管理器中当前应用的 V2（非经典）身份验证配置。 它不用于显式配置。 |
 | `WEBSITE_AUTH_ENABLED` | 只读。 注入到 Windows 或 Linux 应用，以指示是否启用了应用服务身份验证。 |
+| `WEBSITE_AUTH_ENCRYPTION_KEY` | 默认情况下，自动生成的密钥用作加密密钥。 若要替代，请设置为所需的密匙。 如果要在多种应用之间共享令牌或会话，建议使用此密匙。 如果指定，它将取代 `MACHINEKEY_DecryptionKey` 设置。 ||
+| `WEBSITE_AUTH_SIGNING_KEY` | 默认情况下，自动生成的密钥用作签名密钥。 若要替代，请设置为所需的密匙。 如果要在多种应用之间共享令牌或会话，建议使用此密匙。 如果指定，它将取代 `MACHINEKEY_ValidationKey` 设置。 ||
 
 <!-- System settings
 WEBSITE_AUTH_RUNTIME_VERSION

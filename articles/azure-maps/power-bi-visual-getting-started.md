@@ -1,20 +1,20 @@
 ---
 title: Azure Maps Power BI 视觉对象入门 | Microsoft Azure Maps
 description: 在本文中，你将了解如何使用 Microsoft Azure Maps Power BI 视觉对象。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: e57f687622b0878d66bfde5770ed9a97b613a683
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 9dda6433f5f16ec71b086f606927d9f27c83098b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091350"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430461"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI 视觉对象入门
 

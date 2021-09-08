@@ -9,16 +9,16 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: 98164c20af2a5d6ae7ccac43331a2876c23ccfb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7988f8b72a6621897c656e12595a3fe68665535
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500166"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429831"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>修正不符合条件的 Azure 自动化 State Configuration 服务器
 
-向 Azure 自动化 State Configuration 注册服务器时，配置模式设置为 `ApplyOnly`、`ApplyandMonitor` 或 `ApplyAndAutoCorrect`。 如果模式未设置为 `ApplyAndAutoCorrect`，则因任何原因偏离符合状态的服务器将保持在不符合条件的状态下，直到它们被手动更正。
+向 Azure 自动化 State Configuration 注册服务器时，配置模式设置为 `ApplyOnly`、`ApplyAndMonitor` 或 `ApplyAndAutoCorrect`。 如果模式未设置为 `ApplyAndAutoCorrect`，则因任何原因偏离符合状态的服务器将保持在不符合条件的状态下，直到它们被手动更正。
 
 Azure 计算提供了一项名为“Run 命令”的功能，客户可通过它在虚拟机中运行脚本。
 本文档提供了手动更正配置偏离情况时此功能的示例脚本。

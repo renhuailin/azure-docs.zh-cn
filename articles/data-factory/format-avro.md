@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jianleishen
-ms.openlocfilehash: 3ec0382328ad8a0651a1a5d5f291ad1f932a3af5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6a4e3f033583f70250e12702b948fcd30875fb65
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638886"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123250693"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure 数据工厂中的 Avro 格式
 

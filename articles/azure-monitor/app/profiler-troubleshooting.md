@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2c80362c3407f1404c6657997de89c2741264909
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4d8a3df98730b5bdcb6e32d3f3c51ad9d01bf3a
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026549"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867253"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
@@ -104,8 +104,8 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 如果 Profiler 是通过门户中的 [Application Insights 窗格](profiler.md)启用的，则它是由诊断服务站点扩展启用的。
 
 > [!NOTE]
-> Application Insights 探查器的无代码安装遵循 .NET Core 支持策略。
-> 有关支持的运行时的详细信息，请参阅 [.Net Core 支持策略](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
+> Application Insights Profiler 的无代码安装遵循 .NET Core 支持策略。
+> 若要详细了解支持的运行时，请参阅 [.Net Core 支持策略](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
 
 可以转到以下 url 来查看此扩展的“状态”页：`https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
 
@@ -126,7 +126,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
     
 ### <a name="manual-installation"></a>手动安装
 
-配置 Profiler 时，将对 Web 应用的设置进行更新。 如果你的环境有此要求，则可以手动应用更新。 例如，应用程序在适用于 PowerApps 的 Web 应用环境中运行。 若要手动应用更新，请执行以下操作：
+配置 Profiler 时，将对 Web 应用的设置进行更新。 如果你的环境有此要求，则可以手动应用更新。 例如，应用程序在适用于 Power Apps 的 Web 应用环境中运行。 若要手动应用更新，请执行以下操作：
 
 1. 在“Web 应用控制”窗格中，打开“设置” 。
 

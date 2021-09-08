@@ -1,17 +1,17 @@
 ---
-title: 使用 ARM 模板部署 Service Fabric 托管群集应用程序
-description: 使用 Azure 资源管理器模板将应用程序部署到 Azure Service Fabric 托管群集。
+title: 使用 Azure 资源管理器将应用程序部署到托管群集
+description: 了解如何使用 Azure 资源管理器在 Azure Service Fabric 托管群集上部署、升级或删除 Service Fabric 应用程序
 ms.topic: how-to
-ms.date: 5/10/2021
+ms.date: 8/23/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6a40dc23b0eeda4c680d0151b08cb1c8f1a84053
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: f2f2f47e9cdcef54be9c78513fbb57cd20ddde5f
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290141"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864774"
 ---
-# <a name="deploy-a-service-fabric-managed-cluster-application-using-arm-template"></a>使用 ARM 模板部署 Service Fabric 托管群集应用程序
+# <a name="manage-application-lifecycle-on-a-managed-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器管理托管群集上的应用程序生命周期
 
 有多个选项可用于在 Service Fabric 托管群集上部署 Azure Service Fabric 应用程序。 建议使用 Azure 资源管理器。 如果使用资源管理器，可以采用 JSON 描述应用程序和服务，然后将其部署到群集所在的同一资源管理器模板中。 不同于使用 PowerShell 或 Azure CLI 来部署和管理应用程序，如果使用资源管理器，则不必等待群集准备就绪；应用程序注册、预配和部署都可以在一个步骤中进行。 使用资源管理器是在群集中管理应用程序生命周期的最佳方式。 有关详细信息，请参阅[最佳做法：基础结构即代码](service-fabric-best-practices-infrastructure-as-code.md#service-fabric-resources)。
 
@@ -25,11 +25,11 @@ ms.locfileid: "114290141"
 
 > [!div class="checklist"]
 >
-> * 使用资源管理器部署应用程序资源。
-> * 使用资源管理器升级应用程序资源。
-> * 删除应用程序资源。
+> * 使用资源管理器部署 Service Fabric 应用程序资源。
+> * 使用资源管理器升级 Service Fabric 应用程序资源。
+> * 删除 Service Fabric 应用程序资源。
 
-## <a name="deploy-application-resources"></a>部署应用程序资源
+## <a name="deploy-service-fabric-application-resources"></a>部署 Service Fabric 应用程序资源
 
 可以使用资源管理器应用程序资源模型来部署应用程序及其服务，所需采用的概要步骤如下：
 1. 将应用程序代码打包。
@@ -38,7 +38,7 @@ ms.locfileid: "114290141"
 
 有关详细信息，请查看[将应用程序打包](service-fabric-package-apps.md#create-an-sfpkg)。
 
-然后，创建资源管理器模板，使用应用程序详细信息更新参数文件，并将模板部署到 Service Fabric 群集上。 [浏览示例](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/voting-sample-no-reverse-proxy/ARM-Managed-Cluster)。
+然后，创建资源管理器模板，使用应用程序详细信息更新参数文件，并将模板部署到 Service Fabric 托管群集上。 [浏览示例](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/voting-sample-no-reverse-proxy/ARM-Managed-Cluster)。
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -127,7 +127,7 @@ ms.locfileid: "114290141"
 }
 ```
 
-### <a name="deploy-the-application"></a>部署应用程序
+### <a name="deploy-the-service-fabric-application"></a>部署 Service Fabric 应用程序
 
 运行 **New-AzResourceGroupDeployment** cmdlet，以将应用程序部署到包含群集的资源组：
 
@@ -138,7 +138,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 ## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>使用资源管理器升级 Service Fabric 应用程序
 
 > [!IMPORTANT]
-> 必须从相应 ApplicationManifest.xml 文件的“DefaultServices”部分删除通过 ARM JSON 定义部署的任何服务。
+> 必须从相应 ApplicationManifest.xml 文件的“DefaultServices”部分删除通过 Azure 资源管理器 (ARM) 模板部署的任何服务。
 
 
 你可能会出于以下某一原因升级已部署到 Service Fabric 群集的应用程序：
@@ -164,9 +164,11 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
         "value": "1.0.1"
     },
     ```
-## <a name="delete-application-resources"></a>删除应用程序资源
+## <a name="delete-service-fabric-application-resources"></a>删除 Service Fabric 应用程序资源
+> [!NOTE]
+> 不应通过 Azure 资源管理器 (ARM) 模板删除应用程序，因为没有声明性的方法可以清理单项资源
 
-若要删除使用资源管理器中的应用程序资源模型部署的应用程序，请执行以下操作：
+删除使用资源管理器中的应用程序资源模型部署的 Service Fabric 应用程序：
 
 1. 使用 [Get-AzResource](/powershell/module/az.resources/get-azresource) cmdlet 获取应用程序的资源 ID：
 

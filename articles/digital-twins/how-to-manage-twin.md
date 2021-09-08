@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b670c244c502049cc9eb419aa6570ad40e5aafa7
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 0873d6f0bfff73fc0bdc44ce90b322af23d4df28
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114689934"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835731"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
@@ -167,7 +167,10 @@ ms.locfileid: "114689934"
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-若要更新对孪生和关系的调用，请使用 [JSON 修补程序](http://jsonpatch.com/)结构。 可使用 Azure .NET SDK 的 [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true) 创建修补程序。 示例如下。
+>[!NOTE]
+> 此示例演示 JSON 修补程序 `replace` 操作，该操作将替换现有属性的值。 有关可使用的 JSON 修补程序操作的完整列表，包括 `add` 和 `remove`，请参阅 [JSON 修补程序的操作](http://jsonpatch.com/#operations)。 
+
+使用 .NET SDK 更新代码项目中的孪生体时，可以使用 Azure .NET SDK 的 [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument?view=azure-dotnet&preserve-view=true) 创建 JSON 修补程序。 示例如下。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 

@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/04/2021
 ms.author: bagol
-ms.openlocfilehash: 525def5e69317597664b54bc68505ae3f19d228e
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: dc2c1b6ed2d40e7d1af82b3c62f378bfd046a94c
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179369"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254116"
 ---
 # <a name="migrate-to-azure-sentinel-from-an-existing-siem"></a>从现有 SIEM 迁移到 Azure Sentinel
 
@@ -182,7 +182,7 @@ ms.locfileid: "122179369"
 
     - 使用 [Syslog](connect-data-sources.md#syslog)、[通用事件格式 (CEF)](connect-data-sources.md#common-event-format-cef) 或 [REST API](connect-data-sources.md#rest-api-integration) 连接其他数据源。
 
-        有关详细信息，请参阅 [Azure Sentinel 合作伙伴数据连接器](partner-data-connectors.md)和 [Azure Sentinel 解决方案目录](sentinel-solutions-catalog.md)。
+        有关详细信息，请参阅 [Azure Sentinel 数据连接器参考](data-connectors-reference.md)和 [Azure Sentinel 解决方案目录](sentinel-solutions-catalog.md)。
 
 > [!TIP]
 > - 只是从免费数据源引入数据可能无法充分测试对你很重要的数据。 测试时，请考虑从免费和付费数据连接器引入有限的数据，使测试结果发挥最大的价值。

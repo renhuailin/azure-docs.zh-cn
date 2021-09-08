@@ -5,15 +5,15 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 06/25/2021
+ms.date: 08/24/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: a7035cff720b7eee4467f355a533a19f059c4baa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b64cf919c0197ccc8e7128a045db0eee27356c78
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014609"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123355261"
 ---
 | 资源 | 限制 |
 | --- | --- |
@@ -27,7 +27,7 @@ ms.locfileid: "122014609"
 | 每个策略的自定义 Web 应用程序防火墙规则数 | 100 |
 | 每个订阅的 Web 应用程序防火墙策略 | 100 |
 | Web 应用程序防火墙根据每个自定义规则匹配条件数 | 10 |
-| 每个匹配条件的 Web 应用防火墙 IP 地址范围数 | 600 |
+| 每个自定义规则的 Web 应用程序防火墙 IP 地址范围 | 600 |
 | 每个匹配条件的 Web 应用程序防火墙字符串匹配值数 | 10 |
 | Web 应用程序防火墙字符串匹配值长度 | 256 |
 | Web 应用程序防火墙 POST 正文参数名称长度 | 256 |
@@ -55,7 +55,7 @@ ms.locfileid: "122014609"
 | 单个缓存清除调用中的 URL | 100 | 100 |
 | 每个策略的自定义 Web 应用程序防火墙规则数 | 100 | 100 |
 | Web 应用程序防火墙根据每个自定义规则匹配条件数 | 10 | 10 |
-| 每个匹配条件的 Web 应用防火墙 IP 地址范围数 | 600 | 600 |
+| 每个自定义规则的 Web 应用程序防火墙 IP 地址范围 | 600 | 600 |
 | 每个匹配条件的 Web 应用程序防火墙字符串匹配值数 | 10 | 10 |
 | Web 应用程序防火墙字符串匹配值长度 | 256 | 256 |
 | Web 应用程序防火墙 POST 正文参数名称长度 | 256 | 256 |

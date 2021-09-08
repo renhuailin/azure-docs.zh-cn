@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 08/25/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.custom: devx-track-azurepowershell
 ms.subservice: blobs
-ms.openlocfilehash: bdafee650ae6162e3943120fc9a9b460fd9e698a
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: c033920b88f2863d34f43bf0affe4b9165995a3a
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206118"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258789"
 ---
 # <a name="rehydrate-an-archived-blob-to-an-online-tier"></a>将存档的 Blob 解冻到联机层
 
@@ -121,7 +121,7 @@ $ctx = (Get-AzStorageAccount `
 
 # Change the blob’s access tier to hot with standard priority.
 $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
-$blob.ICloudBlob.SetStandardBlobTier("Hot", "Standard")
+$blob.BlobClient.SetAccessTier("Hot", $null, "High")
 ```
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -129,16 +129,20 @@ $blob.ICloudBlob.SetStandardBlobTier("Hot", "Standard")
 若要使用 Azure CLI 将 Blob 层从存档层更改为热层或冷层，请调用 [az storage blob set-tier](/cli/azure/storage/blob#az_storage_blob_set_tier) 命令。 请记得将尖括号中的占位符替换为你自己的值：
 
 ```azurecli
-az storage blob set-tier /
-    --container-name <container> /
-    --name <archived-blob> /
-    --tier Hot /
-    --account-name <account-name> /
-    --rehydrate-priority High /
+az storage blob set-tier \
+    --container-name <container> \
+    --name <archived-blob> \
+    --tier Hot \
+    --account-name <account-name> \
+    --rehydrate-priority High \
     --auth-mode login
 ```
 
 ---
+
+## <a name="rehydrate-a-large-number-of-blobs"></a>解除冻结大量 blob
+
+要一次解除冻结大量 blob，请调用 [Blob 批处理](/rest/api/storageservices/blob-batch) 操作，将[设置 Blob 层](/rest/api/storageservices/set-blob-tier)作为批量操作调用。 有关演示如何执行批处理操作的代码示例，请参阅 [AzBulkSetBlobTier](/samples/azure/azbulksetblobtier/azbulksetblobtier/)。
 
 ## <a name="check-the-status-of-a-rehydration-operation"></a>查看解除冻结操作的状态
 
@@ -158,12 +162,12 @@ az storage blob set-tier /
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 查看挂起的解除冻结操作的状态和优先级，请调用 [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob) 命令，并查看 Blob 的 RehydrationStatus 和 RehydratePriority 属性。 如果解除冻结是一个复制操作，请在目标 Blob 上查看上述属性。 请记得将尖括号中的占位符替换为你自己的值：
+若要使用 PowerShell 查看挂起的解除冻结操作的状态和优先级，请调用 [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob) 命令，并查看 Blob 的 ArchiveStatus 和 RehydratePriority 属性 。 如果解除冻结是一个复制操作，请在目标 Blob 上查看上述属性。 请记得将尖括号中的占位符替换为你自己的值：
 
 ```powershell
 $rehydratingBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
+$rehydratingBlob.BlobProperties.ArchiveStatus
 $rehydratingBlob.BlobProperties.RehydratePriority
-$rehydratingBlob.ICloudBlob.Properties.RehydrationStatus
 ```
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)

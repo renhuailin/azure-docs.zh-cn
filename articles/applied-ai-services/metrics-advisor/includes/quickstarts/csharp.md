@@ -9,12 +9,12 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 07/07/2021
 ms.author: mbullwin
-ms.openlocfilehash: 02aa150960436317a8307998eb91883e906249ed
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: 9668c25c4674505df30877f0a303614065fac94a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114341431"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123453698"
 ---
 [参考文档](/dotnet/api/overview/azure/ai.metricsadvisor-readme-pre) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/src) | [包 (NuGet)](https://www.nuget.org/packages/Azure.AI.MetricsAdvisor) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/metricsadvisor/Azure.AI.MetricsAdvisor/samples/README.md)
 
@@ -178,7 +178,14 @@ var dataFeedSchema = new DataFeedSchema(dataFeedMetrics)
 var ingestionStartTime = DateTimeOffset.Parse("2020-01-01T00:00:00Z");
 var dataFeedIngestionSettings = new DataFeedIngestionSettings(ingestionStartTime);
 
-var dataFeed = new DataFeed(dataFeedName, dataFeedSource, dataFeedGranularity, dataFeedSchema, dataFeedIngestionSettings);
+var dataFeed = new DataFeed()
+{
+    Name = dataFeedName,
+    DataSource = dataFeedSource,
+    Granularity = dataFeedGranularity,
+    Schema = dataFeedSchema,
+    IngestionSettings = dataFeedIngestionSettings,
+};
 
 Response<string> response = await adminClient.CreateDataFeedAsync(dataFeed);
 

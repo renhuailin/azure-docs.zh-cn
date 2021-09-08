@@ -1,14 +1,14 @@
 ---
 title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
-ms.date: 08/11/2021
+ms.date: 08/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7d23a8958ebfa90658ec5769b077f07091eff89d
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 1f1eef5a70187ed883da9f535cc2f2915e3bf6d6
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861047"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123104647"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -32,6 +32,7 @@ Resource Graph 为其存储的有关 Azure 资源管理器资源类型及其属�
 |ResourceContainers |是 |包括管理组 (`Microsoft.Management/managementGroups`)、订阅 (`Microsoft.Resources/subscriptions`) 和资源组 (`Microsoft.Resources/subscriptions/resourcegroups`) 资源类型和数据。 |
 |AdvisorResources |是（预览版） |包括与 `Microsoft.Advisor` 相关的资源。 |
 |AlertsManagementResources |是（预览版） |包括与 `Microsoft.AlertsManagement` 相关的资源。 |
+|DesktopVirtualizationResources |是 |包括与 `Microsoft.DesktopVirtualization` 相关的资源。 |
 |ExtendedLocationResources |否 |包括与 `Microsoft.ExtendedLocation` 相关的资源。 |
 |GuestConfigurationResources |否 |包括与 `Microsoft.GuestConfiguration` 相关的资源。 |
 |HealthResources|是 |包括与 `Microsoft.ResourceHealth/availabilitystatuses` 相关的资源。 |

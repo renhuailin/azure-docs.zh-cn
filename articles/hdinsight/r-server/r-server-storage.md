@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/02/2020
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2ed4e27fb680c14ed5bbae0585d89152c1999b97
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 56b7181cafc9a17c2fdb468e1a47d664499dcdcc
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112295860"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252911"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>适用于 ML Services on HDInsight 的 Azure 存储解决方案
 
@@ -20,9 +20,9 @@ ML Services on HDInsight 可使用不同的存储解决方案来保存数据、�
 
 - [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)
 - [Azure Data Lake Storage Gen1](https://azure.microsoft.com/services/storage/data-lake-storage/)
-- [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)
+- [Azure 文件](https://azure.microsoft.com/services/storage/files/)
 
-还可以使用 HDInsight 群集访问多个 Azure 存储帐户或容器。 Azure 文件存储是可在边缘节点上使用的一个方便的数据存储选项，通过它可将 Azure 存储文件共享装载到其他位置，例如 Linux 文件系统。 任何具有受支持操作系统（如 Windows 或 Linux）的系统，都可以装载和使用 Azure 文件共享。
+还可以使用 HDInsight 群集访问多个 Azure 存储帐户或容器。 Azure 文件存储是可在边缘节点上使用的一个方便的数据存储选项，通过它可将 Azure 文件共享装载到其他位置，例如 Linux 文件系统。 任何具有受支持操作系统（如 Windows 或 Linux）的系统，都可以装载和使用 Azure 文件共享。
 
 在 HDInsight 中创建 Apache Hadoop 群集时，指定 Azure Blob 存储帐户或 Data Lake Storage Gen1 。 该帐户中的某个特定存储容器可为你所创建的群集保存文件系统（例如 Hadoop 分布式文件系统）。 有关详细信息及指南，请参阅：
 
@@ -164,14 +164,14 @@ hadoop fs -copyFromLocal /usr/lib64/R Server-7.4.1/library/RevoScaleR/SampleData
 hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 ```
 
-## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>将 Azure 文件存储用于 ML Services on HDInsight
+## <a name="use-azure-files-with-ml-services-on-hdinsight"></a>将 Azure 文件存储用于 ML Services on HDInsight
 
 还有一个可在边缘节点上使用的便利数据存储选项，称之为 [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)。 使用该选项可将 Azure 存储的文件共享装载到 Linux 文件系统。 对比 HDFS，如果可以在边缘节点上使用本机文件系统，则存储数据文件、R 脚本以及随后可能需要的结果对象将更方便。
 
 使用 Azure 文件的主要好处之一是，装有受支持 OS（例如 Windows 或 Linux）的系统都可以装载和使用文件共享。 例如，自己或者团队成员拥有的另一个 HDInsight 群集、Azure VM 甚至本地系统均可使用 Azure 文件。 有关详细信息，请参阅：
 
-- [如何配合使用 Azure 文件存储与 Linux ](../../storage/files/storage-how-to-use-files-linux.md)
-- [如何配合使用 Azure 文件存储与 Windows ](../../storage/files/storage-dotnet-how-to-use-files.md)
+- [如何通过 Linux 使用 Azure 文件](../../storage/files/storage-how-to-use-files-linux.md)
+- [如何在 Windows 上使用 Azure 文件存储](../../storage/files/storage-dotnet-how-to-use-files.md)
 
 ## <a name="next-steps"></a>后续步骤
 

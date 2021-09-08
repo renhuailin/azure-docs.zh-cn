@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/21/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 2793cd0e3b2d43a2a227cd170d1173c536b41098
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9441cb178769b7d8cad6e60d0bf411c4c38710c5
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725416"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473452"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联机备份和按需数据还原
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -24,9 +24,9 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 * 连续备份模式：创建 Azure Cosmos DB 帐户时选择此模式。 在此模式下，可在过去 30 天内还原到任何时间点。 如要了解详细信息，请参阅[连续备份模式简介](continuous-backup-restore-introduction.md)，通过 [Azure 门户](provision-account-continuous-backup.md#provision-portal)、[PowerShell](provision-account-continuous-backup.md#provision-powershell)、[CLI](provision-account-continuous-backup.md#provision-cli) 或 [Azure 资源管理器](provision-account-continuous-backup.md#provision-arm-template)预配连续备份。
 
   > [!NOTE]
-  > 如果为新账户配置连续备份，则可以通过 Azure 门户、PowerShell 或 CLI 进行自助式还原。 如果帐户配置为连续模式，则无法将其切换回定期模式。 当前配置为定期备份模式的现有帐户不能更改为连续模式。  
+  > 如果为新账户配置连续备份，则可以通过 Azure 门户、PowerShell 或 CLI 进行自助式还原。 如果帐户配置为连续模式，则无法将其切换回定期模式。
 
-对于已启用 Azure Synapse Link 的帐户，分析存储数据不包含在备份和还原中。 启用 Synapse Link 后，Azure Cosmos DB 将继续按计划的备份间隔自动对事务性存储中的数据执行备份。 目前不支持自动备份和还原分析存储中的数据。
+对于启用了 Azure Synapse Link 的帐户，备份和还原中不包含分析存储数据。 启用 Synapse Link 后，Azure Cosmos DB 将继续按计划的备份间隔自动备份事务存储中的数据。 目前不支持自动备份和还原分析存储中的数据。
 
 ## <a name="next-steps"></a>后续步骤
 

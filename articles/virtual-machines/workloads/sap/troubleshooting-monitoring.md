@@ -16,12 +16,12 @@ ms.author: madhukan
 ms.custom:
 - H1Hack27Feb2017
 - contperf-fy21q4
-ms.openlocfilehash: 3c77fe23b7ce058f31a216c5991b7129c3ac99fe
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 4d0977cd408c0a8fdcff16ad01c4c72203e72c40
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579821"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969705"
 ---
 # <a name="monitor-sap-hana-large-instances-on-azure"></a>监视 Azure 上的 SAP HANA（大型实例）
 
@@ -75,7 +75,7 @@ tar  -czvf health_check_logs.tar.gz /var/log/health_check
 
 ## <a name="azure-monitor-for-sap-solutions"></a>适用于 SAP 的 Azure Monitor 解决方案
 
-你可以使用 Azure Monitor for SAP Solutions 来监视上面列出的所有资源及更多内容。 Azure Monitor for SAP Solutions 是 Azure 原生的。 你可以使用它将 Azure 基础结构和数据库中的数据收集到一个位置，并以可视方式关联数据，从而更快地进行故障排除。 有关详细信息，请参阅 [Azure Monitor for SAP Solutions](../../../virtual-machines/workloads/sap/azure-monitor-overview.md)。
+你可以使用 Azure Monitor for SAP Solutions 来监视上面列出的所有资源及更多内容。 Azure Monitor for SAP Solutions 是 Azure 原生的。 你可以使用它将 Azure 基础结构和数据库中的数据收集到一个位置，并以可视方式关联数据，从而更快地进行故障排除。 有关详细信息，请参阅[监视 Azure 上的 SAP](../../../virtual-machines/workloads/sap/monitor-sap-on-azure.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

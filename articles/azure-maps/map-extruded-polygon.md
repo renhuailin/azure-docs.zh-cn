@@ -6,15 +6,13 @@ ms.author: v-stharr
 ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 19675a92101ed1a13b07bc1a4039701cd029a020
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a3e357395cf75456545dfa77414c901aaebc06c0
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044079"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432623"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>向地图中添加多边形挤压层
 
@@ -29,16 +27,16 @@ ms.locfileid: "102044079"
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="挤压多边形" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="挤压多边形" src="https://codepen.io/azuremaps/embed/wvvBpvE?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>挤压多边形</a>。</iframe>
 
 ## <a name="add-data-driven-polygons"></a>添加数据驱动多边形
 
-可以使用多边形挤压层来呈现等值线图地图。 将挤压层的 `height` 和 `fillColor` 属性设置为 `Polygon` 和 `MultiPolygon` 特征几何形状中统计变量的度量。 下面的代码示例根据状态的人口密度度量值显示美国的挤压等值线图地图。
+可以使用多边形挤压层来呈现分级统计图。 将挤压层的 `height` 和 `fillColor` 属性设置为 `Polygon` 和 `MultiPolygon` 特征几何形状中统计变量的度量。 下面的代码示例根据状态的人口密度度量值显示美国的挤压等值线图地图。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="挤压的等值线图映射" src="https://codepen.io/azuremaps/embed/eYYYNox?height=265&theme-id=0&default-tab=result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="挤压的等值线图映射" src="https://codepen.io/azuremaps/embed/eYYYNox?height=265&theme-id=0&default-tab=result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 请参阅在 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps(<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/eYYYNox'>挤压等值线图地图</a>。
 </iframe>
 
@@ -64,7 +62,7 @@ Azure Maps Web SDK 在后台将这些 `Point` 特征转换为 `Polygon` 特征�
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="无人机空域多边形" src="https://codepen.io/azuremaps/embed/zYYYrxo?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="无人机空域多边形" src="https://codepen.io/azuremaps/embed/zYYYrxo?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/zYYYrxo'>无人机空域多边形</a>。
 </iframe>
 
@@ -74,7 +72,7 @@ Azure Maps Web SDK 在后台将这些 `Point` 特征转换为 `Polygon` 特征�
 
 <br/>
 
-<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>PoogBRJ</a>。
+<iframe height='700' scrolling='no' title='PoogBRJ' src='//codepen.io/azuremaps/embed/PoogBRJ/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/PoogBRJ/'>PoogBRJ</a>。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤

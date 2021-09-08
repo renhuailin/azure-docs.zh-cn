@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/04/2019
+ms.date: 08/21/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 397b55bccde5781de5b9e53922e31281b3ec855c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ee3ff6fc063de5eebd4a7cc300fdc0a5ceeba560
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749148"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123038378"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>向应用程序授予租户范围的管理员许可
 
@@ -46,7 +46,10 @@ ms.locfileid: "121749148"
 1. 使用允许授予管理员许可的角色登录到 [Azure 门户](https://portal.azure.com)（请参阅[先决条件](#prerequisites)）。
 2. 依次选择“Azure Active Directory”、“企业应用程序”。
 3. 选择要向其授予租户范围的管理员许可的应用程序。
-4. 选择“权限”，然后单击“授予管理员许可”。
+4. 选择“权限”，然后单击“授予管理员许可”。 在本例中，我们使用 10,000 ft Plans 应用程序。
+
+   :::image type="content" source="media/grant-tenant-wide-admin-consent/grant-tenant-wide-admin-consent.png" alt-text="屏幕截图显示如何授予租户范围的管理员同意。":::
+
 5. 仔细查看应用程序所需的权限。
 6. 如果你同意应用程序所需的权限，请授予许可。 否则，请单击“取消”或关闭窗口。
 
