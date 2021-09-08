@@ -3,12 +3,12 @@ title: Azure 事件网格 - 对已传递事件设置自定义标头
 description: 介绍如何对已传递事件设置自定义标头（或传递属性）。
 ms.topic: conceptual
 ms.date: 08/13/2021
-ms.openlocfilehash: de16c3b4981dc02a54a68269d4eef743d9f48c4b
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 3600d74d91ad218f3fcab99002762d605fba3139
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069499"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831348"
 ---
 # <a name="custom-delivery-properties"></a>自定义传递属性
 通过事件订阅，可以设置已传递事件中包含的 HTTP 头。 使用此功能，可设置目标所需的自定义标头。 创建事件订阅时，最多可以设置 10 个标头。 每个标头值不应大于 4096 (4K) 字节。
@@ -35,7 +35,7 @@ ms.locfileid: "122069499"
 :::image type="content" source="./media/delivery-properties/dynamic-header-property.png" alt-text="传递属性 - 动态":::
 
 ## <a name="use-azure-cli"></a>使用 Azure CLI
-在使用 `az eventgrid event-subscription create` 命令创建订阅时请使用 `--delivery-attribute-mapping` 参数。 下面是一个示例：
+在使用 `az eventgrid event-subscription create` 命令创建订阅时请使用 `--delivery-attribute-mapping` 参数。 以下是一个示例：
 
 ```azurecli
 az eventgrid event-subscription create -n es1 \
@@ -62,11 +62,8 @@ az eventgrid event-subscription create -n es1 \
 传出请求现在应包含在事件订阅上设置的标头：
 
 ```console
-GET /home.html HTTP/1.1
-
+POST /home.html HTTP/1.1
 Host: acme.com
-
-User-Agent: <user-agent goes here>
 
 Authorization: BEARER SlAV32hkKG...
 ```
@@ -75,20 +72,31 @@ Authorization: BEARER SlAV32hkKG...
 > 如果目标是 Webhook，定义授权标头是一个明智的选择。 它不应用于[使用资源 ID 订阅的函数](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate#azurefunctioneventsubscriptiondestination)、服务总线、事件中心和混合连接，因为这些目标在与事件网格一起使用时支持它们自己的身份验证方案。
 
 ### <a name="service-bus-example"></a>服务总线示例
-Azure 服务总线支持使用 [BrokerProperties HTTP 标头](/rest/api/servicebus/message-headers-and-properties#message-headers)在发送单个消息时定义消息属性。 `BrokerProperties` 标头的值应以 JSON 格式提供。 例如，如果在将单个消息发送到服务总线时需要设置消息属性，请按以下方式设置标头：
+Azure 服务总线支持在发送单个消息时使用以下消息属性。 
 
-| 标头名称 | 标头类型 | 标头值 |
-| :-- | :-- | :-- |
-|`BrokerProperties` | 静态     | `BrokerProperties:  { "MessageId": "{701332E1-B37B-4D29-AA0A-E367906C206E}", "TimeToLive" : 90}` |
+| 标头名称 | 标头类型 |
+| :-- | :-- |
+| `MessageId` | 动态 |  
+| `PartitionKey` | 静态或动态 |
+| `SessionId` | 静态或动态 |
+| `CorrelationId` | 静态或动态 |
+| `Label` | 静态或动态 |
+| `ReplyTo` | 静态或动态 | 
+| `ReplyToSessionId` | 静态或动态 |
+| `To` |静态或动态 |
+| `ViaPartitionKey` | 静态或动态 |
 
+> [!NOTE]
+> - `MessageId` 的默认值是事件网格事件的内部 ID。 你可以替代它。 例如，`data.field`。
+> - 只能设置 `SessionId` 或 `MessageId`。 
 
 ### <a name="event-hubs-example"></a>事件中心示例
 
-如果需要将事件发布到某个事件中心内的特定分区，请在事件订阅上定义 [BrokerProperties HTTP 标头](/rest/api/eventhub/event-hubs-runtime-rest#common-headers)，以指定用于标识目标事件中心分区的分区键。
+如果需要将事件发布到某个事件中心内的特定分区，请在事件订阅上设置 `ParitionKey` 属性，以指定用于标识目标事件中心分区的分区键。
 
-| 标头名称 | 标头类型 | 标头值                                  |
-| :-- | :-- | :-- |
-|`BrokerProperties` | 静态 | `BrokerProperties: {"PartitionKey": "0000000000-0000-0000-0000-000000000000000"}`  |
+| 标头名称 | 标头类型 |
+| :-- | :-- |
+|`PartitionKey` | 静态 |
 
 
 ### <a name="configure-time-to-live-on-outgoing-events-to-azure-storage-queues"></a>为传出到 Azure 存储队列的事件配置生存时间

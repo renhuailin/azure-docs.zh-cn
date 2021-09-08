@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Active Directory B2C 构建基块在 Web 应用程序中启用身份验证
-description: 用于在 ASP.NET Web 应用中进行用户登录和注册操作的 Azure Active Directory B2C 构建基块。
+title: 使用 Azure Active Directory B2C 构建基块在 Web 应用中启用身份验证
+description: 本文讨论如何在 ASP.NET Web 应用中使用 Azure Active Directory B2C 的生成块来执行用户登录和注册。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,37 +11,39 @@ ms.date: 06/11/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 2a89f2c5179e9280e09741d8fc524406698c31e0
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 0fc28097220918f8d9cde8f44c156a5de82a5e50
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071526"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469655"
 ---
-# <a name="enable-authentication-in-your-own-web-application-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 在你自己的 Web 应用程序中启用身份验证
+# <a name="enable-authentication-in-your-own-web-app-by-using-azure-ad-b2c"></a>使用 Azure AD B2C 在自己的 Web 应用中启用身份验证
 
-本文演示如何将 Azure Active Directory B2C (Azure AD B2C) 身份验证添加到你自己的 ASP.NET Web 应用程序。 了解如何通过使用 [OpenID Connect](openid-connect.md) 协议的 ASP.NET Core 中间件创建 ASP.NET Core Web 应用程序。 将本文与[在示例 Web 应用程序中配置身份验证](configure-authentication-sample-web-app.md)结合使用，用你自己的 Web 应用来替换示例 Web 应用。
+本文演示如何将 Azure Active Directory B2C (Azure AD B2C) 身份验证添加到你自己的 ASP.NET Web 应用程序。 了解如何通过使用 [OpenID Connect](openid-connect.md) 协议的 ASP.NET Core 中间件创建 ASP.NET Core Web 应用程序。 
+
+将本文与[在示例 Web 应用中配置身份验证](configure-authentication-sample-web-app.md)结合使用，用你自己的 Web 应用来替换示例 Web 应用。
 
 ## <a name="prerequisites"></a>先决条件
 
-查看[在示例 Web 应用程序中配置身份验证](configure-authentication-sample-web-app.md)中的先决条件和集成步骤。
+要查看先决条件和集成说明，请参阅[在示例 Web 应用程序中配置身份验证](configure-authentication-sample-web-app.md)。
 
-## <a name="create-a-web-app-project"></a>创建 Web 应用项目
+## <a name="step-1-create-a-web-app-project"></a>步骤 1：创建 Web 应用项目
 
-可以使用现有 ASP.NET MVC Web 应用项目或创建新项目。 若要创建新项目，请打开命令行界面，并输入以下命令：
+可以使用现有 ASP.NET 模型视图控制器 (MVC) Web 应用项目或创建新项目。 若要创建新项目，请打开命令行界面，然后输入以下命令：
 
 ```dotnetcli
 dotnet new mvc -o mywebapp
 ```
 
-上述命令：
+上述命令执行以下操作：
 
 * 创建新 MVC Web 应用。  
 * `-o mywebapp` 参数使用应用的源文件创建名为 mywebapp 的目录。
 
-## <a name="add-the-authentication-libraries"></a>添加身份验证库
+## <a name="step-2-add-the-authentication-libraries"></a>步骤 2：添加身份验证库
 
-首先，添加 Microsoft 标识 Web 库。 这是一组 ASP.NET Core 库，简化了为 Web 应用添加 Azure AD B2C 身份验证和授权支持的过程。 Microsoft 标识 Web 库使用基于 Cookie 的身份验证设置身份验证管道。 它负责发送和接收 HTTP 身份验证消息、令牌验证、声明提取等。
+添加 Microsoft Identity Web 库，这是一组 ASP.NET Core 库，简化了为 Web 应用添加 Azure AD B2C 身份验证和授权支持的过程。 Microsoft 标识 Web 库使用基于 Cookie 的身份验证设置身份验证管道。 它负责发送和接收 HTTP 身份验证消息、令牌验证、声明提取等。
 
 若要添加 Microsoft 标识 Web 库，请运行以下命令来安装包： 
 
@@ -62,11 +64,11 @@ Install-Package Microsoft.Identity.Web.UI
 ---
 
 
-## <a name="initiate-the-authentication-libraries"></a>启动身份验证库
+## <a name="step-3-initiate-the-authentication-libraries"></a>步骤 3：启动身份验证库
 
 Microsoft 标识 Web 中间件使用在托管进程启动时运行的启动类。 在此步骤中，添加启动身份验证库所需的代码。
 
-打开 `Startup.cs`，在类的开头添加以下 `using` 声明：
+打开 Startup.cs，然后在类的开头添加以下 `using` 声明：
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -77,7 +79,7 @@ using Microsoft.Identity.Web.UI;
 
 由于 Microsoft 标识 Web 使用基于 Cookie 的身份验证来保护 Web 应用，因此以下代码将设置 SameSite Cookie 设置。 然后，它读取 `AzureAdB2C` 应用程序设置，并启动中间件控制器及其视图。 
 
-将 `ConfigureServices(IServiceCollection services)` 函数替换为以下代码片段。 
+将 `ConfigureServices(IServiceCollection services)` 函数替换为以下代码片段： 
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -105,7 +107,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-以下代码添加 Cookie 策略，并使用身份验证模型。 将 `Configure` 函数替换为以下代码片段。 
+以下代码添加 Cookie 策略，并使用身份验证模型。 将 `Configure` 函数替换为以下代码片段： 
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -143,11 +145,11 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 };
 ```
 
-## <a name="add-the-ui-elements"></a>添加 UI 元素
+## <a name="step-4-add-the-ui-elements"></a>步骤 4：添加 UI 元素
 
 若要添加用户界面元素，请使用分部视图，其中包含用于检查用户是否已登录的逻辑。 如果用户未登录，分部视图将呈现登录按钮。 如果用户已登录，则会显示用户的显示名称和注销按钮。
   
-使用以下代码片段在 `Views/Shared` 文件夹中创建新文件 `_LoginPartial.cshtml`：
+使用以下代码段在 /Views/Shared 文件夹中创建新文件 \_LoginPartial.cshtml ：
 
 ```razor
 @using System.Security.Principal
@@ -181,12 +183,12 @@ else
 }
 ```
 
-修改 `Views\Shared\_Layout.cshtml` 以包含你添加的 _LoginPartial.cshtml 文件。 _Layout.cshtml 文件是一个通用布局，可在页面间切换时为用户提供一致体验。 该布局包括常见的用户界面元素，如应用的页眉和页脚。
+修改 /Views/Shared_Layout.cshtml 文件以包含你添加的 _LoginPartial.cshtml 文件 。 _Layout.cshtml 文件是一个通用布局，可为用户提供一致的页面浏览体验。 该布局包括常见的用户界面元素，如应用的页眉和页脚。
 
 > [!NOTE]
-> 根据 .NET Core 版本以及是否要将登录添加到现有应用，UI 元素的外观可能会有所不同。 如果是这样，请确保在页面布局的适当位置包含 _LoginPartial。
+> 根据你运行的 .NET Core 版本以及是否要将登录添加到现有应用，UI 元素的外观可能会有所不同。 如果是这样，请确保在页面布局的适当位置包含 _LoginPartial。
 
-打开 /Views/Shared/_Layout.cshtml 并添加以下 `div` 元素。
+打开 /Views/Shared/_Layout.cshtml 文件，然后添加以下 `div` 元素。
 
 ```razor
 <div class="navbar-collapse collapse">
@@ -208,9 +210,9 @@ else
 
 前面的 Razor 代码包含指向将在后续步骤中创建的 `Claims` 操作。
 
-## <a name="add-the-claims-view"></a>添加声明视图
+## <a name="step-5-add-the-claims-view"></a>步骤 5：添加声明视图
 
-若要查看 `Views/Home` 文件夹下的 ID 令牌声明，请添加 `Claims.cshtml` 视图。
+要查看 ID 令牌声明，请在 /Views/Home 文件夹下添加 Claims.cshtml 视图 。
 
 ```razor
 @using System.Security.Claims
@@ -236,9 +238,9 @@ else
 </table>
 ```
 
-在此步骤中，添加 `Claims` 操作，将 Claims.cshtml 视图链接到主控制器。 它使用 `[Authorize]` 属性，该属性将“Claims”操作的访问权限限制为经身份验证的用户。  
+在此步骤中，添加 `Claims` 操作，将 Claims.cshtml 视图链接到主控制器。 `Claims` 操作使用 `Authorize` 属性，该属性将对该操作的访问权限限制为经过身份验证的用户。  
 
-在 `/Controllers/HomeController.cs` 控制器中，添加以下操作。
+在 /Controllers/HomeController.cs 中添加以下操作：
 
 ```csharp
 [Authorize]
@@ -248,15 +250,15 @@ public IActionResult Claims()
 }
 ```
 
-在类的开头添加以下 `using` 声明：
+在类的开头，添加以下 `using` 声明：
 
 ```csharp
 using Microsoft.AspNetCore.Authorization;
 ```
 
-## <a name="add-the-app-settings"></a>添加应用设置
+## <a name="step-6-add-the-app-settings"></a>步骤 6：添加应用设置
 
-Azure AD B2C 标识提供者设置存储在 `appsettings.json` 文件中。 打开 appsettings.json，并添加以下设置：
+Azure AD B2C 标识提供者设置存储在 appsettings.json 文件中。 打开 appsettings.json，然后添加以下设置：
 
 ```JSon
 "AzureAdB2C": {
@@ -268,22 +270,21 @@ Azure AD B2C 标识提供者设置存储在 `appsettings.json` 文件中。 打�
 }
 ```
 
-[在示例 Web 应用程序中配置身份验证](configure-authentication-sample-web-app.md)一文介绍了所需信息。 使用以下设置：
+[在示例 Web 应用中配置身份验证](configure-authentication-sample-web-app.md)一文介绍了所需信息。 使用以下设置：
 
-* 实例 - 将 `<your-tenant-name>` 替换为 Azure AD B2C [租户名称](tenant-management.md#get-your-tenant-name)的第一部分。 例如 `https://contoso.b2clogin.com`。
-* 域 - 将 `<your-b2c-domain>` 替换为 Azure AD B2C 完整[租户名称](tenant-management.md#get-your-tenant-name)。 例如 `contoso.onmicrosoft.com`。
-* 客户端 ID - 将 `<web-app-application-id>` 替换为[步骤 2](configure-authentication-sample-web-app.md#step-2-register-a-web-application) 中的应用程序 ID。
-* 策略名称 - 将 `<your-sign-up-in-policy>` 替换为在[步骤 1](configure-authentication-sample-web-app.md#step-1-configure-your-user-flow) 中创建的用户流。
+* **实例**：将 `<your-tenant-name>` 替换为 Azure AD B2C [租户名称](tenant-management.md#get-your-tenant-name)的第一部分（例如 `https://contoso.b2clogin.com`）。
+* **域**：将 `<your-b2c-domain>` 替换为 Azure AD B2C 完整[租户名称](tenant-management.md#get-your-tenant-name)（例如 `contoso.onmicrosoft.com`）。
+* **客户端 ID**：将 `<web-app-application-id>` 替换为[步骤 2](configure-authentication-sample-web-app.md#step-2-register-a-web-application) 中的应用程序 ID。
+* **策略名称**：将 `<your-sign-up-in-policy>` 替换为在[步骤 1](configure-authentication-sample-web-app.md#step-1-configure-your-user-flow) 中创建的用户流。
 
-## <a name="run-your-application"></a>运行应用程序
+## <a name="step-7-run-your-application"></a>步骤 7：运行应用程序
 
 1. 生成并运行该项目。
-1. 浏览到 https://localhost:5001。 
-1. 选择“登录/注册”。
+1. 转到  `https://localhost:5001` 。 
+1. 选择“注册/登录”。
 1. 完成注册或登录过程。
 
-成功进行身份验证后，导航栏中会显示显示名称。 若要查看 Azure AD B2C 令牌返回给应用的声明，请选择“声明”。
+成功进行身份验证后，导航栏中会显示显示名称。 若要查看 Azure AD B2C 令牌返回到应用的声明，请选择“声明”。
 
 ## <a name="next-steps"></a>后续步骤
-
-* 了解如何[自定义和增强 Web 应用的 Azure AD B2C 身份验证体验](enable-authentication-web-application-options.md)
+* 了解如何[自定义和增强 Web 应用的 Azure AD B2C 身份验证体验](enable-authentication-web-application-options.md).

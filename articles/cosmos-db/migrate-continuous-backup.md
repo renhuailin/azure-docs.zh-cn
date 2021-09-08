@@ -4,16 +4,16 @@ description: Azure Cosmos DB 当前支持从周期模式单向迁移到连续模
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 08/17/2021
+ms.date: 08/26/2021
 ms.author: sngun
 ms.topic: how-to
 ms.reviewer: sngun
-ms.openlocfilehash: 286caa42fd095a5a273c164d860154e88bc38748
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: f9708a9287ee8ff40de6044249e35ad26b938316
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397389"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039301"
 ---
 # <a name="migrate-an-azure-cosmos-db-account-from-periodic-to-continuous-backup-mode"></a>将 Azure Cosmos DB 帐户从周期备份模式迁移到连续备份模式
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "122397389"
 >
 > * 如果帐户的类型为 SQL API 或是 API for MongoDB。
 > * 如果帐户有单个写入区域。
-> * 如果帐户未启用客户托管密钥 (CMK)。
+> * 如果帐户未启用客户管理的密钥 (CMK)。
 > * 如果帐户未启用分析存储。
 
 ## <a name="permissions"></a>权限
@@ -148,10 +148,10 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 
 可以在迁移完成后还原帐户。 如果迁移在太平洋标准时间下午 1:00 完成，则可以从太平洋标准时间下午 1:00 开始执行时间点还原。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 #### <a name="does-the-migration-only-happen-at-the-account-level"></a>迁移是否只发生在帐户级别？
-能。
+是的。
 
 #### <a name="which-accounts-can-be-targeted-for-backup-migration"></a>哪些帐户可以作为备份迁移的目标？
 目前，使用单一写入区域的 SQL API 和 API for MongoDB 帐户，这些帐户已经在整个支持迁移中共享、预配或自动缩放预配。
@@ -197,6 +197,10 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 
 * [带有时间点还原的连续备份模式简介。](continuous-backup-restore-introduction.md)
 
-* [连续备份模式资源模型。](continuous-backup-restore-resource-model.md)
+* [连续备份模式资源模型](continuous-backup-restore-resource-model.md)。
 
 * 使用 [Azure 门户](restore-account-continuous-backup.md#restore-account-portal)、[PowerShell](restore-account-continuous-backup.md#restore-account-powershell)、[CLI](restore-account-continuous-backup.md#restore-account-cli) 或 [Azure 资源管理器](restore-account-continuous-backup.md#restore-arm-template)还原帐户。
+
+正在尝试为迁移到 Azure Cosmos DB 进行容量计划？
+   * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+   * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

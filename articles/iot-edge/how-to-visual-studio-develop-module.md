@@ -5,15 +5,15 @@ services: iot-edge
 author: kgremban
 manager: lizross
 ms.author: kgremban
-ms.date: 07/19/2021
+ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 69ac8ca51fb4bf418af3569e2d294053c1956134
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: e7ded6eb8b3e8ee44594e75eb22b920c4e0649b6
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447351"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037572"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio 2019 开发和调试适用于 Azure IoT Edge 的模块
 
@@ -48,7 +48,7 @@ Visual Studio 2019 准备就绪后，还需要以下工具和组件：
 
 * 在开发计算机上下载并安装 [Docker 社区版](https://docs.docker.com/install/)，以生成和运行模块映像。 将 Docker CE 设置为在 Linux 容器模式或 Windows 容器模式下运行，具体取决于待开发模块的类型。
 
-* 设置本地开发环境，通过安装 [Azure IoT EdgeHub 开发工具](https://pypi.org/project/iotedgehubdev/)，调试、运行和测试 IoT Edge 解决方案。 请安装 [Python (2.7/3.6+) 和 Pip](https://www.python.org/)，然后在终端中运行以下命令安装 iotedgehubdev 包  。 确保 Azure IoT EdgeHub 开发工具版本高于 0.3.0。
+* 设置本地开发环境，通过安装 [Azure IoT EdgeHub 开发工具](https://pypi.org/project/iotedgehubdev/)，调试、运行和测试 IoT Edge 解决方案。 请安装 [Python (3.5/3.6/3.7/3.8) 和 Pip](https://www.python.org/)，然后在终端中运行以下命令来安装 iotedgehubdev 包。 确保 Azure IoT EdgeHub 开发工具版本高于 0.3.0。
 
    ```cmd
    pip install --upgrade iotedgehubdev
@@ -103,7 +103,7 @@ Visual Studio 2019 准备就绪后，还需要以下工具和组件：
 
 1. 在“创建新项目”页面中，搜索“Azure IoT Edge”。 选择与 IoT Edge 设备的平台和体系结构匹配的项目，然后单击“下一步”。
 
-   ![创建新项目](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
+   :::image type="content" source="./media/how-to-visual-studio-develop-module/create-new-project.png" alt-text="创建新项目":::
 
 1. 在“配置新项目”中，输入项目名称并指定位置，然后选择“创建”。
 
@@ -122,6 +122,18 @@ Visual Studio 2019 准备就绪后，还需要以下工具和组件：
 项目文件夹内含包括项目中所有模块的列表。 该文件夹目前应只显示一个模块，但可以在此添加更多模块。 有关向项目添加模块的详细信息，请参阅后文的[生成和调试多个模块](#build-and-debug-multiple-modules)部分。
 
 该项目文件夹同时还包含名为 `deployment.template.json` 的文件。 该文件是 IoT Edge 部署清单模板，用于定义将在设备上运行的所有模块，以及这些模块相互通信的方式。 有关部署清单的详细信息，请参阅[了解如何部署模块和建立路由](module-composition.md)。 打开此部署模板，可以看到其中包含“edgeAgent”和“edgeHub”这两个运行时模块，以及在此 Visual Studio 项目中创建的自定义模块。 另外，还有名为“SimulatedTemperatureSensor”的第四个模块。 此默认模块会生成用于测试模块的模拟数据。如果不需要此模块，亦可将其删除。 若要了解模拟温度传感器的工作原理，请查看 [SimulatedTemperatureSensor.csproj 源代码](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor)。
+
+### <a name="set-iot-edge-runtime-version"></a>设置 IoT Edge 运行时版本
+
+在创建部署资产时，IoT Edge 扩展默认为 IoT Edge 运行时的最新稳定版本。 目前，最新稳定版本是 1.2 版。 如果正在为运行 1.1 长期支持版本或更低的 1.0 版本的设备开发模块，请在 Visual Studio 中更新 IoT Edge 运行时版本，以保持一致。
+
+1. 在解决方案资源管理器中，右键单击项目名称，然后选择“设置 IoT Edge 运行时版本”。
+
+   :::image type="content" source="./media/how-to-visual-studio-develop-module/set-iot-edge-runtime-version.png" alt-text="右键单击项目名称，然后选择“设置 IoT Edge 运行时版本”。":::
+
+1. 使用下拉菜单选择 IoT Edge 设备正在运行的运行时版本，然后选择“确定”以保存更改。
+
+1. 使用新的运行时版本重新生成部署清单。 右键单击项目名称，然后选择“为 IoT Edge 生成部署”。
 
 ## <a name="develop-your-module"></a>开发模块
 
@@ -234,7 +246,7 @@ IoT EdgeHub 开发工具提供本地开发和调试体验。 该工具可在没�
     ```
 
    >[!NOTE]
-   >本文使用 Azure 容器注册表的管理员登录凭据，其十分适用于开发和测试方案。 为生产方案做好准备后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理对容器注册表的访问](production-checklist.md#manage-access-to-your-container-registry)。
+   >本文使用 Azure 容器注册表的管理员登录凭据，其十分适用于开发和测试方案。 为生产方案做好准备后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
 
 1. 在“解决方案资源管理器”中，右键单击项目文件夹，选择“生成并推送 IoT Edge 模块”，为每个模块生成和推送 Docker 映像。
 

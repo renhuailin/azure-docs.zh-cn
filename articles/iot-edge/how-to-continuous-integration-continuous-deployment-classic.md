@@ -3,22 +3,22 @@ title: 持续集成和持续部署到 Azure IoT Edge 设备（经典编辑器）
 description: 使用经典编辑器设置持续集成和持续部署 - Azure IoT Edge 和 Azure DevOps、Azure Pipelines
 author: kgremban
 ms.author: kgremban
-ms.date: 08/26/2020
+ms.date: 08/26/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 757ae7f71e5b03a5dc38b6e5438cdf22a0083965
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5af2216423e625d2ba9545a37e58bb08529ebd55
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740682"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031980"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>持续集成和持续部署到 Azure IoT Edge 设备（经典编辑器）
 
 [!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
-借助 Azure Pipelines 中的内置 Azure IoT Edge 任务，可以轻松地在 Azure IoT Edge 应用程序中采用 DevOps。 本文演示了如何在经典编辑器中使用 Azure Pipelines 的持续集成和持续部署功能，快速高效地生成和测试应用程序并将其部署到 Azure IoT Edge。 也可[使用 YAML](how-to-continuous-integration-continuous-deployment.md)。
+Azure Pipelines 包含一个内置的 Azure IoT Edge 任务，可帮助你在 Azure IoT Edge 应用程序中采用 DevOps。 本文演示了如何在经典编辑器中使用 Azure Pipelines 的持续集成和持续部署功能，快速高效地生成和测试应用程序并将其部署到 Azure IoT Edge。 也可[使用 YAML](how-to-continuous-integration-continuous-deployment.md)。
 
 ![示意图 - 用于开发和生产的 CI 和 CD 分支](./media/how-to-continuous-integration-continuous-deployment-classic/model.png)
 
@@ -86,21 +86,21 @@ ms.locfileid: "121740682"
 
    在管道描述中，根据目标平台选择正确的代理规范：
 
-   * 若要在用于 Linux 容器的 amd64 平台中生成模块，请选择“ubuntu-16.04”
+   * 若要在适用于 Linux 容器的 amd64 平台中生成模块，请选择“ubuntu-18.04”
 
    * 如果想在平台 amd64 中为 Windows 1809 容器生成模块，则需要[在 Windows 上设置自托管代理](/azure/devops/pipelines/agents/v2-windows)。
 
    * 如果想在平台 arm32v7 或 arm64 中为 Linux 容器生成模块，则需要[在 Linux 上设置自托管代理](https://devblogs.microsoft.com/iotdev/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent)。
 
-    ![配置生成代理规范](./media/how-to-continuous-integration-continuous-deployment-classic/configure-env.png)
+   :::image type="content" source="./media/how-to-continuous-integration-continuous-deployment-classic/configure-env.png" alt-text="配置生成代理规范。":::
 
 6. 管道预先配置了名为“代理作业 1”的作业。 选择加号 (+)，向作业添加四个任务：“Azure IoT Edge”两次，“复制文件”一次，“发布生成项目”一次。    搜索每个任务并将鼠标悬停在任务的名称上以查看“添加”按钮。
 
-   ![添加 Azure IoT Edge 任务](./media/how-to-continuous-integration-continuous-deployment-classic/add-iot-edge-task.png)
+   :::image type="content" source="./media/how-to-continuous-integration-continuous-deployment-classic/add-iot-edge-task.png" alt-text="添加 Azure IoT Edge 任务。":::
 
    添加所有四个任务后，代理作业如下所示：
 
-   ![生成管道中的四个任务](./media/how-to-continuous-integration-continuous-deployment-classic/add-tasks.png)
+   :::image type="content" source="./media/how-to-continuous-integration-continuous-deployment-classic/add-tasks.png" alt-text="生成管道中的四个任务。":::
 
 7. 选择第一个“Azure IoT Edge”任务进行编辑。 此任务通过指定的目标平台生成解决方案中的所有模块。 使用以下值编辑任务：
 
@@ -114,9 +114,9 @@ ms.locfileid: "121740682"
 
    有关此任务及其参数的详细信息，请参阅 [Azure IoT Edge 任务](/azure/devops/pipelines/tasks/build/azure-iot-edge)。
 
-   这些配置使用 `module.json` 文件中定义的映像存储库和标记来命名和标记模块映像。 “生成模块映像”也有助于将变量替换为在 `module.json` 文件中定义的具体值。 在 Visual Studio 或 Visual Studio Code 中，你是在 `.env` 文件中指定实际值。 在 Azure Pipelines 中，请在“管道变量”选项卡中设置值。在管道编辑器菜单上选择“变量”选项卡并配置名称和值，如下所示：
+   这些配置使用 `module.json` 文件中定义的映像存储库和标记来命名和标记模块映像。 “生成模块映像”也有助于将变量替换为在 `module.json` 文件中定义的具体值。 在 Visual Studio 或 Visual Studio Code 中，可以在 `.env` 文件中指定实际值。 在 Azure Pipelines 中，请在“管道变量”选项卡中设置值。在管道编辑器菜单上选择“变量”选项卡并配置名称和值，如下所示：
 
-   * **ACR_ADDRESS**：Azure 容器注册表的“登录服务器”值。 可以在 Azure 门户的容器注册表的概述页中检索登录服务器值。
+   * **ACR_ADDRESS**：Azure 容器注册表的“登录服务器”值。 可以在 Azure 门户中容器注册表的概述页面上找到登录服务器值。
 
    如果你在项目中有其他变量，可以在此选项卡上指定名称和值。“生成模块映像”仅识别 `${VARIABLE}` 格式的变量。 请确保在 `**/module.json` 文件中使用此格式。
 

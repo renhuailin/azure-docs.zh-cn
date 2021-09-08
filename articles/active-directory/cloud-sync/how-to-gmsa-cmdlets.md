@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64eb6e15c2c53a8c82b51027471192de4e3679f2
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 5fc33aaa51a687cc6f9df8aea494d5790dad22a2
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634319"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306150"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-gmsa-powershell-cmdlets"></a>Azure AD Connect 云预配代理 gMSA PowerShell cmdlet
 
@@ -73,7 +73,7 @@ ms.locfileid: "122634319"
 |PasswordWriteBack|请参阅 Azure AD Connect 的 [PasswordWriteBack](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-password-writeback) 权限|
 |HybridExchangePermissions|请参阅 Azure AD Connect 的 [HybridExchangePermissions](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-exchange-hybrid-deployment) 权限|
 |ExchangeMailPublicFolderPermissions| 请参阅 Azure AD Connect 的 [ExchangeMailPublicFolderPermissions](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-exchange-mail-public-folders) 权限|
-|CloudHR| 将“完全控制”应用于“此对象和所有后代对象”上的“后代用户对象”和“创建/删除用户对象”|
+|CloudHR| 将“创建/删除用户对象”应用于“此对象和所有后代对象”|
 |全部|添加上述所有权限。|
 
 可通过两种方式之一来使用 AADCloudSyncPermissions：

@@ -2,14 +2,14 @@
 title: 使用 REST API 还原 Azure VM
 description: 本文介绍如何使用 REST API 管理 Azure 虚拟机备份的还原操作。
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 08/26/2021
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 4789285f4cc95f1885dbf9121bc5189fce02d6de
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f82adee9690c0114fef17640672c7326cffc8481
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460929"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966071"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
 
@@ -272,7 +272,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="replace-disks-in-a-backed-up-virtual-machine"></a>替换已备份虚拟机中的磁盘
 
-还原磁盘从恢复点创建磁盘时，替换磁盘会将已备份 VM 的当前磁盘替换为恢复点中的磁盘。 如[上文](#restore-operations)所述，下面提供适用于替换磁盘的相关请求正文。
+还原磁盘从恢复点创建磁盘时，替换磁盘会将备份的 VM 上的当前磁盘替换从恢复点创建的磁盘。 如[上文](#restore-operations)所述，下面提供适用于替换磁盘的相关请求正文。
 
 #### <a name="create-request-body"></a>创建请求正文
 
@@ -338,6 +338,274 @@ X-Powered-By: ASP.NET
 ```
 
 应该根据[上文所述的还原磁盘](#responses)的相同方式处理响应。
+
+## <a name="cross-region-restore"></a>跨区域还原
+
+如果在用于保护 VM 的保管库上启用跨区域还原，则会将备份数据复制到次要区域。 可使用备份数据来执行还原操作。 若要使用 REST API 在次要区域触发还原操作，请执行以下步骤：
+
+### <a name="select-recovery-point-in-secondary-region"></a>选择次要区域中的恢复点
+
+可以使用“[列出用于 CRR 的恢复点 REST API](/rest/api/backup/recovery-points-crr/list)”列出次要区域中备份项目的可用恢复点。 这是一个使用所有相关值执行的 GET 操作。
+
+```http
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2018-12-20
+
+```
+
+`{containerName}` 和 `{protectedItemName}` 是按[此处](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)所述构造的。 `{fabricName}` 是“Azure”。
+
+*GET* URI 包含所有必需的参数。 不需要其他请求正文。
+
+>[!NOTE]
+>要获取次要区域中的恢复点，请使用 API 版本 2018-12-20，如上例所示。
+
+#### <a name="responses"></a>响应
+
+|名称  |类型  |说明  |
+|---------|---------|---------|
+|200 正常     |   [RecoveryPointResourceList](/rest/api/backup/recovery-points-crr/list#recoverypointresourcelist)      |       OK  |
+
+#### <a name="example-response"></a>示例响应
+
+提交 *GET* URI 后，将返回 200 (OK) 响应。
+
+```http
+Headers:
+Pragma                        : no-cache
+X-Content-Type-Options        : nosniff
+x-ms-request-id               : bfc4a4e6-c585-46e0-8e38-f11a86093701
+x-ms-client-request-id        : 4344a9c2-70d8-482d-b200-0ca9cc498812,4344a9c2-70d8-482d-b200-0ca9cc498812
+Strict-Transport-Security     : max-age=31536000; includeSubDomains
+x-ms-ratelimit-remaining-subscription-resource-requests: 149
+x-ms-correlation-request-id   : bfc4a4e6-c585-46e0-8e38-f11a86093701
+x-ms-routing-request-id       : SOUTHINDIA:20210731T112441Z:bfc4a4e6-c585-46e0-8e38-f11a86093701
+Cache-Control                 : no-cache
+Date                          : Sat, 31 Jul 2021 11:24:40 GMT
+Server                        : Microsoft-IIS/10.0
+X-Powered-By                  : ASP.NET
+
+Body:
+{
+  "value": [
+    {
+      "id":
+"/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;testRG1;testVM/protectedItems/VM;iaasvmcontainerv2;testRG1;testVM/recoveryPoints/932895704780058094",
+      "name": "932895704780058094",
+      "type": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints",
+      "properties": {
+        "objectType": "IaasVMRecoveryPoint",
+        "recoveryPointType": "CrashConsistent",
+        "recoveryPointTime": "2021-07-31T09:24:34.687561Z",
+        "recoveryPointAdditionalInfo": "",
+        "sourceVMStorageType": "PremiumVMOnPartialPremiumStorage",
+        "isSourceVMEncrypted": false,
+        "isInstantIlrSessionActive": false,
+        "recoveryPointTierDetails": [
+          {
+            "type": 1,
+            "status": 1
+          }
+        ],
+        "isManagedVirtualMachine": true,
+        "virtualMachineSize": "Standard_D2s_v3",
+        "originalStorageAccountOption": false,
+        "osType": "Windows"
+      }
+    },
+    {
+      "id":
+"/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;testRG1;testVM/protectedItems/VM;iaasvmcontainerv2;testRG1;testVM/recoveryPoints/932891484644960954",
+      "name": "932891484644960954",
+      "type": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints",
+      "properties": {
+        "objectType": "IaasVMRecoveryPoint",
+        "recoveryPointType": "CrashConsistent",
+        "recoveryPointTime": "2021-07-30T09:20:01.8355052Z",
+        "recoveryPointAdditionalInfo": "",
+        "sourceVMStorageType": "PremiumVMOnPartialPremiumStorage",
+        "isSourceVMEncrypted": false,
+        "isInstantIlrSessionActive": false,
+        "recoveryPointTierDetails": [
+          {
+            "type": 1,
+            "status": 1
+          },
+          {
+            "type": 2,
+            "status": 1
+          }
+        ],
+        "isManagedVirtualMachine": true,
+        "virtualMachineSize": "Standard_D2s_v3",
+        "originalStorageAccountOption": false,
+        "osType": "Windows"
+      }
+    },
+.....
+```
+
+上述响应中的 `{name}` 字段标识了恢复点。
+
+### <a name="get-access-token"></a>获取访问令牌
+
+若要执行跨区域还原，需要访问令牌来为你的请求授权，以便能够访问次要区域中的复制还原点。 若要获取访问令牌，请执行以下步骤：
+
+#### <a name="step-1"></a>步骤 1：
+
+使用 [AAD 属性 API](/rest/api/backup/aad-properties/get) 获取次要区域（以下示例中的 westus）的 AAD 属性：
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/westus/backupAadProperties?api-version=2018-12-20
+```
+
+##### <a name="response-example"></a>响应示例
+
+返回的响应格式如下：
+
+```json
+{
+  "properties": {
+    "tenantId": "00000000-0000-0000-0000-000000000000",
+    "audience": "https://RecoveryServices/IaasCoord/aadmgmt/wus",
+    "servicePrincipalObjectId": "00000000-0000-0000-0000-000000000000"
+  }
+}
+```
+
+#### <a name="step-2"></a>步骤 2：
+
+使用[获取访问令牌 API](/rest/api/backup/recovery-points-get-access-token-for-crr/get-access-token) 为你的请求授权，以便访问次要区域中的复制还原点：
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/accessToken?api-version=2018-12-20
+```
+
+对于请求正文，粘贴上一步中 AAD 属性 API 返回的响应内容。
+
+```json
+{
+  "properties": {
+    "tenantId": "00000000-0000-0000-0000-000000000000",
+    "audience": "https://RecoveryServices/IaasCoord/aadmgmt/wus",
+    "servicePrincipalObjectId": "00000000-0000-0000-0000-000000000000"
+  }
+}
+```
+
+##### <a name="response-example"></a>响应示例
+
+返回的响应格式如下：
+
+```json
+{
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainerv2;testRG1;testVM/protectedItems/VM;iaasvmcontainerv2;testRG1;testVM/recoveryPoints/26083826328862",
+  "name": "932879774590051503",
+  "type": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints",
+    "properties": {
+        "objectType": "CrrAccessToken",
+        "accessTokenString": "<access-token-string>",
+        "subscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resourceGroupName": "testVaultRG",
+        "resourceName": "testVault",
+        "resourceId": "000000000000000000",
+        "protectionContainerId": 000000,
+        "recoveryPointId": "932879774590051503",
+        "recoveryPointTime": "7/26/2021 3:35:36 PM",
+        "containerName": "iaasvmcontainerv2;testRG1;testVM",
+        "containerType": "IaasVMContainer",
+        "backupManagementType": "AzureIaasVM",
+        "datasourceType": "VM",
+        "datasourceName": "testvm1234",
+        "datasourceId": "000000000000000000",
+        "datasourceContainerName": "iaasvmcontainerv2;testRG1;testVM",
+        "coordinatorServiceStampUri": "https://pod01-coord1.eus.backup.windowsazure.com",
+        "protectionServiceStampId": "00000000-0000-0000-0000-000000000000",
+        "protectionServiceStampUri": "https://pod01-prot1h-int.eus.backup.windowsazure.com",
+        "tokenExtendedInformation": "<IaaSVMRecoveryPointMetadataBase xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:type=\"IaaSVMRecoveryPointMetadata_V2015_09\" xmlns=\"http://windowscloudbackup.com/CloudCommon/V2011_09\"><MetadataVersion>V2015_09</MetadataVersion><ContainerType i:nil=\"true\" /><InstantRpGCId>ef4ab5a7-c2c0-4304-af80-af49f48af3d1;AzureBackup_testvm1234_932843259176972511;AzureBackup_20210726_033536;AzureBackupRG_eastus_1</InstantRpGCId><IsBlockBlobEnabled>true</IsBlockBlobEnabled><IsManagedVirtualMachine>true</IsManagedVirtualMachine><OriginalSAOption>false</OriginalSAOption><OsType>Windows</OsType><ReadMetadaFromConfigBlob i:nil=\"true\" /><RecoveryPointConsistencyType>CrashConsistent</RecoveryPointConsistencyType><RpDiskDetails i:nil=\"true\" /><SourceIaaSVMRPKeyAndSecret i:nil=\"true\" /><SourceIaaSVMStorageType>PremiumVMOnPartialPremiumStorage</SourceIaaSVMStorageType><VMSizeDescription>Standard_D2s_v3</VMSizeDescription><Zones xmlns:d2p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" i:nil=\"true\" /></IaaSVMRecoveryPointMetadataBase>",
+        "rpTierInformation": {
+            "InstantRP": "Valid",
+            "HardenedRP": "Valid"
+        },
+        "rpOriginalSAOption": false,
+        "rpIsManagedVirtualMachine": true,
+        "rpVMSizeDescription": "Standard_D2s_v3",
+        "bMSActiveRegion": "EastUS"
+    }
+}
+```
+
+### <a name="restore-disks-to-the-secondary-region"></a>将磁盘还原到次要区域
+
+使用[跨区域还原触发器 API](/rest/api/backup/cross-region-restore/trigger) 将某个项还原到次要区域。
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/locations/{azureRegion}/backupCrossRegionRestore?api-version=2018-12-20
+```
+
+请求正文应包含两个部分：
+
+1. **crossRegionRestoreAccessDetails**：粘贴上一步中执行的“获取访问令牌 API”请求的响应的 _properties* 块，以填充请求正文的这一部分*。
+
+1. **restoreRequest**：要填充请求正文的 restoreRequest 段，需要传递之前获取的恢复点 ID、源 VM 的 Azure 资源管理器 (ARM) ID 以及要充当暂存位置的次要区域中的存储帐户详细信息*。 若要执行磁盘还原，请将 RestoreDisks 指定为还原类型。
+
+下面是将 VM 的磁盘还原到次要区域的示例请求正文：
+
+```json
+ {
+  "crossRegionRestoreAccessDetails": {
+        "objectType": "CrrAccessToken",
+        "accessTokenString": "<access-token-string>",
+        "subscriptionId": "00000000-0000-0000-0000-000000000000",
+        "resourceGroupName": "azurefiles",
+        "resourceName": "azurefilesvault",
+        "resourceId": "000000000000000000",
+        "protectionContainerId": 000000,
+        "recoveryPointId": "932879774590051503",
+        "recoveryPointTime": "7/26/2021 3:35:36 PM",
+        "containerName": "iaasvmcontainerv2;testRG1;testVM",
+        "containerType": "IaasVMContainer",
+        "backupManagementType": "AzureIaasVM",
+        "datasourceType": "VM",
+        "datasourceName": "testvm1234",
+        "datasourceId": "000000000000000000",
+        "datasourceContainerName": "iaasvmcontainerv2;testRG1;testVM",
+        "coordinatorServiceStampUri": "https://pod01-coord1.eus.backup.windowsazure.com",
+        "protectionServiceStampId": "00000000-0000-0000-0000-000000000000",
+        "protectionServiceStampUri": "https://pod01-prot1h-int.eus.backup.windowsazure.com",
+        "tokenExtendedInformation": "<IaaSVMRecoveryPointMetadataBase xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" i:type=\"IaaSVMRecoveryPointMetadata_V2015_09\" xmlns=\"http://windowscloudbackup.com/CloudCommon/V2011_09\"><MetadataVersion>V2015_09</MetadataVersion><ContainerType i:nil=\"true\" /><InstantRpGCId>ef4ab5a7-c2c0-4304-af80-af49f48af3d1;AzureBackup_testvm1234_932843259176972511;AzureBackup_20210726_033536;AzureBackupRG_eastus_1</InstantRpGCId><IsBlockBlobEnabled>true</IsBlockBlobEnabled><IsManagedVirtualMachine>true</IsManagedVirtualMachine><OriginalSAOption>false</OriginalSAOption><OsType>Windows</OsType><ReadMetadaFromConfigBlob i:nil=\"true\" /><RecoveryPointConsistencyType>CrashConsistent</RecoveryPointConsistencyType><RpDiskDetails i:nil=\"true\" /><SourceIaaSVMRPKeyAndSecret i:nil=\"true\" /><SourceIaaSVMStorageType>PremiumVMOnPartialPremiumStorage</SourceIaaSVMStorageType><VMSizeDescription>Standard_D2s_v3</VMSizeDescription><Zones xmlns:d2p1=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\" i:nil=\"true\" /></IaaSVMRecoveryPointMetadataBase>",
+        "rpTierInformation": {
+            "InstantRP": "Valid",
+            "HardenedRP": "Valid"
+        },
+        "rpOriginalSAOption": false,
+        "rpIsManagedVirtualMachine": true,
+        "rpVMSizeDescription": "Standard_D2s_v3",
+        "bMSActiveRegion": "EastUS"
+    },
+    "restoreRequest": {
+        "affinityGroup": "",
+        "createNewCloudService": false,
+        "encryptionDetails": {
+            "encryptionEnabled": false
+        },
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "932879774590051503",
+        "recoveryType": "RestoreDisks",
+        "sourceResourceId":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG1/providers/Microsoft.Compute/virtualMachines/testVM",
+        "targetResourceGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG1",
+        "storageAccountId":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG1/providers/Microsoft.Storage/storageAccounts/testStorageAccount",
+        "region": "westus",
+        "affinityGroup": "",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "restoreDiskLunList": []
+    }
+}
+```
+
+与主要区域还原操作类似，这是一个异步操作，需要[单独跟踪](/azure/backup/backup-azure-arm-userestapi-restoreazurevms#restore-response)。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

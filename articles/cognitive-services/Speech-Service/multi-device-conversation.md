@@ -3,19 +3,19 @@ title: 多设备对话（预览版）- 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用多设备对话可以轻松地在多个客户端之间创建语音或文本对话，并协调在它们之间发送的消息。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.author: lajanuar
-ms.openlocfilehash: 02c5ea7f64ecbeeb4682f327671c53f2a8def2c5
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 200298a5b78080e731799619cdde7bcf77b3a7d1
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122070269"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539544"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>什么是多设备对话（预览版）？
 

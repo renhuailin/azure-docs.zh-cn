@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: d5d2d3a844d417b12ae2899cd5ce3d998731aab6
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 37e6573e1bc26bc79477cf532ef442964f760985
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860821"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226789"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -113,9 +113,12 @@ ms.locfileid: "121860821"
   > [!IMPORTANT]
   > 默认情况下，存储帐户是常规用途 v1 帐户。 创建工作区后，可以[将其升级到常规用途 v2](../storage/common/storage-account-upgrade.md)。 升级到常规用途 v2 后，请勿在存储帐户上启用分层命名空间。
 
-  若要使用现有 Azure 存储帐户，则该帐户不能是 BlobStorage 类型或高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的默认存储帐户不支持高级存储和分层命名空间。 可以将高级存储或分层命名空间用于非默认存储帐户。
+  若要使用现有 Azure 存储帐户，则该帐户不能是 BlobStorage 类型或高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的默认存储帐户既不支持高级存储也不支持分层命名空间。 可以将高级存储或分层命名空间用于非默认存储帐户。
   
 + [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)：注册在训练期间和部署模型时使用的 Docker 容器。 要最大程度地降低成本，ACR 在创建部署映像之前会“延迟加载”。
+
+    > [!NOTE]
+    > 如果订阅设置需要向其下的资源添加标记，则 Azure 机器学习创建的 Azure 容器注册表 (ACR) 将失败，因为我们无法将标记设置为 ACR。
 
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/)：存储有关模型的监视信息。
 

@@ -1,15 +1,15 @@
 ---
 title: UK OFFICIAL 和 UK NHS 的法规合规性详细信息
 description: UK OFFICIAL 和 UK NHS 法规合规性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: e239c2f373ca850c09908b9c3a1df446c4321add
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: aa822b546937534c35cee97fcad0a7b7b38c2e31
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105268"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475667"
 ---
 # <a name="details-of-the-uk-official-and-uk-nhs-regulatory-compliance-built-in-initiative"></a>UK OFFICIAL 和 UK NHS 法规合规性内置计划的详细信息
 

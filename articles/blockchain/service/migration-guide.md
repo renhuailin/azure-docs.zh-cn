@@ -3,12 +3,12 @@ title: Azure 区块链服务停用通知和指南
 description: 将 Azure 区块链服务迁移到托管或自托管的区块链产品/服务
 ms.date: 05/10/2021
 ms.topic: how-to
-ms.openlocfilehash: 6fb86e426e446ba5515a285b04587093ee6fe4e5
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 6a767a8e4d31cd76012039f40e688f08708fc0c2
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752726"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541542"
 ---
 # <a name="migrate-azure-blockchain-service"></a>迁移 Azure 区块链服务
 
@@ -47,7 +47,7 @@ Quorum 区块链服务是 ConsenSys 在 Azure 上提供的托管产品/服务，
 如果开始开发新解决方案或处于评估阶段，请根据场景需求考虑以下备用方案。
 
 - [Azure 市场中的 Quorum 模板](https://azuremarketplace.microsoft.com/marketplace/apps/consensys.quorum-dev-quickstart)
-- [Azure 市场中的 Besu 模板](https://azuremarketplace.microsoft.com/marketplace/apps/consensys.hyperledger-besu-quickstart)
+- Azure 市场中的 Besu 模板
 
 ### <a name="how-to-migrate-to-an-alternative"></a>如何迁移到备用方案
 
@@ -99,6 +99,8 @@ Azure 区块链服务团队将暂停联盟，导出数据快照，并使数据�
 
 ### <a name="download-data"></a>下载数据
 
+#### <a name="data-format-v1"></a>数据格式 v1
+
 使用 Microsoft 支持部门提供的生存期较短的 SAS URL 链接下载数据。
 
 > [!IMPORTANT]
@@ -110,6 +112,20 @@ Azure 区块链服务团队将暂停联盟，导出数据快照，并使数据�
 > 只有默认的事务节点 API 访问密钥 1 可用于加密该成员的所有节点数据。
 >
 > 请勿在迁移期间重置 API 访问密钥。
+
+#### <a name="data-format-v2"></a>数据格式 v2
+
+在此版本中，对 SAS 令牌（而不是数据）进行加密，从而更快地创建快照。 如果选择迁移到 ConsenSys Quorum 区块链服务，则导入到 Quorum 区块链服务的速度也会更快。
+
+对 SAS 令牌进行解密后，可以照常下载数据。 数据本身没有额外的加密层。
+
+> [!IMPORTANT]
+> 创建数据格式 v2 快照的速度大约快 8 - 10 倍，因此停机时间更少。
+
+> [!CAUTION]
+> 默认事务节点 API 访问密钥 1 用于加密 SAS 令牌。
+>
+> 请勿在迁移之间或迁移期间重置 API 访问密钥。
 
 可将数据用于 ConsenSys Quorum 区块链服务或基于 IaaS VM 的部署。
 

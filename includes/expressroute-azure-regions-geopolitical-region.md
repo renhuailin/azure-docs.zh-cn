@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 3cecb6a9a45aa3413e43fb9099a258ed2ef21a3a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 83835941ae2ec1f45eab7de25d862034069770f2
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862457"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123213861"
 ---
 ## <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a><a name="locations"></a>地缘政治区域中 ExpressRoute 位置与 Azure 区域的映射。
 下表提供了地缘政治区域内 ExpressRoute 位置与 Azure 区域的映射。
@@ -27,7 +27,7 @@ ms.locfileid: "121862457"
 | **印度** | 印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2、普纳 |
 | **日本** | 日本西部、日本东部 |大阪、东京、东京 2 |
 | **大洋洲** | 澳大利亚东南部、澳大利亚东部 |奥克兰、墨尔本、悉尼、悉尼 2 |
-| **韩国** | 韩国中部、韩国南部 |釜山、首尔|
+| **韩国** | 韩国中部、韩国南部 |釜山、首尔、首尔 2|
 | **阿联酋** | 阿联酋中部、阿联酋北部 | 迪拜、迪拜 2 |
 | **南非** | 南非西部、南非北部 |开普敦、约翰内斯堡 |
 | **南美洲** | 巴西南部 |波哥大、坎皮纳斯、里约热内卢、圣保罗、圣保罗 2 |

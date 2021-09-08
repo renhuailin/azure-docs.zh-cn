@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 16b6675a7b9796405376540b87efbaaa2a991890
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d6e41cd80e27fe673d04592c61e590c09645619e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081111"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430353"
 ---
 # <a name="troubleshoot-problems-in-it-service-management-connector"></a>排查 IT 服务管理连接器中的问题
 
@@ -100,7 +100,7 @@ Azure Monitor 在监视数据中发现重要条件时，会主动发出警报通
 **原因**：可能有多种原因导致此症状：
 
 * 模板未显示为“操作定义”下拉列表的一部分，但会显示一条错误消息：“无法检索模板配置。有关详细信息，请参阅连接器日志。”
-* 值未作为操作定义的一部分显示在默认字段的下拉列表中，但会显示一条错误消息：“找不到以下字段的值: <field names>”。
+* 值未作为操作定义的一部分显示在默认字段的下拉列表中，但会显示一条错误消息：“找不到以下字段的值: \<field names\>”。
 * ServiceNow 中未创建事件。
 
 **解决方法**： 

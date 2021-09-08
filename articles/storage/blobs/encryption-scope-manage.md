@@ -10,20 +10,18 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a44666d8378b13f7ac8498ae4256507705ffc42b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: adb5ac550ad998f807918d20f59048882c9a8565
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723409"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470573"
 ---
 # <a name="create-and-manage-encryption-scopes"></a>创建和管理加密范围
 
 通过加密范围，可在单个 blob 或容器级别管理加密。 可以使用加密范围在驻留在同一存储帐户中但属于不同客户的数据之间创建安全边界。 有关加密范围的详细信息，请参阅 [Blob 存储的加密范围](encryption-scope-overview.md)。
 
 本文介绍如何创建加密范围。 本文还介绍如何在创建 blob 或容器时指定加密范围。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-an-encryption-scope"></a>创建加密范围
 

@@ -3,19 +3,19 @@ title: 呼叫中心听录 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音转文本的一个常见应用场景是听录来自各种系统（例如交互式语音应答 (IVR)）的大量电话数据。 企业可以在音频捕获系统中使用语音服务和统一语音模型获得高质量的听录。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: lajanuar
-ms.openlocfilehash: 1cf4c6111c18a9c0b79bc898a89b24717bb9f438
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 0c1e1ca9b38c342d469c7d4ea1589b48038c95db
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069367"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538860"
 ---
 # <a name="speech-service-for-telephony-data"></a>用于处理电话数据的语音服务
 

@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a68ec9868e5a441dbfd11f97bc8f169df246598
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: fe26f8f61acbbf454cd2eb2928fdcab0f0bc7e47
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633728"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866965"
 ---
 # <a name="use-azure-cli-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的 ACL
 
@@ -80,7 +80,7 @@ ACL 继承已可用于在父目录下创建的新子项。 但是你也可以为
 
 ## <a name="get-acls"></a>获取 ACL
 
-使用 `az storage fs access show` 命令获取目录的 ACL。
+使用 [az storage fs access show](/cli/azure/storage/fs#az_storage_fs_show) 命令获取目录的 ACL。
 
 下面的示例获取目录的 ACL，然后将 ACL 打印到控制台。
 
@@ -88,7 +88,7 @@ ACL 继承已可用于在父目录下创建的新子项。 但是你也可以为
 az storage fs access show -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-使用 `az storage fs access show` 命令获取文件的访问权限。 
+使用 [az storage fs access show](/cli/azure/storage/fs#az_storage_fs_show) 命令获取文件的访问权限。 
 
 下面的示例获取文件的 ACL，然后将 ACL 打印到控制台。
 
@@ -104,7 +104,7 @@ az storage fs access show -p my-directory/upload.txt -f my-file-system --account
 
 ## <a name="set-acls"></a>设置 ACL
 
-设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 要更新 ACL 而不是替换它，请参阅本文的[更新 ACL](#update-acls) 部分。  
+设置 ACL 时，你将替换整个 ACL，包括其所有条目。 如果要更改安全主体的权限级别，或将新的安全主体添加到 ACL 而不影响其他现有项，则应改为更新 ACL。 若要更新 ACL 而不是替换它，请参阅本文的[更新 ACL](#update-acls) 部分。  
 
 如果选择设置 ACL，则必须为责任用户添加一个条目，为责任组添加一个条目，为所有其他用户添加一个条目。 若要详细了解责任用户、责任组和所有其他用户，请参阅[用户和标识](data-lake-storage-access-control.md#users-and-identities)。
 
@@ -115,7 +115,7 @@ az storage fs access show -p my-directory/upload.txt -f my-file-system --account
 
 ### <a name="set-an-acl"></a>设置 ACL
 
-使用 `az storage fs access set` 命令设置目录的 ACL。 
+使用 [az storage fs access set](/cli/azure/storage/fs/access#az_storage_fs_access_set) 命令设置目录的 ACL。 
 
 下面的示例在目录中为负责人用户、负责人组或其他用户设置 ACL，然后将 ACL 打印到控制台。
 
@@ -129,7 +129,7 @@ az storage fs access set --acl "user::rw-,group::rw-,other::-wx" -p my-directory
 az storage fs access set --acl "default:user::rw-,group::rw-,other::-wx" -p my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-使用 `az storage fs access set` 命令设置文件的 ACL。 
+使用 [az storage fs access set](/cli/azure/storage/fs/access#az_storage_fs_access_set) 命令设置文件的 ACL。 
 
 下面的示例在文件中为负责人用户、负责人组或其他用户设置 ACL，然后将 ACL 打印到控制台。
 
@@ -161,7 +161,7 @@ az storage fs access set-recursive --acl "user::rwx,group::r-x,other::---,user:x
 
 ## <a name="update-acls"></a>更新 ACL
 
-更新 ACL 时，你将修改 ACL 而非替换 ACL。 例如，你可以将一个新的安全主体添加到 ACL，而不影响 ACL 中列出的其他安全主体。  要替换 ACL 而不是更新它，请参阅本文的[设置 ACL](#set-acls) 部分。
+更新 ACL 时，你将修改 ACL 而非替换 ACL。 例如，你可以将一个新的安全主体添加到 ACL，而不影响 ACL 中列出的其他安全主体。  若要替换 ACL 而不是更新它，请参阅本文的 [设置 ACL](#set-acls) 部分。
 
 若要更新 ACL，请创建包含要更新的 ACL 条目的一个新的 ACL 对象，然后在“更新 ACL”操作中使用该对象。 不要获取现有 ACL，只需要提供要更新的 ACL 条目。
 
@@ -172,7 +172,7 @@ az storage fs access set-recursive --acl "user::rwx,group::r-x,other::---,user:x
 
 ### <a name="update-an-acl"></a>更新 ACL
 
-设置此权限的另一种方法是使用 `az storage fs access set` 命令。 
+设置此权限的另一种方法是使用 [az storage fs access set](/cli/azure/storage/fs/access#az_storage_fs_access_set) 命令。 
 
 通过将 `-permissions` 参数设置为 ACL 的简短形式，来更新目录或文件的 ACL。
 

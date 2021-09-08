@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c9b954776c33fedc3a770bc0aab0185ad595aff
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 50ddfbbcf86459c21d5a61ad2b8282da9c76208b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219752"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429075"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
@@ -95,7 +95,7 @@ Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，�
 **服务类别：** MS Graph  
 **产品功能：** 开发人员体验
  
-MS Graph 中的应用程序身份验证方法策略允许 IT 管理员对应用程序密码机密凭据强制设置生存期或完全阻止机密的使用。 策略可以作为默认配置针对整个租户强制执行，并且可以将其范围限定为特定应用程序或服务主体。 [了解详细信息](/graph/api/resources/policy-overview?view=graph-rest-1.0)。
+MS Graph 中的应用程序身份验证方法策略允许 IT 管理员对应用程序密码机密凭据强制设置生存期或完全阻止机密的使用。 策略可以作为默认配置针对整个租户强制执行，并且可以将其范围限定为特定应用程序或服务主体。 [了解详细信息](/graph/api/resources/policy-overview?view=graph-rest-beta)。
  
 ---
 
@@ -306,7 +306,7 @@ Microsoft Graph 对 Azure AD 中 Mobility (MDM/MAM) 配置的支持处于公共�
 **服务类别：** 用户访问管理  
 **产品功能：** 权利管理
  
-现在，Azure AD 权利管理支持在访问包请求流中创建自定义问题。 此功能允许你在访问包策略中配置自定义问题。 这些问题会显示给请求者，请求者可以在访问请求过程中输入答案。 这些答案将显示给审批者，为他们提供有用的信息，使他们能够对访问请求做出更好的决定。 [了解详细信息](../governance/entitlement-management-access-package-create.md#add-requestor-information-to-an-access-package)。
+现在，Azure AD 权利管理支持在访问包请求流中创建自定义问题。 此功能允许你在访问包策略中配置自定义问题。 这些问题会显示给请求者，请求者可以在访问请求过程中输入答案。 这些答案将显示给审批者，为他们提供有用的信息，使他们能够对访问请求做出更好的决定。 [了解详细信息](../governance/entitlement-management-access-package-create.md)。
 
 ---
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 75a659f9927c186e313b4f1d40b8c8e236ba091d
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 805299da7c74b18cb95c6dc87e1a0462c7f1664b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113302835"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424197"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>使用 Azure 门户添加对专用对等互连的 IPv6 支持（预览）
 
@@ -42,7 +42,7 @@ ms.locfileid: "113302835"
 
 ## <a name="update-your-connection-to-an-existing-virtual-network"></a>更新与现有虚拟网络的连接
 
-如果你有想要在其中使用 IPv6 专用对等互连的 Azure 资源的现有环境，请按照以下步骤操作。
+如果你已有 Azure 资源环境，并且你想要对该环境使用 IPv6 专用对等互连，请执行以下步骤。
 
 1. 导航到 ExpressRoute 线路连接到的虚拟网络。
 
@@ -56,11 +56,14 @@ ms.locfileid: "113302835"
 
     :::image type="content" source="./media/expressroute-howto-add-ipv6-portal/add-ipv6-gateway-space.png" alt-text="将 Ipv6 地址空间添加到子网的屏幕截图。":::
     
-1. 如果已有区域冗余网关，请在 PowerShell 中运行以下命令以启用 IPv6 连接（请注意，最多可能需要 1 小时才能反映所做的更改）。 否则，请使用任何 SKU 和标准静态公共 IP 地址[创建虚拟网络网关](./expressroute-howto-add-gateway-portal-resource-manager.md)。 如果计划使用 FastPath，请使用 UltraPerformance 或 ErGw3AZ（注意，此选项仅适用于使用 ExpressRoute Direct 的线路）。
+1. 如果你有现有的区域冗余网关，请在 PowerShell 中运行以下各项来启用 IPv6 连接（请注意，更改可能需要 1 小时才能反映出来）。 否则，请使用任意 SKU 和标准静态公共 IP 地址[创建虚拟网络网关](./expressroute-howto-add-gateway-portal-resource-manager.md)。 如果计划使用 FastPath，请使用 UltraPerformance 或 ErGw3AZ（请注意，此选项仅适用于使用 ExpressRoute Direct 的线路）。
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name "GatewayName" -ResourceGroupName "ExpressRouteResourceGroup"
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
+    
+>[!NOTE]
+> If you have an existing gateway that is not zone-redundant (meaning it is Standard, High Performance, or Ultra Performance SKU), you will need to delete and [recreate the gateway](expressroute-howto-add-gateway-portal-resource-manager.md#create-the-virtual-network-gateway) using any SKU and a Standard, Static public IP address.
 
 ## Create a connection to a new virtual network
 

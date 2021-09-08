@@ -3,19 +3,19 @@ title: 关于语音 SDK - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音软件开发工具包 (SDK) 公开了许多语音服务功能，这使得开发支持语音的应用程序更为容易。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.author: lajanuar
-ms.openlocfilehash: 3f97558a9efbc9a1cff11baaae6d4d8869e02915
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 6078fdd823160b6ea5e76efd5940342d333e84f1
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067778"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539942"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 

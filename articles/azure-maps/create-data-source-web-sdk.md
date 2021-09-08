@@ -1,20 +1,20 @@
 ---
 title: 在 Microsoft Azure Maps 中为地图创建数据源
 description: 了解如何为地图创建数据源。 了解 Azure Maps Web SDK 使用的数据源：GeoJSON 源和矢量图块。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: d20be688ccd13e7f053c4633a91cc5ce7a6cc34f
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: bb5050d1305f88987ed7ac38a8217e6b4f9c724e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669065"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425763"
 ---
 # <a name="create-a-data-source"></a>创建数据源
 
@@ -132,7 +132,7 @@ map.layers.add(flowLayer, 'labels');
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="矢量图块线条层" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="矢量图块线条层" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>矢量图块线条层</a>。
 </iframe>
 

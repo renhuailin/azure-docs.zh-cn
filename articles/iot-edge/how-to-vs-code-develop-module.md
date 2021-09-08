@@ -5,16 +5,16 @@ services: iot-edge
 keywords: ''
 author: kgremban
 ms.author: kgremban
-ms.date: 08/11/2021
+ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: cb0c6bd32c2bb1087635ee9ae61c0c569d3575f2
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 6c204308cff285860c0e887d41eca56ecc220226
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862222"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039049"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 模块
 
@@ -117,6 +117,18 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 - 一个 deployment.template.json 文件，列出新模块以及模拟可用于测试的数据的示例 SimulatedTemperatureSensor 模块   。 有关部署清单如何工作的详细信息，请参阅[了解如何使用部署清单部署模块和建立路由](module-composition.md)。
 
 若要了解模拟温度模块的工作原理，请查看 [SimulatedTemperatureSensor.csproj 源代码](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor)。
+
+### <a name="set-iot-edge-runtime-version"></a>设置 IoT Edge 运行时版本
+
+在创建部署资产时，IoT Edge 扩展默认为 IoT Edge 运行时的最新稳定版本。 目前，最新稳定版本是 1.2 版。 如果要为运行 1.1 长期支持版本或 1.0 早期版本的设备开发模块，请更新 Visual Studio Code 中的 IoT Edge 运行时版本以进行匹配。
+
+1. 选择“查看” > “命令面板”   。
+
+1. 在命令面板中，输入并运行“Azure IoT Edge: Set default IoT Edge runtime version”命令。
+
+1. 从列表中选择 IoT Edge 设备正在运行的运行时版本。
+
+选择新的运行时版本后，部署清单会动态更新以反映对运行时模块映像所做的更改。
 
 ## <a name="add-additional-modules"></a>添加其他模块
 

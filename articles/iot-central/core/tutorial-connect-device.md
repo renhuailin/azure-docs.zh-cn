@@ -3,7 +3,7 @@ title: 教程 - 将泛型客户端应用连接到 Azure IoT Central | Microsoft 
 description: 本教程介绍如何将运行 C、C#、Java、JavaScript 或 Python 客户端应用的设备连接到 Azure IoT Central 应用程序。 通过添加支持操作员与连接的设备进行交互的视图来修改自动生成的设备模板。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/24/2020
+ms.date: 08/31/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 0e6f4ac3cd95873c8b735a1843438499f2405bef
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7be12549d6e4afaa981a3d3dc83ad817ff5d9c9d
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750016"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471311"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序
 

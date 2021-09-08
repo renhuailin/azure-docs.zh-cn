@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, azla
 ms.topic: how-to
 ms.date: 08/31/2021
 tags: connectors
-ms.openlocfilehash: 0266e1fd000640aa4931dcc86f3c91a7ab7cc898
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 32f51d110f1ebb8d7b0a39a3183665c65d2b1367
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123104733"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469547"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
@@ -103,7 +103,7 @@ SAP 连接器使用 [SAP .NET 连接器 (NCo) 库](https://support.sap.com/en/pr
 
 1. 通过新操作重新连接到 SAP 系统。
 
-1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。 
+1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。
 
 ## <a name="multi-tenant-azure-prerequisites"></a>多租户 Azure 先决条件
 
@@ -231,7 +231,7 @@ ISE 提供对受 Azure 虚拟网络保护的资源的访问权限，并提供其
 >
 > * 必须专门使用 `sapgenpse.exe` 作为 SAPGENPSE 实用工具。
 > * 如果使用本地数据网关，则还要将这些相同的二进制文件复制到安装文件夹中。
-> * 如果连接中提供了 PSE，则无需为本地数据网关复制和设置 PSE 与 SECUDIR。
+> * 如果连接中提供了 PSE，则无需为本地数据网关复制和设置 PSE 和 SECUDIR。
 > * 你还可使用本地数据网关来排查任何库兼容性问题。
 
 #### <a name="snc-prerequisites-ise"></a>SNC 先决条件 (ISE)
@@ -320,9 +320,9 @@ SAP 连接器的 ISE 版本支持 SNC X.509。 可以通过以下步骤为 SAP I
 
    1. 对于“使用 SNC”，选中此复选框。
 
-   1. 对于“SNC 库”，请输入 SNC 库的名称。 例如，`sapcrypto.dll`。
+   1. 对于“SNC 库”，请输入 SNC 库的名称。 例如 `sapcrypto.dll`。
 
-   1. 对于“SNC 合作伙伴名称”，请输入后端的 SNC 名称。 例如，`p:CN=DV3, OU=LA, O=MS, C=US`。
+   1. 对于“SNC 合作伙伴名称”，请输入后端的 SNC 名称。 例如 `p:CN=DV3, OU=LA, O=MS, C=US`。
 
    1. 对于“SNC 证书”，请输入 base64 编码格式的 SNC 客户端公共证书。 请勿包含 PEM 页眉或页脚。
 
@@ -730,7 +730,7 @@ Z2XSK010003000000001017945375000110Z2XSK01000000108030 XR1 13.000 6795.00 CX
 
      有关 SAP 操作的详细信息，请参阅 [IDoc 操作的消息架构](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
 
-1. 现在请保存逻辑应用工作流，以便可以开始从 SAP 系统接收消息。 在设计器工具栏上选择“保存”。 
+1. 现在请保存逻辑应用工作流，以便可以开始从 SAP 系统接收消息。 在设计器工具栏上选择“保存”。
 
    现在，逻辑应用工作流已准备好从 SAP 系统接收消息。
 
@@ -1423,7 +1423,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
 
    有关 SAP 操作的详细信息，请参阅 [IDoc 操作的消息架构](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)。
 
-1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。 
+1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。
 
 默认会使用强类型化通过针对架构执行 XML 验证来检查无效值。 此行为可帮助提前检测问题。 “安全类型化”选项用于实现后向兼容，它只会检查字符串长度。  详细了解[“安全类型化”选项](#safe-typing)。
 
@@ -1468,7 +1468,7 @@ SAP 应用程序服务器或消息服务器名称解析为 IP 地址时，可能
    > }
    > ```
 
-1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。 
+1. 保存逻辑应用工作流。 在设计器工具栏上选择“保存”。
 
 ### <a name="test-your-workflow"></a>测试工作流
 
@@ -1649,7 +1649,7 @@ SAP NCo 指标和跟踪基于 SAP NCo 指标，特别是以下 NCo 类：
 
    [![该屏幕截图显示 Azure 门户中打开“日志”窗格以创建查询的 Application Insights。](./media/logic-apps-using-sap-connector/application-insights-query-panel.png)](./media/logic-apps-using-sap-connector/application-insights-query-panel.png#lightbox)
 
-1. 在“日志”窗格中，可以使用基于特定要求的 [Kusto 查询语言 (KQL)](/data-explorer/kusto/concepts) 创建[查询](/data-explorer/kusto/query)。
+1. 在“日志”窗格中，可以使用基于特定要求的 [Kusto 查询语言 (KQL)](/azure/data-explorer/kusto/concepts/) 创建[查询](/azure/data-explorer/kusto/query/)。
 
    可以使用类似于以下示例查询的查询模式：
 

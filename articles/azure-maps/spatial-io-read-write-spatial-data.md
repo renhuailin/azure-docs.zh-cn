@@ -6,14 +6,13 @@ ms.author: v-stharr
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
 ms.custom: devx-track-js
-ms.openlocfilehash: 51b301a7b98c4662c22a966343748d9b0e7752ad
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dfd5da016732d0424935e72e00b38cf597dd5a6e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747703"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430389"
 ---
 # <a name="read-and-write-spatial-data"></a>读取和写入空间数据
 
@@ -56,14 +55,14 @@ read 函数的结果是一个 `SpatialDataSet` 对象。 此对象可扩展 GeoJ
 
 <br/>
 
-<iframe height='500' scrolling='no' title='加载简单空间数据' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>加载简单空间数据</a>。
+<iframe height='500' scrolling='no' title='加载简单空间数据' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>加载简单空间数据</a>。
 </iframe>
 
 以下代码演示将展示如何读取 KML 或 KMZ，并将其加载到地图上。 KML 可以包含地面叠层，其形式为 `ImageLyaer` 或 `OgcMapLayer`。 这些叠层必须与功能分开添加到地图中。 此外，如果数据集包含自定义图标，则在加载功能之前需要将这些图标加载到地图资源上。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='将 KML 加载到地图上' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>将 KML 加载到地图上</a>。
+<iframe height='500' scrolling='no' title='将 KML 加载到地图上' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>将 KML 加载到地图上</a>。
 </iframe>
 
 用户可以选择提供代理服务，用于访问可能未启用 CORS 的跨域资产。 read 函数将尝试先使用 CORS 访问另一个域中的文件。 第一次使用 CORS 访问另一个域中的任何资源失败时，如果已提供代理服务，该函数只会请求附加文件。 read 函数会将文件 URL 附加到所提供代理 URL 的末尾。 此代码片段将展示如何将代理服务传递到 read 函数：
@@ -85,7 +84,7 @@ atlas.io.read('https://nonCorsDomain.example.com/mySuperCoolData.xml', {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='添加带分隔符的文件' src='//codepen.io/azuremaps/embed/ExjXBEb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/ExjXBEb/'>添加带分隔符的文件</a>。
+<iframe height='500' scrolling='no' title='添加带分隔符的文件' src='//codepen.io/azuremaps/embed/ExjXBEb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/ExjXBEb/'>添加带分隔符的文件</a>。
 </iframe>
 
 ## <a name="write-spatial-data"></a>写入空间数据
@@ -96,7 +95,7 @@ atlas.io.read('https://nonCorsDomain.example.com/mySuperCoolData.xml', {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='空间数据写入选项' src='//codepen.io/azuremaps/embed/YzXxXPG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/YzXxXPG/'>空间数据写入选项</a>。
+<iframe height='700' scrolling='no' title='空间数据写入选项' src='//codepen.io/azuremaps/embed/YzXxXPG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/YzXxXPG/'>空间数据写入选项</a>。
 </iframe>
 
 ## <a name="example-of-writing-spatial-data"></a>写入空间数据的示例
@@ -105,7 +104,7 @@ atlas.io.read('https://nonCorsDomain.example.com/mySuperCoolData.xml', {
 
 <br/>
 
-<iframe height='700' scrolling='no' title='将空间文件拖放到地图上' src='//codepen.io/azuremaps/embed/zYGdGoO/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/zYGdGoO/'>将空间文件拖放到地图上</a>。
+<iframe height='700' scrolling='no' title='将空间文件拖放到地图上' src='//codepen.io/azuremaps/embed/zYGdGoO/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/zYGdGoO/'>将空间文件拖放到地图上</a>。
 </iframe>
 
 用户可以选择提供代理服务，用于访问可能未启用 CORS 的跨域资产。 此代码片段演示了如何合并代理服务：
@@ -134,14 +133,14 @@ atlas.io.read(data, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='读取已知文本' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>读取已知文本</a>。
+<iframe height='500' scrolling='no' title='读取已知文本' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>读取已知文本</a>。
 </iframe>
 
 以下代码将演示如何来回读取和写入已知文本。
 
 <br/>
 
-<iframe height='700' scrolling='no' title='读取和写入已知文本' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>参阅 <a href='https://codepen.io'>CodePen</a>上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>读取和写入已知文本</a>。
+<iframe height='700' scrolling='no' title='读取和写入已知文本' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>参阅 <a href='https://codepen.io'>CodePen</a>上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>读取和写入已知文本</a>。
 </iframe>
 
 ## <a name="read-and-write-gml"></a>读取和写入 GML

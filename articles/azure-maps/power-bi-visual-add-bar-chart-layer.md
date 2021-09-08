@@ -1,20 +1,20 @@
 ---
 title: 向 Azure Maps Power BI 视觉对象中添加条形图层 | Microsoft Azure Maps
 description: 在本文中，你将了解如何在适用于 Power BI 的 Microsoft Azure Maps 视觉对象中使用条形图层。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 136676b46df6e32f98dca99fccba19d4aa369dbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4cb7fdf7f32070de66e81736d7572e0b48aad896
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896270"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429489"
 ---
 # <a name="add-a-bar-chart-layer"></a>添加条形图层
 
@@ -50,14 +50,14 @@ ms.locfileid: "92896270"
 | 透明度         | 每个条形的透明度。 |
 | 最小缩放级别             | 最小缩放级别图块可用。 |
 | 最大缩放级别             | 最大缩放级别图块可用。 |
-| 层位置       | 指定该层相对于其他地图层的位置。 |
+| 图层位置       | 指定该层相对于其他地图层的位置。 |
 
 > [!NOTE]
 > 如果条形的宽度值较小并且“缩放时缩放宽度”选项被禁用，则在大幅放大时，它们可能会消失，因为它们呈现的宽度大小可能小于一像素。 但如果启用了“缩放时缩放宽度”选项，则会在缩放级别发生更改时执行其他计算，这可能会影响大型数据集的性能。
 
 ## <a name="next-steps"></a>后续步骤
 
-向地图中添加更多上下文：
+向地图添加更多上下文：
 
 > [!div class="nextstepaction"]
 > [添加引用层](power-bi-visual-add-reference-layer.md)

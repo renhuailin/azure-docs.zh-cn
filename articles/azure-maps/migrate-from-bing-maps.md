@@ -1,20 +1,20 @@
 ---
 title: 教程：从必应地图迁移到 Azure Maps | Microsoft Azure Maps
 description: 介绍如何从必应地图迁移到 Microsoft Azure Maps 的教程。 本指南介绍如何切换到 Azure Maps API 和 SDK。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/17/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4be7bc555578c4abeaa65c6433da3e285b9235b2
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 074a21174798b53ee10c27e620d6227d1aacec98
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786548"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429687"
 ---
 # <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>教程：从必应地图迁移到 Azure Maps
 

@@ -4,15 +4,15 @@ description: 如何将数据从 Azure IoT Central 应用程序导出到 Azure �
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/25/2020
+ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 1a6a5a98b6989526908e464a314d271dd07c19d8
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 8235da7781ec55a90c81fca3a6393e5d1eda5c2f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110586247"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123481193"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>使用数据导出功能将 IoT 数据导出到云目标（旧版）
 
@@ -555,7 +555,7 @@ ms.locfileid: "110586247"
 
 如果预览应用程序中已存在“设备”和“设备模板”流已打开的现有数据导出，请在 2020 年 6 月 30 日之前更新导出。  这项要求适用于导出到 Azure Blob 存储、Azure 事件中心和 Azure 服务总线。
 
-自 2020 年 2 月 3 日起，应用程序中启用了“设备”和“设备模板”的所有新导出都将具有上述数据格式。 在此日期之前创建的所有导出都将保留在 2020 年 6 月 30 日之前的旧数据格式，此时，这些导出会自动迁移到新的数据格式。 新数据格式与 IoT Central 公共 API 中的[设备](/rest/api/iotcentral/2021-04-30preview/devices/get)、[设备属性](/rest/api/iotcentral/2021-04-30preview/devices/getproperties)、[设备云属性](/rest/api/iotcentral/2021-04-30preview/devices/getcloudproperties)和[设备模板](/rest/api/iotcentral/2021-04-30preview/devicetemplates/get)对象匹配。
+自 2020 年 2 月 3 日起，应用程序中启用了“设备”和“设备模板”的所有新导出都将具有上述数据格式。 在此日期之前创建的所有导出都将保留在 2020 年 6 月 30 日之前的旧数据格式，此时，这些导出会自动迁移到新的数据格式。 新数据格式与 IoT Central 公共 API 中的[设备](/rest/api/iotcentral/1.0/devices/get)、[设备属性](/rest/api/iotcentral/1.0/devices/get-properties)和[设备模板](/rest/api/iotcentral/1.0/device-templates/get)对象匹配。
 
 对于 **设备**，旧数据格式和新数据格式之间的显著差异包括：
 - `@id` 对于删除的设备，`deviceId` 将重命名为 `id` 

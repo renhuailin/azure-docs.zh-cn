@@ -4,15 +4,15 @@ description: 本文介绍了如何为 Azure Cosmos DB 帐户配置定期备份�
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/21/2021
+ms.date: 08/30/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7cb5c8fe924a2634627533203ed8f11969f0b432
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 56e9bfe95a78c8bf0771acdc98c761df9994a708
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733189"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221062"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>为 Azure Cosmos DB 帐户配置定期备份
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -49,7 +49,7 @@ Azure Cosmos DB 中的备份数据会在主要区域中复制三次。 可在创
 * 本地冗余备份存储：此选项在主要区域中的单个物理位置异步复制数据三次。
 
 > [!NOTE]
-> 区域冗余存储目前仅在[特定区域](high-availability.md#availability-zone-support)可用。 基于所选区域，此选项将不可用于新帐户或现有帐户。
+> 区域冗余存储目前仅在[特定区域](high-availability.md#availability-zone-support)可用。 根据为新帐户选择的区域或现有帐户使用的区域；区域冗余选项将不可用。
 >
 > 更新备份存储冗余不会对备份存储定价产生任何影响。
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 2c1f967e596b4ba19d121f3c0332259b92f78d06
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 1b2748664046c97258ee3414b741075627064bbc
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730604"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867478"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -20,6 +20,9 @@ ms.locfileid: "114730604"
 
 > [!NOTE]
 > Purview 集成运行时不能与同一台计算机上的 Azure Synapse Analytics 或 Azure 数据工厂集成运行时共享。 它需要安装在单独的计算机上。
+
+> [!IMPORTANT]
+> 如果在 2021 年 8 月 18 日之后创建了 Azure Purview 帐户，请确保从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并安装最新版本的自承载集成运行时。
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>创建自承载 Integration Runtime
 
@@ -77,10 +80,18 @@ ms.locfileid: "114730604"
 | `*.frontend.clouddatahub.net` | 443            | 全局基础结构 Purview 使用此域来运行其扫描。 由于没有专用资源，因此需要通配符。 |
 | `<managed Purview storage account>.core.windows.net`          | 443            | 自承载集成运行时使用此域连接到托管 Azure 存储帐户。|
 | `<managed Purview storage account>.queue.core.windows.net` | 443            | Purview 用于运行扫描过程的队列。 |
-| `<your Key Vault Name>.vault.azure.net` | 443           | 如果所有凭据都存储在 Azure Key Vault 中，则需要此域。 |
 | `download.microsoft.com` | 443           | 对于 SHIR 更新是可选的。 |
+
+根据你的源，可能还需要允许其他 Azure 或外部源的域。 下面提供了一些示例，以及用于连接到存储在 Key Vault 中的任何凭据的 Azure Key Vault 域。
+
+| 域名                  | 出站端口 | 说明                              |
+| ----------------------------- | -------------- | ---------------------------------------- |
+| `<storage account>.core.windows.net`          | 443            | 可选，用于连接到 Azure 存储帐户。 |
+| `*.database.windows.net`      | 1433           | 可选，用于连接到 Azure SQL 数据库或 Azure Synapse Analytics。 |
+| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | 可选，用于连接到 Azure Data Lake Store Gen 1。 |
+| `<datastoragename>.dfs.core.windows.net`    | 443            | 可选，用于连接到 Azure Data Lake Store Gen 2。 |
+| `<your Key Vault Name>.vault.azure.net` | 443           | 如果所有凭据都存储在 Azure Key Vault 中，则需要此域。 |
 | 各种域 | 从属          | SHIR 将连接到的任何其他源的域。 |
-  
   
 > [!IMPORTANT]
 > 在大多数环境中，还需要确认 DNS 的配置是否正确。 若要确认，可以使用 SHIR 计算机中的 nslookup 检查与上述每个域的连接。 每个 nslookup 应返回资源的 IP。 如果使用的是[专用终结点](catalog-private-link.md)，应返回专用 IP，而不是公共 IP。 如果未返回 IP，或者在使用专用终结点时返回了公共 IP，则需要解决 DNS/VNET 关联或专用终结点/VNET 对等互连。
@@ -97,4 +108,6 @@ ms.locfileid: "114730604"
 
 ## <a name="next-steps"></a>后续步骤
 
-[扫描如何检测已删除的资产](concept-detect-deleted-assets.md)
+- [扫描如何检测已删除的资产](concept-scans-and-ingestion.md#how-scans-detect-deleted-assets)
+
+- [对 Purview 使用专用终结点](catalog-private-link.md)

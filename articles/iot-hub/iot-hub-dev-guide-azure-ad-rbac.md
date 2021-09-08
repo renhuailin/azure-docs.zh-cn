@@ -7,21 +7,21 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/24/2021
+ms.date: 08/24/2021
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: b6ea56942580b3b8785dcf2b694b30ad64e8a258
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: 30be3718215c31566f36d931266e0e5cdf039357
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112894952"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867237"
 ---
 # <a name="control-access-to-iot-hub-using-azure-active-directory"></a>使用 Azure Active Directory 控制对 IoT 中心的访问权限
 
 Azure IoT 中心支持使用 Azure Active Directory (AAD) 对针对其服务 API 的请求（如创建设备标识或调用直接方法）进行身份验证。 此外，IoT 中心还支持使用 Azure 基于角色的访问控制 (Azure RBAC) 对相同服务 API 进行授权。 同时，你可以向 AAD 安全主体（可以是用户、组或应用程序服务主体）授予访问 IoT 中心的服务 API 的权限。
 
-使用 Azure AD 验证访问权限和使用 Azure RBAC 控制权限提供了优于[安全令牌](iot-hub-dev-guide-sas.md)的安全性和易用性。 为了最大限度地减少安全令牌中固有的潜在安全漏洞，Microsoft 建议尽可能将 Azure AD 与 IoT 中心结合使用。
+使用 Azure AD 验证访问权限和使用 Azure RBAC 控制权限提供了优于[安全令牌](iot-hub-dev-guide-sas.md)的安全性和易用性。 为了最大限度地减少安全令牌中固有的潜在安全漏洞，Microsoft 建议[尽可能将 Azure AD 与 IoT 中心一起使用](#azure-ad-access-and-shared-access-policies)。 
 
 > [!NOTE]
 > IoT 中心的设备 API（如设备到云的消息和更新报告的属性）不支持使用 Azure AD 进行身份验证。 请使用[对称密钥](iot-hub-dev-guide-sas.md#use-a-symmetric-key-in-the-identity-registry)或 [X.509](iot-hub-x509ca-overview.md) 向 IoT 中心验证设备。
@@ -43,7 +43,7 @@ Azure IoT 中心支持使用 Azure Active Directory (AAD) 对针对其服务 API
 
 IoT 中心提供了以下 Azure 内置角色，用于通过 Azure AD 和 RBAC 授予对 IoT 中心服务 API 的访问权限：
 
-| Role | 说明 | 
+| 角色 | 说明 | 
 | ---- | ----------- | 
 | [IoT 中心数据参与者](../role-based-access-control/built-in-roles.md#iot-hub-data-contributor) | 具有 IoT 中心数据平面操作的完全访问权限。 |
 | [IoT 中心数据读取者](../role-based-access-control/built-in-roles.md#iot-hub-data-reader) | 具有 IoT 中心数据平面属性的完全读取访问权限。 |
@@ -98,11 +98,24 @@ IoT 中心提供了以下 Azure 内置角色，用于通过 Azure AD 和 RBAC �
 > [!NOTE]
 > 若要使用 Azure AD 获取 IoT 中心的数据，需[设置指向独立事件中心的路由](iot-hub-devguide-messages-d2c.md#event-hubs-as-a-routing-endpoint)。 若要访问[与事件中心兼容的内置终结点](iot-hub-devguide-messages-read-builtin.md)，请像之前一样使用连接字符串（共享访问密钥）方法。 
 
-## <a name="azure-ad-access-from-azure-portal"></a>从 Azure 门户访问 Azure AD
+## <a name="azure-ad-access-and-shared-access-policies"></a>Azure AD 访问和共享访问策略
 
-在尝试访问 IoT 中心时，Azure 门户首先会检查是否已为你分配了具有 Microsoft.Devices/iotHubs/listkeys/action 的 Azure 角色。 如果是，Azure 门户将使用共享访问策略中的密钥来访问 IoT 中心。 否则，Azure 门户会尝试使用 Azure AD 帐户访问数据。 
+默认情况下，IoT 中心支持通过 Azure AD 以及[共享访问策略和安全令牌](iot-hub-dev-guide-sas.md)访问服务 API。 若要最大程度地减少安全令牌中固有的潜在安全漏洞，请禁止使用共享访问策略进行访问： 
 
-若要使用 Azure AD 帐户从 Azure 门户访问 IoT 中心，需要具有访问 IoT 中心数据资源（如设备和孪生体）的权限，并且还需要具有导航到 Azure 门户中的 IoT 中心资源的权限。 IoT 中心提供的内置角色可授予对设备和孪生体等资源的访问权限，但不授予对 IoT 中心资源的访问权限。 因此，若要访问门户，还需要分配 Azure 资源管理器 (ARM) 角色（如[读取者](../role-based-access-control/built-in-roles.md#reader)）。 读取者角色是一种不错选择，因为它是允许导航门户的最受限制的角色，且不包括 Microsoft.Devices/iotHubs/listkeys/action 权限（该权限通过共享访问策略提供对所有 IoT 中心数据资源的访问权限）。 
+1. 确保服务客户端和用户按照[最低特权原则](../security/fundamentals/identity-management-best-practices.md)对 IoT 中心拥有[足够的访问权限](#manage-access-to-iot-hub-using-azure-rbac-role-assignment)。
+1. 在 [Azure 门户](https://portal.azure.com)中，转到 IoT 中心。
+1. 在左侧，选择“共享访问策略”。
+1. 在“使用共享访问策略连接”下，选择“拒绝” 。
+    :::image type="content" source="media/iot-hub-dev-guide-azure-ad-rbac/disable-local-auth.png" alt-text="Azure 门户的屏幕截图，显示了如何关闭 IoT 中心共享访问策略":::
+1. 查看警告，然后选择“保存”。
+
+现在只能使用 Azure AD 和 RBAC 访问 IoT 中心服务 API。
+
+## <a name="azure-ad-access-from-the-azure-portal"></a>从 Azure 门户访问 Azure AD
+
+在尝试访问 IoT 中心时，Azure 门户首先会检查是否已为你分配了具有 Microsoft.Devices/iotHubs/listkeys/action 的 Azure 角色。 如果是，Azure 门户将使用共享访问策略中的密钥来访问 IoT 中心。 否则，Azure 门户会尝试使用 Azure AD 帐户来访问数据。 
+
+若要使用 Azure AD 帐户从 Azure 门户访问 IoT 中心，需要具有访问 IoT 中心数据资源（如设备和孪生体）的权限，还需要具有导航到 Azure 门户中的 IoT 中心资源的权限。 IoT 中心提供的内置角色可授予对设备和孪生体等资源的访问权限，但不授予对 IoT 中心资源的访问权限。 因此，若要访问门户，还需要分配 Azure 资源管理器 (ARM) 角色（如[读取者](../role-based-access-control/built-in-roles.md#reader)）。 读取者角色是一种不错选择，因为它是允许导航门户的最受限制的角色，且不包括 Microsoft.Devices/iotHubs/listkeys/action 权限（该权限通过共享访问策略提供对所有 IoT 中心数据资源的访问权限）。 
 
 若要确保帐户不具备分配的权限之外的访问权限，在创建自定义角色时，请勿包含 Microsoft.Devices/iotHubs/listkeys/action 权限。 例如，若要创建可以读取设备标识但无法创建或删除设备的自定义角色，请创建符合以下条件的自定义角色：
 - 具有 Microsoft.Devices/IotHubs/devices/read 数据操作
@@ -118,7 +131,7 @@ IoT 中心提供了以下 Azure 内置角色，用于通过 Azure AD 和 RBAC �
 
 - 当 `--auth-type` 的值为 `key` 时，将与之前一样，CLI 在与 IoT 中心交互时会自动发现合适的策略。
 
-- 当 `--auth-type` 的值为 `login` 时，操作中会使用登录了 Azure CLI 的主体的访问令牌。
+- 当 `--auth-type` 的值为 `login` 时，将使用主体中记录的 Azure CLI 中的访问令牌进行操作。
 
 若要了解详细信息，请参阅[适用于 Azure CLI 的 IoT 扩展发布页](https://github.com/Azure/azure-iot-cli-extension/releases/tag/v0.10.12)
 

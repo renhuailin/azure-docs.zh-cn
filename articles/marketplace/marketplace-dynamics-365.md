@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 04/30/2021
-ms.openlocfilehash: de9f88d7505f91c9075167a5adf81e3e5463cf0b
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: f83fb2b1dbcadf9d40431c7670a1d8618557b047
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178131"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866949"
 ---
 # <a name="plan-a-microsoft-dynamics-365-offer"></a>计划 Microsoft Dynamics 365 产品/服务
 
-本文介绍了商业市场中 Microsoft AppSource 提供的 Dynamics 365 的不同选项和功能。 AppSource 包括基于或扩展 Microsoft 365、Dynamics 365、PowerApps 和 Power BI 的产品/服务。
+本文介绍了商业市场中 Microsoft AppSource 提供的 Dynamics 365 的不同选项和功能。 AppSource 包括基于或扩展 Microsoft 365、Dynamics 365、Power Apps 和 Power BI 的产品/服务。
 
 开始之前，先在[合作伙伴中心](./create-account.md)创建一个商业市场帐户，并确保该帐户已在商业市场计划中注册。 此外，请查看[发布流程和指导](/office/dev/store/submit-to-appsource-via-partner-center)。
 

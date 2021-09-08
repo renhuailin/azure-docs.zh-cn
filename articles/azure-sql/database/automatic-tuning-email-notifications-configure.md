@@ -11,12 +11,12 @@ author: NikaKinska
 ms.author: nnikolic
 ms.reviewer: mathoma, wiassaf
 ms.date: 06/03/2019
-ms.openlocfilehash: 7216978845921e4b35c4cb3485379054cbf5cfff
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 8e1c8288317ee5d0424ee633a14431d87a78175f
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591794"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866353"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自动优化的电子邮件通知
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ Azure SQL 数据库自动优化建议可在 [Azure 门户](database-advisor-find
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>自动发送有关自动优化建议的电子邮件通知
 
-以下解决方案可自动发送包含自动优化建议的电子邮件通知。 所述解决方案包括使用 [Azure 自动化](../../automation/automation-intro.md)自动执行 PowerShell 脚本以检索优化建议，以及使用 [Microsoft Flow](https://flow.microsoft.com) 自动计划电子邮件的发送作业。
+以下解决方案可自动发送包含自动优化建议的电子邮件通知。 所述解决方案包括使用 [Azure 自动化](../../automation/automation-intro.md)自动执行 PowerShell 脚本以检索优化建议，以及使用 [Microsoft Power Automate](https://flow.microsoft.com) 自动计划电子邮件的发送作业。
 
 ## <a name="create-azure-automation-account"></a>创建 Azure 自动化帐户
 
@@ -89,7 +89,7 @@ Azure SQL 数据库自动优化建议可在 [Azure 门户](database-advisor-find
 ```powershell
 # PowerShell script to retrieve Azure SQL Database automatic tuning recommendations.
 #
-# Provided "as-is&quot; with no implied warranties or support.
+# Provided "as-is" with no implied warranties or support.
 # The script is released to the public domain.
 #
 # Replace <SUBSCRIPTION_ID_WITH_DATABASES> in the header with your Azure subscription ID.
@@ -97,7 +97,7 @@ Azure SQL 数据库自动优化建议可在 [Azure 门户](database-advisor-find
 # Microsoft Azure SQL Database team, 2018-01-22.
 
 # Set subscriptions : IMPORTANT – REPLACE <SUBSCRIPTION_ID_WITH_DATABASES> WITH YOUR SUBSCRIPTION ID
-$subscriptions = (&quot;<SUBSCRIPTION_ID_WITH_DATABASES>&quot;, &quot;<SECOND_SUBSCRIPTION_ID_WITH_DATABASES>&quot;, &quot;<THIRD_SUBSCRIPTION_ID_WITH_DATABASES>")
+$subscriptions = ("<SUBSCRIPTION_ID_WITH_DATABASES>", "<SECOND_SUBSCRIPTION_ID_WITH_DATABASES>", "<THIRD_SUBSCRIPTION_ID_WITH_DATABASES>")
 
 # Get credentials
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
@@ -181,17 +181,17 @@ Write-Output $table
 
 通过上述步骤，Azure 自动化中已加载用于检索自动优化建议的 PowerShell 脚本。 下一步是自动化和计划电子邮件发送作业。
 
-## <a name="automate-the-email-jobs-with-microsoft-flow"></a>使用 Microsoft Flow 自动化电子邮件作业
+## <a name="automate-the-email-jobs-with-microsoft-power-automate"></a>使用 Microsoft Power Automate 自动化电子邮件作业
 
-要完成作为最后一步的该解决方案，请在 Microsoft Flow 中创建包含三个操作（作业）的自动化流：
+要完成作为最后一步的该解决方案，请在 Microsoft Power Automate 中创建包含三个操作（作业）的自动化流：
 
 - “Azure 自动化 - 创建作业”- 用于执行 PowerShell 脚本以检索 Azure 自动化 Runbook 中的自动优化建议。
 - “Azure 自动化 - 获取作业输出”- 用于检索已执行的 PowerShell 脚本的输出。
 - “Office 365 Outlook - 发送电子邮件”- 用于发送电子邮件。 电子邮件使用创建此流的个人的工作或学校帐户发送。
 
-要了解有关 Microsoft Flow 功能的详细信息，请参阅[开始使用 Microsoft Flow](/flow/getting-started)。
+要了解有关 Microsoft Power Automate 功能的详细信息，请参阅 [Microsoft Power Automate 入门](/power-automate/getting-started)。
 
-此步骤的先决条件是注册 [Microsoft Flow](https://flow.microsoft.com) 帐户并登录。 进入解决方案后，请按照以下步骤设置新流
+此步骤的先决条件是注册 [Microsoft Power Automate](https://flow.microsoft.com) 帐户并登录。 进入解决方案后，请按照以下步骤设置新流
 
 1. 访问“我的流”菜单项。
 1. 在“我的流”中，选择页面顶部的“+从空白创建”链接。

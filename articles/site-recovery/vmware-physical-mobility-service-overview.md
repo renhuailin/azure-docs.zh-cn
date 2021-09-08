@@ -6,20 +6,20 @@ manager: gaggupta
 ms.service: site-recovery
 ms.topic: how-to
 ms.author: sharrai
-ms.date: 05/27/2021
-ms.openlocfilehash: 708f87e8d4ff93fd6c60bb923a422469ef66a3e6
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.date: 08/19/2021
+ms.openlocfilehash: 356d81e93997922b0ae9b2e82bf7670449f168af
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110580157"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123258825"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 
 在使用 [Azure Site Recovery](site-recovery-overview.md) 设置 VMware 虚拟机 (VM) 和物理服务器的灾难恢复时，可在每个本地 VMware VM 和物理服务器上安装 Site Recovery 移动服务。 移动服务可以捕获计算机上的数据写入，并将其转发到 Site Recovery 进程服务器。 移动服务由移动服务代理软件安装，可以使用以下方法进行部署：
 
 - [推送安装](#push-installation)：通过 Azure 门户启用保护时，Site Recovery 会在服务器上安装移动服务。
-- 手动安装：可以通过[用户界面 (UI)](#install-the-mobility-service-using-ui) 或[命令提示符](#install-the-mobility-service-using-command-prompt)在每台计算机上手动安装移动服务。
+- 手动安装：可以通过[用户界面 (UI)](#install-the-mobility-service-using-ui-classic) 或[命令提示符](#install-the-mobility-service-using-command-prompt-classic)在每台计算机上手动安装移动服务。
 - [自动部署](vmware-azure-mobility-install-configuration-mgr.md)：可以使用 Configuration Manager 等软件部署工具自动完成移动服务安装。
 
 > [!NOTE]
@@ -67,15 +67,17 @@ ms.locfileid: "110580157"
 1. 在代理安装的过程中，将安装适用于 Azure Site Recovery 的卷影复制服务 (VSS) 提供程序。 VSS 提供程序用于生成应用程序一致性恢复点。
    - 如果 VSS 提供程序安装失败，则代理安装会失败。 为了避免代理安装失败，请使用[版本 9.23](https://support.microsoft.com/help/4494485/update-rollup-35-for-azure-site-recovery) 或更高版本来生成崩溃一致性恢复点，然后手动安装 VSS 提供程序。
 
-## <a name="install-the-mobility-service-using-ui"></a>使用 UI 安装移动服务
+## <a name="install-the-mobility-service-using-ui-classic"></a>使用 UI 安装出行服务（经典）
 
+>[!NOTE]
+> 本部分适用于 Azure Site Recovery（经典）。 [下面是预览版的安装说明](#install-the-mobility-service-using-ui-preview)
 ### <a name="prerequisites"></a>先决条件
 
 - 确保所有服务器配置均符合[将 VMware VM 和物理服务器灾难恢复到 Azure 的支持矩阵](vmware-physical-azure-support-matrix.md)中的条件。
 - 针对服务器的操作系统[找到安装程序](#locate-installer-files)。
 
 >[!IMPORTANT]
-> 如果要将 Azure 基础结构即服务 (IaaS) VM 从一个 Azure 区域复制到另一个区域，请不要使用 UI 安装方法。 请使用[命令提示符](#install-the-mobility-service-using-command-prompt)安装。
+> 如果要将 Azure 基础结构即服务 (IaaS) VM 从一个 Azure 区域复制到另一个区域，请不要使用 UI 安装方法。 请使用[命令提示符](#install-the-mobility-service-using-command-prompt-classic)安装。
 
 1. 将安装文件复制到计算机，并运行它。
 1. 在“安装选项”中，选择“安装移动服务”。
@@ -95,7 +97,10 @@ ms.locfileid: "110580157"
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="移动服务注册最后一页。":::
 
-## <a name="install-the-mobility-service-using-command-prompt"></a>使用命令提示符安装移动服务
+## <a name="install-the-mobility-service-using-command-prompt-classic"></a>使用命令提示符安装出行服务（经典）
+
+>[!NOTE]
+> 本部分适用于 Azure Site Recovery（经典）。 [下面是预览版的安装说明](#install-the-mobility-service-using-command-prompt-preview)。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -132,13 +137,12 @@ ms.locfileid: "110580157"
 --- | ---
 语法 | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 安装程序日志 | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
-`/Role` | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
+`/Role` | 必需的安装参数。 指定是应安装出行服务（代理）还是主目标 (MT)。  注意：在以前的版本中，正确的开关是出行服务 (MS) 或主目标 (MT)
 `/InstallLocation`| 可选参数。 指定移动服务的安装位置（任意文件夹）。
 `/Platform` | 必需。 指定要在其中安装移动服务的平台： <br/> VMware VM/物理服务器的 VMware。 <br/> Azure VM 的 Azure。<br/><br/> 如果要将 Azure VM 视为物理计算机，请指定 **VMware**。
 `/Silent`| 可选。 指定是否以静默模式运行安装程序。
 
 #### <a name="registration-settings"></a>注册设置
-
 设置 | 详细信息
 --- | ---
 语法 | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
@@ -155,10 +159,10 @@ ms.locfileid: "110580157"
    tar -xvf Microsoft-ASR_UA_version_LinuxVersion_GA_date_release.tar.gz
    ```
 
-2. 按如下所示进行安装：
+2. 安装步骤如下（无需根帐户，但需要根权限）：
 
    ```shell
-   sudo ./install -d <Install Location> -r MS -v VmWare -q
+   sudo ./install -d <Install Location> -r Agent -v VmWare -q
    ```
 
 3. 安装完成后，必须将移动服务注册到配置服务器。 运行以下命令，将移动服务注册到配置服务器。
@@ -209,9 +213,9 @@ ms.locfileid: "110580157"
 `Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> 包括 SP2 和 SP3。
 [等待手动下载并放置在此文件夹中](#suse-11-sp3-server) | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
-`Microsoft-ASR_UA_version_SLES15-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 15 
+`Microsoft-ASR_UA_version_SLES15-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 15
 `Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6.4 </br> Oracle Enterprise Linux 6.5
-`Microsoft-ASR_UA_version_OL7-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 7 
+`Microsoft-ASR_UA_version_OL7-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 7
 `Microsoft-ASR_UA_version_OL8-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 8
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14.04
 `Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Ubuntu Linux 16.04 LTS 服务器
@@ -230,7 +234,7 @@ ms.locfileid: "110580157"
 1. 确保从 Microsoft 下载中心下载最新的移动代理安装程序，并将其放置在配置服务器和所有横向扩展进程服务器上的推送安装程序存储库中
 2. [下载](site-recovery-whats-new.md)最新的 SUSE Linux Enterprise Server 11 SP3 代理安装程序。
 3. 导航到配置服务器，将 SUSE Linux Enterprise Server 11 SP3 代理安装程序复制到路径 INSTALL_DIR\home\svsystems\pushinstallsvc\repository
-1. 复制最新的安装程序后，请重启 InMage PushInstall 服务。 
+1. 复制最新的安装程序后，请重启 InMage PushInstall 服务。
 1. 现在，导航到关联的横向扩展进程服务器，重复步骤 3 和步骤 4。
 1. 例如，如果安装路径为 C:\Program Files (x86)\Microsoft Azure Site Recovery，则上述目录将为
     1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
@@ -240,9 +244,9 @@ ms.locfileid: "110580157"
 从 9.36 版本开始作为更新或保护 RHEL 5 计算机的先决条件：
 
 1. 确保从 Microsoft 下载中心下载最新的移动代理安装程序，并将其放置在配置服务器和所有横向扩展进程服务器上的推送安装程序存储库中
-2. [下载](site-recovery-whats-new.md)最新的 RHEL 5 或 CentOS 5 代理安装程序。 
+2. [下载](site-recovery-whats-new.md)最新的 RHEL 5 或 CentOS 5 代理安装程序。
 3. 导航到配置服务器，将 RHEL 5 或 CentOS 5 代理安装程序复制到路径 INSTALL_DIR\home\svsystems\pushinstallsvc\repository
-1. 复制最新的安装程序后，请重启 InMage PushInstall 服务。 
+1. 复制最新的安装程序后，请重启 InMage PushInstall 服务。
 1. 现在，导航到关联的横向扩展进程服务器，重复步骤 3 和步骤 4。
 1. 例如，如果安装路径为 C:\Program Files (x86)\Microsoft Azure Site Recovery，则上述目录将为
     1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
@@ -254,10 +258,171 @@ ms.locfileid: "110580157"
 1. 确保从 Microsoft 下载中心下载最新的移动代理安装程序，并将其放置在配置服务器和所有横向扩展进程服务器上的推送安装程序存储库中
 2. [下载](site-recovery-whats-new.md)最新的 Debian 7 代理安装程序。
 3. 导航到配置服务器，将 Debian 7 代理安装程序复制到路径 INSTALL_DIR\home\svsystems\pushinstallsvc\repository
-1. 复制最新的安装程序后，请重启 InMage PushInstall 服务。 
+1. 复制最新的安装程序后，请重启 InMage PushInstall 服务。
 1. 现在，导航到关联的横向扩展进程服务器，重复步骤 3 和步骤 4。
 1. 例如，如果安装路径为 C:\Program Files (x86)\Microsoft Azure Site Recovery，则上述目录将为
     1. C:\Program Files (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
+
+## <a name="install-the-mobility-service-using-ui-preview"></a>使用 UI 安装出行服务（预览版）
+
+>[!NOTE]
+> 本部分适用于 Azure Site Recovery（预览版）。 [下面是经典版的安装说明](#install-the-mobility-service-using-ui-classic)。
+
+### <a name="prerequisites"></a>先决条件
+
+使用以下步骤找到服务器操作系统的安装程序文件：  
+- 在设备中，转到文件夹 E:\Software\Agents。
+- 复制与源计算机的操作系统对应的安装程序，将其放在源计算机上的本地文件夹中，例如 C:\Azure Site Recovery\Agent。
+
+**使用以下步骤安装出行服务**：
+
+1. 打开命令提示符并导航到放置安装程序文件的文件夹。
+
+   ```cmd
+    cd C:\Azure Site Recovery\Agent*
+   ```
+
+2. 运行以下命令以提取安装程序文件：
+
+   ```cmd
+   .\Microsoft-ASR_UA*Windows*release.exe /q /x:C:\Azure Site Recovery\Agent
+   ```
+
+3. 运行以下命令继续安装。 这将启动安装程序 UI：
+
+   ```cmd
+   .\UnifiedAgentInstaller.exe /Platform vmware /Role MS /CSType CSPrime /InstallLocation "C:\Azure Site Recovery\Agent"
+   ```
+
+   >[!NOTE]
+   >UI 中提到的安装位置与命令中传递的位置相同。
+
+4. 单击“安装”  。
+
+   这将开始安装出行服务。
+
+   请等待安装完成。 完成后，你将进入注册步骤，可以将源计算机注册到你选择的设备。
+
+   ![显示出行服务的“安装 UI”选项的图像](./media/vmware-physical-mobility-service-overview-preview/mobility-service-install.png)
+
+   ![显示出行服务的安装进程的图像](./media/vmware-physical-mobility-service-overview-preview/installation-progress.png)
+
+5. 复制“计算机详细信息”字段中的字符串。
+
+   此字段包含源计算机独有的信息。 [生成出行服务配置文件](#generate-mobility-service-configuration-file)时需要此信息。
+
+   ![显示源计算机字符串的图像](./media/vmware-physical-mobility-service-overview-preview/source-machine-string.png)
+
+6.  在统一代理配置器中提供出行服务配置文件的路径。
+7.  单击“注册”。
+
+    这会将源计算机成功注册到设备。
+
+## <a name="install-the-mobility-service-using-command-prompt-preview"></a>使用命令提示符安装出行服务（预览版）
+
+>[!NOTE]
+> 本部分适用于 Azure Site Recovery（预览版）。 [下面是经典版的安装说明](#install-the-mobility-service-using-command-prompt-classic)。
+
+### <a name="windows-machine"></a>Windows 计算机
+1. 打开命令提示符并导航到放置安装程序文件的文件夹。
+
+   ```cmd
+   cd C:\Azure Site Recovery\Agent
+   ```
+2. 运行以下命令来提取安装程序文件：
+   ```cmd
+       .\Microsoft-ASR_UA*Windows*release.exe /q /x:C:\Azure Site Recovery\Agent
+    ```
+3. 要继续安装，请运行以下命令：
+
+   ```cmd
+
+    .\UnifiedAgentInstaller.exe /Platform vmware /Silent /Role MS /CSType CSPrime /InstallLocation "C:\Azure Site Recovery\Agent"
+   ```
+    安装完成后，复制与参数 Agent Config Input 一起生成的字符串。 [生成出行服务配置文件](#generate-mobility-service-configuration-file)时需要此字符串。
+
+    ![用于下载配置文件的示例字符串 ](./media/vmware-physical-mobility-service-overview-preview/configuration-string.png)
+
+4. 成功安装后，使用以下命令将源计算机注册到上述设备：
+
+   ```cmd
+   "C:\Azure Site Recovery\Agent\agent\UnifiedAgentConfigurator.exe" /SourceConfigFilePath "config.json" /CSType CSPrime
+   ```
+
+#### <a name="installation-settings"></a>安装设置
+
+设置 | 详细信息
+--- | ---
+语法 | `.\UnifiedAgentInstaller.exe /Platform vmware /Role MS /CSType CSPrime /InstallLocation <Install Location>`
+`/Role` | 必需的安装参数。 指定是否将安装出行服务 (MS)。
+`/InstallLocation`| 可选。 指定移动服务的安装位置（任意文件夹）。
+`/Platform` | 必需。 指定要在其中安装移动服务的平台： <br/> VMware VM/物理服务器的 VMware。 <br/> Azure VM 的 Azure。<br/><br/> 如果要将 Azure VM 视为物理计算机，请指定 **VMware**。
+`/Silent`| 可选。 指定是否以静默模式运行安装程序。
+`/CSType`| 必需。 用于定义预览或旧版体系结构。 （CSPrime 或 CSLegacy）
+
+#### <a name="registration-settings"></a>注册设置
+
+设置 | 详细信息
+--- | ---
+语法 | `"<InstallLocation>\UnifiedAgentConfigurator.exe" /SourceConfigFilePath "config.json" /CSType CSPrime >`
+`/SourceConfigFilePath` | 必需。 出行服务配置文件的完整文件路径。 使用任何有效文件夹。
+`/CSType` |  必需。 用于定义预览或旧版体系结构。 （CSPrime 或 CSLegacy）。
+
+
+### <a name="linux-machine"></a>Linux 计算机
+
+1. 在终端会话中，将安装程序复制到要保护的服务器上的某个本地文件夹，如 /tmp。 然后运行下列命令：
+
+   ```shell
+       cd /tmp ;
+       tar -xvf Microsoft-ASR_UA_version_LinuxVersion_GA_date_release.tar.gz
+   ```
+
+2. 若要安装，请使用以下命令：
+   ```shell
+        ./install -q -r MS -v VmWare -c CSPrime
+    ```
+
+    安装完成后，复制与参数 Agent Config Input 一起生成的字符串。 [生成出行服务配置文件](#generate-mobility-service-configuration-file)时需要此字符串。
+
+3. 成功安装后，使用以下命令将源计算机注册到上述设备：
+
+   ```shell
+        <InstallLocation>/Vx/bin/UnifiedAgentConfigurator.sh -c CSPrime -S config.json -q
+    ```
+#### <a name="installation-settings"></a>安装设置
+
+  设置 | 详细信息
+  --- | ---
+    语法 | `./install -q -r MS -v VmWare -c CSPrime`
+    `-r` | 必需。 安装参数。 指定是否应安装出行服务 (MS)。
+    `-d` | 可选。 指定移动服务的安装位置：`/usr/local/ASR`。
+    `-v` | 必需。 指定要在其中安装移动服务的平台。 <br/> VMware VM/物理服务器的 VMware。 <br/> Azure VM 的 Azure。
+    `-q` | 可选。 指定是否以静默模式运行安装程序。
+    `-c` | 必需。 用于定义预览或旧版体系结构。 （CSPrime 或 CSLegacy）。
+
+#### <a name="registration-settings"></a>注册设置
+
+  设置 | 详细信息
+  --- | ---
+    语法 | `cd <InstallLocation>/Vx/bin UnifiedAgentConfigurator.sh -c CSPrime -S -q`  
+    `-s` | 必需。 出行服务配置文件的完整文件路径。 使用任何有效文件夹。
+    `-c` |  必需。 用于定义预览或旧版体系结构。 （CSPrime 或 CSLegacy）。
+    `-q` |  可选。 指定是否以静默模式运行安装程序。
+
+## <a name="generate-mobility-service-configuration-file"></a>生成出行服务配置文件
+
+  使用以下步骤生成出行服务配置文件：
+
+  1. 导航到要向其注册源计算机的设备。 打开 Microsoft Azure 设备配置管理器并导航到“出行服务配置详细信息”部分。
+  2. 粘贴从出行服务复制的计算机详细信息字符串，并将其粘贴到此处的输入字段中。
+  3. 单击“下载配置文件”。
+
+  ![显示出行服务的下载配置文件选项的图像](./media/vmware-physical-mobility-service-overview-preview/download-configuration-file.png)
+
+这将下载出行服务配置文件。 将此文件复制到源计算机的本地文件夹中。 可以将其放置在出行服务安装程序所在的同一文件夹中。
+
+请参阅有关[升级出行服务](upgrade-mobility-service-preview.md)的信息。
 
 ## <a name="next-steps"></a>后续步骤
 

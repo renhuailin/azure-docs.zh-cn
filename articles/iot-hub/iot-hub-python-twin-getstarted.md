@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
-ms.openlocfilehash: 292c23398950a367f77c4200925007f660702a34
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 85a8b539d40aac11d0ce39ba4329b7466f48c009
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737729"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835461"
 ---
 # <a name="get-started-with-device-twins-python"></a>设备孪生入门 (Python)
 
@@ -154,7 +154,6 @@ ms.locfileid: "121737729"
 
     ```python
     import time
-    import threading
     from azure.iot.device import IoTHubModuleClient
     ```
 
@@ -164,49 +163,55 @@ ms.locfileid: "121737729"
     CONNECTION_STRING = "[IoTHub Device Connection String]"
     ```
 
-5. 将以下代码添加到 **ReportConnectivity.py** 文件以实现设备孪生功能：
+5. 将以下代码添加到 ReportConnectivity.py 文件以实例化客户端并实现设备孪生功能：
 
     ```python
-    def twin_update_listener(client):
-        while True:
-            patch = client.receive_twin_desired_properties_patch()  # blocking call
-            print("Twin patch received:")
-            print(patch)
-
-    def iothub_client_init():
+    def create_client():
+        # Instantiate client
         client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
-        return client
 
-    def iothub_client_sample_run():
+        # Define behavior for receiving twin desired property patches
+        def twin_patch_handler(twin_patch):
+            print("Twin patch received:")
+            print(twin_patch)
+
         try:
-            client = iothub_client_init()
+            # Set handlers on the client
+            client.on_twin_desired_properties_patch_received = twin_patch_handler
+        except:
+            # Clean up in the event of failure
+            client.shutdown()
 
-            twin_update_listener_thread = threading.Thread(target=twin_update_listener, args=(client,))
-            twin_update_listener_thread.daemon = True
-            twin_update_listener_thread.start()
+        return client
+    ```
 
-            # Send reported 
+6. 在 ReportConnectivity.py 的末尾添加以下代码来运行应用程序：
+
+    ```python
+    def main():
+        print ( "Starting the Python IoT Hub Device Twin device sample..." )
+        client = create_client()
+        print ( "IoTHubModuleClient waiting for commands, press Ctrl-C to exit" )
+
+        try:
+            # Update reported properties with cellular information
             print ( "Sending data as reported property..." )
             reported_patch = {"connectivity": "cellular"}
             client.patch_twin_reported_properties(reported_patch)
             print ( "Reported properties updated" )
 
+            # Wait for program exit
             while True:
                 time.sleep(1000000)
         except KeyboardInterrupt:
-            print ( "IoT Hub Device Twin device sample stopped" )
-    ```
+            print ("IoT Hub Device Twin device sample stopped")
+        finally:
+            # Graceful exit
+            print("Shutting down IoT Hub Client")
+            client.shutdown()
 
-    IoTHubModuleClient 对象公开从该设备与设备孪生交互所需的所有方法。 上面的代码首先初始化 IoTHubModuleClient 对象，然后检索你的设备的设备孪生，并使用连接信息更新其报告属性。
-
-6. 在 **ReportConnectivity.py** 的末尾添加以下代码来实现 **iothub_client_sample_run** 函数：
-
-    ```python
     if __name__ == '__main__':
-        print ( "Starting the Python IoT Hub Device Twin device sample..." )
-        print ( "IoTHubModuleClient waiting for commands, press Ctrl-C to exit" )
-
-        iothub_client_sample_run()
+        main()
     ```
 
 7. 运行设备应用：

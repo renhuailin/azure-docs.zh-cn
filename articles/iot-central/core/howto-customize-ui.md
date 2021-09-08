@@ -3,16 +3,16 @@ title: 自定义 Azure IoT Central UI | Microsoft Docs
 description: 如何自定义 Azure IoT Central 应用程序的主题和帮助链接
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/06/2019
+ms.date: 08/18/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 02c3dde025ccd8bb02b3ba5535a21cacfa8e6dbe
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 87ff1d68076f9e4ce45a6b0de6a567b2ce90da16
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732888"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430984"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>自定义 Azure IoT Central UI
 

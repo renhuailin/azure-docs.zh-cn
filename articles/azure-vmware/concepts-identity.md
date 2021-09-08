@@ -3,12 +3,12 @@ title: 概念 - 标识和访问
 description: 了解 Azure VMware 解决方案的标识和访问概念
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: 7d6bcfc9426761615d1f9220f36834cc19eb09f8
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: e09a69ae1e3a9e8cba5d1027af1fc3ad57c73446
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069496"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252547"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware 解决方案标识概念
 
@@ -16,13 +16,7 @@ Azure VMware 解决方案私有云是使用 vCenter Server 和 NSX-T Manager 进
 
 ## <a name="vcenter-access-and-identity"></a>vCenter 访问和标识
 
-在 Azure VMware 解决方案中，vCenter 具有名为 cloudadmin 的内置本地用户，并为该用户分配了 CloudAdmin 角色。 本地 cloudadmin 用户用于在 Active Directory (AD) 中设置用户。 通常，CloudAdmin 角色会在私有云中创建和管理工作负载。 但在 Azure VMware 解决方案中，CloudAdmin 角色具有与其他 VMware 云解决方案中不同的 vCenter 特权。     
-
-- 在 vCenter 和 ESXi 本地部署中，管理员有权访问 vCenter \@ 帐户。 还可以为其分配更多的 AD 用户和组。 
-
-- 在 Azure VMware 解决方案部署中，管理员无权访问管理员用户帐户。 但是，他们可以将 AD 用户和组分配到 vCenter 上的 CloudAdmin 角色。  
-
-私有云用户无法访问 Microsoft 支持和管理的特定管理组件，也无法对其进行配置。 例如，群集、主机、数据存储和分布式虚拟交换机。
+[!INCLUDE [vcenter-access-identity-description](includes/vcenter-access-identity-description.md)]
 
 > [!IMPORTANT]
 > Azure VMware 解决方案在 vCenter 上提供自定义角色，但目前不在 Azure VMware 解决方案门户中提供。 有关详细信息，请参阅本文后面的[在 vCenter 上创建自定义角色](#create-custom-roles-on-vcenter)部分。 
@@ -111,8 +105,12 @@ Azure VMware 解决方案支持使用具有与 CloudAdmin 角色相同或更低�
 
 现在，你已了解 Azure VMware 解决方案访问和标识概念，建议你了解以下内容：
 
-- [如何启用 Azure VMware 解决方案资源](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider)  
+- [如何为 vCenter 配置外部标识源](configure-identity-source-vcenter.md)
+
+- [如何启用 Azure VMware 解决方案资源](deploy-azure-vmware-solution.md#register-the-microsoftavs-resource-provider)
+
 - [每个特权的详细信息](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
+
 - [Azure VMware 解决方案如何监视和修复私有云](./concepts-private-clouds-clusters.md#host-monitoring-and-remediation)
 
 

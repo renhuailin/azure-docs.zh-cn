@@ -1,20 +1,20 @@
 ---
 title: 将图块层添加到 Azure Maps Power BI 视觉对象 | Microsoft Azure Maps
 description: 在本文中，你将了解如何在适用于 Power BI 的 Microsoft Azure Maps 视觉对象中使用图块层。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 1aee3c8213221775e3fde21003055fd9cc973455
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 0edb31901950da22c321af2d6c41966465f916f9
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669344"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430407"
 ---
 # <a name="add-a-tile-layer"></a>添加图块层
 

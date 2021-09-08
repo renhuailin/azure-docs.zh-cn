@@ -3,20 +3,20 @@ title: 创建租户模型（预览版）- 语音服务
 titleSuffix: Azure Cognitive Services
 description: 自动生成一个安全且合规的租户模型（包含 Microsoft 365 数据的自定义语音识别），该模型使用 Microsoft 365 数据，以提供针对组织特定术语的最佳语音识别体验。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2020
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0076364d0075573571e76cf230b4920763bb6e2c
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: ffc4292a519084f6e5e7729ebe56c77d69750c3d
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122072545"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535538"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>教程：创建租户模型（预览版）
 

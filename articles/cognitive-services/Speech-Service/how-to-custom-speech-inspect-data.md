@@ -3,19 +3,19 @@ title: 检查自定义语音识别的数据质量 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 自定义语音识别提供的工具可以将音频数据与相应的识别结果进行比较，因此可以通过视觉方式检查模型的质量。 你可以播放上传的音频，确定提供的识别结果是否正确。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: lajanuar
-ms.openlocfilehash: f7e9d16584e19bb54eb14500ae67553f9557e60a
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 5f127a588b4b104c8c09771b6ede52f8049d2110
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066515"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543596"
 ---
 # <a name="inspect-custom-speech-data"></a>检查自定义语音识别数据
 

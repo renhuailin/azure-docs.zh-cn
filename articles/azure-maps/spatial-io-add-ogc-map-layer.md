@@ -6,13 +6,12 @@ ms.author: v-stharr
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-ms.openlocfilehash: 387521e07108aeb101361c3720ea6347ded58c75
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 43fec3aacb1bc22566f4e918166f5e004110a563
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735862"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437681"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>通过开放地理空间信息联盟 (OGC) 添加地图层
 
@@ -54,7 +53,7 @@ Web 地图服务 (WMS)
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC 地图层示例' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC 地图层示例</a>。
+<iframe height='700' scrolling='no' title='OGC 地图层示例' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC 地图层示例</a>。
 </iframe>
 
 ## <a name="ogc-map-layer-options"></a>OGC 地图层选项
@@ -63,7 +62,7 @@ Web 地图服务 (WMS)
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC 地图层选项' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC 地图层选项</a>。
+<iframe height='700' scrolling='no' title='OGC 地图层选项' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC 地图层选项</a>。
 </iframe>
 
 ## <a name="ogc-web-map-service-explorer"></a>OGC Web 地图服务资源管理器
@@ -72,7 +71,7 @@ Web 地图服务 (WMS)
 
 <br/>
 
-<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web 地图服务资源管理器' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web 地图服务资源管理器</a>。
+<iframe height='750' scrolling='no' title='OGC Web 地图服务资源管理器' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web 地图服务资源管理器</a>。
 </iframe>
 
 还可以指定要使用代理服务的地图设置。 通过代理服务，即使某些资源托管在未启用 CORS 的域中，你也可以加载这些资源。

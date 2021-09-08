@@ -1,27 +1,30 @@
 ---
-title: 排查 Azure 数据工厂问题 | Microsoft Docs
-description: 了解如何排查 Azure 数据工厂中的外部控制活动问题。
+title: 常规故障排除
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何对 Azure 数据工厂和 Azure Synapse Analytics 管道中的外部控制活动进行故障排除。
 author: nabhishek
 ms.service: data-factory
+ms.subservice: troubleshooting
+ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 12/30/2020
+ms.date: 08/24/2021
 ms.author: abnarain
-ms.openlocfilehash: 3011309da477dcfad2285e5832dfa163f69cc419
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: bab07b19efc1978836d1f14463392f8de2bd6e92
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108183535"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864549"
 ---
-# <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
+# <a name="troubleshoot-azure-data-factory-and-synapse-pipelines"></a>排查 Azure 数据工厂和 Synapse 管道问题
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文探讨 Azure 数据工厂中的外部控制活动的常用故障排除方法。
+本文探讨排查 Azure 数据工厂和 Synapse 管道中的外部控制活动问题的常用方法。
 
 ## <a name="connector-and-copy-activity"></a>连接器和复制活动
 
-如果遇到连接器问题（例如，使用复制活动时遇到错误），请参阅[排查 Azure 数据工厂连接器问题](connector-troubleshoot-guide.md)。
+如果遇到连接器问题（例如，使用复制活动时遇到错误），请参阅[排查连接器问题](connector-troubleshoot-guide.md)一文。
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
@@ -157,7 +160,7 @@ ms.locfileid: "108183535"
 
 - **原因**：此错误的原因是 Data Lake Analytics 中发生了限制。
 
-- **建议**：减少提交到 Data Lake Analytics 的作业数。 更改活动中的数据工厂触发器和并发设置，或提高针对 Data Lake Analytics 的限制。
+- **建议**：减少提交到 Data Lake Analytics 的作业数。 更改活动中的触发器和并发设置，或提高针对 Data Lake Analytics 的限制。
 
 <br/> 
 
@@ -165,7 +168,7 @@ ms.locfileid: "108183535"
 
 - **原因**：此错误的原因是 Data Lake Analytics 中发生了限制。
 
-- **建议**：减少提交到 Data Lake Analytics 的作业数。 更改活动中的数据工厂触发器和并发设置，或提高针对 Data Lake Analytics 的限制。
+- **建议**：减少提交到 Data Lake Analytics 的作业数。 更改活动中的触发器和并发设置，或提高针对 Data Lake Analytics 的限制。
 
 ### <a name="error-code-2705"></a>错误代码:2705
 
@@ -231,7 +234,7 @@ ms.locfileid: "108183535"
 
 - **消息**：`Response Content is not a valid JObject.`
 
-- **原因：** 调用的 Azure 函数未在响应中返回 JSON 有效负载。 Azure 数据工厂 (ADF) Azure 函数活动仅支持 JSON 响应内容。
+- **原因：** 调用的 Azure 函数未在响应中返回 JSON 有效负载。 Azure 数据工厂和 Synapse 管道 Azure 函数活动仅支持 JSON 响应内容。
 
 - **建议**：更新 Azure 函数以返回有效的 JSON 有效负载，例如，C# 函数可以返回 `(ActionResult)new OkObjectResult("{\"Id\":\"123\"}");`
 
@@ -407,14 +410,6 @@ ms.locfileid: "108183535"
 
 - **建议**：转到 Azure 门户，找到你的存储，将连接字符串复制并粘贴到链接服务，然后重试。
 
-### <a name="error-code-2108"></a>错误代码：2108
-
-- **消息**：`Error calling the endpoint '%url;'. Response status code: '%code;'`
-
-- **原因：** 某个根本性问题（例如网络连接问题、DNS 失败、服务器证书验证问题或超时）导致请求失败。
-
-- **建议**：使用 Fiddler/Postman 验证请求。
-
 ### <a name="error-code-2110"></a>错误代码：2110
 
 - **消息**：`The linked service type '%linkedServiceType;' is not supported for '%executorType;' activities.`
@@ -438,14 +433,6 @@ ms.locfileid: "108183535"
 - **原因：** 云类型不受支持，或者对于 EndpointSuffix 中的存储来说无法确定。
 
 - **建议**：使用另一个云中的存储，然后重试。
-
-### <a name="error-code-2128"></a>错误代码：2128
-
-- **消息**：`No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
-
-- **原因：** 网络连接、DNS 失败、服务器证书验证或超时。
-
-- **建议**：验证尝试访问的终结点是否响应请求。 可以使用 Fiddler/Postman 等工具。
 
 ## <a name="custom"></a>自定义
 
@@ -569,7 +556,7 @@ ms.locfileid: "108183535"
 
 - **建议**：这可能是普通的 HDInsight 连接问题或网络连接问题。 首先确认是否可以从任何浏览器打开 HDInsight Ambari UI。 然后检查凭据是否仍然有效。
    
-   如果使用自承载集成运行时 (IR)，请从安装了自承载 IR 的 VM 或计算机执行此步骤。 然后再次尝试从数据工厂提交作业。
+   如果使用自承载集成运行时 (IR)，请从安装了自承载 IR 的 VM 或计算机执行此步骤。 然后再次尝试提交作业。
 
    有关详细信息，请阅读 [Ambari Web UI](../hdinsight/hdinsight-hadoop-manage-ambari.md#ambari-web-ui)。
 
@@ -602,7 +589,7 @@ ms.locfileid: "108183535"
 
 - **原因：** 如果错误消息包含类似于“`Unable to service the submit job request as templeton service is busy with too many submit job requests`”或“`Queue root.joblauncher already has 500 applications, cannot accept submission of application`”的消息，则意味着同时提交到 HDInsight 的作业过多。
 
-- **建议**：限制提交到 HDInsight 的并发作业数。 如果这些作业是同一活动提交的，请参阅“数据工厂活动并发性”。 更改触发器，以将并发管道运行分散到不同的时间。
+- **建议**：限制提交到 HDInsight 的并发作业数。 如果这些作业是同一活动提交的，请参阅“活动并发性”。 更改触发器，以将并发管道运行分散到不同的时间。
 
    请参阅 [HDInsight 文档](../hdinsight/hdinsight-hadoop-templeton-webhcat-debug-errors.md)，根据错误中的建议调整 `templeton.parallellism.job.submit`。
 
@@ -612,9 +599,9 @@ ms.locfileid: "108183535"
 
 - **原因：** HDInsight 群集或服务出现问题。
 
-- **建议**：如果 ADF 尝试请求正在运行的作业的状态时未收到 HDInsight 群集的响应，则会发生此错误。 此问题可能是群集本身造成的，也可能是 HDInsight 服务中断造成的。
+- **建议**：如果服务尝试请求正在运行的作业的状态时未收到 HDInsight 群集的响应，则会发生此错误。 此问题可能是群集本身造成的，也可能是 HDInsight 服务中断造成的。
 
-   请参阅 https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guide 上的 HDInsight 故障排除文档，或联系支持人员以获得更多帮助。
+   请参阅 [HDInsight 故障排除文档](../hdinsight/hdinsight-troubleshoot-guide.md)，或联系 Microsoft 支持人员以获得更多帮助。
 
 ### <a name="error-code-2302"></a>错误代码：2302
 
@@ -672,7 +659,7 @@ ms.locfileid: "108183535"
 
 - **消息**：`Failed to initialize the HDInsight client for the cluster '%cluster;'. Error: '%message;'`
 
-- **原因：** HDI 群集的连接信息不正确、提供的用户无权执行所需的操作，或者 HDInsight 服务在响应来自 ADF 的请求时出现问题。
+- **原因**：HDI 群集的连接信息不正确、提供的用户无权执行所需的操作，或者 HDInsight 服务在响应来自服务的请求时出现问题。
 
 - **建议**：验证用户信息是否正确，并验证是否可以在安装 IR（如果使用自承载 IR）的 VM 上的浏览器中打开 HDI 群集的 Ambari UI，或者是否可以从任何计算机（如果使用 Azure IR）打开此 UI。
 
@@ -690,19 +677,19 @@ ms.locfileid: "108183535"
 
 - **消息**：`Failed to submit Spark job. Error: '%message;'`
 
-- **原因：** ADF 已尝试使用 Livy API (livy/batch) 在 Spark 群集上创建批，但收到了错误。
+- **原因**：服务已尝试使用 Livy API (livy/batch) 在 Spark 群集上创建批，但收到了错误。
 
-- **建议**：请按照错误消息解决问题。 如果信息不足以解决问题，请联系 HDI 团队，并向他们提供可在 ADF“监视”页的活动运行输出中找到的批 ID 和作业 ID。 若要进一步进行故障排除，请收集批处理作业的完整日志。
+- **建议**：请按照错误消息解决问题。 如果信息不足以解决问题，请联系 HDI 团队，并向他们提供可在服务“监视”页的活动运行输出中找到的批 ID 和作业 ID。 若要进一步进行故障排除，请收集批处理作业的完整日志。
 
    若要详细了解如何收集完整日志，请参阅[获取批处理作业的完整日志](/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)。
 
 ### <a name="error-code-2312"></a>错误代码：2312
 
-- **消息**：`Spark job failed, batch id:%batchId;. Please follow the links in the activity run Output from ADF Monitoring page to troubleshoot the run on HDInsight Spark cluster. Please contact HDInsight support team for further assistance.`
+- **消息**：`Spark job failed, batch id:%batchId;. Please follow the links in the activity run Output from the service Monitoring page to troubleshoot the run on HDInsight Spark cluster. Please contact HDInsight support team for further assistance.`
 
 - **原因：** 作业在 HDInsight Spark 群集上失败。
 
-- **建议**：点击 ADF“监视”页上的活动运行输出中的链接，排查 HDInsight Spark 群集上的运行问题。 联系 HDInsight 支持团队以获得更多帮助。
+- **建议**：点击服务“监视”页上的活动运行输出中的链接，排查 HDInsight Spark 群集上的运行问题。 联系 HDInsight 支持团队以获得更多帮助。
 
    若要详细了解如何收集完整日志，请参阅[获取批处理作业的完整日志](/rest/api/hdinsightspark/hdinsight-spark-batch-job#get-the-full-log-of-a-batch-job)。
 
@@ -764,7 +751,7 @@ ms.locfileid: "108183535"
 
 - **建议**： 
     1. 通过在浏览器中打开 HDInsight 群集的 Ambari UI，验证凭据是否正确。
-    1. 如果群集位于虚拟网络 (VNet) 中，而使用的是自承载 IR，则 HDI URL 必须是该 VNet 中的专用 URL，且应在群集名称后面列出“-int”。
+    1. 如果群集位于虚拟网络 (VNet) 中，而要使用的是自承载 IR，则 HDI URL 必须是 VNet 中的专用 URL，且应在群集名称后面列出 `-int`。
     
        例如，将 `https://mycluster.azurehdinsight.net/` 更改为 `https://mycluster-int.azurehdinsight.net/`。 请注意，`-int` 位于 `mycluster` 的后面，`.azurehdinsight.net` 的前面
     1. 如果群集位于 VNet 中，而使用的是自承载 IR，并且已使用专用 URL，但连接仍然失败，则表示安装 IR 的 VM 在连接到 HDI 时出现了问题。 
@@ -772,7 +759,7 @@ ms.locfileid: "108183535"
        连接到安装了 IR 的 VM，并在浏览器中打开 Ambari UI。 对群集使用专用 URL。 应该能够在浏览器中建立此连接。 如果不能，请联系 HDInsight 支持团队以获得更多帮助。
     1. 如果未使用自承载 IR，则 HDI 群集应可公开访问。 在浏览器中打开 Ambari UI，并检查它是否已打开。 如果群集或其上的服务出现任何问题，请联系 HDInsight 支持团队以获得帮助。
 
-       ADF 链接服务中使用的 HDI 群集 URL 必须可供 ADF IR（自承载 IR 或 Azure IR）访问，这样才能通过连接测试，并使运行正常工作。 可以通过在 VM 或任意公共计算机上的浏览器中打开该 URL，来验证此状态。
+       链接服务中使用的 HDI 群集 URL 必须可供 IR（自承载 IR 或 Azure IR）访问，这样才能通过连接测试，并使运行正常工作。 可以通过在 VM 或任意公共计算机上的浏览器中打开该 URL，来验证此状态。
 
 ### <a name="error-code-2343"></a>错误代码：2343
 
@@ -786,7 +773,7 @@ ms.locfileid: "108183535"
 
 - **消息**：`Failed to read the content of the hive script. Error: '%message;'`
 
-- **原因：** 脚本文件不存在，或 ADF 无法连接到脚本所在的位置。
+- **原因**：脚本文件不存在，或服务无法连接到脚本所在的位置。
 
 - **建议**：验证脚本是否存在，以及关联的链接服务是否有适当的连接凭据。
 
@@ -794,7 +781,7 @@ ms.locfileid: "108183535"
 
 - **消息**：`Failed to create ODBC connection to the HDI cluster with error message '%message;'.`
 
-- **原因：** ADF 已尝试与 HDI 群集建立开放式数据库连接 (ODBC) 连接，但失败并出现错误。
+- **原因**：服务已尝试与 HDI 群集建立开放式数据库连接 (ODBC) 连接，但失败并出现错误。
 
 - **建议**： 
 
@@ -814,7 +801,7 @@ ms.locfileid: "108183535"
 
 - **消息**：`Hive execution through ODBC failed with error message '%message;'.`
 
-- **原因：** ADF 已通过 ODBC 连接将要执行的 Hive 脚本提交到 HDI 群集，但脚本在 HDI 上失败。
+- **原因**：服务已通过 ODBC 连接将要执行的 Hive 脚本提交到 HDI 群集，但脚本在 HDI 上失败。
 
 - **建议**： 
 
@@ -844,7 +831,7 @@ ms.locfileid: "108183535"
 
 - **原因：** 提供的凭据（用于连接到文件所在的存储）不正确，或存储中不存在文件。
 
-- **建议**：此错误是在 ADF 对 HDI 活动进行准备时发生的。ADF 在将作业提交到 HDI 之前，会尝试将文件复制到主存储。 请检查提供的位置是否存在文件以及存储连接是否正确。 ADF HDI 活动不支持与 HDI 活动相关的存储帐户中的 MSI 身份验证，因此请验证这些链接服务是否有完整的密钥或者是否使用 Azure Key Vault。
+- **建议**：此错误是在服务对 HDI 活动进行准备时发生的。服务在将作业提交到 HDI 之前，会尝试将文件复制到主存储。 请检查提供的位置是否存在文件以及存储连接是否正确。 HDI 活动不支持与 HDI 活动相关的存储帐户中的 MSI 身份验证，因此请验证这些链接服务是否有完整的密钥或者是否使用 Azure Key Vault。
 
 ### <a name="error-code-2351"></a>错误代码：2351
 
@@ -946,7 +933,7 @@ ms.locfileid: "108183535"
 
 - **消息**：`Failed to create on demand HDI cluster. Cluster name is '%clusterName;'.`
 
-- **原因：** 群集创建失败，并且 ADF 未收到 HDInsight 服务返回的错误。
+- **原因**：群集创建失败，并且服务未收到 HDInsight 服务返回的错误。
 
 - **建议**：打开 Azure 门户，尝试查找具有所提供名称的 HDI 资源，然后检查预配状态。 联系 HDInsight 支持团队以获得更多帮助。
 
@@ -958,7 +945,7 @@ ms.locfileid: "108183535"
 
 - **建议**：提供 Azure Blob 存储帐户作为 HDInsight 按需链接服务的附加存储。
 
-### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>ADF 链接服务使用 HDInsight ESP 群集时出现 SSL 错误
+### <a name="ssl-error-when-linked-service-using-hdinsight-esp-cluster"></a>链接服务使用 HDInsight ESP 群集时出现 SSL 错误
 
 - 消息：`Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
 
@@ -976,7 +963,7 @@ ms.locfileid: "108183535"
 
 - **原因：** 此问题与网络连接、DNS 失败、服务器证书验证或超时相关。
 
-- **建议**：验证尝试访问的终结点是否响应请求。 可以使用 **Fiddler/Postman** 等工具。
+- **建议**：验证尝试访问的终结点是否响应请求。 可以使用 Fiddler/Postman/Netmon/Wireshark 之类的工具。
 
 ### <a name="error-code-2108"></a>错误代码：2108
 
@@ -984,7 +971,7 @@ ms.locfileid: "108183535"
 
 - **原因：** 某个根本性问题（例如网络连接问题、DNS 失败、服务器证书验证问题或超时）导致请求失败。
 
-- **建议**：使用 Fiddler/Postman 验证请求。
+- 建议：使用 Fiddler/Postman/Netmon/Wireshark 验证请求。
 
 #### <a name="more-details"></a>更多详细信息
 若要使用 **Fiddler** 创建受监视 Web 应用程序的 HTTP 会话，请执行以下步骤：
@@ -1031,7 +1018,7 @@ ms.locfileid: "108183535"
 
 **错误消息：** `The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
 
-**原因：** 每个活动运行的有效负载包括活动配置、关联的数据集和链接服务配置（如果有），以及为每个活动类型生成的系统属性的一小部分。 此类负载大小限制为 896 KB，如[数据工厂限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)部分所述。
+**原因：** 每个活动运行的有效负载包括活动配置、关联的数据集和链接服务配置（如果有），以及为每个活动类型生成的系统属性的一小部分。 如[数据工厂](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)和 [Azure Synapse Analytics](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-synapse-analytics-limits) 的 Azure 限制文档中所述，此类有效负载大小限制为 896 KB。
 
 **建议：** 达到此限制，很可能是因为从上游活动输出或外部传入了一个或多个大参数值，尤其是在控制流中跨活动传递实际数据时。 请检查是否可以减小大参数值，或调整管道逻辑以避免跨活动传递此类值，而改为在活动内处理此类值。
 
@@ -1040,7 +1027,7 @@ ms.locfileid: "108183535"
 若要获取故障排除方面的更多帮助，请尝试参阅以下资源：
 
 * [数据工厂博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-* [数据工厂功能请求](https://feedback.azure.com/forums/270578-data-factory)
+* [数据工厂功能请求](/answers/topics/azure-data-factory.html)
 * [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Twitter 中有关数据工厂的信息](https://twitter.com/hashtag/DataFactory)
 * [Azure 视频](https://azure.microsoft.com/resources/videos/index/)

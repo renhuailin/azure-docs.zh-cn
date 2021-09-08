@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 资源管理器在 Azure Service Fabric �
 ms.topic: how-to
 ms.date: 8/23/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f2f2f47e9cdcef54be9c78513fbb57cd20ddde5f
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 4e981e58cd5efb1430ab35772ab84428f7482977
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864774"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434513"
 ---
 # <a name="manage-application-lifecycle-on-a-managed-cluster-using-azure-resource-manager"></a>使用 Azure 资源管理器管理托管群集上的应用程序生命周期
 
@@ -84,7 +84,7 @@ ms.locfileid: "122864774"
 
 ### <a name="create-the-resource-manager-template"></a>创建 Resource Manager 模板
 
-示例应用程序包含可用于部署该应用程序的 [Azure 资源管理器模板](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)。 模板文件名为 UserApp.json 和 UserApp.Parameters.json。
+示例应用程序包含可用于部署该应用程序的 [Azure 资源管理器模板](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM-Managed-Cluster)。 模板文件名为 UserApp.json 和 UserApp.Parameters.json。
 
 > [!NOTE]
 > 必须使用群集名称更新 *UserApp.Parameters.json* 文件。
@@ -143,7 +143,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 你可能会出于以下某一原因升级已部署到 Service Fabric 群集的应用程序：
 
-* 一个新服务将添加到应用程序。 当服务添加到应用程序时，一个服务定义必须添加到 service-manifest 和 application-manifest 文件中。 若要反映应用程序的新版本，还必须在 [UserApp.parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json) 中将应用程序类型版本从 1.0.0 更改为 1.0.1：
+* 一个新服务将添加到应用程序。 当服务添加到应用程序时，一个服务定义必须添加到 service-manifest 和 application-manifest 文件中。 若要反映应用程序的新版本，还必须在 [UserApp.parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM-Managed-Cluster/UserApp.Parameters.json) 中将应用程序类型版本从 1.0.0 更改为 1.0.1：
 
     ```json
     "applicationTypeVersion": {
@@ -187,7 +187,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 如果要将应用程序从经典群集迁移到托管群集，则需要确保正确指定验证类型，否则会遇到错误。 
 
-以下各项因使用频率而被特别调用，但这并不是一个完整的差异列表。 
+以下各项因使用频率而被特别提及，但并非具有排他性的差异列表。 
 
 * upgradeReplicaSetCheckTimeout 对于托管现在是一个整数，但在典型 SFRP 上是一个字符串。 
 

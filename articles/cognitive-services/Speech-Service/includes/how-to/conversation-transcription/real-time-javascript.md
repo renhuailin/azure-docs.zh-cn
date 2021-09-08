@@ -1,15 +1,15 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/20/2020
-ms.author: lajanuar
-ms.openlocfilehash: cdf9b7132b6509b936d7a3c4d0d41a23933ef389
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 138b6f1b0b20ac85c9800daf40d3c82e81e24d0a
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122068967"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539042"
 ---
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 

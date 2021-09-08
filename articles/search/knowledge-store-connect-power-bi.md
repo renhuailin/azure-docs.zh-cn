@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
-ms.openlocfilehash: dce33ff6ea1aef45059cc5535d7e6b5e1dc270ef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 494c60b054585754d3caf90a73f504494e21c341
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736318"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537942"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 连接知识存储
 
@@ -75,7 +75,7 @@ ms.locfileid: "121736318"
    ![更改数据类型](media/knowledge-store-connect-power-bi/powerbi-change-type.png "更改数据类型")
 
 1. 选择“hotelReviewsSsPages”，然后重复步骤 9 和 10 删除列并展开“内容”。 
-1. 将“Content.SentimentScore”的数据类型更改为“十进制数”。
+
 1. 选择“hotelReviewsSsKeyPhrases”，然后重复步骤 9 和 10 删除列并展开“内容”。  对于此表，无需修改数据类型。
 
 1. 在命令栏上，单击“关闭并应用”。

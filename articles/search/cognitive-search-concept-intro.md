@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: ab899a58bab3c4e37b6aa66669f0e060fb7e7e28
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 73a1ae771ba3e3e5876b2efd3914b9e38ab0e426
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737637"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222364"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充
 
@@ -75,7 +75,7 @@ AI 扩充在 Azure 认知服务也可用的区域中提供。 可在[各区域�
 
 ## <a name="enrichment-steps"></a>扩充步骤 <a name="enrichment-steps"></a>
 
-扩充管道由具有[技能组](cognitive-search-working-with-skillsets.md)的[索引器](search-indexer-overview.md)组成 。 技能组定义扩充步骤，索引器驱动技能组。 配置索引器时，可以包含将扩充内容发送到[搜索索引](search-what-is-an-index.md)或[知识存储](knowledge-store-concept-intro.md)的输出字段映射等属性。
+扩充管道由具有[技能组](cognitive-search-working-with-skillsets.md)的[索引器](search-indexer-overview.md)组成 。 技能组定义扩充步骤，索引器驱动技能组。 配置索引器时，可以包含将扩充内容发送到[搜索索引](search-what-is-an-index.md)的输出字段映射或定义[知识存储](knowledge-store-concept-intro.md)中数据结构的投影等属性。
 
 编制索引后，可以通过搜索请求，使用所有[Azure 认知搜索支持的查询类型](search-query-overview.md)来访问内容。
 
@@ -143,5 +143,7 @@ AI 扩充在 Azure 认知服务也可用的区域中提供。 可在[各区域�
 
 + [快速入门：在门户演练中试用 AI 扩充](cognitive-search-quickstart-blob.md)
 + [教程：了解 AI 扩充 REST API](cognitive-search-tutorial-blob.md)
-+ [知识存储](knowledge-store-concept-intro.md)
-+ [在 REST 中创建知识存储](knowledge-store-create-rest.md)
++ [技能组概念](cognitive-search-working-with-skillsets.md)
++ [知识存储概念](knowledge-store-concept-intro.md)
++ [创建技能集](cognitive-search-defining-skillset.md)
++ [创建知识存储](knowledge-store-create-rest.md)

@@ -3,16 +3,16 @@ title: 使用工作流将 Azure IoT Central 应用程序与其他云服务相集
 description: 本操作指南文章为构建人员介绍如何配置用于将 IoT Central 应用程序与其他云服务相集成的规则和操作。 若要创建高级规则，请在 Power Automate 或 Azure 逻辑应用中使用 IoT Central 连接器。
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/12/2020
+ms.date: 08/26/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9cbcfa355198b94a60242503745f5cfc183e170d
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: b90e96975dadc1f7fb168345aa89b98bb6a22b9c
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683749"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473579"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>使用工作流将 Azure IoT Central 应用程序与其他云服务相集成
 

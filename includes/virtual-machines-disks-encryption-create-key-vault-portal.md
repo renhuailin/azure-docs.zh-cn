@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/15/2021
+ms.date: 08/25/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3e05dd70ab0919ca4429cee15ecfc9d6ac9ee627
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 6a8a503f5357ec69a1bab007f4ae2849582fed3b
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122261462"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835583"
 ---
 如果你是第一次执行此操作，则为磁盘设置客户托管密钥时将要求你按特定顺序创建资源。 首先，需要创建并设置 Azure Key Vault。
 
@@ -60,11 +60,8 @@ ms.locfileid: "122261462"
 
 1. 搜索“磁盘加密集”并选择它。
 1. 在“磁盘加密集”窗格中，选择“+创建”。
-
-    ![磁盘加密门户主屏幕的屏幕截图。 突出显示“添加”按钮](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
-
 1. 选择资源组，命名加密集，然后选择与 Key Vault 相同的区域。
-1. 对于“加密类型”，请选择“使用客户管理的密钥进行静态加密”。
+1. 对于“SSE 加密类型”，请选择“使用客户管理的密钥进行静态加密”。
 
     > [!NOTE]
     > 一旦创建了具有特定加密类型的磁盘加密集，就无法对其进行更改。 如果要使用其他加密类型，则必须创建新的磁盘加密集。
@@ -72,6 +69,7 @@ ms.locfileid: "122261462"
 1. 选择“单击以选择密钥”。
 1. 选择先前创建的密钥保管库和密钥，以及版本。
 1. 按“选择”。
+1. 如果要启用[客户管理的密钥的自动轮换](../articles/virtual-machines/disk-encryption.md#automatic-key-rotation-of-customer-managed-keys)，请选择“自动密钥轮换”。
 1. 选择“审阅 + 创建”，然后选择“创建” 。
 
-    ![“磁盘加密创建”窗格的屏幕截图。 显示订阅、资源组、磁盘加密集名称、区域以及 Key Vault + 密钥选择器。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
+    :::image type="content" source="media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png" alt-text="“磁盘加密创建”窗格的屏幕截图。显示订阅、资源组、磁盘加密集名称、区域以及密钥保管库 + 密钥选择器。" lightbox="media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png":::

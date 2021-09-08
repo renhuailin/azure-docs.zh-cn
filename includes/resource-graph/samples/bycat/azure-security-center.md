@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cd314cc4da6a8b9eba7009b4bb17b653bbac6fc5
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 2be6f21943abca8cbef11326c70f1577fa130cf0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309473"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536220"
 ---
 ### <a name="controls-secure-score-per-subscription"></a>按订阅控制安全分数
 
@@ -391,9 +391,9 @@ Search-AzGraph -Query "SecurityResources | where type == 'microsoft.security/reg
 
 ---
 
-### <a name="secure-score-per-management-group"></a>每个管理组的安全分数
+### <a name="secure-score-per-management-group"></a>每个管理组的安全功能分数
 
-返回每个管理组的安全分数。
+返回每个管理组的安全功能分数。
 
 ```kusto
 SecurityResources

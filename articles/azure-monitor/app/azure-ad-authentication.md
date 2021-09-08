@@ -3,15 +3,15 @@ title: 适用于 Application Insights 的 Azure AD 身份验证（预览）
 description: 了解如何启用 Azure Active Directory (Azure AD) 身份验证，以确保在 Application Insights 资源中仅引入经过身份验证的遥测。
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: 3b50948d5dcc408595ccc8434d7fb29c07c68ab0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d93da1a8567a7c50dac43c29e3a962652ceee33
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747685"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123111463"
 ---
 # <a name="azure-ad-authentication-for-application-insights-preview"></a>适用于 Application Insights 的 Azure AD 身份验证（预览）
-Application Insights 现在支持 Azure Active Directory (Azure AD) 身份验证。 通过使用 Azure AD，现在可以确保在 Application Insights 资源中仅引入经过身份验证的遥测。 
+Application Insights 现在支持 Azure Active Directory (Azure AD) 身份验证。 通过使用 Azure AD，可以确保在 Application Insights 资源中仅引入经过身份验证的遥测。 
 
 通常，使用各种身份验证系统可能很麻烦并带来风险，因为难以大规模管理凭据。 现在可以选择退出本地身份验证，并确保在 Application Insights 资源中只引入使用[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)和 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 专门进行身份验证的遥测。 此功能是增强遥测的安全性和可靠性的一个步骤，用于做出关键操作（警报/自动缩放等）和业务决策。
 
@@ -292,9 +292,9 @@ tracer = Tracer(
 
 ### <a name="azure-policy"></a>Azure Policy 
 
-“DisableLocalAuth”的 Azure 策略将拒绝用户在未将此属性设置为“true”的情况下创建新的 Application Insights 资源。 策略名称为“Application Insights 组件应阻止非 AAD 身份验证引入”。
+“DisableLocalAuth”的 Azure Policy 将拒绝用户在未将此属性设置为“true”的情况下创建新的 Application Insights 资源。 策略名称为“Application Insights 组件应阻止非 AAD 身份验证引入”。
 
-若要将此策略应用到订阅，请[创建新的策略分配并分配该策略](../..//governance/policy/assign-policy-portal.md)。
+若要将此策略定义应用到订阅，请[创建新的策略分配并分配该策略](../../governance/policy/assign-policy-portal.md)。
 
 以下是策略模板定义：
 ```JSON

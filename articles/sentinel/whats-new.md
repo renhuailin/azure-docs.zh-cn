@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 08/09/2021
-ms.openlocfilehash: 7c4a2958f8629b224cecf1e92fd0efcff6b1fdd6
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: ebb1ddeea3c19ae87320c6156a5a6af60c7a2d9c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182180"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434531"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 中的新增功能
 
@@ -32,6 +32,46 @@ ms.locfileid: "122182180"
 >
 > 你也可贡献内容！ 加入我们的 [Azure Sentinel 威胁猎人 GitHub 社区](https://github.com/Azure/Azure-Sentinel/wiki)吧。
 >
+
+## <a name="september-2021"></a>2021 年 9 月
+
+- [文档中的新增内容：扩展数据连接器文档](#new-in-docs-scaling-data-connector-documentation)
+- [Azure 存储帐户连接器更改](#azure-storage-account-connector-changes)
+
+### <a name="new-in-docs-scaling-data-connector-documentation"></a>文档中的新增内容：扩展数据连接器文档
+
+随着我们不断为 Azure Sentinel 添加越来越多的内置数据连接器，我们已重新整理数据连接器文档，以反映这一扩展。
+
+对于大多数数据连接器，我们已将介绍单个连接器的完整文章替换为一系列通用过程以及所有当前支持的连接器的完整参考信息。
+
+请查看 [Azure Sentinel 连接器参考](data-connectors-reference.md)，了解有关连接器的详细信息，包括相关通用过程的参考信息以及所需的额外信息和配置。
+
+有关详细信息，请参阅：
+
+- **概念信息**：[连接数据源](connect-data-sources.md)
+
+- **通用操作指南文章**：
+
+   - [连接到 Azure、Windows、Microsoft 和 Amazon 服务](connect-azure-windows-microsoft-services.md)
+   - [将数据源连接到 Azure Sentinel 的数据收集器 API 以引入数据](connect-rest-api-template.md)
+   - [将 CEF 格式的日志从设备获取到 Azure Sentinel](connect-common-event-format.md)
+   - [使用 Syslog 从基于 Linux 的源收集数据](connect-syslog.md)
+   - [使用 Log Analytics 代理将数据以自定义日志格式收集到 Azure Sentinel](connect-custom-logs.md)
+   - [使用 Azure Functions 将数据源连接到Azure Sentinel](connect-azure-functions-template.md)
+   - [用于创建 Azure Sentinel 自定义连接器的资源](create-custom-connector.md)
+
+### <a name="azure-storage-account-connector-changes"></a>Azure 存储帐户连接器更改
+
+由于 Azure 存储帐户资源配置本身发生了一些更改，因此还需要重新配置连接器。
+存储帐户（父）资源具有每种存储类型的其他（子）资源：文件、表、队列和 blob。
+
+为存储帐户配置诊断时，必须依次选择和配置以下内容：
+- 父帐户资源，用于导出“事务”指标。
+- 每种子存储类型的资源，用于导出所有日志和指标（请参见上表）。
+
+你将只能看到实际为其定义了资源的存储类型。
+
+:::image type="content" source="media/whats-new/storage-diagnostics.png" alt-text="Azure 存储诊断配置的屏幕截图。":::
 
 ## <a name="august-2021"></a>2021 年 8 月
 
@@ -399,114 +439,6 @@ Azure Sentinel 现支持与 Microsoft Teams 直接集成，以使你能够跨组
 :::image type="content" source="media/tutorial-investigate-cases/incident-timeline.png" alt-text="事件时间线选项卡":::
 
 有关详细信息，请参阅[教程：通过 Azure Sentinel 调查事件](investigate-cases.md)。
-
-## <a name="march-2021"></a>2021 年 3 月
-
-- [在视图模式中将工作簿设置为自动刷新](#set-workbooks-to-automatically-refresh-while-in-view-mode)
-- [Azure 防火墙的新检测](#new-detections-for-azure-firewall)
-- [自动化规则和事件触发的 playbook（公共预览版）](#automation-rules-and-incident-triggered-playbooks-public-preview)（包括所有新的 playbook 文档）
-- [新警报扩充：增强的实体映射和自定义详细信息（公共预览版）](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details-public-preview)
-- [打印 Azure Sentinel 工作簿或另存为 PDF](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
-- [事件筛选器和排序首选项现已保存在会话中（公共预览版）](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
-- [Microsoft 365 Defender 事件集成（公共预览版）](#microsoft-365-defender-incident-integration-public-preview)
-- [使用 Azure Policy 的新 Microsoft 服务连接器](#new-microsoft-service-connectors-using-azure-policy)
-
-### <a name="set-workbooks-to-automatically-refresh-while-in-view-mode"></a>在视图模式中将工作簿设置为自动刷新
-
-Azure Sentinel 用户现在可以使用新的 [Azure Monitor 功能](https://techcommunity.microsoft.com/t5/azure-monitor/azure-workbooks-set-it-to-auto-refresh/ba-p/2228555)在视图会话期间自动刷新工作簿数据。
-
-在每个工作簿或工作簿模板中，选择 :::image type="icon" source="media/whats-new/auto-refresh-workbook.png" border="false":::“自动刷新”以显示间隔选项。 选择要用于当前视图会话的选项，然后选“应用”。
-
-- 支持的刷新间隔范围为“5 分钟”到“1 天” 。
-- 默认情况下，自动刷新处于关闭状态。 为了优化性能，自动刷新会在每次关闭工作簿时被关闭，并且不会在后台运行。 当你下次打开工作簿时，请根据需要重新启用自动刷新。
-- 在编辑工作簿时，自动刷新会暂停，且每次从编辑模式切换回视图模式时，自动刷新间隔将重新开始。
-
-    如果选择 :::image type="icon" source="media/whats-new/manual-refresh-button.png" border="false":::“刷新”按钮手动刷新工作簿，则间隔也将重新开始。
-
-有关详细信息，请参阅[可视化和监视数据](monitor-your-data.md)和 [Azure Monitor 文档](../azure-monitor/visualize/workbooks-overview.md)。
-
-### <a name="new-detections-for-azure-firewall"></a>Azure 防火墙的新检测
-
-已将 Azure 防火墙的几个现成检测添加到 Azure Sentinel 中的[分析](./understand-threat-intelligence.md)区域。 如果内部网络中的计算机尝试查询或连接到与已知 IOC 关联的 Internet 域名或 IP 地址（如检测规则查询中所定义），则这些新的检测将允许安全团队获取警报。
-
-新检测包括：
-
-- [Solorigate 网络信标](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/Solorigate-Network-Beacon.yaml)
-- [已知 GALLIUM 域和哈希](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/GalliumIOCs.yaml)
-- [已知 IRIDIUM IP](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/IridiumIOCs.yaml)
-- [已知 Phosphorus 组域/IP](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/PHOSPHORUSMarch2019IOCs.yaml)
-- [包含在 DCU 撤销中的 THALLIUM 域](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ThalliumIOCs.yaml)
-- [已知与 ZINC 相关的 maldoc 哈希](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
-- [已知 STRONTIUM 组域](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/STRONTIUMJuly2019IOCs.yaml)
-- [NOBELIUM - 域和 IP IOC - 2021 年 3 月](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_DomainIOCsMarch2021.yaml)
-
-
-Azure 防火墙的检测会持续添加到内置模板库。 若要获取最新的 Azure 防火墙检测，请在“规则模板”下，按“Azure 防火墙”筛选“数据源”  ：
-
-:::image type="content" source="media/whats-new/new-detections-analytics-efficiency-workbook.jpg" alt-text="分析效率工作簿中的新检测":::
-
-有关详细信息，请参阅 [Azure Sentinel 中的 Azure 防火墙的新检测](https://techcommunity.microsoft.com/t5/azure-network-security/new-detections-for-azure-firewall-in-azure-sentinel/ba-p/2244958)。
-
-### <a name="automation-rules-and-incident-triggered-playbooks-public-preview"></a>自动化规则和事件触发的 playbook（公共预览版）
-
-自动化规则是 Azure Sentinel 中的一种新概念，使你能够集中管理事件处理的自动化。 除了允许向事件分配 playbook（之前只有警报），自动化规则还允许一次性自动执行多个分析规则的响应，自动标记、分配或关闭事件而无需 playbook，并控制执行操作的顺序。 自动化规则可简化 Azure Sentinel 中的自动化使用，并能够简化事件业务流程进程的复杂工作流。
-
-通过此[自动化规则完整说明](automate-incident-handling-with-automation-rules.md)了解更多详细信息。
-
-如上所述，除了警报触发器外，现在还可以用事件触发器激活 playbook。 事件触发器为 playbook 提供了更大的一组输入来处理（因为事件还包括所有警报和实体数据），为响应工作流提供了更强大的功能和灵活性。 事件触发的 playbook 通过从自动化规则调用来激活。
-
-详细了解 [playbook 的增强功能](automate-responses-with-playbooks.md)，以及如何使用 playbook 和自动化规则[创建响应工作流](tutorial-respond-threats-playbook.md)。
-
-### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details-public-preview"></a>新警报扩充：增强的实体映射和自定义详细信息（公共预览版）
-
-通过两种新方式增强警报，使其更有用且信息更丰富。
-
-首先，将实体映射提升到下一级别。 现在可以将几乎 20 种实体从用户、主机和 IP 地址映射到文件和进程、邮箱、Azure 资源和 IoT 设备。 还可以对每个实体使用多个标识符，以增强其唯一标识。 这为事件提供了一个更丰富的数据集，从而提供更广泛的关联和更强大的调查。 [了解在警报中映射实体的新方法](map-data-fields-to-entities.md)。
-
-[阅读有关实体的详细信息](entities-in-azure-sentinel.md)，并查看[可用实体及其标识符的完整列表](entities-reference.md)。
-
-通过自定义警报以使原始事件呈现详细信息，更大程度地提高调查和响应功能。 使事件内容可见，从而为响应和调查安全威胁提供更强大的功能和灵活性。 [了解如何在警报中呈现自定义详细信息](surface-custom-details-in-alerts.md)。
-
-
-
-### <a name="print-your-azure-sentinel-workbooks-or-save-as-pdf"></a>打印 Azure Sentinel 工作簿或另存为 PDF
-
-现在，可以打印 Azure Sentinel 工作簿，还可以将其导出到 PDF 并保存在本地或共享。
-
-在工作簿中，选择选项菜单 > :::image type="icon" source="media/whats-new/print-icon.png" border="false":::“打印内容”。 然后选择打印机，或根据需要选择“另存为 PDF”。
-
-:::image type="content" source="media/whats-new/print-workbook.png" alt-text="打印工作簿或另存为 PDF。":::
-
-有关详细信息，请参阅[可视化和监视数据](monitor-your-data.md)。
-
-### <a name="incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview"></a>事件筛选器和排序首选项现已保存在会话中（公共预览版）
-
-现在，事件筛选器和排序在整个 Azure Sentinel 会话中得以保存，即使在导航到产品的其他区域时亦是如此。
-只要仍处于相同的会话中，导航回 Azure Sentinel 中的[事件](investigate-cases.md)区域即可显示筛选器和排序与离开时一样。
-
-> [!NOTE]
-> 离开 Azure Sentinel 或刷新浏览器后，不会保存事件筛选器和排序。
-
-### <a name="microsoft-365-defender-incident-integration-public-preview"></a>Microsoft 365 Defender 事件集成（公共预览版）
-
-通过 Azure Sentinel 的 [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) 事件集成，可将所有 M365D 事件都流式传输到 Azure Sentinel，并使它们在这两个门户之间保持同步。 M365D 之前称为 Microsoft 威胁防护 (MTP)，来自它的事件包括所有关联警报、实体和相关信息，其中提供了足够的上下文来在 Azure Sentinel 中执行会审和初步调查。 传输到 Sentinel 后，事件将与 M365D 保持双向同步，让你能够在事件调查中利用这两个门户的优势。
-
-同时使用 Azure Sentinel 和 Microsoft 365 Defender 可让你这两者的最佳优势。 你可获得 SIEM 提供的跨组织整个信息资源范围的丰富见解，还可获得 XDR 为保护 Microsoft 365 资源而提供的量身定制的深度调查能力，这两者协调同步，实现无缝 SOC 操作。
-
-有关详细信息，请参阅 [Microsoft 365 Defender 与 Azure Sentinel 集成](microsoft-365-defender-sentinel-integration.md)。
-
-### <a name="new-microsoft-service-connectors-using-azure-policy"></a>使用 Azure Policy 的新 Microsoft 服务连接器
-
-[Azure Policy](../governance/policy/overview.md) 是一项 Azure 服务，它让你能够使用策略来强制实施和控制资源的属性。 使用策略可确保资源符合 IT 管理标准。
-
-在策略可控制的资源属性中，涉及到诊断和审核日志的创建与处理。 Azure Sentinel 现在使用 Azure Policy，可将一组通用的诊断日志设置应用于特定类型的所有（当前和未来）资源，其中你希望将此类型的日志引入到 Azure Sentinel 中。 得益于 Azure Policy，你无需再逐个资源地设置诊断日志设置。
-
-基于 Azure Policy 的连接器现可用于以下 Azure 服务：
-- [Azure Key Vault](connect-azure-key-vault.md)（公共预览版）
-- [Azure Kubernetes 服务](connect-azure-kubernetes-service.md)（公共预览版）
-- [Azure SQL 数据库/服务器](connect-azure-sql-logs.md) (GA)
-
-客户仍然可为特定实例手动发送日志，不过无需使用策略引擎。
 
 
 ## <a name="next-steps"></a>后续步骤

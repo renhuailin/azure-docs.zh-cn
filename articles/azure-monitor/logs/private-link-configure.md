@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: cdbfd69da09bb3f55f0cdf87bb545e2c6bb40a79
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dfc0601dddddd89559d2a7bb28d6f3d86dcdf40c
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778032"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272360"
 ---
 # <a name="configure-your-private-link"></a>配置专用链接
 配置专用链接需要几个步骤： 
@@ -20,9 +20,10 @@ ms.locfileid: "121778032"
 
 本文介绍如何通过 Azure 门户完成此操作，并提供一个示例 Azure 资源管理器 (ARM) 模板，用于自动执行此过程。 
 
-## <a name="create-a-private-link-connection"></a>创建专用链接连接
+## <a name="create-a-private-link-connection-through-the-azure-portal"></a>通过 Azure 门户创建专用链接连接
+在本部分，我们将通过 Azure 门户查看逐步设置专用链接的过程。 请参阅[使用 API 和命令行](#use-apis-and-command-line)，使用命令行或 Azure 资源管理器模板（ARM 模板）创建和管理专用链接。
 
-首先创建一个 Azure Monitor 专用链接范围资源。
+### <a name="create-an-azure-monitor-private-link-scope"></a>创建 Azure Monitor 专用链接范围
 
 1. 转到 Azure 门户中的“创建资源”，并搜索“Azure Monitor 专用链接范围” 。
 
@@ -115,81 +116,51 @@ ms.locfileid: "121778032"
 如果将“允许公用网络访问以便执行查询”设置为“否”，则已连接的范围之外的客户端（计算机、SDK 等）无法查询该资源中的数据 。 该数据包括对以下资源的访问：日志、指标和实时指标流，以及根据工作簿、仪表板、基于查询 API 的客户端体验和 Azure 门户中的见解等构建的体验等。 对于 Azure 门户外部运行的体验，其查询 Log Analytics 数据也必须在专用链接的 VNET 中运行。
 
 
-### <a name="exceptions"></a>例外
-
-#### <a name="diagnostic-logs"></a>诊断日志
-通过[诊断设置](../essentials/diagnostic-settings.md)上传到工作区的日志和指标会通过安全的专用 Microsoft 通道，且不受这些设置控制。
-
-#### <a name="azure-resource-manager"></a>Azure 资源管理器
-上述访问限制也适用于资源中的数据。 然而，配置更改（例如打开或关闭这些访问设置）由 Azure 资源管理器进行管理。 若要控制这些设置，应使用适当的角色、权限、网络控件和审核来限制对资源的访问。 有关详细信息，请参阅 [Azure Monitor 角色、权限和安全性](../roles-permissions-security.md)
-
-此外，特定体验（例如 LogicApp 连接器、更新管理解决方案和门户中显示解决方案仪表板的“工作区摘要”边栏选项卡）通过 Azure 资源管理器查询数据，因此如果不将专用链接设置也应用到资源管理器，便无法查询数据。
-
-
-## <a name="review-and-validate-your-private-link-setup"></a>查看并验证专用链接设置
-
-### <a name="reviewing-your-endpoints-dns-settings"></a>查看终结点的 DNS 设置
-你创建的专用终结点现在应配置了五个 DNS 区域：
-
-* privatelink-monitor-azure-com
-* privatelink-oms-opinsights-azure-com
-* privatelink-ods-opinsights-azure-com
-* privatelink-agentsvc-azure-automation-net
-* privatelink-blob-core-windows-net
-
-> [!NOTE]
-> 其中每个区域将特定 Azure Monitor 终结点映射到 VNet IP 池中的专用 IP。 以下图像中显示的 IP 地址只是示例。 你的配置应显示自己网络中的专用 IP。
-
-#### <a name="privatelink-monitor-azure-com"></a>Privatelink-monitor-azure-com
-此区域涵盖 Azure Monitor 使用的全局终结点，这意味着这些终结点为考虑所有资源而不是特定资源的请求提供服务。 此区域应具有为以下终结点映射的终结点：
-* `in.ai` - Application Insights 引入终结点（全局和区域条目）
-* `api` - Application Insights 和 Log Analytics 终结点
-* `live` - Application Insights 实时指标流终结点
-* `profiler` - Application Insights 探查器终结点
-* `snapshot` - Application Insights 快照终结点[![专用 DNS 区域 monitor-azure-com 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
-
-#### <a name="privatelink-oms-opinsights-azure-com"></a>privatelink-oms-opinsights-azure-com
-此区域涵盖特定工作区到 OMS 终结点的映射。 应该会看到链接到与此专用终结点连接的 AMPLS 的每个工作区的条目。
-[![专用 DNS 区域 oms-opinsights-azure-com 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com-expanded.png#lightbox)
-
-#### <a name="privatelink-ods-opinsights-azure-com"></a>privatelink-ods-opinsights-azure-com
-此区域涵盖特定工作区到 ODS 终结点的映射 - Log Analytics 的引入终结点。 应该会看到链接到与此专用终结点连接的 AMPLS 的每个工作区的条目。
-[![专用 DNS 区域 ods-opinsights-azure-com 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com-expanded.png#lightbox)
-
-#### <a name="privatelink-agentsvc-azure-automation-net"></a>privatelink-agentsvc-azure-automation-net
-此区域涵盖特定工作区到代理服务自动化终结点的映射。 应该会看到链接到与此专用终结点连接的 AMPLS 的每个工作区的条目。
-[![专用 DNS 区域代理 svc-azure-automation-net 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net.png)](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net-expanded.png#lightbox)
-
-#### <a name="privatelink-blob-core-windows-net"></a>privatelink-blob-core-windows-net
-此区域配置与全局代理的解决方案包存储帐户的连接。 通过它，代理可以下载新的或更新的解决方案包（也称为管理包）。 无论使用多少个工作区，都只需一个条目来处理 Log Analytics 代理。
-[![专用 DNS 区域 blob-core-windows-net 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net.png)](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net-expanded.png#lightbox)
-> [!NOTE]
-> 此条目仅添加到在 2021 年 4 月 19 日或之后（或从 2021 年 6 月开始在 Azure 主权云上）创建的专用链接设置。
-
-
-### <a name="validating-you-are-communicating-over-a-private-link"></a>验证是否通过专用链接进行通信
-* 若要验证你的请求现在是否是通过专用终结点发送的，可使用网络跟踪工具甚至浏览器来查看它们。 例如，尝试查询工作区或应用程序时，请确保将请求发送到映射到 API 终结点的专用 IP，此示例中为“172.17.0.9”。
-
-    注意：一些浏览器可能会使用其他 DNS 设置（请参阅[浏览器 DNS 设置](./private-link-design.md#browser-dns-settings)）。 请确保应用 DNS 设置。
-
-* 若要确保工作区或组件没有收到来自（未通过 AMPLS 连接的）公用网络的请求，请将资源的公共引入和查询标志设置为“否”，如[配置对资源的访问](#configure-access-to-your-resources)中所述。
-
-* 在受保护网络的客户端上，使用 `nslookup` 到 DNS 区域中列出的任何终结点。 它应由 DNS 服务器解析为映射的专用 IP，而不是默认使用的公共 IP。
-
-
 ## <a name="use-apis-and-command-line"></a>使用 API 和命令行
 
 可使用 Azure 资源管理器模板、REST、和命令行接口将前面描述的过程自动化。
 
+### <a name="create-and-manage-azure-monitor-private-link-scopes-ampls"></a>创建和管理 Azure Monitor 专用链接范围 (AMPLS)
 若要创建和管理专用链接范围，请使用 [REST API](/rest/api/monitor/privatelinkscopes(preview)/private%20link%20scoped%20resources%20(preview)) 或 [Azure CLI (az monitor private-link-scope)](/cli/azure/monitor/private-link-scope)。
 
-要管理工作区或组件上的网络访问标志，请在 [Log Analytics 工作区](/cli/azure/monitor/log-analytics/workspace)或 [Application Insights 组件](/cli/azure/ext/application-insights/monitor/app-insights/component)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 标志。
+#### <a name="create-ampls-with-open-access-modes---cli-example"></a>创建具有开放访问模式的 AMPLS - CLI 示例
+以下 CLI 命令创建名为“my-scope”的新 AMPLS 资源，其查询和引入访问模式均设置为“打开”。
+```
+az resource create -g "my-resource-group" --name "my-scope" --api-version "2021-07-01-preview" --resource-type Microsoft.Insights/privateLinkScopes --properties "{\"accessModeSettings\":{\"queryAccessMode\":\"Open\", \"ingestionAccessMode\":\"Open\"}}"
+```
 
-### <a name="example-azure-resource-manager-template-arm-template"></a>示例 Azure 资源管理器模板（ARM 模板）
+#### <a name="create-ampls-with-mixed-access-modes---powershell-example"></a>创建具有混合访问模式的 AMPLS - PowerShell 示例
+以下 PowerShell 脚本创建名为“my-scope”的新 AMPLS 资源，其查询访问模式设置为“打开”，但引入访问模式设置为“PrivateOnly”（意味着它将仅允许在 AMPLS 中引入资源）。
+
+```
+# scope details
+$scopeSubscriptionId = "ab1800bd-ceac-48cd-...-..."
+$scopeResourceGroup = "my-resource-group"
+$scopeName = "my-scope"
+$scopeProperties = @{
+    accessModeSettings = @{
+        queryAccessMode     = "Open"; 
+        ingestionAccessMode = "PrivateOnly"
+    } 
+}
+
+# login
+Connect-AzAccount
+
+# select subscription
+Select-AzSubscription -SubscriptionId $scopeSubscriptionId
+
+# create private link scope resource
+$scope = New-AzResource -Location "Global" -Properties $scopeProperties -ResourceName $scopeName -ResourceType "Microsoft.Insights/privateLinkScopes" -ResourceGroupName $scopeResourceGroup -ApiVersion "2021-07-01-preview" -Force
+```
+
+#### <a name="create-ampls---azure-resource-manager-template-arm-template"></a>创建 AMPLS - Azure 资源管理器模板（ARM 模板）
 以下 Azure 资源管理器模板创建以下内容：
 * 名为“my-scope”的专用链接范围 (AMPLS)
 * 名为“my-workspace”的 Log Analytics 工作区
 * 将范围内的资源添加到名为“my-workspace-connection”的“my-scope”AMPLS
+> [!NOTE]
+> 以下 ARM 模板使用不支持设置 AMPLS 访问模式的旧 API 版本。 使用以下模板时，生成的 AMPLS 设置为 QueryAccessMode="Open" 以及 IngestionAccessMode="PrivateOnly"，这意味着它允许在 AMPLS 内和 AMPLS 外的资源上运行查询，但将引入限制为仅访问专用链接资源。
 
 ```
 {
@@ -243,7 +214,86 @@ ms.locfileid: "121778032"
 }
 ```
 
+### <a name="set-ampls-access-flags---powershell-example"></a>设置 AMPLS 访问标志 - PowerShell 示例
+若要在 AMPLS 上设置访问模式标志，可以使用以下 PowerShell 脚本。 以下脚本将标志设置为“打开”。 若要使用“仅限专用”模式，请使用值“PrivateOnly”。
+
+```
+# scope details
+$scopeSubscriptionId = "ab1800bd-ceac-48cd-...-..."
+$scopeResourceGroup = "my-resource-group-name"
+$scopeName = "my-scope"
+
+# login
+Connect-AzAccount
+
+# select subscription
+Select-AzSubscription -SubscriptionId $scopeSubscriptionId
+
+# get private link scope resource
+$scope = Get-AzResource -ResourceType Microsoft.Insights/privateLinkScopes -ResourceGroupName $scopeResourceGroup -ResourceName $scopeName -ApiVersion "2021-07-01-preview"
+
+# set access mode settings
+$scope.Properties.AccessModeSettings.QueryAccessMode = "Open";
+$scope.Properties.AccessModeSettings.IngestionAccessMode = "Open";
+$scope | Set-AzResource -Force
+```
+
+### <a name="set-resource-access-flags"></a>设置资源访问标志
+若要管理工作区或组件访问标志，请在 [Log Analytics 工作区](/cli/azure/monitor/log-analytics/workspace)或 [Application Insights 组件](/cli/azure/ext/application-insights/monitor/app-insights/component)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 标志。
+
+
+## <a name="review-and-validate-your-private-link-setup"></a>查看并验证专用链接设置
+
+### <a name="reviewing-your-endpoints-dns-settings"></a>查看终结点的 DNS 设置
+你创建的专用终结点现在应配置了五个 DNS 区域：
+
+* privatelink-monitor-azure-com
+* privatelink-oms-opinsights-azure-com
+* privatelink-ods-opinsights-azure-com
+* privatelink-agentsvc-azure-automation-net
+* privatelink-blob-core-windows-net
+
+> [!NOTE]
+> 其中每个区域将特定 Azure Monitor 终结点映射到 VNet IP 池中的专用 IP。 以下图像中显示的 IP 地址只是示例。 你的配置应显示自己网络中的专用 IP。
+
+#### <a name="privatelink-monitor-azure-com"></a>Privatelink-monitor-azure-com
+此区域涵盖 Azure Monitor 使用的全局终结点，这意味着这些终结点为考虑所有资源而不是特定资源的请求提供服务。 此区域应具有为以下终结点映射的终结点：
+* `in.ai` - Application Insights 引入终结点（全局和区域条目）
+* `api` - Application Insights 和 Log Analytics 终结点
+* `live` - Application Insights 实时指标流终结点
+* `profiler` - Application Insights 探查器终结点
+* `snapshot` - Application Insights 快照终结点[![专用 DNS 区域 monitor-azure-com 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-oms-opinsights-azure-com"></a>privatelink-oms-opinsights-azure-com
+此区域涵盖特定工作区到 OMS 终结点的映射。 应该会看到链接到与此专用终结点连接的 AMPLS 的每个工作区的条目。
+[![专用 DNS 区域 oms-opinsights-azure-com 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-ods-opinsights-azure-com"></a>privatelink-ods-opinsights-azure-com
+此区域涵盖特定工作区到 ODS 终结点的映射 - Log Analytics 的引入终结点。 应该会看到链接到与此专用终结点连接的 AMPLS 的每个工作区的条目。
+[![专用 DNS 区域 ods-opinsights-azure-com 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com-expanded.png#lightbox)
+
+#### <a name="privatelink-agentsvc-azure-automation-net"></a>privatelink-agentsvc-azure-automation-net
+此区域涵盖特定工作区到代理服务自动化终结点的映射。 应该会看到链接到与此专用终结点连接的 AMPLS 的每个工作区的条目。
+[![专用 DNS 区域代理 svc-azure-automation-net 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net.png)](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net-expanded.png#lightbox)
+
+#### <a name="privatelink-blob-core-windows-net"></a>privatelink-blob-core-windows-net
+此区域配置与全局代理的解决方案包存储帐户的连接。 通过它，代理可以下载新的或更新的解决方案包（也称为管理包）。 无论使用多少个工作区，都只需一个条目来处理 Log Analytics 代理。
+[![专用 DNS 区域 blob-core-windows-net 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net.png)](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net-expanded.png#lightbox)
+> [!NOTE]
+> 此条目仅添加到在 2021 年 4 月 19 日或之后（或从 2021 年 6 月开始在 Azure 主权云上）创建的专用链接设置。
+
+
+### <a name="validating-you-are-communicating-over-a-private-link"></a>验证是否通过专用链接进行通信
+* 若要验证你的请求现在是否是通过专用终结点发送的，可使用网络跟踪工具甚至浏览器来查看它们。 例如，尝试查询工作区或应用程序时，请确保将请求发送到映射到 API 终结点的专用 IP，此示例中为“172.17.0.9”。
+
+    注意：一些浏览器可能会使用其他 DNS 设置（请参阅[浏览器 DNS 设置](./private-link-design.md#browser-dns-settings)）。 请确保应用 DNS 设置。
+
+* 若要确保工作区或组件没有收到来自（未通过 AMPLS 连接的）公用网络的请求，请将资源的公共引入和查询标志设置为“否”，如[配置对资源的访问](#configure-access-to-your-resources)中所述。
+
+* 在受保护网络的客户端上，使用 `nslookup` 到 DNS 区域中列出的任何终结点。 它应由 DNS 服务器解析为映射的专用 IP，而不是默认使用的公共 IP。
+
+
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[私有存储](private-storage.md)
-- 详细了解[自动化的专用链接](../../automation/how-to/private-link-security.md)
+- 了解[自动化的专用链接](../../automation/how-to/private-link-security.md)

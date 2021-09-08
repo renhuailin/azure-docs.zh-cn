@@ -11,12 +11,12 @@ author: scoriani
 ms.author: scoriani
 ms.reviewer: mathoma
 ms.date: 12/04/2018
-ms.openlocfilehash: 8656202685db424cd6047e6a8b58191c6293e9ff
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 99d620847c12d194fbd8cd51b53d8820c32dd0c0
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694344"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438185"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -185,7 +185,7 @@ ms.locfileid: "110694344"
 4. *ShardManagement.psm1* - 可包装 ShardManagement API 的帮助程序脚本
 5. *SqlDatabaseHelpers.psm1* - 用于在 SQL 数据库中创建和管理数据库的帮助程序脚本
 
-   <table style="width:100%">
+   <table width="100%">
      <tr>
        <th>PowerShell 文件</th>
        <th>步骤</th>
@@ -207,7 +207,7 @@ ms.locfileid: "110694344"
        <td>5. 声明分片表的 SchemaInfo。</td>
      </tr>
    </table>
-   <table style="width:100%">
+   <table width="100%">
      <tr>
        <th>PowerShell 文件</th>
        <th>步骤</th>
@@ -229,7 +229,7 @@ ms.locfileid: "110694344"
 
 ## <a name="use-powershell-to-verify-your-deployment"></a>使用 PowerShell 验证部署
 
-1. 打开新的 PowerShell 窗口并导航到下载拆分/合并包的目录，并导航到“powershell”目录中。
+1. 打开新的 PowerShell 窗口并导航到下载拆分/合并包的目录，然后导航到“powershell”目录中。
 
 2. 创建一个将要在其中创建分片映射管理器和分片的服务器（或选择现有服务器）。
 
@@ -322,7 +322,7 @@ ms.locfileid: "110694344"
 为了执行拆分/合并操作，必须声明要移动的分片表和引用表。 使用 **SchemaInfo** API 完成此操作。 此 API 位于 **Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema** 命名空间中。
 
 1. 对于每个分片表，请创建一个 **ShardedTableInfo** 对象，该对象在包含分片密钥的表中描述了此表的父架构名称（可选，默认为“dbo”）、表名称以及列名称。
-2. 对于每个引用表，请创建一个 **ShardedTableInfo** 对象，该对象描述了此表的父架构名称（可选，默认为“dbo”）和表名称。
+2. 对于每个引用表，请创建一个 **ReferenceTableInfo** 对象，该对象描述了此表的父架构名称（可选，默认为“dbo”）和表名称。
 3. 将上面的 TableInfo 对象添加到新的 **SchemaInfo** 对象。
 4. 获取对 **ShardMapManager** 对象的引用，然后调用 **GetSchemaInfoCollection**。
 5. 将 **SchemaInfo** 添加到 **SchemaInfoCollection**，从而提供分片映射名称。

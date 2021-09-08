@@ -2,20 +2,22 @@
 title: 使用 Azure 门户更改 Azure 托管磁盘的性能
 description: 了解如何使用 Azure 门户更改新的和现有托管磁盘的性能层。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a82865930a5ed770b742c3d5e8906d4e69be3f64
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: dd7d024b542feb2e15aefb79f2467e7033c180f9
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110079401"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123106606"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>使用 Azure 门户更改性能层
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 [!INCLUDE [virtual-machines-disks-performance-tiers-intro](../../includes/virtual-machines-disks-performance-tiers-intro.md)]
 
@@ -38,27 +40,11 @@ ms.locfileid: "110079401"
 :::image type="content" source="media/disks-performance-tiers-portal/new-disk-change-performance-tier.png" alt-text="磁盘创建边栏选项卡的屏幕截图，其中突出显示了一个磁盘，并突出显示了性能层下拉列表。" lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::
 
 
-## <a name="existing-disks"></a>现有磁盘
-
-以下步骤概述了如何更改现有磁盘的性能层：
-
-1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 导航到包含要更改的磁盘的 VM。
-1. 解除分配 VM 或分离磁盘。
-1. 选择磁盘
-1. 选择“大小 + 性能”。
-1. 在“性能层”下拉列表中，选择一个与磁盘的当前性能层不同的层。
-1. 选择“调整大小”。
-
-:::image type="content" source="media/disks-performance-tiers-portal/change-tier-existing-disk.png" alt-text="“大小 + 性能”边栏选项卡的屏幕截图，其中突出显示了性能层。" lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::
-
-### <a name="change-the-performance-tier-of-a-disk-without-downtime-preview"></a>在不停机的情况下更改磁盘的性能层（预览版）
+### <a name="change-the-performance-tier-of-an-existing-disk-without-downtime"></a>在不停机的情况下更改现有磁盘的性能层
 
 你还可以在不停机的情况下更改性能层，因此无需释放 VM 或分离磁盘来更改层。
 
 ### <a name="prerequisites"></a>先决条件
-
-磁盘必须满足 [在不停机的情况下更改性能层（预览版）](#change-performance-tier-without-downtime-preview) 部分中规定的要求，如果不满足，则更改性能层会造成停机。
 
 必须先为订阅启用该功能，然后才能在不停机的情况下更改磁盘的性能层。 请按照以下步骤为订阅启用此功能：
 

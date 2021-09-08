@@ -1,17 +1,20 @@
 ---
 title: 排查安全性和访问控制问题
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何排查 Azure 数据工厂中的安全性和访问控制问题。
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
+ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 05/31/2021
+ms.date: 07/28/2021
 ms.author: lle
-ms.openlocfilehash: ff95f5c3f8d978d58146529825adee94f82eaf07
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: a025e46914390d203537d0ddd0c9faf5f22488ab
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110782886"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864153"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>排查 Azure 数据工厂安全性和访问控制问题
 
@@ -189,6 +192,37 @@ ADF 仍可使用托管 VNet IR，但你可能会遇到此类错误，因为根�
 - 使用托管 VNet IR 时，在源上启用专用终结点，同时也在接收器端启用。
 - 如果仍想使用公共终结点，则只能切换到公共 IR，而不是对源和接收器使用托管 VNet IR。 即使切换回公共 IR，如果托管 VNet IR 仍然存在，ADF 仍可能会使用托管 VNet IR。
 
+### <a name="internal-error-while-trying-to-delete-adf-with-customer-managed-key-cmk-and-user-assigned-managed-identity-ua-mi"></a>尝试使用客户管理的密钥 (CMK) 和用户分配的托管标识 (UA-MI) 删除 ADF 时出现内部错误
+
+#### <a name="symptoms"></a>症状
+`{\"error\":{\"code\":\"InternalError\",\"message\":\"Internal error has occurred.\"}}`
+
+#### <a name="cause"></a>原因
+
+如果要执行任何与 CMK 相关的操作，应该先执行所有与 ADF 相关的操作，然后执行外部操作（如托管标识或密钥保管库操作）。 例如，如果要删除所有资源，则需要先删除工厂，然后再删除密钥保管库。如果按其他顺序删除，ADF 调用将失败，因为它无法再读取相关对象，并且无法验证是否可以执行删除操作。 
+
+#### <a name="solution"></a>解决方案
+
+可以通过三种方式解决此问题。 这些限制如下：
+
+* 你撤销了 ADF 对存储 CMK 密钥的密钥保管库的访问权限。 
+可以通过授予以下权限重新分配对数据工厂的访问权限：获取、展开密钥和包装密钥。 在数据工厂中启用客户管理的密钥需要这些权限。 请参阅[授予对 ADF 的访问权限](enable-customer-managed-key.md#grant-data-factory-access-to-azure-key-vault)。授予权限后，应该能够删除 ADF
+ 
+* 客户在删除 ADF 之前删除了密钥保管库/CMK。 ADF 中的 CMK 应启用“软删除”和“清除保护”，且设置 90 天的默认保留策略。 你可以还原已删除的密钥。  
+ 请查看[恢复已删除的密钥](../key-vault/general/key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates)和[已删除的密钥值](../key-vault/general/key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault)
+
+* 在删除 ADF 之前删除了用户分配的托管标识 (UA-MI)。 可以使用 REST API 调用进行恢复，可以使用任何编程语言在所选的 http 客户端中执行此操作。 如果尚未为使用 Azure 身份验证的 REST API 调用设置任何内容，则最简单的方法是使用 POSTMAN/Fiddler。 请按照以下步骤操作。
+
+   1.  使用 GET 方法对工厂进行 GET 调用。URL 类似于 `https://management.azure.com/subscriptions/YourSubscription/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourFactoryName?api-version=2018-06-01`
+
+   2. 需要使用其他名称创建新的用户托管标识（也可以用相同名称，但使用与 GET 响应中不同的名称可确保更安全）
+
+   3. 修改 encryption.identity 属性和 identity.userassignedidentities，以指向新创建的托管标识。 从 userAssignedIdentity 对象中删除 clientId 和 principalId。 
+
+   4.  对传递新正文的同一工厂 URL 进行 PUT 调用。 请确保传递在 GET 响应中获取的所有内容，并且仅修改标识。 否则，它们会无意中覆盖其他设置。 
+
+   5.  调用成功后，你将能够再次看到实体，然后重试删除。 
+
 ## <a name="sharing-self-hosted-integration-runtime"></a>共享自承载集成运行时
 
 ### <a name="sharing-a-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>不支持从其他租户共享自承载 IR 
@@ -201,13 +235,14 @@ ADF 仍可使用托管 VNet IR，但你可能会遇到此类错误，因为根�
 
 不能跨租户共享自承载 IR。
 
+
 ## <a name="next-steps"></a>后续步骤
 
 有关故障排除的更多帮助，请尝试以下资源：
 
 *  [用于数据工厂的 Azure 专用链接](data-factory-private-link.md)
 *  [数据工厂博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [数据工厂功能请求](https://feedback.azure.com/forums/270578-data-factory)
+*  [数据工厂功能请求](/answers/topics/azure-data-factory.html)
 *  [Azure 视频](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A 页](/answers/topics/azure-data-factory.html)
 *  [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)

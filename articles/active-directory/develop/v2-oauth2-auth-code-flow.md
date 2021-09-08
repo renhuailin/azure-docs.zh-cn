@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 08/30/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0042d12941107c4704364dc261f95d3521b8208f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f73951e34ada242dd70b9e9f99839d3072a52f76
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464141"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223744"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -74,7 +74,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数    | 必需/可选 | 说明 |
 |--------------|-------------|--------------|
-| `tenant`    | 必需    | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。 至关重要的是，对于用户从一个租户登录到另一个租户的来宾场景，必须提供租户标识符才能让其正确登录到资源租户。|
+| `tenant`    | 必填    | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。 至关重要的是，对于用户从一个租户登录到另一个租户的来宾场景，必须提供租户标识符才能让其正确登录到资源租户。|
 | `client_id`   | 必填    | [Azure 门户 – 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给你的应用的应用程序（客户端）ID。  |
 | `response_type` | 必填    | 必须包括授权代码流的 `code` 。 如果使用[混合流](#request-an-id-token-as-well-hybrid-flow)，则还可以包括 `id_token` 或 `token`。 |
 | `redirect_uri`  | 必需 | 应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 它必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机应用和移动应用，应使用推荐值之一 - `https://login.microsoftonline.com/common/oauth2/nativeclient`（适用于使用嵌入式浏览器的应用）或 `http://localhost`（适用于使用系统浏览器的应用）。 |
@@ -213,14 +213,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数  | 必需/可选 | 说明     |
 |------------|-------------------|----------------|
-| `tenant`   | 必需   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
+| `tenant`   | 必填   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id` | 必填  | [Azure 门户 – 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给你的应用的应用程序（客户端）ID。 |
 | `scope`      | 可选   | 范围的空格分隔列表。 范围必须全部来自单个资源，以及 OIDC范围（`profile`、`openid`、`email`）。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 这是授权代码流的 Microsoft 扩展，旨在允许应用在令牌兑换期间声明其需要令牌的资源。|
 | `code`          | 必填  | 在流的第一个阶段中获取的 authorization_code。 |
-| `redirect_uri`  | 必需  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
+| `redirect_uri`  | 必填  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
 | `grant_type` | 必需   | 必须是授权代码流的 `authorization_code` 。   |
 | `code_verifier` | 建议  | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
-| `client_secret` | 机密 Web 应用所需 | 在应用注册门户中为应用创建的应用程序机密。 不应在本机应用或单页应用中使用应用程序密钥，因为 client_secrets 无法可靠地存储在设备或网页上。 Web 应用和 Web API 都需要应用程序密钥，它能够将 client_secret 安全地存储在服务器端。  与此处讨论的所有参数一样，客户端机密在发送之前必须进行 URL 编码，这通常是由 SDK 执行的步骤。 有关 URI 编码的详细信息，请参阅 [URI 常规语法规范](https://tools.ietf.org/html/rfc3986#page-12)。 |
+| `client_secret` | 机密 Web 应用所需 | 在应用注册门户中为应用创建的应用程序机密。 不应在本机应用或单页应用中使用应用程序密钥，因为 client_secrets 无法可靠地存储在设备或网页上。 Web 应用和 Web API 都需要应用程序密钥，它能够将 client_secret 安全地存储在服务器端。  与此处讨论的所有参数一样，客户端机密在发送之前必须进行 URL 编码，这通常是由 SDK 执行的步骤。 有关 URI 编码的详细信息，请参阅 [URI 常规语法规范](https://tools.ietf.org/html/rfc3986#page-12)。  还支持根据 [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) 在授权标头中提供凭据的基本身份验证模式。 |
 
 ### <a name="request-an-access-token-with-a-certificate-credential"></a>使用证书凭据请求访问令牌
 
@@ -241,11 +241,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数  | 必需/可选 | 说明     |
 |------------|-------------------|----------------|
-| `tenant`   | 必需   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
+| `tenant`   | 必填   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id` | 必填  | [Azure 门户 – 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给你的应用的应用程序（客户端）ID。 |
 | `scope`      | 可选   | 范围的空格分隔列表。 范围必须全部来自单个资源，以及 OIDC范围（`profile`、`openid`、`email`）。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 这是授权代码流的 Microsoft 扩展，旨在允许应用在令牌兑换期间声明其需要令牌的资源。|
 | `code`          | 必填  | 在流的第一个阶段中获取的 authorization_code。 |
-| `redirect_uri`  | 必需  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
+| `redirect_uri`  | 必填  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
 | `grant_type` | 必需   | 必须是授权代码流的 `authorization_code` 。   |
 | `code_verifier` | 建议  | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 | `client_assertion_type` | 机密 Web 应用所需 | 必须将值设置为 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` 才能使用证书凭据。 |
@@ -359,11 +359,11 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 
 | 参数     | 类型           | 说明        |
 |---------------|----------------|--------------------|
-| `tenant`        | 必需     | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。   |
+| `tenant`        | 必填     | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。   |
 | `client_id`     | 必填    | [Azure 门户 – 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给你的应用的应用程序（客户端）ID。 |
 | `grant_type`    | 必填    | 必须是授权代码流的此阶段的 `refresh_token` 。 |
 | `scope`         | 可选    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于原始 authorization_code 请求阶段中所请求的范围，或者为该范围的子集。 如果此请求中指定的范围涵盖多个资源服务器，Microsoft 标识平台将返回第一个范围中指定的资源的令牌。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
-| `refresh_token` | 必需    | 在流的第二个阶段获取的 refresh_token。 |
+| `refresh_token` | 必填    | 在流的第二个阶段获取的 refresh_token。 |
 | `client_secret` | 必填（对于 Web 应用） | 在应用注册门户中为应用创建的应用程序机密。 它不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序密钥，它能够将 client_secret 安全地存储在服务器端。 此机密需要进行 URL 编码。 有关详细信息，请参阅 [URI 一般语法规范](https://tools.ietf.org/html/rfc3986#page-12)。 |
 
 #### <a name="successful-response"></a>成功的响应

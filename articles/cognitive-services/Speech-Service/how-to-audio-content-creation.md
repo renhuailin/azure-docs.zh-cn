@@ -3,19 +3,19 @@ title: 音频内容创建 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 音频内容创建是一个在线工具，可用于为应用和产品自定义和微调 Microsoft 的文本到语音输出。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.author: lajanuar
-ms.openlocfilehash: bcee11f937095433335700d9867ffb63dc33e640
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 2e5942ccbb9e7acf090e5b538dfbb70b1c84762f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122066255"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538626"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>使用音频内容创建工具改进合成
 
@@ -103,7 +103,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 ```xml
 <speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" version="1.0" xml:lang="en-US">
-    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)">
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, ChristopherNeural)">
     Welcome to use Audio Content Creation <break time="10ms" />to customize audio output for your products.
     </voice>
 </speak>
@@ -143,7 +143,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 3. 单击“添加” > “添加角色分配”以打开“添加角色分配”窗格。  在“角色”下拉列表中，选择“认知服务用户”角色。 如果要授予用户此语音资源的所有权，可以选择“所有者”角色。
 4. 键入用户的电子邮件地址，然后在目录中选择用户。 电子邮件地址必须是 Azure 活动目录信任的 Microsoft 帐户。 用户可以使用个人电子邮件地址轻松注册 [Microsoft 帐户](https://account.microsoft.com/account)。 
 5. 单击“保存”以分配该角色。 
-6. 用户会收到电子邮件邀请。 通过单击电子邮件中的“接受邀请” > “接受加入 Azure”来接受邀请。  然后，用户会被重定向到 Azure 门户。 用户无需在 Azure 门户中执行进一步操作。 片刻之后，会在语音资源范围内为用户分配角色，用户将有权访问此语音资源。 如果用户未收到邀请电子邮件，你可以在“角色分配”下搜索用户帐户，然后进入用户配置文件。 找到“标识”->“已接受邀请”，然后单击“(管理)”以重新发送电子邮件邀请。 还可以将邀请链接复制给用户。 
+6. 用户会收到电子邮件邀请。 通过单击电子邮件中的“接受邀请” > “接受加入 Azure”来接受邀请。  然后，用户会被重定向到 Azure 门户。 用户无需在 Azure 门户中执行进一步操作。 片刻之后，系统会在语音资源范围内为用户分配角色，使其有权访问此语音资源。 如果用户未收到邀请电子邮件，你可以在“角色分配”下搜索用户帐户，然后进入用户配置文件。 找到“标识”->“已接受邀请”，然后单击“(管理)”以重新发送电子邮件邀请。 还可以将邀请链接复制给用户。 
 7. 用户现在访问或刷新[音频内容创建](https://aka.ms/audiocontentcreation)产品页面，并使用用户的 Microsoft 帐户进行登录。 在所有语音产品中选择“音频内容创建”块。 在弹出窗口或页面右上角的设置中选择语音资源。 如果用户找不到可用的语音资源，请检查你是否在正确的目录中。 若要检查正确的目录，请单击右上角的帐户配置文件，然后单击“当前目录”旁边的“切换”。 如果有多个目录可用，则意味着你有权访问多个目录。 切换到不同的目录并转到设置，查看正确的语音资源是否可用。 
 
     :::image type="content" source="media/audio-content-creation/add-role-first.png" alt-text="添加角色对话框":::

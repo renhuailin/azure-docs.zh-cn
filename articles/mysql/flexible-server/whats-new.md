@@ -7,12 +7,12 @@ ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 08/17/2021
-ms.openlocfilehash: 231622c5333875d1051bbdd2c17951c994b6f4d0
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 74b81b095ef969715313c79c90821a8c8e8aaf1d
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122270954"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098245"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - 灵活服务器（预览版）有哪些新增功能？
 
@@ -46,6 +46,10 @@ ms.locfileid: "122270954"
 
   该服务的时间点恢复体验现在支持客户配置可用性区域，将数据库服务器和备用应用程序共置在同一区域中可减少延迟，并使客户能够更好地为灾难恢复情况和“区域故障”情况做好准备。 [了解详细信息](https://aka.ms/standby-selection)。
 
+- validate_password 和 caching_sha2_password 插件在个人预览版中可用。
+
+  灵活服务器现在支持在个人预览版中启用 validate_password 和 caching_sha2_password 插件。 请发送电子邮件至 AskAzureDBforMySQL@service.microsoft.com
+
 - **另外四个 Azure 区域中的可用性**
 
   公共预览版的 Azure Database for MySQL - 灵活服务器现已在以下 Azure 区域推出，[了解详细信息](overview.md#azure-regions)：
@@ -61,6 +65,13 @@ ms.locfileid: "122270954"
   - 无法在以下区域创建相同区域高可用性服务器：印度中部、东亚、韩国中部、南非北部、瑞士北部。
   - 在极少数情况下和高可用性故障转移后，主服务器将处于 read_only 模式。 在“服务器参数”边栏选项卡中将“read_only”更新为“OFF”可解决此问题。
   - 在“计算+存储”边栏选项卡中成功缩放计算后，IOPS 将重置为 SKU 默认值。 客户可以在计算部署和随后的 IOPS 重置后，在“计算+存储”边栏选项卡中将 IOPS 重新缩放为所需值（先前设置），从而绕过此问题。
+  - 当你尝试启用或部署相同的区域 HA 时，以下区域的部署将失败 
+      - 印度中部
+      - 东亚
+      - 韩国中部
+      - 南非北部
+      - 瑞士北部
+
 
 ## <a name="july-2021"></a>2021 年 7 月
 
@@ -200,7 +211,7 @@ ms.locfileid: "122270954"
 
 - 若要联系 Azure 支持，请[从 Azure 门户提交票证](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 - 若要修复帐户问题，请在 Azure 门户中提交[支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
-- 若要提供反馈或请求新功能，请通过 [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql) 创建条目。
+- 要提供反馈或请求新功能，请发送电子邮件至 AskAzureDBforMySQL@service.microsoft.com。
 
 ## <a name="next-steps"></a>后续步骤
 

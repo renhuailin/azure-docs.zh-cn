@@ -4,12 +4,12 @@ description: 本参考文章介绍了如何将视频分析器播放器小组件�
 ms.service: azure-video-analyzer
 ms.topic: reference
 ms.date: 06/01/2021
-ms.openlocfilehash: 6896ea43b480c973daa87576ddf9fc8ea5d7cda2
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: b70bfc9a10e357c6f1e64c1737fdb4c049b505f5
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272075"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037438"
 ---
 # <a name="use-the-azure-video-analyzer-player-widget"></a>使用 Azure 视频分析器播放器小组件
 
@@ -77,7 +77,7 @@ JWTTokenIssuer 将创建 JWT 和以下必需的组件：
 
 - `Issuer`, `Audience`, `Key Type`, `Algorithm`, `Key Id`, `RSA Key Modulus`, `RSA Key Exponent`, `Token`
 
-请务必复制这些值供以后使用。
+请务必复制并保存这些值供以后使用。
 
 ## <a name="create-an-access-policy"></a>创建访问策略
 

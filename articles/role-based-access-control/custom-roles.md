@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/15/2021
+ms.date: 08/27/2021
 ms.author: rolyon
-ms.openlocfilehash: 6177de5dfc89dcbc33b9ff4291bf65ea909a3b9b
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 9553e53cda41a4fe4d926923bdd71d7d7c5ebb15
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112235709"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123308377"
 ---
 # <a name="azure-custom-roles"></a>Azure 自定义角色
 
@@ -65,13 +65,13 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
 
     使用 Azure 门户创建自定义角色时，还可以通过搜索关键字来确定资源提供程序。 [使用 Azure 门户创建或更新 Azure 自定义角色](custom-roles-portal.md#step-4-permissions)中介绍了此搜索功能。
 
-    ![包含资源提供程序的“添加权限”窗格](./media/custom-roles-portal/add-permissions-provider.png)
+    ![包含资源提供程序的“添加权限”窗格](./media/shared/add-permissions-provider.png)
 
 - 搜索[可用权限](resource-provider-operations.md)，找到要包括的权限。
 
     使用 Azure 门户创建自定义角色时，可以按关键字搜索权限。 例如，可以搜索“虚拟机”或“计费”权限。  你还可以将所有权限下载为 CSV 文件，然后搜索此文件。 [使用 Azure 门户创建或更新 Azure 自定义角色](custom-roles-portal.md#step-4-permissions)中介绍了此搜索功能。
 
-    ![“添加权限”列表](./media/custom-roles-portal/add-permissions-list.png)
+    ![“添加权限”列表](./media/shared/add-permissions-list.png)
 
 ## <a name="custom-role-example"></a>自定义角色示例
 
@@ -147,10 +147,6 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
 ]
 ```
 
-创建自定义角色后，该角色会显示在 Azure 门户中，并带有一个橙色资源图标。
-
-![自定义角色图标](./media/custom-roles/roles-custom-role-icon.png)
-
 ## <a name="custom-role-properties"></a>自定义角色属性
 
 下表说明了自定义角色属性的含义。
@@ -210,7 +206,7 @@ Microsoft.CostManagement/exports/*
 - 无法在管理组范围内分配具有 `DataActions` 的自定义角色。
 - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。
 
-若要详细了解自定义角色和管理组，请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)。
+有关自定义角色和管理组的详细信息，请参阅[什么是 Azure 管理组？](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)。
 
 ## <a name="input-and-output-formats"></a>输入和输出格式
 

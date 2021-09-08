@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4ea85c1ae1533ffe231e57ecc95f345b37c77499
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 38b595e4f9b2582f3baefecabf6285ee36436ad6
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748098"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260059"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>将 Azure Stack Hub 虚拟机连接到 Azure Sentinel
 
@@ -35,9 +35,9 @@ ms.locfileid: "121748098"
 
 1. 选择“扩展”。 此时将显示此虚拟机上安装的虚拟机扩展列表。
 
-1. 单击“添加”  选项卡。此时会打开“新建资源”菜单边栏选项卡，其中显示了可用虚拟机扩展的列表。 
+1. 选择“添加”选项卡。此时会打开“新建资源”菜单边栏选项卡，其中显示了可用虚拟机扩展的列表。 
 
-1. 选择“Azure Monitor、更新和配置管理”扩展，然后单击“创建”。  此时会打开“安装扩展”配置窗口。
+1. 选择“Azure 监视、更新和配置管理”扩展，然后选择“创建”。  此时会打开“安装扩展”配置窗口。
 
    ![“Azure Monitor、更新和配置管理”设置](./media/connect-azure-stack/azure-monitor-extension-fix.png)  
 
@@ -46,7 +46,7 @@ ms.locfileid: "121748098"
 
 1. 在 Azure Sentinel 菜单上，选择“工作区设置”，然后选择“高级”，复制“工作区 ID”和“工作区密钥(主密钥)”。    
 
-1. 在 Azure Stack Hub 的“安装扩展”窗口中，将其粘贴到指示的字段中，然后单击“确定”。 
+1. 在 Azure Stack Hub 的“安装扩展”窗口中，将其粘贴到指示的字段中，然后选择“确定” 。
 
 1. 扩展安装完成后，其状态显示为“预配成功”。 最长可能需要经过一小时，该虚拟机才会显示在 Azure Sentinel 门户中。
 
@@ -68,7 +68,7 @@ ms.locfileid: "121748098"
 
 1. 选择“扩展”，然后选择“Microsoft.EnterpriseCloud.Monitoring”扩展。
 
-1. 单击“卸载”，然后确认所做的选择。
+1. 选择“卸载”，然后确认所做的选择。
 
 ## <a name="next-steps"></a>后续步骤
 

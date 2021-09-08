@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db47b66a08ebe1c8a053995d0d8d8d810ae6b564
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 45d03495d0866674352de35c337303a92ff3263b
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746083"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835185"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的默认用户权限是什么？
 在 Azure Active Directory (Azure AD) 中，所有用户都被授予一组默认权限。 用户的访问权限由用户的类型、其[角色分配](active-directory-users-assign-role-azure-portal.md)及其对单个对象的所有权构成。 本文将会介绍这些默认权限，并将成员和来宾用户的默认权限进行比较。 只能在 Azure AD 的用户设置中更改默认用户权限。
@@ -56,7 +56,8 @@ Directory | <ul><li>读取所有公司信息<li>读取所有域<li>读取所有�
 限制访问 Azure AD 管理门户 | <p>如果将此选项设为“否”，则允许非管理员使用 Azure AD 管理门户读取和管理 Azure AD 资源。 如果设为“是”，则限制所有非管理员在管理门户中访问任何 Azure AD 数据。</p><p>注意：此设置不限制通过 PowerShell 或其他客户端（例如 Visual Studio）对 Azure AD 数据的访问。设为“是”时，若要向特定的非管理员用户授予使用 Azure AD 管理门户的权限，请分配任何管理角色（如“目录读取者者”角色）。</p><p>注意：此设置将阻止作为组或应用程序所有者的非管理员用户使用 Azure 门户管理其拥有的资源。</p><p>此角色允许读取基本目录信息，默认情况下成员用户有这些信息（来宾和服务主体没有）。</p>
 能够读取其他用户 | 此设置仅可在 PowerShell 中使用。 将此标记设置为 $false 可阻止所有非管理员用户从目录读取用户信息。 此标记不会阻止读取其他 Microsoft 服务（如 Exchange Online）中的用户信息。 此设置适用于特殊情况，因此不建议将此标记设置为 $false。
 
->![NOTE] 假设普通用户只使用门户访问 Azure AD，而不使用 PowerShell 或 CLI 访问其资源。 目前，仅当用户尝试访问 Azure 门户中的目录时，才会限制对其默认权限的访问。
+>[!NOTE]
+>假设普通用户只使用门户访问 Azure AD，而不使用 PowerShell 或 CLI 访问其资源。 目前，仅当用户尝试访问 Azure 门户中的目录时，才会限制对其默认权限的访问。
 
 ## <a name="restrict-guest-users-default-permissions"></a>限制来宾用户的默认权限
 
@@ -132,6 +133,9 @@ Directory | <ul><li>读取所有公司信息<li>读取所有域<li>读取所有�
 
 #### <a name="owned-groups"></a>拥有的组
 用户可以在拥有的组上执行以下操作。
+
+> [!NOTE]
+> 动态组的所有者必须具有全局管理员、组管理员、Intune 管理员或用户管理员角色才能编辑组成员身份规则。 有关详细信息，请参阅[在 Azure Active Directory 中创建或更新动态组](../enterprise-users/groups-create-rule.md)。
 
 | **操作** | **说明** |
 | --- | --- |

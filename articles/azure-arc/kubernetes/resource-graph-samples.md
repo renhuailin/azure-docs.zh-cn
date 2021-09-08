@@ -1,18 +1,18 @@
 ---
 title: 针对已启用 Azure Arc 的 Kubernetes 的 Azure Resource Graph 示例查询
 description: 针对已启用 Azure Arc 的 Kubernetes 的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与已启用 Azure Arc 的 Kubernetes 相关的资源和属性。
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: sample
 ms.service: azure-arc
 author: mgoedtel
 ms.author: magoedte
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: aeeecafd477cc633be5b93d932f7b3ec3c48afa8
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 0c2e108cad3bfe87d47dba935c688190d745e779
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123308654"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539886"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-arc-enabled-kubernetes"></a>针对已启用 Azure Arc 的 Kubernetes 的 Azure Resource Graph 示例查询
 

@@ -1,22 +1,24 @@
 ---
 title: Azure 数据工厂中的 Delete 活动
-description: 了解如何使用 Azure 数据工厂中的 Delete 活动删除各种文件存储中的文件。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何使用 Azure 数据工厂和 Azure Synapse Analytics 中的删除活动删除各种文件存储中的文件。
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 569e42643642a435ba8fbd56f11d7ffcbea9249e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 08/24/2021
+ms.openlocfilehash: f185df57226f438a8f40ef6889f1945b21b8540b
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065163"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123252940"
 ---
-# <a name="delete-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Delete 活动
+# <a name="delete-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中的删除活动
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
 
 可以使用 Azure 数据工厂中的 Delete 活动从“本地存储”库或“云存储”库中删除文件或文件夹。 不再需要文件时，使用此活动来清理或存档文件。
 
@@ -29,7 +31,7 @@ ms.locfileid: "110065163"
 
 -   如果将来需要还原，则先备份文件，然后使用 Delete 活动删除文件。
 
--   确保数据工厂具有从“存储”库中删除文件夹或文件的写入权限。
+-   确保该服务具有从“存储”库中删除文件夹或文件的写入权限。
 
 -   确保删除的不是同时在写入的文件。 
 
@@ -40,7 +42,7 @@ ms.locfileid: "110065163"
 -   [Azure Blob 存储](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
--   [Azure 文件存储](connector-azure-file-storage.md)
+-   [Azure 文件](connector-azure-file-storage.md)
 -   [文件系统](connector-file-system.md)
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
@@ -142,7 +144,7 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ### <a name="periodically-clean-up-the-time-partitioned-folder-or-files"></a>定期清理分时文件夹或文件
 
-可以创建管道来定期清理分时文件夹或文件。  例如，文件夹结构类似于 `/mycontainer/2018/12/14/*.csv`。  可以利用计划触发器中的 ADF 系统变量来确定每个运行的管道中应删除的文件夹或文件。 
+可以创建管道来定期清理分时文件夹或文件。  例如，文件夹结构类似于 `/mycontainer/2018/12/14/*.csv`。  可以利用计划触发器中的服务系统变量来确定每个运行的管道中应删除的文件夹或文件。 
 
 #### <a name="sample-pipeline"></a>示例管道
 
@@ -765,6 +767,6 @@ Copy 活动用于数据目标的数据集。
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何在 Azure 数据工厂中移动文件。
+详细了解如何在 Azure 数据工厂和 Synapse 管道中移动文件。
 
--   [Azure 数据工厂中的“复制数据”工具](copy-data-tool.md)
+-   [复制数据工具](copy-data-tool.md)

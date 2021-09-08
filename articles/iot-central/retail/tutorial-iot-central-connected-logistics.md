@@ -6,13 +6,13 @@ ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
-ms.date: 10/20/2019
-ms.openlocfilehash: 156764372d530935332d4343dfdfcb48fd1ebe3a
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.date: 08/17/2021
+ms.openlocfilehash: d53960419c7db43d96f3409961c5fe33bacb7325
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112964313"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433631"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>教程：部署并演练互联物流应用程序模板
 

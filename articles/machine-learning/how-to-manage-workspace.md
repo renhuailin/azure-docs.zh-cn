@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 2d0d0f70f5a610e77169685a716282bcc0456cab
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fc0cdbcb85470fb9f1e0eb4d4bf6cc43c3ae4e23
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729823"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123034400"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>在门户中或者使用 Python SDK 来管理 Azure 机器学习工作区
 
@@ -372,6 +372,10 @@ ws.delete(delete_dependent_resources=False, no_wait=False)
 * **Azure 门户**： 
   * 如果通过 SDK 的共享链接或 Azure 门户直接访问工作区，则无法查看扩展中包含订阅信息的标准“概述”页面。 此情况下，也无法切换到其他工作区。 若要查看其他工作区，请直接转到 [Azure 机器学习工作室](https://ml.azure.com)并搜索工作区名称。
   * 所有资产（数据集、试验、计算等）仅适用于 [Azure 机器学习工作室](https://ml.azure.com)， 它们不可在 Azure 门户中使用。
+
+### <a name="workspace-diagnostics"></a>工作区诊断
+
+[!INCLUDE [machine-learning-workspace-diagnostics](../../includes/machine-learning-workspace-diagnostics.md)]
 
 ### <a name="resource-provider-errors"></a>资源提供程序错误
 

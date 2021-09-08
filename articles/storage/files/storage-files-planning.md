@@ -8,12 +8,12 @@ ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e1736d94c50d5c145a66fc845936c5c26a8725cb
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 1d3688e4051f2883c5316a13e59f5629481799e2
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113224051"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864558"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 [Azure 文件存储](storage-files-introduction.md)的部署主要有两种方式：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步功能在本地缓存 Azure 文件共享。所选择的部署方式决定了规划部署时需要考虑的事项。 
@@ -111,7 +111,7 @@ Azure 文件存储支持两种不同类型的加密：传输中加密（与装�
 Azure 文件有一种多层方法来确保数据得到备份、恢复以及不受安全威胁。
 
 ### <a name="soft-delete"></a>软删除
-Azure 文件共享的软删除（预览版）是一种存储帐户级别设置，使你在意外删除文件共享时对其进行恢复。 已删除的文件共享会过渡到软删除状态，而非被永久擦除。 可配置软删除数据被永久删除前的可恢复时间，并在此保留期内随时取消删除共享。 
+Azure 文件共享的软删除是一种存储帐户级别设置，使你在意外删除文件共享时对其进行恢复。 已删除的文件共享会过渡到软删除状态，而非被永久擦除。 可配置软删除数据被永久删除前的可恢复时间，并在此保留期内随时取消删除共享。 
 
 我们建议对大多数文件共享启用软删除。 如果你的工作流中共享删除是常见且预期的，那么你可能会决定很短的保留期，或者根本不启用软删除。
 

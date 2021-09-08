@@ -6,14 +6,15 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/12/2021
-ms.openlocfilehash: 451e03c8557f224dce118866932307b32bfbfd56
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8e512c06901a533ef381bc389def45f07e8a028d
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735441"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101992"
 ---
 # <a name="choose-an-api-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中选择 API
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 是一种用于新式应用开发的完全托管的 NoSQL 数据库。 Azure Cosmos DB 提供自动管理、更新和修补，使你无需进行数据库管理。 它还通过经济高效的无服务器和自动缩放选项处理容量管理，这些选项可响应应用程序的需求，使容量与需求相匹配。
 
@@ -47,6 +48,12 @@ Core (SQL) API 已原生随附在 Azure Cosmos DB 中。
 
 如果你要从 Oracle、DynamoDB、HBase 等其他数据库进行迁移，并想要使用现代化技术来生成应用，则 SQL API 是建议的选项。 SQL API 支持分析，并在操作工作负载与分析工作负载之间提供性能隔离。
 
+### <a name="capacity-planning-for-migration-to-api-for-mongodb"></a>针对迁移到 API for MongoDB 的容量计划
+
+尝试为从现有数据库群集迁移到 Azure Cosmos DB SQL API 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    * 若只知道现有分片和复制数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
+
 ## <a name="api-for-mongodb"></a>适用于 MongoDB 的 API
 
 此 API 通过 BSON 格式将数据存储在文档结构中。 它与 MongoDB 线路协议兼容；但是，它不使用任何本机 MongoDB 相关代码。 若要使用更广泛的 MongoDB 生态系统和技能，且不影响使用 Azure Cosmos DB 功能（例如缩放、高可用性、异地复制、多个写入位置、自动和透明分片管理、操作存储与分析存储之间的透明复制等），那么此 API 是一个很好的选择。
@@ -54,6 +61,12 @@ Core (SQL) API 已原生随附在 Azure Cosmos DB 中。
 你只需要更改连接字符串，就可以将现有 MongoDB 应用与 MongoDB API 一起使用。 可以使用本机 MongoDB 工具（例如 mongodump 和 mongorestore）或 Azure 数据库迁移工具来移动任何现有数据。 MongoDB shell、[MongoDB Compass](mongodb/connect-using-compass.md) 和 [Robo3T](mongodb/connect-using-robomongo.md) 等工具可以像在本机 MongoDB 中那样运行查询和处理数据。
 
 适用于 MongoDB 的 API 与 MongoDB 服务器版本 4.0、3.6 和 3.2 兼容。 建议使用服务器版本 4.0，因为它提供最佳性能和完整功能支持。 有关详细信息，请参阅[适用于 MongoDB 的 API](mongodb/mongodb-introduction.md) 一文。
+
+### <a name="capacity-planning-for-migration-to-api-for-mongodb"></a>针对迁移到 API for MongoDB 的容量计划
+
+尝试为从现有数据库群集迁移到 Azure Cosmos DB API for MongoDB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    * 若只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](./mongodb/estimate-ru-capacity-planner.md)
 
 ## <a name="cassandra-api"></a>Cassandra API
 
@@ -80,3 +93,6 @@ Azure Cosmos DB 的 Gremlin API 基于 [Apache TinkerPop](https://tinkerpop.apac
 * [Azure Cosmos DB Cassandra API 入门](cassandra/manage-data-dotnet.md)
 * [Azure Cosmos DB Gremlin API 入门](create-graph-dotnet.md)
 * [Azure Cosmos DB 表 API 入门](create-table-dotnet.md)
+* 尝试为迁移到 Azure Cosmos DB 进行容量规划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    * 若只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

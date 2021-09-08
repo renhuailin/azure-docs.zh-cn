@@ -1,20 +1,20 @@
 ---
 title: Azure Maps Web SDK 中的数据驱动表达式 | Microsoft Azure Maps
 description: 了解数据驱动样式表达式。 了解如何使用 Azure Maps Web SDK 中的这些表达式来调整地图中的样式。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 4/4/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 851f7865553d45d8d4c4d1f86171d79a89dd8996
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 7875184456d03e08abb6168793fc9021bd953a0d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091818"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438509"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>数据驱动样式表达式 (Web SDK)
 
@@ -88,7 +88,7 @@ Azure Maps Web SDK 支持多种类型的表达式。 表达式可以单独使用
 
 | Expression | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['at', number, array]` | value | 从数组中检索项。 |
+| `['at', number, array]` | 值 | 从数组中检索项。 |
 | `['geometry-type']` | 字符串 | 获取特征的几何类型：Point、MultiPoint、LineString、MultiLineString、Polygon、MultiPolygon。 |
 | `['get', string]` | 值 | 从当前功能的属性获取属性值。 如果缺少请求的属性，则返回 null。 |
 | `['get', string, object]` | 值 | 从所提供对象的属性中获取属性值。 如果缺少请求的属性，则返回 null。 |

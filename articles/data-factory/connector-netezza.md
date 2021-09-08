@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: 6e8860d2b49e207859286eeecf994cfc5cfb507a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2a6136d4af030784bac3c45a3a5d631c41830d6c
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638926"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123303754"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Netezza 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -44,7 +44,32 @@ Azure 数据工厂提供内置驱动程序以启用连接。 无需要手动安�
 
 ## <a name="get-started"></a>入门
 
-可以通过使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建使用复制活动的管道。 有关如何创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+可以通过使用 .NET SDK、Python SDK、Azure PowerShell、REST API 或 Azure 资源管理器模板创建使用复制活动的管道。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](quickstart-create-data-factory-dot-net.md)。
+
+## <a name="create-a-linked-service-to-netezza-using-ui"></a>使用 UI 创建到 Netezza 的链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建一个到 Netezza 的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新链接服务的屏幕截图。":::
+
+2. 搜索“Netezza”，然后选择“Netezza”连接器。
+
+   :::image type="content" source="media/connector-netezza/netezza-connector.png" alt-text="Netezza 连接器的屏幕截图。":::    
+
+
+1. 配置服务详细信息、测试连接并创建新的链接服务。
+
+   :::image type="content" source="media/connector-netezza/configure-netezza-linked-service.png" alt-text="Netezza 的链接服务配置的屏幕截图。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
 
 对于特定于 Netezza 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
@@ -205,7 +230,7 @@ Netezza 链接服务支持以下属性：
 
 建议同时启用并行复制和数据分区，尤其是从 Netezza 数据库加载大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
-| 方案                                                     | 建议的设置                                           |
+| 场景                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 从大型表进行完整加载。                                   | 分区选项：数据切片。 <br><br/>在执行期间，数据工厂自动根据 [Netezza 的内置数据切片](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)将数据分区，并按分区复制数据。 |
 | 使用自定义查询加载大量数据。                 | 分区选项：数据切片。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`。<br>执行期间，数据工厂将 `?AdfPartitionCount`（并行复制数在复制活动中设置）和 `?AdfDataSliceCondition` 替换为数据切片分区逻辑，并将其发送到 Netezza。 |

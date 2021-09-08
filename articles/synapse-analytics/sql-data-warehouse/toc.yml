@@ -98,7 +98,7 @@
               href: ../../azure-sql/database/threat-detection-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: 审核
           href: ../../azure-sql/database/auditing-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
-        - name: 网络安全
+        - name: 网络安全性
           items:
             - name: 防火墙规则
               href: ../../azure-sql/database/firewall-configure.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
@@ -137,7 +137,7 @@
         - name: 概述
           href: design-elt-data-loading.md
         - name: 最佳实践
-          href: guidance-for-loading-data.md
+          href: ../sql/data-loading-best-practices.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json
         - name: 列存储压缩
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
     - name: 开发
@@ -270,7 +270,7 @@
           href: backup-and-restore.md
         - name: 建议
           href: sql-data-warehouse-concept-recommendations.md
-        - name: 故障排除
+        - name: 疑难解答
           href: sql-data-warehouse-troubleshoot.md
     - name: 维护计划
       href: maintenance-scheduling.md
@@ -388,7 +388,7 @@
           items:
             - name: 使用 Power BI 进行可视化
               href: /power-bi/service-azure-sql-data-warehouse-with-direct-connect
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 连接
           href: sql-data-warehouse-troubleshoot-connectivity.md
