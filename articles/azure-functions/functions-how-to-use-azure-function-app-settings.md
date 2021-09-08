@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: cc996988-fb4f-47, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 041f004f18b4b5fa44e4d652b2d29edb833cdc2b
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: aac032247383fe1e0b1e181c0d78864ecda778e7
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862358"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831366"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -32,9 +32,11 @@ ms.locfileid: "121862358"
 
 ## <a name="work-with-application-settings"></a><a name="settings"></a>使用应用程序设置
 
-可以通过 [Azure 门户](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings)以及 [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) 和 [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings) 管理应用程序设置。 还可以通过 [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) 和 [Visual Studio](functions-develop-vs.md#function-app-settings) 管理应用程序设置。 
+可以创建函数代码所需的任意数量的应用程序设置。 还有一些预定义的应用程序设置可供 Functions 使用。 有关详细信息，请参阅 [Azure Functions 的应用设置参考](functions-app-settings.md)。
 
 这些设置是加密存储的。 若要了解详细信息，请参阅[应用程序设置安全](security-concepts.md#application-settings)。
+
+可以通过 [Azure 门户](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings)以及 [Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings) 和 [Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings) 管理应用程序设置。 还可以通过 [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) 和 [Visual Studio](functions-develop-vs.md#function-app-settings) 管理应用程序设置。 
 
 # <a name="portal"></a>[门户](#tab/portal)
 
@@ -44,7 +46,7 @@ ms.locfileid: "121862358"
 
 ![Azure 门户中的函数应用设置。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_list) 命令返回现有的应用程序设置，如以下示例所示：
 
@@ -62,7 +64,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --settings CUSTOM_FUNCTION_APP_SETTING=12345
 ```
 
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 [`Get-AzFunctionAppSetting`](/powershell/module/az.functions/get-azfunctionappsetting) cmdlet 返回现有的应用程序设置，如以下示例所示： 
 
@@ -104,7 +106,7 @@ Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOUR
 
 ![在门户中查看缩放计划](./media/functions-scale/function-app-overview-portal.png)
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 运行以下 Azure CLI 命令以获取托管计划类型：
 
@@ -118,7 +120,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 在前面的示例中，将 `<RESOURCE_GROUP>` 和 `<FUNCTION_APP_NAME>` 分别替换为资源组和函数应用名称。 
 
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 运行以下 Azure PowerShell 命令以获取托管计划类型：
 
@@ -202,6 +204,52 @@ Linux 不支持此迁移。
     ```azurecli-interactive
     az functionapp plan delete --name <PREMIUM_PLAN> --resource-group <MY_RESOURCE_GROUP>
     ```
+
+## <a name="get-your-function-access-keys"></a>获取函数访问密钥
+
+一般情况下，可以使用 `https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>` 格式的 URL 来调用 HTTP 触发的函数。 如果为函数授权设置的值不是 `anonymous`，则还必须在请求中提供访问密钥。 可以使用 `?code=` 查询字符串在 URL 中提供该访问密钥，也可以在请求头中提供。 有关详细信息，请参阅[函数访问密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)。 可通过多种方式获取访问密钥。 
+
+# <a name="portal"></a>[门户](#tab/portal)
+
+1. 登录到 Azure 门户，然后搜索并选择“函数应用”。
+
+1. 选择要验证的函数。
+
+1. 在左侧导航栏中的“Functions”下，选择“应用密钥” 。
+
+    这会返回可用于访问应用中任何函数的主机密钥。 此外还会返回系统密钥，该密钥可向任何人授予对所有函数应用 API 的管理员级访问权限。   
+
+还可以在 HTTP 触发的函数中“开发人员”下选择“函数密钥”，使用特定的函数密钥来实践最低特权原则 。 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+在 Azure Cloud Shell 中运行以下脚本，其输出是可用于访问函数应用中任何 HTTP 触发的函数的[默认（主机）密钥](functions-bindings-http-webhook-trigger.md#authorization-scopes-function-level)。
+
+```azurecli-interactive
+subName='<SUBSCRIPTION_ID>'
+resGroup=AzureFunctionsContainers-rg
+appName=glengagtestdocker
+path=/subscriptions/$subName/resourceGroups/$resGroup/providers/Microsoft.Web/sites/$appName/host/default/listKeys?api-version=2018-11-01
+az rest --method POST --uri $path --query functionKeys.default --output tsv
+```
+
+在此脚本中，请将 `<SUBSCRIPTION_ID>` 和 `<APP_NAME>` 分别替换为你的订阅 ID 和函数应用名称。 此脚本在 Cloud Shell 中的 Bash 上运行。 必须对其进行修改才能在 Windows 命令提示符下运行。  
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+运行以下脚本，其输出是可用于访问函数应用中任何 HTTP 触发的函数的[默认（主机）密钥](functions-bindings-http-webhook-trigger.md#authorization-scopes-function-level)。 
+
+```powershell-interactive
+$subName = '<SUBSCRIPTION_ID>'
+$rGroup = 'AzureFunctionsContainers-rg'
+$appName = '<APP_NAME>'
+$path = "/subscriptions/$subName/resourceGroups/$rGroup/providers/Microsoft.Web/sites/$appName/host/default/listKeys?api-version=2018-11-01"
+((Invoke-AzRestMethod -Path $path -Method POST).Content | ConvertFrom-JSON).functionKeys.default
+```
+
+在此脚本中，请将 `<SUBSCRIPTION_ID>` 和 `<APP_NAME>` 分别替换为你的订阅 ID 和函数应用名称。 
+
+---
 
 ## <a name="platform-features"></a>平台功能
 

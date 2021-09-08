@@ -1,76 +1,96 @@
 ---
-title: 使用 XSLT 映射转换 XML
-description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中添加用于转换 XML 的 XSLT 映射
+title: 添加用于 XML 转换的 XSLT 映射
+description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中创建和添加用于转换 XML 的 XSLT 映射。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 08/04/2021
-ms.openlocfilehash: 86e7c07ba3ade77ec3913178a8dc24bb135c0a54
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/26/2021
+ms.openlocfilehash: c597a7d44b620ee33acec028812aa2d1651283ff
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733771"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123100423"
 ---
-# <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>使用带有 Enterprise Integration Pack 的 Azure 逻辑应用中的映射转换 XML
+# <a name="add-xslt-maps-for-xml-transformation-in-azure-logic-apps"></a>在 Azure 逻辑应用中添加用于 XML 转换的 XSLT 映射
 
-若要使用 Azure 逻辑应用中企业集成方案适用的不同格式传输 XML 数据，逻辑应用可使用映射，更具体地说，可使用可扩展样式表语言转换 (XSLT) 映射。 映射是一个 XML 文档，描述如何将 XML 文档中的数据转换为另一种格式。
+若要在 Azure 逻辑应用中用于企业集成方案的不同数据格式之间传输 XML 数据，逻辑应用资源可使用映射，更具体地说，可使用可扩展样式表语言转换 (XSLT) 映射。 映射是一个 XML 文档，描述如何将 XML 文档中的数据转换为另一种格式。
 
-例如，假设你从使用 YYYMMDD 日期格式的客户定期接收 B2B 订单或发票。 但是，你的组织使用 MMDDYYY 日期格式。 在将订单或发票详细信息存储在客户活动数据库中之前，可以定义并使用一个映射将 YYYMMDD 日期格式转换为 MMDDYYY 格式。
+例如，假设你从使用 YearMonthDay 日期格式 (YYYYMMDD) 的客户定期接收 B2B 订单或发票。 但是，你的组织使用 MonthDayYear 日期格式 (MMDDYYYY)。 在将订单或发票详细信息存储在客户活动数据库中之前，可以定义并使用一个映射，以便将 YYYYMMDD 格式转换为 MMDDYYYY 格式。
+
+使用映射可以定义一个简单的转换，例如，将名称和地址从一个文档复制到另一个文档。 或者，可以使用现成可用的映射操作创建更复杂的转换。
 
 > [!NOTE]
-> Azure 逻辑应用服务会分配有限的内存来处理 XML 转换。 如果基于“逻辑应用(消耗)”资源类型创建逻辑应用，并且映射或有效负载转换的内存消耗较高，则此类转换可能会失败，从而导致内存不足错误。 若要避免这种情况，请考虑以下选项：
+> Azure 逻辑应用会分配有限的内存来处理 XML 转换。 如果基于“逻辑应用(消耗)”资源类型创建逻辑应用，并且映射或有效负载转换的内存消耗较高，则此类转换可能会失败，从而导致内存不足错误。 若要避免这种情况，请考虑以下选项：
 >
 > * 编辑映射或有效负载以减少内存消耗。
 >
 > * 请改用“逻辑应用(标准)”资源类型来创建逻辑应用。
 >
->   这些工作流在单租户 Azure 逻辑应用中运行，为计算和内存资源提供专用且灵活的选项。 有关详细信息，请查看以下文档：
->
->   * [什么是 Azure 逻辑应用 - 资源类型和主机环境](logic-apps-overview.md#resource-type-and-host-environment-differences)
->   * [使用单租户 Azure 逻辑应用（标准版）创建集成工作流](create-single-tenant-workflows-azure-portal.md)
->   * [适用于 Azure 逻辑应用的单租户与多租户和集成服务环境的比较情况](single-tenant-overview-compare.md)
->   * [适用于 Azure 逻辑应用的用量计量、计费和定价模型](logic-apps-pricing.md)
+>   这些工作流在单租户 Azure 逻辑应用中运行，为计算和内存资源提供专用且灵活的选项。 
+>   但是，标准逻辑应用资源类型目前不支持从映射引用外部程序集。 此外，目前仅支持可扩展样式表语言转换 (XSLT) 1.0。
 
-有关集成帐户和映射等项目的限制，请参阅 [Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
+如果你不熟悉逻辑应用，请查看以下文档：
+
+* [什么是 Azure 逻辑应用 - 资源类型和主机环境](logic-apps-overview.md#resource-type-and-host-environment-differences)
+
+* [使用单租户 Azure 逻辑应用（标准版）创建集成工作流](create-single-tenant-workflows-azure-portal.md)
+
+* [创建单租户逻辑应用工作流](create-single-tenant-workflows-azure-portal.md)
+
+* [适用于 Azure 逻辑应用的使用量计量、计费和定价模型](logic-apps-pricing.md)
+
+## <a name="limits"></a>限制
+
+* 对于标准型逻辑应用资源，映射文件大小没有限制。
+
+* 对于消耗型逻辑应用资源，集成帐户和项目（例如映射）存在限制。 有关详细信息，请查看 [Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 帐户和订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 一个[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，用于存储映射以及企业集成与企业到企业 (B2B) 解决方案的其他项目。
+* 如果使用的是逻辑应用（标准）资源类型，则不需要集成帐户， 你可以在 Azure 门户或 Visual Studio Code 中将映射直接添加到逻辑应用资源。 目前仅支持 XSLT 1.0。 然后，可以在同一逻辑应用资源中跨多个工作流使用这些映射。
 
-* 如果映射引用外部程序集，则需要 64 位程序集。 转换服务运行 64 位进程，因此不支持 32 位程序集。 如果有 32 位程序集的源代码，请将此代码重新编译为 64 位程序集。 如果没有源代码，但从第三方提供程序获取了二进制文件，请从该提供程序获取 64 位版本。 例如，某些供应商在包中提供有 32 位和 64 位版本的程序集。 如果可以选择，请改用 64 位版本。
+* 如果使用的是逻辑应用（消耗）资源类型，则需有一个[集成帐户资源](logic-apps-enterprise-integration-create-integration-account.md)，可在其中存储要在企业集成和企业到企业 (B2B) 解决方案中使用的映射和其他项目。 此资源必须满足以下要求：
 
-* 如果映射引用了外部程序集，必须将该程序集和映射上传到集成帐户。  请务必[先上传程序集](#add-assembly)，然后再上传引用程序集的映射。 
+  * 与逻辑应用资源所在的同一个 Azure 订阅相关联。
 
-  如果程序集为 2 MB 或更小，可以直接从 Azure 门户将程序集添加到集成帐户。  但是，如果程序集或映射大于 2 MB 但不超过[程序集或映射的大小限制](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)，则可以使用以下选项：
+  * 与你打算在其中使用“转换 XML”操作的逻辑应用资源位于同一个位置或 Azure 区域。
 
-  * 对于程序集，需要一个可在其中上传程序集的 Azure Blob 容器，并规划好该容器的位置。 这样，在将程序集添加到集成帐户时，便可以提供该位置。 对于此任务，需要提供以下各项：
+  * 已[链接](logic-apps-enterprise-integration-create-integration-account.md#link-account)到你要在其中使用映射的逻辑应用资源。
+
+    若要创建和添加要在消耗型逻辑应用工作流中使用的映射，尚不需要逻辑应用资源。 但是，当你准备好在工作流中使用这些映射时，逻辑应用资源需有一个用于存储这些映射的链接集成帐户。
+
+* 尽管逻辑应用（消耗型）支持从映射引用外部程序集，但逻辑应用（标准型）目前并不支持此功能 。 引用某个程序集可以直接从 XSLT 映射调用自定义 .NET 代码。
+
+  * 需要一个 64 位程序集。 转换服务运行 64 位进程，因此不支持 32 位程序集。 如果有 32 位程序集的源代码，请将此代码重新编译为 64 位程序集。 如果没有源代码，但从第三方提供程序获取了二进制文件，请从该提供程序获取 64 位版本。 例如，某些供应商在包中提供有 32 位和 64 位版本的程序集。 如果可以选择，请改用 64 位版本。
+
+  * 必须按特定的顺序将程序集和映射上传到集成帐户。 请务必[先上传程序集](#add-assembly)，然后再上传引用程序集的映射。 
+
+  * 如果程序集为 [2 MB 或更小](#smaller-map)，你可以直接从 Azure 门户将程序集和映射添加到集成帐户。 但是，如果程序集或映射大于 2 MB 但不超过[程序集或映射的大小限制](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)，你可以使用一个可在其中上传程序集的 Azure Blob 容器并指定该容器的位置。 这样，在将程序集添加到集成帐户时，便可以提供该位置。 对于此任务，需要提供以下各项：
 
     | 项目 | 说明 |
     |------|-------------|
     | [Azure 存储帐户](../storage/common/storage-account-overview.md) | 在此帐户中创建程序集的 Azure Blob 容器。 了解[如何创建存储帐户](../storage/common/storage-account-create.md)。 |
-    | Blob 容器 | 可在此容器中上传程序集。 将程序集添加到集成帐户时，也需要此容器的位置。 了解如何[创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 |
+    | Blob 容器 | 可在此容器中上传程序集。 将程序集添加到集成帐户时，也需要此容器的内容 URI 位置。 了解如何[创建 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 |
     | [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md) | 借助此工具可以更轻松地管理存储帐户和 Blob 容器。 若要使用存储资源管理器，请[下载并安装 Azure 存储资源管理器](https://www.storageexplorer.com/)。 然后，遵循[存储资源管理器入门](../vs-azure-tools-storage-manage-with-storage-explorer.md)中的步骤将存储资源管理器连接到存储帐户。 若要了解详细信息，请参阅[快速入门：使用 Azure 存储资源管理器在对象存储中创建 Blob](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。 <p>或者在 Azure 门户中，选择你的存储帐户。 在存储帐户菜单中选择“存储资源管理器”。  |
     |||
 
-  * 对于映射，目前可以使用 [Azure 逻辑应用 REST API - 映射](/rest/api/logic/maps/createorupdate)添加较大的映射。
-
-创建和添加映射时不需要逻辑应用。 但是，若要使用映射，逻辑应用需要链接到存储该映射的集成帐户。 了解[如何将逻辑应用链接到集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。 如果没有逻辑应用，请了解[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+  * 若要为消耗型逻辑应用资源添加更大的映射，还可使用 [Azure 逻辑应用 REST API - 映射](/rest/api/logic/maps/createorupdate)。 但是，对于标准型逻辑应用资源，Azure 逻辑应用 REST API 目前不可用。
 
 <a name="add-assembly"></a>
 
-## <a name="add-referenced-assemblies"></a>添加引用的程序集
+## <a name="add-referenced-assemblies-consumption-resource-only"></a>添加引用的程序集（仅限消耗型资源）
 
 1. 在 [Azure 门户](https://portal.azure.com)中，使用 Azure 帐户凭据登录。
 
 1. 在 Azure 主搜索框中输入 `integration accounts`，然后选择“集成帐户”。
 
-1. 选择要将程序集添加到的集成帐户，例如：
+1. 选择要将程序集添加到的集成帐户。
 
 1. 在集成帐户的菜单上，选择“概述”。 在“设置”下选择“程序集” 。
 
@@ -109,11 +129,11 @@ ms.locfileid: "121733771"
 
    * 如果 Blob 容器至少具有公共访问权限，请选择“取消”，并执行本页稍后所述的步骤：[上传到具有公共访问权限的容器](#public-access-assemblies)
 
-     ![公共访问](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+     ![公共访问](media/logic-apps-enterprise-integration-maps/azure-blob-container-public-access.png)
 
    * 如果 Blob 容器没有公共访问权限，请选择“取消”，并执行本页稍后所述的步骤：[上传到没有公共访问权限的容器](#no-public-access-assemblies)
 
-     ![没有公共访问权限](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
+     ![没有公共访问权限](media/logic-apps-enterprise-integration-maps/azure-blob-container-no-public-access.png)
 
 <a name="public-access-assemblies"></a>
 
@@ -149,17 +169,60 @@ ms.locfileid: "121733771"
 
 完成程序集上传后，该程序集将显示在“架构”列表中。  在集成帐户“概述”页的“项目”下，也会显示上传的程序集 。
 
+<a name="create-maps"></a>
+
 ## <a name="create-maps"></a>创建映射
 
-若要创建可用作映射的可扩展样式表语言转换 (XSLT) 文档，可使用 Visual Studio 2015 或 2019 通过 [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md) 创建集成项目。 在此项目中，可以生成用于直观地在两个 XML 架构文件之间映射项的集成映射文件。 生成此项目后，会获得一个 XSLT 文档。 有关集成帐户中映射数量的限制，请查看 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)。
+若要创建可用作映射的可扩展样式表语言转换 (XSLT) 文档，可以使用 Visual Studio 2015 或 2019 通过 [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas) 创建集成项目。 在此项目中，可以生成用于直观地在两个 XML 架构文件之间映射项的集成映射文件。 生成此项目后，会获得一个 XSLT 文档。 有关集成帐户中映射数量的限制，请查看 [Azure 逻辑应用的限制和配置](logic-apps-limits-and-config.md#artifact-number-limits)。
+
+映射必须具有以下属性和 `CDATA` 节，该节包含对程序集代码的调用：
+
+* `name` 是自定义程序集名称。
+
+* `namespace` 是包含自定义代码的程序集中的命名空间。
+
+以下示例演示了一个映射，该映射引用名为 `XslUtilitiesLib` 的程序集并从该程序集调用 `circumference` 方法。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:my-scripts">
+<msxsl:script language="C#" implements-prefix="user">
+    <msxsl:assembly name="XsltHelperLib"/>
+    <msxsl:using namespace="XsltHelpers"/>
+    <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
+</msxsl:script>
+<xsl:template match="data">
+<circles>
+    <xsl:for-each select="circle">
+        <circle>
+            <xsl:copy-of select="node()"/>
+                <circumference>
+                    <xsl:value-of select="user:circumference(radius)"/>
+                </circumference>
+        </circle>
+    </xsl:for-each>
+</circles>
+</xsl:template>
+</xsl:stylesheet>
+```
+
+## <a name="tools-and-capabilities-for-maps"></a>适用于映射的工具和功能
+
+* 使用 Visual Studio 和[企业集成 SDK](https://aka.ms/vsmapsandschemas) 创建映射时，可以使用映射的图形表示形式，其中会显示你创建的所有关系和链接。
+
+* 可以在架构之间进行直接数据复制。 Visual Studio 的[企业集成 SDK](https://aka.ms/vsmapsandschemas) 包含一个映射器，它能够使此任务变得非常简单，就如同绘制一条线将源 XML 架构中的元素与目标 XML 架构中的对应元素连接到一起一样。
+
+* 针对多个映射的操作或函数已提供，包括字符串函数、日期时间函数等。  
+
+* 若要添加示例 XML 消息，可以使用映射测试功能。 只需单击一下鼠标，就能测试创建的映射并查看生成的输出。
 
 ## <a name="add-maps"></a>添加映射
 
+### <a name="consumption-resource"></a>[消耗型资源](#tab/consumption-1)
+
 上传映射引用的所有程序集之后，接下来可以上传映射。
 
-1. 如果尚未登录，请使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
-
-1. 如果集成帐户尚未打开，请在 Azure 主搜索框中输入 `integration accounts`，然后选择“集成帐户”。
+1. 在 Azure 门户中，如果你的集成帐户尚未打开，请在 Azure 主搜索框中输入 `integration accounts`，然后选择“集成帐户”。
 
 1. 选择要将映射添加到的集成帐户。
 
@@ -171,117 +234,55 @@ ms.locfileid: "121733771"
 
 <a name="smaller-map"></a>
 
-### <a name="add-maps-up-to-2-mb"></a>添加不超过 2 MB 的映射
+#### <a name="add-maps-up-to-2-mb"></a>添加不超过 2 MB 的映射
 
 1. 在“添加映射”下，输入映射的唯一名称。
 
 1. 在“映射类型”下选择类型，例如：  “Liquid”、“XSLT”、“XSLT 2.0”或“XSLT 3.0”。    
 
-1. 选择“映射”框旁边的文件夹图标。 找到并选择要上传的映射，例如：
+1. 选择“映射”框旁边的文件夹图标。 选择要上传的映射。
 
    如果将“名称”属性留空，则选择映射文件后，映射的文件名将自动显示在该属性中。
 
 1. 准备就绪后，请选择“确定”。
 
-   完成映射文件上传后，该映射将显示在“映射”列表中。 
-
-   在集成帐户“概述”页的“项目”下，也会显示上传的映射 。
+   完成映射文件上传后，该映射将显示在“映射”列表中。  在集成帐户“概述”页的“项目”下，也会显示上传的映射 。
 
 <a name="larger-map"></a>
 
-### <a name="add-maps-more-than-2-mb"></a>添加 2 MB 以上的映射
+#### <a name="add-maps-more-than-2-mb"></a>添加 2 MB 以上的映射
 
 目前，若要添加较大的映射，需要使用 [Azure 逻辑应用 REST API - 映射](/rest/api/logic/maps/createorupdate)。
 
-<!--
+### <a name="standard-resource"></a>[标准型资源](#tab/standard-1)
 
-To add larger maps, you can upload your map to 
-an Azure blob container in your Azure storage account. 
-Your steps for adding maps differ based whether your 
-blob container has public read access. So first, check 
-whether or not your blob container has public read 
-access by following these steps: 
-[Set public access level for blob container](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+#### <a name="azure-portal"></a>Azure 门户
 
-#### Check container access level
+1. 在逻辑应用资源菜单中的“设置”下，选择“映射” 。
 
-1. Open Azure Storage Explorer. In the Explorer window, 
-   expand your Azure subscription if not already expanded.
+1. 在“映射”窗格工具栏中选择“添加” 。
 
-1. Expand **Storage Accounts** > {*your-storage-account*} > 
-   **Blob Containers**. Select your blob container.
+1. 在“添加映射”下，输入映射的唯一名称并包括 `.xslt` 扩展名。
 
-1. From your blob container's shortcut menu, 
-   select **Set Public Access Level**.
+1. 选择“映射”框旁边的文件夹图标。 选择要上传的映射。
 
-   * If your blob container has at least public access, choose **Cancel**, 
-   and follow these steps later on this page: 
-   [Upload to containers with public access](#public-access)
+1. 准备就绪后，请选择“确定”。
 
-     ![Public access](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+   完成映射文件上传后，该映射将显示在“映射”列表中。  在集成帐户“概述”页的“项目”下，也会显示上传的映射 。
 
-   * If your blob container doesn't have public access, choose **Cancel**, 
-   and follow these steps later on this page: 
-   [Upload to containers without public access](#public-access)
+#### <a name="visual-studio-code"></a>Visual Studio Code
 
-     ![No public access](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
+1. 在逻辑应用项目的结构中打开“项目”文件夹，然后打开“映射”文件夹 。
 
-<a name="public-access-maps"></a>
+1. 在“映射”文件夹中添加映射。
 
-### Add maps to containers with public access
-
-1. Upload the map to your storage account. 
-   In the right-side window, choose **Upload**. 
-
-1. After you finish uploading, select your 
-   uploaded map. On the toolbar, choose **Copy URL** 
-   so that you copy the map's URL.
-
-1. Return to the Azure portal where the 
-   **Add Map** pane is open. Choose **Large file**. 
-
-   The **Content URI** box now appears, 
-   rather than the **Map** box.
-
-1. In the **Content URI** box, paste your map's URL. 
-   Finish adding your map.
-
-After your map finishes uploading, 
-the map appears in the **Maps** list.
-
-<a name="no-public-access-maps"></a>
-
-### Add maps to containers with no public access
-
-1. Upload the map to your storage account. 
-   In the right-side window, choose **Upload**.
-
-1. After you finish uploading, generate a 
-   shared access signature (SAS) for your schema. 
-   From your map's shortcut menu, 
-   select **Get Shared Access Signature**.
-
-1. In the **Shared Access Signature** pane, select 
-   **Generate container-level shared access signature URI** > **Create**. 
-   After the SAS URL gets generated, next to the **URL** box, choose **Copy**.
-
-1. Return to the Azure portal where the 
-   **Add Maps** pane is open. Choose **Large file**.
-
-   The **Content URI** box now appears, 
-   rather than the **Map** box.
-
-1. In the **Content URI** box, paste the SAS URI 
-   you previously generated. Finish adding your map.
-
-After your map finishes uploading, 
-the map appears in the **Maps** list.
-
--->
+---
 
 ## <a name="edit-maps"></a>编辑映射
 
 若要更新现有的映射，必须上传一个新的映射文件，其中包含所要做出的更改。 但是，可以先下载现有的映射进行编辑。
+
+### <a name="consumption-resource"></a>[消耗型资源](#tab/consumption-2)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，打开你的集成帐户（如果尚未打开）。
 
@@ -295,9 +296,31 @@ the map appears in the **Maps** list.
 
    完成映射文件上传后，更新的映射将显示在“映射”列表中。 
 
+### <a name="standard-resource"></a>[标准型资源](#tab/standard-2)
+
+1. 在 [Azure 门户](https://portal.azure.com)中打开你的逻辑应用资源（如果尚未打开）。
+
+1. 在逻辑应用资源菜单中的“设置”下，选择“映射” 。
+
+1. “映射”窗格打开后，请选择你的映射。 若要先下载并编辑映射，请在“映射”窗格工具栏上选择“下载”，然后保存映射 。
+
+1. 在“映射”窗格工具栏中选择“添加” 。
+
+1. 在“添加映射”下，输入映射的唯一名称并包括 `.xslt` 扩展名。
+
+1. 选择“映射”框旁边的文件夹图标。 选择要上传的映射。
+
+1. 准备就绪后，请选择“确定”。
+
+   完成映射文件上传后，更新的映射将显示在“映射”列表中。 
+
+---
+
 ## <a name="delete-maps"></a>删除映射
 
-1. 在 [Azure 门户](https://portal.azure.com)中，找到并打开你的集成帐户（如果尚未打开）。
+### <a name="consumption-resource"></a>[消耗型资源](#tab/consumption-3)
+
+1. 在 [Azure 门户](https://portal.azure.com)中，打开你的集成帐户（如果尚未打开）。
 
 1. 在集成帐户菜单上的“设置”下，选择“映射” 。
 
@@ -305,8 +328,19 @@ the map appears in the **Maps** list.
 
 1. 若要确认删除该映射，请选择“是”。
 
+### <a name="standard-resource"></a>[标准型资源](#tab/standard-3)
+
+1. 在 [Azure 门户](https://portal.azure.com)中打开你的逻辑应用资源（如果尚未打开）。
+
+1. 在逻辑应用资源菜单中的“设置”下，选择“映射” 。
+
+1. “映射”窗格打开后，请选择你的映射，然后选择“删除” 。
+
+1. 若要确认删除该映射，请选择“是”。
+
+---
+
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md)  
-* [详细了解架构](../logic-apps/logic-apps-enterprise-integration-schemas.md)
-* [详细了解转换](../logic-apps/logic-apps-enterprise-integration-transform.md)
+* [在 Azure 逻辑应用中转换工作流的 XML](logic-apps-enterprise-integration-transform.md)
+* [在 Azure 逻辑应用中验证工作流的 XML](logic-apps-enterprise-integration-xml-validation.md)

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 04/09/2021
+ms.date: 08/26/2021
 ms.author: tisande
-ms.openlocfilehash: 2fa13f931801c08fd450e889744b1eb49638ca80
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: af71ff52ead86c0cdeea307e736c36ac27536bfa
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206244"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123029935"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL 查询入门
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -194,3 +194,6 @@ Azure Cosmos DB 上的大部分读取密集型工作负荷使用点读取和 SQL
 - [Azure Cosmos DB 简介](../introduction.md)
 - [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [SELECT 子句](sql-query-select.md)
+- 尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    - 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+    - 如果你知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量规划工具估算请求单位](../estimate-ru-with-capacity-planner.md)

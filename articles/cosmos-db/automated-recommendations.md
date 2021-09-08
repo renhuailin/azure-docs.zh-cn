@@ -5,14 +5,14 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 08/26/2021
 ms.reviewer: sngun
-ms.openlocfilehash: d9eb55030c7ec52f9b2ac79fbab19944f0a3e190
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3844e71a1c3c9e823586a428b9ae98a3b804d502
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93087817"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123034544"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>针对 Azure Cosmos DB 自动提出的建议
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -87,3 +87,6 @@ Azure Cosmos DB 目前支持针对以下领域的建议。 其中每个建议都
 
 * [优化 Azure Cosmos DB 中的查询性能](sql-api-query-metrics.md)
 * [排查使用 Azure Cosmos DB 时遇到的查询问题](troubleshoot-query-performance.md)
+* 尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    * 如果你只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

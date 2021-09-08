@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 08/26/2021
 ms.author: tisande
-ms.openlocfilehash: 00b119d993b549340467bf3892f3ffc5cf7b76dd
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8228c3cedf58b389b93a516c4a372a38b33c0e4d
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755416"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123028534"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -392,3 +392,6 @@ WHERE CONTAINS(company.headquarters.country, "United")
 
 - [索引策略](index-policy.md)
 - [如何管理索引策略](how-to-manage-indexing-policy.md)
+- 尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    - 如果你只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    - 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

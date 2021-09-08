@@ -6,14 +6,14 @@ ms.author: gahllevy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 08/26/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b3a43805e77157b875948ca093c5f04935ffe68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c2ad6ef764fa13a6876f1727314d5a7944ce7d31
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121777883"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123035200"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>查找 Azure Cosmos DB API for MongoDB 中执行的操作的请求单位费用
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -97,3 +97,6 @@ db.command({ getLastRequestStatistics: 1 }, function(err, result) {
 * [Azure Cosmos DB 中的请求单位和吞吐量](../request-units.md)
 * [在 Azure Cosmos DB 中优化预配的吞吐量成本](../optimize-cost-throughput.md)
 * [优化 Azure Cosmos DB 中的查询成本](../optimize-cost-reads-writes.md)
+* 尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    * 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+    * 如果你知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量规划工具估算请求单位](estimate-ru-capacity-planner.md)

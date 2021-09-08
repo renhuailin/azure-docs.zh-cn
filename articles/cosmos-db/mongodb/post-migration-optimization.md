@@ -4,15 +4,15 @@ description: 本文档提供从 MongoDB 迁移到 Azure Cosmos DB MongoDB API �
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 05/19/2021
+ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: d627fc4e35a4438926b14159fdfd424361601ad3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6dbcb5e65c99c2009602d660e3cd0cc9e22efdbf
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121777879"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123031562"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB MongoDB API 时的迁移后优化步骤
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -89,6 +89,9 @@ Azure Cosmos DB 提供 5 个妥善定义的[一致性级别](../consistency-leve
 
 ## <a name="next-steps"></a>后续步骤
 
+* 尝试为迁移到 Azure Cosmos DB 进行容量计划？
+    * 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+    * 如果你知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量规划工具估算请求单位](estimate-ru-capacity-planner.md)
 * [将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md)
 * [使用 Studio 3T 连接到 Azure Cosmos DB 帐户](connect-using-mongochef.md)
 * [如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 全局分发读取](readpreference-global-distribution.md)

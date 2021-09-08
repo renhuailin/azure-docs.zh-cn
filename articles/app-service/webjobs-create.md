@@ -4,7 +4,7 @@ description: 了解如何使用 WebJobs 在 Azure 应用服务中运行后台任
 author: ggailey777
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 6/25/2021
 ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
@@ -12,24 +12,23 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./webjobs-create-ieux
-ms.openlocfilehash: 8afc8ca9b0dedb10ecdb30e8abb22a5d0986de5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ecb31f6d008fda51d03c3e0d2d44b881397b466
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101723871"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "122652069"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>在 Azure 应用服务中使用 WebJobs 运行后台任务
 
-本文介绍如何使用 [Azure 门户](https://portal.azure.com)部署 WebJobs，以便上传可执行文件或脚本。 有关如何使用 Visual Studio 开发和部署 WebJobs 的信息，请参阅[使用 Visual Studio 部署 WebJobs](webjobs-dotnet-deploy-vs.md)。
+通过使用 [Azure 门户](https://portal.azure.com)上传可执行文件或脚本来部署 WebJobs。 可以在 Azure 应用服务中运行后台任务。
+
+如果你不使用 Azure 应用服务，而是使用 Visual Studio 2019 来开发和部署 WebJobs，请参阅[使用 Visual Studio 部署 WebJobs](webjobs-dotnet-deploy-vs.md)。
 
 ## <a name="overview"></a>概述
 WebJobs 是 [Azure 应用服务](index.yml)的一项功能，它允许你在与 Web 应用、API 应用或移动应用相同的实例中运行程序或脚本。 使用 Web 作业无需支付额外的费用。
 
-> [!IMPORTANT]
-> Linux 上的应用服务尚不支持 WebJobs。
-
-可以结合 WebJobs 使用 Azure WebJobs SDK 来简化许多编程任务。 有关详细信息，请参阅[什么是 WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)。
+可以结合使用 Azure WebJobs SDK 和 WebJobs 来简化许多编程任务。 Linux 上的应用服务尚不支持 WebJobs。 有关详细信息，请参阅[什么是 WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)。
 
 Azure Functions 提供了运行程序和脚本的另一种方式。 有关 WebJobs 与 Functions 之间的比较，请参阅[在 Flow、逻辑应用、Functions 与 WebJobs 之间选择](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)。
 
@@ -40,9 +39,10 @@ Azure Functions 提供了运行程序和脚本的另一种方式。 有关 WebJo
 
 |连续  |触发  |
 |---------|---------|
-| 创建 Web 作业后立即启动。 若要防止作业终止，程序或脚本通常在无限循环中执行其工作。 如果作业确实终止，可将其重启。 | 仅当手动触发或按计划触发时启动。 |
+| 创建 Web 作业后立即启动。 若要防止作业终止，程序或脚本通常在无限循环中执行其工作。 如果作业确实终止，可将其重启。 通常与 WebJobs SDK 结合使用。 | 仅当手动触发或按计划触发时启动。 |
 | 在运行 Web 应用的所有实例上运行。 可以选择性地将 Web 作业限制为单个实例。 |在 Azure 选择用于负载均衡的单个实例上运行。|
 | 支持远程调试。 | 不支持远程调试。|
+| 代码部署在 `\site\wwwroot\app_data\Jobs\Continuous` 下。 | 代码部署在 `\site\wwwroot\app_data\Jobs\Triggered` 下。 |
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
@@ -66,19 +66,19 @@ when making changes in one don't forget the other two.
 -->
 
 > [!IMPORTANT]
-> 如果你的应用程序配置了源代码管理，则 Webjobs 应已部署为源代码管理集成的一部分。 应用程序配置了源代码管理后，便无法从 Azure 门户添加 WebJob 了。
+> 如果为应用程序配置了源代码管理，则 Webjobs 应会部署为源代码管理集成的一部分。 为应用程序配置源代码管理后，无法从 Azure 门户添加 WebJob。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，转到应用服务 Web 应用、API 应用或移动应用的“应用服务”页。
 
-2. 选择“Web 作业”。
+1. 在应用的“应用服务”页的左侧窗格中，搜索并选择“WebJobs” 。
 
    ![选择“Web 作业”](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. 在“Web 作业”页中，选择“添加”。 
+1. 在“WebJobs”页上选择“添加” 。
 
     ![“Web 作业”页](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. 使用表中指定的“添加 Web 作业”设置。
+1. 按照表中的指定值填写“添加 WebJob”设置。
 
    ![显示需要配置的“添加 Web 作业”设置的屏幕截图。](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
@@ -89,13 +89,13 @@ when making changes in one don't forget the other two.
    | **类型** | 连续 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
    | **缩放** | 多实例 | 仅适用于连续 Web 作业。 确定程序或脚本是在所有实例还是只在一个实例上运行。 指定要在多个实例上运行的选项不适用于免费或共享[定价层](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 | 
 
-4. 单击 **“确定”** 。
+1. 选择“确定”。 
 
-   新的 Web 作业随即显示在“Web 作业”页上。
+   新的 Web 作业随即显示在“Web 作业”页上。 如果有消息指出已添加 WebJob 但你未看到该 WebJob，请选择“刷新”。 
 
-   ![Web 作业列表](./media/web-sites-create-web-jobs/listallwebjobs.png)
+   ![Web 作业列表](./media/web-sites-create-web-jobs/list-continuous-webjob.png)
 
-2. 要停止或重启某个连续 Web 作业，请在列表中右键单击该 Web 作业，并单击“停止”或“启动”。
+1. 若要停止或重启某个连续 WebJob，请在列表中右键单击该 WebJob，然后选择“停止”或“启动” 。
 
     ![停止连续 Web 作业](./media/web-sites-create-web-jobs/continuousstop.png)
 
@@ -106,17 +106,19 @@ Several steps in the three "Create..." sections are identical;
 when making changes in one don't forget the other two.
 -->
 
-1. 在 [Azure 门户](https://portal.azure.com)中，转到应用服务 Web 应用、API 应用或移动应用的“应用服务”页。
+1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“应用服务”。 
 
-2. 选择“Web 作业”。
+1. 从列表中选择你的 Web 应用、API 应用或移动应用。 
+
+1. 在应用的“应用服务”页的左侧窗格中，选择“WebJobs” 。
 
    ![选择“Web 作业”](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. 在“Web 作业”页中，选择“添加”。 
+2. 在“WebJobs”页上选择“添加” 。
 
     ![“Web 作业”页](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. 使用表中指定的“添加 Web 作业”设置。
+1. 按照表中的指定值填写“添加 WebJob”设置。 
 
    ![显示创建手动触发的 Web 作业所需设置的设置项的屏幕截图。](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
@@ -124,37 +126,41 @@ when making changes in one don't forget the other two.
    | ------------ | ----------------- | ------------ |
    | **名称** | myTriggeredWebJob | 在应用服务应用中唯一的名称。 必须以字母或数字开头，且不能包含除“-”和“_”以外的特殊字符。|
    | **文件上传** | ConsoleApp.zip | 一个 *.zip* 文件，其中包含可执行文件或脚本文件，以及运行程序或脚本所需的所有支持文件。 [支持的文件类型](#acceptablefiles)部分中列出了支持的可执行文件或脚本文件类型。 |
-   | **类型** | 触发 | 本文前面介绍了 [Web 作业类型](#webjob-types)。 |
+   | **类型** | 触发 | 本文前面介绍了 [WebJob 类型](#webjob-types)。 |
    | **触发器** | 手动 | |
 
-4. 单击 **“确定”** 。
+4. 选择“确定”。
 
-   新的 Web 作业随即显示在“Web 作业”页上。
+   新的 Web 作业随即显示在“Web 作业”页上。 如果有消息指出已添加 WebJob 但你未看到该 WebJob，请选择“刷新”。  
 
-   ![Web 作业列表](./media/web-sites-create-web-jobs/listallwebjobs.png)
+   ![已触发的 WebJob 列表](./media/web-sites-create-web-jobs/list-triggered-webjob.png)
 
-7. 如果要运行 Web 作业，请在列表中右键单击其名称，并单击“运行” 。
+7. 若要运行 WebJob，请在列表中右键单击其名称，然后选择“运行”。
    
     ![运行 Web 作业](./media/web-sites-create-web-jobs/runondemand.png)
 
 ## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a>创建计划的 Web 作业
 
+还会触发计划的 WebJob。 可将触发器安排为按照你指定的计划自动运行。
+ 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
 when making changes in one don't forget the other two.
 -->
 
-1. 在 [Azure 门户](https://portal.azure.com)中，转到应用服务 Web 应用、API 应用或移动应用的“应用服务”页。
+1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“应用服务”。 
 
-2. 选择“Web 作业”。
+1. 从列表中选择你的 Web 应用、API 应用或移动应用。 
+
+1. 在应用的“应用服务”页的左侧窗格中，选择“WebJobs” 。
 
    ![选择“Web 作业”](./media/web-sites-create-web-jobs/select-webjobs.png)
 
-2. 在“Web 作业”页中，选择“添加”。 
+1. 在“WebJobs”页上选择“添加” 。
 
    ![“Web 作业”页](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. 使用表中指定的“添加 Web 作业”设置。
+3. 按照表中的指定值填写“添加 WebJob”设置。
 
    ![“添加 Web 作业”页](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
@@ -166,11 +172,11 @@ when making changes in one don't forget the other two.
    | **触发器** | 计划 | 要使计划可靠运行，请启用 Always On 功能。 Always On 仅在基本、标准和高级定价层中提供。|
    | **CRON 表达式** | 0 0/20 * * * * | 以下部分介绍了 [CRON 表达式](#ncrontab-expressions)。 |
 
-4. 单击 **“确定”** 。
+4. 选择“确定”。
 
-   新的 Web 作业随即显示在“Web 作业”页上。
+   新的 Web 作业随即显示在“Web 作业”页上。 如果有消息指出已添加 WebJob 但你未看到该 WebJob，请选择“刷新”。  
 
-   ![Web 作业列表](./media/web-sites-create-web-jobs/listallwebjobs.png)
+   ![已计划的 WebJob 列表](./media/web-sites-create-web-jobs/list-scheduled-webjob.png)
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB 表达式
 
@@ -186,9 +192,15 @@ when making changes in one don't forget the other two.
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
+## <a name="manage-webjobs"></a>管理 WebJob
+
+可以在 [Azure 门户](https://portal.azure.com)中管理你站点中运行的各个 WebJob 的运行状态。 只需转到“设置” > “WebJobs”，选择 WebJob，然后可以启动和停止该 WebJob 。 还可以查看和修改运行 WebJob 的 Webhook 的密码。  
+
+还可以添加名为 `WEBJOB_STOPPED`、值为 `1` 的[应用程序设置](configure-common.md#configure-app-settings)，以停止站点上运行的所有 WebJob。 使用此方法可以十分方便地防止有冲突的 WebJob 在过渡槽和生产槽中运行。 同样，可为 `WEBJOBS_DISABLE_SCHEDULE` 设置使用 `1` 值，以便在站点或过渡槽中禁用已触发的 WebJob。 对于槽，请记得启用“部署槽设置”选项，使该设置本身不会交换。    
+
 ## <a name="view-the-job-history"></a><a name="ViewJobHistory"></a>查看作业历史记录
 
-1. 选择要查看其历史记录 Web 作业，并选择“日志”按钮。
+1. 选择 WebJob，然后选择“日志”即可查看历史记录。
    
    ![“日志”按钮](./media/web-sites-create-web-jobs/wjbladelogslink.png)
 

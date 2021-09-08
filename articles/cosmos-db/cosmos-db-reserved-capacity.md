@@ -4,15 +4,15 @@ description: 了解如何购买 Azure Cosmos DB 预留容量以节省计算成�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 08/26/2021
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 5c2d1d286572b21879742a1a9c6ab3975441373d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7726960ac4fc5a4a3a64fe8b51e23e77e157ba6d
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98602687"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123037855"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 预留容量优化成本
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -108,6 +108,10 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
    * [了解企业合约的预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)  
    * [了解即用即付订阅的预留使用情况](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
    * [合作伙伴中心 CSP 计划中的 Azure 预留](/partner-center/azure-reservations)
+
+尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+* 如果你只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+* 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 

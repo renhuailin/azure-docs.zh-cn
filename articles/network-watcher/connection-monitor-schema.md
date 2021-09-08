@@ -1,6 +1,6 @@
 ---
 title: Azure 网络观察程序连接监视器架构 | Microsoft Docs
-description: 了解 Azure 网络观察程序连接监视器的架构。
+description: 了解 Azure 网络观察程序连接监视器的测试数据架构和路径数据架构。
 services: network-watcher
 documentationcenter: na
 author: mjha
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/05/2021
 ms.author: mjha
-ms.openlocfilehash: 8cc2528a4a8f8a285e8bbf2f99859155c1d9861d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4cad1ea0d90f85a12e7d7f9b7dbc869a61a91a39
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114451026"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969758"
 ---
-# <a name="azure-network-watcher-connection-monitor-schema"></a>Azure 网络观察程序连接监视器架构
+# <a name="azure-network-watcher-connection-monitor-schemas"></a>Azure 网络观察程序连接监视器架构
 
 连接监视器在 Azure 网络观察程序中提供统一的端到端连接监视。 连接监视器功能支持混合部署和 Azure 云部署。 网络观察程序提供的工具可用于监视、诊断和查看针对 Azure 部署的与连接相关的指标。
 
 下面是连接监视器的一些用例：
 
-- 前端 Web 服务器 VM 与多层应用程序中的数据库服务器 VM 进行通信。 你希望检查两个 VM 之间的网络连接。
+- 前端 Web 服务器虚拟机 (VM) 与多层应用程序中的数据库服务器 VM 进行通信。 你希望检查两个 VM 之间的网络连接。
 - 你希望美国东部区域的 VM 能够端对端连接到美国中部区域的 VM，并且希望比较两者的跨区域网络延迟。
 - 你有多个本地办公场所位于华盛顿州西雅图和弗吉尼亚州阿什本。 你的办公地点连接到 Microsoft 365 URL。 针对 Microsoft 365 URL 的用户，在西雅图和阿什本之间比较延迟。
 - 混合应用程序需要连接到 Azure 存储终结点。 本地站点和 Azure 应用程序连接到相同的 Azure 存储终结点。 希望比较本地站点的延迟与 Azure 应用程序的延迟。
@@ -41,28 +41,25 @@ ms.locfileid: "114451026"
 * 支持基于 HTTP、TCP 和 ICMP 的连接检查 
 * 同时适用于 Azure 和非 Azure 测试设置的指标和 Log Analytics 支持
 
-有两种类型的日志/数据被引入 Log Analytics。
-测试数据（NWConnectionMonitorTestResult 查询）根据特定测试组的监控频率进行更新。
-路径数据（NWConnectionMonitorPathResult 查询）在丢失百分比或往返时间发生显着变化时更新。
-因此，在一段时间内，测试数据可能会不断更新，而路径数据并不经常更新，因为两者都是独立的。
+引入到 Log Analytics 中的日志或数据有两种类型。 测试数据（NWConnectionMonitorTestResult 查询）根据特定测试组的监视频率进行更新。 路径数据（NWConnectionMonitorPathResult 查询）在丢失百分比或往返时间发生显著变化时进行更新。 在一段时间内，测试数据可能会不断更新，而路径数据并不经常更新，因为两者都是独立的。
 
 ## <a name="connection-monitor-tests-schema"></a>连接监视器测试架构
 
-下面列出了连接监视器测试数据架构中的字段及其表示内容 
+下表列出了连接监视器测试数据架构中的字段及其含义。 
 
 | 字段  |    说明   |
 |---|---|
 | TimeGenerated | 生成日志时的时间戳 (UTC) |
-| RecordId  | 测试结果记录的唯一标识的记录 ID |
-| ConnectionMonitorResourceId   | 测试连接监视器的资源 ID |
-| TestGroupName | 测试所属的测试组名称 |
-| TestConfigurationName | 测试所属的测试配置名称 |
+| RecordId  | 记录 ID，用于唯一标识测试结果记录 |
+| ConnectionMonitorResourceId   | 此测试的连接监视器资源 ID |
+| TestGroupName | 此测试所属的测试组的名称 |
+| TestConfigurationName | 此测试所属的测试配置的名称 |
 | SourceType    | 为测试配置的源计算机的类型 |
 | SourceResourceId  | 源计算机的资源 ID |
 | SourceAddress | 为测试配置的源的地址 |
 | SourceSubnet  | 源的子网 |
 | SourceIP  | 源的 IP 地址 |
-| SourceName    | 源的终结点名称 |
+| SourceName    | 源终结点名称 |
 | SourceAgentId | 源代理 ID |
 | DestinationPort   | 为测试配置的目标端口 |
 | 目标类型   | 为测试配置的目标计算机的类型 |
@@ -78,32 +75,32 @@ ms.locfileid: "114451026"
 | TestResult    | 测试结果 |
 | TestResultCriterion   | 测试结果判定标准 |
 | ChecksFailedPercentThreshold  | 为测试设置的检查失败百分比阈值 |
-| RoundTripTimeMsThreshold  | 为测试设置的往返阈值（毫秒） |
-| MinRoundTripTimeMs    | 测试的最小往返时间（毫秒） |
-| MaxRoundTripTimeMs    | 测试的最大往返时间 |
-| AvgRoundTripTimeMs    | 测试的平均往返时间 |
-| JitterMs  | 测试的平均偏差往返时间 |
+| RoundTripTimeMsThreshold  | 为此测试设置的往返阈值（以毫秒为单位） |
+| MinRoundTripTimeMs    | 此测试的最短往返时间（以毫秒为单位） |
+| MaxRoundTripTimeMs    | 此测试的最长往返时间 |
+| AvgRoundTripTimeMs    | 此测试的平均往返时间 |
+| JitterMs  | 此测试的均差往返时间 |
 | AdditionalData    | 测试的其他数据 |
 
 
 ## <a name="connection-monitor-path-schema"></a>连接监视器路径架构
 
-下面列出了连接监视器路径数据架构中的字段及其含义 
+下表列出了连接监视器路径数据架构中的字段及其含义。 
 
 | 字段  |    说明   |
 |---|---|
 | TimeGenerated  | 生成日志时的时间戳 (UTC) |
-| RecordId  | 测试结果记录的唯一标识的记录 ID |
+| RecordId  | 记录 ID，用于唯一标识测试结果记录 |
 | TopologyId    | 路径记录的拓扑 ID |
-| ConnectionMonitorResourceId   | 测试连接监视器的资源 ID |
-| TestGroupName | 测试所属的测试组名称 |
-| TestConfigurationName | 测试所属的测试配置名称 |
+| ConnectionMonitorResourceId   | 此测试的连接监视器资源 ID |
+| TestGroupName | 此测试所属的测试组的名称 |
+| TestConfigurationName | 此测试所属的测试配置的名称 |
 | SourceType    | 为测试配置的源计算机的类型 |
 | SourceResourceId  | 源计算机的资源 ID |
 | SourceAddress | 为测试配置的源的地址 |
 | SourceSubnet  | 源的子网 |
 | SourceIP  | 源的 IP 地址 | 
-| SourceName    | 源的终结点名称 |
+| SourceName    | 源终结点名称 |
 | SourceAgentId | 源代理 ID |
 | DestinationPort   | 为测试配置的目标端口 |
 | 目标类型   | 为测试配置的目标计算机的类型 |
@@ -119,11 +116,11 @@ ms.locfileid: "114451026"
 | PathTestResult    | 测试结果 |
 | PathResultCriterion   | 测试结果判定标准 | 
 | ChecksFailedPercentThreshold  | 为测试设置的检查失败百分比阈值 |
-| RoundTripTimeMsThreshold  | 为测试设置的往返阈值（毫秒） |
-| MinRoundTripTimeMs    | 测试的最小往返时间（毫秒） |
-| MaxRoundTripTimeMs    | 测试的最大往返时间 |
-| AvgRoundTripTimeMs    | 测试的平均往返时间 |
-| JitterMs  | 测试的平均偏差往返时间 |
+| RoundTripTimeMsThreshold  | 为此测试设置的往返阈值（以毫秒为单位） |
+| MinRoundTripTimeMs    | 此测试的最短往返时间（以毫秒为单位） |
+| MaxRoundTripTimeMs    | 此测试的最长往返时间 |
+| AvgRoundTripTimeMs    | 此测试的平均往返时间 |
+| JitterMs  | 此测试的均差往返时间 |
 | HopAddresses | 为测试标识的跃点地址 |
 | HopTypes  | 为测试标识的跃点类型 |
 | HopLinkTypes  | 为测试标识的跃点链接类型 |

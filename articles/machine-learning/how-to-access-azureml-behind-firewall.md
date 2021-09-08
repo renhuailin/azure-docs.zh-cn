@@ -1,7 +1,7 @@
 ---
-title: 使用防火墙
+title: 配置入站和出站网络流量
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 防火墙控制对 Azure 机器学习工作区的访问。 了解必须允许通过防火墙的主机。
+description: 如何在使用安全的 Azure 机器学习工作区时配置所需的入站和出站网络流量。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ author: jhirono
 ms.reviewer: larryfr
 ms.date: 08/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 790b5a3e34d36d674511507bc5e9ed452c5ba74e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2bcc1a9fdd930a8c9dd85604528a276f9de8d6e8
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745301"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123113101"
 ---
-# <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>将防火墙后的工作区用于 Azure 机器学习
+# <a name="configure-inbound-and-outbound-network-traffic"></a>配置入站和出站网络流量
 
-本文介绍如何配置 Azure 防火墙以控制对 Azure 机器学习工作区和公共 Internet 的访问。 若要详细了解如何保护 Azure 机器学习，请参阅 [Azure 机器学习的企业安全性](concept-enterprise-security.md)。
+本文介绍在虚拟网络 (VNet) 中保护 Azure 机器学习工作区时的网络通信要求。 其中包括如何配置 Azure 防火墙以控制对 Azure 机器学习工作区和公共 Internet 的访问。 若要详细了解如何保护 Azure 机器学习，请参阅 [Azure 机器学习的企业安全性](concept-enterprise-security.md)。
 
 > [!NOTE]
 > 本文中的信息适用于 Azure 机器学习工作区，无论该工作区使用专用终结点还是服务终结点。
@@ -99,6 +99,14 @@ ms.locfileid: "121745301"
 
 1. 若要限制部署到 Azure Kubernetes 服务 (AKS) 的模型的出站流量，请参阅[限制 Azure Kubernetes 服务中的出口流量](../aks/limit-egress-traffic.md)和[将 ML 模型部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md#connectivity)文章。
 
+### <a name="azure-kubernetes-services"></a>Azure Kubernetes 服务
+
+将 Azure Kubernetes 服务与 Azure 机器学习配合使用时，必须允许以下流量：
+
+* AKS 的常规入站/出站要求，详见[限制 Azure Kubernetes 服务中的出口流量](../aks/limit-egress-traffic.md)一文。
+* 发往 mcr.microsoft.com 的出站流量。
+* 将模型部署到 AKS 群集时，请遵循[将 ML 模型部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md#connectivity)一文中的指导。
+
 ### <a name="diagnostics-for-support"></a>针对支持的诊断
 
 如果在使用 Microsoft 支持时需要收集诊断信息，请执行以下步骤：
@@ -111,6 +119,7 @@ ms.locfileid: "121745301"
     + **dc.services.visualstudio.com**
 
     有关 Azure Monitor 主机的 IP 地址列表，请参阅 [Azure Monitor 使用的 IP 地址](../azure-monitor/app/ip-addresses.md)。
+
 ## <a name="other-firewalls"></a>其他防火墙
 
 本部分中的指南是通用的，因为每个防火墙都有自己的术语和特定配置。 如果有任何疑问，请查看所用防火墙的文档。
@@ -149,19 +158,19 @@ ms.locfileid: "121745301"
 
 | **要求** | **Azure 公共** | **Azure Government** | **Azure 中国世纪互联** |
 | ----- | ----- | ----- | ----- |
-| 计算群集/实例 | \*.batchai.core.windows.net | \*.batchai.core.usgovcloudapi.net |\*.batchai.ml.azure.cn |
 | 计算群集/实例 | graph.windows.net | graph.windows.net | graph.chinacloudapi.cn |
 | 计算实例 | \*.instances.azureml.net | \*.instances.azureml.us | \*.instances.azureml.cn |
 | 计算实例 | \*.instances.azureml.ms |  |  |
+| Azure 存储帐户 | \*.blob.core.windows.net</br>\*.table.core.windows.net</br>\*.queue.core.windows.net | \*.blob.core.usgovcloudapi.net</br>\*.table.core.usgovcloudapi.net</br>\*.queue.core.usgovcloudapi.net | \*blob.core.chinacloudapi.cn</br>\*.table.core.chinacloudapi.cn</br>\*.queue.core.chinacloudapi.cn |
+| Azure Key Vault | \*.vault.azure.net | \*.vault.usgovcloudapi.net | \*.vault.azure.cn |
 
 > [!IMPORTANT]
 > 你的防火墙必须允许通过 TCP 端口 18881、443 和 8787 与 .instances.azureml.ms 通信。\* 
 
-**Azure 机器学习使用的关联资源**
+**通过 Azure 机器学习维护的 Docker 映像**
 
 | **要求** | **Azure 公共** | **Azure Government** | **Azure 中国世纪互联** |
 | ----- | ----- | ----- | ----- |
-| Azure 存储帐户 | core.windows.net | core.usgovcloudapi.net | core.chinacloudapi.cn |
 | Azure 容器注册表 | azurecr.io | azurecr.us | azurecr.cn |
 | Microsoft 容器注册表 | mcr.microsoft.com | mcr.microsoft.com | mcr.microsoft.com |
 | Azure 机器学习预生成映像 | viennaglobal.azurecr.io | viennaglobal.azurecr.io | viennaglobal.azurecr.io |
@@ -204,9 +213,13 @@ ms.locfileid: "121745301"
 | ---- | ---- |
 | **cloud.r-project.org** | 在安装 CRAN 包时使用。 |
 
-### <a name="azure-kubernetes-services-hosts"></a>Azure Kubernetes 服务主机
+### <a name="azure-kubernetes-services"></a>Azure Kubernetes 服务
 
-有关 AKS 需要与之通信的主机的信息，请参阅[限制 Azure Kubernetes 服务中的出口流量](../aks/limit-egress-traffic.md)和[将 ML 模型部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md#connectivity)文章。
+将 Azure Kubernetes 服务与 Azure 机器学习配合使用时，必须允许以下流量：
+
+* AKS 的常规入站/出站要求，详见[限制 Azure Kubernetes 服务中的出口流量](../aks/limit-egress-traffic.md)一文。
+* 发往 mcr.microsoft.com 的出站流量。
+* 将模型部署到 AKS 群集时，请遵循[将 ML 模型部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md#connectivity)一文中的指导。
 
 ### <a name="visual-studio-code-hosts"></a>Visual Studio Code 主机
 
@@ -222,7 +235,7 @@ ms.locfileid: "121745301"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文是介绍如何保护 Azure 机器学习工作流的系列文章的一部分。 请参阅本系列中的其他文章：
+本文是介绍如何保护 Azure 机器学习工作流系列文章的一部分。 请参阅本系列中的其他文章：
 
 * [虚拟网络概述](how-to-network-security-overview.md)
 * [保护工作区资源](how-to-secure-workspace-vnet.md)

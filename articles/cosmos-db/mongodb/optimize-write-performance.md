@@ -5,14 +5,14 @@ author: gahl-levy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 06/25/2021
+ms.date: 08/26/2021
 ms.author: gahllevy
-ms.openlocfilehash: 1b25211f3b25d2878ca5edee05c1c723a30d97db
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2e04953e766c76275079731751cb006fe46712e7
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744619"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039547"
 ---
 # <a name="optimize-write-performance-in-azure-cosmos-db-api-for-mongodb"></a>优化 Azure Cosmos DB API for MongoDB 中的写入性能
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -60,3 +60,6 @@ db.collection.insertMany(
 * 详细了解如何[在 API for MongoDB 中编制索引](../mongodb-indexing.md)。
 * 详细了解 [Azure Cosmos DB 的分片/分区](../partitioning-overview.md)。
 * 详细了解如何[排查常见问题](error-codes-solutions.md)。
+* 尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    * 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+    * 如果你知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量规划工具估算请求单位](estimate-ru-capacity-planner.md)

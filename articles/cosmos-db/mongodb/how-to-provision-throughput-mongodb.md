@@ -4,16 +4,16 @@ description: 了解如何在 Azure Cosmos DB API for MongoDB 资源中预配容�
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 96b5eb636da4fc244f3d5444d3f0498e71810845
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b30ac109a8186f39e29ff96ba797d0b8c98ea41c
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778405"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123033360"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-api-for-mongodb-resources"></a>在 Azure Cosmos DB API for MongoDB 资源上预配数据库、容器或自动缩放吞吐量
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -79,3 +79,6 @@ Azure PowerShell 可用于在数据库或容器级资源上为所有 Azure Cosmo
 请参阅以下文章，了解如何在 Azure Cosmos DB 中预配吞吐量：
 
 * [Azure Cosmos DB 中的请求单位和吞吐量](../request-units.md)
+* 尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    * 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+    * 如果你知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量规划工具估算请求单位](estimate-ru-capacity-planner.md)

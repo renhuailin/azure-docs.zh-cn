@@ -4,16 +4,17 @@ description: 本文为开发人员提供一种限制对 Azure Cosmos DB 发送�
 author: plasne
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/07/2021
+ms.date: 08/26/2021
 ms.author: pelasne
-ms.openlocfilehash: f9130808da0f833246e013e56f081b92fa461ac9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0677a3f4180ab429dc51a4e40c969e32e6e8f655
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724466"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123098134"
 ---
 # <a name="optimize-your-azure-cosmos-db-application-using-rate-limiting"></a>使用速率限制优化 Azure Cosmos DB 应用程序
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 本文为开发人员提供一种限制对 Azure Cosmos DB 发送请求的速率的方法。 实现此模式可以减少错误，并提高超出了目标数据库或容器预配吞吐量的工作负载的总体性能。
 
@@ -160,3 +161,6 @@ ms.locfileid: "121724466"
 * 详细了解 Azure Cosmos DB 中的[分区和横向缩放](partitioning-overview.md)。
 * 了解 Azure Cosmos DB 中的[索引策略](index-policy.md)。
 * 了解 Azure Cosmos DB 中的[自动缩放](provision-throughput-autoscale.md)。
+* 尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    * 如果你只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
