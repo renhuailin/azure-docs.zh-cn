@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
-ms.date: 07/28/2021
+ms.date: 08/26/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b64c33619eae16cb08b9ccdc1b4fd5265813d9ed
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0aa1f44d8cc6184932d2aaf1b69fb31e303d605f
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739947"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969122"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>有关 Azure Active Directory 报告的常见问题解答
 
@@ -110,7 +110,38 @@ ms.locfileid: "121739947"
 
 ---
 
-## <a name="risky-sign-ins"></a>风险登录
+## <a name="sign-in-logs"></a>登录日志
+
+问：从 Azure 门户中的“Azure AD 登录日志”边栏选项卡下载的 CSV 文件中包含哪些数据？
+答：该 CSV 文件包含用户和服务主体的登录日志 。 但是，下载的 CSV 文件不包含 MS Graph API 中以嵌套数组形式表示的登录日志数据。 例如，下载的 CSV 文件不包含 CA 策略和仅限报告的信息。 如果需要导出登录日志中包含的所有信息，可以使用“Azure AD 登录日志”边栏选项卡中的“导出数据设置”按钮导出所有数据。
+
+---
+ 
+问：当来宾登录到我的租户时，客户端应用中为何不填充信息？
+答：当某个来宾用户登录到你的租户时，为了保护客户隐私，该用户的客户端应用信息不会显示在你的租户的登录日志中 。 用户的客户端应用不会向这些用户尝试访问的其他租户显示。 
+
+---
+
+问：当来宾登录到我的租户时，为何不会填充设备 ID？
+答：当用户使用已注册到另一个租户的设备登录到你的租户时，为了保护客户隐私，该设备的设备 ID 不会显示在你的租户的登录日志中 。 设备 ID 不会向用户尝试访问的其他租户显示。 
+
+---
+
+问：在某些已中断的登录中，为何我看到的是对象 ID 而不是用户的 UPN？ 
+答：如果我们的服务由于登录中断或失败而无法解析用户的 UPN，它可能会改而显示对象 ID 。 
+
+---
+
+问：为何即使属性 isInteractive 为 False，用户登录也仍显示为交互式登录？
+答：此属性即将弃用 。 它不能可靠地指示哪些登录事件是交互式的，哪些是非交互式的。 
+
+在 Azure 门户的“Azure AD 登录日志”边栏选项卡中，可以在“用户登录(交互式)”选项卡中找到交互式登录，在“用户登录(非交互式)”选项卡中找到非交互式登录。在 MS Graph API 中，应该依赖于使用 signInEventTypes 属性来确定哪些登录是交互式登录。 例如： 
+
+`"signInEventTypes":["interactiveUser"],`
+
+在从 MS Graph API 请求登录日志时，还可以使用 $filter 参数进行筛选。 
+
+## <a name="risky-sign-ins"></a>有风险的登录
 
 问：标识保护中存在风险检测，但登录报告中未显示相应的登录。这是正常的吗？
 

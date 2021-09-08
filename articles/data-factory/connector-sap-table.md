@@ -1,27 +1,29 @@
 ---
 title: 从 SAP 表复制数据
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SAP 表复制到支持的接收器数据存储。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 SAP 表复制到受支持的接收器数据存储。
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 05/26/2021
-ms.openlocfilehash: 6ab548c2b12d36e4b1741042a78c68112a93c8f3
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: b5e60883f4af77eabcd3a59334bbf31b63d5cc49
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110580124"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123316564"
 ---
-# <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
+# <a name="copy-data-from-an-sap-table-using-azure-data-factory-or-azure-synapse-analytics"></a>使用 Azure 数据工厂或 Azure Synapse Analytics 从 SAP 表复制数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure 数据工厂中的复制活动从 SAP 表复制数据。 有关详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
+本文概述如何使用 Azure 数据工厂和 Azure Synapse Analytics 管道中的复制活动从 SAP 表复制数据。 有关详细信息，请参阅[复制活动概述](copy-activity-overview.md)。
 
 >[!TIP]
->若要了解 ADF 对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含每个 SAP 连接器的详细介绍、比较和指导。
+>若要了解对 SAP 数据集成方案的总体支持，请参阅[使用 Azure 数据工厂进行 SAP 数据集成白皮书](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中包含有关每个 SAP 连接器的详细介绍、比较和指导。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -63,7 +65,7 @@ ms.locfileid: "110580124"
 
   ![安装 SAP Connector for .NET](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
-- 在数据工厂 SAP 表连接器中使用的 SAP 用户必须拥有以下权限：
+- 在 SAP 表连接器中使用的 SAP 用户必须拥有以下权限：
 
   - 使用远程函数调用 (RFC) 目标的授权。
   - 对 S_SDSAUTH 授权对象拥有“执行”活动权限。 有关多数授权对象，请参阅“SAP 说明 460089”。 基础 NCo 连接器需要某些 RFC，例如 RFC_FUNCTION_SEARCH。 
@@ -72,7 +74,31 @@ ms.locfileid: "110580124"
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-以下部分详细介绍了用于定义特定于 SAP 表连接器的数据工厂实体的属性。
+## <a name="create-a-linked-service-to-an-sap-table-using-ui"></a>使用 UI 创建指向 SAP 表的链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建指向 SAP 表的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新链接服务的屏幕截图。":::
+
+2. 搜索“SAP”并选择“SAP 表连接器”。
+
+    :::image type="content" source="media/connector-sap-table/sap-table-connector.png" alt-text="“SAP 表连接器”的屏幕截图。":::    
+
+1. 配置服务详细信息，测试连接，然后创建新的链接服务。
+
+    :::image type="content" source="media/connector-sap-table/configure-sap-table-linked-service.png" alt-text="SAP 表链接服务的配置的屏幕截图。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
+
+以下部分详细介绍了用于定义特定于 SAP 表连接器的实体的属性。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
@@ -90,7 +116,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 | `clientId` | SAP 系统中客户端的 ID。<br/>允许的值：用字符串表示的三位十进制数。 | 是 |
 | `language` | SAP 系统使用的语言。<br/>默认值为 `EN`。| 否 |
 | `userName` | 有权访问 SAP 服务器的用户名。 | 是 |
-| `password` | 用户的密码。 使用 `SecureString` 类型标记此字段可以安全地将其存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| `password` | 用户的密码。 将此字段标记为 `SecureString` 类型以安全地存储它，或[引用存储在 Azure 密钥保管库中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | `sncMode` | 用于访问表所在的 SAP 服务器的 SNC 激活指示符。<br/>若要使用 SNC 连接到 SAP 服务器，可以使用此属性。<br/>允许的值为 `0`（关闭，默认值）或 `1`（打开）。 | 否 |
 | `sncMyName` | 用于访问表所在的 SAP 服务器的发起方 SNC 名称。<br/>当 `sncMode` 打开时适用。 | 否 |
 | `sncPartnerName` | 用于访问表所在的 SAP 服务器的通信合作伙伴 SNC 名称。<br/>当 `sncMode` 打开时适用。 | 否 |
@@ -224,12 +250,12 @@ SAP BW Open Hub 链接服务支持以下属性：
 | `rowCount`                         | 要检索的行数。                              | 否       |
 | `rfcTableFields`                 | 要从 SAP 表复制的字段（列）。 例如，`column0, column1`。 | 否       |
 | `rfcTableOptions`                | 用于筛选 SAP 表中的行的选项。 例如，`COLUMN0 EQ 'SOMEVALUE'`。 另请参阅本文稍后提供的 SAP 查询运算符表。 | 否       |
-| `customRfcReadTableFunctionModule` | 可用于从 SAP 表读取数据的自定义 RFC 函数模块。<br>可以使用自定义 RFC 函数模块来定义如何从 SAP 系统检索数据并将其返回到数据工厂。 必须为自定义函数模块实现一个接口（导入、导出、表），类似于数据工厂使用的默认接口 `/SAPDS/RFC_READ_TABLE2`。<br>数据工厂 | 否       |
+| `customRfcReadTableFunctionModule` | 可用于从 SAP 表读取数据的自定义 RFC 函数模块。<br>可以使用自定义 RFC 函数模块来定义如何从 SAP 系统检索数据并将其返回到服务。 必须为自定义函数模块实现一个接口（导入、导出、表），类似于服务使用的默认接口 `/SAPDS/RFC_READ_TABLE2`。| 否       |
 | `partitionOption`                  | 要从 SAP 表中读取的分区机制。 支持的选项包括： <ul><li>`None`</li><li>`PartitionOnInt`（在左侧用零填充正常整数或整数值，例如 `0000012345`）</li><li>`PartitionOnCalendarYear`（采用“YYYY”格式的 4 位数）</li><li>`PartitionOnCalendarMonth`（采用“YYYYMM”格式的 6 位数）</li><li>`PartitionOnCalendarDate`（采用“YYYYMMDD”格式的 8 位数）</li><li>`PartitionOntime`（采用“HHMMSS”格式的 6 位数，例如 `235959`）</li></ul> | 否       |
 | `partitionColumnName`              | 用于将数据分区的列的名称。                | 否       |
 | `partitionUpperBound`              | `partitionColumnName` 中指定的用于继续分区的列的最大值。 | 否       |
 | `partitionLowerBound`              | `partitionColumnName` 中指定的用于继续分区的列的最小值。 （注意：当分区选项为 `PartitionOnInt` 时，`partitionLowerBound` 不能为“0”） | 否       |
-| `maxPartitionsNumber`              | 要将数据拆分成的最大分区数。     | 否       |
+| `maxPartitionsNumber`              | 要将数据拆分成的最大分区数。 默认值为 1。    | 否       |
 | `sapDataColumnDelimiter` | 单个字符，将用作传递给 SAP RFC 的分隔符，以用于拆分输出数据。 | 否 |
 
 >[!TIP]
@@ -237,11 +263,11 @@ SAP BW Open Hub 链接服务支持以下属性：
 <br/>
 >以 `partitionOption` 和 `partitionOnInt` 为例，每个分区中的行数的计算公式为：(处于 `partitionUpperBound` 与 `partitionLowerBound` 之间的总行数)/`maxPartitionsNumber`。<br/>
 <br/>
->若要并行加载数据分区以加快复制速度，并行程度由复制活动的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 SAP 表检索一部分数据。 强烈建议将 `maxPartitionsNumber` 设为 `parallelCopies` 属性值的倍数。 将数据复制到基于文件的数据存储中时，还建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
+>若要并行加载数据分区以加快复制速度，并行程度由复制活动的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制。 例如，如果将 `parallelCopies` 设置为 4，则该服务会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 SAP 表检索一部分数据。 强烈建议将 `maxPartitionsNumber` 设为 `parallelCopies` 属性值的倍数。 将数据复制到基于文件的数据存储中时，还建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
 
 >[!TIP]
-> 默认情况下，Azure 数据工厂端已为此 SAP 表连接器启用 `BASXML`。
+> 默认情况下，为服务中的 SAP 表连接器启用了 `BASXML`。
 
 在 `rfcTableOptions` 中，可以使用以下常用 SAP 查询运算符来筛选行：
 
@@ -333,9 +359,9 @@ SAP 表连接器目前仅支持单个具有默认函数模块的表。 若要获
 
 1. 调用“自定义函数模块”，并将参数设置如下：
 
-    - QUERY_TABLE：在 ADF SAP 表数据集中设置的表名称； 
-    - 分隔符：在 ADF SAP 表源中设置的分隔符； 
-    - 行计数/选项/字段：在 ADF 表源中设置的行计数/聚合选项/字段。
+    - QUERY_TABLE：在 SAP 表数据集中设置的表名称； 
+    - Delimiter：在 SAP 表源中设置的分隔符； 
+    - ROWCOUNT/Option/Fields：在表源中设置的行计数/聚合选项/字段。
 
 1. 获取结果并按以下方式分析数据：
 
@@ -351,9 +377,9 @@ SAP 表连接器目前仅支持单个具有默认函数模块的表。 若要获
 
 ## <a name="data-type-mappings-for-an-sap-table"></a>SAP 表的数据类型映射
 
-从 SAP 表复制数据时，以下映射用于从 SAP 表数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+从 SAP 表复制数据时，将使用以下从 SAP 表数据类型到服务中所用临时数据类型的映射。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
-| SAP ABAP 类型 | 数据工厂临时数据类型 |
+| SAP ABAP 类型 | 服务临时数据类型 |
 |:--- |:--- |
 | `C`（字符串） | `String` |
 | `I`（整数） | `Int32` |
@@ -371,4 +397,4 @@ SAP 表连接器目前仅支持单个具有默认函数模块的表。 若要获
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

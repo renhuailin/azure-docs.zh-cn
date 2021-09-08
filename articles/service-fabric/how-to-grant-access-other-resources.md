@@ -4,12 +4,12 @@ description: 本文介绍如何为启用了托管标识的 Service Fabric 应用
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 7f49a3f97862c3a141ea9376d0ffc9bf510d3e6f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ac383c3d517bbbab2b25c12dc4a06b4fe63e1b89
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110782955"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122865044"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>为 Service Fabric 应用程序的托管标识授予对 Azure 资源的访问权限
 
@@ -98,5 +98,6 @@ ms.locfileid: "110782955"
 有关更多详细信息，请参阅[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
 
 ## <a name="next-steps"></a>后续步骤
+* [使用托管标识将 Service Fabric 应用程序部署到托管群集](how-to-managed-cluster-application-managed-identity.md)
 * [使用系统分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [使用用户分配的托管标识部署 Azure Service Fabric 应用程序](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

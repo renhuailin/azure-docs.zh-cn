@@ -5,15 +5,15 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/15/2021
+ms.date: 08/25/2021
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3ac1afe3658db60297735e897d69caa463358a4c
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: ece3693fa183ba31de569e7db632c3d294c10437
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318380"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187174"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>在 ARM 模板中使用部署脚本
 
@@ -38,43 +38,45 @@ ms.locfileid: "108318380"
 > [!IMPORTANT]
 > 脚本执行和故障排除需要一个存储帐户和一个容器实例。 可以选择指定现有存储帐户，如果不指定，脚本服务会自动创建存储帐户和容器实例。 当部署脚本执行达到某个最终状态时，脚本服务通常会删除这两个自动创建的资源。 在这些资源删除之前，这些资源会一直向你收费。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
 
-> [!IMPORTANT]
-> deploymentScripts 资源 API 版本 2020-10-01 支持 [OnBehalfofTokens(OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)。 通过使用 OBO，部署脚本服务使用部署主体的令牌创建用于运行部署脚本的基础资源，其中包括 Azure 容器实例、Azure 存储帐户和托管标识的角色分配。 在较旧的 API 版本中，托管标识用于创建这些资源。
-> Azure 登录的重试逻辑现在内置于包装脚本中。 如果在运行部署脚本的同一模板中授予权限。 部署脚本服务将以 10 秒的间隔重试登录 10 分钟，直到托管标识角色分配被复制。
+> [!NOTE]
+> Azure 登录的重试逻辑现在内置于包装脚本中。 如果你在部署脚本所在的模板中授予权限，部署脚本服务会在 10 分钟内尝试以 10 秒的间隔进行登录，直到托管标识角色分配复制完毕。
 
 ## <a name="configure-the-minimum-permissions"></a>配置最低权限
 
-对于部署脚本 API 版本 2020-10-01 或更高版本，部署主体用于创建部署脚本资源执行存储帐户和 Azure 容器实例所需的基础资源。 如果脚本需要对 Azure 进行身份验证并执行特定于 Azure 的操作，建议为脚本提供用户分配的托管标识。 托管标识必须具有完成脚本中操作所需的访问权限。
+对于部署脚本 API 2020-10-01 或更高版本，部署脚本的执行涉及两个主体：
 
-若要配置最小特权权限，你需要：
+- 部署主体（用于部署模板的主体）：此主体用于创建执行部署脚本资源所需的基础资源 - 存储帐户和 Azure 容器实例。 若要配置最小特权权限，请将具有以下属性的自定义角色分配给部署主体：
 
-- 将具有以下属性的自定义角色分配给部署主体：
+    ```json
+    {
+      "roleName": "deployment-script-minimum-privilege-for-deployment-principal",
+      "description": "Configure least privilege for the deployment principal in deployment script",
+      "type": "customRole",
+      "IsCustom": true,
+      "permissions": [
+        {
+          "actions": [
+            "Microsoft.Storage/storageAccounts/*",
+            "Microsoft.ContainerInstance/containerGroups/*",
+            "Microsoft.Resources/deployments/*",
+            "Microsoft.Resources/deploymentScripts/*"
+          ],
+        }
+      ],
+      "assignableScopes": [
+        "[subscription().id]"
+      ]
+    }
+    ```
 
-  ```json
-  {
-    "roleName": "deployment-script-minimum-privilege-for-deployment-principal",
-    "description": "Configure least privilege for the deployment principal in deployment script",
-    "type": "customRole",
-    "IsCustom": true,
-    "permissions": [
-      {
-        "actions": [
-          "Microsoft.Storage/storageAccounts/*",
-          "Microsoft.ContainerInstance/containerGroups/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/deploymentScripts/*"
-        ],
-      }
-    ],
-    "assignableScopes": [
-      "[subscription().id]"
-    ]
-  }
-  ```
+    如果尚未注册 Azure 存储和 Azure 容器实例资源提供程序，则你还需要添加 `Microsoft.Storage/register/action` 和 `Microsoft.ContainerInstance/register/action`。
 
-  如果尚未注册 Azure 存储和 Azure 容器实例资源提供程序，则你还需要添加 `Microsoft.Storage/register/action` 和 `Microsoft.ContainerInstance/register/action`。
+- 部署脚本主体：只有在部署脚本需要向 Azure 进行身份验证并调用 Azure CLI/PowerShell 时，此主体才是必需的。 可通过两种方法指定部署脚本主体：
 
-- 如果使用托管标识，则部署主体需要分配给托管标识资源的“托管的标识操作员”角色（内置角色）。
+  - 在 `identity` 属性中指定用户分配的托管标识（请参阅[示例模板](#sample-templates)）。 指定后，脚本服务就会先调用 `Connect-AzAccount -Identity`，再调用部署脚本。 托管标识必须具有完成脚本中操作所需的访问权限。 目前，`identity` 属性仅支持用户分配的托管标识。 若要使用另一标识登录，请使用此列表中的第二种方法。
+  - 将服务主体凭据作为安全的环境变量传递，然后即可在部署脚本中调用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 或 [az login](/cli/azure/reference-index?view=azure-cli-latest#az_login&preserve-view=true)。
+
+  如果使用托管标识，则部署主体需要分配给托管标识资源的“托管的标识操作员”角色（内置角色）。
 
 ## <a name="sample-templates"></a>示例模板
 

@@ -1,19 +1,19 @@
 ---
 title: Azure Synapse Analytics 加密
 description: 一篇介绍 Azure Synapse Analytics 中的加密的文章
-author: nanditavalsan
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 07/14/2021
-ms.author: nanditav
+ms.date: 07/20/2021
+ms.author: mesrivas
 ms.reviewer: jrasnick, wiassaf
-ms.openlocfilehash: cc57f4af28aad79b9348cbbb4e939825daba06ea
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 7e54c654428d86e77f3bad3a92ade0c33a278856
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114203555"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225061"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics 工作区的加密
 
@@ -30,10 +30,10 @@ Azure 服务的第一层加密是通过平台管理的密钥实现的。 默认�
 
 ## <a name="azure-synapse-encryption"></a>Azure Synapse 加密
 
-本部分将帮助你更好地了解如何在 Synapse 工作区中启用并强制实施客户管理的密钥加密。 此加密使用 Azure Key Vault 中生成的现有密钥或新密钥。 使用单个密钥对工作区中的所有数据进行加密。 Synapse 工作区支持具有 2048 和 3072 字节大小的密钥的 RSA 密钥。
+本部分将帮助你更好地了解如何在 Synapse 工作区中启用并强制实施客户管理的密钥加密。 此加密使用 Azure Key Vault 中生成的现有密钥或新密钥。 使用单个密钥对工作区中的所有数据进行加密。 Synapse 工作区支持 RSA 2048 和3072 字节大小的密钥，以及 RSA-HSM 密钥。
 
 > [!NOTE]
-> Synapse 工作区不支持使用椭圆曲线加密 (ECC) 密钥进行加密。
+> Synapse 工作区不支持使用 EC、EC-HSM、RSA-HSM 和 oct-HSM 密钥进行加密。 
 
 以下 Synapse 组件中的数据是通过在工作区级别配置的客户管理的密钥加密的：
 * SQL 池
@@ -44,7 +44,7 @@ Azure 服务的第一层加密是通过平台管理的密钥实现的。 默认�
 
 ## <a name="workspace-encryption-configuration"></a>工作区加密配置
 
-可将工作区配置为在创建工作区时启用使用客户管理的密钥的双重加密。 创建新的工作区时，请在“安全性”选项卡上选择“启用使用客户管理的密钥进行双重加密”选项。 你可以选择输入密钥标识符 URI，或从工作区所在的区域中的密钥保管库列表中进行选择。 Key Vault 本身需要启用清除保护。
+可将工作区配置为在创建工作区时启用使用客户管理的密钥的双重加密。 创建新工作区时，请在“安全性”选项卡上启用使用客户管理的密钥进行双重加密的功能。 你可以选择输入密钥标识符 URI，或从工作区所在的区域中的密钥保管库列表中进行选择。 Key Vault 本身需要启用清除保护。
 
 > [!IMPORTANT]
 > 创建工作区后，无法更改双重加密的配置设置。
@@ -53,20 +53,28 @@ Azure 服务的第一层加密是通过平台管理的密钥实现的。 默认�
 
 ### <a name="key-access-and-workspace-activation"></a>密钥访问和工作区激活
 
-在使用客户管理的密钥的 Azure Synapse 加密模型中，工作区会根据需要访问 Azure Key Vault 中的密钥以完成加密和解密。 要让工作区能访问这些密钥，可以采用访问策略或 [Azure Key Vault RBAC 访问](../../key-vault/general/rbac-guide.md)。 通过 Azure Key Vault 访问策略授予权限时，请在创建策略时选择[“仅限应用程序”](../../key-vault/general/security-features.md#key-vault-authentication-options)选项（选择工作区的托管标识，且请勿将其添加为获得授权的应用程序）。
+在使用客户管理的密钥的 Azure Synapse 加密模型中，工作区会根据需要访问 Azure Key Vault 中的密钥以完成加密和解密。 要让工作区能访问这些密钥，可以采用访问策略或 [Azure Key Vault RBAC 访问](../../key-vault/general/rbac-guide.md)。 通过 Azure Key Vault 访问策略授予权限时，请在创建策略时选择[“仅限应用程序”](../../key-vault/general/security-features.md#key-vault-authentication-options)选项（选择工作区的托管标识，且不要将其添加为已授权的应用程序）。
 
  在激活工作区之前，必须向工作区托管标识授予访问密钥保管库所需的权限。 这种分阶段的工作区激活方法可以确保工作区中的数据是通过客户管理的密钥进行加密的。 请注意，可以为专用 SQL 池启用或禁用加密（默认情况下每个池都不启用加密）。
 
+#### <a name="using-a-user-assigned-managed-identity"></a>使用用户分配的托管标识
+工作区可配置为使用[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)访问存储在 Azure Key Vault 中的客户管理的密钥。 请配置用户分配的托管标识，以避免在使用通过客户管理的密钥进行的双重加密时分阶段激活 Azure Synapse 工作区。 若要将用户分配的托管标识分配给 Azure Synapse 工作区，则需要“托管标识参与者”内置角色。
+> [!NOTE]
+> 当 Azure Key Vault 位于防火墙后面时，无法将用户分配的托管标识配置为访问客户管理的密钥。
+
+:::image type="content" source="./media/workspaces-encryption/workspaces-encryption-uami.png" alt-text="此图显示了为了使工作区能够将用户分配的托管标识用于通过客户管理的密钥进行的双重加密而必须选择的选项。" lightbox="./media/workspaces-encryption/workspaces-encryption-uami.png":::
+
+
 #### <a name="permissions"></a>权限
 
-要加密或解密静态数据，工作区托管标识必须具有以下权限：
+若要加密或解密静态数据，托管标识必须具有以下权限：
 * 包装密钥（用于在新建密钥时将密钥插入 Key Vault）。
 * 解包密钥（用于获取解密所需的密钥）。
 * 获取（用于读取密钥的公共部分）
 
 #### <a name="workspace-activation"></a>工作区激活
 
-在创建已启用双重加密的工作区之后，它将保持“挂起”状态，直到激活成功为止。 必须先激活工作区，然后才能使用完整的功能。 例如，激活成功后，只能创建新的专用 SQL 池。 向工作区托管标识授予对密钥保管库的访问权限，并单击工作区 Azure 门户横幅中的激活链接。 激活成功完成后，工作区便可供使用并保证其中的所有数据都使用客户管理的密钥进行保护。 如前文所述，密钥保管库必须启用清除保护才能激活成功。
+如果在创建工作区期间未将用户分配的托管标识配置为访问客户管理的密钥，则工作区会保持“挂起”状态，直到激活成功为止。 必须先激活工作区，然后才能使用完整的功能。 例如，激活成功后，只能创建新的专用 SQL 池。 向工作区托管标识授予对密钥保管库的访问权限，并单击工作区 Azure 门户横幅中的激活链接。 激活成功完成后，工作区便可供使用并保证其中的所有数据都使用客户管理的密钥进行保护。 如前文所述，密钥保管库必须启用清除保护才能激活成功。
 
 :::image type="content" source="./media/workspaces-encryption/workspace-activation.png" alt-text="此示意图展示的是带有工作区激活链接的横幅。" lightbox="./media/workspaces-encryption/workspace-activation.png":::
 

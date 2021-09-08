@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/28/2021
-ms.openlocfilehash: a620d1cbd9ae0f9a4f03e6bf744cf2febd8ac240
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 67d28d7f218debde1bd29abf0e4bbdaa0c7c49dd
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736520"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867595"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 
@@ -60,6 +60,9 @@ ms.locfileid: "121736520"
 - 连接到你的工作区的 Azure Kubernetes 服务群集。 有关详细信息，请参阅[创建并附加 Azure Kubernetes 服务群集](how-to-create-attach-kubernetes.md)。
 
     - 如果要将模型部署到 GPU 节点或 FPGA 节点（或任何特定 SKU），则必须使用该特定 SKU 创建群集。 不支持在现有群集中创建辅助节点池以及在辅助节点池中部署模型。
+
+> [!IMPORTANT]
+> 目前，Azure 机器学习不支持将模型部署到 AKS 版本 1.21.x
 
 ## <a name="understand-the-deployment-processes"></a>了解部署过程
 
@@ -166,6 +169,7 @@ Azureml-fe 会纵向（垂直）扩展以使用更多的核心，并会横向（
 ```python
 from azureml.core.webservice import AksWebservice, Webservice
 from azureml.core.model import Model
+from azureml.core.compute import AksCompute
 
 aks_target = AksCompute(ws,"myaks")
 # If deploying to a cluster configured for dev/test, ensure that it was created with enough

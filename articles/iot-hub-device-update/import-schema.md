@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 51ec14ff1df2c8fb450804c22b3211904e5f3a37
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: ea9f57364d6b7cca884f87c36623a73bbcb37ae6
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112371564"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186868"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>将更新导入 Device Update for IoT Hub - 架构和其他信息
 如果要将更新导入 Device Update for IoT Hub，请确保先查看[概念](import-concepts.md)和[操作指南](import-update.md)。 如果你对构造导入清单时使用的架构的详细信息，以及相关对象的信息感兴趣，请参阅下文。
@@ -81,6 +81,77 @@ ms.locfileid: "112371564"
     },
   ]
 }
+```
+
+## <a name="oauth-authorization-when-calling-import-apis"></a>在调用导入 API 时进行 OAuth 授权
+
+azure_auth
+
+Azure Active DirectoryOAuth2 流类型：oauth2 流：任意 
+
+授权 URL： https://login.microsoftonline.com/common/oauth2/authorize
+
+**作用域**
+
+| 名称 | 说明 |
+| --- | --- |
+| `https://api.adu.microsoft.com/user_impersonation` | 模拟用户帐户 |
+| `https://api.adu.microsoft.com/.default`  | 客户端凭据流 |
+
+
+**权限**
+
+如果使用 Azure AD 应用程序来登录用户，则作用域需要具有 /user_impersonation。 
+
+若要使用 Azure Device Update API，需要向 Azure AD 应用添加权限（在“Azure AD 应用程序”视图的“API 权限”选项卡中操作）。 请求对 Azure Device Update（位于“我的组织使用的 API”中）的 API 权限，并授予委托的 user_impersonation 权限。
+
+ADU 接受令牌，可使用 Azure AD 支持的适用于用户、应用程序或托管标识的任何流来获取令牌。 但是，某些流需要额外的 Azure AD 应用程序设置： 
+
+* 对于公共客户端流，请确保启用移动和桌面流。
+* 对于隐式流，请确保添加 Web 平台，并选择适用于授权终结点的“访问令牌”。
+
+Azure CLI 用例：
+
+```azurecli
+az login
+
+az account get-access-token --resource 'https://api.adu.microsoft.com/'
+```
+
+使用 PowerShell MSAL 库获取令牌的示例：
+
+使用用户凭据 
+
+```powershell
+$clientId = '<app_id>’
+$tenantId = '<tenant_id>’
+$authority = "https://login.microsoftonline.com/$tenantId/v2.0"
+$Scope = 'https://api.adu.microsoft.com/user_impersonation'
+
+Get-MsalToken -ClientId $clientId -TenantId $tenantId -Authority $authority -Scopes $Scope
+```
+
+将用户凭据与设备代码配合使用
+
+```powershell
+$clientId = '<app_id>’
+$tenantId = '<tenant_id>’
+$authority = "https://login.microsoftonline.com/$tenantId/v2.0"
+$Scope = 'https://api.adu.microsoft.com/user_impersonation'
+
+Get-MsalToken -ClientId $clientId -TenantId $tenantId -Authority $authority -Scopes $Scope -Interactive -DeviceCode
+```
+
+使用应用凭据
+
+```powershell
+$clientId = '<app_id>’
+$tenantId = '<tenant_id>’
+$cert = '<client_certificate>'
+$authority = "https://login.microsoftonline.com/$tenantId/v2.0"
+$Scope = 'https://api.adu.microsoft.com/.default'
+
+Get-MsalToken -ClientId $clientId -TenantId $tenantId -Authority $authority -Scopes $Scope -ClientCertificate $cert
 ```
 
 ## <a name="next-steps"></a>后续步骤
