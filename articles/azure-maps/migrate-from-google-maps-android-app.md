@@ -546,7 +546,7 @@ baseContext.resources.updateConfiguration(
 
 Azure Maps 提供三种不同的方式来设置地图的语言和区域视图。 第一个选项是将语言和区域视图信息直接传递到 `AzureMaps` 类。 此选项全局使用静态 `setLanguage` 和 `setView` 方法。 即，在载入到应用的所有 Azure Maps 控件中设置默认的语言和区域视图。 此示例使用“fr-FR”语言代码设置法语。
 
-::: zone pivot=&quot;programming-language-java-android&quot;
+::: zone pivot="programming-language-java-android"
 
 ```java
 static {
