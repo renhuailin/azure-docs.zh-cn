@@ -145,7 +145,7 @@ Jane, Doe
 
 4. 选择“添加触发器” > “立即触发器”。
 
-    触发器:::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="":::
+    触发器:::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="-":::
 
 5. 在“管道运行”下的右窗格中，选择“确定”。
 
