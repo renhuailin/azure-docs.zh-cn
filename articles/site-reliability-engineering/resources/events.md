@@ -20,4 +20,4 @@ ms.locfileid: "90090289"
 
 以 SRE 内容为主题的聚会和会议有很多。 最直接相关的是全球分布的 [SREcon 会议](https://www.usenix.org/conferences) USENIX。
 
-越来越多的 SRE 内容正在与 [LISA](https://www.usenix.org/conferences/byname/5)、 [全天 DevOps](https://www.alldaydevops.com)、 [DevOps Enterprise 峰](https://events.itrevolution.com) 会和本地 DevOps 会议（如 [DevOps 天](https://www.devopsdays.org)）进行会议。 查找此内容以及其他对使用者感兴趣的内容，无论你在哪里可以找到它。
+越来越多的 SRE 内容正在与 [LISA](https://www.usenix.org/conferences/byname/5)、 [全天 DevOps](https://www.alldaydevops.com)、 [DevOps Enterprise 峰会](https://events.itrevolution.com) 和本地 DevOps 会议（如 [DevOps 天](https://www.devopsdays.org)）进行会议。 查找此内容以及其他对使用者感兴趣的内容，无论你在哪里可以找到它。
