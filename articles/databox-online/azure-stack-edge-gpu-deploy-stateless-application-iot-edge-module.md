@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 4eda6eaf69fad6f8600651660ae4ac6223fe8f8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 233afd9b103a250633c5e49776fc0dfda55a0389
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438057"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112243"
 ---
 # <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>使用 IoT Edge 模块在 Azure Stack Edge Pro GPU 设备上运行 Kubernetes 无状态应用程序
 
@@ -56,7 +56,7 @@ ms.locfileid: "102438057"
 1. 在“添加 IoT Edge 模块”中：
 
     1. 为要部署的 webserver 应用模块指定一个 **名称**。
-    2. 在“模块设置”选项卡下，提供模块映像的 **映像 URI**。 将检索与所提供的名称和标记相匹配的模块。 在这种情况下，`nginx:stable` 将从公共 [Docker 存储库](https://hub.docker.com/_/nginx/)拉取稳定的 nginx 映像（标记为稳定）。
+    2. 在“模块设置”选项卡下，提供模块映像的 **映像 URI**。 将检索与所提供的名称和标记相匹配的模块。 在本例中，`mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine` 将从公共 `mcr.microsoft.com` 注册表中拉取 nginx 映像（标记为 1.15.5-alpine）。
 
         ![添加 IoT Edge 模块](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/set-module-settings-1.png)    
 
@@ -76,7 +76,7 @@ ms.locfileid: "102438057"
         }
         ```
 
-        此配置可让你使用基于 *http* 的计算网络 IP 在 TCP 端口 8080（默认的 webserver 端口为 80）上访问该模块。 选择“添加”。
+        此配置可让你使用基于 *http* 的计算网络 IP 在 TCP 端口 8080（默认的 webserver 端口为 80）上访问该模块。 选择 **添加** 。
 
         ![在 IoT Edge 自定义模块边栏选项卡中指定端口信息](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-module-status-1.png)
 

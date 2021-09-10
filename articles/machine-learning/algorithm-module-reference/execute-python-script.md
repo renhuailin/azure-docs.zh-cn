@@ -10,12 +10,12 @@ ms.custom: devx-track-python, has-adal-ref
 author: likebupt
 ms.author: keli19
 ms.date: 06/15/2021
-ms.openlocfilehash: d4ac33619d653b99de32dcd86cf226f217382f43
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: fe98144b204c0baa22bc17972162799b6f341675
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429763"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831357"
 ---
 # <a name="execute-python-script-module"></a>“执行 Python 脚本”模块
 
@@ -95,7 +95,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 ## <a name="upload-files"></a>上传文件
 “执行 Python 脚本”支持使用 [Azure 机器学习 Python SDK](/python/api/azureml-core/azureml.core.run%28class%29#upload-file-name--path-or-stream-) 上传文件。
 
-以下示例演示如何在“执行 Python 脚本”模块中上传映像文件：
+以下示例演示如何将映像文件上传到“执行 Python 脚本”模块中的运行记录：
 
 ```Python
 
@@ -135,6 +135,46 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 > [!div class="mx-imgBorder"]
 > ![预览已上传的图像](media/module/upload-image-in-python-script.png)
+
+你还可以使用以下代码将文件上传到任何数据存储。 只能预览存储帐户中的文件。
+```Python
+import pandas as pd
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be None.
+#   Param<dataframe1>: a pandas.DataFrame
+#   Param<dataframe2>: a pandas.DataFrame
+def azureml_main(dataframe1 = None, dataframe2 = None):
+
+    # Execution logic goes here
+    print(f'Input pandas.DataFrame #1: {dataframe1}')
+
+    from matplotlib import pyplot as plt
+    import os
+
+    plt.plot([1, 2, 3, 4])
+    plt.ylabel('some numbers')
+    img_file = "line.png"
+
+    # Set path
+    path = "./img_folder"
+    os.mkdir(path)
+    plt.savefig(os.path.join(path,img_file))
+
+    # Get current workspace
+    from azureml.core import Run
+    run = Run.get_context(allow_offline=True)
+    ws = run.experiment.workspace
+    
+    # Get a named datastore from the current workspace and upload to specified path
+    from azureml.core import Datastore 
+    datastore = Datastore.get(ws, datastore_name='workspacefilestore')
+    datastore.upload(path)
+
+    return dataframe1,
+```
+
 
 ## <a name="how-to-configure-execute-python-script"></a>如何配置“执行 Python 脚本”
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: a5af992bdfe3bb97383d3c8ed1ccd0e57dd1efb7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8429ed368e8465c45137e555444a18b8a66769dd
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732860"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123271946"
 ---
 # <a name="powershell-functions-for-iot-edge-for-linux-on-windows"></a>用于 IoT Edge for Linux on Windows 的 PowerShell 函数
 
@@ -81,7 +81,7 @@ Deploy-Eflow 命令是主要部署方法。 该部署命令可创建虚拟机、
 | acceptOptionalTelemetry | “是”或“否”  |  接受/拒绝可选遥测并绕过遥测提示的快捷方式。 |
 | cpuCount | 介于 1 和设备 CPU 内核数之间的整数值 |  VM 的 CPU 内核数。<br><br>默认值：1 个 vCore。 |
 | memoryInMB | 介于 1024 和设备最大可用内存量之间的整数值 |为该 VM 分配的内存。<br><br>默认值：1024 MB。 |
-| vmDiskSize | 介于 8 GB 和 256 GB | 动态扩展虚拟硬盘的最大磁盘大小。<br><br>**默认值**：16 GB。 |
+| vmDiskSize | 介于 8 GB 和 256 GB | 动态扩展虚拟硬盘的最大磁盘大小。<br><br>默认值：10 GB。 |
 | vswitchName | 虚拟交换机的名称 |  分配给 EFLOW VM 的虚拟交换机的名称。 |
 | vswitchType | “内部”或“外部”  | 分配给 EFLOW VM 的虚拟交换机的类型。 |
 | ip4Address | DCHP 服务器范围中的 IPv4 地址 | EFLOW VM 的静态 Ipv4 地址。 注意：仅支持使用 ICS 默认交换机。 |

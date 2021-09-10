@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: b12b7effae159709aa7619d6ab7442af9d803c6e
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 08/30/2021
+ms.openlocfilehash: 2131e74935ee831925dbe307a79c26909078e575
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822884"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123313966"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory-or-synapse-pipelines"></a>使用 Azure 数据工厂或 Synapse 管道在 Azure Synapse Analytics 中复制和转换数据
 
@@ -45,13 +45,36 @@ ms.locfileid: "122822884"
 > [!IMPORTANT]
 > 如果使用 Azure Integration Runtime 复制数据，请配置[服务器级防火墙规则](../azure-sql/database/firewall-configure.md)，确保 Azure 服务可以访问[逻辑 SQL 服务器](../azure-sql/database/logical-servers.md)。
 > 如果使用自承载集成运行时复制数据，请将防火墙配置为允许合适的 IP 范围。 此范围包括用于连接 Azure Synapse Analytics 的计算机的 IP。
-
 ## <a name="get-started"></a>入门
 
 > [!TIP]
 > 若要实现最佳性能，请使用 PolyBase 或 COPY 语句将数据载入 Azure Synapse Analytics。 [使用 PolyBase 将数据加载到 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 和[使用 COPY 语句将数据加载到 Azure Synapse Analytics](#use-copy-statement) 部分包含详细信息。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据载入 Azure Synapse Analytics](load-azure-sql-data-warehouse.md)。
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-an-azure-synapse-analytics-linked-service-using-ui"></a>使用 UI 创建 Azure Synapse Analytics 链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建 Azure Synapse Analytics 链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新链接服务的屏幕截图。":::
+
+2. 搜索 Synapse 并选择 Azure Synapse Analytics 连接器。
+
+    :::image type="content" source="media/connector-azure-sql-data-warehouse/azure-sql-data-warehouse-connector.png" alt-text="Azure Synapse Analytics 连接器的屏幕截图。":::    
+
+1. 配置服务详细信息，测试连接，然后创建新的链接服务。
+
+    :::image type="content" source="media/connector-azure-sql-data-warehouse/configure-azure-sql-data-warehouse-linked-service.png" alt-text="Azure Synapse Analytics 链接服务的配置屏幕截图。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
 
 以下部分提供了有关定义数据工厂和 Synapse 管道实体的属性的详细信息（特定于 Azure Synapse Analytics 连接器）。
 
@@ -223,7 +246,7 @@ Azure Synapse Analytics 链接服务支持以下属性：
 
 Azure Synapse Analytics 数据集支持以下属性：
 
-| 属性  | 描述                                                  | 必需                    |
+| 属性  | 说明                                                  | 必需                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 **type** 属性必须设置为 **AzureSqlDWTable**。 | 是                         |
 | 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -262,7 +285,7 @@ Azure Synapse Analytics 数据集支持以下属性：
 
 若要从 Azure Synapse Analytics 复制数据，请将复制活动源中的 **type** 属性设置为 **SqlDWSource**。 复制活动 **source** 节支持以下属性：
 
-| 属性                     | 描述                                                  | 必需 |
+| 属性                     | 说明                                                  | 必需 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 复制活动源的 **type** 属性必须设置为 **SqlDWSource**。 | 是      |
 | sqlReaderQuery               | 使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 | 否       |
@@ -382,12 +405,12 @@ Azure 数据工厂和 Synapse 管道支持三种将数据加载到 Azure Synapse
 | 属性          | 说明                                                  | 必需                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | 复制活动接收器的 **type** 属性必须设置为 **SqlDWSink**。 | 是                                           |
-| allowPolyBase     | 指示是否使用 PolyBase 将数据加载到 Azure Synapse Analytics。 `allowCopyCommand` 和 `allowPolyBase` 不能同时为 true。 <br/><br/>有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。 | 否。<br/>使用 PolyBase 时适用。     |
-| polyBaseSettings  | `allowPolybase` 属性设置为 **true** 时可以指定的一组属性。 | 否。<br/>使用 PolyBase 时适用。 |
-| allowCopyCommand | 指示是否使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql)将数据加载到 Azure Synapse Analytics。 `allowCopyCommand` 和 `allowPolyBase` 不能同时为 true。 <br/><br/>有关约束和详细信息，请参阅[使用 COPY 语句将数据加载到 Azure Synapse Analytics](#use-copy-statement) 部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。 | 否。<br>使用 COPY 时适用。 |
-| copyCommandSettings | `allowCopyCommand` 属性设置为 TRUE 时可以指定的一组属性。 | 否。<br/>使用 COPY 时适用。 |
+| allowPolyBase     | 指示是否使用 PolyBase 将数据加载到 Azure Synapse Analytics。 `allowCopyCommand` 和 `allowPolyBase` 不能同时为 true。 <br/><br/>有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) 部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。 | 不是。<br/>使用 PolyBase 时适用。     |
+| polyBaseSettings  | `allowPolybase` 属性设置为 **true** 时可以指定的一组属性。 | 不是。<br/>使用 PolyBase 时适用。 |
+| allowCopyCommand | 指示是否使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql)将数据加载到 Azure Synapse Analytics。 `allowCopyCommand` 和 `allowPolyBase` 不能同时为 true。 <br/><br/>有关约束和详细信息，请参阅[使用 COPY 语句将数据加载到 Azure Synapse Analytics](#use-copy-statement) 部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。 | 不是。<br>使用 COPY 时适用。 |
+| copyCommandSettings | `allowCopyCommand` 属性设置为 TRUE 时可以指定的一组属性。 | 不是。<br/>使用 COPY 时适用。 |
 | writeBatchSize    | **每批** 要插入到 SQL 表中的行数。<br/><br/>允许的值为 **integer**（行数）。 默认情况下，该服务根据行大小动态确定适当的批大小。 | 否。<br/>使用批量插入时适用。     |
-| writeBatchTimeout | 超时前等待批量插入操作完成的时间。<br/><br/>允许的值为 **timespan**。 示例："00:30:00"（30 分钟）。 | 否。<br/>使用批量插入时适用。        |
+| writeBatchTimeout | 超时前等待批量插入操作完成的时间。<br/><br/>允许的值为 **timespan**。 示例："00:30:00"（30 分钟）。 | 不是。<br/>使用批量插入时适用。        |
 | preCopyScript     | 指定在每次运行中将数据写入到 Azure Synapse Analytics 之前要由复制活动运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |
 | tableOption | 指定是否根据源架构[自动创建接收器表](copy-activity-overview.md#auto-create-sink-tables)（如果不存在）。 允许的值为：`none`（默认值）、`autoCreate`。 |否 |
 | disableMetricsCollection | 该服务收集指标（如 Azure Synapse Analytics DWU），用于进行复制性能优化和提供建议，从而引入了额外的主数据库访问权限。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
@@ -633,7 +656,7 @@ Azure Synapse Analytics COPY 语句直接支持 Azure Blob、Azure Data Lake Sto
 
 在复制活动中的 `polyBaseSettings` 下支持以下 PolyBase 设置：
 
-| 属性          | 描述                                                  | 必需                                      |
+| 属性          | 说明                                                  | 必需                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | rejectValue       | 指定在查询失败之前可以拒绝的行数或百分比。<br/><br/>有关 PolyBase 的拒绝选项的详细信息，请参阅 [CREATE EXTERNAL TABLE (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) 的“参数”部分。 <br/><br/>允许的值为 0（默认值）、1、2 等。 | 否                                            |
 | rejectType        | 指定 **rejectValue** 选项是文本值还是百分比。<br/><br/>允许的值为 **Value**（默认值）和 **Percentage**。 | 否                                            |

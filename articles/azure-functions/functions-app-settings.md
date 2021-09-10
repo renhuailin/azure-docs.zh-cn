@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: 7275d81401444dffbe0917bdb72ba79100880749
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 78e142fd97158fb64387950f9515ac168c216e5d
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862685"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123108664"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -17,6 +17,7 @@ ms.locfileid: "121862685"
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 [host.json](functions-host-json.md) 文件和 [local.settings.json](functions-develop-local.md#local-settings-file) 文件中提供了其他全局配置选项。
+为了便于阅读，示例连接字符串值被截断。
 
 > [!NOTE]
 > 可以使用应用程序设置替代 host.json 设置值，而不必更改 host.json 文件本身。 这对于需要针对特定环境配置或修改特定 host.json 设置的方案很有用。 这也让你可以更改 host.json 设置，而不必重新发布项目。 若要了解详细信息，请参阅 [host.json 参考文章](functions-host-json.md#override-hostjson-values)。 如果更改函数应用设置，则需要重启函数应用。
@@ -27,7 +28,7 @@ Application Insights 的检测密钥。 仅使用 `APPINSIGHTS_INSTRUMENTATIONKE
 
 |键|示例值|
 |---|------------|
-|APPINSIGHTS_INSTRUMENTATIONKEY|55555555-af77-484b-9032-64f83bb83bb|
+|APPINSIGHTS_INSTRUMENTATIONKEY|`55555555-af77-484b-9032-64f83bb83bb`|
 
 ## <a name="applicationinsights_connection_string"></a>APPLICATIONINSIGHTS_CONNECTION_STRING
 
@@ -40,7 +41,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 |键|示例值|
 |---|------------|
-|APPLICATIONINSIGHTS_CONNECTION_STRING|InstrumentationKey=[key];IngestionEndpoint=[url];LiveEndpoint=[url];ProfilerEndpoint=[url];SnapshotEndpoint=[url];|
+|APPLICATIONINSIGHTS_CONNECTION_STRING|`InstrumentationKey=...`|
 
 ## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
 
@@ -48,8 +49,8 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 |键|值|说明|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|是|具有指向本地函数应用中函数的后端 URL 的调用不会直接发送到函数， 相反，请求会定向回函数应用的 HTTP 前端。|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|具有指向本地函数应用中函数的后端 URL 的调用会直接转发到函数。 这是默认值。 |
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|`true`|具有指向本地函数应用中函数的后端 URL 的调用不会直接发送到函数， 相反，请求会定向回函数应用的 HTTP 前端。|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|`false`|具有指向本地函数应用中函数的后端 URL 的调用会直接转发到函数。 这是默认值。 |
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
@@ -57,8 +58,8 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 |键|值|说明|
 |-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|是|包含编码斜杠的路由参数已解码。 |
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|所有路由参数均原样传递，这是默认行为。 |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|`true`|包含编码斜杠的路由参数已解码。 |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|`false`|所有路由参数均原样传递，这是默认行为。 |
 
 例如，考虑位于 `myfunction.com` 域的函数应用的 proxies.json 文件。
 
@@ -92,7 +93,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 |键|示例值|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>|
+|AzureWebJobsDashboard|`DefaultEndpointsProtocol=https;AccountName=...`|
 
 > [!NOTE]
 > 为了获得更好的性能和体验，运行时版本 2.x 及更高版本使用 APPINSIGHTS_INSTRUMENTATIONKEY 和 App Insights 进行监视，而不是使用 `AzureWebJobsDashboard`。
@@ -103,7 +104,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 |键|示例值|
 |---|------------|
-|AzureWebJobsDisableHomepage|是|
+|AzureWebJobsDisableHomepage|`true`|
 
 如果省略此应用设置或将其设置为 `false`，则会显示类似于以下示例的页来响应 URL `<functionappname>.azurewebsites.net`。
 
@@ -115,7 +116,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 |键|示例值|
 |---|------------|
-|AzureWebJobsDotNetReleaseCompilation|是|
+|AzureWebJobsDotNetReleaseCompilation|`true`|
 
 ## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
 
@@ -123,7 +124,7 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 |键|示例值|
 |---|------------|
-|AzureWebJobsFeatureFlags|feature1,feature2|
+|AzureWebJobsFeatureFlags|`feature1,feature2`|
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
@@ -139,7 +140,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 |键|示例值|
 |---|------------|
-|AzureWebJobsStorage|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+|AzureWebJobsStorage|`DefaultEndpointsProtocol=https;AccountName=...`|
 
 ## <a name="azurewebjobs_typescriptpath"></a>AzureWebJobs_TypeScriptPath
 
@@ -147,7 +148,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 |键|示例值|
 |---|------------|
-|AzureWebJobs_TypeScriptPath|%HOME%\typescript|
+|AzureWebJobs_TypeScriptPath|`%HOME%\typescript`|
 
 ## <a name="function_app_edit_mode"></a>FUNCTION\_APP\_EDIT\_MODE
 
@@ -155,7 +156,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 |键|示例值|
 |---|------------|
-|FUNCTION\_APP\_EDIT\_MODE|readonly|
+|FUNCTION\_APP\_EDIT\_MODE|`readonly`|
 
 ## <a name="functions_extension_version"></a>FUNCTIONS\_EXTENSION\_VERSION
 
@@ -163,7 +164,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 |键|示例值|
 |---|------------|
-|FUNCTIONS\_EXTENSION\_VERSION|~3|
+|FUNCTIONS\_EXTENSION\_VERSION|`~3`|
 
 ## <a name="functions_v2_compatibility_mode"></a>FUNCTIONS\_V2\_COMPATIBILITY\_MODE
 
@@ -176,7 +177,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 |键|示例值|
 |---|------------|
-|FUNCTIONS\_V2\_COMPATIBILITY\_MODE|是|
+|FUNCTIONS\_V2\_COMPATIBILITY\_MODE|`true`|
 
 ## <a name="functions_worker_process_count"></a>FUNCTIONS\_WORKER\_PROCESS\_COUNT
 
@@ -184,7 +185,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 |键|示例值|
 |---|------------|
-|FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
+|FUNCTIONS\_WORKER\_PROCESS\_COUNT|`2`|
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
@@ -192,7 +193,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 |键|示例值|
 |---|------------|
-|FUNCTIONS\_WORKER\_RUNTIME|节点|
+|FUNCTIONS\_WORKER\_RUNTIME|`node`|
 
 有效值：
 
@@ -213,7 +214,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 |键|示例值|
 |---|------------|
-|MDMaxBackgroundUpgradePeriod|7.00:00:00|
+|MDMaxBackgroundUpgradePeriod|`7.00:00:00`|
 
 有关详细信息，请参阅[依赖项管理](functions-reference-powershell.md#dependency-management)。
 
@@ -227,7 +228,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 |键|示例值|
 |---|------------|
-|MDNewSnapshotCheckPeriod|01:00:00|
+|MDNewSnapshotCheckPeriod|`01:00:00`|
 
 有关详细信息，请参阅[依赖项管理](functions-reference-powershell.md#dependency-management)。
 
@@ -240,7 +241,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 |键|示例值|
 |---|------------|
-|MDMinBackgroundUpgradePeriod|1.00:00:00|
+|MDMinBackgroundUpgradePeriod|`1.00:00:00`|
 
 有关详细信息，请参阅[依赖项管理](functions-reference-powershell.md#dependency-management)。
 
@@ -250,18 +251,18 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 |键|示例值|
 |---|------------|
-|PIP\_EXTRA\_INDEX\_URL|http://my.custom.package.repo/simple |
+|PIP\_EXTRA\_INDEX\_URL|`http://my.custom.package.repo/simple` |
 
 若要了解详细信息，请参阅 Python 开发人员参考中的[自定义依赖项](functions-reference-python.md#remote-build-with-extra-index-url)。
 
-## <a name="python_isolate_worker_dependencies"></a>PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES
+## <a name="python_isolate_worker_dependencies-preview"></a>PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES（预览）
 
-配置特定于 Python 函数应用。 它定义模块加载顺序的优先级。 当 Python 函数应用面临与模块冲突相关的问题时（例如，在项目中使用 protobuf、tensorflow 或 grpcio 时），将此应用设置配置为 `1` 应该能够解决问题。 默认情况下，此值设置为 `0`。
+配置特定于 Python 函数应用。 它定义模块加载顺序的优先级。 当 Python 函数应用面临与模块冲突相关的问题时（例如，在项目中使用 protobuf、tensorflow 或 grpcio 时），将此应用设置配置为 `1` 应该能够解决问题。 默认情况下，此值设置为 `0`。 此标志目前处于预览状态。
 
 |键|值|说明|
 |---|-----|-----------|
-|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|0| 优先从内部 Python 辅助角色的依赖项加载 Python 库。 requirements.txt 中定义的第三方库可能会被隐藏。 |
-|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|1| 优先从 requirements.txt 中定义的应用程序包加载 Python 库。 这可以防止你的库与内部 Python 辅助角色的库发生冲突。 |
+|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|`0`| 优先从内部 Python 辅助角色的依赖项加载 Python 库。 requirements.txt 中定义的第三方库可能会被隐藏。 |
+|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|`1`| 优先从 requirements.txt 中定义的应用程序包加载 Python 库。 这可以防止你的库与内部 Python 辅助角色的库发生冲突。 |
 
 ## <a name="python_enable_worker_extensions"></a>PYTHON\_ENABLE\_WORKER\_EXTENSIONS
 
@@ -269,8 +270,8 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 |键|值|说明|
 |---|-----|-----------|
-|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|0| 禁用任何 Python 工作线程扩展。 |
-|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|1| 允许 Python 工作线程从 requirements.txt 加载扩展。 |
+|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|`0`| 禁用任何 Python 工作线程扩展。 |
+|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|`1`| 允许 Python 工作线程从 requirements.txt 加载扩展。 |
 
 ## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
 
@@ -288,7 +289,7 @@ _此设置当前处于预览状态。_
 
 |键|示例值|
 |-|-|
-|SCALE_CONTROLLER_LOGGING_ENABLED|AppInsights:Verbose|
+|SCALE_CONTROLLER_LOGGING_ENABLED|`AppInsights:Verbose`|
 
 此键的值以 `<DESTINATION>:<VERBOSITY>` 格式提供，其定义如下：
 
@@ -300,7 +301,7 @@ _此设置当前处于预览状态。_
 
 |键|示例值|
 |-|-|
-|SCM_LOGSTREAM_TIMEOUT|1800|
+|SCM_LOGSTREAM_TIMEOUT|`1800`|
 
 上述示例值 `1800` 设置超时 30 分钟。 有关详细信息，请参阅[启用流式处理日志](functions-run-local.md#enable-streaming-logs)。
 
@@ -310,19 +311,19 @@ _此设置当前处于预览状态。_
 
 |键|示例值|
 |---|------------|
-|WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+|WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|`DefaultEndpointsProtocol=https;AccountName=...`|
 
 仅在部署到 Windows 运行上的高级计划或消耗计划时使用。 不支持运行 Linux 的消耗计划。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
-将存储帐户限制在虚拟网络中时，值 `1` 允许函数应用进行缩放。 将存储帐户限制于一个虚拟网络时，应启用此设置。 若要了解详细信息，请参阅[将存储帐户限制在虚拟网络中](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)。
+将存储帐户限制在虚拟网络中时，值 `1` 允许函数应用进行缩放。 将存储帐户限制于一个虚拟网络时，应启用此设置。 若要了解详细信息，请参阅[将存储帐户限制在虚拟网络中](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network)。
 
 |键|示例值|
 |---|------------|
-|WEBSITE_CONTENTOVERVNET|1|
+|WEBSITE_CONTENTOVERVNET|`1`|
 
-在运行 Windows 的[高级计划](functions-premium-plan.md)和[专用（应用服务）计划](dedicated-plan.md)（标准版及更高版本）上受支持。 当前不支持运行 Linux 的消耗计划和高级计划。 
+受[高级](functions-premium-plan.md)和[专用（应用服务）计划](dedicated-plan.md)（标准及更高版本）支持。 在[消耗计划](consumption-plan.md)上运行时不受支持。 
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 
@@ -330,7 +331,7 @@ Windows 上事件驱动的缩放计划中函数应用代码和配置的文件路
 
 |键|示例值|
 |---|------------|
-|WEBSITE_CONTENTSHARE|functionapp091999e2|
+|WEBSITE_CONTENTSHARE|`functionapp091999e2`|
 
 仅在部署到 Windows 运行上的高级计划或消耗计划时使用。 不支持运行 Linux 的消耗计划。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。
 
@@ -342,7 +343,7 @@ Windows 上事件驱动的缩放计划中函数应用代码和配置的文件路
 
 |键|示例值|
 |---|------------|
-|WEBSITE\_DNS\_SERVER|168.63.129.16|
+|WEBSITE\_DNS\_SERVER|`168.63.129.16`|
 
 ## <a name="website_enable_brotli_encoding"></a>WEBSITE\_ENABLE\_BROTLI\_ENCODING
 
@@ -357,7 +358,7 @@ Windows 上事件驱动的缩放计划中函数应用代码和配置的文件路
 
 |键|示例值|
 |---|------------|
-|WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|5|
+|WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|`5`|
 
 ## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
@@ -366,7 +367,7 @@ _仅限 Windows_。
 
 |键|示例值|
 |---|------------|
-|WEBSITE\_NODE\_DEFAULT_VERSION|~10|
+|WEBSITE\_NODE\_DEFAULT_VERSION|`~10`|
 
 ## <a name="website_run_from_package"></a>WEBSITE\_RUN\_FROM\_PACKAGE
 
@@ -374,7 +375,7 @@ _仅限 Windows_。
 
 |键|示例值|
 |---|------------|
-|WEBSITE\_RUN\_FROM\_PACKAGE|1|
+|WEBSITE\_RUN\_FROM\_PACKAGE|`1`|
 
 有效值是解析为部署包文件位置的 URL 或 `1`。 设置为 `1` 时，包必须位于 `d:\home\data\SitePackages` 文件夹中。 使用此设置的 zip 部署时，包将自动上传到此位置。 在预览版中，此设置名为 `WEBSITE_RUN_FROM_ZIP`。 有关详细信息，请参阅[从包文件运行函数](run-functions-from-deployment-package.md)。
 
@@ -384,8 +385,8 @@ _仅限 Windows_。
 
 |键|(OS)|示例值|
 |---|--|------------|
-|WEBSITE\_TIME\_ZONE|Windows|东部标准时间|
-|WEBSITE\_TIME\_ZONE|Linux|America/New_York|
+|WEBSITE\_TIME\_ZONE|Windows|`Eastern Standard Time`|
+|WEBSITE\_TIME\_ZONE|Linux|`America/New_York`|
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
@@ -395,7 +396,7 @@ _仅限 Windows_。
 
 |键|示例值|
 |---|------------|
-|WEBSITE\_VNET\_ROUTE\_ALL|1|
+|WEBSITE\_VNET\_ROUTE\_ALL|`1`|
 
 ## <a name="next-steps"></a>后续步骤
 

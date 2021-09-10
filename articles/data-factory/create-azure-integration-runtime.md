@@ -1,23 +1,25 @@
 ---
-title: 在 Azure 数据工厂中创建 Azure Integration Runtime
-description: 了解如何在 Azure 数据工厂中创建 Azure 集成运行时，用于复制数据并调度转换活动。
+title: 创建 Azure 集成运行时
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何在 Azure 数据工厂和 Azure Synapse Analytics 中创建 Azure 集成运行时，用于复制数据并调度转换活动。
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/24/2021
 author: lrtoyou1223
 ms.author: lle
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b98f95c0cd3013af055b85e4dfe1405b2eaf3032
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.custom: devx-track-azurepowershell, synapse
+ms.openlocfilehash: a9819af196af6df60644a5e25599c6066dc17eaa
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681081"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123312334"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何创建和配置 Azure 集成运行时
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的更多信息，请参阅[集成运行时](concepts-integration-runtime.md)。
+集成运行时 (IR) 是 Azure 数据工厂和 Synapse 管道用于在不同的网络环境中提供数据集成功能的计算基础结构。 有关 IR 的更多信息，请参阅[集成运行时](concepts-integration-runtime.md)。
 
 Azure IR 提供完全托管的计算，以本机执行数据移动和调度数据转换活动来计算 HDInsight 这样的服务。 它在 Azure 环境中托管，并支持连接到具有公共可访问端点的公共网络环境中的资源。
 
@@ -26,7 +28,7 @@ Azure IR 提供完全托管的计算，以本机执行数据移动和调度数�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="default-azure-ir"></a>默认 Azure IR
-默认情况下，每个数据工厂在后端都有 Azure IR，支持云数据存储上的操作和公共网络中的计算服务。 该 Azure IR 的位置会自动解析。 如果链接服务定义中未指定 **connectVia** 属性，则会使用默认的 Azure IR。 如果想要显式定义 IR 的位置，或对不同 IR 上的活动执行进行虚拟分组以进行管理，只需显式创建 Azure IR。 
+默认情况下，每个数据工厂或 Synapse 工作区在后端都有一个 Azure IR，可支持云数据存储上的操作和公用网络中的计算服务。 该 Azure IR 的位置会自动解析。 如果链接服务定义中未指定 **connectVia** 属性，则会使用默认的 Azure IR。 如果想要显式定义 IR 的位置，或对不同 IR 上的活动执行进行虚拟分组以进行管理，只需显式创建 Azure IR。 
 
 ## <a name="create-azure-ir"></a>创建 Azure IR
 
@@ -42,18 +44,30 @@ Azure IR 的类型必须设置为 **托管**。 无需指定计算详细信息�
 
 可以使用 Set-AzDataFactoryV2IntegrationRuntime PowerShell cmdlet 来配置现有 Azure IR 以更改其位置。 有关 Azure IR 的位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。
 
-### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>通过 Azure 数据工厂 UI 创建 Azure IR
-使用以下步骤通过 Azure 数据工厂 UI 创建 Azure IR。
+### <a name="create-an-azure-ir-via-ui"></a>通过 UI 创建 Azure IR
+使用以下步骤通过 UI 来创建 Azure IR。
 
-1. 在 Azure 数据工厂 UI 的“开始使用”页上，从最左侧的窗格选择[“管理”选项卡](./author-management-hub.md)。
+1. 在服务的主页上，从最左侧的窗格选择[“管理”选项卡](./author-management-hub.md)。
 
-   ![主页“管理”按钮](media/doc-common-process/get-started-page-manage-button.png)
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+    
+    :::image type="content" source="media/doc-common-process/get-started-page-manage-button.png" alt-text="主页“管理”按钮":::
 
-1. 在左窗格中选择“集成运行时”，然后选择“+ 新建” 。
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
-   ![此屏幕截图突出显示了左窗格中的“集成运行时”和“+新建”按钮。](media/doc-common-process/manage-new-integration-runtime.png)
+    :::image type="content" source="media/doc-common-process/get-started-page-manage-button-synapse.png" alt-text="主页“管理”按钮":::
 
-1. 在“集成运行时安装”页中选择“Azure，自承载”，然后选择“继续”。  
+2. 在左窗格中选择“集成运行时”，然后选择“+ 新建” 。
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/manage-new-integration-runtime.png" alt-text="此屏幕截图突出显示了左窗格中的“集成运行时”和“+新建”按钮。":::
+   
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/manage-new-integration-runtime-synapse.png" alt-text="此屏幕截图突出显示了左窗格中的“集成运行时”和“+新建”按钮。":::
+
+3. 在“集成运行时安装”页中选择“Azure，自承载”，然后选择“继续”。  
 
 1. 在下一页上选择“Azure”以创建 Azure IR，然后选择“继续”。
    ![创建集成运行时](media/create-azure-integration-runtime/new-azure-integration-runtime.png)

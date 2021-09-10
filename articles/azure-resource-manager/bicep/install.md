@@ -2,14 +2,14 @@
 title: 设置 Bicep 开发和部署环境
 description: 如何配置 Bicep 开发和部署环境
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 08/26/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 297cafd074beb6c1535747be98dd664041d7b497
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c95c05923d9685232c50d694f2b858e2de9e4776
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453353"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123099559"
 ---
 # <a name="install-bicep-tools"></a>安装 Bicep 工具
 
@@ -24,7 +24,7 @@ ms.locfileid: "114453353"
 
   要安装该扩展，请在“扩展”选项卡或 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) 中搜索“bicep”。
 
-  选择“安装”  。
+  选择“安装”。
 
   :::image type="content" source="./media/install/install-extension.png" alt-text="安装 Bicep 扩展":::
 
@@ -35,6 +35,10 @@ ms.locfileid: "114453353"
 ## <a name="deployment-environment"></a>部署环境
 
 要获取部署 Bicep 文件所需的命令，最简单的方法是安装最新版本的 Azure CLI。 还可以使用 PowerShell，但它需要额外的安装。
+
+- [Azure CLI](#azure-cli)
+- [Azure PowerShell](#azure-powershell)
+- [手动安装](#install-manually)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -75,7 +79,28 @@ az bicep version
 > [!IMPORTANT]
 > Azure CLI 安装独立的 Bicep CLI 实例。 此实例不会与你手动安装的任何版本发生冲突。 Azure CLI 不会将 Bicep CLI 添加到你的路径。
 
-### <a name="powershell"></a>PowerShell
+#### <a name="install-on-an-air-gapped-cloud"></a>在气隙云中安装
+
+若要在气隙环境中安装 Bicep CLI，需要手动下载 Bicep CLI 可执行文件并将其保存到特定位置。
+
+- **Linux**
+
+    1. 在非气隙环境中，从 [Bicep 发布页](https://github.com/Azure/bicep/releases/latest/)下载 bicep-linux-x64。
+    1. 将可执行文件复制到气隙计算机上的 $HOME/.azure/bin 目录中。
+
+- **macOS**
+
+    1. 在非气隙环境中，从 [Bicep 发布页](https://github.com/Azure/bicep/releases/latest/)下载 bicep-osx-x64。
+    1. 将可执行文件复制到气隙计算机上的 $HOME/.azure/bin 目录中。
+
+- **Windows**
+
+    1. 在非气隙环境中，从 [Bicep 发布页](https://github.com/Azure/bicep/releases/latest/)下载 bicep-win-x64.exe。
+    1. 将可执行文件复制到气隙计算机上的 %UserProfile%/.azure/bin 目录中。
+
+注意 `bicep install` 和 `bicep upgrade` 命令在气隙环境中不起作用。
+
+### <a name="azure-powershell"></a>Azure PowerShell
 
 必须安装 Azure PowerShell 5.6.0 或更高版本。 要更新或安装 Azure PowerShell，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 
@@ -95,6 +120,10 @@ bicep --version
 ### <a name="install-manually"></a>手动安装
 
 以下方法安装 Bicep CLI 并将其添加到你的路径。 对于 Azure CLI 以外的任何用途，必须手动安装。
+
+- [Linux](#linux)
+- [macOS](#macos)
+- [Windows](#windows)
 
 #### <a name="linux"></a>Linux
 

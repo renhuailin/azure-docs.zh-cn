@@ -1,27 +1,29 @@
 ---
 title: 从/向 SFTP 服务器复制数据
-description: 了解如何使用 Azure 数据工厂从/向 SFTP 服务器复制数据。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何使用 Azure 数据工厂和 Azure Synapse Analytics 管道从/向 SFTP 服务器复制数据。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: bdee163a31c7822aa0eea2ff5900e10796e0c521
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: 94034e1a7c297e33209c42b5aa93fed2b52feb3f
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486838"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123316529"
 ---
-# <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 SFTP 服务器复制数据
+# <a name="copy-data-from-and-to-the-sftp-server-using-azure-data-factory-or-azure-synapse-analytics"></a>使用 Azure 数据工厂或 Azure Synapse Analytics 从/向 SFTP 服务器复制数据
 
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本："]
 > * [版本 1](v1/data-factory-sftp-connector.md)
 > * [当前版本](connector-sftp.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何从/向安全 FTP (SFTP) 服务器复制数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述了如何从/向安全 FTP (SFTP) 服务器复制数据。 有关详细信息，请阅读 [Azure 数据工厂](introduction.md)或 [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) 的简介文章。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -45,7 +47,31 @@ ms.locfileid: "109486838"
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-对于特定于 SFTP 的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
+## <a name="create-an-sftp-linked-service-using-ui"></a>使用 UI 创建 SFTP 链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建 SFTP 链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新链接服务的屏幕截图。":::
+
+2. 搜索 SFTP 并选择 SFTP 连接器。
+
+    :::image type="content" source="media/connector-sftp/sftp-connector.png" alt-text="SFTP 连接器的屏幕截图。":::    
+
+1. 配置服务详细信息，测试连接，然后创建新的链接服务。
+
+    :::image type="content" source="media/connector-sftp/configure-sftp-linked-service.png" alt-text="SFTP 链接服务的配置的屏幕截图。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
+
+以下部分提供了有关各属性的详细信息，这些属性用于定义特定于 SFTP 的实体。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
@@ -68,7 +94,7 @@ SFTP 链接服务支持以下属性：
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | userName | 有权访问 SFTP 服务器的用户。 |是 |
-| password | 用户 (userName) 的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
+| password | 用户 (userName) 的密码。 将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure 密钥保管库中的机密](store-credentials-in-key-vault.md)。 | 是 |
 
 **示例：**
 
@@ -105,8 +131,8 @@ SFTP 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | userName | 有权访问 SFTP 服务器的用户。 |是 |
 | privateKeyPath | 指定集成运行时可以访问的私钥文件的绝对路径。 只有在“connectVia”中指定了自承载类型的集成运行时的情况下，此项才适用。 | 指定 `privateKeyPath` 或 `privateKeyContent`。  |
-| privateKeyContent | Base64 编码的 SSH 私钥内容。 SSH 私钥应采用 OpenSSH 格式。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 |
-| passPhrase | 如果密钥文件或密钥内容受通行短语保护，请指定用于解密私钥的通行短语或密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是（如果私钥文件或密钥内容受通行短语的保护）。 |
+| privateKeyContent | Base64 编码的 SSH 私钥内容。 SSH 私钥应采用 OpenSSH 格式。 将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure 密钥保管库中的机密](store-credentials-in-key-vault.md)。 | 指定 `privateKeyPath` 或 `privateKeyContent`。 |
+| passPhrase | 如果密钥文件或密钥内容受通行短语保护，请指定用于解密私钥的通行短语或密码。 将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure 密钥保管库中的机密](store-credentials-in-key-vault.md)。 | 是（如果私钥文件或密钥内容受通行短语的保护）。 |
 
 > [!NOTE]
 > SFTP 连接器支持 RSA/DSA OpenSSH 密钥。 请确保密钥文件内容以“-----BEGIN [RSA/DSA] PRIVATE KEY-----”开头。 如果私钥文件是 PPK 格式的文件，请使用 PuTTY 工具将其从 PPK 格式转换为 OpenSSH 格式。 
@@ -325,7 +351,7 @@ SFTP 支持基于格式的复制接收器中 `storeSettings` 设置下的以下�
 | type                     | `storeSettings` 下的 type 属性必须设置为 SftpWriteSettings。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
 | maxConcurrentConnections | 活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接时指定一个值。 | 否       |
-| useTempFileRename | 指示是将其上传到临时文件并重命名，还是将其直接写入到目标文件夹或文件位置。 默认情况下，Azure 数据工厂先将数据写入到临时文件，然后在上传完成时重命名文件。 采取此顺序有助于 (1) 避免可能会导致文件损坏的冲突（如果有其他进程对同一文件进行写入操作）；(2) 在整个传输过程中确保文件的原始版本存在。 如果 SFTP 服务器不支持重命名操作，请禁用此选项，并确保不会对目标文件进行并发写入操作。 有关详细信息，请查看此表末尾的故障排除提示。 | 否。 默认值为 *true*。 |
+| useTempFileRename | 指示是将其上传到临时文件并重命名，还是将其直接写入到目标文件夹或文件位置。 默认情况下，该服务先将数据写入到临时文件，然后在上传完成时重命名文件。 采取此顺序有助于 (1) 避免可能会导致文件损坏的冲突（如果有其他进程对同一文件进行写入操作）；(2) 在整个传输过程中确保文件的原始版本存在。 如果 SFTP 服务器不支持重命名操作，请禁用此选项，并确保不会对目标文件进行并发写入操作。 有关详细信息，请查看此表末尾的故障排除提示。 | 否。 默认值为 *true*。 |
 | operationTimeout | 每个对 SFTP 服务器的写入请求超时之前的等待时间。默认值为 60 分钟 (01:00:00)。|否 |
 
 >[!TIP]
@@ -373,9 +399,9 @@ SFTP 支持基于格式的复制接收器中 `storeSettings` 设置下的以下�
 | folderPath | fileName | recursive | 源文件夹结构和筛选器结果（用 **粗体** 表示的文件已检索）|
 |:--- |:--- |:--- |:--- |
 | `Folder*` | （为空，使用默认值） | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*` | （为空，使用默认值） | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | （为空，使用默认值） | 是 | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*` | `*.csv` | false | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*` | `*.csv` | true | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*` | `*.csv` | 是 | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
 ### <a name="file-list-examples"></a>文件列表示例
 
@@ -387,20 +413,20 @@ SFTP 支持基于格式的复制接收器中 `storeSettings` 设置下的以下�
 
 ## <a name="lookup-activity-properties"></a>查找活动属性
 
-有关查找活动属性的信息，请参阅 [Azure 数据工厂中的查找活动](control-flow-lookup-activity.md)。
+有关 Lookup 活动属性的详细信息，请参阅 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="getmetadata-activity-properties"></a>GetMetadata 活动属性
 
-有关 GetMetadata 活动属性的信息，请参阅 [Azure 数据工厂中的 GetMetadata 活动](control-flow-get-metadata-activity.md)。 
+有关 GetMetadata 活动属性的详细信息，请参阅[GetMetadata 活动](control-flow-get-metadata-activity.md)。 
 
 ## <a name="delete-activity-properties"></a>Delete 活动属性
 
-有关删除活动属性的信息，请参阅 [Azure 数据工厂中的删除活动](delete-activity.md)。
+有关 Delete 活动属性的详细信息，请参阅 [Delete 活动](delete-activity.md)。
 
 ## <a name="legacy-models"></a>旧模型
 
 >[!NOTE]
->仍会按原样支持以下模型，以实现后向兼容性。 建议你使用前面讨论的新模型，因为 Azure 数据工厂创作 UI 已切换到生成新模型。
+>仍会按原样支持以下模型，以实现后向兼容性。 建议你使用前面讨论的新模型，因为创作 UI 已切换到生成新模型。
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
@@ -492,4 +518,4 @@ SFTP 支持基于格式的复制接收器中 `storeSettings` 设置下的以下�
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关可供 Azure 数据工厂中的复制活动用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Copy 活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

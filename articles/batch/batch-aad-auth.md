@@ -4,12 +4,12 @@ description: Batch 支持 Azure AD 在 Batch 服务中进行身份验证。 了�
 ms.topic: how-to
 ms.date: 05/13/2021
 ms.custom: has-adal-ref, subject-rbac-steps
-ms.openlocfilehash: 52e34bb94ab151afcfcdc14d2de55e608d82a139
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c7f365c7db4a8bc273e67d66a56a826021306f3a
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066747"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123315081"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -81,10 +81,8 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 1. 在应用注册列表中搜索应用程序名称。
 1. 选择应用程序，并选择“API 权限”。
 1. 在“API 权限”部分中，选择“添加权限” 。
-1. 在“选择 API”中，搜索 Batch API。 搜索每一条字符串，直到找到此 API：
-    1. Microsoft Azure Batch
-    1. ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的 ID。
-1. 找到此 Batch API 后，将其选中，然后选择“选择”。
+1. 在“选择 API”中，搜索“Microsoft Azure Batch”以查找此 Batch API。 ddbf3205-c6bd-46ae-8127-60eb93363864 是此 Batch API 的应用程序 ID。
+1. 选择此 Batch API，然后选择“选择”。
 1. 在“选择权限”中，选中“访问 Azure Batch 服务”旁边的复选框，然后选择“添加权限”  。
 
 现在，“API 权限”部分表明 Azure AD 应用程序已有对 Microsoft Graph 和 Batch 服务 API 的访问权限。 首次将应用注册到 Azure AD 时，系统会自动向 Microsoft Graph 授予权限。

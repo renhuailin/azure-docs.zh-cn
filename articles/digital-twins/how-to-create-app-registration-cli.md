@@ -4,21 +4,21 @@ titleSuffix: Azure Digital Twins
 description: 了解如何使用 CLI 创建 Azure AD 应用注册作为客户端应用的身份验证选项。
 author: baanders
 ms.author: baanders
-ms.date: 5/13/2021
+ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a42a09af845bce160689718fb74eb393409740d3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7c9f69d33c89fba209ecf7ad76bc1aa8e2b6b666
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437923"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224890"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins-cli"></a>创建与 Azure 数字孪生配合使用的应用注册 (CLI)
 
 [!INCLUDE [digital-twins-create-app-registration-selector.md](../../includes/digital-twins-create-app-registration-selector.md)]
 
-使用 Azure 数字孪生实例时，我们往往会通过客户端应用程序（例如自定义客户端应用或 [Azure Digital Twins Explorer](quickstart-azure-digital-twins-explorer.md) 之类的示例）与该实例进行交互。 这些应用程序需要在 Azure 数字孪生中完成身份验证才能与该实例交互，而应用可以使用的某些 [身份验证机制](how-to-authenticate-client.md)涉及到 [ Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **应用注册**。
+使用 Azure 数字孪生实例时，我们往往会通过客户端应用程序（例如自定义客户端应用或 [Azure Digital Twins Explorer](quickstart-azure-digital-twins-explorer.md) 之类的示例）与该实例进行交互。 这些应用程序需要在 Azure 数字孪生中完成身份验证才能与该实例交互，而应用可以使用的某些[身份验证机制](how-to-authenticate-client.md)涉及到 [ Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) 应用注册。
 
 并非所有身份验证方案都需要应用注册。 但是，如果使用的身份验证策略或代码示例确实需要应用注册，本文将演示如何使用 [Azure CLI](/cli/azure/what-is-azure-cli) 设置应用注册。 本文还介绍了如何[收集重要值](#collect-important-values)，以便在使用应用注册进行身份验证时使用。
 
@@ -59,13 +59,13 @@ ms.locfileid: "114437923"
 
 ### <a name="upload-to-cloud-shell"></a>上传到 Cloud Shell
 
-接下来，将刚刚创建的清单文件上传到 Cloud Shell，以便在配置应用注册时可在 Cloud Shell 命令中访问该文件。
+接下来，将创建的清单文件上传到 Cloud Shell，以便在配置应用注册时可在 Cloud Shell 命令中访问该文件。
 
 要上传该文件，请在浏览器中转到 Cloud Shell 窗口。 选择“上传/下载文件”图标，然后选择“上传”。
 
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Azure Cloud Shell 的屏幕截图。突出显示了“上传”图标。":::
 
-在计算机上导航到 manifest.json 文件并选择“打开”。 这会将文件上传到 Cloud Shell 存储的根目录。
+在计算机上导航到 manifest.json 文件并选择“打开”。 这样做会将文件上传到 Cloud Shell 存储的根目录。
 
 ## <a name="create-the-registration"></a>创建注册
 
@@ -125,7 +125,7 @@ az ad app create --display-name <app-registration-name> --available-to-other-ten
 az ad app credential reset --id <client-ID> --append
 ```
 
-还可以向此命令添加可选参数，以指定凭据说明、结束日期和其他详细信息。 有关命令及其附加参数的详细信息，请参阅 [az ad app credential reset 文档](/cli/azure/ad/app/credential?view=azure-cli-latest&preserve-view=true#az_ad_app_credential_reset)。
+还可以向此命令添加可选参数，以指定凭据说明、结束日期和其他详细信息。 有关命令及其参数的详细信息，请参阅 [az ad app credential reset 文档](/cli/azure/ad/app/credential?view=azure-cli-latest&preserve-view=true#az_ad_app_credential_reset)。
 
 此命令的输出是已创建的客户端密码的相关信息。 复制 `password` 的值，以便在需要客户端密码进行身份验证时使用。
 
@@ -136,9 +136,9 @@ az ad app credential reset --id <client-ID> --append
 
 ## <a name="other-possible-steps-for-your-organization"></a>适用于你的组织的其他可行步骤
 
-你的组织可能需要订阅所有者/管理员执行其他操作才能成功设置应用注册。 根据组织的特定设置，所需的步骤可能会有所不同。
+你的组织可能需要订阅所有者/管理员执行的更多操作才能成功设置应用注册。 根据组织的特定设置，所需的步骤可能会有所不同。
 
-下面是订阅所有者或管理员可能需要执行的一些常见潜在活动。
+下面是订阅所有者或管理员可能需要进行的一些常见潜在活动。
 * 授予管理员同意进行应用注册。 你的组织可能已在 Azure AD 中对你的订阅中的所有应用注册全局启用了“需要管理员同意”。 如果已启用，所有者/管理员可能需要授予其他委托权限或应用程序权限。
 * 通过将 `--set publicClient=true` 追加到 create 或 update 命令，为注册激活公共客户端访问。
 * 使用 `--reply-urls` 参数设置特定的回复 URL 用于进行 Web 和桌面访问。 要详细了解如何将此参数与 `az ad` 命令结合使用，请参阅 [az ad app 文档](/cli/azure/ad/app?view=azure-cli-latest&preserve-view=true)。

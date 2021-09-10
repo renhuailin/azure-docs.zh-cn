@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: fad5a625de4b39163c893d1fb35efc68261d0145
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 10f46f5788cd2f17be4b46c2f655fb4e05fed1d9
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179424"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965939"
 ---
 # <a name="use-azure-migrate-with-private-endpoints"></a>使用结合专用终结点的 Azure Migrate
 
@@ -101,7 +101,7 @@ ms.locfileid: "122179424"
 “Azure Migrate：发现和评估”使用轻型 Azure Migrate 设备。 设备执行服务器发现并将服务器配置和性能元数据发送到 Azure Migrate。
 
 > [!Note]
-> 具有专用终结点连接的 Azure Migrate 项目不支持使用模板（即 OVA，适用于 VMware 环境和 VHD Hyper-V 环境中的服务器）部署设备的选项。
+> 如果已使用模板（用于 VMware 环境中的服务器的 OVA 和用于 Hyper-V 环境的 VHD）部署了设备，则可以使用相同的设备并将其注册到具有专用终结点连接的 Azure Migrate 项目。
 
 设置设备：
   1. 从门户下载包含安装程序脚本的压缩文件。
@@ -121,7 +121,7 @@ ms.locfileid: "122179424"
 
     **下载** | **哈希值**
     --- | ---
-    [最新版本](https://go.microsoft.com/fwlink/?linkid=2160648) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2160648) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 > [!NOTE]
 > 可使用相同的脚本针对任何所选的场景（如 VMware、Hyper-V、物理或其他场景）设置具有专用终结点连接的设备，以部署具有所需配置的设备。

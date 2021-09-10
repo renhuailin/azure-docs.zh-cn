@@ -1,25 +1,27 @@
 ---
-title: 适用于 Azure 逻辑应用的托管连接器
+title: 托管连接器操作
 description: 使用 Microsoft 托管触发器和操作创建使用 Azure 逻辑应用集成其他应用、数据、服务和系统的自动工作流。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 05/16/2021
-ms.openlocfilehash: 9461baebfad58f848b27fe689ed8dbd26c9dd07e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c3010cb1d972bb898fd8346266166bb632191ead
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727093"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123259080"
 ---
-# <a name="managed-connectors-for-logic-apps"></a>适用于逻辑应用的托管连接器
+# <a name="managed-connectors-in-azure-logic-apps"></a>Azure 逻辑应用中的托管连接器
 
 [托管连接器](apis-list.md)提供了一些方法，供你访问未提供[内置触发器和操作](built-in.md)的其他服务和系统。 可以使用这些触发器和操作创建集成数据、应用、基于云的服务和本地系统的工作流。 与内置触发器和操作相比，这些连接器通常绑定到特定服务或系统，例如 Azure Blob 存储、Office 365、SQL、Salesforce 或 SFTP 服务器。 托管连接器由 Microsoft 管理并在 Azure 中承载，通常要求首先从工作流创建连接并验证身份。 同时提供了定期和基于 Webhook 的触发器，因此如果使用定期触发器，请查看[定期行为概述](apis-list.md#recurrence-behavior)。
 
-对于少数服务、系统和协议，例如 Azure 服务总线、Azure Functions、Azure Blob、Azure 应用服务、Azure API 管理、SQL、AS2，逻辑应用也提供内置操作。 数量和范围因创建的是多租户逻辑应用还是单租户逻辑应用而有所不同。 在少数情况下，内置版本和托管连接器版本都可用。 在大多数情况下，内置版本提供更好的性能、更全面的功能以及更实惠的价格。 例如，若要[使用 AS2 协议交换 B2B 消息](../logic-apps/logic-apps-enterprise-integration-as2.md)，请选择内置版本，除非你需要仅在托管连接器版本（已弃用）中提供的跟踪功能。
+对于少量服务、系统和协议，Azure 逻辑应用提供内置操作以及其[托管连接器版本](managed.md)。 根据创建的是在多租户 Azure 逻辑应用中运行的基于消耗计划的逻辑应用资源，还是在单租户 Azure 逻辑应用中运行的基于标准计划的逻辑应用资源，可用的数量和范围有所不同。 有关详细信息，请参阅[单租户与多租户以及集成服务环境 (ISE)](../logic-apps/single-tenant-overview-compare.md)。 在大多数情况下，内置版本提供更好的性能、更全面的功能以及更实惠的价格。
 
-某些适用于逻辑应用的托管连接器属于多个子类别。 例如，SAP 连接器既是[企业连接器](#enterprise-connectors)，也是[本地连接器](#on-premises-connectors)。
+例如，如果创建单租户逻辑应用，则内置操作可用于 Azure 服务总线、Azure 事件中心、SQL Server 和 MQ。 在少数情况下，内置版本和托管连接器版本都可用。 在大多数情况下，内置版本提供更好的性能、更全面的功能以及更实惠的价格。 如果创建多租户逻辑应用，则内置操作可用于 Azure Functions、Azure 应用服务和 Azure API Management。
+
+Azure 逻辑应用中的某些托管连接器属于多个子类别。 例如，SAP 连接器既是[企业连接器](#enterprise-connectors)，也是[本地连接器](#on-premises-connectors)。
 
 * [标准连接器](#standard-connectors)提供对 Azure Blob 存储、Office 365、SharePoint、Salesforce、Power BI、OneDrive 等服务的访问。
 * [企业连接器](#enterprise-connectors)提供对 SAP、IBM MQ 和 IBM 3270 等企业系统的访问。
@@ -31,11 +33,9 @@ ms.locfileid: "121727093"
 
 Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服务和系统构建自动工作流。 某些标准连接器还支持[本地系统](#on-premises-connectors)或[集成帐户](#integration-account-connectors)。
 
-某些逻辑应用标准连接器支持[本地系统](#on-premises-connectors)或[集成帐户](#integration-account-connectors)。
-
 :::row:::
     :::column:::
-        [![逻辑应用中的 Azure 服务总线托管连接器图标][azure-service-bus-icon]][azure-service-bus-doc]
+        [![Azure 服务总线图标][azure-service-bus-icon]][azure-service-bus-doc]
         \
         \
         [**Azure 服务总线**][azure-service-bus-doc]
@@ -44,7 +44,7 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
         使用逻辑应用中最常用的连接器管理异步消息、会话和主题订阅。
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 SQL Server 托管连接器图标][sql-server-icon]][sql-server-doc]
+        [![SQL Server 图标][sql-server-icon]][sql-server-doc]
         \
         \
         [**SQL Server**][sql-server-doc]
@@ -53,7 +53,7 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
         连接到本地 SQL Server 或云中的 Azure SQL 数据库，以便可以管理记录、运行存储过程或执行查询。
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure Blog 存储托管连接器图标][azure-blob-storage-icon]][azure-blob-storage-doc]
+        [![Azure Blob 存储图标][azure-blob-storage-icon]][azure-blob-storage-doc]
         \
         \
         [**Azure Blob 存储**][azure-blob-storage-doc]
@@ -62,7 +62,7 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
         连接到 Azure 存储帐户，以便可以创建和管理 Blob 内容。
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Office 365 Outlook 托管连接器图标][office-365-outlook-icon]][office-365-outlook-doc]
+        [![Office 365 Outlook 图标][office-365-outlook-icon]][office-365-outlook-doc]
         \
         \
         [**Office 365 Outlook**][office-365-outlook-doc]
@@ -73,7 +73,7 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 :::row-end:::
 :::row:::
     :::column:::
-        [![逻辑应用中的 STFP-SSH 托管连接器图标][sftp-ssh-icon]][sftp-ssh-doc]
+        [![STFP-SSH 图标][sftp-ssh-icon]][sftp-ssh-doc]
         \
         \
         [**STFP-SSH**][sftp-ssh-doc]
@@ -82,7 +82,7 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
         使用 SSH 连接到可从 Internet 访问的 SFTP 服务器，以便可以处理文件和文件夹。
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 SharePoint Online 托管连接器图标][sharepoint-online-icon]][sharepoint-online-doc]
+        [![SharePoint Online 图标][sharepoint-online-icon]][sharepoint-online-doc]
         \
         \
         [**SharePoint Online**][sharepoint-online-doc]
@@ -91,7 +91,7 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
         连接到 SharePoint Online，以便可以管理文件、附件、文件夹，等等。
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure 队列托管连接器图标][azure-queues-icon]][azure-queues-doc]
+        [![Azure 队列图标][azure-queues-icon]][azure-queues-doc]
         \
         \
         [**Azure 队列**][azure-queues-doc]
@@ -100,7 +100,7 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
         连接到 Azure 存储帐户，以便创建和管理队列与消息。
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 FTP 托管连接器图标][ftp-icon]][ftp-doc]
+        [![FTP 图标][ftp-icon]][ftp-doc]
         \
         \
         [**FTP**][ftp-doc]
@@ -111,7 +111,7 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 :::row-end:::
 :::row:::
     :::column:::
-        [![逻辑应用中的文件系统托管连接器图标][file-system-icon]][file-system-doc]
+        [![文件系统图标][file-system-icon]][file-system-doc]
         \
         \
         [**文件系统**][file-system-doc]
@@ -120,7 +120,7 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
         连接到本地文件共享，以便可以创建和管理文件。
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure 事件中心托管连接器图标][azure-event-hubs-icon]][azure-event-hubs-doc]
+        [![Azure 事件中心图标][azure-event-hubs-icon]][azure-event-hubs-doc]
         \
         \
         [**Azure 事件中心**][azure-event-hubs-doc]
@@ -129,7 +129,7 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
         通过事件中心使用和发布事件。 例如，通过事件中心获取逻辑应用的输出，然后将输出发送到实时分析提供程序。
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure 事件网格托管连接器图标][azure-event-grid-icon]][azure-event-grid-doc]
+        [![Azure 事件网格图标][azure-event-grid-icon]][azure-event-grid-doc]
         \
         \
         [**Azure 事件网格**][azure-event-grid-doc]
@@ -138,7 +138,7 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
         监视事件网格发布的事件（例如，当 Azure 资源或第三方资源发生更改时）。
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Salesforce 托管连接器图标][salesforce-icon]][salesforce-doc]
+        [![Salesforce 图标][salesforce-icon]][salesforce-doc]
         \
         \
         [**Salesforce**][salesforce-doc]
@@ -150,31 +150,31 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 
 ## <a name="on-premises-connectors"></a>本地连接器
 
-在创建与本地系统的连接之前，必须先[下载、安装并设置本地数据网关][gateway-doc]。 此网关提供安全信道，无需设置所需的网络基础结构。 
+在创建与本地系统的连接之前，必须先[下载、安装并设置本地数据网关][gateway-doc]。 此网关提供安全信道，无需设置所需的网络基础结构。
 
-以下连接器是逻辑应用提供的一些常用[标准连接器](#standard-connectors)，用于访问本地系统中的数据和资源。 对于本地连接器列表，请参阅[支持的数据源](../logic-apps/logic-apps-gateway-connection.md#supported-connections)。
+以下连接器是 Azure 逻辑应用提供的一些常用[标准连接器](#standard-connectors)，用于访问本地系统中的数据和资源。 对于本地连接器列表，请参阅[支持的数据源](../logic-apps/logic-apps-gateway-connection.md#supported-connections)。
 
 :::row:::
     :::column:::
-        [![逻辑应用中的 Biztalk Server 本地连接器图标][biztalk-server-icon]][biztalk-server-doc]
+        [![Biztalk Server 图标][biztalk-server-icon]][biztalk-server-doc]
         \
         \
         [**Biztalk Server**][biztalk-server-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的文件系统本地连接器图标][file-system-icon]][file-system-doc]
+        [![文件系统图标][file-system-icon]][file-system-doc]
         \
         \
         [**文件系统**][file-system-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 IBM Db2 本地连接器图标][ibm-db2-icon]][ibm-db2-doc]
+        [![IBM DB2 图标][ibm-db2-icon]][ibm-db2-doc]
         \
         \
-        [**IBM Db2**][ibm-db2-doc]
+        [**IBM DB2**][ibm-db2-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 IBM Informix 本地连接器图标][ibm-informix-icon]][ibm-informix-doc]
+        [![IBM Informix 图标][ibm-informix-icon]][ibm-informix-doc]
         \
         \
         [**IBM Informix**][ibm-informix-doc]
@@ -182,25 +182,25 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 :::row-end:::
 :::row:::
     :::column:::
-        [![逻辑应用中的 MySQL 本地连接器图标][mysql-icon]][mysql-doc]
+        [![MySQL 图标][mysql-icon]][mysql-doc]
         \
         \
         [**MySQL**][mysql-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Oracle DB 本地连接器图标][oracle-db-icon]][oracle-db-doc]
+        [![Oracle DB 图标][oracle-db-icon]][oracle-db-doc]
         \
         \
         [**Oracle DB**][oracle-db-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 PostgreSQL 本地连接器图标][postgre-sql-icon]][postgre-sql-doc]
+        [![PostgreSQL 图标][postgre-sql-icon]][postgre-sql-doc]
         \
         \
         [**PostgreSQL**][postgre-sql-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 SharePoint Server 本地连接器图标][sharepoint-server-icon]][sharepoint-server-doc]
+        [![SharePoint Server 图标][sharepoint-server-icon]][sharepoint-server-doc]
         \
         \
         [**SharePoint Server**][sharepoint-server-doc]
@@ -208,13 +208,13 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 :::row-end:::
 :::row:::
     :::column:::
-        [![逻辑应用中的 SQL Server 本地连接器图标][sql-server-icon]][sql-server-doc]
+        [![SQL Server 图标][sql-server-icon]][sql-server-doc]
         \
         \
         [**SQL Server**][sql-server-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Teradata 本地连接器图标][teradata-icon]][teradata-doc]
+        [![Teradata 图标][teradata-icon]][teradata-doc]
         \
         \
         [**Teradata**][teradata-doc]
@@ -225,6 +225,8 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
     :::column-end:::
 :::row-end:::
 
+<a name="integration-account-connectors"></a>
+
 ## <a name="integration-account-connectors"></a>集成帐户连接器
 
 集成帐户连接器专门支持 Azure 逻辑应用中的[企业到企业 (B2B) 通信方案](../logic-apps/logic-apps-enterprise-integration-overview.md)。 [创建集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)并定义 B2B 项目（如贸易合作伙伴、协议、映射和架构）后，可以使用集成帐户连接器对消息进行编码和解码、转换内容等。
@@ -232,85 +234,44 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 例如，如果使用 Microsoft BizTalk Server，则可以使用 [BizTalk Server 本地连接器](#on-premises-connectors)从工作流创建连接。 然后，可以使用这些集成帐户连接器在工作流中扩展或执行类似于 BizTalk 的操作。
 
 > [!NOTE]
-> 必须先[将逻辑应用链接到集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，然后才能使用集成帐户连接器。
-
+> 必须先[将逻辑应用资源链接到集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，然后才能在基于消耗计划的多租户 Azure 逻辑应用中使用集成帐户连接器。 
 
 :::row:::
     :::column:::
-        [![逻辑应用中的 AS2 解码操作图标][as2-icon]][as2-doc]
+        [![AS2 解码图标][as2-icon]][as2-doc]
         \
         \
         [**AS2 解码**][as2-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 AS2 编码操作图标][as2-icon]][as2-doc]
+        [![AS2 编码图标][as2-icon]][as2-doc]
         \
         \
         [**AS2 编码**][as2-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 EDIFACT 解码操作图标][edifact-icon]][edifact-decode-doc]
+        [![EDIFACT 解码图标][edifact-icon]][edifact-decode-doc]
         \
         \
         [**EDIFACT 解码**][edifact-decode-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 EDIFACT 编码操作图标][edifact-icon]][edifact-encode-doc]
+        [![EDIFACT 编码图标][edifact-icon]][edifact-encode-doc]
         \
         \
         [**EDIFACT 编码**][edifact-encode-doc]
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column:::
-        [![逻辑应用中的平面文件解码操作图标][flat-file-decode-icon]][flat-file-decode-doc]
-        \
-        \
-        [**平面文件解码**][flat-file-decode-doc]
-    :::column-end:::
-    :::column:::
-        [![逻辑应用中的平面文件编码操作图标][flat-file-encode-icon]][flat-file-encode-doc]
-        \
-        \
-        [**平面文件编码**][flat-file-encode-doc]
-    :::column-end:::
-    :::column:::
-        [![逻辑应用中的集成帐户操作图标][integration-account-icon]][integration-account-doc]
-        \
-        \
-        [**集成帐户**][integration-account-doc]
-    :::column-end:::
-    :::column:::
-        [![逻辑应用中的 Liquid 转换操作图标][liquid-icon]][json-liquid-transform-doc]
-        \
-        \
-        [**Liquid 转换**][json-liquid-transform-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![逻辑应用中的 X12 解码操作图标][x12-icon]][x12-decode-doc]
+        [![X12 解码图标][x12-icon]][x12-decode-doc]
         \
         \
         [**X12 解码**][x12-decode-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 X12 编码操作图标][x12-icon]][x12-encode-doc]
+        [![X12 编码图标][x12-icon]][x12-encode-doc]
         \
         \
         [**X12 编码**][x12-encode-doc]
-    :::column-end:::
-    :::column:::
-        [![逻辑应用中的 XML 转换操作图标][xml-transform-icon]][xml-transform-doc]
-        \
-        \
-        [**XML 转换**][xml-transform-doc]
-    :::column-end:::
-    :::column:::
-        [![逻辑应用中的 XML 验证操作图标][xml-validate-icon]][xml-validate-doc]
-        \
-        \
-        [**XML 验证**][xml-validate-doc]
     :::column-end:::
 :::row-end:::
 
@@ -320,27 +281,26 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 
 :::row:::
     :::column:::
-        [![逻辑应用中的 IBM 3270 企业连接器图标][ibm-3270-icon]][ibm-3270-doc]
+        [![IBM 3270 图标][ibm-3270-icon]][ibm-3270-doc]
         \
         \
-        [IBM 3270 企业连接器][ibm-3270-doc]
+        [**IBM 3270**][ibm-3270-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 IBM MQ 企业连接器图标][ibm-mq-icon]][ibm-mq-doc]
+        [![IBM MQ 图标][ibm-mq-icon]][ibm-mq-doc]
         \
         \
-        [IBM MQ 企业连接器][ibm-mq-doc]
+        [**IBM MQ**][ibm-mq-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 SAP 企业连接器图标][sap-icon]][sap-connector-doc]
+        [![SAP 图标][sap-icon]][sap-connector-doc]
         \
         \
-        [SAP 企业连接器][sap-connector-doc]
+        [**SAP**][sap-connector-doc]
     :::column-end:::
     :::column:::
     :::column-end:::
 :::row-end:::
-
 
 ## <a name="ise-connectors"></a>ISE 连接器
 
@@ -351,25 +311,25 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 
 :::row:::
     :::column:::
-        [![逻辑应用中的 AS2 ISE 连接器图标][as2-icon]][as2-doc]
+        [![AS2 ISE 图标][as2-icon]][as2-doc]
         \
         \
         [AS2 ISE][as2-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure 自动化 ISE 连接器图标][azure-automation-icon]][azure-automation-doc]
+        [![Azure 自动化 ISE 图标][azure-automation-icon]][azure-automation-doc]
         \
         \
         [Azure 自动化 ISE][azure-automation-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure Blob 存储 ISE 连接器图标][azure-blob-storage-icon]][azure-blob-storage-doc]
+        [![Azure Blob 存储 ISE 图标][azure-blob-storage-icon]][azure-blob-storage-doc]
         \
         \
         [Azure Blob 存储 ISE][azure-blob-storage-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure Cosmos DB ISE 连接器图标][azure-cosmos-db-icon]][azure-cosmos-db-doc]
+        [![Azure Cosmos DB ISE 图标][azure-cosmos-db-icon]][azure-cosmos-db-doc]
         \
         \
         [Azure Cosmos DB ISE][azure-cosmos-db-doc]
@@ -377,25 +337,25 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 :::row-end:::
 :::row:::
     :::column:::
-        [![逻辑应用中的 Azure 事件中心 ISE 连接器图标][azure-event-hubs-icon]][azure-event-hubs-doc]
+        [![Azure 事件中心 ISE 图标][azure-event-hubs-icon]][azure-event-hubs-doc]
         \
         \
         [Azure 事件中心 ISE][azure-event-hubs-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure 事件网格 ISE 连接器图标][azure-event-grid-icon]][azure-event-grid-doc]
+        [![Azure 事件网格 ISE 图标][azure-event-grid-icon]][azure-event-grid-doc]
         \
         \
         [Azure 事件网格 ISE][azure-event-grid-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure 文件存储 ISE 连接器图标][azure-file-storage-icon]][azure-file-storage-doc]
+        [![Azure 文件存储 ISE 图标][azure-file-storage-icon]][azure-file-storage-doc]
         \
         \
-        [Azure 文件存储 ISE][azure-file-storage-doc]
+        [**Azure 文件存储** ISE][azure-file-storage-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure Key Vault ISE 连接器图标][azure-key-vault-icon]][azure-key-vault-doc]
+        [![Azure 密钥保管库 ISE 图标][azure-key-vault-icon]][azure-key-vault-doc]
         \
         \
         [Azure Key Vault ISE][azure-key-vault-doc]
@@ -403,25 +363,25 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 :::row-end:::
 :::row:::
     :::column:::
-        [![逻辑应用中的 Azure Monitor 日志 ISE 连接器图标][azure-monitor-logs-icon]][azure-monitor-logs-doc]
+        [![Azure Monitor 日志 ISE 图标][azure-monitor-logs-icon]][azure-monitor-logs-doc]
         \
         \
         [Azure Monitor 日志 ISE][azure-monitor-logs-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure 服务总线 ISE 连接器图标][azure-service-bus-icon]][azure-service-bus-doc]
+        [![Azure 服务总线 ISE 图标][azure-service-bus-icon]][azure-service-bus-doc]
         \
         \
         [Azure 服务总线 ISE][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure Synapse Analytics ISE 连接器图标][azure-sql-data-warehouse-icon]][azure-sql-data-warehouse-doc]
+        [![Azure Synapse Analytics ISE 图标][azure-sql-data-warehouse-icon]][azure-sql-data-warehouse-doc]
         \
         \
         [Azure Synapse Analytics ISE][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 Azure 表存储 ISE 连接器图标][azure-table-storage-icon]][azure-table-storage-doc]
+        [![Azure 表存储 ISE 图标][azure-table-storage-icon]][azure-table-storage-doc]
         \
         \
         [Azure 表存储 ISE][azure-table-storage-doc]
@@ -429,51 +389,51 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 :::row-end:::
 :::row:::
     :::column:::
-        [![逻辑应用中的 Azure 队列 ISE 连接器图标][azure-queues-icon]][azure-queues-doc]
+        [![Azure 队列 ISE 图标][azure-queues-icon]][azure-queues-doc]
         \
         \
         [Azure 队列 ISE][azure-queues-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 EDIFACT ISE 连接器图标][edifact-icon]][edifact-doc]
+        [![EDIFACT ISE 图标][edifact-icon]][edifact-doc]
         \
         \
         [EDIFACT ISE][edifact-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的文件系统 ISE 连接器图标][file-system-icon]][file-system-doc]
+        [![文件系统 ISE 图标][file-system-icon]][file-system-doc]
         \
         \
         [文件系统 ISE][file-system-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 FTP ISE 连接器图标][ftp-icon]][ftp-doc]
+        [![FTP ISE 图标][ftp-icon]][ftp-doc]
         \
         \
         [FTP ISE][ftp-doc]
     :::column-end:::
-:::row-end:::   
+:::row-end:::
 :::row:::
     :::column:::
-        [![逻辑应用中的 IBM 3270 ISE 连接器图标][ibm-3270-icon]][ibm-3270-doc]
+        [![IBM 3270 ISE 图标][ibm-3270-icon]][ibm-3270-doc]
         \
         \
         [IBM 3270 ISE][ibm-3270-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 IBM DB2 ISE 连接器图标][ibm-db2-icon]][ibm-db2-doc]
+        [![IBM DB2 ISE 图标][ibm-db2-icon]][ibm-db2-doc]
         \
         \
         [IBM DB2 ISE][ibm-db2-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 IBM MQ ISE 连接器图标][ibm-mq-icon]][ibm-mq-doc]
+        [![IBM MQ ISE 图标][ibm-mq-icon]][ibm-mq-doc]
         \
         \
         [IBM MQ ISE][ibm-mq-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 SAP ISE 连接器图标][sap-icon]][sap-connector-doc]
+        [![SAP ISE 图标][sap-icon]][sap-connector-doc]
         \
         \
         [SAP ISE][sap-connector-doc]
@@ -481,25 +441,25 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 :::row-end:::
 :::row:::
     :::column:::
-        [![逻辑应用中的 SFTP-SSH ISE 连接器图标][sftp-ssh-icon]][sftp-ssh-doc]
+        [![SFTP-SSH ISE 图标][sftp-ssh-icon]][sftp-ssh-doc]
         \
         \
         [SFTP-SSH ISE][sftp-ssh-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 SMTP ISE 连接器图标][smtp-icon]][smtp-doc]
+        [![SMTP ISE 图标][smtp-icon]][smtp-doc]
         \
         \
         [SMTP ISE][smtp-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 SQL Server ISE 连接器图标][sql-server-icon]][sql-server-doc]
+        [![SQL Server ISE 图标][sql-server-icon]][sql-server-doc]
         \
         \
         [SQL Server ISE][sql-server-doc]
     :::column-end:::
     :::column:::
-        [![逻辑应用中的 X12 ISE 连接器图标][x12-icon]][x12-doc]
+        [![X12 ISE 图标][x12-icon]][x12-doc]
         \
         \
         [X12 ISE][x12-doc]
@@ -595,7 +555,6 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 [wordpress-icon]: ./media/apis-list/wordpress.png
 [youtube-icon]: ./media/apis-list/youtube.png
 
-
 <!--Managed connector doc links-->
 [azure-automation-doc]: /connectors/azureautomation/ "为云和本地基础结构创建和管理自动化作业"
 [azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "使用 Azure Blob 存储连接器管理 Blob 容器中的文件"
@@ -646,59 +605,16 @@ Azure 逻辑应用提供这些常用的标准连接器，以便使用这些服�
 <!--Integration account connector icons -->
 [as2-icon]: ./media/apis-list/as2.png
 [edifact-icon]: ./media/apis-list/edifact.png
-[flat-file-encode-icon]: ./media/apis-list/flat-file-encoding.png
-[flat-file-decode-icon]: ./media/apis-list/flat-file-decoding.png
-[integration-account-icon]: ./media/apis-list/integration-account.png
-[liquid-icon]: ./media/apis-list/liquid-transform.png
 [x12-icon]: ./media/apis-list/x12.png
-[xml-validate-icon]: ./media/apis-list/xml-validation.png
-[xml-transform-icon]: ./media/apis-list/xsl-transform.png
 
 <!-- Integration account connector docs -->
-
 [as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "对使用 AS2 协议的消息进行编码和解码"
 [edifact-doc]: ../logic-apps/logic-apps-enterprise-integration-edifact.md "对使用 EDIFACT 协议的消息进行编码和解码"
 [edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "对使用 EDIFACT 协议的消息进行解码"
 [edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "对使用 EDIFACT 协议的消息进行编码"
-[flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "了解企业集成平面文件"
-[flat-file-encode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "了解企业集成平面文件"
-[integration-account-doc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "管理集成帐户项目的元数据"
-[json-liquid-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "使用 Liquid 模板转换 JSON"
 [x12-doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "对使用 X12 协议的消息进行编码和解码"
 [x12-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-decode.md "对使用 X12 协议的消息进行解码"
 [x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "对使用 X12 协议的消息进行编码"
-[xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "转换 XML 消息"
-[xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "验证 XML 消息"
-
 
 <!--Other doc links-->
 [gateway-doc]: ../logic-apps/logic-apps-gateway-connection.md "通过本地数据网关，从逻辑应用连接到本地数据源"
-
-
-
-<!--Integration account connector icons -->
-[as2-icon]: ./media/apis-list/as2.png
-[edifact-icon]: ./media/apis-list/edifact.png
-[flat-file-encode-icon]: ./media/apis-list/flat-file-encoding.png
-[flat-file-decode-icon]: ./media/apis-list/flat-file-decoding.png
-[integration-account-icon]: ./media/apis-list/integration-account.png
-[liquid-icon]: ./media/apis-list/liquid-transform.png
-[x12-icon]: ./media/apis-list/x12.png
-[xml-validate-icon]: ./media/apis-list/xml-validation.png
-[xml-transform-icon]: ./media/apis-list/xsl-transform.png
-
-<!-- Integration account connector docs -->
-
-[as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "对使用 AS2 协议的消息进行编码和解码"
-[edifact-doc]: ../logic-apps/logic-apps-enterprise-integration-edifact.md "对使用 EDIFACT 协议的消息进行编码和解码"
-[edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "对使用 EDIFACT 协议的消息进行解码"
-[edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "对使用 EDIFACT 协议的消息进行编码"
-[flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "了解企业集成平面文件"
-[flat-file-encode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "了解企业集成平面文件"
-[integration-account-doc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "管理集成帐户项目的元数据"
-[json-liquid-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "使用 Liquid 模板转换 JSON"
-[x12-doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "对使用 X12 协议的消息进行编码和解码"
-[x12-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-decode.md "对使用 X12 协议的消息进行解码"
-[x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "对使用 X12 协议的消息进行编码"
-[xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "转换 XML 消息"
-[xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "验证 XML 消息"

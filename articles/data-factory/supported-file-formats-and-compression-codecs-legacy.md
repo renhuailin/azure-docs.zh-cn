@@ -9,12 +9,12 @@ ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 12b3b1dddfa7ff37d8d8fa80562699cf9242148e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cf1df8645a6b5c7a33305c87732a9c3b108b523d
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638873"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256637"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure 数据工厂（旧版）中支持的文件格式和压缩编解码器
 
@@ -510,7 +510,7 @@ ms.locfileid: "122638873"
 | Single | Float |
 | Double | Double |
 | 小数 | 小数 |
-| String | String |
+| String | 字符串 |
 | DateTime | Timestamp |
 | DateTimeOffset | Timestamp |
 | TimeSpan | Timestamp |

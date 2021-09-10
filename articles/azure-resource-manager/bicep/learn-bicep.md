@@ -3,12 +3,12 @@ title: 发现 Microsoft Learn 中的 Bicep
 description: 概述 Microsoft Learn 中可用的 Bicep 单元。
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: 81da3d239a49f716a684c7a3c8deb8a74bc0aa7d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 47ac7f6915453502b40b5ad5417a5d060e2ecd3e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099516"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430335"
 ---
 # <a name="bicep-on-microsoft-learn"></a>Microsoft Learn 上的 Bicep
 
@@ -28,7 +28,7 @@ ms.locfileid: "123099516"
 :::column:::
 <img src="media/learn-bicep/bicep-collaborate.svg" width="101" height="120" alt="The trophy for the Build Azure infrastructure in a team environment by using Bicep learning path." role="presentation"></img>
 
-[第 2 部分：使用 Bicep 在团队环境中生成 Azure 基础结构](/learn/paths/bicep-collaborate/)
+[第 2 部分：使用 Bicep 在团队环境中构建 Azure 基础结构](/learn/paths/bicep-collaborate/)
 
 :::column-end:::
 :::row-end:::
@@ -40,7 +40,7 @@ ms.locfileid: "123099516"
 | Learn 模块 | 说明 |
 | ------------ | ----------- |
 | [使用 Azure Pipelines 构建你的第一个 Bicep 部署管道](/learn/modules/build-first-bicep-deployment-pipeline-using-azure-pipelines/) | 为 Bicep 代码构建基本的部署管道。 使用服务连接将管道安全标识到 Azure。 使用触发器配置管道运行的时间。 |
-| [使用 GitHub Actions 构建第一个 Bicep 部署工作流](/learn/modules/build-first-bicep-deployment-workflow-using-github-actions/) | 为 Bicep 代码构建基本的部署工作流。 使用机密将 GitHub Actions 工作流安全地标识到 Azure，然后使用触发器和计划设置工作流的运行时间。 |
+| [使用 GitHub Actions 构建第一个 Bicep 部署工作流](/learn/modules/build-first-bicep-deployment-pipeline-using-github-actions/) | 为 Bicep 代码构建基本的部署工作流。 使用机密将 GitHub Actions 工作流安全地标识到 Azure，然后使用触发器和计划设置工作流的运行时间。 |
 | [使用服务主体对 Azure 部署管道进行身份验证](/learn/modules/authenticate-azure-deployment-pipeline-service-principals/) | 通过服务主体，部署管道能够安全地向 Azure 进行身份验证。 在本模块中，你将了解服务主体的本质、其工作原理及创建方式。 你还将学习如何向它们授予对 Azure 资源的权限，以便管道可部署 Bicep 文件。 |
 
 ## <a name="next-steps"></a>后续步骤

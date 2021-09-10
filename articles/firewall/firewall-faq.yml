@@ -6,14 +6,14 @@ metadata:
   author: vhorne
   ms.service: firewall
   ms.topic: conceptual
-  ms.date: 08/30/2021
+  ms.date: 09/01/2021
   ms.author: victorh
-  ms.openlocfilehash: 8e2a5c8dbdf22cadf68511cc0ced482728f12cf2
-  ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+  ms.openlocfilehash: 9eac926802af481d012d58e358b7d40776552049
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/30/2021
-  ms.locfileid: "123213850"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123436079"
 title: Azure 防火墙常见问题解答
 summary: ''
 sections:
@@ -178,8 +178,8 @@ sections:
     answer: 是的。 防火墙、VNet 和公共 IP 地址都必须位于同一资源组中。
   - question: 为入站 Internet 网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
     answer: >
-      不是。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
-  - question: 通配符在目标 URL 和目标 FQDN 中如何工作？
+      否。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
+  - question: 通配符在应用程序规则的目标 URL 和目标 FQDN 中如何工作？
     answer: "- **URL** - 在最右边或最左边时，星号起作用。 如果它位于左侧，则不能是 FQDN 的一部分。\n- FQDN - 星号在置于最左侧时起作用。\n\n示例：\n\n\n  |类型  |规则  |是否支持？  |正样本  |\n  |---------|---------|---------|---------|\n  |TargetURL  |`www.contoso.com` |是|`www.contoso.com`<br>`www.contoso.com/`|\n  |TargetURL  |`*.contoso.com` |是|`www.contoso.com`<br>`any.contoso.com/`|\n  |TargetURL  |`*contoso.com`|是         |`example.anycontoso.com`<br>`contoso.com`|\n  |TargetURL  |`www.contoso.com/test`|是|`www.contoso.com/test`<br>`www.contoso.com/test/`<br>`www.contoso.com/test?with_query=1`|\n  |TargetURL  |`www.contoso.com/test/*`|是|`www.contoso.com/test/anything`<br>注意 - `www.contoso.com/test` 不匹配（最后一个斜杠）|\n  |TargetURL  |`www.contoso.*/test/*`|否|         |\n  |TargetURL  |`www.contoso.com/test?example=1`|否|         |\n  |TargetURL  |`www.contoso.*`|否|         |\n  |TargetURL  |`www.*contoso.com`|否|         |\n  |TargetURL   |`www.contoso.com:8080`|否|         |\n  |TargetURL   |`*.contoso.*`|否|         |\n  |TargetFQDN    |`www.contoso.com`|是|`www.contoso.com`|\n  |TargetFQDN    |`*.contoso.com`|是|`www.contoso.com`<br>`any.contoso.com`|\n  |TargetFQDN    |`*contoso.com`|是|`example.anycontoso.com`<br>`contoso.com`|\n  |TargetFQDN    |`www.contoso.*`|否|         |\n  |TargetFQDN    |`*.contoso.*`|否|         |\n \n"
   - question: >
       “预配状态:失败”意味着什么？
@@ -193,7 +193,7 @@ sections:
   - question: 为何 Azure 防火墙需要 /26 子网大小？
     answer: Azure 防火墙在缩放时必须预配更多的虚拟机实例。 /26 地址空间确保防火墙有足够的 IP 地址来应对缩放操作。
   - question: 在服务缩放时，防火墙子网大小是否需要更改？
-    answer: 不是。 Azure 防火墙不需要大于 /26 的子网。
+    answer: 否。 Azure 防火墙不需要大于 /26 的子网。
   - question: 如何提高防火墙吞吐量？
     answer: Azure 防火墙的初始吞吐容量为 2.5 - 3 Gbps，可以横向扩展到 30 Gbps。 它会根据 CPU 使用率和吞吐量自动进行横向扩展。
   - question: Azure 防火墙横向扩展需要多长时间？
@@ -205,7 +205,7 @@ sections:
     answer: "在虚拟机规模集横向缩减（纵向缩减）过程中，或者在群队软件升级过程中，可能会发生 Azure 防火墙 VM 实例关闭的情况。 在这些情况下，新的传入连接会负载均衡到其余的防火墙实例，而不会转发到已关闭的防火墙实例。 在 45 秒后，防火墙会通过发送 TCP RST 数据包来开始拒绝现有的连接。 再过 45 秒后，防火墙 VM 会关闭。 有关详细信息，请参阅[负载均衡器 TCP 重置和空闲超时](../load-balancer/load-balancer-tcp-reset.md)。 \n       \n"
   - question: 默认情况下，Azure 防火墙是否允许访问 Active Directory？
     answer: >
-      不是。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
+      否。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
   - question: 能否从基于 Azure 防火墙威胁情报的筛选中排除 FQDN 或 IP 地址？
     answer: >
       能。可以使用 Azure PowerShell 执行该操作：

@@ -8,32 +8,36 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fecf2ea565343ad2f91471ba1be98df513b55478
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: e8b469eb7eb94ad5454f79c4c4893597670867ac
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115705"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122969503"
 ---
 # <a name="mount-smb-azure-file-share-on-windows"></a>在 Windows 上装载 SMB Azure 文件共享
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以在 Windows 和 Windows Server 中无缝使用。 本文介绍在 Windows 和 Windows Server 中使用 Azure 文件共享时的注意事项。
 
 若要在托管某个 Azure 文件共享的 Azure 区域（例如本地或其他 Azure 区域）外部通过公共终结点使用该文件共享，OS 必须支持 SMB 3.x。 仅支持 SMB 2.1 的旧版 Windows 无法通过公共终结点装载 Azure 文件共享。
 
-| Windows 版本 | SMB 版本 | 最大 SMB 通道加密 |
+| Windows 版本 | SMB 版本 | Azure 文件存储 SMB 多通道 | 最大 SMB 通道加密 |
 |-|-|-|-|
-| Windows 10，版本 21H1 | SMB 3.1.1 | AES-256-GCM |
-| Windows Server 半年频道，版本 21H1 | SMB 3.1.1 | AES-256-GCM |
-| Windows Server 2019 | SMB 3.1.1 | AES-128-GCM |
-| Windows 10<br />版本：1607、1809、1909、2004 和 20H2 | SMB 3.1.1 | AES-128-GCM |
-| Windows Server 半年频道<br />版本：2004 和 20H2 | SMB 3.1.1 | AES-128-GCM |
-| Windows Server 2016 | SMB 3.1.1 | AES-128-GCM |
-| Windows 10 版本 1507 | SMB 3.0 | AES-128-GCM |
-| Windows 8.1 | SMB 3.0 | AES-128-CCM |
-| Windows Server 2012 R2 | SMB 3.0 | AES-128-CCM |
-| Windows Server 2012 | SMB 3.0 | AES-128-CCM |
-| Windows 7<sup>1</sup> | SMB 2.1 | 不支持 |
-| Windows Server 2008 R2<sup>1</sup> | SMB 2.1 | 不支持 |
+| Windows Server 2022 | SMB 3.1.1 | 是 | AES-256-GCM |
+| Windows 10，版本 21H1 | SMB 3.1.1 | 是，具有 KB5003690 或更新的版本 | AES-256-GCM |
+| Windows Server，版本 20H2 | SMB 3.1.1 | 是，具有 KB5003690 或更新的版本 | AES-128-GCM |
+| Windows 10 版本 20H2 | SMB 3.1.1 | 是，具有 KB5003690 或更新的版本 | AES-128-GCM |
+| Windows Server 版本 2004 | SMB 3.1.1 | 是，具有 KB5003690 或更新的版本 | AES-128-GCM |
+| Windows 10 版本 2004 | SMB 3.1.1 | 是，具有 KB5003690 或更新的版本 | AES-128-GCM |
+| Windows Server 2019 | SMB 3.1.1 | 是，具有 KB5003703 或更新的版本 | AES-128-GCM |
+| Windows 10 版本 1809 | SMB 3.1.1 | 是，具有 KB5003703 或更新的版本 | AES-128-GCM |
+| Windows Server 2016 | SMB 3.1.1 | 是，具有 KB5004238 或更新的版本 | AES-128-GCM |
+| Windows 10 版本 1607 | SMB 3.1.1 | 是，具有 KB5004238 或更新的版本 | AES-128-GCM |
+| Windows 10 版本 1507 | SMB 3.1.1 | 是，具有 KB5004249 或更新的版本 | AES-128-GCM |
+| Windows Server 2012 R2 | SMB 3.0 | 否 | AES-128-CCM |
+| Windows 8.1 | SMB 3.0 | 否 | AES-128-CCM |
+| Windows Server 2012 | SMB 3.0 | 否 | AES-128-CCM |
+| Windows Server 2008 R2<sup>1</sup> | SMB 2.1 | 否 | 不支持 |
+| Windows 7<sup>1</sup> | SMB 2.1 | 否 | 不支持 |
 
 <sup>1</sup>Microsoft 对 Windows 7 和 Windows Server 2008 R2 的常规支持已结束。 只有通过[扩展安全更新 (ESU) 程序](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)才能购买对安全更新的附加支持。 我们强烈建议从这些操作系统中迁移。
 

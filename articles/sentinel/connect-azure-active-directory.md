@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 5faf675d4e5d188840b3e9ab457ec28829f52dc0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 20e9920921afe1eae8babb76212a6de7ea2e1321
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121777944"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123251858"
 ---
 # <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>将 Azure Active Directory (Azure AD) 数据连接到 Azure Sentinel
 
@@ -62,7 +62,7 @@ ms.locfileid: "121777944"
 
 1. 从“数据连接器”库中，选择“Azure Active Directory”，然后选择“打开连接器”页面。
 
-1. 在流式传输到 Azure Sentinel 的日志类型旁的复选框中进行勾选（参阅上方说明），并单击“连接”。
+1. 在流式传输到 Azure Sentinel 的日志类型旁的复选框中进行勾选（参阅上方说明），并选择“连接”。
 
 ## <a name="find-your-data"></a>查找数据
 

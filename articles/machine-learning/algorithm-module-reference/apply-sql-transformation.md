@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/12/2020
-ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/11/2021
+ms.openlocfilehash: 71f320c9144270b157b46a58e2107873439b2227
+ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94555594"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122831339"
 ---
 # <a name="apply-sql-transformation"></a>应用 SQL 转换
 
@@ -61,6 +61,8 @@ on t1.placeID = t3.placeID
 -   端口 1 上始终需要输入。  
   
 -   对于包含空格或其他特殊字符的列标识符，请在 `SELECT` 和 `WHERE` 子句中引用列时，始终将列标识符用方括号或双引号括起来。  
+
+-   如果在应用 SQL 转换之前已使用编辑元数据指定列元数据（分类或字段），则应用 SQL 转换的输出将不包含这些属性。   在应用 SQL 转换后，需要使用编辑元数据来编辑列。 
   
 ### <a name="unsupported-statements"></a>不支持的语句  
 

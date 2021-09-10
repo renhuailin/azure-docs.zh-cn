@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: jianleishen
 author: jianleishen
 ms.custom: synapse
-ms.date: 06/15/2021
-ms.openlocfilehash: 4fd8da77cfd6006b176fb3351b967d730e0d441f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 2fe779877c42935977b5fecb26bd3fe2c1428a33
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638116"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123313926"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 托管实例中复制和转换数据
 
@@ -46,6 +46,30 @@ ms.locfileid: "122638116"
 ## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-an-azure-sql-managed-instance-using-ui"></a>使用 UI 创建到 Azure SQL 托管实例的链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建到 SQL 托管实例的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新链接服务的屏幕截图。":::
+
+2. 搜索“SQL”并选择 Azure SQL Server 托管实例连接器。
+
+    :::image type="content" source="media/connector-azure-sql-managed-instance/azure-sql-managed-instance-connector.png" alt-text="Azure SQL Server 托管实例连接器的屏幕截图。":::    
+
+1. 配置服务详细信息，测试连接，然后创建新的链接服务。
+
+    :::image type="content" source="media/connector-azure-sql-managed-instance/configure-azure-sql-managed-instance-linked-service.png" alt-text="SQL 托管实例的链接服务配置的屏幕截图。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
 
 以下部分详述了用来定义特定于 SQL 托管实例连接器的 Azure 数据工厂实体的属性。
 

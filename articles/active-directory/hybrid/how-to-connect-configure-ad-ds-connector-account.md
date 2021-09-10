@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 08/20/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2acad2519fbf29aec72b97095318b4131207f91
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 76f765a8255f47215cb03426d139a88aa5d31544
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464541"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305133"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 配置 AD DS 连接器帐户权限 
 
@@ -36,7 +36,7 @@ ms.locfileid: "114464541"
 | Feature | 权限 |
 | --- | --- |
 | ms DS ConsistencyGuid 功能 |针对 ms-DS-ConsistencyGuid 属性的读写权限，详见[设计概念 - 使用 ms-DS-ConsistencyGuid 作为 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)。 | 
-| 密码哈希同步 |<li>复制目录更改</li>  <li>复制所有目录更改 |
+| 密码哈希同步 |<li>复制目录更改 - 基本只读需要</li>  <li>复制所有目录更改 |
 | Exchange 混合部署 |针对用户、组和联系人的属性的读写权限，详见 [Exchange 混合写回](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)。 |
 | Exchange 邮件公用文件夹 |对 [Exchange 邮件公用文件夹](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
 | 密码写回 |针对用户属性的读写权限，详见[密码管理入门](../authentication/tutorial-enable-sspr-writeback.md)。 |
@@ -146,6 +146,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 |Allow |AD DS 连接器帐户 |读取所有属性 |后代组对象| 
 |Allow |AD DS 连接器帐户 |读取所有属性 |后代用户对象| 
 |Allow |AD DS 连接器帐户 |读取所有属性 |后代联系人对象| 
+|Allow|AD DS 连接器帐户|复制目录更改|仅限此对象（域根）|
 
  
 ### <a name="configure-ms-ds-consistency-guid-permissions"></a>配置 MS-DS-Consistency-Guid 权限 
@@ -253,7 +254,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 |Allow |AD DS 连接器帐户 |读取/写入所有用户属性 |后代组对象| 
 |Allow |AD DS 连接器帐户 |读取/写入所有用户属性 |后代联系人对象| 
 
-### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Exchange 邮件公用文件夹（预览版）的权限 
+### <a name="permissions-for-exchange-mail-public-folders"></a>Exchange 邮件公用文件夹的权限
 若要在使用 Exchange 邮件公用文件夹功能时为 AD DS 连接器帐户设置权限，请运行： 
 
 ``` powershell

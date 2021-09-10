@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: 0ad8b60bab9448e4571bb499730bd0451629560b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 680ea9139a17f20038b78f0399fe849ca0990532
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638168"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123311155"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -48,6 +48,31 @@ ms.locfileid: "122638168"
 ## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-web-table-using-ui"></a>使用 UI 创建到 Web 表的链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建一个到 Web 表的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡，并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新的链接服务。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新的链接服务。":::
+
+2. 搜索“Web”并选择 Web 表连接器。
+
+   :::image type="content" source="media/connector-web-table/web-table-connector.png" alt-text="选择 Web 表连接器。":::    
+
+
+1. 配置服务详细信息、测试连接并创建新的链接服务。
+
+   :::image type="content" source="media/connector-web-table/configure-web-table-linked-service.png" alt-text="配置到 Web 表的链接服务。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
 
 对于特定于 Web 表连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 

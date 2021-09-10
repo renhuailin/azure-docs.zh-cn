@@ -4,21 +4,21 @@ titleSuffix: Azure Digital Twins
 description: 了解如何使用 Azure 门户创建 Azure AD 应用注册作为客户端应用的身份验证选项。
 author: baanders
 ms.author: baanders
-ms.date: 10/13/2020
+ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 55f8c0008a055f5703ffe563fe7925446246f134
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: da935038599b86d9c86a1f55071d4b4d1ea4ce16
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114466160"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223062"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins-portal"></a>创建与 Azure 数字孪生配合使用的应用注册（门户）
 
 [!INCLUDE [digital-twins-create-app-registration-selector.md](../../includes/digital-twins-create-app-registration-selector.md)]
 
-使用 Azure 数字孪生实例时，我们往往会通过客户端应用程序（例如在[为客户端应用编写代码](tutorial-code.md)中构建的自定义客户端应用）来与该实例进行交互。 这些应用程序需要在 Azure 数字孪生中完成身份验证才能与该实例交互，而应用可以使用的某些 [身份验证机制](how-to-authenticate-client.md)涉及到 [ Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **应用注册**。
+使用 Azure 数字孪生实例时，我们往往会通过客户端应用程序（例如在[为客户端应用编写代码](tutorial-code.md)中构建的自定义客户端应用）来与该实例进行交互。 这些应用程序需要在 Azure 数字孪生中完成身份验证才能与该实例交互，而应用可以使用的某些[身份验证机制](how-to-authenticate-client.md)涉及到 [ Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) 应用注册。
 
 并非所有身份验证方案都需要应用注册。 但是，如果使用的身份验证策略或代码示例确实需要应用注册，本文将演示如何使用 [Azure 门户](https://portal.azure.com)设置应用注册。 本文还介绍了如何[收集重要值](#collect-important-values)，以便在使用应用注册进行身份验证时使用。
 
@@ -131,9 +131,9 @@ ms.locfileid: "114466160"
 
 ## <a name="other-possible-steps-for-your-organization"></a>适用于你的组织的其他可行步骤
 
-你的组织可能需要订阅所有者/管理员执行其他操作才能成功设置应用注册。 根据组织的特定设置，所需的步骤可能会有所不同。
+你的组织可能需要订阅所有者/管理员执行的更多操作才能成功设置应用注册。 根据组织的特定设置，所需的步骤可能会有所不同。
 
-下面是订阅所有者/管理员可能需要执行的一些常见潜在活动。 可从 Azure 门户中的“Azure AD 应用注册”页执行这些操作和其他操作。
+下面是订阅所有者/管理员可能需要进行的一些常见潜在活动。 可从 Azure 门户中的“Azure AD 应用注册”页执行这些操作和其他操作。
 * 授予管理员同意进行应用注册。 你的组织可能已在 Azure AD 中对你的订阅中的所有应用注册全局启用了“需要管理员同意”。 如果是这样，则所有者/管理员需要在应用注册的“API 权限”页上为你的公司选择以下按钮，以使应用注册有效：
 
     :::image type="content" source="media/how-to-create-app-registration/grant-admin-consent.png" alt-text="Azure 门户的屏幕截图，其中在“API 权限”下显示了“授予管理员许可”按钮。":::

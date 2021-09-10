@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 60743cdbc48d695c0c98c6e34273a0c407fef546
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7cdd812347450a8798ed4fb8e6e69f71c725449f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744853"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225403"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -130,6 +130,10 @@ Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交�
 
 权限设置为普通用户，不具有 sudo 访问权限。 不会保留 `$Home` 目录外部的任何安装。
 
+### <a name="supported-entry-point-limitations"></a>支持的入口点限制
+
+Azure 门户旁边的 Cloud Shell 入口点（如 Visual Studio Code 和 Windows 终端）不支持使用修改 Cloud Shell 中的 UX 组件的命令，例如 `Code`。
+
 ## <a name="bash-limitations"></a>Bash 限制
 
 ### <a name="editing-bashrc"></a>编辑 .bashrc
@@ -151,7 +155,7 @@ Azure Cloud Shell 非常重视你的个人数据，Azure Cloud Shell 服务捕�
 ### <a name="export"></a>导出
 若要导出 Cloud Shell 为你保存的用户设置（如首选 shell、字号和字体类型），请运行以下命令。
 
-1. [![显示标记为“启动 Azure Cloud Shell”的按钮的图像。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+1. 启动 Cloud Shell。
 
 2. 在 Bash 或 PowerShell 中运行以下命令：
 
@@ -190,7 +194,7 @@ PowerShell：
 
   ```powershell
   $token= (Get-AzAccessToken -Resource  https://management.azure.com/).Token
-  Invoke-WebRequest -Method Delete -Uri https://management.azure.com?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
+  Invoke-WebRequest -Method Delete -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
   ```
 ## <a name="azure-government-limitations"></a>Azure 政府限制
 仅可通过 Azure 门户访问 Azure 政府中的 Azure Cloud Shell。

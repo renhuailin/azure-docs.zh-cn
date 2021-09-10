@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: d64dc4f3c034279aee7401503bbb60883c9ed4e7
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 43f544cb2782fc80dd574a1d8c425283c51a0ed3
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492233"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123256470"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL 灵活服务器中的服务器参数
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
@@ -103,7 +105,7 @@ max_connection 的值取决于服务器的内存大小。
 > 错误 1040 (08004)：连接过多
 
 > [!IMPORTANT]
-> 为了获得最佳体验，建议使用 ProxySQL 等连接池程序来高效地管理连接。
+>为了获得最佳体验，建议使用 ProxySQL 等连接池程序来高效地管理连接。
 
 创建与 MySQL 的新客户端连接需要时间，一旦建立，这些连接就会占用数据库资源，即使在空闲时也是如此。 大多数应用程序请求许多生存期短的连接，这加剧了这种情况。 其结果是可用于实际工作负荷的资源减少，从而导致性能下降。 连接池程序不仅会减少空闲连接，还会重用现有连接，因而有助于避免这种情况。 若要了解如何设置 ProxySQL，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
 
@@ -122,6 +124,12 @@ max_connection 的值取决于服务器的内存大小。
 ### <a name="time_zone"></a>time_zone
 
 初始部署后，Azure for MySQL 灵活服务器包含用于时区信息的系统表，但这些表没有填充数据。 可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程并设置全局时区或会话级时区，请参阅 [Azure 门户](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter)或 [Azure CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) 一文。
+
+### <a name="binlog_expire_logs_seconds"></a>binlog_expire_logs_seconds 
+
+在 Azure Database for MySQL 中，此参数指定在清除二进制日志文件之前，服务等待的秒数。
+
+二进制日志包含描述数据库更改的“事件”，例如表创建操作或对表数据所做的更改。 它还包含可能已进行了更改的语句的事件。 二进制日志主要用于两个目的：复制和数据恢复操作。  通常，当句柄从服务、备份或副本集中释放后，二进制日志就会立即被清除。 如果有多个副本，则会等待最慢的副本读取更改，然后再被清除。 若要将二进制日志保留更长的时间，可以配置参数 binlog_expire_logs_seconds。 如果将 binlog_expire_logs_seconds 设置为 0（默认值），则在释放二进制日志的句柄后，会立即将其清除。 如果 binlog_expire_logs_seconds 大于 0，则会等待已配置的秒数，然后再将其清除。 对于 Azure database for MySQL，二进制文件的备份和只读副本清除等托管功能都是在内部处理的。 复制从 Azure Database for MySQL 服务中输出的数据时，需要在主副本中设置此参数，以避免在副本从主副本中读取更改之前清除二进制日志。 如果将 binlog_expire_logs_seconds 设置为一个较大的值，则不会立即清除二进制日志，这可能会导致存储计费的增加。 
 
 ## <a name="non-modifiable-server-parameters"></a>不可修改的服务器参数
 

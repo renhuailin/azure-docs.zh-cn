@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: a5eeb8fbadda24a811893a02f42b428a8365c5aa
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 50d918cb6cb096674dc5b79d478d37d65422106e
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110252"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186004"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure 专用链接服务？
 
@@ -97,7 +97,7 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 
 专用链接服务在“可见性”设置中提供了三个选项来控制服务的公开程度。 可见性设置决定使用者是否可以连接到你的服务。 下面是可见性设置选项（从限制最多到限制最少）：
  
-- 仅限基于角色的访问控制：如果你的服务是专用的（从你拥有的不同 VNet 进行使用），你可以在与同一 Active Directory 租户关联的订阅中使用 RBAC 作为访问控制机制。 
+- 仅限基于角色的访问控制：如果你的服务是专用的（从你拥有的不同 VNet 进行使用），你可以在与同一 Active Directory 租户关联的订阅中使用 RBAC 作为访问控制机制。 注意：允许通过 RBAC 实现跨租户可见性。
 - 受订阅限制：如果服务会在不同租户之间使用，则只能将其公开给你信任的有限订阅集。 可以预先批准授权。
 - 使用你的别名的任何人：如果你想让服务公开，并允许任何使用你的专用链接服务别名的人请求连接，请选择此选项。 
 

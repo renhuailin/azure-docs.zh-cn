@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 07/06/2021
-ms.openlocfilehash: 4d819993f2c0fdab6da67e98fc767020e543844f
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: c445b6252f19415e51f46f044497ab80207ee860
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720434"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272180"
 ---
 # <a name="prepare-for-vmware-agentless-migration"></a>准备 VMware 无代理迁移
 
@@ -271,7 +271,7 @@ Azure Migrate 将创建网络接口、新的虚拟网络、子网和网络安全
 
     Azure Migrate 将尝试安装 Microsoft Azure Linux 代理 (waagent)，这是一种安全的轻型进程，用于管理 Linux 和 FreeBSD 预配以及 VM 与 Azure 结构控制器的交互。  [详细了解](../virtual-machines/extensions/agent-linux.md)通过 Linux 代理为 Linux 和 FreeBSD IaaS 部署启用的功能。
 
-    查看[必需包](../virtual-machines/extensions/agent-linux.md#requirements)的列表以安装 Linux VM 代理。 使用 VMware 迁移的无代理方法时，Azure Migrate 会自动为 RHEL6、RHEL7、CentOS7（与 RHEL 类似，应支持 6）、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04、Ubuntu 19.04、Ubuntu 19.10 和 Ubuntu 20.04 安装 Linux VM 代理。 按照这些说明为其他 OS 版本[手动安装 Linux 代理](../virtual-machines/extensions/agent-linux.md#installation)。
+    查看[必需包](../virtual-machines/extensions/agent-linux.md#requirements)的列表以安装 Linux VM 代理。 使用 VMware 迁移的无代理方法时，Azure Migrate 会自动为 RHEL 8/7/6、CentOS 8/7/6、Ubuntu 14.04/16.04/18.04/19.04/19.10/20.04、SUSE 15 SP0/15 SP1/12、Debian 9/8/7 和 Oracle 7 安装 Linux VM 代理。 按照这些说明为其他 OS 版本[手动安装 Linux 代理](../virtual-machines/extensions/agent-linux.md#installation)。
 
     可以使用命令验证 Azure Linux 代理的服务状态，确保它正在运行。 服务名称可能是 walinuxagent 或 waagent。
     完成混合更改后，脚本将卸载所有已装载的分区，停用卷组，然后刷新设备。

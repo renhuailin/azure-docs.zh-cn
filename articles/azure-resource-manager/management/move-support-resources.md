@@ -2,13 +2,13 @@
 title: 资源类型支持的移动操作
 description: 列出了可移动到新资源组、订阅或区域的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 04/23/2021
-ms.openlocfilehash: f00acadf42c3767814850db59c64ab76b30de2ea
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.date: 08/30/2021
+ms.openlocfilehash: 614ef51474f789073f35e722733d255818bf3957
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296996"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260894"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -1598,8 +1598,9 @@ ms.locfileid: "114296996"
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
-> [!IMPORTANT]
-> 请参阅[恢复服务移动指南](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)。
+>[!IMPORTANT]
+>- 请参阅[恢复服务移动指南](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)。
+>- 请参阅[在跨区域移动资源后继续恢复服务保管库中的备份](../../backup/azure-backup-move-vaults-across-regions.md?toc=/azure/azure-resource-manager/toc.json)。
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 | 区域移动 |
@@ -2022,6 +2023,7 @@ ms.locfileid: "114296996"
 > | availablestacks | 否 | 否 | 否 |
 > | billingmeters | 否 | 否 | 否 |
 > | certificates | 否 | 是 | 否 |
+> | certificates (managed) | 否 | 否 | 否 |
 > | connectiongateways | 是 | 是 | 否 |
 > | connections | 是 | 是 | 否 |
 > | customapis | 是 | 是 | 否 |

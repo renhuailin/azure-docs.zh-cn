@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 4720056254c3983f8b63c7ed2c46d55e4eabc7d6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6169d3b0f99b2044fbe6076283e176d4dc1a76a7
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722027"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272432"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device"></a>在 Windows 设备上安装和预配适用于 Linux 的 Azure IoT Edge
 
@@ -130,7 +130,18 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
    Deploy-Eflow
    ```
 
-   `Deploy-Eflow` 命令采用可帮助你自定义部署的可选参数。
+   >[!TIP]
+   >默认情况下，`Deploy-Eflow` 命令会创建具有 1 GB RAM、1 个 vCPU 核心和 16 GB 磁盘空间的 Linux 虚拟机。 但是，VM 所需的资源高度依赖于部署的工作负荷。 如果 VM 没有足够的内存来支持工作负荷，将无法启动。
+   >
+   >可以使用 `Deploy-Eflow` 命令的可选参数自定义虚拟机的可用资源。
+   >
+   >例如，以下命令创建具有 4 个 vCPU 核心、4 GB RAM 和 20 GB 磁盘空间的虚拟机：
+   >
+   >   ```powershell
+   >   Deploy-Eflow -cpuCount 4 -memoryInMB 4096 -vmDiskSize 20
+   >   ```
+   >
+   >有关所有可用的可选参数的信息，请参阅适用于 [IoT Edge for Linux on Windows 的 PowerShell 函数](reference-iot-edge-for-linux-on-windows-functions.md#deploy-eflow)。
 
    可以为部署分配 GPU，以启用 GPU 加速的 Linux 模块。 若要获取这些功能的访问权限，需要安装[适用于 Azure IoT Edge for Linux on Windows 的 GPU 加速](gpu-acceleration.md)中详细说明的必备组件。
 
@@ -138,8 +149,6 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
 
    >[!WARNING]
    >启用硬件设备传递可能会增加安全风险。 Microsoft 建议使用 GPU 供应商提供的设备缓解驱动程序（如果适用）。 有关详细信息，请参阅[使用离散设备分配部署图形设备](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda)。
-
-
 
 1. 输入“Y”接受许可条款。
 
@@ -355,6 +364,8 @@ Provision-EflowVm -provisioningType ManualX509 -iotHubHostname "<HUB HOSTNAME>" 
    * “IoT Edge 状态”部分会显示服务状态，并且应当报告“活动(正在运行)”。
 
 ---
+
+创建新的 IoT Edge 设备时，它将在 Azure 门户中显示状态代码 `417 -- The device's deployment configuration is not set`。 此状态正常，表示设备已准备好接收模块部署。
 
 ## <a name="next-steps"></a>后续步骤
 

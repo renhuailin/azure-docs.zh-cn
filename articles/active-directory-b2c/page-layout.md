@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/03/2021
+ms.date: 08/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3eeed53c16bbd6b2c1170512606472ac5329b126
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: aa60cf86a8bc59b9eed2adc8ac0ba2cfb89be584
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733762"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835608"
 ---
 # <a name="page-layout-versions"></a>页面布局版本
 
@@ -155,6 +155,7 @@ Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)
 
 - 添加了对多个注册链接的支持。
 - 根据策略中定义的谓词规则添加了对用户输入验证的支持。
+- 当[登录选项](sign-in-options.md)设置为“电子邮件”时，登录标头显示“使用登录名登录”。 用户名字段显示“登录名”。 有关详细信息，请参阅[本地化](localization-string-ids.md#sign-up-or-sign-in-page-elements)。
 
 **1.2.0**
 

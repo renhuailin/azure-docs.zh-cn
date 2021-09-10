@@ -1,31 +1,34 @@
 ---
 title: Azure 数据工厂中带分隔符的文本格式
-description: 本主题介绍了如何处理 Azure 数据工厂中带分隔符的文本格式。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 本主题介绍了如何处理 Azure 数据工厂和 Azure Synapse Analytics 中带分隔符的文本格式。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 5589e772c7209b548a3bd8084b675ac917e4afca
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 64ef52e542d5e014ab3e79d98f730f691fa28a50
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090165"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123257378"
 ---
-# <a name="delimited-text-format-in-azure-data-factory"></a>Azure 数据工厂中带分隔符的文本格式
+# <a name="delimited-text-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure 数据工厂和 Azure Synapse Analytics 中带分隔符的文本格式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 若要 **分析带分隔符的文本文件或以带分隔符的文本格式写入数据**，请遵循此文章中的说明。 
 
-以下连接器支持分隔的文本格式：[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 兼容存储](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle 云存储](connector-oracle-cloud-storage.md) 和 [SFTP](connector-sftp.md)。
+以下连接器支持带分隔符的文本格式：[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 兼容存储](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle 云存储](connector-oracle-cloud-storage.md)和 [SFTP](connector-sftp.md)。
 
 ## <a name="dataset-properties"></a>数据集属性
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供带分隔符的文本数据集支持的属性列表。
 
-| 属性         | 描述                                                  | 必须 |
+| 属性         | 说明                                                  | 必需 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的类型属性必须设置为 **DelimitedText**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。  | 是      |
@@ -75,7 +78,7 @@ ms.locfileid: "110090165"
 
 复制活动的 ***\*source\**** 节支持以下属性。
 
-| 属性       | 描述                                                  | 必须 |
+| 属性       | 说明                                                  | 必需 |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | 复制活动源的 type 属性必须设置为 **DelimitedTextSource**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“带分隔符的文本读取设置”表。 |  否       |
@@ -83,13 +86,13 @@ ms.locfileid: "110090165"
 
 `formatSettings` 下支持的 **带分隔符的文本读取设置**：
 
-| 属性      | 描述                                                  | 必须 |
+| 属性      | 说明                                                  | 必需 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings 的类型必须设置为 **DelimitedTextReadSettings**。 | 是      |
 | skipLineCount | 指示从输入文件读取数据时要跳过的非空行数  。 <br>如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过行，然后从输入文件读取标头信息。 | 否       |
 | compressionProperties | 一组属性，指示如何为给定的压缩编解码器解压缩数据。 | 否       |
-| preserveZipFileNameAsFolder<br>（在 `compressionProperties`->`type` 下为 `ZipDeflateReadSettings`） |  当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。<br>- 当设置为 true（默认值）时，数据工厂会将已解压缩的文件写入 `<path specified in dataset>/<folder named as source zip file>/`。<br>- 当设置为 false 时，数据工厂会直接将未解压缩的文件写入 `<path specified in dataset>`。 请确保不同的源 zip 文件中没有重复的文件名，以避免产生冲突或出现意外行为。  | 否 |
-| preserveCompressionFileNameAsFolder<br>（在 `compressionProperties`->`type` 下为 `TarGZipReadSettings` 或 `TarReadSettings`）  | 当输入数据集配置了 TarGzip/Tar 压缩时适用 。 指示是否在复制过程中以文件夹结构形式保留源压缩文件名。<br>- 当设置为 true（默认值）时，数据工厂会将已解压缩的文件写入 `<path specified in dataset>/<folder named as source compressed file>/`。 <br>- 当设置为 false 时，数据工厂会直接将已解压缩的文件写入 `<path specified in dataset>`。 请确保不同的源文件中没有重复的文件名，以避免产生冲突或出现意外行为。 | 否 |
+| preserveZipFileNameAsFolder<br>（在 `compressionProperties`->`type` 下为 `ZipDeflateReadSettings`） |  当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。<br>- 如果设置为“true(默认)”，服务会将解压缩的文件写入 `<path specified in dataset>/<folder named as source zip file>/`。<br>- 如果设置为“false”，服务会将解压缩的文件直接写入 `<path specified in dataset>`。 请确保不同的源 zip 文件中没有重复的文件名，以避免产生冲突或出现意外行为。  | 否 |
+| preserveCompressionFileNameAsFolder<br>（在 `compressionProperties`->`type` 下为 `TarGZipReadSettings` 或 `TarReadSettings`）  | 当输入数据集配置了 TarGzip/Tar 压缩时适用 。 指示是否在复制过程中以文件夹结构形式保留源压缩文件名。<br>- 如果设置为“true(默认)”，服务会将解压缩文件写入 `<path specified in dataset>/<folder named as source compressed file>/`。 <br>- 如果设置为“false”，服务会将解压文件直接写入 `<path specified in dataset>`。 请确保不同的源文件中没有重复的文件名，以避免产生冲突或出现意外行为。 | 否 |
 
 ```json
 "activities": [
@@ -123,7 +126,7 @@ ms.locfileid: "110090165"
 
 复制活动的 ***\*sink\**** 节支持以下属性。
 
-| 属性       | 描述                                                  | 必须 |
+| 属性       | 说明                                                  | 必需 |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | 复制活动源的 type 属性必须设置为 **DelimitedTextSink**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“带分隔符的文本写入设置”表。 |    否      |
@@ -131,7 +134,7 @@ ms.locfileid: "110090165"
 
 `formatSettings` 下支持的 **带分隔符的文本写入设置**：
 
-| 属性      | 描述                                                  | 必须                                              |
+| 属性      | 说明                                                  | 必需                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | formatSettings 的类型必须设置为 **DelimitedTextWriteSettings**。 | 是                                                   |
 | fileExtension | 用来为输出文件命名的扩展名，例如 `.csv`、`.txt`。 未在 DelimitedText 输出数据集中指定 `fileName` 时，必须指定该扩展名。 如果在输出数据集中配置了文件名，则它将其用作接收器文件名，并且将忽略文件扩展名设置。  | 未在输出数据集中指定文件名时为“是” |
@@ -146,7 +149,7 @@ ms.locfileid: "110090165"
 
 下表列出了带分隔符的文本源支持的属性。 你可以在“源选项”选项卡中编辑这些属性。
 
-| 名称 | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 通配符路径 | 将处理与通配符路径匹配的所有文件。 重写数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
 | 分区根路径 | 对于已分区的文件数据，可以输入分区根路径，以便将已分区的文件夹读取为列 | 否 | 字符串 | partitionRootPath |
@@ -156,6 +159,9 @@ ms.locfileid: "110090165"
 | 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除：`true` 或 `false` <br> Move：`['<from>', '<to>']` | purgeFiles <br> moveFiles |
 | 按上次修改时间筛选 | 选择根据上次更改时间筛选文件 | 否 | 时间戳 | ModifiedAfter <br> modifiedBefore |
 | 允许找不到文件 | 如果为 true，则找不到文件时不会引发错误 | 否 | `true` 或 `false` | ignoreNoFilesFound |
+
+> [!NOTE]
+> 文件列表的数据流源支持仅限文件中的 1024 项。 若要包含更多文件，请在文件列表中使用通配符。
 
 ### <a name="source-example"></a>源示例
 
@@ -180,7 +186,7 @@ source(
 
 下表列出了带分隔符的文本接收器支持的属性。 可以在“设置”选项卡中编辑这些属性。
 
-| 名称 | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 清除文件夹 | 如果在写入前目标文件夹已被清除 | 否 | `true` 或 `false` | truncate |
 | 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区有一个 `part-#####-tid-<guid>` 格式的文件 | 否 | 模式：String <br> 按分区：String[] <br> 将文件命名为列数据：字符串 <br> 输出到单个文件：`['<fileName>']` <br> 将文件夹命名为列数据：字符串 | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames <br> rowFolderUrlColumn |

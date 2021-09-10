@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: sharrai
 ms.date: 05/27/2021
-ms.openlocfilehash: 92d1c5babc2daacdd0b0687a5ff779fcd4272e71
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 7dc82a163a9365532b21af447b823659bf40c71f
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577063"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225325"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>在 VMware 部署规划器中查看成本估算 
 
@@ -65,7 +65,10 @@ ms.locfileid: "110577063"
 **复制成本**：在复制时产生的成本。 涵盖存储成本、网络成本、Azure Site Recovery 许可证成本。 
 
 **DR 演练成本**：在进行 DR 演练时产生的成本。 Azure Site Recovery 会在 DR 演练期间启动 VM。 DR 演练成本涵盖正在运行的 VM 的计算和存储成本。
-一年的总 DR 演练持续时间 = DR 演练次数 x 每次 DR 演练的持续时间（天） 平均 DR 演练成本（每月）= 总 DR 演练成本/12
+
+1.  一年的总 DR 演练持续时间 = DR 演练次数 x 每次 DR 演练的持续时间（天）
+
+2.  平均 DR 演练成本（每月）= 总 DR 演练成本/12
 
 ### <a name="storage-cost-table"></a>存储成本表：
 此表显示在有和没有折扣的情况下，进行复制和 DR 演练时高级存储和标准存储的成本。

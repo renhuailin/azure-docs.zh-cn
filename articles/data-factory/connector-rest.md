@@ -1,19 +1,22 @@
 ---
-title: 使用 Azure 数据工厂从 REST 终结点复制数据以及向其中复制数据
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从云或本地 REST 源复制到受支持的接收器数据存储，或者从受支持的源数据存储复制到 REST 接收器。
+title: 使用 Azure 数据工厂从/向 REST 终结点复制和转换数据
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何在 Azure 数据工厂或 Azure Synapse Analytics 管道中使用复制活动复制数据，以及如何使用数据流将数据从云或本地 REST 源转换到受支持的接收器数据存储，或者从受支持的源数据存储转换到 REST 接收器。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.author: jianleishen
-ms.openlocfilehash: 24269fcfe7c60140c3d0fe9497eefeba71338bd7
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 08/30/2021
+ms.author: makromer
+ms.openlocfilehash: 16bb4ac7062c39ad57becce4d5280ed227160690
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487072"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123311579"
 ---
-# <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据以及向其中复制数据
+# <a name="copy-and-transform-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 REST 终结点复制和转换数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何使用 Azure 数据工厂中的复制活动从 REST 终结点复制数据以及向其中复制数据。 本文是根据总体概述复制活动的 [Azure 数据工厂中的复制活动](copy-activity-overview.md)编写的。
@@ -45,6 +48,30 @@ ms.locfileid: "109487072"
 ## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-rest-linked-service-using-ui"></a>使用 UI 创建 REST 链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建 REST 链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡，并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新链接服务的屏幕截图。":::
+
+2. 搜索“REST”并选择 REST 连接器。
+
+    :::image type="content" source="media/connector-rest/rest-connector.png" alt-text="选择 REST 连接器。":::    
+
+1. 配置服务详细信息、测试连接并创建新的链接服务。
+
+    :::image type="content" source="media/connector-rest/configure-rest-linked-service.png" alt-text="配置 REST 链接服务。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
 
 对于特定于 REST 连接器的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 
@@ -132,7 +159,7 @@ REST 链接服务支持以下属性：
 }
 ```
 
-### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a>使用托管标识进行 Azure 资源身份验证
+### <a name="use-system-assigned-managed-identity-authentication"></a><a name="managed-identity"></a> 使用系统分配的托管标识身份验证
 
 将 **authenticationType** 属性设置为 **ManagedServiceIdentity**。 除了前面部分所述的通用属性，还指定以下属性：
 
@@ -151,6 +178,39 @@ REST 链接服务支持以下属性：
             "url": "<REST endpoint e.g. https://www.example.com/>",
             "authenticationType": "ManagedServiceIdentity",
             "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="use-user-assigned-managed-identity-authentication"></a>使用用户分配的托管标识身份验证
+将 **authenticationType** 属性设置为 **ManagedServiceIdentity**。 除了前面部分所述的通用属性，还指定以下属性：
+
+| 属性 | 说明 | 必须 |
+|:--- |:--- |:--- |
+| aadResourceId | 指定请求授权的 AAD 资源，例如 `https://management.core.windows.net`。| 是 |
+| 凭据 | 将用户分配的托管标识指定为凭据对象。 | 是 |
+
+
+**示例**
+
+```json
+{
+    "name": "RESTLinkedService",
+    "properties": {
+        "type": "RestService",
+        "typeProperties": {
+            "url": "<REST endpoint e.g. https://www.example.com/>",
+            "authenticationType": "ManagedServiceIdentity",
+            "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>",
+            "credential": {
+                "referenceName": "credential1",
+                "type": "CredentialReference"
+            }    
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -376,6 +436,57 @@ REST 连接器作为接收器时适用于接受 JSON 的 REST API。 数据将�
         }
     }
 ]
+```
+
+## <a name="mapping-data-flow-properties"></a>映射数据流属性
+
+集成数据集和内联数据集的数据流中支持 REST。
+
+### <a name="source-transformation"></a>源转换
+
+| 属性 | 说明 | 必需 |
+|:--- |:--- |:--- |
+| requestMethod | HTTP 方法。 允许的值为 **GET** 和 **POST**。 | 是 |
+| relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[relative URL specified in dataset]`。 | 否 |
+| additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 此值是获取响应时的超时，而不是写入数据时的超时。 默认值为 00:01:40  。  | 否 |
+| requestInterval | 不同请求之间的间隔时间（以毫秒为单位）。 请求时间间隔值应当为 [10, 60000] 范围中的数字。 |  否 |
+| QueryParameters.*request_query_parameter* 或 QueryParameters['request_query_parameter'] | “request_query_parameter”由用户定义，引用下一个 HTTP 请求 URL 中的一个查询参数名称。 | 否 |
+
+### <a name="sink-transformation"></a>接收器转换
+
+| 属性 | 说明 | 必需 |
+|:--- |:--- |:--- |
+| additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 此值是获取响应时的超时，而不是写入数据时的超时。 默认值为 00:01:40  。  | 否 |
+| requestInterval | 不同请求之间的间隔时间（以毫秒为单位）。 请求时间间隔值应当为 [10, 60000] 范围中的数字。 |  否 |
+| httpCompressionType | 使用最佳压缩级别发送数据时要使用的 HTTP 压缩类型。 允许的值为 none 和 gzip。 | 否 |
+| writeBatchSize | 每批向 REST 接收器中写入的记录数。 默认值为 10000。 | 否 |
+
+可以设置 delete、insert、update 和 upsert 方法，以及要发送到 REST 接收器以进行 CRUD 操作的相对行数据。
+
+![数据流 REST 接收器](media/data-flow/data-flow-sink.png)
+
+## <a name="sample-data-flow-script"></a>示例数据流脚本
+
+请注意，先于接收器使用更改行转换，指示 ADF 要对 REST 接收器执行哪种类型的操作。 例如 insert、update、upsert、delete。
+
+```
+AlterRow1 sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:true,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    rowRelativeUrl: 'periods',
+    insertHttpMethod: 'PUT',
+    deleteHttpMethod: 'DELETE',
+    upsertHttpMethod: 'PUT',
+    updateHttpMethod: 'PATCH',
+    timeout: 30,
+    requestFormat: ['type' -> 'json'],
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> sink1
 ```
 
 ## <a name="pagination-support"></a>分页支持

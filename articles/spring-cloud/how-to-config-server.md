@@ -7,12 +7,12 @@ ms.author: karler
 author: karlerickson
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 123cc401d03a802c0a390f88cfc727893f165364
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 0de08976f0391c995004265ac1b1a33cf4a5c491
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015451"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835785"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>为服务设置 Spring Cloud 配置服务器实例
 
@@ -101,10 +101,11 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 | `default-label` | 否     | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id  。 |
 | `search-paths`  | 否     | 用于搜索 Git 存储库子目录的字符串数组。 |
 | `username`      | 否     | 用于访问 Git 存储库服务器的用户名，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此用户名是必需的。 |
-| `password`      | 否     | 用于访问 Git 存储库服务器的密码，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此密码是必需的。 |
+| `password`      | 否     | 用于访问 Git 存储库服务器的密码或个人访问令牌，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此密码或个人访问令牌是必需的。 |
 
 > [!NOTE]
-> 许多 `Git` 存储库服务器都支持对 HTTP 基本身份验证使用令牌，而不支持使用密码。 某些存储库（如 GitHub）允许令牌无限期保留。 但是，某些 Git 存储库服务器（包括 Azure DevOps）会在数小时内强制令牌过期。 导致令牌过期的存储库不应在 Azure Spring Cloud 中使用基于令牌的身份验证。
+> 许多 `Git` 存储库服务器都支持对 HTTP 基本身份验证使用令牌，而不支持使用密码。 某些存储库允许令牌无限期保留。 但是，某些 Git 存储库服务器（包括 Azure DevOps Server）会在数小时后强制令牌过期。 导致令牌过期的存储库不应在 Azure Spring Cloud 中使用基于令牌的身份验证。
+> Github 已删除对密码身份验证的支持，因此你需要使用个人访问令牌，而不是 Github 的密码身份验证。 有关详细信息，请参阅[令牌身份验证](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)。
 
 ### <a name="git-repositories-with-pattern"></a>带模式的 Git 存储库
 
@@ -122,7 +123,7 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
 | `repos."default-label"`            | 否             | Git 存储库的默认标签应为存储库的分支名称、标记名称或 commit-id  。 |
 | `repos."search-paths`"             | 否             | 用于搜索 Git 存储库子目录的字符串数组。 |
 | `repos."username"`                 | 否             | 用于访问 Git 存储库服务器的用户名，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此用户名是必需的。 |
-| `repos."password"`                 | 否             | 用于访问 Git 存储库服务器的密码，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此密码是必需的。 |
+| `repos."password"`                 | 否             | 用于访问 Git 存储库服务器的密码或个人访问令牌，如果 Git 存储库服务器支持 `Http Basic Authentication`，则此密码或个人访问令牌是必需的。 |
 | `repos."private-key"`              | 否             | 用于访问 Git 存储库的 SSH 私钥，如果 URI 以“git@”或“ssh://”开头，则此私钥是必需的 。 |
 | `repos."host-key"`                 | 否             | Git 存储库服务器的主机密钥，不应包含 `host-key-algorithm` 涵盖的算法前缀。 |
 | `repos."host-key-algorithm"`       | 否             | 主机密钥算法应为 ssh-dss、ssh-rsa、ecdsa-sha2-nistp256、ecdsa-sha2-nistp384 或 ecdsa-sha2-nistp521    。 仅当存在 `host-key` 时，才是必需的。 |
@@ -167,7 +168,8 @@ Azure Spring Cloud 支持使用 Azure DevOps、GitHub、GitLab 和 Bitbucket 来
     ![“编辑身份验证”窗格基本身份验证](media/spring-cloud-tutorial-config-server/basic-auth.png)
 
     > [!CAUTION]
-    > 一些 Git 存储库服务器（例如 GitHub）将个人令牌或访问令牌（例如密码）用于基本身份验证 。 你可以在 Azure Spring Cloud 中使用这种类型的令牌作为密码，因为它将永不过期。 但对于其他 Git 存储库服务器（例如 BitBucket 和 Azure DevOps），访问令牌将在一到两小时后过期。 这意味着，在将这些存储库服务器与 Azure Spring Cloud 一起使用时，此选项是不可行的。
+    > 一些 Git 存储库服务器将个人令牌或访问令牌（例如密码）用于基本身份验证 。 你可以在 Azure Spring Cloud 中使用这种类型的令牌作为密码，因为它将永不过期。 但对于其他 Git 存储库服务器（例如 BitBucket 和 Azure DevOps Server），访问令牌将在一个或两小时后过期。 这意味着，在将这些存储库服务器与 Azure Spring Cloud 一起使用时，此选项是不可行的。
+    > Github 已删除对密码身份验证的支持，因此你需要使用个人访问令牌，而不是 Github 的密码身份验证。 有关详细信息，请参阅[令牌身份验证](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)。
 
     * **SSH**：在“默认存储库”部分的“Uri”框中，粘贴存储库 URI，然后选择“身份验证”（“铅笔”图标）按钮  。 在“编辑身份验证”窗格中的“身份验证类型”下拉列表中，选择“SSH”，然后输入“私钥”   。 （可选）指定“主机密钥”和“主机密钥算法” 。 请确保在配置服务器存储库中包含公钥。 选择“确定”，然后选择“应用”完成配置服务器实例的设置 。
 

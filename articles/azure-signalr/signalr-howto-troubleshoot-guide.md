@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: ba75af247888a2404619ec0a3db3b0a5d3310502
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1e909273ae2413a67da6e3975e5a2bc50a68685d
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142416"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123186814"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR 服务常见问题故障排除指南
 
@@ -73,7 +73,7 @@ services.MapAzureSignalR(GetType().FullName, options =>
 
 * ASP.NET 的“无可用服务器”错误 [#279](https://github.com/Azure/azure-signalr/issues/279)
 * ASP.NET 的“连接未处于活动状态，无法将数据发送到服务。” 错误 [#324](https://github.com/Azure/azure-signalr/issues/324)
-* “向 https://<API endpoint> 发出 HTTP 请求时出错。 此错误的原因可能是未在 HTTPS 用例中正确使用 HTTP.SYS 配置服务器证书。 此外，客户端与服务器之间的安全绑定不匹配也可能造成此错误。”
+* “向 `https://<API endpoint>` 发出 HTTP 请求时出错。 此错误的原因可能是未在 HTTPS 用例中正确使用 HTTP.SYS 配置服务器证书。 此外，客户端与服务器之间的安全绑定不匹配也可能造成此错误。”
 
 ### <a name="root-cause"></a>根本原因
 
@@ -428,33 +428,33 @@ service.AddSingleton<ThreadPoolStarvationDetector>();
 
 <a name="view_request"></a>
 
-* 如何查看客户端的传出请求？
+### <a name="how-to-view-the-outgoing-request-from-the-client"></a>如何查看客户端的传出请求？
+
 以 ASP.NET Core 的为例（ASP.NET 的类似）：
-    * 从浏览器：
 
-        以 Chrome 为例，你可以使用 F12 打开控制台窗口，然后切换到“网络”选项卡。可能需要使用 F5 来刷新页面，以便从一开始就捕获网络。
+* 从浏览器：以 Chrome 为例，可以使用 F12 打开控制台窗口，并切换到“网络”选项卡。可能需要使用 F5 刷新页面，以从头开始捕获网络。
 
-        :::image type="content" source="./media/signalr-howto-troubleshoot-guide/chrome-network.gif" alt-text="Chrome 的“查看网络”":::
+    :::image type="content" source="./media/signalr-howto-troubleshoot-guide/chrome-network.gif" alt-text="Chrome 的“查看网络”":::
 
-    * 从 C# 客户端：
+* 从 C# 客户端：
 
-        可以使用 [Fiddler](https://www.telerik.com/fiddler) 查看本地 Web 流量。 从 Fiddler 4.5 开始，支持 WebSocket 流量。
+    可以使用 [Fiddler](https://www.telerik.com/fiddler) 查看本地 Web 流量。 从 Fiddler 4.5 开始，支持 WebSocket 流量。
 
-        :::image type="content" source="./media/signalr-howto-troubleshoot-guide/fiddler-view-network-inline.png" alt-text="Fiddler 的“查看网络”" lightbox="./media/signalr-howto-troubleshoot-guide/fiddler-view-network.png":::
+    :::image type="content" source="./media/signalr-howto-troubleshoot-guide/fiddler-view-network-inline.png" alt-text="Fiddler 的“查看网络”" lightbox="./media/signalr-howto-troubleshoot-guide/fiddler-view-network.png":::
 
 <a name="restart_connection"></a>
 
-* 如何重启客户端连接？
+### <a name="how-to-restart-client-connection"></a>如何重启客户端连接？
     
-    下面是[示例代码](https://github.com/Azure/azure-signalr/tree/dev/samples)，其中包含可以与“始终重试”策略配合使用的重启连接逻辑：
+下面是[示例代码](https://github.com/Azure/azure-signalr/tree/dev/samples)，其中包含可以与“始终重试”策略配合使用的重启连接逻辑：
 
-    * [ASP.NET Core C# 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample.CSharpClient/Program.cs#L64)
+* [ASP.NET Core C# 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample.CSharpClient/Program.cs#L64)
 
-    * [ASP.NET Core JavaScript 客户端](https://github.com/Azure/azure-signalr/blob/release/1.0.0-preview1/samples/ChatSample/wwwroot/index.html#L164)
+* [ASP.NET Core JavaScript 客户端](https://github.com/Azure/azure-signalr/blob/dev/samples/ChatSample/ChatSample.Net50/wwwroot/index.html#L171)
 
-    * [ASP.NET C# 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
+* [ASP.NET C# 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 
-    * [ASP.NET JavaScript 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
+* [ASP.NET JavaScript 客户端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
 
 [有关于故障排除的问题或反馈？请告诉我们。](https://aka.ms/asrs/survey/troubleshooting)
 

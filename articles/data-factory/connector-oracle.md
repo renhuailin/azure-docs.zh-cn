@@ -1,19 +1,22 @@
 ---
-title: 使用 Azure 数据工厂向/从 Oracle 复制数据
-description: 了解如何使用数据工厂将数据从支持的源存储复制到 Oracle 数据库，或从 Oracle 复制到支持的接收器存储。
+title: 向/从 Oracle 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何使用数据工厂或 Azure Synapse Analytics 管道将数据从支持的源存储复制到 Oracle 数据库，或从 Oracle 复制到支持的接收器存储。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: b1b223ddf4be6652282be2875e83900b8a7be372
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: bf21a264e64fd43ba98f73f96afc6fe2f1bfd069
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487162"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123317443"
 ---
-# <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
+# <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory-or-azure-synapse-analytics"></a>使用 Azure 数据工厂或 Azure Synapse Analytics 从/向 Oracle 复制数据
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-onprem-oracle-connector.md)
@@ -58,7 +61,31 @@ ms.locfileid: "109487162"
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-对于特定于 Oracle 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
+## <a name="create-a-linked-service-to-oracle-using-ui"></a>使用 UI 创建一个到 Oracle 的链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建一个到 Oracle 的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡，并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新链接服务的屏幕截图。":::
+
+2. 搜索“Oracle”并选择 Oracle 连接器。
+
+    :::image type="content" source="media/connector-oracle/oracle-connector.png" alt-text="Oracle 连接器的屏幕截图。":::    
+
+1. 配置服务详细信息、测试连接并创建新的链接服务。
+
+    :::image type="content" source="media/connector-oracle/configure-oracle-linked-service.png" alt-text="Oracle 的链接服务配置的屏幕截图。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
+
+对于特定于 Oracle 连接器的实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
@@ -67,7 +94,7 @@ Oracle 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **Oracle**。 | 是 |
-| connectionString | 指定连接到 Oracle 数据库实例所需的信息。 <br/>还可以将密码放在 Azure Key Vault 中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 <br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称** 来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>对于“高级 Oracle 本机连接”选项，可以选择在 Oracle 服务器上的 [TNSNAMES.ORA](http://www.orafaq.com/wiki/Tnsnames.ora) 文件中添加一个条目，在“ADF Oracle 链接服务”中，选择使用“Oracle 服务名称”连接类型并配置相应的服务名称。 | 是 |
+| connectionString | 指定连接到 Oracle 数据库实例所需的信息。 <br/>还可以将密码放在 Azure Key Vault 中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 <br><br>**支持的连接类型**：可以使用 **Oracle SID** 或 **Oracle 服务名称** 来标识数据库：<br>- 如果使用 SID：`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- 如果使用服务名称：`Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;`<br>对于高级 Oracle 本机连接选项，可以选择在 Oracle 服务器上的 [TNSNAMES.ORA](http://www.orafaq.com/wiki/Tnsnames.ora) 文件中添加条目，在 Oracle 链接服务中，可以选择使用“Oracle 服务名称”连接类型并配置相应的服务名称。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 >[!TIP]
@@ -120,7 +147,7 @@ Oracle 链接服务支持以下属性：
         ```
 
     3.  将 `truststore` 文件放在自承载 IR 计算机上。 例如，将该文件放在 C:\MyTrustStoreFile。
-    4.  在 Azure 数据工厂中，使用 `EncryptionMethod=1` 和相应的 `TrustStore`/`TrustStorePassword` 值配置 Oracle 连接字符串。 例如，`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`。
+    4.  在服务中，使用 `EncryptionMethod=1` 和相应的 `TrustStore`/`TrustStorePassword` 值配置 Oracle 连接字符串。 例如，`Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`。
 
 **示例：**
 
@@ -174,7 +201,7 @@ Oracle 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 `OracleTable`。 | 是 |
-| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -298,20 +325,20 @@ Oracle 链接服务支持以下属性：
 
 ## <a name="parallel-copy-from-oracle"></a>从 Oracle 进行并行复制
 
-数据工厂 Oracle 连接器提供内置的数据分区，用于从 Oracle 并行复制数据。 可以在复制活动的“源”表中找到数据分区选项。 
+Oracle 连接器提供内置的数据分区，用于从 Oracle 并行复制数据。 可以在复制活动的“源”表中找到数据分区选项。 
 
 ![分区选项的屏幕截图](./media/connector-oracle/connector-oracle-partition-options.png)
 
-启用分区复制时，数据工厂将对 Oracle 源运行并行查询，以按分区加载数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Oracle 数据库检索一部分数据。
+启用分区复制后，服务将对 Oracle 源运行并行查询，按分区加载数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，该服务会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Oracle 数据库检索一部分数据。
 
 建议同时启用并行复制和数据分区，尤其是从 Oracle 数据库加载大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
 | 方案                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 从包含物理分区的大型表进行完整加载。          | **分区选项**：表的物理分区。 <br><br/>在执行期间，数据工厂将自动检测物理分区并按分区复制数据。 |
+| 从包含物理分区的大型表进行完整加载。          | **分区选项**：表的物理分区。 <br><br/>在执行期间，该服务将自动检测物理分区并按分区复制数据。 |
 | 从不包含物理分区但包含用于数据分区的整数列的大型表进行完整加载。 | **分区选项**：动态范围分区。<br>**分区列**：指定用于对数据进行分区的列。 如果未指定，将使用主键列。 |
-| 使用自定义查询从包含物理分区的表加载大量数据。 | **分区选项**：表的物理分区。<br>**查询**：`SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`。<br>**分区名称**：指定要从中复制数据的分区名称。 如果未指定，数据工厂将自动检测在 Oracle 数据集中指定的表的物理分区。<br><br>在执行期间，数据工厂会将 `?AdfTabularPartitionName` 替换为实际分区名称并发送到 Oracle。 |
-| 使用自定义查询从不包含物理分区但包含用于数据分区的整数列的表加载大量数据。 | **分区选项**：动态范围分区。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**：指定用于对数据进行分区的列。 可以针对整数数据类型的列进行分区。<br>**分区上限** 和 **分区下限**：指定是否要对分区列进行筛选，以便仅检索介于下限和上限之间的数据。<br><br>在执行期间，数据工厂会将 `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound` 和 `?AdfRangePartitionLowbound` 替换为每个分区的实际列名和值范围，并将其发送到 Oracle。 <br>例如，如果为分区列“ID”设置了下限 1、上限 80，并将并行复制设置为 4，则数据工厂会按 4 个分区检索数据。 其 ID 分别介于 [1, 20]、[21, 40]、[41, 60] 和 [61, 80] 之间。 |
+| 使用自定义查询从包含物理分区的表加载大量数据。 | **分区选项**：表的物理分区。<br>**查询**：`SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`。<br>**分区名称**：指定要从中复制数据的分区名称。 如果没有指定，服务将自动检测在 Oracle 数据集中指定的表的物理分区。<br><br>在执行期间，服务会将 `?AdfTabularPartitionName` 替换为实际分区名称，并发送到 Oracle。 |
+| 使用自定义查询从不包含物理分区但包含用于数据分区的整数列的表加载大量数据。 | **分区选项**：动态范围分区。<br>**查询**：`SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`。<br>**分区列**：指定用于对数据进行分区的列。 可以针对整数数据类型的列进行分区。<br>**分区上限** 和 **分区下限**：指定是否要对分区列进行筛选，以便仅检索介于下限和上限之间的数据。<br><br>在执行期间，服务会将 `?AdfRangePartitionColumnName`、`?AdfRangePartitionUpbound` 和 `?AdfRangePartitionLowbound` 替换为每个分区的实际列名称和值范围，并发送到 Oracle。 <br>例如，如果为分区列“ID”设置了下限 1、上限 80，并将并行复制设置为 4，则服务会按 4 个分区检索数据。 其 ID 分别介于 [1, 20]、[21, 40]、[41, 60] 和 [61, 80] 之间。 |
 
 > [!TIP]
 > 从非分区表复制数据时，可以使用“动态范围”分区选项针对整数列进行分区。 如果源数据没有这种类型的列，则可以利用源查询中的 [ORA_HASH]( https://docs.oracle.com/database/121/SQLRF/functions136.htm) 函数来生成列，并将其用作分区列。
@@ -349,9 +376,9 @@ Oracle 链接服务支持以下属性：
 
 ## <a name="data-type-mapping-for-oracle"></a>Oracle 的数据类型映射
 
-从/向 Oracle 复制数据时，将应用以下映射。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+当你从/向 Oracle 复制数据时，服务中会使用以下临时数据类型映射。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
-| Oracle 数据类型 | 数据工厂临时数据类型 |
+| Oracle 数据类型 | 临时数据类型 |
 |:--- |:--- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>（仅支持 Oracle 10g 和更高版本） |
@@ -384,4 +411,4 @@ Oracle 链接服务支持以下属性：
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1207f4856882d8aa0e6d1e41712071536bfecf29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7841a8520e3bd3a01a993054444b8aa4d04d542d
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98728550"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123260878"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>将资源类转换为工作负荷组
 
@@ -27,7 +27,7 @@ ms.locfileid: "98728550"
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>了解现有的资源类配置
 
-工作负荷组需要名为 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 的参数，该参数指定分配给每个请求的总体系统资源百分比。  [资源类](resource-classes-for-workload-management.md#what-are-resource-classes)的资源分配是通过分配并发槽完成的。  若要确定为 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 指定的值，请使用 sys.dm_workload_management_workload_groups_stats <link tbd> DMV。  例如，以下查询将返回一个值，该值可用于 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 参数，以创建类似于 staticrc40 的工作负荷组。
+工作负荷组需要名为 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 的参数，该参数指定分配给每个请求的总体系统资源百分比。  [资源类](resource-classes-for-workload-management.md#what-are-resource-classes)的资源分配是通过分配并发槽完成的。  若要确定为 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 指定的值，请使用 [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) DMV。  例如，以下查询将返回一个值，该值可用于 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 参数，以创建类似于 staticrc40 的工作负荷组。
 
 ```sql
 SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant_percent
@@ -42,7 +42,7 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 
 ## <a name="create-workload-group"></a>创建工作负荷组
 
-在 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 已知的情况下，可以使用 CREATE WORKLOAD GROUP <link> 语法来创建工作负荷组。  可以选择指定大于零的 `MIN_PERCENTAGE_RESOURCE` 以隔离工作负荷组的资源。  此外，还可以选择指定小于 100 的 `CAP_PERCENTAGE_RESOURCE`，以限制工作负荷组可以使用的资源量。  
+在 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 已知的情况下，可以使用 [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true) 语法来创建工作负荷组。  可以选择指定大于零的 `MIN_PERCENTAGE_RESOURCE` 以隔离工作负荷组的资源。  此外，还可以选择指定小于 100 的 `CAP_PERCENTAGE_RESOURCE`，以限制工作负荷组可以使用的资源量。  
 
 下面的代码使用 mediumrc 作为一个示例的基础，将 `MIN_PERCENTAGE_RESOURCE` 设置为提供 10% 的系统资源专供 `wgDataLoads` 使用，并保证一个查询始终都能够运行。  此外，`CAP_PERCENTAGE_RESOURCE` 设置为 40%，并将此工作负载组限制为四个并发请求。  通过将 `QUERY_EXECUTION_TIMEOUT_SEC` 参数设置为 3600，运行超过 1 小时的任何查询都将自动取消。
 
