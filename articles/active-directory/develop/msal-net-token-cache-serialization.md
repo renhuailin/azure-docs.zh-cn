@@ -13,12 +13,12 @@ ms.date: 08/28/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 67dbc1ba66f18bb6d779d1185d863541272acd56
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: f92df3818a6da63a57d4e0d26f4e145ae4d5c46f
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451702"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123185698"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET 中的令牌缓存序列化
 
@@ -273,7 +273,7 @@ var app = ConfidentialClientApplicationBuilder
 
 ### <a name="monitor-cache-hit-ratios-and-cache-performance"></a>监视缓存命中率和缓存性能
 
-MSAL 公开重要指标作为 [AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata) 对象的一部分： 
+MSAL 公开重要指标作为 [AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata.md) 对象的一部分： 
 
 | 指标       | 含义     | 何时触发警报？    |
 | :-------------: | :----------: | :-----------: |
