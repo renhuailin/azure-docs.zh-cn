@@ -12,12 +12,12 @@ ms.date: 08/30/2021
 ms.author: hirsin
 ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 301a386c9c9a21cf1f988ee62c19ca7cc60e7a39
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 594b04c96ddbc166c7c3f95b7b04ebc1b1a3784b
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429993"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223437"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
 
@@ -58,7 +58,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 为了启用这种基于 ACL 的授权模式，Azure AD 不要求应用程序必须经过授权才能从另一个应用程序获取令牌。 因此，可以在没有 `roles` 声明的情况下颁发仅限应用的令牌。 公开 API 的应用程序必须实现权限检查才能接受令牌。
 
-如果要阻止应用程序获取应用程序的无角色仅限应用的令牌，[请确保为应用启用用户分配要求](../manage-apps/add-application-portal-configure.md#configure-app-properties)。 这将阻止未分配角色的用户和应用程序获取此应用程序的令牌。
+如果要阻止应用程序获取应用程序的无角色仅限应用的令牌，[请确保为应用启用用户分配要求](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment)。 这将阻止未分配角色的用户和应用程序获取此应用程序的令牌。 
 
 ### <a name="application-permissions"></a>应用程序权限
 
@@ -114,7 +114,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 如果管理员批准了应用程序的权限，成功响应如下所示：
 
 ```HTTP
-GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
+GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=12345&admin_consent=True
 ```
 
 | 参数 | 说明 |
