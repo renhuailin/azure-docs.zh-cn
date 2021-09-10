@@ -5,18 +5,18 @@ description: 了解如何使用 Azure Active Directory 组成员身份在 Azure 
 services: container-service
 ms.topic: article
 ms.date: 03/17/2021
-ms.openlocfilehash: 0d5171e9e9a5d7f033ff615a3f1205b8dc93966f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 571a0153bfe56a6d3b92700eb0e40f457cf92ffc
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769546"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123097942"
 ---
 # <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 标识来控制对群集资源的访问
 
-可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，可以使用 Azure AD 身份验证令牌登录到 AKS 群集。 还可以根据用户标识或目录组成员身份配置 Kubernetes 基于角色的访问控制 (Kubernetes RBAC)，以限制对群集资源的访问。
+可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，可以使用 Azure AD 身份验证令牌登录到 AKS 群集。 经过身份验证后，可以根据用户标识或组成员身份使用内置 Kubernetes 基于角色的访问控制 (Kubernetes RBAC) 来管理对命名空间和群集资源的访问权限。
 
-本文介绍如何使用 Azure AD 组成员身份在 AKS 群集中通过 Kubernetes RBAC 来控制对命名空间和群集资源的访问。 将在 Azure AD 中创建示例组和用户，然后在 AKS 群集中创建角色和角色绑定，以授予创建和查看资源的相应权限。
+本文介绍如何根据 Azure AD 组成员身份使用 AKS 群集中的 Kubernetes RBAC 来控制访问权限。 将在 Azure AD 中创建示例组和用户，然后在 AKS 群集中创建角色和角色绑定，以授予创建和查看资源的相应权限。
 
 ## <a name="before-you-begin"></a>准备阶段
 

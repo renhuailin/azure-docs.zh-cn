@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: 了解如何使用诊断设置启用日志记录，以及查询可供立即查看的日志。
 author: baanders
 ms.author: baanders
-ms.date: 2/24/2021
+ms.date: 8/24/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ced6f28bb7174bc3510de9025569646210e87782
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1479e2b6b715e8f80ea9e02b0b57a3995da2bfd9
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475699"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219713"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>排查 Azure 数字孪生问题：诊断日志记录
 
-Azure 数字孪生可以收集服务实例的日志，以监视其性能、访问和其他数据。 你可以使用这些日志来大致了解 Azure 数字孪生实例中发生的情况，并执行问题的根本原因分析，而无需联系 Azure 支持部门。
+Azure 数字孪生可以收集服务实例的日志，以监视其性能、访问和其他数据。 你可以使用这些日志来大致了解 Azure 数字孪生实例中发生的情况，并分析问题的根本原因，而无需联系 Azure 支持部门。
 
 本文介绍如何在 Azure 门户中[[配置诊断设置](#turn-on-diagnostic-settings)](https://portal.azure.com)，以开始从 Azure 数字孪生实例收集日志。 你还可以指定要将日志存储到的位置（例如 Log Analytics，或者你选择的存储帐户）。
 
@@ -49,7 +49,7 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
         - 存档到存储帐户
         - 流式传输到事件中心
 
-        如果选择目标时需要提供其他详细信息，系统可能会要求你填写这些信息。  
+        如果选择目标时需要提供更多详细信息，系统可能会要求你填写这些信息。  
     
 4. 保存新设置。 
 
@@ -67,10 +67,10 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 | --- | --- |
 | ADTModelsOperation | 记录与模型相关的所有 API 调用 |
 | ADTQueryOperation | 记录与查询相关的所有 API 调用 |
-| ADTEventRoutesOperation | 记录与事件路由相关的所有 API 调用，以及从 Azure 数字孪生流出到事件网格、事件中心和服务总线等终结点服务的事件 |
+| ADTEventRoutesOperation | 记录与事件路由相关的所有 API 调用，以及从 Azure 数字孪生到事件网格、事件中心和服务总线等终结点服务的出口事件 |
 | ADTDigitalTwinsOperation | 记录与单个孪生相关的所有 API 调用 |
 
-每个日志类别包括写入、读取、删除和动作操作。  这些操作按如下所示映射到 REST API 调用：
+每个日志类别包括写入、读取、删除和动作操作。 这些类别按如下所示映射到 REST API 调用：
 
 | 事件类型 | REST API 操作 |
 | --- | --- |
@@ -108,7 +108,7 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 
 ### <a name="api-log-schemas"></a>API 日志架构
 
-对于 `ADTDigitalTwinsOperation`、`ADTModelsOperation` 和 `ADTQueryOperation`，此日志架构是一致的。 同一架构还用于 `ADTEventRoutesOperation`，但 `Microsoft.DigitalTwins/eventroutes/action` 操作名称除外（有关该架构的详细信息，请查看下一部分：[流出量日志架构](#egress-log-schemas)）。
+对于 `ADTDigitalTwinsOperation`、`ADTModelsOperation` 和 `ADTQueryOperation`，此日志架构是一致的。 同一架构还用于 `ADTEventRoutesOperation`，但 `Microsoft.DigitalTwins/eventroutes/action` 操作名称除外（有关该架构的详细信息，请参阅下一部分：[出口日志架构](#egress-log-schemas)）。
 
 该架构包含与 Azure 数字孪生实例的 API 调用相关的信息。
 
@@ -119,7 +119,7 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 | `Time` | DateTime | 此事件发生的日期和时间 (UTC) |
 | `ResourceId` | 字符串 | 发生该事件的资源的 Azure 资源管理器资源 ID |
 | `OperationName` | 字符串  | 发生该事件期间执行的操作类型 |
-| `OperationVersion` | 字符串 | 发生该事件期间利用的 API 版本 |
+| `OperationVersion` | 字符串 | 发生该事件期间使用的 API 版本 |
 | `Category` | 字符串 | 正在发出的资源的类型 |
 | `ResultType` | 字符串 | 事件结果 |
 | `ResultSignature` | 字符串 | 事件的 HTTP 状态代码 |
@@ -130,7 +130,7 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 | `ApplicationId` | Guid | 持有者授权中使用的应用程序 ID |
 | `Level` | int | 事件的日志记录严重性 |
 | `Location` | 字符串 | 发生该事件的区域 |
-| `RequestUri` | Uri | 发生该事件期间利用的终结点 |
+| `RequestUri` | Uri | 发生该事件期间使用的终结点 |
 | `TraceId` | 字符串 | `TraceId`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 用于唯一标识跨系统分布式跟踪的整个跟踪的 ID。 |
 | `SpanId` | 字符串 | `SpanId`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 跟踪中此请求的 ID。 |
 | `ParentId` | 字符串 | `ParentId`，作为 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)的一部分。 没有父 ID 的请求是跟踪的根。 |
@@ -243,7 +243,7 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 
 #### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
 
-下面是一个非 `Microsoft.DigitalTwins/eventroutes/action` 类型的 `ADTEventRoutesOperation` 的 JSON 正文示例（有关该架构的详细信息，请查看下一部分： [流出量日志架构](#egress-log-schemas)）。
+下面是一个非 `Microsoft.DigitalTwins/eventroutes/action` 类型的 `ADTEventRoutesOperation` 的 JSON 正文示例（有关该架构的详细信息，请参阅下一部分：[出口日志架构](#egress-log-schemas)）。
 
 ```json
   {
@@ -279,9 +279,9 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 
 ### <a name="egress-log-schemas"></a>出口日志架构
 
-这是特定于 `Microsoft.DigitalTwins/eventroutes/action` 操作名称的 `ADTEventRoutesOperation` 日志的架构。 这些日志包含有关连接到 Azure 数字孪生实例的出口终结点的异常和 API 操作的详细信息。
+以下示例是特定于 `Microsoft.DigitalTwins/eventroutes/action` 操作名称的 `ADTEventRoutesOperation` 日志的架构。 这些日志包含有关连接到 Azure 数字孪生实例的出口终结点的异常和 API 操作的详细信息。
 
-|字段名称 | 数据类型 | 说明 |
+|字段名 | 数据类型 | 说明 |
 |-----|------|-------------|
 | `Time` | DateTime | 此事件发生的日期和时间 (UTC) |
 | `ResourceId` | 字符串 | 发生该事件的资源的 Azure 资源管理器资源 ID |
@@ -303,7 +303,7 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 
 #### <a name="adteventroutesoperation-for-microsoftdigitaltwinseventroutesaction"></a>Microsoft.DigitalTwins/eventroutes/action 的 ADTEventRoutesOperation
 
-下面是 `Microsoft.DigitalTwins/eventroutes/action` 类型的 `ADTEventRoutesOperation` 的示例 JSON 正文。
+下面是 `Microsoft.DigitalTwins/eventroutes/action` 类型的 `ADTEventRoutesOperation` 的 JSON 正文示例。
 
 ```json
 {
@@ -353,7 +353,7 @@ Azure 数字孪生可以收集服务实例的日志，以监视其性能、访�
 
     :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="显示 Azure 门户中 Azure 数字孪生实例的日志页的屏幕截图，其中叠加了“查询”窗口，显示了预构建的查询。" lightbox="media/troubleshoot-diagnostics/logs.png":::
 
-    这些查询是为各种日志编写的预生成示例查询。 可以选择其中一个查询以将其载入查询编辑器，然后运行该查询以查看实例的这些日志。
+    这些查询是为各种日志编写的预生成示例。 可以选择其中一个查询以将其载入查询编辑器，然后运行该查询以查看实例的这些日志。
 
     还可以在不运行任何查询的情况下关闭“查询”窗口以直接转到查询编辑器页，在其中可以编写或编辑自定义查询代码。
 

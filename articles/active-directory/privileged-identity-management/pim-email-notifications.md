@@ -1,5 +1,5 @@
 ---
-title: PIM 中的电子邮件通知 - Azure Active Directory | Microsoft Docs
+title: Privileged Identity Management (PIM) 中的电子邮件通知 - Azure Active Directory | Microsoft Docs
 description: 介绍 Azure AD Privileged Identity Management (PIM) 中的电子邮件通知。
 services: active-directory
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 06/30/2021
+ms.date: 08/24/2021
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18aa1e49ad3f87ab3e222f250354c2bc5e2aca16
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 68fac3501cd13dd4766c519185459c9ef89b6299
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749082"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123311225"
 ---
 # <a name="email-notifications-in-pim"></a>PIM 中的电子邮件通知
 
@@ -38,6 +38,21 @@ ms.locfileid: "121749082"
 
 - PIM：已为 Alain Charon 永久分配备份读取器角色
 
+## <a name="email-timing-for-activation-approvals"></a>激活审批的电子邮件发送时机
+
+当用户激活其角色且角色设置需要审批时，审批者每次审批会收到两封电子邮件：
+
+- 请求批准或拒绝用户的激活请求（由请求批准引擎发送）
+- 已批准用户请求（由请求批准引擎发送）
+
+此外，全局管理员和特权角色管理员每次审批都会收到一封电子邮件：
+
+- 已激活用户角色（由 Privileged Identity Management 发送）
+
+请求批准引擎发送的前两封电子邮件可以延迟。 目前，90% 的电子邮件需要三到十分钟才能送达，但是对于 1% 的客户来说，可能需要更长时间，最多十五分钟。
+
+如果在发送第一封电子邮件之前在 Azure 门户中批准了审批请求，则将不再触发第一封电子邮件，并且不会通过电子邮件将审批请求通知其他审批者。 这可能会表现为这些审批者没有收到电子邮件，但这是预期行为。
+
 ## <a name="notifications-for-azure-ad-roles"></a>Azure AD 角色的通知
 
 当 Azure AD 角色发生以下事件时，Privileged Identity Management 将发送电子邮件：
@@ -46,7 +61,7 @@ ms.locfileid: "121749082"
 - 当特权角色激活请求已完成时
 - 当启用 Azure AD Privileged Identity Management 时
 
-接收这些 Azure AD 角色电子邮件的用户取决于角色、事件和通知设置：
+接收这些 Azure AD 角色电子邮件的用户取决于角色、事件和通知设置。
 
 | User | 角色激活正在等待审批 | 角色激活请求已完成 | PIM 已启用 |
 | --- | --- | --- | --- |
@@ -77,22 +92,7 @@ Azure AD 角色的每周 Privileged Identity Management 摘要电子邮件将发
 
 “热门角色概述”部分根据每个角色的永久和符合条件管理员的总数列出了组织中最热门的五个角色。 “采取措施”链接会打开[发现与见解](pim-security-wizard.md)，你可以在其中将永久管理员成批转换为合格管理员。
 
-## <a name="email-timing-for-activation-approvals"></a>激活审批的电子邮件发送时机
-
-当用户激活其角色且角色设置需要审批时，审批者每次审批会收到两封电子邮件：
-
-- 请求批准或拒绝用户的激活请求（由请求批准引擎发送）
-- 已批准用户请求（由请求批准引擎发送）
-
-此外，全局管理员和特权角色管理员每次审批都会收到一封电子邮件：
-
-- 已激活用户角色（由 Privileged Identity Management 发送）
-
-请求批准引擎发送的前两封电子邮件可以延迟。 目前，90% 的电子邮件需要三到十分钟才能送达，但是对于 1% 的客户来说，可能需要更长时间，最多十五分钟。
-
-如果在发送第一封电子邮件之前在 Azure 门户中批准了审批请求，则将不再触发第一封电子邮件，并且不会通过电子邮件将审批请求通知其他审批者。 这可能会表现为这些审批者没有收到电子邮件，但这是预期行为。
-
-## <a name="pim-emails-for-azure-resource-roles"></a>用于 Azure 资源角色的 PIM 电子邮件
+## <a name="notifications-for-azure-resource-roles"></a>Azure 资源角色的通知
 
 当 Azure 资源角色发生以下事件时，Privileged Identity Management 会向所有者和用户访问管理员发送电子邮件：
 
@@ -113,6 +113,25 @@ Azure AD 角色的每周 Privileged Identity Management 摘要电子邮件将发
 下面显示了当为用户分配了虚构 Contoso 组织的 Azure 资源角色时发送的示例电子邮件。
 
 ![Azure 资源角色的新 Privileged Identity Management 电子邮件](./media/pim-email-notifications/email-resources-new.png)
+
+## <a name="notifications-for-privileged-access-groups"></a>特权访问组的通知
+
+仅当特权访问组分配发生以下事件时，Privileged Identity Management 才会向所有者发送电子邮件：
+
+- 所有者或成员角色分配正在等待审批时
+- 分配所有者或成员角色时
+- 所有者或成员角色即将到期时
+- 所有者或成员角色有资格扩展时
+- 最终用户续订所有者或成员角色时
+- 所有者或成员角色激活请求已完成时
+
+当特权访问组角色分配发生以下事件时，Privileged Identity Management 会向最终用户发送电子邮件：
+
+- 向用户分配所有者或成员角色时
+- 用户的所有者或成员角色已过期时
+- 用户的所有者或成员角色已扩展时
+- 用户的所有者或成员角色激活请求已完成时
+
 
 ## <a name="next-steps"></a>后续步骤
 

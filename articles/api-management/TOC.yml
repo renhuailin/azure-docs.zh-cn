@@ -84,6 +84,8 @@
       href: automation-manage-api-management.md
     - name: API 导入限制
       href: api-management-api-import-restrictions.md
+    - name: 虚拟网络概述
+      href: virtual-network-concepts.md
     - name: 自托管网关概述
       href: self-hosted-gateway-overview.md
     - name: 可观察性
@@ -92,6 +94,8 @@
       href: devops-api-development-templates.md
     - name: 软删除
       href: soft-delete.md
+    - name: 计算平台
+      href: compute-infrastructure.md
 - name: 操作指南
   items:
     - name: 定义 API

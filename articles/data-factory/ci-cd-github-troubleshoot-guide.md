@@ -1,18 +1,21 @@
 ---
 title: 在 ADF 中对 CI CD、Azure DevOps 和 GitHub 问题进行故障排除
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 使用不同的方法对 ADF 中的 CI CD 问题进行故障排除。
 author: ssabat
 ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
+ms.subservice: ci-cd
+ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 04/27/2021
-ms.openlocfilehash: 72f58258f427c5a9414bd7627d4d121c6a89c365
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.date: 06/27/2021
+ms.openlocfilehash: 8f94e6b0e4afd06a68263efb0d78f3962bbd8560
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060851"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866398"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>在 ADF 中对 CI CD、Azure DevOps 和 GitHub 问题进行故障排除 
 
@@ -24,13 +27,13 @@ ms.locfileid: "112060851"
 
 - 请参阅 [ADF 中的源代码管理](source-control.md)，了解如何在 ADF 中实行源代码管理。 
 - 请参阅 [ADF 中的 CI-CD](continuous-integration-deployment.md)，详细了解如何在 ADF 中实行 DevOps CI-CD。
- 
+
 ## <a name="common-errors-and-messages"></a>常见错误和消息
 
 ### <a name="connect-to-git-repository-failed-due-to-different-tenant"></a>由于租户不同，连接到 Git 存储库失败
 
 #### <a name="issue"></a>问题
-    
+
 有时会遇到 HTTP 状态 401 等身份验证问题。 特别是在多个租户具有来宾帐户的时候，情况可能变得更加复杂。
 
 #### <a name="cause"></a>原因
@@ -65,7 +68,7 @@ CI/CD 管道失败并出现以下错误：
 
 CI/CD 发布管道失败，出现以下错误：
 
-`
+```output
 2020-07-06T09:50:50.8716614Z There were errors in your deployment. Error code: DeploymentFailed.
 2020-07-06T09:50:50.8760242Z ##[error]At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/DeployOperations for usage details.
 2020-07-06T09:50:50.8771655Z ##[error]Details:
@@ -73,7 +76,7 @@ CI/CD 发布管道失败，出现以下错误：
 2020-07-06T09:50:50.8774148Z ##[error]DataFactoryPropertyUpdateNotSupported: Updating property type is not supported.
 2020-07-06T09:50:50.8775530Z ##[error]Check out the troubleshooting guide to see if your issue is addressed: https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment#troubleshooting
 2020-07-06T09:50:50.8776801Z ##[error]Task failed while creating or updating the template deployment.
-`
+```
 
 #### <a name="cause"></a>原因
 
@@ -81,10 +84,10 @@ CI/CD 发布管道失败，出现以下错误：
 
 #### <a name="recommendation"></a>建议
 
-- 请参阅下面的 CI/CD 最佳做法：
+- 请参阅 [CI/CD 的最佳做法](continuous-integration-deployment.md#best-practices-for-cicd)
 
-    https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd 
 - 集成运行时不经常更改，并且在 CI/CD 中的所有阶段类似，因此数据工厂需要集成运行时在 CI/CD 的所有阶段都具有相同的名称和类型。 如果名称、类型和属性不同，请确保匹配源和目标集成运行时配置，然后部署发布管道。
+
 - 若要在所有阶段中共享集成运行时，请考虑使用三元工厂，这只是为了包含共享的集成运行时。 可以在所有环境中将此共享工厂用作链接的集成运行时类型。
 
 ### <a name="document-creation-or-update-failed-because-of-invalid-reference"></a>由于无效的引用，文档创建或更新失败
@@ -167,7 +170,7 @@ CI/CD 过程已增强。 自动发布功能从 ADF UX 中提取、验证和导�
 
 #### <a name="cause"></a>原因
 
-Azure 资源管理器将模板大小限制为 4 MB。 将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 已完成对迭代资源定义、变量值和参数值的扩展后，4 MB 的限制将适用于该模板的最终状态。 但已经超出了限制。 
+Azure 资源管理器将模板大小限制为 4 MB。 将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 4-MB 限制适用于模板使用迭代资源定义以及变量和参数值进行扩展后的最终状态。 但已经超出了限制。 
 
 #### <a name="resolution"></a>解决方法
 
@@ -182,11 +185,11 @@ Azure 资源管理器将模板大小限制为 4 MB。 将模板大小限制为 4
 #### <a name="cause"></a>原因
 
 * 尚未为 ADF 配置 Oauth。 
-* URL 配置错误。
+* URL 配置错误。 repoConfiguration 应为 [FactoryGitHubConfiguration](/dotnet/api/microsoft.azure.management.datafactory.models.factorygithubconfiguration?view=azure-dotnet&preserve-view=true) 类型
 
-##### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解决方法 
 
-首先授予 Oauth 对 ADF 的访问权限。 然后，需要使用正确的 URL 连接到 GIT Enterprise。 该配置必须设置为客户组织。 例如，ADF 将首先尝试 *https://hostname/api/v3/search/repositories?q=user%3<customer credential>....* 并失败。 然后，它将尝试 *https://hostname/api/v3/orgs/<org>/<repo>...* 并成功。 
+首先授予 Oauth 对 ADF 的访问权限。 然后，需要使用正确的 URL 连接到 GIT Enterprise。 该配置必须设置为客户组织。 例如，ADF 将首先尝试 https://hostname/api/v3/search/repositories?q=user%3&lt;customer credential&gt;.... 并失败。 然后，它将尝试 https://hostname/api/v3/orgs/&lt;org&gt;/&lt; repo&gt;... 并成功。  
  
 ### <a name="cannot-recover-from-a-deleted-data-factory"></a>无法从已删除的数据工厂恢复
 
@@ -247,20 +250,50 @@ Azure 资源管理器将模板大小限制为 4 MB。 将模板大小限制为 4
 ### <a name="extra--left--displayed-in-published-json-file"></a>已发布的 JSON 文件中显示额外的左“[”
 
 #### <a name="issue"></a>问题
-通过 DevOps 发布 ADF 时，多显示一个左“[”。 ADF 自动在 DevOps 的 ARMTemplate 中多添加一个左“[”。 
+通过 DevOps 发布 ADF 时，多显示一个左“[”。 ADF 自动在 DevOps 的 ARMTemplate 中多添加一个左“[”。 你将在 JSON 文件中看到类似“[[”的表达式。
 
 #### <a name="cause"></a>原因
 由于 [ 是 ARM 的保留字符，自动添加额外的 [ 可对“[”进行转义。
 
 #### <a name="resolution"></a>解决方法
 对于 CI/CD，这是 ADF 发布过程中的正常行为。
+ 
+### <a name="perform-cicd-during--progressqueued-stage-of-pipeline-run"></a>在管道运行的进度/排队阶段执行 CI/CD
+
+#### <a name="issue"></a>问题
+你想要在管道运行的进度和排队阶段执行 CI/CD。
+
+#### <a name="cause"></a>原因
+当管道处于进度/排队阶段时，你首先需要监视管道和活动。 然后，可以决定等待管道完成，也可以取消管道运行。 
+ 
+#### <a name="resolution"></a>解决方案
+可以使用 SDK、Azure Monitor 或 [ADF Monitor](./monitor-visually.md) 监视管道。 然后，可以按照 [ADF CI/CD 最佳做法](./continuous-integration-deployment.md#best-practices-for-cicd)进一步指导操作。 
+
+### <a name="perform-unit-testing-during-adf-development-and-deployment"></a>在 ADF 开发和部署期间执行单元测试
+
+#### <a name="issue"></a>问题
+你想要在 ADF 管道的开发和部署期间执行单元测试。
+
+#### <a name="cause"></a>原因
+在开发和部署周期中，可能需要在手动或自动发布管道之前对管道进行单元测试。 通过测试自动化，可以花更少的时间运行更多的测试，并保证可重复性。 在部署之前自动重新测试所有 ADF 管道，可以为你提供一些保护，防止出现回归故障。 自动测试是 CI/CD 软件开发方法的一个关键组成部分：在 Azure 数据工厂的 CI/CD 部署管道中加入自动测试，可显著提高质量。 在长期运行中，经过测试的 ADF 管道工件可以重复使用，为你节省成本和时间。  
+ 
+#### <a name="resolution"></a>解决方案
+由于客户可能具有包含不同技能集的不同单元测试要求，因此通常的做法是执行以下步骤：
+
+1. 设置 Azure DevOps CI/CD 项目或开发 .NET/PYTHON/REST 类型 SDK 驱动的测试策略。
+2. 对于 CI/CD，创建包含所有脚本的生成工件，并在发布管道中部署资源。 对于 SDK 驱动的方法，使用 Python 中的 PyTest、使用 .NET SDK 的 C# Nunit 等开发测试单元。
+3. 将单元测试作为发布管道的一部分运行，或使用 ADF Python/PowerShell/.NET/REST SDK 独立运行。 
+
+例如，你想要删除文件中的重复项，然后将策展的文件存储为数据库中的一个表。 为了测试管道，可以使用 Azure DevOps 设置一个 CI/CD 项目。
+你需要设置一个 TEST 管道阶段，在那里部署已开发的管道。 将 TEST 阶段配置为运行 Python 测试，以确保表数据符合预期。 如果不使用 CI/CD，可以使用 Nunit 通过所需测试触发已部署的管道。 如果你对结果感到满意，就可以最终将管道发布到生产数据工厂。 
+
 
 ## <a name="next-steps"></a>后续步骤
 
 有关故障排除的更多帮助，请尝试以下资源：
 
 *  [数据工厂博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [数据工厂功能请求](https://feedback.azure.com/forums/270578-data-factory)
+*  [数据工厂功能请求](/answers/topics/azure-data-factory.html)
 *  [Azure 视频](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [关于数据工厂的 Twitter 信息](https://twitter.com/hashtag/DataFactory)

@@ -36,7 +36,7 @@
       href: quickstart-arc.md
 - name: 教程
   items:
-    - name: 保护访问存储和 Microsoft Graph 的应用
+    - name: 安全应用访问、存储和 Microsoft Graph
       items:
         - name: 概述
           href: scenario-secure-app-overview.md
@@ -366,7 +366,7 @@
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: 部署脚本
           href: 'https://azure.microsoft.com/documentation/scripts/'
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 排查间歇性出站连接错误
           href: troubleshoot-intermittent-outbound-connection-errors.md

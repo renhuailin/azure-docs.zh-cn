@@ -3,12 +3,12 @@ title: 收集和分析资源日志
 description: 了解如何从 Azure 容器实例中的容器组将资源日志和事件数据发送到 Azure Monitor 日志
 ms.topic: article
 ms.date: 07/13/2020
-ms.openlocfilehash: 0c95535c80425abb8bdc904132581531b8cdd24e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4c43d16c7df7ef54e401966e0c114de4d79cbdac
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029056"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123112060"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器组和实例日志记录
 
@@ -52,6 +52,9 @@ Azure 容器实例需要权限才能向 Log Analytics 工作区发送数据。 �
 
 若要使用 Azure CLI 进行部署，请在 [az container create][az-container-create] 命令中指定 `--log-analytics-workspace` 和 `--log-analytics-workspace-key` 参数。 在运行下面的命令之前，请将两个工作区值替换为在前面的步骤中获得的值（并更新资源组名称）。
 
+> [!NOTE]
+> 以下示例从 Docker Hub 拉取公共容器映像。 建议设置一个拉取密钥，以使用 Docker Hub 帐户进行身份验证，而不是发出匿名拉取请求。 若要在使用公共内容时提高可靠性，请在专用 Azure 容器注册表中导入和管理映像。 [详细了解如何使用公共映像](../container-registry/buffer-gate-public-content.md)。
+
 ```azurecli-interactive
 az container create \
     --resource-group myResourceGroup \
@@ -64,6 +67,9 @@ az container create \
 ### <a name="deploy-with-yaml"></a>使用 YAML 进行部署
 
 如果喜欢使用 YAML 部署容器组，请使用此方法。 下面的 YAML 定义包含单个容器的容器组。 将 YAML 复制到一个新文件中，然后将 `LOG_ANALYTICS_WORKSPACE_ID` 和 `LOG_ANALYTICS_WORKSPACE_KEY` 替换为在前面的步骤中获得的值。 将该文件保存为 **deploy-aci.yaml**。
+
+> [!NOTE]
+> 以下示例从 Docker Hub 拉取公共容器映像。 建议设置一个拉取密钥，以使用 Docker Hub 帐户进行身份验证，而不是发出匿名拉取请求。 若要在使用公共内容时提高可靠性，请在专用 Azure 容器注册表中导入和管理映像。 [详细了解如何使用公共映像](../container-registry/buffer-gate-public-content.md)。
 
 ```yaml
 apiVersion: 2019-12-01

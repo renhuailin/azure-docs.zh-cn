@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09fc8f9697f418533131e86c069afd3157a71c78
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b6b0fa5e1af60b65c513fd3fa6250dba2a978879
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142974"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122965891"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>适用于 SAP HANA 的 Azure NetApp 文件上的 NFS v4.1 卷
 
@@ -57,11 +57,11 @@ Azure NetApp 文件提供本机 NFS 共享，可用于 /hana/shared、/hana/data
 
 Azure NetApp 卷的吞吐量是卷大小和服务级别的函数，如 [Azure NetApp 文件服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。 
 
-重要的是了解性能与大小的关系，以及 SVM（存储虚拟机）的 LIF（逻辑接口）存在物理限制。
+重要的是了解性能与大小的关系，服务的存储终结点存在物理限制。 每个存储终结点将在创建卷时动态注入 [Azure NetApp 文件委托子网](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)，并接收 IP 地址。 Azure NetApp 文件卷可以共享存储终结点，具体取决于可用的容量和部署逻辑
 
-下表表明创建大型“标准”卷来存储备份是有意义的，而创建大于 12 TB 的“超级”卷是没有意义的，因为会超过单个 LIF 的物理带宽容量。 
+下表表明创建大型“标准”卷来存储备份是有意义的，而创建大于 12 TB 的“超级”卷是没有意义的，因为会超过单个卷的最大物理带宽容量。 
 
-LIF 和单个 Linux 会话的最大吞吐量介于 1.2 与 1.4 GB/s 之间。 如果需要将更大的吞吐量用于 /hana/data，则可以使用 SAP HANA 数据卷分区在数据重新加载期间使 I/O 活动条带化，或者跨位于多个 NFS 共享上的多个 HANA 数据文件使 HANA 保存点条带化。 有关 HANA 数据卷条带化的更多详细信息，请阅读以下文章：
+卷和单个 Linux 会话的最大写入吞吐量介于 1.2 与 1.4 GB/秒之间。 如果需要将更大的吞吐量用于 /hana/data，则可以使用 SAP HANA 数据卷分区在数据重新加载期间使 I/O 活动条带化，或者跨位于多个 NFS 共享上的多个 HANA 数据文件使 HANA 保存点条带化。 有关 HANA 数据卷条带化的更多详细信息，请阅读以下文章：
 
 - [HANA 管理员指南](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
 - [有关 SAP HANA 的博客 - 分区数据卷](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
@@ -95,7 +95,7 @@ LIF 和单个 Linux 会话的最大吞吐量介于 1.2 与 1.4 GB/s 之间。 �
 对于不需要高带宽的 HANA 系统，ANF 卷大小可以较小。 如果 HANA 系统需要更多吞吐量，则可以通过联机重设容量大小来调整卷。 没有为备份卷定义 KPI。 但是，备份卷吞吐量对于执行良好的环境是必不可少的。 日志和数据卷性能必须按照客户期望进行设计。
 
 > [!IMPORTANT]
-> 无论在单个 NFS 卷上部署的容量如何，预计吞吐量都将 1.2-1.4 GB/秒的带宽范围（由虚拟机中的使用者利用）内稳定下来。 这与 ANF 产品/服务的基础体系结构以及围绕 NFS 的相关 Linux 会话限制有关。 [Azure NetApp 文件的性能基准测试结果](../../../azure-netapp-files/performance-benchmarks-linux.md)一文中记录的性能和吞吐量数针对具有多个客户端 VM 的一个共享 NFS 卷而执行，因此具有多个会话。 这种情况不同于我们在 SAP 中测量的情况。 我们针对 NFS 卷衡量单个 VM 的吞吐量的位置。 托管在 ANF 上。
+> 无论在单个 NFS 卷上部署的容量如何，预计吞吐量都将 1.2-1.4 GB/秒的带宽范围（由单个会话中的使用者利用）内稳定下来。 这与 ANF 产品/服务的基础体系结构以及围绕 NFS 的相关 Linux 会话限制有关。 [Azure NetApp 文件的性能基准测试结果](../../../azure-netapp-files/performance-benchmarks-linux.md)一文中记录的性能和吞吐量数针对具有多个客户端 VM 的一个共享 NFS 卷而执行，因此具有多个会话。 这种情况不同于我们在 SAP 中测量的情况。 我们针对 NFS 卷衡量单个 VM 的吞吐量的位置。 托管在 ANF 上。
 
 为了满足 SAP 数据和日志的最低吞吐量要求，并根据 /hana/shared 准则，建议的大小如下所示：
 
@@ -104,7 +104,7 @@ LIF 和单个 Linux 会话的最大吞吐量介于 1.2 与 1.4 GB/s 之间。 �
 | /hana/log/ | 4 TiB | 2 TiB | v4.1 |
 | /hana/data | 6.3 TiB | 3.2 TiB | v4.1 |
 | /hana/shared scale-up | 最小值（1 TB，1 x RAM）  | 最小值（1 TB，1 x RAM） | v3 或 v4.1 |
-| /hana/shared scale-out | 1 x 工作器节点 RAM<br /> 每 4 个工作器节点  | 1 x 工作器节点 RAM<br /> 每 4 个工作器节点  | v3 或 v4.1 |
+| /hana/shared scale-out | 1 x 工作器节点 RAM<br /> 每四个工作器节点  | 1 x 工作器节点 RAM<br /> 每四个工作器节点  | v3 或 v4.1 |
 | /hana/logbackup | 3 x RAM  | 3 x RAM | v3 或 v4.1 |
 | /hana/backup | 2 x RAM  | 2 x RAM | v3 或 v4.1 |
 
@@ -128,10 +128,10 @@ ANF 系统更新和升级可在不影响客户环境的情况下进行应用。 
 
 
 ## <a name="volumes-and-ip-addresses-and-capacity-pools"></a>卷以及 IP 地址和容量池
-对于 ANF，必须了解底层基础结构的构建方式。 容量池只是一种结构，通过它可以更简单地为 ANF 创建计费模型。 容量池与底层基础结构没有物理关系。 如果创建容量池，则只会创建可进行收费的 shell，而创建更多内容。 创建卷时，会在多个 NetApp 系统组成的群集上创建第一个 SVM（存储虚拟机）。 会为此 SVM 创建单个 IP 来访问卷。 如果创建多个卷，则通过此多控制器 NetApp 群集在此 SVM 中分布所有卷。 即使只获得一个 IP，数据也会在多个控制器上进行分布。 ANF 具有一个逻辑，可在已配置存储的卷或/和容量达到内部预定义级别后自动分布客户工作负载。 你可能会注意到此类情况，因为分配了新 IP 地址来访问卷。
+对于 ANF，必须了解底层基础结构的构建方式。 容量池只是一个构造，它根据容量池服务级别提供容量和性能预算以及计费单位。 容量池与底层基础结构没有物理关系。 在服务上创建卷时，将创建存储终结点。 将单个 IP 地址分配给此存储终结点，以提供对卷的数据访问。 如果创建多个卷，则所有卷将分布在底层裸机机群中，并绑定到此存储终结点。 ANF 具有一个逻辑，可在已配置存储的卷或/和容量达到内部预定义级别后自动分布客户工作负载。 你可能会注意到这种情况，因为会自动创建具有新 IP 地址的新存储终结点以访问卷。 ANF 服务不提供客户对此分发逻辑的控制。
 
-##<a name="log-volume-and-log-backup-volume"></a>日志卷和日志备份卷
-“日志卷” (/hana/log) 用于写入联机重做日志。 因而有打开的文件位于此卷中，对此卷拍摄快照没什么意义。 联机重做日志文件已满或执行重做日志备份后，联机重做日志文件会存档或备份到日志备份卷。 若要提供合理的备份性能，日志备份卷需要良好的吞吐量。 若要优化存储成本，合并多个 HANA 实例的日志备份卷会十分有意义。 这样多个 HANA 实例可利用相同卷，并将其备份写入不同目录。 使用此类合并可以获得更大的吞吐量，因为你需要使卷更大一些。 
+## <a name="log-volume-and-log-backup-volume"></a>日志卷和日志备份卷
+“日志卷” (/hana/log) 用于写入联机重做日志。 因而有打开的文件位于此卷中，对此卷拍摄快照没什么意义。 联机重做日志文件已满或执行重做日志备份后，联机重做日志文件会存档或备份到日志备份卷。 若要提供合理的备份性能，日志备份卷需要良好的吞吐量。 若要优化存储成本，合并多个 HANA 实例的日志备份卷会十分有意义。 这样多个 HANA 实例可使用相同卷，并将其备份写入不同目录。 使用此类合并可以获得更大的吞吐量，因为你需要使卷更大一些。 
 
 这同样适用于将完整 HANA 数据库备份写入的卷。  
  
@@ -182,8 +182,8 @@ BACKUP DATA FOR FULL SYSTEM CLOSE SNAPSHOT BACKUP_ID 47110815 SUCCESSFUL SNAPSHO
 
 
 ### <a name="back-up-the-snapshot-using-azure-blob-storage"></a>使用 Azure blob 存储备份快照
-备份到 Azure blob 存储是一种经济高效且快速的方法，可用于保存基于 ANF 的 HANA 数据库存储快照备份。 若要将快照保存到 Azure Blob 存储，azcopy 工具是首选工具。 下载此工具的最新版本并安装（例如在安装 GitHub 中的 python 脚本的 bin 目录中）。
-下载最新 azcopy 工具：
+备份到 Azure blob 存储是一种经济高效且快速的方法，可用于保存基于 ANF 的 HANA 数据库存储快照备份。 若要将快照保存到 Azure Blob 存储，AzCopy 工具是首选工具。 下载此工具的最新版本并安装（例如在安装 GitHub 中的 python 脚本的 bin 目录中）。
+下载最新 AzCopy 工具：
 
 ```
 root # wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1

@@ -2,18 +2,18 @@
 title: Azure Front Door 标准版/高级版的监视指标
 description: 本文介绍了 Azure Front Door 标准版/高级版的监视指标。
 services: frontdoor
-author: duongau
+author: duau
 manager: KumudD
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: a22e3825764f8b727802a1d78f2e02011cf7660a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: bb10fb337972db2696960b530f2d7538bd36a2fb
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110793518"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101098444"
 ---
 # <a name="real-time-monitoring-in-azure-front-door-standardpremium"></a>Azure Front Door 标准版/高级版中的实时监视
 
@@ -22,11 +22,11 @@ ms.locfileid: "110793518"
 
 Azure Front Door 标准版/高级版与 Azure Monitor 集成，具有 11 个指标，可帮助实时监视 Azure Front Door 标准版/高级版，从而跟踪、排查和调试问题。  
 
-在 Azure Front Door 标准版/高级版中，每隔 60 秒衡量并发送一次指标。 最长 3 分钟后，这些指标才会显示在门户中。 依据选择，指标以图表或网格形式显示，并可通过门户、PowerShell、CLI 和 API 进行访问。 有关详细信息，请参阅  [Azure Monitor 指标](../../azure-monitor/essentials/data-platform-metrics.md)。  
+在 Azure Front Door 标准版/高级版中，每隔 60 秒衡量并发送一次指标。 最长 3 分钟后，这些指标才会显示在门户中。 依据选择，指标以图表或网格形式显示，并可通过门户、PowerShell、CLI 和 API 进行访问。 有关详细信息，请参阅  [Azure Monitor 指标](../../azure-monitor/platform/data-platform-metrics.md)。  
 
 默认指标是免费的。 但若启用其他指标，则需额外收费。 
 
-可以为每个指标配置警报，例如 4XXErrorRate 或5XXErrorRate 的阈值。 当错误率超过阈值时，将按配置触发警报。 有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理指标警报](../../azure-monitor/alerts/alerts-metric.md)。 
+可以为每个指标配置警报，例如 4XXErrorRate 或5XXErrorRate 的阈值。 当错误率超过阈值时，将按配置触发警报。 有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理指标警报](../../azure-monitor/platform/alerts-metric.md)。 
 
 > [!IMPORTANT]
 > Azure Front Door 标准版/高级版（预览版）目前以公共预览版提供。
@@ -39,7 +39,7 @@ Azure Front Door 标准版/高级版与 Azure Monitor 集成，具有 11 个指�
 | ------------- | ------------- | ------------- |
 | 字节命中率 | 从 AFD 缓存的流出量占总流出量的百分比。 </br> **字节命中率** =（从边缘的流出量 - 从源点的流出量）/从边缘的流出量。 </br> **字节命中率计算中不包含的方案**：</br> 1.通过规则引擎或查询字符串缓存行为，显式配置无缓存。 </br> 2.显式配置了包含无存储或专用缓存的缓存控制指令。 </br>3.如果大多数流量转发到源点，而不是根据配置或方案从缓存提供，则字节命中率可能较低。 | 端点 |
 | RequestCount | 由 CDN 为之服务的客户端请求数。 | 终结点、客户端所在国家/地区、客户端所在区域、HTTP 状态、HTTP 状态组 |
-| ResponseSize | 以响应的形式从 Front Door 发送到客户端的字节数。 |终结点、客户端所在国家/地区、客户端所在区域、HTTP 状态、HTTP 状态组 |
+| ResponseSize | 由 AFD 为之服务的客户端请求数。 |终结点、客户端所在国家/地区、客户端所在区域、HTTP 状态、HTTP 状态组 |
 | TotalLatency | **至 CDN 发送到客户端的最后一条响应为止**，CDN 收到客户端请求的总时间。 |终结点、客户端所在国家/地区、客户端所在区域、HTTP 状态、HTTP 状态组 |
 | RequestSize | 以请求形式从客户端发送到 AFD 的字节数。 | 终结点、客户端所在国家/地区、客户端所在区域、HTTP 状态、HTTP 状态组 |
 | 4XX % ErrorRate | 响应状态代码为 4XX 的所有客户端请求所占的百分比。 | 终结点、客户端所在国家/地区、客户端所在区域 |
@@ -75,7 +75,7 @@ Azure Front Door 标准版/高级版与 Azure Monitor 集成，具有 11 个指�
 
 1. 为“指标”部分中列出的指标选择“新建警报规则”。
 
-警报将根据 Azure Monitor 进行收费。 有关警报的详细信息，请参阅 [Azure Monitor 警报](../../azure-monitor/alerts/alerts-overview.md)。
+警报将根据 Azure Monitor 进行收费。 有关警报的详细信息，请参阅 [Azure Monitor 警报](../../azure-monitor/platform/alerts-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

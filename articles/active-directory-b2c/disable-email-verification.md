@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 08/25/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0f70c8d501a7d56f4bc29e0f2b065760cad625e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7aab8497baa5c6b9a53a98ed76e6760fa54ffb0
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97585013"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864432"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>客户在 Azure Active Directory B2C 中注册期间禁用电子邮件验证
 
@@ -44,7 +44,7 @@ ms.locfileid: "97585013"
 1. 使用顶部菜单中的“目录 + 订阅”筛选器来选择包含 Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择“用户流”。
-1. 选择要禁用电子邮件验证的用户流。 例如，*B2C_1_signinsignup*。
+1. 选择要禁用电子邮件验证的用户流。
 1. 选择“页面布局”。
 1. 选择“本地帐户注册页”。
 1. 在 **用户属性** 下，选择“电子邮件地址”。
@@ -84,7 +84,7 @@ LocalAccountSignUpWithLogonEmail 是一个[自断言](self-asserted-technical-pr
 1. 选择“用户流”。
 1. 选择要禁用电子邮件验证的用户流。 例如，*B2C_1_signinsignup*。
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击“运行用户流”
 1. 你应该能够使用电子邮件地址注册，而无需验证。
 

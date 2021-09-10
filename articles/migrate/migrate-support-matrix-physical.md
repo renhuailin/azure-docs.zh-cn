@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 2d68a74332ef77694d44597e6f879858fa0051bb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 808f7a23a0be389703f2a805407b6ce725ce920a
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726226"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123315545"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>物理服务器发现与评估的支持矩阵 
 
@@ -34,6 +34,10 @@ ms.locfileid: "121726226"
 
 **物理服务器部署：** 物理服务器可以是独立服务器，也可以部署到群集中。
 
+服务器类型：在本地或 AWS、GCP、Xen 等其他云上运行的裸机服务器、虚拟化服务器。
+>[!Note]
+> 目前，Azure Migrate 不支持发现半虚拟化服务器。 
+
 **操作系统：** 可以对所有 Windows 和 Linux 操作系统进行迁移评估。
 
 **权限：**
@@ -46,7 +50,7 @@ ms.locfileid: "121726226"
 - 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。 
 - 如果远程管理用户组不存在，请将用户帐户添加到以下组：WinRMRemoteWMIUsers_。
 - 该帐户需要拥有这些权限才能让设备创建与服务器的 CIM 连接，并从[此处](migrate-appliance.md#collected-data---physical)列出的 WMI 类中拉取所需的配置和性能元数据。
-- 在某些情况下，将帐户添加到这些组可能不会从 WMI 类返回所需的数据，因为该帐户可能由 [UAC](/windows/win32/wmisdk/user-account-control-and-wmi) 筛选。 要绕过 UAC 筛选，用户帐户需在目标服务器上的 CIMV2 命名空间和子命名空间中拥有所需的权限。 可按[此处](troubleshoot-appliance.md#access-is-denied-when-connecting-to-physical-servers-during-validation)所述的步骤启用所需的权限。
+- 在某些情况下，将帐户添加到这些组可能不会从 WMI 类返回所需的数据，因为该帐户可能由 [UAC](/windows/win32/wmisdk/user-account-control-and-wmi) 筛选。 要绕过 UAC 筛选，用户帐户需在目标服务器上的 CIMV2 命名空间和子命名空间中拥有所需的权限。 可按[此处](troubleshoot-appliance.md#access-is-denied-error-occurs-when-you-connect-to-physical-servers-during-validation)所述的步骤启用所需的权限。
 
     > [!Note]
     > 对于 Windows Server 2008 和 2008 R2，请确保在服务器上安装了 WMF 3.0。

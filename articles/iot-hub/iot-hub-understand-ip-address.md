@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/21/2021
-ms.openlocfilehash: 053ba5b768e9a09eb50f71a8296d42f85a9e4515
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: a2c500072dfd1137f14d7ae663c6736bf6328c33
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861208"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122866308"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT 中心 IP 地址
 
@@ -30,18 +30,18 @@ IoT 中心公共终结点的 IP 地址前缀会定期发布在 _AzureIoTHub_ [�
 | 确保 IoT 中心设备终结点仅接收来自你的设备和网络资产的连接 | [设备到云](./iot-hub-devguide-messaging.md)和[云到设备](./iot-hub-devguide-messages-c2d.md)的消息传送、[直接方法](./iot-hub-devguide-direct-methods.md)、[设备和模块孪生](./iot-hub-devguide-device-twins.md)以及[设备流](./iot-hub-device-streams-overview.md) | 使用 IoT 中心 [IP 筛选功能](iot-hub-ip-filtering.md)允许来自你的设备和网络资产 IP 地址的连接（参阅[限制](#limitations-and-workarounds)部分）。 | 
 | 确保只能从你的网络资产访问路由的自定义终结点资源（存储帐户、服务总线和事件中心） | [消息路由](./iot-hub-devguide-messages-d2c.md) | 遵循有关限制连接的资源指导（例如，通过 [防火墙规则](../storage/common/storage-network-security.md)、[专用链接](../private-link/private-endpoint-overview.md)或 [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)进行限制）；使用 _AzureIoTHub_ 服务标记发现 IoT 中心 IP 地址前缀，并在资源的防火墙配置中为这些 IP 前缀添加“允许”规则（参阅 [限制](#limitations-and-workarounds)部分）。 |
 
+## <a name="best-practices"></a>最佳做法
 
+* IoT 中心的 IP 地址可能会在没有通知的情况下更改。 为了最大限度地减少中断，请尽可能将 IoT 中心主机名（例如，myhub.azure-devices.net）用于网络和防火墙配置。 
 
-## <a name="best-practices"></a>最佳实践
+* 对于没有域名解析 (DNS) 的受约束 IoT 系统，IoT 中心 IP 地址范围会在更改生效之前定期通过服务标记发布。 因此，必须制定流程来定期检索并使用最新的服务标记。 可以通过[服务标记发现 API](../virtual-network/service-tags-overview.md#service-tags-on-premises) 自动执行此进程。 请注意，服务标记发现 API 目前仍为预览版，在某些情况下，它可能不会生成标记和 IP 地址的完整列表。 在发现 API 推出正式版之前，请考虑使用[可下载 JSON 格式的服务标记](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。 
 
-* 在设备的防火墙配置中添加“允许”规则时，最好是提供[适用协议使用的特定端口](./iot-hub-devguide-protocols.md#port-numbers)。
-
-* IoT 中心的 IP 地址前缀随时可能更改。 这些更改在生效之前通过服务标记定期发布。 因此，必须制定流程来定期检索并使用最新的服务标记。 可以通过[服务标记发现 API](../virtual-network/service-tags-overview.md#service-tags-on-premises) 自动执行此进程。 请注意，服务标记发现 API 目前仍为预览版，在某些情况下，它可能不会生成标记和 IP 地址的完整列表。 在发现 API 推出正式版之前，请考虑使用[可下载 JSON 格式的服务标记](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。 
 
 * 使用 *AzureIoTHub.[region name]* 标记来标识特定区域内 IoT 中心终结点使用的 IP 前缀。 考虑到数据中心灾难恢复或[区域故障转移](iot-hub-ha-dr.md)，请确保还启用了到 IoT 中心异地对区域的 IP 前缀的连接。
 
 * 在 IoT 中心设置防火墙规则可能会阻止所需的连接，导致无法对 IoT 中心运行 Azure CLI 和 PowerShell 命令。 为避免出现这种情况，可为客户端的 IP 地址前缀添加“允许”规则，再次使得 CLI 或 PowerShell 客户端能够与 IoT 中心通信。  
 
+* 在设备的防火墙配置中添加“允许”规则时，最好是提供[适用协议使用的特定端口](./iot-hub-devguide-protocols.md#port-numbers)。
 
 ## <a name="limitations-and-workarounds"></a>限制和解决方法
 

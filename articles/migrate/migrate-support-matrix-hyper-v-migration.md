@@ -6,12 +6,12 @@ ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 1e203fb70bd13d1ab6681d0b579ffff8458d400d
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 267b05a13d951e111f056097c6d7dc8f3edef221
+ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721173"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123187282"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V 迁移的支持矩阵
 
@@ -45,7 +45,7 @@ ms.locfileid: "114721173"
 | **Linux 启动**                 | 如果 /boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不是分布在多个磁盘上。<br/> 如果 /boot 是根 (/) 分区的一部分，则“/”分区应在 OS 磁盘上，而不是分布在其他磁盘上。 |
 | **UEFI 启动**                  | 支持。 基于 UEFI 的 VM 将迁移到 Azure 第 2 代 VM。  |
 | **UEFI - 安全启动**         | 不支持迁移。|
-| **磁盘大小**                  | 最大 2 TB OS 磁盘，8 TB 数据磁盘。|
+| **磁盘大小**                  | 最大 2 TB OS 磁盘，4 TB 数据磁盘。|
 | **磁盘编号** | 每个 VM 最多 16 个磁盘。|
 | **加密磁盘/卷**    | 不支持迁移。|
 | **RDM/传递磁盘**      | 不支持迁移。|

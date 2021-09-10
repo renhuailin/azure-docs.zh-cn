@@ -132,6 +132,8 @@
           maintainContext: false
     - name: 受支持的 Kubernetes 版本
       href: supported-kubernetes-versions.md
+    - name: 云控制器管理器（预览版）
+      href: out-of-tree.md
     - name: 主机 OS 中的安全强化
       href: security-hardened-vm-host-image.md
     - name: Azure Kubernetes 服务诊断概述
@@ -400,7 +402,7 @@
           href: deployment-center-launcher.md
         - name: 适用于 Kubernetes 的 GitHub 操作
           href: ../aks/kubernetes-action.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 常见问题
           href: troubleshooting.md

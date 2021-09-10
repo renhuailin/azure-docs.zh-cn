@@ -5,22 +5,25 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 08/31/2021
 ms.author: victorh
-ms.openlocfilehash: 50a46556e960070eaedcd03d356eeaa72f872ac7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6d4997253c1b6acfd66d4b126a9249956b18242f
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110058413"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123305397"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door-service"></a>什么是 Azure Front Door 服务的域中的地区筛选？
 
-默认情况下，无论发出请求的用户位于哪里，Azure Front Door 服务都会响应用户请求。 但是，在某些情况下，可能需要按国家/地区限制对 Web 应用程序的访问。 Front Door 上的 Web 应用程序防火墙 (WAF) 服务使你可以使用终结点上特定路径的自定义访问规则来定义策略，以允许或阻止来自指定国家/地区的访问。
+默认情况下，无论请求来自何处，Azure Front Door 都将对所有用户请求做出响应。 在某些情况下，你可能想要按国家/地区限制对 Web 应用程序的访问。 Front Door 中的 Web 应用程序防火墙 (WAF) 服务使你可以使用终结点上特定路径的自定义访问规则来定义策略，以允许或阻止来自指定国家/地区的访问。
 
-WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和优先级组成。 在匹配条件中，请定义匹配变量、运算符和匹配值。  对于地区筛选规则，匹配变量为 REMOTE_ADDR，运算符为 GeoMatch，值为相关的国家/地区代码（两个字母）。 可以将 GeoMatch 条件与 REQUEST_URI 字符串匹配条件组合在一起，创建一个基于路径的地区筛选规则。
+WAF 策略包括一组自定义规则。 规则由匹配条件、操作和优先级组成。 在匹配条件中，请定义匹配变量、运算符和匹配值。 对于地区筛选规则，匹配变量为 REMOTE_ADDR，运算符为 GeoMatch，值为相关的国家/地区代码（两个字母）。 “ZZ”国家/地区代码或“未知”国家/地区捕获尚未映射到数据集中的国家/地区的 IP 地址。 可以将 ZZ 添加到匹配条件，以避免误报。 可以将 GeoMatch 条件与 REQUEST_URI 字符串匹配条件组合在一起，创建一个基于路径的地区筛选规则。
 
-可以通过 [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) 或[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-geo-filtering)为 Front Door 配置地区筛选策略。
+可以通过 [Azure PowerShell](../../frontdoor/front-door-tutorial-geo-filtering.md) 或[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-geo-filtering)为 Front Door 配置地区筛选策略。
+
+> [!IMPORTANT]
+> 无论何时使用地区筛选，都要包含国家/地区代码“ZZ”。 “ZZ”国家/地区代码（或“未知”国家/地区）捕获尚未映射到数据集中的国家/地区的 IP 地址。 这样可以避免假正。
 
 ## <a name="countryregion-code-reference"></a>国家/地区代码参考
 
@@ -58,6 +61,7 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | BZ | 伯利兹|
 | CA | Canada|
 | CD | 刚果民主共和国|
+| CG | 刚果民主共和国 |
 | CF | 中非共和国|
 | CH | 瑞士|
 | CI | 科特迪瓦|

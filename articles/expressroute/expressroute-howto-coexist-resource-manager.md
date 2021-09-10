@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 3b6ed39c11e3f90b986ef904ff3f8e9ff3158d0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc202359e90024ee73c3041013eef9c2da814045
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574163"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835827"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 和站点到站点共存连接
 > [!div class="op_single_selector"]
@@ -37,6 +37,7 @@ ms.locfileid: "103574163"
 
 ## <a name="limits-and-limitations"></a>限制和局限性
 * **仅支持基于路由的 VPN 网关。** 必须使用基于路由的 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 还可以将基于路由的 VPN 网关与为“基于策略的流量选择器”配置的 VPN 连接一起使用，如[连接到多个基于策略的 VPN 设备](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。
+* 基本 SKU 不支持 ExpressRoute-VPN 网关共存配置。
 * Azure VPN 网关的 ASN 必须设置为 65515。 Azure VPN 网关支持 BGP 路由协议。 要使 ExpressRoute 和 Azure VPN 协同工作，必须将 Azure VPN 网关的自治系统编号保留为其默认值 65515。 如果先前选择的是其他 ASN（而不是 65515），并且将设置更改为 65515，则必须重置 VPN 网关才能使设置生效。
 * 网关子网必须是 /27 或更短的前缀（例如 /26、/25），否则，添加 ExpressRoute 虚拟网络网关时将收到错误消息。
 * 不支持双堆栈 VNet 中的共存。 如果使用的是 ExpressRoute IPv6 支持和双堆栈 ExpressRoute 网关，则将无法与 VPN 网关共存。

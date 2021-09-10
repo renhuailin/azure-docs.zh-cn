@@ -5,16 +5,17 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: bdd47962b56324f9832070b13644b5489ee38989
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 91230df3223f1227e2126ad48beaba781a3c28cc
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727236"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214971"
 ---
 # <a name="use-azure-private-link-to-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络连接到 Azure Monitor
 
-通过 [Azure 专用链接](../../private-link/private-link-overview.md)，可以使用专用终结点将 Azure 平台即服务 (PaaS) 服务安全地链接到虚拟网络。 如果你有很多的服务，只需为每个资源设置一个终结点即可。 不过，Azure Monitor 是不同互连服务的集合，它们相互协同，共同监视你的工作负载。 
+通过 [Azure 专用链接](../../private-link/private-link-overview.md)，可以使用专用终结点将 Azure 平台即服务 (PaaS) 资源安全地链接到虚拟网络。 Azure Monitor 是不同互连服务的集合，它们相互协同，共同监视你的工作负载。 Azure Monitor 专用链接将专用终结点连接到一组 Azure Monitor 资源，从而定义监视网络的边界。 该集合称为 Azure Monitor 专用链接范围 (AMPLS)。
+
 
 ## <a name="advantages"></a>优势
 
@@ -30,19 +31,21 @@ ms.locfileid: "121727236"
 
 ## <a name="how-it-works"></a>工作原理
 
-Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接（及包含它们的 VNet）连接到一个或多个 Azure Monitor 资源 - Log Analytics 工作区和 Application Insights 组件。
+### <a name="overview"></a>概述
+Azure Monitor 专用链接范围将专用终结点（及包含它们的 VNet）连接到一个或多个 Azure Monitor 资源 - Log Analytics 工作区和 Application Insights 组件。
 
 ![基本资源拓扑关系图](./media/private-link-security/private-link-basic-topology.png)
 
 * VNet 中的专用终结点允许其通过网络池中的专用 IP 而不是终结点的公共 IP 来访问 Azure Monitor 终结点。 这样就可以继续使用 Azure Monitor 资源，无需向不需要的出站流量开放 VNet。 
-* 从专用终结点到 Azure Monitor 资源的流量将通过 Microsoft Azure 主干，而不会路由到公用网络。 
+* 从专用终结点到 Azure Monitor 资源的流量将通过 Microsoft Azure 主干，而不会路由到公用网络。
+* 可以将 Azure Monitor 专用链接范围（或特定网络）配置为使用首选访问模式 - 仅允许到专用链接资源的流量，或允许到专用链接资源和非专用链接资源（AMPLS 外的资源）的流量
 * 可以配置每个工作区或组件，以允许或拒绝从公用网络引入和查询。 这提供了资源级保护，因此可以控制流入特定资源的流量。
 
 > [!NOTE]
-> 一个 Azure Monitor 资源可属于多个 AMPLS，但无法将一个 VNet 连接到多个 AMPLS。 
+> 一个 VNet 只能连接到单个 AMPLS，其中列出了最多 50 个可以通过专用链接访问的资源。
 
-### <a name="azure-monitor-private-links-and-your-dns-its-all-or-nothing"></a>Azure Monitor 专用链接和 DNS：全有或全无
-一些 Azure Monitor 服务使用全局终结点，这意味着它们会针对任何工作区/组件提供请求。 设置专用链接连接时，DNS 会更新为将 Azure Monitor 终结点映射到专用 IP，以便通过专用链接发送流量。 当涉及到全局终结点时，设置专用链接（即使是为单个资源设置）会影响发往所有资源的流量。 换言之，无法做到仅为特定的组件或工作区创建专用链接连接。
+### <a name="azure-monitor-private-link-relies-on-your-dns"></a>Azure Monitor专用链接依赖于 DNS
+设置专用链接连接时，DNS 区域设置为将 Azure Monitor 终结点映射到专用 IP，以便通过专用链接发送流量。 Azure Monitor 使用特定于资源的终结点以及处理多个工作区/组件的流量的区域或全局终结点。 当涉及到区域或全局终结点时，设置专用链接（即使是为单个资源设置）会影响控制发往所有资源的流量的 DNS 映射。 换句话说，发往所有工作区或组件的流量可能会受到单个专用链接设置的影响。
 
 #### <a name="global-endpoints"></a>全局终结点
 最重要的是，发往以下全局终结点的流量将通过专用链接发送：
@@ -53,18 +56,25 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接（及包含它
 
 发往未添加到 AMPLS 的 Application Insights 资源的流量将通不过专用链接验证，因此将会失败。
 
-![“全有或全无”行为示意图](./media/private-link-security/all-or-nothing.png)
-
 #### <a name="resource-specific-endpoints"></a>特定于资源的终结点
-除查询终结点以外的所有 Log Analytics 终结点都特定于工作区。 因此，创建指向特定 Log Analytics 工作区的专用链接不会影响发往其他工作区的引入（或其他）流量，这些流量会继续使用公共 Log Analytics 终结点。 不过，所有查询将通过专用链接发送。
+除查询终结点以外的所有 Log Analytics 终结点都特定于工作区。 因此，创建指向特定 Log Analytics 工作区的专用链接不会影响发往其他工作区的数据引入，这些数据引入会继续使用公共终结点。
 
-### <a name="azure-monitor-private-link-applies-to-all-networks-that-share-the-same-dns"></a>Azure Monitor 专用链接适用于共享同一 DNS 的所有网络
-某些网络由多个 VNet 或其他互连网络组成。 如果这些网络共享同一 DNS，则在其中任一网络中设置专用链接都会更新 DNS，并影响所有网络中的流量。 由于上述“全有或全无”行为，注意到这一点特别重要。
 
-![多个 VNet 中的 DNS 替代示意图](./media/private-link-security/dns-overrides-multiple-vnets.png)
+> [!NOTE]
+> 仅为共享同一 DNS 的所有网络创建单个 AMPLS。 创建多个 AMPLS 资源将导致 Azure Monitor DNS 终结点相互替代，并破坏现有环境。
 
-在上面的关系图中，VNet 10.0.1.x 首先连接到 AMPLS1，并将 Azure Monitor 的全局终结点映射到其范围内的 IP。 稍后，VNet 10.0.2.x 连接到 AMPLS2，并替代具备其范围内 IP 的“相同全局终结点”的 DNS 映射。 由于这些 VNet 不对等互连，因此第一个 VNet 现在无法访问这些终结点。
+### <a name="private-link-access-modes-private-only-vs-open"></a>专用链接访问模式：仅专用与公开
+正如 [Azure Monitor 专用链接依赖于 DNS](#azure-monitor-private-link-relies-on-your-dns) 中所述，对于共享同一 DNS 的所有网络，只应创建单个 AMPLS 资源。 因此，使用单个全球或区域 DNS 的组织实际上有单个专用链接来管理发往所有全球或区域网络中所有 Azure Monitor 资源的流量。
 
+对于 2021 年 9 月之前创建的专用链接，这意味着 - 
+* 日志引入仅适用于 AMPLS 中的资源。 无论订阅或租户如何，都拒绝引入所有其他资源（跨共享同一 DNS 的所有网络）。
+* 查询具有更开放的行为，允许查询请求甚至访问不在 AMPLS 中的资源。 这里的目的是避免将客户查询中断到不在 AMPLS 中的资源，并允许以资源为中心的查询返回完整的结果集。
+
+然而，事实证明，这种行为对某些客户来说过于严格（因为它中断了对不在 AMPLS 中的资源的引入），对其他客户来说过于宽松（因为它允许查询不在 AMPLS 中的资源）并且通常会令人困惑。
+
+因此，从 2021 年 9 月开始创建的专用链接具有新的强制性 AMPLS 设置，明确设置专用链接应如何影响网络流量。 创建新的 AMPLS 资源时，现在需要选择所需的访问模式，分别用于引入和查询。 
+* 仅专用模式 - 仅允许流量发往专用链接资源
+* 公开模式 - 使用专用链接与 AMPLS 中的资源进行通信，但也允许流量继续发往其他资源。 请参阅[控制专用链接如何应用于网络](./private-link-design.md#control-how-private-links-apply-to-your-networks)，了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 - [设计专用链接设置](private-link-design.md)

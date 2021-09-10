@@ -1,22 +1,21 @@
 ---
 title: 使用 Azure 资源管理器模板（ARM 模板）创建 Azure 数据工厂
 description: 使用 Azure 资源管理器模板（ARM 模板）创建示例 Azure 数据工厂管道。
-services: data-factory
 ms.service: data-factory
+ms.subservice: tutorials
 tags: azure-resource-manager
-ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
-ms.reviewer: maghan, jingwang
+author: ssabat
+ms.author: susabat
+ms.reviewer: jburchel, jingwang
 ms.topic: quickstart
-ms.custom: subject-armqs
-ms.date: 07/16/2020
-ms.openlocfilehash: eb423ebd354adeb8273755d34323b283d53eb8b5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: subject-armqs, devx-track-azurepowershell
+ms.date: 07/05/2021
+ms.openlocfilehash: b6489f692dc8fabf63daab0cf13f1036e944e77e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87283888"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731524"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 数据工厂
 
@@ -26,7 +25,7 @@ ms.locfileid: "87283888"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）来创建 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹**复制**到另一个文件夹。 有关如何使用 Azure 数据工厂**转换**数据的教程，请参阅[教程：使用 Spark 转换数据](transform-data-using-spark.md)。
+本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）来创建 Azure 数据工厂。 在此数据工厂中创建的管道会将数据从 Azure Blob 存储中的一个文件夹 **复制** 到另一个文件夹。 有关如何使用 Azure 数据工厂 **转换** 数据的教程，请参阅 [教程：使用 Spark 转换数据](transform-data-using-spark.md)。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -35,7 +34,7 @@ ms.locfileid: "87283888"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.datafactory%2Fdata-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,9 +55,9 @@ Jane, Doe
 
 ## <a name="review-template"></a>审阅模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-data-factory-v2-blob-to-blob-copy/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datafactory&pageNumber=1&sort=Popular)。
 
-:::code language="json" source="~/quickstart-templates/101-data-factory-v2-blob-to-blob-copy/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.datafactory/data-factory-v2-blob-to-blob-copy/azuredeploy.json":::
 
 该模板中定义了 Azure 资源：
 
@@ -74,7 +73,7 @@ Jane, Doe
 
 1. 选择下图登录到 Azure 并打开一个模板。 此模板创建 Azure 数据工厂帐户、存储帐户和 blob 容器。
 
-    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
+    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.datafactory%2Fdata-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
 
 2. 选择或输入以下值。
 
@@ -94,23 +93,23 @@ Jane, Doe
 
 1. 选择“转到资源组”。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="部署 ADF ARM 模板":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-go-to-resource-group.png" alt-text="资源组":::
 
 2.  验证是否已创建 Azure 数据工厂。
     1. Azure 数据工厂名称的格式为 - datafactory\<uniqueid\>。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="部署 ADF ARM 模板":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-sample.png" alt-text="数据工厂示例":::
 
 2. 验证是否已创建存储帐户。
     1. 存储帐户名称的格式为 - storage\<uniqueid\>。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="部署 ADF ARM 模板":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-storage-account.png" alt-text="存储帐户":::
 
 3. 选择创建的存储帐户，并选择“容器”。
     1. 在“容器”页上，选择创建的 blob 容器。
         1. blob 容器名称的格式为 - blob\<uniqueid\>。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="部署 ADF ARM 模板":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-blob-container.png" alt-text="blob 容器":::
 
 ### <a name="upload-a-file"></a>上传文件
 
@@ -122,31 +121,31 @@ Jane, Doe
 
 4. 在“上传到文件夹”框中，输入“输入”。
 
-5. 选择“上传”按钮  。 应该会在列表中看到 **emp.txt** 文件和上传状态。
+5. 选择“上传”按钮。 应该会在列表中看到 **emp.txt** 文件和上传状态。
 
 6. 选择“关闭”图标 (X) 以关闭“上传 Blob”页面  。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="部署 ADF ARM 模板":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-upload-blob-file.png" alt-text="将文件上传到输入文件夹":::
 
 使容器页保持打开状态，因为你可以使用它在快速入门结束时验证输出。
 
 ### <a name="start-trigger"></a>启动触发器
 
-1. 导航到“数据工厂”页，选择创建的数据工厂。 
+1. 导航到“数据工厂”页，选择创建的数据工厂。
 
-2. 选择“创建者和监视器”磁贴。 
+2. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”。 
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author-monitor-tile.png" alt-text="部署 ADF ARM 模板":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-open-tile.png" alt-text="创建者和监视器":::
 
 2. 选择“创作”选项卡 :::image type="icon" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-author.png" border="false":::。
 
 3. 选择创建的管道 - ArmtemplateSampleCopyPipeline。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="部署 ADF ARM 模板":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-pipelines.png" alt-text="ARM 模板管道":::
 
 4. 选择“添加触发器” > “立即触发器”。
 
-    触发器:::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="-":::
+    触发器:::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-trigger-now.png" alt-text="":::
 
 5. 在“管道运行”下的右窗格中，选择“确定”。
 
@@ -156,31 +155,31 @@ Jane, Doe
 
 2. 此时会看到与管道运行相关联的活动运行。 在本快速入门中，管道只有一个活动，其类型为：“复制”。 因此会看到该活动运行。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="部署 ADF ARM 模板":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-successful-run.png" alt-text="成功运行":::
 
 ### <a name="verify-the-output-file"></a>验证输出文件
 
-该管道自动在 blob 容器中创建一个输出文件夹。 然后将 emp.txt 文件从 input 文件夹复制到 output 文件夹。 
+该管道自动在 blob 容器中创建一个输出文件夹。 然后将 emp.txt 文件从 input 文件夹复制到 output 文件夹。
 
-1. 在 Azure 门户的“容器”页中选择“刷新”，以查看输出文件夹。 
+1. 在 Azure 门户的“容器”页中选择“刷新”，以查看输出文件夹。
 
 2. 在文件夹列表中，选择“output”。
 
-3. 确认 **emp.txt** 已复制到 output 文件夹。 
+3. 确认 **emp.txt** 已复制到 output 文件夹。
 
-    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="部署 ADF ARM 模板":::
+    :::image type="content" source="media/quickstart-create-data-factory-resource-manager-template/data-factory-arm-template-output.png" alt-text="输出":::
 
 ## <a name="clean-up-resources"></a>清理资源
 
 可以通过两种方式清理在快速入门中创建的资源。 可以[删除 Azure 资源组](../azure-resource-manager/management/delete-resource-group.md)，其中包括资源组中的所有资源。 若要使其他资源保持原封不动，请仅删除在此教程中创建的数据工厂。
 
-删除资源组时会删除所有资源，包括其中的数据工厂。 运行以下命令可以删除整个资源组： 
+删除资源组时会删除所有资源，包括其中的数据工厂。 运行以下命令可以删除整个资源组：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
-如果只需删除数据工厂，而不是整个资源组，请运行以下命令： 
+如果只需删除数据工厂，而不是整个资源组，请运行以下命令：
 
 ```azurepowershell-interactive
 Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName

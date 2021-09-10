@@ -4,22 +4,22 @@ titleSuffix: Azure Digital Twins
 description: 了解如何使用 Azure Functions 创建一个函数，该函数可使用孪生图和 Azure 数字孪生通知来更新 Azure Maps 室内地图。
 author: baanders
 ms.author: baanders
-ms.date: 1/19/2021
+ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: dd161468cda08a0046f2f46a79a973e4bbf8b49a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 494e4b048fc33a0cd7fcfc6c354a7f757298ebef
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735297"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123223475"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 数字孪生更新 Azure Maps 室内地图
 
 本文展示了通过 [Azure Maps](../azure-maps/about-azure-maps.md) 使用 Azure 数字孪生数据更新室内地图上显示的信息时需要执行的步骤。 Azure 数字孪生存储 IoT 设备关系图，并将遥测数据路由到不同的终结点，这使它成为用于更新地图上的信息覆盖的完美服务。
 
-本操作说明将涵盖以下内容：
+本指南介绍：
 
 1. 配置你的 Azure 数字孪生实例，以将孪生体更新事件发送到 [Azure Functions](../azure-functions/functions-overview.md) 中的函数。
 2. 创建一个函数来更新 Azure Maps 室内地图特征状态集。
@@ -91,7 +91,7 @@ az functionapp config appsettings set --name <your-function-app-name>  --resourc
 
 若要查看实时更新的温度，请执行以下步骤：
 
-1. 通过运行 Azure 数字孪生[连接端到端解决方案](tutorial-end-to-end.md)中的 DeviceSimulator 项目，开始发送模拟的 IoT 数据。 有关此操作的说明，请参阅配置并运行模拟部分。
+1. 通过运行 Azure 数字孪生[连接端到端解决方案](tutorial-end-to-end.md)中的 DeviceSimulator 项目，开始发送模拟的 IoT 数据。 有关此过程的说明，请参阅[配置并运行模拟](././tutorial-end-to-end.md#configure-and-run-the-simulation)部分。
 2. 使用 [Azure Maps Indoor](../azure-maps/how-to-use-indoor-module.md) 模块呈现你在 Azure Maps Creator 中创建的室内地图。
     1. 将室内地图[使用 Azure Maps Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md)的[示例：使用 Indoor Maps 模块](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)部分的 HTML 复制到一个本地文件。
     1. 将本地 HTML 文件中的订阅密钥、tilesetId 和 statesetID 替换为你的值。
@@ -103,11 +103,11 @@ az functionapp config appsettings set --name <your-function-app-name>  --resourc
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>将地图信息存储在 Azure 数字孪生中
 
-现在，你已经有了用来更新地图信息的硬编码解决方案，可以使用 Azure 数字孪生图来存储更新室内地图所需的所有信息了。 这将包括每个地图和位置的相应状态集 ID、地图订阅 ID 和特征 ID。 
+现在，你已经有了用来更新地图信息的硬编码解决方案，可以使用 Azure 数字孪生图来存储更新室内地图所需的所有信息了。 此信息将包括每个地图和位置的相应状态集 ID、地图订阅 ID 和特征 ID。 
 
 此特定示例的解决方案将涉及的内容包括：更新每个顶级空间以使其具有状态集 ID 和地图订阅 ID 属性，以及更新每个房间以使其具有特征 ID。 你需要在初始化孪生图时将这些值设置一次，然后就可以针对每个孪生体更新事件查询这些值。
 
-你可以根据拓扑配置将这三个属性存储在与地图的粒度相关的不同级别。
+根据拓扑配置，可以将这三个属性存储在与地图的粒度相关的不同级别。
 
 ## <a name="next-steps"></a>后续步骤
 

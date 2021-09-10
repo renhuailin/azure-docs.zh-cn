@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5187f30bd1de87e930e1a2d28ab9c68ec861cff6
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5bdae2055f46f6f933325c95b86d427951c6cfbc
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321512"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123222669"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>创建应用程序网关自定义错误页
 
@@ -41,9 +41,9 @@ ms.locfileid: "108321512"
 - 该位置的可公开访问的 Azure 存储 blob。
 - *.htm 或 *.html 扩展类型。 
 
-错误页的大小必须小于 1 MB。 如果错误页中链接了图像，则它们必须是可公开访问的绝对 URL 或者是嵌入在自定义错误页中的 base64 编码的图像。 当前不支持为同一 blob 位置中的图像使用相对链接。 
+错误页的大小必须小于 1 MB。 可以引用此 HTML 文件的内部或外部图像/CSS。 对于在外部引用的资源，请使用可公开访问的绝对 URL。 在使用内部图像（Base64 编码的内联图像）或 CSS 时，请注意 HTML 文件大小。 目前不支持为同一 blob 位置中的文件使用相对链接。
 
-在你指定错误页后，应用程序网关会从存储 blob 位置下载它并将其保存到本地应用程序网关缓存中。 之后，将会直接从应用程序网关提供该错误页。 若要修改现有的自定义错误页，必须在应用程序网关配置中指向一个不同的 blob 位置。 应用程序网关不会定期检查 blob 位置来提取新版本。
+在你指定错误页后，应用程序网关会从存储 blob 位置下载它并将其保存到本地应用程序网关缓存中。 然后，该 HTML 页由应用程序网关提供，而外部引用的资源则由客户端直接提取。 若要修改现有的自定义错误页，必须在应用程序网关配置中指向一个不同的 blob 位置。 应用程序网关不会定期检查 blob 位置来提取新版本。
 
 ## <a name="portal-configuration"></a>门户配置
 

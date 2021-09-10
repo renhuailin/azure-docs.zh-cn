@@ -6,23 +6,20 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 0666cce0668d315c34a9d6cade1f8d6e087f20dc
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 3f9c22a690859b459b6bb748c3b1001c4aa7660d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114674394"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "93241746"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>适用于 Azure Database for MySQL 的基础结构双重加密
-
-[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 了解如何使用“如何设置和管理适用于 Azure Database for MySQL 的基础结构双重加密”。
 
 ## <a name="prerequisites"></a>先决条件
 
 * 必须有一个 Azure 订阅，并且是该订阅的管理员。
-* Azure Database for MySQL - 单一服务器应位于常规用途或内存优化定价层和常规用途存储 v2 上。 在进一步继续之前，请参阅[基础结构双重加密](concepts-infrastructure-double-encryption.md#limitations)的限制。
 
 ## <a name="create-an-azure-database-for-mysql-server-with-infrastructure-double-encryption---portal"></a>创建使用基础结构双重加密的 Azure Database for MySQL 服务器 - 门户
 

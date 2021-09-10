@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/25/2021
+ms.date: 08/28/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: e472ab645b9caaffafa393ade675d9fc1b4ba684
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 67dbc1ba66f18bb6d779d1185d863541272acd56
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419190"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451702"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET 中的令牌缓存序列化
 
@@ -82,12 +82,13 @@ public class Startup
              .EnableTokenAcquisitionToCallDownstreamApi(new string[] { scopesToRequest }
                .AddDistributedTokenCaches();
 
-// and then choose your implementation
+// and then choose your implementation of distributed cache
 
 // For instance the distributed in memory cache (not cleared when you stop the app)
-services.AddDistributedMemoryCache()
+services.AddDistributedMemoryCache();
 
 // Or a Redis cache
+// Requires the Microsoft.Extensions.Caching.StackExchangeRedis NuGet package
 services.AddStackExchangeRedisCache(options =>
 {
  options.Configuration = "localhost";
@@ -95,11 +96,22 @@ services.AddStackExchangeRedisCache(options =>
 });
 
 // Or even a SQL Server token cache
+// Requires the Microsoft.Extensions.Caching.SqlServer NuGet package
 services.AddDistributedSqlServerCache(options =>
 {
  options.ConnectionString = _config["DistCache_ConnectionString"];
  options.SchemaName = "dbo";
  options.TableName = "TestCache";
+});
+
+// Or a Cosmos DB cache
+// Requires the Microsoft.Extensions.Caching.Cosmos NuGet package
+services.AddCosmosCache((CosmosCacheOptions cacheOptions) =>
+{
+    cacheOptions.ContainerName = Configuration["CosmosCacheContainer"];
+    cacheOptions.DatabaseName = Configuration["CosmosCacheDatabase"];
+    cacheOptions.ClientBuilder = new CosmosClientBuilder(Configuration["CosmosConnectionString"]);
+    cacheOptions.CreateIfNotExists = true;
 });
 ```
 
@@ -118,15 +130,19 @@ services.AddDistributedSqlServerCache(options =>
 以下代码演示如何将适当分区的内存中令牌缓存添加到应用。
 
 ```CSharp
-#using Microsoft.Identity.Web
-#using Microsoft.Identity.Client
+using Microsoft.Identity.Web;
+using Microsoft.Identity.Client;
+using Microsoft.Extensions.DependencyInjection;
 ```
 
 ```CSharp
 
  private static IConfidentialClientApplication app;
 
- public static async Task<IConfidentialClientApplication> BuildConfidentialClientApplication()
+public static async Task<IConfidentialClientApplication> BuildConfidentialClientApplication(
+  string clientId,
+  CertificateDescription certDescription,
+  string tenant)
  {
   if (app== null)
   {
@@ -139,37 +155,45 @@ services.AddDistributedSqlServerCache(options =>
        .Build();
 
      // Add an in-memory token cache. Other options available: see below
-     app.AddInMemoryTokenCaches();
+     app.AddInMemoryTokenCache();
    }
-   return clientapp;
+   return app;
   }
 ```
 
-### <a name="available-serialization-technologies"></a>可用的序列化技术
+### <a name="available-caching-technologies"></a>可用缓存技术
+
+你可以使用不同的缓存技术，包括 .NET 提供的分布式令牌缓存，而不是使用 `app.AddInMemoryTokenCache();`。
 
 #### <a name="in-memory-token-cache"></a>内存中令牌缓存
 
+示例的内存中令牌缓存序列化非常有用。 如果你不介意令牌缓存在 Web 应用重启后会丢失这一情况，那么它也适用于生产应用程序。
+
 ```CSharp 
      // Add an in-memory token cache
-     app.AddInMemoryTokenCaches();
+     app.AddInMemoryTokenCache();
 ```
 
-#### <a name="distributed-in-memory-token-cache"></a>分布式内存中令牌缓存
+#### <a name="distributed-caches"></a>分布式缓存
+
+如果使用 `app.AddDistributedTokenCache`，则令牌缓存是针对 .NET `IDistributedCache` 实现的适配器，因此允许在分布式内存缓存、Redis 缓存、CosmosDb 或 SQL Server 缓存之间进行选择。 有关 `IDistributedCache` 实现的详细信息，请参阅[分布式内存缓存](/aspnet/core/performance/caching/distributed)。
+
+##### <a name="distributed-in-memory-token-cache"></a>分布式内存中令牌缓存
 
 ```CSharp 
      // In memory distributed token cache
-     app.AddDistributedTokenCaches(services =>
+     app.AddDistributedTokenCache(services =>
      {
        // In net462/net472, requires to reference Microsoft.Extensions.Caching.Memory
        services.AddDistributedMemoryCache();
      });
 ```
 
-#### <a name="sql-server"></a>SQL Server
+##### <a name="sql-server"></a>SQL Server
 
 ```CSharp 
      // SQL Server token cache
-     app.AddDistributedTokenCaches(services =>
+     app.AddDistributedTokenCache(services =>
      {
       services.AddDistributedSqlServerCache(options =>
       {
@@ -189,11 +213,11 @@ services.AddDistributedSqlServerCache(options =>
      });
 ```
 
-#### <a name="redis-cache"></a>Redis 缓存
+##### <a name="redis-cache"></a>Redis 缓存
 
 ```CSharp 
      // Redis token cache
-     app.AddDistributedTokenCaches(services =>
+     app.AddDistributedTokenCache(services =>
      {
        // Requires to reference Microsoft.Extensions.Caching.StackExchangeRedis
        services.AddStackExchangeRedisCache(options =>
@@ -204,13 +228,15 @@ services.AddDistributedSqlServerCache(options =>
       });
 ```
 
-#### <a name="cosmos-db"></a>Cosmos DB
+如果发现令牌获取偶尔需要花费与 Redis 缓存超时一样长的时间，请参阅[禁用缓存同步](#disabling-cache-synchronization)。 
+
+##### <a name="cosmos-db"></a>Cosmos DB
 
 ```CSharp 
       // Cosmos DB token cache
-      app.AddDistributedTokenCaches(services =>
+      app.AddDistributedTokenCache(services =>
       {
-        // Requires to reference Microsoft.Extensions.Caching.Cosmos (preview)
+        // Requires to reference Microsoft.Extensions.Caching.Cosmos
         services.AddCosmosCache((CosmosCacheOptions cacheOptions) =>
         {
           cacheOptions.ContainerName = Configuration["CosmosCacheContainer"];
@@ -222,6 +248,7 @@ services.AddDistributedSqlServerCache(options =>
 ```
 
 ### <a name="disabling-legacy-token-cache"></a>禁用旧式令牌缓存
+
 MSAL 专门提供一些内部代码来实现与旧式 ADAL 缓存的交互。 未同时使用 MSAL 和 ADAL（因而未使用旧式缓存）时，相关的旧式缓存代码不是必要的。 MSAL [4.25.0](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/releases/tag/4.25.0) 增加了禁用旧式 ADAL 缓存代码的功能，并提高了缓存使用性能。 有关禁用旧式缓存之前和之后的性能比较，请参阅拉取请求 [#2309](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/pull/2309)。 按如下所示针对应用程序生成器调用 `.WithLegacyCacheCompatibility(false)`。
 
 ```csharp
@@ -231,6 +258,29 @@ var app = ConfidentialClientApplicationBuilder
     .WithLegacyCacheCompatibility(false)
     .Build();
 ```
+
+### <a name="disabling-cache-synchronization"></a>禁用缓存同步
+
+默认情况下，MSAL 将在每次缓存读取和缓存写入之间锁定机密客户端应用程序级别的缓存访问。 如果缓存序列化程序需要很长时间才会发生超时（Redis 缓存可能会出现这种情况），此锁定可能会成为一个问题。 可以将 `WithCacheSynchronization` 标志设置为 false，以启用乐观缓存锁定策略，这可能会导致更好的性能，尤其是在跨请求重用 ConfidentialClientApplication 对象的情况下。 
+
+```csharp
+var app = ConfidentialClientApplicationBuilder
+    .Create(clientId)
+    .WithClientSecret(clientSecret)
+    .WithCacheSynchronization(false)
+    .Build();
+```
+
+### <a name="monitor-cache-hit-ratios-and-cache-performance"></a>监视缓存命中率和缓存性能
+
+MSAL 公开重要指标作为 [AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata) 对象的一部分： 
+
+| 指标       | 含义     | 何时触发警报？    |
+| :-------------: | :----------: | :-----------: |
+|  `DurationTotalInMs` | MSAL 中花费的总时间，包括网络调用和缓存   | 针对整体高延迟(> 1s)的警报。 值取决于令牌源。 从缓存：一个缓存访问。 从 AAD：两个缓存访问 + 一个 HTTP 调用。 第一次调用（每进程）需要更长的时间，因为有一个额外的 HTTP 调用。 |
+|  `DurationInCacheInMs` | 加载或保存令牌缓存所用的时间（由应用开发人员自定义）（例如，保存到 Redis）。| 对高峰发出警报。 |
+|  `DurationInHttpInMs`| 向 AAD 发出 HTTP 调用所花的时间。  | 对高峰发出警报。|
+|  `TokenSource` | 指示令牌的源。 从缓存中检索令牌的速度要快得多（例如，~100 ms 与 ~700 ms）。 可用于监视缓存命中率并发出警报。 | 与 `DurationTotalInMs` 结合使用 |
 
 ### <a name="samples"></a>示例
 
@@ -539,4 +589,5 @@ namespace CommonCacheMsalV3
 | 示例 | 平台 | 说明|
 | ------ | -------- | ----------- |
 |[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | 桌面 (WPF) | 调用 Microsoft Graph API 的 Windows 桌面 .NET (WPF) 应用程序。 ![该示意图显示了一个拓扑，其中的桌面应用 WPF TodoListClient 通过以交互方式获取令牌来流向 Azure AD，然后流向 Microsoft Graph。](media/msal-net-token-cache-serialization/topology.png)|
-|[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | 桌面（控制台） | 一组 Visual Studio 解决方案，阐释了如何将 Azure AD v1.0 应用程序（使用 ADAL.NET）迁移到 Microsoft 标识平台应用程序（使用 MSAL.NET）。 如需具体信息，请参阅[令牌缓存迁移](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|
+|[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | 桌面（控制台） | 一组 Visual Studio 解决方案，阐释了如何将 Azure AD v1.0 应用程序（使用 ADAL.NET）迁移到 Microsoft 标识平台应用程序（使用 MSAL.NET）。 具体而言，请参阅[令牌缓存迁移](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)和[机密客户端令牌缓存](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/tree/master/ConfidentialClientTokenCache) |
+[ms-identity-aspnet-webapp-openidconnect](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) | ASP.NET (net472) | ASP.NET MVC 应用程序中的令牌缓存序列化的示例（使用 MSAL.NET）。 尤其请参阅 [MsalAppBuilder](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Utils/MsalAppBuilder.cs)

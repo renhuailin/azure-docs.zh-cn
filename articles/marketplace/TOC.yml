@@ -41,7 +41,7 @@
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
     - name: 许可证管理
       href: isv-app-license.md
-    - name: 专用产品/服务
+    - name: 专用计划
       href: private-plans.md
     - name: 规划和定价
       href: plans-pricing.md
@@ -341,6 +341,10 @@
               href: power-bi-app-technical-configuration.md
             - name: 补充内容
               href: power-bi-app-supplemental-content.md
+    - name: Power BI 视觉对象产品/服务
+      items:
+        - name: 有关迁移到合作伙伴中心的常见问题解答
+          href: power-bi-visual-faq.yml
     - name: SaaS 产品/服务
       items:
         - name: 计划产品/服务

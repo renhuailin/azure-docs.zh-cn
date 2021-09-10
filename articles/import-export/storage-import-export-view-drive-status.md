@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 08/24/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 8ef18ea663f3a77589d61ed89c50df38f5cf0d0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ad107daa5d1a90e3416777375f47640359f10f37
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176125"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122867262"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>查看 Azure 导入/导出作业的状态
 
@@ -43,7 +43,7 @@ ms.locfileid: "102176125"
 |:--- |:--- |
 | Creating | 创建作业后，其状态设置为“Creating”  。 当作业处于“Creating”状态时，“导入/导出”服务会假设驱动器尚未寄送到数据中心。 作业可保持此状态最多两周，之后服务会自动将其删除。 |
 | 装运 | 寄出包裹后，应在 Azure 门户中更新跟踪信息。  这样做会将作业转换为“Shipping”状态。 作业会保持“Shipping”状态最多两周  。 
-| Received | 在数据中心收到所有驱动器后，作业状态设置为“Received”  。 |
+| Received | 在数据中心收到所有驱动器后，作业状态设置为“Received”  。</br>在承运商交付设备后 1 到 3 个工作日内，当订单处理在数据中心完成时，作业状态可能会发生变化。 |
 | 转移 | 至少一个驱动器已开始处理后，作业状态设置为“Transferring”  。 有关详细信息，请转到[驱动器状态](#view-drive-status)。 |
 | 打包 | 所有驱动器都完成处理完后，作业会进入“Packaging”状态，直到将驱动器寄回给你  。 |
 | 已完成 | 在将所有驱动器寄回给你后，如果完成作业时未出现错误，作业状态会设置为“Completed”  。 作业会在保持“Completed”状态 90 天后自动删除  。 |

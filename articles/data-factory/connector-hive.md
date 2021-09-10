@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 11/17/2020
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: e9117ce75c17a1d45d5479520372de5bbcb47074
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: db88b0250a52ea96a116097469e43e1f0c26ece2
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637938"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123306040"
 ---
 # <a name="copy-and-transform-data-from-hive-using-azure-data-factory"></a>使用 Azure 数据工厂从 Hive 复制和转换数据 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -40,6 +40,32 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
+## <a name="create-a-linked-service-to-hive-using-ui"></a>使用 UI 创建一个到 Hive 的链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建一个到 Hive 的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新的链接服务。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新的链接服务。":::
+
+2. 搜索 Hive 并选择 Hive 连接器。
+
+    :::image type="content" source="media/connector-hive/hive-connector.png" alt-text="选择 Hive 连接器。":::    
+
+1. 配置服务详细信息，测试连接，然后创建新的链接服务。
+
+    :::image type="content" source="media/connector-hive/configure-hive-linked-service.png" alt-text="配置到 Hive 的链接服务。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
+
+
+
 对于特定于 Hive 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
 ## <a name="linked-service-properties"></a>链接服务属性
@@ -50,7 +76,7 @@ Hive 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Hive** | 是 |
 | host | Hive 服务器的 IP 地址或主机名；对于多台主机，将以“;”分隔（仅限启用了 serviceDiscoveryMode 时）。  | 是 |
-| port | Hive 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
+| port | Hive 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsight，请指定端口 443。 | 是 |
 | serverType | Hive 服务器的类型。 <br/>允许值包括：HiveServer1、HiveServer2、HiveThriftServer | 否 |
 | thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许值包括：二进制、SASL、HTTP | 否 |
 | authenticationType | 用于访问 Hive 服务器的身份验证方法。 <br/>允许值包括：Anonymous、Username、UsernameAndPassword、WindowsAzureHDInsightService   。 目前不支持 Kerberos 身份验证。 | 是 |

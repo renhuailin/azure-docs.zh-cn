@@ -6,13 +6,13 @@ ms.author: sngun
 ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/05/2021
-ms.openlocfilehash: c8589911e4424afe1ff2f5dbed32c375cb29c706
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 08/26/2021
+ms.openlocfilehash: f954be4b5ce82bf84bc99fcdab253c48fccf9933
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095709"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123226991"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>计划和管理 Azure Cosmos DB 的成本
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -35,9 +35,20 @@ Azure Cosmos DB 支持两种类型的容量模式：[预配吞吐量](set-throug
 
 Azure Cosmos DB 提供了两种不同的容量模式：预配吞吐量和无服务器。 在这两种模式下，你可以执行完全相同的数据库操作，但这些操作的收费方式不同。
 
+### <a name="capacity-planning"></a>容量计划
+
+作为估算成本的辅助方法，可以进行容量计划，以便迁移到 Azure Cosmos DB。 如果计划从现有数据库群集迁移到 Azure Cosmos DB，则可以根据有关现有数据库群集的信息进行容量计划。
+* 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+
+![将具有 3 个四核 SKU 副本的副本集迁移到 Azure Cosmos DB](media/convert-vcore-to-request-unit/one-replica-set.png)
+
+* 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
+
 ### <a name="estimate-provisioned-throughput-costs"></a>估算预配吞吐量成本
 
-如果计划在预配吞吐量模式下使用 Azure Cosmos DB，请使用 [Azure Cosmos DB 容量计算器](https://cosmos.azure.com/capacitycalculator/)来估算成本，然后再在 Azure Cosmos 帐户中创建资源。 容量计算器用于估算所需的吞吐量和工作负荷的成本。 根据工作负荷为 Azure Cosmos 数据库和容器配置适当数量的预配吞吐量（也称为[请求单位 (RU/s)](request-units.md)），对于优化成本和性能非常重要。 要获取成本预算，必须输入详细信息，例如 API 类型、区域数、项大小、每秒读/写请求数、存储的总数据量。 要了解有关容量计算器的详细信息，请参阅《[估算](estimate-ru-with-capacity-planner.md)》一文。
+如果计划在预配吞吐量模式下使用 Azure Cosmos DB，请使用 [Azure Cosmos DB 容量计算器](https://cosmos.azure.com/capacitycalculator/)来估算成本，然后再在 Azure Cosmos 帐户中创建资源。 容量计算器用于估算所需的吞吐量和工作负荷的成本。 容量计算器目前仅适用于 SQL API、Cassandra API 和 API for MongoDB。
+
+根据工作负荷为 Azure Cosmos 数据库和容器配置适当数量的预配吞吐量（也称为[请求单位 (RU/s)](request-units.md)），对于优化成本和性能非常重要。 要获取成本预算，必须输入详细信息，例如 API 类型、区域数、项大小、每秒读/写请求数、存储的总数据量。 要了解有关容量计算器的详细信息，请参阅《[估算](estimate-ru-with-capacity-planner.md)》一文。
 
 以下屏幕截图显示了使用容量计算器进行吞吐量和成本估算：
 
@@ -149,6 +160,9 @@ Azure Cosmos DB 在 Azure 基础结构上运行，部署新资源时，该基础
 
 有关 Azure Cosmos DB 中定价方式的详细信息，请参阅以下文章：
 
+* 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以根据有关现有数据库群集的信息进行容量计划。
+    * 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
 * [Azure Cosmos DB 中的定价模型](how-pricing-works.md)
 * 了解[如何通过 Azure 成本管理优化云投资](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 * 详细了解如何通过[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本。

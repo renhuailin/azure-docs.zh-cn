@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 69bcc521b4cd00320a5fbecc5244e913ac16c68b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c9bfc12a1af68e56aacea5b73bd2b4ddc6f857c
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99593902"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221597"
 ---
 # <a name="graphics-binding"></a>图形绑定
 
@@ -27,7 +27,7 @@ ms.locfileid: "99593902"
 
 在 Unity 中，整个绑定由传递到 `RemoteManagerUnity.InitializeManager` 中的 `RemoteUnityClientInit` 结构处理。 要设置图形模式，必须将 `GraphicsApiType` 字段设置为所选绑定。 该字段将根据是否存在 XRDevice 自动填充。 该行为可手动替代为以下行为：
 
-* HoloLens 2：始终使用 [Windows 混合现实](#windows-mixed-reality)图形绑定。
+* HoloLens 2：根据活动 Unity XR 插件使用 [OpenXR](#openxr) 或 [Windows 混合现实](#windows-mixed-reality)图形绑定。
 * **平面 UWP 桌面应用**：始终使用 [模拟](#simulation)。
 * **Unity 编辑器**：始终使用 [模拟](#simulation)，除非连接了 WMR VR 耳机，在这种情况下，将禁用 ARR，以便调试应用程序的非 ARR 相关部分。 另请参阅[全息远程处理](../how-tos/unity/holographic-remoting.md)。
 
@@ -39,7 +39,7 @@ Unity 的唯一其他相关部分是访问[基本绑定](#access)，可跳过下
 
 ```cs
 RemoteRenderingInitialization managerInit = new RemoteRenderingInitialization();
-managerInit.GraphicsApi = GraphicsApiType.WmrD3D11;
+managerInit.GraphicsApi = GraphicsApiType.OpenXrD3D11;
 managerInit.ConnectionType = ConnectionType.General;
 managerInit.Right = ///...
 RemoteManagerStatic.StartupRemoteRendering(managerInit);
@@ -47,14 +47,15 @@ RemoteManagerStatic.StartupRemoteRendering(managerInit);
 
 ```cpp
 RemoteRenderingInitialization managerInit;
-managerInit.GraphicsApi = GraphicsApiType::WmrD3D11;
+managerInit.GraphicsApi = GraphicsApiType::OpenXrD3D11;
 managerInit.ConnectionType = ConnectionType::General;
 managerInit.Right = ///...
 StartupRemoteRendering(managerInit); // static function in namespace Microsoft::Azure::RemoteRendering
 
 ```
-
-需要进行上述调用，才可将 Azure 远程渲染初始化为全息 API。 在调用任意全息 API 和访问任何其他远程渲染 API 之前都必须先调用此函数。 同样，在不再调用全息 API 之后，应调用相应的 de-init 函数 `RemoteManagerStatic.ShutdownRemoteRendering();`。
+在访问任何其他远程渲染 API 之前，都必须先进行上述调用。
+同样，在销毁所有其他远程渲染对象之后，应调用相应的 de-init 函数 `RemoteManagerStatic.ShutdownRemoteRendering();`。
+对于 WMR，还需要在调用任何全息 API 之前调用 `StartupRemoteRendering`。 对于 OpenXR，同样适用于任何 OpenXR 相关的 API。
 
 ## <a name="span-idaccessaccessing-graphics-binding"></a><span id="access">访问图形绑定
 
@@ -86,16 +87,78 @@ if (ApiHandle<GraphicsBinding> binding = currentSession->GetGraphicsBinding())
 
 ## <a name="graphic-apis"></a>图形 API
 
-当前可以选择两个图形 API：`WmrD3D11` 和 `SimD3D11`。 存在第三个图形 API：`Headless`，但客户端尚不支持。
+目前可以选择三个图形 API：`OpenXrD3D11`、`WmrD3D11` 和 `SimD3D11`。 还有第四个图形 API：`Headless`，但客户端尚不支持。
 
-### <a name="windows-mixed-reality"></a>Windows 混合现实
+### <a name="openxr"></a>OpenXR
 
-`GraphicsApiType.WmrD3D11` 是要在 HoloLens 2 上运行的默认绑定。 它将创建 `GraphicsBindingWmrD3d11` 绑定。 在此模式下，Azure 远程渲染直接连接到全息 API。
+`GraphicsApiType.OpenXrD3D11` 是要在 HoloLens 2 上运行的默认绑定。 它将创建 `GraphicsBindingOpenXrD3d11` 绑定。 在此模式下，Azure 远程渲染会创建一个 OpenXR API 层，用于将自身集成到 OpenXR 运行时中。
+
+要访问派生的图形绑定，必须强制转换基本 `GraphicsBinding`。
+若要使用 OpenXR 绑定，需要完成三个任务：
+
+#### <a name="package-custom-openxr-layer-json"></a>打包自定义 OpenXR 层 JSON
+
+若要将远程渲染与 OpenXR 结合使用，需要激活自定义 OpenXR API 层。 这是通过调用上一部分中提到的 `StartupRemoteRendering` 来完成的。 但是，作为先决条件，`XrApiLayer_msft_holographic_remoting.json` 需要与应用程序一起打包，以便我们加载它。 如果将“Microsoft.Azure.RemoteRendering.Cpp”NuGet 包添加到项目中，则会自动执行此操作。
+
+#### <a name="inform-remote-rendering-of-the-used-xr-space"></a>通知所用 XR 空间的远程渲染
+
+为了使远程和本地渲染的内容保持一致，需要这样做。
+
+```cs
+RenderingSession currentSession = ...;
+ulong space = ...; // XrSpace cast to ulong
+GraphicsBindingOpenXrD3d11 openXrBinding = (currentSession.GraphicsBinding as GraphicsBindingOpenXrD3d11);
+if (openXrBinding.UpdateAppSpace(space) == Result.Success)
+{
+    ...
+}
+```
+
+```cpp
+ApiHandle<RenderingSession> currentSession = ...;
+XrSpace space = ...;
+ApiHandle<GraphicsBindingOpenXrD3d11> openXrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingOpenXrD3d11>();
+#ifdef _M_ARM64
+    if (openXrBinding->UpdateAppSpace(reinterpret_cast<uint64_t>(space)) == Result::Success)
+#else
+    if (openXrBinding->UpdateAppSpace(space) == Result::Success)
+#endif
+{
+    ...
+}
+```
+
+上面的 `XrSpace` 是由应用程序使用的，它定义了表示 API 中坐标的世界空间坐标系统。
+
+#### <a name="render-remote-image-openxr"></a>渲染远程图像 (OpenXR)
+
+在每个帧开始时，需要将远程帧渲染到后台缓冲区中。 可通过调用 `BlitRemoteFrame` 来完成此操作，这会将双眼的颜色和深度信息填充到当前绑定的渲染目标。 因此，在将完整的后台缓冲区绑定为渲染目标之后执行此操作非常重要。
+
+> [!WARNING]
+> 在将远程图像以调用 blit 参数的方式渲染到后台缓冲区之后，应该使用单通道立体渲染技术（例如使用 **SV_RenderTargetArrayIndex**）来渲染本地内容。 其他立体渲染技术（例如，在单独的通道中渲染每只眼睛）可能会导致严重的性能下降或图形伪影，应避免使用。
+
+```cs
+RenderingSession currentSession = ...;
+GraphicsBindingOpenXrD3d11 openXrBinding = (currentSession.GraphicsBinding as GraphicsBindingOpenXrD3d11);
+openXrBinding.BlitRemoteFrame();
+```
+
+```cpp
+ApiHandle<RenderingSession> currentSession = ...;
+ApiHandle<GraphicsBindingOpenXrD3d11> openXrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingOpenXrD3d11>();
+openXrBinding->BlitRemoteFrame();
+```
+
+### <a name="windows-mixed-reality"></a>Windows Mixed Reality
+
+`GraphicsApiType.WmrD3D11` 是以前使用的图形绑定，在 HoloLens 2 上运行。 它将创建 `GraphicsBindingWmrD3d11` 绑定。 在此模式下，Azure 远程渲染直接连接到全息 API。
 
 要访问派生的图形绑定，必须强制转换基本 `GraphicsBinding`。
 要使用 WMR 绑定，需要执行以下两项操作：
 
 #### <a name="inform-remote-rendering-of-the-used-coordinate-system"></a>通知所用坐标系统的远程渲染
+
+为了使远程和本地渲染的内容保持一致，需要这样做。
 
 ```cs
 RenderingSession currentSession = ...;
@@ -113,18 +176,15 @@ void* ptr = ...; // native pointer to ISpatialCoordinateSystem
 ApiHandle<GraphicsBindingWmrD3d11> wmrBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingWmrD3d11>();
 if (wmrBinding->UpdateUserCoordinateSystem(ptr) == Result::Success)
 {
-    //...
+    ...
 }
 ```
 
 上面的 `ptr` 必须是一个指向本机 `ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem` 对象的指针，该对象定义了表示 API 中坐标的世界空间坐标系统。
 
-#### <a name="render-remote-image"></a>渲染远程图像
+#### <a name="render-remote-image-wmr"></a>渲染远程图像 (WMR)
 
-在每个帧开始时，需要将远程帧渲染到后台缓冲区中。 可通过调用 `BlitRemoteFrame` 来完成此操作，这会将双眼的颜色和深度信息填充到当前绑定的渲染目标。 因此，在将完整的后台缓冲区绑定为渲染目标之后执行此操作非常重要。
-
-> [!WARNING]
-> 在将远程图像以调用 blit 参数的方式渲染到后台缓冲区之后，应该使用单通道立体渲染技术（例如使用 **SV_RenderTargetArrayIndex**）来渲染本地内容。 其他立体渲染技术（例如，在单独的通道中渲染每只眼睛）可能会导致严重的性能下降或图形伪影，应避免使用。
+上述 OpenXR 案例中的注意事项在这里同样适用。 API 调用如下所示：
 
 ```cs
 RenderingSession currentSession = ...;

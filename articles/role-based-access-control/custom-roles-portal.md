@@ -8,14 +8,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/11/2020
+ms.date: 08/27/2021
 ms.author: rolyon
-ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de888e76e9ba27fa653905084193e6f8e25d2a81
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97369220"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123315189"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>使用 Azure 门户创建 Azure 自定义角色
 
@@ -48,7 +48,7 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
 
     以下屏幕截图显示了针对订阅打开的“访问控制(IAM)”页。
 
-    ![订阅的“访问控制(IAM)”页](./media/custom-roles-portal/access-control-subscription.png)
+    ![订阅的“访问控制(IAM)”页](./media/shared/sub-access-control.png)
 
 1. 单击“角色”选项卡以查看包含所有内置角色和自定义角色的列表。
 
@@ -176,13 +176,13 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
 
     系统会根据搜索字符串显示资源提供程序卡片的列表。 有关资源提供程序到 Azure 服务的映射列表，请参阅 [Azure 服务的资源提供程序](../azure-resource-manager/management/azure-services-resource-providers.md)。
 
-    ![包含资源提供程序的“添加权限”窗格](./media/custom-roles-portal/add-permissions-provider.png)
+    ![包含资源提供程序的“添加权限”窗格](./media/shared/add-permissions-provider.png)
 
 1. 单击可能包含你要添加到自定义角色的权限的资源提供程序卡片，例如“Microsoft 计费”。
 
     系统会根据搜索字符串显示该资源提供程序的管理权限列表。
 
-    ![“添加权限”列表](./media/custom-roles-portal/add-permissions-list.png)
+    ![“添加权限”列表](./media/shared/add-permissions-list.png)
 
 1. 若要查找适用于数据平面的权限，请单击“数据操作”。 否则，请将操作切换开关保持设置为“操作”，以列出适用于管理平面的权限。 有关管理平面与数据平面之间的差异的详细信息，请参阅[管理和数据操作](role-definitions.md#management-and-data-operations)。
 
@@ -241,7 +241,9 @@ Microsoft.CostManagement/exports/delete
 
 ## <a name="step-5-assignable-scopes"></a>步骤 5：可分配范围
 
-在“可分配范围”选项卡上，指定自定义角色在何处可供分配，例如订阅或资源组。 根据所选的开始创建角色的方式，此选项卡可能会列出你打开“访问控制(IAM)”页时所处的范围。 不支持将可分配范围设置为根范围（“/”）。 目前无法将管理组添加为可分配范围。
+在“可分配范围”选项卡上，指定自定义角色可用于分配的地方，例如管理组、订阅或资源组。 根据所选的开始创建角色的方式，此选项卡可能已经列出你打开“访问控制(IAM)”页时所处的范围。
+
+ 在可分配范围中，只能定义一个管理组。 将管理组添加到可分配范围的功能目前为预览版。 不支持将可分配范围设置为根范围（“/”）。
 
 1. 单击“添加可分配范围”打开“添加可分配范围”窗格。
 

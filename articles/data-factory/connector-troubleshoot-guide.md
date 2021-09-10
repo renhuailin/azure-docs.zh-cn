@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 08/16/2021
+ms.date: 08/24/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: 02bb677438a4139fb67b335b9e6cbbf43f8a2600
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 27e9f92f7ea2be3ebdafbf973c4d1def179d5636
+ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271441"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122864139"
 ---
 # <a name="troubleshoot-azure-data-factory-and-azure-synapse-analytics-connectors"></a>排查 Azure 数据工厂 Azure Synapse Analytics 连接器问题
 
@@ -405,7 +405,7 @@ ms.locfileid: "122271441"
 
 - **原因**：没有为表创建物理分区。 请检查数据库。
 
-- **建议**：若要解决此问题，请参阅[创建已分区表和索引](/sql/relational-databases/partitions/create-partitioned-tables-and-indexes?view=sql-server-ver15&preserve-view=true)。
+- **建议**：若要解决此问题，请参阅 [创建已分区表和索引](/sql/relational-databases/partitions/create-partitioned-tables-and-indexes?view=sql-server-ver15&preserve-view=true)。
 
 ### <a name="error-code-sqlparallelfailedtogetpartitionrangesynapse"></a>错误代码：SqlParallelFailedToGetPartitionRangeSynapse
 
@@ -413,7 +413,7 @@ ms.locfileid: "122271441"
 
 - **原因**：没有为表创建物理分区。 请检查数据库。
 
-- **建议**：若要解决此问题，请参阅[ SQL 池中的分区表](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-partition.md)。
+- **建议**：若要解决此问题，请参阅 [ SQL 池中的分区表](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-partition.md)。
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>错误消息：将字符串转换为唯一标识符失败
 
@@ -548,7 +548,7 @@ ms.locfileid: "122271441"
 
 - **消息**：`Error thrown from driver. Sql code: '%code;'`
 
-- **原因**：如果错误消息包含字符串“SQLSTATE=51002 SQLCODE=-805”，请按照[从 DB2 复制数据](./connector-db2.md#linked-service-properties)中的“提示”进行操作。
+- **原因**：如果错误消息包含字符串“SQLSTATE=51002 SQLCODE=-805”，请按照 [从 DB2 复制数据](./connector-db2.md#linked-service-properties)中的“提示”进行操作。
 
 - **建议**：尝试在 `packageCollection` 属性中设置“NULLID”。
 
@@ -639,59 +639,18 @@ ms.locfileid: "122271441"
  
  - **消息**：`Failed to connect to Dynamics: %message;` 
  
- - 原因：如果用例满足以下所有三个条件，你将看到 `ERROR REQUESTING ORGS FROM THE DISCOVERY SERVERFCB 'EnableRegionalDisco' is disabled.`，否则将看到 `Unable to Login to Dynamics CRM, message:ERROR REQUESTING Token FROM THE Authentication context - USER intervention required but not permitted by prompt behavior AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access '00000007-0000-0000-c000-000000000000'`：
-    - 正在连接到 Dynamics 365、Common Data Service 或 Dynamics CRM。
-    - 正在使用 Office365 身份验证。
-    - 在 Azure Active Directory 中为租户和用户配置了[条件访问](../active-directory/conditional-access/overview.md)且/或需要多重身份验证（请参阅此 Dataverse 文档[链接](/powerapps/developer/data-platform/authenticate-office365-deprecation)）。
-    
-    在这种情况下，连接曾在 2021/6/8 之前成功。
-    由于区域发现服务弃用，从 2021/6/9 开始，连接将会失败（请参阅此[链接](/power-platform/important-changes-coming#regional-discovery-service-is-deprecated)）。
- 
- -  **建议**：  
-    如果租户和用户在 Azure Active Directory 中配置为[条件访问](../active-directory/conditional-access/overview.md)和/或多重身份验证是必需验证方法，则在 2021 年 6 月 8 日后必须使用“Azure AD 服务主体”进行身份验证。 请点击此[链接](./connector-dynamics-crm-office-365.md#prerequisites)，了解详细步骤。
+ - **原因和建议**：此错误可能由不同的原因导致。 请查看以下列表，了解可能的原因分析和相关建议。
 
+    | 原因分析                                               | 建议                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | 你会看到 `ERROR REQUESTING ORGS FROM THE DISCOVERY SERVERFCB 'EnableRegionalDisco' is disabled.` 或者 `Unable to Login to Dynamics CRM, message:ERROR REQUESTING Token FROM THE Authentication context - USER intervention required but not permitted by prompt behavior AADSTS50079: Due to a configuration change made by your administrator, or because you moved to a new location, you must enroll in multi-factor authentication to access '00000007-0000-0000-c000-000000000000'`。如果用例符合以下三个条件： <br/> 1. 要连接到 Dynamics 365、Common Data Service 或 Dynamics CRM。<br/>  2. 正在使用 Office365 身份验证。<br/>  3. 租户和用户在 Azure Active Directory 中配置为[条件访问](../active-directory/conditional-access/overview.md)和/或多重身份验证是必需验证方法（点击此[链接](/powerapps/developer/data-platform/authenticate-office365-deprecation)以参阅 Dataverse 文档）。<br/>  在这种情况下，连接曾在 2021/6/8 之前成功。 由于区域发现服务弃用，从 2021/6/9 开始，连接将会失败（请参阅此[链接](/power-platform/important-changes-coming#regional-discovery-service-is-deprecated)）。| 如果租户和用户在 Azure Active Directory 中配置为[条件访问](../active-directory/conditional-access/overview.md)和/或多重身份验证是必需验证方法，则在 2021 年 6 月 8 日后必须使用“Azure AD 服务主体”进行身份验证。 请点击此[链接](./connector-dynamics-crm-office-365.md#prerequisites)，了解详细步骤。|
+    |如果在错误消息中看到 `Office 365 auth with OAuth failed`，则表明服务器可能有一些与 OAuth 不兼容的配置。| 1. 若要获取帮助，请联系 Dynamics 支持团队并提供详细的错误消息。 <br/> 2. 使用服务主体身份验证，你可以参考以下文章：[示例：使用 Azure AD 服务主体和证书身份验证的 Dynamics 联机](./connector-dynamics-crm-office-365.md#example-dynamics-online-using-azure-ad-service-principal-and-certificate-authentication)。 
+    |如果在错误消息中看到 `Unable to retrieve authentication parameters from the serviceUri`，则表示你输入了错误的 Dynamics 服务 URL 或代理/防火墙来拦截流量。 |1. 请确保已将正确的服务 URI 置于链接服务中。<br/> 2. 如果使用自承载 IR，请确保防火墙/代理不会拦截对 Dynamics 服务器的请求。 |
+    |如果在错误消息中看到 `An unsecured or incorrectly secured fault was received from the other party`，则表示从服务器端获得了意外响应。  | 1. 如果使用 Office 365 身份验证，请确保用户名和密码正确。 <br/> 2. 请确保已输入正确的服务 URI。 <br/> 3. 如果使用区域 CRM URL（URL 在“crm”后有一个数字），请确保使用正确的区域标识符。<br/> 4. 请联系 Dynamics 支持团队以获得帮助。 |
+    |如果在错误消息中看到 `No Organizations Found`，则表示你的组织名有误，或者你在服务 URL 中使用了错误的 CRM 区域标识符。|1. 请确保已输入正确的服务 URI。<br/>2. 如果使用区域 CRM URL（URL 在“crm”后有一个数字），请确保使用正确的区域标识符。 <br/> 3. 请联系 Dynamics 支持团队以获得帮助。 |
+    | 如果看到 `401 Unauthorized` 和 AAD 相关的错误消息，则表示服务主体存在问题。 |按照错误消息中的指导解决服务主体问题。 |
+   |对于其他错误，问题通常出在服务器端。 |使用 [XrmToolBox](https://www.xrmtoolbox.com/) 建立连接。 如果错误仍然存在，请与 Dynamics 支持团队联系以获取帮助。 |
 
- - **原因**：如果在错误消息中看到 `Office 365 auth with OAuth failed`，则表明服务器可能有一些与 OAuth 不兼容的配置。 
- 
- - **建议**： 
-    1. 若要获取帮助，请联系 Dynamics 支持团队并提供详细的错误消息。  
-    1. 使用服务主体身份验证，你可以参考以下文章：[示例：使用 Azure AD 服务主体和证书身份验证的 Dynamics 联机](./connector-dynamics-crm-office-365.md#example-dynamics-online-using-azure-ad-service-principal-and-certificate-authentication)。 
- 
-
- - **原因**：如果在错误消息中看到 `Unable to retrieve authentication parameters from the serviceUri`，则表示你输入了错误的 Dynamics 服务 URL 或代理/防火墙来拦截流量。 
- 
- - **建议**：
-    1. 请确保已将正确的服务 URI 置于链接服务中。 
-    1. 如果使用自承载 IR，请确保防火墙/代理不会拦截对 Dynamics 服务器的请求。 
-   
- 
- - **原因**：如果在错误消息中看到 `An unsecured or incorrectly secured fault was received from the other party`，则表示从服务器端获得意外响应。 
- 
- - **建议**： 
-    1. 如果使用 Office 365 身份验证，请确保用户名和密码正确。 
-    1. 请确保已输入正确的服务 URI。 
-    1. 如果使用区域 CRM URL（URL 在“crm”后有一个数字），请确保使用正确的区域标识符。
-    1. 请联系 Dynamics 支持团队以获得帮助。 
- 
-
- - **原因**：如果在错误消息中看到 `No Organizations Found`，则表示你的组织名有误，或者你在服务 URL 中使用了错误的 CRM 区域标识符。 
- 
- - **建议**： 
-    1. 请确保已输入正确的服务 URI。
-    1. 如果使用区域 CRM URL（URL 在“crm”后有一个数字），请确保使用正确的区域标识符。 
-    1. 请联系 Dynamics 支持团队以获得帮助。 
-
- 
- - **原因**：如果看到 `401 Unauthorized` 和 AAD 相关的错误消息，则表示服务主体存在问题。 
-
- - **建议**：按照错误消息中的指导解决服务主体问题。  
- 
- 
- - **原因**：对于其他错误，问题通常出在服务器端。 
-
- - **建议**：使用 [XrmToolBox](https://www.xrmtoolbox.com/) 建立连接。 如果错误仍然存在，请与 Dynamics 支持团队联系以获取帮助。 
- 
- 
 ### <a name="error-code-dynamicsoperationfailed"></a>错误代码：DynamicsOperationFailed 
  
 - **消息**：`Dynamics operation failed with error code: %code;, error message: %message;.` 
@@ -846,7 +805,7 @@ ms.locfileid: "122271441"
 
 - **原因**：Azure 数据工厂和 Synapse 管道不支持 Parquet 格式。
 
-- **建议**：通过转到[复制活动支持的文件格式和压缩编解码器](./supported-file-formats-and-compression-codecs.md)来仔细检查源数据。
+- **建议**：通过转到 [复制活动支持的文件格式和压缩编解码器](./supported-file-formats-and-compression-codecs.md)来仔细检查源数据。
 
 
 ### <a name="error-code-parquetmisseddecimalprecisionscale"></a>错误代码：ParquetMissedDecimalPrecisionScale
@@ -1416,7 +1375,7 @@ ms.locfileid: "122271441"
 若要获取故障排除方面的更多帮助，请尝试参阅以下资源：
 
 *  [数据工厂博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [数据工厂功能请求](https://feedback.azure.com/forums/270578-data-factory)
+*  [数据工厂功能请求](/answers/topics/azure-data-factory.html)
 *  [Azure 视频](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A 页](/answers/topics/azure-data-factory.html)
 *  [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/30/2021
+ms.date: 08/30/2021
 ms.author: hirsin
 ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f55c5096f9205e75904a65724715104fe8bca849
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 301a386c9c9a21cf1f988ee62c19ca7cc60e7a39
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778448"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429993"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
 
@@ -58,7 +58,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 
 为了启用这种基于 ACL 的授权模式，Azure AD 不要求应用程序必须经过授权才能从另一个应用程序获取令牌。 因此，可以在没有 `roles` 声明的情况下颁发仅限应用的令牌。 公开 API 的应用程序必须实现权限检查才能接受令牌。
 
-如果要阻止应用程序获取应用程序的无角色仅限应用的令牌，[请确保为应用启用用户分配要求](../manage-apps/assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment)。 这将阻止未分配角色的用户和应用程序获取此应用程序的令牌。 
+如果要阻止应用程序获取应用程序的无角色仅限应用的令牌，[请确保为应用启用用户分配要求](../manage-apps/add-application-portal-configure.md#configure-app-properties)。 这将阻止未分配角色的用户和应用程序获取此应用程序的令牌。
 
 ### <a name="application-permissions"></a>应用程序权限
 
@@ -114,7 +114,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 如果管理员批准了应用程序的权限，成功响应如下所示：
 
 ```HTTP
-GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=12345&admin_consent=True
+GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
 | 参数 | 说明 |
@@ -165,7 +165,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | `tenant` | 必需 | 应用程序计划对其进行操作的目录租户，采用 GUID 或域名格式。 |
 | `client_id` | 必需 | 分配给应用的应用程序 ID。 可以在注册应用的门户中找到此信息。 |
 | `scope` | 必需 | 在此请求中针对 `scope` 参数传递的值应该是所需资源的资源标识符（应用程序 ID URI），并附有 `.default` 后缀。 在 Microsoft Graph 示例中，该值为 `https://graph.microsoft.com/.default`。 <br/>此值告知 Microsoft 标识平台：在为应用配置的所有直接应用程序权限中，终结点应为与要使用的资源关联的权限颁发令牌。 若要了解有关 `/.default` 范围的详细信息，请参阅[许可文档](v2-permissions-and-consent.md#the-default-scope)。 |
-| `client_secret` | 必需 | 在应用注册门户中为应用生成的客户端机密。 在发送客户端密码之前必须对其进行 URL 编码。 |
+| `client_secret` | 必需 | 在应用注册门户中为应用生成的客户端机密。 在发送客户端密码之前必须对其进行 URL 编码。 还支持根据 [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) 在授权标头中提供凭据的基本身份验证模式。 |
 | `grant_type` | 必需 | 必须设置为 `client_credentials`。 |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求

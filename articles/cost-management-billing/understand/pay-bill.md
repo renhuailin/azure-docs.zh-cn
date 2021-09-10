@@ -114,7 +114,7 @@ ms.locfileid: "107483174"
 > - [圭亚那](/legal/pay/guyana)
 > - [海地](/legal/pay/haiti)
 > - [洪都拉斯](/legal/pay/honduras)
-> - [中国香港特别行政区](/legal/pay/hong-kong)
+> - 香港
 > - [匈牙利](/legal/pay/hungary)
 > - [冰岛](/legal/pay/iceland)
 > - [印度](/legal/pay/india)

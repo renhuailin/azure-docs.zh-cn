@@ -1,20 +1,22 @@
 ---
 title: 在 Azure SQL 数据库中复制和转换数据
-description: 了解如何使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据，以及如何在 Azure SQL 数据库中转换数据。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何使用 Azure 数据工厂或 Azure Synapse Analytics 管道向/从 Azure SQL 数据库复制数据，以及如何在 Azure SQL 数据库中转换数据。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: e72b1c0edf110dc680d76c4451f45dec708467cb
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/30/2021
+ms.openlocfilehash: c594d253c193928eae47949474aaa75c4f27b60d
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487522"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123313997"
 ---
-# <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 数据库中复制和转换数据
+# <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory-or-azure-synapse-analytics"></a>使用 Azure 数据工厂或 Azure Synapse Analytics 复制和转换 Azure SQL 数据库中的数据
 
 > [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本："]
 >
@@ -23,7 +25,7 @@ ms.locfileid: "109487522"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的“复制活动”功能从/向 Azure SQL 数据库复制数据，并使用数据流转换 Azure SQL 数据库中的数据。 若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
+本文概述了如何使用 Azure 数据工厂或 Azure Synapse 管道中的“复制活动”功能从/向 Azure SQL 数据库复制数据，并使用数据流转换 Azure SQL 数据库中的数据。 有关详细信息，请阅读 [Azure 数据工厂](introduction.md)或 [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) 的简介文章。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -42,8 +44,6 @@ ms.locfileid: "109487522"
 
 如果使用 Azure SQL 数据库[无服务器层](../azure-sql/database/serverless-tier-overview.md)，请注意，当服务器暂停时，活动运行将失败，而不是等待自动恢复就绪。 可以添加活动重试或链接其他活动，以确保服务器在实际执行时处于活动状态。
 
->[!NOTE]
-> 目前此连接器不支持 Azure SQL 数据库 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)。 为了解决此问题，可以通过自承载 Integration Runtime 使用[泛型 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 从[使用 Always Encrypted](#using-always-encrypted) 部分了解更多信息。 
 
 > [!IMPORTANT]
 > 如果使用 Azure 集成运行时复制数据，请配置[服务器级防火墙规则](../azure-sql/database/firewall-configure.md)，以便 Azure 服务可以访问服务器。
@@ -53,7 +53,33 @@ ms.locfileid: "109487522"
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-对于特定于 Azure SQL 数据库连接器的 Azure 数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
+## <a name="create-an-azure-sql-database-linked-service-using-ui"></a>使用 UI 创建 Azure SQL 数据库链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建 Azure SQL 数据库链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+   # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+   :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+
+   # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+   :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新链接服务的屏幕截图。":::
+
+   
+
+2. 搜索 SQL 并选择 Azure SQL 数据库连接器。
+
+    :::image type="content" source="media/connector-azure-sql-database/azure-sql-database-connector.png" alt-text="选择“Azure SQL 数据库连接器”。":::    
+
+1. 配置服务详细信息，测试连接，然后创建新的链接服务。
+
+    :::image type="content" source="media/connector-azure-sql-database/configure-azure-sql-database-linked-service.png" alt-text="Azure SQL 数据库链接服务的配置屏幕截图。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
+
+对于特定于 Azure SQL 数据库连接器的 Azure 数据工厂或 Synapse 管道实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
@@ -64,10 +90,14 @@ Azure SQL 数据库链接服务支持以下属性：
 | type | type 属性必须设置为 AzureSqlDatabase 。 | 是 |
 | connectionString | 为 connectionString 属性指定连接到 Azure SQL 数据库实例所需的信息。 <br/>还可以将密码或服务主体密钥放在 Azure Key Vault 中。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
-| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 **SecureString**，以安全地将其存储在 Azure 数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
+| servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 SecureString 以安全地存储它，或[引用存储在 Azure 密钥保管库中的机密](store-credentials-in-key-vault.md)。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
 | tenant | 指定应用程序所在的租户的信息（例如域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
-| azureCloudType | 对于服务主体身份验证，请指定 Azure AD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下，使用数据工厂的云环境。 | 否 |
+| azureCloudType | 对于服务主体身份验证，请指定 Azure AD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下，使用数据工厂或 Synapse 管道的云环境。 | 否 |
+| alwaysEncryptedSettings | 指定所需的 alwaysencryptedsettings 信息来启用 Always Encrypted，以使用托管标识或服务主体保护 SQL Server 中存储的敏感数据。 有关详细信息，请参阅表格后面的 JSON 示例以及[使用 Always Encrypted](#using-always-encrypted) 部分。 如果不指定此属性，将禁用默认的 Always Encrypted 设置。 |否 |
 | connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 | 否 |
+
+> [!NOTE]
+> 数据流中不支持 Azure SQL 数据库 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-ver15&preserve-view=true)。 
 
 有关各种身份验证类型，请参阅关于先决条件和 JSON 示例的以下各部分：
 
@@ -124,6 +154,32 @@ Azure SQL 数据库链接服务支持以下属性：
 }
 ```
 
+示例：使用 Always Encrypted
+
+```json
+{
+    "name": "AzureSqlDbLinkedService",
+    "properties": {
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+        },
+        "alwaysEncryptedSettings": {
+            "alwaysEncryptedAkvAuthType": "ServicePrincipal",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ### <a name="service-principal-authentication"></a>服务主体身份验证
 
 要使用基于服务主体的 Azure AD 应用程序令牌身份验证，请执行以下步骤：
@@ -148,7 +204,7 @@ Azure SQL 数据库链接服务支持以下属性：
     ALTER ROLE [role name] ADD MEMBER [your application name];
     ```
 
-5. 在 Azure 数据工厂中配置 Azure SQL 数据库链接服务。
+5. 在 Azure 数据工厂或 Synapse 工作区中配置 Azure SQL 数据库链接服务。
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>使用服务主体身份验证的链接服务示例
 
@@ -176,25 +232,25 @@ Azure SQL 数据库链接服务支持以下属性：
 
 ### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure 资源的托管标识身份验证
 
-可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可将此托管标识用于 Azure SQL 数据库身份验证。 指定的工厂可以使用此标识访问数据库数据或从/向数据库复制数据。
+数据工厂或 Synapse 工作区可以与 [Azure 资源的托管标识](data-factory-service-identity.md)相关联，该标识在对 Azure 中的其他资源进行身份验证时代表服务。 可将此托管标识用于 Azure SQL 数据库身份验证。 指定的工厂或 Synapse 工作区可以使用此标识访问数据库数据或从/向数据库复制数据。
 
 若要使用托管标识身份验证，请执行以下步骤：
 
 1. 为 Azure 门户上的服务器[预配 Azure Active Directory 管理员](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-database)（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户，也可以是 Azure AD 组。 如果授予包含托管标识的组管理员角色，则可跳过步骤 3 和步骤 4。 管理员拥有对数据库的完全访问权限。
 
-2. 为 Azure 数据工厂托管标识[创建包含的数据库用户](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)。 使用 SQL Server Management Studio 等工具和至少具有 ALTER ANY USER 权限的 Azure AD 标识连接到要向其/从中复制数据的数据库。 运行以下 T-SQL：
+2. 为托管标识[创建包含的数据库用户](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)。 使用 SQL Server Management Studio 等工具和至少具有 ALTER ANY USER 权限的 Azure AD 标识连接到要向其/从中复制数据的数据库。 运行以下 T-SQL：
   
     ```sql
-    CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
+    CREATE USER [your_resource_name] FROM EXTERNAL PROVIDER;
     ```
 
-3. 像通常对 SQL 用户和其他用户所做的那样向数据工厂托管标识授予所需的权限。 运行以下代码。 有关更多选项，请参阅[此文档](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)。
+3. 授予托管标识所需的权限，就像通常为 SQL 用户和其他用户所做的那样。 运行以下代码。 有关更多选项，请参阅[此文档](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)。
 
     ```sql
-    ALTER ROLE [role name] ADD MEMBER [your Data Factory name];
+    ALTER ROLE [role name] ADD MEMBER [your_resource_name];
     ```
 
-4. 在 Azure 数据工厂中配置 Azure SQL 数据库链接服务。
+4. 配置 Azure SQL 数据库链接服务。
 
 **示例**
 
@@ -223,7 +279,7 @@ Azure SQL 数据库数据集支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlTable 。 | 是 |
-| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -381,9 +437,9 @@ GO
 | storedProcedureTableTypeParameterName |存储过程中指定的表类型的参数名称。  |否 |
 | sqlWriterTableType |要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |否 |
 | storedProcedureParameters |存储过程的参数。<br/>允许的值为名称和值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否 |
-| writeBatchSize | 每批要插入到 SQL 表中的行数。<br/> 允许的值为 **integer**（行数）。 默认情况下，Azure 数据工厂会根据行大小动态确定适当的批大小。 | 否 |
+| writeBatchSize | 每批要插入到 SQL 表中的行数。<br/> 允许的值为 **integer**（行数）。 默认情况下，该服务根据行大小动态确定适当的批大小。 | 否 |
 | writeBatchTimeout | 超时前等待批插入操作完成的时间。<br/> 允许的值为 **timespan**。 例如“00:30:00”（30 分钟）。 | 否 |
-| disableMetricsCollection | 数据工厂收集指标（如 Azure SQL 数据库 DTU），以获取复制性能优化和建议，从而引入额外的主数据库访问权限。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
+| disableMetricsCollection | 该服务收集指标（如 Azure SQL 数据库 DTU），以获取复制性能优化和建议，从而引入额外的主数据库访问权限。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
 | maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接时指定一个值。| 否 |
 
 **示例 1：追加数据**
@@ -465,15 +521,15 @@ GO
 
 ![分区选项的屏幕截图](./media/connector-sql-server/connector-sql-partition-options.png)
 
-启用分区复制时，复制活动将对 Azure SQL 数据库源运行并行查询，以按分区加载数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，则数据工厂会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Azure SQL 数据库检索一部分数据。
+启用分区复制时，复制活动将对 Azure SQL 数据库源运行并行查询，以按分区加载数据。 可通过复制活动中的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 设置控制并行度。 例如，如果将 `parallelCopies` 设置为 4，则该服务会根据指定的分区选项和设置并行生成并运行 4 个查询，每个查询从 Azure SQL 数据库检索一部分数据。
 
 建议同时启用并行复制和数据分区，尤其是从 Azure SQL 数据库加载大量数据时。 下面是适用于不同方案的建议配置。 将数据复制到基于文件的数据存储中时，建议将数据作为多个文件写入文件夹（仅指定文件夹名称），在这种情况下，性能优于写入单个文件。
 
 | 方案                                                     | 建议的设置                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 从包含物理分区的大型表进行完整加载。        | **分区选项**：表的物理分区。 <br><br/>在执行期间，数据工厂将自动检测物理分区并按分区复制数据。 <br><br/>若要检查表是否有物理分区，可参考[此查询](#sample-query-to-check-physical-partition)。 |
-| 从不包含物理分区但包含用于数据分区的整数或日期时间列的大型表进行完整加载。 | **分区选项**：动态范围分区。<br>**分区列**（可选）：指定用于对数据进行分区的列。 如果未指定，将使用索引或主键列。<br/>分区上限和分区下限（可选） ：指定是否要确定分区步幅。 这不适用于筛选表中的行，表中的所有行都将进行分区和复制。 如果未指定，复制活动会自动检测这些值。<br><br>例如，如果分区列“ID”的值范围为 1 至 100，其下限设置为 20、上限设置为 80，并行复制设置为 4，则数据工厂会按 4 个分区检索数据，ID 范围分别为 <=20、[21, 50]、[51, 80] 和 >=81。 |
-| 使用自定义查询从不包含物理分区但包含用于数据分区的整数或日期/日期时间列的表加载大量数据。 | **分区选项**：动态范围分区。<br>**查询**：`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`。<br>**分区列**：指定用于对数据进行分区的列。<br>分区上限和分区下限（可选） ：指定是否要确定分区步幅。 这不适用于筛选表中的行，查询结果中的所有行都将进行分区和复制。 如果未指定，复制活动会自动检测该值。<br><br>在执行期间，数据工厂会将 `?AdfRangePartitionColumnName` 替换为每个分区的实际列名和值范围，并将其发送到 Azure SQL 数据库。 <br>例如，如果分区列“ID”的值范围为 1 至 100，其下限设置为 20、上限设置为 80，并行复制设置为 4，则数据工厂会按 4 个分区检索数据，ID 范围分别为 <=20、[21, 50]、[51, 80] 和 >=81。 <br><br>下面是针对不同场景的更多示例查询：<br> 1.查询整个表： <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2.使用列选择和附加的 where 子句筛选器从表中查询： <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3.使用子查询进行查询： <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4.在子查询中使用分区查询： <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
+| 从包含物理分区的大型表进行完整加载。        | **分区选项**：表的物理分区。 <br><br/>在执行期间，该服务将自动检测物理分区并按分区复制数据。 <br><br/>若要检查表是否有物理分区，可参考[此查询](#sample-query-to-check-physical-partition)。 |
+| 从不包含物理分区但包含用于数据分区的整数或日期时间列的大型表进行完整加载。 | **分区选项**：动态范围分区。<br>**分区列**（可选）：指定用于对数据进行分区的列。 如果未指定，将使用索引或主键列。<br/>分区上限和分区下限（可选） ：指定是否要确定分区步幅。 这不适用于筛选表中的行，表中的所有行都将进行分区和复制。 如果未指定，复制活动会自动检测这些值。<br><br>例如，如果分区列“ID”的值范围为 1 至 100，其下限设置为 20、上限设置为 80，并行复制设置为 4，则该服务会按 4 个分区检索数据，ID 范围分别为 <=20、[21, 50]、[51, 80] 和 >=81。 |
+| 使用自定义查询从不包含物理分区但包含用于数据分区的整数或日期/日期时间列的表加载大量数据。 | **分区选项**：动态范围分区。<br>**查询**：`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`。<br>**分区列**：指定用于对数据进行分区的列。<br>分区上限和分区下限（可选） ：指定是否要确定分区步幅。 这不适用于筛选表中的行，查询结果中的所有行都将进行分区和复制。 如果未指定，复制活动会自动检测该值。<br><br>在执行期间，该服务会将 `?AdfRangePartitionColumnName` 替换为每个分区的实际列名称和值范围，并发送到 Azure SQL 数据库。 <br>例如，如果分区列“ID”的值范围为 1 至 100，其下限设置为 20、上限设置为 80，并行复制设置为 4，则该服务会按 4 个分区检索数据，ID 范围分别为 <=20、[21, 50]、[51, 80] 和 >=81。 <br><br>下面是针对不同场景的更多示例查询：<br> 1.查询整个表： <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2.使用列选择和附加的 where 子句筛选器从表中查询： <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3.使用子查询进行查询： <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4.在子查询中使用分区查询： <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
 |
 
 使用分区选项加载数据的最佳做法：
@@ -535,11 +591,11 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 - [覆盖](#overwrite-the-entire-table)：我需要每次都重新加载整个维度表。
 - [使用自定义逻辑进行写入](#write-data-with-custom-logic)：在将数据最终插入目标表之前，我需要额外的处理。
 
-有关如何在 Azure 数据工厂中进行配置和最佳做法，请参阅相应的部分。
+有关如何在该服务中进行配置和最佳做法，请参阅相应的部分。
 
 ### <a name="append-data"></a>追加数据
 
-追加数据是此 Azure SQL 数据库接收器连接器的默认行为。 Azure 数据工厂执行批量插入，以有效地在表中写入数据。 可以相应地在复制活动中配置源和接收器。
+追加数据是此 Azure SQL 数据库接收器连接器的默认行为。 该服务执行批量插入，以有效地在表中写入数据。 可以相应地在复制活动中配置源和接收器。
 
 ### <a name="upsert-data"></a>更新插入数据
 
@@ -547,7 +603,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 复制活动当前并非原生支持将数据加载到数据库临时表中。 有一种结合多种活动进行设置的高级方法，请参阅[优化 Azure SQL 数据库批量更新插入方案](https://github.com/scoriani/azuresqlbulkupsert)。 下面显示了使用永久表作为暂存的示例。
 
-例如，在 Azure 数据工厂中，可以使用 **复制活动** 创建一个管道，并将其与 **存储过程活动** 相链接。 前者将数据从源存储复制到数据集中的 Azure SQL 数据库临时表（例如，表名为“UpsertStagingTable”的表）。 然后，后者调用一个存储过程，以将临时表中的源数据合并到目标表中，并清理临时表。
+例如，可以创建一个管道，其中“复制活动”与“存储过程活动”相链接。 前者将数据从源存储复制到数据集中的 Azure SQL 数据库临时表（例如，表名为“UpsertStagingTable”的表）。 然后，后者调用一个存储过程，以将临时表中的源数据合并到目标表中，并清理临时表。
 
 ![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
@@ -575,7 +631,7 @@ END
 
 ### <a name="overwrite-the-entire-table"></a>覆盖整个表
 
-可以在复制活动接收器中配置 **preCopyScript** 属性。 在此情况下，对于运行的每个复制活动，Azure 数据工厂会先运行脚本。 然后，运行复制来插入数据。 例如，若要使用最新数据覆盖整个表，请指定一个脚本，以先删除所有记录，然后从源批量加载新数据。
+可以在复制活动接收器中配置 **preCopyScript** 属性。 在这种情况下，对于运行的每个复制活动，该服务首先运行脚本。 然后，运行复制来插入数据。 例如，若要使用最新数据覆盖整个表，请指定一个脚本，以先删除所有记录，然后从源批量加载新数据。
 
 ### <a name="write-data-with-custom-logic"></a>使用自定义逻辑写入数据
 
@@ -616,7 +672,7 @@ END
     END
     ```
 
-3. 在 Azure 数据工厂中，在复制活动中定义 **SQL sink** 节，如下所示：
+3. 在 Azure 数据工厂或 Synapse 管道中，在复制活动中定义 SQL 接收器部分，如下所示：
 
     ```json
     "sink": {
@@ -644,7 +700,7 @@ END
 
 **查询**：如果在“输入”字段中选择“查询”，请为源输入 SQL 查询。 此设置会替代在数据集中选择的任何表。 此处不支持 Order By 子句，但你可以设置完整的 SELECT FROM 语句。 还可以使用用户定义的表函数。 select * from udfGetData() 是 SQL 中可返回表的 UDF。 此查询将生成可以在数据流中使用的源表。 使用查询也是减少进行测试或查找的行的好方法。
 
-**存储过程**：如果希望从源数据库执行的存储过程生成投影和源数据，请选择此选项。 可以键入架构、过程名称和参数，或者单击“刷新”以要求 ADF 发现架构和过程名称。 然后，可以单击“导入”以使用格式 ``@paraName`` 导入所有过程参数。
+**存储过程**：如果希望从源数据库执行的存储过程生成投影和源数据，请选择此选项。 可以键入架构、过程名称和参数，或者单击“刷新”以要求该服务发现架构和过程名称。 然后，可以单击“导入”以使用格式 ``@paraName`` 导入所有过程参数。
 
 ![存储过程](media/data-flow/stored-procedure-2.png "存储过程")
 
@@ -671,9 +727,9 @@ END
 
 ![键列](media/data-flow/keycolumn.png "键列")
 
-ADF 在后续的更新、更新插入和删除中会使用你在此处将其选取为密钥的列名称。 因此，你必须选取存在于接收器映射中的列。 如果你不希望将值写入此键列，请单击“跳过写入键列”。
+该服务在后续的更新、更新插入和删除中会使用你在此处将其选取为密钥的列名称。 因此，你必须选取存在于接收器映射中的列。 如果你不希望将值写入此键列，请单击“跳过写入键列”。
 
-你可以将此处用于更新目标 Azure SQL 数据库表的键列参数化。 如果你使用多个列作为组合键，则单击“自定义表达式”后，你将能够使用 ADF 数据流表达式语言添加动态内容。该内容可以包含一个字符串数组，其中有用于组合键的列名称。
+你可以将此处用于更新目标 Azure SQL 数据库表的键列参数化。 如果你有多个用于组合键的列，单击“自定义表达式”，你将能够使用数据流[表达式语言](control-flow-expression-language-functions.md)添加动态内容，其中可以包含一个字符串数组，该数组包含一个组合键的列名。
 
 **表操作：** 确定在写入之前是否从目标表重新创建或删除所有行。
 
@@ -683,7 +739,7 @@ ADF 在后续的更新、更新插入和删除中会使用你在此处将其选�
 
 **批大小**：控制每个 Bucket 中写入的行数。 较大的批大小可提高压缩比并改进内存优化，但在缓存数据时可能会导致内存不足异常。
 
-使用 TempDB：默认情况下，在加载过程中，数据工厂会使用一个全局临时表来存储数据。 你也可以取消选中“使用 TempDB”选项，改为要求数据工厂将临时保存表存储在用于此接收器的数据库中的用户数据库中。
+**使用 TempDB**：默认情况下，作为加载过程的一部分，该服务将使用全局临时表来存储数据。 你也可以取消选中“使用 TempDB”选项，改为要求该服务将临时保存表存储在用于此接收器的数据库中的用户数据库中。
 
 ![使用临时数据库](media/data-flow/tempdb.png "使用临时数据库")
 
@@ -699,7 +755,7 @@ ADF 在后续的更新、更新插入和删除中会使用你在此处将其选�
 *    无法在列中插入 NULL 值
 *    INSERT 语句与 CHECK 约束冲突
 
-默认情况下，遇到第一个错误时，数据流运行会失败。 你可以选择“出错时继续”，确保即使各行存在错误，也可以完成数据流。 Azure 数据工厂提供了不同的选项来处理这些错误行。
+默认情况下，遇到第一个错误时，数据流运行会失败。 你可以选择“出错时继续”，确保即使各行存在错误，也可以完成数据流。 该服务提供了不同的选项来处理这些错误行。
 
 事务提交：选择是在单个事务中写入数据，还是分批写入数据。 单个事务将提供较差的性能，但在事务完成之前，其他人将看不到任何写入的数据。  
 
@@ -712,16 +768,16 @@ ADF 在后续的更新、更新插入和删除中会使用你在此处将其选�
 
 ## <a name="data-type-mapping-for-azure-sql-database"></a>Azure SQL 数据库的数据类型映射
 
-从/向 Azure SQL 数据库复制数据时，以下映射用于从 Azure SQL 数据库数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+从/向 Azure SQL 数据库复制数据时，以下映射用于从 Azure SQL 数据库数据类型映射到 Azure 数据工厂临时数据类型。 Synapse 管道功能使用相同的映射，它直接实现 Azure 数据工厂。  若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
-| Azure SQL 数据库数据类型 | Azure 数据工厂临时数据类型 |
+| Azure SQL 数据库数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
 | bit |布尔 |
 | char |String, Char[] |
 | date |DateTime |
-| Datetime |DateTime |
+| datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | 小数 |小数 |
@@ -762,33 +818,20 @@ ADF 在后续的更新、更新插入和删除中会使用你在此处将其选�
 
 ## <a name="using-always-encrypted"></a>使用 Always Encrypted
 
-使用 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 从/向 Azure SQL 数据库复制数据时，请通过自承载 Integration Runtime 使用[通用 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 此 Azure SQL 数据库连接器目前不支持 Always Encrypted。 
+使用 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 从/向 SQL Server 复制数据时，请执行以下步骤： 
 
-更具体地说：
+1. 将[列主密钥 (CMK)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true) 存储在 [Azure 密钥保管库](../key-vault/general/overview.md)中。 详细了解[如何使用 Azure 密钥保管库配置 Always Encrypted](../azure-sql/database/always-encrypted-azure-key-vault-configure.md?tabs=azure-powershell)
 
-1. 安装自承载 Integration Runtime（如果没有）。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
+2. 确保授予对存储了[列主密钥 (CMK)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true) 的密钥保管库的访问权限。 有关所需的权限，请参阅[此文](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true#key-vaults)。
 
-2. 从[此处](/sql/connect/odbc/download-odbc-driver-for-sql-server)下载适用于 SQL Server 的 64 位 ODBC 驱动程序，并将其安装在 Integration Runtime 计算机上。 若要详细了解此驱动程序的工作原理，请参阅[在适用于 SQL Server 的 ODBC 驱动程序中使用 Always Encrypted](/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver#using-the-azure-key-vault-provider)。
+3. 创建链接服务，以使用托管标识或服务主体连接到 SQL 数据库并启用“Always Encrypted”功能。 
 
-3. 若要创建 ODBC 类型的链接服务以连接到 SQL 数据库，请参阅以下示例：
-
-    - 若要使用“SQL 身份验证”，请执行以下操作：如下所示指定 ODBC 连接字符串，并选择“基本”身份验证以设置用户名和密码。
-
-        ```
-        Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
-        ```
-
-    - 如果在 Azure 虚拟机上运行自承载集成运行时，则可对 Azure VM 的标识使用“托管标识身份验证”：
-
-        1. 按照相同的[先决条件](#managed-identity)为托管标识创建数据库用户，并在数据库中授予适当的角色。
-        2. 在链接服务中，如下所示指定 ODBC 连接字符串，并选择“匿名”身份验证，因为连接字符串本身指示 `Authentication=ActiveDirectoryMsi`。
-
-        ```
-        Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>; Authentication=ActiveDirectoryMsi;
-        ```
-
-4. 相应地使用 ODBC 类型创建数据集和复制活动。 若要了解详细信息，请参阅 [ODBC 连接器](connector-odbc.md)一文。
+>[!NOTE]
+>SQL Server [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 支持以下方案： 
+>1. 源或接收器数据存储使用托管标识或服务主体作为密钥提供程序身份验证类型。
+>2. 源和接收器数据存储都使用托管标识作为密钥提供程序身份验证类型。
+>3. 源和接收器数据存储都使用同一个服务主体作为密钥提供程序身份验证类型。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 数据工厂中复制活动支持用作源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。

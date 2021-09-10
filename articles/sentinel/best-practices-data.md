@@ -8,16 +8,16 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 30132d08a1094fc2bd4b7423ed787eadf77c2249
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 35b29ae6116e2e040f2383606fa20c5ab6316315
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178723"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253480"
 ---
 #  <a name="data-collection-best-practices"></a>数据收集最佳做法
 
-本节将回顾使用 Azure Sentinel 数据连接器收集数据的最佳做法。 有关详细信息，请参阅[连接数据源](connect-data-sources.md)、[Azure Sentinel 合作伙伴数据连接器](partner-data-connectors.md)和 [Azure Sentinel 解决方案目录](sentinel-solutions-catalog.md)。
+本节将回顾使用 Azure Sentinel 数据连接器收集数据的最佳做法。 有关详细信息，请参阅[连接数据源](connect-data-sources.md)、[Azure Sentinel 数据连接器引用](data-connectors-reference.md)和 [Azure Sentinel 解决方案目录](sentinel-solutions-catalog.md)。
 
 ## <a name="prioritize-your-data-connectors"></a>设置数据连接器的优先级
 
@@ -25,7 +25,7 @@ ms.locfileid: "122178723"
 
 免费数据连接器会尽快开始显示来自 Azure Sentinel 的值，而这时你可继续规划其他数据连接器和预算。
 
-对于[合作伙伴](partner-data-connectors.md)和[自定义](create-custom-connector.md)数据连接器，先设置 [Syslog](connect-syslog.md) 和 [CEF](connect-common-event-format.md) 连接器（优先级最高的优先），以及任何基于 Linux 的设备。
+对于[合作伙伴](data-connectors-reference.md)和[自定义](create-custom-connector.md)数据连接器，先设置 [Syslog](connect-syslog.md) 和 [CEF](connect-common-event-format.md) 连接器（优先级最高的优先），以及任何基于 Linux 的设备。
 
 如果数据引入太昂贵、太迅速，可使用 [Azure Monitor 代理](../azure-monitor/agents/azure-monitor-agent-overview.md)停止或筛选转发的日志。
 

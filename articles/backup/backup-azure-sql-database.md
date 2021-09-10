@@ -2,13 +2,13 @@
 title: 将 SQL Server 数据库备份到 Azure
 description: 本文介绍如何将 SQL Server 备份到 Azure。 此外还介绍 SQL Server 的恢复。
 ms.topic: conceptual
-ms.date: 06/18/2019
-ms.openlocfilehash: b6daf631248958948e799b20284d84a1e59e5dfe
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 08/20/2021
+ms.openlocfilehash: aae8493579c96607c5623bb04495ec21c99cf667
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518858"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123101434"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -18,6 +18,9 @@ ms.locfileid: "107518858"
 2. 15 分钟恢复点目标 (RPO)，频繁备份日志
 3. 最多一秒的时点恢复
 4. 单数据库级别的备份和还原
+
+>[!Note]
+>Azure VM 中 SQL 数据库的基于快照的备份目前提供预览版。 这个独特的产品/服务将快照的优势（改进 RTO 并降低对服务器的影响）与频繁日志备份的优势（实现低 RTO）相结合。 对于任何查询/访问的问题，请通过 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 联系我们。
 
 若要查看我们目前支持的备份和还原方案，请参阅[支持矩阵](sql-support-matrix.md#scenario-support)。
 
@@ -91,7 +94,7 @@ ms.locfileid: "107518858"
 
 1. 在对象资源管理器中转到该 SQL Server 实例。
 2. 导航到“安全性”->“登录名”
-3. 右键单击登录名，然后选择“新建登录名…”
+3. 右键单击“登录名”，并选择“新建登录名…”
 
     ![使用 SSMS 的新登录名](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
 

@@ -4,41 +4,25 @@ description: 在 Bicep 文件中使用循环和数组来部署多个资源实例
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/19/2021
-ms.openlocfilehash: 3185d6bac1e20e1d29c4f55b0a4e954b5ae35499
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 08/30/2021
+ms.openlocfilehash: 1b044b4ae3f5d73ad535d44153ea3d47023aeaaa
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634881"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123225315"
 ---
 # <a name="resource-iteration-in-bicep"></a>Bicep 中的资源迭代
 
-本文介绍如何在 Bicep 文件中创建多个资源实例。 可以将循环添加到文件的 `resource` 部分，并动态设置要部署的资源数。 还可避免在 Bicep 文件中重复语法。
+本文介绍如何在 Bicep 文件中创建多个资源实例。 可以在 `resource` 声明中添加循环，并动态设置要部署的资源数。 避免在 Bicep 文件中重复使用语法。
 
-还可以将循环用于 [properties](loop-properties.md)、[variables](loop-variables.md) 和 [outputs](loop-outputs.md)。
+还可以将循环用于[模块](loop-modules.md)、[属性](loop-properties.md)、[变量](loop-variables.md)和[输出](loop-outputs.md)。
 
 如需指定究竟是否部署资源，请参阅 [condition 元素](conditional-resource-deployment.md)。
 
 ## <a name="syntax"></a>语法
 
 可以通过以下方式使用循环来声明多个属性：
-
-- 循环访问数组。
-
-  ```bicep
-  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <item> in <collection>: {
-    <resource-properties>
-  }]
-  ```
-
-- 循环访问数组的元素。
-
-  ```bicep
-  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for (<item>, <index>) in <collection>: {
-    <resource-properties>
-  }]
-  ```
 
 - 使用循环索引。
 
@@ -48,11 +32,33 @@ ms.locfileid: "122634881"
   }]
   ```
 
+  有关详细信息，请参阅[循环索引](#loop-index)。
+
+- 循环访问数组。
+
+  ```bicep
+  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for <item> in <collection>: {
+    <resource-properties>
+  }]
+  ```
+
+  有关详细信息，请参阅[循环数组](#loop-array)。
+
+- 循环访问数组和索引。
+
+  ```bicep
+  resource <resource-symbolic-name> '<resource-type>@<api-version>' = [for (<item>, <index>) in <collection>: {
+    <resource-properties>
+  }]
+  ```
+
+  有关详细信息，请参阅[循环数组和索引](#loop-array-and-index)。
+
 ## <a name="loop-limits"></a>循环限制
 
-Bicep 文件的循环迭代不能为负数，也不能超过 800 次。 若要部署 Bicep 文件，请安装最新版本的 [Bicep 工具](install.md)。
+Bicep 文件的循环迭代不能为负数，也不能超过 800 次。
 
-## <a name="resource-iteration"></a>资源迭代
+## <a name="loop-index"></a>循环索引
 
 以下示例创建在 `storageCount` 参数中指定的存储帐户数目。
 
@@ -71,6 +77,8 @@ resource storageAcct 'Microsoft.Storage/storageAccounts@2021-02-01' = [for i in 
 ```
 
 请注意，创建存储帐户资源名称时将使用索引 `i`。
+
+## <a name="loop-array"></a>循环数组
 
 以下示例为 `storageNames` 参数中提供的每个名称创建一个存储帐户。
 
@@ -94,6 +102,49 @@ resource storageAcct 'Microsoft.Storage/storageAccounts@2021-02-01' = [for name 
 
 如果要从已部署的资源返回值，可以在[输出部分](loop-outputs.md)中使用循环。
 
+## <a name="loop-array-and-index"></a>循环数组和索引
+
+以下示例在定义存储帐户时使用数组元素和索引值。
+
+```bicep
+param storageAccountNamePrefix string
+
+var storageConfigurations = [
+  {
+    suffix: 'local'
+    sku: 'Standard_LRS'
+  }
+  {
+    suffix: 'geo'
+    sku: 'Standard_GRS'
+  }
+]
+
+resource storageAccountResources 'Microsoft.Storage/storageAccounts@2021-02-01' = [for (config, i) in storageConfigurations: {
+  name: '${storageAccountNamePrefix}${config.suffix}${i}'
+  location: resourceGroup().location
+  properties: {
+    supportsHttpsTrafficOnly: true
+    accessTier: 'Hot'
+    encryption: {
+      keySource: 'Microsoft.Storage'
+      services: {
+        blob: {
+          enabled: true
+        }
+        file: {
+          enabled: true
+        }
+      }
+    }
+  }
+  kind: 'StorageV2'
+  sku: {
+    name: config.sku
+  }
+}]
+```
+
 ## <a name="resource-iteration-with-condition"></a>具有条件的资源迭代
 
 下面的示例演示与筛选的资源循环组合在一起的嵌套循环。 筛选器必须是计算结果为布尔值的表达式。
@@ -110,7 +161,7 @@ resource parentResources 'Microsoft.Example/examples@2020-06-06' = [for parent i
 }]
 ```
 
-筛选器还必须受模块循环支持。
+筛选器还必须受[模块循环](loop-modules.md)支持。
 
 ## <a name="deploy-in-batches"></a>批量部署
 
@@ -118,7 +169,7 @@ resource parentResources 'Microsoft.Example/examples@2020-06-06' = [for parent i
 
 你可能不希望同时更新资源类型的所有实例。 例如，在更新生产环境时，可能需要错开更新，使任何一次仅更新一定数量。 可指定同时批处理和部署其中一部分实例。 其他实例等待该批处理完成。
 
-若要串行部署资源的实例，请添加 [batchSize 修饰器](./file.md#resource-and-module-decorators)。 将其值设置为一次要部署的实例数。 在循环中创建先前实例的依赖关系，使其在上一个批处理完成后才启动批处理。
+若要串行部署资源的实例，请添加 [batchSize 修饰器](./file.md#resource-and-module-decorators)。 将其值设置为要并发部署的实例数。 在循环中创建先前实例的依赖关系，使其在上一个批处理完成后才启动批处理。
 
 ```bicep
 param rgLocation string = resourceGroup().location
@@ -133,6 +184,8 @@ resource storageAcct 'Microsoft.Storage/storageAccounts@2021-02-01' = [for i in 
   kind: 'Storage'
 }]
 ```
+
+对于纯顺序部署，请将批大小设置为 1。
 
 ## <a name="iteration-for-a-child-resource"></a>子资源的迭代
 
@@ -182,24 +235,10 @@ resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2021-02-01
 }]
 ```
 
-## <a name="example-templates"></a>示例模板
-
-以下示例展示了创建资源或属性的多个实例的常见方案。
-
-|模板  |说明  |
-|---------|---------|
-|[循环存储](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopstorage.bicep) |部署名称中带索引号的多个存储帐户。 |
-|[串行循环存储](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopserialstorage.bicep) |一次部署多个存储帐户。 名称包含索引号。 |
-|[使用数组的循环存储](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/multiple-instance/loopstoragewitharray.bicep) |部署多个存储帐户。 名称包含数组中的值。 |
-
 ## <a name="next-steps"></a>后续步骤
 
 - 有关循环的其他用法，请参阅：
-  - [Bicep 文件中的属性迭代](loop-properties.md)
-  - [Bicep 文件中的变量迭代](loop-variables.md)
-  - [Bicep 文件中的输出迭代](loop-outputs.md)
-- 若要了解 Bicep 文件的各个部分，请参阅[了解 Bicep 文件的结构和语法](file.md)。
-- 若要了解如何部署多个资源，请参阅[使用 Bicep 模块](modules.md)。
+  - [Bicep 中的属性迭代](loop-properties.md)
+  - [Bicep 中的变量迭代](loop-variables.md)
+  - [Bicep 中的输出迭代](loop-outputs.md)
 - 若要设置对循环中创建的资源的依赖关系，请参阅[设置资源依赖关系](./resource-declaration.md#set-resource-dependencies)。
-- 若要了解如何使用 PowerShell 进行部署，请参阅[使用 Bicep 和 Azure PowerShell 部署资源](deploy-powershell.md)。
-- 若要了解如何使用 Azure CLI 进行部署，请参阅[使用 Bicep 和 Azure CLI 部署资源](deploy-cli.md)。

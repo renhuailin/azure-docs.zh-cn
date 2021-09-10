@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 265ae82f3a8d5a10e333057ebb55473c18fd36c3
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 501294688446bdb944d93a0939cde0a5e4fea0df
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109460"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123254150"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -195,7 +195,7 @@ ms.locfileid: "113109460"
 | **参考**              | [Windows Azure Blob MD5 概述](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
 | **步骤** | <p>Windows Azure Blob 服务提供相应的机制来确保应用程序和传输层的数据完整性。 如果出于任何原因需要使用 HTTP 而不是 HTTPS，并且使用的是块 Blob，则可以使用 MD5 检查，帮助验证正在传输的 Blob 的完整性。</p><p>这会有助于防止网络/传输层错误，但不一定可帮助防止中间攻击。 如果可以使用提供传输级安全的 HTTPS，则使用 MD5 检查就很多余且不必要。</p>|
 
-## <a name="use-smb-30-compatible-client-to-ensure-in-transit-data-encryption-to-azure-file-shares"></a><a id="smb-shares"></a>使用与 SMB 3.0 兼容的客户端来确保传输到 Azure 文件共享的数据经过加密
+## <a name="use-smb-3x-compatible-client-to-ensure-in-transit-data-encryption-to-azure-file-shares"></a><a id="smb-shares"></a>使用与 SMB 3.x 兼容的客户端来确保传输到 Azure 文件共享的数据经过加密
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
@@ -204,7 +204,7 @@ ms.locfileid: "113109460"
 | **适用的技术** | 泛型 |
 | **属性**              | StorageType - 文件 |
 | **参考**              | [Azure 文件存储](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931)、[Windows 客户端的 Azure 文件存储 SMB 支持](../../storage/files/storage-dotnet-how-to-use-files.md#understanding-the-net-apis) |
-| **步骤** | 使用 REST API 时，Azure 文件存储支持 HTTPS，但经常用作附加到 VM 的 SMB 文件共享。 SMB 2.1 不支持加密，因此只允许在 Azure 中的相同区域内连接。 但是，SMB 3.0 支持加密，并且可以配合 Windows Server 2012 R2、Windows 8、Windows 8.1 和 Windows 10 使用，允许跨区域访问，甚至桌面上的访问。 |
+| **步骤** | 使用 REST API 时，Azure 文件支持 HTTPS，但经常用作附加到 VM 的 SMB 文件共享。 SMB 2.1 不支持加密，因此只允许在 Azure 中的相同区域内连接。 但是，SMB 3.x 支持加密，并且可以配合 Windows Server 2012 R2、Windows 8、Windows 8.1 和 Windows 10 使用，允许跨区域访问，甚至桌面上的访问。 |
 
 ## <a name="implement-certificate-pinning"></a><a id="cert-pinning"></a>实施证书固定
 

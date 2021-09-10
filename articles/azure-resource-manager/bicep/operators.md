@@ -4,13 +4,13 @@ description: 介绍适用于 Azure 资源管理器部署的 Bicep 运算符。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/29/2021
-ms.openlocfilehash: 143c7881d3f22bf67b3dfabf74ca54825efffc94
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/30/2021
+ms.openlocfilehash: 80fc9e4e1285d86858a476feba30621a7afe1c79
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741210"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123221039"
 ---
 # <a name="bicep-operators"></a>Bicep 运算符
 
@@ -46,9 +46,10 @@ ms.locfileid: "121741210"
 
 | 运算符 | 名称 | 说明 |
 | ---- | ---- | ---- |
+| `[]` | [索引访问器](./operators-access.md#index-accessor) | 访问对象上的数组或属性的元素。 |
+| `.` | [函数访问器](./operators-access.md#function-accessor) | 在资源上调用函数。 |
 | `::` | [嵌套资源访问器](./operators-access.md#nested-resource-accessor) | 从父资源外部访问嵌套资源。 |
 | `.` | [属性访问器](./operators-access.md#property-accessor)。 | 访问对象的属性。 |
-| `.` | [函数访问器](./operators-access.md#function-accessor) | 在资源上调用函数。 |
 
 ## <a name="comparison"></a>比较
 

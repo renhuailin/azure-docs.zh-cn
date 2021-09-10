@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: fb277b2468d0cf4df5d28e412a5fb91f777b46bf
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 02bdb1812556d08b00885a68fb50443e97d6977c
+ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178965"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123214055"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>注册和扫描 Azure Data Lake Storage Gen2
 
@@ -60,7 +60,7 @@ Azure Data Lake Storage Gen2 数据源支持以下功能：
 
 如果选择的身份验证方法是“帐户密钥”，则需要获取访问密钥，并将其存储在密钥保管库中：
 
-1. 导航到 ADLS Gne2 存储帐户
+1. 导航到 ADLS Gen2 存储帐户
 1. 选择“安全性 + 网络”>“访问密钥”
 1. 复制密钥，并将其保存在某个位置，以备后续步骤使用
 1. 导航到你的密钥保管库
@@ -119,7 +119,7 @@ Azure Data Lake Storage Gen2 数据源支持以下功能：
 若要在数据目录中注册新的 ADLS Gen2 帐户，请执行以下操作：
 
 1. 导航到你的 Purview 帐户
-2. 在左侧导航区域中选择“数据映射”。
+2. 在左侧导航中选择“数据映射”。
 3. 选择“注册”
 4. 在“注册源”中，选择“Azure Data Lake Storage Gen2” 
 5. 选择“继续”

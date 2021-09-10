@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB 如何为数据提供数据库保护和数�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/21/2020
+ms.date: 08/30/2021
 ms.author: mjbrown
-ms.openlocfilehash: 19b4c8466e88159839ce1f43a5ba282b1bb3ec9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53e6ef24ba7f9df42ce15d62d11cf4f455825caa
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94636905"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439409"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 安全性 - 概述
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -84,22 +84,194 @@ ms.locfileid: "94636905"
 
 <a id="primary-keys"></a>
 
-## <a name="primary-keys"></a>主键
+## <a name="primarysecondary-keys"></a>主/辅助密钥
 
-主密钥提供对数据库帐户的所有管理资源的访问权限。 主密钥：
+主/辅助密钥提供对数据库帐户的所有管理资源的访问权限。 主/辅助密钥：
 
 - 提供对帐户、数据库、用户和权限的访问权限。 
 - 无法用于提供对容器和文档的精细访问权限。
 - 在创建帐户过程中创建。
 - 随时可重新生成。
 
-每个帐户包括两个主密钥：主要密钥和辅助密钥。 使用两个密钥的目的是为了能够重新生成或轮换密钥，从而可以持续访问帐户和数据。
+每个帐户包括两个密钥：主密钥和辅助密钥。 使用两个密钥的目的是为了能够重新生成或轮换密钥，从而可以持续访问帐户和数据。
 
-Azure Cosmos DB 帐户除了有两个主密钥以外，还有两个只读密钥。 这些只读密钥只允许针对帐户执行读取操作。 只读密钥不提供对资源的读取权限。
+主/辅助密钥分为两种版本：读写和只读。 只读密钥只允许对帐户执行读取操作，但不提供对读取权限资源的访问权限。
 
-可以使用 Azure 门户检索和重新生成主要、辅助、只读和读写主密钥。 有关说明，请参阅[查看、复制和重新生成访问密钥](manage-with-cli.md#regenerate-account-key)。
+### <a name="key-rotation-and-regeneration"></a><a id="key-rotation"></a> 密钥轮换和重新生成
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure 门户中的访问控制 (IAM) - 演示 NoSQL 数据库安全性":::
+密钥轮换和重新生成的过程非常简单。 首先，请确保应用程序始终使用主密钥或辅助密钥来访问你的 Azure Cosmos DB 帐户。 然后，执行以下所述的步骤。
+
+# <a name="sql-api"></a>[SQL API](#tab/sql-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>如果你的应用程序当前正在使用主密钥
+
+1. 在 Azure 门户中，导航到你的 Azure Cosmos DB 帐户。
+
+1. 从左侧菜单中选择“密钥”，然后从辅助密钥右侧的省略号中选择“重新生成辅助密钥”。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
+
+1. 验证新的辅助密钥是否适用于你的 Azure Cosmos DB 帐户。 密钥重新生成可能需要一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
+
+1. 在应用程序中将主密钥替换为辅助密钥。
+
+1. 返回到 Azure 门户，并触发主密钥的重新生成。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="显示如何重新生成主密钥的 Azure 门户的屏幕截图" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>如果你的应用程序当前正在使用辅助密钥
+
+1. 在 Azure 门户中，导航到你的 Azure Cosmos DB 帐户。
+
+1. 从左侧菜单中选择“密钥”，然后从主密钥右侧的省略号中选择“重新生成主密钥”。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="显示如何重新生成主密钥的 Azure 门户的屏幕截图" border="true":::
+
+1. 验证新的主密钥是否适用于你的 Azure Cosmos DB 帐户。 密钥重新生成可能需要一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
+
+1. 在应用程序中将辅助密钥替换为主密钥。
+
+1. 返回到 Azure 门户，并触发辅助密钥的重新生成。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
+
+# <a name="azure-cosmos-db-api-for-mongodb"></a>[用于 MongoDB 的 Azure Cosmos DB API](#tab/mongo-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>如果你的应用程序当前正在使用主密钥
+
+1. 在 Azure 门户中，导航到你的 Azure Cosmos DB 帐户。
+
+1. 从左侧菜单中选择“连接字符串”，然后从辅助密码右侧的省略号中选择“重新生成密码”。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-mongo.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
+
+1. 验证新的辅助密钥是否适用于你的 Azure Cosmos DB 帐户。 密钥重新生成可能需要一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
+
+1. 在应用程序中将主密钥替换为辅助密钥。
+
+1. 返回到 Azure 门户，并触发主密钥的重新生成。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-mongo.png" alt-text="显示如何重新生成主密钥的 Azure 门户的屏幕截图" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>如果你的应用程序当前正在使用辅助密钥
+
+1. 在 Azure 门户中，导航到你的 Azure Cosmos DB 帐户。
+
+1. 从左侧菜单中选择“连接字符串”，然后从主密码右侧的省略号中选择“重新生成密码”。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-mongo.png" alt-text="显示如何重新生成主密钥的 Azure 门户的屏幕截图" border="true":::
+
+1. 验证新的主密钥是否适用于你的 Azure Cosmos DB 帐户。 密钥重新生成可能需要一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
+
+1. 在应用程序中将辅助密钥替换为主密钥。
+
+1. 返回到 Azure 门户，并触发辅助密钥的重新生成。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-mongo.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
+
+# <a name="cassandra-api"></a>[Cassandra API](#tab/cassandra-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>如果你的应用程序当前正在使用主密钥
+
+1. 在 Azure 门户中，导航到你的 Azure Cosmos DB 帐户。
+
+1. 从左侧菜单中选择“连接字符串”，然后从辅助密码右侧的省略号中选择“重新生成辅助读写密码”。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-cassandra.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
+
+1. 验证新的辅助密钥是否适用于你的 Azure Cosmos DB 帐户。 密钥重新生成可能需要一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
+
+1. 在应用程序中将主密钥替换为辅助密钥。
+
+1. 返回到 Azure 门户，并触发主密钥的重新生成。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-cassandra.png" alt-text="显示如何重新生成主密钥的 Azure 门户的屏幕截图" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>如果你的应用程序当前正在使用辅助密钥
+
+1. 在 Azure 门户中，导航到你的 Azure Cosmos DB 帐户。
+
+1. 从左侧菜单中选择“连接字符串”，然后从主密码右侧的省略号中选择“重新生成主读写密码”。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-cassandra.png" alt-text="显示如何重新生成主密钥的 Azure 门户的屏幕截图" border="true":::
+
+1. 验证新的主密钥是否适用于你的 Azure Cosmos DB 帐户。 密钥重新生成可能需要一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
+
+1. 在应用程序中将辅助密钥替换为主密钥。
+
+1. 返回到 Azure 门户，并触发辅助密钥的重新生成。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-cassandra.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
+
+# <a name="gremlin-api"></a>[Gremlin API](#tab/gremlin-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>如果你的应用程序当前正在使用主密钥
+
+1. 在 Azure 门户中，导航到你的 Azure Cosmos DB 帐户。
+
+1. 从左侧菜单中选择“密钥”，然后从辅助密钥右侧的省略号中选择“重新生成辅助密钥”。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-gremlin.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
+
+1. 验证新的辅助密钥是否适用于你的 Azure Cosmos DB 帐户。 密钥重新生成可能需要一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
+
+1. 在应用程序中将主密钥替换为辅助密钥。
+
+1. 返回到 Azure 门户，并触发主密钥的重新生成。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-gremlin.png" alt-text="显示如何重新生成主密钥的 Azure 门户的屏幕截图" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>如果你的应用程序当前正在使用辅助密钥
+
+1. 在 Azure 门户中，导航到你的 Azure Cosmos DB 帐户。
+
+1. 从左侧菜单中选择“密钥”，然后从主密钥右侧的省略号中选择“重新生成主密钥”。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-gremlin.png" alt-text="显示如何重新生成主密钥的 Azure 门户的屏幕截图" border="true":::
+
+1. 验证新的主密钥是否适用于你的 Azure Cosmos DB 帐户。 密钥重新生成可能需要一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
+
+1. 在应用程序中将辅助密钥替换为主密钥。
+
+1. 返回到 Azure 门户，并触发辅助密钥的重新生成。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-gremlin.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
+
+# <a name="table-api"></a>[表 API](#tab/table-api)
+
+#### <a name="if-your-application-is-currently-using-the-primary-key"></a>如果你的应用程序当前正在使用主密钥
+
+1. 在 Azure 门户中，导航到你的 Azure Cosmos DB 帐户。
+
+1. 从左侧菜单中选择“连接字符串”，然后从辅助密钥右侧的省略号中选择“重新生成辅助密钥”。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
+
+1. 验证新的辅助密钥是否适用于你的 Azure Cosmos DB 帐户。 密钥重新生成可能需要一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
+
+1. 在应用程序中将主密钥替换为辅助密钥。
+
+1. 返回到 Azure 门户，并触发主密钥的重新生成。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-table.png" alt-text="显示如何重新生成主密钥的 Azure 门户的屏幕截图" border="true":::
+
+#### <a name="if-your-application-is-currently-using-the-secondary-key"></a>如果你的应用程序当前正在使用辅助密钥
+
+1. 在 Azure 门户中，导航到你的 Azure Cosmos DB 帐户。
+
+1. 从左侧菜单中选择“连接字符串”，然后从主密钥右侧的省略号中选择“重新生成主密钥”。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key-table.png" alt-text="显示如何重新生成主密钥的 Azure 门户的屏幕截图" border="true":::
+
+1. 验证新的主密钥是否适用于你的 Azure Cosmos DB 帐户。 密钥重新生成可能需要一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
+
+1. 在应用程序中将辅助密钥替换为主密钥。
+
+1. 返回到 Azure 门户，并触发辅助密钥的重新生成。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

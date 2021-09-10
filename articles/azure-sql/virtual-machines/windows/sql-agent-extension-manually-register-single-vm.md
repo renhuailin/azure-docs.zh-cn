@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/21/2021
+ms.date: 09/01/2021
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 649bf52c48867f4508a7071cb1443b62eae36010
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 3dfcfcab7421b6aa8710310fdffa08f54688c4fd
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860341"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123219956"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>向 SQL IaaS 代理扩展注册 SQL Server VM
 
@@ -28,15 +28,18 @@ ms.locfileid: "121860341"
 
 向 [SQL IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)注册 SQL Server VM，以便为 Azure VM 上的 SQL Server 解锁丰富的功能权益。
 
-本文介绍如何向 SQL IaaS 代理扩展注册单个 SQL Server VM。 或者，可以[自动](sql-agent-extension-automatic-registration-all-vms.md)注册所有 SQL Server VM，也可以[通过脚本批量注册多个 VM](sql-agent-extension-manually-register-vms-bulk.md)。
+本文介绍如何向 SQL IaaS 代理扩展注册单个 SQL Server VM。 或者，可以在订阅中[自动](sql-agent-extension-automatic-registration-all-vms.md)注册所有 SQL Server VM，也可以[通过脚本批量注册多个 VM](sql-agent-extension-manually-register-vms-bulk.md)。
+
+> [!NOTE]
+> 从 2021 年 9 月开始，在完整模式下注册 SQL IaaS 扩展不再需要重启 SQL Server 服务。 
 
 ## <a name="overview"></a>概述
 
-向 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)注册可在订阅（该资源独立于虚拟机资源）中创建 SQL 虚拟机资源 。 从扩展中取消注册 SQL Server VM 会删除 SQL 虚拟机资源，但不会删除实际虚拟机。
+注册 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)可在订阅（该资源独立于虚拟机资源）中创建 [SQL 虚拟机资源](manage-sql-vm-portal.md)。  从扩展中取消注册 SQL Server VM 会删除 **SQL 虚拟机** 资源，但不会删除实际虚拟机。
 
 通过 Azure 门户部署 SQL Server VM Azure 市场映像会自动将 SQL Server VM 注册到扩展。 但是，如果选择在 Azure 虚拟机上自行安装 SQL Server，或通过自定义 VHD 预配 Azure 虚拟机，则必须向 SQL IaaS 代理扩展 SQL Server VM 注册才能解锁完整功能权益和可管理性。
 
-若要利用 SQL IaaS 代理扩展，必须首先[向 Microsoft.SqlVirtualMachine 提供程序注册订阅](#register-subscription-with-resource-provider)，这使 SQL IaaS 扩展能够在该特定订阅中创建资源。
+若要利用 SQL IaaS 代理扩展，必须首先[向 Microsoft.SqlVirtualMachine 提供程序注册订阅](#register-subscription-with-rp)，这使 SQL IaaS 扩展能够在该特定订阅中创建资源。
 
 > [!IMPORTANT]
 > SQL IaaS 代理扩展会收集数据，目的只是当客户在 Azure 虚拟机中使用 SQL Server 时为他们提供可选权益。 在未经得客户事先同意的情况下，Microsoft 不会将此数据用于许可审核。 有关详细信息，请参阅 [SQL Server 隐私补充条款](/sql/sql-server/sql-server-privacy#non-personal-data)。
@@ -49,9 +52,9 @@ ms.locfileid: "121860341"
 - 一个 Azure 资源模型 [Windows Server 2008（或更高版本）虚拟机](../../../virtual-machines/windows/quick-create-portal.md)，其 [SQL Server 2008（或更高版本）](https://www.microsoft.com/sql-server/sql-server-downloads)已部署到公有云或 Azure 政府云。
 - 最新版本的 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell（最低 5.0）](/powershell/azure/install-az-ps)。
 
-## <a name="register-subscription-with-resource-provider"></a>向资源提供程序注册订阅
+## <a name="register-subscription-with-rp"></a>将订阅注册到 RP
 
-若要向 SQL IaaS 代理扩展注册 SQL Server VM，必须首先向 Microsoft.SqlVirtualMachine 资源提供程序注册订阅。 这使 SQL IaaS 代理扩展能够在订阅中创建资源。  可以使用 Azure 门户、Azure CLI 或 Azure PowerShell 执行此操作。
+若要向 SQL Server VM 注册 SQL IaaS 代理扩展，必须首先向订阅注册 Microsoft.SqlVirtualMachine 资源提供程序 (RP)。 这使 SQL IaaS 代理扩展能够在订阅中创建资源。 可以使用 Azure 门户、Azure CLI 或 Azure PowerShell 执行此操作。
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -83,19 +86,74 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ---
 
-## <a name="register-with-extension"></a>向扩展注册
+## <a name="full-mode"></a>完整模式
 
-[SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md#management-modes)有三种管理模式。
+若要直接在完整模式下注册 SQL Server VM，请使用以下 Azure PowerShell 命令：
 
-在完整管理模式下注册扩展会重启 SQL Server 服务，因此建议首先在轻型模式下注册扩展，然后在维护时段内[升级到完整模式](#upgrade-to-full)。
+  ```powershell-interactive
+  # Get the existing  Compute VM
+  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
 
-### <a name="lightweight-management-mode"></a>轻型管理模式
+  # Register with SQL IaaS Agent extension in full mode
+  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+  
+  ```
 
-使用 Azure CLI 或 Azure PowerShell 在轻型模式下向扩展注册 SQL Server VM。 这不会重启 SQL Server 服务。 随后可以随时升级到完整模式，但这样做会重启 SQL Server 服务，因此建议等到计划性维护时段。
+若要详细了解完整模式，请参阅 [管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)。
+
+### <a name="upgrade-to-full"></a>升级到完整模式
+
+在轻型模式下注册了扩展的 SQL Server VM 可以使用 Azure 门户、Azure CLI 或 Azure PowerShell 升级到完整模式。 在 OS 升级到 Windows 2008 R2 及更高版本之后，无代理模式下的 SQL Server VM 可以升级到完整模式 。 无法进行降级 - 若要执行此操作，需要 从 SQL IaaS 代理扩展[取消注册](#unregister-from-extension) SQL Server VM。 这样做会删除 SQL 虚拟机资源，但不会删除实际虚拟机。
+
+#### <a name="azure-portal"></a>Azure 门户
+
+若要使用 Azure 门户将扩展升级到完整模式，请执行以下步骤：
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 转到 [SQL 虚拟机](manage-sql-vm-portal.md#access-the-resource)资源。
+1. 选择 SQL Server VM，然后导航到“概述”页。
+1. 对于具有无代理或轻型 IaaS 扩展模式的 SQL Server VM，请选择“当前 SQL IaaS 扩展模式仅提供许可证类型和版本更新...”消息。
+
+   ![用于从门户更改模式的选项](./media/sql-agent-extension-manually-register-single-vm/change-sql-iaas-mode-portal.png)
+
+1. 选择"确认"，将 SQL Server IaaS 扩展模式升级到完整模式。
+
+    ![选择“确认”，将 SQL Server IaaS 扩展模式升级到完整模式。](./media/sql-agent-extension-manually-register-single-vm/enable-full-mode-iaas.png)
+
+#### <a name="command-line"></a>命令行
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
+
+若要将扩展升级到完整模式，请运行以下 Azure CLI 代码片段：
+
+  ```azurecli-interactive
+  # Update to full mode
+  az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
+  ```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+若要将扩展升级到完整模式，请运行以下 Azure PowerShell 代码片段：
+
+  ```powershell-interactive
+  # Get the existing  Compute VM
+  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+
+  # Register with SQL IaaS Agent extension in full mode
+  Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full -Location $vm.Location
+  ```
+
+---
+
+## <a name="lightweight-mode"></a>轻型模式
+
+使用 Azure CLI 或 Azure PowerShell 在轻型模式下注册 SQL Server VM 扩展，以获得有限的功能。 
 
 提供 SQL Server 许可证类型，形式为即用即付（`PAYG`，用于按使用情况付费）、Azure 混合权益（`AHUB`，用于使用自己的许可证）或灾难恢复（`DR`，用于激活[免费 DR 副本许可证](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)）。
 
 故障转移群集实例和多实例部署只能在轻型模式下向 SQL IaaS 代理扩展注册。
+
+若要详细了解轻型模式，请参阅[管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
@@ -118,26 +176,11 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
   New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
     -LicenseType <license_type>  -SqlManagementType LightWeight  
   ```
-
 ---
 
-### <a name="full-management-mode"></a>完整管理模式
+## <a name="noagent-management-mode"></a>无代理管理模式
 
-在完整模式下注册 SQL Server VM 会重启 SQL Server 服务。 请谨慎继续。
-
-若要直接在完整模式下注册 SQL Server VM（并可能重启 SQL Server 服务），请使用以下 Azure PowerShell 命令：
-
-  ```powershell-interactive
-  # Get the existing  Compute VM
-  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-
-  # Register with SQL IaaS Agent extension in full mode
-  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
-  ```
-
-### <a name="noagent-management-mode"></a>无代理管理模式
-
-在 Windows Server 2008（非 R2）上安装的 SQL Server 2008 和 2008 R2 可以在[无代理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)下向 SQL IaaS 代理扩展注册。 此选项可确保符合性，并允许使用有限功能在 Azure 门户中监视 SQL Server VM。
+在 Windows Server 2008（非 R2）上安装的 SQL Server 2008 和 2008 R2 只能在[无代理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)下注册 SQL IaaS 代理扩展。 此选项可确保符合性，并允许使用有限功能在 Azure 门户中监视 SQL Server VM。
 
 对于许可证类型，请指定：`AHUB`、`PAYG` 或 `DR`。 对于映像套餐，请指定 `SQL2008-WS2008` 或 `SQL2008R2-WS2008`
 
@@ -167,9 +210,10 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ---
 
+
 ## <a name="check-extension-mode"></a>检查扩展模式
 
-使用 Azure PowerShell 检查 SQL Server IaaS 代理扩展所处的模式。 
+使用 Azure PowerShell 检查 SQL Server IaaS 代理扩展所处的管理模式。 
 
 若要检查扩展模式，请使用此 Azure PowerShell cmdlet： 
 
@@ -183,9 +227,6 @@ $sqlvm.SqlManagementType
 
 在轻型模式下注册了扩展的 SQL Server VM 可以使用 Azure 门户、Azure CLI 或 Azure PowerShell 升级到完整模式。 在 OS 升级到 Windows 2008 R2 及更高版本之后，无代理模式下的 SQL Server VM 可以升级到完整模式 。 无法进行降级 - 若要执行此操作，需要 从 SQL IaaS 代理扩展[取消注册](#unregister-from-extension) SQL Server VM。 这样做会删除 SQL 虚拟机资源，但不会删除实际虚拟机。
 
-> [!NOTE]
-> 将 SQL IaaS 扩展的管理模式升级到完整模式时，会重启 SQL Server 服务。 在某些情况下，重启可能会导致与 SQL Server 服务关联的服务主体名称 (SPN) 更改为错误的用户帐户。 如果在将管理模式升级到完整模式后发生连接问题，请[取消注册并重新注册 SPN](/sql/database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections)。
-
 ### <a name="azure-portal"></a>Azure 门户
 
 若要使用 Azure 门户将扩展升级到完整模式，请执行以下步骤：
@@ -193,13 +234,13 @@ $sqlvm.SqlManagementType
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 转到 [SQL 虚拟机](manage-sql-vm-portal.md#access-the-resource)资源。
 1. 选择 SQL Server VM，然后选择“概述”。
-1. 对于具有无代理或轻型 IaaS 模式的 SQL Server VM，请选择“SQL IaaS 扩展仅提供许可证类型和版本更新”消息。
+1. 对于具有无代理或轻型 IaaS 模式的 SQL Server VM，请选择“当前 SQL IaaS 扩展仅提供许可证类型和版本更新...”消息。
 
    ![用于从门户更改模式的选项](./media/sql-agent-extension-manually-register-single-vm/change-sql-iaas-mode-portal.png)
 
-1. 选中“我同意重启虚拟机上的 SQL Server 服务”复选框，然后选择“确认”以将 IaaS 模式升级到完整模式 。
+1. 选择“确认”，将 SQL Server 扩展 IaaS 模式升级到完整模式。
 
-    ![用于同意重启虚拟机上的 SQL Server 服务的复选框](./media/sql-agent-extension-manually-register-single-vm/enable-full-mode-iaas.png)
+    ![选择“确认”，将 SQL Server 扩展 IaaS 模式升级到完整模式](./media/sql-agent-extension-manually-register-single-vm/enable-full-mode-iaas.png)
 
 ### <a name="command-line"></a>命令行
 
@@ -281,7 +322,6 @@ SQL IaaS 代理扩展可能处于失败状态。 使用 Azure 门户修复 SQL I
 1. 如果预配状态显示为“失败”，请选择“修复”来修复扩展。 如果状态为“成功”，则可以选中“强制修复”旁边的框来修复扩展，而不考虑状态。 
 
    ![如果预配状态显示为“失败”，请选择“修复”来修复扩展。 如果状态为“成功”，则可选中“强制修复”旁边的框来修复扩展，而不考虑状态。](./media/sql-agent-extension-manually-register-single-vm/force-repair-extension.png)
-
 
 
 ## <a name="unregister-from-extension"></a>从扩展取消注册

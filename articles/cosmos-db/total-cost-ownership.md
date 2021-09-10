@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/26/2021
 ms.reviewer: sngun
-ms.openlocfilehash: eb06d101170685bea5ff231612e9ffbf8df467da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b594d04c05b5cb05b45bc76f9de256d97aa436a1
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93079285"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123033623"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Azure Cosmos DB 的总拥有成本 (TCO)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -57,8 +57,17 @@ Azure Cosmos DB 的无服务器预配模型消除了过度预配数据库基础�
 
 * **使用预留容量可以节省高达 65% 的成本：使用** Azure Cosmos DB [预留容量](cosmos-db-reserved-capacity.md)，可预付为期一年或三年的 Azure Cosmos DB 资源费用，从而节省成本。 与采用一般定价相比，预付为期一年或三年的承诺费用可以享受 20-65% 的折扣，从而大幅节省成本。 对于任务关键型工作负荷，SLA 提供更有利的预配容量保障。
 
+## <a name="capacity-planning"></a>容量计划
+
+作为评估 TCO 的辅助方法，可以从容量计划开始。 如果计划从现有数据库群集迁移到 Azure Cosmos DB，可以根据有关现有数据库群集的信息进行容量计划。
+* 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+* 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
+
 ## <a name="next-steps"></a>后续步骤
 
+* 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以根据有关现有数据库群集的信息进行容量计划。
+    * 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
 * 详细了解 [Azure Cosmos DB 定价模型如何对客户而言更具经济效益](total-cost-ownership.md)
 * 详细了解[开发和测试优化](optimize-dev-test.md)
 * 详细了解如何[优化吞吐量成本](optimize-cost-throughput.md)

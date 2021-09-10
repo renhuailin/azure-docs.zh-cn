@@ -38,7 +38,7 @@ Azure RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/o
 
 ## <a name="how-azure-rbac-works"></a>Azure RBAC 的工作原理
 
-使用 Azure RBAC 控制资源访问权限的方式是分配 Azure 角色。 这是一个需要理解的重要概念 — 它涉及到如何强制实施权限。 角色分配包含三个要素：安全主体、角色订阅和范围。
+使用 Azure RBAC 控制资源访问权限的方式是分配 Azure 角色。 这是一个需要理解的重要概念 — 它涉及到如何强制实施权限。 角色分配包含三个要素：安全主体、角色定义和范围。
 
 ### <a name="security-principal"></a>安全主体
 
@@ -62,7 +62,7 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 有关详细信息，请参阅[了解 Azure 角色定义](role-definitions.md)。
 
-### <a name="scope"></a>作用域
+### <a name="scope"></a>范围
 
 范围是访问权限适用于的资源集。 分配角色时，可以通过定义范围来进一步限制允许的操作。 若要将某人分配为[网站参与者](built-in-roles.md#website-contributor)，但只针对一个资源组执行此分配，则可使用范围。
 

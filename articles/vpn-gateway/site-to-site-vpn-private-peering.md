@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4c84b46fe3265b5ada792cbe47d92768e602fa20
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 68dee7e8d00f3f1b6853a7be5c9328647d96371d
+ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229029"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123272072"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>通过 ExpressRoute 专用对等互连配置站点到站点 VPN 连接
 
@@ -22,6 +22,8 @@ ms.locfileid: "108229029"
 * 通过专用对等互连的流量已经过加密。
 
 * 连接到虚拟网络网关的点到站点用户可使用 ExpressRoute（通过站点到站点隧道）访问本地资源。
+
+* 可以通过 ExpressRoute 专用对等互连部署站点到站点 VPN 连接，同时通过同一 VPN 网关上的 Internet 部署站点到站点 VPN 连接。
 
 >[!NOTE]
 >此功能仅在区域冗余网关上受支持。 例如，VpnGw1AZ、VpnGw2AZ 等。

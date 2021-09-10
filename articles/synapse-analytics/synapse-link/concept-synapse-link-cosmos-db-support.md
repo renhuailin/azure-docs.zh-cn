@@ -10,12 +10,12 @@ ms.date: 06/02/2021
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: f3cd12c6c2e03dbf68a70cac13a75cde0847a593
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 8400a479b45770570c43ec906a192bf4f05a71a0
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112019028"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123110389"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Synapse Link for Azure Cosmos DB 支持的功能
 
@@ -61,4 +61,5 @@ Azure Cosmos DB 中有两种类型的容器：
 ## <a name="next-steps"></a>后续步骤
 
 * 请参阅如何[连接到 Synapse Link for Azure Cosmos DB](../quickstart-connect-synapse-link-cosmos-db.md)
-* [了解如何使用 Spark 查询 Cosmos DB 分析存储](how-to-query-analytical-store-spark.md)
+* [了解如何使用 Spark 3 查询 Cosmos DB 分析存储](how-to-query-analytical-store-spark-3.md)
+* [了解如何使用 Spark 2 查询 Cosmos DB 分析存储](how-to-query-analytical-store-spark.md)

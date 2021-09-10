@@ -3,7 +3,7 @@ title: Azure 媒体服务旧组件 | Microsoft Docs
 description: 本主题介绍 Azure 媒体服务旧组件。
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali-ms
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2021
+ms.date: 08/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 588eb1f93fa953a9051b4e3228980217c63ea27b
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: d86a77e724bffeaea6cb39ffc1a20e8737ef6d81
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114719402"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122835536"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒体服务旧组件
 
@@ -38,13 +38,14 @@ Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处�
  
 | **媒体处理器名称** | **停用日期** | **其他说明** |
 | --- | --- | ---|
-| Azure Media Indexer 2 | 2020 年 1 月 1 日 | 此媒体处理器将替换为[媒体服务 v3 AudioAnalyzerPreset 基本模式](../latest/analyze-video-audio-files-concept.md)。 有关详细信息，请参阅[从 Azure Media Indexer 2 迁移到 Azure 视频分析器媒体版（以前称为“视频索引器”）](migrate-indexer-v1-v2.md)。 |
-| Azure Media Indexer | 2023 年 3 月 1 日 | 此媒体处理器将替换为[媒体服务 v3 AudioAnalyzerPreset 基本模式](../latest/analyze-video-audio-files-concept.md)。 有关详细信息，请参阅[从 Azure Media Indexer 2 迁移到 Azure 视频分析器媒体版](migrate-indexer-v1-v2.md)。 |
+| Azure Media Indexer | 2020 年 1 月 1 日 | 此媒体处理器将替换为[媒体服务 v3 AudioAnalyzerPreset 基本模式](../latest/analyze-video-audio-files-concept.md)。 有关详细信息，请参阅[从 Azure Media Indexer 2 迁移到 Azure 视频分析器媒体版](migrate-indexer-v1-v2.md)（以前称为“视频索引器”）。 |
+| Azure Media Indexer 2 | 2023 年 3 月 1 日 | 此媒体处理器将替换为[媒体服务 v3 AudioAnalyzerPreset 基本模式](../latest/analyze-video-audio-files-concept.md)。 有关详细信息，请参阅[从 Azure Media Indexer 2 迁移到 Azure 视频分析器媒体版](migrate-indexer-v1-v2.md)（以前称为“视频索引器”）。 |
 | 动作检测 | 2020 年 6 月 1 日|目前无替换计划。 |
 | 视频摘要 |2020 年 6 月 1 日|目前无替换计划。|
 | 视频光学字符识别 | 2020 年 6 月 1 日 |此媒体处理器已被 Azure 视频分析器媒体版取代。 另外，请考虑使用 [Azure 媒体服务 v3 API](../latest/analyze-video-audio-files-concept.md)。 <br/>请参阅[比较 Azure 媒体服务 v3 预设与视频分析器媒体版](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md)。 |
 | 面部检测器 | 2020 年 6 月 1 日 | 此媒体处理器已被 Azure 视频分析器媒体版取代。 另外，请考虑使用 [Azure 媒体服务 v3 API](../latest/analyze-video-audio-files-concept.md)。 <br/>请参阅[比较 Azure 媒体服务 v3 预设与视频分析器媒体版](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md)。 |
 | 内容审查器 | 2020 年 6 月 1 日 |此媒体处理器已被 Azure 视频分析器媒体版取代。 另外，请考虑使用 [Azure 媒体服务 v3 API](../latest/analyze-video-audio-files-concept.md)。 <br/>请参阅[比较 Azure 媒体服务 v3 预设与视频分析器媒体版](../../azure-video-analyzer/video-analyzer-for-media-docs/compare-video-indexer-with-media-services-presets.md)。 |
+| 媒体编码器高级工作流 | 2024 年 2 月 29 日 | AMS v2 API 不再支持高级编码器。 如果以前将基于工作流的高级编码器用于 HEVC 编码，应迁移到具有 HEVC 编码支持的[新 v3 标准编码器](../latest/encode-media-encoder-standard-formats-reference.md)。 <br/> 如果需要高级编码器的高级工作流功能，建议你开始使用来自 [Imagine Communications](https://imaginecommunications.com/)、[Telestream](https://telestream.net) 或 [Bitmovin](https://bitmovin.com) 的 Azure 高级编码合作伙伴。 |
 
 ## <a name="next-steps"></a>后续步骤
 

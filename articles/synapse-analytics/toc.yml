@@ -599,7 +599,7 @@ items:
             href: ./spark/apache-spark-notebook-concept.md
           - name: 包管理
             href: ./spark/apache-spark-azure-portal-add-libraries.md
-          - name: 监视工具
+          - name: 监视 Apache Spark 应用程序
             href: monitoring/how-to-monitor-spark-applications.md
       - name: 操作指南
         items:
@@ -645,14 +645,18 @@ items:
                 href: ./spark/apache-spark-history-server.md
               - name: 监视 Spark 应用程序
                 href: monitoring/apache-spark-applications.md
-              - name: 监视 Spark 池
+              - name: 监视 Apache Spark 池
                 href: monitoring/how-to-monitor-spark-pools.md
-              - name: 连接和监视 Azure Synapse Spark 应用程序级指标
+              - name: 使用 API 收集 Apache Spark 应用程序指标
                 href: ./spark/connect-monitor-azure-synapse-spark-application-level-metrics.md
-              - name: 通过 Prometheus 和 Grafana 监视 Apache Spark 应用程序级指标
+              - name: 通过 Prometheus 和 Grafana 监视 Apache Spark 应用程序指标
                 href: ./spark/use-prometheus-grafana-to-monitor-apache-spark-application-level-metrics.md
-              - name: 使用 Azure Log Analytics 收集和可视化指标与日志（预览版）
+              - name: 通过 Azure Log Analytics 监视 Apache Spark 应用程序（预览）
                 href: ./spark/apache-spark-azure-log-analytics.md
+              - name: 使用 Azure 存储帐户收集 Apache Spark 应用程序日志和指标
+                href: ./spark/azure-synapse-diagnostic-emitters-azure-storage.md
+              - name: 使用 Azure 事件中心收集 Apache Spark 应用程序日志和指标
+                href: ./spark//azure-synapse-diagnostic-emitters-azure-eventhub.md
           - name: 数据源
             items:
               - name: Azure Cosmos DB Spark 3

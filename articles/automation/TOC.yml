@@ -14,11 +14,13 @@
   items:
     - name: 创建自动化帐户 - Azure 门户
       href: quickstarts/create-account-portal.md
+    - name: 启用托管标识 - Azure 门户
+      href: quickstarts/enable-managed-identity.md
     - name: 为计算机启用 Desired State Configuration
       href: quickstarts/dsc-configuration.md
 - name: 教程
   items:
-    - name: 将托管标识用于 PowerShell runbook
+    - name: 使用托管标识创建 PowerShell runbook
       href: learn/powershell-runbook-managed-identity.md
     - name: 创建 PowerShell 工作流 Runbook
       href: learn/automation-tutorial-runbook-textual.md

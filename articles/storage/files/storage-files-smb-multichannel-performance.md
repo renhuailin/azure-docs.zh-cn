@@ -1,31 +1,26 @@
 ---
 title: SMB 多通道性能 - Azure 文件存储
 description: 了解 SMB 多通道性能。
-author: roygara
+author: gunjanj
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/25/2021
-ms.author: rogarana
+ms.date: 11/16/2020
+ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: e19011751115e305be40b33bec72e35e47a80293
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: a9edd93aa265622732be4a7582cce9900959bf6d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967259"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "100374977"
 ---
 # <a name="smb-multichannel-performance"></a>SMB 多通道性能
-SMB 多通道使 SMB 3.x 客户端能够与 SMB 文件共享建立多个网络连接。 Azure 文件存储支持高级文件共享（FileStorage 存储帐户类型中的文件共享）上的 SMB 多通道。 在 Azure 文件存储中启用 SMB 多通道不会产生额外费用。 SMB 多通道默认情况下禁用。
 
-## <a name="applies-to"></a>适用于
-| 文件共享类型 | SMB | NFS |
-|-|:-:|:-:|
-| 标准文件共享 (GPv2)、LRS/ZRS | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
-| 标准文件共享 (GPv2)、GRS/GZRS | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
-| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+Azure 文件存储 SMB 多通道（预览版）使 SMB 3.x 客户端可以与 FileStorage 帐户中的高级文件共享建立多个网络连接。 SMB 3.0 协议在 Windows Server 2012 和 Windows 8 客户端中引入 SMB 多通道功能。 因此，支持 SMB 多通道的任何 Azure 文件存储 SMB 3.x 客户端都可以利用其 Azure 高级文件共享的功能。 在存储帐户上启用 SMB 多通道不会产生额外费用。
 
-## <a name="benefits"></a>好处
-SMB 多通道使客户端能够使用多个网络连接，从而在降低拥有成本的同时提高性能。 提高性能通过多个 NIC 上的带宽聚合来实现，并利用 NIC 的接收方缩放 (RSS) 支持在多个 CPU 间分布 IO 负载。
+## <a name="benefits"></a>优点
+
+Azure 文件存储 SMB 多通道使客户端可以使用多个网络连接，这些连接可提供更高性能，同时降低拥有成本。 提高性能通过多个 NIC 上的带宽聚合来实现，并利用 NIC 的接收方缩放 (RSS) 支持在多个 CPU 间分布 IO 负载。
 
 - 更高的吞吐量：多个连接使数据可以并行地在多个路径上进行传输，从而大大有利于将较大文件大小和较大 IO 大小结合使用，并要求单个 VM 或较小 VM 集提供高吞吐量的工作负载。 其中一些工作负载包括用于内容创建或转码的媒体和娱乐、基因组学以及金融服务风险分析。
 - 更高的 IOPS：NIC RSS 功能允许通过多个连接跨多个 CPU 进行有效负载分布。 这有助于实现更高的 IOPS 规模并有效利用 VM CPU。 这对于具有较小 IO 大小的工作负载（如数据库应用程序）十分有用。
@@ -38,20 +33,22 @@ SMB 多通道使客户端能够使用多个网络连接，从而在降低拥有�
 此功能可向多线程应用程序提供更好的性能优势，但通常对单线程应用程序没什么帮助。 有关更多详细信息，请参阅[性能比较](#performance-comparison)部分。
 
 ## <a name="limitations"></a>限制
-Azure 文件共享的 SMB 多通道当前具有以下限制：
-- 仅在使用 SMB 3.1.1 的 [Windows](storage-how-to-use-files-windows.md) 和 [Linux](storage-how-to-use-files-linux.md) 客户端上受支持。 确保 SMB 客户端操作系统已修补到建议的级别。
-- 最大通道数为四，有关详细信息，请参阅[此处](storage-troubleshooting-files-performance.md#cause-4-number-of-smb-channels-exceeds-four)。
+
+[!INCLUDE [storage-files-smb-multi-channel-restrictions](../../../includes/storage-files-smb-multi-channel-restrictions.md)]
+
+### <a name="regional-availability"></a>区域可用性
+
+[!INCLUDE [storage-files-smb-multi-channel-regions](../../../includes/storage-files-smb-multi-channel-regions.md)]
 
 ## <a name="configuration"></a>配置
+
 仅当在客户端（你的客户端）和服务端（你的 Azure 存储帐户）中启用此功能时，SMB 多通道才可发挥作用。
 
 在 Windows 客户端上，SMB 多通道在默认情况下处于启用状态。 可以通过运行以下 PowerShell 命令来验证配置： 
 
-```PowerShell
-Get-SmbClientConfiguration | Select-Object -Property EnableMultichannel
-```
+`Get-smbClientConfiguration | select EnableMultichannel`.
  
-在 Azure 存储帐户中，需要启用 SMB 多通道。 请参阅[启用 SMB 多通道](files-smb-protocol.md#smb-multichannel)。
+在 Azure 存储帐户中，需要启用 SMB 多通道。 请参阅[启用 SMB 多通道（预览版）](storage-files-enable-smb-multichannel.md)。
 
 ### <a name="disable-smb-multichannel"></a>禁用 SMB 多通道
 在大多数方案中（特别是多线程工作负载），客户端应该可通过 SMB 多通道提高性能。 但是，某些特定方案（例如单线程工作负载或用于测试目的）可能要禁用 SMB 多通道。 有关更多详细信息，请参阅[性能比较](#performance-comparison)。
@@ -134,5 +131,6 @@ Get-SmbClientConfiguration | Select-Object -Property EnableMultichannel
 较高的 IO 大小会提高吞吐量，并产生更高的延迟，从而导致净 IOPS 减少。 较小的 IO 大小会提高 IOPS，但会导致较低的净吞吐量和延迟。
 
 ## <a name="next-steps"></a>后续步骤
-- [启用 SMB 多通道](files-smb-protocol.md#smb-multichannel)
+
+- [在 FileStorage 帐户上启用 SMB 多通道（预览版）](storage-files-enable-smb-multichannel.md)
 - 请参阅 [Windows 文档](/azure-stack/hci/manage/manage-smb-multichannel)以了解有关 SMB 多通道的详细信息。

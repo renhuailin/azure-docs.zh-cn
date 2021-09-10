@@ -10,19 +10,19 @@ author: Blackmist
 ms.date: 04/02/2021
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7181a82cd8dcfc74caa860ef0570793582f55b27
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 65445d67f87e5c10aef6f7e8b7e20e0908271a21
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183154"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123034595"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-azure-cli"></a>使用 Azure CLI 管理 Azure 机器学习工作区
 
 本文介绍如何使用 Azure CLI 创建和管理 Azure 机器学习工作区。 Azure CLI 提供了一些命令来管理 Azure 资源，这些命令旨在让用户快速使用 Azure（侧重于自动化）。 CLI 的机器学习扩展提供用于处理 Azure 机器学习资源的命令。
 
 > [!NOTE]
-> 本文中的示例引用 1.0 CLI 和 2.0 CLI 版本。 机器学习 2.0 CLI 目前提供公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。
+> 本文中的示例引用 1.0 CLI 和 CLI (v2) 版本。 机器学习 CLI (v2) 目前提供公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -121,7 +121,7 @@ az ml workspace create -w <workspace-name>
                        --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"
 ```
 
-# <a name="bring-existing-resources-20-cli---preview"></a>[引入现有资源（2.0 CLI - 预览版）](#tab/bringexistingresources2)
+# <a name="bring-existing-resources-cli-v2---preview"></a>[引入现有资源（CLI (v2) - 预览版）](#tab/bringexistingresources2)
 
 若要在使用 CLI 引入现有关联资源的同时创建新工作区，首先必须定义如何在配置文件中配置工作区。
 
@@ -206,9 +206,9 @@ az ml workspace create -w <workspace-name>
 
 有关如何使用这些命令的更多详细信息，请参阅 [CLI 参考页](/cli/azure/ml(v1)/workspace)。
 
-# <a name="20-cli---preview"></a>[2.0 CLI - 预览版](#tab/vnetpleconfigurationsv2cli)
+# <a name="cli-v2---preview"></a>[CLI (v2) - 预览版](#tab/vnetpleconfigurationsv2cli)
 
-若要使用 2.0 CLI 为工作区设置专用网络连接，请扩展工作区配置文件以包含专用链接终结点资源详细信息。
+若要使用 CLI (v2) 为工作区设置专用网络连接，请扩展工作区配置文件以包含专用链接终结点资源详细信息。
 
 ```yaml workspace.yml
 name: azureml888
@@ -238,16 +238,13 @@ az ml workspace create -w <workspace-name> -g <resource-group-name> --file works
 
 ---
 
-> [!IMPORTANT]
-> Azure 政府区域不支持使用具有专用终结点的 Azure 机器学习工作区。
-
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>客户管理的密钥和极大影响业务的工作区
 
 默认情况下，工作区的元数据存储在 Microsoft 维护的 Azure Cosmos DB 实例中。 该数据是使用 Microsoft 管理的密钥加密的。 还可以提供自己的密钥，而不使用 Microsoft 管理的密钥。 这样可以在 Azure 订阅中创建一组额外的资源来存储数据。
 
 若要详细了解在引入自己的密钥进行加密时创建的资源，请参阅[使用 Azure 机器学习进行数据加密](./concept-data-encryption.md#azure-cosmos-db)。
 
-以下 CLI 命令提供的示例分别使用 1.0 CLI 和 2.0 CLI 版本创建使用客户管理的密钥进行加密的工作区。
+以下 CLI 命令提供的示例分别使用 1.0 CLI 和 CLI (v2) 版本创建使用客户管理的密钥进行加密的工作区。
 
 # <a name="10-cli"></a>[1.0 CLI](#tab/vnetpleconfigurationsv1cli)
 
@@ -263,7 +260,7 @@ az ml workspace create -w <workspace-name>
                        --hbi-workspace
 ```
 
-# <a name="20-cli---preview"></a>[2.0 CLI - 预览版](#tab/vnetpleconfigurationsv2cli)
+# <a name="cli-v2---preview"></a>[CLI (v2) - 预览版](#tab/vnetpleconfigurationsv2cli)
 
 使用 `customer_managed_key` 参数并包含 `key_vault` 和 `key_uri` 参数来指定保管库中密钥的资源 id 和 uri。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 08/02/2021
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: d9506ce3f01f5500bab81e8e90c57761bef75805
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254597"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "98789189"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>教程：创建 Azure Data Box 的导出命令
 
@@ -70,7 +70,7 @@ Azure Data Box 是一种混合解决方案，可让将 Azure 中的数据移到�
     |订阅     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 该订阅将链接到计费帐户。       |
     |资源组     |    选择现有资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
     |源 Azure 区域    |    选择数据当前所在的 Azure 区域。         |
-    |目标国家     |     选择要将此设备寄送到的国家/地区。        |
+    |目标国家/地区     |     选择要将此设备寄送到的国家/地区。        |
 
    ![选择 Data Box 设置](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-box-settings.png)
 
@@ -274,11 +274,6 @@ Data Box 复制源存储帐户的数据。 数据复制完成后，Data Box 被�
 
 ![Data Box 导出命令，数据复制完成](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-copy-complete.png)
 
-从 Azure 存储到 Data Box 的数据导出有时会失败。 请确保这些 blob 不是存档 blob，因为不支持导出这些 blob。 
-
-> [!NOTE]
-> 对于存档 blob，需要先将这些 blob 解除冻结，然后才能将其从 Azure 存储帐户导出到 Data Box。 有关详细信息，请参阅[将存档 blob 解除冻结]( ../storage/blobs/storage-blob-rehydration.md)。
-
 如果没有设备可以使用，用户会收到通知。 如果设备有货，Microsoft 会确定要发货的设备，并准备发货。 在设备准备期间，会执行以下操作：
 
 * 将为与设备关联的每个存储帐户创建 SMB 共享。
@@ -316,7 +311,7 @@ Data Box 复制源存储帐户的数据。 数据复制完成后，Data Box 被�
       <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
       <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
    </BlobList>
-   <!-- FileList/prefix/Share list for Azure Files for export  -->
+   <!-- FileList/prefix/Share list for Azure File storage for export  -->
    <AzureFileList>
       <FilePathPrefix>/64mbfiles/</FilePathPrefix>
       <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>

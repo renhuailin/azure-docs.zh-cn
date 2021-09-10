@@ -165,6 +165,8 @@
         - name: 创建不具有公共 IP 地址的池
           displayName: private
           href: batch-pool-no-public-ip-address.md
+        - name: 创建具有临时 OS 磁盘节点的池
+          href: create-pool-ephemeral-os-disk.md
         - name: 使用池的扩展
           href: create-pool-extensions.md
         - name: 配置托管标识

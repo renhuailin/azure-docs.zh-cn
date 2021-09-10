@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 06/11/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: 06dc1a34f35434019d1b992c12502577aa470360
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: f68550d6e72f0c2bd162c10d1d5340edcca61f6f
+ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653484"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123039019"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>使用虚拟网络 (VNet) 保护 Azure 机器学习工作区资源
@@ -89,7 +89,7 @@ ms.locfileid: "114653484"
 ### <a name="limitations"></a>限制
 
 确保工作区以及虚拟网络中关联的资源的安全具有以下限制：
-- Azure 政府或 Azure 中国世纪互联区域不支持使用具有专用终结点的 Azure 机器学习工作区。
+- Azure 中国世纪互联区域不支持使用具有专用终结点的 Azure 机器学习工作区。
 - 所有资源都必须位于同一个 VNet 中。 但允许使用同一 VNet 中的子网。
 
 ## <a name="secure-the-training-environment"></a>保护训练环境

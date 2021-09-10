@@ -9,15 +9,15 @@ ms.subservice: hybrid
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/27/2019
+ms.date: 08/31/2021
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 868d1280179d63bd07b7e01d5e807339439c02f0
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 0621cc58b5cf76505de5e1f914114ad601e7a9bf
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163600"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123316176"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>在 Azure Active Directory 中为应用程序配置组声明
 
@@ -31,6 +31,7 @@ Azure Active Directory 可以在应用程序内使用的令牌中提供用户组
 >
 > - 支持使用从本地同步的 sAMAccountName 和安全标识符 (SID) 特性的目的是为了能够从 AD FS 和其他标识提供者移动现有应用程序。 在 Azure AD 中管理的组不包含发出这些声明所需的特性。
 > - 在较大的组织中，某个用户所属的组的数量可能会超过 Azure Active Directory 可在令牌中添加的组数限制。 SAML 令牌限制为 150 个组，JWT 限制为 200 个组。 这可能会导致不可预知的结果。 如果你的用户是大量组的成员，我们建议使用相应的选项，将声明中发出的组限制为与应用程序相关的组。
+> - 如果令牌是通过隐式流颁发的，则组声明具有 5 组限制。 如果用户位于超过 5 个组中，则通过隐式流请求的令牌将只有 "hasgroups":true 声明。
 > - 对于新的应用程序开发，或者在可以为其配置应用程序以及不需要嵌套组支持的情况下，我们建议使应用内授权基于应用程序角色，而不是基于组。  这种做法可以限制需要传入令牌的信息量，且更安全，而且还能将用户分配与应用配置分隔开来。
 
 ## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>从 AD FS 和其他标识提供者迁移的应用程序的组声明

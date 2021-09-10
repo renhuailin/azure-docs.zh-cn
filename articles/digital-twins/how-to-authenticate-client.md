@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 请参阅如何编写客户端应用程序中的验证码
 author: baanders
 ms.author: baanders
-ms.date: 10/7/2020
+ms.date: 8/26/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b72455692ebb114792ecf0b5cdff7b8e0930ed85
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a1b2465f29ae659f3e255a4843a2abd5f9ab75b2
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750873"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224859"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用验证码
 
@@ -20,7 +20,7 @@ ms.locfileid: "121750873"
 
 Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)执行身份验证。 若要对 SDK 进行身份验证，需要获取具有 Azure 数字孪生正确权限的持有者令牌，并将其与 API 调用一起传递。 
 
-本文介绍如何使用 `Azure.Identity` 客户端库获取凭据。 尽管本文介绍的是 C# 代码示例（如你为 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 编写的内容），但无论你使用的是何种 SDK，都可使用 `Azure.Identity` 版本（有关可用于 Azure 数字孪生的 SDK 的详细信息，请参阅 [Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)）。
+本文介绍如何使用 `Azure.Identity` 客户端库获取凭据。 尽管本文介绍的是 C# 代码示例（例如你为 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 编写的内容），但无论你使用的是何种 SDK，都可以使用 `Azure.Identity` 版本（有关可用于 Azure 数字孪生的 SDK 的详细信息，请参阅 [Azure 数字孪生 API 和 SDK](concepts-apis-sdks.md)）。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +41,7 @@ Azure 数字孪生使用[基于 OAUTH 2.0 的 Azure AD 安全令牌](../active-d
 
 * [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet&preserve-view=true) 为即将部署到 Azure 的应用程序提供默认的 `TokenCredential` 身份验证流，若在本地部署，建议选择此方法。 还可启用它来尝试本文中建议的另外两种方法；它包装 `ManagedIdentityCredential` 并可使用配置变量访问 `InteractiveBrowserCredential`。
 * [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) 非常适用于需要[托管标识 (MSI)](../active-directory/managed-identities-azure-resources/overview.md) 的情况，是使用 Azure Functions 和部署到 Azure 服务时的很好的候选项。
-* [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) 适用于交互式应用程序，可用于创建经过身份验证的 SDK 客户端
+* [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) 适用于交互式应用程序，可用于创建经过身份验证的 SDK 客户端。
 
 本文的余下内容演示如何在 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 中使用这些方法。
 

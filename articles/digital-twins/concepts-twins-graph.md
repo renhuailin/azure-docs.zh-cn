@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 了解数字孪生体的概念，以及它们的关系如何成图。
 author: baanders
 ms.author: baanders
-ms.date: 6/1/2021
+ms.date: 8/26/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1145525fe3d2e7c42204aa675153d4eb099cccce
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 42cce83683df789aeaabe53ca170f17319ec3603
+ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254241"
+ms.lasthandoff: 08/30/2021
+ms.locfileid: "123224836"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>了解数字孪生体及其孪生图
 
@@ -25,7 +25,7 @@ ms.locfileid: "122254241"
 
 你需要将模型上传到此服务，然后才能在 Azure 数字孪生实例中创建数字孪生体。 模型描述特定孪生体可以具有的一组属性、遥测消息和关系，等等。 有关在模型中定义的信息的类型，请参阅[自定义模型](concepts-models.md)。
 
-创建并上传模型后，客户端应用可以创建该类型的实例；这是一个数字孪生体。 例如，在创建“Floor”的模型后，你可以创建使用此类型的一个或多个数字孪生体（例如，“Floor”类型的一个孪生体称为“GroundFloor”，另一个称为“Floor2”，等等）。
+创建并上传模型后，客户端应用就可以创建该类型的实例了。 此实例是一个数字孪生体。 例如，在创建“Floor”的模型后，你可以创建使用此类型的一个或几个数字孪生体（例如，“Floor”类型的一个孪生体称为“GroundFloor”，另一个称为“Floor2”，等等）。
 
 [!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "122254241"
 
 ## <a name="create-with-the-apis"></a>使用 API 进行创建
 
-本部分显示了从客户端应用程序创建数字孪生体和关系时的情况。 它包含利用 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) 的 .NET 代码示例，目的是提供在这些概念的每一个内发生的情况的其他上下文。
+本部分显示了从客户端应用程序创建数字孪生体和关系时的情况。 它包含使用 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins) 的 .NET 代码示例，目的是提供在这些概念的每一个内发生的情况的更多上下文。
 
 ### <a name="create-digital-twins"></a>创建数字孪生
 
@@ -66,13 +66,13 @@ ms.locfileid: "122254241"
 
 ## <a name="json-representations-of-graph-elements"></a>图形元素的 JSON 表示形式
 
-数字孪生体数据和关系数据均以 JSON 格式存储。 这意味着，当你在 Azure 数字孪生实例中[查询孪生图](how-to-query-graph.md)时，结果将是你已创建的数字孪生体和关系的 JSON 表示形式。
+数字孪生体数据和关系数据均以 JSON 格式存储，这意味着，当你在 Azure 数字孪生实例中[查询孪生图](how-to-query-graph.md)时，结果将是你已创建的数字孪生体和关系的 JSON 表示形式。
 
 ### <a name="digital-twin-json-format"></a>数字孪生体 JSON 格式
 
 当表示为 JSON 对象时，数字孪生体会显示以下字段：
 
-| 字段名称 | 说明 |
+| 字段名 | 说明 |
 | --- | --- |
 | `$dtId` | 用户提供的字符串，表示数字孪生体的 ID |
 | `$etag` | 由 Web 服务器分配的标准 HTTP 字段 |
@@ -89,7 +89,7 @@ ms.locfileid: "122254241"
 | `<component-name>.<property-name>` | 组件的属性的值，表示为 JSON 形式（`string`、数字类型或对象） |
 | `<component-name>.$metadata` | 组件的元数据信息，类似于根级别 `$metadata` |
 
-下面是一个格式化为 JSON 对象的数字孪生体的示例：
+下面是一个格式设置为 JSON 对象的数字孪生体的示例：
 
 ```json
 {
@@ -139,7 +139,7 @@ ms.locfileid: "122254241"
 
 当表示为 JSON 对象时，数字孪生体中的关系会显示以下字段：
 
-| 字段名称 | 说明 |
+| 字段名 | 说明 |
 | --- | --- |
 | `$relationshipId` | 用户提供的字符串，表示此关系的 ID。 此字符串在源数字孪生体的上下文中是唯一的，这也意味着 `sourceId` + `relationshipId` 在 Azure 数字孪生实例的上下文中是唯一的。 |
 | `$etag` | 由 Web 服务器分配的标准 HTTP 字段 |
@@ -148,7 +148,7 @@ ms.locfileid: "122254241"
 | `$relationshipName` | 关系的名称 |
 | `<property-name>` | [可选] 此关系的属性的值，表示为 JSON 形式（`string`、数字类型或对象） |
 
-下面是一个格式化为 JSON 对象的关系的示例：
+下面是一个格式设置为 JSON 对象的关系的示例：
 
 ```json
 {

@@ -6,14 +6,14 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 06/22/2021
+ms.date: 08/30/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a7b43f52fee66579beb0c91f0b76d313cd4bcdaa
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: b0fcfba6f72ef5e87be5c3301338a2c09598accf
+ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112522202"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123253427"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,44 +24,69 @@ Azure Cosmos DB 提供了三种方法来控制对数据的访问。
 
 | 访问控制类型 | 特征 |
 |---|---|
-| [主键](#primary-keys) | 允许任何管理或数据操作的共享机密。 它包括读写变量和只读变量。 |
+| [主/辅助密钥](#primary-keys) | 允许任何管理或数据操作的共享机密。 它包括读写变量和只读变量。 |
 | [基于角色的访问控制](#rbac) | 使用 Azure Active Directory (AAD) 标识进行身份验证的细化、基于角色的权限模型。 |
 | [资源令牌](#resource-tokens)| 基于本机 Azure Cosmos DB 用户和权限的细化权限模型。 |
 
-## <a name="primary-keys"></a><a id="primary-keys"></a> 主键
+## <a name="primarysecondary-keys"></a><a id="primary-keys"></a> 主/辅助密钥
 
-主密钥提供对数据库帐户的所有管理资源的访问权限。 每个帐户包括两个主密钥：主要密钥和辅助密钥。 使用两个密钥的目的是为了能够重新生成或轮换密钥，从而可以持续访问帐户和数据。 若要了解有关主密钥的详细信息，请参阅[数据库安全性](database-security.md#primary-keys)一文。
+主/辅助密钥提供对数据库帐户的所有管理资源的访问权限。 每个帐户包括两个密钥：主密钥和辅助密钥。 使用两个密钥的目的是为了能够重新生成或轮换密钥，从而可以持续访问帐户和数据。 若要详细了解主/辅助密钥，请参阅[数据库安全](database-security.md#primary-keys)一文。
 
-### <a name="key-rotation"></a><a id="key-rotation"></a> 密钥轮换
+### <a name="key-rotation-and-regeneration"></a><a id="key-rotation"></a> 密钥轮换和重新生成
 
-轮换主密钥的过程相当简单。 
+> [!NOTE]
+> 按照[此处](database-security.md#key-rotation)所述的说明在 Mongo DB、Cassandra API、Gremlin API 或表 API 的 Azure Cosmos DB API 上轮换和重新生成密钥。
 
-1. 导航到 Azure 门户以检索辅助密钥。
-2. 在应用程序中将主密钥替换为辅助密钥。 确保所有部署中的所有 Cosmos DB 客户端都立即重启，并将开始使用已更新的密钥。
-3. 在 Azure 门户中轮换主密钥。
-4. 验证新主密钥是否适用于所有资源。 密钥轮换过程所需时间可能短于一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
-5. 将辅助密钥替换为新的主密钥。
+密钥轮换和重新生成的过程非常简单。 首先，请确保应用程序始终使用主密钥或辅助密钥来访问你的 Azure Cosmos DB 帐户。 然后，执行以下所述的步骤。
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure 门户中的主密钥轮换 - 演示 NoSQL 数据库安全性" border="false":::
+# <a name="if-your-application-is-currently-using-the-primary-key"></a>[如果你的应用程序当前正在使用主密钥](#tab/using-primary-key)
+
+1. 在 Azure 门户中，导航到你的 Azure Cosmos DB 帐户。
+
+1. 从左侧菜单中选择“密钥”，然后从辅助密钥右侧的省略号中选择“重新生成辅助密钥”。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
+
+1. 验证新的辅助密钥是否适用于你的 Azure Cosmos DB 帐户。 密钥重新生成可能需要一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
+
+1. 在应用程序中将主密钥替换为辅助密钥。
+
+1. 返回到 Azure 门户，并触发主密钥的重新生成。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="显示如何重新生成主密钥的 Azure 门户的屏幕截图" border="true":::
+
+# <a name="if-your-application-is-currently-using-the-secondary-key"></a>[如果你的应用程序当前正在使用辅助密钥](#tab/using-secondary-key)
+
+1. 在 Azure 门户中，导航到你的 Azure Cosmos DB 帐户。
+
+1. 从左侧菜单中选择“密钥”，然后从主密钥右侧的省略号中选择“重新生成主密钥”。
+
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="显示如何重新生成主密钥的 Azure 门户的屏幕截图" border="true":::
+
+1. 验证新的主密钥是否适用于你的 Azure Cosmos DB 帐户。 密钥重新生成可能需要一分钟，也可能长达数小时，具体取决于 Cosmos DB 帐户的大小。
+
+1. 在应用程序中将辅助密钥替换为主密钥。
+
+1. 返回到 Azure 门户，并触发辅助密钥的重新生成。
+
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="显示如何重新生成辅助密钥的 Azure 门户屏幕截图" border="true":::
+
+---
 
 ### <a name="code-sample-to-use-a-primary-key"></a>有关如何使用主密钥的代码示例
 
-以下代码示例演示如何使用 Cosmos DB 帐户终结点和主密钥来实例化 DocumentClient 并创建数据库：
+以下代码示例演示如何使用 Cosmos DB 帐户终结点和主密钥来实例化 CosmosClient：
 
 ```csharp
-//Read the Azure Cosmos DB endpointUrl and authorization keys from config.
-//These values are available from the Azure portal on the Azure Cosmos DB account blade under "Keys".
-//Keep these values in a safe and secure location. Together they provide Administrative access to your Azure Cosmos DB account.
+// Read the Azure Cosmos DB endpointUrl and authorization keys from config.
+// These values are available from the Azure portal on the Azure Cosmos DB account blade under "Keys".
+// Keep these values in a safe and secure location. Together they provide Administrative access to your Azure Cosmos DB account.
 
 private static readonly string endpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
 private static readonly string authorizationKey = ConfigurationManager.AppSettings["AuthorizationKey"];
 
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
-
-以下代码示例演示如何使用 Azure Cosmos DB 帐户终结点和主密钥来实例化 `CosmosClient` 对象：
-
-:::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
 ## <a name="role-based-access-control"></a><a id="rbac"></a> 基于角色的访问控制
 

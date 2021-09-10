@@ -12,16 +12,16 @@ ms.date: 01/16/2020
 ms.author: jhakulin
 zone_pivot_groups: programming-languages-set-two
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0aee0030937a6e11860907e27b775c2671137f71
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 507ade69fc257b52a3fe632fcf652dcd5660d819
+ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331099"
+ms.lasthandoff: 08/27/2021
+ms.locfileid: "123104236"
 ---
 # <a name="configure-openssl-for-linux"></a>为 Linux 配置 OpenSSL
 
-使用 1.9.0 之前的任何语音 SDK 版本时，会将 [OpenSSL](https://www.openssl.org) 动态配置为主机系统版本。 在更高版本的语音 SDK 中，OpenSSL（版本为 [1.1.1 b](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html)）会静态链接到语音 SDK 的核心库。
+使用 1.9.0 之前的任何语音 SDK 版本时，会将 [OpenSSL](https://www.openssl.org) 动态配置为主机系统版本。 在更高版本的语音 SDK 中，OpenSSL 静态链接到语音 SDK 的核心库。 在语音 SDK 版本 1.9.0 到 1.16.0 中，会使用 [OpenSSL 版本 1.1.1b](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html)。 在语音 SDK 版本 1.17.0 及更高版本中，会使用 [OpenSSL 版本 1.1.1k](https://mta.openssl.org/pipermail/openssl-announce/2021-March/000197.html)。
 
 若要确保连接性，请验证是否在系统中安装了 OpenSSL 证书。 运行命令：
 ```bash
@@ -87,7 +87,7 @@ config.setProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
 ::: zone pivot="programming-language-python"
 
 ```Python
-speech_config.set_property_by_name("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true")?
+speech_config.set_property_by_name("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true")
 ```
 
 ::: zone-end
@@ -129,7 +129,7 @@ config.setProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
 ::: zone pivot="programming-language-python"
 
 ```Python
-speech_config.set_property_by_name("OPENSSL_DISABLE_CRL_CHECK", "true")?
+speech_config.set_property_by_name("OPENSSL_DISABLE_CRL_CHECK", "true")
 ```
 
 ::: zone-end

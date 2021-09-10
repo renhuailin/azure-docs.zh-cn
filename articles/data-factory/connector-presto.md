@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 08/30/2021
 ms.author: jianleishen
-ms.openlocfilehash: 4fe458ce4f358e81c115761b571874a955ededc4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2d0b082321adcba147dfefcf0ea9e7948df3bafb
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638737"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123311656"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory"></a>使用 Azure 数据工厂从 Presto 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,6 +35,31 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 ## <a name="getting-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
+
+## <a name="create-a-linked-service-to-presto-using-ui"></a>使用 UI 创建一个到 Presto 的链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建一个到 Presto 的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="使用 Azure 数据工厂 UI 创建新链接服务的屏幕截图。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="使用 Azure Synapse UI 创建新链接服务的屏幕截图。":::
+
+2. 搜索 Presto 并选择 Presto 连接器。
+
+   :::image type="content" source="media/connector-presto/presto-connector.png" alt-text="Presto 连接器的屏幕截图。":::    
+
+
+1. 配置服务详细信息，测试连接，然后创建新的链接服务。
+
+   :::image type="content" source="media/connector-presto/configure-presto-linked-service.png" alt-text="Presto 的链接服务配置的屏幕截图。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
 
 对于特定于 Presto 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 

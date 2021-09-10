@@ -23,6 +23,8 @@
 - name: 教程
   expanded: false
   items:
+    - name: Azure Defender for IoT 试用版设置
+      href: tutorial-onboarding.md
     - name: 集成 Splunk
       href: tutorial-splunk.md
     - name: 集成 ServiceNow

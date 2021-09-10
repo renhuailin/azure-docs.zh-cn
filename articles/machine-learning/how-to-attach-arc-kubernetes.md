@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 0842552aa3e5e172a7aa725d07c9a83b63da6667
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 81d4d17b4efdc1dd7d59cb566f8a9ef2e6742aac
+ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745296"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122966761"
 ---
 # <a name="configure-azure-arc-enabled-machine-learning-preview"></a>配置已启用 Azure Arc 的机器学习（预览版）
 
@@ -27,7 +27,7 @@ ms.locfileid: "121745296"
 
 已启用 Azure Arc 的机器学习支持以下训练方案：
 
-* 使用 2.0 CLI 训练模型
+* 使用 CLI (v2) 训练模型
   * 分布式训练
   * 超参数扫描
 * 使用 Azure 机器学习 Python SDK 训练模型
@@ -48,7 +48,7 @@ ms.locfileid: "121745296"
 
 ## <a name="deploy-azure-machine-learning-extension"></a>部署 Azure 机器学习扩展
 
-已启用 Azure Arc 的 Kubernetes 具有群集扩展功能，可用于安装各种代理，包括 Azure 策略、监视、机器学习等。 Azure 机器学习需要使用 Microsoft.AzureML.Kubernetes 群集扩展，才能在 Kubernetes 群集上部署 Azure 机器学习代理。 安装 Azure 机器学习扩展后，可以将群集附加到 Azure 机器学习工作区，并使用它进行训练。
+已启用 Azure Arc 的 Kubernetes 具有群集扩展功能，可用于安装各种代理，包括 Azure 策略定义、监视、机器学习等。 Azure 机器学习需要使用 Microsoft.AzureML.Kubernetes 群集扩展，才能在 Kubernetes 群集上部署 Azure 机器学习代理。 安装 Azure 机器学习扩展后，可以将群集附加到 Azure 机器学习工作区，并使用它进行训练。
 
 使用 `k8s-extension` Azure CLI 扩展将 Azure 机器学习扩展部署到已启用 Azure Arc 的 Kubernetes 群集。
 
@@ -309,11 +309,11 @@ else:
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 2.0 CLI 训练模型](how-to-train-cli.md)
+- [使用 CLI (v2) 训练模型](how-to-train-cli.md)
 - [配置和提交训练运行](how-to-set-up-training-targets.md)
 - [优化超参数](how-to-tune-hyperparameters.md)
 - [使用 Scikit-learn 训练模型](how-to-train-scikit-learn.md)
 - [训练 TensorFlow 模型](how-to-train-tensorflow.md)
 - [训练 PyTorch 模型](how-to-train-pytorch.md)
 - [使用 Azure 机器学习管道进行训练](how-to-create-machine-learning-pipelines.md)
-- [使用出站代理服务器训练本地模型](../azure-arc/kubernetes/quickstart-connect-cluster.md#5-connect-using-an-outbound-proxy-server)
+- [使用出站代理服务器训练本地模型](../azure-arc/kubernetes/quickstart-connect-cluster.md#4a-connect-using-an-outbound-proxy-server)

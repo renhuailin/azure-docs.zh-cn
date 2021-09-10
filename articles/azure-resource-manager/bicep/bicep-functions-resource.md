@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: 9b97170e3ff434d40007e46952a52335e5f900b3
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: a83c0f442e88bc2fe0320fe8affe5b114a28a897
+ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228808"
+ms.lasthandoff: 08/31/2021
+ms.locfileid: "123314319"
 ---
 # <a name="resource-functions-for-bicep"></a>Bicep 的资源函数
 
@@ -20,6 +20,7 @@ ms.locfileid: "122228808"
 * [getSecret](#getsecret)
 * [list*](#list)
 * [pickZones](#pickzones)
+* [providers（已弃用）](#providers)
 * [reference](#reference)
 * [resourceId](#resourceid)
 * [subscriptionResourceId](#subscriptionresourceid)
@@ -424,9 +425,9 @@ sasToken: stg.listAccountSas('2021-04-01', accountSasProperties).accountSasToken
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace | 是 | string | 要检查是否有区域支持的资源类型的资源提供程序命名空间。 |
-| resourceType | 是 | string | 要检查是否有区域支持的资源类型。 |
-| location | 是 | string | 要检查是否有区域支持的地区。 |
+| providerNamespace | 是 | 字符串 | 要检查是否有区域支持的资源类型的资源提供程序命名空间。 |
+| resourceType | 是 | 字符串 | 要检查是否有区域支持的资源类型。 |
+| location | 是 | 字符串 | 要检查是否有区域支持的地区。 |
 | numberOfZones | 否 | integer | 要返回的逻辑区域数。 默认值为 1。 该数字必须是 1 到 3 的正整数。  对于单区域资源，请使用 1。 对于多区域资源，该值必须小于或等于受支持区域的数量。 |
 | offset | 否 | integer | 起始逻辑区域的偏移量。 如果 offset 加上 numberOfZones 超过受支持区域的数量，函数将返回错误。 |
 
@@ -476,6 +477,10 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 | notSupportedType | array | [] |
 
 可以使用 pickZones 的响应来确定是为区域提供 null，还是将虚拟机分配给不同的区域。
+
+## <a name="providers"></a>providers
+
+providers 函数已弃用。 我们不再建议使用它。 如果你使用了此函数来获取资源提供程序的 API 版本，建议在模板中提供特定的 API 版本。 如果版本之间的属性发生更改，则使用动态返回的 API 版本可能会破坏模板。
 
 ## <a name="reference"></a>reference
 
