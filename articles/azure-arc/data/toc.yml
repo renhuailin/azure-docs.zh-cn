@@ -1,234 +1,237 @@
-- name: 已启用 Azure Arc 的数据服务文档
-  href: index.yml
-- name: 概述
-  items:
-    - name: 什么是已启用 Azure Arc 的数据服务
-      href: overview.md
-    - name: 发行说明
-      href: release-notes.md
-    - name: Azure Arc 认证合作伙伴
-      href: validation-program.md
-    - name: 数据集合和报表
-      href: privacy-data-collection-and-reporting.md
-- name: 快速入门
-  items:
-    - name: 规划已启用 Azure Arc 的数据服务部署
-      href: plan-azure-arc-data-services.md
-- name: 概念
-  items:
-    - name: 连接模式和要求
-      href: connectivity.md
-    - name: 存储配置
-      href: storage-configuration.md
-    - name: 大小调整指南
-      href: sizing-guidance.md
-- name: 操作指南
-  items:
-    - name: 安装工具
-      items:
-        - name: 安装客户端工具
-          href: install-client-tools.md
-        - name: 安装 arcdata 扩展 (Azure CLI)
-          href: install-arcdata-extension.md
-    - name: 创建自定义配置文件
-      href: create-custom-configuration-template.md
-    - name: 创建数据控制器
-      items:
-        - name: 间接连接模式
-          items:
-            - name: Azure Data Studio
-              href: create-data-controller-indirect-azure-data-studio.md
-            - name: Azure 门户
-              href: create-data-controller-indirect-azure-portal.md
-            - name: Azure (az) CLI
-              href: create-data-controller-indirect-cli.md
-            - name: Kubernetes 工具
-              href: create-data-controller-using-kubernetes-native-tools.md
-        - name: 直接连接模式
-          items:
-            - name: 先决条件
-              href: create-data-controller-direct-prerequisites.md
-            - name: Azure 门户
-              href: create-data-controller-direct-azure-portal.md
-            - name: az CLI
-              href: create-data-controller-direct-cli.md
-    - name: 在已启用 Azure Arc 的数据服务中的常见体验
-      items:
-        - name: 使用仪表板进行监视 (Azure Data Studio)
-          href: azure-data-studio-dashboards.md
-        - name: 查看计费数据 (Azure)
-          href: view-billing-data-in-azure.md
-        - name: 查看数据控制器（门户）
-          href: view-data-controller-in-azure-portal.md
-        - name: 删除资源
-          href: delete-azure-resources.md
-        - name: 卸载 Azure Arc 数据控制器
-          href: uninstall-azure-arc-data-controller.md
-    - name: 管理
-      items:
-        - name: 使用 Grafana 和 Kibana 进行监视
-          href: monitor-grafana-kibana.md
-        - name: 上传到 Azure Monitor
-          items:
-            - name: 上传先决条件
-              href: upload-metrics-and-logs-to-azure-monitor.md
-            - name: 上传日志
-              href: upload-logs.md
-            - name: 上传指标
-              href: upload-metrics.md
-            - name: 上传使用数据
-              href: upload-usage-data.md
-        - name: 库存数据库实例
-          href: view-arc-data-services-inventory-in-azure-portal.md
-        - name: 获取数据控制器用户名和密码
-          href: retrieve-the-username-password-for-data-controller.md
-        - name: 更新服务主体凭据
-          href: update-service-principal-credentials.md
-    - name: 疑难解答
-      items:
-        - name: 指南
-          href: troubleshoot-guide.md
-        - name: 获取日志
-          href: troubleshooting-get-logs.md
-- name: 已启用 Azure Arc 的 PostgreSQL 超大规模（预览）
-  items:
-    - name: 概述
-      items:
-        - name: 什么是已启用 Azure Arc 的超大规模 PostgreSQL
-          href: what-is-azure-arc-enabled-postgres-hyperscale.md
-        - name: 限制
-          href: limitations-postgresql-hyperscale.md
-    - name: 快速入门
-      items:
-        - name: 支持的版本
-          href: supported-versions-postgres-hyperscale.md
-        - name: 创建 Postgres 超大规模服务器组 (CLI)
-          href: create-postgresql-hyperscale-server-group.md
-        - name: 创建 Postgres 超大规模服务器组（门户）
-          href: create-postgresql-hyperscale-server-group-azure-portal.md
-        - name: 创建 Postgres 超大规模服务器组 (Azure Data Studio)
-          href: create-postgresql-hyperscale-server-group-azure-data-studio.md
-        - name: 创建 Postgres 超大规模服务器组 - Kubernetes 原生工具
-          href: create-postgresql-hyperscale-server-group-kubernetes-native-tools.md
-        - name: 连接
-          href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
-    - name: 概念
-      items:
-        - name: 分发数据
-          href: concepts-distributed-postgres-hyperscale.md
-        - name: 服务器组放置
-          href: postgresql-hyperscale-server-group-placement-on-kubernetes-cluster-nodes.md
-    - name: 操作方法
-      items:
-        - name: 管理
-          items:
-            - name: 备份和还原
-              href: backup-restore-postgresql-hyperscale.md
-            - name: 更改 PostgreSQL 端口
-              href: change-postgresql-port.md
-            - name: 配置和缩放
-              items:
-                - name: 显示配置
-                  href: show-configuration-postgresql-hyperscale-server-group.md
-                - name: 横向扩展/缩减工作器节点
-                  href: scale-out-in-postgresql-hyperscale-server-group.md
-                - name: 纵向扩展/缩减内存和 vCore 数
-                  href: scale-up-down-postgresql-hyperscale-server-group-using-cli.md
-                - name: 配置服务器参数
-                  href: configure-server-parameters-postgresql-hyperscale.md
-            - name: 删除
-              href: delete-postgresql-hyperscale-server-group.md
-            - name: 列出服务器组
-              href: list-server-groups-postgres-hyperscale.md
-            - name: 监视、日志分析、账单信息（门户）
-              href: monitoring-log-analytics-azure-portal-postgresql.md
-            - name: 安全
-              href: configure-security-postgres-hyperscale.md
-            - name: 管理服务器组 (Azure Data Studio)
-              href: manage-postgresql-hyperscale-server-group-with-azure-data-studio.md
-            - name: 使用 Postgres 扩展
-              href: using-extensions-in-postgresql-hyperscale-server-group.md
-        - name: Migrate
-          items:
-            - name: 将 PostgreSQL 数据迁移到 Postgres 超大规模服务器组
-              href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
-            - name: 导入示例数据库 AdventureWorks
-              href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
-        - name: 故障排除
-          href: troubleshoot-postgresql-hyperscale-server-group.md
-- name: 已启用 Azure Arc 的 SQL 托管实例
-  items:
-    - name: 概述
-      items:
-        - name: 什么是已启用 Azure Arc 的 SQL 托管实例
-          href: managed-instance-overview.md
-        - name: 功能
-          href: managed-instance-features.md
-        - name: 服务层
-          href: service-tiers.md
-    - name: 快速入门
-      items:
-        - name: 创建 SQL 托管实例
-          href: create-sql-managed-instance.md
-        - name: 创建 SQL 托管实例 (Azure Data Studio)
-          href: create-sql-managed-instance-azure-data-studio.md
-        - name: 使用 Kubernetes 工具进行创建
-          href: create-sql-managed-instance-using-kubernetes-native-tools.md
-        - name: 连接
-          href: connect-managed-instance.md
-    - name: 操作方法
-      items:
-        - name: 管理
-          items:
-            - name: 配置
-              href: configure-managed-instance.md
-            - name: 监视、日志分析、账单信息（门户）
-              href: monitoring-log-analytics-azure-portal-managed-instance.md
-            - name: 高可用性
-              href: managed-instance-high-availability.md
-            - name: 时间点还原
-              href: point-in-time-restore.md
-            - name: 删除
-              href: delete-managed-instance.md
-        - name: Migrate
-          items:
-            - name: 迁移到 SQL 托管实例 (Azure Arc)
-              href: migrate-to-managed-instance.md
-            - name: 还原 AdventureWorks
-              href: restore-adventureworks-sample-db.md
-- name: 参考
-  items:
-    - name: 发行版本日志
-      href: version-log.md
-    - name: az arcdata extension
-      items:
-        - name: 概述
-          href: ./reference/overview.md
-        - name: arcdata dc
-          href: ./reference/reference-az-arcdata-dc.md
-        - name: arcdata dc config
-          href: ./reference/reference-az-arcdata-dc-config.md
-        - name: arcdata dc endpoint
-          href: ./reference/reference-az-arcdata-dc-endpoint.md
-        - name: arcdata dc status
-          href: ./reference/reference-az-arcdata-dc-status.md
-        - name: arcdata resource-kind
-          href: ./reference/reference-az-arcdata-resource-kind.md
-        - name: postgres arc-server
-          href: ./reference/reference-az-postgres-arc-server.md
-        - name: postgres arc-server endpoint
-          href: ./reference/reference-az-postgres-arc-server-endpoint.md
-        - name: sql mi-arc
-          href: ./reference/reference-az-sql-mi-arc.md
-        - name: sql mi-arc endpoint
-          href: ./reference/reference-az-sql-mi-arc-endpoint.md
-        - name: sql mi-arc config
-          href: ./reference/reference-az-sql-mi-arc-config.md
-        - name: sql mi-arc dag
-          href: ./reference/reference-az-sql-mi-arc-dag.md
-- name: 资源
-  items:
-    - name: 部署规划
-      href: plan-azure-arc-data-services.md
-    - name: Azure Arc 快速入门
-      href: 'https://azurearcjumpstart.io'
+items:
+  - name: 已启用 Azure Arc 的数据服务文档
+    href: index.yml
+  - name: 概述
+    items:
+      - name: 什么是已启用 Azure Arc 的数据服务
+        href: overview.md
+      - name: 发行说明
+        href: release-notes.md
+      - name: Azure Arc 认证合作伙伴
+        href: validation-program.md
+      - name: 数据集合和报表
+        href: privacy-data-collection-and-reporting.md
+  - name: 快速入门
+    items:
+      - name: 规划已启用 Azure Arc 的数据服务部署
+        href: plan-azure-arc-data-services.md
+  - name: 概念
+    items:
+      - name: 连接模式和要求
+        href: connectivity.md
+      - name: 存储配置
+        href: storage-configuration.md
+      - name: 大小调整指南
+        href: sizing-guidance.md
+  - name: 操作指南
+    items:
+      - name: 安装工具
+        items:
+          - name: 安装客户端工具
+            href: install-client-tools.md
+          - name: 安装 arcdata 扩展 (Azure CLI)
+            href: install-arcdata-extension.md
+      - name: 创建自定义配置文件
+        href: create-custom-configuration-template.md
+      - name: 创建数据控制器
+        items:
+          - name: 间接连接模式
+            items:
+              - name: Azure Data Studio
+                href: create-data-controller-indirect-azure-data-studio.md
+              - name: Azure 门户
+                href: create-data-controller-indirect-azure-portal.md
+              - name: Azure (az) CLI
+                href: create-data-controller-indirect-cli.md
+              - name: Kubernetes 工具
+                href: create-data-controller-using-kubernetes-native-tools.md
+          - name: 直接连接模式
+            items:
+              - name: 先决条件
+                href: create-data-controller-direct-prerequisites.md
+              - name: Azure 门户
+                href: create-data-controller-direct-azure-portal.md
+              - name: az CLI
+                href: create-data-controller-direct-cli.md
+      - name: 在已启用 Azure Arc 的数据服务中的常见体验
+        items:
+          - name: 使用仪表板进行监视 (Azure Data Studio)
+            href: azure-data-studio-dashboards.md
+          - name: 查看计费数据 (Azure)
+            href: view-billing-data-in-azure.md
+          - name: 查看数据控制器（门户）
+            href: view-data-controller-in-azure-portal.md
+          - name: 删除资源
+            href: delete-azure-resources.md
+          - name: 卸载 Azure Arc 数据控制器
+            href: uninstall-azure-arc-data-controller.md
+      - name: 管理
+        items:
+          - name: 使用 Grafana 和 Kibana 进行监视
+            href: monitor-grafana-kibana.md
+          - name: 上传到 Azure Monitor
+            items:
+              - name: 上传先决条件
+                href: upload-metrics-and-logs-to-azure-monitor.md
+              - name: 上传日志
+                href: upload-logs.md
+              - name: 上传指标
+                href: upload-metrics.md
+              - name: 上传使用数据
+                href: upload-usage-data.md
+          - name: 库存数据库实例
+            href: view-arc-data-services-inventory-in-azure-portal.md
+          - name: 获取数据控制器用户名和密码
+            href: retrieve-the-username-password-for-data-controller.md
+          - name: 更新服务主体凭据
+            href: update-service-principal-credentials.md
+      - name: 疑难解答
+        items:
+          - name: 指南
+            href: troubleshoot-guide.md
+          - name: 获取日志
+            href: troubleshooting-get-logs.md
+  - name: 已启用 Azure Arc 的 PostgreSQL 超大规模（预览）
+    items:
+      - name: 概述
+        items:
+          - name: 什么是已启用 Azure Arc 的超大规模 PostgreSQL
+            href: what-is-azure-arc-enabled-postgres-hyperscale.md
+          - name: 限制
+            href: limitations-postgresql-hyperscale.md
+      - name: 快速入门
+        items:
+          - name: 支持的版本
+            href: supported-versions-postgres-hyperscale.md
+          - name: 创建 Postgres 超大规模服务器组 (CLI)
+            href: create-postgresql-hyperscale-server-group.md
+          - name: 创建 Postgres 超大规模服务器组（门户）
+            href: create-postgresql-hyperscale-server-group-azure-portal.md
+          - name: 创建 Postgres 超大规模服务器组 (Azure Data Studio)
+            href: create-postgresql-hyperscale-server-group-azure-data-studio.md
+          - name: 创建 Postgres 超大规模服务器组 - Kubernetes 原生工具
+            href: create-postgresql-hyperscale-server-group-kubernetes-native-tools.md
+          - name: 连接
+            href: get-connection-endpoints-and-connection-strings-postgres-hyperscale.md
+      - name: 概念
+        items:
+          - name: 分发数据
+            href: concepts-distributed-postgres-hyperscale.md
+          - name: 服务器组放置
+            href: postgresql-hyperscale-server-group-placement-on-kubernetes-cluster-nodes.md
+      - name: 操作方法
+        items:
+          - name: 管理
+            items:
+              - name: 备份和还原
+                href: backup-restore-postgresql-hyperscale.md
+              - name: 更改 PostgreSQL 端口
+                href: change-postgresql-port.md
+              - name: 配置和缩放
+                items:
+                  - name: 显示配置
+                    href: show-configuration-postgresql-hyperscale-server-group.md
+                  - name: 横向扩展/缩减工作器节点
+                    href: scale-out-in-postgresql-hyperscale-server-group.md
+                  - name: 纵向扩展/缩减内存和 vCore 数
+                    href: scale-up-down-postgresql-hyperscale-server-group-using-cli.md
+                  - name: 配置服务器参数
+                    href: configure-server-parameters-postgresql-hyperscale.md
+              - name: 删除
+                href: delete-postgresql-hyperscale-server-group.md
+              - name: 列出服务器组
+                href: list-server-groups-postgres-hyperscale.md
+              - name: 监视、日志分析、账单信息（门户）
+                href: monitoring-log-analytics-azure-portal-postgresql.md
+              - name: 安全
+                href: configure-security-postgres-hyperscale.md
+              - name: 管理服务器组 (Azure Data Studio)
+                href: manage-postgresql-hyperscale-server-group-with-azure-data-studio.md
+              - name: 使用 Postgres 扩展
+                href: using-extensions-in-postgresql-hyperscale-server-group.md
+          - name: Migrate
+            items:
+              - name: 将 PostgreSQL 数据迁移到 Postgres 超大规模服务器组
+                href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
+              - name: 导入示例数据库 AdventureWorks
+                href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
+          - name: 故障排除
+            href: troubleshoot-postgresql-hyperscale-server-group.md
+  - name: 已启用 Azure Arc 的 SQL 托管实例
+    items:
+      - name: 概述
+        items:
+          - name: 什么是已启用 Azure Arc 的 SQL 托管实例
+            href: managed-instance-overview.md
+          - name: 功能
+            href: managed-instance-features.md
+          - name: 限制
+            href: limitations-managed-instance.md
+          - name: 服务层
+            href: service-tiers.md
+      - name: 快速入门
+        items:
+          - name: 创建 SQL 托管实例
+            href: create-sql-managed-instance.md
+          - name: 创建 SQL 托管实例 (Azure Data Studio)
+            href: create-sql-managed-instance-azure-data-studio.md
+          - name: 使用 Kubernetes 工具进行创建
+            href: create-sql-managed-instance-using-kubernetes-native-tools.md
+          - name: 连接
+            href: connect-managed-instance.md
+      - name: 操作方法
+        items:
+          - name: 管理
+            items:
+              - name: 配置
+                href: configure-managed-instance.md
+              - name: 监视、日志分析、账单信息（门户）
+                href: monitoring-log-analytics-azure-portal-managed-instance.md
+              - name: 高可用性
+                href: managed-instance-high-availability.md
+              - name: 时间点还原
+                href: point-in-time-restore.md
+              - name: 删除
+                href: delete-managed-instance.md
+          - name: Migrate
+            items:
+              - name: 迁移到 SQL 托管实例 (Azure Arc)
+                href: migrate-to-managed-instance.md
+              - name: 还原 AdventureWorks
+                href: restore-adventureworks-sample-db.md
+  - name: 参考
+    items:
+      - name: 发行版本日志
+        href: version-log.md
+      - name: az arcdata extension
+        items:
+          - name: 概述
+            href: ./reference/overview.md
+          - name: arcdata dc
+            href: ./reference/reference-az-arcdata-dc.md
+          - name: arcdata dc config
+            href: ./reference/reference-az-arcdata-dc-config.md
+          - name: arcdata dc endpoint
+            href: ./reference/reference-az-arcdata-dc-endpoint.md
+          - name: arcdata dc status
+            href: ./reference/reference-az-arcdata-dc-status.md
+          - name: arcdata resource-kind
+            href: ./reference/reference-az-arcdata-resource-kind.md
+          - name: postgres arc-server
+            href: ./reference/reference-az-postgres-arc-server.md
+          - name: postgres arc-server endpoint
+            href: ./reference/reference-az-postgres-arc-server-endpoint.md
+          - name: sql mi-arc
+            href: ./reference/reference-az-sql-mi-arc.md
+          - name: sql mi-arc endpoint
+            href: ./reference/reference-az-sql-mi-arc-endpoint.md
+          - name: sql mi-arc config
+            href: ./reference/reference-az-sql-mi-arc-config.md
+          - name: sql mi-arc dag
+            href: ./reference/reference-az-sql-mi-arc-dag.md
+  - name: 资源
+    items:
+      - name: 部署规划
+        href: plan-azure-arc-data-services.md
+      - name: Azure Arc 快速入门
+        href: 'https://azurearcjumpstart.io'

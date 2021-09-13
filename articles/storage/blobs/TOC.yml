@@ -21,7 +21,7 @@ items:
               - name: Azure 门户
                 href: storage-quickstart-blobs-portal.md
               - name: 存储资源管理器
-                href: storage-quickstart-blobs-storage-explorer.md
+                href: quickstart-storage-explorer.md
               - name: PowerShell
                 href: storage-quickstart-blobs-powershell.md
               - name: CLI
@@ -608,7 +608,7 @@ items:
                 href: ../common/storage-ref-azcopy-remove.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: azcopy sync
                 href: ../common/storage-ref-azcopy-sync.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: Resource Manager 模板
+          - name: 资源管理器模板
             displayName: ARM
             href: /azure/templates/microsoft.storage/allversions
           - name: 监视数据

@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 05/07/2020
-  ms.openlocfilehash: ded78056168ec246d297a5ed4141fa5d124d6dc7
-  ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+  ms.openlocfilehash: 730f5db7ed0aec5cb09d3c031af34dc718b9fe7e
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/29/2021
-  ms.locfileid: "113032698"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124782340"
 landingContent:
 - title: 关于负载均衡器
   linkLists:
@@ -47,7 +47,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: 使用标准负载均衡器跨可用性区域对 VM 进行负载均衡
-      url: tutorial-load-balancer-standard-public-zone-redundant-portal.md
+      url: ./quickstart-load-balancer-standard-public-portal.md
     - text: 在 Azure 负载均衡器中配置端口转发
       url: tutorial-load-balancer-port-forwarding-portal.md
 - title: 管理功能和选项
