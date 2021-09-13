@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: db297b2c5e07b812d946241d03ca94e92cb84631
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: f931d5c21de4c91acc24af68992e4b3b64931e21
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271632"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450577"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授权 Microsoft&reg; 平滑流式处理客户端移植工具包
 
@@ -90,6 +90,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * MediaTek Inc.
 * Montage LZ Technologies Hong Kong Limited
 * Panasonic Corporation
+* Socionext Inc.
 * Synamedia Limited
 * Tatung Technology Inc.
 * Top Victory Investments, Ltd.
@@ -106,6 +107,7 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * FAIRWIT HONGKONG CO., LIMITED
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
+* Guangdong Asano Technology CO., Ltd.
 * Hisense Broadband Multimedia Technologies Co.,Ltd.
 * Hisense International Co., Ltd.
 * Hisense Visual Technology Co., Ltd

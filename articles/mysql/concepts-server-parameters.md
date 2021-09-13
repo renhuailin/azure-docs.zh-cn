@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 8220afc8020e5a6a4ba77c46a98ee3c220c3f37e
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 0aeaf068de0bdcc06deb3e28575047b459b56b27
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114675309"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426105"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的服务器参数
 
@@ -85,7 +85,7 @@ MySQL 通常会为每个客户端连接分配一个线程。 随着并发用户�
 |内存优化|16|65498251264|134217728|65498251264|
 |内存优化|32|132070244352|134217728|132070244352|
 
-#### <a name="servers-on-general-purpose-storage-v1-supporting-up-to-16-tb"></a>[常规用途存储 v1 上的服务器（最多支持 16 TB）](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage)
+#### <a name="servers-on-general-purpose-storage-v2-supporting-up-to-16-tb"></a>[常规用途存储 v2 上的服务器（最多支持 16 TB）](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage)
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
@@ -118,8 +118,8 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|不适用|空值|
-|基本|2|在基本层中不可配置|不适用|空值|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|262144|128|268435455|
 |常规用途|4|262144|128|536870912|
 |常规用途|8|262144|128|1073741824|
@@ -167,8 +167,8 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|不适用|
-|基本|2|在基本层中不可配置|不适用|不适用|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|16777216|16384|268435455|
 |常规用途|4|16777216|16384|536870912|
 |常规用途|8|16777216|16384|1073741824|
@@ -192,8 +192,8 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值 **|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|不适用|不适用|
-|基本|2|在基本层中不可配置|不适用|空值|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|0|0|16777216|
 |常规用途|4|0|0|33554432|
 |常规用途|8|0|0|67108864|
@@ -230,8 +230,8 @@ lower_case_table_name 默认设置为 1，你可以在 MySQL 5.6 和 MySQL 5.7 �
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|不适用|空值|
-|基本|2|在基本层中不可配置|不适用|空值|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|524288|32768|4194304|
 |常规用途|4|524288|32768|8388608|
 |常规用途|8|524288|32768|16777216|
@@ -250,8 +250,8 @@ lower_case_table_name 默认设置为 1，你可以在 MySQL 5.6 和 MySQL 5.7 �
 
 |**定价层**|**vCore(s)**|**默认值（字节）**|**最小值（字节）**|**最大值（字节）**|
 |---|---|---|---|---|
-|基本|1|在基本层中不可配置|不适用|空值|
-|基本|2|在基本层中不可配置|不适用|空值|
+|基本|1|在基本层中不可配置|空值|空值|
+|基本|2|在基本层中不可配置|空值|空值|
 |常规用途|2|16777216|1024|67108864|
 |常规用途|4|16777216|1024|134217728|
 |常规用途|8|16777216|1024|268435456|
@@ -279,6 +279,13 @@ lower_case_table_name 默认设置为 1，你可以在 MySQL 5.6 和 MySQL 5.7 �
 ### <a name="time_zone"></a>time_zone
 
 初始部署后，Azure for MySQL 服务器包含用于时区信息的系统表，但这些表没有填充。 可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程并设置全局时区或会话级时区，请参阅 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) 一文。
+
+### <a name="binlog_expire_logs_seconds"></a>binlog_expire_logs_seconds 
+
+在 Azure Database for MySQL 中，此参数指定在清除二进制日志文件之前，服务等待的秒数。
+
+二进制日志包含描述数据库更改的“事件”，例如表创建操作或对表数据所做的更改。 它还包含可能已进行了更改的语句的事件。 二进制日志主要用于两个目的：复制和数据恢复操作。  通常，当句柄从服务、备份或副本集中释放后，二进制日志就会立即被清除。 如果有多个副本，则会等待最慢的副本读取更改，然后再被清除。 若要将二进制日志保留更长的时间，可以配置参数 binlog_expire_logs_seconds。 如果将 binlog_expire_logs_seconds 设置为 0（默认值），则在释放二进制日志的句柄后，会立即将其清除。 如果 binlog_expire_logs_seconds 大于 0，则会等待已配置的秒数，然后再将其清除。 对于 Azure database for MySQL，二进制文件的备份和只读副本清除等托管功能都是在内部处理的。 复制从 Azure Database for MySQL 服务中输出的数据时，需要在主副本中设置此参数，以避免在副本从主副本中读取更改之前清除二进制日志。 如果将 binlog_expire_logs_seconds 设置为一个较大的值，则不会立即清除二进制日志，这可能会导致存储计费的增加。 
+
 
 ## <a name="non-configurable-server-parameters"></a>不可配置的服务器参数
 

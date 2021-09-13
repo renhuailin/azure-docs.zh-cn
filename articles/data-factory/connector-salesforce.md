@@ -1,20 +1,22 @@
 ---
 title: 从/向 Salesforce 复制数据
-description: 了解如何通过在数据工厂管道中使用复制活动，将数据从 Salesforce 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 Salesforce。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何通过在 Azure 数据工厂或 Azure Synapse Analytics 管道中使用复制活动，将数据从 Salesforce 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 Salesforce。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: 852ee7ccff01d33a6fd186175d1f5304a7839315
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.custom: synapse
+ms.date: 09/03/2021
+ms.openlocfilehash: e5d4e36b6c9da2d5887675828c407bcc5bde1263
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110493848"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539904"
 ---
-# <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
+# <a name="copy-data-from-and-to-salesforce-using-azure-data-factory-or-azure-synapse-analytics"></a>使用 Azure 数据工厂或 Azure Synapse Analytics 从/向 Salesforce 复制数据
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
 > * [版本 1](v1/data-factory-salesforce-connector.md)
@@ -22,7 +24,7 @@ ms.locfileid: "110493848"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述如何使用 Azure 数据工厂中的复制活动从/向 Salesforce 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
+本文概述如何使用 Azure 数据工厂和 Azure Synapse 管道中的复制活动从/向 Salesforce 复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
@@ -38,7 +40,7 @@ ms.locfileid: "110493848"
 - Salesforce 开发人员版、专业版、企业版或不受限制版。
 - 从/向 Salesforce 生产、沙盒和自定义域复制数据。
 
-Salesforce 连接器在 Salesforce REST/Bulk API 之上构建。 默认情况下，从 Salesforce 复制数据时，连接器使用 [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) 并根据数据大小自动在 REST 和 Bulk API 之间进行选择 – 结果集较大时，使用 Bulk API 可获得更好的性能；在将数据写入 Salesforce 时，连接器使用 Bulk API [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm)。 还可通过链接服务中的 [`apiVersion` 属性](#linked-service-properties)显式设置用于读取/写入数据的 API 版本。
+Salesforce 连接器在 Salesforce REST/Bulk API 之上构建。 从 Salesforce 复制数据时，连接器会根据数据大小在 REST 和批量 API 之间自动选择。当结果集较大时，使用批量 API 来提高性能。你可通过链接服务中的 [`apiVersion` 属性](#linked-service-properties)显式设置用于读取/写入数据的 API 版本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -57,23 +59,47 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
-对于特定于 Salesforce 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
+## <a name="create-a-linked-service-to-salesforce-using-ui"></a>使用 UI 创建到 Salesforce 的链接服务
+
+使用以下步骤在 Azure 门户 UI 中创建一个到 Salesforce 的链接服务。
+
+1. 浏览到 Azure 数据工厂或 Synapse 工作区中的“管理”选项卡并选择“链接服务”，然后单击“新建”：
+
+    # <a name="azure-data-factory"></a>[Azure 数据工厂](#tab/data-factory)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="屏幕截图，显示如何使用 Azure 数据工厂 UI 创建新的链接服务。":::
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+    :::image type="content" source="media/doc-common-process/new-linked-service-synapse.png" alt-text="屏幕截图，显示如何使用 Azure Synapse UI 创建新的链接服务。":::
+
+2. 搜索“Salesforce”并选择 Salesforce 连接器。
+
+    :::image type="content" source="media/connector-salesforce/salesforce-connector.png" alt-text="Salesforce 连接器的屏幕截图。":::    
+
+1. 配置服务详细信息、测试连接并创建新的链接服务。
+
+    :::image type="content" source="media/connector-salesforce/configure-salesforce-linked-service.png" alt-text="Salesforce 的链接服务配置的屏幕截图。":::
+
+## <a name="connector-configuration-details"></a>连接器配置详细信息
+
+对于特定于 Salesforce 连接器的实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
 Salesforce 链接服务支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type |类型属性必须设置为 **Salesforce**。 |是 |
 | environmentUrl | 指定 Salesforce 实例的 URL。 <br> - 默认为 `"https://login.salesforce.com"`。 <br> - 要从沙盒复制数据，请指定 `"https://test.salesforce.com"`。 <br> - 要从自定义域复制数据，请指定 `"https://[domain].my.salesforce.com"`（以此为例）。 |否 |
 | username |为用户帐户指定用户名。 |是 |
-| password |指定用户帐户的密码。<br/><br/>将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |是 |
-| securityToken |为用户帐户指定安全令牌。 <br/><br/>若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。 仅当将 Integration Runtime 的 IP 添加到 Salesforce 上的[受信任 IP 地址列表](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm)时，才能跳过安全令牌。 使用 Azure IR 时，请参阅 [Azure Integration Runtime IP 地址](azure-integration-runtime-ip-addresses.md)。<br/><br/>有关如何获取和重置安全令牌的说明，请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |否 |
-| apiVersion | 指定要使用的 Salesforce REST/Bulk API 版本，例如 `48.0`。 默认情况下，连接器使用 [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) 从 Salesforce 复制数据，使用 [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) 将数据复制到 Salesforce。 | 否 |
+| password |指定用户帐户的密码。<br/><br/>将此字段标记为 SecureString 以安全地存储它，或[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 |是 |
+| securityToken |为用户帐户指定安全令牌。 <br/><br/>若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。 仅当将 Integration Runtime 的 IP 添加到 Salesforce 上的[受信任 IP 地址列表](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm)时，才能跳过安全令牌。 使用 Azure IR 时，请参阅 [Azure Integration Runtime IP 地址](azure-integration-runtime-ip-addresses.md)。<br/><br/>有关如何获取和重置安全令牌的说明，请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)。 将此字段标记为 SecureString 以安全地存储它，或[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 |否 |
+| apiVersion | 指定要使用的 Salesforce REST/Bulk API 版本，例如 `52.0`。 | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 | 否 |
 
-**示例：在数据工厂中存储凭据**
+**示例：存储凭据**
 
 ```json
 {
@@ -139,7 +165,7 @@ Salesforce 链接服务支持以下属性。
 
 要从/向 Salesforce 复制数据，请将数据集的 type 属性设置为 **SalesforceObject**。 支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SalesforceObject**。  | 是 |
 | objectApiName | 要从中检索数据的 Salesforce 对象名称。 | 对于源为“No”，对于接收器为“Yes” |
@@ -147,7 +173,7 @@ Salesforce 链接服务支持以下属性。
 > [!IMPORTANT]
 > 任何自定义对象均需要 **API 名称** 的“__c”部分。
 
-![数据工厂 Salesforce 连接 API 名称](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
+![Salesforce 连接 API 名称](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
 
 **示例：**
 
@@ -171,7 +197,7 @@ Salesforce 链接服务支持以下属性。
 >[!NOTE]
 >为了向后兼容：从 Salesforce 复制数据时，如果使用以前的“RelationalTable”类型数据集，它会在你看到切换到新的“SalesforceObject”类型的建议时继续工作。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 **RelationalTable**。 | 是 |
 | tableName | 在 Salesforce 中表的名称。 | 否（如果指定了活动源中的“query”） |
@@ -184,7 +210,7 @@ Salesforce 链接服务支持以下属性。
 
 要从 Salesforce 复制数据，请将复制活动中的源类型设置为“SalesforceSource”。 复制活动的 **source** 节支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **SalesforceSource**。 | 是 |
 | 查询 |使用自定义查询读取数据。 可以使用 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询或 SQL-92 查询。 请在[查询提示](#query-tips)部分中查看更多提示。 如果未指定查询，将检索在数据集的“objectApiName”中指定的 Salesforce 对象的所有数据。 | 否（如果指定了数据集中的“objectApiName”） |
@@ -193,7 +219,7 @@ Salesforce 链接服务支持以下属性。
 > [!IMPORTANT]
 > 任何自定义对象均需要 **API 名称** 的“__c”部分。
 
-![数据工厂 Salesforce 连接 API 名称列表](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
+![Salesforce 连接 API 名称列表](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
 
 **示例：**
 
@@ -234,7 +260,7 @@ Salesforce 链接服务支持以下属性。
 
 要向 Salesforce 复制数据，请将复制活动中的接收器类型设置为“SalesforceSink”。 复制活动 **sink** 节支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **SalesforceSink**。 | 是 |
 | writeBehavior | 操作写入行为。<br/>允许的值为 **Insert** 和 **Upsert**。 | 否（默认值为 Insert） |
@@ -314,9 +340,9 @@ Salesforce 链接服务支持以下属性。
 
 ## <a name="data-type-mapping-for-salesforce"></a>Salesforce 的数据类型映射
 
-从 Salesforce 复制数据时，以下映射用于从 Salesforce 数据类型映射到数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
+从 Salesforce 复制数据时，使用以下映射从 Salesforce 数据类型内部映射到服务中的临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
 
-| Salesforce 数据类型 | 数据工厂临时数据类型 |
+| Salesforce 数据类型 | 服务临时数据类型 |
 |:--- |:--- |
 | 自动编号 |String |
 | 复选框 |布尔 |
@@ -344,4 +370,4 @@ Salesforce 链接服务支持以下属性。
 
 
 ## <a name="next-steps"></a>后续步骤
-有关数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关复制活动支持作为源和接收器的数据存储的列表，请参阅[受支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

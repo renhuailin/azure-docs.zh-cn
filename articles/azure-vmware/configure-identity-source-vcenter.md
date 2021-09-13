@@ -3,12 +3,12 @@ title: 为 vCenter 配置外部标识源
 description: 了解如何为 vCenter 配置通过 LDAP 或 LDAPS 的 Active Directory 作为外部标识源。
 ms.topic: how-to
 ms.date: 08/31/2021
-ms.openlocfilehash: 50a79c54c57649fd8dc565a7634823bf4a7a0f86
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 77644c2d52a5eed87ab4dca83632b69834dd4c58
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123315915"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537105"
 ---
 # <a name="configure-external-identity-source-for-vcenter"></a>为 vCenter 配置外部标识源
 
@@ -56,16 +56,54 @@ ms.locfileid: "123315915"
 
    :::image type="content" source="media/run-command/run-command-get-external-identity-sources.png" alt-text="显示如何列出外部标识源的屏幕截图。":::
    
-   | **字段** | 值 |
+   | 字段 | 值 |
    | --- | --- |
-   | **最长保留时间**  |cmdlet 输出的保持期。 默认值为 60。   |
+   | **最长保留时间**  |cmdlet 输出的保持期。 默认值为 60 天。   |
    | **指定用于执行的名称**  | 字母数字名称，例如 getExternalIdentity。  |
    | **超时**  |  一个时间段，在该时间段后 cmdlet 将退出（如果需要太长时间才能完成）。  |
 
-1. 检查“通知”以查看进度。
+1. 查看“通知”或“运行执行状态”窗格来了解进度 。
+
+
+## <a name="add-active-directory-over-ldap-with-ssl"></a>添加通过 LDAP 的 Active Directory（带 SSL）
+
+你将运行 `New-AvsLDAPSIdentitySource` cmdlet，将通过 LDAP 的 AD（带 SSL）作为要与 SSO 配合使用的外部标识源添加到 vCenter 中。 
+
+1. 下载用于 AD 身份验证的证书，并将其作为 Blob 存储上传到 Azure 存储帐户。 如果需要多个证书，请单独上传每个证书。  
+
+1. 对于每个证书，[使用共享访问签名 (SAS) 授予对 Azure 存储资源的访问权限](../storage/common/storage-sas-overview.md)。 这些 SAS 字符串作为参数提供给 cmdlet。 
+
+   >[!IMPORTANT]
+   >请确保复制每个 SAS 字符串，理由是在你退出此页面后，它们将消失。  
+   
+1. 选择“运行命令” > “包” > “New-AvsLDAPSIdentitySource”。
+
+1. 提供所需的值或更改默认值，然后选择“运行”。
+
+   | 字段 | 值 |
+   | --- | --- |
+   | **名称**  | 外部标识源的用户友好名称，例如 avslap.local。  |
+   | **DomainName**  | 域的 FQDN。   |
+   | **DomainAlias**  | 对于 Active Directory 标识源，是域的 NetBIOS 名称。 如果你使用的是 SSPI 身份验证，请将 AD 域的 NetBIOS 名称添加为标识源的别名。     |
+   | **PrimaryUrl**  | 外部标识源的主 URL，例如 ldap://yourserver:389。  |
+   | **SecondaryURL**  | 辅助回退 URL（如果出现主 URL 故障）。  |
+   | **BaseDNUsers**  |  查找有效用户的位置，例如 CN=users,DC=yourserver,DC=internal。  需要基准 DN 才能使用 LDAP 身份验证。  |
+   | **BaseDNGroups**  | 查找组的位置，例如 CN=group1, DC=yourserver,DC= internal。 需要基准 DN 才能使用 LDAP 身份验证。  |
+   | **凭据**  | 用于对 AD 源（不是 cloudadmin）进行身份验证的用户名和密码。  |
+   | **CertificateSAS** | SAS 字符串的路径，其中包含用于对 AD 源进行身份验证的证书。 如果在使用多个证书，请使用逗号分隔每个 SAS 字符串。 例如 pathtocert1,pathtocert2。  |
+   | **GroupName**  | 外部标识源中授予 cloudadmin 访问权限的组。 例如 avs-admins。  |
+   | **最长保留时间**  | cmdlet 输出的保持期。 默认值为 60 天。   |
+   | **指定用于执行的名称**  | 字母数字名称，例如 addexternalIdentity。  |
+   | **超时**  |  一个时间段，在该时间段后 cmdlet 将退出（如果需要太长时间才能完成）。  |
+
+1. 查看“通知”或“运行执行状态”窗格来了解进度 。
+
 
 
 ## <a name="add-active-directory-over-ldap"></a>添加通过 LDAP 的 Active Directory
+
+>[!NOTE]
+>建议不要使用此方法， 而是采用[添加使用 SSL 的 Active Directory over LDAP](#add-active-directory-over-ldap-with-ssl) 方法。
 
 你将运行 `New-AvsLDAPIdentitySource` cmdlet，将通过 LDAP 的 AD 作为要与 SSO 配合使用的外部标识源添加到 vCenter 中。 
 
@@ -73,7 +111,7 @@ ms.locfileid: "123315915"
 
 1. 提供所需的值或更改默认值，然后选择“运行”。
    
-   | **字段** | 值 |
+   | 字段 | 值 |
    | --- | --- |
    | **名称**  | 外部标识源的用户友好名称，例如 avslap.local。  |
    | **DomainName**  | 域的 FQDN。    |
@@ -84,45 +122,11 @@ ms.locfileid: "123315915"
    | **BaseDNGroups**  | 查找组的位置，例如 CN=group1, DC=yourserver,DC= internal。 需要基准 DN 才能使用 LDAP 身份验证。  |
    | **凭据**  | 用于对 AD 源（不是 cloudadmin）进行身份验证的用户名和密码。  |
    | **GroupName**  | 用于在外部标识源中授予云管理员访问权限的组，例如 avs-admins。  |
-   | **最长保留时间**  | cmdlet 输出的保持期。 默认值为 60。   |
+   | **最长保留时间**  | cmdlet 输出的保持期。 默认值为 60 天。   |
    | **指定用于执行的名称**  | 字母数字名称，例如 addexternalIdentity。  |
    | **超时**  |  一个时间段，在该时间段后 cmdlet 将退出（如果需要太长时间才能完成）。  |
 
-1. 检查“通知”以查看进度。
-
-
-
-## <a name="add-active-directory-over-ldap-with-ssl"></a>添加通过 LDAP 的 Active Directory（带 SSL）
-
-你将运行 `New-AvsLDAPSIdentitySource` cmdlet，将通过 LDAP 的 AD（带 SSL）作为要与 SSO 配合使用的外部标识源添加到 vCenter 中。 
-
-1. 下载用于 AD 身份验证的证书，并将其作为 Blob 存储上传到 Azure 存储帐户。  
-
-1. [使用共享访问签名 (SAS) 授予对 Azure 存储资源的访问权限](../storage/common/storage-sas-overview.md)。  
-   
-1. 选择“运行命令” > “包” > “New-AvsLDAPSIdentitySource”。
-
-1. 提供所需的值或更改默认值，然后选择“运行”。
-
-   | **字段** | 值 |
-   | --- | --- |
-   | **名称**  | 外部标识源的用户友好名称，例如 avslap.local。  |
-   | **DomainName**  | 域的 FQDN。   |
-   | **DomainAlias**  | 对于 Active Directory 标识源，是域的 NetBIOS 名称。 如果你使用的是 SSPI 身份验证，请将 AD 域的 NetBIOS 名称添加为标识源的别名。     |
-   | **PrimaryUrl**  | 外部标识源的主 URL，例如 ldap://yourserver:389。  |
-   | **SecondaryURL**  | 辅助回退 URL（如果出现主 URL 故障）。  |
-   | **BaseDNUsers**  |  查找有效用户的位置，例如 CN=users,DC=yourserver,DC=internal。  需要基准 DN 才能使用 LDAP 身份验证。  |
-   | **BaseDNGroups**  | 查找组的位置，例如 CN=group1, DC=yourserver,DC= internal。 需要基准 DN 才能使用 LDAP 身份验证。  |
-   | **凭据**  | 用于对 AD 源（不是 cloudadmin）进行身份验证的用户名和密码。  |
-   | **CertificateSAS** | SAS 字符串的路径，其中包含用于对 AD 源进行身份验证的证书。  |
-   | **GroupName**  | 用于在外部标识源中授予云管理员访问权限的组，例如 avs-admins。  |
-   | **最长保留时间**  | cmdlet 输出的保持期。 默认值为 60。   |
-   | **指定用于执行的名称**  | 字母数字名称，例如 addexternalIdentity。  |
-   | **超时**  |  一个时间段，在该时间段后 cmdlet 将退出（如果需要太长时间才能完成）。  |
-
-1. 检查“通知”以查看进度。
-
-
+1. 查看“通知”或“运行执行状态”窗格来了解进度 。
 
 
 ## <a name="add-existing-ad-group-to-cloudadmin-group"></a>将现有 AD 组添加到 cloudadmin 组
@@ -133,15 +137,14 @@ ms.locfileid: "123315915"
 
 1. 提供所需的值或更改默认值，然后选择“运行”。
 
-   | **字段** | 值 |
+   | 字段 | 值 |
    | --- | --- |
    | **GroupName**  | 要添加的组的名称，例如 VcAdminGroup。  |
-   | **最长保留时间**  | cmdlet 输出的保持期。 默认值为 60。   |
+   | **最长保留时间**  | cmdlet 输出的保持期。 默认值为 60 天。   |
    | **指定用于执行的名称**  | 字母数字名称，例如 addADgroup。  |
    | **超时**  |  一个时间段，在该时间段后 cmdlet 将退出（如果需要太长时间才能完成）。  |
 
-1. 检查“通知”以查看进度。
-
+1. 查看“通知”或“运行执行状态”窗格来了解进度 。
 
 
 
@@ -153,14 +156,14 @@ ms.locfileid: "123315915"
 
 1. 提供所需的值或更改默认值，然后选择“运行”。
 
-   | **字段** | 值 |
+   | 字段 | 值 |
    | --- | --- |
    | **GroupName**  | 要删除的组的名称，例如 VcAdminGroup。  |
-   | **最长保留时间**  | cmdlet 输出的保持期。 默认值为 60。   |
+   | **最长保留时间**  | cmdlet 输出的保持期。 默认值为 60 天。   |
    | **指定用于执行的名称**  | 字母数字名称，例如 removeADgroup。  |
    | **超时**  |  一个时间段，在该时间段后 cmdlet 将退出（如果需要太长时间才能完成）。  |
 
-1. 检查“通知”以查看进度。
+1. 查看“通知”或“运行执行状态”窗格来了解进度 。
 
 
 
@@ -175,13 +178,13 @@ ms.locfileid: "123315915"
 
 1. 提供所需的值或更改默认值，然后选择“运行”。
 
-   | **字段** | 值 |
+   | 字段 | 值 |
    | --- | --- |
-   | **最长保留时间**  | cmdlet 输出的保持期。 默认值为 60。   |
+   | **最长保留时间**  | cmdlet 输出的保持期。 默认值为 60 天。   |
    | **指定用于执行的名称**  | 字母数字名称，例如 remove_externalIdentity。  |
    | **超时**  |  一个时间段，在该时间段后 cmdlet 将退出（如果需要太长时间才能完成）。  |
 
-1. 检查“通知”以查看进度。
+1. 查看“通知”或“运行执行状态”窗格来了解进度 。
 
 
 ## <a name="next-steps"></a>后续步骤

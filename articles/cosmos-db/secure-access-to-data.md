@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/30/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b0fcfba6f72ef5e87be5c3301338a2c09598accf
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: a2cf8ef27efb6e368390f23d4011e5dcb7c1e939
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253427"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425043"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,7 +35,7 @@ Azure Cosmos DB 提供了三种方法来控制对数据的访问。
 ### <a name="key-rotation-and-regeneration"></a><a id="key-rotation"></a> 密钥轮换和重新生成
 
 > [!NOTE]
-> 按照[此处](database-security.md#key-rotation)所述的说明在 Mongo DB、Cassandra API、Gremlin API 或表 API 的 Azure Cosmos DB API 上轮换和重新生成密钥。
+> 以下步骤介绍为 SQL API 轮换和重新生成密钥的步骤。 如果使用的是其他 API，请参阅 [Azure Cosmos DB API for Mongo DB](database-security.md?tabs=mongo-api#key-rotation)、[Cassandra API](database-security.md?tabs=cassandra-api#key-rotation)、[Gremlin API](database-security.md?tabs=gremlin-api#key-rotation)或 [表 API](database-security.md?tabs=table-api#key-rotation) 部分。
 
 密钥轮换和重新生成的过程非常简单。 首先，请确保应用程序始终使用主密钥或辅助密钥来访问你的 Azure Cosmos DB 帐户。 然后，执行以下所述的步骤。
 

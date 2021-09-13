@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: e33c1fc4b5daa3ca2092e63413dcedcc42f82509
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: a7b13f06e342478258fc2806991aeed2d2df726e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123354382"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424917"
 ---
 # <a name="migrate-databases-with-azure-sql-migration-extension-for-azure-data-studio-preview"></a>使用适用于 Azure Data Studio 的 Azure SQL 迁移扩展（预览版）迁移数据库
 
-适用于 [Azure Data Studio](/sql/azure-data-studio/what-is-azure-data-studio.md) 的 Azure SQL 迁移扩展使你可以在 Azure Data Studio 中使用全新 SQL Server 评估和迁移功能。
+通过[适用于 Azure Data Studio 的 Azure SQL 迁移扩展](/sql/azure-data-studio/extensions/azure-sql-migration-extension)，可在 Azure Data Studio 中使用全新 SQL Server 评估和迁移功能。
 
 ## <a name="architecture-of-azure-sql-migration-extension-for-azure-data-studio"></a>适用于 Azure Data Studio 的 Azure SQL 迁移扩展的体系结构
 
@@ -140,4 +140,4 @@ DMS 使用 Azure 数据工厂的自承载集成运行时，从本地网络共享
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Azure SQL 迁移扩展的概述和安装，请参阅[适用于 Azure Data Studio 的 Azure SQL 迁移扩展](/sql/azure-data-studio/extensions/azure-sql-migration-extension.md)。
+- 有关 Azure SQL 迁移扩展的概述和安装，请参阅[适用于 Azure Data Studio 的 Azure SQL 迁移扩展](/sql/azure-data-studio/extensions/azure-sql-migration-extension)。

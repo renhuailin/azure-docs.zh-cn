@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 08/31/2021
 ms.author: duau
-ms.openlocfilehash: c6f06df11e0e17f37d7cfcbba6ed4fb8c224f824
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 01de2c75cbb6c1f8b2e153e18add612608e75ac7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123029856"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433924"
 ---
 # <a name="about-expressroute-direct"></a>关于 ExpressRoute Direct
 
@@ -37,7 +37,7 @@ ExpressRoute Direct 提供的主要功能包括但不限于：
     ```
 
 1. 使用以下命令注册公共预览版订阅：
-1. 
+
     ```azurepowershell-interactive
     Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
     ```
@@ -100,14 +100,24 @@ ExpressRoute Direct 同时支持 QinQ 和 Dot1Q VLAN 标记。
 
 * **Dot1Q VLAN 标记** 允许基于单个 ExpressRoute Direct 端口对的单个标记 VLAN。 在对等互连上使用的 C-Tag 必须在 ExpressRoute Direct 端口对的所有线路和对等互连中独一无二。
 
-## <a name="workflow"></a>工作流
+## <a name="workflows"></a>工作流
 
-[![工作流](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+### <a name="set-up-expressroute-direct"></a>设置 ExpressRoute Direct
+
+:::image type="content" source="./media/expressroute-erdirect-about/set-up-workflow.png" alt-text="ExpressRoute Direct 设置工作流的关系图。" lightbox="./media/expressroute-erdirect-about/set-up-workflow-expanded.png":::
+
+### <a name="delete-expressroute-direct"></a>删除 ExpressRoute Direct
+
+:::image type="content" source="./media/expressroute-erdirect-about/delete-workflow.png" alt-text="ExpressRoute Direct 删除工作流的关系图。" lightbox="./media/expressroute-erdirect-about/delete-workflow-expanded.png":::
 
 ## <a name="sla"></a>SLA
 
-ExpressRoute Direct 提供相同的企业级 SLA，并且可以通过主动/主动冗余连接连接到 Microsoft 全球网络中。 ExpressRoute 基础设施是冗余的，连接到 Microsoft 全球网络的功能也是冗余的，并且具有多样性，可以根据客户需求进行适当的缩放。 
+ExpressRoute Direct 提供相同的企业级 SLA，并且可以通过主动/主动冗余连接连接到 Microsoft 全球网络中。 ExpressRoute 基础设施是冗余的，连接到 Microsoft 全球网络的功能也是冗余的，并且具有多样性，可以根据客户需求进行适当的缩放。
+
+## <a name="pricing"></a>定价
+
+若要详细了解 ExpressRoute Direct 如何计费，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md#when-does-billing-start-and-stop-for-the-expressroute-direct-port-pairs)。 有关定价的详细信息，请参阅 [ExpressRoute 定价](https://azure.microsoft.com/pricing/details/expressroute/)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[配置 ExpressRoute Direct](expressroute-howto-erdirect.md)
+了解如何[配置 ExpressRoute Direct](expressroute-howto-erdirect.md)。

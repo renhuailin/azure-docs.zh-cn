@@ -6,12 +6,12 @@ author: rboucher
 ms.author: robb
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 447836fa8a7468b9bf2a76fdfd81c899f7105ed0
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: ffef89736038d2dc9977b908959207d8dafd8acc
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187768"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540228"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
@@ -19,7 +19,7 @@ Azure Monitor 日志专用群集是一个部署选项，可为 Azure Monitor 日
 
 专用群集要求客户使用每天至少 1 TB 的数据引入产能进行提交。 可以将现有工作区迁移到专用群集，而不会丢失数据或服务中断。 
 
-需要专用群集的功能包括：
+需要专用群集的功能：
 
 - **[客户管理的密钥](../logs/customer-managed-keys.md)** - 使用由客户提供和控制的密钥对群集数据进行加密。
 - [密码箱](../logs/customer-managed-keys.md#customer-lockbox-preview) - 控制 Microsoft 支持工程师对数据的访问请求。
@@ -30,18 +30,16 @@ Azure Monitor 日志专用群集是一个部署选项，可为 Azure Monitor 日
 
 ## <a name="management"></a>管理 
 
-专用群集通过表示 Azure Monitor 日志群集的 Azure 资源进行管理。 所有操作都是使用 PowerShell 或 REST API 在该资源上完成的。
+专用群集通过表示 Azure Monitor 日志群集的 Azure 资源进行管理。 使用 [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/cluster?view=azure-cli-latest)、[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights) 或 [REST](https://docs.microsoft.com/rest/api/loganalytics/clusters) 以编程方式执行操作。
 
-创建群集后，可以对其进行配置并将工作区链接到该群集。 当工作区链接到群集时，发送到工作区的新数据都将驻留在群集上。 只有与群集位于同一区域中的工作区才能链接到群集。 可从群集中取消工作区的链接，但有一些限制。 本文将详细介绍这些限制。 
-
-引入到专用群集的数据进行两次加密，一次在服务级别使用 Microsoft 管理的密钥或[客户管理的密钥](../logs/customer-managed-keys.md)，一次在基础结构级别使用两种不同的加密算法和两个不同的密钥。 [双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。 专用群集还允许通过[密码箱](../logs/customer-managed-keys.md#customer-lockbox-preview)控制来保护数据。
+创建群集后，可将工作区关联到它，并且其中新引入的数据存储在该群集中。 可随时取消工作区与群集的关联，新数据存储在共享的 Log Analytics 群集中。 关联和取消关联操作不会影响你在此操作前后的查询和对数据的访问，并且它受制于工作区中的保留。 要实现关联，群集和工作区必须在同一区域中。
 
 群集级别的所有操作都需要群集上的 `Microsoft.OperationalInsights/clusters/write` 操作权限。 可以通过包含 `*/write` 操作的所有者或参与者或包含 `Microsoft.OperationalInsights/*` 操作的 Log Analytics 参与者角色授予此权限。 有关 Log Analytics 权限的更多信息，请参阅[管理对 Azure Monitor 中的日志数据和工作区的访问](./manage-access.md)。 
 
 
 ## <a name="cluster-pricing-model"></a>群集定价模型
 
-Log Analytics 专用群集使用承诺层级定价模型，该模型至少为 500 GB/天。 高于该层级别的任何使用量都将按该承诺层的每 GB 有效费率计费。  [Azure Monitor 定价页]( https://azure.microsoft.com/pricing/details/monitor/)提供了承诺层级定价信息。  
+Log Analytics 专用群集使用承诺层级（之前称为容量预留）定价模型，该模型至少为 500 GB/天。 高于该层级别的任何使用量都将按该承诺层的每 GB 有效费率计费。 [Azure Monitor 定价页]( https://azure.microsoft.com/pricing/details/monitor/)提供了承诺层级定价信息。  
 
 使用 `Sku` 下的 `Capacity` 参数，并通过 Azure 资源管理器以编程方式配置群集承诺层级别。 以 GB 为单位指定 `Capacity`，值可为 500、1000、2000 或 5000 GB/天。
 
@@ -74,23 +72,21 @@ Authorization: Bearer <token>
 
 创建新的专用群集时，必须指定以下属性：
 
-- **ClusterName**：用于管理目的。 不会向用户公开此名称。
-- ResourceGroupName：专用群集的资源组。 你应使用中心 IT 资源组，因为群集通常由组织中的许多团队共享。 有关更多设计注意事项，请查看[设计 Azure Monitor 日志部署](../logs/design-logs-deployment.md)。
-- **位置**：群集位于特定的 Azure 区域中。 只有位于此区域中的工作区才能链接到此群集。
-- **SkuCapacity**：创建群集资源时必须指定承诺层级 (sku)。 承诺层级可以设置为 500、1000、2000 或 5000 GB/天。 有关群集成本的更多信息，请参阅[管理 Log Analytics 群集的成本](./manage-cost-storage.md#log-analytics-dedicated-clusters)。 
- 
+- **ClusterName**
+- **ResourceGroupName**：应使用集中式 IT 资源组，原因是群集通常由组织中的多个团队共享。 有关更多设计注意事项，请查看[设计 Azure Monitor 日志部署](../logs/design-logs-deployment.md)。
+- **位置**
+- **SkuCapacity**：承诺层级（之前称为容量预留）可设置为每天 500、1000、2000 或 5000 GB。 有关群集成本的更多信息，请参阅[管理 Log Analytics 群集的成本](./manage-cost-storage.md#log-analytics-dedicated-clusters)。 
 
-> [!NOTE]
-> 承诺层级以前称为产能预留。 
+创建群集的用户帐户必须具有以下标准 Azure 资源创建权限：`Microsoft.Resources/deployments/*` 和群集写入权限 `Microsoft.OperationalInsights/clusters/write`，可通过在其角色分配中添加此特定操作或 `Microsoft.OperationalInsights/*` 或 `*/write` 获得这些权限。
 
 创建群集资源后，可以编辑其他属性，如 sku、*keyVaultProperties 或 billingType。 参阅下面的更多详细信息。
 
 每个区域每个订阅最多可以有 2 个活动群集。 如果删除群集，该群集将仍保留 14 天。 每个区域每个订阅最多可以有 4 个保留群集（活动或最近删除的群集）。
 
-> [!WARNING]
-> 创建群集会触发资源分配和预配。 此操作可能需要几个小时才能完成。 建议以异步方式运行。
-
-创建群集的用户帐户必须具有以下标准 Azure 资源创建权限：`Microsoft.Resources/deployments/*` 和群集写入权限 `Microsoft.OperationalInsights/clusters/write`，可通过在其角色分配中添加此特定操作或 `Microsoft.OperationalInsights/*` 或 `*/write` 获得这些权限。
+> [!INFORMATION] 群集创建会触发资源分配和预配。 此操作可能需要几个小时才能完成。
+> 专用群集一旦预配就开始计费，不考虑数据引入情况；建议准备部署来更快预配群集并更快将其与工作区关联。 检查下列各项：
+> - 确定要关联到群集的初始工作区列表
+> - 你有权访问专用于该群集的订阅和所有要关联的工作区
 
 **CLI**
 ```azurecli
@@ -202,7 +198,7 @@ principalId GUID 是托管标识服务在创建群集时生成的。
 
 ## <a name="link-a-workspace-to-a-cluster"></a>将工作区链接到群集
 
-当 Log Analytics 工作区链接到专用群集时，引入到工作区的新数据将路由到新群集，而现有数据仍保留在现有群集上。 如果使用客户管理的密钥 (CMK) 加密专用群集，则只有新数据使用该密钥进行加密。 系统分离了这种差异，因此你可以像往常一样查询工作区，而系统在后台执行跨群集查询。
+当 Log Analytics 工作区关联到专用群集后，引入该工作区的新数据将路由到新群集，而现有数据保留在现有群集上。 如果使用客户管理的密钥 (CMK) 加密专用群集，则只有新数据使用该密钥进行加密。 系统分离了这种差异，因此你可以像往常一样查询工作区，而系统在后台执行跨群集查询。
 
 一个群集最多可以链接到 1,000 个工作区。 链接的工作区与群集位于同一区域。 若要保护系统后端并避免数据碎片化，一个工作区每月链接到群集的次数不能超过两次。
 
@@ -580,7 +576,7 @@ Authorization: Bearer <token>
 
 - 当前不支持将群集移到另一个资源组或订阅。
 
-- 群集更新不应在同一个操作中同时包含标识和密钥标识符详细信息。 如果两者都需要更新，则应在两次连续操作中进行更新。
+- 群集更新不应在同一个操作中同时包含标识和密钥标识符详细信息。 如果需要对两者进行更新，则更新应为两个连续操作。
 
 - 当前不能在中国使用密码箱。 
 
