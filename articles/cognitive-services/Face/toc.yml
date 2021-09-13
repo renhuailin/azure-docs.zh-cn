@@ -36,19 +36,6 @@ items:
         href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
       - name: 迁移人脸数据
         href: Face-API-How-to-Topics/how-to-migrate-face-data.md
-      - name: 使用人脸容器
-        items:
-          - name: 容器概述
-            href: ../cognitive-services-container-support.md?context=%2fazure%2fcognitive-services%2fface%2fcontext%2fcontext
-          - name: 安装和运行容器
-            href: face-how-to-install-containers.md
-          - name: 配置容器
-            href: face-resource-container-config.md
-          - name: 使用容器实例
-            href: ../containers/azure-container-instance-recipe.md?context=%2fazure%2fcognitive-services%2fface%2fcontext%2fcontext
-          - name: 所有认知服务容器文档
-            href: ../containers/index.yml
-            maintainContext: true
       - name: 企业就绪情况
         items:
           - name: 设置虚拟网络

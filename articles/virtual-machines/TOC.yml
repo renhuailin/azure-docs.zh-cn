@@ -1208,10 +1208,8 @@
               href: ../backup/restore-managed-disks.md?context=/azure/virtual-machines/context/context
         - name: 托管磁盘的备份和灾难恢复
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-        - name: 拍摄磁盘快照 - CLI
-          href: ./linux/snapshot-copy-managed-disk.md
-        - name: 拍摄磁盘快照 - PowerShell
-          href: ./windows/snapshot-copy-managed-disk.md
+        - name: 拍摄磁盘快照
+          href: snapshot-copy-managed-disk.md
         - name: 备份非托管磁盘
           href: ./linux/incremental-snapshots.md
         - name: 非托管磁盘的备份和灾难恢复
@@ -1759,7 +1757,7 @@
                 - name: 自定义字段
                   displayName: 'Data sources, log Analytics'
                   href: ../azure-monitor/logs/custom-fields.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: Log Analytics VM 扩展
               href: ../azure-monitor/visualize/vmext-troubleshoot.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
