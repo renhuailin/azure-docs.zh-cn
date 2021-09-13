@@ -107,7 +107,7 @@
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/hybridcompute/mgmt/2020-08-02/hybridcompute'
     - name: Java
       href: /java/api/overview/azure/compute/resourcemanagement
-    - name: Javascript
+    - name: JavaScript
       href: /javascript/api/%40azure/arm-hybridcompute
     - name: Python
       href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-hybridcompute/2.0.0/index.html'

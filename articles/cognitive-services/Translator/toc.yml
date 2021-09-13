@@ -70,10 +70,10 @@
           href: tutorial-build-flask-app-translation-synthesis.md
     - name: 参考
       items:
-        - name: 文本翻译器 REST API
-          href: reference/rest-api-guide.md
         - name: v3 翻译器参考
           href: reference/v3-0-reference.md
+        - name: 文本翻译器 REST API
+          href: reference/rest-api-guide.md
         - name: Languages
           href: reference/v3-0-languages.md
         - name: Translate

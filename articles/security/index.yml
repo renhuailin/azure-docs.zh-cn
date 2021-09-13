@@ -27,7 +27,7 @@ highlightedContent:
       url: ./benchmarks/introduction.md
 conceptualContent:
   items:
-    - title: 基础知识
+    - title: 基础
       links:
         - url: ./fundamentals/overview.md
           itemType: overview
@@ -147,7 +147,7 @@ conceptualContent:
         - url: ../sentinel/quickstart-onboard.md
           itemType: quickstart
           text: 载入 Azure Sentinel
-        - url: /azure/sentinel/get-visibility
+        - url: ../sentinel/get-visibility.md
           itemType: quickstart
           text: Azure Sentinel 入门
       footerLink:

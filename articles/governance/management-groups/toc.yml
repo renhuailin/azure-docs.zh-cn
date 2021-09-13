@@ -50,6 +50,9 @@
       href: ./manage.md
     - name: 保护资源层次结构
       href: ./how-to/protect-resource-hierarchy.md
+- name: 疑难解答
+  displayName: 'errors, violation'
+  href: ./troubleshoot/general.md
 - name: 参考
   items:
     - name: Azure CLI
