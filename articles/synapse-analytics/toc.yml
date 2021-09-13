@@ -281,7 +281,7 @@ items:
             items:
               - name: 概述
                 href: ./sql-data-warehouse/design-elt-data-loading.md?context=/azure/synapse-analytics/context/context
-              - name: 最佳实践
+              - name: 最佳做法
                 href: sql/data-loading-best-practices.md
               - name: 列存储压缩
                 href: sql/data-load-columnstore-compression.md
@@ -756,7 +756,7 @@ items:
               - name: 数据流概述
                 href: concepts-data-flow-overview.md
               - name: 调试模式
-                href: ../data-factory/concepts-data-flow-debug-mode.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                href: ../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&tabs=synapse-analytics
               - name: 架构偏差
                 href: ../data-factory/concepts-data-flow-schema-drift.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: 列模式
@@ -996,7 +996,7 @@ items:
               - name: 使用 Delete 活动删除文件
                 href: ../data-factory/delete-activity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: 复制数据工具
-                href: ../data-factory/copy-data-tool.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                href: ../data-factory/copy-data-tool.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&tabs=synapse-analytics
               - name: 格式和压缩支持
                 href: ../data-factory/supported-file-formats-and-compression-codecs.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: 复制活动性能
@@ -1171,7 +1171,7 @@ items:
               - name: 持续集成和部署
                 href: ../data-factory/ci-cd-github-troubleshoot-guide.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: 安全性和访问控制
-                href: ../data-factory/security-and-access-control-troubleshoot-guide.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                href: ../data-factory/security-and-access-control-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&tabs=synapse-analytics
               - name: 自承载集成运行时故障排除
                 href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
   - name: 机器学习

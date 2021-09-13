@@ -28,18 +28,6 @@ items:
             href: tutorial-data-sources-readiness.md
           - name: 大规模进行 Azure Purview MSI 配置
             href: tutorial-msi-configuration.md
-      - name: 初学者工具包
-        items:
-          - name: 扫描数据
-            href: tutorial-scan-data.md
-          - name: 导航主页和搜索
-            href: tutorial-asset-search.md
-          - name: 浏览资产和查看世系
-            href: tutorial-browse-and-view-lineage.md
-          - name: 探索资源集、资产、架构和分类
-            href: tutorial-schemas-and-classifications.md
-          - name: 创建术语表术语
-            href: tutorial-import-create-glossary-terms.md
       - name: 注册和扫描本地 SQL Server
         href: register-scan-on-premises-sql-server.md
       - name: 调用目录的 REST API

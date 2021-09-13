@@ -121,7 +121,7 @@ additionalContent:
           links:
             - url: ./common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               text: 使用 AzCopy 命令行工具
-            - url: ./blobs/storage-quickstart-blobs-storage-explorer.md
+            - url: ./blobs/quickstart-storage-explorer.md
               text: 使用基于 Azure 存储资源管理器 GUI 的工具
         - title: 控制成本
           links:

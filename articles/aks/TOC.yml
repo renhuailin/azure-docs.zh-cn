@@ -67,7 +67,7 @@
       href: concepts-scale.md
     - name: 节点自动修复
       href: node-auto-repair.md
-    - name: 最佳实践
+    - name: 最佳做法
       items:
         - name: 概述
           href: best-practices.md
@@ -125,10 +125,10 @@
           href: /azure/developer/java/migration/migrate-jboss-eap-to-wildfly-on-azure-kubernetes-service
           maintainContext: false
         - name: Java Web 应用容器化和迁移
-          href: /azure/migrate/tutorial-app-containerization-java-kubernetes
+          href: ../migrate/tutorial-app-containerization-java-kubernetes.md
           maintainContext: false
         - name: ASP.NET 应用容器化和迁移
-          href: /azure/migrate/tutorial-app-containerization-aspnet-kubernetes
+          href: ../migrate/tutorial-app-containerization-aspnet-kubernetes.md
           maintainContext: false
     - name: 受支持的 Kubernetes 版本
       href: supported-kubernetes-versions.md

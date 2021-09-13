@@ -51,7 +51,7 @@
                 - name: 创建区域冗余的公共标准负载均衡器 (CLI)
                   href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
             - name: 跨可用性区域对 VM 进行负载均衡
-              href: ../load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal.md
+              href: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
               items:
                 - name: 使用 Azure 跨可用性区域对 VM 进行负载均衡 (CLI)
                   href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md

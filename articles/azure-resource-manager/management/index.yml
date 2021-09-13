@@ -10,12 +10,12 @@ metadata:
   author: tfitzmac
   ms.author: tomfitz
   ms.date: 01/02/2020
-  ms.openlocfilehash: dba09c46a26b8daf50df546bd38d1aa58868ece3
-  ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+  ms.openlocfilehash: 61731369cabc387cb9d11efaf50901b791d30546
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/19/2021
-  ms.locfileid: "107726549"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124760548"
 landingContent:
 - title: 关于 Azure 资源管理器
   linkLists:
@@ -79,8 +79,6 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 查看活动日志
-      url: view-activity-logs.md
     - text: 请求限制
       url: request-limits-and-throttling.md
     - text: 异步操作
