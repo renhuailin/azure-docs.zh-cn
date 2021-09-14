@@ -2,14 +2,14 @@
 title: 备份 Azure Database for PostgreSQL
 description: 了解具有长期保留功能的 Azure Database for PostgreSQL 备份（预览版）
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 09/01/2021
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 8c3540ee686eb69304f95e31126a1a29a48aeea8
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: ac7790cd823bbca4ca7580bc5b3c5edee6f45f96
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213896"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432677"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>具有长期保留功能的 Azure Database for PostgreSQL 备份（预览版）
 
@@ -306,6 +306,9 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 ### <a name="usererrormissingnetworksecuritypermissions"></a>UserErrorMissingNetworkSecurityPermissions
 
 通过在服务器视图中启用“允许访问 Azure 服务”标志来建立网络直通连接。 在服务器视图的“连接安全”窗格下，将“允许访问 Azure 服务”标志设置为“是”。
+
+>[!Note]
+>启用此标志之前，请确保将“拒绝公用网络访问”标志设置为“否”。 
 
 ![允许访问 Azure 服务](./media/backup-azure-database-postgresql/allow-access-to-azure-services.png)
 

@@ -11,16 +11,16 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: d8ddd49202faac6a9fc5ba34ac5b5e8e92d5b704
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f8d1d3cf8553c768bb2bee015be2f5995214fe62
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739228"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478709"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
-通过将 Azure IoT 中心与 Azure 事件网格进行集成，使你可以向其他服务发送事件通知，并触发下游流程。 将商业应用程序配置为侦听 IoT 中心事件，以便能够以可靠、可缩放且安全的方式对关键事件作出反应。  例如，生成一个应用程序来更新数据库、创建工作票证，并在每当有新的 IoT 设备注册到 IoT 中心时，发送一封电子邮件通知。
+通过将 Azure IoT 中心与 Azure 事件网格进行集成，使你可以向其他服务发送事件通知，并触发下游流程。 配置商业应用程序来侦听 IoT 中心事件，以便安全可靠地以可缩放方式响应关键事件。  例如，生成一个应用程序来更新数据库、创建工作票证，并在每当有新的 IoT 设备注册到 IoT 中心时，发送一封电子邮件通知。
 
 [Azure 事件网格](../event-grid/overview.md)是一种完全托管的事件路由服务，使用发布-订阅模型。 事件网格包含对 Azure 服务（如 [Azure Functions](../azure-functions/functions-overview.md) 和 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)）的内置支持，还可使用 Webhook 向非 Azure 服务传递事件警报。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
 
@@ -197,7 +197,7 @@ devices/{deviceId}
 
 只要设备发送遥测数据，设备到云的链接就保持打开状态。
 
-如果设备连接“闪烁”（意即设备频繁地连接和断开连接），则 IoT 中心不会发送每个连接状态，但会发布通过每隔 60 秒定期拍摄的快照获取的当前连接状态，直到“闪烁”停止。 接收具有不同序列号或不同连接状态事件的相同连接状态事件均意味着设备连接状态发生变化。
+如果频繁地连接和断开连接，则 IoT 中心不会发送每个连接状态，但会发布通过每隔 60 秒定期拍摄的快照获取的当前连接状态。 接收具有不同序列号或不同连接状态事件的相同连接状态事件均意味着设备连接状态发生变化。
 
 ## <a name="tips-for-consuming-events"></a>使用事件的提示
 

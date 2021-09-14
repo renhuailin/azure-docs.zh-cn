@@ -1,27 +1,23 @@
 ---
-title: 关于 ExpressRoute 和 Azure VPN 的 Azure 路由服务器（预览版）支持
+title: 关于 ExpressRoute 和 Azure VPN 的 Azure 路由服务器支持
 description: 了解 Azure 路由服务器如何与 ExpressRoute 和 Azure VPN 网关进行交互。
 services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: 6e588c7c0381c6825bcf75cbbe28a1dd6b865940
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa109544ce890c4a8fae4775010a722791fbe5a7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101679210"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426069"
 ---
-# <a name="about-azure-route-server-preview-support-for-expressroute-and-azure-vpn"></a>关于 ExpressRoute 和 Azure VPN 的 Azure 路由服务器（预览版）支持
+# <a name="about-azure-route-server-support-for-expressroute-and-azure-vpn"></a>关于 ExpressRoute 和 Azure VPN 的 Azure 路由服务器支持
 
 Azure 路由服务器不仅支持在 Azure 上运行的第三方网络虚拟设备 (NVA)，还支持与 ExpressRoute 和 Azure VPN 网关进行无缝集成。 无需在网关与 Azure 路由服务器之间配置或管理 BGP 对等互连。 通过简单的[配置更改](quickstart-configure-route-server-powershell.md#route-exchange)，就能在网关和 Azure 路由服务器之间启用路由交换。
 
-> [!IMPORTANT]
-> Azure 路由服务器（预览版）目前为公共预览版状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="how-does-it-work"></a>它是如何工作的？
 

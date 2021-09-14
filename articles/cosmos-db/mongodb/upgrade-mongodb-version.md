@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: a90a5d7ad7696844f735a1bed2f618846758fff3
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 2880bc5fc9c367a5ab3cb02db3e3d5901861d789
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035805"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439373"
 ---
 # <a name="upgrade-the-api-version-of-your-azure-cosmos-db-api-for-mongodb-account"></a>升级 Azure Cosmos DB API for MongoDB 帐户的 API 版本
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -62,6 +62,8 @@ ms.locfileid: "123035805"
 
 如果是从 3.2 版升级，你需要替换应用程序以及驱动程序中连接此数据库帐户的现有终结点。 只有使用新终结点的连接才能访问新 API 版本中的功能。 上一个 3.2 终结点的后缀应为 `.documents.azure.com`。
 
+从 3.2 升级到更高版本时，现在需要[复合索引](mongodb-indexing.md)才能对多个字段执行排序操作，以确保这些查询的稳定、高性能。 确保创建这些复合索引，以便你的多字段排序成功。 
+
 >[!Note]
 > 如果你的帐户是在主权云、政府云或受限制的 Azure 云中创建的，此终结点可能会略有不同。
 
@@ -102,6 +104,6 @@ ms.locfileid: "123035805"
 - 了解 [MongoDB 4.0 版支持和不支持的功能](feature-support-40.md)。
 - 了解 [MongoDB 版本 3.6 支持和不支持的功能](feature-support-36.md)。
 - 有关详细信息，请查看 [Mongo 3.6 版本功能](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
-- 正在尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
-    - 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
+- 尝试为迁移到 Azure Cosmos DB 进行容量规划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    - 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](../convert-vcore-to-request-unit.md) 
     - 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-capacity-planner.md)

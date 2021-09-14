@@ -1,14 +1,14 @@
 ---
 title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，用来确定如何对符合性进行管理和报告。
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 22838cd661e64d4a85debfb4c5ce556a142dc2c2
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: aa1dc5554924efa36d7f1ab8b9d7398a7a076852
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324855"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437033"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -107,14 +107,39 @@ Azure Policy 首先评估创建或更新资源的请求。 Azure Policy 会创�
 
 对于资源管理器模式，Audit 效果没有任何其他属性可用于策略定义的 then 条件。
 
-对于 `Microsoft.Kubernetes.Data` 的资源提供程序模式，Audit 效果具有以下 details 的附加子属性。
+对于 `Microsoft.Kubernetes.Data` 的资源提供程序模式，Audit 效果具有以下 details 的附加子属性。 新的策略定义或更新的策略定义需要使用 `templateInfo`，因为 `constraintTemplate` 已被弃用。
 
-- constraintTemplate（必选）
-  - 约束模板 CustomResourceDefinition (CRD) 定义新约束。 该模板定义 Rego 逻辑、约束架构和通过 Azure Policy 的值传递的约束参数。
-- constraint（必选）
+- templateInfo（必需）
+  - 无法与 `constraintTemplate` 一起使用。
+  - sourceType（必需）
+    - 定义约束模板的源类型。 允许的值：PublicURL 或 Base64Encoded。
+    - 如果 PublicURL，则与 `url` 属性配合，以提供约束模板的位置。 位置必须可公开访问。
+
+      > [!WARNING]
+      > 请勿在 `url` 或可能公开机密的任何其他内容中使用 SAS URI 或令牌。
+
+    - 如果是 Base64Encoded，则与 `content` 属性配合，以提供 base 64 编码的约束模板。 若要根据现有的 [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3 [约束模板](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)创建自定义定义，请参阅[基于约束模板创建策略定义](../how-to/extension-for-vscode.md)。
+- 约束选项（可选）
+  - 无法与 `templateInfo` 一起使用。
   - 约束模板的 CRD 实现。 使用通过值传递的参数，如 `{{ .Values.<valuename> }}`。 在下面的示例 2 中，这些值为 `{{ .Values.excludedNamespaces }}` 和 `{{ .Values.allowedContainerImagesRegex }}`。
+- 命名空间（可选）
+  - 要将策略评估限制为的 [Kubernetes 命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)的数组。
+  - 空值或缺失值会导致策略评估包括所有命名空间，但 excludedNamespaces 中定义的命名空间除外。
+- excludedNamespaces（必需）
+  - 要从策略评估中排除的 [Kubernetes 命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)的数组。
+- labelSelector（必需）
+  - 一个包含 matchLabels（对象）和 matchExpression（数组）属性的对象，用于指定要针对所提供[标签和选择器](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)的匹配策略评估包含哪些 Kubernetes 资源。  
+  - 空值或缺失值会导致策略评估包括所有标签和选择器，但 excludedNamespaces 中定义的命名空间除外。
+- apiGroups（使用 templateInfo 时需要）
+  - 包含要匹配的 [API 组](https://kubernetes.io/docs/reference/using-api/#api-groups)的数组。 空数组 (`[""]`) 是核心 API 组，而 `["*"]` 匹配所有 API 组。
+- kinds（使用 templateInfo 时需要）
+  - 一个数组，其中包含要将评估限制到的 Kubernetes 对象的[类型](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields)。
 - values（可选）
   - 定义要传递给约束的任何参数和值。 每个值都必须在约束模板 CRD 中存在。
+- constraintTemplate（已弃用）
+  - 无法与 `templateInfo` 一起使用。
+  - 创建或更新策略定义时必须替换为 `templateInfo`。
+  - 约束模板 CustomResourceDefinition (CRD) 定义新约束。 该模板定义 Rego 逻辑、约束架构和通过 Azure Policy 的值传递的约束参数。
 
 ### <a name="audit-example"></a>“审核”示例
 
@@ -126,18 +151,21 @@ Azure Policy 首先评估创建或更新资源的请求。 Azure Policy 会创�
 }
 ```
 
-示例 2：对 `Microsoft.Kubernetes.Data` 的资源提供程序模式使用 Audit 效果。 details 中的附加信息定义了要在 Kubernetes 中使用以限制允许的容器映像的约束模板和 CRD。
+示例 2：对 `Microsoft.Kubernetes.Data` 的资源提供程序模式使用 Audit 效果。 details.templateInfo 中的其他信息声明了 PublicURL 的使用，并将 `url` 设置为约束模板的位置，以在 Kubernetes 中用于限制允许的容器镜像。
 
 ```json
 "then": {
     "effect": "audit",
     "details": {
-        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
-        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "templateInfo": {
+            "sourceType": "PublicURL",
+            "url": "https://store.policy.core.windows.net/kubernetes/container-allowed-images/v1/template.yaml",
+        },
         "values": {
-            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
-            "excludedNamespaces": "[parameters('excludedNamespaces')]"
-        }
+            "imageRegex": "[parameters('allowedContainerImagesRegex')]"
+        },
+        "apiGroups": [""],
+        "kinds": ["Pod"]
     }
 }
 ```
@@ -172,12 +200,12 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
   - ResourceGroup 将限制在 if 条件资源的资源组或 ResourceGroupName 中指定的资源组。
   - 对于 Subscription，则查询全部订阅以获取相关资源。
   - 默认值是 ResourceGroup。
-- EvaluationDelay（可选）
-  - 指定何时应评估相关资源是否存在。 延迟仅用于作为创建或更新资源请求的结果的评估。
+- **EvaluationDelay**（可选）
+  - 指定何时应该评估相关资源的存在性。 延迟仅用于作为创建或更新资源请求的结果的评估。
   - 允许的值为 `AfterProvisioning`、`AfterProvisioningSuccess`、`AfterProvisioningFailure` 或 ISO 8601 持续时间（介于 10 到 360 分钟之间）。
   - AfterProvisioning 值会检查在策略规则的 IF 条件中进行评估的资源的预配结果。 `AfterProvisioning` 在完成预配后运行，与结果无关。 如果预配的时间超过 6 小时，则在确定 AfterProvisioning 评估延迟时，它会被视为失败。
   - 默认值为 `PT10M`（10 分钟）。
-  - 指定较长的评估延迟可能会导致资源的已记录符合性状态在下一个 [评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)之前不会更新。
+  - 指定较长的评估延迟可能会导致记录的资源合规性状态在下一次[评估触发](../how-to/get-compliance-data.md#evaluation-triggers)之前不会更新。
 - **ExistenceCondition**（可选）
   - 如果未指定，任何 **type** 的相关资源均满足此效果，并且不会触发审核。
   - 使用与 if 条件的策略规则相同的语言，但会分别针对每个相关资源进行评估。
@@ -229,14 +257,39 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 对于资源管理器模式，Deny 效果没有任何其他属性可用于策略定义的 then 条件。
 
-对于 `Microsoft.Kubernetes.Data` 的资源提供程序模式，Deny 效果具有以下 details 的附加子属性。
+对于 `Microsoft.Kubernetes.Data` 的资源提供程序模式，Deny 效果具有以下 details 的附加子属性。 新的策略定义或更新的策略定义需要使用 `templateInfo`，因为 `constraintTemplate` 已被弃用。
 
-- constraintTemplate（必选）
-  - 约束模板 CustomResourceDefinition (CRD) 定义新约束。 该模板定义 Rego 逻辑、约束架构和通过 Azure Policy 的值传递的约束参数。
-- constraint（必选）
+- templateInfo（必需）
+  - 无法与 `constraintTemplate` 一起使用。
+  - sourceType（必需）
+    - 定义约束模板的源类型。 允许的值：PublicURL 或 Base64Encoded。
+    - 如果 PublicURL，则与 `url` 属性配合，以提供约束模板的位置。 位置必须可公开访问。
+
+      > [!WARNING]
+      > 请勿在 `url` 或可能公开机密的任何其他内容中使用 SAS URI 或令牌。
+
+    - 如果是 Base64Encoded，则与 `content` 属性配合，以提供 base 64 编码的约束模板。 若要根据现有的 [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3 [约束模板](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)创建自定义定义，请参阅[基于约束模板创建策略定义](../how-to/extension-for-vscode.md)。
+- 约束选项（可选）
+  - 无法与 `templateInfo` 一起使用。
   - 约束模板的 CRD 实现。 使用通过值传递的参数，如 `{{ .Values.<valuename> }}`。 在下面的示例 2 中，这些值为 `{{ .Values.excludedNamespaces }}` 和 `{{ .Values.allowedContainerImagesRegex }}`。
+- 命名空间（可选）
+  - 要将策略评估限制为的 [Kubernetes 命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)的数组。
+  - 空值或缺失值会导致策略评估包括所有命名空间，但 excludedNamespaces 中定义的命名空间除外。
+- excludedNamespaces（必需）
+  - 要从策略评估中排除的 [Kubernetes 命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)的数组。
+- labelSelector（必需）
+  - 一个包含 matchLabels（对象）和 matchExpression（数组）属性的对象，用于指定要针对所提供[标签和选择器](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)的匹配策略评估包含哪些 Kubernetes 资源。  
+  - 空值或缺失值会导致策略评估包括所有标签和选择器，但 excludedNamespaces 中定义的命名空间除外。
+- apiGroups（使用 templateInfo 时需要）
+  - 包含要匹配的 [API 组](https://kubernetes.io/docs/reference/using-api/#api-groups)的数组。 空数组 (`[""]`) 是核心 API 组，而 `["*"]` 匹配所有 API 组。
+- kinds（使用 templateInfo 时需要）
+  - 一个数组，其中包含要将评估限制到的 Kubernetes 对象的[类型](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields)。
 - values（可选）
   - 定义要传递给约束的任何参数和值。 每个值都必须在约束模板 CRD 中存在。
+- constraintTemplate（已弃用）
+  - 无法与 `templateInfo` 一起使用。
+  - 创建或更新策略定义时必须替换为 `templateInfo`。
+  - 约束模板 CustomResourceDefinition (CRD) 定义新约束。 该模板定义 Rego 逻辑、约束架构和通过 Azure Policy 的值传递的约束参数。 建议使用较新的 `templateInfo` 替换 `constraintTemplate`。
 
 ### <a name="deny-example"></a>“拒绝”示例
 
@@ -248,18 +301,21 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 }
 ```
 
-示例 2：对 `Microsoft.Kubernetes.Data` 的资源提供程序模式使用 Deny 效果。 details 中的附加信息定义了要在 Kubernetes 中使用以限制允许的容器映像的约束模板和 CRD。
+示例 2：对 `Microsoft.Kubernetes.Data` 的资源提供程序模式使用 Deny 效果。 details.templateInfo 中的其他信息声明了 PublicURL 的使用，并将 `url` 设置为约束模板的位置，以在 Kubernetes 中用于限制允许的容器镜像。
 
 ```json
 "then": {
     "effect": "deny",
     "details": {
-        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
-        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "templateInfo": {
+            "sourceType": "PublicURL",
+            "url": "https://store.policy.core.windows.net/kubernetes/container-allowed-images/v1/template.yaml",
+        },
         "values": {
-            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
-            "excludedNamespaces": "[parameters('excludedNamespaces')]"
-        }
+            "imageRegex": "[parameters('allowedContainerImagesRegex')]"
+        },
+        "apiGroups": [""],
+        "kinds": ["Pod"]
     }
 }
 ```
@@ -273,7 +329,7 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists 评估
 
-在资源提供程序处理创建或更新订阅或资源请求并返回成功状态代码时，DeployIfNotExists 会在可配置的延迟之后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。 部署持续时间取决于模板中包含资源的复杂性。
+当资源提供程序处理创建或更新订阅或资源请求并返回成功状态代码时，DeployIfNotExists 在可配置的延迟后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。 部署持续时间取决于模板中包含资源的复杂性。
 
 在评估周期中，具有与资源匹配的 DeployIfNotExists 效果的策略定义被标记为不合规，但不对该资源执行任何操作。 使用[修正任务](../how-to/remediate-resources.md)来修正现有不符合资源。
 
@@ -299,12 +355,12 @@ DeployIfNotExists 效果的“details”属性具有定义要匹配的相关资�
   - ResourceGroup 将限制在 if 条件资源的资源组或 ResourceGroupName 中指定的资源组。
   - 对于 Subscription，则查询全部订阅以获取相关资源。
   - 默认值是 ResourceGroup。
-- EvaluationDelay（可选）
-  - 指定何时应评估相关资源是否存在。 延迟仅用于作为创建或更新资源请求的结果的评估。
+- **EvaluationDelay**（可选）
+  - 指定何时应该评估相关资源的存在性。 延迟仅用于作为创建或更新资源请求的结果的评估。
   - 允许的值为 `AfterProvisioning`、`AfterProvisioningSuccess`、`AfterProvisioningFailure` 或 ISO 8601 持续时间（介于 0 到 360 分钟之间）。
   - AfterProvisioning 值会检查在策略规则的 IF 条件中进行评估的资源的预配结果。 `AfterProvisioning` 在完成预配后运行，与结果无关。 如果预配的时间超过 6 小时，则在确定 AfterProvisioning 评估延迟时，它会被视为失败。
   - 默认值为 `PT10M`（10 分钟）。
-  - 指定较长的评估延迟可能会导致资源的已记录符合性状态在下一个 [评估触发器](../how-to/get-compliance-data.md#evaluation-triggers)之前不会更新。
+  - 指定较长的评估延迟可能会导致记录的资源合规性状态在下一次[评估触发](../how-to/get-compliance-data.md#evaluation-triggers)之前不会更新。
 - **ExistenceCondition**（可选）
   - 如果未指定，任何 **type** 的相关资源均满足此效果，并且不会触发部署。
   - 使用与 if 条件的策略规则相同的语言，但会分别针对每个相关资源进行评估。
@@ -320,7 +376,7 @@ DeployIfNotExists 效果的“details”属性具有定义要匹配的相关资�
   - 默认值是 ResourceGroup。
 - Deployment（必选）
   - 该属性应包含完整的模板部署，因为它将传递给 `Microsoft.Resources/deployments` PUT API。 有关详细信息，请参阅[部署 REST API](/rest/api/resources/deployments)。
-  - 模板中的嵌套 `Microsoft.Resources/deployments` 应使用唯一名称，以避免多个策略评估之间发生争用。 父部署的名称可以通过 `[concat('NestedDeploymentName-', uniqueString(deployment().name))]` 用作嵌套部署名称的一部分。
+  - 模板内嵌套的 `Microsoft.Resources/deployments` 应使用唯一名称以避免多个策略评估之间发生争用。 父部署的名称可通过 `[concat('NestedDeploymentName-', uniqueString(deployment().name))]` 用作嵌套部署名称的一部分。
 
   > [!NOTE]
   > Deployment 属性中的所有函数都将作为模板（而不是策略）的组件进行评估。 此异常是将值从策略传递到模板的 parameters 属性。 本节中模板参数名称下的 value 用于执行此值传递操作（请参阅 DeployIfNotExists 示例中的 _fullDbName_）。

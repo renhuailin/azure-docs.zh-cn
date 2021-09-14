@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: d6d5b5bf1cba2ebb2def30b15f3a70dea91e5ff7
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 3b7316bf7d21a117c80eb49978a807b085db004b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272594"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432533"
 ---
 # <a name="design-your-private-link-setup"></a>设计专用链接设置
 
@@ -57,7 +57,7 @@ ms.locfileid: "123272594"
 不建议在生产环境中使用这种方法。
 
 ## <a name="control-how-private-links-apply-to-your-networks"></a>控制专用链接如何应用于网络
-专用链接访问模式（于 2021 年 8 月推出）使你能够控制专用链接如何影响网络流量。 这些设置可应用于 AMPLS 对象（以影响所有连接的网络）或连接该对象的特定网络。
+专用链接访问模式（于 2021 年 9 月推出）使你能够控制专用链接如何影响网络流量。 这些设置可应用于 AMPLS 对象（以影响所有连接的网络）或连接该对象的特定网络。
 
 选择适当的访问模式会对网络流量产生不利影响。 可以分别为引入和查询设置这些模式中的每一种：
 
@@ -66,8 +66,11 @@ ms.locfileid: "123272594"
 * 开放式 - 允许 VNet 访问专用链接资源和不在 AMPLS 中的资源（如果这些资源[接受来自公共网络的流量](./private-link-design.md#control-network-access-to-your-resources)）。 虽然开放式访问模式不能防止数据外泄，但它仍具有专用链接的其他好处：到专用链接资源的流量通过专用终结点发送、经过验证并通过 Microsoft 主干发送。 开放式模式适用于混合工作模式（公开访问某些资源，通过专用链接访问其他资源），或适用于逐步加入的过程。
 ![AMPLS“开放式”访问模式的示意图](./media/private-link-security/ampls-open-access-mode.png)为引入和查询分别设置各访问模式。 例如，可以为引入设置“仅专用”模式，为查询设置“开放式”模式。
 
+
+选择访问模式时请小心。 如果使用“仅专用”访问模式，则将阻止流向以下资源的流量：在所有共享同一 DNS 的网络中不属于 AMPLS，无论订阅或租户如何（Log Analytics 引入请求除外，在下文中有所介绍）。 如果无法将所有 Azure Monitor 资源添加到 AMPLS，请首先添加选定资源并应用开放访问模式。 只有在将所有 Azure Monitor 资源添加到 AMPLS 后，才能切换到“仅专用”模式以获得最大安全性。
+
 > [!NOTE]
-> 选择访问模式时请谨慎操作：无论订阅或租户如何，使用“仅专用”访问模式都将阻止共享同一 DNS 的所有网络中访问非 AMPLS 资源的流量。 如果无法将所有 Azure Monitor 资源添加到 AMPLS，我们建议使用“开放式”模式并将精选资源添加到 AMPLS。 只有在将所有 Azure Monitor 资源添加到 AMPLS 后，才能切换到“仅专用”模式以获得最大安全性。
+> Log Analytics 引入操作使用资源特定的终结点。 因此，它不遵循 AMPLS 访问模式。 通过专用链接引入到 AMPLS 中的工作区，而如果引入到 AMPLS 之外的工作区，则使用默认公共终结点。 若要确保引入请求无法访问 AMPLS 之外的资源，请阻止网络访问公共终结点。
 
 ### <a name="setting-access-modes-for-specific-networks"></a>设置特定网络的访问模式
 对 AMPLS 资源设置的访问模式会影响所有网络，但你可以替代特定网络的这些设置。

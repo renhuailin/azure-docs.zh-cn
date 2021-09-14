@@ -4,13 +4,13 @@ metadata:
   description: 本文介绍有关如何使用 Azure 备份服务备份 SAP HANA 数据库的常见问题解答。
   ms.topic: article
   ms.service: backup
-  ms.date: 06/23/2021
-  ms.openlocfilehash: 5983508897520ad6fe5b91df3bd6abf26244d09f
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 09/01/2021
+  ms.openlocfilehash: f216b4b9015f90a388ecbea04e514cbaf1f196d6
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253652"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123426312"
 title: 常见问题解答 - 备份 Azure VM 上的 SAP HANA 数据库
 summary: 本文介绍有关如何使用 Azure 备份服务备份 SAP HANA 数据库的常见问题解答。
 sections:
@@ -144,6 +144,11 @@ sections:
 
 
       然后，在节点 1 上再次触发完整备份，并在该备份完成后启动日志备份。
+
+
+      >[!Note]
+
+      >使用自定义备份用户作为输入来[运行预注册脚本](/azure/backup/tutorial-backup-sap-hana-db#prerequisites)有助于更好地管理 HSR 备份。 原因是，这样确保了 HSR 设置的两个节点具有相同的备份密钥，从而减少了备份同步和失败问题。
 - name: 还原
   questions:
   - question: >

@@ -8,23 +8,23 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6b4f0913813372f6f69f30f98f6969b4f6d66418
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 824f1f06171e83381b46a6df99d70e3003f08f7d
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835695"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473039"
 ---
 # <a name="create-and-manage-collections-in-azure-purview"></a>在 Azure Purview 中创建和管理集合
 
 > [!NOTE]
 > 本指南目前仅适用于在 2021 年 8 月 18 日或之后创建的 Purview 实例。 在 8 月 18 日之前创建的实例可以创建集合，但不可通过这些集合管理权限。 有关为 8 月 18 日之前创建的 Purview 实例创建集合的信息，请参阅页面底部的[旧版集合指南](#legacy-collection-guide)。
 >
-> 在接下来的几周内，所有旧帐户都会被自动升级。 升级 Purview 帐户时，你将收到电子邮件通知。 帐户升级时，系统会将分配的所有权限自动重新部署到根集合。
+> 在接下来的几周内，所有旧帐户都会被自动升级。 升级 Purview 帐户时，你将收到电子邮件通知。 有关升级帐户后将发生的更改的信息，请参阅[升级帐户指南](concept-account-upgrade.md)。
 
 Purview 中的集合可用于按业务的流程组织资产和源，但它们也是在整个 Purview 中用于管理访问权限的工具。 本指南将指导你创建和管理这些集合，并介绍注册源以及将资产添加到集合的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -124,7 +124,7 @@ Purview 中的集合可用于按业务的流程组织资产和源，但它们也
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/select-role-assignments.png" alt-text="Purview Studio 集合窗口的屏幕截图，其中突出显示了“角色分配”选项卡。" border="true":::
 
-1. 选择“编辑角色分配”或人像图标，编辑每个角色成员。
+1. 选择“编辑角色分配”或人像图标以编辑每个角色成员。
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/edit-role-assignments.png" alt-text="Purview Studio 集合窗口的屏幕截图，其中选择了“编辑角色分配”下拉列表。" border="true":::
 

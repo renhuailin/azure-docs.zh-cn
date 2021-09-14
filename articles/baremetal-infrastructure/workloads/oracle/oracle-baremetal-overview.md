@@ -3,21 +3,21 @@ title: 什么是适用于 Oracle 的 BareMetal 基础结构？
 description: 了解 BareMetal 基础结构为 Oracle 工作负载提供的功能。
 ms.topic: conceptual
 ms.subservice: baremetal-oracle
-ms.date: 04/14/2021
-ms.openlocfilehash: f3ecb1fbcad04455515408e4aadadfb2cef3cf9a
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.date: 09/03/2021
+ms.openlocfilehash: e74d1a3e3b6cb1b2cd0b99927a57a88117715e7b
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578578"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542433"
 ---
 # <a name="what-is-baremetal-infrastructure-for-oracle"></a>什么是适用于 Oracle 的 BareMetal 基础结构？
 
-本文概述 BareMetal 基础结构为 Oracle 工作负载提供的功能。
+在本文中，我们将概述 BareMetal 基础结构为 Oracle 工作负载提供的功能。
 
-适用于 Oracle 的 BareMetal 基础结构基于 Oracle 认证的统一计算系统 (UCS) 和 FLexPod。 FlexPod 平台提供预验证的存储、网络和服务器技术。 它提供 NFS 存储，从而使用 DirectNFS 协议提供集成。 BareMetal 服务器专用于你，并且 BareMetal 实例上没有任何虚拟机监控程序。 
+适用于 Oracle 的 BareMetal 基础结构基于 Oracle 认证的统一计算系统 (UCS) 和 FLexPod。 FlexPod 平台提供预验证的存储、网络和服务器技术。 该平台提供 NetApp 网络文件系统 (NFS) 存储，并使用 DirectNFS 协议提供集成。 BareMetal 服务器专用于你，并且 BareMetal 实例上没有任何虚拟机监控程序。 
 
-这些实例用于运行需要 Oracle 工作负载的任务关键型应用程序。 BareMetal 实例为在 Azure 虚拟机 (VM) 中运行的应用程序提供低延迟 (0.35 ms)。 BareMetal 提供共享存储磁盘，并支持与专门的专用互连网络进行节点到节点通信所需的多播。 
+这些实例用于运行需要 Oracle 工作负载的任务关键型应用程序。 BareMetal 实例为在 Azure 虚拟机 (VM) 中运行的应用程序提供低延迟 (0.35 ms)。 BareMetal 提供共享存储。 BareMetal 还支持与专门的专用互连网络进行节点到节点通信所需的多播。 
 
 适用于 Oracle 的 BareMetal 基础结构的其他功能包括：
 

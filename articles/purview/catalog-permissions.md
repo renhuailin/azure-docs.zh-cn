@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 06ed84bf63f79087efef33b1061e21b61315e78e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 2d9b9aaa6cfd0236a6bc990da5b3ec0870adcd87
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969445"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478187"
 ---
 # <a name="access-control-in-azure-purview"></a>Azure Purview 中的访问控制
 
@@ -21,7 +21,7 @@ Azure Purview 使用集合来组织和管理对其源、资产和其他项目的
 > [!NOTE]
 > 目前，本文中的信息仅适用于在 2021 年 8 月 18 日当天或之后创建的 Purview 帐户。 在 8 月 18 日之前创建的实例可以创建集合，但不会通过这些集合管理权限。 有关对 8 月 18 日之前创建的 Purview 实例进行访问控制的信息，请参阅页面底部的[旧版权限指南](#legacy-permission-guide)。
 >
-> 所有旧帐户都将在几周内自动升级。 升级 Purview 帐户时，你将收到电子邮件通知。 升级帐户时，所有分配的权限将自动重新部署到根集合。 此时，应通过集合而不是访问控制 (IAM) 来管理权限。 IAM 权限将不再适用于 Purview 项目。
+> 所有旧帐户都将在几周内自动升级。 升级 Purview 帐户时，你将收到电子邮件通知。 有关升级帐户后将发生的更改的信息，请参阅[升级帐户指南](concept-account-upgrade.md)。
 
 ## <a name="collections"></a>集合
 

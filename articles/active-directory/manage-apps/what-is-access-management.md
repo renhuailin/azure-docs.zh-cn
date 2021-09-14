@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/16/2017
+ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 2dc66adcce209b29579bb88184272fd2bda1353c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 584437c13168303630585c67ee853b135a2c09a5
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738750"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435215"
 ---
 # <a name="managing-access-to-apps"></a>管理对应用的访问
 
@@ -40,13 +40,20 @@ Azure AD 的应用程序分配着重于两种主要分配模式：
 
 ### <a name="requiring-user-assignment-for-an-app"></a>要求为应用进行用户分配
 
-对于某些类型的应用程序，你可以选择[要求将用户分配给应用程序](assign-user-or-group-access-portal.md#configure-an-application-to-require-user-assignment)。 这样一来，可以防止除了你明确分配给应用程序的用户以外的人登录。 以下类型的应用程序支持此选项：
+对于某些类型的应用程序，你可以选择要求将用户分配给应用程序。 这样一来，可以防止除了你明确分配给应用程序的用户以外的人登录。 以下类型的应用程序支持此选项：
 
 * 经配置后可以使用基于 SAML 的身份验证进行联合单一登录 (SSO) 的应用程序
 * 使用 Azure Active Directory 预身份验证的应用程序代理应用程序
 * 在 Azure AD 应用程序平台上生成且使用 OAuth 2.0 / OpenID Connect 身份验证的应用程序（前提是用户或管理员已认可该应用程序）。某些企业应用程序针对允许登录的用户进行了额外的控制。
 
-当不需要用户分配时，未分配的用户在其“我的应用”上看不到应用，但他们仍然可以登录到应用程序本身（也称为 SP 启动的登录），或者他们可以在应用程序的“属性”页（也称为 IDP 启动的登录）中使用“用户访问 URL” 。
+需要进行用户分配时，只有（通过直接用户分配或基于组成员身份）分配到应用程序的用户才能登录。 他们可以在“我的应用”页上或者使用直接链接来访问该应用。
+
+当不需要用户分配时，未分配的用户在其“我的应用”上看不到应用，但他们仍然可以登录到应用程序本身（也称为 SP 启动的登录），或者他们可以在应用程序的“属性”页（也称为 IDP 启动的登录）中使用“用户访问 URL”。 
+
+应用程序是否显示在“我的应用”上不受此设置的影响。 将某个用户或组分配到应用程序后，应用程序会显示在用户的“我的应用”访问面板上。
+
+> [!NOTE]
+> 当应用程序要求分配时，不允许用户同意该应用程序。 即使允许用户同意该应用，也是如此。 请务必对要求分配的应用[授予租户范围的管理员同意](../manage-apps/grant-admin-consent.md)。
 
 对于某些应用程序，要求用户分配的选项在应用程序的属性中不可用。 在这些情况下，可以使用 PowerShell 在服务主体上设置 appRoleAssignmentRequired 属性。
 

@@ -10,12 +10,12 @@ ms.date: 08/31/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: ed7a8fb4420108ea76e21e30f14897e5857c0445
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 01ea434081b83065f510a246591af2d05a8d7276
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273188"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469583"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可变的存储来存储业务关键型 Blob 数据
 
@@ -162,6 +162,19 @@ Azure 存储 Blob 清单提供存储帐户中的容器以及这些容器中的 B
 创建、修改或删除针对 Blob 版本的基于时间的保留策略或法定保留会产生写入事务费用。
 
 如果你不支付帐单，而你的帐户中有一个基于时间的保留策略已生效，则会根据你与 Microsoft 签订的合同中条款和条件的规定应用一般的数据保留策略。 有关一般信息，请参阅 [Microsoft 数据管理](https://www.microsoft.com/trust-center/privacy/data-management)。
+
+## <a name="feature-support"></a>功能支持
+
+此表显示了你的帐户如何支持此功能，以及当你启用某些功能时对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![是](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup> | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
+
+<sup>2</sup>    功能在预览级别受支持。
 
 ## <a name="next-steps"></a>后续步骤
 

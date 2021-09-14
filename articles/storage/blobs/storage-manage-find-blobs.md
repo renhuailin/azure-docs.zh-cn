@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 95262d66be9300cc1c88ec80e3da4a5367705c76
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: a03cf3039d996c79b3a6ada3394acae5e6459fa1
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969410"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470519"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>通过 Blob 索引标记管理和查找 Azure Blob 数据
 
@@ -306,18 +306,18 @@ Blob 索引标记是 Blob 数据的子资源。 具有读取或写入 Blob 的�
 
 按存储帐户中每月索引标记平均数收取费用。 索引引擎不会产生任何费用。 设置 Blob 标记、获取 Blob 标记和查找 Blob 标记的请求是按当前各自的事务速率收费的。 请注意，在执行按标记查找 Blob 事务时，使用的列表事务数等于请求中的子句数。 例如，查询 (StoreID = 100) 是一个列表事务。  查询 (StoreID = 100 AND SKU = 10010) 是两个列表事务。 请查看[块 blob 定价了解详细信息](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="regional-availability-and-storage-account-support"></a>区域可用性和存储帐户支持
+<a id="regional-availability-and-storage-account-support"></a>
 
-Blob 索引标记仅在禁用了分层命名空间 (HNS) 的常规用途 v2 帐户上可用。 不支持常规用途 v1 帐户，但你可以将任何常规用途 v1 帐户升级到常规用途 v2 帐户。
+## <a name="feature-support"></a>功能支持
 
-高级存储帐户不支持索引标记。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
+此表显示了你的帐户如何支持此功能，以及当你启用某些功能时对支持的影响。 
 
-Blob 索引标记目前在所有公共区域提供。
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) | 
+| 高级块 blob          | ![否](../media/icons/no-icon.png)|![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
 
-若要开始，请参阅[使用 Blob 索引标记管理和查找数据](storage-blob-index-how-to.md)。
-
-> [!IMPORTANT]
-> 请查看本文的[条件和已知问题](#conditions-and-known-issues)部分。
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
 
 ## <a name="conditions-and-known-issues"></a>条件和已知问题
 

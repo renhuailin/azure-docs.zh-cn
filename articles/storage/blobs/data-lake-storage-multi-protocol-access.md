@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e3997fc215637175165402a926bffc6ac8d02771
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f13c6c48ed8f6f0eaa6fcfed3a43fa5f4064e6e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77914852"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123481121"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage 的多协议访问
 
@@ -28,7 +28,7 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 > [!NOTE]
 > Data Lake Storage 多协议访问已公开发布，在所有区域提供。 多协议访问启用的某些 Azure 服务或 Blob 存储功能仍为预览版。  这些文章汇总了对 Blob 存储功能和 Azure 服务集成的当前支持。 
 >
-> [Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)
+> [Azure 存储帐户中的 Blob 存储功能支持](storage-feature-support-in-storage-accounts.md)
 >
 >[支持 Azure Data Lake Storage Gen2 的 Azure 服务](data-lake-storage-supported-azure-services.md)
 
@@ -42,7 +42,7 @@ Blob API 和 Data Lake Storage Gen2 API 可以对具有分层命名空间的存�
 
 ## <a name="see-also"></a>另请参阅
 
-- [Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)
+- [Azure 存储帐户中的 Blob 存储功能支持](storage-feature-support-in-storage-accounts.md)
 - [支持 Azure Data Lake Storage Gen2 的 Azure 服务](data-lake-storage-supported-azure-services.md)
 - [支持 Azure Data Lake Storage Gen2 的开源平台](data-lake-storage-supported-open-source-platforms.md)
 - [Azure Data Lake Storage Gen2 的已知问题](data-lake-storage-known-issues.md)

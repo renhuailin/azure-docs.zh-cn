@@ -9,13 +9,13 @@ ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: chadam
-ms.date: 11/06/2020
-ms.openlocfilehash: f330fb4886a04a1bc861b63e5dd70e3ba1286351
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/07/2021
+ms.openlocfilehash: afca22d3a0775e470becfbd31a2f67d99552938d
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110794884"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541658"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>迁移概述：将 SQL Server 迁移到 Azure VM 上的 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -65,7 +65,7 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种[计算机
 | **迁移策略** | **说明** | **使用时机** |
 | --- | --- | --- |
 | **直接迁移** | 使用“直接迁移”迁移策略，是将整个物理或虚拟 SQL Server 从其当前位置都移动到 Azure VM 上的 SQL Server 实例，而不对操作系统或 SQL Server 版本进行任何更改。 要使用直接迁移完成迁移，请参阅 [Azure Migrate](../../../migrate/migrate-services-overview.md)。 <br /><br /> 源服务器保持联机并保留服务请求，同时源服务器和目标服务器同步数据，从而实现几乎无缝的迁移。 | 适用于单个迁移乃至非常大规模的迁移，甚至适用于数据中心退出等方案。 <br /><br /> 只需对用户 SQL 数据库或应用程序代码进行少许更改，甚至不需要更改，从而更快实现整体迁移。 <br /><br />迁移商业智能服务（如 [SSIS](/sql/integration-services/sql-server-integration-services)、[SSRS](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) 和 [SSAS](/analysis-services/analysis-services-overview)）无需执行额外的步骤。 |
-|**迁移** | 在想要升级目标 SQL Server 和/或操作系统版本时，可使用迁移策略。 <br /> <br /> 从 Azure 市场中选择一个 Azure VM，或从与源 SQL Server 版本匹配的已准备 SQL Server 映像中选择一个。 | 适用于需要或想要使用 SQL Server 较新版本中提供的功能时，或者需要升级不再支持的旧 SQL Server 和/或操作系统版本时。  <br /> <br /> 可能需要对应用程序或用户数据库进行一些更改，才能支持 SQL Server 升级。 <br /><br />如果在迁移范围内迁移[商业智能](#business-intelligence) 服务，可能需要考虑一些其他事项。 |
+|**迁移** | 在想要升级目标 SQL Server 和/或操作系统版本时，可使用迁移策略。 <br /> <br /> 从 Azure 市场中选择一个 Azure VM，或从与源 SQL Server 版本匹配的已准备 SQL Server 映像中选择一个。 <br/> <br/> 使用[适用于 Azure Data Studio 的 Azure SQL 迁移扩展](../../../dms/migration-using-azure-data-studio.md)将 SQL Server 数据库迁移到 Azure 虚拟机上的 SQL Server，并最大程度缩短停机时间。 | 适用于需要或想要使用 SQL Server 较新版本中提供的功能时，或者需要升级不再支持的旧 SQL Server 和/或操作系统版本时。  <br /> <br /> 可能需要对应用程序或用户数据库进行一些更改，才能支持 SQL Server 升级。 <br /><br />如果在迁移范围内迁移[商业智能](#business-intelligence) 服务，可能需要考虑一些其他事项。 |
 
 
 ## <a name="lift-and-shift"></a>直接迁移  
@@ -91,6 +91,7 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种[计算机
 
 |**方法** | **最低源版本** | **最低目标版本** | **源备份大小约束** | **说明** |
 | --- | --- | --- | --- | --- |
+| **[适用于 Azure Data Studio 的 Azure SQL 迁移扩展](../../../dms/migration-using-azure-data-studio.md)** | SQL Server 2005 | SQL Server 2008 | [Azure VM 存储限制](../../../index.yml) |  这是适用于 Azure Data Studio 的 Azure SQL 迁移扩展中的一个易于使用的向导式扩展，用于将 SQL Server 数据库迁移到 Azure 虚拟机上的 SQL Server。 使用压缩来最大程度地减小传输的备份大小。 <br /><br /> 适用于 Azure Data Studio 的 Azure SQL 迁移扩展在一个简单的用户界面中提供了评估和迁移功能。  |
 | **[备份到文件](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM 存储限制](../../../index.yml) |  这是一项简单且经过严格测试的技术，适用于跨计算机移动数据库。 使用压缩来最大程度地减小传输的备份大小。 <br /><br /> 自动化和脚本：[Transact-SQL (T-SQL)](/sql/t-sql/statements/backup-transact-sql) 和[从 AzCopy 迁移到 Blob 存储](../../../storage/common/storage-use-azcopy-v10.md)  |
 | **[将备份迁移到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)** | SQL Server 2012 SP1 CU2 | SQL Server 2012 SP1 CU2| 对于 SQL Server 2016 为 12.8 TB；其他情况下为 1 TB | 另一种方法是使用 Azure 存储将备份文件移至 VM。 使用压缩来最大程度地减小传输的备份大小。 <br /><br /> 自动化和脚本：[T-SQL 或维护计划](/sql/relational-databases/backup-restore/sql-server-backup-to-url) |
 | **[数据迁移助手 (DMA)](/sql/dma/dma-overview)** | SQL Server 2005| SQL Server 2008 SP4| [Azure VM 存储限制](../../../index.yml) |  [DMA](/sql/dma/dma-overview) 会评估本地 SQL Server，然后再无缝升级到 SQL Server 的更高版本，或者迁移到 Azure VM 上的 SQL Server、Azure SQL 数据库或 Azure SQL 托管实例。 <br /><br /> 不应用于已启用文件流的用户数据库。<br /><br /> DMA 还包括迁移 [SQL 和 Windows 登录名](/sql/dma/dma-migrateserverlogins)以及评估 [SSIS 包](/sql/dma/dma-assess-ssis)的功能。 <br /><br /> 自动化和脚本：[命令行接口](/sql/dma/dma-commandline) |
@@ -136,12 +137,10 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种[计算机
 
 |资产  |说明  |
 |---------|---------|
-|[数据工作负荷评估模型和工具](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
-|[使用 Logman 自动执行 Perfmon 数据收集](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|用于收集 Perfmon 数据以了解基线性能的工具，该工具可帮助推荐迁移目标。 该工具使用 logman.exe 创建命令，该命令可创建、启动、停止和删除远程 SQL Server 上设置的性能计数器。|
-|[在 Azure 中部署 SQL Server](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/SQL%20Server%20Deployment%20in%20Azure%20.pdf)|本指导白皮书有助于查看将 SQL Server 工作负载迁移到 Azure 的各种选项，包括功能比较、高可用性和备份/存储注意事项。 |
-|[从本地 SQL Sever 迁移到 Azure 虚拟机](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/OnPremise%20SQL%20Server%20to%20Azure%20VM.pdf)|本白皮书概述使用示例脚本从本地 SQL Sever 向 Azure 虚拟机上的 SQL Sever 备份和还原数据库的步骤。|
-|[Multiple-SQL-VM-VNet-ILB](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/ARM%20Templates/Multiple-SQL-VM-VNet-ILB)|本白皮书概述在 SQL Server Always On 可用性组配置中设置多个 Azure 虚拟机的步骤。|
-|[每个区域支持超级 SSD 的 Azure 虚拟机](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Find%20Azure%20VMs%20supporting%20Ultra%20SSD)|这些 PowerShell 脚本提供一个编程选项，可用于检索支持超级 SSD 的 Azure 虚拟机的区域列表。|
+|[数据工作负荷评估模型和工具](https://www.microsoft.com/download/details.aspx?id=103130)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
+|[使用 Logman 自动执行 Perfmon 数据收集](https://www.microsoft.com/download/details.aspx?id=103114)|用于收集 Perfmon 数据以了解基线性能的工具，该工具可帮助推荐迁移目标。 该工具使用 logman.exe 创建命令，该命令可创建、启动、停止和删除远程 SQL Server 上设置的性能计数器。|
+|[Multiple-SQL-VM-VNet-ILB](https://www.microsoft.com/download/details.aspx?id=103104)|本白皮书概述在 SQL Server Always On 可用性组配置中设置多个 Azure 虚拟机的步骤。|
+|[每个区域支持超级 SSD 的 Azure 虚拟机](https://www.microsoft.com/download/details.aspx?id=103105)|这些 PowerShell 脚本提供一个编程选项，可用于检索支持超级 SSD 的 Azure 虚拟机的区域列表。|
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 

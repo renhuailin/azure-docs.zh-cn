@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: 运行内置容器常见问题解答
+  title: Linux 上的应用服务常见问题
   description: 查找有关 Azure 应用服务中内置 Linux 容器的常见问题的解答。
   keywords: azure app service, web app, faq, linux, oss, web app for containers, multi-container, multicontainer
   author: msangapu-msft
@@ -9,12 +9,12 @@ metadata:
   ms.date: 10/30/2018
   ms.author: msangapu
   ms.custom: seodec18
-  ms.openlocfilehash: b908a804041d2278be5e9f88b23c7fe160511fe6
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 7d061a32032fd1edcbe0e2b8dc38290db2664f9d
+  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253234"
+  ms.lasthandoff: 09/07/2021
+  ms.locfileid: "123542577"
 title: Linux 上的 Azure 应用服务常见问题解答
 summary: >
   随着 Linux 应用服务的发布，我们正在努力添加功能和改进我们的平台。 本文提供客户最近提出的问题的解答。
@@ -112,9 +112,7 @@ sections:
       ```nodejs
 
       const io = require('socket.io')(server,{
-
-        perMessageDeflate :false
-
+        perMessageDeflate :false
       });
 
       ```
@@ -135,7 +133,7 @@ sections:
   - question: >
       我使用的是我自己的自定义容器。 我希望平台将 SMB 共享装载到 `/home/` 目录。
     answer: >
-      如果未指定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置，或者将其指定为 false，则 `/home/` 目录不会在缩放实例之间共享，且写入的文件在重启后不会保留 。 将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 显式设置为 true 会启用装载。
+      如果未指定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 设置，或者将其指定为 false，则 `/home/` 目录不会在缩放实例之间共享，且写入的文件在重启后不会保留 。 将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 显式设置为 true 会启用装载。 将此值设置为 true 后，如果想要禁用装载，则需要将 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 显式设置为 false。
   - question: >
       自定义容器需要很长时间才能启动，并且平台在它完成启动之前便重启了容器。
     answer: >
@@ -161,19 +159,9 @@ sections:
     answer: >
       SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件系统或正在运行的进程。
   - question: >
-      我的自定义容器侦听除端口 80 以外的端口。 如何配置我的应用将请求路由到该端口？
-    answer: >
-      我们提供自动端口检测。 也可以指定名为 *WEBSITES_PORT* 的应用设置，并为其提供所需的端口号值。 以前，平台使用 *PORT* 应用设置。 我们计划弃用此应用设置，改为独占使用 *WEBSITES_PORT*。
-  - question: >
       是否需要在自定义容器中实现 HTTPS？
     answer: >
       不需要，平台会处理共享前端上的 HTTPS 终止。
-  - question: >
-      是否需要在代码中为内置容器使用 PORT 变量？
-    answer: >
-      不需要，由于有自动端口检测，PORT 变量并不是必需的。 如果未检测到端口，则默认使用端口 80。
-
-      若要手动配置自定义端口，请使用 Dockerfile 中的 EXPOSE 说明和应用设置 WEBSITES_PORT，其中包含要在容器上绑定的端口值。
   - question: >
       是否需要将 WEBSITES_PORT 用于自定义容器？
     answer: >
@@ -225,13 +213,54 @@ sections:
       - 第一个定义端口 80 或 8080 的容器
 
       - 如果以上规则均不适用，则文件中定义的第一个容器将可供访问（公开）
+  - question: >
+      如何使用 depends_on？
+    answer: >
+      应用服务中不支持 `depends_on` 选项，将忽略此选项。 正如 [Docker 中的控制启动和关闭建议](https://docs.docker.com/compose/startup-order/)一样，应用服务多容器应用应在启动时和断开连接时通过应用程序代码检查依赖项。
 
+
+      下面的示例代码演示了一个 Python 应用，用于检查 Redis 容器是否正在运行。
+
+
+      ```python
+
+      import time
+
+
+      import redis
+
+      from flask import Flask
+
+
+      app = Flask(__name__)
+
+      cache = redis.Redis(host='redis', port=6379)
+
+
+      def get_hit_count():
+          retries = 5
+          while True:
+              try:
+                  return cache.incr('hits')
+              except redis.exceptions.ConnectionError as exc:
+                  if retries == 0:
+                      raise exc
+                  retries -= 1
+                  time.sleep(0.5)
+
+      @app.route('/')
+
+      def hello():
+          count = get_hit_count()
+          return 'Hello from Azure App Service team! I have been seen {} times.\n'.format(count)
+
+      if __name__ == "__main__":
+          app.run(host="0.0.0.0", port=80, debug=True)
+      ```
 
       ## <a name="web-sockets"></a>Web 套接字
 
-
       Linux 应用支持 Web 套接字。
-
 
       > [!IMPORTANT]
 
@@ -245,9 +274,19 @@ sections:
 - name: 其他问题
   questions:
   - question: >
-      是否可以将基于文件的数据库（如 SQLight）与 Linux Web 应用一起使用？
+      如何在我的 Linux 容器中指定端口？
     answer: >
-      应用程序的文件系统是已装载的网络共享。 这允许横向扩展方案，即代码需要在多个主机上执行。 遗憾的是，这会阻止使用基于文件的数据库提供程序（如 SQLite），因为无法获取数据库文件上的排他锁。 推荐使用 Azure 中的完全托管数据库服务：[Azure SQL](https://azure.microsoft.com/products/azure-sql/)、[Azure Database for MySQL](https://azure.microsoft.com/services/mysql/) 或 [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/)
+      | 容器类型 | 说明 | 如何设置/使用端口 |
+
+      |----------------|-------------|---------------------|
+
+      | 内置容器 | 如果你为 Linux 应用选择语言/框架版本，则系统会为你选择预定义的容器。 | 若要将应用代码指向正确的端口，请使用 PORT 环境变量。 |
+
+      | 自定义容器 | 可以完全控制容器。 | 应用服务无法控制容器侦听的端口。 应用服务需要知道将请求转发到哪个端口。 如果容器侦听端口 80 或 8080，则应用服务能够自动检测容器。 如果容器侦听任何其他端口，则需要将应用设置 WEBSITES_PORT 设置为端口号，应用服务将请求转发到容器中的该端口。 应用设置 WEBSITES_PORT 在容器内没有任何效果，无法在容器内将其作为环境变量来访问。 |
+  - question: >
+      是否可以将基于文件的数据库（如 SQLite）与 Linux Web 应用一起使用？
+    answer: >
+      应用程序的文件系统是已装载的网络共享。 这支持横向扩展方案，即代码需要在多个主机上执行。 遗憾的是，这会阻止使用基于文件的数据库提供程序（如 SQLite），因为无法获取数据库文件上的排他锁。 推荐使用管数据库服务：[Azure SQL](https://azure.microsoft.com/products/azure-sql/)、[Azure Database for MySQL](https://azure.microsoft.com/services/mysql/) 或 [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/)
   - question: >
       应用程序设置名称中支持的字符有哪些？
     answer: >
@@ -256,4 +295,16 @@ sections:
       可在何处请求新功能？
     answer: >
       可以在 [Web 应用反馈论坛](https://aka.ms/webapps-uservoice)提交看法。 请将“[Linux]”添加到建议的标题中。
-additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n- [什么是 Linux 上的 Azure 应用服务？](overview.md#app-service-on-linux)\n- [设置 Azure 应用服务中的过渡环境](deploy-staging-slots.md)\n- [使用用于容器的 Web 应用进行持续部署](./deploy-ci-cd-custom-container.md)\n- [应掌握的内容：Web 应用和 Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)\n- [环境变量和应用设置参考](reference-app-settings.md)"
+additionalContent: >-
+  ## <a name="next-steps"></a>后续步骤
+
+
+  - [什么是 Linux 上的 Azure 应用服务？](overview.md#app-service-on-linux)
+
+  - [设置 Azure 应用服务中的过渡环境](deploy-staging-slots.md)
+
+  - [使用用于容器的 Web 应用进行持续部署](./deploy-ci-cd-custom-container.md)
+
+  - [应掌握的内容：Web 应用和 Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)
+
+  - [环境变量和应用设置参考](reference-app-settings.md)

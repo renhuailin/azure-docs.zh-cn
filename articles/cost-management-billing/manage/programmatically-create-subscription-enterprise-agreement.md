@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 06/22/2021
+ms.date: 09/01/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b30856b5fe84f8c66e4029714e4bf39fca0470a9
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 45bc6066152fbb83f5124b5ee157e6b16efa9bf9
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112541295"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475163"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>通过最新的 API 以编程方式创建 Azure 企业协议订阅
 
@@ -168,6 +168,13 @@ API 响应列出你有权访问的所有注册帐户：
 
 以下示例在上一步选择的注册帐户中创建名为 Dev Team Subscription 的订阅。 
 
+使用下列方法之一，你将创建订阅别名。 在创建别名时，我们建议你：
+
+- 使用字母数字字符和下划线
+- 以字母开头且以字母数字字符结尾
+- 请勿使用句点
+
+
 ### <a name="rest"></a>[REST](#tab/rest)
 
 调用 PUT API 来创建订阅创建请求/别名。
@@ -278,11 +285,11 @@ az account alias create --name "sampleAlias" --billing-scope "/providers/Microso
 
 ---
 
-## <a name="use-arm-template"></a>使用 ARM 模板
+## <a name="use-arm-template-or-bicep"></a>使用 ARM 模板或 Bicep
 
-上一部分介绍了如何使用 PowerShell、CLI 或 REST API 创建订阅。 如果需要自动创建订阅，请考虑使用 Azure 资源管理器模板（ARM 模板）。
+上一部分介绍了如何使用 PowerShell、CLI 或 REST API 创建订阅。 如果需要自动创建订阅，请考虑使用 Azure 资源管理器模板（ARM 模板）或 [Bicep 文件](../../azure-resource-manager/bicep/overview.md)。
 
-以下模板可用于创建订阅。 对于 `billingScope`，请提供注册帐户 ID。 订阅已在根管理组中创建。 创建订阅后，可以将其移到另一个管理组。
+以下 ARM 模板可用于创建订阅。 对于 `billingScope`，请提供注册帐户 ID。 订阅已在根管理组中创建。 创建订阅后，可以将其移到另一个管理组。
 
 ```json
 {
@@ -319,7 +326,29 @@ az account alias create --name "sampleAlias" --billing-scope "/providers/Microso
 }
 ```
 
-在[管理组级别](../../azure-resource-manager/templates/deploy-to-management-group.md)部署模板。
+或者，使用 Bicep 文件创建订阅。
+
+```bicep
+targetScope = 'managementGroup'
+
+@description('Provide a name for the alias. This name will also be the display name of the subscription.')
+param subscriptionAliasName string
+
+@description('Provide the full resource ID of billing scope to use for subscription creation.')
+param billingScope string
+
+resource subscriptionAlias 'Microsoft.Subscription/aliases@2020-09-01' = {
+  scope: tenant()
+  name: subscriptionAliasName
+  properties: {
+    workload: 'Production'
+    displayName: subscriptionAliasName
+    billingScope: billingScope
+  }
+}
+```
+
+在[管理组级别](../../azure-resource-manager/templates/deploy-to-management-group.md)部署模板。 以下示例显示了如何部署 JSON ARM 模板，但你可以改为部署 Bicep 文件。
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -374,7 +403,7 @@ az deployment mg create \
 
 ---
 
-若要将订阅移动到新的管理组，请使用以下模板。
+若要将订阅移动到新的管理组，请使用以下 ARM 模板。
 
 ```json
 {
@@ -405,6 +434,23 @@ az deployment mg create \
         }
     ],
     "outputs": {}
+}
+```
+
+或者，以下 Bicep 文件。
+
+```bicep
+targetScope = 'managementGroup'
+
+@description('Provide the ID of the management group that you want to move the subscription to.')
+param targetMgId string
+
+@description('Provide the ID of the existing subscription to move.')
+param subscriptionId string
+
+resource subToMG 'Microsoft.Management/managementGroups/subscriptions@2020-05-01' = {
+  scope: tenant()
+  name: '${targetMgId}/${subscriptionId}'
 }
 ```
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/11/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 67a28bccf3353ed7e33826b0ef5b82fc1cc5f981
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 8f661ea1462ad00cdf0ddc5caa802b53d5d8fc20
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376875"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480437"
 ---
 # <a name="http-features"></a>HTTP 功能
 
@@ -277,7 +277,8 @@ main = df.Orchestrator.create(orchestrator_function)
 “调用 HTTP”API 可自动实现客户端的轮询使用者模式。 如果被调用的 API 返回带有 Location 标头的 HTTP 202 响应，则业务流程协调程序函数将自动轮询 Location 资源，直到收到非 202 响应。 此响应是返回到业务流程协调程序函数代码的响应。
 
 > [!NOTE]
-> 业务流程协调程序函数原生还支持服务器端“轮询使用者模式”，如[异步操作跟踪](#async-operation-tracking)中所述。 此项支持意味着，一个函数应用中的业务流程可以轻松协调其他函数应用中的业务流程协调程序函数。 这类似于[子业务流程](durable-functions-sub-orchestrations.md)的概念，但支持跨应用的通信。 此项支持对于微服务式的应用开发特别有用。
+> 1. 业务流程协调程序函数原生还支持服务器端“轮询使用者模式”，如[异步操作跟踪](#async-operation-tracking)中所述。 此项支持意味着，一个函数应用中的业务流程可以轻松协调其他函数应用中的业务流程协调程序函数。 这类似于[子业务流程](durable-functions-sub-orchestrations.md)的概念，但支持跨应用的通信。 此项支持对于微服务式的应用开发特别有用。
+> 2. 由于某个临时限制，内置 HTTP 轮询模式目前在 JavaScript/TypeScript 和 Python 中不可用。
 
 ### <a name="managed-identities"></a>托管标识
 

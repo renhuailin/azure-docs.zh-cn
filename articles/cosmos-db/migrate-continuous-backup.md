@@ -8,12 +8,12 @@ ms.date: 08/26/2021
 ms.author: sngun
 ms.topic: how-to
 ms.reviewer: sngun
-ms.openlocfilehash: f9708a9287ee8ff40de6044249e35ad26b938316
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 270c0fd585c2232b86011673e460737173106b09
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039301"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479069"
 ---
 # <a name="migrate-an-azure-cosmos-db-account-from-periodic-to-continuous-backup-mode"></a>将 Azure Cosmos DB 帐户从周期备份模式迁移到连续备份模式
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "123039301"
 >
 > * 如果帐户的类型为 SQL API 或是 API for MongoDB。
 > * 如果帐户有单个写入区域。
-> * 如果帐户未启用客户管理的密钥 (CMK)。
+> * 如果帐户未启用客户托管密钥 (CMK)。
 > * 如果帐户未启用分析存储。
 
 ## <a name="permissions"></a>权限
@@ -148,10 +148,10 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 
 可以在迁移完成后还原帐户。 如果迁移在太平洋标准时间下午 1:00 完成，则可以从太平洋标准时间下午 1:00 开始执行时间点还原。
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 #### <a name="does-the-migration-only-happen-at-the-account-level"></a>迁移是否只发生在帐户级别？
-是的。
+能。
 
 #### <a name="which-accounts-can-be-targeted-for-backup-migration"></a>哪些帐户可以作为备份迁移的目标？
 目前，使用单一写入区域的 SQL API 和 API for MongoDB 帐户，这些帐户已经在整个支持迁移中共享、预配或自动缩放预配。
@@ -175,7 +175,7 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 若要还原到 t1 之前的某个时间，可以像往常一样使用周期备份帐户来打开支持票证。 迁移后，最多有 30 天的时间来执行周期还原。  在这 30 天内，可以在迁移前基于帐户的备份保留/间隔进行还原。  例如，如果备份配置在 1 小时间隔内保留 24 个副本，则可以还原到 [t1 –24 小时] 和 [t1] 之间的任何时间。
 
 #### <a name="which-account-level-control-plane-operations-are-blocked-during-migration"></a>迁移期间会阻止哪些帐户级别的控制平面操作？
-在迁移期间，会阻止添加/删除区域、故障转移、复制、更改备份策略、导致数据移动的吞吐量更改等操作。
+在迁移期间，会阻止添加/删除区域、故障转移、更改备份策略、导致数据移动的吞吐量更改等操作。
 
 #### <a name="if-the-migration-fails-for-some-underlying-issue-would-it-still-block-the-control-plane-operation-until-it-is-retried-and-completed-successfully"></a>如果迁移由于某种基础问题而失败，那么在重试和成功完成之前，它仍会阻止控制平面操作吗？
 失败的迁移不会阻止任何控制平面操作。 如果迁移失败，建议进行重试直至成功，然后再执行任何其他控制平面操作。
@@ -197,10 +197,10 @@ az group deployment create -g <ResourceGroup> --template-file <ProvisionTemplate
 
 * [带有时间点还原的连续备份模式简介。](continuous-backup-restore-introduction.md)
 
-* [连续备份模式资源模型](continuous-backup-restore-resource-model.md)。
+* [连续备份模式资源模型。](continuous-backup-restore-resource-model.md)
 
 * 使用 [Azure 门户](restore-account-continuous-backup.md#restore-account-portal)、[PowerShell](restore-account-continuous-backup.md#restore-account-powershell)、[CLI](restore-account-continuous-backup.md#restore-account-cli) 或 [Azure 资源管理器](restore-account-continuous-backup.md#restore-arm-template)还原帐户。
 
-正在尝试为迁移到 Azure Cosmos DB 进行容量计划？
-   * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+尝试为迁移到 Azure Cosmos DB 进行容量计划？
+   * 如果只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

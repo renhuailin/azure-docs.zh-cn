@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: dfc0601dddddd89559d2a7bb28d6f3d86dcdf40c
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 936a8393f21d71cfb2fd1dd4cd2c249f0d13689c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272360"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432569"
 ---
 # <a name="configure-your-private-link"></a>配置专用链接
 配置专用链接需要几个步骤： 
@@ -99,7 +99,7 @@ ms.locfileid: "123272360"
 
 
 > [!NOTE]
-> 从 2021 年 8 月 16 日开始，将严格强制实施网络隔离。 如果资源设置为阻止来自公用网络的查询，并且未（通过 AMPLS）连接到任何专用网络，则将停止接受来自任何网络的查询。
+> 从 2021 年 9 月开始，将严格强制实施网络隔离。 如果资源设置为阻止来自公用网络的查询，并且未（通过 AMPLS）连接到任何专用网络，则将停止接受来自任何网络的查询。
 
 ![LA 网络隔离](./media/private-link-security/ampls-network-isolation.png)
 
@@ -214,8 +214,10 @@ $scope = New-AzResource -Location "Global" -Properties $scopeProperties -Resourc
 }
 ```
 
-### <a name="set-ampls-access-flags---powershell-example"></a>设置 AMPLS 访问标志 - PowerShell 示例
+### <a name="set-ampls-access-modes---powershell-example"></a>设置 AMPLS 访问模式 - PowerShell 示例
 若要在 AMPLS 上设置访问模式标志，可以使用以下 PowerShell 脚本。 以下脚本将标志设置为“打开”。 若要使用“仅限专用”模式，请使用值“PrivateOnly”。
+
+AMPLS 访问模式更新大约需要 10 分钟才能生效。
 
 ```
 # scope details

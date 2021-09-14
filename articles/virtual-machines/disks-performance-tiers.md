@@ -8,14 +8,14 @@ ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 783299359b1b7b9cbe75fd36f534ac18563c0fee
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: b72066dbeda75ae651b26c76b99697d978986a50
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123102915"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435287"
 ---
-# <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>使用 Azure PowerShell 模块或 Azure CLI 更改性能层
+# <a name="change-your-performance-tier-without-downtime-using-the-azure-powershell-module-or-the-azure-cli"></a>使用 Azure PowerShell 模块或 Azure CLI 在不停机的情况下更改性能层
 
 **适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
@@ -85,55 +85,55 @@ New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGro
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="prerequisites"></a>先决条件
+1. 必须先为订阅启用该功能，然后才能在不停机的情况下更改磁盘的性能层。 以下步骤将为订阅启用该功能：
 
-必须先为订阅启用该功能，然后才能在不停机的情况下更改磁盘的性能层。 以下步骤将为订阅启用该功能：
+    1.  执行以下命令，为订阅注册此功能
 
-1.  执行以下命令，为订阅注册此功能
+        ```azurecli
+        az feature register --namespace Microsoft.Compute --name LiveTierChange
+        ```
+
+    1.  在试用该功能之前，请使用以下命令确认注册状态是否为“已注册”（可能需要几分钟）。
+
+        ```azurecli
+        az feature show --namespace Microsoft.Compute --name LiveTierChange
+        ```
+2. 更新磁盘的层级，即使磁盘已附加到正在运行的虚拟机
 
     ```azurecli
-    az feature register --namespace Microsoft.Compute --name LiveTierChange
+    resourceGroupName=<yourResourceGroupNameHere>
+    diskName=<yourDiskNameHere>
+    performanceTier=<yourDesiredPerformanceTier>
+
+    az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
     ```
- 
-1.  在试用该功能之前，请使用以下命令确认注册状态是否为“已注册”（可能需要几分钟）。
-
-    ```azurecli
-    az feature show --namespace Microsoft.Compute --name LiveTierChange
-    ```
-
-```azurecli
-resourceGroupName=<yourResourceGroupNameHere>
-diskName=<yourDiskNameHere>
-performanceTier=<yourDesiredPerformanceTier>
-
-az disk update -n $diskName -g $resourceGroupName --set tier=$performanceTier
-```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-必须先为订阅启用该功能，然后才能在不停机的情况下更改磁盘的性能层。 以下步骤将为订阅启用该功能：
+1. 必须先为订阅启用该功能，然后才能在不停机的情况下更改磁盘的性能层。 以下步骤将为订阅启用该功能：
 
-1.  执行以下命令，为订阅注册此功能
+    1.  执行以下命令，为订阅注册此功能
+
+        ```azurepowershell
+         Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
+        ```
+
+    1.  在试用该功能之前，请使用以下命令确认注册状态是否为“已注册”（可能需要几分钟）。
+
+        ```azurepowershell
+        Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
+        ```
+2. 更新磁盘的层级，即使磁盘已附加到正在运行的虚拟机
 
     ```azurepowershell
-     Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
+    $resourceGroupName='yourResourceGroupName'
+    $diskName='yourDiskName'
+    $performanceTier='P1'
+
+    $diskUpdateConfig = New-AzDiskUpdateConfig -Tier $performanceTier
+
+    Update-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName -DiskUpdate $diskUpdateConfig
     ```
- 
-1.  在试用该功能之前，请使用以下命令确认注册状态是否为“已注册”（可能需要几分钟）。
-
-    ```azurepowershell
-    Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
-    ```
-
-```azurepowershell
-$resourceGroupName='yourResourceGroupName'
-$diskName='yourDiskName'
-$performanceTier='P1'
-
-$diskUpdateConfig = New-AzDiskUpdateConfig -Tier $performanceTier
-
-Update-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName -DiskUpdate $diskUpdateConfig
-```
 ---
 
 ## <a name="show-the-tier-of-a-disk"></a>显示磁盘层级

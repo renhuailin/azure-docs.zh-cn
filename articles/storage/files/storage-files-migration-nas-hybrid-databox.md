@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/5/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7f60c2e03b666c51769473120097034830f599b4
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: fb7132e0a7b9dc59ac6b047d431acf0e740aba0a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "114462278"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430821"
 ---
 # <a name="use-data-box-to-migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-by-using-azure-file-sync"></a>使用 Data Box 通过 Azure 文件同步从网络连接存储 (NAS) 迁移到混合云部署
 
@@ -218,6 +218,20 @@ Robocopy 需要移动的文件数可能会超过可在 Windows Server 实例本�
 现已完成将一个共享或一组共享迁移到通用根目录或卷（具体取决于第 1 阶段中的映射）的过程。
 
 你可以尝试并行运行其中的几个副本。 建议每次处理一个 Azure 文件共享的范围。
+
+## <a name="deprecated-option-offline-data-transfer"></a>弃用的选项：“脱机数据传输”
+
+在 Azure 文件同步代理版本 13 之前，Data Box 集成是通过名为“脱机数据传输”的过程完成的。 此过程已被弃用。 在代理版本 13 中，此过程已替换为本文中所述的更简单、更快速的步骤。 如果知道要使用已弃用的“脱机数据传输”功能，仍可以这样做。 仍然可以通过使用特定的[较旧的 AFS PowerShell 模块](https://www.powershellgallery.com/packages/Az.StorageSync/1.4.0)来使用此过程：
+
+```powershell
+Install-Module Az.StorageSync -RequiredVersion 1.4.0
+Import-module Az.StorageSync -RequiredVersion 1.4.0
+# Verify the specific version is loaded:
+Get-module Az.StorageSync
+```
+然后，你可以继续使用相同的 PowerShell 模块创建服务器终结点，并在此过程中指定暂存共享。
+如果正在进行脱机数据传输过程中的迁移，你的迁移将按计划继续进行，并且仍需要在迁移完成后禁用此设置。
+即将发布的代理版本将删除使用这一弃用流程开始新迁移的功能。
 
 ## <a name="troubleshooting"></a>疑难解答
 

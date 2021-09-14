@@ -3,12 +3,12 @@ title: 部署资源的多个实例
 description: 在 Azure 资源管理器模板（ARM 模板）中使用复制操作和数组多次部署资源类型。
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: 305a05f10683c879e9f002f02aa6d00edbb43d0a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: fc1b8389280880372e8209f5c699b39363e286bf
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954653"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449776"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 模板中的资源迭代
 
@@ -248,6 +248,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 |[复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |部署名称中带索引号的多个存储帐户。 |
 |[串行复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |一次部署多个存储帐户。 名称包含索引号。 |
 |[使用数组的复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |部署多个存储帐户。 名称包含数组中的值。 |
+| [复制资源组](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyRG.json) | 部署多个资源组。 |
 
 ## <a name="next-steps"></a>后续步骤
 
