@@ -87,13 +87,7 @@
     - name: 授权访问
       items:
         - name: 分配访问策略
-          items:
-            - name: CLI
-              href: assign-access-policy-cli.md
-            - name: PowerShell
-              href: assign-access-policy-powershell.md
-            - name: 门户
-              href: assign-access-policy-portal.md
+          href: assign-access-policy.md
         - name: Azure RBAC 权限模型
           items:
             - name: 使用 Azure RBAC 来管理对密钥、机密和证书的访问

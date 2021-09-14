@@ -28,13 +28,15 @@
           href: add-api.md
         - name: 创建自己的函数
           href: functions-bring-your-own.md
-    - name: Configuration
+    - name: 配置
       items:
+        - name: 配置概述
+          href: configuration-overview.md
         - name: 应用程序配置
           href: configuration.md
           displayName: 'routing, routes'
         - name: 生成配置
-          href: github-actions-workflow.md
+          href: build-configuration.md
         - name: 应用设置
           href: application-settings.md
           displayName: environment variables

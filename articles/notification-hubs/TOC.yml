@@ -119,6 +119,8 @@
       href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
     - name: 批量导出和导入注册数据
       href: export-modify-registrations-bulk.md
+    - name: 在区域之间移动资源
+      href: move-registrations.md
     - name: 使用 SDK 创建通知中心
       items:
         - name: 创建通知中心 - .NET
@@ -165,7 +167,7 @@
       href: /powershell/module/az.notificationhubs
     - name: REST
       href: /rest/api/notificationhubs/
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: /azure/templates/microsoft.notificationhubs/allversions
 - name: 资源
   items:

@@ -163,8 +163,6 @@
       href: lock-resources.md
     - name: 跨租户进行身份验证
       href: authenticate-multi-tenant.md
-    - name: 查看活动日志
-      href: view-activity-logs.md
     - name: 限制请求
       href: request-limits-and-throttling.md
     - name: 跟踪异步操作
