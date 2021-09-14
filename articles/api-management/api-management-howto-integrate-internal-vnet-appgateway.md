@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.author: sasolank
 ms.date: 06/10/2021
 ms.custom: devx-track-azurepowershell,contperf-fy21q4
-ms.openlocfilehash: 734dc2a8a2300f2fcccf5780a7ccbd9dfdcae6d4
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: e7c4583797719ca3b9cbb47d5dead48138d22fe1
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986365"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543101"
 ---
 # <a name="integrate-api-management-in-an-internal-virtual-network-with-application-gateway"></a>将内部虚拟网络中的 API 管理与应用程序网关集成
 
@@ -205,7 +205,7 @@ $apimAdminEmail = "admin@contoso.com" # administrator's email address
 $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $location -Name $apimServiceName -Organization $apimOrganization -AdminEmail $apimAdminEmail -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Developer"
 ```
 
-在此层中创建和激活 API 管理服务可能需要 30 到 40 分钟。 上述命令成功后，请参阅[访问内部虚拟网络 API 管理服务所需的 DNS 配置](api-management-using-with-internal-vnet.md#apim-dns-configuration)，以确认访问该服务。 
+在此层中创建和激活 API 管理服务可能需要 30 到 40 分钟。 上述命令成功后，请参阅[访问内部虚拟网络 API 管理服务所需的 DNS 配置](api-management-using-with-internal-vnet.md#dns-configuration)来确认可访问该服务。 
 
 ## <a name="set-up-custom-domain-names-in-api-management"></a>在 API 管理中设置自定义域名
 

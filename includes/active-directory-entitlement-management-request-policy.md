@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 9686cce60520895fe4a3ae7fb47e1eb0eca03599
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 252f872dc14a1850f9b73e7769d4a439952b7da6
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112975221"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123484623"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
 
@@ -218,7 +218,7 @@ ms.locfileid: "112975221"
 
     ![访问包 - 策略 - 启用请求者信息设置](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
 
-1. 如果要本地化问题和答案选项，请单击“添加本地化”。
+1. 若要添加自己的本地化选项，请单击“添加本地化”。
     1. 进入“添加问题的本地化文本”窗格后，为用于将问题本地化的语言选择“语言代码”。
     1. 使用配置的语言，在“本地化文本”框中键入问题。
     1. 添加完所需的所有本地化文本后，请单击“保存”。
@@ -230,15 +230,18 @@ ms.locfileid: "112975221"
     ![访问包 - 策略 - 选择“查看和编辑多选答案格式”](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
  
 1. 如果选择“多选”，请单击“编辑和本地化”按钮来配置答案选项。
-    1. 在选择“编辑和本地化”后，“编辑/本地化问题”窗格将会打开。
+    1. 选择编辑和本地化后，会打开“查看/编辑问题”窗格。
     1. 在“答案值”框中键入你希望在请求者回答问题时向请求者提供的响应选项。
-    1. 请根据需要键入任意数量的响应。
-    1. 如果要为多选选项添加你自己的本地化内容，请为本地化某个特定选项时要采用的语言选择“可选语言代码”。
-    1. 在配置的语言的“本地化”文本框中键入该选项。
-    1. 在为每个多选选项添加了所需的全部本地化内容后，请单击“保存”。
+    1. 为响应选项选择语言。 如果选择其他语言，则可将响应选项本地化。
+    1. 键入所需的任意多个响应，然后单击“保存”。
     
     ![访问包 - 策略 - 输入多选选项](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
   
 1. 若要要求请求者在请求访问某个访问包时回答此问题，请单击“必需”下的复选框。
 
-1. 单击“下一步”
+1. 单击“属性(预览)”子选项卡，查看与添加到访问包的资源相关联的属性。
+
+    > [!NOTE]
+    > 若要添加或更新访问包资源的属性，请转到“目录”并查找与访问包相关联的目录。 若要详细了解如何为特定目录资源和必备角色编辑属性列表，请参阅[在目录中添加资源属性（预览）](../articles/active-directory/governance/entitlement-management-catalog-create.md#add-resource-attributes-preview-in-the-catalog)。 
+
+1. 点击“下一步” 

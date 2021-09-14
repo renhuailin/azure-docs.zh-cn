@@ -1,5 +1,5 @@
 ---
-title: 数据加载最佳做法
+title: 专用 SQL 池的数据加载最佳做法
 description: 有关将数据加载到 Azure Synapse Analytics 中的专用 SQL 池的建议和性能优化。
 services: synapse-analytics
 author: julieMSFT
@@ -7,18 +7,18 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 08/26/2021
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a04bf8a1805fa55afac3d51a2d4f3ba353edf03c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: ee3be53c6a52f0bc0a8ceab0424a7a6c99a0f441
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860243"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539580"
 ---
-# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>将数据加载到 Azure Synapse Analytics 中的专用 SQL 池的最佳做法
+# <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>有关将数据加载到 Azure Synapse Analytics 中的专用 SQL 池的最佳做法
 
 在本文中，你将了解有关加载数据的建议和性能优化。
 
@@ -40,27 +40,46 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 若要使用适当的计算资源运行负载，请创建指定运行负载的加载用户。 将每个加载用户分配给一个特定的资源类或工作负载组。 若要运行负载，请以某个加载用户的身份登录，然后运行该负载。 该负载使用用户的资源类运行。  与尝试根据当前的资源类需求更改用户的资源类相比，此方法更简单。
 
+
 ### <a name="create-a-loading-user"></a>创建加载用户
 
-此示例为 staticrc20 资源类创建加载用户。 第一步是 **连接到主服务器** 并创建登录名。
+此示例将创建一个分类到特定工作负荷组的加载用户。 第一步是 **连接到主服务器** 并创建登录名。
 
 ```sql
    -- Connect to master
-   CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+   CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-连接到数据仓库并创建用户。 以下代码假定已连接到名为 mySampleDataWarehouse 的数据库。 它演示如何创建一个名为 LoaderRC20 的用户，并向该用户授予对此数据库的控制权限。 然后将该用户添加为 staticrc20 数据库角色的成员。  
+请连接到专用 SQL 池并创建用户。 以下代码假定你连接到名为 mySampleDataWarehouse 的数据库。 它展示了如何创建一个名为“loader”的用户，并授予该用户使用 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)创建表和进行加载的权限。 然后，它将该用户分类到包含最多资源的 DataLoads 工作负荷组。 
 
 ```sql
-   -- Connect to the database
-   CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
-   GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
-   EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+   -- Connect to the dedicated SQL pool
+   CREATE USER loader FOR LOGIN loader;
+   GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
+   GRANT INSERT ON <yourtablename> TO loader;
+   GRANT SELECT ON <yourtablename> TO loader;
+   GRANT CREATE TABLE TO loader;
+   GRANT ALTER ON SCHEMA::dbo TO loader;
+   
+   CREATE WORKLOAD GROUP DataLoads
+   WITH ( 
+       MIN_PERCENTAGE_RESOURCE = 0
+       ,CAP_PERCENTAGE_RESOURCE = 100
+       ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 100
+    );
+
+   CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
+   WITH (
+         WORKLOAD_GROUP = 'DataLoads'
+       ,MEMBERNAME = 'loader'
+   );
 ```
 
-若要使用 staticRC20 资源类的资源运行负载，请以 LoaderRC20 身份登录，然后运行该负载。
+<br><br>
+>[!IMPORTANT] 
+>这是将 SQL 池的 100% 资源分配给单个负载的极端示例。 这样，提供的最大并发数就会是 1。 请注意，这应该只用于初始加载，在这种情况下，你将需要创建带有其自己的配置的额外工作负荷组，以便在工作负荷之间均衡资源。 
 
-在静态而非动态资源类下运行负载。 使用静态资源类可确保不管[数据仓库单元](resource-consumption-models.md)如何，资源始终不变。 如果使用动态资源类，则资源因服务级别而异。 对于动态类，如果服务级别降低，则意味着可能需要对加载用户使用更大的资源类。
+若要使用加载工作负荷组的资源运行加载，请以 loader 身份登录并运行该加载。 
 
 ## <a name="allow-multiple-users-to-load"></a>允许多个用户进行加载
 
@@ -90,13 +109,17 @@ PolyBase 无法加载数据大小超过 1,000,000 字节的行。 将数据置�
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SQLBulkCopy API 或 BCP 时增加批大小
 
-如前所述，使用 PolyBase 加载将为 Synapse SQL 池提供最高吞吐量。 如果无法使用 PolyBase 进行加载，并且必须使用 SQLBulkCopy API（或 BCP），应考虑增大批大小以提高吞吐量 - 一个好的经验法则是让批大小的行数介于 100K 到 1M 行之间。
+
+使用 COPY 语句进行加载将为专用 SQL 池提供最高吞吐量。 如果无法使用 COPY 进行加载，并且必须使用 [SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，则应考虑增加批大小以提高吞吐量。
+
+> [!TIP]
+> 10 万行到 1 百万行之间的批大小是建议用于确定最佳批大小容量的基线。 
 
 ## <a name="manage-loading-failures"></a>管理加载失败
 
 使用外部表的加载可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。 此消息表示外部数据包含脏记录。 如果数据类型和列数目与外部表的列定义不匹配，或数据不符合指定的外部文件格式，则会将数据记录视为脏记录。
 
-若要解决脏记录问题，请确保外部表和外部文件格式定义正确，并且外部数据符合这些定义。 如果外部数据记录的子集是脏的，可以通过使用 CREATE EXTERNAL TABLE 中的拒绝选项，选择拒绝这些查询记录。
+若要解决脏记录问题，请确保外部表和外部文件格式定义正确，并且外部数据符合这些定义。 如果部分外部数据记录已更改，可使用 [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) 中的拒绝选项来选择拒绝查询这些记录。
 
 ## <a name="insert-data-into-a-production-table"></a>将数据插入到生产表中
 

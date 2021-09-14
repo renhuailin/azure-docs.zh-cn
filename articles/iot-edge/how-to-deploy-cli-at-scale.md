@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 4e7302cda688d92e19d147f0bfa1a482823b2623
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 790e677a313762d8b4ac9c1ae55473c2b55e058c
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750789"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471671"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大规模部署并监视 IoT Edge 模块
 
@@ -155,6 +155,11 @@ ms.locfileid: "121750789"
   }
 }
 ```
+>[!NOTE]
+> 请注意，此分层部署清单的格式与标准部署清单的格式略有不同。 运行时模块的所需属性使用点表示法进行折叠。 Azure 门户识别分层部署需要使用此格式设置。 例如：
+>
+>  - `properties.desired.modules.<module_name>`
+>  - `properties.desired.routes.<route_name>`
 
 前面的示例显示了模块的分层部署设置 `properties.desired`。 如果此分层部署针对已应用相同模块的设备，则会覆盖任何现有的所需属性。 若要更新，而不是覆盖所需的属性，可以定义新的子节。 例如：
 
@@ -166,6 +171,24 @@ ms.locfileid: "121750789"
   }
 }
 ```
+
+也可以用以下方式表示这一点：
+
+```json
+"SimulatedTEmperatureSensor": {
+  "properties.desired.layeredProperties.SendData" : true,
+  "properties.desired.layeredProperties.SendInterval": 5
+}
+```
+
+>[!NOTE]
+>目前，所有分层部署都必须包含 edgeAgent 对象才会被视为有效。 即使分层部署仅更新模块属性，也需要添加空对象。 例如，`"$edgeAgent":{}`。 具有空 edgeAgent 对象的分层部署将在 edgeAgent 模块孪生中显示为“已设定目标”，而不是“已应用” 。
+
+总之，若要创建分层部署：
+
+- 必须将 `--layered` 标志添加到 Azure CLI create 命令
+- 它可能不包含系统模块
+- 必须在 `$edgeAgent` 和 `$edgeHub` 下使用完整的“点表示法”
 
 有关在分层部署中配置模块孪生的详细信息，请参阅[分层部署](module-deployment-monitoring.md#layered-deployment)
 
@@ -207,7 +230,7 @@ deployment create 命令采用以下参数：
 * **--labels** - 添加用于跟踪部署的标签。 标签是描述部署的“名称, 值”对。 标签对名称和值采用 JSON 格式设置。 例如： `{"HostPlatform":"Linux", "Version:"3.0.1"}`
 * **--target-condition** - 输入一个目标条件，用于确定哪些设备会成为此部署的目标。  该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。  例如，`tags.environment='test' and properties.reported.devicemodel='4000x'` 。
 * **--priority** - 一个正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。
-* --metrics - 创建查询 edgeHub 报告的属性以跟踪部署状态的指标。 指标采用 JSON 输入或 filepath。 例如，`'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'` 。
+* --metrics - 创建查询 edgeHub 报告的属性以跟踪部署状态的指标。 指标采用 JSON 输入或 filepath。 例如，`'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`。
 
 若要使用 Azure CLI 监视部署，请参阅[监视 IoT Edge 部署](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-with-azure-cli)。
 

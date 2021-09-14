@@ -2,19 +2,19 @@
 title: 了解 Azure Monitor 警报的迁移
 description: 了解警报迁移的工作原理并排查问题。
 ms.topic: conceptual
-ms.date: 02/14/2021
+ms.date: 09/06/2021
 ms.author: yalavi
 author: yalavi
-ms.openlocfilehash: 88b75c46898e1a74b33051d8996af96201f639c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2167e0ea05206bc9c991353d6518090773934635
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037704"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123543648"
 ---
 # <a name="understand-migration-options-to-newer-alerts"></a>了解迁移到更新警报的迁移选项
 
-经典警报已对公有云用户[停用](./monitoring-classic-retirement.md)，但在 2021 年 5 月 31 日之前仍可以有限制地使用它。 适用于 Azure 政府云和 Azure 中国世纪互联的经典警报将于 2024 年 2 月 29 日停用。
+经典警报已对公有云用户[停用](./monitoring-classic-retirement.md)。 适用于 Azure 政府云和 Azure 中国世纪互联的经典警报将于 2024 年 2 月 29 日停用。
 
 本文介绍了手动迁移和自愿性迁移工具的工作原理，该工具将用来迁移剩余的警报规则。 此外还介绍了一些常见问题的解决方法。
 

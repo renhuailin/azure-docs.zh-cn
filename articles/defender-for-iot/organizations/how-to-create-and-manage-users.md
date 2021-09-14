@@ -3,12 +3,12 @@ title: 创建和管理用户
 description: 创建和管理传感器和本地管理控制台的用户。 可以为用户分配管理员、安全分析师或只读用户角色。
 ms.date: 05/20/2021
 ms.topic: article
-ms.openlocfilehash: 256b97f08f687b444375135d0b809423b8a73796
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: fa10961218d536faf09a1f7062c8a8c77dc99ce4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015884"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434027"
 ---
 # <a name="about-defender-for-iot-console-users"></a>关于 Defender for IoT 控制台用户
 
@@ -135,20 +135,24 @@ ms.locfileid: "113015884"
 
 若要更新注销计数周期，请将 `= <number>` 值调整为所需时间。
 
-## <a name="track-user-activity"></a>跟踪用户活动 
+## <a name="track-user-activity"></a>跟踪用户活动
 
 你可以在每个传感器的事件时间线中跟踪用户活动。 时间线显示事件或受影响的设备，以及用户执行活动的时间和日期。
 
 若要查看用户活动，请执行以下操作：
 
 1. 登录传感器。
-1. 在事件时间线中，启用“用户操作”选项。 
+
+1. 在事件时间线中，启用“用户操作”选项。
 
     :::image type="content" source="media/how-to-create-azure-for-defender-users-and-roles/User-login-attempts.png" alt-text="查看用户活动。":::
 
-## <a name="integrate-with-active-directory-servers"></a>与 Azure Active Directory 服务器集成 
+## <a name="integrate-with-active-directory-servers"></a>与 Azure Active Directory 服务器集成
 
 将传感器或本地管理控制台配置为使用 Active Directory。 这允许 Active Directory 用户使用其 Active Directory 凭据访问 Defender for IoT 控制台。
+
+> [!Note]
+> LDAP v3 受支持。
 
 支持两种基于 LDAP 的身份验证：
 
@@ -166,20 +170,20 @@ ms.locfileid: "113015884"
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="查看 Active Directory 系统设置。":::
 
-2. 在“系统设置”窗格中，选择 Active Directory 。
+1. 在“系统设置”窗格中，选择 Active Directory 。
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="编辑 Active Directory 配置。":::
 
-3. 在“编辑 Active Directory 配置”对话框中，选择“已启用 Active Directory 集成” > “保存”  。 将展开“编辑 Active Directory 配置”对话框，现在可以输入参数来配置 Active Directory。
+1. 在“编辑 Active Directory 配置”对话框中，选择“已启用 Active Directory 集成” > “保存”  。 将展开“编辑 Active Directory 配置”对话框，现在可以输入参数来配置 Active Directory。
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="输入参数以配置 Active Directory。":::
 
-    > [!NOTE]
-    > - 必须在此处定义与 Active Directory 中完全相同的 LDAP 参数。
-    > - 对于所有 Active Directory 参数，请仅使用小写字母。 即使 Active Directory 中的配置使用大写，也请使用小写。
-    > - 不能为同一域同时配置 LDAP 和 LDAP。 但是，你可以同时对不同的域使用这两种方法。
+> [!NOTE]
+> - 必须在此处定义与 Active Directory 中完全相同的 LDAP 参数。
+> - 对于所有 Active Directory 参数，请仅使用小写字母。 即使 Active Directory 中的配置使用大写，也请使用小写。
+> - 不能为同一域同时配置 LDAP 和 LDAP。 但是，你可以同时对不同的域使用这两种方法。
 
-4. 设置 Active Directory 服务器参数，如下所示：
+1. 设置 Active Directory 服务器参数，如下所示：
 
    | 服务器参数 | 说明 |
    |--|--|
@@ -195,7 +199,7 @@ ms.locfileid: "113015884"
 
 1. 选择“保存”。
 
-2. 若要添加受信任的服务器，请选择“添加服务器”，然后配置另一个服务器。
+1. 若要添加受信任的服务器，请选择“添加服务器”，然后配置另一个服务器。
 
 ## <a name="change-a-users-password"></a>更改用户的密码
 

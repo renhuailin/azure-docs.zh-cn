@@ -6,15 +6,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/22/2021
+ms.date: 08/26/2021
 ms.author: alkohli
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dc06c5646f85fda4b4100805be4a9566d0917e2a
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: 489182db34366a910a26ad358d9ef60ae4244530
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652985"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468406"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
 
@@ -214,214 +214,7 @@ PS C:\Windows\System32>
 
 # <a name="portal"></a>[门户](#tab/portal)
 
-在 Azure 门户中执行以下步骤以订购设备。
-
-1. 使用 Microsoft Azure 凭据在以下 URL 登录：[https://portal.azure.com](https://portal.azure.com)。
-2. 选择“+ 创建资源”并搜索 *Azure Data Box*。 选择“Azure Data Box”。
-
-   ![“新建”部分的屏幕截图，其中搜索字段中有“Azure Data Box”字样](media/data-box-deploy-ordered/select-data-box-import-02.png)
-
-3. 选择“创建”。
-
-   ![Azure Data Box 部分的屏幕截图，其中已标注“创建”选项](media/data-box-deploy-ordered/select-data-box-import-03.png)
-
-4. 检查 Data Box 服务是否在你的区域可用。 输入或选择以下信息，然后选择“应用”。
-
-    |设置  |值  |
-    |---------|---------|
-    |传输类型     | 选择“导入到 Azure”。        |
-    |订阅     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 该订阅将链接到计费帐户。       |
-    |资源组 | 选择现有资源组。 资源组是可以统一管理或部署的资源的逻辑容器。 |
-    |源国家/地区    |    选择数据当前所在的国家/地区。         |
-    |目标 Azure 区域     |     选择要在其中传输数据的 Azure 区域。 <br> 有关详细信息，请转到[适用区域](data-box-overview.md#region-availability)。            |
-
-    [ ![启动 Azure Data Box 导入订单](media/data-box-deploy-ordered/select-data-box-import-04-b.png) ](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
-
-5. 选择“Data Box”。 单次订购的可用最大容量为 80 TB。 可以创建多个订单，以增加数据大小。
-
-    ![可用数据大小：Data Box Disk：40 TB；Data Box：100 TB；Data Box Heavy：1000 TB；寄送自己的磁盘：1 TB](media/data-box-deploy-ordered/select-data-box-import-05.png)
-
-6. 在“订单”中，转到“基本”选项卡 。输入或选择以下信息，然后选择“下一步:数据目标>”。
-
-    |设置  |值  |
-    |---------|---------|
-    |订阅      | 系统会根据前面所做的选择自动填充此订阅。|
-    |资源组    | 之前选择的资源组。 |
-    |导入订单名称 | 提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。    |
-
-    ![Data Box 导入订单向导的“基本信息”屏幕，其中已填写正确信息](media/data-box-deploy-ordered/select-data-box-import-06.png)
-
-7. 在“数据目标”屏幕上，选择“数据目标”（存储帐户或托管磁盘） 。
-
-    如果使用“存储帐户”作为存储目标，则会看到以下屏幕：
-
-    ![Data Box 导入订单向导的“数据目标”屏幕，其中已选择存储帐户](media/data-box-deploy-ordered/select-data-box-import-07.png)
-
-    根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个或多个存储帐户。 Data Box 可以与最多 10 个存储帐户链接。 也可以创建新的 **常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。
-
-   > [!NOTE]
-   > - 如果选择 Azure Premium FileStorage 帐户，则存储帐户共享上的预配配额将增加到要复制到文件共享的数据的大小。 配额增加后，就不会再进行调整，例如，如果出于某种原因 Data Box 无法复制你的数据。
-   > - 此配额用于计费。 将数据上传到数据中心后，应调整配额以满足需求。 有关详细信息，请参阅[了解计费](../../articles/storage/files/understanding-billing.md)。
-
-    支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请了解如何[将 Azure Data Box 添加为受信任的服务](../storage/common/storage-network-security.md#exceptions)。
-
-    如果使用 Data Box 从本地虚拟硬盘 (VHD) 创建“托管磁盘”，则还需提供以下信息：
-
-    |设置  |值  |
-    |---------|---------|
-    |资源组     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 使用现有资源组的前提是，资源组是在以前由 Data Box 服务为托管磁盘创建 Data Box 订单时创建的。 <br> 指定多个用分号分隔的资源组。 最多支持 10 个资源组。|
-
-    ![Data Box 导入订单向导的“数据目标”屏幕，其中已选择“托管磁盘”](media/data-box-deploy-ordered/select-data-box-import-07-b.png)
-
-    为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 作为页 Blob 上传到临时存储帐户，然后将其转换为托管磁盘并移到资源组。 有关详细信息，请参阅[验证 Azure 中的数据上传](data-box-deploy-picked-up.md#verify-data-upload-to-azure)。
-
-   > [!NOTE]
-   > 如果页 blob 未成功转换为托管磁盘，它将保留在存储帐户中，你需为存储付费。
-
-8. 在完成时选择“下一步:安全性”以继续操作。
-
-    通过“安全性”屏幕，可使用自己的加密密钥和设备并共享密码，还可选择使用双重加密。
-
-    “安全性”屏幕上的所有设置都是可选的。 如果不更改任何设置，则将应用默认设置。
-
-    ![Data Box 导入订单向导的“安全性”屏幕](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
-
-9. 如果要使用自己的客户管理的密钥来保护新资源的解锁密钥，请展开“加密类型”。
-
-    可选择性地为 Azure Data Box 配置客户管理的密钥。 默认情况下，Data Box 使用 Microsoft 管理的密钥来保护解锁密钥。
-
-    客户管理的密钥不影响设备上数据的加密方式。 该密钥仅用于加密设备解锁密钥。
-
-    如果不想使用客户管理的密钥，请跳到步骤 15。
-
-   ![显示加密类型设置的“安全性”屏幕](./media/data-box-deploy-ordered/customer-managed-key-01.png)
-
-10. 选择“客户管理的密钥”作为密钥类型。 然后，选中“选择密钥保管库和密钥”。
-   
-    ![安全屏幕，客户管理的密钥的设置](./media/data-box-deploy-ordered/customer-managed-key-02.png)
-
-11. 在“从 Azure Key Vault 中选择密钥”边栏选项卡中，订阅会自动填充。
-
-    - 对于“密钥保管库”，可以从下拉列表中选择现有的密钥保管库。
-
-      ![从 Azure Key Vault 屏幕上选择密钥](./media/data-box-deploy-ordered/customer-managed-key-03.png)
-
-    - 还可以选择“新建”来创建新的密钥保管库。 在“创建密钥保管库”屏幕上，输入资源组和密钥保管库名称。 确保已启用软删除和清除保护 。 接受其他所有默认值，然后选择“查看 + 创建”。
-
-      ![创建新的 Azure Key Vault 设置](./media/data-box-deploy-ordered/customer-managed-key-04.png)
-
-      查看密钥保管库的信息，然后选择“创建”。 等待几分钟，直到密钥保管库创建完成。
-
-      ![新的 Azure Key Vault 查看屏幕](./media/data-box-deploy-ordered/customer-managed-key-05.png)
-
-12. 在“从 Azure Key Vault 选择密钥”中，可选择密钥保管库中的现有密钥。
-
-    ![从 Azure Key Vault 中选择现有密钥](./media/data-box-deploy-ordered/customer-managed-key-06.png)
-
-    如果要创建新的密钥，请选择“新建”。 必须使用 RSA 密钥。 大小可以是 2048 或更大。 输入新密钥的名称，接受其他默认值，然后选择“创建”。
-
-      ![创建新的密钥选项](./media/data-box-deploy-ordered/customer-managed-key-07.png)
-
-      在密钥保管库中创建密钥后，你将收到通知。
-
-13. 选择要使用的密钥的版本，然后选中“选择” 。
-
-      ![在密钥保管库中创建的新密钥](./media/data-box-deploy-ordered/customer-managed-key-08.png)
-
-    如果要创建新的密钥版本，请选择“新建”。
-
-    ![打开用于创建新密钥版本的对话框](./media/data-box-deploy-ordered/customer-managed-key-08-a.png)
-
-    选择新密钥版本的设置，然后选择“创建”。
-
-    ![创建新的密钥版本](./media/data-box-deploy-ordered/customer-managed-key-08-b.png)
-
-    “安全性”屏幕上的“加密类型”设置将显示密钥保管库和密钥 。
-
-    ![用于客户管理的密钥的密钥和密钥保管库](./media/data-box-deploy-ordered/customer-managed-key-09.png)
-
-14. 选择将用于管理对此资源的访问权限的用户标识。 选中“选择用户标识”。 在右侧面板中，选择要使用的订阅和托管标识。 然后选取“选择”  。
-
-    用户分配的托管标识是一个可用于管理多个资源的独立 Azure 资源。 有关详细信息，请参阅[托管标识类型](../active-directory/managed-identities-azure-resources/overview.md)。  
-
-    如果需要创建新的托管标识，请按照[使用 Azure 门户创建、列出和删除用户分配的托管标识以及如何为其分配角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指南操作。
-    
-    ![选择用户标识](./media/data-box-deploy-ordered/customer-managed-key-10.png)
-
-    用户标识显示在“加密类型”设置中。
-
-    ![加密类型设置中显示的所选用户标识](./media/data-box-deploy-ordered/customer-managed-key-11.png)
-
-15. 如果不想采用 Azure Data Box 默认使用的系统生成的密码，请在“安全性”屏幕上展开“创建自己的密码” 。
-
-    系统生成的密码很安全，建议使用该密码，除非贵组织另有要求。
-
-    ![展开 Data Box 导入订单的“创建自己的密码”选项](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
-
-   - 要对新设备使用自己的密码，请在“设置设备密码的首选项”中选择“使用自己的密码”，然后键入符合安全要求的密码 。
-     
-     密码必须是字母和数字，且包含 12 到 15 个字符，至少有一个大写字母、一个小写字母、一个特殊字符和一个数字。 
-
-     - 允许使用的特殊字符：@ # - $ % ^ ! + = ; : _ ( )
-     - 不允许使用的字符：I i L o O 0
-   
-     ![Data Box 导入订单“安全性”屏幕上的“使用自己的设备密码”选项](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
-
- - 使用自己的共享密码：
-
-   1. 在“设置共享密码的首选项”中，依次选择“使用自己的密码”和“选择共享密码”  。
-     
-       ![Data Box 导入订单“安全性”屏幕上的“使用自己的共享密码”选项](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
-
-    1. 为订单中的每个存储帐户键入一个密码。 该密码将用于存储帐户的所有共享。
-    
-       密码必须是字母和数字，且包含 12 到 64 个字符，至少有一个大写字母、一个小写字母、一个特殊字符和一个数字。
-
-       - 允许使用的特殊字符：@ # - $ % ^ ! + = ; : _ ( )
-       - 不允许使用的字符：I i L o O 0
-     
-    1. 要对所有存储帐户使用同一密码，请选择“复制到全部”。 
-
-    1. 完成后，选择“保存”。
-     
-       ![为 Data Box 导入订单输入共享密码的屏幕](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
-
-    在“安全性”屏幕上，可以使用“查看或更改密码”来更改密码 。
-
-16. 在“安全性”中，如果要启用基于软件的双重加密，请展开“双重加密(适用于高度安全的环境)”，然后选择“为订单启用双重加密”  。
-
-    ![Data Box 导入的安全性屏幕，为 Data Box 订单启用了基于软件的加密](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
-
-    除了对 Data Box 上的数据进行 AES-256 位加密，还可执行基于软件的加密。
-
-    > [!NOTE]
-    > 启用此选项可能会导致订单处理和数据复制耗时较长。 创建订单后，不能更改此选项。
-
-    在完成时选择“下一步:联系人详细信息”以继续。
-
-17. 在“联系人详细信息”中，选择“+ 添加送货地址” 。
-
-    ![在“联系人详细信息”屏幕中，将寄送地址添加到你的 Azure Data Box 导入订单](media/data-box-deploy-ordered/select-data-box-import-08-a.png)
-
-18. 在“寄送地址”中，提供你的姓名、公司的名称和邮政地址，以及有效的电话号码。 选择“验证地址”。 服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。
-
-    ![“添加寄送地址”对话框的屏幕截图，其中标注了“寄送方式”选项和“添加寄送地址”选项。](media/data-box-deploy-ordered/select-data-box-import-10.png)
-
-    如果你选择了自我托管交付，则在成功下单后，你将收到一封电子邮件通知。 有关自托管寄送的详细信息，请参阅[使用自托管寄送](data-box-portal-customer-managed-shipping.md)。
-
-19. 成功验证寄送详细信息后，选择“添加送货地址”。 你将返回“联系人详细信息”选项卡。
-
-20. 返回“联系人详细信息”后，添加一个或多个电子邮件地址。 服务会将有关任何订单状态更新的电子邮件通知发送到指定的电子邮件地址。
-
-    我们建议使用组电子邮件，以便在组中的管理员离任后，可以持续收到通知。
-
-    ![订单向导中“联系人详细信息”的电子邮件部分](media/data-box-deploy-ordered/select-data-box-import-08-c.png)
-
-21. 查看“查看 + 订购”中与订单、联系人、通知和隐私条款相关的信息。 选中对应于同意隐私条款的复选框。
-
-22. 选择“订单”。 创建订单需要几分钟时间。
-
-    ![订单向导的“审查和订购”屏幕](media/data-box-deploy-ordered/select-data-box-import-11.png)
+[!INCLUDE [order-data-box-via-portal](../../includes/data-box-order-portal.md)]
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -450,7 +243,7 @@ PS C:\Windows\System32>
    |help| 显示此命令的帮助信息。 | --help -h |
    |only-show-errors| 只显示错误，取消显示警告。 | --only-show-errors |
    |output -o| 设置输出格式。  允许的值：json、jsonc、none、table、tsv、yaml、yamlc。 默认值是 json。 | --output "json" |
-   |query| JMESPath 查询字符串。 有关详细信息，请参阅 [JMESPath](http://jmespath.org/)。 | --query <string>|
+   |query| JMESPath 查询字符串。 有关详细信息，请参阅 [JMESPath](http://jmespath.org/)。 | --query &lt;string&gt;|
    |verbose| 包括详细日志记录。 | --verbose |
 
 2. 在所选的命令提示符或终端中运行 [az databox job create](/cli/azure/databox/job#az_databox_job_create)，以创建 Azure Data Box 订单。
@@ -565,7 +358,7 @@ PS C:\Windows\System32>
     |CountryCode [必填]| 设备将寄送到的国家/地区。 | "United States" |
     |PostalCode [必填]| 与寄送地址相关联的邮政编码。| "98052"|
     |CompanyName| 你工作的公司的名称。| "Contoso, LTD" |
-    |StorageAccountResourceId [必填]| 要从中导入数据的 Azure 存储帐户 ID。| <AzStorageAccount>.id |
+    |StorageAccountResourceId [必填]| 要从中导入数据的 Azure 存储帐户 ID。| &lt;AzstorageAccount&gt;.id |
 
 3. 在所选的命令提示符或终端中，使用 [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob) 创建 Azure Data Box 订单。
 
@@ -637,7 +430,7 @@ PS C:\Windows\System32>
    |help| 显示此命令的帮助信息。 | --help -h |
    |only-show-errors| 只显示错误，取消显示警告。 | --only-show-errors |
    |output -o| 设置输出格式。  允许的值：json、jsonc、none、table、tsv、yaml、yamlc。 默认值是 json。 | --output "json" |
-   |query| JMESPath 查询字符串。 有关详细信息，请参阅 [JMESPath](http://jmespath.org/)。 | --query <string>|
+   |query| JMESPath 查询字符串。 有关详细信息，请参阅 [JMESPath](http://jmespath.org/)。 | --query &lt;string&gt;|
    |verbose| 包括详细日志记录。 | --verbose |
 
    以下是输出格式设置为“table”的命令示例：
@@ -678,7 +471,7 @@ az databox job list --resource-group <resource-group>
    |help| 显示此命令的帮助信息。 | --help -h |
    |only-show-errors| 只显示错误，取消显示警告。 | --only-show-errors |
    |output -o| 设置输出格式。  允许的值：json、jsonc、none、table、tsv、yaml、yamlc。 默认值是 json。 | --output "json" |
-   |query| JMESPath 查询字符串。 有关详细信息，请参阅 [JMESPath](http://jmespath.org/)。 | --query <string>|
+   |query| JMESPath 查询字符串。 有关详细信息，请参阅 [JMESPath](http://jmespath.org/)。 | --query &lt;string&gt;|
    |verbose| 包括详细日志记录。 | --verbose |
 
    以下是输出格式设置为“table”的命令示例：
@@ -799,7 +592,7 @@ PS C:\WINDOWS\system32>
    |help| 显示此命令的帮助信息。 | --help -h |
    |only-show-errors| 只显示错误，取消显示警告。 | --only-show-errors |
    |output -o| 设置输出格式。  允许的值：json、jsonc、none、table、tsv、yaml、yamlc。 默认值是 json。 | --output "json" |
-   |query| JMESPath 查询字符串。 有关详细信息，请参阅 [JMESPath](http://jmespath.org/)。 | --query <string>|
+   |query| JMESPath 查询字符串。 有关详细信息，请参阅 [JMESPath](http://jmespath.org/)。 | --query &lt;string&gt;|
    |verbose| 包括详细日志记录。 | --verbose |
 
    下面是包含输出的命令示例：
@@ -836,7 +629,7 @@ PS C:\WINDOWS\system32>
    |help| 显示此命令的帮助信息。 | --help -h |
    |only-show-errors| 只显示错误，取消显示警告。 | --only-show-errors |
    |output -o| 设置输出格式。  允许的值：json、jsonc、none、table、tsv、yaml、yamlc。 默认值是 json。 | --output "json" |
-   |query| JMESPath 查询字符串。 有关详细信息，请参阅 [JMESPath](http://jmespath.org/)。 | --query <string>|
+   |query| JMESPath 查询字符串。 有关详细信息，请参阅 [JMESPath](http://jmespath.org/)。 | --query &lt;string&gt;|
    |verbose| 包括详细日志记录。 | --verbose |
 
 下面是包含输出的命令示例：

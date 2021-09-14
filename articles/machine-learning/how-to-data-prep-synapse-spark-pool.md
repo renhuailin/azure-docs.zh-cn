@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: devx-track-python, data4ml, synapse-azureml, contperf-fy21q4
-ms.openlocfilehash: 424e1908df6d3e92d365e2dd3e10a42f7d1ddb2a
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3cd6a3243b4bfb4441f6be82f3957c325ceec3d2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296415"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433559"
 ---
 # <a name="data-wrangling-with-apache-spark-pools-preview"></a>使用 Apache Spark 池进行数据整理（预览版） 
 
@@ -62,7 +62,7 @@ ms.locfileid: "114296415"
 ![获取附加的计算的名称](media/how-to-data-prep-synapse-spark-pool/attached-compute.png)
 
 > [!IMPORTANT]
-> 若要继续使用 Apache Spark 池，必须指示要在整个数据整理任务中使用的计算资源，并将 `%synapse` 用于单行代码以及将 `%%synapse` 用于多行代码。 
+> 若要继续使用 Apache Spark 池，必须指示要在整个数据整理任务中使用的计算资源，并将 `%synapse` 用于单行代码以及将 `%%synapse` 用于多行代码。 [详细了解 %synapse magic 命令](/python/api/azureml-synapse/azureml.synapse.magics.remotesynapsemagics(class))。
 
 ```python
 %synapse start -c SynapseSparkPoolAlias

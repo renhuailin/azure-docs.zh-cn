@@ -93,7 +93,7 @@
       items:
         - name: 安全基线
           href: /security/benchmark/azure/baselines/virtual-wan-security-baseline?toc=/azure/virtual-wan/TOC.json
-    - name: 定价概念
+    - name: 定价说明
       href: pricing-concepts.md
     - name: 关于虚拟中心中的 NVA
       href: about-nva-hub.md

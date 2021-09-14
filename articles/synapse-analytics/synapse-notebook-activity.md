@@ -10,12 +10,12 @@ ms.date: 05/19/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 9c021b8b0aec025458179ffb4859c351572762ee
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: c8c2246822cdf9faa06833020cd1951bde9e86a3
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186976"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449290"
 ---
 # <a name="transform-data-by-running-a-synapse-notebook"></a>通过运行 Synapse 笔记本转换数据
 
@@ -32,6 +32,10 @@ ms.locfileid: "123186976"
 将“活动”下的“Synapse 笔记本”拖放到 Synapse 管道画布上 。 在 Synapse 笔记本活动框中选择，并在“设置”中为当前活动配置笔记本内容。 可以从当前工作区中选择现有笔记本或添加一个新笔记本。 
 
 ![screenshot-showing-create-notebook-activity](./media/synapse-notebook-activity/create-synapse-notebook-activity.png)
+
+> [!NOTE]
+> Azure Synapse 管道中并行 Spark 笔记本的执行是按照先入先出 (FIFO) 的方式排队执行的，队列中的作业顺序基于时间顺序，队列中作业的过期时间为 3 天。请注意，笔记本的队列仅适用于 Synapse 管道。
+
 
 ### <a name="add-a-notebook-to-synapse-pipeline"></a>将笔记本添加到 Synapse 管道
 

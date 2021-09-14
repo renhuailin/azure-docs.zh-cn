@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 0a8dfdea8ad743d0355daa16cc10f60bef96c213
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 15c0cf0b24fef36902806656a2e47a7fda7bb52c
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081850"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471059"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -57,7 +57,7 @@ ms.locfileid: "112081850"
 1. 选择“启用”，启用针对存储帐户的静态网站托管功能。
 1. 在“索引文档名称”字段中，指定 *index.html* 的默认索引页。 当用户导航到静态网站的根目录时，会显示默认索引页。  
 1. 在“错误文档路径”字段中，指定默认错误页 *404.html*。 当用户尝试导航到静态网站中不存在的页面时，会显示默认错误页。
-1. 单击“ **保存**”。 Azure 门户现在会显示静态网站终结点。 
+1. 单击“保存” 。 Azure 门户现在会显示静态网站终结点。 
 
     ![启用针对存储帐户的静态网站托管功能](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -104,6 +104,17 @@ ms.locfileid: "112081850"
 Visual Studio Code 现在会将文件上传到 Web 终结点，并显示成功状态栏。 启动网站，在 Azure 中查看它。
 
 你已成功完成本教程并将静态网站部署到 Azure。
+
+## <a name="feature-support"></a>功能支持
+
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

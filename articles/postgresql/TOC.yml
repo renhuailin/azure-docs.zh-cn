@@ -341,7 +341,7 @@
             - name: 针对指标创建警报
               href: howto-alert-on-metric.md
               displayName: 'alerts, metrics, monitor'
-        - name: 故障排除
+        - name: 疑难解答
           items:
             - name: 排查连接错误
               href: howto-troubleshoot-common-connection-issues.md
@@ -553,12 +553,12 @@
                   href: flexible-server/how-to-manage-firewall-portal.md
                 - name: Azure CLI
                   href: flexible-server/how-to-manage-firewall-cli.md
-            - name: TLS/SSL/SCRAM
-              items:
-                - name: 使用 TLS/SSL 连接
-                  href: flexible-server/how-to-connect-tls-ssl.md
-                - name: 使用 SCRAM 进行连接
-                  href: flexible-server/how-to-connect-scram.md
+        - name: 安全性 (TLS/SSL/SCRAM)
+          items:
+            - name: 使用 TLS/SSL 连接
+              href: flexible-server/how-to-connect-tls-ssl.md
+            - name: 使用 SCRAM 进行连接
+              href: flexible-server/how-to-connect-scram.md
         - name: 配置服务器参数
           items:
             - name: Azure 门户

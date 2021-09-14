@@ -4,12 +4,12 @@ description: 了解如何将客户加入到 Azure Lighthouse，以便你的租�
 ms.date: 08/26/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9e61fb83af009b96b5781912e2feff8c0c747827
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 1d060a7e1a6f9b0ae17e90b1094ec0a5da744e5f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123034234"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469673"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
@@ -332,13 +332,13 @@ az managedservices assignment list
 
 如果无法成功加入客户，或者，如果用户在访问委托的资源时遇到问题，请查看以下提示和要求，然后重试。
 
+- 如果用户需要在 Azure 门户中查看客户资源，则必须在加入过程中分配有[读取者](../../role-based-access-control/built-in-roles.md#reader)角色（或其他包含读取者访问权限的内置角色）。
 - `managedbyTenantId` 值不可与正在加入的订阅的租户 ID 相同。
 - 在同一范围内，不能有多个具有相同 `mspOfferName` 的分配。
 - 必须为委托的订阅注册 Microsoft.ManagedServices 资源提供商。 此注册操作应该会在部署过程中自动发生，但是，如果没有发生，则可以[手动注册](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
 - 授权不得包含任何具有[所有者](../../role-based-access-control/built-in-roles.md#owner)内置角色的用户或任何具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) 的内置角色。
 - 必须创建组，并将[组类型](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types)设置为“安全”而不是“Microsoft 365”  。
 - 在对[嵌套组](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)启用访问权限之前，可能会有额外的延迟。
-- 需要在 Azure 门户中查看资源的用户必须具有[读者](../../role-based-access-control/built-in-roles.md#reader)角色（或其他包含读者访问权限的内置角色）。
 - 在授权中包含的 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)不得包含任何已弃用的角色。 如果某个 Azure 内置角色变成被弃用的，那么，任何使用该角色加入的用户都将失去访问权限，并且你将无法加入其他委托。 若要解决此问题，请将模板更新为只使用受支持的内置角色，然后执行新的部署。
 
 ## <a name="next-steps"></a>后续步骤

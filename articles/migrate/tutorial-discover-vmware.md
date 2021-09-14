@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: 973d6f9450d0cb58df5b1e8dcd208990806abc54
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 520b75e38d7ccf33c3f900c0b30bfd68e6184720
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967322"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542397"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>教程：使用 Azure Migrate 发现 VMware 环境中运行的服务器
 
@@ -103,12 +103,15 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 > [!NOTE]
 > 可以通过限定 vCenter Server 帐户的范围，将发现范围限制为特定的 vCenter Server 数据中心、群集、主机、群集文件夹、主机文件夹或单个服务器。 了解如何[限定 vCenter Server 用户帐户的范围](set-discovery-scope.md)。
 
+> [!NOTE]
+> 如果 vCenter 资产通过链接模式连接到指定供发现的 vCenter 服务器，则 Azure Migrate 将不会发现这些资产。 应为希望发现的每个 vCenter 环境部署一台 Azure Migrate 设备。
+
 ### <a name="create-an-account-to-access-servers"></a>创建用于访问服务器的帐户
 
 服务器上用户帐户必须具有所需的权限，才能启动对安装的应用程序的发现、无代理依赖项分析，以及对 Web 应用及 SQL Server 实例和数据库的发现。 你可以在设备配置管理器上提供用户帐户信息。 设备不会在服务器上安装代理。
 
 * 对于 Windows 服务器和 Web 应用发现，请在服务器上创建拥有管理员权限的帐户（本地或域）。 若要发现 SQL Server 实例和数据库，该 Windows 或 SQL Server 帐户必须是 sysadmin 服务器角色的成员。 了解如何[向用户帐户分配所需的角色](/sql/relational-databases/security/authentication-access/server-level-roles)。
-* 对于 Linux 服务器，请创建拥有 Root 特权的帐户。 或者，可以创建对 /bin/netstat 和 /bin/ls 文件具有 CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE 权限的帐户。
+* 对于 Linux 服务器，请提供根用户帐户的详细信息，或者创建一个对 /bin/netstat 和 /bin/ls 文件具有 CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE 权限的帐户。
 
 > [!NOTE]
 > 可以在 Azure Migrate 设备配置管理器上添加多个服务器凭据，以启动对安装的应用程序的发现、无代理依赖项分析，以及对 Web 应用及 SQL Server 实例和数据库的发现。 可以添加多个域，Windows（非域）、Linux（非域）或 SQL Server 身份验证凭据。 了解如何[添加服务器凭据](add-server-credentials.md)。

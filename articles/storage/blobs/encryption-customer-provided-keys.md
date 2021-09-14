@@ -10,18 +10,16 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: fcc5c02c4a37e205622470260d3c620ad76d07d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0f11be9261785ca332d47a7406133e3106547fd
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97694705"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471186"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>在对 Blob 存储的请求中提供加密密钥
 
 针对 Azure Blob 存储发出请求的客户端可以选择基于每个请求提供 AES-256 加密密钥。 在请求中包含加密密钥可以精细控制 Blob 存储操作的加密设置。 客户提供的密钥可以存储在 Azure Key Vault 或其他密钥存储中。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="encrypting-read-and-write-operations"></a>加密读取和写入操作
 
@@ -75,6 +73,17 @@ Azure 存储不会存储或管理客户端连同请求一起发送的加密密�
 > 无法使用 Azure 门户来读取或写入通过请求中提供的密钥加密的容器或 Blob。
 >
 > 请务必在 Azure Key Vault 等安全密钥存储中，保护在对 Blob 存储发出的请求中提供的加密密钥。 如果你尝试在不使用加密密钥的情况下对容器或 Blob 执行写入操作，该操作将会失败，并且你会失去对象访问权限。
+
+## <a name="feature-support"></a>功能支持
+
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

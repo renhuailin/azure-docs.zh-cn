@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: f7c6c46565ce9abb108b59e567d2f66c7a05ab28
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 27e17c5adeb7ab5a55b4783bac86301ba4237f45
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835425"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538194"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -46,7 +46,7 @@ ms.locfileid: "122835425"
 
 * 导出为[受密码保护的 PFX 文件](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Certificate_filename_extensions)（使用三重 DES 进行加密）。
 * 包含长度至少为 2048 位的私钥
-* 包含证书链中的所有中间证书
+* 包含证书链中的所有中间证书和根证书。
 
 若要保护 TLS 绑定中的自定义域，证书还有其他要求：
 
@@ -101,7 +101,7 @@ ms.locfileid: "122835425"
 - 负责 GoDaddy 的购买流程。
 - 对证书执行域验证。
 - 将证书保留在 [Azure Key Vault](../key-vault/general/overview.md) 中。
-- 管理证书续订（请参阅[续订证书](#renew-certificate)）。
+- 管理证书续订（请参阅[续订证书](#renew-an-app-service-certificate)）。
 - 在应用服务应用中自动将证书与导入的副本同步。
 
 若要购买应用服务证书，请转到[启动证书申请](#start-certificate-order)。
@@ -221,7 +221,7 @@ ms.locfileid: "122835425"
 | 设置 | 说明 |
 |-|-|
 | 订阅 | Key Vault 所属的订阅。 |
-| Key Vault | 包含要导入的证书的保管库。 |
+| 密钥保管库 | 包含要导入的证书的保管库。 |
 | 证书 | 从保管库中的 PKCS12 证书列表中进行选择。 保管库中的所有 PKCS12 证书都已通过其指纹列出，但在应用服务中并非支持所有证书。 |
 
 操作完成后，会在“私钥证书”列表中看到该证书。 如果导入失败并出现错误，则证书不满足[应用服务的要求](#private-certificate-requirements)。
@@ -298,9 +298,6 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 > [!IMPORTANT] 
 > 若要使用此证书保护自定义域，仍需要创建证书绑定。 按照[创建绑定](configure-ssl-bindings.md#create-binding)中的步骤操作。
 
-> [!NOTE]
-> 若要续订[上传的证书](#upload-a-private-certificate)，请参阅[导出证书绑定](configure-ssl-bindings.md#renew-certificate-binding)。 应用服务不会自动将新上传的证书与绑定同步。 自动证书同步功能仅适用于[导入的 Key Vault 证书](#import-a-certificate-from-key-vault)和[导入的应用服务证书](#import-an-app-service-certificate)。
-
 ## <a name="upload-a-public-certificate"></a>上传公用证书
 
 支持使用 .cer 格式的公用证书。 
@@ -317,14 +314,59 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 上传证书后，复制证书指纹并检查是否[使证书可访问](configure-ssl-certificate-in-code.md#make-the-certificate-accessible)。
 
+## <a name="renew-an-expiring-certificate"></a>续订即将到期的证书
+
+在证书到期之前，应将续订的证书添加到应用服务中，并更新任何 [TLS/SSL 绑定](configure-ssl-certificate.md)。 此过程取决于证书类型。 例如，[从 Key Vault 导入的证书](#import-a-certificate-from-key-vault)（包括[应用服务证书](#import-an-app-service-certificate)）每 24 小时自动同步到应用服务，并在你续订证书时更新 TLS/SSL 绑定。 对于[上传的证书](#upload-a-private-certificate)，没有自动绑定更新。 请根据你的情况，参阅以下部分之一：
+
+- [续订上传的证书](#renew-an-uploaded-certificate)
+- [续订应用服务证书](#renew-an-app-service-certificate)
+- [续订从 Key Vault 导入的证书](#renew-a-certificate-imported-from-key-vault)
+
+### <a name="renew-an-uploaded-certificate"></a>续订上传的证书
+
+替换过期证书时，使用新证书更新证书绑定的方式可能会对用户体验产生不利影响。 例如，在删除某个绑定时，即使该绑定是基于 IP 的，入站 IP 地址也可能会更改。 在续订已进行基于 IP 的绑定的证书时，了解这一点尤为重要。 若要避免应用的 IP 地址发生更改以及由于 HTTPS 错误而导致应用停机，请按顺序执行以下步骤：
+
+1. [上传新证书](#upload-a-private-certificate)。
+2. [将新证书绑定到同一自定义域](configure-ssl-bindings.md)，而不删除现有（过期）证书。 此操作将替换绑定而不是删除现有证书绑定。
+3. 删除现有证书。
+
+### <a name="renew-an-app-service-certificate"></a>续订应用服务证书
+
+> [!NOTE]
+> 续订过程要求[应用服务的已知服务主体拥有对密钥保管库的所需访问权限](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault)。 当你通过门户导入应用服务证书时，系统会为你配置此权限，不应从密钥保管库中删除它。
+
+若要随时切换应用服务证书的自动续订设置，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格中的“自动续订设置”。 默认情况下，应用服务证书具有一年的有效期。
+
+选择“开”或“关”，然后单击“保存”  。 如果启用了自动续订，则证书会在到期前 31 天自动续订。
+
+![自动续订应用服务证书](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
+
+若要改为手动续订证书，请单击“手动续订”。 可以请求在到期前 60 天手动续订证书。
+
+续订操作完成后，单击“同步”。同步操作会自动更新应用服务中证书的主机名绑定，而不会导致应用停机。
+
+> [!NOTE]
+> 如果未单击“同步”，应用服务会在 24 小时内自动同步证书。
+
+### <a name="renew-a-certificate-imported-from-key-vault"></a>续订从 Key Vault 导入的证书
+
+若要续订从 Key Vault 导入应用服务的证书，请参阅[续订 Azure Key Vault 证书](../key-vault/certificates/overview-renew-certificate.md)。
+
+在密钥保管库中续订证书后，应用服务会自动同步新证书并在 24 小时内更新任何适用的 TLS/SSL 绑定。 若要手动同步，请执行以下操作：
+
+1. 转到应用的“TLS/SSL 设置”页面。
+1. 在“私钥证书”下选择导入的证书。
+1. 单击“同步”  。 
+
 ## <a name="manage-app-service-certificates"></a>管理应用服务证书
 
-本部分介绍如何管理在[导入应用服务证书](#import-an-app-service-certificate)中购买的应用服务证书。
+本部分介绍如何管理[购买的应用服务证书](#import-an-app-service-certificate)。
 
 - [为证书重新生成密钥](#rekey-certificate)
-- [续订证书](#renew-certificate)
 - [导出证书](#export-certificate)
 - [删除证书](#delete-certificate)
+
+另请参阅[续订应用服务证书](#renew-an-app-service-certificate)
 
 ### <a name="rekey-certificate"></a>为证书重新生成密钥
 
@@ -337,24 +379,6 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 通过重新生成证书的密钥，将使用证书颁发机构颁发的新证书滚动更新现有证书。
 
 重新生成密钥操作完成后，单击“同步”。同步操作会自动更新应用服务中证书的主机名绑定，而不会导致应用停机。
-
-> [!NOTE]
-> 如果未单击“同步”，应用服务会在 24 小时内自动同步证书。
-
-### <a name="renew-certificate"></a>续订证书
-
-> [!NOTE]
-> 续订过程要求[应用服务的已知服务主体拥有对密钥保管库的所需访问权限](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault)。 当你通过门户导入应用服务证书时，系统会为你配置此权限，不应从密钥保管库中删除它。
-
-若要在任何时候启用证书自动续订，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格的“自动续订设置”。 默认情况下，应用服务证书具有一年的有效期。
-
-选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 31 天自动续订。
-
-![自动续订应用服务证书](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
-
-若要改为手动续订证书，请单击“手动续订”。 可以请求在到期前 60 天手动续订证书。
-
-续订操作完成后，单击“同步”。同步操作会自动更新应用服务中证书的主机名绑定，而不会导致应用停机。
 
 > [!NOTE]
 > 如果未单击“同步”，应用服务会在 24 小时内自动同步证书。

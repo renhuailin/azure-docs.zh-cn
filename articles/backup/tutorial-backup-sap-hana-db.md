@@ -2,13 +2,13 @@
 title: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
 description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
-ms.date: 02/24/2020
-ms.openlocfilehash: 00109de349c1fdfdbaff9de30d18f64d8b986a59
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 09/01/2021
+ms.openlocfilehash: 3cfbd89e9df6cf2d0d30d744ee8e437e3c364094
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587638"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434243"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 
@@ -37,7 +37,8 @@ ms.locfileid: "104587638"
   * 对于 MDC，该密钥应指向 **NAMESERVER** 的 SQL 端口。 对于 SDC，它应指向 INDEXSERVER 的 SQL 端口
   * 它应该包含用于添加和删除用户的凭据
   * 请注意，成功运行预注册脚本后可以删除此密钥
-* 在安装了 HANA 的虚拟机中，以 root 用户身份运行 SAP HANA 备份配置脚本（注册前脚本）。 [此脚本](https://aka.ms/scriptforpermsonhana)可使 HANA 系统做好备份的准备。 请参阅[注册前脚本的功能](#what-the-pre-registration-script-does)部分来详细了解注册前脚本。
+* 还可以选择为 hdbuserstore 中的现有 HANA SYSTEM 用户创建密钥，而不是创建上述步骤中列出的自定义密钥。
+* 在安装了 HANA 的虚拟机中，以 root 用户身份运行 SAP HANA 备份配置脚本（注册前脚本）。 [此脚本](https://aka.ms/scriptforpermsonhana)可让 HANA 系统做好备份准备，并要求将你在上述步骤中创建的密钥作为输入传递。 要了解如何将此输入作为参数传递到脚本，请参阅[预注册脚本的功能](#what-the-pre-registration-script-does)部分。 它还详细说明了预注册脚本的功能。
 * 如果 HANA 安装程序使用专用终结点，请使用 -sn 或 -skip-network-checks 参数运行[预注册脚本](https://aka.ms/scriptforpermsonhana)。
 
 >[!NOTE]
@@ -103,7 +104,7 @@ ms.locfileid: "104587638"
 
 SAP HANA Azure VM 中通过 Backint 提供的备份（日志和非日志）将流式传输到 Azure 恢复服务保管库，因此，了解此流式传输方法非常重要。
 
-HANA 的 Backint 组件提供了连接到数据库文件所在底层磁盘的“管道”（要读取的管道，以及要写入到的管道），这些数据库文件将由 Azure 备份服务读取并传输到 Azure 恢复服务保管库。 除了 backint 本机验证检查以外，Azure 备份服务还会执行校验和来验证流。 这些验证将确保 Azure 恢复服务保管库中存在的数据确实可靠且可恢复。
+HANA 的 Backint 组件提供了连接到数据库文件所在底层磁盘的“管道”（要读取的管道，以及要写入到的管道），这些数据库文件将由 Azure 备份服务读取并传输到 Azure 恢复服务保管库。 除了 Backint 本机验证检查以外，Azure 备份服务还会执行校验和来验证流。 这些验证将确保 Azure 恢复服务保管库中存在的数据确实可靠且可恢复。
 
 由于流主要处理磁盘，因此你需要了解磁盘性能以衡量备份和还原性能。 请参阅[此文](../virtual-machines/disks-performance.md)，深入了解 Azure VM 中的磁盘吞吐量和性能。 这些也适用于备份和还原性能。
 
@@ -145,17 +146,22 @@ HANA 的 Backint 组件提供了连接到数据库文件所在底层磁盘的“
 
 * 脚本将基于 Linux 分发安装或更新 Azure 备份代理所需的任何包。
 * 执行与 Azure 备份服务器和相关服务（例如 Azure Active Directory 和 Azure 存储）之间的出站网络连接检查。
-* 使用[先决条件](#prerequisites)中列出的用户密钥登录到 HANA 系统。 此用户密钥用于在 HANA 系统中创建备份用户 (AZUREWLBACKUPHANAUSER)，成功运行预注册脚本后，可以删除该用户密钥。
+* 它使用[先决条件](#prerequisites)中提到的自定义用户密钥或 SYSTEM 用户密钥登录到 HANA 系统。 它用于在 HANA 系统中创建备份用户 (AZUREWLBACKUPHANAUSER)，成功运行预注册脚本后，可以删除该用户密钥。 请注意，不得删除 SYSTEM 用户密钥。
 * 为 AZUREWLBACKUPHANAUSER 分配了以下必需的角色和权限：
   * 对于 MDC：数据库管理员和备份管理员（从 HANA 2.0 SPS05 开始）：在还原期间创建新数据库。
   * 对于 SDC：备份管理员：在还原期间创建新数据库。
   * 目录读取：读取备份目录。
   * SAP_INTERNAL_HANA_SUPPORT：访问一些专用表。 仅对于 HANA 2.0 SPS04 Rev 46 以下的 SDC 和 MDC 版本是必需的。 对于 HANA 2.0 SPS04 Rev 46 和更高版本不是必需的，因为我们现在会通过 HANA 团队提供的修补程序从公共表中获取所需的信息。
 * 此脚本在 **hdbuserstore** 中为 HANA 备份插件的 AZUREWLBACKUPHANAUSER 添加一个密钥，以便处理所有操作（数据库查询、还原操作、配置和运行备份）。
+* 你也可以选择创建自己的自定义备份用户。 确保为该用户分配了以下必需的角色和权限：
+  * 对于 MDC：数据库管理员和备份管理员（从 HANA 2.0 SPS05 开始）：在还原期间创建新数据库。
+  * 对于 SDC：备份管理员：在还原期间创建新数据库。
+  * 目录读取：读取备份目录。
+  * SAP_INTERNAL_HANA_SUPPORT：访问一些专用表。 仅对于 HANA 2.0 SPS04 Rev 46 以下的 SDC 和 MDC 版本是必需的。 对于 HANA 2.0 SPS04 Rev 46 和更高版本不是必需的，因为我们现在会通过 HANA 团队提供的修补程序从公共表中获取所需的信息。
+* 然后在 hdbuserstore 中为 HANA 备份插件的自定义备份用户添加一个密钥，以便处理所有操作（数据库查询、还原操作、配置和运行备份）。 将此自定义备份用户密钥作为参数传递给脚本：`-bk CUSTOM_BACKUP_KEY_NAME` 或 `-backup-key CUSTOM_BACKUP_KEY_NAME`。  请注意，此自定义备份密钥的密码过期可能会导致备份和还原失败。
 
 >[!NOTE]
-> 你可以将[先决条件](#prerequisites)中列出的用户密钥作为参数显式传递给预注册脚本：`-sk SYSTEM_KEY_NAME, --system-key SYSTEM_KEY_NAME` <br><br>
->若要了解脚本接受哪些其他参数，请使用命令 `bash msawb-plugin-config-com-sap-hana.sh --help`
+> 若要了解脚本接受哪些其他参数，请使用命令 `bash msawb-plugin-config-com-sap-hana.sh --help`
 
 若要确认创建密钥，请在具有 SIDADM 凭据的 HANA 计算机上运行以下 HDBSQL 命令：
 
@@ -168,7 +174,7 @@ hdbuserstore list
 >[!NOTE]
 > 请确保 `/usr/sap/{SID}/home/.hdb/` 下有一组唯一的 SSFS 文件。 此路径中应只有一个文件夹。
 
-下面概述了完成预注册脚本运行所需的步骤。
+下面概述了完成预注册脚本运行所需的步骤。 请注意，在此流程中，我们将提供 SYSTEM 用户密钥作为预注册脚本的输入参数。
 
 |谁  |从  |运行内容  |注释  |
 |---------|---------|---------|---------|

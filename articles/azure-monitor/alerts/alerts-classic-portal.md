@@ -4,18 +4,18 @@ description: 了解如何使用 Azure 门户、CLI 或 PowerShell 来创建、�
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 02/14/2021
-ms.openlocfilehash: 854867bb6f40bdd8f0fac28e69d936a4027760b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/06/2021
+ms.openlocfilehash: c5f3bd7d5c8e934977955b2b3f253e131cca7111
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101714368"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539184"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理经典指标警报
 
 > [!WARNING]
-> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](./alerts-overview.md)。 经典警报已对公有云用户[停用](./monitoring-classic-retirement.md)，但在 2021 年 5 月 31 日之前仍可使用，只是会受到限制。 针对 Azure 政府云和 Azure 中国世纪互联的经典警报将于 2024 年 2 月 29 日停用。
+> 本文介绍了如何创建旧式经典指标警报。 Azure Monitor 现在支持[较新的近实时指标警报和新的警报体验](./alerts-overview.md)。 经典警报已对公有云用户[停用](./monitoring-classic-retirement.md)。 针对 Azure 政府云和 Azure 中国世纪互联的经典警报将于 2024 年 2 月 29 日停用。
 >
 
 Azure Monitor 中的经典指标警报提供了一种在指标超出阈值时获得通知的方法。 经典指标警报是一个较旧的功能，它仅可针对非维度指标发出警报。 有一个称为“指标警报”的较新功能，它具有比经典指标警报改进的功能。 可以在[指标警报概述](./alerts-metric-overview.md)中了解新的指标警报功能的详细信息。 在本文中，我们将介绍如何通过 Azure 门户、Azure CLI 和 PowerShell 创建、查看和管理经典指标警报规则。

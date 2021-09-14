@@ -167,7 +167,7 @@
         - name: 可视化收集的数据
           href: get-visibility.md
         - name: 使用 Azure Monitor 工作簿
-          href: /azure/sentinel/monitor-your-data
+          href: ./monitor-your-data.md
     - name: 检测威胁并分析数据
       items:
         - name: 使用内置角色
@@ -283,11 +283,13 @@
             - name: 文件事件规范化架构
               href: file-event-normalization-schema.md
             - name: 网络规范化架构
-              href: normalization-schema.md
+              href: network-normalization-schema.md
             - name: 处理事件规范化架构
               href: process-events-normalization-schema.md
             - name: 注册表事件规范化架构
               href: registry-event-normalization-schema.md
+            - name: 旧版网络规范化架构
+              href: normalization-schema-v1.md
     - name: 检测和分析引用
       items:
         - name: 热门 Azure Sentinel 工作簿

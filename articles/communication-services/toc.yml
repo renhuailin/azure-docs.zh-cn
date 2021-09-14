@@ -49,8 +49,6 @@ items:
             href: quickstarts/voice-video-calling/getting-started-with-calling.md
           - name: 向客户端应用添加视频通话
             href: quickstarts/voice-video-calling/get-started-with-video-calling.md
-          - name: 使用呼叫 SDK
-            href: quickstarts/voice-video-calling/calling-client-samples.md
           - name: 将通话客户端应用加入到 Teams 会议
             href: quickstarts/voice-video-calling/get-started-teams-interop.md
           - name: 使用通话自动化 API
@@ -125,6 +123,8 @@ items:
             href: concepts/call-flows.md
           - name: 调用流拓扑
             href: concepts/detailed-call-flows.md
+          - name: 通话诊断
+            href: concepts/voice-video-calling/call-diagnostics.md
           - name: Web 最佳做法
             href: concepts/best-practices.md
           - name: 已知问题
@@ -160,6 +160,28 @@ items:
         href: concepts/metrics.md
       - name: 疑难解答
         href: concepts/troubleshooting-info.md
+  - name: 操作指南
+    items:
+      - name: 使用呼叫 SDK
+        items:
+          - name: 管理通话
+            href: how-tos/calling-sdk/manage-calls.md
+          - name: 管理视频
+            href: how-tos/calling-sdk/manage-video.md
+          - name: 录制通话
+            href: how-tos/calling-sdk/record-calls.md
+          - name: 启用推送通知
+            href: how-tos/calling-sdk/push-notifications.md
+          - name: 转录通话
+            href: how-tos/calling-sdk/call-transcription.md
+          - name: 显示活动说话人
+            href: how-tos/calling-sdk/dominant-speaker.md
+          - name: 转移呼叫
+            href: how-tos/calling-sdk/transfer-calls.md
+          - name: 加入 Teams 会议
+            href: how-tos/calling-sdk/teams-interoperability.md
+          - name: 订阅 SDK 事件
+            href: how-tos/calling-sdk/events.md
   - name: 示例
     items:
       - name: 概述

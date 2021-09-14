@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 05/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a2f1e40b85eea5f02aec93a0cac97acc5dfeaf9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0a340096875669acc63cef5f797fff8b5919b8bd
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732411"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478853"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies"></a>排查 Azure AD B2C 自定义策略问题
 
@@ -362,7 +362,7 @@ Azure AD B2C 相关 ID 是附加到授权请求的唯一标识符值。 它用�
 </OutputClaims>
 ```
 
-若要修复此类错误，请检查 `ClaimTypeReferenceId` 值是否拼写错误，或者是否不存在于架构中。 如果声明是在扩展策略中定义的，但也用在基本策略中。 请确保声明是在使用的策略中或高级策略中定义的。
+若要修复此类错误，请检查 `ClaimTypeReferenceId` 值是否拼写错误，或者是否不存在于架构中。 如果声明是在扩展策略中定义的，但也用在基本策略中。 请确保声明在使用它的策略中或在更高一级的策略中定义。
 
 将声明添加到声明架构可以解决此类错误。
 

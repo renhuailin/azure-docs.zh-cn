@@ -6,13 +6,13 @@ ms.author: thvankra
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: f3b6c41006c18e1b5e211b36756250dba28ae1d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/03/2021
+ms.openlocfilehash: 192d18349b783cccb8548dc0983c6d3e386f39e9
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778431"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468323"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>在 Azure Cosmos DB Cassandra API 中进行分区
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -86,9 +86,20 @@ insert into uprofile.user (user, id, message) values ('theo', 2, 'hello again');
 
 :::image type="content" source="./media/cassandra-partitioning/select-from-pk.png" alt-text="此屏幕截图显示了按聚类分析键排序的返回数据。":::
 
+> [!WARNING]
+> 查询数据时，如果想要仅筛选复合主键的分区键值元素（如上所述），请确保在分区键上显式添加辅助索引 ：
+>
+>    ```shell
+>    CREATE INDEX ON uprofile.user (user);
+>    ```
+>
+> 默认情况下，Azure Cosmos DB Cassandra API 不会将索引应用于分区键，此方案中的索引可显著提高查询性能。 有关详细信息，请参阅关于[辅助索引](secondary-indexing.md)的文章。
+
 对于以此方式建模的数据，可以将多条记录分配给每个分区，并按用户分组。 因此，我们可以发出按 `partition key`（在本例中为 `user`）进行高效路由的查询，以获取给定用户的所有消息。 
 
 :::image type="content" source="./media/cassandra-partitioning/cassandra-partitioning2.png" alt-text="此图显示了如何将多条记录分配给每个分区并按用户分组。" border="false":::
+
+
 
 
 ## <a name="composite-partition-key"></a>复合分区键

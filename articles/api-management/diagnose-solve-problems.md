@@ -6,12 +6,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: rongzhang
-ms.openlocfilehash: 01b932cf33883f186f9f4ff69bc78869cdb4cb18
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 9dcbd1bf789d199b0561587949a5381027518ca3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109516571"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436403"
 ---
 # <a name="azure-api-management-diagnostics-overview"></a>Azure API 管理诊断概述
 

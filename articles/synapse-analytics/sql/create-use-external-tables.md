@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: cfce86e74a5e32f266dd0bbad84a179d8158a687
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 35a56131c55549cc5d33989579514fec3a0184c8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113303681"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428229"
 ---
 # <a name="create-and-use-native-external-tables-using-sql-pools-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 池创建和使用本机外部表
 
@@ -127,6 +127,35 @@ CREATE EXTERNAL TABLE Taxi (
 
 > [!NOTE]
 > 表是基于分区文件夹结构创建的，但你无法利用某种形式的分区消除。 如果你想要通过跳过不满足某些条件（例如，本例中的特定年份或月份）的文件来获得更好的性能，请使用[基于外部数据的视图](create-use-views.md#partitioned-views)。
+
+## <a name="external-table-on-appendable-files"></a>可追加文件的外部表
+
+查询运行时不应更改外部表引用的文件。 在长时间运行的查询中，SQL 池可以重试读取、读取部分文件，甚至多次读取文件。 如果对文件内容进行更改，会导致错误的结果。 因此，如果在查询执行过程中检测到任何文件的修改时间发生了更改，SQL 池将导致查询失败。
+在某些情况下，需要在不断追加的文件上创建一个表。 为避免由于不断追加文件而导致查询失败，可以使用 `TABLE_OPTIONS` 设置指定外部表应忽略潜在的不一致读取操作。
+
+
+```sql
+CREATE EXTERNAL TABLE populationExternalTable
+(
+    [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
+    [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
+    [year] smallint,
+    [population] bigint
+)
+WITH (
+    LOCATION = 'csv/population/population.csv',
+    DATA_SOURCE = sqlondemanddemo,
+    FILE_FORMAT = QuotedCSVWithHeaderFormat,
+    TABLE_OPTIONS = N'{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}'
+);
+```
+
+`ALLOW_INCONSISTENT_READS` 读取选项将在查询生命周期期间禁用文件修改时间检查，并读取外部表引用的文件中的任何可用内容。 在可追加文件中，不更新现有内容，仅添加新行。 因此，与可更新文件相比，这样做生成错误结果的可能性最低。 使用此选项，可以在不处理错误的情况下读取经常追加的文件。
+
+此选项仅在以 CSV 文件格式创建的外部表中可用。
+
+> [!NOTE]
+> 顾名思义，该选项表示表的创建者接受结果可能不一致的风险。 在可追加文件中，如果通过自联接表强制多次读取基础文件，则可能会得到不正确的结果。 在大多数“经典”查询中，外部表仅忽略在查询运行时追加的某些行。
 
 ## <a name="delta-lake-external-table"></a>Delta Lake 外部表
 

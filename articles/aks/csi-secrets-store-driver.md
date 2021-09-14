@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to, devx-track-azurecli
-ms.openlocfilehash: fd6ebf1534869fa96fe6249d302406583fe55e59
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6b971849501eb4229dd4db8a58f7fc59843aef4b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733594"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429039"
 ---
 # <a name="use-the-secrets-store-csi-driver-for-kubernetes-in-an-azure-kubernetes-service-aks-cluster-preview"></a>在 Azure Kubernetes 服务 (AKS) 群集中使用适用于 Kubernetes 的机密存储 CSI 驱动程序（预览）
 
@@ -23,6 +23,10 @@ ms.locfileid: "121733594"
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 - 在开始之前，请安装最新版本的 [Azure CLI](/cli/azure/install-azure-cli-windows) 和 aks-preview 扩展。
+
+### <a name="supported-kubernetes-versions"></a>支持的 Kubernetes 版本
+
+要使用此功能，建议采用的最低 Kubernetes 版本为 1.18。 
 
 ## <a name="features"></a>功能
 

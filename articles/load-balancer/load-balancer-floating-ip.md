@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 01cca2f2233ed5cdfb3003bb44c40f481bcf9bda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e103af26d62518dabb5314c79c61335a2791417a
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94699400"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479861"
 ---
 # <a name="azure-load-balancer-floating-ip-configuration"></a>Azure 负载均衡器浮动 IP 配置
 
@@ -24,15 +24,16 @@ ms.locfileid: "94699400"
 
 ## <a name="floating-ip"></a>浮动 IP
 
-在某些应用程序场景中，后端池中单个 VM 上的多个应用程序实例更需要或要求使用相同端口。 重复使用端口的常见示例包括提供高可用性群集、网络虚拟设备，以及公开多个不重新加密的 TLS 终结点。 如果想要在多个规则中重复使用后端端口，必须在规则定义中启用浮动 IP。
+在某些应用程序场景中，后端池中单个 VM 上的多个应用程序实例更需要或要求使用相同端口。 端口重用的常见示例包括 
+- 进行群集来实现高可用性
+- 网络虚拟设备
+- 在不重新加密的情况下公开多个 TLS 终结点。 
 
-“浮动 IP”是 Azure 的术语，表示是所谓的直接服务器返回 (DSR) 的一部分。 DSR 由两个部分组成：
+如果想要在多个规则中重复使用后端端口，必须在规则定义中启用浮动 IP。
 
-- 流拓扑
-- IP 地址映射方案
+启用浮动 IP 时，Azure 会更改 IP 地址映射，使其映射到负载均衡器前端的前端 IP 地址，而不是后端实例的 IP。 
 
-在平台级别，Azure 负载均衡器始终在 DSR 流拓扑中运行，无论是否已启用浮动 IP。 这意味着，流的出站部分始终正确重写为直接流回到来源。
-如果不使用浮动 IP，则 Azure 将公开传统的负载均衡 IP 地址映射方案以便于使用（VM 实例的 IP）。 启用浮动 IP 会更改负载均衡器前端 IP 的 IP 地址映射，以实现更大的灵活性。 在[此处](load-balancer-multivip-overview.md)了解更多信息。
+如果没有浮动 IP，Azure 将公开 VM 实例的 IP。 启用浮动 IP 会更改负载均衡器前端 IP 的 IP 地址映射，以实现更大的灵活性。 在[此处](load-balancer-multivip-overview.md)了解更多信息。
 
 ## <a name="limitations"></a><a name = "limitations"></a>限制
 

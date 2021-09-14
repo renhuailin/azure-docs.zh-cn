@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/26/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4f56571fb96f6d9baf28a119a978f2658de5616c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 834feed476c307bc1a16bf95719b630389e58511
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860537"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430785"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>通过 Synapse SQL 使用外部表
 
@@ -297,6 +297,7 @@ CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table
         LOCATION = 'folder_or_filepath',  
         DATA_SOURCE = external_data_source_name,  
         FILE_FORMAT = external_file_format_name
+        [, TABLE_OPTIONS = N'{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}' ]
     )  
 [;]  
 
@@ -320,6 +321,8 @@ CREATE EXTERNAL TABLE 支持配置列名、数据类型和排序规则的功能�
 
 从 Parquet 文件读取数据时，可以仅指定所要读取的列，并跳过其余的列。
 
+#### <a name="location"></a>LOCATION
+
 LOCATION = '*folder_or_filepath*'
 
 为 Azure Blob 存储中的实际数据指定文件夹或文件路径和文件名。 位置从根文件夹开始。 根文件夹是外部数据源中指定的数据位置。
@@ -330,9 +333,15 @@ LOCATION = '*folder_or_filepath*'
  
 Hadoop 和本机外部表均会跳过名称以下划线 (_) 或句点 (.) 开头的文件。
 
+#### <a name="data_source"></a>DATA_SOURCE
+
 DATA_SOURCE = *external_data_source_name* - 指定包含外部数据位置的外部数据源的名称。 要创建外部数据源，请使用 [CREATE EXTERNAL DATA SOURCE](#create-external-data-source)。
 
 FILE_FORMAT = *external_file_format_name* - 指定为外部数据存储文件类型和压缩方法的外部文件格式对象的名称。 若要创建外部文件格式，请使用 [CREATE EXTERNAL FILE FORMAT](#create-external-file-format)。
+
+#### <a name="table_options"></a>TABLE_OPTIONS
+
+TABLE_OPTIONS = json 选项 - 指定描述如何读取基础文件的选项集。 目前，唯一可用的选项是 `"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]`，它指示外部表忽略对基础文件进行的更新，即使这可能导致一些不一致的读取操作。 仅在经常追加文件的特殊情况下使用此选项。 此选项在 CSV 格式的无服务器 SQL 池中可用。
 
 ### <a name="permissions-create-external-table"></a>CREATE EXTERNAL TABLE 的权限
 

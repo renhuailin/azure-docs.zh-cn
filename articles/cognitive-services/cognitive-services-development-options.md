@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 8c40af42248e41346d10ec0028c1f13ff7ef22d6
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6f3cd38985b6bbf1f0095ef124d2690cce00181f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457940"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473723"
 ---
 # <a name="cognitive-services-development-options"></a>认知服务开发选项
 
@@ -39,7 +39,6 @@ Azure 认知服务是基于云的 AI 服务，使开发人员无需深入了解�
 
 * 可以将图像发送到计算机视觉服务，以检测字词和短语或统计帧中的人数
 * 可以将音频文件发送到语音服务并获取听录，同时将语音转换为文本
-* 可以将 PDF 发送到表单识别器服务，并检测表、单元格以及这些单元格中的文本，获得包含坐标和详细信息的 JSON 输出
 
 Azure 提供了各种类型的工具，这些工具适用于不同类型的用户，其中许多工具可用于认知服务。 设计器驱动的工具是最容易使用的工具，可快速设置和自动运行，但在自定义方面可能有限制。 我们的 REST API 和客户端库为用户提供了更多控制和灵活性，但需要更多的工作量、时间和专业知识来构建解决方案。 如果你使用 REST API 和客户端库，则需要熟悉现代编程语言，例如 C#、Java、Python、JavaScript 或其他常用编程语言。 
 
@@ -78,7 +77,7 @@ Azure 提供了各种类型的工具，这些工具适用于不同类型的用�
 
 ### <a name="azure-logic-apps"></a>Azure 逻辑应用 
 
-[Azure 逻辑应用](../logic-apps/index.yml)与 Power Automate 共享相同的工作流设计器和连接器，但提供了更高级的控制，包括与 Visual Studio 和 DevOps 的集成。 有了 Power Automate，就可以通过特定于服务的连接器轻松地与认知服务资源集成，这些连接器围绕 API 提供代理或包装器。 它们与 Power Automate 中提供的连接器相同。 
+[Azure 逻辑应用](../logic-apps/index.yml)与 Power Automate 共享相同的工作流设计器和连接器，但提供更高级的控制，其中包括与 Visual Studio 和 DevOps 的集成。 有了 Power Automate，就可以通过特定于服务的连接器轻松地与认知服务资源集成，这些连接器围绕 API 提供代理或包装器。 它们与 Power Automate 中提供的连接器相同。 
 
 * **目标用户**：开发人员、集成人员、IT 专业人员、开发运营人员
 * **优点：** 设计器优先（声明性）开发模型，在低代码解决方案中提供高级选项和集成
@@ -96,7 +95,7 @@ Power Automate 是 [Power Platform](/power-platform/) 中的一项服务，可�
 
 ### <a name="ai-builder"></a>AI Builder 
 
-[AI Builder](/ai-builder/overview) 是一种 Microsoft Power Platform 功能，可以用来自动执行流程并预测结果以提高业务绩效。 AI Builder 通过点击式体验，在你的解决方案中引入了 AI 功能。 许多认知服务（例如表单识别器、文本分析和计算机视觉）已直接集成在这里，你不需要创建自己的认知服务。 
+[AI Builder](/ai-builder/overview) 是一种 Microsoft Power Platform 功能，可以用来自动执行流程并预测结果以提高业务绩效。 AI Builder 通过点击式体验，在你的解决方案中引入了 AI 功能。 许多认知服务（例如文本分析和计算机视觉）已直接在这里集成，你无需创建自己的认知服务。 
 
 * **目标用户**：业务用户（分析人员）和 SharePoint 管理员
 * **优点：** 统包式解决方案，通过点击体验引入 AI 功能。 无需编码或数据科学技能。
@@ -105,7 +104,7 @@ Power Automate 是 [Power Platform](/power-platform/) 中的一项服务，可�
 
 ### <a name="continuous-integration-and-deployment"></a>持续集成和持续部署
 
-你可以使用 Azure DevOps 和 GitHub Actions 来管理你的部署。 在[下面的部分中](#continuous-integration-and-delivery-with-devops-and-github-actions)，我们提供了两个 CI/CD 集成示例，用于训练和部署语音识别和语言理解 ( LUIS) 服务的自定义模型。 
+你可以使用 Azure DevOps 和 GitHub Actions 来管理你的部署。 在[以下部分](#continuous-integration-and-delivery-with-devops-and-github-actions)中，我们提供了两个 CI/CD 集成示例，用于为语音和语言理解 (LUIS) 服务训练和部署自定义模型。 
 
 * **目标用户**：开发人员、数据科学家和数据工程师
 * **优点：** 允许你以编程方式持续调整、更新和部署应用程序和模型。 当定期使用你的数据来改进和更新语音、视觉、语言和决策的模型时，这有明显的优势。 
@@ -125,7 +124,6 @@ Power Automate 是 [Power Platform](/power-platform/) 中的一项服务，可�
 | 构成要素 | 服务 | 自定义 UI | 快速入门 |
 |--------|---------|------------------|------------|
 | 影像 | 自定义视觉 | https://www.customvision.ai/ | [快速入门](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
-| 影像 | 表单识别器 | [示例标记工具](https://aka.ms/fott-2.1-ga) | [操作指南文章](./form-recognizer/label-tool.md?tabs=v2-0) |
 | 决策 | 内容审查器 | https://contentmoderator.cognitive.microsoft.com/dashboard | [快速入门](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
 | 决策 | 个性化体验创建服务 | Azure 门户的个性化体验创建服务中提供 UI。 | [快速入门](./personalizer/quickstart-personalizer-sdk.md) |
 | 语言 | 语言理解 (LUIS) | https://www.luis.ai/ | |
@@ -144,7 +142,7 @@ Power Automate 是 [Power Platform](/power-platform/) 中的一项服务，可�
 
 ## <a name="on-premises-containers"></a>本地容器 
 
-许多认知服务可以部署在容器中，供本地访问和使用。 借助这些容器，你能够灵活地将认知服务移至更接近你的数据的位置，以满足合规性、安全性或其他操作目的。 有关认知服务容器的完整列表，请参阅[认知服务的本地容器](./cognitive-services-container-support.md)。
+许多认知服务都可部署在容器中，供本地访问和使用。 借助这些容器，你能够灵活地将认知服务移至更接近你的数据的位置，以满足合规性、安全性或其他操作目的。 如需认知服务容器的完整列表，请参阅[认知服务的本地容器](./cognitive-services-container-support.md)。
 
 ## <a name="next-steps"></a>后续步骤
 <!--

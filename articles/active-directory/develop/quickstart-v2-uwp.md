@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 88fd6260df0039e960ac87b4b83d43ea497a58b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f142cf84e0e7e75d2ed61fbad9896d89e2364a0
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104658503"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436529"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -103,9 +103,8 @@ ms.locfileid: "104658503"
 > 1. 针对该包创建并选择一个新的自签名测试证书：
 >     1. 在“解决方案资源管理器”中，双击 Package.appxmanifest 文件。
 >     1. 选择“打包” > “选择证书...” > “创建...”  。
->     1. 输入密码，然后选择“确定”。
->     1. 依次选择“从文件中选择...”、刚创建的 Native_UWP_V2_TemporaryKey.pfx 文件以及“确定”。
->     1. 关闭 Package.appxmanifest 文件（如果系统提示保存文件，请选择“确定”）。
+>     1. 输入密码，然后选择“确定”。 创建一个名为 Native_UWP_V2_TemporaryKey.pfx 的证书。 
+>     1. 选择“确定”来关闭“选择证书”对话框，然后验证解决方案资源管理器中是否有“Native_UWP_V2_TemporaryKey.pfx” 。
 >     1. 在“解决方案资源管理器”中，右键单击 Native_UWP_V2 项目，并选择“属性”  。
 >     1. 选择“签名”，然后在“选择强名称密钥文件”下拉列表中选择你创建的 .pfx 。
 

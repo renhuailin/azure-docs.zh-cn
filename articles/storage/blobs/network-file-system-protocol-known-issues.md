@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
-ms.openlocfilehash: 8af0b4a5c26d70f9fdedc30d07c8953bfee76fb4
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 9d54072c49fd0ce1571ebbcfced76d74ce18ea7a
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113727123"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471095"
 ---
 # <a name="known-issues-with-network-file-system-nfs-30-protocol-support-in-azure-blob-storage"></a>Azure Blob 存储中网络文件系统 (NFS) 3.0 协议支持的已知问题
 
@@ -49,26 +49,9 @@ Windows 客户端尚不支持 NFS
 
 ## <a name="blob-storage-features"></a>Blob 存储功能
 
-尚不支持以下 Blob 存储功能。
+启用 NFS 3.0 协议支持后，某些 Blob 存储功能将完全受支持，但某些功能可能仅在预览级别受支持，或者根本不受支持。  
 
-- [Azure Active Directory (AD) 安全性](../common/authorize-data-access.md?toc=/azure/storage/blobs/toc.json)
-- [Azure 备份集成](../../backup/blob-backup-overview.md)
-- [Azure 存储分析日志记录](../common/storage-analytics-logging.md?toc=/azure/storage/blobs/toc.json)
-- [Blob 索引标记](storage-blob-index-how-to.md)
-- [Blob 存储事件](storage-blob-event-overview.md)
-- [Blob 版本控制](versioning-enable.md)
-- [更改源](storage-blob-change-feed.md)
-- [客户管理的帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=/azure/storage/blobs/toc.json)
-- [用于 Azure 存储加密的客户提供的密钥](encryption-customer-provided-keys.md) 
-- [加密范围](encryption-scope-overview.md)
-- [用于生命周期管理的上次访问时间跟踪](storage-lifecycle-management-concepts.md#move-data-based-on-last-accessed-date-preview)
-- [块 blob 的对象复制](object-replication-overview.md)
-- [页 Blob](storage-blobs-introduction.md#blobs)
-- [块 blob 的时间点还原](point-in-time-restore-overview.md)
-- [blob 的软删除](soft-delete-blob-overview.md)
-- [容器软删除](soft-delete-container-overview.md)
-- [blob 快照](snapshots-overview.md)
-- [静态网站托管](storage-blob-static-website.md)
+要查看启用了 NFS 3.0 支持的帐户如何支持每个 Blob 存储功能，请参阅 [Azure 存储帐户中的 Blob 存储功能支持](storage-feature-support-in-storage-accounts.md)。
 
 ## <a name="blob-storage-apis"></a>Blob 存储 API
 

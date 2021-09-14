@@ -1,0 +1,123 @@
+### YamlMime:FAQ
+metadata:
+  title: 有关将 Power BI 视觉对象产品/服务从 Office 应用商店迁移到商业市场的常见问题解答。
+  description: 有关将 Power BI 视觉对象产品/服务从 Office 应用商店移动到商业市场的常见问题。
+  ms.service: marketplace
+  ms.subservice: partnercenter-marketplace-publisher
+  ms.topic: conceptual
+  ms.date: 09/03/2021
+  author: posurnis
+  ms.author: pooja.surnis
+  ms.reviewer: pooja.surnis
+  ms.openlocfilehash: a86d692daa794aed6130e7e1e4f84b74f04285a6
+  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 09/07/2021
+  ms.locfileid: "123544499"
+title: Power BI 视觉对象常见问题解答
+summary: Power BI 视觉对象产品/服务将移动到合作伙伴中心商业市场，以简化产品/服务管理体验。 Microsoft 将在 2021 年 9 月完成移动，此时间之后所有现有和新的 Power BI 视觉产品/服务都将在商业市场中提供。 本文解答有关产品/服务管理体验的移动和增强功能的常见问题。
+sections:
+- name: 忽略
+  questions:
+  - question: >
+      移动到商业市场对于我意味着什么？
+    answer: >
+      | 区域 | 更改 |
+
+      | --- | --- |
+
+      | 帐户 | 你需要在商业市场中注册，才能管理现有的和新的 Power BI 视觉对象产品/服务。 如果尚未注册，则需要签署商业市场计划的发布协议，然后使用公司/工作电子邮件地址进行注册。 有关详细信息，请访问[在合作伙伴中心管理商业市场帐户](manage-account.md)。 |
+
+      | 产品/服务发布和产品/服务管理体验 | 我们将在 2021 年 9 月将你的产品/服务从 Office 应用商店移动到商业市场。 移动后，你将在商业市场（而不是 Office 应用商店）中管理产品/服务，这将改善用户体验并简化包提交过程。 了解如何[更新商业市场中的现有产品/服务](update-existing-offer.md)。 |
+
+      | 合作伙伴中心提供的产品/服务 | 无更改。 如果产品/服务在 Office 应用商店中为草稿或已发布状态，则产品/服务在移动到商业市场后将继续保持相同的状态。 |
+
+      | 收购和部署 | 无更改。 你的客户可以继续发现、下载和部署你的产品/服务，而不会出现任何中断。 |
+
+      | 分析 | 将增强合作伙伴中心的“市场见解”仪表板，以显示有关 Power BI 视觉对象产品/服务的同意点击量和平台（网站和客户端）的信息。 使用此信息可了解为产品/服务带来流量、点击量和转化率的源。 |
+
+      |
+  - question: >
+      是否需要在合作伙伴中心创建新帐户来管理我的产品/服务？
+    answer: >
+      如果已使用 Office 应用商店中的同一帐户在商业市场中进行了注册，则无需采取进一步措施。 移动完成后，使用同一帐户登录合作伙伴中心，你就会在商业市场中看到 Power BI 视觉对象。
+
+
+      如果 Office 应用商店帐户未在商业市场中注册，请联系该帐户的所有者以将其注册到商业市场中。 为避免创建不同的商业市场帐户/卖家 ID，所有者应执行此注册。 有关查找卖家 ID 的详细信息，请参阅[在合作伙伴中心管理商业市场帐户](manage-account.md)。
+
+
+      如果 Office 应用商店帐户未在商业市场中注册，但你的组织已使用不同的卖家 ID 在商业市场中注册，我们仍鼓励你使用与 Office 应用商店注册相同的帐户在商业市场中注册。
+
+
+      如果使用与 Office 应用商店不同的卖家 ID 创建新帐户以在商业市场中注册，则你的 Power BI 视觉对象产品/服务将不会自动移动到商业市场。 请联系[客户支持](https://partner.microsoft.com/support/?stage=2&topicid=dfd204c3-8357-c8d6-4dff-186bd183058c)并提供新的卖家 ID。 移动完成后，我们会将现有的 Power BI 视觉对象产品/服务映射到新帐户，我们的工程团队会将你的 Power BI 视觉对象产品/服务移动到新的卖家 ID。
+  - question: >
+      合作伙伴中心中哪些页面与我在 Office 应用商店中所用的页面相对应？
+    answer: >
+      下表显示了新旧页面之间的相关性。 如果将 Office 应用商店链接保存为书签，则需要对其进行更新。
+
+
+      | Office 应用商店中的页面名称 | 合作伙伴中心的页面名称 |
+
+      | --- | --- |
+
+      | 产品概述 | 产品/服务概述 |
+
+      | 产品设置 | 产品/服务设置 |
+
+      | 包 | 技术配置 |
+
+      | 属性 | 属性 |
+
+      | 市场列表 | 产品/服务一览 |
+
+      | 可用性 | 可用性 |
+
+      | 产品管理 | 产品/服务管理 |
+
+      |
+  - question: >
+      在 Office 应用商店中发布的产品/服务呢？
+    answer: >
+      登录商业市场后，即可访问移动到商业市场的 Power BI 视觉对象产品/服务。 如果你的产品/服务已在 Office 应用商店发布上线，则将继续保持上线状态，且你的客户将能够继续在不中断的情况下进行发现、获取和下载。
+  - question: >
+      移动期间，我在 Office 应用商店的所有产品/服务都将移到商业市场吗？
+    answer: >
+      我们只会将你的 Power BI 视觉对象产品/服务移动到商业市场。 Office 应用商店提供的“Office 加载项”、“SharePoint 解决方案”和“Teams 应用”将继续在 Office 应用商店中提供。
+
+
+      我们将移动 Office 应用商店中支持的所有 Power BI 视觉对象产品/服务，无论它们的状态是“草稿”还是“上线”。 移动后，Power BI 视觉对象产品/服务将被锁定，无法在 Office 应用商店中进行编辑。
+  - question: >
+      为什么在合作伙伴中心找不到我的 Power BI 视觉对象产品/服务？
+    answer: >
+      将产品/服务移到商业市场后，你将不能从 Office 应用商店访问产品/服务。 在“合作伙伴中心”中看到的内容取决于你注册的计划、你所属的帐户以及分配给你的用户角色和权限。 有很多合作伙伴中心计划可用，且你可以注册多个计划。 你还可以访问具有相同用户凭据的多个帐户。
+
+
+      你在 Office 应用商店中创建的 Power BI 视觉对象产品/服务将在商业市场中可用，使用的帐户与创建原始产品/服务的帐户相同。 若要确保查看的是正确的计划和正确的帐户，请按照以下步骤进行操作。 有关其他故障排除提示，请参阅[管理合作伙伴中心帐户](/partner-center/partner-center-account-setup)。
+
+
+      **在合作伙伴中心访问正确的计划**
+
+
+      1. 使用与之前相同的凭据登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2166002)。 左侧导航菜单显示与你注册的计划关联的选项，例如 MPN 计划、Office 应用商店和商业市场。
+
+
+      1. 选择“商业市场” > “概述”，以访问你的产品/服务（如果未在左侧导航菜单中看到商业市场，则可能使用了错误的帐户）：
+
+         :::image type="content" source="media/power-bi-visual/overview-tab.png" alt-text="显示合作伙伴中心的“概览”选项卡。":::
+
+      **在合作伙伴中心内访问正确的帐户**
+
+
+      如果有多个帐户，合作伙伴中心会在左侧导航菜单中显示帐户选取器按钮。 选择此按钮可查看你所属的帐户。 选择一个帐户以切换到该帐户并查看与该帐户有关的所有计划和信息。 如果在导航菜单中未看到帐户选取器，说明你只有一个帐户。
+
+
+      :::image type="content" source="media/power-bi-visual/account-picker.png" alt-text="在合作伙伴中心的左侧导航菜单中显示帐户选取器按钮。":::
+  - question: >
+      有关使用合作伙伴中心的说明位于何处？
+    answer: >
+      转到商业市场[欢迎页面](https://aka.ms/MigrationFAQs)，然后展开“创建并管理产品/服务”部分。
+  - question: >
+      发布和产品/服务管理之间有哪些区别？
+    answer: "以下是在 Office 应用商店和商业市场中发布 Power BI 视觉对象产品/服务的主要区别：\n\n1. **简化了包提交过程**\n\n   对于在合作伙伴中心中提交到商业市场的任何新产品/服务，可以直接在“技术配置”页面上传两个包文件：`.pbix` 和 `.pbiviz`。 不再需要与 PBI 支持团队合作处理 XML 清单文件。 不再需要使用 XML 文件提交产品/服务。 这种简化的提交过程减少了准备和提交 Power BI 视觉对象产品/服务的时间。\n\n   :::image type=\"content\" source=\"media/power-bi-visual/technical-config.png\" alt-text=\"显示合作伙伴中心的技术配置页。\":::\n\n1. **强化预览选项**\n\n   商业市场提供的比较功能改进了筛选选项，你可使用这些选项在发布产品/服务之前查看更改，并将其与处于预览状态或客户可用的功能进行比较。 未发布的更新将保存为草稿。 有关比较功能的详细信息，请参阅[更新商业市场中的现有产品/服务](update-existing-offer.md#compare-changes-to-your-offer)\n\n   :::image type=\"content\" source=\"media/power-bi-visual/enhanced-preview.png\" lightbox=\"media/power-bi-visual/enhanced-preview.png\" alt-text=\"显示合作伙伴中心的产品/服务比较页面。\":::\n\n1. **品牌和导航更改**\n\n   你将注意到有一些品牌方面的更改。 例如，“产品”在商业市场中为“产品/服务”：\n\n   :::image type=\"content\" source=\"media/power-bi-visual/branding-navigation.png\" alt-text=\"显示合作伙伴中心的产品/服务概述页面。\":::\n\n1. **分析**\n\n   - 合作伙伴中心的“市场见解”仪表板将获得以下增强功能：\n\n     - 行动号召趋势\n\n       - 添加同意点击量分析。 同意点击量表示在产品/服务列表页面上完成的所有同意点击次数。 用户单击“行动号召”按钮，如“立即获取”、“免费试用”、“与我联系”或“体验版”后，会计入单击次数。\n\n         :::image type=\"content\" source=\"media/power-bi-visual/analytics-graphs.png\" alt-text=\"显示合作伙伴中心的同意点击量分析图表。\":::\n\n     - 页面访问和行动号召\n     \n     - 表格数据已修改\n\n       - 添加“同意点击量”列。 使用此信息了解产品/服务的转化率。\n\n       - 在推荐域视图中添加了“平台”列。 使用此信息可了解产品/服务的页面浏览量、行动号召和同意点击量在网站和嵌入式客户端平台上有何不同。\n\n       - 添加“漏斗视图”，以显示从页面浏览量到同意点击量的转化率\n\n         :::image type=\"content\" source=\"media/power-bi-visual/funnel-view.png\" alt-text=\"显示合作伙伴中心的漏斗视图分析的图表。\":::\n\n   - Office 应用商店页中的分析\n\n     - Office 应用商店中的分析将仅显示客户端内应用商店的采集遥测数据。 迁移产品/服务后，Web 商店的分析将显示在商业市场的“市场见解”报告中。\n     \n"
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n- 若要获取更多帮助，请与[客户支持](https://partner.microsoft.com/support/?stage=2&topicid=dfd204c3-8357-c8d6-4dff-186bd183058c)联系\n\n<!--\n- [Create a Power BI visual offer in Partner Center](marketplace-power-bi-visual.md) -->"

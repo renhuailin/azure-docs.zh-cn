@@ -1,16 +1,16 @@
 ---
-author: laujan
+author: PatrickFarley
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/02/2021
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 2a300a2bdffec7c376206f62d1b6fc8791aad01b
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 02b4341d9eddb039eb44ba964ca2e4a25c4835a7
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122423270"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539303"
 ---
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。 首先，请进行基本的配置和合成，然后通过更高级的示例来了解自定义应用程序开发，其中包括：
 
@@ -129,7 +129,7 @@ function synthesizeSpeech() {
 
 运行程序，合成的 `.wav` 文件将写入到指定的位置。 这只是最基本用法的一个很好示例。接下来，你将了解如何自定义输出，并将输出响应作为适用于自定义方案的内存中流进行处理。
 
-## <a name="synthesize-to-speaker-output"></a>合成到扬声器输出
+## <a name="synthesize-to-speaker-output-browser-only"></a>合成到扬声器输出（仅限浏览器）
 
 在某些情况下，你可能希望直接将合成的语音输出到扬声器。 为此，请使用 `fromDefaultSpeakerOutput()` 静态函数实例化 `AudioConfig`。 这会将语音输出到当前处于活动状态的输出设备。
 

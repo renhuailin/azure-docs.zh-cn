@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f38149e2259dbb6724a81e8139f46bd65a0edff0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2fd0e2807697ee417a14d7afa7c07864456a6976
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749319"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471221"
 ---
 # <a name="monitoring-azure-blob-storage"></a>监视 Azure Blob 存储
 
@@ -67,7 +67,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 ## <a name="creating-a-diagnostic-setting"></a>创建诊断设置
 
-可使用 Azure 门户、PowerShell、Azure CLI、Azure 资源管理器模板或 Azure Policy 创建诊断设置。 
+可以使用 Azure 门户、PowerShell、Azure CLI、Azure 资源管理器模板或 Azure Policy 创建诊断设置。 
 
 有关一般指南，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../../azure-monitor/essentials/diagnostic-settings.md)。
 
@@ -78,7 +78,7 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 1. 登录到 Azure 门户。
 
-2. 导航到自己的存储帐户。
+2. 导航到存储帐户。
 
 3. 在“监视”部分，单击“诊断设置(预览)”。
 
@@ -271,7 +271,7 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 ### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
 
-可使用策略定义来创建诊断设置。 这样，就可确保为创建或更新的每个帐户创建一个诊断设置。 请参阅 [Azure 存储的 Azure Policy 内置定义](../common/policy-reference.md)。
+可以使用策略定义创建诊断设置。 这样，就可以确保为创建或更新的每一个帐户创建诊断设置。 请参阅 [Azure 存储的 Azure Policy 内置定义](../common/policy-reference.md)。
 
 ---
 
@@ -607,6 +607,29 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
     | sort by count_ desc 
     | render piechart
     ```
+
+## <a name="feature-support"></a>功能支持
+
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+
+### <a name="logs-in-azure-monitor"></a>Azure Monitor 中的日志
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![是](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png)  <sup>2</sup>|![是](../media/icons/yes-icon.png)  <sup>2</sup> | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+### <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup> | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
+
+<sup>2</sup>    功能在预览级别受支持。
+
 ## <a name="faq"></a>常见问题解答
 
 **Azure 存储是否支持托管磁盘或非托管磁盘的指标？**

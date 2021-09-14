@@ -4,16 +4,16 @@ description: 本文提供有关 azcopy remove 命令的参考信息。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 09/21/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: bd221215d6be3c14ce1200e8bd374a97cb7608a0
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 8556dc719aa8abcfa1506b4d1147c29959b32746
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503008"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427617"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -88,11 +88,15 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 **--delete-snapshots** 字符串：如果 blob 有快照，删除操作默认将失败。 可指定“`include`”以删除根 blob 及其所有快照；也可指定“`only`”以仅删除快照，但保留根 blob。
 
+--dry-run：打印命令将删除的路径文件。 此标志不会触发文件的删除。
+
 --exclude-path 字符串：删除时排除这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀。 例如：`myFolder;myFolder/subDirName/file.pdf`
 
 **--exclude-pattern** 字符串   排除名称与模式列表相匹配的文件。 例如：`*.jpg`;`*.pdf`;`exactName`
 
 --force-if-read-only：删除 Azure 文件存储文件或文件夹时，即使现有对象已设置其只读属性，也会强制执行删除操作。
+
+--from-to 字符串：（可选）指定源目标组合。 例如：BlobTrash、FileTrash、BlobFSTrash
 
 --help：用于获取删除帮助。
 

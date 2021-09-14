@@ -1,5 +1,5 @@
 ---
-title: 教程 - 连接和监视 Azure Synapse Spark 应用程序级指标
+title: 使用 API 收集 Apache Spark 应用程序指标
 description: 教程 - 了解如何使用 Synapse Prometheus Connector 将现有的本地 Prometheus 服务器与 Azure Synapse 工作区集成，以获取准实时的 Azure Spark 应用程序指标。
 services: synapse-analytics
 author: jejiang
@@ -9,27 +9,27 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: 45ccced6f083e0d304651a0cea7df90c6396fd88
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b2810d97651c6819996c79ce554fa2feee2a6c65
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143244"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539634"
 ---
-# <a name="tutorial-connect-and-monitor-azure-synapse-spark-application-level-metrics"></a>教程：连接和监视 Azure Synapse Spark 应用程序级指标
+#  <a name="collect-apache-spark-applications-metrics-using-apis"></a>使用 API 收集 Apache Spark 应用程序指标
 
 ## <a name="overview"></a>概述
 
-在本教程中，你将了解如何使用 Synapse Prometheus Connector 将现有的本地 Prometheus 服务器与 Azure Synapse 工作区集成，以获取准实时的 Azure Spark 应用程序指标。 
+在本教程中，你将了解如何使用 Synapse Prometheus Connector 将现有的本地 Prometheus 服务器与 Azure Synapse 工作区集成，以获取准实时的 Apache Spark 应用程序指标。 
 
-本教程还介绍了 Azure Synapse REST 指标 API。 你可以通过 REST API 提取 Spark 应用程序指标数据，以构建你自己的监视和诊断工具包，或将其与你的监视系统集成。
+本教程还介绍了 Azure Synapse REST 指标 API。 你可以通过 REST API 提取 Apache Spark 应用程序指标数据，以构建你自己的监视和诊断工具包，或将其与你的监视系统集成。
 
 ## <a name="use-azure-synapse-prometheus-connector-for-your-on-premises-prometheus-servers"></a>对本地 Prometheus 服务器使用 Azure Synapse Prometheus Connector
 
 [Azure Synapse Prometheus Connector](https://github.com/microsoft/azure-synapse-spark-metrics) 是一个开源项目。 Synapse Prometheus Connector 使用基于文件的服务发现方法，可用于执行以下操作：
  - 通过 AAD 服务主体向 Synapse 工作区进行身份验证。
  - 提取工作区 Apache Spark 应用程序列表。 
- - 通过基于 Prometheus 文件的配置拉取 Spark 应用程序指标。 
+ - 通过基于 Prometheus 文件的配置拉取 Apache Spark 应用程序指标。 
 
 ### <a name="1-prerequisite"></a>1.先决条件
 
@@ -176,15 +176,15 @@ curl -X GET -H 'Content-Type: application/x-www-form-urlencoded' \
 
 ### <a name="2-list-running-applications-in-the-azure-synapse-workspace"></a>2.列出 Azure Synapse 工作区中正在运行的应用程序
 
-若要获取 Synapse 工作区的 Spark 应用程序的列表，可以按此文档中的说明操作：[监视 - 获取 Spark 作业列表](/rest/api/synapse/data-plane/monitoring/getsparkjoblist)。
+若要获取 Synapse 工作区的 Apache Spark 应用程序的列表，可以按此文档中的说明操作：[监视 - 获取 Apache Spark 作业列表](/rest/api/synapse/data-plane/monitoring/getsparkjoblist)。
 
 
-### <a name="3-collect-spark-application-metrics-with-the-prometheus-or-rest-apis"></a>3.通过 Prometheus 或 REST API 收集 Spark 应用程序指标
+### <a name="3-collect-apache-spark-application-metrics-with-the-prometheus-or-rest-apis"></a>3. 通过 Prometheus 或 REST API 收集 Apache Spark 应用程序指标
 
 
-#### <a name="collect-spark-application-metrics-with-the-prometheus-api"></a>通过 Prometheus API 收集 Spark 应用程序指标
+#### <a name="collect-apache-spark-application-metrics-with-the-prometheus-api"></a>通过 Prometheus API 收集 Apache Spark 应用程序指标
 
-通过 Prometheus API 获取指定的 Spark 应用程序的最新指标
+通过 Prometheus API 获取指定的 Apache Spark 应用程序的最新指标
 
 ```
 GET https://{endpoint}/livyApi/versions/{livyApiVersion}/sparkpools/{sparkPoolName}/sessions/{sessionId}/applications/{sparkApplicationId}/metrics/executors/prometheus?format=html
@@ -221,7 +221,7 @@ metrics_executor_completedTasks_total{application_id="application_1605509647837_
 
 ```
 
-#### <a name="collect-spark-application-metrics-with-the-rest-api"></a>通过 REST API 收集 Spark 应用程序指标
+#### <a name="collect-apache-spark-application-metrics-with-the-rest-api"></a>通过 REST API 收集 Apache Spark 应用程序指标
 
 ```
 GET https://{endpoint}/livyApi/versions/{livyApiVersion}/sparkpools/{sparkPoolName}/sessions/{sessionId}/applications/{sparkApplicationId}/executors
@@ -285,4 +285,4 @@ GET https://myworkspace.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview
 
 ### <a name="4-build-your-own-diagnosis-and-monitoring-tools"></a>4.构建你自己的诊断和监视工具
 
-Prometheus API 和 REST API 提供有关 Spark 应用程序运行信息的丰富指标数据。你可以通过 Prometheus API 和 REST API 收集与应用程序相关的指标数据。 你还可以构建更符合自身需求的、你自己的诊断和监视工具。
+Prometheus API 和 REST API 提供有关 Apache Spark 应用程序运行信息的丰富指标数据。你可以通过 Prometheus API 和 REST API 收集与应用程序相关的指标数据。 你还可以构建更符合自身需求的、你自己的诊断和监视工具。

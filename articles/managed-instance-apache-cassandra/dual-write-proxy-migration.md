@@ -4,14 +4,14 @@ description: 了解如何使用 Apache Spark 和双重写入代理实时迁移�
 author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
-ms.topic: overview
-ms.date: 06/02/2021
-ms.openlocfilehash: c2529f355e7d39c22bf5f3d703cb33c59101a5f8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.topic: tutorial
+ms.date: 08/17/2021
+ms.openlocfilehash: 03862b42fb181adcf1a6c4edbed66ce61ee49e73
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749457"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426123"
 ---
 # <a name="live-migration-to-azure-managed-instance-for-apache-cassandra-by-using-a-dual-write-proxy"></a>使用双重写入代理实时迁移到 Azure Managed Instance for Apache Cassandra
 
@@ -22,7 +22,7 @@ ms.locfileid: "121749457"
 
 我们建议在可能的情况下，使用 Apache Cassandra 原生功能通过配置[混合群集](configure-hybrid-cluster.md)将现有群集中的数据迁移到 Azure Managed Instance for Apache Cassandra。 此功能使用 Apache Cassandra 的 gossip 协议以无缝方式将源数据中心的数据复制到新的托管实例数据中心。 但在某些情况下，源数据库版本不兼容，或者混合群集设置不可行。 
 
-本文介绍如何使用[双重写入代理](https://github.com/Azure-Samples/cassandra-proxy)和 Apache Spark 将数据实时迁移到 Azure Managed Instance for Apache Cassandra。 此方法的优点包括：
+本教程介绍如何使用[双重写入代理](https://github.com/Azure-Samples/cassandra-proxy)和 Apache Spark 将数据实时迁移到 Azure Managed Instance for Apache Cassandra。 此方法的优点包括：
 
 - 尽量减少对应用程序做出更改。 只需进行少量的配置更改甚至不进行任何配置更改，代理就能接受来自应用程序代码的连接。 它会将所有请求路由到源数据库，并以异步方式将写入路由到辅助目标。 
 - 客户端线路协议依赖性。 由于此方法不依赖于后端资源或内部协议，因此可对实现 Apache Cassandra 线路协议的任何源或目标 Cassandra 系统使用此方法。

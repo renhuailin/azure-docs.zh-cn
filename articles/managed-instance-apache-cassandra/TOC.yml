@@ -4,6 +4,8 @@
   items:
     - name: 什么是适用于 Apache Cassandra 的 Azure 托管实例？
       href: introduction.md
+    - name: 与 Azure Cosmos DB Cassandra API 相比
+      href: compare-cosmosdb-managed-instance.md
 - name: 快速入门
   items:
     - name: 创建群集 - 门户
@@ -21,21 +23,15 @@
   items:
     - name: 迁移
       items:
-        - name: 实时迁移
-          items:
-            - name: 使用双重写入代理
-              href: dual-write-proxy-migration.md
-        - name: 脱机迁移
-          items:
-            - name: 使用 Apache Spark
-              href: spark-migration.md
+        - name: 使用双写代理 - 实时
+          href: dual-write-proxy-migration.md
+        - name: 使用 Apache Spark - 脱机
+          href: spark-migration.md
 - name: 概念
   items:
     - name: 常见问题
       displayName: 'cost, region, monitor, backup'
       href: faq.md
-    - name: 托管实例与 Azure Cosmos DB Cassandra API
-      href: compare-cosmosdb-managed-instance.md
 - name: 操作指南
   items:
     - name: 使用 Azure CLI 进行管理

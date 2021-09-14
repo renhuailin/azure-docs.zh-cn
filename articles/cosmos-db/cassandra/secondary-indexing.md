@@ -5,15 +5,15 @@ author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 04/04/2020
+ms.date: 09/03/2021
 ms.author: thvankra
 ms.reviewer: sngun
-ms.openlocfilehash: b31c351159ccba0718293dad5b81247d973ea275
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a3ac64590c2978ccd052a9dd294cf3ce49bb847e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778054"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479395"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 中的辅助索引编制
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -30,6 +30,9 @@ Azure Cosmos DB 中的 Cassandra API 利用底层索引基础结构来公开平�
 > - 冻结的集合类型、小数和变体类型等数据类型。
 > - 静态列
 > - 聚集键
+
+> [!WARNING]
+> 如果表中有[复合主键](cassandra-partitioning.md#compound-primary-key)，并且你想要仅筛选复合主键的分区键值元素，请确保在分区键上显式添加辅助索引 。 默认情况下，Azure Cosmos DB Cassandra API 不会将索引应用于分区键，此方案中的索引可显著提高查询性能。 有关详细信息，请参阅关于[分区](cassandra-partitioning.md)的文章。
 
 ## <a name="indexing-example"></a>索引编制示例
 
@@ -72,6 +75,8 @@ CREATE INDEX ON sampleks.t1 (lastname);
 ```shell
 drop index sampleks.t1_lastname_idx;
 ```
+
+
 
 ## <a name="next-steps"></a>后续步骤
 * 了解 Azure Cosmos DB 中的[自动索引编制](../index-overview.md)的工作原理

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 0878911bdd3caa2202ef993142aa89e4eabfe33c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f925eb888c1955212a762eb46c63300afd17d77d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464823"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427722"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>教程：使用 Azure Migrate：发现和评估发现物理服务器
 
@@ -40,9 +40,12 @@ ms.locfileid: "114464823"
 
 **要求** | **详细信息**
 --- | ---
-**设备** | 需要一台服务器以运行 Azure Migrate 设备。 服务器应拥有：<br/><br/> - 已安装 Windows Server 2016。<br/> _（目前只有 Windows Server 2016 支持设备部署。）_<br/><br/> - 16 GB RAM，8 个 vCPU，约 80 GB 磁盘存储<br/><br/> - 静态或动态 IP 地址，可直接访问或通过代理访问 Internet。
+**设备** | 需要一台服务器以运行 Azure Migrate 设备。 服务器应拥有：<br/><br/> - 已安装 Windows Server 2016。<br/> _（目前只有 Windows Server 2016 支持设备部署。）_<br/><br/> - 16 GB RAM，8 个 vCPU，约 80 GB 磁盘存储<br/><br/> - 静态或动态 IP 地址，可直接访问或通过代理访问 Internet。<br/><br/> - 从设备到所需 [URL](migrate-appliance.md#url-access) 的出站 Internet 连接。
 **Windows 服务器** | 允许 WinRM 端口 5985 (HTTP) 上的入站连接，使设备可以拉取配置和性能元数据。
 **Linux 服务器** | 允许端口 22 (TCP) 上的入站连接。
+
+> [!NOTE]
+> 不支持在安装了[复制设备](migrate-replication-appliance.md)或移动服务代理的服务器上安装 Azure Migrate 设备。  确保以前未使用设备服务器来设置复制设备，也未在服务器上安装移动服务代理。
 
 ## <a name="prepare-an-azure-user-account"></a>准备 Azure 用户帐户
 
@@ -85,23 +88,23 @@ ms.locfileid: "114464823"
 - 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。 
 - 如果远程管理用户组不存在，请将用户帐户添加到以下组：WinRMRemoteWMIUsers_。
 - 该帐户需要拥有这些权限才能让设备创建与服务器的 CIM 连接，并从此处列出的 WMI 类中拉取所需的配置和性能元数据。
-- 在某些情况下，将帐户添加到这些组可能不会从 WMI 类返回所需的数据，因为该帐户可能由 [UAC](/windows/win32/wmisdk/user-account-control-and-wmi) 筛选。 若要绕过 UAC 筛选，用户帐户需在目标服务器上的 CIMV2 命名空间和子命名空间中拥有所需的权限。 可按[此处](troubleshoot-appliance.md)所述的步骤启用所需的权限。
+- 在某些情况下，将帐户添加到这些组可能不会从 WMI 类返回所需的数据，因为该帐户可能由 [UAC](/windows/win32/wmisdk/user-account-control-and-wmi) 筛选。 要绕过 UAC 筛选，用户帐户需在目标服务器上的 CIMV2 命名空间和子命名空间中拥有所需的权限。 可按[此处](troubleshoot-appliance.md)所述的步骤启用所需的权限。
 
     > [!Note]
-    > 对于 Windows Server 2008 和 2008 R2，请确保在服务器上安装 WMF 3.0。
+    > 对于 Windows Server 2008 和 2008 R2，请确保在服务器上安装了 WMF 3.0。
 
 **Linux 服务器**
 
-- 在要发现的服务器上需有一个 root 帐户。 或者，可以提供拥有 sudo 权限的用户帐户。
-- 在 2021 年 7 月 20 日之后，默认会通过从门户下载的新设备安装程序脚本来支持添加拥有 sudo 访问权限的用户帐户。
-- 对于较旧的设备，可以按照以下步骤来启用该功能：
+- 在要发现的服务器上需有一个根帐户。 也可提供拥有 sudo 权限的用户帐户。
+- 2021 年 7 月 20 日之后从门户下载的新设备安装程序脚本默认支持添加具有 sudo 访问权限的用户帐户。
+- 对于较旧的设备，可按照以下步骤来启用该功能：
     1. 在运行设备的服务器上，打开注册表编辑器。
     1. 导航到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance。
     1. 创建 DWORD 值为 1 的注册表项“isSudo”。
 
     :::image type="content" source="./media/tutorial-discover-physical/issudo-reg-key.png" alt-text="显示如何启用 sudo 支持的屏幕截图。":::
 
-- 若要发现目标服务器中的配置和性能元数据，需要为[此处](migrate-appliance.md#linux-server-metadata)列出的命令启用 sudo 访问权限。 确保已启用“NOPASSWD”，使帐户能够运行所需的命令，且不会在每次调用 sudo 命令时都提示用户输入密码。
+- 要发现目标服务器中的配置和性能元数据，需要为[此处](migrate-appliance.md#linux-server-metadata)列出的命令启用 sudo 访问权限。 确保已启用“NOPASSWD”，使帐户能够运行所需的命令，且不会在每次调用 sudo 命令时都提示用户输入密码。
 - 以下 Linux OS 发行版支持使用拥有 sudo 访问权限的帐户通过 Azure Migrate 进行发现：
 
     操作系统 | 版本 
@@ -112,9 +115,9 @@ ms.locfileid: "114464823"
     SUSE Linux | 11.4、12.4
     Debian | 7、10
     Amazon Linux | 2.0.2021
-    CoreOS Container | 2345.3.0
+    CoreOS 容器 | 2345.3.0
 
-- 如果无法提供 root 帐户或拥有 sudo 访问权限的用户帐户，可以在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance 注册表中将“isSudo”注册表项设置为“0”值，并使用以下命令为非 root 帐户提供所需的功能：
+- 如果无法提供具有 sudo 访问权限的根帐户或用户帐户，则可以在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance 注册表中将“isSudo”注册表项的值设置为“0”，并使用以下命令为非根帐户提供所需的功能：
 
 **命令** | **用途**
 --- | --- |
@@ -212,7 +215,7 @@ Azure Migrate 设备执行服务器发现并将服务器配置和性能元数据
     - **配置文件**：%Programdata%\Microsoft Azure\Config
     - **日志文件**：%Programdata%\Microsoft Azure\Logs
 
-成功执行该脚本后，将自动启动设备配置管理器。
+成功执行脚本后，设备配置管理器将自动启动。
 
 > [!NOTE]
 > 如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。

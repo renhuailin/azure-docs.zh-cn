@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 08/26/2021
 ms.author: alkohli
-ms.openlocfilehash: e664055893bbdef0f7090811b8a160a1b8a4a1fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 857b9ece50b4852e4d459915f9fd13477628781a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92124042"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429273"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>教程：使用数据复制服务将数据复制到 Azure Data Box（预览）
 
@@ -72,7 +72,7 @@ ms.locfileid: "92124042"
     |**目标类型**       |从列表中选择目标存储类型：“块 Blob”、“页 Blob”或“Azure 文件”。          |
     |**目标容器/共享**    |输入目标存储帐户中要将数据上传到的容器或共享的名称。 该名称可以是共享名称或容器名称。 例如，使用 `myshare` 或 `mycontainer`。 也可以输入 `sharename\directory_name` 或 `containername\virtual_directory_name` 格式的名称。        |
     |**复制文件匹配模式**    | 可按以下两种方式输入文件名匹配模式：<ul><li>**使用通配符表达式：** 通配符表达式中仅支持 `*` 和 `?`。 例如，表达式 `*.vhd` 匹配扩展名为 `.vhd` 的所有文件。 类似地，`*.dl?` 匹配扩展名为 `.dl` 或以 `.dl` 开头的所有文件，例如 `.dll`。 同理，`*foo` 匹配名称以 `foo` 结尾的所有文件。<br>可以直接在该字段中输入通配符表达式。 默认情况下，在该字段中输入的值被视为通配符表达式。</li><li>**使用正则表达式：** 支持基于 POSIX 的正则表达式。 例如，正则表达式 `.*\.vhd` 匹配扩展名为 `.vhd` 的所有文件。 对于正则表达式，请直接提供 `<pattern>` 作为 `regex(<pattern>)`。 有关正则表达式的详细信息，请转到[正则表达式语言 - 快速参考](/dotnet/standard/base-types/regular-expression-language-quick-reference)。</li><ul>|
-    |**文件优化**              |启用此功能后，引入期间会打包小于 1 MB 的文件。 打包可以加快小型文件的数据复制速度。 如果文件数远远超出目录数，则打包还可以显著节省时间。        |
+    |**文件优化**              |启用此功能后，引入期间会打包小于 1 MB 的文件。 打包可以加快小型文件的数据复制速度。 如果文件数远远超出目录数，则打包还可以显著节省时间。</br>如果使用文件优化：<ul><li>运行“准备交付”后，可以[下载 BOM 文件](data-box-logs.md#inspect-bom-during-prepare-to-ship)（其列出了原始文件名），以帮助确保已复制所有正确的文件。</li><li>不要删除已打包的文件，这些文件由 GUID 标识为文件名。 如果删除已打包的文件，则在将来复制数据时不会上传原始文件。</li><li>请勿通过 SMB、NFS 或 REST API 等其他协议复制通过复制服务复制的相同文件。 使用不同的协议可能会导致在数据上传过程中发生冲突和失败。</li></ul>    |
  
 4. 选择“开始”。 随后会验证输入，如果验证成功，则启动某个作业。 启动该作业可能需要花费几分钟时间。
 

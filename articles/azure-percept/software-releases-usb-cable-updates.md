@@ -1,5 +1,5 @@
 ---
-title: 针对通过 USB 线缆进行更新的 Azure Percept DK 软件版本
+title: Azure Percept DK USB 电缆更新的软件版本
 description: Azure Percept DK 的 USB 电缆更新包的信息和下载链接
 author: EthanChangAED
 ms.author: amiyouss
@@ -7,14 +7,14 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 08/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 9b58aa438fa0cd05604967c2c1bcb728d9a560c6
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 49274ba0c43b2cc473470df61e22f16b8a83c022
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222756"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427095"
 ---
-# <a name="azure-percept-dk-software-releases-for-updating-over-usb"></a>针对通过 USB 更新的 Azure Percept DK 软件版本
+# <a name="software-releases-for-usb-cable-updates"></a>USB 电缆更新的软件版本
 
 本页提供所有开发工具包 OS/固件映像版本的信息和下载链接。 有关每个版本中的更改/修复的详细信息，请参阅发行说明：
 

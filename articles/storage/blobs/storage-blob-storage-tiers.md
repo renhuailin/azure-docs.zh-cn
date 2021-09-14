@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: b11fff95543abb4fc74b2087deffe56786998e28
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 7b32e75645c2c930e296bdb4c5448bcb16045d6d
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179654"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470555"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob 存储的访问层 - 热、冷和存档
 
@@ -46,8 +46,6 @@ Azure 存储提供了不同的访问层，允许你以最具成本效益的方�
 - Python 客户端库
 - Node.js 客户端库
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="storage-accounts-that-support-tiering"></a>支持分层的存储帐户
 
 Blob 存储和常规用途 v2 (GPv2) 帐户支持在热层、冷层和存档层之间将对象存储数据分层。 常规用途 v1 (GPv1) 帐户不支持分层。 你可以通过 Azure 门户轻松地将现有的 GPv1 或 Blob 存储帐户转换为 GPv2 帐户。 GPv2 为 Blob、文件和队列提供新的定价与功能。 某些功能和价格折扣仅在 GPv2 帐户中提供。 某些工作负荷的价格在 GPv2 中可能比在 GPv1 中更高。 有关详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
@@ -75,7 +73,7 @@ GPv1 和 GPv2 帐户的定价结构不同，客户在决定使用 GPv2 帐户之
 
 ## <a name="archive-access-tier"></a>存档访问层
 
-与热层和冷层相比，存档访问层的存储成本最低，但数据检索成本较高。 存档层中的数据必须至少保留 180 天，否则需要支付提前删除费。 存档层中数据的检索可能需要几个小时，具体取决于指定的解除冻结优先级。 对于小型对象，优先级高的解除冻结可能会在 1 小时内从存档中检索到对象。 请参阅[存档层中的 Blob 解除冻结概述](archive-rehydrate-overview.md)以了解更多信息。
+与热层和冷层相比，存档访问层的存储成本最低，但数据检索成本较高。 存档层中的数据必须至少保留 180 天，否则需要支付提前删除费。 存档层中数据的检索可能需要几个小时，具体取决于指定的解除冻结优先级。 对于小型对象，优先级高的解除冻结可能会在 1 小时内从存档中检索到对象。 请参阅[存档层中的 blob 解除冻结概述](archive-rehydrate-overview.md)以了解更多信息。
 
 如果 blob 位于存档存储中，则 blob 数据处于脱机状态，不能读取或修改。 若要在存档中读取或下载 Blob，必须首先将其解除冻结到联机层。 不能创建存档存储中 Blob 的快照。 但是，Blob 元数据会保持联机和可用状态，因而可列出 Blob 及其属性、元数据和 blob 索引标记。 不允许设置或修改存档中的 blob 元数据。 但是，可以设置和修改 Blob 索引标记。 对于存档中的 Blob，仅以下操作有效：[获取 Blob 属性](/rest/api/storageservices/get-blob-properties)、[获取 Blob 元数据](/rest/api/storageservices/get-blob-metadata)、[设置 Blob 标记](/rest/api/storageservices/set-blob-tags)、[获取 Blob 标记](/rest/api/storageservices/get-blob-tags)、[按标记查找 Blob](/rest/api/storageservices/find-blobs-by-tags)、[列出 Blob](/rest/api/storageservices/list-blobs)、[设置 Blob 层](/rest/api/storageservices/set-blob-tier)、[复制 Blob](/rest/api/storageservices/copy-blob) 和[删除 Blob](/rest/api/storageservices/delete-blob)。
 
@@ -155,7 +153,7 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，这些策略
 
 <sup>1</sup> GPv2 帐户冷层中的对象的最短保留期为 30 天。 Blob 存储帐户的冷层没有最短保留期。
 
-<sup>2</sup> 存档存储目前支持两种解除冻结优先级：“高”和“标准”，它们带来不同的检索延迟和成本。 有关详细信息，请参阅[存档层中的 Blob 解除冻结概述](archive-rehydrate-overview.md)。
+<sup>2</sup> 存档存储目前支持两种解除冻结优先级：“高”和“标准”，它们带来不同的检索延迟和成本。 有关详细信息，请参阅[存档层中的 blob 解除冻结概述](archive-rehydrate-overview.md)。
 
 > [!NOTE]
 > Blob 存储帐户支持与常规用途 v2 存储帐户相同的性能和可伸缩性目标。 有关详细信息，请参阅 [Blob 存储可伸缩性和性能目标](scalability-targets.md)。
@@ -179,6 +177,19 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，这些策略
 ## <a name="availability"></a>可用性
 
 所选区域中提供了不同的访问层以及 Blob 级分层。 如需完整列表，请参阅 [Azure 产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=storage)。
+
+## <a name="feature-support"></a>功能支持
+
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) | 
+| 高级块 blob          | ![否](../media/icons/no-icon.png)|![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

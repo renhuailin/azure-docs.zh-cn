@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
 ms.date: 04/26/2021
-ms.openlocfilehash: b16c69d4a51026d3eafcb6449dd3042703269118
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: bcecb9b50c493ba85172fd56ccf3f2d286aa1839
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371611"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431307"
 ---
 # <a name="azure-web-pubsub-service-faq"></a>Azure Web PubSub 服务常见问题解答
 
@@ -20,6 +20,16 @@ ms.locfileid: "111371611"
 ## <a name="is-azure-web-pubsub-service-ready-for-production-use"></a>Azure Web PubSub 服务是已可用于生产？
 
 Azure Web PubSub 服务目前为公共预览版，不提供 SLA 方面的承诺。 
+
+## <a name="when-will-azure-web-pubsub-service-be-ready-for-production-use"></a>Azure Web PubSub 服务何时可用于生产？
+
+产品团队正在积极开发 Azure Web PubSub 服务正式版。 正式发布后，该服务将支持：
+- Azure Active Directory 支持
+- API 管理集成
+- 二进制 Pub/Sub WebSocket 子协议
+- Azure 资源日志集成
+
+如需正式版功能的更多详细信息，请联系产品团队。
 
 ## <a name="how-do-i-choose-between-azure-signalr-service-and-azure-web-pubsub-service"></a>如何在 Azure SignalR 服务与 Azure Web PubSub 服务之间进行选择？
 

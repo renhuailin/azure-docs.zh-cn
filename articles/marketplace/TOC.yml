@@ -423,6 +423,8 @@
       href: insights-dashboard.md
     - name: 许可证仪表板
       href: license-dashboard.md
+    - name: 服务质量仪表板
+      href: quality-of-service-dashboard.md
     - name: 下载仪表板
       href: downloads-dashboard.md
     - name: 评分和评价仪表板

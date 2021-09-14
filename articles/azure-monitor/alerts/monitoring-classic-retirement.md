@@ -6,18 +6,18 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.author: yalavi
-ms.openlocfilehash: bfa92a2fc58d479edd328dba9bf02d57ec66c0c9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 64e9c454bfe8df9b65176fe344999e88204720d0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041087"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539112"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor 中的统一警报和监视替换经典警报和监视
 
 Azure Monitor 是一个统一监视堆栈，它支持跨 Azure 资源使用“一个指标”和“一个警报”。 有关详细信息，请参阅此[博客文章](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/)。 全新的 Azure 监视和警报平台已构建完成，它会更快、更智能，并且可扩展 – 紧随云计算领域的发展步伐，并契合“Microsoft 智能云”理念。
 
-随着全新 Azure 监视和警报平台部署到位，Azure Monitor 中的经典警报已对公有云用户停用，但在 2021 年 5 月 31 日之前仍可有限制地使用。 适用于 Azure 政府云和 Azure 中国世纪互联的经典警报将于 2024 年 2 月 29 日停用。
+随着新的 Azure 监视和警报平台部署到位，已对公有云用户停用了 Azure Monitor 中的经典警报。 适用于 Azure 政府云和 Azure 中国世纪互联的经典警报将于 2024 年 2 月 29 日停用。
 
  ![Azure 门户中的经典警报](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 

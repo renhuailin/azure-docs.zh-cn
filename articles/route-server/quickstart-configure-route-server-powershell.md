@@ -4,16 +4,16 @@ description: 这篇快速入门文章介绍如何使用 Azure PowerShell 来创�
 services: route-server
 author: duongau
 ms.author: duau
-ms.date: 8/23/2021
+ms.date: 09/01/2021
 ms.topic: quickstart
 ms.service: route-server
 ms.custom: devx-track-azurepowershell - mode-api
-ms.openlocfilehash: a4b4d739f4a45dbce74dfb9eafaacb6c10ff8187
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 65f5957d52dcf510601f4a4773cde4c8a477dc97
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215379"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475613"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建并配置路由服务器
 
@@ -21,12 +21,7 @@ ms.locfileid: "123215379"
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="使用 Azure PowerShell 的路由服务器部署环境示意图。" border="false":::
 
-> [!IMPORTANT]
-> Azure 路由服务器（预览版）目前为公共预览版状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 请确保具有最新的 PowerShell 模块，或者可以在门户中使用 Azure Cloud Shell。
@@ -107,7 +102,7 @@ $virtualnetwork | Set-AzVirtualNetwork
 
 ## <a name="create-bgp-peering-with-an-nva"></a>创建与 NVA 对等互连的 BGP
 
-若要建立从路由服务器到 NVA 的 BGP 对等互连，请使用 [New-AzRouteServerPeer](/powershell/module/az.network/new-azrouteserverpeer)：
+若要建立从路由服务器到 NVA 的 BGP 对等互连，请使用 [Add-AzRouteServerPeer](/powershell/module/az.network/add-azrouteserverpeer)：
 
 “your_nva_ip”是分配到 NVA 的虚拟网络 IP。 “your_nva_asn”是在 NVA 中配置的自治系统编号 (ASN)。 该 ASN 可以是 65515-65520 范围之外的任意 16 位数字。 此 ASN 范围是 Microsoft 保留的。
 

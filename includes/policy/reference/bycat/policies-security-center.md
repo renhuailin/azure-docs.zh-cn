@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5a033b668a7f2e69a7fee093403ebb1f00e47a55
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 318fb2a817c48b10a5f2b7bfbbcc6a7c4a5ea33f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123100260"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475544"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -72,6 +72,8 @@ ms.locfileid: "123100260"
 |[在订阅中启用 Azure 安全中心](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac076320-ddcf-4066-b451-6154267e8ad2) |识别不受 Azure 安全中心 (ASC) 监视的现有订阅。 不受 ASC 监视的订阅将注册到免费定价层。 已由 ASC 监视的订阅（免费或标准层）被视为合规。 若要注册新建的订阅，请打开合规性选项卡，选择相关的不合规分配，并创建修正任务。 需要使用安全中心监视一个或多个新订阅时，请重复此步骤。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Register_To_Azure_Security_Center_Deploy.json) |
 |[允许安全中心在你的订阅上自动预配包含自定义工作区的 Log Analytics 代理。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e7da0a5-0a0e-4bbc-bfc0-7773c018b616) |允许安全中心在你的订阅上自动预配 Log Analytics 代理，以使用自定义工作区来监视和收集安全数据。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Deploy_auto_provisioning_log_analytics_monitoring_agent_custom_workspace.json) |
 |[允许安全中心在你的订阅上自动预配包含默认工作区的 Log Analytics 代理。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6df2fee6-a9ed-4fef-bced-e13be1b25f1c) |允许安全中心在你的订阅上自动预配 Log Analytics 代理，以使用 ASC 默认工作区来监视和收集安全数据。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Deploy_auto_provisioning_log_analytics_monitoring_agent_default_workspace.json) |
+|应在计算机上解决 Endpoint Protection 运行状况问题 |解决虚拟机上的 Endpoint Protection 运行状况问题，以保护其免受最新威胁和漏洞的侵害。 [此文档 https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows](../../../../articles/security-center/security-center-services.md?tabs=features-windows)介绍了 Azure 安全中心支持的终结点保护解决方案。 [此文档 https://docs.microsoft.com/azure/security-center/security-center-endpoint-protection](../../../../articles/security-center/security-center-endpoint-protection.md)介绍了终结点保护评估。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EndpointProtectionHealthIssuesShouldBeResolvedOnYourMachines_Audit.json) |
+|[应在计算机上安装 Endpoint Protection](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f7c564c-0a90-4d44-b7e1-9d456cffaee8) |若要保护计算机免受威胁和漏洞的侵害，请安装受支持的 Endpoint Protection 解决方案。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EndpointProtectionShouldBeInstalledOnYourMachines_Audit.json) |
 |[应在虚拟机规模集上安装终结点保护解决方案](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26a828e1-e88f-464e-bbb3-c134a282b9de) |审核终结点保护解决方案在虚拟机规模集上的存在性和运行状况 ，以保护其免受威胁和漏洞的侵害。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VmssMissingEndpointProtection_Audit.json) |
 |[应从订阅中删除拥有所有者权限的外部帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff8456c1c-aa66-4dfb-861a-25d127b775c9) |为了防止发生未受监视的访问，应从订阅中删除拥有所有者权限的外部帐户。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveExternalAccountsWithOwnerPermissions_Audit.json) |
 |[应从订阅中删除拥有读取权限的外部帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f76cf89-fbf2-47fd-a3f4-b891fa780b60) |应从订阅中删除拥有读取特权的外部帐户，以防发生未受监视的访问。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_RemoveExternalAccountsReadPermissions_Audit.json) |

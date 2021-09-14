@@ -11,14 +11,14 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt, troubleshoot
-ms.openlocfilehash: 598c578c445cbd7dc7086f22e3c8d4885d67b112
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: c4949000cee07e2280d9edc018ff07f20f37a352
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537324"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427653"
 ---
-# <a name="troubleshooting-prebuilt-docker-images-for-inference-preview"></a>排查用于推理的预生成 Docker 映像（预览版）的问题
+# <a name="troubleshooting-prebuilt-docker-images-for-inference-preview"></a>用于推理的预生成 Docker 映像（预览版）故障排除
 
 了解如何排查在 Azure 机器学习中使用用于推理的预生成 Docker 映像[（预览版）](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)时可能出现的问题。
 

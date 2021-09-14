@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: a6016ba42fba5a457f2969a1b980a0962605f7a7
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: ef3072d5c30a8e07f9073539e877ca37837a68a4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123318326"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428319"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>快速入门：使用 Azure CLI 生成你的第一个静态站点
 
@@ -117,7 +117,7 @@ cd my-first-static-web-app
 
     - `<LOCATION>`：将此值替换为离你最近的位置。 选项包括：CentralUS、EastAsia、EastUS2、WestEurope 和 WestUS2    。
 
-    - `<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>`：将此值替换为先前生成的 [GitHub 个人访问令牌](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)。 （最低权限为 `Workflow` 范围）
+    - `<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>`：将此值替换为先前生成的 [GitHub 个人访问令牌](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)。 对于公共存储库，最低权限的范围是 `workflow`，而对于专用存储库，其范围是 `repo`。
 
     你现在可以在 Azure 中查看创建的应用。
 

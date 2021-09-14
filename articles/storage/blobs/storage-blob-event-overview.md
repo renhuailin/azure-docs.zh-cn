@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: f07c249e3b7cb54283959df410d51ca18998f2cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0194fcc344acfe6bc0d6c8731c2095d3938bd6e6
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181510"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471023"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -39,7 +39,7 @@ Azure 存储事件允许应用程序响应事件，例如 Blob 的创建和删�
 - [教程：使用事件网格自动调整已上传图像的大小](../../event-grid/resize-images-on-storage-blob-upload-event.md?tabs=dotnet)
 
 >[!NOTE]
-> 只有种类为“StorageV2 (常规用途 v2)”、“BlockBlobStorage”和“BlobStorage”的存储帐户支持事件集成。   “存储(常规用途 v1)”不支持与事件网格集成。
+> “存储(常规用途 v1)”不支持与事件网格集成。
 
 ## <a name="the-event-model"></a>事件模型
 
@@ -104,6 +104,16 @@ Blob 存储事件使用者使用的格式：
 > * 忽略不了解的字段。 此做法有助于适应将来可能添加的新功能。
 > * 若要确保 **Microsoft.Storage.BlobCreated** 事件仅在块 Blob 完全提交后触发，请针对 `CopyBlob`、`PutBlob`、`PutBlockList` 或 `FlushWithClose` REST API 调用筛选此事件。 这些 API 调用仅在数据已完全提交到块 Blob 后才触发 **Microsoft.Storage.BlobCreated** 事件。 若要了解如何创建筛选器，请参阅[筛选事件网格的事件](../../event-grid/how-to-filter-events.md)。
 
+## <a name="feature-support"></a>功能支持
+
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![否](../media/icons/no-icon.png) | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![否](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

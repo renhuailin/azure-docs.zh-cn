@@ -1,14 +1,14 @@
 ---
 title: 适用于 Visual Studio Code 的 Azure Policy 扩展
 description: 了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩展来查找 Azure 资源管理器别名。
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 870559a2f3d36257cb1246e340163f25ef016eb2
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 93b59114c6a89e9219389341d541d7850a90ccc7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323172"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433685"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Azure Policy 扩展
 
@@ -195,6 +195,20 @@ Azure Policy 扩展在“资源”窗格中按资源提供程序和资源组列�
 > VS Code 扩展仅支持评估资源管理器模式属性。 有关模式的详细信息，请参阅[模式定义](../concepts/definition-structure.md#mode)。
 >
 > 评估功能不适用于扩展的 macOS 和 Linux 安装。
+
+### <a name="create-policy-definition-from-constraint-template"></a>从约束模板创建策略定义
+
+VS Code 扩展可以从现有 [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3 [约束模板](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)创建策略定义。 要使命令面板成为选项，必须在 VS Code 中打开 YAML 文件。
+
+1. 打开有效的 OPA GateKeeper v3 约束模板 YAML 文件。
+
+1. 从菜单栏中，转到“查看”>“命令面板”，然后输入“适用于 Kubernetes 的 Azure Policy：从约束模板创建策略定义”  。
+
+1. 选择适当的 sourceType 值。
+
+1. 填写策略定义 JSON 的 `/* EDIT HERE */` 部分。
+
+当扩展生成策略定义的 JSON 时，它不会在 Azure 中创建定义。 填写相应的“在此处编辑”字段后，请使用已完成的策略定义 JSON 和 Azure 门户或支持的 SDK 在 Azure 环境中创建策略定义。
 
 ### <a name="sign-out"></a>注销
 

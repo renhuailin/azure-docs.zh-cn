@@ -3,16 +3,16 @@ title: 在 Azure IoT Central 中授权 REST API
 description: 如何对 IoT Central REST API 调用进行身份验证和授权
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 08/25/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 540137495e06bb05fbf5e96e3b930e0c8cda4b10
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9ba337203aedbc2b9f27c2147f68c1d810f57d23
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461223"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123479843"
 ---
 # <a name="how-to-authenticate-and-authorize-iot-central-rest-api-calls"></a>如何对 IoT Central REST API 调用进行身份验证和授权
 
@@ -68,7 +68,7 @@ az account get-access-token --resource https://apps.azureiotcentral.com
 在 IoT Central UI 中：
 
 1. 导航到“管理”>“API 令牌”。
-1. 选择“+ 生成令牌”。
+1. 选择“+ 创建令牌”。
 1. 输入令牌的名称并选择一个角色。
 1. 然后选择“生成”  。
 1. IoT Central 将显示如以下示例所示的令牌：

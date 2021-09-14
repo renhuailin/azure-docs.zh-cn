@@ -3,12 +3,12 @@ title: 设置网络
 description: 了解需要提供哪些解决方案体系结构、网络准备、先决条件和其他信息，才能确保成功设置好网络来使用 Azure Defender for IoT 设备。
 ms.date: 07/25/2021
 ms.topic: how-to
-ms.openlocfilehash: 196474c368ee5683a5fb7a25343faba17da0fa18
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7dc9e41b3bfdcbeab86aaabbdf0c97b0339b3df3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745417"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434081"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>关于 Azure Defender for IoT 网络设置
 
@@ -32,7 +32,11 @@ Defender for IoT 门户：Defender for IoT 应用程序可帮助你购买解决�
 
 - [准备配置工作站](#prepare-a-configuration-workstation)
 
-- [规划机架安装](#planning-rack-installation)
+- [设置证书](#set-up-certificates)
+
+- [准备配置工作站](#prepare-a-configuration-workstation)
+
+- [规划机架安装](#plan-rack-installation)
 
 ### <a name="collect-site-information"></a>收集站点信息
 
@@ -90,6 +94,10 @@ Defender for IoT 门户：Defender for IoT 应用程序可帮助你购买解决�
 
 有关支持的浏览器的详细信息，请参阅[推荐的浏览器](../../azure-portal/azure-portal-supported-browsers-devices.md#recommended-browsers)。
 
+### <a name="set-up-certificates"></a>设置证书
+
+安装传感器和本地管理控制台后，将生成一个本地自签名证书，它用于访问传感器 Web 应用程序。 首次登录到 Defender for IoT 时，系统会提示管理员用户提供 SSL/TLS 证书。 此外，还会自动启用验证此证书及其他系统证书的选项。 有关详细信息，请参阅[关于证书](how-to-deploy-certificates.md)。
+
 ### <a name="network-access-requirements"></a>网络访问要求
 
 验证你的组织安全策略是否允许访问以下各项：
@@ -111,7 +119,7 @@ Defender for IoT 门户：Defender for IoT 应用程序可帮助你购买解决�
 | 隧道 | TCP | IN | 9000 <br /><br />- 在端口 443 上 <br /><br />从最终用户到本地管理控制台。 <br /><br />- 从传感器的端口 22 到本地管理控制台  | 监视 | 隧道 | 传感器 | 本地管理控制台 |
 | HTTP| TCP | OUT | 80 | 证书验证  | 下载 CRL 文件 | 传感器 | CRL 服务器 |
 
-### <a name="planning-rack-installation"></a>规划机架安装
+### <a name="plan-rack-installation"></a>规划机架安装
 
 规划机架安装：
 
@@ -121,7 +129,7 @@ Defender for IoT 门户：Defender for IoT 应用程序可帮助你购买解决�
 
 1. 为设备提供交流电源。
 1. 准备好用于将管理控制台连接到网络交换机的 LAN 线缆。
-1. 准备好用于将交换机 SPAN（镜像）端口和/或网络 TAP 连接到 Defender for IoT 设备的 LAN 线缆。 
+1. 准备好用于将交换机 SPAN（镜像）端口和/或网络 TAP 连接到 Defender for IoT 设备的 LAN 线缆。
 1. 根据体系结构复习课中所述，配置、连接并验证镜像交换机中的 SPAN 端口。
 1. 将已配置的 SPAN 端口连接到运行 Wireshark 的计算机，并验证是否正确配置了该端口。
 1. 打开所有相关的防火墙端口。
@@ -138,7 +146,7 @@ Defender for IoT 门户：Defender for IoT 应用程序可帮助你购买解决�
 
 :::image type="content" source="media/how-to-set-up-your-network/purdue-model.png" alt-text="Purdue 模型示意图。":::
 
-####  <a name="level-0-cell-and-area"></a>级别 0：单元和区域  
+#### <a name="level-0-cell-and-area"></a>级别 0：单元和区域  
 
 级别 0 由涉及到基本制造过程的各种传感器、传动器和设备组成。 这些设备执行工业自动化和控制系统的基本功能，例如：
 
@@ -234,7 +242,7 @@ Defender for IoT 设备应连接到可看到第 1 层与第 2 层（在某些情
 
 #### <a name="traffic-mirroring"></a>流量镜像  
 
-若要仅查看流量分析的相关信息，需要将 Defender for IoT 平台连接到交换机上的镜像端口，或连接到只包含工业 ICS 和 SCADA 流量的 TAP。 
+若要仅查看流量分析的相关信息，需要将 Defender for IoT 平台连接到交换机上的镜像端口，或连接到只包含工业 ICS 和 SCADA 流量的 TAP。
 
 :::image type="content" source="media/how-to-set-up-your-network/switch.jpg" alt-text="将此交换机用于设置。":::
 

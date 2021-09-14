@@ -3,19 +3,17 @@ title: 教程：设置 Gen2 环境 - Azure 时序见解 Gen2 | Microsoft Docs
 description: 教程：了解如何在 Azure 时序见解 Gen2 中设置环境。
 author: riserrad
 ms.author: riserrad
-manager: edett
 ms.workload: big-data
 ms.service: time-series-insights
-services: time-series-insights
 ms.topic: tutorial
 ms.date: 04/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: f3994802e82b126f426a75a26d399f6f86e21797
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 7a6562592bb7c0ae37784429d6a36eaf4ade4957
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951985"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449308"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>教程：设置 Azure 时序见解 Gen2 环境
 
@@ -228,7 +226,7 @@ ms.locfileid: "107951985"
         | **名称** | 输入“楼层”。 |
         | **种类** | 选择“分类” |
         | **值** | 从预设中选择：选择“楼层(双精度)”。 <br /> 注意：在 Azure 时序见解 Gen2 开始接收事件之后，可能需要等待几分钟才会自动填充“值”。|
-        | **类别** | <span style="text-decoration: underline">标记 </span>  - <span style="text-decoration: underline">值</span> <br /> 较低：1、2、3、4 <br /> 中层：5、6、7、8、9 <br /> 较高：10、11、12、13、14、15 |
+        | **类别** | **标签**：值 <br /> 较低：1、2、3、4 <br /> 中层：5、6、7、8、9 <br /> 较高：10、11、12、13、14、15 |
         | **默认类别** | 输入“未知” |
 
         [![添加类型变量。](media/tutorial-set-up-environment/add-type-variables.png)](media/tutorial-set-up-environment/add-type-variables.png#lightbox)

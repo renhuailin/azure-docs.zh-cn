@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/15/2019
+ms.date: 09/02/2021
 ms.author: alkohli
-ms.openlocfilehash: cc67b678fabeb2a7878490a4ea713acb5709cdbc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 31fe8293abb25ed9a6f44660f32398dd44072c37
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643791"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470105"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>用于从 StorSimple 5000-7000 系列迁移数据的选项 
 
@@ -45,6 +45,12 @@ StorSimple 5000-7000 系列将在 2019 年 7 月[终止支持](https://support.m
 
 有关如何将数据迁移到 Azure 文件同步的详细信息，请参阅[将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步](../storage/files/storage-files-migration-storsimple-8000.md)。
 
+#### <a name="migrate-to-azure-netapp-files"></a>迁移到 Azure NetApp 文件
+
+StorSimple 5000-7000 系列的客户可迁移到与 NetApp 全局文件缓存 (GFC) 配对的 Azure NetApp 文件 (ANF)，以继续在 Azure 中存储关键数据，同时在远程站点维护内容。 客户可以使用 Azure NetApp 文件将非结构化数据集中在 Microsoft Azure 中，从而通过 NetApp 全局文件缓存提供快速的本地和地理分布式访问，最终能够精简和简化 IT 存储和基础设施。
+
+有关功能、部署方法和迁移的概述，请参阅 NetApp 中的[参考体系结构：使用 Azure NetApp 文件和 NetApp 全局文件缓存进行全局分布式 Enterprise 文件共享](https://f.hubspotusercontent20.net/hubfs/525875/r3_NA-581-0521-Ref-Arch-ANF-GFC-StorSimple%20(1)%20(1)%20(2).pdf)。<!--Not included: 1) Partnership with MS; 2) How to initiate migration with NetApp (other providers point people to their site).-->
+
 ### <a name="third-party-options"></a>第三方选项
 
 #### <a name="migrate-to-panzura-freedom-nas"></a>迁移到 Panzura Freedom NAS
@@ -64,12 +70,6 @@ Cohesity 使你可以将数据从当前 StorSimple 5000–7000 迁移到 Azure �
 通过 Nasuni，StorSimple 5000-7000 客户可以轻松地将其数据迁移并保存在 Azure 中。  Nasuni 是一个基于 Azure 的领先 NAS 存储解决方案，为客户提供本地解决方案应提供的性能和安全性，以及云经济和规模。  除高性能文件存储以外，Nasuni 和 Azure 还处理备份和灾难恢复，同时允许你通过集中式文件存储管理，在全球范围内共享数据并展开协作。 
 
 Nasuni 的经验可让你轻松完成迁移 - 立即开始： https://www.nasuni.com/blog-migrating-off-storsimple/
-
-#### <a name="migrate-to-talon-fast"></a>迁移到 Talon FAST
-
-通过 Talon，StorSimple 5000-7000 客户可以继续轻松地利用其在 StorSimple 平台中重视的优势（受无限云资源支持的小型现场占用情况），甚至拥有更大的功能。  借助 Talon FAST 解决方案，客户可以将数据迁移并保存在 Azure 中，同时拥有更小的仅限软件的现场占用空间，并增加了全局文件锁定、全局命名空间和多站点协作等优势。  Talon 是一个领先的 Azure 生态系统解决方案，与全球客户合作，将其本地文件服务器工作负载迁移到基于 Azure 的整合占用空间，而不会影响用户工作流或体验。  
-
-详细了解如何发展为云整合企业。
 
 ## <a name="migration---frequently-asked-questions"></a>迁移 - 常见问题解答
 

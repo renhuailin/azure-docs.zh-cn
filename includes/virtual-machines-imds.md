@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 29f5e96c18220f0bbdec5f91107c9220fc2fba0b
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 2900eb3ddf1411b80920869932724f76a22c9802
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123355255"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123454193"
 ---
 Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息。 可以使用它来管理和配置虚拟机。
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关可用数据的完整列表，请参阅[终结点类别摘要](#endpoint-categories)。
@@ -1007,7 +1007,7 @@ GET /metadata/attested/document
 | `timestamp.expiresOn` | 签名文档到期时的 UTC 时间戳 | 2018-10-01
 | `vmId` | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2018-10-01
 | `subscriptionId` | 虚拟机的 Azure 订阅 | 2019-04-30
-| `sku` | VM 映像的特定 SKU | 2019-11-01
+| `sku` | VM 映像的特定 SKU（与实例元数据终结点 \[`/metadata/instance`\] 中的属性 `compute/sku` 相关联） | 2019-11-01
 
 > [!NOTE]
 > 对于经典（非 Azure 资源管理器）VM，只保证填充 vmId。

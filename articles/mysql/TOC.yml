@@ -5,7 +5,7 @@
   items:
     - name: 什么是用于 MySQL 的 Azure DB？
       href: overview.md
-    - name: 我应选择哪个 MySQL 选项？
+    - name: 选择正确的 MySQL 部署类型
       href: select-right-deployment-type.md
     - name: 单一服务器中有哪些新增功能？
       href: single-server-whats-new.md
@@ -608,7 +608,10 @@
       displayName: 'import , migrate, export'
     - name: 使用 MySQL Workbench 迁移 RDS MySQL 数据
       href: how-to-migrate-rds-mysql-workbench.md
-      displayName: 'import , migrate, export'
+      displayName: 'migrate, rds, workbench'
+    - name: 使用数据传入复制迁移 RDS MySQL 数据
+      href: how-to-migrate-rds-mysql-data-in-replication.md
+      displayName: 'migrate, rds, data-in replication'
     - name: 将 Azure DB for MySQL 单一服务器迁移到 Azure DB for MySQL 灵活服务器
       href: howto-migrate-single-flexible-minimum-downtime.md
       displayName: 'migrate, Single to Flexible'
@@ -644,7 +647,7 @@
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: 管理存储过程
       href: reference-stored-procedures.md

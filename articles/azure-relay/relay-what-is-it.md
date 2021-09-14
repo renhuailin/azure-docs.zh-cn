@@ -2,13 +2,13 @@
 title: 什么是 Azure 中继？ | Microsoft Docs
 description: 本文提供 Azure 中继服务的概述。借助该服务，无需打开防火墙连接或者对网络基础设施进行彻底的改造，就能开发使用企业网络中运行的本地服务的云应用程序。
 ms.topic: conceptual
-ms.date: 06/23/2021
-ms.openlocfilehash: 8bb6028598602506474b1082bb517d29e2408c10
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.date: 09/02/2021
+ms.openlocfilehash: 8d51ecc2f840054dae94e2436d179b4e68d758ec
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114668692"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123452188"
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
 使用 Azure 中继服务可以安全地在公有云中公开企业网络中运行的服务。 无需打开防火墙上的端口或者对企业网络基础设施进行彻底的改造就能实现此目的。 
@@ -34,7 +34,7 @@ Azure 中继不同于 VPN 等网络级集成技术。 Azure 中继的范围可�
 Azure 中继具有两项功能：
 
 - [混合连接](#hybrid-connections) - 使用开放标准 Web 套接字，实现多平台方案。
-- WCF 中继 - 使用 Windows Communication Foundation (WCF) 实现远程过程调用。 WCF 中继是传统的中继产品，很多客户已在其 WCF 编程模型中使用。
+- [WCF 中继](#wcf-relay) - 使用 Windows Communication Foundation (WCF) 实现远程过程调用。 WCF 中继是传统的中继产品，很多客户已在其 WCF 编程模型中使用。
 
 ## <a name="hybrid-connections"></a>混合连接
 
@@ -45,8 +45,25 @@ Azure 中继的混合连接功能是以往的中继功能的安全开放协议�
 > [!NOTE]
 > Azure 中继的混合连接取代了 BizTalk 服务的旧式混合连接功能。 BizTalk 服务的混合连接功能构建在 Azure 服务总线 WCF 中继的基础之上。 Azure 中继的混合连接功能对现存的 WCF 中继功能做了补充。 这两项服务功能（WCF 中继和混合连接）在 Azure 中继服务中并存。 它们共享一个公用网关，但实现方式有所不同。
 
+若要开始使用 Azure 中继混合连接，请参阅以下快速入门： 
+
+- [混合连接 - .NET WebSockets](relay-hybrid-connections-dotnet-get-started.md)
+- [混合连接 - Note WebSockets](relay-hybrid-connections-node-get-started.md)
+- [混合连接 - .NET HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md)
+- [混合连接 - Node HTTP](relay-hybrid-connections-http-requests-node-get-started.md)
+
+有关更多示例，请参阅 [Azure 中继 - GitHub 上的混合连接示例](https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections)。
+
 ## <a name="wcf-relay"></a>WCF 中继
-WCF 中继适用于整个 .NET Framework 和 WCF。 可以使用一套 WCF“中继”绑定在本地服务与中继服务之间建立连接。 中继绑定将映射到新的传输绑定元素，这些元素旨在创建与云中服务总线集成的 WCF 通道组件。 有关详细信息，请参阅 [WCF 中继入门](service-bus-relay-tutorial.md)。
+WCF 中继适用于整个 .NET Framework 和 WCF。 可以使用一套 WCF“中继”绑定在本地服务与中继服务之间建立连接。 中继绑定将映射到新的传输绑定元素，这些元素旨在创建与云中服务总线集成的 WCF 通道组件。
+
+若要开始使用 WCF 中继，请参阅以下快速入门： 
+
+- [向云中的 Web 应用公开本地 WCF 服务](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
+- [向网络外部的 WCF 客户端公开本地 WCF 服务](service-bus-relay-tutorial.md)
+- [向网络外部的客户端公开本地 WCF REST 服务](service-bus-relay-rest-tutorial.md)
+
+有关更多示例，请参阅 [Azure 中继 - GitHub 上的 WCF 中继示例](https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay)。
 
 ## <a name="hybrid-connections-vs-wcf-relay"></a>混合连接与WCF 中继
 使用混合连接和 WCF 中继都能与企业网络中的资产建立安全连接。 哪一种功能更好将取决于具体的需求，如下表中所述：
@@ -76,9 +93,17 @@ WCF 中继适用于整个 .NET Framework 和 WCF。 可以使用一套 WCF“中
 9. 网关将来自发送客户端的任何消息转发到侦听客户端。  
 
 ## <a name="next-steps"></a>后续步骤
-* [.NET WebSocket 入门](relay-hybrid-connections-dotnet-get-started.md)
-* [.NET HTTP 请求入门](relay-hybrid-connections-http-requests-dotnet-get-started.md)
-* [Node WebSocket 入门](relay-hybrid-connections-node-get-started.md)
-* [Node HTTP 请求入门](relay-hybrid-connections-http-requests-node-get-started.md)
-* [中继常见问题](relay-faq.yml)
+遵循以下一个或多个快速入门，或参阅 [GitHub 上的 Azure 中继示例](https://github.com/Azure/azure-relay/tree/master/samples)。
+
+- 混合连接
+    - [混合连接 - .NET WebSockets](relay-hybrid-connections-dotnet-get-started.md)
+    - [混合连接 - Note WebSockets](relay-hybrid-connections-node-get-started.md)
+    - [混合连接 - .NET HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md)
+    - [混合连接 - Node HTTP](relay-hybrid-connections-http-requests-node-get-started.md)
+- WCF 中继
+    - [向云中的 Web 应用公开本地 WCF 服务](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
+    - [向网络外部的 WCF 客户端公开本地 WCF 服务](service-bus-relay-tutorial.md)
+    - [向网络外部的客户端公开本地 WCF REST 服务](service-bus-relay-rest-tutorial.md)
+
+有关常见问题及其答案的列表，请参阅[中继常见问题解答](relay-faq.yml)
 

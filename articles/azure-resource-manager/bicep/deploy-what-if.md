@@ -3,14 +3,14 @@ title: Bicep 部署 What-if
 description: 在部署 Bicep 文件之前，确定资源将发生哪些更改。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 09/02/2021
 ms.author: tomfitz
-ms.openlocfilehash: 42e4198f2597ca3708e58bbc7a25545eab96b8c6
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 70151d70c884432c92f49e0f4b3e5e3f873b57ac
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634584"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429327"
 ---
 # <a name="bicep-deployment-what-if-operation"></a>Bicep 部署 what-if 操作
 
@@ -196,7 +196,11 @@ what-if 操作列出六种不同的更改类型：
 
 ### <a name="set-up-environment"></a>设置环境
 
-为了了解 what-if 的工作原理，让我们运行一些测试。 首先，部署一个[用于创建虚拟网络的 Bicep 文件](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/what-if/what-if-before.bicep)。 将使用此虚拟网络来测试 what-if 如何报告更改。 下载 Bicep 文件的副本。
+为了了解 what-if 的工作原理，让我们运行一些测试。 首先，部署一个用于创建虚拟网络的 Bicep 文件。 将使用此虚拟网络来测试 what-if 如何报告更改。 下载 Bicep 文件的副本。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/samples/deploy-what-if/what-if-before.bicep":::
+
+若要部署 Bicep 文件，请使用：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -224,7 +228,11 @@ az deployment group create \
 
 ### <a name="test-modification"></a>测试修改
 
-部署完成后，即可测试 what-if 操作。 这一次，将部署一个[用于更改虚拟网络的 Bicep 文件](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/what-if/what-if-after.bicep)。 该模板中缺少一个原始标记，已删除了一个子网，并且已更改了地址前缀。 下载 Bicep 文件的副本。
+部署完成后，即可测试 what-if 操作。 这一次，将部署一个用于更改虚拟网络的 Bicep 文件。 该模板中缺少一个原始标记，已删除了一个子网，并且已更改了地址前缀。 下载 Bicep 文件的副本。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/samples/deploy-what-if/what-if-after.bicep":::
+
+若要查看更改，请使用：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -374,6 +382,24 @@ Are you sure you want to execute the deployment?
 ```
 
 你会看到预期的更改，并且可以确认你想要运行此部署。
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果不再需要示例资源，请使用 Azure CLI 或 Azure PowerShell 删除资源组。
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+az group delete --name ExampleGroup
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+Remove-AzResourceGroup -Name ExampleGroup
+```
+
+---
 
 ## <a name="sdks"></a>SDK
 

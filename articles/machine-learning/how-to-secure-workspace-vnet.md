@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 08/04/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, security
-ms.openlocfilehash: 6d7faa793b296259968eb54980fe8ff8e32514f2
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 2ed3e7d1525c750c698e853921900e6d39feb83e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105492"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480347"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习工作区
 
@@ -168,7 +168,7 @@ Azure 机器学习使用关联的 Key Vault 实例存储以下凭据：
 > [!TIP]
 > 如果在创建工作区时未使用现有的 Azure 容器注册表，说明可能不存在。 默认情况下，工作区不会创建 ACR 实例，除非需要。 若要强制创建，请在使用此部分中的步骤之前使用工作区定型或部署一个模型。
 
-Azure 机器学习支持将存储帐户配置为使用服务终结点或专用终结点。 使用以下步骤将工作区配置为在虚拟网络中时使用 ACR：
+Azure 容器注册表可配置为使用服务终结点或专用终结点。 使用以下步骤将工作区配置为在虚拟网络中时使用 ACR：
 
 1. 请使用以下方法之一查找工作区的 Azure 容器注册表的名称：
 

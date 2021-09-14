@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 716ac7b7d1c3b6577b9eb7290e249b306a617254
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 263f2be5c13a9086a529271ef8bd03464e20975e
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304087"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536232"
 ---
 ### <a name="count-of-os-update-installation-done"></a>已完成的 OS 更新安装的计数
 
@@ -50,7 +50,7 @@ Search-AzGraph -Query "PatchAssessmentResources | where type !has 'softwarepatch
 
 ### <a name="count-of-virtual-machines-by-availability-state-and-subscription-id"></a>按可用性状态和订阅 Id 统计虚拟机
 
-返回根据每个订阅的可用性状态聚合的虚拟机（类型 `Microsoft.Compute/virtualMachines`）计数。
+返回按每个订阅的可用性状态聚合的虚拟机（类型为 `Microsoft.Compute/virtualMachines`）计数。
 
 ```kusto
 HealthResources
@@ -82,7 +82,7 @@ Search-AzGraph -Query "HealthResources | where type =~ 'microsoft.resourcehealth
 
 ### <a name="count-of-virtual-machines-by-power-state"></a>按电源状态统计的虚拟机计数
 
-返回根据虚拟机的电源状态分类的虚拟机（类型`Microsoft.Compute/virtualMachines`的计数。 有关电源状态的详细信息，请参阅[电源状态概述](../../../../articles/virtual-machines/states-billing.md)。
+返回根据电源状态分类的虚拟机（类型为 `Microsoft.Compute/virtualMachines`）的计数。 有关电源状态的详细信息，请参阅[电源状态概述](../../../../articles/virtual-machines/states-billing.md)。
 
 ```kusto
 Resources
@@ -213,7 +213,7 @@ Search-AzGraph -Query "Resources | where type=~ 'microsoft.compute/virtualmachin
 
 ### <a name="list-all-extensions-installed-on-a-virtual-machine"></a>列出虚拟机上安装的所有扩展
 
-首先，此查询针对虚拟机资源类型使用 `extend` 以获取大写的 (`toupper()`) ID、获取操作系统名称和类型，以及获取虚拟机大小。 获取大写的资源 ID 是准备联接另一个属性的好方法。 然后，此查询将 `join` 用于为 leftouter 的 kind，通过匹配扩展 ID 的大写 `substring` 来获取虚拟机扩展。 “/extensions/\<ExtensionName\>”之前的 ID 部分与虚拟机 ID 的格式相同，因此我们将此属性用于 `join`。 然后会针对虚拟机扩展的名称将 `summarize` 用于 `make_list` 以合并每个扩展的名称，其中 id、OSName、OSType和 VMSize 在单个数组属性中是相同的   。 最后，我们通过 asc 对小写的 OSName 进行 `order by` 操作。 默认情况下，`order by` 为降序。
+首先，此查询针对虚拟机资源类型使用 `extend` 以获取大写的 (`toupper()`) ID、获取操作系统名称和类型，以及获取虚拟机大小。 获取大写的资源 ID 是准备联接另一个属性的好方法。 然后，此查询将 `join` 用于为 leftouter 的 kind，通过匹配扩展 ID 的大写 `substring` 来获取虚拟机扩展。 “/extensions/\<ExtensionName\>”之前的 ID 部分与虚拟机 ID 的格式相同，因此我们将此属性用于 `join`。 然后会针对虚拟机扩展的名称将 `summarize` 用于 `make_list` 以合并每个扩展的名称，其中 id、OSName、OSType和 VMSize 在单个数组属性中是相同的   。 最后，我们使用 `order by` 对小写 OSName 进行升序排序。 默认情况下，`order by` 为降序。
 
 ```kusto
 Resources
@@ -328,9 +328,9 @@ Search-AzGraph -Query "PatchAssessmentResources | where type has 'softwarepatche
 
 ---
 
-### <a name="list-of-virtual-machines-and-associated-availability-states-by-resource-ids"></a>按资源 Id 列出的虚拟机和关联的可用性状态
+### <a name="list-of-virtual-machines-and-associated-availability-states-by-resource-ids"></a>按资源 ID 列出的虚拟机和关联的可用性状态
 
-返回按可用性状态聚合的最新虚拟机（类型 `Microsoft.Compute/virtualMachines`）列表。 该查询还提供了基于 `properties.targetResourceId` 的关联资源 Id，便于调试和缓解。 可用性状态可以是以下四个值之一：“可用”、“不可用”、“已降级”和“未知”。 有关每种可用性状态的详细信息，请参阅 [Azure 资源运行状况概述](../../../../articles/service-health/resource-health-overview.md#health-status)。
+返回按可用性状态聚合的最新虚拟机（类型 `Microsoft.Compute/virtualMachines`）列表。 该查询还提供了基于 `properties.targetResourceId` 的关联资源 ID，方便进行调试和风险缓解。 可用性状态可以是以下四个值之一：“可用”、“不可用”、“已降级”和“未知”。 有关每种可用性状态的详细信息，请参阅 [Azure 资源运行状况概述](../../../../articles/service-health/resource-health-overview.md#health-status)。
 
 ```kusto
 HealthResources

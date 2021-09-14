@@ -9,12 +9,12 @@ metadata:
   ms.service: cognitive-search
   ms.topic: conceptual
   ms.date: 04/10/2020
-  ms.openlocfilehash: 70fe8e6f82d51ddb55b1763556f4684ef6244ddc
-  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.openlocfilehash: 2bfa41d8a68d9640995ae6989ebd79a4b44c7c24
+  ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/22/2021
-  ms.locfileid: "112467787"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123449083"
 title: Azure 认知搜索 - 常见问题解答 (FAQ)
 summary: 查找与 Azure 认知搜索有关的概念、代码和方案的常见问题的解答。
 sections:
@@ -32,7 +32,7 @@ sections:
   questions:
   - question: >
       是否可以移动、备份和还原索引或索引快照？
-    answer: "在开发阶段，你可能想要在搜索服务之间移动索引。 例如，可以使用“基本”或“免费”定价层开发索引，然后将其移到“标准”或更高的层以用于生产。 \n\n或者，你可能想要将索引快照备份到文件中，以后可以使用这些文件来还原该快照。 \n\n使用此 [Azure 认知搜索 .NET 示例存储库](https://github.com/Azure-Samples/azure-search-dotnet-samples)中的 **index-backup-restore** 示例代码可以实现所有这些目的。 \n\n此外，随时可以使用 Azure 认知搜索 REST API [获取索引定义](/rest/api/searchservice/get-index)。\n\nAzure 门户目前不提供内置的索引提取、快照或备份/还原功能。 但是，我们正在考虑在将来的版本中添加备份和还原功能。 若要表达你对此功能的支持，请在 [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index) 中投票。\n"
+    answer: "在开发阶段，你可能想要在搜索服务之间移动索引。 例如，可以使用“基本”或“免费”定价层开发索引，然后将其移到“标准”或更高的层以用于生产。 \n\n或者，你可能想要将索引快照备份到文件中，以后可以使用这些文件来还原该快照。 \n\n使用此 [Azure 认知搜索 .NET 示例存储库](https://github.com/Azure-Samples/azure-search-dotnet-samples)中的 **index-backup-restore** 示例代码可以实现所有这些目的。 \n\n此外，随时可以使用 Azure 认知搜索 REST API [获取索引定义](/rest/api/searchservice/get-index)。\n         \n"
   - question: >
       删除后能否还原索引或服务？
     answer: "不可以。如果删除 Azure 认知搜索索引或服务，将无法予以恢复。 删除 Azure 认知搜索服务会永久删除该服务中的所有索引。 如果删除包含一个或多个 Azure 认知搜索服务的 Azure 资源组，将永久删除所有服务。  \n\n重新创建索引、索引器、数据源和技能集等资源需要通过代码重新创建它们。 \n\n若要重新创建索引，必须为外部源中的数据重新编制索引。 因此，建议在其他数据存储（如 Azure SQL 数据库或 Cosmos DB）保留原始数据的主控副本或备份。\n\n作为替代方法，可以使用此 [Azure 认知搜索 .NET 示例存储库](https://github.com/Azure-Samples/azure-search-dotnet-samples)中的 **index-backup-restore** 示例代码，将索引定义和索引快照备份到一系列 JSON 文件。 以后，可以根据需要使用工具和文件来还原索引。  \n"
@@ -49,7 +49,7 @@ sections:
   - question: >
       能否根据用户身份限制搜索索引访问？
     answer: >
-      可以使用 `search.in()` 筛选器实现[安全筛选器](./search-security-trimming-for-azure-search.md)。 使用 [Azure Active Directory(AAD) 等标识管理服务](./search-security-trimming-for-azure-search-with-aad.md)可很好地编写筛选器，并基于定义的用户组成员身份裁剪搜索结果。
+      可以使用 `search.in()` 筛选器实现[安全筛选器](./search-security-trimming-for-azure-search.md)。 使用 [Azure Active Directory(AAD) 等标识管理服务](./search-security-trimming-for-azure-search-with-aad.md)可很好地编写筛选器，并基于定义的用户组成员身份裁剪搜索结果。 你还可注册[基于角色的访问](search-security-rbac.md)（当前为公共预览版）。
   - question: >
       为什么确定有效的术语没有匹配项？
     answer: >
@@ -83,4 +83,4 @@ sections:
       实现本地化搜索的最佳方法是什么？
     answer: >
       涉及到支持相同索引中的不同区域设置（语言）时，大多数客户会选择专用字段而非集合。 通过区域设置特定字段可分配适当的分析器。 例如，将 Microsoft 法语分析器分配给包含法语字符串的字段。 这样也简化了筛选过程。 如果已知在 fr-fr 页面上启动了一个查询，则可将搜索结果限制为该字段。 或者，创建一个[计分概要文件](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)以增加该字段的相关性。 Azure 认知搜索支持 [50 多种语言分析器](./search-language-support.md)，可从中进行选择。
-additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n   问题是否与缺少功能相关？ 请在 [User Voice 网站](https://feedback.azure.com/forums/263029-azure-search)上请求该功能。\n        \n## <a name=\"see-also\"></a>另请参阅\n   [StackOverflow：Azure 认知搜索](https://stackoverflow.com/questions/tagged/azure-search)   \n   [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)  \n   [什么是 Azure 认知搜索？](search-what-is-azure-search.md)"
+additionalContent: "\n## <a name=\"see-also\"></a>另请参阅\n   [StackOverflow：Azure 认知搜索](https://stackoverflow.com/questions/tagged/azure-search)   \n   [Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)  \n   [什么是 Azure 认知搜索？](search-what-is-azure-search.md)"

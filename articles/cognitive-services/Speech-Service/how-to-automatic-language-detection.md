@@ -1,28 +1,30 @@
 ---
 title: 如何使用语言识别
 titleSuffix: Azure Cognitive Services
-description: 语言识别用于确定在与所提供的语言列表比较时，传递到语音 SDK 的音频中所说的语言。
+description: 语言标识可与语音识别结合使用，以确定要识别的语音音频所说的语言。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/21/2021
-ms.author: lajanuar
+ms.author: pafarley
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: e24a24b54d31a98497bfba453b6677ebf0f560a9
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 04c5c178a37f83203c0b5ee0597cba0b832933d7
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322880"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538536"
 ---
 # <a name="how-to-use-language-identification"></a>如何使用语言识别
 
 语言识别用于确定在与所提供的语言列表比较时，传递到语音 SDK 的音频中所说的语言。 然后，语言识别返回的值用于选择语音转文本的语言模型，从而提供更准确的听录内容。 
 
-执行[语音翻译](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall#multi-lingual-translation-with-language-identification)时或通过执行[独立识别](#standalone-language-identification)，也可使用语言识别。 若要查看哪些语言可用，请参阅[语言支持](language-support.md)。
+执行[语音翻译](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall#multi-lingual-translation-with-language-identification)时或通过执行[独立识别](/azure/cognitive-services/speech-service/language-identification)，也可使用语言识别。 
+
+若要查看哪些语言可用，请参阅[语言支持](language-support.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -339,87 +341,6 @@ speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) 
 
 ::: zone-end
 
-## <a name="standalone-language-identification"></a>独立语言识别
-
-::: zone pivot="programming-language-csharp"
-
-在只想检测所说的源语言的用例中，可使用独立语言识别，如下面的代码示例所示。 在连续识别方案中，也可使用 `SourceLanguageRecognizer`。
-
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
-
-var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>","<paste-your-region>");
-// can switch "Latency" to "Accuracy" depending on priority
-speechConfig.SetProperty(PropertyId.SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
-
-var autoDetectSourceLanguageConfig =
-    AutoDetectSourceLanguageConfig.FromLanguages(
-        new string[] { "en-US", "de-DE" });
-
-using (var recognizer = new SourceLanguageRecognizer(speechConfig, autoDetectSourceLanguageConfig))
-{
-    var result = await recognizer.RecognizeOnceAsync();
-    if (result.Reason == ResultReason.RecognizedSpeech)
-    {
-        var lang = AutoDetectSourceLanguageResult.FromResult(result).Language;
-        Console.WriteLine($"DETECTED: Language={lang}");
-    }
-}
-```
-
-如需有关独立语言识别的更多示例（包括连续识别的示例），请参阅 [GitHub 上的示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/standalone_language_detection_samples.cs)。
-
-::: zone-end
-
-::: zone pivot="programming-language-cpp"
-
-在只想检测所说的源语言的用例中，可使用独立语言识别，如下面的代码示例所示。 在连续识别方案中，也可使用 `SourceLanguageRecognizer`。
-
-```cpp
-using namespace std;
-using namespace Microsoft::CognitiveServices::Speech;
-using namespace Microsoft::CognitiveServices::Speech::Audio;
-
-auto config = SpeechConfig::FromSubscription("<paste-your-subscription-key>","<paste-your-region>");
-config->SetProperty(PropertyId::SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
-
-auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
-
-auto recognizer = SourceLanguageRecognizer::FromConfig(config, autoDetectSourceLanguageConfig);
-cout << "Say something...\n";
-
-auto result = recognizer->RecognizeOnceAsync().get();
-if (result->Reason == ResultReason::RecognizedSpeech)
-{
-    auto lidResult = AutoDetectSourceLanguageResult::FromResult(result);
-    cout << "DETECTED: Language="<< lidResult->Language << std::endl;
-}
-```
-
-如需有关独立语言识别的更多示例（包括连续识别的示例），请参阅 [GitHub 上的示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/standalone_language_detection_samples.cpp)。
-
-::: zone-end
-
-::: zone pivot="programming-language-java"
-> [!IMPORTANT]
-> 此功能目前仅在 C#、C++ 和 Python 中受支持。
-::: zone-end
-
-::: zone pivot="programming-language-python"
-> [!IMPORTANT]
-> 此功能目前仅在 C#、C++ 和 Python 中受支持。
-::: zone-end
-
-::: zone pivot="programming-language-objectivec"
-> [!IMPORTANT]
-> 此功能目前仅在 C#、C++ 和 Python 中受支持。
-::: zone-end
-
-::: zone pivot="programming-language-javascript"
-> [!IMPORTANT]
-> 此功能目前仅在 C#、C++ 和 Python 中受支持。
-::: zone-end
 
 ## <a name="use-a-custom-model-for-language-identification"></a>使用自定义模型进行语言识别
 
@@ -509,6 +430,7 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 
 ::: zone-end
 
+
 ## <a name="next-steps"></a>后续步骤
 
 ::: zone pivot="programming-language-csharp"
@@ -530,5 +452,3 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 ::: zone pivot="programming-language-objectivec"
 * 请参阅 GitHub 上用于语言识别的[示例代码](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L525)
 ::: zone-end
-
-* [语音 SDK 参考文档](speech-sdk.md)

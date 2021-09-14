@@ -688,9 +688,21 @@ items:
           - name: 直观地监视
             href: monitor-visually.md
           - name: 使用 Azure Monitor 进行监视
-            href: monitor-using-azure-monitor.md
-          - name: 使用 Azure Monitor 监视 SSIS
-            href: monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor
+            items:
+              - name: 概述
+                href: monitor-using-azure-monitor.md
+              - name: Azure 数据工厂指标和警报
+                href: monitor-metrics-alerts.md
+              - name: 配置诊断设置和工作区
+                href: monitor-configure-diagnostics.md
+              - name: 通过 Azure Monitor REST API 设置诊断日志
+                href: monitor-logs-rest.md
+              - name: 使用 Azure Monitor 监视 SSIS 操作
+                href: monitor-ssis.md
+              - name: 日志和事件的架构
+                href: monitor-schema-logs-events.md
+              - name: 从 Azure 市场安装 Azure 数据工厂分析解决方案
+                href: monitor-install-analytics.md
           - name: 使用 SDK 进行监视
             href: monitor-programmatically.md
           - name: 监视集成运行时
@@ -910,7 +922,7 @@ items:
         href: /powershell/module/az.datafactory/
       - name: REST API
         href: /rest/api/datafactory
-      - name: Resource Manager 模板
+      - name: 资源管理器模板
         href: /azure/templates/microsoft.datafactory/allversions
       - name: Python
         href: /python/api/overview/azure/datafactory

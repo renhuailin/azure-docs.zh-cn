@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 08/27/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 2ad8c467e83a431b2ab20155968258ae0a99da39
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: adcd57731b4c3ff6d9a4a4e0a8a83c301398b2c0
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105876"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473005"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -51,6 +51,8 @@ ms.locfileid: "123105876"
 |[\[预览\]：配置计算机以接收漏洞评估代理](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F13ce0167-8ca6-4048-8e6b-f996402e3c1b) |Azure Defender 包含适用于计算机的漏洞扫描，不额外收费。 你无需具备 Qualys 许可证，甚至还不需要 Qualys 帐户 - 所有操作都在安全中心内无缝执行。 启用此策略后，Azure Defender 会自动将 Qualys 漏洞评估代理部署到尚未安装该代理的所有受支持计算机。 |DeployIfNotExists、Disabled |[2.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VulnerabilityAssessment_ProvisionQualysAgent_Deploy.json) |
 |[配置 SQL 安装的 Azure Arc 计算机，使其启用已启用 Arc 的 SQL Server 扩展。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffd2d1a6e-6d95-4df2-ad00-504bf0273406) | 若要确保 SQL Server - Azure Arc 资源默认在已启用 Azure Arc 的 Windows Server 上找到 SQL 实例时创建，Arc 计算机应启用 SQL Server 扩展。 有关详细信息，请访问：[https://docs.microsoft.com/en-us/sql/sql-server/azure-arc/overview?view=sql-server-ver15](/sql/sql-server/azure-arc/overview?view=sql-server-ver15) |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/ArcMachineWithSQL_InstallArcEnabledExtension.json) |
 |[在 Windows 计算机上配置时区。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |此策略创建一个 Guest Configuration 分配用于在 Windows 虚拟机上设置指定的时区。 |deployIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json) |
+|应在计算机上解决 Endpoint Protection 运行状况问题 |解决虚拟机上的 Endpoint Protection 运行状况问题，以保护其免受最新威胁和漏洞的侵害。 [此文档 https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows](../../../../articles/security-center/security-center-services.md?tabs=features-windows)介绍了 Azure 安全中心支持的终结点保护解决方案。 [此文档 https://docs.microsoft.com/azure/security-center/security-center-endpoint-protection](../../../../articles/security-center/security-center-endpoint-protection.md)介绍了终结点保护评估。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EndpointProtectionHealthIssuesShouldBeResolvedOnYourMachines_Audit.json) |
+|[应在计算机上安装 Endpoint Protection](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f7c564c-0a90-4d44-b7e1-9d456cffaee8) |若要保护计算机免受威胁和漏洞的侵害，请安装受支持的 Endpoint Protection 解决方案。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EndpointProtectionShouldBeInstalledOnYourMachines_Audit.json) |
 |[\[预览版\]：Linux 计算机应符合 Azure 计算安全基线的要求](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc9b3da7-8347-4380-8e70-0a0361d8dedd) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](../../../../articles/governance/policy/concepts/guest-configuration.md)。 如果计算机未根据 Azure 计算安全基线中的某条建议进行正确配置，则计算机不合规。 |AuditIfNotExists、Disabled |[1.1.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AzureLinuxBaseline_AINE.json) |
 |[Linux 计算机应仅具有允许的本地帐户](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F73db37c4-f180-4b0f-ab2c-8ee96467686b) |要求将先决条件部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](../../../../articles/governance/policy/concepts/guest-configuration.md)。 使用 Azure Active Directory 管理用户帐户是标识管理的最佳做法。 减少本地计算机帐户有助于防止在中央系统外部管理的标识激增。 如果存在已启用但未在策略参数中列出的本地用户帐户，则计算机不合规。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LocalUsers_Linux_AINE.json) |
 |[\[预览\]：Log Analytics 代理应安装在 Linux Azure Arc 计算机中](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F842c54e8-c2f9-4d79-ae8d-38d8b8019373) |如果 Log Analytics 代理未安装，此策略审核 Linux Azure Arc 计算机。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Arc_Linux_LogAnalytics_Audit.json) |

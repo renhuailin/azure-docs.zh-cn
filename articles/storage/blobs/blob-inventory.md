@@ -10,16 +10,16 @@ ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 771a2f6ba2206394162f767e9ad8d139fdb9cdd4
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: bc827d0a4221e582054b297f7287fcb55f4142a8
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122270974"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470681"
 ---
 # <a name="azure-storage-blob-inventory"></a>Azure 存储 Blob 清单
 
-Azure 存储 Blob 清单功能提供存储帐户中的容器、Blob、快照和 Blob 版本的概述。 使用清单报告可以了解 Blob 和容器的各种属性，例如总数据大小、存在时长、加密状态、不可变性策略和法定保留，等等。 该报表概述了有关业务和符合性要求的数据。
+Azure 存储 Blob 清单功能提供存储帐户中的容器、Blob、快照和 Blob 版本的概述。 使用清单报表可以了解 Blob 和容器的各种属性，例如总数据大小、新旧程度、加密状态、不可变性策略和法定保留，等等。 该报表概述了有关业务和符合性要求的数据。
 
 ## <a name="inventory-features"></a>清单功能
 
@@ -325,6 +325,19 @@ Blob 清单计费将从 2021 年 10 月 1 日开始。 届时将会公布区域�
 Blob 的快照和版本也会计入到费用内，即使已将 `includeSnapshots` 和 `includeVersions` 筛选器设置为 `false`，也是如此。 这些筛选器值不影响计费。 它们只可用于筛选报告中显示的内容。
 
 有关 Azure 存储 Blob 清单的定价详细信息，请参阅 [Azure Blob 存储定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
+
+## <a name="feature-support"></a>功能支持
+
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![是](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png)|![是](../media/icons/yes-icon.png)  <sup>2</sup> | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
+
+<sup>2</sup>    功能在预览级别受支持。
 
 ## <a name="known-issues"></a>已知问题
 

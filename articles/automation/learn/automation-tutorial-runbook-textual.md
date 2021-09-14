@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 45c7bb19e3f48fedf93fbb147a3014e09914a475
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c0efb162b624cd6bc1ca2266c51506b49bb07f2b
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831269"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480275"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>教程：创建 PowerShell 工作流 Runbook
 
@@ -227,9 +227,7 @@ Runbook 当前启动的是你在 Runbook 中硬编码的 VM。 如果可以在�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 PowerShell 的详细信息，包括语言参考和学习模块，请参阅 [PowerShell 文档](/powershell/scripting/overview)。
-* 有关 PowerShell cmdlet 参考，请参阅 [Az.Automation](/powershell/module/az.automation)。
-* 若要开始使用图形 Runbook，请参阅[创建图形 Runbook](automation-tutorial-runbook-graphical.md)。
-* 若要开始使用 PowerShell Runbook，请参阅[创建 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)。
-* 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](../automation-runbook-types.md)。
-* 有关 PowerShell 脚本支持功能的详细信息，请参阅 [Azure 自动化中的本机 PowerShell 脚本支持](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)。
+在本教程中，你创建了一个 PowerShell 工作流 runbook。 要查看 Python 3 runbook，请参阅：
+
+> [!div class="nextstepaction"]
+> [教程：创建 Python 3 runbook（预览版）](automation-tutorial-runbook-textual-python-3.md)

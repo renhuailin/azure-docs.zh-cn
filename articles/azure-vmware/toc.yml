@@ -16,7 +16,7 @@
       href: tutorial-expressroute-global-reach-private-cloud.md
     - name: 4 - 安装 VMware HCX 连接器
       href: install-vmware-hcx.md
-    - name: 5 - 配置本地 VMware HCX 连接器
+    - name: 5 - 配置本地 HCX 连接器
       href: configure-vmware-hcx.md
 - name: 教程
   items:
@@ -108,12 +108,16 @@
           href: configure-l2-stretched-vmware-hcx-networks.md
         - name: 配置 DNS 转发器
           href: configure-dns-azure-vmware-solution.md
+        - name: 配置 HCX 网络扩展
+          href: configure-hcx-network-extension.md
         - name: 配置端口镜像
           href: configure-port-mirroring-azure-vmware-solution.md
-        - name: 启用公共 Internet 访问
-          href: enable-public-internet-access.md
         - name: 在 vWAN 中配置站点到站点 VPN
           href: configure-site-to-site-vpn-gateway.md
+        - name: 启用公共 Internet 访问
+          href: enable-public-internet-access.md
+        - name: HCX 移动优化网络 (MON) 指南
+          href: vmware-hcx-mon-guidance.md
     - name: 配置存储策略
       href: configure-storage-policy.md
     - name: 配置 Windows Server 故障转移群集
@@ -122,10 +126,6 @@
       href: connect-multiple-private-clouds-same-region.md
     - name: 部署灾难恢复
       items:
-        - name: 部署 JetStream DR
-          href: deploy-disaster-recovery-using-jetstream.md
-        - name: 部署 Zerto DR
-          href: deploy-zerto-disaster-recovery.md
         - name: 部署 VMware HCX 以进行灾难恢复
           href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: 部署 VMware SRM 以进行灾难恢复
@@ -150,6 +150,8 @@
           href: ecosystem-migration-vms.md
     - name: VMware 解决方案
       items:
+        - name: 配置 HCX 网络扩展
+          href: configure-hcx-network-extension.md
         - name: 配置 vRealize Operations
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: 部署 VMware Horizon

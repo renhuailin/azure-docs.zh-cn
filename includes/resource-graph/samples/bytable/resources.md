@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 9e77bb7318f9b2d84bfef0282a817054fd5ea6f4
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: cabddc920971d75bc609ce5b0b736cefca6ce1d4
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123308759"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535844"
 ---
 ### <a name="combine-results-from-two-queries-into-a-single-result"></a>将两个查询的结果合并为单个结果
 
@@ -527,7 +527,7 @@ Search-AzGraph -Query "Resources | project id, subscriptionId, location, type, p
 
 ### <a name="list-all-extensions-installed-on-a-virtual-machine"></a>列出虚拟机上安装的所有扩展
 
-首先，此查询针对虚拟机资源类型使用 `extend` 以获取大写的 (`toupper()`) ID、获取操作系统名称和类型，以及获取虚拟机大小。 获取大写的资源 ID 是准备联接另一个属性的好方法。 然后，此查询将 `join` 用于为 leftouter 的 kind，通过匹配扩展 ID 的大写 `substring` 来获取虚拟机扩展。 “/extensions/\<ExtensionName\>”之前的 ID 部分与虚拟机 ID 的格式相同，因此我们将此属性用于 `join`。 然后会针对虚拟机扩展的名称将 `summarize` 用于 `make_list` 以合并每个扩展的名称，其中 id、OSName、OSType和 VMSize 在单个数组属性中是相同的   。 最后，我们通过 asc 对小写的 OSName 进行 `order by` 操作。 默认情况下，`order by` 为降序。
+首先，此查询针对虚拟机资源类型使用 `extend` 以获取大写的 (`toupper()`) ID、获取操作系统名称和类型，以及获取虚拟机大小。 获取大写的资源 ID 是准备联接另一个属性的好方法。 然后，此查询将 `join` 用于为 leftouter 的 kind，通过匹配扩展 ID 的大写 `substring` 来获取虚拟机扩展。 “/extensions/\<ExtensionName\>”之前的 ID 部分与虚拟机 ID 的格式相同，因此我们将此属性用于 `join`。 然后会针对虚拟机扩展的名称将 `summarize` 用于 `make_list` 以合并每个扩展的名称，其中 id、OSName、OSType和 VMSize 在单个数组属性中是相同的   。 最后，我们使用 asc 对小写 OSName 进行 `order by`。 默认情况下，`order by` 为降序。
 
 ```kusto
 Resources
@@ -572,7 +572,7 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachi
 
 ### <a name="list-all-extensions-installed-on-an-azure-arc-enabled-server"></a>列出已启用 Azure Arc 的服务器上安装的所有扩展
 
-首先，此查询对混合计算机资源类型使用 `project` 以获取大写的 ID (`toupper()`)、获取计算机名称以及计算机上运行的操作系统。 获取大写的资源 ID 是准备 `join` 另一个属性的好方法。 然后，此查询将 `join` 用于为 leftouter 的 kind，通过匹配扩展 ID 的大写 `substring` 来获取扩展。 `/extensions/<ExtensionName>` 之前的 ID 部分与混合计算机 ID 的格式相同，因此我们将此属性用于 `join`。 然后会针对虚拟机扩展的名称将 `summarize` 用于 `make_list` 以合并每个扩展的名称，其中 id、OSName 和 ComputerName 在单个数组属性中是相同的  。 最后，我们通过 asc 对小写的 OSName 进行排序。 默认情况下，`order by` 为降序。
+首先，此查询对混合计算机资源类型使用 `project` 以获取大写的 ID (`toupper()`)、获取计算机名称以及机器上运行的操作系统。 获取大写的资源 ID 是准备 `join` 另一个属性的好方法。 然后，此查询将 `join` 用于为 leftouter 的 kind，通过匹配扩展 ID 的大写 `substring` 来获取扩展。 `/extensions/<ExtensionName>` 之前的 ID 部分与混合计算机 ID 的格式相同，因此我们将此属性用于 `join`。 然后会针对虚拟机扩展的名称将 `summarize` 用于 `make_list` 以合并每个扩展的名称，其中 id、OSName 和 ComputerName 在单个数组属性中是相同的  。 最后，我们使用 asc 对小写 OSName 进行排序。 默认情况下，`order by` 为降序。
 
 ```kusto
 Resources
@@ -757,6 +757,55 @@ Search-AzGraph -Query "ResourceContainers | where isnotempty(tags) | project tag
 
 ---
 
+### <a name="list-arc-enabled-servers-not-running-latest-released-agent-version"></a>列出未运行最新发布的代理版本的已启用 Arc 的服务器
+
+此查询返回所有运行 Connected Machine Agent 过时版本的已启用 Arc 的服务器。 状态为“已过期”的代理会从结果中排除。 该查询使用 leftouter `join` 将顾问提出的关于任何已标识为过时的 Connected Machine Agent 的建议和混合计算机组合在一起，以筛选掉一段时间内未与 Azure 通信的任何代理。
+
+```kusto
+AdvisorResources
+| where type == 'microsoft.advisor/recommendations'
+| where properties.category == 'HighAvailability'
+| where properties.shortDescription.solution == 'Upgrade to the latest version of the Azure Connected Machine agent'
+| project
+        id,
+        JoinId = toupper(properties.resourceMetadata.resourceId),
+        machineName = tostring(properties.impactedValue),
+        agentVersion = tostring(properties.extendedProperties.installedVersion),
+        expectedVersion = tostring(properties.extendedProperties.latestVersion)
+| join kind=leftouter(
+    Resources
+    | where type == 'microsoft.hybridcompute/machines'
+    | project
+        machineId = toupper(id),
+        status = tostring (properties.status)
+    ) on $left.JoinId == $right.machineId
+| where status != 'Expired'
+| summarize by id, machineName, agentVersion, expectedVersion
+| order by tolower(machineName) asc
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "AdvisorResources | where type == 'microsoft.advisor/recommendations' | where properties.category == 'HighAvailability' | where properties.shortDescription.solution == 'Upgrade to the latest version of the Azure Connected Machine agent' | project  id,  JoinId = toupper(properties.resourceMetadata.resourceId),  machineName = tostring(properties.impactedValue),  agentVersion = tostring(properties.extendedProperties.installedVersion),  expectedVersion = tostring(properties.extendedProperties.latestVersion) | join kind=leftouter( Resources | where type == 'microsoft.hybridcompute/machines' | project  machineId = toupper(id),  status = tostring (properties.status) ) on $left.JoinId == $right.machineId | where status != 'Expired' | summarize by id, machineName, agentVersion, expectedVersion | order by tolower(machineName) asc"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "AdvisorResources | where type == 'microsoft.advisor/recommendations' | where properties.category == 'HighAvailability' | where properties.shortDescription.solution == 'Upgrade to the latest version of the Azure Connected Machine agent' | project  id,  JoinId = toupper(properties.resourceMetadata.resourceId),  machineName = tostring(properties.impactedValue),  agentVersion = tostring(properties.extendedProperties.installedVersion),  expectedVersion = tostring(properties.extendedProperties.latestVersion) | join kind=leftouter( Resources | where type == 'microsoft.hybridcompute/machines' | project  machineId = toupper(id),  status = tostring (properties.status) ) on $left.JoinId == $right.machineId | where status != 'Expired' | summarize by id, machineName, agentVersion, expectedVersion | order by tolower(machineName) asc"
+```
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+
+:::image type="icon" source="../../../../articles/governance/resource-graph/media/resource-graph-small.png"::: 在 Azure Resource Graph 资源管理器中尝试此查询：
+
+- Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AdvisorResources%0a%7c%20where%20type%20%3d%3d%20%27microsoft.advisor%2frecommendations%27%0a%7c%20where%20properties.category%20%3d%3d%20%27HighAvailability%27%0a%7c%20where%20properties.shortDescription.solution%20%3d%3d%20%27Upgrade%20to%20the%20latest%20version%20of%20the%20Azure%20Connected%20Machine%20agent%27%0a%7c%20project%0a%09%09id%2c%0a%09%09JoinId%20%3d%20toupper(properties.resourceMetadata.resourceId)%2c%0a%09%09machineName%20%3d%20tostring(properties.impactedValue)%2c%0a%09%09agentVersion%20%3d%20tostring(properties.extendedProperties.installedVersion)%2c%0a%09%09expectedVersion%20%3d%20tostring(properties.extendedProperties.latestVersion)%0a%7c%20join%20kind%3dleftouter(%0a%09Resources%0a%09%7c%20where%20type%20%3d%3d%20%27microsoft.hybridcompute%2fmachines%27%0a%09%7c%20project%0a%09%09machineId%20%3d%20toupper(id)%2c%0a%09%09status%20%3d%20tostring%20(properties.status)%0a%09)%20on%20%24left.JoinId%20%3d%3d%20%24right.machineId%0a%7c%20where%20status%20!%3d%20%27Expired%27%0a%7c%20summarize%20by%20id%2c%20machineName%2c%20agentVersion%2c%20expectedVersion%0a%7c%20order%20by%20tolower(machineName)%20asc" target="_blank">portal.azure.com</a>
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AdvisorResources%0a%7c%20where%20type%20%3d%3d%20%27microsoft.advisor%2frecommendations%27%0a%7c%20where%20properties.category%20%3d%3d%20%27HighAvailability%27%0a%7c%20where%20properties.shortDescription.solution%20%3d%3d%20%27Upgrade%20to%20the%20latest%20version%20of%20the%20Azure%20Connected%20Machine%20agent%27%0a%7c%20project%0a%09%09id%2c%0a%09%09JoinId%20%3d%20toupper(properties.resourceMetadata.resourceId)%2c%0a%09%09machineName%20%3d%20tostring(properties.impactedValue)%2c%0a%09%09agentVersion%20%3d%20tostring(properties.extendedProperties.installedVersion)%2c%0a%09%09expectedVersion%20%3d%20tostring(properties.extendedProperties.latestVersion)%0a%7c%20join%20kind%3dleftouter(%0a%09Resources%0a%09%7c%20where%20type%20%3d%3d%20%27microsoft.hybridcompute%2fmachines%27%0a%09%7c%20project%0a%09%09machineId%20%3d%20toupper(id)%2c%0a%09%09status%20%3d%20tostring%20(properties.status)%0a%09)%20on%20%24left.JoinId%20%3d%3d%20%24right.machineId%0a%7c%20where%20status%20!%3d%20%27Expired%27%0a%7c%20summarize%20by%20id%2c%20machineName%2c%20agentVersion%2c%20expectedVersion%0a%7c%20order%20by%20tolower(machineName)%20asc" target="_blank">portal.azure.us</a>
+- Azure 中国世纪互联门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/AdvisorResources%0a%7c%20where%20type%20%3d%3d%20%27microsoft.advisor%2frecommendations%27%0a%7c%20where%20properties.category%20%3d%3d%20%27HighAvailability%27%0a%7c%20where%20properties.shortDescription.solution%20%3d%3d%20%27Upgrade%20to%20the%20latest%20version%20of%20the%20Azure%20Connected%20Machine%20agent%27%0a%7c%20project%0a%09%09id%2c%0a%09%09JoinId%20%3d%20toupper(properties.resourceMetadata.resourceId)%2c%0a%09%09machineName%20%3d%20tostring(properties.impactedValue)%2c%0a%09%09agentVersion%20%3d%20tostring(properties.extendedProperties.installedVersion)%2c%0a%09%09expectedVersion%20%3d%20tostring(properties.extendedProperties.latestVersion)%0a%7c%20join%20kind%3dleftouter(%0a%09Resources%0a%09%7c%20where%20type%20%3d%3d%20%27microsoft.hybridcompute%2fmachines%27%0a%09%7c%20project%0a%09%09machineId%20%3d%20toupper(id)%2c%0a%09%09status%20%3d%20tostring%20(properties.status)%0a%09)%20on%20%24left.JoinId%20%3d%3d%20%24right.machineId%0a%7c%20where%20status%20!%3d%20%27Expired%27%0a%7c%20summarize%20by%20id%2c%20machineName%2c%20agentVersion%2c%20expectedVersion%0a%7c%20order%20by%20tolower(machineName)%20asc" target="_blank">portal.azure.cn</a>
+
+---
+
 ### <a name="list-azure-arc-enabled-custom-locations-with-vmware-or-scvmm-enabled"></a>列出支持 VMware 或 SCVMM 的已启用 Azure Arc 的自定义位置
 
 提供支持 VMware 或 SCVMM 资源类型的所有已启用 Azure Arc 的自定义位置的列表。
@@ -833,6 +882,45 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 - Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0a%7c%20where%20type%20%3d%7e%20%27microsoft.documentdb%2fdatabaseaccounts%27%0a%7c%20project%20id%2c%20name%2c%20writeLocations%20%3d%20(properties.writeLocations)%0a%7c%20mv-expand%20writeLocations%0a%7c%20project%20id%2c%20name%2c%20writeLocation%20%3d%20tostring(writeLocations.locationName)%0a%7c%20where%20writeLocation%20in%20(%27East%20US%27%2c%20%27West%20US%27)%0a%7c%20summarize%20by%20id%2c%20name" target="_blank">portal.azure.com</a>
 - Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0a%7c%20where%20type%20%3d%7e%20%27microsoft.documentdb%2fdatabaseaccounts%27%0a%7c%20project%20id%2c%20name%2c%20writeLocations%20%3d%20(properties.writeLocations)%0a%7c%20mv-expand%20writeLocations%0a%7c%20project%20id%2c%20name%2c%20writeLocation%20%3d%20tostring(writeLocations.locationName)%0a%7c%20where%20writeLocation%20in%20(%27East%20US%27%2c%20%27West%20US%27)%0a%7c%20summarize%20by%20id%2c%20name" target="_blank">portal.azure.us</a>
 - Azure 中国世纪互联门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0a%7c%20where%20type%20%3d%7e%20%27microsoft.documentdb%2fdatabaseaccounts%27%0a%7c%20project%20id%2c%20name%2c%20writeLocations%20%3d%20(properties.writeLocations)%0a%7c%20mv-expand%20writeLocations%0a%7c%20project%20id%2c%20name%2c%20writeLocation%20%3d%20tostring(writeLocations.locationName)%0a%7c%20where%20writeLocation%20in%20(%27East%20US%27%2c%20%27West%20US%27)%0a%7c%20summarize%20by%20id%2c%20name" target="_blank">portal.azure.cn</a>
+
+---
+
+### <a name="list-impacted-resources-when-transferring-an-azure-subscription"></a>列出转移 Azure 订阅时受影响的资源
+
+返回将订阅转移到其他 Azure Active Directory (Azure AD) 目录时一些受到影响的 Azure 资源。 需要重新创建订阅转移之前存在的一些资源。
+
+```kusto
+Resources
+| where type in (
+    'microsoft.managedidentity/userassignedidentities',
+    'microsoft.keyvault/vaults',
+    'microsoft.sql/servers/databases',
+    'microsoft.datalakestore/accounts',
+    'microsoft.containerservice/managedclusters')
+    or identity has 'SystemAssigned'
+    or (type =~ 'microsoft.storage/storageaccounts' and properties['isHnsEnabled'] == true)
+| summarize count() by type
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "Resources | where type in ( 'microsoft.managedidentity/userassignedidentities', 'microsoft.keyvault/vaults', 'microsoft.sql/servers/databases', 'microsoft.datalakestore/accounts', 'microsoft.containerservice/managedclusters') or identity has 'SystemAssigned' or (type =~ 'microsoft.storage/storageaccounts' and properties['isHnsEnabled'] == true) | summarize count() by type"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "Resources | where type in ( 'microsoft.managedidentity/userassignedidentities', 'microsoft.keyvault/vaults', 'microsoft.sql/servers/databases', 'microsoft.datalakestore/accounts', 'microsoft.containerservice/managedclusters') or identity has 'SystemAssigned' or (type =~ 'microsoft.storage/storageaccounts' and properties['isHnsEnabled'] == true) | summarize count() by type"
+```
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+
+:::image type="icon" source="../../../../articles/governance/resource-graph/media/resource-graph-small.png"::: 在 Azure Resource Graph 资源管理器中尝试此查询：
+
+- Azure 门户：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0a%7c%20where%20type%20in%20(%0a%09%27microsoft.managedidentity%2fuserassignedidentities%27%2c%0a%09%27microsoft.keyvault%2fvaults%27%2c%0a%09%27microsoft.sql%2fservers%2fdatabases%27%2c%0a%09%27microsoft.datalakestore%2faccounts%27%2c%0a%09%27microsoft.containerservice%2fmanagedclusters%27)%0a%09or%20identity%20has%20%27SystemAssigned%27%0a%09or%20(type%20%3d%7e%20%27microsoft.storage%2fstorageaccounts%27%20and%20properties%5b%27isHnsEnabled%27%5d%20%3d%3d%20true)%0a%7c%20summarize%20count()%20by%20type" target="_blank">portal.azure.com</a>
+- Azure 政府门户：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0a%7c%20where%20type%20in%20(%0a%09%27microsoft.managedidentity%2fuserassignedidentities%27%2c%0a%09%27microsoft.keyvault%2fvaults%27%2c%0a%09%27microsoft.sql%2fservers%2fdatabases%27%2c%0a%09%27microsoft.datalakestore%2faccounts%27%2c%0a%09%27microsoft.containerservice%2fmanagedclusters%27)%0a%09or%20identity%20has%20%27SystemAssigned%27%0a%09or%20(type%20%3d%7e%20%27microsoft.storage%2fstorageaccounts%27%20and%20properties%5b%27isHnsEnabled%27%5d%20%3d%3d%20true)%0a%7c%20summarize%20count()%20by%20type" target="_blank">portal.azure.us</a>
+- Azure 中国世纪互联门户：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0a%7c%20where%20type%20in%20(%0a%09%27microsoft.managedidentity%2fuserassignedidentities%27%2c%0a%09%27microsoft.keyvault%2fvaults%27%2c%0a%09%27microsoft.sql%2fservers%2fdatabases%27%2c%0a%09%27microsoft.datalakestore%2faccounts%27%2c%0a%09%27microsoft.containerservice%2fmanagedclusters%27)%0a%09or%20identity%20has%20%27SystemAssigned%27%0a%09or%20(type%20%3d%7e%20%27microsoft.storage%2fstorageaccounts%27%20and%20properties%5b%27isHnsEnabled%27%5d%20%3d%3d%20true)%0a%7c%20summarize%20count()%20by%20type" target="_blank">portal.azure.cn</a>
 
 ---
 

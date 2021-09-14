@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/10/2020
+ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7585ad6816a8d9fd0a331ae9fcb1e1cea81ddbac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 35afe080bdbb98a871fa039ad533c31ac0e8c111
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742884"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439697"
 ---
-# <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>对 Azure Active Directory 中拥有过度特权的或可疑的应用程序采取措施
+# <a name="take-action-on-over-privileged-or-suspicious-applications-in-azure-active-directory"></a>对 Azure Active Directory 中拥有过度特权的或可疑的应用程序采取措施
 
 了解如何查看和管理应用程序权限。 根据方案，本文提供可执行以保护应用程序安全的不同操作。 这些操作适用于通过用户或管理员同意添加到 Azure Active Directory (Azure AD) 租户的所有应用程序。
 
@@ -28,6 +28,8 @@ ms.locfileid: "121742884"
 ## <a name="prerequisites"></a>先决条件
 
 若要执行以下操作，必须以全局管理员、应用程序管理员或云应用程序管理员的身份登录到 Azure 门户。
+
+- 设置 Azure AD PowerShell。 请参阅 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/)
 
 若要限制对应用程序的访问，你需要要求用户分配，然后将用户或组分配到应用程序。  有关详细信息，请参阅[分配用户和组的方法](./assign-user-or-group-access-portal.md)。
 
@@ -98,12 +100,8 @@ ms.locfileid: "121742884"
 
 检索服务主体对象 ID。
 
-1. 以全局管理员、应用程序管理员或云应用程序管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“Azure Active Directory” > “企业应用程序”。 
-3. 选择想要限制访问的应用程序。
-4. 选择“属性”，然后复制对象 ID。
-
    ```powershell
+   $app_name = "<Your App's display name>"
    $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
    $sp.ObjectId
    ```

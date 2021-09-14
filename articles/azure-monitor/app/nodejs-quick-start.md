@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 96a60c88997226516d451124280053d87065e5b6
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: c2720fb5fd52eaf5f4f6d854bba622c0fecb5aeb
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381937"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438239"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>快速入门：使用 Azure Application Insights 开始监视 Node.js Web 应用程序
 
@@ -37,13 +37,15 @@ ms.locfileid: "106381937"
    > [!NOTE]
    >如果这是你首次创建 Application Insights 资源，可以通过访问[创建 Application Insights 资源](../app/create-new-resource.md)文档来了解更多信息。
 
-   此时会显示配置页，请使用下表填写输入字段。 
+   配置页面随即出现。 使用下表填写输入字段： 
 
     | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
-   | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
-   | **资源组**     | myResourceGroup      | 用于托管 AppInsights 数据的新资源组的名称。 可创建新的资源组或使用现有资源组。 |
-   | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
+   | **名称**      | 全局唯一值 | 标识所监视的应用的名称。 |
+   | **资源组**     | myResourceGroup      | 用于托管 Application Insights 数据的新资源组的名称。 可创建新的资源组或使用现有资源组。 |
+   | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置。 |
+   | **资源模式** | 基于工作区 | 如果有选择资源模式的选项，请选择“基于工作区”。  |
+   | **Log Analytics 工作区** | | 请接受默认值。 |
 
 3. 选择“创建”  。
 

@@ -7,15 +7,15 @@ metadata:
   ms.service: synapse-analytics
   ms.topic: overview
   ms.subservice: overview
-  ms.date: 07/27/2021
+  ms.date: 09/02/2021
   ms.author: saveenr
   ms.reviewer: jrasnick, wiassaf
-  ms.openlocfilehash: c6e970383611a14694b7e921257a117b09a4da89
-  ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+  ms.openlocfilehash: b076139e94c102ddd850d28bf0288dbd635e7dc1
+  ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/27/2021
-  ms.locfileid: "123029788"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123451054"
 title: Azure Synapse Analytics 常见问题解答
 summary: 本指南解答有关 Azure Synapse Analytics 的最常见问题。
 sections:
@@ -131,5 +131,5 @@ sections:
   - question: >
       如何保护对 Azure Synapse 工作区的访问？
     answer: >
-      无论是否使用[托管虚拟网络](/azure/synapse-analytics/security/synapse-workspace-managed-vnet)，都可以从公共网络连接到工作区。 有关详细信息，请参阅[连接性设置](/azure/azure-sql/database/connectivity-settings)。 通过启用[公用网络访问功能](/azure/azure-sql/database/connectivity-settings#public-network-access)或[工作区防火墙](/bs-cyrl-ba/azure/synapse-analytics/security/synapse-workspace-ip-firewall)，可以控制来自公用网络的访问。 或者，可以使用[托管专用终结点](/azure/synapse-analytics/security/synapse-workspace-managed-private-endpoints)和[专用链接](../azure-sql/database/private-endpoint-overview.md)来连接到工作区。 没有 [Synapse Analytics 托管虚拟网络](/azure/synapse-analytics/security/synapse-workspace-managed-vnet)的 Azure Synapse 工作区无法通过托管专用终结点进行连接。
+      无论是否使用[托管虚拟网络](./security/synapse-workspace-managed-vnet.md)，都可以从公共网络连接到工作区。 有关详细信息，请参阅[连接性设置](./security/connectivity-settings.md)。 通过启用[公用网络访问功能](./security/connectivity-settings.md#public-network-access)或[工作区防火墙](./security/synapse-workspace-ip-firewall.md)，可以控制来自公用网络的访问。 或者，可以使用[托管专用终结点](./security/synapse-workspace-managed-private-endpoints.md)和[专用链接](../azure-sql/database/private-endpoint-overview.md)来连接到工作区。 没有 [Synapse Analytics 托管虚拟网络](./security/synapse-workspace-managed-vnet.md)的 Azure Synapse 工作区无法通过托管专用终结点进行连接。
 additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n   * [Azure Synapse Analytics 入门](get-started.md)\n   * [创建工作区](quickstart-create-workspace.md)\n   * [使用无服务器 SQL 池](quickstart-sql-on-demand.md)"

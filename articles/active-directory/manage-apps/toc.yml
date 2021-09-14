@@ -158,6 +158,8 @@
       items:
         - name: 使用 Azure AD 保护混合访问
           href: secure-hybrid-access.md
+        - name: 通过合作伙伴集成实现安全的混合访问
+          href: secure-hybrid-access-integrations.md
         - name: Datawiza
           href: datawiza-with-azure-ad.md
         - name: F5

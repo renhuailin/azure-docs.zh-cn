@@ -3,12 +3,12 @@ title: Azure 视频分析器故障排除 - Azure
 description: 本文介绍 Azure 视频分析器的故障排除步骤。
 ms.topic: troubleshooting
 ms.date: 07/15/2021
-ms.openlocfilehash: c3b95936eabfcaefa12b9271b152d196790841c4
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: 0d3a089fee6d374dd8109f2430cfdb9fec19bc30
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362639"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429345"
 ---
 # <a name="troubleshoot-azure-video-analyzer"></a>Azure 视频分析器故障排除
 
@@ -39,7 +39,7 @@ ms.locfileid: "114362639"
 az iot edge set-modules --hub-name <iot-hub-name> --device-id avasample-iot-edge-device --content <path-to-deployment_manifest.json>
 ```
 
-如果 JSON 代码格式不正确，可能会收到以下错误：无法从文件“<deployment manifest.json>”分析 JSON，因为参数“content”存在异常：“额外数据: 第 101 行第 1 列（字符 5325）”
+如果 JSON 代码格式不正确，可能会收到以下错误：无法从文件“\<deployment manifest.json\>”分析 JSON，因为参数“content”存在异常：“额外数据: 第 101 行第 1 列（字符 5325）”
 
 如果遇到此错误，建议检查 JSON 中是否缺少括号或存在文件结构的其他问题。 可以使用客户端（如 [Notepad++ 与 JSON Viewer 插件](https://riptutorial.com/notepadplusplus/example/18201/json-viewer)）或联机工具（如 [JSON Formatter & Validator](https://jsonformatter.curiousconcept.com/)）来验证文件结构。
 
@@ -293,7 +293,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 - 若要测试网络连接，可以在边缘设备上运行以下命令。
 
   ```
-  sudo docker exec avaedge /bin/bash -c “apt update; apt install -y telnet; telnet <inference-host> <inference-port>”
+  sudo docker exec avaedge /bin/bash -c "apt update; apt install -y telnet; telnet <inference-host> <inference-port>"
   ```
 
   如果命令输出的是一串乱七八糟的文本，则 telnet 可以成功打开与推理服务器的连接，并打开二进制 gRPC 通道。 如果未看到这种情况，则 telnet 将报告网络错误。

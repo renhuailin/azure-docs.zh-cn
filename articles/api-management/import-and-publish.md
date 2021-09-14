@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0187a1c15315835c1606913acfd52dc930e92443
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91626935"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538644"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>教程：导入和发布第一个 API
 
@@ -53,7 +53,7 @@ ms.locfileid: "91626935"
 
    |设置|值|说明|
    |-------|-----|-----------|
-   |**OpenAPI 规范**|*https:\//conferenceapi.azurewebsites.net?format=json*|实现 API 的服务。 API 管理将请求转发到此地址。|
+   |**OpenAPI 规范**|*https:\//conferenceapi.azurewebsites.net?format=json*|实现 API 的服务。 API 管理将请求转发到此地址。 该服务必须托管在可公开访问的 Internet 地址上。 |
    |**显示名称**|输入上述服务 URL 后，API 管理将根据 JSON 填写此字段。|显示在[开发人员门户](api-management-howto-developer-portal.md)中的名称。|
    |**名称**|输入上述服务 URL 后，API 管理将根据 JSON 填写此字段。|API 的唯一名称。|
    |**说明**|输入上述服务 URL 后，API 管理将根据 JSON 填写此字段。|API 的可选说明。|

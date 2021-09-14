@@ -4,11 +4,11 @@ ms.service: app-insights
 ms.topic: include
 ms.date: 06/18/2020
 ms.author: inhenkel
-ms.openlocfilehash: 409acdc4812f3e8ccf53e7df6712ffb289f44f9f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a5622a34e2a3d1a92b3809e7e1697f1c5a0b0dbf
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95971180"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123454034"
 ---
-<Token>![媒体服务徽标 v3](../media/media-services-api-logo/azure-media-services-logo-v3.svg)<br><hr color="#5ea0ef" size="10"></Token>
+![媒体服务徽标 v3](../media/media-services-api-logo/azure-media-services-logo-v3.svg)<br><hr color="#5ea0ef" size="10">正在查找[媒体服务 v2 文档？](../../previous/media-services-overview.md)

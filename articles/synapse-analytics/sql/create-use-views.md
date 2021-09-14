@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01a48da50391c6d3e826b81c4174936c95f64462
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 94fee0aa5582f76e6d97568a5535d3626d94515b
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597212"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535214"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中通过无服务器 SQL 池创建和使用视图
 
@@ -123,6 +123,51 @@ FROM
 >![Yellow Taxi Delta Lake 文件夹](./media/shared/yellow-taxi-delta-lake.png)
 
 Delta Lake 目前为公共预览版，存在一些已知问题和限制。 在 [Synapse 无服务器 SQL 池自助页](resources-self-help-sql-on-demand.md#delta-lake)上查看已知问题。
+
+## <a name="json-views"></a>JSON 视图
+
+如果需要在从文件获取的结果集的基础上进行一些额外的处理，则视图是不错的选择。 例如分析 JSON 文件，我们需要应用 JSON 函数以从 JSON 文档中提取值：
+
+```sql
+CREATE OR ALTER VIEW CovidCases
+AS 
+select
+    *
+from openrowset(
+        bulk 'latest/ecdc_cases.jsonl',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+    cross apply openjson (doc)
+        with (  date_rep datetime2,
+                cases int,
+                fatal int '$.deaths',
+                country varchar(100) '$.countries_and_territories')
+```
+
+`OPENJSON` 函数分析 JSONL 文件的每一行，该文件每行包含一个文本格式的 JSON 文档。
+
+## <a name="cosmosdb-view"></a>CosmosDB 视图
+
+如果在容器上启用了 CosmosDB 分析存储，则可以在 Azure CosmosDB 容器之上创建视图。 CosmosDB 帐户名称、数据库名称和容器名称应添加到视图中，并且只读访问密钥应放置在视图引用的数据库范围凭据中。
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL MyCosmosDbAccountCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
+GO
+CREATE OR ALTER VIEW Ecdc
+AS SELECT *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
+      CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+请在[此处](query-cosmos-db-analytical-store.md)查找有关使用 Synapse Link 查询 CosmosDB 容器的详细信息。
 
 ## <a name="use-a-view"></a>使用视图
 

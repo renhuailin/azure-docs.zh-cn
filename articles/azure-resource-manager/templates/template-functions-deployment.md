@@ -3,12 +3,12 @@ title: 模板函数 - 部署
 description: 介绍可在 Azure 资源管理器模板（ARM 模板）中使用的用于检索部署信息的函数。
 ms.topic: conceptual
 ms.date: 05/13/2021
-ms.openlocfilehash: a51e11a34e9c5dd51b07bfa1f2d64e1b306f5b31
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 27b800510da7bed15d6853683a026704e2b45698
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959685"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449065"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署函数
 
@@ -183,6 +183,8 @@ ms.locfileid: "111959685"
 }
 ```
 
+对于订阅部署，此[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)将返回部署对象。
+
 ## <a name="environment"></a>环境
 
 `environment()`
@@ -291,9 +293,9 @@ ms.locfileid: "111959685"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| parameterName |是 |字符串 |要返回的参数名称。 |
+| parameterName |是 |string |要返回的参数名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -380,7 +382,7 @@ ms.locfileid: "111959685"
 
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | 选项 1 |
 | intOutput | int | 1 |
@@ -400,7 +402,7 @@ ms.locfileid: "111959685"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 

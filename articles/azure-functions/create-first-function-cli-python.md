@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-python-uiex
-ms.openlocfilehash: 8bba5cbfe0496c773625a164e3e3e2ef002e03b1
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: cd67f81868d43ece3638d3d46ed07d4044642b19
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122829953"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468341"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Python 函数
 
@@ -259,7 +259,7 @@ py -m venv .venv
     az functionapp create --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --os-type linux
     ```
     
-    [az functionapp create](/cli/azure/functionapp#az_functionapp_create) 命令可在 Azure 创建函数应用。 如果使用的是 Python 3.7 或 3.6，请将 `--runtime-version` 分别更改为 `3.7` 或 `3.6`。
+    [az functionapp create](/cli/azure/functionapp#az_functionapp_create) 命令可在 Azure 创建函数应用。 如果使用的是 Python 3.7 或 3.6，请将 `--runtime-version` 分别更改为 `3.7` 或 `3.6`。 你必须提供 `--os-type linux`，因为 Python 函数无法在 Windows 上运行，这是默认设置。
     
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     

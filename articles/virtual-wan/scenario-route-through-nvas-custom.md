@@ -9,16 +9,19 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 84cb22956b682a9acb23f4f391faf046eccc47a7
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 1602207c83f8ff4a632428c0308b514c6d552058
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378135"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428247"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>方案：使用自定义设置通过 NVA 路由流量
 
 使用 Azure 虚拟 WAN 虚拟中心路由时，有许多的选项可供使用。 本文重点介绍如何通过一个用于在虚拟网络与分支之间通信的网络虚拟设备 (NVA) 来路由流量，并针对发往 Internet 的流量使用不同的 NVA。 有关详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
+
+>[!Note]
+> 请注意，对于下面的路由方案，包含 NVA 的虚拟 WAN 中心和分支虚拟网络必须位于同一 Azure 区域。
 
 ## <a name="design"></a>设计
 

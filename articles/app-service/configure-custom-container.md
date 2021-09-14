@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/25/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: b812495d1046ffc1b9435c0dc2684dd61af89beb
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: d51ab96f0a9bc09f966890b848201df7091db621
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122865071"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541416"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义容器
 
@@ -406,7 +406,7 @@ wordpress:
 #### <a name="unsupported-options"></a>不支持的选项
 
 - build（不允许）
-- depends_on（忽略）
+- [depends_on](faq-app-service-linux.yml#how-do-i-use-depends-on-)（已忽略）
 - networks（忽略）
 - secrets（忽略）
 - 除了 80 和 8080 之外的端口（忽略）

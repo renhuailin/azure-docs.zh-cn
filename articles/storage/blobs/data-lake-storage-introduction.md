@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: b197d91893cc419913ace60fe30beca88484bfd2
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 65d8ad19426aca491260035364c4e99bfc1b5179
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590947"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469637"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 简介
 
@@ -70,9 +70,9 @@ Data Lake Storage Gen2 在 Blob 存储的基础上构建，并通过以下方式
 
 ## <a name="supported-blob-storage-features"></a>支持的 Blob 存储功能
 
-你的帐户现在可使用 [诊断日志记录](../common/storage-analytics-logging.md)、[访问层](storage-blob-storage-tiers.md)和 [Blob 存储生命周期管理策略](storage-lifecycle-management-concepts.md)等 Blob 存储功能。 
+你的帐户现在可使用[诊断日志记录](../common/storage-analytics-logging.md)、[访问层](storage-blob-storage-tiers.md)和 [Blob 存储生命周期管理策略](storage-lifecycle-management-concepts.md)等 Blob 存储功能。 大多数 Blob 存储功能完全受支持，但某些功能仅在预览级别受支持，或者尚不受支持。  
 
-有关受支持的 Blob 存储功能的列表，请参阅 [Azure Data Lake storage Gen2 中提供的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)。
+若要了解 Data Lake Storage Gen2 如何支持每项 Blob 存储功能，请参阅 [Azure 存储帐户中的 Blob 存储功能支持](storage-feature-support-in-storage-accounts.md)。
 
 ## <a name="supported-azure-service-integrations"></a>支持的 Azure 服务集成
 

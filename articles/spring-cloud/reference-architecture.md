@@ -6,12 +6,12 @@ title: Azure Spring Cloud 参考体系结构
 ms.author: akaleshian
 ms.service: spring-cloud
 description: 此参考体系结构是使用典型企业中心和分支设计的基础，以便使用 Azure Spring Cloud。
-ms.openlocfilehash: f0cc7a1345ff15a63c7cb9b0ebca51863fdf2791
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: d3124f9e9eac913a333e4ab186c871297e955d1e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271213"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469079"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure Spring Cloud 参考体系结构
 
@@ -28,7 +28,7 @@ Azure Spring Cloud 需要两个专用子网：
 * 服务运行时
 * Spring Boot 应用程序
 
-其中每个子网都需要一个专用群集。 多个群集不能共享相同的子网。 每个子网的最小大小为/28。 Azure Spring Cloud 可支持的应用程序实例数因子网大小而异。 可以在[在虚拟网络中部署 Azure Spring Cloud][17]的[虚拟网络要求][11]部分中找到详细的虚拟网络 (VNET) 要求。
+其中每个子网都需要一个专用 Azure Spring Cloud 群集。 多个群集不能共享相同的子网。 每个子网的最小大小为/28。 Azure Spring Cloud 可支持的应用程序实例数因子网大小而异。 可以在[在虚拟网络中部署 Azure Spring Cloud][17]的[虚拟网络要求][11]部分中找到详细的虚拟网络 (VNET) 要求。
 
 > [!WARNING]
 > 所选的子网大小不能与现有的 VNET 地址空间重叠，也不应与任何对等或本地子网地址范围重叠。
@@ -37,8 +37,8 @@ Azure Spring Cloud 需要两个专用子网：
 
 此体系结构的典型用途包括：
 
-* 在混合云环境中部署的内部应用程序
-* 面向外部的应用程序
+* 专用应用程序：在混合云环境中部署的内部应用程序
+* 公共应用程序：面向外部的应用程序
 
 这些用例除安全性和网络流量规则外都相似。 此体系结构旨在支持各个用例的细微差别。
 
@@ -46,20 +46,20 @@ Azure Spring Cloud 需要两个专用子网：
 
 以下列表描述了专用应用程序的基础结构要求。 这些要求在高度管控环境中较为典型。
 
-* 除控制平面流量外不会直接流出到公共互联网。
-* 出口流量应通过中央网络虚拟设备 (NVA)（例如 Azure 防火墙）。
+* 子网必须只有一个 Azure Spring Cloud 实例。
+* 应强制遵循至少一个安全基准。
+* 应用程序主机域名服务 (DNS) 记录应存储在 Azure 专用 DNS 中。
+* Azure 服务依赖关系应通过服务终结点或专用链接进行通信。
 * 静态数据应当加密。
 * 传输中的数据应当加密。
 * 可以使用 DevOps 部署管道（例如 Azure DevOps），管道要求与 Azure Spring Cloud 建立网络连接。
+* 出口流量应通过中央网络虚拟设备 (NVA)（例如 Azure 防火墙）。
+* 如果使用 [Azure Spring Cloud Config Server][8] 从存储库加载配置属性，则该存储库必须是专用的。
 * Microsoft 的零信任安全方法要求将机密、证书和凭据存储在安全的保管库中。 建议的服务为 Azure Key Vault。
-* 应用程序主机域名服务 (DNS) 记录应存储在 Azure 专用 DNS 中。
 * 本地和云中的主机名称解析应是双向的。
-* 应强制遵循至少一个安全基准。
-* Azure 服务依赖关系应通过服务终结点或专用链接进行通信。
+* 除控制平面流量外不会直接流出到公共互联网。
 * 不能修改由 Azure Spring Cloud 部署管理的资源组。
 * 不能修改由 Azure Spring Cloud 部署管理的子网。
-* 子网必须只有一个 Azure Spring Cloud 实例。
-* 如果使用 [Azure Spring Cloud Config Server][8] 从存储库加载配置属性，则该存储库必须是专用的。
 
 以下列表显示了组成设计的组件：
 
@@ -67,24 +67,24 @@ Azure Spring Cloud 需要两个专用子网：
   * 域名服务 (DNS)
   * 网关
 * 中心订阅
-  * 防火墙子网
   * 应用程序网关子网
+  * 防火墙子网
   * 共享服务子网
 * 已连接订阅
-  * 虚拟网络对等
   * Azure Bastion 子网
+  * 虚拟网络对等
 
 以下列表描述了此参考体系结构中的 Azure 服务：
 
-* [Azure Spring Cloud][1]：一种托管服务，专为基于 Java 的 Spring Boot 应用程序和基于 .NET 的 [Steeltoe][9] 应用程序进行设计和优化。
-
-* [Azure Key Vault][2]：与 Microsoft 标识服务和计算资源紧密集成的硬件支持的凭据管理服务。
+* [Azure Key Vault][2]：硬件支持的凭据管理服务，与 Microsoft 标识服务和计算资源紧密集成。
 
 * [Azure Monitor][3]：一套全面的监视服务，适用于在 Azure 和本地部署的应用程序。
 
+* [Azure Pipelines][5]：可自动将更新的 Spring Boot 应用部署到 Azure Spring Cloud 的功能齐全的持续集成/持续开发 (CI/CD) 服务。
+
 * [Azure 安全中心][4]：统一的安全管理和威胁防护系统，用于跨本地、多个云和 Azure 的工作负载。
 
-* [Azure Pipelines][5]：可自动将更新的 Spring Boot 应用部署到 Azure Spring Cloud 的功能齐全的持续集成/持续开发 (CI/CD) 服务。
+* [Azure Spring Cloud][1]：一种托管服务，专为基于 Java 的 Spring Boot 应用程序和基于 .NET 的 [Steeltoe][9] 应用程序进行设计和优化。
 
 下图表示一种结构良好的中心和分支设计，用于满足上述要求：
 
@@ -92,24 +92,24 @@ Azure Spring Cloud 需要两个专用子网：
 
 ## <a name="public-applications"></a>公共应用程序
 
-以下列表描述了公共应用程序的基础结构要求。 这些要求在高度管控环境中较为典型。
+以下列表描述了公共应用程序的基础结构要求。 这些要求在高度管控环境中较为典型。 这些要求是上一部分中的一个超集。 其他项以斜体表示。
 
-* 入口流量应至少由应用程序网关或 Azure Front Door 管理。
+* 子网必须只有一个 Azure Spring Cloud 实例。
+* 应强制遵循至少一个安全基准。
+* 应用程序主机域名服务 (DNS) 记录应存储在 Azure 专用 DNS 中。
 * 应启用 Azure DDoS 防护标准。
-* 除控制平面流量外不会直接流出到公共互联网。
-* 出口流量应通过中央网络虚拟设备 (NVA)（例如 Azure 防火墙）。
+* Azure 服务依赖关系应通过服务终结点或专用链接进行通信。
 * 静态数据应当加密。
 * 传输中的数据应当加密。
 * 可以使用 DevOps 部署管道（例如 Azure DevOps），管道要求与 Azure Spring Cloud 建立网络连接。
+* 出口流量应通过中央网络虚拟设备 (NVA)（例如 Azure 防火墙）。
+* _入口流量应至少由应用程序网关或 Azure Front Door 管理。_
+* _Internet 可路由地址应存储在 Azure 公共 DNS 中。_
 * Microsoft 的零信任安全方法要求将机密、证书和凭据存储在安全的保管库中。 建议的服务为 Azure Key Vault。
-* 应用程序主机 DNS 记录应存储在 Azure 专用 DNS 中。
-* Internet 可路由地址应存储在 Azure 公共 DNS 中。
 * 本地和云中的主机名称解析应是双向的。
-* 应强制遵循至少一个安全基准。
-* Azure 服务依赖关系应通过服务终结点或专用链接进行通信。
+* 除控制平面流量外不会直接流出到公共互联网。
 * 不能修改由 Azure Spring Cloud 部署管理的资源组。
 * 不能修改由 Azure Spring Cloud 部署管理的子网。
-* 子网必须只有一个 Azure Spring Cloud 实例。
 
 以下列表显示了组成设计的组件：
 
@@ -117,30 +117,30 @@ Azure Spring Cloud 需要两个专用子网：
   * 域名服务 (DNS)
   * 网关
 * 中心订阅
-  * 防火墙子网
   * 应用程序网关子网
+  * 防火墙子网
   * 共享服务子网
 * 已连接订阅
-  * 虚拟网络对等
   * Azure Bastion 子网
+  * 虚拟网络对等
 
 以下列表描述了此参考体系结构中的 Azure 服务：
 
-* [Azure Spring Cloud][1]：一种托管服务，专为基于 Java 的 Spring Boot 应用程序和基于 .NET 的 [Steeltoe][9] 应用程序进行设计和优化。
+* [Azure 应用程序防火墙][7]：Azure 应用程序网关的功能，可以对应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。
+
+* [Azure 应用程序网关][6]：负责应用程序流量的负载均衡器，其中传输层安全性 (TLS) 卸载在第 7 层上运行。
 
 * [Azure Key Vault][2]：硬件支持的凭据管理服务，与 Microsoft 标识服务和计算资源紧密集成。
 
 * [Azure Monitor][3]：一套全面的监视服务，适用于在 Azure 和本地部署的应用程序。
 
-* [Azure 安全中心][4]：统一的安全管理和威胁防护系统，用于跨本地、多个云和 Azure 的工作负载。
-
 * [Azure Pipelines][5]：可自动将更新的 Spring Boot 应用部署到 Azure Spring Cloud 的功能齐全的持续集成/持续开发 (CI/CD) 服务。
 
-* [Azure 应用程序网关][6]：负责应用程序流量的负载均衡器，其中传输层安全性 (TLS) 卸载在第 7 层上运行。
+* [Azure 安全中心][4]：统一的安全管理和威胁防护系统，用于跨本地、多个云和 Azure 的工作负载。
 
-* [Azure 应用程序防火墙][7]：Azure 应用程序网关的功能，可以对应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。
+* [Azure Spring Cloud][1]：一种托管服务，专为基于 Java 的 Spring Boot 应用程序和基于 .NET 的 [Steeltoe][9] 应用程序进行设计和优化。
 
-下图表示一种结构良好的中心和分支设计，用于满足上述要求：
+下图表示一种结构良好的中心和分支设计，用于满足上述要求。  请注意，只有中心虚拟网络与 Internet 通信：
 
 ![公共应用程序的参考体系结构图](./media/spring-cloud-reference-architecture/architecture-public.png)
 
@@ -172,13 +172,13 @@ Azure Spring Cloud 解决了卓越运营的多方面内容。 可以将这些方
 
 ### <a name="reliability"></a>可靠性
 
-Azure Spring Cloud 的设计以 AKS 作为基础组件。 尽管 AKS 通过群集提供了一定程度的复原能力，但此参考体系结构包含了服务和体系结构注意事项，以便在出现组件故障时提高应用程序的可用性。
+Azure Spring Cloud 基于 AKS 构建。 尽管 AKS 通过群集提供了一定程度的复原能力，但此参考体系结构则更上一层楼，它包含了服务和体系结构注意事项，以便在出现组件故障时提高应用程序的可用性。
 
 此体系结构在定义完善的中心和分支设计之上构建，结构基础可确保你将其部署到多个区域。 对于专用应用程序用例，此体系结构使用 Azure 专用 DNS 来确保其在发生地理故障时继续可用。 对于公共应用程序用例，Azure Front Door和 Azure 应用程序网关可以确保可用性。
 
 ### <a name="security"></a>安全性
 
-此体系结构的安全性通过遵守行业定义的控件和基准得到解决。 此体系结构的控件来自[云安全联盟][18] (CSA) 的[云控件矩阵][19] (CCM)和[互联网安全中心][21] (CIS) 的 [Microsoft Azure 基础基准][20] (MAFB)。 在所应用的控件中，重点是管理、网络和应用程序安全的主要安全设计原则。 你负责处理标识、访问管理和存储的设计原则，因为它们与目标基础结构相关。
+此体系结构的安全性通过遵守行业定义的控件和基准得到解决。 在这种情况下，“控制”是指简洁且明确定义的最佳做法，如“实现信息系统访问时使用最小特权原则。 IAM-05”。此体系结构的控制来自[云安全联盟][18] (CSA) 的[云控件矩阵][19] (CCM) 和[互联网安全中心][21] (CIS) 的 [Microsoft Azure 基础基准][20] (MAFB)。 在所应用的控件中，重点是管理、网络和应用程序安全的主要安全设计原则。 你负责处理标识、访问管理和存储的设计原则，因为它们与目标基础结构相关。
 
 #### <a name="governance"></a>调控
 
@@ -192,7 +192,7 @@ Azure Spring Cloud 的设计以 AKS 作为基础组件。 尽管 AKS 通过群�
 
 #### <a name="network"></a>网络
 
-支持此体系结构的网络设计从传统的中心和分支模型派生而来。 此决定确保网络隔离成为基础结构。 CCM 控制 IVS-06 建议在受信任和不受信任的环境之间限制和监视网络和虚拟机之间的流量。 此体系结构通过实现 NSG 控制东西流量，通过 Azure 防火墙来控制南北流量。 CCM 控制 IPY-04 建议基础结构应使用安全的网络协议来进行服务之间的数据交换。 支持此体系结构的 Azure 服务都使用标准安全协议，如 HTTP 和 SQL 的 TLS。
+支持此体系结构的网络设计从传统的中心和分支模型派生而来。 此决定确保网络隔离成为基础结构。 CCM 控制 IVS-06 建议在受信任和不受信任的环境之间限制和监视网络和虚拟机之间的流量。 此体系结构通过实现 NSG 和 Azure 防火墙来分别控制东西流量（“数据中心”内）和南北流量（“数据中心”外）。 CCM 控制 IPY-04 建议基础结构应使用安全的网络协议来进行服务之间的数据交换。 支持此体系结构的 Azure 服务都使用标准安全协议，如 HTTP 和 SQL 的 TLS。
 
 以下列表显示了在此引用中解决网络安全的 CCM 控制：
 

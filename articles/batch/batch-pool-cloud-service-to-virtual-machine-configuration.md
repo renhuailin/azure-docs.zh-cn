@@ -2,13 +2,13 @@
 title: 将 Batch 池配置从云服务迁移到虚拟机
 description: 了解如何将池配置更新为最新的建议配置
 ms.topic: how-to
-ms.date: 03/11/2021
-ms.openlocfilehash: a176c4df1737a340a546b4ab7926447cd821350d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/03/2021
+ms.openlocfilehash: 9d4ce46c5291333f161f260c3b4706ea9dcf9a24
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200562"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538878"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machine"></a>将 Batch 池配置从云服务迁移到虚拟机
 
@@ -36,7 +36,7 @@ cloudServicesConfiguration 池不支持目前的一些 Batch 功能，并且不�
 - “virtualMachineConfiguration”池节点利用托管 OS 磁盘。 用于每个节点的[托管磁盘类型](../virtual-machines/disks-types.md)取决于为该池选择的 VM 大小。 如果为池指定了一个“s”VM 大小（例如“Standard_D2s_v3”），则会使用高级 SSD。 如果指定了一个“非 s”VM 大小（例如“Standard_D2_v3”），则会使用标准 HDD。
 
    > [!IMPORTANT]
-   > 与虚拟机和虚拟机规模集一样，用于每个节点的 OS 托管磁盘都会产生成本，这增加了 VM 的成本。 “cloudServiceConfiguration”节点没有 OS 磁盘成本，因为 OS 磁盘是在节点的本地 SSD 上创建的。
+   > 与虚拟机和虚拟机规模集一样，用于每个节点的 OS 托管磁盘都会产生成本，这增加了 VM 的成本。 “virtualMachineConfiguration”池可使用[临时 OS 磁盘](create-pool-ephemeral-os-disk.md)来避免产生与托管磁盘相关的额外成本，临时磁盘会在 VM 缓存或临时 SSD 上创建 OS 磁盘。“cloudServiceConfiguration”节点没有 OS 磁盘成本，因为 OS 磁盘是在节点本地 SSD 上创建的。
 
 ## <a name="azure-data-factory-custom-activity-pools"></a>Azure 数据工厂自定义活动池
 

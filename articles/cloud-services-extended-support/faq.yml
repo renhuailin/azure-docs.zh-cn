@@ -9,12 +9,12 @@ metadata:
   ms.reviewer: mimckitt
   ms.date: 10/13/2020
   ms.custom: references_regions
-  ms.openlocfilehash: 4b8cd236bad28c93949610dd26f45042bc0debc7
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: bb2ee07d3d5c603df11d5b17b6afea496f4b31c8
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114481247"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123424089"
 title: Azure 云服务（外延支持）的常见问题解答
 summary: 本文介绍与 Azure 云服务相关的常见问题（外延支持）。
 sections:
@@ -29,7 +29,7 @@ sections:
   - question: >
       哪些位置可用于部署云服务（外延支持）？
     answer: >
-      可以在所有公有云区域中采用云服务（外延支持）。
+      可在所有公有云和主权云区域中采用云服务（外延支持）。
   - question: "我的配额将有什么变化？ \n"
     answer: >
       客户需要使用与任何其他 Azure 资源管理器产品相同的过程来请求配额。Azure 资源管理器中的配额是区域性的，每个区域需要单独的配额请求。

@@ -126,6 +126,8 @@
   items:
     - name: 全文搜索
       href: search-lucene-query-architecture.md
+    - name: 分析器
+      href: search-analyzers.md
     - name: 语义搜索
       href: semantic-search-overview.md
     - name: 相关性评分
@@ -182,8 +184,6 @@
           href: search-manage-azure-cli.md
         - name: 跨区域移动服务
           href: search-howto-move-across-regions.md
-        - name: 排查创建共享专用链接资源时出现的问题
-          href: troubleshoot-shared-private-link-resources.md
     - name: 安全性
       items:
         - name: 数据加密
@@ -202,6 +202,8 @@
               href: service-configure-firewall.md
             - name: 创建专用终结点
               href: service-create-private-endpoint.md
+            - name: 排查专用连接问题
+              href: troubleshoot-shared-private-link-resources.md
         - name: 出站安全（索引器）
           items:
             - name: 通过 IP 范围进行数据访问
@@ -266,8 +268,6 @@
           href: index-sql-relational-data.md
     - name: 分析器
       items:
-        - name: 添加分析器
-          href: search-analyzers.md
         - name: 添加语言分析器
           href: index-add-language-analyzers.md
         - name: 添加自定义分析器

@@ -2,14 +2,14 @@
 title: 为池选择 VM 大小和映像
 description: 如何选择 Azure Batch 池中计算节点的可用 VM 大小和 OS 版本
 ms.topic: conceptual
-ms.date: 08/27/2021
+ms.date: 09/02/2021
 ms.custom: seodec18
-ms.openlocfilehash: bff6ef88345b280e2c977661814630af38fbe9d5
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 64dc4f11d5b80f0b493ca393f9a04521090c02cb
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224829"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437051"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小和映像
 
@@ -19,7 +19,16 @@ ms.locfileid: "123224829"
 
 ### <a name="pools-in-virtual-machine-configuration"></a>虚拟机配置中的池
 
-虚拟机配置中的 Batch 池支持几乎所有 [VM 大小](../virtual-machines/sizes.md)。 请参阅下表以了解有关支持的大小和限制的详细信息。
+虚拟机配置中的 Batch 池支持几乎所有 [VM 大小](../virtual-machines/sizes.md)。 可通过[批处理管理 API](batch-apis-tools.md#batch-management-apis) 和[命令行工具](batch-apis-tools.md#batch-command-line-tools)（PowerShell cmdlet 和 Azure CLI）获取区域中受支持的 VM 大小。  例如，列出区域中受支持的 VM 大小的 [Azure Batch CLI 命令](/cli/azure/batch/location#az_batch_location_list_skus)是：
+
+```azurecli-interactive
+az batch location list-skus --location
+                            [--filter]
+                            [--maxresults]
+                            [--subscription] 
+```
+
+对于每个 VM 系列，下表还列出了 Batch 是否支持该系列及其 VM 大小。
 
 | VM 系列  | 支持的大小 |
 |------------|---------|

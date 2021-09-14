@@ -3,14 +3,14 @@ title: 在 Azure Kubernetes 服务 (AKS) 中启用容器存储接口 (CSI) 驱�
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中为 Azure 磁盘和 Azure 文件存储启用容器存储接口 (CSI) 驱动程序。
 services: container-service
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 08/31/2021
 author: palma21
-ms.openlocfilehash: 7aad80816a7bf8f6a1c55c8a4f1de1d4761fc523
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7fe0aa073cf1ecb959bc7999ba59a2486c65b7e1
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733596"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429003"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中为 Azure 磁盘和 Azure 文件存储启用容器存储接口 (CSI) 驱动程序
 
@@ -22,7 +22,9 @@ ms.locfileid: "121733596"
 
 > [!IMPORTANT]
 > 从 Kubernetes 版本 1.21 开始，Kubernetes 仅使用 CSI 驱动程序，这也是它的默认做法。 这些驱动程序代表了 Kubernetes 中将来所支持的存储的趋势。
->
+> 
+> 在升级到 AKS 1.21 之前，请删除手动安装的开源 Azure 磁盘和 Azure 文件 CSI 驱动程序。
+> 
 > “树中驱动程序”是指包含在核心 Kubernetes 代码中的当前存储驱动程序，而不是新的 CSI 驱动程序（插件）。
 
 ## <a name="limitations"></a>限制

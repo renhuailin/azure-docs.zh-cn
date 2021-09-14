@@ -4,14 +4,14 @@ description: 了解如何使用 Apache Spark 迁移到 Azure Managed Instance fo
 author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
-ms.topic: overview
-ms.date: 06/02/2021
-ms.openlocfilehash: e85d95dcd455ea2c9f4d9a14d9b68bebf06d3df6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.topic: tutorial
+ms.date: 08/17/2021
+ms.openlocfilehash: 5d78161f73dfa1927483d7c6f8bad3ce925b3631
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731231"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426861"
 ---
 # <a name="migrate-to-azure-managed-instance-for-apache-cassandra-using-apache-spark"></a>使用 Apache Spark 迁移到 Azure Managed Instance for Apache Cassandra
 
@@ -22,7 +22,7 @@ ms.locfileid: "121731231"
 
 我们建议在可能的情况下，使用 Apache Cassandra 本机复制通过配置[混合群集](configure-hybrid-cluster.md)将现有群集中的数据迁移到 Azure Managed Instance for Apache Cassandra。 此方法使用 Apache Cassandra 的 gossip 协议将源数据中心的数据复制到新的托管实例数据中心。 但在某些情况下，源数据库版本不兼容，或者混合群集设置不可行。 
 
-本文介绍如何使用 Cassandra Spark 连接器和 Azure Databricks for Apache Spark 以脱机方式将数据迁移到 Azure Managed Instance for Apache Cassandra。
+本教程介绍如何使用 Cassandra Spark 连接器和 Azure Databricks for Apache Spark 以脱机方式将数据迁移到 Azure Managed Instance for Apache Cassandra。
 
 ## <a name="prerequisites"></a>先决条件
 

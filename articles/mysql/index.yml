@@ -5,15 +5,15 @@ metadata:
   description: Azure Database for MySQL 是 Microsoft 云中的关系数据库服务，它专为开发人员而构建，由 MySQL 社区版提供支持。 你可以选择单服务器或灵活服务器（预览版）在 Azure 中部署 MySQL 数据库。
   author: savjani
   ms.author: pariks
-  ms.date: 09/03/2019
+  ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 20839bff8c6ab4e9c25431941955e289ff1bf6d2
-  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+  ms.openlocfilehash: 36338fdaad38bb84b4b4a796289c07e0cfee01d7
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/24/2021
-  ms.locfileid: "122779509"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124804879"
 landingContent:
 - title: 关于 Azure Database for MySQL
   linkLists:
@@ -117,6 +117,8 @@ landingContent:
       url: concepts-migrate-import-export.md
     - text: 使用 MySQL Workbench 迁移 Amazon RDS for MySQL
       url: how-to-migrate-rds-mysql-workbench.md
+    - text: 使用数据传入复制迁移 Amazon RDS for MySQL
+      url: how-to-migrate-rds-mysql-data-in-replication.md
     - text: 停机时间最短的迁移
       url: howto-migrate-online.md
     - text: 迁移期间或迁移后的常见错误

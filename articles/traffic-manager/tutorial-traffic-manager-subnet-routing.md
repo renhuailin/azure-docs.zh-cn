@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2021
 ms.author: duau
-ms.openlocfilehash: 1e95d3b72af14b151bdd1cbeede4d65deef0f817
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 5d97ebebe19235a54084ec551f3bbcb9e55e3022
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081508"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425619"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>教程：使用流量管理器，基于用户子网，将流量定向到特定终结点
 
@@ -72,7 +72,7 @@ ms.locfileid: "112081508"
    - “入站端口规则” > “选择入站端口”virtual-machines/windows/faq.yml：在下拉框中选择“RDP”和“HTTP”。
 
 3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
-4. 选择“查看 + 创建”。
+4. 选择“查看 + 创建”  。
 5. 检查设置，然后选择“创建”。  
 6. 按步骤创建另一个 VM，其名称为 *myIISVMWestEurope*，其“资源组”名称为 *myResourceGroupTM2*，其“位置”为“西欧”，所有其他设置与 *myIISVMEastUS* 相同。
 7. 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
@@ -140,7 +140,7 @@ ms.locfileid: "112081508"
    - “入站端口规则” > “选择入站端口”：在下拉框中选择“RDP”  。
 
 3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
-4. 选择“查看 + 创建”。
+4. 选择“查看 + 创建”  。
 5. 检查设置，然后选择“创建”。  
 6. 按步骤创建另一个 VM，其名称为 *myVMWestEurope*，其“资源组”名称为 *myResourceGroupTM2*，其“位置”为“西欧”，所有其他设置与 *myVMEastUS* 相同。
 7. 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
@@ -154,7 +154,7 @@ ms.locfileid: "112081508"
 
     ![创建流量管理器配置文件](./media/tutorial-traffic-manager-subnet-routing/create-traffic-manager-profile.png)
 
-    | 设置                 | Value                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 名称                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
     | 路由方法          | 选择“子网”路由方法  。                                       |
@@ -169,15 +169,15 @@ ms.locfileid: "112081508"
 2. 在“流量管理器配置文件”  的“设置”  部分，选择“终结点”  ，然后选择  “添加”。
 3. 输入或选择以下信息。 接受其余设置的默认值，然后选择“确定”：
 
-    | 设置                 | Value                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 类型                    | Azure 终结点                                   |
     | 名称           | myInternalWebSiteEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
     | 目标资源          | **选择公共 IP 地址** 以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMEastUS-ip* 的公共 IP 地址。 这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|
-    |  子网路由设置    |   添加 myVMEastUS 测试 VM 的 IP 地址。 源自此 VM 的任何用户查询将转向 myInternalWebSiteEndpoint  。    |
+    |  子网路由设置    |   添加 myVMEastUS 测试 VM 使用的递归 DNS 解析程序的 IP 地址。 源自此 VM 的任何用户查询将转向 myInternalWebSiteEndpoint  。    |
 
-4. 重复步骤 2 和 3，为 IIS 服务器 VM *myIISVMWestEurope* 关联的公共 IP 地址 *myIISVMWestEurope-ip* 添加名为 *myProdWebsiteEndpoint* 的另一个终结点。 对于“子网路由”设置，添加测试 VM myVMWestEurope 的 IP 地址。 来自此测试 VM 的任何用户查询将路由到终结点 myProdWebsiteEndpoint  。
+4. 重复步骤 2 和 3，为 IIS 服务器 VM *myIISVMWestEurope* 关联的公共 IP 地址 *myIISVMWestEurope-ip* 添加名为 *myProdWebsiteEndpoint* 的另一个终结点。 对于“子网路由”设置，添加测试 VM myVMWestEurope 使用的递归 DNS 解析程序的 IP 地址。 通过 DNS 解析程序从此测试 VM 进行的任何用户查询都将路由到终结点 myProdWebsiteEndpoint。
 5. 添加完这两个终结点后，这两个终结点会显示在“流量管理器配置文件”中，并且其监视状态为“联机” 。
 
 ## <a name="test-traffic-manager-profile"></a>测试流量管理器配置文件

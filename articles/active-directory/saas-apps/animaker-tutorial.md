@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 4e340e2046a3e1611d9204fba262e42696de49e1
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: e5f4c198114a49049c22ef0d79adcb08b85683c9
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123077543"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435665"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-animaker"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Animaker 集成
 
@@ -73,13 +73,25 @@ ms.locfileid: "123077543"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。
+1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
+
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://app.animaker.com/login/samlsuccess/<Anyone_Home_Provided_Unique_Value>`
+
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.animaker.com/login/samlsuccess/<Anyone_Home_Provided_Unique_Value>`
+
+    > [!NOTE]
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Animaker 支持团队](mailto:help@animaker.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，键入 URL：`https://app.animaker.com/login/samlsuccess/azure/`
+    在“登录 URL”文本框中，键入 URL：`https://app.animaker.com/login/samlsuccess/<Anyone_Home_Provided_Unique_Value>`
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+1. Animaker 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Appraisd 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。 
+
+    ![屏幕截图显示“用户属性”窗格，其中突出显示了“编辑”图标。](common/edit-attribute.png)
+
+1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 

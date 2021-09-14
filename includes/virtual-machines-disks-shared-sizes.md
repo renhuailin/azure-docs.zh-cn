@@ -5,17 +5,17 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/03/2021
+ms.date: 09/03/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6d7d9389e00b3b0f23d590563a242ae0c12e2463
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 78721aa407977262747c43be90001da2343322aa
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740100"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123484104"
 ---
-目前只有超级磁盘和高级 SSD 可以启用共享磁盘。 不同的磁盘大小可能具有不同的 `maxShares` 限制，设置 `maxShares` 值时不能超过此限制。 对于高级 SSD，支持共享其磁盘的磁盘大小为 P15 及以上大小。
+目前，只有超级磁盘、高级 SSD 和标准 SSD 可启用共享磁盘。 不同的磁盘大小可能具有不同的 `maxShares` 限制，设置 `maxShares` 值时不能超过此限制。 对于高级 SSD，支持共享其磁盘的磁盘大小为 P15 及以上大小。
 
 对于每个磁盘，你可以定义一个 `maxShares` 值，该值表示可同时共享该磁盘的最大节点数。 例如，如果计划设置节点数为 2 的故障转移群集，可以设置 `maxShares=2`。 最大值是一个上限。 只要节点数低于指定 `maxShares` 值，节点就可以加入或退出群集（装载或卸载磁盘）。
 
@@ -24,7 +24,7 @@ ms.locfileid: "121740100"
 
 ### <a name="premium-ssd-ranges"></a>高级 SSD 范围
 
-下表按高级 SSD 大小说明了允许的 `maxShares` 最大值：
+下表说明了按高级 SSD 大小得出的 `maxShares` 的最大允许值：
 
 |磁盘大小  |maxShares 限制  |
 |---------|---------|
@@ -36,7 +36,7 @@ ms.locfileid: "121740100"
 
 ### <a name="standard-ssd-ranges"></a>标准 SSD 范围
 
-下表按标准 SSD 大小说明了允许的 `maxShares` 最大值：
+下表说明了按标准 SSD 大小得出的 `maxShares` 的最大允许值：
 
 |磁盘大小  |maxShares 限制  |
 |---------|---------|

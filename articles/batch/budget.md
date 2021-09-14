@@ -2,13 +2,13 @@
 title: 获取 Azure Batch 的成本分析并为其设置预算
 description: 了解如何针对那些用于运行 Batch 工作负荷的基础计算资源和软件许可证获取成本分析、设置预算和降低成本。
 ms.topic: how-to
-ms.date: 01/29/2021
-ms.openlocfilehash: d1fc2d15a7037e56a8056efa67d2017badb77ffd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/03/2021
+ms.openlocfilehash: a590d8687c51b1693494c11d95de720f7f2c7eb0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99091321"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538842"
 ---
 # <a name="get-cost-analysis-and-set-budgets-for-azure-batch"></a>获取 Azure Batch 的成本分析并为其设置预算
 
@@ -78,11 +78,9 @@ Batch 池使用网络资源，其中的某些资源会产生相关成本。 具�
 
 [低优先级 VM](batch-low-pri-vms.md) 通过利用 Azure 中的盈余计算容量来降低 Batch 工作负载的成本。 当你在池中指定低优先级 VM 时，Batch 使用此盈余来运行工作负荷。 使用低优先级 VM 而不是专用 VM 可能会节省大量成本。
 
-### <a name="select-a-standard-virtual-machine-os-disk-type"></a>选择标准虚拟机 OS 磁盘类型
+### <a name="use-ephemeral-os-disks"></a>使用临时 OS 磁盘
 
-Azure 提供了多个 [VM OS 磁盘类型](../virtual-machines/disks-types.md)。 大多数 VM 系列大小都支持高级和标准存储。 为池选择“s”VM 大小时，Batch 会配置高级 SSD OS 磁盘。 选择“非 s”VM 大小时，会使用更经济的标准 HDD 磁盘类型。 例如，将高级 SSD OS 磁盘用于 `Standard_D2s_v3`，将标准 HDD OS 磁盘用于 `Standard_D2_v3`。
-
-高级 SSD OS 磁盘更昂贵，但性能更高。 采用高级磁盘的 VM 的启动速度可能比采用标准 HDD OS 磁盘的 VM 略快。 在 Batch 中，OS 磁盘通常不会频繁使用，因为应用程序和任务文件位于 VM 的临时 SSD 磁盘中。 因此，你通常可以选择“非 s”VM 大小，以避免为指定“s”VM 大小时预配的高级 SSD 支付增加的成本。
+虚拟机配置池可使用[临时 OS 磁盘](create-pool-ephemeral-os-disk.md)来避免产生与托管磁盘相关的额外费用，临时磁盘会在 VM 缓存或临时 SSD 上创建 OS 磁盘。
 
 ### <a name="purchase-reservations-for-virtual-machine-instances"></a>为虚拟机实例购买预留容量
 

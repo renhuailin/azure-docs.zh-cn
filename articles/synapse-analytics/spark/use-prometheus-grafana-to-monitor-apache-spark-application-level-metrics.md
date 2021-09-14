@@ -1,5 +1,5 @@
 ---
-title: 教程 - 通过 Prometheus 和 Grafana 监视 Apache Spark 应用程序级指标
+title: 教程 - 通过 Prometheus 和 Grafana 监视 Apache Spark 应用程序指标
 description: 教程 - 了解如何将 Apache Spark 应用程序指标解决方案部署到 Azure Kubernetes 服务 (AKS) 群集，以及如何集成 Grafana 仪表板。
 services: synapse-analytics
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: b32ddb38395d95e1c262c05aef878a1beeddc38c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eb49c65d3d61e17a8e527016d32d80bcc85894d8
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734712"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541218"
 ---
-# <a name="tutorial-monitor-apache-spark-application-level-metrics-with-prometheus-and-grafana"></a>教程：通过 Prometheus 和 Grafana 监视 Apache Spark 应用程序级指标
+# <a name="monitor-apache-spark-applications-metrics-with-prometheus-and-grafana"></a>通过 Prometheus 和 Grafana 监视 Apache Spark 应用程序指标
 
 ## <a name="overview"></a>概述
 
@@ -129,7 +129,7 @@ kubectl -n spo get svc spo-grafana
 
 在 Grafana 页面的左上角找到 Synapse 仪表板（“主页”->“Synapse 工作区/Synapse 应用程序”），尝试在 Synapse Studio 中运行示例代码，等待几秒钟，以便进行指标拉取。
 
-此外，还可以使用“Synapse 工作区/工作区”和“Synapse 工作区/Spark 池”仪表板获取工作区和 Apache Spark 池的概述。
+此外，还可以使用“Synapse 工作区/工作区”和“Synapse 工作区/Apache Spark 池”仪表板获取工作区和 Apache Spark 池的概述。
 
 ## <a name="uninstall"></a>卸载
 
@@ -157,7 +157,7 @@ Synapse Prometheus Connector 用于连接 Azure Synapse Apache Spark 池和 Prom
 2.  Apache Spark 应用程序发现：当你在目标工作区中提交应用程序时，Synapse Prometheus Connector 可以自动发现这些应用程序。
 3.  Apache Spark 应用程序元数据：它收集基本的应用程序信息，并将数据导出到 Prometheus。
 
-Synapse Prometheus Connector 已作为在 [Microsoft 容器注册表](https://github.com/microsoft/containerregistry)中托管的 docker 映像发布。 它是开源的，位于 [Azure Synapse Spark 应用程序指标](https://github.com/microsoft/azure-synapse-spark-metrics)中。
+Synapse Prometheus Connector 已作为在 [Microsoft 容器注册表](https://github.com/microsoft/containerregistry)中托管的 docker 映像发布。 它是开源的，位于 [Azure Synapse Apache Spark 应用程序指标](https://github.com/microsoft/azure-synapse-spark-metrics)中。
 
 ### <a name="prometheus-server"></a>Prometheus 服务器
 
@@ -171,12 +171,12 @@ Grafana 是开源的可视化和分析软件。 它用于查询指标、可视�
 
 [![仪表板工作区的屏幕截图](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-workspace.png)](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-workspace.png#lightbox)
 
-“Synapse 工作区/Spark 池”仪表板包含该时间段内所选 Apache Spark 池中运行的 Apache Spark 应用程序的指标。
+“Synapse 工作区/Apache Spark 池”仪表板包含该时间段内所选 Apache Spark 池中运行的 Apache Spark 应用程序的指标。
 
 [![仪表板 sparkpool 的屏幕截图](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-sparkpool.png)](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-sparkpool.png#lightbox)
 
-“Synapse 工作区/Spark 应用程序”仪表板包含所选的 Apache Spark 应用程序。
+“Synapse 工作区/Apache Spark 应用程序”仪表板包含所选的 Apache Spark 应用程序。
 
 [![仪表板应用程序的屏幕截图](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-application.png)](./media/monitor-azure-synapse-spark-application-level-metrics/screenshot-dashboard-application.png#lightbox)
 
-上述仪表板模板已在 [Azure Synapse Spark 应用程序指标](https://github.com/microsoft/azure-synapse-spark-metrics/tree/main/helm/synapse-prometheus-operator/grafana_dashboards)中开放源代码。
+上述仪表板模板已在 [Azure Synapse Apache Spark 应用程序指标](https://github.com/microsoft/azure-synapse-spark-metrics/tree/main/helm/synapse-prometheus-operator/grafana_dashboards)中开放源代码。

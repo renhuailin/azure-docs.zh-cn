@@ -4,99 +4,99 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: 安装和运行语音容器。 语音转文本可将音频流实时听录为应用程序、工具或设备可以使用或显示的文本。 文本转语音可将输入文本转换为类似人类的合成语音。
   services: cognitive-services
-  author: laujan
+  author: PatrickFarley
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: speech-service
   ms.topic: conceptual
   ms.date: 03/11/2021
-  ms.author: lajanuar
+  ms.author: pafarley
   ms.custom: devx-track-csharp
-  ms.openlocfilehash: c6a519af6910bac536b90b6606636d14f6af97d8
-  ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+  ms.openlocfilehash: e2dbd29686dad5416a6bd148d2bcccc37fca5107
+  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "122066229"
+  ms.lasthandoff: 09/07/2021
+  ms.locfileid: "123537818"
 title: 语音服务容器常见问题解答 (FAQ)
 summary: 使用容器中的语音服务时，如果遇到问题，在寻求支持之前，请先参考此常见问题的集合。 本文涵盖了从一般问题到技术问题等各种问题。 若要展开答案，请单击问题。
 sections:
 - name: 一般问题
   questions:
   - question: >
-      How do Speech containers work and how do I set them up?
-    answer: "When setting up the production cluster, there are several things to consider. First, setting up single language, multiple containers, on the same machine, should not be a large issue. If you are experiencing problems, it may be a hardware-related issue - so we would first look at resource, that is; CPU and memory specifications.\n\nConsider for a moment, the `ja-JP` container and latest model. The acoustic model is the most demanding piece CPU-wise, while the language model demands the most memory. When we benchmarked the use, it takes about 0.6 CPU cores to process a single speech-to-text request when audio is flowing in at real-time (like from the microphone). If you are feeding audio faster than real-time (like from a file), that usage can double (1.2x cores). Meanwhile, the memory listed below is operating memory for decoding speech. It does *not* take into account the actual full size of the language model, which will reside in file cache. For `ja-JP` that's an additional 2 GB; for `en-US`, it may be more (6-7 GB).\n\nIf you have a machine where memory is scarce, and you are trying to deploy multiple languages on it, it is possible that file cache is full, and the OS is forced to page models in and out. For a running transcription, that could be disastrous, and may lead to slowdowns and other performance implications.\n\nFurthermore, we pre-package executables for machines with the [advanced vector extension (AVX2)](speech-container-howto.md#advanced-vector-extension-support) instruction set. A machine with the AVX512 instruction set will require code generation for that target, and starting 10 containers for 10 languages may temporarily exhaust CPU. A message like this one will appear in the docker logs:\n\n```console\n2020-01-16 16:46:54.981118943 \n[W:onnxruntime:Default, tvm_utils.cc:276 LoadTVMPackedFuncFromCache]\nCannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...\n```\n\nYou can set the number of decoders you want inside a *single* container using `DECODER MAX_COUNT` variable. So, basically, we should start with your SKU (CPU/memory), and we can suggest how to get the best out of it. A great starting point is referring to the recommended host machine resource specifications.\n"
+      语音容器的工作原理以及如何对其进行设置？
+    answer: "设置生产群集时需要考虑几个事项。 首先，在同一台计算机上设置一种语言和多个容器一般不会出现问题。 如果遇到问题，则可能是与硬件相关的问题，因此我们首先要检查资源，即 CPU 和内存规格。\n\n请考虑一下 `ja-JP` 容器和最新模型。 声学模型对 CPU 的要求最高，而语言模型对内存的要求最高。 对使用情况进行基准测试时，当音频实时传入时（比如通过麦克风传入），处理一种语音转文本请求需要使用约 0.6 个 CPU 核心。 如果音频传入速度比实时速度更快（比如通过文件传入），CPU 使用量可提升一倍（1.2x 核心）。 同时，下面列出的内存是用于解码语音的操作内存。 它没有考虑将驻留在文件缓存中的语言模型的实际完整大小。 `ja-JP` 会多出 2 GB；`en-US` 可能会多出更多（6-7 GB）。\n\n如果计算机内存不足，而且你尝试在该计算机上部署多种语言，则文件缓存可能已满，并且操作系统被强制进出页面模型。对于正在运行的听录，这可能会造成灾难性后果，并可能导致性能下降和其他性能影响。\n\n此外，我们为具有[高级矢量扩展 (AVX2) ](speech-container-howto.md#advanced-vector-extension-support) 指令集的计算机预先打包了可执行文件。 具有 AVX512 指令集的计算机将需要为该目标生成代码，而为 10 种语言启动 10 个容器可能会暂时耗尽 CPU 资源。 Docker 日志中会显示如下消息：\n\n```console\n2020-01-16 16:46:54.981118943 \n[W:onnxruntime:Default, tvm_utils.cc:276 LoadTVMPackedFuncFromCache]\nCannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...\n```\n\n你可以使用 `DECODER MAX_COUNT` 变量在单个容器中设置所需的解码器数量。 所以，我们一般会从 SKU（CPU/内存）开始，就如何充分利用这些资源提出建议。 建议参考推荐的主机资源规格。\n"
   - question: >
-      Could you help with capacity planning and cost estimation of on-prem Speech-to-text containers?
+      能否为本地语音转文本容器进行容量规划和成本估算？
     answer: >
-      For container capacity in batch processing mode, each decoder could handle 2-3x in real time, with two CPU cores, for a single recognition. We do not recommend keeping more than two concurrent recognitions per container instance, but recommend running more instances of containers for reliability/availability reasons, behind a load balancer.
+      对于批处理模式下的容器容量，针对单个识别，每个解码器可以实时处理 2-3x，使用两个 CPU 核心。 建议不要为每个容器实例保留两个以上的并发识别，但考虑到可靠性/可用性，建议在负载均衡器后面运行更多容器实例。
 
 
-      Though we could have each container instance running with more decoders. For example, we may be able to set up 7 decoders per container instance on an eight core machine (at at more than 2x each), yielding 15x throughput. There is a param `DECODER_MAX_COUNT` to be aware of. For the extreme case, reliability and latency issues arise, with throughput increased significantly. For a microphone, it will be at 1x real time. The overall usage should be at about one core for a single recognition.
+      尽管我们可以让每个容器实例运行更多解码器。 例如，我们可以在八核计算机上为每个容器实例设置 7 个解码器（每个解码器的吞吐量超过 2x），从而产生 15x 的吞吐量。 需要注意参数 `DECODER_MAX_COUNT`。 在极端情况下，吞吐量大幅增加后，会出现可靠性和延迟问题。 麦克风为实时 1x。 对于单个识别，总体使用情况应为一个核心左右。
 
 
-      For scenario of processing 1 K hours/day in batch processing mode, in an extreme case, 3 VMs could handle it within 24 hours but not guaranteed. To handle spike days, failover, update, and to provide minimum backup/BCP, we recommend 4-5 machines instead of 3 per cluster, and with 2+ clusters.
+      如果在批处理模式处理 1000 小时/天，在极端情况下，3 个 VM 可以在 24 小时内处理，但不能保证。 为应对高峰时段、故障转移、更新，并提供最少的备份/BCP，我们建议每个群集部署 4-5 台计算机，而不是每个群集部署 3 台，并设置 2 个以上的群集。
 
 
-      For hardware, we use standard Azure VM `DS13_v2` as a reference (each core must be 2.6 GHz or better, with AVX2 instruction set enabled).
+      对于硬件，我们使用标准 Azure VM `DS13_v2` 作为参考（每个核心必须为 2.6 GHz 或更高性能，并启用了 AVX2 指令集）。
 
 
-      | Instance  | vCPU(s) | RAM    | Temp storage | Pay-as-you-go with AHB | 1-year reserve with AHB (% Savings) | 3-year reserved with AHB (% Savings) |
+      | 实例  | vCPU | RAM    | 临时存储 | AHB 的即用即付 | 预留 1 年 AHB（节省百分比） | 预留 3 年 AHB（节省百分比） |
 
       |-----------|---------|--------|--------------|------------------------|-------------------------------------|--------------------------------------|
 
-      | `DS13 v2` | 8       | 56 GiB | 112 GiB      | $0.598/hour            | $0.3528/hour (~41%)                 | $0.2333/hour (~61%)                  |
+      | `DS13 v2` | 8       | 56 GiB | 112 GiB      | 0\.598 美元/小时            | 0\.3528 美元/小时（约 41%）                 | 0\.2333 美元/小时（约 61%）                  |
 
 
-      Based on the design reference (two clusters of 5 VMs to handle 1 K hours/day audio batch processing), 1-year hardware cost will be:
+      根据设计参考（设置两个群集，每个群集部署 5 台 VM，处理 1000 小时/天的音频批处理），1 年的硬件成本为：
 
 
-      > 2 (clusters) * 5 (VMs per cluster) * $0.3528/hour * 365 (days) * 24 (hours) = $31K / year
+      > 2（群集）* 5（每个群集部署的 VM）* 0.3528 美元/小时 * 365（天）* 24（小时）= 3.1 万美元/年
 
 
-      When mapping to physical machine, a general estimation is 1 vCPU = 1 Physical CPU Core. In reality, 1vCPU is more powerful than a single core.
+      如果映射到物理计算机，一般估算为 1 个 vCPU = 1 个物理 CPU 核心。 事实上，1 个 vCPU 比一个核心性能更强。
 
 
-      For on-prem, all of these additional factors come into play:
+      对于本地，以下所有因素都会产生影响：
 
 
-      - On what type the physical CPU is and how many cores on it
+      - 物理 CPU 的类型及其核心数
 
-      - How many CPUs running together on the same box/machine
+      - 同一盒/计算机上同时运行的 CPU 数量
 
-      - How VMs are set up
+      - VM 如何设置
 
-      - How hyper-threading / multi-threading is used
+      - 超线程/多线程如何使用
 
-      - How memory is shared
+      - 内存如何共享
 
-      - The OS, etc.
-
-
-      Normally it is not as well tuned as Azure the environment. Considering other overhead, I would say a safe estimation is 10 physical CPU cores = 8 Azure vCPU. Though popular CPUs only have eight cores. With on-prem deployment, the cost will be higher than using Azure VMs. Also, consider the depreciation rate.
+      - 操作系统等。
 
 
-      Service cost is the same as the online service: $1/hour for speech-to-text. The Speech service cost is:
+      通常情况下，其优化不如 Azure 环境那样理想。 考虑到其他开销，10 个物理 CPU 核心 = 8 个 Azure vCPU 的估算较为稳妥。 尽管主流 CPU 仅搭载了八个核心。 使用本地部署时，成本比使用 Azure VM 更高。 此外，还需考虑折旧率。
 
 
-      > $1 * 1000 * 365 = $365K
+      服务成本与联机服务相同：语音转文本为 1 美元/小时。 语音服务成本为：
 
 
-      Maintenance cost paid to Microsoft depends on the service level and content of the service. It various from $29.99/month for basic level to hundreds of thousands if onsite service involved. A rough number is $300/hour for service/maintain. People cost is not included. Other infrastructure costs (such as storage, networks, and load balancers) are not included.
+      > 1 美元 * 1000 * 365 = 36.5 万美元
+
+
+      支付给 Microsoft 的维护费用取决于服务级别和服务内容。 基础级别为 29.99 美元/月，如果涉及到现场服务，则可达数十万美元。 服务/维护费用大概为 300 美元/小时。 人员成本不包括在内。 其他基础结构成本（例如存储、网络和负载均衡器）不包括在内。
   - question: >
-      Why is punctuation missing from the transcription?
-    answer: "The `speech_recognition_language=<YOUR_LANGUAGE>` should be explicitly configured in the request if they are using Carbon client.\n\nFor example:\n\n```python\nif not recognize_once(\n    speechsdk.SpeechRecognizer(\n        speech_config=speechsdk.SpeechConfig(\n            endpoint=template.format(\"interactive\"),\n            speech_recognition_language=\"ja-JP\"),\n            audio_config=audio_config)):\n\n    print(\"Failed interactive endpoint\")\n    exit(1)\n```\nHere is the output:\n\n```cmd\nRECOGNIZED: SpeechRecognitionResult(\n    result_id=2111117c8700404a84f521b7b805c4e7, \n    text=\"まだ早いまだ早いは猫である名前はまだないどこで生まれたかとんと見当を検討をなつかぬ。\n    何でも薄暗いじめじめした所でながら泣いていた事だけは記憶している。\n    まだは今ここで初めて人間と言うものを見た。\n    しかも後で聞くと、それは書生という人間中で一番同額同額。\",\n    reason=ResultReason.RecognizedSpeech)\n```\n"
+      为什么脚本中缺少标点符号？
+    answer: "如果使用的是 Carbon 客户端，应在请求中显式配置 `speech_recognition_language=<YOUR_LANGUAGE>`。\n\n例如：\n\n```python\nif not recognize_once(\n    speechsdk.SpeechRecognizer(\n        speech_config=speechsdk.SpeechConfig(\n            endpoint=template.format(\"interactive\"),\n            speech_recognition_language=\"ja-JP\"),\n            audio_config=audio_config)):\n\n    print(\"Failed interactive endpoint\")\n    exit(1)\n```\n输出如下：\n\n```cmd\nRECOGNIZED: SpeechRecognitionResult(\n    result_id=2111117c8700404a84f521b7b805c4e7, \n    text=\"まだ早いまだ早いは猫である名前はまだないどこで生まれたかとんと見当を検討をなつかぬ。\n    何でも薄暗いじめじめした所でながら泣いていた事だけは記憶している。\n    まだは今ここで初めて人間と言うものを見た。\n    しかも後で聞くと、それは書生という人間中で一番同額同額。\",\n    reason=ResultReason.RecognizedSpeech)\n```\n"
   - question: >
-      Can I use a custom acoustic model and language model with Speech container?
+      能否在语音容器中使用自定义声学模型和语言模型？
     answer: >
-      We are currently only able to pass one model ID, either custom language model or custom acoustic model.
+      目前只能传递一种模型 ID（自定义语言模型或自定义声学模型）。
 
 
-      The decision to *not* support both acoustic and language models concurrently was made. This will remain in effect, until a unified identifier is created to reduce API breaks. So, unfortunately this is not supported right now.
+      我们决定不同时支持声学模型和语言模型。 在创建出统一标识符以减少 API 中断之前，该设置一直有效。 所以很遗憾，目前不支持此功能。
   - question: >
-      Could you explain these errors from the custom speech-to-text container?
+      能否解释一下自定义语音转文本容器中的这些错误？
     answer: >
-      **Error 1:**
+      错误 1：
 
 
       ```cmd
@@ -111,16 +111,16 @@ sections:
       ```
 
 
-      If you're training with the latest custom model, we currently don't support that. If you train with an older version, it should be possible to use. We are still working on supporting the latest versions.
+      如果你使用最新的自定义模型进行训练，我们目前尚不支持该模型。 如果你使用较旧的版本进行训练，则应可以正常使用。 我们仍在努力支持最新版本。
 
 
-      Essentially, the custom containers do not support Halide or ONNX-based acoustic models (which is the default in the custom training portal). This is due to custom models not being encrypted and we don't want to expose ONNX models, however; language models are fine. The customer will need to explicitly select an older non-ONNX model for custom training. Accuracy will not be affected. The model size may be larger (by 100 MB).
+      自定义容器实际上不支持基于 Halide 或 ONNX 的声学模型（这是自定义训练门户中的默认设置）。 这是因为自定义模型未进行加密，我们不想公开 ONNX 模型，但是我们支持语言模型。 客户需要显式选择旧的非 ONNX 模型进行自定义训练。 不会影响准确性。 模型大小可能较大（100 MB）。
 
 
-      > Support model > 20190220 (v4.5 Unified)
+      > 支持模型 > 20190220（v4.5 Unified）
 
 
-      **Error 2:**
+      错误 2：
 
 
       ```cmd
@@ -138,10 +138,10 @@ sections:
       ```
 
 
-      You need to provide the correct voice name in the request, which is case-sensitive. Refer to the full service name mapping.
+      你需要在请求中提供正确的语音名称（区分大小写）。 请参阅完整的服务名称映射。
 
 
-      **Error 3:**
+      错误 3：
 
 
       ```json
@@ -154,31 +154,31 @@ sections:
       ```
 
 
-      You reed to create a Speech resource, not a Cognitive Services resource.
+      你需要创建语音资源，而不是认知服务资源。
   - question: >
-      What API protocols are supported, REST or WS?
+      支持哪些 API 协议，REST 还是 WS？
     answer: >
-      For speech-to-text and custom speech-to-text containers, we currently only support the websocket based protocol. The SDK only supports calling in WS but not REST. There's a plan to add REST support, but not ETA for the moment. Always refer to the official documentation, see [query prediction endpoints](speech-container-howto.md#query-the-containers-prediction-endpoint).
+      对于语音转文本和自定义语音转文本容器，我们目前只支持基于 Websocket 的协议。 SDK 仅支持 WS 调用，不支持 REST 调用。 计划添加 REST 支持，但暂不支持 ETA。 请始终参阅官方文档，请参阅[查询预测终结点](speech-container-howto.md#query-the-containers-prediction-endpoint)。
   - question: >
-      Is CentOS supported for Speech containers?
+      语音容器是否支持 CentOS？
     answer: >
-      CentOS 7 is not supported by Python SDK yet, also Ubuntu 19.04 is not supported.
+      Python SDK 目前不支持 CentOS 7，也不支持 Ubuntu 19.04。
 
 
-      The Python Speech SDK package is available for these operating systems:
+      Python 语音 SDK 包适用于以下操作系统：
 
-      - **Windows** - x64 and x86
+      - Windows - x64 和 x86
 
-      - **Mac** - macOS X version 10.12 or later
+      - Mac - macOS X 版本 10.12 或更高版本
 
-      - **Linux** - Ubuntu 16.04 (until September), Ubuntu 18.04, Debian 9 on x64
+      - **Linux** - Ubuntu 16.04（截至 9 月）、Ubuntu 18.04、Debian 9（64 位）
 
 
-      For more information on environment setup, see [Python platform setup](quickstarts/setup-platform.md?pivots=programming-language-python). For now, Ubuntu 18.04 is the recommended version.
+      有关环境设置的详细信息，请参阅 [Python 平台设置](quickstarts/setup-platform.md?pivots=programming-language-python)。 目前推荐使用 Ubuntu 18.04 版本。
   - question: >
-      Why am I getting errors when attempting to call LUIS prediction endpoints?
+      为什么在尝试调用 LUIS 预测终结点时出现错误？
     answer: >
-      I am using the LUIS container in an IoT Edge deployment and am attempting to call the LUIS prediction endpoint from another container. The LUIS container is listening on port 5001, and the URL I'm using is this:
+      我正在 IoT Edge 部署中使用 LUIS 容器，并尝试从另一个容器调用 LUIS 预测终结点。 LUIS 容器正在侦听端口 5001，我使用的 URL 是：
 
 
       ```csharp
@@ -190,7 +190,7 @@ sections:
       ```
 
 
-      The error I'm getting is:
+      我收到的错误是：
 
 
       ```cmd
@@ -200,7 +200,7 @@ sections:
       ```
 
 
-      I see the request in the LUIS container logs and the message says:
+      我看到 LUIS 容器日志中的请求，消息显示：
 
 
       ```cmd
@@ -210,21 +210,21 @@ sections:
       ```
 
 
-      What does this mean? What am I missing? I was following the example for the Speech SDK, from [here](https://github.com/Azure-Samples/cognitive-services-speech-sdk). The scenario is that we are detecting the audio directly from the PC microphone and trying to determine the intent, based on the LUIS app we trained. The example I linked to does exactly that. And it works well with the LUIS cloud-based service. Using the Speech SDK seemed to save us from having to make a separate explicit call to the speech-to-text API and then a second call to LUIS.
+      这是什么意思呢？ 我哪里出错了？ 我按照语音 SDK 的示例执行了操作，[链接如下](https://github.com/Azure-Samples/cognitive-services-speech-sdk)。 当时的情况是，我们直接从 PC 麦克风检测音频，并尝试根据我们训练的 LUIS 应用来确定意图。 我提供链接的示例执行的正是这样的操作。 它在 LUIS 基于云的服务中运行正常。 使用语音 SDK 似乎能让我们不必再对语音转文本 API 进行单独显式调用和对 LUIS 进行二次调用。
 
 
-      So, all I am attempting to do is switch from the scenario of using LUIS in the cloud to using the LUIS container. I can't imagine if the Speech SDK works for one, it won't work for the other.
+      因此，我只是尝试从在云中使用 LUIS 的场景转换为使用 LUIS 容器。 如果语音 SDK 适用于其中一种场景，它没有理由不适用于另一种场景。
 
 
 
-      The Speech SDK should not be used against a LUIS container. For using the LUIS container, the LUIS SDK or LUIS REST API should be used. Speech SDK should be used against a speech container.
+      语音 SDK 不能用于 LUIS 容器。 如果使用 LUIS 容器，应使用 LUIS SDK 或 LUIS REST API。 语音 SDK 应用于语音容器。
 
 
-      A cloud is different than a container. A cloud can be composed of multiple aggregated containers (sometimes called micro services). So there is a LUIS container and then there is a Speech container - Two separate containers. The Speech container only does speech. The LUIS container only does LUIS. In the cloud, because both containers are known to be deployed, and it is bad performance for a remote client to go to the cloud, do speech, come back, then go to the cloud again and do LUIS, we provide a feature that allows the client to go to Speech, stay in the cloud, go to LUIS then come back to the client. Thus even in this scenario the Speech SDK goes to Speech cloud container with audio, and then Speech cloud container talks to LUIS cloud container with text. The LUIS container has no concept of accepting audio (it would not make sense for LUIS container to accept streaming audio - LUIS is a text-based service). With on-prem, we have no certainty our customer has deployed both containers, we don't presume to orchestrate between containers in our customers' premises, and if both containers are deployed on-prem, given they are more local to the client, it is not a burden to go the SR first, back to client, and have the customer then take that text and go to LUIS.
+      云与容器是不同的。 云可由多个聚合容器组成（有时称为微服务）。 因此，可以在云中部署 LUIS 容器和语音容器这两个独立的容器。 语音容器只负责处理语音。 LUIS 容器只负责处理 LUIS。 在云中，由于这两个容器都已部署，如果远程客户端登录云、处理语音、返回、再登录云并处理 LUIS，这一系列步骤会带来不良的用户体验，因此，我们提供了一项功能，允许客户端转到语音、在云中活动、转到 LUIS，再返回客户端。 因此，即使在这种情况下，语音 SDK 也会转到提供音频的语音云容器，然后语音云容器与提供文本的 LUIS 云容器进行通信。 LUIS 容器没有接受音频的概念（对于 LUIS 容器来说，接受流音频没有意义，因为 LUIS 是基于文本的服务）。 在本地部署时，因为我们无法确定客户是否同时部署了这两个容器，所以我们没有假定在客户本地的两个容器之间进行编排，如果这两个容器都已在本地部署（如果相对于客户端更为本地），那么先转到 SR，然后返回客户端，再让客户使用该文本并转到 LUIS 就不会那么麻烦了。
   - question: >
-      Why are we getting errors with macOS, Speech container and the Python SDK?
+      为什么在使用 macOS、语音容器和 Python SDK 时出错？
     answer: >
-      When we send a *.wav* file to be transcribed, the result comes back with:
+      当我们发送要听录的.wav 文件时，返回以下结果：
 
 
       ```cmd
@@ -253,172 +253,172 @@ sections:
       ```
 
 
-      We know the websocket is set up correctly.
+      我们知道 Websocket 设置正确。
 
 
 
-      If that is the case, then see [this GitHub issue](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310). We have a work-around, [proposed here](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310#issuecomment-527542722).
+      如果出现这种情况，请参阅[此 GitHub 问题](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310)。 我们[在此处提出](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310#issuecomment-527542722)了一个解决方法。
 
 
-      Carbon fixed this at version 1.8.
+      Carbon 版本 1.8 解决了这一问题。
   - question: >
-      What are the differences in the Speech container endpoints?
+      语音容器终结点有何区别？
     answer: >
-      Could you help fill the following test metrics, including what functions to test, and how to test the SDK and REST APIs? Especially, differences in "interactive" and "conversation", which I did not see from existing doc/sample.
+      能否帮我填写以下测试指标，包括要测试哪些功能，以及如何测试 SDK 和 REST API？ 特别是“交互”和“对话”的区别，我在现有文档/示例中没有看到相关说明。
 
 
-      | Endpoint                                                | Functional test                                                   | SDK | REST API |
+      | 端点                                                | 功能测试                                                   | SDK 中 IsInRole 中的声明 | REST API |
 
       |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
 
-      | `/speech/synthesize/cognitiveservices/v1`               | Synthesize Text (text-to-speech)                                  |     | Yes      |
+      | `/speech/synthesize/cognitiveservices/v1`               | 合成文本（文本转语音）                                  |     | 是      |
 
-      | `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services on-prem dictation v1 websocket endpoint        | Yes | No       |
+      | `/speech/recognition/dictation/cognitiveservices/v1`    | 认知服务本地听写 v1 Websocket 终结点        | 是 | 否       |
 
-      | `/speech/recognition/interactive/cognitiveservices/v1`  | The Cognitive Services on-prem interactive v1 websocket endpoint  |     |          |
+      | `/speech/recognition/interactive/cognitiveservices/v1`  | 认知服务本地交互 v1 Websocket 终结点  |     |          |
 
-      | `/speech/recognition/conversation/cognitiveservices/v1` | The cognitive services on-prem conversation v1 websocket endpoint |     |          |
-
-
-
-      This is a fusion of:
-
-      - People trying the dictation endpoint for containers, (I'm not sure how they got that URL)
-
-      - The 1<sup>st</sup> party endpoint being the one in a container.
-
-      - The 1<sup>st</sup> party endpoint returning speech.fragment messages instead of the `speech.hypothesis` messages the 3<sup>rd</sup> part endpoints return for the dictation endpoint.
-
-      - The Carbon quickstarts all use `RecognizeOnce` (interactive mode)
-
-      - Carbon having an assert that for `speech.fragment` messages requiring they aren't returned in interactive mode.
-
-      - Carbon having the asserts fire in release builds (killing the process).
+      | `/speech/recognition/conversation/cognitiveservices/v1` | 认知服务本地对话 v1 Websocket 终结点 |     |          |
 
 
-      The workaround is either switch to using continuous recognition in your code, or (quicker) connect to either the interactive or continuous endpoints in the container.
 
-      For your code, set the endpoint to `host:port`/speech/recognition/interactive/cognitiveservices/v1
+      这是以下内容的合成：
+
+      - 用户尝试容器听写终结点（我不知道他们是如何获得此 URL 的）
+
+      - 第一方<sup></sup>终结点是容器中的终结点。
+
+      - 第一方<sup></sup>终结点返回 speech.fragment 消息，而不是第三方<sup></sup>终结点为听写终结点返回的 `speech.hypothesis` 消息。
+
+      - Carbon 快速入门统一使用 `RecognizeOnce`（交互模式）
+
+      - Carbon 断言，针对 `speech.fragment` 消息，要求它们不以交互模式返回。
+
+      - Carbon 在发行版本中触发了该断言（终止进程）。
 
 
-      For the various modes, see Speech modes - see below:
+      解决方法是改为在代码中使用连续识别，或者（更快）连接到容器中的交互或连续终结点。
+
+      对于你的代码，请将终结点设置为 `host:port`/speech/recognition/interactive/cognitiveservices/v1
 
 
-      ### Speech modes - Interactive, conversation, dictation
+      有关各种模式，请参阅语音模式 - 请参阅以下内容：
+
+
+      ### <a name="speech-modes---interactive-conversation-dictation"></a>语音模式 - 交互、对话、听写
 
 
       [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
 
-      The proper fix is coming with SDK 1.8, which has on-prem support (will pick the right endpoint, so we will be no worse than online service). In the meantime, there is a sample for continuous recognition, why don't we point to it?
+      SDK 1.8 随附正确的修补程序，并提供本地支持（将选取正确的终结点，因此与联机服务一样便捷）。 同时，有一个连续识别示例，我们为什么不使用它？
 
 
       https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d9e95c9137fe129bc5d81e35f6309/samples/python/console/speech_sample.py#L196
   - question: >
-      Which mode should I use for various audio files?
+      我应该使用哪种模式来处理各种音频文件？
     answer: >
-      Here's a [quickstart using Python](./get-started-speech-to-text.md?pivots=programming-language-python). You can find the other languages linked on the docs site.
+      下面是[使用 Python 的快速入门](./get-started-speech-to-text.md?pivots=programming-language-python)。 你可以在文档网站上找到使用其他语言的链接。
 
 
-      Just to clarify for the interactive, conversation, and dictation; this is an advanced way of specifying the particular way in which our service will handle the speech request. Unfortunately, for the on-prem containers we have to specify the full URI (since it includes local machine), so this information leaked from the abstraction. We are working with the SDK team to make this more usable in the future.
+      需要说明的是，对于交互、对话和听写，这是一种高级方法，用于指定服务处理语音请求的特定方式。 遗憾的是，对于本地容器，我们必须指定完整的 URI（因为它包含本地计算机），所以此信息从抽象中泄露出来。 我们正与 SDK 团队写作，使其在将来更易于使用。
   - question: >
-      How can we benchmark a rough measure of transactions/second/core?
+      如何测试出事务/秒/核心的大致度量值？
     answer: >
-      Here are some of the rough numbers to expect from existing model (will change for the better in the one we will ship in GA):
+      以下是一些可以从现有模型中得到的粗略数据（GA 提供的模型会有更好的性能）：
 
 
-      - For files, the throttling will be in the speech SDK, at 2x. First five seconds of audio are not throttled. Decoder is capable of doing about 3x real time. For this, the overall CPU usage will be close to 2 cores for a single recognition.
+      - 对于文件，带宽限制存在于语音 SDK 中，为 2x。 前 5 秒的音频不受带宽限制。 解码器的实时处理能力约为 3x。 为此，针对单个识别的总体 CPU 使用率将接近 2 个核心。
 
-      - For mic, it will be at 1x real time. The overall usage should be at about 1 core for a single recognition.
+      - 麦克风为实时 1x。 对于单个识别，总体使用情况应在 1 个核心左右。
 
 
-      This can all be verified from the docker logs. We actually dump the line with session and phrase/utterance statistics, and that includes the RTF numbers.
+      可以通过 Docker 日志来验证这一点。 我们实际上会转储包含会话和短语/言语统计信息的行，其中包括 RTF 数字。
   - question: >
-      How do I make multiple containers run on the same host?
+      如何在同一主机上运行多个容器？
     answer: >
-      The doc says to expose a different port, which I do, but the LUIS container is still listening on port 5000?
+      文档指出要公开其他端口，但我这样做以后，LUIS 容器仍在侦听端口 5000？
 
 
-      Try `-p <outside_unique_port>:5000`. For example, `-p 5001:5000`.
+      试用 `-p <outside_unique_port>:5000`。 例如 `-p 5001:5000`。
 - name: 技术问题
   questions:
   - question: >
-      How can I get non-batch APIs to handle audio <15 seconds long?
+      如何让非批处理 API 来处理 <15 秒的音频？
     answer: >
-      `RecognizeOnce()` in interactive mode only processes up to 15 seconds of audio, as the mode is intended for Speech Commanding where utterances are expected to be short. If you use `StartContinuousRecognition()` for dictation or conversation, there is no 15 second limit.
+      `RecognizeOnce()` 在交互模式下仅能处理最长 15 秒的音频，因为该模式是为语音命令设计的，而语音命令一般为简短的言语。 如果使用 `StartContinuousRecognition()` 进行听写或对话，则没有 15 秒的限制。
   - question: >
-      What are the recommended resources, CPU and RAM; for 50 concurrent requests?
+      对于 50 个并发请求，建议的 CPU 和 RAM 资源是什么？
     answer: >
-      How many concurrent requests will a 4 core, 4 GB RAM handle? If we have to serve for example, 50 concurrent requests, how many Core and RAM is recommended?
+      4 核 4 GB 的 RAM 能处理多少并发请求？ 例如，如果我们必须处理 50 个并发请求，那么建议使用多少核心和 RAM？
 
 
 
-      At real time, 8 with our latest `en-US`, so we recommend using more docker containers beyond 6 concurrent requests. It gets crazier beyond 16 cores, and it becomes non-uniform memory access (NUMA) node sensitive. The following table describes the minimum and recommended allocation of resources for each Speech container.
+      实时处理最新的 `en-US` 需要使用 8 核，因此，如果超过 6 个并发请求，建议使用更多 docker 容器。 超过 16 核后，功耗会显著增大，且对非一致性内存访问 (NUMA) 敏感。 下表显示了每个语音容器的最小和建议的资源分配。
 
 
-      # [Speech-to-text](#tab/stt)
+      # <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 
-      | Container      | Minimum             | Recommended         |
-
-      |----------------|---------------------|---------------------|
-
-      | Speech-to-text | 2 core, 2-GB memory | 4 core, 4-GB memory |
-
-
-      # [Custom Speech-to-text](#tab/cstt)
-
-
-      | Container             | Minimum             | Recommended         |
-
-      |-----------------------|---------------------|---------------------|
-
-      | Custom Speech-to-text | 2 core, 2-GB memory | 4 core, 4-GB memory |
-
-
-      # [Text-to-speech](#tab/tts)
-
-
-      | Container      | Minimum             | Recommended         |
+      | 容器      | 最小值             | 建议         |
 
       |----------------|---------------------|---------------------|
 
-      | Text-to-speech | 1 core, 2-GB memory | 2 core, 3-GB memory |
+      | 语音转文本 | 2 核心，2 GB 内存 | 4 核心，4 GB 内存 |
 
 
-      # [Custom Text-to-speech](#tab/ctts)
+      # <a name="custom-speech-to-text"></a>[自定义语音转文本](#tab/cstt)
 
 
-      | Container             | Minimum             | Recommended         |
+      | 容器             | 最小值             | 建议         |
 
       |-----------------------|---------------------|---------------------|
 
-      | Custom Text-to-speech | 1 core, 2-GB memory | 2 core, 3-GB memory |
+      | 自定义语音转文本 | 2 核心，2 GB 内存 | 4 核心，4 GB 内存 |
+
+
+      # <a name="text-to-speech"></a>[文本转语音](#tab/tts)
+
+
+      | 容器      | 最小值             | 建议         |
+
+      |----------------|---------------------|---------------------|
+
+      | 文本转语音 | 单核，2-GB 内存 | 2 核心，3 GB 内存 |
+
+
+      # <a name="custom-text-to-speech"></a>[自定义文本转语音](#tab/ctts)
+
+
+      | 容器             | 最小值             | 建议         |
+
+      |-----------------------|---------------------|---------------------|
+
+      | 自定义文本转语音 | 单核，2-GB 内存 | 2 核心，3 GB 内存 |
 
 
       ***
 
 
-      - Each core must be at least 2.6 GHz or faster.
+      - 每个核心必须至少为 2.6 GHz 或更快。
 
-      - For files, the throttling will be in the Speech SDK, at 2x (first 5 seconds of audio are not throttled).
+      - 对于文件，带宽限制存在于语音 SDK 中，为 2x（前 5 秒的音频不受带宽限制）。
 
-      - The decoder is capable of doing about 2-3x real time. For this, the overall CPU usage will be close to two cores for a single recognition. That's why we do not recommend keeping more than two active connections, per container instance. The extreme side would be to put about 10 decoders at 2x real time in an eight core machine like `DS13_V2`. For the container version 1.3 and later, there's a param you could try setting `DECODER_MAX_COUNT=20`.
+      - 解码器的实时处理能力约为 2-3x。 为此，针对单个识别的总体 CPU 使用量将接近两个核心。 这就是我们为什么不建议为每个容器实例保留两个以上的活动连接的原因。 极端情况是在像 `DS13_V2` 这样的八核计算机上以 2x 实时放置约 10 个解码器。 对于容器版本 1.3 及更高版本，可以尝试设置参数 `DECODER_MAX_COUNT=20`。
 
-      - For microphone, it will be at 1x real time. The overall usage should be at about one core for a single recognition.
-
-
-      Consider the total number of hours of audio you have. If the number is large, to improve reliability/availability, we suggest running more instances of containers, either on a single box or on multiple boxes, behind a load balancer. Orchestration could be done using Kubernetes (K8S) and Helm, or with Docker compose.
+      - 麦克风为实时 1x。 对于单个识别，总体使用情况应为一个核心左右。
 
 
-      As an example, to handle 1000 hours/24 hours, we have tried setting up 3-4 VMs, with 10 instances/decoders per VM.
+      请考虑音频的总小时数。 如果总小时数过大，为提高可靠性/可用性，建议在负载均衡器后面的一个或多个盒中运行更多容器实例。 可以使用 Kubernetes (K8S) 和 Helm 或使用 Docker Compose 进行编排。
+
+
+      例如，为处理 1000 小时/24 小时，我们尝试设置了 3-4 个 VM，每个 VM 放置 10 个实例/解码器。
   - question: >
-      Does the Speech container support punctuation?
+      语音容器是否支持标点符号？
     answer: >
-      We have capitalization (ITN) available in the on-prem container. Punctuation is language-dependent, and not supported for some languages, including Chinese and Japanese.
+      我们在本地容器中提供大写支持 (ITN)。 是否支持标点符号取决于选择的语言，某些语言（例如中文和日文）不支持标点符号。
 
 
-      We *do* have implicit and basic punctuation support for the existing containers, but it is `off` by default. What that means is that you can get the `.` character in your example, but not the `。` character. To enable this implicit logic, here's an example of how to do so in Python using our Speech SDK (it would be similar in other languages):
+      我们的确提供对现有容器的隐式和基本标点符号支持，但该功能默认情况为 `off`。 这意味着在示例中可以得到 `.` 字符，但不能得到 `。` 字符。 若要启用此隐式逻辑，下面的示例说明如何使用语音 SDK 在 Python 中实现此功能（在其他语言中类似）：
 
 
       ```python
@@ -431,9 +431,9 @@ sections:
 
       ```
   - question: >
-      Why am I getting 404 errors when attempting to POST data to speech-to-text container?
+      尝试将数据发布到语音转文本容器时，为什么会收到 404 错误？
     answer: >
-      Here is an example HTTP POST:
+      下面是一个示例 HTTP POST：
 
 
       ```http
@@ -471,12 +471,12 @@ sections:
       ```
 
 
-      We do not support REST API in either speech-to-text container, we only support WebSockets through the Speech SDK. Always refer to the official documentation, see [query prediction endpoints](speech-container-howto.md#query-the-containers-prediction-endpoint).
-  - question: Why is the container running as a non-root user? What issues might occur because of this?
+      我们在语音转文本容器中不支持 REST API，我们只通过语音 SDK 支持 WebSocket。 请始终参阅官方文档，请参阅[查询预测终结点](speech-container-howto.md#query-the-containers-prediction-endpoint)。
+  - question: 为什么容器以非根用户的身份运行？ 这样可能会导致哪些问题？
     answer: >
-      Note that the default user inside the container is a non-root user. This provides protection against processes escaping the container and obtaining escalated permissions on the host node. By default, some platforms like the OpenShift Container Platform already do this by running containers using an arbitrarily assigned user ID. For these platforms, the non-root user will need to have permissions to write to any externally mapped volume that requires writes. For example a logging folder, or a custom model download folder.
+      请注意，容器中的默认用户为非根用户。 这可以防止进程对容器转义和获取对主机节点的提升权限。 默认情况下，某些平台（如 OpenShift 容器平台）已经通过使用任意分配的用户 ID 运行容器来避免此问题。 对于这些平台，非根用户需要具有向任何需要写入的外部映射卷进行写入的权限。 例如，日志记录文件夹或自定义模型下载文件夹。
   - question: >
-      When using the speech-to-text service, why am I getting this error?
+      使用语音转文本服务时，为什么会收到此错误？
     answer: >
       ```cmd
 
@@ -490,11 +490,11 @@ sections:
       ```
 
 
-      This typically happens when you feed the audio faster than the Speech recognition container can take it. Client buffers fill up, and the cancellation is triggered. You need to control the concurrency and the RTF at which you send the audio.
+      当音频传入速度快于语音识别容器可以处理的音频时，通常会发生这种情况。 客户端缓冲区填满，并触发取消。 需要控制并发性和发送至音频的 RTF。
   - question: >
-      Could you explain these text-to-speech container errors from the C++ examples?
+      能否解释 C++ 示例中的这些文本转语音容器错误？
     answer: >
-      If the container version is older than 1.3, then this code should be used:
+      如果容器版本早于 1.3，则应使用以下代码：
 
 
       ```cpp
@@ -510,7 +510,7 @@ sections:
       ```
 
 
-      Older containers don't have the required endpoint for Carbon to work with the `FromHost` API. If the containers used for version 1.3, then this code should be used:
+      旧容器没有 Carbon 使用 `FromHost` API 所需的终结点。 如果使用的容器版本为 1.3，则应使用以下代码：
 
 
       ```cpp
@@ -528,7 +528,7 @@ sections:
       ```
 
 
-      Below is an example of using the `FromEndpoint` API:
+      下面是使用 `FromEndpoint` API 的一个示例：
 
 
       ```cpp
@@ -545,5 +545,5 @@ sections:
 
       ```
 
-       The `SetSpeechSynthesisVoiceName` function is called because the containers with an updated text-to-speech engine require the voice name.
-additionalContent: "\n## Next steps\n\n> [!div class=\"nextstepaction\"]\n> [Cognitive Services containers](speech-container-howto.md)"
+       调用 `SetSpeechSynthesisVoiceName` 函数是因为具有更新的文本转语音引擎的容器需要语音名称。
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n> [!div class=\"nextstepaction\"]\n> [认知服务容器](speech-container-howto.md)"

@@ -11,7 +11,7 @@ metadata:
   author: KumudD
   ms.author: kumud
   manager: mtillman
-  ms.date: 07/06/2021
+  ms.date: 09/08/2021
 highlightedContent:
   items:
     - title: 什么是 Azure 网络？
@@ -78,7 +78,7 @@ additionalContent:
               url: ../dns/index.yml
         - title: NVA 与虚拟网络之间的路由
           links:
-            - text: 什么是 Azure 路由服务器（预览版）？
+            - text: 什么是 Azure 路由服务器？
               url: ../route-server/overview.md
             - text: 创建和配置路由服务器
               url: ../route-server/quickstart-configure-route-server-portal.md

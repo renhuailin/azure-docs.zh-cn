@@ -3,12 +3,12 @@ title: 为基于事件的视频录制配置信号入口 - Azure
 description: 本文提供有关如何在管道中配置信号入口的指导。
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: c0b38005010d2718235700f0ed13575e15119103
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 2da85aa31facbec922eac9ee895cd68d66326a42
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604076"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427959"
 ---
 # <a name="configuring-a-signal-gate-for-event-based-video-recording"></a>为基于事件的视频录制配置信号入口
 
@@ -159,7 +159,7 @@ ms.locfileid: "114604076"
 
 管道允许将视频录制到云，或者在边缘设备上录制为 MP4 文件。 这些文件可以由[连续视频录制](use-continuous-video-recording.md)或[基于事件的视频录制](record-event-based-live-video.md)生成。
 
-建议用于录制到云的命名结构是将视频资源命名为“<anytext>-${System.TopologyName}-${System.PipelineName}”。 给定的实时管道只能连接到一个支持 RTSP 的 IP 相机，并且应将该相机的输入录制到一个视频资源。 例如，可以在视频接收器上设置 `VideoName`，如下所示：
+对于录制到云，建议的命名结构是将视频资源命名为 `<anytext>-${System.TopologyName}-${System.PipelineName}`。 给定的实时管道只能连接到一个支持 RTSP 的 IP 相机，并且应将该相机的输入录制到一个视频资源。 例如，可以在视频接收器上设置 `VideoName`，如下所示：
 
 ```
 "VideoName": "sampleVideo-${System.TopologyName}-${System.PipelineName}"

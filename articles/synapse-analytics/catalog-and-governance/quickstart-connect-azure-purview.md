@@ -5,15 +5,15 @@ author: Jejiang
 ms.service: synapse-analytics
 ms.subservice: purview
 ms.topic: quickstart
-ms.date: 08/24/2021
+ms.date: 09/02/2021
 ms.author: jejiang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5cf2149591776b66a2bb646c8de23e0669b31f25
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: b7d729234244302e648a2d3a0bf9c8dc94f10d5a
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033838"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450352"
 ---
 # <a name="quickstartconnect-a-synapse-workspace-to-an-azure-purview-account"></a>快速入门：将 Synapse 工作区连接到 Azure Purview 帐户
 
@@ -43,6 +43,8 @@ ms.locfileid: "123033838"
 3. 可以选择“从 Azure 订阅中选择”或“手动输入” 。 从 Azure 订阅中，可以选择有权访问的帐户。
 4. 连接后，即可在“Azure Purview 帐户”选项卡中看到 Purview 帐户的名称。 
 
+如果 Purview 帐户受防火墙保护，请为 Purview 创建托管专用终结点。 详细了解如何使 Azure Synapse [访问受保护的 Purview 帐户](how-to-access-secured-purview-account.md)。 可在初始连接期间执行，也可稍后编辑现有连接。
+
 Purview 连接信息存储在 Synapse 工作区资源中，如下所示。 若要以编程方式建立连接，可以更新 Synapse 工作区并添加 `purviewConfiguration` 设置。
 
 ```json
@@ -67,7 +69,7 @@ Synapse 工作区的托管标识用于对从 Synapse 工作区到 Purview 的世
 
 - 对于 2021 年 8 月 18 日或之后创建的 Purview 帐户，向 Synapse 工作区的托管标识授予 Purview 根集合的“数据管理者”角色  。 详细了解 [Azure Purview 中的访问控制](../../purview/catalog-permissions.md)和[添加角色并限制通过集合的访问](../../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)。
 
-    将 Synapse 工作区连接到 Synapse Studio 中的 Purview 时，Synapse 会尝试自动添加此类角色分配。 如果你拥有 Purview 根集合的“集合管理员”角色，此操作将成功完成。
+    将 Synapse 工作区连接到 Synapse Studio 中的 Purview 时，Synapse 会尝试自动添加此类角色分配。 如果你拥有 Purview 根集合的“集合管理员”角色，并且可从你的网络访问 Purview 帐户，则此操作成功完成。
 
 - 对于 2021 年 8 月 18 日之前创建的 Purview 帐户，向 Synapse 工作区的托管标识授予 Purview 帐户的 Azure 内置 [Purview 数据管理者](../../role-based-access-control/built-in-roles.md#purview-data-curator)角色 。 详细了解 [Azure Purview 中的访问控制 - 旧版权限](../../purview/catalog-permissions.md#legacy-permission-guide)。
 
@@ -90,6 +92,8 @@ Synapse 工作区的托管标识用于对从 Synapse 工作区到 Purview 的世
 [使用 Azure Purview 发现、连接和浏览 Synapse 中的数据](how-to-discover-connect-analyze-azure-purview.md)
 
 [来自 Azure Synapse Analytics 的元数据和世系](../../purview/how-to-lineage-azure-synapse-analytics.md)
+
+[访问受保护的 Purview 帐户](how-to-access-secured-purview-account.md)
 
 [在 Azure Purview 中注册并扫描 Azure Synapse 资产](../../purview/register-scan-azure-synapse-analytics.md)
 

@@ -1,14 +1,14 @@
 ---
 title: 排查常见错误
 description: 了解如何排查为 Kubernetes 创建策略定义、各种 SDK 和加载项时遇到的问题。
-ms.date: 06/29/2021
+ms.date: 09/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 45c5b420ddd4eab70e381f31e7c46eeeb380b2b5
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0ab4319a7a0d515b51c8bbe259ad0ea49ed2b940
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113087083"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433595"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>排查使用 Azure Policy 时出现的错误
 
@@ -79,6 +79,7 @@ ms.locfileid: "113087083"
 1. 对于应合规但实际不合规的资源，请参阅[确定不合规的原因](../how-to/determine-non-compliance.md)。 通过将定义与计算的属性值进行比较，可了解资源不合规的原因。
    - 如果“目标值”错误，请修改策略定义。
    - 如果“当前值”错误，请通过 `resources.azure.com` 验证资源有效负载。
+1. 对于支持 RegEx 字符串参数的[资源提供程序模式](../concepts/definition-structure.md#resource-provider-modes)定义（如 `Microsoft.Kubernetes.Data` 和内置定义“应只从受信任的注册表中部署容器映像”），请验证 [RegEx 字符串](/dotnet/standard/base-types/regular-expression-language-quick-reference)参数是否正确。
 1. 有关其他常见问题和解决方案，请参阅[故障排查：强制实施与预期不符](#scenario-enforcement-not-as-expected)。
 
 如果复制的和自定义的内置策略定义或自定义定义仍存在问题，请在“创作策略”下创建支持票证，以正确提交问题。
@@ -327,6 +328,26 @@ spec:
 #### <a name="resolution"></a>解决方法
 
 若要调查并解决此问题，请[联系功能团队](mailto:azuredg@microsoft.com)。
+
+### <a name="scenario-definitions-in-category-guest-configuration-cannot-be-duplicated-from-azure-portal"></a>场景：类别“来宾配置”中的定义不能从 Azure 门户中复制
+
+#### <a name="issue"></a>问题
+
+尝试从策略定义的 Azure 门户页创建自定义策略定义时，请选择“复制定义”按钮。 分配策略后，你会发现计算机为“NonCompliant”，因为不存在来宾配置分配资源。
+
+#### <a name="cause"></a>原因
+
+创建来宾配置分配资源时，来宾配置依赖于添加到策略定义的自定义元数据。 Azure 门户中的“复制定义”活动不复制自定义元数据。
+
+#### <a name="resolution"></a>解决方法
+
+使用策略见解 API（而不是使用门户）复制策略定义。 以下 PowerShell 示例提供了一个选项。
+
+```powershell
+# duplicates the built-in policy which audits Windows machines for pending reboots
+$def = Get-AzPolicyDefinition -id '/providers/Microsoft.Authorization/policyDefinitions/4221adbc-5c0f-474f-88b7-037a99e6114c' | % Properties
+New-AzPolicyDefinition -name (new-guid).guid -DisplayName "$($def.DisplayName) (Copy)" -Description $def.Description -Metadata ($def.Metadata | convertto-json) -Parameter ($def.Parameters | convertto-json) -Policy ($def.PolicyRule | convertto-json -depth 15)
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 601970978dc69aea2a6f0947a26cc0bebc1d999d
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 4e37be9e121d634e0d4a83fdd5f786805dedf132
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223028"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427203"
 ---
 # <a name="set-up-the-azure-percept-dk-device"></a>设置 Azure Percept DK 设备
 
@@ -150,7 +150,7 @@ ms.locfileid: "123223028"
     - 选择现有资源组。 如果资源组不存在，请单击“新建”并按照提示进行操作。
     - 选择距离所在物理位置最近的 Azure 区域。
     - 为新的 IoT 中心命名。
-    - 选择 S1（标准）定价层。
+    - 选择“S1 (标准)定价层”。
 
     > [!NOTE]
     > IoT 中心部署可能需要几分钟才能完成。 如果边缘 AI 应用程序需要更高的[消息吞吐量](../iot-hub/iot-hub-scaling.md#message-throughput)，随时可以在 Azure 门户中[将 IoT 中心升级到更高的标准层](../iot-hub/iot-hub-upgrade.md)。 B 和 F 层不支持 Azure Percept。

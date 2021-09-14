@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/23/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 39dd221210b558a3b6ce59200aebaa4aa2278fb5
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: cbc2f30384dc410df56995afd83f7d8c0f964176
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688145"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123469601"
 ---
 # <a name="soft-delete-for-blobs"></a>blob 的软删除
 
@@ -147,6 +147,19 @@ Microsoft 建议为你的存储帐户同时启用版本控制和 blob 软删除�
 |[路径 - 删除](/rest/api/storageservices/datalakestoragegen2/path/delete) |将创建软删除的 Blob 或目录。 软删除的对象将在保持期后删除。|
 |[删除 Blob](/rest/api/storageservices/delete-blob)|将创建软删除对象。 软删除的对象将在保持期后删除。 包含快照的 Blob 和快照不支持软删除。|
 |[路径 - 创建](/rest/api/storageservices/datalakestoragegen2/path/create)，用于重命名 Blob 或目录 | 现有目标 Blob 或空目录将被软删除，系统会使用数据源来进行替换。 软删除的对象将在保持期后删除。|
+
+## <a name="feature-support"></a>功能支持
+
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![否](../media/icons/no-icon.png) | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)  <sup>2</sup>              | ![否](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
+
+<sup>2</sup>    功能在预览级别受支持。
 
 ## <a name="pricing-and-billing"></a>定价和计费
 

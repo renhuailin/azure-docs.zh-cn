@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f23194d46ab8305fa033efe9b9dea8f7a2a69877
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5111092a804845c829cb44f4be9e123b8c9dcca6
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477127"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536754"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>适用于 Azure Synapse Analytics 中的专用 SQL 池的数据加载策略
 
@@ -171,4 +171,4 @@ INSERT INTO ...SELECT 语句将数据从临时表移到永久表。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关加载指南，请参阅[加载数据的指南](guidance-for-loading-data.md)。
+有关加载指南，请参阅[数据加载最佳做法](../sql/data-loading-best-practices.md)。

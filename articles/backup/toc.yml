@@ -140,7 +140,7 @@
       items:
         - name: 概述
           href: backup-azure-vms-introduction.md
-        - name: Backup
+        - name: 备份
           items:
             - name: 使用 Azure 备份即时还原来备份和还原 Azure VM
               href: backup-instant-restore-capability.md
@@ -186,7 +186,7 @@
           items:
             - name: 从保管库备份多个 SQL Server VM
               href: backup-sql-server-database-azure-vms.md
-            - name: SQL 可用性组备份
+            - name: 备份 SQL Server 可用性组
               href: backup-sql-server-on-availability-groups.md
             - name: 从 VM 窗格备份 SQL Server VM
               href: backup-sql-server-vm-from-vm-pane.md
@@ -198,6 +198,8 @@
       items:
         - name: 备份
           href: backup-azure-database-postgresql.md
+        - name: 管理
+          href: manage-azure-database-postgresql.md
     - name: 使用 MARS 代理的 Windows 备份
       items:
         - name: 概述
@@ -208,7 +210,7 @@
               href: install-mars-agent.md
             - name: 升级 MARS 代理
               href: upgrade-mars-agent.md
-        - name: Backup
+        - name: 备份
           items:
             - name: 备份 Windows Server 文件和文件夹
               href: backup-windows-with-mars-agent.md
@@ -236,9 +238,11 @@
               href: backup-managed-disks.md
             - name: 还原
               href: restore-managed-disks.md
+            - name: 管理
+              href: manage-azure-managed-disks.md
         - name: 使用 PowerShell
           items:
-            - name: Backup
+            - name: 备份
               href: backup-managed-disks-ps.md
             - name: 还原
               href: restore-managed-disks-ps.md
@@ -260,7 +264,7 @@
               href: blob-restore.md
         - name: 使用 PowerShell
           items:
-            - name: Backup
+            - name: 备份
               href: backup-blobs-storage-account-ps.md
             - name: 还原
               href: restore-blobs-storage-account-ps.md
@@ -300,7 +304,7 @@
               href: manage-afs-backup-cli.md
         - name: 使用 PowerShell
           items:
-            - name: Backup
+            - name: 备份
               href: backup-azure-afs-automation.md
             - name: 还原
               href: restore-afs-powershell.md
@@ -318,7 +322,7 @@
       items:
         - name: 概述
           href: sap-hana-db-about.md
-        - name: Backup
+        - name: 备份
           href: backup-azure-sap-hana-database.md
         - name: 还原
           href: sap-hana-db-restore.md
@@ -549,15 +553,15 @@
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
     - name: Azure CLI
       href: /cli/azure/backup
-    - name: Azure Dataprotection - CLI
+    - name: Azure 数据保护 - CLI
       href: /cli/azure/dataprotection?view=azure-cli-latest&preserve-view=true
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
-    - name: Azure Dataprotection - PowerShell
+    - name: Azure 数据保护 - PowerShell
       href: /powershell/module/az.dataprotection/?view=azps-6.1.0&preserve-view=true
     - name: PowerShell – Azure 备份代理
       href: /powershell/module/msonlinebackup/?view=msonlinebackup-ps
-    - name: REST - Azure Dataprotection
+    - name: REST - Azure 数据保护
       href: /rest/api/dataprotection/
     - name: REST - 备份
       href: /rest/api/backup/

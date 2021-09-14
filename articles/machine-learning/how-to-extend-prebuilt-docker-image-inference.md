@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: b84255a4148322f9aa1b5c0d59eb220c2555102f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c4a1b52f87f0c5053e357fcb67a2e90962dc37c1
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967628"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433523"
 ---
 # <a name="extend-a-prebuilt-docker-image-preview"></a>扩展预生成的 Docker 映像（预览版）
 

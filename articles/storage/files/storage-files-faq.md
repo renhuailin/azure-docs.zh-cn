@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 34a8d0d732863f5fe40056f25460269f131fbf7c
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 3a19493657e368bf65921f4be7bdd5c9154b77a4
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866497"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536772"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件存储](storage-files-introduction.md)会在云中提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)或[网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System)（预览）进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -105,6 +105,23 @@ ms.locfileid: "122866497"
   **Azure 文件同步上传 1TiB 数据需要多长时间？**
   
     性能将取决于你的环境设置和配置，以及这是初始同步还是正在进行的同步。有关详细信息，请参阅 [Azure 文件同步性能指标](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
+
+* <a id="afs-initial-upload"></a>
+  什么是 Azure 文件同步的初始数据上传？
+  
+    将数据从 Windows Server 初始同步到 Azure 文件共享：许多 Azure 文件同步部署是从一个空的 Azure 文件共享开始，因为所有数据都在 Windows Server 上。 在这些情况下，初始云更改枚举速度很快，并且时间主要花费在将 Windows Server 中的更改同步到 Azure 文件共享中。
+
+同步将数据上传到 Azure 文件共享时，本地文件服务器不会停机，管理员可设置网络限制来限制用于后台数据上传的带宽量。
+
+初始同步通常受每个同步组每秒 20 个文件的初始上传速率限制。 客户可使用以下公式来估算将其所有数据上传到 Azure 所需的时间（以天为单位）：
+
+同步组上传文件所需的时间（以天为单位）=（服务器终结点中的对象数）/(20 * 60 * 60 * 24)
+
+* <a id="afs-initial-upload-server-restart"></a>
+  如果在初始上传过程中停止并重新启动服务器会有什么影响？没有任何影响。 服务器从停止的地方重新启动后，Azure 文件同步将从同步状态恢复
+
+* <a id="afs-initial-upload-server-changes"></a>
+  如果在初始上传期间对服务器终结点上的数据进行了更改，会有什么影响？没有任何影响。 Azure 文件同步将协调在服务器终结点上所做的更改，以确保云终结点和服务器终结点保持同步
 
 * <a id="afs-conflict-resolution"></a>**如果在两个服务器上几乎同时对同一文件进行了更改后，会发生什么情况？**  
     Azure 文件同步会使用简单的冲突解决策略：同时在两个终结点上保留对文件进行的更改。 最新写入的更改保留原始文件名称。 旧文件（由 LastWriteTime 确定）的终结点名称和冲突号追加到文件名末尾。 对于服务器终结点，终结点名称是服务器名称。 对于云终结点，终结点名称为 Cloud。 名称遵循以下分类： 
@@ -226,6 +243,9 @@ ms.locfileid: "122866497"
 **Azure 文件支持哪些数据符合性策略？**  
 
    Azure 文件所依据的存储体系结构与 Azure 存储中的其他存储服务使用的相同。 Azure 文件实施的数据符合性策略也与其他 Azure 存储服务使用的相同。 有关 Azure 存储数据符合性的详细信息，可参阅 [Azure 存储符合性产品/服务](../common/storage-compliance-offerings.md)和转到 [Microsoft 信任中心](https://microsoft.com/trustcenter/default.aspx)。
+
+* <a id="afs-power-outage"></a>
+  如果停电导致服务器终结点关闭，对 Azure 文件同步有何影响？没有任何影响。 Azure 文件同步将协调对服务器终结点所做的更改，以确保在服务器终结点重新联机后云终结点和服务器终结点保持同步
 
 * <a id="file-auditing"></a>
 **如何审核 Azure 文件存储中的文件访问和更改？**
@@ -352,7 +372,7 @@ ms.locfileid: "122866497"
 * <a id="expressroute-not-required"></a>
 **必须使用 Azure ExpressRoute 才能在本地连接到 Azure 文件或使用 Azure 文件同步吗？**  
 
-    不是。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
+    否。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
 
 * <a id="mount-locally"></a>
 **如何才能在本地计算机上装载 Azure 文件共享？**  
@@ -483,7 +503,7 @@ ms.locfileid: "122866497"
 
 * <a id="nested-shares"></a>
 **是否可以设置嵌套共享？也就是说，能否在共享下使用共享？**  
-    不是。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
+    否。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
 
 * <a id="ibm-mq"></a>
 **如何将 Azure 文件与 IBM MQ 配合使用？**  

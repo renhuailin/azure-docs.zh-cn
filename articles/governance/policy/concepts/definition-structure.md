@@ -1,14 +1,14 @@
 ---
 title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: b09d11e6f1c5ea8f4882021530dc4d06d2d2f350
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: e285ca8c47d73f8b9a23c005be8c8b88d38db879
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324883"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436097"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -105,7 +105,7 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 
 充分支持以下资源提供程序模式：
 
-- `Microsoft.Kubernetes.Data`，用于在 Azure 上或外部管理 Kubernetes 群集。 使用该资源提供程序模式的定义使用效果“审核”、“拒绝”和“已禁用”  。 不推荐使用 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 效果。
+- `Microsoft.Kubernetes.Data`，用于在 Azure 上或外部管理 Kubernetes 群集。 使用该资源提供程序模式的定义使用效果“审核”、“拒绝”和“已禁用”  。 此模式以公共预览版的形式支持自定义定义。 若要根据现有的 [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3 [约束模板](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)创建自定义定义，请参阅[基于约束模板创建策略定义](../how-to/extension-for-vscode.md)。 不推荐使用 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 效果。
 
 目前支持以下资源提供程序模式（预览版）：
 
@@ -113,7 +113,7 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 - `Microsoft.KeyVault.Data`，用于管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保管库和证书。 有关这些策略定义的详细信息，请参阅[将 Azure Key Vault 与 Azure Policy 集成](../../../key-vault/general/azure-policy.md)。
 
 > [!NOTE]
-> 资源提供程序模式仅支持内置策略定义，不支持[豁免](./exemption-structure.md)。
+> 资源提供程序模式仅支持内置策略定义；如果没有明确说明，则不支持[例外情况](./exemption-structure.md)。
 
 ## <a name="metadata"></a>Metadata
 

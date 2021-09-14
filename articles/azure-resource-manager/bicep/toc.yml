@@ -22,8 +22,10 @@
     - name: Microsoft Learn - Bicep
       href: learn-bicep.md
 - name: 如何
+  expanded: true
   items:
     - name: 作者
+      expanded: true
       items:
         - name: 资源
           items:
@@ -146,6 +148,8 @@
           href: bicep-functions-date.md
         - name: 部署函数
           href: bicep-functions-deployment.md
+        - name: 文件函数
+          href: bicep-functions-files.md
         - name: 逻辑函数
           href: bicep-functions-logical.md
         - name: 数值函数

@@ -18,13 +18,15 @@
       displayName: 'firewall, proxy, open ports'
       href: quickstart-system-prerequisites.md
     - name: Azure Defender for IoT 入门
-      displayName: 'getting started, registration, onboarding, activation, threat intelligence'
+      displayName: 'getting started, registration, onboarding, activation, threat intelligence, trial, free, subscription'
       href: getting-started.md
 - name: 教程
   expanded: false
   items:
     - name: Azure Defender for IoT 试用版设置
       href: tutorial-onboarding.md
+    - name: 集成 Qradar
+      href: tutorial-qradar.md
     - name: 集成 Splunk
       href: tutorial-splunk.md
     - name: 集成 ServiceNow
@@ -33,6 +35,9 @@
   items:
     - name: 关键概念
       href: concept-key-concepts.md
+    - name: 支持的协议
+      displayName: 'protocol, Horizon, horizon, SCADA, OT, Industrial IoT, proprietary'
+      href: concept-supported-protocols.md
 - name: 操作指南
   items:
     - name: 准备网络
@@ -186,8 +191,6 @@
           href: integration-fortinet.md
         - name: Palo Alto 集成
           href: integration-palo-alto.md
-        - name: Qradar 集成
-          href: integration-qradar.md
 - name: 参考
   items:
     - name: 使用 Defender for IoT API

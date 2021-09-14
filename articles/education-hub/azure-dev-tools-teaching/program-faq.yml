@@ -7,13 +7,13 @@ metadata:
   ms.service: azure-education
   ms.subservice: education-hub
   ms.topic: overview
-  ms.date: 06/30/2020
-  ms.openlocfilehash: 9953271e12adb0ccd59deabbb7fbf7a7fc846b94
-  ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+  ms.date: 08/31/2021
+  ms.openlocfilehash: 28972b6c29e14ca453d713e25867b8079e05c3ca
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/31/2021
-  ms.locfileid: "123271874"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123431019"
 title: 有关教育中心的常见问题
 summary: 本文解决了有关面向学生的 Azure、面向学生的 Azure 入门版和 Azure Dev Tools for Teaching 的常见问题。
 sections:
@@ -22,18 +22,21 @@ sections:
   - question: >
       用完 100 美元额度或在 12 个月到期后会发生什么情况？
     answer: >
-      用完可用额度或在 12 个月到期后，你的 Azure 订阅将被禁用。 若要继续使用 Azure，可以在 Azure 门户中升级为即用即付订阅。 若要获取面向学生的 Azure 的详细使用条款，请访问[套餐条款](https://azure.microsoft.com/offers/ms-azr-0170p/)。
+      如果在 12 个月内用完可用额度并且想要继续使用 Azure，可以在 Azure 门户中升级到即用即付订阅。  如果不进行升级，Azure 订阅将被禁用。 12 个月到期之后可通过再次注册该套餐来续订订阅。 若要获取面向学生的 Azure 的详细使用条款，请访问[套餐条款](https://azure.microsoft.com/offers/ms-azr-0170p/)。
   - question: >
       谁有资格使用面向学生的 Azure？
-    answer: "仅满足以下要求的学生可以使用面向学生的 Azure 入门版：\n\n- 你必须申明自己已年满 18 岁，并且就读于经认证的、可授予学位的两年或四年制教育机构，并且是该机构的全日制学生。 \n- 必须通过组织的电子邮件地址验证学业状况。\n- 有关详细使用条款，请参阅[面向学生的 Azure 套餐](https://azure.microsoft.com/offers/ms-azr-0170p/)。\n\n此套餐不适用于大规模开放在线课程 (MOOC) 或盈利组织的其他专业培训。\n\n此套餐仅限每位符合条件的客户获得一份面向学生的 Azure 订阅。 未经 Microsoft 许可，不可转让此套餐，也不能与任何其他套餐结合使用。\n    \n"
+    answer: "仅满足以下要求的学生可以使用面向学生的 Azure：\n\n- 你必须申明自己已年满 18 岁，并且就读于经认证的、可授予学位的两年或四年制教育机构，并且是该机构的全日制学生。 \n- 必须通过组织的电子邮件地址验证学业状况。\n- 有关详细使用条款，请参阅[面向学生的 Azure 套餐](https://azure.microsoft.com/offers/ms-azr-0170p/)。\n\n此套餐不适用于大规模开放在线课程 (MOOC) 或盈利组织的其他专业培训。\n\n此套餐仅限每位符合条件的客户获得一份面向学生的 Azure 订阅。 未经 Microsoft 许可，不可转让此套餐，也不能与任何其他套餐结合使用。\n    \n"
   - question: >
       我明年还能获取面向学生的 Azure 吗?
     answer: >
-      感谢你对面向学生的 Azure 的关注！ 很高兴你喜欢它。 目前，我们尚未宣布续订。 请关注后续更新。
+      可以！  你可以在 1 年后续订面向学生的 Azure 订阅。  我们会在你的周年纪念日之前向你发送一封电子邮件，提醒你进行续订。  若要续订，只需从面向学生的 Azure [网站](https://aka.ms/azure4students)重新注册套餐即可
+  - question: >
+      为什么我会收到来自 Microsoft 的发票？
+    answer: "你可能会收到来自 Microsoft 的发票，其中包含你在上个月使用的面向学生的 Azure 订阅的使用情况详细说明。  不用担心，无需为该使用量付费，面向学生的 Azure 提供的额度会覆盖所有这些费用。  要详细了解发票及其工作方式，请查看 docs.microsoft.com 上的[文章](https://docs.microsoft.com/en-us/azure/cost-management-billing/understand/mca-overview) \n"
   - question: >
       什么是订阅？订阅与面向学生的 Azure 有什么关联？
     answer: >
-      订阅提供对 Azure 服务的访问权限。 面向学生的 Azure 提供为期 12 个月价值 100 美元的额度。 可用于访问超过 25 种免费服务，其中包括计算、网络、存储和数据库。 此期间产生的任何费用都将从额度中扣除。 若要在 12 个月到期或 100 美元的额度用完后继续使用 Azure（以先发生者为准），必须升级为即用即付订阅。
+      订阅提供对 Azure 服务的访问权限。 面向学生的 Azure 提供有效期为 12 个月的 100 美元额度，并且包括对超过 25 种免费服务（包括计算、网络、存储和数据库）的访问权限。 此期间产生的任何费用都将从额度中扣除。 若在用完 100 美元额度后想要继续使用 Azure 服务，必须续订（如果已满 12 个月）或升级到即用即付订阅。
   - question: >
       如果不升级，对 Azure 服务有什么影响？
     answer: >
@@ -45,7 +48,7 @@ sections:
   - question: >
       如何下载软件开发人员工具？
     answer: >
-      可通过面向学生的 Azure 订阅访问某些软件开发人员工具。 但必须拥有当前活跃的面向学生的 Azure 订阅，才能访问和下载软件开发人员工具。 转到[教育中心](https://ms.portal.azure.com/#blade/Microsoft_Azure_Education/EducationMenuBlade/software)，通过使用面向学生的 Azure 订阅，下载软件开发人员工具。
+      可通过面向学生的 Azure 订阅访问某些软件开发人员工具。 必须拥有当前活跃的面向学生的 Azure 订阅才能访问和下载软件开发人员工具。 转到[教育中心](https://ms.portal.azure.com/#blade/Microsoft_Azure_Education/EducationMenuBlade/software)，通过使用面向学生的 Azure 订阅，下载软件开发人员工具。
   - question: >
       什么是 Microsoft Learn？
     answer: >

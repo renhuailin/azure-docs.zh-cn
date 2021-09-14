@@ -3,12 +3,12 @@ title: 定义变量的多个实例
 description: 在创建变量时，可以使用 Azure 资源管理器模板（ARM 模板）中的复制操作进行多次迭代。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 5f6459335fa3f059a76128edde4ee7096790fe13
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: bf04a93d8ec6626bfbb2083789dbd6db08e2af51
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957958"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123452170"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM 模板中的变量迭代
 
@@ -318,6 +318,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 |---------|---------|
 |[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |演示循环访问变量的不同方式。 |
 |[多项安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |将多个安全规则部署到网络安全组。 它从参数构造安全规则。 有关参数，请参阅[多个 NSG 参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。 |
+|[复制带有变量的存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewithvariables.json) | 关于如何循环访问变量以及创建多个存储帐户的示例。 |
 
 ## <a name="next-steps"></a>后续步骤
 

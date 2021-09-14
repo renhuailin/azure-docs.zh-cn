@@ -60,7 +60,7 @@
           href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: 使用 Azure Policy 的许可控制策略定义
           href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
-        - name: 部署启用了 Arc 的开放式服务网格
+        - name: 部署已启用 Azure Arc 的开放式服务网格
           href: tutorial-arc-enabled-open-service-mesh.md
         - name: 从任何位置安全地连接到群集
           href: cluster-connect.md
@@ -70,7 +70,7 @@
           href: custom-locations.md
         - name: 部署 IoT 工作负载
           href: deploy-azure-iot-edge-workloads.md
-        - name: 已启用 Arc 的机器学习
+        - name: 已启用 Azure Arc 的机器学习
           href: ../../machine-learning/how-to-attach-arc-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
     - name: 疑难解答
       href: Troubleshooting.md

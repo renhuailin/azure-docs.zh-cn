@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f70b876bd76eaf2fb7f8ca18cf3dabb7e66bf9b5
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 5338c3173d84d3a72d17876dfec259f6769acf65
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733794"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123481139"
 ---
 # <a name="authorize-access-to-blobs-using-azure-active-directory"></a>使用 Azure Active Directory 授权访问 Blob
 
@@ -100,6 +100,17 @@ Azure CLI 和 PowerShell 支持使用 Azure AD 凭据登录。 登录后，会�
 
 - [选择如何使用 Azure CLI 授权 Blob 数据访问](authorize-data-operations-cli.md)
 - [使用 Azure AD 凭据运行 PowerShell 命令以访问 blob 数据](authorize-data-operations-powershell.md)
+
+## <a name="feature-support"></a>功能支持
+
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![否](../media/icons/no-icon.png) | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png)| ![否](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

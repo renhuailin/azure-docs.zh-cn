@@ -12,12 +12,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 zone_pivot_groups: postgres-server-options
-ms.openlocfilehash: a5e57cf8ac41c6452116d4a88a5892d1779e6519
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7daa8e8e1fa8ba268211afb9b3cdddde218f3310
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114439099"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426537"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>教程：在 Azure 应用服务中部署使用 PostgreSQL 的 Django Web 应用
 
@@ -467,9 +467,9 @@ python manage.py runserver
 
 1. 在浏览器中转到 `http://localhost:8000`，该浏览器应显示消息“无可用投票”。 
 
-1. 转到 `http:///localhost:8000/admin`，并使用之前创建的管理员用户登录。 在“轮询”下方再次选择“问题”旁边的“添加”，创建一个包含一些选项的轮询问题  。 
+1. 转到 `http://localhost:8000/admin`，并使用之前创建的管理员用户登录。 在“轮询”下方再次选择“问题”旁边的“添加”，创建一个包含一些选项的轮询问题  。 
 
-1. 再次转到“http:\//localhost:8000”，回答问题以测试应用。 
+1. 再次转到 `http://localhost:8000`，回答问题以测试应用。 
 
 1. 按 Ctrl+C 来停止 Django 服务器 。
 

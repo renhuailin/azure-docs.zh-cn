@@ -229,6 +229,8 @@
           href: core/howto-administer.md
         - name: 管理用户和角色
           href: core/howto-manage-users-roles.md
+        - name: 管理组织
+          href: core/howto-create-organizations.md
         - name: 自定义应用程序 UI
           href: core/howto-customize-ui.md
         - name: 将 V2 迁移到 V3 应用程序

@@ -63,6 +63,8 @@
           href: analyze-live-video-custom-vision.md
         - name: 使用空间分析
           href: computer-vision-for-spatial-analysis.md
+    - name: 可视化 AI 推理事件
+      href: visualize-ai-events-power-bi.md
 - name: GitHub 示例
   items:
     - name: C# 示例存储库

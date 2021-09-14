@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f8149be4e7e22366cf5d2ce130d3b6ec596ac782
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 79248c8d389fa004bab0dfc55c3f6fce193c6feb
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272004"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473939"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>配置对容器和 blob 的匿名公共读取访问
 
@@ -296,6 +296,17 @@ $ctx = $storageAccount.Context
 
 Get-AzStorageContainer -Context $ctx | Select Name, PublicAccess
 ```
+
+## <a name="feature-support"></a>功能支持
+
+下表显示你的帐户如何支持此功能，以及启用某些功能后对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png)| ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

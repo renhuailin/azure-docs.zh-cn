@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 18d97473e128326d6e3eb4c77ecab7fc3ba14c7d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 530078dc7a720b39a2b276230fd7e04fb9ab01d4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121782944"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425655"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -192,6 +192,9 @@ Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
 | UPDATE IF EXISTS | 是 |
 | UPDATE IF NOT EXISTS | 是 |
 | UPDATE 条件 | 否 |
+
+> [!NOTE]
+> 目前，启用了多区域写入的帐户不支持轻型事务。
 
 ## <a name="cql-shell-commands"></a>CQL Shell 命令
 

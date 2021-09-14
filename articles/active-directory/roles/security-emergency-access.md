@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7fb48f71a891493220440d56a50e3c72510892
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 249332f680bd0550d99a38a200ce95d32e6f95d7
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744017"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473597"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
 
@@ -44,9 +44,9 @@ ms.locfileid: "121744017"
 配置这些帐户时，必须满足以下要求：
 
 - 紧急访问帐户不应与组织中的任何单个用户相关联。 确保帐户未关联到任何员工提供的移动电话、会随单个员工流动的硬件令牌或其他特定于员工的凭据。 此预防措施介绍需要凭据而无法找到某个拥有凭据的员工时的情况。 请务必确保将任何已注册设备保存在与 Azure AD 有多种通信方式的已知安全位置。
-- 紧急访问帐户使用的身份验证机制应该不同于其他管理帐户（包括其他紧急访问帐户）使用的机制。  例如，如果管理员可通过本地 MFA 正常登录，则 Azure AD MFA 是不同的机制。  但是，如果 Azure AD MFA 是管理帐户的主要身份验证部分，请考虑对这些帐户使用不同的方法，例如，通过自定义控件结合第三方 MFA 提供程序使用条件访问。
+- 对紧急访问帐户使用强身份验证，并确保它不会使用与其他管理帐户相同的身份验证方法。 例如，如果普通管理员帐户使用 Microsoft Authenticator 应用进行强身份验证，则需要对紧急帐户使用 FIDO2 安全密钥。 请考虑[各种身份验证方法的依赖项](../fundamentals/resilience-in-credentials.md)，以避免将外部要求添加到身份验证过程中。
 - 设备或凭据不得过期，或者由于使用次数不多而划归到自动清理的范围内。  
-- 应将全局管理员角色分配设为紧急访问帐户的永久角色。 
+- 在 Azure AD Privileged Identity Management 中，应使全局管理员角色分配永久化，而不是有资格访问紧急访问帐户。 
 
 ### <a name="exclude-at-least-one-account-from-phone-based-multi-factor-authentication"></a>从基于电话的多重身份验证中排除至少一个帐户
 
@@ -56,11 +56,11 @@ ms.locfileid: "121744017"
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>从条件访问策略中排除至少一个帐户
 
-在紧急情况下，你不希望某个策略阻止你进行访问以解决问题。 应从所有条件访问策略中排除至少一个紧急访问帐户。
+在紧急情况下，你不希望某个策略阻止你进行访问以解决问题。 如果使用条件访问，则需要从所有条件访问策略中排除至少一个紧急访问帐户。
 
 ## <a name="federation-guidance"></a>联合身份验证指南
 
-一些组织使用 AD 域服务和 ADFS 或类似的标识提供者与 Azure AD 进行联合。 [不应存在具有管理权限的本地帐户](../fundamentals/protect-m365-from-on-premises-attacks.md)。 在 Azure AD 外部掌控和/或执行对具有管理权限的帐户的身份验证会在这些系统出现服务中断或遭到入侵时增加不必要的风险。
+一些组织使用 AD 域服务和 AD FS 或类似的标识提供者与 Azure AD 进行联合。 本地系统的紧急访问和云服务的紧急访问应区分开，彼此不相互依赖。 如果从其他系统掌控和/或获得对具有紧急访问特权的帐户的身份验证，会在这些系统发生中断时增加不必要的风险。
 
 ## <a name="store-account-credentials-safely"></a>安全地存储帐户凭据
 

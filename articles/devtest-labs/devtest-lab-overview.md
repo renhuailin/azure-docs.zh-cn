@@ -3,12 +3,12 @@ title: 关于 Azure 开发测试实验室 | Microsoft Docs
 description: 了解开发测试实验室如何轻松地创建、管理和监视 Azure 虚拟机
 ms.topic: article
 ms.date: 08/20/2021
-ms.openlocfilehash: 2d15bfd34e37036e95e06529e6c14588da15b34d
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 5ef1aabb861b90679fbb36e46b837d6567f122d4
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969857"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468035"
 ---
 # <a name="about-azure-devtest-labs"></a>关于 Azure 开发测试实验室
 Azure 开发测试实验室使团队中的开发人员能够高效地自行管理虚拟机 (VM) 和 PaaS 资源，而无需等待审批。
@@ -40,13 +40,13 @@ Azure 开发测试实验室使团队中的开发人员能够高效地自行管�
 - 从资源管理器模板模板的策展列表中进行选择，这些模板由团队主管或中央 IT 配置和授权。
 - 通过使用资源管理器模板启动空的资源组（沙盒），以在实验室环境中浏览 Azure。
 
-通过执行以下任务，开发测试实验室还可以使中央 IT 能够控制浪费、优化资源成本并使成本保持在预算范围内：  
+通过执行以下任务，开发测试实验室还使中央 IT 能够控制浪费、优化资源成本并使成本保持在预算范围内：  
 
 - 在 VM 上设置自动关闭和自动启动计划。
-- 针对用户可以创建的 VM 数量设置策略。
-- 对 VM 的大小和库映像设置策略，供用户选择。
+- 对用户可创建的 VM 数量设置相应策略。
+- 对可供用户选择的 VM 大小和库映像设置相应策略。
 - 跟踪实验室成本并设定实验室目标。
-- 获取有关实验室高预计成本的通知，以便可以采取必要的措施。
+- 如果实验室预计成本较高，则则提供通知，以便可采取必要措施。
 
 开发测试实验室为创建、配置和管理云中的环境提供了以下优势。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 36e1a8a288e1f9b2a8d65ab966b607b594d66f4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40b40d25e47e3951293ebe5a5d58673535b6615e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653595"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470609"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>支持 Azure Data Lake Storage Gen2 的 Azure 服务
 
@@ -49,6 +49,6 @@ ms.locfileid: "100653595"
 ## <a name="see-also"></a>另请参阅
 
 - [Azure Data Lake Storage Gen2 的已知问题](data-lake-storage-known-issues.md)
-- [Azure Data Lake Storage Gen2 中可用的 Blob 存储功能](data-lake-storage-supported-blob-storage-features.md)
+- [Azure 存储帐户中的 Blob 存储功能支持](storage-feature-support-in-storage-accounts.md)
 - [支持 Azure Data Lake Storage Gen2 的开源平台](data-lake-storage-supported-open-source-platforms.md)
 - [Azure Data Lake Storage 的多协议访问](data-lake-storage-multi-protocol-access.md)

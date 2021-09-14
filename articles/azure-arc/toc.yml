@@ -8,11 +8,11 @@
   items:
     - name: Azure Resource Graph 查询
       href: ./resource-graph-samples.md
-- name: 已启用 Arc 的服务器 >
+- name: 已启用 Azure Arc 的服务器 >
   href: ./servers/overview.md
-- name: 已启用 Arc 的 Kubernetes >
+- name: 已启用 Azure Arc 的 Kubernetes >
   href: ./kubernetes/overview.md
-- name: 已启用 Arc 的数据服务 >
+- name: 已启用 Azure Arc 的数据服务 >
   href: ./data/overview.md
 - name: 已启用 Azure Arc 的服务器上的 SQL Server >
   href: /sql/sql-server/azure-arc/overview

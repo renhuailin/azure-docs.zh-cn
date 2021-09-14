@@ -7,12 +7,12 @@ metadata:
   ms.service: cosmos-db
   ms.topic: conceptual
   ms.date: 05/18/2021
-  ms.openlocfilehash: 20fe5aabf2e7cc8f38272e86a0df2fc91443eee2
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.openlocfilehash: 960a4e93cfc8f6d2041fceb84b92dd6a4ab8b9e8
+  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "111907085"
+  ms.lasthandoff: 09/03/2021
+  ms.locfileid: "123426987"
 title: Azure Cosmos DB 中自动缩放预配吞吐量的常见问题解答
 summary: >
   [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -72,7 +72,7 @@ sections:
   - question: >
       是否有 Azure CLI、PowerShell 或 Azure 资源管理器支持来管理具有自动缩放功能的数据库或容器？
     answer: >
-      是。 若要以编程方式对现有数据库或容器启用自动缩放，可以使用 [Azure CLI](how-to-provision-autoscale-throughput.md#azure-cli) 或 [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell)。 若要创建具有自动缩放功能的新数据库或容器，可以使用 [Azure CLI](how-to-provision-autoscale-throughput.md#azure-cli)、[PowerShell](scripts/powershell/sql/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 资源管理器模板](./templates-samples-sql.md)。
+      是的。 若要以编程方式对现有数据库或容器启用自动缩放，可以使用 [Azure CLI](how-to-provision-autoscale-throughput.md#azure-cli) 或 [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell)。 若要创建具有自动缩放功能的新数据库或容器，可以使用 [Azure CLI](how-to-provision-autoscale-throughput.md#azure-cli)、[PowerShell](scripts/powershell/sql/throughput.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或 [Azure 资源管理器模板](./templates-samples-sql.md)。
   - question: >
       共享吞吐量数据库是否支持自动缩放？
     answer: "是的，共享吞吐量数据库支持自动缩放。 若要启用此功能，请在创建数据库时选择自动缩放和“预配吞吐量”选项。 \n"
@@ -96,7 +96,7 @@ sections:
       例如，如果开始时以 50,000 RU/s 为最大值（在 5000-50,000 RU/s 之间缩放），则最多可以存储 500 GB 的数据。 如果超过 500 GB，例如存储现在为 600 GB，则新的最大 RU/s 为 60,000 RU/s（在 6000-60,000 RU/s 之间缩放）。
   - question: "能否更改数据库或容器的最大 RU/s？ \n"
     answer: >
-      是的。 请参阅[本文](how-to-provision-autoscale-throughput.md)，了解关于如何更改最大 RU/s。 根据请求的值更改最大 RU/s 时，此异步操作可能需要一些时间才能完成（根据所选的 RU/s，可能需要长达 4-6 小时）
+      是的。 请参阅[本文](how-to-provision-autoscale-throughput.md)，了解关于如何更改最大 RU/s。 更改最大 RU/秒时，根据请求的值，这可能是一个需要一些时间才能完成的异步操作（可能最长为 4-6 小时，具体取决于所选的 RU/秒）。 [了解详细信息](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)。
   - question: >
       增加最大 RU/s
     answer: >

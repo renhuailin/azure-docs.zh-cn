@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: bfb808c634ba946e1a4825d7828db6df8963352c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de49c820100140f0822149bba84f7a38f034323b
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98951237"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473273"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>教程：使用 REST API
 
@@ -79,20 +79,22 @@ ms.locfileid: "98951237"
 
 1. 导航到你的 Purview 帐户
 
-1. 在“Purview 帐户”页上，选择“访问控制(IAM)”选项卡 
+1. 在“Purview 帐户”页，打开“Purview Studio” 
 
-1. 单击“+ 添加”
+1. 在左侧菜单中选择“数据映射”。
 
-1. 选择“添加角色分配”
+1. 选择“集合”
 
-1. （对于“Purview Data Curator”中的“角色”类型）
+1. 在“集合”菜单中选择根集合。 这将是列表中的顶级集合，并将与你的 Purview 帐户同名。
+
+1. 选择“角色分配”选项卡。
+
+1. 向下滚动到“数据管理者”，然后选择 + 用户按钮 。
 
     > [!Note]
-    > 有关 Azure Purview 数据目录权限的详细信息，请参阅[目录权限](catalog-permissions.md)。 例如，如果需要触发扫描的权限，则角色类型必须是“Purview 数据源管理器”。
+    > 只有集合管理员才可以编辑集合的权限。 如果你不是集合管理员，请联系根集合中列出的管理员之一。 如需了解详细信息，请参阅[“Purview 权限”页](catalog-permissions.md)。
 
-1. 对于“访问权限分配对象”，保留默认值，即“用户、组或服务主体” 
-
-1. 对于“选择”，输入之前创建的要分配的服务主体的名称，然后在结果窗格中单击其名称。
+1. 搜索之前创建的要分配的服务主体的名称，然后在结果窗格中单击其名称。
 
 1. 单击“保存”
 

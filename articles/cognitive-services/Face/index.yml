@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: 人脸文档
-summary: 2020 年 6 月 11 日，Microsoft 宣布在以人权为基础的强有力的法规颁布之前，将不向美国的警察局出售人脸识别技术。 同样地，如果客户是美国警察局、由美国警察局准许使用或针对美国警察局使用 Azure 服务，则这些客户不得使用这类服务中包含的人脸识别功能（例如人脸或视频索引器）。
+summary: 2020 年 6 月 11 日，Microsoft 宣布在以人权为基础的强有力的法规颁布之前，将不向美国的警察局出售人脸识别技术。 同样地，如果客户是美国警察局、由美国警察局准许使用或针对美国警察局使用 Azure 服务，则这些客户不得使用这类服务中包含的人脸识别功能（例如人脸或 Azure 视频分析器媒体版）。
 metadata:
   title: 人脸文档 - 快速入门、教程和 API 参考 - Azure 认知服务 | Microsoft Docs
   description: 使用基于云的人脸服务，开发人员可以访问高级人脸算法。 Microsoft 人脸算法支持人脸属性检测和人脸识别。 使用快速入门、教程和示例，了解如何以不同的方式分析内容。
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 9/01/2020
-  ms.openlocfilehash: 579db900c31992fbb0555a8e19c9b2753f0bde2a
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: 145727cb5b6cd9c83e33407cb0cbfb3612066c9d
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121744767"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124771909"
 landingContent:
 - title: 关于人脸服务
   linkLists:

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 93b5d7059c1d19b3e5130a8e6d360655fa210aba
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: a25f2a83fe03b8510e6ec56eb6bdcfedbb0098d8
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555945"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538068"
 ---
 # <a name="tutorial-use-net-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 .NET 和 AI 从 Azure Blob 生成可搜索的内容
 
@@ -74,7 +74,7 @@ ms.locfileid: "111555945"
 
 1. 在“基本信息”选项卡中，必须填写以下项。 对于其他任何字段，请接受默认设置。
 
-   * 资源组  。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
+   * 资源组。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
 
    * **存储帐户名称**。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus*。 
 
@@ -309,7 +309,7 @@ SearchIndexerDataSourceConnection dataSource = CreateOrUpdateDataSource(indexerC
 
 ### <a name="ocr-skill"></a>OCR 技术
 
-OCR 技能从图像中提取文本。 此技能假定存在“normalized_images”字段。 为了生成此字段，本教程稍后会将索引器定义中的 ```"imageAction"``` 配置设置为 ```"generateNormalizedImages"```。
+[`OcrSkill`](/dotnet/api/azure.search.documents.indexes.models.ocrskill) 会从图像中提取文本。 此技能假定存在“normalized_images”字段。 为了生成此字段，本教程稍后会将索引器定义中的 ```"imageAction"``` 配置设置为 ```"generateNormalizedImages"```。
 
 ```csharp
 private static OcrSkill CreateOcrSkill()
@@ -340,7 +340,7 @@ private static OcrSkill CreateOcrSkill()
 
 ### <a name="merge-skill"></a>合并技能
 
-在此部分中，你将创建“合并”技能，用于将文档内容字段与 OCR 技能生成的文本合并。
+在此部分，你将创建一个 [`MergeSkill`](/dotnet/api/azure.search.documents.indexes.models.mergeskill)，它用于将文档内容字段与 OCR 技能生成的文本合并。
 
 ```csharp
 private static MergeSkill CreateMergeSkill()
@@ -379,7 +379,7 @@ private static MergeSkill CreateMergeSkill()
 
 ### <a name="language-detection-skill"></a>语言检测技能
 
-语言检测技能检测输入文本的语言，并报告在请求中提交的每个文档的单一语言代码。 我们会将语言检测技能的输出用作文本拆分技能的输入的一部分。
+[`LanguageDetectionSkill`](/dotnet/api/azure.search.documents.indexes.models.languagedetectionskill) 会检测输入文本的语言，并报告在请求中提交的每个文档的单一语言代码。 我们会将语言检测技能的输出用作文本拆分技能的输入的一部分。
 
 ```csharp
 private static LanguageDetectionSkill CreateLanguageDetectionSkill()
@@ -408,7 +408,7 @@ private static LanguageDetectionSkill CreateLanguageDetectionSkill()
 
 ### <a name="text-split-skill"></a>文本拆分技能
 
-下面的拆分技能按页面拆分文本，并将页面长度限制为 `String.Length` 度量的 4,000 个字符。 此算法会尝试将文本拆分为最大为 `maximumPageLength` 的区块。 在下面的示例中，此算法会尽可能在句子边界断开句子，所以区块大小可能略小于 `maximumPageLength`。
+下面的 [`SplitSkill`](/dotnet/api/azure.search.documents.indexes.models.splitskill) 将按页面拆分文本，并将页面长度限制为 `String.Length` 度量的 4,000 个字符。 此算法会尝试将文本拆分为最大为 `maximumPageLength` 的区块。 在下面的示例中，此算法会尽可能在句子边界断开句子，所以区块大小可能略小于 `maximumPageLength`。
 
 ```csharp
 private static SplitSkill CreateSplitSkill()
@@ -444,7 +444,7 @@ private static SplitSkill CreateSplitSkill()
 
 ### <a name="entity-recognition-skill"></a>实体识别技能
 
-设置此 `EntityRecognitionSkill` 实例是为了识别类别类型 `organization`。 此外，实体识别技能还可以识别类别类型 `person` 和 `location`。
+设置此 `EntityRecognitionSkill` 实例是为了识别类别类型 `organization`。 此外，[`EntityRecognitionSkill`](/dotnet/api/azure.search.documents.indexes.models.entityrecognitionskill) 还可识别类别类型 `person` 和 `location`。
 
 请注意，“context”字段设置为包含星号的 ```"/document/pages/*"```；也就是说，将对 ```"/document/pages"``` 下的每个页面都调用扩充步骤。
 
@@ -477,7 +477,7 @@ private static EntityRecognitionSkill CreateEntityRecognitionSkill()
 
 ### <a name="key-phrase-extraction-skill"></a>关键短语提取技能
 
-与刚刚创建的 `EntityRecognitionSkill` 实例一样，关键短语提取技能对文档的各个页面都调用。
+与刚刚创建的 `EntityRecognitionSkill` 实例一样，[`KeyPhraseExtractionSkill`](/dotnet/api/azure.search.documents.indexes.models.keyphraseextractionskill) 对文档的各个页面都调用。
 
 ```csharp
 private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
@@ -511,7 +511,7 @@ private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
 
 ### <a name="build-and-create-the-skillset"></a>生成并创建技能集
 
-使用已创建的技能来生成 `Skillset`。
+使用已创建的技能来生成 [`SearchIndexerSkillset`](/dotnet/api/azure.search.documents.indexes.models.searchindexerskillset)。
 
 ```csharp
 private static SearchIndexerSkillset CreateOrUpdateDemoSkillSet(SearchIndexerClient indexerClient, IList<SearchIndexerSkill> skills,string cognitiveServicesKey)

@@ -4,16 +4,16 @@ description: 了解如何诊断和修复请求速率过大异常。
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 07/13/2020
+ms.date: 08/25/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b6cc09868b65cc6ea71904973904f35a03e8eb21
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 44ecb59508b93347ba57fb40a88c274adfedd320
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113325"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434045"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-429-exceptions"></a>对 Azure Cosmos DB 请求速率过大 (429) 异常进行诊断及故障排除
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -56,10 +56,10 @@ ms.locfileid: "123113325"
 当一个或几个逻辑分区键由于请求量较高而消耗了过多的总 RU/s 时，即会出现热分区。 而造成这一情况的原因可能是分区键设计导致请求未能均匀分布。 这就导致许多请求被定向到一小部分逻辑（亦指物理）分区)，因而分区变“热”。 由于逻辑分区的所有数据都驻留在一个物理分区上，并且总 RU/s 在物理分区间均匀分布，因此热分区便可能会导致出现 429 错误以及吞吐量利用效率较低。 
 
 下面是导致热分区的一些分区策略示例：
-- 你有一个用于存储 IoT 设备写入密集型工作负载数据的容器，并按日期进行分区。 单个日期的所有数据将驻留在同一逻辑分区和物理分区中。 由于每天写入的所有数据的日期都相同，因此会导致每天都产生热分区。 
-    - 对于这种情况，使用 ID 等分区键（GUID 或设备 ID）或是组合 ID 和日期的[合成分区键](./synthetic-partition-keys.md)反而将生成更高的值基数，并更均匀地分布请求量。
-- 你有一个多租户方案，使用的容器按 tenantId 进行分区。 如果一个租户的活跃性明显高于其他租户，则会导致热分区。 举例来说，如果最大租户有 100,000 名用户，但大多数租户的用户数少于 10 人，则按 tenantID 分区时，将会产生热分区。 
-    - 对于上述方案，应考虑为最大租户创建专用容器，并按更精细的属性（如 UserId）进行分区。 
+- 你有一个用于存储 IoT 设备写入密集型工作负载数据的容器，并按 `date` 进行分区。 单个日期的所有数据将驻留在同一逻辑分区和物理分区中。 由于每天写入的所有数据的日期都相同，因此会导致每天都产生热分区。 
+    - 对于这种情况，使用 `id` 等分区键（GUID 或设备 ID）或是组合 `id` 和 `date` 的[合成分区键](./synthetic-partition-keys.md)反而将生成更高的值基数，并更均匀地分布请求量。
+- 你有一个多租户方案，使用的容器按 `tenantId` 进行分区。 如果一个租户的活跃性明显高于其他租户，则会导致热分区。 举例来说，如果最大租户有 100,000 名用户，但大多数租户的用户数少于 10 人，则按 `tenantID` 分区时，将会产生热分区。 
+    - 对于上述方案，应考虑为最大租户创建专用容器，并按更精细的属性（如 `UserId`）进行分区。 
     
 #### <a name="how-to-identify-the-hot-partition"></a>如何识别热分区
 
@@ -95,7 +95,7 @@ AzureDiagnostics
 查看有关[如何选择良好分区键](../partitioning-overview.md#choose-partitionkey)的指导。
 
 如果速率受限请求占比较高，并且不存在热分区：
-- 可以使用客户端 SDK、Azure 门户、PowerShell、CLI 或 ARM 模板来增加数据库或容器的 [RU/s](../set-throughput.md)。  
+- 可以使用客户端 SDK、Azure 门户、PowerShell、CLI 或 ARM 模板来增加数据库或容器的 [RU/s](../set-throughput.md)。 按照[缩放预配吞吐量（RU/秒）的最佳做法](../scaling-provisioned-throughput-best-practices.md)，确定要设置的正确 RU/秒。
 
 如果速率受限请求的百分比较高，并且存在相关热分区：
 -  从长期来看，为获得最佳成本效益和性能，应考虑更改分区键。 由于无法就地更新分区键，因此需要将相关数据迁移到具有不同分区键的新容器。 Azure Cosmos DB 支持使用[实时数据迁移工具](https://devblogs.microsoft.com/cosmosdb/how-to-change-your-partition-key/)来实现此目的。

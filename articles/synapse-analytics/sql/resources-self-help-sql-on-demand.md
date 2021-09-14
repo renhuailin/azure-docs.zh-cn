@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 05/15/2020
+ms.date: 8/31/2021
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c3ade548ae31f7f62014d8f41141374aaa73217a
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 906f6a7a8e64c255c8b87219ef0549a553821783
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252306"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536474"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>无服务器 SQL 池自助服务
 
@@ -81,7 +81,9 @@ ms.locfileid: "123252306"
 
 如果查询失败并出现错误消息“由于当前的资源约束，无法执行此查询”，则表示由于资源约束，无服务器 SQL 池此时无法执行该查询： 
 
-- 请确保使用大小合理的数据类型。 另外，请为字符串列指定 Parquet 文件的架构，因为它们在默认情况下将是 VARCHAR(8000)。 
+- 请确保使用大小合理的数据类型。  
+
+- 如果查询的目标是 Parquet 文件，请考虑为字符串列定义显式类型，因为它们将默认为 VARCHAR(8000)。 [查看推理数据类型](./best-practices-serverless-sql-pool.md#check-inferred-data-types)。
 
 - 如果你的查询针对 CSV 文件，请考虑[创建统计信息](develop-tables-statistics.md#statistics-in-serverless-sql-pool)。 
 
@@ -503,7 +505,7 @@ WITH ( FORMAT_TYPE = PARQUET)
 - 请确保在 [OPENROWSET](./develop-openrowset.md) 函数或外部表位置中引用 Delta Lake 根文件夹。
   - 根文件夹必须有一个名为 `_delta_log` 的子文件夹。 如果没有 `_delta_log` 文件夹，则查询将失败。 如果看不到该文件夹，表明你正在引用纯 Parquet 文件，必须使用 Apache Spark 池将其[转换为 Delta Lake](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#convert-parquet-to-delta)。
   - 不要指定用于描述分区架构的通配符。 Delta Lake 查询会自动标识 Delta Lake 分区。 
-- 在 Apache Spark 池中创建的 Delta Lake 表在无服务器 SQL 池中不会同步。 不能使用 T-SQL 语言来查询 Apache Spark 池 Delta Lake 表。
+- 在 Apache Spark 池中创建的 Delta Lake 表在无服务器 SQL 池中不会自动可用。 若要使用 T-SQL 语言查询此类 Delta Lake 表，请运行 [CREATE EXTERNAL TABLE](https://docs.microsoft.com/azure/synapse-analytics/sql/create-use-external-tables#delta-lake-external-table) 语句并指定 Delta 作为格式。
 - 外部表不支持分区。 使用 Delta Lake 文件夹的[分区视图](create-use-views.md#delta-lake-partitioned-views)来利用分区消除。 请参阅下面的已知问题和解决方法。
 - 无服务器 SQL 池不支持按时间顺序查看的查询。 你可以在 [Azure 反馈网站](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake)上对此功能进行投票。 使用 Azure Synapse Analytics 中的 Apache Spark 池[读取历史数据](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)。
 - 无服务器 SQL 池不支持更新 Delta Lake 文件。 可以使用无服务器 SQL 池来查询最新版本的 Delta Lake。 使用 Azure Synapse Analytics 中的 Apache Spark 池[更新 Delta Lake](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data)。

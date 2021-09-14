@@ -7,12 +7,12 @@ metadata:
   ms.service: data-catalog
   ms.topic: conceptual
   ms.date: 08/01/2019
-  ms.openlocfilehash: fae90eb2a1a05200a67a6e246710e4adfc5c564c
-  ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+  ms.openlocfilehash: fc39c9a8cdc447a9a38b75aa30de3990aaa8516d
+  ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/06/2021
-  ms.locfileid: "111907111"
+  ms.lasthandoff: 09/04/2021
+  ms.locfileid: "123479060"
 title: Azure 数据目录常见问题
 summary: >
   [!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
@@ -90,7 +90,7 @@ sections:
     answer: "在数据目录中注册数据：\n1. 在 Azure 数据目录门户的“发布”区域中，启动 Azure 数据目录注册工具。 \n2. 在数据目录数据源注册工具中，使用用于访问数据目录门户的同一凭据登录。\n3. 选择要注册的数据源和特定资产。\n"
   - question: >
       为已注册数据资产提取哪些属性？
-    answer: "具体属性因数据源而异，但一般而言，数据目录发布服务会提取以下信息：\n\n* 资产名称\n* 资产类型\n* 资产说明\n* 属性/列名称\n* 属性/列数据类型\n* 属性/列说明\n\n> [!IMPORTANT]\n> 使用数据目录注册数据资产不会将数据移动或复制到云。 从数据源注册资产会将资产的元数据复制到 Azure，但数据仍保留在现有的数据源位置。 如果选择在注册资产时上传预览记录或数据配置文件，则此规则不适用，这是此规则的例外情况。 上传预览时，将从每个资产复制多达 20 个记录并将其作为快照存储在数据目录中。 上传数据配置文件时，会计算聚合信息并将其包含到存储在目录中的元数据里。 聚合信息可能包括表的大小、每列空值的百分比或者列的最小值、最大列和平均值。 \n>\n>\n\n> [!NOTE]\n> 对于具有一流“说明”属性的数据源（例如 SQL Server Analysis Services），数据目录数据源注册工具提取该属性值。 对于“本地”缺少第一类“说明”属性的 SQL Server 关系型数据库，数据目录数据源注册工具提取对象和列的“ms_description”扩展属性中的值。 SQL Azure 不支持此属性。 有关详细信息，请参阅[对数据库对象使用扩展属性](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105))。\n>\n>\n"
+    answer: "具体属性因数据源而异，但一般而言，数据目录发布服务会提取以下信息：\n\n* 资产名称\n* 资产类型\n* 资产说明\n* 属性/列名称\n* 属性/列数据类型\n* 属性/列说明\n\n> [!IMPORTANT]\n> 使用数据目录注册数据资产不会将数据移动或复制到云。 从数据源注册资产会将资产的元数据复制到 Azure，但数据仍保留在现有的数据源位置。 如果选择在注册资产时上传预览记录或数据配置文件，则此规则不适用，这是此规则的例外情况。 上传预览时，将从每个资产复制多达 20 个记录并将其作为快照存储在数据目录中。 上传数据配置文件时，会计算聚合信息并将其包含到存储在目录中的元数据里。 聚合信息可能包括表的大小、每列空值的百分比或者列的最小值、最大列和平均值。 \n>\n>\n\n> [!NOTE]\n> 对于具有一流“说明”属性的数据源（例如 SQL Server Analysis Services），数据目录数据源注册工具提取该属性值。 对于缺少第一类“说明”属性的本地 SQL Server 关系数据库，“数据目录”数据源注册工具会提取对象和列的“MS_Description”扩展属性中的值。 SQL Azure 不支持此属性。 有关详细信息，请参阅[对数据库对象使用扩展属性](/previous-versions/sql/sql-server-2008-r2/ms190243(v=sql.105))。\n>\n>\n"
   - question: >
       新注册的资产需要多久才能在目录中显示？
     answer: >
