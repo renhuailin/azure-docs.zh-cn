@@ -1,19 +1,17 @@
 ---
 title: Azure Maps Web SDK 最佳做法 | Microsoft Azure Maps
 description: 了解优化使用 Azure Maps Web SDK 的提示和技巧。
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 3/22/2021
 ms.topic: conceptual
 ms.service: azure-maps
-services: azure-maps
-manager: cpendle
-ms.openlocfilehash: 630b354768e3ad0882911f11a99cca06fc87154e
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 3bcf3125e09ee2023e36b3eefc5d34d4a1215c4e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112234422"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439355"
 ---
 # <a name="azure-maps-web-sdk-best-practices"></a>Azure Maps Web SDK 最佳做法
 
@@ -37,7 +35,7 @@ Azure Maps Web SDK 提供了一个功能强大的画布，用于以多种不同�
 
 ### <a name="secure-your-private-data"></a>保护专用数据
 
-将数据添加到 Azure Maps 交互式地图 SDK 时，它将在最终用户的设备上本地呈现，并且不会出于任何原因回发到 internet。
+将数据添加到 Azure Maps 交互式地图 SDK 时，它将在最终用户的设备上本地呈现，并且不会出于任何原因回发到 Internet。
 
 如果你应用程序正在加载不应公开访问的数据，请确保将数据存储在安全的位置，以安全的方式访问，并且该应用程序本身已锁定并仅供你想要的用户使用。 如果跳过这些步骤中的任何一个，则未经授权的人员可能会访问此数据。 Azure Active Directory 可以帮助锁定此问题。
 
@@ -57,7 +55,7 @@ Azure Maps SDK 会进行常规安全测试，以及检查 SDK 可能使用的任
 
 ## <a name="optimize-initial-map-load"></a>优化初始地图加载
 
-在加载网页时，想要做的第一件事就是尽快开始呈现一些内容，以便用户不会盯着一个空白屏幕。
+在加载网页时，你想要做的第一件事就是尽快开始呈现一些内容，以便用户不会盯着一个空白屏幕。
 
 ### <a name="watch-the-maps-ready-event"></a>观看地图就绪事件
 
@@ -65,12 +63,12 @@ Azure Maps SDK 会进行常规安全测试，以及检查 SDK 可能使用的任
 
 ### <a name="lazy-load-the-azure-maps-web-sdk"></a>延迟加载 Azure Maps Web SDK
 
-如果不立即需要地图，可以延迟到需要时加载 Azure Maps Web SDK。 这会延迟到需要时加载 Azure Maps Web SDK 使用的 JavaScript 和 CSS 文件。 发生这种情况的常见情形是，在页面加载时未显示的选项卡或浮出控件面板中加载地图。
+如果不是立即需要地图，可以延迟到需要时加载 Azure Maps Web SDK。 这会延迟到需要时加载 Azure Maps Web SDK 使用的 JavaScript 和 CSS 文件。 发生这种情况的常见情形是，在页面加载时未显示的选项卡或浮出控件面板中加载地图。
 下面的代码示例演示如何延迟到按钮按下之时加载 Azure Maps Web SDK。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="延迟加载地图" src="https://codepen.io/azuremaps/embed/vYEeyOv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="延迟加载地图" src="https://codepen.io/azuremaps/embed/vYEeyOv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 的 <a href='https://codepen.io/azuremaps/pen/vYEeyOv'>延迟加载地图</a> Pen。
 </iframe>
 
@@ -112,7 +110,7 @@ Web SDK 有两个数据源，
 
 * 数据源 `add` 函数可用于向数据源添加一个或多个功能。 每次调用此函数，它都会触发地图画布刷新。 如果添加许多功能，请将它们合并成数组或功能集合并一次性传递到此函数中，而不是循环访问数据集并针对每个功能调用此函数。
 * 数据源 `setShapes` 函数可用于覆盖数据源中的所有形状。 这种情况下，它将数据源 `clear` 和 `add` 函数合并在一起，并执行单次地图画布刷新而不是两次，这将快得多。 如果要更新一个数据源中的所有数据，请务必使用此函数。
-* 数据源 `importDataFromUrl` 函数可用于通过 URL 将 GeoJSON 文件加载到数据源中。 下载数据后，数据会传递到数据源 `add` 函数中。 如果 GeoJSON 文件托管在不同的域中，请确保其他域支持跨域请求 (CORs)。 如果不支持，请考虑将数据复制到域中的本地文件或创建启用了 CORs 的代理服务。 如果文件较大，请考虑将其转换为矢量磁贴源。
+* 数据源 `importDataFromUrl` 函数可用于通过 URL 将 GeoJSON 文件加载到数据源中。 下载数据后，数据会传递到数据源 `add` 函数中。 如果 GeoJSON 文件托管在不同的域中，请确保其他域支持跨域请求 (CORs)。 如果不支持，请考虑将数据复制到域中的本地文件，或创建一个启用了 CORs 的代理服务。 如果文件较大，请考虑将其转换为矢量磁贴源。
 * 如果功能与 `Shape` 类包装在一起，则该形状的 `addProperty`、`setCoordinates` 和 `setProperties` 函数都将触发数据源中的更新和地图画布刷新。 数据源 `getShapes` 和 `getShapeById` 函数返回的所有功能都自动与 `Shape` 类包装在一起。 如果要更新多个形状，使用数据源 `toJson` 函数将它们转换为 JSON 更快，编辑 GeoJSON，然后将此数据传递到数据源 `setShapes` 函数中。
 
 ### <a name="avoid-calling-the-data-sources-clear-function-unnecessarily"></a>避免不必要地调用数据源清除函数
@@ -180,7 +178,7 @@ Azure Maps Web SDK 确定是数据驱动的。 数据进入数据源，随后连
 
 <br/>
 
-<iframe height='500' scrolling='no' title='重复使用具有多个固定项的弹出窗口' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 的<a href='https://codepen.io/azuremaps/pen/rQbjvK/'>重复使用具有多个固定项的弹出窗口</a> Pen。
+<iframe height='500' scrolling='no' title='重复使用具有多个固定项的弹出窗口' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true'>请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 的<a href='https://codepen.io/azuremaps/pen/rQbjvK/'>重复使用具有多个固定项的弹出窗口</a> Pen。
 </iframe>
 
 也就是说，如果地图上只有几个点要呈现，则 HTML 标记的简单性可能是首选的。 此外，如果需要，可以很容易将 HTML 标记变为可拖动。
@@ -225,7 +223,7 @@ var layer = new atlas.layer.BubbleLayer(source, null, {
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="符号层动画" src="https://codepen.io/azuremaps/embed/oNgGzRd?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" scrolling="no" title="符号层动画" src="https://codepen.io/azuremaps/embed/oNgGzRd?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 的<a href='https://codepen.io/azuremaps/pen/oNgGzRd'>符号层动画</a> Pen。
 </iframe>
 
@@ -234,7 +232,7 @@ var layer = new atlas.layer.BubbleLayer(source, null, {
 如果数据满足以下条件之一，请确保指定层的最小和最大缩放级别，以便呈现引擎在缩放级别范围之外时可以跳过它。
 
 * 如果数据来自矢量磁贴源，通常只能通过一系列缩放级别使用不同数据类型的源层。
-* 如果使用的磁贴层没有用于从 0 到 24 的所有缩放级别的磁贴，并且想要它仅在有磁贴的级别上呈现，则请勿尝试使用其他缩放级别中的磁贴来填充缺少的磁贴。
+* 如果使用的磁贴层没有用于从 0 到 24 的所有缩放级别的磁贴，并且你想要它仅在有磁贴的级别上呈现，请勿尝试使用其他缩放级别中的磁贴来填充缺少的磁贴。
 * 如果只希望在特定缩放级别呈现层。
 所有层都有 `minZoom` and `maxZoom` 选项，在这些缩放级别之间，将基于此逻辑 ` maxZoom > zoom >= minZoom` 呈现层。
 
@@ -265,7 +263,7 @@ var tileLayer = new atlas.layer.TileLayer({
 
 ### <a name="use-a-blank-map-style-when-base-map-not-visible"></a>当基本地图不可见时使用空白地图样式
 
-如果层在将完全覆盖基本地图的地图上被覆盖，请考虑将地图样式设置为 `blank` 或 `blank_accessible` 以便不呈现基本地图。 执行此操作的常见情形是：覆盖整个地球的磁贴在基本地图之上没有不透明或透明区域。
+如果层在将完全覆盖基本地图的地图上被覆盖，请考虑将地图样式设置为 `blank` 或 `blank_accessible`，以便不呈现基本地图。 执行此操作的常见情形是：覆盖整个地球的磁贴在基本地图之上没有不透明或透明区域。
 
 ### <a name="smoothly-animate-image-or-tile-layers"></a>对图像或磁贴层进行平滑的动画处理
 
@@ -353,13 +351,13 @@ var layer = new atlas.layer.BubbleLayer(source, null, {
 
 下面是对使用 Azure Maps Web SDK 开发时遇到的部分常见问题进行调试的一些提示。
 
-**为什么加载 web 控件时地图不显示？**
+**为什么加载 Web 控件时地图不显示？**
 
 请执行以下操作：
 
 * 确保已将所添加的身份验证选项添加到地图。 如果未添加，则将以空白画布加载地图，因为不进行身份验证就不能访问基本地图数据，并且401 错误将出现在浏览器的开发人员工具的网络选项卡中。
 * 确保有 Internet 连接。
-* 检查浏览器的开发人员工具的控制台，寻找错误。 某些错误可能导致地图不呈现。 调试应用程序。
+* 检查浏览器的开发人员工具的控制台是否有错误。 某些错误可能导致地图不呈现。 调试应用程序。
 * 确保使用的是[支持的浏览器](supported-browsers.md)。
 
 **我的所有数据都显示在世界的另一侧，怎么回事？**
@@ -375,14 +373,14 @@ Azure Maps SDK 中的坐标也称为位置，与地理空间行业标准格式 `
 
 **为什么符号层中的图标或文本出现在错误的位置？**
 检查 `anchor` 和 `offset` 选项是否已正确配置，以使其与你希望与地图上的坐标对齐的图像或文本的部分对齐。
-如果符号仅在地图旋转时离开位置，请检查 `rotationAlignment` 选项。 默认情况下，我们将以地图视区旋转符号，使其对用户竖直显示。 但是，根据具体情况，可能需要将符号与地图的方向锁定。 将 `rotationAlignment` 选项设置为 `’map’` 可执行此操作。
-如果符号仅在地图俯仰/倾斜时离开位置，请检查 `pitchAlignment` 选项。 默认情况下，当地图俯仰或倾斜时，符号将与地图视区保持竖直。 但是，根据具体情况，可能需要将符号与地图的俯仰方向锁定。 将 `pitchAlignment` 选项设置为 `’map’` 可执行此操作。
+如果符号仅在地图旋转时离开位置，请检查 `rotationAlignment` 选项。 默认情况下，我们将以地图视区旋转符号，使其对用户竖直显示。 但是，根据具体情况，可能需要将符号与地图的方向锁定。 将 `rotationAlignment` 选项设置为 `'map'` 可执行此操作。
+如果符号仅在地图俯仰/倾斜时离开位置，请检查 `pitchAlignment` 选项。 默认情况下，当地图俯仰或倾斜时，符号将与地图视区保持竖直。 但是，根据具体情况，可能需要将符号与地图的俯仰方向锁定。 将 `pitchAlignment` 选项设置为 `'map'` 可执行此操作。
 
-**为什么地图上没有显示任何我的数据？**
+**为什么地图上没有显示我的任何数据？**
 
 要检查的事项：
 
-* 检查浏览器的开发人员工具中的控制台，寻找错误。
+* 检查浏览器的开发人员工具中的控制台是否有错误。
 * 确保数据源已创建并添加到地图，并确保数据源已连接到也添加到地图的呈现层。
 * 在代码中添加断点并逐步执行，以确保数据添加到数据源，数据源和层添加到地图，且不发生任何错误。
 * 尝试从呈现层中删除数据驱动的表达式。 可能其中一项存在导致了此问题的错误。

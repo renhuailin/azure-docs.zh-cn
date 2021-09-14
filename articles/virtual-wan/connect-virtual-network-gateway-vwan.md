@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 09/01/2021
 ms.author: cherylmc
-ms.openlocfilehash: 6d8420f0138dc26e2f265ac7c4f48e646a6bfe69
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 51b254c42f06c3ae6a0609a05e6f36056106139b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165112"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432029"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>将 VPN 网关（虚拟网络网关）连接到虚拟 WAN
 
@@ -45,7 +45,7 @@ Azure 虚拟网络
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP 设置
 
-在虚拟网络网关“配置”页上，可以配置“BGP ASN” 。 更改 BGP ASN。 BGP ASN 不能是 65515。 65515 将由 Azure 虚拟 WAN 使用。
+在虚拟网络网关的“配置”页面上，可以选择“配置 BGP ASN”（可选）。 如果配置 BGP，请更改门户中显示的默认值的 ASN。 对于此配置，BGP ASN 不能为 65515。 65515 将由 Azure 虚拟 WAN 使用。
 
 ![屏幕截图显示了虚拟网络网关的“配置”页，其中已选择“配置 BGP ASN”。](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 
@@ -95,6 +95,7 @@ Azure 虚拟网络
 
    * **IP 地址** - 使用配置文件中为 *gatewayconfiguration* 显示的 Instance0 IP 地址。
    * **BGP** - 如果通过 BGP 建立连接，请选择“配置 BGP 设置”并输入 ASN“65515”。 输入 BGP 对等 IP 地址。 使用配置文件中 *gatewayconfiguration* 的“Instance0 BgpPeeringAddresses”。
+   * 地址空间 - 如果不是通过 BGP 连接的，请确保“配置 BGP 设置”保持未选中状态。  输入要从虚拟网络网关端播发的地址空间。 可以添加多个地址空间范围。 请确保此处所指定的范围没有与要连接到的其他网络的范围相重叠。 
    * “订阅”、“资源组”和“位置”与虚拟 WAN 中心相同。
 2. 检查设置，然后创建本地网络网关。 本地网络网关应类似于以下示例。
 

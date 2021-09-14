@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 83e6cfa8589e7ba2df4d6d8452496cf7680cf5c6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 391541569f237b98c46f001b511c86c17f00e058
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676277"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123468125"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>将自定义域映射到 Azure Blob 存储终结点
 
@@ -413,6 +413,19 @@ az storage account update \
    * [HTTP 到 HTTPS 重定向 - Azure CDN](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)。
 
    * [使用 Blob 存储时的定价和计费 - Azure CDN](../../cdn/cdn-storage-custom-domain-https.md#pricing-and-billing)。
+
+## <a name="feature-support"></a>功能支持
+
+此表显示了你的帐户如何支持此功能，以及当你启用某些功能时对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png)  <sup>2</sup> | ![是](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png)  <sup>2</sup> | ![是](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
+
+<sup>2</sup>    功能在预览级别受支持。
 
 ## <a name="next-steps"></a>后续步骤
 

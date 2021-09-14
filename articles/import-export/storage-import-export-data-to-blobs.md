@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/02/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 39eb6c164751ebdfa293798850a8d663fe988b82
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 51e70fb16988c0f72cb9b1a35444f55e164839c9
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875676"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451774"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
 
@@ -73,7 +73,7 @@ ms.locfileid: "107875676"
     ```powershell
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
-
+    
     在运行该工具的同一文件夹中会创建一个日志文件。 还会创建两个其他文件 - 一个 *.xml* 文件（您在其中运行工具的文件夹）和一个 *drive-manifest.xml* 文件（数据所在的文件夹）。
 
     下表介绍了所使用的参数：
@@ -89,11 +89,16 @@ ms.locfileid: "107875676"
     |/blobtype:     |此选项指定要将数据导入到的 Blob 的类型。 对于块 Blob，Blob 类型为 `BlockBlob`；对于页 Blob，该项为 `PageBlob`。         |
     |/skipwrite:     | 此选项指定不需要复制任何新数据，但要准备磁盘上的现有数据。          |
     |/enablecontentmd5:     |启用此选项时，将确保计算 MD5 并将其设置为每个 blob 上的 `Content-md5` 属性。 仅当希望在将数据上传到 Azure 后使用 `Content-md5` 字段时，才使用此选项。 <br> 此选项不影响数据完整性检查（默认情况下会进行）。 此设置确实会增加将数据上传到云所需的时间。          |
-8. 为需要寄送的每个磁盘重复前面的步骤。 每次运行该命令行时，都会使用所提供的名称创建一个日志文件。
 
-    > [!IMPORTANT]
-    > * 与日志文件一起，还会在工具所在的同一文件夹中创建一个 `<Journal file name>_DriveInfo_<Drive serial ID>.xml` 文件。 如果日志文件过大，在创建作业时会使用该 .xml 文件来代替日志文件。
-   > * 门户允许的日志文件的最大大小为 2 MB。 如果日志文件超出该限制，就会返回错误。
+8. 为需要寄送的每个磁盘重复前面的步骤。 
+
+   每次运行该命令行时，都会使用所提供的名称创建一个日志文件。 
+
+   与日志文件一起，还会在工具所在的同一文件夹中创建一个 `<Journal file name>_DriveInfo_<Drive serial ID>.xml` 文件。 如果日志文件过大，在创建作业时会使用该 .xml 文件来代替日志文件。
+
+> [!IMPORTANT]
+> * 完成磁盘准备后，请勿修改日志文件或磁盘驱动器上的数据，也不要重新格式化任何磁盘。
+> * 门户允许的日志文件的最大大小为 2 MB。 如果日志文件超出该限制，就会返回错误。
 
 ## <a name="step-2-create-an-import-job"></a>步骤 2：创建导入作业
 

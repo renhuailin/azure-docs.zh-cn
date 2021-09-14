@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/25/2021
-ms.openlocfilehash: fd7601ca87400314b9f282a0fe31035755def056
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 3c2e900090b3f3908318bfbc3f1ea1e6f2588dee
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033143"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431271"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 中的预配吞吐量简介
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -123,6 +123,8 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 如果你 **增大预配吞吐量**，则在大多数情况下，操作是即时的。 但是在某些情况下，由于系统任务的原因，该操作可能需要较长的时间来预配所需的资源。 在这种情况下，如果尝试在此操作正在进行时修改预配的吞吐量，则会生成一个 HTTP 423 响应，并会出现一条错误消息，指出另一个缩放操作正在进行。
 
+在[缩放预配吞吐量的最佳做法（RU/秒）](scaling-provisioned-throughput-best-practices.md)文章中了解详细信息。
+
 > [!NOTE]
 > 如果你正在规划非常大的引入工作负荷，并且该工作负荷需要大大增加预配的吞吐量，则请记住：缩放操作没有 SLA，当增加量很大时可能需要很长时间，如上一段所述。 你可能需要提前规划并在工作负荷启动之前开始缩放，同时使用以下方法来检查进度。
 
@@ -160,6 +162,6 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 * 了解如何[对 Azure Cosmos 容器预配标准（手动）吞吐量](how-to-provision-container-throughput.md)。
 * 了解[如何对 Azure Cosmos 数据库预配标准（手动）吞吐量](how-to-provision-database-throughput.md)。
 * 了解[如何对 Azure Cosmos 数据库或容器预配自动缩放吞吐量](how-to-provision-autoscale-throughput.md)。
-* 尝试为迁移到 Azure Cosmos DB 进行容量计划？ 可以使用有关现有数据库群集的信息进行容量规划。
-    * 如果你只知道现有数据库群集中的 vCore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
-    * 如果知道当前数据库工作负荷的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)
+* 尝试为迁移到 Azure Cosmos DB 进行容量规划？ 可以使用有关现有数据库群集的信息进行容量规划。
+    * 若只知道现有数据库群集中的 vcore 和服务器数量，请阅读[使用 vCore 或 vCPU 估算请求单位](convert-vcore-to-request-unit.md) 
+    * 若知道当前数据库工作负载的典型请求速率，请阅读[使用 Azure Cosmos DB 容量计划工具估算请求单位](estimate-ru-with-capacity-planner.md)

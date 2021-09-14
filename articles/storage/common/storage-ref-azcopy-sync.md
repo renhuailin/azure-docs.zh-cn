@@ -4,16 +4,16 @@ description: 本文提供有关 azcopy sync 命令的参考信息。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c08d0f561e743b33720258ce5d6886411f3859f0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0d549190558f54137a410808967abc206ed43ad1
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114462516"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433361"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -135,13 +135,21 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--check-md5** 字符串 - 指定下载时验证 MD5 哈希的严格程度。 此选项仅在下载时可用。 可用的值包括 `NoCheck`、`LogOnly`、`FailIfDifferent`、`FailIfDifferentOrMissing`。 （默认值为 `FailIfDifferent`）。 （默认值为 `FailIfDifferent`）
 
+--cpk by-name 字符串          客户端按名称提供的密钥使客户端可以向 Azure Blob 存储发出请求，以便按每个请求提供加密密钥。 提供的密钥名称将从 Azure 密钥保管库提取，并用于对数据进行加密
+
+--cpk-by-value          客户端按名称提供的密钥使客户端可以向 Azure Blob 存储发出请求，以便按每个请求提供加密密钥。 提供的密钥及其哈希将从环境变量中提取
+
 **--delete-destination** 字符串   定义是否从目标中删除不在源中的多余文件。 可设置为 `true`、`false` 或 `prompt`。 如果设置为 `prompt`，则在计划要删除的文件和 Blob 之前，系统会向用户提问。 （默认值为 `false`）。 （默认值为 `false`）
+
+--dry-run                     打印 sync 命令复制或删除的文件的路径。 此标志不会复制或删除实际文件。
 
 **--exclude-attributes** 字符串 -（仅限 Windows）排除其属性与属性列表相匹配的文件。 例如：`A;S;R`
 
 **--exclude-path** 字符串 - 将源与目标进行比较时，排除这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀（例如：`myFolder;myFolder/subDirName/file.pdf`）。
 
 **--exclude-pattern** 字符串   排除名称与模式列表相匹配的文件。 例如：`*.jpg;*.pdf;exactName`
+
+--exclude-regex 字符串        排除与正则表达式匹配的文件的相对路径。 使用“;”分隔正则表达式。
 
 **--help** - 关于同步的帮助。
 
@@ -151,17 +159,19 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--log-level** 字符串 - 定义日志文件的日志详细程度，可用级别：`INFO`（所有请求和响应）、`WARNING`（缓慢响的应）、`ERROR`（仅限失败的请求）和 `NONE`（无输出日志）。 （默认值为 `INFO`）。 
 
---镜像模式 - 如果此标志设置为 `true`，则禁用上次修改时间比较，并覆盖目标上的冲突文件和 blob。 默认值为 `false`。
+--mirror-mode          如果此标志设置为 `true`，则禁用基于上次修改时间的比较，并且覆盖目标处有冲突的文件和 blob。 默认值为 `false`。
 
-**--preserve-smb-info** - 默认值为 False。 保留 SMB 感知资源（Windows 和 Azure 文件存储）之间的 SMB 属性信息（上次写入时间、创建时间、属性位）。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如包含模式）。 为文件夹传输的信息与为文件传输的信息几乎相同，只是“上次写入时间”除外，不会为文件夹保留该信息。
+--preserve-smb-info   默认为 True。 保留 SMB 感知资源（Windows 和 Azure 文件存储）之间的 SMB 属性信息（上次写入时间、创建时间、属性位）。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如包含模式）。 为文件夹传输的信息与为文件传输的信息几乎相同，只是“上次写入时间”除外，不会为文件夹保留该信息。
 
-**--preserve-smb-permissions** - 默认值为 False。 保留感知资源（Windows 和 Azure 文件存储）之间的 SMB ACl。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如 `include-pattern`）。
+--preserve-permissions        默认为 False。 在感知资源（Windows 和 Azure 文件存储，或 Data Lake Storage Gen 2 到 Data Lake Storage Gen 2）之间保留 ACL。 对于具有分层命名空间的帐户，需要一个拥有“修改所有权”和“修改权限”权限的容器 SAS 或 OAuth 令牌。 对于下载操作，还需要使用 --backup 标志来还原权限，其中新所有者将不是运行 AzCopy 的用户。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如，包含模式）。
 
 **--put-md5** - 创建每个文件的 MD5 哈希，并将该哈希另存为目标 Blob 或文件的 Content-MD5 属性。 （默认不会创建哈希。）仅在上传时可用。
 
 **--recursive** - 默认值为 `True`，即，在目录之间同步时，将以递归方式查看子目录。 （默认值为 `True`）。 
 
 **--s2s-preserve-access-tier** - 在服务之间复制过程中保留访问层。 请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier=false 来绕过访问层的复制。 （默认值为 `true`）。 
+
+--s2s-preserve-blob-tags      在 blob 存储之间进行服务到服务同步过程中保留索引标记。
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项
 

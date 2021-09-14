@@ -2,13 +2,13 @@
 title: Bicep 中的输出
 description: 介绍如何在 Bicep 中定义输出
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 1468f1a8a42f51dec1d195d39fe9096746c8193f
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 09/02/2021
+ms.openlocfilehash: 4cdf21eddcf14f5563c0c638f962585ad021e8ed
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635137"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428751"
 ---
 # <a name="outputs-in-bicep"></a>Bicep 中的输出
 
@@ -18,9 +18,7 @@ ms.locfileid: "122635137"
 
 ## <a name="define-output-values"></a>定义输出值
 
-下面的示例演示如何使用 `output` 关键字从已部署的资源返回属性。
-
-在下例中，`publicIP` 是在 Bicep 文件中部署的公共 IP 地址的标识符（符号名称）。 输出值获取公共 IP 地址的完全限定的域名。
+下面的示例演示如何使用 `output` 关键字从已部署的资源返回属性。 在示例中，`publicIP` 是在 Bicep 文件中部署的公共 IP 地址的标识符（符号名称）。 输出值获取公共 IP 地址的完全限定的域名。
 
 ```bicep
 output hostname string = publicIP.properties.dnsSettings.fqdn
@@ -35,6 +33,11 @@ var user = {
 
 output stringOutput string = user['user-name']
 ```
+
+下一个示例演示如何返回不同类型的输出。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/outputs/output.bicep":::
+
 
 ## <a name="conditional-output"></a>条件输出
 
@@ -105,14 +108,6 @@ publicIPAddress: {
   id: publicIP.outputs.resourceID
 }
 ```
-
-## <a name="example-template"></a>示例模板
-
-以下模板不部署任何资源。 它显示了返回不同类型的输出的一些方式。
-
-Bicep 当前不支持循环。
-
-:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/output.bicep":::
 
 ## <a name="get-output-values"></a>获取输出值
 

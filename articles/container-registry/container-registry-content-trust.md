@@ -2,14 +2,14 @@
 title: 管理已签名的映像
 description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取已签名的映像。 内容信任会实现 Docker 内容信任，是高级服务层的一项功能。
 ms.topic: how-to
-ms.date: 06/25/2021
+ms.date: 07/26/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: ddaded0ff733ea717a48bfe2bcaac4a84e102ad8
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: e6f4eb302d2ac5f6fc711e438a48a064efef0d27
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983610"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450946"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 
@@ -76,6 +76,9 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 > 不能将受信任映像推送权限授予以下管理帐户： 
 > * Azure 容器注册表的[管理员帐户](container-registry-authentication.md#admin-account)
 > * Azure Active Directory 中具有[经典系统管理员角色](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)的用户帐户。
+
+> [!NOTE]
+> 从 2021 年 7 月开始，`AcrImageSigner` 角色包括 `Microsoft.ContainerRegistry/registries/sign/write` 操作和 `Microsoft.ContainerRegistry/registries/trustedCollections/write` 数据操作。
 
 下面是在 Azure 门户和 Azure CLI 中授予 `AcrImageSigner` 角色的详细信息。
 

@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0b76f98da4823341d5ec0f32c1d8f65a1c37fade
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a1144cd0ccfe6857b88a29ea0f577d760f3addc6
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739885"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431621"
 ---
 # <a name="scale-an-azure-cache-for-redis-instance"></a>缩放 Azure Cache for Redis 实例
 
@@ -25,10 +25,10 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 可以监视以下指标以帮助确定是否需要进行缩放。
 
 - Redis 服务器负载
-  - Redis 服务器是单线程进程。 高 Redis 服务器负载意味着此服务器无法应对来自所有客户端连接的请求。 在这种情况下，它有助于启用群集或增加分片计数，使系统开销功能分布在多个 Redis 进程中。 群集和更大的分片计数分配 TLS 加密和解密，并分发 TLS 连接和断开连接。
-  - 有关更多信息，请参阅[设置群集](cache-how-to-premium-clustering.md#set-up-clustering)。
+  - Redis 服务器是单线程进程。 高 Redis 服务器负载意味着该服务器无法应对来自所有客户端连接的请求。 在这种情况下，它有助于启用聚类分析或增加分片计数，以便将开销函数分布在多个 Redis 进程中。 聚类分析和更大的分片计数分发 TLS 加密和解密，并分发 TLS 连接和断开连接。
+  - 有关详细信息，请参阅[设置聚类分析](cache-how-to-premium-clustering.md#set-up-clustering)。
 - 内存用量
-  - 内存使用率较高则表明数据大小对于当前缓存大小来说太大。 请考虑缩放到具有更大内存的缓存大小。
+  - 高内存用量指示数据大小对于当前的缓存大小来说太大。 请考虑缩放到具有更大内存的缓存大小。
 - 客户端连接
   - 每个缓存大小都有其所能支持的客户端连接数的限制。 如果客户端连接接近缓存大小的限制，请考虑纵向扩展到更大的层，或进行横向扩展以启用聚类分析并增加分片计数。 你的选择取决于 Redis 服务器负载和内存用量。
   - 若要详细了解缓存大小的连接限制，请参阅 [Azure Cache for Redis 规划常见问题解答](./cache-planning-faq.yml)。
@@ -38,17 +38,17 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
 如果你确定缓存不再满足应用程序的要求，可针对应用程序缩放到适当的缓存定价层。 可选择一个更大或更小的缓存来满足你的需求。
 
-有关确定要使用的缓存定价层的详细信息，请参阅[选择正确的层](cache-overview.md#choosing-the-right-tier)以及 [Azure Cache for Redis 规划常见问题解答](./cache-planning-faq.yml)。
+若要详细了解如何确定要使用的缓存定价层，请参阅[选择正确的层](cache-overview.md#choosing-the-right-tier)和 [Azure Cache for Redis 规划常见问题解答](./cache-planning-faq.yml)。
 
 ## <a name="scale-a-cache"></a>缩放缓存
 
-若要缩放缓存，请在 [Azure 门户](https://portal.azure.com)中[浏览到该缓存](cache-configure.md#configure-azure-cache-for-redis-settings)，然后在“资源”菜单中选择“缩放” 。
+要缩放缓存，请在 [Azure 门户](https://portal.azure.com)中[找到“缓存”](cache-configure.md#configure-azure-cache-for-redis-settings)，并选择左侧的“缩放”。
 
-![缩放](./media/cache-how-to-scale/redis-cache-scale-menu.png)
+:::image type="content" source="media/cache-how-to-scale/scale-a-cache.png" alt-text="资源菜单中的缩放":::
 
-在左侧，从“选择定价层”中选择所需的定价层，然后选择“选择” 。
+选择右侧的定价层，然后选择选择“选择”。
 
-:::image type="content" source="media/cache-how-to-scale/redis-cache-pricing-tier-blade.png" alt-text="redis 缓存定价层屏幕截图":::
+:::image type="content" source="media/cache-how-to-scale/select-a-tier.png" alt-text="Azure Cache for Redis 层":::
 
 可以扩展到不同定价层，但有以下限制：
 
@@ -59,9 +59,9 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 - 不能从 **基本** 缓存直接缩放到 **高级** 缓存。 首先在一个缩放操作中从“基本”缩放到“标准”，然后在后续的缩放操作中从“标准”缩放到“高级”   。
 - 不能从较大的大小减小为 **C0 (250 MB)** 。 但是，可以纵向缩减为同一定价层中的任何其他大小。 例如，可以从“C5 标准”纵向缩减为“C1 标准”。
 
-缓存正在缩放到新的定价层时，“Azure Cache for Redis”的左侧会显示“正在缩放”状态 。
+当缓存缩放到新层级时，会显示“缩放 Redis 缓存”通知。
 
-:::image type="content" source="media/cache-how-to-scale/redis-cache-scaling.png" alt-text="redis 缓存缩放":::
+:::image type="content" source="media/cache-how-to-scale/scaling-notification.png" alt-text="缩放通知":::
 
 缩放完成后，状态将从 **正在缩放** 更改为 **正在运行**。
 
@@ -157,7 +157,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
 - 将基本缓存缩放为新的大小时，所有数据都会丢失，且在缩放操作期间缓存将不可用。
 - 将基本缓存缩放为标准缓存时，通常将保留缓存中的数据 。
-- 将标准缓存扩展为更大的大小或更大的层，或者将高级缓存扩展为更大的大小时，通常将保留所有数据 。 将标准缓存或高级缓存缩放为更小的大小时，如果数据大小在纵向缩减时超出了新的较小大小，数据可能会丢失。 如果缩小时数据丢失，则使用 [allkeys lru](https://redis.io/topics/lru-cache) 逐出策略逐出密钥。
+- 将标准缓存扩展为更大的大小或更大的层，或者将高级缓存扩展为更大的大小时，通常将保留所有数据 。 将标准缓存或高级缓存缩放为更小的大小时，如果数据大小在缩减时超出了新的较小大小，数据可能会丢失。 如果缩小时数据丢失，则使用 [allkeys lru](https://redis.io/topics/lru-cache) 逐出策略逐出密钥。
 
 ### <a name="is-my-custom-databases-setting-affected-during-scaling"></a>在缩放过程中，自定义数据库设置是否会受影响？
 
@@ -204,9 +204,3 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>如何判断缩放何时完成？
 
 在 Azure 门户中可以看到进行中的缩放操作。 缩放完成后，缓存状态将更改为 **正在运行**。
-
-<!-- IMAGES -->
-
-[redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
-
-[redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png

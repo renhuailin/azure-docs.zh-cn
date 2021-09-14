@@ -1,14 +1,14 @@
 ---
 title: Batch 安全性和符合性最佳做法
 description: 了解使用 Azure Batch 解决方案增强安全性的最佳做法和有用技巧。
-ms.date: 12/18/2020
+ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6ec4a1d89ebaa9318986fc0d51e832652ba51683
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9bfbeb7a89e3ca1bc71001b173926302548a988
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98723806"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435539"
 ---
 # <a name="batch-security-and-compliance-best-practices"></a>Batch 安全性和符合性最佳做法
 
@@ -32,13 +32,13 @@ ms.locfileid: "98723806"
 
 Batch 帐户访问支持两种身份验证方法：共享密钥和 [Azure Active Directory (Azure AD)](batch-aad-auth.md)。
 
-强烈建议使用 Azure AD 进行 Batch 帐户身份验证。 有些 Batch 功能（包括本文所述的许多安全相关的功能）需要此身份验证方法。
+强烈建议使用 Azure AD 进行 Batch 帐户身份验证。 有些 Batch 功能（包括本文所述的许多安全相关的功能）需要此身份验证方法。 可以使用 [allowedAuthenticationModes](/rest/api/batchmanagement/batch-account/create) 属性将 Batch 帐户的服务 API 身份验证机制限制为 Azure AD。 设置此属性时，将拒绝使用共享密钥身份验证的 API 调用。
 
 ### <a name="batch-account-pool-allocation-mode"></a>Batch 帐户池分配模式
 
 在创建 Batch 帐户时，可以在两种[池分配模式](accounts.md#batch-accounts)间进行选择：
 
-- Batch 服务：默认选项，在内部订阅中创建用于分配和管理池节点的基础云服务或虚拟机规模集资源，并且这些资源不会在 Azure 门户中直接显示。 只有 Batch 池和节点是可见的。 
+- Batch 服务：默认选项，在内部订阅中创建用于分配和管理池节点的基础云服务或虚拟机规模集资源，并且这些资源不会在 Azure 门户中直接显示。 只有 Batch 池和节点是可见的。
 - 用户订阅：在与 Batch 帐户相同的订阅中创建基础云服务或虚拟机规模集资源。 因此，除了相应的 Batch 资源外，在订阅中也可以看到这些资源。
 
 如果使用用户订阅模式，在创建池时，会直接在订阅中创建 Batch VM 和其他资源。 如果需要使用 Azure 虚拟机预留实例来创建 Batch 池，需要在虚拟机规模集资源上使用 Azure Policy，并且/或者需要管理订阅上的核心配额（在订阅中所有 Batch 帐户间共享），则需要使用用户订阅模式。 若要在用户订阅模式下创建 Batch 帐户，还需将订阅注册到 Azure Batch 中，并将该帐户与 Azure Key Vault 相关联。
@@ -143,13 +143,13 @@ Batch API 中指定的有些信息（例如，帐户证书、作业和任务元�
 
 ## <a name="securely-access-services-from-compute-nodes"></a>从计算节点安全地访问服务
 
-Batch 节点可以[安全地访问](credential-access-key-vault.md) [Azure Key Vault](../key-vault/general/overview.md) 中存储的凭据和机密，任务应用程序可以使用这些凭据和机密来访问其他服务。 使用证书来授予池节点对 Key Vault 的访问权限。
+Batch 节点可以安全地访问 [Azure 密钥保管库](../key-vault/general/overview.md)中存储的凭据，任务应用程序可以使用这些凭据来访问其他服务。 使用证书来授予池节点对 Key Vault 的访问权限。 通过[在 Batch 池中启用自动证书轮换](automatic-certificate-rotation.md)，将自动续订凭据。 建议让 Batch 节点通过这种选项访问存储在 Azure 密钥保管库中的凭据，不过，你也可以[设置 Batch 节点以使用证书安全访问凭据和机密](credential-access-key-vault.md)，而不是自动轮换证书。
 
 ## <a name="governance-and-compliance"></a>管理和符合性
 
 ### <a name="compliance"></a>合规性
 
-为了帮助客户在全球范围内受监管的行业和市场中履行他们自己的符合性责任，Azure 维护了[一系列法规符合性产品/服务](https://azure.microsoft.com/overview/trusted-cloud/compliance)。 
+为了帮助客户在全球范围内受监管的行业和市场中履行他们自己的符合性责任，Azure 维护了[一系列法规符合性产品/服务](https://azure.microsoft.com/overview/trusted-cloud/compliance)。
 
 这些产品/服务基于各种类型的保证，包括独立的第三方审核企业生成的正式认证、证明、验证、授权和评估，以及 Microsoft 生成的合同修正、自我评估和客户指南文档。 请查看[符合性产品/服务的综合概述](https://aka.ms/AzureCompliance)，以确定哪些服务可能与你的 Batch 解决方案相关。
 

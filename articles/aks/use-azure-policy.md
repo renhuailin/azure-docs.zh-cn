@@ -3,14 +3,14 @@ title: 使用 Azure Policy 来保护群集
 description: 使用 Azure Policy 来保护 Azure Kubernetes 服务 (AKS) 群集。
 ms.service: container-service
 ms.topic: how-to
-ms.date: 02/17/2021
+ms.date: 09/01/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6462c2987155925b7df5241d8fb6aa13c1e37b89
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a5eef5304c8bceac2bd26d6ccf0e90974641a9ff
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777718"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432992"
 ---
 # <a name="secure-your-cluster-with-azure-policy"></a>通过 Azure Policy 保护群集
 
@@ -18,7 +18,7 @@ ms.locfileid: "107777718"
 
 本文介绍如何将策略定义应用于群集，并验证是否在强制执行这些分配。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 - AKS 群集上安装的适用于 AKS 的 Azure Policy 加载项。 按照以下[步骤安装 Azure Policy 加载项][azure-policy-addon]。
@@ -35,6 +35,24 @@ ms.locfileid: "107777718"
 1. 将“范围”设置为启用了 Azure Policy 加载项的 AKS 群集的资源组。
 1. 选择“参数”页面并将“效果”从 `audit` 更新为 `deny` 以阻止违反基线计划的新部署 。 还可以添加更多要从计算中排除的命名空间。 对于本示例，请保留默认值。
 1. 依次选择“查看 + 创建”和“创建”以提交策略分配 。
+
+## <a name="create-and-assign-a-custom-policy-definition-preview"></a>创建和分配自定义策略定义（预览版）
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+自定义策略允许使用 Azure 定义规则。 例如，可以强制实施：
+- 安全做法
+- 成本管理
+- 组织特定的规则（例如命名或位置）
+
+在创建自定义策略之前，请检查[通用模式和示例列表][azure-policy-samples]，以确定是否已涵盖你的案例。
+
+自定义策略定义是以 JSON 编写的。 若要详细了解如何创建自定义策略，请参阅 [Azure Policy 定义结构][azure-policy-definition-structure]和[创建自定义策略定义][custom-policy-tutorial-create]。
+
+> [!NOTE]
+> Azure Policy 现在利用名为 templateInfo 的新属性，用户可以使用该属性定义约束模板的源类型。 通过在策略定义中定义 templateInfo，用户无需定义 constraintTemplate 或 constraint 属性  。 用户仍需要定义 apiGroups 和 kinds 。 有关详细信息，请参阅[了解 Azure Policy 效果][azure-policy-effects-audit]。
+
+创建自定义策略定义后，请参阅 [分配策略定义][azure-policy-tutorial-assign]，获取有关将策略分配到 Kubernetes 群集的分步演练。
 
 ## <a name="validate-a-azure-policy-is-running"></a>验证是否有 Azure Policy 正在运行
 
@@ -174,6 +192,11 @@ kubectl delete -f nginx-unprivileged.yaml
 [azure-policy]: ../governance/policy/overview.md
 [azure-policy-addon]: ../governance/policy/concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-aks
 [azure-policy-addon-remove]: ../governance/policy/concepts/policy-for-kubernetes.md#remove-the-add-on-from-aks
-[azure-policy-assign-policy]: ../governance/policy/concepts/policy-for-kubernetes.md#assign-a-built-in-policy-definition
+[azure-policy-assign-policy]: ../governance/policy/concepts/policy-for-kubernetes.md#assign-a-policy-definition
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md
+[azure-policy-effects-audit]: ../governance/policy/concepts/effects.md#audit-properties
+[custom-policy-tutorial-create]: ../governance/policy/tutorials/create-custom-policy-definition.md
+[custom-policy-tutorial-assign]: https://docs.microsoft.com/en-us/azure/governance/policy/concepts/policy-for-kubernetes.md#assign-a-policy-definition
+[azure-policy-samples]: ../governance/policy/samples/index.md
+[azure-policy-definition-structure]: ../governance/policy/concepts/definition-structure.md

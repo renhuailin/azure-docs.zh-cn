@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2021
 ms.author: yelevin
-ms.openlocfilehash: 66b9f5a2e4a0c62ab6847b9e851f8d04b1dbd0f8
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: d9f6ce8b85aae451fbab318b85f50fb0da7919a6
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252882"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541290"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>设置 Azure Sentinel 客户托管密钥
 
@@ -27,7 +27,7 @@ ms.locfileid: "122252882"
 
 ## <a name="prerequisites"></a>先决条件
 
-- CMK 功能需要具有至少 1 TB/天承诺层级的 Log Analytics 专用群集。 多个工作区可以链接到同一专用群集，它们共享同一个客户管理的密钥。
+- CMK 功能需要具有至少 500 GB/天承诺层级的 Log Analytics 专用群集。 多个工作区可以链接到同一专用群集，它们共享同一个客户管理的密钥。
 
 - 完成本指南中的步骤后，在使用工作区之前，请联系 [Azure Sentinel 产品组](mailto:azuresentinelCMK@microsoft.com)进行载入确认。
 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 435b27255ce58a3541d6b0d3a76bdf4080aa3962
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70230b5324d94065e414e0bc76d7e2f092369ba9
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648769"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431975"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad"></a>Azure AD 中 FIDO2 安全密钥的混合部署的故障排除 
 
@@ -145,7 +145,7 @@ Azure AD Kerberos Server PowerShell cmdlet 使用与标准 Azure AD Connect 向�
 | ID                 | AD DS 域控制器对象的独一无二的 ID。 |
 | DomainDnsName      | AD DS 域的 DNS 域名。 |
 | ComputerAccount    | Azure AD Kerberos Server 对象的计算机帐户对象 (DC)。 |
-| UserAccount        | 已禁用的用户帐户对象，该对象保存 Azure AD Kerberos Server TGT 加密密钥。 此帐户的 DN 是 CN=krbtgt_AzureAD,CN=Users,<Domain-DN> |
+| UserAccount        | 已禁用的用户帐户对象，该对象保存 Azure AD Kerberos Server TGT 加密密钥。 此帐户的 DN 是 CN=krbtgt_AzureAD,CN=Users,\<Domain-DN\> |
 | KeyVersion         | Azure AD Kerberos Server TGT 加密密钥的密钥版本。 该版本是在该密钥创建时分配的。 然后，该版本会在每次轮换该密钥时都递增。 增量是基于复制元数据的，并且将有可能大于 1。<br /><br /> 例如，初始 KeyVersion 可能为 192272 。 该密钥第一次轮换时，该版本可能会前进到 212621。<br /><br /> 要验证本地对象的 KeyVersion 和云对象的 CloudKeyVersion 是否相同，这一点很重要 。 |
 | KeyUpdatedOn       | 更新或创建 Azure AD Kerberos Server TGT 加密密钥的日期和时间。 |
 | KeyUpdatedFrom     | 上次更新 Azure AD Kerberos Server TGT 加密密钥的 DC。 |

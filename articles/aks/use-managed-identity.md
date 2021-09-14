@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用托管标识
 services: container-service
 ms.topic: article
 ms.date: 05/12/2021
-ms.openlocfilehash: dbc02f8b65235a47fc523665ea6337774a6eb557
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d3d479730b88c80c627c3e6dad2ab8f80eb3aee6
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122321982"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431723"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
 
@@ -83,6 +83,9 @@ az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 > [!NOTE]
 > 更新后，群集的控制平面和加载项 Pod 会切换为使用托管标识，但 kubelet 会保持使用服务主体，直到升级代理池。 请在节点上执行 `az aks nodepool upgrade --node-image-only` 以完成对托管标识的更新。 
+
+
+> 如果群集使用 --attach-acr 从 ACR 拉取映像，那么，在你将群集更新为托管标识后，需要重新运行“az aks update --attach-acr <ACR Resource ID>”，使新创建的用于托管标识的 kubelet 获得从 ACR 进行拉取的权限。 否则，升级后将无法从 ACR 拉取。
 
 
 ## <a name="obtain-and-use-the-system-assigned-managed-identity-for-your-aks-cluster"></a>获取系统分配的托管标识并将其用于 AKS 群集

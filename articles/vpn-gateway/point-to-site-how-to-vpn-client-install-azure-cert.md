@@ -6,18 +6,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/27/2021
+ms.date: 09/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4643502a16982fc3b3c2a659a4dbc127e515d349
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b924750f30cfa3e00b0a1ce2f6326036ef272f76
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729605"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123477719"
 ---
 # <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>安装用于 P2S 证书身份验证连接的客户端证书
 
-将 P2S VPN 网关配置为要求证书身份验证时，每个客户端计算机都必须在本地安装客户端证书。 本文可帮助你安装客户端证书。
+将 P2S VPN 网关配置为要求证书身份验证时，每个客户端计算机都必须在本地安装客户端证书。 本文帮助你在客户端计算机本地安装客户端证书。 还可以使用 [Intune](https://docs.microsoft.com/mem/intune/configuration/vpn-settings-configure) 来安装某些 VPN 客户端配置文件和证书。
 
 如果要从自签名根证书生成客户端证书，请参阅以下文章之一：
 

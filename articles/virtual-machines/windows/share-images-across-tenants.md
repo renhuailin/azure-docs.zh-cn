@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/15/2019
 ms.reviewer: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eb432b486815b9b2269eabb2631d4d4cb909df11
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 50bea2cbd4d42855ecf621cb65f61b4565242a6f
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226001"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450982"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants-using-powershell"></a>使用 PowerShell 在 Azure 租户之间共享库 VM 映像
 
-适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
-共享映像库可让你使用 Azure RBAC 共享映像。 可以使用 Azure RBAC 在租户中共享映像，甚至可以与租户外部的个人共享映像。 有关此简单共享选项的详细信息，请参阅[共享库](./shared-images-portal.md#share-the-gallery)。
+共享映像库可让你使用 Azure RBAC 共享映像。 可以使用 Azure RBAC 在租户中共享映像，甚至可以与租户外部的个人共享映像。 有关此简单共享选项的详细信息，请参阅[共享库](../share-gallery.md)。
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -86,4 +86,4 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="next-steps"></a>后续步骤
 
-也可使用 [Azure 门户](shared-images-portal.md)创建共享映像库资源。
+创建[共享映像库资源](../image-version.md)。

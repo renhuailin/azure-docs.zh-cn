@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 69ddda7bd88218a3667b16bfdc9fa33aa5349ff6
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: 7eb1855717817da1f7b46e512c1a14268ce1a937
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112573933"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478475"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis 的故障转移和修补
 
@@ -74,13 +74,43 @@ Azure Cache for Redis 服务定期使用最新的平台功能和修补程序更�
 
 ## <a name="how-does-a-failover-affect-my-client-application"></a>故障转移如何影响我的客户端应用程序？
 
-客户端应用程序遇到的错误数目取决于故障转移时该连接上挂起的操作数目。 通过关闭连接的节点路由的任何连接将遇到错误。 在连接中断时，许多客户端库可能会引发不同类型的错误，包括超时异常、连接异常或套接字异常。 异常的数目和类型取决于当缓存关闭其连接时，请求在代码路径中所处的位置。 例如，在发生故障转移时发送了请求但未收到响应的操作可能会收到超时异常。 对关闭的连接对象发出的新请求将收到连接异常，直到重新连接成功为止。
+客户端应用程序可能会从其 Azure Cache For Redis 收到一些错误。 客户端应用程序遇到的错误数目取决于故障转移时该连接上挂起的操作数目。 通过已关闭其连接的节点路由的任何连接都将遇到错误。
+
+在连接中断时，许多客户端库可能会引发不同类型的错误，包括：
+
+- 超时异常
+- 连接异常
+- 套接字异常
+
+异常的数目和类型取决于当缓存关闭其连接时，请求在代码路径中所处的位置。 例如，在发生故障转移时发送了请求但未收到响应的操作可能会收到超时异常。 对关闭的连接对象发出的新请求将收到连接异常，直到重新连接成功为止。
 
 大多数客户端库会尝试重新连接到缓存（如果采用此配置）。 但是，不可预测的 bug 偶尔会将库对象置于不可恢复状态。 如果出错的持续时间超过了预先配置的时间，则应重新创建连接对象。 在 Microsoft.NET 和其他面向对象的语言中，可以使用 [Lazy\<T\> 模式](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)来重新创建连接，而无需重启应用程序。
 
-### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>能否提前得到计划内维护的通知？
+### <a name="can-i-be-notified-in-advance-of-planned-maintenance"></a>我是否可以提前收到计划内维护的通知？
 
-Azure Cache for Redis 现在会在计划内更新前约 30 秒在名为 [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) 的发布/订阅通道上发布通知。 通知是运行时通知。 这些通知专门为可使用断路器绕过缓存或缓冲区命令的应用程序而生成，例如，在计划内更新期间。 该机制不能提前几天或几小时通知你。
+Azure Cache for Redis 在计划内更新前约 30 秒在名为 [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) 的发布/订阅 (pub/sub) 通道上发布通知。 通知是运行时通知。
+
+通知针对使用断路器绕过缓存的应用程序或缓冲命令的应用程序。 例如，可以在任何计划内更新期间绕过缓存。
+
+`AzureRedisEvents` 通道不是可提前几天或几小时发出通知的机制。 该通道可以向客户端通知即将发生可能会影响服务器可用性的计划内服务器维护事件。
+
+许多常用的 Redis 客户端库都支持订阅 pub/sub 通道。 通常，在客户端应用程序中添加从 `AzureRedisEvents` 通道接收通知的功能很简单。
+
+在应用程序订阅 `AzureRedisEvents` 后，它会在任何节点受维护事件影响之前的 30 秒收到通知。 通知包含有关即将发生的事件的详细信息，并指示该事件影响的是主节点还是副本节点。
+
+完成维护操作几分钟后，将发送另一个通知。
+
+应用程序使用通知中的内容来采取措施，以避免在执行维护时使用缓存。 缓存可能会实现在维护操作期间将流量路由出缓存的断路器模式。 相反，流量将直接发送到永久性存储。 该通知并非旨在使某人有时间收到警报并执行手动操作。
+
+在大多数情况下，应用程序无需订阅 `AzureRedisEvents` 或响应通知。 相反，我们建议实现[内置复原能力](#build-in-resiliency)。
+
+具备了足够的复原能力，应用程序便可以正常处理类似于节点维护期间遇到的那种短暂连接断开或缓存不可用的情况。 此外，应用程序还可能会由于网络错误或其他事件而意外断开与缓存的连接，且不会收到 `AzureRedisEvents` 的警告。
+
+我们建议仅在几种值得注意的情况下才订阅 `AzureRedisEvents`：
+
+- 应用程序有极高的性能要求，即使是非常轻微的延迟也必须避免。 在这种情况下，可以先将流量无缝重新路由到备份缓存，然后在当前缓存上开始维护。
+- 应用程序从副本（而不是主节点）显式读取数据。 在副本节点上进行维护期间，应用程序可以暂时切换为从主节点读取数据。
+- 应用程序无法承受在写入操作失败时系统不发出提示或在写入操作成功时系统不进行确认（这可能会在因维护而关闭了连接时发生）的风险。 如果这种情况会导致危险的数据丢失，应用程序可以在维护按计划开始之前主动暂停或重定向写入命令。
 
 ### <a name="client-network-configuration-changes"></a>客户端网络配置更改
 
@@ -106,6 +136,8 @@ Azure Cache for Redis 现在会在计划内更新前约 30 秒在名为 [AzureRe
 若要测试客户端应用程序的复原能力，请使用[重新启动](cache-administration.md#reboot)作为连接中断时的手动触发器。
 
 此外，我们建议对缓存[计划更新](cache-administration.md#schedule-updates)，以便在每周的特定时段应用 Redis 运行时补丁。 通常，这些时段是客户端应用程序流量较低的时段，目的是避免潜在的事件。
+
+有关详细信息，请参阅[连接复原能力](cache-best-practices-connection.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

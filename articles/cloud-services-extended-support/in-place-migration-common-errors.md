@@ -9,12 +9,12 @@ ms.author: hirshah
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: cdfb7dd5d09d6925de23be70df18037165776a18
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ce0c3bb4386e2fcc48ca57a1cd53978fc684d98c
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751114"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540948"
 ---
 # <a name="common-errors-and-known-issues-when-migration-to-azure-cloud-services-extended-support"></a>迁移到 Azure 云服务（外延支持）时的常见错误和已知问题
 
@@ -69,6 +69,8 @@ ms.locfileid: "121751114"
 | XrpVirtualNetworkMigrationError: 虚拟网络迁移失败。 | 使用 [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) 或联系支持人员。 | 
 | 托管服务 {1} 中的部署 {0} 属于虚拟网络 {2}。 请迁移虚拟网络 {2} 以迁移托管服务 {1}。 | 请参阅[虚拟网络迁移](in-place-migration-technical-details.md#virtual-network-migration)。 | 
 | Azure 资源管理器中的资源 resource-name 的当前配额不足，无法完成迁移。 当前配额为 {0}，需要额外的配额为 {1}。 请提交支持请求以增加配额，然后在配额已增加后重试迁移。    | 通过相应的通道请求增加配额： <br>[为网络资源增加配额](../azure-portal/supportability/networking-quota-requests.md) <br>[为计算资源增加配额](../azure-portal/supportability/per-vm-quota-requests.md) | 
+|XrpPaaSMigrationCscfgCsdefValidationMismatch：由于部署元数据已过时，无法在托管服务 service-name 中的部署 deployment-name 上完成迁移。 请中止迁移并升级部署，然后重试迁移。 验证消息：服务定义文件中的服务名称“service-name”与服务配置文件中的名称“service-name-in-config-file”不匹配|匹配 .csdef 和 .cscfg 文件中的服务名称|
+|部署云服务（外延支持）资源时发生 NetworkingInternalOperationError| 如果服务名称与角色名称相同，则可能会出现此问题。 建议的修正方法是为服务和角色使用不同的名称|
 
 ## <a name="next-steps"></a>后续步骤
 有关迁移要求的详细信息，请参阅[迁移到 Azure 云服务（外延支持）的技术详细信息](in-place-migration-technical-details.md)

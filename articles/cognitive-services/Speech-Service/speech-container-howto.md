@@ -8,22 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/27/2021
+ms.date: 09/01/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 本地, Docker, 容器
-ms.openlocfilehash: a78408759492cdba97bca8b6e4b71411af192f9f
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 75f0f8bb61c14f826addca3df41a0c568c92b510
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224114"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429363"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>为语音服务 API 安装并运行 Docker 容器 
 
 通过容器，你可以在自己的环境中运行一些语音服务 API。 容器非常适合用于满足特定的安全性和数据管理要求。 本文介绍如何下载、安装以及运行语音容器。
 
 通过语音容器，客户能够生成语音应用程序体系结构，该体系结构针对强大的云功能和边缘位置进行了优化。 可以使用多个容器，它们的[定价](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)与基于云的 Azure 语音服务相同。
+
+> [!IMPORTANT]
+> 我们已在 2021 年 8 月 31 日停用了标准语音合成语音和文本转语音容器。 请考虑迁移应用程序，以改用神经文本转语音容器。 有关更新应用程序的详细信息，请[查看这些步骤](https://aka.ms/sttsretirement)。
 
 | 容器 | 功能 | 最晚 | 版本状态 |
 |--|--|--|--|

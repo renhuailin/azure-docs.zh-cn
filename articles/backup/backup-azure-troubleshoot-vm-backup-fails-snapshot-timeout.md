@@ -4,12 +4,12 @@ description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、
 ms.topic: troubleshooting
 ms.date: 05/25/2021
 ms.service: backup
-ms.openlocfilehash: 57a0002d353ebb75570dc3b70c55d2f17f70db35
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 72e2ce2c32a1be1e6f116ef5513c1c24a42284bc
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472467"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438188"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -45,7 +45,7 @@ ms.locfileid: "110472467"
 - 确保所有[扩展问题](../virtual-machines/extensions/overview.md#troubleshoot-extensions)都已解决，然后重试备份操作。
 - **确保 COM+ 系统应用程序** 已启动并正在运行。 此外，**分布式事务处理协调器服务** 应以“网络服务帐户”身份运行。 请按照本文中的步骤[排查 COM+ 和 MSDTC 问题](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error)。
 
-### <a name="step-4-check-azure-backup-vm-extension-health"></a>步骤 4：检查 Azure 备份 VM 扩展运行状况
+### <a name="step-4-check-azure-backup-extension-health"></a>步骤 4：检查 Azure 备份扩展运行状况
 
 Azure 备份使用 VM 快照扩展获取 Azure 虚拟机的应用程序一致性备份。 Azure 备份将在启用备份后触发的首次计划备份期间安装该扩展。
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 08/25/2021
-ms.openlocfilehash: 74a438088e3e6c751785387580488efa17e82385
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: b47efc959518b7a4d35fb5ef79cd04f18cdfaa22
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035392"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433505"
 ---
 # <a name="how-to-get-lineage-from-azure-synapse-analytics-into-azure-purview"></a>如何从 Azure Synapse Analytics 获取世系再转至 Azure Purview
 
@@ -29,6 +29,10 @@ ms.locfileid: "123035392"
 > 如果源或目标使用不受支持的数据存储系统，则 Azure Purview 将删除世系。
 
 [!INCLUDE[azure-synapse-supported-activity-lineage-capabilities](includes/data-factory-common-supported-capabilities.md)]
+
+## <a name="access-secured-azure-purview-account"></a>访问受保护的 Azure Purview 帐户
+      
+如果你的 Purview 帐户受防火墙保护，请了解如何使 Azure Synapse 能够通过 Purview 专用终结点[访问受保护的 Purview 帐户](../synapse-analytics/catalog-and-governance/how-to-access-secured-purview-account.md)。
 
 ## <a name="bring-azure-synapse-lineage-into-purview"></a>将 Azure Synapse 世系引入 Purview
 

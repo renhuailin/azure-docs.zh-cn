@@ -9,20 +9,20 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 8d95897e0c2d58b2a3955918be945800eed9ba56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6148f2bd5d3b1555ae61d2da3e922c9cfe632cb
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96466086"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539652"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-pools"></a>使用 Synapse Studio 监视 Apache Spark 池
 
-借助 Azure Synapse Analytics，可以使用 Spark 在工作区中的 Spark 池上运行笔记本、作业和其他类型的应用程序。
+借助 Azure Synapse Analytics，可以使用 Apache Spark 在工作区中的 Apache Spark 池上运行笔记本、作业和其他类型的应用程序。
 
 本文介绍如何监视 Apache Spark 池，使你能够时刻关注池的状态，包括不同工作区的用户正在使用多少个 Vcore。
 
-## <a name="access-spark-pools-list"></a>访问 Spark 池列表
+## <a name="access-apache-spark-pools-list"></a>访问 Apache Spark 池列表
 
 若要查看工作区中的 Apache Spark 池列表，请先[打开 Synapse Studio](https://web.azuresynapse.net/)，然后选择工作区。
 
@@ -36,17 +36,17 @@ ms.locfileid: "96466086"
 
  ![选择 Apache Spark 池](./media/how-to-monitor-spark-pools/monitor-hub-nav-spark-pools.png)
 
-## <a name="filter-your-spark-pools"></a>筛选 Spark 池
+## <a name="filter-your-apache-spark-pools"></a>筛选 Apache Spark 池
 
-可以筛选 Spark 池列表，仅查看你感兴趣的 Spark 池。 使用屏幕顶部的筛选器，可以指定要筛选的字段。
+可以筛选 Apache Spark 池列表，以便仅查看你感兴趣的池。 使用屏幕顶部的筛选器，可以指定要筛选的字段。
 
-例如，可以对视图进行筛选，以便仅查看包含名称“dataprep”的 Spark 池：
+例如，可以对视图进行筛选，以便仅查看包含名称“dataprep”的 Apache Spark 池：
 
 ![示例筛选器](./media/how-to-monitor-spark-pools/filter-example.png)
 
-## <a name="view-details-about-a-specific-spark-pool"></a>查看有关特定 Spark 池的详细信息
+## <a name="view-details-about-a-specific-apache-spark-pool"></a>查看有关特定 Apache Spark 池的详细信息
 
-若要查看有关某个 Spark 池的详细信息，请选择该 Spark 池以查看详细信息。
+若要查看有关某个 Apache Spark 池的详细信息，请选择该 Apache Spark 池以查看详细信息。
 
 ![Apache Spark 池详细信息](./media/how-to-monitor-spark-pools/spark-pool-details.png)
 

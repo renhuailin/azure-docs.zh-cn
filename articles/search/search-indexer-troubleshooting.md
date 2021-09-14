@@ -1,23 +1,23 @@
 ---
-title: 索引器故障排除指南
+title: 索引器故障排除指导
 titleSuffix: Azure Cognitive Search
-description: 本文提供了有关服务搜索未返回错误消息的情况下的索引器问题和解决方法。
+description: 本文针对服务搜索未返回错误消息的情况提供索引器问题和解决方案指南。
 manager: nitinme
 author: mgottein
 ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/27/2021
-ms.openlocfilehash: 49aad9132d57c07022fd5515cbc07c32d94a5132
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.date: 09/07/2021
+ms.openlocfilehash: 650f5f40bf8b8fc0909b4fec85ef6b5724a2e3c7
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982881"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123539817"
 ---
 # <a name="indexer-troubleshooting-guidance-for-azure-cognitive-search"></a>Azure 认知搜索的索引器故障排除指导
 
-有时，索引器会出现问题，并且没有错误可帮助进行诊断。 本文介绍出现意外的索引器结果且提供信息有限时的问题和可能解决方法。 如果有错误需要调查，请改为参阅[排查常见索引器错误和警告](cognitive-search-common-errors-warnings.md)。
+有时，索引器会出现问题，并且没有错误可帮助进行诊断。 本文介绍出现意外索引器结果而提供的信息有限这类问题及潜在行解决方案。 如果有错误要调查，请改为参阅[排查常见索引器错误和警告问题](cognitive-search-common-errors-warnings.md)。
 
 ## <a name="connection-errors"></a>连接错误
 
@@ -32,7 +32,7 @@ ms.locfileid: "112982881"
 
 Azure 存储、Cosmos DB 和 Azure SQL 提供可配置的防火墙。 防火墙启用后，没有具体的错误消息。 通常，防火墙错误是泛性的，类似于 `The remote server returned an error: (403) Forbidden` 或 `Credentials provided in the connection string are invalid or have expired`。
 
-有两个选项可让索引器访问此类实例中的这些资源：
+有 2 个选项可让索引器访问此类实例中的这些资源：
 
 * 通过允许从 **所有网络** 进行访问（如果可行）来禁用防火墙。
 
@@ -50,7 +50,7 @@ Azure 存储、Cosmos DB 和 Azure SQL 提供可配置的防火墙。 防火墙�
 
 Azure Functions（可用作[自定义 Web API 技能](cognitive-search-custom-skill-web-api.md)）也支持 [IP 地址限制](../azure-functions/ip-addresses.md#ip-address-restrictions)。 要配置的 IP 地址列表是搜索服务的 IP 地址，以及 `AzureCognitiveSearch` 服务标记的 IP 地址范围。
 
-有关连接到虚拟机的详细信息，请参阅[配置与 Azure VM 上的 SQL Server 的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+有关连接到虚拟机的详细信息，请参阅[在 Azure VM 上配置与 SQL Server 的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
 ### <a name="configure-network-security-group-nsg-rules"></a>配置网络安全组 (NSG) 规则
 
@@ -62,9 +62,15 @@ Azure Functions（可用作[自定义 Web API 技能](cognitive-search-custom-sk
 
 [此文](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)提供了有关访问 SQL 托管实例中的数据的更多详细信息
 
+## <a name="azure-sql-database-serverless-indexing-error-code-40613"></a>Azure SQL 数据库无服务器索引（错误代码 40613）
+
+如果 SQL 数据库在[无服务器计算层](../azure-sql/database/serverless-tier-overview.md)上，请确保在索引器连接到该数据库时，该数据库正在运行（未暂停）。
+
+如果该数据库已暂停，则首次从搜索服务登录会自动恢复该数据库，但同时会返回错误，指出该数据库不可用，错误代码为 40613。 在数据库运行后，请重试登录以建立连接。
+
 ## <a name="sharepoint-online-conditional-access-policies"></a>SharePoint Online 条件访问策略
 
-创建 SharePoint Online 索引器时，需要完成一个必需的步骤，即在提供设备代码后登录到 Azure AD 应用。 如果你收到一条消息，指明`"Your sign-in was successful but your admin requires the device requesting access to be managed"`，说明索引器可能由于[条件访问](../active-directory/conditional-access/overview.md)策略而被阻止访问 SharePoint Online 文档库。
+创建 SharePoint Online 索引器时，需要完成一个必需的步骤，即在提供设备代码后登录到 Azure AD 应用。 如果你收到一条消息，说明 `"Your sign-in was successful but your admin requires the device requesting access to be managed"`，则表明索引器可能因[条件访问](../active-directory/conditional-access/overview.md)策略受到阻止，不能访问 SharePoint Online 文档库。
 
 若要更新策略以允许索引器访问文档库，请执行以下步骤：
 
@@ -142,11 +148,11 @@ Azure Functions（可用作[自定义 Web API 技能](cognitive-search-custom-sk
     1. 为你创建的数据源对象发送更新请求。
     1. 重新发送索引器创建请求。 使用新代码登录，然后发送另一个索引器创建请求。
 
-## <a name="indexing-unsupported-document-types"></a>对不受支持文档类型编制索引
+## <a name="indexing-unsupported-document-types"></a>索引不受支持的文档类型
 
-如果要对 Azure Blob 存储中的内容编制索引，并且该容器包含[不受支持的内容类型](search-howto-indexing-azure-blob-storage.md#SupportedFormats)的 blob，索引器将跳过该文档。 在其他情况下，单独的文档可能会出现问题。 
+如果要从 Azure Blob 存储中索引内容，并且该容器包含[不受支持的内容类型](search-howto-indexing-azure-blob-storage.md#SupportedFormats)的 blob，索引器将跳过该文档。 在其他情况下，单个文档可能会出现问题。 
 
-可[设置配置选项](search-howto-indexing-azure-blob-storage.md#DealingWithErrors)，以允许索引器处理在单独的文档出现问题时继续。
+可以[设置配置选项](search-howto-indexing-azure-blob-storage.md#DealingWithErrors)，以允许在单个文档出现问题时继续执行索引器处理。
 
 ```http
 PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
@@ -161,17 +167,17 @@ api-key: [admin key]
 
 ## <a name="missing-documents"></a>缺少文档
 
-索引器从外部[数据源](/rest/api/searchservice/create-data-source)提取文档或行，并创建搜索文档，随后搜索服务对其编制索引。 有时，数据源中存在的文档无法在搜索索引中显示。 存在以下原因时，可能会出现此意外结果：
+索引器从外部[数据源](/rest/api/searchservice/create-data-source)中提取文档或行，并创建搜索文档，然后搜索服务对其编制索引。 有时，数据源中存在的文档无法在搜索索引中出现。 存在以下任一原因时，就可能出现这种意外结果：
 
-* 文档在索引器运行之后已更新。 如果索引器已在[计划](/rest/api/searchservice/create-indexer#indexer-schedule)之中，它最终会重新运行并选取该文档。
-* 索引器在引入文档前已超时。 存在[最长处理时间限制](search-limits-quotas-capacity.md#indexer-limits)，在此之后将不会处理任何文件。 可在门户中或调用[获取索引器状态 (REST API)](/rest/api/searchservice/get-indexer-status) 来查看索引器状态。
-* [字段映射](/rest/api/searchservice/create-indexer#fieldmappings) 或 [AI 扩充](./cognitive-search-concept-intro.md)已更改文档，并且其在搜索索引中的接合与预期的不同。
-* [更改跟踪](/rest/api/searchservice/create-data-source#data-change-detection-policies)值是错误的或不满足先决条件。 如果高水印值是设置为将来时间的日期，则索引器将跳过任何日期小于此日期的文档。 可以使用[索引器状态](/rest/api/searchservice/get-indexer-status#indexer-execution-result)中的“initialTrackingState”和“finalTrackingState”字段来了解索引器的更改跟踪状态。 适用于 Azure SQL 和 MySQL 的索引器必须在源表的高水印标记列上有索引，否则索引器使用的查询可能会超时。 
+* 运行索引器后更新了文档。 如果索引器已在[计划](/rest/api/searchservice/create-indexer#indexer-schedule)之中，它最终会重新运行并选取该文档。
+* 索引器在可引入文档之前已超时。 存在[最大处理时间限制](search-limits-quotas-capacity.md#indexer-limits)，在此之后将不会处理任何文档。 可以在门户中或通过调用[获取索引器状态 (REST API)](/rest/api/searchservice/get-indexer-status) 来检查索引器状态。
+* [字段映射](/rest/api/searchservice/create-indexer#fieldmappings)或 [AI 扩充](./cognitive-search-concept-intro.md)已更改文档，其在搜索索引中的清晰度与预期的不同。
+* [更改跟踪](/rest/api/searchservice/create-data-source#data-change-detection-policies)值错误或缺少先决条件。 如果高水印值是设置为将来时间的日期，则索引器将跳过任何日期小于此日期的文档。 可以使用[索引器状态](/rest/api/searchservice/get-indexer-status#indexer-execution-result)中的“initialTrackingState”和“finalTrackingState”字段来了解索引器的更改跟踪状态。 Azure SQL 和 MySQL 的索引器必须在源表的高水位标记列上有索引，否则索引器使用的查询可能会超时。 
 
 > [!TIP]
-> 如果缺少文档，请检查正在使用的[查询](/rest/api/searchservice/search-documents)，以确保查询不排除相关文档。 若要查询特定文档，请使用[查找文档 REST API](/rest/api/searchservice/lookup-document)。
+> 如果文档丢失，请检查正在使用的[查询](/rest/api/searchservice/search-documents)，确保其中未排除相关文档。 若要查询特定文档，请使用[查找文档 REST API](/rest/api/searchservice/lookup-document)。
 
-## <a name="missing-content-from-blob-storage"></a>缺少 Blob 存储中的内容
+## <a name="missing-content-from-blob-storage"></a>Blob 存储中缺少内容
 
 Blob 索引器可[查找并提取容器中 Blob 的文本](search-howto-indexing-azure-blob-storage.md#how-azure-search-indexes-blobs)。 提取文本时出现的一些问题包括：
 
@@ -190,11 +196,11 @@ api-key: [admin key]
 }
 ```
 
-## <a name="missing-content-from-cosmos-db"></a>缺少 Cosmos DB 中的内容
+## <a name="missing-content-from-cosmos-db"></a>Cosmos DB 中缺少内容
 
 Azure 认知搜索对 Cosmos DB 索引存在隐式依赖。 如果在 Cosmos DB 中关闭自动索引，Azure 认知搜索会返回成功状态，但无法索引容器内容。 有关如何查看设置和启用索引功能的说明，请参阅[管理 Azure Cosmos DB 中的索引编制](../cosmos-db/how-to-manage-indexing-policy.md#use-the-azure-portal)。
 
 ## <a name="see-also"></a>另请参阅
 
-* [排查常见索引器错误和警告](cognitive-search-common-errors-warnings.md)
+* [排查常见索引器错误和警告问题](cognitive-search-common-errors-warnings.md)
 * [监视基于索引器的索引](search-howto-monitor-indexers.md)

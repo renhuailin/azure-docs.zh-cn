@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/27/2021
+ms.date: 09/06/2021
 ms.custom: project-no-code, b2c-support
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cf4e674e1aca47b0f1ea4fa05aae110f8270b721
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: f227c63ef837b0de60ee72e2f33084e744f2f96f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688895"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535592"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -210,10 +210,9 @@ Azure AD B2C 提供了多个内置模板，你可以从中进行选择，为用�
 * 当用户启动注册用户流时，向用户发送的验证电子邮件中会显示横幅徽标。
 
 
+::: zone pivot="b2c-user-flow"
 
 ## <a name="enable-company-branding-in-user-flow-pages"></a>在用户流页面中启用“公司品牌”
-
-::: zone pivot="b2c-user-flow"
 
 配置“公司品牌”后，在用户流中启用它。
 
@@ -231,6 +230,8 @@ Azure AD B2C 提供了多个内置模板，你可以从中进行选择，为用�
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="enable-company-branding-in-custom-policy-pages"></a>在自定义策略页面中启用公司品牌
 
 配置“公司品牌”后，在自定义策略中启用它。 为自定义策略中的所有内容定义配置[页面布局版本](contentdefinitions.md#migrating-to-page-layout)和页面`contract`版本。 值的格式必须包含单词 `contract`：_urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 在使用旧 DataUri 值的自定义策略中指定页面布局。 有关详细信息，请参阅如何根据页面版本[迁移到页面布局](contentdefinitions.md#migrating-to-page-layout)。
 

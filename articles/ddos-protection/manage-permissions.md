@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: df53062c7c897493a47d88ea2873f9710b9825bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30a081ab25e5c7918e7253649983ddea54ddf2b4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99806250"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439301"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>管理 DDoS 保护计划：权限和限制
 
@@ -38,6 +38,9 @@ DDoS 防护计划可跨区域和订阅生效。 同一计划可跨租户从不�
 | Microsoft.Network/ddosProtectionPlans/join/action | 加入 DDoS 保护计划              |
 
 若要为虚拟网络启用 DDoS 保护，还必须为你的帐户分配[适用于虚拟网络的适当操作](../virtual-network/manage-virtual-network.md#permissions)。
+
+> [!IMPORTANT]
+> 在虚拟网络上启用 DDoS 保护计划后，在该虚拟网络上的后续操作仍需要 `Microsoft.Network/ddosProtectionPlans/join/action` 操作权限。
 
 ## <a name="azure-policy"></a>Azure Policy
 

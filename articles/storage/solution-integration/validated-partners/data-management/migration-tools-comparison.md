@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2021
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 63796f3e569849227dd4fa9c2396f3b052540586
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: d266f059869bb0f25df10dcc4fad317d3d3da7c3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122177825"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426699"
 ---
 # <a name="comparison-matrix"></a>比较矩阵
 
@@ -60,12 +60,12 @@ ms.locfileid: "122177825"
 | 保管链报告            | 否  | 是                        | 否  | 是                            |
 | 支持备用数据流    | 否  | 是                        | 是 | 否                             |
 | 迁移计划              | 否  | 是                        | 是 | 是                            |
-| 保留 ACL                        | 否  | 是                        | 是 | 是                            |
+| 保留 ACL                        | 是  | 是                        | 是 | 是                            |
 | DACL 支持                          | 是 | 是                        | 是 | 是                            |
 | SACL 支持                          | 是 | 是                        | 是 | 否                             |
 | 保留访问时间                | 是 | 是                        | 是 | 是                            |
 | 保留修改时间              | 是 | 是                        | 是 | 是                            |
-| 保留创建时间              | 否  | 是                        | 是 | 是                            |
+| 保留创建时间              | 是  | 是                        | 是 | 是                            |
 | Azure Data Box 支持       | 是 | 是                        | 否  | 否                             |
 | 迁移快照                | 否  | 手动                     | 是 | 否                             |
 | 符号链接支持                 | 否  | 是                        | 否  | 是                            |
@@ -101,6 +101,9 @@ ms.locfileid: "122177825"
 ### <a name="azure-file-sync"></a>Azure 文件同步
 
 - 内部哈希验证
+
+> [!TIP]
+> Azure 文件同步旨在用作一些 Azure 文件共享的永久性混合本地缓存/同步解决方案。 在该功能中，它提供零停机时间的云迁移。 如果你不打算在本地缓存 Azure 文件共享，则不建议使用 Azure 文件同步作为迁移工具。 请参阅 [Azure 文件共享迁移概述](../../../files/storage-files-migration-overview.md)或本文中所述的其他合作伙伴工具。
 
 ### <a name="datadobi-dobimigrate"></a>Datadobi DobiMigrate
 

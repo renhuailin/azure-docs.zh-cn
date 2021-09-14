@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 633925c8e7a990bcdfa822f77996072f87ae7e90
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: aa802843f76f2707d2df1d9018b60a1e8090cfb5
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753298"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438797"
 ---
 # <a name="migrate-manually-from-azure-virtual-desktop-classic"></a>从 Azure 虚拟桌面（经典）手动进行迁移
 
@@ -79,6 +79,8 @@ Azure 虚拟桌面最近的重大更新标志着该服务向完全 Azure 集成�
 为了防止停机，你应该先将现有会话主机以小组形式一次性注册到 Azure 资源管理器集成的主机池中。 然后，慢慢将用户迁移到新的 Azure 资源管理器集成应用组。
 
 ## <a name="next-steps"></a>后续步骤
+
+如果你想要了解如何改为自动迁移部署，请转到[从 Azure 虚拟桌面（经典）自动迁移](automatic-migration.md)。
 
 在迁移后，请通过查看[我们的教程](create-host-pools-azure-marketplace.md)来了解 Azure 虚拟桌面的工作方式。 从[扩展现有主机池](expand-existing-host-pool.md)和[自定义 RDP 属性](customize-rdp-properties.md)了解高级管理功能。
 

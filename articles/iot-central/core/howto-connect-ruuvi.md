@@ -9,13 +9,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
-ms.date: 11/27/2019
-ms.openlocfilehash: 13b1e22f1e1e5f51d524e80d0bf102b744fbec3d
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.date: 08/20/2021
+ms.openlocfilehash: b4d169a46f499e83d0abf5d3145d67a3f6fdf03b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684588"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439196"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>将 RuuviTag 传感器连接到 Azure IoT Central 应用程序
 
@@ -46,8 +46,8 @@ RuuviTag 通过 BLE（低能耗蓝牙）通信，要求网关设备与 Azure IoT
 
 若要添加 RuuviTag 设备模板：
 
-1. 导航到左侧窗格中的“设备模板”选项卡，选择“+新建” _。创建新设备模板![](./media/howto-connect-ruuvi/devicetemplate-new.png)。该页面提供了一个选项，用于“创建自定义模板”或_ *“使用预先配置的设备模板”**
-1. 按以下![选择 RuuviTag 设备模板](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)中所示，从预配置的设备模板列表中选择 RuuviTag 设备模板
+1. 导航到左侧窗格中的“设备模板”选项卡，选择“+新建” _。创建新设备模板![](./media/howto-connect-ruuvi/device-template-new.png)。该页面提供了一个选项，用于“创建自定义模板”或_ *“使用预先配置的设备模板”**
+1. 如下所示从预配置的设备模板列表中选择“RuuviTag Multisensor”设备模板：![选择 RuuviTag 设备模板](./media/howto-connect-ruuvi/device-template-pre-configured.png)
 1. 选择“下一步: 自定义”以继续执行下一步。
 1. 在下一个屏幕上，选择“创建”以将 C500 设备模板加入到 IoT Central 应用程序中。
 
@@ -59,7 +59,7 @@ RuuviTag 通过 BLE（低能耗蓝牙）通信，要求网关设备与 Azure IoT
 1. 弹开 RuuviTag 的护盖，拉动塑料扣环以稳固电池的连接。
 1. 将 RuuviTag 放到已在 IoT Central 应用程序中配置的 Rigado Cascade 500 网关的旁边。
 1. 几秒钟后，RuuviTag 就会出现在 IoT Central 中的设备列表内。  
-    ![RuuviTag 设备列表](./media/howto-connect-ruuvi/ruuvi-devicelist.png)
+    ![RuuviTag 设备列表](./media/howto-connect-ruuvi/ruuvi-device-list.png)
 
 现在，可以在 IoT Central 应用程序中使用此 RuuviTag 了。  
 

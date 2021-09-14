@@ -4,12 +4,12 @@ description: 了解如何创建专用 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
 ms.topic: article
 ms.date: 8/30/2021
-ms.openlocfilehash: 39090732df8543fc28d1324882f3817402ad587a
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 69366f82c746d1d436d437e2892b010331ecf967
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214320"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429021"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
 
@@ -70,16 +70,11 @@ az aks create \
 
 可以利用以下参数来配置专用 DNS 区域。
 
-- “System”也是默认值。 如果省略 --private-dns-zone argument，AKS 将在节点资源组中创建专用 DNS 区域。
-- “None”默认为公共 DNS，这意味着 AKS 将不会创建专用 DNS 区域（预览版）。  
+- “system”，这也是默认值。 如果省略 --private-dns-zone argument，AKS 将在节点资源组中创建专用 DNS 区域。
+- “none”，默认为公共 DNS，这意味着 AKS 将不会创建专用 DNS 区域。  
 - “CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID”，这要求你以此格式为 Azure 全球云创建专用 DNS 区域：`privatelink.<region>.azmk8s.io`。 你以后将需要该专用 DNS 区域的资源 ID。  此外，你将需要一个用户分配的标识或服务主体，其中至少有 `private dns zone contributor` 和 `vnet contributor` 角色。
   - 如果专用 DNS 区域与 AKS 群集位于不同的订阅中，则需要在这两个订阅中注册 Microsoft.ContainerServices。
   - “fqdn-subdomain”可以与“CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID”一起使用，仅限向 `privatelink.<region>.azmk8s.io` 提供子域功能
-
-### <a name="prerequisites"></a>先决条件
-
-* AKS 预览版 0.5.19 或更高版本
-* API 版本 2021-05-01 或更高版本
 
 ### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>创建具有专用 DNS 区域的专用 AKS 群集
 
@@ -94,6 +89,11 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 ```
 
 ## <a name="create-a-private-aks-cluster-with-a-public-dns-address"></a>创建具有公共 DNS 地址的专用 AKS 群集
+
+先决条件：
+
+* 具有 aks-preview 扩展 0.5.29 或更高版本的 Azure CLI。
+* 如果使用 ARM 或 REST API，则 AKS API 版本必须是 2021-05-01 或更高版本。
 
 可以利用“公共 DNS”选项来简化专用群集的路由选项。  
 

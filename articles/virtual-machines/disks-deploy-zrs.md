@@ -1,25 +1,25 @@
 ---
-title: 部署 ZRS（预览版）托管磁盘
+title: 部署 ZRS 托管磁盘
 description: 了解如何部署使用区域冗余存储 (ZRS) 的托管磁盘。
 author: roygara
 ms.author: rogarana
-ms.date: 07/12/2021
+ms.date: 09/01/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 7afa1a5416651dc7e93ff354e63fefb259ea81b4
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: 23629a5a15603697eb1feb6e964e63754fbed14c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113667240"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426718"
 ---
-# <a name="deploy-a-managed-disk-that-uses-zone-redundant-storage-preview"></a>部署使用区域冗余存储（预览版）的托管磁盘
+# <a name="deploy-a-managed-disk-that-uses-zone-redundant-storage"></a>部署使用区域冗余存储的托管磁盘
 
-本文介绍如何部署使用区域冗余存储 (ZRS) 作为冗余选项（预览版）的磁盘。 ZRS 在所选区域中的三个 Azure 可用性区域同步复制 Azure 托管磁盘。 每个可用性区域都是一个独立的物理位置，具有独立的电源、冷却系统和网络。
+本文介绍如何部署使用区域冗余存储 (ZRS) 作为冗余选项的磁盘。 ZRS 在所选区域中的三个 Azure 可用性区域同步复制 Azure 托管磁盘。 每个可用性区域都是一个独立的物理位置，具有独立的电源、冷却系统和网络。
 
-有关 ZRS 的概念信息，请参阅[托管磁盘的区域冗余存储（预览版）](disks-redundancy.md#zone-redundant-storage-for-managed-disks-preview)
+有关 ZRS 的概念性信息，请参阅[托管磁盘的区域冗余存储](disks-redundancy.md#zone-redundant-storage-for-managed-disks)
 
 ## <a name="limitations"></a>限制
 

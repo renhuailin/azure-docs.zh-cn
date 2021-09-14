@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: c82bce78f82e28d4accc97ec816e6b1edc9346cf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ad8a365550b25906c7fb4fabda725b21abe97417
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746942"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123477755"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure 虚拟 WAN 和远程工作支持
 
@@ -51,7 +51,7 @@ Azure 虚拟 WAN 是一个网络服务，其中整合了多种网络、安全和
 
 ## <a name="additional-information"></a><a name="other considerations"></a>其他信息
 
-虚拟 WAN 在每个区域/位置支持多个中心。 有关位置信息，请参阅[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)一文。 每个中心最多支持 10,000 个远程用户连接、1,000 个分支连接、四条 ExpressRoute 线路和最多 500 个虚拟网络连接。 增加远程用户时，如有任何疑问，请随时向 azurevirtualwan@microsoft.com 发送电子邮件以寻求帮助。 如需技术支持，请确保在 Azure 门户中开具支持票证，我们将随时提供帮助。
+虚拟 WAN 在每个区域/位置支持多个中心。 有关位置信息，请参阅[虚拟 WAN 合作伙伴和位置](virtual-wan-locations-partners.md)一文。 每个中心最多支持 100,000 个远程用户连接、1,000 个分支连接、四条 ExpressRoute 线路和最多 500 个虚拟网络连接。 增加远程用户时，如有任何疑问，请随时向 azurevirtualwan@microsoft.com 发送电子邮件以寻求帮助。 如需技术支持，请确保在 Azure 门户中开具支持票证，我们将随时提供帮助。
 
 ## <a name="faq"></a><a name="faq"></a>常见问题解答
 

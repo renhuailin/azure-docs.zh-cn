@@ -5,19 +5,22 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/30/2021
+ms.date: 09/01/2021
 ms.author: tisande
-ms.openlocfilehash: 2aa08f0d2cf0ccb78d231e30e7c60cde47ba4c86
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 50d30ac0636f74715b3472c35b2801ac6452b624
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206222"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428791"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 GROUP BY 子句
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
 GROUP BY 子句按照一个或多个指定属性的值来拆分查询的结果。
+
+> [!NOTE]
+> Azure Cosmos DB Python SDK 不支持 GROUP BY 子句。
 
 ## <a name="syntax"></a>语法
 
@@ -44,7 +47,7 @@ GROUP BY 子句按照一个或多个指定属性的值来拆分查询的结果�
   当查询使用 GROUP BY 子句时，SELECT 子句只能包含包括在 GROUP BY 子句中的属性和系统函数的一部分。 一个例外是[聚合函数](sql-query-aggregate-functions.md)，此类函数可以出现在 SELECT 子句中，但不需包含在 GROUP BY 子句中。 也可始终在 SELECT 子句中包含文本值。
 
   GROUP BY 子句必须位于 SELECT、FROM 和 WHERE 子句后面，OFFSET LIMIT 子句前面。 目前不能将 GROUP BY 和 ORDER BY 子句配合使用，但这已在计划内。
-
+  
   GROUP BY 子句不允许下述任何项：
   
 - 别名属性或别名系统函数（在 SELECT 子句中，别名仍然是允许的）

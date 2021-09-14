@@ -8,12 +8,12 @@ ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/16/2021
-ms.openlocfilehash: f4ae3d0653ce99be2017b1ef08ca0645c599ee10
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd0fb07ad96d9897859281ef368452c96798d542
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740989"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428643"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>用于 Azure 数据工厂的 Azure 专用链接
 
@@ -75,8 +75,8 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
 
 | 名称 | 类型 | Value |
 | ---------- | -------- | --------------- |
-| DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
-| DataFactoryA.{region}.privatelink.datafactory.azure.net | CNAME   | < 数据工厂服务公共终结点 > |
+| DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.datafactory.azure.net |
+| DataFactoryA.{region}.datafactory.azure.net | CNAME   | < 数据工厂服务公共终结点 > |
 | < 数据工厂服务公共终结点 >  | A | < 数据工厂服务公共 IP 地址 > |
 
 当 DataFactoryA 的 DNS 资源记录由托管专用终结点的 VNet 解析时，将为：
@@ -86,7 +86,7 @@ Azure 数据工厂与客户虚拟网络之间需要几个信道，如下表所�
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
 | DataFactoryA.{region}.privatelink.datafactory.azure.net   | A | < private endpoint IP address > |
 
-如果在网络上使用自定义 DNS 服务器，则客户端必须能够将数据工厂终结点的 FQDN 解析为专用终结点 IP 地址。 应配置 DNS 服务器以将专用链接子域委托到 VNet 的专用 DNS 区域，或者使用专用终结点 IP 地址为“DataFactoryA.{region}.privatelink.datafactory.azure.net”配置 A 记录。
+如果在网络上使用自定义 DNS 服务器，则客户端必须能够将数据工厂终结点的 FQDN 解析为专用终结点 IP 地址。 应配置 DNS 服务器以将专用链接子域委托到 VNet 的专用 DNS 区域，或者使用专用终结点 IP 地址为“DataFactoryA.{region}.datafactory.azure.net”配置 A 记录。
 
 有关配置自己的 DNS 服务器以支持专用终结点的详细信息，请参阅以下文章：
 - [Azure 虚拟网络中资源的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)

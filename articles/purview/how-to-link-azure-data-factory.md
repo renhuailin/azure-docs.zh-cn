@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 08/25/2021
-ms.openlocfilehash: 31ac845591387ec0c7061945e3324cd5249d7b23
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 40b1652bec99844675e030cfd12ef8ff28a0f01f
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037792"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435449"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何连接 Azure 数据工厂和 Azure Purview
 
@@ -102,6 +102,10 @@ Azure Purview 从以下 Azure 数据工厂活动捕获运行时世系：
 ### <a name="execute-ssis-package-support"></a>执行 SSIS 包支持
 
 请参阅[支持的数据存储](how-to-lineage-sql-server-integration-services.md#supported-data-stores)。
+
+## <a name="access-secured-azure-purview-account"></a>访问受保护的 Azure Purview 帐户
+      
+如果你的 Purview 帐户受防火墙保护，请了解如何使数据工厂能够通过 Purview 专用终结点[访问受保护的 Purview 帐户](../data-factory/how-to-access-secured-purview-account.md)。
 
 ## <a name="bring-data-factory-lineage-into-purview"></a>将数据工厂世系引入 Purview
 

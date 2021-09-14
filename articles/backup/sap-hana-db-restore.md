@@ -2,13 +2,13 @@
 title: 还原 Azure VM 上的 SAP HANA 数据库
 description: 本文介绍如何还原在 Azure 虚拟机上运行的 SAP HANA 数据库。 还可以使用“跨区域还原”将数据库还原到次要区域。
 ms.topic: conceptual
-ms.date: 08/06/2021
-ms.openlocfilehash: c6ad108cc0377411c144fade97b3fec2c5a8b633
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/01/2021
+ms.openlocfilehash: 7bf9734cafa003132fdef97026c76c8bdf8b329d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727091"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426483"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>还原 Azure VM 上的 SAP HANA 数据库
 
@@ -127,6 +127,9 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
 1. 在“选择还原点”中选择“日志(时间点)”，以[还原到特定的时间点](#restore-to-a-specific-point-in-time)。  或者选择“完整和差异”以[还原到特定的恢复点](#restore-to-a-specific-recovery-point)。
 
 ### <a name="restore-as-files"></a>作为文件还原
+
+>[!Note]
+>“作为文件还原”不适用于 CIFS 共享，但适用于 NFS。
 
 若要将备份数据作为文件而不是数据库还原，请选择“作为文件还原”。 文件转储到指定路径后，可以将这些文件移动到要将其还原为数据库的任何 SAP HANA 计算机上。 由于可以将这些文件移动到任何计算机，你现在可以跨订阅和区域进行数据还原。
 
@@ -254,7 +257,7 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
 
 作为还原选项之一，跨区域还原 (CRR) 允许你在某个次要区域（Azure 配对区域）中还原 Azure VM 上托管的 SAP HANA 数据库。
 
-若要载入功能，请阅读[“开始之前”部分](./backup-create-rs-vault.md#set-cross-region-restore)。
+要加入此功能，请阅读[“开始之前”部分](./backup-create-rs-vault.md#set-cross-region-restore)。
 
 若要查看是否启用了 CRR，请按照[配置跨区域还原](backup-create-rs-vault.md#configure-cross-region-restore)中的说明进行操作
 
@@ -274,7 +277,7 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
 
 ### <a name="restore-in-secondary-region"></a>在次要区域中进行还原
 
-次要区域还原用户体验将类似于主要区域还原用户体验。 在“还原配置”窗格中配置详细信息以配置还原时，系统会提示你仅提供次要区域参数。 次要区域中应有保管库，并且应将 SAP HANA 服务器注册到次要区域中的保管库。
+次要区域还原用户体验将类似于主要区域还原用户体验。 在“还原配置”窗格中配置详细信息以配置还原时，系统会提示你仅提供次要区域参数。 保管库应位于次要区域，并且应将 SAP HANA 服务器注册到次要区域中的保管库。
 
 ![在何处还原以及如何还原](./media/sap-hana-db-restore/restore-secondary-region.png)
 
@@ -282,7 +285,7 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
 
 >[!NOTE]
 >* 在触发还原后并处于数据传输阶段时，无法取消还原作业。
->* 跨区域执行还原操作所需的角色/访问级别为：订阅中的备份操作员角色，以及源和目标虚拟机上参与者（写入）访问权限。  若要查看备份作业，至少需要订阅中的备份阅读者权限。
+>* 在跨区域中执行存储操作所需的角色/访问级别是订阅中的“备份操作员”角色和源及目标虚拟机上的“参与者（写入）”访问权限 。 要查看备份作业，备份读者将是订阅中所需的最低权限。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>监视次要区域还原作业
 

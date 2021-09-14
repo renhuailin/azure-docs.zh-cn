@@ -9,18 +9,16 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 37367cc4608c1bfbf9c621388bcbc6ecaabd8aa4
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 0d06e40fc33a713904fb171a3a44ba8e977a254f
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679315"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123467623"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob 存储中的更改源支持
 
 更改源的用途是提供存储帐户中 Blob 和 Blob 元数据发生的所有更改的事务日志。 更改源提供这些更改的有序、有保证、持久、不可变、只读的日志。     客户端应用程序可以在流式处理或批处理模式下随时读取这些日志。 使用更改源可以生成高效且可缩放的解决方案，因此能够以较低的成本处理 Blob 存储帐户中发生的更改事件。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-the-change-feed-works"></a>更改源的工作原理
 
@@ -298,6 +296,17 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 - segments.json 文件的 `LastConsumable` 属性不会列出更改源最终处理的第一个段。 此问题只会在对第一个段进行最终处理之后才出现。 第一个小时之后的所有后续段会准确捕获到 `LastConsumable` 属性中。
 - 目前，在调用 ListContainers API 时看不到 $blobchangefeed 容器，且在 Azure 门户或存储资源管理器中也看不到该容器。 可以通过直接在 $blobchangefeed 容器上调用 ListBlobs API 来查看内容。
 - 以前启动了[帐户故障转移](../common/storage-disaster-recovery-guidance.md)的存储帐户可能会出现不显示日志文件的问题。 将来的任何帐户故障转移也可能会影响日志文件。
+
+## <a name="feature-support"></a>功能支持
+
+此表显示了你的帐户如何支持此功能，以及当你启用某些功能时对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) | 
+| 高级块 blob          | ![否](../media/icons/no-icon.png)|![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
 
 ## <a name="faq"></a>常见问题
 

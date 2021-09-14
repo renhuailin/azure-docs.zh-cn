@@ -4,12 +4,12 @@ description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aa48731248c9e51d680bc0e1b396115c54edbcd7
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: d44de94ef30976a35bbfeddf68b60068b952fbde
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260846"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450874"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -19,7 +19,7 @@ ms.locfileid: "123260846"
 
 | 入门 | 概念| 场景/示例 |
 |--|--|--|
-| <ul><li>[使用 Visual Studio Code 的 Python 函数](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[使用终端/命令提示符的 Python 函数](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[性能&nbsp;注意事项](functions-best-practices.md)</li></ul> | <ul><li>[图像分类与 PyTorch](machine-learning-pytorch.md)</li><li>[Azure 自动化示例](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[将机器学习与 TensorFlow 配合使用](functions-machine-learning-tensorflow.md)</li><li>[浏览 Python 示例](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+| <ul><li>[使用 Visual Studio Code 的 Python 函数](./create-first-function-vs-code-python.md)</li><li>[使用终端/命令提示符的 Python 函数](./create-first-function-cli-python.md)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[性能&nbsp;注意事项](functions-best-practices.md)</li></ul> | <ul><li>[图像分类与 PyTorch](machine-learning-pytorch.md)</li><li>[Azure 自动化示例](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[将机器学习与 TensorFlow 配合使用](functions-machine-learning-tensorflow.md)</li><li>[浏览 Python 示例](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 > [!NOTE]
 > 尽管可以[在 Windows 上本地开发基于 Python 的 Azure Functions](create-first-function-vs-code-python.md#run-the-function-locally)，但仅在 Azure 中运行时，基于 Linux 的托管计划才支持 Python。 请参阅支持的[操作系统/运行时](functions-scale.md#operating-systemruntime)组合列表。
@@ -267,13 +267,11 @@ def main(req):
 
 ### <a name="log-custom-telemetry"></a>记录自定义遥测数据
 
-默认通过 Functions 运行时为 Functions 应用收集日志遥测。 此遥测最终会作为 Application Insights 中的跟踪。 默认情况下，某些 Azure 服务的请求和依赖项遥测还通过[函数绑定](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings?tabs=csharp#supported-bindings)进行收集。 若要收集自定义请求/依赖项遥测（不通过绑定），可以使用 [OpenCensus Python 扩展](https://github.com/census-ecosystem/opencensus-python-extensions-azure)将自定义遥测数据发送到 Application Insights 实例。
-
-可以在[此处](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib)找到支持的库的列表。
+默认情况下，函数运行时会收集函数生成的日志和其他遥测数据。 此遥测最终会作为 Application Insights 中的跟踪。 默认情况下，某些 Azure 服务的请求和依赖项遥测还通过[触发器和绑定](functions-triggers-bindings.md#supported-bindings)进行收集。 若要收集自定义请求和自定义依赖项遥测（在绑定之外），可以使用 [OpenCensus Python 扩展](https://github.com/census-ecosystem/opencensus-python-extensions-azure)将自定义遥测数据发送到 Application Insights 实例。 可以在 [OpenCensus 存储库](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib)中找到受支持的扩展的列表。
 
 >[!NOTE]
-> 若要使用 OpenCensus Python 扩展，需要在 `local.settings.json` 和应用程序设置中将 `PYTHON_ENABLE_WORKER_EXTENSIONS` 设置为 `1` 来启用 [Python 扩展](#python-worker-extensions)
->
+>若要使用 OpenCensus Python 扩展，需要通过在[应用程序设置](functions-how-to-use-azure-function-app-settings.md#settings)中将 `PYTHON_ENABLE_WORKER_EXTENSIONS` 设置为 `1`，在函数应用中启用 [Python 辅助角色扩展](#python-worker-extensions)。
+
 
 ```
 // requirements.txt

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 08ac1ae09741b63648aec2b51b6a774a46b9af7c
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 548dcc59ae0303022f4807add5764b55b313f683
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818433"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123438941"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -53,7 +53,7 @@ Key Vault 使用的 Azure AD 身份验证要求 Azure AD 安全主体授予访�
 
 ### <a name="authentication-best-practices"></a>身份验证最佳做法
 
-建议对部署到 Azure 的应用程序使用托管标识。 如果使用不支持托管标识的 Azure 服务或应用程序是在本地部署的，则可以选择[有证书的服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 在这种情况下，证书应存储在 Key Vault 中并经常轮换。 具有机密的服务主体可用于开发和测试环境，建议在本地或在 Cloud Shell 中使用用户主体。
+建议对部署到 Azure 的应用程序使用托管标识。 如果使用不支持托管标识的 Azure 服务或应用程序是在本地部署的，则可以选择[有证书的服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 在这种情况下，证书应存储在 Key Vault 中并频繁轮换。 具有机密的服务主体可用于开发和测试环境，建议在本地或在 Cloud Shell 中使用用户主体。
 
 每个环境的建议安全主体：
 - **生产环境**：
@@ -85,29 +85,69 @@ Key Vault 使用的 Azure AD 身份验证要求 Azure AD 安全主体授予访�
 
 对密钥、机密和证书的访问由数据平面控制。 可以使用本地保管库访问策略或 Azure RBAC 完成数据平面访问控制。
 
-**密钥 API 和 SDK**
+### <a name="keys-apis-and-sdks"></a>密钥 API 和 SDK
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
 |[引用](/cli/azure/keyvault/key)<br>[快速入门](../keys/quick-create-cli.md)|[引用](/powershell/module/az.keyvault/)<br>[快速入门](../keys/quick-create-powershell.md)|[引用](/rest/api/keyvault/#key-operations)|[引用](/azure/templates/microsoft.keyvault/vaults/keys)<br>[快速入门](../keys/quick-create-template.md)|[引用](/dotnet/api/azure.security.keyvault.keys)<br>[快速入门](../keys/quick-create-net.md)|[引用](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[快速入门](../keys/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)<br>[快速入门](../keys/quick-create-java.md)|[引用](/javascript/api/@azure/keyvault-keys/)<br>[快速入门](../keys/quick-create-node.md)|
 
-**证书 API 和 SDK**
+### <a name="certificates-apis-and-sdks"></a>证书 API 和 SDK
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
 |[引用](/cli/azure/keyvault/certificate)<br>[快速入门](../certificates/quick-create-cli.md)|[引用](/powershell/module/az.keyvault)<br>[快速入门](../certificates/quick-create-powershell.md)|[引用](/rest/api/keyvault/#certificate-operations)|空值|[引用](/dotnet/api/azure.security.keyvault.certificates)<br>[快速入门](../certificates/quick-create-net.md)|[引用](/python/api/overview/azure/keyvault-certificates-readme)<br>[快速入门](../certificates/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)<br>[快速入门](../certificates/quick-create-java.md)|[引用](/javascript/api/@azure/keyvault-certificates/)<br>[快速入门](../certificates/quick-create-node.md)|
 
-**机密 API 和 SDK**
+### <a name="secrets-apis-and-sdks"></a>机密 API 和 SDK
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
 |[引用](/cli/azure/keyvault/secret)<br>[快速入门](../secrets/quick-create-cli.md)|[引用](/powershell/module/az.keyvault/)<br>[快速入门](../secrets/quick-create-powershell.md)|[引用](/rest/api/keyvault/#secret-operations)|[引用](/azure/templates/microsoft.keyvault/vaults/secrets)<br>[快速入门](../secrets/quick-create-template.md)|[引用](/dotnet/api/azure.security.keyvault.secrets)<br>[快速入门](../secrets/quick-create-net.md)|[引用](/python/api/overview/azure/keyvault-secrets-readme)<br>[快速入门](../secrets/quick-create-python.md)|[引用](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-secrets/4.2.0/index.html)<br>[快速入门](../secrets/quick-create-java.md)|[引用](/javascript/api/@azure/keyvault-secrets/)<br>[快速入门](../secrets/quick-create-node.md)|
 
+### <a name="secrets-usage"></a>机密使用情况
+Azure Key Vault 机密组件只能用于为应用程序存储机密。 对于任何非机密对象，应使用 [Azure 应用程序配置](https://docs.microsoft.com/azure/azure-app-configuration/overview)。
+
+- 应存储在 Key Vault 中的机密的示例：
+    - 客户端应用程序机密
+    - 连接字符串
+    - 密码
+    - 共享访问密钥
+    - SSH 密钥
+
+- 应存储在应用程序配置中的非机密的示例：
+    - 客户端应用程序 ID
+    - IP 地址
+    - 服务终结点
+    - 服务配置参数
+    - 用户名
+
+### <a name="references"></a>参考 
+
 有关安装包和源代码的信息，请参阅[客户端库](client-libraries.md)。
 
 有关 Key Vault 数据平面安全性的详细信息，请参阅 [Azure Key Vault 安全功能](security-features.md)。
 
-### <a name="code-examples"></a>代码示例
+### <a name="using-key-vault-in-applications"></a>在应用程序中使用 Key Vault
+
+建议使用现有的 Key Vault SDK 以在应用程序中使用机密、证书和密钥，从而利用 Key Vault 中的最新功能。 Key Vault SDK 和 REST API 由我们的团队发布，因为我们为该产品发布了新功能，并遵循我们的最佳做法和指导原则。
+
+#### <a name="libraries-and-integration-solutions-for-limited-usage-scenarios"></a>适用于有限使用方案的库和集成解决方案
+对于基本方案，还有其他简化使用的解决方案，由合作伙伴团队或开源社区提供支持。
+
+##### <a name="certificates"></a>证书：
+- 通过 Key Vault VM 扩展，可自动刷新 Azure Key Vault 库中存储的证书。 
+    - [适用于 Windows 的 Key Vault 虚拟机扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows)
+    - [适用于 Linux 的 Key Vault 虚拟机扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+    - [适用于已启用 Azure Arc 的服务器的 Key Vault 虚拟机扩展](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#azure-key-vault-vm-extension)
+ - Azure 应用服务 Key Vault 证书集成，可从 Key Vault 导入并自动刷新证书
+     - [通过 Key Vault 部署 Azure Web 应用证书](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
+
+##### <a name="secrets"></a>机密：
+- 将 Key Vault 机密用于应用服务应用程序设置
+    - [使用应用服务和 Azure Functions 的 Key Vault 引用](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references)
+- 将 Key Vault 机密与应用程序配置服务用于托管在 Azure VM 中的应用程序
+    - [使用应用程序配置和 Key Vault 配置应用程序](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/app-secrets-configuration/)
+
+## <a name="code-examples"></a>代码示例
 
 有关在应用程序中使用密钥保管库的完整示例，请参阅：
 
@@ -119,7 +159,6 @@ Key Vault 使用的 Azure AD 身份验证要求 Azure AD 安全主体授予访�
 
 - [访问防火墙后面的密钥保管库](access-behind-firewall.md) - 若要访问密钥保管库，密钥保管库客户端应用程序需要能够访问多个终结点才能使用各种功能。
 - 如何将证书从 Key Vault 部署到 VM - [Windows](../../virtual-machines/extensions/key-vault-windows.md)、[Linux](../../virtual-machines/extensions/key-vault-linux.md) - 在 Azure VM 中运行的云应用程序需要证书。 现在，如何将此证书部署到此 VM 中？
-- [通过 Key Vault 部署 Azure Web 应用证书](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
 - 分配访问策略（[CLI](assign-access-policy-cli.md) | [PowerShell](assign-access-policy-powershell.md) | [门户](assign-access-policy-portal.md)）。 
 - [如何将 Key Vault 软删除与 CLI 配合使用](./key-vault-recovery.md)介绍了 Key Vault 的使用和生命周期以及各种已启用软删除的 Key Vault 对象。
 - [如何在部署期间传递安全值（如密码）](../../azure-resource-manager/templates/key-vault-parameter.md) - 需要在部署期间以参数形式传递安全值（例如密码）时，可以将该值存储为 Azure Key Vault 中的机密，并在其他资源管理模板中引用该值。
@@ -132,7 +171,7 @@ Key Vault 使用的 Azure AD 身份验证要求 Azure AD 安全主体授予访�
 - [Azure 信息保护](/azure/information-protection/plan-implement-tenant-key)允许管理自己的租户密钥。 例如，不是由 Microsoft 管理租户密钥（默认设置），可以管理自己的租户密钥，以遵守适用于组织的具体规定。 管理自己的租户密钥也称为自带密钥（简称 BYOK）。
 - 使用 [Azure 专用链接服务](private-link-service.md)，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure Key Vault、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
 - 通过将 Key Vault 与[事件网格](../../event-grid/event-schema-key-vault.md)集成，用户可以在密钥保管库中存储的机密的状态发生更改时收到通知。 可以将新版本的机密分发到应用程序，也可以轮换即将到期的机密，以防止中断。
-- 可以防止自己的 [Azure Devops](/azure/devops/pipelines/release/azure-key-vault) 机密在 Key Vault 中被意外访问。
+- 可以防止自己的 [Azure DevOps](/azure/devops/pipelines/release/azure-key-vault) 机密在 Key Vault 中被意外访问。
 - [使用 DataBricks 的密钥保管库中存储的机密连接到 Azure 存储](./integrate-databricks-blob-storage.md)
 - 为 Kubernetes 上的[机密存储 CSI 驱动程序](./key-vault-integrate-kubernetes.md)配置并运行 Azure Key Vault 提供程序
 
@@ -146,3 +185,4 @@ Key Vault 使用的 Azure AD 身份验证要求 Azure AD 安全主体授予访�
 
 - [密钥保管库博客](/archive/blogs/kv/)
 - [密钥保管库论坛](https://aka.ms/kvforum)
+- [Key Vault 的 Stack Overflow](https://stackoverflow.com/questions/tagged/azure-keyvault)

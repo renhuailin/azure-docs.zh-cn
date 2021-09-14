@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d0280b8af673ebcf994ca537cbc929f9035a8d6d
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ed3f02f6bf4c9a7b53a63f31163663c59c0edc88
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556489"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451018"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure 认知搜索的导入数据向导
 
@@ -82,16 +82,15 @@ Azure 门户在 Azure 认知搜索仪表板上提供了“导入数据”向导�
 | [技能集](/rest/api/searchservice/create-skillset) | 用于操作、转换和调整内容（包括分析和提取图像文件中的信息）的完整指令集。 它包括对提供扩充的认知服务资源的引用，但非常简单的和受限制的结构除外。 它还可能包含知识存储定义。  | 
 | [索引器](/rest/api/searchservice/create-indexer)  | 一个配置对象，指定数据源、目标索引、可选计划，以及有关错误处理和 base-64 编码的可选技能集、可选计划和可选配置设置。 |
 
-
 ## <a name="how-to-start-the-wizard"></a>如何启动向导
 
 可以通过服务“概述”页上的命令栏启动“导入数据”向导。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，从仪表板打开搜索服务页，或者在服务列表中[查找服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
 
-2. 在顶部服务概述页中，单击“导入数据”  。
+1. 在顶部服务概述页中，单击“导入数据”  。
 
-   ![门户中的“导入数据”命令](./media/search-import-data-portal/import-data-cmd2.png "启动“导入数据”向导")
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd.png" alt-text="“导入数据”命令的屏幕截图" border="true":::
 
 还可以通过其他 Azure 服务（包括 Azure Cosmos DB、Azure SQL 数据库、SQL 托管实例和 Azure Blob 存储）启动“导入数据”。 在服务概述页上的左侧导航窗格中查找“添加 Azure 认知搜索”。
 

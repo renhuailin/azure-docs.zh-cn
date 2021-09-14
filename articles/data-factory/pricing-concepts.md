@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: pricing
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: a5032ce26fcce2dbee2a95385292c5b455904586
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/07/2021
+ms.openlocfilehash: 8044df075fc5c5666bd30af3b7a01ee7e28c958d
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749900"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537529"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
 
@@ -125,6 +125,16 @@ ms.locfileid: "121749900"
   - 数据移动活动 = $0.166（以 10 分钟的执行时间按比例计算。 Azure Integration Runtime 上的定价为 $0.25/小时）
   - 管道活动 = $0.00003（以 1 分钟的执行时间按比例计算。 Azure Integration Runtime 上的定价为 $0.002/小时）
   - 外部管道活动 = $0.000041（以 10 分钟的执行时间按比例计算。 Azure Integration Runtime 上的定价为 $0.00025/小时）
+
+## <a name="run-ssis-packages-on-azure-ssis-integration-runtime"></a>在 Azure-SSIS 集成运行时上运行 SSIS 包
+
+Azure-SSIS 集成运行时 (IR) 是 Azure 虚拟机 (VM) 的一个专用群集，用于在 Azure 数据工厂 (ADF) 中执行 SSIS 包。 当你进行预配后，它将是你专用的，因此，只要你保持它的运行状态，无论你是否用它来执行 SSIS 包，它都会像任何其他专用 Azure VM 一样被收取费用。 有关其运行成本，可以在 ADF 门户的“设置”窗格中看到每小时估算值，例如：  
+
+![SSIS 定价示例](media/pricing-concepts/ssis-pricing-example.png)
+
+在以上示例中，如果使 Azure-SSIS IR 保持运行状态 2 小时，则费用为：2（小时）x 1.158 美元/小时 = 2.316 美元。
+
+若要管理 Azure-SSIS IR 运行成本，可以纵向缩减 VM 大小、横向缩减群集大小、通过 Azure 混合权益 (AHB) 选项自带 SQL Server 许可证，这样可以节省大量成本，请参阅 [Azure-SSIS IR 定价](https://azure.microsoft.com/pricing/details/data-factory/ssis/)，并且/或者在方便的时候/根据需求/刚好是处理 SSIS 工作负载时，启动和停止 Azure-SSIS IR，请参阅[重新配置 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md#to-reconfigure-an-azure-ssis-ir) 和[计划 Azure-SSIS IR](how-to-schedule-azure-ssis-integration-runtime.md)。
 
 ## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>使用适合正常工作日的映射数据流调试
 

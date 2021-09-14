@@ -10,18 +10,16 @@ ms.date: 05/10/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1742679fbca38b878325bd56fa01fc2efebf4f82
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 0641a7357a334847bc52c3089eb4cf36cc3e3175
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733693"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123467603"
 ---
 # <a name="blob-versioning"></a>Blob 版本控制
 
 可以启用 Blob 存储版本控制来自动维护对象的先前版本。 启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原 blob 的先前版本以恢复数据。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="recommended-data-protection-configuration"></a>推荐的数据保护配置
 
@@ -297,6 +295,17 @@ Blob 存储无法确定两个块是否包含相同的数据。 每个上传和�
 |-|-|
 | 如果同时启用了 blob 软删除和版本控制 | 所有现有版本（按完整内容长度），不考虑层级。 |
 | 如果启用了 blob 软删除但禁用了版本控制 | 所有现有软删除快照（按完整内容长度），不考虑层级。 |
+
+## <a name="feature-support"></a>功能支持
+
+此表显示了你的帐户如何支持此功能，以及当你启用某些功能时对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png) |![否](../media/icons/no-icon.png)              | ![否](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
 
 ## <a name="see-also"></a>另请参阅
 

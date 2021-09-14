@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 08/31/2021
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 726507fa6ea0651b23d46424bda669a2d8ad41e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 945679db60f78e03d8f4385acdbc97d8155922bb
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95996638"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434477"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中请求访问某个访问包
 
@@ -86,6 +86,9 @@ ms.locfileid: "95996638"
 在系统授予你对访问包的访问权限之前，你可能会请求访问需要业务理由和其他请求者信息的访问包。 填写访问该访问包所需的所有请求者信息。
 
 ![“我的访问权限”门户 - 请求访问 - 填写请求者信息](./media/entitlement-management-request-access/my-access-requestor-information.png)
+
+> [!NOTE]
+> 你可能会注意到，一些其他请求程序信息具有预先填充的值。 如果你的帐户已设置了属性信息（来自以前的请求或其他进程），则通常会发生这种情况。 这些值可以是可编辑的，也可以是不可编辑的，具体取决于所选策略的设置。
 
 ## <a name="resubmit-a-request"></a>重新提交请求
 

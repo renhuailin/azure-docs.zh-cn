@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: e943452a285f943c05982a558c92315428e9829c
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: fb7a16824ccb74ad2cab7c0175532d297ebaf88c
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729526"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451198"
 ---
 # <a name="index-data-using-power-query-connectors-preview"></a>使用 Power Query 连接器（预览版）为数据编制索引
 
@@ -63,7 +63,7 @@ Power Query 连接器用于索引器中。 Azure 认知搜索中的索引器是�
 ### <a name="step-2--start-import-data-wizard"></a>步骤 2 - 启动“导入数据”向导
 在批准你使用该预览版后，Azure 认知搜索团队将会提供 Azure 门户链接，该链接会使用功能标志，以便你可以访问 Power Query 连接器。 请打开此页面，并通过选择“导入数据”，从 Azure 认知搜索服务页中的命令栏中启动该向导。
 
-![门户中的“导入数据”命令](./media/search-import-data-portal/import-data-cmd2.png "启动“导入数据”向导")
+:::image type="content" source="media/search-import-data-portal/import-data-cmd.png" alt-text="“导入数据”命令的屏幕截图" border="true":::
 
 ### <a name="step-3--select-your-data-source"></a>步骤 3 – 选择数据源
 使用此预览版时，可以从几个数据源拉取数据。 所有使用 Power Query 的数据源都将在它们的磁贴上包含“由 Power Query 提供支持”。 选择数据源。 

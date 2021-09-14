@@ -8,20 +8,28 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1ce7254f92c4cc3d2a7dcf77885be88eda37099b
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: babc9da622fdca1365d5b963191775881ad992e8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113567952"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431921"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>配置组所有者对应用访问组数据的同意
 
 组和团队所有者可授权应用程序（如第三方供应商发布的应用程序）访问你的组织中与组关联的数据。 例如，Microsoft Teams 中的团队所有者可允许应用读取团队中的所有 Teams 消息，或允许列出组成员的基本个人资料。 若要了解详细信息，请参阅 [Microsoft Teams 中的资源特定同意](/microsoftteams/resource-specific-consent)。
+
+## <a name="prerequisites"></a>先决条件
+
+要完成本指南中的任务，需具备以下各项：
+
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 全局管理员角色。
+- 安装 Azure AD PowerShell。 请参阅 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/)
 
 ## <a name="manage-group-owner-consent-to-apps"></a>管理组所有者对应用的同意
 

@@ -7,20 +7,20 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: anavin
-ms.openlocfilehash: 71472a89b2aa3138c83dac1f5c2dfc5649c9b9ce
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: e51a74ef4f01bda57e7cdef026aed9aa85111ca3
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112583160"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437393"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> 排查出站连接故障
 
-本文旨在为 Azure 负载均衡器的出站连接可能出现的常见问题提供解决方法。 客户遇到的大多数出站连接问题都是由于源网络地址转换 (SNAT) 端口耗尽和连接超时（导致数据包丢失）。 本文提供了用于缓解上述每个问题的步骤。
+本文旨在为 Azure 负载均衡器的出站连接可能出现的常见问题提供解决方法。 客户遇到的大多数出站连接问题是由于源网络地址转换 (SNAT) 端口耗尽和连接超时导致数据包丢失。 本文提供了用于缓解上述每个问题的步骤。
 
 ## <a name="avoid-snat"></a>避免 SNAT
 
-避免 SNAT 端口耗尽的最好方法是尽可能先消除对 SNAT 的需求。 在某些情况下，可能无法执行此操作。 例如，在连接到公共终结点时。 但在某些情况下，这是可能的，可以通过私下连接到资源来实现。 如果连接到 Azure 服务（如存储、SQL、Cosmos DB 或任何其他[此处列出的 Azure 服务](../private-link/availability.md)），则利用 Azure 专用链接无需 SNAT。 因此，你不会因 SNAT 端口耗尽而面临潜在连接问题的风险。
+要避免 SNAT 端口耗尽，最佳方法是首先尽可能消除对 SNAT 的需要。 在某些情况下，可能无法执行此操作。 例如，在连接到公共终结点时。 但在某些情况下，这是可能的，并且可通过以专用方式连接到资源来实现。 如果连接到 Azure 服务（如存储、SQL、Cosmos DB 或[此处列出的任何其他 Azure 服务](../private-link/availability.md)），则利用 Azure 专用链接无需使用 SNAT。 这样，你就不会因 SNAT 端口耗尽而面临潜在的连接问题。
 
 Snowflake、MongoDB、Confluent、Elastic 等服务也支持专用链接服务。
 

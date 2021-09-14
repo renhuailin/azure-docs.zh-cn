@@ -5,12 +5,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的默认配额、受限制
 services: container-service
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: ea32c0e58894fe57a51cd22fccce8b2fb2fb0489
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 6e965bd958b23598f7b11dcf9a12dafb33f26680
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762299"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437881"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和适用地区
 
@@ -30,6 +30,10 @@ ms.locfileid: "113762299"
 > 升级 AKS 群集时，会临时使用其他资源。 这些资源包括虚拟网络子网或虚拟机 vCPU 配额中的可用 IP 地址。 
 >
 > 对于 Windows Server 容器，可以执行升级操作来应用最新的节点更新。 如果没有可用的 IP 地址空间或 vCPU 配额来处理这些临时资源，群集升级流程将失败。 有关 Windows Server 节点升级过程的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
+
+## <a name="supported-vm-sizes"></a>支持的 VM 大小
+
+AKS 中支持的 VM 大小列表会随着 Azure 中新 VM SKU 的发布而不断扩充。 请关注 [AKS 发行说明](https://github.com/Azure/AKS/releases)以随时了解新的受支持 SKU。
 
 ## <a name="restricted-vm-sizes"></a>受限制的 VM 大小
 

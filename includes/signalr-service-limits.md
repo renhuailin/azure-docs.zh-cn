@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/11/2020
 ms.author: zhshang
-ms.openlocfilehash: 328a3d088ea21ec55f5e06cfbfc307fca2b03afa
-ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
+ms.openlocfilehash: f5b197448529e953d5d7d188b00a88d60e87e900
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113644360"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123453678"
 ---
 | 资源 | 默认限制 | 最大限制 | 
 | --- | --- | --- |
@@ -36,3 +36,7 @@ ms.locfileid: "113644360"
 若要请求更新订阅的默认限制，请开具支持票证。
 
 有关如何对连接和消息进行计数的详细信息，请参阅 [Azure SignalR 服务中的消息和连接](../articles/azure-signalr/signalr-concept-messages-and-connections.md)。
+
+如果你的要求超过了限制，请从免费层切换到标准层并添加单元。 有关详细信息，请参阅[如何缩放 Azure SignalR 服务实例？](../articles/azure-signalr/signalr-howto-scale-signalr.md)。 
+
+如果你的要求超过了单个实例的限制，请添加实例。 有关详细信息，请参阅[如何使用多个实例扩展 SignalR 服务？](../articles/azure-signalr/signalr-howto-scale-multi-instances.md)。

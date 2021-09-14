@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47815bcca9c6630392cb86284d8e8c3cf4d08e67
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 39855746d6cfc52ada19850d6bc9650b3e95a54a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733189"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437357"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>将品牌添加到组织的 Azure Active Directory 登录页面
 使用组织的徽标和自定义颜色方案，在 Azure Active Directory (Azure AD) 登录页面上提供一致外观和体验。 用户登录到组织的基于 Web 的应用（例如 Microsoft 365，它使用 Azure AD 作为标识提供者时）时，将显示登录页面。
@@ -88,6 +88,9 @@ ms.locfileid: "113733189"
             图像大小不能超过 240 x 240 像素，并且其中的文件的大小必须小于 10 KB。 我们建议使用透明图像，因为背景可能与徽标背景不匹配。 我们还建议不要在图像周围添加填充，否则可能会使徽标看起来很小。
     
         - **方形徽标，深色主题。** 与上面的方形徽标图像相同。 当在深色背景下使用（例如在开箱即用体验 (OOBE) 中使用已加入 Windows 10 Azure AD 的屏幕）时，此徽标图像取代方形徽标图像。  如果徽标在白色、深蓝色和黑色背景上看起来不错，则无需添加此图像。 
+        
+            >[!IMPORTANT]
+            > 方形徽标图像支持透明徽标。 但是，透明徽标中使用的调色板可能与使用方形徽标图像的 Microsoft 365 应用和服务中所用的背景（例如，白色、浅灰色、深灰色和黑色背景）冲突。 可能需要使用纯色背景来确保在所有情况下都能正确呈现方形图像徽标。
         
         - **显示保持登录状态的选项。** 你可以选择让用户保持一直登录到 Azure AD 的状态，直到明确注销。如果选择“否”，则此选项将被隐藏，用户每次关闭并重新打开浏览器时必须登录。
 

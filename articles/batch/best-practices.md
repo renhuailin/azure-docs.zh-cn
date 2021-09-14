@@ -1,14 +1,14 @@
 ---
 title: 最佳做法
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
-ms.date: 04/29/2021
+ms.date: 09/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: db67f91257db1ddb44f7dfb103ac02e49febe562
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 5227b738ab5d7af19ed2877a1c3d6b37ea08c556
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113126457"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535808"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -48,6 +48,8 @@ ms.locfileid: "113126457"
 - 重新创建池：同样需要注意的是，避免每天删除再重新创建池。 应该创建新池，然后将现有作业更新为指向新池。 将所有任务移到新池后删除旧池。
 
 - **池效率和计费：** Batch 本身不会产生额外的费用，但使用的计算资源确实会产生费用。 你需要为池中的每个计算节点付费，不管这些节点处于何种状态。 这包括运行节点所需的任何费用，例如存储和网络成本。 有关详细信息，请参阅 [Azure Batch 的成本分析和预算](budget.md)。
+
+- 临时 OS 磁盘：虚拟机配置池可使用[临时 OS 磁盘](create-pool-ephemeral-os-disk.md)来避免产生与托管磁盘相关的额外费用，临时磁盘会在 VM 缓存或临时 SSD 上创建 OS 磁盘。
 
 ### <a name="pool-allocation-failures"></a>池分配失败
 

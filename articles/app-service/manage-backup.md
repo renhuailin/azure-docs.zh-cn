@@ -3,14 +3,14 @@ title: 备份应用
 description: 了解如何在 Azure 应用服务中创建应用备份。 运行手动或计划的备份。 通过包含附加的数据库来自定义备份。
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 09/02/2021
 ms.custom: seodec18
-ms.openlocfilehash: aed7e341cf190e6daac237b87f17254c5c65bbab
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f1bd37c1b3557a8106981377f9ed75c50a28c773
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723044"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433046"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 
@@ -45,12 +45,12 @@ ms.locfileid: "121723044"
 
 * 备份和还原功能要求应用服务计划处于“标准”、“高级”或“隔离”层  。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。 与标准层相比，高级层和隔离层每日允许更多备份量  。
 * 在与要备份的应用相同的订阅中，需要有一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
-* 最多可备份 10 GB 的应用和数据库内容。 如果备份大小超过此限制，会出错。
-* 不支持备份启用了 TLS 的 Azure Database for MySQL。 如果已配置备份，备份将失败。
-* 不支持备份启用了 TLS 的 Azure Database for PostgreSQL。 如果已配置备份，备份将失败。
+* 最多可以备份 10 GB 的应用和数据库内容，其中的数据库备份大小最大可为 4 GB。 如果备份大小超过此限制，会出错。
+* 不支持备份[启用了 TLS 的 Azure Database for MySQL](../mysql/concepts-ssl-connection-security.md)。 如果已配置备份，备份将失败。
+* 不支持备份[启用了 TLS 的 Azure Database for PostgreSQL](../postgresql/concepts-ssl-connection-security.md)。 如果已配置备份，备份将失败。
 * 应用内 MySQL 数据库无需任何配置即可自动备份。 如果对应用内 MySQL 数据库进行手动设置，例如添加连接字符串，则备份可能无法正常工作。
-* 不支持将启用了防火墙的存储帐户用作备份目标。 如果已配置备份，备份将失败。
-* 目前，不能对配置为使用专用终结点的 Azure 存储帐户使用备份和还原功能。
+* 不支持将[启用了防火墙的存储帐户](../storage/common/storage-network-security.md)用作备份目标。 如果已配置备份，备份将失败。
+* 不支持使用[启用了专用终结点的存储帐户](../storage/common/storage-private-endpoints.md)进行备份和还原。
 
 <a name="manualbackup"></a>
 

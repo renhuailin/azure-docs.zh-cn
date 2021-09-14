@@ -1,15 +1,15 @@
 ---
 title: 支持的 Azure 资源管理器资源类型
 description: 提供 Azure Resource Graph 和更改历史记录支持的 Azure 资源管理器资源类型的列表。
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 330c406ef1d45a3cd72ac7316ca3985d2a6cd647
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 9dfdd77d400dfa91ec26df23d323f8290dc97da0
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309774"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536060"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表格和资源类型参考
 
@@ -17,11 +17,12 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
 ## <a name="advisorresources"></a>advisorresources
 
-有关此表的示例查询，请参阅 [Resource Graph 的 advisorresources 示例查询](../samples/samples-by-table.md#advisorresources)。
+有关此表的示例查询，请参阅 [advisorresources 的 Resource Graph 示例查询](../samples/samples-by-table.md#advisorresources)。
 
 - microsoft.advisor/configurations
 - microsoft.advisor/recommendations
   - 示例查询：[从 Azure 顾问获取成本节约情况摘要](../samples/samples-by-category.md#get-cost-savings-summary-from-azure-advisor)
+  - 示例查询：[列出未运行代理的最新发布版且已启用 Arc 的服务器](../samples/samples-by-category.md#list-arc-enabled-servers-not-running-latest-released-agent-version)
 - microsoft.advisor/recommendations/suppressions
 - microsoft.advisor/suppressions
 
@@ -43,7 +44,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
 ## <a name="guestconfigurationresources"></a>guestconfigurationresources
 
-有关此表的示例查询，请参阅 [Resource Graph 的 guestconfigurationresources 示例查询](../samples/samples-by-table.md#guestconfigurationresources)。
+有关此表的示例查询，请参阅 [guestconfigurationresources 的 Resource Graph 示例查询](../samples/samples-by-table.md#guestconfigurationresources)。
 
 - microsoft.guestconfiguration/guestconfigurationassignments
   - 示例查询：[统计来宾配置策略范围内的计算机](../samples/samples-by-category.md#count-machines-in-scope-of-guest-configuration-policies)
@@ -52,13 +53,22 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
 ## <a name="healthresources"></a>healthresources
 
-有关此表的示例查询，请参阅 [Resource Graph 的 healthresources 示例查询](../samples/samples-by-table.md#healthresources)。
+有关此表的示例查询，请参阅[healthresources 的 Resource Graph 示例查询](../samples/samples-by-table.md#healthresources)。
 
 - microsoft.resourcehealth/availabilitystatuses
-  - 示例查询：[按可用性状态和订阅 Id 统计虚拟机](../samples/samples-by-category.md#count-of-virtual-machines-by-availability-state-and-subscription-id)
-  - 示例查询：[按资源 Id 列出的虚拟机和关联的可用性状态](../samples/samples-by-category.md#list-of-virtual-machines-and-associated-availability-states-by-resource-ids)
-  - 示例查询：[按可用性状态列出的虚拟机和具有资源 Id 和资源组的电源状态](../samples/samples-by-category.md#list-of-virtual-machines-by-availability-state-and-power-state-with-resource-ids-and-resource-groups)
-  - 示例查询：[资源 Id 不可用的虚拟机列表](../samples/samples-by-category.md#list-of-virtual-machines-that-are-not-available-by-resource-ids)
+  - 示例查询：[按可用性状态和订阅 ID 统计虚拟机](../samples/samples-by-category.md#count-of-virtual-machines-by-availability-state-and-subscription-id)
+  - 示例查询：[按资源 ID 列出的虚拟机和关联的可用性状态的列表](../samples/samples-by-category.md#list-of-virtual-machines-and-associated-availability-states-by-resource-ids)
+  - 示例查询：[按资源 ID 和资源组的可用性状态和电源状态列出的虚拟机列表](../samples/samples-by-category.md#list-of-virtual-machines-by-availability-state-and-power-state-with-resource-ids-and-resource-groups)
+  - 示例查询：[资源 ID 不可用的虚拟机列表](../samples/samples-by-category.md#list-of-virtual-machines-that-are-not-available-by-resource-ids)
+
+## <a name="iotsecurityresources"></a>iotsecurityresources
+
+- microsoft.iotsecurity/locations/devicegroups/alerts
+- microsoft.iotsecurity/locations/devicegroups/devices
+- microsoft.iotsecurity/locations/devicegroups/recommendations
+- microsoft.iotsecurity/onpremisesensors
+- microsoft.iotsecurity/sensors
+- microsoft.iotsecurity/sites
 
 ## <a name="kubernetesconfigurationresources"></a>kubernetesconfigurationresources
 
@@ -77,7 +87,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
 ## <a name="patchassessmentresources"></a>patchassessmentresources
 
-有关此表的示例查询，请参阅 [Resource Graph 的 patchassessmentresources 示例查询](../samples/samples-by-table.md#patchassessmentresources)。
+有关此表的示例查询，请参阅 [patchassessmentresources 的 Resource Graph 示例查询](../samples/samples-by-table.md#patchassessmentresources)。
 
 - microsoft.compute/virtualmachines/patchassessmentresults
 - microsoft.compute/virtualmachines/patchassessmentresults/softwarepatches
@@ -93,14 +103,14 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
 ## <a name="policyresources"></a>policyresources
 
-有关此表的示例查询，请参阅 [Resource Graph 的 policyresources 示例查询](../samples/samples-by-table.md#policyresources)。
+有关此表的示例查询，请参阅 [policyresources 的 Resource Graph 示例查询](../samples/samples-by-table.md#policyresources)。
 
 - microsoft.policyinsights/policystates
-  - 示例查询：[按策略分配的符合性](../samples/samples-by-category.md#compliance-by-policy-assignment)
-  - 示例查询：[按资源类型的符合性](../samples/samples-by-category.md#compliance-by-resource-type)
-  - 示例查询：[列出所有不符合标准的资源](../samples/samples-by-category.md#list-all-non-compliant-resources)
-  - 示例查询：[按状态汇总资源符合性](../samples/samples-by-category.md#summarize-resource-compliance-by-state)
-  - 示例查询：[按每个位置的状态汇总资源符合性](../samples/samples-by-category.md#summarize-resource-compliance-by-state-per-location)
+  - 示例查询：[策略分配的合规性](../samples/samples-by-category.md#compliance-by-policy-assignment)
+  - 示例查询：[资源类型的合规性](../samples/samples-by-category.md#compliance-by-resource-type)
+  - 示例查询：[列出所有不合规的资源](../samples/samples-by-category.md#list-all-non-compliant-resources)
+  - 示例查询：[按状态汇总资源合规性](../samples/samples-by-category.md#summarize-resource-compliance-by-state)
+  - 示例查询：[按每个位置的状态汇总资源合规性](../samples/samples-by-category.md#summarize-resource-compliance-by-state-per-location)
 
 ## <a name="recoveryservicesresources"></a>recoveryservicesresources
 
@@ -114,18 +124,18 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
 ## <a name="resourcecontainers"></a>resourcecontainers
 
-有关此表的示例查询，请参阅 [Resource Graph 的 resourcecontainers 示例查询](../samples/samples-by-table.md#resourcecontainers)。
+有关此表的示例查询，请参阅 [resourcecontainers 的 Resource Graph 示例查询](../samples/samples-by-table.md#resourcecontainers)。
 
 - microsoft.management/managementgroups
   - 示例查询：[每个管理组的订阅计数](../samples/samples-by-category.md#count-of-subscriptions-per-management-group)
-  - 示例查询：[为指定管理组列出所有管理组的上级](../samples/samples-by-category.md#list-all-management-group-ancestors-for-a-specified-management-group)
+  - 示例查询：[列出指定管理组的所有管理组上级](../samples/samples-by-category.md#list-all-management-group-ancestors-for-a-specified-management-group)
 - microsoft.resources/subscriptions（订阅）
   - 示例查询：[每个管理组的订阅计数](../samples/samples-by-category.md#count-of-subscriptions-per-management-group)
   - 示例查询：[具有订阅名称的密钥保管库](../samples/samples-by-category.md#key-vaults-with-subscription-name)
-  - 示例查询：[为指定订阅列出所有管理组的上级](../samples/samples-by-category.md#list-all-management-group-ancestors-for-a-specified-subscription)
-  - 示例查询：[列出指定管理组下的所有订阅](../samples/samples-by-category.md#list-all-subscriptions-under-a-specified-management-group)
-  - 示例查询：[删除结果中的列](../samples/samples-by-category.md#remove-columns-from-results)
-  - 示例查询：[每个管理组的安全分数](../samples/samples-by-category.md#secure-score-per-management-group)
+  - 示例查询：[列出指定订阅的所有管理组上级](../samples/samples-by-category.md#list-all-management-group-ancestors-for-a-specified-subscription)
+  - 示例查询：[列出指定管理组包含的所有订阅](../samples/samples-by-category.md#list-all-subscriptions-under-a-specified-management-group)
+  - 示例查询：[从结果中删除列](../samples/samples-by-category.md#remove-columns-from-results)
+  - 示例查询：[每个管理组的安全功能分数](../samples/samples-by-category.md#secure-score-per-management-group)
 - Microsoft.Resources/subscriptions/resourceGroups（资源组）
   - 示例查询：[在资源组上查找具有不区分大小写的特定标记的存储帐户](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-insensitive-tag-on-the-resource-group)
   - 示例查询：[在资源组上查找具有区分大小写的特定标记的存储帐户](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-sensitive-tag-on-the-resource-group)
@@ -260,8 +270,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.Compute/diskEncryptionSets（磁盘加密集）
 - Microsoft.Compute/disks（磁盘）
 - Microsoft.Compute/galleries（共享映像库）
-- Microsoft.Compute/galleries/applications（库应用程序）
-- Microsoft.Compute/galleries/applications/versions（库应用程序版本）
+- Microsoft.Compute/galleries/applications（Gallery 应用程序）
+- Microsoft.Compute/galleries/applications/versions（Gallery 应用程序版本）
 - Microsoft.Compute/galleries/images（映像定义）
 - Microsoft.Compute/galleries/images/versions（映像版本）
 - Microsoft.Compute/hostgroups（主机组）
@@ -277,19 +287,19 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.Compute/sshPublicKeys（SSH 密钥）
 - microsoft.compute/swiftlets
 - Microsoft.Compute/VirtualMachines（虚拟机）
-  - 示例查询：[按电源状态统计的虚拟机计数](../samples/samples-by-category.md#count-of-virtual-machines-by-power-state)
-  - 示例查询：[按 OS 类型对虚拟机进行计数](../samples/samples-by-category.md#count-virtual-machines-by-os-type)
-  - 示例查询：[按具有扩展的 OS 类型对虚拟机进行计数](../samples/samples-by-category.md#count-virtual-machines-by-os-type-with-extend)
-  - 示例查询：[列出虚拟机上安装的所有扩展](../samples/samples-by-category.md#list-all-extensions-installed-on-a-virtual-machine)
+  - 示例查询：[按电源状态统计虚拟机](../samples/samples-by-category.md#count-of-virtual-machines-by-power-state)
+  - 示例查询：[按 OS 类型统计虚拟机](../samples/samples-by-category.md#count-virtual-machines-by-os-type)
+  - 示例查询：[按 OS 类型统计具有扩展的虚拟机](../samples/samples-by-category.md#count-virtual-machines-by-os-type-with-extend)
+  - 示例查询：[列出安装在虚拟机上的所有扩展](../samples/samples-by-category.md#list-all-extensions-installed-on-a-virtual-machine)
   - 示例查询：[列出未运行的机器和上一个合规性状态](../samples/samples-by-category.md#list-machines-that-are-not-running-and-the-last-compliance-status)
-  - 示例查询：[按可用性状态列出的虚拟机和具有资源 Id 和资源组的电源状态](../samples/samples-by-category.md#list-of-virtual-machines-by-availability-state-and-power-state-with-resource-ids-and-resource-groups)
-  - 示例查询：[列出虚拟机及它们的网络接口和公共 IP](../samples/samples-by-category.md#list-virtual-machines-with-their-network-interface-and-public-ip)
+  - 示例查询：[按资源 ID 和资源组的可用性状态和电源状态列出的虚拟机列表](../samples/samples-by-category.md#list-of-virtual-machines-by-availability-state-and-power-state-with-resource-ids-and-resource-groups)
+  - 示例查询：[列出虚拟机及其网络接口和公共 IP](../samples/samples-by-category.md#list-virtual-machines-with-their-network-interface-and-public-ip)
   - 示例查询：[按降序显示按名称排序的所有虚拟机](../samples/samples-by-category.md#show-all-virtual-machines-ordered-by-name-in-descending-order)
-  - 示例查询：[按名称及 OS 类型显示前五个虚拟机](../samples/samples-by-category.md#show-first-five-virtual-machines-by-name-and-their-os-type)
+  - 示例查询：[按名称及其 OS 类型显示前五个虚拟机](../samples/samples-by-category.md#show-first-five-virtual-machines-by-name-and-their-os-type)
   - 示例查询：[按电源状态扩展属性汇总虚拟机](../samples/samples-by-category.md#summarize-virtual-machine-by-the-power-states-extended-property)
-  - 示例查询：[按正则表达式匹配的虚拟机](../samples/samples-by-category.md#virtual-machines-matched-by-regex)
+  - 示例查询：[正则表达式匹配的虚拟机](../samples/samples-by-category.md#virtual-machines-matched-by-regex)
 - microsoft.compute/virtualmachines/extensions
-  - 示例查询：[列出虚拟机上安装的所有扩展](../samples/samples-by-category.md#list-all-extensions-installed-on-a-virtual-machine)
+  - 示例查询：[列出安装在虚拟机上的所有扩展](../samples/samples-by-category.md#list-all-extensions-installed-on-a-virtual-machine)
 - microsoft.compute/virtualmachines/runcommands
 - Microsoft.Compute/virtualMachineScaleSets（虚拟机规模集）
   - 示例查询：[获取虚拟机规模集容量和大小](../samples/samples-by-category.md#get-virtual-machine-scale-set-capacity-and-size)
@@ -315,6 +325,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.ContainerRegistry/registries/webhooks（容器注册表 Webhook）
 - microsoft.containerservice/containerservices
 - Microsoft.ContainerService/managedClusters（Kubernetes 服务）
+  - 示例查询：[列出转移 Azure 订阅时受影响的资源](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - microsoft.containerservice/openshiftmanagedclusters
 - microsoft.contoso/clusters
 - microsoft.contoso/employees
@@ -335,6 +346,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.DataFactory/factories（数据工厂 (V2)）
 - Microsoft.DataLakeAnalytics/accounts (Data Lake Analytics)
 - Microsoft.DataLakeStore/accounts (Data Lake Storage Gen1)
+  - 示例查询：[列出转移 Azure 订阅时受影响的资源](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - microsoft.datamigration/controllers
 - Microsoft.DataMigration/services（Azure 数据库迁移服务）
 - Microsoft.DataMigration/services/projects（Azure 数据库迁移项目）
@@ -434,6 +446,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.HybridCompute/machines（服务器 - Azure Arc）
   - 示例查询：[按域获取已启用 Arc 的服务器的计数和百分比](../samples/samples-by-category.md#get-count-and-percentage-of-arc-enabled-servers-by-domain)
   - 示例查询：[列出已启用 Azure Arc 的服务器上安装的所有扩展](../samples/samples-by-category.md#list-all-extensions-installed-on-an-azure-arc-enabled-server)
+  - 示例查询：[列出未运行代理的最新发布版且已启用 Arc 的服务器](../samples/samples-by-category.md#list-arc-enabled-servers-not-running-latest-released-agent-version)
 - microsoft.hybridcompute/machines/extensions
   - 示例查询：[列出已启用 Azure Arc 的服务器上安装的所有扩展](../samples/samples-by-category.md#list-all-extensions-installed-on-an-azure-arc-enabled-server)
 - Microsoft.HybridCompute/privateLinkScopes（Azure Arc 专用链接范围）
@@ -478,6 +491,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.KeyVault/vaults（密钥保管库）
   - 示例查询：[统计密钥保管库资源](../samples/samples-by-category.md#count-key-vault-resources)
   - 示例查询：[具有订阅名称的密钥保管库](../samples/samples-by-category.md#key-vaults-with-subscription-name)
+  - 示例查询：[列出转移 Azure 订阅时受影响的资源](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - Microsoft.Kubernetes/connectedClusters (Kubernetes - Azure Arc)
   - 示例查询：[列出所有没有 Azure Monitor 扩展的已启用 Azure Arc 的 Kubernetes 群集](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-clusters-without-azure-monitor-extension)
   - 示例查询：[列出所有已启用 Azure Arc 的 Kubernetes 资源](../samples/samples-by-category.md#list-all-azure-arc-enabled-kubernetes-resources)
@@ -513,6 +527,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.maintenance/maintenancepolicies
 - microsoft.managedidentity/groups
 - Microsoft.ManagedIdentity/userAssignedIdentities（托管标识）
+  - 示例查询：[列出转移 Azure 订阅时受影响的资源](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - microsoft.managednetwork/managednetworkgroups
 - microsoft.managednetwork/managednetworkpeeringpolicies
 - microsoft.managednetwork/managednetworks
@@ -588,7 +603,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.network/networkintentpolicies
 - Microsoft.Network/networkinterfaces（网络接口）
   - 示例查询：[获取网络接口的虚拟网络和子网](../samples/samples-by-category.md#get-virtual-networks-and-subnets-of-network-interfaces)
-  - 示例查询：[列出虚拟机及它们的网络接口和公共 IP](../samples/samples-by-category.md#list-virtual-machines-with-their-network-interface-and-public-ip)
+  - 示例查询：[列出虚拟机及其网络接口和公共 IP](../samples/samples-by-category.md#list-virtual-machines-with-their-network-interface-and-public-ip)
 - Microsoft.Network/networkManagers（网络管理器）
 - microsoft.network/networkprofiles
 - Microsoft.Network/NetworkSecurityGroups（网络安全组）
@@ -607,7 +622,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.Network/privateEndpoints（专用终结点）
 - Microsoft.Network/privateLinkServices（专用链接服务）
 - Microsoft.Network/PublicIpAddresses（公共 IP 地址）
-  - 示例查询：[列出虚拟机及它们的网络接口和公共 IP](../samples/samples-by-category.md#list-virtual-machines-with-their-network-interface-and-public-ip)
+  - 示例查询：[列出虚拟机及其网络接口和公共 IP](../samples/samples-by-category.md#list-virtual-machines-with-their-network-interface-and-public-ip)
 - Microsoft.Network/publicIpPrefixes（公共 IP 前缀）
 - Microsoft.Network/routeFilters（路由筛选器）
 - Microsoft.Network/routeTables（路由表）
@@ -717,9 +732,10 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.Sql/managedInstances/databases（托管数据库）
 - Microsoft.Sql/servers（SQL 服务器）
 - Microsoft.Sql/servers/databases（SQL 数据库）
-  - 示例查询：[列出 SQL 数据库及它们的弹性池](../samples/samples-by-category.md#list-sql-databases-and-their-elastic-pools)
+  - 示例查询：[列出转移 Azure 订阅时受影响的资源](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
+  - 示例查询：[列出 SQL 数据库及其弹性池](../samples/samples-by-category.md#list-sql-databases-and-their-elastic-pools)
 - Microsoft.Sql/servers/elasticpools（SQL 弹性池）
-  - 示例查询：[列出 SQL 数据库及它们的弹性池](../samples/samples-by-category.md#list-sql-databases-and-their-elastic-pools)
+  - 示例查询：[列出 SQL 数据库及其弹性池](../samples/samples-by-category.md#list-sql-databases-and-their-elastic-pools)
 - microsoft.sql/servers/jobaccounts
 - Microsoft.Sql/servers/jobAgents（弹性作业代理）
 - Microsoft.Sql/virtualClusters（虚拟群集）
@@ -730,6 +746,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
   - 示例查询：[在资源组上查找具有不区分大小写的特定标记的存储帐户](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-insensitive-tag-on-the-resource-group)
   - 示例查询：[在资源组上查找具有区分大小写的特定标记的存储帐户](../samples/samples-by-category.md#find-storage-accounts-with-a-specific-case-sensitive-tag-on-the-resource-group)
   - 示例查询：[列出具有特定标记值的所有存储帐户](../samples/samples-by-category.md#list-all-storage-accounts-with-specific-tag-value)
+  - 示例查询：[列出转移 Azure 订阅时受影响的资源](../samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)
 - microsoft.storagecache/amlfilesystems
 - Microsoft.StorageCache/caches（HPC 缓存）
 - Microsoft.StoragePool/diskPools（磁盘池）
@@ -787,7 +804,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - Microsoft.Web/sites（应用服务）
 - microsoft.web/sites/premieraddons
 - Microsoft.Web/sites/slots（应用服务[槽]）
-- Microsoft.Web/StaticSites（静态 Web 应用）
+- Microsoft.Web/StaticSites (Static Web Apps)
 - Microsoft.Web/WorkerApps（容器应用）
 - Microsoft.WindowsESU/multipleActivationKeys（Windows 多次激活密钥）
 - Microsoft.WindowsIoT/DeviceServices (Windows 10 IoT Core Services)
@@ -824,39 +841,39 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 
 ## <a name="securityresources"></a>securityresources
 
-有关此表的示例查询，请参阅 [Resource Graph 的 securityresources 示例查询](../samples/samples-by-table.md#securityresources)。
+有关此表的示例查询，请参阅 [securityresources 的 Resource Graph 示例查询](../samples/samples-by-table.md#securityresources)。
 
 - microsoft.security/assessments
-  - 示例查询：[按建议统计正常、不正常和不适用的资源](../samples/samples-by-category.md#count-healthy-unhealthy-and-not-applicable-resources-per-recommendation)
+  - 示例查询：[根据建议统计运行正常、运行不正常和不合规的资源](../samples/samples-by-category.md#count-healthy-unhealthy-and-not-applicable-resources-per-recommendation)
   - 示例查询：[列出 Azure 安全中心建议](../samples/samples-by-category.md#list-azure-security-center-recommendations)
   - 示例查询：[列出容器注册表漏洞评估结果](../samples/samples-by-category.md#list-container-registry-vulnerability-assessment-results)
   - 示例查询：[列出 Qualys 漏洞评估结果](../samples/samples-by-category.md#list-qualys-vulnerability-assessment-results)
 - microsoft.security/assessments/subassessments
   - 示例查询：[列出容器注册表漏洞评估结果](../samples/samples-by-category.md#list-container-registry-vulnerability-assessment-results)
   - 示例查询：[列出 Qualys 漏洞评估结果](../samples/samples-by-category.md#list-qualys-vulnerability-assessment-results)
-- microsoft.security/insights/classification（数据敏感度安全性见解（预览版））
+- microsoft.security/insights/classification（数据敏感度安全见解（预览版））
 - microsoft.security/iotalerts
-  - 示例查询：[获取中心的所有 IoT 警报，按类型筛选](../samples/samples-by-category.md#get-all-iot-alerts-on-hub-filtered-by-type)
+  - 示例查询：[获取中心的所有 IoT 警报（按类型筛选）](../samples/samples-by-category.md#get-all-iot-alerts-on-hub-filtered-by-type)
   - 示例查询：[获取特定的 IoT 警报](../samples/samples-by-category.md#get-specific-iot-alert)
 - microsoft.security/locations/alerts（安全警报）
 - microsoft.security/pricings
   - 示例查询：[显示每个订阅的 Azure Defender 定价层](../samples/samples-by-category.md#show-azure-defender-pricing-tier-per-subscription)
 - microsoft.security/regulatorycompliancestandards
-  - 示例查询：[依循符合性标准的法规符合性状态](../samples/samples-by-category.md#regulatory-compliance-state-per-compliance-standard)
+  - 示例查询：[每个合规性标准的合规性状态](../samples/samples-by-category.md#regulatory-compliance-state-per-compliance-standard)
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
   - 示例查询：[法规符合性评估状态](../samples/samples-by-category.md#regulatory-compliance-assessments-state)
 - microsoft.security/securescores
-  - 示例查询：[每个管理组的安全分数](../samples/samples-by-category.md#secure-score-per-management-group)
-  - 示例查询：[每个订阅的安全分数](../samples/samples-by-category.md#secure-score-per-subscription)
+  - 示例查询：[每个管理组的安全功能分数](../samples/samples-by-category.md#secure-score-per-management-group)
+  - 示例查询：[每个订阅的安全功能分数](../samples/samples-by-category.md#secure-score-per-subscription)
 - microsoft.security/securescores/securescorecontrols
-  - 示例查询：[控制每个订阅的安全分数](../samples/samples-by-category.md#controls-secure-score-per-subscription)
+  - 示例查询：[控制每个订阅的安全功能分数](../samples/samples-by-category.md#controls-secure-score-per-subscription)
 - microsoft.security/softwareinventories
 - microsoft.security/softwareinventory
 
 ## <a name="servicehealthresources"></a>servicehealthresources
 
-有关此表的示例查询，请参阅 [Resource Graph 的 servicehealthresources 示例查询](../samples/samples-by-table.md#servicehealthresources)。
+有关此表的示例查询，请参阅 [servicehealthresources 的 Resource Graph 示例查询](../samples/samples-by-table.md#servicehealthresources)。
 
 - microsoft.resourcehealth/events
   - 示例查询：[活动服务运行状况事件订阅影响](../samples/samples-by-category.md#active-service-health-event-subscription-impact)

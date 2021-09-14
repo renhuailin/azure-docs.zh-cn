@@ -11,12 +11,12 @@ ms.date: 05/11/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文档处理
-ms.openlocfilehash: decd5b23f0b88e078cee47a833cc913d5cb095b4
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d463a45064a9f6b342a7cb735372a3c5098539c4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326233"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431741"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -201,12 +201,16 @@ ms.locfileid: "122326233"
 
 * `number`
   * default、`currency`
+  * 格式已设置为浮点值。 
+  * 示例：输出时将文档上的 1234.98 格式设置为 1234.98
 
 * `date`
   * default、`dmy`、`mdy`、`ymd`
 
 * `time`
 * `integer`
+  * 格式已设置为整数值。 
+  * 示例：输出时将文档上的 1234.98 格式设置为 123498
 * `selectionMark`
 
 > [!NOTE]

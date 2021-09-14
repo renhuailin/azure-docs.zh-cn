@@ -5,21 +5,16 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 06/07/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: f76c996f75dce0ea1f6aae8dc8c86ac80f6006a5
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: e17d49654b3c658ed133686e11d70c72b7f7f3b8
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253871"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426015"
 ---
-# <a name="azure-route-server-preview-faq"></a>Azure 路由服务器（预览版）常见问题解答
-
-> [!IMPORTANT]
-> Azure 路由服务器（预览版）目前为公共预览版状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="azure-route-server-faq"></a>Azure 路由服务器常见问题解答
 
 ## <a name="what-is-azure-route-server"></a>什么是 Azure 路由服务器？
 
@@ -93,11 +88,14 @@ Azure 路由服务器具有以下限制（对于每个部署）。
 | 资源 | 限制 |
 |----------|-------|
 | 支持的 BGP 对等节点数量 | 8 |
-| 每个 BGP 对等节点可以播发到 Azure 路由服务器的路由数 | 200 |
+| 每个 BGP 对等节点可以播发到 Azure 路由服务器的路由数 | 1000 |
 | Azure 路由服务器可以播发到 ExpressRoute 或 VPN 网关的路由数 | 200 |
-| Azure 路由服务器可支持的虚拟网络（包括对等互连虚拟网络）中的 VM 数量 | 6000 |
+| Azure 路由服务器可支持的虚拟网络（包括对等互连虚拟网络）中的 VM 数量 | 2000 |
+
+Azure 路由服务器支持的 VM 数量并非硬性限制。 此数量取决于在 Azure 区域中部署路由服务器基础结构的方式。
 
 如果 NVA 播发的路由数超出了限制，则会删除 BGP 会话。 如果网关与 Azure 路由服务器之间删除了 BGP 会话，则会失去从本地网络到 Azure 的连接。 有关详细信息，请参阅[诊断 Azure 虚拟机路由问题](../virtual-network/diagnose-network-routing-problem.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

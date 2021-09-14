@@ -13,12 +13,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/05/2021
-ms.openlocfilehash: 453f1db3e0f80a63c058c7e0ea21ab9282295de6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 71e85c44c951e7ce556e920a1316fe9a029c892c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735420"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428787"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>配置 Azure-SSIS 集成运行时以实现业务连续性和灾难恢复 (BCDR) 
 
@@ -68,19 +68,7 @@ Azure 数据工厂 (ADF) 中的 Azure SQL 数据库/托管实例和 SQL Server I
 
    在“集成运行时设置”窗格的“部署设置”页上[选择使用 SSISDB](./create-azure-ssis-integration-runtime.md#creating-ssisdb)时，请选中“结合使用双重备用 Azure-SSIS Integration Runtime 对和 SSISDB 故障转移”复选框。 对于“双重备用对名称”，请输入相同名称以标识主要和辅助 Azure-SSIS IR 对。 完成辅助 Azure-SSIS IR 的创建后，它将启动并附加到辅助 SSISDB。
 
-1. Azure SQL 托管实例可以通过使用数据库主密钥 (DMK) 加密数据库中的敏感数据（例如 SSISDB）来保护这些数据。 默认情况下，DMK 本身使用服务主密钥 (SMK) 进行加密。 撰写本文时，Azure SQL 托管实例故障转移组不会从主 Azure SQL 托管实例复制 SMK，因此，在发生故障转移后，DMK 和 SSISDB 无法在辅助 Azure SQL 托管实例上解密。 若要解决这个问题，可以添加一个密码加密，以在辅助 Azure SQL 托管实例上对 DMK 进行解密。 使用 SSMS 完成以下步骤。
-
-   1. 为主要 Azure SQL 托管实例中的 SSISDB 运行以下命令，以添加用于加密 DMK 的密码。
-
-      ```sql
-      ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'YourPassword'
-      ```
-   
-   1. 在主要和辅助 Azure SQL 托管实例中，为 SSISDB 运行以下命令，以添加用于解密 DMK 的新密码。
-
-      ```sql
-      EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'YourPassword', @action = N'add'
-      ```
+1. Azure SQL 托管实例可以通过使用数据库主密钥 (DMK) 加密数据库中的敏感数据（例如 SSISDB）来保护这些数据。 默认情况下，DMK 本身使用服务主密钥 (SMK) 进行加密。 从 2021 年 9 月开始，在创建故障转移组期间，SMK 将从主 Azure SQL 托管实例复制到辅助实例。 如果你的故障转移组是在此日期之前创建的，请从辅助 Azure SQL 托管实例中删除所有用户数据库（包括 SSISDB），然后重新创建故障转移组。
 
 1. 如果希望在发生 SSISDB 故障转移时停机时间近乎零，请将两个 Azure SSIS IR 保持运行状态。 只有主要 Azure-SSIS IR 可以访问主要 SSISDB 来提取和执行包，还可以写入包执行日志，而辅助 Azure-SSIS IR 只能对部署在其他位置的包（例如在 Azure 文件存储中）执行相同操作。
 

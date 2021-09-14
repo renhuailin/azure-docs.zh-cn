@@ -9,33 +9,32 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 05/10/2021
-ms.openlocfilehash: 8fe1623dde29160c674d32edb470b57231e4b3b1
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 91c6893320273ae29cb504715b5f27365a0161be
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810565"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434225"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>创建 Azure AD 来宾用户并将其设置为 Azure AD 管理员
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-> [!NOTE]
-> 本文目前以公共预览版提供。
+Azure Active Directory (Azure AD) 中的来宾用户是从其他 Azure Active Directory 或其外部导入当前 Azure AD 的用户。    例如，来宾用户可以包含来自其他 Azure Active Directory 的用户，或者来自 \@outlook.com、\@hotmail.com、\@live.com或 \@gmail.com 等帐户的用户。 
 
-Azure Active Directory (Azure AD) 中的来宾用户是从其他 Azure Active Directory 或其外部导入当前 Azure AD 的用户。    例如，来宾用户可以包含来自其他 Azure Active Directory 的用户，或者来自 \@outlook.com、\@hotmail.com、\@live.com或 \@gmail.com 等帐户的用户。 本文演示如何创建 Azure AD 来宾用户，并将其设置为 Azure SQL 逻辑服务器的 Azure AD 管理员，而无需让该来宾用户成为 Azure AD 中组的一部分。
+本文演示如何创建 Azure AD 来宾用户，并将该用户设置为 Azure SQL 数据库和 Azure Synapse Analytics 使用的 Azure SQL 托管实例或 [Azure 中的逻辑服务器](logical-servers.md)的 Azure AD 管理员，而无需将该来宾用户添加到 Azure AD 中的组。
 
 ## <a name="feature-description"></a>功能描述
 
-此功能摆脱了当前限制，即当来宾用户属于 Azure AD 中创建的组的成员时，仅允许他们连接到 Azure SQL 数据库、SQL 托管实例或 Azure Synapse Analytics。 在给定数据库中，需要使用 [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) 语句手动将组映射到用户。 为包含来宾用户的 Azure AD 组创建数据库用户后，来宾用户就可以使用 Azure Active Directory 通过 MFA 身份验证登录到数据库。 作为此公共预览版的一部分，可以创建来宾用户并将其直接连接到 SQL 数据库、SQL 托管实例或 Azure Synapse，而无需先将其添加到 Azure AD 组，再为该 Azure AD 组创建数据库用户。
+此功能摆脱了当前限制，即当来宾用户属于 Azure AD 中创建的组的成员时，仅允许他们连接到 Azure SQL 数据库、SQL 托管实例或 Azure Synapse Analytics。 在给定数据库中，需要使用 [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) 语句手动将组映射到用户。 为包含来宾用户的 Azure AD 组创建数据库用户后，来宾用户就可以使用 Azure Active Directory 通过 MFA 身份验证登录到数据库。 可以创建来宾用户并将其直接连接到 SQL 数据库、SQL 托管实例或 Azure Synapse，而无需先将其添加到 Azure AD 组，再为该 Azure AD 组创建数据库用户。
 
-作为此功能的一部分，还可以将 Azure AD 来宾用户直接设置为 Azure SQL 逻辑服务器的 AD 管理员。 现有功能（来宾用户可以成为 Azure AD 组一部分，然后可将改组设为 Azure SQL 逻辑服务器的 AD 管理员）不受影响。 作为 Azure AD 组一部分的数据库中来宾用户也不受此更改的影响。
+作为此功能的一部分，还可以将 Azure AD 来宾用户直接设置为逻辑服务器或托管实例的 AD 管理员。 现有功能（允许来宾用户成为 Azure AD 组的一部分，然后可将其设置为逻辑服务器或托管实例的 Azure AD 管理员）不受影响。 作为 Azure AD 组一部分的数据库中来宾用户也不受此更改的影响。
 
 若要详细了解使用 Azure AD 组时对来宾用户的现有支持，请参阅[使用 Azure Active Directory 多重身份验证](authentication-mfa-ssms-overview.md)。
 
 ## <a name="prerequisite"></a>先决条件
 
-- 使用 PowerShell 将来宾用户设为 Azure SQL 逻辑服务器的 Azure AD 管理员时，需要使用 [Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) 模块或更高版本。
+- 使用 PowerShell 将来宾用户设置为逻辑服务器或托管实例的 Azure AD 管理员时，需要 [Az.Sql 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) 模块或更高版本。
 
 ## <a name="create-database-user-for-azure-ad-guest-user"></a>创建 Azure AD 来宾用户的数据库用户 
 
@@ -94,25 +93,42 @@ Azure Active Directory (Azure AD) 中的来宾用户是从其他 Azure Active Di
 
 ## <a name="setting-a-guest-user-as-an-azure-ad-admin"></a>将来宾用户设为 Azure AD 管理员
 
-按照以下步骤将 Azure AD 来宾用户设为 SQL 逻辑服务器的 Azure AD 管理员。
+使用 Azure 门户、Azure PowerShell 或 Azure CLI 设置 Azure AD 管理员。 
 
-### <a name="set-azure-ad-admin-for-sql-database-and-azure-synapse"></a>设置 SQL 数据库和 Azure Synapse 的 Azure AD 管理员
+### <a name="azure-portal"></a>Azure 门户 
+
+若要使用 Azure 门户设置逻辑服务器或托管实例的 Azure AD 管理员，请执行以下步骤： 
+
+1. 打开 [Azure 门户](https://portal.azure.com)。 
+1. 导航到 SQL 服务器或托管实例的“Azure Active Directory”设置。 
+1. 选择“设置管理员”。 
+1. 在 Azure AD 弹出提示中，键入来宾用户，例如 `guestuser@gmail.com`。 
+1. 选择此新用户，然后保存操作。 
+
+有关详细信息，请参阅[设置 Azure AD 管理员](authentication-aad-configure.md#azure-ad-admin-with-a-server-in-sql-database)。 
+
+
+### <a name="azure-powershell-sql-database-and-azure-synapse"></a>Azure PowerShell（SQL 数据库和 Azure Synapse）
+
+若要设置逻辑服务器的 Azure AD 来宾用户，请执行以下步骤：  
 
 1. 确保已将来宾用户（例如 `user1@gmail.com`）添加到 Azure AD。
 
-1. 运行以下 PowerShell 命令，将来宾用户添加为 Azure SQL 逻辑服务器的 Azure AD 管理员：
+1. 运行以下 PowerShell 命令，将来宾用户添加为逻辑服务器的 Azure AD 管理员：
 
-    - 将 `<ResourceGroupName>` 替换为包含 Azure SQL 逻辑服务器的 Azure 资源组名称。
-    - 将 `<ServerName>` 替换为 Azure SQL 逻辑服务器名称。 如果服务器名称为 `myserver.database.windows.net`，请将 `<Server Name>` 替换为 `myserver`。
+    - 将 `<ResourceGroupName>` 替换为包含逻辑服务器的 Azure 资源组名称。
+    - 将 `<ServerName>` 替换为你的逻辑服务器名称。 如果服务器名称为 `myserver.database.windows.net`，请将 `<Server Name>` 替换为 `myserver`。
     - 请将 `<DisplayNameOfGuestUser>` 替换为来宾用户名。
 
     ```powershell
     Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName <ResourceGroupName> -ServerName <ServerName> -DisplayName <DisplayNameOfGuestUser>
     ```
 
-    还可以使用 Azure CLI 命令 [az sql server ad-admin](/cli/azure/sql/server/ad-admin) 将来宾用户设为 Azure SQL 逻辑服务器的 Azure AD 管理员。
+还可以使用 Azure CLI 命令 [az sql server ad-admin](/cli/azure/sql/server/ad-admin) 将来宾用户设置为逻辑服务器的 Azure AD 管理员。
 
-### <a name="set-azure-ad-admin-for-sql-managed-instance"></a>设置 SQL 托管实例的 Azure AD 管理员
+### <a name="azure-powershell-sql-managed-instance"></a>Azure PowerShell（SQL 托管实例）
+
+若要设置托管实例的 Azure AD 来宾用户，请执行以下步骤：  
 
 1. 确保已将来宾用户（例如 `user1@gmail.com`）添加到 Azure AD。
 
@@ -129,13 +145,8 @@ Azure Active Directory (Azure AD) 中的来宾用户是从其他 Azure Active Di
     Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName <ResourceGroupName> -InstanceName "<ManagedInstanceName>" -DisplayName <DisplayNameOfGuestUser> -ObjectId <AADObjectIDOfGuestUser>
     ```
 
-    还可以使用 Azure CLI 命令 [az sql mi ad-admin](/cli/azure/sql/mi/ad-admin) 将来宾用户设为 SQL 托管实例的 Azure AD 管理员。
+还可以使用 Azure CLI 命令 [az sql mi ad-admin](/cli/azure/sql/mi/ad-admin) 将来宾用户设置为托管实例的 Azure AD 管理员。
 
-## <a name="limitations"></a>限制
-
-Azure 门户一个限制会阻止将 Azure AD 来宾用户选为 SQL 托管实例的 Azure AD 管理员。 对于 Azure AD 外部的来宾帐户（如 \@outlook.com、\@hotmail.com、\@live.com 或 \@gmail.com），AD 管理员选择器会显示这些帐户，但它们是灰显的且不能选择它们   。 使用上面列出的 [PowerShell 或 CLI 命令](#setting-a-guest-user-as-an-azure-ad-admin)设置 Azure AD 管理员。或者，可以将包含来宾用户的 Azure AD 组设为 SQL 托管实例的 Azure AD 管理员。
-
-此功能正式发布之前，将为 SQL 托管实例启用此功能。
 
 ## <a name="next-steps"></a>后续步骤
 

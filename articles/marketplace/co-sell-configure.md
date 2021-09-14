@@ -4,16 +4,16 @@ description: 在产品/服务的“与 Microsoft 联合销售”选项卡上提�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: palanis-MSFT
-ms.author: palanis
+author: sharath-satish-msft
+ms.author: shsatish
 ms.reviewer: stmummer
-ms.date: 07/13/2021
-ms.openlocfilehash: 74bc41fb84f63f4705da95f80d6f27dea009ea43
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 09/03/2021
+ms.openlocfilehash: 39212b2e9ef5456ecc4f1343cc51fd83064a8840
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866733"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535646"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>配置商业市场产品/服务的联合销售
 
@@ -79,11 +79,11 @@ ms.locfileid: "122866733"
 
 ### <a name="select-solution-areas"></a>选择解决方案领域
 
-解决方案领域有助于进一步定义解决方案。 这有助于 Microsoft 销售团队发现和理解解决方案的价值主张。 必须为产品/服务至少选择一个解决方案领域，最多选择三个。 对于每个解决方案领域，最多可以进一步选择两个解决方案子领域。
+解决方案领域有助于进一步定义解决方案。 这有助于 Microsoft 销售团队发现和理解解决方案的价值主张。 必须为产品/服务至少选择一个解决方案领域，最多选择五个。 对于每个解决方案领域，最多可以进一步选择五个解决方案子领域。
 
-1. 选择“+ 添加解决方案领域(最多 3 个)”链接。
+1. 选择“+ 添加解决方案领域(最多 5 个)”链接。
 1. 从显示的下拉列表中选择一个解决方案领域。
-1. 选择至少一个解决方案子领域，最多选择两个。 若要选择多个子领域，请使用 `Ctrl` 键（适用于 Windows），或 `Command` 键（适用于 macOS）。
+1. 选择至少一个解决方案子领域，最多选择五个。 若要选择多个子领域，请使用 `Ctrl` 键（适用于 Windows），或 `Command` 键（适用于 macOS）。
 1. 若要添加另一个解决方案领域，请重复步骤 1 到 3。
 
 ## <a name="upload-documents"></a>上传文档

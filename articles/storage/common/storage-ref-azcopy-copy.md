@@ -4,16 +4,16 @@ description: 本文提供有关 azcopy copy 命令的参考信息。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 03/08/2021
+ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: faa9dab677c410e877601297ec72f451219da47c
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 09994e329072ab0ed67a9cb29c09ff245b288923
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968291"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432065"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -249,13 +249,13 @@ azcopy cp "https://storage.cloud.google.com/[bucket]/[object]" "https://[destacc
 azcopy cp "https://storage.cloud.google.com/[bucket]" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
 ```
 
-使用服务帐户密钥和 SAS 令牌将所有 Bucket 从 Google Cloud Storage 复制到 Blob 存储。 首先，为 GCS 源设置环境变量 GOOGLE_APPLICATION_CREDENTIALS 和 GOOGLE_CLOUD_PROJECT=<project-id>
+使用服务帐户密钥和 SAS 令牌将所有 Bucket 从 Google Cloud Storage 复制到 Blob 存储。 首先，为 GCS 源设置环境变量 GOOGLE_APPLICATION_CREDENTIALS 和 GOOGLE_CLOUD_PROJECT=<`project-id`>
 
 ```azcopy
   - azcopy cp "https://storage.cloud.google.com/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
 ```
 
-通过使用目标的服务帐户密钥和 SAS 令牌，使用 Google Cloud Storage 中 Bucket 名称中的通配符 (*) 复制 Bucket 的子集。 首先，为 Google Cloud Storage 源设置环境变量 GOOGLE_APPLICATION_CREDENTIALS 和 GOOGLE_CLOUD_PROJECT=<project-id>。
+通过使用目标的服务帐户密钥和 SAS 令牌，使用 Google Cloud Storage 中 Bucket 名称中的通配符 (*) 复制 Bucket 的子集。 首先，为 Google Cloud Storage 源设置环境变量 GOOGLE_APPLICATION_CREDENTIALS 和 GOOGLE_CLOUD_PROJECT=<`project-id`>。
  
 ```azcopy
 azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
@@ -287,9 +287,15 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--content-type** 字符串 - 指定文件的内容类型。 暗指 no-guess-mime-type。 下载时返回。
 
+--cpk by-name 字符串                   客户端按名称提供的密钥使客户端可以向 Azure Blob 存储发出请求，以便按每个请求提供加密密钥。 提供的密钥名称将从 Azure 密钥保管库提取，并用于对数据进行加密。
+
+--cpk-by-value                          客户端按名称提供的密钥使客户端可以向 Azure Blob 存储发出请求，以便按每个请求提供加密密钥。 提供的密钥及其哈希将从环境变量中提取。
+
 **--decompress** - 下载时自动解压缩文件（如果 content-encoding 指示文件已压缩）。 支持的 content-encoding 值为 `gzip` 和 `deflate`。 不需要提供 `.gz`/`.gzip`或 `.zz` 文件扩展名，但如果存在，则将其删除。
 
---disable-auto-decoding 默认情况下为 False 以在 Windows 上启用非法字符的自动解码。 可以设置为 `true` 以禁用自动解码。
+--dry-run                              打印此命令将复制的文件路径。 此标志不会复制实际文件。
+
+--disable-auto-decoding 默认值为 False 以在 Windows 上启用非法字符进行自动解码。 可以设置为 `true` 以禁用自动解码。
 
 **--exclude-attributes** 字符串 -（仅限 Windows）排除其属性与属性列表相匹配的文件。 例如：A;S;R
 
@@ -299,6 +305,8 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--exclude-pattern** 字符串 - 复制时排除这些文件。 此选项支持通配符 (*)。
 
+--exclude-regex 字符串                 排除与正则表达式相符的文件的所有相对路径。 使用“;”分隔正则表达式。
+
 **--follow-symlinks** - 从本地文件系统上传时遵循符号链接。
 
 **--force-if-read-only** - 在 Windows 或 Azure 文件上覆盖现有文件时，即使现有文件已设置只读属性，也要执行覆盖操作。
@@ -307,15 +315,19 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
  - copy 命令的帮助。
 
-**--include-after** 字符串 - 只包括在给定日期/时间或之后修改的文件。 该值应为 ISO8601 格式。 如果未指定时区，则假定该值位于运行 AzCopy 的计算机的本地时区中。 例如，`2020-08-19T15:04:00Z` 表示 UTC 时间，`2020-08-19` 表示本地时区的午夜 (00:00)。 与 AzCopy 10.5 一样，此标志仅适用于文件，不适用于文件夹，因此当将此标志与 `--preserve-smb-info` 或 `--preserve-smb-permissions` 一起使用时，将不会复制文件夹属性。
+**--include-after** 字符串 - 只包括在给定日期/时间或之后修改的文件。 该值应为 ISO8601 格式。 如果未指定时区，则假定该值位于运行 AzCopy 的计算机的本地时区中。 例如，`2020-08-19T15:04:00Z` 表示 UTC 时间，`2020-08-19` 表示本地时区的午夜 (00:00)。 与 AzCopy 10.5 一样，此标志仅适用于文件，不适用于文件夹，因此当将此标志与 `--preserve-smb-info` 或 `--preserve-permissions` 一起使用时，将不会复制文件夹属性。
 
- “--include-before”字符串只包括在给定日期/时间或之前修改的文件。 该值应为 ISO8601 格式。 如果未指定时区，则假定该值位于运行 AzCopy 的计算机的本地时区中。 例如 `2020-08-19T15:04:00Z` 表示 UTC 时间，`2020-08-19` 表示本地时区的午夜 (00:00)。 从 AzCopy 10.7 开始，此标志仅适用于文件，不适用于文件夹，因此当将此标志与 `--preserve-smb-info` 或 `--preserve-smb-permissions` 一起使用时，将不会复制文件夹属性。
+ “--include-before”字符串只包括在给定日期/时间或之前修改的文件。 该值应为 ISO8601 格式。 如果未指定时区，则假定该值位于运行 AzCopy 的计算机的本地时区中。 例如 `2020-08-19T15:04:00Z` 表示 UTC 时间，`2020-08-19` 表示本地时区的午夜 (00:00)。 从 AzCopy 10.7 开始，此标志仅适用于文件，不适用于文件夹，因此当将此标志与 `--preserve-smb-info` 或 `--preserve-permissions` 一起使用时，将不会复制文件夹属性。
 
 **--include-attributes** 字符串 -（仅限 Windows）包括其属性与属性列表相匹配的文件。 例如：A;S;R
 
 **--include-path** 字符串 - 复制时仅包括这些路径。 此选项不支持通配符 (*)。 检查相对路径前缀（例如：`myFolder;myFolder/subDirName/file.pdf`）。
 
+--include-directory-stub               默认为 False，即忽略目录存根。 目录存根具有元数据“hdi_isfolder:true”的 Blob。 将值设置为 true 会在传输期间保留目录存根。
+
 **--include-pattern** 字符串 - 复制时仅包括这些文件。 此选项支持通配符 (*)。 使用 `;` 分隔文件。
+
+--include-regex 字符串                 仅包括与正则表达式相符的文件的相对路径。 使用“;”分隔正则表达式。
 
 **--list-of-versions** 字符串指定一个文件，其中每个版本 ID 都列在单独的一行中。 确保源必须指向单个 Blob，并且使用此标志在文件中指定的所有版本 ID 必须仅属于源 Blob。 AzCopy 会将指定的版本下载到提供的目标文件夹中。 有关详细信息，请参阅[下载以前版本的 blob](./storage-use-azcopy-v10.md#transfer-data)。
 
@@ -331,11 +343,12 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--preserve-last-modified-time** - 仅当目标为文件系统时才可用。
 
-**--preserve-owner** - 仅当下载时，且仅当使用 `--preserve-smb-permissions` 时才起作用。 如果为 true（默认值），则下载内容中将保留文件“所有者”和“组”。 如果设置为 false，则 `--preserve-smb-permissions` 仍保留 ACL，但“所有者”和“组”的保留将基于运行 AzCopy 的用户（默认值为 true）
+**--preserve-owner** - 仅当下载时，且仅当使用 `--preserve-permissions` 时才起作用。 如果为 true（默认值），则下载内容中将保留文件“所有者”和“组”。 如果设置为 false，则 `--preserve-permissions` 仍保留 ACL，但“所有者”和“组”的保留将基于运行 AzCopy 的用户（默认值为 true）
 
-**--preserve-smb-info** - 默认值为 False。 保留 SMB 感知资源（Windows 和 Azure 文件存储）之间的 SMB 属性信息（上次写入时间、创建时间、属性位）。 只会传输 Azure 文件存储支持的属性位；其他的将被忽略。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如包含模式）。 为文件夹传输的信息与为文件传输的信息几乎相同，只是“上次写入时间”除外，不会为文件夹保留该信息。
+--preserve-smb-info   默认为 True。 保留 SMB 感知资源（Windows 和 Azure 文件存储）之间的 SMB 属性信息（上次写入时间、创建时间、属性位）。 只会传输 Azure 文件存储支持的属性位；其他的将被忽略。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如包含模式）。 为文件夹传输的信息与为文件传输的信息几乎相同，只是“上次写入时间”除外，不会为文件夹保留该信息。
 
-**--preserve-smb-permissions** - 默认值为 False。 保留感知资源（Windows 和 Azure 文件存储）之间的 SMB ACl。 对于下载操作，还需要使用 `--backup` 标志来恢复权限，其中新所有者将不是运行 AzCopy 的用户。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如 `include-pattern`）。
+--preserve-permissions                默认为 False。 在感知资源（Windows 和 Azure 文件存储，或 Data Lake Storage Gen 2 到 Data Lake Storage Gen 2）之间保留 ACL。 对于具有分层命名空间的帐户，需要一个拥有“修改所有权”和“修改权限”权限的容器 SAS 或 OAuth 令牌。 对于下载操作，还需要使用 --backup 标志来还原权限，其中新所有者将不是运行 AzCopy 的用户。 此标志同时适用于文件和文件夹，除非指定了“仅文件”筛选器（例如，包含模式）。
+
 
 **--put-md5** - 创建每个文件的 MD5 哈希，并将该哈希另存为目标 Blob 或文件的 Content-MD5 属性。 （默认不会创建哈希。）仅在上传时可用。
 
@@ -346,6 +359,8 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 **--s2s-handle-invalid-metadata** 字符串   指定如何处理无效的元数据键。 可用选项：ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid。 （默认值为 `ExcludeIfInvalid`）。
 
 **--s2s-preserve-access-tier** - 在服务之间复制过程中保留访问层 请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)，确保目标存储帐户支持设置访问层。 如果不支持设置访问层，请使用 s2sPreserveAccessTier=false 来绕过访问层的复制。 （默认值为 `true`）。
+
+--s2s-preserve-blob-tags               在 blob 存储之间进行服务到服务传输过程中保留索引标记。
 
 **--s2s-preserve-properties** - 在服务之间复制过程中保留完整属性。 对于 AWS S3 和 Azure 文件存储的非单一文件源，列出操作不会返回对象和文件的完整属性。 若要保留完整属性，AzCopy 需要对每个对象或文件发送一个附加的请求。 （默认值为 true）
 

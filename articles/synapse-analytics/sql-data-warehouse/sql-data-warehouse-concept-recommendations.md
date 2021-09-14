@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b418b46199c524ca92d60dece6031073938e159b
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: e747c6ab94f76411cf727bc46637798e903772b6
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568414"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537681"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure 顾问针对 Azure Synapse Analytics 中专用 SQL 池的建议
 
@@ -73,4 +73,4 @@ ms.locfileid: "107568414"
 
 ## <a name="data-loading-misconfiguration"></a>数据加载配置错误
 
-应始终从与专用 SQL 池位于相同区域的存储帐户加载数据，以最大程度地减少延迟。 使用 [COPY 语句进行高吞吐量数据引入](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)，并在存储帐户中拆分暂存文件以最大限度地提高吞吐量。 如果无法使用 COPY 语句，可以使用 SqlBulkCopy API 或批处理容量较高的 bcp 来提高吞吐量。 有关其他数据加载指南，请访问以下[文档](./guidance-for-loading-data.md)。
+应始终从与专用 SQL 池位于相同区域的存储帐户加载数据，以最大程度地减少延迟。 使用 [COPY 语句进行高吞吐量数据引入](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)，并在存储帐户中拆分暂存文件以最大限度地提高吞吐量。 如果无法使用 COPY 语句，可以使用 SqlBulkCopy API 或批处理容量较高的 bcp 来提高吞吐量。 有关更多数据加载指南，请参阅[数据加载的最佳做法](../sql/data-loading-best-practices.md)。

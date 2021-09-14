@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.custom: subject-cost-optimization
 ms.topic: how-to
-ms.date: 07/27/2021
-ms.openlocfilehash: 6561bee9348edcc23bc6668748d0d6576155179d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/02/2021
+ms.openlocfilehash: 3e814541ecf43d8f9d12c028e8bebc8ac31fe411
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748105"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433469"
 ---
 # <a name="plan-and-manage-costs-for-azure-sentinel"></a>计划和管理 Azure Sentinel 的成本
 
@@ -111,7 +111,7 @@ Azure Sentinel 与许多其他 Azure 服务集成，以提供增强的功能。 
 
 你可以为各个数据类型指定不同的保留设置。 有关详细信息，请参阅[按数据类型设置保留期](../azure-monitor/logs/manage-cost-storage.md#retention-by-data-type)。
 
-### <a name="additional-cef-ingestion-costs"></a>额外的 CEF 引入成本
+### <a name="other-cef-ingestion-costs"></a>其他 CEF 引入成本
 
 Azure Sentinel 中支持以 CEF 作为 Syslog 事件格式。 可以使用 CEF 将各种源中有价值的安全信息引入 Azure Sentinel 工作区中。 CEF 日志在 Azure Sentinel 中的 CommonSecurityLog 表，其中包含所有标准最新 CEF 字段。
 
@@ -182,17 +182,7 @@ Azure Sentinel 中支持以 CEF 作为 Syslog 事件格式。 可以使用 CEF �
 - Azure Sentinel 数据分析
 - Log Analytics 数据保留
 
-## <a name="manage-azure-sentinel-costs"></a>管理 Azure Sentinel 成本
-
-可以通过多种方法了解和管理 Azure Sentinel 使用情况和成本。
-
-管理数据引入和保留：
-
-### <a name="using-azure-prepayment-with-azure-sentinel"></a>对 Azure Sentinel 使用 Azure 预付款
-
-可以使用 Azure 预付款额度支付 Azure Sentinel 费用。 但是，无法使用 Azure 预付款额度为第三方组织的产品和服务付费，也无法为 Azure 市场的产品付费。
-
-## <a name="monitor-costs"></a>监视成本
+## <a name="manage-and-monitor-azure-sentinel-costs"></a>管理和监视 Azure Sentinel 成本
 
 将 Azure 资源用于 Azure Sentinel 时，会产生成本。 Azure 资源使用单位成本因时间间隔（如秒、分钟、小时和天）或单位使用量（如字节和兆字节）而异。 开始使用 Azure Sentinel 后便会产生成本，可以在[成本分析](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中查看成本。
 
@@ -212,74 +202,11 @@ Azure Sentinel 中支持以 CEF 作为 Syslog 事件格式。 可以使用 CEF �
 
 Azure Sentinel 定价层级不包括 Log Analytics 费用。 要更改 Log Analytics 的定价层级承诺，请参阅[更改定价层级](../azure-monitor/logs/manage-cost-storage.md#changing-pricing-tier)。
 
-#### <a name="define-a-data-volume-cap-in-log-analytics"></a>在 Log Analytics 中定义数据量上限
+有关详细信息，请参阅[创建预算](#create-budgets)以及[管理和降低 Azure Sentinel 成本的其他方式](#other-ways-to-manage-and-reduce-azure-sentinel-costs)。
 
-在 Log Analytics 中，可以启用每日数据量上限，这将限制你的工作区的每日引入量。 每日上限可帮助你管理数据量的意外增加，保持在限制范围内，并限制意外费用。
+### <a name="using-azure-prepayment-with-azure-sentinel"></a>对 Azure Sentinel 使用 Azure 预付款
 
-要定义每日引入量上限，请在 Log Analytics 工作区的左侧导航中选择“使用量和估计成本”，然后选择“每日上限”。  选择“开启”，输入每日数据量上限，然后选择“确定”。 
-
-
-![显示“使用量和估计成本”屏幕和“每日上限”窗口的屏幕截图。](media/billing/daily-cap.png)
-
-“使用量和估计成本”屏幕还显示过去 31 天的引入数据量趋势和总共保留的数据量。
-
-> [!IMPORTANT]
-> 每日上限不会限制所有数据类型的集合。 有关在 Log Analytics 中管理每日上限的详细信息，请参阅[管理每日最大数据量](../azure-monitor/logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume)。
-
-#### <a name="optimize-log-analytics-costs-with-dedicated-clusters"></a>使用专用群集优化 Log Analytics 成本
-
-如果在同一区域中的 Azure Sentinel 工作区或工作区中每天至少引入 1TB 的数据量，请考虑切换到 Log Analytics 专用群集以降低成本。 Log Analytics 专用群集承诺层级将聚合整个工作区的数据量，这些工作区每天总共引入了 1TB 数据量或更多。
-
-Log Analytics 专用群集不适用于 Azure Sentinel 承诺层级。 对于专用群集中的每个工作区，Azure Sentinel 成本仍然适用。
-
-可以将多个 Azure Sentinel 工作区添加到 Log Analytics 专用群集中。 对 Azure Sentinel 使用 Log Analytics 专用群集有多种优势，包括：
-
-- 如果查询中涉及的所有工作区都在专用群集中，则跨工作区查询的运行速度更快。 在您的环境中，最好尽可能少地使用工作区，专用群集仍然[限制最多 100 个工作区](../azure-monitor/logs/cross-workspace-query.md)可以包含在单个跨工作区查询中。
-
-- 专用群集中的所有工作区都可以共享群集上设置的 Log Analytics 承诺层级。 不必为每个工作区单独承诺 Log Analytics 承诺层级，这样可以节省成本，同时提高效率。 如果启用专用群集，你要承诺的最低 Log Analytics 承诺层级是每天 1TB 引入。
-
-下面是迁移到专用群集以实现成本优化的一些其他注意事项：
-
-- 每个区域和每个订阅的群集的最大数目为 2。
-- 链接到群集的所有工作区必须位于同一区域中。
-- 链接到一个群集的最大工作区数量为 1000。
-- 可以取消某个已链接工作区与群集的链接。 在 30 天内，与特定工作区的链接操作数限制为 2。
-- 不能将现有工作区移动到客户管理的密钥 (CMK) 群集。 需要在群集中创建工作区。
-- 当前不支持将群集移到另一个资源组或订阅。
-- 如果工作区已链接到另一个群集，则指向群集的工作区链接将失败。
-
-有关专用群集的详细信息，请参阅 [Log Analytics 专用群集](../azure-monitor/logs/manage-cost-storage.md#log-analytics-dedicated-clusters)。
-
-#### <a name="separate-non-security-data-in-a-different-workspace"></a>将非安全数据分隔到不同的工作区中
-
-Azure Sentinel 会将所有数据引入分析到启用了 Azure Sentinel 的 Log Analytics 工作区。 最好为非安全操作数据使用单独的工作区，以确保不会产生 Azure Sentinel 成本。
-
-在 Azure Sentinel 中搜寻或调查威胁时，可能需要访问存储在这些独立 Azure Log Analytics 工作区中的操作数据。 可以通过在日志探索体验和工作簿中使用跨工作区查询来访问这些数据。 但是，除非对所有工作区启用了 Azure Sentinel，否则不能使用跨工作区分析规则和搜寻查询。
-
-#### <a name="reduce-long-term-data-retention-costs-with-adx"></a>通过 ADX 降低长期数据保留成本
-
-Azure Sentinel 数据保留期前 90 天免费。 要调整 Log Analytics 中的数据保留时间段，可在左侧导航中选择“使用量和估计成本”，然后选择“数据保留”，然后调整滑块。 
-
-在几个月后，Azure Sentinel 安全数据可能会丢失其中的某些值。 安全运营中心 (SOC) 用户可能无需像更新的数据一样频繁访问较旧的数据，但在偶尔调查或审核时可能仍需要访问数据。 为了降低 Azure Sentinel 数据保留成本，你可以使用 Azure 数据资源管理器以较低的成本实现长期数据保留。 对于不再需要 Azure Sentinel 安全情报的陈旧数据，ADX 提供了成本与使用量之间的最佳平衡。
-
-借助 ADX，你可以以更低的价格存储数据，但仍可使用与 Azure Sentinel 中相同的 Kusto 查询语言 (KQL) 查询来浏览数据。 还可以使用 ADX 代理功能来执行跨平台查询。 这些查询将跨 ADX、Application Insights、Azure Sentinel 和 Log Analytics 聚合和关联数据。
-
-有关详细信息，请参阅[集成 Azure 数据资源管理器以实现长期日志保留](store-logs-in-azure-data-explorer.md)。
-
-#### <a name="use-data-collection-rules-for-your-windows-security-events"></a>为 Windows 安全事件使用数据收集规则
-
-[Windows 安全事件连接器](connect-windows-security-events.md?tabs=LAA)使你能够流式传输来自连接到 Azure Sentinel 工作区的任何运行 Windows Server 的计算机（包括物理、虚拟或本地服务器）或任何云中的安全事件。 此连接器包括 Azure Monitor 代理支持，该代理使用数据收集规则来定义要从每个代理收集的数据。 
-
-利用数据收集规则可以大规模地管理收集设置，同时还可以为部分计算机进行唯一、局部的配置。 有关详细信息，请参阅[为 Azure Monitor 代理配置数据收集](../azure-monitor/agents/data-collection-rule-azure-monitor-agent.md)。
-
-除了可以选择引入的预定义事件集（例如“所有事件”、“最小事件”或“常见事件”）之外，数据收集规则还使你能够生成自定义筛选器并选择要引入的特定事件。 Azure Monitor 代理使用这些规则在数据源中筛选数据，并且仅引入所选事件，对于其他所有内容则不做处理。 选择要引入的特定事件有助于优化成本并节省更多成本。
-
-> [!NOTE]
-> 此图所示的费用仅用作示例。 并非是为了反映实际成本。
-
-![显示“成本管理 + 计费成本分析”屏幕的屏幕截图。](media/billing/cost-management.png)
-
-还可以应用其他控件。 例如，若要仅查看与 Azure Sentinel 相关联的成本，请选择“添加筛选器”，选择“服务名称”，然后选择服务名称“sentinel”、“log analytics”和“azure monitor”。    
+可以使用 Azure 预付款额度支付 Azure Sentinel 费用。 但是，无法使用 Azure 预付款额度为第三方组织的产品和服务付费，也无法为 Azure 市场的产品付费。
 
 ### <a name="run-queries-to-understand-your-data-ingestion"></a>运行查询来了解数据引入
 
@@ -433,6 +360,13 @@ Azure Sentinel 数据保留期前 90 天免费。 要调整 Log Analytics 中的
 利用数据收集规则可以大规模地管理收集设置，同时还可以为部分计算机进行唯一、局部的配置。 有关详细信息，请参阅[为 Azure Monitor 代理配置数据收集](../azure-monitor/agents/data-collection-rule-azure-monitor-agent.md)。
 
 除了可以选择引入的预定义事件集（例如“所有事件”、“最小事件”或“常见事件”）之外，数据收集规则还使你能够生成自定义筛选器并选择要引入的特定事件。 Azure Monitor 代理使用这些规则在数据源中筛选数据，并且仅引入所选事件，对于其他所有内容则不做处理。 选择要引入的特定事件有助于优化成本并节省更多成本。
+
+> [!NOTE]
+> 此图所示的费用仅用作示例。 并非是为了反映实际成本。
+
+![显示“成本管理 + 计费成本分析”屏幕的屏幕截图。](media/billing/cost-management.png)
+
+还可以应用其他控件。 例如，若要仅查看与 Azure Sentinel 相关联的成本，请选择“添加筛选器”，选择“服务名称”，然后选择服务名称“sentinel”、“log analytics”和“azure monitor”。    
 
 ## <a name="next-steps"></a>后续步骤
 - 了解[如何通过 Azure 成本管理优化云投资](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
