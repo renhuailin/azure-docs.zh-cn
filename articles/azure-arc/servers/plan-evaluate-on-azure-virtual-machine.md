@@ -1,14 +1,14 @@
 ---
 title: 如何使用 Azure VM 评估已启用 Azure Arc 的服务器
 description: 了解如何使用 Azure 虚拟机评估已启用 Azure Arc 的服务器。
-ms.date: 07/16/2021
+ms.date: 09/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2c981bad00d286860c3759e8266011c6685ff994
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 81c82ad05b715e7d0243585d3bce0abd44f00670
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114392809"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424377"
 ---
 # <a name="evaluate-arc-enabled-servers-on-an-azure-virtual-machine"></a>在 Azure 虚拟机上评估已启用 Arc 的服务器
 
@@ -79,10 +79,7 @@ ms.locfileid: "114392809"
    sudo ufw --force enable
    sudo ufw deny out from any to 169.254.169.254
    sudo ufw default allow incoming
-   sudo apt-get update
    ```
-
-
    若要配置通用 iptables 配置，请运行以下命令：
 
    ```bash
@@ -91,6 +88,13 @@ ms.locfileid: "114392809"
 
    > [!NOTE]
    > 每次重启后都需要设置此配置，除非使用永久性 iptables 解决方案。
+
+   如果 Azure VM 运行 CentOS、Red Hat 或 SUSE Linux Enterprise Server (SLES)，请执行以下步骤来配置防火墙：
+
+   ```bash
+   firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 1 -p tcp -d 169.254.169.254 -j DROP
+   firewall-cmd --reload
+   ```
 
 4. 安装和配置已启用 Azure Arc 的服务器代理。
 

@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma
-ms.date: 03/31/2021
-ms.openlocfilehash: e76493aa83383e4ce59da77cfb0ce050475ad303
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/07/2021
+ms.openlocfilehash: 85bf8c07da9d283011d17f1f96ad76e0fa411213
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751263"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535304"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>使用日志重播服务（预览版）将数据库从 SQL Server 迁移到 SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -330,7 +330,7 @@ az sql midb log-replay start <required parameters> &
 ```
 
 > [!IMPORTANT]
-> 启动 LRS 后，系统管理的所有软件补丁都将暂停 36 小时。 该时段过后，下一个自动化软件补丁会自动停止 LRS。 如果发生这种情况，则无法恢复迁移，而需要从头开始重启迁移。 
+> 启动 LRS 后，任何系统管理的软件修补程序都将暂停 36 小时。 该时段过后，下一个自动化软件补丁会自动停止 LRS。 如果发生这种情况，则无法恢复迁移，而需要从头开始重启迁移。 
 
 ## <a name="monitor-the-migration-progress"></a>监视迁移进度
 
@@ -389,10 +389,11 @@ az sql midb log-replay complete -g mygroup --mi myinstance -n mymanageddb --last
 
 LRS 的功能限制如下：
 - 在迁移过程中，正在还原的数据库不能用于只读访问。
-- 启动 LRS 后，系统管理的软件补丁将暂停 36 小时。 该时段过后，下一个软件更新将停止 LRS。 然后，你需要从头开始重启 LRS。
+- 启动 LRS 后，系统管理的软件修补程序将被阻止 36 小时。 该时段过后，下一个软件更新将停止 LRS。 然后，你需要从头开始重启 LRS。
 - LRS 要求在启用 `CHECKSUM` 选项的情况下备份 SQL Server 上的数据库。
 - LRS 将使用的 SAS 令牌必须是为整个 Azure Blob 存储容器生成的，并且必须仅具有读取和列出权限。
 - 不同数据库的备份文件必须放在 Blob 存储上的不同文件夹中。
+- LRS 不能使用文件名中包含 % 和 $ 字符的备份文件。 请考虑重命名此类文件名。
 - 对于指向 Blob 存储上包含备份文件的不同文件夹的每个数据库，必须为其单独启动 LRS。
 - 对于每个托管实例，LRS 最多可以支持 100 个同时还原过程。
 

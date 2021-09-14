@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: bb441ebac4208afa4d9024787dd14256f36777ed
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 02e5a30da1efe8c3cd669babddff305296077f20
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114445051"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424179"
 ---
 # <a name="apply-the-remote-desktop-extension-to-azure-cloud-services-extended-support"></a>向 Azure 云服务（外延支持）应用远程桌面扩展
 
@@ -47,6 +47,42 @@ Azure 门户使用远程桌面扩展，即使在部署应用程序后，也能�
     
 4. 打开文件来连接到角色实例。
 
+## <a name="update-remote-desktop-extension-using-powershell"></a>使用 PowerShell 更新远程桌面扩展
+请按照以下步骤使用 RDP 扩展将云服务更新到最新模块
+
+1.  将 Az.CloudService 模块更新到[最新版本](https://www.powershellgallery.com/packages/Az.CloudService/0.5.0)
+
+```powershell
+Update-Module -Name Az.CloudService 
+```
+ 
+2.  删除云服务的现有 RDP 扩展 
+
+```powershell
+$resourceGroupName='<Resource Group Name>'  
+$cloudServiceName='<Cloud Service Name>' 
+ 
+# Get existing cloud service  
+$cloudService = Get-AzCloudService -ResourceGroup $resourceGroupName -CloudServiceName $cloudServiceName  
+ 
+# Remove existing RDP Extension from cloud service object  
+$cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension | Where-Object { $_.Type-ne "RDP" }  
+ ```
+ 
+3.  使用最新模块将新的 RDP 扩展添加到云服务
+
+```powershell
+# Create new RDP extension object  
+$credential = Get-Credential  
+$expiration='<Expiration Date>'  
+$rdpExtension = New-AzCloudServiceRemoteDesktopExtensionObject -Name "RDPExtension" -Credential $credential -Expiration $expiration -TypeHandlerVersion "1.2.1"  
+ 
+# Add RDP extension to existing cloud service extension object  
+$cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension + $rdpExtension  
+ 
+# Update cloud service  
+$cloudService | Update-AzCloudService  
+```
 
 ## <a name="next-steps"></a>后续步骤 
 - 查看云服务（外延支持）的[部署先决条件](deploy-prerequisite.md)。

@@ -10,12 +10,12 @@ ms.date: 07/06/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: d3684d3fcb79fca31f403294a640887fa8e33d92
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: be23b73558006fd9523953393a2bdfef5faef460
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113504470"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123476621"
 ---
 # <a name="soft-delete-for-containers"></a>容器软删除
 
@@ -62,6 +62,17 @@ Azure 存储 REST API 2019-12-12 版或更高版本支持容器软删除。
 
 > [!IMPORTANT]
 > 容器软删除不能防止删除存储账户，仅可防止删除帐户中的容器。 若要防止存储帐户被删除，请在存储帐户资源上配置锁。 若要详细了解如何锁定 Azure 资源管理器资源，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
+
+## <a name="feature-support"></a>功能支持
+
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![否](../media/icons/no-icon.png) | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![否](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
 
 ## <a name="pricing-and-billing"></a>定价和计费
 

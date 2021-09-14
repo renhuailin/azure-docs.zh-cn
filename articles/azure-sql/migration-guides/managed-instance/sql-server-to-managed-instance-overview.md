@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
-ms.date: 02/18/2020
-ms.openlocfilehash: 345ef497ecb14279c117932bd2c9a1cf7b42ba1d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/07/2021
+ms.openlocfilehash: 8c44d6e92f2943f3c565e80d42d9d0c474fddd4f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743658"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542244"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>迁移概述：将 SQL Server 到 Azure SQL 托管实例
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -86,6 +86,7 @@ ms.locfileid: "121743658"
 
 |技术 | 说明|
 |---------|---------|
+|[适用于 Azure Data Studio 的 Azure SQL 迁移扩展](../../../dms/migration-using-azure-data-studio.md)  | 适用于 Azure Data Studio 的 Azure SQL 迁移扩展提供 Azure Data Studio 中的 SQL Server 评估和迁移功能。 它支持联机（适用于需要最短停机时间的迁移）或脱机（适用于迁移期间持续停机的迁移）模式下的迁移。 |
 | [Azure Migrate](../../../migrate/how-to-create-azure-sql-assessment.md) | 此 Azure 服务可帮助你在 VMware 上大规模发现和评估 SQL 数据。 它提供 Azure SQL 部署建议、目标大小调整和每月费用估计。 | 
 |[Azure 数据库迁移服务](../../../dms/tutorial-sql-server-to-managed-instance.md)  | 此 Azure 服务支持在脱机模式下迁移，适合能够在迁移过程中适应停机的应用程序。 与联机模式下的连续迁移不同，脱机模式下的迁移将一次性完成从源到目标的完整数据库备份的还原。 | 
 |[本地备份和还原](../../managed-instance/restore-sample-database-quickstart.md) | SQL 托管实例支持还原本机 SQL Server 数据库备份（.bak 文件）。 对于能够向 Azure 存储提供完整数据库备份的客户来说，这是最便捷的迁移选项。 还支持完整备份和差异备份，本文后面的[迁移资产部分](#migration-assets)中进行了介绍。| 
@@ -109,6 +110,7 @@ ms.locfileid: "121743658"
 
 |迁移选项  |何时使用  |注意事项  |
 |---------|---------|---------|
+|[适用于 Azure Data Studio 的 Azure SQL 迁移扩展](../../../dms/migration-using-azure-data-studio.md) | - 大规模迁移单个数据库或多个数据库。 </br> - 可以在联机（最短停机时间）和脱机（可接受停机时间）模式下运行。 </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM |  - 易于设置和入门。 </br> - 要求安装自承载集成运行时以访问本地 SQL Server 和备份。 </br> - 包括评估和迁移功能。 |
 |[Azure 数据库迁移服务](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 大规模迁移单个数据库或多个数据库。 </br> - 可在迁移过程中适应停机。 </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM |  - 可通过 [PowerShell](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md) 自动执行大规模迁移。 </br> - 完成迁移的时间取决于数据库的大小，并受备份和还原时间的影响。 </br> - 可能需要足够的停机时间。 |
 |[本机备份和还原](../../managed-instance/restore-sample-database-quickstart.md) | - 迁移单个业务线应用程序数据库。  </br> - 无需单独的迁移服务或工具即可快速轻松地进行迁移。  </br> </br> 支持的源： </br> - SQL Server (2005 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | - 数据库备份使用多个线程来优化指向 Azure Blob 存储的数据传输，但是合作伙伴带宽和数据库大小会影响传输速率。 </br> - 停机时间应包含执行完整备份和还原所需的时间（这是数据操作的大小）。| 
 |[日志重播服务](../../managed-instance/log-replay-service-migrate.md) | - 迁移单个业务线应用程序数据库。  </br> - 需要对数据库迁移进行更多的控制。  </br> </br> 支持的源： </br> - SQL Server (2008 - 2019) 本地或 Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP 计算 SQL Server VM | - 迁移需要在 SQL Server 上进行完整的数据库备份，并将备份文件复制到 Azure Blob 存储。 日志重播服务用于将备份文件从 Azure Blob 存储还原到 SQL 托管实例。 </br> - 在迁移过程中还原的数据库将处于还原模式，并且在该过程完成之前不能用于读取或写入。| 

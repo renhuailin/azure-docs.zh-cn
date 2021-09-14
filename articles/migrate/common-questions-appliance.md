@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: a814cce09a134f007fbd136b8c142a60fb099a1b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 11360af784f456559955152772ba099ad4d48d73
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732658"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123423859"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 设备：常见问题
 
@@ -57,7 +57,7 @@ Azure Migrate 设备会持续分析本地服务器，以衡量性能数据。 �
 
 ## <a name="can-i-harden-the-appliance"></a>是否可以强化设备？
 
-使用下载的模板创建设备时，如果你保留了 Azure Migrate 设备所需的通信和防火墙规则，则可将组件（例如防病毒软件）添加到该模板。
+使用下载的模板创建设备时，可以将组件（如防病毒组件）添加到模板。 请确保已允许通过 Azure 防火墙访问正确的 [URL](migrate-appliance.md#public-cloud-urls)，并从防病毒扫描中排除了 %ProgramData%\MicrosoftAzure 文件夹。
 
 ## <a name="what-network-connectivity-is-required"></a>需要建立哪种网络连接？
 

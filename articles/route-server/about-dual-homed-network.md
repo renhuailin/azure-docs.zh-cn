@@ -1,20 +1,20 @@
 ---
-title: 关于具有 Azure 路由服务器（预览版）的双宿主网络
-description: 了解 Azure 路由服务器（预览版）在双宿主网络中的工作原理。
+title: '关于具有 Azure 路由服务器的双宿主网络 '
+description: 了解 Azure 路由服务器在双宿主网络中的工作原理。
 services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: b786c58efd193eebbd43a4bd40f29201347c1309
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 76c1a1e424e4f8ae372f53ceab5da43ca9d40629
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776481"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434567"
 ---
-# <a name="about-dual-homed-network-with-azure-route-server-preview"></a>关于具有 Azure 路由服务器（预览版）的双宿主网络
+# <a name="about-dual-homed-network-with-azure-route-server"></a>关于具有 Azure 路由服务器的双宿主网络
 
 Azure 路由服务器支持典型的中心和分支网络拓扑。 此配置适用于路由服务器和网络虚拟设备 (NVA) 均位于中心虚拟网络时。 路由服务器还支持配置称为双宿主网络的其他拓扑。 此配置适用于分支虚拟网络与两个或更多中心虚拟网络对等互连时。 分支虚拟网络中的虚拟机可以通过任一中心虚拟网络与本地或 Internet 进行通信。
 

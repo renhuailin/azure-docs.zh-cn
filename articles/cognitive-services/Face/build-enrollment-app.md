@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: ad79bbd166e12c24339e13f38b4e10ca9ea2b549
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: db6ee292a088d530ea858d75e6649684e03d92b6
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966609"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540471"
 ---
 # <a name="build-a-react-app-to-add-users-to-a-face-service"></a>生成反应应用以将用户添加到人脸服务
 
@@ -65,14 +65,15 @@ ms.locfileid: "111966609"
 > [!div class="mx-imgBorder"]
 > ![应用同意页](./media/enrollment-app/1-consent-1.jpg)
 
-此服务提供图像质量检查，帮助你确定图像的质量是否足以用于添加客户或尝试人脸识别。 此应用演示如何从设备的相机访问帧、选择质量最高的帧，并将检测到的人脸添加到人脸 API 服务。 
-
 许多人脸识别问题都是低质量的参考图像所致。 下面是一些会降低模型性能的因素：
 * 人脸大小（人脸离相机很远）
 * 人脸方向（人脸转过相机或向远离相机的方向倾斜）
 * 光照条件差（低光或背光），在此情况下，图像可能曝光较差或噪点过多
 * 遮挡（人脸被部分隐藏或遮挡，包括帽子或厚框眼镜等配饰）
 * 模糊（例如在拍照时人脸迅速移动）。 
+
+此服务提供图像质量检查，帮助你根据上述因素确定图像的质量是否足以用于添加客户或尝试人脸识别。 此应用演示如何从设备的相机访问帧、检测质量并向用户显示用户界面消息，以帮助他们捕获更高质量的图像，选择最高质量的帧，并将检测到的人脸添加到人脸 API 服务中。 
+
 
 > [!div class="mx-imgBorder"]
 > ![应用图像捕获说明页](./media/enrollment-app/4-instruction.jpg)

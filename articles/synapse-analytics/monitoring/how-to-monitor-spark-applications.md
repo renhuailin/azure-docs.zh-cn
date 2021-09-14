@@ -9,16 +9,16 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 5f9733866e85d79bdb85b8a24d1878e1169c2479
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9666b8c9424b03c34b1ac332ef7ceb2f617c96a3
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97586034"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542289"
 ---
-# <a name="how-to-use-synapse-studio-to-monitor-your-apache-spark-applications"></a>如何使用 Synapse Studio 监视 Apache Spark 应用程序
+# <a name="monitor-your-apache-spark-applications-in-synapse-studio"></a>在 Synapse Studio 中监视 Apache Spark 应用程序
 
-借助 Azure Synapse Analytics，可以使用 Spark 在工作区中的 Spark 池上运行笔记本、作业和其他类型的应用程序。
+借助 Azure Synapse Analytics，可以使用 Apache Spark 在工作区中的 Apache Spark 池上运行笔记本、作业和其他类型的应用程序。
 
 本文介绍如何监视 Apache Spark 应用程序，使你能够关注最新状态、问题和进度。
 

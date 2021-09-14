@@ -2,13 +2,13 @@
 title: 使用 Cloud Shell 部署模板
 description: 使用 Azure 资源管理器和 Azure Cloud Shell 将资源部署到 Azure。 资源在 Azure 资源管理器模板（ARM 模板）中定义。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: bd597c2cb29120e680493a99aac33f146940bc19
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/03/2021
+ms.openlocfilehash: 0228f4862cbdcda98bc577844bca9dad34feb96f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957876"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535074"
 ---
 # <a name="deploy-arm-templates-from-azure-cloud-shell"></a>从 Azure Cloud Shell 部署 ARM 模板
 
@@ -54,41 +54,17 @@ ms.locfileid: "111957876"
 
 若要部署本地模板，必须首先将模板上传到连接到 Cloud Shell 会话的存储帐户。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Cloud Shell](https://shell.azure.com)。
 
-1. 选择 Cloud Shell 资源组。 名称模式为 `cloud-shell-storage-<region>`。
+1. 选择“PowerShell”或“Bash”。 
 
-   ![选择资源组](./media/deploy-cloud-shell/select-cloud-shell-resource-group.png)
+   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-bash-powershell.png" alt-text="选择 Bash 或 PowerShell":::
 
-1. 选择适用于 Cloud Shell 的存储帐户。
+1. 依次选择“上传/下载文件”、“上传” 。
 
-   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-storage.png" alt-text="选择存储帐户":::
+   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-upload.png" alt-text="上传文件":::
 
-1. 选择“文件共享”。
-
-   :::image type="content" source="./media/deploy-cloud-shell/files-shares.png" alt-text="选择“文件共享”":::
-
-1. 选择 Cloud Shell 的默认文件共享。 文件共享的名称格式为 `cs-<user>-<domain>-com-<uniqueGuid>`。
-
-   :::image type="content" source="./media/deploy-cloud-shell/select-file-share.png" alt-text="默认文件共享":::
-
-1. 添加一个新目录来保存模板。 选择该目录。
-
-   :::image type="content" source="./media/deploy-cloud-shell/add-directory.png" alt-text="添加目录":::
-
-1. 选择“上传”。
-
-   :::image type="content" source="./media/deploy-cloud-shell/upload-template.png" alt-text="上传模板":::
-
-1. 找到并上传模板。
-
-   :::image type="content" source="./media/deploy-cloud-shell/select-template.png" alt-text="选择模板":::
-
-1. 打开 Cloud Shell 提示符。
-
-   :::image type="content" source="./media/deploy-cloud-shell/open-cloud-shell.png" alt-text="打开 Cloud Shell":::
-
-1. 导航到 clouddrive 目录。 导航到为保存模板而添加的目录。
+1. 选择要上传的 ARM 模板，然后选择“打开”。
 
 1. 若要部署该模板，请使用以下命令：
 

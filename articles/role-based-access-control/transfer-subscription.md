@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/14/2021
+ms.date: 09/04/2021
 ms.author: rolyon
-ms.openlocfilehash: 64f164c7d5e60e92e30986f8a39b34e92b1fdce4
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 19e9d6c76e30828b0aac0fba139963ff25ae2cba
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114202472"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542307"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到其他 Azure AD 目录
 
@@ -89,6 +89,8 @@ ms.locfileid: "114202472"
 
 > [!WARNING]
 > 如果对依赖于密钥保管库的资源（例如存储帐户或 SQL 数据库）使用静态加密，而密钥保管库不位于正在转移的订阅中，则可能导致无法恢复的情况。 如果遇到这种情况，应采取步骤使用其他密钥保管库或暂时禁用客户管理的密钥，以避免这种不可恢复的情况。
+
+若要获取在转移订阅时受到影响的一些 Azure 资源的列表，还可以在 [Azure Resource Graph](../governance/resource-graph/overview.md) 中运行查询。 有关示例查询，请参阅[列出转移 Azure 订阅时受影响的资源](../governance/resource-graph/samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)。
 
 ## <a name="prerequisites"></a>先决条件
 

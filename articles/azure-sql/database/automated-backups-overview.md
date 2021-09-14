@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma, wiassaf, danil
-ms.date: 07/20/2021
-ms.openlocfilehash: 4b7b17ab75f2614a99d791118dc908cd1f7c3b97
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.date: 08/28/2021
+ms.openlocfilehash: 2a6213a0359daf58d0ef34986d1bf3edbd4e1c9a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862659"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424397"
 ---
 # <a name="automated-backups---azure-sql-database--azure-sql-managed-instance"></a>自动备份 - Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -97,7 +97,7 @@ SQL 数据库和 SQL 托管实例都使用 SQL Server 技术，每周创建[完�
 
 | 操作 | Azure 门户 | Azure PowerShell |
 |---|---|---|
-| **更改备份保留** | [SQL 数据库](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL 托管实例](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL 数据库](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL 托管实例](/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **更改备份保留** | [SQL 数据库](#change-the-short-term-retention-policy-using-the-azure-portal) <br/> [SQL 托管实例](#change-the-short-term-retention-policy-using-the-azure-portal) | [SQL 数据库](#change-the-short-term-retention-policy-using-powershell) <br/>[SQL 托管实例](#change-the-short-term-retention-policy-using-powershell) |
 | **更改长期备份保留** | [SQL 数据库](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/> [SQL 托管实例](../managed-instance/long-term-backup-retention-configure.md#using-the-azure-portal) | [SQL 数据库](long-term-backup-retention-configure.md)<br/>[SQL 托管实例](../managed-instance/long-term-backup-retention-configure.md#using-powershell)  |
 | **从某个时间点还原数据库** | [SQL 数据库](recovery-using-backups.md#point-in-time-restore)<br>[SQL 托管实例](../managed-instance/point-in-time-restore.md) | [SQL 数据库](/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL 托管实例](/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | **还原已删除的数据库** | [SQL 数据库](recovery-using-backups.md)<br>[SQL 托管实例](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL 数据库](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL 托管实例](/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
@@ -138,7 +138,7 @@ SQL 数据库和 SQL 托管实例按累积值形式计算使用的总备份存�
 
 只要备份存储消耗量不超过数据库的最大数据大小，就不会对备份收费。 额外的备份存储消耗量取决于各个数据库的工作负荷和最大大小。 考虑实施下面一些优化技术，以减少备份存储消耗量：
 
-- 将[备份保留期](#change-the-pitr-backup-retention-period-by-using-the-azure-portal)减少到所需的最小值。
+- 将[备份保留期](#change-the-short-term-retention-policy-using-the-azure-portal)减少到所需的最小值。
 - 避免以超过需要的频率执行大型写入操作，例如索引重建。
 - 对于大规模数据加载操作，请考虑使用[聚集列存储索引](/sql/relational-databases/indexes/columnstore-indexes-overview)以及下列相关[最佳做法](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)，和/或减少非聚集索引的数目。
 - 在常规用途服务层级中，预配数据存储的价格低于备份存储的价格。 如果额外备份存储成本一直较高，可以考虑增大数据存储，以便节省备份存储的费用。
@@ -147,7 +147,16 @@ SQL 数据库和 SQL 托管实例按累积值形式计算使用的总备份存�
 
 ## <a name="backup-retention"></a>备份保留期
 
-对于所有新的、还原和复制的数据库，Azure SQL 数据库和 Azure SQL 托管实例会默认保留足以实现过去七天的 PITR 的备份量。 除了超大规模数据库和基本层数据库之外，可以按每个活动数据库[更改备份保持期](#change-the-pitr-backup-retention-period)，更改幅度可为 1-35 天。 如[备份存储消耗量](#backup-storage-consumption)中所述，为启用 PITR 而存储的备份可能早于保留期。 仅对于 Azure SQL 托管实例，在 0-35 天范围内删除了数据库后，可以设置 PITR 备份保留率。 
+Azure SQL 数据库和 Azure SQL 托管实例同时提供短期和长期备份保留。 短期保留备份允许具有数据库保留期的时间点还原 (PITR)，而长期保留则为各种合规性要求提供备份。  
+
+### <a name="short-term-retention"></a>短期保留
+
+对于所有新的、还原和复制的数据库，Azure SQL 数据库和 Azure SQL 托管实例会默认保留足以实现过去七天的 PITR 的备份量。 定期执行完整备份、差异备份和日志备份，以确保数据库可还原到为数据库或托管实例定义的保留期内的任何时间点。 此外，对于 Azure SQL 数据库，差异备份可配置为 12 小时频率（默认）或 24 小时频率。 
+
+> [!NOTE]
+> 24 小时差异备份频率可能会增加还原数据库所需的时间。 
+
+除了超大规模数据库和基本层数据库之外，可以按每个活动数据库[更改备份保持期](#change-the-short-term-retention-policy)，更改幅度可为 1-35 天。 如[备份存储消耗量](#backup-storage-consumption)中所述，为启用 PITR 而存储的备份可能早于保留期。 仅对于 Azure SQL 托管实例，在 0-35 天范围内删除了数据库后，可以设置 PITR 备份保留率。 
 
 如果删除数据库，系统会保留数据库的备份至特定的保留期，与为任何一个联机数据库的保留方式一样。 不能更改已删除的数据库的备份保留期。
 
@@ -194,13 +203,13 @@ SQL 数据库和 SQL 托管实例按累积值形式计算使用的总备份存�
 
 `Total billable backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
 
-可计费的备份存储总用量（如果有）将按使用的备份存储冗余费率以 GB/月进行收费。 备份存储消耗量取决于各个数据库、弹性池以及托管实例的工作负荷和大小。 经过大量修改的数据库具有相对较大的差异备份和日志备份，因为这些备份的大小与更改的数据量成比例。 因此，此类数据库的备份费用会更高。
+可计费的备份存储总用量（如果有）将按使用的备份存储冗余费率以 GB/月进行收费。 备份存储消耗量取决于各个数据库、弹性池以及托管实例的工作负荷和大小。 经过大量修改的数据库具有相对较大的差异备份和日志备份，因为这些备份的大小与数据更改量成比例。 因此，此类数据库的备份费用会更高。
 
 SQL 数据库和 SQL 托管实例按累积值形式计算所有备份文件的总可计费备份存储量。 此值每隔一小时就会报告给 Azure 计费管道，该管道聚合此每小时用量，以便在每月底获取备份存储消耗量。 如果删除数据库，备份存储消耗量将逐渐降低，因为较早的备份会过期并被删除。 由于差异备份和日志备份需要早期的完整备份才可恢复，因此所有这三种备份类型会在每周都一并清除一次。 当所有备份都被删除后，计费会停止。 
 
 举一个简化的示例，假设数据库累积了 744 GB 的备份存储，并且此数量因数据库完全空闲会在整个月内保持恒定。 若要将此累积存储消耗量转换为每小时用量，可将此数量除以 744.0（每月 31 天 * 每天 24 小时）。 SQL 数据库将以固定速率向 Azure 计费管道报告数据库每小时使用了 1 GB 的 PITR 备份。 Azure 计费服务将聚合此消耗量，并显示整月用量为 744 GB。 成本基于所在区域的用量/GB/月费率。
 
-下面是一个更复杂的示例。 假设同一空闲数据库的保留期在当月的中途从七天增加到了 14 天。 这种增长会导致总备份存储翻倍至 1,488 GB。 SQL 数据库将报告第 1 到 372 小时（上半月）的用量为每小时 1 GB。 它会报告第 373 到 744 小时（下半月）的用量为每小时 2 GB。 此用量将聚合到每月 1,116 GB 的最终帐单中。
+下面是一个更复杂的示例。 假设同一空闲数据库的保留期在当月的中途从 7 天增加到了 14 天。 这种增长会导致总备份存储翻倍至 1,488 GB。 SQL 数据库将报告第 1 到 372 小时（上半月）的用量为每小时 1 GB。 它会报告第 373 到 744 小时（下半月）的用量为每小时 2 GB。 此用量将聚合到每月 1,116 GB 的最终帐单中。
 
 实际的备份计费方案更加复杂。 由于数据库中的变化率取决于工作负荷，并且会随时间而改变，因此每个差异备份和日志备份的大小也会随之改变，从而导致每小时备份存储消耗量出现相应波动。 此外，每个差异备份都包含自上次完整备份后数据库中的所有更改，因此，所有差异备份的总大小会在一周过程中逐渐增加，然后在早期的完整备份、差异备份和日志备份过期后急剧减少。例如，如果在完整备份完成后立即运行量较大的写入活动（如索引重新生成），则因重新生成索引所发生的修改将包含在重建期间获取的事务日志备份、下一个差异备份以及下一次完全备份发生之前执行的每个差异备份中。 如果在较大数据库中发生后一种情况，如果差异备份过大，则服务中的一项优化会导致创建完整备份而不是差异备份。 这会减少下一次完整备份之前的所有差异备份的大小。
 
@@ -237,9 +246,9 @@ SQL 数据库和 SQL 托管实例按累积值形式计算所有备份文件的�
 
 ## <a name="backup-integrity"></a>备份完整性
 
-Azure SQL 工程团队持续不断地自动测试自动数据库备份的还原。 （此测试功能目前在 SQL 托管实例中不可用。 你应在 SQL 托管实例中计划数据库的 DBCC CHECKDB，按工作负荷进行计划。）
+Azure SQL 工程团队持续不断地自动测试自动数据库备份的还原。 （此测试当前不适用于 SQL 托管实例。 应在 SQL 托管实例中的数据库上根据工作负载计划 DBCC CHECKDB。）
 
-在时间点还原后，数据库还会收到 DBCC CHECKDB 完整性检查。
+完成时间点还原后，数据库还会接受 DBCC CHECKDB 完整性检查。
 
 在完整性检查期间发现的任何问题都将导致向工程团队发出警报。 有关详细信息，请参阅 [SQL 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。
 
@@ -247,13 +256,13 @@ Azure SQL 工程团队持续不断地自动测试自动数据库备份的还原�
 
 ## <a name="compliance"></a>合规性
 
-将数据库从基于 DTU 的服务层级迁移到基于 vCore 的服务层级时，将保留 PITR 保留期以确保不会违反应用程序的数据恢复策略。 如果默认保留期不满足合规性要求，可以更改 PITR 保留期。 有关详细信息，请参阅[更改 PITR 备份保留期](#change-the-pitr-backup-retention-period)。
+将数据库从基于 DTU 的服务层级迁移到基于 vCore 的服务层级时，将保留 PITR 保留期以确保不会违反应用程序的数据恢复策略。 如果默认保留期不满足合规性要求，可以更改 PITR 保留期。 有关详细信息，请参阅[更改 PITR 备份保留期](#change-the-short-term-retention-policy)。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="change-the-pitr-backup-retention-period"></a>更改 PITR 备份保留期
+## <a name="change-the-short-term-retention-policy"></a>更改短期保留策略
 
-可以使用 Azure 门户、PowerShell 或 REST API 更改默认 PITR 备份保留期。 以下示例演示如何将 PITR 保留期更改为 28 天。
+可以使用 Azure 门户、PowerShell 或 REST API 更改默认 PITR 备份保留期和差异备份频率。 以下示例演示如何将 PITR 保留期更改为 28 天，以及将差异备份更改为 24 小时间隔。
 
 > [!WARNING]
 > 如果缩短当前的保留期，则无法还原到早于新保留期的时间点。 会删除新保留期内不再需要为提供 PITR 而保留的备份。 如果延长当前的保留期，则无法立即在新的保留期内获得恢复到旧时间点的能力。 随着时间推移，你将获得这一能力，因为系统开始将备份保留更长时间。
@@ -261,9 +270,9 @@ Azure SQL 工程团队持续不断地自动测试自动数据库备份的还原�
 > [!NOTE]
 > 这些 API 只影响 PITR 保留期。 如果为数据库配置了 LTR，LTR 不会受到影响。 有关如何更改 LTR 保留期的信息，请参阅[长期保留](long-term-retention-overview.md)。
 
-### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>使用 Azure 门户更改 PITR 备份保留期
+### <a name="change-the-short-term-retention-policy-using-the-azure-portal"></a>使用 Azure 门户更改短期保留策略
 
-若要通过使用 Azure 门户更改活动数据库的 PITR 备份保持期，请转到具有要更改保持期的数据库的服务器或托管实例。 在左窗格中选择“备份”，然后选择“保留策略”选项卡。选择想要为其更改 PITR 备份保留期的数据库。 然后，从操作栏中选择“配置保留期”。
+若要通过使用 Azure 门户更改活动数据库的 PITR 备份保留期或差异备份频率，请转到具有要更改保留期的数据库的服务器或托管实例。 在左窗格中选择“备份”，然后选择“保留策略”选项卡。选择想要为其更改 PITR 备份保留期的数据库。 然后，从操作栏中选择“配置保留期”。
 
 #### <a name="sql-database"></a>[SQL 数据库](#tab/single-database)
 
@@ -275,7 +284,7 @@ Azure SQL 工程团队持续不断地自动测试自动数据库备份的还原�
 
 ---
 
-### <a name="change-the-pitr-backup-retention-period-by-using-powershell"></a>使用 PowerShell 更改 PITR 备份保留期
+### <a name="change-the-short-term-retention-policy-using-powershell"></a>使用 PowerShell 更改短期保留策略
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -283,7 +292,7 @@ Azure SQL 工程团队持续不断地自动测试自动数据库备份的还原�
 
 #### <a name="sql-database"></a>[SQL 数据库](#tab/single-database)
 
-若要更改活动 Azure SQL 数据库的 PITR 备份保留，请使用以下 PowerShell 示例。
+若要更改活动 Azure SQL 数据库的 PITR 备份保留或差异备份频率，请使用以下 PowerShell 示例。
 
 ```powershell
 # SET new PITR backup retention period on an active individual database
@@ -291,9 +300,15 @@ Azure SQL 工程团队持续不断地自动测试自动数据库备份的还原�
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
 ```
 
+```powershell
+# SET new PITR differental backup frequency on an active individual database
+# Valid differential backup frequency must be ether 12 or 24. 
+Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28 -DiffBackupIntervalInHours 24
+```
+
 #### <a name="sql-managed-instance"></a>[SQL 托管实例](#tab/managed-instance)
 
-若要为 SQL 托管实例中的单个活动数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
+若要更改 SQL 托管实例中单个活动数据库的 PITR 备份保留，请使用以下 PowerShell 示例。
 
 ```powershell
 # SET new PITR backup retention period on an active individual database
@@ -301,7 +316,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase -RetentionDays 1
 ```
 
-若要为 SQL 托管实例中的所有活动数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
+若要更改 SQL 托管实例中所有活动数据库的 PITR 备份保留，请使用以下 PowerShell 示例。
 
 ```powershell
 # SET new PITR backup retention period for ALL active databases
@@ -309,7 +324,7 @@ Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resou
 Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 1
 ```
 
-若要为 SQL 托管实例中的单个已删除的数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
+若要更改 SQL 托管实例中单个已删除数据库的 PITR 备份保留，请使用以下 PowerShell 示例。
  
 ```powershell
 # SET new PITR backup retention on an individual deleted database
@@ -317,7 +332,7 @@ Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName testser
 Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
 ```
 
-若要为 SQL 托管实例中的所有已删除的数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
+若要更改 SQL 托管实例中所有已删除数据库的 PITR 备份保留，请使用以下 PowerShell 示例。
 
 ```powershell
 # SET new PITR backup retention for ALL deleted databases
@@ -330,7 +345,48 @@ Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -Instanc
 
 ---
 
-### <a name="change-the-pitr-backup-retention-period-by-using-the-rest-api"></a>使用 REST API 更改 PITR 备份保留期
+### <a name="change-the-short-term-retention-policy-using-the-rest-api"></a>使用 REST API 更改短期保留策略
+
+以下请求将保留期更新为 28 天，还将差异备份频率设置为 24 小时。
+
+
+#### <a name="sql-database"></a>[SQL 数据库](#tab/single-database)
+
+#### <a name="sample-request"></a>示例请求
+
+```http
+PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2021-02-01-preview
+```
+
+#### <a name="request-body"></a>请求正文
+
+```json
+{ 
+    "properties":{
+        "retentionDays":28
+        "diffBackupIntervalInHours":24
+  }
+}
+```
+
+#### <a name="sample-response"></a>示例响应： 
+
+```json
+{ 
+  "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
+  "name": "default",
+  "type": "Microsoft.Sql/resourceGroups/servers/databases/backupShortTermRetentionPolicies",
+  "properties": {
+    "retentionDays": 28
+    "diffBackupIntervalInHours":24
+  }
+}
+```
+
+
+有关详细信息，请参阅[备份保持期 REST API](/rest/api/sql/backupshorttermretentionpolicies)。
+
+#### <a name="sql-managed-instance"></a>[SQL 托管实例](#tab/managed-instance)
 
 #### <a name="sample-request"></a>示例请求
 
@@ -365,38 +421,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 有关详细信息，请参阅[备份保持期 REST API](/rest/api/sql/backupshorttermretentionpolicies)。
 
-#### <a name="sample-request"></a>示例请求
-
-```http
-PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
-```
-
-#### <a name="request-body"></a>请求正文
-
-```json
-{
-  "properties":{
-    "retentionDays":28
-  }
-}
-```
-
-#### <a name="sample-response"></a>示例响应
-
-状态代码：200
-
-```json
-{
-  "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
-  "name": "default",
-  "type": "Microsoft.Sql/resourceGroups/servers/databases/backupShortTermRetentionPolicies",
-  "properties": {
-    "retentionDays": 28
-  }
-}
-```
-
-有关详细信息，请参阅[备份保持期 REST API](/rest/api/sql/backupshorttermretentionpolicies)。
+---
 
 ## <a name="configure-backup-storage-redundancy"></a>配置备份存储冗余
 

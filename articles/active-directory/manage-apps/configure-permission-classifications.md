@@ -8,20 +8,28 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6d0432c93a0ab3f47b68e071026301c49e8c670c
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: f42f258383e1ca76be7fa45c79b11b3c18e900a7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113567953"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425802"
 ---
 # <a name="configure-permission-classifications"></a>配置权限分类
 
 通过权限分类，可根据组织的策略和风险评估确定不同权限的影响。 例如，可使用同意策略中的权限分类来确定允许用户同意哪一组权限。
+
+## <a name="prerequisites"></a>先决条件
+
+要完成本指南中的任务，需具备以下各项：
+
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 全局管理员角色。
+- 设置 Azure AD PowerShell。 请参阅 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/)
 
 ## <a name="manage-permission-classifications"></a>管理权限分类
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: 0d7cb5c8747707b950075c7201d90c5e208298db
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: a02b7d6fa5ef8369578f89a452df95a50ca34204
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112123452"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425169"
 ---
 # <a name="troubleshoot-vm-insights-guest-health-preview"></a>VM 见解来宾运行状况疑难解答（预览）
 本文介绍了在 VM 见解运行状况出现问题时可以采取的故障排除步骤。
@@ -74,7 +74,7 @@ Exiting with the following error: "Failed to install VM Guest Health Agent: exit
   - 对于 Linux：守护程序为 vmGuestHealthAgent。 状态文件夹为 /var/opt/vmGuestHealthAgent/*
   - 对于 Windows：服务为“VM 来宾运行状况代理”。 状态文件夹为 %ProgramData%\Microsoft\VMGuestHealthAgent\\*。
 - 验证 Azure Monitor 代理是否具有网络连接。 
-  - 从虚拟机尝试 ping <region>.handler.control.monitor.azure.com。 例如，对于 westeurope 中的虚拟机，尝试 ping westeurope.handler.control.monitor.azure.com:443。
+  - 从虚拟机尝试 ping \<region\>.handler.control.monitor.azure.com。 例如，对于 westeurope 中的虚拟机，尝试 ping westeurope.handler.control.monitor.azure.com:443。
 - 验证虚拟机是否与 Log Analytics 工作区同一区域中的数据集合规则关联。
   -  请参阅[启用用于 VM 的 Azure Monitor 来宾运行状况（预览）](vminsights-health-enable.md)中的“创建数据集合规则 (DCR)”，确保 DCR 的结构正确无误。 请特别注意，performanceCounters 数据源部分的状态设置为采样三个计数器，运行状况扩展配置中 inputDataSources 部分的状态设置为向扩展发送计数器。
 -  检查虚拟机是否存在来宾运行状况扩展错误。

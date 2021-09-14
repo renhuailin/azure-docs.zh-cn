@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: ef8c2756d6e11dc38ac488abb0ed6d8ae8e9a78b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2a0a104b4ad76c94d467c01fe8be421e5b96c435
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745851"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541650"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>用于解决 Azure SQL 数据库和 Azure SQL 托管实例常见安全要求的 playbook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -647,7 +647,7 @@ DDoS 防护作为 Azure 平台的一部分自动启用。 它针对公共终结�
 
 **最佳做法**：
 
-- 为特定服务器或托管实例配置 [Azure Defender for SQL](azure-defender-for-sql.md) 。 还可以通过切换到 [Azure 安全中心标准层](../../security-center/security-center-pricing.md)，为订阅中的所有服务器和托管实例配置 Azure Defender for SQL。
+- 为特定服务器或托管实例配置 [Azure Defender for SQL](azure-defender-for-sql.md) 。 还可以通过启用 [Azure Defender](../../security-center/security-center-pricing.md) 为订阅中的所有服务器和托管实例配置 Azure Defender for SQL。
 
 - 若要获得完整的调查体验，建议启用  [SQL 数据库审核](../../azure-sql/database/auditing-overview.md)。 使用审核可以跟踪数据库事件，并将这些事件写入到 Azure 存储帐户或 Azure Log Analytics 工作区中的审核日志。
 

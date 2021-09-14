@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 96cc983cba992452882a8f3307974e83683c39a9
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 1208beab46a9ceb29abd75eec587dc7628e07801
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "114462173"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435377"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>迁移 StorSimple 1200 到 Azure 文件同步
 
@@ -28,9 +28,6 @@ StorSimple 1200 系列将于 2022 年 12 月[停用](https://support.microsoft.c
 | 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="azure-file-sync&quot;></a>Azure 文件同步
-
-> [!IMPORTANT]
-> Microsoft 致力于帮助客户完成迁移。 若要获取自定义迁移计划，或者在迁移过程中需要帮助，请向 AzureFilesMigration@microsoft.com 发送电子邮件。
 
 Azure 文件同步是一种 Microsoft 云服务，基于两个主要组件：
 
@@ -173,6 +170,12 @@ Azure 文件同步是一种 Microsoft 云服务，基于两个主要组件：
 尽管不太可能，但如果出现这种情况，请查看 Azure 文件同步故障排除指南的链接。
 
 [!INCLUDE [storage-files-migration-robocopy-optimize](../../../includes/storage-files-migration-robocopy-optimize.md)]
+
+---
+
+> [!NOTE]
+> 仍有疑问或问题？</br>
+> 我们随时为你提供帮助：:::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-migration-email.png" alt-text="电子邮件地址（一个词）：microsoft dot com 上的 Azure 文件存储迁移":::
 
 ## <a name="relevant-links"></a>相关链接
 

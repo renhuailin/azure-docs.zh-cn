@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/27/2019
+ms.date: 08/25/2021
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: 7893a73650e90411aa45f35d014b394eab0ad67d
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: a6bf1ec1616d45edd08b943b55f2859d7942c908
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568507"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425806"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>管理应用程序的同意和评估同意请求
 
@@ -116,9 +116,9 @@ Microsoft 建议[限制用户同意](../../active-directory/manage-apps/configur
 1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
-4. 在导航菜单中，选择“用户和组”。
-5. 选择“用户设置”。
-6. 通过将“用户可以允许应用访问其数据”切换为“否”来禁用用户未来的所有同意操作，并单击“保存”按钮。
+4. 选择“Enterprise 应用程序”，然后选择“管理”部分中的“用户设置”。
+:::image type="content" source="media/manage-consent-requests/disable-user-consent-operations.png" alt-text="禁用所有应用的用户同意操作。":::
+5. 通过将“用户可以同意应用代表他们访问公司数据”开关设置为“否”来禁用将来的所有用户同意操作，并单击“保存”按钮。
 
 ## <a name="next-steps"></a>后续步骤
 

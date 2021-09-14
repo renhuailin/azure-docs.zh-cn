@@ -1,22 +1,22 @@
 ---
 title: 了解适用于 Kubernetes 的 Azure Policy
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 615145c7267d580d7a22dd34452e68c9cd905cdc
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 43b5e010ec6f024838a0407f2cafae1d28bdcf1e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965126"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436061"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
 Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3，这是一个用于 [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) 的许可控制器 Webhook，它以集中、一致的方式对群集应用大规模操作和安全措施。 借助 Azure Policy，可以从一个位置管理和报告 Kubernetes 群集的符合性状态。 该加载项制定以下功能：
 
 - 检查 Azure Policy 服务对群集的策略分配。
-- 将策略定义作为[约束模板](https://github.com/open-policy-agent/gatekeeper#constraint-templates)部署到群集中，并[约束](https://github.com/open-policy-agent/gatekeeper#constraints)自定义资源。
+- 将策略定义作为[约束模板](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)部署到群集中，并[约束](https://github.com/open-policy-agent/gatekeeper#constraints)自定义资源。
 - 向 Azure Policy 服务报告审核和符合性详细信息。
 
 适用于 Kubernetes 的 Azure Policy 支持以下群集环境：
@@ -26,7 +26,8 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 - [AKS 引擎](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> 适用于 AKS 引擎和已启用 Arc 的 Kubernetes 的附加产品都为“预览版”状态。 适用于 Kubernetes 的 Azure Policy 仅支持 Linux 节点池和内置策略定义。 内置策略定义属于“Kubernetes”类别。 具有“EnforceOPAConstraint”和“EnforceRegoPolicy”效果和相关“Kubernetes 服务”类别的有限预览策略定义已被弃用。 改为配合使用“审核”、“拒绝”效果和资源提供程序模式 `Microsoft.Kubernetes.Data`。
+> 适用于 AKS 引擎和已启用 Arc 的 Kubernetes 的附加产品都为“预览版”状态。 适用于 Kubernetes 的 Azure Policy 仅支持 Linux 节点池和内置策略定义（自定义策略定义为公共预览版功能）。 内置策略定义属于“Kubernetes”类别。 具有“EnforceOPAConstraint”和“EnforceRegoPolicy”效果和相关“Kubernetes 服务”类别的有限预览策略定义已被弃用。
+> 改为配合使用“审核”、“拒绝”效果和资源提供程序模式 `Microsoft.Kubernetes.Data`。
 
 ## <a name="overview"></a>概述
 
@@ -42,7 +43,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
 1. [了解适用于 Kubernetes 的 Azure Policy 语言](#policy-language)
 
-1. [向 Kubernetes 群集分配内置定义](#assign-a-built-in-policy-definition)
+1. [向 Kubernetes 群集分配定义](#assign-a-policy-definition)
 
 1. [等待验证](#policy-evaluation)
 
@@ -51,8 +52,9 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 以下一般限制适用于 Kubernetes 群集的 Azure Policy 加载项：
 
 - Kubernetes 版本 1.14 或更高版本支持适用于 Kubernetes 的 Azure Policy 加载项。
-- 适用于 Kubernetes 的 Azure Policy 加载项只能部署到 Linux 节点池
-- 仅支持内置策略定义
+- 只能将适用于 Kubernetes 的 Azure Policy 加载项部署到 Linux 节点池。
+- 仅支持内置策略定义。 自定义策略定义为公共预览版功能。
+- Azure Policy 加载项支持的最大 Pod 数：10,000
 - 每个群集每个策略的最大不符合记录数：500
 - 每个订阅的最大不符合记录数：1000000
 - 不支持在 Azure Policy 加载项之外安装 Gatekeeper。 在启用 Azure Policy 加载项之前，卸载由以前的 Gatekeeper 安装的所有组件。
@@ -360,13 +362,16 @@ kubectl get pods -n gatekeeper-system
 
 用于管理 Kubernetes 的 Azure Policy 语言结构遵循现有策略定义。 使用 `Microsoft.Kubernetes.Data` 的[资源提供程序模式](./definition-structure.md#resource-provider-modes)，会使用效果[审核](./effects.md#audit)和[拒绝](./effects.md#deny)来管理你的 Kubernetes 群集。 “审核”和“拒绝”必须提供特定于使用 [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) 和 Gatekeeper v3 的详细信息属性。
 
-作为策略定义中 details.constraintTemplate 和 details.constraint 属性的一部分，Azure Policy 将这些 [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) 的 URI 传递给加载项 。 Rego 是 OPA 和 Gatekeeper 支持的语言，用于验证对 Kubernetes 群集的请求。 通过支持 Kubernetes 管理的现有标准，Azure Policy 可重用现有规则并将其与 Azure Policy 配对以获得统一的云符合性报告体验。 有关详细信息，请参阅[什么是 Rego？](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)。
+作为策略定义中 details.templateInfo、details.constraint 或 details.constraintTemplate 属性的一部分，Azure Policy 将这些 [CustomResourceDefinitions](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates) (CRD) 的 URI 或 Base64Encoded 值传递给加载项。   Rego 是 OPA 和 Gatekeeper 支持的语言，用于验证对 Kubernetes 群集的请求。 通过支持 Kubernetes 管理的现有标准，Azure Policy 可重用现有规则并将其与 Azure Policy 配对以获得统一的云符合性报告体验。 有关详细信息，请参阅[什么是 Rego？](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)。
 
-## <a name="assign-a-built-in-policy-definition"></a>分配内置策略定义
+## <a name="assign-a-policy-definition"></a>分配策略定义
 
 若要为 Kubernetes 群集分配策略定义，系统必须为你分配适当的 Azure 基于角色的访问控制 (Azure RBAC) 策略分配操作。 Azure 内置角色“资源策略参与者”和“所有者”可进行这些操作。 若要了解详细信息，请参阅 [Azure Policy 中的 Azure RBAC 权限](../overview.md#azure-rbac-permissions-in-azure-policy)。
 
-通过以下步骤，使用 Azure 门户查找用于管理群集的内置策略定义：
+> [!NOTE]
+> 自定义策略定义为公共预览版功能。
+
+通过以下步骤，使用 Azure 门户查找用于管理群集的内置策略定义。 如果使用某自定义策略定义，请按名称或创建时使用的类别来搜索该定义。
 
 1. 在 Azure 门户中启动 Azure Policy 服务。 在左窗格中选择“所有服务”，然后搜索并选择“策略” 。
 
@@ -428,6 +433,21 @@ kubectl get pods -n gatekeeper-system
 
 - 如果群集具有用于验证资源的拒绝策略，则在创建部署时，用户将看不到拒绝消息。 例如，考虑包含副本集和 Pod 的 Kubernetes 部署。 用户执行 `kubectl describe deployment $MY_DEPLOYMENT` 时，不会返回拒绝消息作为事件的一部分。 但是，`kubectl describe replicasets.apps $MY_DEPLOYMENT` 会返回与拒绝关联的事件。
 
+> [!NOTE]
+> 策略评估期间可能包含 Init 容器。 若要查看是否包含 Init 容器，请查看 CRD 中的以下或类似声明：
+>
+> ```rego
+> input_containers[c] { 
+>    c := input.review.object.spec.initContainers[_] 
+> }
+> ```
+
+### <a name="constraint-template-conflicts"></a>约束模板冲突
+
+如果约束模板具有相同的资源元数据名称，但策略定义引用不同位置的源，则策略定义被视为冲突。 示例：两个策略定义引用存储在不同源位置（例如 Azure Policy 模板存储区 (`store.policy.core.windows.net`) 和 GitHub）的同一 `template.yaml` 文件。
+
+如果策略定义及其约束模板在分配时未安装于群集并存在冲突，则会将其报告为冲突，且在冲突解决之前不会将其安装到群集中。 同样，群集上与新分配策略定义冲突的任何现有策略定义和它们的约束模板都将继续正常工作。 如果更新现有分配，但未能同步约束模板，则群集也会标记为冲突。 有关所有冲突消息，请参阅 [AKS 资源提供程序模式符合性原因](../how-to/determine-non-compliance.md#aks-resource-provider-mode-compliance-reasons)
+
 ## <a name="logging"></a>日志记录
 
 作为 Kubernetes 控制器/容器，azure-policy 和 gatekeeper Pod 在 Kubernetes 群集中保留日志。 日志可以在 Kubernetes 群集的“见解”页中公开。 有关详细信息，请参阅[使用适用于容器的 Azure Monitor 监视 Kubernetes 群集性能](../../../azure-monitor/containers/container-insights-analyze.md)。
@@ -442,7 +462,7 @@ kubectl logs <azure-policy pod name> -n kube-system
 kubectl logs <gatekeeper pod name> -n gatekeeper-system
 ```
 
-有关详细信息，请参阅 Gatekeeper 文档中的[调试 Gatekeeper](https://github.com/open-policy-agent/gatekeeper#debugging)。
+有关详细信息，请参阅 Gatekeeper 文档中的[调试 Gatekeeper](https://open-policy-agent.github.io/gatekeeper/website/docs/debug/)。
 
 ## <a name="troubleshooting-the-add-on"></a>对加载项进行故障排除
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6744970ec7aadfc4a9cb967c479307b441f4fb1b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 71f7bde0dcae54916c9657b724290778bb01652b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453044"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430065"
 ---
 # <a name="query-csv-files"></a>查询 CSV 文件
 
@@ -183,7 +183,7 @@ FROM OPENROWSET(
     ) AS [r]
 ```
 
-选项 `HEADER_ROW = TRUE` 将导致从文件中的标题行读取列名。 当你不熟悉文件内容时，非常适合使用它进行浏览。 为获得最佳性能，请参阅[最佳做法中的“使用适当的数据类型”部分](best-practices-serverless-sql-pool.md#use-appropriate-data-types)。 此外，还可以详细了解 [OPENROWSET 语法](develop-openrowset.md#syntax)。
+`HEADER_ROW = TRUE` 选项将导致从文件的标题行读取列名。 当你不熟悉文件内容时，非常适合使用它进行浏览。 为获得最佳性能，请参阅[最佳做法中的“使用适当的数据类型”部分](best-practices-serverless-sql-pool.md#use-appropriate-data-types)。 此外，还可以详细了解 [OPENROWSET 语法](develop-openrowset.md#syntax)。
 
 ## <a name="custom-quote-character"></a>自定义引证字符
 
@@ -336,6 +336,24 @@ WITH (
     --[population] bigint
 ) AS [r]
 ```
+
+## <a name="querying-appendable-files"></a>查询可追加文件
+
+查询运行时，不应更改查询中使用的 CSV 文件。 在长时间运行的查询中，SQL 池可能会重试读取、读取部分文件，甚至多次读取文件。 如果对文件内容进行更改，会导致错误的结果。 因此，如果在查询执行过程中检测到任何文件的修改时间发生了更改，SQL 池将导致查询失败。
+
+在某些情况下，建议读取不断追加的文件。 为避免由于不断追加文件而导致查询失败，可以使用 `ROWSET_OPTIONS` 设置让 `OPENROWSET` 函数能忽略潜在的不一致读取操作。
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2,
+    ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}') as rows
+```
+
+`ALLOW_INCONSISTENT_READS` 读取选项将禁用查询生命周期期间的文件修改时间检查，并读取文件中的任何可用内容。 在可追加文件中，不更新现有内容，仅添加新行。 因此，与可更新文件相比，这样做生成错误结果的可能性最低。 使用此选项，可以在不处理错误的情况下读取经常追加的文件。 在大多数情况下，SQL 池将忽略查询执行期间追加到文件中的某些行。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: f51f4b9a838a7a08259b280c4d9cd185b42e588b
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: dbf422beeea23cee975b5721c7becae95bf24b6c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112116983"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434605"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>将 StorSimple 8100 和 8600 迁移到 Azure 文件同步
 
@@ -585,9 +585,11 @@ RoboCopy 有多个参数。 以下示例展示了一个完成的命令，以及�
 
 迁移已完成。
 
+---
+
 > [!NOTE]
 > 仍有疑问或问题？</br>
-> 我们会通过 AzureFilesMigration@microsoft.com 随时为你提供帮助。
+> 我们随时为你提供帮助：:::image type="content" source="media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-migration-email.png" alt-text="电子邮件地址（一个词）：microsoft dot com 上的 Azure 文件存储迁移":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,16 +4,16 @@ description: 本文提供有关 azcopy list 命令的参考信息。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 09/21/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: ca436ee440ad7c1dd2caee3a65790f8b630fd949
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 31bbabd194b2b2ef06266feb39b4d9618bbc0794
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503280"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435809"
 ---
 # <a name="azcopy-list"></a>azcopy list
 
@@ -46,6 +46,7 @@ azcopy list [containerURL]
 |-h、--help|显示 list 命令的帮助内容。|
 |--machine-readable|列出文件大小（以字节为单位）。|
 |--mega-units|显示单位为 1000，而不是 1024。|
+| --properties |   分隔符 (;) 列表输出中所需的属性的分隔值。 |
 |--running-tally|计算文件总数及其大小。|
 
 ## <a name="options-inherited-from-parent-commands"></a>从父命令继承的选项

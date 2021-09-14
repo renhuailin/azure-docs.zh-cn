@@ -4,15 +4,15 @@ description: 实施安全建议，履行我们责任分担模型中所述的安�
 author: msmbaldwin
 manager: barbkess
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 09/02/2021
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 09dbe0fbefb8b90b4c4e1ddef57abf3b13856183
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 452c0479834ab7929696af2c95454662adfecfab
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92148086"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538320"
 ---
 # <a name="security-recommendations-for-app-service"></a>适用于应用服务的安全建议
 
@@ -56,7 +56,7 @@ ms.locfileid: "92148086"
 
 | 建议 | 注释 |
 |-|-|
-|使用 Azure 安全中心标准层 | [Azure 安全中心](../security-center/defender-for-app-service-introduction.md)以原生方式集成 Azure 应用服务。 它可以运行评估并提供安全建议。 |
+|使用 Azure 安全中心的 Azure Defender for App Service | [Azure Defender for App Service](../security-center/defender-for-app-service-introduction.md) 与 Azure 应用服务实行本机集成。 安全中心会对应用服务计划涵盖的资源进行评估，并根据发现结果生成安全建议。 请使用[这些建议]() (../security-center/recommendations-reference.md#appservices-recommendations) 中的详细说明强化应用服务资源。 Azure Defender 还提供了威胁防护，能够检测到大量威胁，几乎涵盖 MITRE ATT&CK 战术的完整列表（从预攻击到命令和控制）。 若要获取 Azure 应用服务警报的完整列表，请参阅 [Azure Defender for App Service 警报](../security-center/alerts-reference.md#alerts-azureappserv)。|
 
 ## <a name="next-steps"></a>后续步骤
 

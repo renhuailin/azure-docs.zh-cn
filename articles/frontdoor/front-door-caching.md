@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/29/2020
+ms.date: 09/03/2021
 ms.author: duau
-ms.openlocfilehash: 977a0d3eb0081818c0afe4f544dd33169cea0e95
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: d21066563f3b3e2e27b5e1a2b2b96b520bd62311
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112370466"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542064"
 ---
 # <a name="caching-with-azure-front-door"></a>Azure Front Door 的缓存
 下列文档详细说明了在具有已启用缓存的路由规则时 Front Door 的行为。 Front Door 是一种具有动态站点加速和负载平衡功能的现代化内容交付网络 (CDN)，就像其他任何 CDN 一样，也支持缓存行为。
@@ -82,7 +82,7 @@ Front Door 可动态压缩边缘内容，从而更快响应客户端。 为了�
 如果对资产的请求指定进行压缩，但该请求导致缓存缺失，则 Front Door 将直接在 POP 服务器上压缩资产。 此后，将从缓存提供压缩的文件。 通过 transfer-encoding: chunked 返回所生成的项。
 
 ## <a name="query-string-behavior"></a>查询字符串行为
-借助 Front Door，可控制如何对包含查询字符串的 Web 请求缓存文件。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如 `http://www.contoso.com/content.mov?field1=value1&field2=value2`。 如果请求的查询字符串中有多个键值对，其顺序并不重要。
+借助 Front Door，可控制如何对包含查询字符串的 Web 请求缓存文件。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如，`http://www.contoso.com/content.mov?field1=value1&field2=value2`。 如果请求的查询字符串中有多个键值对，其顺序并不重要。
 - 忽略查询字符串：在此模式下，Front Door 将来自请求者的查询字符串传递到第一个请求上的后端并缓存该资产。 由 Front Door 环境处理的资产的所有后续请求都将忽略查询字符串，直到所缓存的资产过期。
 
 - **缓存每个唯一的 URL**：在此模式下，包含唯一 URL 的每个请求（包括查询字符串）将视为具有其自己的缓存的唯一资产。 例如，后端对 `www.example.ashx?q=test1` 的请求做出的响应将缓存在 Front Door 环境中，并为具有同一查询字符串的后续缓存返回该响应。 `www.example.ashx?q=test2` 的请求将作为具有其自己的生存时间设置的单独资产来缓存。
@@ -121,11 +121,18 @@ Front Door 的缓存清除不区分大小写。 此外，它们不区分查询�
 - Content-Length
 - Transfer-Encoding
 
-## <a name="cache-duration"></a>缓存持续时间
+## <a name="cache-behavior-and-duration"></a>缓存行为和持续时间
 
-可以在 Front Door 设计器和规则引擎中配置缓存持续时间。 在 Front Door 设计器中设置的缓存持续时间是最小缓存持续时间。 如果源的缓存控制标头的 TTL 大于替代值，则此替代将不起作用。 
+可以在 Front Door 设计器传递规则和规则引擎中配置缓存行为和持续时间。 规则引擎缓存配置将始终替代 Front Door 设计器传递规则配置。
 
-通过规则引擎设置的缓存持续时间是真正的缓存替代，这意味着它将使用替代值，而不考虑源响应标头。
+* 禁用缓存后，无论源响应指令是什么，Front Door 都不会缓存响应内容。
+
+* 启用缓存后，对于“使用缓存默认持续时间”的不同值，缓存行为会有所不同。
+    * 当“使用缓存默认持续时间”设置为“是”时，Front Door 始终采用源响应标头指令。 如果缺少源指令，Front Door 将缓存 1 到 3 天内任何位置的内容。
+    * 当“使用缓存默认持续时间”设置为“否”时，Front Door 将始终替代“缓存持续时间”（必填字段），这意味着它将缓存缓存持续时间的内容，而忽略源响应指令中的值。 
+
+> [!NOTE]
+> 在 Front Door 设计器传递规则中设置的“缓存持续时间”是“最小缓存持续时间”。 如果源的缓存控制标头的 TTL 大于替代值，则此替代将不起作用。
 
 ## <a name="next-steps"></a>后续步骤
 

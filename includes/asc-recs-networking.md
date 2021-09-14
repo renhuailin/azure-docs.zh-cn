@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 07/25/2021
+ms.date: 09/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 1dfca36c845e6491de250cd803de0f853fbd8011
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: 0c2db657979bd2f464200bedfbb434c826c37da2
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114675129"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536815"
 ---
 这一类别有 14 条相关建议。
 
@@ -29,5 +29,5 @@ ms.locfileid: "114675129"
 |[应使用网络安全组来保护非面向 Internet 的虚拟机](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/a9341235-9389-42f0-a0bf-9bfb57960d44) |使用网络安全组 (NSG) 限制对 VM 的访问，以此防范非面向 Internet 的 VM 遭受潜在威胁。 NSG 包含一系列访问控制列表 (ACL) 规则，这些规则允许或拒绝从其他实例到 VM 的网络流量，无论它们是否位于同一子网中。<br>请注意，为了使计算机尽可能安全，必须限制 VM 对 Internet 的访问权限，并且应在子网上启用 NSG。<br />（相关策略：[应使用网络安全组来保护非面向 Internet 的虚拟机](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fbb91dfba-c30d-4263-9add-9c2384e659a6)） |低 |
 |[应启用安全传输到存储帐户](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/1c5de8e1-f68d-6a17-e0d2-ec259c42768c) |安全传输选项会强制存储帐户仅接受来自安全连接 (HTTPS) 的请求。 使用 HTTPS 可确保服务器和服务之间的身份验证并保护传输中的数据免受中间人攻击、窃听攻击和会话劫持等网络层攻击。<br />（相关策略：[应启用到存储帐户的安全传输](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f404c3081-a854-4457-ae30-26a93ef643f9)） |高 |
 |[子网应与网络安全组关联](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/eade5b56-eefd-444f-95c8-23f29e5d93cb) |使用网络安全组 (NSG) 限制对 VM 的访问，以此防范子网遭受潜在威胁。 NSG 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝流向子网的网络流量。 当 NSG 与子网关联时，ACL 规则适用于该子网中的所有 VM 实例和集成服务，但不适用于子网内的内部流量。 若要确保同一子网中的资源彼此之间的安全，请直接在资源上启用 NSG。<br />（相关策略：[子网应与网络安全组关联](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe71308d3-144b-4262-b144-efdc3cc90517)） |低 |
-|[虚拟网络应受 Azure 防火墙保护](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/f67fb4ed-d481-44d7-91e5-efadf504f74a) |部分虚拟网络不受防火墙保护。 使用 Azure 防火墙限制虚拟网络的访问权限并防止潜在威胁。 若要详细了解 Azure 防火墙，请 <br> 单击<a href="https://azure.microsoft.com/pricing/details/azure-firewall">此处</a><br />（相关策略：[所有 Internet 流量都应通过所部署的 Azure 防火墙进行路由](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ffc5e4038-4584-4632-8c85-c0448d374b2c)） |低 |
+|[虚拟网络应受 Azure 防火墙保护](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/f67fb4ed-d481-44d7-91e5-efadf504f74a) |部分虚拟网络不受防火墙保护。 使用 Azure 防火墙限制虚拟网络的访问权限并防止潜在威胁。 若要详细了解 Azure 防火墙，请 <br> 请参阅 [Azure 防火墙定价](https://azure.microsoft.com/pricing/details/azure-firewall)<br />（相关策略：[所有 Internet 流量都应通过所部署的 Azure 防火墙进行路由](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ffc5e4038-4584-4632-8c85-c0448d374b2c)） |低 |
 |||

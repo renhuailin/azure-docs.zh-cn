@@ -2,14 +2,14 @@
 title: 注册表角色和权限
 description: 使用 Azure 基于角色的访问控制 (Azure RBAC) 以及标识和访问管理 (IAM)，提供对 Azure 容器注册表中资源的精细访问权限。
 ms.topic: article
-ms.date: 06/07/2021
+ms.date: 09/02/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6923e356f60916e34325b9b6815dbae8aeaf5c51
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 494373a299eb0f4d2bb100e71a1e1000336d1613
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854785"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451630"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure 容器注册表角色和权限
 
@@ -89,7 +89,7 @@ Azure 资源管理器访问权限是 Azure 门户和使用 [Azure PowerShell](/p
 
 若要确定将哪些权限应用于自定义角色，请参阅 Microsoft.ContainerRegistry [操作](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry)列表，查看[内置 ACR 角色](../role-based-access-control/built-in-roles.md)允许的操作，或运行以下命令：
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az provider operation show --namespace Microsoft.ContainerRegistry
@@ -97,16 +97,19 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 若要定义自定义角色，请参阅[创建自定义角色的步骤](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role)。
 
-> [!IMPORTANT]
-> 在自定义角色中，Azure 容器注册表当前不支持通配符（如 `Microsoft.ContainerRegistry/*` 或 `Microsoft.ContainerRegistry/registries/*`），这些通配符会授予对所有匹配操作的访问权限。 在角色中单独指定任何所需的操作。
+> [!NOTE]
+> 在使用 [Azure 资源管理器专用链接](../azure-resource-manager/management/create-private-link-access-portal.md)配置的租户中，Azure 容器注册表支持在自定义角色中使用通配符操作（如 `Microsoft.ContainerRegistry/*/read` 或 `Microsoft.ContainerRegistry/registries/*/write`），从而授予对所有匹配操作的访问权限。 在无 ARM 专用链接的租户中，在自定义角色中单独指定所有必需的注册表操作。
 
-### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Get-AzProviderOperation -OperationSearchString Microsoft.ContainerRegistry/*
 ```
 
 若要定义自定义角色，请参阅[创建自定义角色的步骤](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role)。
+
+> [!NOTE]
+> 在使用 [Azure 资源管理器专用链接](../azure-resource-manager/management/create-private-link-access-portal.md)配置的租户中，Azure 容器注册表支持在自定义角色中使用通配符操作（如 `Microsoft.ContainerRegistry/*/read` 或 `Microsoft.ContainerRegistry/registries/*/write`），从而授予对所有匹配操作的访问权限。 在无 ARM 专用链接的租户中，在自定义角色中单独指定所有必需的注册表操作。
 
 ---
 

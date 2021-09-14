@@ -8,12 +8,12 @@ ms.author: srahaman
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: a5181a5a95c3e6eb33eb084d41674746096dd8c2
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 7b0ac0fdb6ee5b734d642612c1fea16665e07684
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259120"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435503"
 ---
 # <a name="best-practices-azure-communication-services-calling-sdks"></a>最佳做法：Azure 通信服务呼叫 SDK
 本文介绍了与 Azure 通信服务 (ACS) 呼叫 SDK 相关的最佳做法。
@@ -44,6 +44,16 @@ document.addEventListener("visibilitychange", function() {
 
 ### <a name="hang-up-the-call-on-onbeforeunload-event"></a>挂断对 onbeforeunload 事件的呼叫
 `onbeforeunload` 事件发出时，应用程序应调用 `call.hangup`。
+
+### <a name="handling-multiple-calls-on-multiple-tabs-on-mobile"></a>处理移动设备上多个选项卡上的多个呼叫
+应用程序不应同时连接到来自多个浏览器选项卡的呼叫，因为由于设备上麦克风和相机的资源分配，这可能会导致未定义的行为。 建议开发人员在后台完成呼叫后始终挂断呼叫，然后再启动新的呼叫。
+```JavaScript 
+document.addEventListener("visibilitychange", function() {
+    if (document.visibilityState != 'visible') {
+            // call.hangUp
+    }
+});
+ ```
 
 ### <a name="hang-up-the-call-on-microphonemuteunexpectedly-ufd"></a>挂断对 microphoneMuteUnexpectedly UFD 的呼叫
 当 iOS/Safari 用户收到 PSTN 呼叫时，Azure 通信服务失去麦克风访问权限。 Azure 通信服务将引发 `microphoneMuteUnexpectedly` 呼叫诊断事件，此时，通信服务将无法重新获得对麦克风的访问权限。

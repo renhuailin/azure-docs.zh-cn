@@ -3,41 +3,42 @@ title: 从快照还原应用
 description: 了解如何从快照还原应用。 使用自动卷影副本从高级层中的意外数据丢失状况中恢复。
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 09/02/2021
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d63f7068d7b058280ea2dfd241e547347b71e7e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86169964"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435599"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中从快照还原应用
-本文介绍如何在 [Azure 应用服务](../app-service/overview.md)中从快照还原应用。 可以根据应用的某个快照将应用还原到以前的状态。 不需启用快照备份，平台会自动保存所有应用的快照，用于数据恢复。
+本文介绍如何在 [Azure 应用服务](../app-service/overview.md)中从快照还原应用。 可以根据应用的某个快照将应用还原到以前的状态。 为实现数据恢复目的，平台会自动保存所有应用的快照，因而无需启用快照。
 
-快照为增量影子副本，与常规[备份](manage-backup.md)相比有多项优势：
+快照是应用服务应用的增量卷影副本。 当应用位于高级层或更高层时，应用服务会定期拍摄应用内容及其配置的快照。 相比[标准备份](manage-backup.md)，它们具有多个优点：
+
 - 不会因文件锁定而造成文件复制错误。
-- 没有存储大小限制。
-- 不需配置。
+- 最大快照大小更大 (30GB)。
+- 支持的定价层无需任何配置。
+- 快照可以还原到任何 Azure 区域的新应用服务应用。
 
 从快照还原适用于在 **高级** 层或更高层中运行的应用。 有关向上缩放应用的信息，请参阅[在 Azure 中向上缩放应用](manage-scale-up.md)。
 
 ## <a name="limitations"></a>限制
 
-- 此功能目前为预览版。
-- 只能还原到同一应用或属于该应用的槽。
-- 用于服务在执行还原操作时会停止目标应用或目标槽。
-- 应用服务保留三个月的快照，用于平台数据恢复。
-- 只能还原过去 30 天的快照。
-- 在应用服务环境上运行的应用服务不支持快照。
- 
+- 目前仅以适用于 Windows 应用的公共预览版提供。 不支持 Linux 应用和自定义容器应用。
+- 快照还原支持的最大大小为 30GB。 如果存储大小大于 30GB，快照还原会失败。 例如，若要减小存储大小，请考虑将日志、图像、音频和视频等文件移动到 [Azure 存储](/azure/storage/)。
+- 快照中不包含[标准备份](manage-backup.md#what-gets-backed-up)支持的任何已连接数据库或[装载的 Azure 存储](configure-connect-to-azure-storage.md?pivots=container-windows)。 请考虑使用连接的 Azure 服务（例如 [SQL 数据库](../azure-sql/database/automated-backups-overview.md)和 [Azure 文件存储](../storage/files/storage-snapshots-files.md)）的本机备份功能。
+- 应用服务在还原快照时会停止目标应用或目标槽。 若要最大限度减少生产应用的停机时间，请首先将快照还原到[过渡槽](deploy-staging-slots.md)，然后交换到生产槽。
+- 最近 30 天的快照可用。 保留期和快照频率不可配置。
+- 应用服务环境上运行的应用服务不支持快照。
 
 ## <a name="restore-an-app-from-a-snapshot"></a>从快照还原应用
 
 1. 在 [Azure 门户](https://portal.azure.com)中应用的“设置”页上，单击“备份”以显示“备份”页  。 然后，在“快照(预览)”部分下单击“还原”。  
    
-    ![显示如何从快照备份还原应用的屏幕截图。](./media/app-service-web-restore-snapshots/1.png)
+    ![屏幕截图：显示如何从快照还原应用。](./media/app-service-web-restore-snapshots/1.png)
 
 2. 在“还原”页中选择要还原的快照。
    

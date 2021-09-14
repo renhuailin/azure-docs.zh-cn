@@ -4,13 +4,13 @@ description: 说明如何在 Bicep 中定义变量
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: b2f696adbad88cd424f2292b333069a7b80a13b2
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 09/02/2021
+ms.openlocfilehash: a652d2efb3f97791d075f078637801e4d20aad47
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634953"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425049"
 ---
 # <a name="variables-in-bicep"></a>Bicep 中的变量
 
@@ -32,6 +32,7 @@ var stringVar = 'example value'
 param inputValue string = 'deployment Parameter'
 
 var stringVar = 'myVariable'
+
 var concatToVar =  '${stringVar}AddToVar'
 var concatToParam = '${inputValue}AddToParam'
 ```
@@ -43,6 +44,10 @@ var concatToParam = '${inputValue}AddToParam'
 ```bicep
 var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().id)}'
 ```
+
+以下示例不部署任何资源。 它演示如何声明不同类型的变量。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/variables/variables.bicep":::
 
 ## <a name="use-variable"></a>使用变量
 
@@ -69,17 +74,11 @@ output stgOutput string = storageName
 
 由于存储帐户名称必须使用小写字母，因此 `storageName` 变量使用 `toLower` 函数来使 `storageNamePrefix` 值成为小写。 `uniqueString` 函数从资源组 ID 创建唯一值。 这些值会连接到某个字符串。
 
-## <a name="example-template"></a>示例模板
-
-以下模板不部署任何资源。 它显示了声明各种类型的变量的一些方法。
-
-:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/variables.bicep":::
-
 ## <a name="configuration-variables"></a>配置变量
 
 可以定义变量来保存配置环境所需的相关值。 可以将变量定义为一个包含值的对象。 以下示例演示的对象包含的值适用于两个环境 - **test** 和 **prod**。在部署过程中传入这些值之一。
 
-:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/variablesconfigurations.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/variables/variablesconfigurations.bicep":::
 
 ## <a name="next-steps"></a>后续步骤
 

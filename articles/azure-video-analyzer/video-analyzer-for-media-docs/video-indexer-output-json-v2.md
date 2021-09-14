@@ -1,5 +1,5 @@
 ---
-title: 了解 v2 API 生成的 Azure 视频分析器媒体版（以前称为视频索引器）输出 - Azure
+title: 了解 Azure 视频分析器媒体版（以前称为视频索引器）的 v2 API 输出
 titleSuffix: Azure Video Analyzer for Media
 description: 本主题介绍 v2 API 生成的 Azure 视频分析器媒体版（以前称为视频索引器）输出。
 services: azure-video-analyzer
@@ -9,12 +9,12 @@ ms.topic: article
 ms.subservice: azure-video-analyzer-media
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 11fcc36ec8ad6d5feb030d00be4fbf470237634f
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: b60eb67b734bfc6d180153e88144282a431f0f6f
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115264"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431343"
 ---
 # <a name="examine-the-video-analyzer-for-media-output"></a>了解视频分析器媒体版输出
 
@@ -594,7 +594,7 @@ instances|此块的时间范围列表。|
 |名称|说明
 |---|---|
 |id|音频效果 ID|
-|type|音频效果类型|
+|类型|音频效果类型|
 |name| 用于编制 JSON 索引的语言中的音频效果类型。 |
 |instances|出现此音频效果的时间范围列表。 每个实例都有置信度字段。|
 |start + end| 原始视频中的时间范围。|
@@ -722,7 +722,7 @@ visualContentModeration 块包含视频分析器媒体版找到的、可能具�
 |名称|说明|
 |---|---|
 |id|情感 ID。|
-|type|基于语音和音频提示识别的瞬间情感。情感可能是：快乐、悲伤、愤怒或恐惧。|
+|类型|基于语音和音频提示识别的瞬间情感。情感可能是：快乐、悲伤、愤怒或恐惧。|
 |instances|出现该情感的时间范围列表。|
 
 ```json
@@ -855,7 +855,7 @@ visualContentModeration 块包含视频分析器媒体版找到的、可能具�
 |名称|说明|
 |---|---|
 |id|发言人 ID。|
-|name|发言人姓名，格式为“发言人 #<number>”，例如“发言人 #1”。|
+|name|发言人姓名，格式为“发言人 #\<number\>”，例如“发言人 #1”。|
 |instances |出现该发言人的时间范围列表。|
 
 ```json

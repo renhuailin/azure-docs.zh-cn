@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 07/29/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: d1e6349dd2c809c2a18551037c3bd3a8970f6d68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 401a6bd003e592d1b53aa91ac24f062688da7a3b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729447"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123435737"
 ---
 # <a name="web-application-firewall-drs-rule-groups-and-rules"></a>Web 应用程序防火墙 DRS 规则组和规则
 
@@ -138,19 +138,19 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 
 ## <a name="20-rule-sets"></a><a name="drs20"></a> 2.0 规则集
 
-### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-20"></a> <p x-ms-format-detection="none">常规</p>
+### <a name="general"></a><a name="general-20"></a>常规
 |RuleId|说明|
 |---|---|
 |200002|未能分析请求正文。|
 |200003|多部分请求正文无法通过严格的验证|
 
 
-### <a name="p-x-ms-format-detectionnonemethod-enforcementp"></a><a name="drs911-20"></a> <p x-ms-format-detection="none">METHOD ENFORCEMENT</p>
+### <a name="method-enforcement"></a><a name="drs911-20"></a> METHOD ENFORCEMENT
 |RuleId|说明|
 |---|---|
 |911100|方法不受策略允许|
 
-### <a name="p-x-ms-format-detectionnoneprotocol-enforcementp"></a><a name="drs920-20"></a> <p x-ms-format-detection="none">PROTOCOL-ENFORCEMENT</p>
+### <a name="protocol-enforcement"></a><a name="drs920-20"></a> PROTOCOL-ENFORCEMENT
 |RuleId|说明|
 |---|---|
 |920100|无效的 HTTP 请求行|
@@ -187,7 +187,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |920470|Content-Type 标头非法|
 |920480|请求内容类型字符集不受策略允许|
 
-### <a name="p-x-ms-format-detectionnoneprotocol-attackp"></a><a name="drs921-20"></a> <p x-ms-format-detection="none">PROTOCOL-ATTACK</p>
+### <a name="protocol-attack"></a><a name="drs921-20"></a> PROTOCOL-ATTACK
 
 |RuleId|说明|
 |---|---|
@@ -199,7 +199,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |921151|通过有效负载展开的 HTTP 标头注入攻击（检测到 CR/LF）|
 |921160|通过有效负载展开的 HTTP 标头注入攻击（检测到 CR/LF 和标头名称）|
 
-### <a name="p-x-ms-format-detectionnonelfi---local-file-inclusionp"></a><a name="drs930-20"></a> <p x-ms-format-detection="none">LFI - 本地文件包含</p>
+### <a name="lfi---local-file-inclusion"></a><a name="drs930-20"></a> LFI - 本地文件包含
 |RuleId|说明|
 |---|---|
 |930100|路径遍历攻击 (/../)|
@@ -207,15 +207,15 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |930120|OS 文件访问企图|
 |930130|受限文件访问企图|
 
-### <a name="p-x-ms-format-detectionnonerfi---remote-file-inclusionp"></a><a name="drs931-20"></a> <p x-ms-format-detection="none">RFI - 远程文件包含</p>
+### <a name="rfi---remote-file-inclusion"></a><a name="drs931-20"></a> RFI - 远程文件包含
 |RuleId|说明|
 |---|---|
 |931100|可能的远程文件包含 (RFI) 攻击：使用 IP 地址的 URL 参数|
-|931110|可能的远程文件包含 (RFI) 攻击：对 URL 有效负载使用常见 RFI 漏洞参数名使用|
+|931110|可能的远程文件包含 (RFI) 攻击：对 URL 有效负载使用常见 RFI 漏洞参数名|
 |931120|可能的远程文件包含 (RFI) 攻击：在 URL 有效负载中使用尾随问号 (?)|
 |931130|可能的远程文件包含 (RFI) 攻击：域外引用/链接|
 
-### <a name="p-x-ms-format-detectionnonerce---remote-command-executionp"></a><a name="drs932-20"></a> <p x-ms-format-detection="none">RCE - 远程命令执行</p>
+### <a name="rce---remote-command-execution"></a><a name="drs932-20"></a> RCE - 远程命令执行
 |RuleId|说明|
 |---|---|
 |932100|远程命令执行：Unix 命令注入|
@@ -231,7 +231,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |932171|远程命令执行：Shellshock (CVE-2014-6271)|
 |932180|受限文件上传企图|
 
-### <a name="p-x-ms-format-detectionnonephp-attacksp"></a><a name="drs933-20"></a> <p x-ms-format-detection="none">PHP 攻击</p>
+### <a name="php-attacks"></a><a name="drs933-20"></a> PHP 攻击
 |RuleId|说明|
 |---|---|
 |933100|PHP 注入攻击：找到开始/结束标记|
@@ -249,12 +249,12 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |933200|PHP 注入攻击：检测到包装器方案|
 |933210|PHP 注入攻击：找到可变函数调用|
 
-### <a name="p-x-ms-format-detectionnonenode-js-attacksp"></a><a name="drs934-20"></a> <p x-ms-format-detection="none">Node JS 攻击</p>
+### <a name="node-js-attacks"></a><a name="drs934-20"></a> Node JS 攻击
 |RuleId|说明|
 |---|---|
 |934100|Node.js 注入攻击|
 
-### <a name="p-x-ms-format-detectionnonexss---cross-site-scriptingp"></a><a name="drs941-20"></a> <p x-ms-format-detection="none">XSS - 跨站脚本</p>
+### <a name="xss---cross-site-scripting"></a><a name="drs941-20"></a> XSS - 跨站脚本
 |RuleId|说明|
 |---|---|
 |941100|检测到通过 libinjection 展开的 XSS 攻击|
@@ -289,7 +289,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |941380|检测到 AngularJS 客户端模板注入|
 
 
-### <a name="p-x-ms-format-detectionnonesqli---sql-injectionp"></a><a name="drs942-20"></a> <p x-ms-format-detection="none">SQLI - SQL 注入</p>
+### <a name="sqli---sql-injection"></a><a name="drs942-20"></a> SQLI - SQL 注入
 |RuleId|说明|
 |---|---|
 |942100|检测到通过 libinjection 展开的 SQL 注入攻击|
@@ -335,14 +335,14 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |942510|检测到引号或反引号尝试 SQLi 绕过。|
 
 
-### <a name="p-x-ms-format-detectionnonesession-fixationp"></a><a name="drs943-20"></a> <p x-ms-format-detection="none">SESSION-FIXATION</p>
+### <a name="session-fixation"></a><a name="drs943-20"></a> SESSION-FIXATION
 |RuleId|说明|
 |---|---|
 |943100|可能的会话固定攻击：在 HTML 中设置 Cookie 值|
 |943110|可能的会话固定攻击：包含域外引用方的 SessionID 参数名称|
 |943120|可能的会话固定攻击：不包含引用方的 SessionID 参数名称|
 
-### <a name="p-x-ms-format-detectionnonejava-attacksp"></a><a name="drs944-20"></a> <p x-ms-format-detection="none">Java 攻击</p>
+### <a name="java-attacks"></a><a name="drs944-20"></a> Java 攻击
 |RuleId|说明|
 |---|---|
 |944100|远程命令执行：Apache Struts、Oracle WebLogic|
@@ -354,26 +354,26 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |944240|远程命令执行：Java 序列化|
 |944250|远程命令执行：检测到可疑的 Java 方法|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-webshellsp"></a><a name="drs9905-20"></a> <p x-ms-format-detection="none">MS-ThreatIntel-WebShells</p>
+### <a name="ms-threatintel-webshells"></a><a name="drs9905-20"></a> MS-ThreatIntel-WebShells
 |RuleId|说明|
 |---|---|
 |99005002|Web Shell 交互尝试 (POST)|
 |99005003|Web Shell 上传尝试 (POST) - CHOPPER PHP|
 |99005004|Web Shell 上传尝试 (POST) - CHOPPER ASPX|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-appsecp"></a><a name="drs9903-20"></a> <p x-ms-format-detection="none">MS-ThreatIntel-AppSec</p>
+### <a name="ms-threatintel-appsec"></a><a name="drs9903-20"></a> MS-ThreatIntel-AppSec
 |RuleId|说明|
 |---|---|
 |99030001|标头中的路径遍历规避 (/.././../)|
 |99030002|请求正文中的路径遍历规避 (/.././../)|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-sqlip"></a><a name="drs99031-20"></a> <p x-ms-format-detection="none">MS-ThreatIntel-SQLI</p>
+### <a name="ms-threatintel-sqli"></a><a name="drs99031-20"></a> MS-ThreatIntel-SQLI
 |RuleId|说明|
 |---|---|
 |99031001|SQL 注入攻击：检测到常见注入测试|
 |99031002|检测到 SQL 注释序列。|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-cvesp"></a><a name="drs99001-20"></a> <p x-ms-format-detection="none">MS-ThreatIntel-CVEs</p>
+### <a name="ms-threatintel-cves"></a><a name="drs99001-20"></a> MS-ThreatIntel-CVEs
 |RuleId|说明|
 |---|---|
 |99001001|使用已知凭据尝试利用 F5 tmui (CVE-2020-5902) REST API|
@@ -382,7 +382,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 
 ## <a name="11-rule-sets"></a><a name="drs11"></a> 1.1 规则集
 
-### <a name="p-x-ms-format-detectionnoneprotocol-attackp"></a><a name="drs921-11"></a> <p x-ms-format-detection="none">PROTOCOL-ATTACK</p>
+### <a name="protocol-attack"></a><a name="drs921-11"></a> PROTOCOL-ATTACK
 |RuleId|说明|
 |---|---|
 |921110|HTTP 请求走私攻击|
@@ -393,7 +393,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |921151|通过有效负载展开的 HTTP 标头注入攻击（检测到 CR/LF）|
 |921160|通过有效负载展开的 HTTP 标头注入攻击（检测到 CR/LF 和标头名称）|
 
-### <a name="p-x-ms-format-detectionnonelfi---local-file-inclusionp"></a><a name="drs930-11"></a> <p x-ms-format-detection="none">LFI - 本地文件包含</p>
+### <a name="lfi---local-file-inclusion"></a><a name="drs930-11"></a> LFI - 本地文件包含
 |RuleId|说明|
 |---|---|
 |930100|路径遍历攻击 (/../)|
@@ -401,15 +401,15 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |930120|OS 文件访问企图|
 |930130|受限文件访问企图|
 
-### <a name="p-x-ms-format-detectionnonerfi---remote-file-inclusionp"></a><a name="drs931-11"></a> <p x-ms-format-detection="none">RFI - 远程文件包含</p>
+### <a name="rfi---remote-file-inclusion"></a><a name="drs931-11"></a> RFI - 远程文件包含
 |RuleId|说明|
 |---|---|
 |931100|可能的远程文件包含 (RFI) 攻击：使用 IP 地址的 URL 参数|
-|931110|可能的远程文件包含 (RFI) 攻击：对 URL 有效负载使用常见 RFI 漏洞参数名使用|
+|931110|可能的远程文件包含 (RFI) 攻击：对 URL 有效负载使用常见 RFI 漏洞参数名|
 |931120|可能的远程文件包含 (RFI) 攻击：在 URL 有效负载中使用尾随问号 (?)|
 |931130|可能的远程文件包含 (RFI) 攻击：域外引用/链接|
 
-### <a name="p-x-ms-format-detectionnonerce---remote-command-executionp"></a><a name="drs932-11"></a> <p x-ms-format-detection="none">RCE - 远程命令执行</p>
+### <a name="rce---remote-command-execution"></a><a name="drs932-11"></a> RCE - 远程命令执行
 |RuleId|说明|
 |---|---|
 |932100|远程命令执行：Unix 命令注入|
@@ -425,7 +425,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |932171|远程命令执行：Shellshock (CVE-2014-6271)|
 |932180|受限文件上传企图|
 
-### <a name="p-x-ms-format-detectionnonephp-attacksp"></a><a name="drs933-11"></a> <p x-ms-format-detection="none">PHP 攻击</p>
+### <a name="php-attacks"></a><a name="drs933-11"></a> PHP 攻击
 |RuleId|说明|
 |---|---|
 |933100|PHP 注入攻击：找到 PHP 开启标记|
@@ -439,7 +439,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |933170|PHP 注入攻击：序列化对象注入|
 |933180|PHP 注入攻击：找到可变函数调用|
 
-### <a name="p-x-ms-format-detectionnonexss---cross-site-scriptingp"></a><a name="drs941-11"></a> <p x-ms-format-detection="none">XSS - 跨站脚本</p>
+### <a name="xss---cross-site-scripting"></a><a name="drs941-11"></a> XSS - 跨站脚本
 |RuleId|说明|
 |---|---|
 |941100|检测到通过 libinjection 展开的 XSS 攻击|
@@ -470,7 +470,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |941340|IE XSS 筛选器 - 检测到攻击。|
 |941350|UTF-7 编码 IE XSS - 检测到攻击。|
 
-### <a name="p-x-ms-format-detectionnonesqli---sql-injectionp"></a><a name="drs942-11"></a> <p x-ms-format-detection="none">SQLI - SQL 注入</p>
+### <a name="sqli---sql-injection"></a><a name="drs942-11"></a> SQLI - SQL 注入
 |RuleId|说明|
 |---|---|
 |942100|检测到通过 libinjection 展开的 SQL 注入攻击|
@@ -511,14 +511,14 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |942470|SQL 注入攻击|
 |942480|SQL 注入攻击|
 
-### <a name="p-x-ms-format-detectionnonesession-fixationp"></a><a name="drs943-11"></a> <p x-ms-format-detection="none">SESSION-FIXATION</p>
+### <a name="session-fixation"></a><a name="drs943-11"></a> SESSION-FIXATION
 |RuleId|说明|
 |---|---|
 |943100|可能的会话固定攻击：在 HTML 中设置 Cookie 值|
 |943110|可能的会话固定攻击：包含域外引用方的 SessionID 参数名称|
 |943120|可能的会话固定攻击：不包含引用方的 SessionID 参数名称|
 
-### <a name="p-x-ms-format-detectionnonejava-attacksp"></a><a name="drs944-11"></a> <p x-ms-format-detection="none">Java 攻击</p>
+### <a name="java-attacks"></a><a name="drs944-11"></a> JAVA 攻击
 |RuleId|说明|
 |---|---|
 |944100|远程命令执行：检测到可疑的 Java 类|
@@ -530,26 +530,26 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |944240|远程命令执行：Java 序列化 (CVE-2015-5842)|
 |944250|远程命令执行：检测到可疑的 Java 方法|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-webshellsp"></a><a name="drs9905-11"></a> <p x-ms-format-detection="none">MS-ThreatIntel-WebShells</p>
+### <a name="ms-threatintel-webshells"></a><a name="drs9905-11"></a> MS-ThreatIntel-WebShells
 |RuleId|说明|
 |---|---|
 |99005002|Web Shell 交互尝试 (POST)|
 |99005003|Web Shell 上传尝试 (POST) - CHOPPER PHP|
 |99005004|Web Shell 上传尝试 (POST) - CHOPPER ASPX|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-appsecp"></a><a name="drs9903-11"></a> <p x-ms-format-detection="none">MS-ThreatIntel-AppSec</p>
+### <a name="ms-threatintel-appsec"></a><a name="drs9903-11"></a> MS-ThreatIntel-AppSec
 |RuleId|说明|
 |---|---|
 |99030001|标头中的路径遍历规避 (/.././../)|
 |99030002|请求正文中的路径遍历规避 (/.././../)|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-sqlip"></a><a name="drs99031-11"></a> <p x-ms-format-detection="none">MS-ThreatIntel-SQLI</p>
+### <a name="ms-threatintel-sqli"></a><a name="drs99031-11"></a> MS-ThreatIntel-SQLI
 |RuleId|说明|
 |---|---|
 |99031001|SQL 注入攻击：检测到常见注入测试|
 |99031002|检测到 SQL 注释序列。|
 
-### <a name="p-x-ms-format-detectionnonems-threatintel-cvesp"></a><a name="drs99001-11"></a> <p x-ms-format-detection="none">MS-ThreatIntel-CVEs</p>
+### <a name="ms-threatintel-cves"></a><a name="drs99001-11"></a> MS-ThreatIntel-CVEs
 |RuleId|说明|
 |---|---|
 |99001001|使用已知凭据尝试利用 F5 tmui (CVE-2020-5902) REST API|
@@ -558,7 +558,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 
 ## <a name="10-rule-sets"></a><a name="drs10"></a> 1.0 规则集
 
-### <a name="p-x-ms-format-detectionnoneprotocol-attackp"></a><a name="drs921-10"></a> <p x-ms-format-detection="none">PROTOCOL-ATTACK</p>
+### <a name="protocol-attack"></a><a name="drs921-10"></a> PROTOCOL-ATTACK
 |RuleId|说明|
 |---|---|
 |921110|HTTP 请求走私攻击|
@@ -569,7 +569,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |921151|通过有效负载展开的 HTTP 标头注入攻击（检测到 CR/LF）|
 |921160|通过有效负载展开的 HTTP 标头注入攻击（检测到 CR/LF 和标头名称）|
 
-### <a name="p-x-ms-format-detectionnonelfi---local-file-inclusionp"></a><a name="drs930-10"></a> <p x-ms-format-detection="none">LFI - 本地文件包含</p>
+### <a name="lfi---local-file-inclusion"></a><a name="drs930-10"></a> LFI - 本地文件包含
 |RuleId|说明|
 |---|---|
 |930100|路径遍历攻击 (/../)|
@@ -577,15 +577,15 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |930120|OS 文件访问企图|
 |930130|受限文件访问企图|
 
-### <a name="p-x-ms-format-detectionnonerfi---remote-file-inclusionp"></a><a name="drs931-10"></a> <p x-ms-format-detection="none">RFI - 远程文件包含</p>
+### <a name="rfi---remote-file-inclusion"></a><a name="drs931-10"></a> RFI - 远程文件包含
 |RuleId|说明|
 |---|---|
 |931100|可能的远程文件包含 (RFI) 攻击：使用 IP 地址的 URL 参数|
-|931110|可能的远程文件包含 (RFI) 攻击：对 URL 有效负载使用常见 RFI 漏洞参数名使用|
+|931110|可能的远程文件包含 (RFI) 攻击：对 URL 有效负载使用常见 RFI 漏洞参数名|
 |931120|可能的远程文件包含 (RFI) 攻击：在 URL 有效负载中使用尾随问号 (?)|
 |931130|可能的远程文件包含 (RFI) 攻击：域外引用/链接|
 
-### <a name="p-x-ms-format-detectionnonerce---remote-command-executionp"></a><a name="drs932-10"></a> <p x-ms-format-detection="none">RCE - 远程命令执行</p>
+### <a name="rce---remote-command-execution"></a><a name="drs932-10"></a> RCE - 远程命令执行
 |RuleId|说明|
 |---|---|
 |932100|远程命令执行：Unix 命令注入|
@@ -601,7 +601,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |932171|远程命令执行：Shellshock (CVE-2014-6271)|
 |932180|受限文件上传企图|
 
-### <a name="p-x-ms-format-detectionnonephp-attacksp"></a><a name="drs933-10"></a> <p x-ms-format-detection="none">PHP 攻击</p>
+### <a name="php-attacks"></a><a name="drs933-10"></a> PHP 攻击
 |RuleId|说明|
 |---|---|
 |933100|PHP 注入攻击：找到开始/结束标记|
@@ -617,7 +617,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |933170|PHP 注入攻击：序列化对象注入|
 |933180|PHP 注入攻击：找到可变函数调用|
 
-### <a name="p-x-ms-format-detectionnonexss---cross-site-scriptingp"></a><a name="drs941-10"></a> <p x-ms-format-detection="none">XSS - 跨站脚本</p>
+### <a name="xss---cross-site-scripting"></a><a name="drs941-10"></a> XSS - 跨站脚本
 |RuleId|说明|
 |---|---|
 |941100|检测到通过 libinjection 展开的 XSS 攻击|
@@ -648,7 +648,7 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |941340|IE XSS 筛选器 - 检测到攻击。|
 |941350|UTF-7 编码 IE XSS - 检测到攻击。|
 
-### <a name="p-x-ms-format-detectionnonesqli---sql-injectionp"></a><a name="drs942-10"></a> <p x-ms-format-detection="none">SQLI - SQL 注入</p>
+### <a name="sqli---sql-injection"></a><a name="drs942-10"></a> SQLI - SQL 注入
 |RuleId|说明|
 |---|---|
 |942100|检测到通过 libinjection 展开的 SQL 注入攻击|
@@ -689,14 +689,14 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 |942470|SQL 注入攻击|
 |942480|SQL 注入攻击|
 
-### <a name="p-x-ms-format-detectionnonesession-fixationp"></a><a name="drs943-10"></a> <p x-ms-format-detection="none">SESSION-FIXATION</p>
+### <a name="session-fixation"></a><a name="drs943-10"></a> SESSION-FIXATION
 |RuleId|说明|
 |---|---|
 |943100|可能的会话固定攻击：在 HTML 中设置 Cookie 值|
 |943110|可能的会话固定攻击：包含域外引用方的 SessionID 参数名称|
 |943120|可能的会话固定攻击：不包含引用方的 SessionID 参数名称|
 
-### <a name="p-x-ms-format-detectionnonejava-attacksp"></a><a name="drs944-10"></a> <p x-ms-format-detection="none">Java 攻击</p>
+### <a name="java-attacks"></a><a name="drs944-10"></a> JAVA 攻击
 |RuleId|说明|
 |---|---|
 |944100|远程命令执行：Apache Struts、Oracle WebLogic|
@@ -712,19 +712,19 @@ DRS 2.0 包含下表中所示的 17 个规则组。 每个组包含多个可以�
 
 ## <a name="bot-manager-rule-sets"></a><a name="bot"></a> 机器人管理器规则集
 
-### <a name="p-x-ms-format-detectionnonebad-botsp"></a><a name="bot100"></a> <p x-ms-format-detection="none">恶意机器人</p>
+### <a name="bad-bots"></a><a name="bot100"></a> 恶意机器人
 |RuleId|说明|
 |---|---|
 |Bot100100|威胁情报检测到的恶意机器人|
 |Bot100200|已伪造其标识的恶意机器人|
 
-### <a name="p-x-ms-format-detectionnonegood-botsp"></a><a name="bot200"></a> <p x-ms-format-detection="none">善意机器人</p>
+### <a name="good-bots"></a><a name="bot200"></a> 善意机器人
 |RuleId|说明|
 |---|---|
 |Bot200100|搜索引擎爬网程序|
 |Bot200200|未经验证的搜索引擎爬网程序|
 
-### <a name="p-x-ms-format-detectionnoneunknown-botsp"></a><a name="bot300"></a> <p x-ms-format-detection="none">未知机器人</p>
+### <a name="unknown-bots"></a><a name="bot300"></a> 未知机器人
 |RuleId|说明|
 |---|---|
 |Bot300100|未指定的标识|
