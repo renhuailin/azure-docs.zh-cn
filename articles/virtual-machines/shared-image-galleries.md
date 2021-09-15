@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 6/8/2021
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: f00f98ac9e6350aa09d3fa67c1c87677fef2db6f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c94e040d5047b25b8d260792fd362e50a29b9601
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738970"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696288"
 ---
 # <a name="shared-image-galleries-overview"></a>共享映像库概述
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 共享映像库是一种可以帮助你围绕映像构建结构和组织的服务。 共享映像库提供：
 

@@ -1,25 +1,22 @@
 ---
 title: Connected Machine 代理概述
 description: 本文详细介绍了已启用 Azure Arc 的服务器代理，该代理支持监视混合环境中托管的虚拟机。
-ms.date: 06/04/2021
+ms.date: 08/18/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3d5c3640147a9c23fb05c0156edf012815466189
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: fa3b934d6909a3975bf9d01b6cd2f8f2fd2428e4
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538213"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771002"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理概述
 
 借助已启用 Azure Arc 的服务器 Connected Machine 代理，可以管理企业网络或其他云提供商中托管在 Azure 外部的 Windows 和 Linux 计算机。 本文提供该代理的详细概述、系统和网络要求以及不同的部署方法。
 
 >[!NOTE]
->自 2020 年 9 月正式发行已启用 Azure Arc 的服务器开始，所有预发行版本的 Azure Connected Machine 代理（版本低于 1.0 的代理）将在 2021 年 2 月 2 日前弃用 。  在这段期限内，你可以升级到版本 1.0 或更高版本，这段期限后，预发行的代理将无法再与启用了 Azure Arc 的服务器服务通信。
-
->[!NOTE]
-> [Azure Monitor 代理](../../azure-monitor/agents/azure-monitor-agent-overview.md) (AMA)（当前为预览版）不会取代 Connected Machine 代理。 Azure Monitor 代理将取代 Windows 和 Linux 计算机上的 Log Analytics 代理、诊断扩展和 Telegraf 代理。 有关更多详细信息，请查看有关新代理的 Azure Monitor 文档。
+> [Azure Monitor 代理](../../azure-monitor/agents/azure-monitor-agent-overview.md) (AMA) 不会取代 Connected Machine 代理。 Azure Monitor 代理将取代 Windows 和 Linux 计算机上的 Log Analytics 代理、诊断扩展和 Telegraf 代理。 有关更多详细信息，请查看有关新代理的 Azure Monitor 文档。
 
 ## <a name="agent-component-details"></a>代理组件详细信息
 
@@ -29,11 +26,11 @@ Azure Connected Machine 代理包包含捆绑在一起的多个逻辑组件。
 
 * Hybrid Instance Metadata Service (HIMDS) 管理 Azure 的连接和已连接的计算机的 Azure 标识。
 
-* Guest Configuration 代理提供来宾内策略和来宾配置功能，例如评估计算机是否符合所需的策略。
+* 来宾配置代理提供评估计算机是否符合所需的策略和强制实施符合性等的功能。
 
-    对于已断开连接的计算机，请注意 Azure Policy [Guest Configuration](../../governance/policy/concepts/guest-configuration.md) 的以下行为：
+    对于已断开连接的计算机，请注意 Azure Policy [guest configuration](../../governance/policy/concepts/guest-configuration.md) 的以下行为：
 
-    * 以断开连接的计算机为目标的 Guest Configuration 策略分配不受影响。
+    * 以断开连接的计算机为目标的 Azure Policy 分配不受影响。
     * 来宾分配在本地存储 14 天。 在 14 天的期限内，如果 Connected Machine 代理重新连接到服务，则重新应用策略分配。
     * 分配的策略将在 14 天后删除，并且在 14 天期限后不会重新分配到计算机。
 
@@ -47,13 +44,14 @@ Azure Connected Machine 代理包包含捆绑在一起的多个逻辑组件。
 * 计算机名称
 * 计算机制造商和型号
 * 计算机完全限定域名 (FQDN)
+* 域名（如果已联接到 Active Directory 域）
 * Connected Machine 代理版本
 * Active Directory 和 DNS 完全限定的域名 (FQDN)
 * UUID (BIOS ID)
 * Connected Machine 代理程序检测信号
 * Connected Machine 代理版本
 * 托管标识的公钥
-* 策略合规性状态和详细信息（如果使用 Azure Policy Guest Configuration 策略）
+* 策略符合性状态和详细信息（如果使用来宾配置策略）
 * 已安装 SQL Server（布尔值）
 * 适用于 Azure Stack HCI 节点的群集资源 ID 
 
@@ -133,7 +131,7 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 ### <a name="networking-configuration"></a>网络配置
 
-适用于 Linux 和 Windows 的 Connected Machine 代理通过 TCP 端口 443 安全地与 Azure Arc 进行出站通信。 如果计算机通过防火墙或代理服务器建立连接，以便通过 Internet 进行通信，请查看下文以了解网络配置要求。
+适用于 Linux 和 Windows 的 Connected Machine 代理通过 TCP 端口 443 安全地与 Azure Arc 进行出站通信。 如果计算机需要通过防火墙或代理服务器进行连接以使用 Internet 通信，代理将改为使用 HTTP 协议进行出站通信。 由于流量已加密，代理服务器使 Connected Machine 代理更安全。
 
 > [!NOTE]
 > 已启用 Arc 的服务器不支持使用 [Log Analytics 网关](../../azure-monitor/agents/gateway.md)作为 Connected Machine 代理的代理。
@@ -174,7 +172,7 @@ URL：
 
 ### <a name="register-azure-resource-providers"></a>注册 Azure 资源提供程序
 
-启用了 Azure Arc 的服务器依赖于通过订阅中的以下 Azure 资源提供程序来使用此服务：
+已启用 Azure Arc 的服务器依赖于通过订阅中的以下 Azure 资源提供程序来使用此服务：
 
 * Microsoft.HybridCompute
 * Microsoft.GuestConfiguration
@@ -233,7 +231,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |%ProgramData%\AzureConnectedMachineAgent |包含代理配置文件。|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |包含获取的令牌。|
     |%ProgramData%\AzureConnectedMachineAgent\Config |包含代理配置文件 `agentconfig.json`，该文件记录其在服务中的注册信息。|
-    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | 包含 Guest Configuration 代理文件的安装路径。 |
+    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | 包含来宾配置代理文件的安装路径。 |
     |%ProgramData%\GuestConfig |包含 Azure 中（应用的）策略。|
     |%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads | 扩展从 Azure 下载，并在此处复制。|
 
@@ -242,8 +240,8 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |Service name |显示名称 |进程名称 |说明 |
     |-------------|-------------|-------------|------------|
     |himds |Azure 混合实例元数据服务 |himds |此服务实现 Azure Instance Metadata Service (IMDS)，以管理 Azure 的连接和已连接计算机的 Azure 标识。|
-    |GCArcService |Guest Configuration Arc Service |gc_service |监视计算机所需的状态配置。|
-    |ExtensionService |Guest Configuration Extension Service | gc_service |安装以计算机为目标的所需扩展。|
+    |GCArcService |来宾配置 Arc 服务 |gc_service |监视计算机所需的状态配置。|
+    |ExtensionService |来宾配置扩展服务 | gc_service |安装以计算机为目标的所需扩展。|
 
 * 安装代理期间，将创建以下环境变量。
 
@@ -283,7 +281,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |-------|------------|
     |/var/opt/azcmagent/ |包含代理支持文件的默认安装路径。|
     |/opt/azcmagent/ |
-    |/opt/GC_Ext | 包含 Guest Configuration 代理文件的安装路径。|
+    |/opt/GC_Ext | 包含来宾配置代理文件的安装路径。|
     |/opt/DSC/ |
     |/var/opt/azcmagent/tokens |包含获取的令牌。|
     |/var/lib/GuestConfig |包含 Azure 中（应用的）策略。|
@@ -320,8 +318,20 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     * /var/opt/azcmagent
     * /opt/logs
 
+### <a name="agent-resource-governance"></a>代理资源治理
+
+已启用 Arc 的服务器连接的计算机代理旨在管理代理和系统资源消耗。 在下列情况下，该代理会采取资源监管：
+
+- 来宾配置代理最多可限制 5% 的 CPU 来评估策略。
+- 扩展服务代理最多只能使用 5% 的 CPU。
+
+   - 这只适用于安装/卸载/升级操作。 安装完成后，扩展将负责其资源利用率，但无需遵守 5% 的 CPU 限制。
+   - 在 Red Hat Linux、CentOS 和其他企业 Linux 变体上安装/升级/卸载 Log Analytics 代理和 Azure Monitor 代理时，最多允许使用 60% 的 CPU。 为适应 [SELinux](https://www.redhat.com/en/topics/linux/what-is-selinux) 在这些系统上的性能影响，此扩展和操作系统组合的限制将会更严苛。
+
 ## <a name="next-steps"></a>后续步骤
 
-* 若要开始评估已启用 Azure Arc 的服务器，请阅读[从 Azure 门户将混合计算机连接到 Azure](onboard-portal.md) 一文。
+* 若要开始评估已启用 Azure Arc 的服务器，请参阅[连接混合计算机与已启用 Azure Arc 的服务器](learn/quick-enable-hybrid-vm.md)一文。
+
+* 在部署已启用 Arc 的服务器代理并与其他 Azure 管理和监视服务集成之前，请先查看[规划和部署指南](plan-at-scale-deployment.md)。
 
 * 在 [Connected Machine 代理故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。

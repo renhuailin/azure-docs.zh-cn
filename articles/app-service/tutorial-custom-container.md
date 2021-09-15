@@ -2,17 +2,17 @@
 title: 教程：在 Azure 应用服务中生成并运行自定义映像
 description: 一个分步指南，用于构建自定义 Linux 或 Windows 映像，将映像推送到 Azure 容器注册表，然后将该映像部署到 Azure 应用服务。 了解如何在自定义容器中将自定义软件迁移到应用服务。
 ms.topic: tutorial
-ms.date: 07/16/2021
+ms.date: 08/04/2021
 ms.author: msangapu
 keywords: azure 应用服务, web 应用, linux, windows, docker, 容器
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 97246083b783fe98b4021a6f9bb882d40e79d449
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: fbd4f58baa3da0da2db4100899c7e49d0120b72f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114386983"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748866"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>使用自定义容器将自定义软件迁移到 Azure 应用服务
 
@@ -458,19 +458,19 @@ az group create --name myResourceGroup --location westeurope
 1. 配置应用，以使用托管标识从 Azure 容器注册表进行拉取。
 
     ```azurecli-interactive
-    az resource update --ids /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<registry-name>/config/web --set properties.acrUseManagedIdentityCreds=True
+    az resource update --ids /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<app-name>/config/web --set properties.acrUseManagedIdentityCreds=True
     ```
     
     请替换以下值：
     - 将 `<subscription-id>` 替换为从 `az account show` 命令检索到的订阅 ID。
-    - 将 `<registry-name>` 替换为容器注册表的名称。
+    - 将 `<app-name>` 替换为 Web 应用的名称。
 
     > [!TIP]
     > 如果应用使用[用户分配的托管标识](overview-managed-identity.md#add-a-user-assigned-identity)，则设置一个额外的 `AcrUserManagedIdentityID` 属性来指定其客户端 ID：
     >
     > ```azurecli-interactive
     > clientId=$(az identity show --resource-group <group-name> --name <identity-name> --query clientId --output tsv)
-    > az resource update --ids /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<registry-name>/config/web --set properties.AcrUserManagedIdentityID=$clientId
+    > az resource update --ids /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<app-name>/config/web --set properties.AcrUserManagedIdentityID=$clientId
     > ```
 
 ## <a name="deploy-the-image-and-test-the-app"></a>部署映像并测试应用
@@ -579,7 +579,7 @@ az group create --name myResourceGroup --location westeurope
 1. 将映像标记中的版本号更新为 v1.0.1：
 
     ```bash
-    docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
+    docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.io/appsvc-tutorial-custom-image:v1.0.1
     ```
 
     将 `<registry-name>` 替换为注册表的名称。
@@ -587,7 +587,7 @@ az group create --name myResourceGroup --location westeurope
 1. 将映像推送到注册表：
 
     ```bash
-    docker push <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
+    docker push <registry-name>.azurecr.io/appsvc-tutorial-custom-image:v1.0.1
     ```
 
 1. 映像推送完成后，Webhook 会通知应用服务有关推送的信息，应用服务会尝试在更新的映像中进行拉取。 等待几分钟，然后浏览到 `https://<app-name>.azurewebsites.net` 来验证是否已部署更新。

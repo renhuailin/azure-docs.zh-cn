@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 07/15/2021
+ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8fb3734e1975254442fa2aff57ba60847bbfac04
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: dbc48719f2897c22717319e1e07b5b3b3146fe84
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362236"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122638279"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -29,7 +29,7 @@ ms.locfileid: "114362236"
 > * 将 VPN 站点连接到中心
 > * 将 VNet 连接到中心
 > * 下载配置文件
-> * 配置 VPN 网关
+> * 查看或编辑 VPN 网关
 
 > [!NOTE]
 > 如果你有多个站点，则通常会使用[虚拟 WAN 合作伙伴](https://aka.ms/virtualwan)来创建此配置。 但是，如果你熟悉网络技术并能够熟练配置自己的 VPN 设备，则可以自行创建此配置。
@@ -47,42 +47,51 @@ ms.locfileid: "114362236"
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-create-vwan-include.md)]
 
-## <a name="create-a-hub"></a><a name="hub"></a>创建中心
+## <a name="create-hub"></a><a name="hub"></a>创建中心
 
-中心是一种虚拟网络，可包含适用于站点到站点、ExpressRoute 或点到站点功能的网关。 创建中心后，即使你没有附加任何站点，也会对该中心收取费用。
+中心是一种虚拟网络，可包含适用于站点到站点、ExpressRoute 或点到站点功能的网关。 在本教程中，首先填写虚拟中心的“基本信息”选项卡，然后在下一个部分中继续填写站点到站点选项卡。 请注意，可以创建空中心（不包含任何网关的中心），然后在将来添加网关（S2S、P2S、ExpressRoute 等）。 创建中心后，即使你没有在中心内附加任何站点或创建任何网关，也会对该中心收取费用。
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-## <a name="create-a-site-to-site-vpn-gateway"></a><a name="gateway"></a>创建站点到站点 VPN 网关
+## <a name="create-site-to-site-vpn-gateway"></a><a name="gateway"></a>创建站点到站点 VPN 网关
+
+在本部分中，你会配置站点到站点连接设置，然后继续创建中心和 S2S VPN 网关。 创建中心和网关可能需要花费大约 30 分钟。
 
 [!INCLUDE [Create a gateway](../../includes/virtual-wan-tutorial-s2s-gateway-include.md)]
 
-## <a name="create-a-site"></a><a name="site"></a>创建站点
+## <a name="create-site"></a><a name="site"></a>创建站点
 
 在本部分，你将创建站点。 站点对应于你的物理位置。 请根据需要创建任意数量的站点。 例如，如果你在纽约、伦敦和洛杉矶各有一个分支机构，请创建三个独立的站点。 这些站点包含本地 VPN 设备终结点。 在虚拟 WAN 中，每个虚拟中心最多可创建 1000 个站点。 如果有多个中心，则可以为每个中心创建 1000 个站点。 如果你有虚拟 WAN 合作伙伴 CPE 设备，请咨询这些合作伙伴以了解他们对 Azure 进行的自动化。 通常，自动化意味着只需执行简单的单击操作即可将大规模分支信息导出到 Azure 中，并设置从 CPE 到 Azure 虚拟 WAN VPN 网关的连接。 有关详细信息，请参阅[从 Azure 到 CPE 合作伙伴的自动化指南](virtual-wan-configure-automation-providers.md)。
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-## <a name="connect-the-vpn-site-to-the-hub"></a><a name="connectsites"></a>将 VPN 站点连接到中心
+## <a name="connect-vpn-site-to-hub"></a><a name="connectsites"></a>将 VPN 站点连接到中心
 
-此步骤将 VPN 站点连接到中心。
+在本部分中，你会将 VPN 站点连接到中心。
 
 [!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>将 VNet 连接到中心
+## <a name="connect-vnet-to-hub"></a><a name="vnet"></a>将 VNet 连接到中心
+
+在本部分中，你会创建中心与 VNet 之间的连接。
 
 [!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 
 ## <a name="download-vpn-configuration"></a><a name="device"></a>下载 VPN 配置
 
-使用 VPN 设备配置来配置本地 VPN 设备。
+使用 VPN 设备配置文件来配置本地 VPN 设备。 下面列出了基本步骤。 有关配置文件包含的内容以及如何配置 VPN 设备的信息有 
 
-1. 在虚拟 WAN 的页面上，单击“概述”。
-2. 在“中心 ->VPNSite”页的顶部，单击“下载 VPN 配置”。Azure 会在资源组“microsoft-network-[location]”中创建一个存储帐户，其中，location 是 WAN 的位置。 将配置应用到 VPN 设备后，可以删除此存储帐户。
-3. 完成创建文件后，可以单击相应的链接下载该文件。
-4. 将配置应用到本地 VPN 设备。
+1. 导航到“虚拟中心”->“VPN (站点到站点)”页面。
 
-### <a name="about-the-vpn-device-configuration-file"></a>关于 VPN 设备配置文件
+1. 在“VPN (站点到站点)”页面顶部，单击“下载 VPN 配置” 。你会看到一系列消息，因为 Azure 会在资源组“microsoft-network-[location]”中创建一个存储帐户，其中，location 是 WAN 的位置。
+
+1. 完成创建文件后，请单击相应的链接下载该文件。 若要了解该文件的内容，请参阅本部分中的[关于 VPN 设备服务配置文件](#config-file)。
+
+1. 将配置应用到本地 VPN 设备。 有关详细信息，请参阅本部分中的 [VPN 设备配置](#vpn-device)。
+
+1. 将配置应用于 VPN 设备之后，无需保留 Azure 创建的存储帐户。 可以删除该帐户。
+
+### <a name="about-the-vpn-device-configuration-file"></a><a name="config-file"></a>关于 VPN 设备配置文件
 
 设备配置文件包含配置本地 VPN 设备时要使用的设置。 查看此文件时，请留意以下信息：
 
@@ -212,7 +221,7 @@ ms.locfileid: "114362236"
    }
   ```
 
-### <a name="configuring-your-vpn-device"></a>配置 VPN 设备
+### <a name="configuring-your-vpn-device"></a><a name="vpn-device"></a>配置 VPN 设备
 
 >[!NOTE]
 > 如果正在使用虚拟 WAN 合作伙伴解决方案，则会自动进行 VPN 设备配置。 设备控制器将从 Azure 获取配置文件并应用于设备以设置与 Azure 的连接。 这意味着，无需知道如何手动配置 VPN 设备。
@@ -220,23 +229,26 @@ ms.locfileid: "114362236"
 
 如需有关如何配置设备的说明，可以使用 [VPN 设备配置脚本页](~/articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#configscripts)中的说明，并注意以下事项：
 
-* VPN 设备页上的说明不是针对虚拟 WAN 编写的，但你可以使用配置文件中的虚拟 WAN 值来手动配置 VPN 设备。 
+* VPN 设备页上的说明不是针对虚拟 WAN 编写的，但你可以使用配置文件中的虚拟 WAN 值来手动配置 VPN 设备。
+ 
 * 适用于 VPN 网关的可下载设备配置脚本并不适用于虚拟 WAN，因为配置不同。
+
 * 新的虚拟 WAN 可以同时支持 IKEv1 和 IKEv2。
+
 * 虚拟 WAN 可以使用基于策略和基于路由的 VPN 设备和设备说明。
 
-## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>配置 VPN 网关
+## <a name="view-or-edit-gateway-settings"></a><a name="gateway-config"></a>查看或编辑网关设置
 
-你可以随时选择“查看/配置”来查看和配置 VPN 网关设置。
+你可以随时通过导航到“虚拟中心”->“VPN (站点到站点)”并选择“查看/配置”来查看和编辑 VPN 网关设置 。
 
 :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="显示“VPN (站点到站点)”页的屏幕截图，其中箭头指向“查看/配置”操作。" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
 
 在“编辑 VPN 网关”页上，可以看到以下设置：
 
-* VPN 网关公共 IP 地址（由 Azure 分配）
-* VPN 网关专用 IP 地址（由 Azure 分配）
-* VPN 网关默认 BGP IP 地址（由 Azure 分配）
-* 自定义 BGP IP 地址的配置选项：此字段保留给 APIPA（自动专用 IP 地址）。 Azure 支持介于 169.254.21.* 与 169.254.22.* 范围之间的 BGP IP。 Azure 接受这些范围内的 BGP 连接，但会使用默认的 BGP IP 拨号连接。
+* 公共 IP 地址：由 Azure 分配。
+* 专用 IP 地址：由 Azure 分配。
+* 默认 BGP IP 地址：由 Azure 分配。
+* 自定义 BGP IP 地址：此字段保留给 APIPA（自动专用 IP 寻址）。 Azure 支持介于 169.254.21.* 与 169.254.22.* 范围之间的 BGP IP。 Azure 接受这些范围内的 BGP 连接，但会使用默认的 BGP IP 拨号连接。
 
    :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="屏幕截图显示“编辑 VPN 网关”页，并突出显示“编辑”按钮。" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 

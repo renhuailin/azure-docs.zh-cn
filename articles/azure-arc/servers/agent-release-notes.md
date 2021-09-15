@@ -3,12 +3,12 @@ title: 已启用 Azure Arc 的服务器代理的新增功能
 description: 本文提供了已启用 Azure Arc 的服务器代理的发行说明。 对于许多汇总问题，提供了指向更多详细信息的链接。
 ms.topic: conceptual
 ms.date: 07/16/2021
-ms.openlocfilehash: d53ebd32c870ce8ec26bca7bcb811fbdd45c58b2
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 54e7bc72884cc7bc9116c88e7cdb72e5af5f71cd
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114392367"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770957"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理的新增功能
 
@@ -125,7 +125,7 @@ ms.locfileid: "114392367"
 - 在将来的服务更新中将取消对预览版代理（低于 1.0 的所有版本）的支持。
 - 已取消对回退终结点 `.azure-automation.net` 的支持。 如果有代理，则需要允许使用终结点 `*.his.arc.azure.com`。
 - 如果在 Azure 中托管的虚拟机上安装了 Connected Machine 代理，则无法从已启用 Arc 的服务器资源安装和修改 VM 扩展。 这是为了避免从虚拟机的 Microsoft.Compute 和 Microsoft.HybridCompute 资源进行冲突的扩展操作 。 请使用计算机的 Microsoft.Compute 资源进行所有扩展操作。
-- “来宾配置”进程的名称已更改，在 Linux 上从 gcd 更改为 gcad，在 Windows 上从 gcservice 更改为 gcarcservice   。
+- 来宾配置进程的名称已更改，在 Linux 上从 gcd 更改为 gcad，在 Windows 上从 gcservice 更改为 gcarcservice   。
 
 ### <a name="new-features"></a>新增功能
 

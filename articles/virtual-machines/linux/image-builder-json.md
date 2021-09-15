@@ -9,14 +9,16 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d9ac06d7863ae08e380532f0b737dafc57ab666e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 703c2023103d9225e5dfad5bd0d288164350122f
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469148"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450334"
 ---
 # <a name="create-an-azure-image-builder-template"></a>创建 Azure 映像生成器模板 
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
 
 Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服务。 本文将会深入介绍该 json 文件的各个节，使你可以生成自己的模板。 若要查看完整 .json 文件的示例，请参阅 [Azure 映像生成器 GitHub](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts)。
 
@@ -88,7 +90,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 当客户在具有严格单区域数据驻留要求的区域内请求生成时，Azure VM 映像生成器服务不会在该区域之外存储/处理客户数据。 如果具有数据驻留要求的区域发生服务中断，则需要在其他区域和地理位置创建模板。
 
 ### <a name="zone-redundancy"></a>区域冗余
-分发支持区域冗余，VHD 默认分发到区域冗余存储帐户，共享映像库版本将支持 [ZRS 存储类型](../disks-redundancy.md#zone-redundant-storage-for-managed-disks-preview)（如果已指定）。
+分发支持区域冗余，VHD 默认分发到区域冗余存储帐户，共享映像库版本将支持 [ZRS 存储类型](../disks-redundancy.md#zone-redundant-storage-for-managed-disks)（如果已指定）。
  
 ## <a name="vmprofile"></a>vmProfile
 ## <a name="buildvm"></a>buildVM
@@ -253,6 +255,8 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 如果你觉得需要更长时间才能让自定义完成，请将此属性设置为只会略微增大开销的所需值。 但是，不要将它设置得太高，否则可能需要等到它超时才会看到错误。 
 
+> [!NOTE]
+> 如果未将此值设置为 0，则支持的最小值为 6 分钟。 使用值 1 到 5 会失败。
 
 ## <a name="properties-customize"></a>属性：customize
 
@@ -603,7 +607,7 @@ Azure 共享映像库是一个新的映像管理服务，可用于管理映像�
 - 映像定义 - 映像的概念分组。 
 - 映像版本 - 这是用于部署 VM 或规模集的映像类型。 可将映像版本复制到需要部署 VM 的其他区域。
  
-必须先创建库和映像定义，然后才能分发到映像库，详见[共享映像](../shared-images-cli.md)。 
+必须先创建库和映像定义，然后才能分发到映像库，详见[共享映像](../create-gallery.md)。 
 
 ```json
 {

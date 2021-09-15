@@ -6,12 +6,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/06/2021
-ms.openlocfilehash: a1efbf3cdd90b26b8abdfe9dfa7b380d5dd4badb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bab6b3afccb16f49384ec6fd90410e44a4edf268
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746337"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634173"
 ---
 # <a name="whats-new-in-the-microsoft-commercial-marketplace"></a>Microsoft 商业市场的最新更新
 
@@ -43,6 +43,7 @@ ms.locfileid: "121746337"
 
 | 类别 | 说明 | 日期 |
 | ------------ | ------------- | ------------- |
+| 产品 | [商业市场交易功能](/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations)主题现在包含一个流程图，可帮助你确定在商业市场中销售软件的适当可交易产品/服务类型和定价计划。 | 2021-08-18 |
 | 策略 | 更新了[认证](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)策略；请参阅[更改历史记录](/legal/marketplace/offer-policies-change-history)。 | 2021-08-06 |
 | 联合销售 | 为 MACC 计划添加了相关信息，包括要求、我们更新 MACC 状态的频率以及“已注册”和“未注册”的定义。 有关详细信息，请参阅 [Azure 使用量承诺注册](./azure-consumption-commitment-enrollment.md)或[与 Microsoft 销售团队和合作伙伴联合销售概述](./co-sell-overview.md)。 | 2021-06-03 |
 | 产品 | 添加了有关 VM 定价选项和说明的信息。 有关详细信息，请参阅[如何为商业市场规划 SaaS 产品/服务](./plan-saas-offer.md)。 | 2021-05-25|

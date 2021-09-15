@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 5bcc0fed8413affe6d525f03bd08e8b61751f893
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cc12626747aa7ce8a294695e27239fac36ce5cd0
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745519"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824927"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>什么是 Azure Cosmos DB 分析存储？
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -149,7 +149,19 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
   * 删除集合中的所有文档不会重置分析存储架构。
   * 架构没有版本控制。 用户将在分析存储中看到的版本是从事务存储中推断出的最后一个版本。
 
-* 目前，我们不支持 Azure Synapse Spark 读取名称中含有空白（空格）的属性。 需要使用 Spark 函数（如 `cast` 或 `replace`）才能将数据加载到 Spark DataFrame 中。
+* 目前，Azure Synapse Spark 无法读取下列名称中包含某些特殊字符的属性。 如果是这样，请与 [Azure Cosmos DB 团队](mailto:cosmosdbsynapselink@microsoft.com)联系以了解详细信息。
+  * :（冒号）
+  * `（抑音符）
+  * ,（逗号）
+  * ;（分号）
+  * {}
+  * ()
+  * \n
+  * \t
+  * =（等号）
+  * "（引号）
+ 
+* Azure Synapse Spark 现在支持名称中包含空格的属性。
 
 ### <a name="schema-representation"></a>架构表示形式
 
@@ -298,7 +310,7 @@ salary: 1000000
 
 ## <a name="security"></a>安全性
 
-* 对分析存储进行身份验证的方式，与对给定数据库的事务性存储进行身份验证的方式相同。 可以使用主密钥或只读密钥进行身份验证。 可以利用 Synapse Studio 中的链接服务，以防止粘贴 Spark 笔记本中的 Azure Cosmos DB 密钥。 有权访问工作区的任何用户都可以访问此链接服务。
+* 对分析存储进行身份验证的方式，与对给定数据库的事务性存储进行身份验证的方式相同。 可以使用主密钥或只读密钥进行身份验证。 可以利用 Synapse Studio 中的链接服务，以防止粘贴 Spark 笔记本中的 Azure Cosmos DB 密钥。 对于 Azure Synapse SQL 无服务器，也可使用 SQL 凭据防止粘贴 SQL 笔记本中的 Azure Cosmos DB 密钥。 有权访问该工作区的任何人都可以访问此链接的服务或此凭据。
 
 * **使用专用终结点的网络隔离** - 可以单独控制对事务性和分析存储中的数据的网络访问。 在 Azure Synapse 工作区的托管虚拟网络内，为每个存储使用单独的托管专用终结点进行网络隔离。 如要了解详细信息，请参阅如何[为分析存储配置专用终结点](analytical-store-private-endpoints.md)一文。
 

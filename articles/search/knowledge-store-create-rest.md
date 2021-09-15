@@ -1,27 +1,27 @@
 ---
 title: 使用 REST 创建知识存储
 titleSuffix: Azure Cognitive Search
-description: 使用 REST API 和 Postman 创建 Azure 认知搜索知识存储，用于保存 AI 扩充管道的扩充内容。
+description: 使用 REST API 和 Postman 创建 Azure 认知搜索知识存储，以便保存技能组中的 AI 扩充内容。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/18/2020
-ms.openlocfilehash: 69b9fa867159e5bd475d37194422a4fd21bfe9ab
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 08/10/2021
+ms.openlocfilehash: 0f52fe37e7eadabaefbd35e6ca2c600b53ad3b0c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557234"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724204"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>使用 REST 和 Postman 创建知识库
 
-知识存储包含 Azure 认知搜索扩充管道的输出，用于后续分析或其他下游处理。 AI 扩充的管道接受图像文件或非结构化文本文件，使用 Azure 认知搜索为其编制索引，应用认知服务中的 AI 扩充（例如图像分析和自然语言处理），并将结果保存到 Azure 存储中的知识存储。 可以在 Azure 门户中使用 Power BI 或存储资源管理器等工具来浏览知识存储。
+知识存储包含 Azure 认知搜索扩充管道的输出，用于后续分析或其他下游处理。 AI 扩充的管道接受图像文件或非结构化文本文件，应用认知服务中的 AI 扩充（例如图像分析和自然语言处理），并将输出保存到 Azure 存储中的知识存储。 可以在 Azure 门户中使用 Power BI 或存储资源管理器等工具来浏览知识存储。
 
-在本文中，你将使用 REST API 接口基于一系列酒店评论引入、编制索引和应用 AI 扩充。 酒店评论会导入到 Azure Blob 存储中。 结果会作为知识存储保存在 Azure 表存储中。
+本文介绍如何使用 REST API 来引入、扩充和了解一组关于酒店住宿的客户评论。 为了使初始数据集可用，需要先将酒店评论导入到 Azure Blob 存储。 处理后，结果会作为知识存储保存在 Azure 表存储中。
 
-创建知识存储后，可以了解如何使用[存储资源管理器](knowledge-store-view-storage-explorer.md)或 [Power BI](knowledge-store-connect-power-bi.md) 来访问该知识存储。
+创建知识存储后，使用[存储资源管理器](knowledge-store-view-storage-explorer.md)或 [Power BI](knowledge-store-connect-power-bi.md) 了解其内容。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -30,9 +30,9 @@ ms.locfileid: "111557234"
 
 ## <a name="create-services-and-load-data"></a>创建服务并加载数据
 
-本快速入门使用 Azure 认知搜索、Azure Blob 存储和用于 AI 的 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)。 
+本练习使用 Azure 认知搜索、Azure Blob 存储和用于 AI 的 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)。 
 
-由于工作负载很小，因此，认知服务在幕后会抽调一部分算力来免费处理事务（每天最多 20 个）。 由于数据集很小，因此可以跳过创建或附加认知服务资源的过程。
+由于工作负载很小，因此，认知服务在幕后会抽调一部分算力来免费处理事务（每天最多 20 个）。 小型工作负载意味着你可以跳过创建或附加认知服务资源的过程。
 
 1. [下载 HotelReviews_Free.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)。 此数据是保存在某个 CSV 文件中的酒店评论数据（源自 Kaggle.com），其中包含客户对一家酒店的 19 条反馈。 
 
@@ -90,10 +90,12 @@ ms.locfileid: "111557234"
 
 ### <a name="review-the-request-collection-in-postman"></a>查看 Postman 中的请求集合
 
+知识存储在技能组中定义，而技能组又会附加到索引器。 创建知识存储时需要创建所有上游对象，包括索引、数据源、技能组和索引器。 尽管索引与知识存储无关，但索引器需要它才能执行，因此，你将创建一个索引作为索引器必备项。
+
 创建知识存储时，必须发出四个 HTTP 请求： 
 
-- **创建索引的 PUT 请求**：此索引保存 Azure 认知搜索使用和返回的数据。
-- **创建数据源的 POST 请求**：此数据源将 Azure 认知搜索行为连接到数据和知识存储的存储帐户。 
+- **创建索引的 PUT 请求**：此索引保存 Azure 认知搜索使用并在查询请求中返回的数据。
+- **创建数据源的 POST 请求**：此数据源连接到你的 Azure 存储帐户。 
 - **创建技能集的 PUT 请求**：技能集指定应用于知识存储的数据和结构的扩充。
 - **创建索引器的 PUT 请求**：运行索引器可读取数据、应用技能集并存储结果。 必须在最后运行此请求。
 
@@ -102,7 +104,7 @@ ms.locfileid: "111557234"
 ![显示 Postman 中标头界面的屏幕截图](media/knowledge-store-create-rest/postman-headers-ui.png)
 
 > [!Note]
-> 必须在所有请求中设置 `api-key` 和 `Content-type` 标头。 如果 Postman 识别了某个变量，该变量将以橙色文本显示，如上面的屏幕截图中的 `{{admin-key}}` 所示。 如果变量拼写错误，它将以红色文本显示。
+> 需要收集组 `api-key` 和标头 `Content-type` 中的所有请求。 如果 Postman 识别了某个变量，该变量将以橙色文本显示，如上面的屏幕截图中的 `{{admin-key}}` 所示。 如果变量拼写错误，它将以红色文本显示。
 >
 
 ## <a name="create-an-azure-cognitive-search-index"></a>创建 Azure 认知搜索索引
@@ -147,6 +149,8 @@ ms.locfileid: "111557234"
 此索引定义是要向用户显示的数据（酒店名称、评论内容和日期）、搜索元数据和 AI 扩充数据（情绪、关键短语和语言）的组合。
 
 选择“发送”以发出 PUT 请求。 应会看到状态 `201 - Created`。 如果看到其他状态，请在“正文”窗格中查找包含错误消息的 JSON 响应。 
+
+已创建索引，但未加载。 稍后在运行索引器时将导入文档。 
 
 ## <a name="create-the-datasource"></a>创建数据源
 
@@ -306,7 +310,7 @@ ms.locfileid: "111557234"
 
 最后一步是创建索引器。 索引器读取数据并激活技能集。 在 Postman 中选择“创建索引器”请求，然后查看正文。 索引器的定义引用创建的其他多个资源：数据源、索引和技能集。 
 
-`parameters/configuration` 对象控制索引器引入数据的方式。 在这种情况下，输入数据位于带有标题行和逗号分隔值的单个文档中。 文档键是文档的唯一标识符。 文档键在编码之前是源文档的 URL。 最后，技能集输出值（例如语言代码、情绪和关键短语）将映射到它们在文档中的位置。 尽管 `Language` 只有单个值，但 `Sentiment` 将应用到 `pages` 数组中的每个元素。 `Keyphrases` 是一个数组，也会应用到 `pages` 数组中的每个元素。
+`parameters/configuration` 对象控制索引器引入数据的方式。 在这种情况下，输入数据位于带有标题行和逗号分隔值的单个 CSV 文件中。 文档键是文档的唯一标识符。 文档键在编码之前是源文档的 URL。 最后，技能集输出值（例如语言代码、情绪和关键短语）将映射到它们在文档中的位置。 尽管 `Language` 只有单个值，但 `Sentiment` 将应用到 `pages` 数组中的每个元素。 `Keyphrases` 是一个数组，也会应用到 `pages` 数组中的每个元素。
 
 设置 `api-key` 和 `Content-type` 标头并确认请求正文类似于后面的源代码后，请在 Postman 中选择“发送”。 Postman 随即向 `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}` 发送一个 PUT 请求。 Azure 认知搜索将创建并运行索引器。 
 
@@ -342,6 +346,14 @@ ms.locfileid: "111557234"
 ## <a name="run-the-indexer"></a>运行索引器 
 
 在 Azure 门户中，转到 Azure 认知搜索服务的“概览”页。 依次选择“索引器”选项卡、“hotels-reviews-ixr”。 如果索引器尚未运行，请选择“运行”。 索引任务可能会引发一些与语言识别相关的警告。 数据中的某些评论是以认知技能尚不支持的语言编写的。 
+
+## <a name="clean-up"></a>清理
+
+使用自己的订阅时，最好在项目结束时确定是否仍然需要所创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
+
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接 ，在门户中查找和管理资源。
+
+如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。
 
 ## <a name="next-steps"></a>后续步骤
 

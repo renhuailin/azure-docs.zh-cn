@@ -4,14 +4,14 @@ description: 介绍如何使用 GitHub Actions 部署 Bicep 文件。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 08/23/2021
 ms.custom: github-actions-azure
-ms.openlocfilehash: 808c196ba5ae58e37889ef4b23da64be0eea4d81
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: 005ad729eed380b6684ef06ddca6341dce8b16da
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114371449"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695215"
 ---
 # <a name="deploy-bicep-files-by-using-github-actions"></a>使用 GitHub Actions 部署 Bicep 文件
 
@@ -87,7 +87,7 @@ ms.locfileid: "114371449"
 将 Bicep 文件添加到 GitHub 存储库。 以下 Bicep 文件创建存储帐户：
 
 ```url
-https://raw.githubusercontent.com/mumian/azure-docs-json-samples/master/get-started-with-templates/add-variable/azuredeploy.bicep
+https://raw.githubusercontent.com/Azure/azure-docs-bicep-samples/main/get-started-with-bicep-files/add-variable/azuredeploy.bicep
 ```
 
 Bicep 文件采用一个名为 storagePrefix 的参数，其中包含 3 到 11 个字符。
@@ -160,4 +160,4 @@ Bicep 文件采用一个名为 storagePrefix 的参数，其中包含 3 到 11 �
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Learn 模块：使用 GitHub Actions 自动部署 ARM 模板](/learn/modules/deploy-templates-command-line-github-actions/)
+> [学习模块：使用 GitHub Actions 构建第一个 Bicep 部署工作流](/learn/modules/build-first-bicep-deployment-pipeline-using-github-actions/)

@@ -1,23 +1,43 @@
 ---
-title: Tutorial:如何部署 Azure IoT Central 的“视频分析 - 对象和运动检测”应用程序模板
-description: 教程 - 本指南汇总了使用“视频分析 - 对象和运动检测”应用程序模板部署 Azure IoT Central 应用程序的步骤。
+title: 教程 - Azure IoT 视频分析 - 对象和移动检测 | Microsoft Docs
+description: 本教程介绍如何部署和使用 IoT Central 的视频分析 - 对象和移动检测应用程序模板。
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
-ms.date: 07/31/2020
-ms.openlocfilehash: c578da7e83a39f84e72b550038bd87dde3c61d28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/02/2021
+ms.openlocfilehash: 026c1794f678c5d194b0e5174986f9f962508647
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727458"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473741"
 ---
-# <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>Tutorial:如何使用“视频分析 - 对象和运动检测”应用程序模板部署 IoT Central 应用程序
+# <a name="tutorial-deploy-and-walk-through-the-video-analytics---object-and-motion-detection-application-template"></a>教程：部署并演练视频分析 - 对象和移动检测应用程序模板
 
-若要简要了解关键的“视频分析 - 对象和运动检测”应用程序组件，请查看[“对象和运动检测视频分析”应用程序体系结构](architecture-video-analytics.md)。
+了解重要视频分析 - 对象和移动检测应用程序的概述 “视频分析 - 对象和移动检测”应用程序模板可让你生成包括实时视频分析功能的 IoT 解决方案。
+
+:::image type="content" source="media/architecture-video-analytics/architecture.png" alt-text="视频分析对象和移动检测组件示意图概览。":::
+
+视频分析解决方案的关键组件包括：
+
+### <a name="live-video-analytics-lva"></a>实时视频分析 (LVA)
+
+LVA 提供了一个平台，可用于构建跨越边缘和云的智能视频应用程序。 该平台可让你构建跨越边缘和云的智能视频应用程序。 此平台提供了捕获、记录和分析实时视频的功能，并且可以将结果（视频和/或视频分析）发布到 Azure 服务。 Azure 服务可以在云或边缘中运行。 该平台可用于通过视频分析增强 IoT 解决方案。
+
+有关详细信息，请参阅 GitHub 上的[实时视频分析](https://github.com/Azure/live-video-analytics)。
+
+### <a name="iot-edge-lva-gateway-module"></a>IoT Edge LVA 网关模块
+
+IoT Edge LVA 网关模块可将相机实例化为新设备，并使用 IoT 设备客户端 SDK 将其直接连接到 IoT Central。
+
+在此参考实现中，设备使用来自边缘的对称密钥连接到解决方案。 有关设备连接的详细信息，请参阅[连接到 Azure IoT Central](../core/concepts-get-connected.md)
+
+### <a name="media-graph"></a>媒体图
+
+媒体图可让你定义从何处捕获媒体、如何处理媒体以及在何处交付结果。 可以通过按所需方式连接组件或节点来配置媒体图。 有关详细信息，请参阅 GitHub 上的[媒体图](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph)。
 
 下面的视频演示了如何使用“视频分析 - 对象和运动检测”应用程序模板来部署 IoT Central 解决方案：
 
@@ -32,7 +52,8 @@ ms.locfileid: "101727458"
 
 ## <a name="prerequisites"></a>先决条件
 
-建议使用 Azure 订阅。 或者，可使用 7 天免费试用版。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。
+* 无需满足特定的先决条件，就可以部署此应用。
+* 你可以使用免费定价计划或使用 Azure 订阅。
 
 ## <a name="deploy-the-application"></a>部署应用程序
 

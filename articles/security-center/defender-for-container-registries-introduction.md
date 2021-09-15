@@ -3,16 +3,16 @@ title: 适用于容器注册表的 Azure Defender - 优点和功能
 description: 了解容器注册表的 Azure Defender 的优点和功能。
 author: memildin
 ms.author: memildin
-ms.date: 07/05/2021
+ms.date: 08/16/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d448d0b0a67987ced1caec04557773c2f8ab33d7
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 60f5ffd766c5731500bd4120556cb0fc547ff2a0
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113651810"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252840"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 简介
 
@@ -20,7 +20,17 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 若要保护订阅中所有基于 Azure 资源管理器的注册表项，请在订阅级别启用适用于容器注册表的 Azure Defender。 然后，Azure Defender 将扫描推送到注册表、导入注册表或在过去 30 天内拉取的所有映像。 将按扫描的每个映像收费，每个映像收费一次。
 
-[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
+## <a name="availability"></a>可用性
+
+|方面|详细信息|
+|----|:----|
+|发布状态：|正式发布 (GA)|
+|定价：|适用于容器注册表的 Azure Defender 按[定价页](security-center-pricing.md)中的定价计费|
+|支持的注册表和映像：|可通过 shell 从公共 internet 访问的 ACR 注册表中的 Linux 映像<br>[受 Azure 专用链接保护的 ACR 注册表](../container-registry/container-registry-private-link.md)|
+|不支持的注册表和映像：|Windows 映像<br>“专用”注册表<br>超级简单的映像，例如 [Docker 暂存](https://hub.docker.com/_/scratch/)映像或仅包含应用程序及其运行时依赖项而无包管理器、shell 或 OS 的“无分发版”映像<br>包含[开放容器计划 (OCI) 映像格式规范](https://github.com/opencontainers/image-spec/blob/master/spec.md)的映像|
+|所需角色和权限：|安全读取者和 [Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png" border="false"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png" border="false"::: US Gov 和 China Gov - 当前仅支持“推送扫描”功能。 参阅[何时扫描映像？](#when-are-images-scanned)了解详细信息|
+|||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 有哪些优点？
 

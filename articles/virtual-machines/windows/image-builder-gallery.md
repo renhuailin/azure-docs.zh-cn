@@ -10,14 +10,16 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 03ae984a5950a026fc9bc5c30ee1951e1c17b909
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 954750e0e20b56a09cd416f2ef2503877cc30588
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734578"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692440"
 ---
 # <a name="create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>创建 Windows 映像并将其分发到共享映像库 
+
+**适用于：** :heavy_check_mark: Windows VM 
 
 本文介绍如何使用 Azure 映像生成器和 Azure PowerShell，来在[共享映像库](../shared-image-galleries.md)中创建映像版本，然后全局分发此映像。 也可以使用 [Azure CLI](../linux/image-builder-gallery.md) 来实现此目的。
 

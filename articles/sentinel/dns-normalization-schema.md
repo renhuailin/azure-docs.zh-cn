@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/15/2021
 ms.author: bagol
-ms.openlocfilehash: d1196f634143b2526240fe36775d7c0b272a7e3a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 38f90522a465f6934c88249be3eae2b505c99303
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726069"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515233"
 ---
 # <a name="azure-sentinel-dns-normalization-schema-reference-public-preview"></a>Azure Sentinel DNS 规范化架构参考（公共预览版）
 
@@ -29,9 +29,10 @@ DNS 信息模型用于描述 DNS 服务器或 DNS 安全系统报告的事件，
 有关详细信息，请参阅[规范化和 Azure Sentinel 信息模型 (ASIM)](normalization.md)。
 
 > [!IMPORTANT]
-> DNS 规范化架构目前处于公共预览阶段。
-> 此功能不附带服务级别协议，不建议将其用于生产工作负载。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> DNS 规范化架构目前为预览版。 此功能不附带服务级别协议，不建议将其用于生产工作负荷。
+>
+> [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+>
 
 ## <a name="guidelines-for-collecting-dns-events"></a>DNS 事件收集准则
 
@@ -57,7 +58,7 @@ imDNS | where SrcIpAddr != "127.0.0.1" and EventSubType == "response"
 
 实现 DNS 信息模型的 KQL 函数具有以下名称：
 
-| 名称 | 说明 | 用法说明 |
+| 名称 | 描述 | 用法说明 |
 | --- | --- | --- |
 | **imDNS** | 一种聚合分析程序，它使用 union 包含来自所有 DNS 源的规范化事件。 |- 如果你想在与源无关的分析中添加或删除源，请更新此分析程序。 <br><br>- 在与源无关的查询中使用此函数。|
 | **imDNS\<vendor\>\<product\>** | 特定于源的分析程序为特定源实现规范化，例如 imDNSWindowsOMS。 |- 当没有内置规范化分析程序时，为源添加特定于源的分析程序。 更新聚合分析程序，以包含对新分析程序的引用。 <br><br>- 更新特定于源的分析程序，以解决分析和规范化问题。<br><br>- 使用特定于源的分析程序进行特定于源的分析。|
@@ -67,23 +68,24 @@ imDNS | where SrcIpAddr != "127.0.0.1" and EventSubType == "response"
 
 ## <a name="normalized-content"></a>规范化内容
 
+对 DNS ASIM 架构的支持还包括对以下内置分析规则和规范化身份验证分析程序的支持。 虽然下面提供了 Azure Sentinel GitHub 存储库的链接作为参考，但也可在 [Azure Sentinel Analytics 规则库](detect-threats-built-in.md)中找到这些规则。 请使用链接的 GitHub 页复制所列规则的任何相关搜寻查询。
+
 以下内置分析规则现在适用于规范化的 DNS 分析程序：
-- 已添加： 
-  - NXDOMAIN DNS 查询过多（规范化 DNS）
-  - 与挖掘池相关的 DNS 事件（规范化 DNS）
-  - 与 ToR 代理相关的 DNS 事件（规范化 DNS）
-- 已更新为包含规范化 DNS： 
-  - 已知的 Barium 域
-  - 已知的 Barium IP 地址  
-  - 2021 年 3 月 IoC 匹配中披露的 Exchange Server 漏洞
-  - 已知 GALLIUM 域和哈希
-  - 已知 IRIDIUM IP
-  - NOBELIUM - 域和 IP IOC - 2021 年 3 月
-  - 已知 Phosphorus 组域/IP
-  - 已知的 STRONTIUM 组域 - 2019 年 7 月
-  - Solorigate 网络信标
-  - 包含在 DCU 撤销中的 THALLIUM 域
-  - 已知的 ZINC Comebacker 和 Klackring 恶意软件哈希
+ - [NXDOMAIN DNS 查询过多（规范化 DNS）](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDns_ExcessiveNXDOMAINDNSQueries.yaml)
+ - [与挖掘池相关的 DNS 事件（规范化 DNS）](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDNS_Miners.yaml)
+ - [与 ToR 代理相关的 DNS 事件（规范化 DNS）](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDNS_TorProxies.yaml)
+ - [已知的 Barium 域](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/BariumDomainIOC112020.yaml)
+ - [已知的 Barium IP 地址](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/BariumIPIOC112020.yaml) 
+ - [2021 年 3 月 IoC 匹配中披露的 Exchange Server 漏洞](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ExchangeServerVulnerabilitiesMarch2021IoCs.yaml)
+ - [已知 GALLIUM 域和哈希](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/GalliumIOCs.yaml)
+ - [已知 IRIDIUM IP](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/IridiumIOCs.yaml)
+ - [NOBELIUM - 域和 IP IOC - 2021 年 3 月](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_DomainIOCsMarch2021.yaml)
+ - [已知 Phosphorus 组域/IP](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/PHOSPHORUSMarch2019IOCs.yaml)
+ - [已知 STRONTIUM 组域 - 2019 年 7 月](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/STRONTIUMJuly2019IOCs.yaml)
+ - [Solorigate 网络信标](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/Solorigate-Network-Beacon.yaml)
+ - [包含在 DCU 撤销中的 THALLIUM 域](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ThalliumIOCs.yaml)
+ - [已知 ZINC Comebacker 和 Klackring 恶意软件哈希](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
+
 
 
 ## <a name="schema-details"></a>架构详细信息
@@ -99,7 +101,7 @@ Log Analytics 会为每条记录生成以下字段，你可以在[创建自定�
 | **字段** | **类型** | **说明** |
 | --- | --- | --- |
 | <a name=timegenerated></a>**TimeGenerated** | 日期/时间 | 报告设备生成事件的时间。 |
-| **\_ResourceId** | GUID | 报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。 |
+| \_ResourceId | guid | 报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。 |
 | | | |
 
 > [!NOTE]
@@ -110,10 +112,10 @@ Log Analytics 会为每条记录生成以下字段，你可以在[创建自定�
 
 事件字段通用于所有架构，描述活动本身和报告设备。
 
-| 字段 | **类** | 类型 | **示例** | **讨论 (Discussion)** |
+| **字段** | **类** | 类型 | **示例** | **讨论 (Discussion)** |
 | --- | --- | --- | --- | --- |
 | **EventMessage** | 可选 | 字符串 | | 一般消息或说明，包含在记录中或者根据记录生成。 |
-| **EventCount** | 必需 | 整数 | `1` | 记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，应将其设置为 1。 |
+| EventCount | 必需 | Integer | `1` | 记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，应将其设置为 1。 |
 | **EventStartTime** | 必需 | 日期/时间 | | 如果源支持聚合且记录表示多个事件，则使用此字段指定生成第一个事件的时间。 <br><br>在其他情况下，它是 [TimeGenerated](#timegenerated) 字段的别名。 |
 | **EventEndTime** | | Alias || [TimeGenerated](#timegenerated) 字段的别名。 |
 | **EventType** | 必需 | Enumerated | `lookup` | 指示记录报告的操作。 <br><Br> 对于 DNS 记录，此值将为 [DNS 操作代码](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)。 |
@@ -121,14 +123,14 @@ Log Analytics 会为每条记录生成以下字段，你可以在[创建自定�
 | **EventResult** | 必需 | Enumerated | `Success` | 以下值之一：Success、Partial、Failure、NA（不适用）   。<br> <br>在源记录中，该值可能使用不同的字词提供，这些字词应规范化为上述值。 或者，源记录可能只提供 [EventResultDetails](#eventresultdetails) 字段，应对该字段进行分析以得出 EventResult 值。<br> <br>如果此记录表示请求而不是响应，则设置为 NA。 |
 | <a name=eventresultdetails></a>**EventResultDetails** | 必需 | Alias | `NXDOMAIN` | EventResult 字段中报告的结果的原因或详细信息。 它是 [ResponseCodeName](#responsecodename) 字段的别名。|
 | **EventOriginalUid** | 可选 | 字符串 | | 原始记录的唯一 ID（如果已由源提供）。 |
-| **EventOriginalType**   | 可选    | 字符串  | `lookup` |   原始事件类型或 ID（如果已由源提供）。 |
+| EventOriginalType   | 可选    | 字符串  | `lookup` |   原始事件类型或 ID（如果已由源提供）。 |
 | <a name ="eventproduct"></a>**EventProduct** | 必需 | 字符串 | `DNS Server` | 生成事件的产品。 该字段在源记录中可能不可用，在这种情况下，它应由分析程序设置。 |
 | **EventProductVersion** | 可选 | 字符串 | `12.1` | 生成事件的产品的版本。 该字段在源记录中可能不可用，在这种情况下，它应由分析程序设置。 |
 | **EventVendor** | 必需 | 字符串 | `Microsoft` | 生成事件的产品的供应商。 该字段在源记录中可能不可用，在这种情况下，它应由分析程序设置。 |
 | **EventSchemaVersion** | 必需 | 字符串 | `0.1.1` | 此处所述的架构版本为 0.1.1。 |
 | **EventReportUrl** | 可选 | 字符串 | | 在资源的事件中提供的 URL，提供有关该事件的更多信息。 |
 | <a name="dvc"></a>**Dvc** | 必需       | 字符串     |    `ContosoDc.Contoso.Azure` |           发生该事件的设备的唯一标识符。 <br><br>此字段可能又称为 [DvcId](#dvcid)、[DvcHostname](#dvchostname) 或 [DvcIpAddr](#dvcipaddr) 字段。 对于没有明确的设备的云源，请使用与 [EventProduct](#eventproduct) 字段相同的值。         |
-| <a name ="dvcipaddr"></a>**DvcIpAddr**           | 建议 | IP 地址 |  `45.21.42.12` |       发生进程事件的设备的 IP 地址。  |
+| <a name ="dvcipaddr"></a>DvcIpAddr           | 建议 | IP 地址 |  `45.21.42.12` |       发生进程事件的设备的 IP 地址。  |
 | <a name ="dvchostname"></a>**DvcHostname**         | 建议 | 主机名   | `ContosoDc.Contoso.Azure` |              发生进程事件的设备的主机名。                |
 | <a name ="dvcid"></a>**DvcId**               | 可选    | 字符串     || 发生进程事件的设备的唯一 ID。 <br><br>示例： `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
 | <a name=additionalfields></a>**AdditionalFields** | 可选 | 动态 | | 如果源提供了值得保留的附加信息，请使用原始字段名称保留这些信息，或者创建 AdditionalFields 动态字段，并在其中以键/值对的形式添加这些附加信息。 |
@@ -138,14 +140,14 @@ Log Analytics 会为每条记录生成以下字段，你可以在[创建自定�
 
 以下字段特定于 DNS 事件。 也就是说，它们中的许多在其他架构中确实有相似之处，因此遵循相同的命名约定。
 
-| 字段 | **类** | 类型 | **示例** | **备注** |
+| **字段** | **类** | 类型 | **示例** | **说明** |
 | --- | --- | --- | --- | --- |
 | **SrcIpAddr** | 必需 | IP 地址 |  `192.168.12.1 `| 发送 DNS 请求的客户端的 IP 地址。 对于递归 DNS 请求，此值通常为报告设备，并且在大多数情况下设置为 127.0.0.1。 |
 | **SrcPortNumber** | 可选 | 整数 |  `54312` | DNS 查询的源端口。 |
 | **DstIpAddr** | 可选 | IP 地址 |  `127.0.0.1` | 接收 DNS 请求的服务器的 IP 地址。 对于常规 DNS 请求，此值通常为报告设备，并且在大多数情况下设置为 127.0.0.1。 |
 | **DstPortNumber** | 可选 | 整数 |  `53` | 目标端口号 |
 | **IpAddr** | | Alias | | SrcIpAddr 的别名 |
-| <a name=query></a>**DnsQuery** | 必需 | FQDN | `www.malicious.com` | 需要解析的域。 <br><br>请注意，有些源以不同的格式发送查询。 最值得注意的是，在 DNS 协议本身中，查询在末尾包含一个点。 应删除这个点。<br><br>虽然 DNS 协议允许单个请求中存在多个查询，但这种情况很少见（即便有）。 如果请求有多个查询，则将第一个查询存储在此字段中，然后根据需要将其余查询保留在 [AdditionalFields](#additionalfields) 字段中。 |
+| <a name=query></a>**DnsQuery** | 必需 | FQDN | `www.malicious.com` | 需要解析的域。 <br><br>注意：某些源以不同的格式发送此查询。 例如，在 DNS 协议本身中，查询在末尾包含一个点 (.)，必须将其删除。<br><br>虽然 DNS 协议允许单个请求中存在多个查询，但这种情况很少见（即便有）。 如果请求有多个查询，则将第一个查询存储在此字段中，然后根据需要将其余查询保留在 [AdditionalFields](#additionalfields) 字段中。 |
 | **Domain** | | Alias || [Query](#query) 的别名。 |
 | **DnsQueryType** | 可选 | 整数 | `28` | 此字段可能包含 [DNS 资源记录类型代码](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)。 |
 | **DnsQueryTypeName** | 必需 | Enumerated | `AAAA` | 此字段可能包含 [DNS 资源记录类型](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)名称。 <br><br>注意：IANA 未定义值的大小写，因此，分析功能必须根据需要规范化大小写。 如果源仅提供数值查询类型代码，而不提供查询类型名称，则分析程序必须包含要使用此值来扩充的查找表。 |
@@ -164,9 +166,10 @@ Log Analytics 会为每条记录生成以下字段，你可以在[创建自定�
 | **DvcAction** | 可选 | 字符串 | `"Blocked"` | 如果 DNS 事件源还提供 DNS 安全性，它可能会对请求执行操作，例如阻止它。 |
 | | | | | |
 
-### <a name="additional-aliases-deprecated"></a>其他别名（已弃用）
+### <a name="deprecated-aliases"></a>弃用的别名
 
-以下字段是为了向后兼容而保留的别名：
+以下字段是目前已弃用但出于后向兼容性而保留的别名：
+
 - Query（DnsQuery 的别名）
 - QueryType（DnsQueryType 的别名）
 - QueryTypeName（DnsQueryTypeName 的别名）
@@ -179,7 +182,15 @@ Log Analytics 会为每条记录生成以下字段，你可以在[创建自定�
 
 ### <a name="additional-entities"></a>其他实体
 
-事件围绕用户、主机、进程或文件等实体进行演变。 每个实体可能需要多个字段来描述。 例如，主机可能具有名称和 IP 地址。 此外，单个记录可能包括相同类型的多个实体，例如源主机和目标主机。 上面介绍的 DNS 架构包括描述实体的字段。 如果源包含描述这些实体的其他信息，请根据以下实体添加更多字段，以捕获此信息。 有关实体的详细信息，请参阅 [Azure Sentinel 中的规范化](normalization.md)。
+事件围绕实体（例如用户、主机、进程或文件）进行演变，每个实体可能需要通过多个字段进行描述。 例如：
+
+- 主机可能同时具有名称和 IP 地址
+- 单个记录可能包括相同类型的多个实体，例如源主机和目标主机
+
+本文记录的 DNS 架构包括描述实体的字段。 如果源包含描述实体的其他信息，请根据下表中列出的实体添加更多字段，以捕获该信息。
+
+有关详细信息，请参阅 [Azure Sentinel 中的规范化](normalization.md)。
+
 
 | **实体** | **Fields** | 类型 | **必填字段** | **备注** |
 | --- | --- | --- | --- | --- |

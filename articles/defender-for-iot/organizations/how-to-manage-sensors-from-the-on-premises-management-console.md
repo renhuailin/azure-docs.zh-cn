@@ -3,12 +3,12 @@ title: 通过本地管理控制台管理传感器
 description: 了解如何通过管理控制台管理传感器，包括更新传感器版本，将系统设置推送到传感器，以及启用和禁用传感器上的引擎。
 ms.date: 07/08/2021
 ms.topic: how-to
-ms.openlocfilehash: 1597c5830ff497bf4ee1d10a59f1ee22e16f056f
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: 46571552295bcaf71a03bd20cdf9f4f71f0ed308
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113515249"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444290"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>通过管理控制台管理传感器
 
@@ -62,11 +62,17 @@ ms.locfileid: "113515249"
 
 1. 选择“保存”。
 
-## <a name="update-versions"></a>更新版本
+## <a name="update-sensor-versions"></a>更新传感器版本
 
 可以在本地管理控制台中同时更新多个传感器。
 
+### <a name="update-sequence"></a>更新序列
+
+升级本地管理控制台和托管传感器时，请先更新管理控制台，然后再更新传感器。 如果不先更新本地管理控制台，则传感器更新过程将不会成功。
+
 若要更新多个传感器，请执行以下操作：
+
+1. 验证是否已将本地管理控制台更新到要更新传感器的版本。 有关本地管理控制台更新的详细信息，请参阅[更新软件版本](how-to-manage-the-on-premises-management-console.md#update-the-software-version)。
 
 1. 转到 [Azure 门户](https://portal.azure.com/)。
 

@@ -1,21 +1,21 @@
 ---
-title: 在 Azure 门户中创建技能集
+title: 快速入门：在 Azure 门户中创建技能组
 titleSuffix: Azure Cognitive Search
-description: 此门户快速入门介绍如何使用“导入数据”向导在 Azure 认知搜索中将认知技能添加到索引管道。 这些技能包括光学字符识别 (OCR) 和自然语言处理。
+description: 在此门户快速入门中，会使用“导入数据”向导在 Azure 认知搜索中将认知技能添加到索引管道。 这些技能包括光学字符识别 (OCR) 和自然语言处理。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/21/2021
-ms.openlocfilehash: 6a0ce57af076644072545356c0b225c4d639b9d5
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 08/17/2021
+ms.openlocfilehash: d29f434e1ac8b5fa8b96dcf4ad4f1125c20eb4db
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559207"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451756"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索认知技能集
+# <a name="quickstart-create-an-azure-cognitive-search-skillset-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索技能组
 
 本快速入门演示了门户中的技能组合支持，介绍如何使用光学字符识别（OCR）和实体识别从图像和应用程序文件创建可搜索的文本内容。
 
@@ -34,7 +34,7 @@ ms.locfileid: "111559207"
 + 具有 [Blob 存储](../storage/blobs/index.yml)的 Azure 存储帐户。
 
 > [!NOTE]
-> 此快速入门还将 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)用于 AI。 由于工作负荷很小，因此，认知服务在幕后会抽调一部分算力来免费处理事务（最多 20 个）。 这意味着，无需创建其他认知服务资源即可完成此练习。
+> 此快速入门还将[认知服务](https://azure.microsoft.com/services/cognitive-services/)用于 AI。 由于工作负荷很小，因此，认知服务在幕后会抽调一部分算力来免费处理事务（最多 20 个）。 这意味着，无需创建其他认知服务资源即可完成此练习。
 
 ## <a name="set-up-your-data"></a>设置数据
 
@@ -62,7 +62,7 @@ ms.locfileid: "111559207"
 
 1. [查找搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)，并在“概述”页中，单击命令栏上的“导入数据”，通过四个步骤设置认知扩充。
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="导入数据命令" border="false":::
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd.png" alt-text="“导入数据”命令的屏幕截图" border="true":::
 
 ### <a name="step-1---create-a-data-source"></a>步骤 1 - 创建数据源
 
@@ -108,9 +108,9 @@ ms.locfileid: "111559207"
 
 请注意 `content` 字段旁边的 **Retrievable** 属性带有删除线和问号。 对于包含大量的文本的 Blob 文档，`content` 字段包含文件主体，因此可能包含数千行。 此类字段在搜索结果中不实用，应在此演示中排除它。 
 
-但是，如果需要将文件内容传递到客户端代码，请确保“可检索”保持选定状态。 否则，如果提取的元素（例如，`people`、`organizations`、`locations` 等）可以满足需要，请考虑在 `content` 中清除此属性。
+但是，如果需要将文件内容传递到客户端代码，请确保“可检索”保持选定状态，以便允许搜索引擎返回该字段。
 
-将某个字段标记为 **Retrievable** 并不意味着该字段一定会出现在搜索结果中。 可以使用 **$select** 查询参数指定要包含的字段，来精确控制搜索结果的构成。 对于包含大量文本的字段（例如 `content`），可以使用 **$select** 参数向应用程序的用户提供可管理的搜索结果，同时确保客户端代码可以通过 **Retrievable** 属性访问全部所需信息。
+将某个字段标记为 **Retrievable** 并不意味着该字段一定会出现在搜索结果中。 可以使用 **$select** 查询参数指定要包含的字段，来精确控制搜索结果的构成。 对于包含大量文本的字段（例如 `content`），可以使用 $select 参数针对应用程序的用户整理可管理的搜索结果，同时确保客户端代码可以通过 Retrievable 属性访问全部所需信息。
   
 继续转到下一页。
 

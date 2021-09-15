@@ -3,12 +3,12 @@ title: 管理本地管理控制台
 description: 了解本地管理控制台选项，如备份和还原、定义主机名和设置传感器的代理。
 ms.date: 1/12/2021
 ms.topic: article
-ms.openlocfilehash: b1853b8c22e576bade68823ae206a48c443eb231
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 369bd751d2b21fc9cdf824b2bd56f20b47f2819d
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015641"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444561"
 ---
 # <a name="manage-the-on-premises-management-console"></a>管理本地管理控制台
 
@@ -396,6 +396,8 @@ VLAN 名称在传感器和管理控制台之间未同步。 在组件上定义�
 ## <a name="update-the-software-version"></a>更新软件版本
 
 以下过程介绍如何更新本地管理控制台软件版本。 更新过程大约需要 30 分钟。
+
+如果使用本地管理控制台和托管传感器，请先更新管理控制台。
 
 1. 转到 [Azure 门户](https://portal.azure.com/)。
 

@@ -4,13 +4,13 @@ description: 介绍如何查看支持请求、发送消息、更改请求严重�
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: bc9edecd918668e76c36308a660c47d3a8fd9e8b
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.date: 08/24/2021
+ms.openlocfilehash: 6f1daf2c504be53654c61c5249065cc929ae8066
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110496504"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824126"
 ---
 # <a name="manage-an-azure-support-request"></a>管理 Azure 支持请求
 
@@ -56,7 +56,7 @@ ms.locfileid: "110496504"
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>与 Azure 支持共享诊断信息
 
-创建支持请求时，默认情况下会选择“共享诊断信息”选项。 使用此选项，Azure 支持人员可从 Azure 资源中收集[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)，这些信息可能有助于解决你的问题。
+创建支持请求时，可以在“共享诊断信息”部分中选择“是”或“否”。   此选项确定了 Azure 支持人员是否可从 Azure 资源中收集[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)，这些信息可能有助于解决你的问题。
 
 若要在创建请求后更改“共享诊断信息”选择：
 

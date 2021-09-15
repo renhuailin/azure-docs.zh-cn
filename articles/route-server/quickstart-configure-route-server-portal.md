@@ -5,25 +5,20 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 03/03/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: 8e7572f5f39655cd6fae8a6528cacd2e074a002b
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 36be075345dcacdf8246f46462a2665718f27e7e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950399"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424791"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建并配置路由服务器
 
 本文可帮助你使用 Azure 门户将 Azure 路由服务器配置为与虚拟网络中的网络虚拟设备 (NVA) 对等互连。 Azure 路由服务器将会从 NVA 获知路由，并将这些路由配置到虚拟网络中的虚拟机上。 Azure 路由服务器还会将虚拟网络路由播发到 NVA。 有关详细信息，请阅读 [Azure 路由服务器](overview.md)。
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="使用 Azure 门户的路由服务器部署环境示意图。" border="false":::
-
-> [!IMPORTANT]
-> Azure 路由服务器（预览版）目前为公共预览版状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,6 +51,7 @@ ms.locfileid: "107950399"
     | 区域 | 选择将在其中创建路由服务器的区域。 选择与之前创建的虚拟网络相同的区域，以在下拉列表中查看该虚拟网络。 |
     | 虚拟网络 | 选择将在其中创建路由服务器的虚拟网络。 可以创建新的虚拟网络，也可以使用现有的虚拟网络。 如果使用的是现有的虚拟网络，请确保现有虚拟网络具有足够的空间以至少容纳一个 /27 子网，以满足路由服务器子网的要求。 如果从下拉列表中看不到虚拟网络，请确保已选择正确的资源组或区域。 |
     | 子网 | 创建或选择虚拟网络后，将显示“子网”字段。 此子网专用于路由服务器。 选择“管理子网配置”并创建 Azure 路由服务器子网。 选择“+ 子网”并按照以下指南创建子网：</br><br>- 子网必须命名为 RouteServerSubnet。</br><br>- 子网必须为 /27 或更大。</br> |
+    | 公共 IP 地址 | 创建新的或选择现有的标准公共 IP 资源以分配给路由服务器。 若要确保与管理路由服务器配置的后端服务的连接，需要公共 IP 地址。 |
 
 1. 选择“查看 + 创建”，检查摘要，然后选择“创建” 。 
 

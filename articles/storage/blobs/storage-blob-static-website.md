@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 3b64b77d4e9061e122c627154c4623fcebfce631
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 53153c7ea154b77ee4d0d348818c891ce22bc5f8
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178951"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470951"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
@@ -46,24 +46,18 @@ ms.locfileid: "122178951"
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code 扩展](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
+> * [Visual Studio Code 扩展](- https://channel9.msdn.com/Shows/Docs-Azure/Deploy-static-website-to-Azure-from-Visual-Studio-Code/player)
 
 ## <a name="viewing-content"></a>查看内容
 
 用户可以在浏览器中使用网站的公共 URL 来查看站点内容。 可以使用 Azure 门户、Azure CLI 或 PowerShell 查找 URL。 请参阅[查找网站 URL](storage-blob-static-website-how-to.md#portal-find-url)。
 
+当用户打开站点并且未指定特定文件（例如 `https://contosoblobaccount.z22.web.core.windows.net`）时，将出现在启用静态网站托管时指定的索引文档。
+
 如果服务器返回 404 错误，并且你在启用网站时未指定错误文档，则会向用户返回默认 404 页面。
 
 > [!NOTE]
 > 静态网站不支持[对 Azure 存储的跨域资源共享 (CORS) 支持](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)。
-
-### <a name="regional-codes"></a>区域代码
-
-站点的 URL 包含区域代码。 例如，URL `https://contosoblobaccount.z22.web.core.windows.net/` 包含区域代码 `z22`。
-
-尽管该代码必须保留在 URL 中，但它仅供内部使用，无需以任何其他方式使用该代码。
-
-当用户打开站点并且未指定特定文件（例如 `https://contosoblobaccount.z22.web.core.windows.net`）时，将出现你在启用静态网站托管时指定的索引文档。
 
 ### <a name="secondary-endpoints"></a>辅助终结点
 
@@ -120,15 +114,26 @@ ms.locfileid: "122178951"
 
 若要在静态网站页面上启用指标，请参阅[在静态网站页面上启用指标](storage-blob-static-website-how-to.md#metrics)。
 
+## <a name="feature-support"></a>功能支持
+
+此表显示了你的帐户如何支持此功能，以及启用某些功能时对支持的影响。 
+
+| 存储帐户类型                | Blob 存储（默认支持）   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| 标准常规用途 v2 | ![是](../media/icons/yes-icon.png) |![是](../media/icons/yes-icon.png)              | ![是](../media/icons/yes-icon.png) | 
+| 高级块 blob          | ![是](../media/icons/yes-icon.png)|![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 和网络文件系统 (NFS) 3.0 协议都需要已启用分层命名空间的存储帐户。
+
 ## <a name="faq"></a>常见问题解答
 
 ##### <a name="does-the-azure-storage-firewall-work-with-a-static-website"></a>Azure 存储防火墙是否适用于静态网站？
 
-存储帐户具有内置的[防火墙功能](../common/storage-network-security.md)，但此防火墙不影响静态网站终结点。 它只能用于保护其他存储终结点，例如 blob、文件、表和队列服务终结点。 
+是的。 存储帐户[网络安全规则](../common/storage-network-security.md)（包括基于 IP 的和 VNET 防火墙）支持静态网站终结点，并且可用于保护网站。
 
 ##### <a name="do-static-websites-support-azure-active-directory-azure-ad"></a>静态网站是否支持 Azure Active Directory (Azure AD)？
 
-是的。 但是，不提供使用社交标识提供者的选项（例如使用 OpenID 的 Google 身份验证或 Facebook）。
+不是。 静态网站仅支持对 $web 容器中文件的匿名公共读取访问。
 
 ##### <a name="how-do-i-use-a-custom-domain-with-a-static-website"></a>如何将自定义域与静态网站配合使用？
 
@@ -144,7 +149,7 @@ ms.locfileid: "122178951"
 
 ##### <a name="why-am-i-getting-an-http-404-error-from-a-static-website"></a>为什么会从静态网站收到 HTTP 404 错误？
 
-如果使用不正确的大小写来引用文件名，则会发生这种情况。 例如，`Index.html` 而非 `index.html`。 静态网站的 URL 中的文件名和扩展名区分大小写，即使通过 HTTP 提供也是如此。 如果尚未预配 Azure CDN 终结点，也会发生这种情况。 预配新的 CDN 后，最长等待 90 分钟，以完成传播。
+如果使用错误的大小写引用文件名，则会发生这种情况。 例如，`Index.html` 而非 `index.html`。 静态网站的 URL 中的文件名和扩展名区分大小写，即使通过 HTTP 提供也是如此。 如果尚未预配 Azure CDN 终结点，也会发生这种情况。 预配新的 CDN 后，最长等待 90 分钟，以完成传播。
 
 ##### <a name="why-isnt-the-root-directory-of-the-website-not-redirecting-to-the-default-index-page"></a>为什么网站的根目录不重定向到默认索引页？
 

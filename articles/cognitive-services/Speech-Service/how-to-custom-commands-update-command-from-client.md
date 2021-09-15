@@ -1,27 +1,27 @@
 ---
-title: 从客户端应用更新命令
+title: 从客户端应用更新命令参数
 titleSuffix: Azure Cognitive Services
 description: 了解如何从客户端应用程序更新命令。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: lajanuar
-ms.openlocfilehash: 1f8607ec7094ecafe69f60e8f8972e04ec813adb
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: c5314e659379fb56aca1eea0f1834985fc303c86
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067521"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541020"
 ---
 # <a name="update-a-command-from-a-client-app"></a>从客户端应用更新命令
 
 在本文中，你将学习如何从客户端应用程序更新正在进行的命令。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 > [!div class = "checklist"]
 > * 之前[创建的自定义命令应用](quickstart-custom-commands-application.md)
 
@@ -53,7 +53,8 @@ ms.locfileid: "122067521"
 
 | 属性 | 说明 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| type | 该活动的类型为 `"event"`，并且该事件的名称需要为 `"RemoteUpdate"`。 |
+| type | 活动的类型为 `"event"`。 |
+| **name** | 事件的名称需为 `"RemoteUpdate"`。 |
 | **value** | 属性 `"value"` 包含更新当前命令所需的属性。 |
 | **updatedCommand** | 属性 `"updatedCommand"` 包含命令的名称。 在该属性中，`"updatedParameters"` 是一个映射，其中包含参数的名称及其更新后的值。 |
 | **cancel** | 如果需要取消正在进行的命令，需要将属性 `"cancel"` 设置为 `true`。 |

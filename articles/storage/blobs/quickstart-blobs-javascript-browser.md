@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: bc02f9c526ec9b0826bbe640efc4b474794f30ae
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: f253be6bbcea46baa6c86f33223504bfba3ab198
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278484"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475973"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -38,9 +38,6 @@ Azure Blob 存储已经过优化，可以存储大量的非结构化数据。 Bl
     * [适用于 Microsoft Edge 的调试器](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
     * [适用于 Chrome 的调试器](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
     * [适用于 Firefox 的调试器](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
-
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="object-model"></a>对象模型
 
@@ -94,7 +91,7 @@ Blob 存储提供了三种类型的资源：
 按照以下步骤获取 Blob 服务 SAS URL：
 
 1. 在 Azure 门户中，选择你的存储帐户。
-2. 导航到“设置”部分，并选择“共享访问签名”。
+2. 导航到“安全性 + 网络”部分，并选择“共享访问签名” 。
 3. 向下滚动，然后单击“生成 SAS 和连接字符串”按钮。
 4. 继续向下滚动，找到“Blob 服务 SAS URL”字段
 5. 单击“Blob 服务 SAS URL”字段最右侧的“复制到剪贴板”按钮。

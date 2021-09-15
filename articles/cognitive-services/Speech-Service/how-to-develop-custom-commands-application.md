@@ -3,19 +3,19 @@ title: 如何：开发自定义命令应用程序 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何开发自定义命令应用程序并对其进行自定义。 这些语音命令应用最适合用于“任务完成”或“指挥控制”方案。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
-ms.author: lajanuar
-ms.openlocfilehash: cb97e41740997e35445cdf6dfb7281e54c3a5c16
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: 7b5f32e50e4bcb256d5580edccaf083dad39b98c
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069020"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542622"
 ---
 # <a name="develop-custom-commands-applications"></a>开发自定义命令应用程序
 
@@ -97,7 +97,7 @@ ms.locfileid: "122069020"
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **名称**       | `ConfirmationResponse`                  | 用于描述规则用途的名称          |
     | **条件** | 无                                     | 用于确定规则何时可以运行的条件    |
-    | **操作**    | **发送语音响应** > **简单编辑器** > **第一个变体** > `Ok, turning the tv on` | 当规则条件求值为 true 时要执行的操作 |
+    | **操作**    | “发送语音回复” >  **“简单编辑器”**  > `Ok, turning the tv on` | 当规则条件求值为 true 时要执行的操作 |
 
    > [!div class="mx-imgBorder"]
    > ![显示要在何处创建语音响应的屏幕截图。](media/custom-commands/create-speech-response-action.png)
@@ -167,9 +167,9 @@ ms.locfileid: "122069020"
 首先编辑现有的 `TurnOn` 命令以打开和关闭多个设备。
 
 1. 既然该命令要处理打开和关闭设备的方案，因此请将其重命名为 *TurnOnOff*。
-   1. 在左侧窗格中，选择“TurnOn”命令。 然后，在窗格顶部的“新建命令”旁边选择省略号 ( **...** ) 按钮。
+   1. 在左侧窗格中，选择“TurnOn”命令。 然后在窗格顶部的“新命令”旁，选择编辑按钮。
 
-   1. 选择“重命名”。 在“重命名命令”窗口中，将名称更改为 *TurnOnOff*。
+   1. 在“重命名命令”窗口中，将名称更改为 *TurnOnOff*。
 
 1. 将一个新参数添加到命令。 该参数表示用户是要打开还是关闭设备。
    1. 在中间窗格的顶部，选择“添加”。 在下拉菜单中，选择“参数”。
@@ -186,7 +186,6 @@ ms.locfileid: "122069020"
        | 配置      | 建议的值     | 说明                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
        | **名称**               | `OnOff`           | 参数的描述性名称                                                                           |
-       | **是全局性的**          | 未选定       | 该复选框指示此参数的某个值是否全局应用于应用程序中的所有命令。|
        | **必需**           | 选定         | 该复选框指示在命令完成之前，此参数的某个值是否是必需的。 |
        | **必需参数的响应**      |**简单编辑器** > `On or Off?`      | 一条提示，请求提供此参数的值（如果未知）。 |
        | 类型               | **字符串**          | 参数类型，例如“数字”、“字符串”、“日期时间”或“地理位置”。   |
@@ -209,7 +208,6 @@ ms.locfileid: "122069020"
     | 设置            | 建议的值       |
     | ------------------ | --------------------- |
     | **名称**               | `SubjectDevice`         |
-    | **是全局性的**          | 未选定             |
     | **必需**           | 选定               |
     | **必需参数的响应**     | **简单编辑器** > `Which device do you want to control?`    | 
     | 类型               | **字符串**                |     
@@ -276,11 +274,11 @@ turn something
 
 修改 `SetTemperature` 命令，使其能够根据用户的指示设置温度。
 
-添加 `Temperature` 参数。 使用以下配置：
+添加 `TemperatureValue` 参数。 使用以下配置：
 
 | 配置      | 建议的值     |
 | ------------------ | ----------------|
-| **名称**               | `Temperature`           |
+| **名称**               | `TemperatureValue`           |
 | **必需**           | 选定         |
 | **必需参数的响应**      | **简单编辑器** > `What temperature would you like?`
 | 类型               | `Number`          |
@@ -289,8 +287,8 @@ turn something
 编辑示例言语以使用以下值。
 
 ```
-set the temperature to {Temperature} degrees
-change the temperature to {Temperature}
+set the temperature to {TemperatureValue} degrees
+change the temperature to {TemperatureValue}
 set the temperature
 change the temperature
 ```
@@ -299,8 +297,8 @@ change the temperature
 
 | 配置      | 建议的值     |
 | ------------------ | ----------------|
-| **条件**         | **必需参数** > **Temperature**           |
-| **操作**           | **发送语音响应** > `Ok, setting temperature to {Temperature} degrees` |
+| **条件**         | “必需参数” > “TemperatureValue”           |
+| **操作**           | **发送语音响应** > `Ok, setting temperature to {TemperatureValue} degrees` |
 
 ### <a name="configure-parameters-for-a-setalarm-command"></a>配置 SetAlarm 命令的参数
 
@@ -462,26 +460,26 @@ alarm for {DateTime}
 
     1. 使用以下配置修改“确认命令”交互规则：
         1. 将名称更改为“确认温度”。
-        1. 添加新条件：“必需参数” > “Temperature”。
-        1. 添加新操作：“类型” > “发送语音响应” > “Are you sure you want to set the temperature as {Temperature} degrees?”
+        1. 条件：已添加所有必需参数。
+        1. 添加新操作：“类型” > “发送语音响应” > “Are you sure you want to set the temperature as {TemperatureValue} degrees?”
         1. 在“预期”部分，保留默认值“预期收到用户确认”。 
 
          > [!div class="mx-imgBorder"]
-         > ![展示如何创建必需参数响应的屏幕截图。](media/custom-speech-commands/add-validation-set-temperature.png)
+         > ![展示如何创建必需参数响应的屏幕截图。](media/custom-speech-commands/add-confirmation-set-temperature.png)
 
 
     1. 修改“确认成功”交互规则，以处理成功确认（用户说“yes”）。
 
           1. 将名称更改为“确认温度成功”。
           1. 保留现有的“确认成功”条件。
-          1. 添加新条件：“类型” > “必需参数” > “Temperature”。
+          1. 添加新条件：“类型” > “必需参数” > “TemperatureValue”。
           1. 将默认的“执行后状态”值保留为“执行完成规则”。 
 
     1. 修改“拒绝确认”交互规则，以处理拒绝确认（用户说“no”）时的情况。
 
           1. 将名称更改为“拒绝确认温度”。
           1. 保留现有的“拒绝确认”条件。
-          1. 添加新条件：“类型” > “必需参数” > “Temperature”。
+          1. 添加新条件：“类型” > “必需参数” > “TemperatureValue”。
           1. 添加新操作：“类型” > “发送语音响应” > “No problem.What temperature then?”。
           1. 将默认的“执行后状态”值更改为“等待用户输入”。 
 
@@ -587,7 +585,6 @@ alarm for {DateTime}
 | 设置            | 建议的值       |
 | ------------------ | --------------------- |
 | **名称**               | `SubjectContext`         |
-| **是全局性的**          | 未选定             |
 | **必需**           | 未选定               |
 | 类型               | **字符串**                |
 | **默认值**      | `all` |

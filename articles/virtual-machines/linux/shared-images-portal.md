@@ -2,7 +2,6 @@
 title: 使用门户创建共享的 Azure Linux VM 映像
 description: 了解如何使用 Azure 门户创建和共享 Linux 虚拟机映像。
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.collection: linux
@@ -10,15 +9,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/21/2021
 ms.author: cynthn
-ms.reviewer: akjosh
-ms.openlocfilehash: 254fb1b4c21f8dd956c271e75ddf29f25c2bce15
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 908d4ae4a18ac75577ea567f6aba37c9ea2e49fe
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204441"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450487"
 ---
 # <a name="create-a-shared-image-gallery-using-the-portal"></a>使用门户创建共享映像库
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 **适用于：** :heavy_check_mark: :heavy_check_mark: 统一规模集 
 
 [共享映像库](../shared-image-galleries.md)大大简化了整个组织中的自定义映像共享。 自定义映像类似于市场映像，不同的是自定义映像的创建者是自己。 自定义映像可用于启动部署任务，例如预加载应用程序、应用程序配置和其他 OS 配置。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "114204441"
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
 
-[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 <br>
 

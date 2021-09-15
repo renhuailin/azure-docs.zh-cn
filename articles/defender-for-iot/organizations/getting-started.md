@@ -3,12 +3,12 @@ title: 快速入门：入门
 description: 在本快速入门中，你将开始了解 Defender for IoT 部署的基本工作流。
 ms.topic: quickstart
 ms.date: 06/06/2021
-ms.openlocfilehash: c0d8406f842e182c6c129ba32f38dd11fdfbd46c
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: bb67cb5788e891861eb0c1f5fe2533d62b4ee520
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011084"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254077"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>快速入门：Defender for IoT 入门
 
@@ -33,7 +33,7 @@ ms.locfileid: "113011084"
 |--|--|--|--|--|
 | 查看详细信息并访问软件、激活文件和威胁情报包  | ✓ | ✓ | ✓ | ✓ |
 | 加入传感器  |  |  ✓ | ✓ | ✓ |
-| 更新定价  |  |  ✓ | ✓ | ✓ |
+| 加入订阅并更新提交的设备  |  |  | ✓ | ✓ |
 | 恢复密码  | ✓  |  ✓ | ✓ | ✓ |
 
 ## <a name="identify-the-solution-infrastructure"></a>识别解决方案基础结构
@@ -46,7 +46,7 @@ ms.locfileid: "113011084"
 
 Azure Defender for IoT 支持物理和虚拟部署。 对于物理部署，你可以购买各种经过认证的设备。 有关详细信息，请参阅[确定所需的设备](how-to-identify-required-appliances.md)。
 
-我们建议你计算要监视的设备的大概数量。 稍后当你向门户注册 Azure 订阅时，系统会要求输入此数量。 每隔 1,000 秒可添加一次数字。 受监视的设备的数量被称作已提交设备数。
+我们建议你计算要监视的设备的大概数量。 稍后当你向门户注册 Azure 订阅时，系统会要求输入此数量。 每隔 1,000 秒可添加一次数字，例如 1000，2000，3000。 受监视的设备的数量被称作已提交设备数。
 
 ## <a name="register-with-azure-defender-for-iot"></a>注册 Azure Defender for IoT
 

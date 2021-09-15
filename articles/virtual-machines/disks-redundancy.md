@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 1875f43203735707a1bf49ac4e2d008abf898828
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: b24f24547e45b8ef580715828839ec1b1e5b4618
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113664461"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692690"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>托管磁盘的冗余选项
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Azure 托管磁盘提供两个存储冗余选项：本地冗余存储和预览版的区域冗余存储 (ZRS)。 ZRS 相比本地冗余存储 (LRS) 可为托管磁盘提供更高的可用性。 但 LRS 磁盘的写入延迟短于 ZRS 磁盘，因为 LRS 磁盘将数据同步写入单个数据中心内的三个副本中。
 

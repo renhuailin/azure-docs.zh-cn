@@ -3,22 +3,24 @@ title: IoT 即插即用简介 | Microsoft Docs
 description: 了解 IoT 即插即用。 IoT 即插即用基于开放式建模语言，使智能 IoT 设备能够声明其功能。 IoT 设备连接到云解决方案时会提供称为设备模型的声明。 然后，云解决方案可以自动了解该设备，并开始与其交互，无需编写任何代码。
 author: rido-min
 ms.author: rmpablos
-ms.date: 03/21/2021
+ms.date: 08/20/2021
 ms.topic: conceptual
 ms.service: iot-develop
 services: iot-develop
 manager: eliotgra
-ms.custom: references_regions
-ms.openlocfilehash: 5419a80f83498e04c4d18a30e288288037a1d582
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.custom:
+- references_regions
+- contperf-fy22q1
+ms.openlocfilehash: ae5c2db75b868732bc5a6790e37111b8b1a493ef
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406395"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542415"
 ---
 # <a name="what-is-iot-plug-and-play"></a>什么是 IoT 即插即用？
 
-通过 IoT 即插即用，解决方案构建者无需进行任何手动配置即可将智能设备集成到解决方案中。 IoT 即插即用的核心是设备模型，设备通过设备模型将其功能告知支持 IoT 即插即用的应用程序。 该模型被构造为一组元素，这些元素定义以下内容：
+借助 IoT 即插即用，解决方案构建者无需进行任何手动配置即可将 IoT 设备集成到解决方案中。 IoT 即插即用的核心是设备模型，设备通过设备模型将其功能告知支持 IoT 即插即用的应用程序。 该模型被构造为一组元素，这些元素定义以下内容：
 
 - _属性_：表示设备或其他实体的只读或可写状态。 例如，设备序列号可以是只读属性，而调温器上的目标温度可以是可写属性。
 - _遥测_：设备发出的数据，包括常规的传感器读数流、偶发性错误或信息消息。
@@ -40,8 +42,8 @@ ms.locfileid: "114406395"
 
 IoT 即插即用适用于两种类型的开发人员：
 
-- 解决方案构建者负责使用 Azure IoT 和其他 Azure 资源开发 IoT 解决方案，并识别要集成的 IoT 设备。
-- 设备构建者创建在已连接到解决方案的设备上运行的代码。
+- 解决方案构建者负责使用 Azure IoT 和其他 Azure 资源开发 IoT 解决方案，并识别要集成的 IoT 设备。 若要了解详细信息，请参阅 [IoT 即插即用服务开发人员指南](concepts-developer-guide-service.md)。
+- 设备构建者创建在已连接到解决方案的设备上运行的代码。 若要了解详细信息，请参阅 [IoT 即插即用设备开发人员指南](concepts-developer-guide-device.md)。
 
 ## <a name="use-iot-plug-and-play-devices"></a>使用 IoT 即插即用设备
 
@@ -53,13 +55,15 @@ IoT 中心 - 一项充当消息中心的托管式云服务，用于在 IoT 应�
 
 如果已将现有传感器附加到 Windows 或 Linux 网关，则可使用 [IoT 即插即用桥接](./concepts-iot-pnp-bridge.md)来连接这些传感器和创建 IoT 即插即用设备，无需编写设备软件/固件（针对[支持的协议](./concepts-iot-pnp-bridge.md#supported-protocols-and-sensors)）。
 
+若要了解详细信息，请参阅 [IoT 即插即用体系结构](concepts-architecture.md)
+
 ## <a name="develop-an-iot-device-application"></a>开发 IoT 设备应用程序
 
 设备构建者可以开发支持 IoT 即插即用的 IoT 硬件产品。 此过程包括三个关键步骤：
 
 1. 定义设备模型。 使用 [DTDL](https://github.com/Azure/opendigitaltwins-dtdl) 创作一组定义设备功能的 JSON 文件。 模型描述完整的实体（例如物理产品），并定义该实体实现的接口集。 接口是唯一标识设备所支持的遥测、属性和命令的共享协定。 可跨不同的模型重复使用接口。
 
-1. 按照遥测、属性和命令遵循 IoT 即插即用约定的方式编写设备软件或固件。 如果要连接已附加到 Windows 或 Linux 网关的现有传感器，[IoT 即插即用桥接](./concepts-iot-pnp-bridge.md)可以简化此步骤。
+1. 按照其遥测、属性和命令遵循的 [IoT 即插即用约定](concepts-convention.md)方式编写设备软件或固件。 如果要连接已附加到 Windows 或 Linux 网关的现有传感器，[IoT 即插即用桥接](./concepts-iot-pnp-bridge.md)可以简化此步骤。
 
 1. 设备将模型 ID 作为 MQTT 连接的一部分进行公告。 Azure IoT SDK 包括用于在连接时提供模型 ID 的新构造。
 

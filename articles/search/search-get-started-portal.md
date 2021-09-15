@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 门户创建搜索索引
+title: 快速入门：在 Azure 门户创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 使用 Azure 门户中的导入数据向导创建、加载和查询首个搜索索引。 这篇快速入门文章使用虚拟酒店数据集作为示例数据。
 manager: nitinme
@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/02/2021
-ms.openlocfilehash: 1be165bfe7cca44e8a928933c3c8fe926ad7d4c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/24/2021
+ms.openlocfilehash: 9bb3bdc7254fb3f9da62936df6429d8cba6b3bd5
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694829"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450048"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 
@@ -47,7 +47,7 @@ ms.locfileid: "101694829"
 
 1. [查找搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)，并在“概述”页中，单击命令栏上的“导入数据”，以创建和填充搜索索引。
 
-   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="导入数据命令":::
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd.png" alt-text="“导入数据”命令的屏幕截图" border="true":::
 
 1. 在向导中，单击“连接到数据” > “示例” > “hotels-sample”。   此数据源是内置的。 如果要创建自己的数据源，则需要指定名称、类型和连接信息。 创建后，它将成为可在其他导入操作中重复使用的“现有数据源”。
 

@@ -7,12 +7,12 @@ ms.date: 07/14/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1acf785021f83605db2f8bfe3188e0e2ac874d4e
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 38eeaa02bf34f27580b29662f75455358c83ccb7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113761873"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732560"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 简介
 
@@ -28,7 +28,7 @@ ms.locfileid: "113761873"
 |----|:----|
 |发布状态：|正式发布版 (GA)|
 |定价：|适用于资源管理器的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中所示的定价计费|
-|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: US Gov<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 中国|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 政府<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 中国世纪互联|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 有哪些优点？
@@ -70,9 +70,11 @@ ms.locfileid: "113761873"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了适用于资源管理器的 Azure Defender。 如需相关材料，请参阅以下文章： 
+本文介绍了适用于资源管理器的 Azure Defender。 
+
+> [!div class="nextstepaction"]
+> [启用 Azure Defender](enable-azure-defender.md)
+
+如需相关材料，请参阅以下文章： 
 
 - 安全警报可能是由安全中心生成的，也可能是由安全中心从其他安全产品接收的。 若要将所有这些警报导出到 Azure Sentinel、任何第三方 SIEM 或任何其他外部工具，请按照[将警报导出到 SIEM](continuous-export.md) 中的说明操作。
-
-- > [!div class="nextstepaction"]
-    > [启用 Azure Defender](enable-azure-defender.md)

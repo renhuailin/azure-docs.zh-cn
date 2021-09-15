@@ -4,13 +4,13 @@ description: 需要协助的客户可在 Azure 门户中查找自助服务解决
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
 ms.custom: support-help-page
-ms.date: 05/25/2021
-ms.openlocfilehash: 4e3f54712830406f04f6c0eec5097d693723db1c
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.date: 08/24/2021
+ms.openlocfilehash: a9a5c7aedb9278a4832f485d4bc8107cc141cc5e
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112458766"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821426"
 ---
 # <a name="create-an-azure-support-request"></a>创建 Azure 支持请求
 
@@ -83,11 +83,11 @@ Azure 对订阅管理（包括计费、配额调整和帐户转移）提供无�
 
 1. 可能的话，请提供问题开始时间及任何重现步骤。 可上传文件，例如日志文件或诊断输出内容。 有关文件上传的详细信息，请参阅[文件上传准则](how-to-manage-azure-support-request.md#file-upload-guidelines)。
 
-1. 在我们获得关于该问题的全部信息后，请选择如何获取支持。 在“详细信息”的“支持方法”部分，选择影响程度 。 最大严重性级别取决于[支持计划](https://azure.microsoft.com/support/plans)。
+1. 在“共享诊断信息”部分中，选择“是”或“否”。   选择“是”将允许 Azure 支持从你的 Azure 资源收集[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)。 如果不想共享此信息，请选择“否”。 在某些情况下，将有其他选项可供选择，例如是否允许访问虚拟机的内存。
 
-    默认情况下，“共享诊断信息”选项处于选中状态。 这允许 Azure 支持从你的 Azure 资源收集[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)。 如果不想共享诊断信息，可以清除此选项。 在某些情况下，还有一个默认情况下没有选择的问题，例如，请求访问虚拟机的内存。
+1. 在“详细信息”的“支持方法”部分，选择影响程度 。 最大严重性级别取决于[支持计划](https://azure.microsoft.com/support/plans)。
 
-1. 提供首选联系方法、适宜联系时间和支持语言。
+1. 提供首选联系方法、空闲时间和首选支持语言。
 
 1. 接下来，完成“联系人信息”部分，让我们知道如何与你联系。
 

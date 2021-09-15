@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: inference server, local development, local debugging, devplatv2
 ms.date: 05/14/2021
-ms.openlocfilehash: 924995fe9330a44b52a40a8e3eb651efdeb24398
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4d8c2dbbfe313d480fce953af0b39ee01cd32230
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751948"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597784"
 ---
 # <a name="azure-machine-learning-inference-http-server-preview"></a>Azure 机器学习推理 HTTP 服务器（预览版）
 
@@ -115,8 +115,8 @@ python -m pip install azureml-inference-server-http
 | ---- | --- | ---- | ----|
 | entry_script | True | 空值 | 评分脚本的相对路径或绝对路径。|
 | model_dir | 错误 | 空值 | 包含用于推理的模型的目录的相对路径或绝对路径。
-| port | 错误 | 5001 | 服务器的服务端口。|
-| worker_count | 错误 | 1 | 将处理并发请求的工作线程数。 |
+| port | False | 5001 | 服务器的服务端口。|
+| worker_count | False | 1 | 将处理并发请求的工作线程数。 |
 | appinsights_instrumentation_key | 错误 | 空值 | 将在其中发布日志的 application insights 的检测密钥。 |
 
 ## <a name="request-flow"></a>请求流
@@ -132,6 +132,15 @@ python -m pip install azureml-inference-server-http
 1. 最后，将请求发送到入口脚本。 然后，入口脚本对已加载的模型进行推理调用并返回响应。
 
 :::image type="content" source="./media/how-to-inference-server-http/inference-server-architecture.png" alt-text="HTTP 服务器进程示意图":::
+
+## <a name="how-to-integrate-with-visual-studio-code"></a>如何与 Visual Studio Code 集成
+
+可通过两种方式使用 Visual Studio Code (VSCode) 和 [Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)通过 [azureml-inference-server-http](https://pypi.org/project/azureml-inference-server-http/) 包进行调试。 
+
+1. 用户在命令行中启动 AzureML 推理服务器，并使用 VSCode + Python 扩展附加到进程。
+1. 用户在 VSCode 中设置 `launch.json`，并在 VSCode 中启动 AzureML 推理服务器。
+
+通过这两种方式，用户可以逐步设置断点和调试。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

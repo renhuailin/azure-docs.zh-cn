@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: lajanuar
 ms.custom: references_regions
-ms.openlocfilehash: f718ba81cf122b747652bf66d840dd8935897019
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 7066a001d27376be6f9b8464beafc0cad2b54437
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253818"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419232"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -215,8 +215,8 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 英语（新加坡） | `en-SG` | 男 | `en-SG-WayneNeural` <sup>新建</sup> | 常规 |
 | 英语（南非） | `en-ZA` | Female | `en-ZA-LeahNeural` <sup>新建</sup> | 常规 |
 | 英语（南非） | `en-ZA` | 男 | `en-ZA-LukeNeural` <sup>新建</sup> | 常规 |
-| 英语（英国） | `en-GB` | 女 | `en-GB-LibbyNeural` | 常规 |
-| 英语（英国） | `en-GB` | 女 | `en-GB-MiaNeural` | 常规 |
+| 英语(英国) | `en-GB` | 女 | `en-GB-LibbyNeural` | 常规 |
+| 英语(英国) | `en-GB` | 女 | `en-GB-MiaNeural` | 常规 |
 | 英语（英国） | `en-GB` | 男 | `en-GB-RyanNeural` | 常规 |
 | 英语（美国） | `en-US` | 女 | `en-US-AriaNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
 | 英语（美国） | `en-US` | 女 | `en-US-JennyNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
@@ -358,7 +358,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 > `en-US-JessaNeural` 语音已更改为 `en-US-AriaNeural`。 如果以前使用了“Jessa”，请转换为“Aria”。
 
 > [!TIP]
-> 可以继续在语音合成请求中使用完整的服务名称映射，如“Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)”。
+> 可以继续在语音合成请求中使用完整的服务名称映射，如“Microsoft Server Speech Text to Speech Voice (en-US, ChristopherNeural)”。
 
 ### <a name="standard-voices"></a>标准语音
 

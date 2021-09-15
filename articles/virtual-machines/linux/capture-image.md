@@ -5,20 +5,22 @@ author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
-ms.date: 10/08/2018
+ms.date: 08/27/2021
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: 23623d6ddd337c42b56d0c3c26aa7c3a720369d4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3645e36c89debc1e9bc032f4df5b7feaa7b6a720
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741795"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449758"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的托管映像
 
-若要创建虚拟机 (VM) 的多个副本以便在 Azure 中用于开发和测试，请捕获 VM 或 OS VHD 的托管映像。 若要大规模创建、存储和共享映像，请参阅[共享映像库](../shared-images-cli.md)。
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: 灵活规模集 
+
+若要创建虚拟机 (VM) 的多个副本以便在 Azure 中用于开发和测试，请捕获 VM 或 OS VHD 的托管映像。 若要大规模创建、存储和共享映像，请参阅[共享映像库](../create-gallery.md)。
 
 一个托管映像最多支持 20 个同时部署。 如果尝试从同一托管映像同时创建超过 20 个 VM，则可能会由于单个 VHD 的存储性能限制而导致预配超时。 若要同时创建超过 20 个 VM，请使用通过 1 个副本为每 20 个并发 VM 部署配置的[共享映像库](../shared-image-galleries.md)映像。
 
@@ -140,4 +142,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要大规模创建、存储和共享映像，请参阅[共享映像库](../shared-images-cli.md)。
+若要大规模创建、存储和共享映像，请参阅[共享映像库](../create-gallery.md)。

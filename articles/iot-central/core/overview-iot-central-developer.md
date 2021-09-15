@@ -3,19 +3,19 @@ title: 用于 Azure IoT Central 的设备开发 | Microsoft Docs
 description: Azure IoT Central 是一种 IoT 应用程序平台，用于简化创建 IoT 解决方案。 本文概述了如何开发设备以连接到 IoT Central 应用程序。 设备使用遥测发送流式处理数据和属性以报告设备状态。 IoT Central 可以在设备上使用可写属性和调用命令来设置设备状态。
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/05/2020
+ms.date: 08/30/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: e7ec54a85c2b5f964327d7d60c9f856e70320225
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f2131ec5a0b939172097494dcd457b9d661614ad
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467855"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473489"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central 设备开发指南
 
@@ -85,7 +85,7 @@ IoT Central 设备模板包括一个模型，用于指定该类型的设备应�
 
 每个模型都具有唯一的设备孪生模型标识符 (DTMI)，如 `dtmi:com:example:Thermostat;1`。 当设备连接到 IoT Central 时，它会发送其实现的模型的 DTMI。 然后 IoT Central 可以将正确的设备模板与设备相关联。
 
-[IoT 即插即用](../../iot-develop/overview-iot-plug-and-play.md)定义设备在实现 DTDL 模型时应遵循的一组约定。
+[IoT 即插即用](../../iot-develop/overview-iot-plug-and-play.md)定义设备在实现 DTDL 模型时应遵循的一组[约定](../../iot-develop/concepts-convention.md)。
 
 [Azure IoT 设备 SDK](#languages-and-sdks) 包括对 IoT 即插即用约定的支持。
 

@@ -10,12 +10,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: 1bb38c45203b0356444d0eb115a8c75e0f1c465d
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 7d080297dd32ad137e11cb692b820f4b9f6b3521
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324345"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428445"
 ---
 # <a name="update-a-deployed-web-service"></a>更新已部署的 Web 服务
 
@@ -37,6 +37,14 @@ ms.locfileid: "122324345"
 > 创建模型的新版本时，必须手动更新要使用的每个服务。
 >
 > 不能使用 SDK 来更新从 Azure 机器学习设计器发布的 Web 服务。
+
+> [!IMPORTANT]
+> Azure Kubernetes 服务对 <=1.16 的版本使用 [Blobfuse FlexVolume 驱动程序](https://github.com/Azure/kubernetes-volume-drivers/blob/master/flexvolume/blobfuse/README.md)，对 >=1.17 的版本使用 [Blob CSI 驱动程序](https://github.com/kubernetes-sigs/blob-csi-driver/blob/master/README.md)。 
+>
+> 因此，请务必在群集升级后重新部署或更新 Web 服务，以便为群集版本部署正确的 blobfuse 方法。
+
+> [!NOTE]
+> 如有操作正在进行，则同一 Web 服务上的任何新操作都将响应 409 冲突错误。 例如，如果创建或更新 Web 服务操作正在进行，那么触发新的删除操作将会引发错误。
 
 **使用 SDK**
 
@@ -86,7 +94,7 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 >
 > 若要更新服务以使用新的入口脚本或环境，请创建[推理配置文件](./reference-azure-machine-learning-cli.md#inference-configuration-schema)并使用 `ic` 参数指定它。
 
-有关详细信息，请参阅 [az ml 服务更新](/cli/azure/ml(v1)/service?view=azure-cli-latest#az_ml_v1__service_update)文档。
+有关详细信息，请参阅 [az ml 服务更新](/cli/azure/ml(v1)/service?view=azure-cli-latest#az_ml_v1__service_update&preserve-view=true)文档。
 
 ## <a name="next-steps"></a>后续步骤
 

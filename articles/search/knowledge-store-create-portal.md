@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 门户中创建知识存储
+title: 快速入门：在 Azure 门户中创建知识存储
 titleSuffix: Azure Cognitive Search
 description: 使用“导入数据”向导创建用于保存扩充内容的知识存储。 连接到知识存储以便从其他应用进行分析，或将扩充内容发送到下游流程。
 author: HeidiSteen
@@ -7,19 +7,19 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/17/2020
-ms.openlocfilehash: 3225013f09abd326c619b67caf77918889a64859
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/10/2021
+ms.openlocfilehash: d7af6f2ad8e3a45041a22a6268efdbfee32377df
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94741799"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768155"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索知识存储
 
-知识存储是 Azure 认知搜索的一项功能，它可以保存内容处理管道的输出，以进行后续分析或下游处理。 
+知识存储是 Azure 认知搜索的一项功能，它可以保留 [AI 扩充管道](cognitive-search-concept-intro.md)的输出供后续分析或进行下游处理。 
 
-管道接受非结构化文本和图像内容，应用认知服务提供技术支持的 AI（例如 OCR 和自然语言处理），并输出之前不存在的新结构和信息。 管道创建的物理项目之一是[知识存储](knowledge-store-concept-intro.md)，可通过工具访问该知识存储以分析和浏览内容。
+管道接受非结构化文本和图像内容，应用认知服务提供技术支持的 AI（例如情绪分析和文本翻译），并输出之前不存在的新结构和信息。 管道创建的物理项目之一是[知识存储](knowledge-store-concept-intro.md)，可通过工具访问该知识存储以分析和浏览 Azure 存储中的内容。
 
 在本快速入门中，你将合并 Azure 云中的服务和数据以创建知识存储。 一切准备就绪后，可在门户中运行“导入数据”向导，以将这些数据提取到一起。 最终结果是可以在门户（[存储资源管理器](knowledge-store-view-storage-explorer.md)）中查看的原始文本内容和 AI 生成的内容。
 
@@ -158,9 +158,9 @@ ms.locfileid: "94741799"
 
 可以在存储资源管理器中查看内容，或进一步使用 Power BI 通过可视化来获取见解。
 
-> [!div class="nextstepaction"]
-> [使用存储资源管理器查看](knowledge-store-view-storage-explorer.md)
-> [使用 Power BI 进行连接](knowledge-store-connect-power-bi.md)
++ [使用存储资源管理器查看](knowledge-store-view-storage-explorer.md)
+
++[使用 Power BI 进行连接](knowledge-store-connect-power-bi.md)
 
 > [!Tip]
 > 若要重复此练习或尝试其他 AI 扩充演练，请删除 *hotel-reviews-idxr* 索引器。 删除该索引器会将认知服务处理功能的每日免费事务计数器重置为零。

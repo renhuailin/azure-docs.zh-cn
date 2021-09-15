@@ -11,12 +11,12 @@ ms.reviewer: laobri
 ms.date: 05/13/2021
 ms.topic: troubleshooting
 ms.custom: devplatv2
-ms.openlocfilehash: 9f50fd0ff60f819717dbcb1e3878b4caf56c563b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 71570e00f77626edc82db0e45e7815d1c40bd06d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729785"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430137"
 ---
 # <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>排查托管联机终结点的部署和评分问题（预览版）
 
@@ -36,7 +36,7 @@ ms.locfileid: "121729785"
 
 * 一个 **Azure 订阅**。 试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 * [Azure CLI](/cli/azure/install-azure-cli)。
-* [安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)。
+* [安装、设置和使用 CLI (v2)（预览版）](how-to-configure-cli.md)。
 
 ## <a name="deploy-locally"></a>本地部署
 
@@ -175,7 +175,7 @@ az ml endpoint get-logs
 
 为了运行在部署过程中提供的 `score.py`，Azure 将创建一个包含 `score.py` 所需全部资源的容器，并在该容器上运行评分脚本。  在这种场景下发生的错误表现为此容器在运行时崩溃，这意味着无法评分。 出现以下情况时会发生此错误：
 
-- `score.py` 中有错误。 使用 `get--logs` 来帮助诊断常见问题：
+- `score.py` 中有错误。 使用 `get-logs` 来帮助诊断常见问题：
     - 包已导入，但不在 conda 环境中
     - 语法错误
     - `init()` 方法失败
