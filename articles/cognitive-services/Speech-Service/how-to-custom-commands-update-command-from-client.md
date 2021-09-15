@@ -3,19 +3,19 @@ title: 从客户端应用更新命令参数
 titleSuffix: Azure Cognitive Services
 description: 了解如何从客户端应用程序更新命令。
 services: cognitive-services
-author: PatrickFarley
+author: laujan
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: pafarley
-ms.openlocfilehash: c5314e659379fb56aca1eea0f1834985fc303c86
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: lajanuar
+ms.openlocfilehash: 9ae8d43be88558469165e926994f994aa0fe5736
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541020"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455887"
 ---
 # <a name="update-a-command-from-a-client-app"></a>从客户端应用更新命令
 

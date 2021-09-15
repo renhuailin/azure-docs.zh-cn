@@ -3,13 +3,13 @@ title: 在 Azure Site Recovery（预览版）中切换复制设备
 description: 本文介绍了在 Azure Site Recovery（预览版）中将 VMware VM 复制到 Azure 时，如何在不同的复制设备之间实现切换
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/19/2021
-ms.openlocfilehash: f95ed991833a9f6ed1b0635a8678e393f152cb56
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 09/01/2021
+ms.openlocfilehash: 3cf8fa8c761419a73e6bca5dac34d8b1e63cbd04
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446630"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123537888"
 ---
 # <a name="switch-azure-site-recovery-replication-appliance"></a>切换 Azure Site Recovery 复制设备
 
@@ -78,4 +78,4 @@ ms.locfileid: "122446630"
    重新同步完成后，对于移动到新设备的 VM，其复制状态将变为“正常”。
 
 ## <a name="next-steps"></a>后续步骤
-设置 [VMware VM](vmware-azure-tutorial.md) 到 Azure 的灾难恢复。
+设置 [VMware VM](vmware-azure-set-up-replication-tutorial-preview.md) 到 Azure 的灾难恢复。
