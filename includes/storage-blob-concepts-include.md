@@ -44,7 +44,7 @@ Blob 存储支持 Azure Data Lake storage Gen2，即 Microsoft 适用于云的�
 
 * 低成本分层存储
 * 高可用性
-* 非常一致性
+* 强一致性
 * 灾难恢复功能
 
 有关 Data Lake Storage Gen2 的详细信息，请参阅 [Azure Data Lake Storage Gen2 简介](../articles/storage/blobs/data-lake-storage-introduction.md)。
