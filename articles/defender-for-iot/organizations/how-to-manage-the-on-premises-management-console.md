@@ -3,12 +3,12 @@ title: 管理本地管理控制台
 description: 了解本地管理控制台选项，如备份和还原、定义主机名和设置传感器的代理。
 ms.date: 1/12/2021
 ms.topic: article
-ms.openlocfilehash: 369bd751d2b21fc9cdf824b2bd56f20b47f2819d
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: a94dc89f6d39bfef096809299e31bd88b43824d4
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444561"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431073"
 ---
 # <a name="manage-the-on-premises-management-console"></a>管理本地管理控制台
 
@@ -22,7 +22,7 @@ ms.locfileid: "122444561"
 
 初始激活后，受监视的设备数可能会超过在载入过程中定义的已提交设备数。 例如，如果将更多传感器连接到管理控制台，则可能会发生此事件。 如果受监视的设备数与已提交的设备数之间存在差异，则管理控制台中会出现警告。 如果发生此事件，应上传新的激活文件。
 
-若要上传激活文件，请执行以下操作：
+**若要上传激活文件，请执行以下操作：**
 
 1. 转到 Azure Defender for IoT“定价”页。
 1. 选择“下载管理控制台的激活文件”选项卡 此时将下载激活文件。
@@ -35,225 +35,33 @@ ms.locfileid: "122444561"
 
 ## <a name="manage-certificates"></a>管理证书
 
-安装本地管理控制台后，将生成本地自签名证书，该证书用于访问管理控制台的 Web 应用程序。 管理员用户首次登录到管理控制台后，系统会提示他们提供 SSL/TLS 证书。 有关首次安装的详细信息，请参阅[激活并设置本地管理控制台](how-to-activate-and-set-up-your-on-premises-management-console.md)。
+安装本地管理控制台后，将生成一个本地自签名证书，该证书用于访问 Web 应用程序。 首次登录到本地管理控制台时，系统会提示管理员用户提供 SSL/TLS 证书。 
 
-以下部分提供有关更新证书、使用证书 CLI 命令以及支持的证书和证书参数的信息。
+管理员可能需要更新初始登录后上传的证书。 例如，如果证书已过期，则可能会发生这种情况。
 
-### <a name="about-certificates"></a>关于证书
-
-Azure Defender for IoT 使用 SSL 和 TLS 证书来执行以下操作：
-
-- 通过上传 CA 签名的证书来满足组织请求的特定证书和加密要求。
-
-- 允许在管理控制台和连接的传感器之间以及在管理控制台和高可用性管理控制台之间进行验证。 根据证书吊销列表和证书到期日期对验证进行评估。 如果验证失败，则管理控制台和传感器之间的通信将停止，并且控制台中将出现验证错误。 安装后默认启用此选项。
-
-   验证为 `ON` 时，设备应该能够与证书定义的 CRL 服务器建立连接。
-
-不会验证第三方转发规则。 示例是发送到 SYSLOG、Splunk 或 ServiceNow 的警报信息；与 Active Directory 通信。
-
-#### <a name="ssl-certificates"></a>SSL 证书数
-
-Defender for IoT 传感器和本地管理控制台将 SSL 和 TLS 证书用于以下功能： 
-
- - 保护用户与设备的 Web 控制台之间的通信。 
- 
- - 保护与传感器和本地管理控制台上的 REST API 的通信。
- 
- - 保护传感器与本地管理控制台之间的通信。 
-
-安装后，设备就会生成本地自签名证书，以允许对 Web 控制台进行初步访问。 可以使用 [`cyberx-xsense-certificate-import`](#cli-commands) 命令行工具安装企业 SSL 和 TLS 证书。 
-
- > [!NOTE]
- > 对于集成和转发规则（即设备是会话的客户端和发起程序），会使用特定证书，并且这些证书与系统证书无关。  
- >
- >在这些情况下，通常会从服务器接收证书，或证书使用非对称加密（即提供特定证书来设置集成）。 
-
-### <a name="update-certificates"></a>更新证书
-
-本地管理控制台的管理员用户可以更新证书。
-
-若要更新证书，请执行以下操作：  
+**若要更新证书，请执行以下操作：**
 
 1. 选择“系统设置”。
 
 1. 选择“SSL/TLS 证书”。
-1. 删除或编辑证书，然后添加一个新证书。
-   
-   - 添加证书名称。
-   
-   - 上传 CRT 文件和密钥文件，然后输入密码。
-   - 如有必要，请上传 PEM 文件。
 
-若要更改验证设置，请执行以下操作：
+    :::image type="content" source="media/how-to-manage-individual-sensors/certificate-upload.png" alt-text="上传证书":::
 
-1. 打开或关闭“启用证书验证”切换。
+1. 在“SSL/TLS 证书”对话框中，删除现有证书，然后添加新证书。
+
+    - 添加证书名称。
+    - 上传 CRT 文件和密钥文件。
+    - 如有必要，请上传 PEM 文件。
+
+如果上传失败，请与安全部门或 IT 管理员联系，或者查看[关于证书](how-to-deploy-certificates.md)中的信息。
+
+如需更改证书验证设置，请按以下步骤操作：
+
+1. 启用或禁用“启用证书验证”切换开关。 如果该选项已启用，但验证失败，则相关组件之间的通信将会停止，并在控制台中显示验证错误。 如果该选项已禁用，则不会执行证书验证。请参阅[关于证书验证](how-to-deploy-certificates.md#about-certificate-validation)了解详细信息。
 
 1. 选择“保存”。
 
-如果已启用此选项且验证失败，则管理控制台和传感器之间的通信将停止，并且控制台中将出现验证错误。
-
-### <a name="certificate-support"></a>证书支持
-
-支持以下证书：
-
-- 专用和企业密钥基础结构（专用 PKI）
- 
-- 公钥基础结构（公共 PKI） 
-
-- 在设备上本地生成（本地自签名） 
-
-  > [!IMPORTANT]
-  > 不建议使用自签名证书。 此类型的连接不安全，应仅用于测试环境。 由于无法验证证书的所有者，也无法维护系统的安全，因此切勿将自签名证书用于生产网络。
-
-### <a name="supported-ssl-certificates"></a>支持的 SSL 证书 
-
-支持以下参数： 
-
-**证书 CRT**
-
-- 域名的主证书文件
-
-- 签名算法 = SHA256RSA
-- 签名哈希算法 = SHA256
-- 有效起始日期 = 有效的过去日期
-- 有效结束日期 = 有效的将来日期
-- 公钥 = RSA 2048 位（最小）或 4096 位
-- CRL 分发点 = 指向 .crl 文件的 URL
-- 使用者 CN = URL 可以是通配符证书；例如，Sensor.contoso.<span>com,or *.contoso.<span>com
-- 主题 (C) 国家/地区 = 已定义；例如，美国
-- 主题 (OU) 组织单位 = 已定义；例如，Contoso 实验室
-- 主题 (O) 组织 = 已定义；例如，Contoso Inc
-
-**密钥文件**
-
-- 创建 CSR 时生成的密钥文件
-
-- RSA 2048 位（最小）或 4096 位
-
- > [!Note]
- > 使用 4096 位密钥长度：
- > - 每次连接开始时的 SSL 握手都将变慢。  
- > - 握手期间的 CPU 使用率有所增加。 
-
-**证书链**
-
-- CA 提供的中间证书文件（如有）。
-
-- 颁发服务器证书的 CA 证书应先位于该文件中，然后位于任何其他文件中，一直到根目录。 
-- 链可以包含包属性。
-
-**密码**
-
-- 支持一个密钥。
-
-- 在导入证书时进行设置。
-
-包含其他参数的证书可能有效，但 Microsoft 不支持它们。
-
-#### <a name="encryption-key-artifacts"></a>加密密钥项目
-
-.pem：证书容器文件
-
-隐私增强邮件 (PEM) 文件是用于保护电子邮件的常规文件类型。 如今，PEM 文件与证书一起使用，并使用 x509 ASN1 密钥。  
-
-容器文件在 RFC 1421 到 1424（只能包括公共证书的容器格式）中定义。 例如，Apache 安装、CA 证书、文件、ETC、SSL 或 CERTS。 这可以包含整个证书链，包括公钥、私钥和根证书。  
-
-还可以将 CSR 编码为 PKCS10 格式，可将其转换为 PEM。
-
-c.cert .cer .crt：证书容器文件
-
-具有不同扩展名的 `.pem` 或 `.der` 格式化文件。 Windows 资源管理器将该文件识别为证书。 Windows 资源管理器无法识别 `.pem` 文件。
-
-.key：私钥文件
-
-密钥文件的格式与 PEM 文件的格式相同，但它具有不同的扩展名。 
-
-#### <a name="other-commonly-available-key-artifacts"></a>其他常用的密钥项目
-
-.csr  - 证书签名请求。  
-
-此文件用于提交到证书颁发机构。 实际格式为 PKCS10，它是在 RFC 2986 中定义的，并且可能包含请求的证书的部分或全部密钥详细信息。 例如，使用者、组织和状态。 它是证书的公钥，由 CA 签名，并接收返回的证书。  
-
-返回的证书是公共证书，其中包含公钥，而不包含私钥。 
-
-.pkcs12 .pfx .p12  – 密码容器。 
-
-最初由 RSA 在公钥加密标准 (PKCS) 中定义，12-变体最初由 Microsoft 增强，以后提交为 RFC 7292。  
-
-此容器格式需要包含公共证书对和专用证书对的密码。 与 `.pem` 文件不同，此容器是完全加密的。  
-
-可以使用 OpenSSL 将该文件转换为包含公钥和私钥的 `.pem` 文件： `openssl pkcs12 -in file-to-convert.p12 -out converted-file.pem -nodes`  
-
-.der – 二进制编码的 PEM。
-
-以二进制格式对 ASN.1 语法进行编码的方式是通过 `.pem` 文件，该文件只是 Base64 编码的 `.der` 文件。 
-
-OpenSSL 可以将这些文件转换为 `.pem`: `openssl x509 -inform der -in to-convert.der -out converted.pem`。  
-
-Windows 会将这些文件识别为证书文件。 默认情况下，Windows 会将证书导出为具有不同扩展名的 `.der` 格式化文件。
-
-.crl  - 证书吊销列表。  
-
-证书颁发机构生成这些证书，作为在证书过期前取消授权证书的方式。 
-
-#### <a name="cli-commands"></a>CLI 命令
-
-使用 `cyberx-xsense-certificate-import` CLI 命令来导入证书。 若要使用此工具，需要使用 WinSCP 或 Wget 等工具将证书文件上传到设备。
-
-此命令支持以下输入标志：
-
-- `-h`：显示命令行帮助语法。
-
-- `--crt`：指向证书文件的路径（.crt 扩展名）。
-
-- `--key`：\*.key 文件。 密钥长度应至少为 2,048 位。
-
-- `--chain`：证书链文件的路径（可选）。
-
-- `--pass`：用于加密证书的密码（可选）。
-
-- `--passphrase-set`：默认值 = `False`，未使用。 设置为 `True` 以使用上一个证书提供的先前密码（可选）。
-
-使用 CLI 命令时：
-
-- 验证证书文件在设备上是否可读。
-
-- 验证证书中的域名和 IP 是否与 IT 部门计划的配置匹配。
-
-### <a name="use-openssl-to-manage-certificates"></a>使用 OpenSSL 管理证书
-
-使用以下命令管理证书：
-
-| 说明 | CLI 命令 |
-|--|--|
-| 生成新的私钥和证书签名请求 | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
-| 生成自签名证书 | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
-| 为现有私钥生成证书签名请求 (CSR) | `openssl req -out CSR.csr -key privateKey.key -new` |
-| 基于现有证书生成证书签名请求 | `openssl x509 -x509toreq -in certificate.crt -out CSR.csr -signkey privateKey.key` |
-| 从私钥中删除通行短语 | `openssl rsa -in privateKey.pem -out newPrivateKey.pem` |
-
-如果需要检查证书、CSR 或私钥中的信息，请使用以下命令：
-
-| 说明 | CLI 命令 |
-|--|--|
-| 检查证书签名请求 (CSR) | `openssl req -text -noout -verify -in CSR.csr` |
-| 检查私钥 | `openssl rsa -in privateKey.key -check` |
-| 检查证书 | `openssl x509 -in certificate.crt -text -noout`  |
-
-如果收到指示私钥与证书不匹配或安装到站点的证书不受信任的错误，请使用以下命令来修复此错误：
-
-| 说明 | CLI 命令 |
-|--|--|
-| 检查公钥的 MD5 哈希，以确保它与 CSR 或私钥中的内容匹配 | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
-
-若要将证书和密钥转换为不同的格式，以使它们与特定类型的服务器（或软件）兼容，请使用以下命令：
-
-| 说明 | CLI 命令 |
-|--|--|
-| 将 DER 文件 (.crt .cer .der) 转换为 PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
-| 将 PEM 文件转换为 DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
-| 将包含私钥和证书的 PKCS#12 文件 (.pfx .p12) 转换为 PEM | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes` <br />可以添加 `-nocerts` 以仅输出私钥，或添加 `-nokeys` 以仅输出证书。 |
-| 将 PEM 证书文件和私钥转换为 PKCS#12 (.pfx .p12) | `openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt` |
+如需了解有关首次上传证书的详细信息，请参阅[首次登录和激活清单](how-to-activate-and-set-up-your-sensor.md#first-time-sign-in-and-activation-checklist)
 
 ## <a name="define-backup-and-restore-settings"></a>定义备份和还原设置
 

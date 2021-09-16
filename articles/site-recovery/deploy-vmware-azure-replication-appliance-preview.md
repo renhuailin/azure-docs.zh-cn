@@ -3,13 +3,13 @@ title: 部署 Azure Site Recovery 复制设备（预览版）
 description: 本文介绍了为了使用 Azure Site Recovery 执行 VMware 到 Azure 的灾难恢复而部署复制设备时的支持和要求
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/19/2021
-ms.openlocfilehash: e4021aa0f5572a51ca4d3ddda37f64f4da46a3b4
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 09/01/2021
+ms.openlocfilehash: f1c5182cc06fa0065c266cdd03ffe85717c0d496
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446643"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123536790"
 ---
 # <a name="deploy-azure-site-recovery-replication-appliance---preview"></a>部署 Azure Site Recovery 复制设备（预览版）
 
@@ -67,17 +67,16 @@ FIPS（联邦信息处理标准） | 不要启用 FIPS 模式|
   |aka.ms |允许访问也称为链接。 适用于 Azure Site Recovery 设备更新。 |
   |download.microsoft.com/download |允许从 Microsoft 下载中进行下载。 |
   |`*.servicebus.windows.net `|设备与 Azure Site Recovery 服务之间的通信。 |
-  |`*.discoverysrv.windowsazure.com `|连接 Azure Site Recovery 发现服务 URL。 |
-  |`*.hypervrecoverymanager.windowsazure.com `|连接 Azure Site Recovery 微服务 URL  |
-  |`*.blob.core.windows.net `|将数据上传到用于创建目标磁盘的 Azure 存储 |
-  |`*.backup.windowsazure.com `|保护服务 URL – Azure Site Recovery 用于在 Azure 中处理和创建复制的磁盘的微服务 |
+  |`*.discoverysrv.windowsazure.com `<br><br>`*.hypervrecoverymanager.windowsazure.com `<br><br> `*.backup.windowsazure.com ` |连接到 Azure Site Recovery 微服务 URL。
+  |`*.blob.core.windows.net `|将数据上传到用于创建目标磁盘的 Azure 存储。 |
+
 
 > [!NOTE]
 > 预览版本不支持私有链接。
 
 ## <a name="prepare-azure-account"></a>准备 Azure 帐户
 
-若要创建并注册 Azure Site Recovery 复制设备，则需要具有以下权限的帐户：
+若要创建并注册 Azure Site Recovery 复制设备，需要具有以下权限的帐户：
 
 - 关于 Azure 订阅的参与者或所有者权限。
 - 用于注册 Azure Active Directory (AAD) 应用的权限。
@@ -85,7 +84,7 @@ FIPS（联邦信息处理标准） | 不要启用 FIPS 模式|
 
 如果你刚刚创建了免费的 Azure 帐户，那么你就是订阅的所有者。 如果你不是订阅所有者，请与所有者合作，获取所需权限。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 必需的密钥保管库权限如下：
 
@@ -149,7 +148,7 @@ OVF 模板启动具有所需规范的虚拟机。
 
 ### <a name="set-up-the-appliance-through-powershell"></a>通过 PowerShell 设置设备
 
-如果存在任何组织限制，可以通过 PowerShell 手动设置 Site Recovery 复制设备。 请按照以下步骤操作：
+如果存在任何组织限制，可以通过 PowerShell 手动设置 Site Recovery 复制设备。 执行以下步骤：
 
 1. 从此处下载[安装程序](https://aka.ms/V2ARcmApplianceCreationPowershellZip)，将此文件夹放到 Azure Site Recovery 复制设备中。
 2. 成功复制 zip 文件夹后，解压缩文件夹并提取其中的组件。
@@ -240,6 +239,9 @@ OVF 模板启动具有所需规范的虚拟机。
 
     确保不会在配置进行过程中关闭浏览器。
 
+    >[!NOTE]
+    > 此预览版不支持设备克隆。 如果尝试克隆，可能会中断恢复流。
+
 
 ## <a name="view-azure-site-recovery-replication-appliance-in-azure-portal"></a>查看 Azure 门户中的 Azure Site Recovery 复制设备
 
@@ -267,4 +269,4 @@ OVF 模板启动具有所需规范的虚拟机。
 有关如何使用多个设备和利用复制设备转移故障的详细信息，请参阅[此文](switch-replication-appliance-preview.md)
 
 ## <a name="next-steps"></a>后续步骤
-设置 [VMware VM](vmware-azure-tutorial.md) 到 Azure 的灾难恢复。
+设置 [VMware VM](vmware-azure-set-up-replication-tutorial-preview.md) 到 Azure 的灾难恢复。

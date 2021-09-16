@@ -3,16 +3,16 @@ title: 创建和管理 Azure IoT Central 仪表板 | Microsoft Docs
 description: 了解如何在 Azure IoT Central 中创建和管理应用程序仪表板与个人仪表板。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/17/2019
+ms.date: 08/19/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 723af65800674fcb539c5f3003b9504b02969e6f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: d262f102b12105ece2b5d0d076a7c8c108e7b4e7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696722"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424233"
 ---
 # <a name="create-and-manage-dashboards"></a>创建和管理仪表板
 
@@ -49,7 +49,7 @@ ms.locfileid: "122696722"
 
 ## <a name="add-tiles"></a>添加磁贴
 
-以下屏幕截图显示从“自定义应用程序”模板创建的应用程序中的仪表板。 若要自定义当前仪表板，请选择“编辑”。 若要添加个人仪表板或应用程序仪表板，请选择“新建仪表板”：
+以下屏幕截图显示使用“自定义应用程序”模板创建的应用程序中的仪表板。 若要自定义当前仪表板，请选择“编辑”。 若要添加个人仪表板或应用程序仪表板，请选择“新建仪表板”：
 
 :::image type="content" source="media/howto-manage-dashboards/dashboard-sample-contoso.png" alt-text="显示基于自定义应用程序模板的应用程序仪表板的屏幕截图。":::
 

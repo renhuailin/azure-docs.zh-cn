@@ -4,22 +4,22 @@ description: 介绍如何使用 GitHub Actions 部署 Bicep 文件。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/23/2021
+ms.date: 09/02/2021
 ms.custom: github-actions-azure
-ms.openlocfilehash: 005ad729eed380b6684ef06ddca6341dce8b16da
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: df644fb081e6c15eb72e20a2a84af4b4c9386ba7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695215"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427023"
 ---
 # <a name="deploy-bicep-files-by-using-github-actions"></a>使用 GitHub Actions 部署 Bicep 文件
 
-[Github 操作](https://docs.github.com/en/actions)是 GitHub 中的一个功能套件，可以在存储代码的同一位置自动执行软件开发工作流，并针对拉取请求和问题进行协作。
+[GitHub Actions](https://docs.github.com/en/actions) 是 GitHub 中用于自动执行软件开发工作流的一套功能。
 
-使用[“部署 Azure 资源管理器模板”操作](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template)可自动将 Bicep 文件部署到 Azure。
+[使用 GitHub Actions 部署 Azure 资源管理器](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template)可自动将 Bicep 文件部署到 Azure。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 一个 GitHub 帐户。 如果没有该帐户，请注册[免费版](https://github.com/join)。
@@ -41,19 +41,19 @@ ms.locfileid: "122695215"
 
 可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) 命令创建[服务主体](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 请使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
 
-如果没有资源组，请创建一个。
+如果没有可用的资源组，请创建一个。
 
 ```azurecli-interactive
-    az group create -n {MyResourceGroup} -l {location}
+az group create -n {MyResourceGroup} -l {location}
 ```
 
 请将 `myApp` 占位符替换为应用程序的名称。
 
 ```azurecli-interactive
-   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
+az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-在上面的示例中，请将占位符替换为你的订阅 ID 和资源组名称。 输出是一个 JSON 对象，包含的角色分配凭据可提供对应用服务应用的访问权限，如下所示。 复制此 JSON 对象供以后使用。 你只需要具有 `clientId`、`clientSecret`、`subscriptionId` 和 `tenantId` 值的部分。
+在上面的示例中，请将占位符替换为你的订阅 ID 和资源组名称。 输出是一个 JSON 对象，包含的角色分配凭据可提供对应用服务应用的访问权限，如下所示。 复制此 JSON 对象供以后使用。 只需具有 `clientId`、`clientSecret`、`subscriptionId` 和 `tenantId` 值的部分。
 
 ```output
   {
@@ -76,19 +76,17 @@ ms.locfileid: "122695215"
 
 1. 选择“设置”>“机密”>“新的机密”。
 
-1. 将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定名称 `AZURE_CREDENTIALS`。
+1. 将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 将机密命名为 `AZURE_CREDENTIALS`。
 
 1. 创建另一个名为 `AZURE_RG` 的机密。 将资源组的名称添加到该机密的“值”字段（例如：`myResourceGroup`）。
 
-1. 再创建一个名为 `AZURE_SUBSCRIPTION` 的机密。 将订阅 ID 添加到该机密的“值”字段（例如：`90fd3f9d-4c61-432d-99ba-1273f236afa2`）。
+1. 创建另一个名为 `AZURE_SUBSCRIPTION` 的机密。 将订阅 ID 添加到该机密的“值”字段（例如：`90fd3f9d-4c61-432d-99ba-1273f236afa2`）。
 
 ## <a name="add-a-bicep-file"></a>添加 Bicep 文件
 
 将 Bicep 文件添加到 GitHub 存储库。 以下 Bicep 文件创建存储帐户：
 
-```url
-https://raw.githubusercontent.com/Azure/azure-docs-bicep-samples/main/get-started-with-bicep-files/add-variable/azuredeploy.bicep
-```
+::: code language="bicep" source="~/azure-docs-bicep-samples/samples/create-storage-account/azuredeploy.bicep" :::
 
 Bicep 文件采用一个名为 storagePrefix 的参数，其中包含 3 到 11 个字符。
 
@@ -102,7 +100,7 @@ Bicep 文件采用一个名为 storagePrefix 的参数，其中包含 3 到 11 �
 1. 选择“新建工作流”。
 1. 选择“自己设置工作流”。
 1. 如果希望使用“main.yml”以外的其他名称，请重命名工作流文件。 例如：deployBicepFile.yml。
-1. 将 yml 文件的内容替换为以下内容：
+1. 将 yml 文件的内容替换为以下代码：
 
     ```yml
     on: [push]
@@ -131,7 +129,7 @@ Bicep 文件采用一个名为 storagePrefix 的参数，其中包含 3 到 11 �
             failOnStdErr: false
     ```
 
-    将 mystore 替换为你自己的存储帐户名称前缀。
+    将 `mystore` 替换为你自己的存储帐户名称前缀。
 
     > [!NOTE]
     > 可以改为在 ARM 部署操作中指定一个 JSON 格式的参数文件（例如：`.azuredeploy.parameters.json`）。
@@ -145,11 +143,11 @@ Bicep 文件采用一个名为 storagePrefix 的参数，其中包含 3 到 11 �
 1. 选择“直接提交到主分支”。
 1. 选择“提交新文件”（或“提交更改”）。 
 
-由于工作流配置为由要更新的工作流文件或 Bicep 文件触发，因此在你提交更改后，工作流会立即启动。
+更新工作流文件或 Bicep 文件会触发工作流。 提交更改后，工作流将立即启动。
 
 ## <a name="check-workflow-status"></a>检查工作流状态
 
-1. 选择“操作”选项卡。此时会看到列出的“创建 deployStorageAccount.yml”工作流。 运行此工作流需要 1-2 分钟。
+1. 选择“操作”选项卡。此时会列出“创建 deployStorageAccount.yml”工作流 。 运行此工作流需要 1-2 分钟。
 1. 选择要打开的工作流。
 1. 从菜单中选择“运行 ARM 部署”以验证此部署。
 

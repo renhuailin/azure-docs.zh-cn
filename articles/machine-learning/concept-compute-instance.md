@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: fccbd763818facfa429451ce0c53d74ee8f6b8a4
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: fc7c9bceb32797d620a865d08c8b02cd2ab533c7
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609264"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471653"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -44,7 +44,7 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 |已针对 ML 进行了预配置|使用预配置的最新 ML 包、深度学习框架和 GPU 驱动程序完成设置任务，可节省时间。|
 |完全可自定义|支持多种 Azure VM 类型，包括 GPU 和持久性低级自定义，例如，安装相应的包和驱动程序可以轻而易举地实现高级方案。 |
 
-* 计算实例也是类似于计算群集的安全训练计算目标，但它是单节点。
+* 计算实例也是类似于计算群集的安全训练计算目标，但它是单个节点。
 * 你可以自行[创建计算实例](how-to-create-manage-compute-instance.md?tabs=python#create)，也可以由管理员[代表你创建计算实例](how-to-create-manage-compute-instance.md?tabs=python#on-behalf)。
 * 你还可以[使用设置脚本（预览版）](how-to-create-manage-compute-instance.md#setup-script)，根据需要以自动化方式自定义并配置计算实例。
 * 若要节省成本， **[创建计划（预览版）](how-to-create-manage-compute-instance.md#schedule)** 以自动启动和停止计算实例。
@@ -109,7 +109,7 @@ Python 包都安装在“Python 3.8 - AzureML”环境中。 计算实例使用 
 
 还可以[使用设置脚本（预览版）](how-to-create-manage-compute-instance.md#setup-script)，以自动化方式自定义并配置计算实例。
 
-若要为自己创建计算实例，请使用 Azure 机器学习工作室中你的工作区，在准备好运行某个笔记本时，从“计算”部分或在“笔记本”部分[新建计算实例](how-to-create-manage-compute-instance.md?tabs=azure-studio#create) 。
+若要为自己创建计算实例，请使用你在 Azure 机器学习工作室中的工作区，在准备好运行某个笔记本时，从“计算”部分或在“笔记本”部分[新建计算实例](how-to-create-manage-compute-instance.md?tabs=azure-studio#create) 。
 
 也可以通过以下方式创建实例
 * 直接从[集成式笔记本体验](tutorial-train-models-with-aml.md#azure)

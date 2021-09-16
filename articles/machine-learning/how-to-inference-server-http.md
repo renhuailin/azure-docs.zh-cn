@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: inference server, local development, local debugging, devplatv2
 ms.date: 05/14/2021
-ms.openlocfilehash: 4d8c2dbbfe313d480fce953af0b39ee01cd32230
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 48dda26415113bff4ff20305ee8779804859be33
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597784"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428301"
 ---
 # <a name="azure-machine-learning-inference-http-server-preview"></a>Azure 机器学习推理 HTTP 服务器（预览版）
 
@@ -117,7 +117,7 @@ python -m pip install azureml-inference-server-http
 | model_dir | 错误 | 空值 | 包含用于推理的模型的目录的相对路径或绝对路径。
 | port | False | 5001 | 服务器的服务端口。|
 | worker_count | False | 1 | 将处理并发请求的工作线程数。 |
-| appinsights_instrumentation_key | 错误 | 空值 | 将在其中发布日志的 application insights 的检测密钥。 |
+| appinsights_instrumentation_key | 错误 | 空值 | 将发布日志的 Application Insights 的检测密钥。 |
 
 ## <a name="request-flow"></a>请求流
 

@@ -2,15 +2,14 @@
 title: 管理 Azure 支持请求
 description: 介绍如何查看支持请求、发送消息、更改请求严重性级别、与 Azure 支持共享诊断信息、重新打开已关闭的支持请求以及上传文件。
 tags: billing
-ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
-ms.date: 08/24/2021
-ms.openlocfilehash: 6f1daf2c504be53654c61c5249065cc929ae8066
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/01/2021
+ms.openlocfilehash: f1930402c0f458962c95f8f4fe0f1011f1dcca49
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824126"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426375"
 ---
 # <a name="manage-an-azure-support-request"></a>管理 Azure 支持请求
 
@@ -36,13 +35,10 @@ ms.locfileid: "122824126"
 
 > [!NOTE]
 > 最大严重性级别取决于[支持计划](https://azure.microsoft.com/support/plans)。
->
 
 1. 在“所有支持请求”页上，选择支持请求。
 
 1. 在“支持请求”页上，选择“更改” 。
-
-    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="更改支持请求严重性":::
 
 1. Azure 门户显示两个屏幕中的一个，具体取决于请求是否已分配给支持工程师：
 
@@ -61,11 +57,11 @@ ms.locfileid: "122824126"
 若要在创建请求后更改“共享诊断信息”选择：
 
 1. 在“所有支持请求”页上，选择支持请求。
-    
+
 1. 在“支持请求”页上，查找“共享诊断信息”，然后选择“更改”。
-    
-1.  选择“是”或“否”，然后选择“确定”进行确认。
-    
+
+1. 选择“是”或“否”，然后选择“确定”进行确认。
+
     :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="为诊断信息授予权限":::
 
 ## <a name="upload-files"></a>上传文件
@@ -82,11 +78,11 @@ ms.locfileid: "122824126"
 
 使用文件上传选项时，请遵循以下指导原则：
 
-* 为保护隐私，请不要在上传内容中含入任何个人信息。
-* 文件名不得超过 110 个字符。
-* 最多只能上传一个文件。
-* 文件不得大于 4 MB。
-* 所有文件必须具有文件扩展名，如 .docx 或 .xlsx 。 下表显示了允许上传的文件扩展名。
+- 为保护隐私，请不要在上传内容中含入任何个人信息。
+- 文件名不得超过 110 个字符。
+- 最多只能上传一个文件。
+- 文件不得大于 4 MB。
+- 所有文件必须具有文件扩展名，如 .docx 或 .xlsx 。 下表显示了允许上传的文件扩展名。
 
 | 0-9, A-C    | D-G   | H-N         | O-Q   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
@@ -121,18 +117,17 @@ ms.locfileid: "122824126"
 
 ## <a name="close-a-support-request"></a>关闭支持请求
 
-如果需要关闭支持请求，请[发送一条消息](#send-a-message)要求关闭请求。
+若要关闭支持请求，请[发送一条消息](#send-a-message)要求关闭请求。
 
 ## <a name="reopen-a-closed-request"></a>重新打开已关闭的请求
 
-如果需要重新打开已关闭的支持请求，请创建一条[新消息](#send-a-message)，该消息将自动重新打开该请求。
+若要重新打开已关闭的支持请求，请创建一条[新消息](#send-a-message)，该消息将自动重新打开该请求。
 
 ## <a name="cancel-a-support-plan"></a>取消支持计划
 
-如果需要取消支持计划，请参阅[取消支持计划](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan)。
+若要取消支持计划，请参阅[取消支持计划](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[如何创建 Azure 支持请求](how-to-create-azure-support-request.md)
-
-[Azure 支持票证 REST API](/rest/api/support)
+- 请参阅[创建 Azure 支持请求](how-to-create-azure-support-request.md)的过程。
+- 了解 [Azure 支持工单 REST API](/rest/api/support)。

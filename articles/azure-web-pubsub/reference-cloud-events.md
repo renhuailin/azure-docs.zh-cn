@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: a132fdf16fa62360827a516f034bcd37c38b2928
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 6503433f164e0b8153aa8832473fd06ad3959bae
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446596"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434855"
 ---
 #  <a name="cloudevents-extension-for-azure-web-pubsub"></a>适用于 Azure Web PubSub 的 CloudEvents 扩展
 
@@ -51,17 +51,18 @@ Webhook 验证遵循 [CloudEvents](https://github.com/cloudevents/spec/blob/v1.0
 
 > 另请注意，HTTP 规范现在遵循类似的模式，不再建议扩展 HTTP 标头以 X- 作为前缀。
 
-此扩展定义了 Web PubSub 针对其生成的每个事件所使用的属性。
+此扩展插件为它生成的每个事件定义 Web PubSub 使用的属性。
 
 ### <a name="attributes"></a>属性
 
-| 名称 | 类型 | 描述 | 示例|
+| 名称 | 类型 | 说明 | 示例|
 |--|--|--|--|
 | `userId` | `string` | 连接通过身份验证的用户 | |
 | `hub` | `string` | 连接所属于的中心 | |
 | `connectionId` | `string` | connectionId 对于客户端连接是唯一的 | |
 | `eventName` | `string` | 不带前缀的事件名称 | |
 | `subprotocol` | `string` | 客户端使用的子协议（如果有） | |
+| `connectionState` | `string` | 定义连接的状态。 你可以使用相同的响应头来重置状态值。 不允许使用多个 `connectionState` 头。 如果字符串值内部包含复杂字符，则可对其进行 base64 编码，例如，可使用 `base64(jsonString)` 属性传递复杂对象。| |
 | `signature` | `string` | 上游 Webhook 的签名，用于验证传入请求是否来自预期来源。 该服务在计算值时使用主访问密钥和辅助访问密钥作为 HMAC 密钥：`Hex_encoded(HMAC_SHA256(accessKey, connectionId))`。 上游应在处理请求之前检查请求是否有效。 | |
 
 ## <a name="events"></a>事件
@@ -115,12 +116,14 @@ ce-eventName: connect
 ```
 
 #### <a name="success-response-format"></a>成功响应格式：
-
-* `204`：成功，无内容。
-* `200`：成功后，内容应为 JSON 格式，允许以下属性：
-
+* 状态代码：
+    * `204`：成功，无内容。
+    * `200`：成功后，内容应为 JSON 格式，允许以下属性：
+* `ce-connectionState` 标头：如果此标头存在，则此连接的连接状态将更新为标头的值。 请注意，只有阻塞事件可以更新连接状态。 下面的示例使用 base64 编码的 JSON 字符串存储连接的复杂状态。
+* 
 ```HTTP
 HTTP/1.1 200 OK
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 {
     "groups": [],
@@ -164,6 +167,7 @@ HTTP/1.1 401 Unauthorized
 
 * `ce-type`: `azure.webpubsub.sys.connected`
 * `Content-Type`: `application/json`
+* `ce-connectionState`: `eyJrZXkiOiJhIn0=`
 
 请求正文为空 JSON。
 
@@ -186,6 +190,7 @@ ce-connectionId: {connectionId}
 ce-hub: {hub}
 ce-eventName: connect
 ce-subprotocol: abc
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 {}
 
@@ -228,6 +233,7 @@ ce-connectionId: {connectionId}
 ce-hub: {hub}
 ce-eventName: disconnect
 ce-subprotocol: abc
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 {
     "reason": "{Reason}"
@@ -277,6 +283,7 @@ ce-userId: {userId}
 ce-connectionId: {connectionId}
 ce-hub: {hub}
 ce-eventName: message
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 UserPayload
 
@@ -288,6 +295,8 @@ UserPayload
     * `204`：成功，无内容。
     * `200`：成功，`UserResponsePayload` 的格式取决于响应的 `Content-Type`。
 * `Content-Type`: `application/octet-stream` 表示二进制帧；`text/plain` 表示文本帧； 
+* `Content-Type` 标头：`application/octet-stream` 表示二进制帧；`text/plain` 表示文本帧； 
+* `ce-connectionState` 标头：如果此标头存在，则此连接的连接状态将更新为标头的值。 请注意，只有阻塞事件可以更新连接状态。 下面的示例使用 base64 编码的 JSON 字符串存储连接的复杂状态。
 
 当 `Content-Type` 为 `application/octet-stream` 时，服务使用 `binary` WebSocket 帧向客户端发送 `UserResponsePayload`。 当 `Content-Type` 为 `text/plain` 时，服务使用 `text` WebSocket 帧向客户端发送 `UserResponsePayload`。 
 
@@ -295,6 +304,7 @@ UserPayload
 HTTP/1.1 200 OK
 Content-Type: application/octet-stream (for binary frame) or text/plain (for text frame)
 Content-Length: nnnn
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 UserResponsePayload
 ```
@@ -336,6 +346,7 @@ ce-connectionId: {connectionId}
 ce-hub: {hub_name}
 ce-eventName: <event_name>
 ce-subprotocol: json.webpubsub.azure.v1
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 text data
 
@@ -372,6 +383,7 @@ ce-connectionId: {connectionId}
 ce-hub: {hub_name}
 ce-eventName: <event_name>
 ce-subprotocol: json.webpubsub.azure.v1
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 {
     "hello": "world"
@@ -425,8 +437,8 @@ UserResponsePayload
 * 状态代码
     * `204`：成功，无内容。
     * `200`：成功，发送到 PubSub WebSocket 客户端的数据依赖于 `Content-Type`； 
-
-* 当 `Content-Type` 为 `application/octet-stream` 时，服务在将 `UserResponsePayload` 发送回客户端时将使用 `dataType` 作为 `binary`，并且有效负载采用 base64 编码。 示例响应：
+* `ce-connectionState` 标头：如果此标头存在，则此连接的连接状态将更新为标头的值。 请注意，只有阻塞事件可以更新连接状态。 下面的示例使用 base64 编码的 JSON 字符串存储连接的复杂状态。
+* 当 `Content-Type` 标头为 `application/octet-stream` 时，服务在将 `UserResponsePayload` 发送回客户端时将使用 `dataType` 作为 `binary`，并且有效负载采用 base64 编码。 示例响应：
     ```json
     {
         "type": "message",

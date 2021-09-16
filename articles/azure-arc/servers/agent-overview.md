@@ -1,15 +1,15 @@
 ---
 title: Connected Machine 代理概述
 description: 本文详细介绍了已启用 Azure Arc 的服务器代理，该代理支持监视混合环境中托管的虚拟机。
-ms.date: 08/18/2021
+ms.date: 09/01/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fa3b934d6909a3975bf9d01b6cd2f8f2fd2428e4
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1c6bb66fecb8fe90aa2384a52034b6687c691af0
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771002"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439661"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理概述
 
@@ -78,13 +78,13 @@ Azure Connected Machine 代理包包含捆绑在一起的多个逻辑组件。
 
 ### <a name="supported-environments"></a>支持的环境
 
-已启用 Arc 的服务器支持在 Azure 外部托管的任何物理服务器和虚拟机上安装 Connected Machine 代理。 其中包括在 VMware、Azure Stack HCI 和其他云环境等平台上运行的虚拟机。 已启用 Arc 的服务器不支持在 Azure 中运行的虚拟机上安装代理，也不支持在 Azure Stack Hub 或 Azure Stack Edge 上运行的虚拟机上安装代理，因为它们已作为 Azure VM 建模。
+已启用 Arc 的服务器支持在 Azure 外部托管的任何物理服务器和虚拟机上安装 Connected Machine 代理。 包括在 VMware、Azure Stack HCI 和其他云环境等平台上运行的虚拟机。 已启用 Arc 的服务器不支持在 Azure 中运行的虚拟机上安装代理，也不支持在 Azure Stack Hub 或 Azure Stack Edge 上运行的虚拟机上安装代理，因为它们已作为 Azure VM 建模。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
 Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操作系统：
 
-- Windows Server 2008 R2 SP1、Windows Server 2012 R2 和更高版本（包括 Server Core）
+- Windows Server 2008 R2 SP1、Windows Server 2012 R2、2016、2019 和 2022（包括 Server Core）
 - Ubuntu 16.04、18.04 和 20.04 LTS (x64)
 - CentOS Linux 7 和 8 (x64)
 - SUSE Linux Enterprise Server (SLES) 12 和 15 (x64)

@@ -4,12 +4,12 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 08/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 89aa01556d69b6f3543f7e90d5937f7e20bf3679
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: f6101485f7dfab8d956a552edc2e77d85a6e2d9e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681357"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425808"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -39,7 +39,7 @@ Azure 备份使用恢复服务保管库来协调和管理以下工作负荷类�
 **移动保管库** | 可以跨订阅或同一订阅中的资源组之间[移动保管库](./backup-azure-move-recovery-services-vault.md)。 但是，不支持跨区域移动保管库。
 **在保管库之间移动数据** | 不支持在保管库之间移动备份的数据。
 **修改保管库存储类型** | 可以在存储备份之前修改保管库的存储复制类型（异地冗余存储或本地冗余存储）。 在保管库中开始备份以后，就不能修改复制类型。
-**区域冗余存储 (ZRS)** | 在英国南部、东南亚、澳大利亚东部、北欧、美国中部和日本东部支持预览版。
+**区域冗余存储 (ZRS)** | 英国南部、东南亚、澳大利亚东部、北欧、美国中部、美国东部 2、巴西南部和日本东部支持预览版。
 **终结点** | 请参阅[此部分](./private-endpoints.md#before-you-start)，了解为恢复服务保管库创建专用终结点的要求。  
 
 ## <a name="on-premises-backup-support"></a>本地备份支持
@@ -130,7 +130,7 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 **计算机** | **压缩到 MABS/DPM (TCP)** | **压缩到保管库 (HTTPS)**
 --- | --- | ---
 **直接备份本地 Windows 计算机** | NA | ![是][green]
-**使用 VM 扩展的 Azure VM 备份** | NA | 不可用
+**使用 VM 扩展的 Azure VM 备份** | NA | NA
 **使用 MABS/DPM 在本地计算机/Azure 计算机上备份** | ![是][green] | ![是][green]
 
 ## <a name="retention-limits"></a>保留期限制

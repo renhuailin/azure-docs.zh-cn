@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: f04ff9d68297c34adbdaa6e6c326b940e6c496bc
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a66eeec561b422cb7ce644facd7f273ab055e871
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697476"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123423657"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>在 Azure 门户中自动缩放虚拟机规模集
 
@@ -57,8 +57,11 @@ ms.locfileid: "122697476"
     | 冷却（分钟）  | 为使自动缩放操作有时间生效，再次应用规则前需要等待的时间。 | 5 分钟      |
 
     以下示例演示在 Azure 门户中创建的规则，这些规则可与以下设置相匹配：
-
+    
     ![创建自动缩放规则，以增加 VM 实例数](media/virtual-machine-scale-sets-autoscale-portal/rule-increase.png)
+
+    > [!NOTE]
+    > 在实例内运行的任务将突然停止，该实例会在其完成冷却期后进行纵向缩减。
 
 6. 若要创建规则，请选择“添加”
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 6/8/2021
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: c94e040d5047b25b8d260792fd362e50a29b9601
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 3e20029511ee6a9a0e6f8482e0d05d7217ec21f9
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696288"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451972"
 ---
 # <a name="shared-image-galleries-overview"></a>共享映像库概述
 
@@ -238,13 +238,13 @@ ms.locfileid: "122696288"
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
 ```
 
-有关详细信息，请参阅使用 [Azure CLI](update-image-resources-cli.md) 或 [PowerShell](update-image-resources-powershell.md) 管理库资源。
+有关详细信息，请参阅[列出、更新和删除映像资源](update-image-resources.md)。
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>是否可将现有的映像移到共享映像库？
  
 是的。 根据映像的类型，可能存在 3 种场景。
 
- 应用场景 1：如果你有托管映像，则可以从该映像创建映像定义和映像版本。 有关详细信息，请参阅使用 [Azure CLI](image-version-managed-image-cli.md) 或 [PowerShell](image-version-managed-image-powershell.md) 从托管映像迁移到映像版本。
+ 应用场景 1：如果你有托管映像，则可以从该映像创建映像定义和映像版本。 有关详细信息，请参阅[创建映像定义和映像版本](image-version.md)。
 
  应用场景 2：如果你有非托管的映像，可以从该映像创建托管映像，然后从该托管映像创建映像定义和映像版本。 
 
@@ -255,11 +255,11 @@ ms.locfileid: "122696288"
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以从专用化磁盘创建映像版本？
 
-是的，可以使用 [CLI](vm-specialized-image-version-cli.md)、[PowerShell](vm-specialized-image-version-powershell.md) 或 API 从专用映像创建 VM。 
+是的，可以从[专用化映像](windows/create-vm-specialized.md)创建 VM。 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>创建共享映像库资源后，是否可以将其移动到其他订阅中？
 
-不可以，无法将共享映像库资源移到其他订阅。 可以将库中的映像版本复制到其他区域，也可以使用 [Azure CLI](image-version-another-gallery-cli.md) 或 [PowerShell](image-version-another-gallery-powershell.md) 从其他库复制映像。
+不可以，无法将共享映像库资源移到其他订阅。 可以将库中的映像版本复制到其他区域，也可以[从其他库复制映像](image-version.md)。
 
 ### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>是否可以跨云（例如 Azure 中国世纪互联、Azure 德国或 Azure 政府云）复制映像版本？
 
@@ -325,4 +325,4 @@ ms.locfileid: "122696288"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用 [Azure CLI](shared-images-cli.md) 或 [PowerShell](shared-images-powershell.md) 部署共享映像。
+了解如何使用 [Azure CLI](create-gallery.md) 或 [PowerShell](create-gallery.md) 部署共享映像。

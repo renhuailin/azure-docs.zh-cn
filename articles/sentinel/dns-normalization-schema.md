@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/15/2021
 ms.author: bagol
-ms.openlocfilehash: 38f90522a465f6934c88249be3eae2b505c99303
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 0ce075bf6bccbbee2a1386da3cfa7c690c94793f
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515233"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123423909"
 ---
 # <a name="azure-sentinel-dns-normalization-schema-reference-public-preview"></a>Azure Sentinel DNS 规范化架构参考（公共预览版）
 
@@ -56,15 +56,39 @@ imDNS | where SrcIpAddr != "127.0.0.1" and EventSubType == "response"
 
 ## <a name="parsers"></a>分析器
 
+### <a name="available-parsers"></a>可用的分析程序
+
 实现 DNS 信息模型的 KQL 函数具有以下名称：
 
-| 名称 | 描述 | 用法说明 |
+| 名称 | 说明 | 用法说明 |
 | --- | --- | --- |
 | **imDNS** | 一种聚合分析程序，它使用 union 包含来自所有 DNS 源的规范化事件。 |- 如果你想在与源无关的分析中添加或删除源，请更新此分析程序。 <br><br>- 在与源无关的查询中使用此函数。|
-| **imDNS\<vendor\>\<product\>** | 特定于源的分析程序为特定源实现规范化，例如 imDNSWindowsOMS。 |- 当没有内置规范化分析程序时，为源添加特定于源的分析程序。 更新聚合分析程序，以包含对新分析程序的引用。 <br><br>- 更新特定于源的分析程序，以解决分析和规范化问题。<br><br>- 使用特定于源的分析程序进行特定于源的分析。|
+| **ASimDNS** | 类似于 `imDns` 函数，但不支持参数，因此不会强制“日志”页时间选取器使用 `custom` 值。 |- 如果你想在与源无关的分析中添加或删除源，请更新此分析程序。<br><br>- 如果计划不使用参数，请对与源无关的查询使用此函数。|
+| **vimDNS\<vendor\>\<product\>** | 特定于源的分析程序为特定源实现规范化，例如 imDNSWindowsOMS。 |- 当没有内置规范化分析程序时，为源添加特定于源的分析程序。 更新 `im` 聚合分析程序，以包含对新分析程序的引用。 <br><br>- 更新特定于源的分析程序，以解决分析和规范化问题。<br><br>- 使用特定于源的分析程序进行特定于源的分析。|
+| **ASimDNS\<vendor\>\<product\>** | 特定于源的分析程序为特定源实现规范化。 与 `vim*` 函数不同，`ASimDNS*` 函数不支持参数。 |- 当没有内置规范化分析程序时，为源添加特定于源的分析程序。 更新 `ASim` 聚合分析程序，以包含对新分析程序的引用。<br><br>- 更新特定于源的分析程序，以解决分析和规范化问题。<br><br>- 如果不使用参数，请使用特定于源的 `ASim` 分析程序进行交互式查询。|
 | | | |
 
-可以从 [Azure Sentinel GitHub 存储库](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers/ASimDns/ARM)部署分析程序。
+可以从 [Azure Sentinel GitHub 存储库](https://aka.ms/azsentinelDNS)部署分析程序。
+
+### <a name="filtering-parser-parameters"></a>筛选分析程序参数
+
+`im` 和 `vim*` 分析程序支持[筛选参数](normalization-about-parsers.md#optimized-parsers)。 尽管这些分析程序是可选的，但可使用它们来提高查询性能。
+
+可使用以下筛选参数：
+
+| 名称     | 类型      | 说明 |
+|----------|-----------|-------------|
+| **starttime** | datetime | 仅筛选在此时间或之后运行的 DNS 查询。 |
+| **endtime** | datetime | 仅筛选在此时间或之前完成运行的 DNS 查询。 |
+| **srcipaddr** | 字符串 | 仅筛选来自此源 IP 地址的 DNS 查询。 |
+| **domain_has_any**| 动态 | 仅筛选 `domain`（或 `query`）具有任何列出的域名（包括作为事件域的一部分）的 DNS 查询。
+| **responsecodename** | 字符串 | 仅筛选响应代码名称与提供的值匹配的 DNS 查询。 例如：NXDOMAIN |
+| **response_has** | 字符串 | 仅筛选响应字段以提供的 IP 地址或 IP 地址前缀开头的 DNS 查询。 若要根据单个 IP 地址或前缀进行筛选，请使用此参数。 对于不提供响应的源，不会返回结果。|
+| **response_has_any_prefix** | 动态| 仅筛选响应字段以任何列出的 IP 地址或 IP 地址前缀开头的 DNS 查询。 若要根据 IP 地址或前缀列表进行筛选，请使用此参数。 对于不提供响应的源，不会返回结果。 |
+| **eventtype**| 字符串 | 仅筛选指定类型的 DNQ 查询。 如果未指定值，则仅返回查找查询。 |
+||||
+
+若要使用某个参数筛选结果，必须在分析程序中指定该参数。 
 
 ## <a name="normalized-content"></a>规范化内容
 
@@ -81,10 +105,10 @@ imDNS | where SrcIpAddr != "127.0.0.1" and EventSubType == "response"
  - [已知 IRIDIUM IP](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/IridiumIOCs.yaml)
  - [NOBELIUM - 域和 IP IOC - 2021 年 3 月](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_DomainIOCsMarch2021.yaml)
  - [已知 Phosphorus 组域/IP](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/PHOSPHORUSMarch2019IOCs.yaml)
- - [已知 STRONTIUM 组域 - 2019 年 7 月](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/STRONTIUMJuly2019IOCs.yaml)
+ - [已知的 STRONTIUM 组域 - 2019 年 7 月](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/STRONTIUMJuly2019IOCs.yaml)
  - [Solorigate 网络信标](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/Solorigate-Network-Beacon.yaml)
  - [包含在 DCU 撤销中的 THALLIUM 域](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ThalliumIOCs.yaml)
- - [已知 ZINC Comebacker 和 Klackring 恶意软件哈希](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
+ - [已知的 ZINC Comebacker 和 Klackring 恶意软件哈希](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
 
 
 
@@ -101,7 +125,7 @@ Log Analytics 会为每条记录生成以下字段，你可以在[创建自定�
 | **字段** | **类型** | **说明** |
 | --- | --- | --- |
 | <a name=timegenerated></a>**TimeGenerated** | 日期/时间 | 报告设备生成事件的时间。 |
-| \_ResourceId | guid | 报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。 |
+| **\_ResourceId** | GUID | 报告设备或服务的 Azure 资源 ID，或使用 Syslog、CEF 或 WEF 转发的事件的日志转发器资源 ID。 |
 | | | |
 
 > [!NOTE]
@@ -112,15 +136,15 @@ Log Analytics 会为每条记录生成以下字段，你可以在[创建自定�
 
 事件字段通用于所有架构，描述活动本身和报告设备。
 
-| **字段** | **类** | 类型 | **示例** | **讨论 (Discussion)** |
+| 字段 | **类** | 类型 | **示例** | **讨论 (Discussion)** |
 | --- | --- | --- | --- | --- |
-| **EventMessage** | 可选 | 字符串 | | 一般消息或说明，包含在记录中或者根据记录生成。 |
-| EventCount | 必需 | Integer | `1` | 记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，应将其设置为 1。 |
+| **EventMessage** | 可选 | 字符串 | | 一般消息或说明，包含在记录中或者从记录生成。 |
+| “EventCount” | 必需 | 整数 | `1` | 记录描述的事件数。 <br><br>当源支持聚合且单个记录可以表示多个事件时，将使用此值。 <br><br>对于其他源，应将其设置为 1。 |
 | **EventStartTime** | 必需 | 日期/时间 | | 如果源支持聚合且记录表示多个事件，则使用此字段指定生成第一个事件的时间。 <br><br>在其他情况下，它是 [TimeGenerated](#timegenerated) 字段的别名。 |
 | **EventEndTime** | | Alias || [TimeGenerated](#timegenerated) 字段的别名。 |
 | **EventType** | 必需 | Enumerated | `lookup` | 指示记录报告的操作。 <br><Br> 对于 DNS 记录，此值将为 [DNS 操作代码](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)。 |
 | **EventSubType** | 可选 | Enumerated || request 或 response。 对于大多数源，[仅记录响应](#guidelines-for-collecting-dns-events)，因此该值通常为“response”。  |
-| **EventResult** | 必需 | Enumerated | `Success` | 以下值之一：Success、Partial、Failure、NA（不适用）   。<br> <br>在源记录中，该值可能使用不同的字词提供，这些字词应规范化为上述值。 或者，源记录可能只提供 [EventResultDetails](#eventresultdetails) 字段，应对该字段进行分析以得出 EventResult 值。<br> <br>如果此记录表示请求而不是响应，则设置为 NA。 |
+| **EventResult** | 必需 | Enumerated | `Success` | 以下值之一：Success、Partial、Failure、NA（不适用）   。<br> <br>可以在源记录中使用不同字词提供该值，这些字词应规范化为这些值。 或者，源记录可能只提供 [EventResultDetails](#eventresultdetails) 字段，应对该字段进行分析以得出 EventResult 值。<br> <br>如果此记录表示请求而不是响应，则设置为 NA。 |
 | <a name=eventresultdetails></a>**EventResultDetails** | 必需 | Alias | `NXDOMAIN` | EventResult 字段中报告的结果的原因或详细信息。 它是 [ResponseCodeName](#responsecodename) 字段的别名。|
 | **EventOriginalUid** | 可选 | 字符串 | | 原始记录的唯一 ID（如果已由源提供）。 |
 | EventOriginalType   | 可选    | 字符串  | `lookup` |   原始事件类型或 ID（如果已由源提供）。 |
@@ -129,8 +153,8 @@ Log Analytics 会为每条记录生成以下字段，你可以在[创建自定�
 | **EventVendor** | 必需 | 字符串 | `Microsoft` | 生成事件的产品的供应商。 该字段在源记录中可能不可用，在这种情况下，它应由分析程序设置。 |
 | **EventSchemaVersion** | 必需 | 字符串 | `0.1.1` | 此处所述的架构版本为 0.1.1。 |
 | **EventReportUrl** | 可选 | 字符串 | | 在资源的事件中提供的 URL，提供有关该事件的更多信息。 |
-| <a name="dvc"></a>**Dvc** | 必需       | 字符串     |    `ContosoDc.Contoso.Azure` |           发生该事件的设备的唯一标识符。 <br><br>此字段可能又称为 [DvcId](#dvcid)、[DvcHostname](#dvchostname) 或 [DvcIpAddr](#dvcipaddr) 字段。 对于没有明确的设备的云源，请使用与 [EventProduct](#eventproduct) 字段相同的值。         |
-| <a name ="dvcipaddr"></a>DvcIpAddr           | 建议 | IP 地址 |  `45.21.42.12` |       发生进程事件的设备的 IP 地址。  |
+| <a name="dvc"></a>**Dvc** | 必需       | 字符串     |    `ContosoDc.Contoso.Azure` |           发生该事件的设备的唯一标识符。 <br><br>此字段可以别名化 [DvcId](#dvcid)、[DvcHostname](#dvchostname) 或 [DvcIpAddr](#dvcipaddr) 字段。 对于没有明确设备的云源，请使用与 [Event Product](#eventproduct) 字段相同的值。         |
+| <a name ="dvcipaddr"></a>“DvcIpAddr”           | 建议 | IP 地址 |  `45.21.42.12` |       发生进程事件的设备的 IP 地址。  |
 | <a name ="dvchostname"></a>**DvcHostname**         | 建议 | 主机名   | `ContosoDc.Contoso.Azure` |              发生进程事件的设备的主机名。                |
 | <a name ="dvcid"></a>**DvcId**               | 可选    | 字符串     || 发生进程事件的设备的唯一 ID。 <br><br>示例： `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
 | <a name=additionalfields></a>**AdditionalFields** | 可选 | 动态 | | 如果源提供了值得保留的附加信息，请使用原始字段名称保留这些信息，或者创建 AdditionalFields 动态字段，并在其中以键/值对的形式添加这些附加信息。 |
@@ -140,7 +164,7 @@ Log Analytics 会为每条记录生成以下字段，你可以在[创建自定�
 
 以下字段特定于 DNS 事件。 也就是说，它们中的许多在其他架构中确实有相似之处，因此遵循相同的命名约定。
 
-| **字段** | **类** | 类型 | **示例** | **说明** |
+| 字段 | **类** | 类型 | **示例** | **备注** |
 | --- | --- | --- | --- | --- |
 | **SrcIpAddr** | 必需 | IP 地址 |  `192.168.12.1 `| 发送 DNS 请求的客户端的 IP 地址。 对于递归 DNS 请求，此值通常为报告设备，并且在大多数情况下设置为 127.0.0.1。 |
 | **SrcPortNumber** | 可选 | 整数 |  `54312` | DNS 查询的源端口。 |
