@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 1fd639d1050490c03d269422d2d6eabad972ce10
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6135d675f2f719f7fa471a886715bce5d6036eb7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738172"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425595"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 Azure 现已提供对第 2 代虚拟机 (VM) 的支持。 创建虚拟机后无法更改其代系，因此，在选择代系之前，请先查看本页上的注意事项。
 
@@ -25,7 +27,7 @@ Azure 现已提供对第 2 代虚拟机 (VM) 的支持。 创建虚拟机后无�
 
 ## <a name="generation-2-vm-sizes"></a>第 2 代 VM 的大小
 
-Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 Azure 目前为以下选定 VM 系列提供第 2 代支持：
+Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列和 Msv2 和 Mdsv2 中型内存系列 VM 除外）。 Azure 目前为以下选定 VM 系列提供第 2 代支持：
 
 
 * [B 系列](sizes-b-series-burstable.md)
@@ -47,6 +49,7 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 * [Lsv2 系列](lsv2-series.md)
 * [M 系列](m-series.md)
 * [Mv2 系列](mv2-series.md)<sup>1</sup>
+* [Msv2 和 Mdsv2 中型内存系列](msv2-mdsv2-series.md)<sup>1</sup>
 * [NCv2 系列](ncv2-series.md) 
 * [NCv3 系列](ncv3-series.md)
 * [ND 系列](nd-series.md)
@@ -54,7 +57,7 @@ Azure 中的所有 VM 大小都支持第 1 代 VM（Mv2 系列 VM 除外）。 A
 * [NVv4 系列](nvv4-series.md)
 * [NCasT4_v3 系列](nct4-v3-series.md)
 
-<sup>1</sup> Mv2 系列不支持第 1 代 VM 映像，仅支持一部分第 2 代映像。 有关详细信息，请参阅 [Mv2 系列文档](mv2-series.md)。
+<sup>1</sup> Mv2 系列、Msv2 和 Mdsv2 系列中型内存不支持第 1 代 VM 映像，仅支持一部分第 2 代映像。 有关详细信息，请参阅 [Mv2 系列文档](mv2-series.md)和 [Msv2 和 Mdsv2 中型内存系列](msv2-mdsv2-series.md)。
 
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure 市场中的第 2 代 VM 映像

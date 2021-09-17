@@ -8,16 +8,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
-ms.reviewer: akjosh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1ba23474034623228cc7c645ffb3d0ec5ae65474
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 52f4152a8f3ec1d2f812de74ed0bd238fb323330
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679040"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451828"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>在创建映像时提供 Azure 市场购买计划信息
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 如果使用最初从 Azure 市场映像创建的源在共享库中创建映像，可能需要跟踪购买计划信息。 本文介绍了如何查找 VM 的购买计划信息以及之后如何在创建映像定义时使用该信息。 另外还介绍了如何在为映像创建 VM 时使用映像定义中的信息来简化提供购买计划信息。
 
@@ -68,7 +69,7 @@ $gallery = Get-AzGallery `
    -PurchasePlanName  $vm.Plan.Name
 ```
 
-然后使用 [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像版本。 可以从 [VM](image-version-vm-powershell.md#create-an-image-version)、[托管映像](image-version-managed-image-powershell.md#create-an-image-version)、[VHD\snapshot](image-version-snapshot-powershell.md#create-an-image-version) 或[另一映像版本](image-version-another-gallery-powershell.md#create-the-image-version)创建映像版本。 
+然后使用 [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) 创建[映像版本](image-version.md)。  
 
 
 ## <a name="create-the-vm"></a>创建 VM

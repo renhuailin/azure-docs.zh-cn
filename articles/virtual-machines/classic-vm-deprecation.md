@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: eee11a2f50dbc0d3121d3ba603e85d3700e333bb
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 253433c98ce2da8e69fadf82ff9e5902e5a990ef
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294022"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542226"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>请于 2023 年 3 月 1 日之前将 IaaS 资源迁移到 Azure 资源管理器 
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM
 
 2014 年，我们在 [Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)上推出了基础结构即服务 (IaaS)。 从那时起，我们一直在强化功能。 由于 Azure 资源管理器现具有完整的 IaaS 功能和其他改进，因此我们在 2020 年 2 月 28 日弃用了通过 [Azure Service Manager](/azure/virtual-machines/migration-classic-resource-manager-faq#what-is-azure-service-manager-and-what-does-it-mean-by-classic) (ASM) 管理 IaaS 虚拟机 (VM) 的功能。 此功能将于 2023 年 3 月 1 日完全停用。 
 
@@ -31,10 +33,11 @@ ms.locfileid: "114294022"
 - 在 2023 年 3 月 1 日，尚未迁移到 Azure 资源管理器的订阅将收到通知，其中附有关于删除所有剩余 VM（经典）的时间安排。  
 
 本次停用不影响下列 Azure 服务和功能： 
-- [Azure 云服务（经典）](../cloud-services/cloud-services-choose-me.md)
 - VM（经典）未使用的存储帐户 
 - VM（经典）未使用的虚拟网络 
 - 其他经典资源
+
+Azure 云服务（经典）于 2021 年 8 月在[此处](https://azure.microsoft.com/updates/cloud-services-retirement-announcement/)宣布停用
 
 ## <a name="what-resources-are-available-for-this-migration"></a>哪些资源可用于此迁移？
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: dbc48719f2897c22717319e1e07b5b3b3146fe84
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 544275ce4c9ab31fa65fe17351eed495895569e2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122638279"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432155"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -22,8 +22,8 @@ ms.locfileid: "122638279"
 
 > [!div class="checklist"]
 > * 创建虚拟 WAN
-> * 创建中心
-> * 创建站点到站点 VPN 网关
+> * 配置中心基本设置
+> * 配置站点到站点 VPN 网关设置
 > * 创建站点
 > * 将站点连接到中心
 > * 将 VPN 站点连接到中心
@@ -47,7 +47,7 @@ ms.locfileid: "122638279"
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-create-vwan-include.md)]
 
-## <a name="create-hub"></a><a name="hub"></a>创建中心
+## <a name="configure-hub-settings"></a><a name="hub"></a>配置中心设置
 
 中心是一种虚拟网络，可包含适用于站点到站点、ExpressRoute 或点到站点功能的网关。 在本教程中，首先填写虚拟中心的“基本信息”选项卡，然后在下一个部分中继续填写站点到站点选项卡。 请注意，可以创建空中心（不包含任何网关的中心），然后在将来添加网关（S2S、P2S、ExpressRoute 等）。 创建中心后，即使你没有在中心内附加任何站点或创建任何网关，也会对该中心收取费用。
 

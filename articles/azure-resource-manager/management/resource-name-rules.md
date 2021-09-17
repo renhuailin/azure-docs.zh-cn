@@ -2,13 +2,13 @@
 title: 资源命名限制
 description: 说明 Azure 资源的命名规则和限制。
 ms.topic: conceptual
-ms.date: 07/08/2021
-ms.openlocfilehash: a068f28ada85f73aed339956e242c959d6dcb4d3
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.date: 09/03/2021
+ms.openlocfilehash: 4af873a5e39286997272a492457374ca86349084
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113688300"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123478457"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
@@ -30,80 +30,80 @@ ms.locfileid: "113688300"
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | servers | 资源组 | 3-63 | 小写字母和数字。<br><br>以小写字母开头。 |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | 服务 | 全局 | 1-50 | 字母数字和连字符。<br><br>以字母开头，以字母数字结尾。 |
-> | service / apis | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / apis / issues | api | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / apis / issues / attachments | 问题 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / apis / issues / comments | 问题 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / apis / operations | api | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / apis / operations / tags | operation | 1-256 | 不得使用：<br> `*#&+:<>?` |
+> | 服务 | 全局 | 1-50 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / apis | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / apis / issues | api | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / apis / issues / attachments | 问题 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / apis / issues / comments | 问题 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / apis / operations | api | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / apis / operations / tags | operation | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
 > | service / apis / releases | api | 1-80 | 字母数字、下划线字符和连字符。<br><br>以字母数字或下划线开头和结尾。 |
-> | service / apis / schemas | api | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / apis / tagDescriptions | api | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / apis / tags | api | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / api-version-sets | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / authorizationServers | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / backends | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / certificates | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / diagnostics | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / groups | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / groups / users | group | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / identityProviders | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / loggers | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / notifications | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / notifications / recipientEmails | 通知 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / openidConnectProviders | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / policies | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / products | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / products / apis | product | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / products / groups | product | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / products / tags | product | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / properties | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / subscriptions | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / tags | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / templates | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
-> | service / users | 服务 | 1-256 | 不得使用：<br> `*#&+:<>?` |
+> | service / apis / schemas | api | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / apis / tagDescriptions | api | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / apis / tags | api | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / api-version-sets | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / authorizationServers | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / backends | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / certificates | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / diagnostics | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / groups | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / groups / users | group | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / identityProviders | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / loggers | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / notifications | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / notifications / recipientEmails | 通知 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / openidConnectProviders | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / policies | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / products | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / products / apis | product | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / products / groups | product | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / products / tags | product | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / properties | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / subscriptions | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / tags | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / templates | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | service / users | 服务 | 1-80 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | configurationStores | 资源组 | 5-50 | 字母数字、下划线字符和连字符。 |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | 锁定 | 分配范围 | 1-90 | 字母数字、句点、下划线、连字符和括号。<br><br>不能以句点结尾。 |
-> | policyAssignments | 分配范围 | 1-128 显示名称<br><br>1-64 资源名称<br><br>1-24 管理组范围内的资源名称 | 显示名称可以包含任何字符。<br><br>资源名称不能包含 `%`，且不能以句点或空格结尾。 |
-> | policyDefinitions | 定义范围 | 1-128 显示名称<br><br>1-64 资源名称 | 显示名称可以包含任何字符。<br><br>资源名称不能包含 `%`，且不能以句点或空格结尾。 |
-> | policySetDefinitions | 定义范围 | 1-128 显示名称<br><br>1-64 资源名称<br><br>1-24 管理组范围内的资源名称 | 显示名称可以包含任何字符。<br><br>资源名称不能包含 `%`，且不能以句点或空格结尾。  |
+> | policyAssignments | 分配范围 | 1-128 显示名称<br><br>1-64 资源名称<br><br>1-24 管理组范围内的资源名称 | 显示名称可以包含任何字符。<br><br>资源名不得包含以下内容：<br>`<>*%&:\?.+/` 或控制字符。 <br><br>不得以句点或空格结尾。 |
+> | policyDefinitions | 定义范围 | 1-128 显示名称<br><br>1-64 资源名称 | 显示名称可以包含任何字符。<br><br>资源名不得包含以下内容：<br>`<>*%&:\?.+/` 或控制字符。 <br><br>不得以句点或空格结尾。 |
+> | policySetDefinitions | 定义范围 | 1-128 显示名称<br><br>1-64 资源名称<br><br>1-24 管理组范围内的资源名称 | 显示名称可以包含任何字符。<br><br>资源名不得包含以下内容：<br>`<>*%&:\?.+/` 或控制字符。 <br><br>不得以句点或空格结尾。 |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | automationAccounts | 资源组和区域 <br>（请参阅下面的说明） | 6-50 | 字母数字和连字符。<br><br>以字母开头，以字母数字结尾。 |
-> | automationAccounts / certificates | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。  |
-> | automationAccounts / connections | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
-> | automationAccounts / credentials | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
+> | automationAccounts | 资源组和区域 <br>（请参阅下面的说明） | 6-50 | 字母数字和连字符。<br><br>以字母开头且以字母数字结尾。 |
+> | automationAccounts / certificates | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` 或控制字符 <br><br>不能以空格结尾。  |
+> | automationAccounts / connections | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` 或控制字符 <br><br>不能以空格结尾。 |
+> | automationAccounts / credentials | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` 或控制字符 <br><br>不能以空格结尾。 |
 > | automationAccounts / runbooks | 自动化帐户 | 1-63 | 字母数字、下划线字符和连字符。<br><br>以字母开头。  |
-> | automationAccounts / schedules | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
-> | automationAccounts / variables | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
+> | automationAccounts / schedules | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` 或控制字符 <br><br>不能以空格结尾。 |
+> | automationAccounts / variables | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` 或控制字符 <br><br>不能以空格结尾。 |
 > | automationAccounts / watchers | 自动化帐户 | 1-63 |  字母数字、下划线字符和连字符。<br><br>以字母开头。 |
-> | automationAccounts / webhooks | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` <br><br>不能以空格结尾。 |
+> | automationAccounts / webhooks | 自动化帐户 | 1-128 | 不得使用：<br> `<>*%&:\?.+/` 或控制字符 <br><br>不能以空格结尾。 |
 
 > [!NOTE]
 > 自动化帐户名称在每个区域和资源组中是唯一的。 已删除的自动化帐户的名称可能无法立即可用。
@@ -111,7 +111,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | batchAccounts | 区域 | 3-24 | 小写字母和数字。 |
 > | batchAccounts / applications | Batch 帐户 | 1-64 | 字母数字、下划线字符和连字符。 |
@@ -121,14 +121,14 @@ ms.locfileid: "113688300"
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | blockchainMembers | 全局 | 2-20 | 小写字母和数字。<br><br>以小写字母开头。 |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | botServices | 全局 | 2-64 |  字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 |
 > | botServices/channels | 机器人服务 | 2-64 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 |
@@ -138,7 +138,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | Redis | 全局 | 1-63 | 字母数字和连字符。<br><br>以字母数字开头和结尾。 不允许连续的连字符。 |
 > | Redis / firewallRules | Redis | 1-256 | 字母数字 |
@@ -146,7 +146,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | 配置文件 | 资源组 | 1-260 | 字母数字和连字符。<br><br>以字母数字开头和结尾。 |
 > | profiles/endpoints | 全局 | 1-50 | 字母数字和连字符。<br><br>以字母数字开头和结尾。 |
@@ -154,24 +154,24 @@ ms.locfileid: "113688300"
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | certificateOrders | 资源组 | 3-30 | 字母数字。 |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | accounts | 资源组 | 2-64 | 字母数字和连字符。<br><br>以字母数字开头和结尾。 |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | availabilitySets | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
-> | cloudservices | 资源组 | 1-15 <br><br>参阅下面的说明。 | 不能使用空格或以下字符：<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
+> | cloudservices | 资源组 | 1-15 <br><br>参阅下面的说明。 | 不得使用空格、控制字符或以下字符：<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
 > | diskEncryptionSets | 资源组 | 1-80 | 字母数字和下划线字符。 |
 > | disks | 资源组 | 1-80 | 字母数字、下划线字符和连字符。 |
 > | galleries | 资源组 | 1-80 | 字母数字和句点。<br><br>以字母数字开头和结尾。 |
@@ -181,8 +181,8 @@ ms.locfileid: "113688300"
 > | galleries/images/versions | image | 32-bit integer | 数字和句点。 |
 > | images | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | snapshots | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
-> | virtualMachines | 资源组 | 1-15 (Windows)<br>1-64 (Linux)<br><br>参阅下面的说明。 | 不能使用空格或以下字符：<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Windows VM 不能包含句点或以连字符结尾。<br><br>Linux VM 不能以句点或连字符结尾。 |
-> | virtualMachineScaleSets | 资源组 | 1-15 (Windows)<br>1-64 (Linux)<br><br>参阅下面的说明。 | 不能使用空格或以下字符：<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
+> | virtualMachines | 资源组 | 1-15 (Windows)<br>1-64 (Linux)<br><br>参阅下面的说明。 | 不得使用空格、控制字符或以下字符：<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Windows VM 不能包含句点或以连字符结尾。<br><br>Linux VM 不能以句点或连字符结尾。 |
+> | virtualMachineScaleSets | 资源组 | 1-15 (Windows)<br>1-64 (Linux)<br><br>参阅下面的说明。 | 不得使用空格、控制字符或以下字符：<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
 
 > [!NOTE]
 > Azure 虚拟机有两个不同的名称：资源名称和主机名。 在门户中创建虚拟机时，将对这两个名称使用同一个值。 上表中的限制适用于主机名。 实际资源名称最多可包含 64 个字符。
@@ -190,28 +190,28 @@ ms.locfileid: "113688300"
 ## <a name="microsoftcommunication"></a>Microsoft.Communication
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | communicationServices | 全局 | 1-63 | 字母数字、连字符和下划线。 |
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | budgets | 订阅或资源组 | 1-63 | 字母数字、连字符和下划线。 |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | containerGroups | 资源组 | 1-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不允许连续的连字符。 |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | registries | 全局 | 5-50 | 字母数字。 |
 > | registries / buildTasks | 注册表 | 5-50 | 字母数字。 |
@@ -225,7 +225,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | managedClusters | 资源组 | 1-63 | 字母数字、下划线字符和连字符。<br><br>以字母数字开头和结尾。 |
 > | openShiftManagedClusters | 资源组 | 1-30 | 字母数字。 |
@@ -233,7 +233,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | hubs | 资源组 | 1-64 | 字母数字。<br><br>以字母开头。  |
 > | hubs/authorizationPolicies | 中心 | 1-50 | 字母数字、下划线字符和句点。<br><br>以字母数字开头和结尾。 |
@@ -252,43 +252,43 @@ ms.locfileid: "113688300"
 ## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | associations | 资源组 | 1-180 | 不得使用：<br>`%&\\?/`<br><br>不得以句点或空格结尾。 |
-> | resourceProviders | 资源组 | 3-64 | 不得使用：<br>`%&\\?/`<br><br>不得以句点或空格结尾。 |
+> | associations | 资源组 | 1-180 | 不得使用：<br>`%&\\?/` 或控制字符<br><br>不得以句点或空格结尾。 |
+> | resourceProviders | 资源组 | 3-64 | 不得使用：<br>`%&\\?/` 或控制字符<br><br>不得以句点或空格结尾。 |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | jobs | 资源组 | 3-24 | 字母数字、连字符、下划线字符和句点。 |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | workspaces | 资源组 | 3-64 | 字母数字、下划线字符和连字符 |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | factories | 全局 | 3-63 | 字母数字和连字符。<br><br>以字母数字开头和结尾。 |
-> | factories / dataflows | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/`<br><br>以字母数字开头。 |
-> | factories / datasets | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/`<br><br>以字母数字开头。 |
+> | factories / dataflows | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/` 或控制字符<br><br>以字母数字开头。 |
+> | factories / datasets | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/` 或控制字符<br><br>以字母数字开头。 |
 > | factories / integrationRuntimes | 工厂 | 3-63 | 字母数字和连字符。<br><br>以字母数字开头和结尾。 |
-> | factories / linkedservices | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/`<br><br>以字母数字开头。 |
-> | factories / pipelines | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/`<br><br>以字母数字开头。 |
-> | factories / triggers | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/`<br><br>以字母数字开头。 |
-> | factories / triggers / rerunTriggers | 触发器 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/`<br><br>以字母数字开头。 |
+> | factories / linkedservices | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/` 或控制字符<br><br>以字母数字开头。 |
+> | factories / pipelines | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/` 或控制字符<br><br>以字母数字开头。 |
+> | factories / triggers | 工厂 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/` 或控制字符<br><br>以字母数字开头。 |
+> | factories / triggers / rerunTriggers | 触发器 | 1-260 | 不得使用：<br>`<>*#.%&:\\+?/` 或控制字符<br><br>以字母数字开头。 |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | accounts | 全局 | 3-24 | 小写字母和数字。 |
 > | ccounts/computePolicies | account | 3-60 | 字母数字、连字符和下划线字符。 |
@@ -299,7 +299,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | accounts | 全局 | 3-24 | 小写字母和数字。 |
 > | accounts/firewallRules | account | 3-50 | 字母数字、连字符和下划线字符。 |
@@ -308,15 +308,15 @@ ms.locfileid: "113688300"
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | services | 资源组 | 2-62 | 字母数字、连字符、句点和下划线。<br><br>以字母数字开头。 |
-> | services/projects | 服务 | 2-57 | 字母数字、连字符、句点和下划线。<br><br>以字母数字开头。 |
+> | services | 资源组 | 2-62 | 字母数字、连字符、句点和下划线字符。<br><br>以字母数字开头。 |
+> | services/projects | 服务 | 2-57 | 字母数字、连字符、句点和下划线字符。<br><br>以字母数字开头。 |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | servers | 全局 | 3-63 | 小写字母、连字符和数字。<br><br>不能以连字符开头或结尾。 |
 > | servers/databases | servers | 1-63 | 字母数字和连字符。 |
@@ -326,7 +326,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | servers | 全局 | 3-63 | 小写字母、连字符和数字。<br><br>不能以连字符开头或结尾。 |
 > | servers/databases | servers | 1-63 | 字母数字和连字符。 |
@@ -336,7 +336,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | servers | 全局 | 3-63 | 小写字母、连字符和数字。<br><br>不能以连字符开头或结尾。 |
 > | servers/databases | servers | 1-63 | 字母数字和连字符。 |
@@ -346,7 +346,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | IotHubs | 全局 | 3-50 | 字母数字和连字符。<br><br>不能以连字符结尾。 |
 > | IotHubs / certificates | IoT 中心 | 1-64 | 字母数字、连字符、句点和下划线。 |
@@ -357,7 +357,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | labs | 资源组 | 1-50 | 字母数字、下划线字符和连字符。 |
 > | labs/customimages | 实验室 | 1-80 | 字母数字、下划线字符、连字符和括号。 |
@@ -367,14 +367,14 @@ ms.locfileid: "113688300"
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | databaseAccounts | 全局 | 3-44 | 小写字母、数字和连字符。<br><br>以小写字母或数字开头。 |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | domains | 资源组 | 3-50 | 字母数字和连字符。 |
 > | domains / topics | 域 | 3-50 | 字母数字和连字符。 |
@@ -384,7 +384,7 @@ ms.locfileid: "113688300"
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | clusters | 资源组 | 6-50 | 字母数字和连字符。<br><br>以字母开头。 以字母或数字结尾。 |
 > | namespaces | 全局 | 6-50 | 字母数字和连字符。<br><br>以字母开头。 以字母或数字结尾。 |
@@ -397,39 +397,39 @@ ms.locfileid: "113688300"
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | clusters | 全局 | 3-59 | 字母数字和连字符<br><br>以字母或数字开头和结尾。 |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | jobs | 资源组 | 2-64 | 字母数字和连字符。<br><br>以字母开头。 |
 
 ## <a name="microsoftinsights"></a>Microsoft.Insights
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | actionGroups | 资源组 | 1-260 | 不得使用：<br>`:<>+/&%\?` <br><br>不得以空格或句点结尾。  |
-> | components | 资源组 | 1-260 | 不得使用：<br>`%&\?/` <br><br>不得以空格或句点结尾。  |
-> | scheduledQueryRules | 资源组 | 1-260 | 不得使用：<br>`*<>%{}&:\\?/#` <br><br>不得以空格或句点结尾。  |
-> | metricAlerts | 资源组 | 1-260 | 不得使用：<br>`*#&+:<>?@%{}\/` <br><br>不得以空格或句点结尾。  |
-> | activityLogAlerts | 资源组 | 1-260 | 不得使用：<br>`<>*%{}&:\\?+/#` <br><br>不得以空格或句点结尾。  |
+> | actionGroups | 资源组 | 1-260 | 不得使用：<br>`:<>+/&%\?` 或控制字符 <br><br>不得以空格或句点结尾。  |
+> | components | 资源组 | 1-260 | 不得使用：<br>`%&\?/` 或控制字符 <br><br>不得以空格或句点结尾。  |
+> | scheduledQueryRules | 资源组 | 1-260 | 不得使用：<br>`*<>%{}&:\\?/#` 或控制字符 <br><br>不得以空格或句点结尾。  |
+> | metricAlerts | 资源组 | 1-260 | 不得使用：<br>`*#&+:<>?@%{}\/` 或控制字符 <br><br>不得以空格或句点结尾。  |
+> | activityLogAlerts | 资源组 | 1-260 | 不得使用：<br>`<>*%{}&:\\?+/#` 或控制字符 <br><br>不得以空格或句点结尾。  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | IoTApps | 全局 | 2-63 | 小写字母、数字和连字符。<br><br>以小写字母或数字开头。 |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | vaults | 全局 | 3-24 | 字母数字和连字符。<br><br>以字母开头。 以字母或数字结尾。 不能包含连续的连字符。 |
 > | vaults / secrets | 保管库 | 1-127 | 字母数字和连字符。 |
@@ -437,7 +437,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | clusters | 全局 | 4-22 | 小写字母和数字。<br><br>以字母开头。 |
 > | /clusters / databases | cluster | 1-260 | 字母数字、连字符、空格和句点。 |
@@ -447,34 +447,34 @@ ms.locfileid: "113688300"
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | integrationAccounts | 资源组 | 1-80 | 字母数字、连字符、下划线、句点和括号。 |
-> | integrationAccounts / assemblies | 集成帐户 | 1-80 | 字母数字、连字符、下划线、句点和括号。 |
+> | integrationAccounts / assemblies | 集成帐户 | 1-80 | 字母数字、连字符、下划线字符、句点和括号。 |
 > | integrationAccounts / batchConfigurations | 集成帐户 | 1-20 | 字母数字。 |
-> | integrationAccounts / certificates | 集成帐户 | 1-80 | 字母数字、连字符、下划线、句点和括号。 |
+> | integrationAccounts / certificates | 集成帐户 | 1-80 | 字母数字、连字符、下划线字符、句点和括号。 |
 > | integrationAccounts / maps | 集成帐户 | 1-80 | 字母数字、连字符、下划线、句点和括号。 |
-> | integrationAccounts / partners | 集成帐户 | 1-80 | 字母数字、连字符、下划线、句点和括号。 |
+> | integrationAccounts / partners | 集成帐户 | 1-80 | 字母数字、连字符、下划线字符、句点和括号。 |
 > | integrationAccounts / rosettanetprocessconfigurations | 集成帐户 | 1-80 | 字母数字、连字符、下划线、句点和括号。 |
 > | integrationAccounts / schemas | 集成帐户 | 1-80 | 字母数字、连字符、下划线、句点和括号。 |
 > | integrationAccounts / sessions | 集成帐户 | 1-80 | 字母数字、连字符、下划线、句点和括号。 |
-> | integrationServiceEnvironments | 资源组 | 1-80 | 字母数字、连字符、句点和下划线。 |
-> | integrationServiceEnvironments / managedApis | 集成服务环境 | 1-80 | 字母数字、连字符、句点和下划线。 |
+> | integrationServiceEnvironments | 资源组 | 1-80 | 字母数字、连字符、句点和下划线字符。 |
+> | integrationServiceEnvironments / managedApis | 集成服务环境 | 1-80 | 字母数字、连字符、句点和下划线字符。 |
 > | workflows | 资源组 | 1-80 | 字母数字、连字符、下划线字符、句点和括号。 |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | commitmentPlans | 资源组 | 1-260 | 不得使用：<br>`<>*%&:?+/\\`<br><br>不得以空格结尾。 |
-> | webServices | 资源组 | 1-260 | 不得使用：<br>`<>*%&:?+/\\`<br><br>不得以空格结尾。 |
-> | workspaces | 资源组 | 1-260 | 不得使用：<br>`<>*%&:?+/\\`<br><br>不得以空格结尾。 |
+> | commitmentPlans | 资源组 | 1-260 | 不得使用：<br>`<>*%&:?+/\\` 或控制字符<br><br>不得以空格结尾。 |
+> | webServices | 资源组 | 1-260 | 不得使用：<br>`<>*%&:?+/\\` 或控制字符<br><br>不得以空格结尾。 |
+> | workspaces | 资源组 | 1-260 | 不得使用：<br>`<>*%&:?+/\\` 或控制字符<br><br>不得以空格结尾。 |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | workspaces | 资源组 | 3-33 | 字母数字和连字符。 |
 > | workspaces / computes | 工作区 | 2-16 | 字母数字和连字符。 |
@@ -482,21 +482,21 @@ ms.locfileid: "113688300"
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | userAssignedIdentities | 资源组 | 3-128 | 字母数字、连字符和下划线<br><br>以字母或数字开头。 |
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | accounts | 资源组 | 1-98（对于资源组名称和帐户名） | 字母数字、下划线字符、句点和连字符。<br><br>以字母数字开头。 |
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | mediaservices | 资源组 | 3-24 | 小写字母和数字。 |
 > | mediaservices / liveEvents | 媒体服务 | 1-32 | 字母数字和连字符。<br><br>以字母数字开头。 |
@@ -506,7 +506,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | applicationGateways | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
 > | applicationSecurityGroups | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结尾。 |
@@ -548,7 +548,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | namespaces | 全局 | 6-50 | 字母数字和连字符<br><br>以字母开头。 以字母数字结尾。 |
 > | namespaces / AuthorizationRules | 命名空间 | 1-256 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头。 |
@@ -558,7 +558,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | clusters | 资源组 | 4-63 | 字母数字和连字符。<br><br>以字母数字开头和结尾。 |
 > | workspaces | 全局 | 4-63 | 字母数字和连字符。<br><br>以字母数字开头和结尾。 |
@@ -566,35 +566,35 @@ ms.locfileid: "113688300"
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | solutions | 工作区 | 空值 | 对于 Microsoft 创作的解决方案，名称必须采用以下格式：<br>`SolutionType(WorkspaceName)`<br><br>对于第三方创作的解决方案，名称必须采用以下格式：<br>`SolutionType[WorkspaceName]`<br><br>例如，有效名称为：<br>`AntiMalware(contoso-IT)`<br><br>解决方案类型区分大小写。 |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | dashboards | 资源组 | 3-160 | 字母数字和连字符。<br><br>若要使用受限字符，请添加名为 **hidden-title** 的标记以及要使用的仪表板名称。 显示仪表板时，门户会显示该名称。 |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | workspaceCollections | region | 3-63 | 字母数字和连字符。<br><br>不能以连字符开头。 不能使用连续的连字符。 |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | capacities | region | 3-63 | 小写字母或数字<br><br>以小写字母开头。 |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | vaults | 资源组 | 2-50 | 字母数字和连字符。<br><br>以字母开头。 |
 > | vaults / backupPolicies | 保管库 | 3-150 | 字母数字和连字符。<br><br>以字母开头。 不能以连字符结尾。 |
@@ -602,7 +602,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | namespaces | 全局 | 6-50 | 字母数字和连字符。<br><br>以字母开头。 以字母或数字结尾。 |
 > | namespaces / AuthorizationRules | 命名空间 | 1-50 |  字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
@@ -614,18 +614,18 @@ ms.locfileid: "113688300"
 ## <a name="microsoftresources"></a>Microsoft.Resources
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | deployments | 资源组 | 1-64 | 字母数字、下划线、括号、连字符和句点。 |
 > | resourcegroups | 订阅 | 1-90 | 字母数字、下划线、括号、连字符、句点，以及与[正则表达式文档](/rest/api/resources/resourcegroups/createorupdate)匹配的 Unicode 字符。<br><br>不能以句点结尾。 |
-> | tagNames | resource | 1-512 | 不得使用：<br>`<>%&\?/` |
+> | tagNames | resource | 1-512 | 不得使用：<br>`<>%&\?/` 或控制字符 |
 > | tagNames / tagValues | 标记名称 | 1-256 | 所有字符。 |
 > | templateSpecs | 资源组 | 1-90 | 字母数字、下划线、括号、连字符和句点。 |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | namespaces | 全局 | 6-50 | 字母数字和连字符。<br><br>以字母开头。 以字母或数字结尾。<br><br>有关详细信息，请参阅[创建命名空间](/rest/api/servicebus/create-namespace)。 |
 > | namespaces / AuthorizationRules | 命名空间 | 1-50 | 字母数字、句点、连字符和下划线。<br><br>以字母数字开头和结尾。 |
@@ -641,35 +641,35 @@ ms.locfileid: "113688300"
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | clusters | region | 4-23 | 小写字母、数字和连字符。<br><br>以小写字母开头。 以小写字母或数字结尾。 |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | signalR | 全局 | 3-63 | 字母数字和连字符。<br><br>以字母开头。 以字母或数字结尾。  |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | managedInstances | 全局 | 1-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 <br><br> 不能包含任何特殊字符，例如 `@`。 |
 > | servers | 全局 | 1-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 |
 > | servers / administrators | server |  | 必须是 `ActiveDirectory`。 |
-> | servers/databases | server | 1-128 | 不得使用：<br>`<>*%&:\/?`<br><br>不得以句点或空格结尾。 |
+> | servers/databases | server | 1-128 | 不得使用：<br>`<>*%&:\/?` 或控制字符<br><br>不得以句点或空格结尾。 |
 > | servers / databases / syncGroups | database | 1-150 | 字母数字、连字符和下划线。 |
-> | servers / elasticPools | server | 1-128 | 不得使用：<br>`<>*%&:\/?`<br><br>不得以句点或空格结尾。 |
+> | servers / elasticPools | server | 1-128 | 不得使用：<br>`<>*%&:\/?` 或控制字符<br><br>不得以句点或空格结尾。 |
 > | servers / failoverGroups | 全局 | 1-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 |
-> | servers / firewallRules | server | 1-128 | 不得使用：<br>`<>*%&:;\/?`<br><br>不能以句点结尾。 |
+> | servers / firewallRules | server | 1-128 | 不得使用：<br>`<>*%&:;\/?` 或控制字符<br><br>不能以句点结尾。 |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | storageAccounts | 全局 | 3-24 | 小写字母和数字。 |
 > | storageAccounts / blobServices | 存储帐户 |  | 必须是 `default`。 |
@@ -684,7 +684,7 @@ ms.locfileid: "113688300"
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | storageSyncServices | 资源组 | 1-260 | 字母数字、空格、句点、连字符和下划线字符。<br><br>不得以句点或空格结尾。 |
 > | storageSyncServices/syncGroups | 存储同步服务 | 1-260 | 字母数字、空格、句点、连字符和下划线字符。<br><br>不得以句点或空格结尾。 |
@@ -692,14 +692,14 @@ ms.locfileid: "113688300"
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | managers | 资源组 | 2-50 | 字母数字和连字符。<br><br>以字母开头。 以字母数字结尾。 |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | streamingjobs | 资源组 | 3-63 | 字母数字、连字符和下划线。 |
 > | streamingjobs / functions | 流式处理作业 | 3-63 | 字母数字、连字符和下划线。 |
@@ -710,17 +710,17 @@ ms.locfileid: "113688300"
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | environments | 资源组 | 1-90 | 不得使用：<br>`'<>%&:\?/#` |
-> | environments / accessPolicies | 环境 | 1-90 | 不得使用：<br> `'<>%&:\?/#` |
-> | environments / eventSources | 环境 | 1-90 | 不得使用：<br>`'<>%&:\?/#` |
+> | environments | 资源组 | 1-90 | 不得使用：<br>`'<>%&:\?/#` 或控制字符 |
+> | environments / accessPolicies | 环境 | 1-90 | 不得使用：<br> `'<>%&:\?/#` 或控制字符 |
+> | environments / eventSources | 环境 | 1-90 | 不得使用：<br>`'<>%&:\?/#` 或控制字符 |
 > | environments / referenceDataSets | 环境 | 3-63 | 字母数字 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 > [!div class="mx-tableFixed"]
-> | 实体 | 范围 | Length | 有效的字符 |
+> | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | certificates | 资源组 | 1-260 | 不得使用：<br>`/` <br><br>不得以空格或句点结尾。  | 
 > | serverfarms | 资源组 | 1-40 | 字母数字和连字符。 |

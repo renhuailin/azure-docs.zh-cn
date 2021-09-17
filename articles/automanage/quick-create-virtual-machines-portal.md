@@ -10,12 +10,12 @@ ms.subservice: automanage
 ms.workload: infrastructure
 ms.custom:
 - mode-portal
-ms.openlocfilehash: d0c319fa9579f68c7f429283327f43869c4ab2b1
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: faf51735ae6805f0ff7db98416e9b05731c08642
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113006043"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426447"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>快速入门：在 Azure 门户中启用适用于虚拟机的 Azure 自动管理
 
@@ -35,23 +35,9 @@ ms.locfileid: "113006043"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://aka.ms/AutomanagePortal-Ignite21)。
+登录 [Azure 门户](https://aka.ms/AutomanagePortal-Ignite21)。
 
-## <a name="enable-automanage-for-a-single-machine"></a>对单个虚拟机启用 Automanage
-
-1. 浏览到要启用的虚拟机。
-
-2. 在“操作”下的目录中单击“Automanage (预览版)”项 。
-
-3. 选择“入门”。
-
-    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-getstartedbutton.png" alt-text="启动单个 VM。":::
-
-4. 选择 Automanage 设置（环境、首选项、Automanage 帐户）并点击“启用”。
-
-    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-enablepane.png" alt-text="在单个 VM 上启用。":::
-
-## <a name="enable-automanage-for-multiple-machines"></a>对多个虚拟机启用 Automanage
+## <a name="enable-automanage-on-existing-machines"></a>在现有计算机上启用 Automanage
 
 1. 在搜索栏中，搜索并选择“Automanage - Azure 计算机最佳做法”。
 

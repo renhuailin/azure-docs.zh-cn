@@ -3,12 +3,12 @@ title: 快速入门：入门
 description: 在本快速入门中，你将开始了解 Defender for IoT 部署的基本工作流。
 ms.topic: quickstart
 ms.date: 06/06/2021
-ms.openlocfilehash: bb67cb5788e891861eb0c1f5fe2533d62b4ee520
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: cae5b1db400cebe341463dbc752fe5559b779380
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254077"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437649"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>快速入门：Defender for IoT 入门
 
@@ -40,7 +40,14 @@ ms.locfileid: "122254077"
 
 阐明网络设置需求
 
-研究网络体系结构、受监视的带宽以及其他网络详细信息。 有关详细信息，请参阅 [Azure Defender for IoT 网络设置简介](how-to-set-up-your-network.md)。
+研究你的：
+
+- 网络体系结构
+- 受监视带宽
+- 创建证书的要求
+- 其他网络详细信息。
+
+有关详细信息，请参阅 [Azure Defender for IoT 网络设置简介](how-to-set-up-your-network.md)。
 
 阐明处理网络负载所需的传感器和管理控制台设备
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 08/23/2021
 ms.author: peshultz
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: bb394dd05fdcb84cf26c58ef6b840cfd76c3ef61
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 02379ee6872564b73441f6756479965912f3925f
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768866"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449092"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>教程：使用 Azure Functions 触发批处理作业
 
@@ -42,15 +42,15 @@ ms.locfileid: "122768866"
 
 ### <a name="create-a-pool"></a>创建池
 
-1. 使用 Azure 凭据登录到 [Batch Explorer](https://azure.github.io/BatchExplorer/)。
-1. 选择左侧栏上的“池”来创建池，然后选择搜索窗体上方的“添加”按钮 。
-   1. 选择 ID 和显示名称。 本示例使用 `ocr-pool`。
-   1. 缩放类型设置为“固定大小”，专用节点计数设置为 3  。
-   1. 选择“Ubuntu 18.04 LTS”作为操作系统  。
-   1. 选择 `Standard_f2s_v2` 作为虚拟机大小。
-   1. 启用启动任务，并添加命令 `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"`。 请务必将用户标识设置为“任务默认用户 (Admin)”，使启动任务可以包括含 `sudo` 的命令  。
-   1. 选择“确定”  。
-
+1. 使用 Azure 凭据登录到 Batch Explorer。
+1. 选择左侧栏上的“池”来创建池，然后选择搜索窗体上方的“添加”按钮   。 
+    1. 选择 ID 和显示名称。 本示例使用 `ocr-pool`。
+    1. 缩放类型设置为“固定大小”，专用节点计数设置为 3  。
+    1. 选择“Ubuntuserver” > “18.04-lts”作为操作系统 。
+    1. 选择 `Standard_f2s_v2` 作为虚拟机大小。
+    1. 启用启动任务，并添加命令 `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"`。 请务必将用户标识设置为“任务用户(Admin)”，使启动任务可以包括含 `sudo` 的命令。
+    1. 选择“确定”  。
+  
 ### <a name="create-a-job"></a>创建作业
 
 1. 选择左侧栏上的“作业”来创建池上的作业，然后选择搜索窗体上方的“添加”按钮   。
@@ -71,12 +71,15 @@ ms.locfileid: "122768866"
 在本节中，你将创建 Azure 函数，每当文件上传到输入容器时，该函数就会触发 OCR 批处理作业。
 
 1. 按照[创建由 Azure Blob 存储触发的函数](../azure-functions/functions-create-storage-blob-triggered-function.md)中的步骤创建函数。
-   1. 当提示输入存储帐户时，请使用与批处理帐户关联的同一存储帐户。
-1. 对于运行时堆栈，选择“.NET”  。 我们将使用 C# 编写函数，以利用批处理 .NET SDK。
-1. 创建 Blob 触发函数后，在函数中使用 GitHub 中的 [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) 和 [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj)。
-   * `run.csx` 在将新 Blob 添加到输入 Blob 容器时运行。
-   * `function.proj` 列出函数代码中的外部库（例如，批处理 .NET SDK）。
-1. 更改 `run.csx` 文件的 `Run()` 函数中变量的占位符值，以反映批处理和存储凭据。 在“Azure 门户”中批处理帐户的“密钥”部分可以找到这些凭据。
+    1. 对于运行时堆栈，选择“.NET”  。 我们将使用 C# 编写函数，以利用批处理 .NET SDK。
+    1. 在“托管”下提示输入存储帐户时，请使用与批处理帐户关联的同一存储帐户。
+    1. 创建 Azure Blob 存储帐户触发器时，请确保将路径设置为 `input/{name}`（以匹配输入容器的名称）。
+1. 创建 blob 触发的函数后，选择“代码 + 测试”。 在函数中使用 GitHub 中的 [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) 和 [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj)。 默认情况下 `function.proj` 不存在，因此请选择“上传”按钮将其上传到开发工作区。
+    * `run.csx` 在将新 Blob 添加到输入 Blob 容器时运行。
+    * `function.proj` 列出函数代码中的外部库（例如，批处理 .NET SDK）。
+1. 更改 `run.csx` 文件的 `Run()` 函数中变量的占位符值，以反映批处理和存储凭据。 在“Azure 门户”中批处理帐户的“密钥”部分可以找到批处理和存储帐户凭据  。
+    * 请在“Azure 门户”中批处理帐户的“密钥”部分检索你的批处理和存储帐户凭据  。 
+
 
 ## <a name="trigger-the-function-and-retrieve-results"></a>触发函数并检索结果
 

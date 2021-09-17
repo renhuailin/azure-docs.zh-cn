@@ -1,14 +1,15 @@
 ---
 title: 已启用 Azure Arc 的服务器代理的新增功能
 description: 本文提供了已启用 Azure Arc 的服务器代理的发行说明。 对于许多汇总问题，提供了指向更多详细信息的链接。
-ms.topic: conceptual
-ms.date: 07/16/2021
-ms.openlocfilehash: 54e7bc72884cc7bc9116c88e7cdb72e5af5f71cd
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.topic: overview
+ms.date: 09/01/2021
+ms.custom: references_regions
+ms.openlocfilehash: d4008a41629ac2e71e1abdb91e30f2d6b9350538
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770957"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123431597"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理的新增功能
 
@@ -18,7 +19,28 @@ ms.locfileid: "122770957"
 - 已知问题
 - Bug 修复
 
+本页面每月更新，请不时回来查看。 若要查找 6 个月之前的项目，可以在[已启用 Azure Arc 的服务器代理的新增功能汇总](agent-release-notes-archive.md)中找到它们。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+版本 1.10
+
+### <a name="fixed"></a>固定
+
+- 来宾配置策略代理现在可以配置和修正系统设置。 现有策略分配仍为“仅审核”。 详细了解 Azure Policy [来宾配置修正选项](../../governance/policy/concepts/guest-configuration-policy-effects.md)。
+- 来宾配置策略代理现在每 48 小时重启一次，而不是每 6 小时一次。
+
 ## <a name="july-2021"></a>2021 年 7 月
+
+版本 1.9
+
+## <a name="new-features"></a>新增功能
+
+添加了对印度语的支持
+
+### <a name="fixed"></a>固定
+
+修复了在美国西部 3 区域阻止扩展管理的 bug
 
 版本 1.8
 
@@ -70,92 +92,6 @@ ms.locfileid: "122770957"
 - 用于以 JSON 格式定向输出结果的新 `-json` 参数（与 -useStderr 一起使用时）。
 - 收集其他实例元数据 - 制造商、模型和群集资源 ID（Azure Stack HCI 节点的）。
  
-## <a name="march-2021"></a>2021 年 3 月
-
-版本 1.4
-
-### <a name="new-features"></a>新增功能
-
-- 添加了对专用终结点的支持（目前为受限预览版）。
-- 展开了 azcmagent 的退出代码列表。
-- 现在，可以使用 `--config` 参数从文件中读取代理配置参数。
-- 收集新的实例元数据以确定服务器上是否安装了 Microsoft SQL Server
-
-### <a name="fixed"></a>固定
-
-网络终结点检查现在速度更快。
-
-## <a name="december-2020"></a>2020 年 12 月
-
-版本：1.3
-
-### <a name="new-features"></a>新增功能
-
-添加了对 Windows Server 2008 R2 SP1 的支持。
-
-### <a name="fixed"></a>固定
-
-解决了在 Linux 上无法成功安装自定义脚本扩展的问题。
-
-## <a name="november-2020"></a>2020 年 11 月
-
-版本：1.2
-
-### <a name="fixed"></a>固定
-
-解决了在基于 RPM 的分发上升级后，代理配置可能丢失的问题。
-
-## <a name="october-2020"></a>2020 年 10 月
-
-版本：1.1
-
-### <a name="fixed"></a>固定
-
-- 修复了用于处理备用 GC 守护程序单元文件位置的代理脚本。
-- GuestConfig 代理可靠性更改。
-- US Gov 弗吉尼亚州区域的 GuestConfig 代理支持。
-- 如果出现故障，GuestConfig 代理扩展报告的消息将更详细。
-
-## <a name="september-2020"></a>2020 年 9 月
-
-版本：1.0（正式发布）
-
-### <a name="plan-for-change"></a>更改计划
-
-- 在将来的服务更新中将取消对预览版代理（低于 1.0 的所有版本）的支持。
-- 已取消对回退终结点 `.azure-automation.net` 的支持。 如果有代理，则需要允许使用终结点 `*.his.arc.azure.com`。
-- 如果在 Azure 中托管的虚拟机上安装了 Connected Machine 代理，则无法从已启用 Arc 的服务器资源安装和修改 VM 扩展。 这是为了避免从虚拟机的 Microsoft.Compute 和 Microsoft.HybridCompute 资源进行冲突的扩展操作 。 请使用计算机的 Microsoft.Compute 资源进行所有扩展操作。
-- 来宾配置进程的名称已更改，在 Linux 上从 gcd 更改为 gcad，在 Windows 上从 gcservice 更改为 gcarcservice   。
-
-### <a name="new-features"></a>新增功能
-
-- 添加了 `azcmagent logs` 选项以收集支持信息。
-- 添加了 `azcmagent license` 选项以显示 EULA。
-- 添加了 `azcmagent show --json` 选项，以可轻松解析的格式输出代理状态。
-- 在 `azcmagent show` 输出中添加了标志，以指示服务器是否在 Azure 中托管的虚拟机上。
-- 添加了 `azcmagent disconnect --force-local-only` 选项以允许在无法访问 Azure 服务时重置本地代理状态。
-- 添加了 `azcmagent connect --cloud` 选项以支持其他云。 在此版本中，在代理发布时，服务仅支持 Azure。
-- 代理已本地化为 Azure 支持的语言。
-
-### <a name="fixed"></a>固定
-
-- 对连接性检查的改进。
-- 更正了在 Linux 上升级代理时代理服务器设置丢失的问题。
-- 解决了尝试在运行 Windows Server 2012 R2 的服务器上安装代理时的问题。
-- 对扩展安装可靠性的改进
-
-## <a name="august-2020"></a>2020 年 8 月
-
-版本：0.11
-
-- 此版本以前发布了对 Ubuntu 20.04 的支持。 由于某些 Azure VM 扩展不支持 Ubuntu 20.04，因此将取消对此版本 Ubuntu 的支持。
-
-- 对扩展部署可靠性的改进。
-
-### <a name="known-issues"></a>已知问题
-
-如果使用的是较旧版本的 Linux 代理并且其配置为使用代理服务器，则需要在升级后重新配置代理服务器设置。 要执行此操作，请运行 `sudo azcmagent_proxy add http://proxyserver.local:83`。
-
 ## <a name="next-steps"></a>后续步骤
 
 - 在多台混合计算机中评估或启用已启用了 Arc 的服务器之前，请先查看[连接的计算机代理概述](agent-overview.md)，以了解要求、有关代理的技术详细信息以及部署方法。

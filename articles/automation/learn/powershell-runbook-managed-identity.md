@@ -1,22 +1,22 @@
 ---
-title: 在 Azure 自动化中将托管标识与 PowerShell runbook 配合使用
+title: 在 Azure 自动化中使用托管标识创建 PowerShell runbook
 description: 在本教程中，你会了解如何在 Azure 自动化中将托管标识与 PowerShell runbook 配合使用。
 services: automation
 ms.subservice: process-automation
 ms.date: 08/16/2021
 ms.topic: tutorial
-ms.openlocfilehash: 074789a8af19d8054cbbd51cee1203af17d02af8
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 9f728a8e51dbe310f744d11dd495038b2ff96126
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326864"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540264"
 ---
-# <a name="tutorial-use-managed-identities-with-a-powershell-runbook-in-azure-automation"></a>教程：在 Azure 自动化中将托管标识与 PowerShell runbook 配合使用
+# <a name="tutorial-create-automation-powershell-runbook-using-managed-identity"></a>教程：使用托管标识创建自动化 PowerShell runbook
 
 本教程会指导你在 Azure 自动化中创建一个使用[托管标识](../automation-security-overview.md#managed-identities-preview)（而不是运行方式帐户）与资源进行交互的 [PowerShell runbook](../automation-runbook-types.md#powershell-runbooks)。 基于 Windows PowerShell 的 PowerShell Runbook。 借助 Azure Active Directory (Azure AD) 的托管标识，runbook 可以轻松访问其他受 Azure AD 保护的资源。
 
-在本教程中，你将了解：
+在本教程中，你将了解如何：
 
 > [!div class="checklist"]
 > * 向托管标识分配权限
@@ -24,7 +24,7 @@ ms.locfileid: "122326864"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 至少具有一个用户分配的托管标识的 Azure 自动化帐户。 有关详细信息，请参阅[对 Azure 自动化帐户使用用户分配的托管标识](../add-user-assigned-identity.md)。
 * 导入到自动化帐户中的 Az 模块：`Az.Accounts`、`Az.Automation`、`Az.ManagedServiceIdentity` 和 `Az.Compute`。 有关详细信息，请参阅[导入 Az 模块](../shared-resources/modules.md#import-az-modules)。
@@ -180,11 +180,11 @@ ms.locfileid: "122326864"
 
 1. 在编辑器中的第 8 行上，根据需要修改 `$automationAccount` 变量的值。
 
-1. 选择“保存”，然后选择“测试窗格”。 
+1. 选择“保存”，然后选择“测试窗格” 。
 
 1. 使用适当的值填充参数 `RESOURCEGROUP` 和 `VMNAME`。 对于 `METHOD` 参数输入 `SA`，对于 `UAMI` 参数输入 `xUAMI`。 该 runbook 会尝试使用系统分配的托管标识更改 VM 的电源状态。
 
-1. 选择“开始”。 该 runbook 完成后，输出应类似于以下内容：
+1. 选择“启动”。 该 runbook 完成后，输出应类似于以下内容：
 
     ```output
      Beginning VM status: PowerState/deallocated
@@ -204,7 +204,7 @@ ms.locfileid: "122326864"
 
 1. 将 `METHOD` 参数的值更改为 `UA`。
 
-1. 选择“开始”。 该 runbook 会尝试使用指定的用户分配的托管标识更改 VM 的电源状态。 该 runbook 完成后，输出应类似于以下内容：
+1. 选择“启动”。 该 runbook 会尝试使用指定的用户分配的托管标识更改 VM 的电源状态。 该 runbook 完成后，输出应类似于以下内容：
 
     ```output
     Using user-assigned managed identity
@@ -255,7 +255,11 @@ Remove-AzRoleAssignment `
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你在 Azure 自动化中创建了一个使用[托管标识](../automation-security-overview.md#managed-identities-preview)（而不是运行方式帐户）与资源进行交互的 [PowerShell runbook](../automation-runbook-types.md#powershell-runbooks)。 有关托管标识的详细信息，请参阅：
+在本教程中，你在 Azure 自动化中创建了一个使用[托管标识](../automation-security-overview.md#managed-identities-preview)（而不是运行方式帐户）与资源进行交互的 [PowerShell runbook](../automation-runbook-types.md#powershell-runbooks)。 有关 PowerShell 工作流 runbook 的信息，请参阅：
 
 > [!div class="nextstepaction"]
-> [对 Azure 自动化帐户使用用户分配的托管标识](../add-user-assigned-identity.md)
+> [教程：创建 PowerShell 工作流 Runbook](automation-tutorial-runbook-textual.md)
+
+
+
+

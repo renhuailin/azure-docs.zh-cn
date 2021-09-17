@@ -3,16 +3,16 @@ title: 适用于资源管理器的 Azure Defender - 优点和功能
 description: 了解适用于资源管理器的 Azure Defender 的优点和功能
 author: memildin
 ms.author: memildin
-ms.date: 07/14/2021
+ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 38eeaa02bf34f27580b29662f75455358c83ccb7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fff9c94af2c74612e8c07be1f7e125787265a72d
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732560"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541362"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 简介
 
@@ -22,13 +22,22 @@ ms.locfileid: "121732560"
 
 无论操作是通过 Azure 门户、Azure REST API、Azure CLI 还是其他 Azure 编程客户端执行的，适用于资源管理器的 Azure Defender 都会自动监视组织中的资源管理操作。 Azure Defender 运行高级安全分析来检测威胁并向你发出有关可疑活动的警报。
 
+>[!NOTE]
+> 上述几项分析由 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) 提供支持。 若要从这些分析中获益，必须激活 Cloud App Security 许可证。 如果你有 Cloud App Security 许可证，则默认会启用这些警报。 若要禁用警报：
+>
+> 1. 在安全中心的菜单中，选择“定价和设置”。
+> 1. 选择想要更改的订阅。
+> 1. 选择“集成”。
+> 1. 清除“允许 Microsoft Cloud App Security 访问我的数据”，然后选择“保存” 。
+
+
 ## <a name="availability"></a>可用性
 
 |方面|详细信息|
 |----|:----|
 |发布状态：|正式发布版 (GA)|
 |定价：|适用于资源管理器的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中所示的定价计费|
-|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 政府<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 中国世纪互联|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png":::Azure 政府<br>:::image type="icon" source="./media/icons/yes-icon.png":::Azure 中国世纪互联|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 有哪些优点？

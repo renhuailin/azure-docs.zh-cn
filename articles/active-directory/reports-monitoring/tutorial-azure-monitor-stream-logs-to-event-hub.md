@@ -4,7 +4,7 @@ description: 了解如何设置 Azure 诊断，以便将 Azure Active Directory 
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 06/23/2021
+ms.date: 09/02/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cff544e3d9ba2851db02e0e4440ba9f97b240e68
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: dabaf249df7554fc2a2811f3fd1916e20f072f57
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580829"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449814"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心
 
@@ -41,41 +41,41 @@ ms.locfileid: "112580829"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
-2. 选择“Azure Active Directory” > “监视” > “审核日志”。   
+1. 选择“Azure Active Directory” > “审核日志” 。 
 
-3. 选择“导出设置”。  
+1. 选择“导出数据设置”。  
     
-4. 在“诊断设置”窗格中，执行下述操作之一：
+1. 在“诊断设置”窗格中，执行下述操作之一：
     * 若要更改现有设置，请选择“编辑设置”。
     * 若要添加新设置，请选择“添加诊断设置”。  
       最多可以有三个设置。
 
-      ![导出设置](./media/quickstart-azure-monitor-stream-logs-to-event-hub/ExportSettings.png)
+1. 选中“流式传输到事件中心”复选框，然后选择“事件中心/配置”。
 
-5. 选中“流式传输到事件中心”复选框，然后选择“事件中心/配置”。
-
-6. 选择要将日志路由到的 Azure 订阅和事件中心命名空间。  
+   [ ![导出设置](./media/tutorial-azure-monitor-stream-logs-to-event-hub/diagnostic-setting-stream-to-event-hub.png) ](./media/tutorial-azure-monitor-stream-logs-to-event-hub/diagnostic-setting-stream-to-event-hub.png)
+   
+   1. 选择要将日志路由到的 Azure 订阅和事件中心命名空间。  
     订阅和事件中心命名空间必须都与从其流式传输日志的 Azure AD 租户相关联。 也可在应将日志发送到的事件中心命名空间中指定一个事件中心。 如果未指定事件中心，则会使用默认名称 **insights-logs-audit** 在命名空间中创建一个事件中心。
 
-7. 选择“确定”，退出事件中心配置。
+   1. 选择下列项的任意组合：
+       - 若要将审核日志发送到事件中心，请选中“AuditLogs”复选框。 
+       - 若要将交互式用户登录日志发送到事件中心，请选中“SignInLogs”复选框。
+       - 要将非交互式用户登录日志发送到事件中心，请选中“NonInteractiveUserSignInLogs”复选框。 
+       - 要将服务主体登录日志发送到事件中心，请选中“ServicePrincipalSignInLogs”复选框。
+       - 要将托管标识登录日志发送到事件中心，请选中“ManagedIdentitySignInLogs”复选框。
+       - 要将预配日志发送到事件中心，请选中“ProvisioningLogs”复选框。
+       - 要通过 AD FS Connect Health 代理向 Azure AD 发送登录信息，请选中“ADFSSignInLogs”复选框。
+       - 若要发送风险用户信息，请选中“RiskyUsers”复选框。
+       - 若要发送用户风险事件信息，请选中“UserRiskEvents”复选框。 
 
-8. 执行下列任意组合操作：
-    - 若要将审核日志发送到事件中心，请选中“AuditLogs”复选框。 
-    - 若要将交互式用户登录日志发送到事件中心，请选中“SignInLogs”复选框。
-    - 要将非交互式用户登录日志发送到事件中心，请选中“NonInteractiveUserSignInLogs”复选框。 
-    - 要将服务主体登录日志发送到事件中心，请选中“ServicePrincipalSignInLogs”复选框。
-    - 要将托管标识登录日志发送到事件中心，请选中“ManagedIdentitySignInLogs”复选框。
-    - 要将预配日志发送到事件中心，请选中“ProvisioningLogs”复选框。
-    - 要通过 AD FS Connect Health 代理向 Azure AD 发送登录信息，请选中“ADFSSignInLogs”复选框。
+       > [!NOTE]
+       > 某些登录类别包含大量日志数据，具体取决于租户的配置。 通常，非交互式用户登录和服务主体登录可以比交互式用户登录大 5 到 10 倍。
 
-    >[!Note]
-    >某些登录类别包含大量日志数据，具体取决于租户的配置。 通常，非交互式用户登录和服务主体登录可以比交互式用户登录大 5 到 10 倍。
+   1. 选择“保存”，保存设置。
 
-9. 选择“保存”，保存设置。
+1. 大约 15 分钟后，验证事件是否显示在事件中心。 为此，请从门户转到事件中心，然后验证“传入消息”计数是否大于零。 
 
-10. 大约 15 分钟后，验证事件是否显示在事件中心。 为此，请从门户转到事件中心，然后验证“传入消息”计数是否大于零。 
-
-    ![审核日志](./media/quickstart-azure-monitor-stream-logs-to-event-hub/InsightsLogsAudit.png)
+    [ ![审核日志](./media/tutorial-azure-monitor-stream-logs-to-event-hub/azure-monitor-event-hub-instance.png)](./media/tutorial-azure-monitor-stream-logs-to-event-hub/azure-monitor-event-hub-instance.png)
 
 ## <a name="access-data-from-your-event-hub"></a>从事件中心访问数据
 
@@ -93,11 +93,12 @@ ms.locfileid: "112580829"
 
 * **设置自定义工具**。 如果当前的 SIEM 在 Azure Monitor 诊断中不受支持，则可使用事件中心 API 设置自定义工具。 有关详细信息，请参阅[从事件中心接收消息入门](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。
 
-
 ## <a name="next-steps"></a>后续步骤
 
+* [创建诊断设置以将平台日志和指标发送到不同目标](../../azure-monitor/essentials/diagnostic-settings.md)
 * [使用 Azure Monitor 将 Azure Active Directory 日志与 ArcSight 集成](howto-integrate-activity-logs-with-arcsight.md)
 * [使用 Azure Monitor 将 Azure AD 日志与 Splunk 集成](./howto-integrate-activity-logs-with-splunk.md)
 * [使用 Azure Monitor 将 Azure AD 日志与 SumoLogic 集成](howto-integrate-activity-logs-with-sumologic.md)
+* [使用事件中心将 Azure AD 日志与 Elastic 集成](https://github.com/Microsoft/azure-docs/blob/master/articles/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [解释 Azure Monitor 中的审核日志架构](./overview-reports.md)
 * [解释 Azure Monitor 中的登录日志架构](reference-azure-monitor-sign-ins-log-schema.md)

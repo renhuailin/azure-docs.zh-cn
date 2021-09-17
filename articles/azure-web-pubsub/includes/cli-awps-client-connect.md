@@ -4,12 +4,12 @@ ms.service: azure-web-pubsub
 ms.topic: include
 ms.date: 08/06/2021
 ms.author: lianwei
-ms.openlocfilehash: 1f6356ceaa844433e6da3102b8db0fcbd5a61615
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: be837e20579a9236cc634e9518c82f17e2273e6b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781898"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123453433"
 ---
 使用 Azure CLI [az webpubsub client](/cli/azure/webpubsub/client) 命令启动与上一步创建的服务的 WebSocket 客户端连接，并提供以下信息：
 
@@ -22,13 +22,14 @@ ms.locfileid: "121781898"
 
 - 中心名称：myHub1。
 - 资源组名称：myResourceGroup。
+- 用户 ID：user1
 
 ```azurecli-interactive
-az webpubsub client start --name "<your-unique-resource-name>" --resource-group "myResourceGroup" --hub-name myHub1
+az webpubsub client start --name "<your-unique-resource-name>" --resource-group "myResourceGroup" --hub-name "myHub1" --user-id "user1"
 ```
 
 可以看到该命令建立了与 Web PubSub 服务的 WebSocket 连接，并且你收到了一条 JSON 消息，指示它现在已成功连接，并分配有唯一的 `connectionId`：
 
 ```json
-{"type":"system","event":"connected","userId":null,"connectionId":"<your_unique_connection_id>"}
+{"type":"system","event":"connected","userId":"user1","connectionId":"<your_unique_connection_id>"}
 ```

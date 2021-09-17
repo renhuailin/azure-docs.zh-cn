@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/19/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f787a01cb4e83b05b30a1e802658ed95a983e6a2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 77a5390b2bd4888c0fe43fb0b0d94b07563d1a68
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461033"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434891"
 ---
 # <a name="install-the-azure-monitor-agent"></a>安装 Azure Monitor 代理
 本文提供在 Azure 虚拟机和已启用 Azure Arc 的服务器上安装 [Azure Monitor 代理](azure-monitor-agent-overview.md)当前可采用的不同选项，还提供用于创建[数据收集规则关联](data-collection-rule-azure-monitor-agent.md)的选项，这些规则将定义代理应收集的数据。
@@ -27,7 +27,7 @@ ms.locfileid: "114461033"
   - *.control.monitor.azure.com
 
 > [!IMPORTANT]
-> Azure Monitor 代理当前不支持网络代理或专用链接。
+> Azure Monitor 代理当前不支持专用链接。
 
 ## <a name="virtual-machine-extension-details"></a>虚拟机扩展详细信息
 Azure Monitor 代理以 [Azure VM 扩展](../../virtual-machines/extensions/overview.md)方式实现，详细信息如下表所示。 可以使用任何方法来安装虚拟机扩展，其中包括本文中所述的方法。
@@ -37,6 +37,15 @@ Azure Monitor 代理以 [Azure VM 扩展](../../virtual-machines/extensions/over
 | Publisher | Microsoft.Azure.Monitor  | Microsoft.Azure.Monitor |
 | 类型      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
 | TypeHandlerVersion  | 1.0 | 1.5 |
+
+## <a name="extension-versions"></a>扩展版本
+强烈建议更新到 GA+ 版本，而不是使用预览版。
+
+| 发布日期 | 发行说明 | Windows | Linux |
+|:---|:---|:---|:---|:---|
+| 2021 年 6 月 | 宣布正式发布。 <ul><li>除指标目标之外的所有功能现已正式发布</li><li>生产质量、安全性和符合性</li><li>在所有公共区域推出</li><li>针对更高 EPS 的性能和缩放性方面的改进</li></ul> [了解详细信息](https://azure.microsoft.com/updates/azure-monitor-agent-and-data-collection-rules-now-generally-available/) | 1.0.12.0 | 1.9.1.0 |
+| 2021 年 7 月 | <ul><li>直接代理支持</li><li>Log Analytics 网关支持</li></ul> [了解详细信息](https://azure.microsoft.com/updates/general-availability-azure-monitor-agent-and-data-collection-rules-now-support-direct-proxies-and-log-analytics-gateway/) | 1.1.1.0 | 1.10.5.0 |
+| 2021 年 8 月 | 修复了允许将 Azure Monitor 指标用作唯一目标的问题 | 1.1.2.0 | 1.10.9.0（请勿使用 1.10.7.0） |
 
 
 ## <a name="install-with-azure-portal"></a>使用 Azure 门户安装

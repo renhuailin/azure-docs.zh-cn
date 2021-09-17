@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: e9e233aa5a4d32a1f298889b0a98c3a85d9cf4e5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 957bc2f34ddbc1af019afe0154d3a27ca6e3e368
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114456310"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451558"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 专用主机
+
+适用于：:heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 统一规模集
 
 Azure 专用主机是一种提供物理服务器（能够托管一个或多个虚拟机）的服务，专用于一个 Azure 订阅。 专用主机是数据中心中使用的相同物理服务器，作为资源提供。 你可以在区域、可用性区域和容错域中预配专用主机。 然后，可以按照最能满足你的需要的配置将 VM 直接放入预配的主机中。
 
@@ -174,7 +176,7 @@ Azure 将会监视和管理主机的运行状况状态。 查询主机时，将�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 可使用 [Azure PowerShell](./windows/dedicated-hosts-powershell.md)、[门户](./dedicated-hosts-portal.md)和 [Azure CLI](./linux/dedicated-hosts-cli.md) 部署专用主机。
+- 若要部署专用主机，请参阅[将 VM 和规模集部署到专用主机](./dedicated-hosts-how-to.md)。
 
 - 此处有[示例模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)，此模板使用区域和容错域来充分实现区域中的复原能力。
 

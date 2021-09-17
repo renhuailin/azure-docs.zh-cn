@@ -3,16 +3,16 @@ title: 适用于容器注册表的 Azure Defender - 优点和功能
 description: 了解容器注册表的 Azure Defender 的优点和功能。
 author: memildin
 ms.author: memildin
-ms.date: 08/16/2021
+ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 60f5ffd766c5731500bd4120556cb0fc547ff2a0
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 5c9407e33cefc9c604192252a119db5a42851949
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252840"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541398"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 简介
 
@@ -27,7 +27,7 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 |发布状态：|正式发布 (GA)|
 |定价：|适用于容器注册表的 Azure Defender 按[定价页](security-center-pricing.md)中的定价计费|
 |支持的注册表和映像：|可通过 shell 从公共 internet 访问的 ACR 注册表中的 Linux 映像<br>[受 Azure 专用链接保护的 ACR 注册表](../container-registry/container-registry-private-link.md)|
-|不支持的注册表和映像：|Windows 映像<br>“专用”注册表<br>超级简单的映像，例如 [Docker 暂存](https://hub.docker.com/_/scratch/)映像或仅包含应用程序及其运行时依赖项而无包管理器、shell 或 OS 的“无分发版”映像<br>包含[开放容器计划 (OCI) 映像格式规范](https://github.com/opencontainers/image-spec/blob/master/spec.md)的映像|
+|不支持的注册表和映像：|Windows 映像<br>“专用”注册表（除非授予对[可信服务](../container-registry/allow-access-trusted-services.md#trusted-services)的访问权限）<br>超级简单的映像，例如 [Docker 暂存](https://hub.docker.com/_/scratch/)映像或仅包含应用程序及其运行时依赖项而无包管理器、shell 或 OS 的“无分发版”映像<br>包含[开放容器计划 (OCI) 映像格式规范](https://github.com/opencontainers/image-spec/blob/master/spec.md)的映像|
 |所需角色和权限：|安全读取者和 [Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)|
 |云：|:::image type="icon" source="./media/icons/yes-icon.png" border="false"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png" border="false"::: US Gov 和 China Gov - 当前仅支持“推送扫描”功能。 参阅[何时扫描映像？](#when-are-images-scanned)了解详细信息|
 |||

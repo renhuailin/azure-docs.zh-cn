@@ -4,18 +4,20 @@ description: 为 Azure 托管磁盘配置共享磁盘，以便可以跨多个 VM
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 09/01/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d2a770dd007c801d2192ff08349966ff915bdd0a
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: bdf012d1ee6c1230e458b7b40e3130d8fa25e4a1
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253088"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424741"
 ---
 # <a name="enable-shared-disk"></a>启用共享磁盘
+
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
 
 本文介绍了如何为 Azure 托管磁盘启用共享磁盘功能。 Azure 共享磁盘是 Azure 托管磁盘的一项新功能，可同时将托管磁盘附加到多个虚拟机 (VM)。 通过将托管磁盘附加到多个 VM，可以向 Azure 部署新的群集应用程序或迁移现有的群集应用程序。 
 
@@ -60,12 +62,12 @@ ms.locfileid: "122253088"
 
     :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="“创建托管磁盘”窗格的屏幕截图，其中“更改大小”已突出显示。" lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
 
-1. 选择所需的高级 SSD 大小，然后选择“确定”。
+1. 选择所需的高级 SSD 大小和 SKU，然后选择“确定”。
 
-    :::image type="content" source="media/disks-shared-enable/select-premium-shared-disk.png" alt-text="磁盘 SKU 的屏幕截图，其中“高级 SSD”已突出显示。" lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
+    :::image type="content" source="media/disks-shared-enable/select-premium-shared-disk.png" alt-text="磁盘 SKU 的屏幕截图，其中已突出显示高级 LRS 和 ZRS SSD SKU。" lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
 
 1. 继续部署，直到转到“高级”窗格。
-1. 对于“启用共享磁盘”，请选择“是”，然后选择所需的“最大共享”的量。
+1. 对于“启用共享磁盘”，请选择“是”，然后选择所需的“最大共享”的量  。
 
     :::image type="content" source="media/disks-shared-enable/enable-premium-shared-disk.png" alt-text="“高级”窗格的屏幕截图，其中“启用共享磁盘”已突出显示并设置为“是”。" lightbox="media/disks-shared-enable/enable-premium-shared-disk.png":::
 
@@ -101,9 +103,25 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 > [!IMPORTANT]
 > 仅当从所有 VM 中卸载了某个磁盘时，才能设置或更改 `maxShares` 的值。 有关 `maxShares` 的允许值，请参阅[磁盘大小](#disk-sizes)。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
-目前无法通过 Azure 门户部署共享标准 SSD。 使用 Azure CLI、Azure PowerShell 模块或 Azure 资源管理器模板。
+1. 登录到 Azure 门户。 
+1. 搜索并选择“磁盘”。
+1. 选择“+ 创建”以创建新磁盘。
+1. 填写详细信息并选择相应的区域，然后选择“更改大小”。
+
+    :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="“创建托管磁盘”窗格的屏幕截图，其中“更改大小”已突出显示。" lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
+
+1. 选择所需的标准 SSD 大小和 SKU，然后选择“确定”。
+
+    :::image type="content" source="media/disks-shared-enable/select-standard-ssd-shared-disk.png" alt-text="磁盘 SKU 的屏幕截图，其中已突出显示标准 SSD LRS 和 ZRS SKU。" lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
+
+1. 继续部署，直到转到“高级”窗格。
+1. 对于“启用共享磁盘”，请选择“是”，然后选择所需的“最大共享”的量  。
+
+    :::image type="content" source="media/disks-shared-enable/enable-premium-shared-disk.png" alt-text="“高级”窗格的屏幕截图，其中“启用共享磁盘”已突出显示并设置为“是”。" lightbox="media/disks-shared-enable/enable-premium-shared-disk.png":::
+
+1. 选择“查看 + 创建”  。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

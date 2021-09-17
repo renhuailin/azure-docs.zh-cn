@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.author: b-juche
-ms.openlocfilehash: dccf4f7bb39b296fdbcf9b7fbce2f86019397deb
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 119cf21f90102f7ebccd8e4e06cd5e5dee3c4bfe
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323646"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427977"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -53,6 +53,10 @@ ms.locfileid: "122323646"
 ### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp 文件是否支持双堆栈（IPv4 和 IPv6）VNet？
 
 否，Azure NetApp 文件目前不支持双堆栈（IPv4 和 IPv6）VNet。  
+
+### <a name="is-the-number-of-the-ip-addresses-using-azure-vmware-solutions-for-guest-os-mounts-limited-to-1000"></a>使用 Azure VMWare 解决方案进行来宾 OS 装载的 IP 地址数是否[限于 1000 个](azure-netapp-files-resource-limits.md#resource-limits)？
+
+否。 Azure VMWare 解决方案位于 ER 网关后面，这使得它的行为类似于本地系统。 AVS“主机”和“来宾”的数量对于 Azure NetApp 文件不可见，1000 个 IP 地址限制不适用。
  
 ## <a name="security-faqs"></a>安全常见问题
 
@@ -104,7 +108,7 @@ Azure NetApp 文件是 Azure 原生的服务。 将会记录针对 Azure NetApp 
 
 ### <a name="when-i-delete-an-azure-netapp-files-volume-is-the-data-deleted-safely"></a>删除 Azure NetApp 文件卷时，是否会安全地删除数据？ 
 
-Azure NetApp 文件卷的删除在后端（物理基础结构层）中以编程方式执行，会立即生效。 删除操作包括删除用于加密静态数据的密钥。 成功执行删除操作（通过 Azure 门户 和 API 等接口）后，任何情形下都无法恢复已删除的卷。
+Azure NetApp 文件卷的删除操作以编程方式执行，并会立即生效。 删除操作包括删除用于加密静态数据的密钥。 成功执行删除操作（通过 Azure 门户 和 API 等接口）后，任何情形下都无法恢复已删除的卷。
 
 ## <a name="performance-faqs"></a>性能常见问题解答
 
@@ -228,7 +232,7 @@ Azure NetApp 文件支持 Windows Server 2008r2SP1-2019 版本的 Active Directo
 
 ### <a name="can-an-azure-netapp-files-smb-share-act-as-an-dfs-namespace-dfs-n-root"></a>Azure NetApp 文件 SMB 共享是否可以充当 DFS 命名空间 (DFS-N) 根？
 
-不是。 但是，Azure NetApp 文件 SMB 共享可以充当 DFS 命名空间 (DFS-N) 文件夹目标。   
+否。 但是，Azure NetApp 文件 SMB 共享可以充当 DFS 命名空间 (DFS-N) 文件夹目标。   
 若要使用 Azure NetApp 文件 SMB 共享作为 DFS-N 文件夹目标，请使用 [DFS 添加文件夹目标](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target)过程提供 Azure NETAPP 文件 SMB 共享的通用命名约定 (UNC) 装载路径。  
 
 ### <a name="can-the-smb-share-permissions-be-changed"></a>是否可以更改 SMB 共享权限？   
@@ -341,7 +345,7 @@ NetApp 提供基于 SaaS 的解决方案，即 [NetApp 云同步](https://cloud.
 
 ### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>哪些区域支持将 Azure NetApp 文件 NFS 或 SMB 卷与 Azure VMware 解决方案 (AVS) 一起使用？
 
-以下区域（美国东部、美国西部、欧洲西部和澳大利亚东部）支持将 Azure NetApp 文件 NFS 或 SMB 卷与 AVS 一起使用。
+[所有启用 AVS 和 ANF 的区域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware,netapp)都支持将 Azure NetApp 文件 NFS 或 SMB 卷用于 AVS 以进行来宾 OS 装载。
 
 ### <a name="does-azure-netapp-files-work-with-azure-policy"></a>Azure NetApp 文件是否适用于 Azure Policy？
 

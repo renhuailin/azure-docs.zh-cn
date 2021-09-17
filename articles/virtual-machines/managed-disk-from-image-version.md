@@ -1,6 +1,6 @@
 ---
 title: 将映像版本导出到托管磁盘
-description: 将映像版本从共享映像库导出到托管磁盘。
+description: 从共享映像库将映像版本导出到托管磁盘。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -10,16 +10,18 @@ ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d4a3d1e8b1eb1c3a959e9f48e0c46379d6162644
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: fd6a1cf2cae56bf2d10fe4075caed019e2e72b7e
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653037"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123452242"
 ---
 # <a name="export-an-image-version-to-a-managed-disk"></a>将映像版本导出到托管磁盘
 
-你可以将操作系统或映像版本的单个数据磁盘导出为共享映像库中存储的映像版本的托管磁盘。
+**适用于：** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 灵活规模集 :heavy_check_mark: 统一规模集
+
+可以将映像版本中的 OS 或单个数据磁盘导出为共享映像库中存储的映像版本的托管磁盘。
 
 
 ## <a name="cli"></a>CLI
@@ -118,6 +120,6 @@ New-AzDisk -Disk $diskConfig `
 
 ## <a name="next-steps"></a>后续步骤
 
-还可以使用 [Azure CLI](image-version-managed-image-cli.md) 或 [PowerShell](image-version-managed-image-powershell.md) 从托管磁盘创建映像版本。
+还可从托管磁盘创建[映像版本](image-version.md)。
 
 

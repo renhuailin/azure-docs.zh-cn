@@ -1,14 +1,14 @@
 ---
 title: 确定导致非符合性的原因
 description: 如果资源不符合，可能有很多原因。 找出导致非符合性的原因。
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: how-to
-ms.openlocfilehash: e09bdaee974e77a3afecaaa35a37c56ed3cd56ec
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 3c4076673adfe3253a418cc648592e72a8979b5a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324536"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433794"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -78,9 +78,13 @@ ms.locfileid: "122324536"
 
 ### <a name="compliance-reasons"></a>符合性原因
 
-以下矩阵将每个可能原因映射到策略定义中的负责[条件](../concepts/definition-structure.md#conditions)：
+[资源管理器模式](../concepts/definition-structure.md#resource-manager-modes)和[资源提供程序模式](../concepts/definition-structure.md#resource-provider-modes)不合规的原因各有不同。
 
-|原因 | 条件 |
+#### <a name="general-resource-manager-mode-compliance-reasons"></a>常规资源管理器模式合规性原因
+
+下表将每个[资源管理器模式](../concepts/definition-structure.md#resource-manager-modes)原因映射到策略定义中的负责[条件](../concepts/definition-structure.md#conditions)：
+
+|Reason |条件 |
 |-|-|
 |当前值必须包含目标值作为关键值。 |containsKey 或不为 notContainsKey |
 |当前值必须包含目标值。 |contains 或不为 notContains |
@@ -104,15 +108,33 @@ ms.locfileid: "122324536"
 |当前值不得与目标值匹配（不区分大小写）。 |notMatchInsensitively 或不为 matchInsensitively |
 |没有与策略定义中的效果详细信息匹配的相关资源。 |类型在“then.details.type”中定义，且与策略规则“if”部分定义的资源相关的资源不存在。 |
 
+#### <a name="aks-resource-provider-mode-compliance-reasons"></a>AKS 资源提供程序模式合规性原因
+
+下表将每个`Microsoft.Kubernetes.Data`
+[资源提供程序模式](../concepts/definition-structure.md#resource-provider-modes)原因映射到策略定义中[约束模板](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates)的负责状态：
+
+|Reason |约束模板原因说明 |
+|-|-|
+|Constraint/TemplateCreateFailed |无法为策略定义创建资源，该策略定义的约束/模板与群集上现有约束/模板的资源元数据名称不匹配。 |
+|Constraint/TemplateUpdateFailed |无法为策略定义创建资源，该策略定义的约束/模板与群集上现有约束/模板的资源元数据名称不匹配。 |
+|Constraint/TemplateInstallFailed |约束/模板未能生成，并且无法安装在群集上以进行创建或更新操作。 |
+|ConstraintTemplateConflicts |模板与一个或多个使用不同源的相同模板名称的策略定义存在冲突。 |
+|ConstraintStatusStale |存在现有的“审核”状态，但 Gatekeeper 在过去一小时内未执行审核。 |
+|ConstraintNotProcessed |没有状态，并且 Gatekeeper 在过去一小时内未执行审核。 |
+|InvalidConstraint/Template |由于 YAML 错误，API 服务器拒绝了资源。 此原因也可能是由参数类型不匹配引起的（例如：为整数提供的字符串）
+
+> [!NOTE]
+> 对于群集上已有的策略分配和约束模板，如果该约束/模板失败，则通过维护现有的约束/模板来保护群集。 除非解决策略分配或加载项自我修复上的失败，否则群集将报告为不合规。 有关处理冲突的详细信息，请参阅[约束模板冲突](../concepts/policy-for-kubernetes.md#constraint-template-conflicts)。
+
 ## <a name="component-details-for-resource-provider-modes"></a>资源提供程序模式的组件详细信息
 
-对于使用[资源提供程序模式](../concepts/definition-structure.md#resource-manager-modes)的分配，请选择不合规的资源，以打开更详细的视图。 在“组件合规性”选项卡下，显示了特定于已分配策略上的资源提供程序模式的其他信息，其中显示了不合规的组件和组件 ID 。
+对于使用[资源提供程序模式](../concepts/definition-structure.md#resource-provider-modes)的分配，请选择不合规的资源，以打开更详细的视图。 在“组件合规性”选项卡下，显示了特定于已分配策略上的资源提供程序模式的其他信息，其中显示了不合规的组件和组件 ID 。
 
 :::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="资源提供程序模式分配“组件合规性”选项卡及合规性详细信息的屏幕截图。" border="false":::
 
-## <a name="compliance-details-for-guest-configuration"></a>来宾配置的符合性详细信息
+## <a name="compliance-details-for-guest-configuration"></a>来宾配置的合规性详细信息
 
-对于“来宾配置”类别中的 auditIfNotExists 策略，虚拟机内可能有多个计算设置，你需要查看各个设置的详细信息 。 例如，如果你正在审核一个密码策略列表，其中只有一个密码策略的状态为“不符合”，这时你需要了解具体哪些密码策略不符合以及不符合的原因。
+对于“来宾配置”类别中的策略定义，虚拟机内可能有多个计算设置，你需要查看各个设置的详细信息。 例如，如果你正在审核一个安全设置列表，其中只有一个安全设置的状态为“不合规”，这时你需要了解具体哪些设置不合规以及不合规的原因。
 
 你也可能无权直接登录到虚拟机，但需要报告虚拟机不符合的原因。
 
@@ -127,6 +149,15 @@ ms.locfileid: "122324536"
 “来宾分配”页显示所有可用的符合性详细信息。 视图中的每一行都代表在计算机中执行的计算。 “原因”列中显示描述来宾分配“不符合”原因的短语。 例如，如果要审核密码策略，“原因”列将显示包含每个设置当前值的文本。
 
 :::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="来宾分配符合性详细信息的屏幕截图。" border="false":::
+
+### <a name="view-configuration-assignment-details-at-scale"></a>大规模查看配置分配详细信息
+
+来宾配置功能可以在 Azure Policy 分配之外使用。
+例如，[Azure AutoManage](../../../automanage/automanage-virtual-machines.md) 可创建来宾配置分配，或者你可以[在部署计算机时分配配置](guest-configuration-create-assignment.md)。
+
+若要查看租户中的所有来宾配置分配，请从 Azure 门户打开“来宾分配”页面。 若要查看详细的合规性信息，请使用“名称”列中的链接选择每个分配。
+
+:::image type="content" source="../media/determine-non-compliance/guest-config-assignment-view.png" alt-text="“来宾分配”页的屏幕截图。" border="true":::
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>更改历史记录（预览版）
 

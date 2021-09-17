@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: azure 应用服务, web 应用, linux, windows, docker, 容器
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: fbd4f58baa3da0da2db4100899c7e49d0120b72f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1574464f4f6f4c4abe8a3fc45247f28b7b97bd96
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748866"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428049"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>使用自定义容器将自定义软件迁移到 Azure 应用服务
 
@@ -611,6 +611,7 @@ RUN apt-get update \
 
 > [!NOTE]
 > 此配置不允许从外部建立到容器的连接。 只能通过 Kudu/SCM 站点使用 SSH。 Kudu/SCM 站点使用 Azure 帐户进行身份验证。
+> root:Docker! 不应更改 SSH。 SCM/KUDU 将使用 Azure 门户凭据。 使用 SSH 时，更改此值将导致错误。
 
 Dockerfile 还将 sshd_config 文件复制到 /etc/ssh/ 文件夹，并在容器上公开端口 2222  ：
 
